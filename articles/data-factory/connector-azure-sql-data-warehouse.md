@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/25/2020
-ms.openlocfilehash: 4890013fe584c49caa9e358c924911255a7f5d33
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 08/28/2020
+ms.openlocfilehash: cd14a183ae1434af83c96b7f8d6575186412b534
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815965"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051221"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Synapse Analytics (旧称: Azure SQL Data Warehouse) のデータをコピーして変換する
 
@@ -504,7 +504,7 @@ SQL Data Warehouse の PolyBase では、Azure Blob、Azure Data Lake Storage Ge
 
 3. ソースがフォルダーの場合は、コピー アクティビティの `recursive` を true に設定する必要があります。
 
-4. `wildcardFolderPath`、`wildcardFilename`、`modifiedDateTimeStart`、`modifiedDateTimeEnd`、および `additionalColumns` が指定されていない。
+4. `wildcardFolderPath`、`wildcardFilename`、`modifiedDateTimeStart`、`modifiedDateTimeEnd`、`prefix`、`enablePartitionDiscovery`、`additionalColumns` は指定されません。
 
 >[!NOTE]
 >ソースがフォルダーの場合、PolyBase ではフォルダーとそのすべてのサブフォルダーからファイルが取得され、ファイル名の先頭に下線 (_) またはピリオド (.) が付いているファイルからはデータが取得されないことに注意してください。詳細については、[LOCATION 引数に関するこちらのドキュメント](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest#arguments-2)を参照してください。
@@ -684,7 +684,7 @@ COPY ステートメントを使用する場合、次の構成がサポートさ
 
 3. ソースがフォルダーの場合は、コピー アクティビティの `recursive` を true に設定し、`wildcardFilename` が `*` である必要があります。 
 
-4. `wildcardFolderPath`、`wildcardFilename` (`*` 以外)、`modifiedDateTimeStart`、`modifiedDateTimeEnd`、`additionalColumns` は指定されません。
+4. `wildcardFolderPath`、`wildcardFilename` (`*` 以外)、`modifiedDateTimeStart`、`modifiedDateTimeEnd`、`prefix`、`enablePartitionDiscovery`、`additionalColumns` は指定されません。
 
 コピー アクティビティの `allowCopyCommand` では、次の COPY ステートメント設定がサポートされています。
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fce07575fe95ffbd4fd906bcde7d76d89e50d48b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 393ed336018c7a0272c15adaa72633abd6b95d2f
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716318"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377201"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>動作のしくみ: Azure AD のセルフサービス パスワード リセット
 
@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD) のセルフサービス パスワード リ�
 >
 > ユーザーが自分でパスワードをリセットする機能が IT チームによって有効にされていない場合は、ヘルプデスクに連絡して追加のサポートを依頼してください。
 
-## <a name="how-does-the-password-reset-portal-work"></a>パスワード リセット ポータルのしくみ
+## <a name="how-does-the-password-reset-process-work"></a>パスワード リセット プロセスのしくみ
 
 ユーザーは、[SSPR ポータル](https://aka.ms/sspr)を使用してパスワードをリセットまたは変更できます。 まず、希望する認証方法を登録しておく必要があります。 ユーザーが SSPR ポータルにアクセスすると、Azure Platform によって次の要素が考慮されます。
 
@@ -58,6 +58,11 @@ SSPR ポータルが必要な言語で表示された後、ユーザー ID を�
   * SSPR ライトバックがデプロイされておらず、ユーザーのパスワードがオンプレミスで管理されている場合、ユーザーは管理者に連絡してパスワードをリセットするように求められます。
 
 上記のすべてのチェックが正常に完了した場合、パスワードをリセットまたは変更するプロセスがユーザーに案内されます。
+
+> [!NOTE]
+> SSPR では、パスワード リセット プロセスの一環としてユーザーにメール通知が送信される場合があります。 これらのメールは、複数のリージョンにまたがってアクティブ/アクティブ モードで動作する SMTP リレー サービスを使用して送信されます。
+>
+> SMTP リレー サービスでは、メールの本文が受信され、処理されますが、保存はされません。 顧客から提供された情報を含む可能性がある SSPR メールの本文は、SMTP リレー サービスのログに格納されません。 ログには、プロトコルのメタデータのみが含まれています。
 
 SSPR の使用を開始するには、次のチュートリアルをご覧ください。
 

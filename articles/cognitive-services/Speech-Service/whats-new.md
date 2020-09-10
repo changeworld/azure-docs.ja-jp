@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: erhopf
-ms.openlocfilehash: 4c448b8ed50863457da69db3f74b959f04e26ec1
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: c2b96193204c6938338594054bc3cd4715008313
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131856"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055313"
 ---
 # <a name="speech-service-whats-new-in-docs"></a>音声サービス: ドキュメントの最新情報
 
@@ -48,9 +48,6 @@ ms.locfileid: "87131856"
 * [クイック スタート: 開発環境を設定する](quickstarts/setup-platform.md) - JavaScript の手順をドキュメントに追加しました。
 * [クイック スタート: オーディオ ファイルに音声を合成する](quickstarts/text-to-speech-audio-file.md) - JavaScript の手順をドキュメントに追加しました。
 * [クイック スタート: スピーカーに音声を合成する](quickstarts/text-to-speech.md) - JavaScript の手順をドキュメントに追加しました。
-* [クイック スタート: 音声間翻訳](quickstarts/translate-speech-to-speech.md) - JavaScript の手順をドキュメントに追加しました。
-* [クイック スタート: 音声を複数の言語に翻訳する](quickstarts/translate-speech-to-text-multiple-languages.md) - JavaScript の手順をドキュメントに追加しました。
-* [クイック スタート: 音声テキスト変換の翻訳](quickstarts/translate-speech-to-text.md) - JavaScript の手順をドキュメントに追加しました。
 * [キーワードとは](custom-keyword-overview.md) - 概要の内容およびリンクを更新しました。
 * [音声テキスト変換のソース言語を指定する](how-to-specify-source-language.md) - JavaScript および Objective-C の手順をドキュメントに追加しました。
 

@@ -7,20 +7,22 @@ ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: b2ae94da3d9b2dee62bc031c4a32d17b43be00a6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 79d3829eaea15c8e7909b98b83d1327cd90e4544
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021275"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260325"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Azure Spring Cloud で Java Spring アプリケーションをデプロイ用に準備する
 
 このトピックでは、Azure Spring Cloud にデプロイできるように既存の Java Spring アプリケーションを準備する方法について説明します。 適切に構成すると、Azure Spring Cloud によって Java Spring Cloud アプリケーションの監視、スケーリング、更新を行う堅牢なサービスが実現します。
 
+この例を実行する前に、[基本的なクイックスタート](spring-cloud-quickstart.md)を試してみることができます。
+
 POM ファイルが構成されているときにアプリケーションを Azure Spring Cloud にデプロイする方法については、その他の例で説明しています。 
-* [Azure portal を使用してアプリを起動する](spring-cloud-quickstart-launch-app-portal.md)
-* [Azure CLI を使用してアプリを起動する](spring-cloud-quickstart-launch-app-cli.md)
+* [最初のアプリを起動する](spring-cloud-quickstart.md)
+* [マイクロサービスをビルドして実行する](spring-cloud-quickstart-sample-app-introduction.md)
 
 この記事では、必要な依存関係とそれらを POM ファイルに追加する方法について説明します。
 
@@ -39,8 +41,8 @@ Azure Spring Cloud でサポートされるのは、Spring Boot バージョン 
 Spring Boot のバージョン | Spring Cloud のバージョン
 ---|---
 2.1 | Greenwich.RELEASE
-2.2 | Hoxton.RELEASE
-2.3 | Hoxton.SR5
+2.2 | Hoxton.SR8
+2.3 | Hoxton.SR8
 
 ### <a name="dependencies-for-spring-boot-version-21"></a>Spring Boot バージョン 2.1 の依存関係
 
@@ -60,7 +62,7 @@ Spring Boot バージョン 2.1 の場合は、アプリケーションの POM �
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Greenwich.SR4</version>
+                <version>Greenwich.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -86,7 +88,7 @@ Spring Boot バージョン 2.2 の場合は、アプリケーションの POM �
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Hoxton.SR1</version>
+                <version>Hoxton.SR8</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -111,7 +113,7 @@ Spring Boot バージョン 2.3 の場合は、アプリケーションの POM �
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Hoxton.SR5</version>
+                <version>Hoxton.SR8</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -120,49 +122,23 @@ Spring Boot バージョン 2.3 の場合は、アプリケーションの POM �
 ```
 ## <a name="azure-spring-cloud-client-dependency"></a>Azure Spring Cloud クライアントの依存関係
 
-Spring Cloud のコンポーネントは、Azure Spring Cloud によってホストおよび管理されます。 たとえば、Spring Cloud Service Registry や Spring Cloud Config Server などのコンポーネントです。 自分の Azure Spring Cloud サービス インスタンスと通信できるよう、Azure Spring Cloud クライアント ライブラリを依存関係に含めます。
+Spring Cloud のコンポーネントは、Azure Spring Cloud によってホストおよび管理されます。 たとえば、Spring Cloud Service Registry や Spring Cloud Config Server などのコンポーネントです。 Spring Boot 2.2 または 2.3 を使用することをお勧めします。 Spring Boot 2.1 の場合、自分の Azure Spring Cloud サービス インスタンスと通信できるよう、Azure Spring Cloud クライアント ライブラリを依存関係に含めることが必要になります。
 
 Spring Boot と Spring Cloud を使用するアプリの正しい Azure Spring Cloud バージョンを次の表に示します。
 
-Spring Boot のバージョン | Spring Cloud のバージョン | Azure Spring Cloud のバージョン
+Spring Boot のバージョン | Spring Cloud のバージョン | Azure Spring Cloud クライアント スターター バージョン
 ---|---|---
-2.1 | Greenwich.RELEASE | 2.1
-2.2 | Hoxton.RELEASE | 2.2
-2.3 | Hoxton.SR5 | 2.3
+2.1 | Greenwich.RELEASE | 2.1.2
+2.2 | Hoxton.SR8 | 不要
+2.3 | Hoxton.SR8 | 不要
 
-次のいずれかの依存関係を pom.xml ファイルに含めます。 Azure Spring Cloud バージョンがお使いのものと一致する依存関係を選択します。
-
-### <a name="dependency-for-azure-spring-cloud-version-21"></a>Azure Spring Cloud バージョン 2.1 の依存関係
-
-Spring Boot バージョン 2.1 の場合は、アプリケーションの POM ファイルに次の依存関係を追加します。
+Spring Boot 2.1 を使用している場合は、次の依存関係を pom.xml ファイルに含めます。
 
 ```xml
 <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
         <version>2.1.2</version>
-</dependency>
-```
-
-### <a name="dependency-for-azure-spring-cloud-version-22"></a>Azure Spring Cloud バージョン 2.2 の依存関係
-
-Spring Boot バージョン 2.2 の場合は、アプリケーションの POM ファイルに次の依存関係を追加します。
-
-```xml
-<dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.2.1</version>
-</dependency>
-```
-
-Spring Boot バージョン 2.3 の場合は、アプリケーションの POM ファイルに次の依存関係を追加します。
-
-```xml
-<dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.3.0</version>
 </dependency>
 ```
 

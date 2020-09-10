@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: f2c5b6ef0792e418d873d84341a0fffc356c799e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 14184c09cc9d5eebab7f33323cd8ce587fdf9e88
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509282"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014593"
 ---
 # <a name="troubleshoot"></a>トラブルシューティング
 
@@ -34,6 +34,14 @@ ms.locfileid: "88509282"
 GPU でハードウェアによる動画のデコードがサポートされていることを確認します。 「[開発用 PC](../overview/system-requirements.md#development-pc)」をご覧ください。
 
 GPU を 2 基搭載したノート パソコンで作業している場合、既定で実行されている方の GPU がハードウェアによる動画のデコード機能を提供していない可能性があります。 その場合は、アプリで強制的にもう一方の GPU を使用するようにしてください。 多くの場合、この操作は GPU ドライバーの設定で実行できます。
+
+## <a name="retrieve-sessionconversion-status-fails"></a>セッション/変換状態の取得の失敗
+
+REST API コマンドを頻繁に送信しすぎるとサーバーでスロットルが発生し、最終的にエラーが返されます。 スロットリングが発生した場合の http 状態コードは 429 ("要求が多すぎます") になります。 経験則として、**次の呼び出しとの間に 5 秒から 10 秒**の間隔が必要です。
+
+この制限は、直接呼び出した場合に REST API の呼び出しに影響するだけでなく、`Session.GetPropertiesAsync`、`Session.RenewAsync`、または `Frontend.GetAssetConversionStatusAsync` などの C#/C++ の対応するものにも影響します。
+
+サーバー側のスロットリングが発生する場合は、呼び出しの頻度を減らすようにコードを変更してください。 サーバーによって 1 分ごとにスロットリングの状態がリセットされるため、1 分後に安全にコードを再実行できます。
 
 ## <a name="h265-codec-not-available"></a>H265 コーデックが使用できない
 

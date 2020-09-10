@@ -5,12 +5,12 @@ author: pkshultz
 ms.topic: how-to
 ms.date: 07/17/2020
 ms.author: peshultz
-ms.openlocfilehash: a89d0182f6a659cee65ebc1de7d97d40418b4b20
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 35780f915247e88a5de093594b653ddcebdfb06b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654890"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008881"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-batch-account-with-azure-key-vault-and-managed-identity"></a>Azure Key Vault とマネージド ID を使用して Azure Batch アカウントのカスタマー マネージド キーを構成する
 
@@ -149,6 +149,6 @@ az batch account set \
   * **キーをローテーションするにはどうすればよいですか?** カスタマー マネージド キーは自動的にローテーションされません。 キーをローテーションするには、アカウントに関連付けられているキー識別子を更新します。
   * **アクセスを復元した後、Batch アカウントが再び動作するまでどれくらいかかりますか?** アクセスが復元されてから、アカウントに再びアクセスできるようになるまでに、最大で 10 分かかることがあります。
   * **Batch アカウントが使用できない間、リソースはどうなりますか?** カスタマー マネージド キーへの Batch アクセスが失われたときに実行されていたプールは、引き続き実行されます。 ただし、ノードは使用できない状態に遷移し、タスクの実行は停止されます (キューに登録されます)。 アクセスが復元されると、ノードは再び使用可能になり、タスクは再起動されます。
-  * **この暗号化メカニズムは、Batch プール内の VM ディスクに適用されますか?** いいえ。 クラウド サービス構成プールでは、OS と一時ディスクに暗号化は適用されません。 仮想マシン構成プールの場合、OS ディスクと指定したすべてのデータ ディスクは、既定では Microsoft プラットフォーム マネージド キーで暗号化されます。 現時点では、これらのディスクに独自のキーを指定することはできません。 Batch プールの VM の一時ディスクを Microsoft プラットフォーム マネージド キーで暗号化するには、[仮想マシン構成](/rest/api/batchservice/pool/add#virtualmachineconfiguration)プールで [diskEncryptionConfiguration](/rest/api/batchservice/pool/add#diskencryptionconfiguration) プロパティを有効にする必要があります。 機密性の高い環境では、一時ディスクの暗号化を有効にし、OS ディスクとデータ ディスクには機密データを格納しないようにすることをお勧めします。
+  * **この暗号化メカニズムは、Batch プール内の VM ディスクに適用されますか?** いいえ。 クラウド サービス構成プールでは、OS と一時ディスクに暗号化は適用されません。 仮想マシン構成プールの場合、OS ディスクと指定したすべてのデータ ディスクは、既定では Microsoft プラットフォーム マネージド キーで暗号化されます。 現時点では、これらのディスクに独自のキーを指定することはできません。 Batch プールの VM の一時ディスクを Microsoft プラットフォーム マネージド キーで暗号化するには、[仮想マシン構成](/rest/api/batchservice/pool/add#virtualmachineconfiguration)プールで [diskEncryptionConfiguration](/rest/api/batchservice/pool/add#diskencryptionconfiguration) プロパティを有効にする必要があります。 機密性の高い環境では、一時ディスクの暗号化を有効にし、OS ディスクとデータ ディスクには機密データを格納しないようにすることをお勧めします。 詳細については、「[ディスク暗号化が有効になっているプールを作成する](./disk-encryption.md)」をご覧ください
   * **Batch アカウントのシステム割り当てマネージド ID は、コンピューティング ノードで使用できますか?** いいえ。 このマネージド ID は、現在、カスタマー マネージド キーの Azure キー コンテナーにアクセスするためにのみ使用されています。
   

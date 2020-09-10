@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: 4de32bad763c0bbf0e143a7ce639efec8c9c41ae
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f8411176e0979bdb894983bcf866abd0e1109e21
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079617"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291670"
 ---
 # <a name="requesting-quota-increases-for-azure-hdinsight"></a>Azure HDInsight のクォータの増加を要求する
 
@@ -65,7 +65,7 @@ CPU コア クォータは、確実に、特定の Azure リージョン内の�
 1. **[確認および作成]** タブで、 **[作成]** を選択します。
 
 > [!NOTE]  
-> プライベート リージョンで HDInsight コア クォータを増やす必要がある場合は、[ホワイト リストの要求を送信](https://aka.ms/canaryintwhitelist)してください。
+> プライベート リージョンで HDInsight コア クォータを増やす必要がある場合は、[承認済みリストの要求を送信](https://aka.ms/canaryintwhitelist)してください。
 
 [サポートに連絡してクォータの引き上げを要求](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)できます。
 

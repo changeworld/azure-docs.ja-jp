@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3c7e4887610f30113b81421396500416d04c5e5e
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: e9a78690128c2406277ab4e8fb6e6e4625d2787f
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078514"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280096"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Azure Digital Twins インスタンスと認証を設定する (CLI)
 
@@ -118,7 +118,7 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="[アップロード] オプションが選択されていることを示す Cloud Shell ウィンドウ":::
 先ほど作成した *manifest.json* に移動し、[開く] をクリックします。
 
-次に、以下のコマンドを実行して、アプリの登録を作成します (必要に応じて、プレースホルダーを置き換える)。
+次に、下記のコマンドを実行してアプリ登録を作成します。このとき、`http://localhost` の*パブリック クライアント/ネイティブ (モバイルとデスクトップ)* 応答 URL を使用します。 必要に応じてプレースホルダーを置き換えます。
 
 ```azurecli
 az ad app create --display-name <name-for-your-app-registration> --native-app --required-resource-accesses manifest.json --reply-url http://localhost
@@ -150,5 +150,9 @@ az ad app create --display-name <name-for-your-app-registration> --native-app --
 
 ## <a name="next-steps"></a>次のステップ
 
-クライアント アプリの認証コードを作成してクライアント アプリケーションをインスタンスに接続する方法について説明します。
+Azure Digital Twins CLI コマンドを使用して、インスタンスでの個別の REST API 呼び出しをテストします。 
+* [az dt reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest)
+* [*方法: Azure Digital Twins CLI を使用する*](how-to-use-cli.md)
+
+または、クライアント アプリの認証コードを作成してクライアント アプリケーションをインスタンスに接続する方法を確認します。
 * [*方法: アプリ認証コードを作成する*](how-to-authenticate-client.md)

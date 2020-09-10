@@ -13,13 +13,13 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6c52275735a6558a625e2118761d7ba98509dbe1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 11e8a2fd709b40c68b90e5ed139f18997e4cb29e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497071"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396966"
 ---
 # <a name="register-a-sql-server-vm-in-azure-with-the-sql-vm-resource-provider-rp"></a>Azure の SQL Server VM を SQL VM リソース プロバイダー (RP) に登録する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -353,7 +353,7 @@ az sql vm delete
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Azure CLI を使用してリソース プロバイダーから SQL Server VM の登録を解除するには、[New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm) コマンドを使用します。 これにより、SQL Server VM "*リソース*" が削除されますが、仮想マシンは削除されません。 
+PowerShell を使用してリソース プロバイダーから SQL Server VM を登録解除するには、[Remove-AzSqlVM](/powershell/module/az.sqlvirtualmachine/remove-azsqlvm) コマンドを使用します。 これにより、SQL Server VM "*リソース*" が削除されますが、仮想マシンは削除されません。 
 
 ```powershell-interactive
 Remove-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name>
@@ -398,9 +398,9 @@ SQL VM リソースプロバイダーへの登録時の既定の SQL 管理モ�
 
 **SQL VM リソースプロバイダーに登録すると、VM にエージェントがインストールされますか?**
 
-いいえ。 SQL VM リソースプロバイダーに登録した場合は、新しいメタデータ リソースのみが作成されます。 VM にエージェントがインストールされることはありません。
+はい。SQL VM リソース プロバイダーに登録すると、VM にエージェントがインストールされます。
 
-SQL Server IaaS 拡張機能は、完全管理を有効にする場合のみ必要です。 管理モードを軽量から完全にアップグレードすると、SQL Server IaaS 拡張機能がインストールされ、SQL Server が再起動されます。
+SQL Server IaaS 拡張機能は、そのエージェントを使用して SQL Server のメタデータにクエリを実行します。 エージェントがインストールされないのは、SQL VM リソース プロバイダーが NoAgent モードで登録されている場合だけです。
 
 **SQL VM リソース プロバイダーに登録すると、自分の VM 上の SQL Server が再起動されますか?**
 
@@ -466,6 +466,6 @@ SQL Server IaaS 拡張機能は、完全管理を有効にする場合のみ必�
 詳細については、次の記事を参照してください。 
 
 * [Windows VM における SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)
-* [Windows VM 上の SQL Server に関する FAQ](frequently-asked-questions-faq.md)
+* [Windows VM 上の SQL Server に関する FAQ](frequently-asked-questions-faq.md)  
 * [Windows VM 上の SQL Server の価格ガイダンス](pricing-guidance.md)
 * [Windows VM 上の SQL Server のリリース ノート](../../database/doc-changes-updates-release-notes.md)

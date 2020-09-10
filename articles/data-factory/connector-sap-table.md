@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/03/2020
-ms.openlocfilehash: a6eaa5519607d5d5e9a49851e1c55f9b60b554ea
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.date: 09/01/2020
+ms.openlocfilehash: 608694c07894c8bdff8b1101d607e07ea4383764
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529723"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279834"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Azure Data Factory を使用して SAP テーブルからデータをコピーする
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、SAP テーブルからデータをコピーする方法について説明します。 詳細については、[コピー アクティビティの概要](copy-activity-overview.md)に関するページを参照してください。
@@ -48,6 +49,12 @@ SAP テーブルから、サポートされている任意のシンク データ
 - 基本認証、または Secure Network Communications (SNC) が構成されている場合は、SNC を使用したデータのコピー。
 - SAP アプリケーション サーバーまたは SAP メッセージ サーバーへの接続。
 - 既定の RFC またはカスタム RFC によるデータの取得。
+
+バージョン 7.01 以降は、SAP ECC のバージョンではなく SAP NetWeaver のバージョンを指します。 たとえば、一般に SAP ECC 6.0 EHP 7 の NetWeaver バージョンは 7.4 以降です。 お使いの環境が不明な場合に、SAP システムからバージョンを確認する手順を次に示します。
+1.  SAP GUI を使用して SAP システムに接続します。 
+2.  **[システム]**  ->  **[ステータス]** に移動します。 
+3.  SAP_BASIS のリリースを調べ、701 以上であることを確認します。  
+      ![SAP_BASIS の確認](./media/connector-sap-table/sap-basis.png)
 
 ## <a name="prerequisites"></a>前提条件
 

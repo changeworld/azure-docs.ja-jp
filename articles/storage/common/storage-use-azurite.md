@@ -7,12 +7,13 @@ ms.date: 07/15/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: c850fccf5a86df4c35ce4db53b5b40d5e8588210
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 35a93669bf301b3be1d560a0777751c12f3c9d14
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089415"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001911"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>ローカルでの Azure Storage の開発に Azurite エミュレーターを使用する
 
@@ -327,7 +328,7 @@ Azure SDK を使用している場合は、`--oauth basic and --cert --key/--pwd
 
 ### <a name="well-known-storage-account-and-key"></a>既知のストレージ アカウントとキー
 
-Azurite は、従来の Azure Storage エミュレーターで使用されるものと同じ既知のアカウントとキーを受け入れます。
+Azurite は、従来の Azure ストレージ エミュレーターで使用されるものと同じ既知のアカウントとキーを受け入れます。
 
 - アカウント名: `devstoreaccount1`
 - アカウント キー: `Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==`
@@ -461,7 +462,7 @@ var client = new QueueClient(
   );
 ```
 
-### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer
+### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure ストレージ エクスプローラー
 
 Storage Explorer を使用すると、Azurite に格納されているデータを表示できます。
 
@@ -561,5 +562,5 @@ Azurite への参加や提案をお待ちしています。 近日公開され�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[Azure ストレージ エミュレーターを使用した開発とテスト](storage-use-emulator.md)」には、Azurite によって置き換えられつつある従来の Azure ストレージ エミュレーターについて記載されています。
+- 「[開発とテストに Azure ストレージ エミュレーターを使用する](storage-use-emulator.md)」には、Azurite によって置き換えられつつある従来の Azure ストレージ エミュレーターについての記述があります。
 - 「[Azure Storage の接続文字列を構成する](storage-configure-connection-string.md)」では、有効な Azure Storage の接続文字列をアセンブルする方法が説明されています。

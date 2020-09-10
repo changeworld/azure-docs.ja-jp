@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/27/2019
-ms.openlocfilehash: 9d96e3f7d127f4839592e766537cbdb07cc697dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d679dbb7a14767b83d6508e4b1e637584f33210a
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81414938"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949960"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Data Factory の価格を実例から理解する
 
@@ -167,6 +167,46 @@ ms.locfileid: "81414938"
   - アクティビティの実行 = 001\*2 = 0.002 [1 実行 = $1/1000 = 0.001]
   - データ フロー アクティビティ = $1.461: 20 分間の時間割り (実行時間 10 分 + TTL 10 分)。 Azure Integration Runtime で $0.274/時間、16 コアの一般コンピューティング
 
+## <a name="data-integration-in-azure-data-factory-managed-vnet"></a>Azure Data Factory マネージド VNET でのデータ統合
+このシナリオでは、Azure Blob Storage にある元のファイルを削除し、Azure SQL Database から Azure Blob Storage にデータをコピーします。 この実行を、異なるパイプラインで 2 回行います。 これら 2 つのパイプラインでの実行時間は重なっています。
+![Scenario4](media/pricing-concepts/scenario-4.png) シナリオを実現するには、次の項目を含む 2 つのパイプラインを作成する必要があります。
+  - パイプライン アクティビティ – 削除アクティビティ。
+  - Azure Blob Storage からコピーするデータに対する入力データセットのコピー アクティビティ。
+  - Azure SQL Database 上のデータに対する出力データセット。
+  - パイプラインを実行するためのスケジュール トリガー。
+
+
+| **操作** | **タイプとユニット** |
+| --- | --- |
+| リンクされたサービスを作成する | 4 つの書き込み/読み取りエンティティ |
+| データセットを作成する | 8 つの読み取り/書き込みエンティティ(データセットの作成用に 4 つ、リンクされたサービスの参照用に 4 つ) |
+| パイプラインを作成する | 6 つの読み取り/書き込みエンティティ (パイプラインの作成用に 2 つ、データセットの参照用に 4 つ) |
+| パイプラインを取得する | 2つの読み取り/書き込みエンティティ |
+| パイプラインを実行する | 6 つのアクティビティ実行 (トリガーの実行用に 2 つ、アクティビティの実行用に 4 つ) |
+| 削除アクティビティの実行: 各実行時間 = 5 分。最初のパイプラインでの削除アクティビティの実行は、10:00 AM UTC から 10:05 AM UTC までです。 2 番目のパイプラインでの削除アクティビティの実行は、10:02 AM UTC から 10:07 AM UTC までです。|マネージド VNET での合計 7 分のパイプライン アクティビティ実行。 パイプライン アクティビティでは、マネージド VNET で最大 50 個の同時実行がサポートされています。 |
+| Data Assumption をコピーする: 各実行時間 = 10 分。最初のパイプラインでのコピー実行は、10:06 AM UTC から 10:15 AM UTC までです。 2 番目のパイプラインでの削除アクティビティの実行は、10:08 AM UTC から 10:17 AM UTC までです。 | 10 * 4 つの Azure Integration Runtime (既定の DIU 設定 = 4) データ統合ユニットとコピー パフォーマンスの最適化についての詳細は、[こちらの記事](copy-activity-performance.md)を参照してください |
+| パイプライン監視の仮定:実行が 2 回だけ発生 | 6 つの監視実行レコードの再試行 (パイプラインの実行用に 2 つ、 アクティビティの実行用に 4 つ) |
+
+
+**シナリオ価格の合計: $0.45523**
+
+- Data Factory の操作 = $0.00023
+  - 読み取り/書き込み = 20*00001 = $0.0002 [1 R/W = $0.50/50000 = 0.00001]
+  - 監視 = 6*000005 = $0.00003 [1 監視 = $0.25/50000 = 0.000005]
+- パイプラインのオーケストレーションと実行 = $0.455
+  - アクティビティの実行 = 0.001*6 = 0.006 [1 実行 = $1/1000 = 0.001]
+  - データ移動アクティビティ = $0.333 (実行時間 10 分に対する日割り。 $0.25/時間、 Azure 統合ランタイム)
+  - パイプライン アクティビティ = $0.116 （実行時間 7 分に対する日割り。 $1/時間、Azure Integration Runtime)
+
+> [!NOTE]
+> これらの価格はあくまでも例です。
+
+**FAQ**
+
+Q:50 より多くのパイプライン アクティビティを実行する場合、これらのアクティビティを同時に実行することはできますか?
+
+A:許可される同時実行パイプライン アクティビティは最大 50 個です。  51 番目のパイプライン アクティビティは、"空きスロット" が開放されるまでキューに登録されます。 外部アクティビティについても同じです。 許可される同時実行外部アクティビティは最大 800 個です。
+
 ## <a name="next-steps"></a>次のステップ
 
 Azure Data Factory の価格を理解したところで、始めることができます!
@@ -175,4 +215,4 @@ Azure Data Factory の価格を理解したところで、始めることがで�
 
 - [Azure Data Factory の概要](introduction.md)
 
-- [Azure Data Factory の視覚的オーサリング](author-visually.md)
+- [Azure Data Factory でのビジュアルの作成](author-visually.md)

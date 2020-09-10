@@ -29,6 +29,8 @@
           href: quickstart-service-python.md
 - name: チュートリアル
   items:
+    - name: 複数のコンポーネント デバイスに接続する (C)
+      href: tutorial-multiple-components-c.md
     - name: 複数のコンポーネント デバイスに接続する (C#)
       href: tutorial-multiple-components-csharp.md
     - name: 複数のコンポーネント デバイスに接続する (Java)

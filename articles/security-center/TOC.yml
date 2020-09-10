@@ -136,7 +136,11 @@
       items:
         - name: 推奨事項の修復
           href: security-center-remediate-recommendations.md
+        - name: 適用/拒否を使用した構成ミスの防止
+          displayName: recommendations
+          href: prevent-misconfigurations.md
         - name: セキュリティ体制の強化
+          displayName: recommendations
           href: security-center-monitoring.md
         - name: 推奨事項のリファレンス一覧
           href: recommendations-reference.md

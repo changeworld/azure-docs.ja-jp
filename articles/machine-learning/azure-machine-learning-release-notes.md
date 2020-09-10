@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: b6a060f4487bed5b820126d7a886cf68fa76868a
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 02f654cd36dfa3e01a250303f0f00a4f1351c137
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652068"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296075"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
@@ -22,6 +22,67 @@ ms.locfileid: "88652068"
 
 バグおよび対処法については、[既知の問題のリスト](resource-known-issues.md)を参照してください。
 
+## <a name="2020-08-31"></a>2020-08-31
+
+### <a name="azure-machine-learning-sdk-for-python-v1130"></a>Azure Machine Learning SDK for Python v1.13.0
++ **プレビュー機能**
+  + **azureml-core**
+  
+    新しい出力データセット機能を使用すると、BLOB、ADLS Gen 1、ADLS Gen 2、および FileShare などのクラウド ストレージに書き戻すことができます。 データを出力する場所、データを出力する方法 (マウントまたはアップロード経由)、後で再利用して共有するために出力データを登録するかどうか、パイプライン ステップ間で中間データをシームレスに渡すかどうかを構成できます。 これにより、再現と共有が可能となり、データの重複を防ぎ、結果としてコスト効率と生産性が向上します。 [使用方法の確認](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?view=azure-ml-py)
+    
++ **バグの修正と機能強化**
+  + **azureml-automl-core**
+    + AutoML のすべての pip 依存関係を固定するために、validated_{platform}_requirements.txt ファイルを追加しました。
+    + このリリースでは、4 Gb を超えるモデルがサポートされています。
+    + アップグレードされた AutoML の依存関係: `scikit-learn` (現在 0.22.1)、`pandas` (現在 0.25.1)、`numpy` (現在 1.18.2)。
+  + **azureml-automl-runtime**
+    + テキスト dnn の horovod を、常に fp16 圧縮を使用するように設定します。
+    + このリリースでは、4 Gb を超えるモデルがサポートされています。
+    + "ImportError: 名前 `RollingOriginValidator` をインポートできません" で AutoML が失敗する問題を修正しました。
+    + アップグレードされた AutoML の依存関係: `scikit-learn` (現在 0.22.1)、`pandas` (現在 0.25.1)、`numpy` (現在 1.18.2)。
+  + **azureml-contrib-automl-dnn-forecasting**
+    + アップグレードされた AutoML の依存関係: `scikit-learn` (現在 0.22.1)、`pandas` (現在 0.25.1)、`numpy` (現在 1.18.2)。
+  + **azureml-contrib-fairness**
+    + azureml-contrib-fairness の簡単な説明を指定します。
+  + **azureml-contrib-pipeline-steps**
+    + このパッケージが非推奨であり、ユーザーは代わりに azureml-pipeline-steps を使用する必要があることを示すメッセージを追加しました。
+  + **azureml-core**
+    + ワークスペースのリスト キー コマンドを追加しました。
+    + Workspace SDK と CLI で tags パラメーターを追加します。
+    + データセットを使用する子実行を送信すると、`TypeError: can't pickle _thread.RLock objects` によって失敗するバグを修正しました。
+    + Model list() の page_count の既定値とドキュメントを追加しています。
+    + CLI と SDK を adbworkspace パラメーターを受け取るように変更し、ワークスペース adb の lin および unlink ランナーを追加しました。
+    + 更新で呼び出されたデータセットのバージョンではなく、最新のデータセットのバージョンが更新される、Dataset.update のバグを修正しました。 
+    + 特定のより古いバージョンが実際に取得された場合にも、最新のデータセットのバージョンのタグが表示される、Dataset.get_by_name のバグを修正しました。
+  + **azureml-interpret**
+    + 元の explainer の shap_values_output パラメーターに基づいて、azureml-interpret の shap スコアリング explainer に確率出力を追加しました。
+  + **azureml-pipeline-core**
+    + `PipelineOutputAbstractDataset.register` のドキュメントを改善しました。
+  + **azureml-train-automl-client**
+    + アップグレードされた AutoML の依存関係: `scikit-learn` (現在 0.22.1)、`pandas` (現在 0.25.1)、`numpy` (現在 1.18.2)。
+  + **azureml-train-automl-runtime**
+    + アップグレードされた AutoML の依存関係: `scikit-learn` (現在 0.22.1)、`pandas` (現在 0.25.1)、`numpy` (現在 1.18.2)。
+  + **azureml-train-core**
+    + ユーザーは、HyperDriveConfig の作成時に、有効な hyperparameter_sampling 引数の指定が必要になりました。 また、HyperDriveRunConfig が非推奨になったことをユーザーに知らせるように、HyperDriveRunConfig のドキュメントが編集されました。
+    + PyTorch の既定のバージョンが 1.4 に戻されました。
+    + PyTorch 1.6 および Tensorflow 2.2 のイメージとキュレートされた環境が追加されました。
+
+### <a name="azure-machine-learning-studio-notebooks-experience-august-update"></a>Azure Machine Learning Studio のノートブック エクスペリエンス (8 月の更新)
++ **新機能**
+  + 新しくなった作業開始のランディング ページ 
+  
++ **プレビュー機能**
+    + ノートブックの機能を収集します。  [収集](https://github.com/microsoft/gather) 機能を使用して、ユーザーはノートブックを簡単にクリーンアップできるようになりました。収集ではノートブックの自動化された依存関係分析が使用され、重要なコードを保持しつつ、関連性のない部分を削除できます。
+
++ **バグの修正と機能強化**
+  + 速度と信頼性の向上
+  + ダーク モードのバグが修正されました
+  + 出力スクロールのバグが修正されました
+  + サンプル検索で、Azure Machine Learning サンプル ノートブック リポジトリ内のすべてのファイルのすべての内容が検索されるようになりました
+  + 複数行の R セルを実行できるようになりました
+  + [I trust contents of this file]\(このファイルの内容を信頼しています\) が、初回後は自動的にオンになるようになりました
+  + 新しい [コピーの作成] オプションにより、[競合の解決] ダイアログの機能が強化されました
+  
 ## <a name="2020-08-17"></a>2020-08-17
 
 ### <a name="azure-machine-learning-sdk-for-python-v1120"></a>Azure Machine Learning SDK for Python v1.12.0
@@ -1510,10 +1571,6 @@ Azure Machine Learning が Event Grid 用のリソース プロバイダーに�
   + `TabularDataset` を AutomatedML で使用できるようにしました。 `TabularDataset` の詳細については、 https://aka.ms/azureml/howto/createdatasets にアクセスしてください。
 
 + **バグの修正と機能強化**
-  + **automl-client-core-nativeclient**
-    + トレーニングおよび検証ラベル (y と y_valid) が NumPy 配列ではなく、Pandas データフレームの形式で提供されるときに発生するエラーを修正しました。
-    + `RawDataContext` の作成にデータと `AutoMLBaseSettings` オブジェクトのみを必要とするようにインターフェイスを更新しました。
-    +  AutoML ユーザーが予測時に十分な長さではないトレーニング シリーズをドロップできるようにしました。 - AutoML ユーザーが予測時にトレーニング セットに存在しないテスト セットからグレインをドロップできるようにしました。
   + **azure-cli-ml**
     + Microsoft が生成した証明書と顧客証明書の両方について、AKS クラスターにデプロイされたスコアリング エンドポイントの TLS/SSL 証明書を更新できるようになりました。
   + **azureml-automl-core**
@@ -1650,9 +1707,6 @@ Azure Machine Learning が Event Grid 用のリソース プロバイダーに�
     + [推定器を使用して前回の実行からトレーニングを再開する](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/tensorflow/training/train-tensorflow-resume-training/train-tensorflow-resume-training.ipynb)方法を確認してください
 
 + **バグの修正と機能強化**
-  + **automl-client-core-nativeclient**
-    + 変換後の列の型の損失に関するバグを修正します (リンクされているバグ)。
-    + y_query を、先頭に None を含んだオブジェクト型にできるようにします (#459519)。
   + **azure-cli-ml**
     + CLI コマンド "model deploy" と "service update" は、パラメーター、構成ファイル、またはこれらの 2 つの組み合わせを受け入れるようになりました。 パラメーターは、ファイル内の属性よりも優先されます。
     + 登録後にモデルの説明を更新できるようになりました

@@ -7,12 +7,12 @@ ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 4d5ddb229cd6a41235990437bc0f8db08e3381ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c2bbfcb4832adba767750256a25c378356cf4c23
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74974889"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299267"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>デバイスの X.509 証明書を展開する方法
 
@@ -51,7 +51,7 @@ IoT ソリューションのライフサイクルの間に、証明書を展開�
 
 新しいリーフ証明書がデバイスに展開されると、接続に新しい証明書が使用されるため、IoT ハブに接続できなくなります。 IoT ハブは、古い証明書を持つデバイスのみを認識します。 デバイスの接続の試行結果は、「未承認」の接続エラーになります。 このエラーを解決するには、デバイスが新しいリーフ証明書に対応するように、デバイスの登録エントリを更新する必要があります。 その後プロビジョニング サービスは、デバイスが再プロビジョニングされるときに、必要に応じて IoT Hub のデバイス レジストリ情報を更新できます。 
 
-この接続エラーに対する例外として、プロビジョニング サービスでデバイスの[登録グループ](concepts-service.md#enrollment-group)を作成している場合のシナリオが考えられます。 このケースで、デバイスの証明書の信頼チェーンにルートまたは中間証明書を展開していない場合、デバイスは新しい証明書が登録グループで定義された信頼チェーンの一部である場合に認識されます。 このシナリオがセキュリティ違反の応答として発生する場合、少なくとも違反と見なされるグループ内の具体的なデバイスの証明書をブラックリストに追加することをお勧めします。 詳しくは、「[登録グループ内の特定のデバイスをブラックリストに追加する](https://docs.microsoft.com/azure/iot-dps/how-to-revoke-device-access-portal#blacklist-specific-devices-in-an-enrollment-group)」をご覧ください。
+この接続エラーに対する例外として、プロビジョニング サービスでデバイスの[登録グループ](concepts-service.md#enrollment-group)を作成している場合のシナリオが考えられます。 このケースで、デバイスの証明書の信頼チェーンにルートまたは中間証明書を展開していない場合、デバイスは新しい証明書が登録グループで定義された信頼チェーンの一部である場合に認識されます。 このシナリオがセキュリティ違反に対する反応として発生する場合は、少なくとも、グループ内の違反と見なされる特定のデバイス証明書を禁止する必要があります。 詳しくは、「[登録グループ内の特定のデバイスを禁止する](https://docs.microsoft.com/azure/iot-dps/how-to-revoke-device-access-portal#disallow-specific-devices-in-an-enrollment-group)」をご覧ください。
 
 展開された証明書の登録エントリの更新は、 **[登録を管理します]** ページで行われます。 そのページにアクセスするには、次の手順に従います。
 
@@ -197,9 +197,9 @@ IoT ソリューションのライフサイクルの間に、証明書を展開�
 再プロビジョニングが完了すると、デバイスは新しい証明書を使用して IoT Hub に接続できるようになります。
 
 
-## <a name="blacklist-certificates"></a>証明書をブラックリストに追加する
+## <a name="disallow-certificates"></a>証明書を禁止する
 
-セキュリティ違反に応じて、デバイスの証明書をブラック リストに追加する必要がある場合があります。 デバイスの証明書をブラック リストに追加するには、ターゲット デバイス/証明書の登録エントリを無効にします。 詳しくは、「[登録解除の管理](how-to-revoke-device-access-portal.md)」のデバイスのブラックリストへの追加に関する記事をご覧ください。
+セキュリティ違反への対応として、デバイスの証明書を禁止することが必要になる場合があります。 デバイスの証明書を禁止するには、ターゲット デバイスまたは証明書の登録エントリを無効にします。 詳しくは、[登録解除の管理](how-to-revoke-device-access-portal.md)に関するページのデバイスの禁止に関する記事をご覧ください。
 
 証明書が無効になった登録エントリの一部として追加されると、その証明書が別の登録エントリの一部として有効になっている場合でも、その証明書を使用した IoT ハブへの登録の試行はすべて失敗します。
  
@@ -211,13 +211,3 @@ IoT ソリューションのライフサイクルの間に、証明書を展開�
 - デバイス プロビジョニング サービスの X.509 証明書について詳しくは、「[セキュリティ](concepts-security.md)」をご覧ください。 
 - Azure IoT Hub Device Provisioning Service で X.509 CA 証明書の所有証明を行う方法について詳しくは、[証明書を検証する方法](how-to-verify-certificates.md)に関する記事をご覧ください。
 - ポータルを使って登録グループを作成する方法について詳しくは、「[Azure Portal でデバイス登録を管理する方法](how-to-manage-enrollments.md)」をご覧ください。
-
-
-
-
-
-
-
-
-
-

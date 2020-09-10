@@ -9,12 +9,13 @@ ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 01706b3f6850d49240b9c84997cbbec528045200
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 3343f0e21cdf8873447bd448c200102940b632e8
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923876"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077094"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>PowerShell を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する
 
@@ -125,6 +126,8 @@ $dir.Owner
 $dir.Properties
 $dir.Properties.Metadata
 ```
+> [!NOTE]
+> コンテナーのルート ディレクトリを取得するには、`-Path` パラメーターを省略します。
 
 ## <a name="rename-or-move-a-directory"></a>ディレクトリの名前変更または移動
 
@@ -202,7 +205,8 @@ $properties.Group
 $properties.Owner
 ```
 
-コンテナーの内容を一覧表示するには、コマンドの `-Path` パラメーターを省略します。
+> [!NOTE]
+> コンテナーのルート ディレクトリの内容を一覧表示するには、`-Path` パラメーターを省略します。
 
 ## <a name="upload-a-file-to-a-directory"></a>ファイルをディレクトリにアップロードする
 
@@ -227,6 +231,9 @@ $file1.Properties
 $file1.Properties.Metadata
 
 ```
+
+> [!NOTE]
+> コンテナーのルート ディレクトリにファイルをアップロードするには、`-Path` パラメーターを省略します。
 
 ## <a name="show-file-properties"></a>ファイルのプロパティを表示する
 

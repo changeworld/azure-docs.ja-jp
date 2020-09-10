@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 763a13cf2ecbe845619101bc9e325cc51564260a
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: b8a0a8093ab5f4d6c5e528bce592d5c029de30a7
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553395"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400043"
 ---
 # <a name="scenario-isolating-vnets"></a>シナリオ:VNet の分離
 
@@ -29,7 +29,7 @@ Virtual WAN の仮想ハブ ルーティングを使用する場合、多くの�
 | VNet     | &#8594;|           |     X    |
 | ブランチ   | &#8594;|    x     |     x    |
 
-前の表の各セルは、特定のトラフィック フローについて、仮想 WAN 接続 (フローの "ソース" 側、行ヘッダー) が宛先プレフィックス (フローの "ターゲット" 側、斜体の列ヘッダー) を学習するかどうかを説明しています。
+前の表の各セルは、特定のトラフィック フローについて、仮想 WAN 接続 (フローの "ソース" 側、行ヘッダー) が宛先プレフィックス (フローの "ターゲット" 側、斜体の列ヘッダー) を学習するかどうかを説明しています。ここで、"X" は Virtual WAN 経由で接続されることを示します。
 
 この接続性のマトリックスは、2 つのルート テーブルに変換される 2 種類の行パターンを提供しています。 仮想 WAN には既に既定のルート テーブルがあるため、別のルート テーブルが必要になります。 この例では、ルート テーブルに **[RT_VNET]** という名前を指定します。
 

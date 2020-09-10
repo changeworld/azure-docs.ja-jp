@@ -5,12 +5,12 @@ ms.date: 12/16/2019
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-java
 ms.topic: how-to
-ms.openlocfilehash: 2dcea06fa0cb61813330298c833be7eb21a63ae7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3a20198e1fce7b72befb0963a4f1eb7a5e7e3f08
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325952"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259797"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>クイック スタート: Java を使用して QnA Maker でナレッジ ベースを作成する
 
@@ -39,7 +39,7 @@ ms.locfileid: "87325952"
 
 `CreateKB.java` の先頭に次の行を追加して、プロジェクトに必要な依存関係を追加します。
 
-[!code-java[Add the required dependencies](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=1-5 "Add the required dependencies")]
+:::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="dependencies":::
 
 ## <a name="add-the-required-constants"></a>必要な定数を追加する
 上記の必要な依存関係の後に、QnA Maker にアクセスするために必要な定数を `CreateKB` クラスに追加します。
@@ -48,18 +48,18 @@ ms.locfileid: "87325952"
 
 次の値を設定します。
 
-* `<your-qna-maker-subscription-key>` - この**キー**は 32 文字の文字列で、Azure portal の [クイックスタート] ページの QnA Maker リソースで入手できます。 これは、予測エンドポイント キーと同じではありません。
-* `<your-resource-name>` - この**リソース名**を使用して、`https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` 形式の作成エンドポイントの URL が構築されます。 これは、予測エンドポイントを照会するときに使用した URL と同じではありません。
+* `<your-qna-maker-subscription-key>` - この**キー**は 32 文字の文字列で、Azure portal の [クイックスタート] ページの QnA Maker リソースで入手できます。 このキーは、予測エンドポイント キーと同じではありません。
+* `<your-resource-name>` - この**リソース名**を使用して、`https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` 形式の作成エンドポイントの URL が構築されます。 このリソース名は、予測エンドポイントを照会するときに使用したものと同じではありません。
 
 クラスを閉じる最後の中かっこを追加する必要はありません。このクイック スタートの終わりにある最終的なコード スニペットに存在します。
 
-[!code-java[Add the required constants](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=26-34 "Add the required constants")]
+:::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="constants":::
 
 
 ## <a name="add-the-kb-model-definition-classes"></a>KB モデル定義クラスを追加する
 これらの定数に続けて、モデル定義オブジェクトを JSON にシリアル化するための次のクラスと関数を `CreateKB` クラス内に追加します。
 
-[!code-java[Add the KB model definition classes](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=36-80 "Add the KB model definition classes")]
+:::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="model":::
 
 ## <a name="add-supporting-functions"></a>補助的な関数を追加する
 
@@ -67,24 +67,24 @@ ms.locfileid: "87325952"
 
 1. JSON を読みやすい形式で出力するために、次の関数を追加します。
 
-    [!code-java[Add the PrettyPrint function](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=82-87 "Add the KB model definition classes")]
+    :::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="pretty":::
 
 2. HTTP 応答を管理するために、次のクラスを追加します。
 
-    [!code-java[Add class to manage the HTTP response](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=89-97 "Add class to manage the HTTP response")]
+    :::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="response":::
 
 3. QnA Maker API に対して POST 要求を行う次のメソッドを追加します。 `Ocp-Apim-Subscription-Key` は、認証に使用される QnA Maker サービス キーです。
 
-    [!code-java[Add POST method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=99-121 "Add POST method")]
+    :::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="post":::
 
 4. QnA Maker API に対して GET 要求を行う次のメソッドを追加します。
 
-    [!code-java[Add GET method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=123-137 "Add GET method")]
+    :::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="get":::
 
 ## <a name="add-a-method-to-create-the-kb"></a>KB を作成するためのメソッドを追加する
 Post メソッドを呼び出すことによって KB を作成する次のメソッドを追加します。
 
-[!code-java[Add CreateKB method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=139-144 "Add CreateKB method")]
+:::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="create_kb":::
 
 この API 呼び出しは、操作 ID を含んだ JSON 応答を返します。 この操作 ID を使用して、KB が正常に作成されたかどうかを判断します。
 
@@ -101,7 +101,7 @@ Post メソッドを呼び出すことによって KB を作成する次のメ�
 ## <a name="add-a-method-to-get-status"></a>状態を取得するためのメソッドを追加する
 作成状態を確認するための次のメソッドを追加します。
 
-[!code-java[Add GetStatus method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=146-150 "Add GetStatus method")]
+:::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="get_status":::
 
 成功または失敗が返されるまで、この呼び出しを繰り返します。
 
@@ -119,7 +119,7 @@ Post メソッドを呼び出すことによって KB を作成する次のメ�
 ## <a name="add-a-main-method"></a>main メソッドを追加する
 main メソッドで KB を作成した後、状態をポーリングします。 POST 応答のヘッダー フィールド **Location** に操作 ID が返された後、GET 要求でルートの一部として使用されます。 完了していない場合は、`while` ループによって状態が再試行されます。
 
-[!code-java[Add main method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=152-191 "Add main method")]
+:::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="main":::
 
 ## <a name="compile-and-run-the-program"></a>プログラムをコンパイルして実行する
 

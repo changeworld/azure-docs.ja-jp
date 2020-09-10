@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 766d0a763f7d69ec58851116e18510235f39b364
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7d11fa8605d9cd5f335b6be56097caf7a5222bbd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495065"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89006943"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Azure Monitor ログを使用した Site Recovery の監視
 
@@ -62,9 +62,9 @@ Site Recovery での Azure Monitor ログの使用は、**Azure から Azure へ
 1. [Log Analytics] ワークスペースに移動し、 **[詳細設定]** をクリックします。
 2. **[接続されたソース]** ページをクリックし、 **[Windows サーバー]** を選択します。
 3. Windows エージェント (64 ビット) をプロセスサーバーにダウンロードします。 
-4. [ワークスペース ID とキーを取得する](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)
+4. [ワークスペース ID とキーを取得する](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)
 5. [TLS 1.2 を使用するようにエージェントを構成する](../azure-monitor/platform/agent-windows.md#configure-agent-to-use-tls-12)
-6. 取得したワークスペース ID とキーを指定し、[エージェントのインストールを完了します](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)。
+6. 取得したワークスペース ID とキーを指定し、[エージェントのインストールを完了します](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard)。
 7. インストールが完了したら、Log Analytics ワークスペースに移動し、 **[詳細設定]** をクリックします。 **[データ]** ページに移動し、 **[Windows パフォーマンス カウンター]** をクリックします。 
 8. **+** をクリックすると、次の 2 つのカウンターが 300 秒のサンプル間隔で追加されます。
 

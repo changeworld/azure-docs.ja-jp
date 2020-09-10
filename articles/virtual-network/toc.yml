@@ -96,7 +96,7 @@
         - name: ネットワーク セキュリティ グループ
           items:
             - name: 概要
-              href: security-overview.md
+              href: network-security-groups-overview.md
             - name: しくみ
               href: network-security-group-how-it-works.md
         - name: アプリケーション セキュリティ グループ

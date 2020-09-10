@@ -4,12 +4,12 @@ description: この記事では、Azure 仮想マシンのバックアップと�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: a5784aeb615c6d84048835bd6169f0819fad2f56
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: a574c43c02c759529c5a0907682c06d4d40fb85a
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892339"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376181"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure 仮想マシンでのバックアップ エラーのトラブルシューティング
 
@@ -28,10 +28,10 @@ ms.locfileid: "88892339"
 * VM がインターネットに接続されていることを確認します。
   * 別のバックアップ サービスが実行されていないことを確認します。
 * `Services.msc` から、**Windows Azure ゲスト エージェント** サービスが**実行中**であることを確認します。 **Windows Azure ゲスト エージェント** サービスが見つからない場合は、[Recovery Services コンテナーの Azure VM をバックアップする](./backup-azure-arm-vms-prepare.md#install-the-vm-agent)方法の記事を参照してインストールします。
-* **[イベント ログ]** には、Windows Server バックアップなどの他のバックアップ製品が原因であり、Azure Backup が原因ではないバックアップの失敗が表示される場合があります。 次の手順を使用して、Azure Backup に関する問題かどうかを確認します。
-  * イベント ソースまたはメッセージのエントリの **[バックアップ]** でエラーが発生した場合は、Azure IaaS VM Backup のバックアップが成功したかどうかと、目的のスナップショットの種類で復元ポイントが作成されたかどうかを確認します。
+* **[イベント ログ]** には、他のバックアップ製品 (Windows Server バックアップなど) からのものであり、Azure Backup が原因ではないバックアップの失敗が表示される場合があります。 次の手順を使用して、Azure Backup に関する問題かどうかを確認します。
+  * イベント ソースまたはメッセージで **[バックアップ]** エントリのエラーが発生した場合は、Azure IaaS VM のバックアップによるバックアップが成功したかどうか、および復元ポイントが目的のスナップショットの種類で作成されたかどうかを確認します。
   * Azure Backup が機能している場合は、別のバックアップ ソリューションの問題である可能性があります。
-  * Azure Backup が正常に動作していても "Windows Server バックアップ" に失敗したイベント ビューアー エラー 517 の例を次に示します。<br>
+  * Azure Backup は正常に動作したが、"Windows Server バックアップ" が失敗したイベント ビューアー エラー 517 の例を次に示します。<br>
     ![Windows Server バックアップの失敗](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
   * Azure Backup が失敗した場合は、この記事の「一般的な VM バックアップのエラー」セクションの対応するエラー コードを確認してください。
 
@@ -103,18 +103,60 @@ Windows サービス **COM+ System** Application での問題のためにバッ�
 エラー コード:ExtensionFailedVssWriterInBadState <br/>
 エラー メッセージ:VSS ライターが正しくない状態にあるため、スナップショット操作に失敗しました。
 
-状態が正しくない VSS ライターを再起動します。 管理者特権でのコマンド プロンプトから、```vssadmin list writers``` を実行します。 出力には、すべての VSS ライターとそれらの状態が含まれています。 **[1] 安定**状態ではない VSS ライターすべてに対して、VSS ライターを再起動するには、管理者特権でのコマンド プロンプトから次のコマンドを実行します。
+このエラーは、VSS ライターが正しくない状態にあったために発生します。 Azure Backup 拡張機能は、VSS ライターと連携してディスクのスナップショットを作成します。 この問題を解決するには、次の手順に従ってください。
 
-* ```net stop serviceName```
-* ```net start serviceName```
+状態が正しくない VSS ライターを再起動します。
+- 管理者特権でのコマンド プロンプトから、```vssadmin list writers``` を実行します。
+- 出力には、すべての VSS ライターとそれらの状態が含まれています。 状態が **[[1] 安定]** ではない VSS ライターごとに、対応する VSS ライターのサービスを再起動します。 
+- サービスを再起動するには、管理者特権でのコマンド プロンプトから次のコマンドを実行します。
 
-また、管理者特権でのコマンド プロンプトから (管理者として) 次のコマンドを実行する方法も役立ちます。
+ ```net stop serviceName``` <br>
+ ```net start serviceName```
+
+> [!NOTE]
+> サービスによっては、再起動すると運用環境に影響を与えるものがあります。 承認プロセスが先に実行され、スケジュールされたダウンタイムにサービスが再起動されることを確認してください。
+ 
+   
+VSS ライターを再起動しても問題が解決されず、タイムアウトのために問題が引き続き発生する場合は、次のようにします。
+- 管理者特権でのコマンド プロンプトから (管理者として) 次のコマンドを実行して、BLOB スナップショットではスレッドが作成されないようにします。
 
 ```console
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThreads /t REG_SZ /d True /f
 ```
 
-このレジストリ キーを追加すると、BLOB スナップショット用にスレッドが作成されず、タイムアウトが発生しなくなります。
+### <a name="extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state"></a>ExtensionFailedVssServiceInBadState - VSS (ボリューム シャドウ コピー) サービスが正しくない状態にあるため、スナップショット操作に失敗しました
+
+エラー コード:ExtensionFailedVssServiceInBadState <br/>
+エラー メッセージ:VSS (ボリューム シャドウ コピー) サービスが正しくない状態にあるため、スナップショット操作に失敗しました。
+
+このエラーは、VSS サービスが正しくない状態にあったために発生します。 Azure Backup 拡張機能は、VSS サービスと連携してディスクのスナップショットを作成します。 この問題を解決するには、次の手順に従ってください。
+
+VSS (ボリューム シャドウ コピー) サービスを再起動します。
+- Services.msc に移動し、'ボリューム シャドウ コピー サービス' を再起動します。<br>
+(または)<br>
+- 管理者特権のコマンド プロンプトで、次のコマンドを実行します。
+
+ ```net stop VSS``` <br>
+ ```net start VSS```
+
+ 
+問題が引き続き発生する場合は、スケジュールされたダウンタイムで VM を再起動します。
+
+### <a name="usererrorskunotavailable---vm-creation-failed-as-vm-size-selected-is-not-available"></a>UserErrorSkuNotAvailable - 選択された VM サイズを使用できないため、VM の作成に失敗しました
+
+エラー コード:UserErrorSkuNotAvailable エラー メッセージ: 選択した VM サイズが使用できないため、VM の作成に失敗しました。 
+ 
+このエラーは、復元操作中に選択された VM サイズがサポートされていないサイズであるために発生します。 <br>
+
+この問題を解決するには、復元操作中に [[ディスクの復元]](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) オプションを使用します。 これらのディスクは、[Powershell コマンドレット](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks)を使用して、[使用可能なサポートされている VM サイズ](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-compute-support)の一覧から VM を作成するために使用します。
+
+### <a name="usererrormarketplacevmnotsupported---vm-creation-failed-due-to-market-place-purchase-request-being-not-present"></a>UserErrorMarketPlaceVMNotSupported - Marketplace の購入要求が存在しないため、VM の作成に失敗しました
+
+エラー コード:UserErrorMarketPlaceVMNotSupported エラー メッセージ: Marketplace の購入要求が存在しないため、VM の作成に失敗しました。 
+ 
+Azure Backup は、Azure Marketplace で入手できる VM のバックアップと復元をサポートしています。 このエラーは、Azure Marketplace で入手できなくなった (特定のプラン/発行元が設定された) VM を復元しようとしたときに発生します。詳細については、[ここ](https://docs.microsoft.com/legal/marketplace/participation-policy#offering-suspension-and-removal)を参照してください。
+- この問題を解決するには、復元操作中に [[ディスクの復元]](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) オプションを使用した後、[PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks) または [Azure CLI](https://docs.microsoft.com/azure/backup/tutorial-restore-disk) コマンドレットを使用して、その VM に対応する最新のマーケットプレース情報で VM を作成します。
+- 発行元にマーケットプレース情報がない場合は、データ ディスクを使用してデータを取得し、それを既存の VM にアタッチできます。
 
 ### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure - バックアップ拡張機能の構成の解析に失敗しました
 
@@ -156,7 +198,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
 
 * ゲスト エージェントがインストールされ、応答していることを確認します
 * Azure portal から、 **[仮想マシン]**  >  **[すべての設定]**  >  **[拡張機能]** に移動します。
-* バックアップ拡張機能 VmSnapshot または VmSnapshotLinux を選択し、 **[アンインストール]** をクリックします
+* バックアップ拡張機能 [VmSnapshot] または [VmSnapshotLinux] を選択し、 **[アンインストール]** を選択します。
 * バックアップ拡張機能を削除した後、バックアップ操作を再試行します
 * 以降のバックアップ操作によって、新しい拡張機能が適切な状態でインストールされます
 

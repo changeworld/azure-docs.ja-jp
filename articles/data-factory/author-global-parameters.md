@@ -7,13 +7,13 @@ ms.workload: data-services
 ms.topic: conceptual
 author: djpmsft
 ms.author: daperlov
-ms.date: 08/05/2020
-ms.openlocfilehash: 052f502ed27db9ade0fd2916f91d6922c52a5a98
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.date: 08/31/2020
+ms.openlocfilehash: 96fba5c27115dab65f26be80ce03bef35abcdb92
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854146"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230834"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Data Factory のグローバル パラメーター
 
@@ -43,7 +43,22 @@ ms.locfileid: "87854146"
 
 ## <a name="global-parameters-in-cicd"></a><a name="cicd"></a> CI/CD でのグローバル パラメーター
 
-グローバル パラメーターには、Azure Data Factory 内の他のエンティティと比べて独特な CI/CD プロセスがあります。 グローバル パラメーターを使用してファクトリを発行したり、Resource Manager テンプレートをエクスポートしたりすると、*your-factory-name_GlobalParameters.json* という名前のファイルが含まれる *globalParameters* という名前のフォルダーが作成されます。 このファイルは、発行されたファクトリ内の各グローバル パラメーターの型と値を含む JSON オブジェクトです。
+継続的インテグレーションとデプロイ ソリューションにグローバル パラメーターを統合するには、次の 2 つの方法があります。
+
+* ARM テンプレートにグローバル パラメーターを含める
+* PowerShell スクリプトを使用してグローバル パラメーターをデプロイする
+
+ほとんどのユース ケースでは、ARM テンプレートにグローバル パラメーターを含めることをお勧めします。 これは、[CI/CD ドキュメント](continuous-integration-deployment.md)に記載されているソリューションとネイティブに統合されます。グローバル パラメーターは、環境によって変わることが多いため、既定で ARM テンプレート パラメーターとして追加されます。 管理ハブから有効にして、ARM テンプレートにグローバル パラメーターを含めることができます。
+
+![ARM テンプレートに含める](media/author-global-parameters/include-arm-template.png)
+
+ARM テンプレートにグローバル パラメーターを追加すると、他の環境でのカスタマー マネージド キーや git 構成など、その他のファクトリレベル設定を上書きできるファクトリレベル設定が追加されます。 UAT や PROD などの管理者特権環境でこれらの設定を有効にしている場合は、以下で説明する手順で、PowerShell スクリプトを使用してグローバル パラメーターをデプロイすることをお勧めします。
+
+### <a name="deploying-using-powershell"></a>PowerShell を使用したデプロイ
+
+以下の手順では、PowerShell を使用してグローバル パラメーターをデプロイする方法を説明します。 これは、ターゲット ファクトリに、カスタマー マネージド キーなどのファクトリレベル設定がある場合に便利です。
+
+グローバル パラメーターを使用してファクトリを発行したり、Resource Manager テンプレートをエクスポートしたりすると、*your-factory-name_GlobalParameters.json* という名前のファイルが含まれる *globalParameters* という名前のフォルダーが作成されます。 このファイルは、発行されたファクトリ内の各グローバル パラメーターの型と値を含む JSON オブジェクトです。
 
 ![グローバル パラメーターの発行](media/author-global-parameters/global-parameters-adf-publish.png)
 

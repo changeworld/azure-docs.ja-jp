@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: memildin
-ms.openlocfilehash: 25b5569c123a4c7376aecd01b8e36f68b0a8e9b5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bd52cb9ba10cbbc7823cf631cea146cdccdad4e1
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519609"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278141"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure Security Center のセキュリティ アラート
 
@@ -23,7 +23,7 @@ Azure Security Center には、さまざまなリソースの種類に対する�
 
 セキュリティ アラートは、高度な検出によってトリガーされ、Azure Security Center の Standard レベルでのみ使用できます。 無料試用版が提供されています。 **[Pricing & settings]\(価格と設定\)** ページからアップグレードできます。 詳細については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」を参照してください。
 
-## <a name="responding-to-todays-threats"></a>今日の脅威への対応 <a name="respond-threats"> </a>
+## <a name="respond-to-todays-threats"></a>今日の脅威への対応 <a name="respond-threats"> </a>
 
 脅威を取り巻く状況は、この 20 年で様変わりしました。 従来、企業が警戒すべきことは一般に Web サイトの改ざんのみで、その攻撃も興味本位の個人によるものが大半でした。 その頃と比べ今日の攻撃は、はるかに進化しており、組織化されています。 明らかに金銭や戦略的な目的をもって攻撃が遂行されるケースも少なくありません。 攻撃に利用されるリソースも増えてきました。国家や犯罪組織によって資金提供されている場合があるためです。
 

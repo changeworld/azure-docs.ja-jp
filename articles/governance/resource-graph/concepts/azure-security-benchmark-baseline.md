@@ -6,13 +6,13 @@ ms.service: resource-graph
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: d2ef76a054642807f0d72a758ae084a19557caf8
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: a85fdf1e1e27b1ce5abb0c7890b717d48ba3bd3f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009003"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230451"
 ---
 # <a name="azure-resource-graph-security-baseline-for-azure-security-benchmark"></a>Azure セキュリティ ベンチマーク用の Azure Resource Graph のセキュリティ ベースライン
 
@@ -41,13 +41,13 @@ ms.locfileid: "88009003"
 
 *詳細については、「[セキュリティ コントロール: データ保護](../../../security/benchmarks/security-control-data-protection.md)」を参照してください。*
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6:ロールベースのアクセス制御を使用してリソースへのアクセスを制御する
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: ロールベースのアクセス制御 (RBAC) を使用して、データとリソースへのアクセスを制御します。 Azure Resource Graph を使用するには、クエリ対象のリソースに対する適切なアクセス権も必要です。 このアクセスは、読み取り専用にする必要があり、必要な担当者にのみ付与する必要があります。
+**ガイダンス**:Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、データとリソースへのアクセスを制御します。 Azure Resource Graph を使用するには、クエリ対象のリソースに対する適切なアクセス権も必要です。 このアクセスは、読み取り専用にする必要があり、必要な担当者にのみ付与する必要があります。
 
 * [Azure Resource Graph でのアクセス許可](../overview.md#permissions-in-azure-resource-graph)
 
-* [Azure で RBAC を構成する方法](../../../role-based-access-control/role-assignments-rest.md)
+* [Azure RBAC を構成する方法](../../../role-based-access-control/role-assignments-rest.md)
 
 
 **Azure Security Center の監視**: 現在は使用できません

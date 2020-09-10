@@ -3,12 +3,12 @@ title: SQL Server を Azure に DPM ワークロードとしてバックアッ�
 description: Azure Backup サービスを使用した SQL Server データベースのバックアップの概要
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: ef8ffcb2445a7be27f7fd3da2115f76fe961fd74
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: e7877d9104fe1263368083eaabd99eae3bdc657b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876310"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017313"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>SQL Server を Azure に DPM ワークロードとしてバックアップする
 
@@ -38,7 +38,7 @@ SQL Server データベースを Azure にバックアップし、Azure から�
   * DPM はフェールオーバーを検出し、データベース保護を続行します。
   * DPM は SQL Server のインスタンスに対して、マルチサイト クラスター構成をサポートします。
 * AlwaysOn 機能を使用するデータベースを DPM で保護するときは、次の制限があります。
-  * DPM は、SQL Server で設定されている可用性グループのバックアップ ポリシーに従って、次のようなバックアップを行います。
+  * DPM では、次のように、バックアップ設定に基づいて SQL Server に設定されている可用性グループに対するバックアップ ポリシーが使用されます。
     * セカンダリ優先 - オンラインになっているのがプライマリ レプリカのみの場合を除き、バックアップは常にセカンダリ レプリカ上で発生します。 セカンダリ レプリカが複数ある場合は、バックアップの優先度が最も高いノードがバックアップ用に選択されます。 プライマリ レプリカのみを使用できる場合、バックアップはプライマリ レプリカ上で発生します。
     * セカンダリのみ - プライマリ レプリカでのバックアップは行いません。 オンラインになっているのがプライマリ レプリカのみの場合、バックアップは発生しません。
     * プライマリ - バックアップは常にプライマリ レプリカ上で発生します。

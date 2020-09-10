@@ -1,7 +1,7 @@
 ---
-title: 実験を追跡してモデルをデプロイする
+title: 実験の追跡とモデルのデプロイ
 titleSuffix: Azure Data Science Virtual Machine
-description: Azure Machine Learning サービスや MLFlow を使用して DSVM から実験を追跡し、ログに記録する方法について説明します。
+description: Azure Machine Learning や MLFlow を使用して Data Science Virtual Machine から実験を追跡し、ログに記録する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -9,14 +9,14 @@ author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 687cd6570a9518be6f398a40fcd2d0e10a9634f2
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 205aed1811c3d9d21a10be7bc4f01c73eb7295b7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817258"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254802"
 ---
-# <a name="track-experiments-and-deploy-models-in-azureml"></a>AzureML で実験を追跡し、モデルをデプロイする
+# <a name="track-experiments-and-deploy-models-in-azure-machine-learning"></a>Azure Machine Learning で実験を追跡してモデルをデプロイする
 
 実験を追跡し、実行のメトリックを監視することでモデルの作成プロセスを強化します。 この記事では、Azure Machine Learning で [MLflow](https://mlflow.org/) API を使用してトレーニング スクリプトにログ記録コードを追加し、実験を追跡する方法について説明します。
 
@@ -123,7 +123,7 @@ with mlflow.start_run():
 
 ![MSE](./media/how-to-track-experiments/mlflow-experiments-2.png)
 
-実行をクリックすると、その他の詳細が表示されます。また、 __[Outputs+logs]\(出力とログ\)__ にも pickle から出力されたモデルが表示されます。
+実行をクリックすると、その他の詳細が表示されます。また、 __[出力とログ]__ にも pickle から出力されたモデルが表示されます。
 
 ## <a name="deploy-model-in-azure-machine-learning"></a>Azure Machine Learning にモデルをデプロイする
 
@@ -135,7 +135,7 @@ with mlflow.start_run():
 
 ![推論コンピューティングの作成](./media/how-to-track-experiments/mlflow-experiments-6.png)
 
-__[New Inference cluster]\(新しい推論クラスター\)__ ウィンドウで、次の項目の詳細を入力します。
+__[新しい推論クラスター]__ ウィンドウで、次の項目の詳細を入力します。
 
 * コンピューティング名
 * Kubernetes Service - [新規作成] を選択します
@@ -167,7 +167,7 @@ __[New Inference cluster]\(新しい推論クラスター\)__ ウィンドウで
 
 ![配置](./media/how-to-track-experiments/mlflow-experiments-4.png)
 
-手順 1 で作成した推論クラスター (Azure Kubernetes Service) にモデルをデプロイします。 サービスの名前と、手順 1 で作成した AKS コンピューティング クラスターの名前を指定して、以下の詳細を入力します。 また、 __[CPU 予約容量]__ を (0.1 から) 1 に、 __[メモリ予約容量]__ を (0.5 から) 1 に増やすことをお勧めします。この操作を行うには、 __[詳細設定]__ をクリックして詳細を入力します。 次に、 __[デプロイ]__ をクリックします。
+手順 1 で作成した推論クラスター (Azure Kubernetes Service) にモデルをデプロイします。 サービスの名前と、手順 1 で作成した AKS コンピューティング クラスターの名前を指定して、以下の詳細を入力します。 また、 __[CPU 予約容量]__ を (0.1 から) 1 に、 __[メモリ予約容量]__ を (0.5 から) 1 に増やすことをお勧めします。この増加操作を行うには、 __[詳細設定]__ をクリックして詳細を入力します。 次に、 __[デプロイ]__ をクリックします。
 
 ![デプロイの詳細](./media/how-to-track-experiments/mlflow-experiments-5.png)
 
@@ -200,7 +200,7 @@ print(output)
 
 ### <a name="step-4-clean-up"></a>手順 4:クリーンアップ
 
-継続的なコンピューティング料金が発生しないように、手順 1 で作成した推論コンピューティングを削除する必要があります。 Azure Machine Learning Studio の左側のメニューで、[コンピューティング]、[Inference Clusters]\(推論クラスター\)、[Select the compute]\(コンピューティングの選択\)、[削除] の順にクリックします。
+継続的なコンピューティング料金が発生しないように、手順 1 で作成した推論コンピューティングを削除します。 Azure Machine Learning Studio の左側のメニューで、[コンピューティング]、[推論クラスター]、[コンピューティングの選択]、[削除] の順にクリックします。
 
 ## <a name="next-steps"></a>次の手順
 

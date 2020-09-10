@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 07e33279452b8296688c358c9ffdab1bfb2e1321
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 51d8b740ba1275b23bc17a58284141dce0d48fe0
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543964"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300002"
 ---
 # <a name="security-frame-authorization--mitigations"></a>セキュリティ フレーム:承認 | 対応策 
 | 製品/サービス | [アーティクル] |
@@ -204,7 +205,7 @@ WHERE userID=:id < - session var
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [Event Hubs の認証とセキュリティ モデルの概要](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
-| **手順** | イベント ハブへの直接アクセスを許可するトークンはデバイスに付与しないでください。 発行元へのアクセスのみを提供する最小権限のトークンをデバイスに対して使用すると、そのデバイスを特定し、それが悪意のあるデバイスまたは侵害されたデバイスであることがわかったときに、ブラックリストに登録できます。|
+| **手順** | イベント ハブへの直接アクセスを許可するトークンはデバイスに付与しないでください。 発行元へのアクセスのみを提供する最小特権のトークンをデバイスに対して使用すると、そのデバイスを特定し、それが悪意のあるデバイスまたは侵害されたデバイスであることがわかったときに禁止できます。|
 
 ## <a name="connect-to-event-hub-using-sas-keys-that-have-the-minimum-permissions-required"></a><a id="sas-minimum-permissions"></a>必要最小限のアクセス許可が付与されている SAS キーを使用して Event Hub に接続する
 

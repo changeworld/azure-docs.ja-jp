@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 79d88d218d04d00def19bdd2aa98f76d2f128de1
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ebf91f68e45148d9a609ff671ffa4683bd74c82c
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007762"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226116"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-android-client"></a>Android クライアントを使用して Windows Virtual Desktop に接続する
 
@@ -36,6 +36,7 @@ ms.locfileid: "88007762"
 2. **[Feed URL]\(フィード URL\)** フィールドにフィード URL を入力します。 フィード URL には、URL またはメール アドレスのいずれかを指定できます。
    - URL を使用する場合は、管理者によって付与されたものを使用します (通常、<https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery>)。
    - 電子メールを使用するには、メール アドレスを入力します。 管理者がそのようにサーバーを構成した場合、このクライアントにより、メール アドレスに関連付けられている URL が検索されます。
+   - US Gov ポータルから接続するには、<https://rdweb.wvd.azure.us/api/arm/feeddiscovery> を使用します。
 3. **[次へ]** をタップします。
 4. メッセージが表示されたら、資格情報を入力します。
    - **[User name]\(ユーザー名\)** 。リソースへのアクセス許可を持つユーザー名を指定します。

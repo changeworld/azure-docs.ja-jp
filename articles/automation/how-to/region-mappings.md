@@ -10,18 +10,21 @@ ms.date: 06/12/2020
 ms.topic: conceptual
 manager: carmonm
 ms.custom: references_regions
-ms.openlocfilehash: 4e5cad25c80661f9e707f545929e6ffcb00a1e42
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 879c6d247a915def7b4b8d53c74bde7861e47f1d
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447858"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279807"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>リンクされた Log Analytics ワークスペースでサポートされるリージョン
 
 Azure Automation では、お使いの VM で、Update Management、Change Tracking とインベントリ、Start/Stop VMs during off-hours の各機能を有効にすることができます。 ただし、サブスクリプション内で Log Analytics ワークスペースと Automation アカウントをリンクすることは、特定のリージョンでのみサポートされています。 リージョン マッピングは Automation アカウントと Log Analytics ワークスペースのみに適用されます。 Log Analytics ワークスペースと Automation アカウントは同じサブスクリプションに含まれている必要がありますが、同じリージョンにデプロイされている別のリソース グループに存在することができます。 詳細については、[Log Analytics ワークスペースと Automation アカウント](../../azure-monitor/insights/solutions.md#log-analytics-workspace-and-automation-account)に関する記事を参照してください。
 
 ## <a name="supported-mappings"></a>サポートされるマッピング
+
+> [!NOTE]
+> 次の表に示すように、Log Analytics と Azure Automation の間に存在できるマッピングは 1 つに限られます。
 
 サポートするマッピングを次の表に示します。
 

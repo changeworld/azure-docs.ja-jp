@@ -3,12 +3,12 @@ title: PowerShell を使用して Azure ファイル共有のバックアップ�
 description: PowerShell を使用して、Azure Backup サービスによってバックアップされた Azure ファイル共有を管理および監視する方法について説明します。
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: bb400c25ca6b1deebaef6af6fe4b322951dfcdcc
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: e2f07e56fb9a8715b1b53165ab5f4b45b4e20ccb
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826754"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000228"
 ---
 # <a name="manage-azure-file-share-backups-with-powershell"></a>PowerShell を使用して Azure ファイル共有のバックアップを管理する
 
@@ -87,7 +87,7 @@ WorkloadName     Operation         Status         StartTime                 EndT
 afsfileshare     DisableBackup     Completed      1/26/2020 2:43:59 PM      1/26/2020 2:44:21 PM      98d9f8a1-54f2-4d85-8433-c32eafbd793f
 ```
 
-出力の Job ID 属性は、"保護停止" 操作のためにバックアップ サービスによって作成されたジョブの ID に対応しています。 ジョブの状態を追跡するには、[Get-AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) コマンドレットを使用します。
+出力の Job ID 属性は、"保護停止" 操作のためにバックアップ サービスによって作成されたジョブの Job ID に対応しています。 ジョブの状態を追跡するには、[Get-AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) コマンドレットを使用します。
 
 ## <a name="stop-protection-without-retaining-recovery-points"></a>復旧ポイントを保持しないで保護を停止する
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 105d867b4eafe37ca6555e3f6b54dc521a7264fe
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 51d7cb32ef2d1d7750a0bb53cfa3ccc111bd1302
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88226888"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89143735"
 ---
 # <a name="data-encryption-models"></a>データ暗号化モデル
 
@@ -159,9 +159,9 @@ Azure Key Vault のユーザー管理キーを使用するサーバー側暗号�
 | Translator Text                  | はい                | はい                | -                  |
 | Power BI                         | はい                | プレビュー、RSA 2048 ビット | -                  |
 | **Analytics**                    |                    |                    |                    |
-| Azure Stream Analytics           | はい                | 該当なし\*            | -                  |
-| Event Hubs                       | はい                | はい、RSA の長さすべて。 | -                  |
-| 関数                        | はい                | はい、RSA の長さすべて。 | -                  |
+| Azure Stream Analytics           | はい                | 該当なし\*              | -                  |
+| Event Hubs                       | はい                | はい                | -                  |
+| 関数                        | はい                | はい                | -                  |
 | Azure Analysis Services          | はい                | -                  | -                  |
 | Azure Data Catalog               | はい                | -                  | -                  |
 | Azure HDInsight                  | はい                | All                | -                  |
@@ -175,9 +175,9 @@ Azure Key Vault のユーザー管理キーを使用するサーバー側暗号�
 | Container Instances              | はい                | はい                | -                  |
 | Container Registry               | はい                | はい                | -                  |
 | **Compute**                      |                    |                    |                    |
-| Virtual Machines                 | はい                | はい、RSA 2048 ビット  | -                  |
-| 仮想マシン スケール セット        | はい                | はい、RSA 2048 ビット  | -                  |
-| SAP HANA                         | はい                | はい、RSA 2048 ビット  | -                  |
+| Virtual Machines                 | はい                | はい                | -                  |
+| 仮想マシン スケール セット        | はい                | はい                | -                  |
+| SAP HANA                         | はい                | はい                | -                  |
 | App Service                      | はい                | はい\*\*            | -                  |
 | オートメーション                       | はい                | はい\*\*            | -                  |
 | Azure Functions                  | はい                | はい\*\*            | -                  |
@@ -187,13 +187,13 @@ Azure Key Vault のユーザー管理キーを使用するサーバー側暗号�
 | Service Bus                      | はい                | はい                | -                  |
 | Site Recovery                    | はい                | はい                | -                  |
 | **データベース**                    |                    |                    |                    |
-| Virtual Machines 上の SQL Server   | はい                | はい、RSA 2048 ビット  | はい                |
-| Azure SQL データベース               | はい                | はい、RSA 2048 ビット  | はい                |
+| Virtual Machines 上の SQL Server   | はい                | はい                | はい                |
+| Azure SQL データベース               | はい                | はい、RSA 3072 ビット  | はい                |
 | Azure SQL Database for MariaDB   | はい                | -                  | -                  |
 | Azure SQL Database for MySQL     | はい                | はい                | -                  |
 | Azure SQL Database for PostgreSQL | はい               | はい                | -                  |
-| Azure Synapse Analytics          | はい                | はい、RSA 2048 ビット  | -                  |
-| SQL Server Stretch Database      | はい                | はい、RSA 2048 ビット  | はい                |
+| Azure Synapse Analytics          | はい                | はい、RSA 3072 ビット  | -                  |
+| SQL Server Stretch Database      | はい                | はい、RSA 3072 ビット  | はい                |
 | Table Storage                    | はい                | はい                | はい                |
 | Azure Cosmos DB                  | はい                | はい                | -                  |
 | Azure Databricks                 | はい                | はい                | -                  |
@@ -203,7 +203,7 @@ Azure Key Vault のユーザー管理キーを使用するサーバー側暗号�
 | Azure Repos                      | はい                | -                  | はい                |
 | **ID**                     |                    |                    |                    |
 | Azure Active Directory           | はい                | -                  | -                  |
-| Azure Active Directory Domain Services | はい          | はい、RSA 2048 ビット  | -                  |
+| Azure Active Directory Domain Services | はい          | はい                | -                  |
 | **統合**                  |                    |                    |                    |
 | Service Bus                      | はい                | はい                | はい                |
 | Event Grid                       | はい                | -                  | -                  |
@@ -220,20 +220,20 @@ Azure Key Vault のユーザー管理キーを使用するサーバー側暗号�
 | Azure Security Center for IoT    | はい                | はい                | -                  |
 | Azure Sentinel                   | はい                | はい                | -                  |
 | **Storage**                      |                    |                    |                    |
-| Blob Storage                     | はい                | はい、RSA 2048 ビット  | はい                |
-| Premium Blob Storage             | はい                | はい、RSA 2048 ビット  | はい                |
+| Blob Storage                     | はい                | はい                | はい                |
+| Premium Blob Storage             | はい                | はい                | はい                |
 | Disk Storage                     | はい                | はい                | -                  |
 | Ultra Disk Storage               | はい                | はい                | -                  |
 | マネージド Disk Storage             | はい                | はい                | -                  |
-| File Storage                     | はい                | はい、RSA 2048 ビット  | -                  |
-| File Premium Storage             | はい                | はい、RSA 2048 ビット  | -                  |
-| File Sync                        | はい                | はい、RSA 2048 ビット  | -                  |
+| File Storage                     | はい                | はい                | -                  |
+| File Premium Storage             | はい                | はい                | -                  |
+| File Sync                        | はい                | はい                | -                  |
 | Queue Storage                    | はい                | はい                | はい                |
 | Avere vFXT                       | はい                | -                  | -                  |
 | Azure Cache for Redis            | はい                | 該当なし\*              | -                  |
 | Azure NetApp Files               | はい                | はい                | -                  |
-| Archive Storage                  | はい                | はい、RSA 2048 ビット  | -                  |
-| StorSimple                       | はい                | はい、RSA 2048 ビット  | はい                |
+| Archive Storage                  | はい                | はい                | -                  |
+| StorSimple                       | はい                | はい                | はい                |
 | Azure Backup                     | はい                | はい                | はい                |
 | Data Box                         | はい                | -                  | はい                |
 | Data Box Edge                    | はい                | はい                | -                  |

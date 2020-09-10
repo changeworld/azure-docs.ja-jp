@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: 115a01fe0b1edc343ed9efd324c4be3b53251566
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a1184269dec54ad6d70ae763b682e08a67282d9e
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519509"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276543"
 ---
 # <a name="azure-security-center-data-security"></a>Azure Security Center のデータ セキュリティ
 Azure Security Center では、脅威の防止、検出、脅威への対応を支援するために、構成情報、メタデータ、イベント ログなど、セキュリティに関連するデータを収集および処理しています。 Microsoft ではコーディングからサービスの運用まで、厳密なコンプライアンスとセキュリティのガイドラインに準拠しています。
@@ -65,7 +65,7 @@ VM ディスクのスナップショットは、VM ディスクと同じスト�
 
 **Azure Security Center ストレージ**:パートナーの警告を含めたセキュリティの警告に関する情報は、関連する Azure リソースの場所に応じたリージョンに格納されます。一方、セキュリティの正常性状態と推奨事項に関する情報については、お客様の場所に応じて米国またはヨーロッパのいずれかに一元的に格納されます。 マシン アーティファクトは、VM と同じリージョンに一元的に格納されます。
 
-## <a name="managing-data-collection-from-virtual-machines"></a>仮想マシンからのデータ収集の管理
+## <a name="manage-data-collection-from-virtual-machines"></a>仮想マシンからのデータ収集の管理
 
 Azure で Security Center を有効にすると、各 Azure サブスクリプションのデータ収集が有効になります。 Azure Security Center の [セキュリティ ポリシー] セクションで、サブスクリプションのデータ収集を有効にすることもできます。 データ収集が有効になっている場合、Azure Security Center は、サポートされている既存の全 Azure 仮想マシンと新規に作成される仮想マシンに、Log Analytics エージェントをプロビジョニングします。
 Log Analytics エージェントは、さまざまなセキュリティ関連の構成をスキャンして、[Windows イベント トレーシング](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) トレースにイベント化します。 さらに、オペレーティング システムは、マシンの実行中にイベント ログ イベントを発生させます。 このようなデータの例として、オペレーティング システムの種類とバージョン、オペレーティング システムのログ (Windows イベント ログ)、実行中のプロセス、コンピューター名、IP アドレス、ログイン ユーザー、テナント ID などがあります。 Log Analytics エージェントは、イベント ログ エントリと ETW トレースを読み取り、分析のためにそれらをワークスペースにコピーします。 また、Log Analytics エージェントによって、プロセス作成イベントとコマンド ラインの監査が有効化されます。

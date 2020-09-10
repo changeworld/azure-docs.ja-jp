@@ -3,12 +3,12 @@ title: Azure Backup Server を使用して VMware VM をバックアップする
 description: この記事では、Azure Backup Server を使用し、VMware vCenter/ESXi サーバー上で実行している VMware VM をバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: f498a7b7d2faf9ff857b504043233c46c843a961
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: e18b5c51446446103a91ef7d6a00277c2b41db77
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826941"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017568"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Azure Backup Server を使用して VMware VM をバックアップする
 
@@ -333,7 +333,7 @@ vCenter Server によって管理されていない ESXi ホストが複数あ�
 
    - 推奨されるディスク割り当ては、指定した保有期間の範囲、ワークロードの種類、および保護データのサイズに基づきます。 必要な変更を行い、 **[次へ]** を選択します。
    - **データ サイズ:** 保護グループ内のデータのサイズです。
-   - **ディスク領域:** 保護グループの推奨ディスク領域の量です。 この設定を変更する場合は、どのデータ ソースも拡大するので、予想よりも少し大きめに合計領域を割り当てる必要があります。
+   - **ディスク領域:** 保護グループの推奨ディスク領域の量です。 この設定を変更する場合は、各データ ソースがどれだけ拡大するか推定した量よりも、少し大きめに合計領域を割り当てる必要があります。
    - **データの併置:** 併置を有効にすると、保護対象の複数のデータ ソースを 1 つのレプリカと復旧ポイントのボリュームにマップできます。 すべてのワークロードで併置がサポートされているわけではありません。
    - **自動的に拡張:** この設定を有効にした場合、保護グループ内のデータが最初に割り当てたサイズよりも大きくなると、Azure Backup Server はディスク サイズを 25% 増やそうとします。
    - **ストレージ プールの詳細:** 合計や残りのディスク サイズなど、ストレージ プールの状態が表示されます。

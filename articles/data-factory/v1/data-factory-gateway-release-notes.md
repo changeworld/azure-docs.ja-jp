@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 405beb5cb8c2e74951aa54ba371be04d290ad3a2
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: d8324b0b861829b02b589f8145121559114b7435
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194480"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289581"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Data Management Gateway のリリース ノート
 > [!NOTE]
@@ -39,14 +39,14 @@ Data Management Gateway とその使用方法の詳細については、次の�
 ## <a name="earlier-versions"></a>以前のバージョン
 ## <a name="21063477"></a>2.10.6347.7
 ### <a name="enhancements-"></a>強化された機能
-- ファイアウォールからすべての Azure IP アドレスをホワイトリストに登録するのではなく、DNS エントリを追加して Service Bus をホワイトリストに追加できます (必要な場合)。 それぞれの DNS エントリは、Azure Portal ([Data Factory] - > [作成およびデプロイ] - > [ゲートウェイ] - > [serviceUrls]) で見つかります (JSON)。
+- ファイアウォールからのすべての Azure IP アドレスを許可するのではなく、DNS エントリを追加して Service Bus を許可するようにできます (必要に応じて)。 それぞれの DNS エントリは、Azure Portal ([Data Factory] - > [作成およびデプロイ] - > [ゲートウェイ] - > [serviceUrls]) で見つかります (JSON)。
 - HDFS コネクタでは、TLS 検証のスキップを許可することで、自己署名公開証明書がサポートされるようになりました。
 - 固定:(クロック スキューによる) 更新中のゲートウェイ オフラインの問題
 
 
 ## <a name="2963132"></a>2.9.6313.2
 ### <a name="enhancements-"></a>強化された機能
--   ファイアウォールからすべての Azure IP アドレスをホワイトリストに登録するのではなく、DNS エントリを追加して Service Bus をホワイトリストに追加できます (必要な場合)。 詳細については、こちらをご覧ください。
+-   ファイアウォールからのすべての Azure IP アドレスを許可するのではなく、DNS エントリを追加して Service Bus を許可するようにできます (必要に応じて)。 詳細については、こちらをご覧ください。
 -   1 つのブロック BLOB との間で最大 4.75 TB のデータをコピーできるようになりました。これは、ブロック BLOB でサポートされる最大サイズです (以前は 195 GB に制限されていました)。
 -   固定:コピー アクティビティで複数の小さなファイルを解凍するときのメモリ不足の問題。
 -   固定:べき等性を利用して Document DB から SQL Server にコピーするときの範囲外のインデックスの問題。

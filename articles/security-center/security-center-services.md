@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 489f0138caa54105cced9c9ef4e8846657d84717
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: c4f3ccce03f91b0567980d55b59bfb15d6985bb7
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607132"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299747"
 ---
 # <a name="feature-coverage-for-machines"></a>マシンを対象とする機能
 
@@ -34,8 +34,8 @@ ms.locfileid: "88607132"
 |[仮想マシン行動分析 (およびセキュリティ アラート)](threat-protection.md)|✔|✔|✔|Standard|
 |[ファイルレスのセキュリティ アラート](alerts-reference.md#alerts-windows)|✔|✔|✔|Standard|
 |[ネットワーク ベースのセキュリティ アラート](threat-protection.md#network-layer)|✔|✔|-|Standard|
-|[Just-In-Time VM アクセス](security-center-just-in-time.md)|✔|-|-|Standard|
-|[ネイティブ脆弱性評価](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
+|[Just In Time VM アクセス](security-center-just-in-time.md)|✔|-|-|Standard|
+|[ネイティブ脆弱性評価](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Standard|
 |[ファイルの整合性の監視](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
 |[アダプティブ アプリケーション制御](security-center-adaptive-application.md)|✔|-|✔|Standard|
 |[ネットワーク マップ](security-center-network-recommendations.md#network-map)|✔|✔|-|Standard|
@@ -58,8 +58,8 @@ ms.locfileid: "88607132"
 |[仮想マシン行動分析 (およびセキュリティ アラート)](security-center-alerts-iaas.md)|✔</br>(サポートされているバージョン)|✔</br>(サポートされているバージョン)|✔|Standard|
 |[ファイルレスのセキュリティ アラート](alerts-reference.md#alerts-windows)|-|-|-|Standard|
 |[ネットワーク ベースのセキュリティ アラート](threat-protection.md#network-layer)|✔|✔|-|Standard|
-|[Just-In-Time VM アクセス](security-center-just-in-time.md)|✔|-|-|Standard|
-|[ネイティブ脆弱性評価](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
+|[Just In Time VM アクセス](security-center-just-in-time.md)|✔|-|-|Standard|
+|[ネイティブ脆弱性評価](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Standard|
 |[ファイルの整合性の監視](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
 |[アダプティブ アプリケーション制御](security-center-adaptive-application.md)|✔|-|✔|Standard|
 |[ネットワーク マップ](security-center-network-recommendations.md#network-map)|✔|✔|-|Standard|

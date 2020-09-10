@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: 580525b2e8e408949ce1d8f2d1b8241c431fc755
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 314f6a45bf688125e79f0b8ce0099a8326b339dc
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209113"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958152"
 ---
 # <a name="use-private-python-packages-with-azure-machine-learning"></a>Azure Machine Learning で非公開の Python パッケージを使用する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ ms.locfileid: "86209113"
  * [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
  * [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)
 
-### <a name="use-small-number-of-packages-for-development-and-testing"></a>開発とテストに少数のパッケージを使用する
+## <a name="use-small-number-of-packages-for-development-and-testing"></a>開発とテストに少数のパッケージを使用する
 
 1 つのワークスペースの非公開パッケージの数が少ない場合は、静的な [`Environment.add_private_pip_wheel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#add-private-pip-wheel-workspace--file-path--exist-ok-false-) メソッドを使用します。 この方法により、非公開パッケージをワークスペースにすばやく追加することができます。これは、開発とテスト目的に適しています。
 
@@ -50,7 +50,7 @@ myenv.python.conda_dependencies=conda_dep
 
 内部的には、Azure Machine Learning service によって URL がセキュリティで保護された SAS URL で置き換えられます。これにより、wheel ファイルは非公開で安全なまま維持されます。
 
-### <a name="consume-a-repository-of-packages-from-azure-devops-feed"></a>Azure DevOps フィードからパッケージのリポジトリを使用する
+## <a name="use-a-repository-of-packages-from-azure-devops-feed"></a>Azure DevOps フィードからパッケージのリポジトリを使用する
 
 機械学習アプリケーションの Python パッケージを積極的に開発している場合は、それらを Azure DevOps リポジトリで成果物としてホストし、フィードとして公開することができます。 この方法により、パッケージをビルドするための DevOps ワークフローを Azure Machine Learning ワークスペースに統合することができます。 Azure DevOps を使用して Python フィードを設定する方法については、[Azure Artifacts で Python パッケージの使用を開始する](https://docs.microsoft.com/azure/devops/artifacts/quickstarts/python-packages?view=azure-devops)方法に関する記事をお読みください。
 
@@ -87,18 +87,22 @@ myenv.python.conda_dependencies=conda_dep
 
 これで、環境をトレーニングの実行や、Web サービス エンドポイントのデプロイで使用する準備ができました。 環境をビルドするとき、Azure Machine Learning service では PAT を使用して、一致するベース URL を持つフィードに対して認証を行います。
 
-### <a name="consume-a-repository-of-packages-from-private-storage"></a>プライベート ストレージからパッケージのリポジトリを使用する
+## <a name="use-a-repository-of-packages-from-private-storage"></a>プライベート ストレージからパッケージのリポジトリを使用する
 
-組織のファイアウォール内の Azure ストレージ アカウントからパッケージを使用できます。 このようなストレージ アカウントでは、企業で使用するためにキュレーションされたパッケージのセットや、一般に公開されているパッケージの内部ミラーを保持することができます。
+組織のファイアウォール内の Azure ストレージ アカウントからパッケージを使用できます。 このストレージ アカウントでは、キュレーションされたパッケージのセットや、一般に公開されているパッケージの内部ミラーを保持することができます。
 
 このようなプライベート ストレージを設定するには、以下の手順を実行します。
 
- 1. [ワークスペースを仮想ネットワーク (VNET)](how-to-enable-virtual-network.md) 内に配置します。
- 2. ストレージ アカウントを作成し、[パブリック アクセスを禁止](https://docs.microsoft.com/azure/storage/common/storage-network-security)します。
- 2. 使用する Python パッケージをストレージ アカウント内のコンテナーに配置します 
- 3. [ワークスペース VNET からストレージ アカウントへのアクセスを許可します](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-a-virtual-network) 
+1. [ワークスペースを仮想ネットワーク (VNet) 内に配置します](how-to-enable-virtual-network.md)。
+1. ストレージ アカウントを作成し、[パブリック アクセスを禁止](https://docs.microsoft.com/azure/storage/common/storage-network-security)します。
+1. 使用する Python パッケージをストレージ アカウント内のコンテナーに配置します 
+1. [ワークスペース VNet からストレージ アカウントへのアクセスを許可します](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-a-virtual-network)
+1. [ワークスペースの Azure Container Registry (ACR) を VNet の背後に配置します](how-to-enable-virtual-network.md#azure-container-registry)。
 
-これで、完全な URL を使用して、Azure Blob Storage で Azure Machine Learning 環境定義内のパッケージを参照できます。
+    > [!IMPORTANT]
+    > プライベート パッケージ リポジトリを使用してモデルをトレーニングまたはデプロイできるようにするには、この手順を完了する必要があります。
+
+これらの構成を完了すると、完全な URL を使用して、Azure Blob Storage で Azure Machine Learning 環境定義内のパッケージを参照できます。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -10,13 +10,13 @@ metadata:
   ms.collection: M365-security-compliance
   author: mlottner
   ms.author: mlottner
-  ms.date: 07/15/2020
-  ms.openlocfilehash: 6047b647641033af415be86d8534bda9c857b608
-  ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+  ms.date: 09/07/2020
+  ms.openlocfilehash: ee088a43fdd328a01b8682f015e498c728cba8d9
+  ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/11/2020
-  ms.locfileid: "88067309"
+  ms.lasthandoff: 09/08/2020
+  ms.locfileid: "89514341"
 landingContent:
 - title: Azure Security Center for IoT について
   linkLists:
@@ -24,7 +24,7 @@ landingContent:
     links:
     - text: Azure Security Center for IoT とは
       url: overview.md
-    - text: Azure RTOS のセキュリティ ソリューション
+    - text: Azure RTOS 用のセキュリティ モジュール
       url: iot-security-azure-rtos.md
     - text: ソリューションの計画
       url: service-prerequisites.md
@@ -44,6 +44,8 @@ landingContent:
       url: getting-started.md
     - text: IoT Hub
       url: iot-hub-integration.md
+    - text: Azure IoT セキュリティ モジュール RTOS の概要
+      url: concept-rtos-security-module.md
     - text: セキュリティ エージェント
       url: security-agents.md
 - title: ソリューションを構成する
@@ -52,8 +54,10 @@ landingContent:
     links:
     - text: IoT Hub 内で Azure Security Center for IoT を有効にする
       url: quickstart-onboard-iot-hub.md
-    - text: ソリューションを構成する
+    - text: IoT セキュリティ ソリューションを構成する
       url: quickstart-configure-your-solution.md
+    - text: Azure RTOS 用のセキュリティ モジュールを構成する
+      url: quickstart-azure-rtos-security-module.md
     - text: Azure Security Center for IoT モジュール ツインを作成する
       url: quickstart-create-security-twin.md
     - text: カスタムのセキュリティのアラートを作成する
@@ -64,6 +68,8 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: Azure RTOS 用のセキュリティ モジュールをカスタマイズする
+      url: how-to-azure-rtos-security-module.md
     - text: エージェントを選択する
       url: how-to-deploy-agent.md
     - text: Windows 用の Azure Security Center for IoT の C# ベースのセキュリティ エージェントをデプロイする

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 96ebfecf01ff147a874674861c7cb64cb3725d52
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 82e984b629c8d838ba179b25a78262eccf078a04
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164922"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377864"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシからのオンプレミス アプリケーションへのリモート アクセス
 
@@ -57,6 +57,11 @@ Azure AD アプリケーション プロキシの特徴:
 4. シングル サインオンを構成した場合、コネクタはユーザーの代わりに必要な追加の認証を実行します。
 5. コネクタはオンプレミスのアプリケーションに要求を送信します。
 6. 応答はコネクタとアプリケーション プロキシ サービス経由でユーザーに送信されます。
+
+> [!NOTE]
+> ほとんどの Azure AD ハイブリッド エージェントと同様に、アプリケーション プロキシ コネクタでは、ファイアウォールを介した受信接続を開く必要はありません。 手順 3 のユーザー トラフィックは (Azure AD の) アプリケーション プロキシ サービスで終了します。 残りの通信はアプリケーション プロキシ コネクタ (オンプレミス) が行います。
+>
+
 
 | コンポーネント | 説明 |
 | --------- | ----------- |

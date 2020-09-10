@@ -3,14 +3,18 @@ title: コンテナーに証明書をインポートする
 description: Service Fabric コンテナー サービスに証明書ファイルをインポートする方法について説明します。
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: da4babd8f9d1a25a8514d0c6f1526b43a9723854
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 426aa2ebbfb87fe2c80e0d1aff3eeecbe0e2472d
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75614113"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050745"
 ---
 # <a name="import-a-certificate-file-into-a-container-running-on-service-fabric"></a>Service Fabric で実行されているコンテナーに証明書ファイルをインポートする
+
+> [!NOTE]
+> Azure 上で実行されている Service Fabric クラスターの場合は、[Service Fabric アプリケーション マネージド ID](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity) を使用して、コンテナー内からアプリケーション証明書をプロビジョニングすることをお勧めします。 マネージド ID により、シークレットと証明書がサービス レベルで分離され、アプリケーション証明書のプロビジョニングをインフラストラクチャのワークフローではなく、アプリケーションのワークフローの一部にすることができます。 CertificateRef メカニズムは、将来のリリースでは非推奨となる予定です。
 
 証明書を指定して、コンテナー サービスをセキュリティで保護することができます。 Service Fabric には、コンテナー内のサービスから、Windows または Linux クラスター (バージョン 5.7 以降) のノードにインストールされている証明書にアクセスできるしくみがあります。 この証明書は、クラスターのすべてのノードの LocalMachine 下の証明書ストアにインストールする必要があります。 証明書に対応する秘密キーが利用可能、アクセス可能、および (Windows 上で) エクスポート可能である必要があります。 次のスニペットのように、証明書情報は `ContainerHostPolicies` タグのアプリケーション マニフェストで提供されます。
 
@@ -29,6 +33,8 @@ Linux クラスターの場合、証明書 (PEM) は X509StoreName で指定さ�
 
 * Certificates_ServicePackageName_CodePackageName_CertName_PEM
 * Certificates_ServicePackageName_CodePackageName_CertName_PrivateKey
+
+証明書と暗号化されていない秘密キーは `PEM` ファイルと `PrivateKey` ファイルの両方に含まれていることに注意してください。
 
 または、必要な形式の証明書が既にあり、コンテナー内の証明書にアクセスする場合は、アプリ パッケージ内にデータ パッケージを作成し、アプリケーション マニフェストで次のように指定します。
 

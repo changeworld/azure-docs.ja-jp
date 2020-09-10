@@ -5,15 +5,15 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 8/26/2019
+ms.date: 09/01/2020
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 568739ebdce632ae955da5e1cec12635c86af57c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 783e48139cf057bb17278d98e3683cb2b4cbad89
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522858"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279552"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Azure Data Factory のトラブルシューティング
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -1053,6 +1053,11 @@ ms.locfileid: "86522858"
 1. 参照先: **[File]\(ファイル\)**  >  **[Save]\(保存\)**  >  **[All Sessions]\(すべてのセッション\)** 。
 
 詳細については、「[Fiddler の基本](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureFiddler)」を参照してください。
+
+## <a name="general"></a>全般
+
+### <a name="activity-stuck-issue"></a>アクティビティの停止に関する問題
+アクティビティが通常の実行時間を大幅に超えて実行され、ほとんど進行していない場合、そのアクティビティは停止している可能性があります。 取り消しを試みた後、再試行して問題が解決するかどうかを確認できます。 コピー アクティビティの場合は、パフォーマンスの監視とトラブルシューティングの詳細について「[コピーアクティビティのパフォーマンスのトラブルシューティング](copy-activity-performance-troubleshooting.md)」を参照してください。データ フローの場合は、[マッピング データ フローのパフォーマンスとチューニング ガイド](concepts-data-flow-performance.md)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

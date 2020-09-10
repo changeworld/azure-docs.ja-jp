@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: dd694fd013069c33e4f3af2c81447e014d41b691
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1af99f6317ac5888478c7df08fcc31478ef1ccef
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519244"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180849"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Azure Security Center でのセキュリティ ソリューションの統合
 このドキュメントは、既に Azure Security Center に接続されているセキュリティ ソリューションを管理したり、新しいセキュリティ ソリューションを追加したりする際に役立ちます。
@@ -35,10 +35,7 @@ Security Center を使用すると、Azure で統合されたセキュリティ 
 > [!NOTE]
 > ほとんどのセキュリティ ベンダーがアプライアンス上での外部エージェントの実行を禁止しているため、Security Center はパートナー仮想アプライアンスに Log Analytics エージェントをインストールしません。
 
-Standard レベルのお客様が利用できる組み込みのスキャナーなど、Qualys の脆弱性スキャン ツールの統合の詳細については、以下を参照してください。 
-
-- [仮想マシン向けの統合された脆弱性スキャナー](built-in-vulnerability-assessment.md)。
-- [パートナーの脆弱性スキャン ソリューションをデプロイする](partner-vulnerability-assessment.md)。
+Standard レベルのお客様が利用できる組み込みのスキャナーなど、Qualys の脆弱性スキャン ツールの統合の詳細については、[Azure Virtual Machines の脆弱性評価](deploy-vulnerability-assessment-vm.md)に関するページを参照してください。
 
 Security Center では、次の脆弱性分析も提供しています：
 

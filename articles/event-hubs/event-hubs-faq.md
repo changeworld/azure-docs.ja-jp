@@ -3,12 +3,12 @@ title: よく寄せられる質問 - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Event Hubs に関するよく寄せられる質問 (FAQ) とその回答の一覧を示します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: bec50da97bc826eb1bd26452e8f69f5c11f2d65d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9995588e618679ae38a11aff26485d1ba0b60688
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537182"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89288969"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs のよく寄せられる質問
 
@@ -70,8 +70,8 @@ Azure Service Bus でメッセージを送受信する場合、次のプロト�
 | HTTP、HTTPS | 80、443 |  |
 | Kafka | 9093 | [Kafka アプリケーションからの Event Hubs の使用](event-hubs-for-kafka-ecosystem-overview.md)に関するページをご覧ください
 
-### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>どのような IP アドレスをホワイトリストに登録する必要がありますか。
-接続のためにホワイトリストに登録する必要がある適切な IP アドレスを検索するには、次の手順に従います。
+### <a name="what-ip-addresses-do-i-need-to-allow"></a>どのような IP アドレスを許可する必要がありますか。
+接続の許可リストに追加する適切な IP アドレスを見つけるには、次の手順に従います。
 
 1. コマンド プロンプトで、次のコマンドを実行します。 
 

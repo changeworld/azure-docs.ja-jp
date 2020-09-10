@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 95fa7a8c6abd0ad65b367cacef15b8faa16da640
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: f8127b485d8fea5aedccd472e209a448e3076b5b
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553430"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400077"
 ---
 # <a name="scenario-any-to-any"></a>シナリオ:任意の環境間
 
@@ -29,7 +29,7 @@ Virtual WAN のシナリオで必要なルート テーブルの数を明らか�
 | VNet     | &#8594;|      x     |     x    |
 | ブランチ   | &#8594;|    x     |     x    |
 
-前の表の各セルでは、特定のトラフィック フローについて、Virtual WAN 接続 (フローの "ソース" 側、表の行ヘッダー) により接続先プレフィックス (フローの "ターゲット" 側、表の斜体の列ヘッダー) が学習されるかどうかが示されています。
+前の表の各セルでは、特定のトラフィック フローについて、Virtual WAN 接続 (フローの "ソース" 側、表の行ヘッダー) により接続先プレフィックス (フローの "ターゲット" 側、表の斜体の列ヘッダー) が学習されるかどうかが示されています。ここで、"X" は Virtual WAN 経由で接続されることを示します。
 
 VNet とブランチ (VPN、ExpressRoute、およびユーザー VPN) 両方からのすべての接続には同じ接続要件があるため、1 つのルート テーブルが必要です。 その結果、すべての接続が関連付けられ、同じルート テーブル (既定のルート テーブル) に伝達されます。
 

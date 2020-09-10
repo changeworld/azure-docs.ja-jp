@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aa6aba12af08e2b5e044eaeb299ec6090ab6d750
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 8328b961c8166247caaf0b9cd5cc288c420d089e
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650470"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279994"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 仮想マシンのストレージ構成
 
@@ -88,7 +88,7 @@ Azure Premium Disk のキャッシュに関する下記の推奨事項は、次�
 **推奨事項:SAP HANA で確認されたこれらの I/O パターンの結果として、Azure Premium Storage を使用したさまざまなボリュームのキャッシュは、次のように設定する必要があります。**
 
 - **/hana/data** - キャッシュおよび読み取りキャッシュなし
-- **/hana/log** - キャッシュなし - M シリーズおよび Mv2 シリーズの場合は例外。これらのシリーズでは、読み取りキャッシュなしで書き込みアクセラレータを有効にする必要があります。 
+- **/hana/log** - キャッシュなし - M シリーズおよび Mv2 シリーズの VM の場合は例外 (Azure 書き込みアクセラレータを有効にする必要がある) 
 - **/hana/shared** - 読み取りキャッシュ
 - **OS ディスク** - VM の作成時に Azure によって設定される既定のキャッシュを変更しない
 

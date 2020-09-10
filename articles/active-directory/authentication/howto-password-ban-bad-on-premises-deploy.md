@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 759a5fa2be5a3df50160d2fd0ac4231c9f49329b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: b773fb887d3663a2af2e340912e378c7fccaba4a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718953"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003543"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>オンプレミスの Azure Active Directory パスワード保護を計画してデプロイする
 
@@ -49,6 +49,8 @@ ms.locfileid: "88718953"
 * [弱いローカル管理者パスワードのためにドメイン コントローラーの降格が失敗する](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-demotion-fails-due-to-a-weak-local-administrator-password)
 
 妥当な期間にわたってこの機能を監査モードで実行した後、構成を "*監査*" から "*適用*" に切り替えて、さらに安全なパスワードを要求できます。 この期間中に、追加の監視を行うことをお勧めします。
+
+Azure AD のパスワード保護では、パスワードの変更または設定操作中にのみパスワードの検証を行うことができることに注意してください。 Azure AD のパスワード保護をデプロイする前に Active Directory に受け入れられ保存されたパスワードは、検証されず、そのまま動作し続けます。 時間の経過に伴い、すべてのユーザーとアカウントでは、通常どおり既存のパスワードの有効期限が切れると Azure AD のパスワード保護で検証されたパスワードの使用が開始されます。 ただし、[パスワードを無期限にする] を使用して構成されたアカウントを除きます。
 
 ### <a name="multiple-forest-considerations"></a>複数のフォレストに関する考慮事項
 

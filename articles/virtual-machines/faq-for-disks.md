@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d05de44343d5d530a367286bec3d82ba3d66f0f6
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 0affcb3c1bab6eb5616c69bb15faf423895328b0
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817290"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322519"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM ディスクと Premium マネージド ディスクおよびアンマネージド ディスクについてよく寄せられる質問
 
@@ -398,11 +398,11 @@ Premium ディスクと Standard ディスクのどちらの場合も、Azure �
 
 **オペレーティング システムとデータ ディスクでサポートされている最大マネージド ディスク サイズはどれくらいですか?**
 
-オペレーティング システム ディスクについて Azure でサポートされているパーティションの種類は、マスター ブート レコード (MBR) です。 MBR 形式では、最大で 2 TiB のディスク サイズがサポートされています。 オペレーティング システム ディスクについて Azure でサポートされている最大サイズは、2 TiB です。 マネージド データ ディスクについては、Azure では最大で 32 TiB までサポートされています。
+オペレーティング システム ディスクについて Azure でサポートされているパーティションの種類は、マスター ブート レコード (MBR) です。 MBR 形式では、最大で 2 TiB のディスク サイズがサポートされています。 オペレーティング システム ディスクについて Azure でサポートされている最大サイズは、4 TiB です。 マネージド データ ディスクについては、Azure では最大で 32 TiB までサポートされています。
 
 **オペレーティング システムとデータ ディスクでサポートされている最大アンマネージド ディスク サイズはどれくらいですか?**
 
-オペレーティング システム ディスクについて Azure でサポートされているパーティションの種類は、マスター ブート レコード (MBR) です。 MBR 形式では、最大で 2 TiB のディスク サイズがサポートされています。 オペレーティング システム アンマネージド ディスクについて Azure でサポートされている最大サイズは、2 TiB です。 アンマネージド データ ディスクについては、Azure では最大で 4 TiB までサポートされています。
+オペレーティング システム ディスクについて Azure でサポートされているパーティションの種類は、マスター ブート レコード (MBR) です。 MBR 形式では、最大で 2 TiB のディスク サイズがサポートされています。 オペレーティング システム アンマネージド ディスクについて Azure でサポートされている最大サイズは、4 TiB です。 アンマネージド データ ディスクについては、Azure では最大で 4 TiB までサポートされています。
 
 **サポートされている最大ページ BLOB サイズはどれくらいですか?**
 

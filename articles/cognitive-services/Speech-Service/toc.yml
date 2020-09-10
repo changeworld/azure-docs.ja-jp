@@ -16,24 +16,14 @@
   items:
     - name: 音声テキスト変換のドキュメント
       href: index-speech-to-text.yml
-    - name: 概要
+    - name: 音声テキスト変換の概要
+      href: speech-to-text.md
+    - name: 音声テキスト変換のクイックスタート
+      href: get-started-speech-to-text.md
+    - name: 攻略ガイド
       items:
-        - name: 音声変換の概要
-          href: speech-to-text.md
-        - name: 音声認識の基礎
-          href: speech-to-text-basics.md
-    - name: クイックスタート
-      items:
-        - name: マイク入力を使用して音声を認識する
-          href: quickstarts/speech-to-text-from-microphone.md
-        - name: オーディオ ファイルから音声を認識する
-          href: quickstarts/speech-to-text-from-file.md
         - name: Blob Storage に格納された音声を認識する
           href: quickstarts/from-blob.md
-        - name: Speech Studio でのオーディオ ファイルを使用したモデルのテスト
-          href: quickstarts/speech-studio-test-model.md
-    - name: 操作方法ガイド
-      items:
         - name: 音声認識モードを選択する
           href: how-to-choose-recognition-mode.md
         - name: 音声認識のソース言語を変更する
@@ -57,6 +47,8 @@
           href: tutorial-tenant-model.md
     - name: カスタマイズ
       items:
+        - name: Speech Studio でのオーディオ ファイルを使用したモデルのテスト
+          href: quickstarts/speech-studio-test-model.md
         - name: Custom Speech 用のテスト データを準備する
           href: how-to-custom-speech-test-and-train.md
         - name: Custom Speech データを検査する
@@ -75,33 +67,29 @@
           href: how-to-custom-speech-human-labeled-transcriptions.md
     - name: リファレンス
       items:
-        - name: Speech SDK API シリーズ
-          items:
-            - name: C++
-              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
-              href: 'https://aka.ms/csspeech/cppref'
-            - name: C#
-              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
-              href: 'https://aka.ms/csspeech/csharpref'
-            - name: Java
-              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
-              href: 'https://aka.ms/csspeech/javaref'
-            - name: JavaScript
-              displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
-              href: 'https://aka.ms/csspeech/javascriptref'
-            - name: Objective-C
-              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
-              href: 'https://aka.ms/csspeech/objectivecref'
-            - name: Python
-              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
-              href: 'https://aka.ms/csspeech/pythonref'
-            - name: リリース ノート
-              displayName: 'release notes,updates,what''s new,what is new,changes'
-              href: releasenotes.md
-        - name: REST API
-          items:
-            - name: Speech to Text REST API
-              href: rest-speech-to-text.md
+        - name: C++
+          displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
+          href: 'https://aka.ms/csspeech/cppref'
+        - name: C#
+          displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
+          href: 'https://aka.ms/csspeech/csharpref'
+        - name: Java
+          displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
+          href: 'https://aka.ms/csspeech/javaref'
+        - name: JavaScript
+          displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
+          href: 'https://aka.ms/csspeech/javascriptref'
+        - name: Objective-C
+          displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
+          href: 'https://aka.ms/csspeech/objectivecref'
+        - name: Python
+          displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
+          href: 'https://aka.ms/csspeech/pythonref'
+        - name: リリース ノート
+          displayName: 'release notes,updates,what''s new,what is new,changes'
+          href: releasenotes.md
+        - name: Speech to Text REST API
+          href: rest-speech-to-text.md
     - name: リソース
       items:
         - name: 言語のサポート

@@ -924,8 +924,6 @@
               href: virtual-machines/windows/doc-changes-updates-release-notes.md
         - name: クイックスタート
           items:
-            - name: SQL VM の作成
-              items: null
             - name: ポータル
               href: virtual-machines/windows/sql-vm-create-portal-quickstart.md
             - name: PowerShell

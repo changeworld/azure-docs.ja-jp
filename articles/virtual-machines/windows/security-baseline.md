@@ -6,13 +6,13 @@ ms.service: virtual-machines-windows
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 4e62fd43c062d9d33292eac36a16d809bc926c98
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 7726a0f1acb8f7fde2b491979d478badeca1b384
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009836"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400383"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Windows Virtual Machines 用の Azure のセキュリティ ベースライン
 
@@ -973,7 +973,9 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 * [キー コンテナーを作成する方法](../../key-vault/secrets/quick-create-portal.md)
 
-* [マネージド ID で Key Vault の認証を提供する方法](../../key-vault/general/managed-identity.md)
+* [Key Vault に対して認証を行う方法](../../key-vault/general/authentication.md)
+
+* [Key Vault のアクセス ポリシーを割り当てる方法](../../key-vault/general/assign-access-policy-portal.md)
 
 **Azure Security Center の監視**: はい
 

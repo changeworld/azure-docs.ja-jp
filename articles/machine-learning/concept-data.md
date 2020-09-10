@@ -1,7 +1,7 @@
 ---
 title: クラウドでのデータ アクセスをセキュリティ保護する
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning からデータに安全に接続する方法と、データセットおよびデータストアを ML タスクに使用する方法について説明します。 データストアには、Azure Blob、Azure Data Lake Gen 1 および 2、SQL DB、Databricks などからのデータを格納できます。
+description: Azure Machine Learning からデータに安全に接続する方法と、データセットおよびデータストアを ML タスクに使用する方法について説明します。 データストアには、Azure Blob、Azure Data Lake Gen 1 および 2、SQL DB、および Azure Databricks からのデータを格納できます。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,24 +9,24 @@ ms.topic: conceptual
 ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
-ms.date: 04/24/2020
+ms.date: 08/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: dadd3a8316efc5bf090a84a738c8f6da223d4572
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 958a433cc76f00010fe6fd431d8bea4fe6380a9c
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651796"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146691"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure Machine Learning でのデータ アクセスをセキュリティ保護する
 
 Azure Machine Learning を使用すると、クラウド内のデータに簡単に接続できます。  基になるストレージ サービスに抽象レイヤーが用意されているため、ストレージの種類に固有のコードを記述しなくても、データに安全にアクセスし、操作することができます。 Azure Machine Learning には、次のデータ機能も用意されています。
 
+*    Pandas および Spark DataFrames による相互運用性
 *    データ系列のバージョン管理と追跡
 *    データのラベル付け 
 *    データの誤差の監視
-*    Pandas および Spark DataFrames による相互運用性
-
+    
 ## <a name="data-workflow"></a>データ ワークフロー
 
 クラウドベースのストレージ ソリューションでデータを使用できる場合は、次のデータ配信ワークフローをお勧めします。 このワークフローでは、Azure のクラウドベースのストレージ サービスに [Azure ストレージアカウント](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)とデータがあることを前提としています。 
@@ -67,13 +67,19 @@ Azure Machine Learning データストアには、Azure ストレージ サー�
 
 ## <a name="datasets"></a>データセット
 
-Azure Machine Learning データセットは、ストレージ サービス内のデータを指定する参照です。 これらはデータのコピーではないため、追加のストレージ コストは発生しません。また、元のデータ ソースの整合性が危険にさらされることもありません。
+Azure Machine Learning データセットは、ストレージ サービス内のデータを指定する参照です。 これらはデータのコピーではありません。Azure Machine Learning データセットを作成すると、データ ソースの場所への参照とそのメタデータのコピーを作成できます。 
 
- ストレージ内のデータを操作するには、お使いのデータを、機械学習タスク用の使用可能なオブジェクトとしてパッケージ化するために、[データセットを作成](how-to-create-register-datasets.md)します。 データ インジェストが複雑になることなく、さまざまな実験でデータセットを共有して再利用できるように、データセットをワークスペースに登録します。
+データセットは遅延評価され、データは既存の場所に残るため:
 
-データセットは、ローカル ファイル、パブリック URL、[Azure Open Datasets](https://azure.microsoft.com/services/open-datasets/)、または Azure ストレージ サービスから、データストアを介して作成できます。 イン メモリの pandas データ フレームからデータセットを作成するには、parquet などのローカル ファイルにデータを書き込み、そのファイルからデータセットを作成します。  
+* 追加のストレージ コストは発生しません。
+* 意図せずに元のデータ ソースを変更するリスクはありません。
+* ML ワークフローのパフォーマンスが向上します。
 
-2 種類のデータセットがサポートされています。 
+ストレージ内のデータを操作するには、お使いのデータを、機械学習タスク用の使用可能なオブジェクトとしてパッケージ化するために、[データセットを作成](how-to-create-register-datasets.md)します。 データ インジェストが複雑になることなく、さまざまな実験でデータセットを共有して再利用できるように、データセットをワークスペースに登録します。
+
+データセットは、ローカル ファイル、パブリック URL、[Azure Open Datasets](https://azure.microsoft.com/services/open-datasets/)、または Azure ストレージ サービスから、データストアを介して作成できます。 
+
+データセットには、次の 2 つの種類があります。 
 
 + [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) は、データストアまたはパブリック URL 内の 1 つまたは複数のファイルを参照します。 データがクレンジング済みで、トレーニング実験で使用できる状態になっている場合は、コンピューティング先に、FileDatasets によって参照されている[ファイルをダウンロードまたはマウント](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets)できます。
 

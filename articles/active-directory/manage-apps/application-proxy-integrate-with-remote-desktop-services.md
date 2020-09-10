@@ -1,6 +1,6 @@
 ---
 title: Azure AD アプリ プロキシを使用したリモート デスクトップの発行 | Microsoft Docs
-description: Azure AD アプリケーション プロキシ コネクタの基本について説明します。
+description: RDS でアプリ プロキシを構成する方法について説明します
 services: active-directory
 documentationcenter: ''
 author: kenwith
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.custom: it-pro
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cba74c773e1f141db14e06cf0cda8b31d06ba4f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7ffdccf9cf3b6de4ba15d6076d7a5b9e0a93f464
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019524"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396762"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したリモート デスクトップの発行
 
@@ -135,7 +135,7 @@ Windows 7 または 10 のコンピューターで Internet Explorer を使用�
 
 | 認証方法 | サポートされているクライアント構成 |
 | --------------------- | ------------------------------ |
-| 事前認証    | RD Web: Internet Explorer と RDS ActiveX アドオンを使用する Windows 7 または Windows 10 |
+| 事前認証    | RD Web: Internet Explorer または [Edge Chromium IE モード](https://docs.microsoft.com/deployedge/edge-ie-mode)と RDS ActiveX アドオンを使用する Windows 7 または 10 |
 | 事前認証    | RD Web クライアント: Microsoft Edge、Internet Explorer 11、Google Chrome、Safari、Mozilla Firefox (v55.0 以降) などの HTML5 互換 Web ブラウザー |
 | パススルー | Microsoft リモート デスクトップ アプリケーションをサポートするその他の任意のオペレーティング システム |
 

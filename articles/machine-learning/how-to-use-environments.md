@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 3368a42248e084476eb27318abbcd1ca9fbfdacf
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 11bd5f7397664d183f27337f7ca36d0123ee63f5
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927546"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397068"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Azure Machine Learning でソフトウェア環境を作成して使用する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -86,7 +86,6 @@ from azureml.core.environment import Environment
 Environment(name="myenv")
 ```
 
-自分独自の環境を定義する場合、pip の依存関係として `azureml-defaults` にバージョン 1.0.45 以降を指定する必要があります。 このパッケージには、Web サービスとしてモデルをホストするために必要な機能が含まれています。
 
 ### <a name="use-conda-and-pip-specification-files"></a>Conda と pip の仕様ファイルを使用する
 
@@ -142,8 +141,6 @@ run = myexp.submit(config=runconfig)
 # Show each step of run 
 run.wait_for_completion(show_output=True)
 ```
-
-同様に、[`Estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) オブジェクトをトレーニングに使用する場合は、環境を指定せずに、推定インスタンスを実行として直接送信できます。 `Estimator` オブジェクトでは既に、環境とコンピューティング ターゲットがカプセル化されています。
 
 ## <a name="add-packages-to-an-environment"></a>環境にパッケージを追加する
 
@@ -364,33 +361,12 @@ run = exp.submit(runconfig)
 
 実行構成で環境を指定しない場合、実行を送信するときにサービスによって既定の環境が作成されます。
 
-### <a name="use-an-estimator-for-training"></a>トレーニングに見積もりツールを使用する
-
-トレーニングに[見積りツール](how-to-train-ml-models.md)を使用する場合は、推定インスタンスを直接送信できます。 環境とコンピューティング ターゲットは既にカプセル化されています。
-
-次のコードでは、単一ノードのトレーニング実行で見積もりツールを使用します。 これは、`scikit-learn` モデルのリモート コンピューティングで実行されます。 以前にコンピューティング ターゲット オブジェクト `compute_target`、およびデータストア オブジェクト `ds` を作成したことを前提とします。
-
-```python
-from azureml.train.estimator import Estimator
-
-script_params = {
-    '--data-folder': ds.as_mount(),
-    '--regularization': 0.8
-}
-
-sk_est = Estimator(source_directory='./my-sklearn-proj',
-                   script_params=script_params,
-                   compute_target=compute_target,
-                   entry_script='train.py',
-                   conda_packages=['scikit-learn'])
-
-# Submit the run 
-run = experiment.submit(sk_est)
-```
-
 ## <a name="use-environments-for-web-service-deployment"></a>Web サービスのデプロイに環境を使用する
 
 モデルを Web サービスとしてデプロイするときに、環境を使用できます。 この機能により、再現可能な、接続されたワークフローが有効になります。 このワークフローでは、トレーニング コンピューティングと推論計算の両方で同じライブラリを使用して、モデルのトレーニング、テスト、およびデプロイを行うことができます。
+
+
+Web サービスのデプロイ用に自分独自の環境を定義する場合、pip の依存関係として `azureml-defaults` にバージョン 1.0.45 以降を指定する必要があります。 このパッケージには、Web サービスとしてモデルをホストするために必要な機能が含まれています。
 
 Web サービスをデプロイするには、環境、推論計算、スコアリング スクリプト、および登録済みモデルをデプロイ オブジェクト [`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) に結合します。 詳細については、「[モデルをデプロイする方法と場所](how-to-deploy-and-where.md)」を参照してください。
 

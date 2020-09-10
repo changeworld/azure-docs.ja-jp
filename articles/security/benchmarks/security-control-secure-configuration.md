@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e3d43239dabe75bc2b25319945c2c6b08d726d2a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 347a63cc77c565d800328c19d1d543c2c9efafc0
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82193107"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400094"
 ---
 # <a name="security-control-secure-configuration"></a>セキュリティ コントロールセキュリティで保護された構成
 
@@ -110,13 +110,13 @@ Azure コンピューティング リソースに対する脆弱性評価の実�
 |--|--|--|
 | 7.6 | 5.3 | Customer |
 
-カスタム イメージを使用している場合は、ロールベースのアクセス制御 (RBAC) を使用して、承認されたユーザーのみがイメージにアクセスできるようにします。 共有イメージ ギャラリーを使用すると、組織内のさまざまなユーザー、サービス プリンシパル、AD グループに対してイメージを共有できます。  コンテナー イメージの場合は、Azure Container Registry に保存し、RBAC を利用して、承認されたユーザーだけがイメージにアクセスできるようにします。  
+カスタム イメージを使用している場合は、Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、承認されたユーザーのみがイメージにアクセスできるようにします。 共有イメージ ギャラリーを使用すると、組織内のさまざまなユーザー、サービス プリンシパル、AD グループに対してイメージを共有できます。  コンテナー イメージの場合は、Azure Container Registry に保存し、Azure RBAC を利用して、承認されたユーザーのみがイメージにアクセスできるようにします。  
 
-- [Azure での RBAC の概要](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+- [Azure RBAC について](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
 
-- [コンテナー レジストリの RBAC を理解する](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+- [コンテナー レジストリの Azure RBAC について](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
 
-- [Azure で RBAC を構成する方法](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+- [Azure RBAC を構成する方法](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
 
 - [共有イメージ ギャラリーの概要](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)
 
@@ -174,7 +174,9 @@ Azure Security Center を使用して、コンテナーの OS と Docker の設�
 
 - [キー コンテナーを作成する方法](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
 
-- [マネージド ID で Key Vault の認証を提供する方法](https://docs.microsoft.com/azure/key-vault/managed-identity)
+- [Key Vault に対して認証を行う方法](../../key-vault/general/authentication.md)
+
+- [Key Vault のアクセス ポリシーを割り当てる方法](../../key-vault/general/assign-access-policy-portal.md)
 
 ## <a name="712-manage-identities-securely-and-automatically"></a>7.12:ID を安全かつ自動的に管理する
 

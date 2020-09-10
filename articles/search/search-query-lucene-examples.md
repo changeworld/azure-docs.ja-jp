@@ -9,12 +9,12 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9d3f8208af9d5997f5a9e025a54b54b5b035fb85
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 8e8c32f5596e469de5402a1f712d234a806a69e4
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934975"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297996"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>"完全な" Lucene 検索構文の使用 (Azure Cognitive Search での高度なクエリ)
 
@@ -40,13 +40,13 @@ Lucene パーサーは、フィールド スコープ クエリ、あいまい�
 
 要求ヘッダーを指定した後は、**search=** 文字列のみを入れ替えることで、この記事のすべてのクエリに対して要求ヘッダーを再利用できます。 
 
-  ![Postman の要求ヘッダー](media/search-query-lucene-examples/postman-header.png)
+  ![Postman の要求ヘッダーの設定パラメーター](media/search-query-lucene-examples/postman-header.png)
 
 ### <a name="set-the-request-url"></a>要求 URL を設定する
 
 要求は、Azure Cognitive Search のエンドポイントと検索文字列を含む URL と GET コマンドを組み合わせたものです。
 
-  ![Postman の要求ヘッダー](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
+  ![Postman の要求ヘッダーの GET](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
 
 URL は、次の要素から構成されます。
 
@@ -111,7 +111,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 
 このクエリの応答は、次のスクリーンショットのようになります。
 
-  ![Postman の応答のサンプル](media/search-query-lucene-examples/postman-sample-results.png)
+  ![スコアを含む Postman のサンプル応答](media/search-query-lucene-examples/postman-sample-results.png)
 
 応答の検索スコアに気付いたかもしれません。 検索がフルテキスト検索でなかった、または適用された基準がないという理由でランクがない場合は、1 の均一のスコアが発生します。 条件なしの null 検索では、任意の順序で行が返されます。 実際の検索基準を含めると、検索スコアは意味のある値に変化します。
 
@@ -137,7 +137,7 @@ $select=business_title, posting_type&search=business_title:(senior NOT junior) A
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&$select=business_title&search=business_title:(senior NOT junior)
 ```
 
-  ![Postman の応答のサンプル](media/search-query-lucene-examples/intrafieldfilter.png)
+  ![Postman のサンプル応答の検索式](media/search-query-lucene-examples/intrafieldfilter.png)
 
 **fieldName:searchExpression** 構文を使用して、フィールド検索操作を定義できます。検索式は、単一の単語、単一の語句、またはかっこで囲まれた複雑な式が可能であり、必要に応じてブール演算子も使用できます。 例として、次のようなものがあります。
 

@@ -3,12 +3,12 @@ title: Azure VM 上の SAP HANA データベースの復元
 description: この記事では、Azure Virtual Machines 上で実行されている SAP HANA データベースを復元する方法について説明します。
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 41ee95fc65ed7bdf79388089e27c6d6249132bfd
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 68858db6f89221e1a3a8f0955d5e009d56e2d365
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763288"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89375314"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>Azure VM 上の SAP HANA データベースの復元
 
@@ -46,7 +46,7 @@ Azure Backup は、Azure VM 上で実行されている SAP HANA データベー
 
       ![[Azure VM の SAP HANA] を選択する](media/sap-hana-db-restore/sap-hana-backup.png)
 
-  1. **[VM 内のデータベースを検出]** で **[詳細の表示]** をクリックします。
+  1. **[VM 内のデータベースを検出]** で **[詳細の表示]** を選択します。
 
       ![詳細を表示する](media/sap-hana-db-restore/view-details.png)
 
@@ -138,7 +138,7 @@ Azure Backup は、Azure VM 上で実行されている SAP HANA データベー
 
     * データベース バックアップ ファイル
     * カタログ ファイル
-    * JSON メタデータ ファイル (関連するバックアップ ファイルごとの)
+    * (関連するバックアップ ファイルごとの) JSON メタデータ ファイル
 
     通常、ネットワーク共有パスや、宛先パスとして指定されているマウントされた Azure ファイル共有のパスを使うと、同じネットワーク内の他のマシンや、それらにマウントされている同じ Azure ファイル共有でこれらのファイルに簡単にアクセスできます。
 

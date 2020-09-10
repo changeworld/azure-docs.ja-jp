@@ -3,12 +3,12 @@ title: セキュリティ機能の概要
 description: バックアップ データを保護し、ビジネスのセキュリティ ニーズを満たすのに役立つ Azure Backup のセキュリティ機能について説明します。
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: f9a505723b40df61665a99e898d59ecfb8c03fd5
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 62f4e6783d4c2c2e09b7b4cbb41ae98ac2779ebe
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890469"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012553"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure Backup のセキュリティ機能の概要
 
@@ -70,7 +70,7 @@ Azure Backup サービスは、Microsoft Azure Recovery Services (MARS) エー�
 
 * 削除されたバックアップ データは、削除日から追加で 14 日間保持されます。 これにより、特定の期間内のデータの復旧性が確保され、攻撃が行われてもデータが失われることはありません。 また、保持される最小復旧ポイントの数が非常に増えたため、データの破損を防ぐことができます。 [削除されたバックアップ データの復旧の詳細については、こちらを参照してください](./backup-azure-security-feature.md#recover-deleted-backup-data)。
 
-* Microsoft Azure Recovery Services (MARS) エージェントを使用してバックアップされたデータの場合は、Azure Backup にアップロードする前にデータが暗号化され、Azure Backup からダウンロードした後にのみ暗号化が解除されるようにするために、パスフレーズが使用されます。 パスフレーズの詳細は、パスフレーズを作成したユーザーと、それを使用して構成されたエージェントでのみ使用できます。 そのサービスとの間で転送または共有されるものはありません。 これにより、 (ネットワークでの中間者攻撃などで) 誤って公開されたデータは、パスフレーズなしでは使用できず、パスフレーズはネットワークで送信されないため、データの完全なセキュリティが確保されます。
+* Microsoft Azure Recovery Services (MARS) エージェントを使用してバックアップされたデータの場合は、Azure Backup にアップロードする前にデータが暗号化され、Azure Backup からダウンロードした後にのみ暗号化が解除されるようにするために、パスフレーズが使用されます。 パスフレーズの詳細は、パスフレーズを作成したユーザーと、それを使用して構成されたエージェントでのみ使用できます。 そのサービスとの間で転送または共有されるものはありません。 これにより、(ネットワーク上の中間者攻撃などで) 誤って公開されたデータはパスフレーズなしで使用できず、パスフレーズはネットワーク経由で送信されないため、データの完全なセキュリティが確保されます。
 
 ## <a name="compliance-with-standardized-security-requirements"></a>標準化されたセキュリティ要件への準拠
 

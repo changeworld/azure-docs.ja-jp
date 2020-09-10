@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: c51e67dcc3536a3083179451743b1c97cf618dae
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 327505dfbaf5f6f35b065f4f3941053c5114aa33
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004870"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019217"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Azure PowerShell を使用した Azure Cache for Redis の管理
 > [!div class="op_single_selector"]
@@ -57,7 +57,7 @@ Microsoft Azure のサインイン ダイアログで、Azure アカウントの
 
 Azure リソース マネージャーで Windows PowerShell を使用するには、以下が必要です。
 
-* Windows PowerShell バージョン 3.0 または 4.0。 Windows PowerShell のバージョンを調べるには、`$PSVersionTable` と入力して、`PSVersion` の値が 3.0 か 4.0 かを確認します。 互換バージョンをインストールするには、「[Windows Management Framework 3.0](https://www.microsoft.com/download/details.aspx?id=34595)」または「[Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855)」を参照してください。
+* Windows PowerShell バージョン 3.0 または 4.0。 Windows PowerShell のバージョンを調べるには、`$PSVersionTable` と入力して、`PSVersion` の値が 3.0 か 4.0 かを確認します。 互換バージョンをインストールするには、「[Windows Management Framework 3.0](https://www.microsoft.com/download/details.aspx?id=34595)」を参照してください。
 
 このチュートリアルに表示されているコマンドレットの詳しいヘルプを確認には、Get-Help コマンドレットを使用します。
 

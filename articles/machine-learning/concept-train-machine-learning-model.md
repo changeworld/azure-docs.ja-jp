@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 186839425e6ab2fb5430a82650615425bb93d51a
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: d0341e5a4d5dc036a4c3f90b2a25003137602694
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651762"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144840"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Azure Machine Learning を使用してモデルをトレーニングする
 
@@ -55,7 +55,7 @@ Azure Machine Learning の汎用トレーニング ジョブは、[RunConfigurat
 * [実行構成とは](concept-azure-machine-learning-architecture.md#run-configurations)
 * [チュートリアル:](tutorial-1st-experiment-sdk-train.md)最初の ML モデルをトレーニングする
 * [例:トレーニング モデルの Jupyter Notebook の例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training)
-* [方法: モデル トレーニング用のコンピューティング先を設定して使用する](how-to-set-up-training-targets.md)
+* [方法: モデル トレーニング用のコンピューティング 先を使用する](how-to-set-up-training-targets.md)
 
 ### <a name="automated-machine-learning"></a>自動化された機械学習
 
@@ -160,4 +160,4 @@ VS Code 拡張機能を使用して、トレーニング ジョブを実行お�
 
 ## <a name="next-steps"></a>次のステップ
 
-[トレーニング環境をセットアップする](how-to-set-up-training-targets.md)方法を確認します。
+[モデル トレーニング用のコンピューティング先を使用する](how-to-set-up-training-targets.md)方法を確認します。

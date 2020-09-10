@@ -4,22 +4,24 @@ titleSuffix: Azure Media Services
 description: CDN 統合を使用したコンテンツのストリーミング、およびプリフェッチと Origin-Assist CDN-Prefetch について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 02/13/2020
-ms.author: juliako
-ms.openlocfilehash: b60a86d09e5d6f7d1108595253349bbd0784e4d3
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: e1ea0a43783fb7abdc17655e3a3431d125d426f8
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799351"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291281"
 ---
 # <a name="stream-content-with-cdn-integration"></a>CDN 統合を使用してコンテンツをストリーミングする
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Content Delivery Network (CDN) では、世界中に戦略的に配置された物理ノードにコンテンツをキャッシュすることによって、高帯域幅コンテンツをユーザーに高速配信するためのグローバル ソリューションを開発者に提供します。  
 
@@ -29,14 +31,19 @@ CDN を使うと、コーデックごと、ストリーミング プロトコル
 
 また、アダプティブ ストリーミングの動作も考慮する必要があります。 個々のビデオ フラグメントはそれぞれのエンティティとしてキャッシュされます。 たとえば、特定のビデオが初めて視聴されたとします。 視聴者があちこちを数秒だけ視聴してスキップすることを繰り返している場合は、その視聴者が視聴した内容に関連付けられたビデオ フラグメントのみが CDN にキャッシュされます。 アダプティブ ストリーミングでは通常、5 から 7 の異なるビットレートのビデオがあります。 ある視聴者があるビットレートを視聴し、別の視聴者が別のビットレートを視聴している場合は、これらがそれぞれ個別に CDN にキャッシュされます。 2 人が同じビットレートを視聴している場合でも、異なるプロトコル経由でストリーミングしている可能性があります。 各プロトコル (HLS、MPEG-DASH、スムーズ ストリーミング) は別個にキャッシュされます。 つまり、各ビットレートやプロトコルは別個にキャッシュされ、要求されたビデオ フラグメントのみがキャッシュされます。
 
-Media Services の[ストリーミング エンドポイント](streaming-endpoint-concept.md)で CDN を有効にするかどうかを決定するときは、予想される視聴者数を考慮してください。 CDN は、コンテンツに対して多数の視聴者が予想される場合にのみ役立ちます。 CDN は同時実行に合わせて最適にスケーリングされるため、最大同時視聴者数が 500 未満の場合、CDN を無効にすることをお勧めします。
+テスト環境を除き、Standard と Premium の両方のストリーミング エンドポイントで CDN を有効にすることをお勧めします。 サポートされるスループット制限はストリーミング エンドポイントの種類ごとに異なります。
+さまざまな要因を考慮に入れる必要があるため、ストリーミング エンドポイントでサポートされる同時実行ストリームの最大数の正確な計算を行うことは困難です。 これには以下が含まれます。
+
+- ストリーミングに使用される最大ビットレート
+- プレーヤーのプリバッファーと切り替え動作。 プレーヤーは、配信元からセグメントをバーストし、負荷速度を使用してアダプティブ ビットレートの切り替えを計算しようとします。 ストリーミング エンドポイントが飽和に近づくと、応答時間は変動する場合があり、プレーヤーはより低い品質への切り替えを開始します。 これにより、ストリーミング エンドポイント プレーヤーへの負荷が軽減されるため、より高い品質にスケール バックされ、不要な切り替えトリガーが作成されます。
+全体的に、ストリーミング エンドポイントの最大スループットを取得し、これを最大ビットレートで割って同時実行ストリームの最大数を見積もることが安全です (すべてのプレーヤーが最も高いビットレートを使用すると仮定した場合)。たとえば、600 Mbps に制限されており、最も高いビットレートが 3Mbp である Standard ストリーミング エンドポイントを使用できます。 この場合は、最大のビットレートで約 200 の同時実行ストリームがサポートされます。 オーディオの帯域幅要件も必ず考慮に入れてください。 オーディオ ストリームは 128 kps でしかストリーミングされないかもしれませんが、それに同時実行ストリームの数を掛ければ、合計のストリーミングはすぐに増加します。
 
 このトピックでは、[CDN 統合](#enable-azure-cdn-integration)を有効にする方法について説明します。 また、プリフェッチ (アクティブ キャッシュ) と [Origin-Assist CDN-Prefetch](#origin-assist-cdn-prefetch) の概念についても説明します。
 
 ## <a name="considerations"></a>考慮事項
 
-* CDN を有効にするかどうかを問わず、[ストリーミング エンドポイント](streaming-endpoint-concept.md) `hostname` とストリーミング URL は同じままにします。
-* CDN の有無にかかわらずコンテンツをテストできる必要がある場合は、CDN が有効になっていない別のストリーミング エンドポイントを作成してください。
+- CDN を有効にするかどうかを問わず、[ストリーミング エンドポイント](streaming-endpoint-concept.md) `hostname` とストリーミング URL は同じままにします。
+- CDN の有無にかかわらずコンテンツをテストできる必要がある場合は、CDN が有効になっていない別のストリーミング エンドポイントを作成してください。
 
 ## <a name="enable-azure-cdn-integration"></a>Azure CDN 統合を有効にする
 
@@ -89,7 +96,7 @@ CDN のキャッシュは、リアクティブなプロセスです。 CDN で�
 |HTTP ヘッダー|値|送信者|受信者|目的|
 | ---- | ---- | ---- | ---- | ----- |
 |`CDN-Origin-Assist-Prefetch-Enabled` | 1 (既定) または 0 |CDN|Origin (配信元)|CDN がプリフェッチ対応であることを示すこと。|
-|`CDN-Origin-Assist-Prefetch-Path`| 例: <br/>フラグメント(ビデオ= 1400000000, フォーマット = mpd-time-cmaf)|Origin (配信元)|CDN|CDN にプリフェッチ パスを提供すること。|
+|`CDN-Origin-Assist-Prefetch-Path`| 例: <br/>フラグメント(ビデオ= 1400000000, フォーマット = mpd-time-cmaf)|出発地|CDN|CDN にプリフェッチ パスを提供すること。|
 |`CDN-Origin-Assist-Prefetch-Request`|1 (プリフェッチ要求) または 0 (通常の要求)|CDN|Origin (配信元)|CDN からの要求がプリフェッチであることを示すこと。|
 
 ヘッダー交換の一部を実際に確認するには、次の手順を実行します。

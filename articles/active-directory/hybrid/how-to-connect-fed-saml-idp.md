@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 274f603fa0d7a48b99a7caed5d465d44bc68e9ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aa9d2aa94970e7d17102e5a5696c6b61330aff80
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019966"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279960"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>シングル サインオンに SAML 2.0 ID プロバイダー (IdP) を使用する
 
@@ -178,7 +178,7 @@ SAML 2.0 ID プロバイダーと Azure AD 間の通信を有効にする必要�
 ## <a name="install-windows-powershell-for-sign-on-with-saml-20-identity-provider"></a>SAML 2.0 ID プロバイダーでサインオンするための Windows PowerShell をインストールする
 Azure AD サインオンで使用するように SAML 2.0 ID プロバイダーを構成したら、次の手順は、Azure Active Directory Module for Windows PowerShell をダウンロードしてインストールすることです。 インストールしたら、これらのコマンドレットを使用して、Azure AD ドメインをフェデレーション ドメインとして構成します。
 
-Azure Active Directory Module for Windows PowerShell は、組織のデータを Azure AD で管理するためのダウンロードです。 このモジュールは、Windows PowerShell に一連のコマンドレットをインストールします。これらのコマンドレットを実行して Azure AD へのシングル サインオン アクセスを設定し、サブスクライブしているすべてのクラウド サービスにアクセスします。 コマンドレットをダウンロードしてインストールする方法の手順については、[https://technet.microsoft.com/library/jj151815.aspx](https://technet.microsoft.com/library/jj151815.aspx) を参照してください。
+Azure Active Directory Module for Windows PowerShell は、組織のデータを Azure AD で管理するためのダウンロードです。 このモジュールは、Windows PowerShell に一連のコマンドレットをインストールします。これらのコマンドレットを実行して Azure AD へのシングル サインオン アクセスを設定し、サブスクライブしているすべてのクラウド サービスにアクセスします。 コマンドレットをダウンロードしてインストールする方法については、[/previous-versions/azure/jj151815(v=azure.100)](/previous-versions/azure/jj151815(v=azure.100)) をご覧ください
 
 ## <a name="set-up-a-trust-between-your-saml-identity-provider-and-azure-ad"></a>SAML ID プロバイダーと Azure AD との間に信頼を確立する
 Azure AD ドメインのフェデレーションを構成する前に、カスタム ドメインを構成する必要があります。 Microsoft によって提供されている既定のドメインをフェデレーションすることはできません。 Microsoft の既定のドメインは、"onmicrosoft.com" で終わります。
@@ -238,19 +238,19 @@ SAML 2.0 ID プロバイダーを使用してフェデレーションする各 A
     </IDPSSODescriptor>
     ``` 
 
-"Set-MsolDomainAuthentication" の詳細については [https://technet.microsoft.com/library/dn194112.aspx](https://technet.microsoft.com/library/dn194112.aspx) を参照してください。
+"Set-MsolDomainAuthentication" の詳細については、[/previous-versions/azure/dn194112(v=azure.100)](/previous-versions/azure/dn194112(v=azure.100)) をご覧ください。
 
 >[!NOTE]
 >`$ecpUrl = "https://WS2012R2-0.contoso.com/PAOS"` は、ID プロバイダーに対して ECP 拡張機能を設定する場合にのみ使用する必要があります。 Outlook Web Application (OWA) を除く Exchange Online クライアントは、POST ベースのアクティブなエンドポイントを活用します。 SAML 2.0 STS でアクティブなエンドポイントの Shibboleth の ECP 実装に似たアクティブなエンドポイントを実装すると、これらのリッチ クライアントが Exchange Online サービスと対話することが可能になる場合があります。
 
-フェデレーションが構成された後で、"非フェデレーション" ("マネージ") に切り替えることもできます。ただし、この変更は、完了までに最大 2 時間かかり、クラウドベースのサインイン用の新しいランダム パスワードを各ユーザーに割り当てる必要があります。 "マネージド" への切り替えは、一部のシナリオで設定のエラーをリセットするために必要になる場合があります。 ドメインの変換の詳細については、[https://msdn.microsoft.com/library/windowsazure/dn194122.aspx](https://msdn.microsoft.com/library/windowsazure/dn194122.aspx) を参照してください。
+フェデレーションが構成された後で、"非フェデレーション" ("マネージ") に切り替えることもできます。ただし、この変更は、完了までに最大 2 時間かかり、クラウドベースのサインイン用の新しいランダム パスワードを各ユーザーに割り当てる必要があります。 "マネージド" への切り替えは、一部のシナリオで設定のエラーをリセットするために必要になる場合があります。 ドメインの変換の詳細については、[/previous-versions/azure/dn194122(v=azure.100)](/previous-versions/azure/dn194122(v=azure.100)) をご覧ください。
 
 ## <a name="provision-user-principals-to-azure-ad--office-365"></a>ユーザー プリンシパルを Azure AD/Office 365 にプロビジョニングする
 Office 365 に対してユーザーを認証するには、SAML 2.0 要求のアサーションに対応するユーザー プリンシパルを使用して Azure AD をプロビジョニングしておく必要があります。 これらのユーザー プリンシパルが Azure AD で事前に認識されていない場合、フェデレーション サインインで使用することはできません。 ユーザー プリンシパルは、Azure AD Connect または Windows PowerShell を使用してプロビジョニングできます。
 
 Azure AD Connect を使用して、オンプレミスの Active Directory から Azure AD ディレクトリ内のドメインにプリンシパルをプロビジョニングできます。 詳細については、「[オンプレミスのディレクトリと Azure Active Directory の統合](whatis-hybrid-identity.md)」を参照してください。
 
-Windows PowerShell は、新しいユーザーの Azure AD への追加を自動化し、オンプレミスのディレクトリの変更を同期するために使用することもできます。 Windows PowerShell コマンドレットを使用するには、[Azure Active Directory モジュール](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)をダウンロードする必要があります。
+Windows PowerShell は、新しいユーザーの Azure AD への追加を自動化し、オンプレミスのディレクトリの変更を同期するために使用することもできます。 Windows PowerShell コマンドレットを使用するには、[Azure Active Directory モジュール](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)をダウンロードする必要があります。
 
 次の手順は、Azure AD に 1 人のユーザーを追加する方法を示しています。
 
@@ -270,7 +270,7 @@ Windows PowerShell は、新しいユーザーの Azure AD への追加を自動
       -UsageLocation "US" 
     ```
 
-"New-MsolUser" チェックアウトの詳細については、[https://technet.microsoft.com/library/dn194096.aspx](https://technet.microsoft.com/library/dn194096.aspx) を参照してください。
+"New-MsolUser" チェックアウトの詳細については、[/previous-versions/azure/dn194096(v=azure.100)](/previous-versions/azure/dn194096(v=azure.100)) をご覧ください
 
 >[!NOTE]
 >"UserPrinciplName" 値は SAML 2.0 要求で送信する "IDPEmail" の値と一致し、"ImmutableID" 値は "NameID" アサーションで送信される値と一致する必要があります。

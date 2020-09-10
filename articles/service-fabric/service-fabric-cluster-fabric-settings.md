@@ -3,12 +3,12 @@ title: Azure Service Fabric クラスターの設定を変更する
 description: この記事では、カスタマイズ可能な Fabric の設定と Fabric アップグレード ポリシーについて説明します。
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 05b0b132f45e1cc7fbb136c46a7596f480941178
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: fbd6c9503e409473a87c58202eb88d77716441f9
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682990"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055122"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric クラスターの設定をカスタマイズする
 この記事では、カスタマイズできる Service Fabric クラスターのさまざまなファブリック設定について説明します。 Azure でホストされているクラスターの場合、[Azure portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使って設定をカスタマイズできます。 詳細については、[Azure クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-azure.md)に関するページを参照してください。 スタンドアロン クラスターでは、*ClusterConfig.json* ファイルを更新し、クラスターで構成のアップグレードを実行することによって設定をカスタマイズします。 詳細については、[スタンドアロン クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-windows-server.md)に関するページを参照してください。
@@ -423,14 +423,14 @@ ms.locfileid: "83682990"
 |AzureStorageMaxConnections | int、既定値は 5000 |動的|Azure Storage へのコンカレント接続の最大数。 |
 |AzureStorageMaxWorkerThreads | int、既定値は 25 |動的|並列 worker スレッドの最大数。 |
 |AzureStorageOperationTimeout | 時間 (秒単位)、既定値は 6000 |動的|timespan を秒単位で指定します。 xstore 操作が完了するまでのタイムアウト。 |
-|CleanupApplicationPackageOnProvisionSuccess|ブール値、既定値は FALSE |動的|成功したプロビジョニングでアプリケーション パッケージの自動クリーンアップを有効または無効にします。 |
-|CleanupUnusedApplicationTypes|ブール値、既定値は FALSE |動的|この構成が有効な場合は、未使用のアプリケーションの種類のバージョンが自動的に登録解除され、直近の未使用の 3 バージョンがスキップされるため、イメージ ストアが占有するディスク領域が削減されます。 自動クリーンアップはその特定のアプリケーションの種類のプロビジョニングが成功した後にトリガーされるだけでなく、すべてのアプリケーションの種類で、1 日に 1 回定期的に実行されます。 スキップする未使用のバージョンの数は、パラメーター "MaxUnusedAppTypeVersionsToKeep" を使用して構成できます。 |
-|DisableChecksumValidation | ブール値、既定値は false |静的| この構成により、アプリケーションのプロビジョニング時におけるチェックサムの検証を有効または無効にすることができます。 |
-|DisableServerSideCopy | ブール値、既定値は false |静的|この構成により、アプリケーションのプロビジョニング時における、ImageStore でのアプリケーション パッケージのサーバー側のコピーを有効または無効にできます。 |
-|ImageCachingEnabled | ブール値、既定値は true |静的|この構成により、キャッシュを有効または無効にすることができます。 |
-|ImageStoreConnectionString |SecureString |静的|ImageStore のルートへの接続文字列。 |
-|ImageStoreMinimumTransferBPS | int、既定値は 1024 |動的|クラスターと ImageStore 間の最小転送速度。 この値を使用して、外部 ImageStore にアクセスするときのタイムアウトを決定します。 クラスターが外部 ImageStore からダウンロードする際により多くの時間を確保できるように、クラスターと ImageStore 間の待機時間が長い場合にのみ、この値を変更します。 |
-|MaxUnusedAppTypeVersionsToKeep | int、既定値は 3 |動的|この構成により、クリーンアップでスキップされる未使用のアプリケーションの種類のバージョンの数が定義されます。 このパラメーターは、パラメーター CleanupUnusedApplicationTypes が有効になっている場合にのみ適用できます。 |
+|CleanupApplicationPackageOnProvisionSuccess|ブール値、既定値は FALSE |動的|成功したプロビジョニングでアプリケーション パッケージの自動クリーンアップを有効または無効にします。
+
+*ベスト プラクティスは `true` を使用することです。* | |CleanupUnusedApplicationTypes|ブール値、既定値は FALSE |動的|この構成は、有効になっている場合、未使用のアプリケーションの種類のバージョンを自動的に登録解除し、最新の 3 つの未使用のバージョンをスキップすることにより、イメージ ストアによって占有されているディスク領域を削除できるようにします。 自動クリーンアップはその特定のアプリケーションの種類のプロビジョニングが成功した後にトリガーされるだけでなく、すべてのアプリケーションの種類で、1 日に 1 回定期的に実行されます。 スキップする未使用のバージョンの数は、パラメーター "MaxUnusedAppTypeVersionsToKeep" を使用して構成できます。 
+
+*ベスト プラクティスは `true` を使用することです。*
+| |DisableChecksumValidation | ブール値、既定値は FALSE |静的| この構成により、アプリケーションのプロビジョニング中のチェックサムの検証を有効または無効にすることができます。 | |DisableServerSideCopy | ブール値、既定値は FALSE |静的|この構成は、アプリケーションのプロビジョニング中の ImageStore でのアプリケーション パッケージのサーバー側のコピーを有効または無効にします。 | |ImageCachingEnabled | ブール値、既定値は true |静的|この構成により、キャッシュを有効または無効にすることができます。 | |ImageStoreConnectionString |SecureString |静的|ImageStore のルートへの接続文字列。 | |ImageStoreMinimumTransferBPS | int、既定値は 1024 |動的|クラスターと ImageStore の間の最小転送速度。 この値を使用して、外部 ImageStore にアクセスするときのタイムアウトを決定します。 クラスターが外部 ImageStore からダウンロードする際により多くの時間を確保できるように、クラスターと ImageStore 間の待機時間が長い場合にのみ、この値を変更します。 | |MaxUnusedAppTypeVersionsToKeep | int、既定値は 3 |動的|この構成は、クリーンアップのためにスキップされる未使用のアプリケーションの種類のバージョンの数を定義します。 このパラメーターは、パラメーター CleanupUnusedApplicationTypes が有効になっている場合にのみ適用できます。
+
+*一般的なベスト プラクティスは既定値 (`3`) を使用することです。* |
 
 
 ## <a name="metricactivitythresholds"></a>MetricActivityThresholds

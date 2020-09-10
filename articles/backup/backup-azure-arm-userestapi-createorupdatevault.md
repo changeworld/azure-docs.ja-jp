@@ -4,16 +4,16 @@ description: この記事では、REST API を使用して Azure VM Backup の�
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
-ms.openlocfilehash: c4aa88399bfbdd7814864170d9861a7b7d14dc58
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: d0baac97b7a1bfb5ac55ee8cacc40dc8f13994a5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757253"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012604"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>REST API を使用して Azure Recovery Services コンテナーを作成する
 
-REST API を使用して Azure Recovery Services コンテナーを作成する手順の概要は、[コンテナー作成 REST API](/rest/api/recoveryservices/vaults/createorupdate) に関するドキュメントで説明されています。 このドキュメントを参考にして、"West US" に "testVault" という名前のコンテナーを作成します。
+REST API を使用して Azure Recovery Services コンテナーを作成する手順の概要は、[コンテナー作成 REST API](/rest/api/recoveryservices/vaults/createorupdate) に関するドキュメントで説明されています。 このドキュメントを参考にして、"West US" に "testVault" という名前のコンテナーを作成しましょう。
 
 Azure Recovery Services コンテナーを作成または更新するには、次の *PUT* 操作を使用します。
 

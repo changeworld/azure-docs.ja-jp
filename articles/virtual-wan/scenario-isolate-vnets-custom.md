@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 84c7b72e3ac7a5726dea38b21b14b5bd83b42340
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0a3665f1719c7a5f8ed9bd6acf518b642e06320d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831024"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400060"
 ---
 # <a name="scenario-custom-isolation-for-vnets"></a>シナリオ:VNet のカスタム分離
 
@@ -29,7 +29,7 @@ Virtual WAN の仮想ハブ ルーティングを使用する場合、多くの�
 | **赤の VNet**  |   &#8594;|              |       X       |       X      |
 | **ブランチ**   |   &#8594;|     X        |       X       |       X      |
 
-前の表の各セルでは、特定のトラフィック フローについて、Virtual WAN 接続 (フローの "ソース" 側、表の行ヘッダー) により接続先プレフィックス (フローの "ターゲット" 側、表の斜体の列ヘッダー) が学習されるかどうかが示されています。
+前の表の各セルでは、特定のトラフィック フローについて、Virtual WAN 接続 (フローの "ソース" 側、表の行ヘッダー) により接続先プレフィックス (フローの "ターゲット" 側、表の斜体の列ヘッダー) が学習されるかどうかが示されています。ここで、"X" は Virtual WAN 経由で接続されることを示します。
 
 異なる行パターンの数は、このシナリオで必要になるルート テーブルの数になります。 この例では、仮想ネットワークの **RT_BLUE** と **RT_RED**、ブランチの **Default** とここでは呼ばれる、3 つのルートを持つルート テーブルです。 ブランチは常に Default ルーティング テーブルに関連付けられている必要があることに注意してください。
 

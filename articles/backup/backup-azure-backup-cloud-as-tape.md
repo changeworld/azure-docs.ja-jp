@@ -3,12 +3,12 @@ title: お使いのテープ インフラストラクチャを置き換える方
 description: Azure でのデータのバックアップと復元を可能にするテープのようなセマンティクスを Azure Backup が提供する方法について説明します。
 ms.topic: conceptual
 ms.date: 04/30/2017
-ms.openlocfilehash: 4174868d391eda70ce4921deee63b8bacf672b4c
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 695cc2644521384527ecd871f3613a078e987aa7
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757236"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378442"
 ---
 # <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>テープから Azure クラウドに長期ストレージを移動する
 
@@ -62,7 +62,7 @@ Backup スケジュールは、バックアップ操作の頻度を示します�
 
 ## <a name="advanced-configuration"></a>詳細な構成
 
-前の画面の **[変更]** をクリックすることによって、顧客はより柔軟に保持スケジュールを指定することができます。
+前の画面で **[変更]** を選択することにより、顧客はより柔軟に保持スケジュールを指定できます。
 
 ![[ポリシーの変更] ウィンドウ](./media/backup-azure-backup-cloud-as-tape/modify.png)
 

@@ -3,12 +3,12 @@ title: Azure CLI を使用して Azure ファイル共有をバックアップ�
 description: Recovery Services コンテナー内のバックアップされた Azure ファイル共有を、Azure CLI を使用してバックアップする方法について説明します
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: 9afd1e866c85770a8797493c3f89e531e2ef72fc
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: cc4422a7d20dbd231729922bd013549d5276deb1
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763254"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182209"
 ---
 # <a name="back-up-azure-file-shares-with-cli"></a>CLI を使用して Azure ファイル共有をバックアップする
 

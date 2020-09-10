@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: a7cc135555db2673225d857bf6a21e57de3e3f6b
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: ad5b4245cc445ecf8fae22c39db3365d71730a56
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386165"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400145"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Azure Logic Apps の統合サービス環境 (ISE) の保存データを暗号化するためにカスタマー マネージド キーを設定する
 
@@ -225,7 +225,7 @@ ISE を作成する HTTPS PUT 要求を送信してから "*30 分*" 以内に�
 
    1. **[アクセス ポリシー]** ペインでの作業が終了したら、 **[保存]** を選択します。
 
-詳細については、「[マネージド ID で Key Vault の認証を提供する](../key-vault/general/managed-identity.md#grant-your-app-access-to-key-vault)」を参照してください。
+詳細については、[Key Vault で認証を行う方法](/azure/key-vault/general/authentication)に関する記事と [Key Vault のアクセス ポリシーの割り当て](/azure/key-vault/general/assign-access-policy-portal)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

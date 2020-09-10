@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 6f5698c5390a341df505bf5a1f849e121bd754a2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 90a6c287b1341b21f50a808d46cc681b0527f1c0
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258781"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300342"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge ソリューションを運用環境にデプロイするための準備を行う
 
@@ -321,9 +321,9 @@ IoT Edge のデプロイをテストする場合、通常はデバイスにア�
 
 ### <a name="consider-tests-and-cicd-pipelines"></a>テストおよび CI/CD パイプラインを検討する
 
-最も効率的な IoT Edge のデプロイ シナリオの場合は、運用環境のデプロイをテストおよび CI/CD パイプラインに統合することを検討してください。 Azure IoT Edge では、Azure DevOps を含む、複数の CI/CD プラットフォームがサポートされます。 詳細については、「[Azure IoT Edge に対する継続的インテグレーションと継続的配置](how-to-ci-cd.md)」を参照してください。
+最も効率的な IoT Edge のデプロイ シナリオの場合は、運用環境のデプロイをテストおよび CI/CD パイプラインに統合することを検討してください。 Azure IoT Edge では、Azure DevOps を含む、複数の CI/CD プラットフォームがサポートされます。 詳細については、「[Azure IoT Edge に対する継続的インテグレーションと継続的配置](how-to-continuous-integration-continuous-deployment.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 * 詳細については、[IoT Edge の自動デプロイ](module-deployment-monitoring.md)に関するページをご覧ください。
-* IoT Edge で[継続的インテグレーションと継続的配置](how-to-ci-cd.md)がどのようにサポートされるのかを確認します。
+* IoT Edge で[継続的インテグレーションと継続的配置](how-to-continuous-integration-continuous-deployment.md)がどのようにサポートされるのかを確認します。

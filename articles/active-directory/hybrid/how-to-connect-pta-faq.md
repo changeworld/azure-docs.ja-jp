@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 118abaef1fd1458057a7dbe28d5cd74ded55fe28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7046ab3c30e120aaaf285c32e25fce03524a0cf4
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358295"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280164"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory パススルー認証:よく寄せられる質問
 
@@ -29,7 +29,7 @@ ms.locfileid: "85358295"
 
 ## <a name="which-of-the-methods-to-sign-in-to-azure-ad-pass-through-authentication-password-hash-synchronization-and-active-directory-federation-services-ad-fs-should-i-choose"></a>Azure AD へのサインイン方法として、パススルー認証、パスワード ハッシュ同期、Active Directory フェデレーション サービス (AD FS) のうちどれを選択すればよいですか。
 
-Azure AD の各種サインイン方法の比較および組織に合った適切なサインイン方法の選び方については、[こちらのガイド](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)をご覧ください。
+Azure AD の各種サインイン方法の比較および組織に合った適切なサインイン方法の選び方については、[こちらのガイド](./choose-ad-authn.md)をご覧ください。
 
 ## <a name="is-pass-through-authentication-a-free-feature"></a>パススルー認証は無料の機能ですか。
 
@@ -39,7 +39,7 @@ Azure AD の各種サインイン方法の比較および組織に合った適�
 
 いいえ。 パススルー認証は、世界中の Azure AD のインスタンスでのみ使用できます。
 
-## <a name="does-conditional-access-work-with-pass-through-authentication"></a>[条件付きアクセス](../active-directory-conditional-access-azure-portal.md)は、パススルー認証と連携しますか。
+## <a name="does-conditional-access-work-with-pass-through-authentication"></a>[条件付きアクセス](../conditional-access/overview.md)は、パススルー認証と連携しますか。
 
 はい。 Microsoft Azure Multi-Factor Authentication を含め、すべての条件付きアクセス機能がパススルー認証と連携します。
 
@@ -113,7 +113,7 @@ Azure AD Connect を使用して、サインイン方法をパスワード ハ�
 
 パススルー認証エージェントが実行されている間はアクティブなままであり、ユーザーのサインイン要求を継続的に処理します。 認証エージェントをアンインストールするには、 **[コントロール パネル]、[プログラム]、[プログラムと機能]** の順に選択し、**Microsoft Azure AD Connect 認証エージェント**と **Microsoft Azure AD Connect Agent Updater** プログラムの両方をアンインストールします。
 
-上記の手順を完了した後、[Azure Active Directory 管理センター](https://aad.portal.azure.com)の [パススルー認証] ブレードを確認すると、認証エージェントは**非アクティブ**と表示されます。 これは "_予期されること_" です。 認証エージェントは数日後に自動的に一覧から削除されます。
+上記の手順を完了した後、[Azure Active Directory 管理センター](https://aad.portal.azure.com)の [パススルー認証] ブレードを確認すると、認証エージェントは**非アクティブ**と表示されます。 これは "_予期されること_" です。 認証エージェントは 10 日後に自動的に一覧から削除されます。
 
 ## <a name="i-already-use-ad-fs-to-sign-in-to-azure-ad-how-do-i-switch-it-to-pass-through-authentication"></a>既に AD FS を使用して、Azure AD にサインインしています。 これをパススルー認証に切り替えるには、どうすればよいですか。
 
@@ -148,7 +148,7 @@ AD FS (または他のフェデレーション テクノロジ) からパスス�
 
 ## <a name="why-do-i-need-a-cloud-only-global-administrator-account-to-enable-pass-through-authentication"></a>パススルー認証を有効にするためにクラウド専用のグローバル管理者アカウントが必要なのはなぜですか。
 
-クラウド専用のグローバル管理者アカウントを使用してパススルー認証を有効または無効にすることが推奨されます。 クラウド専用のグローバル管理者アカウントを追加する手順については、[こちら](../active-directory-users-create-azure-portal.md)をご覧ください。 このようにすることで、テナントからロックアウトされないようになります。
+クラウド専用のグローバル管理者アカウントを使用してパススルー認証を有効または無効にすることが推奨されます。 クラウド専用のグローバル管理者アカウントを追加する手順については、[こちら](../fundamentals/add-users-azure-active-directory.md)をご覧ください。 このようにすることで、テナントからロックアウトされないようになります。
 
 ## <a name="how-can-i-disable-pass-through-authentication"></a>パススルー認証を無効にするには、どうすればよいですか。
 
@@ -184,4 +184,3 @@ A:次の状況においては、オンプレミスの UPN の変更点が同期�
 - [セキュリティの詳細](how-to-connect-pta-security-deep-dive.md): パススルー認証機能に関する詳細な技術情報を取得します。
 - [Azure AD シームレス SSO](how-to-connect-sso.md): この補完的な機能の詳細について説明します。
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Azure Active Directory フォーラムを使用して、新しい機能の要求を行います。
-

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e2c516371ada59501edd89491a07014ef949eba
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: f0313c27666cda785b24f23436f6ad727f337ca8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604398"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259355"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>デバイス ID とデスクトップ仮想化
 
@@ -68,7 +68,7 @@ VDI 環境の Azure AD でデバイス ID を構成する前に、サポート�
 
 <sup>4</sup> **マネージド** ID インフラストラクチャ環境は、Azure AD が ID プロバイダーとしてデプロイされていて、[パスワード ハッシュ同期 (PHS)](../hybrid/whatis-phs.md) または[パススルー認証 (PTA)](../hybrid/how-to-connect-pta.md) のいずれかが、[シームレス シングル サインオン](../hybrid/how-to-connect-sso.md)と共に使用される環境を表します。
 
-<sup>5</sup> **最新の Windows で非永続的機能をサポートする**には、下のガイダンス セクションに記載されているように、追加の考慮事項が必要になります。
+<sup>5</sup> **最新の Windows で非永続的機能をサポートする**には、下のガイダンス セクションに記載されているように、追加の考慮事項が必要になります。 このシナリオでは、Windows 10 1803、Windows Server 2019、または Windows Server (半期チャネル) バージョン 1803 以降が必要です。
 
 <sup>6</sup> **ダウンレベルの Windows で非永続的機能をサポートする**には、下のガイダンス セクションに記載されているように、追加の考慮事項が必要になります。
 

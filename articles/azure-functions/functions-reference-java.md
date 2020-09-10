@@ -4,12 +4,12 @@ description: Java を使用して関数を開発する方法について説明�
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java
-ms.openlocfilehash: ffdb6ee9747c76e7f4a6ff3e2f7b65ae96f53fb4
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 1dd98ede537321403053e2e7c8a5f4f7272665d4
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810090"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144925"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions の Java 開発者向けガイド
 
@@ -144,14 +144,16 @@ Azure で関数を実行する関数アプリを作成する場合に使用す�
 
 | Functions バージョン | Java バージョン (Windows) | Java バージョン (Linux) |
 | ----- | ----- | --- |
-| 3.x | 11 (プレビュー)<br/>8<sup>\*</sup> | 11 (プレビュー)<br/>8 |
+| 3.x | 11 (プレビュー)<br/>8 | 11 (プレビュー)<br/>8 |
 | 2.x | 8 | 該当なし |
 
-<sup>\*</sup> これは、Maven アーキタイプによって生成される pom.xml の現在の既定値です。
+デプロイのための Java バージョンを指定しない限り、Azure へのデプロイ中、Maven アーキタイプは既定で Java 8 になります。
 
 ### <a name="specify-the-deployment-version"></a>デプロイ バージョンを指定する
 
-現在、Maven アーキタイプでは、Java 8 を対象とする pom.xml が生成されます。 Java 11 を実行する関数アプリを作成するには、pom.xml の次の要素を更新する必要があります。
+Maven アーキタイプが対象とする Java のバージョンは、`-DjavaVersion` パラメーターを使用して制御できます。 このパラメーターの値には `8` または `11` を指定できます。 Java 11 のサポートは、現在プレビュー段階です。 
+
+Maven アーキタイプでは、指定された Java バージョンを対象とする pom.xml が生成されます。 pom.xml 内の次の要素は、使用する Java バージョンを示しています。
 
 | 要素 |  Java 8 の値 | Java 11 の値 | 説明 |
 | ---- | ---- | ---- | --- |

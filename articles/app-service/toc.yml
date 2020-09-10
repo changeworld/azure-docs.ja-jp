@@ -27,6 +27,8 @@
       href: quickstart-ruby.md
     - name: 静的な HTML サイト
       href: quickstart-html.md
+    - name: ARM テンプレート
+      href: quickstart-arm-template.md
     - name: カスタム コンテナー
       href: quickstart-custom-container.md
     - name: 複数コンテナー アプリ
@@ -89,9 +91,9 @@
       href: operating-system-functionality.md
     - name: デプロイのベスト プラクティス
       href: deploy-best-practices.md
-    - name: セキュリティ
+    - name: Security
       items:
-        - name: 推奨事項
+        - name: Recommendations
           href: security-recommendations.md
         - name: 認証と権限承認
           href: overview-authentication-authorization.md

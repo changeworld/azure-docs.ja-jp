@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault セキュリティ | Microsoft Docs
+title: Azure Key Vault セキュリティ
 description: Azure Key Vault、キー、シークレットのアクセス許可を管理します。 キー コンテナーの認証と承認モデルおよびキー コンテナーをセキュリティで保護する方法について説明します。
 services: key-vault
 author: msmbaldwin
@@ -10,17 +10,16 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
-Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: edef64c215f96b34cd0efbff4521a7d5adb98885
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4c0430f96934c16a26ca3ab908da6aa017810ad0
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870580"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377575"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault セキュリティ
 
-クラウドでは暗号化キーとシークレット (証明書、接続文字列、パスワードなど) を保護する必要があるため、Azure Key Vault を使用します。 機密性が高いビジネスに不可欠なデータを格納するため、コンテナーおよび格納データのセキュリティを最大限に高める手順を実行する必要があります。 この記事では、Azure Key Vault のセキュリティを設計するときに考慮すべき概念の一部について説明します。
+クラウド内の暗号化キーやシークレット (証明書、接続文字列、パスワードなど) を保護するには、Azure Key Vault を使用します。 ビジネスに不可欠な機密データを格納する場合は、コンテナーとそこに格納されるデータのセキュリティを最大化するための手順を実行する必要があります。
 
 ## <a name="identity-and-access-management"></a>ID 管理とアクセス管理
 
@@ -65,7 +64,7 @@ Key Vault アクセス ポリシーでは、キー、シークレット、また
 > [!IMPORTANT]
 > Key Vault アクセス ポリシーでは、特定のキー、シークレット、証明書など、細かいオブジェクト レベルのアクセス許可はサポートされていません。 キーを作成および削除するためのアクセス許可を付与されたユーザーは、そのキー コンテナー内のすべてのキーに対してそれらの操作を実行できます。
 
-キー コンテナーのアクセス ポリシーを設定するには、[Azure portal](https://portal.azure.com/)、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)、[Azure PowerShell](/powershell/azure/)、または [Key Vault 管理 REST API](/rest/api/keyvault/) を使用します。
+キー コンテナーのアクセス ポリシーは、[Azure portal](assign-access-policy-portal.md)、[Azure CLI](assign-access-policy-cli.md)、[Azure PowerShell](assign-access-policy-powershell.md)、または [Key Vault 管理 REST API](/rest/api/keyvault/) を使用して設定できます。
 
 データ プレーンのアクセスは、[Azure Key Vault の仮想ネットワーク サービス エンドポイント](overview-vnet-service-endpoints.md)を使用して制限することができます。 追加のセキュリティ層に対して[ファイアウォールと仮想ネットワーク規則](network-security.md)を構成するできます。
 
@@ -93,7 +92,7 @@ Key Vault のログによって、コンテナーに対して実行されたア�
 - ログにアクセスできるユーザーを制限することでログのセキュリティを保護するには、標準的な Azure アクセス制御方法を使用します。
 - ストレージ アカウントに保持する必要がなくなったログは削除します。
 
-ストレージ アカウントを完全に管理するための推奨事項については、「[Azure Storage セキュリティ ガイド](../../storage/blobs/security-recommendations.md)」を参照してください。
+ストレージ アカウントの安全な管理に関する推奨事項については、「[Azure Storage セキュリティ ガイド](../../storage/blobs/security-recommendations.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -4,12 +4,12 @@ description: Azure Backup サービスを使用して Microsoft Azure Recovery S
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: b46303bdb7fc6c39aafd3046a4bcbc5e0ba75766
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: b3b648ca27a407640b42932fe2ed7c32f5109114
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88893070"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145571"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Azure Backup サービスを使用して Microsoft Azure Recovery Services (MARS) エージェントのバックアップを管理する
 
@@ -173,7 +173,7 @@ ms.locfileid: "88893070"
 
 このセクションでは、MARS で保護されていたソース マシンが、削除、破損、マルウェア/ランサムウェアの感染、または使用停止になったことにより、使用できなくなったシナリオについて説明します。
 
-これらのマシンでは、バックアップ ポリシーで指定された保持規則に従って、最後の復旧ポイントが期限切れにならない (つまり、排除されない) ことが、Azure Backup サービスによって保証されます。 そのため、マシンを安全に復元できます。  バックアップされたデータに対して実行できる次のシナリオを考えてみましょう。
+これらのマシンでは、バックアップ ポリシーで指定された保持規則に従って、最新の復旧ポイントが期限切れにならない (つまり、排除されない) ことが、Azure Backup サービスによって保証されます。 そのため、マシンを安全に復元できます。  バックアップされたデータに対して実行できる次のシナリオを考えてみましょう。
 
 ### <a name="scenario-1-the-source-machine-is-unavailable-and-you-no-longer-need-to-retain-backup-data"></a>シナリオ 1:ソース マシンが使用できなくなり、バックアップ データを保持する必要がなくなった
 

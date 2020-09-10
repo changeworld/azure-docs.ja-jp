@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 82d797189096994e02c77e9d342c00b13dfa187d
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 7898e533da3433040d990863c22d53ca34f384c4
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337094"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318813"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central に接続する
 
@@ -147,10 +147,10 @@ X.509 登録グループにアップロードしたルートまたは中間証�
 
     :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="SAS-IoT-Devices 登録グループのグループ プライマリ キー":::
 
-1. [dps-keygen](https://www.npmjs.com/package/dps-keygen) ツールを使用してデバイスの SAS キーを生成します。 前の手順で得たグループ プライマリ キーを使用します。 デバイス ID は小文字にする必要があります。
+1. `az iot central device compute-device-key` コマンドを使用してデバイスの SAS キーを生成します。 前の手順で得たグループ プライマリ キーを使用します。 デバイス ID は小文字にする必要があります。
 
-    ```cmd
-    dps-keygen -mk:<group primary key> -di:<device ID>
+    ```azurecli
+    az iot central device compute-device-key --primary-key <enrollment group primary key> --device-id <device ID>
     ```
 
 1. デバイス ID、生成されたデバイス SAS キー、アプリケーションの **ID スコープ**の値を使用して、OEM が各デバイスをフラッシュします。

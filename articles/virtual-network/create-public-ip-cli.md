@@ -1,0 +1,112 @@
+---
+title: パブリック IP の作成 - Azure CLI
+description: Azure CLI を使用してパブリック IP を作成する方法について説明します
+services: virtual-network
+documentationcenter: na
+author: blehr
+ms.service: virtual-network
+ms.devlang: na
+ms.topic: how-to
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 08/28/2020
+ms.author: blehr
+ms.openlocfilehash: 4d0934dd30f9738e2a67d4aff23c96a48aaaa61b
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89301068"
+---
+# <a name="quickstart-create-a-public-ip-address-using-azure-cli"></a>クイック スタート:Azure CLI を使用してパブリック IP アドレスを作成する
+
+この記事では、Azure CLI を使用してパブリック IP アドレス リソースを作成する方法について説明します。 これを関連付けることができるリソース、Basic SKU と Standard SKU の違い、およびその他の関連情報については、「[パブリック IP アドレス](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses)」を参照してください。  この例では、IPv4 アドレスのみに焦点を当てます。IPv6 アドレスの詳細については、[Azure VNet の IPv6](https://docs.microsoft.com/azure/virtual-network/ipv6-overview) に関するページを参照してください。
+
+## <a name="prerequisites"></a>前提条件
+
+- ローカルにインストールされた Azure CLI または Azure Cloud Shell
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
+
+CLI をローカルにインストールして使用する場合、このクイックスタートでは Azure CLI バージョン 2.0.28 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
+
+## <a name="create-a-resource-group"></a>リソース グループを作成する
+
+Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
+
+[az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) を使用して、**myResourceGroup** という名前のリソース グループを場所 **eastus2** に作成します。
+
+```azurecli-interactive
+  az group create \
+    --name myResourceGroup \
+    --location eastus2
+```
+---
+# <a name="standard-sku---using-zones"></a>[**Standard SKU - ゾーンの使用**](#tab/option-create-public-ip-standard-zones)
+
+>[!NOTE]
+>次のコマンドは、API バージョン 2020-08-01 以降で動作します。  現在使用されている API バージョンの詳細については、[リソース プロバイダーと種類](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)に関するページを参照してください。
+
+**myResourceGroup** に **myStandardZRPublicIP** という Standard ゾーン冗長パブリック IP アドレスを作成するには、[az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) を使用します。
+
+```azurecli-interactive
+  az network public-ip create \
+    --resource-group myResourceGroup \
+    --name myStandardZRPublicIP \
+    --sku Standard
+    --zone 1,2,3
+```
+> [!IMPORTANT]
+> 2020-08-01 より前の API のバージョンでは、ゾーン冗長 IP アドレスを作成する際、ゾーン パラメーターを指定せずに上記のコマンドを実行します。 
+>
+
+**myResourceGroup** で **myStandardZonalPublicIP** という名前の Standard ゾーン ベースのパブリック IP アドレスをゾーン 2 に作成するには、次のコマンドを使用します。
+
+```azurecli-interactive
+  az network public-ip create \
+    --resource-group myResourceGroupLB \
+    --name myStandardZonalPublicIP \
+    --sku Standard \
+    --zone 2
+```
+
+上記のゾーンのオプションは、[Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones) が利用できるリージョンでのみ有効な選択であることに注意してください。
+
+# <a name="standard-sku---no-zones"></a>[**Standard SKU - ゾーンなし**](#tab/option-create-public-ip-standard)
+
+>[!NOTE]
+>次のコマンドは、API バージョン 2020-08-01 以降で動作します。  現在使用されている API バージョンの詳細については、[リソース プロバイダーと種類](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)に関するページを参照してください。
+
+[az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) を使用して、**myResourceGroup** に **myStandardPublicIP** という名前の Standard パブリック IP アドレスを非ゾーン リソースとして作成します。
+
+```azurecli-interactive
+  az network public-ip create \
+    --resource-group myResourceGroup \
+    --name myStandardPublicIP \
+    --sku Standard
+```
+この選択はすべてのリージョンで有効であり、[Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones) が利用できないリージョンでの Standard パブリック IP アドレスの既定の選択です。
+
+# <a name="basic-sku"></a>[**Basic SKU**](#tab/option-create-public-ip-basic)
+
+**myResourceGroup** に **myBasicPublicIP** という Basic パブリック IP アドレスを作成するには、[az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) を使用します。  Basic パブリック IP には、可用性ゾーンという概念はありません。
+
+```azurecli-interactive
+  az network public-ip create \
+    --resource-group myResourceGroup \
+    --name myBasicPublicIP \
+    --sku Standard
+    --allocation-method Static
+```
+時間の経過と共に IP アドレスが変更されても問題ない場合は、allocation-method を "Dynamic" に変更することで**動的** IP の割り当てを選択できます。
+
+---
+
+## <a name="additional-information"></a>関連情報 
+
+上に示した個々の変数の詳細については、[パブリック IP アドレスの管理](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#create-a-public-ip-address)に関するページを参照してください。
+
+## <a name="next-steps"></a>次のステップ
+- [仮想マシンにパブリック IP アドレス](https://docs.microsoft.com/azure/virtual-network/associate-public-ip-address-vm#azure-portal)を関連付ける。
+- Azure の[パブリック IP アドレス](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)について詳しく学習する。
+- すべての[パブリック IP アドレスの設定](virtual-network-public-ip-address.md#create-a-public-ip-address)について詳しく学習する。

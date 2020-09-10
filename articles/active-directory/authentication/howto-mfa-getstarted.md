@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4fc459e63dd48adb49ab916c368b68cc3a1ccbaf
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: da9a0fe30721a2f55db2c4771f54716868f9972f
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717032"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055075"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Azure Multi-Factor Authentication のデプロイを計画する
 
@@ -110,7 +110,7 @@ Microsoft では、組織が条件付きアクセスを使用し、[ネームド
 管理者は、ユーザーに対して使用可能にする[認証方法](../authentication/concept-authentication-methods.md)を選択できます。 主要な方法を使用できないときにユーザーがバックアップの方法を使用できるよう、複数の認証方法を許可することが重要です。 管理者は次の方法を有効にできます。
 
 > [!TIP]
-> Microsoft では、最適なセキュリティとユーザー エクスペリエンスを実現するために、Azure Multi-Factor Authentication の主要な方法としてモバイル アプリを使用することが推奨されています。
+> Microsoft では、安全性の高い強化されたユーザー エクスペリエンスを実現するために、Azure Multi-Factor Authentication の主要な方法として Microsoft Authenticator (モバイル アプリ) を使用することが推奨されています。 Microsoft Authenticator アプリは、米国国立標準技術研究所の認証保証レベルにも[対応](https://azure.microsoft.com/resources/microsoft-nist/)しています。 
 
 ### <a name="notification-through-mobile-app"></a>モバイル アプリでの通知
 

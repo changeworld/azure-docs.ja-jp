@@ -4,25 +4,27 @@ titleSuffix: Azure Media Services
 description: Azure Media Services での動的暗号化によるコンテンツ保護、ストリーミング プロトコル、および暗号化の種類について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/17/2020
-ms.author: juliako
-ms.custom: seodec18
-ms.openlocfilehash: 0be481d90562ca611b021e2f05d9109eb51958c8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: d0f040961bfb72082f8c5accb86999d489a93de5
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023264"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401386"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Media Services 動的暗号化を使用してコンテンツを保護する
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services を使用すると、メディアがコンピューターから離れてから、保存、処理、配信されるまでの全過程をセキュリティ保護できます。 Media Services では、Advanced Encryption Standard (AES-128) または主要な 3 つのデジタル著作権管理 (DRM) システム コンテンツを配信できます。 Media Services では、承認されたクライアントに AES キーと DRM (PlayReady、Widevine、FairPlay) ライセンスを配信するためのサービスも提供しています。 コンテンツが AES クリア キーで暗号化され、HTTPS で送信される場合、クライアントに到達するまで平文になりません。 
 
@@ -154,6 +156,10 @@ MPEG-DASH プロトコルでは、次のコンテナー形式と暗号化スキ�
 |---|---|---|
 |fMP4|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=cbc)`|
 |fMP4 | CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=cenc)`|
+|fMP4 | PIFF 1.1 (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|
+
+> [!NOTE]
+> PIFF 1.1 のサポートは、初期の "Silverlight" バージョンの Common Encryption を実装したスマート TV (Samsung、LG) で下位互換性を保つためのソリューションとして提供されています。 PIFF 形式は、PIFF 1.1 バージョンの PlayReady 暗号化をサポートしている 2009 ～ 2015 年に出荷された従来の Samsung または LG 製スマート TV をサポートするために必要な場合のみ使用することをお勧めします。 
 
 ### <a name="browsers"></a>ブラウザー
 
@@ -197,7 +203,7 @@ Azure AD を STS として使用することも、[カスタム STS](#using-a-cu
 
 ## <a name="using-a-custom-sts"></a>カスタム STS の使用
 
-ユーザーは、カスタム STS を使ってトークンを提供することがあります。 次のような理由が考えられます。
+ユーザーは、カスタム STS を使ってトークンを提供することがあります。 原因は次のとおりです。
 
 * ユーザーが使用する ID プロバイダー (IDP) が STS をサポートしていない場合。 この場合は、カスタム STS が選択肢になります。
 * ユーザーが、STS とユーザーのサブスクライバー請求システムの統合において、より柔軟性の高い、または厳密な制御を必要とする場合。

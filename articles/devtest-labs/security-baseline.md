@@ -3,12 +3,12 @@ title: Azure DevTest Labs 用の Azure のセキュリティ ベースライン
 description: Azure DevTest Labs 用の Azure のセキュリティ ベースライン
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: ed263ad80250531431840516f2764055c75abd50
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 49b07242068df5d7c46c602140c8b3e1f778e90c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212309"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398324"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs 用の Azure のセキュリティ ベースライン
 
@@ -159,7 +159,7 @@ DevTest Labs には、既定のパスワードという概念がありません�
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: シングル サインオン (SSO) と Azure Active Directory を統合する
 **ガイダンス:** DevTest Labs では、ID 管理用の Azure AD サービスが使用されます。 DevTest ラボに基づく環境へのアクセスをユーザーに許可する場合は、次の 2 つの重要な側面を考慮します。
 
-- **リソース管理:** リソースを管理 (VM の作成、環境の作成、成果物の開始、停止、再起動、削除、適用など) するための Azure portal へのアクセス権を付与します。 Azure でのリソース管理には、ロールベースのアクセス制御 (RBAC) を使用します。 ユーザーにロールを割り当て、リソースとアクセス レベルのアクセス許可を設定します。
+- **リソース管理:** リソースを管理 (VM の作成、環境の作成、成果物の開始、停止、再起動、削除、適用など) するための Azure portal へのアクセス権を付与します。 Azure でのリソース管理には、Azure ロールベースのアクセス制御 (Azure RBAC) を使用します。 ユーザーにロールを割り当て、リソースとアクセス レベルのアクセス許可を設定します。
 - **仮想マシン (ネットワーク レベル)** :既定の構成では、VM にはローカル管理者アカウントが使用されます。 使用できるドメイン (Azure AD Domain Services、オンプレミスのドメイン、またはクラウドベースのドメイン) がある場合は、マシンをドメインに参加させることができます。 ユーザーは、ドメイン参加成果物を使用するドメインベースの ID を使用して、マシンに接続できます。 
 
 - [DevTest Labs の参照アーキテクチャ](devtest-lab-reference-architecture.md#architecture)
@@ -315,9 +315,9 @@ Microsoft によって管理される基になるプラットフォームの場�
 **責任:** Customer
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
-**ガイダンス:** Azure DevTest Labs 内のラボへのアクセスを制御するには、Azure Active Directory (Azure AD) のロールベース アクセス制御 (RBAC) を使用します。
+**ガイダンス:** Azure DevTest Labs 内のラボへのアクセスを制御するには、Azure ロールベースのアクセス制御 (Azure RBAC) を使用します。
 
-- [Azure で RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
+- [Azure RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
 - [DevTest Labs でのロールについて理解する](devtest-lab-add-devtest-user.md)
 
 **Azure Security Center の監視:** 適用なし
@@ -638,12 +638,12 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 **責任:** Customer
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6:カスタム オペレーティング システム イメージを安全に格納する
-**ガイダンス:** カスタム イメージを使用している場合は、ロールベースのアクセス制御 (RBAC) を使用して、承認されたユーザーのみがイメージにアクセスできるようにします。 Shared Image Gallery を使用すると、それを必要とする特定のラボとイメージを共有できます。 コンテナー イメージの場合は、Azure Container Registry に保存し、RBAC を使用して、承認されたユーザーだけがイメージにアクセスできるようにします。
+**ガイダンス:** カスタム イメージを使用している場合は、Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、承認されたユーザーのみがイメージにアクセスできるようにします。 Shared Image Gallery を使用すると、それを必要とする特定のラボとイメージを共有できます。 コンテナー イメージの場合は、Azure Container Registry に保存し、Azure RBAC を使用して、承認されたユーザーだけがイメージにアクセスできるようにします。
 
-- [Azure での RBAC の概要](../role-based-access-control/rbac-and-directory-admin-roles.md)
-- [Azure で RBAC を構成する方法](../role-based-access-control/quickstart-assign-role-user-portal.md)
+- [Azure RBAC について](../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [Azure RBAC を構成する方法](../role-based-access-control/quickstart-assign-role-user-portal.md)
 - [Azure DevTest Labs 用の Shared Image Gallery を構成する](configure-shared-image-gallery.md)
-- [コンテナー レジストリの RBAC を理解する](../container-registry/container-registry-roles.md)
+- [コンテナー レジストリの Azure RBAC を理解する](../container-registry/container-registry-roles.md)
 
 **Azure Security Center の監視:** 適用なし
 
@@ -693,7 +693,8 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 - [マネージド ID を構成して DevTest Labs に Azure Resource Manager 環境をデプロイする](use-managed-identities-environments.md)
 - [マネージド ID を構成して DevTest Labs に仮想マシンをデプロイする](enable-managed-identities-lab-vms.md)
 - [キー コンテナーを作成する方法](../key-vault/quick-create-portal.md)
-- [マネージド ID で Key Vault の認証を提供する方法](../key-vault/managed-identity.md)
+- [Key Vault に対して認証を行う方法](../key-vault/general/authentication.md)
+- [Key Vault のアクセス ポリシーを割り当てる方法](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure Security Center の監視:** はい
 

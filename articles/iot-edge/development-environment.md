@@ -8,12 +8,12 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 96078be20e8048e481a994fefc169e48ab1d8459
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bee1f95e1f56b65912895fec8af2512c6cd7b85a
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76511095"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300376"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>IoT Edge のための開発およびテスト環境の準備
 
@@ -82,10 +82,10 @@ IoT Edge ランタイムは運用環境への配置のみをサポートしま�
 
 | ツール | 別名 | サポートされているプラットフォーム | 最適な用途 |
 | ---- | ------------- | ------------------- | --------- |
-| IoT Edge Hub 開発ツール  | iotedgehubdev | Windows、Linux、MacOS | モジュールをデバッグするためのデバイスのシミュレート。 |
-| IoT Edge 開発コンテナー | microsoft/iotedgedev | Windows、Linux、MacOS | 依存関係をインストールせずに開発。 |
-| コンテナーの IoT Edge ランタイム | iotedgec | Windows、Linux、MacOS、ARM | ランタイムをサポートしないデバイスでのテスト。 |
-| IoT Edge デバイス コンテナー | toolboc/azure-iot-edge-device-container | Windows、Linux、MacOS、ARM | 多数の IoT Edge デバイスが存在する規模の大きいシナリオのテスト。 |
+| IoT Edge Hub 開発ツール  | iotedgehubdev | Windows、Linux、macOS | モジュールをデバッグするためのデバイスのシミュレート。 |
+| IoT Edge 開発コンテナー | microsoft/iotedgedev | Windows、Linux、macOS | 依存関係をインストールせずに開発。 |
+| コンテナーの IoT Edge ランタイム | iotedgec | Windows、Linux、macOS、ARM | ランタイムをサポートしないデバイスでのテスト。 |
+| IoT Edge デバイス コンテナー | toolboc/azure-iot-edge-device-container | Windows、Linux、macOS、ARM | 多数の IoT Edge デバイスが存在する規模の大きいシナリオのテスト。 |
 
 ### <a name="iot-edgehub-dev-tool"></a>IoT Edge Hub 開発ツール
 
@@ -103,7 +103,7 @@ Azure IoT Edge 開発コンテナーは、IoT Edge 開発に必要なすべて�
 
 ### <a name="iot-edge-runtime-in-a-container"></a>コンテナーの IoT Edge ランタイム
 
-コンテナーの IoT Edge ランタイムは、環境変数としてデバイス接続文字列を受け取る完全なランタイムを提供します。 このコンテナーによって、MacOS のようなランタイムをネイティブでサポートしていないシステムで IoT Edge モジュールとシナリオをテストすることができます。 配置するすべてのモジュールは、ランタイム コンテナーの外部で開始されます。 ランタイムと配置するモジュールが同じコンテナー内に存在するようにしたい場合は、IoT Edge デバイス コンテナーを検討してください。
+コンテナーの IoT Edge ランタイムは、環境変数としてデバイス接続文字列を受け取る完全なランタイムを提供します。 このコンテナーによって、macOS のようなランタイムをネイティブでサポートしていないシステムで IoT Edge モジュールとシナリオをテストすることができます。 配置するすべてのモジュールは、ランタイム コンテナーの外部で開始されます。 ランタイムと配置するモジュールが同じコンテナー内に存在するようにしたい場合は、IoT Edge デバイス コンテナーを検討してください。
 
 詳細については、[コンテナーでの Azure IoT Edge の実行](https://github.com/Azure/iotedgedev/tree/master/docker/runtime)に関するページを参照してください。
 
@@ -119,7 +119,7 @@ IoT Edge デバイス コンテナーは、コンテナー エンジンを使用
 
 詳細情報、ガイドライン、およびサンプルについては、以下のページを参照してください。
 
-* [Azure IoT Edge に対する継続的インテグレーションと継続的配置](how-to-ci-cd.md)
-* [Azure DevOps Projects を使用して IoT Edge 用の CI/CD パイプラインを作成する](how-to-devops-project.md)
+* [Azure IoT Edge に対する継続的インテグレーションと継続的配置](how-to-continuous-integration-continuous-deployment.md)
+* [Azure DevOps Starter を使用して IoT Edge 用の CI/CD パイプラインを作成する](how-to-devops-starter.md)
 * [Azure IoT Edge Jenkins プラグイン](https://plugins.jenkins.io/azure-iot-edge)
 * [IoT Edge DevOps GitHub のリポジトリ](https://github.com/toolboc/IoTEdge-DevOps)

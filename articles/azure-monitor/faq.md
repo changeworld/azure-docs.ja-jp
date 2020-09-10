@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: a78e1b9cc1d9ca8a815fdb586287983020232fd1
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 6be16c7726b979ec7a6dfb58f4bff5a82a0f6c43
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782942"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299101"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor についてよくあるご質問
 
@@ -660,7 +660,7 @@ LogEntry : ({"Hello": "This example has multiple lines:","Docker/Moby": "will no
 
 AKS クラスターに対して Azure Monitor for containers を有効にした後、クラスターがデータを送信していた Log Analytics ワークスペースを削除する場合、クラスターをアップグレードしようとすると失敗します。 これを回避するには、監視を無効にしてから、サブスクリプション内の別の有効なワークスペースを参照して、監視を再度有効にする必要があります。 クラスターのアップグレードをもう一度実行しようとすると、正常に処理され、完了するはずです。  
 
-### <a name="which-ports-and-domains-do-i-need-to-openwhitelist-for-the-agent"></a>エージェントに対して、どのポートとドメインを開くまたはホワイトリスト登録する必要がありますか
+### <a name="which-ports-and-domains-do-i-need-to-openallow-for-the-agent"></a>エージェントに対して開いたり許可したりする必要があるポートとドメインはどれですか?
 
 Azure、Azure US Government、および Azure China 21Vianet クラウドでコンテナー化されたエージェントに必要なプロキシとファイアウォールの構成情報については、「[ネットワーク ファイアウォールの要件](insights/container-insights-onboard.md#network-firewall-requirements)」をご覧ください。
 

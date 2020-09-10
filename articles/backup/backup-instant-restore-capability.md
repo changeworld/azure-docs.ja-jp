@@ -4,18 +4,18 @@ description: Azure のインスタント リストア機能と、VM バックア
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: ddc8e8fa460943c09f80ebb462b1dbd578f9b23b
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 69348a9902224f9f73f80d5b1900143c885d20ee
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892628"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000381"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Azure Backup のインスタント リストア機能を使用してバックアップと復元のパフォーマンスを改善する
 
 > [!NOTE]
 > ユーザーからのフィードバックに基づき、Azure Stack 機能との混同を避けるため、名前を **VM バックアップ スタック V2** から**インスタント リストア**に変更しています。
-> Azure のすべてのバックアップ ユーザーは、**インスタント リストア**にアップグレードされました。
+> すべての Azure Backup ユーザーは、**インスタント リストア**にアップグレードされました。
 
 インスタント リストアの新しいモデルでは、次の機能が強化されています。
 
@@ -108,9 +108,9 @@ VM の変化によって異なります。 安定状態では、コストの増�
 
 新しいモデルでは、スナップショット (階層 1) を削除しない限り、復元ポイント (階層 2) を削除することはできません。 復元ポイント (階層 2) の保持期間がスナップショットの保持期間より長くなるようスケジュール設定することをお勧めします。
 
-### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>バックアップ ポリシーに設定されている保有期間が過ぎても、スナップショットが存在するのはなぜですか。
+### <a name="why-does-my-snapshot-still-exist-even-after-the-set-retention-period-in-backup-policy"></a>バックアップ ポリシーに設定されている保有期間が過ぎても、スナップショットが存在するのはなぜですか。
 
-復旧ポイントにスナップショットがあり、それが利用可能な最新の RP である場合、次のバックアップが成功するまで保持されます。 これは現在、設計されている "ガベージ コレクション" (GC) ポリシーに従ったものです。このポリシーでは、VM での問題によって、今後のすべてのバックアップが失敗した場合に、1 つ以上の最新の RP が常に存在することが要求されます。 通常のシナリオでは、有効期限後、最大 24 時間で RP がクリーンアップされます。
+復旧ポイントにスナップショットがあり、それが利用可能な最新の復旧ポイントである場合、次のバックアップが成功するまで保持されます。 これは、指定された "ガベージ コレクション" (GC) ポリシーに従います。 VM の問題によって後続のすべてのバックアップが失敗する場合に備えて、最新の復旧ポイントが少なくとも 1 つ常に存在している必要があります。 通常のシナリオでは、復旧ポイントは有効期限が切れてから最大 24 時間後にクリーンアップされます。
 
 ### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>インスタント リストア機能は必要ありません。 無効にすることはできますか。
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: b18717b78a271bd390bc221e9ed0723cb02079ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6fee96354760e448de132f88918e9839c6220af3
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484298"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89254493"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の推奨事項とベスト プラクティス
 
@@ -44,6 +44,7 @@ ms.locfileid: "84484298"
 | 使いやすさとセキュリティ | ソリューションでは、アプリケーションの使いやすさと組織におけるリスクの許容レベルとの間で適切なバランスを取る必要があります。 |
 | オンプレミスの依存関係をクラウドに移行する | ソリューションの回復性を確保できるようにするために、クラウドへの既存のアプリケーションの依存関係の移行を検討してください。 |
 | 既存のアプリを b2clogin.com に移行する | login.microsoftonline.com の廃止は、2020 年 12 月 4 日にすべての Azure AD B2C テナントに対して有効になります。 [詳細については、こちらを参照してください](b2clogin.md)。 |
+| Identity Protection と条件付きアクセスを使用する | これらの機能を使用すると、危険な認証やアクセス ポリシーをきわめて厳密に制御できます。 Azure AD B2C Premium P2 が必要です。 [詳細については、こちらを参照してください](conditional-access-identity-protection-overview.md)。 |
 
 ## <a name="implementation"></a>実装
 

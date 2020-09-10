@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 5b450254648cb253d6631397d703430401009f14
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: cff2e918c7b67f6d3bccb9b56366cbf034ed1bb5
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925636"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300104"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Azure Monitor でログ データとワークスペースへのアクセスを管理する
 
@@ -270,7 +270,7 @@ _SecurityBaseline_ テーブルのみのアクセス権を持つロールを作�
     "Microsoft.OperationalInsights/workspaces/query/SecurityBaseline/read"
 ],
 ```
-上記の例では、許可されるテーブルのホワイトリストを定義しています。 次の例は、ユーザーが _SecurityAlert_ テーブルを除くすべてのテーブルにアクセスできる場合のブラックリストの定義を示しています。
+上記の例では、許可されるテーブルのリストを定義しています。 次の例は、ユーザーが _SecurityAlert_ テーブルを除くすべてのテーブルにアクセスできる場合のブロック リストの定義を示しています。
 
 ```
 "Actions":  [

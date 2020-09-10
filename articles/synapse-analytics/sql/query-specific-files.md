@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 6beda409f03938f471f089bceebaa97c6d02ae7e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 04a308805dd69c4d9245d287a391f1e7fa7d50f2
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496221"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055568"
 ---
 # <a name="use-file-metadata-in-queries"></a>クエリでファイルのメタデータを使用する
 
-SQL オンデマンド クエリ サービスを使用すれば、[フォルダーと複数ファイルに対するクエリ](query-folders-multiple-csv-files.md)に関する記事で説明されているように、複数のファイルとフォルダーに対応できます。 この記事では、クエリ内でファイル名とフォルダー名に関するメタデータ情報を使用する方法について説明します。
+「[クエリ フォルダーと複数のファイル](query-folders-multiple-csv-files.md)」の記事で説明されているように、SQL オンデマンドは複数のファイルとフォルダーに対応できます。 この記事では、クエリ内でファイル名とフォルダー名に関するメタデータ情報を使用する方法について説明します。
 
 場合によっては、結果セット内の特定の行に関連するファイル ソースまたはフォルダー ソースを把握しておく必要があります。
 

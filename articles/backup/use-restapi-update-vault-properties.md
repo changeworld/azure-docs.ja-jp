@@ -4,12 +4,12 @@ description: この記事では、REST API を使用してコンテナーの構�
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 3ee2d57b5589daa756020ebb787a5400ed244506
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 8890cb541e38f8bc8b680fbcfeb821f29723e8c0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890044"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007113"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>REST API を使用して Azure Recovery Services コンテナーの構成を更新する
 

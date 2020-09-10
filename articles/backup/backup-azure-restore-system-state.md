@@ -3,12 +3,12 @@ title: Windows Server へのシステム状態の復元
 description: Azure のバックアップから Windows Server のシステム状態を復元する手順について説明します。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 9237d3d087da7f9e72813baa0056cd6b70f2c914
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 824ed5e71934af370211bfa8b4c266fe4323b4ad
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892543"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377439"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Windows Server へのシステム状態の復元
 
@@ -56,7 +56,7 @@ ms.locfileid: "88892543"
 
 8. **[確認]** ウィンドウで回復の詳細を確認し、 **[回復]** を選択します。
 
-   ![[回復] をクリックして回復操作を承認する](./media/backup-azure-restore-system-state/confirm-recovery.png)
+   ![[回復] を選択して回復アクションを確認する](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
 9. 回復先の *WindowsImageBackup* ディレクトリを、サーバーの重要ではないボリュームにコピーします。 通常は、Windows OS ボリュームが重要なボリュームです。
 
@@ -104,7 +104,7 @@ Windows Server が破損したり、アクセス不能になったりしたと�
 
 11. [確認] ウィンドウで回復の詳細を確認し、 **[回復]** を選択します。
 
-    ![[回復] をクリックして回復プロセスを確定する](./media/backup-azure-restore-system-state/confirm-recovery.png)
+    ![[回復] ボタンを選択して回復プロセスを確認する](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
 12. *WindowsImageBackup* ディレクトリを、サーバーの重要ではないボリューム (D: など\) にコピーします。 通常は、Windows OS ボリュームが重要なボリュームです。
 
@@ -112,7 +112,7 @@ Windows Server が破損したり、アクセス不能になったりしたと�
 
 ## <a name="apply-restored-system-state-on-a-windows-server"></a>復元されたシステム状態を Windows Server に適用する
 
-Azure Recovery Services エージェントを使用してシステム状態をファイルとして回復したら、Windows Server バックアップ ユーティリティを使用して、回復したシステム状態を Windows Server に適用します。 Windows Server バックアップ ユーティリティは、サーバーで既に使用可能です。 次の手順では、回復したシステム状態を適用する方法を説明します。
+Azure Recovery Services エージェントを使用してシステム状態をファイルとして回復したら、Windows Server バックアップ ユーティリティを使用して、回復されたシステム状態を Windows Server に適用します。 Windows Server バックアップ ユーティリティは、サーバーで既に使用可能です。 次の手順では、回復したシステム状態を適用する方法を説明します。
 
 1. Windows Server バックアップ スナップインを開きます。 スナップインがインストールされている場所がわからない場合は、コンピューターまたはサーバーで **Windows Server バックアップ**を検索します。
 

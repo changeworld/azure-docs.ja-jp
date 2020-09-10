@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6b62f8c33c73ded978c0c2e3a8c3b7fadea49c96
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 2fdc1cd36c037f163b6b04907248e08ef20e961d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852082"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400026"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>シナリオ:NVA を経由するトラフィックのルーティング
 
@@ -46,7 +46,7 @@ Virtual WAN の仮想ハブ ルーティングを使用する場合、多くの�
 | **NVA 以外の VNet**| &#8594; |   静的 |      X   |        X     |      X    |
 | **ブランチ**     | &#8594; |   静的 |      X   |        X     |      X    |
 
-接続マトリックスの各セルでは、特定のトラフィック フローについて、Virtual WAN 接続 (フローの "ソース" 側、表の行ヘッダー) により接続先プレフィックス (フローの "ターゲット" 側、表の斜体の列ヘッダー) が学習されるかどうかが示されています。 以下、具体例に沿って説明します。
+接続マトリックスの各セルでは、特定のトラフィック フローについて、Virtual WAN 接続 (フローの "ソース" 側、表の行ヘッダー) により接続先プレフィックス (フローの "ターゲット" 側、表の斜体の列ヘッダー) が学習されるかどうかが示されています。 "X" は Virtual WAN 経由でネイティブに接続されることを示し、"静的" は静的ルートを使用して Virtual WAN 経由で接続されることを示します。 以下、具体例に沿って説明します。
 
 * NVA スポークは、Virtual WAN によって管理されていません。 そのため、他の VNet またはブランチとの通信に使用されるメカニズムは、ユーザーによって管理されます。 NVA VNet への接続性は、VNet ピアリングによって提供され、次ホップとして NVA を指す 0.0.0.0/0 への既定のルートは、インターネット、その他のスポーク、およびブランチへの接続に対応している必要があります
 * NVA VNet では自身の NVA スポークは認識されますが、他の NVA VNet に接続されている NVA スポークは認識されません。 たとえば、テーブル 1では、VNet 2 によって VNet 5 と VNet 6 が認識されますが、VNet 7 や VNet 8 などの他のスポークは認識されません。 他のスポークのプレフィックスを NVA VNet に挿入するには、静的ルートが必要です
@@ -132,4 +132,4 @@ NVA 経由のルーティングを設定するには、次のような手順を�
 ## <a name="next-steps"></a>次のステップ
 
 * Virtual WAN の詳細については、[FAQ](virtual-wan-faq.md) を参照してください。
-* 仮想ハブ ルーティングの詳細については、「[仮想ハブのルーティングについて](about-virtual-hub-routing.md)」を参照してください。
+* 仮想ハブのルーティングの詳細については、「[仮想ハブのルーティングについて](about-virtual-hub-routing.md)」を参照してください。

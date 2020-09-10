@@ -5,12 +5,12 @@ services: automation
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: cb598f9a9b8d078c86e9911fa64d872788f47b4b
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: b0b1e31a8c10ba372473c36e35c19044ef02898a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447689"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003356"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Update Management に関する問題のトラブルシューティング
 
@@ -103,7 +103,7 @@ Error details: Failed to enable the Update solution
 
 1. OS に応じて、[Windows](update-agent-issues.md#troubleshoot-offline) 用または [Linux](update-agent-issues-linux.md#troubleshoot-offline) 用のトラブルシューティング ツールを実行します。
 
-2. マシンが適切なワークスペースにレポートしていることを確認します。 この側面を確認する方法については、「[Log Analytics へのエージェント接続を確認する](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-log-analytics)」を参照してください。 このワークスペースが Azure Automation アカウントにリンクされていることも確認します。 確認するには、自分の Automation アカウントに移動して、 **[関連リソース]** の **[リンクされたワークスペース]** を選択します。
+2. マシンが適切なワークスペースにレポートしていることを確認します。 この側面を確認する方法については、「[Azure Monitor へのエージェント接続を確認する](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-azure-monitor)」を参照してください。 このワークスペースが Azure Automation アカウントにリンクされていることも確認します。 確認するには、自分の Automation アカウントに移動して、 **[関連リソース]** の **[リンクされたワークスペース]** を選択します。
 
 3. Automation アカウントにリンクされた Log Analytics ワークスペースにマシンが表示されることを確認します。 Log Analytics ワークスペースで、次のクエリを実行します。
 

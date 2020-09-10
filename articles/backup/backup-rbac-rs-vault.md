@@ -4,19 +4,19 @@ description: ロールベースのアクセス制御を使用して、Recovery S
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: 408e25b865c6d244118e505121492ccf22d19b64
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: c24d075dcb9ac36ce741db746d69aa9e61fac39d
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533463"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376130"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>ロール ベースのアクセス制御を使用した Azure Backup の回復ポイントの管理
 
 Azure のロールベースのアクセス制御 (Azure RBAC) を使用すると、Azure のきめ細かなアクセス管理が可能になります。 RBAC を使用して、チーム内で職務を分離し、職務に必要なアクセス許可のみをユーザーに付与します。
 
 > [!IMPORTANT]
-> Azure Backup によって提供されるロールは、Azure portal 内で実行できるアクションか、REST API または Recovery Services コンテナーの PowerShell または CLI コマンドレットを介して実行できるアクションに制限されています。 これらのロールが、Azure Backup エージェント クライアント UI または System Center Data Protection Manager UI または Azure Backup Server UI で実行されるアクションを使用することはできません。
+> Azure Backup によって提供されるロールは、Azure portal 内で実行できるアクションか、REST API または Recovery Services コンテナーの PowerShell または CLI コマンドレットを介して実行できるアクションに制限されています。 Azure Backup エージェント クライアント UI、System Center Data Protection Manager UI、または Azure Backup Server UI で実行されるアクションは、これらのロールの制御の範囲外です。
 
 Azure Backup では、バックアップの管理操作を制御する 3 つの組み込みロールが提供されます。 [Azure の組み込みロール](../role-based-access-control/built-in-roles.md)について説明します
 
@@ -56,7 +56,7 @@ Azure Backup では、バックアップの管理操作を制御する 3 つの�
 | オンプレミスの Windows Server/クライアント/SCDPM または Azure Backup Server での登録解除 | Backup Contributor | Recovery Services コンテナー |
 
 > [!IMPORTANT]
-> VM 共同作成者を VM リソース スコープで指定し、VM 設定の一部としてバックアップをクリックした場合は、VM が既にバックアップされていても、[バックアップの有効化] 画面が開きます。これは、バックアップ状態を確認するための呼び出しが、サブスクリプション レベルでのみ機能するためです。 これを回避するには、コンテナーに移動して VM のバックアップ項目ビューを開くか、VM 共同作成者ロールをサブスクリプション レベルで指定します。
+> VM リソースのスコープで VM 共同作成者を指定し、VM 設定の一部として **[バックアップ]** を選択すると、その VM が既にバックアップされている場合でも **[バックアップの有効化]** 画面が開きます。 これは、バックアップの状態を確認するための呼び出しがサブスクリプション レベルでしか機能しないためです。 これを回避するには、コンテナーに移動して VM のバックアップ項目ビューを開くか、またはサブスクリプション レベルで VM 共同作成者ロールを指定します。
 
 ## <a name="minimum-role-requirements-for-the-azure-file-share-backup"></a>Azure ファイル共有バックアップに使用されるロールの最低要件
 

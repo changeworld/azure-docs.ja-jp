@@ -3,12 +3,12 @@ title: ハイブリッド Kubernetes クラスターに Azure Monitor for contai
 description: この記事では、Azure Stack などの環境でホストしている Kubernetes クラスターを監視することを目的として Azure Monitor for containers を構成する方法を説明します。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d2ca977f572ee9f60c1ca72fc472f3a6ee6c6362
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 26846148f3212699cecd6db3318cd2da2d9aa783
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498901"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398383"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>ハイブリッド Kubernetes クラスターに Azure Monitor for containers を構成する
 
@@ -71,9 +71,11 @@ Azure Monitor for containers では、次の構成が公式にサポートされ
 
 Hybrid Kubernetes クラスターに対して Azure Monitor for containers を有効にするには、次の手順を順番に実施する必要があります。
 
-1. Log Analytics ワークスペースに Container Insights ソリューションを構成する。
+1. Log Analytics ワークスペースに Container Insights ソリューションを構成する。   
 
 2. Log Analytics ワークスペースで Azure Monitor for containers の HELM チャートを有効にする。
+
+Azure Monitor での監視ソリューションの詳細については、[こちら](../../azure-monitor/insights/solutions.md)をご覧ください。
 
 ### <a name="how-to-add-the-azure-monitor-containers-solution"></a>Azure Monitor のコンテナー ソリューションを追加する方法
 

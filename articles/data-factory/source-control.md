@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/30/2020
-ms.openlocfilehash: d171edb23b482ad1871990dcffd979d2125c4406
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 66cc7b0d4f205a93c41f49ecaadac495a98b6da6
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067411"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949135"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory のソース管理
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -46,7 +46,7 @@ Git 統合が作成作業にもたらす利点をいくつか下の一覧にま�
 -   **パフォーマンスの向上:** Git 統合の平均的なファクトリでは、データ ファクトリ サービスに対し、作成が 1 つの場合に比べ、読み込み速度が 10 倍になります。 このパフォーマンスの向上は、リソースが Git 経由でダウンロードされることに起因します。
 
 > [!NOTE]
-> Git リポジトリが構成されている場合、Azure Data Factory UX では Data Factory サービスを使用した直接作成は無効になります。 PowerShell または SDK を使用して、サービスに直接変更を加えることができます。
+> Git リポジトリが構成されている場合、Azure Data Factory UX では Data Factory サービスを使用した直接作成は無効になります。 PowerShell または SDK を使用して行われた変更は、Data Factory サービスに直接発行され、Git には入力されません。
 
 ## <a name="author-with-azure-repos-git-integration"></a>Azure Repos Git 統合を使用した作成
 

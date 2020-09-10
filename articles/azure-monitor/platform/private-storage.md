@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: a14f7ca3e5a7b291e430db6ea536edc5396b5448
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 58d6f98c87e37254e77bcc8dda1cdca6e608cafc
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318897"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962674"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Azure Monitor におけるログ取り込み用の顧客所有のストレージ アカウント
 
@@ -77,6 +77,8 @@ BYOS を必要とするシナリオの 1 つが、 Private Link によるネッ�
 subscriptions/{subscriptionId}/resourcesGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName1}
 ```
 
+
+## <a name="get-linked-storage-accounts"></a>リンクされたストレージ アカウントを取得する
 
 ### <a name="get-linked-storage-accounts-for-all-data-source-types"></a>すべてのデータソースの型のリンクされたストレージ アカウントを取得する
 

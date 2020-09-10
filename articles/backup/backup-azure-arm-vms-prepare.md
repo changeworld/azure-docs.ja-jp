@@ -3,12 +3,12 @@ title: Recovery Services コンテナーに Azure VM をバックアップする
 description: Azure Backup を使用して Recovery Services コンテナーに Azure VM をバックアップする方法について説明します
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: fd958fe658306fd068356764100e6aaa15f4fc67
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 29895c0358547679a9db7b2f4da203e2b546d67f
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826312"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145656"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Recovery Services コンテナーに Azure VM をバックアップする
 
@@ -155,7 +155,7 @@ ms.locfileid: "88826312"
 失敗 | 失敗 | 失敗
 
 この機能により、同じ VM に対して 2 つのバックアップを並列に実行できるようになりましたが、どちらのフェーズ (スナップショット、コンテナーへのデータ転送) でも実行できるのは 1 つのサブタスクだけです。 この分離機能により、進行中のバックアップ ジョブが翌日のバックアップになって失敗するシナリオは回避されます。 次の日のバックアップは、前の日のバックアップ ジョブが進行中の状態にある場合、**コンテナーへのデータ転送**がスキップされた状態でスナップショットを完了できます。
-コンテナーで作成された増分型の復旧ポイントは、コンテナーで作成された最後の復旧ポイントからのすべてのチャーンをキャプチャします。 ユーザーへのコストの影響はありません。
+コンテナーで作成された増分復旧ポイントは、コンテナーで作成された最新の復旧ポイントからのすべてのチャーンをキャプチャします。 ユーザーへのコストの影響はありません。
 
 ## <a name="optional-steps"></a>省略可能な手順
 

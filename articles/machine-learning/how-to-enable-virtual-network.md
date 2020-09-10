@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: 0a7a5f21ee868da2b9c3a6c7dc8bb5968531d0d0
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 9bf8843fa807bde1032d9bba92f09b8c9e9e39e6
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824204"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280045"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>プライベート仮想ネットワークでのトレーニング中や推論中のネットワークの分離
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -60,10 +60,6 @@ __仮想ネットワーク__は、パブリック インターネットから Az
 > | 仮想ネットワーク内の Azure Container Registry | ✔ | |
 > | ワークスペースのカスタマー マネージド キー | ✔ | |
 > 
-
-> [!WARNING]
-> 
-> Azure Machine Learning コンピューティング インスタンス プレビューは、Private Link が有効になっているワークスペースではサポートされていません。
 
 <a id="amlcompute"></a>
 
@@ -269,6 +265,7 @@ validate=False)
 > クラスターの場合、クラスターが 0 ノードにスケールダウンするたびに、これらのリソースは削除 (および再作成) されます。しかし、インスタンスの場合は、インスタンスが完全に削除されるまで、リソースは保持されます (停止してもリソースは削除されません)。 
 > これらのリソースは、サブスクリプションの[リソース クォータ](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)によって制限されます。
 
+Private Link が有効になっているワークスペースでコンピューティング インスタンスを使用するには、コンピューティング インスタンスとワークスペースが __eastus__、__westus2__、または __southcentralus__ リージョンに存在する必要があります。
 
 ### <a name="required-ports"></a><a id="mlcports"></a>必須ポート
 
@@ -438,7 +435,7 @@ except ComputeTargetException:
     cpu_cluster.wait_for_completion(show_output=True)
 ```
 
-作成プロセスが完了したら、実験でクラスターを使用してモデルをトレーニングします。 詳細については、[トレーニング用のコンピューティング ターゲットの選択と使用](how-to-set-up-training-targets.md)に関するページをご覧ください。
+作成プロセスが完了したら、実験でクラスターを使用してモデルをトレーニングします。 詳細については、[トレーニング用のコンピューティング先の使用](how-to-set-up-training-targets.md)に関する記事をご覧ください。
 
 [!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
 
@@ -667,7 +664,7 @@ Azure Firewall での Azure Machine Learning の使用の詳細については�
 > * Azure Machine Learning ワークスペースのリージョンは、[Private Link が有効なリージョン](https://docs.microsoft.com/azure/private-link/private-link-overview#availability)である必要があります。 
 > * Azure Container Registry が Premium バージョンである必要があります。 アップグレードの詳細については、「[SKU の変更](/azure/container-registry/container-registry-skus#changing-skus)」を参照してください。
 > * トレーニングまたは推論に使用されるストレージ アカウントとコンピューティング ターゲットと同じ仮想ネットワークとサブネット内に Azure Container Registry が存在している必要があります。
-> * Azure Machine Learning ワークスペースに、[Azure Machine Learning コンピューティング クラスター](how-to-set-up-training-targets.md#amlcompute)が含まれている必要があります。
+> * Azure Machine Learning ワークスペースに、[Azure Machine Learning コンピューティング クラスター](how-to-create-attach-compute-sdk.md#amlcompute)が含まれている必要があります。
 >
 >     ACR が仮想ネットワークの背後にある場合、Azure Machine Learning でそれを使用して Docker イメージを直接構築することはできません。 代わりに、コンピューティング クラスターを使用してイメージが構築されます。
 
@@ -828,14 +825,15 @@ Azure Machine Learning では、ワークスペースに関連付けられてい
 
     ネットワーク セキュリティ グループの既定のアウトバウンド規則を保持します。 詳細については、「[セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules)」の既定のセキュリティ規則をご覧ください。
 
+
     既定のアウトバウンド規則を使用せずに仮想ネットワークのアウトバウンド アクセスを制限したい場合は、「[仮想ネットワークからのアウトバウンド接続を制限する](#limiting-outbound-from-vnet)」セクションを参照してください。
 
-1. VM または HDInsight クラスターをお客様の Azure Machine Learning のワークスペースにアタッチします。 詳細については、「[モデル トレーニング用のコンピューティング ターゲットを設定する](how-to-set-up-training-targets.md)」をご覧ください。
+1. VM または HDInsight クラスターをお客様の Azure Machine Learning のワークスペースにアタッチします。 詳細については、[モデル トレーニング用のコンピューティング先の使用](how-to-set-up-training-targets.md)に関する記事をご覧ください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-* [トレーニング環境をセットアップする](how-to-set-up-training-targets.md)
+* [モデル トレーニング用のコンピューティング ターゲットを使用する](how-to-set-up-training-targets.md)
 * [プライベート エンドポイントをセットアップする](how-to-configure-private-link.md)
 * [モデルをデプロイする場所](how-to-deploy-and-where.md)
 * [TLS を使用して Azure Machine Learning による Web サービスをセキュリティで保護する](how-to-secure-web-service.md)

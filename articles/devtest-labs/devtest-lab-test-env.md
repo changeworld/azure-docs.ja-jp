@@ -3,12 +3,12 @@ title: VM と PaaS のテスト環境に Azure DevTest Labs を使用する | Mi
 description: VM と PaaS のテスト環境シナリオに Azure DevTest Labs を使う方法を説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 9207c070c13c5e276a6ab95e3bcf1bb8671dc382
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 978071aa160098612a5effebfb30d5d58b777df7
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87272897"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299832"
 ---
 # <a name="use-azure-devtest-labs-for-vm-and-paas-test-environments"></a>VM と PaaS のテスト環境に Azure DevTest Labs を使用する
 
@@ -46,7 +46,7 @@ Azure DevTest Labs を使うと多くの重要なシナリオを実装できま�
    
    | タスク | 学習内容 |
    | --- | --- |
-   | [Azure Marketplace イメージの構成](devtest-lab-configure-marketplace-images.md) |Azure Marketplace イメージをホワイトリストに登録し、テスト担当者に必要なイメージのみを利用できるようにする方法について学びます。|
+   | [Azure Marketplace イメージの構成](devtest-lab-configure-marketplace-images.md) |Azure Marketplace イメージで、テスト担当者に必要なイメージのみを選択できるようにする方法について説明します。|
    | [カスタム イメージの作成](devtest-lab-create-template.md) |必要なソフトウェアを事前にインストールしてカスタム イメージを作成し、テスト担当者がそのカスタム イメージを使って VM を迅速に作成できるようにします。|
    | [イメージ ファクトリについて](./devtest-lab-faq.md#blog-post) |イメージ ファクトリを設定して使う方法を説明するビデオをご覧ください。|
 

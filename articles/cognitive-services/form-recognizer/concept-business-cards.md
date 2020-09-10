@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 039f7343bcef64db9ad9eae558cd3e97f3678c59
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 1163531fb5a6aa7158bd81ff9095ed1ee29e73c1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799283"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004903"
 ---
 # <a name="business-card-concepts"></a>名刺の概念
 
-Azure Form Recognizer では、事前構築済みモデルの 1 つを使用して、名刺からキーと値のペアを分析して抽出できます。 Business Card API は、強力な光学式文字認識 (OCR) 機能と名刺解釈モデルを組み合わせて、英語の名刺から重要な情報を抽出します。 抽出されるのは、個人の連絡先情報、会社名、役職などです。 Form Recognizer v2.1 プレビューで事前構築済み Business Card API が公開されています。 
+Azure Form Recognizer では、事前構築済みモデルの 1 つを使用して、名刺から連絡先情報を分析して抽出できます。 Business Card API は、強力な光学式文字認識 (OCR) 機能と名刺解釈モデルを組み合わせて、英語の名刺から重要な情報を抽出します。 抽出されるのは、個人の連絡先情報、会社名、役職などです。 Form Recognizer v2.1 プレビューで事前構築済み Business Card API が公開されています。 
 
 ## <a name="what-does-the-business-card-api-do"></a>Business Card API の機能
 
@@ -27,10 +27,11 @@ Business Card API は、名刺からキー フィールドを抽出し、それ�
 
 ![FOTT + JSON 出力からの Contoso の明細画像](./media/business-card-english.jpg)
 
-### <a name="fields-extracted"></a>抽出されるフィールド: 
+### <a name="fields-extracted"></a>抽出されるフィールド:
+
 * 連絡先の名前 
-* 名 
-* 姓 
+  * 名
+  * 姓
 * 会社名 
 * Departments 
 * 役職 
@@ -43,7 +44,7 @@ Business Card API は、名刺からキー フィールドを抽出し、それ�
   * 勤務先の電話 
   * その他の電話 
 
-また、Business Card API は、すべての認識されたテキストを名刺から返します。 この OCR 出力は JSON 応答に含まれています。  
+また、Business Card API では、名刺から認識されたすべてのテキストを返すこともできます。 この OCR 出力は JSON 応答に含まれています。  
 
 ### <a name="input-requirements"></a>入力要件 
 
@@ -51,7 +52,7 @@ Business Card API は、名刺からキー フィールドを抽出し、それ�
 
 ## <a name="the-analyze-business-card-operation"></a>名刺の分析操作
 
-[名刺の分析](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)では、名刺の画像または PDF を入力として受け取り、目的の値やテキストを抽出します。 この呼び出しにより、`Operation-Location` という応答ヘッダー フィールドが返されます。 `Operation-Location` 値は、次の手順で使用される結果 ID を含む URL です。
+[名刺の分析](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)では、名刺の画像または PDF を入力として受け取り、目的の値を抽出します。 この呼び出しにより、`Operation-Location` という応答ヘッダー フィールドが返されます。 `Operation-Location` 値は、次の手順で使用される結果 ID を含む URL です。
 
 |応答ヘッダー| 結果の URL |
 |:-----|:----|
@@ -63,18 +64,15 @@ Business Card API は、名刺からキー フィールドを抽出し、それ�
 
 |フィールド| 型 | 設定可能な値 |
 |:-----|:----:|:----|
-|status | string | notStarted: 分析操作は開始されていません。 |
-| |  | running: 分析操作が進行中です。 |
-| |  | failed: 分析操作は失敗しました。 |
-| |  | succeeded: 分析操作は成功しました。 |
+|status | string | notStarted: 分析操作は開始されていません。<br /><br />running: 分析操作が進行中です。<br /><br />failed: 分析操作は失敗しました。<br /><br />succeeded: 分析操作は成功しました。|
 
-**status** フィールドの値が **succeeded** の場合、JSON 応答には名刺の解釈とテキスト認識の結果が含まれます。 名刺の解釈の結果は名前付きフィールド値のディクショナリとして編成され、各値には、抽出されたテキスト、正規化された値、境界ボックス、信頼および対応する単語要素が含まれます。 テキスト認識の結果は行と単語の階層として編成され、テキスト、境界ボックス、信頼情報が含まれます。
+**status** フィールドの値が **succeeded** の場合、JSON 応答には名刺の解釈と、必要に応じてテキスト認識の結果 (要求した場合) が含まれます。 名刺の解釈の結果は名前付きフィールド値のディクショナリとして編成され、各値には、抽出されたテキスト、正規化された値、境界ボックス、信頼および対応する単語要素が含まれます。 テキスト認識の結果は行と単語の階層として編成され、テキスト、境界ボックス、信頼情報が含まれます。
 
 ![サンプルの名刺の出力](./media/business-card-results.png)
 
 ### <a name="sample-json-output"></a>サンプル JSON 出力
 
-成功した JSON 応答の例を次に示します。"readResults" ノードには、認識されたすべてのテキストが格納されます。 テキストは、まずページごとに整理され、そのうえで行ごと、さらに個々の単語ごとに整理されます。 "documentResults" ノードには、モデルによって検出された名刺固有の値が格納されます。 名、姓、会社名など、大切なキーと値のペアが存在する場所です。
+成功した JSON 応答の例を次に示します。"readResults" ノードには、認識されたすべてのテキストが格納されます。 テキストは、まずページごとに整理され、そのうえで行ごと、さらに個々の単語ごとに整理されます。 "documentResults" ノードには、モデルによって検出された名刺固有の値が格納されます。 名、姓、会社名など、大切な連絡先情報が存在する場所です。
 
 ```json
 {
@@ -394,5 +392,4 @@ Business Card API で抽出されたデータは、さまざまな作業を行�
 - クイックスタートに従って、[Python での Business Card API のクイックスタート](./quickstarts/python-business-cards.md)を開始します。
 - [Form Recognizer REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) について学習します。
 - [Form Recognizer](overview.md) の詳細を確認します。
-
 

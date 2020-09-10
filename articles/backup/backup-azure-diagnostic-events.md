@@ -3,12 +3,12 @@ title: Recovery Services コンテナーの診断設定を使用する
 description: この記事では、Azure Backup の新旧の診断イベントの使用方法を説明します。
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: e5f666886dca0959b0f06b799088cadf4593ec39
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 3d10053bae5148f33dba6d1207a81bdb16c37577
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826669"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182600"
 ---
 # <a name="use-diagnostics-settings-for-recovery-services-vaults"></a>Recovery Services コンテナーの診断設定を使用する
 

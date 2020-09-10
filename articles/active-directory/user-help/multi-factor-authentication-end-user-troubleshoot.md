@@ -9,33 +9,33 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 08/20/2020
+ms.date: 09/01/2020
 ms.author: curtand
 ms.reviewer: kexia
 metadata ms.custom: contperfq1
-ms.openlocfilehash: 61ba06054e86d544ae4ab1edbdef8d86667ef3b2
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 3d95ad4aa100b0a185bde015dfe34d747fc77ec9
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796580"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322604"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>2 要素認証と職場または学校アカウントの一般的な問題
 
-Azure Active Directory (Azure AD) 組織では、2 要素認証 (2FV) を有効にできます。 2FV には、だれもが願うよりも頻繁に発生するように思われる一般的な問題がいくつか存在します。 この記事に、最も一般的な問題の修正方法をまとめました。
+2 要素認証では、誰もがそうあってほしいと思うより頻繁に、一般的な問題が発生します。 この記事に、最も一般的な問題の修正方法をまとめました。
 
-2FV がオンになっている場合にアカウントにサインインするには、以下のデータの組み合わせが必要です。
+Azure Active Directory (Azure AD) 組織では、アカウントの 2 要素認証を有効にしている可能性があります。 2 要素検証が有効な場合、アカウントのサインインには次のデータの組み合わせが必要です。
 
 - ユーザー名
 - お使いのパスワード
 - モバイル デバイスまたは電話
 
-2FV では、_知っている_何かに加えて、_持っている_何か必要とされるため、2FV の安全性はパスワードだけの場合よりも高くなります。 ユーザーの物理的な電話を持っているハッカーはいないのです。
+2 要素認証はパスワードのみよりも安全です。2 要素認証では、ユーザーが "_知っていること_" とユーザーが "_持っているもの_" が必要になるためです。 ユーザーの物理的な電話を持っているハッカーはいないのです。
 
 >[!Important]
 >管理者の方は、 Azure AD 環境の設定と管理方法の詳細については、「[Azure AD のドキュメント](../index.yml)」をご参照ください。
 
-このコンテンツは、職場または学校アカウント、つまり勤務先から支給されるアカウント (dritan@contoso.com など) での使用をサポートすることを目的としています。 ご自身のために自分で設定するアカウント (danielle@outlook.com など) である個人用 Microsoft アカウントでの 2 要素認証に関して問題がある場合は、[Microsoft アカウントの 2 要素認証を有効または無効にする方法](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)に関するページをご参照ください。
+このコンテンツを参照すると、職場または学校アカウント、つまり勤務先から支給されるアカウント (dritan@contoso.com など) を使用する際に役立ちます。 ご自身のために自分で設定するアカウント (danielle@outlook.com など) である個人用 Microsoft アカウントでの 2 要素認証に関して問題がある場合は、[Microsoft アカウントの 2 要素認証を有効または無効にする方法](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)に関するページをご参照ください。
 
 ## <a name="i-dont-have-my-mobile-device-with-me"></a>自分のモバイル デバイスを持っていません
 
@@ -51,7 +51,15 @@ Azure Active Directory (Azure AD) 組織では、2 要素認証 (2FV) を有効�
 
 2. 他の認証方法を選択し、2 要素認証を続行します。
 
-## <a name="i-lost-my-mobile-device-or-it-was-stolen"></a>モバイル デバイスを紛失したか、または盗難にあいました
+## <a name="i-cant-turn-two-factor-verification-off"></a>2 要素認証を無効にできません
+
+- alain@outlook.com などの Microsoft サービスの個人アカウントで 2 要素認証を使用している場合は、[この機能をオンまたはオフにする](https://account.live.com/proofs/Manage)ことができます。
+
+- 職場または学校のアカウントで 2 要素認証を使用している場合、追加したこのセキュリティ機能を使用しなければならないと組織が決定している可能性があります。 個別に無効にする方法はありません。
+
+2 要素認証を無効にできない場合は、組織レベルで適用されているセキュリティの既定値群が原因である可能性もあります。 セキュリティの既定値の詳細については、[セキュリティの既定値](../fundamentals/concept-fundamentals-security-defaults.md)に関する記事を参照してください。
+
+## <a name="my-device-was-lost-or-stolen"></a>デバイスの紛失または盗難
 
 モバイル デバイスを紛失した場合やモバイル デバイスが盗まれた場合は、次のいずれかのアクションを行うことができます。
 
@@ -72,14 +80,14 @@ Azure Active Directory (Azure AD) 組織では、2 要素認証 (2FV) を有効�
 デバイス信号とインターネット接続があることを確認します | 通話とテキスト メッセージがモバイル デバイスに送信されていることを確認します。 友人に頼んで、電話での呼び出しとテキスト メッセージの送信を行ってもらい、両方とも受信することを確認するします。 通話やテキストを受信しない場合は、最初にモバイル デバイスの電源が入っていることを確認します。 デバイスの電源がオンであっても通話やテキストをまだ受信していない場合は、おそらくネットワークに問題があります。 お使いのプロバイダーに連絡する必要があります。 信号関連の問題が頻繁に発生する場合は、モバイル デバイスに [Microsoft Authenticator アプリ](user-help-auth-app-download-install.md)をインストールして使用することをお勧めします。 Authenticator アプリを使用すると、電波またはインターネット接続を必要とせずに、サインイン用のランダムなセキュリティ コードを生成できます。
 応答不可をオフにします | モバイル デバイスの**応答不可**機能が有効になっていないことを確認します。 この機能が有効になっていると、モバイル デバイスで通知を受け取ることができません。 この機能を無効にする方法については、モバイル デバイスのマニュアルを参照してください。
 電話番号をブロック解除します | 米国の場合、Microsoft からの音声通話は、+1 (866) 539 4191、+1 (855) 330 8653、+1 (877) 668 6536 から発信されます。
-バッテリに関連する設定を確認します | これは一見、少し奇妙に思えます。 しかし、バッテリの最適化を設定し、使用頻度の低いアプリがバックグラウンドでアクティブのままにならないようにしている場合は、通知システムが高い確率で影響を受けています。 この問題を解決するには、認証アプリとメッセージング アプリの両方に対してバッテリ最適化を無効にします。 その後、お使いのアカウントに再度サインインしてみてください。
-サードパーティ製のセキュリティ アプリを無効にします | 一部の電話セキュリティ アプリでは、いらいらさせる不明な発信元からのテキスト メッセージや通話がブロックされます。 このようなアプリを使用すると、電話での確認コードの受信が妨げられる可能性があります。 お使いの電話でサードパーティ製のセキュリティ アプリを無効にしてから、別の確認コードを送信するよう依頼してください。
+バッテリに関連する設定を確認します | バッテリの最適化を設定し、使用頻度の低いアプリがバックグラウンドでアクティブのままにならないようにしている場合は、通知システムが影響を受けている可能性があります。 認証アプリとメッセージング アプリの両方でバッテリの最適化をオフにしてみてください。 その後、お使いのアカウントに再度サインインしてみてください。
+サードパーティ製のセキュリティ アプリを無効にします | 一部の電話セキュリティ アプリでは、いらいらさせる不明な発信元からのテキスト メッセージや通話がブロックされます。 セキュリティ アプリを使用すると、電話での確認コードの受信が妨げられる可能性があります。 お使いの電話でサードパーティ製のセキュリティ アプリを無効にしてから、別の確認コードを送信するよう依頼してください。
 
 ## <a name="im-not-being-prompted-for-my-second-verification-information"></a>2 番目の検証情報の入力を求めるメッセージが表示されていません
 
 自分のユーザー名とパスワードを使って、職場または学校用のアカウントにサインインします。 次に、追加のセキュリティ検証情報の入力を求めるメッセージが表示されるはずです。 メッセージが表示されない場合は、お使いのデバイスをまだ設定していない可能性があります。 特定の追加のセキュリティ検証方法を使用するように、モバイル デバイスを設定する必要があります。
 
-モバイル デバイスの電源がオンになっていて使用可能なことを確認するには、[2 要素認証方法の設定の管理](multi-factor-authentication-end-user-manage-settings.md)に関する記事を参照してください。 デバイスまたはアカウントを設定していないことがわかっている場合は、[2 段階認証のアカウントの設定](multi-factor-authentication-end-user-first-time.md)に関する記事の手順に従って、これを行うことができます。
+デバイスをまだ設定していない可能性があります。 特定の追加のセキュリティ検証方法を使用するように、モバイル デバイスを設定する必要があります。 検証方法でモバイル デバイスを使用できるようにする手順については、[2 要素認証方法の設定の管理](multi-factor-authentication-end-user-manage-settings.md)に関するページを参照してください。 デバイスまたはアカウントをまだ設定していないことがわかっている場合は、[2 段階認証のアカウントの設定](multi-factor-authentication-end-user-first-time.md)に関する記事の手順に従って、これを行うことができます。
 
 ## <a name="i-have-a-new-phone-number-and-i-want-to-add-it"></a>新しい電話番号があるのでそれを追加したい
 
@@ -95,13 +103,13 @@ Azure Active Directory (Azure AD) 組織では、2 要素認証 (2FV) を有効�
 
 省略可能な手順:
 
-- モバイル デバイスに Microsoft Authenticator アプリをインストールしてセットアップします。 記事「[Microsoft Authenticator アプリのダウンロードとインストール](user-help-auth-app-download-install.md)」の手順に従ってインストールします。
+- 「[Microsoft Authenticator アプリのダウンロードとインストール](user-help-auth-app-download-install.md)」の手順に従って、モバイル デバイスに Microsoft Authenticator アプリをインストールします。
 
-- 信頼されたデバイスで 2 要素認証 (2FV) を有効にします。 [2 要素認証方法の設定の管理](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)に関する記事の、「**信頼されたデバイスで 2 要素認証のプロンプトを有効にする**」セクションの手順に従って 2FV を有効にします。
+- 信頼されたデバイスの 2 要素認証を有効にするには、「[2 要素認証方法の設定を管理する](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)」の「**信頼されたデバイスで 2 要素認証のプロンプトを有効にする**」に関する手順に従います。
 
 ## <a name="im-having-problems-signing-in-on-my-mobile-device-while-traveling"></a>旅行中にモバイル デバイスにサインインするときに問題が発生します
 
-外国にいるときは、テキスト メッセージングなどのモバイル デバイス関連の検証方法を使用するのが難しい場合があります。 また、モバイル デバイスでローミング料金が発生する可能性もあります。 このような状況では、Wi-Fi ホットスポット接続オプションを有効にして Microsoft Authenticator アプリを使用することをお勧めします。 モバイル デバイスに Microsoft Authenticator アプリをセットアップする方法の詳細については、「[Microsoft Authenticator アプリのダウンロードとインストール](user-help-auth-app-download-install.md)」を参照してください。
+外国にいるときは、テキスト メッセージングなどのモバイル デバイス関連の検証方法を使用するのが難しい場合があります。 また、モバイル デバイスでローミング料金が発生する可能性もあります。 このような状況では、Wi-Fi ホット スポット接続オプションを有効にして Microsoft Authenticator アプリを使用することをお勧めします。 モバイル デバイスに Microsoft Authenticator アプリをセットアップする方法の詳細については、「[Microsoft Authenticator アプリのダウンロードとインストール](user-help-auth-app-download-install.md)」を参照してください。
 
 ## <a name="i-cant-get-my-app-passwords-to-work"></a>アプリ パスワードを動作させることができません
 

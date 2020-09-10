@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: efcc4aebf16fccc70af7c77f0e8481d24f13b9cd
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 0e83f63e3c39f2aa20cd46f098185aba523e2478
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935264"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950478"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Azure Cognitive Search のプレビュー機能
 
@@ -35,7 +35,7 @@ ms.locfileid: "88935264"
 |  [**Azure Data Lake Storage Gen2 インデクサー**](search-howto-index-azure-data-lake-storage.md) | インデクサー データ ソース | Azure Data Lake Storage Gen2 の内容とメタデータからインデックスを作成します。| バックエンドでご自分のサブスクリプションがサポートされるように、[サインアップ](https://aka.ms/azure-cognitive-search/indexer-preview)する必要があります。 このデータ ソースにアクセスするには、api-version=2020-06-30-Preview または api-version=2019-05-06-Preview の [Create Data Source (REST)](/rest/api/searchservice/create-data-source) を使用します。 |
 | [**moreLikeThis**](search-more-like-this.md) | クエリ | 特定のドキュメントに関連する別のドキュメントを検索します。 この機能は、以前のプレビューからありました。 | このクエリ パラメーターを、api-version=2020-06-30-Preview、2019-05-06-Preview、2016-09-01-Preview または 2017-11-11-Preview の [Search Documents (REST)](/rest/api/searchservice/search-documents) 呼び出しに追加します。 |
 
-## <a name="calling-preview-rest-apis"></a>プレビューの REST API の呼び出し
+## <a name="how-to-call-a-preview-rest-api"></a>プレビューの REST API を呼び出す方法
 
 Azure Cognitive Search では常に、まず REST API によって、次に .NET SDK のプレリリース版で実験機能を事前公開しています。
 
@@ -47,12 +47,14 @@ Azure Cognitive Search では常に、まず REST API によって、次に .NET
 
 + 管理操作の場合、現在のプレビュー バージョンは [ **`2019-10-01-Preview`** ](/rest/api/searchmanagement/index-2019-10-01-preview) です。
 
-古いプレビューはまだ動作しますが、時間がたてば古くなります。 ご自分のコードで `api-version=2019-05-06-Preview`、`api-version=2016-09-01-Preview` または `api-version=2017-11-11-Preview` を呼び出している場合、それらの呼び出しはまだ有効です。 ただし、機能強化の更新が行われるのは、最新のプレビュー バージョンのみです。 
+古いプレビューはまだ動作しますが、時間がたてば古くなります。 ご自分のコードで `api-version=2019-05-06-Preview`、`api-version=2016-09-01-Preview` または `api-version=2017-11-11-Preview` を呼び出している場合、それらの呼び出しはまだ有効です。 ただし、機能強化の更新が行われるのは、最新のプレビュー バージョンのみです。
 
 次のサンプル構文は、API のプレビュー バージョンの呼び出しを示しています。
 
 ```HTTP
-GET https://[service name].search.windows.net/indexes/[index name]/docs?search=*&api-version=2020-06-30-Preview
+POST https://[service name].search.windows.net/indexes/hotels-idx/docs/search?api-version=2020-06-30-Preview  
+  Content-Type: application/json  
+  api-key: [admin key]
 ```
 
 Azure Cognitive Search サービスは複数のバージョンで使用できます。 詳しくは、[API バージョン](search-api-versions.md)に関するページをご覧ください。

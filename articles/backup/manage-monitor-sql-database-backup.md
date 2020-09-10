@@ -3,12 +3,12 @@ title: Azure VM で SQL Server DB を管理および監視する
 description: この記事では、Azure VM 上で実行されている SQL Server データベースを管理し、監視する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 26a1a6cf7bc011edce61a8bb60926dad2cb29a16
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: b0df22002521c8148cac1200e79aeb0ae5a60546
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826635"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146523"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>バックアップされる SQL Server データベースを管理および監視する
 
@@ -55,7 +55,7 @@ Azure Backup では、頻繁に実行される可能性があるスケジュー�
 
 - 復旧ポイントはすべて永久に変更されず、削除はすべて保護の停止で停止し、データを保持します
 - 保護されたインスタンスと使用されたストレージに対して課金されます。 詳細については、「[Azure Backup の価格](https://azure.microsoft.com/pricing/details/backup/)」をご覧ください。
-- バックアップを停止しないでデータ ソースを削除すると、新しいバックアップは失敗します。 古い復旧ポイントはポリシーに従って期限切れになりますが、最後の 1 つの復旧ポイントを、ユーザーがバックアップを停止してデータを削除するまで、常に保持されます。
+- バックアップを停止しないでデータ ソースを削除すると、新しいバックアップは失敗します。 古い復旧ポイントはポリシーに従って期限切れになりますが、最新の復旧ポイントは常に、ユーザーがバックアップを停止してデータを削除するまで保持されます。
 
 データベースの保護を停止するには、次の手順を実行します。
 

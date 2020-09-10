@@ -1,14 +1,14 @@
 ---
 title: リソース ロックについて
 description: ブループリントを割り当てるときにリソースを保護するための Azure Blueprints 内のロック オプションについて説明します。
-ms.date: 03/25/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 94ed8efd0d6c654cba129dfc69fbfe5add7a0824
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 5e60724a276bce94770c5fdc33ee0c8b4e7712fe
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383591"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051504"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Azure Blueprint でのリソース ロックについて
 
@@ -28,7 +28,7 @@ ms.locfileid: "81383591"
 |-|-|-|-|
 |ロックしない|*|ロックなし|リソースは Azure Blueprints によって保護されません。 この状態は、ブループリント割り当ての外部から**読み取り専用**または**削除しない**のリソース グループ アーティファクトに追加されるリソースに対しても使用されます。|
 |[読み取り専用]|Resource group|編集/削除できません|リソース グループは読み取り専用であり、リソース グループ上のタグを変更することはできません。 このリソース グループに対しては、**ロックなし**リソースの追加、移動、変更、削除を行うことができます。|
-|[読み取り専用]|非リソース グループ|[読み取り専用]|いかなる方法でもリソースを変更することはできません。変更することも削除することもできません。|
+|[読み取り専用]|非リソース グループ|[読み取り専用]|いかなる方法でもリソースを変更することはできません。 変更することも削除することもできません。|
 |削除しない|*|削除不可|リソースを変更することはできますが、削除することはできません。 このリソース グループに対しては、**ロックなし**リソースの追加、移動、変更、削除を行うことができます。|
 
 ## <a name="overriding-locking-states"></a>ロック状態をオーバーライドする
@@ -182,8 +182,8 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 ## <a name="next-steps"></a>次のステップ
 
 - [新しいリソースの保護](../tutorials/protect-new-resources.md)に関するチュートリアルに従います。
-- [ブループリントのライフサイクル](lifecycle.md)を参照する。
-- [静的および動的パラメーター](parameters.md)の使用方法を理解する。
-- [ブループリントの優先順位](sequencing-order.md)のカスタマイズを参照する。
+- [ブループリントのライフサイクル](./lifecycle.md)を参照する。
+- [静的および動的パラメーター](./parameters.md)の使用方法を理解する。
+- [ブループリントの優先順位](./sequencing-order.md)のカスタマイズを参照する。
 - [既存の割り当ての更新](../how-to/update-existing-assignments.md)方法を参照する。
 - ブループリントの割り当て時の問題を[一般的なトラブルシューティング](../troubleshoot/general.md)で解決する。

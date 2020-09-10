@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ff89b38de1ff62ddea328a49b998692e8039341f
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 9e782ee8e4afda1f8891979b6e50f99f3e0f1cc7
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661556"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299543"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure Digital Twins のモデルを管理する
 
@@ -166,6 +166,30 @@ Pageable<ModelData> pmd4 = client.GetModels(new string[] { modelId }, true);
 
 モデルは、必ずしもアップロードされたドキュメント形式では返されません。 Azure Digital Twins は、返される形式が意味的に同等であることだけを保証します。 
 
+### <a name="update-models"></a>モデルを更新する
+
+モデルがインスタンスにアップロードされると、モデル インターフェイス全体が不変になります。 つまり、従来のモデルの「編集」はありません。
+
+代わりに、Azure Digital Twins でモデルを変更する場合は、同じモデルの**新しいバージョン**をアップロードします。 プレビュー時にモデルのバージョンを上げても、フィールドを削除できるだけであり、新しいフィールドを追加することはできません (新しいフィールドを追加するには、[新しいモデルを作成する](#create-models)必要があります)。
+
+既存のモデルの新しいバージョンを作成するには、元のモデルの DTDL から開始します。 変更するフィールドを更新します。
+
+次に、モデルの `id` フィールドを更新して、モデルの新しいバージョンとしてマークを付けます。 モデル ID の最後のセクション (`;` の後) は、モデル番号を表します。 ここで、このモデルの新たに更新されたバージョンであることを示すには、`id` 値の最後にある数値を現在のバージョン番号よりも大きい数値に増やします。
+
+たとえば、以前のモデル ID が次の場合:
+
+```json
+"@id": "dtmi:com:contoso:PatientRoom;1",
+```
+
+このモデルのバージョン 2 は次のとおりです。
+
+```json
+"@id": "dtmi:com:contoso:PatientRoom;2",
+```
+
+次に、このモデルの新しいバージョンをインスタンスにアップロードします。 古いバージョンの代わりに、このモデルを使用して作成する新しいツインでは、更新されたバージョンが使用されます。
+
 ### <a name="remove-models"></a>モデルの削除
 
 モデルは、次の 2 つの方法のいずれかでサービスから削除することもできます。
@@ -249,6 +273,8 @@ Azure Digital Twins ではこの状態を防ぐことができないため、モ
 ## <a name="manage-models-with-cli"></a>CLI を使用してモデルを管理する。
 
 モデルは、Azure Digital Twins CLI を使用して管理することもできます。 コマンドについては、"[*Azure Digital Twins CLI を使用する方法*](how-to-use-cli.md)" に関するページを参照してください。
+
+[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

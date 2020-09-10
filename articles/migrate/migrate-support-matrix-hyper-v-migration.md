@@ -3,12 +3,12 @@ title: Azure Migrate での Hyper-V の移行のサポート
 description: Azure Migrate を使用した Hyper-V の移行のサポートについて説明します。
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 5af2c296147bb972d121183a7d552157b4b824c7
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4f3609560fa59c08c4d92f4faa36c7fbbffb95d7
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871498"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051153"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Hyper-V の移行のサポート マトリックス
 
@@ -26,7 +26,10 @@ ms.locfileid: "88871498"
 | **デプロイ**       | Hyper-V ホストは、スタンドアロンにすることも、クラスターにデプロイすることもできます。 <br/>Azure Migrate レプリケーション ソフトウェア (Hyper-V レプリケーション プロバイダー) は Hyper-V ホストにインストールします。|
 | **アクセス許可**           | Hyper-V ホストに対する管理者のアクセス許可が必要です。 |
 | **ホスト オペレーティング システム** | 最新の更新プログラムが適用された Windows Server 2019、Windows Server 2016、Windows Server 2012 R2 これらのオペレーティング システムの Server コア インストールもサポートされていることに注意してください。 |
+| **その他のソフトウェア要件** | .NET Framework 4.7 以降 |
 | **ポート アクセス** |  VM レプリケーション データを送信するための HTTPS ポート 443 での送信接続。
+| **空きディスク領域 (キャッシュ)** |  600 GB |
+| **ディスクの空き領域 (リテンション ディスク)** |  600 GB |
 
 
 ## <a name="hyper-v-vms"></a>Hyper-V VM
@@ -39,6 +42,7 @@ ms.locfileid: "88871498"
 | **Azure に必要な変更** | 一部の VM は、Azure で実行できるように変更が必要な場合があります。 移行の前に手動で調整してください。 関連する記事には、その手順が記載されています。 |
 | **Linux ブート**                 | /boot が専用パーティションに存在する場合は、OS ディスク上に存在する必要があり、複数のディスクに分散していてはいけません。<br/> /boot がルート (/) パーティションに含まれている場合は、"/" パーティションは OS ディスク上に存在する必要があり、他のディスクにまたがっていてはいけません。 |
 | **UEFI ブート**                  | サポートされています。 Azure Generation 2 VM でサポートされている VM サイズを確実に選択してください。  |
+| **UEFI - セキュア ブート**         | 移行はサポートされません。|
 | **ディスク サイズ**                  | OS ディスク用に 2 TB、データ ディスク用に 4 TB。|
 | **ディスクの数** | VM あたり最大で 16 台のディスク。|
 | **暗号化されたディスクまたはボリューム**    | 移行はサポートされません。|

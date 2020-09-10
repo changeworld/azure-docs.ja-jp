@@ -7,13 +7,13 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
-ms.openlocfilehash: dce3c484a16918931df80d5201fad090b2c0cb2e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 08/26/2020
+ms.openlocfilehash: aad953483749d676844221f7e519f50c50b63ad4
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922635"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948642"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Azure Cognitive Search でのシノニム
 
@@ -92,6 +92,21 @@ USA, United States, United States of America
 
 ```
 Washington, Wash., WA => WA
+```
+
+コンマを含むシノニムを定義する必要がある場合は、次の例のように円記号でエスケープできます。
+
+```
+WA\, USA, WA, Washington
+```
+
+JSON や C# などの他の言語では、円記号自体が特殊文字であるため、通常、二重にエスケープする必要があります。 たとえば、上記のシノニム マップに対して REST API に送信される JSON は、次のようになります。
+
+```json
+    {
+       "format":"solr",
+       "synonyms": "WA\\, USA, WA, Washington"
+    }
 ```
 
 #### <a name="list-synonym-maps-under-your-service"></a>サービスのシノニム マップを一覧表示します。

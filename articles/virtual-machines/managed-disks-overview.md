@@ -7,12 +7,13 @@ ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 72f68b35d171503bb07fc5e6f58a858ceea4c6cf
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: contperfq1
+ms.openlocfilehash: 773c5f95cdbec6961b063720106794e6ec00451d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749677"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299934"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Azure マネージド ディスクの概要
 
@@ -91,7 +92,7 @@ Azure には、データ ディスク、OS ディスク、一時ディスクと�
 
 どの仮想マシンにも 1 つのオペレーティング システム ディスクが取り付けられています。 その OS ディスクには、VM の作成時に選択された OS がプリインストールされています。 このディスクにはブートボリュームが含まれています。
 
-このディスクの最大容量は 2,048 GiB です。
+このディスクの最大容量は 4,095 GiB です。
 
 ### <a name="temporary-disk"></a>一時ディスク
 

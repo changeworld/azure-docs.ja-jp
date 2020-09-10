@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 03/26/2020
+ms.date: 08/10/2020
 ms.author: juliako
 ms.custom: devx-track-javascript
-ms.openlocfilehash: afc49e959061bcd2327f1c3a4f988c9ed6e5ce11
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 5f418384d4ec1272600df2488dc71d2102d6a24d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87414022"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011805"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>お使いのアプリに Video Indexer ウィジェットを埋め込む
 
@@ -102,6 +102,17 @@ ms.locfileid: "87414022"
 コグニティブな分析情報ウィジェットは、お使いのアプリ上でビデオと対話できます。 このセクションでは、この対話を実現する方法を示します。
 
 ![コグニティブな分析情報ウィジェット Video Indexer](./media/video-indexer-embed-widgets/video-indexer-widget03.png)
+
+### <a name="flow-overview"></a>フローの概要
+
+トランスクリプトを編集する場合、次のフローが発生します。
+
+1. タイムラインでトランスクリプトを編集します。
+1. Video Indexer によってこれらの更新が取得され、言語モデルの [from transcript edits](customize-language-model-with-website.md#customize-language-models-by-correcting-transcripts) に保存されます。
+1. キャプションは更新されます。
+
+    * Video Indexer のプレーヤー ウィジェットを使用している場合は、自動的に更新されます。
+    * 外部プレーヤーを使用している場合は、 **[Get video captions]\(ビデオ キャプションの取得\)** 呼び出しを使用して新しいキャプション ファイルを取得します。
 
 ### <a name="cross-origin-communications"></a>クロスオリジン通信
 

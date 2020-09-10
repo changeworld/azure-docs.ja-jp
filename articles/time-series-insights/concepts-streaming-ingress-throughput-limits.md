@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: fb10effce8b94a6443e1daa8dadaa99111da0d4e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a9ac55802e4bcc435bb4bd6fd4af8977db9fd293
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87095384"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950461"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>ストリーミング インジェストのスループットの制限
 
@@ -34,7 +34,7 @@ Azure Time Series Insights Gen2 のストリーミング データのイング�
 
 > [!TIP]
 >
-> * 要求により、環境でサポートされる取り込み速度を最大 16 MBps に指定できます。
+> * 要求により、環境でサポートされる取り込み速度を最大 8 MBps に指定できます。
 > * より高いスループットが必要な場合は、Azure portal からサポート チケットを送信してお問い合わせください。
  
 * **例 1:**
@@ -42,16 +42,16 @@ Azure Time Series Insights Gen2 のストリーミング データのイング�
     Contoso Shipping には、1 分につき 3 回イベントを発生させる 100,000 個のデバイスがあります。 1 つのイベントのサイズは 200 バイトです。 それらは、4 つのパーティションを持つ IoT Hub を Azure Time Series Insights Gen2 イベント ソースとして使用しています。
 
     * それらの Azure Time Series Insights Gen2 環境のインジェスト率は次のようになります。**100,000 デバイス * 200 バイト/イベント * (3/60 イベント/秒) = 1 MBps**。
-    * パーティションあたりのインジェスト率は 0.25 MBps です。
+    * パーティションのバランスが取れているとすると、パーティションあたりのインジェスト率は 0.25 MBps です。
     * Contoso Shipping のインジェスト率は、スケールの制限内になります。
 
 * **例 2:**
 
-    Contoso Fleet Analytics には、毎秒 1 つのイベントを発生させる 60,000 個のデバイスがあります。 それらは、4 つのパーティションを持つイベント ハブを Azure Time Series Insights Gen2 イベント ソースとして使用しています。 1 つのイベントのサイズは 200 バイトです。
+    Contoso Fleet Analytics には、毎秒 1 つのイベントを発生させる 40,000 個のデバイスがあります。 それらは、2 つのパーティションを持つイベント ハブを Azure Time Series Insights Gen2 イベント ソースとして使用しています。 1 つのイベントのサイズは 200 バイトです。
 
-    * 環境のインジェスト率は次のようになります。**60,000 デバイス * 200 バイト/イベント * 1 イベント/秒 = 12 MBps**。
-    * パーティションあたりの率は 3 MBps です。
-    * Contoso Fleet Analytics のインジェスト率は、環境とパーティションの制限を超えています。 Azure portal を介して Azure Time Series Insights Gen2 に要求を送信して、環境のインジェスト率を上げることができます。また、制限内に収まるように、より多くのパーティションを備えたイベント ハブを作成することもできます。
+    * 環境のインジェスト率は次のようになります。**40,000 デバイス * 200 バイト/イベント * 1 イベント/秒 = 8 MBps**。
+    * パーティションのバランスが取れているとすると、パーティションあたりの率は 4 MBps になります。
+    * Contoso Fleet Analytics のインジェスト率は、環境とパーティションの制限を超えています。 Azure portal で Azure Time Series Insights Gen2 に要求を送信して、環境のインジェスト率を上げることができます。また、制限内に収まるように、より多くのパーティションを備えたイベント ハブを作成することもできます。
 
 ## <a name="hub-partitions-and-per-partition-limits"></a>ハブのパーティションとパーティションごとの制限
 

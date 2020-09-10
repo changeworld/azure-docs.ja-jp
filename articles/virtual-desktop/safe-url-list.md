@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d75d6ecf73dece6dad43367a7f869a1b8ec3d86b
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: f9f68d3734cd7de83a2ddd376caefa410c619d61
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135863"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291111"
 ---
 # <a name="safe-url-list"></a>安全な URL リスト
 
@@ -60,7 +60,7 @@ Windows Virtual Desktop 用に作成する Azure 仮想マシンには、次の 
 >
 >1. Windows Virtual Desktop ホスト プールに仮想マシンを登録します。
 >2. **イベント ビューアー**を開き、 **[Windows ログ]**  >  **[アプリケーション]**  >  **[WVD-Agent]** に移動して、イベント ID 3701 を探します。
->3. イベント ID 3701 に記載されている URL をホワイトリストに登録します。 イベント ID 3701 に記載されている URL はリージョン固有です。 仮想マシンのデプロイ先となるリージョンごとに、適切な URL を使用して、ブロック解除プロセスを繰り返す必要があります。
+>3. イベント ID 3701 に記載されている URL をブロック解除します。 イベント ID 3701 に記載されている URL はリージョン固有です。 仮想マシンのデプロイ先となるリージョンごとに、適切な URL を使用して、ブロック解除プロセスを繰り返す必要があります。
 
 ## <a name="remote-desktop-clients"></a>リモート デスクトップ クライアント
 

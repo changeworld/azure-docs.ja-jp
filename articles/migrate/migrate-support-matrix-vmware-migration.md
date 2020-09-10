@@ -3,12 +3,12 @@ title: Azure Migrate での VMware 移行のサポート
 description: Azure Migrate での VMware VM 移行のサポートについて説明します。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 19252a058fd26da6bddf64ad7af132a12cd1e140
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4c9ae6a5c3ed0d38b6abc952458422c7789fef8f
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869101"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051119"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 移行のサポートマトリックス
 
@@ -117,6 +117,7 @@ vSphere/ESXI ホスト | TCP ポート 902 で、アプライアンスがスナ�
 **Azure の要件** | 最新情報については、Site Recovery に使用する [Azure ネットワーク](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover)、[ストレージ](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage)、[コンピューティング](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute)の要件を確認してください。 VMware の移行に関する要件は、Azure Migrate の場合も同じです。
 **モビリティ サービス** | 移行対象となる各 VM に、Mobility Service エージェントがインストールされている必要があります。
 **UEFI ブート** | サポートされています。
+**UEFI - セキュア ブート**         | 移行はサポートされません。
 **ターゲット ディスク** | VM は、Azure 内のマネージド ディスク (Standard HDD、Premium SSD) にのみ移行できます。
 **ディスク サイズ** | 2 TB の OS ディスク。データ ディスク用に 8 TB。
 **ディスクの制限** |  VM あたり最大 63 台のディスク。

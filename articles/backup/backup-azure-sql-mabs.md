@@ -3,12 +3,12 @@ title: Azure Backup Server を使用した SQL Server のバックアップ
 description: この記事では、Microsoft Azure Backup Server (MABS) を使用して SQL Server データベースのバックアップを構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: d682e63424ca247161e9784a8a05b91186da54b7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b47cb74c6e5dbb868c03f8f7b79c00b0c4ce7886
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003646"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182311"
 ---
 # <a name="back-up-sql-server-to-azure-by-using-azure-backup-server"></a>Azure Backup Server を使用して SQL Server を Azure にバックアップする
 
@@ -33,7 +33,7 @@ SQL Server データベースをバックアップし、それを Azure から�
   * MABS によってフェールオーバーが検出され、データベース保護が続行されます。
   * MABS では、SQL Server のインスタンスに対するマルチサイト クラスター構成がサポートされます。
 * AlwaysOn 機能を使用するデータベースを MABS で保護するときは、次の制限があります。
-  * MABS では、バックアップ設定に基づいて SQL Server に設定されている可用性グループに対するバックアップ ポリシーが使用されます。
+  * MABS では、次のように、バックアップ設定に基づいて SQL Server に設定されている可用性グループ用のバックアップ ポリシーに従います。
     * セカンダリ優先 - オンラインになっているのがプライマリ レプリカのみの場合を除き、バックアップは常にセカンダリ レプリカ上で発生します。 セカンダリ レプリカが複数ある場合は、バックアップの優先度が最も高いノードがバックアップ用に選択されます。 プライマリ レプリカのみを使用できる場合、バックアップはプライマリ レプリカ上で発生します。
     * セカンダリのみ - プライマリ レプリカでのバックアップは行いません。 オンラインになっているのがプライマリ レプリカのみの場合、バックアップは発生しません。
     * プライマリ - バックアップは常にプライマリ レプリカ上で発生します。
@@ -50,7 +50,7 @@ SQL Server データベースをバックアップし、それを Azure から�
 
 ## <a name="before-you-start"></a>開始する前に
 
-開始する前に、[Azure Backup Server をインストールし、準備を完了](backup-azure-microsoft-azure-backup.md)しておきます。
+開始する前に、[Azure Backup Server がインストールされ、準備完了状態になっている](backup-azure-microsoft-azure-backup.md)ことを確認してください。
 
 ## <a name="create-a-backup-policy"></a>バックアップ ポリシーの作成
 

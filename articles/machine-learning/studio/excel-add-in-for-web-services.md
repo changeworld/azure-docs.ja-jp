@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 29fe1a7a05085d8751e249d58b64b31e6ff3dac1
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: fd406535b00ed0e25f44d875ee9b5fe716971bab
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432469"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950053"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Azure Machine Learning Studio (クラシック) Web サービスの Excel アドイン
 
@@ -28,7 +28,10 @@ Excel を使用すると、コードを作成することなく、直接 Web サ
 1. [サンプルの Excel ファイル](https://aka.ms/amlexcel-sample-2)を開きます。このファイルには、Excel アドインと、タイタニック号の乗客に関するデータが含まれます。 
  
     > [!NOTE]
-    > ファイルに関係する Web サービスの一覧が表示され、下部に [Auto-predict]\(自動予測\) のチェックボックスが表示されます。 自動予測を有効にすると、入力が変更されるたびに**すべての**サービスの予測が更新されます。 オフにした場合は、[Predict All]\(すべて予測\) をクリックして更新する必要があります。 サービス レベルで自動予測を有効にするには、手順 6 に移動します。
+    > - ファイルに関係する Web サービスの一覧が表示され、下部に [Auto-predict]\(自動予測\) のチェックボックスが表示されます。 自動予測を有効にすると、入力が変更されるたびに**すべての**サービスの予測が更新されます。 オフにした場合は、[Predict All]\(すべて予測\) をクリックして更新する必要があります。 サービス レベルで自動予測を有効にするには、手順 6 に移動します。
+    > - Azure Machine Learning Excel アドインでは、読み込みのために Office アドイン ストアが呼び出されます。 組織で Office アドイン ストアへのアクセスが禁止されている場合、アドインの読み込み時にエラーが発生します。 この場合は、Microsoft 365 管理センターから Azure Machine Learning Excel アドインをデプロイしてください。 その後、アドインを呼び出し、URL と API キーを貼り付けて、Web サービスを手動で追加します。
+
+ 
 
 2. 対象の Web サービスをクリックして選択します。この例では、「Titanic Survivor Predictor (Excel Add-in Sample) [Score]」を選択します。
    

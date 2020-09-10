@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: f202a9d616809d1f14366350d8d60ef2bc06b96b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: d924c019d5ee231f3c9d66a56c4d98857bc89abc
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934516"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055551"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>音声合成マークアップ言語 (SSML) を使用して合成を改善する
 
@@ -192,33 +192,38 @@ speechConfig!.setPropertyTo(
 > [!IMPORTANT]
 > ニューラル音声でのみ、話し方を調整できます。
 
-既定では、テキスト読み上げサービスは、標準の音声とニューラル音声の両方のニュートラルな話し方を使用してテキストを合成します。 ニューラル音声を使用すると、明るさ、共感、落ち着きなどのさまざまな感情を表現するように話し方を調整することや、 `mstts:express-as`  要素を使用してカスタム サービス、ニュース放送、音声アシスタントなどのさまざまなシナリオに合わせて音声を最適化することができます。 これは、Speech Service に固有の省略可能な要素です。
+既定では、テキスト読み上げサービスは、標準の音声とニューラル音声の両方のニュートラルな話し方を使用してテキストを合成します。 ニューラル音声を使用すると、明るさ、共感、落ち着きなどのさまざまな感情を表現するように話し方を調整することや、`mstts:express-as` 要素を使用してカスタマー サービス、ニュース放送、音声アシスタントなどのさまざまなシナリオに合わせて音声を最適化することができます。 これは、Speech Service に固有の省略可能な要素です。
 
 現在、これらのニューラル音声では話し方の調整がサポートされています。
 * `en-US-AriaNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
 
-変更は文章レベルで適用され、スタイルは音声によって異なります。 スタイルがサポートされていない場合、サービスは既定のニュートラルな話し方の音声を返します。
+変更は文章レベルで適用され、スタイルは音声によって異なります。 スタイルがサポートされていない場合、サービスは既定のニュートラルな話し方の音声を返します。 各音声でサポートされているスタイルは、[音声の一覧 API](rest-text-to-speech.md#get-a-list-of-voices) で照会できます。
+
+中国語の音声 XiaoxiaoNeural では、ユースケースに合わせて話し方の強度をさらに変更できます。 `styledegree` でより強いスタイルやより柔らかいスタイルを指定して、音声の表現力を高めたり抑えたりできます。
 
 **構文**
 
 ```xml
-<mstts:express-as style="string"></mstts:express-as>
+<mstts:express-as style="string" styledegree="value"></mstts:express-as>
 ```
+> [!NOTE]
+> 現時点では、`styledegree` は XiaoxiaoNeural のみをサポートします。 
 
 **属性**
 
 | 属性 | 説明 | 必須/省略可能 |
 |-----------|-------------|---------------------|
 | `style` | 話し方を指定します。 現在のところ、話し方は音声に固有です。 | ニューラル音声の話し方を調整する場合は、必須です。 `mstts:express-as` を使用する場合は、スタイルを指定する必要があります。 無効な値を指定すると、この要素は無視されます。 |
+| `styledegree` | 話し方の強度を指定します。 **指定可能な値**:0.01 ～ 2 (0.01 と 2 を含む)。 既定値は、定義済みのスタイル強度を表す 1 です。 最小単位は 0.01 で、ターゲットのスタイルにわずかに傾きます。 値を 2 にすると、既定のスタイル強度が 2 倍になります。  | 省略可能 (現時点では、`styledegree` は XiaoxiaoNeural のみをサポートします)。|
 
 各ニューラル音声でサポートされている話し方を確認するには、次の表を使用してください。
 
 | 音声                   | Style                     | 説明                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
-| `en-US-AriaNeural`      | `style="newscast-formal"` | ニュースを配信するときの改まった、自信に満ちた、威厳のある語調|
-|                         | `style="newscast-casual"` | 一般的なニュースを配信するときの汎用的でカジュアルな語調       |
+| `en-US-AriaNeural`      | `style="newscast-formal"` | ニュースを配信するときの改まった、自信に満ちた、威厳のある語調を表します |
+|                         | `style="newscast-casual"` | 一般的なニュースを配信するときの汎用的でカジュアルな語調を表します        |
 |                         | `style="customerservice"` | カスタマー サポート向けのフレンドリーでわかりやすい語調を表します  |
 |                         | `style="chat"`            | カジュアルでリラックスした語調を表します                         |
 |                         | `style="cheerful"`        | 肯定的で幸せな語調を表します                         |
@@ -226,6 +231,16 @@ speechConfig!.setPropertyTo(
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | ニュースを読み上げる改まった職業的な語調を表します |
 |                         | `style="customerservice"` | カスタマー サポート向けのフレンドリーでわかりやすい語調を表します  |
 |                         | `style="assistant"`       | デジタル アシスタント向けの暖かくてリラックスした語調を表します    |
+|                         | `style="chat"`            | おしゃべり向けのカジュアルでリラックスした語調を表します           |
+|                         | `style="calm"`            | 話すときの冷静で落ち着いた態度を表します。 他の種類の音声に比べて、語調、ピッチ、韻律がかなり均一になります。                                |
+|                         | `style="cheerful"`        | 高いピッチと音声エネルギーにより、陽気で熱狂的な語調を表します                         |
+|                         | `style="sad"`             | 高いピッチ、低い強度、低い音声エネルギーにより、悲しそうな語調を表します。 この感情の一般的な指標は、話し中のすすり泣きや号泣です。            |
+|                         | `style="angry"`           | 低いピッチ、高い強度、高い音声エネルギーにより、怒っていらだっている語調を表します。 話者は、激怒し、不機嫌で、立腹した状態にあります。       |
+|                         | `style="fearful"`         | 高いピッチ、高い音声エネルギー、速いスピードにより、おびえた神経質な語調を表します。 話者は、緊張して不安な状態にあります。                          |
+|                         | `style="disgruntled"`     | 軽蔑的で不満のある語調を表します。 この感情の音声は、不満と軽蔑を表します。              |
+|                         | `style="serious"`         | 厳しく威圧するような語調を表します。 話者は、多くの場合、安定したリズムで、堅苦しい緊張感の高い話し方をします。          |
+|                         | `style="affectionate"`    | 高いピッチと音声エネルギーにより、温かみのある優しい語調を表します。 話者は、聞き手の注目を集める状態にあります。 多くの場合、話者の「パーソナリティ」が実際に聞き手の心を引きつけています。          |     
+|                         | `style="gentle"`          | 低いピッチと音声エネルギーにより、穏やかで礼儀正しく心地よい語調を表します         |   
 |                         | `style="lyrical"`         | 音楽的でセンチメンタルな方法で感情を表現します         |   
 | `zh-CN-YunyangNeural`   | `style="customerservice"` | カスタマー サポート向けのフレンドリーでわかりやすい語調を表します  | 
 
@@ -239,6 +254,18 @@ speechConfig!.setPropertyTo(
     <voice name="en-US-AriaNeural">
         <mstts:express-as style="cheerful">
             That'd be just amazing!
+        </mstts:express-as>
+    </voice>
+</speak>
+```
+
+この SSML スニペットは、`styledegree` 属性を使用して XiaoxiaoNeural の話し方の強度を変更する方法を示しています。
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
+       xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="zh-CN">
+    <voice name="zh-CN-XiaoxiaoNeural">
+        <mstts:express-as style="sad" styledegree="2">
+            快走吧，路上一定要注意安全，早去早回。
         </mstts:express-as>
     </voice>
 </speak>

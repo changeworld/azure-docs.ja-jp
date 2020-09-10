@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b15250804dd316000aa20d6b97e9cccbfc36e9ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2bd2e72b05cc01b1a351880d565323662635364
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359094"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278685"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>重複属性同期エラーを診断して修正する
 
@@ -58,7 +58,7 @@ Azure AD の詳細については、「[ID 同期と重複属性の回復性](ho
 | OnPremiseSecurityIdentifier |  AttributeValueMustBeUnique |
 
 >[!IMPORTANT]
-> この機能にアクセスするには、**全体管理者**のアクセス許可、または RBAC の設定からの**共同作成者**アクセス許可が必要です。
+> この機能にアクセスするには、**全体管理者**のアクセス許可、または Azure RBAC の**共同作成者**のアクセス許可が必要です。
 >
 
 同期エラーの詳細を絞り込み、さらに具体的な解決策を表示するには、Azure portal から次の手順のようにします。
@@ -133,7 +133,7 @@ Azure portal から次の手順を実行して、修正可能な固有のシナ�
 
 ## <a name="failures-and-error-messages"></a>障害とエラー メッセージ
 **競合する属性を持つユーザーは、Azure Active Directory では論理的に削除されます。再試行する前に、ユーザーが実際に削除されていることを確認してください。**  
-Azure AD で競合する属性を持つユーザーは、修正プログラムを適用する前にクリーンアップする必要があります。 修正を再度試みる前に、[Azure AD でユーザーを完全に削除する方法](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-restore)に関するページを確認してください。 論理的削除状態になったユーザーは、30 日経過した場合も自動的に完全に削除されます。 
+Azure AD で競合する属性を持つユーザーは、修正プログラムを適用する前にクリーンアップする必要があります。 修正を再度試みる前に、[Azure AD でユーザーを完全に削除する方法](../fundamentals/active-directory-users-restore.md)に関するページを確認してください。 論理的削除状態になったユーザーは、30 日経過した場合も自動的に完全に削除されます。 
 
 **Updating source anchor to cloud-based user in your tenant is not supported.** (ソース アンカーのテナント内のクラウド ベースのユーザーへの更新は、サポートされていません。)  
 Azure AD のクラウド ベースのユーザーは、ソース アンカーを持つことはできません。 この場合、ソース アンカーの更新はサポートされていません。 オンプレミスから手動で修正する必要があります。 
@@ -148,7 +148,7 @@ Azure AD のクラウド ベースのユーザーは、ソース アンカーを
 
 
 **Q.** 修正を適用するには、ユーザーにどのようなアクセス許可が必要ですか。  
-**A.** **全体管理者**、または RBAC 設定の**共同作成者**には、診断とトラブルシューティングのプロセスにアクセスするためのアクセス許可があります。
+**A.** **全体管理者**、または RBAC の**共同作成者**には、診断とトラブルシューティングのプロセスにアクセスするためのアクセス許可があります。
 
 
 **Q.** Azure AD Connect を構成するか、またはこの機能の Azure AD Connect Health エージェントを更新する必要はありますか。  

@@ -8,16 +8,18 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 08/10/2020
 ms.author: vikancha
-ms.openlocfilehash: 73d583cb371876cefc10c982dbe66f6e15bddf03
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: af9f7eb21d533bc5fb365e7cbf1fb8fc18184fa7
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88932612"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89375229"
 ---
-# <a name="ncast4_v3-series"></a>NCasT4_v3 シリーズ 
+# <a name="ncast4_v3-series-in-preview"></a>NCasT4_v3 シリーズ (プレビュー段階) 
 
 NCasT4_v3 シリーズ仮想マシンは、[Nvidia Tesla T4](https://www.nvidia.com/en-us/data-center/tesla-t4/) GPU と AMD EPYC 7V12(Rome) CPU を搭載しています。 この VM には、最大 4 個の NVIDIA T4 GPU (それぞれに 16 GB のメモリを装備)、最大 64 個の非マルチスレッド AMD EPYC 7V12(Rome) プロセッサ コア、440 GiB のシステム メモリが搭載されています。 これらの仮想マシンは、CUDA、TensorFlow、Pytorch、Caffe などのフレームワークを使用した ML と AI のワークロード、または NVIDIA GRID テクノロジを使用したグラフィックス ワークロードを実行するのに最適です。 NCasT4_v3 シリーズは、推論ワークロードの実行に最適です。
+
+プレビュー プログラムに含めるように[リクエストを送信](https://aka.ms/NCT4v3Preview)することができます。
 
 <br>
 

@@ -1,25 +1,27 @@
 ---
-title: Azure Speaker Recognition サービス
+title: Speaker Recognition の概要 - Speech サービス
 titleSuffix: Azure Cognitive Services
-description: Azure Cognitive Services Speaker Recognition は、固有の音声特性によって話者を確認および識別するアルゴリズムを提供します。 Speaker Recognition は、"だれが話しているのか" という質問に回答するために使用されます。
+description: Speaker Recognition は、音声生物測定学を使用して、固有の音声特性で話者を確認および識別するアルゴリズムを提供します。 Speaker Recognition は、"だれが話しているのか" という質問に回答するために使用されます。 この記事は、Speaker Recognition サービスの利点と機能の概要です。
 services: cognitive-services
 author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/27/2020
+ms.date: 09/02/2020
 ms.author: trbye
-ms.openlocfilehash: a333a61a28fabddc2e8101fdf3290c52f3db59ae
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.custom: cog-serv-seo-aug-2020
+keywords: Speaker Recognition, 音声生物測定学
+ms.openlocfilehash: 2c5b73b93c22ef27d7b68455f5e1e5108f25c984
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84780887"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397261"
 ---
-# <a name="what-is-the-azure-speaker-recognition-service"></a>Azure Speaker Recognition サービスとは
+# <a name="what-is-speaker-recognition"></a>Speaker Recognition とは
 
-Speaker Recognition サービスは、固有の音声特性によって話者を検証および識別するアルゴリズムを提供します。 Speaker Recognition は、"だれが話しているのか" という質問に回答するために使用されます。 1 人の話者のてオーディオ トレーニング データを提供すると、話者の声の固有の特性に基づいて登録プロファイルが作成されます。 次に、このプロファイルに対してオーディオ音声サンプルをクロスチェックして、話者が同じ人物であることを確認します (話者認証)。または、登録されている話者プロファイルの "*グループ*" に対してオーディオ音声サンプルをクロスチェックして、グループ内の任意のプロファイルと一致するかどうかを確認します (話者識別)。 これに対して、[話者ダイアライゼーション](batch-transcription.md#speaker-separation-diarization)では、オーディオのセグメントを話者ごとにバッチ操作でグループ化します。
+Speaker Recognition サービスは、音声生物測定学を使用して、固有の音声特性で話者を確認および識別するアルゴリズムを提供します。 Speaker Recognition は、"だれが話しているのか" という質問に回答するために使用されます。 1 人の話者のてオーディオ トレーニング データを提供すると、話者の声の固有の特性に基づいて登録プロファイルが作成されます。 次に、このプロファイルに対してオーディオ音声サンプルをクロスチェックして、話者が同じ人物であることを確認します (話者認証)。または、登録されている話者プロファイルの "*グループ*" に対してオーディオ音声サンプルをクロスチェックして、グループ内の任意のプロファイルと一致するかどうかを確認します (話者識別)。 これに対して、[話者ダイアライゼーション](batch-transcription.md#speaker-separation-diarization)では、オーディオのセグメントを話者ごとにバッチ操作でグループ化します。
 
 ## <a name="speaker-verification"></a>話者認証
 

@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 04/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58cddcde71e6e86b9abe07eb4200f13ad55ea659
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58ecdfefa79716bcc0a69063293d5a1067693a78
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84690695"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182362"
 ---
 # <a name="user-privacy-and-azure-ad-connect-health"></a>ユーザー プライバシーと Azure AD Connect Health 
 
@@ -41,7 +41,7 @@ Azure AD Connect Health では、レポートの生成、分析の実行、ま�
 Azure AD Connect Health では、各監視対象サーバーや、監視対象サービスのインスタンスについて、データ収集を停止させることができます。 たとえば、Azure AD Connect Health を使用して監視されている個々の AD FS (Active Directory フェデレーション サービス) サーバーについて、データ収集を停止することもできます。 また、Azure AD Connect Health を使用して監視されている ADFS インスタンス全体について、データ収集を停止することもできます。 これを行った場合は、データ収集が停止された後に、対応するサーバーが Azure AD Connect Health ポータルから削除されます。 
 
 >[!IMPORTANT]
-> Azure AD Connect Health から監視対象サーバーを削除するには、Azure AD グローバル管理者特権か、RBAC の共同作成者ロールが必要です。
+> Azure AD Connect Health から監視対象サーバーを削除するには、Azure AD グローバル管理者特権か、Azure RBAC の共同作成者ロールが必要です。
 >
 > Azure AD Connect Health からサーバーまたはサービス インスタンスを削除した場合、その操作を元に戻すことはできません。 
 

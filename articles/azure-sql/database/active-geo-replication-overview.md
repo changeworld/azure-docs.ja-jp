@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 04/28/2020
-ms.openlocfilehash: 10c0d3d5f043d31454810b55e808cd6df01467a4
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.date: 08/27/2020
+ms.openlocfilehash: a269796c072a235e4ecd47731ca37a774750a3cf
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448737"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018367"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>アクティブ geo レプリケーションの作成と使用 - Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -178,7 +178,8 @@ SQL Database のコンピューティング サイズの詳細については、
 
 ### <a name="on-the-master-of-the-secondary-server"></a>セカンダリ サーバーのマスターでの手順
 
-1. 変更を実行するクライアントの許可リストに IP アドレスを追加します。 プライマリ サーバーと完全に同じ IP アドレスである必要があります。
+1. セカンダリ サーバーのファイアウォール規則で、クライアント IP アドレスを許可リストに追加します。 プライマリ サーバーに追加されたものとまったく同じクライアント IP アドレスがセカンダリにも追加されていることを確認します。 geo レプリケーションを開始するには、ALTER DATABASE ADD SECONDARY コマンドを実行する前に、この手順を実行する必要があります。
+
 1. 同じユーザー名、パスワード、および SID を使用して、プライマリ サーバー上のものと同じログインを作成します。
 
    ```sql

@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f02f31e0fc8943682af77ca6f506d15f36e88146
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 208b900de20a89a9ecc819ef1254c08fcc628f82
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84668901"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010224"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Azure で SQL 仮想マシンのライセンス モデルを変更する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -156,7 +156,9 @@ SQL Server VM が SQL VM リソースプロバイダーに登録されている�
 
 ## <a name="known-errors"></a>既知のエラー
 
-### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found"></a>リソース 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/\<resource-group>' がリソース グループ '\<resource-group>' の下で見つかりませんでした。
+よく知られているエラーとその解決策を確認します。 
+
+**リソース 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/\<resource-group>' がリソース グループ '\<resource-group>' の下で見つかりませんでした。**
 
 このエラーは、SQL Server VM 上で SQL VM リソース プロバイダーに登録されていないライセンス モデルを変更しようとしたときに発生します。
 
@@ -165,7 +167,7 @@ SQL Server VM が SQL VM リソースプロバイダーに登録されている�
 リソース プロバイダーをサブスクリプションに登録してから、[そのリソース プロバイダーにご利用の SQL Server VM を登録する](sql-vm-resource-provider-register.md)必要があります。 
 
 
-### <a name="the-virtual-machine-vmname-has-more-than-one-nic-associated"></a>仮想マシン '\<vmname\>' に複数の NIC が関連付けられています
+**仮想マシン '\<vmname\>' に複数の NIC が関連付けられています**
 
 このエラーは、複数の NIC を持つ仮想マシンで発生します。 ライセンスモデルを変更する前に、いずれかの NIC を削除します。 ライセンスモデルを変更した後に NIC を VM に再び追加することはできますが、自動バックアップや修正プログラム適用などの Azure portal の操作はサポートされなくなります。 
 

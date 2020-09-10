@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 52488eb43377978d7f936ba0aa452cc872f8d899
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 94a0c0af5071397ee4deb859f8f58f2ed1c73a77
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519356"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277665"
 ---
 # <a name="working-with-security-policies"></a>セキュリティ ポリシーの操作
 
@@ -40,7 +40,7 @@ Security Center では、セキュリティ ポリシーを操作するための
 * **規制コンプライアンス ポリシーの追加** - Security Center の規制コンプライアンス ダッシュボードには、特定の標準または規制 (Azure CIS、NIST SP 800-53 R4、SWIFT CSP CSCF-v2020 など) のコンテキストにおける環境内のすべての評価の状態が表示されます。 詳細については、[規制コンプライアンスの向上](security-center-compliance-dashboard.md)に関する記事をご覧ください。
 
 
-## <a name="managing-your-security-policies"></a>セキュリティ ポリシーの管理
+## <a name="manage-your-security-policies"></a>セキュリティ ポリシーの管理
 
 Security Center でセキュリティ ポリシーを表示するには:
 
@@ -54,7 +54,7 @@ Security Center でセキュリティ ポリシーを表示するには:
 
 1. そのサブスクリプションまたは管理グループのセキュリティ ポリシー ページが表示されます。 利用可能な割り当て済みのポリシーが表示されます。
 
-   ![ポリシー画面](./media/tutorial-security-policy/security-policy-page.png)
+   ![ポリシー ページ](./media/tutorial-security-policy/security-policy-page.png)
 
     > [!NOTE]
     > 既定のポリシーの横に "MG 継承済み" というラベルがある場合、そのポリシーが管理グループに割り当てられており、表示しているサブスクリプションに継承されていることを意味します。
@@ -111,11 +111,11 @@ Security Center の規制コンプライアンス ツールで適用した規制
 
 1. **[有効なポリシーの表示]** を選択します。
 
-   ![ポリシーの無効化](./media/tutorial-security-policy/view-effective-policy.png)
+   ![ポリシーの表示](./media/tutorial-security-policy/view-effective-policy.png)
 
 1. 割り当てられたポリシーを選択します。
 
-   ![ポリシーの無効化](./media/tutorial-security-policy/security-policy.png)
+   ![ポリシーの選択](./media/tutorial-security-policy/security-policy.png)
 
 1. **[パラメーター]** セクションで、推奨事項を呼び出すポリシーのうち、無効にするものを検索します。次に、ドロップダウン リストから **[無効]** を選択します。
 

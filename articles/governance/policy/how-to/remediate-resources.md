@@ -1,18 +1,18 @@
 ---
 title: 準拠していないリソースを修復する
 description: このガイドでは、Azure Policy のポリシーに準拠していないリソースを修復する手順を説明します。
-ms.date: 06/09/2020
+ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: be55f16734a94acfcc89d632f4cb79f550fa74d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1274b049d7ce19601968697b22da38f0eb2cb5ff
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636310"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958747"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Azure Policy を使って準拠していないリソースを修復する
 
-**deployIfNotExists** や **modify** に準拠していないリソースは､**修復**を使って準拠状態にすることができます。 修復は､既存のリソースに割り当てられているポリシーの **deployIfNotExists** 効果やタグ **operations** を実行するように Azure Policy に指示することによって実行されます。その割り当てが、管理グループ、サブスクリプション、リソース グループ、または個々のリソースのいずれに対するものかは関係ありません。 この記事では、Azure Policy による修復を理解して実行するために必要な手順を示します。
+**deployIfNotExists** や **modify** に準拠していないリソースは､**修復**を使って準拠状態にすることができます。 修復は､既存のリソースに割り当てられているポリシーの **deployIfNotExists** 効果や**変更操作**を実行するように Azure Policy に指示することによって実行されます。その割り当てが、管理グループ、サブスクリプション、リソース グループ、または個々のリソースのいずれに対するものかは関係ありません。 この記事では、Azure Policy による修復を理解して実行するために必要な手順を示します。
 
 ## <a name="how-remediation-security-works"></a>修復のセキュリティの仕組み
 

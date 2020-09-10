@@ -114,6 +114,8 @@
           href: understand/mca-overview.md
         - name: Microsoft パートナー契約の課金アカウント
           href: understand/mpa-overview.md
+        - name: パートナー間でのサブスクリプションの譲渡 (プレビュー)
+          href: manage/azure-plan-subscription-transfer-partners.md
 - name: 操作方法ガイド
   items:
     - name: Cost Management と Billing を構成する

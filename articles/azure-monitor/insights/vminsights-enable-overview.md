@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 07/27/2020
-ms.openlocfilehash: e3c5f6d7e04620cf36f6cd952467d47afd775b19
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 08/27/2020
+ms.openlocfilehash: 449979443577d22f8cc2ec35ec770dd1e107bb76
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824768"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998409"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Azure Monitor for VMs の有効化の概要
 
@@ -78,86 +78,25 @@ Log Analytics ワークスペースがない場合は、次のいずれかのリ
 
 ## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
-次の表は、Azure Monitor for VMs でサポートされている Windows および Linux オペレーティング システムの一覧です。 メジャーおよびマイナーの Linux OS リリースとサポートされているカーネルのバージョンの詳細な一覧は、このセクションの後の方にあります。
+Azure Monitor for VMs では、Log Analytics エージェントと Dependency Agent をサポートするすべてのオペレーティング システムがサポートされています。 完全な一覧については、[Azure Monitor エージェントの概要](../platform/agents-overview.md#supported-operating-systems)に関する記事をご覧ください。
 
-|OS バージョン |パフォーマンス |マップ |
-|-----------|------------|-----|
-|Windows Server 2019 | x | x |
-|Windows Server 2016 1803 | x | x |
-|Windows Server 2016 | X | x |
-|Windows Server 2012 R2 | X | x |
-|Windows Server 2012 | X | x |
-|Windows Server 2008 R2 | X | x|
-|Windows 10 1803 | X | x |
-|Windows 8.1 | X | x |
-|Windows 8 | X | x |
-|Windows 7 SP1 | X | x |
-|Red Hat Enterprise Linux (RHEL) 6、7| X | x| 
-|Ubuntu 18.04、16.04 | X | x |
-|CentOS Linux 7、6 | X | x |
-|SUSE Linux Enterprise Server (SLES) 12 | X | x |
-|Debian 9.4、8 | X<sup>1</sup> | |
+Azure Monitor for VMs をサポートする Dependency Agent の Linux サポートについては、次の考慮事項の一覧を確認してください。
 
-<sup>1</sup> Azure Monitor for VMs のパフォーマンス機能は、Azure Monitor からのみ使用できます。 Azure VM の左側のウィンドウから直接使用することはできません。
+- 既定と SMP Linux のカーネル リリースのみがサポートされています。
+- Physical Address Extension (PAE) や Xen などの非標準のカーネル リリースは、どの Linux ディストリビューションでもサポートされていません。 たとえば、リリースの文字列が *2.6.16.21-0.8-xen* であるシステムはサポートされていません。
+- カスタム カーネル (標準カーネルの再コンパイルを含む) はサポートされていません。
+- バージョン 9.4 以外の Debian ディストリビューションでは、マップ機能はサポートされておらず、パフォーマンス機能は [Azure Monitor] メニューからのみ使用できます。 Azure VM の左側のウィンドウから直接使用することはできません。
+- CentOSPlus カーネルはサポートされています。
+- Spectre の脆弱性のために、Linux カーネルに修正プログラムを適用する必要があります。 詳細については、Linux ディストリビューション ベンダーに問い合わせてください。
 
->[!NOTE]
->Linux オペレーティング システムでは、次のようになっています。
-> - 既定と SMP Linux のカーネル リリースのみがサポートされています。
-> - Physical Address Extension (PAE) や Xen などの非標準のカーネル リリースは、どの Linux ディストリビューションでもサポートされていません。 たとえば、リリースの文字列が *2.6.16.21-0.8-xen* であるシステムはサポートされていません。
-> - カスタム カーネル (標準カーネルの再コンパイルを含む) はサポートされていません。
-> - CentOSPlus カーネルはサポートされています。
-> - Spectre の脆弱性のために、Linux カーネルに修正プログラムを適用する必要があります。 詳細については、Linux ディストリビューション ベンダーに問い合わせてください。
 
-#### <a name="red-hat-linux-7"></a>Red Hat Linux 7
-
-| OS バージョン | カーネル バージョン |
-|:--|:--|
-| 7.6 | 3.10.0-957 |
-| 7.5 | 3.10.0-862 |
-| 7.4 | 3.10.0-693 |
-
-#### <a name="red-hat-linux-6"></a>Red Hat Linux 6
-
-| OS バージョン | カーネル バージョン |
-|:--|:--|
-| 6.10 | 2.6.32-754 |
-| 6.9 | 2.6.32-696 |
-
-#### <a name="centosplus"></a>CentOSPlus
-
-| OS バージョン | カーネル バージョン |
-|:--|:--|
-| 6.10 | 2.6.32-754.3.5<br>2.6.32-696.30.1 |
-| 6.9 | 2.6.32-696.30.1<br>2.6.32-696.18.7 |
-
-#### <a name="ubuntu-server"></a>Ubuntu Server
-
-| OS バージョン | カーネル バージョン |
-|:--|:--|
-| 18.04 | 5.3.0-1020<br>5.0 (Azure で調整されたカーネルを含む)<br>4.18 *<br>4.15* |
-| 16.04.3 | 4.15。* |
-| 16.04 | 4.13.\*<br>4.11.\*<br>4.10.\*<br>4.8.\*<br>4.4.\* |
-
-#### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
-
-| OS バージョン | カーネル バージョン |
-|:--|:--|
-|12 SP4 | 4.12。* (Azure で調整されたカーネルを含む) |
-|12 SP3 | 4.4.* |
-|12 SP2 | 4.4.* |
-
-#### <a name="debian"></a>Debian 
-
-| OS バージョン | カーネル バージョン |
-|:--|:--|
-| 9 | 4.9 | 
 
 ## <a name="supported-azure-arc-machines"></a>サポートされている Azure Arc マシン
 Azure Monitor for VMs は、Arc 拡張サービスが利用可能なリージョンの Azure Arc 対応サーバーで使用できます。 Arc エージェントのバージョン 0.9 以降を実行している必要があります。
 
 | 接続先ソース | サポートされています | 説明 |
 |:--|:--|:--|
-| Windows エージェント | はい | Windows エージェントには、[Windows の Log Analytics エージェント](../platform/log-analytics-agent.md)の他に、Dependency Agent が必要です。 詳細については、[サポートされているオペレーティング システム](#supported-operating-systems)のセクションを参照してください。 |
+| Windows エージェント | はい | Windows エージェントには、[Windows の Log Analytics エージェント](../platform/log-analytics-agent.md)の他に、Dependency Agent が必要です。 詳細については、[サポートされているオペレーティング システム](../platform/agents-overview.md#supported-operating-systems)のセクションを参照してください。 |
 | Linux エージェント | はい | Linux エージェントには、[Linux の Log Analytics エージェント](../platform/log-analytics-agent.md)の他に、Dependency Agent が必要です。 詳細については、[サポートされているオペレーティング システム](#supported-operating-systems)のセクションを参照してください。 |
 | System Center Operations Manager 管理グループ | いいえ | |
 

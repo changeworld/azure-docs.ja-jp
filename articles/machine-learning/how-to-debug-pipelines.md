@@ -5,34 +5,47 @@ description: Python で Azure Machine Learning パイプラインをデバッグ
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-author: likebupt
-ms.author: keli19
-ms.date: 03/18/2020
+author: lobrien
+ms.author: laobri
+ms.date: 08/28/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, devx-track-python
-ms.openlocfilehash: ac8896bae4b3bf36ee6e943581bbf6791401c821
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 0f051e5b5711cec9fd8e72ec2b84c18f80430a0a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904651"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018061"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>機械学習パイプラインのデバッグとトラブルシューティング
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-この記事では、[Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) および [Azure Machine Learning デザイナー (プレビュー)](https://docs.microsoft.com/azure/machine-learning/concept-designer) で[機械学習パイプライン](concept-ml-pipelines.md)をデバッグしてトラブルシューティングする方法について説明します。 次の方法に関する情報を提供します。
+この記事では、[Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) および [Azure Machine Learning デザイナー (プレビュー)](https://docs.microsoft.com/azure/machine-learning/concept-designer) で[機械学習パイプライン](concept-ml-pipelines.md)をトラブルシューティングおよびデバッグする方法について説明します。 
 
-* Azure Machine Learning SDK を使用してデバッグする
-* Azure Machine Learning デザイナーを使用してデバッグする
-* Application Insights を使用してデバッグする
-* Visual Studio Code (VS Code) と Python Tools for Visual Studio (PTVSD) を使用して対話形式でデバッグする
+## <a name="troubleshooting-tips"></a>トラブルシューティングのヒント
 
-## <a name="azure-machine-learning-sdk"></a>Azure Machine Learning SDK
-以降のセクションでは、パイプラインの構築時に陥りやすい落とし穴と、パイプラインで実行されているコードをデバッグするためのさまざまな方法の概要について説明します。 パイプラインが予期したとおりに実行されない場合は、次のヒントを参考にしてください。
+次の表に、パイプライン開発時の一般的な問題と、考えられる解決策を示します。
 
-### <a name="testing-scripts-locally"></a>スクリプトのローカルでのテスト
+| 問題 | 考えられる解決策 |
+|--|--|
+| `PipelineData` ディレクトリにデータを渡せない | パイプラインがステップの出力データを想定する場所に、スクリプトでディレクトリを作成したことを確認してください。 ほとんどの場合、入力引数によって出力ディレクトリが定義されます。ディレクトリを明示的に作成してください。 出力ディレクトリを作成するには、`os.makedirs(args.output_dir, exist_ok=True)` を使用します。 この設計パターンを示すスコアリング スクリプトの例については、[こちらのチュートリアル](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script)を参照してください。 |
+| 依存関係のバグ | ローカルでのテスト時には発生しなかった依存関係エラーがリモート パイプラインで発生する場合は、リモート環境の依存関係とバージョンがテスト環境のものと一致していることを確認します。 (「[環境のビルド、キャッシュ、再利用](https://docs.microsoft.com/azure/machine-learning/concept-environments#environment-building-caching-and-reuse)」を参照してください。)|
+| コンピューティング ターゲットでのあいまいなエラー | コンピューティング先を削除してから再作成してみてください。 コンピューティング先は簡単に再作成でき、いくつかの一時的な問題を解決できます。 |
+| ステップを再利用しないパイプライン | ステップの再利用は既定で有効になっていますが、パイプライン ステップで無効にしていないか確認してください。 再利用が無効になっている場合は、ステップの `allow_reuse` パラメーターが `False` に設定されます。 |
+| パイプラインが不必要に再実行される | 基になるデータまたはスクリプトが変更されたときにのみステップが再実行されるようにするには、各ステップのソース コード ディレクトリを分離します。 複数のステップに同じソース ディレクトリを使用すると、不要に再実行される可能性があります。 パイプライン ステップ オブジェクトで `source_directory` パラメーターを使用して、そのステップの分離されたディレクトリを指定し、複数のステップで同じ `source_directory` パスを使用しないようにします。 |
 
-パイプラインにおける最も一般的なエラーの 1 つは、アタッチされたスクリプト (データ クレンジング スクリプト、スコアリング スクリプトなど) が意図したとおりに実行されないこと、またはスクリプトに Azure Machine Learning Studio のワークスペースでデバッグが困難なリモート コンピューティング コンテキストの実行時エラーが含まれていることです。 
+
+## <a name="debugging-techniques"></a>デバッグ手法
+
+パイプラインのデバッグには 3 つの主要な手法があります。 
+
+* ローカル コンピューター上で個々のパイプライン ステップをデバッグする
+* ログと Application Insights を使用して問題の原因を分離し、診断する
+* Azure で実行しているパイプラインにリモート デバッガーをアタッチする
+
+### <a name="debug-scripts-locally"></a>スクリプトをローカルでデバッグする
+
+パイプラインにおける最も一般的なエラーの 1 つは、ドメイン スクリプトが意図したとおりに実行されないこと、またはリモート コンピューティングのコンテキストにデバッグが困難なランタイム エラーが含まれていることです。
 
 パイプライン自体をローカル環境で実行することはできませんが、ローカル コンピューター上の分離環境でスクリプトを実行すると、コンピューティングと環境のビルド プロセスを待つ必要がないため、デバッグが速くなります。 これを行うには、いくつかの開発作業が必要です。
 
@@ -49,41 +62,9 @@ ms.locfileid: "87904651"
 > [!TIP] 
 > スクリプトが想定どおりに実行されることを確認したら、次の手順として、複数ステップのパイプラインで実行する前に、単一ステップのパイプラインでスクリプトを実行することをお勧めします。
 
-### <a name="debugging-scripts-from-remote-context"></a>リモート コンテキストからのスクリプトのデバッグ
+## <a name="configure-write-to-and-review-pipeline-logs"></a>パイプライン ログの構成、書き込み、および確認
 
 スクリプトのローカルでのテストは、パイプラインの構築を開始する前に主なコード フラグメントや複雑なロジックをデバッグするための優れた方法です。ただし、特にパイプラインのステップ間の相互作用中に診断動作が生じる場合には、ある時点で実際のパイプライン自体の実行中にスクリプトをデバッグすることが必要になる可能性が高いです。 JavaScript コードをデバッグする場合と同様に、リモート実行時にオブジェクトの状態と予期される値を確認できるように、ステップ スクリプトで `print()` ステートメントを適宜使用することをお勧めします。
-
-ログ ファイル `70_driver_log.txt` には、以下が含まれています。 
-
-* スクリプトの実行中に出力されたすべてのステートメント
-* スクリプトのスタック トレース 
-
-ポータルでこのログ ファイルとその他のログ ファイルを見つけるには、まずワークスペースでパイプラインの実行をクリックします。
-
-![パイプラインの実行の一覧ページ](./media/how-to-debug-pipelines/pipelinerun-01.png)
-
-パイプラインの実行の詳細ページに移動します。
-
-![パイプラインの実行の詳細ページ](./media/how-to-debug-pipelines/pipelinerun-02.png)
-
-特定のステップのモジュールをクリックします。 **[ログ]** タブに移動します。その他のログには、環境のイメージ ビルド プロセスやステップ準備スクリプトに関する情報が含まれます。
-
-![パイプラインの実行の詳細ページの [ログ] タブ](./media/how-to-debug-pipelines/pipelinerun-03.png)
-
-> [!TIP]
-> "*発行されたパイプライン*" の実行は、ワークスペースの **[エンドポイント]** タブにあります。 "*発行されていないパイプライン*" の実行は、 **[Experiments]\(実験\)** または **[パイプライン]** にあります。
-
-### <a name="troubleshooting-tips"></a>トラブルシューティングのヒント
-
-次の表に、パイプライン開発時の一般的な問題と、考えられる解決策を示します。
-
-| 問題 | 考えられる解決策 |
-|--|--|
-| `PipelineData` ディレクトリにデータを渡せない | パイプラインがステップの出力データを想定する場所に、スクリプトでディレクトリを作成したことを確認してください。 ほとんどの場合、入力引数によって出力ディレクトリが定義されます。ディレクトリを明示的に作成してください。 出力ディレクトリを作成するには、`os.makedirs(args.output_dir, exist_ok=True)` を使用します。 この設計パターンを示すスコアリング スクリプトの例については、[こちらのチュートリアル](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script)を参照してください。 |
-| 依存関係のバグ | スクリプトをローカルで開発してテスト済みであるのに、パイプラインのリモート コンピューティングでの実行時に依存関係の問題が見つかった場合は、コンピューティング環境の依存関係とバージョンがテスト環境と一致していることを確認してください。 (「[環境のビルド、キャッシュ、再利用](https://docs.microsoft.com/azure/machine-learning/concept-environments#environment-building-caching-and-reuse)」を参照してください。)|
-| コンピューティング ターゲットでのあいまいなエラー | コンピューティング ターゲットを削除して再作成すると、コンピューティング ターゲットでの特定の問題を解決できます。 |
-| ステップを再利用しないパイプライン | ステップの再利用は既定で有効になっていますが、パイプライン ステップで無効にしていないか確認してください。 再利用が無効になっている場合は、ステップの `allow_reuse` パラメーターが `False` に設定されます。 |
-| パイプラインが不必要に再実行される | 基になるデータまたはスクリプトが変更されたときにのみステップが再実行されるようにするには、各ステップのディレクトリを分離します。 複数のステップに同じソース ディレクトリを使用すると、不要に再実行される可能性があります。 パイプライン ステップ オブジェクトで `source_directory` パラメーターを使用して、そのステップの分離されたディレクトリを指定し、複数のステップで同じ `source_directory` パスを使用しないようにします。 |
 
 ### <a name="logging-options-and-behavior"></a>ログ オプションと動作
 
@@ -127,9 +108,33 @@ logger.warning("I am an OpenCensus warning statement, find me in Application Ins
 logger.error("I am an OpenCensus error statement with custom dimensions", {'step_id': run.id})
 ``` 
 
-## <a name="azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナー (プレビュー)
+### <a name="finding-and-reading-pipeline-log-files"></a>パイプライン ログ ファイルの確認と読み取り
 
-このセクションでは、デザイナーでパイプラインをトラブルシューティングする方法の概要について説明します。 デザイナーで作成されたパイプラインの場合、作成ページまたはパイプラインの実行の詳細ページで、**70_driver_log** ファイルが確認できます。
+ログ ファイル `70_driver_log.txt` には、以下が含まれています。 
+
+* スクリプトの実行中に出力されたすべてのステートメント
+* スクリプトのスタック トレース 
+
+ポータルでこのログ ファイルとその他のログ ファイルを見つけるには、まずワークスペースでパイプラインの実行をクリックします。
+
+![パイプラインの実行の一覧ページ](./media/how-to-debug-pipelines/pipelinerun-01.png)
+
+パイプラインの実行の詳細ページに移動します。
+
+![パイプラインの実行の詳細ページ](./media/how-to-debug-pipelines/pipelinerun-02.png)
+
+特定のステップのモジュールをクリックします。 **[ログ]** タブに移動します。その他のログには、環境のイメージ ビルド プロセスやステップ準備スクリプトに関する情報が含まれます。
+
+![パイプラインの実行の詳細ページの [ログ] タブ](./media/how-to-debug-pipelines/pipelinerun-03.png)
+
+> [!TIP]
+> "*発行されたパイプライン*" の実行は、ワークスペースの **[エンドポイント]** タブにあります。 "*発行されていないパイプライン*" の実行は、 **[Experiments]\(実験\)** または **[パイプライン]** にあります。
+
+`ParallelRunStep` からのログ記録とトレースの詳細については、「[ParallelRunStep のデバッグとトラブルシューティング](how-to-debug-parallel-run-step.md)」をご覧ください。
+
+## <a name="logging-in-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナー (プレビュー) でのログ記録
+
+デザイナーで作成されたパイプラインの場合、作成ページまたはパイプラインの実行の詳細ページで、**70_driver_log** ファイルが確認できます。
 
 ### <a name="enable-logging-for-real-time-endpoints"></a>リアルタイム エンドポイントのログ記録を有効にする
 
@@ -163,7 +168,7 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 ## <a name="application-insights"></a>Application Insights
 この方法で OpenCensus Python ライブラリを使用する方法の詳細については、次のガイドを参照してください。[Application Insights での機械学習パイプラインのデバッグとトラブルシューティング](how-to-debug-pipelines-application-insights.md)
 
-## <a name="visual-studio-code"></a>Visual Studio Code
+## <a name="interactive-debugging-with-visual-studio-code"></a>Visual Studio Code を使用した対話型デバッグ
 
 場合によっては、ML パイプラインで使用される Python コードを対話的にデバッグする必要が生じることがあります。 Visual Studio Code (VS Code) と debugpy を使用すると、トレーニング環境で実行されているコードにアタッチできます。 詳細については、[VS Code での対話型デバッグのガイド](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-machine-learning-pipelines)を参照してください。
 

@@ -47,7 +47,7 @@
       href: powershell-samples.md
 - name: 概念
   items:
-    - name: コンポーネント
+    - name: Components
       href: components.md
     - name: 概念
       href: concepts.md
@@ -81,6 +81,8 @@
       href: load-balancer-standard-virtual-machine-scale-sets.md
 - name: 方法
   items:
+    - name: ポータルの設定
+      href: manage.md
     - name: 仮想マシン スケール セット
       items:
         - name: 既存の Azure Load Balancer での使用 - ポータル

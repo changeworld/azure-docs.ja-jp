@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: d4ed88dea0d230fd3488621c217ef9ea086310d5
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 8ee9712c01c8ab6b36f595829c3ccc5ae392ff35
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691481"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276764"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>適応型アプリケーション制御を使用して、マシンの攻撃対象領域を減らす
 
@@ -76,7 +76,7 @@ Azure Security Center の適応型アプリケーション制御の利点と、�
     - **推奨** - 同じアプリケーションを一貫して実行し、許可リストが構成されていないマシンのグループ。 これらのグループに対して適応型アプリケーション制御を有効にすることをお勧めします。
     
       > [!TIP]
-      > "REVIEWGROUP" というプレフィックスが付いたグループ名が表示される場合は、部分的に一貫性のあるアプリケーションのリストがあるマシンが含まれます。 Security Center でパターンは表示できませんが、このグループを参照し、「[グループの適応型アプリケーション制御規則の編集](#editing-a-groups-adaptive-application-controls-rule)」の説明に従って、いくつかの適応型アプリケーション制御規則を "_お客様_" が手動で定義できるかどうかを確認することが推奨されます。
+      > "REVIEWGROUP" というプレフィックスが付いたグループ名が表示される場合は、部分的に一貫性のあるアプリケーションのリストがあるマシンが含まれます。 Security Center でパターンは表示できませんが、このグループを参照し、「[グループの適応型アプリケーション制御規則の編集](#edit-a-groups-adaptive-application-controls-rule)」の説明に従って、いくつかの適応型アプリケーション制御規則を "_お客様_" が手動で定義できるかどうかを確認することが推奨されます。
       >
       > 「[グループ間でマシンを移動する](#move-a-machine-from-one-group-to-another)」の説明に従って、このグループから他のグループにマシンを移動することもできます。
 
@@ -115,7 +115,7 @@ Azure Security Center の適応型アプリケーション制御の利点と、�
 
 
 
-## <a name="editing-a-groups-adaptive-application-controls-rule"></a>グループの適応型アプリケーション制御規則の編集
+## <a name="edit-a-groups-adaptive-application-controls-rule"></a>グループの適応型アプリケーション制御規則の編集
 
 組織内の既知の変更により、マシンのグループの許可リストを編集することができます。 
 
@@ -150,7 +150,7 @@ Azure Security Center の適応型アプリケーション制御の利点と、�
 
 
 
-## <a name="responding-to-the-allowlist-rules-in-your-adaptive-application-control-policy-should-be-updated-recommendation"></a>[適応型アプリケーション制御ポリシーの許可リスト ルールを更新する必要がある] 推奨事項への対応
+## <a name="respond-to-the-allowlist-rules-in-your-adaptive-application-control-policy-should-be-updated-recommendation"></a>[適応型アプリケーション制御ポリシーの許可リスト ルールを更新する必要がある] 推奨事項への対応
 
 Security Center の機械学習で、以前は許可されていなかった、正当である可能性のある動作が識別された場合、この推奨事項が表示されます。 誤検知アラートの数を減らすために、推奨事項で既存の定義の新しい規則が提案されます。
 
@@ -167,7 +167,7 @@ Security Center の機械学習で、以前は許可されていなかった、�
 
 
 
-## <a name="auditing-alerts-and-violations"></a>アラートと違反の監査
+## <a name="audit-alerts-and-violations"></a>アラートと違反の監査
 
 1. Security Center のメニューから、 **[適応型アプリケーション制御]** を選択します。
 
@@ -199,7 +199,7 @@ Security Center の機械学習で、以前は許可されていなかった、�
 
 
 
-## <a name="managing-application-controls-via-the-rest-api"></a>REST API を使用したアプリケーション制御の管理 
+## <a name="manage-application-controls-via-the-rest-api"></a>REST API を使用したアプリケーション制御の管理 
 
 適応型アプリケーション制御をプログラムで管理するには、REST API を使用します。 
 

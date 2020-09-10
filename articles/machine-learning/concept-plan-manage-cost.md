@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 2fc9a1a1c3a08f0530649ae64926c673e2d666e0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3173f81f84463cde488dcbf0242f8d65c5b9c9fe
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012690"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144993"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Azure Machine Learning のコストを計画して管理する
 
@@ -69,7 +69,7 @@ Machine Learning の個別のサービス領域については表示されませ
 
 Azure Machine Learning のユーザーは、マネージド Azure Machine Learning コンピューティング クラスター (AmlCompute とも呼ばれます) を使用できます。 AmlCompute では、GPU と CPU のさまざまなオプションがサポートされています。 AmlCompute は、Azure Machine Learning によってサブスクリプションの代わりに内部でホストされます。 Azure IaaS クラウド スケールで、同じエンタープライズ レベルのセキュリティ、コンプライアンス、ガバナンスが提供されます。
 
-これらのコンピューティング プールは Azure の IaaS インフラストラクチャ内にあるため、インフラストラクチャの他の部分と同じセキュリティ要件とコンプライアンス要件で、トレーニングをデプロイ、スケーリング、管理できます。  これらのデプロイは、お客様のサブスクリプションで実行され、ガバナンス ルールに従います。 詳しくは、「[Azure Machine Learning コンピューティング](how-to-set-up-training-targets.md#amlcompute)」をご覧ください。
+これらのコンピューティング プールは Azure の IaaS インフラストラクチャ内にあるため、インフラストラクチャの他の部分と同じセキュリティ要件とコンプライアンス要件で、トレーニングをデプロイ、スケーリング、管理できます。  これらのデプロイは、お客様のサブスクリプションで実行され、ガバナンス ルールに従います。 詳しくは、「[Azure Machine Learning コンピューティング](how-to-create-attach-compute-sdk.md#amlcompute)」をご覧ください。
 
 ## <a name="configure-training-clusters-for-autoscaling"></a>自動スケーリングされるようにトレーニング クラスターを構成する
 
@@ -127,4 +127,4 @@ Azure Machine Learning コンピューティングでは、予約インスタン
 各項目の詳細情報
 * [リソース クォータの管理と増加](how-to-manage-quotas.md)
 * [コスト分析を使用したコストの管理](../cost-management-billing/costs/quick-acm-cost-analysis.md)。
-* [Azure Machine Learning コンピューティング](how-to-set-up-training-targets.md#amlcompute)
+* [SDK](how-to-create-attach-compute-sdk.md#amlcompute) を使用して、または [Studio](how-to-create-attach-compute-studio.md#amlcompute) で Azure Machine Learning コンピューティングを作成します。

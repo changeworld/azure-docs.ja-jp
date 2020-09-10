@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 4e65655f1809c6badc50e39a2a5e932516ef99d2
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: c27c5fae45f7cde57f2db12c05107d2b77b90a2c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509843"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012383"
 ---
 # <a name="use-the-session-management-rest-api"></a>セッション管理 REST API を使用する
 
@@ -117,7 +117,14 @@ RawContentLength  : 52
 $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
 ```
 
-## <a name="update-a-session"></a>セッションを更新する
+## <a name="modify-and-query-session-properties"></a>セッション プロパティの変更と照会
+
+既存のセッションのパラメーターを照会または変更するためのコマンドがいくつかあります。
+
+> [!CAUTION]
+すべての REST 呼び出しについて、それらのコマンドを頻繁に呼び出しすぎるとサーバーでスロットルが発生し、最終的にエラーが返されます。 この場合の状態コードは 429 ("要求が多すぎます") になります。 経験則として、**次の呼び出しとの間に 5 秒から 10 秒**の間隔が必要です。
+
+### <a name="update-session-parameters"></a>セッション パラメーターの更新
 
 このコマンドでは、セッションのパラメーターが更新されます。 現時点では、セッションのリース時間のみを延長できます。
 
@@ -138,7 +145,7 @@ $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
 |-----------|:-----------|:-----------|
 | 200 | | Success |
 
-### <a name="example-script-update-a-session"></a>スクリプトの例:セッションを更新する
+#### <a name="example-script-update-a-session"></a>スクリプトの例:セッションを更新する
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions/$sessionId" -Method Patch -ContentType "application/json" -Body "{ 'maxLeaseTime': '5:0:0' }" -Headers @{ Authorization = "Bearer $token" }
@@ -160,7 +167,7 @@ Headers           : {[MS-CV, Fe+yXCJumky82wuoedzDTA.0], [Content-Length, 0], [Da
 RawContentLength  : 0
 ```
 
-## <a name="get-active-sessions"></a>アクティブなセッションを取得する
+### <a name="get-active-sessions"></a>アクティブなセッションを取得する
 
 このコマンドでは、アクティブなセッションの一覧が返されます。
 
@@ -174,7 +181,7 @@ RawContentLength  : 0
 |-----------|:-----------|:-----------|
 | 200 | -sessions: セッション プロパティの配列 | セッション プロパティの説明については、「セッション プロパティを取得する」セクションを参照してください。 |
 
-### <a name="example-script-query-active-sessions"></a>スクリプトの例:アクティブなセッションをクエリする
+#### <a name="example-script-query-active-sessions"></a>スクリプトの例:アクティブなセッションをクエリする
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions" -Method Get -Headers @{ Authorization = "Bearer $token" }
@@ -203,7 +210,7 @@ ParsedHtml        : mshtml.HTMLDocumentClass
 RawContentLength  : 2
 ```
 
-## <a name="get-sessions-properties"></a>セッション プロパティを取得する
+### <a name="get-sessions-properties"></a>セッション プロパティを取得する
 
 このコマンドでは、VM のホスト名など、セッションに関する情報が返されます。
 
@@ -217,7 +224,7 @@ RawContentLength  : 2
 |-----------|:-----------|:-----------|
 | 200 | - message: 文字列<br/>- sessionElapsedTime: 期間<br/>- sessionHostname: 文字列<br/>- sessionId: 文字列<br/>- sessionMaxLeaseTime: 期間<br/>- sessionSize: 列挙型<br/>- sessionStatus: 列挙型 | 列挙型 sessionStatus { starting、ready、stopping、stopped、expired、error}<br/>状態が 'error' または 'expired' である場合、メッセージには詳細情報が含まれます |
 
-### <a name="example-script-get-session-properties"></a>スクリプトの例:セッションのプロパティを取得します
+#### <a name="example-script-get-session-properties"></a>スクリプトの例:セッションのプロパティを取得します
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions/$sessionId/properties" -Method Get -Headers @{ Authorization = "Bearer $token" }

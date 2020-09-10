@@ -1,14 +1,14 @@
 ---
 title: 効果のしくみを理解する
 description: Azure Policy の定義には、コンプライアンスが管理および報告される方法を決定するさまざまな効果があります。
-ms.date: 08/17/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0cfa8215d828de6d5426c3883ca1968e7a7cb542
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7eb1178bbf767f6962c797da4474af81d576545a
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544725"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079661"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 
@@ -479,14 +479,33 @@ EnforceRegoPolicy 効果の **details** プロパティには、Gatekeeper v2 �
 
 ## <a name="modify"></a>変更
 
-Modify は、作成時または更新時にリソースのタグを追加、更新、または削除するために使用されます。 一般的な例としては、コスト センターなどのリソースでタグを更新することが挙げられます。 ターゲット リソースがリソース グループでない限り、変更ポリシーでは常に `mode` が _[インデックス設定済み]_ に設定されている必要があります。 準拠していない既存のリソースは、[修復タスク](../how-to/remediate-resources.md)で修復できます。 1 つの Modify 規則には、任意の数の操作を含めることができます。
+Modify は、作成時または更新時にリソースのプロパティまたはタグを追加、更新、または削除するために使用されます。
+一般的な例としては、コスト センターなどのリソースでタグを更新することが挙げられます。 準拠していない既存のリソースは、[修復タスク](../how-to/remediate-resources.md)で修復できます。 1 つの Modify 規則には、任意の数の操作を含めることができます。
+
+Modify では次の操作がサポートされています。
+
+- リソース タグの追加、置換、または削除。 タグに関して、ターゲット リソースがリソース グループでない限り、Modify ポリシーでは常に `mode` が _[インデックス設定済み]_ に設定されている必要があります。
+- 仮想マシンと仮想マシン スケール セットのマネージド ID の種類 (`identity.type`) の値の追加または置換。
+- 特定のエイリアスの値の追加または置換 (プレビュー)。
+  - `Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }` を使用します
+    Modify で使用できるエイリアスの一覧を取得するには、Azure PowerShell **4.6.0** 以降で上記を使用します。
 
 > [!IMPORTANT]
-> Modify は現在、タグでのみ使用されます。 タグを管理している場合は、Append ではなく Modify を使用することをお勧めします。Modify では、追加の操作タイプが使用でき、既存のリソースを修復する機能が提供されます。 ただし、マネージド ID を作成できない場合は、Append を追加することをお勧めします。
+> タグを管理している場合は、Append ではなく Modify を使用することをお勧めします。Modify では追加の操作タイプが使用でき、既存のリソースを修復する機能が提供されるためです。 ただし、マネージド ID を作成できない場合や、リソース プロパティのエイリアスが Modify でまだサポートされていない場合は、Append を使用することをお勧めします。
 
 ### <a name="modify-evaluation"></a>Modify の評価
 
-リソースを作成中または更新中に、リソース プロバイダーによって要求が処理される前に Modify による評価が行われます。 Modify では、ポリシー規則の **if** 条件が満たされた場合、リソースのフィールドが追加または更新されます。
+リソースを作成中または更新中に、リソース プロバイダーによって要求が処理される前に Modify による評価が行われます。 ポリシー ルールの **if** 条件が満たされた場合、要求コンテンツに Modify 操作が適用されます。 各 Modify 操作では、適用されるタイミングを決定する条件を指定できます。 条件が _false_ と評価された操作はスキップされます。
+
+エイリアスを指定すると次の追加のチェックが実行され、要求コンテンツが Modify 操作によって、リソース プロバイダーに拒否されるような形に変更されることがないようにします。
+
+- エイリアスのマップ先のプロパティは、要求の API バージョンでは 'Modifiable' としてマークされています。
+- Modify 操作のトークンの種類は、要求の API バージョンのプロパティで想定されるトークンの種類と一致します。
+
+これらのチェックのいずれかが失敗した場合、ポリシー評価は指定された **conflictEffect** にフォールバックします。
+
+> [!IMPORTANT]
+> マップされたプロパティが 'Modifiable' でない API バージョンを使用した要求の失敗を回避するために、エイリアスを含む Modify の定義には _audit_ **conflict effect** を使用することを推奨します。 API バージョン間で同じエイリアスの動作が異なる場合は、条件付き変更操作を使用して、各 API バージョンで使用される変更操作を決定できます。
 
 Modify 効果を使用するポリシー定義が評価サイクルの一部として実行される場合、既存のリソースに対する変更は行われません。 代わりに、**if** 条件を満たすリソースが非準拠とマークされます。
 
@@ -498,7 +517,7 @@ Modify 効果の **details** プロパティには、修復に必要なアクセ
   - このプロパティには、サブスクリプションでアクセス可能なロールベースのアクセス制御ロール ID と一致する文字列の配列を含める必要があります。 詳細については、[修復 - ポリシー定義を構成する](../how-to/remediate-resources.md#configure-policy-definition)を参照してください。
   - 定義されたロールには、[Contributor](../../../role-based-access-control/built-in-roles.md#contributor) ロールに与えられているすべての操作が含まれている必要があります。
 - **conflictEffect** (省略可能)
-  - 複数のポリシー定義によって同じプロパティが変更された場合に、どのポリシー定義が "優先" されるかを決定します。
+  - 複数のポリシー定義によって同じプロパティが変更された場合、または Modify 操作が指定したエイリアスで動作しない場合に、どのポリシー定義を "優先" するかを決定します。
     - 新規または更新されたリソースについては、_Deny_ を持つポリシー定義が優先されます。 _Audit_ のポリシー定義では、すべての **operations** がスキップされます。 複数のポリシー定義に _Deny_ がある場合、その要求は競合として拒否されます。 すべてのポリシー定義に _Audit_ がある場合、競合しているポリシー定義のどの **operations** も処理されません。
     - 既存のリソースについては、複数のポリシー定義に _Deny_ がある場合、コンプライアンス状態は_競合_になります。 _Deny_ があるポリシー定義が 1 つ以下の場合、各割り当ては_非準拠_のコンプライアンス状態を返します。
   - 使用可能な値は、_Audit_、_Deny_、_Disabled_ です。
@@ -513,6 +532,9 @@ Modify 効果の **details** プロパティには、修復に必要なアクセ
     - **value** (オプション)
       - タグに設定する値です。
       - このプロパティは、**operation** が _addOrReplace_ または _Add_ の場合に必要です。
+    - **condition** (オプション)
+      - _true_ または _false_ として評価される[ポリシー関数](./definition-structure.md#policy-functions)による Azure Policy 言語式を含む文字列です。
+      - `field()`、`resourceGroup()`、`subscription()` の各ポリシー関数はサポートされていません。
 
 ### <a name="modify-operations"></a>Modify の操作
 
@@ -546,11 +568,11 @@ Modify 効果の **details** プロパティには、修復に必要なアクセ
 
 **operation** プロパティには、次のオプションが用意されています。
 
-|操作 |説明 |
+|Operation |説明 |
 |-|-|
-|addOrReplace |定義済みのタグと値をリソースに追加します (タグに別の値が既に存在する場合でも)。 |
-|追加 |定義済みのタグと値をリソースに追加します。 |
-|[削除] |定義済みのタグをリソースから削除します。 |
+|addOrReplace |プロパティまたはタグが別の値で既に存在する場合でも、定義されたプロパティまたはタグと値をリソースに追加します。 |
+|追加 |定義されたプロパティまたはタグと値をリソースに追加します。 |
+|[削除] |定義されたプロパティまたはタグをリソースから削除します。 |
 
 ### <a name="modify-examples"></a>Modify の例
 
@@ -593,6 +615,28 @@ Modify 効果の **details** プロパティには、修復に必要なアクセ
                 "operation": "addOrReplace",
                 "field": "tags['environment']",
                 "value": "[parameters('tagValue')]"
+            }
+        ]
+    }
+}
+```
+
+例 3: ストレージ アカウントで BLOB のパブリック アクセスが許可されていないことを確認します。Modify 操作は、API バージョンが '2019-04-01' 以上の要求を評価する場合にのみ適用されます。
+
+```json
+"then": {
+    "effect": "modify",
+    "details": {
+        "roleDefinitionIds": [
+            "/providers/microsoft.authorization/roleDefinitions/17d1049b-9a84-46fb-8f53-869881c3d3ab"
+        ],
+        "conflictEffect": "audit",
+        "operations": [
+            {
+                "condition": "[greaterOrEquals(requestContext().apiVersion, '2019-04-01')]",
+                "operation": "addOrReplace",
+                "field": "Microsoft.Storage/storageAccounts/allowBlobPublicAccess",
+                "value": false
             }
         ]
     }

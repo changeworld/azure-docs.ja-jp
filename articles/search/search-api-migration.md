@@ -7,28 +7,28 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: 06e25e1426f206a4542444f57954ed4859a11142
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 08/26/2020
+ms.openlocfilehash: 0f1050bf58e0cd8d9a601d60a4c5dc22a5420483
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927138"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949033"
 ---
-# <a name="upgrade-to-the-latest-azure-cognitive-search-service-rest-api-version"></a>最新の Azure Cognitive Search サービス REST API バージョンへのアップグレード
+# <a name="upgrade-to-the-latest-rest-api-in-azure-cognitive-search"></a>Azure Cognitive Search で最新の REST API にアップグレードする
 
-以前のバージョンの [Search REST API](/rest/api/searchservice/) を使用している場合は、一般公開された最新の API バージョン 2020-06-30 を使用するようにアプリケーションをアップグレードするのに、この記事が役立ちます。
+以前のバージョンの [**Search REST API**](/rest/api/searchservice/) を使用している場合は、一般公開された最新の API バージョン **2020-06-30** を使用するようにアプリケーションをアップグレードするのに、この記事が役立ちます。
 
-バージョン 2020-06-30 の REST API には、以前のバージョンからの変更点がいくつか含まれています。 大半は下位互換性を保つための変更であるため、使用していたバージョンに応じて、コードの変更は最小限で済むはずです。 新機能を使用するために必要なコードの変更については、「[アップグレードの手順](#UpgradeSteps)」で概説しています。
+バージョン 2020-06-30 には重要な新機能 ([ナレッジ ストア](knowledge-store-concept-intro.md)) が含まれており、いくつかの小さな動作変更が導入されています。 このバージョンのほとんどの部分は下位互換性があるため、以前のバージョン (2019-05-06) からアップグレードする場合、コードの変更は最小限で済むはずです。
 
 > [!NOTE]
-> Azure Cognitive Search のサービス インスタンスでは、以前のバージョンを含む REST API バージョンの範囲がサポートされます。 それらの API バージョンを引き続き使用することもできますが、最新のバージョンに移行して、新機能を利用できるようにすることをお勧めします。
+> 検索サービスでは、以前のものを含む、広範な REST API のバージョンがサポートされています。 それらの API バージョンを引き続き使用することもできますが、最新のバージョンに移行して、新機能を利用できるようにすることをお勧めします。 時間が経つと、REST API の最も古いバージョンは非推奨になり、[サポートされなくなります](search-api-versions.md#unsupported-versions)。
 
 <a name="UpgradeSteps"></a>
 
 ## <a name="how-to-upgrade"></a>アップグレードする方法
 
-新しいバージョンにアップグレードするときには、バージョン番号の変更以外、コードに対する変更はおそらく一切不要です。 次の状況に該当する場合のみ、コードを変更する必要があります。
+新しいバージョンにアップグレードするときは、バージョン番号の変更以外、コードを大幅に変更する必要はおそらくありません。 次の状況に該当する場合のみ、コードを変更する必要があります。
 
 * API 応答で認識できないプロパティが返されるとコードが失敗する。 既定では、アプリケーションは、認識できないプロパティを無視する必要があります。
 
@@ -36,7 +36,7 @@ ms.locfileid: "88927138"
 
 * コードで 2019-05-06 以前の API バージョンを参照していて、そのリリースで 1 つ以上の破壊的変更の対象となっている。 「[2019-05-06 へのアップグレード](#upgrade-to-2019-05-06)」セクションに詳細が記載されています。 
 
-これらの状況のいずれかに該当する場合は、それに応じてコードを変更する必要が生じる可能性があります。 それ以外の場合は、新しいバージョンで追加された新機能の使用を開始するのでない限り、変更は不要です。
+これらの状況のいずれかに該当する場合は、それに応じてコードを変更する必要が生じる可能性があります。 それ以外の場合は、新しいバージョンで追加された新機能の使用を開始するのであっても、変更は不要です。
 
 ## <a name="upgrade-to-2020-06-30"></a>2020-06-30 へのアップグレード
 
@@ -63,7 +63,7 @@ ms.locfileid: "88927138"
 
 ### <a name="breaking-changes"></a>重大な変更
 
-以前の API バージョンに基づいて記述された既存のコードは、コードに以下の機能が含まれる場合には API バージョンが 2019-05-06 のときに中断します。
+以前の API バージョンに基づいて記述された既存のコードは、コードに以下の機能が含まれる場合、api-version=2019-05-06 以降では使用できなくなります。
 
 #### <a name="indexer-for-azure-cosmos-db---datasource-is-now-type-cosmosdb"></a>Azure Cosmos DB のインデクサー - 現在のデータソースは "type": "cosmosdb"
 

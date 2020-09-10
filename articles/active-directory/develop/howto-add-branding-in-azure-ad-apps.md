@@ -1,7 +1,7 @@
 ---
 title: アプリのブランド化ガイドライン | Azure
 titleSuffix: Microsoft identity platform
-description: Azure Active Directory の開発者向けリソースの包括的なガイド
+description: Microsoft ID プラットフォームのアプリケーションのブランド化ガイドラインについて説明します。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 08/31/2020
 ms.author: ryanwi
-ms.reviewer: arielgo
+ms.reviewer: arielgo, jiml
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: cf72a8863976d8a678fbdfb6d369c0423b59acf2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 5e62472fdccd2ee71a0ef725f34a75492d1b8ffa
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117296"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226643"
 ---
 # <a name="branding-guidelines-for-applications"></a>アプリケーションのブランド化ガイドライン
 
-Azure Active Directory (Azure AD) を使用してアプリケーションを開発する場合は、(Azure AD で管理されている) 職場や学校のアカウントまたは個人のアカウントをサインアップやサインインに使用したいと考えているアプリケーションの利用者に案内する必要があります。
+Microsoft ID プラットフォームを使用してアプリケーションを開発する場合は、(Azure AD で管理されている) 職場や学校のアカウントまたは個人のアカウントをサインアップやサインインに使用したいと考えているアプリケーションの利用者に案内する必要があります。
 
 この記事では、次のことについて説明します。
 

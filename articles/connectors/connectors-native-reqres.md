@@ -5,18 +5,20 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 08/27/2020
 tags: connectors
-ms.openlocfilehash: ae34840c04c3a1d2fb3646046792c97ed6f521a0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 05ce944d195cf43f860fc2b39975a736a4454c05
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289436"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226516"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Azure Logic Apps で受信 HTTPS 要求を受信して応答する
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) および組み込みの Request トリガーと Response アクションを使用すると、受信 HTTPS 要求を受け取ってそれに応答する、自動化されたタスクおよびワークフローを作成することができます。 たとえば、次のようなロジック アプリを作成できます。
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) および組み込みの Request トリガーと Response アクションを使用すると、HTTPS 経由で受信要求を受信できる自動化されたタスクとワークフローを作成できます。 代わりに送信要求を送信するには、組み込みの [HTTP トリガーまたは HTTP アクション](../connectors/connectors-native-http.md)を使用します。
+
+たとえば、次のようなロジック アプリを作成できます。
 
 * オンプレミス データベース内のデータに対する HTTPS 要求を受信して応答する。
 
@@ -24,47 +26,28 @@ ms.locfileid: "87289436"
 
 * 別のロジック アプリからの HTTPS 呼び出しを受信して応答する。
 
-Request トリガーは、ロジック アプリへの受信呼び出しの承認のために [Azure Active Directory Open Authentication](../active-directory/develop/index.yml) (Azure AD OAuth) をサポートしています。 この認証を有効にする方法の詳細については、[Azure Logic Apps でのセキュリティで保護されたアクセスとデータ - Azure AD OAuth 認証を有効にする](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth)方法に関する記事を参照してください。
+この記事では、ロジック アプリが受信呼び出しを受信してそれに応答できるように Request トリガーと Response アクションを使用する方法について説明します。
+
+[トランスポート層セキュリティ (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) (以前の Secure Sockets Layer (SSL)) や [Azure Active Directory Open Authentication (Azure AD OAuth)](../active-directory/develop/index.yml) などの、ロジック アプリへの受信呼び出しの暗号化、セキュリティ、承認については、[アクセスとデータのセキュリティ保護 - 要求ベースのトリガーへの受信呼び出しへのアクセス](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)できます。
+* Azure アカウントとサブスクリプション。 サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)できます。
 
-* [ロジック アプリ](../logic-apps/logic-apps-overview.md)に関する基本的な知識。 ロジック アプリを初めて使用する場合は、[初めてのロジック アプリを作成する方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)を学習してください。
-
-<a name="tls-support"></a>
-
-## <a name="transport-layer-security-tls"></a>トランスポート層セキュリティ (TLS)
-
-* 受信呼び出しでは、トランスポート層セキュリティ (TLS) 1.2 *のみ*をサポートしています。 TLS ハンドシェイク エラーが発生する場合は、TLS 1.2 を使用していることを確認してください。 詳細については、[TLS 1.0 の問題の解決](/security/solving-tls1-problem) を参照してください。 送信呼び出しでは、ターゲット エンドポイントの機能に応じて TLS 1.0、1.1、1.2 をサポートしています。
-
-* 受信呼び出しでは、次の暗号スイートをサポートしています。
-
-  * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-
-  * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
-
-  * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-
-  * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-
-  * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
-
-  * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
-
-  * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
-
-  * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+* [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。
 
 <a name="add-request"></a>
 
 ## <a name="add-request-trigger"></a>要求トリガーの追加
 
-この組み込みトリガーでは、受信 HTTPS 要求*のみ*を受け取ることができる、手動で呼び出し可能な HTTPS エンドポイントが作成されます。 このイベントが発生すると、トリガーが起動してロジック アプリが実行されます。 トリガーの基になる JSON 定義と、このトリガーの呼び出し方法の詳細については、[Request タイプのトリガー](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)に関するページ、および「[Azure Logic Apps で HTTPS エンドポイントを使用してワークフローを呼び出すか、トリガーするか、または入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」を参照してください。
+この組み込みトリガーは、HTTPS 経由で受信要求*のみ*を処理できる、手動で呼び出し可能なエンドポイントを作成します。 呼び出し元がこのエンドポイントに要求を送信すると、[Request トリガー](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)が起動され、ロジック アプリが実行されます。 このトリガーを呼び出す方法の詳細については、[Azure Logic Apps での HTTPS エンドポイントを使用したワークフローの呼び出し、トリガー、または入れ子](../logic-apps/logic-apps-http-endpoint.md)に関するページを参照してください。
+
+ロジック アプリは、受信要求を[限られた時間](../logic-apps/logic-apps-limits-and-config.md#request-limits)だけ開いたままにします。 ロジック アプリに [Response アクション](#add-response)が含まれていると仮定すると、この時間が経過してもロジック アプリが呼び出し元に応答を戻さない場合、そのロジック アプリは呼び出し元に `504 GATEWAY TIMEOUT` 状態を返します。 ロジック アプリに Response アクションが含まれていない場合、 
+> そのロジック アプリは直ちに、呼び出し元に `202 ACCEPTED` 状態を返します。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。 空のロジック アプリを作成します。
 
-1. ロジック アプリ デザイナーが開いたら、検索ボックスにフィルターとして「`http request`」と入力します。 トリガーの一覧から、 **[HTTP 要求の受信時]** トリガーを選択します。これは、ロジック アプリ ワークフローでの最初のステップです。
+1. ロジック アプリ デザイナーが開いたら、検索ボックスにフィルターとして「`http request`」と入力します。 トリガーの一覧から、 **[HTTP 要求の受信時]** トリガーを選択します。
 
    ![Request トリガーを選択する](./media/connectors-native-reqres/select-request-trigger.png)
 
@@ -144,11 +127,11 @@ Request トリガーは、ロジック アプリへの受信呼び出しの承�
 
    1. 要求トリガーで **[サンプルのペイロードを使用してスキーマを生成する]** を選択します。
 
-      ![ペイロードからスキーマを生成する](./media/connectors-native-reqres/generate-from-sample-payload.png)
+      ![[サンプルのペイロードを使用してスキーマを生成する] が選択されたスクリーンショット](./media/connectors-native-reqres/generate-from-sample-payload.png)
 
    1. サンプル ペイロードを入力して、 **[完了]** を選択します。
 
-      ![ペイロードからスキーマを生成する](./media/connectors-native-reqres/enter-payload.png)
+      ![スキーマを生成するサンプル ペイロードを入力する](./media/connectors-native-reqres/enter-payload.png)
 
       サンプル ペイロードを次に示します。
 
@@ -210,11 +193,9 @@ Request トリガーは、ロジック アプリへの受信呼び出しの承�
 
 1. ご利用のロジック アプリをトリガーするには、生成された URL に HTTP POST を送信します。
 
-   たとえば、[Postman](https://www.getpostman.com/) などのツールを使用して HTTP POST を送信できます。 Request トリガーへの受信呼び出しを承認するために [Azure Active Directory Open Authentication](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth) (Azure AD OAuth) を有効にした場合は、[Shared Access Signature (SAS) URL](../logic-apps/logic-apps-securing-a-logic-app.md#sas) または認証トークンのどちらかを使用してトリガーを呼び出します。両方を使用することはできません。 認証トークンには、Authorization ヘッダーで `Bearer` 型を指定する必要があります。 詳細については、「[Azure Logic Apps におけるアクセスとデータのセキュリティ保護 - 要求ベースのトリガーへのアクセス](../logic-apps/logic-apps-securing-a-logic-app.md#secure-triggers)」を参照してください。
+   たとえば、[Postman](https://www.getpostman.com/) などのツールを使用して HTTP POST を送信できます。 トリガーの基になる JSON 定義と、このトリガーの呼び出し方法の詳細については、このトピックス、[Request タイプのトリガー](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)に関するページ、および「[Azure Logic Apps で HTTP エンドポイントを使用してワークフローを呼び出すか、トリガーするか、または入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」を参照してください。
 
-トリガーの基になる JSON 定義と、このトリガーの呼び出し方法の詳細については、このトピックス、[Request タイプのトリガー](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)に関するページ、および「[Azure Logic Apps で HTTP エンドポイントを使用してワークフローを呼び出すか、トリガーするか、または入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」を参照してください。
-
-### <a name="trigger-outputs"></a>トリガー出力
+## <a name="trigger-outputs"></a>トリガー出力
 
 Request トリガーからの出力の詳細を次に示します。
 
@@ -228,9 +209,7 @@ Request トリガーからの出力の詳細を次に示します。
 
 ## <a name="add-a-response-action"></a>Response アクションを追加する
 
-Response アクションを使用すると、受信 HTTPS 要求に対してペイロード (データ) で応答することができますが、これは HTTPS 要求によってトリガーされるロジック アプリでのみ可能です。 Response アクションは、ご自分のワークフロー内の任意のポイントに追加できます。 このトリガーの基になる JSON 定義の詳細については、[Response タイプのアクション](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action)に関するページを参照してください。
-
-ご利用のロジック アプリでは、[制限された時間](../logic-apps/logic-apps-limits-and-config.md#request-limits)のみ受信要求が開いたままになります。 ご利用のロジック アプリのワークフローに Response アクションが含まれていると仮定すると、この時間が経過してもロジック アプリから応答がない場合、ご利用のロジック アプリは呼び出し元に `504 GATEWAY TIMEOUT` を返します。 あるいは、ご利用のロジック アプリに Response アクションが含まれていない場合、ご利用のロジック アプリは呼び出し元にすぐに `202 ACCEPTED` 応答を返します。
+Request トリガーを使用して受信要求を処理する場合は、応答をモデル化し、組み込みの [Response アクション](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action)を使用してペイロードの結果を呼び出し元に戻すことができます。 Response アクションは、Request トリガーと共に*のみ*使用できます。 この Request トリガーと Response アクションの組み合わせによって、[要求 - 応答パターン](https://en.wikipedia.org/wiki/Request%E2%80%93response)が作成されます。 Response アクションは、Foreach ループと Until ループや並列分岐の内部を除き、ワークフロー内のどこにでも追加できます。
 
 > [!IMPORTANT]
 > Response アクションにこれらのヘッダーが含まれている場合、Logic Apps は警告もエラーも表示せずに、生成された応答メッセージからこれらのヘッダーを削除します。
@@ -253,7 +232,7 @@ Response アクションを使用すると、受信 HTTPS 要求に対してペ�
 
    ステップの間にアクションを追加するには、該当するステップ間の矢印の上にポインターを移動します。 表示されるプラス記号 ( **+** ) を選択してから、 **[アクションの追加]** を選択します。
 
-1. **[アクションの選択]** の下にある [検索] ボックスに、ご自分のフィルターとして「応答」と入力し、 **[Response]** アクションを選択します。
+1. **[アクションの選択]** で、検索ボックスにフィルターとして「`response`」と入力し、 **[Response]** アクションを選択します。
 
    ![Response アクションを選択する](./media/connectors-native-reqres/select-response-action.png)
 
@@ -286,5 +265,5 @@ Response アクションを使用すると、受信 HTTPS 要求に対してペ�
 
 ## <a name="next-steps"></a>次のステップ
 
+* [アクセスとデータのセキュリティ保護 - 要求ベースのトリガーへの受信呼び出しへのアクセス](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)
 * [Logic Apps のコネクタ](../connectors/apis-list.md)
-

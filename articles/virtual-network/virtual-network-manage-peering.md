@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: altambaw
-ms.openlocfilehash: 4f94c3e643e372d96a6e9d100773ccd8929e4c8b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 41cc2bfa39160d26b5c5f09687ddf1fef9ec5803
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87416504"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290193"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>仮想ネットワーク ピアリングの作成、変更、削除
 
@@ -126,11 +126,12 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
   - *開始済み:* 1 つ目の仮想ネットワークから 2 つ目の仮想ネットワークへのピアリングを作成すると、ピアリングの状態が "*開始済み*" になります。 
   - *接続済み:* 2 つ目の仮想ネットワークから 1 つ目の仮想ネットワークへのピアリングを作成すると、ピアリングの状態が "*接続済み*" になります。 1 つ目の仮想ネットワークのピアリングの状態を確認すると、状態が "*開始済み*" から "*接続済み*" に変わっていることがわかります。 両方の仮想ネットワーク ピアリングの状態が "*接続済み*" になるまで、ピアリングは正常に確立されません。
 - Resource Manager を使用して作成された仮想ネットワークを、クラシック デプロイ モデルを使用して作成された仮想ネットワークとピアリングするときは、Resource Manager を使用してデプロイされた仮想ネットワークのピアリングだけを構成します。 仮想ネットワーク (クラシック) のピアリングや、クラシック デプロイ モデルを使用してデプロイされた 2 つの仮想ネットワークのピアリングを構成することはできません。 仮想ネットワーク (Resource Manager) から仮想ネットワーク (クラシック) へのピアリングを作成すると、ピアリングの状態が "*更新中*" になった後、すぐに "*接続済み*" に変わります。
-- ピアリングは 2 つの仮想ネットワーク間で確立されます。 ピアリングは推移的ではありません。 次の仮想ネットワーク間のピアリングを作成したとします。
-  - VirtualNetwork1 と VirtualNetwork2
-  - VirtualNetwork2 と VirtualNetwork3
+- ピアリングは 2 つの仮想ネットワーク間で確立されます。 ピアリング単独では推移的ではありません。 次の仮想ネットワーク間のピアリングを作成したとします。
+  - VirtualNetwork1 と VirtualNetwork2   - VirtualNetwork1 と VirtualNetwork2
+  - VirtualNetwork2 と VirtualNetwork3   - VirtualNetwork2 と VirtualNetwork3
 
-  この場合、VirtualNetwork2 を介して、VirtualNetwork1 と VirtualNetwork3 のピアリングが確立されるわけではありません。 VirtualNetwork1 と VirtualNetwork3 の間に仮想ネットワーク ピアリングを作成する場合は、VirtualNetwork1 と VirtualNetwork3 の間にピアリングを作成する必要があります。
+
+  この場合、VirtualNetwork2 を介して、VirtualNetwork1 と VirtualNetwork3 のピアリングが確立されるわけではありません。 VirtualNetwork1 と VirtualNetwork3 の間に仮想ネットワーク ピアリングを作成する場合は、VirtualNetwork1 と VirtualNetwork3 の間にピアリングを作成する必要があります。 この場合、VirtualNetwork2 を介して、VirtualNetwork1 と VirtualNetwork3 のピアリングが確立されるわけではありません。 VirtualNetwork1 と VirtualNetwork3 が直接通信するようにしたい場合は、VirtualNetwork1 と VirtualNetwork3 の間に明示的なピアリングを作成するか、またはハブ ネットワークで NVA を実行する必要があります。  
 - 既定の Azure 名前解決を使用して、ピアリングされた仮想ネットワークで名前を解決することはできません。 他の仮想ネットワークで名前を解決するには、[プライベート ドメインの Azure DNS](../dns/private-dns-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) またはカスタム DNS サーバーを使う必要があります。 独自の DNS サーバーを設定する方法については、「[独自 DNS サーバー使用の名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)」をご覧ください。
 - 同じリージョン内のピアリングされた仮想ネットワークのリソースは、同じ仮想ネットワークに存在する場合と同様に、同じ帯域幅と待機時間で相互に通信できます。 ただし、仮想マシンのサイズごとに独自の最大ネットワーク帯域幅が設定されています。 さまざまなサイズの仮想マシンの最大ネットワーク帯域幅の詳細については、[Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の VM サイズに関する記事を参照してください。
 - 仮想ネットワークは、別の仮想ネットワークとピアリングすることができ、Azure 仮想ネットワーク ゲートウェイを使用して別の仮想ネットワークに接続することもできます。 ピアリングとゲートウェイの両方を使用して仮想ネットワークが接続されている場合、仮想ネットワーク間のトラフィックは、ゲートウェイではなく、ピアリング構成を介して流れます。

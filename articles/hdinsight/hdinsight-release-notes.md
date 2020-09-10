@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 0587a179b98a410cdba46b7817d86567f275f25d
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: fd0412459e7d6e51b6abdccbc8782d157acee6b9
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826822"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89319799"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight リリース ノート
 
@@ -49,7 +49,7 @@ Apache Tez ビューは、Hive Tez ジョブの実行を追跡およびデバッ
 
 ## <a name="behavior-changes"></a>動作の変更
 ### <a name="ambari-stack-version-change"></a>Ambari スタック バージョンの変更
-このリリース以降、Ambari のバージョンが 2.x.x.x から 4.1 に変更されます。 Ambari のバージョンは、Ambari の UI > [バージョン変更] で確認できます。
+このリリースでは、Ambari のバージョンが 2.x.x.x から 4.1 に変更されます。 Ambari のスタック バージョン (HDInsight 4.1) は、[Ambari] > [ユーザー] > [バージョン] に移動して確認できます。
 
 ## <a name="upcoming-changes"></a>今後の変更
 注意を払う必要があり、近く予定されている破壊的変更はありません。

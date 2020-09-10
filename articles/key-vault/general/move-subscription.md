@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: b37b327a535b716bbce845cd5883e58ec5379c48
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: e6ab37539d00b6748d0e63a3f559bf70f493cf42
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782721"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394739"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Azure Key Vault を別のサブスクリプションに移動する
 
@@ -59,8 +59,6 @@ Azure portal の Azure Policy ページにアクセスし、現在のサブス�
 
 ## <a name="procedure"></a>手順
 
-もし 
-
 ### <a name="moving-key-vault-to-a-new-subscription-within-the-same-tenant"></a>同じテナントの新しいサブスクリプションへの Key Vault の移動
 
 1. Azure Portal にログインする
@@ -99,11 +97,9 @@ az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Upd
 
 これで、コンテナーが正しいテナント ID に関連付けられ、古いアクセス ポリシー エントリが削除されたので、Azure PowerShell の [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) コマンドレットまたは Azure CLI の [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) コマンドを使用して新しいアクセス ポリシー エントリを設定します。
 
-Azure リソースのマネージド ID を使用している場合は、新しい Azure AD テナントにも更新する必要があります。 マネージド ID の詳細については、「[マネージド ID で Key Vault の認証を提供する](managed-identity.md)」を参照してください。
+Azure リソースのマネージド ID を使用している場合は、新しい Azure Active Directory テナントにも更新する必要があります。 マネージド ID の詳細については、[マネージド ID の概要](/azure/active-directory/managed-identities-azure-resources/overview)に関するページを参照してください。
 
-MSI を使用している場合は、古い ID が正しい AAD テナントに存在しなくなるため、MSI ID も更新する必要があります。 この問題を解決するには、次のドキュメントを参照してください。 
+マネージド ID を使用している場合、以前の ID は正しい Azure Active Directory テナントに存在しないため、ID を更新する必要もあります。 この問題を解決するには、次のドキュメントを参照してください。 
 
 * [MSI の更新](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#transferring-a-subscription-between-azure-ad-directories)
 * [サブスクリプションを新しいディレクトリに移転する](https://docs.microsoft.com/azure/role-based-access-control/transfer-subscription)
-
-

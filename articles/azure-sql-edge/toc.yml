@@ -77,3 +77,11 @@
       items:
         - name: Date_Bucket (Transact-SQL)
           href: date-bucket-tsql.md
+        - name: データ保有とクリーンアップ
+          items:
+            - name: データ保有の概要
+              href: data-retention-overview.md
+            - name: データ保有の有効化と無効化
+              href: data-retention-enable-disable.md
+            - name: データ保有のクリーンアップ
+              href: data-retention-cleanup.md

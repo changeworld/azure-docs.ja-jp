@@ -1,6 +1,6 @@
 ---
-title: PowerShell - Shared Image Gallery 内のスナップショットまたは VHD からイメージを作成する
-description: PowerShell を使用して、Shared Image Gallery 内のスナップショットまたは VHD からイメージを作成する方法について説明します。
+title: PowerShell - Shared Image Gallery 内のスナップショットまたは Managed Disk からイメージを作成する
+description: PowerShell を使用して、Shared Image Gallery 内のスナップショットまたは Managed Disk からイメージを作成する方法について説明します。
 author: cynthn
 ms.topic: how-to
 ms.service: virtual-machines
@@ -9,16 +9,16 @@ ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 315c635ba0864dc1565fd7ba5ccc450223d87ac9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2ebff0d86c27bcdbc11d23e18116b33b4ea838a6
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494719"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300257"
 ---
-# <a name="create-an-image-from-a-vhd-or-snapshot-in-a-shared-image-gallery-using-powershell"></a>PowerShell を使用して Shared Image Gallery 内の VHD またはスナップショットからイメージを作成する
+# <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-powershell"></a>PowerShell を使用して Shared Image Gallery 内の Managed Disk またはスナップショットからイメージを作成する
 
-Shared Image Gallery に移行したい既存のスナップショットまたは VHD がある場合は、VHD またはスナップショットから直接 Shared Image Gallery イメージを作成できます。 新しいイメージをテストしたら、ソースの VHD またはスナップショットを削除できます。 [Azure CLI](image-version-snapshot-cli.md) を使用して、Shared Image Gallery 内の VHD またはスナップショットからイメージを作成することもできます。
+Shared Image Gallery に移行したい既存のスナップショットまたは Managed Disk がある場合は、Managed Disk またはスナップショットから直接 Shared Image Gallery イメージを作成できます。 新しいイメージをテストしたら、ソースの Managed Disk またはスナップショットを削除できます。 [Azure CLI](image-version-snapshot-cli.md) を使用して、Shared Image Gallery 内の Managed Disk またはスナップショットからイメージを作成することもできます。
 
 イメージ ギャラリー内のイメージには 2 つのコンポーネントがあります。この例ではそれを作成します。
 - **イメージ定義**には、イメージに関する情報とそれを使用するための要件が含まれます。 これには、イメージの OS (Windows または Linux)、形態 (特殊化または一般化)、リリース ノート、最小メモリ要件、最大メモリ要件が含まれます。 これは、イメージの種類の定義です。 
@@ -27,14 +27,14 @@ Shared Image Gallery に移行したい既存のスナップショットまた�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事を完了するには、スナップショットまたは VHD が必要です。 
+この記事を完了するには、スナップショットまたは Managed Disk が必要です。 
 
 データ ディスクを含める場合、データ ディスクのサイズが 1 TB を超えてはなりません。
 
 この記事の手順に出現するリソース名は適宜置き換えてください。
 
 
-## <a name="get-the-snapshot-or-vhd"></a>スナップショットまたは VHD を取得する
+## <a name="get-the-snapshot-or-managed-disk"></a>スナップショットまたは Managed Disk を取得する
 
 リソース グループで利用できるスナップショットは、[Get-AzSnapshot](/powershell/module/az.compute/get-azsnapshot) を使用して一覧表示できます。 
 
@@ -50,17 +50,17 @@ $source = Get-AzSnapshot `
    -ResourceGroupName myResourceGroup
 ```
 
-スナップショットの代わりに VHD を使用することもできます。 VHD を取得するには、[Get-AzDisk](/powershell/module/az.compute/get-azdisk) を使用します。 
+スナップショットの代わりに Managed Disk を使用することもできます。 Managed Disk を取得するには、[Get-AzDisk](/powershell/module/az.compute/get-azdisk) を使用します。 
 
 ```azurepowershell-interactive
 Get-AzDisk | Format-Table -Property Name,ResourceGroupName
 ```
 
-次に、VHD を取得して、`$source` 変数に割り当てます。
+次に、Managed Disk を取得して、`$source` 変数に割り当てます。
 
 ```azurepowershell-interactive
 $source = Get-AzDisk `
-   -SnapshotName mySnapshot
+   -Name myDisk
    -ResourceGroupName myResourceGroup
 ```
 
@@ -88,7 +88,7 @@ $gallery = Get-AzGallery `
 
 イメージ定義では、イメージの論理グループを作成します。 イメージに関する情報を管理する目的で使用されます。 イメージ定義名は、大文字または小文字、数字、ドット、ダッシュおよびピリオドで構成できます。 
 
-イメージ定義を作成する際は、正しい情報がすべて含まれていることを確認してください。 この例では、スナップショットまたは VHD が使用中の VM からのものであり、一般化されていないことを前提としています。 (Windows では Sysprep、Linux では [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` または `-deprovision+user` を実行した後の) 一般化された OS から VHD またはスナップショットを取得した場合は、`-OsState` を `generalized` に変更します。 
+イメージ定義を作成する際は、正しい情報がすべて含まれていることを確認してください。 この例では、スナップショットまたは Managed Disk が使用中の VM からのものであり、一般化されていないことを前提としています。 (Windows では Sysprep、Linux では [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` または `-deprovision+user` を実行した後の) 一般化された OS から Managed Disk またはスナップショットを取得した場合は、`-OsState` を `generalized` に変更します。 
 
 イメージ定義に指定できる値の詳細については、[イメージ定義](./windows/shared-image-galleries.md#image-definitions)に関するページを参照してください。
 
@@ -118,7 +118,7 @@ $imageDefinition = New-AzGalleryImageDefinition `
 
 イメージ バージョンで許可されている文字は、数字とピリオドです。 数字は、32 ビット整数の範囲内になっている必要があります。 形式:*MajorVersion*.*MinorVersion*.*Patch*。
 
-OS ディスクに加えてデータ ディスクをイメージに含める場合は、`-DataDiskImage` パラメーターを追加して、データ ディスクのスナップショットまたは VHD の ID をこのパラメーターに設定します。
+OS ディスクに加えてデータ ディスクをイメージに含める場合は、`-DataDiskImage` パラメーターを追加して、データ ディスクのスナップショットまたは Managed Disk の ID をこのパラメーターに設定します。
 
 この例のイメージ バージョンは *1.0.0* で、"*米国中西部*" と "*米国中南部*" の両方のデータセンターにレプリケートされます。 レプリケーションのターゲット リージョンを選択するときに、レプリケーションのターゲットとして、"*ソース*" リージョンも含める必要があることに注意してください。
 

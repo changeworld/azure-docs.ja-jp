@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/07/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6045c491ea68d759b2a1739e20aa2f12b8520c87
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: c72ff14246f3f96980fe1de2fdef16794bf23e4e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006487"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399992"
 ---
 # <a name="scenario-route-to-shared-services-vnets"></a>シナリオ:共有サービスの VNet へのルート
 
@@ -24,7 +24,7 @@ Virtual WAN の仮想ハブ ルーティングを使用する場合、多くの�
 
 ## <a name="design"></a><a name="design"></a>デザイン
 
-接続マトリックスを使用してこのシナリオの要件をまとめることができます。 このマトリックスの各セルには、特定のトラフィック フローについて、Virtual WAN 接続 (フローの "ソース" 側、表の行ヘッダー) により接続先プレフィックス (フローの "ターゲット" 側、表の斜体の列ヘッダー) が学習されるかどうかが示されています。
+接続マトリックスを使用してこのシナリオの要件をまとめることができます。 このマトリックスの各セルには、特定のトラフィック フローについて、Virtual WAN 接続 (フローの "ソース" 側、表の行ヘッダー) により接続先プレフィックス (フローの "ターゲット" 側、表の斜体の列ヘッダー) が学習されるかどうかが示されています。 "X" は、Virtual WAN 経由で接続されることを示します。
 
 **接続マトリックス**
 
@@ -76,4 +76,4 @@ VNet は、この **RT_SHARED** ルート テーブルに関連付けられま�
 ## <a name="next-steps"></a>次のステップ
 
 * Virtual WAN の詳細については、[FAQ](virtual-wan-faq.md) を参照してください。
-* 仮想ハブ ルーティングの詳細については、「[仮想ハブのルーティングについて](about-virtual-hub-routing.md)」を参照してください。
+* 仮想ハブのルーティングの詳細については、「[仮想ハブのルーティングについて](about-virtual-hub-routing.md)」を参照してください。

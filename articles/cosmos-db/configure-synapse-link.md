@@ -4,14 +4,14 @@ description: Azure Cosmos アカウントの Synapse Link を有効にする方�
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/19/2020
+ms.date: 08/31/2020
 ms.author: rosouz
-ms.openlocfilehash: 4c5f812bf1a5a60a6d1344d6a39fbd95898f55fc
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: d77922d5957a0f6602e00621ebbabeaa3f3ac8f9
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815574"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322468"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Cosmos DB の Azure Synapse Link (プレビュー) を構成して使用する
 
@@ -228,4 +228,4 @@ Azure Synapse Link の使用を開始する場合、[GitHub](https://aka.ms/cosm
 
 * [Azure Synapse Analytics での Apache Spark](../synapse-analytics/spark/apache-spark-concepts.md)。
 
-* [Azure Synapse Analytics での SQL サーバーレス/オンデマンド](../synapse-analytics/sql/on-demand-workspace-overview.md)。
+* [Azure Synapse Analytics の SQL サーバーレス ランタイム サポート](../synapse-analytics/sql/on-demand-workspace-overview.md)。

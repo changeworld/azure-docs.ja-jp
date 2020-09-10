@@ -16,12 +16,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f98109199f489839253965bef3033d27935cff13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 37489e2f2df063c6a974eaf5d401e6192cbf027c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359350"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296364"
 ---
 # <a name="risky-ip-report-public-preview"></a>危険な IP のレポート (パブリック プレビュー)
 AD FS のお客様は、エンド ユーザーが Office 365 などの SaaS アプリケーションにアクセスするための認証サービスを提供する目的で、パスワード認証エンドポイントをインターネットに公開する場合があります。 この場合、悪意のあるアクターが AD FS システムへのログインを試みて、エンド ユーザーのパスワードを推測し、アプリケーションのリソースにアクセスする可能性があります。 Windows Server 2012 R2 の AD FS 以降、これらの種類の攻撃を防止するためのエクストラネット アカウント ロックアウト機能が用意されています。 これよりも古いバージョンを使用している場合は、AD FS システムを Windows Server 2016 にアップグレードすることを強くお勧めします。 <br />
@@ -35,7 +35,7 @@ AD FS のお客様は、エンド ユーザーが Office 365 などの SaaS ア�
 
 > [!NOTE]
 > このレポートを使用するには、AD FS 監査が有効になっている必要があります。 詳細については、「 [AD FS の監査の有効化](how-to-connect-health-agent-install.md#enable-auditing-for-ad-fs)」を参照してください。 <br />
-> プレビューにアクセスするには、全体管理者または[セキュリティ閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader)のアクセス許可が必要です。  
+> プレビューにアクセスするには、全体管理者または[セキュリティ閲覧者](../../role-based-access-control/built-in-roles.md#security-reader)のアクセス許可が必要です。  
 > 
 
 ## <a name="what-is-in-the-report"></a>レポートの内容
@@ -99,7 +99,7 @@ AD FS のお客様は、エンド ユーザーが Office 365 などの SaaS ア�
 
 ## <a name="faq"></a>よく寄せられる質問
 **レポートにプライベート IP アドレス範囲が表示されるのはなぜですか?**  <br />
-プライベート IP アドレス (<i>10.x.x.x、172.x.x.x、192.168.x.x</i>) と Exchange IP アドレスはフィルター処理され、IP ホワイトリスト内で True とマークされます。 プライベート IP アドレス範囲が表示されている場合は、外部ロード バランサーが要求を Web アプリケーション プロキシ サーバーに渡すときにクライアント IP アドレスを送信していない可能性が高くなっています。
+プライベート IP アドレス (<i>10.x.x.x、172.x.x.x、192.168.x.x</i>) と Exchange IP アドレスはフィルター処理され、IP 承認済みリスト内で True とマークされます。 プライベート IP アドレス範囲が表示されている場合は、外部ロード バランサーが要求を Web アプリケーション プロキシ サーバーに渡すときにクライアント IP アドレスを送信していない可能性が高くなっています。
 
 **レポートにロード バランサーの IP アドレスが表示されるのはなぜですか?**  <br />
 ロード バランサーの IP アドレスが表示されている場合は、外部ロード バランサーが要求を Web アプリケーション プロキシ サーバーに渡すときにクライアント IP アドレスを送信していない可能性が高くなっています。 転送クライアント IP アドレスを渡すようにロード バランサーを適切に構成してください。 
@@ -113,9 +113,9 @@ AD FS のお客様は、エンド ユーザーが Office 365 などの SaaS ア�
 - AD FS ファームで監査が有効になっていません。
 
 **レポートにアクセスできないのはなぜですか?**  <br />
-全体管理者または[セキュリティ閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader)のアクセス許可が必要です。 アクセスするには、全体管理者に連絡してください。
+全体管理者または[セキュリティ閲覧者](../../role-based-access-control/built-in-roles.md#security-reader)のアクセス許可が必要です。 アクセスするには、全体管理者に連絡してください。
 
 
 ## <a name="next-steps"></a>次のステップ
-* [Azure AD Connect Health](whatis-hybrid-identity-health.md)
+* [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Azure AD Connect Health エージェントのインストール](how-to-connect-health-agent-install.md)

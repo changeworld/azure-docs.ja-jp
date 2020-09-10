@@ -1,14 +1,14 @@
 ---
 title: Azure Sentinel ワークスペースの大規模な管理を行う
 description: 委任された顧客リソースで Azure Sentinel を効果的に管理する方法を学習します。
-ms.date: 08/17/2020
+ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 1734efb57b18cfc559144b13aaecb882612ca73b
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 328c55afc141a7f2efd85104453342b62eae0bb2
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511254"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050813"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Azure Sentinel ワークスペースの大規模な管理を行う
 
@@ -29,7 +29,7 @@ Azure Sentinel を使用してサービスとしてのセキュリティ オフ�
 
 - データの所有権は管理対象の各テナントに残ります。
 - 地理的境界内にデータを格納するための要件がサポートされます。
-- 複数の顧客のデータが同じワークスペースに格納されないため、データの分離が保証されます。 
+- 複数の顧客のデータが同じワークスペースに格納されないため、データの分離が保証されます。
 - 管理対象テナントからのデータ窃盗を防ぐことができ、データのコンプライアンスを確保するのに役立ちます。
 - 関連コストは、管理テナントではなく、各管理対象テナントに請求されます。
 - Azure Sentinel と統合されているすべてのデータ ソースとデータ コネクタからのデータ (Azure AD のアクティビティ ログ、Office 365 のログ、Microsoft Threat Protection のアラートなど) は、各顧客のテナント内に残ります。
@@ -71,13 +71,21 @@ MSSP によって管理される各顧客サブスクリプションは、[Azure
 
 ## <a name="run-log-analytics-and-hunting-queries-across-azure-sentinel-workspaces"></a>Azure Sentinel ワークスペースにまたがって Log Analytics とハンティング クエリを実行する
 
-脅威検出のために Log Analytics クエリを作成し、管理テナントで一元的に保存することができます ([ハンティング クエリ](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-hunting) を含む)。 その後、これらのクエリは、Union 演算子とワークスペースの () 式を使用して、顧客のすべての Azure Sentinel ワークスペースで実行できます。 詳細については、「[ワークスペース間のクエリ](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-querying)」を参照してください。
+脅威検出のために Log Analytics クエリを作成し、管理テナントで一元的に保存します ([ハンティング クエリ](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-hunting) を含む)。 その後、これらのクエリは、Union 演算子とワークスペースの () 式を使用して、顧客のすべての Azure Sentinel ワークスペースで実行できます。 詳細については、「[ワークスペース間のクエリ](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-querying)」を参照してください。
 
 ## <a name="use-automation-for-cross-workspace-management"></a>ワークスペース間の管理にオートメーションを使用する
 
 オートメーションを使用して複数の Azure Sentinel ワークスペースを管理し、[ハンティング クエリ](../../sentinel/hunting.md)、プレイブック、ブックを構成することができます。 詳細については、「[オートメーションを使用するワークスペース間の管理](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-management-using-automation)」を参照してください。
 
 一部の機能は、[複数のワークスペースでは現在サポートされていない](../../sentinel/extend-sentinel-across-workspaces-tenants.md#whats-not-supported-across-workspaces)ことに注意してください。
+
+## <a name="manage-security-of-office-365-environments"></a>Office 365 環境のセキュリティの管理
+
+複数のテナントにまたがって Office 365 環境のセキュリティを管理するには、Azure Lighthouse と Azure Sentinel を組み合わせて使用します。 まず、すぐに使える [Office 365 データ コネクタを管理対象テナントで有効にする必要があります](../../sentinel/connect-office-365.md)。これによって、Exchange と SharePoint (OneDrive を含む) でのユーザーと管理者のアクティビティに関する情報を、管理対象テナント内の Azure Sentinel ワークスペースに取り込めるようにします。 これには、ファイルのダウンロードなどのアクション、送信されたアクセス要求、グループ イベントへの変更、メールボックスの操作に関する詳細と、アクションを実行したユーザーの情報が含まれます。 [Office 365 DLP アラート](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-office-365-dlp-events-into-azure-sentinel/ba-p/1031820)も、組み込みの Office 365 コネクタの一部としてサポートされています。
+
+[Microsoft Cloud App Security (MCAS) コネクタ](../../sentinel/connect-cloud-app-security.md)を有効にすると、アラートと Cloud Discovery のログを Azure Sentinel にストリーミングできます。 これにより、クラウド アプリを可視化し、サイバー脅威を特定して対処するための高度な分析を入手し、データの移動を制御できるようになります。 MCAS のアクティビティ ログは [Common Event Format (CEF) を使用して処理する](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-box-com-activity-events-via-microsoft-cloud-app-security/ba-p/1072849)ことができます。
+
+Office 365 データ コネクタのセットアップが完了したら、ワークブック内のデータの表示と分析、クエリを使用してカスタム アラートを作成する、脅威に対応するためのプレイブックを構成するなど、クロステナントの Azure Sentinel 機能を使用できるようになります。
 
 ## <a name="next-steps"></a>次のステップ
 

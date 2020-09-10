@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: 0ebd3d97c3d7a2218bcfd821e1cc81c6bd74adf6
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.date: 09/02/2020
+ms.openlocfilehash: a6b1bd016248212967a4fe78274d5ba72c5df0fe
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605775"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400315"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB サービスのクォータ
 
@@ -118,6 +118,7 @@ Cosmos DB は、データのバックアップを一定の間隔で自動的に�
 | インデックス作成ポリシー内のパスの最大数| 100 <sup>*</sup>|
 | コンテナーあたりの一意キーの最大数|10 <sup>*</sup>|
 | 一意キー制約あたりのパスの最大数|16 <sup>*</sup>|
+| 最大 TTL 値 |2147483647|
 
 <sup>*</sup> これらのコンテナーあたりの制限はいずれも、Azure サポートに連絡することによって増やすことができます。
 
@@ -136,6 +137,7 @@ Cosmos DB は、データのバックアップを一定の間隔で自動的に�
 | プロパティ値の最大長 | 実質的に無制限 |
 | 文字列のプロパティ値の最大長 | 実質的に無制限 |
 | 数値のプロパティ値の最大長 | IEEE754 倍精度 64 ビット |
+| 最大 TTL 値 |2147483647|
 
 パーティション キー値と ID 値に関する長さの制限および 2 MB の全体的なサイズ制限を除き、プロパティの数や入れ子の深さなどの項目ペイロードに制限はありません。 RU の消費を削減するために、大きな、または複雑な項目構造を持つコンテナーのインデックス作成ポリシーを構成することが必要になる場合があります。 実際の例や大きな項目を管理するためのパターンについては、[Cosmos DB での項目のモデル化](how-to-model-partition-example.md)に関するページを参照してください。
 

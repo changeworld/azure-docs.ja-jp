@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5546fc63b01d1da6b4033e071ac071574ab9699a
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: f233aedf8b51967264994f5a4081f8f4cd99df01
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987208"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400009"
 ---
 # <a name="scenario-route-traffic-through-nvas---custom-preview"></a>シナリオ:NVA 経由でトラフィックをルーティングする - カスタム (プレビュー)
 
@@ -40,7 +40,7 @@ Virtual WAN の仮想ハブ ルーティングを使用する場合、多くの�
 | **DMZ VNet** | &#8594;|       X |            X |      X    |      X       |
 | **ブランチ** | &#8594;|  静的 |            X |      X    |      X       |
 
-接続マトリックスの各セルは、特定のトラフィック フローについて、Virtual WAN 接続 (フローの "ソース" 側、行ヘッダー) が宛先プレフィックス (フローの "ターゲット" 側、斜体の列ヘッダー) を学習するかどうかを説明しています。 各行について詳しく説明します。
+接続マトリックスの各セルは、特定のトラフィック フローについて、Virtual WAN 接続 (フローの "ソース" 側、行ヘッダー) が宛先プレフィックス (フローの "ターゲット" 側、斜体の列ヘッダー) を学習するかどうかを説明しています。 "X" は Virtual WAN 経由でネイティブに接続されることを示し、"静的" は静的ルートを使用して Virtual WAN 経由で接続されることを示します。 各行について詳しく説明します。
 
 * NVA スポーク:
   * スポークは、Virtual WAN ハブ経由で他のスポークに直接接続します。
@@ -60,7 +60,7 @@ Virtual WAN の仮想ハブ ルーティングを使用する場合、多くの�
   * 関連付けられたルーティング テーブル:**RT_SHARED**
   * ルーティング テーブルへの伝達:**RT_SHARED**
 * ブランチ:
-  * 関連付けられたルーティング テーブル: **[Default]**
+  * 関連付けられたルート テーブル: **[Default]**
   * ルーティング テーブルへの伝達:**RT_SHARED** と **Default**
 
 これらの静的ルートは、VNet からブランチおよびブランチから VNet へのトラフィックがサービス VNet (VNet 4) の NVA を通過するようにするために必要となります。
@@ -134,4 +134,4 @@ NVA 経由のルーティングを設定するには、次のような手順を�
 ## <a name="next-steps"></a>次のステップ
 
 * Virtual WAN の詳細については、[FAQ](virtual-wan-faq.md) を参照してください。
-* 仮想ハブ ルーティングの詳細については、「[仮想ハブのルーティングについて](about-virtual-hub-routing.md)」を参照してください。
+* 仮想ハブのルーティングの詳細については、「[仮想ハブのルーティングについて](about-virtual-hub-routing.md)」を参照してください。

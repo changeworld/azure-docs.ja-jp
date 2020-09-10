@@ -3,12 +3,12 @@ title: Azure VM 上のバックアップされた SAP HANA データベースを
 description: この記事では、Azure 仮想マシン上で実行されている SAP HANA データベースを管理および監視するための一般的なタスクについて説明します。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 7e23ffc2fe39389725519f7b94a0fe6ffaecf69c
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: e257aa7771f6f76a4d53f16255c2f3cbb80c8967
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826703"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377456"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>バックアップされた SAP HANA データベースを管理および監視する
 
@@ -41,7 +41,7 @@ Azure Backup では、手動でトリガーされたすべてのジョブが Azu
 
   ![バックアップ アラートの一覧](./media/sap-hana-db-manage/backup-alerts-list.png)
 
-* アラートをクリックすると、その詳細が表示されます。
+* アラートを選択すると、その詳細が表示されます。
 
   ![[アラートの詳細]](./media/sap-hana-db-manage/alert-details.png)
 
@@ -61,10 +61,12 @@ Azure Backup では、サポートされる管理操作が豊富なため、バ�
 
 バックアップは、ポリシー スケジュールに従って実行されます。 次のように、バックアップ オンデマンを実行できます。
 
-1. コンテナー メニューで **[バックアップ アイテム]** をクリックします。
-2. **[バックアップ項目]** で、SAP HANA データベースを実行している VM を選択してから、 **[今すぐバックアップ]** をクリックします。
-3. **[今すぐバックアップ]** で、実行するバックアップの種類を選択します。 次に、 **[OK]** をクリックします このバックアップ項目に関連付けられているポリシーに従って、このバックアップが保持されます。
+1. コンテナー メニューで **[バックアップ項目]** を選択します。
+2. **[バックアップ項目]** で、SAP HANA データベースを実行している VM を選択してから、 **[今すぐバックアップ]** を選択します。
+3. **[今すぐバックアップ]** で、実行するバックアップの種類を選択します。 **[OK]** をクリックします。 このバックアップ項目に関連付けられているポリシーに従って、このバックアップが保持されます。
 4. ポータルの通知を監視します。 コンテナー ダッシュボードの **[バックアップ ジョブ]**  >  **[進行中]** でジョブの進行状況を監視できます。 データベースのサイズによっては、最初のバックアップの作成に時間がかかる場合があります。
+
+既定では、オンデマンドバックアップの保持期間は 45 日です。
 
 ### <a name="hana-native-client-integration"></a>HANA ネイティブ クライアントの統合
 
@@ -112,7 +114,7 @@ SAP HANA バックアップ項目のための、基になるポリシーを変�
   ![[Azure VM の SAP HANA] を選択する](./media/sap-hana-db-manage/sap-hana-in-azure-vm.png)
 
 * 変更対象の、基になるポリシーを含むバックアップ項目を選択します
-* 既存のバックアップ ポリシーをクリックします
+* 既存のバックアップ ポリシーを選択します。
 
   ![既存のバックアップ ポリシーを選択します](./media/sap-hana-db-manage/existing-backup-policy.png)
 

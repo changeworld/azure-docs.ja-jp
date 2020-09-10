@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: d33b9b4cb50c1be7b316aad2a736bfd6fb074833
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0cf0ef97cc1e06906a529c577e9c2578e5091ef4
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075679"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050728"
 ---
 # <a name="ingestion-rules"></a>インジェストのルール
 ### <a name="json-flattening-escaping-and-array-handling"></a>JSON のフラット化、エスケープ、および配列処理
@@ -25,17 +25,17 @@ Azure Time Series Insights Gen2 環境では、特定の名前付け規則に従
 >
 > * 以下のルールを確認してから、[Time Series ID プロパティ](time-series-insights-update-how-to-id.md)やイベント ソースの [timestamp プロパティ](concepts-streaming-ingestion-event-sources.md#event-source-timestamp)を選択してください。 TS ID または timestamp が入れ子になったオブジェクト内にある場合、または以下の特殊文字が 1 つ以上含まれている場合は、指定したプロパティ名が、取り込みルールが適用された "*後*" の列名と一致していることを確認することが重要です。 以下の例 [B](concepts-json-flattening-escaping-rules.md#example-b) を参照してください。
 
-| ルール | JSON の例 |ストレージ内の列名 |
-|---|---|---|
-| Azure Time Series Insights Gen2 データ型は、列名の末尾に "_\<dataType\>" と追加されます | ```"type": "Accumulated Heat"``` | type_string |
-| イベント ソースの [timestamp プロパティ](concepts-streaming-ingestion-event-sources.md#event-source-timestamp)は、Azure Time Series Insights Gen2 でストレージに "timestamp" として保存され、値は UTC で保存されます。 イベント ソースの timestamp プロパティはご自分のソリューションのニーズに合わせてカスタマイズできますが、ウォームおよびコールド ストレージ内の列名は "timestamp" です。 イベント ソースのタイムスタンプではないその他の datetime JSON プロパティは、上記のルールで説明したように、列名に "_datetime" が付加されて保存されます。  | ```"ts": "2020-03-19 14:40:38.318"``` | timestamp |
-| 特殊文字 . [  \ および ' を含む JSON プロパティ名は、[' と '] を使用してエスケープされます。  |  ```"id.wasp": "6A3090FD337DE6B"``` | ['id.wasp']_string |
-| [' と '] の間には、単一引用符と円記号の追加のエスケープがあります。 単一引用符は \’ のように記述され、円記号は \\\ のように記述されます。 | ```"Foo's Law Value": "17.139999389648"``` | ['Foo\'s Law Value']_double |
-| 入れ子になった JSON オブジェクトは、区切り記号としてピリオドを使用してフラット化されます。 最大 10 レベルの入れ子がサポートされています。 |  ```"series": {"value" : 316 }``` | series.value_long |
-| プリミティブ型の配列は動的な型として格納されます。 |  ```"values": [154, 149, 147]``` | values_dynamic |
+| ルール | JSON の例 | [時系列式の構文](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) | Parquet のプロパティ列名
+|---|---|---|---|
+| Azure Time Series Insights Gen2 データ型は、列名の末尾に "_\<dataType\>" と追加されます | ```"type": "Accumulated Heat"``` | `$event.type.String` |`type_string` |
+| イベント ソースの [timestamp プロパティ](concepts-streaming-ingestion-event-sources.md#event-source-timestamp)は、Azure Time Series Insights Gen2 でストレージに "timestamp" として保存され、値は UTC で保存されます。 イベント ソースの timestamp プロパティはご自分のソリューションのニーズに合わせてカスタマイズできますが、ウォームおよびコールド ストレージ内の列名は "timestamp" です。 イベント ソースのタイムスタンプではないその他の datetime JSON プロパティは、上記のルールで説明したように、列名に "_datetime" が付加されて保存されます。  | ```"ts": "2020-03-19 14:40:38.318"``` |  `$event.$ts` | `timestamp` |
+| 特殊文字 . [  \ および ' を含む JSON プロパティ名は、[' と '] を使用してエスケープされます。  |  ```"id.wasp": "6A3090FD337DE6B"``` |  `$event['id.wasp'].String` | `['id.wasp']_string` |
+| [' と '] の間には、単一引用符と円記号の追加のエスケープがあります。 単一引用符は \’ のように記述され、円記号は \\\ のように記述されます。 | ```"Foo's Law Value": "17.139999389648"``` | `$event['Foo\'s Law Value'].Double` | `['Foo\'s Law Value']_double` |
+| 入れ子になった JSON オブジェクトは、区切り記号としてピリオドを使用してフラット化されます。 最大 10 レベルの入れ子がサポートされています。 |  ```"series": {"value" : 316 }``` | `$event.series.value.Long`、`$event['series']['value'].Long` または `$event.series['value'].Long` |  `series.value_long` |
+| プリミティブ型の配列は動的な型として格納されます。 |  ```"values": [154, 149, 147]``` | 動的な型は [GetEvents](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents) API でのみ取得可能 | `values_dynamic` |
 | オブジェクトを含む配列には、オブジェクトの内容に応じて、次の 2 つの動作があります。TS ID または timestamp プロパティが配列内のオブジェクトの中にある場合は、最初の JSON ペイロードによって複数のイベントが生成されるように配列がロールアウトされます。 これにより、複数のイベントを 1 つの JSON 構造にまとめることができます。 配列と同等である最上位レベルのプロパティは、アンロールされたオブジェクトごとに保存されます。 TS ID と timestamp が配列内に "*ない*" 場合は、全体が動的な型として保存されます。 | 例 [A](concepts-json-flattening-escaping-rules.md#example-a)、[B](concepts-json-flattening-escaping-rules.md#example-b) および [C](concepts-json-flattening-escaping-rules.md#example-c) を参照してください。
-| 混合要素を含む配列はフラット化できません。 |  ```"values": ["foo", {"bar" : 149}, 147]``` | values_dynamic |
-| JSON プロパティ名には 512 文字の制限があります。 名前が 512 文字を超える場合は、512 に切り捨てられ、' '_<'hashCode'>' が追加されます。 **注意**: これは、入れ子になったオブジェクトのパスを示す、フラット化されたオブジェクトから連結されたプロパティ名にも適用されます。 |``"data.items.datapoints.values.telemetry<...continuing to over 512 chars>" : 12.3440495`` | data.items.datapoints.values.telemetry<...continuing to 512 chars>_912ec803b2ce49e4a541068d495ab570_double |
+| 混合要素を含む配列はフラット化できません。 |  ```"values": ["foo", {"bar" : 149}, 147]``` | 動的な型は [GetEvents](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents) API でのみ取得可能 | `values_dynamic` |
+| JSON プロパティ名には 512 文字の制限があります。 名前が 512 文字を超える場合は、512 に切り捨てられ、' '_<'hashCode'>' が追加されます。 **注意**: これは、入れ子になったオブジェクトのパスを示す、フラット化されたオブジェクトから連結されたプロパティ名にも適用されます。 |``"data.items.datapoints.values.telemetry<...continuing to over 512 chars>" : 12.3440495`` |`"$event.data.items.datapoints.values.telemetry<...continuing to include all chars>.Double"` | `data.items.datapoints.values.telemetry<...continuing to 512 chars>_912ec803b2ce49e4a541068d495ab570_double` |
 
 ## <a name="understanding-the-dual-behavior-for-arrays"></a>配列のデュアル動作について
 

@@ -3,12 +3,12 @@ title: Azure Backup エージェントのトラブルシューティング
 description: この記事では、Azure Backup エージェントのインストールと登録のトラブルシューティング方法について説明します。
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 64996737a18add8ca1bee25e32929f1d602f9018
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 86f9dfd8554e2560ea16a85c3551dba3f7dc01f1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763509"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019625"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Recovery Services (MARS) エージェントをトラブルシューティングする
 
@@ -83,7 +83,7 @@ Microsoft Azure Recovery Services (MARS) のトラブルシューティングを
 
 ## <a name="backup-jobs-completed-with-warning"></a>バックアップ ジョブが警告付きで完了した
 
-- バックアップ中に MARS エージェントによってファイルとフォルダーが反復処理されると、さまざまな状況が発生し、バックアップが "完了 (警告あり)" とマークされることがあります。 このような状況では、ジョブは "完了 (警告あり)" と表示されます。 これに問題はありませんが、少なくとも 1 つのファイルをバックアップできなかったことを意味します。 そのため、ジョブではそのファイルがスキップされ、データ ソースにある問題の他のすべてのファイルがバックアップされています。
+- バックアップ中に MARS エージェントによってファイルとフォルダーが反復処理されると、さまざまな状況が発生し、バックアップが "完了 (警告あり)" とマークされることがあります。 このような状況では、ジョブは "完了 (警告あり)" と表示されます。 これは問題ありませんが、少なくとも 1 つのファイルをバックアップできなかったことを意味しています。 そのため、ジョブではそのファイルがスキップされ、データ ソースにある問題の他のすべてのファイルがバックアップされています。
 
   ![バックアップ ジョブが警告ありで完了した](./media/backup-azure-mars-troubleshoot/backup-completed-with-warning.png)
 

@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services (MARS) エージェント – FAQ
 description: Azure Backup を使用したファイルとフォルダーのバックアップに関する一般的な質問に対応します。
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: e50e424f1a9f044aa1ed8e95c1bce002d134bffe
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: e3a5b6d07982c3261b457d4999025c44489c0a8d
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874624"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182515"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>よく寄せられる質問 - Microsoft Azure Recovery Services (MARS) エージェント
 
@@ -122,7 +122,7 @@ MARS エージェントは NTFS に依存しており、ファイルの名前/�
 1. 管理者特権のコマンド プロンプトで次のコマンドを実行して、Backup エンジンを停止します。
 
     ```Net stop obengine```
-2. システム状態のバックアップを構成している場合は、[ディスクの管理] を開き、`"CBSSBVol_<ID>"` という形式の名前を持つディスクをマウント解除します。
+2. システム状態のバックアップが構成されている場合は、[ディスクの管理] を開き、`"CBSSBVol_<ID>"` という形式の名前を持つディスクをマウント解除します。
 3. 既定では、スクラッチ フォルダーは `\Program Files\Microsoft Azure Recovery Services Agent\Scratch` にあります。
 4. 十分な容量がある別のドライブに `\Scratch`フォルダー全体をコピーします。 コンテンツがコピーされ、移動されていないことを確認します。
 5. 新しく移動されたスクラッチ フォルダーのパスを使って、次のレジストリ エントリを更新します。
@@ -199,7 +199,7 @@ Azure Backup エージェントでは、バックアップしたデータを復�
 
 ### <a name="my-backup-jobs-have-been-failing-or-not-running-for-a-long-time-im-past-the-retention-period-can-i-still-restore"></a>バックアップジョブが失敗したか、長時間実行されていません。 保有期間を過ぎています。 引き続き復元できますか?
 
-安全性対策として、Azure Backup では、保有期間が過ぎていても、最後の回復ポイントが保持されます。 バックアップが再開され、新しい回復ポイントが使用できるようになると、指定した保有期間に従って古い回復ポイントが削除されます。
+安全策として、Azure Backup では、保有期間が過ぎている場合でも最新の回復ポイントが保持されます。 バックアップが再開され、新しい回復ポイントが使用できるようになると、指定した保有期間に従って古い回復ポイントが削除されます。
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>進行中の復元ジョブをキャンセルした場合、どうなりますか。
 

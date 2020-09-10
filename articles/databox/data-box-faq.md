@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: c6b524fb76c623273c60d39f4102500664c487cb
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 7fbc69100a2cc5c23150fcc0c19e6c38ba6d438d
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88823983"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051170"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: よく寄せられる質問
 
@@ -61,7 +61,7 @@ A. Data Box は、米国内のすべてのリージョン、西ヨーロッパ�
 
 Data Box は配送先と同じ国/地域内でのデータ インジェストまたはエグレスのみをサポートし、国境を越えることはありません。 欧州連合 (EU) 域内の注文は唯一の例外であり、EU のどの国/リージョンにも、また EU のどの国/リージョンからも Data Box を配送できます。
 
-たとえばインポート シナリオで、カナダにあるオンプレミスのデータを Azure 米国西部ストレージ アカウントに移行する場合、次のようにして実現できます。
+たとえばインポート シナリオで、カナダにあるソース データを Azure 米国西部ストレージ アカウントに移行する場合、次のようにして実現できます。
 
 1. カナダでストレージ アカウントを選択することによって、カナダで Data Box を注文します。 デバイスは、カナダの Azure データセンターから、注文の作成時に指定された (カナダの) 出荷先住所に出荷されます。
 

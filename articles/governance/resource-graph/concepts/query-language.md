@@ -3,12 +3,12 @@ title: クエリ言語を理解する
 description: Resource Graph テーブルと、Azure Resource Graph で使用可能な Kusto データ型、演算子、関数について説明します。
 ms.date: 08/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4d7ca949e9eef075adb130bb84b2617749950bec
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 965fb6a009306ccebc5daa34ec4ec8d70157e56c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798552"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299050"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Azure Resource Graph クエリ言語の概要
 
@@ -142,7 +142,7 @@ Resource Graph では、KQL [データ型](/azure/kusto/query/scalar-data-types/
 クエリによってリソースが返されるサブスクリプションのスコープは、Resource Graph にアクセスする方法によって異なります。 Azure CLI および Azure PowerShell は、承認されたユーザーのコンテキストに基づいて、要求に含めるサブスクリプションの一覧を設定します。 サブスクリプションの一覧は、それぞれ **subscriptions** と **Subscription** パラメーターを使用して、それぞれに対して手動で定義できます。
 REST API およびその他のすべての SDK では、リソースを含めるサブスクリプションの一覧は、要求の一部として明示的に定義する必要があります。
 
-**プレビュー**として、REST API バージョン `2020-04-01-preview` では、クエリのスコープを[管理グループ](../../management-groups/overview.md)に設定するプロパティが追加されます。 また、このプレビュー API では、サブスクリプション プロパティは省略可能になります。 管理グループまたはサブスクリプションの一覧が定義されていない場合は、認証されたユーザーがアクセスできるすべてのリソースがクエリ スコープになります。 新しい `managementGroupId` プロパティは管理グループ ID を取ります。これは、管理グループの名前とは異なります。 `managementGroupId` を指定すると、指定した管理グループ階層内、またはその下にある最初の5000 件のサブスクリプションのリソースが含まれます。 `managementGroupId` を `subscriptions` と同時に使用することはできません。
+**プレビュー**として、REST API バージョン `2020-04-01-preview` では、クエリのスコープを[管理グループ](../../management-groups/overview.md)に設定するプロパティが追加されます。 また、このプレビュー API では、サブスクリプション プロパティは省略可能になります。 管理グループまたはサブスクリプションの一覧が定義されていない場合は、認証されたユーザーがアクセスできるすべてのリソース ([Azure Lighthouse](../../../lighthouse/concepts/azure-delegated-resource-management.md) の委任されたリソースを含む) がクエリ スコープになります。 新しい `managementGroupId` プロパティは管理グループ ID を取ります。これは、管理グループの名前とは異なります。 `managementGroupId` を指定すると、指定した管理グループ階層内、またはその下にある最初の5000 件のサブスクリプションのリソースが含まれます。 `managementGroupId` を `subscriptions` と同時に使用することはできません。
 
 例:ID "myMG" を持つ "My Management Group" という名前の管理グループの階層内のすべてのリソースに対してクエリを実行します。
 

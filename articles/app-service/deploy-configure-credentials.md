@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 45d2ec6cf4b2a54b899036d932bc310caede3c29
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 739325f66594667c6973df356e2bcf26a3eb056d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223858"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300274"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Azure App Service のデプロイ資格情報の構成
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) では、[ローカル Git デプロイ](deploy-local-git.md)と [FTP/S デプロイ](deploy-ftp.md)デプロイ用の 2 種類の資格情報をサポートしています。 これらの資格情報は Azure サブスクリプションの資格情報とは異なります。
@@ -73,6 +73,36 @@ Git デプロイが構成されている場合、ページに **Git/デプロイ
 2. **[アプリの資格情報]** を選択し、 **[コピー]** リンクを選択し、ユーザー名またはパスワードをコピーします。
 
 アプリレベルの資格情報をリセットするには、同じダイアログで **[資格情報のリセット]** を選択します。
+
+## <a name="disable-basic-authentication"></a>基本認証を無効にする
+
+組織によっては、セキュリティ要件を満たす必要があるため、FTP または WebDeploy によるアクセスを無効にした方がよい場合があります。 こうすることで、組織のメンバーは Azure Active Directory (Azure AD) で制御されている API を介してのみ App Services にアクセスできます。
+
+### <a name="ftp"></a>FTP
+
+サイトへの FTP アクセスを無効にするには、次の CLI コマンドを実行します。 プレースホルダーを目的のリソース グループとサイト名に置き換えます。 
+
+```bash
+az resource update --resource-group <resource-group> --name ftp --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
+```
+
+FTP アクセスがブロックされていることを確認するには、FileZilla などの FTP クライアントを使用して認証を試みます。 発行資格情報を取得するには、サイトの概要ブレードに移動して [発行プロファイルのダウンロード] をクリックします。 ファイルの FTP ホスト名、ユーザー名、パスワードを使用して認証すると、許可されないことを示す 401 エラー応答が表示されます。
+
+### <a name="webdeploy-and-scm"></a>WebDeploy と SCM
+
+WebDeploy ポートと SCM サイトへの基本認証アクセスを無効にするには、次の CLI コマンドを実行します。 プレースホルダーを目的のリソース グループとサイト名に置き換えます。 
+
+```bash
+az resource update --resource-group <resource-group> --name scm --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
+```
+
+WebDeploy で発行プロファイルの資格情報がブロックされていることを確認するには、[Visual Studio 2019 を使用して Web アプリを発行](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)してみます。
+
+### <a name="disable-access-to-the-api"></a>API へのアクセスを無効にする
+
+前のセクションの API は、Azure ロールベースのアクセス制御 (RBAC) によってサポートされます。つまり、[カスタム ロールを作成](https://docs.microsoft.com/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role)し、低い特権を持つユーザーをこのロールに割り当てると、これらのユーザーはどのサイトでも基本認証を有効化できなくなります。 カスタム ロールを構成するには、[こちらの手順を実行します](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role)。
+
+また、[Azure Monitor](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#audit-with-azure-monitor) を使用して成功した認証要求を監査し、[Azure Policy](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#enforce-compliance-with-azure-policy) を使用してサブスクリプション内のすべてのサイトにこの構成を適用することもできます。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 43825728da34c027557f6e6d722e39d494451e55
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 477a8e75aef3eb676d17c045f16a5c3f4ecf1b81
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255933"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299702"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>X.509 証明書を使用して Windows 上のスタンドアロン クラスターを保護する
 この記事では、スタンドアロン Windows クラスターの多様なノード間で行われる通信をセキュリティで保護する方法について説明します。 また、X.509 証明書を使用して、そのクラスターに接続しているクライアントを認証する方法についても説明します。 認証により、許可されたユーザーのみがクラスターやデプロイ済みアプリケーションにアクセスし、管理タスクを実行できるようになります。 証明書セキュリティは、クラスターの作成時にクラスターで有効にしておく必要があります。  
@@ -120,13 +120,13 @@ ms.locfileid: "86255933"
 | --- | --- |
 | ClusterCertificate |テスト環境の場合に推奨されます。 クラスターのノード間の通信をセキュリティで保護するには、この証明書が必要です。 プライマリ証明書とアップグレード用のセカンダリ証明書の、2 つの異なる証明書を使用できます。 プライマリ証明書の拇印は Thumbprint セクションで設定し、セカンダリ証明書の拇印は ThumbprintSecondary 変数で設定します。 |
 | ClusterCertificateCommonNames |運用環境の場合に推奨されます。 クラスターのノード間の通信をセキュリティで保護するには、この証明書が必要です。 1 つまたは 2 つのクラスター証明書の共通名を使用することができます。 CertificateIssuerThumbprint は、この証明書の発行者の拇印に対応します。 同じ共通名の証明書が複数使用されている場合、複数の発行者の拇印を指定できます。|
-| ClusterCertificateIssuerStores |運用環境の場合に推奨されます。 この証明書はクラスター証明書の発行者と対応します。 ClusterCertificateCommonNames に発行者の拇印を指定する代わりに、このセクションで発行者の共通名とそれに対応するストア名を指定することができます。  これにより、クラスター発行者の証明書のロールオーバーが簡単になります。 複数のクラスター証明書が使用されている場合は、複数の発行者を指定できます。 空の IssuerCommonName では X509StoreNames で指定されている対応するストアのすべての証明書がホワイトリスト化されます。|
+| ClusterCertificateIssuerStores |運用環境の場合に推奨されます。 この証明書はクラスター証明書の発行者と対応します。 ClusterCertificateCommonNames に発行者の拇印を指定する代わりに、このセクションで発行者の共通名とそれに対応するストア名を指定することができます。  これにより、クラスター発行者の証明書のロールオーバーが簡単になります。 複数のクラスター証明書が使用されている場合は、複数の発行者を指定できます。 空の IssuerCommonName では、X509StoreNames で指定されている対応するストア内のすべての証明書が許可されます。|
 | ServerCertificate |テスト環境の場合に推奨されます。 この証明書は、クライアントがこのクラスターに接続しようとしたときに、クライアントに提示されます。 利便性を考えて、ClusterCertificate と ServerCertificate に同じ証明書を使用することもできます。 プライマリ証明書とアップグレード用のセカンダリ証明書の、2 つの異なるサーバー証明書を使用できます。 プライマリ証明書の拇印は Thumbprint セクションで設定し、セカンダリ証明書の拇印は ThumbprintSecondary 変数で設定します。 |
 | ServerCertificateCommonNames |運用環境の場合に推奨されます。 この証明書は、クライアントがこのクラスターに接続しようとしたときに、クライアントに提示されます。 CertificateIssuerThumbprint は、この証明書の発行者の拇印に対応します。 同じ共通名の証明書が複数使用されている場合、複数の発行者の拇印を指定できます。 利便性を考えて、ClusterCertificateCommonNames と ServerCertificateCommonNames に同じ証明書を使用することもできます。 1 つまたは 2 つのサーバー証明書の共通名を使用することができます。 |
-| ServerCertificateIssuerStores |運用環境の場合に推奨されます。 この証明書はサーバー証明書の発行者と対応します。 ServerCertificateCommonNames に発行者の拇印を指定する代わりに、このセクションで発行者の共通名とそれに対応するストア名を指定することができます。  これにより、サーバー発行者の証明書のロールオーバーが簡単になります。 複数のサーバー証明書が使用されている場合は、複数の発行者を指定できます。 空の IssuerCommonName では X509StoreNames で指定されている対応するストアのすべての証明書がホワイトリスト化されます。|
+| ServerCertificateIssuerStores |運用環境の場合に推奨されます。 この証明書はサーバー証明書の発行者と対応します。 ServerCertificateCommonNames に発行者の拇印を指定する代わりに、このセクションで発行者の共通名とそれに対応するストア名を指定することができます。  これにより、サーバー発行者の証明書のロールオーバーが簡単になります。 複数のサーバー証明書が使用されている場合は、複数の発行者を指定できます。 空の IssuerCommonName では、X509StoreNames で指定されている対応するストア内のすべての証明書が許可されます。|
 | ClientCertificateThumbprints |この証明書のセットを認証されたクライアントにインストールします。 クラスターへのアクセスを許可するコンピューターには、いくつかの異なるクライアント証明書をインストールできます。 各証明書の拇印は CertificateThumbprint 変数で設定します。 IsAdmin を *true* に設定した場合、この証明書がインストールされたクライアントは、クラスターに対して管理者権限による管理操作を実行できるようになります。 IsAdmin が *false* の場合、この証明書がインストールされたクライアントはユーザー アクセス権限 (通常は読み取り専用) で許可される操作のみ実行できます。 ロールについて詳しくは、「[ロールベースのアクセス制御 (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac)」をご覧ください。 |
 | ClientCertificateCommonNames |CertificateCommonName には、最初のクライアント証明書の共通名を設定します。 CertificateIssuerThumbprint は、この証明書の発行者の拇印です。 共通名と発行者について詳しくは、「[証明書の使用](/dotnet/framework/wcf/feature-details/working-with-certificates)」をご覧ください。 |
-| ClientCertificateIssuerStores |運用環境の場合に推奨されます。 この証明書は、クライアント証明書の発行者と対応します (管理者ロールと非管理者ロールの両方)。 ClientCertificateCommonNames に発行者の拇印を指定する代わりに、このセクションで発行者の共通名とそれに対応するストア名を指定することができます。  これにより、クライアント発行者の証明書のロールオーバーが簡単になります。 複数のクライアント証明書が使用されている場合は、複数の発行者を指定できます。 空の IssuerCommonName では X509StoreNames で指定されている対応するストアのすべての証明書がホワイトリスト化されます。|
+| ClientCertificateIssuerStores |運用環境の場合に推奨されます。 この証明書は、クライアント証明書の発行者と対応します (管理者ロールと非管理者ロールの両方)。 ClientCertificateCommonNames に発行者の拇印を指定する代わりに、このセクションで発行者の共通名とそれに対応するストア名を指定することができます。  これにより、クライアント発行者の証明書のロールオーバーが簡単になります。 複数のクライアント証明書が使用されている場合は、複数の発行者を指定できます。 空の IssuerCommonName では、X509StoreNames で指定されている対応するストア内のすべての証明書が許可されます。|
 | ReverseProxyCertificate |テスト環境の場合に推奨されます。 これは、[リバース プロキシ](service-fabric-reverseproxy.md)をセキュリティで保護する場合に指定できる、オプションの証明書です。 この証明書を使用している場合は、nodeTypes に reverseProxyEndpointPort を設定してください。 |
 | ReverseProxyCertificateCommonNames |運用環境の場合に推奨されます。 これは、[リバース プロキシ](service-fabric-reverseproxy.md)をセキュリティで保護する場合に指定できる、オプションの証明書です。 この証明書を使用している場合は、nodeTypes に reverseProxyEndpointPort を設定してください。 |
 

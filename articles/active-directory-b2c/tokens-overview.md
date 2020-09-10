@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/21/2020
+ms.date: 08/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8acdf714f459ae604ccd7788b021aee3ee037935
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 19b65554801a22954499219e43ed021a7cc8c121
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87482585"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258437"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のトークンの概要
 
@@ -119,7 +119,7 @@ JWT には、"*ヘッダー*"、"*本文*"、および "*署名*" という 3 �
 }
 ```
 
-**alg** 要求の値は、トークンの署名に使用されたアルゴリズムです。 **kid** 要求の値は、トークンの署名に使用された公開キーです。 Azure AD B2C は、いつでも、公開/秘密キーのペアのセットのいずれかを使用してトークンに署名できます。 Azure AD B2C では、可能な一連のキーを定期的にローテーションします。 アプリケーションは、これらのキーの変更を自動的に処理するように記述する必要があります。 Azure AD B2C によって使用される公開キーの更新を確認する適切な頻度は、24 時間に 1 回です。
+**alg** 要求の値は、トークンの署名に使用されたアルゴリズムです。 **kid** 要求の値は、トークンの署名に使用された公開キーです。 Azure AD B2C は、いつでも、公開/秘密キーのペアのセットのいずれかを使用してトークンに署名できます。 Azure AD B2C では、可能な一連のキーを定期的にローテーションします。 アプリケーションは、これらのキーの変更を自動的に処理するように記述する必要があります。 Azure AD B2C によって使用される公開キーの更新を確認する適切な頻度は、24 時間に 1 回です。 予期しないキーの変更を処理するには、予期しない **kid** 値を受信したときに公開キーを再取得するようにアプリケーションを記述する必要があります。
 
 Azure AD B2C には、OpenID Connect メタデータ エンドポイントがあります。 このエンドポイントを使用すると、アプリケーションは実行時に Azure AD B2C に関する情報を要求できます。 この情報には、エンドポイント、トークンの内容、トークンの署名キーが含まれます。 Azure AD B2C テナントには、ポリシー別の JSON メタデータ ドキュメントが含まれています。 メタデータ ドキュメントは、いくつかの便利な情報が含まれている JSON オブジェクトです。 メタデータには、トークンの署名に使用される公開キーのセットの場所を示す **jwks_uri** が含まれます。 次に示すのがその場所ですが、メタデータ ドキュメントを使用して **jwks_uri** を解析することにより、その場所を動的にフェッチするのが最善の方法です。
 

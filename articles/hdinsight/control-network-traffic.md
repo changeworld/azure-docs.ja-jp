@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 54a55789cf867c97cf2384b48f1e5545ee54dafc
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.date: 09/02/2020
+ms.openlocfilehash: a33bc5816ded7cdca75737b02add0a6ca8821700
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773408"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400196"
 ---
 # <a name="control-network-traffic-in-azure-hdinsight"></a>Azure HDInsight のネットワーク トラフィックを制御する
 
@@ -32,7 +32,11 @@ Azure Virtual Network のネットワーク トラフィックは次のメソッ
 
 1. HDInsight を使用する予定の Azure リージョンを特定します。
 
-2. 自分のリージョンで HDInsight が必要とするサービス タグを特定します。 詳細については、「[Azure HDInsight のネットワーク セキュリティ グループ (NSG) サービス タグ](hdinsight-service-tags.md)」を参照してください。
+2. 自分のリージョンで HDInsight が必要とするサービス タグを特定します。 これらのサービス タグを取得するには、次の複数の方法があります。
+    1. [Azure HDInsight のネットワーク セキュリティ グループ (NSG) サービス タグ](hdinsight-service-tags.md)に関するページで、公開されているサービス タグの一覧を調べます。 
+    2. この一覧に自分のリージョンが存在しない場合は、[Service Tag Discovery API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) を使用して、そのリージョンのサービス タグを検索します。
+    3. この API を使用できない場合は、[サービス タグの JSON ファイル](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)をダウンロードし、目的のリージョンを検索します。
+
 
 3. HDInsight をインストールする予定のサブネットのネットワーク セキュリティ グループを作成または変更します。
 
@@ -51,10 +55,6 @@ HDInsight クラスターからの送信トラフィックを制御する方法�
 強制トンネリングの設定を検討しているお客様は、[カスタム メタストア](./hdinsight-use-external-metadata-stores.md)を使用し、クラスター サブネットまたはオンプレミス ネットワークからそれらのカスタム メタストアへの適切な接続を設定する必要があります。
 
 Azure Firewall を使用した UDR セットアップの例については、[Azure HDInsight クラスターのアウトバウンド ネットワーク トラフィック制限の構成](hdinsight-restrict-outbound-traffic.md)に関するページを参照してください。
-
-## <a name="required-ip-addresses"></a>必須 IP アドレス
-
-ネットワーク セキュリティ グループまたはユーザー定義ルートを使用してトラフィックを制御する場合は、「[HDInsight の管理 IP アドレス](hdinsight-management-ip-addresses.md)」を参照してください。
 
 ## <a name="required-ports"></a>必須ポート
 

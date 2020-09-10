@@ -12,19 +12,19 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 27d56958120d0eddebe30dc410805909fe507f7c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 526a4f9f5542074107700b54dcf3d2a591b08b70
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319577"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144041"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Azure Machine Learning の実験でファイルを保存する場所と書き込む場所
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 この記事では、ストレージ制限エラーを回避し、待機時間を実験するために、実験で入力ファイルをどこに保存し、出力ファイルをどこに書き込むかについて説明します。
 
-[コンピューティング ターゲット](how-to-set-up-training-targets.md)でトレーニング実行を起動すると、外部環境から分離されます。 この設計の目的は、実行の再現性と移植性を確保することです。 同一または別のコンピューティング ターゲットで、同じスクリプトを 2 回実行すると、同じ結果が得られます。 この設計により、コンピューティング ターゲットを、完了後に実行されるジョブとのアフィニティがないステートレスな計算リソースとして扱うことができます。
+[コンピューティング ターゲット](concept-compute-target.md)でトレーニング実行を起動すると、外部環境から分離されます。 この設計の目的は、実行の再現性と移植性を確保することです。 同一または別のコンピューティング ターゲットで、同じスクリプトを 2 回実行すると、同じ結果が得られます。 この設計により、コンピューティング ターゲットを、完了後に実行されるジョブとのアフィニティがないステートレスな計算リソースとして扱うことができます。
 
 ## <a name="where-to-save-input-files"></a>入力ファイルを保存する場所
 
@@ -79,4 +79,4 @@ Jupyter Notebook| `.amlignore` ファイルを作成するか、ノートブッ�
 
 * [データストアからデータにアクセスする](how-to-access-data.md)方法に関する詳細を確認します。
 
-* [トレーニング ターゲットのセットアップ方法](how-to-set-up-training-targets.md)に関する詳細を確認します。
+* [Python SDK](how-to-create-attach-compute-sdk.md) または [Studio](how-to-create-attach-compute-studio.md) を使用してコンピューティング先を作成する方法の詳細を確認します。

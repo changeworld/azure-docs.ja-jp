@@ -4,12 +4,12 @@ description: この記事では、Azure portal を使用した Azure Backup ワ�
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 2fae7cfdb8b316341e01d15b43811d3f0e7638ef
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: d04f57c19e31b946f7c360edb796bc4f0f5fcf71
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827190"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377405"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup ワークロードの監視
 
@@ -100,10 +100,10 @@ SQL や SAP HANA などの Azure ワークロード バックアップ ソリュ
 
 ## <a name="inactivating-alerts"></a>アラートの非アクティブ化
 
-アクティブなアラートを無効化または解決するには、非アクティブ化するアラートに対応するリスト アイテムを選択できます。 これにより、アラートに関する詳細情報を表示する画面が開き、上部に **[非アクティブ化]** ボタンが表示されます。 このボタンをクリックすると、アラートの状態が**非アクティブ**に変わります。 また、アラートに対応するリスト アイテムを右クリックし、 **[非アクティブ化]** を選択して、アラートを非アクティブにすることもできます。
+アクティブなアラートを無効化または解決するには、非アクティブ化するアラートに対応するリスト アイテムを選択できます。 これにより、アラートに関する詳細情報を表示する画面が開き、上部に **[非アクティブ化]** ボタンが表示されます。 このボタンを選択すると、アラートの状態が**非アクティブ**に変わります。 また、アラートに対応するリスト アイテムを右クリックし、 **[非アクティブ化]** を選択して、アラートを非アクティブにすることもできます。
 
 ![RS コンテナーのアラートの非アクティブ化](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
 
 ## <a name="next-steps"></a>次のステップ
 
-[Monitor Azure backup workloads using Azure Monitor (Azure Monitor を使用した Azure Backup ワークロードの監視)](backup-azure-monitoring-use-azuremonitor.md)
+[Azure Monitor を使用した Azure Backup ワークロードの監視](backup-azure-monitoring-use-azuremonitor.md)

@@ -144,7 +144,7 @@
           href: platform/personal-data-mgmt.md
         - name: アプリケーション データの収集、保持、保存
           href: app/data-retention-privacy.md
-    - name: 警告
+    - name: アラート
       items:
         - name: 概要
           href: platform/alerts-overview.md
@@ -566,6 +566,8 @@
               href: platform/itsmc-overview.md
             - name: IT Service Management 接続
               href: platform/itsmc-connections.md
+            - name: Secure Export の統合
+              href: platform/it-service-management-connector-secure-webhook-connections.md
             - name: Service Manager Web アプリを作成する
               href: platform/itsmc-service-manager-script.md
             - name: ServiceNow ITSM の同期の問題を修正する
@@ -720,6 +722,10 @@
                       href: app/monitor-performance-live-website-now.md
                 - name: Java
                   href: app/java-on-premises.md
+        - name: OpenTelemetry
+          items:
+            - name: よく寄せられる質問
+              href: faq.md#opentelemetry
         - name: リソースの作成 (クラシック)
           href: app/create-new-resource.md
         - name: リソースの作成 (ワークスペースベース)
@@ -1010,6 +1016,8 @@
           href: insights/container-insights-health.md
         - name: GPU パフォーマンスの監視
           href: insights/container-insights-gpu-monitoring.md
+        - name: デプロイと HPA の監視
+          href: insights/container-insights-deployment-hpa-metrics.md
         - name: ライブ データを表示する
           items:
             - name: ライブ データ (プレビュー) の概要

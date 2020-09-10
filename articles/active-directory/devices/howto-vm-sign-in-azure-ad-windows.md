@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e707393bda3d8820ccf94abed83beb1317027d5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 42b980f809074c275a5e62098d4162e4cb4340a0
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005024"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259372"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure Active Directory 認証 (プレビュー) を使用して Azure 内の Windows 仮想マシンにサインインする
 
@@ -191,9 +191,9 @@ az role assignment create \
 
 Azure RBAC を使用して、Azure サブスクリプション リソースへのアクセスを管理する方法の詳細については、次の記事を参照してください。
 
-- [Azure CLI を使用して Azure ロールの割り当てを追加または削除する](/azure/role-based-access-control/role-assignments-cli)
-- [Azure portal を使用して Azure ロールの割り当てを追加または削除する](/azure/role-based-access-control/role-assignments-portal)
-- [Azure PowerShell を使用して Azure でのロールの割り当てを追加または削除する](/azure/role-based-access-control/role-assignments-powershell)。
+- [Azure CLI を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-cli.md)
+- [Azure portal を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-portal.md)
+- [Azure PowerShell を使用して Azure でのロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-powershell.md)。
 
 ## <a name="using-conditional-access"></a>条件付きアクセスの使用
 
@@ -329,7 +329,7 @@ VM へのリモート デスクトップ接続を開始したときに次のエ�
 
 ![このデバイスを使用できないようにアカウントが構成されています。](./media/howto-vm-sign-in-azure-ad-windows/rbac-role-not-assigned.png)
 
-VM に対して、仮想マシンの管理者ログイン ロールまたは仮想マシンのユーザー ログイン ロールのいずれかを付与する [RBAC ポリシーが設定されている](../../virtual-machines/linux/login-using-aad.md)ことを確認してください。
+VM に対して、仮想マシンの管理者ログインまたは仮想マシンのユーザー ログインのどちらかのロールをユーザーに付与する [Azure RBAC ポリシーが構成されている](../../virtual-machines/linux/login-using-aad.md)ことを確認してください。
  
 #### <a name="unauthorized-client"></a>承認されていないクライアント
 
@@ -339,7 +339,7 @@ VM へのリモート デスクトップ接続を開始したときに次のエ�
 
 ![お使いの資格情報は機能しませんでした](./media/howto-vm-sign-in-azure-ad-windows/your-credentials-did-not-work.png)
 
-リモート デスクトップ接続を開始するために使用している Windows 10 PC が、VM が参加している Azure AD ディレクトリと同じディレクトリに Azure AD 参加済みまたはハイブリッド Azure AD 参加済みのいずれかであることを確認します。 デバイスID の詳細については、「[デバイス ID とは](/azure/active-directory/devices/overview)」の記事を参照してください。
+リモート デスクトップ接続を開始するために使用している Windows 10 PC が、VM が参加している Azure AD ディレクトリと同じディレクトリに Azure AD 参加済みまたはハイブリッド Azure AD 参加済みのいずれかであることを確認します。 デバイスID の詳細については、「[デバイス ID とは](./overview.md)」の記事を参照してください。
 
 > [!NOTE]
 > Windows 10 ビルド 20H1 では、VM への RDP 接続を開始するために、Azure AD 登録済み PC のサポートが追加されました。 Azure AD 登録済み (Azure AD 参加済みまたはハイブリッド Azure AD 参加済みではない) PC を RDP クライアントとして使用して VM への接続を開始する場合は、AzureAD\UPN の形式 (例: AzureAD\john@contoso.com) で資格情報を入力する必要があります。
@@ -367,4 +367,4 @@ Windows Hello for Business のデプロイがなく、それが当面は選択�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Active Directory の詳細については、「[Azure Active Directory とは](/azure/active-directory/fundamentals/active-directory-whatis)」を参照してください
+Azure Active Directory の詳細については、「[Azure Active Directory とは](../fundamentals/active-directory-whatis.md)」を参照してください

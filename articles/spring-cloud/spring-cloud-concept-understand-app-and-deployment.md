@@ -7,18 +7,20 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 81e1925810f374da6f02bf6c3a013b00b5bb9a2c
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: a1f6d318c123b5907a8c434bb097fb86a351f5d1
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263850"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297537"
 ---
 # <a name="understand-app-and-deployment-in-azure-spring-cloud"></a>Azure Spring Cloud でのアプリとデプロイについて
 
-**アプリ**と**デプロイ**は、Azure Spring Cloud のリソース モデルにおける 2 つの重要な概念です。 Azure Spring Cloud では、*アプリ*は、1 つのビジネス アプリまたは 1 つのマイクロサービスを抽象化したものです。  *アプリ*としてデプロイされたコードまたはバイナリの 1 つのバージョンが*デプロイ*で実行されます。
+**アプリ**と**デプロイ**は、Azure Spring Cloud のリソース モデルにおける 2 つの重要な概念です。 Azure Spring Cloud では、*アプリ*は、1 つのビジネス アプリまたは 1 つのマイクロサービスを抽象化したものです。  *アプリ*としてデプロイされたコードまたはバイナリの 1 つのバージョンが*デプロイ*で実行されます。  アプリは、次に示すように、"*Azure Spring Cloud サービス インスタンス*" (単に "*サービス インスタンス*" と呼ばれることもあります) で実行されます。
 
  ![アプリとデプロイ](./media/spring-cloud-app-and-deployment/app-deployment-rev.png)
+
+1 つの Azure サブスクリプション内に複数のサービス インスタンスを含めることができますが、ビジネス アプリまたはマイクロサービスを構成するすべてのアプリが 1 つのサービス インスタンス内にある場合は Azure Spring Cloud サービスを使用するのが最も簡単です。
 
 Azure Spring Cloud の Standard レベルでは、1 つのアプリに 1 つの運用環境デプロイと 1 つのステージング デプロイが割り当てられ、簡単にブルー/グリーン デプロイを行うことができます。
 

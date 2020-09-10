@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: e1a4a366b3e4fa045df69683d6e72b157ccf0a1f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ffb739affac68898f6ed5ff1d972d3fd4a70df2f
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003629"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055262"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Azure 共有ディスクを使用して FCI を作成する (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -213,7 +213,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>接続の構成 
 
-現在のプライマリ ノードに適切にトラフィックをルーティングするには、お使いの環境に適した接続オプションを構成します。 [Azure ロード バランサー](hadr-vnn-azure-load-balancer-configure.md)を作成することができます。または、SQL Server 2019 と Windows Server 2019 を使用している場合は、代わりに[分散ネットワーク名](hadr-distributed-network-name-dnn-configure.md)機能をプレビューすることもできます。 
+現在のプライマリ ノードに適切にトラフィックをルーティングするには、お使いの環境に適した接続オプションを構成します。 [Azure Load Balancer](hadr-vnn-azure-load-balancer-configure.md) を作成するか、または SQL Server 2019 と Windows Server 2016 (以降) を使用している場合は、代わりに[分散ネットワーク名](hadr-distributed-network-name-dnn-configure.md)機能をプレビューできます。 
 
 ## <a name="limitations"></a>制限事項
 

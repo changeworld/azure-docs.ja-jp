@@ -1,6 +1,6 @@
 ---
-title: キー コンテナーへのアクセスをセキュリティで保護する - Azure Key Vault | Microsoft Docs
-description: Azure Key Vault、キー、シークレットのアクセス許可を管理します。 キー コンテナーの認証と承認モデルおよびキー コンテナーをセキュリティで保護する方法について説明します。
+title: キー コンテナーへのアクセスをセキュリティで保護する
+description: Active Directory 認証とリソース エンドポイントを含む、Azure Key Vault のアクセス モデル。
 services: key-vault
 author: ShaneBala-keyvault
 manager: ravijan
@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: f9995b82c1dc437cdaa2f9f987abba3e9681454a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: b9269974359bacc1609ece34ab8c7549d55348eb
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926758"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377524"
 ---
 # <a name="secure-access-to-a-key-vault"></a>キー コンテナーへのアクセスをセキュリティで保護する
 
@@ -35,10 +35,11 @@ Azure Key Vault は、暗号化キーとシークレット (証明書、接続�
 
 Azure サブスクリプション内でキー コンテナーを作成すると、作成したキー コンテナーは、そのサブスクリプションの Azure AD テナントに自動的に関連付けられます。 両方のプレーンの呼び出し元はすべて、このテナントに登録されている必要があり、キー コンテナーにアクセスするには認証を行う必要があります。 どちらの場合も、アプリケーションは次の 2 つの方法で Key Vault にアクセスできます。
 
-- **ユーザー + アプリケーション アクセス**: サインインしたユーザーの代わりにアプリケーションによって Key Vault にアクセスされます。 この種類のアクセスの例として、Azure PowerShell や Azure portal があります。 ユーザー アクセスは 2 つの方法で許可されます。 ユーザーは任意のアプリケーションから Key Vault にアクセスできます。あるいはユーザーは特定のアプリケーションを使用してアクセスする必要があります (_複合 ID_ と呼ばれます)。
-- **アプリケーション専用アクセス**: アプリケーションは、デーモン サービスまたはバックグラウンド ジョブとして実行されます。 アプリケーション ID にはキー コンテナーへのアクセス権が付与されます。
+- **アプリケーションのみ**: アプリケーションは、サービスまたはバックグラウンド ジョブを表します。 これは、キー コンテナーの証明書、キー、またはシークレットに定期的にアクセスする必要があるアプリケーションの最も一般的なシナリオです。 このシナリオが機能するには、アプリケーションの `objectId` をアクセス ポリシーで指定する必要があり、`applicationId` を指定_しない_ようにするか、または `null` にする必要があります。
+- **ユーザーのみ**: ユーザーは、テナントに登録されている任意のアプリケーションからキー コンテナーにアクセスします。 この種類のアクセスの例として、Azure PowerShell や Azure Portal があります。 このシナリオが機能するには、ユーザーの `objectId` をアクセス ポリシーで指定する必要があり、`applicationId` を指定_しない_ようにするか、または `null` にする必要があります。
+- **アプリケーションとユーザー** (_複合 ID_ とも呼ばれます): ユーザーは、特定のアプリケーションからキー コンテナーにアクセスする必要があり、_かつ_そのアプリケーションは On-Behalf-Of 認証 (OBO) フローを使用してそのユーザーを偽装する必要があります。 このシナリオが機能するには、`applicationId` と `objectId` の両方をアクセス ポリシーで指定する必要があります。 `applicationId` がその必要なアプリケーションを識別し、`objectId` がそのユーザーを識別します。
 
-どちらの種類のアクセスの場合も、アプリケーションでは Azure AD を使用して認証が行われます。 アプリケーションでは、アプリケーションの種類に基づいて[サポートされる認証方法](../../active-directory/develop/authentication-scenarios.md)が使用されます。 アプリケーションでは、アクセス権を付与するプレーン内のリソース用のトークを取得します。 このリソースは、管理プレーンまたはデータ プレーン内にあるエンドポイントであり、Azure 環境に基づいています。 アプリケーションでは、このトークンを使用して、Key Vault に REST API 要求を送信します。 詳細については、[認証フロー全体](../../active-directory/develop/v2-oauth2-auth-code-flow.md)に関するページを確認してください。
+すべての種類のアクセスで、アプリケーションは Azure AD を使用して認証します。 アプリケーションでは、アプリケーションの種類に基づいて[サポートされる認証方法](../../active-directory/develop/authentication-scenarios.md)が使用されます。 アプリケーションでは、アクセス権を付与するプレーン内のリソース用のトークを取得します。 このリソースは、管理プレーンまたはデータ プレーン内にあるエンドポイントであり、Azure 環境に基づいています。 アプリケーションでは、このトークンを使用して、Key Vault に REST API 要求を送信します。 詳細については、[認証フロー全体](../../active-directory/develop/v2-oauth2-auth-code-flow.md)に関するページを確認してください。
 
 1 つのメカニズムで両方のプレーンを認証するモデルには次のようないくつかの利点があります。
 

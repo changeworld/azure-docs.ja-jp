@@ -31,6 +31,8 @@
           href: manage-user-access-with-access-reviews.md
         - name: 条件付きアクセスから除外されたユーザーの管理
           href: conditional-access-exclusion.md
+    - name: 外部組織からのユーザーの確認と削除
+      href: access-reviews-external-users.md
 - name: 操作方法ガイド
   expanded: true
   items:

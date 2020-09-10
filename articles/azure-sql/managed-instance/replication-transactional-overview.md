@@ -1,7 +1,7 @@
 ---
 title: トランザクション レプリケーション
 titleSuffix: Azure SQL Managed Instance
-description: Azure SQL Managed Instance で SQL Server トランザクション レプリケーションを使用する方法について説明します。
+description: Azure SQL Managed Instance (プレビュー) で SQL Server トランザクション レプリケーションを使用するについて説明します。
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: data-movement
@@ -12,14 +12,14 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 04/20/2020
-ms.openlocfilehash: ec1dfa3edea5364151c543889d974944a1a1cd5a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 95fc877636fe1d3dac466dc32fc49cee56f35185
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920128"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290516"
 ---
-# <a name="transactional-replication-with-azure-sql-managed-instance"></a>Azure SQL Managed Instance でのトランザクション レプリケーション
+# <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Azure SQL Managed Instance (プレビュー) でのトランザクション レプリケーション
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 トランザクション レプリケーションは、Azure SQL Managed Instance または SQL Server インスタンスのテーブルからリモート データベースに配置されているテーブルにデータをレプリケートする、Azure SQL Managed Instance と SQL Server の機能です。 この機能を使用すると、さまざまなデータベース内の複数のテーブルを同期させることができます。 

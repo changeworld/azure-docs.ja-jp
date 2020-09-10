@@ -10,18 +10,18 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: cc0efc0a076ddc3fc9425999f1e38b4a32dec7a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46572853cf882df4d6909297dd058d5ccaf782e1
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477342"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89144772"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Data Science Virtual Machine の共有プールを作成する
 
 この記事では、チームで使用する Data Science Virtual Machine (DSVM) の共有プールを作成する方法について説明します。 共有プールの使用の利点には、リソースの使用率の向上、より簡単な共有とコラボレーション、DSVM リソースの管理の効率化があります。
 
-多くの方法とテクノロジを使って、DSVM のプールを作成することができます。 この記事では、対話型仮想マシン (VM) のプールに焦点を当てます。 代替のマネージド コンピューティング インフラストラクチャは Azure Machine Learning コンピューティングです。 詳細については、[コンピューティング ターゲットの設定](../how-to-set-up-training-targets.md#amlcompute)に関するページを参照してください。
+多くの方法とテクノロジを使って、DSVM のプールを作成することができます。 この記事では、対話型仮想マシン (VM) のプールに焦点を当てます。 代替のマネージド コンピューティング インフラストラクチャは Azure Machine Learning コンピューティングです。 詳細については、[Python SDK でコンピューティング ターゲットを作成する方法](../how-to-create-attach-compute-sdk.md)に関するページをご覧ください。
 
 ## <a name="interactive-vm-pool"></a>対話型の VM プール
 
