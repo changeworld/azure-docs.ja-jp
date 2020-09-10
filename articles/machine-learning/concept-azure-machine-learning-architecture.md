@@ -10,29 +10,29 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: d7bad24510f74a7fadd74328e24ea22855e6fe02
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: c3abd6a57eac851a5440ecdef6185cb310305434
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750864"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146778"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning のしくみ:アーキテクチャと概念
 
-Azure Machine Learning のアーキテクチャおよび概念について説明します。
-
-> [!NOTE]
-> この記事では、Azure Machine Learning で使用される用語と概念を定義しますが、Azure プラットフォームに関する用語と概念は定義しません。 Azure プラットフォームの用語について詳しくは、[Microsoft Azure 用語集](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology)に関するページを参照してください。
+[Azure Machine Learning](overview-what-is-azure-ml.md) のアーキテクチャおよび概念について説明します。  この記事では、コンポーネントについて概説し、これらが連携することにより、どのように機械学習モデルの構築、デプロイ、保守のプロセスに役立つかについて説明します。
 
 ## <a name="workspace"></a><a name="workspace"></a> ワークスペース
 
-:::image type="content" source="media/concept-azure-machine-learning-architecture/architecture.svg" alt-text="Azure Machine Learning のアーキテクチャ":::
+[機械学習ワークスペース](concept-workspace.md)は、Azure Machine Learning の最上位レベルのリソースです。
 
-[機械学習ワークスペース](concept-workspace.md)は、Azure Machine Learning の最上位レベルのリソースです。  ワークスペースは、次のことを行う一元的な場所です。
+:::image type="content" source="media/concept-azure-machine-learning-architecture/architecture.svg" alt-text="図:ワークスペースの Azure Machine Learning アーキテクチャとそのコンポーネント":::
+
+ワークスペースは、次のことを行う一元的な場所です。
+
 * [コンピューティング](#compute-instance)など、モデルのトレーニングとデプロイに使用するリソースを管理します
 * Azure Machine Learning を使用するときに作成する、次のようなアセットを格納します。
   * [環境](#environments)
-  * [計](#runs)
+  * [実験](#experiments)
   * [パイプライン](#ml-pipelines)
   * [データセット](#datasets-and-datastores)
   * [モデル](#models)
@@ -40,83 +40,47 @@ Azure Machine Learning のアーキテクチャおよび概念について説明
 
 ワークスペースには、ワークスペースによって使用される他の Azure リソースが含まれています。
 
-+ [Azure Container Registry](https://azure.microsoft.com/services/container-registry/):トレーニング中およびモデルのデプロイ時に使用する Docker コンテナーを登録します。 コストを最小限に抑えるために、ACR は、デプロイ イメージが作成されるまで**遅延読み込み**されます。
++ [Azure Container Registry (ACR)](https://azure.microsoft.com/services/container-registry/):トレーニング中およびモデルのデプロイ時に使用する Docker コンテナーを登録します。 コストを最小限に抑えるために、ACR は、デプロイ イメージが作成される時にだけ作成されます。
 + [Microsoft Azure Storage アカウント](https://azure.microsoft.com/services/storage/):ワークスペースの既定のデータストアとして使用されます。  Azure Machine Learning コンピューティングインスタンスで使用される Jupyter ノートブックもここに保存されます。
 + [Azure Application Insights](https://azure.microsoft.com/services/application-insights/):モデルに関する監視情報を格納します。
 + [Azure Key Vault](https://azure.microsoft.com/services/key-vault/):コンピューティング先で使用されるシークレット、およびワークスペースで必要な他の機密情報を格納します。
 
 他のユーザーとワークスペースを共有できます。
 
-## <a name="studio"></a>スタジオ
+## <a name="computes"></a>コンピューティング
 
-[Azure Machine Learning Studio](https://ml.azure.com) には、ワークスペース内のすべての成果物の Web ビューが用意されています。  このポータルでは、Azure Machine Learning の一部である対話型ツールにアクセスすることもできます。
+<a name="compute-targets"></a>[コンピューティング先](concept-compute-target.md)は、トレーニング スクリプトを実行したり、サービスのデプロイをホストしたりするために使用する、マシンまたはマシンのセットです。 コンピューティング先として、ローカル コンピューターまたはリモート コンピューティング リソースを使用できます。  コンピューティング先を使用することにより、ローカル コンピューターでトレーニングを開始し、その後トレーニング スクリプトを変更することなくクラウドにスケールアウトできます。
 
-+ [Azure Machine Learning デザイナー (プレビュー)](concept-designer.md) では、コードを記述せずにワークフローのステップを実行します
-+ [自動機械学習](concept-automated-ml.md)の Web エクスペリエンス
-+ データのラベル付けプロジェクトを作成、管理、および監視するための[データのラベル付けプロジェクト](how-to-create-labeling-projects.md)
+Azure Machine Learning には、機械学習タスク用に構成された以下の 2 つのフル マネージド クラウドベース仮想マシン (VM) が導入されています。
 
-##  <a name="computes"></a>コンピューティング
+* <a name="compute-instance"></a> **コンピューティング インスタンス**:コンピューティング インスタンスは、機械学習用にインストールされた複数のツールと環境を含む VM です。 コンピューティング インスタンスの主な用途は、開発ワークステーションです。  セットアップを行うことなく、サンプル ノートブックの実行を開始できます。 コンピューティング インスタンスは、トレーニング ジョブと推論ジョブのコンピューティング先として使用できます。
 
-<a name="compute-targets"></a>[コンピューティング先](concept-compute-target.md)は、トレーニング スクリプトを実行したり、サービスのデプロイをホストしたりする場所であるマシンまたはマシンのセットです。 この場所は、ローカル コンピューターでも、リモート コンピューティング リソースでもかまいません。
-
-Azure Machine Learning には、機械学習タスク用に構成されたクラウドベースの 2 つのフル マネージド コンピューティング リソースが導入されています。
-
-* <a name="compute-instance"></a> **コンピューティング インスタンス** ([computeinstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance?view=azure-ml-py)):コンピューティング インスタンスは、機械学習用にインストールされた複数のツールと環境を含む仮想マシン (VM) です。 コンピューティング インスタンスを開発ワークステーションとして使用して、セットアップが不要なサンプル ノートブックの実行を開始します。 トレーニングおよび推論ジョブのコンピューティング ターゲットとしても使用できます。
-* **コンピューティング クラスター** ([amlcompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py)):マルチノード スケーリング機能を備えた VM のクラスター。 ジョブが送信されるときに自動的にスケールアップされます。 大規模なジョブと運用環境のコンピューティング ターゲットに適しています。 トレーニング コンピューティング ターゲットとして、または開発/テスト デプロイのために使用します。
+* **コンピューティング クラスター**:コンピューティング クラスターは、マルチノード スケーリング機能を備えた VM のクラスターです。 コンピューティング クラスターは、大規模なジョブと運用環境のコンピューティング先に適しています。  クラスターは、ジョブが送信されるときに自動的にスケールアップされます。  トレーニング コンピューティング ターゲットとして、または開発/テスト デプロイのために使用します。
 
 トレーニング コンピューティング ターゲットの詳細については、「[トレーニング コンピューティング ターゲット](concept-compute-target.md#train)」を参照してください。  デプロイメント コンピューティング ターゲットの詳細については、「[デプロイメント ターゲット](concept-compute-target.md#deploy)」を参照してください。
 
 ## <a name="datasets-and-datastores"></a>データセットとデータストア
 
-[**Azure Machine Learning Datasets**](concept-data.md#datasets) によって、データへのアクセスと操作がより容易になります。 データセットは、モデルのトレーニングやパイプラインの作成など、さまざまなシナリオでデータを管理します。 Azure Machine Learning SDK を使用すると、基礎となるストレージへのアクセス、データの探索、異なるデータセット定義のライフ サイクルの管理が可能になります。
-
-データセットには、`from_delimited_files()` や `to_pandas_dataframe()` を使用するなど、一般的な形式のデータを操作するメソッドが用意されています。
+[**Azure Machine Learning Datasets**](concept-data.md#datasets) によって、データへのアクセスと操作がより容易になります。 データセットを作成することにより、データ ソースの場所への参照とそのメタデータのコピーを作成します。 データは既存の場所に残るため、追加のストレージ コストは発生せず、データ ソースの整合性が損なわれることはありません。
 
 詳細については、[Azure Machine Learning Datasets の作成と登録](how-to-create-register-datasets.md)に関するページを参照してください。  データセットのその他の使用例については、[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets-tutorial)を参照してください。
 
-[**データストア**](concept-data.md#datastores)は、Azure ストレージ アカウントに対するストレージの抽象化です。 各ワークスペースには既定のデータストアがあり、ユーザーは追加のデータストアを登録できます。 データストアのファイルを格納および取得するには、Python SDK API または Azure Machine Learning CLI を使用します。 
+データセットは、ご使用の Azure ストレージ サービスに安全に接続するために[データストア](concept-data.md#datastores)を使用します。 データストアは、認証資格情報と元のデータソースの整合性を損なうことなく、接続情報を格納します。 これらには、ワークスペースに関連付けられているキー コンテナー内のサブスクリプション ID やトークン承認のような接続情報が格納されるため、スクリプトでハードコーディングすることなく、ストレージに安全にアクセスできます。
 
-## <a name="models"></a>モデル
-
-簡単に言うと、モデルとは入力を受け取って出力を生成するひとまとまりのコードです。 機械学習モデルの作成には、アルゴリズムの選択、アルゴリズムへのデータの提供、および[ハイパーパラメーターのチューニング](how-to-tune-hyperparameters.md)が含まれます。 トレーニングはトレーニング済みモデルを生成する反復的なプロセスであり、トレーニング プロセス中にモデルが学習した内容がカプセル化されています。
-
-モデルは、Azure Machine Learning での[実験](#experiments)の[実行](#runs)によって生成されます。 Azure Machine Learning の外部でトレーニングされるモデルを使用することもできます。 次に、ワークスペースに[モデルを登録します](#register-model)。
-
-Azure Machine Learning は、フレームワークに依存しません。 モデルを作成するときは、Scikit-learn、XGBoost、PyTorch、TensorFlow、Chainer などの任意の人気のある機械学習フレームワークを使用できます。
-
-Scikit-learn を使用したモデルのトレーニングの例については、「[チュートリアル: Azure Machine Learning でイメージ分類モデルをトレーニングする](tutorial-train-models-with-aml.md)」を参照してください。
-
-### <a name="model-registry"></a><a name="register-model"></a>モデル レジストリ
-[ワークスペース](#workspace) > **モデル レジストリ**
-
-**モデル レジストリ**により、Azure Machine Learning ワークスペース内のすべてのモデルを追跡できます。
-
-モデルは、名前とバージョンによって識別されます。 既存のモデルと同じ名前でモデルを登録するたびに、レジストリではそれが新しいバージョンと見なされます。 バージョンはインクリメントされ、新しいモデルは同じ名前で登録されます。
-
-モデルを登録するときに、追加のメタデータ タグを指定し、モデルを検索するときにそのタグを使用することができます。
-
-> [!TIP]
-> 登録済みモデルは、モデルを構成する 1 つまたは複数のファイルの論理コンテナーです。 たとえば、複数のファイルに格納されているモデルがある場合は、Azure Machine Learning ワークスペースに単一モデルとしてそれらを登録することができます。 登録後は、その登録済みモデルをダウンロードするかデプロイし、登録されたすべてのファイルを受信できます。
-
-アクティブなデプロイで使用されている登録済みモデルを削除することはできません。
-
-モデルの登録例については、[Azure Machine Learning での画像分類モデルのトレーニング](tutorial-train-models-with-aml.md)に関するページを参照してください。
-
-
-### <a name="environments"></a>環境
+## <a name="environments"></a>環境
 
 [ワークスペース](#workspace) > **環境**
 
-[環境](concept-environments.md)とは、機械学習モデルのトレーニングやスコアリングが行われる環境をカプセル化したものです。 環境では、トレーニングとスコアリングのスクリプトに関連する、Python パッケージ、環境変数、およびソフトウェア設定を指定します。
+[環境](concept-environments.md)とは、機械学習モデルのトレーニングやスコアリングが行われる環境をカプセル化したものです。 環境では、トレーニングとスコアリングのスクリプトに関連する、Python パッケージ、環境変数、およびソフトウェア設定を指定します。  
 
 コード例については、[環境の使用方法](how-to-use-environments.md#manage-environments)に関するページの「環境の管理」セクションを参照してください。
 
-### <a name="experiments"></a>実験
+## <a name="experiments"></a>実験
 
 [ワークスペース](#workspace) > **実験**
 
 実験は、指定されたスクリプトからの多くの実行のグループです。 実験は、常に 1 つのワークスペースに属します。 実行を送信するときは、実験名を指定します。 実行に関する情報は、その実験に格納されます。 実験を送信するときに名前が存在しない場合は、新しい実験が自動的に作成されます。
-
+  
 実験の使用例については、「[チュートリアル:最初のモデルをトレーニングする](tutorial-1st-experiment-sdk-train.md)」を参照してください。
 
 ### <a name="runs"></a>実行
@@ -142,20 +106,13 @@ Azure Machine Learning では、すべての実行を記録して、実験に次
 
 実行構成は、トレーニング スクリプトが含まれるディレクトリ内のファイルに保持できます。   またはメモリ内オブジェクトとして構築して実行の送信に使用できます。
 
-実行構成の例については、[モデルをトレーニングするためのコンピューティング先の選択と使用](how-to-set-up-training-targets.md)に関するページを参照してください。
+実行構成の例については、[モデルをトレーニングするためのコンピューティング先の使用](how-to-set-up-training-targets.md)に関するページを参照してください。
 
 ### <a name="estimators"></a>Estimator
 
 一般的なフレームワークでのモデルのトレーニングを容易にするため、Estimator クラスを使用すると実行構成を簡単に構築できます。 汎用の [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) を作成し、それを使用して、自分で選択した任意の学習フレームワーク (scikit-learn など) を使用するトレーニング スクリプトを送信できます。
 
-PyTorch、TensorFlow、Chainer タスクの場合、Azure Machine Learning には、これらのフレームワークを簡単に使用するための [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)、[TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)、および [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) Estimator が用意されています。
-
-詳細については、次の記事を参照してください。
-
-* [Estimator を使用して ML モデルをトレーニングする](how-to-train-ml-models.md)。
-* [Azure Machine Learning を使用して PyTorch ディープ ラーニング モデルを大規模にトレーニングする](how-to-train-pytorch.md)。
-* [Azure Machine Learning を使用して TensorFlow モデルを大規模にトレーニングおよび登録する](how-to-train-tensorflow.md)。
-* [Azure Machine Learning を使用して大規模な Chainer モデルをトレーニングし、登録する](how-to-train-ml-models.md)。
+推定器の詳細については、[推定器を使用した ML モデルのトレーニング](how-to-train-ml-models.md)に関するページを参照してください。
 
 ### <a name="snapshots"></a>スナップショット
 
@@ -177,6 +134,34 @@ PyTorch、TensorFlow、Chainer タスクの場合、Azure Machine Learning に�
 ソース ディレクトリがローカル Git リポジトリであるトレーニング実行を開始すると、リポジトリに関する情報が実行履歴に格納されます。 これは、推定器、ML パイプライン、またはスクリプトの実行を使用して送信した実行で機能します。 SDK または Machine Learning CLI から送信された実行でも機能します。
 
 詳細については、「[Azure Machine Learning との Git 統合](concept-train-model-git-integration.md)」を参照してください。
+
+## <a name="models"></a>モデル
+
+簡単に言うと、モデルとは入力を受け取って出力を生成するひとまとまりのコードです。 機械学習モデルの作成には、アルゴリズムの選択、アルゴリズムへのデータの提供、および[ハイパーパラメーターのチューニング](how-to-tune-hyperparameters.md)が含まれます。 トレーニングはトレーニング済みモデルを生成する反復的なプロセスであり、トレーニング プロセス中にモデルが学習した内容がカプセル化されています。
+
+Azure Machine Learning の外部でトレーニングされたモデルを使用することもできます。 または、[実験](#experiments)の[実行](#runs)を Azure Machine Learning の[コンピューティング先](#compute-targets)に送信することにより、モデルをトレーニングすることもできます。 モデルを入手したら、ワークスペースに[モデルを登録](#register-model)します。
+
+Azure Machine Learning は、フレームワークに依存しません。 モデルを作成するときは、Scikit-learn、XGBoost、PyTorch、TensorFlow、Chainer などの任意の人気のある機械学習フレームワークを使用できます。
+
+Scikit-learn を使用したモデルのトレーニングの例については、「[チュートリアル: Azure Machine Learning でイメージ分類モデルをトレーニングする](tutorial-train-models-with-aml.md)」を参照してください。
+
+
+### <a name="model-registry"></a><a name="register-model"></a>モデル レジストリ
+
+[ワークスペース](#workspace) > **モデル**
+
+**モデル レジストリ**により、Azure Machine Learning ワークスペース内のすべてのモデルを追跡できます。
+
+モデルは、名前とバージョンによって識別されます。 既存のモデルと同じ名前でモデルを登録するたびに、レジストリではそれが新しいバージョンと見なされます。 バージョンはインクリメントされ、新しいモデルは同じ名前で登録されます。
+
+モデルを登録するときに、追加のメタデータ タグを指定し、モデルを検索するときにそのタグを使用することができます。
+
+> [!TIP]
+> 登録済みモデルは、モデルを構成する 1 つまたは複数のファイルの論理コンテナーです。 たとえば、複数のファイルに格納されているモデルがある場合は、Azure Machine Learning ワークスペースに単一モデルとしてそれらを登録することができます。 登録後は、その登録済みモデルをダウンロードするかデプロイし、登録されたすべてのファイルを受信できます。
+
+アクティブなデプロイで使用されている登録済みモデルを削除することはできません。
+
+モデルの登録例については、[Azure Machine Learning での画像分類モデルのトレーニング](tutorial-train-models-with-aml.md)に関するページを参照してください。
 
 ## <a name="deployment"></a>デプロイ
 
@@ -210,8 +195,7 @@ Web サービスとしてのモデルのデプロイ例については、[Azure 
 
 監視を有効にしてある場合、Azure では Azure IoT Edge モジュール内のモデルから利用統計情報を収集します。 利用統計情報にアクセスできるのは機能を有効にしたユーザーだけであり、情報はそのユーザーのストレージ アカウント インスタンスに格納されます。
 
-Azure IoT Edge ではモジュールが実行されるのを保証し、モジュールをホストしているデバイスを監視します。
-. 
+Azure IoT Edge ではモジュールが実行されるのを保証し、モジュールをホストしているデバイスを監視します。 
 ## <a name="automation"></a>オートメーション
 
 ### <a name="azure-machine-learning-cli"></a>Azure Machine Learning CLI 
@@ -224,7 +208,19 @@ Azure IoT Edge ではモジュールが実行されるのを保証し、モジ�
 
 パイプライン手順は再利用できます。また、その手順の出力が変わっていない場合は、前の手順を再実行しなくても実行できます。 たとえば、データが変わっていない場合は、コストのかかるデータ準備手順を再実行することなく、モデルを再トレーニングできます。 また、パイプラインを使用すると、機械学習ワークフローの別の領域で作業しているときに、データ サイエンティストが共同作業することもできます。
 
-## <a name="interacting-with-machine-learning"></a>機械学習の操作
+## <a name="interacting-with-your-workspace"></a>ワークスペースの操作
+
+### <a name="studio"></a>スタジオ
+
+[Azure Machine Learning Studio](https://ml.azure.com) には、ワークスペース内のすべての成果物の Web ビューが用意されています。  データセット、実験、パイプライン、モデル、エンドポイントの結果と詳細を確認できます。  スタジオのコンピューティング リソースとデータストアを管理することもできます。
+
+スタジオでは、Azure Machine Learning の一部である対話型ツールにアクセスすることもできます。
+
++ [Azure Machine Learning デザイナー (プレビュー)](concept-designer.md) では、コードを記述せずにワークフローのステップを実行します
++ [自動機械学習](concept-automated-ml.md)の Web エクスペリエンス
++ データをラベル付けするプロジェクトを作成、管理、および監視するための[データのラベル付けプロジェクト](how-to-create-labeling-projects.md)
+
+### <a name="programming-tools"></a>プログラミング ツール
 
 > [!IMPORTANT]
 > 以下に "(プレビュー)" と付記されているツールは、現在、パブリック プレビュー段階です。
@@ -232,7 +228,6 @@ Azure IoT Edge ではモジュールが実行されるのを保証し、モジ�
 
 +  [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) を使用して、Python 環境でサービスを操作します。
 + [Azure Machine Learning SDK for R](https://azure.github.io/azureml-sdk-for-r/reference/index.html) を使用して、R 環境でサービスを操作します (プレビュー)。
-+ [Azure Machine Learning デザイナー (プレビュー)](concept-designer.md) を使用して、コードを記述せずにワークフローの手順を行います。 (デザイナーを使用するには、[Enterprise ワークスペース](concept-workspace.md#upgrade)が必要です。)
 + [Azure Machine Learning CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) を自動化に使用します。
 + [多数モデル ソリューション アクセラレータ](https://aka.ms/many-models) (プレビュー) は Azure Machine Learning 上に構築されており、数百または数千もの機械学習モデルをトレーニング、操作、管理できます。
 

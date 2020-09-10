@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 1cf29438d3785a3406aa8ce3b75929a5d5261121
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 1ad008ff3ef4f29ee358b075802deba7eef919bd
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800372"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322043"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud に関する FAQ
 
@@ -36,14 +36,15 @@ Azure Spring Cloud は、Azure Monitor、Application Insights、および Log An
 
 ### <a name="in-which-regions-is-azure-spring-cloud-available"></a>Azure Spring Cloud はどのリージョンで使用できますか?
 
-米国東部、米国西部 2、西ヨーロッパ、東南アジアです。
+米国東部、米国東部 2、米国中部、米国中南部、米国西部 2、西ヨーロッパ、北ヨーロッパ、英国南部、東南アジア、オーストラリア東部です。
+
 
 ### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>Azure Spring Cloud の既知の制限事項はどのようなものですか?
 
-プレビュー リリース中、Azure Spring Cloud には次の既知の制限事項があります。
-
+Azure Spring Cloud には、次の既知の制限があります。
+    
 * `spring.application.name` が、各アプリケーションを作成するために使用されるアプリケーション名によって上書きされます。
-* `server.port` の既定値は、ポート 80/443 です。 他の値が適用されている場合は、80/443 に上書きされます。
+* `server.port` の既定のポートは 1025 です。 他の値が適用されている場合は、1025 に上書きされます。
 * Azure portal と Azure Resource Manager テンプレートがアプリケーション パッケージのアップロードをサポートしていません。 Azure CLI 経由でアプリケーションをデプロイすることによってのみ、アプリケーション パッケージをアップロードできます。
 
 ### <a name="what-pricing-tiers-are-available"></a>利用可能な価格レベルを教えてください。 
@@ -58,7 +59,7 @@ Azure Spring Cloud で問題が発生した場合は、[Azure サポート要求
 
 ### <a name="i-am-a-spring-cloud-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-an-azure-spring-cloud-application"></a>私は Spring Cloud 開発者ですが、Azure は初めてです。 Azure Spring Cloud アプリケーションの開発方法を学習するための最もすばやい方法は何ですか?
 
-Azure Spring Cloud の使用を開始するための最もすばやい方法として、「[クイック スタート: Azure portal を使用して Azure Spring Cloud アプリケーションを起動する](spring-cloud-quickstart-launch-app-portal.md)」の手順に従ってください。
+Azure Spring Cloud の使用を開始するための最もすばやい方法として、「[クイック スタート: Azure portal を使用して Azure Spring Cloud アプリケーションを起動する](spring-cloud-quickstart.md)」の手順に従ってください。
 
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Azure Spring Cloud はどの Java ランタイムをサポートしていますか?
 
@@ -88,6 +89,12 @@ Azure Spring Cloud は、Spring Cloud アプリケーションのログとメト
 ### <a name="when-i-deletemove-an-azure-spring-cloud-service-instance-will-its-extension-resources-be-deletedmoved-as-well"></a>Azure Spring Cloud サービス インスタンスを削除または移動すると、その拡張機能リソースも削除または移動されますか?
 
 拡張リソースが所有するリソース プロバイダーのロジックによって異なります。 `Microsoft.AppPlatform` インスタンスの拡張リソースは同じ名前空間に属していないため、動作はリソース プロバイダーによって異なります。 たとえば、削除または移動操作は、**診断設定**リソースにカスケードされません。 新しい Azure Spring Cloud インスタンスが、削除されたものと同じリソース ID でプロビジョニングされる場合、または以前の Azure Spring Cloud インスタンスが戻った場合は、以前の**診断設定**リソースが引き続きそれを拡張します。
+
+Azure CLI を使用して、Spring Cloud の診断設定を削除できます。
+
+```azurecli
+ az monitor diagnostic-settings delete --name $diagnosticSettingName --resource $azureSpringCloudResourceId
+```
 
 ## <a name="java-runtime-and-os-versions"></a>Java ランタイムと OS バージョン
 
@@ -145,7 +152,7 @@ Azure Spring Cloud に適用される重要なセキュリティ パッチ (CVE 
 
 ### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Azure Spring Cloud でソースからコンテナーを構築することはできますか?
 
-はい。 詳細については、「[ソース コードから Spring Cloud アプリケーションを起動する](spring-cloud-launch-from-source.md)」を参照してください。
+はい。 詳細については、「[ソース コードから Spring Cloud アプリケーションを起動する](spring-cloud-quickstart.md)」を参照してください。
 
 ### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Azure Spring Cloud はアプリ インスタンス内での自動スケーリングをサポートしていますか?
 

@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 1cd2b7550d47ecc92f8ca7f5531fab923e13930c
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: e1c931b37cbe155d62aaffe47e36d84afa547638
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853373"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068645"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>方法:テナントの特定のアプリケーションに対するトークンに出力された要求のカスタマイズ (プレビュー)
 
@@ -302,7 +302,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 | User | streetaddress | 番地 |
 | User | postalcode | 郵便番号 |
 | User | preferredlanguange | 優先言語 |
-| User | onpremisesuserprincipalname | オンプレミスの UPN |
+| User | onpremisesuserprincipalname | オンプレミスの UPN |*
 | User | mailNickname | メールのニックネーム |
 | User | extensionattribute1 | 拡張属性 1 |
 | User | extensionattribute2 | 拡張属性 2 |
@@ -340,6 +340,8 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 - JwtClaimType には、JWT に出力する要求の名前を含める必要があります。
 - SamlClaimType には、SAML トークンに出力する要求の URI を含める必要があります。
+
+* **onPremisesUserPrincipalName 属性:** 代替 ID を使用する場合、オンプレミスの userPrincipalName 属性は Azure AD の onPremisesUserPrincipalName 属性と同期されます。 この属性は、代替 ID が構成されている場合にのみ使用できますが、MS Graph ベータ版 (https://graph.microsoft.com/beta/me/ ) から使用することもできます。
 
 > [!NOTE]
 > 制限付き要求セット内の要求の名前と URI を、要求の種類の要素に使用することはできません。 詳細については、この記事の後述の「例外と制限事項」セクションを参照してください。

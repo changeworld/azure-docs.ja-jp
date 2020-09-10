@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/06/2020
-ms.openlocfilehash: 5d16e7f81a439d622a418dbc8cdff2d66c2a814f
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.date: 08/28/2020
+ms.openlocfilehash: e568051bfd5ac58f283eac7f9dc8a72be5c9dbbb
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903563"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079678"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>ストリーミング ユニットの理解と調整
 
@@ -20,7 +20,7 @@ ms.locfileid: "87903563"
 
 待ち時間が短いストリーミング処理を実現するために、Azure Stream Analytics ジョブはすべての処理をメモリ内で実行します。 メモリが不足した場合は、ストリーミング ジョブが失敗します。 そのため、実稼働ジョブでは、ストリーミング ジョブのリソース使用状況を監視し、ジョブの稼働を 24 時間、週 7 日維持するのに十分なリソースが割り当てられていることを確認することが重要です。
 
-SU 使用率 (%) メトリックはワークロードのメモリ消費量を表し、その範囲は 0% から 100% となります。 最小フットプリントのストリーミング ジョブでは、このメトリックの範囲は、通常 10% から 20% です。 SU 使用率 (%) が低く、入力イベントにバックログが生じるようであれば、そのワークロードは、より多くのコンピューティング リソースが必要である可能性が高く、その場合は SU 数を増やす必要があります。 偶発的なスパイクを考慮して、SU メトリックを 80% 未満に維持することをお勧めします。 リソースの枯渇を防ぐために SU 使用率メトリックは 80% でアラートを設定することをお勧めします。 詳細については、「[チュートリアル:Azure Stream Analytics ジョブのアラートを設定する](stream-analytics-set-up-alerts.md)」を参照してください。
+SU 使用率 (%) メトリックはワークロードのメモリ消費量を表し、その範囲は 0% から 100% となります。 最小フットプリントのストリーミング ジョブでは、このメトリックの範囲は、通常 10% から 20% です。 SU% 使用率が高い (80% を超える) 場合、または入力イベントのバックログが発生した場合 (CPU 使用率には示されないため、SU% の使用率が低い場合でも)、ワークロードに多くのコンピューティング リソースが必要になる可能性があり、結果として SU の数を増やす必要が生じます。 偶発的なスパイクを考慮して、SU メトリックを 80% 未満に維持することをお勧めします。 リソースの枯渇を防ぐために SU 使用率メトリックは 80% でアラートを設定することをお勧めします。 詳細については、「[チュートリアル:Azure Stream Analytics ジョブのアラートを設定する](stream-analytics-set-up-alerts.md)」を参照してください。
 
 ## <a name="configure-stream-analytics-streaming-units-sus"></a>Stream Analytics のストリーミング ユニット (SU) を構成する
 1. [Azure Portal](https://portal.azure.com/) にサインインします

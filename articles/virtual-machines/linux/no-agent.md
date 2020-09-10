@@ -6,15 +6,15 @@ ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 07/06/2020
+ms.date: 09/01/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: d177e7fd7d18b24f9d8fd7f3e6662abe16bba317
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 63bc3caf97e1325c365171ba3f8e6353885d9b68
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045333"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322553"
 ---
 # <a name="creating-generalized-images-without-a-provisioning-agent"></a>プロビジョニング エージェントを使用せずに一般化されたイメージを作成する
 
@@ -199,7 +199,7 @@ WantedBy=multi-user.target
 この systemd サービスは、基本的なプロビジョニングに関して次の 3 つの処理を行います。
 
 1. Azure に準備完了を報告する (正常に完了したことを示すため)。
-1. IMDS からこのデータを取得することによって、ユーザーが指定した VM 名に基づいて VM の名前を変更する。
+1. [Azure Instance Metadata Service (IMDS)](https://docs.microsoft.com/azure/virtual-machines/linux/instance-metadata-service) からこのデータを取得することによって、ユーザーが指定した VM 名に基づいて VM の名前を変更する。 **注** IMDS では、SSH 公開キーなどの他の [インスタンス メタデータ](https://docs.microsoft.com/azure/virtual-machines/linux/instance-metadata-service#accessing-azure-instance-metadata-service)も提供されるため、ホスト名以外の名前を設定することができます。
 1. 最初の起動時にのみ実行され、その後の再起動では実行されないように、自身を無効にする。
 
 filesystem のユニットで、次を実行して有効にします。

@@ -1,6 +1,6 @@
 ---
-title: Snowflake との間でデータをコピーする
-description: Azure Data Factory を使用して Snowflake との間でデータをコピーする方法について説明します。
+title: Snowflake のデータをコピーして変換する
+description: Data Factory を使用して、Snowflake のデータをコピーして変換する方法について説明します。
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -10,31 +10,34 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/30/2020
-ms.openlocfilehash: 48248b07b64278d5c8d4f297bf83df813aa486fe
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.date: 08/28/2020
+ms.openlocfilehash: fa8bb310d6a088db92b3dfd8eb6d2f584e9ffab7
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529502"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181886"
 ---
-# <a name="copy-data-from-and-to-snowflake-by-using-azure-data-factory"></a>Azure Data Factory を使用して Snowflake との間でデータをコピーする
+# <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>Azure Data Factory を使用して Snowflake のデータをコピーして変換する
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、Snowflake との間でデータをコピーする方法について説明します。 Data Factory の詳細については、[概要の記事](introduction.md)を参照してください。
+この記事では、Azure Data Factory のコピー アクティビティを使用して、Snowflake との間でデータをコピーし合い、Data Flow を使用してSnowflake のデータを変換する方法について説明します。 Data Factory の詳細については、[概要の記事](introduction.md)を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
 この Snowflake コネクタは、次のアクティビティでサポートされます。
 
 - [サポートされるソース/シンク マトリックス](copy-activity-overview.md)で表の[コピー アクティビティ](copy-activity-overview.md)
+- [マッピング データ フロー](concepts-data-flow-overview.md)
 - [Lookup アクティビティ](control-flow-lookup-activity.md)
 
 コピー アクティビティの場合、この Snowflake コネクタは次の機能をサポートします。
 
 - Snowflake からのデータのコピー。Snowflake の [COPY into [location]](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html) コマンドを利用して、最適なパフォーマンスを実現します。
-- Snowflake へのデータのコピー。Snowflake の [COPY into [table]](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html) コマンドを利用して、最適なパフォーマンスを実現します。 Azure 上の Snowflake がサポートされています。
+- Snowflake へのデータのコピー。Snowflake の [COPY into [table]](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html) コマンドを利用して、最適なパフォーマンスを実現します。 Azure 上の Snowflake がサポートされています。 
+
+Azure Synapse Analytics ワークスペースを使用する場合、シンクとしての Snowflake はサポートされません。
 
 ## <a name="get-started"></a>はじめに
 
@@ -105,8 +108,8 @@ Snowflake データセットでは、次のプロパティがサポートされ�
 | プロパティ  | 説明                                                  | 必須                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | データセットの type プロパティは **SnowflakeTable** に設定する必要があります。 | はい                         |
-| schema | スキーマの名前。 |ソースの場合はいいえ、シンクの場合ははい  |
-| table | テーブル/ビューの名前。 |ソースの場合はいいえ、シンクの場合ははい  |
+| schema | スキーマの名前。 スキーマ名は、ADF では大文字と小文字が区別される点に注意してください。 |ソースの場合はいいえ、シンクの場合ははい  |
+| table | テーブル/ビューの名前。 テーブル名は、ADF では大文字と小文字が区別される点に注意してください。 |ソースの場合はいいえ、シンクの場合ははい  |
 
 **例:**
 
@@ -143,7 +146,7 @@ Snowflake からデータをコピーするために、コピー アクティビ
 | プロパティ                     | 説明                                                  | 必須 |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | type                         | コピー アクティビティのソースの type プロパティは **SnowflakeSource** に設定する必要があります。 | はい      |
-| query          | Snowflake からデータを読み取る SQL クエリを指定します。<br>ストアド プロシージャの実行はサポートされていません。 | いいえ       |
+| query          | Snowflake からデータを読み取る SQL クエリを指定します。 スキーマ、テーブル、および列の名前に小文字が含まれている場合は、クエリでオブジェクト識別子を引用符で囲みます (例: `select * from "schema"."myTable"`)。<br>ストアド プロシージャの実行はサポートされていません。 | いいえ       |
 | exportSettings | Snowflake からデータを取得するために使用される詳細設定。 COPY into コマンドでサポートされるものを構成できます。これは、ステートメントを呼び出すときに Data Factory によって渡されます。 | いいえ       |
 | ***`exportSettings` の下:*** |  |  |
 | type | エクスポート コマンドの type を **SnowflakeExportCopyCommand** に設定します。 | はい |
@@ -194,7 +197,7 @@ Snowflake からデータをコピーするために、コピー アクティビ
         "typeProperties": {
             "source": {
                 "type": "SnowflakeSource",
-                "sqlReaderQuery": "SELECT * FROM MyTable",
+                "sqlReaderQuery": "SELECT * FROM MYTABLE",
                 "exportSettings": {
                     "type": "SnowflakeExportCopyCommand",
                     "additionalCopyOptions": {
@@ -305,7 +308,7 @@ Snowflake にデータをコピーするために、コピー アクティビテ
 
    -  `additionalColumns` が指定されていません。
    - ソースがフォルダーの場合、`recursive` が true に設定されています。
-   - `prefix`、`modifiedDateTimeStart`、`modifiedDateTimeEnd` が指定されていません。
+   - `prefix`、`modifiedDateTimeStart`、`modifiedDateTimeEnd`、および `enablePartitionDiscovery` が指定されていない。
 
 **例:**
 
@@ -396,6 +399,83 @@ Snowflake にデータをコピーするために、コピー アクティビテ
 ]
 ```
 
+## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
+
+マッピング データ フローでデータを変換する場合、Snowflake のテーブルから読み書きすることができます。 詳細については、マッピング データ フローの[ソース変換](data-flow-source.md)と[シンク変換](data-flow-sink.md)に関する記事をご覧ください。 ソースとシンクの種類として、Snowflake データセットまたは[インライン データセット](data-flow-source.md#inline-datasets)を使用することができます。
+
+### <a name="source-transformation"></a>ソース変換
+
+次の表に、Snowflake ソースでサポートされるプロパティの一覧を示します。 これらのプロパティは、 **[ソース オプション]** タブで編集できます。コネクタは、Snowflake [内部データ転送](https://docs.snowflake.com/en/user-guide/spark-connector-overview.html#internal-data-transfer)を利用します。
+
+| 名前 | 説明 | 必須 | 使用できる値 | データ フロー スクリプトのプロパティ |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| テーブル | 入力として [テーブル] を選択した場合、データ フローは、Snowflake データセットで指定された、またはインライン データセットを使用するときにソース オプションで指定されたテーブルからすべてのデータをフェッチします。 | いいえ | String | *(インライン データセットのみ)*<br>tableName<br>schemaName |
+| クエリ | 入力として [クエリ] を選択した場合は、Snowflake からデータをフェッチするクエリを入力します。 この設定により、データセットで選択したすべてのテーブルがオーバーライドされます。<br>スキーマ、テーブル、および列の名前に小文字が含まれている場合は、クエリでオブジェクト識別子を引用符で囲みます (例: `select * from "schema"."myTable"`)。 | いいえ | String | query |
+
+#### <a name="snowflake-source-script-examples"></a>Snowflake のソース スクリプトの例
+
+ソースの種類として Snowflake データセットを使用すると、関連付けられているデータ フロー スクリプトは次のようになります。
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    query: 'select * from MYTABLE',
+    format: 'query') ~> SnowflakeSource
+```
+
+インライン データセットを使用する場合、関連付けられているデータ フロー スクリプトは次のようになります。
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    format: 'query',
+    query: 'select * from MYTABLE',
+    store: 'snowflake') ~> SnowflakeSource
+```
+
+### <a name="sink-transformation"></a>シンク変換
+
+次の表に、Snowflake シンクでサポートされるプロパティの一覧を示します。 これらのプロパティは、 **[設定]** タブで編集できます。インライン データセットを使用する場合、「[データセットのプロパティ](#dataset-properties)」セクションで説明されているプロパティと同じ追加の設定が表示されます。 コネクタは、Snowflake [内部データ転送](https://docs.snowflake.com/en/user-guide/spark-connector-overview.html#internal-data-transfer)を利用します。
+
+| 名前 | 説明 | 必須 | 使用できる値 | データ フロー スクリプトのプロパティ |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| 更新方法 | 対象となる Snowflake に対して許可される操作を指定します。<br>行を更新、アップサート、または削除するには、それらのアクションに対して行をタグ付けするために[行の変更変換](data-flow-alter-row.md)が必要になります。 | はい | `true` または `false` | deletable <br/>insertable <br/>updateable <br/>upsertable |
+| [キー列] | 更新、アップサート、削除の場合、1 つまたは複数のキー列を設定して、変更する行を決定する必要があります。 | いいえ | Array | キー |
+| テーブル アクション | 書き込み前に変換先テーブルのすべての行を再作成するか削除するかを指定します。<br>- **なし**: テーブルに対してアクションは実行されません。<br>- **Recreate**:テーブルが削除され、再作成されます。 新しいテーブルを動的に作成する場合に必要です。<br>- **Truncate**:ターゲット テーブルのすべての行が削除されます。 | いいえ | `true` または `false` | recreate<br/>truncate |
+
+#### <a name="snowflake-sink-script-examples"></a>Snowflake シンク スクリプトの例
+
+シンクの種類として Snowflake データセットを使用する際、関連付けられているデータ フロー スクリプトは次のようになります。
+
+```
+IncomingStream sink(allowSchemaDrift: true,
+    validateSchema: false,
+    deletable:true,
+    insertable:true,
+    updateable:true,
+    upsertable:false,
+    keys:['movieId'],
+    format: 'table',
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> SnowflakeSink
+```
+
+インライン データセットを使用する場合、関連付けられているデータ フロー スクリプトは次のようになります。
+
+```
+IncomingStream sink(allowSchemaDrift: true,
+    validateSchema: false,
+    format: 'table',
+    tableName: 'table',
+    schemaName: 'schema',
+    deletable: true,
+    insertable: true,
+    updateable: true,
+    upsertable: false,
+    store: 'snowflake',
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> SnowflakeSink
+```
 
 ## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 

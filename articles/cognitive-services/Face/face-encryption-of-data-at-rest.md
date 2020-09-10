@@ -1,20 +1,20 @@
 ---
 title: Face サービスによる保存データの暗号化
 titleSuffix: Azure Cognitive Services
-description: Face サービスによる保存データの暗号化。
+description: Microsoft からは Microsoft が管理する暗号化キーが提供されます。また、カスタマー マネージド キー (CMK) と呼ばれている独自のキーで自分の Cognitive Services サブスクリプションを管理することをお客様に許可します。 この記事では、Face での保存データの暗号化と、CMK を有効化および管理する方法について説明します。
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 33495dd5b092cb51b3421e7204f3b529077d63b3
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: eab90fc2cb30ae8e9f1c19bdbefc6fbc88c32f76
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309035"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079270"
 ---
 # <a name="face-service-encryption-of-data-at-rest"></a>Face サービスによる保存データの暗号化
 
@@ -24,15 +24,6 @@ Face サービスでは、クラウドに永続化されるときにデータが
 
 > [!IMPORTANT]
 > カスタマー マネージド キーは、E0 価格レベルでのみ利用できます。 カスタマー マネージド キーを使用できるようにするには、[Face サービス カスタマー マネージド キー要求フォーム](https://aka.ms/cogsvc-cmk)に記入して送信します。 要求の状態について連絡を差し上げるまで、約 3 から 5 営業日かかります。 要求によっては、お客様は待ち行列に登録され、スペースが利用できるようになってから承認される場合があります。 Face サービスでの CMK の使用が承認されたら、新しい Face リソースを作成し、価格レベルとして E0 を選択する必要があります。 E0 価格レベルで Face リソースを作成したら、Azure Key Vault を使用してマネージド ID を設定できます。
-
-## <a name="regional-availability"></a>リージョン別の提供状況
-
-カスタマー マネージド キーは、現在、次のリージョンで利用できます。
-
-* 米国中南部
-* 米国西部 2
-* 米国東部
-* US Gov バージニア州
 
 [!INCLUDE [cognitive-services-cmk](../includes/configure-customer-managed-keys.md)]
 

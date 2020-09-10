@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 771f692ade9c7616eb7d217b4728a8c80d2aeac5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 0711c25187a15c48e1e9b19b7c99b1e528c7b199
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044177"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393549"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure Data Factory 用の Azure セキュリティ ベースライン
 
@@ -598,15 +598,15 @@ Private Link が使用可能な場合は、プライベート エンドポイン
 
 **責任**: Customer
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6:ロールベースのアクセス制御を使用してリソースへのアクセスを制御する
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: Azure Active Directory (AD) ロールベースのアクセス制御 (RBAC) を使用して、Azure Data Factory コントロール プレーン (Azure portal) へのアクセスを制御します。
+**ガイダンス**: Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure Data Factory コントロール プレーン (Azure portal) へのアクセスを制御します。
 
 Data Factory インスタンスを作成するには、Azure へのサインインに使用するユーザー アカウントが、共同作成者ロールまたは所有者ロールのメンバーであるか、Azure サブスクリプションの管理者である必要があります。
 
-Azure SQL Database などの Data Factory データ ソースの場合、RBAC に関する詳細について、そのサービスのセキュリティ ベースラインを参照してください。
+Azure SQL Database などの Data Factory データ ソースの場合、Azure RBAC に関する詳細について、そのサービスのセキュリティ ベースラインを参照してください。
 
-* [Azure で RBAC を構成する方法](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* [Azure RBAC を構成する方法](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 * [Azure Data Factory のロールとアクセス許可](https://docs.microsoft.com/azure/data-factory/concepts-roles-permissions)
 
@@ -738,7 +738,7 @@ Security Center で脆弱性が識別されると、検出結果と推奨事項�
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1:自動化された Asset Discovery ソリューションを使用する
 
-**ガイダンス**:Azure Resource Graph を使用して、サブスクリプション内のすべてのリソース (コンピューティング、ストレージ、ネットワーク、ポート、プロトコルなど) のクエリまたは検出を行います。 テナントで適切な (読み取り) アクセス許可を確認し、サブスクリプション内のリソースだけでなく、すべての Azure サブスクリプションを列挙します。
+**ガイダンス**: Azure Resource Graph を使用して、サブスクリプション内のすべてのリソース (コンピューティング、ストレージ、ネットワーク、ポート、プロトコルなど) のクエリまたは検出を行います。 テナントで適切な (読み取り) アクセス許可を確認し、サブスクリプション内のリソースだけでなく、すべての Azure サブスクリプションを列挙します。
 
 従来の Azure リソースは Resource Graph で検出できますが、今後は Azure Resource Manager リソースを作成して使用することを強くお勧めします。
 
@@ -940,7 +940,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3:セキュリティで保護された Azure リソースの構成を維持する
 
-**ガイダンス**: Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
+**ガイダンス**:Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
 
 * [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -984,15 +984,15 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6:カスタム オペレーティング システム イメージを安全に格納する
 
-**ガイダンス**: カスタム イメージを使用している場合は、ロールベースのアクセス制御 (RBAC) を使用して、承認されたユーザーのみがイメージにアクセスできるようにします。 コンテナー イメージの場合は、Azure Container Registry に保存し、RBAC を利用して、承認されたユーザーだけがイメージにアクセスできるようにします。
+**ガイダンス**: カスタム イメージを使用している場合は、Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、承認されたユーザーのみがイメージにアクセスできるようにします。 コンテナー イメージの場合は、Azure Container Registry に保存し、Azure RBAC を利用して、承認されたユーザーのみがイメージにアクセスできるようにします。
 
 Data Factory 共同作成者ロールを使って、データ ファクトリのほか、それらの中の子リソースの作成と管理を行うことができます。
 
-* [Azure での RBAC の概要](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+* [Azure RBAC について](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
 
-* [コンテナー レジストリの RBAC を理解する](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+* [コンテナー レジストリの Azure RBAC について](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
 
-* [Azure で RBAC を構成する方法](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+* [Azure RBAC を構成する方法](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
 
 * [Azure Data Factory のロールとアクセス許可](https://docs.microsoft.com/azure/data-factory/concepts-roles-permissions)
 
@@ -1050,7 +1050,9 @@ Data Factory 共同作成者ロールを使って、データ ファクトリの
 
 * [キー コンテナーを作成する方法](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
 
-* [マネージド ID で Key Vault の認証を提供する方法](https://docs.microsoft.com/azure/key-vault/managed-identity)
+* [Key Vault に対して認証を行う方法](https://docs.microsoft.com/azure/key-vault/general/authentication)
+
+* [Key Vault のアクセス ポリシーを割り当てる方法](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
 
 * [パイプライン アクティビティでの Azure Key Vault シークレットの使用](https://docs.microsoft.com/azure/data-factory/how-to-use-azure-key-vault-secrets-pipeline-activities)
 
@@ -1222,7 +1224,7 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4:セキュリティ インシデントの連絡先の詳細を指定し、セキュリティ インシデントのアラート通知を構成します
 
-**ガイダンス**:セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) で、不正なユーザーまたは権限のないユーザーによるお客様のデータへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。 事後にインシデントをレビューして、問題が解決されていることを確認します。
+**ガイダンス**: セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) で、不正なユーザーまたは権限のないユーザーによるお客様のデータへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。 事後にインシデントをレビューして、問題が解決されていることを確認します。
 
 * [Azure Security Center のセキュリティ連絡先を設定する方法](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
 

@@ -6,13 +6,13 @@ ms.service: azure-policy
 ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 7871099e3e05613bec29a4bfc0824dd9647431e7
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 6c6bd3ab87013aba04f43c95b3a986a64f2bc394
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85937458"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231471"
 ---
 # <a name="azure-policy-security-baseline-for-azure-security-benchmark"></a>Azure セキュリティ ベンチマーク用の Azure Policy セキュリティ ベースライン
 
@@ -72,13 +72,13 @@ Azure Policy では、"_責任_" の代わりに "_所有権_" という用語�
 
 *詳細については、「[セキュリティ コントロール: データ保護](../../../security/benchmarks/security-control-data-protection.md)」を参照してください。*
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6:ロールベースのアクセス制御を使用してリソースへのアクセスを制御する
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: Azure Active Directory のロールベースのアクセス制御 (RBAC) を使用して、Azure Policy へのアクセスを制御します。
+**ガイダンス**: Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure Policy へのアクセスを制御します。
 
-* [Azure Policy における RBAC アクセス許可](../overview.md#rbac-permissions-in-azure-policy)
+* [Azure Policy における Azure RBAC アクセス許可](../overview.md#rbac-permissions-in-azure-policy)
 
-* [Azure で RBAC を構成する方法](../../../role-based-access-control/role-assignments-portal.md)
+* [Azure RBAC を構成する方法](../../../role-based-access-control/role-assignments-portal.md)
 
 
 **Azure Security Center の監視**: 現在は使用できません

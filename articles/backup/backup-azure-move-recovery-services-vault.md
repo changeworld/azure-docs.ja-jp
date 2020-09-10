@@ -4,12 +4,12 @@ description: Recovery Services コンテナーを Azure サブスクリプショ
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 0b06b12c2bb989e4c0fc4e04440fc5f452df2da3
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 69021131f12b57aedcd531997029858b0722933f
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827122"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181512"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Recovery Services コンテナーを Azure サブスクリプションおよびリソース グループをまたいで移動する
 
@@ -17,7 +17,7 @@ ms.locfileid: "88827122"
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 
-Recovery Services コンテナーのリソースの移動がサポートされるのは、オーストラリア東部、オーストラリア南東部、カナダ中部、カナダ東部、東南アジア、東アジア、米国中部、米国中北部、米国東部、米国東部 2、米国中南部、米国中西部、米国中西部 2、米国西部、米国西部 2、インド中部、インド南部、東日本、西日本、韓国中部、韓国南部、北ヨーロッパ、西ヨーロッパ、南アフリカ北部、南アフリカ西部、英国南部、および英国西部です。
+Recovery Services コンテナーのリソースの移動がサポートされるのは、オーストラリア東部、オーストラリア南東部、カナダ中部、カナダ東部、東南アジア、東アジア、米国中部、米国中北部、米国東部、米国東部 2、米国中南部、米国中西部、米国中西部 2、米国西部、米国西部 2、ブラジル南部、インド中部、インド南部、東日本、西日本、韓国中部、韓国南部、北ヨーロッパ、西ヨーロッパ、南アフリカ北部、南アフリカ西部、英国南部、および英国西部です。
 
 ## <a name="unsupported-regions"></a>サポートされていないリージョン
 
@@ -46,7 +46,7 @@ Recovery Services コンテナーのリソースの移動がサポートされ�
 
 > [!NOTE]
 > Azure リージョン間で Azure Backup 用の Recovery Services コンテナーを移動することはできません。<br><br>
-> **Azure Site Recovery** を使用して、いずれかの VM (Azure IaaS、HYPER-V、VMware) または物理マシンをディザスター リカバリー用に構成している場合、移動操作はブロックされます。 Azure Site Recovery 用のコンテナーを移動する場合は、[この記事](../site-recovery/move-vaults-across-regions.md)を参照して、コンテナーを手動で移動する方法を確認してください。
+> **Azure Site Recovery** を使用して、任意の VM (Azure IaaS、HYPER-V、VMware) または物理マシンをディザスター リカバリー用に構成している場合、移動操作はブロックされます。 Azure Site Recovery 用のコンテナーを移動する場合は、[この記事](../site-recovery/move-vaults-across-regions.md)を参照して、コンテナーを手動で移動する方法を確認してください。
 
 ## <a name="use-azure-portal-to-move-recovery-services-vault-to-different-resource-group"></a>Azure portal を使用して Recovery Services コンテナーを別のリソース グループに移動する
 

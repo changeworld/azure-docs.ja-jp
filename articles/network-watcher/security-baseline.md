@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 2a4cba847610ab7d6119c04f9e3b1c32a192d6c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 28b3bc5adfc3c2e83de658947193b6046a455c32
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255862"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231505"
 ---
 # <a name="azure-security-baseline-for-network-watcher"></a>Network Watcher 用の Azure セキュリティ ベースライン
 
@@ -234,9 +234,9 @@ Network Watcher を有効にする必要がある
 
 **ガイダンス**: Azure Network Watcher のコントロール プレーン (Azure portal など) への管理アクセス権を持つユーザー アカウントのインベントリを保持します。 Network Watcher 機能を使用するには、Azure にログインするアカウントを、所有者、共同作成者、またはネットワーク共同作業者の組み込みのロールに割り当てるか、特定の Network Watcher 機能について一覧表示されているアクションが割り当てられているカスタム ロールに割り当てる必要があります。
 
-Azure portal でサブスクリプションの ID およびアクセス管理 (IAM) ペインを使用して、ロールベースのアクセス制御 (RBAC) を構成できます。 ロールは、Active Directory 内のユーザー、グループ、サービス プリンシパル、およびマネージド ID に適用されます。
+サブスクリプションの Azure portal にある ID およびアクセス管理 (IAM) ウィンドウを使用して、Azure ロールベースのアクセス制御 (Azure RBAC) を構成できます。 ロールは、Active Directory 内のユーザー、グループ、サービス プリンシパル、およびマネージド ID に適用されます。
 
-* [Azure での RBAC の概要](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Azure RBAC について](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
 * [Network Watcher 機能を使用するために必要な、Azure ロールベースのアクセス制御のアクセス許可](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)
 
@@ -279,7 +279,7 @@ Azure portal でサブスクリプションの ID およびアクセス管理 (I
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: すべての Azure Active Directory ベースのアクセスに多要素認証を使用する
 
-**ガイダンス**: Azure Active Directory Multi-Factor Authentication を有効にし、Azure Security Center ID とアクセス管理の推奨事項に従います。
+**ガイダンス**:Azure Active Directory Multi-Factor Authentication を有効にし、Azure Security Center ID とアクセス管理の推奨事項に従います。
 
 * [Azure で MFA を有効にする方法](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
 
@@ -365,7 +365,7 @@ Azure AD サインイン アクティビティ、監査、リスク イベント
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: アカウント ログイン動作の偏差に関するアラートを生成する
 
-**ガイダンス**: コントロール プレーン (Azure portal など) でのアカウント ログイン動作の偏差については、Azure AD Identity Protection とリスク検出機能を使用して、ユーザー ID に関連して検出された疑わしいアクションへの自動応答を構成します。 Azure Sentinel にデータを取り込んで、さらに詳しく調査することもできます。
+**ガイダンス**: コントロール プレーン (Azure portal など) でのアカウント ログイン動作の逸脱については、Azure AD Identity Protection とリスク検出機能を使用して、ユーザー ID に関連して検出された疑わしいアクションへの自動応答を構成します。 Azure Sentinel にデータを取り込んで、さらに詳しく調査することもできます。
 
 * [Azure AD のリスクの高いサインインを表示する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
 
@@ -443,15 +443,15 @@ Azure AD サインイン アクティビティ、監査、リスク イベント
 
 **責任**: 適用なし
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6:ロールベースのアクセス制御を使用してリソースへのアクセスを制御する
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**:Azure portal でサブスクリプションの ID およびアクセス管理 (IAM) ペインを使用して、ロールベースのアクセス制御 (RBAC) を構成できます。 ロールは、Active Directory 内のユーザー、グループ、サービス プリンシパル、およびマネージド ID に適用されます。 組み込みのロールまたはカスタム ロールは、個人とグループに使用できます。
+**ガイダンス**: サブスクリプションの Azure portal にある ID およびアクセス管理 (IAM) ウィンドウを使用して、Azure ロールベースのアクセス制御 (Azure RBAC) を構成できます。 ロールは、Active Directory 内のユーザー、グループ、サービス プリンシパル、およびマネージド ID に適用されます。 組み込みのロールまたはカスタム ロールは、個人とグループに使用できます。
 
 Network Watcher 機能を使用するには、Azure にログインするアカウントを、所有者、共同作成者、またはネットワーク共同作業者の組み込みのロールに割り当てるか、特定の Network Watcher 機能について一覧表示されているアクションが割り当てられているカスタム ロールに割り当てる必要があります。
 
-* [Azure で RBAC を構成する方法](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* [Azure RBAC を構成する方法](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
-* [Network Watcher の RBAC のアクセス許可を理解する](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)
+* [Network Watcher の Azure RBAC のアクセス許可を理解する](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -731,7 +731,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6:カスタム オペレーティング システム イメージを安全に格納する
 
-**ガイダンス**:適用できません。このガイドラインは、コンピューティング リソースを対象にしています。
+**ガイダンス**: 適用できません。このガイドラインは、コンピューティング リソースを対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 

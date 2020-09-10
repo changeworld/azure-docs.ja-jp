@@ -2,13 +2,13 @@
 title: パラメーター ファイルを作成する
 description: Azure Resource Manager テンプレートのデプロイ中に値を渡すためのパラメーター ファイルを作成します
 ms.topic: conceptual
-ms.date: 06/19/2020
-ms.openlocfilehash: 8039b63978e52b69b0f8ffb4dd4e052769f3c5e6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/01/2020
+ms.openlocfilehash: 2b6d942b21594fa608127bb8f403e72295671005
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082938"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276662"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Resource Manager パラメーター ファイルを作成する
 
@@ -148,6 +148,8 @@ ms.locfileid: "87082938"
 }
 ```
 
+パラメーター ファイルには、テンプレートで定義されているパラメーターの値のみを含めることができます。 パラメーター ファイルに、テンプレートのパラメーターと一致しない余分なパラメーターが含まれている場合はエラーが発生します。
+
 ## <a name="parameter-type-formats"></a>パラメーターの型の形式
 
 次の例は、さまざまなパラメーターの型の形式を示しています。
@@ -184,10 +186,30 @@ ms.locfileid: "87082938"
 
 ## <a name="deploy-template-with-parameter-file"></a>パラメーター ファイルを使用したテンプレートのデプロイ
 
-参照:
+Azure CLI でローカル パラメーター ファイルを渡すには、@ とパラメーター ファイルの名前を使用します。
 
-- [ARM テンプレートと Azure CLI でリソースをデプロイする](./deploy-cli.md#parameters)
-- [ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](./deploy-powershell.md#pass-parameter-values)
+```azurecli
+az deployment group create \
+  --name ExampleDeployment \
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters @storage.parameters.json
+```
+
+詳細については、[ARM テンプレートと Azure CLI でのリソースのデプロイ](./deploy-cli.md#parameters)に関するページを参照してください。
+
+Azure PowerShell でローカル パラメーター ファイルを渡すには、`TemplateParameterFile` パラメーターを使用します。
+
+```azurepowershell
+New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
+  -TemplateFile c:\MyTemplates\azuredeploy.json `
+  -TemplateParameterFile c:\MyTemplates\storage.parameters.json
+```
+
+詳細については、[ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](./deploy-powershell.md#pass-parameter-values)に関するページを参照してください。
+
+> [!NOTE]
+> ポータルで、カスタム テンプレート ブレードでパラメーター ファイルを使用することはできません。
 
 ## <a name="file-name"></a>ファイル名
 
@@ -199,7 +221,7 @@ ms.locfileid: "87082938"
 
 同じデプロイ操作で、インライン パラメーターとローカル パラメーター ファイルを使用することができます。 たとえば、一部の値をローカル パラメーター ファイルで指定し、その他の値をデプロイ中にインラインで追加します。 ローカル パラメーター ファイルとインラインの両方でパラメーターの値を指定すると、インラインの値が優先されます。
 
-ファイルへの URI を提供することにより、外部パラメーター ファイルを使用することができます。 その場合、他の値をインラインまたはローカル ファイルから渡すことはできません。 すべてのインライン パラメーターは無視されます。 すべてのパラメーター値を外部ファイル内で指定します。
+ファイルへの URI を提供することにより、外部パラメーター ファイルを使用することができます。 外部パラメーター ファイルを使用する場合、他の値をインラインまたはローカル ファイルから渡すことはできません。 すべてのインライン パラメーターは無視されます。 すべてのパラメーター値を外部ファイル内で指定します。
 
 ## <a name="parameter-name-conflicts"></a>パラメーター名の競合
 

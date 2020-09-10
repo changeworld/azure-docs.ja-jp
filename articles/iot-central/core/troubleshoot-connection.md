@@ -7,12 +7,12 @@ ms.author: dobett
 ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
-ms.openlocfilehash: 4c95c5eccb5ff804adeae94074136c6242678127
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 2bf48b6808fccb1f4344e66a2b8f1fc2d4c52ef6
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816067"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322451"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>デバイスからのデータが Azure IoT Central で表示されない原因を解決する
 
@@ -57,7 +57,7 @@ az set account --subscription <your-subscription-id>
 デバイスから送信されているテレメトリを監視するには、次のコマンドを使用します。
 
 ```cmd/bash
-az iot central app monitor-events --app-id <app-id> --device-id <device-name>
+az iot central diagnostics monitor-events --app-id <app-id> --device-id <device-name>
 ```
 
 デバイスが IoT Central に正常に接続されている場合、次のような出力が表示されます。
@@ -82,7 +82,7 @@ Filtering on device: device-001
 デバイスと IoT Central の間で交換されているプロパティの更新を監視するには、次のプレビュー コマンドを使用します。
 
 ```cmd/bash
-az iot central app monitor-properties --app-id <app-id> --device-id <device-name>
+az iot central diagnostics monitor-properties --app-id <app-id> --device-id <device-name>
 ```
 
 デバイスからプロパティの更新が正常に送信されている場合、次のような出力が表示されます。
@@ -95,8 +95,6 @@ version : 32
 rocessorArchitecture': 'ARM', 'swVersion': '1.0.0'}
 ```
 
-### <a name="interpreting-terminal-output"></a>ターミナル出力の解釈
-
 ターミナルにデータが表示される場合、データは IoT Central アプリケーションまで到達しています。
 
 数分経ってもデータが表示されない場合、出力がスタックしている可能性があるので、キーボードの `Enter` キーまたは `return` キーを押します。
@@ -108,7 +106,7 @@ rocessorArchitecture': 'ARM', 'swVersion': '1.0.0'}
 データがモニターに表示されていない場合は、次のコマンドを実行して、デバイスのプロビジョニング状態を確認します。
 
 ```cmd/bash
-az iot central app device registration-info --app-id <app-id> --device-id <device-name>
+az iot central device registration-info --app-id <app-id> --device-id <device-name>
 ```
 
 次の出力は、接続がブロックされているデバイスの例を示しています。
@@ -178,16 +176,14 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 - テレメトリを検証するには、次のプレビュー コマンドを使用します。
 
     ```cmd/bash
-    az iot central app validate-messages --app-id <app-id> --device-id <device-name>
+    az iot central diagnostics validate-messages --app-id <app-id> --device-id <device-name>
     ```
 
 - プロパティの更新を検証するには、次のプレビュー コマンドを使用します
 
     ```cmd/bash
-    az iot central app validate-properties --app-id <app-id> --device-id <device-name>
+    az iot central diagnostics validate-properties --app-id <app-id> --device-id <device-name>
     ```
-
-- GUI を使用する場合は、IoT Central の **生データ** ビューを使用して、モデル化されていないものがないかどうかを確認します。 **生データ** ビューによって、デバイスから誤った形式の JSON が送信されているかどうかは検出されません。
 
 `validate` コマンドを初めて実行するときに、`uamqp` ライブラリをインストールするように求められる場合があります。
 
@@ -205,9 +201,9 @@ Exiting after 300 second(s), or 10 message(s) have been parsed (whichever happen
 tatype 'double'. Data '56'. All dates/times/datetimes/durations must be ISO 8601 compliant.
 ```
 
-:::image type="content" source="media/troubleshoot-connection/raw-data-view.png" alt-text="生データ ビューのスクリーンショット":::
+GUI を使用する場合は、IoT Central の **生データ** ビューを使用して、モデル化されていないものがないかどうかを確認します。 **生データ** ビューによって、デバイスから誤った形式の JSON が送信されているかどうかは検出されません。
 
-### <a name="interpreting-terminal-output"></a>ターミナル出力の解釈
+:::image type="content" source="media/troubleshoot-connection/raw-data-view.png" alt-text="生データ ビューのスクリーンショット":::
 
 問題が検出された場合、デバイスのファームウェアを更新するか、以前にモデル化されていないデータをモデル化する新しいデバイス テンプレートを作成することが必要になる場合があります。
 
@@ -215,9 +211,6 @@ tatype 'double'. Data '56'. All dates/times/datetimes/durations must be ISO 8601
 
 ## <a name="next-steps"></a>次のステップ
 
-このガイドを使用してトラブルシューティングしても、問題を修正できない場合は、サポート チケットを開きます。 Azure のお客様は、Azure portal でサポート リクエストを作成し、管理できます。
-
-- [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
-- [米国政府機関向け Azure portal](https://portal.azure.us/)
+さらにサポートが必要な場合は、[MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/community/)で Azure エキスパートにお問い合わせください。 または、[Azure サポート チケット](https://portal.azure.com/#create/Microsoft.Support)を送信することもできます。
 
 詳細については、「[Azure IoT のサポートとヘルプのオプション](../../iot-fundamentals/iot-support-help.md)」を参照してください。

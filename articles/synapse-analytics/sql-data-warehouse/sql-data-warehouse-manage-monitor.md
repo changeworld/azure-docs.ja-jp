@@ -11,12 +11,12 @@ ms.date: 03/24/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: synapse-analytics
-ms.openlocfilehash: 7678fedeb3df3b9d27fba603db8f66b692729506
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9eb1006bdba6c69136c972359bb13420a04f4180
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211699"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048026"
 ---
 # <a name="monitor-your-azure-synapse-analytics-sql-pool-workload-using-dmvs"></a>DMV を使用して Azure Synapse Analytics SQL プールのワークロードを監視する
 
@@ -102,8 +102,8 @@ DSQL プランに予想よりも時間がかかる場合は、多くの DSQL 手
 
 1 つの手順に関する詳細を調査するには、実行時間の長いクエリ手順の *operation_type* 列を確認し、**手順インデックス**を書き留めます。
 
-* 手順 3a の **SQL 操作** に進みます (OnOperation、RemoteOperation、ReturnOperation)。
-* 手順 3b の**データ移動操作** に進みます (ShuffleMoveOperation、BroadcastMoveOperation、TrimMoveOperation、PartitionMoveOperation、MoveOperation、CopyOperation)。
+* 手順 3 の **SQL 操作** に進みます(OnOperation、RemoteOperation、ReturnOperation)。
+* 手順 4 の**データ移動操作**に進みます(ShuffleMoveOperation、BroadcastMoveOperation、TrimMoveOperation、PartitionMoveOperation、MoveOperation、CopyOperation)。
 
 ### <a name="step-3-investigate-sql-on-the-distributed-databases"></a>手順 3:分散データベースでの SQL を調査する
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 54bbd5d45e14c1d345570eea9dc5469f77694154
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: f8ec215458e8ebfafb87209516f167d628e98389
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853929"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047630"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Azure Cosmos DB でのオンライン バックアップとオンデマンドのデータ復元
 
@@ -57,7 +57,7 @@ Azure Cosmos DB によって、データが 4 時間ごとと任意の時点で�
 
    * **バックアップ保有期間** - 各バックアップが保有される期間を表します。 時間単位または日単位で構成できます。 最小保有期間を、バックアップ間隔 (時間数) の 2 倍より短く、または 720 時間より長くすることはできません。
 
-   * **Copies of data retained (保持するデータのコピー数)** - 既定では、データの 2 つのバックアップ コピーが無料で提供されます。 追加のコピーが必要な場合は、Azure portal でサポート リクエストを作成する必要があります。追加のコピーには料金がかかります。 追加コピーの正確な価格については、[価格に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)の「消費されたストレージ」セクションを参照してください。
+   * **Copies of data retained (保持するデータのコピー数)** - 既定では、データの 2 つのバックアップ コピーが無料で提供されます。 2 つ以上のコピーが必要な場合は、追加料金が発生します。 追加コピーの正確な価格については、[価格に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)の「消費されたストレージ」セクションを参照してください。
 
    :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="既存の Azure Cosmos アカウントのバックアップ間隔と保有期間を構成する" border="true":::
 

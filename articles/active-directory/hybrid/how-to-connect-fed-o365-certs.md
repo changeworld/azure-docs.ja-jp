@@ -16,12 +16,12 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0c8134cdb72f8bff74fa68dff81fc9d6f1f5ccc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 491c0aef74b44c0452b4d8d002a81928d80f360b
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830453"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276441"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Office 365 および Azure Active Directory 用のフェデレーション証明書の更新
 ## <a name="overview"></a>概要
@@ -140,7 +140,7 @@ https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 ### <a name="step-1-ensure-that-ad-fs-has-new-token-signing-certificates"></a>手順 1:AD FS のトークン署名証明書が新しいことを確認する
 **既定の構成が変更されている場合**
 
-AD FS の既定の構成が変更されている (**AutoCertificateRollover** が **False** に設定されている) 場合、(自己署名ではない) カスタムの証明書が使用されていると考えられます。 AD FS トークン署名証明書の更新方法の詳細については、「 [AD FS 自己署名証明書を使用しないお客様へのガイダンス](https://msdn.microsoft.com/library/azure/JJ933264.aspx#BKMK_NotADFSCert)」を参照してください。
+AD FS の既定の構成が変更されている (**AutoCertificateRollover** が **False** に設定されている) 場合、(自己署名ではない) カスタムの証明書が使用されていると考えられます。 AD FS トークン署名証明書の更新方法の詳細については、「[フェデレーション サーバーの証明書の要件](/windows-server/identity/ad-fs/design/certificate-requirements-for-federation-servers)」を参照してください。
 
 **フェデレーション メタデータへのパブリック アクセスができない場合**
 
@@ -188,4 +188,4 @@ Azure AD Connect を使用して AD FS ファームと Azure AD 信頼を構成�
 
 Azure AD は、現在の証明書の有効期限が切れる 30 日前に、フェデレーション サービスのメタデータから新しい証明書を取得しようとします。 その時点で新しい証明書が利用できない場合、Azure AD は 1 日間隔でメタデータの監視を続けます。 新しい証明書がメタデータで利用可能になるとすぐに、ドメインのフェデレーション設定が新しい証明書情報で更新されます。 `Get-MsolDomainFederationSettings` を使用すると、NextSigningCertificate / SigningCertificate に新しい証明書があるかどうかを確認できます。
 
-AD FS のトークン署名証明書の詳細については「[Obtain and Configure Token Signing and Token Decryption Certificates for AD FS (AD FS でのトークン署名証明書およびトークン暗号化解除証明書の取得と構成)](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ts-td-certs-ad-fs)」 をご覧ください。
+AD FS のトークン署名証明書の詳細については「[Obtain and Configure Token Signing and Token Decryption Certificates for AD FS (AD FS でのトークン署名証明書およびトークン暗号化解除証明書の取得と構成)](/windows-server/identity/ad-fs/operations/configure-ts-td-certs-ad-fs)」 をご覧ください。

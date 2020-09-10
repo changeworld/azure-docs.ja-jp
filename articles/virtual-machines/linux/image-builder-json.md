@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 6ed95f87d2b2a5f811531a5ff258ebe97a9b892a
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 3c2dbf8c98901d5a4147939c42e289abf25f7d21
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869203"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378374"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>プレビュー:Azure Image Builder テンプレートを作成する 
 
@@ -142,7 +142,7 @@ Image Builder によるユーザー割り当て ID のサポート:
 
 ## <a name="properties-source"></a>プロパティ: source
 
-現在、Image Builder では 第 1 世代の HyperV のイメージと VM のみがサポートされています。`source` セクションには、Image Builder で使用されるソース イメージに関する情報が含まれています。
+`source` セクションには、Image Builder によって使われるソース イメージについての情報が含まれます。 現在 Image Builder でネイティブにサポートされているのは、Azure Shared Image Gallery (SIG) への Hyper-V 第 1 世代 (Gen1) のイメージ、またはマネージド イメージの作成のみです。 Gen2 イメージを作成する場合は、ソース Gen2 イメージを使用し、VHD に配布する必要があります。 その後、VHD からマネージド イメージを作成し、これを Gen2 イメージとして SIG に挿入する必要があります。
 
 API ではイメージ ビルド用のソースを定義する "SourceType" が必要であり、現在は次の 3 つの種類があります。
 - PlatformImage - ソース イメージが Marketplace イメージであることを示します。
@@ -571,7 +571,7 @@ Azure 共有イメージ ギャラリーは新しいイメージ管理サービ�
 
 ```json
 {
-    "type": "sharedImage",
+    "type": "SharedImage",
     "galleryImageId": "<resource ID>",
     "runOutputName": "<name>",
     "artifactTags": {

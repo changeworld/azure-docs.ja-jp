@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 7b48ac1621c5c8788a4ecdb9ceb3af78f8e82a37
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 9e960914f86f2f9fc63a62d62fe1f923d21b9d31
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890503"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394620"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Backup 用の Azure セキュリティ ベースライン
 
@@ -480,11 +480,11 @@ Microsoft では、Azure Backup 用の基になるインフラストラクチャ
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: Azure のロールベースのアクセス制御 (Azure RBAC) を使用すると、Azure のきめ細かなアクセス管理が可能になります。 RBAC を使用して、チーム内で職務を分離し、職務に必要なアクセス許可のみをユーザーに付与します。
+**ガイダンス**: Azure のロールベースのアクセス制御 (Azure RBAC) を使用すると、Azure のきめ細かなアクセス管理が可能になります。 Azure RBAC を使用して、チーム内で職務を分離し、職務に必要なアクセス許可のみをユーザーに付与します。
 
 Azure Backup では、バックアップの管理操作を制御する 3 つの組み込みロールが提供されます。これらは、バックアップ共同作成者、バックアップ オペレーター、バックアップ リーダーです。 バックアップ組み込みロールをさまざまなバックアップ管理アクションにマップできます。
 
-- [Azure で RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
+- [Azure RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
 
 - [ロール ベースのアクセス制御を使用した Azure Backup の回復ポイントの管理](./backup-rbac-rs-vault.md)
 
@@ -818,7 +818,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 - [キー コンテナーを作成する方法](../key-vault/secrets/quick-create-portal.md)
 
-- [マネージド ID で Key Vault の認証を提供する方法](../key-vault/general/managed-identity.md)
+* [Key Vault に対して認証を行う方法](https://docs.microsoft.com/azure/key-vault/general/authentication)
+
+* [Key Vault のアクセス ポリシーを割り当てる方法](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
 
 **Azure Security Center の監視**: 適用なし
 

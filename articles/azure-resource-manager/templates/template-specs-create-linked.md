@@ -2,13 +2,13 @@
 title: リンクされたテンプレートを使用してテンプレート スペックを作成する
 description: リンクされたテンプレートを使用してテンプレート スペックを作成する方法について説明します。
 ms.topic: conceptual
-ms.date: 08/26/2020
-ms.openlocfilehash: 49a26bf61c3c66f41761afe293471575e76c4eb9
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 08/31/2020
+ms.openlocfilehash: f1808be73981c3ab4d53fd2a651822b93b5fb790
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936369"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228003"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>チュートリアル:リンクされたテンプレートを使用してテンプレート スペックを作成する (プレビュー)
 
@@ -186,7 +186,7 @@ az group create \
   --name templateSpecRG \
   --location westus2
 
-az template-specs create \
+az ts create \
   --name webSpec \
   --version "1.0.0.0" \
   --resource-group templateSpecRG \
@@ -207,7 +207,7 @@ Get-AzTemplateSpec -ResourceGroupName templatespecRG -Name webSpec
 # <a name="cli"></a>[CLI](#tab/azure-cli)
 
 ```azurecli
-az template-specs show --name webSpec --resource-group templateSpecRG --version "1.0.0.0"
+az ts show --name webSpec --resource-group templateSpecRG --version "1.0.0.0"
 ```
 
 ---
@@ -245,7 +245,7 @@ az deployment group create \
 ```
 
 > [!NOTE]
-> テンプレート スペック ID の取得および Windows PowerShell の変数への割り当てに関する既知の問題があります。
+> Windows PowerShell におけるテンプレート スペック ID の取得と変数への割り当てには既知の問題があります。
 
 ---
 

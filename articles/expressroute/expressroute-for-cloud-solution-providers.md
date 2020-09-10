@@ -2,21 +2,21 @@
 title: クラウド ソリューション プロバイダー向け ExpressRoute - Azure | Microsoft Docs
 description: この記事では、Azure サービスと ExpressRoute を独自のサービスに組み込むことを希望するクラウド ソリューション プロバイダー向けに情報を提供します。
 services: expressroute
-author: richcar
+author: duongau
 ms.service: expressroute
 ms.topic: article
 ms.date: 10/10/2016
-ms.author: ricarlse
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 99b51610e41aaf8358e7e3069d38dfd8c68ae422
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: ec3f8f71713abb818f29458748eb0054390f474e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446768"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396677"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>クラウド ソリューション プロバイダー (CSP) 向けの ExpressRoute
-Microsoft では、新たな開発投資を行わずに顧客向けの新しいサービスやソリューションを迅速にプロビジョニングできる、従来のリセラーおよび代理店 (CSP) 向けの超大規模サービスを提供しています。 このような新しいサービスをクラウド ソリューション プロバイダー (CSP) が直接管理できるようにするため、Microsoft では、CSP が顧客に代わって Microsoft Azure のリソースを管理するために利用できるプログラムや API を用意しています。 ExpressRoute は、そのようなリソースの 1 つです。 ExpressRoute を利用することで、CSP は既存の顧客リソースを Azure サービスに接続できます。 ExpressRoute とは、Azure のサービスにリンクする高速プライベート通信です。 
+Microsoft では、新たな開発投資を行わずに顧客向けの新しいサービスやソリューションを迅速にプロビジョニングできる、従来のリセラーおよび代理店 (CSP) 向けの超大規模サービスを提供しています。 このような新しいサービスをクラウド ソリューション プロバイダー (CSP) が直接管理できるようにするため、Microsoft では、CSP が顧客に代わって Microsoft Azure のリソースを管理するために利用できるプログラムや API を用意しています。 ExpressRoute は、そのようなリソースの 1 つです。 ExpressRoute を利用することで、CSP は既存の顧客リソースを Azure サービスに接続できます。 ExpressRoute とは、Azure のサービスへの高速なプライベート通信リンクです。 
 
 ExpressRoute は高可用性を実現するための一対の回線で構成されています。これらの回線は単一の顧客のサブスクリプションに関連付けられており、複数の顧客によって共有されることはありません。 高可用性を維持するため、回線はそれぞれ別のルーターに接続する必要があります。
 
@@ -60,9 +60,9 @@ Connect-To モデルでは、サービス プロバイダーが顧客のネッ�
 
 これら 2 つのモデルのどちらを選択するかは、顧客のニーズと、Azure サービスの提供に対する貴社の現在のニーズによって決まります。 各モデルの詳細と、関連するロールベースのアクセス制御、ネットワーク、ID 設計パターンなどの詳細については、以下のリンクを参照してください。
 
-* **Azure ロールベースのアクセス制御 (Azure RBAC)** - RBAC は Azure Active Directory を基にした機能です。  Azure RBAC の詳細については、 [こちら](../role-based-access-control/role-assignments-portal.md)を参照してください。
+* **Azure ロールベースのアクセス制御 (Azure RBAC)** - RBAC は Azure Active Directory を基にした機能です。  Azure RBAC の詳細については、[こちら](../role-based-access-control/role-assignments-portal.md)を参照してください。
 * **ネットワーク** - Microsoft Azure でのネットワークに関するさまざまなトピックを紹介します。
-* **Azure Active Directory (Azure AD)** - Azure AD では、Microsoft Azure およびサード パーティ SaaS アプリケーション向けの ID 管理機能を提供します。 Azure AD の詳細については、 [こちら](https://azure.microsoft.com/documentation/services/active-directory/)を参照してください。  
+* **Azure Active Directory (Azure AD)** - Azure AD では、Microsoft Azure およびサード パーティ SaaS アプリケーション向けの ID 管理機能を提供します。 Azure AD の詳細については、[こちら](https://azure.microsoft.com/documentation/services/active-directory/)を参照してください。  
 
 ## <a name="network-speeds"></a>ネットワーク速度
 ExpressRoute では、50 Mb/秒～ 10 Gb/秒のネットワーク速度をサポートしています。 このため、顧客固有の環境に必要となる量のネットワーク帯域幅を購入することができます。
@@ -118,7 +118,7 @@ Azure 仮想ネットワークを作成すると、VNet がそのサブネット
 Connect-To モデルと Connect-Through モデルのどちらが使用されているかによって、顧客が VNet 内のセキュリティ ポリシーを定義するか、VNet に定義するセキュリティ ポリシーの要件を CSP に提供するかが決まります。 定義できるセキュリティ基準を以下に示します。
 
 1. **顧客の分離** - Azure プラットフォームでは、顧客 ID と VNet 情報をセキュリティで保護されたデータベースに保存し、それを使用して顧客ごとのトラフィックを GRE トンネルでカプセル化することにより、顧客の分離を実現しています。
-2. **ネットワーク セキュリティ グループ (NSG)** ルールは、Azure の VNet 内のサブネットからの送受信が許可されたトラフィックを定義するためのものです。 既定では、NSG にはインターネットから VNet へのトラフィックをブロックするためのブロック ルールと、VNet 内のトラフィックのための許可ルールが含まれています。 ネットワーク セキュリティ グループの詳細については、 [こちら](https://azure.microsoft.com/blog/network-security-groups/)を参照してください。
+2. **ネットワーク セキュリティ グループ (NSG)** ルールは、Azure の VNet 内のサブネットからの送受信が許可されたトラフィックを定義するためのものです。 既定では、NSG にはインターネットから vNet へのトラフィックをブロックするためのブロック ルールと、vNet 内のトラフィックのための許可ルールが含まれています。 ネットワーク セキュリティ グループの詳細については、[こちら](https://azure.microsoft.com/blog/network-security-groups/)を参照してください。
 3. **強制トンネリング** - これは、Azure 内からインターネットへのトラフィックをリダイレクトするためのオプションであり、ExpressRoute 接続を通じてオンプレミスのデータセンターにリダイレクトされます。 強制トンネリングの詳細については、 [こちら](expressroute-routing.md#advertising-default-routes)を参照してください。  
 4. **暗号化** - ExpressRoute 回線は特定の顧客の専用回線となりますが、ネットワーク プロバイダーへの侵入が発生した場合は、侵入者にパケット トラフィックを調べられる可能性があります。 この可能性に対処するため、顧客または CSP は、オンプレミスのリソースと Azure リソースの間で送受信されるすべてのトラフィックの IPSec トンネル モード ポリシーを定義することで、そのトラフィックを暗号化することができます (上記の図 5: ExpressRoute セキュリティで Customer 1 のオプション トンネル モード IPSec を参照)。 2 番目の選択肢として、ExpressRoute 回線の各エンドポイントでファイアウォール アプライアンスを使用する方法があります。 この方法では、ExpressRoute 回線経由のトラフィックを暗号化するために、サード パーティのファイアウォール VM/アプライアンスを両方のエンドポイントにインストールする必要があります。
 

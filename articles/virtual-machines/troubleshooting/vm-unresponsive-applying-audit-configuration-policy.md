@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: e55fa377f28572901202b4d722bea70786edae22
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: bc41783bf977806b5f9bba5b953f1f581ad07f18
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88942017"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299526"
 ---
 # <a name="virtual-machine-is-unresponsive-while-applying-audit-policy-configuration-policy"></a>監査ポリシー構成ポリシーの適用時に仮想マシンが応答しない
 
@@ -27,7 +27,7 @@ ms.locfileid: "88942017"
 
 ## <a name="symptom"></a>症状
 
-[ブート診断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)を使用して VM のスクリーンショットを表示すると、オペレーティング システム (OS) が起動中に "**Applying Audit Policy Configuration policy**" (監査ポリシー構成ポリシーを適用中) というメッセージと共に停止したことがスクリーンショットに示されていることがわかります。
+[ブート診断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)を使用して VM のスクリーンショットを表示すると、オペレーティング システム (OS) が起動中に "**Applying Audit Policy Configuration policy**" (監査ポリシー構成ポリシーを適用中) というメッセージが表示されたまま応答しなくなったことをそのスクリーンショットの表示で確認できます。
 
   ![次のメッセージが示されている起動中の OS: "Applying Audit Policy Configuration policy" (監査ポリシー構成ポリシーを適用中)](./media/vm-unresponsive-applying-audit-configuration-policy/1.png)
 

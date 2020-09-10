@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
-ms.date: 08/18/2020
-ms.openlocfilehash: 1833f0343aa3e41119e215e7ce022f122d13489b
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.date: 08/31/2020
+ms.openlocfilehash: 0d5390beff6c3e0045c6b887f0262a54a737a851
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589505"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181767"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL Managed Instance でユーザーによって開始される手動フェールオーバー
 
@@ -36,6 +36,15 @@ ms.locfileid: "88589505"
 > 運用環境にデプロイする前にアプリケーションがフェールオーバー回復性を備えていることを確認するのは、運用環境でのアプリケーションの障害のリスクを軽減するのに役立ち、顧客に対するアプリケーションの可用性に寄与します。
 
 ## <a name="initiate-manual-failover-on-sql-managed-instance"></a>SQL Managed Instance で手動フェールオーバーを開始する
+
+### <a name="rbac-permissions-required"></a>必要な RBAC アクセス許可
+
+フェールオーバーを開始するユーザーには、次のいずれかの RBAC ロールが必要です。
+
+- サブスクリプションの所有者ロール、または
+- マネージド インスタンス共同作成者ロール、または
+- 次のアクセス許可を持つカスタム ロール:
+  - `Microsoft.Sql/managedInstances/failover/action`
 
 ### <a name="using-powershell"></a>PowerShell の使用
 

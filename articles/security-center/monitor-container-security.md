@@ -8,19 +8,19 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 5f558aaa367d156a8a4fa8633f113c6480236f5b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f5479ad31f45a92b0e4cd03f07bdd9e7930f543
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038616"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277291"
 ---
 # <a name="monitor-the-security-of-your-containers"></a>コンテナーのセキュリティを監視する
 
 このページでは、概要のセクションにある[コンテナーのセキュリティに関する記事](container-security.md)で説明されているコンテナー セキュリティ機能の使用方法について説明します。
 
 
-## <a name="scanning-your-arm-based-container-registries-for-vulnerabilities"></a>ARM ベース コンテナー レジストリの脆弱性をスキャンする 
+## <a name="scan-your-arm-based-container-registries-for-vulnerabilities"></a>ARM ベース コンテナー レジストリの脆弱性をスキャンする 
 
 1. お使いの Azure コンテナー レジストリのイメージの脆弱性スキャンを有効にするには、以下を行います。
 
@@ -86,7 +86,7 @@ ms.locfileid: "87038616"
     1. 更新されたイメージがプッシュされ、スキャンされ、推奨事項にもう表示されないことが確認できたら、脆弱性のある "古い" イメージをレジストリから削除します。
 
 
-## <a name="hardening-your-containers-docker-hosts"></a>コンテナーの Docker ホストを強化する
+## <a name="harden-your-containers-docker-hosts"></a>コンテナーの Docker ホストを強化する
 
 Security Center では、Docker ホストの構成を常に監視し、業界標準を反映したセキュリティの推奨事項を生成します。
 

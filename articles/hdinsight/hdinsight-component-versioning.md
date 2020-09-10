@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 08/13/2020
-ms.openlocfilehash: 5c3586e9ba405cb5a7338b8f7f22858a238b9271
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 15d7b11ed49880a81e52c48a93a72e1491a5b645
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717253"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394331"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Azure HDInsight で使用可能な Apache コンポーネントおよびバージョン
 
@@ -78,7 +78,7 @@ HDInsight の最新バージョンに関する追加のリリース ノートは
 | HDInsight のバージョン | VM の OS | リリース日 | サポート有効期限 | 提供終了日 | 高可用性 |  Azure portal での可用性 |
 | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 4.0 |Ubuntu 16.0.4 LTS |2018 年 9 月 24 日 | | |はい |はい |
-| HDInsight 3.6 |Ubuntu 16.0.4 LTS |2017 年 4 月 4 日      | \* 2021 年 6 月 31 日 |2021 年 6 月 31 日 |はい |はい |
+| HDInsight 3.6 |Ubuntu 16.0.4 LTS |2017 年 4 月 4 日      | \* 2021 年 6 月 30 日 |2021 年 6 月 30 日 |はい |はい |
 
 \* 特定のクラスターの種類 HDInsight 3.6 のサポート期間を延長しています
 

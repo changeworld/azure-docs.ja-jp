@@ -3,12 +3,12 @@ title: Azure Relay に関する FAQ | Microsoft Docs
 description: この記事では、Azure Relay サービスに関連する、よく寄せられる質問の一部の回答を示します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 40e6f830e2314f7c8f36fcd25d24a41cc256bef2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d967d926c6ab59e027fe4d4cf98e8418a8ff9bc
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317024"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299288"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay に関する FAQ
 
@@ -119,8 +119,8 @@ Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptio
 ### <a name="what-is-a-shared-access-signature-and-which-languages-can-i-use-to-generate-a-signature"></a>Shared Access Signature とは何ですか? また、どの言語で署名を生成できますか?
 Shared Access Signature (SAS) は、SHA-256 セキュア ハッシュまたは URI に基づいた認証メカニズムです。 Node.js、PHP、Python、Java、C、C# で独自の署名を生成する方法については、「[Shared Access Signature による Service Bus の認証][Shared Access Signatures]」を参照してください。
 
-### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Relay エンドポイントをホワイトリストに登録することはできますか?
-はい。 リレー クライアントは、完全修飾ドメイン名を使用して Azure Relay サービスへの接続を確立します。 お客様は、DNS ホワイトリスト登録をサポートするファイアウォールで、`*.servicebus.windows.net` のエントリを追加できます。
+### <a name="is-it-possible-to-allow-only-some-relay-endpoints"></a>一部のリレー エンドポイントのみを許可することはできますか?
+はい。 リレー クライアントは、完全修飾ドメイン名を使用して Azure Relay サービスへの接続を確立します。 お客様は、DNS 承認一覧をサポートするファイアウォールで、`*.servicebus.windows.net` のエントリを追加できます。
 
 ## <a name="next-steps"></a>次のステップ
 * [名前空間を作成する](relay-create-namespace-portal.md)
