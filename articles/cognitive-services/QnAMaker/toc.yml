@@ -24,6 +24,8 @@
   items:
     - name: Power 仮想エージェントとの統合
       href: Tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
+    - name: Azure Bot Service を使用した FAQ ボットの作成
+      href: Tutorials/create-faq-bot-with-azure-bot-service.md
     - name: バッチ ファイルを使用したテスト
       href: Quickstarts/batch-testing.md
 - name: 概念
@@ -91,7 +93,7 @@
         - name: 新しいナレッジ ベースへの移行
           href: Tutorials/migrate-knowledge-base.md
           displayName: 'metadata, pair'
-        - name: テスト
+        - name: テスト ナレッジ ベース
           href: How-To/test-knowledge-base.md
     - name: QnA ペアの管理
       items:

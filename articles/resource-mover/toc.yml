@@ -1,0 +1,36 @@
+- name: Azure Resource Mover のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure Resource Mover について
+      href: overview.md
+    - name: リソースを移動するツールを選択する
+      href: select-move-tool.md
+    - name: 一般的な質問
+      href: common-questions.md
+- name: チュートリアル
+  items:
+    - name: Azure VM を別のリージョンに移動する
+      href: tutorial-move-region-virtual-machines.md
+    - name: SQL リソースを別のリージョンに移動する
+      href: tutorial-move-region-sql.md
+- name: 概念
+  items:
+    - name: 移動の概要
+      href: about-move-process.md
+    - name: Azure VM のリージョン移動に関するサポート マトリックス
+      href: support-matrix-move-region-azure-vm.md
+    - name: Azure SQL のリージョン移動に関するサポート マトリックス
+      href: support-matrix-move-region-sql.md
+- name: ハウツー ガイド
+  items:
+    - name: 移動コレクションからリソースを削除する
+      href: remove-move-resources.md
+- name: リソース
+  items:
+    - name: クラウド導入フレームワークにおける移行
+      href: /azure/cloud-adoption-framework/migrate/
+    - name: Resource Manager テンプレート
+      href: /azure/templates/microsoft.migrate/allversions
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'

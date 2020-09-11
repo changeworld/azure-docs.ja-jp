@@ -9,8 +9,8 @@
     - name: Azure AD へのユーザーの追加
       href: ../fundamentals/add-users-azure-active-directory.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
     - name: ユーザーへのライセンスの割り当て
-      href: ../fundamentals/license-users-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
-    - name: 無制限のアプリの登録用のアクセス許可の付与
+      href: /azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: 無制限のアプリの登録の作成
       href: roles-quickstart-app-registration-limits.md
     - name: グループの有効期限の設定
       href: groups-quickstart-expiration.md
@@ -175,6 +175,8 @@
               href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
             - name: PowerShell でのカスタム ロールの割り当て
               href: roles-assign-powershell.md
+            - name: エンタープライズ アプリのカスタム ロール
+              href: custom-enterprise-apps.md
             - name: カスタム ロールのアクセス許可
               href: roles-custom-available-permissions.md
             - name: アプリ管理者のアクセス許可を委任する

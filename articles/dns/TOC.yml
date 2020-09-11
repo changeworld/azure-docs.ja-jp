@@ -17,6 +17,8 @@
           href: dns-getstarted-powershell.md
         - name: パブリック ゾーンを作成する - CLI
           href: dns-getstarted-cli.md
+        - name: パブリック ゾーンを作成する - ARM テンプレート
+          href: dns-get-started-template.md
     - name: プライベート DNS
       items:
         - name: プライベート ゾーンを作成する - ポータル
@@ -43,7 +45,7 @@
           href: tutorial-alias-rr.md
 - name: 概念
   items:
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md

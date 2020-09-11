@@ -154,6 +154,8 @@
               href: openvpn-azure-ad-client.md
             - name: クライアント VPN プロファイルのダウンロード ファイルについて
               href: about-vpn-profile-download.md
+            - name: Intune - VPN クライアント プロファイルのデプロイ
+              href: vpn-profile-intune.md
         - name: OpenVPN
           items:
             - name: ポイント対サイト接続用に OpenVPN を構成する
