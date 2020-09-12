@@ -49,7 +49,7 @@ ms.locfileid: "88271993"
 > | [ネットワーク共同作成者](#network-contributor) | ネットワークを管理できます。ただし、それらへのアクセスは含まれません。 | 4d97b98b-1d4f-4787-a291-c67834d212e7 |
 > | [プライベート DNS ゾーンの共同作成者](#private-dns-zone-contributor) | プライベート DNS ゾーンのリソースを管理できますが、リンク先の仮想ネットワークを管理することはできません。 | b12aa53e-6015-4669-85d0-8515ebb3ae7f |
 > | [Traffic Manager Contributor](#traffic-manager-contributor) | Traffic Manager プロファイルを管理できますが、それにアクセスできるユーザーを制御することはできません。 | a4b10055-b0c7-44c2-b00f-c7b5b3550cf7 |
-> | **Storage** |  |  |
+> | **ストレージ** |  |  |
 > | [Avere 共同作成者](#avere-contributor) | Avere vFXT クラスターを作成および管理できます。 | 4f8fab4f-1852-4a58-a46a-8eaf358af14a |
 > | [Avere オペレーター](#avere-operator) | クラスターを管理するために Avere vFXT クラスターによって使用されます | c025889f-8102-4ebf-b32c-fc0c6f0c6bd9 |
 > | [バックアップ共同作成者](#backup-contributor) | バックアップ サービスを管理できますが、資格情報コンテナーの作成や他のユーザーに対するアクセス権の付与を行うことはできません | 5e467623-bb1f-42f4-a55d-6e525e11384b |
@@ -79,7 +79,7 @@ ms.locfileid: "88271993"
 > | [Search Service Contributor](#search-service-contributor) | Search サービスを管理できます。ただし、それらへのアクセスは含まれません。 | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
 > | [Web Plan Contributor](#web-plan-contributor) | Web サイトの Web プランを管理できます。ただし、それらへのアクセスは含まれません。 | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
 > | [Website Contributor](#website-contributor) | Web サイト (Web プランではない) を管理できます。ただし、それらへのアクセスは含まれません。 | de139f84-1756-47ae-9be6-808fbbe84772 |
-> | **Containers** |  |  |
+> | **コンテナ** |  |  |
 > | [AcrDelete](#acrdelete) | acr の削除 | c2f4ef07-c644-48eb-af81-4b1b4947fb11 |
 > | [AcrImageSigner](#acrimagesigner) | ACR イメージ署名者 | 6cef56e8-d556-48e5-a04f-b8e64114680f |
 > | [AcrPull](#acrpull) | acr のプル | 7f951dda-4ed3-4680-a7ca-43fe172d538d |
@@ -205,7 +205,7 @@ ms.locfileid: "88271993"
 ## <a name="general"></a>全般
 
 
-### <a name="contributor"></a>Contributor
+### <a name="contributor"></a>共同作成者
 
 すべてのリソースを管理するためのフル アクセスを付与しますが、Azure RBAC でのロールの割り当ては許可されません。 [詳細情報](rbac-and-directory-admin-roles.md)
 
@@ -293,7 +293,7 @@ Azure RBAC でロールを割り当てる権限を含め、すべてのリソー
 }
 ```
 
-### <a name="reader"></a>Reader
+### <a name="reader"></a>閲覧者
 
 すべてのリソースを表示しますが、変更を加えることはできません。 [詳細情報](rbac-and-directory-admin-roles.md)
 
