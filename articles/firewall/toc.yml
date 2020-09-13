@@ -28,8 +28,6 @@
   items:
     - name: Azure PowerShell
       href: sample-powershell.md
-    - name: Azure Monitor ログ
-      href: log-analytics-samples.md
 - name: 概念
   items:
     - name: Azure Firewall の機能
@@ -88,6 +86,8 @@
       href: dns-settings.md
     - name: 診断ログの監視
       href: firewall-diagnostics.md
+    - name: Azure Monitor ログ
+      href: log-analytics-samples.md
 - name: リファレンス
   items:
     - name: Azure CLI
