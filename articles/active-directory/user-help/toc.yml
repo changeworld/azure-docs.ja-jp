@@ -106,8 +106,6 @@
   items:
     - name: マイ アプリ ポータルにサインインして使用する
       href: my-apps-portal-end-user-access.md
-    - name: プロファイルとアカウント情報を更新する
-      href: my-apps-portal-end-user-update-profile.md
     - name: グループ情報を更新する
       href: my-apps-portal-end-user-groups.md
     - name: コレクションを使用してアプリを整理する

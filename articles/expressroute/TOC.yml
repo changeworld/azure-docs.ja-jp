@@ -8,6 +8,7 @@
   items:
     - name: ExpressRoute 回線の作成 - ARM テンプレート
       href: quickstart-create-expressroute-vnet-template.md
+  expanded: true
 - name: チュートリアル
   items:
     - name: 回線の作成と変更
