@@ -24,8 +24,22 @@
       href: support-matrix-move-region-sql.md
 - name: ハウツー ガイド
   items:
-    - name: 移動コレクションからリソースを削除する
-      href: remove-move-resources.md
+    - name: リージョン間で移動する
+      items:
+        - name: PowerShell を使用してリージョン間を移動する
+          href: move-region-powershell.md
+        - name: Azure VM を可用性ゾーンに移動する
+          href: move-region-availability-zone.md
+        - name: リージョン間での移動 (リソース グループから)
+          href: move-region-within-resource-group.md
+    - name: リージョンの移動の管理
+      items:
+        - name: リージョンの移動のターゲット設定を変更する
+          href: modify-target-settings.md
+        - name: リージョンの移動コレクションからリソースを削除する
+          href: remove-move-resources.md
+        - name: リージョンの移動プロセスによって作成されたリソースの管理
+          href: manage-resources-created-move-process.md
 - name: リソース
   items:
     - name: クラウド導入フレームワークにおける移行

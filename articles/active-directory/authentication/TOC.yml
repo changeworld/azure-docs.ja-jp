@@ -213,8 +213,10 @@
               href: howto-mfa-nps-extension-errors.md
     - name: トラブルシューティング
       items:
-        - name: SSPR
-          href: active-directory-passwords-troubleshoot.md
+        - name: セルフサービス パスワード リセット (SSPR)
+          href: troubleshoot-sspr.md
+        - name: SSPR の書き戻し
+          href: troubleshoot-sspr-writeback.md
         - name: SSPR に関する FAQ
           href: active-directory-passwords-faq.md
         - name: MFA に関する FAQ

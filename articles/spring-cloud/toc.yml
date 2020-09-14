@@ -67,6 +67,8 @@
   items:
     - name: Java Spring アプリをデプロイ用に準備する
       href: spring-cloud-tutorial-prepare-app-deployment.md
+    - name: ソース コードから Java アプリを起動する
+      href: spring-cloud-howto-launch-from-source.md
     - name: 構成サーバーを設定する
       href: spring-cloud-tutorial-config-server.md
     - name: サービス登録を有効にする

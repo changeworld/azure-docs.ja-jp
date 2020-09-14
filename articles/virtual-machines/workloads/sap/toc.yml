@@ -293,8 +293,10 @@
       href: azure-monitor-overview.md
     - name: SAP ソリューション向け Azure Monitor のプロバイダー
       href: azure-monitor-providers.md
-    - name: SAP ソリューション向け Azure Monitor の構成
+    - name: SAP ソリューション向け Azure Monitor の構成 - ポータル
       href: azure-monitor-sap-quickstart.md
+    - name: SAP ソリューション向け Azure Monitor の構成 - Azure PowerShell
+      href: azure-monitor-sap-quickstart-powershell.md
     - name: SAP ソリューション向け Azure Monitor に関する FAQ
       href: azure-monitor-faq.md
 - name: リファレンス

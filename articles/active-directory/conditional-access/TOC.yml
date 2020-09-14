@@ -52,8 +52,8 @@
   items:
     - name: 条件付きアクセスのデプロイを計画する
       href: plan-conditional-access.md
-    - name: ベスト プラクティス
-      href: best-practices.md
+    - name: 条件付きアクセス API
+      href: howto-conditional-access-apis.md
     - name: 一般的な条件付きアクセス ポリシー
       items:
         - name: レガシ認証をブロックする
@@ -92,6 +92,8 @@
       href: terms-of-use.md
     - name: サインインの頻度とブラウザーの永続性の制御
       href: howto-conditional-access-session-lifetime.md
+    - name: ベスト プラクティス
+      href: best-practices.md
     - name: トラブルシューティング
       items:
         - name: サインインに関する問題のトラブルシューティング

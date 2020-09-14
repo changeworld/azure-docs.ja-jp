@@ -3,7 +3,7 @@ title: ハイブリッド ID のドキュメント
 summary: Microsoft の ID ソリューションでは、オンプレミスとクラウドを基盤とする機能を利用する際に、場所に関係なく、1 つのユーザー ID ですべてのリソースの認証と権限付与を行います。 これをハイブリッド ID と呼んでいます。
 metadata:
   author: billmath
-  description: Azure AD Connect は、オンプレミスのディレクトリと Azure Active Directory を統合する機能です。 Office 365、Azure、SaaS など Azure AD と連動するアプリケーションに関して、ユーザーの ID を共通化することができます。
+  description: Azure AD Connect は、オンプレミスのディレクトリと Azure Active Directory を統合する機能です。 Microsoft 365、Azure、SaaS など Azure AD と連動するアプリケーションに関して、ユーザーの ID を共通化することができます。
   manager: daveba
   ms.author: billmath
   ms.collection: na
@@ -12,12 +12,12 @@ metadata:
   ms.subservice: na
   ms.topic: landing-page
   services: active-directory
-  ms.openlocfilehash: 5c2b9168ad2dcd25e0d99997f17a8ea4cc891eea
-  ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+  ms.openlocfilehash: b23c57561a866318a6dbf38dc2d669f0e9d13d32
+  ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/01/2020
-  ms.locfileid: "89278515"
+  ms.lasthandoff: 09/10/2020
+  ms.locfileid: "89661122"
 landingContent:
 - title: ハイブリッド ID について
   linkLists:

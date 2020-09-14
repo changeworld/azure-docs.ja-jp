@@ -30,6 +30,8 @@
         - name: オファー別の公開ガイド
           href: ./publisher-guide-by-offer-type.md
           items:
+            - name: SaaS オファーの計画
+              href: ./plan-saas-offer.md
             - name: 仮想マシン
               href: ./marketplace-virtual-machines.md
             - name: Azure アプリのソリューション テンプレート

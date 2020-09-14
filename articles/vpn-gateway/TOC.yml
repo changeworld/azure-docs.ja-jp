@@ -172,6 +172,8 @@
           href: vpn-gateway-howto-always-on-user-tunnel.md
         - name: カスタム ルートを P2S クライアントにアドバタイズする
           href: vpn-gateway-p2s-advertise-custom-routes.md
+        - name: P2S のカスタム IPsec ポリシーを作成する
+          href: create-custom-policies-p2s-ps.md
     - name: ルーティング、BGP、VNET ピアリング
       items:
         - name: VPN ゲートウェイ用の BGP の構成

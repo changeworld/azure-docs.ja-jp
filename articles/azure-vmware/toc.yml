@@ -58,9 +58,11 @@
               href: set-up-mabs-for-avs.md
             - name: Backup Server を使用したプライベート クラウドのバックアップ
               href: backup-avs-vms-with-mabs.md
+        - name: VM のライフサイクル管理
+          href: lifecycle-management-of-azure-vmware-solution-vms.md
         - name: Application Gateway
           href: protect-avs-web-apps-with-app-gateway.md
-        - name: AVS を使用した Traffic Manager
+        - name: Traffic Manager
           href: deploy-traffic-manager-to-balance-avs-workloads.md
     - name: VMware ソリューション
       items:

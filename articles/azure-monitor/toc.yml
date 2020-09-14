@@ -144,7 +144,7 @@
           href: platform/personal-data-mgmt.md
         - name: アプリケーション データの収集、保持、保存
           href: app/data-retention-privacy.md
-    - name: アラート
+    - name: 警告
       items:
         - name: 概要
           href: platform/alerts-overview.md
@@ -1136,7 +1136,21 @@
           displayname: Workbooks
           href: platform/workbooks-overview.md
         - name: 視覚化
-          href: platform/workbooks-visualizations.md
+          items:
+            - name: Text
+              href: platform/workbooks-text-visualizations.md
+            - name: グラフ
+              href: platform/workbooks-chart-visualizations.md
+            - name: グリッド
+              href: platform/workbooks-grid-visualizations.md
+            - name: 並べて表示
+              href: platform/workbooks-tile-visualizations.md
+            - name: ツリー
+              href: platform/workbooks-tree-visualizations.md
+            - name: グラフ
+              href: platform/workbooks-graph-visualizations.md
+            - name: 複合棒グラフ
+              href: platform/workbooks-composite-bar.md
         - name: データ ソース
           href: platform/workbooks-data-sources.md
         - name: パラメーター
