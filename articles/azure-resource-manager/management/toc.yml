@@ -14,6 +14,8 @@
       href: deployment-models.md
     - name: サービスごとのリソース プロバイダー
       href: azure-services-resource-providers.md
+    - name: コントロール プレーンとデータ プレーン
+      href: control-plane-and-data-plane.md
     - name: 拡張リソースの種類
       href: extension-resource-types.md
     - name: リソース インスタンスの制限

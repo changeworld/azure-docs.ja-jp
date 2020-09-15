@@ -22,6 +22,8 @@
       href: set-up-service-alerts-2019.md
 - name: 操作方法
   items:
+    - name: 手動で移行する
+      href: ../manual-migration.md
     - name: Windows Virtual Desktop リソースに接続する
       items:
         - name: Windows デスクトップ クライアントを使用して接続する

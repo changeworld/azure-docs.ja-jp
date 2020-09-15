@@ -39,6 +39,8 @@
       href: use-prediction-api.md
     - name: Smart Labeler の使用
       href: suggested-tags.md
+    - name: ロールベースのアクセス制御
+      href: role-based-access-control.md
     - name: モデルをエクスポートする
       items:
         - name: モバイルへのモデルのエクスポート

@@ -24,7 +24,7 @@
   items:
     - name: Dynamics 365 フィールド サービスを使用したアプリの接続
       href: how-to-configure-connected-field-services.md
-    - name: デバイスの接続
+    - name: デバイスを接続して開発する
       items:
         - name: Rigado Cascade 500 を準備して接続する
           href: ../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json

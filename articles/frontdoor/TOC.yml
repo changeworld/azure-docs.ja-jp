@@ -7,8 +7,10 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: Front Door を作成する
+    - name: Front Door を作成する - ポータル
       href: quickstart-create-front-door.md
+    - name: Front Door を作成する - ARM テンプレート
+      href: quickstart-create-front-door-template.md
 - name: チュートリアル
   items:
     - name: Front Door にカスタム ドメインを追加する

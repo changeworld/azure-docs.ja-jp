@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: bc856e9a6a20c262f49cb4c2a730d8ba5157530a
-  ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+  ms.openlocfilehash: e0f15382d61558e72dd9c1e4ecf108bdf1655160
+  ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/28/2020
-  ms.locfileid: "87337060"
+  ms.lasthandoff: 09/11/2020
+  ms.locfileid: "90017355"
 landingContent:
 - title: エネルギー ソリューションを構築する
   linkLists:
@@ -31,18 +31,32 @@ landingContent:
       text: スマート メーター監視アプリを作成する
     - url: tutorial-solar-panel-app.md
       text: ソーラー パネル監視アプリを作成する
-- title: 接続する
+- title: デバイスを接続して開発する
   linkLists:
+  - linkListType: overview
+    links:
+    - text: デバイス開発者向けの概要
+      url: ../core/overview-iot-central-developer.md
   - linkListType: tutorial
     links:
-    - text: デバイス テンプレートを設定する
-      url: ../core/howto-set-up-template.md
-    - text: デバイスの接続
-      url: ../core/tutorial-connect-device.md
+    - text: デバイスの接続 (Node.js)
+      url: ../core/tutorial-connect-device-nodejs.md
+    - text: デバイスの接続 (Python)
+      url: ../core/tutorial-connect-device-python.md
+  - linkListType: concept
+    links:
+    - text: デバイスの接続性
+      url: ../core/concepts-get-connected.md
+    - text: デバイス テンプレート
+      url: ../core/concepts-device-templates.md
   - linkListType: how-to-guide
     links:
-    - text: その他の IoT クラウドの接続
-      url: ../core/howto-build-iotc-device-bridge.md
+    - text: テンプレートを設定する
+      url: ../core/howto-set-up-template.md
+    - text: Azure Sphere デバイスを接続する
+      url: ../core/howto-connect-sphere.md
+    - text: デバイス接続のトラブルシューティング
+      url: ../core/troubleshoot-connection.md
 - title: 接続を維持する
   linkLists:
   - linkListType: tutorial

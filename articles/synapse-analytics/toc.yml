@@ -4,7 +4,7 @@
   href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md
 - name: 概要
   items:
-    - name: Azure Synapse Analytics とは
+    - name: Azure Synapse とは
       href: overview-what-is.md
     - name: 開始するには
       items:
@@ -36,10 +36,10 @@
   items:
     - name: Azure portal を使用して Synapse ワークスペースを作成する
       href: quickstart-create-workspace.md
-    - name: テンプレートを使用したデプロイ
-      href: quickstart-deployment-template-workspaces.md
     - name: Azure CLI を使用して Synapse ワークスペースを作成する
       href: quickstart-create-workspace-cli.md
+    - name: テンプレートを使用したデプロイ
+      href: quickstart-deployment-template-workspaces.md
     - name: Synapse Studio を使用する
       href: quickstart-synapse-studio.md
     - name: Power BI ワークスペースをリンクする
@@ -70,7 +70,7 @@
       href: quickstart-connect-synapse-link-cosmos-db.md
 - name: チュートリアル
   items:
-    - name: Spark プールに対して Apache Spark アプリケーションを実行する
+    - name: Apache Spark アプリケーションを実行する
       href: ./spark/intellij-tool-synapse.md
     - name: Spark ジョブ定義
       href: ./spark/apache-spark-job-definitions.md
@@ -84,7 +84,7 @@
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
     - name: データ アナリスト
       items:
-        - name: オンデマンドで SQL を使用して分析し、Synapse Studio を使用して視覚化する
+        - name: SQL オンデマンドを使用してデータを分析する
           href: ./sql/tutorial-data-analyst.md
 - name: サンプル
   href: 'https://github.com/Azure-Samples/Synapse'
@@ -126,7 +126,7 @@
                   href: ./sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Spark プール履歴サーバー
               href: ./spark/apache-spark-history-server.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -244,7 +244,7 @@
               href: sql/on-demand-workspace-overview.md
             - name: SQL プール
               href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Architecture
+            - name: アーキテクチャ
               href: ./sql-data-warehouse/massively-parallel-processing-mpp-architecture.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 機能の概要
               href: sql/overview-features.md
@@ -372,9 +372,9 @@
           href: ../cosmos-db/synapse-link-use-cases.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: ツール統合 (AI、ETL、BI)
       items:
-        - name: Synapse Analytics Studio のトラブルシューティング
+        - name: Synapse Studio のトラブルシューティング
           href: troubleshoot/troubleshoot-synapse-studio.md
-        - name: PowerShell による Synapse Analytics Studio のトラブルシューティング
+        - name: Synapse Studio の接続に関する問題のトラブルシューティング
           href: troubleshoot/troubleshoot-synapse-studio-powershell.md
 - name: 方法
   items:
@@ -869,7 +869,7 @@
               href: ../data-factory/copy-data-tool-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: セルフホステッド統合ランタイムのトラブルシューティング
               href: ../data-factory/self-hosted-integration-runtime-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-    - name: ツールを Synapse Analytics に接続する
+    - name: ツールを Synapse ワークスペースに接続する
       items:
         - name: Synapse SQL
           items:

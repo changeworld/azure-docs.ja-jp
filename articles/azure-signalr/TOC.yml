@@ -25,6 +25,8 @@
   items:
     - name: 認証を使用してサーバーレスのリアルタイム アプリを構築する
       href: signalr-tutorial-authenticate-azure-functions.md
+    - name: Blazor Server チャット アプリを構築する
+      href: signalr-tutorial-build-blazor-server-chat-app.md
 - name: サンプル
   items:
     - name: コード サンプル

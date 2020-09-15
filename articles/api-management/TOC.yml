@@ -11,6 +11,8 @@
 - name: クイックスタート
   expanded: true
   items:
+    - name: インスタンスの作成 - CLI
+      href: get-started-create-service-instance-cli.md
     - name: インスタンスの作成 - ポータル
       href: get-started-create-service-instance.md
     - name: インスタンスの作成 - PowerShell

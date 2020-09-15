@@ -6,7 +6,7 @@
       href: overview-iot-central.md
     - name: UI について
       href: overview-iot-central-tour.md
-    - name: デバイスの開発
+    - name: デバイスを接続して開発する
       href: overview-iot-central-developer.md
     - name: 最新の更新
       items:
@@ -39,7 +39,7 @@
       href: quick-monitor-devices.md
 - name: チュートリアル
   items:
-    - name: 接続する
+    - name: デバイスを接続して開発する
       items:
         - name: デバイスの接続 (Node.js)
           href: tutorial-connect-device-nodejs.md
@@ -75,7 +75,7 @@
       href: concepts-iot-edge.md
 - name: 操作方法ガイド
   items:
-    - name: 接続する
+    - name: デバイスを接続して開発する
       items:
         - name: デバイス テンプレートを設定する
           href: howto-set-up-template.md

@@ -224,12 +224,10 @@
               href: log-query/get-started-queries.md
         - name: ログ データ
           items:
-            - name: ログ データの構造
-              href: log-query/logs-structure.md
             - name: クエリ スコープ
               href: log-query/scope.md
-            - name: 標準のプロパティ
-              href: platform/log-standard-properties.md
+            - name: 標準列
+              href: platform/log-standard-columns.md
             - name: コンピューター グループ
               href: platform/computer-groups.md
         - name: クエリ言語

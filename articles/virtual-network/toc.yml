@@ -91,6 +91,8 @@
           href: ipv6-public-ip-address-prefix.md
         - name: ルーティング設定
           href: routing-preference-overview.md
+        - name: パブリック IP のセキュリティ ベースライン
+          href: public-ip-security-baseline.md
     - name: Security
       items:
         - name: ネットワーク セキュリティ グループ

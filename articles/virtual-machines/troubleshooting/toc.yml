@@ -101,6 +101,8 @@
           href: unresponsive-vm-apply-windows-update.md
         - name: 監査構成ポリシーの適用時に VM が応答しない
           href: vm-unresponsive-applying-audit-configuration-policy.md
+        - name: 既定のドメイン コントローラーのポリシーを適用中に VM が応答しない
+          href: vm-unresponsive-domain-controllers-policy.md
         - name: グループ ポリシーの適用時に VM が応答しない
           href: unresponsive-vm-apply-group-policy.md
         - name: セキュリティ ポリシーの適用時に VM が応答しない
