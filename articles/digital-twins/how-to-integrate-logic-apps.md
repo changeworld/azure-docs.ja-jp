@@ -118,7 +118,7 @@ Azure portal の [[Logic Apps カスタム コネクタ]](https://portal.azure.c
 
 [リダイレクト URL] フィールドに戻り、生成された値をコピーします。 次の手順で使用します。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/copy-redirect-url.png" alt-text="[Logic Apps カスタム コネクタの編集] ページの [リダイレクト URL] フィールドの値が、"https://logic-apis-westus2.consent.azure-apim.net/redirect" になっている。値をコピーするボタンが強調して示されている。":::
+:::image type="content" source="media/how-to-integrate-logic-apps/copy-redirect-url.png" alt-text="[Logic Apps カスタム コネクタの編集] ページの [リダイレクト URL] フィールドの値が、https://logic-apis-westus2.consent.azure-apim.net/redirect になっている。値をコピーするボタンが強調して示されている。":::
 
 コネクタを作成するために必要な情報は、これですべてです ([セキュリティ] に続けて [定義] ステップを行う必要はありません)。 *[Logic Apps カスタム コネクタの編集]* ペインを閉じてかまいません。
 
