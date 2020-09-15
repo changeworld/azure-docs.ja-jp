@@ -205,6 +205,6 @@ namespace sqltest
 ## <a name="next-steps"></a>次のステップ
 
 - [Windows/Linux/macOS の .NET Core でのコマンド ラインの使用に関する概要](/dotnet/core/tutorials/using-with-xplat-cli)
-- [.NET Framework と Visual Studio を使用して Azure SQL データベースまたは Azure SQL マネージド インスタンスに接続してクエリを実行する](connect-query-dotnet-visual-studio.md)方法について学習します。  
+- [.NET Framework と Visual Studio を使用して Azure SQL Database または Azure SQL マネージド インスタンスに接続してクエリを実行する](connect-query-dotnet-visual-studio.md)方法について学習します。  
 - [SSMS を使用して初めてのデータベースを設計する](design-first-database-tutorial.md)方法や、[C# と ADO.NET を使用してデータベースを設計して接続する](design-first-database-csharp-tutorial.md)方法について学習します。
 - .NET の詳細については、[.NET のドキュメント](https://docs.microsoft.com/dotnet/)を参照してください。
