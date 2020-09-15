@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 08/18/2020
+ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: fab36a538cd9dfa17852c513974af062fa7a0ec2
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 2519baa01fa9d8a13dd2e7855f9da3ec7f9093f9
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89304084"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89570084"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>ユーザーは、Azure Virtual WAN を使用するために、SD-WAN/VPN デバイスを利用したハブとスポークを用意する必要がありますか。
 
@@ -83,7 +83,7 @@ P2S クライアント用の DNS サーバーを追加するには、2つのオ�
 
 ### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>ユーザー VPN (ポイント対サイト) の場合、サポートされているクライアントの数はいくつですか。
 
-各ユーザー VPN P2S ゲートウェイには 2 つのインスタンスがあり、各インスタンスではスケール ユニットの変更に応じて特定のユーザー数までサポートします。 スケール ユニット 1 から 3 では、500 接続がサポートされます。スケール ユニット 4 から 6 では、1,000 接続がサポートされます。スケール ユニット 7 から 12 では、5,000 接続がサポートされます。スケール ユニット 13 から 20 では最大 10,000 接続がサポートされます。 
+各ユーザー VPN P2S ゲートウェイには 2 つのインスタンスがあり、各インスタンスではスケール ユニットの変更に応じて特定のユーザー数までサポートします。 スケール ユニット 1 から 3 では、500 接続がサポートされます。スケール ユニット 4 から 6 では、1,000 接続がサポートされます。スケール ユニット 7 から 12 では、5,000 接続がサポートされます。スケール ユニット 13 から 18 では最大 10,000 接続がサポートされます。 
 
 たとえば、ユーザーが 1 スケール ユニットを選択したとします。 各スケール ユニットはデプロイされた 1 つのアクティブ/アクティブ ゲートウェイを意味し、(この例では 2 つある) インスタンスのそれぞれで最大 500 接続がサポートされます。 ゲートウェイあたり 500 接続 * 2 を取得できますが、このスケール ユニットで 500 ではなく、1,000 を計画することを意味するわけではありません。 推奨される接続数を超えた場合は、余分な 500 の接続が中断される可能性があるため、インスタンスの処理が必要になることがあります。 また、スケール ユニットをスケールアップまたはスケールダウンする場合や、VPN ゲートウェイのポイント対サイト構成を変更する場合に備えて、必ずダウンタイムを計画してください。
 

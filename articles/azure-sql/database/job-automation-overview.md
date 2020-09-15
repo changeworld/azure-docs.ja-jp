@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 03/10/2020
-ms.openlocfilehash: 537c989271800c15444d5323cfce8e133c8eeeba
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 8c9bdb059008a3d9e33631c3101cb7b459660119
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984661"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436784"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>データベース ジョブを使用して管理タスクを自動化する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -51,7 +51,7 @@ ms.locfileid: "85984661"
 - **SQL エージェント ジョブ**は、以前から使われている実績のある SQL Server ジョブ スケジューリング コンポーネントです。Azure SQL Managed Instance で利用できます。 SQL エージェント ジョブは、Azure SQL Database では利用できません。
 - **Elastic Database ジョブ (プレビュー)** は、Azure SQL Database の 1 つまたは複数のデータベース上でカスタム ジョブを実行するジョブ スケジューリング サービスです。
 
-SQL エージェント (オンプレミスでも SQL Managed Instance の一部としても利用可能) と Database Elastic ジョブ エージェント (Azure SQL Database 内の単一のデータベースと SQL Data Warehouse 内の複数のデータベースで利用可能) の間には、いくつかの点で違いがあります。
+SQL Agent (オンプレミスとして、および SQL Managed Instance の一部として利用可能) とデータベース エラスティック ジョブ エージェント (Azure SQL Database 内の単一のデータベースと Azure Synapse Analytics 内の複数のデータベースで利用可能) の間には、いくつかの点で違いがあります。
 
 | |エラスティック ジョブ |SQL エージェント |
 |---------|---------|---------|

@@ -3,12 +3,12 @@ title: Azure Lighthouse とは
 description: サービス プロバイダーは Azure Lighthouse を通じて、自動化と効率を大規模に高めたマネージド サービスを顧客に提供することができます。
 ms.date: 08/19/2020
 ms.topic: overview
-ms.openlocfilehash: d21d11d1316b177f38b6bce197dec4f2c3d3fac8
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 22bec7ec8944a11ce0cfdf51776f1f193a1aedaa
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660735"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488815"
 ---
 # <a name="what-is-azure-lighthouse"></a>Azure Lighthouse とは
 
@@ -22,7 +22,7 @@ Azure Lighthouse を使用すると、収益面で有利に、かつ効率よく
 
 - **大規模な管理**: 顧客エンゲージメントとライフサイクル操作によって顧客リソースの管理が容易になり、スケーラビリティが向上します。 既存の API、管理ツール、ワークフローは、配置されているリージョンにかかわらず、委任されたリソースと共に使用できます。
 - **顧客から見た可視性と精度の向上**: 貴社の知的財産権が損なわれることなく、顧客が、実行された操作をよりよく把握し、管理 (アクセス権を完全に削除する権限を含む) の委任範囲を細かく制御できるようになります。
-- **包括的で一元化されたプラットフォーム ツール**: Microsoft のツールエクスペリエンスは、EA、CSP、従量課金制などの複数のライセンス モデルを含む、サービス プロバイダーの主要なシナリオに対応しています。 その新しい機能は、既存のツールと API、ライセンスモデル、[クラウドソリューションプロバイダープログラム (CSP)](/partner-center/csp-overview) などのパートナープログラムと連動します。 Azure Lighthouse は、既存のワークフローとアプリケーションに統合できます。また、[パートナー ID をリンク](../cost-management-billing/manage/link-partner-id.md)することで、顧客エンゲージメントへの影響を追跡できます。
+- **包括的で一元化されたプラットフォーム ツール**: Microsoft のツールエクスペリエンスは、EA、CSP、従量課金制などの複数のライセンス モデルを含む、サービス プロバイダーの主要なシナリオに対応しています。 その新しい機能は、既存のツールと API、ライセンスモデル、[クラウドソリューションプロバイダープログラム (CSP)](/partner-center/csp-overview) などのパートナープログラムと連動します。 Azure Lighthouse は、既存のワークフローとアプリケーションに統合できます。また、[パートナー ID をリンク](./how-to/partner-earned-credit.md)することで、顧客エンゲージメントへの影響を追跡し、パートナーが獲得したクレジットを受け取ることができます。
 
 Azure Lighthouse を使用して Azure リソースを管理することに関して、追加コストは発生しません。 すべての Azure のお客様およびパートナーは、Azure Lighthouse を使用できます。
 

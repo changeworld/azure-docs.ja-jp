@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 80918c63c1fef82c13b23569bcda10545628e8e8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 56198392f3c769837d8d672b861baa9b341d284e
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998018"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419352"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>.NET SDK を使用した Azure Cosmos DB Table API と Azure Table Storage の概要
 
@@ -86,100 +86,21 @@ NuGet パッケージを取得するには、次の手順に従います。
 
 1. AppSettings.cs ファイルに次のコードを追加します。 このファイルは Settings.json ファイルから接続文字列を読み取り、それを構成パラメーターに割り当てます。
 
-   ```csharp
-   namespace CosmosTableSamples
-   {
-    using Microsoft.Extensions.Configuration;
-    public class AppSettings
-    {
-        public string StorageConnectionString { get; set; }
-        public static AppSettings LoadAppSettings()
-        {
-            IConfigurationRoot configRoot = new ConfigurationBuilder()
-                .AddJsonFile("Settings.json")
-                .Build();
-            AppSettings appSettings = configRoot.Get<AppSettings>();
-            return appSettings;
-        }
-    }
-   }
-   ```
+  :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/AppSettings.cs":::
 
-## <a name="parse-and-validate-the-connection-details"></a>接続の詳細を解析して検証する 
+## <a name="parse-and-validate-the-connection-details"></a>接続の詳細を解析して検証する
 
 1. 対象のプロジェクトである **[CosmosTableSamples]** を右クリックします。 **[追加]** 、 **[新しい項目]** の順に選択し、**Common.cs** という名前のクラスを追加します。 このクラス内に、接続の詳細を検証してテーブルを作成するコードを記述します。
 
-1. 以下のように、`CreateStorageAccountFromConnectionString` というメソッドを定義します。 このメソッドは、接続文字列の詳細を解析し、"Settings.json" ファイルに入力されているアカウント名とアカウント キーの詳細が有効であることを検証するものです。 
+1. 以下のように、`CreateStorageAccountFromConnectionString` というメソッドを定義します。 このメソッドは、接続文字列の詳細を解析し、"Settings.json" ファイルに入力されているアカウント名とアカウント キーの詳細が有効であることを検証するものです。
 
- ```csharp
-using System;
-
-namespace CosmosTableSamples
-{
-    using System.Threading.Tasks;
-    using Microsoft.Azure.Cosmos.Table;
-    using Microsoft.Azure.Documents;
-
-    public class Common
-    {
-        public static CloudStorageAccount CreateStorageAccountFromConnectionString(string storageConnectionString)
-        {
-            CloudStorageAccount storageAccount;
-            try
-            {
-                storageAccount = CloudStorageAccount.Parse(storageConnectionString);
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine("Invalid storage account information provided. Please confirm the AccountName and AccountKey are valid in the app.config file - then restart the application.");
-                throw;
-            }
-            catch (ArgumentException)
-            {
-                Console.WriteLine("Invalid storage account information provided. Please confirm the AccountName and AccountKey are valid in the app.config file - then restart the sample.");
-                Console.ReadLine();
-                throw;
-            }
-
-            return storageAccount;
-        }
-    }
-}
-   ```
-
+   :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/Common.cs" id="createStorageAccount":::
 
 ## <a name="create-a-table"></a>テーブルを作成する 
 
 [CloudTableClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtableclient) クラスを使用すると、Table Storage に格納されているテーブルとエンティティを取得できます。 Cosmos DB Table API アカウントにはテーブルが 1 つもないので、テーブルを作成するための `CreateTableAsync` メソッドを **Common.cs** クラスに追加しましょう。
 
-```csharp
-public static async Task<CloudTable> CreateTableAsync(string tableName)
-  {
-    string storageConnectionString = AppSettings.LoadAppSettings().StorageConnectionString;
-
-    // Retrieve storage account information from connection string.
-    CloudStorageAccount storageAccount = CreateStorageAccountFromConnectionString(storageConnectionString);
-
-    // Create a table client for interacting with the table service
-    CloudTableClient tableClient = storageAccount.CreateCloudTableClient(new TableClientConfiguration());
-
-    Console.WriteLine("Create a Table for the demo");
-
-    // Create a table client for interacting with the table service 
-    CloudTable table = tableClient.GetTableReference(tableName);
-    if (await table.CreateIfNotExistsAsync())
-    {
-      Console.WriteLine("Created Table named: {0}", tableName);
-    }
-    else
-    {
-      Console.WriteLine("Table {0} already exists", tableName);
-    }
-
-    Console.WriteLine();
-    return table;
-}
-```
+:::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/Common.cs" id="CreateTable":::
 
 "503 service unavailable exception" (503 サービス利用不可の例外) エラーが表示される場合は、接続モードに必要なポートがファイアウォールによってブロックされている可能性があります。 この問題を解決するには、次のコードに示すように、必要なポートを開くか、ゲートウェイ モード接続を使用します。
 
@@ -193,27 +114,7 @@ tableClient.TableClientConfiguration.UseRestExecutorForCosmosEndpoint = true;
 
 対象のプロジェクトである **[CosmosTableSamples]** を右クリックします。 **[追加]** 、 **[新しいフォルダー]** の順に選択し、**Model** という名前を付けます。 Model フォルダーに **CustomerEntity.cs** という名前のクラスを追加し、そこに次のコードを追加します。
 
-```csharp
-namespace CosmosTableSamples.Model
-{
-    using Microsoft.Azure.Cosmos.Table;
-    public class CustomerEntity : TableEntity
-    {
-        public CustomerEntity()
-        {
-        }
-
-        public CustomerEntity(string lastName, string firstName)
-        {
-            PartitionKey = lastName;
-            RowKey = firstName;
-        }
-
-        public string Email { get; set; }
-        public string PhoneNumber { get; set; }
-    }
-}
-```
+:::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/Model/CustomerEntity.cs":::
 
 このコードは、顧客の名を行キーとして、姓をパーティション キーとしてそれぞれ使用するエンティティ クラスを定義します。 エンティティのパーティション キーと行キーの組み合わせで、テーブル内のエンティティを一意に識別します。 同じパーティション キーを持つエンティティは、異なるパーティション キーを持つエンティティよりも迅速に照会できます。一方、多様なパーティション キーを使用すると、並列操作のスケーラビリティが向上します。 テーブルに格納するエンティティは、[TableEntity](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableentity) クラスから派生した型など、サポートされている型である必要があります。 テーブルに格納するエンティティのプロパティは、その型のパブリック プロパティであること、また、値の取得と設定の両方に対応していることが必要です。 また、エンティティ型で、パラメーターのないコンストラクターを必ず公開する必要があります。
 
@@ -223,174 +124,27 @@ namespace CosmosTableSamples.Model
 
 対象のプロジェクトである **[CosmosTableSamples]** を右クリックします。 **[追加]** 、 **[新しい項目]** の順に選択し、**SamplesUtils.cs** という名前のクラスを追加します。 エンティティに対する CRUD 操作を実行するために必要なすべてのコードが、このクラスに格納されます。 
 
-```csharp
- public static async Task<CustomerEntity> InsertOrMergeEntityAsync(CloudTable table, CustomerEntity entity)
- {
-     if (entity == null)
-     {
-         throw new ArgumentNullException("entity");
-     }
-     try
-     {
-         // Create the InsertOrReplace table operation
-         TableOperation insertOrMergeOperation = TableOperation.InsertOrMerge(entity);
-
-         // Execute the operation.
-         TableResult result = await table.ExecuteAsync(insertOrMergeOperation);
-         CustomerEntity insertedCustomer = result.Result as CustomerEntity;
-
-         // Get the request units consumed by the current operation. RequestCharge of a TableResult is only applied to Azure Cosmos DB
-         if (result.RequestCharge.HasValue)
-         {
-             Console.WriteLine("Request Charge of InsertOrMerge Operation: " + result.RequestCharge);
-         }
-
-         return insertedCustomer;
-     }
-     catch (StorageException e)
-     {
-         Console.WriteLine(e.Message);
-         Console.ReadLine();
-         throw;
-     }
- }
-```
+:::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="InsertItem":::
 
 ## <a name="get-an-entity-from-a-partition"></a>パーティションからエンティティを取得する
 
-[TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) クラスの Retrieve メソッドを使用してパーティションからエンティティを取得できます。 次のコード例では、顧客エンティティのパーティション キー、行キー、メール、電話番号を取得しています。 また、この例では、エンティティのクエリで消費される要求ユニットも出力されます。 エンティティを照会するには、**SamplesUtils.cs** ファイルに次のコードを追加します。 
+[TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) クラスの Retrieve メソッドを使用してパーティションからエンティティを取得できます。 次のコード例では、顧客エンティティのパーティション キー、行キー、メール、電話番号を取得しています。 また、この例では、エンティティのクエリで消費される要求ユニットも出力されます。 エンティティを照会するには、**SamplesUtils.cs** ファイルに次のコードを追加します。
 
-```csharp
-public static async Task<CustomerEntity> RetrieveEntityUsingPointQueryAsync(CloudTable table, string partitionKey, string rowKey)
-    {
-      try
-      {
-        TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>(partitionKey, rowKey);
-        TableResult result = await table.ExecuteAsync(retrieveOperation);
-        CustomerEntity customer = result.Result as CustomerEntity;
-        if (customer != null)
-        {
-          Console.WriteLine("\t{0}\t{1}\t{2}\t{3}", customer.PartitionKey, customer.RowKey, customer.Email, customer.PhoneNumber);
-        }
-
-        // Get the request units consumed by the current operation. RequestCharge of a TableResult is only applied to Azure CosmoS DB 
-        if (result.RequestCharge.HasValue)
-        {
-           Console.WriteLine("Request Charge of Retrieve Operation: " + result.RequestCharge);
-        }
-
-        return customer;
-        }
-        catch (StorageException e)
-        {
-           Console.WriteLine(e.Message);
-           Console.ReadLine();
-           throw;
-        }
-    }
-```
+:::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="QueryData":::
 
 ## <a name="delete-an-entity"></a>エンティティを削除する
 
 エンティティは、取得後に簡単に削除できます。エンティティの更新のときと同じパターンを使用します。 次のコードは、ユーザー エンティティを取得して削除します。 エンティティを削除するには、**SamplesUtils.cs** ファイルに次のコードを追加します。 
 
-```csharp
-public static async Task DeleteEntityAsync(CloudTable table, CustomerEntity deleteEntity)
-   {
-     try
-     {
-        if (deleteEntity == null)
-     {
-        throw new ArgumentNullException("deleteEntity");
-     }
-
-    TableOperation deleteOperation = TableOperation.Delete(deleteEntity);
-    TableResult result = await table.ExecuteAsync(deleteOperation);
-
-    // Get the request units consumed by the current operation. RequestCharge of a TableResult is only applied to Azure CosmoS DB 
-    if (result.RequestCharge.HasValue)
-    {
-       Console.WriteLine("Request Charge of Delete Operation: " + result.RequestCharge);
-    }
-
-    }
-    catch (StorageException e)
-    {
-        Console.WriteLine(e.Message);
-        Console.ReadLine();
-        throw;
-    }
-}
-```
+:::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="QueryData":::
 
 ## <a name="execute-the-crud-operations-on-sample-data"></a>サンプル データに対して CRUD 操作を実行する
 
-テーブルの作成、エンティティの挿入やマージを行うための各メソッドを定義したら、それらのメソッドをサンプル データに対して実行します。 そのためには、対象のプロジェクトである **[CosmosTableSamples]** を右クリックします。 **[追加]** 、 **[新しい項目]** の順に選択し、**BasicSamples.cs** という名前のクラスを追加して、そこに以下のコードを追加してください。 このコードによってテーブルが作成されて、そこにエンティティが追加されます。 プロジェクトの最後にエンティティとテーブルを削除したい場合は、次のコードの `table.DeleteIfExistsAsync()` および `SamplesUtils.DeleteEntityAsync(table, customer)` メソッドのコメントを解除してください。
+テーブルの作成、エンティティの挿入やマージを行うための各メソッドを定義したら、それらのメソッドをサンプル データに対して実行します。 そのためには、対象のプロジェクトである **[CosmosTableSamples]** を右クリックします。 **[追加]** 、 **[新しい項目]** の順に選択し、**BasicSamples.cs** という名前のクラスを追加して、そこに以下のコードを追加してください。 このコードによってテーブルが作成されて、そこにエンティティが追加されます。
 
-```csharp
-using System;
-namespace CosmosTableSamples
-{
-    using System.Threading.Tasks;
-    using Microsoft.Azure.Cosmos.Table;
-    using Model;
+プロジェクトの終わりにエンティティとテーブルを削除しない場合、次のコードの `await table.DeleteIfExistsAsync()` メソッドと `SamplesUtils.DeleteEntityAsync(table, customer)` メソッドにコメントを付けます。 これらのメソッドをコメント アウトし、テーブルを削除する前にデータを検証することをお勧めします。
 
-    class BasicSamples
-    {
-        public async Task RunSamples()
-        {
-            Console.WriteLine("Azure Cosmos DB Table - Basic Samples\n");
-            Console.WriteLine();
-
-            string tableName = "demo" + Guid.NewGuid().ToString().Substring(0, 5);
-
-            // Create or reference an existing table
-            CloudTable table = await Common.CreateTableAsync(tableName);
-
-            try
-            {
-                // Demonstrate basic CRUD functionality 
-                await BasicDataOperationsAsync(table);
-            }
-            finally
-            {
-                // Delete the table
-                // await table.DeleteIfExistsAsync();
-            }
-        }
-
-        private static async Task BasicDataOperationsAsync(CloudTable table)
-        {
-            // Create an instance of a customer entity. See the Model\CustomerEntity.cs for a description of the entity.
-            CustomerEntity customer = new CustomerEntity("Harp", "Walter")
-            {
-                Email = "Walter@contoso.com",
-                PhoneNumber = "425-555-0101"
-            };
-
-            // Demonstrate how to insert the entity
-            Console.WriteLine("Insert an Entity.");
-            customer = await SamplesUtils.InsertOrMergeEntityAsync(table, customer);
-
-            // Demonstrate how to Update the entity by changing the phone number
-            Console.WriteLine("Update an existing Entity using the InsertOrMerge Upsert Operation.");
-            customer.PhoneNumber = "425-555-0105";
-            await SamplesUtils.InsertOrMergeEntityAsync(table, customer);
-            Console.WriteLine();
-
-            // Demonstrate how to Read the updated entity using a point query 
-            Console.WriteLine("Reading the updated Entity.");
-            customer = await SamplesUtils.RetrieveEntityUsingPointQueryAsync(table, "Harp", "Walter");
-            Console.WriteLine();
-
-            // Demonstrate how to Delete an entity
-            //Console.WriteLine("Delete the entity. ");
-            //await SamplesUtils.DeleteEntityAsync(table, customer);
-            //Console.WriteLine();
-        }
-    }
-}
-```
+:::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/BasicSamples.cs":::
 
 前出のコードでは、"demo" で始まるテーブルを作成し、生成された GUID をそのテーブル名に追加しています。 その後、名と姓が "Harp Walter" である顧客エンティティを追加した後、このユーザーの電話番号を更新します。 
 
@@ -400,26 +154,7 @@ namespace CosmosTableSamples
 
 対象のプロジェクトである **[CosmosTableSamples]** を選択します。 **Program.cs** という名前のクラスを開き、プロジェクトの実行時に BasicSamples を呼び出すために、次のコードを追加します。
 
-```csharp
-using System;
-
-namespace CosmosTableSamples
-{
-    class Program
-    {
-        public static void Main(string[] args)
-        {
-            Console.WriteLine("Azure Cosmos Table Samples");
-            BasicSamples basicSamples = new BasicSamples();
-            basicSamples.RunSamples().Wait();
-           
-            Console.WriteLine();
-            Console.WriteLine("Press any key to exit");
-            Console.Read();
-        }
-    }
-}
-```
+:::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/Program.cs":::
 
 ここでソリューションをビルドし、F5 キーを押してプロジェクトを実行します。 プロジェクトを実行すると、コマンド プロンプトに次の出力内容が表示されます。
 

@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: Kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: c1b640fa5104ceb0f330c9aee9813ed8b3914d33
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 4972e843394cac3b4a4f7c08a27f9d1a9e19cee5
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166044"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459387"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Synapse SQL プールを作成し、クエリを実行する
 
@@ -155,7 +155,7 @@ Azure portal で、サーバーの完全修飾サーバー名を取得します�
 
 [制限されたリソース クラス](resource-classes-for-workload-management.md)を使用するため、サーバー管理者としてログに記録されている間は、大規模なクエリを実行しないことをお勧めします。 代わりに、[チュートリアルで説明](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/load-data-wideworldimportersdw#create-a-user-for-loading-data)されているように、[ワークロードの分離](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-tsql)を構成します。
 
-SQL Data Warehouse はクエリ言語として T-SQL を使用しています。 クエリ ウィンドウを開いて T-SQL クエリを実行するには、次の手順を実行します。
+Azure Synapse Analytics では、クエリ言語として T-SQL が使用されています。 クエリ ウィンドウを開いて T-SQL クエリを実行するには、次の手順を実行します。
 
 1. **mySampleDataWarehouse** を右クリックして、 **[新しいクエリ]** を選びます。 新しいクエリ ウィンドウが開きます。
 

@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 711903b106bf6ff7d8f669e2b1d3489057e09fbc
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 5c100c1b65b2af1201dfc3b52a6d90b2ed26d454
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783299"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460816"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Azure AD Identity Governance とは
 
@@ -68,7 +68,7 @@ Identity Governance により、組織は、*生産性* (従業員が組織に�
 
 ![特権アクセスのライフサイクル](./media/identity-governance-overview/privileged-access-lifecycle.png)
 
-[Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) により、Azure AD、Azure、およびその他の Microsoft オンライン サービスの全体で、リソースに対するアクセス権のセキュリティ保護に合わせた管理を追加することができます。  多要素認証と条件付きアクセスに加え、ジャストイン タイム アクセスと、Azure AD PIM によって提供されるロール変更の通知機能は、会社のリソース (ディレクトリ、Office 365、および Azure リソース ロール) のセキュリティ保護に役立つガバナンス コントロールの包括的なセットを提供します。 他の形式のアクセスと同様、組織では、アクセス レビューを使用して、管理者ロールに属するすべてのユーザーの定期的なアクセス再認定を構成することができます。
+[Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) により、Azure AD、Azure、およびその他の Microsoft オンライン サービスの全体で、リソースに対するアクセス権のセキュリティ保護に合わせた管理を追加することができます。  多要素認証と条件付きアクセスに加え、ジャストイン タイム アクセスと、Azure AD PIM によって提供されるロール変更の通知機能は、会社のリソース (ディレクトリ、Microsoft 365、および Azure リソース ロール) のセキュリティ保護に役立つガバナンス コントロールの包括的なセットを提供します。 他の形式のアクセスと同様、組織では、アクセス レビューを使用して、管理者ロールに属するすべてのユーザーの定期的なアクセス再認定を構成することができます。
 
 ## <a name="getting-started"></a>作業の開始
 

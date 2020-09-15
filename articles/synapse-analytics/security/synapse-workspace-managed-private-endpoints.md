@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: ecca67cab486c8f3524c8c8d4c221d52689cf62a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dedf0795e72c4bdace430ba2dd07ade9d792f13c
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070098"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459541"
 ---
 # <a name="synapse-managed-private-endpoints-preview"></a>Synapse マネージド プライベート エンドポイント (プレビュー)
 
@@ -23,7 +23,7 @@ ms.locfileid: "87070098"
 
 マネージド プライベート エンドポイントは、マネージド ワークスペース Microsoft Azure 仮想ネットワークに作成されるプライベート エンドポイントです。Azure リソースへのプライベート リンクを確立します。 これらのプライベート エンドポイントは、Azure Synapse によって自動的に管理されます。
 
-Azure Synapse では、プライベート リンクがサポートされます。 プライベート リンクを使用することで、Azure のサービス (Azure Storage、Azure Cosmos DB、Azure SQL Data Warehouse など) や Azure でホストされている顧客またはパートナーのサービスに、Azure 仮想ネットワークから安全にアクセスすることができます。
+Azure Synapse では、プライベート リンクがサポートされます。 プライベート リンクを使用することで、Azure のサービス (Azure Storage、Azure Cosmos DB)、および Azure でホストされている顧客またはパートナーのサービスに、Azure 仮想ネットワークから安全にアクセスすることができます。
 
 プライベート リンクを使用すると、仮想ネットワークとワークスペースとの間のトラフィックが、Microsoft のバックボーン ネットワークのみを使って送信されます。 プライベート リンクによって、データ流出のリスクから身を守ることができます。 リソースへのプライベート リンクは、プライベート エンドポイントを作成することによって確立します。
 

@@ -3,12 +3,12 @@ title: クイック スタート:ナレッジ ベースの作成、トレーニ�
 description: QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マニュアルなど、独自のコンテンツから作成できます。 この記事には、単純な FAQ Web ページから QnA Maker ナレッジ ベースを作成して、QnA Maker に関する質問に答える例が含まれています。
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: 77ddb2a0a149729af72066b53c17b1dcb08a2992
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3cc38ca49820b1a97ec11c890bfd0ef1670f6eef
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540756"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89535851"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>クイック スタート:QnA Maker ナレッジ ベースの作成、トレーニング、発行
 

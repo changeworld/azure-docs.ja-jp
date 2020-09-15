@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: d45852326a7f771b2cf79e20c784e2c441fef0d6
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: c8ede3c4a186b4b24d56651deb8172fdcde8e5ed
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401488"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420882"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Azure App Service で TLS/SSL 証明書を追加する
 
@@ -188,6 +188,13 @@ App Service 証明書を購入するには、「[証明書の注文を開始す�
 
 Azure Key Vault を使用して証明書を管理している場合は、[要件を満たしている](#private-certificate-requirements)限り、Key Vault から App Service に PKCS12 証明書をインポートすることができます。
 
+### <a name="authorize-app-service-to-read-from-the-vault"></a>Key Vault から読み取る権限を App Service に与える
+既定では、App Service リソース プロバイダーは Key Vault にアクセスできません。 証明書のデプロイに Key Vault を使用するには、[Key Vault に読み取りアクセスする権限をリソース プロバイダーに与える](../key-vault/general/group-permissions-for-apps.md#grant-access-to-your-key-vault)必要があります。 
+
+`abfa0a7c-a6b6-4736-8310-5855508787cd` は App Service のリソース プロバイダー サービス プリンシパル名です。これはすべての Azure サブスクリプションで同じです。 Azure Government クラウド環境の場合、リソース プロバイダー サービス プリンシパル名として代わりに `6a02c803-dafd-4136-b4c3-5a6f318b4714` を使用します。
+
+### <a name="import-a-certificate-from-your-vault-to-your-app"></a>Key Vault からアプリに証明書をインポートする
+
 <a href="https://portal.azure.com" target="_blank">Azure portal</a> で、左側のメニューから **[App Services]**  >  **\<app-name>** を選択します。
 
 アプリの左側のナビゲーションから、 **[TLS/SSL 設定]**  >  **[秘密キー証明書 (.pfx)]**  >  **[Key Vault 証明書のインポート]** を選択します。
@@ -205,6 +212,9 @@ Azure Key Vault を使用して証明書を管理している場合は、[要件
 操作が完了すると、 **[秘密キー証明書]** の一覧に証明書が表示されます。 インポートがエラーで失敗する場合は、証明書が [App Service の要件](#private-certificate-requirements)を満たしていません。
 
 ![完了した Key Vault 証明書のインポート](./media/configure-ssl-certificate/import-app-service-cert-finished.png)
+
+> [!NOTE]
+> Key Vault の証明書を新しい証明書で更新する場合、App Service によって証明書が 48 時間以内に自動的に同期されます。
 
 > [!IMPORTANT] 
 > この証明書を使用してカスタム ドメインをセキュリティで保護するには、証明書バインドを作成する必要があります。 「[バインドの作成](configure-ssl-bindings.md#create-binding)」の手順に従います。

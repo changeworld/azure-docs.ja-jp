@@ -12,16 +12,16 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: b8eec0d95144c012d3034e3f2c7c6e8adc921651
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6cc4fdb82e98c30ca33eec58675f2175dfcc2607
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510176"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612776"
 ---
 # <a name="tutorial---configure-the-rolling-deployment-strategy-for-azure-linux-virtual-machines"></a>チュートリアル - Azure Linux 仮想マシンのローリング デプロイ戦略を構成する
 
-Azure DevOps は、Azure リソースの DevOps プロセスの各段階を自動化する組み込みの Azure サービスです。 Azure と Azure DevOps を使用すれば、仮想マシン、Web アプリ、Kubernetes など、アプリで使用されるリソースが何であれ、Infrastructure as Code (IaaC)、継続的インテグレーション、継続的なテスト、継続的デリバリー、継続的監視を導入することができます。
+Azure DevOps は、Azure リソースの DevOps プロセスの各段階を自動化する組み込みの Azure サービスです。 Azure と Azure DevOps を使用すれば、仮想マシン、Web アプリ、Kubernetes など、アプリで使用されるリソースが何であれ、Infrastructure as Code (IaC)、継続的インテグレーション、継続的なテスト、継続的デリバリー、継続的監視を導入することができます。
 
 ![Azure portal の [サービス] で [Azure DevOps] を選択したところ](media/tutorial-devops-azure-pipelines-classic/azdevops-view.png)
 

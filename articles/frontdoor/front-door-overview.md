@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: duau
-ms.openlocfilehash: 003903a941b0d9ce36f28ce5e4d640e5746a7de3
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 5741e41e3c1474cef5cf49270fd40bbdf4fcaffb
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378187"
+ms.locfileid: "89399414"
 ---
 # <a name="what-is-azure-front-door"></a>Azure Front Door とは
 Azure Front Door では、高可用性のために最大限のパフォーマンスと即時グローバル フェールオーバーを最適化することで、Web トラフィックのグローバル ルーティングを定義、管理、監視することができます。 Front Door を使用すると、グローバル (複数リージョン) のコンシューマーや企業のアプリケーションを、Azure を使用して世界中のユーザーに発信する、堅牢で高性能なパーソナライズされた最新のアプリケーション、API、およびコンテンツに変換することができます。
@@ -84,7 +84,7 @@ HTTP/2 プロトコルによって、長時間実行されている TCP 接続�
 
 ## <a name="whats-new"></a>新機能
 
-RSS フィードを購読し、[Azure の更新情報](https://azure.microsoft.com/updates/?category=networking&query=Azure%20Front%20Door)ページで、最新の Azure Load Balancer 機能の更新を確認します。
+RSS フィードを購読し、[Azure の更新情報](https://azure.microsoft.com/updates/?category=networking&query=Azure%20Front%20Door)ページで、最新の Azure Front Door 機能の更新を確認します。
 
 ## <a name="next-steps"></a>次のステップ
 

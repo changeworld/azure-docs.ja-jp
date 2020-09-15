@@ -6,16 +6,22 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: 10d4cb8160d0bf9111903b193574e9e820ded221
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0269d870f55f7246529b9d98608e5a325b6cf468
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827743"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569528"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor のドキュメントの最新情報
 
 この記事では、Azure Monitor に関して新たに執筆された記事または大幅に更新された記事を一覧で紹介しています。 毎月第 1 週目に更新され、前月から更新された記事が掲載されます。
+
+## <a name="august-2020"></a>2020 年 8 月
+
+### <a name="containers"></a>Containers
+
+- [Azure Monitor for containers によるデプロイと HPA メトリック](insights/container-insights-deployment-hpa-metrics.md) - 新しい記事。
 
 ## <a name="july-2020"></a>2020 年 7 月
 

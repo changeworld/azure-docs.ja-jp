@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 086c853b21301074cf35f13db52db1fdb145518c
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: c699186c77bba16e96de2dc8b5968f5a83a5a9ce
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489573"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461767"
 ---
 # <a name="synapse-sql-resource-consumption"></a>Synapse SQL のリソースの使用
 
@@ -52,7 +52,7 @@ DWU の数を増やすと、次のメリットが得られます。
 サービス レベル目標 (SLO) は、データ ウェアハウスのコストとパフォーマンス レベルを決定するスケーラビリティ設定です。 Gen2 SQL プールのサービス レベルは、DW2000c など、Data Warehouse ユニット (DWU) で測定されます。
 
 > [!NOTE]
-> Azure SQL Data Warehouse Gen2 には、最近、最低 100 cDWU のコンピューティング レベルをサポートするための新しいスケール機能が追加されました。 現在 Gen1 を使用していて小さいコンピューティング レベルを必要とする既存のデータ ウェアハウスでは、現在追加コストなしで利用可能なリージョンで Gen2 にアップグレードできます。  お使いのリージョンがまだサポートされていない場合は、サポートされているリージョンにアップグレードできます。 詳細については、[Gen2 へのアップグレード](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページを参照してください。
+> Azure Synapse Analytics Gen2 には、最近になって、最低 100 cDWU のコンピューティング レベルをサポートするための新しいスケール機能が追加されました。 現在 Gen1 を使用していて小さいコンピューティング レベルを必要とする既存のデータ ウェアハウスでは、現在追加コストなしで利用可能なリージョンで Gen2 にアップグレードできます。  お使いのリージョンがまだサポートされていない場合は、サポートされているリージョンにアップグレードできます。 詳細については、[Gen2 へのアップグレード](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページを参照してください。
 
 T-SQL では、SERVICE_OBJECTIVE 設定によって SQL プールのサービス レベルとパフォーマンス レベルが決定されます。
 
@@ -140,7 +140,7 @@ DWU を変更するには、[Set-AzSqlDatabase](/powershell/module/az.sql/set-az
 Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000c"
 ```
 
-詳細については、[SQL Data Warehouse の PowerShell コマンドレット](../sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページを参照してください。
+詳細については、[Azure Synapse Analytics の PowerShell コマンドレット](../sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページを参照してください。
 
 #### <a name="t-sql"></a>T-SQL
 
@@ -172,7 +172,7 @@ Content-Type: application/json; charset=UTF-8
 }
 ```
 
-REST API の例については、「[SQL Data Warehouse の REST API](../sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)」を参照してください。
+REST API のその他の例については、[Azure Synapse Analytics の REST API](../sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) に関する記事を参照してください。
 
 ### <a name="check-status-of-dwu-changes"></a>DWU 変更の状態の確認
 

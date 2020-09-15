@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 1ba293890f6a6fd165e03486d7da375f2ac53ab1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a86a7ee600d7443e5ba8cb4f30db0c48c8170327
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326455"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612164"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>データのラベル付けプロジェクトを作成してラベルをエクスポートする 
 
@@ -78,7 +78,7 @@ Azure Blob Storage に既に格納済みのデータからデータセットを�
 
 1. **[Create a dataset]\(データセットの作成\)**  >  **[From datastore]\(データストアから\)** の順に選択します。
 1. データセットに**名前**を割り当てます。
-1. **[データセットの種類]** として **[ファイル]** を選択します。  
+1. **[データセットの種類]** として **[ファイル]** を選択します。  ファイルというデータセットの種類のみがサポートされています。
 1. データストアを選択します。
 1. データがお使いの Blob Storage 内のサブフォルダーにある場合は、 **[参照]** を選択してパスを選択します。
     * 選択したパスのサブフォルダー内にあるすべてのファイルを含めるには、パスの末尾に "/**" を追加します。

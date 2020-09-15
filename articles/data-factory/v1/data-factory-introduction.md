@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
-ms.openlocfilehash: 69265b17d5030d30bbb4d4be3e68c3d98fc90af0
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 06f308b4e0b2df0487a351ae38f16f3872961cfb
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321092"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436258"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure Data Factory の概要 
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -35,7 +35,7 @@ ms.locfileid: "85321092"
 
 これらのログを分析するには、顧客情報やゲーム情報、マーケティング キャンペーン情報など、オンプレミスのデータ ストアにある参照データを使用する必要があります。 クラウドのデータ ストアにあるログ データに加え、オンプレミスのデータ ストアにある参照データを取り込まなければなりません。 
 
-次に、クラウドの Hadoop (Azure HDInsight) を使用してそのデータを処理します。 その結果得られたデータをクラウドのデータ ウェアハウス (Azure SQL Data Warehouse など) またはオンプレミスのデータ ストア (SQL Server など) に公開します。 この会社は、このワークフローを週 1 回実行したいと考えています。 
+次に、クラウドの Hadoop (Azure HDInsight) を使用してそのデータを処理します。 その結果データを、クラウドのデータ ウェアハウス (Azure Synapse Analytics (旧称 SQL Data Warehouse) など)、またはオンプレミスのデータ ストア (SQL Server) に公開します。 この会社は、このワークフローを週 1 回実行したいと考えています。 
 
 そこで、オンプレミスとクラウド両方のデータ ストアからデータを取り込むことが可能なワークフローを作成できるプラットフォームが必要になります。 また、既存のコンピューティング サービス (Hadoop など) を使用してデータを変換または処理したうえで、その結果を BI アプリケーションで利用できるようオンプレミスまたはクラウドのデータ ストアに公開できるようにする必要もあります。 
 
@@ -47,7 +47,7 @@ Azure Data Factory は、このようなシナリオに対応するプラット�
 
 - そのデータを Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics、Azure Machine Learning などのコンピューティング サービスを使って処理または変換する。
 
--  ビジネス インテリジェンス (BI) アプリケーションから利用できるよう、Azure SQL Data Warehouse などのデータ ストアに出力データを公開する。  
+-  ビジネス インテリジェンス (BI) アプリケーションから利用できるよう、Azure Synapse Analytics などのデータ ストアに出力データを公開する。  
 
 従来の ETL (Extract-Transform-Load) プラットフォームというよりも、むしろ EL (Extract-Load) と TL (Transform-Load) とを組み合わせたプラットフォームであるといえます。 変換では、派生列の追加、行数のカウント、データの並べ替えなどではなく、コンピューティング サービスを使用してデータを処理します。 
 

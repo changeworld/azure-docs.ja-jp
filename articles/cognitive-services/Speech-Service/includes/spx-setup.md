@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: c92d6569e3c92d3bad3575599283c7796bd78225
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 2a0cb34c23ebee5ae16a8c0a272055880ceed388
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88068624"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89494327"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -22,9 +22,8 @@ ms.locfileid: "88068624"
 
 Windows に Speech CLI をインストールするには、次の手順に従います。
 
-1. [.NET Framework 4.7](https://dotnet.microsoft.com/download/dotnet-framework/net471) または [.NET Core 3.0](https://dotnet.microsoft.com/download/dotnet-core/3.0) のいずれかをインストールします。
-2. Speech CLI [ZIP アーカイブ](https://aka.ms/speech/spx-zips.zip)をダウンロードして、抽出します。
-3. ダウンロードから抽出したルート ディレクトリ `spx-zips` にアクセスし、必要なサブディレクトリを抽出します (.NET Framework 4.7 の場合は `spx-net471`、x64 CPU での .NET Core 3.0 の場合は `spx-netcore-win-x64`)。
+1. Speech CLI [ZIP アーカイブ](https://aka.ms/speech/spx-zips.zip)をダウンロードして、抽出します。
+2. ダウンロードから抽出したルート ディレクトリ `spx-zips` にアクセスし、必要なサブディレクトリを抽出します (.NET Framework 4.7 の場合は `spx-net471`、x64 CPU での .NET Core 3.0 の場合は `spx-netcore-win-x64`)。
 
 コマンド プロンプトで、ディレクトリをこの場所に変更し、「`spx`」と入力して、Speech CLI のヘルプを表示します。
 
@@ -53,11 +52,13 @@ Linux の x64 CPU で Speech CLI をインストールするには、次の手�
 
 #### <a name="docker-install"></a>[Docker のインストール](#tab/dockerinstall)
 
+> [!NOTE]
+> <a href="https://www.docker.com/get-started" target="_blank">プラットフォーム用の Docker Desktop <span class="docon docon-navigate-external x-hidden-focus"></span></a> をインストールする必要があります。
+
 Docker コンテナー内に Speech CLI をインストールするには、次の手順に従います。
 
-1. [プラットフォーム用の Docker Desktop](https://www.docker.com/get-started) をインストールして実行します。
 1. 新しいコマンド プロンプトまたはターミナルで、次のコマンドを入力します: `docker pull msftspeech/spx`
-1. 次のコマンドを入力します。 Speech CLI のヘルプ情報が表示されます: `docker run -it --rm msftspeech/spx help`
+2. 次のコマンドを入力します。 Speech CLI のヘルプ情報が表示されます: `docker run -it --rm msftspeech/spx help`
 
 ### <a name="mount-a-directory-in-the-container"></a>コンテナーにディレクトリをマウントする
 

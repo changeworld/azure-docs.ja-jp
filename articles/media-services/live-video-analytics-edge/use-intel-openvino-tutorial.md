@@ -2,14 +2,14 @@
 title: Intel の AI 拡張機能 OpenVINO™ モデル サーバーを使用してライブ ビデオを分析する
 description: このチュートリアルでは、Intel が提供する AI モデル サーバーを使用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードを分析します。
 ms.topic: tutorial
-ms.date: 07/24/2020
+ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: 102c54d8f738c3e8e62c7092d0df6ec7d12b8a0c
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 95dbf555cc6b8f8edb1bc9dca2e10d3ef72eb9db
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950257"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567583"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>チュートリアル:Intel の AI 拡張機能 OpenVINO™ モデル サーバーを使用してライブ ビデオを分析する 
 
@@ -30,6 +30,7 @@ ms.locfileid: "88950257"
 > Azure IoT Tools をインストールするときに、Docker のインストールを求められる場合があります。 このメッセージは無視してかまいません。
 
 ## <a name="review-the-sample-video"></a>サンプル ビデオを確認する
+
 Azure リソースを設定する際に、駐車場の短いビデオが、IoT Edge デバイスとして使用している、Azure の Linux VM にコピーされます。 このクイックスタートでは、このビデオ ファイルを使用してライブ ストリームをシミュレートします。
 
 [VLC メディア プレーヤー](https://www.videolan.org/vlc/)などのアプリケーションを開きます。 Ctrl キーを押しながら N キーを押し、リンクを[ビデオ](https://lvamedia.blob.core.windows.net/public/lots_015.mkv)に貼り付けて、再生を開始します。 駐車場にある車両の映像が表示されます。ほどんどの車両は停車していますが、1 台は動いています。
@@ -38,7 +39,8 @@ Azure リソースを設定する際に、駐車場の短いビデオが、IoT E
 
 ## <a name="overview"></a>概要
 
-![概要](./media/use-intel-openvino-tutorial/topology.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/use-intel-openvino-tutorial/topology.png" alt-text="概要":::
 
 この図は、このクイックスタートでのシグナルの流れを示しています。 [エッジ モジュール](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)は、リアルタイム ストリーミング プロトコル (RTSP) サーバーをホストする IP カメラをシミュレートします。 [RTSP ソース](media-graph-concept.md#rtsp-source) ノードは、このサーバーからビデオ フィードをプルし、[フレーム レート フィルター プロセッサ](media-graph-concept.md#frame-rate-filter-processor) ノードにビデオ フレームを送信します。 このプロセッサは、[HTTP 拡張プロセッサ](media-graph-concept.md#http-extension-processor) ノードに到達するビデオ ストリームのフレーム レートを制限します。 
 
@@ -46,7 +48,7 @@ HTTP 拡張ノードは、プロキシの役割を果たします。 ビデオ �
 
 このチュートリアルでは、次のことについて説明します。
 
-1. メディア グラフを作成してデプロイし、変更を加える。 
+1. メディア グラフを作成してデプロイし、変更を加える。
 1. 結果を解釈する。
 1. リソースをクリーンアップする。
 

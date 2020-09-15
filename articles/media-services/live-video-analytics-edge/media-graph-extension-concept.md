@@ -3,12 +3,12 @@ title: メディア グラフ拡張機能とは - Azure
 description: Live Video Analytics on IoT Edge では、グラフ拡張ノードを使用してメディア グラフ処理機能を拡張することができます。
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 2e1ca730a6736776425cd70b323147b58e8eacbf
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 74929cc51a868d20952f1e25432f5343e4821d08
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716080"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569333"
 ---
 # <a name="media-graph-extension"></a>メディア グラフ拡張機能
 
@@ -49,13 +49,14 @@ gRPC 拡張プロセッサは、推論メッセージの交換と共にメディ
 メディア グラフ拡張機能を使用すると、ONNX、TensorFlow、PyTorch などの使用可能な任意の推論ランタイム、または独自の Docker コンテナーで、任意の推定モデルを実行できます。 推論カスタム拡張機能は、最適なパフォーマンスを得るために Live Video Analytics の Edge モジュールと共にデプロイする必要があります。その後、グラフ トポロジに含まれる HTTP 拡張プロセッサまたは gRPC 拡張プロセッサを使用して呼び出されます。 さらに、カスタム拡張機能に対する呼び出しの頻度を調整するには、必要に応じて、[モーション検出プロセッサ](media-graph-concept.md#motion-detection-processor)と[フレーム レート フィルター プロセッサ](media-graph-concept.md#frame-rate-filter-processor)をメディア拡張プロセッサのアップストリームに追加します。
 
 次の図は、高レベルのデータ フローを示しています。
- 
-![データ フロー](./media/media-graph-extension/data-flow.png)
+
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/media-graph-extension/analyze-live-video-with-AI-inference-service.svg" alt-text="AI 推論サービス":::
 
 ## <a name="samples"></a>サンプル
 
-Live Video Analytics 用の [Jupyter ノートブック](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/notebooks/readme.md)のサンプルをいくつか確認してください。 これらのノートブックでは、次の操作について詳しい手順を説明しています。
+Live Video Analytics 用の [Jupyter ノートブック](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/notebooks/readme.md)のサンプルをいくつか確認してください。 これらのノートブックでは、次の操作について**メディア グラフ拡張機能**の詳しい手順を説明しています。
 
 * 拡張サービスの Docker コンテナー イメージを作成する方法
 * 拡張サービスを Live Video Analytics コンテナーと共にコンテナーとしてデプロイする方法
-* 拡張クライアントで Live Video Analytics メディア グラフを使用し、拡張 gRPC エンドポイントを指定する方法
+* 拡張クライアントで Live Video Analytics メディア グラフを使用し、拡張エンドポイント (HTTP/gRPC) を指定する方法

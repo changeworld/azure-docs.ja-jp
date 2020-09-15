@@ -13,17 +13,17 @@ author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 05/29/2020
-ms.openlocfilehash: 4dbbf8267b4a7a1ea280d16ee787c8ae6cd652c9
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: ec43ad0c83ea56af935b326a2b13aa3b3dc4fa13
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267360"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441781"
 ---
 # <a name="quickstart-use-the-azure-portals-query-editor-to-query-an-azure-sql-database"></a>クイック スタート:Azure portal のクエリ エディターを使用して、Azure SQL Database に対してクエリを実行します
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-クエリ エディターは、Azure SQL Database のデータベース、または Azure SQL Data Warehouse のデータ ウェアハウスに対して SQL クエリを実行するための Azure portal のツールです。 
+クエリ エディターは、Azure SQL Database のデータベース、または Azure Synapse Analytics のデータ ウェアハウスに対して SQL クエリを実行するための Azure portal のツールです。 
 
 このクイック スタートでは、クエリ エディターを使用して、データベースに対して Transact-SQL (T-SQL) クエリを実行する方法について説明します。
 

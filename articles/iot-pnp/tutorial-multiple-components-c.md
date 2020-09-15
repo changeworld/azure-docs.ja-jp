@@ -1,0 +1,319 @@
+---
+title: IoT プラグ アンド プレイ プレビューのサンプル C デバイス コードを IoT Hub に接続する | Microsoft Docs
+description: 複数のコンポーネントを使用し、IoT ハブに接続する、IoT プラグ アンド プレイ プレビューのサンプル C デバイス コードをビルドして実行します。 Azure IoT Explorer ツールを使用して、デバイスからハブに送信された情報を表示します。
+author: ericmitt
+ms.author: ericmitt
+ms.date: 07/22/2020
+ms.topic: tutorial
+ms.service: iot-pnp
+services: iot-pnp
+ms.openlocfilehash: 29017ec11429b26018093980ca71c317b12085b5
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505757"
+---
+# <a name="tutorial-connect-an-iot-plug-and-play-multiple-component-device-applications-running-on-linux-or-windows-to-iot-hub-c"></a>チュートリアル: Linux または Windows 上で実行されている IoT プラグ アンド プレイの複数コンポーネントのデバイス アプリケーションを IoT Hub に接続する (C)
+
+[!INCLUDE [iot-pnp-tutorials-device-selector.md](../../includes/iot-pnp-tutorials-device-selector.md)]
+
+このチュートリアルでは、コンポーネントとルート インターフェイスを使用する IoT プラグ アンド プレイ デバイス アプリケーションのサンプルをビルドし、それをご利用の IoT ハブに接続し、ハブに送信される情報を Azure IoT エクスプローラー ツールを使用して表示する方法を示します。 このサンプル アプリケーションは C で記述され、C 対応の Azure IoT device SDK に含められています。ソリューション ビルダーは、Azure IoT エクスプローラー ツールを使用すれば、デバイス コードを表示しなくても IoT プラグ アンド プレイ デバイスの機能を理解することができます。
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+## <a name="prerequisites"></a>前提条件
+
+このチュートリアルは Linux または Windows で実行できます。 このチュートリアルのシェル コマンドは、パス区切り記号を "`/`" とする Linux 規則に従っています。Windows 方式に従う場合は、必ずこれらの区切り記号を "`\`" に置き換えてください。
+
+前提条件は、次のように、オペレーティング システムによって異なります。
+
+### <a name="linux"></a>Linux
+
+このチュートリアルは、Ubuntu Linux を使用することを前提としています。 このチュートリアルの手順は、Ubuntu 18.04 を使用してテストされました。
+
+このチュートリアルを Linux で完了するには、ご利用のローカルの Linux 環境に以下のソフトウェアをインストールする必要があります。
+
+`apt-get` コマンドを使用して、**GCC**、**Git**、**cmake**、および必要なすべての依存関係をインストールします。
+
+```sh
+sudo apt-get update
+sudo apt-get install -y git cmake build-essential curl libcurl4-openssl-dev libssl-dev uuid-dev
+```
+
+`cmake` のバージョンが **2.8.12** より大きく、**GCC** のバージョンが **4.4.7** より大きいことを確認します。
+
+```sh
+cmake --version
+gcc --version
+```
+
+### <a name="windows"></a>Windows
+
+Windows でこのチュートリアルを完了するには、ご利用のローカル Windows 環境に次のソフトウェアをインストールします。
+
+* [Visual Studio (Community、Professional、または Enterprise)](https://visualstudio.microsoft.com/downloads/)。Visual Studio を[インストール](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019)するときに、 **[C++ によるデスクトップ開発]** ワークロードを必ず含めてください。
+* [Git](https://git-scm.com/download/).
+* [CMake](https://cmake.org/download/)。
+
+### <a name="azure-iot-explorer"></a>Azure IoT エクスプローラー
+
+このチュートリアルのパート 2 でサンプル デバイスとやり取りするには、**Azure IoT エクスプローラー** ツールを使用します。 ご利用のオペレーティング システム用の [Azure IoT エクスプローラーの最新リリースをダウンロードしてインストール](./howto-use-iot-explorer.md)します。
+
+[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
+
+次のコマンドを実行して、ご利用のハブに対する "_IoT ハブ接続文字列_" を取得します。 この接続文字列はメモしておいてください。これは、このチュートリアルの後半で使用します。
+
+```azurecli-interactive
+az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
+```
+
+> [!TIP]
+> また、Azure IoT エクスプローラー ツールを使用して、IoT ハブ接続文字列を見つけることもできます。
+
+次のコマンドを実行して、ハブに追加したデバイスの "_デバイス接続文字列_" を取得します。 この接続文字列はメモしておいてください。これは、このチュートリアルの後半で使用します。
+
+```azurecli-interactive
+az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output table
+```
+
+[!INCLUDE [iot-pnp-download-models.md](../../includes/iot-pnp-download-models.md)]
+
+## <a name="download-the-code"></a>コードのダウンロード
+
+このチュートリアルでは、Azure IoT Hub Device C SDK をクローンしてビルドするために使用できる開発環境を準備します。
+
+任意のフォルダーでコマンド プロンプトを開きます。 次のコマンドを実行して、[Azure IoT C SDK およびライブラリ](https://github.com/Azure/azure-iot-sdk-c)の GitHub リポジトリをこの場所にクローンします。
+
+```cmd/bash
+git clone https://github.com/Azure/azure-iot-sdk-c.git
+cd azure-iot-sdk-c
+git submodule update --init
+```
+
+この操作は、完了するまでに数分かかります。
+
+## <a name="build-and-run-the-code"></a>コードのビルドと実行
+
+コードをビルドして実行するには、Visual Studio を使用するか、コマンドラインで `cmake` を使用します。
+
+### <a name="use-visual-studio"></a>Visual Studio を使用する
+
+1. クローンされたリポジトリのルート フォルダーを開きます。 数秒後、プロジェクトを実行してデバッグするのに必要なものがすべて Visual Studio の **CMake** サポートによって作成されます。
+1. Visual Studio の準備ができたら、**ソリューション エクスプローラー**で、サンプル *iothub_client/samples/pnp/pnp_temperature_controller/* に移動します。
+1. *pnp_temperature_controller.c* ファイルを右クリックし、 **[Add Debug Configuration]\(デバッグ構成の追加\)** を選択します。 **[既定値]** を選択します。
+1. Visual Studio によって、*launch.vs.json* ファイルが開かれます。 このファイルを、次のスニペットに示すように編集して、必要な環境変数を設定します。
+
+    ```json
+    {
+      "version": "0.2.1",
+      "defaults": {},
+      "configurations": [
+        {
+          "type": "default",
+          "project": "iothub_client\\samples\\pnp\\pnp_temperature_controller\\pnp_temperature_controller.c",
+          "projectTarget": "",
+          "name": "pnp_temperature_controller.c",
+          "env": {
+            "IOTHUB_DEVICE_SECURITY_TYPE": "connectionString",
+            "IOTHUB_DEVICE_CONNECTION_STRING": "<Your device connection string>"
+          }
+        }
+      ]
+    }
+    ```
+
+1. *pnp_temperature_controller.c* ファイルを右クリックし、 **[スタートアップ アイテムとして設定]** を選択します。
+1. Visual Studio でコードの実行をトレースするには、*pnp_temperature_controller.c* ファイルの `main` 関数にブレークポイントを追加します。
+1. これで、 **[デバッグ]** メニューからサンプルを実行およびデバッグできるようになりました。
+
+これで、デバイスはコマンドとプロパティの更新情報を受信する準備ができ、ハブへのテレメトリ データの送信が開始されました。 次の手順を完了するまで、サンプルを実行したままにしておきます。
+
+### <a name="use-cmake-at-the-command-line"></a>コマンド ラインで `cmake` を使用する
+
+サンプルをビルドするには、次の手順に従います。
+
+1. クローンされたデバイス SDK のルート フォルダーに _cmake_ サブフォルダーを作成し、そのフォルダーに移動します。
+
+    ```cmd/bash
+    cd azure-iot-sdk-c
+    mkdir cmake
+    cd cmake
+    ```
+
+1. 次のコマンドを実行して、SDK とサンプル用のプロジェクト ファイルを生成およびビルドします。
+
+    ```cmd/bash
+    cmake ..
+    cmake --build .
+    ```
+
+サンプルを実行するには
+
+1. IoT ハブへの接続に接続文字列を使用するようにサンプルを構成するために、次の 2 つの環境変数を作成します。
+
+    * 値が `"connectionString"` の **IOTHUB_DEVICE_SECURITY_TYPE**
+    * 先ほどメモしたデバイス接続文字列を格納するための **IOTHUB_DEVICE_CONNECTION_STRING**。
+
+1. _cmake_ フォルダーから、実行可能ファイルを含むフォルダーに移動し、そのファイルを実行します。
+
+    ```bash
+    # Bash
+    cd iothub_client/samples/pnp/pnp_temperature_controller/
+    ./pnp_temperature_controller
+    ```
+
+    ```cmd
+    REM Windows
+    iothub_client\samples\pnp\pnp_temperature_controller\Debug\pnp_temperature_controller.exe
+    ```
+
+これで、デバイスはコマンドとプロパティの更新情報を受信する準備ができ、ハブへのテレメトリ データの送信が開始されました。 次の手順を完了するまで、サンプルを実行したままにしておきます。
+
+### <a name="use-the-azure-iot-explorer-to-validate-the-code"></a>Azure IoT Explorer を使用してコードを検証する
+
+デバイス クライアントのサンプルが開始された後、Azure IoT エクスプローラー ツールを使用して、それが動作していることを確認します。
+
+[!INCLUDE [iot-pnp-iot-explorer.md](../../includes/iot-pnp-iot-explorer.md)]
+
+## <a name="review-the-code"></a>コードの確認
+
+このサンプルにより、IoT プラグ アンド プレイの温度コントローラー デバイスが実装されます。 このサンプルでは、[複数のコンポーネント](concepts-components.md)を使用してモデルが実装されます。 [温度デバイスの Digital Twins Definition Language (DTDL) モデル ファイル](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)により、デバイスによって実装されるテレメトリ、プロパティ、およびコマンドが定義されます。
+
+### <a name="iot-plug-and-play-helper-functions"></a>IoT プラグ アンド プレイ ヘルパー関数
+
+このサンプルの場合、コードで使用されるいくつかのヘルパー関数は */common* フォルダーからのものです。
+
+*pnp_device_client_ll* には、パラメーターとして `model-id` が指定される IoT プラグ アンド プレイ用の connect メソッドが含まれています: `PnP_CreateDeviceClientLLHandle`。
+
+*pnp_protocol*: 以下の IoT プラグ アンド プレイ ヘルパー関数が含まれています。
+
+* `PnP_CreateReportedProperty`
+* `PnP_CreateReportedPropertyWithStatus`
+* `PnP_ParseCommandName`
+* `PnP_CreateTelemetryMessageHandle`
+* `PnP_ProcessTwinData`
+* `PnP_CopyPayloadToString`
+* `PnP_CreateDeviceClientLLHandle_ViaDps`
+
+これらのヘルパー関数は、独自のプロジェクトで使用するのに十分な汎用性を備えています。 このサンプルでそれらは、モデル内の各コンポーネントに対応する次の 3 つのファイル内で使用されます。
+
+* *pnp_deviceinfo_component*
+* *pnp_temperature_controller*
+* *pnp_thermostat_component*
+
+たとえば、*pnp_deviceinfo_component* ファイル内の `SendReportedPropertyForDeviceInformation` 関数では、次の 2 つのヘルパー関数が使用されています。
+
+```c
+if ((jsonToSend = PnP_CreateReportedProperty(componentName, propertyName, propertyValue)) == NULL)
+{
+    LogError("Unable to build reported property response for propertyName=%s, propertyValue=%s", propertyName, propertyValue);
+}
+else
+{
+    const char* jsonToSendStr = STRING_c_str(jsonToSend);
+    size_t jsonToSendStrLen = strlen(jsonToSendStr);
+
+    if ((iothubClientResult = IoTHubDeviceClient_LL_SendReportedState(deviceClientLL, (const unsigned char*)jsonToSendStr, jsonToSendStrLen, NULL, NULL)) != IOTHUB_CLIENT_OK)
+    {
+        LogError("Unable to send reported state for property=%s, error=%d", propertyName, iothubClientResult);
+    }
+    else
+    {
+        LogInfo("Sending device information property to IoTHub.  propertyName=%s, propertyValue=%s", propertyName, propertyValue);
+    }
+}
+```
+
+このサンプルの各コンポーネントは、このパターンに従っています。
+
+### <a name="code-flow"></a>コード フロー
+
+`main` 関数によって、接続が初期化され、モデル ID が送信されます。
+
+```c
+deviceClient = CreateDeviceClientAndAllocateComponents();
+```
+
+このコードでは、`PnP_CreateDeviceClientLLHandle` を使用して IoT ハブに接続し、オプションとして `modelId` が設定され、ダイレクト メソッドおよびデバイス ツイン更新用にデバイス メソッドとデバイス ツイン コールバック ハンドラーが設定されます。
+
+```c
+g_pnpDeviceConfiguration.deviceMethodCallback = PnP_TempControlComponent_DeviceMethodCallback;
+g_pnpDeviceConfiguration.deviceTwinCallback = PnP_TempControlComponent_DeviceTwinCallback;
+g_pnpDeviceConfiguration.modelId = g_temperatureControllerModelId;
+...
+
+deviceClient = PnP_CreateDeviceClientLLHandle(&g_pnpDeviceConfiguration);
+```
+
+`&g_pnpDeviceConfiguration` には接続情報も含まれます。 環境変数 **IOTHUB_DEVICE_SECURITY_TYPE** では、サンプルが IoT ハブに接続するのに接続文字列またはデバイス プロビジョニング サービスのどちらを使用するかが決定されます。
+
+デバイスはモデル ID を送信すると、IoT プラグ アンド プレイ デバイスになります。
+
+コールバック ハンドラーが配置されると、デバイスはツイン更新とダイレクト メソッド呼び出しに反応します。
+
+* デバイス ツイン コールバックの場合は、`PnP_TempControlComponent_DeviceTwinCallback` によって、データを処理する `PnP_ProcessTwinData` 関数が呼び出されます。 `PnP_ProcessTwinData` は "*ビジター パターン*" を使用して JSON を解析してから、各プロパティにアクセスします。これにより、各要素に対して `PnP_TempControlComponent_ApplicationPropertyCallback` が呼び出されます。
+
+* コマンド コールバックでは、`PnP_TempControlComponent_DeviceMethodCallback` 関数がヘルパー関数を使用して、コマンドおよびコンポーネントの名前を解析します。
+
+    ```c
+    PnP_ParseCommandName(methodName, &componentName, &componentNameSize, &pnpCommandName);
+    ```
+
+    次に、`PnP_TempControlComponent_DeviceMethodCallback` 関数は、コンポーネントに対してコマンドを呼び出します。
+
+    ```c
+    LogInfo("Received PnP command for component=%.*s, command=%s", (int)componentNameSize, componentName, pnpCommandName);
+    if (strncmp((const char*)componentName, g_thermostatComponent1Name, g_thermostatComponent1Size) == 0)
+    {
+        result = PnP_ThermostatComponent_ProcessCommand(g_thermostatHandle1, pnpCommandName, rootValue, response, responseSize);
+    }
+    else if (strncmp((const char*)componentName, g_thermostatComponent2Name, g_thermostatComponent2Size) == 0)
+    {
+        result = PnP_ThermostatComponent_ProcessCommand(g_thermostatHandle2, pnpCommandName, rootValue, response, responseSize);
+    }
+    else
+    {
+        LogError("PnP component=%.*s is not supported by TemperatureController", (int)componentNameSize, componentName);
+        result = PNP_STATUS_NOT_FOUND;
+    }
+    ```
+
+`main` 関数は、IoT ハブに送信される読み取り専用プロパティを初期化します。
+
+```c
+PnP_TempControlComponent_ReportSerialNumber_Property(deviceClient);
+PnP_DeviceInfoComponent_Report_All_Properties(g_deviceInfoComponentName, deviceClient);
+PnP_TempControlComponent_Report_MaxTempSinceLastReboot_Property(g_thermostatHandle1, deviceClient);
+PnP_TempControlComponent_Report_MaxTempSinceLastReboot_Property(g_thermostatHandle2, deviceClient);
+```
+
+`main` 関数は、各コンポーネントのイベントとテレメトリ データを更新するためのループに入ります。
+
+```c
+while (true)
+{
+    PnP_TempControlComponent_SendWorkingSet(deviceClient);
+    PnP_ThermostatComponent_SendTelemetry(g_thermostatHandle1, deviceClient);
+    PnP_ThermostatComponent_SendTelemetry(g_thermostatHandle2, deviceClient);
+}
+```
+
+`PnP_ThermostatComponent_SendTelemetry` 関数を見れば、`PNP_THERMOSTAT_COMPONENT` 構造体の使用方法がわかります。 このサンプルでは、この構造体を使用して、気温コントローラー内の 2 個のサーモスタットに関する情報が格納されます。 このコードでは、`PnP_CreateTelemetryMessageHandle` 関数を使用して、メッセージが準備および送信されます。
+
+```c
+messageHandle = PnP_CreateTelemetryMessageHandle(pnpThermostatComponent->componentName, temperatureStringBuffer);
+...
+iothubResult = IoTHubDeviceClient_LL_SendEventAsync(deviceClientLL, messageHandle, NULL, NULL);
+```
+
+`main` 関数によって最終的にさまざまなコンポーネントが破棄され、ハブへの接続が閉じられます。
+
+[!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
+
+## <a name="next-steps"></a>次のステップ
+
+このチュートリアルでは、コンポーネントを使用する IoT プラグ アンド プレイ デバイスを IoT ハブに接続する方法を学習しました。 IoT プラグ アンド プレイ デバイス モデルの詳細については、以下を参照してください。
+
+> [!div class="nextstepaction"]
+> [IoT プラグ アンド プレイ プレビュー モデリング開発者ガイド](concepts-developer-guide.md)

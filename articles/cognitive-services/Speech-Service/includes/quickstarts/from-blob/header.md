@@ -11,14 +11,14 @@ ms.topic: include
 ms.date: 03/13/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 514d1197c5e6d0f4c0f38faf24c6c2522d489820
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 9ced792ab076c312c827d4a74c08cfa7971b7e17
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400891"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569419"
 ---
-このクイックスタートでは、REST API を使用して、バッチ処理でファイルから音声を認識します。 バッチ処理を使用して、ユーザーによる操作なしで音声の文字起こしを実行します。 コンカレンシー、カスタム音声モデル、またはその他の詳細を管理する必要のない、シンプルなプログラミング モデルが提供されます。 高度な制御オプションが提供される一方で、Azure 音声サービス リソースを効率的に使用できます。
+このガイドでは、Batch Transcription REST API を使用し、バッチ処理でファイルから音声を認識します。 バッチ処理を使用して、ユーザーによる操作なしで音声の文字起こしを実行します。 コンカレンシー、カスタム音声モデル、またはその他の詳細を管理する必要のない、シンプルなプログラミング モデルが提供されます。 高度な制御オプションが提供される一方で、Azure 音声サービス リソースを効率的に使用できます。
 
 選択可能なオプションと構成の詳細については、[バッチ文字起こし](../../../batch-transcription.md)に関するページを参照してください。
 

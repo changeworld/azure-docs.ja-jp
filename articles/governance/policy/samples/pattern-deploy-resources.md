@@ -1,14 +1,14 @@
 ---
 title: パターン:ポリシー定義を使用してリソースをデプロイする
-description: この Azure Policy パターンでは、ポリシー定義を使用してリソースをデプロイする方法の例を示します。
+description: この Azure Policy パターンでは、deployIfNotExists ポリシー定義を使用してリソースをデプロイする方法の例を示します。
 ms.date: 08/17/2020
 ms.topic: sample
-ms.openlocfilehash: 705c751183a0b71c8628a505f08ef112bca1cbb7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0a9eec54954b8963f38b3f19a0d0cabffe1092e5
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545609"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649981"
 ---
 # <a name="azure-policy-pattern-deploy-resources"></a>Azure Policy パターン: リソースをデプロイする
 

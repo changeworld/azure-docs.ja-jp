@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/25/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: fb380e4b71ba68daf694ab725c41be64f066805e
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 7052617eb83dbd07c2d6938dcbb7a38ba19f3aad
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854923"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536231"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>チュートリアル:最初の ML モデルをトレーニングする
 
@@ -56,11 +56,14 @@ Jupyter インターフェイスで "*新しい*" ノートブックを作成**�
 `Workspace` クラスをインポートし、`from_config().` 関数を使用して `config.json` ファイルから自分のサブスクリプション情報を読み込みます。これにより、既定で現在のディレクトリ内の JSON ファイルが検索されますが、`from_config(path="your/file/path")` を使用して、path パラメーターを指定してファイルを指すこともできます。 このノートブックを自分のワークスペース内のクラウド ノートブック サーバーで実行している場合、ファイルは自動的にルート ディレクトリに配置されます。
 
 次のコードで追加の認証が求められる場合は、単にリンクをブラウザーに貼り付け、認証トークンを入力します。 さらに、ユーザーに複数のテナントが関連付けられている場合は、次の行を追加する必要があります。
-```
+
+```python
 from azureml.core.authentication import InteractiveLoginAuthentication
 interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
-Additional details on authentication can be found here: https://aka.ms/aml-notebook-auth 
 ```
+
+認証の詳細については、「[Azure Machine Learning での認証](https://aka.ms/aml-notebook-auth)」を参照してください。
+
 
 ```python
 from azureml.core import Workspace

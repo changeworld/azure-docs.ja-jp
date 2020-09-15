@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: a581678fdd05dade336f7ca9fcbcf5ad4c92d49a
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: f4b43129db5288275434253545861f3eae218e82
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300172"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89503790"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>チュートリアル:Azure Red Hat OpenShift 4 クラスターを作成する
 
@@ -22,9 +22,9 @@ ms.locfileid: "89300172"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.6.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.6.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
 
-OpenShift クラスターを作成して実行するには、Azure Red Hat OpenShift に少なくとも 40 コアが必要です。 新しい Azure サブスクリプションの既定の Azure リソース クォータは、この要件を満たしていません。 リソースの制限の引き上げを依頼するには、[標準クォータ: VM シリーズでの制限の引き上げ](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)に関するページの説明に従って引き上げをリクエストしてください。
+OpenShift クラスターを作成して実行するには、Azure Red Hat OpenShift に少なくとも 40 コアが必要です。 新しい Azure サブスクリプションの既定の Azure リソース クォータは、この要件を満たしていません。 リソースの制限の引き上げを依頼するには、「[標準クォータ:VM シリーズでの制限の引き上げ](../azure-portal/supportability/per-vm-quota-requests.md)」を参照してください。
 
 ### <a name="verify-your-permissions"></a>アクセス許可を確認する
 
@@ -35,13 +35,31 @@ Azure Red Hat OpenShift クラスターを作成するには、次のアクセ�
 |**User Access Administrator**|X|X| |
 |**Contributor**|X|X|X|
 
-### <a name="register-the-resource-provider"></a>リソース プロバイダーの登録
+### <a name="register-the-resource-providers"></a>リソース プロバイダーを登録する
 
-次に、お使いのサブスクリプションに `Microsoft.RedHatOpenShift` リソースプロバイダーを登録する必要があります。
+1. 複数の Azure サブスクリプションがある場合は、適切なサブスクリプション ID を指定します。
 
-```azurecli-interactive
-az provider register -n Microsoft.RedHatOpenShift --wait
-```
+    ```azurecli-interactive
+    az account set --subscription <SUBSCRIPTION ID>
+    ```
+
+1. `Microsoft.RedHatOpenShift` リソース プロバイダーを登録します。
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.RedHatOpenShift --wait
+    ```
+    
+1. `Microsoft.Compute` リソース プロバイダーを登録します。
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.Compute --wait
+    ```
+    
+1. `Microsoft.Storage` リソース プロバイダーを登録します。
+
+    ```azurecli-interactive
+    az provider register -n Microsoft.Storage --wait
+    ```
 
 ### <a name="get-a-red-hat-pull-secret-optional"></a>Red Hat プル シークレットを取得する (省略可能)
 
@@ -88,7 +106,7 @@ Red Hat プル シークレットを使用すると、クラスターは追加�
 
 1. **リソース グループを作成します。**
 
-    Azure リソース グループは、Azure リソースが展開され管理される論理グループです。 リソース グループを作成する際は、場所を指定するよう求められます。 この場所は、リソース グループのメタデータが格納される場所です。リソースの作成時に別のリージョンを指定しない場合は、Azure でリソースが実行される場所でもあります。 [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) コマンドを使用して、リソース グループを作成します。
+    Azure リソース グループは、Azure リソースが展開され管理される論理グループです。 リソース グループを作成する際は、場所を指定するよう求められます。 この場所は、リソース グループのメタデータが格納される場所です。リソースの作成時に別のリージョンを指定しない場合は、Azure でリソースが実行される場所でもあります。 [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) コマンドを使用して、リソース グループを作成します。
     
 > [!NOTE]
 > Azure Red Hat OpenShift は、Azure リソース グループを作成できるすべてのリージョンで使用可能なわけではありません。 Azure Red Hat OpenShift がサポートされている場所については、「[使用可能なリージョン](https://docs.openshift.com/aro/4/welcome/index.html#available-regions)」を参照してください。
@@ -167,7 +185,7 @@ Red Hat プル シークレットを使用すると、クラスターは追加�
     --service-endpoints Microsoft.ContainerRegistry
     ```
 
-5. **マスター サブネットの[サブネット プライベート エンドポイント ポリシーを無効にします](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy)。** これは、クラスターに接続して管理できるようにするために必要です。
+5. **マスター サブネットの[サブネット プライベート エンドポイント ポリシーを無効にします](../private-link/disable-private-link-service-network-policy.md)。** これは、クラスターに接続して管理できるようにするために必要です。
 
     ```azurecli-interactive
     az network vnet subnet update \

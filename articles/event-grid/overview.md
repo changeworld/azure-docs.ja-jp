@@ -3,12 +3,12 @@ title: Azure Event Grid とは
 description: Azure Event Grid を使用してソースからハンドラーにイベント データを送信します。 イベント ベースのアプリケーションを構築し、Azure サービスと統合します。
 ms.topic: overview
 ms.date: 07/07/2020
-ms.openlocfilehash: 95deeddbd7ae3f5ee07bef0c4ac73559d208c352
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 87ac29c2324c63977c57d60b11b3b930c23a4dd9
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116133"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436869"
 ---
 # <a name="what-is-azure-event-grid"></a>Azure Event Grid とは
 
@@ -118,6 +118,6 @@ Azure Event Grid では、イベントごとに課金される価格モデルを
 * [Logic Apps をイベント ハンドラーとして使用する](monitor-virtual-machine-changes-event-grid-logic-app.md)  
   Event Grid によってプッシュされるイベントに対応するアプリを Logic Apps を使用して作成するためのチュートリアルです。
 * [ビッグ データをデータ ウェアハウスにストリーミングする](event-grid-event-hubs-integration.md)  
-  Azure Functions を使用して Event Hubs から SQL Data Warehouse にデータをストリーミングするチュートリアルです。
+  Azure Functions を使用して Event Hubs から Azure Synapse Analytics にデータをストリーミングするチュートリアルです。
 * [Event Grid REST API リファレンス](/rest/api/eventgrid)  
   イベントのサブスクリプション、ルーティング、フィルター処理を管理するためのリファレンス コンテンツを提供します。

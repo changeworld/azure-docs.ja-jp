@@ -15,12 +15,12 @@ ms.date: 07/07/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 4c501368dfbeb95be1c5d2af9ff7aae3850257b3
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 8809b5fdce382b7c8f913823ca8e176226d5837b
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761146"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536176"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>従来のサブスクリプション管理者ロール、Azure ロール、および Azure AD ロール
 
@@ -44,7 +44,7 @@ Azure のロールをよりよく理解するには、歴史の一部を知る�
 
 | 従来のサブスクリプション管理者 | 制限 | アクセス許可 | Notes |
 | --- | --- | --- | --- |
-| アカウント管理者 | 1 Azure アカウントに 1 人 | <ul><li>[Azure アカウント センター](https://account.azure.com/Subscriptions)にアクセスする</li><li>アカウントのすべてのサブスクリプションを管理する</li><li>新しいサブスクリプションを作成する</li><li>サブスクリプションを取り消す</li><li>サブスクリプションの課金を変更する</li><li>サービス管理者を変更する</li></ul> | 概念的には、サブスクリプションの課金の所有者です。<br>アカウント管理者には、Azure portal へのアクセス権が与えられません。 |
+| アカウント管理者 | 1 Azure アカウントに 1 人 | <ul><li>[Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) で課金を管理する</li><li>アカウントのすべてのサブスクリプションを管理する</li><li>新しいサブスクリプションを作成する</li><li>サブスクリプションを取り消す</li><li>サブスクリプションの課金を変更する</li><li>サービス管理者を変更する</li></ul> | 概念的には、サブスクリプションの課金の所有者です。<br>アカウント管理者には、Azure portal へのアクセス権が与えられません。 |
 | サービス管理者 | 1 Azure サブスクリプションに 1 人 | <ul><li>[Azure portal](https://portal.azure.com) でサービスを管理する</li><li>サブスクリプションを取り消す</li><li>共同管理者ロールにユーザーを割り当てる</li></ul> | 既定で、新しいサブスクリプションのアカウント管理者はサービス管理者でもあります。<br>サービス管理者は、サブスクリプション スコープで所有者ロールを割り当てられているユーザーと同等のアクセス権を持ちます。<br>サービス管理者には、Azure portal へのフル アクセス権が与えられます。 |
 | 共同管理者 | サブスクリプションあたり 200 人 | <ul><li>サービス管理者と同じアクセス権を持っているものの、サブスクリプションと Azure ディレクトリとの関連付けを変更することはできない</li><li>共同管理者ロールにユーザーを割り当てる。ただし、サービス管理者を変更することはできない</li></ul> | 共同管理者は、サブスクリプション スコープで所有者ロールを割り当てられているユーザーと同等のアクセス権を持ちます。 |
 
@@ -66,7 +66,7 @@ Azure サブスクリプションは、Azure リソースへのアクセスを�
 
 すべてのサブスクリプションは Azure AD ディレクトリと関連付けられています。 サブスクリプションが関連付けられているディレクトリを検索するには、Azure portal で **[サブスクリプション]** を開き、ディレクトリを表示するサブスクリプションを選択します。
 
-アカウントとサブスクリプションは、[Azure アカウント センター](https://account.azure.com/Subscriptions)で管理されます。
+アカウントとサブスクリプションは、[Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) で管理されます。
 
 ## <a name="azure-roles"></a>Azure ロール
 

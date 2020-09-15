@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 07/22/2020
+ms.date: 09/04/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 6c78442832370e3c46ac549a35942d204574fd4a
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 8a06ec0ad4aba5122e3e412836fb9773076653cb
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87135904"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483433"
 ---
 ## <a name="azure-security-benchmark"></a>Azure セキュリティ ベンチマーク
 
@@ -59,9 +59,35 @@ ms.locfileid: "87135904"
 |ログ記録と監視 |5.2.8 |"SQL Server ファイアウォール規則の作成、更新、削除" のアクティビティ ログ アラートが存在することを確認する |[特定の管理操作のアクティビティ ログ アラートが存在する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb954148f-4c11-4c38-8221-be76711e194a) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_AdministrativeOperations_Audit.json) |
 |ログ記録と監視 |5.2.9 |"セキュリティ ポリシーの更新" のアクティビティ ログ アラートが存在することを確認する |[特定のセキュリティ操作のアクティビティ ログ アラートが存在する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3b980d31-7904-4bb7-8575-5665739a8052) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_SecurityOperations_Audit.json) |
 
+## <a name="hipaa-hitrust-92"></a>HIPAA HITRUST 9.2
+
+すべての Azure サービスに対して使用可能な Azure Policy 組み込みがこのコンプライアンス標準にどのように対応するのかを確認するには、[Azure Policy の規制コンプライアンス - HIPAA HITRUST 9.2](../../../../articles/governance/policy/samples/hipaa-hitrust-9-2.md) に関するページを参照してください。
+このコンプライアンス標準の詳細については、[HIPAA HITRUST 9.2](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html) に関するページを参照してください。
+
+|Domain |コントロール ID |コントロールのタイトル |ポリシー<br /><sub>(Azure portal)</sub> |ポリシーのバージョン<br /><sub>(GitHub)</sub>  |
+|---|---|---|---|---|
+|監査ログ |1202.09aa1System.1 - 09.aa |対象となる情報を含むシステムでのすべてのアクティビティ (作成、読み取り、更新、削除) に対して、セキュリティで保護された監査レコードが作成されます。 |[Azure Data Lake Store の診断ログを有効にする必要があります](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F057ef27e-665e-4328-8ea3-04b3122bd9fb) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Lake/DataLakeStore_AuditDiagnosticLog_Audit.json) |
+|監査ログ |1203.09aa1System.2 - 09.aa |監査レコードには、一意のユーザー ID、一意のデータ サブジェクト ID、実行された機能、およびイベントの日時が含まれます。 |[Logic Apps における診断ログを有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F34f95f76-5386-4de7-b824-0d8478470c9d) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Logic%20Apps/LogicApps_AuditDiagnosticLog_Audit.json) |
+|監査ログ |1204.09aa1System.3 - 09.aa |特権ユーザー (管理者、オペレーターなど) のアクティビティには、イベントの成功または失敗、イベント発生日時、関連するアカウント、関連するプロセス、およびイベントに関する追加情報が含まれます。 |[IoT Hub の診断ログを有効にする必要があります](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F383856f8-de7f-44a2-81fc-e5135b5c2aa4) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IoTHub_AuditDiagnosticLog_Audit.json) |
+|監査ログ |1205.09aa2System.1 - 09.aa |送受信されたメッセージのログでは、メッセージの日付、時刻、送信元、送信先が保持されますが、その内容は保持されません。 |[Batch アカウントで診断ログを有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F428256e6-1fac-4f48-a757-df34c2b3336d) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Batch/Batch_AuditDiagnosticLog_Audit.json) |
+|監査ログ |1207.09aa2System.4 - 09.aa |監査レコードは 90 日間保持され、古い監査レコードは 1 年間アーカイブされます。 |[Azure Stream Analytics で診断ログを有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff9be5368-9bf5-4b84-9e0a-7850da98bb46) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Stream%20Analytics/StreamAnalytics_AuditDiagnosticLog_Audit.json) |
+|監査ログ |1207.09aa2System.4 - 09.aa |監査レコードは 90 日間保持され、古い監査レコードは 1 年間アーカイブされます。 |[イベント ハブの診断ログを有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F83a214f7-d01a-484b-91a9-ed54470c9a6a) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Hub/EventHub_AuditDiagnosticLog_Audit.json) |
+|監査ログ |1208.09aa3System.1 - 09.aa |監査ログは、管理アクティビティ、システムとアプリケーションの起動/シャットダウン/エラー、ファイルの変更、およびセキュリティ ポリシーの変更に関して保持されます。 |[Search サービスにおける診断ログを有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb4330a05-a843-4bc8-bf9a-cacce50c67f4) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Search/Search_AuditDiagnosticLog_Audit.json) |
+|監査ログ |1208.09aa3System.1 - 09.aa |監査ログは、管理アクティビティ、システムとアプリケーションの起動/シャットダウン/エラー、ファイルの変更、およびセキュリティ ポリシーの変更に関して保持されます。 |[Service Bus で診断ログを有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff8d36e2f-389b-4ee4-898d-21aeb69a0f45) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Service%20Bus/ServiceBus_AuditDiagnosticLog_Audit.json) |
+|監査ログ |1210.09aa3System.3 - 09.aa |組織内または組織外の対象となる情報のすべての開示が、開示の種類、イベントの日時、受信者、送信者と共に記録されます。 |[診断設定の監査](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7f89b1eb-583c-429a-8828-af049802c1d9) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DiagnosticSettingsForTypes_Audit.json) |
+|監査ログ |1210.09aa3System.3 - 09.aa |組織内または組織外の対象となる情報のすべての開示が、開示の種類、イベントの日時、受信者、送信者と共に記録されます。 |[Data Lake Analytics の診断ログを有効にする必要があります](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc95c74d9-38fe-4f0d-af86-0c7d626a315c) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Lake/DataLakeAnalytics_AuditDiagnosticLog_Audit.json) |
+|監査ログ |1211.09aa3System.4 - 09.aa |組織は、90 日ごとに、記録された対象情報の各抽出で、データが消去されていること、またはその使用が依然として必要であることを検証します。 |[Key Vault で診断ログを有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcf820ca0-f99e-4f3e-84fb-66e913812d21) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_AuditDiagnosticLog_Audit.json) |
+|システムの使用の監視 |1120.09ab3System.9 - 09.ab |情報システムへの承認されていないリモート接続は、少なくとも四半期に 1 回監視および確認され、承認されていない接続が検出された場合は適切な処置が実行されます。 |[Azure Monitor ですべてのリージョンからアクティビティ ログを収集する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F41388f1c-2db0-4c25-95b2-35d7f5ccbfa9) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_CaptureAllRegions.json) |
+|システムの使用の監視 |1212.09ab1System.1 - 09.ab |承認されたアクセスと承認されていないアクセスの試行の監視に関するすべての法的要件が満たされています。 |[Azure Monitor ログ プロファイルで、"書き込み"、"削除"、"アクション" の各カテゴリのログを収集する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1a4e592a-6a6e-44a5-9814-e36264ca96e7) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_CaptureAllCategories.json) |
+|システムの使用の監視 |1214.09ab2System.3456 - 09.ab |監視には、特権操作、承認されたアクセスと承認されていないアクセスの試み (非アクティブなアカウントへのアクセスの試みを含む)、システムの警告またはエラーが含まれます。 |[Azure Monitor ですべてのリージョンからアクティビティ ログを収集する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F41388f1c-2db0-4c25-95b2-35d7f5ccbfa9) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_CaptureAllRegions.json) |
+|システムの使用の監視 |1219.09ab3System.10 - 09.ab |情報システムを使用すると、選択可能な条件に基づいて、対象のイベントの監査レコードの自動的な処理が可能です。 |[Azure Monitor ログ プロファイルで、"書き込み"、"削除"、"アクション" の各カテゴリのログを収集する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1a4e592a-6a6e-44a5-9814-e36264ca96e7) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_CaptureAllCategories.json) |
+|管理者とオペレーターのログ |1270.09ad1System.12 - 09.ad |組織は、管理者のアクティビティを監査するために適切なログが有効なことを確認します。また、システム管理者とオペレーターのログを定期的に確認します。 |[特定の管理操作のアクティビティ ログ アラートが存在する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb954148f-4c11-4c38-8221-be76711e194a) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_AdministrativeOperations_Audit.json) |
+|管理者とオペレーターのログ |1271.09ad1System.1 - 09.ad |システム管理者とネットワーク管理者の制御外で管理されている侵入検出システムを使用して、システムおよびネットワーク管理のコンプライアンス対応状態を監視します。 |[特定の管理操作のアクティビティ ログ アラートが存在する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb954148f-4c11-4c38-8221-be76711e194a) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_AdministrativeOperations_Audit.json) |
+|ネットワーク コントロール |0860.09m1Organizational.9 - 09.m |組織は、ユーザー領域の装置など、ネットワーク上の機器を正式に管理します。 |[ネットワーク セキュリティ グループの診断設定のデプロイ](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc9c29499-c1d1-4195-99bd-2ec9e3a9dc89) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DiagnosticSettingsForNSG_Deploy.json) |
+
 ## <a name="nist-sp-800-171-r2"></a>NIST SP 800-171 R2
 
-すべての Azure サービスに対して使用可能な Azure Policy 組み込みを、このコンプライアンス基準に対応させる方法については、[Azure Policy の規制コンプライアンス - NIST SP 800-171 R2](../../../../articles/governance/policy/samples/nist-sp-800-171-r2.md) に関するページを参照してください。
+すべての Azure サービスに対して使用可能な Azure Policy 組み込みをこのコンプライアンス基準に対応させる方法については、[Azure Policy の規制コンプライアンス - NIST SP 800-171 R2](../../../../articles/governance/policy/samples/nist-sp-800-171-r2.md) に関するページを参照してください。
 このコンプライアンス標準の詳細については、[NIST SP 800-171 R2](https://csrc.nist.gov/publications/detail/sp/800-171/rev-2/final) に関するページを参照してください。
 
 |Domain |コントロール ID |コントロールのタイトル |ポリシー<br /><sub>(Azure portal)</sub> |ポリシーのバージョン<br /><sub>(GitHub)</sub>  |

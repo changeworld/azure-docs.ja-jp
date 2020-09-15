@@ -3,15 +3,15 @@ title: Windows Virtual Desktop ポータルのアプリ グループを管理す
 description: Azure portal を使用して Windows Virtual Desktop アプリ グループを管理する方法。
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 08/20/2020
+ms.date: 09/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 21dba3c9beeefa2b25b8038f6cbd0ec77f947774
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 52f495753d055730c1ad42444c83cf3d5cd4c1d3
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226728"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461427"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>チュートリアル:Azure portal を使用してアプリ グループを管理する
 
@@ -121,6 +121,9 @@ Azure portal または PowerShell を使用してホスト プールとセッシ
 - 選択されたユーザーとユーザー グループに公開されたアプリ グループを公開する。
 - アプリ グループを登録する (そのように選択した場合)。
 - 後でダウンロードして保存できるよう、構成に基づいて Azure Resource Manager テンプレートへのリンクを作成する。
+
+>[!IMPORTANT]
+>Azure Active Directory テナントごとに、50 のアプリケーション グループのみ作成できます。 ユーザーのフィードを取得するサービスに制限があるため、この制限を追加しました。 この制限は、Windows Virtual Desktop (クラシック) で作成されたアプリ グループには適用されません。
 
 ## <a name="next-steps"></a>次のステップ
 

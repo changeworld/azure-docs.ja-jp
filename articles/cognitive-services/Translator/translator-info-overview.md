@@ -11,24 +11,22 @@ ms.topic: overview
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: 5da9e5b38b88a5a148bd3d85664daa523153086b
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 206e1bc86404fa41b84647c50482dbe63301c0af
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589453"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425961"
 ---
-# <a name="what-is-the-translator"></a>Translator とは
+# <a name="what-is-translator"></a>Translator とは
 
-Translator は、皆さんのアプリケーションや Web サイト、ツール、ソリューションに簡単に統合することができます。 [70 か国語](languages.md)を超える多言語のユーザー エクスペリエンスを追加し、使用しているハードウェア プラットフォームやオペレーティング システムにかかわらず、テキストからテキストへの言語翻訳を実行できます。
-
-Translator は、機械学習と AI のアルゴリズムをクラウドで提供する Azure の [Cognitive Services](https://docs.microsoft.com/azure/?pivot=products&panel=ai) コレクションの一部です。この API は、開発プロジェクトですぐに利用できます。
+Azure Cognitive Services Translator はクラウドベースの機械翻訳サービスであり、インテリジェント アプリを構築するためのコグニティブ API の [Azure Cognitive Services](https://docs.microsoft.com/azure/?pivot=products&panel=ai) ファミリに含まれています。 Translator は、皆さんのアプリケーションや Web サイト、ツール、ソリューションに簡単に統合することができます。 [70 か国語](languages.md)を超える多言語のユーザー エクスペリエンスを追加し、使用しているハードウェア プラットフォームやオペレーティング システムにかかわらず、テキストからテキストへの言語翻訳を実行できます。
 
 ## <a name="about-microsoft-translator"></a>Microsoft Translator について
 
-Translator は、クラウドベースの機械翻訳サービスです。 その核となるサービス Translator は、Microsoft のさまざまな製品やサービスに活かされているほか、世界中の膨大な数の企業がそのアプリケーションとワークフローに使用し、コンテンツを世界中のユーザーに届けることに成功しています。
+Azure Cognitive Services Translator は、クラウドベースの機械翻訳サービスです。 Translator は、Microsoft のさまざまな製品やサービスに活かされているほか、世界中の膨大な数の企業がそのアプリケーションとワークフローに使用し、コンテンツを世界中のユーザーに届けることに成功しています。
 
-Translator によって支えられた音声翻訳は、[Microsoft Speech サービス](https://docs.microsoft.com/azure/cognitive-services/speech-service/)を通じて利用することもできます。 Translator Speech API と Custom Speech Service の機能が融合され、一元化された完全にカスタマイズ可能なサービスとなっています。 Speech Service は、Translator Speech API (2019 年 10 月 15 日に使用停止となる予定) の後継です。
+Translator によって支えられた音声翻訳は、[Microsoft Speech サービス](https://docs.microsoft.com/azure/cognitive-services/speech-service/)を通じて利用することもできます。 Translator Speech API と Custom Speech Service の機能が融合され、一元化された完全にカスタマイズ可能なサービスとなっています。 
 
 ## <a name="language-support"></a>言語のサポート
 
@@ -46,7 +44,7 @@ NMT の動作方法の詳細については、[こちら](https://www.microsoft.
 
 ## <a name="language-customization"></a>言語のカスタマイズ
 
-コア Microsoft Translator サービスの拡張機能であるカスタム翻訳ツールは、Translator と組み合わせて使用することで、ニューラル翻訳システムをカスタマイズし、特定の用語やスタイルの翻訳を改善することができます。
+Translator サービスの拡張機能であるカスタム翻訳ツールは、Translator と組み合わせて使用することで、ニューラル翻訳システムをカスタマイズし、特定の用語やスタイルの翻訳を改善することができます。
 
 Custom Translator を使用すると、独自のビジネスや業界で使用される用語を処理するニューラル翻訳システムを構築できます。 カスタマイズされた翻訳システムは、通常の Translator でカテゴリ パラメーターを使用して、複数の種類のデバイス全体で既存のアプリケーション、ワークフロー、および Web サイトに簡単に統合できます。
 

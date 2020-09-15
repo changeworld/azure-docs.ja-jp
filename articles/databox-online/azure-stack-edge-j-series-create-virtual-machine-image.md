@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 09/04/2020
 ms.author: alkohli
-ms.openlocfilehash: 83332c3bfa0b2b99d7333fa679fb8d398aecf8bd
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: fd87cbef4c667d9da1f93b448a2a67e6e90307b7
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268912"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500285"
 ---
 # <a name="create-custom-vm-images-for-your-azure-stack-edge-device"></a>Azure Stack Edge デバイスのカスタム VM イメージを作成する
 
@@ -52,7 +52,22 @@ Linux VM イメージを作成するには、次の手順に従います。
 
 1. Linux 仮想マシンを作成する。 詳細については、[チュートリアルの 「Azure CLI を使用した Linux VM の作成と管理」](../virtual-machines/linux/tutorial-manage-vm.md)を参照してください。
 
-2. [既存の OS ディスクをダウンロード](../virtual-machines/linux/download-vhd.md)します。
+1. VM のプロビジョニングを解除します。 Azure VM エージェントを使用し、マシン固有のファイルとデータを削除します。 ソース Linux VM で `-deprovision+user` パラメーターを指定して `waagent` コマンドを実行します。 詳細については、「[Azure Linux エージェントの理解と使用](../virtual-machines/extensions/agent-linux.md)」を参照してください。
+
+    1. SSH クライアントを使って Linux VM に接続します。
+    2. SSH のウィンドウで、次のコマンドを入力します。
+       
+        ```bash
+        sudo waagent -deprovision+user
+        ```
+       > [!NOTE]
+       > このコマンドはイメージとしてキャプチャする VM に対して実行します。 このコマンドでは、イメージからすべての機密情報が削除されることや、イメージが再配布に適した状態になることが保証されるわけではありません。 `+user` パラメーターにより、前回プロビジョニングされたユーザー アカウントも削除されます。 ユーザー アカウントの資格情報を VM に保持するには、`-deprovision` のみを使用します。
+     
+    3. 「**y**」と入力して続行します。 `-force` パラメーターを追加すると、この確認手順を省略できます。
+    4. コマンドが完了したら、**exit** を入力して SSH クライアントを閉じます。  この時点で、VM はまだ実行されています。
+
+
+1. [既存の OS ディスクをダウンロード](../virtual-machines/linux/download-vhd.md)します。
 
 では、この VHD を使用して、Azure Stack Edge デバイスに VM を作成、デプロイしましょう。 Linux カスタム イメージは、次の 2 つの Azure Marketplace イメージを使用して作成できます。
 
@@ -61,7 +76,7 @@ Linux VM イメージを作成するには、次の手順に従います。
 |[Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.ubuntuserver) |Ubuntu Server は、クラウド環境の世界で最も人気のある Linux です。|Canonical|
 |[Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.debian) |Debian GNU/Linux は最も人気のある Linux ディストリビューションの 1 つです。     |credativ|
 
-使用できる可能性のある Azure Marketplace イメージの全一覧 (現在テストは未実施) については、「[Azure Stack Hub で使用できる Azure Marketplace 項目](https://docs.microsoft.com/azure-stack/operator/azure-stack-marketplace-azure-items?view=azs-1910)」を参照してください。
+使用できる可能性のある Azure Marketplace イメージの完全な一覧 (現在テストは未実施) については、「[Azure Stack Hub で使用できる Azure Marketplace 項目](https://docs.microsoft.com/azure-stack/operator/azure-stack-marketplace-azure-items?view=azs-1910)」を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

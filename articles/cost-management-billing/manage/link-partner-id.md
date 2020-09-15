@@ -8,18 +8,18 @@ ms.date: 07/24/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: 8f3e4762b0c0286a47b407595cf73b66bef8d750
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: dc4d319e0e6b55af8af460fa8a56b9ef24a53341
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682843"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89487353"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Azure アカウントにパートナー ID をリンクする
 
-Microsoft パートナーは、お客様が Microsoft 製品を使用してビジネスや任務の目的を達成できるよう支援するサービスを提供しています。 パートナー ユーザーは、Azure サービスの管理、構成、サポートをお客様に代わって行うときに、お客様の環境にアクセスする必要があります。 パートナーは、パートナー管理者リンク (PAL) を使用して、パートナー ネットワーク ID をサービス提供に使用される資格情報に関連付けることができます。
+Microsoft パートナーは、お客様が Microsoft 製品を使用してビジネスや任務の目的を達成できるよう支援するサービスを提供しています。 パートナー ユーザーは、Azure サービスの管理、構成、サポートをお客様に代わって行うときに、お客様の環境にアクセスする必要があります。 パートナーは、パートナー管理リンク (PAL) を使用して、パートナー ネットワーク ID をサービス提供に使用される資格情報に関連付けることができます。
 
-Microsoft は、Azure の利用者を成功に導いているパートナーを PAL によって特定、評価することができます。収益 (Azure が実際に利用されたことによる収益) や効果に貢献している組織を、アカウントのアクセス許可 (Azure ロール) とスコープ (サブスクリプション、リソース グループ、リソース) に基づいて把握することができます。
+PAL を使用することで、Microsoft は、Azure の利用者を成功に導いているパートナーを特定、評価することができます。 収益 (Azure 使用による収益) や効果に貢献している組織を、アカウントのアクセス許可 (Azure ロール) とスコープ (サブスクリプション、リソース グループ、リソース) に基づいて把握することができます。
 
 ## <a name="get-access-from-your-customer"></a>顧客からアクセス権を取得する
 
@@ -133,10 +133,11 @@ C:\ az managementpartner delete --partner-id 12345
 
 パートナー ID とアカウント間のリンクは、各顧客テナントに対して行われます。 パートナー ID は、顧客のテナントごとにリンクしてください。
 
+ただし、Azure Lighthouse を使用して顧客のリソースを管理している場合は、顧客のリソースにアクセスできるアカウントを使用して、サービス プロバイダーのテナントにリンクを作成する必要があります。 詳細については、[パートナー ID をリンクして、委任されたリソースでパートナー獲得クレジットを有効にする](../../lighthouse/how-to/partner-earned-credit.md)に関する記事をご覧ください。
+
 **他のパートナーまたは顧客がパートナー ID へのリンクを編集または削除できますか。**
 
 リンクはユーザー アカウント レベルで関連付けられます。 パートナー ID へのリンクは、貴社のみが編集または削除できます。 顧客と他のパートナーは、パートナー ID へのリンクを変更できません。
-
 
 **会社に複数の MPN ID がある場合は、どれを使用すべきですか。**
 
@@ -158,10 +159,11 @@ C:\ az managementpartner delete --partner-id 12345
 
 はい、Azure Stack に対してパートナー ID をリンクできます。
 
-**会社で [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) を使用して顧客のリソースにアクセスする場合、どのようにすればパートナー ID をリンクできますか。**
+**会社で [Azure Lighthouse](../../lighthouse/overview.md) を使用して顧客のリソースにアクセスする場合、どのようにすればパートナー ID をリンクできますか。**
 
-[マネージド サービス プランを Azure Marketplace に発行する](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)ことによって顧客を Azure の委任されたリソース管理にオンボードすると、自動的に MPN ID が関連付けられます。 [Azure Resource Manager テンプレートをデプロイして顧客をオンボードする](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer)場合は、Microsoft Partner Network (MPN) ID を、オンボードされた各サブスクリプションへのアクセス権を持つ少なくとも 1 つのユーザー アカウントに関連付ける必要があります。 サービス プロバイダー テナントでこれを行う必要があることに注意してください。 簡略化するために、MPN ID に関連付けられているテナントでサービス プリンシパル アカウントを作成し、オンボードするすべての顧客に対する閲覧者アクセス権をこのアカウントに付与することをお勧めします。 この例では、RBAC 閲覧者ロールが使用されています。これは、パートナー獲得クレジットの対象とならないロールの 1 つです。 ロールの詳細については、[パートナー獲得クレジットのロールとアクセス許可](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3QuW2)に関するページを参照してください。
+[マネージド サービス プランを Azure Marketplace に発行する](../../lighthouse/how-to/publish-managed-services-offers.md)ことによって顧客を Azure の委任されたリソース管理にオンボードすると、自動的に MPN ID が関連付けられます。
 
+[Azure Resource Manager テンプレートをデプロイして顧客をオンボードする](../../lighthouse/how-to/onboard-customer.md)場合は、MPN ID を、オンボードされた各サブスクリプションへのアクセス権を持つ少なくとも 1 つのユーザー アカウントに関連付ける必要があります。 これは、各顧客テナントではなく、サービス プロバイダー テナントで行う必要があることにご注意ください。 わかりやすくするために、テナントにサービス プリンシパル アカウントを作成して MPN ID に関連付け、[パートナー獲得クレジットの対象となる Azure の組み込みロール](/partner-center/azure-roles-perms-pec)を使用してオンボードするすべての顧客へのアクセス権を付与することをお勧めします。 詳細については、[パートナー ID をリンクして、委任されたリソースでパートナー獲得クレジットを有効にする](../../lighthouse/how-to/partner-earned-credit.md)に関する記事をご覧ください。
 
 **パートナー管理リンク (PAL) については、顧客にどのように説明すればよいでしょうか。**
 
@@ -173,4 +175,4 @@ Microsoft は、お客様のビジネス目標達成とクラウドでの価値�
 
 **お客様の Azure 環境のセキュリティに影響はありますか。**
 
-PAL の関連付けによって行われるのは、既にプロビジョニングされている資格情報にパートナーの MPN ID を追加することだけです。アクセス許可 (Azure ロール) が変更されることはなく、また、別途 Azure サービスのデータがパートナーや Microsoft に提供されることもありません。 
+PAL の関連付けによって行われるのは、既にプロビジョニングされている資格情報にパートナーの MPN ID を追加することだけです。アクセス許可 (Azure ロール) が変更されることはなく、また、別途 Azure サービスのデータがパートナーや Microsoft に提供されることもありません。

@@ -2,20 +2,21 @@
 title: クイック スタート:Python アプリを作成する
 description: Azure App Service で Linux コンテナーに初めての Python アプリをデプロイして、App Service の使用を開始します。
 ms.topic: quickstart
-ms.date: 06/30/2020
+ms.date: 09/08/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python
-ms.openlocfilehash: 3bfe927b2c9dc16de8712f6c1793e850df92c201
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 77aafb53c1346c6723d055a8ae1c96297fdfbd52
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078454"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568916"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>クイック スタート:Azure App Service on Linux で Python アプリを作成する
 
 このクイック スタートでは、Azure のスケーラビリティに優れた自己適用型の Web ホスティング サービスである [App Service on Linux](overview.md#app-service-on-linux) に、Python Web アプリをデプロイします。 Mac、Linux、または Windows コンピューター上で、ローカルの [Azure コマンド ライン インターフェイス (CLI)](/cli/azure/install-azure-cli) を使用します。 構成する Web アプリでは、App Service の Free レベルを使用するため、この記事の中で料金が発生することはありません。
 
-IDE を使用してアプリをデプロイする場合は、[Visual Studio Code から App Service への Python アプリのデプロイ](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)に関する記事をご覧ください。
+> [!NOTE]
+> IDE を使用してアプリをデプロイする場合は、 **[Visual Studio Code から App Service への Python アプリのデプロイ](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)** に関する記事をご覧ください。
 
 ## <a name="set-up-your-initial-environment"></a>初期環境を設定する
 
@@ -67,15 +68,10 @@ az login
 
 ## <a name="clone-the-sample"></a>サンプルを複製する
 
-次のコマンドを実行して、サンプル リポジトリをクローンします (git をまだインストールしていない場合は、[git をインストール](https://git-scm.com/downloads)します)。
+次のコマンドを実行して、サンプル リポジトリを複製し、フォルダーに移動します。 (git をまだインストールしていない場合は、[git をインストール](https://git-scm.com/downloads)します)。
 
 ```terminal
 git clone https://github.com/Azure-Samples/python-docs-hello-world
-```
-
-次に、そのフォルダーに移動します。
-
-```terminal
 cd python-docs-hello-world
 ```
 
@@ -157,7 +153,7 @@ az webapp up --sku F1 -n <app-name>
 - `az` コマンドが認識されない場合は、「[初期環境を設定する](#set-up-your-initial-environment) 」の説明に従って Azure CLI がインストールされていることを確認してください。
 - `<app_name>` を Azure 全体で一意の名前で置き換えます ("*有効な文字は、`a-z`、`0-9`、および `-` です*")。 会社名とアプリ識別子を組み合わせて使用すると、適切なパターンになります。
 - `--sku F1` 引数を使用すると、Free 価格レベルで Web アプリが作成されます。 この引数を省略するとより高速な Premium レベルが使用されるため、時間単位のコストが発生します。
-- オプションで引数 `-l <location-name>` を含めることができます。ここで、`<location_name>` は、**centralus**、**eastasia**、**westeurope**、**koreasouth**、**brazilsouth**、**centralindia** などの Azure リージョンです。 [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) コマンドを実行すると、お使いの Azure アカウントで使用可能なリージョンの一覧を取得できます。
+- オプションで引数 `-l <location-name>` を含めることができます。ここで、`<location_name>` は、**centralus**、**eastasia**、**westeurope**、**koreasouth**、**brazilsouth**、**centralindia** などの Azure リージョンです。 [`az account list-locations`](/cli/azure/appservice#az-appservice-list-locations) コマンドを実行すると、お使いの Azure アカウントで使用可能なリージョンの一覧を取得できます。
 - "Could not auto-detect the runtime stack of your app (アプリのランタイム スタックを自動検出できませんでした)" というエラーが表示された場合は、*requirements.txt* ファイルがある *python-docs-hello-world* フォルダーでコマンドを実行していることを確認してください。 (GitHub の [az webapp up を使用して自動検出の問題をトラブルシューティングする方法](https://github.com/Azure/app-service-linux-docs/blob/master/AzWebAppUP/runtime_detection.md)に関するページを参照してください。)
 
 コマンドが完了するまでに数分かかる場合があります。 実行中には、リソース グループ、App Service プラン、およびホスティング アプリの作成、ログ記録の構成、ZIP デプロイの実行に関するメッセージが表示されます。 次に、"http://&lt;app-name&gt;.azurewebsites.net でアプリを起動することができます" という内容のメッセージが表示されます。これは、Azure 上のアプリの URL です。

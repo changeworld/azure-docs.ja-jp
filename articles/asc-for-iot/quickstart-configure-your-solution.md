@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2019
+ms.date: 09/06/2020
 ms.author: mlottner
-ms.openlocfilehash: 04505527428a6bb312c6fb7a12c116947fbd7cf6
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: e6ab713715cacc799d2b980c2bce2a2a15b76887
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310852"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505456"
 ---
 # <a name="quickstart-configure-your-iot-solution"></a>クイック スタート:IoT ソリューションを構成する
 
@@ -45,8 +45,8 @@ Azure Security Center for IoT を IoT ハブ上で有効にすると、IoT ハ�
 IoT ソリューションに新しいリソースを追加するには、次の操作を行います。
 
 1. Azure portal で **[IoT Hub]** を開きます。
-1. 左側のメニューの **[セキュリティ]** の下の **[リソース]** を選択して開きます。
-1. **[編集]** を選択し、自分の IoT ソリューションに属しているリソース グループを選択します。
+1. 左側のメニューの **[セキュリティ]** セクションから **[設定]** を選択して開き、 **[監視対象リソース]** を選択します。
+1. **[編集]** を選択し、自分の IoT ソリューションに属している監視対象リソースを選択します。
 1. **[追加]** をクリックします。
 
 お疲れさまでした。 IoT ソリューションに新しいリソース グループが追加されました。

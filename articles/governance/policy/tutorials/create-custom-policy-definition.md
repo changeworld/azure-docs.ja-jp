@@ -3,12 +3,12 @@ title: チュートリアル:カスタム ポリシー定義の作成
 description: このチュートリアルでは、Azure リソースに対してカスタム ビジネス ルールを適用するための Azure Policy のカスタム ポリシー定義を作成します。
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: 5eee969257f5cf640ce82fbda9877974207c87af
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 72282cbc5ed1877cf3f61b792235e8dc2f72fffe
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044619"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649830"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>チュートリアル:カスタム ポリシー定義の作成
 
@@ -73,7 +73,7 @@ Azure リソースのプロパティを判別する方法はたくさんあり�
 プロパティを見つける最も簡単な方法は、同じ種類の既存リソースを確認することです。 適用する設定を使用して既に構成されているリソースには、比較対象の値もあります。
 その特定のリソースについて、Azure portal の ( **[設定]** にある) **[テンプレートのエクスポート]** ページを確認します。
 
-:::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="既存のリソースのテンプレート ページをエクスポートする" border="false":::
+:::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="Azure portal にある既存リソースの Export テンプレート ページのスクリーンショット。" border="false":::
 
 これにより、ストレージ アカウントの場合、次の例のようなテンプレートが表示されます。
 

@@ -3,12 +3,12 @@ title: 高度なクエリのサンプル
 description: Azure Resource Graph を使用して、列の操作、使用されているタグの一覧表示、正規表現を使用したリソースの照合など、高度なクエリを実行します。
 ms.date: 08/13/2020
 ms.topic: sample
-ms.openlocfilehash: ba00144a53afd041abe2513862d8a05a51e78809
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 8463880189a76f299ce5552fff2b7bccddfa8dec
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795679"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425298"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Resource Graph の高度なクエリのサンプル
 
@@ -30,6 +30,9 @@ Azure Resource Graph でクエリを理解する最初の手順は、[クエリ�
 - [2 つのクエリの結果を結合して 1 つの結果にする](#unionresults)
 - [DisplayNames でテナント名とサブスクリプション名を含める](#displaynames)
 - [電源状態の拡張プロパティ別に仮想マシンを集計する](#vm-powerstate)
+- [非準拠ゲスト構成割り当ての数](#count-gcnoncompliant)
+- [ゲスト構成の割り当てレポートの詳細を問い合わせる](#query-gcreports)
+- [コンピューターがゲスト構成割り当てに準拠していない理由をすべて見つける](#query-gcmachinedetails)
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free) を作成してください。
 
@@ -576,6 +579,129 @@ Search-AzGraph -Query "limit 1" -Include DisplayNames
 > [!NOTE]
 > 取得するプロパティを指定する **project** をクエリで使用しなかった場合、**subscriptionDisplayName** と **tenantDisplayName** が自動的に結果に追加されます。
 > クエリで **project** を使用した場合は、_DisplayName_ フィールドをそれぞれ明示的に **project** に含める必要があります。そうしないと、**Include** パラメーターが使用されていても、結果に、それらのフィールドが返されません。 **Include** パラメーターは、[テーブル](../concepts/query-language.md#resource-graph-tables)では機能しません。
+
+---
+
+## <a name="count-of-non-compliant-guest-configuration-assignments"></a><a name="count-gcnoncompliant"></a>非準拠ゲスト構成割り当ての数
+
+[ゲスト構成割り当て理由](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration)ごとに非準拠コンピューターの数を表示します。 パフォーマンスのために結果を最初の 100 に制限します。
+
+```kusto
+GuestConfigurationResources
+| extend vmid = split(properties.targetResourceId,'/')
+| where properties.complianceStatus == 'NonCompliant'
+| mvexpand properties.latestAssignmentReport.resources
+| mvexpand properties_latestAssignmentReport_resources.reasons
+| project machine = tostring(vmid[(-1)]),
+    type = tostring(vmid[(-3)]),
+    name,
+    status = tostring(properties.complianceStatus),
+    resource = tostring(properties_latestAssignmentReport_resources.resourceId),
+    phrase = tostring(properties_latestAssignmentReport_resources_reasons.phrase)
+| summarize count() by resource, name
+| order by count_
+| limit 100
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az graph query -q "GuestConfigurationResources | extend vmid = split(properties.targetResourceId,'/') | where properties.complianceStatus == 'NonCompliant' | mvexpand properties.latestAssignmentReport.resources | mvexpand properties_latestAssignmentReport_resources.reasons | project machine = tostring(vmid[(-1)]), type = tostring(vmid[(-3)]), name, status = tostring(properties.complianceStatus), resource = tostring(properties_latestAssignmentReport_resources.resourceId), phrase = tostring(properties_latestAssignmentReport_resources_reasons.phrase) | summarize count() by resource, name | order by count_ | limit 100"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+Search-AzGraph -Query "GuestConfigurationResources | extend vmid = split(properties.targetResourceId,'/') | where properties.complianceStatus == 'NonCompliant' | mvexpand properties.latestAssignmentReport.resources | mvexpand properties_latestAssignmentReport_resources.reasons | project machine = tostring(vmid[(-1)]), type = tostring(vmid[(-3)]), name, status = tostring(properties.complianceStatus), resource = tostring(properties_latestAssignmentReport_resources.resourceId), phrase = tostring(properties_latestAssignmentReport_resources_reasons.phrase) | summarize count() by resource, name | order by count_ | limit 100"
+```
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+:::image type="icon" source="../media/resource-graph-small.png"::: このクエリを Azure Resource Graph エクスプローラーで試してください。
+
+- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/GuestConfigurationResources%20%7C%20extend%20vmid%20%3D%20split(properties.targetResourceId%2C%22%2F%22)%20%7C%20where%20properties.complianceStatus%20%3D%3D%20'NonCompliant'%20%7C%20mvexpand%20properties.latestAssignmentReport.resources%20%7C%20mvexpand%20properties_latestAssignmentReport_resources.reasons%20%7C%20project%20machine%20%3D%20tostring(vmid%5B(-1)%5D)%2C%20type%20%3D%20tostring(vmid%5B(-3)%5D)%2C%20name%2C%20status%20%3D%20tostring(properties.complianceStatus)%2C%20resource%20%3D%20tostring(properties_latestAssignmentReport_resources.resourceId)%2C%20phrase%20%3D%20tostring(properties_latestAssignmentReport_resources_reasons.phrase)%20%7C%20summarize%20count()%20by%20resource%2C%20name%20%7C%20order%20by%20count_%20%7C%20limit%20100" target="_blank">portal.azure.com <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+
+---
+
+## <a name="query-details-of-guest-configuration-assignment-reports"></a><a name="query-gcreports"></a>ゲスト構成の割り当てレポートの詳細を問い合わせる
+
+[ゲスト構成割り当て理由](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration)の詳細からレポートを表示します。
+下の例では、ゲスト割り当て名が `installed_application_linux` の結果のみがクエリから返され、**Python** という名前が含まれるパッケージがインストールされているすべての Linux コンピューターを一覧表示する文字列 `Python` が出力に含まれます。
+特定の割り当てについてすべてのコンピューターのコンプライアンスを問い合わせるには、2 つ目の `where` 句を削除します。
+
+```kusto
+GuestConfigurationResources
+| extend vmid = split(properties.targetResourceId,'/')
+| mvexpand properties.latestAssignmentReport.resources
+| mvexpand properties_latestAssignmentReport_resources.reasons
+| where name in ('installed_application_linux')
+| where properties_latestAssignmentReport_resources_reasons.phrase contains 'Python'
+| project machine = tostring(vmid[(-1)]),
+    type = tostring(vmid[(-3)]),
+    name,
+    status = tostring(properties.complianceStatus),
+    resource = tostring(properties_latestAssignmentReport_resources.resourceId),
+    phrase = tostring(properties_latestAssignmentReport_resources_reasons.phrase)
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az graph query -q "GuestConfigurationResources | extend vmid = split(properties.targetResourceId,'/') | mvexpand properties.latestAssignmentReport.resources | mvexpand properties_latestAssignmentReport_resources.reasons | where name in ('installed_application_linux') | where properties_latestAssignmentReport_resources_reasons.phrase contains 'Python' | project machine = tostring(vmid[(-1)]), type = tostring(vmid[(-3)]), name, status = tostring(properties.complianceStatus), resource = tostring(properties_latestAssignmentReport_resources.resourceId), phrase = tostring (properties_latestAssignmentReport_resources_reasons.phrase)"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+Search-AzGraph -Query "GuestConfigurationResources | extend vmid = split(properties.targetResourceId,'/') | mvexpand properties.latestAssignmentReport.resources | mvexpand properties_latestAssignmentReport_resources.reasons | where name in ('installed_application_linux') | where properties_latestAssignmentReport_resources_reasons.phrase contains 'Python' | project machine = tostring(vmid[(-1)]), type = tostring(vmid[(-3)]), name, status = tostring(properties.complianceStatus), resource = tostring(properties_latestAssignmentReport_resources.resourceId), phrase = tostring (properties_latestAssignmentReport_resources_reasons.phrase)"
+```
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+:::image type="icon" source="../media/resource-graph-small.png"::: このクエリを Azure Resource Graph エクスプローラーで試してください。
+
+- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/GuestConfigurationResources%20%7C%20extend%20vmid%20%3D%20split(properties.targetResourceId%2C'%2F')%20%7C%20mvexpand%20properties.latestAssignmentReport.resources%20%7C%20mvexpand%20properties_latestAssignmentReport_resources.reasons%20%7C%20where%20name%20in%20('installed_application_linux')%20%7C%20where%20properties_latestAssignmentReport_resources_reasons.phrase%20contains%20'Python'%20%7C%20project%20machine%20%3D%20tostring(vmid%5B(-1)%5D)%2C%20type%20%3D%20tostring(vmid%5B(-3)%5D)%2C%20name%2C%20status%20%3D%20tostring(properties.complianceStatus)%2C%20resource%20%3D%20tostring(properties_latestAssignmentReport_resources.resourceId)%2C%20phrase%20%3D%20tostring%20(properties_latestAssignmentReport_resources_reasons.phrase)" target="_blank">portal.azure.com <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+
+---
+
+## <a name="find-all-reasons-a-machine-is-non-compliant-for-guest-configuration-assignments"></a><a name="query-gcmachinedetails"></a>コンピューターがゲスト構成割り当てに準拠していない理由をすべて見つける
+
+特定のコンピューターについて[ゲスト構成割り当ての理由](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration)をすべて表示します。
+最初の `where` 句を削除すると、コンピューターが準拠している監査も含まれます。
+
+```kusto
+GuestConfigurationResources
+| where properties.complianceStatus == 'NonCompliant'
+| extend vmid = split(properties.targetResourceId,'/')
+| mvexpand properties.latestAssignmentReport.resources
+| mvexpand properties_latestAssignmentReport_resources.reasons
+| extend machine = tostring(vmid[(-1)])
+| where machine == 'MACHINENAME'
+| project phrase = tostring(properties_latestAssignmentReport_resources_reasons.phrase),
+    resource = tostring(properties_latestAssignmentReport_resources.resourceId),
+    name,
+    machine,
+    resourceGroup,
+    subscriptionId
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az graph query -q "GuestConfigurationResources | where properties.complianceStatus == 'NonCompliant' | extend vmid = split(properties.targetResourceId,'/') | mvexpand properties.latestAssignmentReport.resources | mvexpand properties_latestAssignmentReport_resources.reasons | extend machine = tostring(vmid[(-1)]) | where machine == 'MACHINENAME' | project phrase = tostring(properties_latestAssignmentReport_resources_reasons.phrase), resource = tostring(properties_latestAssignmentReport_resources.resourceId), name, machine, resourceGroup, subscriptionId"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+Search-AzGraph -Query "GuestConfigurationResources | where properties.complianceStatus == 'NonCompliant' | extend vmid = split(properties.targetResourceId,'/') | mvexpand properties.latestAssignmentReport.resources | mvexpand properties_latestAssignmentReport_resources.reasons | extend machine = tostring(vmid[(-1)]) | where machine == 'MACHINENAME' | project phrase = tostring(properties_latestAssignmentReport_resources_reasons.phrase), resource = tostring(properties_latestAssignmentReport_resources.resourceId), name, machine, resourceGroup, subscriptionId"
+```
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+:::image type="icon" source="../media/resource-graph-small.png"::: このクエリを Azure Resource Graph エクスプローラーで試してください。
+
+- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/GuestConfigurationResources%20%7C%20where%20properties.complianceStatus%20%3D%3D%20'NonCompliant'%20%7C%20extend%20vmid%20%3D%20split(properties.targetResourceId%2C'%2F')%20%7C%20mvexpand%20properties.latestAssignmentReport.resources%20%7C%20mvexpand%20properties_latestAssignmentReport_resources.reasons%20%7C%20extend%20machine%20%3D%20tostring(vmid%5B(-1)%5D)%20%7C%20where%20machine%20%3D%3D%20'MACHINENAME'%20%7C%20project%20phrase%20%3D%20tostring(properties_latestAssignmentReport_resources_reasons.phrase)%2C%20resource%20%3D%20tostring(properties_latestAssignmentReport_resources.resourceId)%2C%20name%2C%20machine%2C%20resourceGroup%2C%20subscriptionId" target="_blank">portal.azure.com <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 ## <a name="next-steps"></a>次のステップ
 

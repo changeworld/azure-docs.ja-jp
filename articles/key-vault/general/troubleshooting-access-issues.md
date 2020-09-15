@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 6884062bc5107ecb1e31fc6826a9d847e4d31e89
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: d77cc4cc65eb73aa85a1d54202627cd18d5747b3
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400434"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595990"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Azure Key Vault のアクセス ポリシーの問題のトラブルシューティング
 
@@ -25,6 +25,14 @@ ms.locfileid: "89400434"
 ### <a name="how-can-i-monitor-vault-availability-service-latency-periods-or-other-performance-metrics-for-key-vault"></a>キー コンテナーの可用性、サービスの待ち時間、または他のパフォーマンス メトリックを監視するにはどうすればよいですか?
 
 サービスのスケーリングを開始すると、キー コンテナーに送信される要求の数が増加します。 それにより要求の待機時間が長くなる可能性があり、極端な場合には要求がスロットルされてサービスのパフォーマンスに影響を与えます。 キー コンテナーのパフォーマンス メトリックを監視し、特定のしきい値についてアラートを受け取ることができます。監視を構成するためのステップバイステップ ガイドについては、[こちら](https://docs.microsoft.com/azure/key-vault/general/alert)をご覧ください。
+
+### <a name="i-am-not-able-to-modify-access-policy-how-can-it-be-enabled"></a>アクセス ポリシーを変更できません。どのような方法で有効にできますか。
+アクセス ポリシーを変更するために必要な AAD アクセス許可がユーザーに与えられている必要があります。 この場合、上位の共同作成者ロールをユーザーに与える必要があります。
+
+### <a name="i-am-seeing-unkwown-policy-error-what-does-that-mean"></a>"不明なポリシー" というエラーが表示されます。 これはどういう意味ですか。
+[不明] セクションにアクセス ポリシーが表示されることには 2 つの異なる可能性があります。
+* 前のユーザーにアクセスが与えられていた可能性がありますが、何らかの理由でそのユーザーが存在しません。
+* アクセス ポリシーが PowerShell 経由で追加されるとき、サービス プリンシパルではなく、アプリケーション オブジェクト ID に対してアクセス ポリシーが追加されます。
 
 ### <a name="how-can-i-assign-access-control-per-key-vault-object"></a>キー コンテナー オブジェクトごとにアクセス制御を割り当てるにはどうすればよいですか? 
 

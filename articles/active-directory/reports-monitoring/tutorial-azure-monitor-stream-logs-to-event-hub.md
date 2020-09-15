@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cf35b2c15c0d85c93e69ef4e3b6c76932cbd75d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 0443dcb2bf3bd58f2474c507c9f9594fb6d8a7f0
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229380"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469186"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>チュートリアル:Azure Active Directory ログを Azure イベント ハブにストリーム配信する
 
@@ -60,8 +60,8 @@ ms.locfileid: "89229380"
 7. **[OK]** を選択してイベント ハブの構成を終了します。
 
 8. 次のいずれかまたは両方を実行します。
-    * 監査ログをストレージ アカウントに送信するには、 **[AuditLogs]** チェックボックスをオンにします。 
-    * サインイン ログをストレージ アカウントに送信するには、 **[SignInLogs]** チェックボックスをオンにします。
+    * 監査ログをイベント ハブに送信するには、 **[AuditLogs]** チェック ボックスをオンにします。 
+    * サインイン ログをイベント ハブに送信するには、 **[SignInLogs]** チェック ボックスをオンにします。
 
 9. **[保存]** を選択して設定を保存します。
 

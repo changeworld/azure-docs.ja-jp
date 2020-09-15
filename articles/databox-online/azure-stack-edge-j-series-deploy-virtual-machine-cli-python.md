@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 464c0fee31f86ba6ffa1dbecc7b2dd659cd86685
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: c633cc973cb9e4d4f0375dec638e278c48c6709c
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89255530"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500234"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-using-azure-cli-and-python"></a>Azure CLI と Python を使用して Azure Stack Edge GPU デバイスに VM をデプロイする
 
@@ -60,13 +60,13 @@ Azure CLI と Python を使用して、Azure Stack Edge デバイスに VM を�
 
     2. そのネットワーク インターフェイスでコンピューティングを有効にします。 そのネットワーク インターフェイスに対応する仮想スイッチが Azure Stack Edge によって作成、管理されます。
 
-    コンピューティング用に別のネットワーク インターフェイスを使用する場合は必ず、以下を行ってください。
+    <!--If you decide to use another network interface for compute, make sure that you:
 
-    - Azure Resource Manager を使用してデプロイした VM をすべて削除します。
+    - Delete all the VMs that you have deployed using Azure Resource Manager.
 
-    - すべての仮想ネットワーク インターフェイスとそのネットワーク インターフェイスに関連付けられている仮想ネットワークを削除します。
+    - Delete all virtual network interfaces and the virtual network associated with this network interface.
 
-    - これで、コンピューティング用に別のネットワーク インターフェイスを有効にすることができます。
+    - You can now enable another network interface for compute.-->
 
 3. すべての証明書を作成し、Azure Stack Edge デバイスと、お使いのクライアントの信頼されたストアにインストールします。 「[手順 2: 証明書を作成してインストールする](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)」で説明されている手順に従います。
 
@@ -342,7 +342,8 @@ Azure CLI と Python を使用して、Azure Stack Edge デバイスに VM を�
    ]
    PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
    ```
-
+   `id` と `tenantId` の値をメモしておきます。これらはそれぞれ Azure Resource Manager サブスクリプション ID と Azure Resource Manager テナント ID に対応し、後の手順で使用されるためです。
+       
    "*サービス プリンシパル*" として機能するためには、次の環境変数が設定されている必要があります。
 
    ```
@@ -352,7 +353,7 @@ Azure CLI と Python を使用して、Azure Stack Edge デバイスに VM を�
    $ENV:ARM_SUBSCRIPTION_ID = "A4257FDE-B946-4E01-ADE7-674760B8D1A3"
    ```
 
-   Azure Resource Manager のテナント ID、Azure Resource Manager のクライアント ID、Azure Resource Manager のサブスクリプション ID は、いずれもハードコーディングされており、すべての Azure Stack Edge デバイスで同じ値が割り当てられます。 Azure Resource Manager のクライアント シークレットは、自分が設定した Azure Resource Manager のパスワードです。
+   Azure Resource Manager クライアント ID はハードコーディングされています。 ご利用の Azure Resource Manager テナント ID および Azure Resource Manager サブスクリプション ID はどちらも、以前に実行した `az login` コマンドの出力にあります。 Azure Resource Manager のクライアント シークレットは、自分が設定した Azure Resource Manager のパスワードです。
 
    詳細については、[Azure Resource Manager のパスワード](azure-stack-edge-j-series-set-azure-resource-manager-password.md)に関するページを参照してください。
 
@@ -379,7 +380,7 @@ VM を作成するための Python スクリプトが用意されています。
 
 2. スクリプトの実行時、VHD のアップロードには 20 分から 30 分かかります。 アップロード操作の進行状況を確認するには、Azure Storage Explorer または AzCopy を使用できます。
 
-    以下に示すのは、スクリプトの実行に成功した場合のサンプル出力です。 このスクリプトでは、すべてのリソースを 1 つのリソース グループ内に作成し、それらのリソースを使用して VM を作成します。そして最後に、作成されたすべてのリソースを含むリソース グループを削除します。
+    以下に示すのは、スクリプトの実行に成功した場合のサンプル出力です。 このスクリプトによって、すべてのリソースが 1 つのリソース グループ内に作成され、それらのリソースを使用して VM が作成されます。そして最後に、作成されたすべてのリソースを含むリソース グループが削除されます。
 
     
     ```powershell

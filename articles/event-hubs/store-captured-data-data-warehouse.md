@@ -1,26 +1,26 @@
 ---
-title: チュートリアル:イベント データを SQL Data Warehouse に移行する - Azure Event Hubs
-description: チュートリアル:このチュートリアルでは、Event Grid によってトリガーされる Azure 関数を使用して、イベント ハブからデータを SQL Data Warehouse にキャプチャする方法を示します。
+title: チュートリアル:Azure Synapse Analytics にイベント データを移行する - Azure Event Hubs
+description: チュートリアル:このチュートリアルでは、イベント グリッドによってトリガーされた Azure 関数を使用して、イベント ハブから Azure Synapse Analytics にデータをキャプチャする方法について説明します。
 services: event-hubs
 ms.date: 06/23/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b6b6466675c8fa258af8370798cadd88e3b25a83
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b2a35647422c91d6859e1889f906ae512ce41a56
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997831"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436614"
 ---
-# <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>チュートリアル:Event Grid と Azure Functions を使用してキャプチャされた Event Hubs データを SQL Data Warehouse に移行する
+# <a name="tutorial-migrate-captured-event-hubs-data-to-azure-synapse-analytics-using-event-grid-and-azure-functions"></a>チュートリアル:Event Grid と Azure Functions を使用して、キャプチャされた Event Hubs データを Azure Synapse Analytics に移行する
 
-Event Hubs [Capture](./event-hubs-capture-overview.md) は、Event Hubs のストリーミング データを Azure Blob Storage アカウントまたは Azure Data Lake Store に自動的に配信するもっとも簡単な方法です。 その後、データを処理して、SQL Data Warehouse や Cosmos DB などの選択した他の宛先ストレージに配信できます。 このチュートリアルでは、[Event Grid](../event-grid/overview.md) によってトリガーされる Azure 関数を使用して、イベント ハブからデータを SQL Data Warehouse にキャプチャする方法を示します。
+Event Hubs [Capture](./event-hubs-capture-overview.md) は、Event Hubs のストリーミング データを Azure Blob Storage アカウントまたは Azure Data Lake Store に自動的に配信するもっとも簡単な方法です。 その後、データを処理して、Azure Synapse Analytics や Cosmos DB など、選択した他のストレージの宛先に配信することができます。 このチュートリアルでは、[イベント グリッド](../event-grid/overview.md)によってトリガーされた Azure 関数を使用して、イベント ハブから Azure Synapse Analytics にデータをキャプチャする方法について説明します。
 
-![Visual Studio](./media/store-captured-data-data-warehouse/EventGridIntegrationOverview.PNG)
+![Visual Studio](./media/store-captured-data-data-warehouse/EventGridIntegrationOverview.PNG)
 
 - 最初に、**Capture** 機能が有効なイベント ハブを作成し、宛先として Azure Blob Storage を設定します。 WindTurbineGenerator によって生成されたデータがイベント ハブにストリーミングされ、Avro ファイルとして Azure Storage に自動的にキャプチャされます。
 - 次に、Azure Event Grid サブスクリプションで、ソースとしての Event Hubs 名前空間とその宛先としての Azure 関数のエンドポイントを作成します。
-- 新しい Avro ファイルが Event Hubs Capture 機能によって Azure Storage Blob に配信されるたびに、Event Grid は、Azure 関数に BLOB URI を通知します。 その後、関数がデータを BLOB から SQL Data Warehouse に移行します。
+- 新しい Avro ファイルが Event Hubs Capture 機能によって Azure Storage Blob に配信されるたびに、Event Grid は、Azure 関数に BLOB URI を通知します。 次に、この関数によって BLOB から Azure Synapse Analytics にデータが移行されます。
 
 このチュートリアルでは、次のアクションを実行します。
 
@@ -30,7 +30,7 @@ Event Hubs [Capture](./event-hubs-capture-overview.md) は、Event Hubs のス�
 > - 関数アプリにコードを発行する
 > - 関数アプリから Event Grid サブスクリプションを作成する
 > - サンプル データをイベント ハブにストリーミングする
-> - SQL Data Warehouse 内にキャプチャされたデータを確認する
+> - キャプチャされたデータを Azure Synapse Analytics で確認する
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,7 +40,7 @@ Event Hubs [Capture](./event-hubs-capture-overview.md) は、Event Hubs のス�
 - [Git サンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/EventHubsCaptureEventGridDemo)をダウンロードします サンプル ソリューションには、次のコンポーネントが含まれます。
 
   - *WindTurbineDataGenerator* – 風力タービンのサンプル データを Capture が有効なイベント ハブに送信する単純な発行元。
-  - *FunctionDWDumper* – Azure Blob Storage に Avro ファイルがキャプチャされたときに、Event Grid の通知を受信する Azure 関数。 BLOB の URI パスを受信し、その内容を読み取り、データを SQL Data Warehouse にプッシュします。
+  - *FunctionDWDumper* – Azure Blob Storage に Avro ファイルがキャプチャされたときに、Event Grid の通知を受信する Azure 関数。 BLOB の URI パスを受信し、その内容を読み取り、データを Azure Synapse Analytics にプッシュします。
 
   このサンプルには、最新の Azure.Messaging.EventHubs パッケージが使用されています。 Microsoft.Azure.EventHubs パッケージを使用した以前のサンプルは、[こちら](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)で確認できます。
 
@@ -53,7 +53,7 @@ Event Hubs [Capture](./event-hubs-capture-overview.md) は、Event Hubs のス�
 - 関数アプリをホストするための Azure App Service プラン
 - ファイルをキャプチャしたイベントを処理するための関数アプリ
 - Data Warehouse をホストするための論理 SQL サーバー
-- 移行後のデータを格納するための SQL Data Warehouse
+- 移行したデータを格納するための Azure Synapse Analytics
 
 以降のセクションで、このチュートリアルで必要なインフラストラクチャをデプロイするための Azure CLI と Azure PowerShell のコマンドを示します。 コマンドを実行する前に、次のオブジェクトの名前を更新してください。 
 
@@ -91,9 +91,9 @@ New-AzResourceGroup -Name rgDataMigration -Location westcentralus
 New-AzResourceGroupDeployment -ResourceGroupName rgDataMigration -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json -eventHubNamespaceName <event-hub-namespace> -eventHubName hubdatamigration -sqlServerName <sql-server-name> -sqlServerUserName <user-name> -sqlServerDatabaseName <database-name> -storageName <unique-storage-name> -functionAppName <app-name>
 ```
 
-### <a name="create-a-table-in-sql-data-warehouse"></a>SQL Data Warehouse でテーブルを作成する
+### <a name="create-a-table-in-azure-synapse-analytics"></a>Azure Synapse Analytics でテーブルを作成する
 
-[Visual Studio](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-query-visual-studio.md)、[SQL Server Management Studio](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-query-ssms.md)、またはポータルのクエリ エディターを使用して [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) スクリプトを実行して、SQL Data Warehouse 内にテーブルを作成します。 
+[Visual Studio](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-query-visual-studio.md)、[SQL Server Management Studio](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-query-ssms.md)、またはポータルのクエリ エディターを使用して [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) スクリプトを実行して、Azure Synapse Analytics 内にテーブルを作成します。 
 
 ```sql
 CREATE TABLE [dbo].[Fact_WindTurbineMetrics] (
@@ -148,7 +148,7 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
    ![サブスクリプションの作成](./media/store-captured-data-data-warehouse/set-subscription-values.png)
 
 ## <a name="generate-sample-data"></a>サンプル データを作成する  
-以上で、イベント ハブ、SQL Data Warehouse、Azure Function App、および Event Grid サブスクリプションのセットアップが完了しました。 ソース コードの接続文字列とイベント ハブの名前を更新した後、WindTurbineDataGenerator.exe を実行して、イベント ハブへのデータ ストリームを生成できます。 
+これで、イベント ハブ、Azure Synapse Analytics、Azure Function App、および Event Grid サブスクリプションが設定されました。 ソース コードの接続文字列とイベント ハブの名前を更新した後、WindTurbineDataGenerator.exe を実行して、イベント ハブへのデータ ストリームを生成できます。 
 
 1. ポータルで、イベント ハブの名前空間を選択します。 **[接続文字列]** を選択します。
 
@@ -174,9 +174,9 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 6. ソリューションをビルドした後、WindTurbineGenerator.exe アプリケーションを実行します。 
 
 ## <a name="verify-captured-data-in-data-warehouse"></a>Data Warehouse 内にキャプチャされたデータを確認する
-数分後に、SQL Data Warehouse 内のテーブルのクエリを実行します。 WindTurbineDataGenerator によって生成されたデータがイベント ハブにストリーミングされ、Azure Storage コンテナーにキャプチャされた後、Azure 関数によって SQL Data Warehouse テーブルに移行していることを確認します。  
+数分後に、Azure Synapse Analytics のテーブルに対してクエリを実行します。 WindTurbineDataGenerator によって生成されたデータがイベント ハブにストリーミングされ、Azure Storage コンテナーにキャプチャされた後、Azure 関数によって Azure Synapse Analytics テーブルに移行していることを確認します。  
 
 ## <a name="next-steps"></a>次のステップ 
 Data Warehouse で強力なデータ視覚化ツールを使用して、実用的な分析情報を取得できます。
 
-[SQL Data Warehouse での Power BI の使用方法](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect)に関する記事を参照してください。
+この記事では、[Azure Synapse Analytics で Power BI を使用する方法](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect)について説明しています。

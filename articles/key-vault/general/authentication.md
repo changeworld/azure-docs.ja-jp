@@ -7,18 +7,18 @@ ms.date: 08/27/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 1ef5b2229aadc4be46361a7319351a1f27b28b63
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: d247e657e93afd0c43ecee1154c542398304d8dd
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378978"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89481377"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Azure Key Vault に対する認証
 
 Azure Key Vault を使用すると、セキュリティで保護された一元的なクラウド リポジトリにシークレットを格納して、その配布を制御できます。これにより、アプリケーションで資格情報を保存する必要がなくなります。 アプリケーションでそれらのシークレットにアクセスするためには、実行時に Key Vault で認証を行うことだけが必要です。
 
-## <a name="app-identity-and-service-principals"></a>アプリの ID とサービス プリンシパル
+## <a name="app-identity-and-security-principals"></a>アプリ ID とセキュリティ プリンシパル
 
 Key Vault による認証は、特定の**セキュリティ プリンシパル**の ID の認証を行う [Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) と連携して機能します。
 
@@ -40,7 +40,7 @@ Key Vault による認証は、特定の**セキュリティ プリンシパル*
 
 * マネージド ID を使用できない場合は、Azure AD テナントにアプリケーションを**登録**します。詳細については、[クイックスタート: Azure ID プラットフォームでのアプリケーションの登録](/azure/active-directory/develop/quickstart-register-app)に関する記事を参照してください。 また、登録によって、すべてのテナントでそのアプリを示す 2 つ目のアプリケーション オブジェクトも作成されます。
 
-## <a name="authorize-a-service-principal-to-access-key-vault"></a>サービス プリンシパルが Key Vault にアクセスすることを承認する
+## <a name="authorize-a-security-principal-to-access-key-vault"></a>セキュリティ プリンシパルが Key Vault にアクセスすることを承認する
 
 Key Vault は、2 つの異なる承認レベルで動作します。
 

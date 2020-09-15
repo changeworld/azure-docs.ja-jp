@@ -4,12 +4,12 @@ description: この記事では、Azure Migrate を使用して、AWS VM を Azu
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 72579c103102196e641244600ce9add64d6e20a4
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 6c4b53e3c3673b913e4afbfb65801d83f0640bd3
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419012"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651841"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>アマゾン ウェブ サービス (AWS) の VM を検出して評価し、Azure に移行する
 
@@ -43,12 +43,17 @@ Azure に移行する前に、VM の検出と移行の評価を行うことが�
 1. [チュートリアル](./tutorial-prepare-physical.md)に従って、評価のために Azure の設定と AWS VM の準備を行います。 以下の点に注意してください。
 
     - Azure Migrate では、AWS インスタンスを検出するときにパスワード認証が使用されます。 AWS インスタンスは、既定ではパスワード認証をサポートしていません。 インスタンスを検出するには、パスワード認証を有効にする必要があります。
-        - Windows マシンの場合は、WinRM ポート 5986 (HTTPS) と 5985 (HTTP) を許可します。 これにより、リモート WMI 呼び出しが可能になります。 設定した場合。 
+        - Windows マシンの場合、WinRM ポート 5985 (HTTP) を許可します。 これにより、リモート WMI 呼び出しが可能になります。
         - Linux マシンの場合:
             1. 各 Linux マシンにサインインします。
             2. 次のようにして sshd_config ファイルを開きます。vi /etc/ssh/sshd_config
             3. ファイルで、**PasswordAuthentication** 行を見つけ、値を **yes** に変更します。
             4. ファイルを保存して閉じます。 sshdサービスを再起動します。
+    - ルート ユーザーを使用して Linux VM を検出する場合、VM でルート ログインが許可されることを確認してください。
+        1. 各 Linux マシンにサインインします。
+        2. 次のようにして sshd_config ファイルを開きます。vi /etc/ssh/sshd_config
+        3. ファイルで、**PermitRootLogin** 行を見つけ、値を **yes** に変更します。
+        4. ファイルを保存して閉じます。 sshdサービスを再起動します。
 
 2. 次に、[このチュートリアル](./tutorial-assess-physical.md)に従って Azure Migrate プロジェクトとアプライアンスを設定し、お使いの AWS VM を検出して評価します。
 

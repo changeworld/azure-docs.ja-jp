@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:Python を使用して Azure データ ファクトリを作成する
-description: Azure データ ファクトリを作成して、Azure Blob Storage 内のある場所から別の場所にデータをコピーします。
+description: データ ファクトリを使用して、Azure Blob Storage 内のある場所から別の場所にデータをコピーします。
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -13,12 +13,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 7fd82e83c97c933173f168b7d79d5b6d6a3243b9
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: e511b8b5505f1fa8713d81d0ce959df32ef28503
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873298"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439114"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>クイック スタート:Python を使用してデータ ファクトリとパイプラインを作成する
 
@@ -32,7 +32,7 @@ ms.locfileid: "87873298"
 
 Azure Data Factory は、データドリブン型のワークフローを作成することでデータの移動と変換を制御し、自動化することができるクラウドベースのデータ統合サービスです。 Azure Data Factory を使用すると、パイプラインと呼ばれるデータ駆動型ワークフローを作成し、スケジュールを設定できます。
 
-パイプラインは、さまざまなデータ ストアからデータを取り込むことができます。 パイプラインは、Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics、Azure Machine Learning などのコンピューティング サービスを使ってデータを処理または変換します。 その出力データは Azure SQL Data Warehouse などのデータ ストアに発行され、ビジネス インテリジェンス (BI) アプリケーションから利用することができます。
+パイプラインは、さまざまなデータ ストアからデータを取り込むことができます。 パイプラインは、Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics、Azure Machine Learning などのコンピューティング サービスを使ってデータを処理または変換します。 出力データは、ビジネス インテリジェンス (BI) アプリケーション向けに、パイプラインによって、Azure Synapse Analytics (旧称 SQL Data Warehouse) などのデータ ストアに発行されます。
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/27/2020
+ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 8ba81b669c25d91efa8ad1f07b1a7835b42c5cf4
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 7638ad070e8ac8bd99cbfb49b99bbb347a243a21
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310832"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505439"
 ---
 # <a name="quickstart-create-custom-alerts"></a>クイック スタート:カスタム アラートの作成
 
@@ -67,8 +67,8 @@ ms.locfileid: "81310832"
 
 ## <a name="customize-an-alert"></a>アラートのカスタマイズ
 
-1. IoT ハブを開きます。
-1. **[セキュリティ]** セクションで **[カスタム アラート]** をクリックします。
+1. ご利用の IoT Hub を開き、 **[セキュリティ]** メニューから **[設定]** メニューを選択します。 
+1. **[カスタム アラート]** をクリックします。
 1. カスタマイズの適用先にしたいセキュリティ グループを選択します。
 1. **[Add a custom alert]\(カスタム アラートの追加\)** をクリックします。
 1. ドロップダウン リストからカスタムのアラートを選択します。

@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 08/25/2020
+ms.date: 09/08/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: dbcd8ab2f2825e18943436dcc1a9ca4ff38e2d8d
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 2ce5f0c9b340e1b81fcf002ee70e7ec1cc74d38c
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871209"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594324"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理とは
 
@@ -153,7 +153,7 @@ Azure AD Premium P2 ライセンスは、次のタスクでは必要**ありま�
 - カタログ作成者、カタログ所有者、アクセス パッケージ マネージャーなどの管理タスクを委任されたユーザーには、ライセンスは必要ありません。
 - アクセス パッケージを要求**できる**が、アクセス パッケージを要求**しない**ゲストには、ライセンスは必要ありません。
 
-メンバー ユーザー (従業員) に対して購入する有料の Azure AD Premium P2 ライセンスごとに、Azure AD B2B を使用して、最大 5 人のゲスト ユーザーを招待できます。 これらのゲスト ユーザーも Azure AD Premium P2 の機能を使用できます。 詳細については、[Azure AD B2B コラボレーションのライセンス ガイダンス](../external-identities/licensing-guidance.md)を参照してください。
+Azure AD External Identities (ゲスト ユーザー) の価格は、1 か月間に認証アクティビティを行った一意のユーザーの数である、月間アクティブ ユーザー数 (MAU) に基づいています。 このモデルは、テナントの Azure AD Premium ライセンスごとに最大 5 人のゲスト ユーザーが許可されていた 1:5 の比率の課金モデルに代わるものです。 テナントがサブスクリプションにリンクされており、External Identities 機能を使用してゲスト ユーザーと共同作業する場合、MAU ベースの課金モデルを使用して自動的に課金されます。 詳細については、[Azure AD External Identities](../external-identities/external-identities-pricing.md) の課金モデルを参照してください。
 
 ライセンスの詳細については、[Azure Active Directory ポータルを使用したライセンスの割り当てと削除](../fundamentals/license-users-groups.md)に関するページを参照してください。
 

@@ -7,14 +7,14 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.topic: overview
 ms.date: 06/30/2020
-ms.openlocfilehash: e28638e8daec5dcc283d61474d63ec41ec56ae63
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d52dd19667da005de54bbf9b4d30207976511c7d
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101131"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567811"
 ---
-# <a name="frequently-asked-questions-about-azure-dev-tools-for-teaching"></a>Azure Dev Tools for Teaching についてよく寄せられる質問
+# <a name="frequently-asked-questions-about-the-education-hub"></a>Education Hub に関してよく寄せられる質問
 
 この記事では、Microsoft Azure for Students、Microsoft Azure for Students Starter、Azure Dev Tools for Teaching についてよく寄せられる質問にお答えします。
 
@@ -152,6 +152,11 @@ Azure コース クレジットは、Azure スポンサー プランをアクテ
 Azure portal のサブスクリプション ブレードで特定のサブスクリプションを見ると、そのプロパティの 1 つとして **[プラン名]** が表示されます。 サブスクリプションがコース クレジットにひも付けられていれば、そのプラン名が **Azure スポンサー プラン**となっているはずです。 **Azure スポンサー プラン**が表示されない場合は、サブスクリプションを変更するためにサポートにお問い合わせください。
 
 ## <a name="azure-dev-tools-for-teaching"></a>Azure Dev Tools for Teaching
+
+### <a name="who-is-eligible-to-purchase-microsoft-azure-dev-tools-for-teaching"></a>Microsoft Azure Dev Tools for Teaching は誰が購入できますか。
+
+Microsoft とのボリューム ライセンス (VL) 契約を購入した教育機関のみ Azure Dev Tools for Teaching に登録できます。  現在、Dev Tools for Teaching のお客様であるが VL 契約をお持ちでない場合、サブスクリプションを引き続き更新できます。 教育機関向けの VL 契約の詳細については、 https://aka.ms/ees にアクセスしてください 
+
 
 ### <a name="what-products-are-included-in-the-azure-dev-tools-for-teaching-subscription"></a>Azure Dev Tools for Teaching サブスクリプションに含まれる製品を教えてください。
 

@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 08/14/2020
-ms.openlocfilehash: 104654a721912324cdc8ea636e8b4e75765e73f7
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: ce47bc5e880f15eaa1bbf07477673d2475e5a10a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268895"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489920"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>チュートリアル:Azure Data Share を使用したデータの受け入れと受信  
 
@@ -41,7 +41,7 @@ ms.locfileid: "89268895"
 ### <a name="receive-data-into-a-sql-based-target"></a>SQL ベースのターゲットへのデータの受信:
 
 * SQL サーバー上のデータベースに書き込む権限。これは、*Microsoft.Sql/servers/databases/write* に含まれています。 この権限は、投稿者ロール内に存在します。 
-* データ共有リソースのマネージド ID が Azure SQL Database または Azure SQL Data Warehouse にアクセスするためのアクセス許可。 この操作を行うには、以下の手順を実行します。 
+* データ共有リソースのマネージド ID が Azure SQL Database または Azure Synapse Analytics にアクセスするためのアクセス許可。 この操作を行うには、以下の手順を実行します。 
     1. 自分自身を SQL サーバーの Azure Active Directory 管理者として設定します。
     1. Azure Active Directory を使用して Azure SQL Database/Data Warehouse に接続します。
     1. クエリ エディター (プレビュー) を使用して次のスクリプトを実行し、Data Share のマネージド ID を "db_datareader、db_datawriter、db_ddladmin" として追加します。 SQL Server 認証ではなく Active Directory を使用して接続する必要があります。 

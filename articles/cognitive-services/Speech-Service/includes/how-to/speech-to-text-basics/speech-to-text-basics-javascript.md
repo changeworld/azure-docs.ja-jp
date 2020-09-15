@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/15/2020
 ms.author: trbye
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 5ab742e7ce2d198a321e15118522e6866bd1d104
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: fced9206bfd7d33ab4d9e911f92f12ec4b2aa99c
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405868"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89564993"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -77,27 +77,30 @@ const speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourS
 
 ## <a name="initialize-a-recognizer"></a>認識エンジンを初期化する
 
-[`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest) を作成したら、次の手順として、[`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) を初期化します。 [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) を初期化する場合は、それを自分の `speechConfig` に渡す必要があります。 これにより、Speech Service がお客様の要求を検証するために必要な資格情報が提供されます。
-
-ご利用のデバイスの既定のマイクを使用して音声を認識している場合、[`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) は次のようになります。
+[`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest) を作成したら、次の手順として、[`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) を初期化します。 [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) を初期化する場合は、それに自分の `speechConfig` を渡します。 これにより、Speech Service がお客様の要求を検証するために必要な資格情報が提供されます。
 
 ```javascript
 const recognizer = new SpeechRecognizer(speechConfig);
 ```
 
-オーディオ入力デバイスを指定する場合は、[`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest) を作成し、[`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) を初期化するときに `audioConfig` パラメーターを指定する必要があります。
+## <a name="recognize-from-microphone-or-file"></a>マイクまたはファイルから認識する
 
-> [!TIP]
-> [自分のオーディオ入力デバイスのデバイス ID を取得する方法の詳細](../../../how-to-select-audio-input-devices.md)。
+オーディオ入力デバイスを指定する場合は、[`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest) を作成し、[`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) を初期化するときにパラメーターとして渡す必要があります。
 
-`AudioConfig` オブジェクトを次のように参照します。
+デバイス マイクを使用して音声を認識するには、`fromDefaultMicrophoneInput()` を使用して `AudioConfig` を作成し、`SpeechRecognizer` オブジェクトの作成時にオーディオ構成を渡します。
 
 ```javascript
 const audioConfig = AudioConfig.fromDefaultMicrophoneInput();
 const recognizer = new SpeechRecognizer(speechConfig, audioConfig);
 ```
 
-マイクを使用するのでなくオーディオ ファイルを提供する場合でも、`audioConfig` を指定する必要があります。 ただし、これを行うことができるのは **Node.js** を対象とする場合のみであり、[`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest) を作成するときに、`fromDefaultMicrophoneInput`を呼び出すのではなく、`fromWavFileOutput` を呼び出して `filename` パラメーターを渡します。
+> [!TIP]
+> [自分のオーディオ入力デバイスのデバイス ID を取得する方法の詳細](../../../how-to-select-audio-input-devices.md)。
+
+マイクを使用するのでなくオーディオ ファイルから音声を認識する場合でも、`AudioConfig` を指定する必要があります。 ただし、`fromDefaultMicrophoneInput()` を呼び出さずに、[`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest) を作成する場合は、`fromWavFileInput()` を呼び出して `filename` パラメーターを渡します。
+
+> [!IMPORTANT]
+> ファイルからの音声認識は、**Node.js** SDK で "*のみ*" サポートされています。
 
 ```javascript
 const audioConfig = AudioConfig.fromWavFileInput("YourAudioFile.wav");

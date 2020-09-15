@@ -1,5 +1,5 @@
 ---
-title: 音声合成のクイックスタート - Speech サービス
+title: テキスト読み上げクイックスタート - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: Speech SDK を使用してテキストを音声に変換する方法について説明します。 このクイックスタートでは、オブジェクトの構築と設計パターン、サポートされているオーディオ出力形式、Speech CLI、音声合成でのカスタム構成オプションについて説明します。
 services: cognitive-services
@@ -8,18 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 08/11/2020
+ms.date: 09/01/2020
 ms.author: trbye
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: speech-full-stack
-ms.openlocfilehash: 12ee7fbbd7699d09deae85971ffe411e115609ec
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+keywords: テキスト読み上げ
+ms.openlocfilehash: 79409f95d698e015d15d9131dcf1f27b34b03343
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934696"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89400912"
 ---
-# <a name="get-started-with-speech-synthesis"></a>音声合成を使ってみる
+# <a name="get-started-with-text-to-speech"></a>テキスト読み上げの概要
 
 このクイックスタートでは、Speech SDK を使用してテキスト読み上げ合成を行うための一般的な設計パターンについて説明します。 まずは基本的な構成と合成を行った後、次のようなより高度なカスタム アプリケーション開発の例に進みます。
 

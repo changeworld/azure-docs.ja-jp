@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 08/29/2020
+ms.date: 09/02/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: e5682d511b20f7b6f4dbfbd7487e39f345b660fa
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 25bdf2fba67b3a2b42a24416a9de692cf3e992dd
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262857"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421375"
 ---
 # <a name="tutorial-install-azure-stack-edge-with-gpu"></a>チュートリアル:GPU 搭載の Azure Stack Edge を設置する
 
@@ -221,6 +221,10 @@ Azure Stack Edge デバイスの仕様は以下のとおりです。
 4. ラックの配電ユニット (PDU) に電源コードを接続します。 2 つの PSU が別の電源を使用していることを確認します。
 5. 電源ボタンを押してデバイスを有効にします。
 6. 1 GbE ネットワーク インターフェイスのポート 1 を、物理デバイスの構成に使用するコンピューターに接続します。 ポート 1 は、管理インターフェイスとして機能します。
+    
+    > [!NOTE]
+    > デバイスにコンピューターを (スイッチ経由ではなく) 直接接続する場合、クロスオーバー ケーブルか USB イーサネット アダプターを使用します。
+
 7. ポート 2、ポート 3、ポート 4、ポート 5、ポート 6 のうちの 1 つ以上をデータセンター ネットワーク/インターネットに接続します。
 
     - ポート 2 を接続する場合は、1-GbE RJ-45 ネットワーク ケーブルを使用します。
@@ -235,7 +239,7 @@ Azure Stack Edge デバイスの仕様は以下のとおりです。
 > * デバイスをラックに取り付ける
 > * デバイスをケーブル接続する
 
-次のチュートリアルに進み、デバイスの接続、設定、およびアクティブ化を行う方法を学習してください。
+次のチュートリアルに進み、デバイスに接続する方法について学習してください。
 
 > [!div class="nextstepaction"]
 > [Azure Stack Edge を接続する](./azure-stack-edge-gpu-deploy-connect.md)

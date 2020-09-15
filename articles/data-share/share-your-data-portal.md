@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: quickstart
 ms.date: 08/19/2020
-ms.openlocfilehash: 5ceaf949df88468b2239bd901f639ba6096b0d5f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 41598c04af78d4366435259357d8f897ac178942
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269643"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489937"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Data Share を使用してデータを共有する
 
@@ -67,7 +67,7 @@ Azure リソース グループに Azure Data Share リソースを作成しま�
 
    ![共有にデータセットを追加する](./media/datasets.png "データセット")
 
-1. 追加するデータセットの種類を選択します。 前の手順で選択した共有の種類 (スナップショットまたはインプレース) によって異なる種類のデータセット一覧が表示されます。 Azure SQL Database または Azure SQL Data Warehouse から共有する場合は、いくつかの SQL 資格情報を入力するように求められます。 前提条件の中で作成したユーザーを使用して、認証します。
+1. 追加するデータセットの種類を選択します。 前の手順で選択した共有の種類 (スナップショットまたはインプレース) によって異なる種類のデータセット一覧が表示されます。 Azure SQL Database または Azure Synapse Analytics から共有する場合は、いくつかの SQL 資格情報を入力するように求められます。 前提条件の中で作成したユーザーを使用して、認証します。
 
    ![AddDatasets](./media/add-datasets.png "データセットを追加する")    
 

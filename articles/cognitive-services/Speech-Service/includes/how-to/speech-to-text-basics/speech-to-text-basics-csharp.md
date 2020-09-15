@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/11/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8a8647e7f19b55547bbb7eff6f1f3bc1f5282c89
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3d9e21c317240d27c8b32bd3daec0fcc66013e54
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934542"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89564994"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -48,34 +48,29 @@ var speechConfig = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourSer
 
 ## <a name="initialize-a-recognizer"></a>認識エンジンを初期化する
 
-[`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) を作成したら、次の手順として、[`SpeechRecognizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet) を初期化します。 [`SpeechRecognizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet) を初期化する場合は、それを自分の `speechConfig` に渡す必要があります。 これにより、Speech Service がお客様の要求を検証するために必要な資格情報が提供されます。
-
-ご利用のデバイスの既定のマイクを使用して音声を認識している場合、[`SpeechRecognizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet) は次のようになります。
+[`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) を作成したら、次の手順として、[`SpeechRecognizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet) を初期化します。 [`SpeechRecognizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet) を初期化する場合は、それに自分の `speechConfig` を渡します。 これにより、Speech Service がお客様の要求を検証するために必要な資格情報が提供されます。
 
 ```csharp
 using var recognizer = new SpeechRecognizer(speechConfig);
 ```
 
-オーディオ入力デバイスを指定する場合は、[`AudioConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-dotnet) を作成し、[`SpeechRecognizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet) を初期化するときに `audioConfig` パラメーターを指定する必要があります。
+## <a name="recognize-from-microphone-or-file"></a>マイクまたはファイルから認識する
 
-> [!TIP]
-> [自分のオーディオ入力デバイスのデバイス ID を取得する方法の詳細](../../../how-to-select-audio-input-devices.md)。
+オーディオ入力デバイスを指定する場合は、[`AudioConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-dotnet) を作成し、[`SpeechRecognizer`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet) を初期化するときにパラメーターとして渡す必要があります。
 
-まず、次の `using` ステートメントを追加します。
+デバイス マイクを使用して音声を認識するには、`FromDefaultMicrophoneInput()` を使用して `AudioConfig` を作成し、`SpeechRecognizer` オブジェクトの作成時にオーディオ構成を渡します。
 
 ```csharp
 using Microsoft.CognitiveServices.Speech.Audio;
-```
 
-これで、`AudioConfig` オブジェクトを次のように参照できるようになります。
-
-```csharp
 using var audioConfig = AudioConfig.FromDefaultMicrophoneInput();
 using var recognizer = new SpeechRecognizer(speechConfig, audioConfig);
 ```
 
-マイクを使用するのでなくオーディオ ファイルを提供する場合でも、`audioConfig` を指定する必要があります。 ただし、`FromDefaultMicrophoneInput` を呼び出すのではなく、[`AudioConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-dotnet) を作成する場合は、`FromWavFileOutput` を呼び出して `filename` パラメーターを渡します。
+> [!TIP]
+> [自分のオーディオ入力デバイスのデバイス ID を取得する方法の詳細](../../../how-to-select-audio-input-devices.md)。
 
+マイクではなくオーディオ ファイルから音声を認識する場合でも、`AudioConfig` を作成する必要があります。 ただし、`FromDefaultMicrophoneInput()` を呼び出さずに、[`AudioConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-dotnet) を作成する場合は、`FromWavFileInput()` を呼び出して `filename` パラメーターを渡します。
 
 ```csharp
 using var audioConfig = AudioConfig.FromWavFileInput("YourAudioFile.wav");

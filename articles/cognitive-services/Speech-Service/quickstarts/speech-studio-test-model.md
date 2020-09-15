@@ -1,25 +1,25 @@
 ---
-title: クイック スタート:オーディオ ファイルを使用してモデルをテストする - Speech Studio
+title: オーディオ ファイルを使用してモデルをテストする - Speech Studio
 titleSuffix: Azure Cognitive Services
-description: このクイックスタートでは、Speech Studio を使用してオーディオ ファイルで音声認識をテストします。
+description: このガイドでは、Speech Studio を使用してオーディオ ファイルで音声認識をテストします。
 services: cognitive-services
 author: v-demjoh
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 06/25/2020
+ms.date: 09/04/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 76fb933893b624e9b289ddf51d2a0373b51e58d1
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 9101944a567df5000d3584ed48eff24e4c5e0057
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391538"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565805"
 ---
-# <a name="quickstart-test-a-model-using-an-audio-file-in-speech-studio"></a>クイック スタート:Speech Studio でオーディオ ファイルを使用してモデルをテストする
+# <a name="test-a-model-using-an-audio-file-in-speech-studio"></a>Speech Studio でオーディオ ファイルを使用してモデルをテストする
 
-このクイックスタートでは、Speech Studio を使用して音声をオーディオ ファイルからテキストに変換します。 Speech Studio を使用すると、関連するテキスト、人間とラベルが付いた文字起こしデータを含むオーディオ、および指定した発音ガイダンスを使用して、音声認識モデルのテスト、比較、改善、デプロイを行うことができます。
+このガイドでは、Speech Studio を使用して音声をオーディオ ファイルからテキストに変換します。 Speech Studio を使用すると、関連するテキスト、人間とラベルが付いた文字起こしデータを含むオーディオ、および指定した発音ガイダンスを使用して、音声認識モデルのテスト、比較、改善、デプロイを行うことができます。
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -3,12 +3,12 @@ title: クラウドへのイベントベースのビデオ記録とクラウド�
 description: このチュートリアルでは、Azure Live Video Analytics on Azure IoT Edge を使用して、イベントベースのビデオ録画をクラウドに記録し、これをクラウドから再生する方法について説明します。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: cbd00bf5737e9833a860e154c629bb344416b6ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 05ee34770cacdcda270afced13373a61ba83e13a
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011772"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568568"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>チュートリアル:クラウドへのイベントベースのビデオ記録とクラウドからの再生
 
@@ -62,7 +62,8 @@ ms.locfileid: "87011772"
 
 また、特定のイベントが発生したことを推論サービスが検出した場合にのみ記録をトリガーすることもできます。 このチュートリアルでは、高速道路を移動する車両のビデオを使用し、トラックが検出されるたびにビデオ クリップを記録します。
 
-![メディア グラフ](./media/event-based-video-recording-tutorial/overview.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/event-based-video-recording-tutorial/overview.svg" alt-text="メディア グラフ":::
 
 図は、目的のシナリオを実現する[メディア グラフ](media-graph-concept.md)と追加のモジュールを視覚的に表現したものです。 次の 4 つの IoT Edge モジュールが関与します。
 
@@ -80,7 +81,8 @@ ms.locfileid: "87011772"
 
 開始する前に、[前提条件](#prerequisites)の 3 番目の項目が完了していることを確認してください。 リソース設定スクリプトが完了したら、中かっこを選択してフォルダー構造を展開します。 ~/clouddrive/lva-sample ディレクトリに、いくつかのファイルが作成されていることがわかります。
 
-![アプリケーション設定](./media/quickstarts/clouddrive.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/quickstarts/clouddrive.png" alt-text="アプリ設定":::
 
 このチュートリアルで注目するのは、次のファイルです。
 
@@ -152,7 +154,8 @@ IoT Edge 配置マニフェスト内でルートを宣言する方法に関す�
 
 Visual Studio Code を使用し、[こちらの手順](../../iot-edge/tutorial-develop-for-linux.md#build-and-push-your-solution)に従って Docker にサインインします。 次に、 **[Build and Push IoT Edge Solution]\(IoT Edge ソリューションをビルドしてプッシュする\)** を選択します。 この手順では、src/edge/deployment.objectCounter.template.json を使用します。
 
-![IoT Edge ソリューションをビルドしてプッシュする](./media/event-based-video-recording-tutorial/build-push.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/event-based-video-recording-tutorial/build-push.png" alt-text="IoT Edge ソリューションをビルドしてプッシュする":::
 
 このアクションにより、オブジェクト カウント用の objectCounter モジュールがビルドされ、お使いの Azure Container Registry に画像がプッシュされます。
 
@@ -160,7 +163,8 @@ Visual Studio Code を使用し、[こちらの手順](../../iot-edge/tutorial-d
 
 この手順により、src/edge/config/deployment.objectCounter.amd64.json に IoT Edge 配置マニフェストが作成されます。 そのファイルを右クリックし、 **[Create Deployment for Single Device]\(単一デバイスのデプロイの作成\)** を選択します。
 
-![単一デバイスのデプロイを作成する](./media/quickstarts/create-deployment-single-device.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/quickstarts/create-deployment-single-device.png" alt-text="単一デバイスのデプロイを作成する":::
 
 これが Live Video Analytics on IoT Edge を使用する最初のチュートリアルである場合は、IoT Hub 接続文字列を入力するように Visual Studio Code から求められます。 これは、appsettings.json ファイルからコピーできます。
 
@@ -169,7 +173,8 @@ Visual Studio Code を使用し、[こちらの手順](../../iot-edge/tutorial-d
 この段階で、お使いの IoT Edge デバイスへのエッジ モジュールのデプロイが開始されました。
 30 秒ほど経過したら、Visual Studio Code の左下のセクションで Azure IoT Hub を最新の情報に更新してください。 そうすると、lvaEdge、rtspsim、yolov3、および objectCounter という名前の 4 つのモジュールがデプロイされていることがわかります。
 
-![デプロイされた 4 つのモジュール](./media/event-based-video-recording-tutorial/iot-hub.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/event-based-video-recording-tutorial/iot-hub.png" alt-text="デプロイされた 4 つのモジュール":::
 
 ## <a name="prepare-for-monitoring-events"></a>イベントを監視するための準備をする
 
@@ -179,9 +184,10 @@ objectCounter モジュールおよび Live Video Analytics on IoT Edge モジ�
 1. **[デバイス]** ノードを展開します。
 1. lva-sample-device ファイルを右クリックし、 **[組み込みイベント エンドポイントの監視を開始します]** を選択します。
 
-   ![組み込みイベント エンドポイントの監視を開始する](./media/quickstarts/start-monitoring-iothub-events.png)
-
-## <a name="run-the-program"></a>プログラムの実行
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/quickstarts/start-monitoring-iothub-events.png" alt-text="組み込みイベント エンドポイントの監視を開始する":::
+    
+    ## <a name="run-the-program"></a>プログラムの実行
 
 1. Visual Studio Code で、src/cloud-to-device-console-app/operations.json に移動します。
 
@@ -390,13 +396,14 @@ applicationProperties の subject セクションが、このメッセージの�
 1. ご自分のサブスクリプション内のリソースの中からお使いの Media Services アカウントを見つけます。 アカウント ペインを開きます。
 1. **[Media Services]** の一覧で、 **[資産]** を選択します。
 
-    ![アセット](./media/continuous-video-recording-tutorial/assets.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/continuous-video-recording-tutorial/assets.png" alt-text="継続的なビデオ記録":::
 1. sampleAssetFromEVR-LVAEdge-{DateTime} という名前の資産が見つかります。 これは、RecordingStarted イベントの outputLocation プロパティに指定されている名前です。 この名前の生成方法は、トポロジ内の assetNamePattern によって決定されます。
 1. 資産を選択します。
 1. 資産の詳細ページで、 **[ストリーミング URL]** テキスト ボックスの下の **[新規作成]** を選択します。
 
-    ![新しい資産](./media/continuous-video-recording-tutorial/new-asset.png)
-
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/continuous-video-recording-tutorial/new-asset.png" alt-text="新しい資産":::
 1. 開いたウィザードで、既定のオプションをそのまま使用し、 **[追加]** を選択します。 詳細については、[ビデオ再生](video-playback-concept.md)に関するページをご覧ください。
 
     > [!TIP]

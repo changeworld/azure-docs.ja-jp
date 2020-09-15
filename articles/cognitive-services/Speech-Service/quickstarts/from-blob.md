@@ -1,25 +1,25 @@
 ---
-title: クイック スタート:Blob Storage に格納された音声を認識する
+title: Blob Storage に格納された音声を認識する
 titleSuffix: Azure Cognitive Services
-description: このクイックスタートでは、バッチ文字起こし REST API を使用して、SAS BLOB に格納された音声を非同期的に認識します。
+description: このガイドでは、バッチ文字起こし REST API を使用して、SAS BLOB に格納された音声を非同期的に認識します。
 services: cognitive-services
 author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 06/25/2020
+ms.date: 09/04/2020
 ms.author: trbye
 ms.custom: devx-track-javascript, devx-track-csharp
 zone_pivot_groups: programming-languages-set-two-with-js
-ms.openlocfilehash: 3c6ae5a7635222b48ce097c6c517cebb60f961aa
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 28da97cb54c0147edc3d1609596b56db81546f18
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88926145"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569418"
 ---
-# <a name="quickstart-recognize-speech-stored-in-blob-storage"></a>クイック スタート:Blob Storage に格納された音声を認識する
+# <a name="recognize-speech-stored-in-blob-storage"></a>Blob Storage に格納された音声を認識する
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/from-blob/header.md)]

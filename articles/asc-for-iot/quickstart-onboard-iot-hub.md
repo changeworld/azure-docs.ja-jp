@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2019
+ms.date: 09/06/2020
 ms.author: mlottner
-ms.openlocfilehash: 0d3e4ad63baf6883aa8fadaca5b1f2d28fa14881
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 1538143c33991c5dc91a096c7df4297bc18e5af5
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310748"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504045"
 ---
 # <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>クイック スタート:IoT Hub で Azure Security Center for IoT サービスをオンボードする
 
@@ -52,8 +52,8 @@ IoT ソリューションのセキュリティを確保するために、IoT デ
 
 一連の IP アドレス データを有効または無効にするには、次の手順に従います。
 
-1. ご利用の IoT ハブを開き、 **[セキュリティ]** メニューから **[概要]** を選択します。
-1. **[設定]** 画面を選択し、位置情報または IP 処理設定に適宜変更を加えます。
+1. ご利用の IoT Hub を開き、 **[セキュリティ]** メニューから **[設定]** メニューを選択します。
+1. **[データ コレクション]** 画面を選択し、位置情報または IP 処理設定に適宜変更を加えます。
 
 ### <a name="log-analytics-creation"></a>Log Analytics の作成
 
@@ -61,8 +61,8 @@ Azure Security Center for IoT を有効にすると、IoT デバイス、IoT Edg
 
 Log Analytics のワークスペースの構成を変更するには、次の手順に従います。
 
-1. ご利用の IoT ハブを開き、 **[セキュリティ]** メニューから **[概要]** を選択します。
-1. **[設定]** 画面を選択し、Log Analytics 設定のワークスペース構成に適宜変更を加えます。
+1. ご利用の IoT Hub を開き、 **[セキュリティ]** メニューから **[設定]** メニューを選択します。
+1. **[データ コレクション]** 画面を選択し、Log Analytics 設定のワークスペース構成に適宜変更を加えます。
 
 ### <a name="customize-your-iot-security-solution"></a>IoT セキュリティ ソリューションをカスタマイズする
 
@@ -70,8 +70,8 @@ Log Analytics のワークスペースの構成を変更するには、次の手
 
 特定の IoT ハブに対して Azure Security Center for IoT サービスを有効または無効にするには、次の手順に従います。
 
-1. ご利用の IoT ハブを開き、 **[セキュリティ]** メニューから **[概要]** を選択します。
-1. **[設定]** 画面を選択し、ご利用の Azure サブスクリプションに存在する IoT ハブのセキュリティ設定に適宜変更を加えます。
+1. ご利用の IoT Hub を開き、 **[セキュリティ]** メニューから **[設定]** メニューを選択します。
+1. **[データ コレクション]** 画面を選択し、ご利用の Azure サブスクリプションに存在する IoT ハブのセキュリティ設定に適宜変更を加えます。
 
 ## <a name="next-steps"></a>次のステップ
 

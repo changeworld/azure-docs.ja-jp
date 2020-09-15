@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 70e86e01a9d37a27620d451bcd5d035dfcb4573d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 538aa29ab66fce48da944dbdf9ea79d5c8f7f330
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89237124"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421290"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Azure Attestation を設定する
 
@@ -159,26 +159,27 @@ TagsTable:
 
 構成証明プロバイダーは、Remove-AzAttestation コマンドレットを使用して削除できます。  
 
-``azurepowershell Remove-AzAttestation -Name $attestationProvider -ResourceGroupName $attestationResourceGroup
+```powershell
+Remove-AzAttestation -Name $attestationProvider -ResourceGroupName $attestationResourceGroup
 ```
 
-## Policy management
+## <a name="policy-management"></a>ポリシー管理
 
-In order to manage policies, an Azure AD user requires the following permissions for "Actions":
+ポリシーを管理するには、Azure AD ユーザーに "Actions" の次のアクセス許可が必要になります。
 - Microsoft.Attestation/attestationProviders/attestation/read
 - Microsoft.Attestation/attestationProviders/attestation/write
 - Microsoft.Attestation/attestationProviders/attestation/delete
 
-These permissions can be assigned to an AD user through a role such as "Owner" (wildcard permissions), "Contributor" (wildcard permissions) or "Attestation Contributor" (specific permissions for Azure Attestation only).  
+これらのアクセス許可は、"所有者" (ワイルドカードのアクセス許可)、"共同作成者" (ワイルドカードのアクセス許可)、"構成証明の共同作成者" (Azure Attestation 専用のアクセス許可) などのロールを経由して AD ユーザーに割り当てることができます。  
 
-In order to read policies, an Azure AD user requires the following permission for "Actions":
+ポリシーを読み込むには、Azure AD ユーザーに "Actions" の次のアクセス許可が必要になります。
 - Microsoft.Attestation/attestationProviders/attestation/read
 
-This permission can be assigned to an AD user through a role such as "Reader" (wildcard permissions) or "Attestation Reader" (specific permissions for Azure Attestation only).
+このアクセス許可は、"閲覧者" (ワイルドカードのアクセス許可) や "構成証明リーダー" (Azure Attestation 専用のアクセス許可) などのロールを経由して AD ユーザーに割り当てることができます。
 
-Below PowerShell cmdlets provide policy management for an attestation provider (one TEE at a time).
+構成証明プロバイダー用のポリシーの管理は、以下の PowerShell コマンドレットで行うことができます (一度に 1 TEE)。
 
-Get-AzAttestationPolicy returns the current policy for the specified TEE. The cmdlet displays policy in both text and JWT format of the policy.
+Get-AzAttestationPolicy からは、指定の TEE の現行ポリシーが返されます。 このコマンドレットでは、ポリシーのテキストと JWT 形式の両方でポリシーが表示されます。
 
 ```powershell
 $teeType = "<tee Type>"

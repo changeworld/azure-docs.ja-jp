@@ -10,14 +10,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/05/2018
+ms.date: 09/09/2020
 ms.author: duau
-ms.openlocfilehash: 3956a843e67dba82486f350fc4380d4c8f6065f1
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: bbd45a4190cfa1199568c23cc346b9ccacc20ac5
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399822"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648873"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>チュートリアル:Front Door カスタム ドメインで HTTPS を構成する
 
@@ -219,7 +219,27 @@ postmaster@&lt;your-domain-name.com&gt;
 We encountered an unexpected error while processing your HTTPS request. Please try again and contact support if the issue persists.
 </code>
 
+## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
+1. *証明書プロバイダーはだれですか。どのような種類の証明書が使用されますか。*
+
+    カスタム ドメインには、DigiCert によって提供される、専用/単一の証明書が使用されます。 
+
+2. *IP ベースと SNI のどちらの TLS/SSL を使用しますか。*
+
+    Azure Front Door では、SNI TLS/SSL が使用されます。
+
+3. *DigiCert からドメインの検証電子メールが送られて来ない場合はどうすればよいでしょうか。*
+
+    エンドポイントのホスト名を直接指す、カスタム ドメインの CNAME エントリがある場合 (かつ、afdverify サブドメイン名を使用していない場合)、ドメインの確認メールは送られてきません。 検証は自動的に行われます。 そうではなく、CNAME エントリがないうえに 24 時間以内にメールが届かなかった場合、Microsoft のサポートに問い合わせてください。
+
+4. *SAN 証明書を使用すると専用証明書の場合よりも安全性が低くなるでしょうか。*
+    
+    SAN 証明書は、専用証明書と同じ暗号化およびセキュリティ標準に従っています。 発行されるすべての TLS/SSL 証明書には、サーバーのセキュリティを強化するために SHA-256 が使用されます。
+
+5. *DNS プロバイダーに Certificate Authority Authorization レコードが必要ですか。*
+
+    いいえ、Certificate Authority Authorization レコードは、現在必要ではありません。 ただし、所持している場合は、そこには有効な CA として DigiCert が含められている必要があります。
 
 ## <a name="clean-up-resources---disable-https"></a>リソースのクリーンアップ - HTTPS を無効にする
 
@@ -247,30 +267,15 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 | 2 証明書のプロビジョニング解除 | 証明書を削除しています |
 | 3 完了 | 証明書が削除されました |
 
-## <a name="frequently-asked-questions"></a>よく寄せられる質問
-
-1. *証明書プロバイダーはだれですか。どのような種類の証明書が使用されますか。*
-
-    カスタム ドメインには、DigiCert によって提供される、専用/単一の証明書が使用されます。 
-
-2. *IP ベースと SNI のどちらの TLS/SSL を使用しますか。*
-
-    Azure Front Door では、SNI TLS/SSL が使用されます。
-
-3. *DigiCert からドメインの検証電子メールが送られて来ない場合はどうすればよいでしょうか。*
-
-    エンドポイントのホスト名を直接指す、カスタム ドメインの CNAME エントリがある場合 (かつ、afdverify サブドメイン名を使用していない場合)、ドメインの確認メールは送られてきません。 検証は自動的に行われます。 そうではなく、CNAME エントリがないうえに 24 時間以内にメールが届かなかった場合、Microsoft のサポートに問い合わせてください。
-
-4. *SAN 証明書を使用すると専用証明書の場合よりも安全性が低くなるでしょうか。*
-    
-    SAN 証明書は、専用証明書と同じ暗号化およびセキュリティ標準に従っています。 発行されるすべての TLS/SSL 証明書には、サーバーのセキュリティを強化するために SHA-256 が使用されます。
-
-5. *DNS プロバイダーに Certificate Authority Authorization レコードが必要ですか。*
-
-    いいえ、Certificate Authority Authorization レコードは、現在必要ではありません。 ただし、所持している場合は、そこには有効な CA として DigiCert が含められている必要があります。
-
-
 ## <a name="next-steps"></a>次のステップ
 
-- [フロント ドアの作成](quickstart-create-front-door.md)方法について学習します。
-- [Front Door のしくみ](front-door-routing-architecture.md)について学習します。
+このチュートリアルでは、以下の内容を学習しました。
+
+* Key Vault に証明書をアップロードする。
+* ドメインを検証する。
+* カスタム ドメインの HTTPS を有効にする。
+
+Front Door の geo フィルタリング ポリシーを設定する方法については、次のチュートリアルに進んでください。
+
+> [!div class="nextstepaction"]
+> [geo フィルタリング ポリシーを設定する](front-door-geo-filtering.md)

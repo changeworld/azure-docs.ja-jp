@@ -1,6 +1,6 @@
 ---
 title: Azure portal を使用してデータを一括コピーする
-description: Azure Data Factory とコピー アクティビティを使い、ソース データ ストアからコピー先データ ストアにデータを一括コピーする方法について説明します。
+description: Azure Data Factory とコピー アクティビティを使用して、ソース データ ストアからコピー先データ ストアにデータを一括コピーする方法について説明します。
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/22/2020
-ms.openlocfilehash: 29bdedd5ae40db57809c11500af404d308366ca7
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: a047872f519de1873c03998fd1d3a9c273ce9fa1
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86081640"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442856"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Azure portal で Azure Data Factory を使用して複数のテーブルを一括コピーする
 
@@ -45,7 +45,7 @@ ms.locfileid: "86081640"
 ![ワークフロー](media/tutorial-bulk-copy-portal/tutorial-copy-multiple-tables.png)
 
 * 1 つ目のパイプラインでは、シンク データ ストアにコピーするテーブルの一覧が検索されます。  代わりに、シンク データ ストアにコピーするすべてのテーブルが列挙されたメタデータ テーブルを用意する方法もあります。 次に、1 つ目のパイプラインによって 2 つ目のパイプラインがトリガーされ、データベース内の各テーブルを反復処理しながらデータのコピー操作が実行されます。
-* 実際のコピーは 2 つ目のパイプラインによって実行されます。 このパイプラインは、テーブルの一覧をパラメーターとして受け取ります。 その一覧の各テーブルについて、Azure SQL Database 内の特定のテーブルを Azure Synapse Analytics (旧称 SQL DW) 内の該当するテーブルにコピーします。この処理には、パフォーマンスを最大限に高めるために、[Blob Storage と PolyBase によるステージング コピー](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)が使用されます。 この例では、1 つ目のパイプラインからパラメーターの値としてテーブルの一覧が渡されます。 
+* 実際のコピーは 2 つ目のパイプラインによって実行されます。 このパイプラインは、テーブルの一覧をパラメーターとして受け取ります。 その一覧の各テーブルについて、Azure SQL Database 内の特定のテーブルを Azure Synapse Analytics (旧称 SQL DW) 内の該当するテーブルにコピーします。この処理には、パフォーマンスを最大限に高めるために、[Blob Storage と PolyBase によるステージング コピー](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics)が使用されます。 この例では、1 つ目のパイプラインからパラメーターの値としてテーブルの一覧が渡されます。 
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 
@@ -62,7 +62,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 **シンク Azure Synapse Analytics (旧称 SQL DW) の準備**:
 
-1. Azure Synapse Analytics (旧称 SQL DW) がない場合は、[SQL データ ウェアハウスの作成](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md)に関する記事に書かれている作成手順を参照してください。
+1. Azure Synapse Analytics (旧称 SQL DW) ワークスペースがない場合は、[Azure Synapse Analytics の使用の開始](..\synapse-analytics\get-started.md)に関する記事に記載されている作成手順を参照してください。
 
 1. 対応するテーブル スキーマを Azure Synapse Analytics (旧称 SQL DW) に作成します。 データの移行/コピーは、後続の手順で Azure Data Factory を使用して行います。
 

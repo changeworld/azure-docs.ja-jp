@@ -1,18 +1,18 @@
 ---
 title: チュートリアル:Event Hubs データをデータ ウェアハウスに送信する - Event Grid
-description: チュートリアル:Azure Event Grid と Event Hubs を使用して、SQL データ ウェアハウスにデータを移行する方法について説明します。 ここでは、Capture ファイルを取得するために Azure 関数が使用されます。
+description: チュートリアル:Azure Event Grid と Event Hubs を使用し、Azure Synapse Analytics にデータを移行する方法について説明します。 ここでは、Capture ファイルを取得するために Azure 関数が使用されます。
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1c4a1943981fc3e9f1df0fafff540e24ee3631e9
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d45fcedb570e384b851a7ac815ca175c67cc00a0
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007453"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435033"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>チュートリアル:ビッグ データをデータ ウェアハウスにストリーミングする
-Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (イベント) への対応を可能にするインテリジェントなイベント ルーティング サービスです。 たとえば、Azure BLOB ストレージや Azure Data Lake Storage にキャプチャされた Event Hubs データを処理する Azure 関数をトリガーして、データを別のデータ リポジトリに移行できます。 この [Event Hubs と Event Grid の統合のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)では、Event Hubs と Event Grid を使用して、キャプチャされた Event Hubs データを BLOB ストレージから SQL データ ウェアハウスにシームレスに移行する方法を説明しています。
+Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (イベント) への対応を可能にするインテリジェントなイベント ルーティング サービスです。 たとえば、Azure BLOB ストレージや Azure Data Lake Storage にキャプチャされた Event Hubs データを処理する Azure 関数をトリガーして、データを別のデータ リポジトリに移行できます。 この [Event Hubs と Event Grid の統合のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)では、Event Hubs と Event Grid を使用して、キャプチャされた Event Hubs データを BLOB ストレージから Azure Synapse Analytics (旧称、SQL Data Warehouse) にシームレスに移行する方法を説明しています。
 
 ![アプリケーションの概要](media/event-grid-event-hubs-integration/overview.png)
 
@@ -22,12 +22,12 @@ Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (�
 2. データのキャプチャが完了すると、イベントが生成されて Azure イベント グリッドに送信されます。 
 3. イベント グリッドによって、このイベント データが Azure 関数アプリに転送されます。
 4. 関数アプリによってイベント データの BLOB URL が使用され、ストレージから BLOB が取得されます。 
-5. 関数アプリによって BLOB データが Azure SQL データ ウェアハウスに移行されます。 
+5. 関数アプリによって BLOB データが Azure Synapse Analytics に移行されます。 
 
 この記事では、次の手順を実行します。
 
 > [!div class="checklist"]
-> * Azure Resource Manager テンプレートを使用して、インフラストラクチャ (イベント ハブ、ストレージ アカウント、関数アプリ、SQL データ ウェアハウス) をデプロイする。
+> * Azure Resource Manager テンプレートを使用して、インフラストラクチャ (イベント ハブ、ストレージ アカウント、関数アプリ、Synapse Analytics) をデプロイする。
 > * データ ウェアハウスのテーブルを作成する。
 > * 関数アプリにコードを追加する。
 > * イベントをサブスクライブする。 
@@ -52,7 +52,7 @@ Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (�
 * 関数アプリをホストするための App Service プラン
 * イベントを処理するための関数アプリ
 * データ ウェアハウスをホストするための SQL Server
-* 移行後のデータを格納するための SQL Data Warehouse
+* 移行したデータを格納するための Azure Synapse Analytics
 
 ### <a name="launch-azure-cloud-shell-in-azure-portal"></a>Azure portal で Azure Cloud Shell を起動する
 
@@ -97,7 +97,7 @@ Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (�
           "tags": null
         }
         ```
-2. 次の CLI コマンドを実行して、前のセクションで説明したリソース (イベント ハブ、ストレージ アカウント、関数アプリ、SQL データ ウェアハウス) をすべてデプロイします。 
+2. 次の CLI コマンドを実行して、前のセクションで説明したリソース (イベント ハブ、ストレージ アカウント、関数アプリ、Azure Synapse Analytics) をすべてデプロイします。 
     1. コマンドをコピーして Cloud Shell ウィンドウに貼り付けます。 または、お好みのエディターにコピーして貼り付け、値を設定してから、コマンドを Cloud Shell にコピーすることもできます。 
 
         ```azurecli
@@ -112,7 +112,7 @@ Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (�
         3. イベント ハブの名前。 値はそのまま (hubdatamigration) でもかまいません。
         4. SQL サーバーの名前。
         5. SQL ユーザーの名前とパスワード。 
-        6. SQL データ ウェアハウスの名前。
+        6. Azure Synapse Analytics の名前
         7. ストレージ アカウントの名前。 
         8. 関数アプリの名前。 
     3.  Cloud Shell ウィンドウで **Enter** キーを押して、コマンドを実行します。 多数のリソースを作成するため、このプロセスには時間がかかる場合があります。 コマンドの結果で、エラーがないことを確認します。 
@@ -131,7 +131,7 @@ Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (�
         ```
     2. **リソース グループ**の名前を指定します。
     3. Enter キーを押します。 
-3. 次のコマンドを実行して、前のセクションで説明したリソース (イベント ハブ、ストレージ アカウント、関数アプリ、SQL データ ウェアハウス) をすべてデプロイします。
+3. 次のコマンドを実行して、前のセクションで説明したリソース (イベント ハブ、ストレージ アカウント、関数アプリ、Azure Synapse Analytics) をすべてデプロイします。
     1. コマンドをコピーして Cloud Shell ウィンドウに貼り付けます。 または、お好みのエディターにコピーして貼り付け、値を設定してから、コマンドを Cloud Shell にコピーすることもできます。 
 
         ```powershell
@@ -143,7 +143,7 @@ Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (�
         3. イベント ハブの名前。 値はそのまま (hubdatamigration) でもかまいません。
         4. SQL サーバーの名前。
         5. SQL ユーザーの名前とパスワード。 
-        6. SQL データ ウェアハウスの名前。
+        6. Azure Synapse Analytics の名前
         7. ストレージ アカウントの名前。 
         8. 関数アプリの名前。 
     3.  Cloud Shell ウィンドウで **Enter** キーを押して、コマンドを実行します。 多数のリソースを作成するため、このプロセスには時間がかかる場合があります。 コマンドの結果で、エラーがないことを確認します。 
@@ -162,13 +162,13 @@ Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (�
 
     ![リソース グループ内のリソース](media/event-grid-event-hubs-integration/resources-in-resource-group.png)
 
-### <a name="create-a-table-in-sql-data-warehouse"></a>SQL Data Warehouse でテーブルを作成する
+### <a name="create-a-table-in-azure-synapse-analytics"></a>Azure Synapse Analytics でテーブルを作成する
 [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) スクリプトを実行して、お客様のデータ ウェアハウスにテーブルを作成します。 スクリプトを実行するには、Visual Studio を使用できます。または、ポータルのクエリ エディターを使用できます。 次の手順では、クエリ エディターの使用方法について説明します。 
 
 1. リソース グループのリソースの一覧で、**Synapse SQL プール (データ ウェアハウス)** を選択します。 
-2. SQL データ ウェアハウスのページで、左側のメニューの **[クエリ エディター (プレビュー)]** を選択します。 
+2. Azure Synapse Analytics のページで、左側のメニューの **[クエリ エディター (プレビュー)]** を選択します。 
 
-    ![SQL データ ウェアハウスのページ](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
+    ![Azure Synapse Analytics ページ](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
 2. SQL サーバーの**ユーザー**の名前と**パスワード**を入力し、 **[OK]** を選択します。 SQL サーバーに正常にログインするために、クライアント IP アドレスをファイアウォールに追加することが必要な場合があります。 
 
     ![SQL Server 認証](media/event-grid-event-hubs-integration/sql-server-authentication.png)
@@ -258,7 +258,7 @@ Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (�
         ![Event Grid サブスクリプションを作成する](media/event-grid-event-hubs-integration/create-event-subscription.png)
 
 ## <a name="run-the-app-to-generate-data"></a>データを生成するアプリを実行する
-イベント ハブ、SQL Data Warehouse、Azure 関数アプリ、イベント サブスクリプションのセットアップが完了しました。 イベント ハブのデータを生成するアプリケーションを実行する前に、いくつかの値を構成する必要があります。
+イベント ハブ、Azure Synapse Analytics、Azure 関数アプリ、イベント サブスクリプションの設定が完了しました。 イベント ハブのデータを生成するアプリケーションを実行する前に、いくつかの値を構成する必要があります。
 
 1. Azure portal で、先ほど移動したお客様のリソース グループに移動します。 
 2. Event Hubs 名前空間を選択します。

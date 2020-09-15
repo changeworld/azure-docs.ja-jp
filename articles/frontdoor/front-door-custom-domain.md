@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/10/2018
 ms.author: duau
-ms.openlocfilehash: f0d4ab9e3ecba8af1f6775389a4837e8c90eb14d
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: ee9a883cbd69826e30d6f2416d588792a8c17b1c
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399771"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648811"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>チュートリアル:Front Door にカスタム ドメインを追加する
 このチュートリアルでは、Front Door にカスタム ドメインを追加する方法を説明します。 アプリケーション デリバリーに Azure Front Door を使用している場合、独自のドメイン名がエンド ユーザーの要求で示されるようにしたいときは、カスタム ドメインが必要です。 見てわかるドメイン名を使用することは、顧客にとって便利であり、ブランド化の目的にも役立ちます。
@@ -37,11 +37,11 @@ Front Door を作成すると、`azurefd.net` のサブドメインである既�
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルの手順を完了するには、最初に Front Door を作成する必要があります。 詳細については、「[クイック スタート: Front Door の作成](quickstart-create-front-door.md)」を参照してください。
+* このチュートリアルの手順を完了するには、最初に Front Door を作成する必要があります。 詳細については、「[クイック スタート: Front Door の作成](quickstart-create-front-door.md)」を参照してください。
 
-カスタム ドメインがまだない場合は、最初にカスタム ドメインをドメイン プロバイダーから購入する必要があります。 たとえば、[カスタム ドメイン名の購入](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain)に関するページを参照してください。
+* カスタム ドメインがまだない場合は、最初にカスタム ドメインをドメイン プロバイダーから購入する必要があります。 たとえば、[カスタム ドメイン名の購入](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain)に関するページを参照してください。
 
-Azure を使用して [DNS ドメイン](https://docs.microsoft.com/azure/dns/dns-overview) をホストしている場合は、ドメイン プロバイダーのドメイン ネーム システム (DNS) を Azure DNS に委任する必要があります。 詳細については、「[Azure DNS へのドメインの委任](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns)」を参照してください。 また、ドメイン プロバイダーを使用して DNS ドメインを処理している場合は、「[CNAME DNS レコードを作成する](#create-a-cname-dns-record)」に進んでください。
+* Azure を使用して [DNS ドメイン](https://docs.microsoft.com/azure/dns/dns-overview) をホストしている場合は、ドメイン プロバイダーのドメイン ネーム システム (DNS) を Azure DNS に委任する必要があります。 詳細については、「[Azure DNS へのドメインの委任](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns)」を参照してください。 また、ドメイン プロバイダーを使用して DNS ドメインを処理している場合は、「[CNAME DNS レコードを作成する](#create-a-cname-dns-record)」に進んでください。
 
 
 ## <a name="create-a-cname-dns-record"></a>CNAME DNS レコードを作成する
@@ -202,7 +202,11 @@ afdverify サブドメインが Front Door に正常にマップされている�
 
 このチュートリアルでは、以下の内容を学習しました。
 
-> [!div class="checklist"]
-> - CNAME DNS レコードを作成します。
-> - カスタム ドメインを Front Door と関連付けます。
-> - カスタム ドメインを確認します。
+* CNAME DNS レコードを作成します。
+* カスタム ドメインを Front Door と関連付けます。
+* カスタム ドメインを確認します。
+
+カスタム ドメインの HTTPS を有効にする方法については、次のチュートリアルに進んでください。
+
+> [!div class="nextstepaction"]
+> [カスタム ドメインに対する HTTPS の有効化](front-door-custom-domain.md)

@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 07/08/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: c2dffe576bfb52981b331c02b3f24ec2507ec349
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 662afb902c97e164cc24bc664b854db118904210
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86501962"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89494259"
 ---
 Shared Image Gallery は、イメージに関連する構造および組織を構築できるサービスです。 共有イメージ ギャラリーでは以下のことが提供されます。
 
@@ -196,7 +196,7 @@ Shared Image Gallery は、イメージに関連する構造および組織を�
 * [Shared Image Gallery の使用料金はどうなりますか?](#what-are-the-charges-for-using-the-shared-image-gallery)
 * [Shared Image Gallery、イメージ定義、イメージ バージョンを作成するには、どの API バージョンを使用する必要がありますか?](#what-api-version-should-i-use-to-create-shared-image-gallery-and-image-definition-and-image-version)
 * [イメージ バージョンから共有 VM または仮想マシン スケール セットを作成するには、どの API バージョンを使用する必要がありますか?](#what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version)
-* [マネージド イメージを使用して作成された仮想マシン スケール セットを、共有イメージ ギャラリーのイメージを使用するように更新できますか?]
+* [マネージド イメージを使用して作成された仮想マシン スケール セットを、Shared Image Gallery のイメージを使用するように更新できますか?](#can-i-update-my-virtual-machine-scale-set-created-using-managed-image-to-use-shared-image-gallery-images)
 
 ### <a name="how-can-i-list-all-the-shared-image-gallery-resources-across-subscriptions"></a>サブスクリプション全体のすべての共有イメージ ギャラリーのリソースを表示する方法はありますか?
 

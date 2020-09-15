@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/03/2019
-ms.openlocfilehash: 577a80f04ad186ab1575fa78db3fa59402d6058f
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: a265bc2ed131dc0bb69d89f767ab60225d30ee8e
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "83697386"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612056"
 ---
 # <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>チュートリアル:Stream Analytics で通話データを分析し、Power BI ダッシュボードで結果を視覚化する
 
@@ -185,7 +185,7 @@ TelcoGenerator アプリを起動する前に、以前に作成した Azure Even
 
    ![Stream Analytics の出力を構成する](media/stream-analytics-manage-job/configure-stream-analytics-output.png)
 
-4. **[承認する]** を選択すると、ポップアップ ウィンドウが開き、Power BI アカウントに対する認証のための資格情報を入力するよう求められます。 認可が成功したら、設定を**保存**します。
+4. **[承認する]** を選択すると、ポップアップ ウィンドウが開き、Power BI アカウントに対する認証のための資格情報を入力するよう求められます。 認可が成功したら、設定を**保存**します。 マネージド ID を使用するには、「[マネージド ID を使用して、Power BI 出力に対して Azure Stream Analytics ジョブを認証する](powerbi-output-managed-identity.md)」を参照してください。
 
 ## <a name="define-a-query-to-analyze-input-data"></a>入力データを分析するようクエリを定義する
 

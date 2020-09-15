@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 713f9eeef87cbfe3d8cb3d9717ad703328b54fe3
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 3b500a7d93d19bcc0cd9c23d64ad079f0abfd353
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262721"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421358"
 ---
 # <a name="tutorial-connect-to-azure-stack-edge-with-gpu"></a>チュートリアル:GPU 搭載の Azure Stack Edge に接続する
 
@@ -41,11 +41,11 @@ GPU 搭載の Azure Stack Edge デバイスを構成および設定する前に�
 
 1. Azure Stack Edge デバイスに接続するために、お使いのコンピューター上のイーサネット アダプターで静的 IP アドレス 192.168.100.5 とサブネット 255.255.255.0 を構成します。
 
-2. デバイスでコンピューターをポート 1 に接続します。 次の図を使用して、デバイス上のポート 1 を識別してください。
+2. デバイスでコンピューターをポート 1 に接続します。 デバイスにコンピューターを (スイッチなしで) 直接接続する場合、クロスオーバー ケーブルか USB イーサネット アダプターを使用します。 次の図を使用して、デバイス上のポート 1 を識別してください。
 
     ![ケーブル接続されたデバイスのバックプレーン](./media/azure-stack-edge-gpu-deploy-install/ase-two-pci-slots.png)
 
-    デバイスのバックプレーンは、どのモデルを受け取ったかによって若干異なる場合があります。
+    デバイスのバックプレーンは、どのモデルを受け取ったかによって若干異なる場合があります。 詳細については、「[デバイスをケーブル接続する](azure-stack-edge-gpu-deploy-install.md#cable-the-device)」を参照してください。
 
 
 3. ブラウザー ウィンドウを開き、`https://192.168.100.10` からデバイスのローカル Web UI にアクセスします。  

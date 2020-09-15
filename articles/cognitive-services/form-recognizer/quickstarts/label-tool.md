@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 08/25/2020
 ms.author: pafarley
-ms.openlocfilehash: 6118f8109f44081c797cb09a6157abaf4044965e
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: e231bb7919f25210d7e5a2adff49dede6f0349a9
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377814"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89418961"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>サンプル ラベル付けツールを使用したラベルによる Form Recognizer モデルのトレーニング
 
@@ -225,7 +225,9 @@ ms.locfileid: "89377814"
 > [!NOTE]
 > 日付の書式設定については、次の規則を参照してください。
 > 
-> `, - / . \` は、DMY 日付区切り記号として使用できます。 空白を区切り記号として使用することはできません。 次に例を示します。
+> 日付書式設定を機能させるには、形式 (`dmy`、`mdy`、`ymd`) を指定する必要があります。
+>
+> `, - / . \` は日付区切り記号として使用できます。 空白を区切り記号として使用することはできません。 次に例を示します。
 > * 01,01,2020
 > * 01-01-2020
 > * 01/01/2020
@@ -234,11 +236,11 @@ ms.locfileid: "89377814"
 > * 1-1-2020
 > * 1-01-20
 >
-> DMY 日付文字列に 8 桁の数字が含まれている場合、区切り記号は省略可能です。
+> 日付文字列が 8 桁の場合、区切り文字は任意です。
 > * 01012020
 > * 01 01 2020
 >
-> 月は、完全な名前または短い名前で記述することもできます。 名前が使用されている場合、区切り文字は省略可能です。
+> 月は、完全な名前または短い名前で記述することもできます。 名前が使用されている場合、区切り文字は省略可能です。 ただし、この形式は他の形式より正確ではないと認識されることがあります。
 > * 01/Jan/2020
 > * 01Jan2020
 > * 01 Jan 2020
@@ -263,7 +265,7 @@ ms.locfileid: "89377814"
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)  
 
-現在、この機能は v2.1.preview でご利用いただけます。 preview. 
+現在、この機能は v2.1.preview でご利用いただけます。 プレビュー。 
 
 # <a name="v21-preview"></a>[v2.1 プレビュー](#tab/v2-1) 
 

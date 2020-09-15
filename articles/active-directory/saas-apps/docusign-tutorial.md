@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/21/2020
+ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 6736edd615f99ed987e7d1618c449ff7a819c497
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c91f9d38922cc1bddf252fde59291c2f233e1aa2
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536072"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650200"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と DocuSign の統合
 
@@ -61,7 +61,7 @@ Azure AD への DocuSign の統合を構成するには、ギャラリーから�
 1. 結果のパネルから **[DocuSign]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-docusign"></a>DocuSign の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-docusign"></a>Azure AD SSO for DocuSign を構成し、テストする
 
 **B.Simon** というテスト ユーザーを使用して、DocuSign に対する Azure AD SSO を構成してテストします。 SSO を機能させるためには、Azure AD ユーザーと DocuSign 内の対応するユーザーとの間にリンク関係を確立する必要があります。
 
@@ -94,9 +94,12 @@ Azure portal で Azure AD SSO を有効にするには、これらの手順を�
 
     `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2`
 
-    c. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します:
+    c. **[応答 URL]** ボックスでは、次の URL パターンのいずれかを入力します。
     
-    `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login`
+    | [応答 URL] |
+    |-------------|
+    |`https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login/<IDPID>`|
+    |`https://<subdomain>.docusign.net/SAML/`|
 
     > [!NOTE]
     > かっこで囲まれたこれらの値はプレースホルダーです。 これらを実際のサインオン URL、識別子、および返信 URL の値に置き換えてください。 これらの詳細は、このチュートリアルの後ろにある [View SAML 2.0 Endpoints]\(SAML 2.0 エンドポイントの表示\) に関するセクションで説明されています。

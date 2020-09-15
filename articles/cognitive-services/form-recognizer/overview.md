@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 0df61c2ee42d468562efd67a2a66a90a5e4fda53
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 070796cd260e56bb51115a7ef33ced8455bfb6a9
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723565"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394399"
 ---
 # <a name="what-is-form-recognizer"></a>Form Recognizer とは
 
@@ -48,6 +48,7 @@ Form Recognizer は、印刷されたテキストや手書きのテキストの�
 ## <a name="prebuilt-models"></a>事前構築済みのモデル
 
 Form Recognizer には、一意のフォームの種類に対する事前構築済みモデルも含まれています。
+
 ### <a name="prebuilt-receipt-model"></a>事前構築済みのレシート モデル
 事前構築済みのレシート モデルは、オーストラリア、カナダ、英国、インド、および米国のレストランやガソリン スタンド、小売店などで使用されている種類の英語のレシートを読み取るために使用されます。 このモデルでは、取引日時、販売店情報、税額、明細項目、合計金額などの主要な情報が抽出されます。 さらに、あらかじめ構築されたレシート モデルは、レシート内のすべてのテキストを認識して返すようにトレーニングされています。 
 
@@ -74,9 +75,11 @@ Form Recognizer は、高精細の光学式文字認識 (OCR) を使用して、
     * [ラベルを使用しないトレーニング - cURL](quickstarts/curl-train-extract.md)
     * [ラベルを使用しないトレーニング - Python](quickstarts/python-train-extract.md)
     * [ラベルを使用したトレーニング - Python](quickstarts/python-labeled-data.md)
-  * 米国のレシートからデータを抽出する
+  * レシートからデータを抽出する
     * [レシートのデータを抽出する - cURL](quickstarts/curl-receipts.md)
     * [レシートのデータを抽出する - Python](quickstarts/python-receipts.md)
+  * 名刺からデータを抽出する
+    * [名刺データを抽出する - Python](quickstarts/python-business-cards.md)
   * テキストとテーブル構造をフォームから抽出する
     * [レイアウト データを抽出する - Python](quickstarts/python-layout.md)
 
@@ -90,6 +93,7 @@ Form Recognizer は、高精細の光学式文字認識 (OCR) を使用して、
 | **Train Custom Model**| 同じ種類の 5 つのフォームを使用して、フォームを分析する新しいモデルをトレーニングします。 手動でラベル付けしたデータを使ってトレーニングを行うには、_useLabelFile_ パラメーターを `true` に設定します。 |
 | **Analyze Form** |ストリームとして渡された単一のドキュメントを分析し、カスタム モデルを使用してフォームからテキスト、キーと値のペア、テーブルを抽出します。  |
 | **Analyze Receipt** |単一のレシート ドキュメントを分析し、レシート内の主要な情報とその他のテキストを抽出します。|
+| **名刺を分析する** |名刺を分析し、主要な情報とテキストを抽出します。|
 | **Analyze Layout** |フォームのレイアウトを分析してテキストとテーブル構造を抽出します。|
 
 詳しくは、[REST API のリファレンス ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)をご覧ください。 以前のバージョンの API をご利用の方は、「[新機能](./whats-new.md)」の記事で、レシートに関する最新の変更点をご確認ください。

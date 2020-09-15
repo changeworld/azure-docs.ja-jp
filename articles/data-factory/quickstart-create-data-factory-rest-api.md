@@ -1,6 +1,6 @@
 ---
 title: REST API を使用して Azure データ ファクトリを作成する
-description: Azure データ ファクトリを作成して、Azure Blob Storage 内のある場所から別の場所にデータをコピーします。
+description: Azure データ ファクトリ パイプラインを作成して、Azure Blob Storage 内のある場所から別の場所にデータをコピーします。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,12 +13,12 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 06/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 357026bbe17650464716282608bc316c5d4b055e
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 1d1db69215294ac4aa4849bbaa1a886a91f0ba7e
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85514875"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439165"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>クイック スタート:REST API を使用して Azure データ ファクトリとパイプラインを作成する
 
@@ -28,7 +28,7 @@ ms.locfileid: "85514875"
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Azure Data Factory は、データドリブン型のワークフローをクラウドに作成することでデータの移動と変換を制御し、自動化することができるクラウドベースのデータ統合サービスです。 Azure Data Factory を使えば、データ主導型のワークフロー (パイプライン) を作成し、スケジューリングできます。具体的には、各種データ ストアからデータを取り込む、そのデータを各種コンピューティング サービス (Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics、Azure Machine Learning など) で処理/変換する、データ ストア (Azure SQL Data Warehouse など) に出力データを公開して、それを利用するビジネス インテリジェンス (BI) アプリケーションに提供するという一連の処理を行えるワークフローです。
+Azure Data Factory は、データドリブン型のワークフローをクラウドに作成することでデータの移動と変換を制御し、自動化することができるクラウドベースのデータ統合サービスです。 Azure Data Factory を使用すると、データ主導型のワークフロー (パイプラインと呼ばれます) の作成とスケジューリングを行うことができます。具体的には、さまざまなデータ ストアからデータを取り込んだり、コンピューティング サービス (Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics、Azure Machine Learning など) を使用してそのデータの処理や変換を行ったり、出力データをデータ ストア (Azure Synapse Analytics (旧称 SQL Data Warehouse) など) に公開したりして、ビジネス インテリジェンス (BI) アプリケーションで利用できるようにしています。
 
 このクイックスタートでは、REST API を使用して Azure データ ファクトリを作成する方法について説明します。 このデータ ファクトリのパイプラインは、Azure BLOB ストレージ内のある場所から別の場所にデータをコピーするものです。
 

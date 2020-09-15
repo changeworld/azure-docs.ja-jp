@@ -3,12 +3,12 @@ title: クラウドでの継続的なビデオ記録と再生に関するチュ�
 description: このチュートリアルでは、Azure Live Video Analytics on Azure IoT Edge を使用して、クラウドにビデオを継続的に記録し、Azure Media Services を使用してそのビデオの任意の部分をストリーム配信する方法について説明します。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 60b93aac3a0da4bbc49f83c5cbd43191693cae50
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c94f87068d003fc260d861cb99c60326d4a53258
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043485"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566800"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>チュートリアル:クラウドでの継続的なビデオ記録と再生
 
@@ -61,7 +61,8 @@ ms.locfileid: "87043485"
  
  CVR を実現するには、RTSP 対応カメラからビデオをキャプチャし、それを [Azure Media Services 資産](terminology.md#asset)に継続的に記録する必要があります。 次の図は、そのメディア グラフをグラフィカルに表したものです。
 
-![メディア グラフ](./media/continuous-video-recording-tutorial/continuous-video-recording-overview.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/continuous-video-recording-tutorial/continuous-video-recording-overview.svg" alt-text="メディア グラフ":::
 
 このチュートリアルでは、[Live555 Media Server](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) を使用して構築された 1 つのエッジ モジュールを使用して、RTSP カメラをシミュレートします。 メディア グラフ内で [RTSP ソース](media-graph-concept.md#rtsp-source) ノードを使用してライブ フィードを取得し、そのビデオを[資産シンク ノード](media-graph-concept.md#asset-sink)に送信します。これにより、ビデオが資産に記録されます。
 
@@ -352,7 +353,7 @@ body セクションには、出力場所に関する情報が含まれていま
 1. ご自分のサブスクリプション内のリソースの中からお使いの Media Services アカウントを見つけ、アカウント ペインを開きます。
 1. **[Media Services]** の一覧で、 **[資産]** を選択します。
 
-    ![アセット](./media/continuous-video-recording-tutorial/assets.png)
+    ![Media Services の資産](./media/continuous-video-recording-tutorial/assets.png)
 1. SampleAsset-CVRToAMSAsset-Sample-Graph-1 という名前の資産が表示されます。 これは、グラフ トポロジ ファイル内で選択されている名前付けパターンです。
 1. 資産を選択します。
 1. 資産の詳細ページで、 **[ストリーミング URL]** テキスト ボックスの下の **[新規作成]** を選択します。

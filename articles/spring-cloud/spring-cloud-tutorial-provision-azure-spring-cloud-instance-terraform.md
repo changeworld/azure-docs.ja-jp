@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 70a9d9f8b137f02e647d1ea0edddd409ec3cdaf3
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 1f2e4ddc2d2cfbbfb7f95e5ae6b1af7a76eece85
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079194"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426352"
 ---
 # <a name="tutorial-provision-an-azure-spring-cloud-instance-with-terraform"></a>チュートリアル:Terraform を使用して Azure Spring Cloud インスタンスをプロビジョニングする
 
@@ -94,7 +94,7 @@ ms.locfileid: "88079194"
     terraform apply plan.out
     ```
 
-1. Azure portal 内の結果を確認するには、新しいリソース グループを参照します。 新しいリソース グループに新しい **Azure Cosmos DB インスタンス**が表示されます。
+1. Azure portal 内の結果を確認するには、新しいリソース グループを参照します。 新しいリソース グループに新しい **Azure Spring Cloud** インスタンスが表示されます。
 
 ## <a name="update-configuration-to-config-logs-and-metrics"></a>構成を更新してログとメトリックを設定する
 

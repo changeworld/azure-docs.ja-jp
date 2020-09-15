@@ -9,12 +9,12 @@ ms.assetid: 1e1d443a-48a2-47fb-bc00-bf88274222de
 ms.service: data-lake-analytics
 ms.topic: overview
 ms.date: 06/23/2017
-ms.openlocfilehash: b86b569b1b14b943cdc6dcc805a7b7a208d03447
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 5503a4734ca687ba89d7d40270ae9157deb0ca91
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475121"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489988"
 ---
 # <a name="what-is-azure-data-lake-analytics"></a>Azure Data Lake Analytics とは
 
@@ -49,7 +49,7 @@ Data Lake Analytics は、ビッグ データ ワークロードを実行する�
 
 ## <a name="works-with-all-your-azure-data"></a>すべての Azure データに対応
   
-Data Lake Analytics は、最高レベルのパフォーマンス、スループット、および並列化のために Azure Data Lake Storage と連携し、Azure Storage Blob、Azure SQL Database、Azure Synapse Analytics (旧称: Azure SQL Data Warehouse) とも連動します。
+Data Lake Analytics は、最も高いパフォーマンス、スループット、並列化のために Azure Data Lake Storage と連携し、Azure Storage BLOB、Azure SQL Database、Azure Synapse Analytics (旧称: SQL Data Warehouse) とも連動します。
 
 
 ## <a name="next-steps"></a>次のステップ

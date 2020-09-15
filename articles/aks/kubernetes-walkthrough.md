@@ -12,12 +12,13 @@ ms.custom:
 - seo-javascript-october2019
 - seo-python-october2019
 - devx-track-azurecli
-ms.openlocfilehash: 863017797aa6872d7ac7a824e1d38f2dde4c6d1a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+- contperfq1
+ms.openlocfilehash: 975f32872cd5fcdf00fb9e394920a7a50ba898ce
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589947"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482812"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Kubernetes Service クラスターをデプロイする
 
@@ -68,7 +69,7 @@ az group create --name myResourceGroup --location eastus
 AKS クラスターを作成するには、[az aks create][az-aks-create] コマンドを使用します。 次の例では、*myAKSCluster* という名前のクラスターを 1 つのノードで作成します。 これは完了までに数分かかる場合があります。
 
 > [!NOTE]
-> Azure Monitor for containers を有効にするには、 *--enable-addons monitoring* パラメーターを使用します。これには、*Microsoft.OperationsManagement* と *Microsoft.OperationalInsights* がサブスクリプションに登録されている必要があります。 登録状態を確認するには:
+> [Azure Monitor for containers][azure-monitor-containers] を有効にするには、 *--enable-addons monitoring* パラメーターを使用します。それには、*Microsoft.OperationsManagement* と *Microsoft.OperationalInsights* がサブスクリプションに登録されている必要があります。 登録状態を確認するには:
 > 
 > ```azurecli
 > az provider show -n Microsoft.OperationsManagement -o table
@@ -106,7 +107,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
 > [!NOTE]
-> 上記のコマンドは、Kubernetes 構成ファイルの既定の場所 (`~/.kube/config`) を使用します。 *--file* を使用すると、Kubernetes 構成ファイルに対して別の場所を指定できます。
+> 上記のコマンドは、[Kubernetes 構成ファイル][kubeconfig-file]の既定の場所 (`~/.kube/config`) を使用します。 *--file* を使用すると、Kubernetes 構成ファイルに対して別の場所を指定できます。
 
 クラスターへの接続を確認するには、クラスター ノードの一覧を返す [kubectl get][kubectl-get] コマンドを使用します。
 
@@ -123,7 +124,7 @@ aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.12.8
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
-Kubernetes のマニフェスト ファイルでは、どのコンテナー イメージを実行するかなど、クラスターの望ましい状態を定義します。 このクイック スタートでは、マニフェストを使用して、Azure Vote アプリケーションを実行するために必要なすべてのオブジェクトを作成します。 このマニフェストには、 [Kubernetes デプロイ][kubernetes-deployment] が 2 つ含まれます。サンプル Azure Vote Python アプリケーション用と Redis インスタンス用です。 さらに、 [Kubernetes サービス][kubernetes-service] が 2 つ作成されます。Redis インスタンスに使用される内部サービスと、Azure Vote アプリケーションにインターネットからアクセスするための外部サービスです。
+[Kubernetes のマニフェスト ファイル][kubernetes-deployment]では、どのコンテナー イメージを実行するかなど、クラスターの望ましい状態を定義します。 このクイックスタートでは、マニフェストを使用して、[Azure Voting アプリケーション][azure-vote-app]を実行するために必要なすべてのオブジェクトを作成します。 このマニフェストには、 [Kubernetes デプロイ][kubernetes-deployment] が 2 つ含まれます。サンプル Azure Vote Python アプリケーション用と Redis インスタンス用です。 さらに、 [Kubernetes サービス][kubernetes-service] が 2 つ作成されます。Redis インスタンスに使用される内部サービスと、Azure Vote アプリケーションにインターネットからアクセスするための外部サービスです。
 
 `azure-vote.yaml` という名前のファイルを作成し、以下の YAML 定義をコピーします。 Azure Cloud Shell を使用する場合は、仮想システムまたは物理システムで作業するときと同じように、`code`、`vi`、`nano` のいずれかを使用してこのファイルを作成できます。
 
@@ -254,7 +255,7 @@ Azure Vote アプリが動作していることを確認するには、Web ブ�
 
 ![Azure Kubernetes Service にデプロイされた投票アプリ](./media/container-service-kubernetes-walkthrough/voting-app-deployed-in-azure-kubernetes-service.png)
 
-AKS クラスターが作成されたとき、クラスター ノードとポッドの両方の正常性メトリックを取得するために、[コンテナーに対する Azure Monitor](../azure-monitor/insights/container-insights-overview.md) が有効になりました。 これらの正常性メトリックは、Azure portal で利用できます。
+AKS クラスターが作成されたとき、クラスター ノードとポッドの両方の正常性メトリックを取得するために、[コンテナーに対する Azure Monitor][azure-monitor-containers] が有効になりました。 これらの正常性メトリックは、Azure portal で利用できます。
 
 ## <a name="delete-the-cluster"></a>クラスターを削除する
 
@@ -287,7 +288,7 @@ AKS の詳細を参照し、デプロイの例の完全なコードを確認す�
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
-[azure-dev-spaces]: ../dev-spaces/index.yml
+[kubeconfig-file]: https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/
 
 <!-- LINKS - internal -->
 [kubernetes-concepts]: concepts-clusters-workloads.md
@@ -300,6 +301,7 @@ AKS の詳細を参照し、デプロイの例の完全なコードを確認す�
 [az-group-create]: /cli/azure/group#az-group-create
 [az-group-delete]: /cli/azure/group#az-group-delete
 [azure-cli-install]: /cli/azure/install-azure-cli
+[azure-monitor-containers]: ../azure-monitor/insights/container-insights-overview.md
 [sp-delete]: kubernetes-service-principal.md#additional-considerations
 [azure-portal]: https://portal.azure.com
 [kubernetes-deployment]: concepts-clusters-workloads.md#deployments-and-yaml-manifests

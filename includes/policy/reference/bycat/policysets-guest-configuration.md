@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 07/10/2020
+ms.date: 09/04/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: a1df804681f0066fda025a60e0baddedc51f7a78
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 212e9b1826d0245675b066ded00b03e8cff1fb96
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298123"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89487106"
 ---
 |名前 |説明 |ポリシー |Version |
 |---|---|---|---|
@@ -30,10 +30,9 @@ ms.locfileid: "89298123"
 |[指定した日数以内に期限切れになる証明書を含む Windows VM を監査する](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_CertificateExpiration.json) |このイニシアティブはポリシー要件を展開し、指定された日数以内に期限切れになる証明書を含む Windows 仮想マシンを監査します。 ゲスト構成ポリシーの詳細については、[https://aka.ms/gcpol](https://aka.ms/gcpol) にアクセスしてください。 |2 |1.0.0 |
 |[指定された証明書が信頼されたルートに含まれていない Windows VM を監査する](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_WindowsCertificateInTrustedRoot.json) |このイニシアティブはポリシー要件を展開し、指定された証明書が信頼されたルート証明機関の証明書ストア (Cert:\LocalMachine\Root) に含まれていない Windows VM を監査します。 ゲスト構成ポリシーの詳細については、[https://aka.ms/gcpol](https://aka.ms/gcpol) にアクセスしてください。 |2 |1.0.0 |
 |[指定されたアプリケーションがインストールされていない Windows VM を監査する](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_InstalledApp.json) |このイニシアティブは、ポリシー要件を展開し、指定されたアプリケーションがインストールされていない Windows 仮想マシンを監査します。 ゲスト構成ポリシーの詳細については、[https://aka.ms/gcpol](https://aka.ms/gcpol) にアクセスしてください。 |2 |1.0.0 |
-|[指定された Windows PowerShell 実行ポリシーのない Windows VM を監査する](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_WindowsPowerShellExecutionPolicy.json) |このイニシアティブはポリシー要件を展開し、指定された PowerShell 実行ポリシーを使用するよう Windows PowerShell が構成されていない Windows 仮想マシンを監査します。 ゲスト構成ポリシーの詳細については、[https://aka.ms/gcpol](https://aka.ms/gcpol) にアクセスしてください。 |2 |1.0.0 |
-|[指定された Windows PowerShell モジュールがインストールされていない Windows VM を監査する](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_WindowsPowerShellModules.json) |このイニシアティブはポリシー要件を展開し、指定された Windows PowerShell モジュールがインストールされていない Windows 仮想マシンを監査します。 ゲスト構成ポリシーの詳細については、[https://aka.ms/gcpol](https://aka.ms/gcpol) にアクセスしてください。 |2 |1.0.0 |
-|[Azure セキュリティ ベースライン設定と一致しない Windows VM を監査する](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_AzureBaseline.json) |このイニシアティブはポリシー要件を展開し、非準拠の Azure セキュリティ ベースライン構成を持つ Windows 仮想マシンを監査します。 ゲスト構成ポリシーの詳細については、[https://aka.ms/gcpol](https://aka.ms/gcpol) にアクセスしてください。 |58 |1.0.0 |
 |[指定した日数以内に再起動されていない Windows VM を監査する](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_MachineLastBootUpTime.json) |このイニシアティブはポリシー要件を展開し、指定された日数以内に再起動されていない Windows 仮想マシンを監査します。 ゲスト構成ポリシーの詳細については、[https://aka.ms/gcpol](https://aka.ms/gcpol) にアクセスしてください。 |2 |1.0.0 |
 |[指定されたアプリケーションがインストールされている Windows VM を監査する](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_NotInstalledApp.json) |このイニシアティブはポリシー要件を展開し、指定されたアプリケーションがインストールされている Windows 仮想マシンを監査します。 ゲスト構成ポリシーの詳細については、[https://aka.ms/gcpol](https://aka.ms/gcpol) にアクセスしてください。 |2 |1.0.0 |
 |[再起動が保留中の Windows VM の監査](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_WindowsPendingReboot.json) |このイニシアティブはポリシー要件を展開し、再起動が保留中の Windows 仮想マシンを監査します。 ゲスト構成ポリシーの詳細については、[https://aka.ms/gcpol](https://aka.ms/gcpol) にアクセスしてください。 |2 |1.0.0 |
 |[セキュリティで保護された通信プロトコルを使用していない Windows Web サーバーを監査する](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_TLS.json) |このイニシアティブはポリシー要件を展開し、セキュリティで保護された通信プロトコル (TLS 1.1 や TLS 1.2) を使用していない Windows Web サーバーを監査します。 ゲスト構成ポリシーの詳細については、[https://aka.ms/gcpol](https://aka.ms/gcpol) にアクセスしてください。 |2 |1.0.0 |
+|[仮想マシンでゲスト構成ポリシーを有効にするための前提条件をデプロイする](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_Prerequisites.json) |このイニシアチブでは、ゲスト構成ポリシーによる監視の対象になる資格のある仮想マシンに、システム割り当てマネージド ID が追加され、プラットフォームに適したゲスト構成拡張機能がデプロイされます。 これはすべてのゲスト構成ポリシーに対する前提条件であるため、ゲスト構成ポリシーを使用する前にポリシー割り当てスコープに割り当てる必要があります。 ゲスト構成の詳細については、[https://aka.ms/gcpol](https://aka.ms/gcpol) を参照してください。 |4 |1.0.0-preview |
+|[Windows マシンは Azure セキュリティ ベースラインの要件を満たしている必要がある](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_AzureBaseline.json) |このイニシアチブでは、Azure セキュリティ ベースラインを満たしていない設定で Windows マシンを監査します。 詳細については、[https://aka.ms/gcpol](https://aka.ms/gcpol) を参照してください。 |29 |2.0.0-preview |

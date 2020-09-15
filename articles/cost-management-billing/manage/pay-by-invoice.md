@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: d55916539f64fc70560565bd5caf6254aac5a908
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 30fa6e0489c1f2c33e02286280e7508239c1c1d2
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684866"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567913"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Azure サブスクリプションの請求書による支払い
 
@@ -67,7 +67,7 @@ ms.locfileid: "88684866"
      サブスクリプションの具体的なリージョンおよびシリーズ:<br>
 
     - **[会社名]** と **[会社の住所]** は、Azure アカウントに指定した情報と一致させる必要があります。 情報を表示または更新するには、「[Azure アカウントのプロファイル情報を変更する](change-azure-account-profile.md)」を参照してください。
-    - 与信限度額を承認する前に、Azure portal で請求連絡先情報を追加します。 連絡先の詳細を会社の買掛金または財務部門に関連付ける必要があります。 請求連絡先情報を更新するには、[Azure アカウント センター](https://account.azure.com/Profile)に移動します。
+    - 与信限度額を承認する前に、Azure portal で請求連絡先情報を追加します。 連絡先の詳細を会社の買掛金または財務部門に関連付ける必要があります。 請求連絡先情報を更新するには、[Azure portal](https://portal.azure.com) に移動します。
 
 6. 連絡先情報と優先連絡方法を確認し、 **[作成]** を選択します。
 

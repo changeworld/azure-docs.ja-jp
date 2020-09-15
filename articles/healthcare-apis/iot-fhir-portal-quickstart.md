@@ -6,14 +6,14 @@ author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: quickstart
-ms.date: 08/04/2020
+ms.date: 09/08/2020
 ms.author: punagpal
-ms.openlocfilehash: 55d072492a1d90c6964935f2a79f73aacdceff21
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 3b6db74d637ac17ef5d09e1d9c5d3dac30ba8ba9
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826774"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594375"
 ---
 # <a name="quickstart-deploy-azure-iot-connector-for-fhir-preview-using-azure-portal"></a>クイック スタート:Azure portal を使用して Azure IoT Connector for FHIR (プレビュー) をデプロイする
 
@@ -169,7 +169,10 @@ Azure では、IoT デバイスを接続し、管理するための幅広い IoT
 > 実際のデバイスの準備ができたらいつでも、同じ IoT Central アプリケーションを使用して、[ご利用のデバイスをオンボード](https://docs.microsoft.com/azure/iot-central/core/howto-set-up-template)し、デバイス シミュレーターを交換することができます。 デバイス データの FHIR への送信も自動的に開始されます。 
 
 ## <a name="connect-your-iot-data-with-the-azure-iot-connector-for-fhir-preview"></a>IoT データを Azure IoT Connector for FHIR (プレビュー) に接続する
-IoT Central アプリケーションをデプロイすると、すぐに使用できる 2 つのシミュレートされたデバイスでテレメトリの生成が開始されます。 このチュートリアルでは、Azure IoT Connector for FHIR を介して、テレメトリを *Smart Vitals Patch* シミュレーターから FHIR に取り込みます。 IoT データを Azure IoT Connector for FHIR にエクスポートするには、[IoT Central 内で継続的なデータ エクスポートを設定する](https://docs.microsoft.com/azure/iot-central/core/howto-export-data#set-up-data-export)必要があります。 [継続的データ エクスポート] ページで、次の設定を行います。
+> [!WARNING]
+> このガイドに含まれるデバイス マッピング テンプレートは、IoT Central 内でデータ エクスポート (レガシ) と共に使用するように設計されています。
+
+IoT Central アプリケーションをデプロイすると、すぐに使用できる 2 つのシミュレートされたデバイスでテレメトリの生成が開始されます。 このチュートリアルでは、Azure IoT Connector for FHIR を介して、テレメトリを *Smart Vitals Patch* シミュレーターから FHIR に取り込みます。 IoT データを Azure IoT Connector for FHIR にエクスポートするには、[IoT Central 内で継続的なデータ エクスポートを設定する](https://docs.microsoft.com/azure/iot-central/core/howto-export-data-legacy)必要があります。 [継続的データ エクスポート] ページで、次の設定を行います。
 - エクスポート先として *[Azure Event Hubs]* を選択します。
 - **[Event Hubs 名前空間]** フィールドでは、値 *[接続文字列を使用します]* を選択します。
 - **[接続文字列]** フィールドでは、前の手順で取得した Azure IoT Connector for FHIR の接続文字列を指定します。
