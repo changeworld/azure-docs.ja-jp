@@ -13,12 +13,12 @@ metadata:
   ms.author: mbaldwin
   manager: rkarlin
   ms.date: 12/23/2019
-  ms.openlocfilehash: 705757e3021ff7421dd88e3a2661b1b51f3f927a
-  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+  ms.openlocfilehash: addc6aab30d23ab1aaca691e5d1ee1f0b9d12c39
+  ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88213563"
+  ms.lasthandoff: 09/13/2020
+  ms.locfileid: "90058667"
 landingContent:
 - title: Azure セキュリティ ベンチマークについて
   linkLists:
@@ -34,22 +34,22 @@ landingContent:
       url: ../../security-center/index.yml
     - text: Azure セキュリティの基礎
       url: ../fundamentals/index.yml
-- title: Azure セキュリティ ベンチマークのコントロール
+- title: Azure セキュリティ ベンチマーク V2 の制御
   linkLists:
   - linkListType: overview
     links:
     - text: ネットワークのセキュリティ
-      url: security-control-network-security.md
-    - text: ログ記録と監視
-      url: security-control-logging-monitoring.md
-    - text: ID とアクセスの制御
-      url: security-control-identity-access-control.md
+      url: security-controls-v2-network-security.md
+    - text: ID 管理
+      url: security-controls-v2-identity-management.md
+    - text: 特権アクセス
+      url: security-controls-v2-privileged-access.md
     - text: データ保護
-      url: security-control-data-protection.md
-    - text: 脆弱性の管理
-      url: security-control-vulnerability-management.md
+      url: security-controls-v2-data-protection.md
+    - text: アセット管理
+      url: security-controls-v2-asset-management.md
     - text: 詳細情報
-      url: security-control-inventory-asset-management.md
+      url: security-controls-v2-logging-threat-detection.md
 - title: Compute のセキュリティ ベースライン
   linkLists:
   - linkListType: overview

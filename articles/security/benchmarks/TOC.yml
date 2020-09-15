@@ -2,11 +2,37 @@
   href: index.yml
 - name: はじめに
   href: introduction.md
-- name: シングル サインオンの設定
+- name: セキュリティ コントロール (v2)
   expanded: true
   items:
     - name: Azure セキュリティ コントロールの概要
       href: overview.md
+    - name: ネットワークのセキュリティ
+      href: security-controls-v2-network-security.md
+    - name: ID 管理
+      href: security-controls-v2-identity-management.md
+    - name: 特権アクセス
+      href: security-controls-v2-privileged-access.md
+    - name: データ保護
+      href: security-controls-v2-data-protection.md
+    - name: アセット管理
+      href: security-controls-v2-asset-management.md
+    - name: ログと脅威検出
+      href: security-controls-v2-logging-threat-detection.md
+    - name: インシデント対応
+      href: security-controls-v2-incident-response.md
+    - name: 体制と脆弱性の管理
+      href: security-controls-v2-posture-vulnerability-management.md
+    - name: エンドポイントのセキュリティ
+      href: security-controls-v2-endpoint-security.md
+    - name: バックアップと回復
+      href: security-controls-v2-backup-recovery.md
+    - name: ガバナンスと戦略
+      href: security-controls-v2-governance-strategy.md
+- name: セキュリティ コントロール (v1)
+  items:
+    - name: Azure セキュリティ コントロールの概要 (v1)
+      href: overview-v1.md
     - name: ネットワークのセキュリティ
       href: security-control-network-security.md
     - name: ログ記録と監視

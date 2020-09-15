@@ -17,6 +17,8 @@
       href: get-started-create-service-instance.md
     - name: インスタンスの作成 - PowerShell
       href: powershell-create-service-instance.md
+    - name: インスタンスの作成 - Visual Studio Code
+      href: vscode-create-service-instance.md
 - name: チュートリアル
   items:
     - name: 1 - 最初の API のインポート

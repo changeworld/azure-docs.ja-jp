@@ -573,7 +573,7 @@
           href: optimize-dev-test.md
         - name: 予約容量によるコストの最適化
           href: cosmos-db-reserved-capacity.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティの概要
           href: database-security.md
@@ -967,6 +967,8 @@
         - name: Resource Manager テンプレートの使用
           href: manage-sql-with-resource-manager.md
           displayName: ARM
+        - name: リージョン間の移動
+          href: how-to-move-regions.md
     - name: グローバル配信
       items:
         - name: マルチマスターを構成する
@@ -1136,7 +1138,7 @@
           href: how-to-write-javascript-query-api.md
         - name: ストアド プロシージャ、トリガー、UDF の使用
           href: how-to-use-stored-procedures-triggers-udfs.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: IP ファイアウォールの構成
           href: how-to-configure-firewall.md

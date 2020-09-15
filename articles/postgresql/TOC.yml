@@ -4,6 +4,10 @@
   items:
     - name: Azure DB for PostgreSQL とは
       href: overview.md
+    - name: サービスの更新情報
+      items:
+        - name: SSL ルート証明書の期限切れ
+          href: concepts-certificate-rotation.md
 - name: クイックスタート
   expanded: true
   items:

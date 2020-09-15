@@ -1,10 +1,10 @@
 ### YamlMime:Hub
 title: Azure Media Services のドキュメント
-summary: Azure Media Services はクラウドベースのメディアワークフロープラットフォームであり、エンコード・パッケージ化・コンテンツ保護・ライブ配信など必要なソリューションが提供されています。
+summary: Azure Media Services は、クラウドおよびエッジ メディア ワークフロー サービスのコレクションです。これにより、ライブおよびバッチのビデオ分析、コード変換、マルチデバイス配信サービス、コンテンツ保護、および大規模なライブ イベント配信を必要とするソリューションを構築できます。
 brand: azure
 metadata:
   title: Azure Media Services のドキュメント
-  description: Azure Media Services はクラウドベースのメディア ワークフロー プラットフォームで、エンコード、パッケージ化、コンテンツ保護、ライブ イベントの配信を必要とするソリューションを作成できます。
+  description: Azure Media Services は、クラウドおよびエッジ メディア ワークフロー サービスのコレクションです。これにより、ライブおよびバッチのビデオ分析、コード変換、マルチデバイス配信サービス、コンテンツ保護、および大規模なライブ イベント配信を必要とするソリューションを構築できます。
   services: media-services
   ms.service: media-services
   ms.subservice: 
@@ -13,12 +13,12 @@ metadata:
   author: Juliako
   ms.author: juliako
   ms.date: 07//2020
-  ms.openlocfilehash: d6f78b4494a16a0522f93658b063d157819c519e
-  ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+  ms.openlocfilehash: fb258b634ff5511a9e795e8c0990a62bf2d0d22d
+  ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/06/2020
-  ms.locfileid: "87826145"
+  ms.lasthandoff: 09/13/2020
+  ms.locfileid: "90056535"
 highlightedContent:
   items:
   - title: Azure Media Services v3 について

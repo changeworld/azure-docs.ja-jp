@@ -32,7 +32,7 @@
       href: private-link-service-overview.md
     - name: プライベート エンドポイントの DNS 統合
       href: private-endpoint-dns.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
