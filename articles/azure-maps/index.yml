@@ -9,12 +9,12 @@ metadata:
   author: anastasia-ms
   ms.author: v-stharr
   ms.date: 1/15/2020
-  ms.openlocfilehash: 01fb176ad6dc2ce097beddf03b724628ba3e1032
-  ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+  ms.openlocfilehash: e37bc2c9a6f6ad48695ce5fe346ef2402f3c6a6c
+  ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/18/2020
-  ms.locfileid: "88509928"
+  ms.lasthandoff: 09/15/2020
+  ms.locfileid: "90086268"
 landingContent:
 - title: Azure Maps について
   linkLists:
@@ -121,13 +121,13 @@ landingContent:
   - linkListType: reference
     links:
     - text: マップ コントロール
-      url: https://docs.microsoft.com/javascript/api/azure-maps-control/?view=azure-maps-typescript-latest
+      url: https://docs.microsoft.com/javascript/api/azure-maps-control/
     - text: 描画ツール モジュール
-      url: https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/?view=azure-maps-typescript-latest
+      url: https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/
     - text: サービス モジュール
-      url: https://docs.microsoft.com/javascript/api/azure-maps-rest/?view=azure-maps-typescript-latest
+      url: https://docs.microsoft.com/javascript/api/azure-maps-rest/
     - text: 空間 IO モジュール
-      url: https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/?view=azure-maps-typescript-latest
+      url: https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/
 - title: Android SDK を使用した開発
   linkLists:
   - linkListType: how-to-guide

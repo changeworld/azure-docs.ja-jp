@@ -1,27 +1,13 @@
 - name: Translator のドキュメント
   href: index.yml
-- name: 'Translator'
+- name: '[変換者]'
   items:
-    - name: 概要
-      items:
-        - name: Translator とは
-          href: translator-info-overview.md
-        - name: 言語サポート
-          href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
-    - name: クイックスタート
-      items:
-        - name: テキストを翻訳する
-          href: quickstart-translate.md
-        - name: テキストを表記変換する
-          href: quickstart-transliterate.md
-        - name: 言語を検出する
-          href: quickstart-detect.md
-        - name: 単語の訳を検索する
-          href: quickstart-dictionary.md
-        - name: サポートされている言語を取得する
-          href: quickstart-languages.md
-        - name: 文の長さを決定する
-          href: quickstart-sentences.md
+    - name: Translator とは
+      href: translator-info-overview.md
+    - name: クイック スタート
+      href: quickstart-translator.md
+    - name: 言語サポート
+      href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
     - name: チュートリアル
       items:
         - name: Translator の WPF アプリの作成 (C#)
