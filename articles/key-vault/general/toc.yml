@@ -6,8 +6,6 @@
       href: overview.md
     - name: キー、シークレット、証明書について
       href: about-keys-secrets-certificates.md
-    - name: 新機能
-      href: whats-new.md
 - name: クイックスタート
   expanded: true
   items:
@@ -43,7 +41,7 @@
   items:
     - name: 基本的な概念
       href: basic-concepts.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: Azure Key Vault セキュリティ
           href: overview-security.md
@@ -62,9 +60,9 @@
         - name: Azure Policy によるセキュリティ制御
           displayName: 'regulatory, compliance, standards, domains'
           href: ../security-controls-policy.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
-    - name: 通知 (プレビュー)
+    - name: 通知
       items:
-        - name: Azure Event Grid での監視 (プレビュー)
+        - name: Azure Event Grid での監視
           href: event-grid-overview.md
     - name: 論理的な削除
       items:
@@ -96,6 +94,8 @@
               href: assign-access-policy-portal.md
         - name: キー、シークレット、証明書へのアクセスを管理するための Azure RBAC の使用 (プレビュー)
           href: rbac-guide.md
+        - name: コンテナー アクセス ポリシーの Azure RBAC への移行ガイド
+          href: rbac-migration.md
         - name: アクセスに関する問題のトラブルシューティング
           href: troubleshooting-access-issues.md
     - name: 開発
@@ -144,6 +144,8 @@
           href: move-region.md
 - name: リファレンス
   items:
+    - name: 新機能
+      href: whats-new.md
     - name: クライアント ライブラリ
       href: client-libraries.md
     - name: REST API のエラー コード - Azure Key Vault

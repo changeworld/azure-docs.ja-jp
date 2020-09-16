@@ -392,14 +392,20 @@
                   href: ./spark/apache-spark-analyze-application-insight-logs.md
         - name: 管理する
           items:
+            - name: 依存関係の管理
+              items:
+                - name: Spark アプリケーションの依存関係を管理する
+                  href: ./spark/apache-spark-manage-dependencies.md
+                - name: jar の依存関係を安全に管理する
+                  href: ./spark/safely-manage-jar-dependency.md
+                - name: Python 環境を安全に管理する
+                  href: ./spark/apache-spark-python-package-installation.md
             - name: クラスター リソースの管理
               href: ./spark/apache-spark-resource-manager.md
             - name: 拡張された History Server を使用して Apache Spark アプリケーションを管理する
               href: ./spark/apache-azure-spark-history-server.md
             - name: IO キャッシュによるキャッシュを有効にする
               href: ./spark/apache-spark-improve-performance-iocache.md
-            - name: Jar 依存関係の管理
-              href: ./spark/manage-jar-dependency.md
             - name: Apache Spark での Notebook の使用
               items:
                 - name: ローカルの Jupyter Notebook を使用する
@@ -408,8 +414,6 @@
                   href: ./spark/apache-spark-jupyter-notebook-kernels.md
                 - name: cell magic を使用して Jupyter で外部のパッケージを使用する
                   href: ./spark/apache-spark-jupyter-notebook-use-external-packages.md
-                - name: スクリプト アクションを使用して Azure HDInsight で Python 環境を安全に管理する
-                  href: ./spark/apache-spark-python-package-installation.md
                 - name: Apache Zeppelin Notebook を使用する
                   href: ./spark/apache-spark-zeppelin-notebook.md
             - name: 他の Azure サービスの使用

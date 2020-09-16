@@ -47,6 +47,8 @@
       href: spring-cloud-tutorial-managed-identities-key-vault.md
     - name: 仮想ネットワークに Azure Spring Cloud をデプロイする
       href: spring-cloud-tutorial-deploy-in-azure-virtual-network.md
+    - name: マネージド ID を使用して Azure Spring Cloud アプリから Azure Functions を呼び出す
+      href: spring-cloud-tutorial-managed-identities-functions.md
 - name: 概念
   items:
     - name: アプリとデプロイについて

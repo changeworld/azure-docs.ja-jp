@@ -564,7 +564,7 @@
               href: platform/itsmc-overview.md
             - name: IT Service Management 接続
               href: platform/itsmc-connections.md
-            - name: Secure Export の統合
+            - name: Secure Export との統合
               href: platform/it-service-management-connector-secure-webhook-connections.md
             - name: Service Manager Web アプリを作成する
               href: platform/itsmc-service-manager-script.md

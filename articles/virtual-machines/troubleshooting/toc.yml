@@ -83,6 +83,8 @@
           href: troubleshoot-critical-service-failed-boot-error.md
         - name: ブート エラーのトラブルシューティング - ステータスが見つかりません
           href: boot-error-status-not-found.md
+        - name: Windows がシステムの構成を完了できなかったことをトラブルシューティングする
+          href: windows-could-not-configure-system.md
         - name: Windows Update のインストール容量のトラブルシューティング
           href: windows-update-installation-capacity.md
         - name: 起動可能なディスクではありません

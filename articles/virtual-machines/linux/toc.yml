@@ -345,7 +345,7 @@
       href: ../../virtual-machine-scale-sets/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: インフラストラクチャの自動化
       href: ../infrastructure-automation.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティとポリシー
           href: ../security-policy.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -479,7 +479,7 @@
                   items:
                     - name: VM から
                       href: ../image-version-vm-cli.md
-                    - name: VHD またはスナップショットから
+                    - name: マネージド ディスクまたはスナップショットから
                       href: ../image-version-snapshot-cli.md
                     - name: マネージド イメージから移行する
                       href: ../image-version-managed-image-cli.md
@@ -501,7 +501,7 @@
                   items:
                     - name: VM から
                       href: ../image-version-vm-powershell.md
-                    - name: VHD またはスナップショットから
+                    - name: マネージド ディスクまたはスナップショットから
                       href: ../image-version-snapshot-powershell.md
                     - name: マネージド イメージから移行する
                       href: ../image-version-managed-image-powershell.md
@@ -542,14 +542,16 @@
               href: image-builder-overview.md
             - name: Azure CLI の使用
               href: image-builder.md
-            - name: VNET を使用して VM を作成する - CLI
+            - name: VNET を使用する - CLI
               href: image-builder-vnet.md
-            - name: 権限を構成する - CLI
-              href: image-builder-permissions-cli.md
-            - name: 権限を構成する - PowerShell
-              href: image-builder-permissions-powershell.md
             - name: ネットワーク オプション
               href: image-builder-networking.md
+            - name: 権限の構成
+              items:
+                - name: CLI
+                  href: image-builder-permissions-cli.md
+                - name: PowerShell
+                  href: image-builder-permissions-powershell.md
             - name: DevOps タスク
               href: image-builder-devops-task.md
             - name: Resource Manager テンプレート リファレンス
@@ -573,7 +575,7 @@
           href: download-vhd.md
     - name: VM のセキュリティ保護
       items:
-        - name: Recommendations
+        - name: 推奨事項
           href: security-recommendations.md
         - name: ジャストインタイム アクセス
           href: ../../security-center/security-center-just-in-time.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json

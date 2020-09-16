@@ -33,6 +33,14 @@
           href: tutorial-ev-routing.md
         - name: Azure Notebooks (Python) を使用した気象データの分析
           href: weather-service-tutorial.md
+    - name: Bing Maps から移行する
+      items:
+        - name: Bing Maps から移行する
+          href: migrate-from-bing-maps.md
+        - name: Web アプリを移行する
+          href: migrate-from-bing-maps-web-app.md
+        - name: Web サービスを移行する
+          href: migrate-from-bing-maps-web-services.md
     - name: Google Maps から移行する
       items:
         - name: Google Maps から移行する
