@@ -191,7 +191,7 @@ Windows アプリの場合、ZIP ファイルには、App Service ファイル �
 | AppServiceHTTPLogs | はい | はい | Web サーバー ログ |
 | AppServiceEnvironmentPlatformLogs | はい | はい | App Service Environment: スケーリング、構成変更、および状態ログ|
 | AppServiceAuditLogs | はい | はい | FTP および Kudu 経由のログイン アクティビティ |
-| AppServiceFileAuditLogs | はい | TBD | FTP および Kudu 経由のファイル変更 |
+| AppServiceFileAuditLogs | はい | TBD | FTP および Kudu 経由のファイル変更。Premium 以上の App Service プラン にて利用可能 |
 | AppServiceAppLogs | TBA | Java SE および Tomcat | アプリケーション ログ |
 | AppServiceIPSecAuditLogs  | はい | はい | IP ルールからの要求 |
 | AppServicePlatformLogs  | TBA | はい | コンテナー ログ |
