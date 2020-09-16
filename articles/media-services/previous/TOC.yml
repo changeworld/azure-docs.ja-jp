@@ -318,33 +318,16 @@
               href: hybrid-design-drm-sybsystem.md
             - name: マルチ DRM の参照設計
               href: media-services-cenc-with-multidrm-access-control.md
-    - name: 分析
-      href: media-services-analytics-overview.md
-      items:
-        - name: Azure portal を使用してメディアを分析する
-          href: media-services-portal-analyze.md
-        - name: Indexer 2 で処理する
-          href: media-services-process-content-with-indexer2.md
         - name: Indexer で処理する
           href: media-services-index-content.md
           items:
             - name: タスク プリセット
               href: indexer-task-preset.md
-        - name: Face Detector で処理する
-          href: media-services-face-and-emotion-detection.md
-        - name: Motion Detector で処理する
-          href: media-services-motion-detection.md
         - name: Face Redactor で処理する
           href: media-services-face-redaction.md
           items:
             - name: Face Redactor のチュートリアル
               href: media-services-redactor-walkthrough.md
-        - name: Video Thumbnails で処理する
-          href: media-services-video-summarization.md
-        - name: OCR で処理する
-          href: media-services-video-optical-character-recognition.md
-        - name: Content Moderator で処理する
-          href: media-services-content-moderation.md
     - name: テレメトリの構成
       href: media-services-telemetry-overview.md
       items:

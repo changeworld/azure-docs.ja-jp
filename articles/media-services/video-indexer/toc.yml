@@ -13,6 +13,8 @@
       href: invite-users.md
 - name: チュートリアル
   items:
+    - name: Azure に接続する
+      href: connect-to-azure.md
     - name: Video Indexer API の使用
       href: video-indexer-use-apis.md
     - name: Logic Apps コネクタ

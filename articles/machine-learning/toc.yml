@@ -103,9 +103,9 @@
           displayName: studio
           href: concept-designer.md
         - name: アルゴリズム チート シート
-          href: /azure/machine-learning/algorithm-cheat-sheet
+          href: algorithm-cheat-sheet.md
         - name: アルゴリズムの選択方法
-          href: /azure/machine-learning/how-to-select-algorithms
+          href: how-to-select-algorithms.md
     - name: 自動化された ML
       items:
         - name: 自動化された ML の概要
