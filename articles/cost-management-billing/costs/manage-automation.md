@@ -3,17 +3,17 @@ title: 自動化を使用した Azure コストの管理
 description: この記事では、自動化を使用して Azure コストを管理する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 08/19/2020
+ms.date: 09/14/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
-ms.reviewer: adwise
-ms.openlocfilehash: a5ab84794884cc0c87bd766be7a0fa2fe4c52aa9
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.reviewer: matrive
+ms.openlocfilehash: eb6ed73305d55b4f76464a4567c6b53715b10c3a
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684407"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526648"
 ---
 # <a name="manage-costs-with-automation"></a>自動化を使用したコストの管理
 
@@ -161,6 +161,70 @@ Budgets API への GET 呼び出しでは、コスト分析で示される現在
 ### <a name="automate-budget-creation"></a>予算の作成を自動化する
 
 [Budgets API](/rest/api/consumption/budgets) を使用して、予算の作成を自動化できます。 [予算テンプレート](quick-create-budget-template.md)を使用して予算を作成することもできます。 テンプレートを使用すると、コスト管理を適切に構成し、確実に適用して、Azure デプロイを簡単に標準化できます。
+
+#### <a name="supported-locales-for-budget-alert-emails"></a>予算のアラート メールでサポートされているロケール
+
+予算については、コストが設定されたしきい値を超えた場合にアラートを受け取ります。 1 つの予算につき最大 5 つの電子メール受信者を設定できます。 受信者は、予算しきい値を超過してから 24 時間以内に電子メール アラートを受信します。 ただし、受信者は別の言語で電子メールを受信する必要がある場合があります。 次の言語カルチャ コードを、Budgets API で使用できます。 次の例のような `locale` パラメーターを使用して、カルチャ コードを設定します。
+
+```json
+{
+  "eTag": "\"1d681a8fc67f77a\"",
+  "properties": {
+    "timePeriod": {
+      "startDate": "2020-07-24T00:00:00Z",
+      "endDate": "2022-07-23T00:00:00Z"
+    },
+    "timeGrain": "BillingMonth",
+    "amount": 1,
+    "currentSpend": {
+      "amount": 0,
+      "unit": "USD"
+    },
+    "category": "Cost",
+    "notifications": {
+      "actual_GreaterThan_10_Percent": {
+        "enabled": true,
+        "operator": "GreaterThan",
+        "threshold": 20,
+        "locale": "en-us",
+        "contactEmails": [
+          "user@contoso.com"
+        ],
+        "contactRoles": [],
+        "contactGroups": [],
+        "thresholdType": "Actual"
+      }
+    }
+  }
+}
+
+```
+
+カルチャ コードによってサポートされる言語:
+
+| カルチャ コード| 言語 |
+| --- | --- |
+| ja-JP | 英語 (米国) |
+| ja-jp | 日本語 (日本) |
+| zh-cn | 中国語 (簡体字、中国) |
+| de-de | ドイツ語 (ドイツ) |
+| es-es | スペイン語 (スペイン、インターナショナル) |
+| fr-fr | フランス語 (フランス) |
+| it-it | イタリア語 (イタリア) |
+| ko-kr | 韓国語 (韓国) |
+| pt-br | ポルトガル語 (ブラジル) |
+| ru-ru | ロシア語 (ロシア) |
+| zh-tw | 中国語 (繁体字、台湾) |
+| cs-cz | チェコ語 (チェコ共和国) |
+| pl-pl | ポーランド語 (ポーランド) |
+| tr-tr | トルコ語 (トルコ) |
+| da-dk | デンマーク語 (デンマーク) |
+| dn-gb | 英語 (イギリス) |
+| hu-hu | ハンガリー語 (ハンガリー) |
+| nb-bo | ノルウェー語ブークモール (ノルウェー) |
+| nl-nl | オランダ語 (オランダ) |
+| pt-pt | ポルトガル語 (ポルトガル) |
+| sv-se | スウェーデン語 (スウェーデン) |
 
 #### <a name="common-budgets-api-configurations"></a>Budgets API の一般的な構成
 

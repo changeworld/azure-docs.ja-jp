@@ -53,6 +53,9 @@
     - name: 委任へのアクセスを削除する
       displayName: 'delete, undelegate'
       href: ./how-to/remove-delegation.md
+    - name: Azure Arc の統合
+      displayName: 'server, kubernetes, hybrid, infrastructure'
+      href: ./how-to/manage-hybrid-infrastructure-arc.md
     - name: Azure Monitor の統合
       items:
         - name: Azure Monitor ログの大規模な使用

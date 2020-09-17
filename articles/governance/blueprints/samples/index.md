@@ -1,14 +1,14 @@
 ---
 title: ブループリント サンプルの一覧
 description: Azure Blueprints を使用して環境、ポリシー、クラウド導入フレームワークの基礎をデプロイするためのコンプライアンスおよび標準サンプルのインデックス。
-ms.date: 09/11/2020
+ms.date: 09/14/2020
 ms.topic: sample
-ms.openlocfilehash: 7ac95dee88cb244ecb4b60738daae26bb0d8831a
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: def5e51a3db7e0733e0d7e1ef5c6895aedb7128d
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031876"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530983"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints サンプル
 
@@ -42,7 +42,8 @@ ms.locfileid: "90031876"
 
 ## <a name="samples-strategy"></a>サンプルの戦略
 
-:::image type="content" source="../media/blueprint-samples-strategy.png" alt-text="ブループリント サンプルの戦略" border="false":::
+:::image type="complex" source="../media/blueprint-samples-strategy.png" alt-text="アーキテクチャの複雑さとコンプライアンス要件の中でブループリント サンプルが適合する場所を示す図。" border="false":::
+   アーキテクチャの複雑さが X 軸に、コンプライアンスの要件が Y 軸にある座標系について説明しています。  アーキテクチャの複雑さとコンプライアンス要件が増すにつれて、リージョン E に指定されたポータルから標準のブループリント サンプルを採用します。Azure の使用を開始するお客様の場合、リージョン A と B によって指定されたクラウド導入フレームワーク (C A F) ベースの基盤とランディング ゾーンのブループリントを活用します。残りの領域は、顧客によって作成されたカスタム ブループリントが元になっており、リージョン C、D、および F のパートナー向けです。:::image-end:::
 
 CAF 基盤および CAF 移行ランディング ゾーンのブループリントは、オンプレミスの資産とワークロードを Azure に移行するために既存のクリーンな単一サブスクリプションが顧客側で準備されていることを前提としています
 (図の領域 A および B)。  

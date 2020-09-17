@@ -3,9 +3,11 @@
 - name: 概要
   expanded: true
   items:
-    - name: Azure Cognitive Search とは
+    - name: Cognitive Search とは
       href: search-what-is-azure-search.md
-    - name: 新機能
+    - name: Cognitive Search の機能
+      href: search-features-list.md
+    - name: Cognitive Search の最新情報
       href: whats-new.md
 - name: クイックスタート
   items:
@@ -413,25 +415,27 @@
     - name: .NET
       items:
         - name: Search API
-          href: /dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet
+          href: /dotnet/api/overview/azure/search.documents-readme
         - name: 管理 API
-          href: /dotnet/api/overview/azure/search/management?view=azure-dotnet
+          href: /dotnet/api/overview/azure/search/management
     - name: Java
       items:
+        - name: Search API
+          href: /java/api/overview/azure/search-documents-readme
         - name: 管理 API
-          href: /java/api/overview/azure/search/management?view=azure-java-stable
+          href: /java/api/overview/azure/search/management
     - name: JavaScript
       items:
         - name: Search API
-          href: /javascript/api/overview/azure/search-documents-readme?view=azure-node-latest
+          href: /javascript/api/overview/azure/search-documents-readme
         - name: 管理 API
-          href: /javascript/api/overview/azure/search/management?view=azure-node-latest
+          href: /javascript/api/overview/azure/search/management
     - name: Python
       items:
         - name: Search API
-          href: /python/api/overview/azure/search-documents-readme?view=azure-python
+          href: /python/api/overview/azure/search-documents-readme
         - name: 管理 API
-          href: /python/api/overview/azure/search/management?view=azure-python
+          href: /python/api/overview/azure/search/management
     - name: OData 言語のリファレンス
       items:
         - name: 概要

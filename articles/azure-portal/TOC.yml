@@ -31,6 +31,8 @@
       href: set-preferences.md
     - name: お気に入りの追加、削除、並べ替え
       href: azure-portal-add-remove-sort-favorites.md
+    - name: リソース情報の表示とフィルター処理
+      href: manage-filter-resource-views.md
     - name: Azure ダッシュボードを作成する
       items:
         - name: Azure ダッシュボードの作成と共有

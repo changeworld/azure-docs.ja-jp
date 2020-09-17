@@ -340,8 +340,16 @@
           href: virtual-machine-scale-sets-upgrade-scale-set.md
         - name: スケール セットのネットワーク
           href: virtual-machine-scale-sets-networking.md
-        - name: OS の自動アップグレード
-          href: virtual-machine-scale-sets-automatic-upgrade.md
+        - name: OS イメージのアップグレード
+          items:
+            - name: OS の自動アップグレード
+              href: virtual-machine-scale-sets-automatic-upgrade.md
+            - name: メンテナンス管理
+              items:
+                - name: 概要 (プレビュー)
+                  href: ../virtual-machines/virtual-machine-scale-sets-maintenance-control.md
+                - name: PowerShell (プレビュー)
+                  href: ../virtual-machines/virtual-machine-scale-sets-maintenance-control-powershell.md
         - name: 自動インスタンス修復
           href: virtual-machine-scale-sets-automatic-instance-repairs.md
         - name: インスタンス保護

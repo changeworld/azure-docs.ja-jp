@@ -1,14 +1,14 @@
 ---
 title: CAF 移行ランディング ゾーン ブループリント サンプルの概要
 description: Cloud Adoption Framework for Azure (CAF) 移行ランディング ゾーン ブループリント サンプルの概要とアーキテクチャ。
-ms.date: 04/15/2020
+ms.date: 09/14/2020
 ms.topic: sample
-ms.openlocfilehash: 6deb671070a742448560309b1b1a3572f5aa082d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6b8e3484690d263a43d3824c054b28344ea07fb1
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852312"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531680"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>Microsoft Cloud Adoption Framework for Azure 移行ランディング ゾーン ブループリント サンプルの概要
 
@@ -20,7 +20,9 @@ Microsoft Cloud Adoption Framework for Azure (CAF) 移行ランディング ゾ�
 
 CAF 移行ランディング ゾーン ブループリント サンプルは、仮想マシンを移行するためのサブスクリプションを準備する際に組織で使用できる基本インフラストラクチャ リソースを Azure にデプロイします。 また、クラウド資産を管理するために必要なガバナンス コントロールの導入にも役立ちます。 このサンプルは、組織が自信を持って Azure を使い始めるために役立つリソース、ポリシー、テンプレートをデプロイして適用します。
 
-:::image type="content" source="../../media/caf-blueprints/caf-migration-landing-zone-architecture.png" alt-text="CAF 移行ランディング ゾーン、インストール内容の説明図 (初期のランディング ゾーンに関する CAF ガイダンスの一部)" border="false":::
+:::image type="complex" source="../../media/caf-blueprints/caf-migration-landing-zone-architecture.png" alt-text="CAF 移行ランディング ゾーン、インストール内容の説明図 (初期のランディング ゾーンに関する CAF ガイダンスの一部)。" border="false":::
+   CAF 移行ブループリントをデプロイすることによって達成される Azure アーキテクチャを説明しています。  これは、Azure 仮想ネットワーク、ログを格納するためのストレージ アカウント、ストレージ アカウントに格納するように構成されたログ分析で構成されるリソース グループを使用するサブスクリプションに適用可能です。  また、構成済みの Azure Key Vault と初期セットアップが作成された Azure Migrate も示されています。  これらのすべてのコア インフラストラクチャは、Azure Active Directory を使用してアクセスされます。     
+:::image-end:::
 
 この環境は、セキュリティで保護され、完全に監視されたエンタープライズ対応のガバナンスを提供するために使用される複数の Azure サービスで構成されます。 この環境は、以下で構成されます。
 

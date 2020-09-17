@@ -28,8 +28,6 @@
           href: tutorial-discover-physical.md
         - name: AWS インスタンスを検出する
           href: tutorial-discover-aws.md
-        - name: インポートされたサーバーを検出する
-          href: tutorial-discover-import.md
     - name: アクセス
       items:
         - name: Azure VM への移行のために VMware VM を評価する
@@ -42,6 +40,8 @@
           href: tutorial-assess-physical.md
         - name: Azure への移行のために AWS インスタンスを評価する
           href: tutorial-assess-aws.md
+        - name: インポートされたサーバーを評価する
+          href: tutorial-discover-import.md
     - name: 移行
       items:
         - name: VMware VM を移行する

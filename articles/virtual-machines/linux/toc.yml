@@ -619,7 +619,7 @@
               href: disk-encryption-troubleshooting.md
             - name: ディスク暗号化の FAQ
               href: disk-encryption-faq.md
-            - name: ディスク暗号化 - 以前のバージョン (AAD)
+            - name: ディスク暗号化 - 以前のバージョン (Azure AD)
               items:
                 - name: 概要
                   href: disk-encryption-overview-aad.md
@@ -691,7 +691,7 @@
         - name: リモート デスクトップを使用する
           href: use-remote-desktop.md
         - name: VM を Azure Active Directory に参加させる
-          displayName: AAD
+          displayName: Azure AD
           items:
             - name: Red Hat Enterprise Linux
               href: ../../active-directory-domain-services/join-rhel-linux-vm.md
@@ -717,7 +717,7 @@
           href: instance-metadata-service.md
         - name: REST による使用状況メトリックの取得
           href: metrics-vm-usage-rest.md
-    - name: プラットフォームのメンテナンス
+    - name: メンテナンス管理
       items:
         - name: メンテナンスの通知
           items:
@@ -729,7 +729,7 @@
               href: ../maintenance-notifications-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: PowerShell
               href: ../maintenance-notifications-powershell.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-        - name: メンテナンス管理
+        - name: プラットフォームのメンテナンス
           items:
             - name: 概要
               href: ../maintenance-control.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -741,6 +741,16 @@
               href: ../maintenance-control-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: スケジュールされたイベント
           href: scheduled-events.md
+        - name: 仮想マシン スケール セットの OS イメージのアップグレード
+          items:
+            - name: OS の自動アップグレード
+              href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: メンテナンス管理
+              items:
+                - name: 概要 (プレビュー)
+                  href: ../virtual-machine-scale-sets-maintenance-control.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: PowerShell (プレビュー)
+                  href: ../virtual-machine-scale-sets-maintenance-control-powershell.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: VM を監視する
       items:
         - name: エージェント

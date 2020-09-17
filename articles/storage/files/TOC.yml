@@ -27,6 +27,8 @@
       items:
         - name: Azure Files のデプロイの計画
           href: storage-files-planning.md
+        - name: 使用可能なファイル共有プロトコル
+          href: storage-files-compare-protocols.md
         - name: ID ベースの認証と承認
           href: storage-files-active-directory-overview.md
         - name: 直接アクセスに関するネットワークの考慮事項
@@ -79,12 +81,14 @@
   items:
     - name: 作成
       items:
-        - name: ファイル共有を作成する
+        - name: SMB ファイル共有を作成する」を参照してください。
           href: storage-how-to-create-file-share.md
         - name: 大型ファイル共有を有効にする
           href: storage-files-how-to-create-large-file-share.md
         - name: Premium ファイル共有を作成する
           href: storage-how-to-create-premium-fileshare.md
+        - name: NFS 共有を作成する
+          href: storage-files-how-to-create-nfs-shares.md
     - name: 配置
       items:
         - name: Azure Files のデプロイ
@@ -95,11 +99,13 @@
           href: ../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: マウントする
       items:
-        - name: Windows で Azure Files を使用する
+        - name: Windows への SMB ファイル共有のマウント
           href: storage-how-to-use-files-windows.md
-        - name: Linux で Azure Files を使用する
+        - name: Linux への SMB ファイル共有のマウント
           href: storage-how-to-use-files-linux.md
-        - name: macOS で Azure Files を使用する
+        - name: Linux への NFS ファイル共有のマウント
+          href: storage-files-how-to-mount-nfs-shares.md
+        - name: macOS への SMB ファイル共有のマウント
           href: storage-how-to-use-files-mac.md
     - name: ネットワーク
       items:
@@ -269,11 +275,11 @@
           href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: トラブルシューティング
       items:
-        - name: Azure Files のトラブルシューティング - Windows
+        - name: Azure Files のトラブルシューティング - Windows (SMB)
           href: storage-troubleshoot-windows-file-connection-problems.md
-        - name: Azure Files のトラブルシューティング - Linux
+        - name: Azure Files のトラブルシューティング - Linux (SMB)
           href: storage-troubleshoot-linux-file-connection-problems.md
-        - name: Azure Files のパフォーマンスに関するトラブルシューティング
+        - name: Azure Files のパフォーマンスに関するトラブルシューティング (SMB)
           href: storage-troubleshooting-files-performance.md
         - name: Azure File Sync のトラブルシューティング
           href: storage-sync-files-troubleshoot.md

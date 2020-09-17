@@ -4,7 +4,7 @@
   expanded: true
   items:
     - name: Custom Vision とは
-      href: home.md
+      href: overview.md
     - name: 新機能
       href: whats-new.md
 - name: クイックスタート
@@ -49,7 +49,11 @@
           href: custom-vision-onnx-windows-ml.md
         - name: Python での TensorFlow モデルの実行
           href: export-model-python.md
-    - name: アカウント データのエクスポートまたは削除
+    - name: ストレージ通知を統合する
+      href: storage-integration.md
+    - name: プロジェクトをコピーおよび移動する
+      href: copy-move-projects.md
+    - name: アカウント データの表示または削除
       href: ./export-delete-data.md
     - name: アプリを 3.0 API に更新する
       href: ./update-application-to-3.0-sdk.md

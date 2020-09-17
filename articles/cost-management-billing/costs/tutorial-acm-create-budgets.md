@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: fab6422300dd3db7dd0d02055721bd57354668bf
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 32aad7bc350c2ee8ca55d340623c3c3e44820d43
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322281"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527141"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>チュートリアル:Azure の予算を作成して管理する
 
@@ -106,7 +106,7 @@ Cost Management データに対するアクセス許可の割り当てについ�
 
 メールを受信したい場合は、迷惑メール フォルダーに振り分けられることのないよう、承認済みの差出人一覧に azure-noreply@microsoft.com を追加してください。 通知の詳細については、[コスト アラートの使用](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md)に関するページを参照してください。
 
-以下の例では、予算の 90% に達すると、メール アラートが生成されます。 Budgets API を使用して予算を作成する場合、アラートを受信するためにユーザーにロールを割り当てることもできます。 ユーザーへのロールの割り当ては、Azure portal ではサポートされていません。 Azure Budgets API の詳細については、[Budgets API](/rest/api/consumption/budgets) を参照してください。
+以下の例では、予算の 90% に達すると、メール アラートが生成されます。 Budgets API を使用して予算を作成する場合、アラートを受信するためにユーザーにロールを割り当てることもできます。 ユーザーへのロールの割り当ては、Azure portal ではサポートされていません。 Azure Budgets API の詳細については、[Budgets API](/rest/api/consumption/budgets) を参照してください。 別の言語で送信された電子メール アラートを使用する場合は、「[予算のアラート メールでサポートされているロケール](manage-automation.md#supported-locales-for-budget-alert-emails)」を参照してください。
 
 アラート上限では、指定した予算しきい値が 0.01 から 1000% までの範囲でサポートされます。
 

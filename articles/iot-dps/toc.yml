@@ -15,40 +15,52 @@
           href: quick-setup-auto-provision-cli.md
         - name: Azure RM テンプレート
           href: quick-setup-auto-provision-rm.md
-    - name: シングル デバイスのプロビジョニング
+    - name: 対称キー デバイスをプロビジョニングする
       items:
-        - name: 対称キーの構成証明
-          items:
-            - name: C
-              href: quick-create-simulated-device-symm-key.md
-            - name: Java
-              href: quick-create-simulated-device-symmetric-key-java.md
-            - name: Python
-              href: quick-create-device-symmetric-key-python.md
-        - name: X.509 証明書の構成証明
-          items:
-            - name: C
-              href: quick-create-simulated-device-x509.md
-            - name: Java
-              href: quick-create-simulated-device-x509-java.md
-            - name: C#
-              href: quick-create-simulated-device-x509-csharp.md
-            - name: Node.js
-              href: quick-create-simulated-device-x509-node.md
-            - name: Python
-              href: quick-create-simulated-device-x509-python.md
-        - name: シミュレートされた TPM デバイスの構成証明
-          items:
-            - name: C
-              href: quick-create-simulated-device.md
-            - name: Java
-              href: quick-create-simulated-device-tpm-java.md
-            - name: C#
-              href: quick-create-simulated-device-tpm-csharp.md
-            - name: Node.js
-              href: quick-create-simulated-device-tpm-node.md
-            - name: Python
-              href: quick-create-simulated-device-tpm-python.md
+        - name: C
+          href: quick-create-simulated-device-symm-key.md
+        - name: Java
+          href: quick-create-simulated-device-symmetric-key-java.md
+        - name: Python
+          href: quick-create-device-symmetric-key-python.md
+    - name: X.509 証明書デバイスをプロビジョニングする
+      items:
+        - name: C
+          href: quick-create-simulated-device-x509.md
+        - name: Java
+          href: quick-create-simulated-device-x509-java.md
+        - name: C#
+          href: quick-create-simulated-device-x509-csharp.md
+        - name: Node.js
+          href: quick-create-simulated-device-x509-node.md
+        - name: Python
+          href: quick-create-simulated-device-x509-python.md
+- name: チュートリアル
+  items:
+    - name: 1 - 登録グループを使用してデバイスのセットをプロビジョニングする
+      href: how-to-legacy-device-symm-key.md
+    - name: 2 - デバイスを複数のハブにプロビジョニングする
+      items:
+        - name: 複数のハブを DPS にリンクする
+          href: tutorial-provision-multiple-hubs.md
+        - name: マルチテナント方式のプロビジョニング
+          href: how-to-provision-multitenant.md
+        - name: カスタム割り当てポリシーの使用
+          href: how-to-use-custom-allocation-policies.md
+- name: サンプル
+  items:
+    - name: シミュレートされた TPM デバイス構成証明のサンプル
+      items:
+        - name: C
+          href: quick-create-simulated-device.md
+        - name: Java
+          href: quick-create-simulated-device-tpm-java.md
+        - name: C#
+          href: quick-create-simulated-device-tpm-csharp.md
+        - name: Node.js
+          href: quick-create-simulated-device-tpm-node.md
+        - name: Python
+          href: quick-create-simulated-device-tpm-python.md
     - name: DPS API を使用してデバイス登録を作成する
       items:
         - name: X.509 証明書の構成証明を使用したグループ登録
@@ -71,51 +83,33 @@
               href: quick-enroll-device-tpm-node.md
             - name: Python
               href: quick-enroll-device-tpm-python.md
-- name: チュートリアル
-  items:
-    - name: 1 - クラウド リソースを設定する
-      href: tutorial-set-up-cloud.md
-    - name: 2 - デバイスを設定する
-      href: tutorial-set-up-device.md
-    - name: 3 - デバイスを IoT ハブにプロビジョニングする
-      items:
-        - name: C
-          href: tutorial-provision-device-to-hub.md
-        - name: C#
-          href: tutorial-net-provision-device-to-hub.md
-    - name: 4 - デバイスを複数のハブにプロビジョニングする
-      href: tutorial-provision-multiple-hubs.md
-    - name: 5 - グループ登録を設定する
-      href: tutorial-group-enrollments.md
 - name: 概念
   items:
-    - name: 自動プロビジョニング
-      href: concepts-auto-provisioning.md
-    - name: 再プロビジョニング
-      href: concepts-device-reprovision.md
-    - name: デバイス
-      href: concepts-device.md
-    - name: セキュリティ
-      href: concepts-security.md
-    - name: TLS サポート
-      href: tls-support.md
-    - name: 仮想ネットワークのサポート
-      href: virtual-network-support.md
-    - name: サービス
+    - name: DPS の用語
       href: concepts-service.md
-    - name: DPS IP アドレスについて
-      href: iot-dps-understand-ip-address.md
-    - name: TPM の構成証明
-      href: concepts-tpm-attestation.md
     - name: 対称キーの構成証明
       href: concepts-symmetric-key-attestation.md
+    - name: X.509 証明書の構成証明
+      href: concepts-x509-attestation.md
+    - name: TPM の構成証明
+      href: concepts-tpm-attestation.md
+    - name: 役割と操作
+      href: concepts-roles-operations.md
+    - name: 仮想ネットワークのサポート
+      href: virtual-network-support.md
+    - name: 再プロビジョニング
+      href: concepts-device-reprovision.md
+    - name: DPS IP アドレスについて
+      href: iot-dps-understand-ip-address.md
+    - name: TLS サポート
+      href: tls-support.md
     - name: デバイス製造元のセキュリティ プラクティス
       href: concepts-device-oem-security-practices.md
 - name: 操作方法ガイド
   items:
     - name: IoT Hub に対する MXChip IoT DevKit の接続
       href: how-to-connect-mxchip-iot-devkit.md
-    - name: デバイス プロビジョニング サービス構成の管理
+    - name: Device Provisioning Service の管理
       items:
         - name: 登録の管理 - ポータル
           href: how-to-manage-enrollments.md
@@ -131,14 +125,12 @@
           href: how-to-revoke-device-access-portal.md
         - name: プロビジョニング解除の管理
           href: how-to-unprovision-devices.md
-    - name: Device Provisioning Service の管理
-      items:
-        - name: Azure CLI を使用した Device Provisioning Service の構成
-          href: how-to-manage-dps-with-cli.md
         - name: Provisioning Service API へのアクセスの制御
           href: how-to-control-access.md
         - name: IP フィルター処理を構成する
           href: iot-dps-ip-filtering.md
+        - name: Azure CLI を使用した Device Provisioning Service の構成
+          href: how-to-manage-dps-with-cli.md
     - name: IoT Edge デバイスのプロビジョニング
       items:
         - name: Linux
@@ -149,12 +141,6 @@
           maintainContext: true
     - name: SDK での構成証明メカニズムの使用
       href: use-hsm-with-sdk.md
-    - name: マルチテナント方式のプロビジョニング
-      href: how-to-provision-multitenant.md
-    - name: カスタム割り当てポリシーの使用
-      href: how-to-use-custom-allocation-policies.md
-    - name: レガシ デバイスでの対称キーの使用
-      href: how-to-legacy-device-symm-key.md
     - name: 開発での SDK ツールの使用
       href: how-to-use-sdk-tools.md
     - name: デバイスから追加データを送信する方法

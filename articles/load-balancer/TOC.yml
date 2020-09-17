@@ -20,19 +20,11 @@
       href: quickstart-load-balancer-standard-internal-powershell.md
     - name: 内部ロード バランサーの作成 - Azure CLI
       href: quickstart-load-balancer-standard-internal-cli.md
+    - name: 内部ロード バランサーの作成 - Resource Manager テンプレート
+      href: quickstart-load-balancer-standard-internal-template.md
   expanded: true
 - name: チュートリアル
   items:
-    - name: 内部ロード バランサー
-      items:
-        - name: 内部ロード バランサーの作成 - ポータル
-          href: tutorial-load-balancer-standard-internal-portal.md
-        - name: 内部ロード バランサーの作成 - Azure CLI
-          href: load-balancer-get-started-ilb-arm-cli.md
-        - name: 内部ロード バランサーの作成 - Azure PowerShell
-          href: load-balancer-get-started-ilb-arm-ps.md
-        - name: 内部ロード バランサーの作成 - Resource Manager テンプレート
-          href: load-balancer-get-started-ilb-arm-template.md
     - name: 可用性ゾーン間で VM の負荷分散を行う
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: 特定の可用性ゾーン内で VM の負荷分散を行う
@@ -47,7 +39,7 @@
       href: powershell-samples.md
 - name: 概念
   items:
-    - name: Components
+    - name: コンポーネント
       href: components.md
     - name: 概念
       href: concepts.md

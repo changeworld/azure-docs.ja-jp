@@ -48,7 +48,7 @@
       href: resize-images-on-storage-blob-upload-event.md
     - name: Automation Runbook のトリガー
       href: ensure-tags-exists-on-new-virtual-machines.md
-    - name: IoT Hub デバイスが追加されたときに電子メールで通知する
+    - name: IoT Hub デバイスが切断されるときにメールを送信する
       href: publish-iot-hub-events-to-logic-apps.md
     - name: Service Bus イベントへの応答
       href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
