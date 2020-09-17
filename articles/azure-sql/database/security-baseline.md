@@ -49,9 +49,9 @@ https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2:VNet、サブネット、NIC の構成とトラフィックを監視してログに記録する
 
-**ガイダンス**:お使いの Azure SQL データベースのデプロイ先のサブネットには、Azure Security Center およびネットワーク保護の修復に関する推奨事項を使用します。
+**ガイダンス**:お使いの Azure SQL Database のデプロイ先のサブネットには、Azure Security Center およびネットワーク保護の修復に関する推奨事項を使用します。
 
-お使いの Azure SQL データベースに接続される Azure 仮想マシン (VM) の場合は、これらの VM を保護するネットワーク セキュリティ グループ (NSG) の NSG フロー ログを有効にし、トラフィックの監査のために Azure Storage アカウントにログを送信します。
+お使いの Azure SQL Database に接続される Azure 仮想マシン (VM) の場合は、これらの VM を保護するネットワーク セキュリティ グループ (NSG) の NSG フロー ログを有効にし、トラフィックの監査のために Azure Storage アカウントにログを送信します。
 
 また、NSG フロー ログを Log Analytics ワークスペースに送信し、Traffic Analytics を使用して Azure クラウド内のトラフィック フローに関する分析情報を提供することもできます。 Traffic Analytics のいくつかの利点として、ネットワーク アクティビティを視覚化してホット スポットを特定したり、セキュリティの脅威を識別したり、トラフィック フロー パターンを把握したり、ネットワークの誤った構成の正確な場所を特定したりする機能が挙げられます。
 
@@ -85,7 +85,7 @@ https://docs.microsoft.com/azure/security-center/security-center-network-recomme
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4:既知の悪意のある IP アドレスとの通信を拒否する
 
-**ガイダンス**: 分散型サービス拒否攻撃からの保護のために、お使いの Azure SQL データベースに関連付けられている仮想ネットワークで DDoS Protection Standard を有効にします。 Azure Security Center の統合された脅威インテリジェンスを使用して、既知の悪意のある、または未使用のインターネット IP アドレスとの通信を拒否します。
+**ガイダンス**: 分散型サービス拒否攻撃からの保護のために、お使いの Azure SQL Database に関連付けられている仮想ネットワークで DDoS Protection Standard を有効にします。 Azure Security Center の統合された脅威インテリジェンスを使用して、既知の悪意のある、または未使用のインターネット IP アドレスとの通信を拒否します。
 
 DDoS 保護を構成する方法:
 
@@ -153,7 +153,7 @@ https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9:ネットワーク デバイスの標準的なセキュリティ構成を維持する
 
-**ガイダンス**: Azure Policy を使用してお使いの Azure SQL データベースのネットワーク セキュリティ構成を定義して実装します。 "Microsoft.Sql" 名前空間を使用してカスタム ポリシー定義を定義するか、サーバーのネットワーク保護のために設計されたいずれかの組み込みのポリシー定義を使用できます。 サーバーに適用できる組み込みのネットワーク セキュリティ ポリシーの例を次に示します。"SQL Database では仮想ネットワーク サービス エンドポイントを使用する必要がある"。
+**ガイダンス**: Azure Policy を使用してお使いの Azure SQL Database のネットワーク セキュリティ構成を定義して実装します。 "Microsoft.Sql" 名前空間を使用してカスタム ポリシー定義を定義するか、サーバーのネットワーク保護のために設計されたいずれかの組み込みのポリシー定義を使用できます。 サーバーに適用できる組み込みのネットワーク セキュリティ ポリシーの例を次に示します。"SQL Database では仮想ネットワーク サービス エンドポイントを使用する必要がある"。
 
 Azure Resource Management テンプレート、ロールベースのアクセス制御 (RBAC)、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することによって大規模な Azure デプロイを簡略化するには、Azure Blueprints を使用します。 ブループリントを新しいサブスクリプションと環境に容易に適用し、バージョン管理によって制御と管理を微調整します。
 
@@ -1069,7 +1069,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-business-continuity
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: システムの完全バックアップを実行し、カスタマー マネージド キーをバックアップする
 
-**ガイダンス**: Azure SQL Database では、7 ～ 35 日間保持されるデータベース バックアップが自動的に作成され、データ センターが使用できない場合でもそれらが確実に保持されるように Azure の読み取りアクセス geo 冗長ストレージ (RA-GRS) が使用されます。 これらのバックアップは自動的に作成されます。 必要に応じて、Azure SQL データベースに対する長期間の geo 冗長バックアップを有効にしてください。
+**ガイダンス**: Azure SQL Database では、7 ～ 35 日間保持されるデータベース バックアップが自動的に作成され、データ センターが使用できない場合でもそれらが確実に保持されるように Azure の読み取りアクセス geo 冗長ストレージ (RA-GRS) が使用されます。 これらのバックアップは自動的に作成されます。 必要に応じて、Azure SQL Database に対する長期間の geo 冗長バックアップを有効にしてください。
 
 Transparent Data Encryption にカスタマー マネージド キーを使用している場合は、キーが確実にバックアップされるようにしてください。
 
