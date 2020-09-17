@@ -3,15 +3,15 @@ title: クイック スタート:Kafka プロトコルを使用した Azure Even
 description: クイック スタート:この記事では、Kafka のプロトコルおよび API を使用して、Azure Event Hubs にストリーム配信する方法に関する情報を示します。
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 4a63aeec7b282ba9b707a1521c51fd944ca24411
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 612a7515c14b77569b34c91d9b43413353b4d0e8
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85314423"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061549"
 ---
 # <a name="quickstart-data-streaming-with-event-hubs-using-the-kafka-protocol"></a>クイック スタート:Kafka プロトコルを使用した Event Hubs によるデータ ストリーミング
-このクイックスタートでは、プロトコル クライアントを変更したり独自のクラスターを実行したりせずに Event Hubs にストリーム配信する方法を紹介します。 プロデューサーとコンシューマーを使用して、アプリケーションの構成変更だけで Event Hubs と通信する方法を説明します。 Azure Event Hubs では、[Apache Kafka バージョン 1.0](https://kafka.apache.org/10/documentation.html) がサポートされています。
+このクイックスタートでは、プロトコル クライアントを変更したり独自のクラスターを実行したりせずに Event Hubs にストリーム配信する方法を紹介します。 プロデューサーとコンシューマーを使用して、アプリケーションの構成変更だけで Event Hubs と通信する方法を説明します。 
 
 > [!NOTE]
 > このサンプルは [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/java) で入手できます。

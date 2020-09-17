@@ -4,18 +4,18 @@ description: Azure App Service で Linux コンテナーに初めての Python �
 ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python
-ms.openlocfilehash: 77aafb53c1346c6723d055a8ae1c96297fdfbd52
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: c64971303a2fefb25a73f0a8e8900c14ef05486c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89568916"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603613"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>クイック スタート:Azure App Service on Linux で Python アプリを作成する
 
 このクイック スタートでは、Azure のスケーラビリティに優れた自己適用型の Web ホスティング サービスである [App Service on Linux](overview.md#app-service-on-linux) に、Python Web アプリをデプロイします。 Mac、Linux、または Windows コンピューター上で、ローカルの [Azure コマンド ライン インターフェイス (CLI)](/cli/azure/install-azure-cli) を使用します。 構成する Web アプリでは、App Service の Free レベルを使用するため、この記事の中で料金が発生することはありません。
 
-> [!NOTE]
+> [!TIP]
 > IDE を使用してアプリをデプロイする場合は、 **[Visual Studio Code から App Service への Python アプリのデプロイ](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)** に関する記事をご覧ください。
 
 ## <a name="set-up-your-initial-environment"></a>初期環境を設定する

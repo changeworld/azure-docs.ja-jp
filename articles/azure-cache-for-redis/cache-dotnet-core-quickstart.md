@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.custom: devx-track-csharp, mvc
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: bc045eba331c861801dceef7f00db42e851f8bb2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 1cb35ce995a27030612499cc3147943112e1c50e
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211375"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662368"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>クイック スタート:.NET Core アプリと Azure Cache for Redis を使用する
 
@@ -23,7 +23,6 @@ ms.locfileid: "88211375"
 
 - Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
 - [.NET Core SDK](https://dotnet.microsoft.com/download)
-- [.NET Framework 4 以降](https://www.microsoft.com/net/download/dotnet-framework-runtime)。これは StackExchange.Redis クライアントで必要です。
 
 ## <a name="create-a-cache"></a>キャッシュの作成
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -125,7 +124,7 @@ dotnet add package StackExchange.Redis
 using StackExchange.Redis;
 ```
 
-Azure Cache for Redis への接続には、`ConnectionMultiplexer` クラスを使用します。 このクラスは、クライアント アプリ全体で共有して再利用する必要があります。 操作ごとに新しい接続を作成しないでください。 
+Azure Cache for Redis への接続には、`ConnectionMultiplexer` クラスを使用します。 このクラスは、クライアント アプリケーション全体で共有して再利用する必要があります。 操作ごとに新しい接続を作成しないでください。 
 
 *Program.cs* で、次のメンバーをコンソール アプリの `Program` クラスに追加します。
 

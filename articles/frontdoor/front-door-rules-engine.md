@@ -7,17 +7,17 @@ author: duongau
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
-ms.topic: overview
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 4/30/2020
+ms.date: 9/14/2020
 ms.author: duau
-ms.openlocfilehash: f8eb02f4ea57988eab4e7bb5b193e81e4d9f4746
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 94770e4fcad9659594854f81732c7b4e4a97051c
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399176"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530881"
 ---
 # <a name="what-is-rules-engine-for-azure-front-door"></a>Azure Front Door のルール エンジンとは 
 

@@ -9,12 +9,12 @@ ms.author: mlearned
 description: この記事では、Azure Arc 対応 Kubernetes の概要を示します。
 keywords: Kubernetes, Arc, Azure, コンテナー
 ms.custom: references_regions
-ms.openlocfilehash: 885c96b83edb83cfb62fc117d9b4406792827056
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: fb8a7b7c2e1e5b3de7d1ccdb4054e44825231458
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723726"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604803"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Azure Arc 対応 Kubernetes プレビューとは
 
@@ -51,12 +51,15 @@ Azure Arc 対応 Kubernetes では、以下のシナリオがサポートされ�
 
 * Kubernetes 用の Azure Policy を使用してポリシーを適用する。 
 
+[!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
+
 ## <a name="supported-regions"></a>サポートされているリージョン 
 
 Azure Arc 対応 Kubernetes は、現在、以下のリージョンでサポートされています。 
 
 * 米国東部 
 * 西ヨーロッパ
+
 
 ## <a name="next-steps"></a>次のステップ
 

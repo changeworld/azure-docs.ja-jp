@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: 7818754ca335f503c5afdc47d410cfe1d1029ab4
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 66335548381a6f7e3ebf93c97eb212255639644c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434789"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604089"
 ---
 # <a name="quickstart-building-your-first-static-web-app-in-the-azure-portal"></a>クイック スタート:Azure portal で静的 Web アプリを初めてビルドする
 
@@ -65,7 +65,7 @@ GitHub にサインインした後、リポジトリ情報を入力します。
     # <a name="no-framework"></a>[フレームワークなし](#tab/vanilla-javascript)
 
     1. _[ビルドのプリセット]_ ドロップダウンから **[カスタム]** を選択します
-    1. _[App location]\(アプリの場所\)_ ボックスの既定値をクリアします
+    1. _[App location]\(アプリの場所\)_ ボックスの既定値をそのままにします
     1. _[Api location]\(Api の場所\)_ ボックスから既定値をクリアします
     1. _[App artifact location]\(アプリ成果物の場所\)_ ボックスを空白のままにします
 

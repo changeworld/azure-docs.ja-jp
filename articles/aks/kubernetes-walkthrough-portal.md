@@ -4,14 +4,14 @@ titleSuffix: Azure Kubernetes Service
 description: Kubernetes クラスターの作成、アプリケーションのデプロイ、および Azure Kubernetes Service (AKS) でのパフォーマンスの監視を、Azure portal を使用して迅速に行う方法について説明します。
 services: container-service
 ms.topic: quickstart
-ms.date: 08/18/2020
+ms.date: 09/11/2020
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: cd3fd41d281708f4c1d9616db47f751f60e055cd
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: b2e5a7f6207710d000b6b997df437b100863125f
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589913"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600757"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Kubernetes Service (AKS) クラスターをデプロイする
 
@@ -71,7 +71,7 @@ Azure portal の上部にある `>_` ボタンを使用して Cloud Shell を開
 
 Kubernetes クラスターに接続するように `kubectl` を構成するには、[az aks get-credentials][az-aks-get-credentials] コマンドを使用します。 このコマンドは、資格情報をダウンロードし、それを使用するように Kubernetes CLI を構成します。 次の例では、*myResourceGroup* という名前のリソース グループの *myAKSCluster* という名前のクラスターの資格情報を取得します。
 
-```azurecli-interactive
+```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
@@ -153,7 +153,7 @@ spec:
         "beta.kubernetes.io/os": linux
       containers:
       - name: azure-vote-front
-        image: microsoft/azure-vote-front:v1
+        image: mcr.microsoft.com/azuredocs/azure-vote-front:v1
         resources:
           requests:
             cpu: 100m
@@ -244,7 +244,7 @@ Azure Portal にこのデータが入力されるまで、数分かかる場合�
 
 クラスターが不要になったら、クラスターのリソース を削除します。削除すると、関連するすべてのリソースも削除されます。 この操作を行うには、Azure portal で、AKS クラスター ダッシュボードの **[削除]** ボタンを選択します。 または、Cloud Shell で [az aks delete][az-aks-delete] コマンドを使用することもできます。
 
-```azurecli-interactive
+```azurecli
 az aks delete --resource-group myResourceGroup --name myAKSCluster --no-wait
 ```
 

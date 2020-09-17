@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 98814060fb9ae669fc4e9a90fcda6319bbfaeacf
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: ede55196793e7eb19a5f64e539ee870ff0fada9d
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182546"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031418"
 ---
 # <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>クイック スタート:Ruby を使用して Azure Database for PostgreSQL - Single Server に接続してデータを照会する
 
@@ -43,7 +43,7 @@ Azure Database for PostgreSQL に接続するために必要な接続情報を�
 ## <a name="connect-and-create-a-table"></a>接続とテーブルの作成
 接続し、**CREATE TABLE** SQL ステートメントでテーブルを作成してから、**INSERT INTO** SQL ステートメントでそのテーブルに行を追加するには、次のコードを使用します。
 
-このコードでは、[new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize) コンストラクターを使用した [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) オブジェクトを使用して、Azure Database for PostgreSQL に接続します。 次に、[exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) メソッドを呼び出して、DROP、CREATE TABLE、INSERT INTO の各コマンドを実行します。 [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) クラスを使用して、エラーをチェックします。 その後、[close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) メソッドを呼び出して、終了する前に接続を閉じます。
+このコードでは、[new()](https://www.rubydoc.info/gems/pg/PG/Connection#initialize-instance_method) コンストラクターを使用した [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) オブジェクトを使用して、Azure Database for PostgreSQL に接続します。 次に、[exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) メソッドを呼び出して、DROP、CREATE TABLE、INSERT INTO の各コマンドを実行します。 [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) クラスを使用して、エラーをチェックします。 その後、[close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) メソッドを呼び出して、終了する前に接続を閉じます。
 
 `host`、`database`、`user`、`password` の各文字列は、実際の値に置き換えてください。 
 
@@ -87,7 +87,7 @@ end
 ## <a name="read-data"></a>データの読み取り
 接続し、**SELECT** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
 
-このコードでは、[new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize) コンストラクターを使用した [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) オブジェクトを使用して、Azure Database for PostgreSQL に接続します。 次に、[exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) メソッドを呼び出して SELECT コマンドを実行します。その際、結果は結果セットに保持されます。 結果セットのコレクションは `resultSet.each do` ループを使用して反復処理され、現在の行の値が `row` 変数に保持されます。 [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) クラスを使用して、エラーをチェックします。 その後、[close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) メソッドを呼び出して、終了する前に接続を閉じます。
+このコードでは、[new()](https://www.rubydoc.info/gems/pg/PG/Connection#initialize-instance_method) コンストラクターを使用した [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) オブジェクトを使用して、Azure Database for PostgreSQL に接続します。 次に、[exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) メソッドを呼び出して SELECT コマンドを実行します。その際、結果は結果セットに保持されます。 結果セットのコレクションは `resultSet.each do` ループを使用して反復処理され、現在の行の値が `row` 変数に保持されます。 [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) クラスを使用して、エラーをチェックします。 その後、[close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) メソッドを呼び出して、終了する前に接続を閉じます。
 
 `host`、`database`、`user`、`password` の各文字列は、実際の値に置き換えてください。 
 
@@ -121,7 +121,7 @@ end
 ## <a name="update-data"></a>データの更新
 接続し、**UPDATE** SQL ステートメントを使用してデータを更新するには、次のコードを使用します。
 
-このコードでは、[new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize) コンストラクターを使用した [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) オブジェクトを使用して、Azure Database for PostgreSQL に接続します。 次に、[exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) メソッドを呼び出し、DELETE コマンドを実行します。 [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) クラスを使用して、エラーをチェックします。 その後、[close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) メソッドを呼び出して、終了する前に接続を閉じます。
+このコードでは、[new()](https://www.rubydoc.info/gems/pg/PG/Connection#initialize-instance_method) コンストラクターを使用した [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) オブジェクトを使用して、Azure Database for PostgreSQL に接続します。 次に、[exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) メソッドを呼び出し、DELETE コマンドを実行します。 [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) クラスを使用して、エラーをチェックします。 その後、[close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) メソッドを呼び出して、終了する前に接続を閉じます。
 
 `host`、`database`、`user`、`password` の各文字列は、実際の値に置き換えてください。 
 
@@ -155,7 +155,7 @@ end
 ## <a name="delete-data"></a>データの削除
 接続し、**DELETE** SQL ステートメントを使用してデータを削除するには、次のコードを使用します。 
 
-このコードでは、[new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize) コンストラクターを使用した [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) オブジェクトを使用して、Azure Database for PostgreSQL に接続します。 次に、[exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) メソッドを呼び出し、DELETE コマンドを実行します。 [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) クラスを使用して、エラーをチェックします。 その後、[close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) メソッドを呼び出して、終了する前に接続を閉じます。
+このコードでは、[new()](https://www.rubydoc.info/gems/pg/PG/Connection#initialize-instance_method) コンストラクターを使用した [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) オブジェクトを使用して、Azure Database for PostgreSQL に接続します。 次に、[exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) メソッドを呼び出し、DELETE コマンドを実行します。 [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) クラスを使用して、エラーをチェックします。 その後、[close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) メソッドを呼び出して、終了する前に接続を閉じます。
 
 `host`、`database`、`user`、`password` の各文字列は、実際の値に置き換えてください。 
 

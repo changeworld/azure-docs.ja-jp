@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 79f3efad9ba5f6c0378f8b093a2f375275767659
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 15bbce208475a85e7be6efbadebcb4e43c2d8d17
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185844"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029105"
 ---
 # <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-mysql"></a>クイック スタート:Ruby を使用して Azure Database for MySQL に接続してデータを照会する
 
@@ -72,7 +72,7 @@ Azure Database for MySQL に接続するために必要な接続情報を取得�
 ## <a name="connect-and-create-a-table"></a>接続とテーブルの作成
 接続し、**CREATE TABLE** SQL ステートメントでテーブルを作成してから、**INSERT INTO** SQL ステートメントでそのテーブルに行を追加するには、次のコードを使用します。
 
-このコードは、[mysql2::client](https://www.rubydoc.info/gems/mysql2/0.4.8) クラスの .new() メソッドを使用して Azure Database for MySQL に接続しています。 次に、[query()](https://www.rubydoc.info/gems/mysql2/0.4.8#Usage) メソッドを何度か呼び出して、DROP、CREATE TABLE、INSERT INTO の各コマンドを実行します。 その後、[close()](https://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method) メソッドを呼び出して、終了する前に接続を閉じます。
+このコードは、[mysql2::client](https://www.rubydoc.info/gems/mysql2) クラスの .new() メソッドを使用して Azure Database for MySQL に接続しています。 次に、[query()](https://www.rubydoc.info/gems/mysql2#Usage) メソッドを何度か呼び出して、DROP、CREATE TABLE、INSERT INTO の各コマンドを実行します。 その後、[close()](https://www.rubydoc.info/gems/mysql2/Mysql2/Client#close-instance_method) メソッドを呼び出して、終了する前に接続を閉じます。
 
 `host`、`database`、`username`、`password` の各文字列は、実際の値に置き換えてください。 
 ```ruby
@@ -117,7 +117,7 @@ end
 ## <a name="read-data"></a>データの読み取り
 接続し、**SELECT** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
 
-このコードは、[mysql2::client](https://www.rubydoc.info/gems/mysql2/0.4.8) クラスの .new() メソッドを使用して Azure Database for MySQL に接続しています。 次に、[query()](https://www.rubydoc.info/gems/mysql2/0.4.8#Usage) メソッドを呼び出して SELECT コマンドを実行します。 その後、[close()](https://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method) メソッドを呼び出して、終了する前に接続を閉じます。
+このコードは、[mysql2::client](https://www.rubydoc.info/gems/mysql2) クラスの .new() メソッドを使用して Azure Database for MySQL に接続しています。 次に、[query()](https://www.rubydoc.info/gems/mysql2#Usage) メソッドを呼び出して SELECT コマンドを実行します。 その後、[close()](https://www.rubydoc.info/gems/mysql2/Mysql2/Client#close-instance_method) メソッドを呼び出して、終了する前に接続を閉じます。
 
 `host`、`database`、`username`、`password` の各文字列は、実際の値に置き換えてください。 
 
@@ -156,7 +156,7 @@ end
 ## <a name="update-data"></a>データの更新
 接続し、**UPDATE** SQL ステートメントを使用してデータを更新するには、次のコードを使用します。
 
-このコードは、[mysql2::client](https://www.rubydoc.info/gems/mysql2/0.4.8) クラスの .new() メソッドを使用して Azure Database for MySQL に接続しています。 次に、[query()](https://www.rubydoc.info/gems/mysql2/0.4.8#Usage) メソッドを呼び出して UPDATE コマンドを実行します。 その後、[close()](https://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method) メソッドを呼び出して、終了する前に接続を閉じます。
+このコードは、[mysql2::client](https://www.rubydoc.info/gems/mysql2) クラスの .new() メソッドを使用して Azure Database for MySQL に接続しています。 次に、[query()](https://www.rubydoc.info/gems/mysql2#Usage) メソッドを呼び出して UPDATE コマンドを実行します。 その後、[close()](https://www.rubydoc.info/gems/mysql2/Mysql2/Client#close-instance_method) メソッドを呼び出して、終了する前に接続を閉じます。
 
 `host`、`database`、`username`、`password` の各文字列は、実際の値に置き換えてください。 
 
@@ -193,7 +193,7 @@ end
 ## <a name="delete-data"></a>データの削除
 接続し、**DELETE** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
 
-このコードは、[mysql2::client](https://www.rubydoc.info/gems/mysql2/0.4.8) クラスの .new() メソッドを使用して Azure Database for MySQL に接続しています。 次に、[query()](https://www.rubydoc.info/gems/mysql2/0.4.8#Usage) メソッドを呼び出して DELETE コマンドを実行します。 その後、[close()](https://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method) メソッドを呼び出して、終了する前に接続を閉じます。
+このコードは、[mysql2::client](https://www.rubydoc.info/gems/mysql2) クラスの .new() メソッドを使用して Azure Database for MySQL に接続しています。 次に、[query()](https://www.rubydoc.info/gems/mysql2#Usage) メソッドを呼び出して DELETE コマンドを実行します。 その後、[close()](https://www.rubydoc.info/gems/mysql2/Mysql2/Client#close-instance_method) メソッドを呼び出して、終了する前に接続を閉じます。
 
 `host`、`database`、`username`、`password` の各文字列は、実際の値に置き換えてください。 
 

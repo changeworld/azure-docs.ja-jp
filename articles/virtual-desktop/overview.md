@@ -3,15 +3,15 @@ title: Windows Virtual Desktop とは - Azure
 description: Windows Virtual Desktop の概要
 author: Heidilohr
 ms.topic: overview
-ms.date: 08/20/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cc5ad91c779a3445712db962fb97bab309eda973
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 08455d3033040d14c85e4c4170ae34a6d05cfac1
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661114"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527175"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Virtual Desktop とは
 
@@ -110,12 +110,10 @@ Windows Virtual Desktop の構成要素には、お客様がユーザーに配�
 * [macOS](connect-macos.md)
 * [iOS](connect-ios.md)
 * [Android](connect-android.md)
+* Microsoft Store クライアント
 
 > [!IMPORTANT]
 > Windows Virtual Desktop では、RemoteApp とデスクトップ接続 (RADC) クライアントおよびリモート デスクトップ接続 (MSTSC) クライアントはサポートされていません。
-
-> [!IMPORTANT]
-> Windows Virtual Desktop では、現在、Windows Store のリモート デスクトップ クライアントはサポートされていません。 このクライアントのサポートは、将来のリリースで追加されます。
 
 クライアントを使用するためにブロックを解除する必要がある URL の詳細については、「[安全な URL リスト](safe-url-list.md)」をご覧ください。
 

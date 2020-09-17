@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: subject-armsq
 ms.date: 08/31/2020
 ms.author: duau
-ms.openlocfilehash: 2bc4c2a3ee7f1a1dbd85d46e49ec27e5276de159
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: f1dbb9623ddc87f9940fd97b05abbee113fd71c4
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89237149"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016556"
 ---
 # <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用してプライベート ピアリングによる ExpressRoute 回線を作成する
 
@@ -76,9 +76,9 @@ ExpressRoute に関連するテンプレートをさらに探すには、「[Azu
 
     リソース グループの名前は、**rg** が付加されたプロジェクト名です。
 
-テンプレートのデプロイには約 20 分かかります。 完了すると、次のように出力されます。
+    テンプレートのデプロイには約 20 分かかります。 完了すると、次のように出力されます。
 
-:::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-powershell-output.png" alt-text="ExpressRoute Resource Manager テンプレートの PowerShell デプロイ出力":::
+    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-powershell-output.png" alt-text="ExpressRoute Resource Manager テンプレートの PowerShell デプロイ出力":::
 
 テンプレートをデプロイするには Azure PowerShell を使用します。 Azure PowerShell だけでなく、Azure portal、Azure CLI、および REST API を使用することもできます。 他のデプロイ方法については、「[テンプレートのデプロイ](../azure-resource-manager/templates/deploy-portal.md)」を参照してください。
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 94d4a035c95b8eb2a567c71ec2172f55881e8099
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 2d2a520540ad69697da869833d52ab10e63a7730
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488424"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527192"
 ---
 # <a name="what-is-azure-private-link"></a>Azure Private Link とは 
 Azure Private Link を使用すると、お使いの仮想ネットワーク内の[プライベート エンドポイント](private-endpoint-overview.md)経由で Azure PaaS サービス (Azure Storage、SQL Database など) と Azure でホストされている顧客所有の、またはパートナー サービスにアクセスできます。
@@ -22,8 +22,6 @@ Azure Private Link を使用すると、お使いの仮想ネットワーク内�
 
 > [!IMPORTANT]
 > Azure Private Link は、現在、一般提供されています。 プライベート エンドポイントと Private Link サービス (Standard ロード バランサーの背後にあるサービス) の両方が一般提供されています。 さまざまな Azure PaaS が異なるスケジュールで Azure Private Link にオンボードされます。 Private Link 上の Azure PaaS の正確な状態については、以下の「[可用性](https://docs.microsoft.com/azure/private-link/private-link-overview#availability)」セクションを確認してください。 既知の制約については、[プライベート エンドポイント](private-endpoint-overview.md#limitations)と [Private Link サービス](private-link-service-overview.md#limitations)の説明を参照してください。 
-
-![プライベート エンドポイントの概要](media/private-link-overview/private-endpoint.png)
 
 ## <a name="key-benefits"></a>主な利点
 Azure Private Link には次のような利点があります。  

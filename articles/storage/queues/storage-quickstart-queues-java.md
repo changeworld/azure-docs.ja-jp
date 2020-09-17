@@ -4,16 +4,16 @@ description: Azure Queue Java v12 ライブラリを使用してキューを作�
 author: mhopkins-msft
 ms.custom: devx-track-java
 ms.author: mhopkins
-ms.date: 12/4/2019
+ms.date: 09/10/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 753c245631d2fbdc8122f955c1db6562a1554031
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9b9f68737ca714c0661ffb008347149235886c68
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319373"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015026"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>クイック スタート:Java 用 Azure Queue storage クライアント ライブラリ v12
 
@@ -30,17 +30,17 @@ Java 用 Azure Queue storage クライアント ライブラリ v12 を使用す
 
 その他のリソース:
 
-* [API リファレンス ドキュメント](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html)
+* [API リファレンス ドキュメント](/java/api/overview/azure/storage-queue-readme)
 * [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)
 * [パッケージ (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue)
-* [サンプル](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+* [サンプル](/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable) バージョン 8 以降
+* [Java Development Kit (JDK)](/java/azure/jdk/) バージョン 8 以降
 * [Apache Maven](https://maven.apache.org/download.cgi)
 * Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
-* Azure Storage アカウント - [ストレージ アカウントの作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Azure Storage アカウント - [ストレージ アカウントの作成](/azure/storage/common/storage-quickstart-create-account)
 
 ## <a name="setting-up"></a>設定
 
@@ -161,10 +161,10 @@ Azure Queue storage は、多数のメッセージを格納するためのサー
 
 これらのリソースとやり取りするには、以下の Java クラスを使用します。
 
-* [QueueClientBuilder](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClientBuilder.html): `QueueClientBuilder` クラスは、`QueueClient` オブジェクトを構成し、インスタンス化します。
-* [QueueServiceClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueServiceClient.html): `QueueServiceClient` を使用すると、ストレージ アカウント内のすべてのキューを管理できます。
-* [QueueClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html): `QueueClient` クラスを使用すると、個々のキューとそのメッセージを管理および操作できます。
-* [QueueMessageItem](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/models/QueueMessageItem.html): `QueueMessageItem` クラスは、キューの [receiveMessages](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#receiveMessages-java.lang.Integer-) を呼び出したときに返される個々のオブジェクトを表します。
+* [QueueClientBuilder](/java/api/com.azure.storage.queue.queueclientbuilder): `QueueClientBuilder` クラスは、`QueueClient` オブジェクトを構成し、インスタンス化します。
+* [QueueServiceClient](/java/api/com.azure.storage.queue.queueserviceclient): `QueueServiceClient` を使用すると、ストレージ アカウント内のすべてのキューを管理できます。
+* [QueueClient](/java/api/com.azure.storage.queue.queueclient): `QueueClient` クラスを使用すると、個々のキューとそのメッセージを管理および操作できます。
+* [QueueMessageItem](/java/api/com.azure.storage.queue.models.queuemessageitem): `QueueMessageItem` クラスは、キューの [receiveMessages](/java/api/com.azure.storage.queue.queueclient.receivemessages) を呼び出したときに返される個々のオブジェクトを表します。
 
 ## <a name="code-examples"></a>コード例
 
@@ -204,7 +204,7 @@ String connectStr = System.getenv("AZURE_STORAGE_CONNECTION_STRING");
 > キュー名に使用できるのは小文字、数字、ハイフンのみであり、名前の先頭は文字または数字にする必要があります。 各ハイフンの前後にはハイフン以外の文字を指定する必要があります。 また、名前は 3 から 63 文字で指定する必要があります。 キューの名前付け規則の詳細については、「[キューとメタデータの名前付け規則](/rest/api/storageservices/naming-queues-and-metadata)」を参照してください。
 
 
-[QueueClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html) クラスのインスタンスを作成します。 次に、[create](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#create--) メソッドを呼び出して、ストレージ アカウントにキューを作成します。
+[QueueClient](/java/api/com.azure.storage.queue.queueclient) クラスのインスタンスを作成します。 次に、[create](/java/api/com.azure.storage.queue.queueclient.create) メソッドを呼び出して、ストレージ アカウントにキューを作成します。
 
 `main` メソッドの末尾に次のコードを追加します。
 
@@ -227,7 +227,7 @@ queueClient.create();
 
 ### <a name="add-messages-to-a-queue"></a>メッセージをキューに追加する
 
-以下のコード スニペットでは、[sendMessage](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#sendMessage-java.lang.String-) メソッドを呼び出してキューにメッセージを追加します。 さらに、`sendMessage` 呼び出しから返された [SendMessageResult](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/models/SendMessageResult.html) を保存します。 この結果は、後でプログラムの中でメッセージを更新する際に使用します。
+以下のコード スニペットでは、[sendMessage](/java/api/com.azure.storage.queue.queueclient.sendmessage) メソッドを呼び出してキューにメッセージを追加します。 さらに、`sendMessage` 呼び出しから返された [SendMessageResult](/java/api/com.azure.storage.queue.models.sendmessageresult) を保存します。 この結果は、後でプログラムの中でメッセージを更新する際に使用します。
 
 `main` メソッドの末尾に次のコードを追加します。
 
@@ -244,7 +244,7 @@ SendMessageResult result = queueClient.sendMessage("Third message");
 
 ### <a name="peek-at-messages-in-a-queue"></a>キュー内のメッセージを表示する
 
-キュー内のメッセージを表示するには、[peekMessages](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#peekMessages-java.lang.Integer-java.time.Duration-com.azure.core.util.Context-) メソッドを呼び出します。 `peelkMessages` メソッドは、キューの先頭からメッセージを 1 つ以上取得しますが、メッセージの可視性は変更しません。
+キュー内のメッセージを表示するには、[peekMessages](/java/api/com.azure.storage.queue.queueclient.peekmessages) メソッドを呼び出します。 `peelkMessages` メソッドは、キューの先頭からメッセージを 1 つ以上取得しますが、メッセージの可視性は変更しません。
 
 `main` メソッドの末尾に次のコードを追加します。
 
@@ -258,7 +258,7 @@ queueClient.peekMessages(10, null, null).forEach(
 
 ### <a name="update-a-message-in-a-queue"></a>キュー内のメッセージを更新する
 
-メッセージの内容を更新するには、[updateMessage](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#updateMessage-java.lang.String-java.lang.String-java.lang.String-java.time.Duration-) メソッドを呼び出します。 メッセージの表示タイムアウトと内容は、`updateMessage` メソッドで変更できます。 メッセージの内容には UTF-8 でエンコードされた文字列を指定してください。最大サイズは 64 KB です。 先ほどこのコードの中で保存した `SendMessageResult` を使用して、メッセージ ID と PopReceipt を、新しいメッセージの内容と共に渡します。 更新するメッセージは、メッセージ ID と PopReceipt によって識別されます。
+メッセージの内容を更新するには、[updateMessage](/java/api/com.azure.storage.queue.queueclient.updatemessage) メソッドを呼び出します。 メッセージの表示タイムアウトと内容は、`updateMessage` メソッドで変更できます。 メッセージの内容には UTF-8 でエンコードされた文字列を指定してください。最大サイズは 64 KB です。 先ほどこのコードの中で保存した `SendMessageResult` を使用して、メッセージ ID と PopReceipt を、新しいメッセージの内容と共に渡します。 更新するメッセージは、メッセージ ID と PopReceipt によって識別されます。
 
 ```java
 System.out.println("\nUpdating the third message in the queue...");
@@ -273,7 +273,7 @@ queueClient.updateMessage(result.getMessageId(),
 
 ### <a name="receive-and-delete-messages-from-a-queue"></a>キューからメッセージを受信して削除する
 
-[receiveMessages](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#receiveMessages-java.lang.Integer-java.time.Duration-java.time.Duration-com.azure.core.util.Context-) メソッドを呼び出して、先ほど追加したメッセージをダウンロードします。 このコード例では、メッセージを受信して処理した後、キューからメッセージを削除します。 ここでの処理は、単にメッセージをコンソールに表示するだけです。
+[receiveMessages](/java/api/com.azure.storage.queue.queueclient.receivemessages) メソッドを呼び出して、先ほど追加したメッセージをダウンロードします。 このコード例では、メッセージを受信して処理した後、キューからメッセージを削除します。 ここでの処理は、単にメッセージをコンソールに表示するだけです。
 
 ユーザーからの入力を待ってメッセージを受信、削除するために、`System.console().readLine();` を呼び出してアプリを一時停止させます。 リソースが正しく作成されたことを [Azure portal](https://portal.azure.com) で確認してから、それらを削除してください。 明示的に削除されなかったメッセージは、最終的にキューに再表示され、別の機会に処理されることになります。
 
@@ -298,7 +298,7 @@ queueClient.receiveMessages(10).forEach(
 
 ### <a name="delete-a-queue"></a>キューを削除する
 
-次のコードでは、[delete](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#delete--) メソッドを使用してキューを削除することにより、アプリによって作成されたリソースがクリーンアップされます。
+次のコードでは、[delete](/java/api/com.azure.storage.queue.queueclient.delete) メソッドを使用してキューを削除することにより、アプリによって作成されたリソースがクリーンアップされます。
 
 `main` メソッドの末尾に次のコードを追加します。
 
@@ -372,6 +372,6 @@ Done
 チュートリアル、サンプル、クイック スタートなどのドキュメントについては、次のページを参照してください。
 
 > [!div class="nextstepaction"]
-> [Java クラウド開発者向けの Azure](https://docs.microsoft.com/azure/developer/java/)
+> [Java クラウド開発者向けの Azure](/azure/developer/java/)
 
 * その他の Azure Queue storage サンプル アプリについては、[Azure Queue storage SDK v12 Java クライアント ライブラリのサンプル](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue) ページを参照してください。

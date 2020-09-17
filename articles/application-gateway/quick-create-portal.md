@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 4929836b7fb617884008fafea50a10e0212fbd58
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 7c144ddac255087ae48ff2f1c5406ad66d670562
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961960"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601352"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>クイック スタート:Azure Application Gateway による Web トラフィックのルーティング - Azure portal
 
@@ -25,8 +25,6 @@ ms.locfileid: "88961960"
 また、[Azure PowerShell](quick-create-powershell.md) または [Azure CLI](quick-create-cli.md) を使用してこのクイックスタートを完了することもできます。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -171,7 +169,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
 
 2. 次のコマンドを実行して、IIS を仮想マシンにインストールします。 必要に応じて、*Location* パラメーターを変更します。 
 
-    ```azurepowershell-interactive
+    ```azurepowershell
     Set-AzVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -ExtensionName IIS `
@@ -196,7 +194,6 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
 4. **[バックエンド ターゲット]** 、 **[ターゲットの種類]** の下のドロップダウン リストで **[仮想マシン]** を選択します。
 
 5. **[ターゲット]** の下で、**myVM** と **myVM2** の仮想マシンを選択し、ドロップダウン リストからそれらに関連付けられているネットワーク インターフェイスを選択します。
-
 
    > [!div class="mx-imgBorder"]
    > ![バックエンド サーバーの追加](./media/application-gateway-create-gateway-portal/application-gateway-backend.png)
