@@ -74,7 +74,7 @@
           href: azure-data-lake-storage-gen1-output.md
         - name: Azure SQL Database
           href: sql-database-output.md
-        - name: SQL データベースのパフォーマンス
+        - name: SQL Database のパフォーマンス
           href: stream-analytics-sql-output-perf.md
         - name: Azure Synapse Analytics
           href: azure-synapse-analytics-output.md
