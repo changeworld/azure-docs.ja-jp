@@ -72,7 +72,7 @@
           displayName: 'adls, sql, blob, event hubs, power bi, table, service bus, cosmos, functions'
         - name: Azure Data Lake Storage Gen 1
           href: azure-data-lake-storage-gen1-output.md
-        - name: Azure SQL データベース
+        - name: Azure SQL Database
           href: sql-database-output.md
         - name: SQL データベースのパフォーマンス
           href: stream-analytics-sql-output-perf.md
