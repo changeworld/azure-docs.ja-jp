@@ -70,7 +70,7 @@ Azure Databricks などの一部の Azure サービスでは、[マネージド 
 
 [!INCLUDE [resource-manager-lock-resources](../../../includes/resource-manager-lock-resources.md)]
 
-## <a name="template"></a>Template
+## <a name="template"></a>テンプレート
 
 ロックをデプロイするために Resource Manager テンプレートを使用する場合は、ロックの範囲に応じて名前と型に異なる値を使用します。
 
