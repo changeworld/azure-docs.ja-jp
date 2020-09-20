@@ -1,6 +1,6 @@
 ---
 title: T-SQL を使用して SQL Server の Windows ユーザーおよびグループを SQL マネージド インスタンスに移行する
-description: SQL Server インスタンスの Windows ユーザーとグループを Azure SQL マネージド インスタンスに移行する方法について説明します
+description: SQL Server インスタンスの Windows ユーザーとグループを Azure SQL Managed Instance に移行する方法について説明します
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: security
@@ -17,13 +17,13 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 08/22/2020
 ms.locfileid: "84708677"
 ---
-# <a name="tutorial-migrate-windows-users-and-groups-in-a-sql-server-instance-to-azure-sql-managed-instance-using-t-sql-ddl-syntax"></a>チュートリアル:T-SQL DDL 構文を使用して SQL Server インスタンスの Windows ユーザーとグループを Azure SQL マネージド インスタンスに移行する
+# <a name="tutorial-migrate-windows-users-and-groups-in-a-sql-server-instance-to-azure-sql-managed-instance-using-t-sql-ddl-syntax"></a>チュートリアル:T-SQL DDL 構文を使用して SQL Server インスタンスの Windows ユーザーとグループを Azure SQL Managed Instance に移行する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 > [!NOTE]
 > この記事でユーザーとグループを SQL マネージド インスタンスに移行するために使用する構文は、**パブリック プレビュー**段階です。
 
-この記事では、T-SQL 構文を使用して、オンプレミスの SQL Server 内の Windows ユーザーとグループを Azure SQL マネージド インスタンスに移行するプロセスについて説明します。
+この記事では、T-SQL 構文を使用して、オンプレミスの SQL Server 内の Windows ユーザーとグループを Azure SQL Managed Instance に移行するプロセスについて説明します。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -43,13 +43,13 @@ ms.locfileid: "84708677"
 - Windows ドメインは Azure Active Directory (Azure AD) とフェデレーションされています。
 - ユーザー/グループを作成できる Active Directory へのアクセス権。
 - オンプレミス環境の既存の SQL Server。
-- 既存の SQL マネージド インスタンス。 「[クイック スタート:Azure SQL マネージド インスタンスを作成する](instance-create-quickstart.md)」を参照してください。
+- 既存の SQL マネージド インスタンス。 「[クイック スタート:Azure SQL Managed Instance を作成する](instance-create-quickstart.md)」を参照してください。
   - Azure AD ログインを作成するには、SQL マネージド インスタンス内の `sysadmin` が使用される必要があります。
 - [SQL マネージド インスタンスに対する Azure AD 管理者を作成します](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)。
 - ネットワーク内の SQL マネージド インスタンスに接続できます。 その他の情報については、次の記事を参照してください。
-  - [アプリケーションを Azure SQL マネージド インスタンスに接続する](connect-application-instance.md)
-  - [クイック スタート: オンプレミスから Azure SQL マネージド インスタンスへのポイント対サイト接続を構成する](point-to-site-p2s-configure.md)
-  - [Azure SQL マネージド インスタンスのパブリック エンドポイントを構成する](public-endpoint-configure.md)
+  - [アプリケーションを Azure SQL Managed Instance に接続する](connect-application-instance.md)
+  - [クイック スタート: オンプレミスから Azure SQL Managed Instance へのポイント対サイト接続を構成する](point-to-site-p2s-configure.md)
+  - [Azure SQL Managed Instance のパブリック エンドポイントを構成する](public-endpoint-configure.md)
 
 ## <a name="t-sql-ddl-syntax"></a>T-SQL DDL 構文
 
@@ -219,7 +219,7 @@ go
 
 ALTER USER コマンドを実行して、SQL マネージド インスタンスの移行プロセスを完了します。
 
-1. SQL マネージド インスタンス用の Azure AD 管理者アカウントを使用して、SQL マネージド インスタンスにサインインします。 次に、以下の構文を使用して、SQL マネージド インスタンスに Azure AD ログインを作成します。 詳細については、「[チュートリアル:Azure AD サーバー プリンシパル (ログイン) を使用した Azure SQL マネージド インスタンスのセキュリティ](aad-security-configure-tutorial.md)」を参照してください。
+1. SQL マネージド インスタンス用の Azure AD 管理者アカウントを使用して、SQL マネージド インスタンスにサインインします。 次に、以下の構文を使用して、SQL マネージド インスタンスに Azure AD ログインを作成します。 詳細については、「[チュートリアル:Azure AD サーバー プリンシパル (ログイン) を使用した Azure SQL Managed Instance のセキュリティ](aad-security-configure-tutorial.md)」を参照してください。
 
     ```sql
     use master
@@ -314,7 +314,7 @@ ALTER USER コマンドを実行して、SQL マネージド インスタンス�
 
 前に ALTER USER 構文を使用して Azure AD ログインにマップしたユーザーを使用して、SQL マネージド インスタンスへの認証をテストします。
 
-1. `aadsqlmi\testUser1` という Azure SQL マネージド インスタンス サブスクリプションを使用して、フェデレーション VM にログインします
+1. `aadsqlmi\testUser1` という Azure SQL Managed Instance サブスクリプションを使用して、フェデレーション VM にログインします
 1. SQL Server Management Studio (SSMS) と **Active Directory 統合**認証を使用して、SQL マネージド インスタンスにサインインし、データベース `migration` に接続します。
     1. SSMS オプション **[Active Directory - MFA サポートで汎用]** で testUser1@aadsqlmi.net の資格情報を使用してサインインすることもできます。 ただし、この場合、シングル サインオン メカニズムを使用することはできず、パスワードを入力する必要があります。 フェデレーション VM を使用して SQL マネージド インスタンスにログインする必要はありません。
 1. ロール メンバー **SELECT** の一部として、`test` テーブルから選択できます
@@ -325,8 +325,8 @@ ALTER USER コマンドを実行して、SQL マネージド インスタンス�
 
 Windows グループ `migration` のメンバーを使用して、SQL マネージド インスタンスに対する認証をテストします。 移行の前に、ユーザー `aadsqlmi\testGroupUser` がグループ `migration` に追加されている必要があります。
 
-1. `aadsqlmi\testGroupUser` という Azure SQL マネージド インスタンス サブスクリプションを使用して、フェデレーション VM にログインします
-1. SSMS と **Active Directory 統合**認証を使用して、Azure SQL マネージド インスタンス サーバーとデータベース `migration` に接続します
+1. `aadsqlmi\testGroupUser` という Azure SQL Managed Instance サブスクリプションを使用して、フェデレーション VM にログインします
+1. SSMS と **Active Directory 統合**認証を使用して、Azure SQL Managed Instance サーバーとデータベース `migration` に接続します
     1. SSMS オプション **[Active Directory - MFA サポートで汎用]** で testGroupUser@aadsqlmi.net の資格情報を使用してサインインすることもできます。 ただし、この場合、シングル サインオン メカニズムを使用することはできず、パスワードを入力する必要があります。 フェデレーション VM を使用して SQL マネージド インスタンスにログインする必要はありません。
 1. `db_owner` ロールの一部として、新しいテーブルを作成できます。
 
@@ -343,4 +343,4 @@ The specified schema name "testGroupUser@aadsqlmi.net" either does not exist or 
 
 ## <a name="next-steps"></a>次のステップ
 
-[チュートリアル:DMS を使用してオフラインで SQL Server を Azure SQL マネージド インスタンスに移行する](../../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json)
+[チュートリアル:DMS を使用してオフラインで SQL Server を Azure SQL Managed Instance に移行する](../../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json)
