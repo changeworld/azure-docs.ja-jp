@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 18c7e5b3a1401540d7a94186fda647d413d562c0
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 44fe71f575a32ccc1a687bc87793cb6a8b6508a9
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723845"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650633"
 ---
 # <a name="enable-logging-in-azure-ml-training-runs"></a>Azure ML のトレーニングの実行でログ記録を有効にする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,17 +37,17 @@ Azure Machine Learning Python SDK を使用すると、既定の Python ログ �
 
 ## <a name="data-types"></a>データ型
 
-複数のデータ型 (スカラー値、リスト、テーブル、イメージ、ディレクトリなど) をログに記録できます。 詳細と、さまざまなデータ型の Python コード例については、[Run クラスの参照ページ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)を参照してください。
+複数のデータ型 (スカラー値、リスト、テーブル、イメージ、ディレクトリなど) をログに記録できます。 詳細と、さまざまなデータ型の Python コード例については、[Run クラスの参照ページ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py&preserve-view=true)を参照してください。
 
 ## <a name="interactive-logging-session"></a>対話型のログ セッション
 
-対話型のログ セッションは、通常、ノートブック環境で使用されます。 メソッド [Experiment.start_logging()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#start-logging--args----kwargs-) を使用すると、対話型のログ セッションが開始されます。 セッション中にログに記録されるすべてのメトリックは、実験の実行レコードに追加されます。 メソッド [run.complete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#complete--set-status-true-) を使用すると、セッションが終了し、実行が完了としてマークされます。
+対話型のログ セッションは、通常、ノートブック環境で使用されます。 メソッド [Experiment.start_logging()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#&preserve-view=truestart-logging--args----kwargs-) を使用すると、対話型のログ セッションが開始されます。 セッション中にログに記録されるすべてのメトリックは、実験の実行レコードに追加されます。 メソッド [run.complete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=truecomplete--set-status-true-) を使用すると、セッションが終了し、実行が完了としてマークされます。
 
 ## <a name="scriptrunconfig-logs"></a>ScriptRunConfig のログ
 
-このセクションでは、ScriptConfig の実行内にログ コードを追加する方法について説明します。 [**ScriptRunConfig**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) クラスを使用して、反復可能な実行のためにスクリプトと環境をカプセル化できます。 このオプションを使用して、監視用の視覚的な Jupyter Notebook ウィジェットを表示することもできます。
+このセクションでは、ScriptConfig の実行内にログ コードを追加する方法について説明します。 [**ScriptRunConfig**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) クラスを使用して、反復可能な実行のためにスクリプトと環境をカプセル化できます。 このオプションを使用して、監視用の視覚的な Jupyter Notebook ウィジェットを表示することもできます。
 
-この例では、アルファ値に対してパラメーター スイープを実行し、[run.log()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#log-name--value--description----) メソッドを使用して結果をキャプチャします。
+この例では、アルファ値に対してパラメーター スイープを実行し、[run.log()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=truelog-name--value--description----) メソッドを使用して結果をキャプチャします。
 
 1. ログ記録ロジック `train.py` を含むトレーニング スクリプトを作成します。
 

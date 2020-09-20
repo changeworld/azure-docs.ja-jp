@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 05/06/2020
 ms.author: arvinh
-ms.openlocfilehash: 368d75ecffda49f688a7a5ce11b60693650014c6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6caaba06dcc2fdeaeb672b5381b240cb3f676ca9
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88527827"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563050"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>チュートリアル:Slack を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -81,7 +81,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 5. **[管理者資格情報]** セクションにある **[承認する]** をクリックします。 これで、ブラウザーの新しいウィンドウで Slack 承認ダイアログが開きます。
 
-    ![承認](media/slack-provisioning-tutorial/authorization.png)
+    ![スクリーンショットは、管理者資格情報の [承認] ボタンを示しています。](media/slack-provisioning-tutorial/authorization.png)
 
 
 6. 新しいウィンドウで、Team Admin アカウントを使用して Slack にサインインします。 表示された承認ダイアログで、プロビジョニングを有効にしたい Slack チームを選択して **[承認する]** を選択します。 終わったら Azure Portal に戻り、プロビジョニング構成を完了します。
@@ -174,7 +174,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
   
   * 許可されている句読点はピリオド、アンダースコア、ハイフン、アポストロフィ、かっこ (例: **( [ { } ] )** ) と区切り記号 (例: **, /;** ) です。
   
-  * displayName プロパティに '@' 文字を含めることはできません。 '@' を含めると、プロビジョニング ログに「AttributeValidationFailed」という説明とともにスキップされたイベントが記録される可能性があります。
+  * displayName プロパティに '\@' 文字を含めることはできません。 '\@' を含めると、プロビジョニング ログに「AttributeValidationFailed」という説明とともにスキップされたイベントが記録される可能性があります。
 
   * Slack のワークプレイスまたは組織内でこれらの 2 つの設定が構成されている場合のみ、更新を行います。**プロファイル同期が有効**、**ユーザーが表示名を変更できない**。
 
