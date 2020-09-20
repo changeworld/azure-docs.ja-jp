@@ -188,7 +188,7 @@ $backupFileShare = New-AzDmsFileShare -Path $backupFileSharePath -Credential $ba
 
 次の手順では、`New-AzDmsSelectedDB` コマンドレットを使用して、ソース データベースとターゲット データベースを選択します。
 
-次の例では、SQL Server から Azure SQL マネージド インスタンスに単一のデータベースを移行しています。
+次の例では、SQL Server から Azure SQL Managed Instance に単一のデータベースを移行しています。
 
 ```powershell
 $selectedDbs = @()
@@ -198,7 +198,7 @@ $selectedDbs += New-AzDmsSelectedDB -MigrateSqlServerSqlDbMi `
   -BackupFileShare $backupFileShare `
 ```
 
-SQL Server インスタンス全体で Azure SQL マネージド インスタンスへのリフトアンドシフトが必要な場合、すべてのデータベースをソースから取得するためのループを以下に示します。 次の例では、$Server、$SourceUserName、$SourcePassword にソース SQL Server の詳細を入力します。
+SQL Server インスタンス全体で Azure SQL Managed Instance へのリフトアンドシフトが必要な場合、すべてのデータベースをソースから取得するためのループを以下に示します。 次の例では、$Server、$SourceUserName、$SourcePassword にソース SQL Server の詳細を入力します。
 
 ```powershell
 $Query = "(select name as Database_Name from master.sys.databases where Database_id>4)";
@@ -289,7 +289,7 @@ $blobSasUri="https://mystorage.blob.core.windows.net/test?st=2018-07-13T18%3A10%
 * *ProjectName*。 タスクを作成する Azure Database Migration Service プロジェクトの名前。 
 * *TaskName*。 作成するタスクの名前。 
 * *SourceConnection*。 ソース SQL Server 接続を表す AzDmsConnInfo オブジェクト。
-* *TargetConnection*。 ターゲットの Azure SQL マネージド インスタンスの接続を表す AzDmsConnInfo オブジェクト。
+* *TargetConnection*。 ターゲットの Azure SQL Managed Instance の接続を表す AzDmsConnInfo オブジェクト。
 * *SourceCred*。 ソース サーバーに接続するための [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) オブジェクト。
 * *TargetCred*。 ターゲット サーバーに接続するための [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) オブジェクト。
 * *SelectedDatabase*。 ソースとターゲット データベースのマッピングを表す AzDataMigrationSelectedDB オブジェクト。
@@ -395,7 +395,7 @@ $migTask = New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDbMiSync `
 
 オンライン移行では、データベースの完全バックアップと復元が実行された後、BackupFileShare に格納されているトランザクション ログの復元処理が実行されます。
 
-Azure SQL マネージド インスタンス内のデータベースが最新のデータで更新され、ソース データベースと同期されている場合、一括での実行が可能です。
+Azure SQL Managed Instance 内のデータベースが最新のデータで更新され、ソース データベースと同期されている場合、一括での実行が可能です。
 
 次の例では、一括移行を実行しています。 ユーザーは、それぞれの判断でこのコマンドを呼び出します。
 
