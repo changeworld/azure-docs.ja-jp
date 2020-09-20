@@ -21,8 +21,8 @@ SQL FQDN を使用して Azure Firewall アプリケーション規則を構成�
 SQL FQDN では、以下のトラフィックをフィルター処理できます。
 
 - Vnet から Azure SQL Database または Azure SQL Data Warehouse へ。 次に例を示します。*sql server1.database.windows.net* へのアクセスのみ許可します。
-- オンプレミスから Vnet で実行されている Azure SQL マネージド インスタンスまたは SQL IaaS へ。
-- スポーク間から Vnet で実行されている Azure SQL マネージド インスタンスまたは SQL IaaS へ。
+- オンプレミスから Vnet で実行されている Azure SQL Managed Instance または SQL IaaS へ。
+- スポーク間から Vnet で実行されている Azure SQL Managed Instance または SQL IaaS へ。
 
 SQL の FQDN のフィルター処理は、[プロキシ モード](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy)のみでサポートされます (ポート 1433)。 既定のリダイレクト モードで SQL を使用する場合、[ネットワーク ルール](features.md#network-traffic-filtering-rules)の一部として SQL サービス タグを使用してアクセスをフィルター処理することができます。
 SQL IaaS のトラフィックに既定以外のポートを使用する場合は、ファイアウォール アプリケーション規則でこれらのポートを構成できます。
