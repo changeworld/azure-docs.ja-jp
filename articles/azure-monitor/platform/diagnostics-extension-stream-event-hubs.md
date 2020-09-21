@@ -170,7 +170,7 @@ Azure Diagnostics では常に、ログとメトリックが Azure Storage ア�
 
 ## <a name="troubleshoot-event-hubs-sinks"></a>Event Hubs シンクのトラブルシューティング
 
-- Azure Diagnostics 自体のログとエラーが含まれる Azure Storage のテーブル **WADDiagnosticInfrastructureLogsTable** を確認します。 1 つの方法は、 [Azure ストレージ エクスプローラー](https://www.storageexplorer.com) などのツールを利用してこのストレージ アカウントに接続して、このテーブルを表示し、過去 24 時間の TimeStamp のクエリを追加することです。 ツールを使用して .csv ファイルをエクスポートし、Microsoft Excel などのアプリケーションで開くことができます。 Excel を使用すると、 **EventHubs**のようなコーリングカード文字列を簡単に検索して、報告されたエラーを確認できます。  
+- Azure Diagnostics 自体のログとエラーが含まれる Azure Storage のテーブル **WADDiagnosticInfrastructureLogsTable** を確認します。 1 つの方法は、 [Azure Storage Explorer](https://www.storageexplorer.com) などのツールを利用してこのストレージ アカウントに接続して、このテーブルを表示し、過去 24 時間の TimeStamp のクエリを追加することです。 ツールを使用して .csv ファイルをエクスポートし、Microsoft Excel などのアプリケーションで開くことができます。 Excel を使用すると、 **EventHubs**のようなコーリングカード文字列を簡単に検索して、報告されたエラーを確認できます。  
 
 - イベント ハブが正しくプロビジョニングされていることを確認してください。 構成の **PrivateConfig** セクションのすべての接続情報は、ポータルに表示されるリソースの値に一致している必要があります。 ポータルで SAS ポリシー (この例では *SendRule*) が定義されていること、および "*送信*" アクセス許可が付与されていることを確認します。  
 
