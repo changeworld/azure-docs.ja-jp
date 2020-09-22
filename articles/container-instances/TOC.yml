@@ -17,7 +17,7 @@
       displayName: Resource Manager
       href: container-instances-quickstart-template.md
     - name: コンテナー インスタンスのデプロイ - Docker CLI
-      href: container-instances-quickstart-docker-cli.md
+      href: quickstart-docker-cli.md
 - name: チュートリアル
   items:
     - name: コンテナー イメージの作成とデプロイ
@@ -34,6 +34,8 @@
           href: container-instances-multi-container-yaml.md
         - name: コンテナー グループのデプロイ - Resource Manager
           href: container-instances-multi-container-group.md
+        - name: コンテナー グループのデプロイ - Docker Compose
+          href: tutorial-docker-compose.md
     - name: Azure サービスと統合する
       items:
         - name: Azure Functions でトリガーする

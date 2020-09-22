@@ -33,6 +33,12 @@
       href: azure-netapp-files-cost-model.md
     - name: Azure NetApp Files のネットワーク計画のガイドライン
       href: azure-netapp-files-network-topologies.md
+    - name: リージョン間レプリケーション
+      items:
+        - name: リージョン間レプリケーションについて
+          href: cross-region-replication-introduction.md
+        - name: リージョン間レプリケーションの要件と考慮事項
+          href: cross-region-replication-requirements-considerations.md
     - name: ソリューション
       items:
         - name: Azure NetApp Files を使用したソリューション アーキテクチャ
@@ -81,6 +87,16 @@
       href: azure-netapp-files-resize-capacity-pools-or-volumes.md
     - name: ボリュームのサービス レベルを動的に変更する
       href: dynamic-change-volume-service-level.md
+    - name: リージョン間レプリケーションの管理
+      items:
+        - name: レプリケーション ピアリングの作成
+          href: cross-region-replication-create-peering.md
+        - name: レプリケーション関係の正常性状態を表示する
+          href: cross-region-replication-display-health-status.md
+        - name: ディザスター リカバリーの管理
+          href: cross-region-replication-manage-disaster-recovery.md
+        - name: レプリケーションの削除
+          href: cross-region-replication-delete.md
     - name: 開発
       items:
         - name: REST API
@@ -91,6 +107,10 @@
           href: azure-netapp-files-sdk-cli.md
         - name: Azure NetApp Files のリソース プロバイダー エラーのトラブルシューティング
           href: azure-netapp-files-troubleshoot-resource-provider-errors.md
+    - name: トラブルシューティング
+      items:
+        - name: リージョン間レプリケーションのトラブルシューティング
+          href: troubleshoot-cross-region-replication.md
 - name: リファレンス
   items:
     - name: REST

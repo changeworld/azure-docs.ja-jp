@@ -1072,6 +1072,8 @@
               href: troubleshoot-not-found.md
             - name: 承認されていない問題のトラブルシューティング
               href: troubleshoot-unauthorized.md
+            - name: 複数リージョン環境での SDK の可用性
+              href: troubleshoot-sdk-availability.md
         - name: .NET
           items:
             - name: .NET SDK の一般的なトラブルシューティング
