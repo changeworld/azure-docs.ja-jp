@@ -31,6 +31,8 @@
       href: connection-monitor-preview.md
     - name: VM ネットワーク トラフィック フィルターに関する問題を診断する
       href: network-watcher-ip-flow-verify-overview.md
+    - name: NSG ルールとトラフィックのフィルター処理を診断する
+      href: network-watcher-network-configuration-diagnostics-overview.md
     - name: VM のルーティングに関する問題を診断する
       href: network-watcher-next-hop-overview.md
     - name: 送信 VM 通信に関する問題を診断する

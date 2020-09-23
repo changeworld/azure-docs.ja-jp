@@ -1,19 +1,19 @@
 ---
-title: .Net SDK を使用して Azure Cosmos DB SQL API アカウントにデータを一括インポートする
+title: .NET SDK を使用して Azure Cosmos DB SQL API アカウントにデータを一括インポートする
 description: データをインポートするために必要なプロビジョニング スループット (RU/秒) を最適化する .NET コンソール アプリケーションを作成して、Azure Cosmos DB にデータをインポートしたり取り込んだりする方法を説明します。
 author: ealsur
 ms.author: maquaran
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 11/04/2019
+ms.date: 09/21/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b16402f809da18588b26995e7129d2f27575b48d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cfab8ba88c7da84efb3f6aed6f95bb100507f8da
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019251"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981942"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>.NET SDK を使用して Azure Cosmos DB SQL API アカウントにデータを一括インポートする
 
@@ -86,7 +86,7 @@ Azure portal から [Azure Cosmos DB SQL API アカウントを作成](create-co
 1.  Azure Cosmos アカウントに移動します。
 1.  **[キー]** ウィンドウを開き、アカウントの **[URI]** と **[プライマリ キー]** をコピーします。
 
-Azure Cosmos DB Emulator を使用している場合は、[こちらの記事からエミュレーターの資格情報](local-emulator.md#authenticating-requests)を取得してください。
+Azure Cosmos DB Emulator を使用している場合は、[こちらの記事からエミュレーターの資格情報](local-emulator.md#authenticate-requests)を取得してください。
 
 ## <a name="step-5-initialize-the-cosmosclient-object-with-bulk-execution-support"></a>手順 5:一括実行のサポートを適用して CosmosClient オブジェクトを初期化する
 

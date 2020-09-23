@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: d0341e5a4d5dc036a4c3f90b2a25003137602694
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: b0a0420b470ee6bf0c7fbb9885e496eaabaf7ef4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144840"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893532"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Azure Machine Learning を使用してモデルをトレーニングする
 
@@ -32,7 +32,7 @@ Azure Machine Learning には、SDK を使用したコード ファースト ソ
 
 + [Azure Machine Learning SDK for R](#r-sdk):SDK for R では、reticulate パッケージを使用して Azure Machine Learning の Python SDK にバインドします。 これにより、R 環境から Python SDK で実装されているコア オブジェクトとメソッドにアクセスできます。
 
-+ **デザイナー**: Azure Machine Learning デザイナー (プレビュー) では、概念実証を構築するため、またはコーディングの経験がほとんどないないユーザーのための簡単なエントリポイントが機械学習に提供されます。 これにより、ドラッグ アンド ドロップ Web ベース UI を使用してモデルをトレーニングできます。 Python コードを設計の一部として使用したり、コードを記述せずにモデルをトレーニングしたりすることができます。
++ **デザイナー**: Azure Machine Learning デザイナーでは、概念実証を構築するため、またはコーディングの経験がほとんどないないユーザーのために、機械学習への簡単なエントリポイントが用意されています。 これにより、ドラッグ アンド ドロップ Web ベース UI を使用してモデルをトレーニングできます。 Python コードを設計の一部として使用したり、コードを記述せずにモデルをトレーニングしたりすることができます。
 
 + **CLI**:機械学習 CLI には Azure Machine Learning を使用した一般的なタスク用のコマンドが用意されており、多くの場合、**スクリプト作成とタスクの自動化**に使用されます。 たとえば、トレーニング スクリプトまたはパイプラインを作成した後、スケジュールに基づいて、またはトレーニングに使用するデータ ファイルが更新されたときに、CLI を使用してトレーニングの実行を開始することができます。 トレーニング モデルの場合は、トレーニング ジョブを送信するコマンドが用意されています。 実行構成またはパイプラインを使用してジョブを送信できます。
 
@@ -42,13 +42,13 @@ Azure Machine Learning には、SDK を使用したコード ファースト ソ
 
 Python 用 Azure Machine Learning SDK では、Azure Machine Learning を使用して、機械学習のワークフローをビルドして実行できます。 対話型の Python セッション、Jupyter Notebook、Visual Studio Code、またはその他の IDE からサービスと対話できます。
 
-* [Azure Machine Learning SDK for Python とは](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
-* [SDK のインストール/更新](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
+* [Azure Machine Learning SDK for Python とは](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)
+* [SDK のインストール/更新](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
 * [Azure Machine Learning のための開発環境を構成する](how-to-configure-environment.md)
 
 ### <a name="run-configuration"></a>実行構成
 
-Azure Machine Learning の汎用トレーニング ジョブは、[RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) を使用して定義できます。 次に、実行構成がトレーニング スクリプトと共に使用されて、コンピューティング先でモデルがトレーニングされます。
+Azure Machine Learning の汎用トレーニング ジョブは、[RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true) を使用して定義できます。 次に、実行構成がトレーニング スクリプトと共に使用されて、コンピューティング先でモデルがトレーニングされます。
 
 ローカル コンピューター用の実行構成から開始し、必要に応じてクラウドベースのコンピューティング先に切り替えることができます。 コンピューティング先を変更する場合は、使用する実行構成のみ変更します。 実行によって、入力、出力、ログなどのトレーニング ジョブに関する情報もログに記録されます。
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge デバイスでの Kubernetes ネットワークについて | Microsoft Docs
-description: Azure Stack Edge デバイスでの Kubernetes ネットワークの動作について説明します。
+title: Azure Stack Edge Pro デバイスでの Kubernetes ネットワークについて | Microsoft Docs
+description: Azure Stack Edge Pro デバイスでの Kubernetes ネットワークの動作について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 4eab89710e031ead0a3758afd2367e60d26f395b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 001304ad6eda27db2285aaa9ad8b28929e2a04f8
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268127"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899320"
 ---
-# <a name="kubernetes-networking-in-your-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU デバイスでの Kubernetes ネットワーク
+# <a name="kubernetes-networking-in-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスでの Kubernetes ネットワーク
 
-Azure Stack Edge デバイスでは、コンピューティング ロールを構成するときに Kubernetes クラスターが作成されます。 Kubernetes クラスターが作成されると、コンテナー化されたアプリケーションを Kubernetes クラスターのポッドにデプロイできます。 ご利用の Kubernetes クラスター内のポッドに対しては、さまざまな方法でネットワークを使用できます。 
+Azure Stack Edge Pro デバイスでは、コンピューティング ロールを構成するときに Kubernetes クラスターが作成されます。 Kubernetes クラスターが作成されると、コンテナー化されたアプリケーションを Kubernetes クラスターのポッドにデプロイできます。 ご利用の Kubernetes クラスター内のポッドに対しては、さまざまな方法でネットワークを使用できます。 
 
-この記事では、Kubernetes クラスターでのネットワークについて、一般的な内容を、さらに Azure Stack Edge デバイスのコンテキストで具体的な内容を説明します。 
+この記事では、Kubernetes クラスターでのネットワークについて、一般的な内容を、さらに Azure Stack Edge Pro デバイスのコンテキストで具体的な内容を説明します。 
 
 ## <a name="networking-requirements"></a>ネットワーク要件
 
@@ -59,9 +59,9 @@ For discovery of applications within the cluster, Kubernetes cluster has a
 When an application or the end user would first use the IP address associated with the service of type load balancer to discover the service. Then it would use the label select `app = WS` to discover the pods associated with the application. The `kube-proxy` component would then distribute the traffic and ensure that it hits one of the web server application pods. If the web server app wanted to talk to the database app, then it would simply use the name of the service and using the name and the DNS server pod, resolve the name to an IP address. Again using labels and label selector, it would discover the pods associated with the database application. The `kube-proxy` would then distribute the traffic across each of the database app nodes.-->
 
 
-## <a name="kubernetes-networking-on-azure-stack-edge"></a>Azure Stack Edge 上の Kubernetes ネットワーク
+## <a name="kubernetes-networking-on-azure-stack-edge-pro"></a>Azure Stack Edge Pro 上の Kubernetes ネットワーク
 
-Calico、Metallb、および Core DNS はすべて、Azure Stack Edge 上のネットワーク用にインストールされるコンポーネントです。 
+Calico、Metallb、および Core DNS はすべて、Azure Stack Edge Pro 上のネットワーク用にインストールされるコンポーネントです。 
 
 - **Calico** では、プライベート IP 範囲からの IP アドレスがすべてのポッドに割り当てられ、これらのポッドに合わせてネットワークが構成されます。これにより、あるノードのポッドが別のノードのポッドと通信できるようになります。 
 - **Metallb** はクラスター内ポッドで実行され、ロード バランサー型のサービスに IP アドレスを割り当てます。 ロード バランサーの IP アドレスは、ローカル UI を介して提供されるサービス IP の範囲から選択されます。 
@@ -80,8 +80,8 @@ IP 割り当ての対象は次のとおりです。
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Stack Edge 上で Kubernetes ネットワークを構成するには、以下を参照してください。
+Azure Stack Edge Pro 上で Kubernetes ネットワークを構成するには、以下を参照してください。
 
-- [Azure Stack Edge で IoT Edge を介してステートレス アプリケーションを外部に公開する](azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md)
+- [Azure Stack Edge Pro で IoT Edge を介してステートレス アプリケーションを外部に公開する](azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md)。
 
-- [Azure Stack Edge で kubectl を介してステートレス アプリケーションを外部に公開する](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md)
+- [Azure Stack Edge Pro で kubectl を介してステートレス アプリケーションを外部に公開する](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md)。

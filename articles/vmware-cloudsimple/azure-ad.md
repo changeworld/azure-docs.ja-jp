@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f90f5f4298fcca77e293965ddd377598bcfd1930
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 93922986dfe0b2b4e8ba0923931df601cc12428b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077312"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532530"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>CloudSimple Private Cloud 上で vCenter の ID プロバイダーとして Azure AD を使用する
 
@@ -64,7 +64,7 @@ vCenter で ID ソースとして Azure AD を使用するには、Azure AD と 
 3. [Azure portal を使用して Azure Active Directory Domain Services を有効にする](../active-directory-domain-services/tutorial-create-instance.md)方法の記事の説明に従って、Azure AD Domain Services を管理する管理者グループを構成します。
 4. [Azure Active Directory Domain Services を有効にする](../active-directory-domain-services/tutorial-create-instance.md)方法の記事の説明に従って、Azure AD Domain Services の DNS 設定を更新します。  インターネット経由で AD に接続する場合は、Azure AD Domain Services のパブリック IP アドレスの DNS レコードをドメイン名に設定します。
 5. ユーザーのパスワード ハッシュ同期を有効にします。  この手順で、NT LAN Manager (NTLM) および Kerberos 認証に必要なパスワード ハッシュが Azure AD Domain Services との間で同期されるようになります。 パスワード ハッシュの同期をセットアップすると、ユーザーは自社の資格情報を使用して、マネージド ドメインにサインインできます。 「[Azure Active Directory Domain Services とのパスワード ハッシュの同期を有効にする](../active-directory-domain-services/tutorial-create-instance.md)」を参照してください。
-    1. クラウド専用ユーザーが存在する場合は、<a href="http://myapps.microsoft.com/" target="_blank">Azure AD アクセス パネル</a>を使用してパスワードを変更し、パスワード ハッシュが NTLM または Kerberos で必要な形式で格納されるようにする必要があります。  [クラウド専用ユーザー アカウントのマネージド ドメインとのパスワード ハッシュ同期を有効にする方法](../active-directory-domain-services/tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)の記事の手順に従います。  この手順は、個々のユーザーと、Azure portal または Azure AD PowerShell コマンドレットを使用して Azure AD ディレクトリに作成される新しいユーザーに対して行う必要があります。 Azure AD Domain Services へのアクセスを必要とするユーザーは、<a href="http://myapps.microsoft.com/" target="_blank">Azure AD アクセス パネル</a>を使用し、そのプロファイルにアクセスしてパスワードを変更する必要があります。
+    1. クラウド専用ユーザーが存在する場合は、<a href="https://myapps.microsoft.com/" target="_blank">Azure AD アクセス パネル</a>を使用してパスワードを変更し、パスワード ハッシュが NTLM または Kerberos で必要な形式で格納されるようにする必要があります。  [クラウド専用ユーザー アカウントのマネージド ドメインとのパスワード ハッシュ同期を有効にする方法](../active-directory-domain-services/tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)の記事の手順に従います。  この手順は、個々のユーザーと、Azure portal または Azure AD PowerShell コマンドレットを使用して Azure AD ディレクトリに作成される新しいユーザーに対して行う必要があります。 Azure AD Domain Services へのアクセスを必要とするユーザーは、<a href="https://myapps.microsoft.com/" target="_blank">Azure AD アクセス パネル</a>を使用し、そのプロファイルにアクセスしてパスワードを変更する必要があります。
 
         > [!NOTE]
         > 組織にクラウド専用ユーザー アカウントが存在する場合、Azure Active Directory Domain Services を使用する必要があるすべてのユーザーは、自分のパスワードを変更しなければなりません。 クラウド専用ユーザー アカウントとは、Azure Portal または Azure AD PowerShell コマンドレットを使って Azure AD ディレクトリに作成されたアカウントです。 そのようなユーザー アカウントは、オンプレミス ディレクトリとの間で同期されません。

@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: 081da2b3f6fbe97ebce21940d7e0ca8978793b15
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 83281a9dde0b29a9f8bfc2bd90114227bf9e769f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652102"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886384"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>自動機械学習 (AutoML) とは
 
@@ -78,8 +78,6 @@ ms.locfileid: "88652102"
 
    * コードの経験があまりない、またはない場合は、Azure Machine Learning Studio Web エクスペリエンスを [https://ml.azure.com](https://ml.azure.com/) で試してください  
    * Python 開発者は、[Azure Machine Learning Python SDK](how-to-configure-auto-train.md) に関するページを参照してください 
-
-    [!INCLUDE [aml-applies-to-enterprise-sku](../../includes/aml-applies-to-enterprise-sku-inline.md)]  
     
 1. **ラベルの付いたトレーニング データのソースとフォーマットを指定します**。Numpy 配列または Pandas データフレーム
 
@@ -172,25 +170,25 @@ ms.locfileid: "88652102"
 
 ### <a name="feature-availability"></a>使用可能な機能 
 
- 次の表に示すように、リモート コンピューティングを使用するとより多くの機能を使用できます。 これらの機能の一部は、Enterprise ワークスペースでのみ使用できます。
+ 次の表に示すように、リモート コンピューティングを使用するとより多くの機能を使用できます。 
 
-| 特徴量                                                    | Remote | ローカル | 必要 <br>Enterprise ワークスペース |
-|------------------------------------------------------------|--------|-------|-------------------------------|
-| データ ストリーミング (大規模なデータのサポート、最大 100 GB)          | ✓      |       | ✓                             |
-| DNN-BERT ベースのテキストの特徴量化とトレーニング             | ✓      |       | ✓                             |
-| すぐに使用できる GPU サポート (トレーニングと推論)        | ✓      |       | ✓                             |
-| 画像の分類とラベル付けのサポート                  | ✓      |       | ✓                             |
-| 予測のための自動 ARIMA、Prophet、および ForecastTCN モデル | ✓      |       | ✓                             |
-| 並列での複数の実行/反復                       | ✓      |       | ✓                             |
-| AutoML スタジオ Web エクスペリエンス UI で解釈可能なモデルを作成する      | ✓      |       | ✓                             |
-| スタジオ Web エクスペリエンス UI での特徴エンジニアリングのカスタマイズ                        | ✓      |       | ✓                              |
-| Azure ML ハイパーパラメーターの調整                             | ✓      |       |                               |
-| Azure ML パイプライン ワークフローのサポート                         | ✓      |       |                               |
-| 実行の継続                                             | ✓      |       |                               |
-| 予測                                                | ✓      | ✓     | ✓                             |
-| ノートブックで実験を作成して実行する                    | ✓      | ✓     |                               |
-| UI で実験の情報とメトリックを登録して視覚化する | ✓      | ✓     |                               |
-| データ ガードレール                                            | ✓      | ✓     |                               |
+| 機能                                                    | Remote | ローカル | 
+|------------------------------------------------------------|--------|-------|
+| データ ストリーミング (大規模なデータのサポート、最大 100 GB)          | ✓      |       | 
+| DNN-BERT ベースのテキストの特徴量化とトレーニング             | ✓      |       |
+| すぐに使用できる GPU サポート (トレーニングと推論)        | ✓      |       |
+| 画像の分類とラベル付けのサポート                  | ✓      |       |
+| 予測のための自動 ARIMA、Prophet、および ForecastTCN モデル | ✓      |       | 
+| 並列での複数の実行/反復                       | ✓      |       |
+| AutoML スタジオ Web エクスペリエンス UI で解釈可能なモデルを作成する      | ✓      |       |
+| スタジオ Web エクスペリエンス UI での特徴エンジニアリングのカスタマイズ| ✓      |       |
+| Azure ML ハイパーパラメーターの調整                             | ✓      |       |
+| Azure ML パイプライン ワークフローのサポート                         | ✓      |       |
+| 実行の継続                                             | ✓      |       |
+| 予測                                                | ✓      | ✓     |
+| ノートブックで実験を作成して実行する                    | ✓      | ✓     |
+| UI で実験の情報とメトリックを登録して視覚化する | ✓      | ✓     |
+| データ ガードレール                                            | ✓      | ✓     |
 
 ## <a name="many-models"></a>多数モデル 
 
@@ -206,7 +204,7 @@ ms.locfileid: "88652102"
 
 Azure Machine Learning には、自動 ML を使用するための 2 つのエクスペリエンスが用意されています。
 
-* コードの経験がある場合は、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) に関する記事を参照してください 
+* コードの経験がある場合は、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) に関する記事を参照してください 
 
 * コードの経験があまりない、またはない場合は、Azure Machine Learning Studio ([https://ml.azure.com](https://ml.azure.com/)) に関する記事を参照してください。  
 
@@ -289,9 +287,9 @@ AutoML の使用を開始する方法がわかるリソースが複数ありま�
 
 [GitHub の自動機械学習サンプルのノートブック リポジトリ](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)で詳しいコード サンプルやユース ケースを確認してください。
 
-### <a name="python-sdk-reference"></a>Python SDK リファレンス 
+### <a name="python-sdk-reference"></a>Python SDK リファレンス
 
-[AutoML クラス リファレンス ドキュメント](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)では、SDK デザイン パターンとクラス仕様の知識を深めることができます。 
+[AutoML クラス リファレンス ドキュメント](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true)では、SDK デザイン パターンとクラス仕様の知識を深めることができます。 
 
 > [!Note]
 > 自動機械学習機能は、[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)、[HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)、[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)、[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/) などの他の Microsoft ソリューションでも使用できます

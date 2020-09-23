@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 15224afac33a3e236c2d1ed9f60515bdc2f34c4f
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: fe07d6d54296a3c55cb0b2cadb4d4ae0a311873b
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036795"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089566"
 ---
 # <a name="change-the-style-of-the-map"></a>マップのスタイルを変更する
 
@@ -82,7 +82,7 @@ var map = new atlas.Map('map', {
 map.setStyle({ style: 'satellite' });
 ```
 
-次のコードでは、マップ インスタンスが読み込まれた後、[setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setstyle-styleoptions-) 関数を使用して、マップのスタイルが `grayscale_dark` から `satellite` に更新されます。
+次のコードでは、マップ インスタンスが読み込まれた後、[setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#setstyle-styleoptions-) 関数を使用して、マップのスタイルが `grayscale_dark` から `satellite` に更新されます。
 
 <br/>
 
@@ -97,14 +97,14 @@ map.setStyle({ style: 'satellite' });
 
 次の画像は、`icon` レイアウトで表示されるスタイル ピッカー コントロールを示しています。
 
-:::image type="content" source="./media/choose-map-style/style-picker-icon-layout.png" alt-text="スタイル選択機能の一覧のレイアウト":::
+:::image type="content" source="./media/choose-map-style/style-picker-icon-layout.png" alt-text="スタイル選択機能アイコンのレイアウト":::
 
 次の画像は、`list` レイアウトで表示されるスタイル ピッカー コントロールを示しています。
 
 :::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="スタイル選択機能の一覧のレイアウト":::
 
 > [!IMPORTANT]
->既定では、スタイル ピッカー コントロールには Azure Maps の S0 価格レベルで利用できるすべてのスタイルが一覧表示されます。 この一覧に表示されるスタイルの数を減らすには、一覧に表示するスタイルの配列をスタイルの選択ツールの `mapStyle` オプションに渡します。 S1 を使用していて、使用できるすべてのスタイルを表示する場合は、スタイル選択ツールの `mapStyles` オプションを `"all"` に設定します。
+> 既定では、スタイル ピッカー コントロールには Azure Maps の S0 価格レベルで利用できるすべてのスタイルが一覧表示されます。 この一覧に表示されるスタイルの数を減らすには、一覧に表示するスタイルの配列をスタイルの選択ツールの `mapStyle` オプションに渡します。 S1 を使用していて、使用できるすべてのスタイルを表示する場合は、スタイル選択ツールの `mapStyles` オプションを `"all"` に設定します。
 
 次のコードは、既定の `mapStyles` 基本スタイル一覧をオーバーライドする方法を示しています。 この例では、スタイル ピッカー コントロールに表示される基本スタイルを列挙するように `mapStyles` オプションを設定しています。
 

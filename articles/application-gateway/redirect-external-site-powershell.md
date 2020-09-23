@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: f6480bdd5139d5bc7a5a1887b80f43c3903bf579
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55b5b5419734999ebd50ca364251602112e29987
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804608"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594290"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-azure-powershell"></a>Azure PowerShell を使用して外部リダイレクトと共にアプリケーション ゲートウェイを作成する
 
@@ -21,10 +21,9 @@ ms.locfileid: "84804608"
 
 この記事では、次のことについて説明します。
 
-> [!div class="checklist"]
-> * ネットワークのセットアップ
-> * リスナーとリダイレクト規則の作成
-> * アプリケーション ゲートウェイの作成
+* ネットワークのセットアップ
+* リスナーとリダイレクト規則の作成
+* アプリケーション ゲートウェイの作成
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 

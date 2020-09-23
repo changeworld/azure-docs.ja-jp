@@ -3,12 +3,12 @@ title: カスタム Linux コンテナーの構成
 description: Azure App Service のカスタム Linux コンテナーを構成する方法を学びます この記事では、最も一般的な構成タスクを紹介しています。
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 2f26f1b041b2d369b68aeb11755c8e8053862b16
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 9a27abe5457cf8adf2963db545c629134ae53709
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082810"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566978"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Azure App Service のカスタム Linux コンテナーを構成する
 
@@ -147,6 +147,7 @@ wordpress:
 
 - 認証/認可
 - マネージド ID
+- CORS
 
 ### <a name="docker-compose-options"></a>Docker Compose のオプション
 

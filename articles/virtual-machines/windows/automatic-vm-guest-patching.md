@@ -5,14 +5,14 @@ author: mayanknayar
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 09/09/2020
 ms.author: manayar
-ms.openlocfilehash: 720f9dfc09d27a18460037bfbbd15ae4bfc88707
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 47ac9fa91f391442691661a3ba03dd1f0d918601
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89236577"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669063"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-windows-vms-in-azure"></a>プレビュー:Azure の Windows VM における VM ゲストの自動パッチ適用
 
@@ -192,7 +192,7 @@ PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/
 VM を作成または更新する際に VM ゲストの自動パッチ適用を有効にするには、[Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem) コマンドレットを使用します。
 
 ```azurepowershell-interactive
-Set-AzVMOperatingSystem -VM $$VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate -PatchMode "AutomaticByPlatform"
+Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate -PatchMode "AutomaticByPlatform"
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0

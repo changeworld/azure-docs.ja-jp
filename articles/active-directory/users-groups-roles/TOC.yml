@@ -165,18 +165,24 @@
           href: directory-manage-roles-portal.md
         - name: カスタム ロール
           items:
-            - name: カスタム ロール
+            - name: カスタム ロールの概要
               href: roles-custom-overview.md
             - name: カスタム ロールの作成
               href: roles-create-custom.md
             - name: カスタム ロールの割り当ての表示
               href: roles-view-assignments.md
-            - name: Azure AD 管理センターでのロールの割り当て
+            - name: Azure portal でのカスタム ロールの割り当て
               href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
             - name: PowerShell でのカスタム ロールの割り当て
               href: roles-assign-powershell.md
+            - name: エンタープライズ アプリのカスタム ロールの割り当て
+              href: custom-enterprise-apps.md
             - name: カスタム ロールのアクセス許可
-              href: roles-custom-available-permissions.md
+              items:
+                - name: アプリの登録とアクセス許可
+                  href: roles-custom-available-permissions.md
+                - name: エンタープライズ アプリのアクセス許可
+                  href: custom-enterprise-app-permissions.md
             - name: アプリ管理者のアクセス許可を委任する
               href: roles-delegate-app-roles.md
         - name: グループを使用してロールの割り当てを管理する
