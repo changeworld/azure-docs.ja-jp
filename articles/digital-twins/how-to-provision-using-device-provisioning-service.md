@@ -40,7 +40,7 @@ ms.locfileid: "90561433"
 
 次の図は、Azure Digital Twins と Device Provisioning Service を使用したこのソリューションのアーキテクチャを示しています。 これにはデバイスのプロビジョニングと廃止の両方のフローが示されています。
 
-:::image type="content" source="media/how-to-provision-using-dps/flows.png" alt-text="エンドツーエンドのシナリオでのデバイスと複数の Azure サービスのビュー。サーモスタット デバイスと DPS との間でデータが送受信されます。データは DPS から IoT Hub にも送信されます。また、"Allocation" というラベルの付いた Azure 関数を通じて Azure Digital Twins にも送信されます。手動の "デバイスの削除" アクションからは、データが IoT Hub、Event Hubs、Azure Functions、Azure Digital Twins の順に送信されます。":::
+:::image type="content" source="media/how-to-provision-using-dps/flows.png" alt-text="エンドツーエンドのシナリオでのデバイスと複数の Azure サービスのビュー。サーモスタット デバイスと DPS との間でデータが送受信されます。データは DPS から IoT Hub にも送信されます。また、Allocation というラベルの付いた Azure 関数を通じて Azure Digital Twins にも送信されます。手動の デバイスの削除 アクションからは、データが IoT Hub、Event Hubs、Azure Functions、Azure Digital Twins の順に送信されます。":::
 
 この記事は、次の 2 つのセクションに分かれています。
 * [*Device Provisioning Service を使用してデバイスを自動プロビジョニングする*](#auto-provision-device-using-device-provisioning-service)
@@ -52,7 +52,7 @@ ms.locfileid: "90561433"
 
 このセクションでは、Device Provisioning Service を Azure Digital Twins に接続し、以下のパスを使用してデバイスを自動プロビジョニングします。 これは、[先ほど](#solution-architecture)示したアーキテクチャの全体図からの抜粋です。
 
-:::image type="content" source="media/how-to-provision-using-dps/provision.png" alt-text="プロビジョニングのフロー -- ソリューション アーキテクチャ図の抜粋。フローのセクションが数字でラベル付けされています。サーモスタット デバイスと DPS との間でデータが送受信されます (1 はデバイスから DPS へ、5 は DPS からデバイスへ)。データは DPS から IoT Hub にも送信されます (4)。また、"Allocation" というラベルの付いた Azure 関数 (2) を通じて Azure Digital Twins (3) にも送信されます。":::
+:::image type="content" source="media/how-to-provision-using-dps/provision.png" alt-text="プロビジョニングのフロー -- ソリューション アーキテクチャ図の抜粋。フローのセクションが数字でラベル付けされています。サーモスタット デバイスと DPS との間でデータが送受信されます (1 はデバイスから DPS へ、5 は DPS からデバイスへ)。データは DPS から IoT Hub にも送信されます (4)。また、Allocation というラベルの付いた Azure 関数 (2) を通じて Azure Digital Twins (3) にも送信されます。":::
 
 プロセス フローの説明は次のとおりです。
 1. デバイスから DPS エンドポイントへの通信によって、同一性を証明する識別情報が渡されます。
