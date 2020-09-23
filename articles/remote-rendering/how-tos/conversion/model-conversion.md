@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: db05c7a5a45221485ecb62c2c90d56be52d5ef48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49d3fd953d069f4368d28e26265114e574e8100a
+ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808606"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89506663"
 ---
 # <a name="convert-models"></a>モデルの変換
 
@@ -58,4 +58,5 @@ Azure Remote Rendering を使用すると、非常に複雑なモデルをレン
 - [モデル変換に Azure Blob Storage を使用する](blob-storage.md)
 - [モデル変換 REST API](conversion-rest-api.md)
 - [モデル変換を構成する](configure-model-conversion.md)
+- [変換用のファイルのレイアウト](layout-files-for-conversion.md)
 - [モデル形式の素材マッピング](../../reference/material-mapping.md)

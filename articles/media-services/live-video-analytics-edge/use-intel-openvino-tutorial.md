@@ -4,18 +4,21 @@ description: このチュートリアルでは、Intel が提供する AI モデ
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: 95dbf555cc6b8f8edb1bc9dca2e10d3ef72eb9db
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: e620da1a4f0b7f782d478314fb0e2e83ab9a124a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567583"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906636"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>チュートリアル:Intel の AI 拡張機能 OpenVINO™ モデル サーバーを使用してライブ ビデオを分析する 
 
-このチュートリアルでは、Intel の AI 拡張機能 OpenVINO™ モデル サーバーを使用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードを分析する方法について説明します。 この推論サーバーで、物体 (人物、車両、バイク) を検出するためのモデルや車両を分類するためのモデルにアクセスできるようにする方法を見ていきましょう。 ライブ ビデオ フィード内のフレームのサブセットが推論サーバーに送信され、その結果が IoT Edge ハブに送信されます。 
+このチュートリアルでは、Intel の AI 拡張機能 OpenVINO™ モデル サーバーを使用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードを分析する方法について説明します。 この推論サーバーで、物体 (人物、車両、バイク) を検出するためのモデルや車両を分類するためのモデルにアクセスできるようにする方法を見ていきましょう。 ライブ ビデオ フィード内のフレームのサブセットが推論サーバーに送信され、その結果が IoT Edge ハブに送信されます。
 
-このチュートリアルでは、IoT Edge デバイスとして Azure VM を使用し、シミュレートされたライブ ビデオ ストリームも使用します。 これは、C# で記述されたサンプル コードに基づいており、クイックスタート「[モーションの検出とイベントの生成](detect-motion-emit-events-quickstart.md)」を基に構築されています。 
+このチュートリアルでは、IoT Edge デバイスとして Azure VM を使用し、シミュレートされたライブ ビデオ ストリームも使用します。 これは、C# で記述されたサンプル コードに基づいており、クイックスタート「[モーションの検出とイベントの生成](detect-motion-emit-events-quickstart.md)」を基に構築されています。
+
+> [!NOTE]
+> このチュートリアルでは、エッジ デバイスとして x86-64 コンピューターを使用する必要があります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,7 +43,7 @@ Azure リソースを設定する際に、駐車場の短いビデオが、IoT E
 ## <a name="overview"></a>概要
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/use-intel-openvino-tutorial/topology.png" alt-text="概要":::
+> :::image type="content" source="./media/use-intel-openvino-tutorial/http-extension-with-vino.svg" alt-text="概要":::
 
 この図は、このクイックスタートでのシグナルの流れを示しています。 [エッジ モジュール](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)は、リアルタイム ストリーミング プロトコル (RTSP) サーバーをホストする IP カメラをシミュレートします。 [RTSP ソース](media-graph-concept.md#rtsp-source) ノードは、このサーバーからビデオ フィードをプルし、[フレーム レート フィルター プロセッサ](media-graph-concept.md#frame-rate-filter-processor) ノードにビデオ フレームを送信します。 このプロセッサは、[HTTP 拡張プロセッサ](media-graph-concept.md#http-extension-processor) ノードに到達するビデオ ストリームのフレーム レートを制限します。 
 
@@ -53,6 +56,7 @@ HTTP 拡張ノードは、プロキシの役割を果たします。 ビデオ �
 1. リソースをクリーンアップする。
 
 ## <a name="about-openvino-model-server--ai-extension-from-intel"></a>Intel の AI 拡張機能 OpenVINO™ モデル サーバーについて
+
 Intel® のディストリビューション [OpenVINO™ ツールキット](https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit.html) (Open Visual Inference and Neural Network Optimization) は無料のソフトウェア キットで、開発者やデータ サイエンティストがコンピューター ビジョン ワークロードをスピードアップしたり、ディープ ラーニングの推論およびデプロイを効率化したり、エッジからクラウドまで Intel® プラットフォーム全体で簡単に異種実行環境を実現したりする際に役立ちます。 モデル オプティマイザーと推論エンジンを備えた Intel® ディープ ラーニング デプロイメント ツールキットのほか、40 を超える最適化された事前トレーニング済みモデルを含んだ [Open Model Zoo](https://github.com/openvinotoolkit/open_model_zoo) リポジトリが同梱されています。
 
 複雑なハイパフォーマンスのライブ ビデオ分析ソリューションを構築するには、Live Video Analytics on IoT Edge モジュールに、エッジのスケールを活かせる強力な推論エンジンを組み合わせる必要があります。 このチュートリアルでは、Live Video Analytics on IoT Edge と連動するように設計された Edge モジュールである [Intel の AI 拡張機能 OpenVINO™ モデル サーバー](https://aka.ms/lva-intel-ovms)に推論要求が送信されます。 この推論サーバー モジュールには、OpenVINO™ モデル サーバー (OVMS) が含まれています。これは OpenVINO™ ツールキットを使用する推論サーバーであり、コンピューター ビジョン ワークロード向けに高度に最適化され、また Intel® アーキテクチャ向けに開発されています。 OVMS には、推論サーバーと Live Video Analytics on IoT Edge モジュールの間でビデオ フレームおよび推論結果を簡単に交換するための拡張機能が追加されているため、OpenVINO™ ツールキットに対応したモデルであれば、どのようなモデルでも実行することができます (推論サーバー モジュールは、[コード](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_wrapper)を変更することでカスタマイズできます)。 さらに、Intel® のハードウェアが提供するさまざまなアクセラレーション メカニズムから選択することができます。 これらには、CPU (Atom、Core、Xeon)、FPGA、VPU が含まれます。

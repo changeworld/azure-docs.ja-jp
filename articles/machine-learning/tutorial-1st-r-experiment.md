@@ -10,15 +10,15 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: 8d5a8555b2bd57dc024318464e38f042469beb4b
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: faf2257f944127748569466d314ff0a76faae4f0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89458673"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906739"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>チュートリアル:R を使用して機械学習モデルを作成する (プレビュー)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 > [!IMPORTANT]
 > Azure Machine Learning R SDK は現在、パブリック プレビューの段階にあります。

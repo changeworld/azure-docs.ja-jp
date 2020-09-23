@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 4bd5b2d3715376aaca689c4589c3aab41a78f514
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: d25c8908b46608ac64bcf135404a070740413fe0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120910"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907383"
 ---
 # <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Azure portal を使用して Azure Database for PostgreSQL - 単一サーバーを再起動する
 このトピックでは、Azure Database for PostgreSQL サーバーを再起動する方法について説明します。 メンテナンス上の理由でサーバーの再起動が必要な場合があります。これを行うと、サーバーが操作を実行しているときに短時間の停止が発生します。
@@ -32,19 +32,19 @@ ms.locfileid: "86120910"
 
 2. サーバーの **[概要]** ページのツール バーで、 **[再起動]** をクリックします。
 
-   ![Azure Database for PostgreSQL - 概要 - [再起動] ボタン](./media/howto-restart-server-portal/2-server.png)
+   :::image type="content" source="./media/howto-restart-server-portal/2-server.png" alt-text="Azure Database for PostgreSQL - 概要 - [再起動] ボタン":::
 
 3. **[はい]** をクリックして、サーバーを再起動することを確認します。
 
-   ![Azure Database for PostgreSQL - 再起動の確認](./media/howto-restart-server-portal/3-restart-confirm.png)
+   :::image type="content" source="./media/howto-restart-server-portal/3-restart-confirm.png" alt-text="Azure Database for PostgreSQL - 再起動の確認":::
 
 4. サーバーの状態が [再起動中] に変わることを確認します。
 
-   ![Azure Database for PostgreSQL - 再起動状態](./media/howto-restart-server-portal/4-restarting-status.png)
+   :::image type="content" source="./media/howto-restart-server-portal/4-restarting-status.png" alt-text="Azure Database for PostgreSQL - 再起動状態":::
 
 5. サーバーの再起動が成功したことを確認します。
 
-   ![Azure Database for PostgreSQL - 再起動成功](./media/howto-restart-server-portal/5-restart-success.png)
+   :::image type="content" source="./media/howto-restart-server-portal/5-restart-success.png" alt-text="Azure Database for PostgreSQL - 再起動成功":::
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -15,10 +15,15 @@
   items:
     - name: SQL Edge をデプロイする
       href: deploy-portal.md
+    - name: Docker でデプロイする
+      href: disconnected-deployment.md
     - name: SQL Edge に ONNX モデルをデプロイする
       href: deploy-onnx.md
 - name: チュートリアル
+  expanded: true
   items:
+    - name: Kubernetes にデプロイする
+      href: deploy-kubernetes.md
     - name: Azure Data Factory を使用したデータの同期
       href: tutorial-sync-data-factory.md
     - name: SQL データ同期を使用したデータの同期
@@ -31,36 +36,42 @@
           href: tutorial-set-up-iot-edge-modules.md
         - name: SQL Edge へのモデルのデプロイ
           href: tutorial-run-ml-model-on-sql-edge.md
-- name: 方法
-  items:
-    - name: Stream Analytics ジョブをデプロイする
-      href: stream-analytics.md
-    - name: レプリケーションの設定
-      href: configure-replication.md
-    - name: データ変更の追跡
-      href: track-data-changes.md
-    - name: T-SQL ストリーミング ジョブの管理
-      href: create-stream-analytics-job.md
-    - name: SQL Edge に接続する
-      href: connect.md
-    - name: SQL Edge の構成
-      href: configure.md
-    - name: DAC パッケージをデプロイする
-      href: deploy-dacpac.md
 - name: 概念
   items:
-    - name: ONNX を使用した機械学習と AI
-      href: onnx-overview.md
-    - name: バックアップと復元
-      href: backup-restore.md
-    - name: SQL Edge でのデータ ストリーミング
+    - name: 配置
+      items:
+        - name: Azure Portal を使用したデプロイ
+          href: deploy-portal.md
+        - name: Docker でデプロイする
+          href: disconnected-deployment.md
+        - name: Kubernetes にデプロイする
+          href: deploy-kubernetes.md
+        - name: SQL ツール
+          href: 'https://docs.microsoft.com/en-us/sql/tools/overview-sql-tools?toc=/azure/azure-sql-edge/toc.json'
+    - name: 機械学習
+      items:
+        - name: ONNX を使用した機械学習と AI
+          href: onnx-overview.md
+        - name: ONNX モデルをデプロイする
+          href: deploy-onnx.md
+    - name: パフォーマンス
+      items:
+        - name: パフォーマンスに関するガイドライン
+          href: performance-best-practices.md
+    - name: ビジネス継続性の構成
+      items:
+        - name: バックアップと復元
+          href: backup-restore.md
+        - name: コンテナーの高可用性
+          href: high-availability-sql-edge-containers.md
+    - name: データ ストリーミング
       items:
         - name: データをストリーム配信する
           href: stream-data.md
+        - name: ストリーミング ジョブを作成および管理する
+          href: create-stream-analytics-job.md
         - name: 外部ストリームを作成する (Transact-SQL)
           href: create-external-stream-transact-sql.md
-        - name: 外部ストリームを変更する (Transact-SQL)
-          href: alter-external-stream-transact-sql.md
         - name: 外部ストリームをドロップする (Transact-SQL)
           href: drop-external-stream-transact-sql.md
         - name: ストリーミング ビューと DMV
@@ -69,14 +80,20 @@
               href: streaming-catalog-views.md
             - name: sys.external_job_streams (Transact-SQL)
               href: sys-external-job-streams.md
-            - name: sys.external-streaming_jobs (Transact-SQL)
+            - name: sys.external_streaming_jobs (Transact-SQL)
               href: sys-external-streaming-jobs.md
             - name: sys.external_streams (Transact-SQL)
               href: sys-external-streams.md
     - name: 時系列データの処理
       items:
-        - name: Date_Bucket (Transact-SQL)
+        - name: 時間間隔と欠損値
+          href: imputing-missing-values.md
+        - name: DATE_BUCKET (Transact-SQL)
           href: date-bucket-tsql.md
+        - name: FIRST_VALUE (Transact-SQL)
+          href: 'https://docs.microsoft.com/sql/t-sql/functions/first-value-transact-sql?toc=/azure/azure-sql-edge/toc.json'
+        - name: LAST_VALUE (Transact-SQL)
+          href: 'https://docs.microsoft.com/sql/t-sql/functions/last-value-transact-sql?toc=/azure/azure-sql-edge/toc.json'
         - name: データ保有とクリーンアップ
           items:
             - name: データ保有の概要
@@ -85,3 +102,43 @@
               href: data-retention-enable-disable.md
             - name: データ保有のクリーンアップ
               href: data-retention-cleanup.md
+            - name: sys.sp_cleanup_data_retention (Transact-SQL)
+              href: sys-sp-cleanup-data-retention.md
+    - name: セキュリティ
+      items:
+        - name: セキュリティの概要
+          href: security-overview.md
+        - name: セキュリティ機能
+          href: 'https://docs.microsoft.com/sql/linux/sql-server-linux-security-get-started?toc=/azure/azure-sql-edge/toc.json'
+        - name: 接続の暗号化
+          href: 'https://docs.microsoft.com/sql/linux/sql-server-linux-encrypted-connections?toc=/azure/azure-sql-edge/toc.json'
+        - name: Azure Security Center for IoT
+          href: 'https://docs.microsoft.com/azure/asc-for-iot/overview?toc=/azure/azure-sql-edge/toc.json&bc=/azure/azure-sql-edge/breadcrumb/toc.json'
+- name: 方法
+  items:
+    - name: SQL Edge の構成
+      items:
+        - name: 環境変数を使用して構成する
+          href: configure.md#configure-by-using-environment-variables
+        - name: mssql.conf ファイルを使用した構成
+          href: configure.md#configure-by-using-an-mssqlconf-file
+        - name: 非 root ユーザーとして実行する
+          href: configure.md#run-azure-sql-edge-as-non-root-user
+        - name: データを保持する
+          href: configure.md#persist-your-data
+        - name: レプリケーションの設定
+          href: configure-replication.md
+    - name: SQL Edge に接続する
+      href: connect.md
+    - name: DAC パッケージをデプロイする
+      href: deploy-dacpac.md
+    - name: データ変更の追跡
+      href: track-data-changes.md
+    - name: T-SQL ストリーミング ジョブの管理
+      href: create-stream-analytics-job.md
+    - name: デプロイに関する問題のトラブルシューティング
+      href: troubleshoot.md
+- name: 関連項目
+  items:
+    - name: Transact-SQL (T-SQL) リファレンス
+      href: 'https://docs.microsoft.com/sql/t-sql/language-reference'

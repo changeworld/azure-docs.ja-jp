@@ -4,13 +4,13 @@ description: Azure Kubernetes Service (AKS) で複数の可用性ゾーンにノ
 services: container-service
 ms.custom: fasttrack-edit, references_regions
 ms.topic: article
-ms.date: 08/13/2020
-ms.openlocfilehash: f24351c5f77e6c00365497d5e6deeefea8271cb9
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.date: 09/04/2020
+ms.openlocfilehash: b6162249592bf470c3b8e52686abd44b813d5606
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871413"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489138"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>可用性ゾーンを使用する Azure Kubernetes Service (AKS) クラスターを作成する
 
@@ -150,7 +150,8 @@ Name:       aks-nodepool1-28993262-vmss000004
 ゾーン 1 とゾーン 2 に 2 つのノードが追加されました。 3 つのレプリカで構成されるアプリケーションをデプロイできます。 例として NGINX を使用します。
 
 ```console
-kubectl run nginx --image=nginx --replicas=3
+kubectl create deployment nginx --image=nginx
+kubectl scale deployment nginx --replicas=3
 ```
 
 ポッドが実行されているノードを表示すると、3 つの異なる可用性ゾーンに対応するノードでポッドが実行されていることがわかります。 たとえば、Bash シェルでコマンド `kubectl describe pod | grep -e "^Name:" -e "^Node:"` を使用すると、次のような出力が表示されます。

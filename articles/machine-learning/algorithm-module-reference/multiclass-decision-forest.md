@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 9e8798ea1c03ebf4c0d08adfbf5a0ee0755164a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e22881a904ed33214e90604d71489d8691fe820b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137809"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883246"
 ---
 # <a name="multiclass-decision-forest-module"></a>多クラス デシジョン フォレスト モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナーのモジュールについて説明します。
 
 *デシジョン フォレスト* アルゴリズムに基づいて機械学習モデルを作成するには、このモジュールを使用します。 デシジョン フォレストは、タグ付けされたデータから学習しながら、一連のデシジョン ツリーを迅速に構築するためのアンサンブル モデルです。
 

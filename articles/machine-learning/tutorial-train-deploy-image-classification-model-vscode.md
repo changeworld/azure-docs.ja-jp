@@ -10,12 +10,12 @@ author: luisquintanilla
 ms.author: luquinta
 ms.date: 07/09/2020
 ms.custom: contperfq4
-ms.openlocfilehash: 7d209b3434eae20b4c9a7b328f5c15032315b178
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a13bec5fa557bed1b9ce84836588e6a3e501ddf5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203554"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906698"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension-preview"></a>Azure Machine Learning Visual Studio Code 拡張機能 (プレビュー) を使用して画像分類 TensorFlow モデルをトレーニングおよびデプロイする
 
@@ -61,7 +61,7 @@ Azure Machine Learning でアプリケーションを作成する際に最初に
 1. **[Create a new resource group]\(新しいリソース グループの作成\)** を選択します。 
 1. リソース グループに "TeamWorkspace-rg" という名前を付けて **Enter** キーを押します。 
 1. ワークスペースの場所を選択します。 モデルをデプロイする予定の場所に最も近い場所を選択することをお勧めします。 たとえば "米国西部 2" にします。
-1. ワークスペースの種類を選択するよう求められたら、 **[Basic]** を選択して Basic のワークスペースを作成します。 ワークスペースの各種プランの詳細については、[Azure Machine Learning の概要](./overview-what-is-azure-ml.md#sku)に関するページを参照してください。
+1. ワークスペースの種類を選択するように求めるメッセージが表示されたら、 **[基本]** を選択します。
 
 この時点で、新しいワークスペースをアカウントに作成するための要求が Azure に送信されます。 数分後、ご利用のサブスクリプションのノードに新しいワークスペースが表示されます。 
 

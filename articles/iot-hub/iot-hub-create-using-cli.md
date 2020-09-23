@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: robinsh
-ms.openlocfilehash: e7253747d95917e34725cc7c6c034b1306f65e50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69372e4c212e2ce81bcd4c91d460aa191a1d3476
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708078"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087849"
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>Azure CLI を使用して IoT ハブを作成する
 
@@ -44,21 +44,21 @@ Azure CLI を使用してリソース グループを作成してから、IoT �
 
 1. IoT ハブを作成するときは、リソース グループの中に作成する必要があります。 既存のリソース グループを使用するか、以下の、[リソース グループを作成するコマンド](https://docs.microsoft.com/cli/azure/resource)を実行します。
     
-   ```azurecli
+   ```azurecli-interactive
    az group create --name {your resource group name} --location westus
    ```
 
    > [!TIP]
    > 上の例では、West US という場所にリソース グループを作成します。 このコマンドを実行すると、利用できる場所を一覧表示できます。 
    >
-   >``` bash
-   >az account list-locations -o table
-   >```
+   > ```azurecli-interactive
+   > az account list-locations -o table
+   > ```
    >
 
 2. IoT ハブに対してグローバルに一意の名前を使用して、以下の、リソース グループに [IoT ハブを作成するコマンド](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create)を実行します。
     
-   ```azurecli
+   ```azurecli-interactive
    az iot hub create --name {your iot hub name} \
       --resource-group {your resource group name} --sku S1
    ```
@@ -74,14 +74,14 @@ Azure CLI を使用して、IoT ハブなどの[リソースを個別に削除](
 
 [IoT ハブを削除](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-delete)するには、次のコマンドを実行します。
 
-```azurecli
+```azurecli-interactive
 az iot hub delete --name {your iot hub name} -\
   -resource-group {your resource group name}
 ```
 
 [リソース グループとそのすべてのリソースを削除](https://docs.microsoft.com/cli/azure/group#az-group-delete)するには、次のコマンドを実行します。
 
-```azurecli
+```azurecli-interactive
 az group delete --name {your resource group name}
 ```
 

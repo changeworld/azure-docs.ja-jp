@@ -8,24 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 06/30/2020
+ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: devx-track-python
-ms.openlocfilehash: 38c2b3cdf40f1924a36ffd84d9dc5f9b2f7f319d
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 7bfe10ea5e0e95bcabf02243bb8b7172a5aec08d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245708"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906748"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>クイック スタート:Anomaly Detector REST API および Python を使用し、時系列データ内の異常を検出する
 
-このクイック スタートを使用して、Anomaly Detector API の 2 つの検出モードの使用を開始し、時系列データでの異常を検出します。 この Python アプリケーションは、JSON 形式の時系列データを格納している 2 つの API 要求を送信し、応答を取得します。
+このクイック スタートを使用して、Anomaly Detector API の 2 つの検出モードの使用を開始し、時系列データでの異常を検出します。 この Python アプリケーションは、JSON 形式の時系列データを格納している API 要求を送信し、応答を取得します。
 
 | API 要求                                        | アプリケーションの出力                                                                                                                         |
 |----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 | バッチとして異常を検出する                        | 時系列データの各データ ポイントの異常状態 (および他のデータ) と検出された異常の位置を含んだ JSON 応答。 |
-| 最新のデータ ポイントの異常状態を検出する | 時系列データの最新のデータ ポイントの異常状態 (および他のデータ) を含んだ JSON 応答。                                                                                                                                         |
+| 最新のデータ ポイントの異常状態を検出する | 時系列データの最新のデータ ポイントの異常状態 (および他のデータ) を含んだ JSON 応答。|
+| データの新しい傾向を特徴付ける変化点を検出する | 時系列データ内に検出された変化点を含む JSON 応答。 |
 
  このアプリケーションは Python で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このクイック スタートのソース コードは、[GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/python-detect-anomalies.py) にあります。
 
@@ -54,6 +55,7 @@ ms.locfileid: "88245708"
     |---------|---------|
     |バッチ検出    | `/anomalydetector/v1.0/timeseries/entire/detect`        |
     |最新のデータ ポイントでの検出     | `/anomalydetector/v1.0/timeseries/last/detect`        |
+    | 変化点検出 | `/anomalydetector/v1.0/timeseries/changepoint/detect`   |
 
     [!code-python[initial endpoint and key variables](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=vars)]
 
@@ -73,7 +75,7 @@ ms.locfileid: "88245708"
 
 ## <a name="detect-anomalies-as-a-batch"></a>バッチとして異常を検出する
 
-1. `detect_batch()` というメソッドを作成し、バッチとしてデータ全体での異常を検出します。 自身のエンドポイント、URL、サブスクリプション キー、および JSON データを使用して、上記で作成した `send_request()` メソッドを呼び出します。
+1. `detect_batch()` というメソッドを作成し、バッチとしてデータ全体での異常を検出します。 自身のエンドポイント、URL、サブスクリプション キー、および JSON データを使用して、先ほど作成した `send_request()` メソッドを呼び出します。
 
 2. 結果で `json.dumps()` を呼び出してそれを書式設定し、コンソールに出力します。
 
@@ -91,6 +93,18 @@ ms.locfileid: "88245708"
 
     [!code-python[Latest point detection](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=detectLatest)]
 
+## <a name="detect-change-points-in-the-data"></a>データ内の変化点を検出する
+
+1. `detect_change_point()` というメソッドを作成し、バッチとしてデータ全体での異常を検出します。 自身のエンドポイント、URL、サブスクリプション キー、および JSON データを使用して、先ほど作成した `send_request()` メソッドを呼び出します。
+
+2. 結果で `json.dumps()` を呼び出してそれを書式設定し、コンソールに出力します。
+
+3. 応答に `code` フィールドが含まれる場合は、エラー コードとエラー メッセージを印刷します。
+
+4. そうでない場合は、データ セット内の異常の位置を検索します。 応答の `isChangePoint` フィールドには、指定のデータ ポイントが異常かどうかを示すブール値が含まれます。 一覧を反復処理して、すべての `True` 値のインデックスを出力します。 これらの値は、傾向の変化点のインデックスに対応します (見つかった場合)。
+
+    [!code-python[detect change points](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=detectChangePoint)]
+
 ## <a name="send-the-request"></a>要求を送信する
 
 上記で作成した異常検出メソッドを呼び出します。
@@ -102,5 +116,6 @@ ms.locfileid: "88245708"
 成功応答が JSON 形式で返されます。 下のリンクをクリックして、GitHub で JSON 応答を表示します。
 * [バッチ検出応答の例](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
 * [最新のポイント検出応答の例](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
+* [変化点検出応答の例](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/change-point-sample.json)
 
 [!INCLUDE [anomaly-detector-next-steps](../includes/quickstart-cleanup-next-steps.md)]

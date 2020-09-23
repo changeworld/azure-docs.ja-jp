@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
-ms.date: 04/08/2019
-ms.openlocfilehash: fcad4f02f3fdfcbdc95617da7344d06feb70d1af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.reviewer: ''
+ms.date: 09/21/2020
+ms.openlocfilehash: 38f52178ec9c736f3ee51839678401753365d48d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343253"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907048"
 ---
 # <a name="what-is-azure-sql-database"></a>Azure SQL Database とは
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,6 +29,9 @@ Azure SQL Database を使用すると、Azure のアプリケーションやソ�
 Azure SQL Database は、[Microsoft SQL Server データベース エンジン](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json)の最新の安定したバージョンに基づいています。 [高パフォーマンスのメモリ内テクノロジ](../in-memory-oltp-overview.md)や[インテリジェントなクエリ処理](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json)など、高度なクエリ処理機能を使用できます。 実際、SQL Server の最新機能のリリースは SQL Database から始まり、その後 SQL Server 自体に対してリリースされます。 修正プログラムの適用やアップグレードのオーバーヘッドなしで SQL Server の最新の機能を取得して、数百万のデータベースでテストすることができます。 
 
 SQL Database を使用すると、2 つの異なる購入モデル ([仮想コアベースの購入モデル](service-tiers-vcore.md)と [DTU ベースの購入モデル](service-tiers-dtu.md)) の中でパフォーマンスを簡単に定義してスケールすることができます。 SQL Database は、高可用性、バックアップ、その他の一般的なメンテナンス操作が組み込まれた完全なマネージド サービスです。 SQL とオペレーティング システムのコードの修正プログラムの適用と更新は、すべて Microsoft で処理されます。 ユーザーが基になるインフラストラクチャを管理する必要はありません。
+
+Azure SQL Database を初めてお使いの方は、[Azure SQL ビデオ シリーズ](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)の "*Azure SQL データベースの概要*" に関するビデオをご覧ください。
+> [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Database-Overview-7-of-61/player]
 
 ## <a name="deployment-models"></a>デプロイ モデル
 
@@ -162,11 +165,8 @@ SQL Database は、アプリケーションがさまざまなセキュリティ�
 
 ### <a name="advance-threat-protection"></a>高度な脅威保護
 
-Advanced Data Security は、高度な SQL セキュリティ機能のための統合パッケージです。 この機能には、機密データの探索と分類、データベースの脆弱性の管理、データベースへの脅威を示す可能性がある異常なアクティビティの検出などが含まれます。 これらの機能を 1 つの場所で有効にして管理できます。
+Azure Defender for SQL は、高度な SQL セキュリティ機能のための統合パッケージです。 この機能には、データベースの脆弱性の管理、データベースへの脅威を示す可能性がある異常なアクティビティの検出などが含まれます。 これらの機能を 1 つの場所で有効にして管理できます。
 
-- [データの検出と分類](data-discovery-and-classification-overview.md):
-
-  データの検出と分類では、Azure SQL Database に組み込まれる、データベースの機密データの検出、分類、ラベル付けと保護を行う機能が用意されています。 これによりデータベースの分類状態の可視性が提供され、データベース内やその境界を越えて機密データへのアクセスが追跡されます。
 - [脆弱性評価](sql-vulnerability-assessment.md):
 
   このサービスは、データベースの潜在的な脆弱性を検出、追跡し、その修復を支援するものです。 セキュリティの状態を表示することができ、セキュリティの問題を解決して、データベースのセキュリティを強化するために実行可能な手順が含まれます。
@@ -182,6 +182,10 @@ Advanced Data Security は、高度な SQL セキュリティ機能のための�
 
 SQL Database は、次の暗号化を提供することでデータを保護します。 移動中のデータには、[トランスポート層セキュリティ](https://support.microsoft.com/kb/3135244)が使用されます。 保存データには、[Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) が使用されます。 使用中のデータには、[Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) が使用されます。
 
+### <a name="data-discovery-and-classification"></a>データの検出と分類
+
+[データの検出と分類](data-discovery-and-classification-overview.md)では、Azure SQL Database に組み込まれる、データベースの機密データの検出、分類、ラベル付け、および保護を行う機能が用意されます。 これによりデータベースの分類状態の可視性が提供され、データベース内やその境界を越えて機密データへのアクセスが追跡されます。
+
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory との統合と多要素認証
 
 SQL Database では、[Azure Active Directory との統合](authentication-aad-overview.md)によって、データベース ユーザーの ID とその他の Microsoft サービスを一元的に管理できます。 この機能は、アクセス許可の管理を簡略化し、セキュリティを強化します。 Azure Active Directory では、シングル サインオン プロセスをサポートすると同時に、データとアプリケーションのセキュリティが強化するため、[多要素認証](authentication-mfa-ssms-overview.md)がサポートされています。
@@ -193,10 +197,10 @@ SQL Database は、アプリケーションの開発と管理をより簡単で�
 |ツール|説明|
 |:---|:---|
 |[Azure ポータル](https://portal.azure.com/)|すべての Azure サービスを管理するための Web ベースのアプリケーションです。|
-|[Azure Data Studio](/sql/azure-data-studio/)|Windows、MacOS、Linux で実行されるクロスプラットフォーム データベース ツールです。|
+|[Azure Data Studio](/sql/azure-data-studio/)|Windows、macOS、Linux で実行されるクロスプラットフォーム データベース ツールです。|
 |[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)|SQL Server から SQL Database まで、あらゆる SQL インフラストラクチャを管理するための、無料でダウンロードできるクライアント アプリケーションです。|
 |[Visual Studio の SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)|SQL Server リレーショナル データベース、Azure SQL Database 内のデータベース、Integration Services パッケージ、Analysis Services データ モデル、Reporting Services レポートを開発するための、ダウンロード可能な無料のクライアント アプリケーションです。|
-|[Visual Studio Code](https://code.visualstudio.com/docs)|Windows、macOS、Linux 向けの無料でダウンロードできるオープンソースのコード エディターです。 Microsoft SQL Server、Azure SQL Database、および Azure SQL Data Warehouse のデータを照会するための [mssql 拡張機能](https://aka.ms/mssql-marketplace)を含む拡張機能をサポートします。|
+|[Visual Studio Code](https://code.visualstudio.com/docs)|Windows、macOS、Linux 向けの無料でダウンロードできるオープンソースのコード エディターです。 Microsoft SQL Server、Azure SQL Database、および Azure Synapse Analytics (旧称 SQL Data Warehouse) のデータを照会するための [mssql 拡張機能](https://aka.ms/mssql-marketplace)を含む拡張機能をサポートします。|
 
 SQL Database は、macOS、Linux、および Windows での Python、Java、Node.js、PHP、Ruby、および .NET によるアプリケーションの構築をサポートします。 SQL Database は、SQL Server と同じ[接続ライブラリ](connect-query-content-reference-guide.md#libraries)をサポートします。
 

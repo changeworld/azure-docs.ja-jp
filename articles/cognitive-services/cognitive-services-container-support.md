@@ -1,5 +1,5 @@
 ---
-title: コンテナー サポート
+title: Azure Cognitive Services コンテナー
 titleSuffix: Azure Cognitive Services
 description: Docker コンテナーを使用して Cognitive Services をデータに近い場所に配置する方法について説明します。
 services: cognitive-services
@@ -8,22 +8,20 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 9/01/2020
+ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 501cdde95cfdf0277fe3e260e8cc929664af257e
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: bda6fae31e3f5ef63d2c917937d80b2c1ea4fc48
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321441"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907008"
 ---
-# <a name="container-support-in-azure-cognitive-services"></a>Azure Cognitive Services でのコンテナーのサポート
+# <a name="azure-cognitive-services-containers"></a>Azure Cognitive Services コンテナー
 
-![法的情報 ](./media/cognitive-services-container-support/banner.png)
-<!--
-> [!IMPORTANT]
-> On June 11, 2020, Microsoft announced that it will not sell facial recognition technology to police departments in the United States until strong regulation, grounded in human rights, has been enacted. As such, customers may not use facial recognition features or features included in Azure Services, such as Face or Video Indexer, if a customer is, or is allowing use of such services by or for, a police department in the United States.
--->
+> [!WARNING]
+> 2020 年 6 月 11 日に、Microsoft は、人権に基づく厳格な法令が制定されない限り、米国内の警察に顔認識テクノロジを販売しないことを発表しました。 このため、顧客は、米国内の警察である場合、または警察による顔認識機能および Azure サービスに含まれる機能 (Face や Video Indexer など) の使用を許可する場合、これらの機能を使用できません。
+
 Azure Cognitive Services でのコンテナーのサポートを使用すると、開発者は Azure で利用できるものと同じリッチな API を使用できます。また、[Docker コンテナー](https://www.docker.com/what-container)に付随するサービスをデプロイおよびホストできる柔軟性があります。 コンテナー サポートは現在、以下を含む Azure Cognitive Services のサブセットで使用できます。
 
 > [!div class="checklist"]
@@ -56,20 +54,21 @@ Azure Cognitive Services のコンテナーでは次の Docker コンテナー �
 
 | サービス | サポートされている価格レベル | コンテナー | 説明 |
 |--|--|--|--|
-| [Anomaly Detector][ad-containers] | F0、S0 | **Anomaly-Detector** | Anomaly Detector API では、機械学習を利用することで、時系列データを監視し、その中の異常を検出できます。<br>[アクセスの要求][request-access] |
+| [Anomaly Detector][ad-containers] | F0、S0 | **Anomaly-Detector** ([イメージ](https://hub.docker.com/_/azure-cognitive-services-decision-anomaly-detector))  | Anomaly Detector API では、機械学習を利用することで、時系列データを監視し、その中の異常を検出できます。<br>[アクセスの要求][request-access] |
 | [Computer Vision][cv-containers] | F0、S1 | **読み取り** | レシート、ポスター、名刺など、さまざまな表面や背景を持ついろいろなオブジェクトのイメージから、印刷されたテキストを抽出します。 "読み取り" コンテナーでは、画像内の "*手書きテキスト*" も検出され、PDF/TIFF/複数ページのサポートが提供されます。<br/><br/>**重要:** 読み取りコンテナーは現在のところ、英語でのみ機能します。 |
 | [Face][fa-containers] | F0、S0 | **Face** | Face には、画像中の人の顔を検出し、顔のパーツ (鼻や目など)、性別、年齢のほか、マシンが予測するその他の顔の特徴などの属性を識別します。 検出に加えて、Face では、同じ画像または異なる画像中の 2 つの顏が同じかどうかを信頼スコアを使って確認したり、データベースと顏を比較して、似ている顏や同一の顔が既に存在するかどうかを調べたりできます。 また、同じ視覚的特徴を使用して、似た顔をグループに分けて整理することもできます。<br>[アクセスの要求][request-access] |
 | [Form recognizer][fr-containers] | F0、S0 | **Form Recognizer** | Form Understanding では、機械学習の技術を適用して、フォームからキーと値のペアおよびテーブルを識別して抽出します。<br>[アクセスの要求][request-access] |
 | [LUIS][lu-containers] | F0、S0 | **LUIS** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)) | トレーニング済みまたは発行済みの Language Understanding モデル ("LUIS アプリ" と呼ばれます) を Docker コンテナーに読み込みます。ユーザーは、そのコンテナーの API エンドポイントからクエリ予測を利用することができます。 コンテナーからクエリのログを収集し、それらを [LUIS ポータル](https://www.luis.ai)に再度アップロードすることで、アプリの予測精度を高めることができます。 |
-| [Speech Service API][sp-containers-stt] | F0、S0 | **音声テキスト変換** | 連続するリアルタイムの音声をテキストに書き起こします。 |
-| [Speech Service API][sp-containers-cstt] | F0、S0 | **カスタム音声変換** | カスタム モデルを使用して、連続するリアルタイムの音声をテキストに書き起こします。 |
-| [Speech Service API][sp-containers-tts] | F0、S0 | **テキスト読み上げ** | テキストを自然な音声に変換します。 |
-| [Speech Service API][sp-containers-ctts] | F0、S0 | **カスタム テキスト読み上げ** | カスタム モデルを使用してテキストを自然な音声に変換します。 |
-| [Speech Service API][sp-containers-ntts] | F0、S0 | **ニューラル テキスト読み上げ** | ディープ ニューラル ネットワーク テクノロジを使用してテキストを自然な響きの音声に変換することで、合成音声がより自然なものになります。 |
+| [Speech Service API][sp-containers-stt] | F0、S0 | **音声テキスト変換** ([イメージ](https://hub.docker.com/_/azure-cognitive-services-speechservices-speech-to-text)) | 連続するリアルタイムの音声をテキストに書き起こします。 |
+| [Speech Service API][sp-containers-cstt] | F0、S0 | **カスタム音声テキスト変換** ([イメージ](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-speech-to-text)) | カスタム モデルを使用して、連続するリアルタイムの音声をテキストに書き起こします。 |
+| [Speech Service API][sp-containers-tts] | F0、S0 | **テキスト読み上げ** ([イメージ](https://hub.docker.com/_/azure-cognitive-services-speechservices-text-to-speech)) | テキストを自然な音声に変換します。 |
+| [Speech Service API][sp-containers-ctts] | F0、S0 | **カスタム テキスト読み上げ** ([イメージ](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-text-to-speech)) | カスタム モデルを使用してテキストを自然な音声に変換します。 |
+| [Speech Service API][sp-containers-ntts] | F0、S0 | **ニューラル テキスト読み上げ** ([イメージ](https://hub.docker.com/_/azure-cognitive-services-speechservices-neural-text-to-speech)) | ディープ ニューラル ネットワーク テクノロジを使用してテキストを自然な響きの音声に変換することで、合成音声がより自然なものになります。 |
 | [Text Analytics][ta-containers-keyphrase] | F0、S | **キー フレーズ抽出** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) | 主なポイントを識別するキー フレーズを抽出します。 たとえば、「食べ物はおいしくて、すばらしいスタッフがいた」というテキストを入力すると、この API は話題の中心として "食べ物" と "すばらしいスタッフ" を返します。 |
 | [Text Analytics][ta-containers-language] | F0、S | **言語検出** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | 最大 120 の言語に対して、入力テキストが書かれている言語を検出し、要求で送信されたドキュメントごとに 1 つの言語コードを報告します。 言語コードは、評価値の強度を示すスコアと組みになります。 |
 | [Text Analytics][ta-containers-sentiment] | F0、S | **感情分析 v3** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) | 肯定的または否定的な感情の手がかりを探して未加工のテキストを分析します。 このバージョンの感情分析からは、各ドキュメントとその中の文のセンチメント ラベル (たとえば、"*肯定的*"、"*否定的*") が返されます。 |
 | [Text Analytics][ta-containers-health] | F0、S | **Text Analytics for Health** | 構造化されていない臨床テキストから医療情報を抽出してラベル付けします。 |
+| [空間分析][spa-containers] | S0 | **空間分析** | 構造化されていない臨床テキストから医療情報を抽出してラベル付けします。 |
 
 <!--
 |[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer is a cloud-based API service that allows you to choose the best experience to show to your users, learning from their real-time behavior.|
@@ -129,10 +128,12 @@ Azure Cognitive Services のコンテナーによって提供される機能を�
 [fr-containers]: form-recognizer/form-recognizer-container-howto.md
 [lu-containers]: luis/luis-container-howto.md
 [sp-containers]: speech-service/speech-container-howto.md
+[spa-containers]: https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-container
 [sp-containers-stt]: speech-service/speech-container-howto.md?tabs=stt
 [sp-containers-cstt]: speech-service/speech-container-howto.md?tabs=cstt
 [sp-containers-tts]: speech-service/speech-container-howto.md?tabs=tts
 [sp-containers-ctts]: speech-service/speech-container-howto.md?tabs=ctts
+[sp-containers-ntts]: speech-service/speech-container-howto.md?tabs=ntts
 [ta-containers]: text-analytics/how-tos/text-analytics-how-to-install-containers.md
 [ta-containers-keyphrase]: text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=keyphrase
 [ta-containers-language]: text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=language

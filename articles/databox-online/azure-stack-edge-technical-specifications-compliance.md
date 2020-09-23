@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack Edge の技術仕様とコンプライアンス | Microsoft Docs
-description: Azure Stack Edge の技術仕様とコンプライアンスについて説明します
+title: Microsoft Azure Stack Edge Pro の技術仕様とコンプライアンス | Microsoft Docs
+description: Azure Stack Edge Pro の技術仕様とコンプライアンスについて説明します
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,20 +8,20 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 5a4ac2342ca36d83d1a579851c090c4713814c8d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 91aa386311452ae08ead2b8eac9005b2c730f3f3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652042"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883441"
 ---
-# <a name="azure-stack-edge-technical-specifications"></a>Azure Stack Edge の技術仕様
+# <a name="azure-stack-edge-pro-technical-specifications"></a>Azure Stack Edge Pro の技術仕様
 
-Microsoft Azure Stack Edge デバイスのハードウェア コンポーネントは、この記事で説明されている技術的仕様と規制標準に準拠します。 技術仕様では、電源装置 (PSU)、ストレージ容量、エンクロージャ、環境基準について説明しています。
+Microsoft Azure Stack Edge Pro デバイスのハードウェア コンポーネントは、この記事で説明されている技術的仕様と規制標準に準拠します。 技術仕様では、電源装置 (PSU)、ストレージ容量、エンクロージャ、環境基準について説明しています。
 
 ## <a name="compute-memory-specifications"></a>コンピューティング、メモリの仕様
 
-Azure Stack Edge デバイスには、コンピューティングとメモリについて次のような仕様があります。
+Azure Stack Edge Pro デバイスには、コンピューティングとメモリについて次のような仕様があります。
 
 | 仕様           | 値                  |
 |-------------------------|----------------------------|
@@ -30,7 +30,7 @@ Azure Stack Edge デバイスには、コンピューティングとメモリに
 
 ## <a name="fpga-specifications"></a>FPGA の仕様
 
-Machine Learning (ML) のシナリオが可能なすべての Azure Stack Edge デバイスには、Field Programmable Gate Array (FPGA) が含まれています。
+Machine Learning (ML) のシナリオが可能なすべての Azure Stack Edge Pro デバイスには、Field Programmable Gate Array (FPGA) が含まれています。
 
 | 仕様           | 値                  |
 |-------------------------|----------------------------|
@@ -38,7 +38,7 @@ Machine Learning (ML) のシナリオが可能なすべての Azure Stack Edge �
 
 ## <a name="power-supply-unit-specifications"></a>電源装置の仕様
 
-Azure Stack Edge デバイスは 100-240 V の電源装置 (PSU) 2 つと高性能ファンを備えています。 2 つの PSU によって電源が冗長構成になります。 1 台の PSU に障害が発生した場合、障害が発生したモジュールが交換されるまで、デバイスはもう一方の PSU で通常どおり動作し続けます。 次の表は PSU の技術仕様をまとめたものです。
+Azure Stack Edge Pro デバイスは 100-240 V の電源装置 (PSU) 2 つと高性能ファンを備えています。 2 つの PSU によって電源が冗長構成になります。 1 台の PSU に障害が発生した場合、障害が発生したモジュールが交換されるまで、デバイスはもう一方の PSU で通常どおり動作し続けます。 次の表は PSU の技術仕様をまとめたものです。
 
 | 仕様           | 750 W PSU                  |
 |-------------------------|----------------------------|
@@ -47,18 +47,18 @@ Azure Stack Edge デバイスは 100-240 V の電源装置 (PSU) 2 つと高性�
 | 選択電圧範囲 | オート レンジ: 100-240 V AC |
 | ホット プラグ可能           | はい                        |
 
-### <a name="azure-stack-edge-power-cord-specifications-by-region"></a>Azure Stack Edge 電源コードのリージョン別仕様
+### <a name="azure-stack-edge-pro-power-cord-specifications-by-region"></a>Azure Stack Edge Pro 電源コードのリージョン別仕様
 
-Azure Stack Edge デバイスに必要な電源コードは、Azure リージョンに応じて異なります。
-サポートされているすべての電源コードの技術的仕様については、[Azure Stack Edge 電源コードのリージョン別仕様](azure-stack-edge-technical-specifications-power-cords-regional.md)に関するページをご覧ください。
+Azure Stack Edge Pro デバイスに必要な電源コードは、Azure リージョンに応じて異なります。
+サポートされているすべての電源コードの技術的仕様については、[Azure Stack Edge Pro 電源コードのリージョン別仕様](azure-stack-edge-technical-specifications-power-cords-regional.md)に関するページをご覧ください。
 
 <!--## Power consumption statistics
 
-The following table lists the typical power consumption data (actual values may vary from the published) for the Azure Stack Edge device.-->
+The following table lists the typical power consumption data (actual values may vary from the published) for the Azure Stack Edge Pro device.-->
 
 ## <a name="network-interface-specifications"></a>ネットワーク インターフェイスの仕様
 
-Azure Stack Edge デバイスには、PORT1 - PORT6 という 6 つのネットワーク インターフェイスがあります。
+Azure Stack Edge Pro デバイスには、PORT1 - PORT6 という 6 つのネットワーク インターフェイスがあります。
 
 | 仕様           | 説明                 |
 |-------------------------|----------------------------|
@@ -66,7 +66,7 @@ Azure Stack Edge デバイスには、PORT1 - PORT6 という 6 つのネット�
 
 ## <a name="storage-specifications"></a>Storage の仕様
 
-Azure Stack Edge デバイスには、それぞれ 1.6 TB の容量を持つ 9 X 2.5 インチ NVMe SSD が搭載されています。 この SSD のうち、1 つがオペレーティング システム ディスクで、残りの 8 つがデータ ディスクです。 デバイスで利用できる容量の合計は約 12.5 TB となります。 次の表は、デバイスのストレージ容量の詳細です。
+Azure Stack Edge Pro デバイスには、それぞれ 1.6 TB の容量を持つ 9 X 2.5 インチ NVMe SSD が搭載されています。 この SSD のうち、1 つがオペレーティング システム ディスクで、残りの 8 つがデータ ディスクです。 デバイスで利用できる容量の合計は約 12.5 TB となります。 次の表は、デバイスのストレージ容量の詳細です。
 
 |     仕様                          |     値             |
 |--------------------------------------------|-----------------------|
@@ -146,4 +146,4 @@ Azure Stack Edge デバイスには、それぞれ 1.6 TB の容量を持つ 9 X
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Stack Edge を配置する](azure-stack-edge-deploy-prep.md)
+- [Azure Stack Edge Pro をデプロイする](azure-stack-edge-deploy-prep.md)

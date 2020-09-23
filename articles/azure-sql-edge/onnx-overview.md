@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Edge (プレビュー) での ONNX を使用した機械学習と AI
-description: Azure SQL Edge (プレビュー) の機械学習では、Open Neural Network Exchange (ONNX) 形式のモデルがサポートされています。 ONNX とは、さまざまな機械学習フレームワークとツールの間でモデルを交換する場合に使用できるオープン形式です。
+title: Azure SQL Edge での ONNX を使用した機械学習と AI
+description: Azure SQL Edge の機械学習では、Open Neural Network Exchange (ONNX) 形式のモデルがサポートされています。 ONNX とは、さまざまな機械学習フレームワークとツールの間でモデルを交換する場合に使用できるオープン形式です。
 keywords: SQL Edge をデプロイする
 services: sql-edge
 ms.service: sql-edge
@@ -9,16 +9,16 @@ ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 05/19/2020
-ms.openlocfilehash: 2db6c728ac35c6fc2f1fee1a602725371e448104
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47c040b0fad0211af413141a5b16b587d41d3b08
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368058"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907147"
 ---
-# <a name="machine-learning-and-ai-with-onnx-in-sql-edge-preview"></a>SQL Edge (プレビュー) での ONNX を使用した機械学習と AI
+# <a name="machine-learning-and-ai-with-onnx-in-sql-edge"></a>SQL Edge での ONNX を使用した機械学習と AI
 
-Azure SQL Edge (プレビュー) の機械学習では、[Open Neural Network Exchange (ONNX)](https://onnx.ai/) 形式のモデルがサポートされています。 ONNX とは、さまざまな[機械学習フレームワークとツール](https://onnx.ai/supported-tools)の間でモデルを交換する場合に使用できるオープン形式です。
+Azure SQL Edge の機械学習では、[Open Neural Network Exchange (ONNX)](https://onnx.ai/) 形式のモデルがサポートされています。 ONNX とは、さまざまな[機械学習フレームワークとツール](https://onnx.ai/supported-tools)の間でモデルを交換する場合に使用できるオープン形式です。
 
 ## <a name="overview"></a>概要
 
@@ -55,4 +55,4 @@ ONNX 形式でモデルを取得するには:
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure portal を使用した SQL Edge のデプロイ](deploy-portal.md)
-- [Azure SQL Edge (プレビュー) に ONNX モデルをデプロイする](deploy-onnx.md)
+- [Azure SQL Edge に ONNX モデルをデプロイする](deploy-onnx.md)

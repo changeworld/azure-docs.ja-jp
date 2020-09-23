@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
-ms.openlocfilehash: d3a9f88325f03d0252adf51c5bf221b131d7d33b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de9f4517d134b4a42603291110c6b19f69403412
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751715"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907039"
 ---
 # <a name="group-data-into-bins-module"></a>Group Data into Bins (データのビンへのグループ化) モジュール
 
-この記事では、Azure Machine Learning デザイナー (プレビュー) で Group Data into Bins (データのビンへのグループ化) モジュールを使用して、数値をグループ化したり、連続データの分布を変更したりする方法について説明します。
+この記事では、Azure Machine Learning デザイナーでデータをビンにグループ化するモジュールを使用して、数値をグループ化したり、連続データの分布を変更したりする方法について説明します。
 
 Group Data into Bins (データのビンへのグループ化) モジュールでは、データをビン分割するための複数のオプションがサポートされています。 ビンの境界を設定する方法と、値をビンに分配する方法はカスタマイズできます。たとえば、次のように操作できます。  
 
@@ -50,7 +50,7 @@ Group Data into Bins (データのビンへのグループ化) モジュール�
 
 ## <a name="how-to-configure-group-data-into-bins"></a>Group Data into Bins の構成方法
 
-1. デザイナー (プレビュー) でパイプラインに **Group Data into Bins (データのビンへのグループ化)** モジュールを追加します。 このモジュールは**データ変換**カテゴリ内にあります。
+1. デザイナーでパイプラインに**データをビンにグループ化する**モジュールを追加します。 このモジュールは**データ変換**カテゴリ内にあります。
 
 2. 数値データを含むデータセットをビンに接続します。 量子化は、数値データを含む列にのみ適用できます。 
 

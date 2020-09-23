@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell を使用して Azure Stack Edge GPU デバイスに VM をデプロイする
-description: Azure PowerShell を使用して Azure Stack Edge GPU デバイスに仮想マシン (VM) を作成し、それを管理する方法について説明します。
+title: Azure PowerShell を使用して Azure Stack Edge Pro GPU デバイスに VM をデプロイする
+description: Azure PowerShell を使用して Azure Stack Edge Pro GPU デバイスに仮想マシン (VM) を作成し、それを管理する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: d5210a3788f7bb054492c2d83c595c26fa3c4f42
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: aa492acdedc2d131d28c894031de2181e87a2f3e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265713"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890701"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-azure-powershell"></a>Azure PowerShell を使用して Azure Stack Edge GPU デバイスに VM をデプロイする
+# <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell"></a>Azure PowerShell を使用して Azure Stack Edge Pro GPU デバイスに VM をデプロイする
 
 <!--[!INCLUDE [azure-stack-edge-gateway-deploy-vm-overview](../../includes/azure-stack-edge-gateway-deploy-virtual-machine-overview.md)]-->
 
-このチュートリアルでは、Azure PowerShell を使用して、Azure Stack Edge デバイスに VM を作成し、それを管理する方法について説明します。
+このチュートリアルでは、Azure PowerShell を使用して、Azure Stack Edge Pro デバイスに VM を作成し、それを管理する方法について説明します。
 
 ## <a name="vm-deployment-workflow"></a>VM デプロイのワークフロー
 
@@ -128,7 +128,7 @@ New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resou
 ```
 
 > [!NOTE]
-> Azure Resource Manager を使用して作成できるのは、ローカル冗長ストレージ (Standard_LRS または Premium_LRS) などのローカル ストレージ アカウントのみです。 階層型ストレージ アカウントを作成する場合は、[Azure Stack Edge でのストレージ アカウントの追加と接続](azure-stack-edge-j-series-deploy-add-storage-accounts.md)に関するページの手順を参照してください。
+> Azure Resource Manager を使用して作成できるのは、ローカル冗長ストレージ (Standard_LRS または Premium_LRS) などのローカル ストレージ アカウントのみです。 階層型ストレージ アカウントを作成する場合は、[Azure Stack Edge Pro でのストレージ アカウントの追加と接続](azure-stack-edge-j-series-deploy-add-storage-accounts.md)に関するページの手順を参照してください。
 
 サンプル出力を次に示します。
 
@@ -193,7 +193,7 @@ key2 gd34TcaDzDgsY9JtDNMUgLDOItUU0Qur3CBo6Q...
 
 前の手順で作成したローカル ストレージ アカウントのページ BLOB に、使用するディスク イメージをコピーします。 [AzCopy](../storage/common/storage-use-azcopy-v10.md) などのツールを使用して、前の手順で作成したストレージ アカウントに VHD をアップロードできます。 
 
-AzCopy を使用する前に、Azure Stack Edge デバイスで使用している BLOB ストレージ REST API バージョンで使用できるように、[AzCopy が正しく構成されている](#configure-azcopy)ことを確認してください。
+AzCopy を使用する前に、Azure Stack Edge Pro デバイスで使用している BLOB ストレージ REST API バージョンで使用できるように、[AzCopy が正しく構成されている](#configure-azcopy)ことを確認してください。
 
 ```powershell
 AzCopy /Source:<sourceDirectoryForVHD> /Dest:<blobContainerUri> /DestKey:<storageAccountKey> /Y /S /V /NC:32  /BlobType:page /destType:blob 
@@ -220,8 +220,8 @@ AzCopy /Source:\\hcsfs\scratch\vm_vhds\linux\ /Dest:http://sa191113014333.blob.d
 $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import -SourceUri "Source URL for your VHD"
 ```
 サンプル出力を次に示します。 
-
-$DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import –SourceUri http://sa191113014333.blob.dbe-1dcmhq2.microsoftdatabox.com/vmimages/ubuntu13.vhd 
+<code>
+$DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import –SourceUri http://</code><code>sa191113014333.blob.dbe-1dcmhq2.microsoftdatabox.com/vmimages/ubuntu13.vhd</code> 
 
 ```powershell
 New-AzureRMDisk -ResourceGroupName <Resource group name> -DiskName <Disk name> -Disk $DiskConfig
@@ -408,33 +408,48 @@ New-AzureRmVM -ResourceGroupName <Resource Group Name> -Location DBELocal -VM $V
 
 ## <a name="connect-to-a-vm"></a>VM への接続
 
-VM の作成時に渡したプライベート IP を使用して VM に接続します。
+Windows と Linux のどちらの VM を作成したかによって、接続する手順が異なる場合があります。
 
-SSH セッションを開き、IP アドレスを使用して接続します。
+### <a name="connect-to-linux-vm"></a>Linux VM への接続
+
+Linux VM に接続するには、これらの手順に従います。
+
+[!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-linux.md)]
+
+### <a name="connect-to-windows-vm"></a>Windows VM への接続
+
+Windows VM に接続するには、これらの手順に従います。
+
+[!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-windows.md)]
+
+
+<!--Connect to the VM using the private IP that you passed during the VM creation.
+
+Open an SSH session to connect with the IP address.
 
 `ssh -l <username> <ip address>`
 
-メッセージが表示されたら、VM の作成時に使用したパスワードを指定します。
+When prompted, provide the password that you used when creating the VM.
 
-SSH キーを指定する必要がある場合は、次のコマンドを使用します。
+If you need to provide the SSH key, use this command.
 
 ssh -i c:/users/Administrator/.ssh/id_rsa Administrator@5.5.41.236
 
-VM の作成時にパブリック IP アドレスを使用した場合は、その IP を使用して VM に接続できます。 パブリック IP を取得するには、次のコマンドを使用します。 
+If you used a public IP address during VM creation, you can use that IP to connect to the VM. To get the public IP: 
 
 ```powershell
 $publicIp = Get-AzureRmPublicIpAddress -Name <Public IP> -ResourceGroupName <Resource group name>
 ```
-この場合のパブリック IP は、仮想ネットワーク インターフェイスの作成時に渡したプライベート IP と同じになります。
+The public IP in this case will be the same as the private IP that you passed during virtual network interface creation.-->
 
 
 ## <a name="manage-vm"></a>VM を管理する
 
-次のセクションでは、Azure Stack Edge デバイス上に作成する VM に関する一般的ないくつかの操作について説明します。
+次のセクションでは、Azure Stack Edge Pro デバイス上に作成する VM に関する一般的ないくつかの操作について説明します。
 
 ### <a name="list-vms-running-on-the-device"></a>デバイスで実行されている VM を一覧表示する
 
-Azure Stack Edge デバイスで実行されているすべての VM の一覧を取得するには、次のコマンドを実行します。
+Azure Stack Edge Pro デバイスで実行されているすべての VM の一覧を取得するには、次のコマンドを実行します。
 
 
 `Get-AzureRmVM -ResourceGroupName <String> -Name <String>`
@@ -487,7 +502,7 @@ Remove-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>
 
 VM のサイズにより、CPU、GPU、メモリなど、VM で利用できる計算リソースの量が決定されます。 仮想マシンは、ワークロードに適した VM サイズを使用して作成する必要があります。 すべてのコンピューターが同じハードウェア上で実行される場合でも、コンピューターのサイズによってディスク アクセスの制限が異なります。これは、VM 間のディスク アクセス全体を管理するのに役立ちます。 ワークロードが増えた場合は、既存の仮想マシンのサイズを変更することもできます。
 
-Azure Stack Edge デバイスでの作成については、次の Standard Dv2 シリーズ VM がサポートされています。
+Azure Stack Edge Pro デバイスでの作成については、次の Standard Dv2 シリーズ VM がサポートされています。
 
 ### <a name="dv2-series"></a>Dv2 シリーズ
 |サイズ     |vCPU     |メモリ (GiB) | 一時ストレージ (GiB)  | OS ディスクの最大スループット (IOPS) | 一時ストレージの最大スループット (IOPS) | データ ディスクの最大スループット (IOPS) | 最大 NIC 数 |
@@ -532,9 +547,9 @@ Azure Stack Edge デバイスでの作成については、次の Standard Dv2 �
 
 ## <a name="configure-azcopy"></a>AzCopy を構成する
 
-最新バージョンの AzCopy をインストールする場合は、Azure Stack Edge デバイスの BLOB ストレージ REST API バージョンと確実に一致するように AzCopy を構成する必要があります。
+最新バージョンの AzCopy をインストールする場合は、Azure Stack Edge Pro デバイスの BLOB ストレージ REST API バージョンと確実に一致するように AzCopy を構成する必要があります。
 
-Azure Stack Edge デバイスへのアクセスに使用するクライアントで、BLOB ストレージ REST API バージョンと一致するようにグローバル変数を設定します。
+Azure Stack Edge Pro デバイスへのアクセスに使用するクライアントで、BLOB ストレージ REST API バージョンと一致するようにグローバル変数を設定します。
 
 ### <a name="on-windows-client"></a>Windows クライアントの場合 
 

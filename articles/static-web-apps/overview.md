@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 884aa18b1a29b1c4f1bbf1159a5d48870529c72b
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 086feb3aa7c9a38756fded58538eb22e094a5960
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565708"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906801"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>Azure Static Web Apps のプレビューとは
 
@@ -24,7 +24,7 @@ Azure Static Web Apps のワークフローは、開発者の日常のワーク�
 
 Azure Static Web Apps リソースを作成すると、選択したブランチを監視する GitHub Actions ワークフローがアプリのソース コード リポジトリに設定されます。 コミットをプッシュするたび、または監視対象のブランチへの pull request を受け入れるたびに、GitHub Action ではアプリとその API が自動的にビルドされて Azure にデプロイされます。
 
-通常、静的 Web アプリは、Angular、React、Svelte、Vue などのライブラリとフレームワークを使用して構築されます。 これらのアプリには、アプリケーションを構成する HTML、CSS、JavaScript、およびイメージ アセットが含まれます。 従来の Web サーバーでは、これらのアセットは、必要な API エンドポイントと共に 1 台のサーバーから提供されます。
+通常、静的 Web アプリは、Angular、React、Svelte、Vue、Blazor などのライブラリとフレームワークを使用して構築されます。 これらのアプリには、アプリケーションを構成する HTML、CSS、JavaScript、およびイメージ アセットが含まれます。 従来の Web サーバーでは、これらのアセットは、必要な API エンドポイントと共に 1 台のサーバーから提供されます。
 
 Static Web Apps では、静的アセットは従来の Web サーバーから分離され、世界各地の地理的に分散したポイントから提供されます。 この分散により、ファイルがエンド ユーザーに物理的に近づくため、ファイルの提供が大幅に高速になります。 さらに、API エンドポイントは[サーバーレス アーキテクチャ](../azure-functions/functions-overview.md)を使用してホストされます。これにより、完全なバックエンド サーバーが不要になります。
 
@@ -44,7 +44,7 @@ Static Web Apps では、静的アセットは従来の Web サーバーから�
 
 ## <a name="what-you-can-do-with-static-web-apps"></a>Static Web Apps でできること
 
-- [Azure Functions](apis.md) バックエンドと共に [Angular](getting-started.md?tabs=angular)、[React](getting-started.md?tabs=react)、[Svelte](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api/)、[Vue](getting-started.md?tabs=react) などのフレームワークとライブラリを使用した**最新の JavaScript アプリケーションの構築**。
+- [Azure Functions](apis.md) バックエンドと共に [Angular](getting-started.md?tabs=angular)、[React](getting-started.md?tabs=react)、[Svelte](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api/)、[Vue](getting-started.md?tabs=react) などの JavaScript フレームワークとライブラリを使用した**最新の Web アプリケーションの構築**、または [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) を使用した WebAssembly アプリケーションの作成。
 - [Gatsby](publish-gatsby.md)、[Hugo](publish-hugo.md)、[VuePress](publish-vuepress.md) などのフレームワークを使用した**静的サイトの発行**。
 - [Next.js](deploy-nextjs.md) や [Nuxt.js](deploy-nuxtjs.md) などのフレームワークを使用した **Web アプリケーションのデプロイ**。
 

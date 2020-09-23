@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU で帯域幅のスケジュールを管理する | Microsoft Docs
-description: Azure portal を使用して Azure Stack Edge GPU の帯域幅のスケジュールを管理する方法について説明します。
+title: Azure Stack Edge Pro GPU で帯域幅のスケジュールを管理する | Microsoft Docs
+description: Azure portal を使用して Azure Stack Edge Pro GPU の帯域幅のスケジュールを管理する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,20 +8,20 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 92b9edb4f694a5ff7d15b06be41cc20db3b64b97
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: faf78e9f7efb83c5f28538e18ed081378d120848
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265696"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890669"
 ---
-# <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-gpu"></a>Azure portal を使用して Azure Stack Edge GPU の帯域幅のスケジュールを管理する 
+# <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-pro-gpu"></a>Azure portal を使用して Azure Stack Edge Pro GPU の帯域幅のスケジュールを管理する 
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-この記事では、Azure Stack Edge の帯域幅のスケジュールを管理する方法について説明します。 帯域幅のスケジュールを使用すると、複数の時刻スケジュールにわたって、ネットワーク帯域幅の使用量を構成することができます。 これらのスケジュールは、デバイスとクラウド間のアップロード操作とダウンロード操作に適用することができます。
+この記事では、Azure Stack Edge Pro の帯域幅のスケジュールを管理する方法について説明します。 帯域幅のスケジュールを使用すると、複数の時刻スケジュールにわたって、ネットワーク帯域幅の使用量を構成することができます。 これらのスケジュールは、デバイスとクラウド間のアップロード操作とダウンロード操作に適用することができます。
 
-Azure portal を使用して Azure Stack Edge の帯域幅スケジュールを追加、変更、または削除することができます。
+Azure portal を使用して Azure Stack Edge Pro の帯域幅スケジュールを追加、変更、または削除することができます。
 
 この記事では、次のことについて説明します。
 
@@ -73,7 +73,7 @@ Azure portal を使用して Azure Stack Edge の帯域幅スケジュールを�
 
 ## <a name="delete-a-schedule"></a>スケジュールの削除
 
-Azure Stack Edge デバイスに関連付けられている帯域幅のスケジュールを削除するには、次の手順を実行します。
+Azure Stack Edge Pro デバイスに関連付けられている帯域幅のスケジュールを削除するには、次の手順を実行します。
 
 1. Azure portal で Azure Stack Edge リソースに移動し、 **[帯域幅]** に移動します。  
 

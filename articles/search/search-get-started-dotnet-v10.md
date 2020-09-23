@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5a9cc1ebbe8cfea2548f61ee1d88180ed39a75eb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ce676c8966f67aeb233b2b9daf3f8f1c57327e6a
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002438"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462090"
 ---
 # <a name="quickstart-create-a-search-index-using-the-microsoftazuresearch-v10-client-library"></a>クイック スタート:Microsoft.Azure.Search v10 クライアント ライブラリを使用して検索インデックスを作成する
 
@@ -27,7 +27,7 @@ ms.locfileid: "89002438"
 
 Visual Studio と [Microsoft.Azure.Search クライアント ライブラリ](/dotnet/api/overview/azure/search/client10?view=azure-dotnet)を使用して Azure Cognitive Search インデックスの作成、読み込み、およびクエリの実行を行う .NET Core コンソール アプリケーションを C# で作成します。 
 
-この記事では、アプリケーションを作成する方法について説明します。 [完全なアプリケーションをダウンロードして実行する](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart-v10)という方法もあります。
+この記事では、アプリケーションを作成する方法について説明します。 [完全なアプリケーションをダウンロードして実行する](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v10)という方法もあります。
 
 > [!NOTE]
 > この記事のデモ コードでは、わかりやすくするため、Azure Cognitive Search バージョン 10 の .NET SDK の同期メソッドを使用します。 ただし、運用環境シナリオの実際のアプリケーションでは、スケーラビリティと応答性を維持するため、非同期メソッドを使用することをお勧めします。 たとえば、`Create` と `Delete` の代わりに、`CreateAsync` および `DeleteAsync` を使用できます。
@@ -107,9 +107,9 @@ Visual Studio と [Microsoft.Azure.Search クライアント ライブラリ](/d
 
 1. 2 つの空のクラス定義をご自分のプロジェクトに追加します。Address.Methods.cs、Hotel.Methods.cs
 
-1. Address.Methods.cs で、既定のコンテンツを次のコードの[行 1 から 25](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart-v10/AzureSearchQuickstart/Address.Methods.cs#L1-L25) で上書きします。
+1. Address.Methods.cs で、既定のコンテンツを次のコードの[行 1 から 25](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart/v10/AzureSearchQuickstart/Address.Methods.cs#L1-L25) で上書きします。
 
-1. Hotel.Methods.cs に、[行 1 から 68](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart-v10/AzureSearchQuickstart/Hotel.Methods.cs#L1-L68) をコピーします。
+1. Hotel.Methods.cs に、[行 1 から 68](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart/v10/AzureSearchQuickstart/Hotel.Methods.cs#L1-L68) をコピーします。
 
 ## <a name="1---create-index"></a>1 - インデックスの作成
 

@@ -1,14 +1,9 @@
 - name: Immersive Reader のドキュメント
   href: index.yml
-- name: 概要
-  items:
-    - name: Immersive Reader とは
-      href: Overview.md
-- name: クイックスタート
-  expanded: true
-  items:
-    - name: クライアント ライブラリの使用
-      href: ./quickstarts/client-libraries.md
+- name: Immersive Reader とは
+  href: Overview.md
+- name: クイック スタート
+  href: ./quickstarts/client-libraries.md
 - name: チュートリアル
   items:
     - name: イマーシブ リーダーの起動 (Android)
@@ -27,9 +22,9 @@
       href: how-to/set-cookie-policy.md
     - name: 数式を表示する
       href: how-to/display-math.md
-    - name: イマーシブ リーダーを起動して HTML コンテンツを表示する
+    - name: Immersive Reader を起動して HTML コンテンツを表示する
       href: how-to-launch-with-html.md
-    - name: イマーシブ リーダーのボタンをカスタマイズする
+    - name: Immersive Reader のボタンをカスタマイズする
       href: how-to-customize-launch-button.md
     - name: 認証トークンをキャッシュする
       href: how-to-cache-token.md
