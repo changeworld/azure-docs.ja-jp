@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 619bc7cec2f8a79a656cf3a7ad1f86d1e5786abb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 1792535fab79ed20bdf77f96b4fc39f13b0c7bbb
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322994"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016004"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>リファレンス - 通信プロトコルの選択
 
@@ -54,6 +54,8 @@ IoT Hub によって、デバイスはデバイス側の通信に次のプロト
 
 > [!WARNING]
 > HTTPS を利用する場合、各デバイスがクラウドからデバイスへのメッセージを確認する間隔はせいぜい 25 分に 1 回にしてください。 開発中は、必要に応じて、各デバイスでもっと頻繁にポーリングできます。
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-support-note](../../includes/iot-hub-include-x509-ca-signed-support-note.md)]
 
 ## <a name="port-numbers"></a>ポート番号
 

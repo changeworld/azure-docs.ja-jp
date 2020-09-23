@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 63bc46f679b71f6965cda8f9db800a125683c093
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 605df0f26600f962bda7a0a0def800a91d74b022
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298349"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562980"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Azure Digital Twins インスタンスと認証を設定する (スクリプト化)
 
@@ -38,7 +38,7 @@ ms.locfileid: "89298349"
 
 このデプロイ スクリプトを Cloud Shell で実行する手順を次に示します。
 1. ブラウザーで [[Azure Cloud Shell]](https://shell.azure.com/) ウィンドウに移動します。 次のコマンドを使用してサインインします。
-    ```azurecli-interactive
+    ```azurecli
     az login
     ```
     CLI で既定のブラウザーを開くことができる場合、開いたブラウザに Azure サインイン ページが読み込まれます。 それ以外の場合は、 *https://aka.ms/devicelogin* でブラウザー ページを開き、ターミナルに表示されている認証コードを入力します。

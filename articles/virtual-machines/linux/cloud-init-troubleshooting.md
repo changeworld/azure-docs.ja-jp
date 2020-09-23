@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 81e138e7149327c7b792df58180419b93417d263
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6412036e3f16e2efb3bbf6669f6a31e9dc6e3584
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510975"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434641"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>cloud-init を使用した VM プロビジョニングのトラブルシューティング
 
@@ -56,7 +56,7 @@ VM がプロビジョニングできないとき、Azure では 20 分間 "作�
 
 VM が実行されているときは、プロビジョニングが失敗した理由を理解するために、VM のログが必要になります。  VM のプロビジョニングが失敗した理由を理解するには、VM を停止しないでください。 VM を実行させたままにします。 ログを収集するために、障害が発生した VM を実行中の状態のままにしておく必要があります。 ログを収集するには、次のいずれかの方法を使用します。
 
-- [シリアル コンソール](./serial-console-grub-single-user-mode.md)
+- [シリアル コンソール](../troubleshooting/serial-console-grub-single-user-mode.md)
 
 - [ブート診断を有効化](./tutorial-monitor.md#enable-boot-diagnostics)してから、VM を作成し、ブート中に[表示](./tutorial-monitor.md#view-boot-diagnostics)します。
 
@@ -108,7 +108,7 @@ Stderr: mount: unknown filesystem type 'udf'
 2019-10-10 04:51:24,010 - util.py[DEBUG]: Running command ['mount', '-o', 'ro,sync', '-t', 'auto', u'/dev/sr0', '/run/cloud-init/tmp/tmpXXXXX'] with allowed return codes [0] (shell=False, capture=True)
 ```
 
-[シリアル コンソール](./serial-console-grub-single-user-mode.md)を利用できる場合は、cloud-init が実行しようとしたコマンドを再実行してみてください。
+[シリアル コンソール](../troubleshooting/serial-console-grub-single-user-mode.md)を利用できる場合は、cloud-init が実行しようとしたコマンドを再実行してみてください。
 
 `/var/log/cloud-init.log` のログは、/etc/cloud/cloud.cfg.d/05_logging.cfg 内で再構成することもできます。 cloud-init のログについて詳しくは、[cloud-init のドキュメント](https://cloudinit.readthedocs.io/en/latest/topics/logging.html)をご覧ください 
 

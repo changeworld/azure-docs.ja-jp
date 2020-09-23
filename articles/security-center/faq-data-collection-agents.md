@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0bcf81e0c762dd2a8e63ae242fec77d30f5b2c3d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 78668eaadca872d7c25ab909fad5b9838bbc01d3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011856"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894809"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>FAQ - データ収集、エージェント、およびワークスペースに関する質問
 
@@ -29,9 +29,9 @@ Security Center では、セキュリティの脆弱性と脅威を監視する�
 
 いいえ。 ノードごとの Azure Monitor ログの課金が構成されている場合でも、Security Center で作成されるワークスペースに Azure Monitor ログの料金はかかりません。 Security Center の課金は、常に Security Center セキュリティ ポリシーとワークスペースにインストールされているソリューションに基づいています。
 
-- **Free レベル** - Security Center によって既定のワークスペースに 'SecurityCenterFree' ソリューションが有効化されます。 Free レベルの料金はかかりません。
+- **Azure Defender オフ** – Security Center によって、既定のワークスペースで 'SecurityCenterFree' ソリューションが有効化されます。 Azure Defender がオフになっている場合は課金されません。
 
-- **Standard レベル** - Security Center によって既定のワークスペースに 'Security' ソリューションが有効化されます。
+- **Azure Defender オン** – Security Center によって、既定のワークスペースで 'Security' ソリューションが有効化されます。
 
 価格の詳細については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」を参照してください。
 
@@ -164,7 +164,7 @@ Microsoft Monitoring Extension を削除すると、Security Center は VM か�
 
 セキュリティ ポリシーでサブスクリプションの自動プロビジョニングを無効にすることはできますが、これは推奨されません。 自動プロビジョニングを無効にすると、Security Center の推奨事項とアラートが制限されます。 自動プロビジョニングを無効にするには、次の手順に従います。
 
-1. Standard レベルのサブスクリプションを構成する場合、そのサブスクリプションのセキュリティ ポリシーを開き、 **[Free]** レベルを選択します。
+1. サブスクリプションで Azure Defender が有効になっている場合は、そのサブスクリプションのセキュリティ ポリシーを開き、 **[Azure Defender off]\(Azure Defender オフ\)** を選択します。
 
    ![Pricing tier][1]
 

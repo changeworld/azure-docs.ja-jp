@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 233eb06714dc8ac614cceef157f87d175c3f455b
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: f8be403a9aa095a24ec4802aad0364b535ed7c5a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462464"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902907"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning とは
 
@@ -41,7 +41,7 @@ Azure Machine Learning は、従来の ML からディープ ラーニング、�
 ## <a name="machine-learning-tools-to-fit-each-task"></a>各タスクに適合する機械学習ツール 
 
 Azure Machine Learning には、次のような、開発者やデータ科学者が機械学習ワークフロー用に必要とするすべてのツールが用意されています。
-+ [Azure Machine Learning デザイナー](tutorial-designer-automobile-price-train-score.md) (プレビュー): ドラッグアンドドロップ モジュールを使用して実験を構築し、パイプラインをデプロイします。
++ [Azure Machine Learning デザイナー](tutorial-designer-automobile-price-train-score.md): ドラッグアンドドロップ モジュールを使用して実験を構築し、パイプラインをデプロイします。
 
 + Jupyter Notebook: [サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks)を使用するか、独自のノートブックを作成して、<a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK for Python</a> のサンプルを機械学習に活用します。 
 
@@ -71,7 +71,7 @@ SDK を使用して、[モデルのトレーニングと調整を自動化](tuto
 
 [Azure Machine Learning Studio](https://studio.azureml.net) は Azure Machine Learning 内の Web ポータルであり、モデルのトレーニング、デプロイ、アセット管理を少量のコードで、またはコードを一切記述することなく行うことができます。 Studio は Azure Machine Learning SDK と統合され、シームレスなエクスペリエンスが実現されています。 詳細については、「[Azure Machine Learning Studio とは](overview-what-is-machine-learning-studio.md)」を参照してください。
 
-+ **Azure Machine Learning デザイナー (プレビュー)**
++ **Azure Machine Learning デザイナー**
 
   [デザイナー](concept-designer.md)を使用すると、コードを書かなくても、機械学習モデルのトレーニングとデプロイを行うことができます。 まずは、[デザイナーのチュートリアル](tutorial-designer-automobile-price-train-score.md)をお試しください。 
 
@@ -92,7 +92,7 @@ SDK を使用して、[モデルのトレーニングと調整を自動化](tuto
 ## <a name="mlops-deploy--lifecycle-management"></a>MLOps:デプロイとライフサイクル管理
 適切なモデルがあれば、Web サービス、IoT デバイス、または Power BI で簡単に使用できます。 詳細については、[デプロイする方法と場所](how-to-deploy-and-where.md)に関する記事を参照してください。
 
-デプロイされたモデルは、[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py)、[Azure Machine Learning Studio](https://ml.azure.com)、または [Machine Learning CLI](reference-azure-machine-learning-cli.md) を使用して管理できます。
+デプロイされたモデルは、[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true)、[Azure Machine Learning Studio](https://ml.azure.com)、または [Machine Learning CLI](reference-azure-machine-learning-cli.md) を使用して管理できます。
 
 これらのモデルを使用して、[リアルタイム](how-to-consume-web-service.md)で予測を返したり、データが大量の場合は[非同期で](how-to-use-parallel-run-step.md)予測を返したりすることができます。
 
@@ -115,7 +115,7 @@ Azure Machine Learning は、Azure プラットフォーム上の他のサービ
 + __Azure Event Grid__。 詳細については、[Azure Machine Learning イベントを使用する方法](concept-event-grid-integration.md)に関するページを参照してください。
 + __Azure Monitor__。 詳細については、「[Azure Machine Learning の監視](monitor-azure-machine-learning.md)」を参照してください。
 + データ ストア (__Azure Storage アカウント__、__Azure Data Lake Storage__、__Azure SQL Database__、__Azure Database for PostgreSQL__、__Azure Open Datasets__ など)。 詳細については、「[Azure ストレージ サービスのデータにアクセスする](how-to-access-data.md)」および「[Azure Open Datasets を使用してデータセットを作成する](how-to-create-register-datasets.md)」を参照してください。
-+ __Azure Virtual Networks__。 詳細については、[仮想ネットワークでの実験と推論の安全な実行](how-to-enable-virtual-network.md)に関するページを参照してください。
++ __Azure Virtual Networks__。 詳細については、「[仮想ネットワークの分離とプライバシーの概要](how-to-network-security-overview.md)」を参照してください。
 + __Azure Pipelines__。 詳細については、「[機械学習モデルのトレーニングとデプロイ](/azure/devops/pipelines/targets/azure-machine-learning)」を参照してください。
 + __Git リポジトリのログ__。 詳細については、「[Git 統合](concept-train-model-git-integration.md)」を参照してください。
 + __MLFlow__。 詳細については、[MLflow を使用してメトリックを追跡し、モデルをデプロイする方法](how-to-use-mlflow.md)に関するページを参照してください。 
@@ -123,16 +123,7 @@ Azure Machine Learning は、Azure プラットフォーム上の他のサービ
 
 ### <a name="secure-communications"></a>セキュリティで保護された通信
 
-Azure Storage アカウントやコンピューティング先などのリソースは、仮想ネットワーク内で安全に使用してモデルをトレーニングし、推論を実行することができます。 詳細については、[仮想ネットワークでの実験と推論の安全な実行](how-to-enable-virtual-network.md)に関するページを参照してください。
-
-## <a name="basic--enterprise-editions"></a><a name="sku"></a>Basic Edition と Enterprise Edition
-
-Azure Machine Learning には、機械学習のニーズに合わせて調整された 2 つのエディションがあります。
-+ **Basic**:コードファースト エクスペリエンスによるクラウド規模のオープンソース開発に最適です。
-
-+ **エンタープライズ**:Basic の全機能に加え、Web インターフェイス (Studio) およびすべてのスキル レベルに対応する安全で包括的な ML ライフサイクル管理が利用できます。
-
-これらのエディションと提供される機能の詳細については、["Azure Machine Learning のエディション" に関する記事](concept-editions.md)を参照してください。
+Azure Storage アカウントやコンピューティング先などのリソースは、仮想ネットワーク内で安全に使用してモデルをトレーニングし、推論を実行することができます。 詳細については、「[仮想ネットワークの分離とプライバシーの概要](how-to-network-security-overview.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

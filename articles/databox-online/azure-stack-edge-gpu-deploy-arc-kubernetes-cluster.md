@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU デバイス上の Kubernetes で Azure Arc を有効にする | Microsoft Docs
-description: Azure Stack Edge GPU デバイス上の既存の Kubernetes クラスターで Azure Arc を有効にする方法について説明します。
+title: Azure Stack Edge Pro GPU デバイス上の Kubernetes で Azure Arc を有効にする | Microsoft Docs
+description: Azure Stack Edge Pro GPU デバイス上の既存の Kubernetes クラスターで Azure Arc を有効にする方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,27 +8,27 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: alkohli
-ms.openlocfilehash: 3405f28d5f306e8370bae72eb5f3f3c406235c3d
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 423345739ca5c078fbff4f267e1e8a118abf107c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322026"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903192"
 ---
-# <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU デバイス上の Kubernetes クラスターで Azure Arc を有効にする
+# <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイス上の Kubernetes クラスターで Azure Arc を有効にする
 
-この記事では、Azure Stack Edge デバイス上の既存の Kubernetes クラスターで Azure Arc を有効にする方法について説明します。 
+この記事では、Azure Stack Edge Pro デバイス上の既存の Kubernetes クラスターで Azure Arc を有効にする方法について説明します。 
 
-この手順は、[Azure Stack Edge デバイス上の Kubernetes ワークロード](azure-stack-edge-gpu-kubernetes-workload-management.md)に関する記事を確認し、[Azure Arc 対応 Kubernetes (プレビュー)](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview) の概念を理解しているユーザーを対象としています。
+この手順は、[Azure Stack Edge Pro デバイス上の Kubernetes ワークロード](azure-stack-edge-gpu-kubernetes-workload-management.md)に関する記事を確認し、[Azure Arc 対応 Kubernetes (プレビュー)](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview) の概念を理解しているユーザーを対象としています。
 
 
 ## <a name="prerequisites"></a>前提条件
 
-Kubernetes クラスターで Azure Arc を有効にする前に、Azure Stack Edge デバイスと、デバイスへのアクセスに使用するクライアントで次の前提条件が満たされていることを確認してください。
+Kubernetes クラスターで Azure Arc を有効にする前に、Azure Stack Edge Pro デバイスと、デバイスへのアクセスに使用するクライアントで次の前提条件が満たされていることを確認してください。
 
 ### <a name="for-device"></a>デバイスでは
 
-1. 1 ノードの Azure Stack Edge デバイスに対するサインイン資格情報がある。
+1. 1 ノードの Azure Stack Edge Pro デバイスに対するサインイン資格情報がある。
     1. デバイスがアクティブ化されている。 [デバイスのアクティブ化](azure-stack-edge-gpu-deploy-activate.md)に関する記事を参照してください。
     1. デバイスに、Azure portal を使用して構成されたコンピューティング ロールがあり、Kubernetes クラスターがある。 [コンピューティングの構成](azure-stack-edge-gpu-deploy-configure-compute.md)に関する記事を参照してください。
 
@@ -37,19 +37,19 @@ Kubernetes クラスターで Azure Arc を有効にする前に、Azure Stack E
 
 ### <a name="for-client-accessing-the-device"></a>デバイスにアクセスするクライアントでは
 
-1. Azure Stack Edge デバイスにアクセスするために使用する Windows クライアント システムがある。
+1. Azure Stack Edge Pro デバイスへのアクセスに使用される Windows クライアント システムがある。
   
     - クライアントでは、Windows PowerShell 5.0 以降が実行されている。 Windows PowerShell の最新バージョンをダウンロードするには、「[Windows PowerShell のインストール](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)」を参照してください。
     
     - [オペレーティング システムがサポートされている](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)他のクライアントを使用することもできます。 この記事では、Windows クライアントを使用する場合の手順について説明します。 
     
-1. [Azure Stack Edge デバイス上の Kubernetes クラスターへのアクセス](azure-stack-edge-gpu-create-kubernetes-cluster.md)に関する記事で説明されている手順を完了している。 完了した内容:
+1. [Azure Stack Edge Pro デバイス上の Kubernetes クラスターへのアクセス](azure-stack-edge-gpu-create-kubernetes-cluster.md)に関する記事で説明されている手順を完了している。 完了した内容:
     
     - クライアントに `kubectl` がインストールされている  <!--and saved the `kubeconfig` file with the user configuration to C:\\Users\\&lt;username&gt;\\.kube. -->
     
-    - `kubectl` クライアントのバージョンと、Azure Stack Edge デバイスで実行されている Kubernetes マスターのバージョンの差が 1 未満であることを確認する。 
+    - `kubectl` クライアントのバージョンと、Azure Stack Edge Pro デバイスで実行されている Kubernetes マスターのバージョンの差が 1 未満であることを確認する。 
       - クライアントで実行されている kubectl のバージョンを確認するには、`kubectl version` を使用します。 完全なバージョン番号をメモしておきます。
-      - Azure Stack Edge デバイスのローカル UI で、 **[ソフトウェア更新プログラム]** に移動し、Kubernetes サーバーのバージョン番号をメモします。 
+      - Azure Stack Edge Pro デバイスのローカル UI で、 **[ソフトウェア更新プログラム]** に移動し、Kubernetes サーバーのバージョン番号をメモします。 
     
         ![Kubernetes サーバーのバージョン番号を確認する](media/azure-stack-edge-gpu-connect-powershell-interface/verify-kubernetes-version-1.png)      
       
@@ -142,7 +142,7 @@ Azure Arc 管理用に Kubernetes クラスターを構成するには、次の�
 
     `Set-HcsKubernetesAzureArcAgent -SubscriptionId "<Your Azure Subscription Id>" -ResourceGroupName "<Resource Group Name>" -ResourceName "<Azure Arc resource name (shouldn't exist already)>" -Location "<Region associated with resource group>" -TenantId "<Tenant Id of service principal>" -ClientId "<App id of service principal>" -ClientSecret "<Password of service principal>"`
 
-    Azure Stack Edge デバイスに Azure Arc を展開するには、[Azure Arc でサポートされているリージョン](../azure-arc/kubernetes/overview.md#supported-regions)を使用していることを確認してください。現在、Azure Arc はプレビュー段階です。 `az account list-locations` コマンドを使用して、コマンドレットで渡すリージョンの正確な名前を確認することもできます。
+    Azure Stack Edge Pro デバイスに Azure Arc を展開するには、[Azure Arc でサポートされているリージョン](../azure-arc/kubernetes/overview.md#supported-regions)を使用していることを確認してください。現在、Azure Arc はプレビュー段階です。 `az account list-locations` コマンドを使用して、コマンドレットで渡すリージョンの正確な名前を確認することもできます。
     
     たとえば次のようになります。
    
@@ -224,4 +224,4 @@ Azure Arc 管理を削除するには、次の手順を実行します。
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Arc デプロイを実行する方法については、[GitOps を介し、Redis を使用してステートレス PHP ゲストブック アプリケーションを Azure Stack Edge デバイスに展開する](azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md)方法に関するページを参照してください。
+Azure Arc デプロイを実行する方法については、[GitOps を介し、Redis を使用してステートレス PHP ゲストブック アプリケーションを Azure Stack Edge Pro デバイスに展開する](azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md)方法に関するページを参照してください。

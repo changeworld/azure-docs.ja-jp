@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 03/04/2020
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: d917bc1d52cc2a43e87affcc9c5e3c2ab533da07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17a9339fff27a0fbd7fa389933d21ef85e29248b
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84984881"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420780"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>ネイティブ Azure 証明書認証の P2S 構成のための VPN クライアント構成ファイルを作成およびインストールする
 
@@ -135,7 +135,7 @@ PowerShell または Azure Portal を使用してクライアント構成ファ�
 
 次の手順は、Ubuntu 18.0.4 上で作成されました。 Ubuntu 16.0.10 は、strongSwan GUI をサポートしていません。 Ubuntu 16.0.10 を使う場合は、[コマンド ライン](#linuxinstallcli)を使う必要があります。 Linux および strongSwan のバージョンによっては、次に示す例が実際に表示される画面と一致しない可能性があります。
 
-1. **[ターミナル]** を起動し、例のコマンドを実行して **strongSwan** とその Network Manager をインストールします。
+1. **[端末]** を起動し、例のコマンドを実行して **strongSwan** とその Network Manager をインストールします。
 
    ```
    sudo apt install network-manager-strongswan

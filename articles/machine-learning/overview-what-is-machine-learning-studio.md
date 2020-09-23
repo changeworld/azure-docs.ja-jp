@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 4f6252ffbb880e347a89594cb267fb99d576dc7a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 40a4fbd956b12d469247cb178007d0259cbeac75
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89039300"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902919"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Azure Machine Learning スタジオとは
 
@@ -34,13 +34,13 @@ ms.locfileid: "89039300"
 
   スタジオに直接統合されているマネージド [Jupyter Notebook サーバー](how-to-run-jupyter-notebooks.md)で独自のコードを記述して実行します。 
 
-+ **Azure Machine Learning デザイナー (プレビュー)**
++ **Azure Machine Learning デザイナー**
 
   デザイナーを使用すると、コードを書かなくても、機械学習モデルのトレーニングとデプロイを行うことができます。 ML パイプラインを作成するには、データセットとモジュールをドラッグ アンド ドロップします。 [デザイナーのチュートリアル](tutorial-designer-automobile-price-train-score.md)をお試しください。
 
     ![Azure Machine Learning デザイナーの例](media/concept-designer/designer-drag-and-drop.gif)
 
-+ **自動化された機械学習 UI (プレビュー)**
++ **自動化された機械学習の UI**
 
   使いやすいインターフェイスで、[自動化された ML 実験](tutorial-first-experiment-automated-ml.md)を作成する方法を学ぶことができます。 
 
@@ -82,7 +82,7 @@ ms.locfileid: "89039300"
 
 | 特徴量 | ML Studio (クラシック) | Azure Machine Learning |
 |---| --- | --- |
-| ドラッグ アンド ドロップ インターフェイス | クラシック エクスペリエンス | 更新されたエクスペリエンス - [Azure Machine Learning デザイナー (プレビュー)](concept-designer.md) <br/>(Enterprise ワークスペースが必要) | 
+| ドラッグ アンド ドロップ インターフェイス | クラシック エクスペリエンス | 更新されたエクスペリエンス - [Azure Machine Learning デザイナー](concept-designer.md)| 
 | コード SDK | サポートされていない | [Azure Machine Learning Python](https://docs.microsoft.com/python/api/overview/azure/ml/) および [R](tutorial-1st-r-experiment.md) SDK との完全な統合 |
 | 実験 | スケーラブル (10 GB トレーニング データの上限) | コンピューティング先に合わせてスケーリング |
 | コンピューティング ターゲットのトレーニング | 独自のコンピューティング ターゲット、CPU のサポートのみ | カスタマイズできる広範な[トレーニング コンピューティング先](concept-compute-target.md#train)。 GPU と CPU のサポートが含まれます | 

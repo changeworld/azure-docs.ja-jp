@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: 95039573c607f516755f08f1ebad8b968416ec8b
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 98b1842f81703041f419850be17c0c05a24b7c6b
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631463"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440900"
 ---
 # <a name="using-openfaas-on-aks"></a>AKS での OpenFaaS の使用
 
@@ -91,7 +91,8 @@ alertmanager-config  1     20s
 NOTES:
 To verify that openfaas has started, run:
 
-  kubectl --namespace=openfaas get deployments -l "release=openfaas, app=openfaas"
+```console
+kubectl --namespace=openfaas get deployments -l "release=openfaas, app=openfaas"
 ```
 
 OpenFaaS ゲートウェイにアクセスするためのパブリック IP アドレスが作成されます。 この IP アドレスを取得するには、[kubectl get service][kubectl-get] コマンドを使います。 IP アドレスがサービスに割り当てられるまでに、少し時間がかかる場合があります。

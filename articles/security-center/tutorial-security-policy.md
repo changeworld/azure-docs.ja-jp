@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 94a0c0af5071397ee4deb859f8f58f2ed1c73a77
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: db1b73e36a4917f1a10754424b472284094b563e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277665"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894577"
 ---
 # <a name="working-with-security-policies"></a>セキュリティ ポリシーの操作
 
@@ -33,7 +33,7 @@ Azure Security Center では、選択したポリシーに基づいてセキュ�
 
 Security Center では、セキュリティ ポリシーを操作するための次のオプションが提供されます。
 
-* **組み込みの既定のポリシーの表示と編集** - Security Center を有効にすると、"ASC の既定値" という名前の組み込みイニシアチブが、Security Center のすべての登録済みサブスクリプション (free または standard 価格レベル) に自動的に割り当てられます。 このイニシアティブをカスタマイズするために、イニシアティブ内の個々のポリシーを有効または無効にすることができます。 [組み込みのセキュリティ ポリシー](security-center-policy-definitions.md)の一覧を参照して、すぐに使用できるオプションを確認してください。
+* **組み込みの既定のポリシーの表示と編集** - Security Center を有効にすると、"ASC の既定値" という名前の組み込みイニシアチブが、Security Center のすべての登録済みサブスクリプションに自動的に割り当てられます。 このイニシアティブをカスタマイズするために、イニシアティブ内の個々のポリシーを有効または無効にすることができます。 [組み込みのセキュリティ ポリシー](security-center-policy-definitions.md)の一覧を参照して、すぐに使用できるオプションを確認してください。
 
 * **独自のカスタム ポリシーの追加** - サブスクリプションに適用されているセキュリティ イニシアティブをカスタマイズする場合は、Security Center で行うことができます。 作成したポリシーにマシンが従っていない場合は、推奨事項が提供されます。 カスタム ポリシーを作成して割り当てる手順については、[カスタム セキュリティ ポリシーの使用](custom-security-policies.md)に関する記事をご覧ください。
 

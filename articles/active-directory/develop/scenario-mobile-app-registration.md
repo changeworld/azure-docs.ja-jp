@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 93dcfad34e5881cda52a69ceb99d52d9a905befb
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: e0f1cc446b6b957b17153dd538922d2b9acd891f
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047675"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442736"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>Web API を呼び出すモバイル アプリを登録する
 
@@ -30,7 +30,7 @@ ms.locfileid: "89047675"
 
 ### <a name="audience-for-interactive-token-acquisition"></a>対話型トークン取得の対象ユーザー
 
-ほとんどのモバイル アプリケーションでは、対話型認証が使用されています。 アプリケーションでこの形式の認証を使用する場合は、任意の[アカウントの種類](quickstart-register-app.md#register-a-new-application-using-the-azure-portal)からユーザーをサインインできます。
+ほとんどのモバイル アプリケーションでは、対話型認証が使用されています。 アプリケーションでこの形式の認証を使用する場合は、任意の[アカウントの種類](quickstart-register-app.md)からユーザーをサインインできます。
 
 ### <a name="audience-for-integrated-windows-authentication-username-password-and-b2c"></a>統合 Windows 認証の対象ユーザー、ユーザー名とパスワード、B2C
 

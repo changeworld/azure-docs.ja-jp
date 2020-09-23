@@ -3,15 +3,15 @@ title: Azure Monitor によって監視される内容
 description: Azure Monitor によって監視されるすべてのサービスとその他のリソースのリファレンス。
 ms.subservice: ''
 ms.topic: conceptual
-author: bwren
-ms.author: bwren
-ms.date: 06/15/2020
-ms.openlocfilehash: 48eb8674a7d3f0fbeb8cc012debfc8a08752d5ff
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+author: rboucher
+ms.author: robb
+ms.date: 08/15/2020
+ms.openlocfilehash: 1841c4eb8975c865c5f15a0e8fe3a6b5f0522820
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080866"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435407"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor によって監視される内容
 この記事では、Azure Monitor によって監視されるさまざまなアプリケーションとサービスについて説明します。 
@@ -120,7 +120,7 @@ Insights は、特定のアプリケーションやサービスを監視する�
 |IoT Hub | はい | はい | いいえ |  |
 |Key Vault | はい | はい | [はい](./insights/key-vault-insights-overview.md) |  |
 |Kubernetes サービス (AKS) | いいえ | いいえ | [はい](insights/container-insights-overview.md)  |  |
-|Load Balancer | はい | はい | いいえ |  |
+|Load Balancer | はい | いいえ | いいえ |  |
 |Logic Apps | はい | はい | いいえ |  |
 |Machine Learning Service | いいえ | いいえ | いいえ |  |
 |Managed Applications  | いいえ | いいえ | いいえ |  |
@@ -151,7 +151,7 @@ Insights は、特定のアプリケーションやサービスを監視する�
 |サインアップ ポータル | いいえ | いいえ | いいえ |  |
 |Site Recovery | いいえ | はい | いいえ |  |
 |Spring Cloud サービス | いいえ | いいえ | いいえ |  |
-|SQL Data Warehouse | はい | はい | いいえ |  |
+|Azure Synapse Analytics | はい | はい | いいえ |  |
 |SQL Database | はい | はい | いいえ |  |
 |SQL Server Stretch Database | はい | はい | いいえ |  |
 |スタック | いいえ | いいえ | いいえ |  |

@@ -8,12 +8,12 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: c2d3237e629c7ed5d2931e15939b154e0239f259
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 876a96f579bff8d30e454e927054a951734f44ba
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553109"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441101"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 
@@ -136,9 +136,8 @@ Invoke-AzStorageSyncCompatibilityCheck -ComputerName <computer name> -SkipNamesp
  
 CSV で結果を表示するには:
 ```powershell
-$errors = Invoke-AzStorageSyncCompatibilityCheck […]
-$validation.Results | Select-Object -Property Type, Path, Level, Description, Result | Export-Csv -Path
-    C:\results.csv -Encoding utf8
+$validation = Invoke-AzStorageSyncCompatibilityCheck C:\DATA
+$validation.Results | Select-Object -Property Type, Path, Level, Description, Result | Export-Csv -Path C:\results.csv -Encoding utf8
 ```
 
 ### <a name="file-system-compatibility"></a>ファイル システムの互換性

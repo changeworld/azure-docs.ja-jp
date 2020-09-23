@@ -1,18 +1,18 @@
 ---
 title: Site Recovery の復旧計画に Azure Automation Runbook を追加する
 description: Azure Site Recovery を使ったディザスター リカバリーのために、Azure Automation を使用して復旧計画を拡張する方法について説明します。
-author: rajani-janaki-ram
-manager: gauravd
+author: Rajeswari-Mamilla
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.author: rajanaki
-ms.openlocfilehash: 1df17ccb41c974c8939710850b5bb71ee3a5ef1b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: ramamill
+ms.openlocfilehash: a141280338632fdad7053cbbe76c8bdf2797443d
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021581"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89424873"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>復旧計画に Azure Automation Runbook を追加する
 

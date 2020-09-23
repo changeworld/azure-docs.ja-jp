@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery の更新プログラムとコンポーネントのアップグレード
 description: Azure Site Recovery サービスの更新プログラムとコンポーネントのアップグレードの概要について説明します。
-author: rajani-janaki-ram
+author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.author: rajanaki
-ms.openlocfilehash: 483d2152f3af13c82830528ea73e837fe3788ca4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: ramamill
+ms.openlocfilehash: a1ea8b6fb9800d796670161288be0d86ce6ffc42
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84629387"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89424941"
 ---
 # <a name="service-updates-in-site-recovery"></a>Site Recovery のサービスの更新プログラム
 

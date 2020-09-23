@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: 8ee9712c01c8ab6b36f595829c3ccc5ae392ff35
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: bbabceeea2fd009efe1098e37a0b1c9dcb8a48aa
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276764"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894725"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>適応型アプリケーション制御を使用して、マシンの攻撃対象領域を減らす
 
@@ -50,8 +50,8 @@ Azure Security Center の適応型アプリケーション制御の利点と、�
 
 |側面|詳細|
 |----|:----|
-|リリース状態:|一般公開|
-|価格:|Standard レベル|
+|リリース状態:|一般提供 (GA)|
+|価格:|[Azure Defender for servers](defender-for-servers-introduction.md) が必要|
 |サポートされているマシン:|![Yes](./media/icons/yes-icon.png) Windows および Linux を実行する Azure と Azure 以外のマシン<br>![Yes](./media/icons/yes-icon.png) [Azure Arc](https://docs.microsoft.com/azure/azure-arc/) マシン|
 |必要なロールとアクセス許可:|**セキュリティ閲覧者**および**閲覧者**のいずれのロールでも、グループと、既知の安全なアプリケーションのリストを表示できます<br>**共同作成者**および**セキュリティ管理者**のいずれのロールでも、グループと、既知の安全なアプリケーションのリストを編集できます|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
@@ -65,7 +65,9 @@ Azure Security Center の適応型アプリケーション制御の利点と、�
 
 推奨事項を選択するか、適応型アプリケーション制御ページを開いて、推奨される既知の安全なアプリケーションのリストとマシンのグループを表示します。
 
-1. Security Center のメニューから、 **[適応型アプリケーション制御]** を選択します。
+1. Azure Defender ダッシュボードを開き、高度な保護領域から **[適応型アプリケーション制御]** を選択します。
+
+    :::image type="content" source="./media/security-center-adaptive-application/opening-adaptive-application-control.png" alt-text="Azure ダッシュボードから適応型アプリケーション制御を開く" lightbox="./media/security-center-adaptive-application/opening-adaptive-application-control.png":::
 
     **[適応型アプリケーション制御]** ページが開き、VM が次のタブにグループ化されます。
 
@@ -86,7 +88,7 @@ Azure Security Center の適応型アプリケーション制御の利点と、�
       - GPO またはローカル セキュリティ ポリシーによって既存の [AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview) ポリシーが有効になっている Windows マシンである
 
       > [!TIP]
-      > マシンのグループごとに固有の推奨事項を定義するには、Security Center では少なくとも 2 週間分のデータが必要です。 最近作成されたか、あるいは Standard レベルでのみ最近有効にされたサブスクリプションに属しているマシンは、 **[推奨なし]** タブの下に表示されます。
+      > マシンのグループごとに固有の推奨事項を定義するには、Security Center では少なくとも 2 週間分のデータが必要です。 最近作成されたか、Azure Defender でのみ最近有効にされたサブスクリプションに属しているマシンは、 **[推奨なし]** タブの下に表示されます。
 
 
 1. **[推奨]** タブを開きます。推奨される許可リストがあるマシンのグループが表示されます。
@@ -121,7 +123,7 @@ Azure Security Center の適応型アプリケーション制御の利点と、�
 
 マシン グループの規則を編集するには、次のようにします。
 
-1. Security Center のメニューから、 **[適応型アプリケーション制御]** を選択します。
+1. Azure Defender ダッシュボードを開き、高度な保護領域から **[適応型アプリケーション制御]** を選択します。
 
 1. **[構成済み]** タブから、規則を編集するグループを選択します。
 
@@ -169,7 +171,7 @@ Security Center の機械学習で、以前は許可されていなかった、�
 
 ## <a name="audit-alerts-and-violations"></a>アラートと違反の監査
 
-1. Security Center のメニューから、 **[適応型アプリケーション制御]** を選択します。
+1. Azure Defender ダッシュボードを開き、高度な保護領域から **[適応型アプリケーション制御]** を選択します。
 
 1. 最近のアラートが示されたマシンのグループを表示するには、 **[構成済み]** タブに一覧表示されているグループを確認します。
 
@@ -184,6 +186,8 @@ Security Center の機械学習で、以前は許可されていなかった、�
 ## <a name="move-a-machine-from-one-group-to-another"></a>グループ間でマシンを移動する
 
 グループ間でマシンを移動すると、適用されていたアプリケーション制御ポリシーが移動先のグループの設定に変更されます。 構成されたグループから構成されていないグループにマシンを移動することもできます。これにより、マシンに適用されていたアプリケーション制御規則がすべて削除されます。
+
+1. Azure Defender ダッシュボードを開き、高度な保護領域から **[適応型アプリケーション制御]** を選択します。
 
 1. **[適応型アプリケーション制御]** ページの **[構成済み]** タブから、移動対象のマシンを含むグループを選択します。
 

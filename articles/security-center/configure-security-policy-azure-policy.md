@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: c218b5dc8ca3bfa0358a9b6a0d4867696762a8d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a81b3016f86c6fd7de646ccbdbf533685471ac3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77430943"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894789"
 ---
 # <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>REST API を使用して Azure Policy でセキュリティ ポリシーを構成する
 
@@ -124,7 +124,7 @@ Security Center では、そのセキュリティ ポリシーをすべて含ん
 |システムの更新プログラム |システムの更新プログラムの欠落の Azure Security Center での監視 |systemUpdatesMonitoringEffect|
 |ストレージ暗号化 |ストレージ アカウントでの BLOB 暗号化の欠落の監査 |storageEncryptionMonitoringEffect|
 |JIT ネットワーク アクセス |可能なネットワーク Just In Time (JIT) アクセスの Azure Security Center での監視 |jitNetworkAccessMonitoringEffect |
-|アダプティブ アプリケーション制御 |可能なアプリのホワイトリスト登録の Azure Security Center での監視 |adaptiveApplicationControlsMonitoringEffect|
+|アダプティブ アプリケーション制御 |実行可能なアプリの許可リストの Azure Security Center での監視 |adaptiveApplicationControlsMonitoringEffect|
 |ネットワーク セキュリティ グループ |制限が少なすぎるネットワーク アクセスの Azure Security Center での監視 |networkSecurityGroupsMonitoringEffect| 
 |セキュリティ構成 |OS の脆弱性の Azure Security Center での監視 |systemConfigurationsMonitoringEffect| 
 |エンドポイント保護 |Endpoint Protection の欠落の Azure Security Center での監視 |endpointProtectionMonitoringEffect |

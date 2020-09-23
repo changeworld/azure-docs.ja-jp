@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU デバイスで Kubernetes クラスターを作成および管理する | Microsoft Docs
-description: Windows PowerShell インターフェイスを使用して Azure Stack Edge GPU デバイスで Kubernetes クラスターを作成および管理する方法について説明します。
+title: Azure Stack Edge Pro GPU デバイスで Kubernetes クラスターを作成および管理する | Microsoft Docs
+description: Windows PowerShell インターフェイスを使用して Azure Stack Edge Pro GPU デバイスで Kubernetes クラスターを作成および管理する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,29 +8,29 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 95663553bc68d34eebd90be0d4032ee53900479b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: cb783e5da7364f38944ce31ce49a6a6529658fe3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267960"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903205"
 ---
-# <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU デバイスで kubectl を使用して Kubernetes クラスターに接続して管理する
+# <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスで kubectl を使用して Kubernetes クラスターに接続して管理する
 
-Azure Stack Edge デバイスでは、コンピューティング ロールを構成すると、Kubernetes クラスターが作成されます。 Kubernetes クラスターが作成されると、*kubectl* などのネイティブ ツールを使用して、クライアント マシンからローカルでクラスターに接続し、管理できます。
+Azure Stack Edge Pro デバイスでは、コンピューティング ロールを構成するときに Kubernetes クラスターが作成されます。 Kubernetes クラスターが作成されると、*kubectl* などのネイティブ ツールを使用して、クライアント マシンからローカルでクラスターに接続し、管理できます。
 
-この記事では、お使いの Azure Stack Edge デバイス上の Kubernetes クラスターに接続し、*kubectl* を使用してそれを管理する方法について説明します。 
+この記事では、お使いの Azure Stack Edge Pro デバイス上の Kubernetes クラスターに接続し、*kubectl* を使用してそれを管理する方法について説明します。 
 
 
 ## <a name="prerequisites"></a>前提条件
 
 開始する前に次の点を確認します。
 
-1. Azure Stack Edge デバイスにアクセスできること。
+1. Azure Stack Edge Pro デバイスにアクセスできること。
 
-2. [Azure Stack Edge のアクティブ化](azure-stack-edge-gpu-deploy-activate.md)に関するページの説明に従って Azure Stack Edge デバイスがアクティブ化されていること。
+2. [Azure Stack Edge Pro のアクティブ化](azure-stack-edge-gpu-deploy-activate.md)に関するページで説明されているように、Azure Stack Edge Pro デバイスがアクティブ化されていること。
 
-3. デバイスでコンピューティング ロールが有効になっていること。 Kubernetes クラスターは、[Azure Stack Edge デバイスでのコンピューティングの構成](azure-stack-edge-gpu-deploy-configure-compute.md)に関するページの手順に従ってデバイスでコンピューティングを構成したときにもそのデバイスに作成されています。
+3. デバイスでコンピューティング ロールが有効になっていること。 Kubernetes クラスターは、[Azure Stack Edge Pro デバイスでのコンピューティングの構成](azure-stack-edge-gpu-deploy-configure-compute.md)に関するページの手順に従ってデバイスでコンピューティングを構成したときにもそのデバイスに作成されています。
 
 4. デバイスにアクセスするために、PowerShell 5.0 以降を実行している Windows クライアント システムにアクセスできること。 [サポートされているオペレーティング システム](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)が搭載されている他のクライアントを使用することもできます。 
 
@@ -48,7 +48,7 @@ Kubernetes クラスターが作成されたら、このクラスターにアク
 
 Kubernetes クラスターが作成されたら、コマンドラインから *kubectl* を使用してそのクラスターにアクセスできます。 
 
-このアプローチでは、名前空間とユーザーを作成します。 その後、ユーザーを名前空間に関連付けます。 また、*config* ファイルを取得する必要もあります。これを使用すると、Azure Stack Edge デバイスの PowerShell インターフェイスに接続する必要なく、Kubernetes クライアントを使用して、作成した Kubernetes クラスターと直接通信できます。
+このアプローチでは、名前空間とユーザーを作成します。 その後、ユーザーを名前空間に関連付けます。 また、*config* ファイルを取得する必要もあります。これを使用すると、Azure Stack Edge Pro デバイスの PowerShell インターフェイスに接続する必要なく、Kubernetes クライアントを使用して、作成した Kubernetes クラスターと直接通信できます。
 
 1. 名前空間を作成する。 型:
 
@@ -66,7 +66,7 @@ Kubernetes クラスターが作成されたら、コマンドラインから *k
     `New-HcsKubernetesUser -UserName <string>`
 
     > [!NOTE]
-    > ユーザー名として *aseuser* を使用することはできません。これは、Azure Stack Edge の IoT 名前空間に関連付けられた既定のユーザー用に予約されているためです。
+    > ユーザー名として *aseuser* を使用することはできません。これは、Azure Stack Edge Pro の IoT 名前空間に関連付けられた既定のユーザー用に予約されているためです。
 
     構成ファイルの出力例を次に示します。
    
@@ -113,7 +113,7 @@ Kubernetes クラスターが作成されたら、コマンドラインから *k
 
     `[10.100.10.10]: PS>Grant-HcsKubernetesNamespaceAccess -Namespace "myasetest1" -UserName "aseuser1"`
 
-    構成ファイルを作成したら、クラスターに物理的にアクセスする必要はありません。 クライアントが Azure Stack Edge デバイスの IP に対して ping を実行できる場合は、*kubectl* コマンドを使用してクラスターに命令できます。
+    構成ファイルを作成したら、クラスターに物理的にアクセスする必要はありません。 クライアントが Azure Stack Edge Pro デバイスの IP に対して ping を実行できる場合は、*kubectl* コマンドを使用してクラスターに命令できます。
 
 6. クライアントで新しい PowerShell セッションを開始します。 デバイスのインターフェイスに接続する必要はありません。 これで、次のコマンドを使用してクライアントに `kubectl` をインストールできるようになりました。
 
@@ -125,7 +125,7 @@ Kubernetes クラスターが作成されたら、コマンドラインから *k
     たとえば、Kubernetes マスター ノードで v1.15.2 が実行されていた場合は、クライアントに v1.15.2 をインストールします。
 
     > [!IMPORTANT]
-    > マスターとのマイナー バージョンの差が 1 未満のクライアントをダウンロードしてください。 ただし、クライアントのバージョンは、マスターよりも最大 1 マイナー バージョン上位であってもかまいません。 たとえば、v1.3 のマスターは v1.1、v1.2、v1.3 のノードで動作し、v1.2、v1.3、v1.4 のクライアントで動作します。 Kubernetes クライアント バージョンの詳細については、「[Kubernetes バージョンとバージョン スキュー サポート ポリシー](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-version-skew)」を参照してください。 Azure Stack Edge の Kubernetes サーバー バージョンの詳細については、Kubernetes サーバー バージョンの取得に関するページを参照してください。<!-- insert link-->
+    > マスターとのマイナー バージョンの差が 1 未満のクライアントをダウンロードしてください。 ただし、クライアントのバージョンは、マスターよりも最大 1 マイナー バージョン上位であってもかまいません。 たとえば、v1.3 のマスターは v1.1、v1.2、v1.3 のノードで動作し、v1.2、v1.3、v1.4 のクライアントで動作します。 Kubernetes クライアント バージョンの詳細については、「[Kubernetes バージョンとバージョン スキュー サポート ポリシー](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-version-skew)」を参照してください。 Azure Stack Edge Pro の Kubernetes サーバー バージョンの詳細については、Kubernetes サーバー バージョンの取得に関するページを参照してください。<!-- insert link-->
     > Docker for Windows やその他のツールを実行している場合は、`kubectl` がシステムにプレインストールされていることもあります。 この kubernetes クラスターを使用するには、このセクションに示すように特定のバージョンの `kubectl` をダウンロードすることが重要です。 
 
     インストールには数分かかります。
@@ -172,4 +172,4 @@ Kubernetes クラスターを削除するには、コンピューティング構
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Stack Edge にステートレス アプリケーションをデプロイする](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md)。
+- [Azure Stack Edge Pro にステートレス アプリケーションをデプロイする](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md)。
