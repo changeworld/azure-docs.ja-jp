@@ -11,17 +11,17 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 11bd5f7397664d183f27337f7ca36d0123ee63f5
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e1285d62d036ebda46348ae1c1a3f8aa0db50243
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89397068"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90882740"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Azure Machine Learning でソフトウェア環境を作成して使用する
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-この記事では、Azure Machine Learning の[環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)を作成および管理する方法を学習します。 環境を使用して、プロジェクトのソフトウェアの発展する依存関係を追跡および再現します。
+
+この記事では、Azure Machine Learning の[環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true)を作成および管理する方法を学習します。 環境を使用して、プロジェクトのソフトウェアの発展する依存関係を追跡および再現します。
 
 ソフトウェアの依存関係の管理は、開発者にとって一般的なタスクです。 広範な手動によるソフトウェア構成を行わずに、ビルドを再現できることを保証する必要があります。 Azure Machine Learning の `Environment` クラスには、pip や Conda などのローカル開発ソリューションや、Docker 機能を通じた分散クラウド開発を指定します。
 
@@ -36,12 +36,21 @@ Azure Machine Learning の環境のしくみの概要については、[ML 環�
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
+* [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
 * [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)
 
 ## <a name="create-an-environment"></a>環境の作成
 
 以下のセクションでは、実験用の環境を作成できる複数の方法について説明します。
+
+### <a name="instantiate-an-environment-object"></a>環境オブジェクトのインスタンス化
+
+環境を手動で作成するには、SDK から `Environment` クラスをインポートします。 次に、以下のコードを使用して、環境オブジェクトをインスタンス化します。
+
+```python
+from azureml.core.environment import Environment
+Environment(name="myenv")
+```
 
 ### <a name="use-a-curated-environment"></a>選別された環境を使用する
 
@@ -76,20 +85,9 @@ for env in envs:
 > [!WARNING]
 >  独自の環境名の先頭には、_AzureML_ プレフィックスを付加しないでください。 このプレフィックスは、選別された環境用に予約されています。
 
+### <a name="use-conda-dependencies-or-pip-requirements-files"></a>Conda の依存関係または PIP 要件ファイルを使用する
 
-### <a name="instantiate-an-environment-object"></a>環境オブジェクトのインスタンス化
-
-環境を手動で作成するには、SDK から `Environment` クラスをインポートします。 次に、以下のコードを使用して、環境オブジェクトをインスタンス化します。
-
-```python
-from azureml.core.environment import Environment
-Environment(name="myenv")
-```
-
-
-### <a name="use-conda-and-pip-specification-files"></a>Conda と pip の仕様ファイルを使用する
-
-環境は、Conda の仕様または pip 要件ファイルから作成することができます。 [`from_conda_specification()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#from-conda-specification-name--file-path-) メソッド、または [`from_pip_requirements()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#from-pip-requirements-name--file-path-) メソッドを使用します。 メソッドの引数に、ご利用の環境の名前と、必要なファイルのファイル パスを含めます。 
+環境は、Conda の仕様または pip 要件ファイルから作成することができます。 [`from_conda_specification()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#&preserve-view=truefrom-conda-specification-name--file-path-) メソッド、または [`from_pip_requirements()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#&preserve-view=truefrom-pip-requirements-name--file-path-) メソッドを使用します。 メソッドの引数に、ご利用の環境の名前と、必要なファイルのファイル パスを含めます。 
 
 ```python
 # From a Conda specification file
@@ -101,18 +99,100 @@ myenv = Environment.from_pip_requirements(name = "myenv"
                                           file_path = "path-to-pip-requirements-file")                                          
 ```
 
+### <a name="enable-docker"></a>Docker を有効にする
+
+Docker を有効にすると、Azure Machine Learning によって Docker イメージがビルドされ、指定に従って、そのコンテナー内に Python 環境が作成されます。 Docker イメージはキャッシュされて再利用されます。通常、新しい環境での最初の実行時には、イメージがビルドされるため時間がかかります。
+
+Azure Machine Learning `Environment` クラスの [`DockerSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockersection?view=azure-ml-py&preserve-view=true) では、トレーニングを実行するゲスト オペレーティング システムを細かくカスタマイズおよび制御できます。 `arguments` 変数を使用すると、Docker の実行コマンドに渡す追加の引数を指定できます。
+
+```python
+# Creates the environment inside a Docker container.
+myenv.docker.enabled = True
+```
+
+既定では、新しくビルドされた Docker イメージは、ワークスペースに関連付けられているコンテナー レジストリに表示されます。  リポジトリ名の形式は *azureml/azureml_\<uuid\>* です。 名前の一意識別子 (*uuid*) の部分は、環境構成から計算されたハッシュに対応します。 この対応により、サービスでは、特定の環境のイメージが既に存在していて再利用できるかどうかを判断できます。
+
+#### <a name="use-a-prebuilt-docker-image"></a>構築済みの Docker イメージを使用する
+
+サービスでは、Ubuntu Linux ベースの[基本イメージ](https://github.com/Azure/AzureML-Containers)のいずれかが自動的に使用されます。 指定された Python パッケージがインストールされます。 基本イメージには、CPU バージョンと GPU バージョンがあります。 Azure Machine Learning では、使用するバージョンが自動的に検出されます。 [カスタム Docker 基本イメージ](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image#create-a-custom-base-image)を使用することも可能です。
+
+```python
+# Specify custom Docker base image and registry, if you don't want to use the defaults
+myenv.docker.base_image="your_base-image"
+myenv.docker.base_image_registry="your_registry_location"
+```
+
+>[!IMPORTANT]
+> Azure Machine Learning では、次のソフトウェアを提供する Docker イメージのみがサポートされています。
+> * Ubuntu 16.04 以上
+> * Conda 4.5.# 以上
+> * Python 3.5.#、3.6.#、または 3.7.#
+
+#### <a name="use-your-own-dockerfile"></a>独自の Dockerfile を使用する 
+
+カスタム Dockerfile を指定することもできます。 Docker ```FROM``` コマンドを使用していずれかの Azure Machine Learning 基本イメージから開始し、独自のカスタム ステップを追加する方法が最も簡単です。 Python 以外のパッケージを依存関係としてインストールする必要がある場合は、この方法を使用します。 基本イメージは必ず [なし] に設定してください。
+
+```python
+# Specify docker steps as a string. 
+dockerfile = r"""
+FROM mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04
+RUN echo "Hello from custom container!"
+"""
+
+# Set base image to None, because the image is defined by dockerfile.
+myenv.docker.base_image = None
+myenv.docker.base_dockerfile = dockerfile
+
+# Alternatively, load the string from a file.
+myenv.docker.base_image = None
+myenv.docker.base_dockerfile = "./Dockerfile"
+```
+
+#### <a name="specify-your-own-python-interpreter"></a>独自の Python インタープリターを指定する
+
+場合によっては、使用するパッケージを含む Python 環境がカスタム基本イメージに含まれていることがあります。
+
+自分独自でインストールしたパッケージを使用し、Conda を無効にするには、パラメーターを `Environment.python.user_managed_dependencies = True` に設定します。 基本イメージに Python インタープリターが含まれており、トレーニング スクリプトに必要なパッケージがあることを確実にします。
+
+たとえば、NumPy パッケージがインストールされている基本の Miniconda 環境で実行するには、まず、パッケージをインストールするステップを含む Dockerfile を指定します。 ユーザーによって管理される依存関係を `True` に設定します。 
+
+また、`Environment.python.interpreter_path` 変数を設定することにより、イメージ内の特定の Python インタープリターへのパスを指定することもできます。
+
+```python
+dockerfile = """
+FROM mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04
+RUN conda install numpy
+"""
+
+myenv.docker.base_image = None
+myenv.docker.base_dockerfile = dockerfile
+myenv.python.user_managed_dependencies=True
+myenv.python.interpreter_path = "/opt/miniconda/bin/python"
+```
+
+> [!WARNING]
+> Python の一部の依存関係を Docker イメージにインストールし、user_managed_dependencies = True の設定を忘れた場合、それらのパッケージは実行環境に存在しないため、実行時エラーが発生します。 既定では、指定した依存関係を含む Conda 環境が Azure ML で構築され、その環境で実行が行われます。基本イメージにインストールされている Python ライブラリは使用されません。
+
+#### <a name="retrieve-image-details"></a>イメージの詳細を取得する
+
+登録済みの環境では、次のコードを使用してイメージの詳細を取得できます。`details` は [DockerImageDetails](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockerimagedetails?view=azure-ml-py&preserve-view=true) (AzureML Python SDK >= 1.11) のインスタンスであり、dockerfile、レジストリー、イメージ名などの環境イメージに関するすべての情報を提供します。
+
+```python
+details = environment.get_image_details(workspace=ws)
+```
+
 ### <a name="use-existing-environments"></a>既存の環境を使用する
 
 ローカル コンピューター上に既存の Conda 環境がある場合は、環境オブジェクトを作成するためのサービスを使用できます。 この戦略を使用することで、ローカルの対話型環境をリモート実行で再利用できます。
 
-次のコードでは、既存の Conda 環境 `mycondaenv` から環境オブジェクトを作成します。 [`from_existing_conda_environment()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#from-existing-conda-environment-name--conda-environment-name-) メソッドが使用されます。
+次のコードでは、既存の Conda 環境 `mycondaenv` から環境オブジェクトを作成します。 [`from_existing_conda_environment()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#&preserve-view=truefrom-existing-conda-environment-name--conda-environment-name-) メソッドが使用されます。
 
 ``` python
 myenv = Environment.from_existing_conda_environment(name = "myenv",
                                                     conda_environment_name = "mycondaenv")
 ```
 
-環境定義は、[`save_to_directory()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#save-to-directory-path--overwrite-false-) メソッドを使用して、簡単に編集できる形式でディレクトリに保存できます。 変更が完了すると、そのディレクトリからファイルを読み込んで、新しい環境をインスタンス化できます。
+環境定義は、[`save_to_directory()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#&preserve-view=truesave-to-directory-path--overwrite-false-) メソッドを使用して、簡単に編集できる形式でディレクトリに保存できます。 変更が完了すると、そのディレクトリからファイルを読み込んで、新しい環境をインスタンス化できます。
 
 ```python
 myenv = Environment.save_to_directory(path = "path-to-destination-directory", overwrite = False)
@@ -144,13 +224,13 @@ run.wait_for_completion(show_output=True)
 
 ## <a name="add-packages-to-an-environment"></a>環境にパッケージを追加する
 
-Conda、pip、またはプライベート wheel ファイルを使用して、パッケージを環境に追加します。 [`CondaDependency`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py) クラスを使用して、各パッケージの依存関係を指定します。 それを環境の `PythonSection` に追加します。
+Conda、pip、またはプライベート wheel ファイルを使用して、パッケージを環境に追加します。 [`CondaDependency`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py&preserve-view=true) クラスを使用して、各パッケージの依存関係を指定します。 それを環境の `PythonSection` に追加します。
 
 ### <a name="conda-and-pip-packages"></a>Conda パッケージと pip パッケージ
 
 パッケージが Conda パッケージ リポジトリで使用可能な場合は、pip インストールではなく、Conda インストールを使用することをお勧めします。 Conda パッケージには通常、インストールの信頼性を高めるビルド済みのバイナリが付属しています。
 
-次の例では環境 `myenv` に追加します。 バージョン 1.17.0 の `numpy` が追加されます。 また、`pillow` パッケージも追加されます。 この例では、[`add_conda_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-conda-package-conda-package-) メソッドと [`add_pip_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-pip-package-pip-package-) メソッドがそれぞれ使用されています。
+次の例では環境 `myenv` に追加します。 バージョン 1.17.0 の `numpy` が追加されます。 また、`pillow` パッケージも追加されます。 この例では、[`add_conda_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#&preserve-view=trueadd-conda-package-conda-package-) メソッドと [`add_pip_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#&preserve-view=trueadd-pip-package-pip-package-) メソッドがそれぞれ使用されています。
 
 ```python
 from azureml.core.environment import Environment
@@ -188,7 +268,7 @@ myenv.environment_variables = {"MESSAGE":"Hello from Azure Machine Learning"}
 
 ### <a name="register-environments"></a>環境を登録する
 
-実行を送信するか、Web サービスをデプロイすると、環境が自動的にワークスペースに登録されます。 [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py#register-workspace-) メソッドを使用して、環境を手動で登録することもできます。 この操作により、環境は、クラウドで追跡およびバージョン管理されるエンティティに変わります。 エンティティは、ワークスペース ユーザー間で共有できます。
+実行を送信するか、Web サービスをデプロイすると、環境が自動的にワークスペースに登録されます。 [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py#&preserve-view=trueregister-workspace-) メソッドを使用して、環境を手動で登録することもできます。 この操作により、環境は、クラウドで追跡およびバージョン管理されるエンティティに変わります。 エンティティは、ワークスペース ユーザー間で共有できます。
 
 次のコードでは、`myenv` 環境を `ws` ワークスペースに登録します。
 
@@ -204,11 +284,11 @@ myenv.register(workspace=ws)
 
 #### <a name="view-a-list-of-environments"></a>環境の一覧を表示する
 
-[`Environment.list(workspace="workspace_name")`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py#list-workspace-) クラスを使用して、ワークスペース内の環境を表示します。 次に、再利用する環境を選択します。
+[`Environment.list(workspace="workspace_name")`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py#&preserve-view=truelist-workspace-) クラスを使用して、ワークスペース内の環境を表示します。 次に、再利用する環境を選択します。
 
 #### <a name="get-an-environment-by-name"></a>名前を指定して環境を取得する
 
-名前とバージョンを指定して特定の環境を取得することもできます。 次のコードでは、[`get()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py#get-workspace--name--version-none-) メソッドを使用して、`ws` ワークスペース上のバージョン `1` の `myenv` 環境を取得します。
+名前とバージョンを指定して特定の環境を取得することもできます。 次のコードでは、[`get()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py#&preserve-view=trueget-workspace--name--version-none-) メソッドを使用して、`ws` ワークスペース上のバージョン `1` の `myenv` 環境を取得します。
 
 ```python
 restored_environment = Environment.get(workspace=ws,name="myenv",version="1")
@@ -216,7 +296,7 @@ restored_environment = Environment.get(workspace=ws,name="myenv",version="1")
 
 #### <a name="train-a-run-specific-environment"></a>実行固有の環境をトレーニングする
 
-トレーニングが完了した後に特定の実行に使用された環境を取得するには、`Run` クラスの [`get_environment()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-environment--) メソッドを使用します。
+トレーニングが完了した後に特定の実行に使用された環境を取得するには、`Run` クラスの [`get_environment()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=trueget-environment--) メソッドを使用します。
 
 ```python
 from azureml.core import Run
@@ -231,7 +311,7 @@ Run.get_environment()
 
 ### <a name="debug-the-image-build"></a>イメージ ビルドをデバッグする
 
-次の例では、[`build()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py#build-workspace--image-build-compute-none-) メソッドを使用して、環境を Docker イメージとして手動で作成します。 [`wait_for_completion()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image(class)?view=azure-ml-py#wait-for-creation-show-output-false-) を使用して、イメージ ビルドからの出力ログを監視します。 その後、ビルドされたイメージは、ワークスペースの Azure Container Registry インスタンスに表示されます。 この情報はデバッグに役立ちます。
+次の例では、[`build()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py#&preserve-view=truebuild-workspace--image-build-compute-none-) メソッドを使用して、環境を Docker イメージとして手動で作成します。 [`wait_for_completion()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image(class)?view=azure-ml-py#&preserve-view=truewait-for-creation-show-output-false-) を使用して、イメージ ビルドからの出力ログを監視します。 その後、ビルドされたイメージは、ワークスペースの Azure Container Registry インスタンスに表示されます。 この情報はデバッグに役立ちます。
 
 ```python
 from azureml.core import Image
@@ -239,7 +319,7 @@ build = env.build(workspace=ws)
 build.wait_for_completion(show_output=True)
 ```
 
-まずは、[`build_local()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-local-workspace--platform-none----kwargs-) メソッドを使用して、ローカルでイメージをビルドするのが便利です。 Docker イメージをビルドするには、オプションのパラメーター `useDocker=True` を設定します。 生成されたイメージを AzureML ワークスペース コンテナー レジストリにプッシュするには、`pushImageToWorkspaceAcr=True` を設定します。
+まずは、[`build_local()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#&preserve-view=truebuild-local-workspace--platform-none----kwargs-) メソッドを使用して、ローカルでイメージをビルドするのが便利です。 Docker イメージをビルドするには、オプションのパラメーター `useDocker=True` を設定します。 生成されたイメージを AzureML ワークスペース コンテナー レジストリにプッシュするには、`pushImageToWorkspaceAcr=True` を設定します。
 
 ```python
 build = env.build_local(workspace=ws, useDocker=True, pushImageToWorkspaceAcr=True)
@@ -248,92 +328,13 @@ build = env.build_local(workspace=ws, useDocker=True, pushImageToWorkspaceAcr=Tr
 > [!WARNING]
 >  環境内の依存関係またはチャネルの順序を変更すると、新しい環境になり、新しいイメージのビルドが必要になります。 また、既存のイメージの `build()` メソッドを呼び出すと、新しいバージョンが存在する場合にその依存関係も更新されます。 
 
-## <a name="enable-docker"></a>Docker を有効にする
-
-Docker コンテナーにより、依存関係を効率的にカプセル化する方法が提供されます。 Docker を有効にすると、Azure ML によって Docker イメージがビルドされ、指定に従って、そのコンテナー内に Python 環境が作成されます。 Docker イメージはキャッシュされて再利用されます。通常、新しい環境での最初の実行時には、イメージがビルドされるため時間がかかります。
-
-Azure Machine Learning `Environment` クラスの [`DockerSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockersection?view=azure-ml-py) では、トレーニングを実行するゲスト オペレーティング システムを細かくカスタマイズおよび制御できます。 `arguments` 変数を使用すると、Docker の実行コマンドに渡す追加の引数を指定できます。
-
-```python
-# Creates the environment inside a Docker container.
-myenv.docker.enabled = True
-```
-
-既定では、新しくビルドされた Docker イメージは、ワークスペースに関連付けられているコンテナー レジストリに表示されます。  リポジトリ名の形式は *azureml/azureml_\<uuid\>* です。 名前の一意識別子 (*uuid*) の部分は、環境構成から計算されたハッシュに対応します。 この対応により、サービスでは、特定の環境のイメージが既に存在していて再利用できるかどうかを判断できます。
-
-### <a name="use-a-custom-docker-image-or-dockerfile"></a>カスタム Docker イメージまたは Dockerfile を使用する 
-サービスでは、Ubuntu Linux ベースの[基本イメージ](https://github.com/Azure/AzureML-Containers)のいずれかが自動的に使用されます。 指定された Python パッケージがインストールされます。 基本イメージには、CPU バージョンと GPU バージョンがあります。 Azure Machine Learning では、使用するバージョンが自動的に検出されます。 [カスタム Docker 基本イメージ](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image#create-a-custom-base-image)を使用することも可能です。
-
-```python
-# Specify custom Docker base image and registry, if you don't want to use the defaults
-myenv.docker.base_image="your_base-image"
-myenv.docker.base_image_registry="your_registry_location"
-```
-
->[!IMPORTANT]
-> Azure Machine Learning では、次のソフトウェアを提供する Docker イメージのみがサポートされています。
-> * Ubuntu 16.04 以上
-> * Conda 4.5.# 以上
-> * Python 3.5.#、3.6.#、または 3.7.#
-
-カスタム Dockerfile を指定することもできます。 Docker ```FROM``` コマンドを使用していずれかの Azure Machine Learning 基本イメージから開始し、独自のカスタム ステップを追加する方法が最も簡単です。 Python 以外のパッケージを依存関係としてインストールする必要がある場合は、この方法を使用します。 基本イメージは必ず [なし] に設定してください。
-
-```python
-# Specify docker steps as a string. 
-dockerfile = r"""
-FROM mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04
-RUN echo "Hello from custom container!"
-"""
-
-# Set base image to None, because the image is defined by dockerfile.
-myenv.docker.base_image = None
-myenv.docker.base_dockerfile = dockerfile
-
-# Alternatively, load the string from a file.
-myenv.docker.base_image = None
-myenv.docker.base_dockerfile = "./Dockerfile"
-```
-
-### <a name="specify-your-own-python-interpreter"></a>独自の Python インタープリターを指定する
-
-場合によっては、使用するパッケージを含む Python 環境がカスタム基本イメージに含まれていることがあります。
-
-自分独自でインストールしたパッケージを使用し、Conda を無効にするには、パラメーターを `Environment.python.user_managed_dependencies = True` に設定します。 基本イメージに Python インタープリターが含まれており、トレーニング スクリプトに必要なパッケージがあることを確実にします。
-
-たとえば、NumPy パッケージがインストールされている基本の Miniconda 環境で実行するには、まず、パッケージをインストールするステップを含む Dockerfile を指定します。 ユーザーによって管理される依存関係を `True` に設定します。 
-
-また、`Environment.python.interpreter_path` 変数を設定することにより、イメージ内の特定の Python インタープリターへのパスを指定することもできます。
-
-```python
-dockerfile = """
-FROM mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04
-RUN conda install numpy
-"""
-
-myenv.docker.base_image = None
-myenv.docker.base_dockerfile = dockerfile
-myenv.python.user_managed_dependencies=True
-myenv.python.interpreter_path = "/opt/miniconda/bin/python"
-```
-
-> [!WARNING]
-> Python の一部の依存関係を Docker イメージにインストールし、user_managed_dependencies = True の設定を忘れた場合、それらのパッケージは実行環境に存在しないため、実行時エラーが発生します。 既定では、指定した依存関係を含む Conda 環境が Azure ML で構築され、その環境で実行が行われます。基本イメージにインストールされている Python ライブラリは使用されません。
-
-### <a name="retrieve-image-details"></a>イメージの詳細を取得する
-
-登録済みの環境では、次のコードを使用してイメージの詳細を取得できます。`details` は [DockerImageDetails](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockerimagedetails?view=azure-ml-py) (AzureML Python SDK >= 1.11) のインスタンスであり、dockerfile、レジストリー、イメージ名などの環境イメージに関するすべての情報を提供します。
-
-```python
-details = environment.get_image_details(workspace=ws)
-```
-
 ## <a name="use-environments-for-training"></a>トレーニングに環境を使用する
 
 トレーニング実行を送信するには、環境、[コンピューティング ターゲット](concept-compute-target.md)、トレーニング Python スクリプトを実行構成に結合する必要があります。 この構成は、実行の送信に使用されるラッパー オブジェクトです。
 
 トレーニング実行を送信するときに、新しい環境のビルドに数分かかる場合があります。 その期間は、必要な依存関係のサイズによって異なります。 環境はサービスによってキャッシュされます。 そのため、環境定義が変更されていない限り、完全なセットアップの時間が発生するのは一度だけです。
 
-次のローカル スクリプトの実行例では、[`ScriptRunConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?view=azure-ml-py) をラッパー オブジェクトとして使用する場所を示しています。
+次のローカル スクリプトの実行例では、[`ScriptRunConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?view=azure-ml-py&preserve-view=true) をラッパー オブジェクトとして使用する場所を示しています。
 
 ```python
 from azureml.core import ScriptRunConfig, Experiment
@@ -368,7 +369,7 @@ run = exp.submit(runconfig)
 
 Web サービスのデプロイ用に自分独自の環境を定義する場合、pip の依存関係として `azureml-defaults` にバージョン 1.0.45 以降を指定する必要があります。 このパッケージには、Web サービスとしてモデルをホストするために必要な機能が含まれています。
 
-Web サービスをデプロイするには、環境、推論計算、スコアリング スクリプト、および登録済みモデルをデプロイ オブジェクト [`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) に結合します。 詳細については、「[モデルをデプロイする方法と場所](how-to-deploy-and-where.md)」を参照してください。
+Web サービスをデプロイするには、環境、推論計算、スコアリング スクリプト、および登録済みモデルをデプロイ オブジェクト [`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) に結合します。 詳細については、「[モデルをデプロイする方法と場所](how-to-deploy-and-where.md)」を参照してください。
 
 この例では、トレーニングの実行が完了していることを前提とします。 次に、そのモデルを Azure Container Instances にデプロイします。 Web サービスをビルドすると、モデルとスコアリング ファイルがイメージにマウントされ、Azure Machine Learning 推論スタックがイメージに追加されます。
 
@@ -434,4 +435,4 @@ az ml environment download -n myenv -d downloaddir
 
 * マネージド コンピューティング ターゲットを使用してモデルをトレーニングする場合は、[チュートリアル: モデルのトレーニング](tutorial-train-models-with-aml.md)に関するページを参照してください。
 * モデルのトレーニングが完了した後、[モデルをデプロイする方法と場所](how-to-deploy-and-where.md)について学習します。
-* [`Environment` クラスの SDK リファレンス](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py)を参照します。
+* [`Environment` クラスの SDK リファレンス](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py&preserve-view=true)を参照します。

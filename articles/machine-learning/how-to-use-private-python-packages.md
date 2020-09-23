@@ -10,15 +10,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: 314f6a45bf688125e79f0b8ce0099a8326b339dc
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 0f6f5d0ca757b10a16b31864124f1bcf1190674a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958152"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896920"
 ---
 # <a name="use-private-python-packages-with-azure-machine-learning"></a>Azure Machine Learning で非公開の Python パッケージを使用する
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 この記事では、Azure Machine Learning 内で非公開の Python パッケージを安全に使用する方法について説明します。 非公開の Python パッケージのユース ケースは次のとおりです。
 
@@ -31,12 +31,12 @@ ms.locfileid: "88958152"
 
 ## <a name="prerequisites"></a>前提条件
 
- * [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
+ * [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
  * [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)
 
 ## <a name="use-small-number-of-packages-for-development-and-testing"></a>開発とテストに少数のパッケージを使用する
 
-1 つのワークスペースの非公開パッケージの数が少ない場合は、静的な [`Environment.add_private_pip_wheel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#add-private-pip-wheel-workspace--file-path--exist-ok-false-) メソッドを使用します。 この方法により、非公開パッケージをワークスペースにすばやく追加することができます。これは、開発とテスト目的に適しています。
+1 つのワークスペースの非公開パッケージの数が少ない場合は、静的な [`Environment.add_private_pip_wheel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#&preserve-view=trueadd-private-pip-wheel-workspace--file-path--exist-ok-false-) メソッドを使用します。 この方法により、非公開パッケージをワークスペースにすばやく追加することができます。これは、開発とテスト目的に適しています。
 
 ファイル パス引数をローカルの wheel ファイルにポイントし、```add_private_pip_wheel``` コマンドを実行します。 このコマンドによって、ワークスペース内のパッケージの場所を追跡するために使用される URL が返されます。 ストレージ URL をキャプチャし、`add_pip_package()` メソッドに渡します。
 
@@ -58,7 +58,7 @@ myenv.python.conda_dependencies=conda_dep
 
  1. Azure DevOps インスタンスの[個人用アクセス トークン (PAT) を作成します](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page#create-a-pat)。 トークンのスコープを __[Packaging]\(パッケージ\) > [Read]\(読み取り\)__ に設定します。 
 
- 2. [Workspace.set_connection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#set-connection-name--category--target--authtype--value-) メソッドを使用して、Azure DevOps URL と PAT をワークスペースのプロパティとして追加します。
+ 2. [Workspace.set_connection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#&preserve-view=trueset-connection-name--category--target--authtype--value-) メソッドを使用して、Azure DevOps URL と PAT をワークスペースのプロパティとして追加します。
 
      ```python
     from azureml.core import Workspace
@@ -91,16 +91,10 @@ myenv.python.conda_dependencies=conda_dep
 
 組織のファイアウォール内の Azure ストレージ アカウントからパッケージを使用できます。 このストレージ アカウントでは、キュレーションされたパッケージのセットや、一般に公開されているパッケージの内部ミラーを保持することができます。
 
-このようなプライベート ストレージを設定するには、以下の手順を実行します。
+このようなプライベート ストレージを設定するには、[Azure Machine Learning ワークスペースおよび関連付けられているリソースのセキュリティ保護](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts)に関する記事を参照してください。 また、[Azure Container Registry (ACR) を VNet の背後に配置する](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr)必要があります。
 
-1. [ワークスペースを仮想ネットワーク (VNet) 内に配置します](how-to-enable-virtual-network.md)。
-1. ストレージ アカウントを作成し、[パブリック アクセスを禁止](https://docs.microsoft.com/azure/storage/common/storage-network-security)します。
-1. 使用する Python パッケージをストレージ アカウント内のコンテナーに配置します 
-1. [ワークスペース VNet からストレージ アカウントへのアクセスを許可します](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-a-virtual-network)
-1. [ワークスペースの Azure Container Registry (ACR) を VNet の背後に配置します](how-to-enable-virtual-network.md#azure-container-registry)。
-
-    > [!IMPORTANT]
-    > プライベート パッケージ リポジトリを使用してモデルをトレーニングまたはデプロイできるようにするには、この手順を完了する必要があります。
+> [!IMPORTANT]
+> プライベート パッケージ リポジトリを使用してモデルをトレーニングまたはデプロイできるようにするには、この手順を完了する必要があります。
 
 これらの構成を完了すると、完全な URL を使用して、Azure Blob Storage で Azure Machine Learning 環境定義内のパッケージを参照できます。
 

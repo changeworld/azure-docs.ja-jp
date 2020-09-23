@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: e26744c2003bd55b33b638b15775c52abbe1dc32
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: e2922d19dbcad7da2808a86896e39d21420e73d5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836007"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904736"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center トラブルシューティング ガイド
 
@@ -29,7 +29,7 @@ Security Center では、データの収集と格納に Log Analytics エージ�
 
 * 仮想マシンの動作分析 (VMBA)
 * ネットワーク分析
-* SQL Database と SQL Data Warehouse の分析
+* SQL Database および Azure Synapse Analytics (旧称 SQL Data Warehouse) の分析
 * コンテキスト情報
 
 アラートの種類に応じて、お客様は次のリソースを使用して、アラートを調査するために必要な情報を収集することができます。
@@ -132,13 +132,13 @@ Security Center ダッシュボードを読み込む際に問題が発生した�
 
 ## <a name="contacting-microsoft-support"></a>Microsoft サポートへの問い合わせ
 
-一部の問題は、この記事に示したガイドラインを基に特定できます。その他の問題については、Security Center パブリック [Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-security-center.html)でドキュメントを見つけることもできます。 ただし、さらにトラブルシューティングが必要な場合は、次に示すように **Azure ポータル**を使用して新しいサポート要求を開くことができます。
+一部の問題は、この記事に示したガイドラインを使用して特定できます。その他の問題については、Security Center パブリック [Microsoft Q&A ページ](https://docs.microsoft.com/answers/topics/azure-security-center.html)でドキュメントを見つけることもできます。 ただし、さらにトラブルシューティングが必要な場合は、次に示すように **Azure ポータル**を使用して新しいサポート要求を開くことができます。
 
 ![Microsoft サポート](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 
 ## <a name="see-also"></a>関連項目
 
-このドキュメントでは、Azure Security Center でのセキュリティ ポリシーの構成方法について説明しました。 Azure Security Center の詳細については、次を参照してください。
+このドキュメントでは、Azure セキュリティ センターでのセキュリティ ポリシーの構成方法について説明しました。 Azure セキュリティ センターの詳細については、次を参照してください。
 
 * [Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md) 」 -- Azure Security Center を導入するための設計上の考慮事項を計画および理解する方法について説明します。
 * [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md) 」 -- Azure リソースの正常性を監視する方法について説明しています。
@@ -151,4 +151,4 @@ Security Center ダッシュボードを読み込む際に問題が発生した�
 * [Azure Security Center の検出機能](security-center-detection-capabilities.md)
 * [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md) 」 -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
 * [Azure Security Center のよく寄せられる質問 (FAQ)](faq-general.md) 」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
-* [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
+* [Azure セキュリティ ブログ](https://docs.microsoft.com/archive/blogs/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。

@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 05/19/2020
-ms.openlocfilehash: ed95cf0b98edd8a6775c980876a6092c00e3a68d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/09/2020
+ms.openlocfilehash: a3cd250e53fb30e07795b184b5c949505e3b20ae
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918589"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905745"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning のエンタープライズ セキュリティ
 
@@ -63,7 +63,6 @@ Azure Machine Learning では、Web サービスに関してキーとトーク�
 | ---- |:----:|:----:|:----:|
 | ワークスペースの作成 | ✓ | ✓ | |
 | ワークスペースを共有する | ✓ | |  |
-| ワークスペースを Enterprise Edition にアップグレードする | ✓ | |
 | コンピューティング先を作成する | ✓ | ✓ | |
 | コンピューティング先をアタッチする | ✓ | ✓ | |
 | データ ストアをアタッチする | ✓ | ✓ | |
@@ -105,7 +104,7 @@ Azure Machine Learning では、すべてのワークスペース リージョ�
 
 Azure Machine Learning は、コンピューティング リソースに関して他の Azure サービスに依存します。 コンピューティング リソース (コンピューティング ターゲット) は、モデルのトレーニングとデプロイに使用されます。 これらのコンピューティング先は、仮想ネットワーク内に作成することができます。 たとえば、Azure Data Science Virtual Machine を使用してモデルをトレーニングしてから、そのモデルを AKS にデプロイできます。  
 
-詳しくは、[分離された仮想ネットワークで実験と推論を安全に実行する方法](how-to-enable-virtual-network.md)に関するページをご覧ください。
+詳細については、「[仮想ネットワークの分離とプライバシーの概要](how-to-network-security-overview.md)」を参照してください。
 
 また、ワークスペースに対して Azure Private Link を有効にすることもできます。 Private Link を使用すると、Azure Virtual Network からワークスペースへの通信を制限することができます。 詳細については、[Private Link を構成する方法](how-to-configure-private-link.md)に関するページを参照してください。
 
@@ -119,7 +118,7 @@ Azure Machine Learning は、コンピューティング リソースに関し�
 ### <a name="encryption-at-rest"></a>保存時の暗号化
 
 > [!IMPORTANT]
-> ワークスペースに機密データが含まれている場合は、ワークスペースの作成時に [hbi_workspace フラグ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)を設定することをお勧めします。 `hbi_workspace` フラグは、ワークスペースの作成時にのみ設定できます。 既存のワークスペースに対して変更することはできません。
+> ワークスペースに機密データが含まれている場合は、ワークスペースの作成時に [hbi_workspace フラグ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)を設定することをお勧めします。 `hbi_workspace` フラグは、ワークスペースの作成時にのみ設定できます。 既存のワークスペースに対して変更することはできません。
 
 `hbi_workspace` フラグにより、[Microsoft が診断目的で収集するデータ](#microsoft-collected-data)の量が制御され、[Microsoft が管理する環境での追加の暗号化](../security/fundamentals/encryption-atrest.md)が可能になります。 さらに、次のアクションが可能になります。
 
@@ -157,13 +156,14 @@ Azure Machine Learning では、Azure Cosmos DB インスタンスにメトリ�
     * `cmk_keyvault`:このパラメーターは、サブスクリプション内のキー コンテナーのリソース ID です。 このキー コンテナーは、Azure Machine Learning ワークスペースに使用するのと同じリージョンおよびサブスクリプションにある必要があります。 
     
         > [!NOTE]
-        > このキー コンテナー インスタンスは、ワークスペースをプロビジョニングするときに Azure Machine Learning によって作成されるキー コンテナーとは異なる場合があります。 ワークスペースに同じキー コンテナー インスタンスを使用する場合は、[key_vault パラメーター](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)を使用してワークスペースをプロビジョニングするときに、同じキー コンテナーを渡します。 
+        > このキー コンテナー インスタンスは、ワークスペースをプロビジョニングするときに Azure Machine Learning によって作成されるキー コンテナーとは異なる場合があります。 ワークスペースに同じキー コンテナー インスタンスを使用する場合は、[key_vault パラメーター](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)を使用してワークスペースをプロビジョニングするときに、同じキー コンテナーを渡します。 
 
-この Cosmos DB インスタンスは、サブスクリプション内の Microsoft が管理対象リソース グループに作成されます。 マネージド リソース グループの名前は、`<AML Workspace Resource Group Name><GUID>` という形式で指定されます。
+この Cosmos DB インスタンスは、必要なリソースと共にお使いのサブスクリプションの Microsoft が管理するリソース グループ内に作成されます。 マネージド リソース グループの名前は、`<AML Workspace Resource Group Name><GUID>` という形式で指定されます。 Azure Machine Learning ワークスペースでプライベート エンドポイントが使用される場合は、Cosmos DB インスタンスの仮想ネットワークも作成されます。 この VNet は、Cosmos DB と Azure Machine Learning の間の通信をセキュリティで保護するために使用されます。
 
 > [!IMPORTANT]
-> * この Cosmos DB インスタンスを削除する必要がある場合は、それを使用する Azure Machine Learning ワークスペースを削除する必要があります。 
-> * この Cosmos DB アカウントの既定の[__要求ユニット__](../cosmos-db/request-units.md)は __8000__ に設定されています。 この値の変更はサポートされていません。 
+> * この Cosmos DB インスタンスが含まれるリソース グループ、またはこのグループに自動的に作成されたリソースを削除しないでください。 Cosmos DB インスタンスなどのリソース グループを削除する必要がある場合は、それが使用されている Azure Machine Learning ワークスペースを削除してください。 関連付けられているワークスペースが削除されると、リソース グループ、Cosmos DB インスタンス、および自動的に作成されたその他のリソースが削除されます。
+> * この Cosmos DB アカウントの既定の[__要求ユニット__](../cosmos-db/request-units.md)は __8000__ に設定されています。 この値の変更はサポートされていません。
+> * 作成された Cosmos DB インスタンスでの使用のために、独自の VNet を指定することはできません。 また、仮想ネットワークを変更することもできません。 たとえば、使用される IP アドレスの範囲を変更することはできません。
 
 キーを__交換または取り消す__必要がある場合は、いつでもこの操作を行うことができます。 キーを交換すると、Cosmos DB は新しいキー (最新バージョン) を使用して保存データを暗号化します。 キーを取り消す (無効にする) と、Cosmos DB は失敗した要求を処理します。 通常、交換または失効が有効になるまでに 1 時間かかります。
 
@@ -197,7 +197,7 @@ Azure Container Instance にモデルをデプロイするときにキーを使�
 
 デプロイ構成の作成と使用の詳細については、次の記事を参照してください。
 
-* [AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-) 参照
+* [AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-) 参照
 * [デプロイする場所と方法](how-to-deploy-and-where.md)
 * [Azure Container Instances にモデルをデプロイする](how-to-deploy-azure-container-instance.md)
 
@@ -246,7 +246,7 @@ Azure HDInsight や VM などのコンピューティング先に対する SSH �
 
 Microsoft は、リソース名 (データセット名や機械学習の実験名など)、または診断目的でのジョブ環境変数など、ユーザー以外を識別する情報を収集する場合があります。 このようなデータはすべて、Microsoft が所有するサブスクリプションでホストされているストレージに Microsoft が管理するキーを使用して保存され、[Microsoft の標準のプライバシー ポリシーとデータ処理規格](https://privacy.microsoft.com/privacystatement)に従います。
 
-また、機密情報 (アカウント キー シークレットなど) を環境変数に保存しないこともお勧めしています。 環境変数は、Microsoft によってログに記録され、暗号化され、保存されます。 同様に、[run_id](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) に名前を付けるときは、ユーザー名や秘密のプロジェクト名などの機密情報を含めないようにしてください。 この情報は、Microsoft サポート エンジニアがアクセスできるテレメトリ ログに表示されることがあります。
+また、機密情報 (アカウント キー シークレットなど) を環境変数に保存しないこともお勧めしています。 環境変数は、Microsoft によってログに記録され、暗号化され、保存されます。 同様に、[run_id](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) に名前を付けるときは、ユーザー名や秘密のプロジェクト名などの機密情報を含めないようにしてください。 この情報は、Microsoft サポート エンジニアがアクセスできるテレメトリ ログに表示されることがあります。
 
 ワークスペースのプロビジョニング中に `hbi_workspace` パラメーターを `TRUE` に設定して、収集される診断データをオプトアウトすることができます。 この機能は、AzureML Python SDK、CLI、REST API、または Azure Resource Manager のテンプレートを使用する場合にサポートされます。
 
@@ -367,6 +367,6 @@ Machine Learning コンピューティングはマネージド コンピュー�
 * [TLS を使用して Azure Machine Learning Web サービスをセキュリティで保護する](how-to-secure-web-service.md)
 * [Web サービスとしてデプロイされた Machine Learning モデルを使用する](how-to-consume-web-service.md)
 * [Azure Firewall と共に Azure Machine Learning を使用する](how-to-access-azureml-behind-firewall.md)
-* [Azure Machine Learning と Azure Virtual Network を使用する](how-to-enable-virtual-network.md)
+* [Azure Machine Learning と Azure Virtual Network を使用する](how-to-network-security-overview.md)
 * [推奨システムを構築するためのベスト プラクティス](https://github.com/Microsoft/Recommenders)
 * [Azure 上でリアルタイム レコメンデーション API を構築する](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/real-time-recommendation)

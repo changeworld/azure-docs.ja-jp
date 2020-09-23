@@ -2,20 +2,20 @@
 title: イマーシブ リーダーで数式を表示する
 titleSuffix: Azure Cognitive Services
 description: この記事では、イマーシブ リーダーで数式を表示する方法について説明します。
-author: pasta
+author: nitinme
 manager: guillasi
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.author: pasta
+ms.author: nitinme
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 6bde75fe0fb856633d7849173faf21db76edc950
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 2bc178dcd473154f65d0b74d20e9f608c4061f9f
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406913"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505320"
 ---
 # <a name="how-to-display-math-in-the-immersive-reader"></a>イマーシブ リーダーで数式を表示する方法
 

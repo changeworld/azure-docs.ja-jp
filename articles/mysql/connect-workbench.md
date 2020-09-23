@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 1b1249fe7159e2a3a8d2a74d22f274a9766e7922
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 5ec6aab8aaa63b848131d44f78867100f154d251
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185827"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896331"
 ---
 # <a name="quickstart-use-mysql-workbench-to-connect-and-query-data-in-azure-database-for-mysql"></a>クイック スタート:MySQL Workbench を使用して Azure Database for MySQL に接続してデータを照会する
 
@@ -40,7 +40,7 @@ Azure Database for MySQL に接続するために必要な接続情報を取得�
 3. サーバー名をクリックします。
 
 4. サーバーの **[概要]** パネルから、 **[サーバー名]** と **[サーバー管理者ログイン名]** を書き留めます。 パスワードを忘れた場合も、このパネルからパスワードをリセットすることができます。
- ![Azure Database for MySQL サーバー名](./media/connect-php/1_server-overview-name-login.png)
+ :::image type="content" source="./media/connect-php/1_server-overview-name-login.png" alt-text="Azure Database for MySQL サーバー名":::
 
 ## <a name="connect-to-the-server-by-using-mysql-workbench"></a>MySQL Workbench を使用したサーバーへの接続 
 GUI ツール MySQL Workbench を使用して Azure MySQL サーバーに接続する手順は次のとおりです。
@@ -49,7 +49,7 @@ GUI ツール MySQL Workbench を使用して Azure MySQL サーバーに接続�
 
 2.    **[Setup New Connection]\(新しい接続のセットアップ\)** ダイアログ ボックスで、次の情報を **[Parameters]\(パラメーター\)** タブに入力します。
 
-![新しい接続のセットアップ](./media/connect-workbench/2-setup-new-connection.png)
+:::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="新しい接続のセットアップ":::
 
 | **設定** | **推奨値** | **フィールドの説明** |
 |---|---|---|
@@ -103,7 +103,7 @@ GUI ツール MySQL Workbench を使用して Azure MySQL サーバーに接続�
 
     このスクリーンショットは、SQL Workbench に表示された SQL コードとその実行後の出力の例を示しています。
     
-    ![サンプル SQL コードを実行するための MySQL Workbench の SQL タブ](media/connect-workbench/3-workbench-sql-tab.png)
+    :::image type="content" source="media/connect-workbench/3-workbench-sql-tab.png" alt-text="サンプル SQL コードを実行するための MySQL Workbench の SQL タブ":::
 
 2. サンプル SQL コードを実行するには、 **[SQL File]\(SQL ファイル\)** タブのツールバーにある稲妻アイコンをクリックします。
 3. ページ中央の **[結果グリッド]** セクションの 3 つのタブに結果が表示されていることに注目してください。 

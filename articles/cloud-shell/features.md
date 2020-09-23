@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: ea11dddd83651e233f008197ffa23a3becd978de
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: a052364b06ac1b9b30cef76db10a79e8ed85b9a3
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642352"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89470155"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell の機能とツール
 
@@ -38,7 +38,7 @@ Cloud Shell は、Azure CLI と Azure PowerShell のアカウント アクセス
 セッション間でファイルを保持する場合、Cloud Shell の初回起動時に、Azure ファイル共有のアタッチについてのチュートリアルがあります。
 完了すると、今後すべてのセッションで、ストレージが自動的にアタッチされます (`$HOME\clouddrive` としてマウントされます) 。
 さらに、`$HOME` ディレクトリが .img として Azure ファイル共有に永続化されます。
-`$HOME` およびマシン状態の外部にあるファイルは、セッション間で保持されません。 SSH キーなどのシークレットを格納するときは、ベスト プラクティスを使用します。 [Azure Key Vault などのサービスには、設定用のチュートリアルが用意されています](https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#prerequisites)。
+`$HOME` およびマシン状態の外部にあるファイルは、セッション間で保持されません。 SSH キーなどのシークレットを格納するときは、ベスト プラクティスを使用します。 [Azure Key Vault などのサービスには、設定用のチュートリアルが用意されています](../key-vault/general/manage-with-cli2.md#prerequisites)。
 
 [Cloud Shell でのファイルの永続化については、こちらを参照してください。](persisting-shell-storage.md)
 
@@ -46,7 +46,7 @@ Cloud Shell は、Azure CLI と Azure PowerShell のアカウント アクセス
 
 Cloud Shell の PowerShell には、Azure ドライブ (`Azure:`) が備わっています。 「`cd Azure:`」で Azure ドライブに切り替えたり、「`cd  ~`」でホーム ディレクトリに戻ったりすることができます。
 Azure ドライブを使用すると、ファイル システムのナビゲーションと同じように、Compute、Network、Storage などの Azure リソースを簡単に検出およびナビゲーションできるようになります。
-使用しているドライブに関係なく、引き続き使い慣れた [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure)を使用してこれらのリソースを管理できます。
+使用しているドライブに関係なく、引き続き使い慣れた [Azure PowerShell コマンドレット](/powershell/azure)を使用してこれらのリソースを管理できます。
 Azure リソースに対するすべての変更は、Azure Portal で直接行われたものも、Azure PowerShell コマンドレット経由で行われたものも、Azure ドライブに反映されます。  `dir -Force` を実行してリソースを最新の情報に更新できます。
 
 ![初期化中の Azure Cloud Shell とディレクトリ リソースの一覧のスクリーンショット。](media/features-powershell/azure-drive.png)
@@ -72,12 +72,12 @@ Cloud Shell には、Terraform、Ansible、Chef InSpec などのオープンソ�
 |カテゴリ   |名前   |
 |---|---|
 |Linux ツール            |Bash<br> zsh<br> sh<br> tmux<br> dig<br>               |
-|Azure ツール            |[Azure CLI](https://github.com/Azure/azure-cli) と [Azure クラシック CLI](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)<br> [Azure Functions CLI](https://github.com/Azure/azure-functions-core-tools)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
+|Azure ツール            |[Azure CLI](https://github.com/Azure/azure-cli) と [Azure クラシック CLI](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](../storage/common/storage-use-azcopy-v10.md)<br> [Azure Functions CLI](https://github.com/Azure/azure-functions-core-tools)<br> [Service Fabric CLI](../service-fabric/service-fabric-cli.md)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
 |テキスト エディター           |コード (Cloud Shell エディター)<br> vim<br> nano<br> emacs    |
 |ソース管理         |git                    |
 |ビルド ツール            |make<br> maven<br> npm<br> pip         |
 |Containers             |[Docker マシン](https://github.com/docker/machine)<br> [kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS CLI](https://github.com/dcos/dcos-cli)         |
-|データベース              |MySQL クライアント<br> PostgreSql クライアント<br> [sqlcmd Utility](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
+|データベース              |MySQL クライアント<br> PostgreSql クライアント<br> [sqlcmd Utility](/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
 |その他                  |iPython クライアント<br> [Cloud Foundry CLI](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef InSpec](https://www.chef.io/inspec/)<br> [Puppet Bolt](https://puppet.com/docs/bolt/latest/bolt.html)<br> [HashiCorp Packer](https://www.packer.io/)<br> [Office 365 CLI](https://pnp.github.io/office365-cli/)|
 
 ## <a name="language-support"></a>言語のサポート
@@ -94,5 +94,5 @@ Cloud Shell には、Terraform、Ansible、Chef InSpec などのオープンソ�
 ## <a name="next-steps"></a>次のステップ
 [Cloud Shell の Bash のクイックスタート](quickstart.md) <br>
 [Cloud Shell の PowerShell のクイック スタート](quickstart-powershell.md) <br>
-[Azure CLI について](https://docs.microsoft.com/cli/azure/) <br>
-[Azure PowerShell の概要](https://docs.microsoft.com/powershell/azure/) <br>
+[Azure CLI について](/cli/azure/) <br>
+[Azure PowerShell の概要](/powershell/azure/) <br>

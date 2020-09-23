@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.date: 08/24/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: b0199af69eb5e7c05cee91a3a3cffd682aab75fd
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: e60cdfb00d0dc9d446bd52a72e9fd15676acd285
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89082241"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458197"
 ---
 # <a name="how-network-security-groups-filter-network-traffic"></a>ネットワーク セキュリティ グループによってネットワーク トラフィックをフィルター処理する方法
 <a name="network-security-groups"></a>
 
-Azure 仮想ネットワーク内の Azure リソースが送受信するネットワーク トラフィックは、Azure ネットワーク セキュリティ グループを使ってフィルター処理できます。 ネットワーク セキュリティ グループには、何種類かの Azure リソースとの送受信ネットワーク トラフィックを許可または拒否する[セキュリティ規則](https://docs.microsoft.com/azure/virtual-network/security-overview.md#security-rules)が含まれています。 各規則で、送信元と送信先、ポート、およびプロトコルを指定することができます。
+Azure 仮想ネットワーク内の Azure リソースが送受信するネットワーク トラフィックは、Azure ネットワーク セキュリティ グループを使ってフィルター処理できます。 ネットワーク セキュリティ グループには、何種類かの Azure リソースとの送受信ネットワーク トラフィックを許可または拒否する[セキュリティ規則](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)が含まれています。 各規則で、送信元と送信先、ポート、およびプロトコルを指定することができます。
 
 1 つの Azure 仮想ネットワークに、いくつかの Azure サービスのリソースをデプロイすることができます。 完全な一覧については、「[仮想ネットワークにデプロイできるサービス](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)」を参照してください。 仮想マシンの各仮想ネットワーク [サブネット](virtual-network-manage-subnet.md#change-subnet-settings)および[ネットワーク インターフェイス](virtual-network-network-interface.md#associate-or-dissociate-a-network-security-group)に、ゼロ個または 1 個のネットワーク セキュリティ グループを関連付けることができます。 同じネットワーク セキュリティ グループを、任意の数のサブネットとネットワーク インターフェイスに関連付けることができます。
 
@@ -46,7 +46,7 @@ Azure がネットワーク セキュリティ グループの受信規則と送
 
 送信トラフィックの場合、Azure はネットワーク インターフェイスに関連付けられているネットワーク セキュリティ グループがあれば、まずその規則を処理し、次にサブネットに関連付けられているネットワーク セキュリティ グループがあれば、その規則を処理します。
 
-- **VM1**:*NSG2* のセキュリティ規則が処理されます。 インターネットへのポート 80 送信を拒否するセキュリティ規則を作成しない限り、トラフィックは *NSG1* と *NSG2* の両方の [AllowInternetOutbound](https://docs.microsoft.com/azure/virtual-network/security-overview.md#allowinternetoutbound) 既定セキュリティ規則によって許可されます。 *NSG2* にポート 80 を拒否するセキュリティ規則がある場合、トラフィックは拒否され、*NSG1* によって評価されることはありません。 仮想マシンのポート 80 を拒否するには、ネットワーク セキュリティ グループのいずれかまたは両方に、インターネットへのポート 80 を拒否する規則が必要です。
+- **VM1**:*NSG2* のセキュリティ規則が処理されます。 インターネットへのポート 80 送信を拒否するセキュリティ規則を作成しない限り、トラフィックは *NSG1* と *NSG2* の両方の [AllowInternetOutbound](https://docs.microsoft.com/azure/virtual-network/security-overview#allowinternetoutbound) 既定セキュリティ規則によって許可されます。 *NSG2* にポート 80 を拒否するセキュリティ規則がある場合、トラフィックは拒否され、*NSG1* によって評価されることはありません。 仮想マシンのポート 80 を拒否するには、ネットワーク セキュリティ グループのいずれかまたは両方に、インターネットへのポート 80 を拒否する規則が必要です。
 - **VM2**:すべてのトラフィックがネットワーク インターフェイスを介してサブネットに送信されます。*VM2* に接続されているネットワーク インターフェイスに、ネットワーク セキュリティ グループが関連付けられていないためです。 *NSG1* の規則が処理されます。
 - **VM3**:*NSG2* にポート 80 を拒否するセキュリティ規則がある場合、トラフィックは拒否されます。 *NSG2* にポート 80 を許可するセキュリティ規則がある場合、ネットワーク セキュリティ グループが *Subnet2* に関連付けられていないため、ポート 80 はインターネットへの送信を許可されます。
 - **VM4**:ネットワーク セキュリティ グループが、仮想マシンに接続されているネットワーク インターフェイスにも *Subnet3* にも関連付けられていないため、*VM4* からのすべてのネットワーク トラフィックが許可されます。

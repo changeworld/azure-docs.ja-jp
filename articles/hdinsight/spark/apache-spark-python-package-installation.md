@@ -8,18 +8,14 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 59de3eb2370029ab9edcb609298c7b1fdf5f8ff8
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 09d1063f704c37eb31546be08765f2b5b6fb8632
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873757"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90060749"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>スクリプト アクションを使用して Azure HDInsight で Python 環境を安全に管理する
-
-> [!div class="op_single_selector"]
-> * [cell magic の使用](apache-spark-jupyter-notebook-use-external-packages.md)
-> * [スクリプト アクションの使用](apache-spark-python-package-installation.md)
 
 HDInsight では、Spark クラスターに 2 つの Python のインストール (Anaconda Python 2.7 と Python 3.5) が組み込まれています。 場合によっては、顧客が Python 環境のカスタマイズを行う必要があります ( 外部の Python パッケージや別の Python バージョンのインストールなど)。 ここでは、HDInsight 上の Apache Spark クラスターで Python 環境を安全に管理するためのベスト プラクティスについて説明します。
 
@@ -132,7 +128,7 @@ HDInsight クラスターは、組み込みの Python 環境 (Python 2.7 と Pyt
 
     4. 変更を保存し、影響を受けるサービスを再起動します。 これらの変更では、Spark2 サービスを再起動する必要があります。 Ambari UI によって、再起動が必要であることを示すリマインダーが表示されます。[再起動] をクリックして、影響を受けるすべてのサービスを再起動します。
 
-        ![Ambari を通して Spark 構成を変更する](./media/apache-spark-python-package-installation/ambari-restart-services.png)
+        ![Restart services](./media/apache-spark-python-package-installation/ambari-restart-services.png)
 
 4. 新しく作成された仮想環境を Jupyter で使用する場合は、 Jupyter の構成を変更し、Jupyter を再起動します。 次のステートメントを使用して、すべてのヘッダー ノードでスクリプト アクションを実行して、新たに作成された仮想環境に対して Jupyter をポイントします。 パスを仮想環境用に指定したプレフィックスに必ず変更してください。 このスクリプト アクションを実行した後、Ambari UI から Jupyter サービスを再起動して、この変更を使用できるようにします。
 

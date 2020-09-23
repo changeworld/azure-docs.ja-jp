@@ -11,15 +11,15 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 7448da5149bb859f25de2110aa929a40f872c26b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: b310f195477f4cba83ef30c6fb5ea2fd24c4df9a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378901"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897373"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>ワークスペースで Jupyter ノートブックを実行する方法
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Azure Machine Learning Studio のワークスペースで Jupyter ノートブックを直接実行する方法について説明します。 [Jupyter](https://jupyter.org/) または [JupyterLab](https://jupyterlab.readthedocs.io) を起動できますが、ワークスペースから離れずにノートブックを編集して実行することもできます。
 
@@ -77,12 +77,12 @@ Azure Machine Learning ワークスペースで、新しい Jupyter ノートブ
 1. [Azure Machine Learning Studio](https://ml.azure.com) で、ワークスペースを開きます。
 1. 左側にある **[Notebooks]\(ノートブック\)** を選択します。
 1. 左側の **[User files]\(ユーザー ファイル\)** セクションにある任意のノートブックを選択します。  ノートブックがない場合は、まず[ノートブックを作成](#create)します
-1. **[コンピューティング]** ターゲットを選択するか、新しいターゲットを作成し、それが実行されるまで待ちます。
+1. **[コンピューティング]** 先を選択するか、新しいものを作成し、それが実行されるまで待ちます。
 1. **[Open terminal]\(ターミナルを開く\)** アイコンを選択します。
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="ターミナルを開きます":::
 
-1. アイコンが表示されない場合は、コンピューティング ターゲットの右側にある **[...]** を選択し、 **[Open terminal]\(ターミナルを開く\)** を選択します。
+1. アイコンが表示されない場合は、コンピューティング ターゲットの右側にある **[...]** を選択し、 **[ターミナルを開く]** を選択します。
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="[...] の [Open terminal]\(ターミナルを開く\)":::
 
@@ -92,7 +92,7 @@ Azure Machine Learning ワークスペースで、新しい Jupyter ノートブ
 
 ### <a name="share-notebooks-and-other-files"></a>ノートブックとその他のファイルを共有する
 
-ノートブックまたはファイルを共有するには、URL をコピーして貼り付けます。  ワークスペースの他のユーザーのみがこの URL にアクセスできます。  詳細については、[ワークスペースへのアクセスの許可](how-to-assign-roles.md)に関する記事を参照してください。
+ノートブックまたはファイルを共有するには、URL をコピーして貼り付けます。  この URL にアクセスできるのは、ワークスペースの他のユーザーだけです。  詳細については、[ワークスペースへのアクセスの許可](how-to-assign-roles.md)に関する記事を参照してください。
 
 ## <a name="edit-a-notebook"></a>ノートブックを編集する
 
@@ -109,6 +109,22 @@ Notebook ツールバーから Jupyter または JupyterLab を起動するこ�
 [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) は、次のような多くの機能を備えたコード補完支援機能です: メンバーの一覧表示、パラメーター ヒント、クイック ヒント、入力候補。 これらの機能を使うと、数回のキーストロークだけで使用するコードの詳細を確認したり、入力するパラメーターを追跡したり、プロパティやメソッドの呼び出しを追加したりできます。  
 
 コードを入力するときは、Ctrl + Space キーを使用して IntelliSense をトリガーします。
+
+### <a name="clean-your-notebook-preview"></a>ノートブックをクリーンアップする (プレビュー)
+
+> [!IMPORTANT]
+> 現在、この収集機能はパブリック プレビュー段階にあります。
+> プレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+ノートブックを作成しているうちに、一般的にはデータの探索やデバッグに使用したセルが溜まっていきます。 *収集*機能を使用すると、これらの不要なセルが含まれないクリーンなノートブックを作成できます。
+
+1. すべてのノートブック セルを実行します。
+1. 新しいノートブックを実行するコードが含まれているセルを選択します。 たとえば、実験を送信するコードや、あるいはモデルを登録するコードなどです。
+1. セルのツールバーに表示される **[収集]** アイコンを選択します。
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="スクリーンショット: [収集] アイコンを選択します":::
+1. 新しい "収集された" ノートブックの名前を入力します。  
+
+新しいノートブックにはコード セルのみが含まれており、収集するよう選択したセルと同じ結果を得るために必要なすべてのセルが含まれています。
 
 ### <a name="save-and-checkpoint-a-notebook"></a>ノートブックを保存およびチェックポイントする
 
@@ -157,7 +173,7 @@ Notebook ツールバーから Jupyter または JupyterLab を起動するこ�
 
 ### <a name="view-logs-and-output"></a>ログと出力を表示する
 
-[Notebook ウィジェット](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)を使用して、実行の進行状況とログを表示します。 ウィジェットは非同期であり、トレーニングが終了するまで更新情報が表示されます。 Azure Machine Learning ウィジェットは、Jupyter および JupterLab でもサポートされています。
+[Notebook ウィジェット](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)を使用して、実行の進行状況とログを表示します。 ウィジェットは非同期であり、トレーニングが終了するまで更新情報が表示されます。 Azure Machine Learning ウィジェットは、Jupyter および JupterLab でもサポートされています。
 
 ## <a name="change-the-notebook-environment"></a>ノートブック環境を変更する
 

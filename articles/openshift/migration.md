@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/13/2020
 keywords: 移行、aro、OpenShift、Red Hat
-ms.openlocfilehash: 68e8be24273dfab490d2423b76c372f2ff9f2b38
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 322c0cf5ece2a9c950e71b947e2aa6088a165cb8
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88513066"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469747"
 ---
 # <a name="migrate-from-azure-red-hat-openshift-311-to-azure-red-hat-openshift-4"></a>Azure Red Hat OpenShift 3.11 から Azure Red Hat OpenShift 4 への移行
 
@@ -100,7 +100,7 @@ Azure Red Hat OpenShift 4 では、次の PersistentVolume プラグインがサ
 
 Azure Red Hat OpenShift 4 では、ソース コードからイメージをビルドし、デプロイし、ライフサイクルを管理できます。 これを可能にするために、Azure Red Hat OpenShift 4 では、お使いの Azure Red Hat OpenShift 環境にデプロイしてイメージをローカルで管理できる、[内部の統合されたコンテナー イメージ レジストリ](https://docs.openshift.com/aro/4/registry/registry-options.html)が提供されています。
 
-[Azure Container Registry](https://docs.microsoft.com/azure/container-registry/)、[Red Hat Quay レジストリ](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-quay-overview_registry-options)、[認証が有効になっている Red Hat レジストリ](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-authentication-enabled-registry-overview_registry-options)などの外部レジストリを使用している場合は、手順に従って、クラスターに資格情報を提供してクラスターがリポジトリにアクセスできるようにします。
+[Azure Container Registry](../container-registry/index.yml)、[Red Hat Quay レジストリ](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-quay-overview_registry-options)、[認証が有効になっている Red Hat レジストリ](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-authentication-enabled-registry-overview_registry-options)などの外部レジストリを使用している場合は、手順に従って、クラスターに資格情報を提供してクラスターがリポジトリにアクセスできるようにします。
 
 ### <a name="monitoring"></a>監視
 
@@ -128,4 +128,3 @@ az openshift delete --name $CLUSTER_NAME
 ```
 ## <a name="next-steps"></a>次のステップ
 Red Hat から提供されている Azure Red Hat OpenShift のドキュメントについては、[こちら](https://docs.openshift.com/aro/4/welcome/index.html)をご覧ください。
-

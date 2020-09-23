@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: 93f7107af18d6720784bd2f249e51a9c96705d3f
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: cf8fdd8d91c035d374277c4752fb761c0c4e72c7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378578"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905618"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>セキュリティ アラートと推奨事項のエクスポート
 
@@ -33,8 +33,8 @@ Azure Security Center では、詳細なセキュリティ アラートと推奨
 
 |側面|詳細|
 |----|:----|
-|リリース状態:|一般公開|
-|価格:|Free レベル|
+|リリース状態:|一般提供 (GA)|
+|価格:|Free|
 |必要なロールとアクセス許可:|リソース グループ上での**セキュリティ管理者ロール** (または**所有者**)<br>ターゲット リソースに対する書き込みアクセス許可も必要になります|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![はい](./media/icons/yes-icon.png) 中国政府 (Event Hub に)、その他の政府|
 |||
@@ -54,6 +54,18 @@ Azure Security Center では、詳細なセキュリティ アラートと推奨
     [![Azure Security Center のエクスポート オプション](media/continuous-export/continuous-export-options-page.png)](media/continuous-export/continuous-export-options-page.png#lightbox) - ここにエクスポート オプションが表示されます。 使用可能なエクスポート ターゲットごとにタブがあります。 
 
 1. エクスポートするデータの種類を選択し、それぞれの種類に対するフィルターを選択します (たとえば、重大度が高いアラートのみをエクスポートするなど)。
+
+1. 必要に応じて、選択範囲に次の 4 つの推奨事項のいずれかが含まれている場合は、脆弱性評価の結果を含めることができます。
+
+    - SQL データベースの脆弱性評価の結果を修復する必要がある
+    - マシン上の SQL サーバーの脆弱性評価の結果を修復する必要がある (プレビュー)
+    - Azure Container Registry イメージの脆弱性を修復する必要がある (Qualys を利用)
+    - 仮想マシンの脆弱性を修復する必要がある
+
+    結果とこれらの推奨事項を含めるには、 **[セキュリティに関する調査結果を含める]** オプションを有効にします。
+
+    :::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="連続エクスポート構成でのセキュリティに関する調査結果トグルを含める" :::
+
 
 1. [エクスポート ターゲット] 領域で、データを保存する場所を選択します。 データは別のサブスクリプションのターゲットにも保存できます (たとえば、中央のイベント ハブ インスタンスや中央の Log Analytics ワークスペースなど)。
 
@@ -113,11 +125,11 @@ Azure Event Hubs は、ストリーミング データをプログラムで使�
 
 Log Analytics ワークスペース内の Azure Security Center データを分析したり、Security Center と共に Azure アラートを使用したりする場合は、Log Analytics ワークスペースへの連続エクスポートを設定します。
 
-Log Analytics ワークスペースにエクスポートするには、ワークスペースで Security Center の Log Analytics ソリューションが有効になっている必要があります。 Azure portal を使用している場合は、連続エクスポートを有効にすると、Security Center の Free レベルのソリューションが自動的に有効になります。 一方、連続エクスポートの設定をプログラムによって構成する場合は、必要なワークスペースに対して、 **[価格と設定]** 内から手動で Free または Standard の価格レベルを選択する必要があります。  
+Log Analytics ワークスペースにエクスポートするには、ワークスペースで Security Center の Log Analytics ソリューションが有効になっている必要があります。 Azure portal を使用している場合は、連続エクスポートを有効にすると、Security Center の無料のソリューションが自動的に有効になります。 ただし、連続エクスポートの設定をプログラムによって構成する場合は、 **[価格と設定]** ページ内から手動で Azure Defender をオンまたはオフにする必要があります。
 
 ### <a name="log-analytics-tables-and-schemas"></a>Log Analytics のテーブルとスキーマ
 
-セキュリティのアラートと推奨事項はそれぞれ、*SecurityAlert* テーブルと *SecurityRecommendations* テーブルに格納されます。 これらのテーブルを含む Log Analytics ソリューションの名前は、使用しているレベルが Free か Standard かに応じて ([価格](security-center-pricing.md)を参照してください)、Security('Security and Audit') または SecurityCenterFree。
+セキュリティのアラートと推奨事項はそれぞれ、*SecurityAlert* テーブルと *SecurityRecommendations* テーブルに格納されます。 これらのテーブルを含む Log Analytics ソリューションの名前は、Azure Defender を有効にしたかどうかによって異なります。Security ("Security and Audit") または SecurityCenterFree。
 
 ![Log Analytics の *SecurityAlert* テーブル](./media/continuous-export/log-analytics-securityalert-solution.png)
 

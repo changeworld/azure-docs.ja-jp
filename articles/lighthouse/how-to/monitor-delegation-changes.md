@@ -1,14 +1,14 @@
 ---
 title: 管理テナントでの委任変更を監視する
 description: 顧客テナントから管理テナントへの委任アクティビティを監視する方法について説明します。
-ms.date: 08/18/2020
+ms.date: 09/08/2020
 ms.topic: how-to
-ms.openlocfilehash: 4d9d8b18634f94c355ea7fc0b5c125d631ec419c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 19c8cd4fa2b43961c46640a736a91e3fed3ac79d
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589743"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567607"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>管理テナントでの委任変更を監視する
 
@@ -48,6 +48,9 @@ ms.locfileid: "88589743"
 - このサービス プリンシパルに、委任された顧客リソースへのアクセス権がないことを確認してください。
 - [証明書を使用して認証](../../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in)を行い、[それを Azure Key Vault に安全に格納します](../../key-vault/general/best-practices.md)。
 - サービス プリンシパルの代理として機能するアクセス権を持つユーザーを制限します。
+
+> [!NOTE]
+> また、監視閲覧者 Azure 組み込みロールをルート スコープで、個々のユーザーまたはユーザー グループに割り当てることもできます。 これは、ユーザーが [Azure portal で直接委任情報を表示](#view-delegation-changes-in-the-azure-portal)できるようにする場合に役立ちます。 これを行う場合、これが広範囲にわたるアクセス レベルであり、可能な限り少数のユーザーに制限する必要があることに留意してください。
 
 次のいずれかの方法を使用して、ルート スコープの割り当てを行います。
 
@@ -164,6 +167,15 @@ else {
 
 > [!TIP]
 > このトピックではサービス プロバイダーと顧客の場合について説明していますが、[複数のテナントを管理するエンタープライズ](../concepts/enterprise.md)も同じプロセスを使用できます。
+
+## <a name="view-delegation-changes-in-the-azure-portal"></a>Azure portal で委任変更を表示する
+
+ルート スコープで監視閲覧者 Azure 組み込みロールが割り当てられているユーザーは、Azure portal で直接、委任変更を表示できます。
+
+1. **[マイ カスタマー]** ページに移動し、左側のナビゲーション メニューから **[アクティビティ ログ]** を選択します。
+1. 画面の上部付近にあるフィルターで **[ディレクトリ アクティビティ]** が選択されていることを確認します。
+
+委任変更の一覧が表示されます。 **[列の編集]** を選択して、 **[状態]** 、 **[イベント カテゴリ]** 、 **[時刻]** 、 **[タイム スタンプ]** 、 **[サブスクリプション]** 、 **[イベント開始者]** 、 **[リソース グループ]** 、 **[リソース タイプ]** 、 **[リソース]** の値を表示または非表示にすることができます。
 
 ## <a name="next-steps"></a>次のステップ
 

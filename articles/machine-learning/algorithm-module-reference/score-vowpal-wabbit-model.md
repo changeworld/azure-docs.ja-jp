@@ -8,15 +8,15 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/02/2020
-ms.openlocfilehash: 02f4fe4f97d3e976675757835e3931666d1c6410
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 23dfee7b78f2606c54525391e1260af69a9b0779
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857717"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898401"
 ---
 # <a name="score-vowpal-wabbit-model"></a>Vowpal Wabbit モデルのスコアリング
-この記事では、Azure Machine Learning デザイナー (プレビュー) で **Vowpal Wabbit モデルのスコアリング** モジュールを使用して、既存のトレーニング済み Vowpal Wabbit モデルを使用して入力データ セットのスコアを生成する方法について説明します。  
+この記事では、Azure Machine Learning デザイナーで **Vowpal Wabbit モデルのスコアリング** モジュールを使用して、既存のトレーニングされた Vowpal Wabbit モデルを使用して入力データ セットのスコアを生成する方法について説明します。  
 
 このモジュールは、Vowpal Wabbit フレームワークの最新バージョンであるバージョン 8.8.1 を提供します。 このモジュールを使用して、VW バージョン 8 形式で保存されたトレーニング済みのモデルを使用してデータをスコア付けします。  
 

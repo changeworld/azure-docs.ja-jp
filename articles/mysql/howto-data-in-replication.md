@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 8/7/2020
-ms.openlocfilehash: f8dbdf87eef193540fd5c1bf9d9e7f3794ae46ce
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 8ebb524a5297380fca575ce6849fe4c5f15507cb
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168220"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903995"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database for MySQL のデータイン レプリケーションを構成する方法
 
@@ -105,15 +105,15 @@ ms.locfileid: "88168220"
 
    レプリケーション ロールを MySQL Workbench で作成するには、 **[Management]\(管理\)** パネルから **[Users and Privileges]\(ユーザーと権限\)** パネルを開きます。 次に、 **[Add Account]\(アカウントの追加\)** をクリックします。 
  
-   ![[Users and Privileges]\(ユーザーと権限\)](./media/howto-data-in-replication/users_privileges.png)
+   :::image type="content" source="./media/howto-data-in-replication/users_privileges.png" alt-text="[Users and Privileges]\(ユーザーと権限\)":::
 
    **[Login Name]\(ログイン名\)** フィールドにユーザー名を入力します。 
 
-   ![同期ユーザー](./media/howto-data-in-replication/syncuser.png)
+   :::image type="content" source="./media/howto-data-in-replication/syncuser.png" alt-text="同期ユーザー":::
  
    **[Administrative Roles]\(管理者ロール\)** パネルをクリックし、 **[Global Privileges]\(グローバル権限\)** の一覧から **[Replication Slave]\(レプリケーション スレーブ\)** を選択します。 次に、 **[Apply]\(適用\)** をクリックして、レプリケーション ロールを作成します。
 
-   ![[Replication Slave]\(レプリケーション スレーブ\)](./media/howto-data-in-replication/replicationslave.png)
+   :::image type="content" source="./media/howto-data-in-replication/replicationslave.png" alt-text="[Replication Slave]\(レプリケーション スレーブ\)":::
 
 1. マスター サーバーを読み取り専用モードに設定する
 
@@ -133,7 +133,7 @@ ms.locfileid: "88168220"
    ```
    その結果は次のようになります。 バイナリ ファイルの名前は、この後の手順で使用するので書き留めておいてください。
 
-   ![master status の結果](./media/howto-data-in-replication/masterstatus.png)
+   :::image type="content" source="./media/howto-data-in-replication/masterstatus.png" alt-text="master status の結果":::
  
 ## <a name="dump-and-restore-master-server"></a>マスター サーバーのダンプと復元
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
-ms.openlocfilehash: 6682d9426ed3fe011fe5c493ec34fcdf0a2b35b7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a1a09357c7f80d4af0198a33a2e0007782ef232f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094631"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905244"
 ---
 # <a name="poisson-regression"></a>ポワソン回帰
 
-この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナーのモジュールについて説明します。
 
 このモジュールを使用して、パイプラインでポワソン回帰モデルを作成します。 ポワソン回帰の目的は、数値 (通常はカウント) を予測することです。 したがって、予測を試みている値が次の条件を満たす場合にのみ、このモジュールを使用して回帰モデルを作成する必要があります。
 
@@ -49,7 +49,7 @@ ms.locfileid: "87094631"
 
 ## <a name="how-to-configure-poisson-regression"></a>ポワソン回帰を構成する方法
 
-1. デザイナー (プレビュー) でパイプラインに**ポワソン回帰**モジュールを追加します。 このモジュールは、 **[Machine Learning Algorithms]\(機械学習アルゴリズム\)** の **[回帰]** カテゴリにあります。
+1. デザイナーでパイプラインに**ポワソン回帰**モジュールを追加します。 このモジュールは、 **[Machine Learning Algorithms]\(機械学習アルゴリズム\)** の **[回帰]** カテゴリにあります。
 
 2. 適切な種類のトレーニング データが含まれるデータセットを追加します。 
 

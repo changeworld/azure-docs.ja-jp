@@ -1,30 +1,30 @@
 ---
-title: デザイナー (プレビュー) のパイプラインとデータセットのサンプル
+title: デザイナーのパイプラインとデータセットのサンプル
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning デザイナーのサンプルを使用することで、機械学習パイプラインをすぐに開始できます。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: sample
-author: peterclu
-ms.author: peterlu
-ms.date: 03/29/2020
+author: likebupt
+ms.author: keli19
+ms.date: 09/09/2020
 ms.custom: designer
-ms.openlocfilehash: c4fa5a2554f10a720c0f2241e17514e798cf7f4c
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 15393a0e618c14fbaff46a51a300284d8afb4b77
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88812939"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889744"
 ---
-# <a name="example-pipelines--datasets-for-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナー (プレビュー) のパイプラインとデータセットのサンプル
+# <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーのパイプラインとデータセットのサンプル
 
 Azure Machine Learning デザイナーの組み込みサンプルを使用すると、独自の機械学習パイプラインの構築をすぐに開始できます。 Azure Machine Learning デザイナーの [GitHub リポジトリ](https://github.com/Azure/MachineLearningDesigner)には、一般的な機械学習のシナリオを理解するのに役立つ詳細なドキュメントが含まれています。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://aka.ms/AMLFree)を作成してください。
-* Enterprise SKU の Azure Machine Learning ワークスペース。
+* Azure サブスクリプション。 Azure サブスクリプションを持っていない場合は[無料アカウント](https://aka.ms/AMLFree)を作成する
+* Azure Machine Learning ワークスペース 
 
 [!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
@@ -67,8 +67,8 @@ Azure Machine Learning デザイナーの組み込みサンプルを使用する
 
 | サンプル タイトル | 説明 | 
 | --- | --- |
-| [サンプル 1: 回帰 - 自動車価格の予測 (基本)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-basic.md) | 線形回帰を使用して自動車の価格を予測します。 |
-| [サンプル 2: 回帰 - 自動車価格の予測 (詳細)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-compare-algorithms.md) | デシジョン フォレストとブースト デシジョンツリー リグレッサーを使用して、自動車の価格を予測します。 モデルを比較して、最適なアルゴリズムを見つけてください。
+| [回帰 - 自動車価格の予測 (基本)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-basic.md) | 線形回帰を使用して自動車の価格を予測します。 |
+| [回帰 - 自動車価格の予測 (詳細)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-compare-algorithms.md) | デシジョン フォレストとブースト デシジョンツリー リグレッサーを使用して、自動車の価格を予測します。 モデルを比較して、最適なアルゴリズムを見つけてください。
 
 ## <a name="classification"></a>分類
 
@@ -76,11 +76,19 @@ Azure Machine Learning デザイナーの組み込みサンプルを使用する
 
 | サンプル タイトル | 説明 | 
 | --- | --- |
-| [サンプル 3: 特徴の選択による二項分類 - 収入の予測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-predict-income.md) | 2 クラスのブースト デシジョン ツリーを使用して、収入を高または低として予測します。 ピアソンの相関関係を使用して、特徴を選択します。
-| [サンプル 4: カスタム Python スクリプトを使用した二項分類 - 信用リスクの予測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-credit-risk-cost-sensitive.md) | クレジット申込書を高リスクまたは低リスクとして分類します。 Python スクリプトの実行モジュールを使用して、データを重み付けします。
-| [サンプル 5: 二項分類 - 顧客関係の予測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-churn.md) | 2 クラス ブースト デシジョン ツリーを使用して、顧客離反を予測します。 偏りのあるデータをサンプリングするには、SMOTE を使用します。
-| [サンプル 7: テキスト分類 - Wikipedia SP 500 データセット](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-text-classification.md) | 多クラス ロジスティック回帰を使用して、Wikipedia の記事から会社の種類を分類します。 |
-| サンプル 12: 多クラス分類 - 文字認識 | 一連の二項分類器を作成して、手書きの文字を分類します。 |
+| [特徴の選択による二項分類 - 収入の予測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-predict-income.md) | 2 クラスのブースト デシジョン ツリーを使用して、収入を高または低として予測します。 ピアソンの相関関係を使用して、特徴を選択します。
+| [カスタム Python スクリプトを使用した二項分類 - 信用リスクの予測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-credit-risk-cost-sensitive.md) | クレジット申込書を高リスクまたは低リスクとして分類します。 Python スクリプトの実行モジュールを使用して、データを重み付けします。
+| [二項分類 - 顧客関係の予測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-churn.md) | 2 クラス ブースト デシジョン ツリーを使用して、顧客離反を予測します。 偏りのあるデータをサンプリングするには、SMOTE を使用します。
+| [テキスト分類 - Wikipedia SP 500 データセット](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-text-classification.md) | 多クラス ロジスティック回帰を使用して、Wikipedia の記事から会社の種類を分類します。 |
+| 多クラス分類 - 文字認識 | 一連の二項分類器を作成して、手書きの文字を分類します。 |
+
+## <a name="computer-vision"></a>Computer Vision
+
+以下の組み込みの Computer Vision のサンプルを確認します。 ドキュメント リンクのないサンプルの詳細については、代わりにサンプルを開いてモジュールのコメントをご確認ください。
+
+| サンプル タイトル | 説明 | 
+| --- | --- |
+| ワイド & ディープ ベースの推奨事項 - レストラン評価の予測 | レストランとユーザーの特徴量および評価から、レストラン レコメンダー エンジンを構築します。|
 
 ## <a name="recommender"></a>レコメンダー
 
@@ -88,7 +96,7 @@ Azure Machine Learning デザイナーの組み込みサンプルを使用する
 
 | サンプル タイトル | 説明 | 
 | --- | --- |
-| サンプル 10: レコメンデーション - 映画の評価ツイート | 映画のタイトルと評価から映画レコメンダー エンジンを作成します。 |
+| DenseNet を使用した画像の分類 | Computer Vision モジュールを使用して、PyTorch DenseNet を基にした画像の分類モデルを構築します。| 
 
 ## <a name="utility"></a>ユーティリティ
 
@@ -96,10 +104,11 @@ Azure Machine Learning デザイナーの組み込みサンプルを使用する
 
 | サンプル タイトル | 説明 | 
 | --- | --- |
-| [サンプル 6: カスタム R スクリプトの使用 - フライトの遅延予測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-flight-delay.md) |
-| サンプル 8: 二項分類のクロス検証 - 成人の収入予測 | クロス検証を使用して、成人の収入予測のための二項分類器を作成します。
-| サンプル 9: 順列の特徴量の重要度 | 順列の特徴量の重要度を使用して、テスト データセットの重要度スコアを計算します。 
-| サンプル 11: 二項分類のパラメーターの調整 - 成人の収入予測 | モデルのハイパーパラメーターの調整を使用して、バイナリ分類器の作成に最適なハイパーパラメーターを見つけます。 |
+| Vowpal Wabbit モデルを使用した二項分類 - 成人の収入予測 | Vowpal Wabbit は、オンライン、ハッシュ、allreduce、リダクション、learning2search、アクティブ、対話型学習などの手法を使用した機械学習のフロンティアをプッシュする機械学習システムです。 このサンプルでは、Vowpal Wabbit モデルを使用して二項分類モデルを作成する方法を示します。 
+| [カスタム R スクリプトの使用 - フライトの遅延予測](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-flight-delay.md) | カスタマイズされた R スクリプトを使用して、予定されている旅客便が 15 分以上遅れるかどうかを予測します。
+| 二項分類のクロス検証 - 成人の収入予測 | クロス検証を使用して、成人の収入予測のための二項分類器を作成します。
+| 順列の特徴量の重要度 | 順列の特徴量の重要度を使用して、テスト データセットの重要度スコアを計算します。 
+| 二項分類のパラメーターの調整 - 成人の収入予測 | モデルのハイパーパラメーターの調整を使用して、バイナリ分類器の作成に最適なハイパーパラメーターを見つけます。 |
 
 ## <a name="datasets"></a>データセット
 
