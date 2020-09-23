@@ -14,20 +14,20 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2019
+ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: ebc9756afc43648f2b44ca317abe3373807f4efa
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 68ccd21af585d853592ab8cce24f251d810a4160
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85564626"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889196"
 ---
 # <a name="what-is-azure-sentinel"></a>Azure Sentinel とは
 
 Microsoft Azure Sentinel は、スケーラブルでクラウドネイティブ型の**セキュリティ情報イベント管理 (SIEM)** および**セキュリティ オーケストレーション自動応答 (SOAR)** ソリューションです。 Azure Sentinel は、高度なセキュリティ分析と脅威インテリジェンスを企業全体で実現し、アラートの検出、脅威の可視性、予防的な捜索、および脅威への対応のための 1 つのソリューションを提供します。 
 
-Azure Sentinel を使用すると、ますます巧妙化する攻撃、増加するアラート、長い解決期間のストレスを軽減し、企業全体を俯瞰できます。
+Azure Sentinel を使用すると、ますます巧妙化する攻撃、増加するアラート、解決までに長い期間がかかることに伴うストレスを軽減し、企業全体を俯瞰的に見ることができます。
 
 - **クラウドの規模でデータを収集**します。オンプレミスと複数のクラウド内の両方ですべてのユーザー、デバイス、アプリケーション、インフラストラクチャにわたって収集します。 
 
@@ -43,7 +43,7 @@ Azure Sentinel は、既存のさまざまな Azure サービスを基に構築�
 
 ## <a name="connect-to-all-your-data"></a>すべてのデータに接続する
 
-Azure Sentinel をオンボードするには、まず[セキュリティ ソースに接続する](connect-data-sources.md)必要があります。 Azure Sentinel には、Microsoft Threat Protection ソリューションや Microsoft 365 ソース (Office 365、Azure AD、Azure ATP、Microsoft Cloud App Security) など、すぐに使用できるリアルタイム統合を提供する Microsoft ソリューション用コネクタが多数付属しています。 さらに、Microsoft 以外のソリューション用のより広範なセキュリティ エコシステムへの組み込みコネクタがあります。 一般的なイベント形式 (Syslog や REST-API) を使用して、データ ソースを Azure Sentinel に接続することもできます。  
+Azure Sentinel をオンボードするには、まず[セキュリティ ソースに接続する](connect-data-sources.md)必要があります。 Azure Sentinel には、Microsoft 365 Defender (旧 Microsoft Threat Protection) ソリューションや、Office 365、Azure AD、Microsoft Defender for Identity (旧 Azure ATP)、Microsoft Cloud App Security を含む Microsoft 365 ソースなど、すぐに使用できる、かつリアルタイムの統合を提供する Microsoft ソリューション用コネクタが多数付属しています。 さらに、Microsoft 以外のソリューション用のより広範なセキュリティ エコシステムへの組み込みコネクタがあります。 一般的なイベント形式 (Syslog や REST-API) を使用して、データ ソースを Azure Sentinel に接続することもできます。 
 
 ![データ コレクター](./media/collect-data/collect-data-page.png)
 
@@ -82,13 +82,13 @@ Azure Sentinel に [データソースを接続](quickstart-onboard.md) した
 
 MITER フレームワークに基づく Azure Sentinel の[強力な捜索検索およびクエリ ツール](hunting.md)を使用すると、アラートがトリガーされる前に、組織のデータ ソース全体でセキュリティの脅威を予防的に捜索することができます。 攻撃の可能性について重要な分析情報を提供する捜索クエリがわかったら、クエリに基づいてカスタム検出ルールを作成し、セキュリティ インシデントの対応者へのアラートとしてそのような分析情報を表示することができます。 捜索中に興味深いイベントのブックマークを作成し、後で戻って他のユーザーと共有し、他の関連イベントとグループ化して、説得力のある調査のインシデントを作成することができます。
 
-![検出](./media/overview/hunting.png)
+![ハンティング機能の概要](./media/overview/hunting.png)
 
 ## <a name="community"></a>コミュニティ
 
 Azure Sentinel コミュニティは、脅威の検出とオートメーションのための強力なリソースです。 Microsoft のセキュリティ アナリストは、新しいブック、プレイブック、捜索クエリなどを常に作成して追加し、お客様の環境で使用できるようにそれらをコミュニティに投稿しています。 プライベート コミュニティの GitHub [リポジトリ](https://aka.ms/asicommunity)からサンプル コンテンツをダウンロードして、Azure Sentinel 用のカスタム ブック、捜索クエリ、ノートブック、プレイブックを作成できます。 
 
-![コミュニティ](./media/overview/community.png)
+![ユーザー コミュニティを探索する](./media/overview/community.png)
 
 ## <a name="next-steps"></a>次のステップ
 

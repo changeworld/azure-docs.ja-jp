@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a4b0cb9b53adbf6362d79766fcd7bce57f5441ac
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: fd68f720f372ee61f7c441ea83bd365bc2a6f36a
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322838"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032743"
 ---
 # <a name="azure-security-baseline-for-azure-monitor"></a>Azure Monitor 用の Azure セキュリティ ベースライン
 
@@ -80,7 +80,7 @@ Private Link で Azure Monitor を使用すると、'プライベート エン�
 
 - [インターネットにアクセスできないコンピューターを Azure Monitor で Log Analytics ゲートウェイを使って接続する](platform/gateway.md) 
 
-- [Application Insights の概要を参照する](//azure/azure-monitor/app/app-insights-overview#get-started)
+- [Application Insights の概要を参照する](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview#get-started)
 
 - [可用性 Web テストを設定する方法](app/monitor-web-app-availability.md)
 

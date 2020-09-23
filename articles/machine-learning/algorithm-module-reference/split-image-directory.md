@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: 9673b3260425fd9244c635beaf77d367a14cac54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63ae7115f905523a3aac131fd7e77b56eb695243
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809919"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890260"
 ---
 # <a name="split-image-directory"></a>イメージ ディレクトリの分割
 
-このトピックでは、Azure Machine Learning デザイナー (プレビュー) の Split Image Directory モジュールを使用して、画像ディレクトリの画像を 2 つの異なるセットに分割する方法について説明します。
+このトピックでは、Azure Machine Learning デザイナーのイメージ ディレクトリの分割モジュールを使用して、画像ディレクトリの画像を 2 つの異なるセットに分割する方法について説明します。
 
 このモジュールは、画像データをトレーニング セットとテスト セットに分割する必要がある場合に特に便利です。 
 

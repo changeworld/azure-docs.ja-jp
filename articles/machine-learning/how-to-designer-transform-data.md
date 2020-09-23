@@ -1,7 +1,7 @@
 ---
-title: デザイナーでデータを変換する (プレビュー)
+title: デザイナーでデータを変換する
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning デザイナー (プレビュー) でデータを変換して、独自のデータセットを作成する方法について説明します。
+description: Azure Machine Learning デザイナーでデータを変換して、独自のデータセットを作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,15 +10,15 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 05a21ce10db2822c963f1b375842e9a7233e0816
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 9124bbfc7300f3a5116c572d569b41e15356ab8f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87457823"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983834"
 ---
-# <a name="transform-data-in-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナーでデータを変換する (プレビュー)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="transform-data-in-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーでデータを変換する
+
 
 この記事では、機械学習用に独自のデータを準備できるように、Azure Machine Learning デザイナーでデータセットを変換および保存する方法について説明します。
 
@@ -112,7 +112,7 @@ ms.locfileid: "87457823"
     **ファイル形式**: csv
 
     > [!NOTE]
-    > この記事では、現在の Azure Machine Learning ワークスペースに登録されているデータストアにアクセスできることを前提としています。 データストアのセットアップ方法の手順については、「[Azure Storage サービスに接続する](how-to-access-data.md#studio)」を参照してください。
+    > この記事では、現在の Azure Machine Learning ワークスペースに登録されているデータストアにアクセスできることを前提としています。 データストアのセットアップ方法の手順については、「[Azure Storage サービスに接続する](how-to-connect-data-ui.md#create-datastores)」を参照してください。
 
     データストアがない場合は、ここで作成できます。 例として、この記事では、ワークスペースに関連付けられている既定の BLOB ストレージ アカウントにデータセットを保存します。 これにより、データセットは `data` という新しいフォルダーの `azureml` コンテナーに保存されます。
 

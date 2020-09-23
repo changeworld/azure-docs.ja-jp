@@ -1,19 +1,19 @@
 ---
 title: Azure Import/Export ツール v1 の設定 | Microsoft Docs
 description: Azure Import/Export サービスのドライブの準備と修復用のツールを設定する方法について説明します。 この記事では、Import/Export ツールのバージョン 1 について説明します。
-author: twooley
+author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
 ms.date: 01/15/2017
-ms.author: twooley
+ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: f2aeb010d0c6f62284f1347bd90b952be50c665e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e03601bc929354a69e7f9027db5ac9b7697c3c82
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88530802"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054077"
 ---
 # <a name="setting-up-the-azure-importexport-tool-v1"></a>Azure Import/Export ツール v1 の設定
 Microsoft Azure Import/Export ツールは、ドライブの準備と修復用のツールであり、Microsoft Azure Import/Export サービスで使用できます。 このツールは次の目的に使用できます。  

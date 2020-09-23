@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
-ms.openlocfilehash: 4a62520a9807cd99b5c353c32bb13058fc471a84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a3dd1c0df32e7d6a67e63c9e148327d30f0082c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84771361"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904727"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure Security Center の対応準備ロードマップ
 このドキュメントでは、Azure Security Center の導入を支援する対応準備ロードマップについて取り上げます。
@@ -29,12 +29,12 @@ Azure Security Center は、Azure、オンプレミス、他のクラウドで�
 Security Center の基本的な事柄については、次のリソースを参照してください。
 
 [アーティクル]
-* [Azure Security Center 入門](https://docs.microsoft.com/azure/security-center/security-center-intro)
-* [Azure Security Center クイック スタート ガイド](https://docs.microsoft.com/azure/security-center/security-center-get-started)
+- [Azure Security Center 入門](https://docs.microsoft.com/azure/security-center/security-center-intro)
+- [Azure Security Center クイック スタート ガイド](https://docs.microsoft.com/azure/security-center/security-center-get-started)
 
 ビデオ
-* [概要紹介ビデオ](https://azure.microsoft.com/resources/videos/introduction-to-azure-security-center/)
-* [脅威の回避、検出、対応に関して Security Center が備えている機能の概要](https://azure.microsoft.com/resources/videos/azurecon-2015-new-azure-security-center-helps-you-prevent-detect-and-respond-to-threats/)
+- [概要紹介ビデオ](https://azure.microsoft.com/resources/videos/introduction-to-azure-security-center/)
+- [脅威の回避、検出、対応に関して Security Center が備えている機能の概要](https://azure.microsoft.com/resources/videos/azurecon-2015-new-azure-security-center-helps-you-prevent-detect-and-respond-to-threats/)
 
 ## <a name="planning-and-operations"></a>計画と運用
 
@@ -42,20 +42,16 @@ Security Center を最大限に活用するには、安全な運用、監視、�
 
 計画と運用のプロセスでは、次の資料が参考になります。
 
-[アーティクル]
-* [Azure Security Center 計画および運用ガイド](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+- [Azure Security Center 計画および運用ガイド](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
 
 
 ### <a name="onboarding-computers-to-security-center"></a>Security Center へのコンピューターのオンボーディング
-Security Center では、Security Center Standard に対応していない Azure サブスクリプションまたはワークスペースが自動的に検出されます。 これには、Security Center Free を使用する Azure サブスクリプションと、セキュリティ ソリューションが有効になっていないワークスペースが含まれます。
+Security Center によって、Azure Defender で保護されていない Azure サブスクリプションまたはワークスペースが自動的に検出されます。 これには、Security Center Free を使用する Azure サブスクリプションと、セキュリティ ソリューションが有効になっていないワークスペースが含まれます。
 
 オンボーディング プロセスでは、次の資料が参考になります。
 
-[アーティクル]
-* [セキュリティ強化のための Azure Security Center Standard へのオンボード](https://docs.microsoft.com/azure/security-center/security-center-onboarding)
-
-ビデオ
-* [Azure Security Center Hybrid - Overview (Azure Security Center ハイブリッド - 概要)](https://youtu.be/NMa4L_M597k)
+- [Azure 以外のコンピューターのオンボード](quickstart-onboard-machines.md)
+- [Azure Security Center Hybrid - Overview (Azure Security Center ハイブリッド - 概要)](https://youtu.be/NMa4L_M597k)
 
 ## <a name="mitigating-security-issues-using-security-center"></a>Security Center によるセキュリティの問題の緩和
 Security Center は、真の脅威を検出し、偽陽性を減らすために、Azure のリソースやネットワークのほか、接続されているパートナー ソリューション (ファイアウォールやエンドポイント保護ソリューションなど) から、自動的にログ データを収集、分析、統合します。
@@ -63,14 +59,13 @@ Security Center は、真の脅威を検出し、偽陽性を減らすために�
 セキュリティ アラートの管理とリソースの保護については、次のリソースが参考になります。
 
 [アーティクル]    
-* [Azure Security Center でのセキュリティ ヘルスの監視](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
-* [Azure Security Center でのマシンとアプリケーションの保護](security-center-virtual-machine-protection.md)
-* [Azure Security Center でのネットワークの保護](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
-* [Azure Security Center での Azure SQL サービスとデータの保護](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations)
+- [Azure Security Center でのセキュリティ ヘルスの監視](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
+- [Azure Security Center でのネットワークの保護](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+- [Azure Security Center での Azure SQL サービスとデータの保護](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations)
 
 
 ビデオ    
-* [Mitigating Security Issues using Azure Security Center (Azure Security Center を使用してセキュリティの問題を緩和する)](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Mitigating-Security-Issues-using-Azure-Security-Center)
+- [Mitigating Security Issues using Azure Security Center (Azure Security Center を使用してセキュリティの問題を緩和する)](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Mitigating-Security-Issues-using-Azure-Security-Center)
 
 ### <a name="security-center-for-incident-response"></a>Security Center によるインシデント対応
 コストを削減し、被害を抑えるためには、攻撃を受ける前にインシデント対応計画を整えておくことが重要です。 Azure Security Center は、インシデント対応のさまざまな段階で利用できます。
@@ -119,6 +114,4 @@ Azure VM は、Security Center にある高度なクラウド防御機能を有�
 ## <a name="community-resources"></a>コミュニティ リソース
 
 * [Security Center UserVoice](https://feedback.azure.com/forums/347535-azure-security-center)
-* [Security Center に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-security-center.html)
-
-
+* [Security Center の Q&A ページ](https://docs.microsoft.com/answers/topics/azure-security-center.html)

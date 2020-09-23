@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 3d9caabe3dfde34964f662dbf01316b2cbb0bcab
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: af4797d7d7d7cb866674747ea8871bebb059207d
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543012"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031247"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>Microsoft Security Code Analysis について
 
@@ -73,7 +73,7 @@ BinSkim は、コンパイラの設定、リンカーの設定、およびバイ
 
 ### <a name="roslyn-analyzers"></a>Roslyn アナライザー
 
-Roslyn アナライザーは、マネージド C# コードと Visual Basic コードを静的に分析するための Microsoft のコンパイラ統合ツールです。 詳細については、「[Roslyn ベースのアナライザー](https://docs.microsoft.com/dotnet/standard/analyzers/)」を参照してください。
+Roslyn アナライザーは、マネージド C# コードと Visual Basic コードを静的に分析するための Microsoft のコンパイラ統合ツールです。 詳細については、「[Roslyn ベースのアナライザー](https://docs.microsoft.com/dotnet/standard/analyzers/api-analyzer)」を参照してください。
 
 ### <a name="tslint"></a>TSLint
 

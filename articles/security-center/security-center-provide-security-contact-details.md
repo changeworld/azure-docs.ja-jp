@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: dda61b81ee2c357ddac29701832fe4780ea06859
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9fbd63e1b46b837350be720fadf68777927f9bff
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88516301"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904767"
 ---
 # <a name="set-up-email-notifications-for-security-alerts"></a>セキュリティ アラートのメール通知を設定する 
 
@@ -39,8 +39,8 @@ ms.locfileid: "88516301"
 
 |側面|詳細|
 |----|:----|
-|リリース状態:|一般公開|
-|価格:|Free レベル|
+|リリース状態:|一般提供 (GA)|
+|価格:|Free|
 |必要なロールとアクセス許可:|**Security Admin**<br>**サブスクリプションの所有者** |
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov (一部)<br>![No](./media/icons/no-icon.png) China Gov、その他の Gov|
 |||

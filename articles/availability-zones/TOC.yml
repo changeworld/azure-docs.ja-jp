@@ -95,6 +95,10 @@
       items:
         - name: Edge Zone とは
           href: ../networking/edge-zones-overview.md
+    - name: Azure Orbital のドキュメント
+      items:
+        - name: Azure Orbital とは
+          href: ../networking/azure-orbital-overview.md
 - name: ディザスター リカバリー
   items:
     - name: Azure Site Recovery を使用する

@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 93401ee32da8218fa53568a3f46cae3805a5d939
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 18bbecbe811a9f0bc6a56194830c7e92d8770979
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875321"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890179"
 ---
 # <a name="data-ingestion-options-for-azure-machine-learning-workflows"></a>Azure Machine Learning ワークフローのデータ インジェスト オプション
 
@@ -25,7 +25,7 @@ ms.locfileid: "87875321"
 次の中から選択します。
 + データの抽出、読み込み、および変換を目的として構築された [Azure Data Factory](#azure-data-factory) パイプライン
 
-+ 基本的なデータ インジェスト タスク用のカスタム コード ソリューションを提供する [Azure Machine Learning Python SDK](#azure-machine-learning-python-sdk)。
++ データ インジェスト タスク用のカスタム コード ソリューションを提供する [Azure Machine Learning Python SDK](#azure-machine-learning-python-sdk)。
 
 + 両方の組み合わせ
 
@@ -70,7 +70,7 @@ Azure Data Factory データフローの埋め込みデータ系列機能|
 データ準備が、すべてのモデル トレーニング実行に含まれます|データ インジェスト スクリプトを作成するための開発スキルが必要です
 [Azure Machine Learning コンピューティング](concept-compute-target.md#azure-machine-learning-compute-managed)など、さまざまなコンピューティング先のデータ準備スクリプトをサポートしています |インジェスト メカニズム作成のユーザー インターフェイスが提供されていません
 
-次の図の Azure Machine Learning パイプラインは、データ インジェストとモデル トレーニングの 2 つの手順で構成されています。 データ インジェストの手順には、Python ライブラリと Python SDK を使用して実行できるタスクが含まれます。たとえば、ローカル/Web ソースからデータを抽出する、欠損値を補完するなどの基本的なデータ変換を行います。 次に、トレーニングの手順で、準備したデータをトレーニング スクリプトへの入力として使用して、機械学習モデルをトレーニングします。 
+次の図の Azure Machine Learning パイプラインは、データ インジェストとモデル トレーニングの 2 つの手順で構成されています。 データ インジェストの手順には、Python ライブラリと Python SDK を使用して実行できるタスクが含まれます。たとえば、ローカル ソースや Web ソースからのデータの抽出、欠損値の補完のようなデータ変換などです。 次に、トレーニングの手順で、準備したデータをトレーニング スクリプトへの入力として使用して、機械学習モデルをトレーニングします。 
 
 ![Azure パイプライン + SDK データ インジェスト](media/concept-data-ingestion/data-ingest-option-two.png)
 

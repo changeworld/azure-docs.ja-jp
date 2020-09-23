@@ -6,16 +6,16 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 08/13/2020
+ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: ff358f3c90edfcdabb5a1225ad1efa122818b070
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 7933cc692ebc3b40e5f608a917dce51f5298fbe3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89375263"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904665"
 ---
-# <a name="workflow-automation"></a>ワークフローの自動化
+# <a name="create-automatic-responses-to-alerts-and-recommendations-with-workflow-automation"></a>ワークフロー自動化でのアラートや推奨事項に対する自動応答を作成する
 
 すべてのセキュリティ プログラムには、インシデント対応のための複数のワークフローが含まれています。 これらのプロセスには、直接の利害関係者への通知、変更管理プロセスの開始、および特定の修復手順の適用が含まれます。 これらのプロシージャの手順をできるだけ多く自動化することがセキュリティの専門家によって推奨されています。 自動化によってオーバーヘッドが削減されます。 また、迅速かつ一貫した方法で、定義済みの要件に従ってプロセスの手順が実行されるようにすることで、セキュリティを向上させることもできます。
 
@@ -30,8 +30,8 @@ ms.locfileid: "89375263"
 
 |側面|詳細|
 |----|:----|
-|リリース状態:|一般公開|
-|価格:|Free レベル|
+|リリース状態:|一般提供 (GA)|
+|価格:|Free|
 |必要なロールとアクセス許可:|リソース グループ上での**セキュリティ管理者ロール**または**所有者**<br>ターゲット リソースに対する書き込みアクセス許可も必要になります<br><br>Azure Logic Apps のワークフローを操作するには、次のロジック アプリのロール/アクセス許可も必要です。<br> - [ロジック アプリのオペレーター](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator)のアクセス許可が必要。または、ロジック アプリの読み取り/トリガーのアクセス権 (このロールでは、ロジック アプリを作成したり編集したりすることはできません。既存のものを*実行*するだけです)<br> - [ロジック アプリの共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor)のアクセス許可は、ロジック アプリの作成と変更に必要です<br>ロジック アプリのコネクタを使用する場合は、それぞれのサービス (たとえば、Outlook/Teams/Slack のインスタンス) にサインインするために追加の資格情報が必要になることがあります。|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![はい](./media/icons/yes-icon.png) China Gov、その他の Gov|
 |||
@@ -42,7 +42,7 @@ ms.locfileid: "89375263"
 
 1. Security Center のサイドバーで、 **[ワークフローの自動化]** を選択します。
 
-    [![ワークフローの自動化の一覧](media/workflow-automation/list-of-workflow-automations.png)](media/workflow-automation/list-of-workflow-automations.png#lightbox)
+    :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="ワークフローの自動化の一覧":::
 
     このページで、新しい自動化ルールを作成したり、既存のものを有効化、無効化、または削除したりすることができます。
 
@@ -53,7 +53,7 @@ ms.locfileid: "89375263"
     1. この自動ワークフローを開始するトリガー。 たとえば、"SQL" を含むセキュリティ警告が生成されたときにロジック アプリを実行することができます。
     1. トリガー条件が満たされたときに実行されるロジック アプリ。 
 
-        [![ワークフローの自動化の一覧](media/workflow-automation/add-workflow.png)](media/workflow-automation/add-workflow.png#lightbox)
+        :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="ワークフロー自動化ウィンドウの追加":::
 
 1. [Actions]\(アクション\) セクションで、 **[Create a new one]\(新規作成する\)** をクリックして、ロジック アプリの作成プロセスを開始します。
 
@@ -101,7 +101,7 @@ ms.locfileid: "89375263"
 
 この記事では、ロジック アプリの作成、Security Center での実行の自動化、および手動実行について学習しました。 
 
-その他の関連資料については、以下を参照してください。 
+関連資料については、以下を参照してください。 
 
 - [ワークフローの自動化を使用してセキュリティ対応を自動化する方法に関する Microsoft Learn モジュール](https://docs.microsoft.com/learn/modules/resolve-threats-with-azure-security-center/)
 - [Azure Security Center でのセキュリティに関する推奨事項](security-center-recommendations.md)

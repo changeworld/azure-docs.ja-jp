@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1a426a579fa56fca880eb9689adc2aeb7a21407d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 9cb1a2074e7ec64ed16f1f7c9a1f70bf2307b5c3
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89301192"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033491"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices-classic-editor"></a>Azure IoT Edge デバイスに対する継続的インテグレーションと継続的配置 (クラシック エディター)
 
@@ -86,7 +86,7 @@ Azure Pipelines 内の組み込み Azure IoT Edge タスクを使用して、Azu
 
    * Windows 1809 コンテナー用にプラットフォーム amd64 でモジュールをビルドする場合は、[Windows 上にセルフホステッド エージェントを設定](https://docs.microsoft.com/azure/devops/pipelines/agents/v2-windows?view=vsts)する必要があります。
 
-   * Linux コンテナー用にプラットフォーム arm32v7 または arm64 でモジュールをビルドする場合は、[Linux 上にセルフホステッド エージェントを設定](https://blogs.msdn.microsoft.com/iotdev/2018/11/13/setup-azure-iot-edge-continuous-integration-continuous-deployment-pipeline-with-arm-agent/)する必要があります。
+   * Linux コンテナー用にプラットフォーム arm32v7 または arm64 でモジュールをビルドする場合は、[Linux 上にセルフホステッド エージェントを設定](https://devblogs.microsoft.com/iotdev/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent)する必要があります。
 
     ![ビルド エージェントの指定の構成](./media/how-to-continuous-integration-continuous-deployment-classic/configure-env.png)
 
