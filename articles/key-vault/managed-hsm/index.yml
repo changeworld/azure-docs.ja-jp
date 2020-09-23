@@ -1,0 +1,84 @@
+### YamlMime:Landing
+title: Azure Key Vault Managed HSM のドキュメント
+summary: Managed HSM を使用して、クラウドのリソース、アプリ、ソリューションにアクセスして暗号化するキーを作成および管理する方法について説明します。 チュートリアルや API リファレンスなどを提供します。
+metadata:
+  title: Azure Managed HSM のドキュメント
+  description: Managed HSM を使用して、クラウドのリソース、アプリ、ソリューションにアクセスして暗号化するキーを作成および管理する方法について説明します。 チュートリアルや API リファレンスなどを提供します。
+  services: key-vault
+  ms.service: key-vault
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  manager: rkarlin
+  ms.date: 09/15/2020
+  ms.openlocfilehash: d17d119528c04b270e9dffe5b824bafcc89472dc
+  ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90991984"
+landingContent:
+- title: Azure Key Vault Managed HSM (プレビュー) について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Key Vault Managed HSM とは
+      url: overview.md
+    - text: REST API の概要
+      url: ../general/about-keys-secrets-certificates.md
+    - text: サポートされているキーとアルゴリズム
+      url: ../keys/about-keys.md
+- title: 概念
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Managed HSM のベスト プラクティス
+      url: best-practices.md
+    - text: Managed HSM のアクセス制御
+      url: access-control.md
+    - text: セキュリティ ドメイン
+      url: security-domain.md
+    - text: ローカル RBAC の組み込みロール
+      url: built-in-roles.md
+- title: はじめに
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure CLI
+      url: quick-create-cli.md
+    - text: Azure Resource Manager
+      url: quick-create-template.md
+- title: ハウツー ガイド
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure CLI で管理する
+      url: key-management.md
+    - text: Managed HSM のロール管理
+      url: role-management.md
+    - text: マネージド HSM への安全なアクセス
+      url: secure-your-managed-hsm.md
+- title: チュートリアル
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: バックアップと復元
+      url: backup-restore.md
+    - text: 障害復旧
+      url: disaster-recovery-guide.md
+    - text: HSM で保護されたキーをインポートする (概要)
+      url: hsm-protected-keys-byok.md
+    - text: マネージド HSM のログの構成
+      url: logging.md
+- title: Key Vault の詳細
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Key Vault の概要
+      url: ../general/overview.md
+    - text: Key Vault の基本的な概念
+      url: ../general/basic-concepts.md
+    - text: 論理的な削除の概要
+      url: ../general/soft-delete-overview.md
+    - text: セキュリティの概要
+      url: ../general/overview-security.md

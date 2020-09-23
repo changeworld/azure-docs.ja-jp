@@ -1,18 +1,18 @@
 ---
 title: Azure Storage 用の組み込みポリシー定義
 description: Azure Storage 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 09/10/2020
+ms.date: 09/16/2020
 ms.topic: reference
 author: tamram
 ms.author: tamram
 ms.service: storage
 ms.custom: subject-policy-reference
-ms.openlocfilehash: d658746b3d0a31bcec7c3abe762bc2bdf14437c2
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 0bd63284696ee9be71349702aa4314d4f51f2087
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007623"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971161"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-storage"></a>Azure Storage 用の Azure Policy 組み込み定義
 

@@ -11,20 +11,20 @@ ms.reviewer: sgilley
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 70e965e26d3b82cdc63a3c0e147919b8b40585af
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 2b944f6207ecc47df4176a512a900e08e6b0d643
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146591"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885938"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Azure Machine Learning で Estimator を使用してモデルをトレーニングする
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Azure Machine Learning では、[RunConfiguration オブジェクト](how-to-set-up-training-targets.md#whats-a-run-configuration)と [ScriptRunConfig オブジェクト](how-to-set-up-training-targets.md#submit)を使用して、トレーニング スクリプトを[さまざまなコンピューティング先](how-to-set-up-training-targets.md)に簡単に送信できます。 このパターンを利用して、高い柔軟性と最大のコントロールを実現できます。
 
 
-この Estimator クラスによって、ディープ ラーニングと強化学習を使用して簡単にモデルをトレーニングできるようになります。 高レベルの抽象化が提供され、実行構成を簡単に構築できます。 汎用の [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) を作成して使用して、選択した任意のコンピューティング先 (ローカル マシン、Azure 内の単一の VM、Azure 内の GPU クラスターなど) で選択したラーニング フレームワーク (scikit-learn など) を使用してトレーニング スクリプトを送信することができます。 PyTorch、TensorFlow、Chainer、および強化学習タスクの場合、Azure Machine Learning には、これらのフレームワークを簡単に使用するための [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)、[TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)、[Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)、および[強化学習](how-to-use-reinforcement-learning.md)の推定器が用意されています。
+この Estimator クラスによって、ディープ ラーニングと強化学習を使用して簡単にモデルをトレーニングできるようになります。 高レベルの抽象化が提供され、実行構成を簡単に構築できます。 汎用の [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py&preserve-view=true) を作成して使用して、選択した任意のコンピューティング先 (ローカル マシン、Azure 内の単一の VM、Azure 内の GPU クラスターなど) で選択したラーニング フレームワーク (scikit-learn など) を使用してトレーニング スクリプトを送信することができます。 PyTorch、TensorFlow、Chainer、および強化学習タスクの場合、Azure Machine Learning には、これらのフレームワークを簡単に使用するための [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py&preserve-view=true)、[TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py&preserve-view=true)、[Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py&preserve-view=true)、および[強化学習](how-to-use-reinforcement-learning.md)の推定器が用意されています。
 
 ## <a name="train-with-an-estimator"></a>Estimator でトレーニングする
 
@@ -116,7 +116,7 @@ estimator = Estimator(source_directory='./my-keras-proj',
 `custom_docker_image`| 使用するイメージの名前。 パブリックな Docker リポジトリ (この場合は Docker Hub) にあるイメージのみを指定します。 プライベートな docker リポジトリにあるイメージを使用するには、コンストラクターの `environment_definition` パラメーターを利用します｡| `None`
 `node_count`| トレーニング ジョブに使用するノードの数。 | `1`
 `process_count_per_node`| 各ノードで実行するプロセス (つまり "worker") の数。 この場合は、ノード 1 つあたり `2` 個の GPU を使用します｡| `1`
-`distributed_training`| MPI バックエンドを使用して分散トレーニングを開始する [MPIConfiguration ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py) オブジェクト。  | `None`
+`distributed_training`| MPI バックエンドを使用して分散トレーニングを開始する [MPIConfiguration ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py&preserve-view=true) オブジェクト。  | `None`
 
 
 最後に、トレーニング ジョブを送信します。
@@ -129,7 +129,7 @@ print(run.get_portal_url())
 
 モデルのトレーニングが終わったら、それをワークスペースに保存して登録できます。 モデルの登録を使用すると、モデルをワークスペースに格納し、バージョン管理して、[モデルの管理とデプロイ](concept-model-management-and-deployment.md)を簡単にすることができます。
 
-次のコードを実行すると、ご自分のワークスペースにモデルが登録され、リモート コンピューティング コンテキストまたはデプロイ スクリプトで名前によってそのモデルを参照できるようになります。 詳細およびその他のパラメーターについては、リファレンス ドキュメントで [`register_model`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) を参照してください。
+次のコードを実行すると、ご自分のワークスペースにモデルが登録され、リモート コンピューティング コンテキストまたはデプロイ スクリプトで名前によってそのモデルを参照できるようになります。 詳細およびその他のパラメーターについては、リファレンス ドキュメントで [`register_model`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=trueregister-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) を参照してください。
 
 ```python
 model = run.register_model(model_name='sklearn-sample', model_path=None)

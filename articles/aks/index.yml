@@ -9,12 +9,12 @@ metadata:
   author: laurenhughes
   ms.author: lahugh
   ms.date: 07/21/2020
-  ms.openlocfilehash: 35138e4e5569ddfa46cb60c742e7ae0b3868c8cd
-  ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+  ms.openlocfilehash: 98d96c36e8ec801c2a8a5a87d0075f2d9b57bd98
+  ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/04/2020
-  ms.locfileid: "87563332"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90984952"
 landingContent:
 - title: Azure Kubernetes Service (AKS) について
   linkLists:
@@ -50,14 +50,14 @@ landingContent:
       url: kubernetes-walkthrough-portal.md
     - text: Resource Manager テンプレート
       url: kubernetes-walkthrough-rm-template.md
-- title: Local Process with Kubernetes を使用してアプリケーションを開発およびデバッグする
+- title: Bridge to Kubernetes を使用してアプリケーションを開発、デバッグする
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Visual Studio Code を使用して Local Process with Kubernetes を利用する (プレビュー)
-      url: https://code.visualstudio.com/docs/containers/local-process-kubernetes
-    - text: Visual Studio で Local Process with Kubernetes を使用する (プレビュー)
-      url: /visualstudio/containers/local-process-kubernetes
+    - text: Visual Studio Code で Bridge to Kubernetes を使用する
+      url: https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
+    - text: Visual Studio で Bridge to Kubernetes を使用する
+      url: /visualstudio/containers/bridge-to-kubernetes
 - title: アプリケーションのデプロイ、管理、更新
   linkLists:
   - linkListType: tutorial

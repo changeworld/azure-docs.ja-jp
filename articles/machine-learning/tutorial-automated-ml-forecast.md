@@ -10,12 +10,12 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 07/10/2020
-ms.openlocfilehash: bbd6f2021a20ff488402bb9d1367feb57c34f582
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6ad3e0f3077e6f65642496d4da097fa713bddd53
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90896683"
+ms.locfileid: "90979077"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>チュートリアル:自動機械学習を使用して需要を予測する
 
@@ -236,7 +236,7 @@ Azure Machine Learning Studio で自動機械学習を使用すると、わず�
 + [自動機械学習](concept-automated-ml.md)についてさらに理解を深める。
 + 分類メトリックとグラフの詳細については、「[自動化機械学習の結果の概要](how-to-understand-automated-ml.md#classification)」の記事を参照してください。
 + [特徴付け](how-to-configure-auto-features.md#featurization)についてさらに理解を深める。
-+ [データ プロファイル](how-to-use-automated-ml-for-ml-models.md#profile)についてさらに理解を深める。
++ [データ プロファイル](how-to-connect-data-ui.md#profile)についてさらに理解を深める。
 
 >[!NOTE]
 > この自転車シェアリング データセットは、このチュートリアル用に変更されています。 このデータセットは、[Kaggle コンテスト](https://www.kaggle.com/c/bike-sharing-demand/data)の一部として提供されており、もともとは [Capital Bikeshare](https://www.capitalbikeshare.com/system-data) を通じて入手可能でした。 また、[UCI Machine Learning データベース](http://archive.ics.uci.edu/ml/datasets/Bike+Sharing+Dataset)にもあります。<br><br>

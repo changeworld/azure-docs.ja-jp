@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 2711160534270f38845ab7b48234f4a441c236b4
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 45506b87bf13b44e035655dbdf0fac03ea50612c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195867"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893864"
 ---
 # <a name="azure-data-box-gateway-security-and-data-protection"></a>Azure Data Box Gateway のセキュリティとデータ保護
 
@@ -38,7 +38,7 @@ Data Box Gateway サービスは、Azure でホストされる管理サービス
 
 Data Box Gateway デバイスは、お客様が用意するオンプレミス システムのハイパーバイザー内にプロビジョニングする仮想デバイスです。 このデバイスは、データを Azure に送信するために役立ちます。 お客様のデバイスは...
 
-- Azure Stack Edge または Data Box Gateway のサービスにアクセスするためのアクティブ化キーが必要です。
+- Azure Stack Edge Pro または Data Box Gateway のサービスにアクセスするためのアクティブ化キーが必要です。
 - デバイスのパスワードで常に保護されます。
 <!---  secure boot enabled.
 - Runs Windows Defender Device Guard. Device Guard allows you to run only trusted applications that you define in your code integrity policies.-->
@@ -85,7 +85,7 @@ Azure サブスクリプションで作成した Data Box Gateway サービス�
 
 Data Box Gateway の仮想マシン上の仮想ディスクをセキュリティで保護するには、BitLocker を有効にすることをお勧めします。 既定では、BitLocker は有効になっていません。 詳細については、次を参照してください。
 
-- [Hyper-V マネージャーでの暗号化サポート設定](h https://docs.microsoft.com/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
+- [Hyper-V マネージャーでの暗号化サポート設定](hhttps://docs.microsoft.com/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
 - [仮想マシンでの BitLocker のサポート](https://kb.vmware.com/s/article/2036142)
 
 ## <a name="manage-personal-information"></a>個人情報の管理
@@ -96,7 +96,7 @@ Data Box Gateway サービスは、次のシナリオの個人情報を収集し
 
 共有にアクセスできる、または削除できるユーザーの一覧を表示するには、[Data Box Gateway での共有の管理](data-box-gateway-manage-shares.md)に関するページにある手順に従ってください。
 
-詳細については、[トラスト センター](https://www.microsoft.com/trustcenter)で Microsoft のプライバシー ポリシーを確認してください。
+詳細については、[セキュリティ センター](https://www.microsoft.com/trustcenter)で Microsoft のプライバシー ポリシーを確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 

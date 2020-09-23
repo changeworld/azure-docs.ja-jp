@@ -12,15 +12,15 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 526a4f9f5542074107700b54dcf3d2a591b08b70
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 548113a5f775595caf3a798d7b35eddfbc80674e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144041"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886101"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Azure Machine Learning の実験でファイルを保存する場所と書き込む場所
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 この記事では、ストレージ制限エラーを回避し、待機時間を実験するために、実験で入力ファイルをどこに保存し、出力ファイルをどこに書き込むかについて説明します。
 
@@ -30,13 +30,13 @@ ms.locfileid: "89144041"
 
 コンピューティング ターゲットまたはローカル マシンで実験を開始する前に、コードの実行に必要な依存関係ファイルやデータ ファイルなどの必要なファイルが、そのコンピューティング ターゲットに存在することを確認する必要があります。
 
-Azure Machine Learning では、ソース ディレクトリ全体をコピーすることで、トレーニング スクリプトが実行されます。 アップロードしたくない機密データがある場合は、[.ignore ファイル](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots)を使用するか、ソース ディレクトリに含めないようにします。 代わりに、[データストア](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)を使用してデータにアクセスしてください。
+Azure Machine Learning では、ソース ディレクトリ全体をコピーすることで、トレーニング スクリプトが実行されます。 アップロードしたくない機密データがある場合は、[.ignore ファイル](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots)を使用するか、ソース ディレクトリに含めないようにします。 代わりに、[データストア](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py&preserve-view=true)を使用してデータにアクセスしてください。
 
 実験スナップショットのストレージ制限は、300 MB または 2000 ファイル (あるいはその両方) です。
 
 このため、次のことをお勧めします。
 
-* **お使いのファイルを Azure Machine Learning の[データストア](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)に格納します。** これにより、実験の待機時間の問題を防止でき、リモート コンピューティング ターゲットからデータにアクセスする利点が得られます。つまり、認証とマウントは Azure Machine Learning によって管理されます。 データストアをソース ディレクトリとして指定し、データストアにファイルをアップロードする方法の詳細については、[データストアからデータにアクセスする](how-to-access-data.md)方法に関する記事を参照してください。
+* **お使いのファイルを Azure Machine Learning の[データストア](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py&preserve-view=true)に格納します。** これにより、実験の待機時間の問題を防止でき、リモート コンピューティング ターゲットからデータにアクセスする利点が得られます。つまり、認証とマウントは Azure Machine Learning によって管理されます。 データストアをソース ディレクトリとして指定し、データストアにファイルをアップロードする方法の詳細については、[データストアからデータにアクセスする](how-to-access-data.md)方法に関する記事を参照してください。
 
 * **数個のデータ ファイルと依存関係スクリプトのみが必要であり、データストアを使用できない場合は、** トレーニング スクリプトと同じフォルダー ディレクトリにファイルを配置します。 このフォルダーを `source_directory` ディレクトリとして、トレーニング スクリプトで直接指定するか、またはトレーニング スクリプトを呼び出すコードで指定します。
 

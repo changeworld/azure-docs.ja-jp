@@ -10,12 +10,12 @@ ms.date: 08/24/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 407853152d4f18d8f8daacd8ef7d19c878384076
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: fbc24db21ee43e3c2aef3d0164e8510a79508fd2
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871158"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658580"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage の冗長性
 
@@ -64,8 +64,8 @@ ZRS をサポートしているストレージ アカウントの種類とリー
 | ストレージ アカウントの種類 | サポートされているリージョン | サポートされているサービス |
 |--|--|--|
 | 汎用 v2<sup>1</sup> | 東南アジア<br /> オーストラリア東部<br /> 北ヨーロッパ<br />  西ヨーロッパ<br /> フランス中部<br /> 東日本<br /> 南アフリカ北部<br /> 英国南部<br /> 米国中部<br /> 米国東部<br /> 米国東部 2<br /> 米国西部 2 | ブロック blob<br /> ページ BLOB<sup>2</sup><br /> ファイル共有 (標準)<br /> テーブル<br /> キュー<br /> |
-| BlockBlobStorage<sup>1</sup> | 東南アジア<br /> オーストラリア東部<br /> 北ヨーロッパ<br /> 西ヨーロッパ<br /> 米国東部 <br /> 米国西部 2| Premium ブロック BLOB のみ |
-| FileStorage | 東南アジア<br /> オーストラリア東部<br /> 北ヨーロッパ<br /> 西ヨーロッパ<br /> 米国東部 <br /> 米国西部 2 | Premium ファイル共有のみ |
+| BlockBlobStorage<sup>1</sup> | 東南アジア<br /> オーストラリア東部<br /> 北ヨーロッパ<br /> 西ヨーロッパ<br /> 米国東部 <br /> 米国東部 2 <br /> 米国西部 2| Premium ブロック BLOB のみ |
+| FileStorage | 東南アジア<br /> オーストラリア東部<br /> 北ヨーロッパ<br /> 西ヨーロッパ<br /> 米国東部 <br /> 米国東部 2 <br /> 米国西部 2 | Premium ファイル共有のみ |
 
 <sup>1</sup> アーカイブ層は、ZRS アカウントでは現在サポートされていません。<br />
 <sup>2</sup> 仮想マシン用の Azure マネージド ディスクを含むストレージ アカウントは、常に LRS を使用します。 Azure のアンマネージド ディスクでは、LRS も使用する必要があります。 GRS を使用する Azure アンマネージド ディスクのストレージ アカウントを作成することはできますが、非同期 geo レプリケーションの整合性に関する潜在的な問題のため、推奨されません。 マネージドとアンマネージド ディスクのどちらも ZRS または GZRS をサポートしていません。 マネージド ディスクの詳細については、[Azure マネージド ディスクの価格](https://azure.microsoft.com/pricing/details/managed-disks/)に関するページをご覧ください。

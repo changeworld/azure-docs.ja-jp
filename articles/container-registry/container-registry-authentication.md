@@ -3,12 +3,12 @@ title: レジストリ認証オプション
 description: Azure Active Directory ID でのサインイン、サービス プリンシパルの使用、オプションの管理者資格情報の使用など、非公開の Azure コンテナー レジストリのための認証オプション。
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 3d2379b2b2384342fb84ba1b610caa609300aa0c
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 7c8176d0cdca5d74ed3201071f83ed1181d94b8d
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926322"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657090"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>Azure コンテナー レジストリでの認証
 
@@ -53,7 +53,7 @@ Azure ID で `az acr login` を使用すると、[Azure ロールベースのア
 このシナリオでは、最初に `--expose-token` パラメーターを指定して `az acr login` を実行します。 このオプションは、Docker CLI を使用してログインするのではなく、アクセス トークンを公開します。
 
 ```azurecli
-az acr login -name <acrName> --expose-token
+az acr login --name <acrName> --expose-token
 ```
 
 出力には、次のようにアクセス トークン (ここでは省略されています) が表示されます。

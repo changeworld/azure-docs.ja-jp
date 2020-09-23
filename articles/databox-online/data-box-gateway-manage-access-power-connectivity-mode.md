@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 98431e7a451aa54dfdee2126d4ce94b8b0b0fb84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1035b0afee9821020673acbc813b31cba3e2fd90
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339214"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893939"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>Azure Data Box Gateway のアクセス、電源、接続モードを管理する
 
@@ -57,16 +57,16 @@ Data Box Gateway デバイスへのアクセスは、デバイスのパスワー
 
 ## <a name="manage-resource-access"></a>リソース アクセスの管理
 
-Azure Stack Edge または Data Box Gateway、IoT Hub、Azure Storage リソースを作成するには、リソース グループ レベルで共同作成者以上のアクセス許可が必要です。 対応するリソース プロバイダーも登録する必要があります。 アクティブ化キーと資格情報が関係する操作には、Azure Active Directory Graph API へのアクセス許可も必要です。 これらについては以降のセクションで説明します。
+Azure Stack Edge Pro または Data Box Gateway、IoT Hub、Azure Storage のリソースを作成するには、リソース グループ レベルで共同作成者以上のアクセス許可が必要です。 対応するリソース プロバイダーも登録する必要があります。 アクティブ化キーと資格情報が関係する操作には、Azure Active Directory Graph API へのアクセス許可も必要です。 これらについては以降のセクションで説明します。
 
 ### <a name="manage-microsoft-graph-api-permissions"></a>Microsoft Graph API のアクセス許可の管理
 
-Azure Stack Edge デバイスのアクティブ化キーを生成するとき、または資格情報が必要な何らかの操作を実行するときは、Microsoft Graph API のアクセス許可が必要です。 資格情報が必要な操作には、次のものがあります。
+Azure Stack Edge Pro デバイスのアクティブ化キーを生成するとき、または資格情報が必要な何らかの操作を実行するときは、Microsoft Graph API に対するアクセス許可が必要です。 資格情報が必要な操作には、次のものがあります。
 
 -  ストレージ アカウントが関連付けられた共有の作成。
 -  デバイス上の共有にアクセスできるユーザーの作成。
 
-`Read all directory objects` を実行できる必要があるため、Active Directory テナントに対する `User` アクセス権が必要です。 Guest ユーザーは `Read all directory objects` を実行するアクセス許可がないため、使用できません。 ゲストの場合、アクティブ化キーの生成、Azure Stack Edge デバイス上の共有の作成、ユーザーの作成などの操作はすべて失敗します。
+`Read all directory objects` を実行できる必要があるため、Active Directory テナントに対する `User` アクセス権が必要です。 Guest ユーザーは `Read all directory objects` を実行するアクセス許可がないため、使用できません。 ゲストの場合、アクティブ化キーの生成、Azure Stack Edge Pro デバイスでの共有の作成、ユーザーの作成などの操作はすべて失敗します。
 
 Microsoft Graph API へのアクセスをユーザーに提供する方法の詳細については、「[Microsoft Graph のアクセス許可のリファレンス](https://docs.microsoft.com/graph/permissions-reference)」を参照してください。
 
@@ -89,7 +89,7 @@ Microsoft Graph API へのアクセスをユーザーに提供する方法の詳
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-Azure Stack Edge デバイスの場合、`Microsoft.DataBoxEdge` を登録する必要があります。 `Microsoft.DataBoxEdge` を登録するには、サブスクリプション管理者が次のコマンドを実行する必要があります。
+Azure Stack Edge Pro デバイスの場合、`Microsoft.DataBoxEdge` を登録する必要があります。 `Microsoft.DataBoxEdge` を登録するには、サブスクリプション管理者が次のコマンドを実行する必要があります。
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge

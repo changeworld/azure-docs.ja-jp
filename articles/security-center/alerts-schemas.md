@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 9b8d7f241f79b087f318c9c416dcadf92838b084
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 894fc4066ad408f0749e7a982011d82b205e6fec
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85126214"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901348"
 ---
 # <a name="security-alerts-schemas"></a>セキュリティ アラートのスキーマ
 
-Azure Security Center の Standard レベルのユーザーには、Security Center のリソースに対する脅威が検出されたときに、セキュリティ アラートが届きます。
+ご自身のサブスクリプションで Azure Defender が有効になっている場合、Security Center によってのリソースに対する脅威が検出されたときに、セキュリティ アラートが届きます。
 
 こうしたセキュリティ アラートは、Azure Security Center の **[脅威に対する保護]** ページで確認できるほか、次のような外部ツールを使用して確認することができます。
 

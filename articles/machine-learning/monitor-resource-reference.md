@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 04/27/2020
-ms.openlocfilehash: e9a43f4a7da39869e002e2da9fb9638381e57cb8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 405b0aa051d0d1142d7dd4ccbf2bca4ef9cc3545
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856024"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650587"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Azure Machine Learning 監視データのリファレンス
 
@@ -195,7 +195,7 @@ ms.locfileid: "82856024"
 | Dimension | 説明 |
 | ---- | ---- |
 | ComputeType | 実行で使用されるコンピューティングの種類。 |
-| PipelineStepType | 実行で使用される [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?view=azure-ml-py) の種類。 |
+| PipelineStepType | 実行で使用される [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?view=azure-ml-py&preserve-view=true) の種類。 |
 | PublishedPipelineId | 実行で使用される公開済みパイプラインの ID。 |
 | RunType | 実行の種類。 |
 

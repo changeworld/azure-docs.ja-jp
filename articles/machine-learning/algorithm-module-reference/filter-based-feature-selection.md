@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: c009a98931240e92527035e51fdce3f1c92f5212
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1afa5df20c9bcbf63f8ad9f527e54f622eba3d19
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477597"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893796"
 ---
 # <a name="filter-based-feature-selection"></a>フィルターに基づく特徴選択
 
-この記事では、Azure Machine Learning デザイナー (プレビュー) でフィルターに基づく特徴選択モジュールを使用する方法について説明します。 このモジュールは、入力データセット内で予測能力が最も高い列を特定するのに役立ちます。 
+この記事では、Azure Machine Learning デザイナーのフィルターに基づく特徴選択モジュールを使用する方法について説明します。 このモジュールは、入力データセット内で予測能力が最も高い列を特定するのに役立ちます。 
 
 一般に、"*特徴選択*" とは、指定された出力を前提として、統計的検定を入力に適用するプロセスを指します。 この目標は、出力の予測能力が高い列を特定することです。 フィルターに基づく特徴選択モジュールには、選択肢となる複数の特徴選択アルゴリズムが用意されています。 このモジュールには、ピアソンの相関やカイ二乗値などの相関法が含まれています。 
 

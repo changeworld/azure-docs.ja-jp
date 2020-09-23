@@ -1,6 +1,6 @@
 ---
-title: 'チュートリアル: Azure Stack Edge を配置するために Azure portal、データセンター環境を準備する | Microsoft Docs'
-description: Azure Stack Edge の配置に関する最初のチュートリアルでは、Azure portal の準備を行います。
+title: 'チュートリアル: Azure Stack Edge Pro を配置するために Azure portal、データセンター環境を準備する | Microsoft Docs'
+description: Azure Stack Edge Pro の配置に関する最初のチュートリアルでは、Azure portal の準備を行います。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,17 +8,17 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 07/22/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: c8f64bc81afb941e13dd310a7efd9432639ec281
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
+ms.openlocfilehash: 224131d1b17c4ed34ee847638633a5a1a494ccaf
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131839"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894139"
 ---
-# <a name="tutorial-prepare-to-deploy-azure-stack-edge"></a>チュートリアル:Azure Stack Edge の配置を準備する  
+# <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro"></a>チュートリアル:Azure Stack Edge Pro の配置を準備する  
 
-これは、Azure Stack Edge を完全に配置するために必要な一連の配置チュートリアルの中で最初のものです。 このチュートリアルでは、Azure Stack Edge リソースをデプロイするために Azure portal を準備する方法を説明します。
+これは、Azure Stack Edge Pro を完全に配置するために必要な配置チュートリアル シリーズの最初のチュートリアルです。 このチュートリアルでは、Azure Stack Edge リソースをデプロイするために Azure portal を準備する方法を説明します。
 
 セットアップと構成のプロセスを完了するには、管理者特権が必要です。 ポータルの準備は 10 分ほどで完了します。
 
@@ -33,21 +33,21 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="get-started"></a>はじめに
 
-Azure Stack Edge を配置するには、以下の順序どおりにチュートリアルを参照してください。
+Azure Stack Edge Pro を配置するには、次の順序どおりにチュートリアルを参照してください。
 
 | **#** | **手順** | **概要** |
 | --- | --- | --- | 
-| 1. |**[Azure Stack Edge のために Azure portal を準備する](azure-stack-edge-deploy-prep.md)** |Azure Stack Box Edge 物理デバイスを設置する前に、Azure Stack Edge リソースを作成して構成します。 |
-| 2. |**[Azure Stack Edge を設置する](azure-stack-edge-deploy-install.md)**|Azure Stack Edge 物理デバイスの開梱、ラックへの取り付け、ケーブル接続を行います。  |
-| 3. |**[Azure Stack Edge を接続、設定、およびアクティブ化する](azure-stack-edge-deploy-connect-setup-activate.md)** |ローカル Web UI に接続して、デバイス設定を完了し、デバイスをアクティブ化します。 このデバイスは、SMB または NFS 共有を設定する準備ができています。  |
-| 4. |**[Azure Stack Edge を使用してデータを転送する](azure-stack-edge-deploy-add-shares.md)** |共有を追加し、SMB または NFS を介して共有に接続します。 |
-| 5. |**[Azure Stack Edge でデータを変換する](azure-stack-edge-deploy-configure-compute.md)** |データを Azure に移動するときにそれを変換するように、デバイス上のコンピューティング モジュールを構成します。 |
+| 1. |**[Azure Stack Edge Pro のために Azure portal を準備する](azure-stack-edge-deploy-prep.md)** |Azure Stack Box Edge 物理デバイスを設置する前に、Azure Stack Edge リソースを作成して構成します。 |
+| 2. |**[Azure Stack Edge Pro を設置する](azure-stack-edge-deploy-install.md)**|Azure Stack Edge Pro 物理デバイスの開梱、ラックへの取り付け、ケーブル接続を行います。  |
+| 3. |**[Azure Stack Edge Pro を接続、設定、およびアクティブ化する](azure-stack-edge-deploy-connect-setup-activate.md)** |ローカル Web UI に接続して、デバイス設定を完了し、デバイスをアクティブ化します。 このデバイスは、SMB または NFS 共有を設定する準備ができています。  |
+| 4. |**[Azure Stack Edge Pro を使用してデータを転送する](azure-stack-edge-deploy-add-shares.md)** |共有を追加し、SMB または NFS を介して共有に接続します。 |
+| 5. |**[Azure Stack Edge Pro でデータを変換する](azure-stack-edge-deploy-configure-compute.md)** |データを Azure に移動するときにそれを変換するように、デバイス上のコンピューティング モジュールを構成します。 |
 
 これで、Azure Portal をセットアップする準備が整いました。
 
 ## <a name="prerequisites"></a>前提条件
 
-次に示すのは、Azure Stack Edge リソース、Azure Stack Edge デバイス、およびデータセンター ネットワークの構成に関する前提条件です。
+次に示すのは、Azure Stack Edge リソース、Azure Stack Edge Pro デバイス、およびデータセンター ネットワークの構成に関する前提条件です。
 
 ### <a name="for-the-azure-stack-edge-resource"></a>Azure Stack Edge リソースの前提条件
 
@@ -66,7 +66,7 @@ Azure Stack Edge を配置するには、以下の順序どおりにチュート
 * アクセスの資格情報を持つ Microsoft Azure のストレージ アカウントがあること。
 * システム管理者が設定した Azure ポリシーによってブロックされていない。 ポリシーの詳細については、「[クイックスタート: 準拠していないリソースを識別するためのポリシー割り当てを作成する](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal)」を参照してください。
 
-### <a name="for-the-azure-stack-edge-device"></a>Azure Stack Edge デバイスの前提条件
+### <a name="for-the-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイスの前提条件
 
 物理デバイスを配置する前に次の点を確認します。
 
@@ -80,9 +80,9 @@ Azure Stack Edge を配置するには、以下の順序どおりにチュート
 
 開始する前に次の点を確認します。
 
-* Azure Stack Edge デバイスのネットワーク要件に従ってデータセンターのネットワークが構成されていること。 詳しくは、「[Azure Stack Edge のシステム要件](azure-stack-edge-system-requirements.md)」を参照してください。
+* Azure Stack Edge Pro デバイスのネットワーク要件に従ってデータセンターのネットワークが構成されていること。 詳細については、「[Azure Stack Edge Pro のシステム要件](azure-stack-edge-system-requirements.md)」を参照してください。
 
-* Azure Stack Edge の通常の動作条件下における帯域幅は次のとおりです。
+* Azure Stack Edge Pro の通常の動作条件下で、以下が存在すること。
 
   * デバイスが常に最新の状態に保たれるように最低 10 Mbps のダウンロード帯域幅。
   * ファイル転送用に最低 20 Mbps の専用のアップロード/ダウンロード帯域幅。
@@ -99,11 +99,11 @@ Azure Stack Edge リソースを作成するには、Azure portal で次の手�
     - または、Azure Government ポータル (URL: [https://portal.azure.us](https://portal.azure.us))。 詳細については、[ポータルを使用して Azure Government に接続する](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal)方法に関するページを参照してください。
 
 2. 左側のウィンドウで、 **[+ リソースの作成]** を選択します。 **[Azure Stack Edge/Data Box Gateway]** を検索して選択します。 **［作成］** を選択します
-3. Azure Stack Edge デバイスに使用するサブスクリプションを選択します。 Azure Stack Edge リソースをデプロイするリージョンを選択します。 Azure Stack Edge リソースを使用できるすべてのリージョンの一覧については、[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)に関するページを参照してください。
+3. Azure Stack Edge Pro デバイスに使用するサブスクリプションを選択します。 Azure Stack Edge リソースをデプロイするリージョンを選択します。 Azure Stack Edge リソースを使用できるすべてのリージョンの一覧については、[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)に関するページを参照してください。
 
     デバイスをデプロイする地理的リージョンに最も近い場所を選択します。 このリージョンには、デバイス管理用のメタデータのみが格納されます。 実際のデータは、任意のストレージ アカウントに格納できます。
     
-    **[Azure Stack Edge]** のオプションで、 **[作成]** を選択します。
+    **[Azure Stack Edge Pro]** のオプションで、 **[作成]** を選択します。
 
     ![Azure Stack Edge サービスを検索する](media/azure-stack-edge-deploy-prep/data-box-edge-sku.png)
 
@@ -125,7 +125,7 @@ Azure Stack Edge リソースを作成するには、Azure portal で次の手�
 
 5. **配送先住所** を選択します。
 
-    - 既にデバイスがある場合は、 **[I have a Azure Stack Edge device]\(Azure Stack Edge デバイスを持っています\)** のコンボ ボックスを選択します。
+    - 既にデバイスがある場合は、 **[I have a Azure Stack Edge Pro device]\(Azure Stack Edge Pro デバイスを持っています\)** のコンボ ボックスを選択します。
     - 新しいデバイスを注文する場合は、連絡先名、会社、デバイスの配送先住所、連絡先情報を入力します。
 
     ![新しいデバイスの配送先住所](media/azure-stack-edge-deploy-prep/data-box-edge-resource1.png)
@@ -144,11 +144,11 @@ Azure Stack Edge リソースを作成するには、Azure portal で次の手�
 
 Microsoft は受け取った注文を確認し、発送の詳細と共にお客様に (メールで) 連絡します。
 
-![Azure Stack Edge の注文確認通知](media/azure-stack-edge-deploy-prep/data-box-edge-resource4.png)
+![Azure Stack Edge Pro の注文確認通知](media/azure-stack-edge-deploy-prep/data-box-edge-resource4.png)
 
 ## <a name="get-the-activation-key"></a>アクティブ化キーの取得
 
-Azure Stack Edge リソースが起動して実行中になったら、アクティブ化キーを取得する必要があります。 このキーを使用して、Azure Stack Edge デバイスのアクティブ化とリソースへの接続を行います。 このキーは Azure portal ですぐに入手できます。
+Azure Stack Edge リソースが起動して実行中になったら、アクティブ化キーを取得する必要があります。 このキーを使用して、Azure Stack Edge Pro デバイスのアクティブ化とリソースへの接続を行います。 このキーは Azure portal ですぐに入手できます。
 
 1. 作成したリソースを選択します。 **[概要]** を選択し、 **[デバイスの設定]** を選択します。
 
@@ -165,14 +165,14 @@ Azure Stack Edge リソースが起動して実行中になったら、アクテ
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure Stack Edge に関する次のようなトピックについて説明しました。
+このチュートリアルでは、Azure Stack Edge Pro に関する次のトピックについて説明しました。
 
 > [!div class="checklist"]
 >
 > * 新しいリソースを作成
 > * アクティブ化キーの取得
 
-次のチュートリアルに進み、Azure Stack Edge を設置する方法を学習してください。
+次のチュートリアルに進み、Azure Stack Edge Pro を設置する方法を確認してください。
 
 > [!div class="nextstepaction"]
-> [Azure Stack Edge を設置する](./azure-stack-edge-deploy-install.md)
+> [Azure Stack Edge Pro を設置する](./azure-stack-edge-deploy-install.md)

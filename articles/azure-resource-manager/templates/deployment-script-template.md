@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/24/2020
 ms.author: jgao
-ms.openlocfilehash: 4094e610bb290fc11656dc192f3d0a495f679dc5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fb6d1c9e0e2ca545be850af22df15b342cf8d82c
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291794"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667501"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>テンプレートでデプロイ スクリプトを使用する (プレビュー)
 
@@ -217,7 +217,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="use-supporting-scripts"></a>サポート スクリプトを使用する
 
-複雑なロジックを、1 以上のサポート スクリプト ファイルに分けることができます。 `supportingScriptURI` プロパティを使用すると、必要に応じて、サポート スクリプト ファイルに URI の配列を指定できます。
+複雑なロジックを、1 以上のサポート スクリプト ファイルに分けることができます。 `supportingScriptUris` プロパティを使用すると、必要に応じて、サポート スクリプト ファイルに URI の配列を指定できます。
 
 ```json
 "scriptContent": "

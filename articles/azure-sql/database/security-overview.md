@@ -10,21 +10,21 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
-ms.reviewer: vanto, carlrab, emlisa
-ms.date: 05/14/2019
-ms.openlocfilehash: bfb7c94f1a29eaaf849dbf18a2b6137102617be8
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.reviewer: vanto, emlisa
+ms.date: 09/21/2020
+ms.openlocfilehash: f3ae5e1ef4dc2968724daeafb32f26cf445b0d2f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986850"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885296"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Azure SQL Database と SQL Managed Instance のセキュリティ機能の概要
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 この記事では、[Azure SQL Database](sql-database-paas-overview.md) と [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) を使用して、アプリケーションのデータ層をセキュリティで保護するための基本の概要を示します。 説明されているセキュリティ戦略では、下の図に示すように多層防御アプローチに従い、外側から内側に移動します。
 
-![sql-security-layer.png](./media/security-overview/sql-security-layer.png)
+![sql security layer.png](./media/security-overview/sql-security-layer.png)
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
@@ -77,7 +77,7 @@ IP ファイアウォール規則では、各要求の送信元 IP アドレス�
 
 行レベル セキュリティにより、顧客はクエリを実行するユーザーの特性に基づき、データベース テーブルの行へのアクセスを制御できます (たとえば、グループのメンバーシップや実行コンテキストなど)。 また、行レベル セキュリティを使用して、ラベルに基づくカスタム セキュリティ概念を実装することもできます。 詳細については、「[行レベルのセキュリティ](/sql/relational-databases/security/row-level-security)」を参照してください。
 
-![azure-database-rls.png](./media/security-overview/azure-database-rls.png)
+![azure database rls.png](./media/security-overview/azure-database-rls.png)
 
 ## <a name="threat-protection"></a>脅威の防止
 
@@ -91,7 +91,7 @@ SQL Database と SQL Managed Instance の監査はデータベース アクテ�
 
 Advanced Threat Protection では、ログを分析し、通常とは異なる動作と、データベースへのアクセスまたは悪用を試みる有害な可能性がある試行を検出します。 SQL インジェクション、潜在的なデータ侵入、ブルートフォース攻撃などの疑わしいアクティビティや、特権の昇格と不正な資格情報の使用を検出するアクセス パターンの異常に対してアラートが作成されます。 アラートは、[Azure Security Center](https://azure.microsoft.com/services/security-center/) で表示されます。ここでは、疑わしいアクティビティの詳細が提供され、また、脅威を軽減するためのアクションと共に、より詳しい調査のためのレコメンデーションが示されます。 Advanced Threat Protection は追加料金でサーバーごとに有効にすることができます。 詳細については、[SQL Database の Advanced Threat Protection の概要](threat-detection-configure.md)に関する記事を参照してください。
 
-![azure-database-td.jpg](./media/security-overview/azure-database-td.jpg)
+![azure database td.jpg](./media/security-overview/azure-database-td.jpg)
 
 ## <a name="information-protection-and-encryption"></a>情報の保護と暗号化
 
@@ -122,13 +122,13 @@ Azure では、新しく作成されたすべてのデータベースが既定�
 
 ### <a name="always-encrypted-encryption-in-use"></a>Always Encrypted (使用時の暗号化)
 
-![azure-database-ae.png](./media/security-overview/azure-database-ae.png)
+![azure database ae.png](./media/security-overview/azure-database-ae.png)
 
 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) は、特定のデータベース列に格納された機微なデータ (クレジット カード番号、国民識別番号、_知る必要性_ に基づくデータなど) がアクセスされないようにすることを目的とした機能です。 これには、データベース管理者や、管理タスクを実行するためにデータベースへのアクセスを許可されているものの、暗号化された列の特定のデータには業務上、アクセスする必要がない他の特権ユーザーが含まれます。 データは常に暗号化されます。つまり、暗号化されたデータは、暗号化キーにアクセスできるクライアント アプリケーションによって処理される場合にのみ、暗号化解除されます。 暗号化キーは SQL Database または SQL Managed Instance に公開されることはなく、[Windows 証明書ストア](always-encrypted-certificate-store-configure.md)または [Azure Key Vault](always-encrypted-azure-key-vault-configure.md) に格納できます。
 
 ### <a name="dynamic-data-masking"></a>動的データ マスク
 
-![azure-database-ddm.png](./media/security-overview/azure-database-ddm.png)
+![azure database ddm.png](./media/security-overview/azure-database-ddm.png)
 
 動的データ マスクは、特権のないユーザーに対してデリケートなデータをマスクし、データの公開を制限します。 動的データ マスクは、Azure SQL Database と SQL Managed Instance の中で機密の可能性があるデータを自動的に検出し、アプリケーション層への影響を最小限に抑えながらそれらのフィールドをマスクするための具体的な推奨事項を提示します。 指定されたデータベース フィールドに対するクエリの結果セットに含まれる機密データを難読化しますが、データベース内のデータは変更しません。 詳細については、[SQL Database と SQL Managed Instance の動的データ マスク](dynamic-data-masking-overview.md)に関するページを参照してください。
 
@@ -136,7 +136,7 @@ Azure では、新しく作成されたすべてのデータベースが既定�
 
 ### <a name="vulnerability-assessment"></a>脆弱性評価
 
-[脆弱性評価](sql-vulnerability-assessment.md)では、全体的なデータベース セキュリティを積極的に向上させる目的で、データベースの潜在的な脆弱性を検出、追跡、修復できるサービスを簡単に構成できます。 脆弱性評価 (VA) は、高度な SQL セキュリティ機能の統合パッケージである Advanced Data Security オファリングの一部です。 脆弱性評価は、SQL Advanced Data Security ポータルを使って一元的にアクセスおよび管理できます。
+[脆弱性評価](sql-vulnerability-assessment.md)では、全体的なデータベース セキュリティを積極的に向上させる目的で、データベースの潜在的な脆弱性を検出、追跡、修復できるサービスを簡単に構成できます。 脆弱性評価 (VA) は、高度な SQL セキュリティ機能の統合パッケージである Azure Defender for SQL オファリングの一部です。 脆弱性評価は、Azure Defender for SQL ポータルを使用して、一元的にアクセスおよび管理できます。
 
 ### <a name="data-discovery-and-classification"></a>データの検出と分類
 
@@ -150,7 +150,7 @@ Azure では、新しく作成されたすべてのデータベースが既定�
 
 ### <a name="compliance"></a>コンプライアンス
 
-アプリケーションでさまざまなセキュリティ要件を満たすのに役立つ上記の機能以外にも、Azure SQL Database では定期的な監査に参加し、さまざまなコンプライアンス基準に認定されています。 詳細については、[Microsoft Azure セキュリティ センター](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)に関するページを参照してください。ここから最新の SQL Database コンプライアンス証明書の一覧を入手できます。
+アプリケーションでさまざまなセキュリティ要件を満たすのに役立つ上記の機能以外にも、Azure SQL Database では定期的な監査に参加し、さまざまなコンプライアンス基準に認定されています。 詳細については、[Microsoft Azure セキュリティ センター](https://www.microsoft.com/trust-center/compliance/compliance-overview)に関するページを参照してください。ここから最新の SQL Database コンプライアンス証明書の一覧を入手できます。
 
 ## <a name="next-steps"></a>次のステップ
 

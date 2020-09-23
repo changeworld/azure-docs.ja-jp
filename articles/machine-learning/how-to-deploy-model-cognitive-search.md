@@ -10,15 +10,15 @@ ms.author: larryfr
 author: larryfr
 ms.reviewer: larryfr
 ms.date: 06/11/2020
-ms.openlocfilehash: 59671a0520d665d594356a2e6aee46116a8de5d3
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 101a27e12239394abb1bd79176c4509278d67a81
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541772"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886076"
 ---
 # <a name="deploy-a-model-for-use-with-cognitive-search"></a>Cognitive Search で使用するモデルをデプロイする
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 この記事では、[Azure Cognitive Search](../search/search-what-is-azure-search.md) で使用するモデルを、Azure Machine Learning を使用してデプロイする方法について説明します。
 
@@ -45,7 +45,7 @@ Azure Cognitive Search で使用するモデルをデプロイするときは、
 
 * Azure Machine Learning ワークスペース。 詳細については、[Azure Machine Learning ワークスペースの作成](how-to-manage-workspace.md)に関するページをご覧ください。
 
-* Azure Machine Learning SDK がインストールされた Python 開発環境。 詳細については、[Azure Machine Learning Web サービス](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)に関するページを参照してください。  
+* Azure Machine Learning SDK がインストールされた Python 開発環境。 詳細については、[Azure Machine Learning Web サービス](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)に関するページを参照してください。  
 
 * 登録済みのモデル。 モデルがない場合は、[https://github.com/Azure-Samples/azure-search-python-samples/tree/master/AzureML-Custom-Skill](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/AzureML-Custom-Skill) にあるサンプル ノートブックを使用してください。
 
@@ -240,7 +240,7 @@ aks_config = AksWebservice.deploy_configuration(autoscale_enabled=True,
                                                        max_request_wait_time=5000)
 ```
 
-詳細については、リファレンス ドキュメントで [AksService.deploy_configuration](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-) に関するページをご覧ください。
+詳細については、リファレンス ドキュメントで [AksService.deploy_configuration](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#&preserve-view=truedeploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-) に関するページをご覧ください。
 
 ## <a name="define-the-inference-configuration"></a>推論構成を定義する
 
@@ -251,7 +251,7 @@ from azureml.core.model import InferenceConfig
 inf_config = InferenceConfig(entry_script='score.py', environment=myenv)
 ```
 
-詳細については、リファレンス ドキュメントで [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) に関するページをご覧ください。
+詳細については、リファレンス ドキュメントで [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py&preserve-view=true) に関するページをご覧ください。
 
 ## <a name="deploy-the-model"></a>モデルをデプロイする
 
@@ -276,7 +276,7 @@ aks_service.wait_for_deployment(show_output = True)
 print(aks_service.state)
 ```
 
-詳細については、リファレンス ドキュメントで [Model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py) に関するページをご覧ください。
+詳細については、リファレンス ドキュメントで [Model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true) に関するページをご覧ください。
 
 ## <a name="issue-a-sample-query-to-your-service"></a>サービスにサンプル クエリを発行する
 

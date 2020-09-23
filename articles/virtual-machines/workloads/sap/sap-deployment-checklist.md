@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f195d4096baaa1d6a03b4b6c7c589ccef8fbd036
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 9991bae3d5c8487cc80cca0bf9a249e715b5c521
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651728"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650693"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure での SAP ワークロード: 計画とデプロイに関するチェックリスト
 
@@ -213,7 +213,7 @@ ms.locfileid: "88651728"
 12. ワークロードを適用しながら、Azure でのシステムのリソース使用量を記録します。 この使用量と以前のプラットフォームのレコードを比較します。 大きな違いがある場合は、将来のデプロイで VM のサイズを調整します。 ダウンサイズすると、VM のストレージとネットワークの帯域幅も減少することに留意してください。
     - [Azure の Windows 仮想マシンのサイズ](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     - [Azure の Linux 仮想マシンのサイズ](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
-13. システムのコピー機能やプロセスについて実験します。 目的は、プロジェクト チームが新しいシステムをすばやく入手できるよう、自分で開発システムやテスト システムを簡単にコピーできるようにすることです。 これらのタスクには、[SAP LaMa](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+Landscape+Management+%28SAP+LaMa%29+at+a+Glance) を使用することを検討してください。
+13. システムのコピー機能やプロセスについて実験します。 目的は、プロジェクト チームが新しいシステムをすばやく入手できるよう、自分で開発システムやテスト システムを簡単にコピーできるようにすることです。 
 14. チームの Azure のロールベースのアクセス、アクセス許可、およびプロセスを最適化して調整します。それにより、義務が確実に分離されるようにします。 同時に、すべてのチームが Azure のインフラストラクチャでタスクを実行できることを確認します。
 15. 高可用性とディザスター リカバリーの手順を演習、テスト、文書化し、これらのタスクをスタッフが実行できるようにします。 欠点を明らかにし、デプロイに統合する新しい Azure の機能を調整します。
 
@@ -298,7 +298,7 @@ ms.locfileid: "88651728"
 3. システムをシャットダウンできる時間を最適化します。  
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 次の記事を参照してください。
 
 - [SAP NetWeaver のための Azure Virtual Machines の計画と実装](./planning-guide.md)
