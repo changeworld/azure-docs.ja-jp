@@ -11,15 +11,15 @@ ms.author: nigup
 ms.date: 05/08/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4
-ms.openlocfilehash: a9ae3d2789758d03405fb5be82181c799d1ea692
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: c86397b20a95f045ac5edfeb2cfa4833982df990
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141127"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897418"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Azure Machine Learning を使用してリソースのクォータを管理し増やす
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 この記事では、[Azure Machine Learning](overview-what-is-azure-ml.md) サブスクリプションに対して事前構成された Azure リソースの制限と、管理できるクォータについて説明します。 これらの制限は、不正による予算超過を防ぎ、Azure の容量の制約を尊重するために設けられています。 
 
@@ -99,8 +99,6 @@ Azure サブスクリプションごとに、サービス全体またはスタ�
 
 
 > [!NOTE]
-> これは Enterprise Edition のみの機能です。 サブスクリプションに [Basic Edition と Enterprise Edition](overview-what-is-azure-ml.md#sku) の両方のワークスペースがある場合、これを使用して、Enterprise ワークスペースに対してのみクォータを設定できます。 Basic ワークスペースでは、既定の動作であるサブスクリプション レベルのクォータが引き続き指定されます。
->
 > ワークスペース レベルでクォータを設定するには、サブスクリプション レベルのアクセス許可が必要です。 これは、個々のワークスペース所有者がクォータを編集または増加して、別のワークスペース用に確保されたリソースに侵害し始めることがないように、適用されています。 そのため、サブスクリプション管理者が、ワークスペース間でこれらのクォータを割り当てて、分散するのに最も適しています。
 
 

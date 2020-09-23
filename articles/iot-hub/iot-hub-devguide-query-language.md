@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b4e7d8c5c518e4ba4a2a9116898be2bba7df0b06
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 77becbf4777d0668991adcd74b722cd28ac36f03
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022447"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031179"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>デバイス ツイン、モジュール ツイン、ジョブ、メッセージ ルーティングの IoT Hub クエリ言語
 
@@ -234,7 +234,7 @@ query オブジェクトは、クエリに必要な逆シリアル化オプシ�
 ### <a name="limitations"></a>制限事項
 
 > [!IMPORTANT]
-> クエリの結果には、デバイス ツインの最新の値に関連し、数分の遅れが生じることがあります。 ID を使用して個々のデバイス ツインのクエリを実行する場合は、[get twin REST API](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin) を使用します。 この API からは常に最新の値が返されます。また、調整の上限は高くなっています。 REST API を直接発行するか、[Azure IoT Hub Service SDK](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks) のいずれかで同等の機能を使用できます。
+> クエリの結果には、デバイス ツインの最新の値に関連し、数分の遅れが生じることがあります。 ID を使用して個々のデバイス ツインのクエリを実行する場合は、[get twin REST API](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.devicetwin?view=azure-java-stable) を使用します。 この API からは常に最新の値が返されます。また、調整の上限は高くなっています。 REST API を直接発行するか、[Azure IoT Hub Service SDK](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks) のいずれかで同等の機能を使用できます。
 
 現時点では、比較はプリミティブ型間 (オブジェクトなし) でのみサポートされます。たとえば、`... WHERE properties.desired.config = properties.reported.config` は、これらのプロパティがプリミティブ値を持つ場合にのみサポートされます。
 

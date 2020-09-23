@@ -1,14 +1,14 @@
 ---
 title: ポリシー定義の構造の詳細
 description: ポリシー定義を使用し、組織の Azure リソースの規則を確立する方法について説明します。
-ms.date: 08/27/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 076493fa8fd54e9585d09a3dd352eabdee652f18
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: a049134a32fd6026cc1e0c4044a7b9d08fb9bd8f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079032"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895369"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -17,7 +17,7 @@ Azure Policy によってリソースの規則が確立されます。 ポリシ
 
 規則を定義することによって、コストを制御し、リソースをより簡単に管理することができます。 たとえば、特定の種類の仮想マシンのみを許可するように指定することができます。 また、リソースに特定のタグを付けることを必須にすることもできます。 ポリシー割り当ては、子リソースによって継承されます。 リソース グループにポリシー割り当てが適用されると、そのリソース グループ内のすべてのリソースに適用されます。
 
-ポリシー定義のスキーマは [https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json) にあります
+ポリシー定義の _policyRule_ スキーマは、[https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json) にあります
 
 ポリシー定義を作成するには、JSON を使用します。 ポリシー定義には、以下のものに対する要素が含まれています。
 
@@ -206,8 +206,10 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 
 定義の場所が:
 
-- **サブスクリプション**の場合 - そのサブスクリプション内のリソースだけを、ポリシーに割り当てることができます。
-- **管理グループ**の場合 - 子管理グループと子サブスクリプション内のリソースだけを、ポリシーに割り当てることができます。 ポリシー定義を複数のサブスクリプションに適用する予定がある場合、その場所はサブスクリプションを含む管理グループである必要があります。
+- **サブスクリプション**の場合 - そのサブスクリプション内のリソースだけをポリシー定義に割り当てることができます。
+- **管理グループ**の場合 - 子管理グループと子サブスクリプション内のリソースだけをポリシー定義に割り当てることができます。 ポリシー定義を複数のサブスクリプションに適用する予定がある場合、その場所は各サブスクリプションを含む管理グループである必要があります。
+
+詳細については、「[Azure Policy でのスコープについて](./scope.md#definition-location)」を参照してください。
 
 ## <a name="policy-rule"></a>ポリシー規則
 
@@ -576,16 +578,16 @@ Azure Policy では、次の種類の効果をサポートしています。
 次の関数は、ポリシー規則で使用できますが、Azure Resource Manager テンプレート (ARM テンプレート) での使用方法とは異なります。
 
 - `utcNow()` - ARM テンプレートとは異なり、このプロパティは _defaultValue_ の外部で使用できます。
-  - 現在の日時に設定されているユニバーサル ISO 8601 日時形式 'yyyy-MM-ddTHH:mm:ss.fffffffZ' の文字列が返されます。
+  - 現在の日時に設定されているユニバーサル ISO 8601 日時形式 `yyyy-MM-ddTHH:mm:ss.fffffffZ` の文字列が返されます。
 
 次の関数は、ポリシー ルールでのみ使用できます。
 
 - `addDays(dateTime, numberOfDaysToAdd)`
-  - **dateTime**: [必須] 文字列 - ユニバーサル ISO 8601 日時形式 'yyyy-MM-ddTHH:mm:ss.fffffffZ' の文字列
-  - **numberOfDaysToAdd**: [必須] 整数 - 追加する日数
+  - **dateTime**: [必須] 文字列 - ユニバーサル ISO 8601 日時形式 `yyyy-MM-ddTHH:mm:ss.fffffffZ` の文字列。
+  - **numberOfDaysToAdd**: [必須] 整数 - 追加する日数。
 - `field(fieldName)`
   - **fieldName**: [必須] 文字列 - 取得する[フィールド](#fields)の名前
-  - そのフィールドの値を、If 条件による評価の対象となっているリソースから返します。
+  - If 条件による評価の対象となっている、リソースのそのフィールドの値を返します。
   - `field` は、主に **AuditIfNotExists** と **DeployIfNotExists** で、評価されるリソースのフィールドを参照するために使用されます。 使用例については、「[DeployIfNotExists の例](effects.md#deployifnotexists-example)」をご覧ください。
 - `requestContext().apiVersion`
   - ポリシーの評価をトリガーした要求の API バージョンを返します (例: `2019-09-01`)。
@@ -619,7 +621,7 @@ Azure Policy では、次の種類の効果をサポートしています。
 
   [Visual Studio Code 用の Azure Policy 拡張機能](../how-to/extension-for-vscode.md)を使用してリソース プロパティのエイリアスの表示と検出を行う方法について説明します。
 
-  :::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Visual Studio Code 用の Azure Policy 拡張機能" border="false":::
+  :::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="プロパティにカーソルが合わされてエイリアス名が表示されている、Visual Studio Code 用の Azure Policy 拡張機能のスクリーンショット。" border="false":::
 
 - Azure Resource Graph
 

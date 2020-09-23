@@ -3,12 +3,12 @@ title: Live Video Analytics on IoT Edge とは - Azure
 description: このトピックでは、Live Video Analytics on IoT Edge の概要について説明します。 このプラットフォームは、IoT ソリューションを強化するために使用できる機能を提供します。 たとえば、ライブ ビデオをキャプチャ、録画、分析し、結果 (ビデオやビデオ分析) を Azure サービスに発行します。
 ms.topic: overview
 ms.date: 05/27/2020
-ms.openlocfilehash: 81a67322d0a5e524d75b9bf3e481be7157e09e63
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: b9b8726c5e8ad6850e05aeee48fccabee703080e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266799"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904343"
 ---
 # <a name="what-is-live-video-analytics-on-iot-edge-preview"></a>Live Video Analytics on IoT Edge とは (プレビュー)
 
@@ -26,7 +26,10 @@ Live Video Analytics on IoT Edge を使用すると、既存の[ビデオ管理�
 
 ## <a name="supported-environments"></a>サポートされている環境
 
-Linux AMD64 および X64 環境がサポートされています。
+Linux x86-64 および ARM64 環境がサポートされています。
+> [!NOTE]
+> ARM64 デバイスのサポートは、ビルド `1.0.4` 以降で利用できます。
+> ARM64 デバイスでの Azure IoT Edge ランタイムの実行のサポートは、[パブリック プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)中です。
 
 ## <a name="get-started"></a>はじめに
 
@@ -37,9 +40,9 @@ Linux AMD64 および X64 環境がサポートされています。
 * [メディア グラフ](media-graph-concept.md)
 * [ビデオ録画](video-recording-concept.md)
 * [ビデオ再生](video-playback-concept.md)
-* [ビデオ連続録画](continuous-video-recording-concept.md)
+* [継続的なビデオ記録](continuous-video-recording-concept.md)
 * [イベントベースのビデオ記録](event-based-video-recording-concept.md)
-* [ビデオ録画を行わない Live Video Analytics](analyze-live-video-concept.md)
+* [ビデオ記録を行わない Live Video Analytics](analyze-live-video-concept.md)
 
 ## <a name="next-steps"></a>次のステップ
 

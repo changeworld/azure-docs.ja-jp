@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c4c7f82b729355e59ff05d5513e22fa143d53a5e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: e36485b54f209b10f9a4e6b4e6a26248955b2275
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206860"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031400"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>ビルド タスクを構成およびカスタマイズする
 
@@ -143,7 +143,7 @@ BinSkim のコマンドライン引数、ID ごとのルール、終了コード
 >
 >   新しいタスクが元のタスクと同じエージェント上で実行される場合、新しいタスクの出力によって、*s* ソース フォルダー内の元のタスクの出力が上書きされます。 ビルド出力は同じものですが、MSBuild を実行し、出力を成果物のステージング ディレクトリにコピーしてから、Roslyn アナライザーを実行することをお勧めします。
 
-Roslyn Analyzers タスクに関するその他のリソースについては、Microsoft Docs の「[Roslyn ベースのアナライザー](https://docs.microsoft.com/dotnet/standard/analyzers/)」を参照してください。
+Roslyn Analyzers タスクに関するその他のリソースについては、Microsoft Docs の「[Roslyn ベースのアナライザー](https://docs.microsoft.com/dotnet/standard/analyzers/api-analyzer)」を参照してください。
 
 このビルド タスクによってインストールされて使用されるアナライザー パッケージは、NuGet の [Microsoft.CodeAnalysis.FxCopAnalyzers](https://www.nuget.org/packages/Microsoft.CodeAnalysis.FxCopAnalyzers) ページで確認できます。
 

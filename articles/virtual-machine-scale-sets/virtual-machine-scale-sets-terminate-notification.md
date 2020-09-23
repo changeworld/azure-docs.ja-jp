@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 02/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 65fc822250ae8284c9f87af262356730ff1d54c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4b31eb59ed0bae2afe408546ece66eacade9ddb
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207517"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603834"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Azure 仮想マシン スケール セット インスタンスの通知を終了する
 スケール セット インスタンスでは、インスタンスの終了通知を受信し、定義済みの遅延タイムアウトを終了操作に設定することをオプトインできます。 終了通知は、Azure Metadata Service の [Scheduled Events](../virtual-machines/windows/scheduled-events.md) を介して送信されます。これにより、再起動や再デプロイなどの影響がある操作の通知と遅延が行われます。 このソリューションでは、別のイベント (Terminate) が Scheduled Events の一覧に追加されます。terminate イベントの関連する遅延は、スケール セット モデルの構成のユーザーによって指定された遅延の制限によって変わります。
@@ -91,7 +91,7 @@ New-AzVmssConfig `
 Update-AzVmss `
   -ResourceGroupName "myResourceGroup" `
   -VMScaleSetName "myScaleSet" `
-  -TerminateScheduledEvents $true
+  -TerminateScheduledEvents $true `
   -TerminateScheduledEventNotBeforeTimeoutInMinutes 15
 ```
 上の例では、既存のスケール セットに対して終了通知を有効にし、terminate イベントに 15 分のタイムアウトを設定します。

@@ -11,15 +11,15 @@ ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
-ms.openlocfilehash: 533ecbaebc5d36f8a6660ce22e5cab3630e3655f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 757646a1630443f297d4b7c538721e9facdc130c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87306402"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897434"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Azure Machine Learning におけるモデルの解釈可能性 (プレビュー)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 ## <a name="overview-of-model-interpretability"></a>モデルの解釈可能性の概要
 
@@ -39,7 +39,7 @@ ms.locfileid: "87306402"
 
 ## <a name="interpretability-with-azure-machine-learning"></a>Azure Machine Learning での解釈可能性
 
-解釈可能性クラスは、複数の SDK パッケージを介して利用可能になります。[Azure Machine Learning 用の SDK パッケージをインストールする](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)方法を確認してください。
+解釈可能性クラスは、複数の SDK パッケージを介して利用可能になります。[Azure Machine Learning 用の SDK パッケージをインストールする](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)方法を確認してください。
 
 * `azureml.interpret`。Microsoft でサポートされている機能を含むメイン パッケージ。
 

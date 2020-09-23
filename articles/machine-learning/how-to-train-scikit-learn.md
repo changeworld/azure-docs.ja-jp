@@ -10,15 +10,15 @@ author: jpe316
 ms.date: 07/24/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 4221ed6a927d0c589407dc38b5371ad8a65d2174
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 7b63ef36d7df43168ed132a740bab026e6e00f3f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054393"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897233"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して Scikit-learn モデルを大規模に構築する
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 この記事では、Azure Machine Learning を使用して scikit-learn トレーニング スクリプトを実行する方法について説明します。
 
@@ -36,7 +36,7 @@ scikit-learn の機械学習モデルを一からトレーニングする場合�
 
  - 独自の Jupyter Notebook サーバー
 
-    - [Azure Machine Learning SDK をインストールします](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+    - [Azure Machine Learning SDK をインストールします](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。
     - [ワークスペース構成ファイルを作成します](how-to-configure-environment.md#workspace)。
 
 ## <a name="set-up-the-experiment"></a>実験を設定する
@@ -45,7 +45,7 @@ scikit-learn の機械学習モデルを一からトレーニングする場合�
 
 ### <a name="initialize-a-workspace"></a>ワークスペースを初期化する
 
-[Azure Machine Learning ワークスペース](concept-workspace.md)は、サービス用の最上位のリソースです。 作成されるすべての成果物を操作できる一元的な場所が用意されています。 Python SDK では、[`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) オブジェクトを作成することでワークスペースの成果物にアクセスできます。
+[Azure Machine Learning ワークスペース](concept-workspace.md)は、サービス用の最上位のリソースです。 作成されるすべての成果物を操作できる一元的な場所が用意されています。 Python SDK では、[`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true) オブジェクトを作成することでワークスペースの成果物にアクセスできます。
 
 [前提条件のセクション](#prerequisites)で作成した `config.json` ファイルからワークスペース オブジェクトを作成します。
 
@@ -120,7 +120,7 @@ run.wait_for_completion(show_output=True)
 ```
 
 > [!WARNING]
-> Azure Machine Learning では、ソース ディレクトリ全体をコピーすることで、トレーニング スクリプトが実行されます。 アップロードしたくない機密データがある場合は、[.ignore ファイル](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots)を使用するか、ソース ディレクトリに含めないようにします。 代わりに、[データストア](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)を使用してデータにアクセスしてください。
+> Azure Machine Learning では、ソース ディレクトリ全体をコピーすることで、トレーニング スクリプトが実行されます。 アップロードしたくない機密データがある場合は、[.ignore ファイル](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots)を使用するか、ソース ディレクトリに含めないようにします。 代わりに、[データストア](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py&preserve-view=true)を使用してデータにアクセスしてください。
 
 Python 環境のカスタマイズの詳細については、[トレーニングとデプロイのための環境の作成と管理](how-to-use-environments.md)に関するページを参照してください。 
 
@@ -147,7 +147,7 @@ import joblib
 joblib.dump(svm_model_linear, 'model.joblib')
 ```
 
-次のコードでワークスペースにモデルを登録します。 パラメーター `model_framework`、`model_framework_version`、および `resource_configuration` を指定することによって、コードなしのモデル デプロイが使用可能になります。 コードなしのモデル デプロイを使用すると、登録済みのモデルからモデルを Web サービスとして直接デプロイできるようになり、[`ResourceConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.resource_configuration.resourceconfiguration?view=azure-ml-py) オブジェクトによって、Web サービスのコンピューティング リソースが定義されます。
+次のコードでワークスペースにモデルを登録します。 パラメーター `model_framework`、`model_framework_version`、および `resource_configuration` を指定することによって、コードなしのモデル デプロイが使用可能になります。 コードなしのモデル デプロイを使用すると、登録済みのモデルからモデルを Web サービスとして直接デプロイできるようになり、[`ResourceConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.resource_configuration.resourceconfiguration?view=azure-ml-py&preserve-view=true) オブジェクトによって、Web サービスのコンピューティング リソースが定義されます。
 
 ```Python
 from azureml.core import Model
@@ -166,7 +166,7 @@ model = run.register_model(model_name='sklearn-iris',
 
 ### <a name="preview-no-code-model-deployment"></a>(プレビュー) コードなしのモデル デプロイ
 
-従来のデプロイ ルートの代わりに、scikit-learn でコードなしのデプロイ機能 (プレビュー) を使用することもできます。 コードなしのモデル デプロイは、すべての組み込みの scikit-learn モデルの種類に対してサポートされています。 `model_framework`、`model_framework_version`、および `resource_configuration` パラメーターを使用して前に示したようにモデルを登録することにより、単純に [`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) 静的関数を使用してモデルをデプロイできます。
+従来のデプロイ ルートの代わりに、scikit-learn でコードなしのデプロイ機能 (プレビュー) を使用することもできます。 コードなしのモデル デプロイは、すべての組み込みの scikit-learn モデルの種類に対してサポートされています。 `model_framework`、`model_framework_version`、および `resource_configuration` パラメーターを使用して前に示したようにモデルを登録することにより、単純に [`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) 静的関数を使用してモデルをデプロイできます。
 
 ```python
 web_service = Model.deploy(ws, "scikit-learn-service", [model])

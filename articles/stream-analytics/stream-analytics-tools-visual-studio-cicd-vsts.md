@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: d9360ff64206cdce208f9643cf8ca86515aaeb7e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 18ab9a4108d6d9effaa25fe69ce42a18ca4ba0dc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75354430"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903847"
 ---
 # <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>チュートリアル:Azure Pipelines を使用して CI/CD で Azure Stream Analytics ジョブをデプロイする
 このチュートリアルでは、Azure Pipelines を使用して、Azure Stream Analytics ジョブの継続的インテグレーションと継続的配置を設定する方法について説明します。 
@@ -26,8 +26,12 @@ ms.locfileid: "75354430"
 > * Azure Pipelines にリリース パイプラインを作成する
 > * アプリケーションを自動的にデプロイおよびアップグレードする
 
+> [!NOTE]
+> CI/CD NuGet は非推奨になっています。 最新の npm に移行する方法の詳細については、「[継続的インテグレーションとデプロイの概要](cicd-overview.md)」を参照してください
+
 ## <a name="prerequisites"></a>前提条件
-始める前に、以下のものを用意してください。
+
+始める前に、次の手順が実行済みであることを確認してください。
 
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 * [Visual Studio](stream-analytics-tools-for-visual-studio-install.md) と、**Azure 開発**ワークロードまたは**データの保存と処理**ワークロードをインストールします。
@@ -50,27 +54,27 @@ ms.locfileid: "75354430"
 
 ビルドを生成できるように、Azure DevOps のプロジェクトで、アプリケーションのソース ファイルを共有します。  
 
-1. Visual Studio の右下隅のステータス バーで **[ソース管理に追加]** 、 **[Git]** の順に選択して、プロジェクトの新しいローカル Git リポジトリを作成します。 
+1. Visual Studio の右下隅のステータス バーで **[ソース管理に追加]**、**[Git]** の順に選択して、プロジェクトの新しいローカル Git リポジトリを作成します。 
 
-2. **チーム エクスプローラー**の **[同期]** ビューで、 **[Push to Azure DevOps Services]\(Azure DevOps Services へのプッシュ\)** にある **[Git リポジトリの発行]** ボタンを選択します。
+2. **チーム エクスプローラー**の **[同期]** ビューで、**[Push to Azure DevOps Services]\(Azure DevOps Services へのプッシュ\)** にある **[Git リポジトリの発行]** ボタンを選択します。
 
    ![[Push to Azure DevOps Services]\(Azure DevOps Services へのプッシュ\) の [Git リポジトリの発行] ボタン](./media/stream-analytics-tools-visual-studio-cicd-vsts/publish-git-repo-devops.png)
 
-3. 電子メールを確認し、 **[Azure DevOps Services Domain]\(Azure DevOps Services ドメイン\)** ドロップダウンからご自身の組織を選択します。 リポジトリ名を入力し、 **[リポジトリの発行]** を選択します。
+3. 電子メールを確認し、**[Azure DevOps Services Domain]\(Azure DevOps Services ドメイン\)** ドロップダウンからご自身の組織を選択します。 リポジトリ名を入力し、**[リポジトリの発行]** を選択します。
 
    ![[Git リポジトリのプッシュ] の [リポジトリの発行] ボタン](./media/stream-analytics-tools-visual-studio-cicd-vsts/publish-repository-devops.png)
 
-    リポジトリを公開すると、ローカル リポジトリと同じ名前の新しいプロジェクトがご自身の組織に作成されます。 既存のプロジェクトでリポジトリを作成するには、 **[リポジトリ名]** の横にある **[詳細]** をクリックして、プロジェクトを選択します。 **[See it on the web]\(Web を参照\)** を選択すると、ブラウザーでコードを表示できます。
+    リポジトリを公開すると、ローカル リポジトリと同じ名前の新しいプロジェクトがご自身の組織に作成されます。 既存のプロジェクトでリポジトリを作成するには、**[リポジトリ名]** の横にある **[詳細]** をクリックして、プロジェクトを選択します。 **[See it on the web]\(Web を参照\)** を選択すると、ブラウザーでコードを表示できます。
  
 ## <a name="configure-continuous-delivery-with-azure-devops"></a>Azure DevOps で継続的デリバリーを構成する
-Azure Pipelines のビルド パイプラインでは、順次実行されるビルド ステップで構成されたワークフローを記述します。 Azure Pipelines のビルド パイプラインの詳細については、[こちら](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav)をご覧ください。 
+Azure Pipelines のビルド パイプラインでは、順次実行されるビルド ステップで構成されたワークフローを記述します。 Azure Pipelines のビルド パイプラインの詳細については、[こちら](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav&preserve-view=true)をご覧ください。
 
-Azure Pipelines のリリース パイプラインでは、クラスターにアプリケーション パッケージをデプロイするワークフローを記述します。 ビルド パイプラインとリリース パイプラインを併用すると、ソース ファイルから始まり、クラスターでのアプリケーションの実行で終わるワークフロー全体を実行できます。 Azure Pipelines のリリース パイプラインの詳細については、[こちら](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)をご覧ください。
+Azure Pipelines のリリース パイプラインでは、クラスターにアプリケーション パッケージをデプロイするワークフローを記述します。 ビルド パイプラインとリリース パイプラインを併用すると、ソース ファイルから始まり、クラスターでのアプリケーションの実行で終わるワークフロー全体を実行できます。 Azure Pipelines のリリース パイプラインの詳細については、[こちら](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts&preserve-view=true)をご覧ください。
 
 ### <a name="create-a-build-pipeline"></a>ビルド パイプラインを作成する
 Web ブラウザーを開き、[Azure DevOps](https://app.vsaex.visualstudio.com/) で先ほど作成したプロジェクトに移動します。 
 
-1. **[ビルドとリリース]** タブで、 **[ビルド]** 、 **[+ 新規]** の順に選択します。  **[Azure DevOps Services Git]** と **[続行]** を選択します。
+1. **[ビルドとリリース]** タブで、**[ビルド]**、**[+ 新規]** の順に選択します。  **[Azure DevOps Services Git]** と **[続行]** を選択します。
     
     ![Azure DevOps で DevOps Git ソースを選択する](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-select-source-devops.png)
 
@@ -82,21 +86,21 @@ Web ブラウザーを開き、[Azure DevOps](https://app.vsaex.visualstudio.com
     
     ![[継続的インテグレーションを有効にする] トリガー状態](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-trigger-status-ci.png)
 
-4. ビルドは、プッシュ時またはチェックイン時にもトリガーされます。 ビルドの進行状況を確認するには、 **[ビルド]** タブに切り替えます。ビルドが正常に実行されることを確認したら、アプリケーションをクラスターにデプロイするリリース パイプラインを定義する必要があります。 ビルド パイプラインの横にある省略記号を右クリックして、 **[編集]** を選択します。
+4. ビルドは、プッシュ時またはチェックイン時にもトリガーされます。 ビルドの進行状況を確認するには、 **[ビルド]** タブに切り替えます。ビルドが正常に実行されることを確認したら、アプリケーションをクラスターにデプロイするリリース パイプラインを定義する必要があります。 ビルド パイプラインの横にある省略記号を右クリックして、**[編集]** を選択します。
 
 5.  **[タスク]** の **[エージェント キュー]** に「Hosted」と入力します。
     
     ![[タスク] メニューでエージェント キューを選択する](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-agent-queue-task.png) 
 
-6. **[フェーズ 1]** で **[+]** をクリックして、 **[NuGet]** タスクを追加します。
+6. **[フェーズ 1]** で **[+]** をクリックして、**[NuGet]** タスクを追加します。
     
     ![エージェント キューの NuGet タスクを追加する](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-add-nuget-task.png)
 
-7. **[詳細設定]** を展開して、 **[宛先ディレクトリ]** に「`$(Build.SourcesDirectory)\packages`」と入力します。 残りの既定の NuGet 構成値はそのままにします。
+7. **[詳細設定]** を展開して、**[宛先ディレクトリ]** に「`$(Build.SourcesDirectory)\packages`」と入力します。 残りの既定の NuGet 構成値はそのままにします。
 
    ![NuGet の復元タスクを構成する](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-nuget-restore-config.png)
 
-8. **[フェーズ 1]** で **[+]** をクリックして、 **[MSBuild]** タスクを追加します。
+8. **[フェーズ 1]** で **[+]** をクリックして、**[MSBuild]** タスクを追加します。
 
    ![エージェント キューの MSBuild タスクを追加する](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-add-msbuild-task.png)
 
@@ -108,7 +112,7 @@ Web ブラウザーを開き、[Azure DevOps](https://app.vsaex.visualstudio.com
 
    ![DevOps で MSBuild タスクを構成する](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-config-msbuild-task.png)
 
-10. **[フェーズ 1]** で **[+]** をクリックして、 **[Azure リソース グループの配置]** タスクを追加します。 
+10. **[フェーズ 1]** で **[+]** をクリックして、**[Azure リソース グループの配置]** タスクを追加します。 
     
     ![[Azure リソース グループの配置] タスクの追加](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-add-resource-group-deployment.png)
 
@@ -120,8 +124,8 @@ Web ブラウザーを開き、[Azure DevOps](https://app.vsaex.visualstudio.com
     |アクション  |  リソース グループを作成または更新します。   |
     |リソース グループ  |  リソース グループ名を入力します。   |
     |Template  | <実際のソリューション パス>\bin\Debug\Deploy\\<実際のプロジェクト名>.JobTemplate.json   |
-    |Template parameters  | <実際のソリューション パス>\bin\Debug\Deploy\\<実際のプロジェクト名>.JobTemplate.parameters.json   |
-    |テンプレート パラメーターのオーバーライド  | オーバーライドするテンプレート パラメーターをテキスト ボックスに入力します。 例えば、–storageName fabrikam –adminUsername $(vmusername) -adminPassword $(password) –azureKeyVaultName $(fabrikamFibre) です。 このプロパティは省略可能です。ただし、主要なパラメーターがオーバーライドされない場合、ビルドでエラーが発生します。    |
+    |テンプレート パラメーター  | <実際のソリューション パス>\bin\Debug\Deploy\\<実際のプロジェクト名>.JobTemplate.parameters.json   |
+    |テンプレート パラメーターのオーバーライド  | オーバーライドするテンプレート パラメーターをテキスト ボックスに入力します。 例: `–storageName fabrikam –adminUsername $(vmusername) -adminPassword $(password) –azureKeyVaultName $(fabrikamFibre)`。 このプロパティは省略可能です。ただし、主要なパラメーターがオーバーライドされない場合、ビルドでエラーが発生します。    |
     
     ![[Azure リソース グループの配置] のプロパティを設定する](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-deployment-properties.png)
 

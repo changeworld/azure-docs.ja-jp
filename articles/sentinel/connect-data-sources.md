@@ -1,10 +1,10 @@
 ---
 title: データ ソースを Azure Sentinel に接続する | Microsoft Docs
-description: Microsoft Threat Protection、Microsoft 365、Office 365、Azure AD、ATP、Cloud App Security などのデータ ソースを Azure Sentinel に接続する方法について説明します。
+description: Microsoft 365 Defender (以前の Microsoft Threat Protection)、Microsoft 365、Office 365、Azure AD、ATP、Cloud App Security などのデータ ソースを Azure Sentinel に接続する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: yelevin
-manager: angrobe
+manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
@@ -13,30 +13,30 @@ ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: a2b9c1602ead56b35c46508ef4d414145eb07432
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63acffd16fa4374d4f8541a9d3327b29a3641f71
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555514"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895793"
 ---
 # <a name="connect-data-sources"></a>データ ソースの接続
 
-Azure Sentinel を有効にしたら、まずデータ ソースを接続する必要があります。 Azure Sentinel には、Microsoft Threat Protection ソリューションや Microsoft 365 ソース (Office 365 を含む)、Azure AD、Azure ATP、Microsoft Cloud App Security など、すぐに使用できるリアルタイム統合を提供する Microsoft ソリューション用コネクタが多数付属しています。 さらに、Microsoft 以外のソリューション用のより広範なセキュリティ エコシステムへの組み込みコネクタがあります。 一般的なイベント形式 (CEF)、Syslog または REST-API を使用して、使用中のデータ ソースを Azure Sentinel に接続することもできます。
+Azure Sentinel を有効にしたら、まずデータ ソースを接続する必要があります。 Azure Sentinel には、Microsoft 365 Defender (以前の Microsoft Threat Protection) ソリューション、Microsoft 365 ソース (Office 365 を含む)、Azure AD、Microsoft Defender for Identity (以前の Azure ATP)、Microsoft Cloud App Security など、すぐに使用でき、リアルタイム統合を提供する、Microsoft ソリューション用のコネクタが多数付属しています。 さらに、Microsoft 以外のソリューション用のより広範なセキュリティ エコシステムへの組み込みコネクタがあります。 一般的なイベント形式 (CEF)、Syslog または REST-API を使用して、使用中のデータ ソースを Azure Sentinel に接続することもできます。
 
 1. メニューで **[Data connectors]\(データ コネクタ\)** を選択します。 このページでは、Azure Sentinel で提供されているコネクタとその状態の完全な一覧を表示できます。 接続するコネクタを選択し、 **[Open connector page]\(コネクタ ページを開く\)** を選択します。 
 
-   ![データ コレクター](./media/collect-data/collect-data-page.png)
+   ![データ コネクタ ギャラリー](./media/collect-data/collect-data-page.png)
 
 1. 特定のコネクタのページで、すべての前提条件を満たしたことを確認し、指示に従って Azure Sentinel にデータを接続します。 ログで Azure Sentinel との同期が開始されるまでには、しばらく時間がかかる場合があります。 接続した後、データの概要 ( **[Data received]\(受信データ\)** グラフ) と、データの種類の接続状態が表示されます。
 
-   ![接続コレクター](./media/collect-data/opened-connector-page.png)
+   ![データ コネクタを構成する](./media/collect-data/opened-connector-page.png)
   
 1. **[Next steps]\(次のステップ\)** タブをクリックすると、特定のデータの種類に対して Azure Sentinel によって標準で提供されるコンテンツの一覧が表示されます。
 
-   ![データ コレクター](./media/collect-data/data-insights.png)
+   ![コネクタの次のステップ](./media/collect-data/data-insights.png)
  
 
 ## <a name="data-connection-methods"></a>データ接続方法
@@ -48,13 +48,13 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
     - [Azure アクティビティ](connect-azure-activity.md)
     - [Azure Active Directory](connect-azure-active-directory.md) - 監査ログとサインイン ログ
     - [Azure AD Identity Protection](connect-azure-ad-Identity-protection.md)
-    - [Azure Advanced Threat Protection](connect-azure-atp.md)
+    - [Microsoft Defender for Identity](connect-azure-atp.md) (以前の Azure Advanced Threat Protection)
     - [Azure Information Protection](connect-azure-information-protection.md)
-    - [Azure Security Center](connect-azure-security-center.md)
+    - [Azure Security Center](connect-azure-security-center.md) - Azure Defender ソリューションからのアラート
     - [Cloud App Security](connect-cloud-app-security.md)
     - [ドメイン ネーム サーバー](connect-dns.md)
     - [Office 365](connect-office-365.md)
-    - [Microsoft Defender ATP](connect-microsoft-defender-advanced-threat-protection.md)
+    - [Microsoft Defender for Endpoint](connect-microsoft-defender-advanced-threat-protection.md) (以前の Microsoft Defender Advanced Threat Protection)
     - [Microsoft Web アプリケーション ファイアウォール](connect-microsoft-waf.md)
     - [Windows ファイアウォール](connect-windows-firewall.md)
     - [Windows セキュリティ イベント](connect-windows-security-events.md)
@@ -135,8 +135,8 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
 | WireData | [ワイヤ データの接続](../azure-monitor/insights/wire-data.md) | &#10007; | |
 | WindowsFirewall | [Windows ファイアウォールの接続](connect-windows-firewall.md) | &#10003; | |
 | AADIP SecurityAlert  | [Azure AD Identity Protection への接続](connect-azure-ad-identity-protection.md)  | &#10003; | |
-| AATP SecurityAlert  | [Azure ATP の接続](connect-azure-atp.md) | &#10003; | |
-| ASC SecurityAlert  | [Azure Security Center の接続](connect-azure-security-center.md)  | &#10003; | |
+| AATP SecurityAlert  | [Microsoft Defender for Identity](connect-azure-atp.md) (以前の Azure ATP) の接続 | &#10003; | |
+| ASC SecurityAlert  | Azure Security Center からの [Azure Defender アラート](connect-azure-security-center.md)の接続  | &#10003; | |
 | MCAS SecurityAlert  | [Microsoft Cloud App Security の接続](connect-cloud-app-security.md)  | &#10003; | |
 | SecurityAlert | | | |
 | Sysmon (イベント) | [Sysmon の接続](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Windows イベントの接続](../azure-monitor/platform/data-sources-windows-events.md) <br> [Sysmon Parser の入手](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | 既定では、Sysmon コレクションは仮想マシンにインストールされません。 Sysmon エージェントのインストール方法の詳細については、[Sysmon](https://docs.microsoft.com/sysinternals/downloads/sysmon) に関する記事を参照してください。 |

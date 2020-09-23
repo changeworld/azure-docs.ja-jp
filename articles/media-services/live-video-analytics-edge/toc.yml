@@ -51,6 +51,10 @@
         - name: HTTP 拡張機能を使用した OVMS の使用
           displayName: 'intel, OpenVINO'
           href: use-intel-openvino-tutorial.md
+        - name: Custom Vision の使用
+          href: custom-vision-tutorial.md
+        - name: 空間分析の使用
+          href: spatial-analysis-tutorial.md
 - name: サンプル
   items:
     - name: C# ダイレクト メソッドのサンプル
@@ -89,6 +93,8 @@
       href: manage-recording-policy-how-to.md
     - name: ポータルを使用したダイレクト メソッドの呼び出し
       href: use-azure-portal-to-invoke-direct-methods.md
+    - name: Azure Stack Edge へのデプロイ
+      href: deploy-azure-stack-edge-how-to.md
     - name: トラブルシューティング
       href: troubleshoot-how-to.md
 - name: リファレンス

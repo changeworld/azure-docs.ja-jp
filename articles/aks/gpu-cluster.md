@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 08/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 27c284ff7e806c9f194005ed26c05e99c4697083
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 4dfaa329dd0472b52de2d3306e6a3b61f660e666
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757644"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89443060"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でコンピューティングを集中的に使用するワークロードに GPU を使用する
 
@@ -162,7 +162,7 @@ az extension update --name aks-preview
 
 クラスターの作成時に、AKS 専用 GPU イメージを使用するようにクラスターを構成します。 AKS 専用 GPU イメージを使用するため、新しいクラスターで GPU エージェント ノードの `--aks-custom-headers` フラグを使用します。
 
-```azure-cli
+```azurecli
 az aks create --name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
 ```
 
@@ -173,7 +173,7 @@ az aks create --name myAKSCluster --resource-group myResourceGroup --node-vm-siz
 
 AKS 専用 GPU イメージを使用するように新しいノード プールを構成します。 AKS 専用 GPU イメージを使用するため、新しいノード プールで GPU エージェント ノードの `--aks-custom-headers` フラグを使用します。
 
-```azure-cli
+```azurecli
 az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
 ```
 
@@ -181,7 +181,7 @@ az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myRe
 
 > [!NOTE]
 > GPU SKU に第 2 世代仮想マシンが必要な場合、次のように作成できます。
-> ```azure-cli
+> ```azurecli
 > az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6s_v2 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true,usegen2vm=true
 > ```
 
