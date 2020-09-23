@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge でのコンピューティング ネットワーク管理によってモジュールにアクセスする | Microsoft Docs
-description: Azure Stack Edge でコンピューティング ネットワークを拡張して、外部 IP 経由でモジュールにアクセスする方法について説明します。
+title: Azure Stack Edge Pro でコンピューティング ネットワークを管理してモジュールにアクセスする | Microsoft Docs
+description: Azure Stack Edge Pro でコンピューティング ネットワークを拡張して外部 IP 経由でモジュールにアクセスする方法を説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,21 +8,21 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: alkohli
-ms.openlocfilehash: 01b0eae7d2e5d1078c0761838081a2379a724a97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19c92deb58ac51aa882e7123b9a90aa3eae627d0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84342988"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894120"
 ---
-# <a name="enable-compute-network-on-your-azure-stack-edge"></a>Azure Stack Edge でコンピューティング ネットワークを有効にする
+# <a name="enable-compute-network-on-your-azure-stack-edge-pro"></a>Azure Stack Edge Pro でコンピューティング ネットワークを有効にする
 
-この記事では、Azure Stack Edge で実行されているモジュールから、デバイスで有効になっているコンピューティング ネットワークにどのようにアクセスするかを説明します。
+この記事では、Azure Stack Edge Pro で実行されているモジュールから、デバイスで有効になっているコンピューティング ネットワークにアクセスする方法について説明します。
 
 ネットワークを構成するには、次の手順を実行します。
 
-- お使いのコンピューティング用 Azure Stack Edge デバイスでネットワーク インターフェイスを有効にします
-- お使いの Azure Stack Edge でコンピューティング ネットワークにアクセスするためのモジュールを追加します
+- コンピューティング用の Azure Stack Edge Pro デバイスでネットワーク インターフェイスを有効にします
+- Azure Stack Edge Pro でコンピューティング ネットワークにアクセスするためのモジュールを追加します
 - 有効になっているネットワーク インターフェイスにモジュールがアクセスできることを確認します
 
 このチュートリアルでは、Web サーバー アプリのモジュールを使用したシナリオについて説明します。
@@ -31,8 +31,8 @@ ms.locfileid: "84342988"
 
 開始する前に、次の条件を満たしている必要があります。
 
-- デバイスのセットアップが完了した Azure Stack Edge デバイスがある。
-- **コンピューティングの構成**が完了している。コンピューティングの構成は、お使いのデバイスで、[チュートリアル: Azure Stack Edge でのデータ変換](azure-stack-edge-deploy-configure-compute-advanced.md#configure-compute)に関するページの手順に従って行います。 お使いのデバイスには、関連付けられた IoT Hub リソース、IoT デバイス、および IoT Edge デバイスが必要です。
+- デバイスのセットアップが完了した Azure Stack Edge Pro デバイスがある。
+- **コンピューティングの構成**が完了している。コンピューティングの構成は、お使いのデバイスで、[Azure Stack Edge Pro を使用してデータを変換することに関するチュートリアル](azure-stack-edge-deploy-configure-compute-advanced.md#configure-compute)の手順に従って行います。 お使いのデバイスには、関連付けられた IoT Hub リソース、IoT デバイス、および IoT Edge デバイスが必要です。
 
 ## <a name="enable-network-interface-for-compute"></a>コンピューティング用ネットワーク インターフェイスを有効にする
 
@@ -55,10 +55,10 @@ ms.locfileid: "84342988"
 
 ## <a name="add-webserver-app-module"></a>Web サーバー アプリ モジュールを追加する
 
-Azure Stack Edge デバイスで Web サーバー アプリ モジュールを追加するには、次の手順を行います。
+Azure Stack Edge Pro デバイスに Web サーバー アプリ モジュールを追加するには、次の手順を行います。
 
-1. Azure Stack Edge デバイスに関連付けられている IoT Hub リソースに移動し、 **[IoT Edge デバイス]** を選択します。
-2. お使いの Azure Stack Edge デバイスに関連付けられている IoT Edge デバイスを選択します。 **[デバイスの詳細]** で、 **[モジュールの設定]** を選択します。 **[モジュールの追加]** で、 **[+ 追加]** 、 **[IoT Edge モジュール]** の順に選択します。
+1. Azure Stack Edge Pro デバイスに関連付けられている IoT Hub リソースに移動し、 **[IoT Edge デバイス]** を選択します。
+2. お使いの Azure Stack Edge Pro デバイスに関連付けられている IoT Edge デバイスを選択します。 **[デバイスの詳細]** で、 **[モジュールの設定]** を選択します。 **[モジュールの追加]** で、 **[+ 追加]** 、 **[IoT Edge モジュール]** の順に選択します。
 3. **[IoT Edge のカスタム モジュール]** ブレードで、以下の手順を実行します。
 
     1. デプロイする Web サーバー アプリ モジュールの**名前**を指定します。

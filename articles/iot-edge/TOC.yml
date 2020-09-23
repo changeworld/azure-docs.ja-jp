@@ -101,6 +101,8 @@
           href: iot-edge-security-manager.md
         - name: IoT Edge 証明書
           href: iot-edge-certs.md
+        - name: コンフィデンシャル コンピューティング
+          href: deploy-trusted-applications.md
     - name: プラットフォームのサポート
       href: support.md
     - name: 運用環境デプロイのチェックリスト

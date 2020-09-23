@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 77573ac4240eeded1f803d88f218aaf4d4c5a929
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 84a1e2edcbe9e9da93a158ebc11e7bf638dae100
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636128"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462736"
 ---
 # <a name="speech-service-for-telephony-data"></a>電話データのための Speech サービス
 
@@ -60,7 +60,7 @@ Speech サービスがコール センターで利用される場合、機能的
 
 ### <a name="translation"></a>翻訳
 
-デリバリー マネージャーが世界中の顧客体験を理解できるよう、外国語のサポート コールの翻訳を試している企業もあります。 Microsoft の[翻訳](translation.md)機能にまさるものはありません。 さまざまなロケールで、音声を音声に変換したり、音声をテキストに変換したりできます。
+デリバリー マネージャーが世界中の顧客体験を理解できるよう、外国語のサポート コールの翻訳を試している企業もあります。 Microsoft の[翻訳](/azure/cognitive-services/speech-service/speech-translation)機能にまさるものはありません。 さまざまなロケールで、音声を音声に変換したり、音声をテキストに変換したりできます。
 
 ### <a name="text-to-speech"></a>テキストから音声へ
 

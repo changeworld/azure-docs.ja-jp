@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 05/15/2020
 ms.author: jingwang
-ms.openlocfilehash: b2e666419a702832243c69bdb059f4447b02d756
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 953dae3c264e76b1e40f0dc07ccea0c00a7464c8
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079457"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024419"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>プライベート エンドポイントを使用して Azure BLOB ストレージから SQL データベースに安全にデータをコピーする
 
@@ -57,7 +57,7 @@ ms.locfileid: "89079457"
 
 #### <a name="create-a-sink-sql-table"></a>シンク SQL テーブルを作成する
 
-1. 次の SQL スクリプトを使用して、**dbo.emp** テーブルを SQL データベースに作成します。
+次の SQL スクリプトを使用して、**dbo.emp** テーブルを SQL データベースに作成します。
 
     ```sql
     CREATE TABLE dbo.emp
@@ -71,12 +71,10 @@ ms.locfileid: "89079457"
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-1. Azure サービスに SQL Server へのアクセスを許可します。 Data Factory から SQL Server にデータを書き込むことができるように、SQL Server で **[Azure サービスへのアクセスを許可]** が**オン**になっていることを確認します。 この設定を確認してオンにするには、 **[Azure SQL Server]**  >  **[概要]**  >  **[サーバー ファイアウォールの設定]** に移動します。 **[Azure サービスへのアクセスを許可]** のオプションを **[オン]** に設定します。
-
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 この手順では、データ ファクトリを作成するほか、Data Factory UI を起動してそのデータ ファクトリにパイプラインを作成します。
 
-1. Microsoft Edge または Google Chrome を開きます。 現在、Microsoft Edge と Google Chrome の Web ブラウザーのみが Data Factory の UI をサポートしています。
+1. Microsoft Edge または Google Chrome を開きます。 現在、Data Factory UI をサポートしている Web ブラウザーは Microsoft Edge と Google Chrome のみです。
 
 1. 左側のメニューで、 **[リソースの作成]**  >  **[分析]**  >  **[Data Factory]** の順に選択します。
 

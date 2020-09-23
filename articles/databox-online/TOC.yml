@@ -1,11 +1,11 @@
-- name: Azure Stack Edge と Data Box Gateway のドキュメント
+- name: Azure Stack Edge Pro と Data Box Gateway のドキュメント
   href: /azure/databox-online/
   expanded: true
-- name: GPU 搭載の Azure Stack Edge (プレビュー)
+- name: Azure Stack Edge Pro - GPU
   items:
     - name: 概要
       items:
-        - name: GPU 搭載の Azure Stack Edge とは
+        - name: GPU 搭載の Azure Stack Edge Pro とは
           href: azure-stack-edge-gpu-overview.md
     - name: チュートリアル
       items:
@@ -45,7 +45,7 @@
               href: azure-stack-edge-gpu-technical-specifications-compliance.md
             - name: 電源コードの仕様
               href: azure-stack-edge-technical-specifications-power-cords-regional.md
-        - name: Kubernetes を理解する
+        - name: Kubernetes (プレビュー) について
           items:
             - name: Kubernetes とは
               href: azure-stack-edge-gpu-kubernetes-overview.md
@@ -67,7 +67,7 @@
               href: azure-stack-edge-gpu-deploy-sample-module.md
             - name: Marketplace 経由の GPU モジュール
               href: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
-        - name: Kubernetes ワークロードをデプロイする
+        - name: Kubernetes ワークロード (プレビュー) をデプロイする
           items:
             - name: kubectl を使用
               items:
@@ -83,13 +83,13 @@
               items:
                 - name: ステートレス アプリ
                   href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
-            - name: Azure Arc を使用
+            - name: Azure Arc (プレビュー) 経由
               items:
                 - name: Kubernetes クラスターで Arc を有効にする
                   href: azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md
                 - name: GitOps を使用してステートレス アプリをデプロイする
                   href: azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md
-        - name: Azure Resource Manager を構成する
+        - name: Azure Resource Manager (プレビュー) を構成する
           items:
             - name: Azure PowerShell 経由で接続する
               href: azure-stack-edge-j-series-connect-resource-manager.md
@@ -97,7 +97,7 @@
               href: azure-stack-edge-j-series-set-azure-resource-manager-password.md
             - name: クライアント TLS 設定を構成する
               href: azure-stack-edge-j-series-configure-tls-settings.md
-        - name: VM をデプロイする
+        - name: VM をデプロイする (プレビュー)
           items:
             - name: VM をデプロイする - テンプレート
               href: azure-stack-edge-gpu-deploy-virtual-machine-templates.md
@@ -136,7 +136,7 @@
         - name: デバイスを管理する
           items:
             - name: 電源、アクセス、接続
-              href: azure-stack-edge-manage-access-power-connectivity-mode.md
+              href: azure-stack-edge-gpu-manage-access-power-connectivity-mode.md
             - name: PowerShell から
               href: azure-stack-edge-gpu-connect-powershell-interface.md
             - name: 更新プログラムの適用
@@ -161,7 +161,9 @@
               href: azure-stack-edge-contact-microsoft-support.md
     - name: リリース ノート
       items:
-        - name: 2008 - リリース ノート
+        - name: 2009 - GA
+          href: azure-stack-edge-gpu-2009-release-notes.md
+        - name: 2008 - プレビュー
           href: azure-stack-edge-gpu-2008-release-notes.md
     - name: リファレンス
       items:
@@ -171,11 +173,11 @@
           href: 'https://docs.microsoft.com/rest/api/databoxedgegateway'
         - name: .NET SDK
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet'
-- name: FPGA 搭載の Azure Stack Edge
+- name: Azure Stack Edge Pro - FPGA
   items:
     - name: 概要
       items:
-        - name: FPGA 搭載の Azure Stack Edge とは
+        - name: FPGA 搭載の Azure Stack Edge Pro とは
           href: azure-stack-edge-overview.md
     - name: チュートリアル
       items:
@@ -259,6 +261,18 @@
           href: 'https://docs.microsoft.com/rest/api/databoxedgegateway'
         - name: .NET SDK
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet'
+- name: Azure Stack Edge Pro R
+  items:
+    - name: 概要
+      items:
+        - name: Azure Stack Edge Pro R とは
+          href: azure-stack-edge-j-series-overview.md
+- name: Azure Stack Edge Mini R
+  items:
+    - name: 概要
+      items:
+        - name: Azure Stack Edge Mini R とは
+          href: azure-stack-edge-k-series-overview.md
 - name: Data Box Gateway
   items:
     - name: 概要
@@ -323,9 +337,9 @@
           href: data-box-gateway-release-notes.md
 - name: リソース
   items:
-    - name: Azure Stack Edge C# モジュールのサンプル (.NET)
+    - name: Azure Stack Edge Pro C# モジュールのサンプル (.NET)
       href: 'https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/'
-    - name: Azure Stack Edge/Data Box Gateway の製品
+    - name: Azure Stack Edge Pro または Data Box Gateway 製品
       href: 'https://azure.microsoft.com/services/storage/databox/edge/'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/storage/databox/edge/'

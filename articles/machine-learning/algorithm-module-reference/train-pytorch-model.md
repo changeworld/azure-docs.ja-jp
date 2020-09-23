@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: af14d4770d032c23216b805045eb27fadded5954
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 0ba603dad7d48be725f308f3a3296676c5f4f108
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170260"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883245"
 ---
 # <a name="train-pytorch-model"></a>PyTorch モデルのトレーニング
 
-この記事では、Azure Machine Learning デザイナー (プレビュー) で **PyTorch モデルのトレーニング** モジュールを使用して、DenseNet などの Pytorch モデルをトレーニングする方法について説明します。 トレーニングは、モデルを定義してそのパラメーターを設定した後に行なわれ、これにはラベル付けされたデータが必要です。 
+この記事では、Azure Machine Learning デザイナーで **PyTorch モデルのトレーニング** モジュールを使用して、DenseNet などの Pytorch モデルをトレーニングする方法について説明します。 トレーニングは、モデルを定義してそのパラメーターを設定した後に行なわれ、これにはラベル付けされたデータが必要です。 
 
 ## <a name="how-to-use-train-pytorch-model"></a>PyTorch モデルのトレーニングを使用する方法 
 

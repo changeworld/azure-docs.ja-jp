@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: sstein, carlrab
-ms.date: 03/17/2020
-ms.openlocfilehash: fe779ebf8bb041fb90b8eb38a9469a783127ffd3
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.reviewer: sstein
+ms.date: 09/21/2020
+ms.openlocfilehash: 2e3bf8251cfb5da20cade65831ef34dbc6709b1b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661420"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887377"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL Managed Instance に関してよく寄せられる質問 (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -82,7 +82,7 @@ Azure SQL Managed Instance と SQL Server 間での構文と動作の違いに�
 
 **SQL Managed Instance をプロビジョニングするにはどうすればよいですか?**
 
-インスタンスは、[Azure Portal](instance-create-quickstart.md)、[PowerShell](scripts/create-configure-managed-instance-powershell.md)、[Azure CLI](https://techcommunity.microsoft.com/t5/azure-sql-database/create-azure-sql-managed-instance-using-azure-cli/ba-p/386281)、および [ARM テンプレート](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/creating-azure-sql-managed-instance-using-arm-templates)からプロビジョニングできます。
+インスタンスは、[Azure portal](instance-create-quickstart.md)、[PowerShell](scripts/create-configure-managed-instance-powershell.md)、[Azure CLI](https://techcommunity.microsoft.com/t5/azure-sql-database/create-azure-sql-managed-instance-using-azure-cli/ba-p/386281)、および [ARM テンプレート](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/creating-azure-sql-managed-instance-using-arm-templates)からプロビジョニングできます。
 
 **既存のサブスクリプションで Managed Instance をプロビジョニングすることはできますか?**
 
@@ -94,7 +94,7 @@ Azure SQL Managed Instance と SQL Server 間での構文と動作の違いに�
 
 **マネージド インスタンスをスケーリングするにはどうすればよいですか?**
 
-マネージド インスタンスは、[Azure Portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation)、[PowerShell](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell)、[Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update) または [ARM テンプレート](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates)からスケールできます。
+マネージド インスタンスは、[Azure portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation)、[PowerShell](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell)、[Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update) または [ARM テンプレート](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates)からスケーリングできます。
 
 **Managed Instance をあるリージョンから別のリージョンに移動することはできますか?**
 
@@ -102,7 +102,7 @@ Azure SQL Managed Instance と SQL Server 間での構文と動作の違いに�
 
 **Managed Instance を削除するにはどうすればよいですか?**
 
-Managed Instance は、Azure Portal、[PowerShell](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance?view=azps-4.3.0)、[Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete) または [Resource Manager REST API](https://docs.microsoft.com/rest/api/sql/managedinstances/delete) を使用して削除できます。
+Managed Instance は、Azure portal、[PowerShell](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance?view=azps-4.3.0)、[Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete) または [Resource Manager REST API](https://docs.microsoft.com/rest/api/sql/managedinstances/delete) を使用して削除できます。
 
 **インスタンスを作成または更新したり、データベースを復元したりするのにどれくらいの時間がかかりますか?**
 
@@ -326,7 +326,7 @@ Managed Instance コントロールからパブリック エンドポイント�
 
 **パブリック エンドポイントを使用して Managed Instance データベースのデータにアクセスすることはできますか?**
 
-はい。 お客様は [Azure Portal](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal) / [PowerShell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) / ARM からのパブリック エンドポイント データ アクセスを有効にして、データ ポート (ポート番号 3342) へのアクセスをロック ダウンするよう NSG を構成する必要があります。 詳細については、「[Azure SQL Managed Instance のパブリック エンドポイントを構成する](public-endpoint-configure.md)」と「[パブリック エンドポイントで安全に Azure SQL Managed Instance を使用する](public-endpoint-overview.md)」を参照してください。 
+はい。 お客様は [Azure portal](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal) / [PowerShell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell)、または ARM からパブリック エンドポイント データ アクセスを有効にして、データ ポート (ポート番号 3342) へのアクセスをロック ダウンするよう NSG を構成する必要があります。 詳細については、「[Azure SQL Managed Instance のパブリック エンドポイントを構成する](public-endpoint-configure.md)」と「[パブリック エンドポイントで安全に Azure SQL Managed Instance を使用する](public-endpoint-overview.md)」を参照してください。 
 
 **SQL データ エンドポイントのカスタム ポートを指定できますか?**
 
@@ -350,7 +350,7 @@ Express Route 回線のピアリングが不可能な場合、他の唯一のオ
 - 低特権の DBA アカウントでインスタンスにアクセスする。
 - sysadmin アカウント用に Jumpbox への JIT アクセスを構成する。
 - [SQL 監査](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)を有効にしてアラート メカニズムと統合する。
-- [Advanced Data Security (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) スイートから[脅威検出](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection)を有効にする。
+- [Azure Defender for SQL](https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql) スイートから[脅威検出](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection)を有効にする。
 
 ## <a name="dns"></a>DNS
 

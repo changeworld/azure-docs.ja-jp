@@ -1,5 +1,5 @@
 ---
-title: Python SDK でコンピューティング リソースを作成する
+title: トレーニングとデプロイのコンピューティングを作成する (Python)
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning Python SDK を使用し、機械学習のためにトレーニングおよびデプロイのコンピューティング リソース (コンピューティング先) を作成します。
 services: machine-learning
@@ -11,16 +11,14 @@ ms.subservice: core
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 96aa6839fe51bb8a8c26f411c1a1f9df6b8c5a7f
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: ac440db4c1dbddd317743e2d681a62251624d9bd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147297"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898134"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-with-python-sdk"></a>Python SDK を使用してモデルのトレーニングとデプロイのためのコンピューティング先を作成する
-
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 この記事では、Azure Machine Learning Python SDK を使用してコンピューティング ターゲットを作成し、管理します。 コンピューティング先は次を利用して作成し、管理することもできます。
 * [Azure Machine Learning studio](how-to-create-attach-compute-studio.md) 
@@ -31,8 +29,16 @@ ms.locfileid: "89147297"
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を試してください
-* [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
+* [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
 * [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)
+
+## <a name="limitations"></a>制限事項
+
+* ワークスペースから**同じコンピューティングに対して複数のアタッチメントを同時に作成することは避けてください**。 たとえば、2 つの異なる名前を使用して 1 つの Azure Kubernetes Service クラスターをワークスペースにアタッチすることが該当します。 アタッチを繰り返すたびに、先行する既存のアタッチメントが切断されます。
+
+    TLS またはその他のクラスター構成設定を変更するためなど、コンピューティング先を再アタッチする場合は、既存のアタッチメントを先に削除する必要があります。
+
+* このドキュメントに記載されている一部のシナリオは __プレビュー__としてマークされています。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="whats-a-compute-target"></a>コンピューティング先とは何か
 
@@ -55,16 +61,33 @@ Azure Machine Learning では、異なるコンピューティング先に対し
 * [リモート仮想マシン](#vm)
 * [Azure HDInsight](#hdinsight)
 
+## <a name="compute-targets-for-inference"></a>推論のコンピューティング先
+
+推論を実行すると、Azure Machine Learning によって、モデルおよびそれを使用するために必要な関連リソースをホストする Docker コンテナーが作成されます。 このコンテナーはその後、次のいずれかのデプロイ シナリオで使用されます。
+
+* リアルタイムの推論に使用される __Web サービス__ として。 Web サービスのデプロイでは、次のいずれかのコンピューティング先が使用されます。
+
+    * [ローカル コンピューター](#local)
+    * [Azure Machine Learning コンピューティング インスタンス](#instance)
+    * [Azure Container Instances](#aci)
+    * [Azure Kubernetes Services](how-to-create-attach-kubernetes.md)
+    * Azure Functions (プレビュー)。 Azure Functions へのデプロイでは、Azure Machine Learning のみに依存して Docker コンテナーが構築されます。 そこから、Azure Functions を使用してデプロイされます。 詳細については、「[Azure Functions に機械学習モデルをデプロイする (プレビュー)](how-to-deploy-functions.md)」を参照してください。
+
+* データのバッチを定期的に処理するために使用される__バッチ推論__エンドポイントとして。 バッチ推論では、[Azure Machine Learning コンピューティング クラスター](#amlcompute)が使用されます。
+
+* __IoT デバイス__に (プレビュー)。 IoT デバイスへのデプロイでは、Azure Machine Learning のみに依存して Docker コンテナーが構築されます。 そこから、Azure IoT Edge を使用してデプロイされます。 詳細については、[IoT Edge モジュールとしてのデプロイ (プレビュー)](/azure/iot-edge/tutorial-deploy-machine-learning) に関する記事を参照してください。
 
 ## <a name="local-computer"></a><a id="local"></a>ローカル コンピューター
 
-トレーニングのためにローカル コンピューターを使用するとき、コンピューティング先を作成する必要はありません。  ローカル コンピューターから[トレーニング実行を送信する](how-to-set-up-training-targets.md)だけで十分です。
+**トレーニング**のためにローカル コンピューターを使用する場合は、コンピューティング先を作成する必要はありません。  ローカル コンピューターから[トレーニング実行を送信する](how-to-set-up-training-targets.md)だけで十分です。
+
+ローカル コンピューターを**推論**に使用する場合は、Docker がインストールされている必要があります。 デプロイを実行するには、[LocalWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#deploy-configuration-port-none-) を使用して、Web サービスが使用するポートを定義します。 次に、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」の説明に従って通常のデプロイ プロセスを使用します。
 
 ## <a name="azure-machine-learning-compute-cluster"></a><a id="amlcompute"></a>Azure Machine Learning コンピューティング クラスター
 
 Azure Machine Learning コンピューティング クラスターは、シングルノードまたはマルチノードのコンピューティングを簡単に作成できるマネージド コンピューティング インフラストラクチャです。 コンピューティングは、リソースとしてワークスペース リージョン内に作成され、ワークスペース内の他のユーザーと共有できます。 コンピューティングはジョブが送信されると自動的にスケールアップされ、Azure 仮想ネットワークに配置できます。 コンピューティングはコンテナー化環境で実行され、モデルの依存関係が [Docker コンテナー](https://www.docker.com/why-docker)にパッケージ化されます。
 
-Azure Machine Learning コンピューティングを使用して、クラウド内の CPU または GPU コンピューティング ノードのクラスター全体にトレーニング プロセスを分散させることができます。 GPU を含む VM サイズの詳細については、「[GPU 最適化済み仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)」を参照してください。 
+Azure Machine Learning コンピューティングを使用して、クラウド内の CPU または GPU コンピューティング ノードのクラスター全体にトレーニングまたはバッチ推論のプロセスを分散させることができます。 GPU を含む VM サイズの詳細については、「[GPU 最適化済み仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)」を参照してください。 
 
 Azure Machine Learning コンピューティングには、割り当て可能なコア数などの既定の制限があります。 詳細については、「[Azure リソースのクォータの管理と要求](how-to-manage-quotas.md)」を参照してください。
 
@@ -87,7 +110,7 @@ Azure Machine Learning コンピューティングは、複数回の実行で再
 
     または、[Azure Machine Learning Studio](how-to-create-attach-compute-studio.md#portal-create) で、永続的な Azure Machine Learning コンピューティング リソースを作成してアタッチすることもできます。
 
-これでコンピューティングをアタッチしたので、次のステップでは[トレーニング実行を送信](how-to-set-up-training-targets.md)します。
+これでコンピューティングをアタッチしたので、次のステップは、[トレーニング実行を送信](how-to-set-up-training-targets.md)または[バッチ推論の実行](how-to-use-parallel-run-step.md)のいずれかになります。
 
  ### <a name="lower-your-compute-cluster-cost"></a><a id="low-pri-vm"></a>コンピューティング クラスターのコストを削減する
 
@@ -201,8 +224,15 @@ Azure Machine Learning コンピューティングは、複数回の実行で再
         instance.wait_for_completion(show_output=True)
     ```
 
-これでコンピューティングをアタッチし、実行を構成したので、次のステップでは[トレーニング実行を送信](how-to-set-up-training-targets.md)します。
+これでコンピューティングをアタッチし、実行を構成したので、次のステップは、[トレーニング実行の送信](how-to-set-up-training-targets.md)または[推論のためのモデルのデプロイ](how-to-deploy-local-container-notebook-vm.md)のいずれかになります。
 
+## <a name="azure-container-instance"></a><a id="aci"></a>Azure Container Instances
+
+Azure Container Instances (ACI) は、モデルのデプロイ時に動的に作成されます。 他の方法では、ACI を作成したり、ワークスペースにアタッチしたりすることはできません。 詳細については、[Azure Container Instances へのモデルのデプロイ](how-to-deploy-azure-container-instance.md)に関するページを参照してください。
+
+## <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
+
+Azure Kubernetes Service (AKS) を Azure Machine Learning と組み合わせて使用すると、さまざまな構成オプションが使用できます。 詳細については、[Azure Kubernetes Service を作成してアタッチする方法](how-to-create-attach-kubernetes.md)に関するページを参照してください。
 
 ## <a name="remote-virtual-machines"></a><a id="vm"></a>リモート仮想マシン
 
@@ -240,6 +270,9 @@ Azure Machine Learning では、独自のコンピューティング リソー�
    ```
 
    または、[Azure Machine Learning Studio を使用して](how-to-create-attach-compute-studio.md#attached-compute)、DSVM をワークスペースにアタッチすることもできます。
+
+    > [!WARNING]
+    > ワークスペースから同じ DSVM に対して複数のアタッチメントを同時に作成することは避けてください。 アタッチを繰り返すたびに、先行する既存のアタッチメントが切断されます。
 
 1. **構成する**:DSVM コンピューティング先用の実行構成を作成します。 Docker と conda は、DSVM でトレーニング環境を作成および構成するために使用されます。
 
@@ -285,6 +318,9 @@ Azure HDInsight は、ビッグ データ分析のための一般的なプラッ
    ```
 
    または、[Azure Machine Learning Studio を使用して](how-to-create-attach-compute-studio.md#attached-compute)、HDInsight クラスターをワークスペースにアタッチすることもできます。
+
+    > [!WARNING]
+    > ワークスペースから同じ HDInsight に対して複数のアタッチメントを同時に作成することは避けてください。 アタッチを繰り返すたびに、先行する既存のアタッチメントが切断されます。
 
 1. **構成する**:HDI コンピューティング先用の実行構成を作成します。 
 
@@ -332,6 +368,9 @@ except ComputeTargetException:
 
 print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 ```
+
+> [!WARNING]
+> ワークスペースから同じ Azure Batch に対して複数のアタッチメントを同時に作成することは避けてください。 アタッチを繰り返すたびに、先行する既存のアタッチメントが切断されます。
 
 ### <a name="azure-databricks"></a><a id="databricks"></a>Azure Databricks
 
@@ -386,6 +425,9 @@ except ComputeTargetException:
 
 詳細な例については、GitHub の[サンプル ノートブック](https://aka.ms/pl-databricks)を参照してください。
 
+> [!WARNING]
+> ワークスペースから同じ Azure Databricks に対して複数のアタッチメントを同時に作成することは避けてください。 アタッチを繰り返すたびに、先行する既存のアタッチメントが切断されます。
+
 ### <a name="azure-data-lake-analytics"></a><a id="adla"></a>Azure Data Lake Analytics
 
 Azure Data Lake Analytics は、Azure クラウド内のビッグ データ分析プラットフォームです。 これは、Azure Machine Learning パイプラインでコンピューティング先として使用できます。
@@ -436,8 +478,11 @@ except ComputeTargetException:
 
 詳細な例については、GitHub の[サンプル ノートブック](https://aka.ms/pl-adla)を参照してください。
 
+> [!WARNING]
+> ワークスペースから同じ ADLA に対して複数のアタッチメントを同時に作成することは避けてください。 アタッチを繰り返すたびに、先行する既存のアタッチメントが切断されます。
+
 > [!TIP]
-> Azure Machine Learning パイプラインは、Data Lake Analytics アカウントの既定のデータ ストアに格納されたデータのみ使用できます。 使用する必要があるデータが既定以外のストアにある場合は、[`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) を使用して、トレーニングの前にデータをコピーできます。
+> Azure Machine Learning パイプラインは、Data Lake Analytics アカウントの既定のデータ ストアに格納されたデータのみ使用できます。 使用する必要があるデータが既定以外のストアにある場合は、[`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py&preserve-view=true) を使用して、トレーニングの前にデータをコピーできます。
 
 ## <a name="notebook-examples"></a>ノートブックの例
 

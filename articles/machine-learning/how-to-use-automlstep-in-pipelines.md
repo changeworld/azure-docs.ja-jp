@@ -11,15 +11,15 @@ manager: cgronlun
 ms.date: 08/26/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 2e6239bf2e79cd9be950796fbf8b6e6ad3905ad0
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 6b239ab14437083b74f4501eabb588e929152431
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89289955"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897253"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Python の Azure Machine Learning パイプラインで自動 ML を使用する
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Azure Machine Learning の自動 ML 機能は、考えられる方法をすべて再実装することなく、高パフォーマンス モデルを検出するのに役立ちます。 Azure Machine Learning パイプラインと組み合わせることで、データに最適なアルゴリズムをすばやく検出できるデプロイ可能なワークフローを作成できます。 この記事では、データ準備ステップを自動 ML ステップに効率的に結合する方法を示します。 自動 ML では、パイプラインを使用して MLOps およびモデル ライフサイクルの運用化への道に導きながら、データに最適なアルゴリズムをすばやく検出することができます。
 
@@ -29,7 +29,7 @@ Azure Machine Learning の自動 ML 機能は、考えられる方法をすべ�
 
 * Azure Machine Learning ワークスペース。 [Azure Machine Learning ワークスペースを作成する](how-to-manage-workspace.md)方法に関するページを参照してください。  
 
-* Azure の[自動機械学習](concept-automated-ml.md)および[機械学習パイプライン](concept-ml-pipelines.md)機能と SDK についての基本的な知識。
+* Azure の[自動機械学習](concept-automated-ml.md)機能および[機械学習パイプライン](concept-ml-pipelines.md)機能と SDK についての知識。
 
 ## <a name="review-automated-mls-central-classes"></a>自動 ML の中心的なクラスを確認する
 
@@ -41,7 +41,7 @@ Azure Machine Learning の自動 ML 機能は、考えられる方法をすべ�
 
 
 > [!TIP]
-> パイプライン ステップ間で一時データを渡すためのエクスペリエンスの向上は、パブリック プレビュー クラス [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py) と [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py) で使用できます。  これらのクラスは[試験段階の](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#stable-vs-experimental)プレビュー機能であり、いつでも変更される可能性があります。
+> パイプライン ステップ間で一時データを渡すためのエクスペリエンスの向上は、パブリック プレビュー クラス [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) と [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true) で使用できます。  これらのクラスは[試験段階の](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#&preserve-view=truestable-vs-experimental)プレビュー機能であり、いつでも変更される可能性があります。
 
 `AutoMLStep` は `AutoMLConfig` オブジェクトを通じて構成されます。 「[Python で自動 ML の実験を構成する](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#configure-your-experiment-settings)」で説明されているように、`AutoMLConfig` は柔軟なクラスです。 
 
@@ -251,7 +251,7 @@ dataprep_step = PythonScriptStep(
 `prepped_data_path` オブジェクトの型は `PipelineOutputFileDataset` です。 `arguments` および `outputs` 引数の両方で指定されていることに注意してください。 前のステップを確認すると、データ準備コード内で、引数 `'--output_path'` の値が、Parquet ファイルが書き込まれたファイル パスであることがわかります。 
 
 > [!TIP]
-> パイプライン ステップ間で中間データを渡すためのエクスペリエンスの向上は、パブリック プレビュー クラス [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py) で使用できます。 `OutputFileDatasetConfig` クラスを使用したコード例については、[2 ステップの ML パイプラインを構築する](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)方法を参照してください。
+> パイプライン ステップ間で中間データを渡すためのエクスペリエンスの向上は、パブリック プレビュー クラス [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) で使用できます。 `OutputFileDatasetConfig` クラスを使用したコード例については、[2 ステップの ML パイプラインを構築する](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)方法を参照してください。
 
 ## <a name="train-with-automlstep"></a>AutoMLStep でトレーニングする
 
@@ -270,7 +270,7 @@ prepped_data = prepped_data_path.parse_parquet_files(file_extension=None)
 上記のスニペットでは、データ準備ステップの `PipelineOutputFileDataset` 出力から高パフォーマンスの `PipelineOutputTabularDataset` を作成します。
 
 > [!TIP]
-> パブリック プレビュー クラス [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py) には、`OutputFileDatasetConfig` を AutoML 実行での消費のために [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py) に変換する [read_delimited_files()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py#read-delimited-files-include-path-false--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none--path-glob-none--set-column-types-none-) メソッドが含まれています。
+> パブリック プレビュー クラス [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) には、`OutputFileDatasetConfig` を AutoML 実行での消費のために [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true) に変換する [read_delimited_files()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py#&preserve-view=trueread-delimited-files-include-path-false--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none--path-glob-none--set-column-types-none-) メソッドが含まれています。
 
 ワークスペースに登録されている `Dataset` オブジェクトを使用することもできます。
 
@@ -368,7 +368,7 @@ train_step = AutoMLStep(name='AutoML_Classification',
 
 ## <a name="register-the-model-generated-by-automated-ml"></a>自動 ML によって生成されたモデルを登録する 
 
-基本的な ML パイプラインの最後のステップでは、作成されたモデルを登録します。 ワークスペースのモデル レジストリにモデルを追加すると、ポータルで使用できるようになり、バージョン管理が可能になります。 モデルを登録するには、`AutoMLStep` の `model_data` 出力を受け取る別の `PythonScriptStep` を書き込みます。
+単純な ML パイプラインの最後のステップでは、作成されたモデルを登録します。 ワークスペースのモデル レジストリにモデルを追加すると、ポータルで使用できるようになり、バージョン管理が可能になります。 モデルを登録するには、`AutoMLStep` の `model_data` 出力を受け取る別の `PythonScriptStep` を書き込みます。
 
 ### <a name="write-the-code-to-register-the-model"></a>モデルを登録するコードを書き込む
 

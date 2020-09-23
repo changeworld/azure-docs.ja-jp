@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: c3abd6a57eac851a5440ecdef6185cb310305434
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 7f10454eff7958f59cf16b19e98918062b2a61a3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146778"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886318"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning のしくみ:アーキテクチャと概念
 
@@ -110,7 +110,7 @@ Azure Machine Learning では、すべての実行を記録して、実験に次
 
 ### <a name="estimators"></a>Estimator
 
-一般的なフレームワークでのモデルのトレーニングを容易にするため、Estimator クラスを使用すると実行構成を簡単に構築できます。 汎用の [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) を作成し、それを使用して、自分で選択した任意の学習フレームワーク (scikit-learn など) を使用するトレーニング スクリプトを送信できます。
+一般的なフレームワークでのモデルのトレーニングを容易にするため、Estimator クラスを使用すると実行構成を簡単に構築できます。 汎用の [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py&preserve-view=true) を作成し、それを使用して、自分で選択した任意の学習フレームワーク (scikit-learn など) を使用するトレーニング スクリプトを送信できます。
 
 推定器の詳細については、[推定器を使用した ML モデルのトレーニング](how-to-train-ml-models.md)に関するページを参照してください。
 
@@ -123,7 +123,9 @@ Azure Machine Learning では、すべての実行を記録して、実験に次
 
 ### <a name="logging"></a>ログ記録
 
-ソリューションを開発するときは、Python スクリプトで Azure Machine Learning Python SDK を使用して、任意のメトリックを記録します。 実行後にメトリックのクエリを行って、デプロイするモデルが実行によって生成されたかどうかを判断します。
+Azure Machine Learning では、標準的な実行メトリックが自動的にログに記録されます。 ただし、[Python SDK を使用して任意のメトリックをログに記録する](how-to-track-experiments.md)こともできます。
+
+ログを表示する方法は複数あり、リアルタイムで実行状態を監視するか、完了後に結果を表示します。 詳細については、[ML 実行ログの監視と表示](how-to-monitor-view-training-logs.md)に関する記事を参照してください。
 
 
 > [!NOTE]
@@ -189,6 +191,17 @@ Web サービスを監視するために Application Insights テレメトリま
 
 Web サービスとしてのモデルのデプロイ例については、[Azure Container Instances での画像分類モデルのデプロイ](tutorial-deploy-models-with-aml.md)に関するページを参照してください。
 
+#### <a name="real-time-endpoints"></a>リアルタイム エンドポイント
+
+トレーニングされたモデルをデザイナーに配置すると、[モデルをリアルタイム エンドポイントとして配置](tutorial-designer-automobile-price-deploy.md)できます。 リアルタイム エンドポイントは、通常、REST エンドポイントを介して単一の要求を受信し、リアルタイムで予測を返します。 これは、一度に複数の値を処理し、完了後に結果をデータストアに保存するというバッチ処理とは異なります。
+
+#### <a name="pipeline-endpoints"></a>パイプライン エンドポイント
+
+パイプライン エンドポイントを使用すると、REST エンドポイントを使用して、プログラムで [ML パイプライン](#ml-pipelines)を呼び出すことができます。 パイプライン エンドポイントによって、パイプライン ワークフローを自動化できます。
+
+パイプライン エンドポイントは、発行されたパイプラインのコレクションです。 この論理的な組織では、同じエンドポイントを使用して複数のパイプラインを管理し、呼び出すことができます。 パイプライン エンドポイントで公開されている各パイプラインは、バージョン管理されます。 エンドポイントの既定のパイプラインを選択するか、REST 呼び出しでバージョンを指定できます。
+ 
+
 #### <a name="iot-module-endpoints"></a>IoT モジュール エンドポイント
 
 デプロイされる IoT モジュール エンドポイントは Docker コンテナーであり、モデルとそれに関連付けられているスクリプトまたはアプリケーション、および追加の依存関係が含まれます。 エッジ デバイス上の Azure IoT Edge を使用して、これらのモジュールをデプロイします。
@@ -212,12 +225,13 @@ Azure IoT Edge ではモジュールが実行されるのを保証し、モジ�
 
 ### <a name="studio"></a>スタジオ
 
-[Azure Machine Learning Studio](https://ml.azure.com) には、ワークスペース内のすべての成果物の Web ビューが用意されています。  データセット、実験、パイプライン、モデル、エンドポイントの結果と詳細を確認できます。  スタジオのコンピューティング リソースとデータストアを管理することもできます。
+[Azure Machine Learning Studio](overview-what-is-machine-learning-studio.md) には、ワークスペース内のすべての成果物の Web ビューが用意されています。  データセット、実験、パイプライン、モデル、エンドポイントの結果と詳細を確認できます。  スタジオのコンピューティング リソースとデータストアを管理することもできます。
 
 スタジオでは、Azure Machine Learning の一部である対話型ツールにアクセスすることもできます。
 
-+ [Azure Machine Learning デザイナー (プレビュー)](concept-designer.md) では、コードを記述せずにワークフローのステップを実行します
++ コードを記述せずにワークフローの手順を行うための [Azure Machine Learning デザイナー](concept-designer.md)
 + [自動機械学習](concept-automated-ml.md)の Web エクスペリエンス
++ 統合された Jupyter ノートブック サーバーで独自のコードを作成して実行するための [Azure Machine Learning ノートブック](how-to-run-jupyter-notebooks.md)
 + データをラベル付けするプロジェクトを作成、管理、および監視するための[データのラベル付けプロジェクト](how-to-create-labeling-projects.md)
 
 ### <a name="programming-tools"></a>プログラミング ツール
@@ -226,8 +240,9 @@ Azure IoT Edge ではモジュールが実行されるのを保証し、モジ�
 > 以下に "(プレビュー)" と付記されているツールは、現在、パブリック プレビュー段階です。
 > プレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-+  [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) を使用して、Python 環境でサービスを操作します。
++  [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) を使用して、Python 環境でサービスを操作します。
 + [Azure Machine Learning SDK for R](https://azure.github.io/azureml-sdk-for-r/reference/index.html) を使用して、R 環境でサービスを操作します (プレビュー)。
++ [Azure Machine Learning デザイナー](concept-designer.md)を使用して、コードを記述せずにワークフローの手順を行います。 
 + [Azure Machine Learning CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) を自動化に使用します。
 + [多数モデル ソリューション アクセラレータ](https://aka.ms/many-models) (プレビュー) は Azure Machine Learning 上に構築されており、数百または数千もの機械学習モデルをトレーニング、操作、管理できます。
 

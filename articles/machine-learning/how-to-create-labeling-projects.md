@@ -8,16 +8,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: a86a7ee600d7443e5ba8cb4f30db0c48c8170327
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: e74d22d3d45079a6568f6fca35dc5d84e2d7469f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612164"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897986"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>データのラベル付けプロジェクトを作成してラベルをエクスポートする 
 
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 多くの場合、機械学習プロジェクトで大量のデータにラベルを付けることは困難です。 画像の分類やオブジェクトの検出など、Computer Vision コンポーネントを使用するプロジェクトでは、通常、何千もの画像のラベルが必要になります。
  
@@ -144,13 +144,7 @@ Azure Blob Storage に既に格納済みのデータからデータセットを�
 >[!NOTE]
 > ラベラーは最初の 9 つのラベルを 1 から 9 の数字キーを使用して選択できることを必ず明記してください。
 
-## <a name="use-ml-assisted-labeling-preview"></a>ML によるラベル付けを使用する (プレビュー)
-
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
-
-> [!IMPORTANT]
-> ML によるラベル付けは現在、パブリック プレビューの段階です。
-> プレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+## <a name="use-ml-assisted-labeling"></a>ML によるラベル付けを使用する
 
 **[ML によるラベル付け]** ページでは、自動機械学習モデルをトリガーして、ラベル付けタスクを高速化することができます。 ラベル付けプロジェクトの初めに、潜在的な偏りを減らすために、画像はランダムな順序にシャッフルされます。 ただし、データセットに偏りが存在すれば、それがトレーニング済みのモデルに反映されます。 たとえば、使用する画像の 80% が単一のクラスに属している場合、モデルのトレーニングに使用されたデータの約 80% は、そのクラスに属すことになります。 このトレーニングに、アクティブ ラーニングは含まれません。
 
@@ -175,9 +169,6 @@ ML によるラベル付けを開始するために必要とされるラベル�
 十分な数の画像ラベルが送信されると、分類モデルを使用して画像のタグが予測されます。 または、オブジェクト検出モデルを使用して境界ボックスが予測されます。 今度は、それぞれの画像に既に存在する予測済みのラベルを含むページがラベラーに表示されます。 オブジェクト検出では、予測されたボックスも表示されます。 その後、このタスクでは、これらの予測をレビューし、間違ってラベル付けされた画像を修正してから、ページを送信します。  
 
 手動でラベル付けされたデータで機械学習モデルのトレーニングが完了すると、手動でラベル付けされた画像のテスト セットでモデルが評価され、さまざまな信頼度のしきい値でその精度が判定されます。 事前ラベルを表示するだけの精度がモデルにあるかどうかの基準となる信頼度のしきい値は、この評価プロセスを使用して割り出されます。 その後、このモデルは、ラベル付けされていないデータに対して評価されます。 予測の信頼度がこのしきい値を超える画像が、事前ラベル付けに使用されます。
-
-> [!NOTE]
-> ML によるラベル付けは、Enterprise Edition のワークスペース**のみ**で使用できます。
 
 ## <a name="initialize-the-labeling-project"></a>ラベル付けプロジェクトを初期化する
 

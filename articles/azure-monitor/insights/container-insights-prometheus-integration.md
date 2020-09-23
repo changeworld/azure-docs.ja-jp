@@ -3,12 +3,12 @@ title: Azure Monitor for containers の Prometheus 統合を構成する | Micro
 description: この記事では、Kubernetes クラスターで Prometheus からメトリックをスクレーピングするために、Azure Monitor for containers エージェントを構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: f7a43f00ce160829cc8e6ed3b6272ab14aaace66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c83d962a31150b31f5883150a2f7bd8d4b49183
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800462"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069426"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>Azure Monitor for containers で Prometheus メトリックのスクレーピングを構成する
 
@@ -142,7 +142,7 @@ ConfigMaps はグローバル リストであり、エージェントに適用�
 
            ```
            - prometheus.io/scrape:"true" #Enable scraping for this pod 
-           - prometheus.io/scheme:"http:" #If the metrics endpoint is secured then you will need to set this to `https`, if not default ‘http’
+           - prometheus.io/scheme:"http" #If the metrics endpoint is secured then you will need to set this to `https`, if not default ‘http’
            - prometheus.io/path:"/mymetrics" #If the metrics path is not /metrics, define it with this annotation. 
            - prometheus.io/port:"8000" #If port is not 9102 use this annotation
            ```
@@ -259,7 +259,7 @@ Azure Red Hat OpenShift v3.x クラスター用の ConfigMap 構成ファイル�
 
            ```
            - prometheus.io/scrape:"true" #Enable scraping for this pod 
-           - prometheus.io/scheme:"http:" #If the metrics endpoint is secured then you will need to set this to `https`, if not default ‘http’
+           - prometheus.io/scheme:"http" #If the metrics endpoint is secured then you will need to set this to `https`, if not default ‘http’
            - prometheus.io/path:"/mymetrics" #If the metrics path is not /metrics, define it with this annotation. 
            - prometheus.io/port:"8000" #If port is not 9102 use this annotation
            ```

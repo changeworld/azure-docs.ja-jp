@@ -2,20 +2,20 @@
 title: Application Insights で SharePoint を監視する
 description: 新しいインストルメンテーション キーで新しいアプリケーションの監視を開始します。
 ms.topic: conceptual
-ms.date: 07/11/2018
-ms.openlocfilehash: 392c0e0ee46e8acd540d498cbda1d240611d182e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 09/08/2020
+ms.openlocfilehash: 0d365e1fbcc52e14cfc727dd1de3e31a7d3e5d68
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326530"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536499"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>Application Insights で SharePoint を監視する
 
 Azure Application Insights を使うと、アプリの可用性、パフォーマンス、使用状況を監視できます。 ここでは、SharePoint サイトのために Application Insights を設定する方法について学習します。
 
 > [!NOTE]
-> セキュリティ上の問題により、この記事で説明されているスクリプトを SharePoint の最新 UX の Web ページに直接追加することはできません。 別の方法として、[SharePoint Framework (SPFx)](/sharepoint/dev/spfx/extensions/overview-extensions) を使用して、SharePoint サイトに Application Insights をインストールするために使用できるカスタム拡張機能を作成することもできます。 詳細については、「[How to create a SPFx extension solution with AppInsights installed from scratch (AppInsights がインストールされた SPFx 拡張機能ソリューションを最初から作成する方法)](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO#how-to-create-a-spfx-extension-solution-with-appinsights-installed-from-scratch)」を参照するか、[サンプルを表示](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO/AppInsightsExtensionSolutionSample)してください。 
+> セキュリティ上の問題により、この記事で説明されているスクリプトを SharePoint の最新 UX の Web ページに直接追加することはできません。 別の方法として、[SharePoint Framework (SPFx)](/sharepoint/dev/spfx/extensions/overview-extensions) を使用して、SharePoint サイトに Application Insights をインストールするために使用できるカスタム拡張機能を作成することもできます。 詳細については、「[How to create a SPFx extension solution with AppInsights installed from scratch (AppInsights がインストールされた SPFx 拡張機能ソリューションを最初から作成する方法)](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO#how-to-create-a-spfx-extension-solution-with-appinsights-installed-from-scratch)」を参照するか、[サンプルを表示](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO/AppInsightsExtensionSolutionSample-NPM)してください。 
 
 ## <a name="create-an-application-insights-resource"></a>Application Insights リソースの作成
 [Azure ポータル](https://portal.azure.com)で、Application Insights の新しいリソースを作成します。 アプリケーションの種類として ASP.NET を選択します。

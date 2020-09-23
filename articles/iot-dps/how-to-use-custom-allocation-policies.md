@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7733859c4ca4de8b580a228d8a73b899f0afa953
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: fc1154a3d4cefc84f223810a1972dd85673a6b3e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001979"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530898"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>カスタム割り当てポリシーの使用方法
 
@@ -44,7 +44,7 @@ Device Provisioning Service で提供されるポリシーがご自身のシナ�
 
 Windows 開発環境の前提条件は次のとおりです。 Linux または macOS については、SDK ドキュメントの「[開発環境を準備する](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)」の該当するセクションを参照してください。
 
-* [C++ によるデスクトップ開発](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads)ワークロードを有効にした [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019。 Visual Studio 2015 と Visual Studio 2017 もサポートされています。
+* [C++ によるデスクトップ開発](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)ワークロードを有効にした [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019。 Visual Studio 2015 と Visual Studio 2017 もサポートされています。
 
 * [Git](https://git-scm.com/download/) の最新バージョンがインストールされている。
 
@@ -298,7 +298,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
 ## <a name="create-the-enrollment"></a>登録を作成する
 
-このセクションでは、カスタム割り当てポリシーを使用する新しい登録グループを作成します。 わかりやすくするため、この記事では[対称キーの構成証明](concepts-symmetric-key-attestation.md)を登録で使用します。 ソリューションをさらに安全にするには、信頼チェーンで [X.509 証明書構成証明](concepts-security.md#x509-certificates)を使用することを検討してください。
+このセクションでは、カスタム割り当てポリシーを使用する新しい登録グループを作成します。 わかりやすくするため、この記事では[対称キーの構成証明](concepts-symmetric-key-attestation.md)を登録で使用します。 ソリューションをさらに安全にするには、信頼チェーンで [X.509 証明書構成証明](concepts-x509-attestation.md)を使用することを検討してください。
 
 1. 引き続き [Azure portal](https://portal.azure.com) でプロビジョニング サービスを開きます。
 

@@ -3,12 +3,12 @@ title: サービス エンドポイントを使用してアクセスを制限す
 description: Azure 仮想ネットワークのサービス エンドポイントを使用して Azure コンテナー レジストリへのアクセスを制限します。 サービス エンドポイント アクセスは、Premium サービス レベルの機能です。
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: a6a0702019cd11f26ea9fcdba8a74bf3e71df94b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 1fc8d54d677112a9c934f9079e953a7389939bde
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371432"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488671"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Azure 仮想ネットワークのサービス エンドポイントを使用してコンテナー レジストリへのアクセスを制限する
 
@@ -28,6 +28,8 @@ ms.locfileid: "87371432"
 * サービス エンドポイントを使用してコンテナー レジストリにアクセスするためのホストとして使用できるのは、[Azure Kubernetes Service](../aks/intro-kubernetes.md) クラスターまたは Azure [仮想マシン](../virtual-machines/linux/overview.md)だけです。 "*Azure Container Instances を含むその他の Azure サービスはサポートされていません。* "
 * 各レジストリでは、最大 100 個のネットワーク アクセス規則がサポートされます。
 * Azure Container Registry のサービス エンドポイントは、Azure US Government Cloud または Azure China Cloud ではサポートされていません。
+
+[!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
 ## <a name="prerequisites"></a>前提条件
 

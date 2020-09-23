@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: 112792d4ccee2be7f85e6a5a6c0caf64df9a019e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7046062b1c2e42f47d650df6d616d6fb73c8d1ca
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286072"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033066"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Azure でのネットワーク仮想アプライアンスの問題
 
@@ -140,7 +140,7 @@ VM ネットワークでスパイクを使用したり、高い使用率の期�
    sudo tcpdump -s0 -i eth0 -X -w vmtrace.cap
 
 2. ソース VM から宛先 VM に対して **PsPing** または **Nmap** を使用します (例: `PsPing 10.0.0.4:80` または `Nmap -p 80 10.0.0.4`)。
-3. [ネットワーク モニター](https://www.microsoft.com/download/details.aspx?id=4865)または tcpdump を使用して、宛先 VM からネットワーク トレースを開きます。 `IPv4.address==10.0.0.4 (Windows netmon)` または `tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` (Linux) など、**PsPing** または **Nmap** を実行したソース VM の IP に表示フィルターを適用します。
+3. [ネットワーク モニター](https://cnet-downloads.com/network-monitor)または tcpdump を使用して、宛先 VM からネットワーク トレースを開きます。 `IPv4.address==10.0.0.4 (Windows netmon)` または `tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` (Linux) など、**PsPing** または **Nmap** を実行したソース VM の IP に表示フィルターを適用します。
 
 ### <a name="analyze-traces"></a>トレースの分析
 

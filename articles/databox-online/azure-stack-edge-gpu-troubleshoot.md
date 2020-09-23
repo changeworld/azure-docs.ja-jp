@@ -1,6 +1,6 @@
 ---
-title: Azure portal を使用した Azure Stack Edge と GPU のトラブルシューティング | Microsoft Docs
-description: Azure Stack Edge GPU の問題をトラブルシューティングする方法について説明します。
+title: Azure portal を使用した Azure Stack Edge Pro と GPU のトラブルシューティング | Microsoft Docs
+description: Azure Stack Edge Pro GPU の問題をトラブルシューティングする方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/19/2020
 ms.author: alkohli
-ms.openlocfilehash: 92b82631ca78826dd927c6773c47072038eb4ab1
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 9deb10336d959a3f706cfc0ba970c3b83d5cd0a4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89290125"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891558"
 ---
-# <a name="troubleshoot-issues-on-your-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU デバイスの問題のトラブルシューティング 
+# <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスの問題のトラブルシューティング 
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-この記事では、Azure Stack Edge GPU デバイスの問題をトラブルシューティングする方法について説明します。 
+この記事では、Azure Stack Edge Pro GPU デバイスの問題をトラブルシューティングする方法について説明します。 
 
 
 ## <a name="run-diagnostics"></a>診断の実行
@@ -55,7 +55,7 @@ ms.locfileid: "89290125"
 
 ## <a name="gather-advanced-security-logs"></a>高度なセキュリティ ログの収集
 
-高度なセキュリティ ログには、Azure Stack Edge デバイスへのソフトウェアまたはハードウェア侵入のログが記録されることがあります。
+高度なセキュリティ ログには、Azure Stack Edge Pro デバイスへのソフトウェアまたはハードウェア侵入のログが記録されることがあります。
 
 ### <a name="software-intrusion-logs"></a>ソフトウェア侵入ログ
 
@@ -67,7 +67,7 @@ ms.locfileid: "89290125"
 
 - 特定のインクルード オプションを指定しない場合、ファイアウォール ログは既定でサポートパッケージに含まれます。
 
-- サポート パッケージで、ファイアウォール ログは `pfirewall.log` であり、ルート フォルダーにあります。 Azure Stack Edge デバイスへのソフトウェア侵入ログの例を次に示します。 
+- サポート パッケージで、ファイアウォール ログは `pfirewall.log` であり、ルート フォルダーにあります。 Azure Stack Edge Pro デバイスへのソフトウェア侵入ログの例を次に示します。 
 
     ```
     #Version: 1.5
@@ -101,7 +101,7 @@ ms.locfileid: "89290125"
 
 - 特定のインクルード オプションを指定しない場合、ハードウェア侵入ログは既定でサポートパッケージに含まれます。
 
-- サポート パッケージで、ハードウェア侵入ログは `HWIntrusion.txt` であり、ルート フォルダーにあります。 Azure Stack Edge デバイスへのハードウェア侵入ログの例を次に示します。 
+- サポート パッケージで、ハードウェア侵入ログは `HWIntrusion.txt` であり、ルート フォルダーにあります。 Azure Stack Edge Pro デバイスへのハードウェア侵入ログの例を次に示します。 
 
     ```
     09/04/2019 15:51:23 system Critical The chassis is open while the power is off.
@@ -143,7 +143,7 @@ ms.locfileid: "89290125"
 | **問題/エラー** |  **解像度** | 
 |------------|-----------------|
 |一般的な問題|<li>[Edge デバイスが正しく構成されていることを確認します](#verify-the-device-is-configured-properly)。<li> [クライアントが正しく構成されていることを確認します](#verify-the-client-is-configured-properly)|
-|Add-AzureRmEnvironment :この要求の送信中にエラーが発生しました。<br>行: 1 文字: 1<br>+ Add-AzureRmEnvironment -Name Az3 -ARMEndpoint "https://management.dbe ...|このエラーは、Azure Stack Edge デバイスに到達できないか、デバイスが正しく構成されていないことを意味します。 Edge デバイスとクライアントが正しく構成されていることを確認してください。 ガイダンスについては、この表の「**一般的な問題**」の行を参照してください。|
+|Add-AzureRmEnvironment :この要求の送信中にエラーが発生しました。<br>行: 1 文字: 1<br>+ Add-AzureRmEnvironment -Name Az3 -ARMEndpoint "https://management.dbe ...|このエラーは、Azure Stack Edge Pro デバイスに到達できないか、デバイスが正しく構成されていないことを意味します。 Edge デバイスとクライアントが正しく構成されていることを確認してください。 ガイダンスについては、この表の「**一般的な問題**」の行を参照してください。|
 |サービスからエラーが返されました。 詳細は InnerException を確認してください:基になる接続が閉じられました。SSL/TLS のセキュリティで保護されているチャネルに対する信頼関係を確立できませんでした。 |   このエラーの原因としては、独自の証明書の持ち込みの手順の 1 つ以上が正しく実行されていないことが考えられます。 [こちら](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-j-series-connect-resource-manager#step-2-create-and-install-certificates)のガイダンスを参照してください。 |
 |操作によって無効な状態コード 'ServiceUnavailable' が返されました <br> 応答状態コードは成功を示していません:503 (サービスは利用できません)。 | このエラーは、次のいずれかの条件の結果である可能性があります。<li>ArmStsPool が停止状態です。</li><li>Azure Resource Manager/セキュリティ トークン サービスの Web サイトのどちらかがダウンしています。</li><li>Azure Resource Manager クラスター リソースがダウンしています。</li><br><strong>注:</strong>アプライアンスを再起動すると問題が解決する場合がありますが、さらにデバッグを行えるようにサポート パッケージを収集してください。|
 |AADSTS50126:ユーザー名またはパスワードが無効です。<br>トレース ID:29317da9-52fc-4ba0-9778-446ae5625e5a<br>関連付け ID:1b9752c4-8cbf-4304-a714-8a16527410f4<br>タイムスタンプ:2019-11-15 09:21:57Z:リモート サーバーがエラー(400) 要求が正しくありません。<br>行: 1 文字: 1 |このエラーは、次のいずれかの条件の結果である可能性があります。<li>ユーザー名とパスワードが無効な場合は、[こちら](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-j-series-set-azure-resource-manager-password)の手順に従い、正しいパスワードを使用して、顧客が Azure portal からパスワードを変更したことを確認してください。<li>テナント ID が無効な場合、テナント ID は固定 GUID であるため、`c0257de7-538f-415c-993a-1b87a031879d` に設定してください</li>|
@@ -182,7 +182,7 @@ ms.locfileid: "89290125"
 
 ## <a name="blob-storage-on-device"></a>デバイス上の BLOB ストレージ 
 
-ここでは、Azure Stack Edge/Data Box Gateway デバイス上の BLOB ストレージに関連するエラーについて説明します。
+ここでは、Azure Stack Edge Pro/Data Box Gateway デバイス上の BLOB ストレージに関連するエラーについて説明します。
 
 | **問題/エラー** |  **解像度** | 
 |--------------------|-----------------|
@@ -197,7 +197,7 @@ ms.locfileid: "89290125"
 |AzCopy コマンドが 20 分間応答を停止しているように見えた後、次のエラーが表示されます。`Error parsing source location… The SSL connection could not be established`|ご使用のデバイス用の SSL 証明書をシステムの証明書ストアにインポートします。 詳細については、「[証明書のダウンロード](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate)」を参照してください。|
 |The value for one of the HTTP headers is not in the correct format. (いずれかの HTTP ヘッダーの値の形式が正しくありません。)|インストールしたバージョンの Python 用 Azure Storage ライブラリが Data Box でサポートされていません。 Azure Data Box Blob ストレージの要件で、サポートされるバージョンを確認してください。|
 |… [SSL:CERTIFICATE_VERIFY_FAILED] …| Python を実行する前に、REQUESTS_CA_BUNDLE 環境変数を Base64 でエンコードされた SSL 証明書ファイルのパスに設定してください ([証明書のダウンロード](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate)方法を参照してください)。 次に例を示します。<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer`<br>`python`<br>あるいは、証明書をシステムの証明書ストアに追加し、この環境変数をそのストアのパスに設定します。 Ubuntu の場合の例:<br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`<br>`python`.|
-|The connection times out. (接続がタイムアウトになりました。)|Azure Stack Edge にサインインし、ロックが解除されていることを確認します。 デバイスは再起動される度に、ユーザーがサインインするまでロックされた状態になります。|
+|The connection times out. (接続がタイムアウトになりました。)|Azure Stack Edge Pro にサインインし、ロックが解除されていることを確認します。 デバイスは再起動される度に、ユーザーがサインインするまでロックされた状態になります。|
 
 
 ## <a name="next-steps"></a>次のステップ

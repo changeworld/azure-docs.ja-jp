@@ -11,15 +11,15 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: c6b8f9d7f99d49f65a45d0e09623ef2f0e1217f2
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: d511520e274af9c6dea3f443693249ede368fd99
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387066"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893266"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>ストレージ アカウント キーの再生成
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Azure Machine Learning で使用される Azure ストレージ アカウントのアクセス キーを変更する方法について説明します。 Azure Machine Learning では、ストレージ アカウントを使用してデータまたはトレーニング済みモデルを保存できます。
 
@@ -32,7 +32,7 @@ Azure Machine Learning で使用される Azure ストレージ アカウント�
 
 * Azure Machine Learning ワークスペース。 詳細については、「[ワークスペースの作成](how-to-manage-workspace.md)を参照してください。
 
-* [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+* [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。
 
 * [Azure Machine Learning CLI 拡張機能](reference-azure-machine-learning-cli.md)。
 
@@ -141,4 +141,4 @@ for name, ds in datastores.items():
 
 ## <a name="next-steps"></a>次のステップ
 
-データストアの登録について詳しくは、[`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) クラスのリファレンスを参照してください。
+データストアの登録について詳しくは、[`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py&preserve-view=true) クラスのリファレンスを参照してください。

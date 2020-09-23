@@ -1,5 +1,5 @@
 ---
-title: スタジオでコンピューティング リソースを作成する
+title: トレーニングとデプロイのコンピューティングを作成する (スタジオ)
 titleSuffix: Azure Machine Learning
 description: スタジオを使用して、機械学習用のトレーニングとデプロイのためのコンピューティング リソース (コンピューティング先) を作成します
 services: machine-learning
@@ -11,15 +11,14 @@ ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: 2e32eb9a2a13b8e247388e8da80dd5f5967fdc6d
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 5345fd81e41bbb354e11e1be23329c3130d4d0c2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147288"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898113"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Azure Machine Learning スタジオでモデルのトレーニングとデプロイのためのコンピューティング先を作成する
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 この記事では、Azure Machine スタジオでコンピューティング先を作成および管理する方法について説明します。  コンピューティング先の作成と管理は、次を利用して行うこともできます。
 
@@ -119,6 +118,9 @@ Azure Machine Learning では、さまざまなリソースまたは環境でご
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-default.md)]
 
 ### <a name="inference-clusters"></a>推論クラスター
+
+> [!IMPORTANT]
+> Azure Machine Learning で Azure Kubernetes Service を使用するには、複数の構成オプションがあります。 ネットワークなど、一部のシナリオでは、追加の設定と構成が必要です。 Azure ML での AKS の使用に関する詳細については、「[Azure Kubernetes Service クラスターを作成してアタッチする](how-to-create-attach-kubernetes.md)」を参照してください。
 
 大規模な推論の場合は、Azure Kubernetes Service (AKS) クラスターを作成またはアタッチします。 [上の手順](#portal-create)を使用して、AKS クラスターを作成します。  その後、次のようにフォームに入力します。
 

@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 141ae90805e81d7269a12dcf465389d6a9dcaf55
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a156896faff4262d9b8bd3cef10817a5b919749d
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286964"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086150"
 ---
 # <a name="add-a-drawing-tools-toolbar-to-a-map"></a>描画ツールのツールバーをマップに追加する
 
-この記事では、描画ツール モジュールを使用する方法、およびマップ上に描画ツールバーを表示する方法について説明します。 [DrawingToolbar](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest) コントロールでは、マップ上に描画ツールバーが追加されます。 描画ツールを 1 つのみ、およびすべて使用してマップを作成する方法と、描画マネージャーで描画図形のレンダリングをカスタマイズする方法について説明します。
+この記事では、描画ツール モジュールを使用する方法、およびマップ上に描画ツールバーを表示する方法について説明します。 [DrawingToolbar](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar) コントロールでは、マップ上に描画ツールバーが追加されます。 描画ツールを 1 つのみ、およびすべて使用してマップを作成する方法と、描画マネージャーで描画図形のレンダリングをカスタマイズする方法について説明します。
 
 ## <a name="add-drawing-toolbar"></a>描画ツール バーの追加
 
@@ -38,7 +38,7 @@ drawingManager = new atlas.drawing.DrawingManager(map, {
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="描画ツール バーの追加" src="//codepen.io/azuremaps/embed/ZEzLeRg/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="描画ツール バーの追加" src="//codepen.io/azuremaps/embed/ZEzLeRg/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/ZEzLeRg/'>描画ツールの追加</a>」 Pen を参照してください。
 </iframe>
 
@@ -62,7 +62,7 @@ drawingManager = new atlas.drawing.DrawingManager(map, {
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="多角形描画ツールの追加" src="//codepen.io/azuremaps/embed/OJLWWMy/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="多角形描画ツールの追加" src="//codepen.io/azuremaps/embed/OJLWWMy/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/OJLWWMy/'>多角形描画ツールの追加</a>」 Pen を参照してください。
 </iframe>
 
@@ -122,7 +122,7 @@ drawingManager.setOptions({
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="描画のレンダリング スタイルの変更" src="//codepen.io/azuremaps/embed/OJLWpyj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="描画のレンダリング スタイルの変更" src="//codepen.io/azuremaps/embed/OJLWpyj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>描画のレンダリング スタイルの変更</a>」 Pen を参照してください。
 </iframe>
 
@@ -143,10 +143,10 @@ drawingManager.setOptions({
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [描画ツール バー](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)
+> [描画ツール バー](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)
 
 > [!div class="nextstepaction"]
-> [描画マネージャー](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)
+> [描画マネージャー](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager)

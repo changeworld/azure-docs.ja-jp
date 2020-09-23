@@ -1,6 +1,6 @@
 ---
 title: アルゴリズムとモジュールのリファレンス
-description: Azure Machine Learning デザイナー (プレビュー) で使用可能なモジュールについて説明します
+description: Azure Machine Learning デザイナーで使用可能なモジュールについて説明します
 titleSuffix: Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
-ms.openlocfilehash: a588c58c74ab9632f3c3c61e223dd37704103714
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9a2e21696409c320b89d1fed54fefad953b955e1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87048103"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886407"
 ---
-# <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナーのアルゴリズムとモジュールのリファレンス (プレビュー)
+# <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーのアルゴリズムとモジュールのリファレンス
 
-このリファレンス コンテンツでは、Azure Machine Learning デザイナー (プレビュー) で使用可能な各機械学習アルゴリズムとモジュールの技術的な背景について説明します。
+このリファレンス コンテンツでは、Azure Machine Learning デザイナーで使用可能な各機械学習アルゴリズムとモジュールの技術的な背景について説明します。
 
 各モジュールは、個別に実行可能なコードのセットを表し、必要な入力を取得して機械学習タスクを実行します。 モジュールには、特定のアルゴリズムが含まれているものや、機械学習において重要なタスク (欠損値の置換、統計分析など) を実行するものがあります。
 

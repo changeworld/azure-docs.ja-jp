@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/21/2020
-ms.openlocfilehash: 3e11fb151cb8b8c2409a50973029070945867aed
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 09/02/2020
+ms.openlocfilehash: 48d233dee063d8f9049e6e54baa2d744e1b8b058
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89290992"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033457"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor エージェントの概要
 
@@ -79,7 +79,7 @@ Azure Monitor エージェントの制限事項は次のとおりです。
 Log Analytics エージェントは、次のような場合に使用します。
 
 * Azure の内部または外部の仮想または物理マシンからログとパフォーマンス データを収集する。 
-* データを Log Analytics ワークスペースに送信して、[ログ クエリ](../log-query/log-query-overview.md)など、[Azure Monitor ログ](data-platform-logs.md#what-can-you-do-with-azure-monitor-logs)でサポートされている機能を活用する。
+* データを Log Analytics ワークスペースに送信して、[ログ クエリ](../log-query/log-query-overview.md)など、[Azure Monitor ログ](data-platform-logs.md)でサポートされている機能を活用する。
 * 仮想マシンを大規模に監視し、そのプロセスや他のリソースおよび外部プロセスに対する依存関係を監視できる [Azure Monitor for VMs](../insights/vminsights-overview.md) を使用する。  
 * [Azure Security Center](../../security-center/security-center-intro.md) または [Azure Sentinel](../../sentinel/overview.md) を使用して、ご利用の仮想マシンのセキュリティを管理する。
 * [Azure Automation Update Management](../../automation/update-management/update-mgmt-overview.md)、[Azure Automation State Configuration](../../automation/automation-dsc-overview.md)、または [Azure Automation Change Tracking および Inventory](../../automation/change-tracking.md) を使用して、Azure VM の包括的な管理を提供する
@@ -148,7 +148,7 @@ Telegraf エージェントは、次のような場合に使用します。
 | Windows Server 2012 R2                                   | X | X | X | X |
 | Windows Server 2012                                      | X | X | X | X |
 | Windows Server 2008 R2                                   |   | X | X | X |
-| Windows 10 Enterprise<br>(マルチセッションを含む) および Pro  |   | X | X | X |
+| Windows 10 Enterprise<br>(マルチセッションを含む) および Pro  | X | X | X | X |
 | Windows 8 Enterprise および Pro                             |   | X | X |   |
 | Windows 7 SP1                                            |   | X | X |   |
 
@@ -171,7 +171,7 @@ Telegraf エージェントは、次のような場合に使用します。
 | Oracle Linux 7                                           | X | X |   | X |
 | Oracle Linux 6                                           | X | X |   |   |
 | Oracle Linux 6.4+                                        | X | X |   | X |
-| Red Hat Enterprise Linux Server 8                        | X | X |   |   |
+| Red Hat Enterprise Linux Server 8                        |   | X |   |   |
 | Red Hat Enterprise Linux Server 7                        | X | X | X | X |
 | Red Hat Enterprise Linux Server 6                        | X | X | X |   |
 | Red Hat Enterprise Linux Server 6.7 以降                     | X | X | X | X |

@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/01/2020
 ms.author: memildin
-ms.openlocfilehash: 539b663366cd2820eec62a18d1fc2989c6b3c9b0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 77bf0f4cd60ba6e85763334a4d864975945ec2c3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042358"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894773"
 ---
 # <a name="feature-coverage-for-azure-paas-services"></a><a name="paas-services">Azure PaaS サービスを対象とする機能</a>
 
 次の表に、サポートされている Azure PaaS リソース用の Azure Security Center 機能の可用性を示します。
 
-|サービス|推奨事項 (無料)|セキュリティ アラート (Standard)|脆弱性評価 (標準)|
+|サービス|推奨事項 (無料)|セキュリティ アラート (Azure Defender)|脆弱性評価 (Azure Defender)|
 |:----|:----:|:----:|:----:|
 |Azure App Service|✔|✔|-|
 |Azure Automation アカウント|✔|-|-|
@@ -41,7 +41,7 @@ ms.locfileid: "86042358"
 |Azure Database for PostgreSQL*|✔|✔|-|
 |Azure Event Hubs 名前空間|✔|-|-|
 |Azure Functions アプリ|✔|-|-|
-|Azure Key Vault|✔|✔ *|-|
+|Azure Key Vault|✔|✔|-|
 |Azure Kubernetes Service|✔|✔|-|
 |Azure Load Balancer|✔|-|-|
 |Azure Logic Apps|✔|-|-|
@@ -56,4 +56,4 @@ ms.locfileid: "86042358"
 
 \* 現在、これらの機能はプレビューでサポートされています。
 
-\*\* Azure Active Directory (Azure AD) のレコメンデーションは、Standard サブスクリプションでのみ使用できます。
+\*\* Azure Active Directory (Azure AD) の推奨事項は、Azure Defender が有効になっているサブスクリプションでのみ使用できます。

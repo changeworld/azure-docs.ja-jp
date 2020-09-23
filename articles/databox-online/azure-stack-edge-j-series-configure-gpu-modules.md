@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack Edge GPU デバイスで GPU モジュールを実行する | Microsoft Docs
-description: Azure portal を使用して、Azure Stack Edge デバイス上の GPU でモジュールを構成して実行する方法について説明します。
+title: Microsoft Azure Stack Edge Pro GPU デバイスで GPU モジュールを実行する | Microsoft Docs
+description: Azure portal を使用して、Azure Stack Edge Pro デバイス上の GPU でモジュールを構成して実行する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,29 +8,29 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 419b8beb866711e80b4366df4398eb248256021b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 8b9f1180639f638e72fdea2f87958628a2e9e86b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266954"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891459"
 ---
-# <a name="configure-and-run-a-module-on-gpu-on-azure-stack-edge-device"></a>Azure Stack Edge デバイス上の GPU でモジュールを構成して実行する
+# <a name="configure-and-run-a-module-on-gpu-on-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイス上の GPU でモジュールを構成して実行する
 
-Azure Stack Edge デバイスには、1 つ以上のグラフィックス処理装置 (GPU) が含まれています。 GPU は、並列処理機能を提供し、中央処理装置 (CPU) より画像のレンダリングを速く処理できるため、AI 計算によく使用されます。 Azure Stack Edge デバイスに含まれる GPU の詳細については、[Azure Stack Edge デバイスの技術仕様](azure-stack-edge-gpu-technical-specifications-compliance.md)を参照してください。
+Azure Stack Edge Pro デバイスには、1 つ以上のグラフィックス処理装置 (GPU) が含まれています。 GPU は、並列処理機能を提供し、中央処理装置 (CPU) より画像のレンダリングを速く処理できるため、AI 計算によく使用されます。 Azure Stack Edge Pro デバイスに含まれる GPU の詳細については、[Azure Stack Edge Pro デバイスの技術仕様](azure-stack-edge-gpu-technical-specifications-compliance.md)をご覧ください。
 
-この記事では、Azure Stack Edge デバイス上の GPU でモジュールを構成して実行する方法について説明します。 この記事では、Nvidia T4 GPU 用に記述された、一般公開されているコンテナー モジュールの **Digits** を使用します。 この手順は、Nvidia がこの GPU 用に公開している他のすべてのモジュールの構成にも使用できます。
+この記事では、Azure Stack Edge Pro デバイス上の GPU でモジュールを構成して実行する方法について説明します。 この記事では、Nvidia T4 GPU 用に記述された、一般公開されているコンテナー モジュールの **Digits** を使用します。 この手順は、Nvidia がこの GPU 用に公開している他のすべてのモジュールの構成にも使用できます。
 
 
 ## <a name="prerequisites"></a>前提条件
 
 開始する前に次の点を確認します。
 
-1. GPU 対応の 1 ノード Azure Stack Edge デバイスにアクセスできること。 このデバイスが Azure のリソースでアクティブになっていること。  
+1. GPU 対応の 1 ノード Azure Stack Edge Pro デバイスにアクセスできること。 このデバイスが Azure のリソースでアクティブになっていること。  
 
 ## <a name="configure-module-to-use-gpu"></a>GPU を使用するようにモジュールを構成する
 
-Azure Stack Edge デバイス上の GPU を使用するようにモジュールを構成して、モジュールを実行するには、次の手順に従います。
+Azure Stack Edge Pro デバイス上の GPU を使用するようにモジュールを構成して、モジュールを実行するには、次の手順に従います。
 
 1. Azure portal で、デバイスに関連付けられているリソースに移動します。 
 
@@ -54,7 +54,7 @@ Azure Stack Edge デバイス上の GPU を使用するようにモジュール�
 
     ![GPU を使用するようにモジュールを構成する 6](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-2.png)
 
-    右側のウィンドウに、Azure Stack Edge デバイスに関連付けられている IoT Edge デバイスが表示されます。 これは、前の手順で IoT Hub リソースを作成するときに作成した IoT Edge デバイスに対応しています。 
+    右側のウィンドウに、Azure Stack Edge Pro デバイスに関連付けられている IoT Edge デバイスが表示されます。 これは、前の手順で IoT Hub リソースを作成するときに作成した IoT Edge デバイスに対応しています。 
     
 6. この IoT Edge デバイスを選択します。
 

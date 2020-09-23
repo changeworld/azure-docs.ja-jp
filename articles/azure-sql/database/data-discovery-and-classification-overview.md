@@ -11,14 +11,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 04/28/2020
+ms.date: 09/21/2020
 tags: azure-synapse
-ms.openlocfilehash: 3f1f284255d1c0e77779c175951eaf33d3e56067
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f324b1b0b5ed1882050684e7ac1c8ec4ea573dc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004105"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886494"
 ---
 # <a name="data-discovery--classification"></a>データの検出と分類
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -30,8 +30,6 @@ ms.locfileid: "87004105"
 - データのプライバシーと規制コンプライアンスの要件への基準を満たすための支援。
 - さまざまなセキュリティ シナリオ (機微なデータに対する異常なアクセスの監視 (監査) とアラートなど)。
 - 機密性の高いデータを含むデータベースへのアクセスの制御と、セキュリティの強化。
-
-データの検出と分類は、高度な Azure SQL セキュリティ機能の統合パッケージである [Advanced Data Security](advanced-data-security.md) オファリングの一部です。 データの検出と分類は、Azure portal の一元的な **[SQL Advanced Data Security]** セクションからアクセスして管理できます。
 
 > [!NOTE]
 > オンプレミスの SQL Server については、「[SQL データの検出と分類](https://go.microsoft.com/fwlink/?linkid=866999)」をご覧ください。
@@ -79,31 +77,23 @@ Azure 組織全体の分類法の定義とカスタマイズは 1 か所で行�
 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 
-2. [Azure SQL Database] ペインの **[セキュリティ]** の見出しの下にある **[Advanced Data Security]** に移動します。 **[Advanced Data Security]** を選択して、 **[データの検出と分類]** カードを選択します。
+1. [Azure SQL Database] ペインの [セキュリティ] 見出しの下の **[データの検出と分類]** に移動します。 [概要] タブには、データベースの現在の分類状態の概要が表示されます。 この概要には、分類済みのすべての列の詳細なリストが含まれ、これをフィルター処理して、特定のスキーマの部分、情報の種類、ラベルのみを表示することもできます。 まだどの列も分類していない場合は、[手順 4. に進みます](#step-4)。
 
-   ![Azure portal の [Advanced Data Security] ペイン](./media/data-discovery-and-classification-overview/data_classification.png)
+1. Excel 形式でレポートをダウンロードするには、ペイン上部のメニューの **[エクスポート]** を選択します。
 
-3. **[データの検出と分類]** ページの **[概要]** タブには、データベースの現在の分類状態の概要が表示されます。 この概要には、分類済みのすべての列の詳細なリストが含まれ、これをフィルター処理して、特定のスキーマの部分、情報の種類、ラベルのみを表示することもできます。 まだどの列も分類していない場合は、[手順 5 に進みます](#step-5)。
-
-   ![現在の分類状態の概要](./media/data-discovery-and-classification-overview/2_data_classification_overview_dashboard.png)
-
-4. Excel 形式でレポートをダウンロードするには、ペイン上部のメニューの **[エクスポート]** を選択します。
-
-5. <a id="step-5"></a>データの分類を開始するには、 **[データの検出と分類]** ページの **[分類]** タブを選択します。
+1. <a id="step-4"></a>データの分類を開始するには、 **[データの検出と分類]** ページの **[分類]** タブを選択します。
 
     分類エンジンによって、機密データが含まれる可能性のある列についてデータベースがスキャンされ、推奨される列の分類のリストが提供されます。
 
-6. 分類の推奨事項を表示して適用します。
+1. 分類の推奨事項を表示して適用します。
 
    - 推奨される列の分類のリストを表示するには、ペインの下部にある推奨事項パネルを選択します。
 
    - 特定の列の推奨事項を受け入れるには、関連する行の左側の列のチェック ボックスをオンにします。 推奨事項テーブル ヘッダーの左端のチェック ボックスをオンにして、すべての推奨事項を受け入れ済みとしてマークすることもできます。
 
-       ![分類の推奨事項のリストから確認して選択する](./media/data-discovery-and-classification-overview/6_data_classification_recommendations_list.png)
-
    - 選択した推奨事項を適用するには、 **[選択した推奨事項を受け入れます]** を選択します。
 
-7. 代わりに、列を手動で分類することもできます。さらに、推奨事項ベースの分類について、次の操作を実行することもできます。
+1. 代わりに、列を手動で分類することもできます。さらに、推奨事項ベースの分類について、次の操作を実行することもできます。
 
    1. ペインの上部のメニューで **[分類の追加]** を選択します。
 
@@ -111,9 +101,7 @@ Azure 組織全体の分類法の定義とカスタマイズは 1 か所で行�
 
    1. コンテキスト ウィンドウの下部にある **[分類の追加]** をクリックします。
 
-      ![分類する列を選択する](./media/data-discovery-and-classification-overview/9_data_classification_manual_classification.png)
-
-8. 分類を完了し、新しい分類メタデータでデータベース列に永続的にラベル (タグ) を付けるには、ウィンドウの上部のメニューで **[保存]** を選択します。
+1. 分類を完了し、新しい分類メタデータでデータベース列に永続的にラベル (タグ) を付けるには、ウィンドウの上部のメニューで **[保存]** を選択します。
 
 ## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>機密データへのアクセスを監査する
 
@@ -191,6 +179,5 @@ REST API を使用して、分類および推奨事項をプログラムで管�
 
 ## <a name="next-steps"></a><a id="next-steps"></a>次のステップ
 
-- [Advanced Data Security](advanced-data-security.md) の詳細について学習します。
 - 分類済みの機密データへのアクセスを監視および監査するように [Azure SQL Auditing](../../azure-sql/database/auditing-overview.md) を構成することを検討します。
 - データの検出と分類に関するプレゼンテーションについては、「[SQL データの検出、分類、ラベル付け、保護 | | Data Exposed](https://www.youtube.com/watch?v=itVi9bkJUNc)」を参照してください。

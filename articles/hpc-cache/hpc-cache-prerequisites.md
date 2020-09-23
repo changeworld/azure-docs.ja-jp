@@ -4,14 +4,14 @@ description: Azure HPC Cache を使用するための前提条件
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 06/24/2020
+ms.date: 09/03/2020
 ms.author: v-erkel
-ms.openlocfilehash: 1ead2a34b3617093fcbbb63d053f223fc96d698d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7731839d23ec49ddfee814cc6b2f6b3459372f03
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094773"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613989"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC Cache の前提条件
 
@@ -36,9 +36,9 @@ Azure portal を使用して新しい Azure HPC Cache を作成する前に、�
 ## <a name="azure-subscription"></a>Azure サブスクリプション
 
 有料サブスクリプションをお勧めします。
-
+<!-- 
 > [!NOTE]
-> お客様のサブスクリプションを使用してキャッシュ インスタンスを作成する前に、Azure HPC Cache チームがそのサブスクリプションをアクセス リストに追加する必要があります。 この手順によって、それぞれのお客様が確実にそのキャッシュから高品質の応答性を得ることができます。 [こちらのフォーム](https://aka.ms/onboard-hpc-cache)に必要事項を記入してアクセスを要求してください。
+> The Azure HPC Cache team must add your subscription to the access list before it can be used to create a cache instance. This procedure helps ensure that each customer gets high-quality responsiveness from their caches. Fill out [this form](https://aka.ms/onboard-hpc-cache) to request access.  -->
 
 ## <a name="network-infrastructure"></a>ネットワーク インフラストラクチャ
 

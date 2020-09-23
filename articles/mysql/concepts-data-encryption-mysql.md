@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 8fca0195c2941e4ed1a859c3201adfc2a4a0a2ed
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 71657d45ce9c4cc6fb103b61235a282b3005b924
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067445"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884920"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>カスタマー マネージド キーを使用した Azure Database for MySQL のデータの暗号化
 
@@ -44,7 +44,7 @@ KEK で暗号化された DEK は、個別に格納されます。 KEK へのア
 
 ## <a name="how-data-encryption-with-a-customer-managed-key-work"></a>カスタマーマネージド キーによるデータ暗号化のしくみ
 
-![Bring Your Own Key の概要を示す図](media/concepts-data-access-and-security-data-encryption/mysqloverview.png)
+:::image type="content" source="media/concepts-data-access-and-security-data-encryption/mysqloverview.png" alt-text="Bring Your Own Key の概要を示す図":::
 
 MySQL サーバーで DEK の暗号化のために Key Vault に格納されているカスタマーマネージド キーを使用する場合、Key Vault 管理者がサーバーに次のアクセス権を付与します。
 
@@ -80,7 +80,7 @@ Key Vault を構成するための要件を以下に示します。
 * DEK のラップおよびラップ解除操作のアクセスを高速化するために、Key Vault と Azure Database for MySQL が同じリージョンにあることを確認します。
 * Azure KeyVault を**プライベート エンドポイントと選択されたネットワーク**のみにロックダウンし、*信頼された Microsoft* サービスのみがリソースを保護できるようにします。
 
-    ![trusted-service-with-AKV](media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png)
+    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="trusted-service-with-AKV":::
 
 カスタマーマネージド キーを構成する場合の推奨事項は次のとおりです。
 

@@ -11,15 +11,14 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: afffdd0267cde8ffc841587748e51dd27e021369
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: d36c0ab78f9f96a051e6cb0a53b756c7409ca142
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079588"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893396"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースへのアクセスの管理
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 この記事では、Azure Machine Learning ワークスペースへのアクセスを管理する方法について説明します。 Azure リソースへのアクセスの管理には、[Azure ロールベースのアクセス制御 (Azure RBAC)](/azure/role-based-access-control/overview) が使用されます。 Azure Active Directory のユーザーには、リソースへのアクセス権を付与する特定のロールが割り当てられます。 Azure には、組み込みロールと、カスタム ロールを作成する機能の両方が用意されています。
 
@@ -135,8 +134,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 | アクティビティ | サブスクリプション レベルのスコープ | リソース グループレベルのスコープ | ワークスペースレベルのスコープ |
 | ----- | ----- | ----- | ----- |
 | 新しいワークスペースの作成 | 必要なし | 所有者または共同作成者 | 該当なし (所有者になるか、作成後に上位のスコープ ロールを継承します) |
-| ワークスペースのエディションを更新する | 必要なし | 必要なし | 所有者、共同作成者、または `/workspaces/write` が可能なカスタム ロール |
-| サブスクリプション レベル Amlcompute クォータを要求するか、ワークスペース レベルのクォータを設定する | 所有者、共同作成者、またはサブスクリプション スコープで  が可能なカスタム ロール </br>allowing <ph id="ph1">`/locations/updateQuotas/action`</ph></br> at subscription scope | 権限なし | 権限なし |
+| サブスクリプション レベル Amlcompute クォータを要求するか、ワークスペース レベルのクォータを設定する | 所有者、共同作成者、またはサブスクリプション スコープで  が可能なカスタム ロール </br>`/locations/updateQuotas/action` が可能な</br> カスタム ロール | 権限なし | 権限なし |
 | 新しいコンピューティング クラスターの作成 | 必要なし | 必要なし | 所有者、共同作成者、または `/workspaces/computes/write` が可能なカスタム ロール |
 | 新しいコンピューティング インスタンスの作成 | 必要なし | 必要なし | 所有者、共同作成者、または `/workspaces/computes/write` が可能なカスタム ロール |
 | 任意の種類の実行を送信する | 必要なし | 必要なし | 所有者、共同作成者、または `"/workspaces/*/read", "/workspaces/environments/write", "/workspaces/experiments/runs/write", "/workspaces/metadata/artifacts/write", "/workspaces/metadata/snapshots/write", "/workspaces/environments/build/action", "/workspaces/experiments/runs/submit/action", "/workspaces/environments/readSecrets/action"` が可能なカスタム ロール |
@@ -301,7 +299,6 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 
     * 新しいワークスペースの作成。
     * サブスクリプションまたはワークスペース レベルのクォータの割り当て
-    * ワークスペースのエディションの更新
 
     ワークスペース管理者は、新しいロールを作成することもできません。 ワークスペースのスコープ内で既存の組み込みロールまたはカスタム ロールのみを割り当てることができます。
 
@@ -415,11 +412,7 @@ az role definition update --role-definition update_def.json --subscription <sub-
 
 > [!NOTE]
 > ロールの更新は、そのスコープ内のすべてのロールの割り当てに適用されるまでに 15 分 ~ 1 時間かかることがあります。
-### <a name="q-can-i-define-a-role-that-prevents-updating-the-workspace-edition"></a>Q. ワークスペースのエディションを更新できないようにするロールを定義できますか。 
 
-はい。ワークスペースのエディションの更新を禁止するロールを定義できます。 ワークスペースの更新は、ワークスペース オブジェクトのパッチ呼び出しであるため、JSON 定義の `"NotActions"` 配列に次のアクションを配置して、これを行います。 
-
-`"Microsoft.MachineLearningServices/workspaces/write"`
 
 ### <a name="q-what-permissions-are-needed-to-perform-quota-operations-in-a-workspace"></a>Q. ワークスペースでクォータ操作を実行するには、どのようなアクセス許可が必要ですか。 
 
@@ -429,6 +422,6 @@ az role definition update --role-definition update_def.json --subscription <sub-
 ## <a name="next-steps"></a>次のステップ
 
 - [エンタープライズ セキュリティの概要](concept-enterprise-security.md)
-- [仮想ネットワーク内での実験と推論/スコアの安全な実行](how-to-enable-virtual-network.md)
+- [仮想ネットワークの分離とプライバシーの概要](how-to-network-security-overview.md)
 - [チュートリアル:モデルをトレーニングする](tutorial-train-models-with-aml.md)
 - [リソース プロバイダー操作](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)

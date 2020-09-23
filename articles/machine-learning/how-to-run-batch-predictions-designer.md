@@ -1,24 +1,24 @@
 ---
-title: Azure Machine Learning デザイナーを使用してバッチ予測を実行する (プレビュー)
+title: Azure Machine Learning デザイナーを使用してバッチ予測を実行する
 titleSuffix: Azure Machine Learning
 description: デザイナーを使用し、モデルをトレーニングしてバッチ予測を設定する方法について説明します。 HTTP ライブラリからトリガーできる、パラメーター化された Web サービスとしてパイプラインをデプロイします。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.author: peterlu
-author: peterclu
-ms.date: 02/24/2020
+ms.author: keli19
+author: likebupt
+ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 61465210c9ad476c6d8d2987330498aa0efa39d4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 21dad66670da7a538039ae795d6be87cc4dbce96
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319611"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883086"
 ---
-# <a name="run-batch-predictions-using-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナーを使用してバッチ予測を実行する (プレビュー)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーを使用してバッチ予測を実行する
+
 
 この記事では、デザイナーを使用してバッチ予測パイプラインを作成する方法について説明します。 バッチ予測を使用すると、任意の HTTP ライブラリからトリガーできる Web サービスを使用して、大規模なデータセットをオンデマンドで継続的にスコア付けすることができます。
 
@@ -71,13 +71,16 @@ SDK を使用してバッチ スコアリング サービスを設定する方�
    
     パラメーターの名前を入力するか、既定値をそのまま使用します。
 
-## <a name="publish-your-batch-inferencing-pipeline"></a>バッチ推論パイプラインを発行する
+    > [!div class="mx-imgBorder"]
+    > ![データセットをパイプライン パラメーターとして設定](./media/how-to-run-batch-predictions-designer/set-dataset-as-pipeline-parameter.png)
+
+## <a name="publish-your-batch-inference-pipeline"></a>バッチ推論パイプラインを発行する
 
 これで、推論パイプラインをデプロイする準備ができました。 これにより、パイプラインをデプロイし、他のユーザーが使用できるようにします。
 
-1. **[発行]** を選択します。
+1. **[発行]** ボタンを選びます。
 
-1. 表示されたダイアログで、 **[PipelineEndpoint]** のドロップダウンを展開し、 **[New PipelineEndpoint]\(新しい PipelineEndpoint\)** を選択します。
+1. 表示されたダイアログで、**[PipelineEndpoint]** のドロップダウンを展開し、**[New PipelineEndpoint]\(新しい PipelineEndpoint\)** を選択します。
 
 1. エンドポイント名と説明 (省略可能) を指定します。
 
@@ -96,7 +99,7 @@ SDK を使用してバッチ スコアリング サービスを設定する方�
 
 このセクションでは、パイプラインの手動実行を設定し、パイプライン パラメーターを変更して新しいデータをスコア付けします。 
 
-1. デプロイが完了したら、 **[エンドポイント]** セクションに移動します。
+1. デプロイが完了したら、**[エンドポイント]** セクションに移動します。
 
 1. **[Pipeline endpoints]\(パイプライン エンドポイント\)** を選択します。
 
@@ -122,13 +125,11 @@ SDK を使用してバッチ スコアリング サービスを設定する方�
 
 ### <a name="use-the-rest-endpoint"></a>REST エンドポイントを使用する
 
-パイプライン エンドポイントと発行されたパイプラインを使用する方法についての情報は、 **[エンドポイント]** セクションにあります。
+パイプライン エンドポイントと発行されたパイプラインを使用する方法についての情報は、**[エンドポイント]** セクションにあります。
 
 パイプライン エンドポイントの REST エンドポイントは、実行の概要パネルで確認できます。 エンドポイントを呼び出すことにより、既定の発行済みパイプラインを使用します。
 
-発行済みパイプラインは、 **[Published pipelines]\(発行済みパイプライン\)** ページでも使用できます。 発行済みパイプラインを選択し、その REST エンドポイントを見つけます。 
-
-![REST エンドポイントの詳細](./media/how-to-run-batch-predictions-designer/rest-endpoint-details.png)
+発行済みパイプラインは、**[Published pipelines]\(発行済みパイプライン\)** ページでも使用できます。 発行済みパイプラインを選択すると、グラフの右側にある **[Published pipeline overview]\(発行済みパイプラインの概要\)** パネルにそのパイプラインの REST エンドポイントが表示されます。 
 
 REST 呼び出しを行うには、OAuth 2.0 ベアラー型認証ヘッダーが必要です。 ワークスペースの認証を設定し、パラメーター化された REST を呼び出す方法については、次の[チュートリアル セクション](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint)をご覧ください。
 
@@ -142,7 +143,7 @@ REST 呼び出しを行うには、OAuth 2.0 ベアラー型認証ヘッダー�
 
 エンドポイントの **[Published pipelines]\(発行済みパイプライン\)** タブで新しい既定のパイプラインを設定することもできます。
 
-![既定のパイプラインを設定する](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
+![[発行済みパイプライン] ページで規定のパイプラインを設定する](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
 
 ## <a name="next-steps"></a>次のステップ
 

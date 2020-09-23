@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: tagore
 ms.custom: devx-track-python
-ms.openlocfilehash: 7025d042fa021c6ee5311566d66bfd090dbd06cd
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 503e37d0e339cacc9c21a2b2f3ad739e1385c955
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851581"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89443196"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python Tools for Visual Studio による Python Web ロールと Python worker ロール
 
@@ -288,7 +288,7 @@ else
 #### <a name="pscmd"></a>ps.cmd
 Visual Studio テンプレートによって、**ps.cmd** ファイルが **./bin** フォルダーに作成されています。 このシェル スクリプトは、上記の PowerShell ラッパー スクリプトを呼び出し、呼び出された PowerShell ラッパーの名前に基づくログを提供します。 このファイルが作成されていない場合は、次の内容のファイルを作成します。 
 
-```bat
+```cmd
 @echo off
 
 cd /D %~dp0

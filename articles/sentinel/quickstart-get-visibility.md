@@ -8,14 +8,14 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
-ms.date: 09/23/2019
+ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 83f83922b3bed19e98566002cbf9ad084ba66cb9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fe2a632901b32993d46e723ab73fce045bfa9f84
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496215"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889141"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>クイック スタート:Azure Sentinel の概要
 
@@ -34,7 +34,7 @@ ms.locfileid: "86496215"
 
 - 上部のツール バーには、選択した期間中に取得したイベントの数が表示され、過去 24 時間のイベントと比較されます。 ツール バーには、このようなイベントからトリガーされたアラートが表示されます (過去 24 時間の変化を表す小さい数字)。また、そのようなイベントの開いている数、進行中の数、閉じた数も表示されます。 イベント数の大幅な増減がないことを確認してください。 急落がある場合は、接続が Azure Sentinel へのレポートを停止した可能性があります。 増加がある場合は、何か疑わしいことが起こった可能性があります。 新しいアラートがあるかどうかを確認してください。
 
-   ![Azure Sentinel のじょうご](./media/qs-get-visibility/funnel.png)
+   ![Azure Sentinel カウンター](./media/qs-get-visibility/funnel.png)
 
 概要ページの本文から、ワークスペースのセキュリティ状態を一目で確認できます。
 
@@ -42,14 +42,13 @@ ms.locfileid: "86496215"
 
 - **悪意のある可能性があるイベント**:悪意のあることがわかっているソースからのトラフィックが検出されると、Azure Sentinel はマップ上で警告します。 オレンジ色が表示される場合は受信トラフィックです。誰かが既知の悪意のある IP アドレスから組織にアクセスしようとしています。 送信 (赤) アクティビティが表示される場合は、ネットワークからのデータが組織から既知の悪意のある IP アドレスにストリーミングされていることを意味します。
 
-   ![Azure Sentinel マップ](./media/qs-get-visibility/map.png)
+   ![悪意のあるトラフィックのマップ](./media/qs-get-visibility/map.png)
 
-
-- **最近のインシデント**:最近のインシデント、その重大度、そのインシデントに関連するアラートの数を表示します。 特定の種類のアラートで突然のピークが発生した場合は、現在実行中のアクティブな攻撃があることを意味している可能性があります。 たとえば、Azure ATP からの 20 回の Pass-the-hash イベントの突然のピークが発生した場合、現在、誰かが攻撃しようとしている可能性があります。
+- **最近のインシデント**:最近のインシデント、その重大度、そのインシデントに関連するアラートの数を表示します。 特定の種類のアラートで突然のピークが発生した場合は、現在実行中のアクティブな攻撃があることを意味している可能性があります。 たとえば、Microsoft Defender for Identity (旧 Azure ATP) からの 20 回の Pass-the-hash イベントの突然のピークが発生した場合、現在、誰かが攻撃しようとしている可能性があります。
 
 - **データ ソースの異常**:Microsoft のデータ アナリストは、データ ソースのデータから常に異常を探すモデルを作成しました。 異常がなければ、何も表示されません。 異常が検出された場合は、詳しく調べて発生したことを確認してください。 たとえば、Azure アクティビティの急上昇をクリックします。 **[グラフ]** をクリックして急上昇が発生した時期を確認し、その期間に発生したアクティビティをフィルター処理して、急上昇の原因を確認できます。
 
-   ![Azure Sentinel マップ](./media/qs-get-visibility/anomolies.png)
+   ![異常なデータ ソース](./media/qs-get-visibility/anomolies.png)
 
 ## <a name="use-built-in-workbooks"></a>組み込みのブックを使用する<a name="dashboards"></a>
 
@@ -64,10 +63,10 @@ ms.locfileid: "86496215"
 
    - ファイアウォールのブックを追加します。 たとえば、Palo Alto ブックを追加します。 このブックでは、ファイアウォールのトラフィックを分析し、ファイアウォールのデータと脅威イベントの間の相関関係を表示し、エンティティ全体の疑わしいイベントを強調表示します。 ブックには、トラフィックの傾向に関する情報が表示され、結果をドリル ダウンしてフィルター処理することができます。 
 
-      ![Pal Alto ダッシュボード](./media/qs-get-visibility/palo-alto-week-query.png)
+      ![Palo Alto ダッシュボード](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-メイン クエリ ![ボタン](./media/qs-get-visibility/edit-query-button.png)を編集してブックをカスタマイズできます。 ボタン ![ボタン](./media/qs-get-visibility/go-to-la-button.png) をクリックして [Log Analytics に移動し、そこでクエリを編集](../azure-monitor/log-query/get-started-portal.md)できます。また、省略記号 (...) を選択し、 **[タイル データのカスタマイズ]** を選択して、メイン タイム フィルターを編集したり、ブックから特定のタイルを削除したりすることができます。
+メイン クエリ ![クエリの編集ボタン](./media/qs-get-visibility/edit-query-button.png) を編集してブックをカスタマイズできます。 ボタン ![Log Analytics ボタン](./media/qs-get-visibility/go-to-la-button.png) をクリックして [Log Analytics に移動し、そこでクエリを編集](../azure-monitor/log-query/get-started-portal.md)できます。また、省略記号 (...) を選択し、 **[タイル データのカスタマイズ]** を選択して、メイン タイム フィルターを編集したり、ブックから特定のタイルを削除したりすることができます。
 
 クエリの使用方法の詳細については、「[チュートリアル:Log Analytics でのデータの視覚化](../azure-monitor/learn/tutorial-logs-dashboards.md)」を参照してください
 

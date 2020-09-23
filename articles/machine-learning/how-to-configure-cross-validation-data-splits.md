@@ -11,12 +11,12 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
-ms.openlocfilehash: 900d5cd435a913c0859c862d176fd30130e0a079
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3e2711243d7c093d3ab8aa5f0e7ebac0a5ec95f9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321498"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886195"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>自動機械学習の実験でデータの分割とクロス検証を構成する
 
@@ -24,7 +24,7 @@ ms.locfileid: "87321498"
 
 Azure Machine Learning では、AutoML を使用して複数の ML モデルを構築する場合、各子実行では、そのモデルの品質メトリック (精度や加重 ACU など) を計算することによって関連モデルを検証する必要があります。 これらのメトリックは、各モデルで行われた予測を、検証データの過去の観測からの実際のラベルと比較することによって計算されます。 
 
-AutoML の実験では、モデルの検証が自動的に実行されます。 次のセクションでは、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py) で検証の設定をカスタマイズする方法について説明します。 
+AutoML の実験では、モデルの検証が自動的に実行されます。 次のセクションでは、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true) で検証の設定をカスタマイズする方法について説明します。 
 
 コードを使用しないエクスペリエンスの詳細については、[Azure Machine Learning Studio での自動機械学習の実験の作成](how-to-use-automated-ml-for-ml-models.md)に関するページを参照してください。 
 
@@ -37,7 +37,7 @@ AutoML の実験では、モデルの検証が自動的に実行されます。 
 
 * Azure Machine Learning ワークスペース。 ワークスペースを作成するには、[Azure Machine Learning ワークスペース](how-to-manage-workspace.md)の作成に関するページを参照してください。
 
-* Azure Machine Learning SDK を使用した自動機械学習の実験の設定に関する知識。 [チュートリアル](tutorial-auto-train-models.md)または[ハウツー](how-to-configure-auto-train.md)に従って、自動化された機械学習実験の基本的な設計パターンについて確認してください。
+* Azure Machine Learning SDK を使用した自動機械学習の実験の設定に関する知識。 [チュートリアル](tutorial-auto-train-models.md)または[方法](how-to-configure-auto-train.md)に従って、自動化された機械学習実験の基本的な設計パターンについて確認してください。
 
 * ML の概念としてのクロス検証とトレーニング/検証のデータの分割に関する知識。 概要については、以下を参照してください。
 
@@ -47,7 +47,7 @@ AutoML の実験では、モデルの検証が自動的に実行されます。 
 
 ## <a name="default--data-splits-and-cross-validation"></a>既定のデータの分割とクロス検証
 
-[AutoMLConfig](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) オブジェクトを使用して、実験とトレーニングの設定を定義します。 次のコード スニペットでは、必須パラメーターのみが定義されていることに注意してください。つまり、`n_cross_validation` または `validation_ data` のパラメーターは**含まれていません**。
+[AutoMLConfig](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) オブジェクトを使用して、実験とトレーニングの設定を定義します。 次のコード スニペットでは、必須パラメーターのみが定義されていることに注意してください。つまり、`n_cross_validation` または `validation_ data` のパラメーターは**含まれていません**。
 
 ```python
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"

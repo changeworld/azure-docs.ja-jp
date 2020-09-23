@@ -1,6 +1,6 @@
 ---
-title: 'チュートリアル: Azure Stack Edge GPU を使用してストレージ アカウントにデータを転送する | Microsoft Docs'
-description: Azure Stack Edge GPU デバイスにローカル ストレージ アカウントと Edge ストレージ アカウントを追加して接続する方法について学習します。
+title: 'チュートリアル: Azure Stack Edge Pro GPU を使用してストレージ アカウントにデータを転送する | Microsoft Docs'
+description: Azure Stack Edge Pro GPU デバイスにローカル ストレージ アカウントと Edge ストレージ アカウントを追加して接続する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,19 +8,19 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to add and connect to storage accounts on Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 66c09b7fa0eb8fbf709441da5996fb2237b3e284
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+Customer intent: As an IT admin, I need to understand how to add and connect to storage accounts on Azure Stack Edge Pro so I can use it to transfer data to Azure.
+ms.openlocfilehash: c24970b30e522d593a491194dbbabb0421ad7f4b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89256398"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891050"
 ---
-# <a name="tutorial-transfer-data-via-storage-accounts-with-azure-stack-edge-gpu"></a>チュートリアル:Azure Stack Edge GPU でストレージ アカウントを使用してデータを転送する 
+# <a name="tutorial-transfer-data-via-storage-accounts-with-azure-stack-edge-pro-gpu"></a>チュートリアル:Azure Stack Edge Pro GPU でストレージ アカウントを使用してデータを転送する 
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-このチュートリアルでは、Azure Stack Edge デバイスにストレージ アカウントを追加して接続する方法について説明します。 ストレージ アカウントを追加したら、Azure Stack Edge から Azure にデータを転送できます。
+このチュートリアルでは、Azure Stack Edge Pro デバイスにストレージ アカウントを追加して接続する方法について説明します。 ストレージ アカウントを追加したら、Azure Stack Edge Pro から Azure にデータを転送できます。
 
 この手順の所要時間は約 30 分です。
 
@@ -33,11 +33,11 @@ ms.locfileid: "89256398"
  
 ## <a name="prerequisites"></a>前提条件
 
-ストレージ アカウントを Azure Stack Edge に追加する前に、以下のことを確認します。
+ストレージ アカウントを Azure Stack Edge Pro に追加する前に、次のことを確認してください。
 
-- [Azure Stack Edge の設置](azure-stack-edge-gpu-deploy-install.md)に関するページで説明されているとおり、物理デバイスが設置されていること。
+- [Azure Stack Edge Pro の設置](azure-stack-edge-gpu-deploy-install.md)に関するページで説明されているように、物理デバイスが設置されていること。
 
-- [Azure Stack Edge のアクティブ化](azure-stack-edge-gpu-deploy-activate.md)に関する記事で説明されているように、物理デバイスがアクティブ化されていること。
+- [Azure Stack Edge Pro のアクティブ化](azure-stack-edge-gpu-deploy-activate.md)に関するページで説明されているように、物理デバイスがアクティブ化されていること。
 
 
 ## <a name="add-an-edge-storage-account"></a>Edge ストレージ アカウントを追加する
@@ -135,7 +135,7 @@ https 経由の Azure Blob Storage REST API への接続では、以下の手順
 
 ### <a name="get-certificate"></a>証明書を取得する
 
-HTTPS 経由で Blob Storage にアクセスするには、デバイスの SSL 証明書が必要です。 また、この証明書を、秘密キーが添付された *.pfx* ファイルとして、Azure Stack Edge デバイスにアップロードします。 これらの証明書を (テストと開発の目的のみで) 作成して Azure Stack Edge デバイスにアップロードする方法の詳細については、次の記事を参照してください。
+HTTPS 経由で Blob Storage にアクセスするには、デバイスの SSL 証明書が必要です。 また、この証明書を、秘密キーが添付された *.pfx* ファイルとして、Azure Stack Edge Pro デバイスにアップロードします。 これらの証明書を (テストと開発の目的のみで) 作成して Azure Stack Edge Pro デバイスにアップロードする方法の詳細については、次の記事を参照してください。
 
 - [BLOB エンドポイント証明書を作成する](azure-stack-edge-j-series-manage-certificates.md#create-certificates-optional)。
 - [BLOB エンドポイント証明書をアップロードする](azure-stack-edge-j-series-manage-certificates.md#upload-certificates)。
@@ -167,15 +167,15 @@ Azure Storage Explorer に証明書をインポートするには、次の手順
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure Stack Edge に関する次のトピックについて説明しました。
+このチュートリアルでは、Azure Stack Edge Pro に関する次のトピックについて説明しました。
 
 > [!div class="checklist"]
 > * ストレージ アカウントの追加
 > * ストレージ アカウントに接続する
 
-Azure Stack Edge を使用してデータを変換する方法について学習するには、次のチュートリアルに進みます。
+Azure Stack Edge Pro を使用してデータを変換する方法については、次のチュートリアルに進みます。
 
 > [!div class="nextstepaction"]
-> [Azure Stack Edge でデータを変換する](./azure-stack-edge-j-series-deploy-configure-compute.md)
+> [Azure Stack Edge Pro でデータを変換する](./azure-stack-edge-j-series-deploy-configure-compute.md)
 
 

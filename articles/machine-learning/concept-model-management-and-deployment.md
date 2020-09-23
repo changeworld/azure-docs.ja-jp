@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: d1d14fa9730e3ddd47378a45ff7a1442bdee69ac
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 394d048ce5978c2789e47b984abebaf30dec5f93
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543386"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893574"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps:Azure Machine Learning を使用したモデル管理、デプロイ、および監視
 
@@ -158,7 +158,7 @@ Azure ML では、メタデータを使用して、すべての ML 資産のエ�
 > [!TIP]
 > モデルやデータセットに関する一部の情報は自動的にキャプチャされますが、__タグ__を使用して追加情報を付加できます。 ワークスペースで登録済みのモデルやデータセットを検索する場合は、タグをフィルターとして使用できます。
 >
-> データセットの登録済みのモデルとの関連付けは省略可能な手順です。 モデルを登録するときのデータセットの参照については、[Model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py) クラスのリファレンスを参照してください。
+> データセットの登録済みのモデルとの関連付けは省略可能な手順です。 モデルを登録するときのデータセットの参照については、[Model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py&preserve-view=true) クラスのリファレンスを参照してください。
 
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>ML ライフサイクルでのイベントに関する通知、自動化、アラートを行う
@@ -184,7 +184,7 @@ Azure ML では、Azure EventGrid に重要なイベントが発行され、ML �
 - 新しいモデルの出力を古いモデルのものと比較する
 - 定義済みの条件を使用して、古いモデルを置き換えるかどうかを選択する 
 
-上記の手順のテーマは、再トレーニングはアドホックではなく自動化する必要があるということです。 [Azure Machine Learning パイプライン](concept-ml-pipelines.md)に関する記事では、データの準備、トレーニング、検証、およびデプロイに関連するワークフローを作成するための適切な答えが示されています。 パイプラインと Azure Machine Learning デザイナーが再トレーニング シナリオにどのように適しているかを確認するには、「[Azure Machine Learning デザイナーを使用してモデルを再トレーニングする (プレビュー)](how-to-retrain-designer.md)」を参照してください。 
+上記の手順のテーマは、再トレーニングはアドホックではなく自動化する必要があるということです。 [Azure Machine Learning パイプライン](concept-ml-pipelines.md)に関する記事では、データの準備、トレーニング、検証、およびデプロイに関連するワークフローを作成するための適切な答えが示されています。 パイプラインと Azure Machine Learning デザイナーが再トレーニング シナリオにどのように適しているかを確認するには、「[Azure Machine Learning デザイナーを使用してモデルを再トレーニングする](how-to-retrain-designer.md)」を参照してください。 
 
 ## <a name="automate-the-ml-lifecycle"></a>ML ライフサイクルを自動化する 
 
