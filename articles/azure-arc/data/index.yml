@@ -1,0 +1,63 @@
+### YamlMime:Landing
+title: Azure Arc 対応データ サービス
+summary: 任意のインフラストラクチャで Kubernetes を使用して、エッジおよびマルチクラウド環境で Azure データ サービス オンプレミスを実行します。
+metadata:
+  title: Azure Arc 対応データ サービス (プレビュー)
+  description: 任意のインフラストラクチャで Kubernetes を使用して、エッジおよびマルチクラウド環境で Azure データ サービス オンプレミスを実行します。
+  ms.service: azure-arc
+  ms.subservice: azure-arc-data
+  ms.topic: landing-page
+  author: MikeRayMSFT
+  ms.author: mikeray
+  ms.date: 09/22/2020
+  ms.openlocfilehash: 3ef94bfc9d3870c4c91116fb2aaf26387999a8da
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90928922"
+landingContent:
+- title: 詳細
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Arc 対応データ サービスとは
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: 接続モードと要件
+      url: connectivity.md
+    - text: ストレージの構成
+      url: storage-configuration.md
+- title: 作業開始
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: データ コントローラーの作成
+      url: create-data-controller.md
+    - text: クライアント ツールのインストール
+      url: install-client-tools.md
+- title: Azure Arc 対応 PostgreSQL Hyperscale (プレビュー)
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 作成
+      url: create-postgresql-hyperscale-server-group.md
+    - text: 接続する
+      url: get-connection-endpoints-and-connection-strings-postgres-hyperscale.md
+    - text: 移行
+      url: migrate-postgresql-data-into-postgresql-hyperscale-server-group.md
+    - text: 復元
+      url: restore-adventureworks-sample-db-into-postgresql-hyperscale-server-group.md
+- title: Azure Arc 対応 SQL Managed Instance (プレビュー)
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 作成
+      url: create-sql-managed-instance.md
+    - text: 接続する
+      url: connect-managed-instance.md
+    - text: 移行
+      url: migrate-to-managed-instance.md
+    - text: 復元
+      url: restore-adventureworks-sample-db.md

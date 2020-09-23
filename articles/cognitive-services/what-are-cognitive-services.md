@@ -5,23 +5,31 @@ description: Azure Cognitive Services は、インテリジェントなアプリ
 services: cognitive-services
 author: nitinme
 manager: nitinme
-keywords: cognitive services, コグニティブ インテリジェンス, コグニティブ サービス, サービスとしての ai, コグニティブ ソリューション, コグニティブ人工知能, コグニティブ ソフトウェア, ai サービス, コグニティブ ai, コグニティブな理解
+keywords: Cognitive Services, コグニティブ インテリジェンス, コグニティブ ソリューション, AI サービス, コグニティブな理解, コグニティブ機能
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: overview
 ms.date: 08/28/2020
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 3d7f5926991239786d9b37dffecc05cd8983bf3f
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: bcb3fdbe12a2704e585a9b13484c2528c9cdc559
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89381294"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894441"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Azure Cognitive Services とは
 
-Azure Cognitive Services は、開発者が直接的な人工知能 (AI) またはデータ サイエンスのスキルや知識がなくてもコグニティブかつインテリジェントなアプリケーションを構築できる、REST API シリーズとクライアント ライブラリ SDK を含むクラウド サービスです。 Azure Cognitive Services によって、開発者は簡単にアプリケーションに Cognitive 機能を追加できます。 Azure Cognitive Services の目標は、開発者が、聞いたり、話したり、理解したり、推論し始めたりできるアプリケーションの作成を支援することです。 Azure Cognitive Services 内のサービス カタログは、5 つの主要な柱として、視覚、音声、言語、Web 検索、および意思決定に分類できます。
+Azure Cognitive Services は、開発者が直接的な人工知能 (AI) またはデータ サイエンスのスキルや知識がなくてもコグニティブかつインテリジェントなアプリケーションを構築できる、REST API シリーズとクライアント ライブラリ SDK を含むクラウドベースのサービスです。 開発者は Azure Cognitive Services を使用して、見たり、聞いたり、話したり、理解したり、推論し始めたりできるコグニティブ ソリューションを使用したコグニティブ機能をそのアプリケーションに容易に追加することができます。
+
+コグニティブな理解を提供する AI サービスのカタログは、大きく次の 5 つに分けられます。
+
+* 視覚
+* 音声
+* 言語
+* Web Search
+* 決定
 
 新しいドキュメントの最新の一覧は、[Cognitive Services の更新情報に関するドキュメント](whats-new-docs.md)で入手できます。
 
@@ -80,7 +88,17 @@ Azure Cognitive Services は、開発者が直接的な人工知能 (AI) また�
 |:-----------|:------------------|
 |[Anomaly Detector](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/ "Anomaly Detector") (プレビュー)|Anomaly Detector では、時系列データを監視し、その中の異常を検出できます。|
 |[Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "Content Moderator")|Content Moderator は、不快感を与えたり、望ましくなかったり、危険であったりする可能性があるコンテンツを監視します。|
+|[Metrics Advisor](https://docs.microsoft.com/azure/cognitive-services/metrics-advisor) (プレビュー) | Metrics Advisor には、多変量の時系列データに対するカスタマイズ可能な異常検出機能と、そのサービスの使用を支援するあらゆる機能を備えた Web ポータルがあります。
 |[Personalizer](https://docs.microsoft.com/azure/cognitive-services/personalizer/ "Personalizer")|Personalizer は、ユーザーのリアルタイムの動作から学習し、ユーザーに表示する最良のエクスペリエンスを選択できるようにします。|
+
+## <a name="learn-with-the-quickstarts"></a>クイックスタートで学習する
+
+Cognitive Services リソースは、次の方法で作成できます。それぞれの方法については、ハンズオン クイックスタートをご覧ください。
+
+* [Azure Portal](cognitive-services-apis-create-account.md?tabs=multiservice%2Cwindows "Azure portal")
+* [Azure CLI](cognitive-services-apis-create-account-cli.md?tabs=windows "Azure CLI")
+* [Azure SDK クライアント ライブラリ](cognitive-services-apis-create-account-cli.md?tabs=windows "cognitive-services-apis-create-account-client-library?pivots=programming-language-csharp")
+* [Azure Resource Manager (ARM) テンプレート](resource-manager-template.md?tabs=portal "Azure Resource Manager (ARM) テンプレート")
 
 ## <a name="subscription-management"></a>サブスクリプション管理
 
@@ -119,6 +137,9 @@ Cognitive Services には、CSA STAR Certification、FedRAMP Moderate、HIPAA BA
 ## <a name="support"></a>サポート
 
 Cognitive Services には、いくつかの[サポート オプション](cognitive-services-support-options.md "サポート オプション")が用意されています。
+
+
+
 
 ## <a name="next-steps"></a>次のステップ
 
