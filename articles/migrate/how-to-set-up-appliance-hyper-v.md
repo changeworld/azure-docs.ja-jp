@@ -3,12 +3,12 @@ title: Hyper-V 向け Azure Migrate アプライアンスを設定する
 description: Azure Migrate アプライアンスを設定して Hyper-V VM を評価し移行する方法について説明します。
 ms.topic: article
 ms.date: 03/23/2020
-ms.openlocfilehash: 21d88c4a2b2095fe677fe479bd7320f7a494db9e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: c53f82268bd1a5d94659a8b749a14fd026f91ce1
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929937"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087152"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Hyper-V VM のアプライアンスを設定する
 
@@ -59,7 +59,7 @@ VHD テンプレートを使用してアプライアンスを設定するには:
 2. 次のコマンドを実行して、VHD のハッシュを生成します
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 使用例: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.vhd SHA256```
-3.  アプライアンス バージョン 2.19.11.12 の場合は、生成されたハッシュがこれらの[設定](./tutorial-assess-hyper-v.md#verify-security)と一致する必要があります。
+
 
 
 

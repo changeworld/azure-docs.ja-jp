@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 2fe306cf7d17f0789c5e134c3fcad3f8f07a0b80
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 0f4552d6488ecd083b6ee5d4cae2ef2bd660efc7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612828"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906373"
 ---
 # <a name="faq-for-customers-already-using-azure-monitor-logs"></a>Azure Monitor ログを既に使用しているお客様向けの FAQ<a name="existingloganalyticscust"></a>
 
@@ -32,10 +32,11 @@ VM に Azure 拡張機能としてインストールされている Log Analytic
 > Log Analytics エージェントが VM に (Azure 拡張機能としてではなく) 直接インストールされている場合、Security Center によって Log Analytics エージェントがインストールされず、セキュリティの監視は制限されます。
 
 ## <a name="does-security-center-install-solutions-on-my-existing-log-analytics-workspaces-what-are-the-billing-implications"></a>Security Center は既存の Log Analytics ワークスペースにソリューションをインストールしますか? 課金にどのような影響がありますか?
-その VM が、作成したワークスペースに既に接続されていることを Security Center が特定すると、Security Center はご利用の価格レベルに従ってそのワークスペースでソリューションを有効にします。 ソリューションは、[ソリューションのターゲット設定](../operations-management-suite/operations-management-suite-solution-targeting.md)に従って関連する Azure VM にのみ適用されるため、課金額は同じままです。
+その VM が、作成したワークスペースに既に接続されていることを Security Center が特定すると、Security Center はご利用の価格構成に従ってそのワークスペースでソリューションを有効にします。 ソリューションは、[ソリューションのターゲット設定](../operations-management-suite/operations-management-suite-solution-targeting.md)に従って関連する Azure VM にのみ適用されるため、課金額は同じままです。
 
-- **Free レベル** - Security Center によってワークスペースに 'SecurityCenterFree' ソリューションがインストールされます。 Free レベルの料金はかかりません。
-- **Standard レベル** - Security Center によってワークスペースに 'Security' ソリューションがインストールされます。
+- **Azure Defender オフ** - Security Center によってワークスペースに "SecurityCenterFree" ソリューションがインストールされます。 課金されることはありません。
+- 
+- **Azure Defender オン** - Security Center によってワークスペースに "Security" ソリューションがインストールされます。
 
    ![既定のワークスペースのソリューション](./media/security-center-platform-migration-faq/solutions.png)
 
@@ -45,4 +46,4 @@ VM に Azure 拡張機能としてインストールされている Log Analytic
 Security Center によって VM 上に Log Analytics エージェントがインストールされると、Security Center では既存のワープスペースを参照していない場合、Security Center によって作成された既定のワークスペースが使用されます。
 
 ## <a name="i-already-have-security-solution-on-my-workspaces-what-are-the-billing-implications"></a>ワークスペースにはセキュリティ ソリューションが既にあります。 課金にどのような影響がありますか?
-Security & Audit ソリューションは、Azure VM で Security Center Standard レベルの機能を有効にするために使用されます。 Security & Audit ソリューションがワークスペースに既にインストールされている場合、Security Center は既存のソリューションを使用します。 課金額の変更はありません。
+Security & Audit ソリューションは、**Azure Defender for servers** を有効にするために使用されます。 Security & Audit ソリューションがワークスペースに既にインストールされている場合、Security Center は既存のソリューションを使用します。 課金額の変更はありません。

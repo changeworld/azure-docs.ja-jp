@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 599603ba867e21694392e38e9692280f010e08eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6796ac42a10d3b976b23f5af1418b1789011d61b
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885159"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440951"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Web API を呼び出すデスクトップ アプリ:アプリの登録
 
@@ -28,7 +28,7 @@ ms.locfileid: "80885159"
 
 ### <a name="audience-for-interactive-token-acquisition"></a>対話型トークン取得の対象ユーザー
 
-デスクトップ アプリケーションで対話型認証を使用する場合は、任意の[アカウントの種類](quickstart-register-app.md#register-a-new-application-using-the-azure-portal)からユーザーをサインインできます。
+デスクトップ アプリケーションで対話型認証を使用する場合は、任意の[アカウントの種類](quickstart-register-app.md)からユーザーをサインインできます。
 
 ### <a name="audience-for-desktop-app-silent-flows"></a>デスクトップ アプリのサイレント フローの対象ユーザー
 
@@ -41,7 +41,7 @@ ms.locfileid: "80885159"
 デスクトップ アプリケーションで使用するリダイレクト URI は、使用するフローによって決まります。
 
 - 対話型認証またはデバイス コード フローを使用する場合は、`https://login.microsoftonline.com/common/oauth2/nativeclient` を使用します。 この構成を実現するには、アプリケーションの **[認証]** セクションで対応する URL を選択します。
-  
+
   > [!IMPORTANT]
   > 現在、MSAL.NET は、Windows で実行されるデスクトップ アプリケーションでは、既定で別のリダイレクト URI を使用しています (`urn:ietf:wg:oauth:2.0:oob`)。 今後、この既定を変更することを予定しているため、`https://login.microsoftonline.com/common/oauth2/nativeclient` を使用することをお勧めします。
 

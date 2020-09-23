@@ -13,12 +13,12 @@ ms.date: 04/17/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: e50b4aa300c74ed5fff9a345f83d41fdda5a1054
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: bbe4328d797f740e124d4944aee889d471393200
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115868"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085605"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft ID プラットフォームでの構成可能なトークンの有効期間 (プレビュー)
 
@@ -90,8 +90,8 @@ Microsoft ID プラットフォームでは、永続的と非永続的の 2 種�
 | 更新トークンの最大非アクティブ時間 |MaxInactiveTime |更新トークン |90 日間 |10 分 |90 日間 |
 | 単一要素更新トークンの最長有効期間 |MaxAgeSingleFactor |更新トークン (すべてのユーザー向け) |Until-revoked |10 分 |Until-revoked<sup>1</sup> |
 | 多要素更新トークンの最長有効期間 |MaxAgeMultiFactor |更新トークン (すべてのユーザー向け) |Until-revoked |10 分 |Until-revoked<sup>1</sup> |
-| 単一要素セッション トークンの最長有効期間 |MaxAgeSessionSingleFactor |セッション トークン (永続的および非永続的) |Until-revoked |10 分 |Until-revoked<sup>1</sup> |
-| 多要素セッション トークンの最長有効期間 |MaxAgeSessionMultiFactor |セッション トークン (永続的および非永続的) |Until-revoked |10 分 |Until-revoked<sup>1</sup> |
+| 単一要素セッション トークンの最長有効期間 |MaxAgeSessionSingleFactor |セッション トークン (永続的および非永続的) |Until-revoked |10 分 |180 日<sup>1</sup> |
+| 多要素セッション トークンの最長有効期間 |MaxAgeSessionMultiFactor |セッション トークン (永続的および非永続的) |Until-revoked |10 分 |180 日<sup>1</sup> |
 
 * <sup>1</sup>これらの属性に対して明示的に設定できる最大期間は 365 日です。
 * <sup>2</sup>Microsoft Teams Web クライアントを確実に機能させるには、Microsoft Teams に対して AccessTokenLifetime が常に 15 分より大きい値に維持されるようにしておくことをお勧めします。

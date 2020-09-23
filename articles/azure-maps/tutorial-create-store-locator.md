@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 1ec4dbb1ce55919fda6c73d198100db34f5f57ea
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 61c085cb721f9e1a8d9c44146a9d96cd5a08562c
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121257"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085316"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用してストア ロケーターを作成する
 
@@ -385,7 +385,7 @@ Azure Maps での認証の詳細については、「[Azure Maps での認証の
     var map, popup, datasource, iconLayer, centerMarker, searchURL;
     ```
 
-1. *index.js* にコードを追加します。 以下のコードで地図を初期化します。 ページの読み込みが完了するまで待機する[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)を追加しました。 さらに、地図の読み込みを監視するイベントを接続し、検索ボタンと [My location]\(現在位置\) ボタンに機能を追加します。
+1. *index.js* にコードを追加します。 以下のコードで地図を初期化します。 ページの読み込みが完了するまで待機する[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#events)を追加しました。 さらに、地図の読み込みを監視するイベントを接続し、検索ボタンと [My location]\(現在位置\) ボタンに機能を追加します。
 
    ユーザーが検索ボタンを選択するか、検索ボックスに場所を入力して Enter キーを押すと、ユーザーのクエリに対するあいまい検索が開始されます。 検索結果を特定の国または地域に限定するために、それらの国または地域の ISO 2 値の配列を `countrySet` オプションに渡します。 検索の国/地域を限定することで、返される結果の精度向上につながります。 
   
@@ -935,7 +935,7 @@ Azure Maps での認証の詳細については、「[Azure Maps での認証の
 > * [フィルターを設定](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property)する機能を追加する。 
 > * クエリ文字列を使用して検索の初期値を指定できるようにする。 このオプションをストア ロケーターに実装すれば、ユーザーが検索をブックマークに登録したり共有したりできます。 このページに対し、別のページから検索を渡す簡単な方法としても利用できます。  
 > * ストア ロケーターを [Azure App Service Web アプリ](https://docs.microsoft.com/azure/app-service/quickstart-html)としてデプロイする。 
-> * データベースにデータを格納して、付近の所在地を検索する。 詳細については、[SQL Server の空間データ型の概要](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview?view=sql-server-2017)と[空間データに対するニアレストネイバーのクエリ](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?view=sql-server-2017)に関するページを参照してください。
+> * データベースにデータを格納して、付近の所在地を検索する。 詳細については、[SQL Server の空間データ型の概要](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview)と[空間データに対するニアレストネイバーのクエリ](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor)に関するページを参照してください。
 
 > [!div class="nextstepaction"]
 > [ソース コード全体を見る](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: 6fee96354760e448de132f88918e9839c6220af3
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: c8739da859c00a9caf08ac833f7b4ae7ae52e392
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254493"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084313"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の推奨事項とベスト プラクティス
 
@@ -56,7 +56,6 @@ ms.locfileid: "89254493"
 | Azure AD B2C のトラブルシューティングを行う方法について確認する | 開発時に[カスタム ポリシーのトラブルシューティング](https://docs.microsoft.com/azure/active-directory-b2c/troubleshoot-custom-policies?tabs=applications)を行う方法について確認してください。 通常の認証フローとはどのようになるか確認し、異常やエラーを検出するためのツールを使用します。 たとえば、[Application Insights](troubleshoot-with-application-insights.md) を使用して、ユーザー体験の出力ログを確認します。 |
 | 実績のあるカスタム ポリシー パターンからなる Microsoft のライブラリを活用する | 強化された Azure AD B2C カスタマー ID およびアクセス管理 (CIAM) ユーザー体験のいくつかの[サンプル](https://github.com/azure-ad-b2c/samples)を確認してください。 |
 
-
 ## <a name="testing"></a>テスト
 
 使用する Azure AD B2C 実装をテストして自動化します。
@@ -79,11 +78,10 @@ ms.locfileid: "89254493"
 |--|--|
 | 複数の環境を作成する | 操作とデプロイのロールアウトをより簡単に行えるように、開発、テスト、実稼働前、運用向けに個別の環境を作成します。 それぞれのために Azure AD B2C テナントを作成します。 |
 | カスタム ポリシーにバージョン管理を使用する | Azure AD B2C カスタム ポリシーに対して、GitHub、Azure Repos、またはその他のクラウドベースのバージョン管理システムの使用を検討してください。 |
-| Microsoft Graph API を使用して B2C テナントの管理を自動化する | Microsoft Graph API:<br/>[Identity Experience Framework](https://docs.microsoft.com/graph/api/resources/trustframeworkpolicy?view=graph-rest-beta) (カスタム ポリシー) を管理する<br/>[[キー]](https://docs.microsoft.com/graph/api/resources/trustframeworkkeyset?view=graph-rest-beta)<br/>[ユーザー フロー](https://docs.microsoft.com/graph/api/resources/identityuserflow?view=graph-rest-beta) |
+| Microsoft Graph API を使用して B2C テナントの管理を自動化する | Microsoft Graph API:<br/>[Identity Experience Framework](https://docs.microsoft.com/graph/api/resources/trustframeworkpolicy?view=graph-rest-beta&preserve-view=true) (カスタム ポリシー) を管理する<br/>[[キー]](https://docs.microsoft.com/graph/api/resources/trustframeworkkeyset?view=graph-rest-beta&preserve-view=true)<br/>[ユーザー フロー](https://docs.microsoft.com/graph/api/resources/identityuserflow?view=graph-rest-beta&preserve-view=true) |
 | Azure DevOps との統合 | [CI、CD パイプライン](deploy-custom-policies-devops.md) を使用すると、異なる環境間でのコードの移行が簡単になり、常に運用対応性を確保することができます。   |
 | Azure Monitor との統合 | [監査ログ イベント](view-audit-logs.md)は 7 日間のみ保持されます。 [Azure Monitor と統合する](azure-monitor.md)ことにより、そのログを、長期的な使用のために保持したり、サードパーティのセキュリティ情報およびイベント管理 (SIEM) ツールと統合してご利用の環境の分析情報を取得したりすることができます。 |
 | アクティブなアラートと監視のセットアップ | Application Insights を使用して Azure AD B2C での[ユーザーの動作を追跡](active-directory-b2c-custom-guide-eventlogger-appins.md)します。 |
-
 
 ## <a name="support-and-status-updates"></a>サポートとステータスの更新
 

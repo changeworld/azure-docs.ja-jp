@@ -1,16 +1,16 @@
 ---
 title: Maya で物理ベース レンダリング素材を設定する
 description: Maya で物理ベース レンダリング素材を設定し、FBX 形式でエクスポートする方法について説明します。
-author: muxanickms
-ms.author: misams
+author: FlorianBorn71
+ms.author: flborn
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: 72742ff4f6aa19fda092b44d8d2237e7d49dd816
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 43c11575be084354e4c9287b44b5847d4d086aff
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85373245"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084398"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-maya"></a>チュートリアル:Maya で物理ベース レンダリング素材を設定する
 

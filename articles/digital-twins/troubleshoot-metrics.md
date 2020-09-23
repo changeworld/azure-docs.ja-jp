@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: ecd402c30fee63ad594fff5e4fdc3b1610fe7e4e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f2dc93767457bfb96a9457a73adb83c0ed965308
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89003883"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069749"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure Digital Twins のトラブルシューティング: メトリック
 
@@ -41,7 +41,7 @@ ms.locfileid: "89003883"
 4. メニューから **[アラート]** を選択し、 **[+ 新しいアラート ルール]** を選択することで、メトリック データのアラートを設定できます。
     :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="[アラート] ページと追加するボタンを示すスクリーンショット":::
 
-    このプロセスの詳細については、[*トラブルシューティング: 診断の設定*](troubleshoot-diagnostics.md)に関するページを参照してください。
+    このプロセスの詳細については、[*トラブルシューティング: アラートの設定*](troubleshoot-alerts.md)に関するページを参照してください。
 
 ## <a name="azure-digital-twins-metrics-and-how-to-use-them"></a>Azure Digital Twins メトリックとその使用方法
 
@@ -70,7 +70,7 @@ API 要求に関連するメトリック:
 | --- | --- | --- | --- | --- | --- |
 | BillingApiOperations | Billing API Operations (課金 API 操作) (プレビュー) | Count | 合計 | Azure Digital Twins サービスに対して行われたすべての API 要求の数の課金メトリック。 | Meter Id |
 | BillingMessagesProcessed | Billing Messages Processed (処理されたメッセージの課金) (プレビュー) | Count | 合計 | Azure Digital Twins から外部エンドポイントに送信されたメッセージ数の課金メトリック。 | Meter Id |
-| BillingQueryUnits | Billing Query Units (課金クエリ単位) (プレビュー) | Count | 合計 | クエリを実行するために消費された、内部で計算されたサービス リソース使用量のメジャーであるクエリ単位の数。 クエリ単位の測定に使用できるヘルパー API もあります。[QueryChargeHelper クラス](https://docs.microsoft.com/dotnet/api/azure.digitaltwins.core.querychargehelper?view=azure-dotnet-preview) | Meter Id |
+| BillingQueryUnits | Billing Query Units (課金クエリ単位) (プレビュー) | Count | 合計 | クエリを実行するために消費された、内部で計算されたサービス リソース使用量のメジャーであるクエリ単位の数。 クエリ単位の測定に使用できるヘルパー API もあります。[QueryChargeHelper クラス](https://docs.microsoft.com/dotnet/api/azure.digitaltwins.core.querychargehelper?view=azure-dotnet-preview&preserve-view=true) | Meter Id |
 
 #### <a name="ingress-metrics"></a>イングレスのメトリック
 

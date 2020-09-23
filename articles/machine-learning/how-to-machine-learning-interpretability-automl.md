@@ -10,16 +10,16 @@ ms.custom: how-to
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: 0ddfb0c9b10d96acd511b7bfaee4c6ef85d04812
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7cb40df6a4619e11694e65020bfcb560cf695795
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87306419"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897450"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>解釈可能性: 自動機械学習のモデルの説明 (プレビュー)
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 この記事では、Azure Machine Learning で自動機械学習 (ML) の説明を取得する方法について説明します。 自動 ML は、エンジニアリングされた特徴量の重要度を理解するのに役立ちます。 
 
@@ -39,6 +39,14 @@ ms.locfileid: "87306419"
 ## <a name="interpretability-during-training-for-the-best-model"></a>最良のモデルのトレーニング中の解釈可能性
 
 `best_run` から説明を取得します。これには、エンジニアリングされた特徴の説明が含まれます。
+
+> [!Warning]
+> 解釈可能性、最適なモデルの説明は、以下のアルゴリズムを最適なモデルとして推奨する Auto ML 予測実験では利用できません。 
+> * ForecastTCN
+> * 平均 
+> * Naive
+> * Seasonal Average 
+> * Seasonal Naive
 
 ### <a name="download-engineered-feature-importance-from-artifact-store"></a>成果物ストアからエンジニアリングされた特徴量の重要度をダウンロードする
 
@@ -112,7 +120,7 @@ engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=au
 print(engineered_explanations.get_feature_importance_dict())
 ```
 
-### <a name="interpretability-during-inference"></a>推論中の解釈可能性
+## <a name="interpretability-during-inference"></a>推論中の解釈可能性
 
 このセクションでは、前のセクションで説明の計算に使用された Explainer を使用して、自動 ML モデルを運用化する方法について説明します。
 

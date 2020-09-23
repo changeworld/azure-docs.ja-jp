@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: adeba1964ab802a903e82b3ea71bc3248b86cea9
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 2e0788b6a7eb6f1d43185d8b484adddd76374ea3
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705063"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086710"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
@@ -517,10 +517,11 @@ caching | キャッシュの要件
 createOption | VM が作成された方法に関する情報
 diffDiskSettings | 一時ディスクの設定
 diskSizeGB | ディスクのサイズ (GB)
+encryptionSettings | ディスクの暗号化の設定
 image   | ソース ユーザー イメージの仮想ハード ディスク
-lun     | ディスクの論理ユニット番号
 managedDisk | マネージド ディスクのパラメーター
 name    | ディスク名
+osType  | ディスクに含まれている OS の種類
 vhd     | 仮想ハード ディスク
 writeAcceleratorEnabled | ディスクで writeAccelerator が有効になっているかどうか
 
@@ -532,11 +533,10 @@ caching | キャッシュの要件
 createOption | VM が作成された方法に関する情報
 diffDiskSettings | 一時ディスクの設定
 diskSizeGB | ディスクのサイズ (GB)
-encryptionSettings | ディスクの暗号化の設定
 image   | ソース ユーザー イメージの仮想ハード ディスク
+lun     | ディスクの論理ユニット番号
 managedDisk | マネージド ディスクのパラメーター
 name    | ディスク名
-osType  | ディスクに含まれている OS の種類
 vhd     | 仮想ハード ディスク
 writeAcceleratorEnabled | ディスクで writeAccelerator が有効になっているかどうか
 

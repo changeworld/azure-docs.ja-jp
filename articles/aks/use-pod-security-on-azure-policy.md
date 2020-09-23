@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 07/06/2020
 author: jluk
-ms.openlocfilehash: 18947f409ebcef570998671f9f421f8228e9692d
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: e1c5f32e8e5df69a9c4b1eeeda46caf9d8b51f6e
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987360"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440878"
 ---
 # <a name="secure-pods-with-azure-policy-preview"></a>Azure Policy を使用したポッドのセキュリティ保護 (プレビュー)
 
@@ -258,7 +258,7 @@ kubectl delete -f nginx-unprivileged.yaml
 
 Azure Policy アドオンを無効にするには、[az aks disable-addons][az-aks-disable-addons] コマンドを使用します。
 
-```azure-cli
+```azurecli
 az aks disable-addons --addons azure-policy --name MyAKSCluster --resource-group MyResourceGroup
 ```
 

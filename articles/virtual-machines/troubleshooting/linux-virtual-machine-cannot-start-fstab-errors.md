@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: cf27a842d37e96c82370e9b9b81763c8a5d1f7c9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fd49993e6825c47bbae8f034715c03191e06ab2d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509054"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441665"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-fstab-errors"></a>fstab エラーによる Linux VM の起動に関する問題のトラブルシューティング
 
@@ -107,7 +107,7 @@ Give root password for maintenance
 ### <a name="using-single-user-mode"></a>シングル ユーザー モードを使用する
 
 1. [シリアル コンソール](./serial-console-linux.md)に接続します。
-2. シリアル コンソールを使用してシングル ユーザー モード[シングル ユーザー モード](../linux/serial-console-grub-single-user-mode.md)にします
+2. シリアル コンソールを使用してシングル ユーザー モード[シングル ユーザー モード](serial-console-grub-single-user-mode.md)にします
 3. VM が起動されてシングル ユーザー モードになります。 任意のテキスト エディターを使用して fstab ファイルを開きます。 
 
    ```

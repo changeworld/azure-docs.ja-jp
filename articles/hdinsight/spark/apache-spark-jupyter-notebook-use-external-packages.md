@@ -8,18 +8,14 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
-ms.openlocfilehash: 6587a055d672bc309c89ff2a37fabb273a4c4621
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 772b136c00dc9c20f8bc35d7ebb324175a56e885
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084683"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061718"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>HDInsight の Apache Spark クラスターの Jupyter Notebook で外部のパッケージを使用する
-
-> [!div class="op_single_selector"]
-> * [cell magic の使用](apache-spark-jupyter-notebook-use-external-packages.md)
-> * [スクリプト アクションの使用](apache-spark-python-package-installation.md)
 
 HDInsight 上の Apache Spark クラスター内の [Jupyter Notebook](https://jupyter.org/) を、そのクラスターに標準では含まれていない、コミュニティから提供された外部の Apache **maven** パッケージを使用するように構成する方法について説明します。
 
@@ -39,7 +35,7 @@ HDInsight 上の Apache Spark クラスター内の [Jupyter Notebook](https://j
 
 1. `https://CLUSTERNAME.azurehdinsight.net/jupyter` に移動します。`CLUSTERNAME` はご自身の Spark クラスターの名前です。
 
-1. 新しい Notebook を作成します。 **[新規]** を選択した後、 **[Spark]** を選択します。
+1. 新しい Notebook を作成します。 **[新規]** を選択した後、**[Spark]** を選択します。
 
     ![新しい Spark Jupyter Notebook を作成する](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "新しい Jupyter Notebook を作成します")
 
@@ -99,13 +95,13 @@ HDInsight 上の Apache Spark クラスター内の [Jupyter Notebook](https://j
 
 ## <a name="see-also"></a><a name="seealso"></a>関連項目
 
-* [概要: Azure HDInsight での Apache Spark](apache-spark-overview.md)
+* [概要:Azure HDInsight での Apache Spark](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>シナリオ
 
-* [Apache Spark と BI: HDInsight の Spark と BI ツールを使用して対話型データ分析を実行する](apache-spark-use-bi-tools.md)
-* [Apache Spark と Machine Learning: HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark と Machine Learning: HDInsight 上で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark と BI:HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](apache-spark-use-bi-tools.md)
+* [Apache Spark と Machine Learning:HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark と Machine Learning:HDInsight で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
 * [HDInsight 上での Apache Spark を使用した Web サイト ログ分析](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>アプリケーションの作成と実行
