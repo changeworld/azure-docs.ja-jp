@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: victorh
-ms.openlocfilehash: 60ab0bd6093149aee4c9ee22f8b517dfd2460c09
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: bbb78fd879bc5c6bb8c2624329a23d7137b11660
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400564"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651982"
 ---
 # <a name="azure-application-gateway-features"></a>Azure Application Gateway の機能
 
@@ -117,13 +117,13 @@ Application Gateway は、WebSocket および HTTP/2 プロトコルをネイテ
 
 WebSocket および HTTP/2 プロトコルによって、長時間実行されている TCP 接続上でサーバーとクライアント間の全二重通信が可能になります。 この機能により、HTTP ベースの実装では必須だったポーリングを使用することなく、Web サーバーとクライアントの間により対話的な双方向通信が可能になります。 これらのプロトコルは、HTTP とは異なってオーバーヘッドが少なく、複数の要求や応答で同じ TCP 接続を再利用できるため、リソースをより効率的に使用できます。 これらのプロトコルは、従来の HTTP ポート 80 および 443 上で動作するよう設計されています。
 
-詳細については、[WebSocket のサポート](application-gateway-websocket.md)と [HTTP/2 のサポート](configuration-overview.md#http2-support)に関するページを参照してください。
+詳細については、[WebSocket のサポート](application-gateway-websocket.md)と [HTTP/2 のサポート](configuration-listeners.md#http2-support)に関するページを参照してください。
 
 ## <a name="connection-draining"></a>接続のドレイン
 
 接続のドレインを使用すると、計画的なサービスの更新中にバックエンド プール メンバーを正常に削除することができます。 この設定は、バックエンド http 設定を通じて有効にされ、ルールの作成中にバックエンド プールのすべてのメンバーに適用することができます。 Application Gateway が有効になると、バックエンド プールのすべての登録解除インスタンスが新しい要求を受け取らなくなり、既存の要求は構成された制限時間内に完了するようになります。 これは、ユーザーの構成変更によってバックエンド プールから明示的に削除されたバックエンド インスタンスと、正常性プローブの判断によって異常であるとレポートされたバックエンド インスタンスの両方に適用されます。 これに対する唯一の例外は、ゲートウェイによって管理されるセッション アフィニティのために登録を解除するインスタンス (明示的に登録が解除されています) 宛ての要求です。これらは、登録を解除するインスタンスによって引き続きプロキシ処理されます。
 
-詳細については、「[アプリケーション ゲートウェイ構成の概要](configuration-overview.md#connection-draining)」を参照してください。
+詳細については、「[アプリケーション ゲートウェイ構成の概要](configuration-http-settings.md#connection-draining)」を参照してください。
 
 ## <a name="custom-error-pages"></a>カスタム エラー ページ
 

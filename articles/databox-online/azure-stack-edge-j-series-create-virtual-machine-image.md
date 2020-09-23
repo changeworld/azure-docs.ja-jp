@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU デバイスの VM イメージを作成する
-description: Azure Stack Edge GPU デバイスで使用する Linux または Windows の VM イメージを作成する方法について説明します。
+title: Azure Stack Edge Pro GPU デバイスの VM イメージを作成する
+description: Azure Stack Edge Pro GPU デバイスで使用する Linux または Windows の VM イメージを作成する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,24 +8,24 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: alkohli
-ms.openlocfilehash: fd87cbef4c667d9da1f93b448a2a67e6e90307b7
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 745d0df07b6d0d01acf0d564df8c242e16f3f56d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500285"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890997"
 ---
-# <a name="create-custom-vm-images-for-your-azure-stack-edge-device"></a>Azure Stack Edge デバイスのカスタム VM イメージを作成する
+# <a name="create-custom-vm-images-for-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイスのカスタム VM イメージを作成する
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Azure Stack Edge デバイスで VM をデプロイするには、VM の作成に使用するカスタム VM イメージを作成できる必要があります。 この記事では、Azure Stack Edge デバイスに VM をデプロイするときに使用できる Linux または Windows VM のカスタム イメージを作成するために必要な手順について説明します。
+Azure Stack Edge Pro デバイスで VM をデプロイするには、VM の作成に使用するカスタム VM イメージを作成できる必要があります。 この記事では、Azure Stack Edge Pro デバイスに VM をデプロイするときに使用できる Linux または Windows VM のカスタム イメージを作成するために必要な手順について説明します。
 
 ## <a name="vm-image-workflow"></a>VM イメージのワークフロー
 
-このワークフローでは、Azure に仮想マシンを作成して VM をカスタマイズし、その VM に対応する VHD を一般化してダウンロードする必要があります。 この一般化した VHD が Azure Stack Edge にアップロードされ、その VHD からマネージド ディスクが作成されます。さらに、マネージド ディスクからイメージが作成されて、最終的にそのイメージから VM が作成されます。   
+このワークフローでは、Azure に仮想マシンを作成して VM をカスタマイズし、その VM に対応する VHD を一般化してダウンロードする必要があります。 この一般化した VHD が Azure Stack Edge Pro にアップロードされ、その VHD からマネージド ディスクが作成されます。さらに、マネージド ディスクからイメージが作成されて、最終的にそのイメージから VM が作成されます。   
 
-詳細については、[Azure PowerShell を使用して Azure Stack Edge デバイスに VM をデプロイする方法](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md)に関するページを参照してください。
+詳細については、[Azure PowerShell を使用して Azure Stack Edge Pro デバイスに VM をデプロイする方法](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md)に関するページを参照してください。
 
 
 ## <a name="create-a-windows-custom-vm-image"></a>Windows カスタム VM イメージを作成する
@@ -44,7 +44,7 @@ Windows VM イメージを作成するには、次の手順に従います。
    
        「[Sysprep (システムの準備) の概要](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)」も参照してください。
 
-では、この VHD を使用して、Azure Stack Edge デバイスに VM を作成、デプロイしましょう。
+では、この VHD を使用して、Azure Stack Edge Pro デバイスに VM を作成、デプロイしましょう。
 
 ## <a name="create-a-linux-custom-vm-image"></a>Linux カスタム VM イメージを作成する
 
@@ -69,7 +69,7 @@ Linux VM イメージを作成するには、次の手順に従います。
 
 1. [既存の OS ディスクをダウンロード](../virtual-machines/linux/download-vhd.md)します。
 
-では、この VHD を使用して、Azure Stack Edge デバイスに VM を作成、デプロイしましょう。 Linux カスタム イメージは、次の 2 つの Azure Marketplace イメージを使用して作成できます。
+では、この VHD を使用して、Azure Stack Edge Pro デバイスに VM を作成、デプロイしましょう。 Linux カスタム イメージは、次の 2 つの Azure Marketplace イメージを使用して作成できます。
 
 |項目名  |説明  |Publisher  |
 |---------|---------|---------|
@@ -81,4 +81,4 @@ Linux VM イメージを作成するには、次の手順に従います。
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Stack Edge デバイスに VM をデプロイする](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md)。
+[Azure Stack Edge Pro デバイスに VM をデプロイする](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md)。

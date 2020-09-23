@@ -1,6 +1,6 @@
 ---
-title: Kubernetes ダッシュボードを使用して Azure Stack Edge デバイスを監視する | Microsoft Docs
-description: Kubernetes ダッシュボードへのアクセス方法と、これを使用して Azure Stack Edge デバイスを監視する方法について説明します。
+title: Kubernetes ダッシュボードを使用して Azure Stack Edge Pro デバイスを監視する | Microsoft Docs
+description: Kubernetes ダッシュボードへのアクセス方法と、これを使用して Azure Stack Edge Pro デバイスを監視する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 12fe605fef444b4e0d7439350e350316157f53a5
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 1a4f22e7ae3cc60d0a16b24a1f0e5f93d3a86d8c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297854"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899201"
 ---
-# <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-gpu-device"></a>Kubernetes ダッシュボードを使用して Azure Stack Edge GPU デバイスを監視する
+# <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes ダッシュボードを使用して Azure Stack Edge Pro GPU デバイスを監視する
 
-この記事では、Kubernetes ダッシュボードへのアクセス方法と、これを使用して Azure Stack Edge GPU デバイスを監視する方法について説明します。 デバイスを監視するには、Azure portal のグラフを使用するか、Kubernetes ダッシュボードを表示するか、デバイスの PowerShell インターフェイスを使用して `kubectl` コマンドを実行します。 
+この記事では、Kubernetes ダッシュボードへのアクセス方法と、これを使用して Azure Stack Edge Pro GPU デバイスを監視する方法について説明します。 デバイスを監視するには、Azure portal のグラフを使用するか、Kubernetes ダッシュボードを表示するか、デバイスの PowerShell インターフェイスを使用して `kubectl` コマンドを実行します。 
 
 この記事では、Kubernetes ダッシュボードで実行できる監視タスクについてのみ説明します。
 
@@ -35,7 +35,7 @@ ms.locfileid: "89297854"
 
 Kubernetes ダッシュボードは、Web ベースのユーザー インターフェイスで、コンテナー化されたアプリケーションのトラブルシューティングに使用できます。 Kubernetes ダッシュボードは、Kubernetes `kubectl` コマンド ラインの UI ベースの代替手段です。 詳細については、[Kubernetes ダッシュボード](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)に関するページを参照してください。 
 
-Azure Stack Edge デバイスでは、Kubernetes ダッシュボードを "*読み取り専用*" モードで使用して、Azure Stack Edge デバイスで実行されているアプリケーションの概要を取得したり、Kubernetes クラスター リソースの状態を表示したり、デバイスで発生したエラーを確認したりできます。
+Azure Stack Edge Pro デバイスでは、Kubernetes ダッシュボードを "*読み取り専用*" モードで使用して、Azure Stack Edge Pro デバイスで実行されているアプリケーションの概要を取得したり、Kubernetes クラスター リソースの状態を表示したり、デバイスで発生したエラーを確認したりできます。
 
 ## <a name="access-dashboard"></a>ダッシュボードへのアクセス
 
@@ -54,19 +54,19 @@ Kubernetes ダッシュボードは "*読み取り専用*" で、ポート 31000
     1. 省略記号 ( **...** ) を選択します。ローカル システムで以前にダウンロードした `kubeconfig` を参照して指定します。 **[サインイン]** を選択します。
         ![kubeconfig ファイルを参照](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-sign-in-2.png)    
 
-6. これで Azure Stack Edge デバイスの Kubernetes ダッシュボードを読み取り専用モードで表示できるようになりました。
+6. これで Azure Stack Edge Pro デバイスの Kubernetes ダッシュボードを読み取り専用モードで表示できるようになりました。
 
     ![Kubernetes ダッシュボードのメイン ページ](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-main-page-1.png)
 
 ## <a name="view-module-status"></a>モジュールの状態の表示
 
-コンピューティング モジュールは、ビジネス ロジックが実装されたコンテナーです。 ダッシュボードを使用して、Azure Stack Edge デバイスにコンピューティング モジュールが正常にデプロイされたかどうかを確認できます。
+コンピューティング モジュールは、ビジネス ロジックが実装されたコンテナーです。 ダッシュボードを使用して、Azure Stack Edge Pro デバイスにコンピューティング モジュールが正常にデプロイされたかどうかを確認できます。
 
 モジュールの状態を表示するには、ダッシュボードで次の手順を実行します。
 
 1. ダッシュボードの左側のペインで、 **[名前空間]** に移動します。 IoT Edge モジュールが表示されている名前空間でフィルター処理します。この場合は **iotedge** です。
 1. 左側のペインで、 **[ワークロード] > [デプロイ]** の順に移動します。
-1. 右側のペインには、デバイスにデプロイされているすべてのモジュールが表示されます。 この場合、GettingStartedWithGPU モジュールが Azure Stack Edge にデプロイされています。 モジュールがデプロイされたことを確認できます。
+1. 右側のペインには、デバイスにデプロイされているすべてのモジュールが表示されます。 この場合、GettingStartedWithGPU モジュールが Azure Stack Edge Pro にデプロイされています。 モジュールがデプロイされたことを確認できます。
 
     ![モジュールのデプロイの表示](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-view-module-deployment-1.png)
 
@@ -81,7 +81,7 @@ IP アドレスを取得するには、ダッシュボードで次の手順を�
 
 1. ダッシュボードの左側のペインで、 **[名前空間]** に移動します。 外部サービスがデプロイされている名前空間でフィルター処理します。この場合は **iotedge** です。
 1. 左側のペインで、 **[検出と負荷分散] > [サービス]** に移動します。
-1. 右側のペインには、Azure Stack Edge デバイスの `iotedge` 名前空間で実行されているすべてのサービスが表示されます。
+1. 右側のペインには、Azure Stack Edge Pro デバイスの `iotedge` 名前空間で実行されているすべてのサービスが表示されます。
 
     ![外部サービスの IP を取得する](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-get-ip-external-service-1.png)
 
@@ -104,7 +104,7 @@ IP アドレスを取得するには、ダッシュボードで次の手順を�
 
 ## <a name="view-cpu-memory-usage"></a>CPU、メモリの使用量の表示
 
-Azure Stack Edge デバイスの Kubernetes ダッシュボードには、Kubernetes リソース全体の CPU とメモリの使用量を集計する[メトリック サーバーのアドオン](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-metrics-pipeline/)もあります。
+Azure Stack Edge Pro デバイスの Kubernetes ダッシュボードには、Kubernetes リソース全体の CPU とメモリの使用量を集計する[メトリック サーバーのアドオン](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-metrics-pipeline/)もあります。
  
 たとえば、すべての名前空間のデプロイ全体で消費された CPU とメモリを表示できます。 
 

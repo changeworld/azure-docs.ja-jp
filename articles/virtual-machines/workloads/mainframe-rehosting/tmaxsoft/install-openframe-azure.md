@@ -1,6 +1,6 @@
 ---
 title: Azure Virtual Machines 上に TmaxSoft OpenFrame をインストールする
-description: Azure Virtual Machines (VM) 上の TmaxSoft OpenFrame 環境を使用して、IBM z/OS メインフレーム ワークロードをリホストします。
+description: 開発、デモ、テスト、運用のワークロードに適した OpenFrame 環境を Azure 上にセットアップする方法を学習します。
 services: virtual-machines-linux
 documentationcenter: ''
 author: njray
@@ -8,12 +8,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: 41b31d5c4a01183d4620dcd6ec6f4729f078d382
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bd5b20d8e713e07b52eb1d6cbc57f01b9e5c1a95
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082394"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987479"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>Azure 上に TmaxSoft OpenFrame をインストールする
 

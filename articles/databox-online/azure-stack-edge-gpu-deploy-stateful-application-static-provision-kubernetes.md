@@ -1,6 +1,6 @@
 ---
-title: kubectl を使用し、Azure Stack Edge デバイスで静的にプロビジョニングされた共有を介して Kubernetes ステートフル アプリをデプロイする | Microsoft Docs
-description: kubectl を使用して、Azure Stack Edge GPU デバイスで静的にプロビジョニングされた共有を介して Kubernetes ステートフル アプリケーションのデプロイを作成および管理する方法について説明します。
+title: kubectl を使用し、Azure Stack Edge Pro デバイスで静的にプロビジョニングされた共有を介して Kubernetes ステートフル アプリをデプロイする | Microsoft Docs
+description: kubectl を使用し、Azure Stack Edge Pro GPU デバイスで静的にプロビジョニングされた共有を介して Kubernetes ステートフル アプリケーションのデプロイを作成および管理する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/18/2020
 ms.author: alkohli
-ms.openlocfilehash: 17be54536f785049aef6831e01f1f12219225b90
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 8366c5b7a05b35891bcf87e446229357a5511359
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254374"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899539"
 ---
-# <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-device"></a>kubectl を使用し、Azure Stack Edge GPU デバイスで PersistentVolume を使用して Kubernetes ステートフル アプリケーションを実行します
+# <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>kubectl を使用し、Azure Stack Edge Pro デバイスで PersistentVolume を使って Kubernetes ステートフル アプリケーションを実行する
 
 この記事では、PersistentVolume (PV) とデプロイを使用して、Kubernetes で単一インスタンスのステートフル アプリケーションをデプロイする方法について説明します。 このデプロイでは、既存の Kubernetes クラスターで `kubectl` コマンドを使用し、MySQL アプリケーションをデプロイします。 
 
-この手順は、[Azure Stack Edge デバイス上の Kubernetes ストレージ](azure-stack-edge-gpu-kubernetes-storage.md)に関する記事を確認して [Kubernetes ストレージ](https://kubernetes.io/docs/concepts/storage/)の概念を理解しているユーザーを対象としています。
+この手順は、[Azure Stack Edge Pro デバイス上の Kubernetes ストレージ](azure-stack-edge-gpu-kubernetes-storage.md)に関する記事を確認し、[Kubernetes ストレージ](https://kubernetes.io/docs/concepts/storage/)の概念を理解しているユーザーを対象としています。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -28,34 +28,37 @@ ms.locfileid: "89254374"
 
 ### <a name="for-device"></a>デバイスでは
 
-- 1 ノードの Azure Stack Edge デバイスに対するサインイン資格情報がある。
+- 1 ノードの Azure Stack Edge Pro デバイスに対するサインイン資格情報がある。
     - デバイスがアクティブ化されている。 [デバイスをアクティブにする](azure-stack-edge-gpu-deploy-activate.md)に関する記事を参照してください。
     - デバイスに、Azure portal を使用して構成されたコンピューティング ロールがあり、Kubernetes クラスターがある。 [コンピューティングの構成](azure-stack-edge-gpu-deploy-configure-compute.md)に関する記事を参照してください。
 
 ### <a name="for-client-accessing-the-device"></a>デバイスにアクセスするクライアントでは
 
-- Azure Stack Edge デバイスにアクセスするために使用する Windows クライアント システムがある。
+- Azure Stack Edge Pro デバイスへのアクセスに使用される Windows クライアント システムがある。
     - クライアントでは、Windows PowerShell 5.0 以降が実行されている。 Windows PowerShell の最新バージョンをダウンロードするには、「[Windows PowerShell のインストール](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)」を参照してください。
     
     - [オペレーティング システムがサポートされている](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)他のクライアントを使用することもできます。 この記事では、Windows クライアントを使用する場合の手順について説明します。 
     
-    - [Azure Stack Edge デバイス上の Kubernetes クラスターへのアクセス](azure-stack-edge-gpu-create-kubernetes-cluster.md)に関する記事で説明されている手順を完了している。 完了した内容:
+    - [Azure Stack Edge Pro デバイス上の Kubernetes クラスターへのアクセス](azure-stack-edge-gpu-create-kubernetes-cluster.md)に関する記事で説明されている手順を完了している。 完了した内容:
       - `New-HcsKubernetesNamespace` コマンドを使用して `userns1` 名前空間を作成した。 
       - `New-HcsKubernetesUser` コマンドを使用してユーザー `user1` を作成した。 
       - `Grant-HcsKubernetesNamespaceAccess` コマンドを使用して、`user1` に `userns1` への アクセス権を許可した。       
       - クライアントに `kubectl` をインストールし、ユーザー構成を含む `kubeconfig` ファイルを C:\\Users\\&lt;username&gt;\\.kube に保存した。 
     
-    - `kubectl` クライアントのバージョンが、Azure Stack Edge デバイスで実行されている Kubernetes マスターのバージョンと 1 バージョンを超える違いがないことを確認します。 
+    - `kubectl` クライアントのバージョンと、Azure Stack Edge Pro デバイスで実行されている Kubernetes マスターのバージョンの差が 1 未満であることを確認する。 
         - クライアントで実行されている kubectl のバージョンを確認するには、`kubectl version` を使用します。 完全なバージョン番号をメモしておきます。
-        - Azure Stack Edge デバイスのローカル UI で、 **[概要]** に移動し、Kubernetes ソフトウェアの番号をメモします。 
+        - お使いの Azure Stack Edge Pro デバイスのローカル UI で、 **[概要]** に移動し、Kubernetes ソフトウェアの番号をメモします。 
         - サポートされている Kubernetes バージョンで提供されているマッピングで、これら 2 つのバージョンの互換性を確認します <!-- insert link-->. 
 
 
-Azure Stack Edge デバイスにステートフル アプリケーションをデプロイする準備ができました。 
+Azure Stack Edge Pro デバイスにステートフル アプリケーションをデプロイする準備ができました。 
 
 ## <a name="provision-a-static-pv"></a>静的な PV をプロビジョニングする
 
-PV を静的にプロビジョニングするには、デバイスに共有を作成する必要があります。 SMB または NFS 共有に対して PV をプロビジョニングするには、次の手順に従います。 
+PV を静的にプロビジョニングするには、デバイスに共有を作成する必要があります。 SMB 共有に対して PV をプロビジョニングするには、次の手順に従います。 
+
+> [!NOTE]
+> この操作方法の記事で使用されている具体的な例は、NFS 共有では機能しません。 NFS 共有は通常、Azure Stack Edge デバイスでデータベース以外のアプリケーションを使用してプロビジョニングできます。
 
 1. Edge 共有と Edge ローカル共有のどちらを作成するかを選択します。 「[共有の追加](azure-stack-edge-manage-shares.md#add-a-share)」の手順に従って、共有を作成してください。 **[Edge コンピューティングで共有を使用する]** チェック ボックスを必ずオンにします。
 
@@ -71,7 +74,7 @@ PV を静的にプロビジョニングするには、デバイスに共有を�
 
         ![PV の既存のローカル共有をマウントする](./media/azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes/mount-edge-share-2.png)
 
-1. 共有名をメモしておきます。 この共有が作成されるときに、作成された SMB または NFS 共有に対応する Kubernetes クラスターに、永続ボリューム オブジェクトが自動的に作成されます。 
+1. 共有名をメモしておきます。 この共有が作成されるときに、作成された SMB 共有に対応する Kubernetes クラスターに、永続ボリューム オブジェクトが自動的に作成されます。 
 
 ## <a name="deploy-mysql"></a>MySQL をデプロイする
 
@@ -99,7 +102,7 @@ Kubernetes のデプロイを作成し、PersistentVolumeClaim (PVC) を使用�
 
     この要求は、前の手順で共有を作成したときに静的にプロビジョニングされた既存の PV によって満たされます。 デバイスで、共有ごとに 32 TB の大きな PV が作成されます。 PV は PVC によって規定された要件を満たしており、PVC をこの PV にバインドする必要があります。
 
-    次の `mysql-deployment.yml` ファイルをコピーし、Azure Stack Edge デバイスへのアクセスに使用する Windows クライアント上のフォルダーに保存します。
+    次の `mysql-deployment.yml` ファイルをコピーし、Azure Stack Edge Pro デバイスへのアクセスに使用する Windows クライアント上のフォルダーに保存します。
     
     ```yml
     apiVersion: v1
@@ -147,7 +150,7 @@ Kubernetes のデプロイを作成し、PersistentVolumeClaim (PVC) を使用�
               claimName: mysql-pv-claim
     ```
     
-2. 次の内容をコピーし、`mysql-deployment.yml` を保存したフォルダーに `mysql-pv.yml` ファイルとして保存します。 以前に `kubectl` で作成した SMB または NFS 共有を使用するには、PVC オブジェクトの `volumeName` フィールドをその共有の名前に設定します。 
+2. 次の内容をコピーし、`mysql-deployment.yml` を保存したフォルダーに `mysql-pv.yml` ファイルとして保存します。 以前に `kubectl` で作成した SMB 共有を使用するには、PVC オブジェクトの `volumeName` フィールドをその共有の名前に設定します。 
 
     > [!NOTE] 
     > YAML ファイルが正しくインデントされていることを確認します。 [YAML lint](http://www.yamllint.com/) を使用すると、検証して保存することができます。
@@ -158,8 +161,8 @@ Kubernetes のデプロイを作成し、PersistentVolumeClaim (PVC) を使用�
     metadata:
       name: mysql-pv-claim
     spec:
-      volumeName: <nfs-or-smb-share-name-here>
-      storageClassName: manual
+      volumeName: <smb-share-name-here>
+      storageClassName: ""
       accessModes:
         - ReadWriteOnce
       resources:
@@ -289,7 +292,6 @@ Kubernetes のデプロイを作成し、PersistentVolumeClaim (PVC) を使用�
 
 ## <a name="verify-mysql-is-running"></a>MySQL が実行中であることを確認する
 
-前述の YAML ファイルでは、クラスター内のポッドがデータベースにアクセスできるようにするサービスが作成されます。 サービス オプション clusterIP:None を指定すると、サービスの DNS 名はポッドの IP アドレスに直接解決されます。 これは、サービスの背後にポッドが 1 つしかなく、ポッドの数を増やさない場合に最適です。
 
 MySQL を実行しているポッド内のコンテナーに対してコマンドを実行するには、次のように入力します。
 
@@ -352,4 +354,4 @@ PVC が削除されると、PV が PVC にバインドされなくなります�
 
 ## <a name="next-steps"></a>次のステップ
 
-ストレージを動的にプロビジョニングする方法については、[Azure Stack Edge デバイスでの動的プロビジョニングを使用したステートフル アプリケーションのデプロイ](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md)に関する記事を参照してください
+ストレージを動的にプロビジョニングする方法については、[Azure Stack Edge Pro デバイスでの動的プロビジョニングを使用したステートフル アプリケーションのデプロイ](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md)に関する記事を参照してください

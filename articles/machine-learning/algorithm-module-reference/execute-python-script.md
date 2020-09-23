@@ -10,16 +10,16 @@ ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: e3e14001758cadc8df5af3c82cb4386659a59d6a
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 3a39b12afb715cf091ff1af1dcc7cc702769bed3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843727"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908025"
 ---
 # <a name="execute-python-script-module"></a>Python スクリプトの実行モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) 内の Python スクリプトの実行モジュールについて説明します。
+この記事では、Azure Machine Learning デザイナー内の Python スクリプトの実行モジュールについて説明します。
 
 Python コードを実行するには、このモジュールを使用します。 Python のアーキテクチャと設計原則の詳細については、[Azure Machine Learning デザイナーで Python コードを実行する方法](../how-to-designer-python.md)に関するページを参照してください。
 
@@ -58,7 +58,7 @@ if spec is None:
 > プレインストール一覧に含まれていないパッケージを必要とする Python スクリプトの実行モジュールがパイプラインに複数含まれている場合は、それぞれのモジュールにそれらのパッケージをインストールしてください。
 
 ## <a name="upload-files"></a>ファイルをアップロードする
-Python スクリプトの実行モジュールでは、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#upload-file-name--path-or-stream-) を使用したファイルのアップロードがサポートされています。
+Python スクリプトの実行モジュールでは、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#&preserve-view=trueupload-file-name--path-or-stream-) を使用したファイルのアップロードがサポートされています。
 
 次の例は、Python スクリプトの実行モジュールでイメージ ファイルをアップロードする方法を示しています。
 

@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 08/31/2020
+ms.date: 09/11/2020
 ms.author: pafarley
 ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
 keywords: computer vision, computer vision アプリケーション, computer vision サービス
-ms.openlocfilehash: f613080ec24fdfc4c739d4d0494aa2f3c36705cd
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: fa00265f3c591578f9970b77770fbf7290d87510
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89323126"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907070"
 ---
 # <a name="what-is-computer-vision"></a>Computer Vision とは
 
@@ -92,7 +92,11 @@ Computer Vision を使用すると、画像内の[成人向けコンテンツを
 
 ## <a name="use-containers"></a>コンテナーの使用
 
-印刷されたテキストと手書きのテキストをローカルに認識するには、標準化された Docker コンテナーをデータの近くにインストールして、[Computer Vision コンテナーを使用](computer-vision-how-to-install-containers.md)します。
+Computer Vision サービスをオンプレミスで使用するには、Computer Vision Docker コンテナーを使用します。 現在、次の 2 つのコンテナーが提供されています。
+
+* [Computer Vision 読み取りコンテナー](computer-vision-how-to-install-containers.md)を使用すると、画像内の印字されたテキストや手書きテキストを認識することができます。
+
+* [Computer Vision 空間分析コンテナー](spatial-analysis-container.md)を使用すると、リアルタイム ストリーミング ビデオを分析して、物理環境における人物とその動きとの間の空間的な関係を把握できます。
 
 ## <a name="image-requirements"></a>イメージの要件
 

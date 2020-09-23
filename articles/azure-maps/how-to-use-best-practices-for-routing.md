@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b957453758b9b8e34989877516a9083f06a85ed8
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 1c108c79cafb591dced6f6be0dd5c1b353ddac45
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400784"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086404"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Azure Maps Route Service のベスト プラクティス
 
@@ -275,7 +275,7 @@ https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-k
 
 ## <a name="use-the-routing-service-in-a-web-app"></a>Web アプリでルーティング サービスを使用する
 
-Azure Maps の Web SDK は、[サービス モジュール](https://docs.microsoft.com/javascript/api/azure-maps-rest/?view=azure-maps-typescript-latest)を提供します。 このモジュールは、Web または Node.js アプリケーションから JavaScript または TypeScript を使用して簡単に Azure Maps REST API を使用できるようにするヘルパー ライブラリです。 サービス モジュールは、返されたルートをマップにレンダリングするために使用できます。 このモジュールは、GET 要求と POST 要求で使用する API を自動的に決定します。
+Azure Maps の Web SDK は、[サービス モジュール](https://docs.microsoft.com/javascript/api/azure-maps-rest/)を提供します。 このモジュールは、Web または Node.js アプリケーションから JavaScript または TypeScript を使用して簡単に Azure Maps REST API を使用できるようにするヘルパー ライブラリです。 サービス モジュールは、返されたルートをマップにレンダリングするために使用できます。 このモジュールは、GET 要求と POST 要求で使用する API を自動的に決定します。
 
 ## <a name="next-steps"></a>次のステップ
 

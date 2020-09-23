@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack Edge のシステム要件 | Microsoft Docs
-description: Azure Stack Edge のソフトウェア要件とネットワーキング要件について説明します
+title: Microsoft Azure Stack Edge Pro のシステム要件 | Microsoft Docs
+description: Azure Stack Edge Pro のソフトウェア要件とネットワーキング要件について説明します
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 7754c57563ec5acb9028c2ace217f318fea5e959
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 091d272ff00982a0d0a5ae44885a04cc62d7a4b4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89256279"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899144"
 ---
-# <a name="system-requirements-for-azure-stack-edge-with-gpu"></a>Azure Stack Edge と GPU のシステム要件 
+# <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>Azure Stack Edge Pro と GPU のシステム要件 
 
-この記事では、Microsoft Azure Stack Edge ソリューション、および Azure Stack Edge に接続するクライアントのシステム要件のうち、重要なものについて説明します。 この情報を慎重に確認してから Azure Stack Edge をデプロイすることをお勧めします。 展開中およびその後の操作中に、必要に応じてこの情報を参照できます。
+この記事では、Microsoft Azure Stack Edge Pro ソリューション、および Azure Stack Edge Pro に接続するクライアントのシステム要件のうち、重要なものについて説明します。 この情報を慎重に確認してから Azure Stack Edge Pro をデプロイすることをお勧めします。 展開中およびその後の操作中に、必要に応じてこの情報を参照できます。
 
-Azure Stack Edge のシステム要件は次のとおりです。
+Azure Stack Edge Pro のシステム要件は次のとおりです。
 
 - **ホストのソフトウェア要件** - サポートされているプラットフォーム、ローカル構成 UI 用のブラウザー、SMB クライアント、およびデバイスにアクセスするクライアントのその他の要件について説明します。
 - **デバイスのネットワーク要件** - 物理デバイスの操作のためのネットワーク要件について説明します。
@@ -59,9 +59,9 @@ Azure Stack から管理する場合、次の階層型ストレージ アカウ�
 
 ## <a name="networking-port-requirements"></a>ネットワーク ポートの要件
 
-### <a name="port-requirements-for-azure-stack-edge"></a>Azure Stack Edge のポート要件
+### <a name="port-requirements-for-azure-stack-edge-pro"></a>Azure Stack Edge Pro のポート要件
 
-SMB、クラウド、または管理トラフィックを許可するためにファイアウォールで開く必要があるポートを次の表に示します。 この表では、"*イン*" ("*受信*") は、着信クライアント要求がデバイスにアクセスする方向を意味します。 "*アウト*" ("*送信*") は Azure Stack Edge デバイスがデプロイを超えて外部に (たとえば、インターネットに) データを送信する方向を意味します。
+SMB、クラウド、または管理トラフィックを許可するためにファイアウォールで開く必要があるポートを次の表に示します。 この表では、"*イン*" ("*受信*") は、着信クライアント要求がデバイスにアクセスする方向を意味します。 "*アウト*" ("*送信*") は Azure Stack Edge Pro デバイスがデプロイを超えて外部に (たとえば、インターネットに) データを送信する方向を意味します。
 
 [!INCLUDE [Port configuration for device](../../includes/azure-stack-edge-gateway-port-config.md)]
 
@@ -79,9 +79,9 @@ Azure IoT Edge ランタイムをホストするサーバーのポート構成�
 
 ## <a name="url-patterns-for-firewall-rules"></a>ファイアウォール ルールの URL パターン
 
-多くの場合、ネットワーク管理者は、受信トラフィックと送信トラフィックをフィルターする URL パターンに基づいて、高度なファイアウォール ルールを構成できます。 Azure Stack Edge デバイスとサービスは、Azure Service Bus、Azure Active Directory Access Control、ストレージ アカウント、Microsoft Update サーバーなど、他の Microsoft アプリケーションに依存しています。 その Microsoft アプリケーションと関連付けられた URL パターンを使用してファイアウォール ルールを構成できます。 Microsoft アプリケーションに関連付けられた URL パターンは変化する可能性がある点を理解することが重要です。 この変更のため、ネットワーク管理者は必要に応じて Azure Stack Edge のファイアウォール ルールを監視し更新する必要があります。
+多くの場合、ネットワーク管理者は、受信トラフィックと送信トラフィックをフィルターする URL パターンに基づいて、高度なファイアウォール ルールを構成できます。 Azure Stack Edge Pro デバイスとサービスは、Azure Service Bus、Azure Active Directory Access Control、ストレージ アカウント、Microsoft Update サーバーなど、他の Microsoft アプリケーションに依存しています。 その Microsoft アプリケーションと関連付けられた URL パターンを使用してファイアウォール ルールを構成できます。 Microsoft アプリケーションに関連付けられた URL パターンは変化する可能性がある点を理解することが重要です。 この変更のため、ネットワーク管理者は必要に応じて Azure Stack Edge Pro のファイアウォール ルールを監視し更新する必要があります。
 
-ほとんどの場合、送信トラフィックのファイアウォール ルールは Azure Stack Edge 固定 IP アドレスに基づいて設定することが推奨されます。 ただし、次の情報を使用して、セキュリティで保護された環境を作成するのにために必要な高度なファイアウォール ルールを設定することもできます。
+ほとんどの場合、送信トラフィックのファイアウォール ルールは Azure Stack Edge Pro 固定 IP アドレスに基づいて設定することが推奨されます。 ただし、次の情報を使用して、セキュリティで保護された環境を作成するのにために必要な高度なファイアウォール ルールを設定することもできます。
 
 > [!NOTE]
 > - デバイスの (送信元) IP は、常にすべてのクラウド対応ネットワーク インターフェイスに合わせて設定します。
@@ -117,7 +117,7 @@ Azure IoT Edge ランタイムをホストするサーバーのポート構成�
 
 ## <a name="compute-sizing-considerations"></a>コンピューティングのサイズに関する考慮事項
 
-ソリューションの開発とテスト中は、ご自身の経験を活用して、Azure Stack Edge デバイスに十分が容量があること、およびデバイスから最適なパフォーマンスが得られることを確認します。
+ソリューションの開発とテスト中は、ご自身の経験を活用して、Azure Stack Edge Pro デバイスに十分な容量があること、およびデバイスから最適なパフォーマンスが得られることを確認します。
 
 考慮すべき要素には、以下が含まれます。
 
@@ -137,8 +137,8 @@ Azure IoT Edge ランタイムをホストするサーバーのポート構成�
 - Azure portal で入手できるコンピューティング メトリック。 Azure Stack Edge リソースに移動し、 **[監視] > [メトリック]** に移動します。 **[Edge コンピューティング - メモリ使用量]** と **[Edge コンピューティング - CPU の割合]** を調べて、使用できるリソースとリソースがどのように消費されているかを理解します。
 - コンピューティング モジュールを監視およびトラブルシューティングするには、[Kubernetes の問題のデバッグ](azure-stack-edge-gpu-connect-powershell-interface.md#debug-kubernetes-issues-related-to-iot-edge)に関するページを参照してください。
 
-最後に、お使いのデータセットに対するご自身のソリューションの検証を実行し、運用環境にデプロイする前に Azure Stack Edge でパフォーマンスを数量化します。
+最後に、お使いのデータセットに対するご自身のソリューションの検証を実行し、運用環境にデプロイする前に Azure Stack Edge Pro でパフォーマンスを数量化します。
 
 ## <a name="next-step"></a>次のステップ
 
-- [Azure Stack Edge を配置する](azure-stack-edge-gpu-deploy-prep.md)
+- [Azure Stack Edge Pro をデプロイする](azure-stack-edge-gpu-deploy-prep.md)

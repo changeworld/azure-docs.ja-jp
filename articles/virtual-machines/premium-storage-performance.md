@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/27/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: a13fa7c819dcccc101c23015214bac55d2ab26c9
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 48157c8d9285c48d49e76f39602075a2a8ac9682
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855545"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650719"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: 高パフォーマンス用に設計する
 
@@ -130,7 +130,7 @@ PerfMon カウンターは、サーバーのプロセッサ、メモリ、各論
 | **最大メモリ** |アプリケーションをスムーズに実行するために必要なメモリ容量。 |% Committed Bytes in Use |Use vmstat |
 | **最大CPU** |アプリケーションをスムーズに実行するために必要な CPU 量。 |% Processor time |% 使用率 |
 
-詳細については、「[iostat](https://linux.die.net/man/1/iostat)」と「[PerfMon](https://msdn.microsoft.com/library/aa645516.aspx)」をご覧ください。
+詳細については、「[iostat](https://linux.die.net/man/1/iostat)」と「[PerfMon](https://docs.microsoft.com/windows/win32/perfctrs/performance-counters-portal)」をご覧ください。
 
 
 

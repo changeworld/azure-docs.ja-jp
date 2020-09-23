@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 11/12/2019
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 351d52128660c25c557c536f2835e0e71c0115f7
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: ac1df12b10e32f35e8edbd52c3488b2d38db638a
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87842962"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650807"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Azure Machine Learning SDK for Python を使用して機械学習パイプラインのスケジュールを設定する
 
@@ -66,7 +66,7 @@ from azureml.pipeline.core.schedule import ScheduleRecurrence, Schedule
 
 ### <a name="create-a-time-based-schedule"></a>時刻ベースのスケジュールを作成する
 
-`ScheduleRecurrence` コンストラクターには、次のいずれかの文字列である必要な `frequency` 引数があります。"Minute"、"Hour"、"Day"、"Week"、または "Month"。 また、スケジュールの開始から次の開始までの経過時間の `frequency` 単位を指定する整数の `interval` 引数も必要です。 省略可能な引数を使用すると、[ScheduleRecurrence SDK に関するドキュメント](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence?view=azure-ml-py)で詳しく説明されているように、開始時間をより具体的に指定できます。
+`ScheduleRecurrence` コンストラクターには、次のいずれかの文字列である必要な `frequency` 引数があります。"Minute"、"Hour"、"Day"、"Week"、または "Month"。 また、スケジュールの開始から次の開始までの経過時間の `frequency` 単位を指定する整数の `interval` 引数も必要です。 省略可能な引数を使用すると、[ScheduleRecurrence SDK に関するドキュメント](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence?view=azure-ml-py&preserve-view=true)で詳しく説明されているように、開始時間をより具体的に指定できます。
 
 15 分ごとに実行を開始する `Schedule` を作成します。
 
@@ -83,11 +83,11 @@ recurring_schedule = Schedule.create(ws, name="MyRecurringSchedule",
 
 ファイルの変更によってトリガーされるパイプラインは、時間ベースのスケジュールよりも効率的な場合があります。 たとえば、ファイルが変更されたとき、または新しいファイルがデータ ディレクトリに追加されたときに、前処理手順を実行することもできます。 データストアまたはデータストア内の特定のディレクトリ内の変更に対する変更を監視できます。 特定のディレクトリを監視する場合、そのディレクトリのサブディレクトリ内の変更は、実行をトリガー _しません_。
 
-ファイルに対応する `Schedule` を作成するには、[Schedule.create](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py#create-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-) の呼び出しに `datastore` パラメーターを設定する必要があります。 フォルダーを監視するには、`path_on_datastore` 引数を設定します。
+ファイルに対応する `Schedule` を作成するには、[Schedule.create](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py#&preserve-view=truecreate-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-) の呼び出しに `datastore` パラメーターを設定する必要があります。 フォルダーを監視するには、`path_on_datastore` 引数を設定します。
 
 `polling_interval` 引数を使用すると、データストアが変更されたかどうかを確認する頻度を分単位で指定できます。
 
-パイプラインが [DataPath](https://docs.microsoft.com/python/api/azureml-core/azureml.data.datapath.datapath?view=azure-ml-py) [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py) を使用して構築されている場合は、`data_path_parameter_name` 引数を設定することによって、その変数を変更されたファイルの名前に設定できます。
+パイプラインが [DataPath](https://docs.microsoft.com/python/api/azureml-core/azureml.data.datapath.datapath?view=azure-ml-py&preserve-view=true) [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py&preserve-view=true) を使用して構築されている場合は、`data_path_parameter_name` 引数を設定することによって、その変数を変更されたファイルの名前に設定できます。
 
 ```python
 datastore = Datastore(workspace=ws, name="workspaceblobstore")
@@ -106,7 +106,7 @@ Azure Logic Apps は、Azure Machine Learning パイプラインよりも複雑�
 
 ## <a name="view-your-scheduled-pipelines"></a>スケジュールされたパイプラインを表示する
 
-Web ブラウザーで Azure Machine Learning に移動します。 ナビゲーション パネルの **[エンドポイント]** セクションで、 **[Pipeline endpoints]\(パイプラインのエンドポイント\)** を選択します。 これにより、ワークスペースで発行されたパイプラインの一覧が表示されます。
+Web ブラウザーで Azure Machine Learning に移動します。 ナビゲーション パネルの **[エンドポイント]** セクションで、 **[Pipeline endpoints]/(パイプラインのエンドポイント/)** を選択します。 これにより、ワークスペースで発行されたパイプラインの一覧が表示されます。
 
 ![AML の [パイプライン] ページ](./media/how-to-schedule-pipelines/scheduled-pipelines.png)
 

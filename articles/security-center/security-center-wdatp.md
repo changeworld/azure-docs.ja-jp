@@ -12,16 +12,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: da21a002e6ea0bbbf528b911b7386b1dfc9c76f8
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 28242341ddd21adea33e56c3e1f35f0677e5921a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277920"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907362"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Microsoft Defender Advanced Threat Protection と Azure Security Center
 
 Azure Security Center は、包括的なエンドポイントの検出と応答 (EDR) 機能を提供する [Microsoft Defender Advanced Threat Protection (ATP)](https://www.microsoft.com/microsoft-365/windows/microsoft-defender-atp) と統合されます。
+
+
+## <a name="availability"></a>可用性
+
+|側面|詳細|
+|----|:----|
+|リリース状態:|一般提供 (GA)|
+|価格:|[Azure Defender](security-center-pricing.md) が必要|
+|サポートされているマシン:|![はい](./media/icons/yes-icon.png) Windows を実行している Azure マシン<br>![はい](./media/icons/yes-icon.png) Windows を実行している Azure Arc マシン|
+|必要なロールとアクセス許可:|統合を有効または無効にするには: **セキュリティ管理者**または**所有者**<br>Security Center の MDATP アラートを表示するには: **セキュリティ閲覧者**、**閲覧さ**、**リソース グループの共同作成者**、**リソース グループの所有者**、**セキュリティ管理者**、**サブスクリプションの所有者**、または**サブスクリプションの共同作成者**|
+|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![いいえ](./media/icons/no-icon.png) Azure パブリック クラウドでワークロードを実行している GCC の顧客<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) China Gov、その他の Gov|
+|||
+
 
 ## <a name="microsoft-defender-atp-features-in-security-center"></a>Security Center の Microsoft Defender ATP 機能
 
@@ -44,7 +57,7 @@ Defender ATP を Azure Security Center と統合することによって、次�
 
 ## <a name="platform-support"></a>プラットフォームのサポート
 
-Security Center の Microsoft Defender ATP では、Windows Server 2016、2012 R2、2008 R2 SP1 での検出がサポートされています。 Azure VM の場合、Standard レベルのサブスクリプションが必要です。Azure 以外の VM の場合は、ワークスペース レベルのみで Standard レベルが必要です。
+Security Center の Microsoft Defender ATP では、Windows Server 2016、2012 R2、2008 R2 SP1 での検出がサポートされています。 Azure VM の場合、サブスクリプションで Azure Defender を有効にする必要があります。また、Azure 以外の VM の場合は、ワークスペース レベルでのみ Azure Defender を有効にする必要があります。
 
 この統合を使用したサーバー エンドポイントの監視は、Office 365 GCC のお客様に対して無効になっています。
 
@@ -61,24 +74,25 @@ Azure Security Center を使用してサーバーを監視すると、Microsoft 
 
 1. **[オンボード]** 領域で、データを保存するワークスペースを選択または作成します。
 
-2. すべてのワークスペースが表示されない場合は、アクセス許可が不足している可能性があります。ワークスペースが Azure Security の Standard 価格レベルに設定されていることを確認してください。 詳細については、「[Azure Security Center を Standard レベルへアップグレードすることによるセキュリティ強化](security-center-pricing.md)」を参照してください。
+2. すべてのワークスペースが表示されない場合は、アクセス許可が不足している可能性があります。ワークスペースが Azure Defender によって保護されていることを確認してください。
     
 3. **[サーバーの追加]** を選択すると、Log Analytics エージェントをインストールする手順が表示されます。 
 
-4. オンボード後は、 **[計算とアプリ]** でマシンを監視できます。
+4. オンボード後は、[資産インベントリ](asset-inventory.md)でマシンを監視できます。
 
    ![コンピューターをオンボードする](media/security-center-wdatp/onboard-computers.png)
 
 ## <a name="enable-microsoft-defender-atp-integration"></a>Microsoft Defender ATP の統合を有効にする
 
-Microsoft Defender ATP の統合が有効になっているかどうかを確認するには、 **[セキュリティ センター]**  >  **[Pricing & settings]\(価格と設定\)** を選択し、ご利用のサブスクリプションをクリックします。
+Microsoft Defender ATP の統合が有効になっているかどうかを確認するには、 **[セキュリティ センター]**  >  **[価格と設定]** を選択し、ご利用のサブスクリプションを選択します。
+
 ここでは、現在有効になっている統合を確認できます。
 
   ![Microsoft Defender ATP の統合が有効になっている Azure Security Center の脅威検出設定ページ](media/security-center-wdatp/enable-integrations.png)
 
-- Azure Security Center の Standard レベルにサーバーを既にオンボードした場合は、何も行う必要はありません。 Azure Security Center によって、サーバーは Microsoft Defender ATP に自動的にオンボードされます。 このオンボードには最大で 24 時間かかることがあります。
+- Azure Defender が既に有効になっている場合は、これ以上の操作は必要ありません。 Azure Security Center によって、サーバーは Microsoft Defender ATP に自動的にオンボードされます。 このオンボードには最大で 24 時間かかることがあります。
 
-- Azure Security Center の Standard レベルにサーバーをオンボードしたことがない場合は、通常どおりにサーバーを Azure Security Center にオンボードします。
+- Azure Security Center にサーバーをオンボードしたことがない場合は、通常どおりにそれらを Azure Security Center にオンボードし、Azure Defender を有効にします。
 
 - Microsoft Defender ATP からサーバーをオンボードした場合:
   - [サーバー マシンをオフボードする方法](https://go.microsoft.com/fwlink/p/?linkid=852906)については、ガイダンスの資料をご覧ください。

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 40761b8b187d864c7b93b8aa4ee49233683fcad7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4baafe9f3356e3134626c819c47939b96ab48a79
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502760"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595847"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Azure CLI を使用して複数の Web サイトをホストするアプリケーション ゲートウェイを作成する
 
@@ -22,13 +22,12 @@ ms.locfileid: "87502760"
 
 この記事では、次のことについて説明します。
 
-> [!div class="checklist"]
-> * ネットワークのセットアップ
-> * アプリケーション ゲートウェイの作成
-> * バックエンド リスナーの作成
-> * ルーティング規則の作成
-> * バックエンド プールを含んだ仮想マシン スケール セットの作成
-> * ドメインの CNAME レコードの作成
+* ネットワークのセットアップ
+* アプリケーション ゲートウェイの作成
+* バックエンド リスナーの作成
+* ルーティング規則の作成
+* バックエンド プールを含んだ仮想マシン スケール セットの作成
+* ドメインの CNAME レコードの作成
 
 :::image type="content" source="./media/tutorial-multiple-sites-cli/scenario.png" alt-text="複数サイト アプリケーション ゲートウェイ":::
 

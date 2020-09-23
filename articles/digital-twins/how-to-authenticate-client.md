@@ -8,12 +8,12 @@ ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-javascript
-ms.openlocfilehash: c211c0e5ef0b39f778db7c922fafc735e2411068
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 88f74bcc93d640ec8d4d9014c6f25a6d0d0df680
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930045"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89614014"
 ---
 # <a name="write-client-app-authentication-code"></a>クライアント アプリの認証コードを書き込む
 
@@ -34,7 +34,7 @@ Azure Digital Twins 用の API と SDK の詳細については、"[*Azure Digit
 ## <a name="authentication-and-client-creation-net-c-sdk"></a>認証およびクライアントの作成: .NET (C#) SDK
 
 最初に、このハウツー用の .NET SDK と認証ツールを使用するために、次のパッケージをプロジェクトに含めます。
-* `Azure.DigitalTwins.Core` (バージョン `1.0.0-preview.2`)
+* `Azure.DigitalTwins.Core`
 * `Azure.Identity`
 
 選択するツールによっては、Visual Studio パッケージ マネージャーまたは `dotnet` コマンド ライン ツールを使用して、パッケージを含めることができます。 

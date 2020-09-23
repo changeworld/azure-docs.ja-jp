@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 7/15/2020
-ms.openlocfilehash: 840e7769e8a242314b10562684c942a2468ea5ad
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: cdddd9a90911499421351adf0f41ef90f0e2f9a5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705148"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906562"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Database for MySQL サーバーを作成する
 
@@ -34,12 +34,12 @@ Azure Database for MySQL サーバーを作成するには、次の手順に従�
 
   
 >[!div class="mx-imgBorder"]
-> ![Azure Database for MySQL オプション](./media/quickstart-create-mysql-server-database-using-azure-portal/2_navigate-to-mysql.png)
+> :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/2_navigate-to-mysql.png" alt-text="Azure Database for MySQL オプション":::
 
 3. 新しいサーバーの詳細フォームには次の情報を入力してください。
     
 >[!div class="mx-imgBorder"]
-> ![サーバー フォームを作成する](./media/quickstart-create-mysql-server-database-using-azure-portal/4-create-form.png)
+> :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/4-create-form.png" alt-text="サーバー フォームを作成する":::
 
 **設定** | **推奨値** | **フィールドの説明** 
 ---|---|---
@@ -67,7 +67,7 @@ Version | *最新のメジャー バージョン*| 最新メジャー バージ�
 既定では、作成されたサーバーはファイアウォールで保護され、パブリックにアクセスすることはできません。 ご使用の IP にアクセス権を付与するには、Azure portal で対象のサーバー リソースに移動し、そのサーバー リソースの左側のメニューから **[接続のセキュリティ]** を選択します。 対象のリソースを見つける方法がわからない場合は、[リソースを開く方法](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal#open-resources)に関するセクションを参照してください。
 
 >[!div class="mx-imgBorder"]
-> ![[接続のセキュリティ] - [ファイアウォール規則]](./media/quickstart-create-mysql-server-database-using-azure-portal/add-current-ip-firewall.png)
+> :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/add-current-ip-firewall.png" alt-text="[接続のセキュリティ] - [ファイアウォール規則]":::
    
 次に、 **[現在のクライアント IP アドレスを追加]** を選択し、 **[保存]** を選択します。 IP を追加するか、IP 範囲を指定することで、それらの IP から対象のサーバーに接続できるようになります。 詳細については、[Azure Database for MySQL サーバーのファイアウォール規則を管理する方法](./concepts-firewall-rules.md)に関するページを参照してください
 
@@ -83,7 +83,7 @@ Version | *最新のメジャー バージョン*| 最新メジャー バージ�
     >初めて Cloud Shell を起動する場合は、リソース グループとストレージ アカウントを作成するように求めるメッセージが表示されます。 これは 1 回限りの作業であり、それ以降はすべてのセッションで自動的に接続されます。 
 
    >[!div class="mx-imgBorder"]
-   > ![ポータルでの Cloud Shell の完全なビュー](./media/quickstart-create-mysql-server-database-using-azure-portal/use-in-cloud-shell.png)
+   > :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/use-in-cloud-shell.png" alt-text="ポータルでの Cloud Shell の完全なビュー":::
 2. Azure Cloud Shell ターミナルで次のコマンドを実行します。 値は実際のサーバー名と管理者ユーザーのログイン名に置き換えてください。 Azure Database for MySQL の管理者ユーザー名には、次に示すように "@\<servername>" が必要です  
 
   ```azurecli-interactive
@@ -136,7 +136,7 @@ Version | *最新のメジャー バージョン*| 最新メジャー バージ�
 
 サーバーを削除するには、次に示すように、サーバーの **[概要]** ページで **[削除]** ボタンをクリックします。
 > [!div class="mx-imgBorder"]
-> ![リソースを削除する](media/quickstart-create-mysql-server-database-using-azure-portal/delete-server.png)
+> :::image type="content" source="media/quickstart-create-mysql-server-database-using-azure-portal/delete-server.png" alt-text="リソースを削除する":::
 
 ## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]

@@ -11,16 +11,14 @@ ms.subservice: core
 ms.date: 08/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: ca76ec5bef1d908ca3cea6ce0f58b1205c1676ca
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 8b07d19ca88a2d680a4f9efbb85fcf60b895a2b3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144092"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907596"
 ---
 # <a name="submit-a-training-run-to-a-compute-target"></a>コンピューティング先にトレーニングの実行を送信する
-
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 この記事では、さまざまなトレーニング環境 ([コンピューティング先](concept-compute-target.md)) を使用して機械学習モデルをトレーニングする方法について説明します。
 
@@ -31,7 +29,7 @@ ms.locfileid: "89144092"
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を試してください
-* [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
+* [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
 * [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)、`ws`
 * コンピューティング先、`my_compute_target`。  コンピューティング先は次のものを使用して作成します。
   * [Python SDK](how-to-create-attach-compute-sdk.md) 
@@ -39,11 +37,11 @@ ms.locfileid: "89144092"
 
 ## <a name="whats-a-script-run-configuration"></a><a name="whats-a-run-configuration"></a>スクリプト実行構成とは
 
-[ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) オブジェクトを使用して、トレーニング実験を送信します。  このオブジェクトには以下のものが含まれます。
+[ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) オブジェクトを使用して、トレーニング実験を送信します。  このオブジェクトには以下のものが含まれます。
 
 * **source_directory**:トレーニング スクリプトが格納されているソース ディレクトリ
 * **script**:トレーニング スクリプトを示します
-* **run_config**:トレーニングが行われる場所が順に定義される[実行構成](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py)。 `run_config` では、トレーニング スクリプトの実行時に使用するコンピューティング先と環境を指定します。  
+* **run_config**:トレーニングが行われる場所が順に定義される[実行構成](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true)。 `run_config` では、トレーニング スクリプトの実行時に使用するコンピューティング先と環境を指定します。  
 
 ## <a name="whats-an-environment"></a>環境とは
 
@@ -167,7 +165,7 @@ run = experiment.submit(config=script_run_config)
 ## <a name="next-steps"></a>次のステップ
 
 * [チュートリアル:モデルのトレーニング](tutorial-train-models-with-aml.md)に関する記事では、マネージド コンピューティング先を使用してモデルをトレーニングします。
-* より優れたモデルを構築するために、[ハイパーパラメーター](how-to-tune-hyperparameters.md)を効率的に調整する方法を学習します。
+* より優れたモデルを構築するために、[ハイパーパラメーター](how-to-tune-hyperparameters.md)を効率的に調整する方法を学習します。?view=azure-ml-py&preserve-view=true)
 * モデルのトレーニングが済んだら、[モデルをデプロイする方法と場所](how-to-deploy-and-where.md)を確認します。
-* [RunConfiguration クラス](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py)の SDK リファレンスを確認します。
+* [RunConfiguration クラス](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py&preserve-view=true)の SDK リファレンスを確認します。
 * [Azure Machine Learning と Azure Virtual Network を使用する](how-to-enable-virtual-network.md)
