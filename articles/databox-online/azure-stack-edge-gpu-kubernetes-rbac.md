@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge デバイスでの Kubernetes ロールベースのアクセス制御について | Microsoft Docs
-description: Azure Stack Edge デバイスで Kubernetes ロールベースのアクセス制御がどのように行われるかについて説明します。
+title: Azure Stack Edge Pro デバイスでの Kubernetes ロールベースのアクセス制御について | Microsoft Docs
+description: Azure Stack Edge Pro デバイスで Kubernetes ロールベースのアクセス制御がどのように行われるかについて説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,19 +8,19 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 285a41230175392dafb69a99ca08be1f72339439
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 1f194424a4030a2b829af6c8f5b97a3c200bd2e6
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318966"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899283"
 ---
-# <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU デバイスでの Kubernetes ロールベースのアクセス制御
+# <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスでの Kubernetes ロールベースのアクセス制御
 
 
-Azure Stack Edge デバイスで、コンピューティング ロールを構成すると、Kubernetes クラスターが作成されます。 Kubernetes のロールベースのアクセス制御 (RBAC) を使用して、お使いのデバイス上のクラスター リソースへのアクセスを制限できます。
+Azure Stack Edge Pro デバイスで、コンピューティング ロールを構成すると、Kubernetes クラスターが作成されます。 Kubernetes のロールベースのアクセス制御 (RBAC) を使用して、お使いのデバイス上のクラスター リソースへのアクセスを制限できます。
 
-この記事では、Kubernetes によって提供される RBAC システムの概要と、Azure Stack Edge デバイスに Kubernetes RBAC を実装する方法について説明します。 
+この記事では、Kubernetes によって提供される RBAC システムの概要と、Azure Stack Edge Pro デバイスに Kubernetes RBAC を実装する方法について説明します。 
 
 ## <a name="rbac-for-kubernetes"></a>Kubernetes の RBAC
 
@@ -34,7 +34,7 @@ Kubernetes クラスターを設定すると、クラスター管理者ユーザ
 
 名前空間は、多数のユーザーが複数のチームまたはプロジェクトに分散している環境での使用を目的としています。 詳細については、[Kubernetes の名前空間](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) に関するページを参照してください。
 
-Azure Stack Edge デバイスには、次の名前空間があります。
+Azure Stack Edge Pro デバイスには、次の名前空間があります。
 
 - **システム名前空間** - この名前空間には、DNS やプロキシのようなネットワーク機能、Kubernetes ダッシュボードなど、重要なリソースが存在します。 通常は、この名前空間に独自のアプリケーションをデプロイしません。 この名前空間は、Kubernetes クラスターの問題をデバッグするために使用します。 
 
@@ -73,9 +73,9 @@ Kubernetes には、ロールとロール バインドの概念があります�
 
 この手法によって、1 つの Kubernetes クラスターを論理的に分離でき、ユーザーは自分に割り当てられた名前空間内のアプリケーション リソースのみにアクセスできます。 
 
-## <a name="rbac-on-azure-stack-edge"></a>Azure Stack Edge での RBAC
+## <a name="rbac-on-azure-stack-edge-pro"></a>Azure Stack Edge Pro での RBAC
 
-現在実装されている RBAC では、Azure Stack Edge を使用すると、制限付きの PowerShell 実行空間から次の操作を実行できます。
+現在実装されている RBAC では、Azure Stack Edge Pro を使用すると、制限付きの PowerShell 実行空間から次の操作を実行できます。
 
 - 名前空間を作成する。  
 - 追加のユーザーを作成する。
@@ -83,11 +83,11 @@ Kubernetes には、ロールとロール バインドの概念があります�
 - Kubernetes クラスターにアクセスするための情報を含む `kubeconfig` ファイルを取得する。
 
 
-Azure Stack Edge デバイスには複数のシステム名前空間があります。また、それらの名前空間にアクセスするために、`kubeconfig` ファイルを使用してユーザー名前空間を作成できます。 ユーザーはこれらの名前空間を完全に制御でき、ユーザーを作成または変更したり、ユーザーにアクセスを許可したりできます。 システム名前空間とクラスター全体のリソースに対するフル アクセス権を持っているのはクラスター管理者のみです。 `aseuser` には、システム名前空間に対する読み取り専用アクセス権が付与されています。
+Azure Stack Edge Pro デバイスには複数のシステム名前空間があります。また、それらの名前空間にアクセスするために、`kubeconfig` ファイルを使用してユーザー名前空間を作成できます。 ユーザーはこれらの名前空間を完全に制御でき、ユーザーを作成または変更したり、ユーザーにアクセスを許可したりできます。 システム名前空間とクラスター全体のリソースに対するフル アクセス権を持っているのはクラスター管理者のみです。 `aseuser` には、システム名前空間に対する読み取り専用アクセス権が付与されています。
 
-Azure Stack Edge デバイスでの RBAC の実装を示す図は次のとおりです。
+Azure Stack Edge Pro デバイスでの RBAC の実装を示す図は次のとおりです。
 
-![Azure Stack Edge デバイスでの RBAC](./media/azure-stack-edge-gpu-kubernetes-rbac/rbac-view-1.png)
+![Azure Stack Edge Pro デバイスでの RBAC](./media/azure-stack-edge-gpu-kubernetes-rbac/rbac-view-1.png)
 
 この図では、Alice、Bob、Chuck がアクセスできるのは割り当てられたユーザー名前空間 (この場合、それぞれ `ns1`、`ns2`、`ns3`) のみです。 これらの名前空間内で、管理者アクセス権を所有しています。 その一方で、クラスター管理者は、システム名前空間とクラスター全体のリソースに対する管理者アクセス権を持っています。
 
@@ -109,10 +109,10 @@ Azure Stack Edge デバイスでの RBAC の実装を示す図は次のとおり
 
 5. `kubectl` をインストールし、`kubectl` へのアプリケーションのデプロイを開始します。 
 
-詳細な手順については、[Azure Stack Edge での kuebctl を使用した Kubernetes クラスターへのアクセス](azure-stack-edge-gpu-create-kubernetes-cluster.md)に関するページを参照してください。
+詳細な手順については、[Azure Stack Edge Pro での kuebctl を使用した Kubernetes クラスターへのアクセス](azure-stack-edge-gpu-create-kubernetes-cluster.md)に関するページをご覧ください。
 
 
-Azure Stack Edge デバイス上で名前空間とユーザーを操作する場合、次の注意事項が適用されます。
+Azure Stack Edge Pro デバイス上で名前空間とユーザーを操作する場合、次の注意事項が適用されます。
 
 - いずれのシステム名前空間に対しても、ユーザーの作成、ユーザーへの名前空間アクセスの許可または取り消しなどの操作を実行することは許可されていません。 システム名前空間の例として、`kube-system`、`metallb-system`、`kubernetes-dashboard`、`default`、`kube-node-lease`、`kube-public` などがあります。 また、システム名前空間には、`iotedge` (IoT Edge 名前空間) や `azure-arc` (Azure Arc 名前空間) などのデプロイの種類のために予約されている名前空間も含まれます。
 - ユーザー名前空間を作成し、それらの名前空間内で、追加のユーザーを作成し、そのユーザーに対して名前空間アクセスを許可または取り消すことができます。

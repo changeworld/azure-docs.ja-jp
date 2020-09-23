@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 675f25107a2e4f0ddedf468dc06afea36ffc6151
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2f811c504f8871b06805d5578ed2d70c651be25d
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327754"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029836"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>IoT Hub の ID レジストリを理解する
 
@@ -84,7 +84,7 @@ IoT ハブの ID レジストリにデバイス ID を一括インポートす�
 
 インポート API とエクスポート API の詳細については、[IoT Hub のリソースプロバイダー REST API](/rest/api/iothub/iothubresource) に関する記事を参照してください。 インポートおよびエクスポート ジョブの実行方法の詳細については、[IoT Hub デバイス ID の一括管理](iot-hub-bulk-identity-mgmt.md)に関するページを参照してください。
 
-デバイス ID は、[REST API](/rest/api/iothub/service/jobclient/createimportexportjob)、またはいずれかの IoT Hub [サービス SDK](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks) のどちらかを使用して、サービス API を介して IoT Hub からエクスポートおよびインポートすることもできます。
+デバイス ID は、[REST API](/rest/api/iothub/service/jobs/createimportexportjob)、またはいずれかの IoT Hub [サービス SDK](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks) のどちらかを使用して、サービス API を介して IoT Hub からエクスポートおよびインポートすることもできます。
 
 ## <a name="device-provisioning"></a>デバイス プロビジョニング
 

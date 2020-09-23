@@ -6,19 +6,19 @@ ms.author: flborn
 ms.date: 02/12/2010
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0488f467a036957bf2341aab63919a105f383bdf
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 420ff7ed838bc9fa14c1276ae0a70220fc7e11a9
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89003526"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024062"
 ---
 # <a name="use-the-azure-frontend-apis-for-authentication"></a>認証に Azure フロントエンド API を使用する
 
 このセクションでは、認証とセッション管理のために API を使用する方法について説明します。
 
 > [!CAUTION]
-この章で説明する関数では、サーバーで内部的に REST 呼び出しを発行します。 すべての REST 呼び出しについて、それらのコマンドを頻繁に呼び出しすぎるとサーバーでスロットルが発生し、最終的にエラーが返されます。 この場合、`SessionGeneralContext.HttpResponseCode` メンバーの値は 429 ("要求が多すぎます") になります。 経験則として、**次の呼び出しとの間に 5 秒から 10 秒**の間隔が必要です。
+> この章で説明する関数では、サーバーで内部的に REST 呼び出しを発行します。 すべての REST 呼び出しについて、それらのコマンドを頻繁に呼び出しすぎるとサーバーでスロットルが発生し、最終的にエラーが返されます。 この場合、`SessionGeneralContext.HttpResponseCode` メンバーの値は 429 ("要求が多すぎます") になります。 経験則として、**次の呼び出しとの間に 5 秒から 10 秒**の間隔が必要です。
 
 
 ## <a name="azurefrontendaccountinfo"></a>AzureFrontendAccountInfo

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: ea8c13e134eceeb27bd064e794d46d711092a867
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d8806b8c93f5a8cbceaa6efa16dfff978dda42e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84450106"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905208"
 ---
 # <a name="resnet"></a>ResNet
 
-この記事では、Azure Machine Learning デザイナー (プレビュー) の **ResNet** モジュールを使用し、ResNet アルゴリズムを使ってイメージ分類モデルを作成する方法について説明します。  
+この記事では、Azure Machine Learning デザイナーの **ResNet** モジュールを使用し、ResNet アルゴリズムを使ってイメージ分類モデルを作成する方法について説明します。  
 
 この分類アルゴリズムは、教師あり学習手法であり、ラベル付きデータセットが必要です。 ラベル付きイメージ ディレクトリを取得する方法の詳細については、[Convert to Image Directory](convert-to-image-directory.md) モジュールに関するページを参照してください。 モデルとラベル付きイメージ ディレクトリを [Train Pytorch Model](train-pytorch-model.md) への入力として提供することにより、モデルをトレーニングすることができます。 その後、トレーニングされたモデルを使用して、[Score Image Model](score-image-model.md) を使用した新しい入力例の値を予測することができます。
 

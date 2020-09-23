@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: bf30fc5e6ccfc0f59c1769245e58177428472156
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 3d35a1f6913d0b657956489d0e57836a05f9eb1d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701812"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900043"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure Cognitive Services コンテナーについてよくあるご質問 (FAQ)
 
@@ -22,11 +22,16 @@ ms.locfileid: "83701812"
 
 **Q:何を利用できますか。**
 
-**A:** Azure Cognitive Services コンテナーを使用すると、開発者は Azure で利用できるものと同じインテリジェントな API を使用できますが、それに加えてコンテナー化の[利点](../cognitive-services-container-support.md#features-and-benefits)があります。 一部のコンテナーは、ゲート プレビューとして使用できます。この場合、アプリケーションへのアクセスが必要になることがあります。 他のコンテナーは、ゲートなしプレビューとして公開されているか、一般提供されています。 コンテナーの詳細な一覧と使用可能性については、「[Azure Cognitive Services でのコンテナーの使用可能性](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services)」を参照してください。 
+**A:** Azure Cognitive Services コンテナーを使用すると、開発者は Azure で利用できるものと同じインテリジェントな API を使用できますが、それに加えてコンテナー化の[利点](../cognitive-services-container-support.md#features-and-benefits)があります。 一部のコンテナーは、ゲート プレビューとして使用できます。この場合、アプリケーションへのアクセスが必要になることがあります。 他のコンテナーは、ゲートなしプレビューとして公開されているか、一般提供されています。 コンテナーの詳細な一覧と使用可能性については、「[Azure Cognitive Services でのコンテナーの使用可能性](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services)」を参照してください。 [Docker Hub](https://hub.docker.com/_/microsoft-azure-cognitive-services) でコンテナーを確認することもできます。
 
 **Q:Cognitive Services のクラウドとコンテナーには違いがありますか。**
 
 **A:** Cognitive Services コンテナーは Cognitive Services クラウドに代わるものです。 コンテナーからは、それに対応するクラウド サービスと同じ機能が提供されます。 お客様はオンプレミスまたは Azure でコンテナーをデプロイできます。 中心となる AI テクノロジ、価格レベル、API キー、API 署名は、コンテナーとそれに対応するクラウドサービスの間で同じです。 それに対応するクラウド サービスではなく、コンテナーを選択すると、次のような[機能と利点](../cognitive-services-container-support.md#features-and-benefits)が与えられます。
+
+**Q:限定的なプレビュー コンテナーにアクセスして使用するにはどうすればよいですか。**
+
+**A:** これまで、限定的なプレビュー コンテナーは `containerpreview.azurecr.io` リポジトリでホストされていました。 2020年 9 月 22 日以降、これらのコンテナーは Microsoft Container Registry でホストされます。それらをダウンロードする際に、docker login コマンドを使用する必要はありません。 承認済みの Azure サブスクリプション ID を使用して Azure リソースが作成されている場合は、限定的なプレビュー コンテナーを実行できます。 [要求フォーム](https://aka.ms/csgate)への入力後も、Azure サブスクリプションが承認されていない場合は、コンテナーを実行することはできません。
+
 
 **Q:コンテナーはすべての Cognitive Services で利用できますか。また、次に期待できるコンテナー セットは何ですか。**
 
@@ -76,6 +81,22 @@ OpenShift を使用してコンテナーをテストすることはありませ�
 **Q:製品フィードバックや機能推奨はどのような方法で提供しますか?**
 
 **A:** お客様には公の場で[懸念を表明する](https://cognitive.uservoice.com/)ことと、同じ問題を投稿した他のユーザーに賛成票を投じることをお勧めしています。 User Voice ツールは、製品フィードバックと機能推奨の両方にご利用いただけます。
+
+**Q:Cognitive Services コンテナーからどのようなステータス メッセージとエラーが返されますか。**
+
+**A:** ステータス メッセージとエラーの一覧については、次の表を参照してください。
+
+|Status  | 説明  |
+|---------|---------|
+| `Valid` | API キーは有効です。必要な操作はありません。 |
+| `Invalid` |   API キーが無効です。 コンテナーを実行するには、有効な API キーを指定する必要があります。 Azure portal の Azure Cognitive Services リソースの **[Keys and Endpoint]\(キーとエンドポイント\)** セクションで、API キーとサービス リージョンを確認してください。 |
+| `Mismatch` | 別の種類の Cognitive Services リソースの API キーまたはエンドポイントが指定されました。 Azure Cognitive Services リソースの **[Keys and Endpoint]\(キーとエンドポイント\)** セクションで、API キーとサービス リージョンを確認してください。 |
+| `CouldNotConnect` | コンテナーは課金エンドポイントに接続できませんでした。 `Retry-After` 値を確認し、この期間が終了するまで待ってから、追加の要求を行ってください。 |
+| `OutOfQuota` | API キーのクォータが不足しています。 価格レベルをアップグレードすることも、追加のクォータが使用可能になるまで待つこともできます。 Azure portal の Azure Cognitive Services リソースの **[価格レベル]** セクションで、現在のレベルを確認してください。 |
+| `BillingEndpointBusy` | 課金エンドポイントが現在ビジー状態です。 `Retry-After` 値を確認し、この期間が終了するまで待ってから、追加の要求を行ってください。 |
+| `ContainerUseUnauthorized` | 指定された API キーは、このコンテナーでの使用が承認されていません。 限定的なコンテナーを使用している可能性があるため、[オンライン要求](https://aka.ms/csgate)を送信して、Azure サブスクリプション ID が承認されていることを確認してください。 |
+| `Unknown` | 現在、サーバーは課金要求を処理することができません。 |
+
 
 **Q:サポートが必要なとき、どこに連絡すればよいですか?**
 

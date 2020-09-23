@@ -1,6 +1,6 @@
 ---
-title: kubectl を使用し、Azure Stack Edge GPU デバイスで動的にプロビジョニングされた共有を介して Kubernetes ステートフル アプリをデプロイする | Microsoft Docs
-description: kubectl を使用し、Microsoft Azure Stack Edge GPU デバイスで動的にプロビジョニングされた共有を介して Kubernetes ステートフル アプリケーションのデプロイを作成および管理する方法について説明します。
+title: kubectl を使用し、Azure Stack Edge Pro GPU デバイスで動的にプロビジョニングされた共有を介して Kubernetes ステートフル アプリをデプロイする | Microsoft Docs
+description: kubectl を使用し、Microsoft Azure Stack Edge Pro GPU デバイスで動的にプロビジョニングされた共有を介して Kubernetes ステートフル アプリケーションのデプロイを作成および管理する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: c787fc4c37c8fc3b4b8f007b1a84a5989a15fbc4
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: d37152f7dec78d5f5db21fdde9a8ec25c36c4e05
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254323"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899471"
 ---
-# <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-storageclass-on-your-azure-stack-edge-gpu-device"></a>kubectl を使用し、Azure Stack Edge GPU デバイスで StorageClass を使用して Kubernetes ステートフル アプリケーションを実行します
+# <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-storageclass-on-your-azure-stack-edge-pro-gpu-device"></a>kubectl を使用し、Azure Stack Edge Pro GPU デバイスで StorageClass を使用して Kubernetes ステートフル アプリケーションを実行する
 
 この記事では、StorageClass を使用して Kubernetes で単一インスタンスのステートフル アプリケーションをデプロイし、ストレージとデプロイを動的にプロビジョニングする方法について説明します。 このデプロイでは、既存の Kubernetes クラスターで `kubectl` コマンドを使用し、MySQL アプリケーションをデプロイします。 
 
-この手順は、[Azure Stack Edge デバイス上の Kubernetes ストレージ](azure-stack-edge-gpu-kubernetes-storage.md)に関する記事を確認して [Kubernetes ストレージ](https://kubernetes.io/docs/concepts/storage/)の概念を理解しているユーザーを対象としています。
+この手順は、[Azure Stack Edge Pro デバイス上の Kubernetes ストレージ](azure-stack-edge-gpu-kubernetes-storage.md)に関する記事を確認し、[Kubernetes ストレージ](https://kubernetes.io/docs/concepts/storage/)の概念を理解しているユーザーを対象としています。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -28,30 +28,30 @@ ms.locfileid: "89254323"
 
 ### <a name="for-device"></a>デバイスでは
 
-- 1 ノードの Azure Stack Edge デバイスに対するサインイン資格情報がある。
+- 1 ノードの Azure Stack Edge Pro デバイスに対するサインイン資格情報がある。
     - デバイスがアクティブ化されている。 [デバイスをアクティブにする](azure-stack-edge-gpu-deploy-activate.md)に関する記事を参照してください。
     - デバイスに、Azure portal を使用して構成されたコンピューティング ロールがあり、Kubernetes クラスターがある。 [コンピューティングの構成](azure-stack-edge-gpu-deploy-configure-compute.md)に関する記事を参照してください。
 
 ### <a name="for-client-accessing-the-device"></a>デバイスにアクセスするクライアントでは
 
-- Azure Stack Edge デバイスにアクセスするために使用する Windows クライアント システムがある。
+- Azure Stack Edge Pro デバイスへのアクセスに使用される Windows クライアント システムがある。
     - クライアントでは、Windows PowerShell 5.0 以降が実行されている。 Windows PowerShell の最新バージョンをダウンロードするには、「[Windows PowerShell のインストール](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)」を参照してください。
     
     - [オペレーティング システムがサポートされている](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)他のクライアントを使用することもできます。 この記事では、Windows クライアントを使用する場合の手順について説明します。 
     
-    - [Azure Stack Edge デバイス上の Kubernetes クラスターへのアクセス](azure-stack-edge-gpu-create-kubernetes-cluster.md)に関する記事で説明されている手順を完了している。 完了した内容:
+    - [Azure Stack Edge Pro デバイス上の Kubernetes クラスターへのアクセス](azure-stack-edge-gpu-create-kubernetes-cluster.md)に関する記事で説明されている手順を完了している。 完了した内容:
       - `New-HcsKubernetesNamespace` コマンドを使用して `userns1` 名前空間を作成した。 
       - `New-HcsKubernetesUser` コマンドを使用してユーザー `user1` を作成した。 
       - `Grant-HcsKubernetesNamespaceAccess` コマンドを使用して、`user1` に `userns1` への アクセス権を許可した。       
       - クライアントに `kubectl` をインストールし、ユーザー構成を含む `kubeconfig` ファイルを C:\\Users\\&lt;username&gt;\\.kube に保存した。 
     
-    - `kubectl` クライアントのバージョンが、Azure Stack Edge デバイスで実行されている Kubernetes マスターのバージョンと 1 バージョンを超える違いがないことを確認します。 
+    - `kubectl` クライアントのバージョンと、Azure Stack Edge Pro デバイスで実行されている Kubernetes マスターのバージョンの差が 1 未満であることを確認する。 
         - クライアントで実行されている kubectl のバージョンを確認するには、`kubectl version` を使用します。 完全なバージョン番号をメモしておきます。
-        - Azure Stack Edge デバイスのローカル UI で、 **[概要]** に移動し、Kubernetes ソフトウェアの番号をメモします。 
+        - お使いの Azure Stack Edge Pro デバイスのローカル UI で、 **[概要]** に移動し、Kubernetes ソフトウェアの番号をメモします。 
         - サポートされている Kubernetes バージョンで提供されているマッピングで、これら 2 つのバージョンの互換性を確認します<!-- insert link-->. 
 
 
-Azure Stack Edge デバイスにステートフル アプリケーションをデプロイする準備ができました。 
+Azure Stack Edge Pro デバイスにステートフル アプリケーションをデプロイする準備ができました。 
 
 
 ## <a name="deploy-mysql"></a>MySQL をデプロイする
@@ -78,7 +78,7 @@ Kubernetes デプロイを作成し、PersistentVolumeClaim (PVC) を使用し�
 
 1. 次の YAML ファイルを使用します。 `mysql-deployment.yml` ファイルには、MySQL を実行し、PVC を参照するデプロイが記述されています。 このファイルは、`/var/lib/mysql` のボリューム マウントを定義し、20 GB のボリュームを探す PVC を作成します。 動的な PV がプロビジョニングされ、PVC がこの PV にバインドされます。
 
-    次の `mysql-deployment.yml` ファイルをコピーし、Azure Stack Edge デバイスへのアクセスに使用する Windows クライアント上のフォルダーに保存します。
+    次の `mysql-deployment.yml` ファイルをコピーし、Azure Stack Edge Pro デバイスへのアクセスに使用する Windows クライアント上のフォルダーに保存します。
     
     ```yml
     apiVersion: v1
@@ -126,7 +126,7 @@ Kubernetes デプロイを作成し、PersistentVolumeClaim (PVC) を使用し�
               claimName: mysql-pv-claim-sc
     ```
     
-2. 次の内容をコピーし、`mysql-deployment.yml` を保存したフォルダーに `mysql-pvc.yml` ファイルとして保存します。 Azure Stack Edge デバイスに接続されたデータ ディスクにある組み込みの StorageClass を使用するには、PVC オブジェクトの `storageClassName` フィールドを `ase-node-local` に設定し、accessModes を `ReadWriteOnce` にする必要があります。 
+2. 次の内容をコピーし、`mysql-deployment.yml` を保存したフォルダーに `mysql-pvc.yml` ファイルとして保存します。 Azure Stack Edge Pro デバイスに接続されたデータ ディスクにある組み込みの StorageClass を使用するには、PVC オブジェクトの `storageClassName` フィールドを `ase-node-local` に設定し、accessModes を `ReadWriteOnce` にする必要があります。 
 
     > [!NOTE] 
     > YAML ファイルが正しくインデントされていることを確認します。 [YAML lint](http://www.yamllint.com/) を使用すると、検証して保存することができます。
@@ -326,4 +326,4 @@ C:\Users\user>
 
 ## <a name="next-steps"></a>次のステップ
 
-Kubectl を使用してネットワークを構成する方法については、[Azure Stack Edge デバイスへのステートレス アプリケーションのデプロイ](azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md)に関する記事を参照してください
+Kubectl を使用してネットワークを構成する方法については、[Azure Stack Edge Pro デバイスへのステートレス アプリケーションのデプロイ](azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md)に関する記事を参照してください

@@ -1,6 +1,6 @@
 ---
-title: GPU を備えた Microsoft Azure Stack Edge の技術仕様とコンプライアンス | Microsoft Docs
-description: GPU を備えた Azure Stack Edge デバイスの技術仕様とコンプライアンスについて説明します
+title: GPU を備えた Microsoft Azure Stack Edge Pro の技術仕様とコンプライアンス | Microsoft Docs
+description: GPU を備えた Azure Stack Edge Pro デバイスの技術仕様とコンプライアンスについて説明します
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,20 +8,20 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: 3f354655a612d4085b0a0de45ae1a6e5ee097ade
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: b0eaa9778480a6a767a4b37bd92a395d2b1ee6cb
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266665"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899022"
 ---
-# <a name="technical-specifications-and-compliance-for-azure-stack-edge-with-gpu"></a>GPU を備えた Azure Stack Edge の技術仕様とコンプライアンス 
+# <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>GPU を備えた Azure Stack Edge Pro の技術仕様とコンプライアンス 
 
-オンボードのグラフィックス プロセッシング ユニット (GPU) を備えた Azure Stack Edge のハードウェア コンポーネントは、この記事で説明されている技術的仕様と規制標準に準拠します。 技術仕様では、ハードウェア、電源装置 (PSU)、ストレージ容量、エンクロージャ、環境基準について説明しています。
+オンボードのグラフィックス プロセッシング ユニット (GPU) を備えた Azure Stack Edge Pro のハードウェア コンポーネントは、この記事で説明されている技術的仕様と規制標準に準拠します。 技術仕様では、ハードウェア、電源装置 (PSU)、ストレージ容量、エンクロージャ、環境基準について説明しています。
 
 ## <a name="compute-and-memory-specifications"></a>コンピューティングとメモリの仕様
 
-Azure Stack Edge デバイスには、コンピューティングとメモリについて次のような仕様があります。
+Azure Stack Edge Pro デバイスには、コンピューティングとメモリについて次のような仕様があります。
 
 | 仕様           | 値                  |
 |-------------------------|----------------------------|
@@ -31,7 +31,7 @@ Azure Stack Edge デバイスには、コンピューティングとメモリに
 
 ## <a name="compute-acceleration-specifications"></a>コンピューティング アクセラレーション仕様
 
-Kubernetes、ディープ ラーニング、機械学習のシナリオを可能にするすべての Azure Stack Edge デバイスには、グラフィックス プロセッシング ユニット (GPU) が含まれています。
+Kubernetes、ディープ ラーニング、機械学習のシナリオを可能にするすべての Azure Stack Edge Pro デバイスには、グラフィックス プロセッシング ユニット (GPU) が含まれています。
 
 | 仕様           | 値                  |
 |-------------------------|----------------------------|
@@ -40,7 +40,7 @@ Kubernetes、ディープ ラーニング、機械学習のシナリオを可能
 
 ## <a name="power-supply-unit-specifications"></a>電源装置の仕様
 
-Azure Stack Edge デバイスは 100-240 V の電源装置 (PSU) 2 つと高性能ファンを備えています。 2 つの PSU によって電源が冗長構成になります。 1 台の PSU に障害が発生した場合、障害が発生したモジュールが交換されるまで、デバイスはもう一方の PSU で通常どおり動作し続けます。 次の表は PSU の技術仕様をまとめたものです。
+Azure Stack Edge Pro デバイスは 100-240 V の電源装置 (PSU) 2 つと高性能ファンを備えています。 2 つの PSU によって電源が冗長構成になります。 1 台の PSU に障害が発生した場合、障害が発生したモジュールが交換されるまで、デバイスはもう一方の PSU で通常どおり動作し続けます。 次の表は PSU の技術仕様をまとめたものです。
 
 | 仕様           | 750 W PSU                  |
 |-------------------------|----------------------------|
@@ -52,13 +52,13 @@ Azure Stack Edge デバイスは 100-240 V の電源装置 (PSU) 2 つと高性�
 
 ## <a name="network-interface-specifications"></a>ネットワーク インターフェイスの仕様
 
-Azure Stack Edge デバイスには、PORT1 から PORT6 までの 6 つのネットワーク インターフェイスがあります。
+Azure Stack Edge Pro デバイスには、PORT1 から PORT6 までの 6 つのネットワーク インターフェイスがあります。
 
 | 仕様           | 説明                 |
 |-------------------------|----------------------------|
 |  ネットワーク インターフェイス    | **1 GbE インターフェイス x 2** - 1 つの管理インターフェイスのポート 1 は初期セットアップに使用され、既定では静的です。 初期セットアップが完了したら、任意の IP アドレスでデータ用のインターフェイスを使用できます。 ただし、リセット時には、インターフェイスは静的 IP に戻ります。 <br>別のインターフェイスのポート 2 はユーザー構成可能であり、データ転送に使用でき、既定で DHCP です。 <br>**25 GbE インターフェイス x 4** – これらのデータ インターフェイス (ポート 3 からポート 6) は、DHCP (既定) または静的 としてユーザーが構成できます。 これらは 10 GbE インターフェイスとしても動作可能です。  | 
 
-Azure Stack Edge デバイスには、次のネットワーク ハードウェアがあります。
+Azure Stack Edge Pro デバイスには、次のネットワーク ハードウェアがあります。
 
 * **カスタム Microsoft Qlogic Cavium 25G NDC アダプター** - ポート 1 からポート 4。
 * **Mellanox デュアル ポート 25G ConnectX-4 チャネル ネットワーク アダプター** - ポート 5 とポート 6。
@@ -79,7 +79,7 @@ Mellanox カードの詳細を次に示します。
 
 ## <a name="storage-specifications"></a>Storage の仕様
 
-Azure Stack Edge デバイスには、それぞれ 1.6 TB の容量を持つ 5 つの 2.5 インチ NVMe DC P4610 SSD が搭載されています。 ブート ドライブは 240 GB の SATA SSD です。 デバイスで利用できる容量の合計は約 8.28 TB となります。 次の表は、デバイスのストレージ容量の一覧です。
+Azure Stack Edge Pro デバイスには、それぞれ 1.6 TB の容量を持つ 5 つの 2.5 インチ NVMe DC P4610 SSD が搭載されています。 ブート ドライブは 240 GB の SATA SSD です。 デバイスで利用できる容量の合計は約 8.28 TB となります。 次の表は、デバイスのストレージ容量の一覧です。
 
 |     仕様                          |     値             |
 |--------------------------------------------|-----------------------|
@@ -97,7 +97,7 @@ Azure Stack Edge デバイスには、それぞれ 1.6 TB の容量を持つ 5 �
 <!--Remove based on feedback from Ravi
 ## Other hardware specifications
 
-Your Azure Stack Edge device also contains the following hardware:
+Your Azure Stack Edge Pro device also contains the following hardware:
 
 * iDRAC baseboard management
 * Performance fans
@@ -172,4 +172,4 @@ Your Azure Stack Edge device also contains the following hardware:
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Stack Edge を配置する](azure-stack-edge-gpu-deploy-prep.md)
+[Azure Stack Edge Pro をデプロイする](azure-stack-edge-gpu-deploy-prep.md)

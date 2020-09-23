@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge、Azure Data Box Gateway のログ サポート チケット | Microsoft Docs
-description: Azure Stack Edge または Azure Stack Gateway の注文に関連する問題のサポート リクエストをログに記録する方法について説明します。
+title: Azure Stack Edge Pro、Azure Data Box Gateway のログ サポート チケット | Microsoft Docs
+description: Azure Stack Edge Pro または Azure Stack Gateway の注文に関連する問題のサポート要求をログに記録する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 4d513471e288c1aadbf70b24ef367965a0b69a80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9df729277934e074e1e8cc92126e777336708586
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339911"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904521"
 ---
-# <a name="open-a-support-ticket-for-azure-stack-edge-and-azure-data-box-gateway"></a>Azure Stack Edge と Azure Data Box Gateway のサポート チケットを開く
+# <a name="open-a-support-ticket-for-azure-stack-edge-pro-and-azure-data-box-gateway"></a>Azure Stack Edge Pro と Azure Data Box Gateway のサポート チケットを開く
 
-この記事は、どちらも Azure Stack Edge または Azure Data Box Gateway サービスによって管理されている Azure Stack Edge と Azure Data Box Gateway に適用されます。 お使いのサービスで問題が発生した場合は、テクニカル サポートに対するサービス要求を作成できます。 この記事で説明する内容は次のとおりです。
+この記事は、どちらも Azure Stack Edge Pro または Azure Data Box Gateway サービスによって管理されている Azure Stack Edge Pro と Azure Data Box Gateway に適用されます。 お使いのサービスで問題が発生した場合は、テクニカル サポートに対するサービス要求を作成できます。 この記事で説明する内容は次のとおりです。
 
 * サポート リクエストを作成する方法
 * ポータル内からサポート要求ライフ サイクルを管理する方法
@@ -26,13 +26,13 @@ ms.locfileid: "84339911"
 
 サポート要求を作成するには、次の手順を実行します。
 
-1. Azure Stack Edge または Data Box Gateway の注文に移動します。 **[サポート + トラブルシューティング]** セクションに移動し、 **[新しいサポート リクエスト]** を選択します。
+1. Azure Stack Edge Pro または Data Box Gateway の注文に移動します。 **[サポート + トラブルシューティング]** セクションに移動し、 **[新しいサポート リクエスト]** を選択します。
 
 2. **[新しいサポート リクエスト]** の **[基本]** タブで、次の手順を実行します。
 
     1. **[問題の種類]** ドロップダウン リストで **[技術]** を選択します。
     2. **サブスクリプション**を選択します。
-    3. **[サービス]** の **[使用中のサービス]** をオンにします。 ドロップダウン リストから **Azure Stack Edge と Azure Stack Gateway** を選択します。
+    3. **[サービス]** の **[使用中のサービス]** をオンにします。 ドロップダウン リストから **Azure Stack Edge Pro と Azure Stack Gateway** を選択します。
     4. **[リソース]** を選択します。 これは注文の名前に対応します。
     5. 発生している問題の簡単な **[概要]** を入力します。 
     6. **[問題の種類]** を選択します。
@@ -98,5 +98,5 @@ ms.locfileid: "84339911"
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Stack Edge に関連する問題のトラブルシューティング](azure-stack-edge-troubleshoot.md)方法について説明します。
+[Azure Stack Edge Pro に関連する問題のトラブルシューティング](azure-stack-edge-troubleshoot.md)方法について説明します。
 [Data Box Gateway に関する問題のトラブルシューティング](data-box-gateway-troubleshoot.md)方法を確認します。

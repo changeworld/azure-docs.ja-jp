@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: subject-armqs
 ms.date: 08/18/2020
-ms.openlocfilehash: 3c2d13794f2fc3af4541032d1f94967681c0deee
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: a2ab400158f77af7934ca3f9f7c811d5fe2bd340
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078420"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461240"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Azure Cache for Redis を作成する
 
@@ -27,7 +27,7 @@ Azure Cache for Redis をデプロイする Azure Resource Manager テンプレ�
 ## <a name="prerequisites"></a>前提条件
 
 * **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
-* **ストレージ アカウント**:これを作成するには、「[Azure Storage アカウントの作成](/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=template)」を参照してください。 ストレージ アカウントは、診断データに使用されます。
+* **ストレージ アカウント**:これを作成するには、「[Azure Storage アカウントの作成](/azure/storage/common/storage-account-create?tabs=azure-portal)」を参照してください。 ストレージ アカウントは、診断データに使用されます。
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
@@ -38,7 +38,7 @@ Azure Cache for Redis をデプロイする Azure Resource Manager テンプレ�
 このテンプレートでは、次のリソースが定義されています。
 
 * [Microsoft.Cache/Redis](/azure/templates/microsoft.cache/redis)
-* [Microsoft.Insights/diagnosticsettings](/azure/templates/diagnosticsettings)
+* [Microsoft.Insights/diagnosticsettings](/azure/templates/microsoft.insights/diagnosticsettings)
 
 新しい [Premium レベル](cache-overview.md#service-tiers)の Resource Manager テンプレートも利用できます。
 

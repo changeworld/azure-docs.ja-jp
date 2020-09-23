@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU デバイスに更新プログラムをインストールする | Microsoft Docs
-description: Azure Stack Edge GPU デバイスの Azure portal とローカル Web UI、およびデバイス上の Kubernetes クラスターを使用して更新プログラムを適用する方法について説明します
+title: Azure Stack Edge Pro GPU デバイスに更新プログラムをインストールする | Microsoft Docs
+description: Azure Stack Edge Pro GPU デバイスの Azure portal とローカル Web UI、およびデバイス上の Kubernetes クラスターを使用して更新プログラムを適用する方法について説明します
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,21 +8,21 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 6bafeeeda686dafadc3f5104240f8d018de83aeb
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 107485277e28a44841b0d71fef686f0bcbf52216
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268246"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899498"
 ---
-# <a name="update-your-azure-stack-edge-with-gpu"></a>GPU 搭載の Azure Stack Edge を更新する 
+# <a name="update-your-azure-stack-edge-pro-with-gpu"></a>GPU 搭載の Azure Stack Edge Pro を更新する 
 
-この記事では、GPU 搭載の Azure Stack Edge にローカル Web UI および Azure portal を使用して更新プログラムをインストールするために必要な手順について説明します。 ソフトウェアの更新プログラムまたは修正プログラムを適用して、Azure Stack Edge デバイスと、デバイス上の関連する Kubernetes クラスターを最新の状態に保ちます。 
+この記事では、GPU 搭載の Azure Stack Edge Pro にローカル Web UI および Azure portal を使用して更新プログラムをインストールするために必要な手順について説明します。 ソフトウェアの更新プログラムまたは修正プログラムを適用して、Azure Stack Edge Pro デバイスと、デバイス上の関連する Kubernetes クラスターを最新の状態に保ちます。 
 
 > [!IMPORTANT]
 > - Update **2008** は、デバイス上ではソフトウェア バージョン **2.1.1328.1904** になります。 この更新プログラムの詳細については、[リリース ノート](azure-stack-edge-gpu-2008-release-notes.md)を参照してください。
 >
-> - 更新プログラムまたは修正プログラムをインストールすると、デバイスが再起動されることに注意してください。 この更新プログラムでは、2 つの更新プログラムを順番に適用する必要があります。 まずデバイス ソフトウェアの更新プログラムを適用してから、Kubernetes の更新プログラムを適用します。 Azure Stack Edge が単一ノード デバイスである場合、進行中のすべての I/O が中断され、デバイス ソフトウェアの更新のために、デバイスで最大 30 分のダウンタイムが発生します。
+> - 更新プログラムまたは修正プログラムをインストールすると、デバイスが再起動されることに注意してください。 この更新プログラムでは、2 つの更新プログラムを順番に適用する必要があります。 まずデバイス ソフトウェアの更新プログラムを適用してから、Kubernetes の更新プログラムを適用します。 Azure Stack Edge Pro が単一ノード デバイスである場合、進行中のすべての I/O が中断され、デバイス ソフトウェアの更新のために、デバイスで最大 30 分のダウンタイムが発生します。
 
 デバイスに更新プログラムをインストールするには、まず更新サーバーの場所を構成する必要があります。 更新サーバーを構成した後は、Azure portal UI またはローカル Web UI を使用して更新プログラムを適用できます。
 
@@ -159,9 +159,9 @@ Azure portal から更新プログラムをインストールすることをお�
 
     ![カタログの検索](./media/azure-stack-edge-gpu-install-update/download-update-1.png)
 
-2. Microsoft Update カタログの検索ボックスに、ダウンロードする修正プログラムのサポート技術情報 (KB) 番号または更新プログラムの用語を入力します。 たとえば、「**Azure Stack Edge**」と入力し、 **[検索]** をクリックします。
+2. Microsoft Update カタログの検索ボックスに、ダウンロードする修正プログラムのサポート技術情報 (KB) 番号または更新プログラムの用語を入力します。 たとえば、「**Azure Stack Edge Pro**」と入力し、 **[検索]** をクリックします。
    
-    更新プログラムの一覧に **Azure Stack Edge 2006** と表示されます。
+    更新プログラムの一覧に **Azure Stack Edge Pro 2006** と表示されます。
    
     ![カタログの検索](./media/azure-stack-edge-gpu-install-update/download-update-2b.png)
 
@@ -215,4 +215,4 @@ Azure portal から更新プログラムをインストールすることをお�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Stack Edge の管理](azure-stack-edge-manage-access-power-connectivity-mode.md)について確認します。
+[Azure Stack Edge Pro の管理](azure-stack-edge-manage-access-power-connectivity-mode.md)について確認します。

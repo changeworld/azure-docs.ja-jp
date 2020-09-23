@@ -1,6 +1,6 @@
 ---
-title: IoT Edge モジュールを使用して Azure Stack Edge GPU に Kubernetes ステートレス アプリをデプロイする | Microsoft Docs
-description: 外部 IP 経由でアクセスされる IoT Edge モジュールを使用して、Azure Stack Edge GPU デバイスに Kubernetes ステートレス アプリケーションをデプロイする方法について説明します。
+title: IoT Edge モジュールを使用して Azure Stack Edge Pro GPU に Kubernetes ステートレス アプリをデプロイする | Microsoft Docs
+description: 外部 IP 経由でアクセスされる IoT Edge モジュールを使用して、Azure Stack Edge Pro GPU デバイスに Kubernetes ステートレス アプリケーションをデプロイする方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,21 +8,21 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: 15316cbdd44053bfaf7403815ba42d92e2264b7b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 4bc598080b96886e6734ac3709761465a1a28d49
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254170"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899516"
 ---
-# <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-gpu-device"></a>IoT Edge モジュールを使用して、Azure Stack Edge GPU デバイスで Kubernetes ステートレス アプリケーションを実行する
+# <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-pro-gpu-device"></a>IoT Edge モジュールを使用して、Azure Stack Edge Pro GPU デバイスで Kubernetes ステートレス アプリケーションを実行する
 
-この記事では、IoT Edge モジュールを使用して、Azure Stack Edge デバイスにステートレス アプリケーションをデプロイする方法について説明します。
+この記事では、IoT Edge モジュールを使用して、Azure Stack Edge Pro デバイスにステートレス アプリケーションをデプロイする方法について説明します。
 
 ステートレス アプリケーションをデプロイするには、次の手順を実行します。
 
 - IoT Edge モジュールをデプロイする前に、前提条件が満たされていることを確認します。
-- IoT Edge モジュールを追加して、お使いの Azure Stack Edge でコンピューティング ネットワークにアクセスします。
+- IoT Edge モジュールを追加して、お使いの Azure Stack Edge Pro でコンピューティング ネットワークにアクセスします。
 - 有効になっているネットワーク インターフェイスにモジュールがアクセスできることを確認します。
 
 この記事では、Web サーバー アプリのモジュールを使用したシナリオについて説明します。
@@ -31,19 +31,19 @@ ms.locfileid: "89254170"
 
 開始する前に、次の条件を満たしている必要があります。
 
-- Azure Stack Edge デバイス。 次のことを確認してください。
+- Azure Stack Edge Pro デバイス。 次のことを確認してください。
 
     - デバイスにコンピューティング ネットワークの設定が構成されている。
     - [チュートリアル:デバイスのアクティブ化](azure-stack-edge-gpu-deploy-activate.md)に関する記事の手順に従って、デバイスがアクティブ化されている。
-- **コンピューティングの構成**が完了している。コンピューティングの構成は、お使いのデバイスで、[チュートリアル: Azure Stack Edge デバイスでのコンピューティングの構成](azure-stack-edge-gpu-deploy-configure-compute.md)に関する記事に従って構成します。 お使いのデバイスには、関連付けられた IoT Hub リソース、IoT デバイス、および IoT Edge デバイスが必要です。
+- **コンピューティングの構成**が完了している。コンピューティングの構成は、お使いのデバイスで、[チュートリアル: Azure Stack Edge Pro デバイスでのコンピューティングの構成](azure-stack-edge-gpu-deploy-configure-compute.md)に関する記事に従って構成します。 お使いのデバイスには、関連付けられた IoT Hub リソース、IoT デバイス、および IoT Edge デバイスが必要です。
 
 
 ## <a name="add-webserver-app-module"></a>Web サーバー アプリ モジュールを追加する
 
-Azure Stack Edge デバイスで Web サーバー アプリ モジュールを追加するには、次の手順を行います。
+Azure Stack Edge Pro デバイスに Web サーバー アプリ モジュールを追加するには、次の手順を行います。
 
 1. デバイスに関連付けられている IoT Hub リソースで、 **[自動デバイス管理] > [IoT Edge]** に移動します。
-1. お使いの Azure Stack Edge デバイスに関連付けられている IoT Edge デバイスを選択してクリックします。 
+1. お使いの Azure Stack Edge Pro デバイスに関連付けられている IoT Edge デバイスを選択してクリックします。 
 
     ![IoT Edge デバイスの選択](media/azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module/select-iot-edge-device-1.png)  
 

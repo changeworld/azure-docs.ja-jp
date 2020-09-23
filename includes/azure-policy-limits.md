@@ -4,14 +4,14 @@ description: インクルード ファイル
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 08/07/2020
+ms.date: 09/22/2020
 ms.author: dacoulte
-ms.openlocfilehash: 9fcaca3f89217f649eb970ec70514a5735222782
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 2707523947cae77dd800dd5f560ebe1c47f3893a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854060"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905958"
 ---
 Azure Policy では、オブジェクトの種類ごとに最大数があります。 _Scope_ というエントリは、サブスクリプションまたは[管理グループ](../articles/governance/management-groups/overview.md)のいずれかを意味します。
 
@@ -21,6 +21,7 @@ Azure Policy では、オブジェクトの種類ごとに最大数がありま�
 | Scope | イニシアチブ定義 | 200 |
 | Tenant | イニシアチブ定義 | 2,500 |
 | Scope | ポリシーとイニシアティブの割り当て | 200 |
+| スコープ | 適用除外 | 1000 |
 | ポリシー定義 | パラメーター | 20 |
 | イニシアチブ定義 | ポリシー | 1000 |
 | イニシアチブ定義 | パラメーター | 100 |

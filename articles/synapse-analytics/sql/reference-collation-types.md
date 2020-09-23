@@ -4,16 +4,16 @@ description: Azure Synapse SQL でサポートされる照合順序の種類
 author: filippopovic
 ms.service: synapse-analytics
 ms.topic: reference
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1099c4e4dd69a8dc8caee96ec5dda633ce8b9d12
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ef9d0eb3dd97795f3b6757759679351f857891ab
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496204"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032862"
 ---
 # <a name="database-collation-support-for-synapse-sql"></a>Synapse SQL でのデータベースの照合順序のサポート
 

@@ -10,33 +10,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/02/2020
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 718f9a29b70dab34269c959ccd62452e56a32d72
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 1335b1034304b7efe2b113f7ff2d2927fea41638
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056603"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90977357"
 ---
 # <a name="azure-container-registry-image-scanning-by-security-center"></a>Security Center による Azure Container Registry のイメージ スキャン
 
 Azure Container Registry (ACR) は、Azure デプロイ用のコンテナー イメージを中央のレジストリに格納して管理する、プライベートなマネージド Docker レジストリ サービスです。 これは、オープンソースの Docker Registry 2.0 を基にしています。
 
-Azure Security Center の 標準レベルを使用している場合には、Container Registries のバンドルを追加できます。 このオプションの機能を使用すると、Azure Resource Manager ベースのレジストリ内のイメージの脆弱性をより詳しく把握できます。 サブスクリプション レベルでバンドルを有効または無効にし、サブスクリプション内のすべてのレジストリをカバーします。 この機能は、[価格のページ](security-center-pricing.md)に示されているように、イメージごとに課金されます。 Container Registries のバンドルを有効にすると、Security Center は、レジストリにプッシュされたイメージをスキャンできるようになります。 
-
-## <a name="availability"></a>可用性
-
-|側面|詳細|
-|----|:----|
-|リリース状態:|一般公開|
-|価格:|Standard レベル|
-|サポートされているレジストリとイメージ:|![はい](./media/icons/yes-icon.png) パブリック インターネットからアクセスでき、シェル アクセスを提供する、Linux でホストされている ACR レジストリ。<br>![いいえ](./media/icons/no-icon.png) Windows でホストされている ACR レジストリ。<br>![いいえ](./media/icons/no-icon.png) 'プライベート' レジストリ - パブリック インターネットからこのレジストリにアクセスできることが Security Center によって求められます。 現在、ファイアウォール、サービス エンドポイント、または Azure Private Link などのプライベート エンドポイントによってアクセスが制限されたレジストリへの接続、このようなレジストリのスキャンは、Security Center ではサポートされていません。<br>![いいえ](./media/icons/no-icon.png) [Docker スクラッチ](https://hub.docker.com/_/scratch/) イメージのようなスーパー ミニマリスト イメージ、またはアプリケーションとそのランタイム依存関係のみが含まれ、パッケージ マネージャー、シェル、OS は含まれない "ディストリビューションレス" イメージ。|
-|必要なロールとアクセス許可:|**セキュリティ閲覧者**と [Azure Container Registry 閲覧者ロール](https://docs.microsoft.com/azure/container-registry/container-registry-roles)|
-|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
-|||
-
-
+**Azure Defender for container registries** を有効にすると、Azure Resource Manager ベースのレジストリ内のイメージの脆弱性をより詳しく把握できます。 サブスクリプション レベルでプランを有効または無効にし、サブスクリプション内のすべてのレジストリをカバーします。 この機能は、[価格のページ](security-center-pricing.md)に示されているように、イメージごとに課金されます。 Azure Defender を有効にすると、Security Center は、レジストリにプッシュされたイメージをスキャンできるようになります。 
 
 
 ## <a name="when-are-images-scanned"></a>イメージはどのような場合にスキャンされますか。
@@ -74,7 +61,7 @@ Security Center では、スキャナーによる検出結果がフィルター�
 はい。 結果は [Sub-Assessments Rest API](/rest/api/securitycenter/subassessments/list/) の下にあります。 また、Azure Resource Graph (ARG) を利用できます。これはすべてのリソースを対象とする Kusto のような API であり、1 つのクエリで特定のスキャンをフェッチできます。
  
 ### <a name="what-registry-types-are-scanned-what-types-are-billed"></a>どのようなレジストリの種類がスキャンされますか。 どのような種類が課金されますか。
-[可用性セクション](#availability)には、コンテナー レジストリ バンドルによってサポートされているコンテナー レジストリの種類が一覧表示されています。 
+可用性セクションには、Azure Defender for container registries によってサポートされているコンテナー レジストリの種類が一覧表示されています。 
 
 サポートされていないレジストリが Azure サブスクリプションに接続されている場合、これらはスキャンされず、課金対象にもなりません。
 
@@ -87,4 +74,4 @@ Security Center のコンテナーのセキュリティ機能の詳細につい�
 
 * [Azure Kubernetes Service との統合](azure-kubernetes-service-integration.md)
 
-* [仮想マシンの保護](security-center-virtual-machine-protection.md) - Security Center の推奨事項について説明します。
+

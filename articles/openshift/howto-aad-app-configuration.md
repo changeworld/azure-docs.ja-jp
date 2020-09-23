@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: f6c4fb5caf746650f95872d50afe31e5693422be
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 8d3326587d9c03e0a3960016b8ba3668c825ee6d
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382912"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89470087"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift の Azure Active Directory 統合
 
@@ -86,9 +86,9 @@ Azure Active Directory に対してアプリを認証するためのクライア
 
 ![[証明書とシークレット] ウィンドウのスクリーンショット](./media/howto-create-tenant/create-key.png)
 
-Azure アプリケーション オブジェクトの詳細については、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)」を参照してください。
+Azure アプリケーション オブジェクトの詳細については、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/app-objects-and-service-principals.md)」を参照してください。
 
-新しい Azure AD アプリケーションの作成の詳細については、[Azure Active Directory v1.0 エンドポイントへのアプリの登録](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)に関する記事を参照してください。
+新しい Azure AD アプリケーションの作成の詳細については、[Azure Active Directory v1.0 エンドポイントへのアプリの登録](../active-directory/develop/quickstart-register-app.md)に関する記事を参照してください。
 
 ## <a name="add-api-permissions"></a>API アクセス許可を追加する
 
@@ -110,12 +110,12 @@ Azure アプリケーション オブジェクトの詳細については、「[
 > [!IMPORTANT]
 > クラスター管理者グループの同期は、同意が付与された後でないと機能しません。 チェックマークが付いた緑色の円と、"Granted for *Subscription Name*" (<サブスクリプション名> に許可済み) というメッセージが *[Admin consent required]\(管理者の同意が必要\)* 列に表示されます。
 
-管理者およびその他のロールの管理の詳細については、[Azure サブスクリプション管理者の追加または変更](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator)に関する記事を参照してください。
+管理者およびその他のロールの管理の詳細については、[Azure サブスクリプション管理者の追加または変更](../cost-management-billing/manage/add-change-subscription-administrator.md)に関する記事を参照してください。
 
 ## <a name="resources"></a>リソース
 
-* [Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
-* [クイック スタート: Azure Active Directory v1.0 エンドポイントを使用してアプリを登録する](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)
+* [Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/app-objects-and-service-principals.md)
+* [クイック スタート: Azure Active Directory v1.0 エンドポイントを使用してアプリを登録する](../active-directory/develop/quickstart-register-app.md)
 
 ## <a name="next-steps"></a>次のステップ
 
