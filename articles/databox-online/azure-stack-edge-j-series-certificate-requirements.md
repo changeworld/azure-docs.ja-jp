@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge での証明書の要件とトラブルシューティング | Microsoft Docs
-description: Azure Stack Edge デバイスでの証明書の要件と証明書エラーのトラブルシューティングについて説明します。
+title: Azure Stack Edge Pro での証明書の要件とトラブルシューティング | Microsoft Docs
+description: Azure Stack Edge Pro デバイスでの証明書の要件と証明書エラーのトラブルシューティングについて説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.author: alkohli
-ms.openlocfilehash: b24b745a53b632ce32cda37058363bf974d400b3
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e67b507baf1c3271a7fe32318597722e52fd3890
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268264"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891376"
 ---
 # <a name="certificate-requirements"></a>証明書の要件
 
-この記事では、Azure Stack Edge デバイスに証明書をインストールする前に満たす必要がある証明書の要件について説明します。 要件は、PFX 証明書、発行機関、証明書のサブジェクト名とサブジェクトの別名、およびサポートされている証明書アルゴリズムに関連しています。
+この記事では、Azure Stack Edge Pro デバイスに証明書をインストールする前に満たす必要がある証明書の要件について説明します。 要件は、PFX 証明書、発行機関、証明書のサブジェクト名とサブジェクトの別名、およびサポートされている証明書アルゴリズムに関連しています。
 
 ## <a name="certificate-issuing-authority"></a>証明書発行機関
 
@@ -64,13 +64,13 @@ ms.locfileid: "89268264"
     
 ## <a name="pfx-certificate"></a>PFX 証明書
 
-Azure Stack Edge デバイスにインストールされている PFX 証明書は、次の要件を満たしている必要があります。
+Azure Stack Edge Pro デバイスにインストールされている PFX 証明書は、次の要件を満たしている必要があります。
 
 * SSL 機関から証明書を取得する場合は、証明書の完全な署名チェーンを取得するようにしてください。
 
 * PFX 証明書をエクスポートするときは、必ず **[Include all certificates in the chain, if possible]\(可能であれば、チェーンにすべての証明書を含める\)** オプションを選択してください。
 
-* Azure Stack Edge には公開キーと秘密キーの両方が必要であるため、エンドポイント、ローカル UI、ノード、VPN、および Wi-Fi には PFX 証明書を使用します。 秘密キーにはローカル コンピューターのキー属性が設定されている必要があります。
+* Azure Stack Edge Pro には公開キーと秘密キーの両方が必要であるため、エンドポイント、ローカル UI、ノード、VPN、および Wi-Fi には PFX 証明書を使用します。 秘密キーにはローカル コンピューターのキー属性が設定されている必要があります。
 
 * 証明書の PFX 暗号化は、3 DES になっている必要があります。 これは、Windows 10 クライアントまたは Windows Server 2016 証明書ストアからエクスポートするときに使用される既定の暗号化です。 3DES に関する詳細については、[トリプル DES](https://en.wikipedia.org/wiki/Triple_DES) を参照してください。
 
@@ -78,7 +78,7 @@ Azure Stack Edge デバイスにインストールされている PFX 証明書�
 
 * 証明書の PFX ファイルの *Enhanced Key Usage* フィールドには、*Server Authentication (1.3.6.1.5.5.7.3.1)* と *Client Authentication (1.3.6.1.5.5.7.3.2)* の値が含まれている必要があります。
 
-* Azure Stack 適合性チェッカー ツールを使用している場合、デプロイの時点で、すべての証明書 PFX ファイルのパスワードが同じである必要があります。 詳細については、「[Microsoft Azure Stack Hub 適合性チェッカー ツールを使用して Azure Stack Edge の証明書を作成する](azure-stack-edge-j-series-create-certificates-tool.md)」を参照してください。
+* Azure Stack 適合性チェッカー ツールを使用している場合、デプロイの時点で、すべての証明書 PFX ファイルのパスワードが同じである必要があります。 詳細については、「[Microsoft Azure Stack Hub 適合性チェッカー ツールを使用して Azure Stack Edge Pro の証明書を作成する](azure-stack-edge-j-series-create-certificates-tool.md)」を参照してください。
 
 * 証明書 PFX のパスワードは、複雑なパスワードにする必要があります。 このパスワードはデプロイ パラメーターとして使用するため、メモしておいてください。
 
@@ -86,9 +86,9 @@ Azure Stack Edge デバイスにインストールされている PFX 証明書�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Stack Edge で証明書を使用する](azure-stack-edge-j-series-manage-certificates.md)
+[Azure Stack Edge Pro で証明書を使用する](azure-stack-edge-j-series-manage-certificates.md)
 
-[Microsoft Azure Stack Hub 適合性チェッカー ツールを使用して Azure Stack Edge の証明書を作成する](azure-stack-edge-j-series-create-certificates-tool.md)
+[Microsoft Azure Stack Hub 適合性チェッカー ツールを使用して Azure Stack Edge Pro の証明書を作成する](azure-stack-edge-j-series-create-certificates-tool.md)
 
 [秘密キーを使用して PFX 証明書をエクスポートする](azure-stack-edge-j-series-manage-certificates.md#export-certificates-as-pfx-format-with-private-key)
 

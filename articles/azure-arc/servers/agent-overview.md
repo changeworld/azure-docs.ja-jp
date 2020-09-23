@@ -1,18 +1,18 @@
 ---
 title: Connected Machine Windows エージェントの概要
-description: この記事では、ハイブリッド環境でホストされている仮想マシンの監視をサポートする、使用可能な Azure Arc 対応サーバー (プレビュー) エージェントの詳細な概要を提供します。
-ms.date: 08/06/2020
+description: この記事では、ハイブリッド環境でホストされている仮想マシンの監視をサポートする、使用可能な Azure Arc 対応サーバー エージェントの詳細な概要を提供します。
+ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: d922652537034bef258c5bcde78fb178b092ed16
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 990b5999a8483c6417049ac5ab965843c2b13659
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212987"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908181"
 ---
-# <a name="overview-of-azure-arc-enabled-servers-preview-agent"></a>Azure Arc 対応サーバー (プレビュー) エージェントの概要
+# <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc 対応サーバー エージェントの概要
 
-Azure Arc 対応サーバー (プレビュー) Connected Machine エージェントを使用すると、企業ネットワークまたは他のクラウド プロバイダー上の Azure の外部でホストされている Windows および Linux コンピューターを管理できます。 この記事では、エージェント、システムとネットワークの要件、およびさまざまなデプロイ方法の概要の詳細を示します。
+Azure Arc 対応サーバー Connected Machine エージェントを使用すると、企業ネットワークまたは他のクラウド プロバイダー上の Azure の外部でホストされている Windows および Linux コンピューターを管理できます。 この記事では、エージェント、システムとネットワークの要件、およびさまざまなデプロイ方法の概要の詳細を示します。
 
 ## <a name="agent-component-details"></a>エージェント コンポーネントの詳細
 
@@ -47,15 +47,11 @@ Windows および Linux 用の Azure Connected Machine エージェントは、�
 Azure Connected Machine エージェントでは、次のバージョンの Windows および Linux オペレーティング システムが正式にサポートされています。 
 
 - Windows Server 2012 R2 以上 (Windows Server Core を含む)
-- Ubuntu 16.04 および 18.04 (x64)
+- Ubuntu 16.04 および 18.04 LTS (x64)
 - CentOS Linux 7 (x64)
 - SUSE Linux Enterprise Server (SLES) 15 (x64)
 - Red Hat Enterprise Linux (RHEL) 7 (x64)
 - Amazon Linux 2 (x64)
-
->[!NOTE]
->このプレビュー リリースの Windows 用 Connected Machine エージェントでサポートされるのは、英語を使用するように構成された Windows Server だけです。
->
 
 ### <a name="required-permissions"></a>必要なアクセス許可
 
@@ -65,7 +61,7 @@ Azure Connected Machine エージェントでは、次のバージョンの Wind
 
 ### <a name="azure-subscription-and-service-limits"></a>Azure サブスクリプションとサービスの制限
 
-Azure Arc 対応サーバー (プレビュー) でコンピューターを構成する前に、Azure Resource Manager の[サブスクリプションの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits)と[リソース グループの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)を確認して、接続されるコンピューターの数を計画してください。
+Azure Arc 対応サーバーでコンピューターを構成する前に、Azure Resource Manager の[サブスクリプションの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits)と[リソース グループの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)を確認して、接続されるコンピューターの数を計画してください。
 
 ### <a name="transport-layer-security-12-protocol"></a>トランスポート層セキュリティ 1.2 プロトコル
 
@@ -105,7 +101,7 @@ URL:
 
 ### <a name="register-azure-resource-providers"></a>Azure リソースプロバイダーを登録する
 
-Azure Arc 対応サーバー (プレビュー) は、このサービスを使用するために、サブスクリプション内の次の Azure リソース プロバイダーに依存しています。
+Azure Arc 対応サーバーは、このサービスを使用するために、サブスクリプション内の次の Azure リソース プロバイダーに依存しています。
 
 * **Microsoft.HybridCompute**
 * **Microsoft.GuestConfiguration**
@@ -248,4 +244,4 @@ Linux 用 Connected Machine エージェントをインストールした後、�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Arc 対応サーバー (プレビュー) の評価を開始するには、「[Azure portal からハイブリッド マシンを Azure に接続する](onboard-portal.md)」の記事に従ってください。
+Azure Arc 対応サーバーの評価を開始するには、「[Azure portal からハイブリッド マシンを Azure に接続する](onboard-portal.md)」の記事に従ってください。

@@ -180,6 +180,8 @@
               href: manage/grant-access-to-create-subscription.md
             - name: サブスクリプション情報のエクスポート
               href: manage/export-subscriptions.md
+            - name: Azure の課金の支払い方法を削除する
+              href: manage/delete-azure-payment-method.md
             - name: クレジット カードの変更
               href: manage/change-credit-card.md
             - name: 管理者の変更

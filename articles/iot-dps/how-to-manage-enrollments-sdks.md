@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.service: iot-dps
 ms.custom: fasttrack-edit, iot
 services: iot-dps
-ms.openlocfilehash: 4a5e8b6f430f6af49ab79ca0f8cb2253bd0f2049
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1dc97f92e6139475d0d5ac5ea1201d6ff6b8d470
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520658"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532326"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Azure デバイス プロビジョニング サービス SDK でデバイスの登録を管理する方法
 "*デバイス登録*" では、ある時点でデバイス プロビジョニング サービスに登録できる、1 つのデバイスまたはデバイス グループのレコードが作成されます。 登録レコードには、必要な IoT ハブを含む、目的のデバイス初期構成がその登録の一部として含まれます。 この記事では、Azure IoT プロビジョニング サービス SDK を使ってプログラムでプロビジョニング サービスのデバイス登録を管理する方法を示します。  この SDK は、GitHub の Azure IoT SDK と同じリポジトリにあります。
 
 ## <a name="prerequisites"></a>前提条件
 * デバイス プロビジョニング サービス インスタンスから接続文字列を取得します。
-* 使用されている[構成証明メカニズム](concepts-security.md#attestation-mechanism)のデバイス セキュリティ アーティファクトを取得します。
+* 使用されている[構成証明メカニズム](concepts-service.md#attestation-mechanism)のデバイス セキュリティ アーティファクトを取得します。
     * [**トラステッド プラットフォーム モジュール (TPM)** ](/azure/iot-dps/concepts-security#trusted-platform-module):
         * 個別登録: 物理デバイスまたは TPM シミュレーターからの登録 ID と TPM 保証キー。
         * 登録グループは、TPM 構成証明には適用されません。

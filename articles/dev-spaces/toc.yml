@@ -11,6 +11,8 @@
           href: get-started-netcore-visualstudio.md
     - name: 概念
       items:
+        - name: Bridge to Kubernetes への移行
+          href: migrate-to-bridge-to-kubernetes.md
         - name: Dev Spaces のしくみ
           items:
             - name: 概要

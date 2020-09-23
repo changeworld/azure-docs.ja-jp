@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack Edge デバイスに Windows PowerShell インターフェイス経由で接続し、管理する | Microsoft Docs
-description: Azure Stack Edge に Windows PowerShell インターフェイス経由で接続し、管理する方法について説明します。
+title: Microsoft Azure Stack Edge Pro デバイスに Windows PowerShell インターフェイス経由で接続して管理する | Microsoft Docs
+description: Azure Stack Edge Pro に Windows PowerShell インターフェイス経由で接続して管理する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 973c618b46d1b6be902d9629ca63ee120cae6855
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6b0fe7e9e096b252d33d25c4a70305e57d206b1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85313207"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894428"
 ---
-# <a name="manage-an-azure-stack-edge-device-via-windows-powershell"></a>Windows PowerShell を使用して Azure Stack Edge デバイスを管理する
+# <a name="manage-an-azure-stack-edge-pro-device-via-windows-powershell"></a>Windows PowerShell を使用して Azure Stack Edge Pro デバイスを管理する
 
-Azure Stack Edge ソリューションにより、データを処理してネットワーク経由で Azure に送信できます。 この記事では、Azure Stack Edge デバイスの構成と管理のタスクをいくつか説明します。 Azure portal、ローカル Web UI、または Windows PowerShell インターフェイスを使用してデバイスを管理できます。
+Azure Stack Edge Pro ソリューションを使用すると、データを処理してネットワーク経由で Azure に送信できます。 この記事では、Azure Stack Edge Pro デバイスの構成と管理のタスクについて、いくつか説明します。 Azure portal、ローカル Web UI、または Windows PowerShell インターフェイスを使用してデバイスを管理できます。
 
 この記事では、PowerShell インターフェイスを使用して行うタスクに重点を置いて説明します。 
 
@@ -94,4 +94,4 @@ Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cer
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure portal で [Azure Stack Edge](azure-stack-edge-deploy-prep.md) を配置します。
+- Azure portal で [Azure Stack Edge Pro](azure-stack-edge-deploy-prep.md) を配置します。

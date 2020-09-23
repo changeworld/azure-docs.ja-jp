@@ -1,0 +1,88 @@
+- name: Azure Communication Services のドキュメント
+  href: index.yml
+- name: 概要
+  expanded: true
+  items:
+    - name: Azure Communication Services とは
+      href: overview.md
+- name: クイックスタート
+  expanded: true
+  items:
+    - name: Communication Services のリソースを作成する
+      href: quickstarts/create-communication-resource.md
+    - name: アクセス トークンを作成して管理する
+      href: quickstarts/access-tokens.md
+    - name: チャット
+      items:
+        - name: チャットをアプリに追加する
+          href: quickstarts/chat/get-started.md
+    - name: テレフォニーと SMS
+      items:
+        - name: 電話番号の取得
+          href: quickstarts/telephony-sms/get-phone-number.md
+        - name: SMS メッセージの送信
+          href: quickstarts/telephony-sms/send.md
+        - name: SMS イベントの処理
+          href: quickstarts/telephony-sms/handle-sms-events.md
+    - name: 音声およびビデオによる通話
+      items:
+        - name: 音声通話をアプリに追加する
+          href: quickstarts/voice-video-calling/getting-started-with-calling.md
+        - name: 通話クライアント ライブラリを使用する
+          href: quickstarts/voice-video-calling/calling-client-samples.md
+- name: チュートリアル
+  expanded: false
+  items:
+    - name: Azure Functions を使用して、信頼される認証サービスを構築する
+      href: tutorials/trusted-service-tutorial.md
+- name: 概念
+  expanded: false
+  items:
+    - name: チャット
+      items:
+        - name: チャット クライアント ライブラリの概要
+          href: concepts/chat/sdk-features.md
+        - name: チャットに関する概念
+          href: concepts/chat/concepts.md
+    - name: テレフォニーと SMS
+      items:
+        - name: SMS クライアント ライブラリの概要
+          href: concepts/telephony-sms/sdk-features.md
+        - name: SMS に関する概念
+          href: concepts/telephony-sms/concepts.md
+        - name: テレフォニーと SMS ソリューションの計画
+          href: concepts/telephony-sms/plan-solution.md
+    - name: 音声およびビデオによる通話
+      items:
+        - name: 通話クライアント ライブラリの概要
+          href: concepts/voice-video-calling/calling-sdk-features.md
+        - name: 音声とビデオに関する概念
+          href: concepts/voice-video-calling/about-call-types.md
+    - name: クライアントとサーバーのアーキテクチャ
+      href: concepts/client-and-server-architecture.md
+    - name: 通話のフロー
+      href: concepts/call-flows.md
+    - name: クライアント ライブラリと REST API
+      href: concepts/sdk-options.md
+    - name: 価格モデル
+      href: concepts/pricing.md
+    - name: 認証
+      href: concepts/authentication.md
+    - name: イベント処理
+      href: concepts/event-handling.md
+    - name: 通知
+      href: concepts/notifications.md
+- name: サンプル
+  items:
+    - name: グループ通話のヒーロー サンプル
+      href: samples/calling-hero-sample.md
+    - name: グループ チャットのヒーロー サンプル
+      href: samples/chat-hero-sample.md
+- name: リファレンス
+  items:
+    - name: REST API のドキュメント
+      href: 'https://docs.microsoft.com/rest/api/azure/'
+- name: リソース
+  items:
+    - name: リリース ノート
+      href: release-notes.md

@@ -1,0 +1,94 @@
+### YamlMime:Landing
+title: Azure Database for PostgreSQL - Hyperscale (Citus) ドキュメント
+summary: Azure Database for PostgreSQL は、オープンソースの Postgres リレーショナル データベース エンジンに基づいた、フル マネージドのサービスとしてのデータベースです。 Hyperscale (Citus) デプロイ オプションでは、シャーディングを使用して複数のマシンにわたってクエリをスケーリングし、より大きなスケールとパフォーマンスを必要とするアプリケーションをサポートします。
+metadata:
+  description: Azure Database for PostgreSQL は、オープンソースの PostgreSQL データベース エンジンに基づいて開発者向けに構築されている、Microsoft クラウドのリレーショナル データベース サービスです。
+  author: jonels-msft
+  ms.author: jonels
+  ms.date: 09/27/2020
+  ms.service: postgresql
+  ms.subservice: hyperscale-citus
+  ms.topic: landing-page
+  ms.openlocfilehash: 20e99db5f380ee24cf88987a7884292ca47f7e1e
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90929018"
+landingContent:
+- title: 作業開始
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure portal を使用してサーバー グループを作成する
+      url: ../quickstart-create-hyperscale-portal.md
+  - linkListType: concept
+    links:
+    - text: サーバー グループ ノードとテーブル
+      url: ../concepts-hyperscale-nodes.md
+  - linkListType: tutorial
+    links:
+    - text: マルチテナント データベースを設計する
+      url: ../tutorial-design-database-hyperscale-multi-tenant.md
+    - text: リアルタイム分析ダッシュボードを設計する
+      url: ../tutorial-design-database-hyperscale-realtime.md
+- title: 接続とクエリ
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: ファイアウォールについて
+      url: ../concepts-hyperscale-firewall-rules.md
+    - text: TLS の構成
+      url: ../concepts-hyperscale-ssl-connection-security.md
+  - linkListType: how-to-guide
+    links:
+    - text: ファイアウォール規則
+      url: ../howto-hyperscale-manage-firewall-using-portal.md
+    - text: 接続の問題のトラブルシューティング
+      url: ../howto-hyperscale-troubleshoot-common-connection-issues.md
+- title: スケール
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: ノードとテーブル
+      url: ../concepts-hyperscale-nodes.md
+    - text: ディストリビューション列を選択する
+      url: ../concepts-hyperscale-choose-distribution-column.md
+  - linkListType: how-to-guide
+    links:
+    - text: サーバー グループのサイズ
+      url: ../howto-hyperscale-scaling.md
+    - text: テーブルの分散
+      url: ../howto-hyperscale-modify-distributed-tables.md
+    - text: メトリックに基づいたアラートの作成
+      url: ../howto-hyperscale-alert-on-metric.md
+- title: 管理
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: バックアップと復元
+      url: ../concepts-hyperscale-backup.md
+    - text: 監視と調整
+      url: ../concepts-hyperscale-monitoring.md
+    - text: 高可用性
+      url: ../concepts-hyperscale-high-availability.md
+    - text: 予約容量
+      url: ../concepts-hyperscale-reserved-pricing.md
+  - linkListType: how-to-guide
+    links:
+    - text: データベース ユーザーを作成する
+      url: ../howto-hyperscale-create-users.md
+    - text: 高可用性の構成
+      url: ../howto-hyperscale-high-availability.md
+    - text: Access データベース ログ
+      url: ../howto-hyperscale-logging.md
+- title: 関連項目
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: SQL API 関数
+      url: ../reference-hyperscale-functions.md
+    - text: サーバー パラメーター
+      url: ../reference-hyperscale-parameters.md
+    - text: システム テーブル
+      url: ../reference-hyperscale-metadata.md

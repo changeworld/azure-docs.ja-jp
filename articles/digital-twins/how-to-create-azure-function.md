@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6c7c1d09373ac1fb661d28dc4ca201c5d13605ca
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: a0f5a921ad9eba82f27b3a8945643737b6d76030
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89292244"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89614073"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>データを処理するために Azure Functions アプリを接続する
 
@@ -58,7 +58,7 @@ SDK を使用するには、次のパッケージをプロジェクトに含め�
     
 これを行うには、プロジェクトを右クリックし、一覧から _[NuGet パッケージの管理]_ を選択します。 次に、開いたウィンドウで _[参照]_ タブを選択し、次のパッケージを検索します。 _[インストール]_ を選択し、使用許諾契約に "_同意_" してパッケージをインストールします。
 
-* `Azure.DigitalTwins.Core` (バージョン `1.0.0-preview.2`)
+* `Azure.DigitalTwins.Core`
 * `Azure.Identity` 
 
 Azure Functions が適切に設定されるように Azure SDK パイプラインを構成するには、以下のパッケージも必要です。 上記と同じ手順を繰り返して、すべてのパッケージをインストールします。
@@ -70,7 +70,7 @@ Azure Functions が適切に設定されるように Azure SDK パイプライ�
 
 ```cmd/sh
 dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-dotnet add package Azure.identity --version 1.1.1
+dotnet add package Azure.identity --version 1.2.2
 dotnet add package System.Net.Http
 dotnet add package Azure.Core.Pipeline
 ```

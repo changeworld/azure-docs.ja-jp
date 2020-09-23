@@ -132,6 +132,8 @@
       items:
         - name: AKS クラスターのスケーリング
           href: scale-cluster.md
+        - name: AKS クラスターの停止 (プレビュー)
+          href: start-stop-cluster.md
         - name: AKS クラスターのアップグレード
           href: upgrade-cluster.md
         - name: アップタイム SLA を使用する
@@ -307,8 +309,10 @@
           href: /virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context
     - name: アプリケーションの開発と実行
       items:
-        - name: Visual Studio Code を使用して Local Process with Kubernetes を利用する (プレビュー)
-          href: 'https://code.visualstudio.com/docs/containers/local-process-kubernetes'
+        - name: Visual Studio Code で Bridge to Kubernetes を使用する
+          href: 'https://code.visualstudio.com/docs/containers/bridge-to-kubernetes'
+        - name: Visual Studio で Bridge to Kubernetes を使用する
+          href: /visualstudio/containers/bridge-to-kubernetes
         - name: 既存のアプリケーションを Helm でインストールする
           href: kubernetes-helm.md
         - name: OpenFaaS の使用

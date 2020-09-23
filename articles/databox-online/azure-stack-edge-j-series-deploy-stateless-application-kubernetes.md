@@ -1,6 +1,6 @@
 ---
-title: kubectl を使用して Azure Stack Edge GPU デバイスに Kubernetes ステートレス アプリケーションをデプロイする | Microsoft Docs
-description: Microsoft Azure Stack Edge デバイスで kubectl を使用して、Kubernetes ステートレス アプリケーションのデプロイを作成および管理する方法について説明します。
+title: kubectl を使用して Azure Stack Edge Pro GPU デバイスに Kubernetes ステートレス アプリケーションをデプロイする | Microsoft Docs
+description: Microsoft Azure Stack Edge Pro デバイスで kubectl を使用して、Kubernetes ステートレス アプリケーションのデプロイを作成および管理する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 27502c58481444a9dc14120bf447d4614d051ccc
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 91a2d08bf9eea2f5af0f6893712515cb2feeab8a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268861"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890741"
 ---
-# <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU デバイスで kubectl を使用して Kubernetes ステートレス アプリケーションをデプロイする
+# <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスで kubectl を使用して Kubernetes ステートレス アプリケーションをデプロイする
 
 この記事では、既存の Kubernetes クラスターで kubectl コマンドを使用して、ステートレス アプリケーションをデプロイする方法について説明します。 また、この記事では、ステートレス アプリケーションでポッドを作成および設定するプロセスについて説明します。
 
@@ -23,13 +23,13 @@ ms.locfileid: "89268861"
 
 Kubernetes クラスターを作成し、`kubectl` コマンドライン ツールを使用する前に、確実に次のようになっている必要があります。
 
-- 1 ノードの Azure Stack Edge デバイスに対するサインイン資格情報がある。
+- 1 ノードの Azure Stack Edge Pro デバイスに対するサインイン資格情報がある。
 
-- Azure Stack Edge デバイスにアクセスするために、Windows クライアント システムに Windows PowerShell 5.0 以降がインストールされている。 オペレーティング システムがサポートされている他のクライアントを使用することもできます。 この記事では、Windows クライアントを使用する場合の手順について説明します。 最新バージョンの Windows PowerShell をダウンロードするには、[Windows への PowerShell のインストール](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)に関するページに移動します。
+- Azure Stack Edge Pro デバイスにアクセスするために、Windows クライアント システムに Windows PowerShell 5.0 以降がインストールされている。 オペレーティング システムがサポートされている他のクライアントを使用することもできます。 この記事では、Windows クライアントを使用する場合の手順について説明します。 最新バージョンの Windows PowerShell をダウンロードするには、[Windows への PowerShell のインストール](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)に関するページに移動します。
 
-- Azure Stack Edge デバイスでコンピューティングが有効になっている。 コンピューティングを有効にするには、デバイスのローカル UI で **[コンピューティング]** ページに移動します。 その後、コンピューティングに対して有効にするネットワーク インターフェイスを選択します。 **[有効化]** を選択します。 コンピューティングを有効にすると、そのネットワーク インターフェイスでデバイスの仮想スイッチが作成されます。 詳細については、[Azure Stack Edge でのコンピューティング ネットワークの有効化](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)に関するページを参照してください。
+- Azure Stack Edge Pro デバイスでコンピューティングが有効になっている。 コンピューティングを有効にするには、デバイスのローカル UI で **[コンピューティング]** ページに移動します。 その後、コンピューティングに対して有効にするネットワーク インターフェイスを選択します。 **[有効化]** を選択します。 コンピューティングを有効にすると、そのネットワーク インターフェイスでデバイスの仮想スイッチが作成されます。 詳細については、[Azure Stack Edge Pro でのコンピューティング ネットワークの有効化](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)に関するページを参照してください。
 
-- Azure Stack Edge デバイスで、バージョン v1.9 以降の Kubernetes クラスター サーバーが実行されている。 詳細については、[Microsoft Azure Stack Edge デバイスでの Kubernetes クラスターの作成と管理](azure-stack-edge-gpu-create-kubernetes-cluster.md)に関するページを参照してください。
+- Azure Stack Edge Pro デバイスで、バージョン v1.9 以降の Kubernetes クラスター サーバーが実行されている。 詳細については、[Microsoft Azure Stack Edge Pro デバイスでの Kubernetes クラスターの作成と管理](azure-stack-edge-gpu-create-kubernetes-cluster.md)に関するページを参照してください。
 
 - `kubectl` をインストールしている。
 
@@ -43,7 +43,7 @@ Kubernetes クラスターを作成し、`kubectl` コマンドライン ツー�
 4. ユーザー構成が `C:\Users\<username>\.kube` に保存されている。
 5. `kubectl` がインストールされている。
 
-これで、Azure Stack Edge デバイスでのステートレス アプリケーションのデプロイの実行と管理を開始できるようになりました。 `kubectl` の使用を開始する前に、正しいバージョンの `kubectl` があることを確認する必要があります。
+これで、Azure Stack Edge Pro デバイスでのステートレス アプリケーションのデプロイの実行と管理を開始できるようになりました。 `kubectl` の使用を開始する前に、正しいバージョンの `kubectl` があることを確認する必要があります。
 
 ### <a name="verify-you-have-the-correct-version-of-kubectl-and-set-up-configuration"></a>正しいバージョンの kubectl があり、構成が設定されていることを確認する
 
@@ -109,7 +109,7 @@ kubectl コマンドラインのバージョンが正しいことと、必要な
 
 作成するステートレス アプリケーションの種類は、nginx Web サーバーのデプロイです。
 
-ステートレス アプリケーションのデプロイを作成および管理するために使用するすべての kubectl コマンドで、構成に関連付けられている名前空間を指定する必要があります。 この名前空間は、`New-HcsKubernetesNamespace` を使用して、[Microsoft Azure Stack Edge デバイスでの Kubernetes クラスターの作成と管理](azure-stack-edge-gpu-create-kubernetes-cluster.md)に関するチュートリアルで Azure Stack Edge デバイス上のクラスターに接続しているときに作成したものです。
+ステートレス アプリケーションのデプロイを作成および管理するために使用するすべての kubectl コマンドで、構成に関連付けられている名前空間を指定する必要があります。 この名前空間は、`New-HcsKubernetesNamespace` を使用して、[Microsoft Azure Stack Edge Pro デバイスでの Kubernetes クラスターの作成と管理](azure-stack-edge-gpu-create-kubernetes-cluster.md)に関するチュートリアルで Azure Stack Edge Pro デバイス上のクラスターに接続しているときに作成したものです。
 
 kubectl コマンドで名前空間を指定するには、`kubectl <command> -n <namespace-string>` を使用します。
 

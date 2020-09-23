@@ -101,6 +101,8 @@
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'
       href: ./samples/policy-reference.md
+    - name: Terraform
+      href: 'https://www.terraform.io/docs/providers/azurerm/r/lighthouse_assignment.html'
 - name: リソース
   items:
     - name: Azure Lighthouse 用の Microsoft Q&A
