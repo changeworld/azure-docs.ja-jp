@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU デバイスで Arc 対応 Kubernetes に PHP ゲストブック アプリをデプロイする | Microsoft Docs
-description: Azure Stack Edge デバイスの Arc 対応 Kubernetes クラスターで GitOps を使用して、Redis を使った PHP ゲストブック ステートレス アプリケーションをデプロイする方法について説明します。
+title: Azure Stack Edge Pro GPU デバイス上の Arc 対応 Kubernetes で PHP ゲストブック アプリをデプロイする | Microsoft Docs
+description: Azure Stack Edge Pro デバイスの Arc 対応 Kubernetes クラスターで GitOps を使用して、Redis を使った PHP ゲストブック ステートレス アプリケーションをデプロイする方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 7fdd9b8ca0fd62d55f5a9412af9486bfb2b942c1
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 3200cfe290cbba208c61e914b17ffa6cd65e6eee
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319294"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899561"
 ---
-# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-gpu"></a>Azure Stack Edge GPU で Arc 対応 Kubernetes クラスターに Redis を使用した PHP ゲストブック ステートレス アプリケーションをデプロイする
+# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU 上の Arc 対応 Kubernetes クラスターで Redis を使用した PHP ゲストブック ステートレス アプリケーションをデプロイする
 
 この記事では、Kubernetes と Azure Arc を使用してシンプルな多層 Web アプリケーションを構築してデプロイする方法について説明します。この例は、次のコンポーネントで構成されています。
 
@@ -23,9 +23,9 @@ ms.locfileid: "89319294"
 - 読み取りに対応する複数の複製された Redis インスタンス
 - 複数の Web フロントエンド インスタンス
 
-デプロイは、Azure Stack Edge デバイス上の Arc 対応 Kubernetes クラスターで GitOps を使用して行います。 
+デプロイは、Azure Stack Edge Pro デバイス上の Arc 対応 Kubernetes クラスターで GitOps を使用して行われます。 
 
-この手順は、[Azure Stack Edge デバイス上の Kubernetes ワークロード](azure-stack-edge-gpu-kubernetes-workload-management.md)に関する記事を確認し、[Azure Arc 対応 Kubernetes (プレビュー)](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview) の概念を理解しているユーザーを対象としています。
+この手順は、[Azure Stack Edge Pro デバイス上の Kubernetes ワークロード](azure-stack-edge-gpu-kubernetes-workload-management.md)に関する記事を確認し、[Azure Arc 対応 Kubernetes (プレビュー)](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview) の概念を理解しているユーザーを対象としています。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -34,30 +34,30 @@ ms.locfileid: "89319294"
 
 ### <a name="for-device"></a>デバイスでは
 
-1. 1 ノードの Azure Stack Edge デバイスに対するサインイン資格情報がある。
+1. 1 ノードの Azure Stack Edge Pro デバイスに対するサインイン資格情報がある。
     1. デバイスがアクティブ化されている。 [デバイスのアクティブ化](azure-stack-edge-gpu-deploy-activate.md)に関する記事を参照してください。
     1. デバイスに、Azure portal を使用して構成されたコンピューティング ロールがあり、Kubernetes クラスターがある。 [コンピューティングの構成](azure-stack-edge-gpu-deploy-configure-compute.md)に関する記事を参照してください。
 
-1. お使いのデバイス上の既存の Kubernetes クラスターで Azure Arc が有効になっていて、対応する Azure Arc リソースが Azure portal にある。 詳細な手順については、[Azure Stack Edge デバイスでの Azure Arc の有効化](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)に関するページを参照してください。
+1. お使いのデバイス上の既存の Kubernetes クラスターで Azure Arc が有効になっていて、対応する Azure Arc リソースが Azure portal にある。 詳細な手順については、[Azure Stack Edge Pro デバイスでの Azure Arc の有効化](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)に関するページを参照してください。
 
 ### <a name="for-client-accessing-the-device"></a>デバイスにアクセスするクライアントの場合
 
-1. Azure Stack Edge デバイスへのアクセスに使用される Windows クライアント システムがある。
+1. Azure Stack Edge Pro デバイスへのアクセスに使用される Windows クライアント システムがある。
   
     - クライアントで Windows PowerShell 5.0 以降が実行されている。 Windows PowerShell の最新バージョンをダウンロードするには、[Windows PowerShell のインストール](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)に関するページを参照してください。
     
     - [サポートされているオペレーティング システム](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)が搭載されている他のクライアントを使用することもできます。 この記事では、Windows クライアントを使用する場合の手順について説明します。 
     
-1. [Azure Stack Edge デバイス上の Kubernetes クラスターへのアクセス](azure-stack-edge-gpu-create-kubernetes-cluster.md)に関する記事で説明されている手順を完了している。 完了した内容:
+1. [Azure Stack Edge Pro デバイス上の Kubernetes クラスターへのアクセス](azure-stack-edge-gpu-create-kubernetes-cluster.md)に関する記事で説明されている手順を完了している。 完了した内容:
     
     - クライアントに `kubectl` がインストールされている  <!--and saved the `kubeconfig` file with the user configuration to C:\\Users\\&lt;username&gt;\\.kube. -->
     
-    - `kubectl` クライアントのバージョンと、Azure Stack Edge デバイスで実行されている Kubernetes マスターのバージョンの差が 1 未満であることを確認する。 
+    - `kubectl` クライアントのバージョンと、Azure Stack Edge Pro デバイスで実行されている Kubernetes マスターのバージョンの差が 1 未満であることを確認する。 
       - クライアントで実行されている kubectl のバージョンを確認するには、`kubectl version` を使用します。 完全なバージョンをメモしておきます。
-      - お使いの Azure Stack Edge デバイスのローカル UI で、 **[概要]** に移動し、Kubernetes ソフトウェアの番号をメモします。 
+      - お使いの Azure Stack Edge Pro デバイスのローカル UI で、 **[概要]** に移動し、Kubernetes ソフトウェアの番号をメモします。 
       - サポートされている Kubernetes バージョンで提供されているマッピングで、これら 2 つのバージョンの互換性を確認します <!--insert link-->.
 
-1. [Azure Arc デプロイの実行に使用できる GitOps 構成](https://github.com/kagoyal/dbehaikudemo)がある。 この例では、次の `yaml` ファイルを使用して Azure Stack Edge デバイスにデプロイします。
+1. [Azure Arc デプロイの実行に使用できる GitOps 構成](https://github.com/kagoyal/dbehaikudemo)がある。 この例では、次の `yaml` ファイルを使用して Azure Stack Edge Pro デバイスにデプロイします。
 
     - `frontend-deployment.yaml`<!-- - The guestbook application has a web frontend serving the HTTP requests written in PHP. It is configured to connect to the redis-master Service for write requests and the redis-slave service for Read requests. This file describes a deployment that runs the frontend of the guestbook application.-->
     - `frontend-service.yaml` <!-- - This allows you to configure an externally visible frontend Service that can be accessed from outside the Kubernetes cluster on your device.-->
@@ -176,4 +176,4 @@ C:\Users\user>
 
 ## <a name="next-steps"></a>次のステップ
 
-[Kubernetes ダッシュボードを使用して Azure Stack Edge デバイス上のデプロイを監視する](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)方法について学習する
+[Kubernetes ダッシュボードを使用して Azure Stack Edge Pro デバイス上のデプロイを監視する](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)方法について学習する

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1a7ab90cccd78c3b005487938432a0f955d50738
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: efc507cb69b3368a2102b6de0b905657d5806ef2
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89380430"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561433"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Device Provisioning Service (DPS) を使用して Azure Digital Twins でデバイスを自動管理する
 
@@ -40,7 +40,7 @@ ms.locfileid: "89380430"
 
 次の図は、Azure Digital Twins と Device Provisioning Service を使用したこのソリューションのアーキテクチャを示しています。 これにはデバイスのプロビジョニングと廃止の両方のフローが示されています。
 
-:::image type="content" source="media/how-to-provision-using-dps/flows.png" alt-text="エンドツーエンドのシナリオでのデバイスと複数の Azure サービスのビュー。サーモスタット デバイスと DPS との間でデータが送受信されます。データは DPS から IoT Hub にも送信されます。また、Allocation というラベルの付いた Azure 関数を通じて Azure Digital Twins にも送信されます。手動の デバイスの削除 アクションからは、データが IoT Hub、Event Hubs、Azure Functions、Azure Digital Twins の順に送信されます。":::
+:::image type="content" source="media/how-to-provision-using-dps/flows.png" alt-text="エンドツーエンドのシナリオでのデバイスと複数の Azure サービスのビュー。サーモスタット デバイスと DPS との間でデータが送受信されます。データは DPS から IoT Hub にも送信されます。また、"Allocation" というラベルの付いた Azure 関数を通じて Azure Digital Twins にも送信されます。手動の "デバイスの削除" アクションからは、データが IoT Hub、Event Hubs、Azure Functions、Azure Digital Twins の順に送信されます。":::
 
 この記事は、次の 2 つのセクションに分かれています。
 * [*Device Provisioning Service を使用してデバイスを自動プロビジョニングする*](#auto-provision-device-using-device-provisioning-service)
@@ -52,7 +52,7 @@ ms.locfileid: "89380430"
 
 このセクションでは、Device Provisioning Service を Azure Digital Twins に接続し、以下のパスを使用してデバイスを自動プロビジョニングします。 これは、[先ほど](#solution-architecture)示したアーキテクチャの全体図からの抜粋です。
 
-:::image type="content" source="media/how-to-provision-using-dps/provision.png" alt-text="プロビジョニングのフロー -- ソリューション アーキテクチャ図の抜粋。フローのセクションが数字でラベル付けされています。サーモスタット デバイスと DPS との間でデータが送受信されます (1 はデバイスから DPS へ、5 は DPS からデバイスへ)。データは DPS から IoT Hub にも送信されます (4)。また、Allocation というラベルの付いた Azure 関数 (2) を通じて Azure Digital Twins (3) にも送信されます。":::
+:::image type="content" source="media/how-to-provision-using-dps/provision.png" alt-text="プロビジョニングのフロー -- ソリューション アーキテクチャ図の抜粋。フローのセクションが数字でラベル付けされています。サーモスタット デバイスと DPS との間でデータが送受信されます (1 はデバイスから DPS へ、5 は DPS からデバイスへ)。データは DPS から IoT Hub にも送信されます (4)。また、"Allocation" というラベルの付いた Azure 関数 (2) を通じて Azure Digital Twins (3) にも送信されます。":::
 
 プロセス フローの説明は次のとおりです。
 1. デバイスから DPS エンドポイントへの通信によって、同一性を証明する識別情報が渡されます。
@@ -71,7 +71,7 @@ Device Provisioning Service のインスタンスを作成します。これが 
 
 次の Azure CLI コマンドを実行すると、デバイス プロビジョニング サービスが作成されます。 名前、リソース グループ、およびリージョンを指定する必要があります。 このコマンドは、[Cloud Shell](https://shell.azure.com) で実行するか、Azure CLI が[コンピューターにインストールされている](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)場合はローカルで実行できます。
 
-```azurecli-interactive
+```azurecli
 az iot dps create --name <Device Provisioning Service name> --resource-group <resource group name> --location <region; for example, eastus>
 ```
 
@@ -237,7 +237,7 @@ namespace Samples.AdtIothub
 
 次の Azure CLI コマンドを使用して設定を追加します。
 
-```azurecli-interactive
+```azurecli
 az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure Digital Twins instance _host name_>" -g <resource group> -n <your App Service (function app) name>
 ```
 
@@ -246,7 +246,7 @@ az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure
 <!-- 
 * Azure AD app registration **_Application (client) ID_** ([find in portal](../articles/digital-twins/how-to-set-up-instance-portal.md#collect-important-values))
 
-```azurecli-interactive
+```azurecli
 az functionapp config appsettings set --settings "AdtAppId=<Application (client)" ID> -g <resource group> -n <your App Service (function app) name> 
 ``` -->
 
@@ -293,7 +293,7 @@ node .\adt_custom_register.js
 
 この記事でフローを設定した結果として、デバイスは Azure Digital Twins に自動的に登録されます。 次の [Azure Digital Twins CLI](how-to-use-cli.md) コマンドを使用して、作成した Azure Digital Twins インスタンス内のデバイスのツインを検索します。
 
-```azurecli-interactive
+```azurecli
 az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration ID>"
 ```
 
@@ -304,7 +304,7 @@ Azure Digital Twins インスタンス内にデバイスのツインがあるこ
 
 このセクションでは、次のパスを使用してデバイスを自動的に廃止するために、IoT Hub ライフサイクル イベントを Azure Digital Twins に接続します。 これは、[先ほど](#solution-architecture)示したアーキテクチャの全体図からの抜粋です。
 
-:::image type="content" source="media/how-to-provision-using-dps/retire.png" alt-text="デバイス廃止のフロー -- ソリューション アーキテクチャ図の抜粋。フローのセクションが数字でラベル付けされています。この図では、サーモスタット デバイスは Azure サービスに接続していない状態で示されています。手動の デバイスの削除 アクションからは、データが IoT Hub (1)、Event Hubs (2)、Azure Functions、Azure Digital Twins (3) の順に送信されます。":::
+:::image type="content" source="media/how-to-provision-using-dps/retire.png" alt-text="デバイス廃止のフロー -- ソリューション アーキテクチャ図の抜粋。フローのセクションが数字でラベル付けされています。この図では、サーモスタット デバイスは Azure サービスに接続していない状態で示されています。手動の "デバイスの削除" アクションからは、データが IoT Hub (1)、Event Hubs (2)、Azure Functions、Azure Digital Twins (3) の順に送信されます。":::
 
 プロセス フローの説明は次のとおりです。
 1. 外部または手動のプロセスによって、IoT Hub 内のデバイスの削除がトリガーされます。
@@ -449,13 +449,13 @@ namespace Samples.AdtIothub
 
 次の Azure CLI コマンドを使用して設定を追加します。 このコマンドは、[Cloud Shell](https://shell.azure.com) で実行するか、Azure CLI が[コンピューターにインストールされている](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)場合はローカルで実行できます。
 
-```azurecli-interactive
+```azurecli
 az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure Digital Twins instance _host name_>" -g <resource group> -n <your App Service (function app) name>
 ```
 
 次に、新しく作成したイベント ハブに接続するための、関数の環境変数を構成する必要があります。
 
-```azurecli-interactive
+```azurecli
 az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Event Hubs SAS connection string Listen>" -g <resource group> -n <your App Service (function app) name>
 ```
 
@@ -486,7 +486,7 @@ IoT Hub ルートを作成する手順は、こちらの記事で説明されて
 
 次の [Azure Digital Twins CLI](how-to-use-cli.md) コマンドを使用して、Azure Digital Twins インスタンス内のデバイスのツインが削除されたことを確認します。
 
-```azurecli-interactive
+```azurecli
 az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration ID>"
 ```
 
@@ -502,7 +502,7 @@ Azure Cloud Shell またはローカルの Azure CLI から [az group delete](ht
 > [!IMPORTANT]
 > リソース グループを削除すると、元に戻すことができません。 リソース グループとそこに含まれるすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 
 
-```azurecli-interactive
+```azurecli
 az group delete --name <your-resource-group>
 ```
 <!-- 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 4270e4c71cca28d43b1ecbaca1ec0f262251252b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2ad4fc575a6e9d07e4e24c2d570f68edbbea46c3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137605"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907689"
 ---
 # <a name="two-class-neural-network-module"></a>2 クラス ニューラル ネットワーク モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナーのモジュールについて説明します。
 
 このモジュールを使用して、2 つの値だけを持つターゲットを予測するのに使用できるニューラル ネットワーク モデルを作成します。
 

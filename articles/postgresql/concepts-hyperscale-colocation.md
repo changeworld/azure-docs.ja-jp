@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 7e4073ec45f4c21f33d20924a9948e72f961c7f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 842563319e09a001fd6e85403d8aee6fb14690ee
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74967339"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884424"
 ---
 # <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL – Hyperscale (Citus) でのテーブル コロケーション
 
@@ -22,7 +22,7 @@ ms.locfileid: "74967339"
 
 Azure Database for PostgreSQL - Hyperscale (Citus) では、ディストリビューション列の値のハッシュが、シャードのハッシュ範囲に収まる場合、行がシャードに格納されます。 同じハッシュ範囲のシャードは常に同じノードに配置されます。 ディストリビューション列の値が同じ行は、テーブル全体で常に同じノードに置かれます。
 
-![シャード](media/concepts-hyperscale-colocation/colocation-shards.png)
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-shards.png" alt-text="シャード":::
 
 ## <a name="a-practical-example-of-colocation"></a>コロケーションの実例
 
@@ -96,7 +96,7 @@ GROUP BY page_id ORDER BY count DESC LIMIT 10;
 
 クエリの実行では、ノード間に分散しているシャード内のデータを参照する必要があります。
 
-![非効率的なクエリ](media/concepts-hyperscale-colocation/colocation-inefficient-queries.png)
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-inefficient-queries.png" alt-text="非効率的なクエリ":::
 
 この場合、データの分散によって、大きな欠点が生じます。
 
@@ -134,7 +134,7 @@ GROUP BY page_id;
 
 tenant_id でのフィルターと結合のため、Hyperscale (Citus) は、その特定のテナントのデータを格納する併置されたシャードのセットを使用して、クエリ全体に応答できることを認識します。 単一の PostgreSQL ノードは、1 手順でクエリに応答できます。
 
-![優れたクエリ](media/concepts-hyperscale-colocation/colocation-better-query.png)
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-better-query.png" alt-text="優れたクエリ":::
 
 場合によっては、クエリとテーブル スキーマを変更して、一意の制約にテナント ID を含めて、条件を結合する必要があります。 通常これは簡単な変更で済みます。
 

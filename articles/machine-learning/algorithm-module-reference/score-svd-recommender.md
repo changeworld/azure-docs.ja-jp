@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 08/10/2020
-ms.openlocfilehash: 806c19100594f449288d810b68d072dd7de23646
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: bf62fa995724b8e1fff757e89945cc39db3d9842
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88189812"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893709"
 ---
 # <a name="score-svd-recommender"></a>Score SVD Recommender
 
-この記事では、Azure Machine Learning デザイナー (プレビュー) で SVD レコメンダーのスコアリング モジュールを使用する方法について説明します。 このモジュールを使用すると、単一値分解 (SVD) アルゴリズムに基づくトレーニング済みのレコメンデーション モデルを使用して、予測を作成できます。
+この記事では、Azure Machine Learning デザイナーで SVD レコメンダーのスコアリング モジュールを使用する方法について説明します。 このモジュールを使用すると、単一値分解 (SVD) アルゴリズムに基づくトレーニング済みのレコメンデーション モデルを使用して、予測を作成できます。
 
 SVD レコメンダーでは、次の 2 種類の予測を生成できます。
 

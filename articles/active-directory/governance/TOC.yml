@@ -60,7 +60,7 @@
               href: entitlement-management-catalog-create.md
             - name: アクセス パッケージ管理者への委任
               href: entitlement-management-delegate-managers.md
-        - name: アクセス パッケージ管理者
+        - name: アクセス パッケージ マネージャーとアクセス パッケージ割り当てマネージャー
           items:
             - name: 新しいアクセス パッケージを作成する
               href: entitlement-management-access-package-create.md
@@ -68,8 +68,10 @@
               href: entitlement-management-access-package-settings.md
             - name: リソース ロールの変更
               href: entitlement-management-access-package-resources.md
-            - name: 要求と承認の設定の変更
+            - name: 要求設定の変更
               href: entitlement-management-access-package-request-policy.md
+            - name: 承認設定の変更
+              href: entitlement-management-access-package-approval-policy.md
             - name: ライフサイクルの設定の変更
               href: entitlement-management-access-package-lifecycle-policy.md
             - name: 要求を表示する

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: dc3daf28a4e8dd4ebf1fcedddd1a46986ac80cc4
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: cbd15819fc03eb80b3647f6ffede93f851e295d4
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400604"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89649749"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自動スケーリングとゾーン冗長 Application Gateway v2 
 
@@ -100,7 +100,7 @@ Azure Application Gateways は常に可用性が高くなるようにデプロ�
 |--|--|
 |認証証明書|サポートされていません。<br>詳細については、「[Application Gateway でのエンド ツー エンド TLS の概要](ssl-overview.md#end-to-end-tls-with-the-v2-sku)」を参照してください。|
 |同じサブネット上の Standard_v2 と Standard Application Gateway の混在|サポートされていません|
-|Application Gateway サブネット上のユーザー定義ルート (UDR)|サポートされています (特定のシナリオ)。 プレビュー段階です。<br> サポートされているシステムの詳細については、「[アプリケーション ゲートウェイ構成の概要](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)」を参照してください。|
+|Application Gateway サブネット上のユーザー定義ルート (UDR)|サポートされています (特定のシナリオ)。 プレビュー段階です。<br> サポートされているシステムの詳細については、「[アプリケーション ゲートウェイ構成の概要](configuration-infrastructure.md#supported-user-defined-routes)」を参照してください。|
 |受信ポート範囲の NSG| - Standard_v2 SKU では 65200 ～ 65535<br>- Standard SKU では 65503 ～ 65534<br>詳細については、[FAQ](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet) をご覧ください。|
 |Azure Diagnostics でのパフォーマンス ログ|サポートされていません。<br>Azure メトリックを使用する必要があります。|
 |課金|課金は、2019 年 7 月 1 日に開始される予定です。|

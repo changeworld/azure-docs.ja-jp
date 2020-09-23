@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
-ms.date: 08/05/2019
-ms.openlocfilehash: ceb6285448df2a5d87dfa87ab249c99bf22c9928
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/21/2020
+ms.openlocfilehash: d81550f5c6906e409675002fde670db3734de883
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84686326"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885057"
 ---
 # <a name="configure-advanced-threat-protection-in-azure-sql-managed-instance"></a>Azure SQL Managed Instance で Advanced Threat Protection を構成する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -26,21 +26,18 @@ ms.locfileid: "84686326"
 
 検出された脅威に関する通知は、[電子メールの通知](../database/threat-detection-overview.md#explore-detection-of-a-suspicious-event)または [Azure portal](../database/threat-detection-overview.md#explore-alerts-in-the-azure-portal) で受け取ることができます。
 
-[Advanced Threat Protection](../database/threat-detection-overview.md) は、高度な SQL セキュリティ機能の統合パッケージである [Advanced Data Security](../database/advanced-data-security.md) オファリングの一部です。 Advanced Threat Protection は、SQL ADS ポータルを使用して一元的にアクセスおよび管理できます。
+[Advanced Threat Protection](../database/threat-detection-overview.md) は、高度な SQL セキュリティ機能の統合パッケージである [Azure Defender for SQL](../database/azure-defender-for-sql.md) オファリングの一部です。 Advanced Threat Protection は、Azure Defender for SQL ポータルを使用して一元的にアクセスおよび管理できます。
 
 ##  <a name="azure-portal"></a>Azure portal
 
 1. [Azure portal](https://portal.azure.com) にサインインします。 
-2. 保護する SQL Managed Instance のインスタンスの構成ページに移動します。 **[設定]** ページで、 **[Advanced Data Security]** を選択します。
-3. Advanced Data Security の構成ページで次のようにします
-   - Advanced Data Security を **[オン]** にします。
+2. 保護する SQL Managed Instance のインスタンスの構成ページに移動します。 **[セキュリティ]** で **[セキュリティ センター]** を選択します。
+3. Azure Defender for SQL の構成ページで、以下の操作を行います
+   - Azure Defender for SQL を**オン**にします。
    - 異常なデータベース アクティビティが検出されたときにセキュリティ アラートを受け取る**電子メールのリスト**を構成します。
    - 異常な脅威監査レコードの保存先となる **Azure ストレージ アカウント**を選択します。
    - 構成する **[Advanced Threat Protection の種類]** を選択します。 詳しくは、[Advanced Threat Protection のアラート](../database/threat-detection-overview.md)に関する記事をご覧ください。
-4. **[保存]** をクリックして、新しい、または更新された Advanced Data Security ポリシーを保存します。
-
-   ![高度な脅威保護](./media/threat-detection-configure/threat-detection.png)
-
+4. **[保存]** をクリックして、新しい、または更新された Azure Defender for SQL ポリシーを保存します。
 
 ## <a name="next-steps"></a>次のステップ
 

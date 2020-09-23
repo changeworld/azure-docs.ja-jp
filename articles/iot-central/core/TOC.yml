@@ -109,7 +109,7 @@
           href: howto-run-a-job.md
     - name: 変換
       items:
-        - name: クラウドの宛先にデータをエクスポートする (プレビュー)
+        - name: データをクラウドの宛先にエクスポートする
           href: howto-export-data.md
         - name: クラウドの宛先にデータをエクスポートする (レガシ)
           href: howto-export-data-legacy.md

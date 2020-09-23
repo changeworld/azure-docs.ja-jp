@@ -1,18 +1,18 @@
 ---
-title: Azure Arc 対応サーバー (プレビュー) エージェントの接続に関する問題のトラブルシューティング
-description: この記事では、サービスに接続しようとすると Azure Arc 対応サーバー (プレビュー) で発生する Connected Machine エージェントの問題のトラブルシューティングと解決を行う方法について説明します。
-ms.date: 07/20/2020
+title: Azure Arc 対応サーバー エージェントの接続に関する問題のトラブルシューティング
+description: この記事では、サービスに接続しようとすると Azure Arc 対応サーバーで発生する Connected Machine エージェントの問題のトラブルシューティングと解決を行う方法について説明します。
+ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: aeb370fb6cd4eacf20c1acf29e84c03e5e322d39
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 36feb6a65ec52d99dfd664ae54cb099ea6a7e239
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213534"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900687"
 ---
 # <a name="troubleshoot-the-connected-machine-agent-connection-issues"></a>Connected Machine エージェントの接続の問題のトラブルシューティング
 
-この記事では、Windows または Linux 向けの Azure Arc 対応サーバー (プレビュー) Connected Machine エージェントを構成しようとすると発生することがある問題のトラブルシューティングと解決を行う方法を提供します。 サービスへの接続を構成するときの対話型インストール手法と大規模インストール手法の両方が含まれます。 全般的な情報については、[Arc 対応サーバーの概要](./overview.md)に関するページを参照してください。
+この記事では、Windows または Linux 向けの Azure Arc 対応サーバー Connected Machine エージェントを構成しようとすると発生することがある問題のトラブルシューティングと解決を行う方法を提供します。 サービスへの接続を構成するときの対話型インストール手法と大規模インストール手法の両方が含まれます。 全般的な情報については、[Arc 対応サーバーの概要](./overview.md)に関するページを参照してください。
 
 ## <a name="agent-verbose-log"></a>エージェントの詳細ログ
 

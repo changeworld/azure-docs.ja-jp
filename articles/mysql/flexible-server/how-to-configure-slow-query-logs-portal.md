@@ -1,0 +1,72 @@
+---
+title: 低速クエリ ログの構成 - Azure portal - Azure Database for MySQL - フレキシブル サーバー
+description: この記事では、Azure portal から Azure Database for MySQL フレキシブル サーバーの低速ログを構成し、それにアクセスする方法について説明します。
+author: ajlam
+ms.author: andrela
+ms.service: mysql
+ms.topic: how-to
+ms.date: 9/21/2020
+ms.openlocfilehash: 1416efaa325ced623b5c7514f2f9953dc0bd2781
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90932507"
+---
+# <a name="configure-and-access-slow-query-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Azure portal を使用した Azure Database for MySQL フレキシブル サーバーの低速クエリ ログの構成とアクセス
+
+> [!IMPORTANT]
+> Azure Database for MySQL - フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
+
+Azure portal から Azure Database for MySQL フレキシブル サーバーの[低速クエリ ログ](concepts-slow-query-logs.md)の構成、一覧表示、ダウンロードを行うことができます。
+
+## <a name="prerequisites"></a>前提条件
+この記事の手順では、[フレキシブル サーバー](quickstart-create-server-portal.md)が必要です。
+
+## <a name="configure-logging"></a>ログの構成
+MySQL の低速クエリ ログへのアクセスを構成します。 
+
+1. [Azure portal](https://portal.azure.com/) にサインインします。
+
+1. フレキシブル サーバーを選択します。
+
+1. サイドバーの **[設定]** セクションで、 **[サーバー パラメーター]** を選択します。
+   <!-- :::image type="content" source="./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png" alt-text="Screenshot of Server logs options":::-->
+
+1. **slow_query_log** パラメーターを **[ON]** に更新します。
+
+1. 必要なその他のすべてのパラメーターを変更します (例: `long_query_time`, `log_slow_admin_statements`). その他のパラメーターについては、[低速クエリ ログ](./concepts-slow-query-logs.md#configure-slow-query-logging)のドキュメントを参照してください。  
+
+1. **[保存]** を選択します。 
+
+   <!-- :::image type="content" source="./media/howto-configure-server-logs-in-portal/3-save-discard.png" alt-text="Screenshot of slow query log parameters and save."::: -->
+
+**[サーバー パラメーター]** ページを閉じると、ログの一覧に戻ることができます。
+
+## <a name="set-up-diagnostics"></a>診断を設定する
+
+低速クエリ ログは Azure Monitor 診断設定と統合されており、ログを Azure Monitor ログ、Event Hubs、または Azure Storage にパイプ処理することができます。
+
+1. サイドバーの **[監視]** セクションの下で、 **[診断設定]**  >  **[診断設定を追加する]** を選択します。
+
+   <!--:::image type="content" source="./media/howto-configure-server-logs-in-portal/add-diagnostic-setting.png" alt-text="Screenshot of Diagnostic settings options":::-->
+
+1. 診断設定の名前を指定します。
+
+1. どの送信先 (ストレージ アカウント、イベント ハブ、Log Analytics ワークスペース) に低速クエリ ログを送信するか指定します。
+
+1. ログの種類として **[MySqlSlowLogs]** を選択します。
+    <!--:::image type="content" source="./media/howto-configure-server-logs-in-portal/configure-diagnostic-setting.png" alt-text="Screenshot of Diagnostic settings configuration options":::-->
+
+1. 低速クエリ ログをパイプするようにデータ シンクを設定した後、 **[保存]** を選択します。
+    <!--:::image type="content" source="./media/howto-configure-server-logs-in-portal/save-diagnostic-setting.png" alt-text="Screenshot of Diagnostic settings configuration options, with Save highlighted":::-->
+
+1. 構成したデータ シンクを調べて低速クエリ ログにアクセスします。 ログが表示されるまでに最大で 10 分かかる可能性があります。
+
+監査ログを Azure Monitor ログ (Log Analytics) にパイプ処理した場合は、分析に使用できるいくつかの[サンプル クエリ](concepts-audit-logs.md#analyze-logs-in-azure-monitor-logs)を参照してください。 
+
+## <a name="next-steps"></a>次のステップ
+<!-- - See [Access slow query Logs in CLI](howto-configure-server-logs-in-cli.md) to learn how to download slow query logs programmatically.-->
+- [低速クエリ ログ](concepts-slow-query-logs.md)の詳細を確認する
+- パラメーターの定義と MySQL のログ記録の詳細については、[ログ](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)に関する MySQL のドキュメントを参照してください。
+- [監査ログ](concepts-audit-logs.md)について確認する

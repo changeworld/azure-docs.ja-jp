@@ -7,12 +7,12 @@ ms.author: jpalma
 ms.date: 06/29/2020
 ms.custom: fasttrack-edit
 author: palma21
-ms.openlocfilehash: 51b457b99afc478631ce9b39a4a7d51ffd57401c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 00a20ece2358f0054e4490ffb914f78b82d9c509
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003168"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594261"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でクラスター ノードに対するエグレス トラフィックを制御する
 
@@ -280,7 +280,7 @@ FWROUTE_NAME_INTERNET="${PREFIX}-fwinternet"
 
 すべてのリソースを保持するリソース グループを作成します。
 
-```azure-cli
+```azurecli
 # Create Resource Group
 
 az group create --name $RG --location $LOC
@@ -294,6 +294,7 @@ AKS クラスターと Azure Firewall をホストするための 2 つのサブ
 az network vnet create \
     --resource-group $RG \
     --name $VNET_NAME \
+    --location $LOC \
     --address-prefixes 10.42.0.0/16 \
     --subnet-name $AKSSUBNET_NAME \
     --subnet-prefix 10.42.1.0/24
@@ -320,12 +321,12 @@ Azure Firewall の受信および送信規則を構成する必要がありま�
 
 Azure Firewall フロントエンド アドレスとして使用される Standard SKU のパブリック IP リソースを作成します。
 
-```azure-cli
+```azurecli
 az network public-ip create -g $RG -n $FWPUBLICIP_NAME -l $LOC --sku "Standard"
 ```
 
 Azure ファイアウォールを作成するには、プレビューの cli 拡張機能を登録します。
-```azure-cli
+```azurecli
 # Install Azure Firewall preview CLI extension
 
 az extension add --name azure-firewall
@@ -340,7 +341,7 @@ az network firewall create -g $RG -n $FWNAME -l $LOC --enable-dns-proxy true
 > Azure Firewall へのパブリック IP アドレスの設定には数分かかる場合があります。
 > ネットワーク規則で FQDN を利用するには、DNS プロキシを有効にする必要があります。有効にすると、ファイアウォールではポート 53 でリッスンが行われ、上で指定した DNS サーバーに DNS 要求が転送されます。 これにより、ファイアウォールでその FQDN を自動的に変換できるようになります。
 
-```azure-cli
+```azurecli
 # Configure Firewall IP Config
 
 az network firewall ip-config create -g $RG -f $FWNAME -n $FWIPCONFIG_NAME --public-ip-address $FWPUBLICIP_NAME --vnet-name $VNET_NAME
@@ -364,10 +365,10 @@ Azure では、Azure のサブネット、仮想ネットワーク、および�
 
 特定のサブネットに関連付ける空のルート テーブルを作成します。 ルート テーブルには、次のホップを以前の手順で作成した Azure Firewall と定義します。 各サブネットには、0 個または 1 個のルート テーブルを関連付けることができます。
 
-```azure-cli
+```azurecli
 # Create UDR and add a route for Azure Firewall
 
-az network route-table create -g $RG -$LOC --name $FWROUTE_TABLE_NAME
+az network route-table create -g $RG -l $LOC --name $FWROUTE_TABLE_NAME
 az network route-table route create -g $RG --name $FWROUTE_NAME --route-table-name $FWROUTE_TABLE_NAME --address-prefix 0.0.0.0/0 --next-hop-type VirtualAppliance --next-hop-ip-address $FWPRIVATE_IP --subscription $SUBID
 az network route-table route create -g $RG --name $FWROUTE_NAME_INTERNET --route-table-name $FWROUTE_TABLE_NAME --address-prefix $FWPUBLIC_IP/32 --next-hop-type Internet
 ```
@@ -398,7 +399,7 @@ Azure Firewall サービスの詳細については、[Azure Firewall のドキ�
 
 クラスターをファイアウォールに関連付けるには、クラスターのサブネットの専用サブネットから、以前の手順で作成したルート テーブルを参照する必要があります。 関連付けを行うには、クラスターとファイアウォールの両方を保持する仮想ネットワークに対して、クラスターのサブネットのルート テーブルを更新するコマンドを発行します。
 
-```azure-cli
+```azurecli
 # Associate route table with next hop to Firewall to the AKS subnet
 
 az network vnet subnet update -g $RG --vnet-name $VNET_NAME --name $AKSSUBNET_NAME --route-table $FWROUTE_TABLE_NAME
@@ -414,7 +415,7 @@ az network vnet subnet update -g $RG --vnet-name $VNET_NAME --name $AKSSUBNET_NA
 
 サービス プリンシパルは、クラスター リソースを作成するために AKS によって使用されます。 作成時に渡されるサービス プリンシパルは、AKS によって使用されるストレージ リソース、IP、ロード バランサーなどの基になる AKS リソースを作成するために使用されます (代わりに[マネージド ID](use-managed-identity.md) を使用することもできます)。 以下の適切なアクセス許可が付与されていない場合、AKS クラスターをプロビジョニングすることはできません。
 
-```azure-cli
+```azurecli
 # Create SP and Assign Permission to Virtual Network
 
 az ad sp create-for-rbac -n "${PREFIX}sp" --skip-assignment
@@ -422,7 +423,7 @@ az ad sp create-for-rbac -n "${PREFIX}sp" --skip-assignment
 
 次に、以下の `APPID` と `PASSWORD` を、前のコマンド出力で自動生成されたサービス プリンシパル appid とサービス プリンシパル パスワードに置き換えます。 VNET リソース ID を参照してサービス プリンシパルにアクセス許可を付与し、AKS によってリソースをデプロイできるようにします。
 
-```azure-cli
+```azurecli
 APPID="<SERVICE_PRINCIPAL_APPID_GOES_HERE>"
 PASSWORD="<SERVICEPRINCIPAL_PASSWORD_GOES_HERE>"
 VNETID=$(az network vnet show -g $RG --name $VNET_NAME --query id -o tsv)
@@ -460,7 +461,7 @@ SUBNETID=$(az network vnet subnet show -g $RG --vnet-name $VNET_NAME --name $AKS
 >
 > [**API サーバーの許可された IP 範囲**](api-server-authorized-ip-ranges.md)に対して AKS 機能を追加し、API サーバーのアクセスをファイアウォールのパブリック エンドポイントのみに制限できます。 許可された IP 範囲の機能は、図ではオプションとして示されています。 許可された IP 範囲機能を有効にして API サーバーへのアクセスを制限する場合、開発者ツールでファイアウォールの仮想ネットワークからのジャンプボックスを使用するか、すべての開発者エンドポイントを許可された IP 範囲に追加する必要があります。
 
-```azure-cli
+```azurecli
 az aks create -g $RG -n $AKSNAME -l $LOC \
   --node-count 3 --generate-ssh-keys \
   --network-plugin $PLUGIN \
@@ -491,7 +492,7 @@ az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/3
 
  新しく作成された Kubernetes クラスターに接続するように、[az aks get-credentials][az-aks-get-credentials] コマンドを使用して `kubectl` を構成します。 
 
- ```azure-cli
+ ```azurecli
  az aks get-credentials -g $RG -n $AKSNAME
  ```
 
@@ -754,7 +755,7 @@ SERVICE_IP=$(k get svc voting-app -o jsonpath='{.status.loadBalancer.ingress[*].
 ```
 
 以下を実行して、NAT 規則を追加します。
-```azure-cli
+```azurecli
 az network firewall nat-rule create --collection-name exampleset --destination-addresses $FWPUBLIC_IP --destination-ports 80 --firewall-name $FWNAME --name inboundrule --protocols Any --resource-group $RG --source-addresses '*' --translated-port 80 --action Dnat --priority 100 --translated-address $SERVICE_IP
 ```
 
@@ -772,7 +773,7 @@ AKS 投票アプリが表示されます。 この例では、ファイアウォ
 
 Azure リソースをクリーンアップするには、AKS リソース グループを削除します。
 
-```azure-cli
+```azurecli
 az group delete -g $RG
 ```
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: fd45db779b7a828d247f09cae38f90fc20d12c16
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9b2d003ef4938681229317b625aae4526787ac15
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79456592"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898706"
 ---
 # <a name="convert-to-dataset"></a>データセットへの変換
 
-この記事では、Azure Machine Learning デザイナー (プレビュー) のデータセットへの変換モジュールを使用して、パイプラインのデータをデザイナーの内部形式に変換する方法について説明します。
+この記事では、Azure Machine Learning デザイナーのデータセットへの変換モジュールを使用して、パイプラインのデータをデザイナーの内部形式に変換する方法について説明します。
   
 ほとんどの場合、変換は必須ではありません。 Azure Machine Learning では、データに対して何らかの操作を実行する時点で、データがネイティブのデータセット形式に暗黙的に変換されます。 
 
@@ -35,7 +35,7 @@ ms.locfileid: "79456592"
 
 2. データセットを出力する任意のモジュールに、それを接続します。   
 
-    データが[表形式](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py)の場合は、データセットに変換できます。 これには、[データのインポート](import-data.md)を使用して読み込まれたデータ、[データの手動入力](enter-data-manually.md)を使用して作成されたデータ、または[変換の適用](apply-transformation.md)を使用して変換されたデータセットが含まれます。
+    データが[表形式](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true)の場合は、データセットに変換できます。 これには、[データのインポート](import-data.md)を使用して読み込まれたデータ、[データの手動入力](enter-data-manually.md)を使用して作成されたデータ、または[変換の適用](apply-transformation.md)を使用して変換されたデータセットが含まれます。
 
 3.  **[アクション]** ボックスの一覧で、データセットを保存する前にデータのクリーンアップを実行するかどうかを指定します。  
   

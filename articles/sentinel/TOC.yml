@@ -29,6 +29,10 @@
       href: fusion.md
     - name: ワークスペースおよびテナント全体での Azure Sentinel の拡張
       href: extend-sentinel-across-workspaces-tenants.md
+    - name: UEBA を使用した高度な脅威の特定
+      href: identify-threats-with-entity-behavior-analytics.md
+    - name: 脅威インテリジェンスの Azure Sentinel へのインポート
+      href: import-threat-intelligence.md
     - name: 複数のテーブルにわたってデータを正規化する
       href: normalization.md
     - name: セキュリティ
@@ -162,6 +166,8 @@
           href: connect-threat-intelligence.md
         - name: Azure Stack VM の接続
           href: connect-azure-stack.md
+    - name: ユーザーとエンティティの動作分析の有効化
+      href: enable-entity-behavior-analytics.md
     - name: 複数のテナントの操作 (MSSP)
       href: multiple-tenants-service-providers.md
     - name: 複数のワークスペースでインシデントを操作する

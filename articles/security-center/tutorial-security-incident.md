@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: dc19d74953db48ccf51d4731e2b9feccb2294041
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c508591fe9909578dcc04b0922c0b76691898743
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076393"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901087"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>チュートリアル:セキュリティ インシデントへの対応
 Security Center では、高度な分析および脅威インテリジェンスを使用してハイブリッド クラウド ワークロードを継続的に分析し、悪意のあるアクティビティに関するアラートを受け取ることができます。 さらに、他のセキュリティ製品およびサービスからのアラートを Security Center に統合し、独自のインジケーターまたはインテリジェンス ソースに基づいたカスタム アラートを作成できます。 アラートが生成されたら、調査と修復を行うために迅速なアクションが必要になります。 このチュートリアルでは、次の内容を学習します。
@@ -32,7 +32,7 @@ Security Center では、高度な分析および脅威インテリジェンス�
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
-このチュートリアルで説明されている機能を実行するには、Security Center の Standard 価格レベルを使用する必要があります。 Security Center Standard は無料でお試しいただけます。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。 Standard にアップグレードする方法については、[Azure サブスクリプションでの Security Center Standard の利用開始](security-center-get-started.md)に関するクイックスタートを参照してください。
+このチュートリアルで説明されている機能を実行するには、Azure Defender が有効になっている必要があります。 Azure Defender は無料でお試しいただけます。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。 アップグレード方法については、[Security Center 入門](security-center-get-started.md)のクイックスタートを参照してください。
 
 ## <a name="scenario"></a>シナリオ
 Contoso は最近、いくつかの仮想マシンベースの基幹業務ワークロードと SQL データベースなど、オンプレミスのリソースの一部を Azure に移行しました。 現在、中心となる Contoso のコンピューター セキュリティ インシデント対応チーム (CSIRT) は、セキュリティ インテリジェンスが現在のインシデント対応ツールと統合されていないため、セキュリティ上の問題の調査に関する課題を抱えています。 この統合の欠如が原因で、検出の段階で問題 (偽陽性が多すぎる) が発生しているほか、評価と診断の段階でも問題が発生しています。 この移行の一環として、Security Center の利用を開始してこの問題を解決することに決定しました。
@@ -68,13 +68,13 @@ Security Center では、すべてのセキュリティ アラートを統合さ
 
    ![セキュリティのアラート](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)
 
-2. アラートの一覧でセキュリティ インシデント (アラートのコレクション) をクリックして、そのインシデントについて詳しく確認します。 **[Security incident detected]\(セキュリティ インシデントが検出されました\)** が開きます。
+2. アラートの一覧でセキュリティ インシデント (アラートのコレクション) を選択して、そのインシデントについて詳しく確認します。 **[Security incident detected]\(セキュリティ インシデントが検出されました\)** が開きます。
 
-   ![セキュリティ インシデント](./media/tutorial-security-incident/tutorial-security-incident-fig2.png)
+   ![[Security incident detected]\(セキュリティ インシデントが検出されました\)](./media/tutorial-security-incident/tutorial-security-incident-fig2.png)
 
 3. この画面では、セキュリティ インシデントの説明が上部に表示されるほか、このインシデントに含まれているアラートの一覧が表示されます。 詳しく調査したいアラートをクリックして、詳細を表示します。
 
-   ![セキュリティ インシデント](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
+   ![インシデントからのアラートの詳細](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
 
    アラートの種類はさまざまです。アラートの種類と実行可能な修復の手順について詳しくは、「[Azure Security Center のセキュリティ アラートの概要](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)」を参照してください。 安心して無視できるアラートについては、そのアラートを右クリックして **[無視]** オプションを選択できます。
 
@@ -99,13 +99,12 @@ Security Center の検索機能を使用して、システムの侵害に関す�
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-このコレクションの他のクイックスタートとチュートリアルは、このクイックスタートに基づいています。 引き続き次のクイックスタートとチュートリアルを行う予定の場合、Standard レベルの実行を継続して、自動プロビジョニングを有効のままにしてください。 続行しないまたは Free レベルに戻したい場合:
+このコレクションの他のクイックスタートとチュートリアルは、このクイックスタートに基づいています。 引き続き後続のクイックスタートとチュートリアルに取り組む予定の場合、自動プロビジョニングと Azure Defender を有効のままにしてください。 続ける予定がない場合や Azure Defender を無効にしたい場合は、次の手順に従ってください。
 
-1. Security Center のメイン メニューに戻り、 **[セキュリティ ポリシー]** を選択します。
-2. Free に戻したいサブスクリプションまたはポリシーを選択します。 **[セキュリティ ポリシー]** が開きます。
-3. **[ポリシー コンポーネント]** で、 **[価格レベル]** を選択します。
-4. **[Free]** を選択して、Standard レベルから Free レベルにサブスクリプションを変更します。
-5. **[保存]** を選択します。
+1. Security Center のメイン メニューに戻り、 **[Pricing and settings]\(価格と設定\)** を選択します。
+1. ダウングレードするサブスクリプションを選択します。
+1. **[Azure Defender]** をオフにします。
+1. **[保存]** を選択します。
 
 自動プロビジョニングを無効にする場合:
 

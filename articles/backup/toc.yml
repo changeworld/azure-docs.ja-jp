@@ -9,7 +9,7 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: VM のバックアップ - Portal
+    - name: VM のバックアップ - ポータル
       href: quick-backup-vm-portal.md
     - name: VM のバックアップ - PowerShell
       href: quick-backup-vm-powershell.md
@@ -50,6 +50,8 @@
       items:
         - name: Azure Backup のサポート マトリックス
           href: backup-support-matrix.md
+        - name: バックアップ センターのサポート マトリックス
+          href: backup-center-support-matrix.md
         - name: Azure VM のバックアップに関するサポート マトリックス
           href: backup-support-matrix-iaas.md
         - name: DPM/Azure Backup Server (MABS) のサポート マトリックス
@@ -68,6 +70,8 @@
       items:
         - name: FAQ - Recovery Services コンテナー
           href: backup-azure-backup-faq.md
+        - name: FAQ - バックアップ センター
+          href: backup-center-faq.md
         - name: FAQ - Azure VM のバックアップ
           href: backup-azure-vm-backup-faq.md
         - name: FAQ - MARS エージェント
@@ -88,18 +92,36 @@
       href: guidance-best-practices.md
 - name: ハウツー ガイド
   items:
-    - name: Recovery Services コンテナー
+    - name: コンテナー
+      items:
+        - name: Recovery Services コンテナー
+          items:
+            - name: 概要
+              href: backup-azure-recovery-services-vault-overview.md
+            - name: 作成
+              href: backup-create-rs-vault.md
+            - name: 削除
+              href: backup-azure-delete-vault.md
+            - name: 詳細ビュー
+              href: backup-azure-move-recovery-services-vault.md
+            - name: 管理する
+              href: backup-azure-manage-windows-server.md
+        - name: バックアップ資格情報コンテナー
+          items:
+            - name: 概要
+              href: backup-vault-overview.md
+    - name: バックアップ センター
       items:
         - name: 概要
-          href: backup-azure-recovery-services-vault-overview.md
-        - name: 作成
-          href: backup-create-rs-vault.md
-        - name: 削除
-          href: backup-azure-delete-vault.md
-        - name: 詳細ビュー
-          href: backup-azure-move-recovery-services-vault.md
-        - name: 管理する
-          href: backup-azure-manage-windows-server.md
+          href: backup-center-overview.md
+        - name: 監視と操作
+          href: backup-center-monitor-operate.md
+        - name: 分析情報の取得
+          href: backup-center-obtain-insights.md
+        - name: 環境の管理
+          href: backup-center-govern-environment.md
+        - name: アクションの実行
+          href: backup-center-actions.md
     - name: Azure VM バックアップ
       items:
         - name: 概要
@@ -124,7 +146,7 @@
           items:
             - name: Azure VM の復元について
               href: about-azure-vm-restore.md
-            - name: Portal で Azure VM を復元する
+            - name: ポータルで Azure VM を復元する
               href: backup-azure-arm-restore-vms.md
             - name: Azure VM のバックアップからのファイルの回復
               href: backup-azure-restore-files-from-vm.md
@@ -150,6 +172,10 @@
           href: restore-sql-database-azure-vm.md
         - name: 管理する
           href: manage-monitor-sql-database-backup.md
+    - name: Azure Database for PostgreSQL のバックアップ
+      items:
+        - name: バックアップ
+          href: backup-azure-database-postgresql.md
     - name: MARS エージェントを使用した Windows バックアップ
       items:
         - name: 概要
@@ -300,7 +326,7 @@
       items:
         - name: バックアップ エクスプローラーの使用
           href: monitor-azure-backup-with-backup-explorer.md
-        - name: Azure Portal の使用
+        - name: Azure ポータルの使用
           href: backup-azure-monitoring-built-in-monitor.md
         - name: Azure Monitor の使用
           href: backup-azure-monitoring-use-azuremonitor.md
