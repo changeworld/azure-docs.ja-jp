@@ -1,6 +1,6 @@
 ---
-title: GPU 搭載の Azure Stack Edge での証明書のトラブルシューティング | Microsoft Docs
-description: Azure Stack Edge GPU デバイスでの証明書エラーのトラブルシューティングについて説明します。
+title: GPU 搭載の Azure Stack Edge Pro での証明書のトラブルシューティング | Microsoft Docs
+description: Azure Stack Edge Pro GPU デバイスでの証明書エラーのトラブルシューティングについて説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 05338fb70bfa390ff3bd9e14e938edeb40938aeb
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a0918c6cebd50231a9664811bb467e04d2d2bfd9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269439"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891329"
 ---
 # <a name="troubleshooting-certificate-errors"></a>証明書エラーのトラブルシューティング
 
-この記事では、Azure Stack Edge デバイスに証明書をインストールするときに発生する一般的な証明書エラーのトラブルシューティングについて説明します。
+この記事では、Azure Stack Edge Pro デバイスに証明書をインストールするときに発生する一般的な証明書エラーのトラブルシューティングについて説明します。
 
 ## <a name="common-certificate-errors"></a>一般的な証明書エラー
 

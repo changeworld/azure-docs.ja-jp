@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: 1a10d61c5dc35a19a8b02769a517d9f1c7aac601
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7c9e7cda862fe1112cce7ed8cff270843f0a8475
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119227"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902779"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Azure Portal を使用して Azure Database for MySQL サーバーのバックアップと復元を行う方法
 
@@ -32,7 +32,7 @@ Azure Database for MySQL サーバーは、復元機能が有効になるよう�
 
 Azure Portal でサーバーを作成するときに、 **[価格レベル]** ウィンドウで、使用しているサーバーのバックアップとして **[ローカル冗長]** または **[地理冗長]** のいずれかを選択します。 また、このウィンドウの **[バックアップの保有期間]** で、サーバーのバックアップを保存する期間 (日数) を選択します。
 
-   ![価格レベル - バックアップ冗長の選択](./media/howto-restore-server-portal/pricing-tier.png)
+   :::image type="content" source="./media/howto-restore-server-portal/pricing-tier.png" alt-text="価格レベル - バックアップ冗長の選択":::
 
 作成中のこれらの値の設定について詳しくは、[Azure Database for MySQL サーバーのクイック スタート](quickstart-create-mysql-server-database-using-azure-portal.md)に関するページをご覧ください。
 
@@ -41,7 +41,7 @@ Azure Portal でサーバーを作成するときに、 **[価格レベル]** �
 2. Azure Database for MySQL サーバーを選択します。 この操作で、 **[概要]** ページが開きます。
 3. **[設定]** で、メニューから **[価格レベル]** を選択します。 スライダーを使用して、**バックアップの保有期間**を 7 ～ 35 日の間で希望の値に変更します。
 次のスクリーンショットでは 34 日に変更されています。
-![長くしたバックアップのリテンション期間](./media/howto-restore-server-portal/3-increase-backup-days.png)
+:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="長くしたバックアップのリテンション期間":::
 
 4. **[OK]** をクリックして変更を確定します。
 
@@ -57,11 +57,11 @@ Azure Database for MySQL では、サーバーの過去の特定時点まで遡�
 
 2. サーバーの **[概要]** ページのツール バーで **[復元]** を選択します。
 
-   ![Azure Database for MySQL - [概要] - [復元] ボタン](./media/howto-restore-server-portal/2-server.png)
+   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="Azure Database for MySQL - [概要] - [復元] ボタン":::
 
 3. [復元] フォームに必要な情報を入力します。
 
-   ![Azure Database for MySQL - 情報の復元](./media/howto-restore-server-portal/3-restore.png)
+   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="Azure Database for MySQL - 情報の復元":::
    - **復元ポイント**:復元先の特定の時点を選択します。
    - **対象サーバー**:新しいサーバーの名前を指定します。
    - **[場所]** :リージョンを選択することはできません。 既定では、ソース サーバーと同じになります。
@@ -72,6 +72,12 @@ Azure Database for MySQL では、サーバーの過去の特定時点まで遡�
 5. 復元が完了したら、作成した新しいサーバーを検索して、想定どおりにデータベースが復元できたかどうかを確認します。
 
 ポイントインタイム リストアによって作成された新しいサーバーには、選択した特定の時点の既存のサーバーに対して有効であったサーバー管理者のログイン名とパスワードが設定されています。 このパスワードは、新しいサーバーの **[概要]** ページで変更できます。
+
+さらに、復元操作の終了後には、復元操作後に既定値にリセットされる (およびプライマリ サーバーからコピーで上書きされない) 2 つのサーバー パラメーターがあります
+*   time_zone - この値は、既定値 **SYSTEM** に設定されます
+*   event_scheduler - event_scheduler は、復元されたサーバーで **OFF** に設定されます
+
+プライマリ サーバーから値をコピーし、[サーバー パラメーター](howto-server-parameters.md)を再構成して、復元されたサーバーでこれを設定する必要があります
 
 復元中に作成される新しいサーバーには、元のサーバーに存在した VNet サービス エンドポイントはありません。 この新しいサーバー用に、これらの規則を個別に設定する必要があります。 元のサーバーのファイアウォール規則は復元されます。
 

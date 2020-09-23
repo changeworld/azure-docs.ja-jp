@@ -1,6 +1,6 @@
 ---
-title: sys.external_streams (Transact-SQL) - Azure SQL Edge (プレビュー)
-description: Azure SQL Edge (プレビュー) での sys.external_streams の使用方法について説明します
+title: sys.external_streams (Transact-SQL) - Azure SQL Edge
+description: Azure SQL Edge での sys.external_streams の使用方法について説明します
 keywords: sys.external_streams、SQL Edge
 services: sql-edge
 ms.service: sql-edge
@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
-ms.openlocfilehash: 8200d1814537a76db357704d6baf3bf482c587e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04950f01c06bc3c8ed3bb11a790310c2319a0579
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84235122"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900312"
 ---
 # <a name="sysexternal_streams-transact-sql"></a>sys.external_streams (Transact-SQL)
 

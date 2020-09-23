@@ -7,12 +7,12 @@ ms.date: 06/21/2019
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: 4abf5078a005f9d928397d9666e7f2bc55d65f19
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5ad261064adf34945a600983296cb3e0ceaa5247
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75431548"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901076"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>クイック スタート: Azure Portal を使用して Stream Analytics ジョブを作成する
 
@@ -36,14 +36,14 @@ Stream Analytics ジョブを定義する前に、入力データを準備する
    
    |**設定**  |**推奨値**  |**説明**  |
    |---------|---------|---------|
-   |サブスクリプション  | \<該当するサブスクリプション\> |  使用する Azure サブスクリプションを選択します。 |
+   |サブスクリプション  | \<Your subscription\> |  使用する Azure サブスクリプションを選択します。 |
    |Resource group   |   asaquickstart-resourcegroup  |   **[新規作成]** を選択し、アカウントの新しいリソース グループ名を入力します。 |
-   |リージョン  |  \<ユーザーに最も近いリージョンを選択\> | お客様の IoT ハブをホストできる地理的な場所を選択します。 お客様のユーザーに最も近い場所を使用します。 |
+   |リージョン  |  \<Select the region that is closest to your users\> | お客様の IoT ハブをホストできる地理的な場所を選択します。 お客様のユーザーに最も近い場所を使用します。 |
    |IoT Hub 名  | MyASAIoTHub  |   お客様の IoT ハブの名前を選択します。   |
 
    ![IoT Hub の作成](./media/stream-analytics-quick-create-portal/create-iot-hub.png)
 
-4. **[Next: Set size and scale]\(次へ: サイズとスケールの設定\)** を選択します。
+4. **Set size and scale\(次へ: サイズとスケールの設定\)** を選択します。
 
 5. **[価格とスケールティア]** を選択します。 このクイック スタートでは、 **[F1 - Free tier]\(F1 - Free レベル\)** を選択します (お客様のサブスクリプションでまだ使用可能な場合)。 詳細については、「[IoT Hub の価格](https://azure.microsoft.com/pricing/details/iot-hub/)」を参照してください。
 
@@ -88,15 +88,15 @@ Stream Analytics ジョブを定義する前に、入力データを準備する
    |**設定**  |**推奨値**  |**説明**  |
    |---------|---------|---------|
    |ジョブ名   |  MyASAJob   |   Stream Analytics ジョブを識別するための名前を入力します。 Stream Analytics ジョブ名には、英数字、ハイフン、アンダースコアのみを使用することができます。長さは 3 文字以上 63 文字以下でなければなりません。 |
-   |サブスクリプション  | \<該当するサブスクリプション\> |  このジョブで使用する Azure サブスクリプションを選択します。 |
+   |サブスクリプション  | \<Your subscription\> |  このジョブで使用する Azure サブスクリプションを選択します。 |
    |Resource group   |   asaquickstart-resourcegroup  |   お客様の IoT ハブと同じリソース グループを選択します。 |
-   |Location  |  \<ユーザーに最も近いリージョンを選択\> | Stream Analytics ジョブをホストすることができる地理的な場所を選択します。 パフォーマンスを向上させ、データ転送コストを削減するために、ユーザーに最も近い場所を使用します。 |
+   |場所  |  \<Select the region that is closest to your users\> | Stream Analytics ジョブをホストすることができる地理的な場所を選択します。 パフォーマンスを向上させ、データ転送コストを削減するために、ユーザーに最も近い場所を使用します。 |
    |[ストリーミング ユニット]  | 1  |   ストリーミング ユニットとは、ジョブの実行に必要なコンピューティング リソースのことです。 既定では、この値は 1 に設定されています。 ストリーミング ユニットのスケーリングについては、[ストリーミング ユニットの理解と調整](stream-analytics-streaming-unit-consumption.md)に関する記事を参照してください。   |
    |ホスティング環境  |  クラウド  |   Stream Analytics ジョブは、クラウドまたはエッジにデプロイすることができます。 クラウドでは Azure Cloud にデプロイすることができ、エッジでは IoT Edge デバイスにデプロイすることができます。 |
 
    ![ジョブを作成する](./media/stream-analytics-quick-create-portal/create-asa-job.png)
 
-5. **[ダッシュボードにピン留めする]** ボックスをオンにしてジョブをダッシュボードに配置し、 **[作成]** を選択します。  
+5. **[ダッシュボードにピン留めする]** ボックスをオンにしてジョブをダッシュボードに配置し、**[作成]** を選択します。  
 
 6. ブラウザー ウィンドウの右上に *[デプロイを実行しています...]* という通知が表示されるのがわかります。 
 
@@ -113,7 +113,7 @@ Stream Analytics ジョブを定義する前に、入力データを準備する
    |**設定**  |**推奨値**  |**説明**  |
    |---------|---------|---------|
    |入力のエイリアス  |  IoTHubInput   |  ジョブの入力を識別する名前を入力します。   |
-   |サブスクリプション   |  \<該当するサブスクリプション\> |  作成したストレージ アカウントを持っている Azure サブスクリプションを選択します。 ストレージ アカウントは、同じサブスクリプションにある場合も、別のサブスクリプションにある場合もあります。 この例では、同じサブスクリプションにストレージ アカウントを作成したと想定しています。 |
+   |サブスクリプション   |  \<Your subscription\> |  作成したストレージ アカウントを持っている Azure サブスクリプションを選択します。 ストレージ アカウントは、同じサブスクリプションにある場合も、別のサブスクリプションにある場合もあります。 この例では、同じサブスクリプションにストレージ アカウントを作成したと想定しています。 |
    |IoT Hub  |  MyASAIoTHub |  前のセクションでお客様が作成した IoT ハブの名前を入力します。 |
 
 4. 他のオプションは既定値のままにして、 **[保存]** を選択し、設定を保存します。  
@@ -131,7 +131,7 @@ Stream Analytics ジョブを定義する前に、入力データを準備する
    |**設定**  |**推奨値**  |**説明**  |
    |---------|---------|---------|
    |出力エイリアス |   BlobOutput   |   ジョブの出力を識別する名前を入力します。 |
-   |サブスクリプション  |  \<該当するサブスクリプション\>  |  作成したストレージ アカウントを持っている Azure サブスクリプションを選択します。 ストレージ アカウントは、同じサブスクリプションにある場合も、別のサブスクリプションにある場合もあります。 この例では、同じサブスクリプションにストレージ アカウントを作成したと想定しています。 |
+   |サブスクリプション  |  \<Your subscription\>  |  作成したストレージ アカウントを持っている Azure サブスクリプションを選択します。 ストレージ アカウントは、同じサブスクリプションにある場合も、別のサブスクリプションにある場合もあります。 この例では、同じサブスクリプションにストレージ アカウントを作成したと想定しています。 |
    |ストレージ アカウント |  asaquickstartstorage |   ストレージ アカウントの名前を選択するか、入力します。 ストレージ アカウントが同じサブスクリプション内に作成されている場合、ストレージ アカウント名は自動的に検出されます。       |
    |コンテナー |   container1  |  ストレージ アカウントで作成した既存のコンテナーを選択します。   |
 
@@ -168,15 +168,15 @@ Stream Analytics ジョブを定義する前に、入力データを準備する
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>Stream Analytics ジョブを開始して出力をチェックする
 
-1. ジョブ概要ページに戻り、 **[開始]** を選択します。
+1. ジョブ概要ページに戻り、**[開始]** を選択します。
 
-2. **[ジョブの開始]** の **[ジョブ出力の開始時刻]** フィールドで、 **[現在]** を選択します。 次に、 **[開始]** を選択してお客様のジョブを開始します。
+2. **[ジョブの開始]** の **[ジョブ出力の開始時刻]** フィールドで、**[現在]** を選択します。 次に、**[開始]** を選択してお客様のジョブを開始します。
 
 3. 数分経ったら、ポータルで、ジョブの出力として構成したストレージ アカウントとコンテナーを特定します。 コンテナーに出力ファイルが表示されるようになりました。 ジョブは初めて開始するときに数分かかり、開始後はデータが到着すると実行され続けます。  
 
    ![変換された出力](./media/stream-analytics-quick-create-portal/check-asa-results.png)
 
-## <a name="clean-up-resources"></a>リソースをクリーンアップする
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 リソース グループ、Stream Analytics ジョブ、およびすべての関連するリソースは、不要になったら削除します。 ジョブを削除すると、ジョブによって消費されるストリーミング ユニットに対する課金を回避することができます。 ジョブを後で使用する計画がある場合は、ジョブを停止し、必要なときに再起動することができます。 このジョブの使用を続けない場合は、以下の手順に従って、このクイック スタートで作成したすべてのリソースを削除してください。
 
@@ -186,7 +186,7 @@ Stream Analytics ジョブを定義する前に、入力データを準備する
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、Azure portal を使用して、簡単な Stream Analytics ジョブをデプロイしました。 また、[PowerShell](stream-analytics-quick-create-powershell.md)、[Visual Studio](stream-analytics-quick-create-vs.md)、および [Visual Studio Code](quick-create-vs-code.md) を使用して Stream Analytics ジョブをデプロイすることもできます。
+このクイック スタートでは、Azure portal を使用して、簡単な Stream Analytics ジョブをデプロイしました。 また、[PowerShell](stream-analytics-quick-create-powershell.md)、[Visual Studio](stream-analytics-quick-create-vs.md)、および [Visual Studio Code](quick-create-visual-studio-code.md) を使用して Stream Analytics ジョブをデプロイすることもできます。
 
 その他の入力ソースの構成やリアルタイム検出の実行について学習するには、次の記事に進んでください。
 

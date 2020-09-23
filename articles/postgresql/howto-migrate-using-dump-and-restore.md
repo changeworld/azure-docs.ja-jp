@@ -5,15 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 09/24/2019
-ms.openlocfilehash: b7ecdd110458c64be9890762d515ecebe3d67acd
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/22/2020
+ms.openlocfilehash: 529573bd18dbdbd16a795619d488beedfb532b11
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112359"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902668"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>ダンプと復元を使用した PostgreSQL データベースの移行
+[!INCLUDE[applies-to-postgres-single-flexible-server](includes/applies-to-postgres-single-flexible-server.md)]
+
 [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) を使用して PostgreSQL データベースをダンプ ファイルに抽出し、[pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) を使用して、pg_dump によって作成されたアーカイブ ファイルから PostgreSQL データベースを復元することができます。
 
 ## <a name="prerequisites"></a>前提条件
@@ -37,8 +39,9 @@ pg_dump -Fc -v --host=localhost --username=masterlogin --dbname=testdb -f testdb
 ## <a name="restore-the-data-into-the-target-azure-database-for-postgresql-using-pg_restore"></a>pg_restore を使用して対象の Azure Database for PostgreSQL にデータを復元する
 ターゲット データベースを作成すると、pg_restore コマンドおよび -d、--dbname パラメータを使用して、ダンプ ファイルからターゲット データベースにデータを復元できます。
 ```bash
-pg_restore -v --no-owner --host=<server name> --port=<port> --username=<user@servername> --dbname=<target database name> <database>.dump
+pg_restore -v --no-owner --host=<server name> --port=<port> --username=<user-name> --dbname=<target database name> <database>.dump
 ```
+
 --no-owner パラメーターを指定すると、復元中に作成されるすべてのオブジェクトは、--username に指定されたユーザーによって所有されます。 詳細については、[pg_restore](https://www.postgresql.org/docs/9.6/static/app-pgrestore.html) の公式 PostgreSQL ドキュメントを参照してください。
 
 > [!NOTE]
@@ -47,10 +50,19 @@ pg_restore -v --no-owner --host=<server name> --port=<port> --username=<user@ser
 > Windows コマンド ラインで、コマンド `SET PGSSLMODE=require` を実行してから、pg_restore コマンドを実行します。 Linux または Bash では、コマンド `export PGSSLMODE=require` を実行してから、pg_restore コマンドを実行します。
 >
 
-この例では、対象サーバー **mydemoserver.postgres.database.azure.com** 上のデータベース **mypgsqldb** に、ダンプ ファイル **testdb.dump** からデータを復元します。 
+この例では、対象サーバー **mydemoserver.postgres.database.azure.com** 上のデータベース **mypgsqldb** に、ダンプ ファイル **testdb.dump** からデータを復元します。
+
+この **pg_restore** を**単一サーバー**で使用する方法の例を次に示します。
+
 ```bash
 pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=5432 --username=mylogin@mydemoserver --dbname=mypgsqldb testdb.dump
 ```
+この **pg_restore** を**フレキシブル サーバー**で使用する方法の例を次に示します。
+
+```bash
+pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=5432 --username=mylogin --dbname=mypgsqldb testdb.dump
+```
+---
 
 ## <a name="optimizing-the-migration-process"></a>移行プロセスの最適化
 
@@ -63,8 +75,8 @@ pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=
 ### <a name="for-the-backup"></a>バックアップ
 - バックアップと平行して復元を行うことで処理をスピードアップできるよう､バックアップには -FC スイッチを使用します｡ 次に例を示します。
 
-    ```
-    pg_dump -h MySourceServerName -U MySourceUserName -Fc -d MySourceDatabaseName -f Z:\Data\Backups\MyDatabaseBackup.dump
+    ```bash
+    pg_dump -h my-source-server-name -U source-server-username -Fc -d source-databasename -f Z:\Data\Backups\my-database-backup.dump
     ```
 
 ### <a name="for-the-restore"></a>復元
@@ -74,21 +86,26 @@ pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=
 
 - -fc および -j *#* スイッチを付けて復元することで､復元を並列処理します。 *#* ターゲット サーバーのコアの数です。 *#* をターゲット サーバーのコア数の 2 倍に設定することで､その影響を確認することもできます｡ 次に例を示します。
 
-    ```
-    pg_restore -h MyTargetServer.postgres.database.azure.com -U MyAzurePostgreSQLUserName -Fc -j 4 -d MyTargetDatabase Z:\Data\Backups\MyDatabaseBackup.dump
-    ```
+この **pg_restore** を**単一サーバー**で使用する方法の例を次に示します。
+```bash
+ pg_restore -h my-target-server.postgres.database.azure.com -U azure-postgres-username@my-target-server -Fc -j 4 -d my-target-databasename Z:\Data\Backups\my-database-backup.dump
+```
+この **pg_restore** を**フレキシブル サーバー**で使用する方法の例を次に示します。
+```bash
+ pg_restore -h my-target-server.postgres.database.azure.com -U azure-postgres-username@my-target-server -Fc -j 4 -d my-target-databasename Z:\Data\Backups\my-database-backup.dump
+ ```
 
 - ダンプ ファイルを編集することもできます｡先頭に *set synchronous_commit = off;* コマンド､最後に *set synchronous_commit = on;* コマンドを追加してください｡ アプリによってデータが変更される前の､最後にオンにするようにしないと､後続データが失われることがあります。
 
 - ターゲットの Azure Database for PostgreSQL サーバーで、復元の前に以下を行うことを検討してください。
     - クエリ パフォーマンスの追跡をオフにする。これら統計は移行中は必要ないからです。 これを行うには、pg_stat_statements.track、pg_qs.query_capture_mode、および pgms_wait_sampling.query_capture_mode を NONE に設定します。
 
-    - 移行の速度を上げるために、32 vCore メモリ最適化のようなハイ コンピューティングとハイ メモリの SKU を使用する。 復元が完了したら、希望する SKU に簡単に戻すことができます。 SKU が大きいほど、pg_restore コマンドの対応する `-j` パラメーターを増やすことで、より多くの並行処理を実現できます。 
+    - 移行の速度を上げるために、32 vCore メモリ最適化のようなハイ コンピューティングとハイ メモリの SKU を使用する。 復元が完了したら、希望する SKU に簡単に戻すことができます。 SKU が大きいほど、pg_restore コマンドの対応する `-j` パラメーターを増やすことで、より多くの並行処理を実現できます。
 
     - ターゲット サーバーの IOPS を上げると、復元のパフォーマンスが向上する可能性がある。 サーバーのストレージ サイズを増やすことで、より高い IOPS をプロビジョニングできます。 この設定は元に戻せませんが、IOPS を高くすることで、将来実際のワークロードにメリットがあるかどうか検討してください。
 
 これらのコマンドは､運用環境で使用する前にテスト環境でテスト､検証してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - エクスポートとインポートを使用して PostgreSQL データベースを移行するには、「[エクスポートとインポートを使用した PostgreSQL の移行](howto-migrate-using-export-and-import.md)」を参照してください。
 - Azure Database for PostgreSQL へのデータベースの移行については、「[Database Migration Guide](https://aka.ms/datamigration)」 (データベースの移行ガイド) を参照してください。

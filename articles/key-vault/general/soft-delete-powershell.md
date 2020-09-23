@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: sudbalas
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 251159c4fcf27ceb4d8b0dddeecbe501c7346e9e
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 05ff5d2f7ff87d2ce58f135330487f746cc5c1c7
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89073235"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90528365"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>PowerShell で Key Vault の論理的な削除を使用する方法
 
@@ -47,7 +47,7 @@ Key Vault の操作は、次のようにロールベースのアクセス制御 
 |復旧|削除されたキー コンテナーを復元します。|Microsoft.KeyVault/vaults/write|
 |消去|削除されたキー コンテナーとそのコンテンツを永続的に削除します。|Microsoft.KeyVault/locations/deletedVaults/purge/action|
 
-アクセス許可とアクセスの制御の詳細については、[キー コンテナーのセキュリティ保護](secure-your-key-vault.md)に関する記事をご覧ください。
+アクセス許可とアクセスの制御について詳しくは、「[キー コンテナーのセキュリティ保護](secure-your-key-vault.md)」をご覧ください。
 
 ## <a name="enabling-soft-delete"></a>論理的な削除を有効にする
 

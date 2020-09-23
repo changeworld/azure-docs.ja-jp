@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 934a7546464cf552c355ee6b4e278b79a0f9ff90
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 8cc16e611002748dad2716a1c8dc914f297da9f1
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747495"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090552"
 ---
 # <a name="migrate-web-service-from-google-maps"></a>Google マップから Web サービスを移行する
 
@@ -495,6 +495,9 @@ Azure Maps REST サービスの詳細について学習します。
 
 > [!div class="nextstepaction"]
 > [サービス モジュール (Web SDK) の使用方法](how-to-use-best-practices-for-routing.md)
+
+> [!div class="nextstepaction"]
+> [Azure Maps REST サービス API のリファレンス ドキュメント](https://docs.microsoft.com/rest/api/maps/)
 
 > [!div class="nextstepaction"]
 > [コード サンプル](https://docs.microsoft.com/samples/browse/?products=azure-maps)

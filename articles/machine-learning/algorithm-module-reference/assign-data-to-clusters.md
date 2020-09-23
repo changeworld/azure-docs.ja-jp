@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: 207172f10277589af2b22ae2f41b07234a0925b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e618395a2a4a11b4afb311d612cf5d0e27503dc6
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477716"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898852"
 ---
 # <a name="module-assign-data-to-clusters"></a>モジュール:クラスターへのデータの割り当て
 
-この記事では、Azure Machine Learning デザイナー (プレビュー) で *Assign Data to Clusters (クラスターへのデータの割り当て)* モジュールを使用する方法について説明します。 このモジュールでは、*K-Means クラスタリング* アルゴリズムでトレーニングされたクラスタリング モデルを介して予測を生成します。
+この記事では、Azure Machine Learning デザイナーの "*クラスターへのデータの割り当て*" モジュールを使用する方法について説明します。 このモジュールでは、*K-Means クラスタリング* アルゴリズムでトレーニングされたクラスタリング モデルを介して予測を生成します。
 
 Assign Data to Clusters (データのクラスターへの割り当て) モジュールは、新しい各データ ポイントの推定の割り当てを含むデータセットを返します。 
 

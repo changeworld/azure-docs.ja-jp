@@ -37,7 +37,7 @@
           href: database/scale-resources.md
         - name: 読み取りスケールアウト
           href: database/read-scale-out.md
-        - name: Security
+        - name: セキュリティ
           items:
             - name: 概要
               href: database/security-overview.md
@@ -51,8 +51,8 @@
               href: database/security-baseline.md
             - name: セキュリティ属性
               href: database/security-controls.md
-            - name: Advanced Data Security
-              href: database/advanced-data-security.md
+            - name: Azure Defender for SQL
+              href: database/azure-defender-for-sql.md
             - name: 高度な脅威保護
               href: database/threat-detection-overview.md
             - name: データの検出と分類
@@ -281,7 +281,7 @@
               href: database/geo-distributed-application-configure-tutorial.md
             - name: アクティブな地理的レプリケーション
               href: database/active-geo-replication-configure-portal.md
-        - name: Security
+        - name: セキュリティ
           items:
             - name: セキュリティを構成する
               href: database/secure-database-tutorial.md
@@ -349,7 +349,7 @@
               href: database/sql-data-sync-best-practices.md
             - name: データ同期のトラブルシューティング
               href: database/sql-data-sync-troubleshoot.md
-        - name: Security
+        - name: セキュリティ
           items:
             - name: Azure SQL 監査
               href: database/auditing-overview.md
@@ -712,6 +712,10 @@
           items:
             - name: 概要
               href: managed-instance/management-operations-overview.md
+            - name: 操作の監視
+              href: managed-instance/management-operations-monitor.md
+            - name: 操作のキャンセル
+              href: managed-instance/management-operations-cancel.md
             - name: API リファレンス
               href: managed-instance/api-references-create-manage-instance.md
         - name: Machine Learning サービス
@@ -856,7 +860,7 @@
               href: 'https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker?toc=/azure/azure-sql/toc.json'
             - name: データベース メール
               href: 'https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail?toc=/azure/azure-sql/toc.json'
-        - name: Security
+        - name: セキュリティ
           items:
             - name: パブリック エンドポイントのセキュリティ保護
               href: managed-instance/public-endpoint-overview.md

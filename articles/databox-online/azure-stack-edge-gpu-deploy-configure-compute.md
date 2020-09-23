@@ -1,6 +1,6 @@
 ---
-title: 'チュートリアル: Azure Stack Edge GPU のコンピューティングを使用してデータのフィルター処理、分析を行う | Microsoft Docs'
-description: Azure Stack Edge GPU でコンピューティング ロールを構成し、Azure への送信前にこれを使用してデータを変換する方法を説明します。
+title: 'チュートリアル: Azure Stack Edge Pro GPU でコンピューティングを使用してデータのフィルター処理や分析を行う | Microsoft Docs'
+description: Azure Stack Edge Pro GPU にコンピューティング ロールを構成し、それを使用して、Azure に送信する前にデータを変換する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,19 +8,19 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: f4a8786c8d86f43d3433dd51fe7696fd523025a9
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
+ms.openlocfilehash: 95c59cff1f47fe720e2dbc65c5b0a69a09be2f2f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89293560"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903177"
 ---
-# <a name="tutorial-configure-compute-on-azure-stack-edge-gpu-device"></a>チュートリアル:Azure Stack Edge GPU デバイスでコンピューティングを構成する
+# <a name="tutorial-configure-compute-on-azure-stack-edge-pro-gpu-device"></a>チュートリアル:Azure Stack Edge Pro GPU デバイスにコンピューティングを構成する
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-このチュートリアルでは、コンピューティング ロールを構成し、Azure Stack Edge デバイスに Kubernetes クラスターを作成する方法について説明します。 
+このチュートリアルでは、Azure Stack Edge Pro デバイスにコンピューティング ロールを構成し、Kubernetes クラスターを作成する方法について説明します。 
 
 この手順の所要時間は約 20 分から 30 分です。
 
@@ -34,16 +34,16 @@ ms.locfileid: "89293560"
  
 ## <a name="prerequisites"></a>前提条件
 
-お客様の Azure Stack Edge デバイスでコンピューティング ロールを設定する前に、次のことを確認してください。
+Azure Stack Edge Pro デバイスにコンピューティング ロールを設定する前に、次のことを確認してください。
 
-- [Azure Stack Edge のアクティブ化](azure-stack-edge-gpu-deploy-activate.md)に関するページの説明に従って Azure Stack Edge デバイスがアクティブ化されていること。
+- [Azure Stack Edge Pro のアクティブ化](azure-stack-edge-gpu-deploy-activate.md)に関する記事の説明に従って、Azure Stack Edge Pro デバイスをアクティブ化していること。
 - [コンピューティング ネットワークの有効化](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md#enable-compute-network)に関するページの手順に従っていること。
     - コンピューティング用のネットワーク インターフェイスを有効にしていること。
     - Kubernetes ノード IP と Kubernetes 外部サービス IP を割り当て済みであること。
 
 ## <a name="configure-compute"></a>コンピューティングを構成する
 
-Azure Stack Edge でコンピューティングを構成するために、Azure portal を使用して IoT Hub リソースを作成します。
+Azure Stack Edge Pro にコンピューティングを構成するには、Azure portal を使用して IoT Hub リソースを作成します。
 
 1. Azure portal で、Azure Stack Edge リソースの **[概要]** に移動します。 右側のウィンドウの **[コンピューティング]** タイルで **[開始]** を選択します。
 
@@ -72,17 +72,17 @@ Azure Stack Edge でコンピューティングを構成するために、Azure 
     ![コンピューティングの開始](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
 
     > [!NOTE]
-    > Azure Stack Edge デバイスに IoT Hub が関連付けられる前に **[コンピューティングの構成]** ダイアログを閉じた場合、IoT Hub は作成されますが、コンピューティングの構成には表示されません。 
+    > Azure Stack Edge Pro デバイスに IoT Hub が関連付けられる前に **[コンピューティングの構成]** ダイアログが閉じた場合、IoT Hub は作成されますが、コンピューティングの構成には表示されません。 
     
 Edge デバイスで Edge コンピューティング ロールが設定されると、2 つのデバイスが作成されます (IoT デバイスと IoT Edge デバイス)。 IoT Hub リソースでは、両方のデバイスを表示できます。 IoT Edge ランタイムは、この IoT Edge デバイス上でも動作しています。 現時点では、お客様の IoT Edge デバイスに対して使用できるのは Linux プラットフォームのみです。
 
 背後で仮想マシンと Kubernetes クラスターが作成されているため、コンピューティングの構成には 20 分から 30 分かかることがあります。 
 
-Azure portal でコンピューティングを正常に構成すると、Kubernetes クラスターと、IoT 名前空間 (Azure Stack Edge によって制御されるシステム名前空間) に関連付けられた既定のユーザーが作成されます。 
+Azure portal でコンピューティングを正常に構成すると、Kubernetes クラスターと、IoT 名前空間 (Azure Stack Edge Pro によって制御されるシステム名前空間) に関連付けられた既定のユーザーが作成されます。 
 
 ## <a name="get-kubernetes-endpoints"></a>Kubernetes エンドポイントを取得する
 
-Kubernetes クラスターにアクセスするようにクライアントを構成するには、Kubernetes エンドポイントが必要です。 次の手順に従って、Azure Stack Edge デバイスのローカル UI から Kubernetes API エンドポイントを取得します。
+Kubernetes クラスターにアクセスするようにクライアントを構成するには、Kubernetes エンドポイントが必要です。 次の手順に従って、Azure Stack Edge Pro デバイスのローカル UI から Kubernetes API エンドポイントを取得します。
 
 1. デバイスのローカル Web UI で **[デバイス]** ページに移動します。
 2. **[Device endpoints]\(デバイスのエンドポイント\)** で、 **[Kubernetes API service]\(Kubernetes API サービス\)** エンドポイントをコピーします。 このエンドポイントは `https://compute.<device-name>.<DNS-domain>[Kubernetes-cluster-IP-address]` という形式の文字列です。 
@@ -117,7 +117,7 @@ Kubernetes クラスターにアクセスするようにクライアントを構
 > * Kubernetes エンドポイントを取得する
 
 
-お客様の Azure Stack Edge デバイスを管理する方法を学習するには、次を参照してください。
+お使いの Azure Stack Edge Pro デバイスを管理する方法を確認するには、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [ローカル Web UI を使用して Azure Stack Edge を管理する](azure-stack-edge-manage-access-power-connectivity-mode.md)
+> [ローカル Web UI を使用して Azure Stack Edge Pro を管理する](azure-stack-edge-manage-access-power-connectivity-mode.md)
