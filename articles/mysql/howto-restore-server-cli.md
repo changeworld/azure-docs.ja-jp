@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 27d1841458e8c5e1854d6fcd0810c36d4272cc1d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 2116b5be4c5d40076aae10ecc2e81d73e7806e6d
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500540"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419505"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL サーバーのバックアップと復元を行う方法
 
@@ -79,6 +79,12 @@ az mysql server restore --resource-group myresourcegroup --name mydemoserver-res
 復元されたサーバーの場所と価格レベルの値は、元のサーバーと同じです。 
 
 復元プロセスが完了したら、新しいサーバーを検索して、想定どおりにデータが復元できたかどうかを確認します。 新しいサーバーには、復元が開始された時点の既存のサーバーで有効であったサーバー管理者のログイン名とパスワードが設定されています。 このパスワードは、新しいサーバーの **[概要]** ページで変更できます。
+
+さらに、復元操作の終了後には、復元操作後に既定値にリセットされる (およびプライマリ サーバーからコピーで上書きされない) 2 つのサーバー パラメーターがあります
+*   time_zone - この値は、既定値 **SYSTEM** に設定されます
+*   event_scheduler - event_scheduler は、復元されたサーバーで **OFF** に設定されます
+
+プライマリ サーバーから値をコピーし、[サーバー パラメーター](howto-server-parameters.md)を再構成して、復元されたサーバーでこれを設定する必要があります
 
 復元中に作成される新しいサーバーには、元のサーバーに存在した VNet サービス エンドポイントはありません。 この新しいサーバー用に、これらの規則を個別に設定する必要があります。 元のサーバーのファイアウォール規則は復元されます。
 

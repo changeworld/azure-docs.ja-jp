@@ -6,12 +6,12 @@ author: su-jie
 ms.author: sujie
 ms.date: 11/10/2019
 ms.topic: how-to
-ms.openlocfilehash: a47b641f4f5049beb605490122a33d407ac3e222
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 0122e67714efb201584a52f1cb763528dbb0b925
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044364"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903782"
 ---
 # <a name="test-stream-analytics-queries-locally-with-sample-data-using-visual-studio-code"></a>Visual Studio Code を使用してサンプル データで Stream Analytics クエリをローカルでテストする
 
@@ -21,7 +21,7 @@ Visual Studio Code の Azure Stream Analytics ツールを使用して、Stream 
 
 * [.NET Core SDK](https://dotnet.microsoft.com/download) をインストールし、Visual Studio Code を再起動します。
 
-* この[クイックスタート](quick-create-vs-code.md)を使用して、Visual Studio Code を使用して Stream Analytics ジョブを作成する方法を学習します。
+* この[クイックスタート](quick-create-visual-studio-code.md)を使用して、Visual Studio Code を使用して Stream Analytics ジョブを作成する方法を学習します。
 
 ## <a name="prepare-sample-data"></a>サンプル データの準備
 
@@ -31,17 +31,17 @@ Visual Studio Code の Azure Stream Analytics ツールを使用して、Stream 
 
 2. データが表示されたら、 **[名前を付けて保存]** をクリックして、ローカル ファイルにデータを保存します。
 
- ![ライブ入力をプレビューする](./media/quick-create-vs-code/preview-live-input.png)
+ ![ライブ入力をプレビューする](./media/quick-create-visual-studio-code/preview-live-input.png)
 
 ## <a name="define-a-local-input"></a>ローカル入力の定義
 
 1. Stream Analytics プロジェクトの Inputs フォルダーの **input.json** をクリックします。 次に、一番上の行で **[ローカル入力の追加]** を選択します。
 
-    ![プロジェクトからローカル入力を追加](./media/quick-create-vs-code/add-input-from-project.png)
+    ![プロジェクトからローカル入力を追加](./media/quick-create-visual-studio-code/add-input-from-project.png)
 
     または、**Ctrl + Shift + P** キーを押してコマンド パレットを開き、 **[ASA: 入力の追加]** を入力します。
 
-   ![VS Code に Stream Analytics の入力を追加する](./media/quick-create-vs-code/add-input.png)
+   ![VS Code に Stream Analytics の入力を追加する](./media/quick-create-visual-studio-code/add-input.png)
 
 2. **[ローカル入力]** を選択します。
 

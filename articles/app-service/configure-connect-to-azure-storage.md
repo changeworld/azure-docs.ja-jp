@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 8ca3688ad11bc7a694327990be22b8eccd8f8161
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: c240399f1368862a969561409371e075a010e8f2
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962861"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435611"
 ---
 # <a name="access-azure-storage-as-a-network-share-from-a-container-in-app-service"></a>App Service 内のコンテナーからネットワーク共有としての Azure Storage にアクセスする
 
@@ -57,7 +57,7 @@ ms.locfileid: "88962861"
 - App Service の Azure Storage は、現在、独自のコードを使用するシナリオ (コンテナー化されていない Windows アプリ) では**サポートされていません**。
 - App Service の Azure Storage は、インフラストラクチャの制限により、**ストレージ ファイアウォール**構成の使用を**サポートしていません**。
 - App Service を使用する Azure Storage では、アプリあたり**最大 5 つ**のマウント ポイントを指定できます。
-- アプリにマウントされた Azure Storage に App Service の FTP または FTPS エンドポイント経由でアクセスすることはできません。 [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用します。
+- アプリにマウントされた Azure Storage に App Service の FTP または FTPS エンドポイント経由でアクセスすることはできません。 [Azure ストレージ エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)を使用します。
 
 ::: zone-end
 
@@ -67,7 +67,7 @@ ms.locfileid: "88962861"
 - App Service の Azure Storage は、**Azure Files コンテナー** (読み取り/書き込み) と **Azure Blob コンテナー** (読み取り専用) のマウントをサポートしています。
 - App Service の Azure Storage は、インフラストラクチャの制限により、**ストレージ ファイアウォール**構成の使用を**サポートしていません**。
 - App Service の Azure Storage では、アプリあたり**最大 5 つ**のマウント ポイントを指定できます。
-- アプリにマウントされた Azure Storage に App Service の FTP または FTPS エンドポイント経由でアクセスすることはできません。 [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用します。
+- アプリにマウントされた Azure Storage に App Service の FTP または FTPS エンドポイント経由でアクセスすることはできません。 [Azure ストレージ エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)を使用します。
 
 ::: zone-end
 

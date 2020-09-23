@@ -1,23 +1,23 @@
 ---
-title: Azure portal を使用して Azure Stack Edge の順序の問題をトラブルシューティングする | Microsoft Docs
-description: Azure Stack Edge の順序の問題をトラブルシューティングする方法について説明します。
+title: Azure portal を使用して Azure Stack Edge Pro の順序の問題をトラブルシューティングする | Microsoft Docs
+description: Azure Stack Edge Pro の順序の問題をトラブルシューティングする方法について説明します。
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/11/2020
-ms.author: twooley
-ms.openlocfilehash: 226274c52610e24c305400d77dc7737d32c2b722
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.author: alkohli
+ms.openlocfilehash: 3087c209b844d691173edbbd8a993c1d0aae319b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783996"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903634"
 ---
-# <a name="troubleshoot-your-azure-stack-edge-ordering-issues"></a>Azure Stack Edge の順序の問題をトラブルシューティングする
+# <a name="troubleshoot-your-azure-stack-edge-pro-ordering-issues"></a>Azure Stack Edge Pro の順序の問題をトラブルシューティングする
 
-この記事では、Azure Stack Edge の順序の問題をトラブルシューティングする方法について説明します。
+この記事では、Azure Stack Edge Pro の順序の問題をトラブルシューティングする方法について説明します。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -59,7 +59,7 @@ Microsoft では、サブスクリプションの種類のアップグレード�
 
 ## <a name="microsoftdataboxedge-not-registered-for-subscription"></a>Microsoft.DataBoxEdge がサブスクリプションに登録されいない
 
-**エラー:** Azure portal で、Azure Stack Edge または Data Box Gateway に使用するサブスクリプションを選択すると、次のエラーが表示されます。
+**エラー:** Azure portal で、Azure Stack Edge Pro または Data Box Gateway に使用するサブスクリプションを選択すると、次のエラーが表示されます。
 
 *リソース プロバイダー Microsoft.DataBoxEdge はサブスクリプション &lt;サブスクリプション名&gt; に登録されておらず、サブスクリプション &lt;サブスクリプション名&gt; のリソース プロバイダーを登録するためのアクセス許可がありません*。
 
@@ -75,4 +75,4 @@ Microsoft では、サブスクリプションの種類のアップグレード�
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Stack Edge に関する問題をトラブルシューティングする](azure-stack-edge-troubleshoot.md)方法の詳細について学習します。
+* [Azure Stack Edge Pro に関する問題をトラブルシューティングする](azure-stack-edge-troubleshoot.md)方法の詳細について学習します。

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: 2146b1bd782aba5d98729a2d37d956744e469ba1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a204aacc0061091e0a273581e766bb669d191f0b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75860250"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903712"
 ---
 # <a name="choose-a-real-time-analytics-and-streaming-processing-technology-on-azure"></a>Azure でリアルタイム分析とストリーミング処理技術を選択する
 
@@ -55,4 +55,4 @@ Azure Stream Analytics は Microsoft の独占技術であり、Azure でのみ�
 * [Azure portal を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-portal.md)
 * [Azure PowerShell を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-powershell.md)
 * [Visual Studio を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-vs.md)
-* [Visual Studio Code を使用して Stream Analytics ジョブを作成する](quick-create-vs-code.md)
+* [Visual Studio Code を使用して Stream Analytics ジョブを作成する](quick-create-visual-studio-code.md)

@@ -7,13 +7,13 @@ services: security-center
 ms.author: memildin
 ms.date: 08/11/2020
 ms.service: security-center
-ms.topic: conceptual
-ms.openlocfilehash: f3a542cd62c3d593dbc0cce7982d47222e9a7c88
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.topic: how-to
+ms.openlocfilehash: dfba8bc1713e14099413a6c01d0af8508ba0eb73
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181105"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895158"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>資産インベントリ ツールと資産管理ツールを使用してリソースの調査と管理を行う
 
@@ -25,19 +25,22 @@ Security Center では、Azure リソースのセキュリティの状態が定�
 
 このビューとそのフィルターを使用して、次のような質問に対処できます。
 
-- Standard レベルのサブスクリプションのうち、未処理のレコメンデーションがあるものはどれか
+- Azure Defender が有効なサブスクリプションのうち、未処理の推奨事項があるものはどれか
 - 「Production」というタグが付いているマシンのうち、Log Analytics エージェントがないものはどれか
-- 特定のタグが付いているマシンのうち、何台のマシンに未処理のレコメンデーションがあるか
+- 特定のタグが付いているマシンのうち、未処理の推奨事項があるマシンは何台か
 - 特定のリソース グループ内のリソースのうち、何個のリソースに脆弱性評価サービスによるセキュリティの調査結果があるか
 
 このツールによる資産管理には大きな可能性があり、その範囲は拡大し続けています。 
+
+> [!TIP]
+> セキュリティに関する推奨事項は、 **[推奨事項]** ページにあるものと同じですが、ここでは選択した特定のリソースの種類に合わせてフィルタリングされています。 推奨事項の解決方法の詳細については、[Azure Security Center でのセキュリティに関する推奨事項の実装](security-center-recommendations.md)に関するページを参照してください。
 
 
 ## <a name="availability"></a>可用性
 
 |側面|詳細|
 |----|:----|
-|リリース状態:|プレビュー|
+|リリース状態:|一般提供 (GA)|
 |価格:|Free|
 |必要なロールとアクセス許可:|すべてのユーザー|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
@@ -56,7 +59,7 @@ Security Center では、Azure リソースのセキュリティの状態が定�
 
 - **フィルター** - ページの上部にある複数のフィルターを使用すると、回答しようとしている質問に従ってリソースの一覧をすばやく絞り込むことができます。 たとえば、「 *「Production」というタグが付いているマシンのうち、Log Analytics エージェントがないものはどれか*」という質問に回答する場合は、次のクリップに示すように、 **[エージェント監視]** フィルターと **[タグ]** フィルターを組み合わせることができます。
 
-    ![監視されていない運用リソースへのフィルター処理](./media/asset-inventory/filtering-to-prod-unmonitored.gif)
+    :::image type="content" source="./media/asset-inventory/filtering-to-prod-unmonitored.gif" alt-text="監視されていない運用リソースへのフィルター処理":::
 
     フィルターを適用すると、すぐに概要の値がクエリ結果に関連付けて更新されます。 
 
@@ -69,8 +72,9 @@ Security Center では、Azure リソースのセキュリティの状態が定�
 
 - **[資産管理オプション]** - インベントリでは、複雑な検出クエリを実行できます。 クエリに一致するリソースが見つかると、インベントリに次のような操作のショートカットが表示されます。
 
-    - フィルター処理されたリソースにタグを割り当てる - タグを付けるリソースの横にあるチェック ボックスをオンにします
-    - Security Center に新しいサーバーをオンボードする - **[非 Azure サーバーの追加]** ツールバー ボタンを使用します
+    - フィルター処理されたリソースにタグを割り当てる - タグを付けるリソースの横にあるチェック ボックスをオンにします。
+    - Security Center に新しいサーバーをオンボードする - **[非 Azure サーバーの追加]** ツールバー ボタンを使用します。
+    - Azure Logic Apps を使用してワークロードを自動化する - **[ロジック アプリのトリガー]** ボタンを使用して、1 つ以上のリソースでロジック アプリを実行します。 ロジック アプリを事前に準備し、関連するトリガーの種類 (HTTP 要求) を受け入れる必要があります。 [Logic Apps の詳細をご覧ください](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)。
 
 
 ## <a name="how-does-asset-inventory-work"></a>資産インベントリのしくみ
@@ -86,18 +90,18 @@ ARG は、大規模なクエリの実行機能によってリソースを効率�
 
 1. Security Center のサイドバーで、 **[インベントリ]** を選択します。
 
-1. 必要に応じて、特定のリソースを表示するには、 **[名前でフィルター]** ボックスに名前を入力します。
+1. **[名前でフィルター]** ボックスを使用して特定のリソースを表示するか、下記のようにフィルターを使用します。
 
 1. フィルターの関連するオプションを選択して、実行する特定のクエリを作成します。
 
-    ![インベントリのフィルター](./media/asset-inventory/inventory-filters.png)
+    :::image type="content" source="./media/asset-inventory/inventory-filters.png" alt-text="インベントリのフィルター処理オプション" lightbox="./media/asset-inventory/inventory-filters.png":::
 
     既定では、リソースはアクティブなセキュリティのレコメンデーションの数によって並べ替えられます。
 
     > [!IMPORTANT]
     > 各フィルターのオプションは、現在選択されているサブスクリプション内のリソース**および**他のフィルターで選択した項目に固有のものです。
     >
-    > たとえば、サブスクリプションを 1 つだけ選択していて、そのサブスクリプションに未処理のセキュリティのレコメンデーションを含むリソースがない (異常なリソースが 0 である) 場合、 **[レコメンデーション]** フィルターにはオプションが表示されません。 
+    > たとえば、サブスクリプションを 1 つだけ選択していて、そのサブスクリプションに、修復すべき未処理のセキュリティの推奨事項があるリソースがない場合 (異常なリソースが 0 の場合)、 **[推奨事項]** フィルターにオプションは表示されません。 
 
 1. **[セキュリティの調査結果に含まれる内容]** フィルターを使用するには、脆弱性の検出結果の ID、セキュリティ チェック、または CVE 名からフリー テキストを入力して、影響を受けるリソースをフィルター処理します。
 
@@ -106,19 +110,24 @@ ARG は、大規模なクエリの実行機能によってリソースを効率�
     > [!TIP]
     > **[セキュリティの調査結果に含まれる内容]** と **[タグ]** フィルターには、1 つの値のみ指定できます。 複数のフィルターを使用してフィルター処理を行うには **[フィルターの追加]** を使用します。
 
-1. **[価格レベル]** フィルターを使用するには、1 つまたは複数のオプション (Free、Partial、または Standard) を選択します。
+1. **Azure Defender** フィルターを使用するには、1 つ以上のオプション (オフ、オン、一部) を選択します。
 
-    - **Free** - Free 価格レベルで提供されるリソース
-    - **Standard** - Standard 価格レベルで提供されるリソース
-    - **Partial** - これは、Standard 価格レベルで提供されるが、一部のオプションのセキュリティ プランが無効になっているサブスクリプションに適用されます。 たとえば、次のサブスクリプションは Standard レベルで提供されますが、Standard レベルの 5 つの要素が無効になっています。 
+    - **[オフ]** - Azure Defender プランによって保護されていないリソース。 これらのいずれかを右クリックしてアップグレードできます。
 
-        ![Standard (部分的) 価格レベルで提供されるサブスクリプション](./media/asset-inventory/pricing-tier-partial.png)
+        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="右クリックでリソースを Azure Defender にアップグレードする" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
+
+    - **[オン]** - Azure Defender プランによって保護されているリソース。
+    - **[一部]** - これは、Azure Defender プランのすべてではなく一部が無効になっている**サブスクリプション**に適用されます。 たとえば、次のサブスクリプションでは、5 つの Azure Defender プランが無効になっています。 
+
+        :::image type="content" source="./media/asset-inventory/pricing-tier-partial.png" alt-text="Azure Defender が部分的に有効なサブスクリプション":::
 
 1. クエリの結果をさらに調べるには、該当するリソースを選択します。
 
-1. 必要に応じて、 **[Resource Graph エクスプローラーで表示]** を選択し、Resource Graph エクスプローラーでクエリを開きます。
+1. 現在選択されているフィルター オプションを、Resource Graph エクスプローラーでクエリとして表示するには、 **[Resource Graph エクスプローラーで表示]** を選択します。
 
     ![ARG でのインベントリ クエリ](./media/asset-inventory/inventory-query-in-resource-graph-explorer.png)
+
+1. 以前に定義したロジック アプリを実行するには 
 
 1. フィルターを定義してページを開いたままにしておくと、Security Center で結果が自動的に更新されません。 ページを手動で再読み込みするか、 **[更新]** を選択しない限り、リソースを変更しても表示される結果には影響しません。
 
@@ -127,22 +136,19 @@ ARG は、大規模なクエリの実行機能によってリソースを効率�
 
 ### <a name="why-arent-all-of-my-subscriptions-machines-storage-accounts-etc-shown"></a>一部のサブスクリプション、マシン、ストレージ アカウントなどが表示されないのはなぜですか。
 
-インベントリ ビューには、クラウド セキュリティ態勢管理 (CSPM) の観点でリソースの一覧が表示されます。 フィルター処理によって返されるのは、環境内のすべてのリソースではなく、未処理の (または「アクティブな」) レコメンデーションを含むリソースだけです。 
+インベントリ ビューには、クラウド セキュリティ態勢管理 (CSPM) の観点から、Security Center に接続されたリソースの一覧が表示されます。 フィルター処理によって返されるのは、環境内のすべてのリソースではなく、未処理の (または「アクティブな」) レコメンデーションを含むリソースだけです。 
 
-たとえば、9 個のサブスクリプションがあり、現時点では 8 個のサブスクリプションにレコメンデーションがある場合、 **[リソースの種類] = [サブスクリプション]** でフィルター処理すると、アクティブなレコメンデーションを含む 8 個のサブスクリプションのみが表示されます。
+たとえば、次のスクリーンショットは、38 個のサブスクリプションにアクセスできるユーザーを示しています。現在、10 個にのみ推奨事項があります。 そのため、**リソースの種類 = サブスクリプション**でフィルター処理すると、アクティブな推奨事項がある 10 個のサブスクリプションだけがインベントリに表示されます。
 
-![アクティブなレコメンデーションがない場合、一部のサブスクリプションは返されません。](./media/asset-inventory/filtered-subscriptions-some.png)
+:::image type="content" source="./media/asset-inventory/filtered-subscriptions-some.png" alt-text="アクティブなレコメンデーションがない場合、一部のサブスクリプションは返されません。":::
 
-
-### <a name="why-do-some-of-my-resources-show-blank-values-in-the-pricing-or-agent-monitoring-columns"></a>一部のリソースの価格列やエージェントの監視列に空白の値が表示されるのはなぜですか。
+### <a name="why-do-some-of-my-resources-show-blank-values-in-the-azure-defender-or-agent-monitoring-columns"></a>一部のリソースで、Azure Defender 列またはエージェントの監視列に空白の値が表示されるのはなぜですか。
 
 Security Center で監視されているすべてのリソースにエージェントがあるわけではありません。 ディスク、Logic Apps、Data Lake Analytics、イベント ハブなどの Azure Storage アカウントや PaaS リソースがその例です。
 
 価格やエージェントの監視がリソースに関係しない場合、インベントリのこれらの列には何も表示されません。
 
-![一部のリソースでは、エージェントの監視列や価格列に空白の情報が表示されます](./media/asset-inventory/agent-pricing-blanks.png)
-
-
+:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="一部のリソースでエージェントの監視列または Azure Defender 列に空白の情報が表示される":::
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -151,5 +157,4 @@ Security Center で監視されているすべてのリソースにエージェ�
 関連するツールの詳細については、以下のページをご覧ください。
 
 - [Azure Resource Graph (ARG)](https://docs.microsoft.com/azure/governance/resource-graph/)
-
 - [Kusto クエリ言語 (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/)

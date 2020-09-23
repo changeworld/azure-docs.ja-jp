@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 09/03/2020
 ms.author: aahi
-ms.openlocfilehash: 610d5ce095097a31ee92c67f0112d1657424858e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5a85086ea8d969dc70f4cd24b25a00765da285eb
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80878750"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425808"
 ---
 # <a name="deploy-the-speech-service-container-to-azure-container-instances"></a>音声サービス コンテナーを Azure Container Instances にデプロイする
 
@@ -25,7 +25,7 @@ Cognitive Services の[音声サービス](speech-container-howto.md) コンテ�
 
 ## <a name="request-access-to-the-container-registry"></a>コンテナー レジストリへのアクセスの要求
 
-コンテナーへのアクセスを要求するには、最初に [Cognitive Services Speech コンテナー要求フォーム](https://aka.ms/speechcontainerspreview/)に記入して送信する必要があります。 
+コンテナーへのアクセスを要求するには、最初に [Cognitive Services Speech コンテナー要求フォーム](https://aka.ms/csgate/)に記入して送信する必要があります。 
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 

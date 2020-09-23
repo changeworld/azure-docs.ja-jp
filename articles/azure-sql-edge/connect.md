@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Edge の接続とクエリ (プレビュー)
-description: Azure SQL Edge に接続してクエリを実行する方法について説明します (プレビュー)。
+title: Azure SQL Edge の接続とクエリ
+description: Azure SQL Edge に接続してクエリを実行する方法について説明します。
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,14 +9,14 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/25/2020
-ms.openlocfilehash: bc7410325bbcf3086c4ac2054b7bc663629a29e5
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 4548d4956b4cd01886fb1be9a530cc1627f76b2c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373115"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888232"
 ---
-# <a name="connect-and-query-azure-sql-edge-preview"></a>Azure SQL Edge の接続とクエリ (プレビュー)
+# <a name="connect-and-query-azure-sql-edge"></a>Azure SQL Edge の接続とクエリ
 
 Azure SQL Edge では、コンテナーをデプロイした後、次のいずれかの場所から SQL データベース エンジンに接続できます。
 

@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 055a3e9ec360e5b2c29cedd0f26c976c269f92bb
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 5a22bd9508feac1348bcd8042fa6ac791864c261
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400621"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425638"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
@@ -56,7 +56,7 @@ ms.locfileid: "89400621"
 
 ライブ文字起こしで 19 の言語と 8 つの地域がサポートされるようになりました。
 
-## <a name="protecting-your-content-with-media-services-and-azure-ad"></a>Media Services と Azure AD によるコンテンツの保護
+### <a name="protecting-your-content-with-media-services-and-azure-ad"></a>Media Services と Azure AD によるコンテンツの保護
 
 「[Azure AD を使用したエンド ツー エンドのコンテンツ保護](./azure-ad-content-protection.md)」というタイトルのチュートリアルを公開しました。
 

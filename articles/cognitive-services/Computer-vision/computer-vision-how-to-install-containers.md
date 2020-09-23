@@ -8,21 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 819fc27d3b50245975192622ad969b53605c1acd
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 43fad8d09c069f5e054634fb46f40e63047d5426
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378476"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888290"
 ---
 # <a name="install-and-run-read-containers-preview"></a>Read コンテナーのインストールと実行 (プレビュー)
 
+[!INCLUDE [container hosting on the Microsoft Container Registry](../containers/includes/gated-container-hosting.md)]
+
 コンテナーを使用すると、独自の環境で Computer Vision API を実行できます。 コンテナーは、特定のセキュリティ要件とデータ ガバナンス要件に適しています。 この記事では、Computer Vision コンテナーをダウンロード、インストール、実行する方法について説明します。
 
-Computer Vision では、単一の Docker コンテナー *Read* を使用できます。 *Read* コンテナーを使用すると、レシート、ポスター、名刺など、さまざまな表面や背景を持ついろいろなオブジェクトの画像から、"*印刷されたテキスト*" を検出して、抽出することができます。 さらに、*Read* コンテナーでは、画像内の "*手書きテキスト*" も検出され、PDF、TIFF、複数ページ ファイルがサポートされます。 詳細については、[Read](concept-recognizing-text.md#read-api) API のドキュメントを参照してください。
+*Read* コンテナーを使用すると、レシート、ポスター、名刺など、さまざまな表面や背景を持ついろいろなオブジェクトの画像から、"*印刷されたテキスト*" を検出して、抽出することができます。 さらに、*Read* コンテナーでは、画像内の "*手書きテキスト*" も検出され、PDF、TIFF、複数ページ ファイルがサポートされます。 詳細については、[Read](concept-recognizing-text.md#read-api) API のドキュメントを参照してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 
@@ -36,9 +38,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。| 
 |Computer Vision リソース |コンテナーを使用するためには、以下が必要です。<br><br>Azure **Computer Vision** リソースとその関連する API キーおよびエンドポイント URI。 どちらの値も、対象リソースの概要ページとキー ページで使用でき、コンテナーを開始するために必要です。<br><br>**{API_KEY}** : **[キー]** ページにある 2 つの利用可能なリソース キーのどちらか<br><br>**{ENDPOINT_URI}** : **[概要]** ページに提示されているエンドポイント|
 
-## <a name="request-access-to-the-private-container-registry"></a>プライベート コンテナー レジストリへのアクセスの要求
+## <a name="request-approval-to-run-the-container"></a>コンテナーを実行するための承認を要求する
 
-コンテナーへのアクセスを要求するには、[要求フォーム](https://aka.ms/cognitivegate)に記入して送信します。 
+コンテナーを実行するための承認を要求するには、[要求フォーム](https://aka.ms/cognitivegate)に記入して送信します。 
 
 [!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
 
@@ -55,6 +57,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ```console
 grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detected
 ```
+
 > [!WARNING]
 > AVX2 をサポートするにはホスト コンピューターが*必須*です。 AVX2 サポートがないと、コンテナーは正しく機能*しません*。
 
@@ -68,15 +71,26 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 | コンテナー | コンテナー レジストリ / リポジトリ / イメージ名 |
 |-----------|------------|
-| Read | `containerpreview.azurecr.io/microsoft/cognitive-services-read:2.0` |
+| Read 3.0-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview` |
+| Read 3.1-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview` |
 
 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) コマンドを使用して、コンテナー イメージをダウンロードします。
 
 ### <a name="docker-pull-for-the-read-container"></a>読み取りコンテナー用の Docker pull
 
+# <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-1)
+
 ```bash
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:2.0
+docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview
 ```
+
+# <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
+
+```bash
+docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview
+```
+
+---
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -93,9 +107,11 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:2.0
 
 `docker run` コマンドの[例](computer-vision-resource-container-config.md#example-docker-run-commands)を利用できます。
 
+# <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-1)
+
 ```bash
-docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
-containerpreview.azurecr.io/microsoft/cognitive-services-read \
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -104,14 +120,45 @@ ApiKey={API_KEY}
 このコマンドは、次の操作を行います。
 
 * コンテナー イメージから読み取りコンテナーを実行します。
-* 8 つの CPU コアと 16 ギガバイト (GB) のメモリを割り当てます。
+* 8 つの CPU コアと 18 ギガバイト (GB) のメモリを割り当てます。
 * TCP ポート 5000 を公開し、コンテナーに pseudo-TTY を割り当てます。
 * コンテナーの終了後にそれを自動的に削除します。 ホスト コンピューター上のコンテナー イメージは引き続き利用できます。
+
+# <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+
+```
+
+このコマンドは、次の操作を行います。
+
+* コンテナー イメージから読み取りコンテナーを実行します。
+* 8 つの CPU コアと 18 ギガバイト (GB) のメモリを割り当てます。
+* TCP ポート 5000 を公開し、コンテナーに pseudo-TTY を割り当てます。
+* コンテナーの終了後にそれを自動的に削除します。 ホスト コンピューター上のコンテナー イメージは引き続き利用できます。
+
+---
+
 
 `docker run` コマンドの他の[例](./computer-vision-resource-container-config.md#example-docker-run-commands)もご覧いただけます。 
 
 > [!IMPORTANT]
 > コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](#billing)」を参照してください。
+
+より高いスループットが必要な場合 (たとえば、複数ページのファイルを処理する場合)、[Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-create) および [Azure Queue](https://docs.microsoft.com/azure/storage/queues/storage-queues-introduction) を使用して、[Kubernetes クラスター](deploy-computer-vision-on-premises.md)に複数の v3.0 または v3.1 コンテナーをデプロイすることを検討してください。
+
+処理用のイメージを格納するために Azure Storage を使用している場合は、コンテナーを呼び出すときに使用する[接続文字列](https://docs.microsoft.com/azure/storage/common/storage-configure-connection-string)を作成できます。
+
+接続文字列を見つけるには
+
+1. Azure portal で**ストレージ アカウント**に移動し、自分のアカウントを見つけます。
+2. 左側のナビゲーション リストで **[アクセス キー]** をクリックします。
+3. 接続文字列は、 **[接続文字列]** の下に配置されます。
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
@@ -123,11 +170,15 @@ ApiKey={API_KEY}
 
 コンテナーには、REST ベースのクエリ予測エンドポイント API が用意されています。 
 
-コンテナーの API のホストとしては `http://localhost:5000` を使用します。
+コンテナー API には、ホストの `http://localhost:5000` を使用します。 Swagger パスは `http://localhost:5000/swagger/vision-v3.0-read/swagger.json` で確認できます。
 
 ### <a name="asynchronous-read"></a>非同期読み取り
 
-Computer Vision サービスで該当する REST 操作を使用する方法と同じように、`POST /vision/v2.0/read/core/asyncBatchAnalyze` 操作と `GET /vision/v2.0/read/operations/{operationId}` 操作を同時に使用して、画像を非同期に読み取ることができます。 非同期 POST メソッドでは、HTTP GET 要求に対する識別子として使用される `operationId` が返されます。
+
+# <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-1)
+
+Computer Vision サービスで該当する REST 操作を使用する方法と同じように、`POST /vision/v3.1/read/analyze` 操作と `GET /vision/v3.1/read/operations/{operationId}` 操作を同時に使用して、画像を非同期に読み取ることができます。 非同期 POST メソッドでは、HTTP GET 要求に対する識別子として使用される `operationId` が返されます。
+
 
 Swagger UI で `asyncBatchAnalyze` を選択し、ブラウザーで展開します。 次に、 **[Try it out]\(試してみる\)**  >  **[Choose file]\(ファイルの選択\)** を選択します。 この例では、次の画像を使用します。
 
@@ -137,8 +188,8 @@ Swagger UI で `asyncBatchAnalyze` を選択し、ブラウザーで展開しま
 
 ```http
  content-length: 0
- date: Fri, 13 Sep 2019 16:23:01 GMT
- operation-location: http://localhost:5000/vision/v2.0/read/operations/a527d445-8a74-4482-8cb3-c98a65ec7ef9
+ date: Fri, 04 Sep 2020 16:23:01 GMT
+ operation-location: http://localhost:5000/vision/v3.1/read/operations/a527d445-8a74-4482-8cb3-c98a65ec7ef9
  server: Kestrel
 ```
 
@@ -146,102 +197,159 @@ Swagger UI で `asyncBatchAnalyze` を選択し、ブラウザーで展開しま
 
 ```json
 {
-  "status": "Succeeded",
-  "recognitionResults": [
-    {
-      "page": 1,
-      "clockwiseOrientation": 2.42,
-      "width": 502,
-      "height": 252,
-      "unit": "pixel",
-      "lines": [
-        {
-          "boundingBox": [ 56, 39, 317, 50, 313, 134, 53, 123 ],
-          "text": "Tabs VS",
-          "words": [
-            {
-              "boundingBox": [ 90, 43, 243, 53, 243, 123, 94, 125 ],
-              "text": "Tabs",
-              "confidence": "Low"
+  "status": "succeeded",
+  "createdDateTime": "2020-09-02T10:30:14Z",
+  "lastUpdatedDateTime": "2020-09-02T10:30:15Z",
+  "analyzeResult": {
+    "version": "3.1.0",
+    "readResults": [
+      {
+        "page": 1,
+        "angle": 2.12,
+        "width": 502,
+        "height": 252,
+        "unit": "pixel",
+        "language": "",
+        "lines": [
+          {
+            "boundingBox": [58, 42, 314, 59, 311, 123, 56, 121],
+            "text": "Tabs vs",
+            "appearance": {
+              "style": "handwriting",
+              "styleConfidence": 0.999
             },
-            {
-              "boundingBox": [ 259, 55, 313, 62, 313, 122, 259, 123 ],
-              "text": "VS"
-            }
-          ]
-        },
-        {
-          "boundingBox": [ 221, 148, 417, 146, 417, 206, 227, 218 ],
-          "text": "Spaces",
-          "words": [
-            {
-              "boundingBox": [ 230, 148, 416, 141, 419, 211, 232, 218 ],
-              "text": "Spaces"
-            }
-          ]
-        }
-      ]
-    }
-  ]
+            "words": [
+              {
+                "boundingBox": [85, 45, 242, 62, 241, 122, 83, 123],
+                "text": "Tabs",
+                "confidence": 0.981
+              },
+              {
+                "boundingBox": [258, 64, 314, 72, 314, 123, 256, 123],
+                "text": "vs",
+                "confidence": 0.958
+              }
+            ]
+          },
+          {
+            "boundingBox": [286, 171, 415, 165, 417, 197, 287, 201],
+            "text": "paces",
+            "appearance": {
+              "style": "print",
+              "styleConfidence": 0.603
+            },
+            "words": [
+              {
+                "boundingBox": [303, 175, 415, 167, 415, 198, 306, 199],
+                "text": "paces",
+                "confidence": 0.918
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 }
 ```
 
-### <a name="synchronous-read"></a>同期読み取り
+# <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
 
-`POST /vision/v2.0/read/core/Analyze` 操作を使用して、画像を同期的に読み取ることができます。 画像全体が読み込まれたら、そのときにだけ、API から JSON 応答が返されます。 これに対する唯一の例外は、エラーが発生した場合です。 エラーが発生すると、次の JSON が返されます。
+Computer Vision サービスで該当する REST 操作を使用する方法と同じように、`POST /vision/v3.0/read/analyze` 操作と `GET /vision/v3.0/read/operations/{operationId}` 操作を同時に使用して、画像を非同期に読み取ることができます。 非同期 POST メソッドでは、HTTP GET 要求に対する識別子として使用される `operationId` が返されます。
+
+Swagger UI で `asyncBatchAnalyze` を選択し、ブラウザーで展開します。 次に、 **[Try it out]\(試してみる\)**  >  **[Choose file]\(ファイルの選択\)** を選択します。 この例では、次の画像を使用します。
+
+![タブとスペース](media/tabs-vs-spaces.png)
+
+非同期 POST が正常に実行されると、**HTTP 202** 状態コードが返されます。 応答の一部として、要求の結果エンドポイントを保持する `operation-location` ヘッダーがあります。
+
+```http
+ content-length: 0
+ date: Fri, 04 Sep 2020 16:23:01 GMT
+ operation-location: http://localhost:5000/vision/v3.0/read/operations/a527d445-8a74-4482-8cb3-c98a65ec7ef9
+ server: Kestrel
+```
+
+`operation-location` は完全修飾 URL であり、HTTP GET を介してアクセスされます。 次に示すのは、前の画像から `operation-location` URL を実行すると返される JSON 応答です。
 
 ```json
 {
-    status: "Failed"
+  "status": "succeeded",
+  "createdDateTime": "2020-09-02T10:24:49Z",
+  "lastUpdatedDateTime": "2020-09-02T10:24:50Z",
+  "analyzeResult": {
+    "version": "3.0.0",
+    "readResults": [
+      {
+        "page": 1,
+        "angle": 2.12,
+        "width": 502,
+        "height": 252,
+        "unit": "pixel",
+        "language": "",
+        "lines": [
+          {
+            "boundingBox": [58, 42, 314, 59, 311, 123, 56, 121],
+            "text": "Tabs vs",
+            "words": [
+              {
+                "boundingBox": [85, 45, 242, 62, 241, 122, 83, 123],
+                "text": "Tabs",
+                "confidence": 0.981
+              },
+              {
+                "boundingBox": [258, 64, 314, 72, 314, 123, 256, 123],
+                "text": "vs",
+                "confidence": 0.958
+              }
+            ]
+          },
+          {
+            "boundingBox": [286, 171, 415, 165, 417, 197, 287, 201],
+            "text": "paces",
+            "words": [
+              {
+                "boundingBox": [303, 175, 415, 167, 415, 198, 306, 199],
+                "text": "paces",
+                "confidence": 0.918
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 }
 ```
 
-JSON 応答オブジェクトには、非同期バージョンと同じオブジェクト グラフが含まれます。 JavaScript を使用していて、タイプ セーフが必要な場合は、次の型を使用して、JSON 応答を `AnalyzeResult` オブジェクトとしてキャストできます。
+---
 
-```typescript
-export interface AnalyzeResult {
-    status: Status;
-    recognitionResults?: RecognitionResult[] | null;
-}
+> [!IMPORTANT]
+> ロード バランサーの背後に複数の読み取りコンテナーをデプロイする場合は (たとえば、Docker Compose または Kubernetes の下)、外部キャッシュが必要です。 処理コンテナーと GET 要求コンテナーは同じではない可能性があるため、外部キャッシュによって結果が格納され、コンテナーとの間で共有されます。 キャッシュ設定の詳細については、「[Computer Vision Docker コンテナーを構成する](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-resource-container-config)」を参照してください。
 
-export enum Status {
-    NotStarted = 0,
-    Running = 1,
-    Failed = 2,
-    Succeeded = 3
-}
+### <a name="synchronous-read"></a>同期読み取り
 
-export enum Unit {
-    Pixel = 0,
-    Inch = 1
-}
+次の操作を使用して、画像を同期的に読み取ることができます。 
 
-export interface RecognitionResult {
-    page?: number | null;
-    clockwiseOrientation?: number | null;
-    width?: number | null;
-    height?: number | null;
-    unit?: Unit | null;
-    lines?: Line[] | null;
-}
+# <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-1)
 
-export interface Line {
-    boundingBox?: number[] | null;
-    text: string;
-    words?: Word[] | null;
-}
+`POST /vision/v3.1/read/syncAnalyze` 
 
-export enum Confidence {
-    High = 0,
-    Low = 1
-}
+# <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
-export interface Word {
-  boundingBox?: number[] | null;
-  text: string;
-  confidence?: Confidence | null;
+`POST /vision/v3.0/read/SyncAnalyze`
+
+---
+
+画像全体が読み込まれたら、そのときにだけ、API から JSON 応答が返されます。 これに対する唯一の例外は、エラーが発生した場合です。 エラーが発生すると、次の JSON が返されます。
+
+```json
+{
+    "status": "Failed"
 }
 ```
+
+JSON 応答オブジェクトには、非同期バージョンと同じオブジェクト グラフが含まれます。 JavaScript を使用していて、タイプ セーフが必要な場合は、TypeScript を使用して、JSON 応答をキャストすることを検討してください。
 
 ユースケースの例については、<a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">こちらの TypeScript サンドボックス<span class="docon docon-navigate-external x-hidden-focus"></span></a>を参照し、 **[Run]\(実行\)** を選択してその使いやすさを確認してください。
 

@@ -1,24 +1,24 @@
 ---
-title: Azure Arc 対応サーバー (プレビュー) を使用した VM 拡張機能の管理
-description: Azure Arc 対応サーバー (プレビュー) を使用すると、Azure 以外の VM でのデプロイ後構成と自動化タスクを提供する仮想マシン拡張機能のデプロイを管理できます。
-ms.date: 06/17/2020
+title: Azure Arc 対応サーバーを使用した VM 拡張機能の管理
+description: Azure Arc 対応サーバーを使用すると、Azure 以外の VM でのデプロイ後構成と自動化タスクを提供する仮想マシン拡張機能のデプロイを管理できます。
+ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 259a55c0e5cb4074871fd70a61e6c61d5cf3c50a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 988c4d7b2fcbffb95932fe70d8014de74dd33343
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018163"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887735"
 ---
-# <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers-preview"></a>Azure Arc 対応サーバー (プレビュー) を使用した仮想マシン拡張機能の管理
+# <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Azure Arc 対応サーバーを使用した仮想マシン拡張機能の管理
 
 仮想マシン (VM) 拡張機能は、Azure VM でのデプロイ後の構成と自動タスクを提供する複数の小さなアプリケーションです。 たとえば、仮想マシンでソフトウェアのインストールやウイルス対策保護が必要な場合、あるいは、仮想マシン内でスクリプトを実行するために、VM 拡張機能を使用できます。
 
-Azure Arc 対応サーバー (プレビュー) を使用すると、Azure VM 拡張機能を Azure 以外の Windows VM と Linux VM にデプロイし、オンプレミス、エッジ、その他のクラウド環境のハイブリッド マシンのライフサイクルを通した管理を簡素化できます。
+Azure Arc 対応サーバーを使用すると、Azure VM 拡張機能を Azure 以外の Windows VM と Linux VM にデプロイし、オンプレミス、エッジ、その他のクラウド環境のハイブリッド マシンのライフサイクルを通した管理を簡素化できます。
 
 ## <a name="key-benefits"></a>主な利点
 
-Azure Arc 対応サーバー (プレビュー) による VM 拡張機能のサポートには、次のような主な利点があります。
+Azure Arc 対応サーバーによる VM 拡張機能のサポートには、次のような主な利点があります。
 
 * [Azure Automation State Configuration](../../automation/automation-dsc-overview.md) を使用して、構成を一元的に保存し、DSC VM 拡張機能によって有効にされているハイブリッド接続マシンの望ましい状態を維持します。
 
@@ -47,7 +47,7 @@ VM 拡張機能は、[サポートされているリージョン](overview.md#su
 |Log Analytics エージェント |Linux |Microsoft.EnterpriseCloud.Monitoring |[Linux 用 Log Analytics VM 拡張機能](../../virtual-machines/extensions/oms-linux.md) |
 |Microsoft Dependency Agent | Linux |Microsoft.Compute | [Linux 用 Dependency Agent 仮想マシン拡張機能](../../virtual-machines/extensions/agent-dependency-linux.md) |
 
-VM 拡張機能は、Azure portal から、または Arc 対応サーバー (プレビュー) によって管理されているハイブリッド サーバー上の Azure PowerShell から、Azure Resource Manager テンプレートで実行できます。
+VM 拡張機能は、Azure portal から、または Arc 対応サーバーによって管理されているハイブリッド サーバー上の Azure PowerShell から、Azure Resource Manager テンプレートで実行できます。
 
 Azure Connected Machine エージェント パッケージと拡張機能エージェント コンポーネントの詳細については、[エージェントの概要](agent-overview.md#agent-component-details)に関する記事を参照してください。
 
@@ -75,13 +75,13 @@ Linux 用の Log Analytics エージェント VM 拡張機能を使用するに�
 
 ## <a name="enable-extensions-from-the-portal"></a>ポータルから拡張機能を有効にする
 
-VM 拡張機能は、Azure portal を使用して、Arc for server (プレビュー) で管理されているマシンに適用できます。
+Azure portal を使用して、Arc for server で管理されているマシンに VM 拡張機能を適用できます。
 
 1. お使いのブラウザーで [Azure portal](https://aka.ms/arcserver-preview) に移動します。
 
-2. ポータルで **[マシン - Azure Arc]** に移動し、一覧からハイブリッド マシンを選択します。
+2. ポータルで **[サーバー - Azure Arc]** に移動し、一覧からハイブリッド マシンを選択します。
 
-3. **[拡張機能]** を選択し、 **[追加]** を選択します。 利用可能な拡張機能の一覧から目的の拡張機能を選択し、ウィザードの手順に従います。 この例では、Log Analytics VM 拡張機能をデプロイします。 
+3. **[拡張機能]** を選択し、 **[追加]** を選択します。 利用可能な拡張機能の一覧から目的の拡張機能を選択し、ウィザードの手順に従います。 この例では、Log Analytics VM 拡張機能をデプロイします。
 
     ![選択したマシンの VM 拡張機能を選択する](./media/manage-vm-extensions/add-vm-extensions.png)
 
@@ -98,7 +98,7 @@ VM 拡張機能は、Azure portal を使用して、Arc for server (プレビュ
 
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
 
-VM 拡張機能を Azure Resource Manager テンプレートに追加し、テンプレートのデプロイを使用して実行できます。 Arc 対応サーバー (プレビュー) によってサポートされている VM 拡張機能の場合、Azure PowerShell を使用して Linux または Windows マシンにサポートされている VM 拡張機能をデプロイできます。 以下の各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
+VM 拡張機能を Azure Resource Manager テンプレートに追加し、テンプレートのデプロイを使用して実行できます。 Arc 対応サーバーによってサポートされている VM 拡張機能の場合、Azure PowerShell を使用して Linux または Windows マシンにサポートされている VM 拡張機能をデプロイできます。 以下の各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
 
 >[!NOTE]
 >複数の拡張機能をまとめてバッチ処理することができますが、順番にインストールされます。 最初の拡張機能のインストールが完了すると、次の拡張機能のインストールが試行されます。
@@ -707,6 +707,18 @@ Azure Monitor 依存関係エージェント拡張機能を使用するため、
 }
 ```
 
+## <a name="uninstall-extension"></a>拡張機能をアンインストールする
+
+Arc 対応サーバーからの 1 つ以上の拡張機能の削除は、Azure portal からのみ実行できます。 拡張機能を削除するには、次の手順のようにします。
+
+1. お使いのブラウザーで [Azure portal](https://portal.azure.com) に移動します。
+
+2. ポータルで **[サーバー - Azure Arc]** に移動し、一覧からハイブリッド マシンを選択します。
+
+3. **[拡張機能]** を選択し、インストールされている拡張機能の一覧から拡張機能を選択します。
+
+4. **[アンインストール]** を選択し、確認を求めるメッセージが表示されたら、 **[はい]** を選択して続行します。
+
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 拡張機能のデプロイの状態に関するデータは、Azure portal で取得できます。
@@ -715,7 +727,7 @@ Azure Monitor 依存関係エージェント拡張機能を使用するため、
 
 1. ゲスト エージェント ログを調べるには、拡張機能がプロビジョニングされたときのアクティビティを `%SystemDrive%\ProgramData\GuestConfig\ext_mgr_logs` (Windows の場合) および `/var/lib/GuestConfig/ext_mgr_logs` (Linux の場合) で確認します。
 
-2. Windows の場合、特定の拡張機能の詳細な拡張機能ログは `%SystemDrive%\ProgramData\GuestConfig\extension_logs\<Extension>` で確認できます。 Linux の場合、拡張機能の出力は、インストールされる拡張機能ごとに `/var/log/GuestConfig/extension_logs` のファイルに記録されます。
+2. Windows の場合、特定の拡張機能の詳細な拡張機能ログは `%SystemDrive%\ProgramData\GuestConfig\extension_logs\<Extension>` で確認できます。 Linux の場合、拡張機能の出力は、インストールされる拡張機能ごとに `/var/lib/GuestConfig/extension_logs` のファイルに記録されます。
 
 3. エラーコードや既知の問題などについて、拡張機能固有のドキュメントのトラブルシューティングのセクションを確認します。各拡張機能の追加のトラブルシューティング情報については、拡張機能の概要の「**トラブルシューティングとサポート**」セクションを参照してください。 これには、ログに書き込まれたエラー コードの説明が含まれます。 拡張機能に関する記事へのリンクは、前に示した[拡張機能の表](#extensions)にあります。
 
@@ -725,4 +737,4 @@ Azure Monitor 依存関係エージェント拡張機能を使用するため、
 
 - [Azure Policy](../../governance/policy/overview.md) を使用してマシンを管理する方法を確認します。VM の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)、マシンの報告先が、予期された Log Analytics ワークスペースであることの確認、[VM での Azure Monitor](../../azure-monitor/insights/vminsights-enable-policy.md) を使用した監視の有効化などの方法です。
 
-- [Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)の詳細を確認します。 マシン上で実行されている OS とワークロードをプロアクティブに監視したい場合、それを Automation Runbook やソリューション (Update Management など) を使用して管理したい場合、または他の Azure サービス ([Azure Security Center](../../security-center/security-center-intro.md) など) を使用したい場合は、Windows 用および Linux 用の Log Analytics エージェントが必要となります。
+- [Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)の詳細を確認します。 Windows および Linux 用の Log Analytics エージェントは、オペレーティング システムやワークロードの監視データを収集し、Automation Runbook や Update Management などの機能を使用してそれを管理するか、または [Azure Security Center](../../security-center/security-center-intro.md) などの他の Azure サービスを使用する場合に必要になります。

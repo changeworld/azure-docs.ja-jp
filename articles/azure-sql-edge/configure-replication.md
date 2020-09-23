@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Edge (プレビュー) へのレプリケーションを構成する
-description: Azure SQL Edge (プレビュー) へのレプリケーションを構成する方法について説明します。
+title: Azure SQL Edge へのレプリケーションを構成する
+description: Azure SQL Edge へのレプリケーションを構成する方法について説明します。
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,14 +9,14 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: ad92f796205d84a372de610cb210bbf8878a6c9b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a748bf977e76357c710518e608c12ad19a8cd0be
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282774"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888420"
 ---
-# <a name="configure-replication-to-azure-sql-edge-preview"></a>Azure SQL Edge (プレビュー) へのレプリケーションを構成する 
+# <a name="configure-replication-to-azure-sql-edge"></a>Azure SQL Edge へのレプリケーションを構成する 
 
 一方向のトランザクション レプリケーションまたはスナップショット レプリケーションのプッシュ サブスクライバーとして、Azure SQL Edge インスタンスを構成できます。 トランザクション レプリケーション構成のパブリッシャーまたはディストリビューターとしてこのインスタンスを機能させることはできません。 Azure SQL Edge では、マージ レプリケーション、ピアツーピア レプリケーション、または Oracle パブリッシングはサポートされないことに注意してください。
 

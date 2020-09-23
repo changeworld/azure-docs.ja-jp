@@ -11,12 +11,12 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f9b493e862ed70bbeab9ac509c79003a535366d0
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: eed0527b69dcaacd3a8cd0cf7cd178aa2aca3468
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116538"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433910"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の新しいアプリの登録エクスペリエンス
 
@@ -32,7 +32,7 @@ Azure Active Directory B2C (Azure AD B2C) の新しい **[アプリの登録](ht
 Azure AD B2C のアプリの登録エクスペリエンスは、すべての Azure AD テナント向けの一般的な[アプリの登録エクスペリエンス](https://developer.microsoft.com/identity/blogs/new-app-registrations-experience-is-now-generally-available/)に基づいていますが、Azure AD B2C テナント向けにカスタマイズされています。
 
 ## <a name="whats-not-changing"></a>変更のない事項
-- お使いのアプリケーションや関連する構成は、新しいエクスペリエンス内でそのまま見つかります。 アプリケーションを再度登録する必要はなく、アプリケーションのユーザーは再度サインインする必要はありません。 
+- お使いのアプリケーションや関連する構成は、新しいエクスペリエンス内でそのまま見つかります。 アプリケーションを再度登録する必要はなく、アプリケーションのユーザーは再度サインインする必要はありません。
 
 > [!NOTE]
 > 以前に作成したすべてのアプリケーションを表示するには、 **[アプリの登録]** ブレードに移動し、 **[すべてのアプリケーション]** タブを選択します。これにより、従来のエクスペリエンスで作成されたアプリ、新しいエクスペリエンスで作成されたアプリ、および Azure AD サービスで作成されたアプリが表示されます。
@@ -43,7 +43,7 @@ Azure AD B2C のアプリの登録エクスペリエンスは、すべての Azu
 
 -   **統合されたアプリの登録**により、顧客向けのアプリであるか Microsoft Graph にアクセスするアプリであるかにかかわらず、アプリをすばやく登録できます。
 
-- **エンドポイント** ウィンドウを使用すると、シナリオに関連するエンドポイント (OpenID Connect の構成、SAML メタデータ、Microsoft Graph API、[OAuth 2.0 ユーザー フロー エンドポイント](tokens-overview.md#endpoints)を含む) をすばやく特定できます。 
+- **エンドポイント** ウィンドウを使用すると、シナリオに関連するエンドポイント (OpenID Connect の構成、SAML メタデータ、Microsoft Graph API、[OAuth 2.0 ユーザー フロー エンドポイント](tokens-overview.md#endpoints)を含む) をすばやく特定できます。
 
 - **API のアクセス許可**および **API の公開**によって、より広範なスコープ、アクセス許可、および同意の管理が提供されます。 また、MS Graph と Azure AD Graph のアクセス許可をアプリに割り当てられるようになりました。
 
@@ -57,7 +57,7 @@ Azure AD B2C のアプリの登録エクスペリエンスは、すべての Azu
 - 任意の組織ディレクトリ内のアカウント (任意の Azure AD ディレクトリ - マルチテナント)。
 - 任意の組織ディレクトリ内のアカウントまたは任意の ID プロバイダー。 Azure AD B2C でユーザーを認証します。
 
-アカウントの種類の違いを理解するには、[作成] エクスペリエンスで **[選択に関する詳細]** を選択します。 
+アカウントの種類の違いを理解するには、[作成] エクスペリエンスで **[選択に関する詳細]** を選択します。
 
 従来のエクスペリエンスでは、アプリは常に顧客向けアプリケーションとして作成されていました。 これらのアプリの場合、アカウントの種類は、 **[任意の組織ディレクトリ内のアカウントまたは任意の ID プロバイダー。Azure AD B2C でユーザーを認証します。]** に設定されます。
 > [!NOTE]
@@ -68,9 +68,9 @@ Azure AD B2C のアプリの登録エクスペリエンスは、すべての Azu
 ## <a name="applications-for-devops-scenarios"></a>DevOps シナリオ用のアプリケーション
 その他のアカウントの種類を使用して、たとえば、Microsoft Graph を使用して Identity Experience Framework ポリシーをアップロードしたり、ユーザーをプロビジョニングしたりといった、DevOps シナリオを管理するアプリを作成できます。 [Microsoft Graph アプリケーションを登録して Azure AD B2C リソースを管理する方法](microsoft-graph-get-started.md)を参照してください。
 
-アクセス許可の多くは Azure B2C コンシューマー ユーザーには適用されないため、すべての Microsoft Graph のアクセス許可が表示されない場合があります。 [Microsoft Graph を使用したユーザー管理の詳細については、こちらを参照してください](manage-user-accounts-graph-api.md)。  
+アクセス許可の多くは Azure B2C コンシューマー ユーザーには適用されないため、すべての Microsoft Graph のアクセス許可が表示されない場合があります。 [Microsoft Graph を使用したユーザー管理の詳細については、こちらを参照してください](manage-user-accounts-graph-api.md)。
 
-## <a name="admin-consent-and-offline_accessopenid-scopes"></a>管理者の同意と offline_access+openid スコープ  
+## <a name="admin-consent-and-offline_accessopenid-scopes"></a>管理者の同意と offline_access+openid スコープ
 <!-- Azure AD B2C doesn't support user consent. That is, when a user signs into an application, the user doesn't see a screen requesting consent for the application permissions. All permissions have to be granted through admin consent.  -->
 
 Azure AD B2C を使用してユーザーをアプリにサインインできるようにするには、**openid** スコープが必要です。 ユーザーに更新トークンを発行するには、**offline_access** スコープが必要です。 これらのスコープは以前に追加されており、管理者の同意が既定で付与されています。 **[openid と offline_access アクセス許可に対して管理者の同意を付与します]** オプションを確実に選択することにより、作成プロセス中にこれらのスコープに対するアクセス許可を簡単に追加できるようになりました。 それ以外の場合、Microsoft Graph のアクセス許可は、管理者の同意とともに既存のアプリの **[API のアクセス許可]** 設定で追加できます。
@@ -78,11 +78,11 @@ Azure AD B2C を使用してユーザーをアプリにサインインできる�
 [アクセス許可と同意](../active-directory/develop/v2-permissions-and-consent.md)についてご確認ください。
 
 ## <a name="platformsauthentication-reply-urlsredirect-uris"></a>プラットフォーム/認証:応答 URL/リダイレクト URI
-従来のエクスペリエンスでは、さまざまなプラットフォームの種類が **[プロパティ]** で管理されており、Web アプリや API の応答 URL として、またネイティブ クライアントのリダイレクト URI として使用されていました。 "ネイティブ クライアント" は "パブリック クライアント" とも呼ばれ、iOS、macOS、Android、およびその他の種類のモバイルおよびデスクトップ アプリケーション向けのアプリが含まれます。 
+従来のエクスペリエンスでは、さまざまなプラットフォームの種類が **[プロパティ]** で管理されており、Web アプリや API の応答 URL として、またネイティブ クライアントのリダイレクト URI として使用されていました。 "ネイティブ クライアント" は "パブリック クライアント" とも呼ばれ、iOS、macOS、Android、およびその他の種類のモバイルおよびデスクトップ アプリケーション向けのアプリが含まれます。
 
-新しいエクスペリエンスでは、応答 URL とリダイレクト URI は両方ともリダイレクト URI と呼ばれ、アプリの **[認証]** セクションにあります。 アプリの登録は、Web アプリまたはネイティブ アプリケーションのいずれかに制限されているわけではありません。 それぞれのリダイレクト URI を登録することで、これらすべてのプラットフォームの種類に対して、同じアプリの登録を使用できます。 
+新しいエクスペリエンスでは、応答 URL とリダイレクト URI は両方ともリダイレクト URI と呼ばれ、アプリの **[認証]** セクションにあります。 アプリの登録は、Web アプリまたはネイティブ アプリケーションのいずれかに制限されているわけではありません。 それぞれのリダイレクト URI を登録することで、これらすべてのプラットフォームの種類に対して、同じアプリの登録を使用できます。
 
-リダイレクト URI は、Web またはパブリック (モバイルおよびデスクトップ) のアプリの種類のいずれかに関連付けられている必要があります。 [リダイレクト URI の詳細情報についてご確認ください](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
+リダイレクト URI は、Web またはパブリック (モバイルおよびデスクトップ) のアプリの種類のいずれかに関連付けられている必要があります。 [リダイレクト URI の詳細情報についてご確認ください](../active-directory/develop/quickstart-register-app.md#add-a-redirect-uri)
 
 <!-- Whether an application should be treated as a public client is inferred at run-time from the Redirect URI platform type, if possible. The **Treat application as a public client** setting should be set to **Yes** for flows that might not use a redirect URI, such as ROPC flows. -->
 

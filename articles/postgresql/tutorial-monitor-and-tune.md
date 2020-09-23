@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: tutorial
 ms.date: 5/6/2019
-ms.openlocfilehash: d1958c6ef0f7ed52e939967b5e82886fe1373ed8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 05435aae727c84a5f3eb886274f9d286627e399e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74774739"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895088"
 ---
 # <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>チュートリアル:Azure Database for PostgreSQL (単一サーバー) を監視およびチューニングする
 
@@ -40,7 +40,7 @@ PostgreSQL バージョン 9.6 または 10 の Azure Database for PostgreSQL �
 
 4. **pg_qs.query_capture_mode** を **TOP** に設定し、クエリ パフォーマンス データの収集を開始します。 **pgms_wait_sampling.query_capture_mode** を **ALL** に設定し、待機統計の収集を開始します。 保存します。
    
-   ![クエリストア サーバー パラメータ](./media/tutorial-performance-intelligence/query-store-parameters.png)
+   :::image type="content" source="./media/tutorial-performance-intelligence/query-store-parameters.png" alt-text="クエリストア サーバー パラメータ":::
 
 5. **azure_sys** データベースに保持するデータの最初のバッチには、最大で 20 分ほどかかります。
 
@@ -52,7 +52,7 @@ Azure portal の [Query Performance Insight](concepts-query-performance-insight.
 
 2. **実行時間の長いクエリ**タブは、実行ごとの平均実行時間上位 5 クエリを示し、15 分間隔で集計しています。 
    
-   ![Query Performance Insight ランディング ページ](./media/tutorial-performance-intelligence/query-performance-insight-landing-page.png)
+   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-landing-page.png" alt-text="Query Performance Insight ランディング ページ":::
 
    **Number of Queries** ドロップダウンから選択してより多くのクエリを表示することができます。 グラフの色は、これを行うときに、特定のクエリ ID に対して変更できます。
 
@@ -64,7 +64,7 @@ Azure portal の [Query Performance Insight](concepts-query-performance-insight.
 
 6. **Wait Statistics** タブを選択し、サーバー内の待機時間に関して、対応する視覚化を表示します。
    
-   ![Query Performance Insight の待機の統計](./media/tutorial-performance-intelligence/query-performance-insight-wait-statistics.png)
+   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-wait-statistics.png" alt-text="Query Performance Insight の待機の統計":::
 
 ### <a name="permissions"></a>アクセス許可
 Query Performance Insight で、クエリのテキストを表示するために必要な**所有者**または**共同作成者**のアクセス許可。 **リーダー**はグラフとテーブルを表示できますが、クエリ テキストは表示できません。
@@ -75,7 +75,7 @@ Query Performance Insight で、クエリのテキストを表示するために
 
 1. PostgreSQL サーバーの Azure Portal ページで、メニュー バーの**サポート + トラブルシューティング**セクションから、**パフォーマンスに関する推奨事項**を開きます。
    
-   ![パフォーマンスに関する推奨事項ランディング ページ](./media/tutorial-performance-intelligence/performance-recommendations-landing-page.png)
+   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-landing-page.png" alt-text="パフォーマンスに関する推奨事項ランディング ページ":::
 
 2. **分析**を選択し、データベースを選択します。 これにより、分析が開始されます。
 
@@ -85,7 +85,7 @@ Query Performance Insight で、クエリのテキストを表示するために
 
 5. 推奨事項は、該当する**データベース**、**テーブル**、**列**、および**インデックス サイズ**に関する情報を表示します。
 
-   ![パフォーマンスに関する推奨事項の結果](./media/tutorial-performance-intelligence/performance-recommendations-result.png)
+   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-result.png" alt-text="パフォーマンスに関する推奨事項の結果":::
 
 6. 推奨事項を実装するには、クエリ テキストをコピーし、任意のクライアントから実行します。
 

@@ -1,23 +1,23 @@
 ---
-title: Microsoft Azure Stack Edge デバイスに Windows PowerShell インターフェイス経由で接続し、管理する | Microsoft Docs
-description: Azure Stack Edge に Windows PowerShell インターフェイス経由で接続し、管理する方法について説明します。
+title: Microsoft Azure Stack Edge Pro デバイスに Windows PowerShell インターフェイス経由で接続し、管理する | Microsoft Docs
+description: Azure Stack Edge Pro に Windows PowerShell インターフェイス経由で接続し、管理する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 8b654c45fa35047e874103ff84655c268f77aa24
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: b0c2b547391efd37fc667b84548d99f1e7385cfb
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294885"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903520"
 ---
-# <a name="manage-an-azure-stack-edge-gpu-device-via-windows-powershell"></a>Windows PowerShell を使用して Azure Stack Edge GPU デバイスを管理する
+# <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Windows PowerShell を使用して Azure Stack Edge Pro GPU デバイスを管理する
 
-Azure Stack Edge ソリューションにより、データを処理してネットワーク経由で Azure に送信できます。 この記事では、Azure Stack Edge デバイスの構成と管理のタスクをいくつか説明します。 Azure portal、ローカル Web UI、または Windows PowerShell インターフェイスを使用してデバイスを管理できます。
+Azure Stack Edge Pro ソリューションにより、データを処理してネットワーク経由で Azure に送信できます。 この記事では、Azure Stack Edge Pro デバイスの構成と管理のタスクをいくつか説明します。 Azure portal、ローカル Web UI、または Windows PowerShell インターフェイスを使用してデバイスを管理できます。
 
 この記事では、デバイスの PowerShell インターフェイスに接続する方法と、このインターフェイスを使用して実行できるタスクに重点を置いて説明します。 
 
@@ -84,11 +84,11 @@ For more information on certificates, go to [Azure IoT Edge certificates](https:
 
 ## <a name="enable-multi-process-service-mps"></a>マルチプロセス サービス (MPS) を有効にする
 
-Nvidia GPU 上のマルチプロセス サービス (MPS) は、GPU を複数のジョブで共有できるメカニズムを提供します。ここで、各ジョブには、GPU のリソースのうち一定のパーセントが割り当てられます。 Azure Stack Edge デバイスで MPS を有効にするには、次の手順を実行します。
+Nvidia GPU 上のマルチプロセス サービス (MPS) は、GPU を複数のジョブで共有できるメカニズムを提供します。ここで、各ジョブには、GPU のリソースのうち一定のパーセントが割り当てられます。 MPS は、Azure Stack Edge Pro GPU デバイスのプレビュー機能です。 デバイスで MPS を有効にするには、次の手順を実行します。
 
 1. 開始する前に次の点を確認します。 
 
-    1. Azure の Azure Stack Edge/Data Box Gateway リソースを使用して、[Azure Stack Edge デバイスの構成とアクティブ化](azure-stack-edge-gpu-deploy-activate.md)が完了していること。
+    1. Azure の Azure Stack Edge Pro/Data Box Gateway リソースを使用して、[Azure Stack Edge Pro デバイスの構成とアクティブ化](azure-stack-edge-gpu-deploy-activate.md)が完了していること。
     1. [Azure portal でこのデバイスのコンピューティングが構成済み](azure-stack-edge-deploy-configure-compute.md#configure-compute)であること。
     
 1. [PowerShell インターフェイスに接続する](#connect-to-the-powershell-interface)。
@@ -121,9 +121,37 @@ Nvidia GPU 上のマルチプロセス サービス (MPS) は、GPU を複数の
     - `FullLogCollection`:このパラメーターにより、ログ パッケージにすべてのコンピューティング ログが確実に含まれます。 既定では、ログ パッケージに含まれるものは、ログのサブセットのみです。
 
 
+## <a name="change-kubernetes-pod-and-service-subnets"></a>Kubernetes ポッドとサービス サブネットの変更
+
+既定では、Azure Stack Edge デバイス上の Kubernetes は、ポッドとサービスのサブネットとしてそれぞれ 172.27.0.0/16 と 172.28.0.0/16 を使用します。 これらのサブネットがネットワークで既に使用されている場合は、`Set-HcsKubeClusterNetworkInfo` コマンドレットを実行して変更できます。
+
+この手順で Kubernetes クラスターが作成されて、Azure portal からコンピューティングを構成する前に、この構成を実行します。
+
+1. デバイスの PowerShell インターフェイスに接続します。
+1. デバイスの PowerShell インターフェイスから、次のように実行します。
+
+    `Set-HcsKubeClusterNetworkInfo -PodSubnet <subnet details> -ServiceSubnet <subnet details>`
+
+    <subnet details> を、使用するサブネットの範囲に置き換えます。 
+
+1. このコマンドの実行が完了したら、`Get-HcsKubeClusterNetworkInfo` コマンドを使用して、ポッドおよびサービスのサブネットが変更されたことを確認できます。
+
+このコマンドの出力例を次に示します。
+
+```powershell
+[10.100.10.10]: PS>Set-HcsKubeClusterNetworkInfo -PodSubnet 10.96.0.1/16 -ServiceSubnet 10.97.0.1/16
+[10.100.10.10]: PS>Get-HcsKubeClusterNetworkInfo
+
+Id                                   PodSubnet    ServiceSubnet
+--                                   ---------    -------------
+6dbf23c3-f146-4d57-bdfc-76cad714cfd1 10.96.0.1/16 10.97.0.1/16
+[10.100.10.10]: PS>
+```
+
+
 ## <a name="debug-kubernetes-issues-related-to-iot-edge"></a>IoT Edge に関連する Kubernetes の問題をデバッグする
 
-Kubernetes クラスターが作成されると、 `iotedge` と `azure-arc` の 2 つのシステム名前空間が作成されます。  
+<!--When the Kubernetes cluster is created, there are two system namespaces created: `iotedge` and `azure-arc`. --> 
 
 <!--### Create config file for system namespace
 
@@ -157,11 +185,67 @@ users:
 
 [10.100.10.10]: PS>
 ```
+-->
 
-On an Azure Stack Edge device that has the compute role configured, all the `kubectl` commands are available to monitor or troubleshoot modules. To see a list of available commands, run `kubectl --help` from the command window.
+コンピューティング ロールが構成されている Azure Stack Edge Pro デバイスでは、2 つの異なるコマンド セットを利用してデバイスをトラブルシューティングしたり、監視したりできます。
+
+- `iotedge` コマンドの使用。 これらのコマンドはデバイスの基本操作に利用できます。
+- `kubectl` コマンドの使用。 これらのコマンドはデバイスのさまざまな操作に利用できます。
+
+上記のコマンド セットのいずれかを実行するには、[PowerShell インターフェイスに接続する](#connect-to-the-powershell-interface)必要があります。
+
+### <a name="use-iotedge-commands"></a>`iotedge` コマンドの使用
+
+利用できるコマンドの一覧を表示するには、[PowerShell インターフェイスに接続し](#connect-to-the-powershell-interface)、`iotedge` 関数を使用します。
+
+```powershell
+[10.100.10.10]: PS>iotedge -?                                                                                                                           
+Usage: iotedge COMMAND
+
+Commands:
+   list
+   logs
+   restart
+
+[10.100.10.10]: PS>
+```
+
+次の表は、`iotedge` で利用できるコマンドの説明を簡単にまとめたものです。
+
+|command  |説明 |
+|---------|---------|
+|`list`     | モジュールの一覧を表示する         |
+|`logs`     | モジュールのログを取得する        |
+|`restart`     | モジュールの停止と再開         |
+
+
+デバイスで実行されているすべてのモジュールを一覧表示するには、`iotedge list` コマンドを使用します。
+
+このコマンドの出力例を次に示します。 このコマンドは、すべてのモジュール、関連付けられている構成、およびモジュールに関連付けられている外部 IP を一覧表示します。 たとえば、`https://10.128.44.244` で **Web サーバー** アプリにアクセスできます。 
+
+
+```powershell
+[10.100.10.10]: PS>iotedge list
+
+NAME                   STATUS  DESCRIPTION CONFIG                                             EXTERNAL-IP
+----                   ------  ----------- ------                                             -----
+gettingstartedwithgpus Running Up 10 days  mcr.microsoft.com/intelligentedge/solutions:latest
+iotedged               Running Up 10 days  azureiotedge/azureiotedge-iotedged:0.1.0-beta10    <none>
+edgehub                Running Up 10 days  mcr.microsoft.com/azureiotedge-hub:1.0             10.128.44.243
+edgeagent              Running Up 10 days  azureiotedge/azureiotedge-agent:0.1.0-beta10
+webserverapp           Running Up 10 days  nginx:stable                                       10.128.44.244
+
+[10.100.10.10]: PS>
+```
+
+
+### <a name="use-kubectl-commands"></a>kubectl コマンドを使用する
+
+コンピューティング ロールが構成されている Azure Stack Edge Pro デバイスでは、すべての `kubectl` コマンドをモジュールの監視やトラブルシューティングに利用できます。 使用可能なコマンドの一覧を表示するには、コマンド ウィンドウから `kubectl --help` を実行します。
 
 ```PowerShell
 C:\Users\myuser>kubectl --help
+
 kubectl controls the Kubernetes cluster manager.
 
 Find more information at: https://kubernetes.io/docs/reference/kubectl/overview/
@@ -183,10 +267,10 @@ Use "kubectl options" for a list of global command-line options (applies to all 
 C:\Users\myuser>
 ```
 
-For a comprehensive list of the `kubectl` commands, go to [`kubectl` cheatsheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/).-->
+`kubectl` コマンドの広範な一覧については、[`kubectl` チートシート](https://kubernetes.io/docs/reference/kubectl/cheatsheet/) を参照してください。
 
 
-### <a name="to-get-ip-of-service-or-module-exposed-outside-of-kubernetes-cluster"></a>Kubernetes クラスターの外部に公開されているサービスまたはモジュールの IP を取得するには
+#### <a name="to-get-ip-of-service-or-module-exposed-outside-of-kubernetes-cluster"></a>Kubernetes クラスターの外部に公開されているサービスまたはモジュールの IP を取得するには
 
 Kubernetes の外部に公開されている負荷分散のサービスまたはモジュールの IP を取得するには、次のコマンドを実行します。
 
@@ -207,7 +291,7 @@ webserverapp   LoadBalancer   10.105.186.35   10.128.44.244   8080:30976/TCP    
 External IP 列の IP アドレスは、サービスまたはモジュールの外部エンドポイントに対応します。 [Kubernetes ダッシュボードで外部 IP を取得する](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md#get-ip-address-for-services-or-modules)こともできます。
 
 
-### <a name="to-check-if-module-deployed-successfully"></a>モジュールが正常にデプロイされているかどうかを確認するには
+#### <a name="to-check-if-module-deployed-successfully"></a>モジュールが正常にデプロイされているかどうかを確認するには
 
 コンピューティング モジュールは、ビジネス ロジックが実装されたコンテナーです。 Kubernetes ポッドでは、複数のコンテナーを実行できます。 
 
@@ -311,7 +395,7 @@ Events:          <none>
 [10.100.10.10]: PS>
 ```
 
-### <a name="to-get-container-logs"></a>コンテナー ログを取得するには
+#### <a name="to-get-container-logs"></a>コンテナー ログを取得するには
 
 モジュールのログを取得するには、デバイスの PowerShell インターフェイスから次のコマンドを実行します。
 
@@ -341,10 +425,12 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
 [10.100.10.10]: PS>
 ```
 
+
+
 ## <a name="exit-the-remote-session"></a>リモート セッションを終了します。
 
 リモート PowerShell セッションを終了するには、PowerShell ウィンドウを閉じます。
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure portal で [Azure Stack Edge](azure-stack-edge-gpu-deploy-prep.md) を配置します。
+- Azure portal に [Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-prep.md) をデプロイします。

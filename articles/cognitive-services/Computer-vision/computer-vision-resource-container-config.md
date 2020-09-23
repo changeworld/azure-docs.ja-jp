@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 3be302019c712c13bd29d7ed3781151a1648e847
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 56a03d6f1e4684da797b733d6041309acdac65c3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80879311"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888157"
 ---
 # <a name="configure-computer-vision-docker-containers"></a>Computer Vision Docker コンテナーを構成する
 
@@ -28,6 +28,15 @@ ms.locfileid: "80879311"
 
 > [!IMPORTANT]
 > [`ApiKey`](#apikey-configuration-setting)、[`Billing`](#billing-configuration-setting)、[`Eula`](#eula-setting) の各設定は一緒に使用されるため、それらの 3 つすべてに有効な値を指定する必要があります。そうしないと、お客様のコンテナーは起動しません。 これらの構成設定を使用してコンテナーをインスタンス化する方法の詳細については、「[課金](computer-vision-how-to-install-containers.md)」を参照してください。
+
+このコンテナーには、次のコンテナー固有の構成設定もあります。
+
+|必須|設定|目的|
+|--|--|--|
+|いいえ|ReadEngineConfig:ResultExpirationPeriod|結果の有効期限 (時間)。 既定値は 48 時間です。 この設定によって、システムが認識結果をクリアするタイミングが指定されます。 たとえば、`resultExpirationPeriod=1` の場合、プロセスの 1 時間後に、システムによって認識結果がクリアされます。 `resultExpirationPeriod=0` の場合、結果が取得された後に、システムによって認識結果がクリアされます。|
+|いいえ|Cache:Redis|結果を格納するための Redis ストレージを有効にします。 ロード バランサーの背後に複数の読み取りコンテナーが配置されている場合は、キャッシュが "*必要*" です。|
+|いいえ|Queue:RabbitMQ|タスクをディスパッチするための RabbitMQ を有効にします。 この設定は、ロード バランサーの背後に複数の読み取りコンテナーが配置されている場合に便利です。|
+|いいえ|Storage::DocumentStore::MongoDB|永続的な結果ストレージ用に MongoDB を有効にします。|
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 構成設定
 
@@ -82,7 +91,7 @@ Computer Vision コンテナーでは、トレーニングやサービスのデ�
 |省略可能| 名前 | データ型 | 説明 |
 |-------|------|-----------|-------------|
 |禁止| `Input` | String | Computer Vision コンテナーでは、これは使用されません。|
-|省略可能| `Output` | String | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 これには、コンテナーのログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
+|オプション| `Output` | String | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 これには、コンテナーのログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>docker run コマンドの例
 
@@ -108,26 +117,55 @@ Computer Vision コンテナーでは、トレーニングやサービスのデ�
 
 次の Docker の例は、読み取りコンテナーに関するものです。
 
+
+# <a name="version-30"></a>[Version 3.0](#tab/version-3)
+
 ### <a name="basic-example"></a>基本的な例
 
-  ```docker
-  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-read \
-  Eula=accept \
-  Billing={ENDPOINT_URI} \
-  ApiKey={API_KEY} 
-  ```
+```bash
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.0 \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+```
 
 ### <a name="logging-example"></a>ログの例 
 
-  ```docker
-  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-read \
-  Eula=accept \
-  Billing={ENDPOINT_URI} \
-  ApiKey={API_KEY} \
-  Logging:Console:LogLevel:Default=Information
-  ```
+```bash
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.0 \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+Logging:Console:LogLevel:Default=Information
+```
+
+# <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
+
+### <a name="basic-example"></a>基本的な例
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+
+```
+
+### <a name="logging-example"></a>ログの例 
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+Logging:Console:LogLevel:Default=Information
+```
+
+---
 
 ## <a name="next-steps"></a>次のステップ
 

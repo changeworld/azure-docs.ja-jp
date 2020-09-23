@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 12/18/2019
+ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 9237e670dd8d43c4036f996c477948944718e3aa
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: ba094709d78d92b678e3aa5ad9995923888caf00
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80053715"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887509"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Anomaly Detector API とは
 
@@ -35,6 +35,7 @@ Anomaly Detector を利用すると、時系列データ全体で異常を自動
 |---------|---------|
 |リアルタイムで発生した異常を検出します。 | 前に確認されたデータ ポイントを利用し、最新のデータ ポイントが異常であるかどうかを判断することでストリーミング データ内の異常を検出します。 この操作では、送信したデータ ポイントを利用してモデルが生成され、ターゲットのポイントが異常であるかどうかが判断されます。 生成する新しいデータ ポイントで API を呼び出すことで、作成時にデータを監視できます。 |
 |バッチとして設定されたデータ全体で異常を検出します。 | 時系列データを使用し、データ全体に存在する可能性がある異常を検出します。 この操作により、時系列データ全体を使用してモデルが生成されます。各ポイントが同じモデルで分析されます。         |
+|バッチとして設定されたデータ全体で変化点を検出します。 | 時系列データを使用し、データに存在する傾向の変化点を検出します。 この操作により、時系列データ全体を使用してモデルが生成されます。各ポイントが同じモデルで分析されます。    |
 | データに関する追加情報を取得します。 | 予想される値、異常の境界、位置など、データに関する役に立つ詳細と観察された異常を取得します。 |
 | 異常検出の境界を調整します。 | Anomaly Detector API では、異常検出の境界が自動的に作成されます。 この境界を調整することでデータの異常に対する API の感度を増減させ、データを最適化します。 |
 
@@ -45,7 +46,7 @@ Anomaly Detector を利用すると、時系列データ全体で異常を自動
 
 ## <a name="notebook"></a>ノートブック
 
-Anomaly Detector API を呼び出す方法については、こちらの [Azure Notebook](https://aka.ms/adNotebook) をお試しください。 Web でホストされるこの Jupyter Notebook では、API 要求を送信して結果を視覚化する方法について説明しています。
+Anomaly Detector API を呼び出す方法については、こちらの [ Notebook](https://aka.ms/adNotebook) をお試しください。 この Jupyter Notebook では、API 要求を送信して結果を視覚化する方法について説明しています。
 
 Notebook を実行するには、次の手順を完了します。
 
@@ -92,4 +93,4 @@ Microsoft によって開発された SR-CNN アルゴリズムの詳細につ�
 
 * [クイック スタート: Anomaly Detector REST API を使用し、時系列データ内の異常を検出する](quickstarts/detect-data-anomalies-csharp.md)
 * Anomaly Detector API [オンライン デモ](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector)
-* Anomaly Detector [REST API リファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect)
+* Anomaly Detector [REST API リファレンス](https://aka.ms/anomaly-detector-rest-api-ref)

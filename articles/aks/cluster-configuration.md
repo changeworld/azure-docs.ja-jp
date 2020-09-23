@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: daffcbf0a2ceb6f28cbb539906d4c6387840aa20
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 5b26054ae8dfb73dea8d064292beb73220be5e09
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752106"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433451"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS クラスターの構成
 
@@ -218,7 +218,7 @@ az extension update --name aks-preview
 ### <a name="use-gen2-vms-on-new-clusters-preview"></a>新しいクラスターで Gen2 VM を使用する (プレビュー)
 クラスターの作成時に、選択した SKU で Gen2 VM を使用するようにクラスターを構成します。 `--aks-custom-headers` フラグを使用して、新しいクラスターの VM の世代として Gen2 を設定します。
 
-```azure-cli
+```azurecli
 az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_D2s_v3 --aks-custom-headers usegen2vm=true
 ```
 
@@ -227,7 +227,7 @@ az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_D
 ### <a name="use-gen2-vms-on-existing-clusters-preview"></a>既存のクラスターで Gen2 VM を使用する (プレビュー)
 Gen2 VM を使用するように新しいノード プールを構成します。 `--aks-custom-headers` フラグを使用して、そのノード プールの VM の世代として Gen2 を設定します。
 
-```azure-cli
+```azurecli
 az aks nodepool add --name gen2 --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_D2s_v3 --aks-custom-headers usegen2vm=true
 ```
 
@@ -276,7 +276,7 @@ az extension update --name aks-preview
 
 クラスターの作成時に、エフェメラル OS ディスクを使用するようにクラスターを構成します。 `--aks-custom-headers` フラグを使用して、新しいクラスターの OS ディスクの種類としてエフェメラル OS を設定します。
 
-```azure-cli
+```azurecli
 az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
 ```
 
@@ -285,7 +285,7 @@ az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_D
 ### <a name="use-ephemeral-os-on-existing-clusters-preview"></a>既存のクラスターでエフェメラル OS を使用する (プレビュー)
 エフェメラル OS ディスクを使用するように新しいノード プールを構成します。 `--aks-custom-headers` フラグを使用して、OS ディスクの種類として、そのノード プールの OS ディスクの種類を設定します。
 
-```azure-cli
+```azurecli
 az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
 ```
 
