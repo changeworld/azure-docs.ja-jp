@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Edge (プレビュー) で T-SQL ストリーミング ジョブを作成する
-description: Azure SQL Edge (プレビュー) で Stream Analytics ジョブを作成する方法について説明します。
+title: Azure SQL Edge で T-SQL ストリーミング ジョブを作成する
+description: Azure SQL Edge で Stream Analytics ジョブを作成する方法について説明します。
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,19 +9,16 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: 346a59f085e766fef09d73b9e7baa03dad510148
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f0fcdf7aab5f43a0412cd28a1c15188b19770dc6
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321719"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888096"
 ---
-# <a name="create-an-azure-stream-analytics-job-in-azure-sql-edge-preview"></a>Azure SQL Edge (プレビュー) で Azure Stream Analytics ジョブを作成する 
+# <a name="create-a-data-streaming-job-in-azure-sql-edge"></a>Azure SQL Edge でデータ ストリーミング ジョブを作成する 
 
-この記事では、Azure SQL Edge (プレビュー) で T-SQL ストリーミング ジョブを作成する方法を説明します。 外部ストリームの入力オブジェクトと出力オブジェクトを作成してから、ストリーミング ジョブの作成の一部としてストリーミング ジョブ クエリを定義します。
-
-> [!NOTE]
-> Azure SQL Edge で T-SQL ストリーミング機能を有効にするには、TF 11515 を起動オプションとして有効にするか、[DBCC TRACEON]( https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) コマンドを使用します。 mssql.conf ファイルを使用してトレース フラグを有効にする方法の詳細については、「[mssql.conf ファイルを使用して構成する](configure.md#configure-by-using-an-mssqlconf-file)」を参照してください。
+この記事では、Azure SQL Edge で T-SQL ストリーミング ジョブを作成する方法を説明します。 外部ストリームの入力オブジェクトと出力オブジェクトを作成してから、ストリーミング ジョブの作成の一部としてストリーミング ジョブ クエリを定義します。
 
 ## <a name="configure-the-external-stream-input-and-output-objects"></a>外部ストリームの入力オブジェクトと出力オブジェクトを構成する
 
@@ -255,5 +252,5 @@ exec sys.sp_get_streaming_job @name=N'StreamingJob1'
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure SQL Edge (プレビュー) でストリーム ジョブに関連付けられたメタデータを表示する](streaming-catalog-views.md) 
+- [Azure SQL Edge でストリーミング ジョブに関連付けられたメタデータを表示する](streaming-catalog-views.md) 
 - [外部ストリームを作成する](create-external-stream-transact-sql.md)

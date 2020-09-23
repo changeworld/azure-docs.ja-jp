@@ -3,7 +3,7 @@ title: StorSimple 8000 シリーズ デバイスへの Update 5.1 のインス�
 description: StorSimple 8000 シリーズ デバイスに StorSimple 8000 シリーズの Update 5.1 をインストールする方法について説明します。
 services: storsimple
 documentationcenter: NA
-author: twooley
+author: alkohli
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
@@ -11,13 +11,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 03/05/2020
-ms.author: twooley
-ms.openlocfilehash: f9cc5181d6cc29ee4b3c2373dbbc91d6290fbe6e
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.author: alkohli
+ms.openlocfilehash: 1c9d4747b227c7ff83e4c43292badd65836edfef
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782772"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052173"
 ---
 # <a name="install-update-51-on-your-storsimple-device"></a>StorSimple デバイスへの Update 5.1 のインストール
 

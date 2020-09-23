@@ -10,20 +10,17 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 07/10/2020
-ms.openlocfilehash: a244372168cb34f190bd584634bf108f2b5215a5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bbd6f2021a20ff488402bb9d1367feb57c34f582
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092290"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896683"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>チュートリアル:自動機械学習を使用して需要を予測する
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+
 
 このチュートリアルでは、Azure Machine Learning Studio で自動機械学習 (自動 ML) を使用して、自転車シェアリング サービスのレンタル需要を予測するための時系列予測モデルを作成します。
-
->[!IMPORTANT]
-> Azure Machine learning studio での自動 ML エクスペリエンスは、プレビュー段階にあります。 特定の機能がサポートされないことや、機能が制限されることがあります。
 
 分類モデルの例については、「[チュートリアル: Azure Machine Learning の自動 ML で分類モデルを作成する](tutorial-first-experiment-automated-ml.md)」を参照してください。
 
@@ -38,8 +35,8 @@ ms.locfileid: "87092290"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Enterprise Edition の Azure Machine Learning ワークスペース。 ワークスペースがない場合は、[Enterprise Edition のワークスペースを作成します](how-to-manage-workspace.md)。 
-    * Azure Machine Learning Studio での自動機械学習は、Enterprise Edition のワークスペースでのみ使用できます。 
+* Azure Machine Learning ワークスペース。 [Azure Machine Learning ワークスペースを作成する](how-to-manage-workspace.md)方法に関するページを参照してください。 
+
 * [bike-no.csv](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/bike-no.csv) のデータ ファイルをダウンロードします
 
 ## <a name="get-started-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio で開始する
@@ -118,8 +115,8 @@ ms.locfileid: "87092290"
         コンピューティング名 |コンピューティング コンテキストを識別する一意名。|bike-compute
         仮想マシンの種類&nbsp;&nbsp;|コンピューティング用の仮想マシンの種類を選択します。|CPU (中央処理装置)
         仮想マシンのサイズ&nbsp;&nbsp;| コンピューティングの仮想マシン サイズを選択します。|Standard_DS12_V2
-        最小および最大ノード数| データをプロファイリングするには、1 つ以上のノードを指定する必要があります。|最小ノード: 1<br>最大ノード: 6
-        スケールダウンする前のアイドル時間 (秒) | クラスターが自動的に最小ノード数にスケールダウンされるまでのアイドル時間。|120 (既定値)
+        最小/最大ノード| データをプロファイリングするには、1 つ以上のノードを指定する必要があります。|最小ノード: 1<br>最大ノード: 6
+        スケール ダウンする前のアイドル時間 (秒) | クラスターが最小ノード数に自動的にスケールダウンされるまでのアイドル時間。|120 (既定値)
         詳細設定 | 実験用の仮想ネットワークを構成および承認するための設定。| なし
   
         1. **[作成]** を選択して、コンピューティング先を取得します。 

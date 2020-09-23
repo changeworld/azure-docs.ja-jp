@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0e8d40f5543832dc3a76e44abc54f406cce1d4a6
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 7fde4a82ff3a9e0cfa67e8ce5afeebc000757b7c
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147317"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462056"
 ---
 # <a name="tutorial-configure-invision-for-automatic-user-provisioning"></a>チュートリアル:InVision を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -144,7 +144,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 プロビジョニングを構成したら、次のリソースを使用してデプロイを監視します。
 
 1. [プロビジョニング ログ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
-2. [進行状況バー](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
+2. [進行状況バー](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
 3. プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース

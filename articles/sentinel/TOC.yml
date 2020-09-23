@@ -29,6 +29,8 @@
       href: fusion.md
     - name: ワークスペースおよびテナント全体での Azure Sentinel の拡張
       href: extend-sentinel-across-workspaces-tenants.md
+    - name: 複数のテーブルにわたってデータを正規化する
+      href: normalization.md
     - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
@@ -54,17 +56,19 @@
               href: connect-azure-ad-identity-protection.md
             - name: Azure Information Protection
               href: connect-azure-information-protection.md
-            - name: Microsoft Defender ATP
+            - name: Microsoft 365 Defender
+              href: connect-microsoft-365-defender.md
+            - name: Microsoft Defender for Endpoint (旧称 MDATP)
               href: connect-microsoft-defender-advanced-threat-protection.md
-            - name: Azure ATP
+            - name: Microsoft Defender for Identity (旧称 Azure ATP)
               href: connect-azure-atp.md
             - name: Azure DDoS Protection
               href: connect-azure-ddos-protection.md
             - name: Azure Firewall
               href: connect-azure-firewall.md
-            - name: Azure Security Center
+            - name: ASC からの Azure Defender アラート
               href: connect-azure-security-center.md
-            - name: Azure Security Center for IoT
+            - name: IoT 用 Azure Defender (旧称 ASC)
               href: connect-asc-iot.md
             - name: Azure Web アプリケーション ファイアウォール (WAF)
               href: connect-azure-waf.md
@@ -118,6 +122,8 @@
               href: connect-vmware-carbon-black.md
             - name: Zimperium Mobile Threat Defense
               href: connect-zimperium-mtd.md
+            - name: Logstash を使用して接続する
+              href: connect-logstash.md
             - name: CEF ベースのソリューション
               href: connect-common-event-format.md
               items:
@@ -181,6 +187,8 @@
   items:
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/securityinsights/'
+    - name: ネットワーク正規化スキーマ
+      href: normalization-schema.md
 - name: リソース
   items:
     - name: 有用なリソース

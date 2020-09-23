@@ -1,19 +1,19 @@
 ---
 title: Apache HBase と Apache Phoenix のバックアップおよびレプリケーション - Azure HDInsight
 description: Azure HDInsight で Apache HBase と Apache Phoenix のバックアップおよびレプリケーションを設定する
-author: ashishthaps
-ms.author: ashishth
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 5a3760956dfe9a713d344fd6684d75ea240ab7de
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 5c0694f9ef16de9c69d424b5005ca0d5a277a77f
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705726"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505031"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>HDInsight で Apache HBase と Apache Phoenix に対するバックアップとレプリケーションを設定する
 

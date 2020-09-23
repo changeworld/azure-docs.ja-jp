@@ -11,15 +11,15 @@ ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.topic: conceptual
 ms.custom: how-to, racking-python
-ms.openlocfilehash: 8d1ea9b0989a71268b98f0b2fd1d95d5671f996b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 239fc9de991066ec0603247abafae36a618d534f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325799"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889870"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Azure Functions に機械学習モデルをデプロイする (プレビュー)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Azure Machine Learning から関数アプリとして Azure Functions にモデルをデプロイする方法について説明します。
 
@@ -45,7 +45,7 @@ Azure Machine Learning を使用すると、トレーニング済みの機械学
 
 ## <a name="prepare-for-deployment"></a>展開を準備する
 
-デプロイを行う前に、モデルを Web サービスとして実行するために必要なものを定義する必要があります。 次の一覧で、デプロイするために必要な基本項目について説明します。
+デプロイを行う前に、モデルを Web サービスとして実行するために必要なものを定義する必要があります。 次の一覧で、デプロイするために必要となる中心的な項目について説明します。
 
 * __エントリ スクリプト__。 このスクリプトは、要求を受け入れ、モデルを使用してその要求にスコアを付け、その結果を返します。
 
@@ -63,7 +63,7 @@ Azure Machine Learning を使用すると、トレーニング済みの機械学
 これらのエンティティは、__推論構成__ にカプセル化されます。 推論構成では、エントリ スクリプトとその他の依存関係が参照されます。
 
 > [!IMPORTANT]
-> Azure Functions で使用するための推論構成を作成する際は、[環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py)オブジェクトを使用する必要があります。 カスタム環境を定義する場合は、バージョン 1.0.45 以降の azureml-defaults を pip 依存関係として追加する必要があることに注意してください。 このパッケージには、Web サービスとしてモデルをホストするために必要な機能が含まれています。 次の例で、環境オブジェクトを作成し、推論構成でそれを使用する方法を示します。
+> Azure Functions で使用するための推論構成を作成する際は、[環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py&preserve-view=true)オブジェクトを使用する必要があります。 カスタム環境を定義する場合は、バージョン 1.0.45 以降の azureml-defaults を pip 依存関係として追加する必要があることに注意してください。 このパッケージには、Web サービスとしてモデルをホストするために必要な機能が含まれています。 次の例で、環境オブジェクトを作成し、推論構成でそれを使用する方法を示します。
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -96,7 +96,7 @@ pip install azureml-contrib-functions
 
 ## <a name="create-the-image"></a>イメージの作成
 
-Azure Functions にデプロイする Docker イメージを作成するには、[azureml.contrib.functions.package](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py) または使用するトリガーに固有のパッケージ関数を使用します。 次のコード スニペットで、モデルと推論構成から、BLOB トリガーを使用する新しいパッケージを作成する方法を示します。
+Azure Functions にデプロイする Docker イメージを作成するには、[azureml.contrib.functions.package](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py&preserve-view=true) または使用するトリガーに固有のパッケージ関数を使用します。 次のコード スニペットで、モデルと推論構成から、BLOB トリガーを使用する新しいパッケージを作成する方法を示します。
 
 > [!NOTE]
 > このコード スニペットは、`model` に登録済みのモデルが含まれており、`inference_config` に推論環境の構成が含まれていることを前提としています。 詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
@@ -301,4 +301,4 @@ Blob トリガーの使用に関する詳細については、[Azure Blob storag
 * [Azure Blob Storage のバインド](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob)に関する記事で、Blob Storage のトリガーの詳細について学習する。
 * [Azure App Service にモデルをデプロイする](how-to-deploy-app-service.md)。
 * [Web サービスとしてデプロイされた ML モデルを使用する](how-to-consume-web-service.md)
-* [API リファレンス](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py)
+* [API リファレンス](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py&preserve-view=true)

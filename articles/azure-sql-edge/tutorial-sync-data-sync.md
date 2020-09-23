@@ -1,6 +1,6 @@
 ---
-title: SQL データ同期を使用して Azure SQL Edge (プレビュー) のデータを同期する
-description: Azure SQL データ同期を使用して Azure SQL Edge (プレビュー) のデータを同期する方法について説明します
+title: SQL データ同期を使用して Azure SQL Edge のデータを同期する
+description: Azure SQL データ同期を使用して Azure SQL Edge のデータを同期する方法について説明します
 keywords: SQL Edge,SQL Edge とのデータの同期, SQL Edge データ同期
 services: sql-edge
 ms.service: sql-edge
@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 6c0518e12a2c654b8f971db3a6733b0e64f80a1f
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 5830cedfdce54c4cd91eb60a5cd2145309e965b0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254052"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904108"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-sql-database-by-using-sql-data-sync"></a>チュートリアル:SQL データ同期を使用して SQL Edge と Azure SQL Database のデータを同期する
 

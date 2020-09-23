@@ -1,6 +1,6 @@
 ---
 title: 複数のワークスペースおよびテナントに Azure Sentinel を拡張する | Microsoft Docs
-description: 複数のテナントを Azure Sentinel for MSSP サービス プロバイダーに対して使用する方法について説明します。
+description: Azure Sentinel を使用して、複数のワークスペースやテナントのデータを対象にクエリと分析を行う方法について説明します。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/11/2020
+ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 596d0f4870d9331a332dfb81bd7d2d224964a593
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b899069a03b39d068f2b4059cf26d3baf1f3beae
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519015"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905422"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>ワークスペースおよびテナント全体での Azure Sentinel の拡張
 
@@ -94,6 +94,13 @@ Azure Sentinel では、[1 つのクエリでの複数のワークスペース](
 
 その後、`unionSecurityEvent | where ...` で始めることにより、両方のワークスペースに対するクエリを作成できます。
 
+#### <a name="scheduled-alerts"></a>スケジュールされたアラート
+
+クロスワークスペース クエリを分析ルールのスケジュールされたアラートに含めることができるようになりました。ただし、次の制限事項があります。
+
+- 1 つのクエリに含めることができるワークスペースは、最大 10 個です。
+- クエリで参照されているすべてのワークスペースに、Azure Sentinel をデプロイする必要があります。
+
 > [!NOTE] 
 > 同じクエリ内で複数のワークスペースに対してクエリを実行すると、パフォーマンスに影響する可能性があるので、ロジックでこの機能が必要なときにのみ推奨されます。
 
@@ -121,13 +128,6 @@ Azure Sentinel には事前に読み込まれたクエリ例が用意されて�
 複数の Azure Sentinel ワークスペースを構成して管理するには、Azure Sentinel 管理 API の使用を自動化する必要があります。 アラート ルール、ハンティング クエリ、ブック、プレイブックなど、Azure Sentinel リソースのデプロイを自動化する方法の詳細については、「[Azure Sentinel の拡張: API、統合、管理の自動化](https://techcommunity.microsoft.com/t5/azure-sentinel/extending-azure-sentinel-apis-integration-and-management/ba-p/1116885)」を参照してください。
 
 また、Azure Sentinel をコードとして管理するための統合されたコミュニティ提供の方法、およびプライベート GitHub リポジトリからのリソースのデプロイと構成については、「[コードとしての Azure Sentinel のデプロイと管理](https://techcommunity.microsoft.com/t5/azure-sentinel/deploying-and-managing-azure-sentinel-as-code/ba-p/1131928)」および「[Azure Lighthouse と Sentinel の DevOps 機能の結合](https://techcommunity.microsoft.com/t5/azure-sentinel/combining-azure-lighthouse-with-sentinel-s-devops-capabilities/ba-p/1210966)」も参照してください。 
-
-
-## <a name="whats-not-supported-across-workspaces"></a>ワークスペース間でサポートされていないもの
-
-次の機能は、ワークスペース間ではサポートされていません。
-
-- スケジュールされたアラート ルールを、クロスワークスペース クエリを使用してワークスペース間で実行することはできません。
 
 ## <a name="managing-workspaces-across-tenants-using-azure-lighthouse"></a>Azure Lighthouse を使用したテナント間でのワークスペースの管理
 

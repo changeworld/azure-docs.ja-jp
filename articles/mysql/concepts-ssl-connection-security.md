@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: ad255b2e03cdecd9a87f1af3ce780ae64535bfa2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 641ff13ec440bb8267e546c54b684ab4453f91a7
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495082"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052938"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mysql"></a>Azure Database for MySQL での SSL/TLS 接続
 
@@ -19,6 +19,9 @@ Azure Database for MySQL では、Secure Sockets Layer (SSL) を使用して、�
 
 > [!NOTE]
 > `require_secure_transport` サーバー パラメーター値を更新しても、MySQL サービスの動作には影響しません。 この記事に記載されている SSL および TLS の適用機能を使用して、データベースへの接続をセキュリティで保護します。
+
+> [!IMPORTANT] 
+> SSL ルート証明書は、2020 年 10 月 26 日 (10/26/2020) から期限切れになるように設定されています。 [新しい証明書](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)が使用されるようにアプリケーションを更新してください。 詳細については、[証明書の計画的な更新](concepts-certificate-rotation.md)に関するページをご覧ください
 
 ## <a name="ssl-default-settings"></a>SSL の既定の設定
 

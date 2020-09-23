@@ -10,17 +10,17 @@ author: maxluk
 ms.date: 08/20/2019
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 1d7523f68f97250f71405f840a6a5e9fcf9fb2f9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 840ccec1da6df0df1ccd710d83634b850d7370fa
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320869"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904917"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して大規模な TensorFlow ディープ ラーニング モデルを構築する
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-この記事では、Azure Machine Learning の [TensorFlow エスティメーター](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) クラスを使用して、大規模な [TensorFlow](https://www.tensorflow.org/overview) トレーニング スクリプトを実行する方法について説明します。 この例では、ディープ ニューラル ネットワーク (DNN) を使用して手書きの数字を分類するための TensorFlow モデルをトレーニングして登録します。
+
+この記事では、Azure Machine Learning の [TensorFlow エスティメーター](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py&preserve-view=true) クラスを使用して、大規模な [TensorFlow](https://www.tensorflow.org/overview) トレーニング スクリプトを実行する方法について説明します。 この例では、ディープ ニューラル ネットワーク (DNN) を使用して手書きの数字を分類するための TensorFlow モデルをトレーニングして登録します。
 
 TensorFlow モデルを一から開発する場合でも、[既存のモデル](how-to-deploy-existing-model.md)をクラウドに取り込む場合でも、Azure Machine Learning を使用してオープンソースのトレーニング ジョブをスケールアウトし、運用グレードのモデルの構築、デプロイ、バージョン管理、監視を行うことができます。
 
@@ -37,7 +37,7 @@ TensorFlow モデルを一から開発する場合でも、[既存のモデル](
  
  - 独自の Jupyter Notebook サーバー
 
-    - [Azure Machine Learning SDK をインストールします](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+    - [Azure Machine Learning SDK をインストールします](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。
     - [ワークスペース構成ファイルを作成します](how-to-configure-environment.md#workspace)。
     - [サンプル スクリプト ファイル](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow/deployment/train-hyperparameter-tune-deploy-with-tensorflow) `mnist-tf.py` および `utils.py` をダウンロードする
      
@@ -67,7 +67,7 @@ from azureml.train.dnn import TensorFlow
 
 ### <a name="initialize-a-workspace"></a>ワークスペースを初期化する
 
-[Azure Machine Learning ワークスペース](concept-workspace.md)は、サービス用の最上位のリソースです。 作成されるすべての成果物を操作できる一元的な場所が用意されています。 Python SDK では、[`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) オブジェクトを作成することでワークスペースの成果物にアクセスできます。
+[Azure Machine Learning ワークスペース](concept-workspace.md)は、サービス用の最上位のリソースです。 作成されるすべての成果物を操作できる一元的な場所が用意されています。 Python SDK では、[`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true) オブジェクトを作成することでワークスペースの成果物にアクセスできます。
 
 [前提条件のセクション](#prerequisites)で作成した `config.json` ファイルからワークスペース オブジェクトを作成します。
 
@@ -140,15 +140,15 @@ except ComputeTargetException:
 
 ## <a name="create-a-tensorflow-estimator"></a>TensorFlow エスティメーターを作成する
 
-[TensorFlow エスティメーター](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)には、コンピューティング先で TensorFlow トレーニング ジョブを起動する簡単な方法が用意されています。
+[TensorFlow エスティメーター](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py&preserve-view=true)には、コンピューティング先で TensorFlow トレーニング ジョブを起動する簡単な方法が用意されています。
 
-TensorFlow エスティメーターは、ジェネリック [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) クラスを介して実装されています。これは、任意のフレームワークをサポートするために使用できます。 ジェネリック エスティメーターを使用したモデルのトレーニングの詳細については、[エスティメーターを使用した Azure Machine Learning によるモデルのトレーニング](how-to-train-ml-models.md)に関するページを参照してください。
+TensorFlow エスティメーターは、ジェネリック [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py&preserve-view=true) クラスを介して実装されています。これは、任意のフレームワークをサポートするために使用できます。 ジェネリック エスティメーターを使用したモデルのトレーニングの詳細については、[エスティメーターを使用した Azure Machine Learning によるモデルのトレーニング](how-to-train-ml-models.md)に関するページを参照してください。
 
 トレーニング スクリプトを実行するために追加の PIP パッケージまたは Conda パッケージが必要な場合は、`pip_packages` および `conda_packages` 引数に名前を渡すことで、パッケージを結果の Docker イメージにインストールできます。
 
 
 > [!WARNING]
-> Azure Machine Learning では、ソース ディレクトリ全体をコピーすることで、トレーニング スクリプトが実行されます。 アップロードしたくない機密データがある場合は、[.ignore ファイル](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots)を使用するか、ソース ディレクトリに含めないようにします。 代わりに、[データストア](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)を使用してデータにアクセスしてください。
+> Azure Machine Learning では、ソース ディレクトリ全体をコピーすることで、トレーニング スクリプトが実行されます。 アップロードしたくない機密データがある場合は、[.ignore ファイル](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots)を使用するか、ソース ディレクトリに含めないようにします。 代わりに、[データストア](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py&preserve-view=true)を使用してデータにアクセスしてください。
 
 
 ```python
@@ -175,7 +175,7 @@ Python 環境のカスタマイズの詳細については、[トレーニング
 
 ## <a name="submit-a-run"></a>実行を送信する
 
-[実行オブジェクト](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)には、ジョブの実行中および完了後の実行履歴へのインターフェイスが用意されています。
+[実行オブジェクト](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true)には、ジョブの実行中および完了後の実行履歴へのインターフェイスが用意されています。
 
 ```Python
 run = exp.submit(est)
@@ -222,7 +222,7 @@ for f in run.get_file_names():
 
 ## <a name="distributed-training"></a>分散トレーニング
 
-[`TensorFlow`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) 推定器は、CPU と GPU のクラスターでの分散トレーニングもサポートしています。 分散 TensorFlow ジョブは簡単に実行でき、オーケストレーションの管理は Azure Machine Learning によって自動的に行われます。
+[`TensorFlow`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py&preserve-view=true) 推定器は、CPU と GPU のクラスターでの分散トレーニングもサポートしています。 分散 TensorFlow ジョブは簡単に実行でき、オーケストレーションの管理は Azure Machine Learning によって自動的に行われます。
 
 Azure Machine Learning では、TensorFlow における分散トレーニングについて 2 つの方式をサポートしています。
 
@@ -233,7 +233,7 @@ Azure Machine Learning では、TensorFlow における分散トレーニング�
 
 [Horovod](https://github.com/uber/horovod) は、分散トレーニング用のオープンソース フレームワークとして Uber が開発したものです。 これを利用すると、分散 GPU TensorFlow ジョブを簡単に実行できます。
 
-Horovod を使用するには、TensorFlow コンストラクターの `distributed_training` パラメーターに [`MpiConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py) オブジェクトを指定します。 このパラメーターによって、トレーニング スクリプトで使用する Horovod ライブラリが確実にインストールされます。
+Horovod を使用するには、TensorFlow コンストラクターの `distributed_training` パラメーターに [`MpiConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py&preserve-view=true) オブジェクトを指定します。 このパラメーターによって、トレーニング スクリプトで使用する Horovod ライブラリが確実にインストールされます。
 
 ```Python
 from azureml.core.runconfig import MpiConfiguration
@@ -256,7 +256,7 @@ estimator= TensorFlow(source_directory=project_folder,
 
 [ネイティブの分散 TensorFlow](https://www.tensorflow.org/deploy/distributed) を実行することもできます｡その場合は､パラメーター サーバー モデルを使用します。 この方法では、パラメーター サーバーとワーカーからなるクラスター全体でトレーニングが行われます。 トレーニング中､ワーカーがグラディエントの計算する一方､パラメーター サーバーはグラディエントを集計します｡
 
-パラメーター サーバー メソッドを使用するには、TensorFlow コンストラクターの `distributed_training` パラメーターに [`TensorflowConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py) オブジェクトを指定します。
+パラメーター サーバー メソッドを使用するには、TensorFlow コンストラクターの `distributed_training` パラメーターに [`TensorflowConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py&preserve-view=true) オブジェクトを指定します。
 
 ```Python
 from azureml.train.dnn import TensorFlow

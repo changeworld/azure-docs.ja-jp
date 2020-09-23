@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 5682213780f6b5c1bbbc02dfa947c48a4d2707de
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 87f8c298345bb1d427163758974948bd8a841e2c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112461"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90882048"
 ---
 # <a name="create-and-manage-vnet-service-endpoints-and-vnet-rules-in-azure-database-for-postgresql---single-server-by-using-the-azure-portal"></a>Azure Portal を使用して Azure Database for PostgreSQL - Single Server で VNet サービス エンドポイントと VNet ルールを作成および管理する
 Virtual Network (VNet) サービス エンドポイントおよびルールは、仮想ネットワークのプライベート アドレス空間を Azure Database for PostgreSQL サーバーに拡張します。 制限事項も含め、Azure Database for PostgreSQL VNet サービス エンドポイントの概要については、[Azure Database for PostgreSQL サーバー VNet サービス エンドポイント](concepts-data-access-and-security-vnet.md)に関する記事をご覧ください。 VNet サービス エンドポイントは、Azure Database for PostgreSQL でサポートされるすべてのリージョンで利用できます。
@@ -32,11 +32,11 @@ Virtual Network (VNet) サービス エンドポイントおよびルールは�
 
 3. 次に、 **[+ 既存の仮想ネットワークを追加]** をクリックします。 既存の VNet がない場合は、 **[+ 新しい仮想ネットワークの作成]** をクリックして作成できます。 「[クイック スタート:Azure portal を使用した仮想ネットワークの作成](../virtual-network/quick-create-portal.md)」を参照してください
 
-   ![Azure Portal - [接続のセキュリティ] のクリック](./media/howto-manage-vnet-using-portal/1-connection-security.png)
+   :::image type="content" source="./media/howto-manage-vnet-using-portal/1-connection-security.png" alt-text="Azure Portal - [接続のセキュリティ] のクリック":::
 
 4. VNet ルール名を入力し、サブスクリプション、仮想ネットワーク、サブネット名を選択して、 **[有効にする]** をクリックします。 これにより、**Microsoft.SQL** サービス タグを使用してサブネット上で VNet サービス エンドポイントが自動的に有効になります。
 
-   ![Azure portal - VNet の構成](./media/howto-manage-vnet-using-portal/2-configure-vnet.png)
+   :::image type="content" source="./media/howto-manage-vnet-using-portal/2-configure-vnet.png" alt-text="Azure portal - VNet の構成":::
 
     アカウントには、仮想ネットワークとサービス エンドポイントを作成するためのアクセス許可が必要です。
 
@@ -54,7 +54,7 @@ Virtual Network (VNet) サービス エンドポイントおよびルールは�
 
 5. 有効になったら、 **[OK]** をクリックすると、VNet ルールと共に VNet サービス エンドポイントが有効になっていることが表示されます。
 
-   ![VNet サービス エンドポイントが有効で、VNet ルールが作成されている](./media/howto-manage-vnet-using-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png)
+   :::image type="content" source="./media/howto-manage-vnet-using-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png" alt-text="VNet サービス エンドポイントが有効で、VNet ルールが作成されている":::
 
 ## <a name="next-steps"></a>次のステップ
 - 同様に、スクリプトを作成して、[Azure CLI を使用して VNet サービス エンドポイントを有効にし、Azure Database for PostgreSQL の VNET ルールを作成](howto-manage-vnet-using-cli.md)できます。

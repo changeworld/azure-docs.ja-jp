@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: bf2fbb48c34631bc74a3b712e135b618a1718d8e
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9ed6690348816229d369bcff5d92c9703a4b3702
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688090"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469917"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>Creator を使用して屋内マップを作成する
 
@@ -120,7 +120,7 @@ Data Upload API は、ここで定義されたパターンを実装する長時�
 4. ビルダー タブで新しい **GET** HTTP メソッドを開始します。Azure Maps のプライマリ サブスクリプション キーを `status URL` に追加します。 手順 3 でコピーした `status URL` で **GET** 要求を行います。 `status URL` は次の URL のようになります。
 
     ```http
-    https://atlas.microsoft.com/conversion/operations/<operationId>?api-version=1.0
+    https://atlas.microsoft.com/conversion/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
     変換プロセスがまだ完了していない場合、次の JSON 応答のようなものが表示されることがあります。
@@ -208,7 +208,7 @@ Data Upload API は、ここで定義されたパターンを実装する長時�
 3. タイルセットの `statusURL` で **GET** 要求を行います。 認証のために Azure Maps のプライマリ サブスクリプション キーを追加します。 要求は次の URL のようになります。
 
    ```http
-    https://atlas.microsoft.com/tileset/operations/<operationId>?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
+    https://atlas.microsoft.com/tileset/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
 4. **GET** HTTP 要求が正常に完了すると、作成されたタイルセットの `tilesetId` が応答ヘッダーに含まれます。 `tilesetId` をコピーします。

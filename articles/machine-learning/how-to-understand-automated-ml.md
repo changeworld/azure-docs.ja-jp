@@ -11,15 +11,15 @@ ms.subservice: core
 ms.date: 12/05/2019
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 89fe1d80fb7282a72bde6bcafa070f2d7461b02f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 42b2ff0b7c2d43beb1d5f0b2136a97e67c0143a5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320835"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905065"
 ---
 # <a name="understand-automated-machine-learning-results"></a>自動化機械学習の結果の概要
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 この記事では、自動機械学習の実行ごとに、グラフとメトリックを確認し、把握する方法について説明します。 
 
@@ -59,7 +59,7 @@ ms.locfileid: "87320835"
 
    [![実験モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model-expanded.png)
 
-`RunDetails`[Jupyter ウィジェット](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)を使用した場合も、実行中に同じ結果が表示されます。
+`RunDetails`[Jupyter ウィジェット](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)を使用した場合も、実行中に同じ結果が表示されます。
 
 ## <a name="classification-results"></a><a name="classification"></a> 分類の結果
 

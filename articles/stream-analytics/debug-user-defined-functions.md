@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/24/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 758846e2b4bfa42c9f6db0dc330c12e38a2f8c96
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 25be55021e4f07b0803d8b7cc1bb48ab05a3ea3b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432351"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889614"
 ---
 # <a name="debug-user-defined-functions-in-azure-stream-analytics"></a>Azure Stream Analytics のユーザー定義関数をデバッグする 
 
@@ -47,7 +47,7 @@ Stream Analytics で関数を作成するためのもう 1 つの選択肢は、
 
 Stream Analytics の JavaScript 関数には直接のデバッグ サポートが用意されていないため、HTML サイトでその関数をカプセル化し、そこから出力を取得してデバッグできます。
 
-[Visual Studio Code](quick-create-vs-code.md) の統合ランタイム環境で、いくらかの制限があるものの、JavaScript UDF をデバッグする方法を次の例で示します。
+[Visual Studio Code](quick-create-visual-studio-code.md) の統合ランタイム環境で、いくらかの制限があるものの、JavaScript UDF をデバッグする方法を次の例で示します。
 
 ### <a name="prerequisites"></a>前提条件
 

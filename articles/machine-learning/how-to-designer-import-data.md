@@ -1,23 +1,23 @@
 ---
-title: デザイナー (プレビュー) にデータをインポートする
+title: デザイナーにデータをインポートする
 titleSuffix: Azure Machine Learning
-description: さまざまなデータ ソースから Azure Machine Learning デザイナー (プレビュー) にデータをインポートする方法について説明します。
+description: さまざまなデータ ソースから Azure Machine Learning デザイナーにデータをインポートする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-author: peterclu
-ms.author: peterlu
-ms.date: 01/16/2020
+author: likebupt
+ms.author: keli19
+ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: d977c8e13ce75eb276c8fdb11e9dd40e40a923ad
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 15fca48327c46480546764be1b2ab40c1635e874
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495373"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985598"
 ---
-# <a name="import-data-into-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナー (プレビュー) にデータをインポートする
+# <a name="import-data-into-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーにデータをインポートする
 
 この記事では、デザイナーに独自のデータをインポートして、カスタム ソリューションを作成する方法について説明します。 デザイナーにデータをインポートするには、次の 2 つの方法があります。 
 
@@ -32,25 +32,34 @@ Microsoft では、[データセット](concept-data.md#datasets) 使用して�
 
 ### <a name="register-a-dataset"></a>データセットを登録する
 
-既存のデータセットは、[SDK を使用してプログラム](how-to-create-register-datasets.md#datasets-sdk)で登録することも、[Azure Machine Learning studio で視覚的](how-to-create-register-datasets.md#datasets-ui)に登録することもできます。
+既存のデータセットは、[SDK を使用してプログラム](how-to-create-register-datasets.md#datasets-sdk)で登録することも、[Azure Machine Learning studio で視覚的](how-to-connect-data-ui.md#create-datasets)に登録することもできます。
 
 また、任意のデザイナー モジュールの出力をデータセットとして登録することもできます。
 
 1. 登録するデータを出力するモジュールを選択します。
 
-1. [プロパティ] ウィンドウで、 **[出力]**  >  **[データセットの登録]** の順に選択します。
+1. [プロパティ] ウィンドウで、 **[出力とログ]**  >  **[データセットの登録]** の順に選択します。
 
     ![データセットの登録オプションに移動する方法を示すスクリーンショット](media/how-to-designer-import-data/register-dataset-designer.png)
 
+モジュールの出力データが表形式である場合は、出力を**ファイル データセット**として登録するか、または**表形式データセット**として登録するかを選択する必要があります。
+
+ - **ファイル データセット**は、モジュールの出力フォルダーをファイル データセットとして登録します。 出力フォルダーには、デザイナーが内部で使用するデータ ファイルとメタファイルが含まれています。 登録されたデータセットをデザイナーで引き続き使用する場合は、このオプションを選択します。 
+
+ - **表形式データセット**は、モジュールの出力データ ファイルのみを表形式のデータセットとして登録します。 この形式は、Automated Machine Learning や Python SDK など、他のツールで簡単に使用できます。 登録されたデータセットをデザイナーの外部で使用する場合は、このオプションを選択します。  
+
+
+
 ### <a name="use-a-dataset"></a>データセットを使用する
 
-登録したデータセットは、 **[データセット]**  >  **[マイ データセット]** にあるモジュール パレットからアクセスできます。 データセットを使用するには、パイプライン キャンバスにドラッグ アンド ドロップします。 次に、データセットの出力ポートをパレット内の他のモジュールに接続します。
+登録したデータセットは、 **[データセット]** にあるモジュール パレットからアクセスできます。 データセットを使用するには、パイプライン キャンバスにドラッグ アンド ドロップします。 次に、データセットの出力ポートをキャンバス内の他のモジュールに接続します。 
 
 ![デザイナー パレットに保存されているデータセットの場所を示すスクリーンショット](media/how-to-designer-import-data/use-datasets-designer.png)
 
 
 > [!NOTE]
-> 現時点では、デザイナーでは[表形式データ](how-to-create-register-datasets.md#dataset-types)の処理のみがサポートされています。 [ファイル データセット](how-to-create-register-datasets.md#dataset-types)を使用する場合は、Python および R で使用可能な Azure Machine Learning SDK を使用します。
+> デザイナーでは、[データセットのバージョン管理](how-to-version-track-datasets.md)がサポートされています。 データセット モジュールの [プロパティ] パネルで、データセットのバージョンを指定します。
+
 
 ## <a name="import-data-using-the-import-data-module"></a>データのインポート モジュールを使用してデータをインポートする
 
@@ -59,7 +68,7 @@ Microsoft では、[データセット](concept-data.md#datasets) 使用して�
 [データのインポート] モジュールの詳しい使用方法については、[データのインポートの参照ページ](algorithm-module-reference/import-data.md)を参照してください。
 
 > [!NOTE]
-> データセットに含まれる列が多すぎる場合、次のエラーが発生することがあります。"サイズ制限のため、検証に失敗しました。" これを回避するには、[データセットを Datasets インターフェイスに登録します](how-to-create-register-datasets.md#datasets-ui)。
+> データセットに含まれる列が多すぎる場合、次のエラーが発生することがあります。"サイズ制限のため、検証に失敗しました。" これを回避するには、[データセットを Datasets インターフェイスに登録します](how-to-connect-data-ui.md#create-datasets)。
 
 ## <a name="supported-sources"></a>サポートされているソース
 
@@ -94,8 +103,8 @@ Microsoft では、[データセット](concept-data.md#datasets) 使用して�
 
 ## <a name="access-data-in-a-virtual-network"></a>仮想ネットワーク内のデータへのアクセス
 
-ワークスペースが仮想ネットワーク内にある場合は、追加の構成手順を実行して、デザイナーでデータを視覚化する必要があります。 仮想ネットワークでデータストアとデータセットを使用する方法の詳細については、「[プライベート仮想ネットワークを使用して機械学習のライフサイクルをセキュリティで保護する](how-to-enable-virtual-network.md#machine-learning-studio)」を参照してください。
+ワークスペースが仮想ネットワーク内にある場合は、追加の構成手順を実行して、デザイナーでデータを視覚化する必要があります。 仮想ネットワークでデータストアとデータセットを使用する方法の詳細については、「[Azure 仮想ネットワークで Azure Machine Learning Studio を使用する](how-to-enable-studio-virtual-network.md)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-デザイナーの基本については、「[チュートリアル:デザイナーを使用して自動車の価格を予測する](tutorial-designer-automobile-price-train-score.md)」を参照してください。
+デザイナーの基礎について、[チュートリアル:デザイナーを使用して自動車の価格を予測する](tutorial-designer-automobile-price-train-score.md)」を参照してください。

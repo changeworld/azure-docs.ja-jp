@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
-ms.date: 07/09/2020
-ms.openlocfilehash: 5ec6af894f434f8d1f7df34b2ed0c2514ab88cc4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 09/03/2020
+ms.openlocfilehash: abdd04f59ee820585d58817297d161f68bd952f0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87306147"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897405"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>VS Code 拡張機能 (プレビュー) を使用して Azure Machine Learning リソースを管理する
 
@@ -44,10 +44,10 @@ VS Code 拡張機能を使用して Azure Machine Learning リソースを管理
     1. Azure サブスクリプションを選びます
     1. 新しいリソース グループを選択するか作成して、ワークスペースをプロビジョニングします
     1. ワークスペースをプロビジョニングする場所を選択します。
-    1. *basic* エディションと *enterprise* エディションのどちらかを選択します。 さまざまな [Azure Machine Learning エディション](concept-editions.md)の詳細については、こちらを参照してください。
 
 ワークスペースを作成する別の方法として、次のものがあります。
 
+- **[表示] > [コマンド パレット]** からコマンド パレットを開いて、テキスト プロンプトに「**Azure ML:Create Workspace**」と入力します。
 - Azure Machine Learning ビューの上部にある `+` アイコンをクリックします。
 - 他のリソースをプロビジョニングするときにワークスペースを選択するように求めるメッセージが表示されたら、新しいワークスペースを作成します。
 
@@ -242,6 +242,39 @@ Azure Machine Learning Studio で実験を表示するには、以下の操作�
 ### <a name="view-run-metadata"></a>実行メタデータを表示する
 
 拡張機能では、実行に使用される実行構成や実行の詳細などのメタデータを検査できます。
+
+## <a name="compute-instances"></a>コンピューティング インスタンス
+
+詳細については、「[コンピューティング インスタンス](concept-compute-instance.md)」を参照してください。
+
+### <a name="create-compute-instance"></a>コンピューティング インスタンスの作成
+
+1. ワークスペースが含まれているサブスクリプション ノードを展開します。
+1. コンピューティング インスタンスを作成するワークスペース ノードを展開します。
+1. **[Compute instances]\(コンピューティング インスタンス\)** ノードを右クリックし、 **[Create compute instance]\(コンピューティング インスタンスの作成\)** を選択します。
+1. 次のように入力します。
+    1. コンピューティング インスタンスの名前を指定します。
+    1. 一覧から VM のサイズを選択します。
+    1. SSH アクセスを有効にするかどうかを選択します。
+        1. SSH アクセスを有効にする場合は、SSH 公開キーまたはキーを含むファイルも指定する必要があります。 詳細については、[Azure での SSH キーの作成と使用のガイド](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)に関するページを参照してください。
+
+### <a name="stop-or-restart-compute-instance"></a>コンピューティング インスタンスの停止または再起動
+
+1. ワークスペースが含まれているサブスクリプション ノードを展開します。
+1. ワークスペース内の **[Compute instances]\(コンピューティング インスタンス\)** ノードを展開します。
+1. 停止または再起動するコンピューティング インスタンスを右クリックし、 **[Stop Compute instance]\(コンピューティング インスタンスの停止\)** または **[Restart compute instance]\(コンピューティング インスタンスの再起動\)** を選択します。
+
+### <a name="view-compute-instance-configuration"></a>コンピューティング インスタンス構成の表示
+
+1. ワークスペースが含まれているサブスクリプション ノードを展開します。
+1. ワークスペース内の **[Compute instances]\(コンピューティング インスタンス\)** ノードを展開します。
+1. 検査するコンピューティング インスタンスを右クリックし、 **[View Compute instance Properties]\(コンピューティング インスタンスのプロパティを表示\)** を選択します。
+
+### <a name="delete-compute-instance"></a>コンピューティング インスタンスの削除
+
+1. ワークスペースが含まれているサブスクリプション ノードを展開します。
+1. ワークスペース内の **[Compute instances]\(コンピューティング インスタンス\)** ノードを展開します。
+1. 削除するコンピューティング インスタンスを右クリックして、 **[Delete compute instance]\(コンピューティング インスタンスの削除\)** を選択します。
 
 ## <a name="compute-clusters"></a>コンピューティング クラスター
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: terrylan
-ms.openlocfilehash: 6058b0d72eafe3a44ebdbabf291af05c08e772b3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7c317a0b4fea0c981b227bace00c1b8924fd582c
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038275"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536384"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>Azure Marketplace イメージのセキュリティに関する推奨事項
 
@@ -65,11 +65,3 @@ ms.locfileid: "87038275"
 
 組織が Azure Marketplace にイメージを持っていない場合でも、これらの推奨事項に照らして Windows と Linux のイメージ構成をチェックすることを検討してください。
 
-## <a name="contacting-customers"></a>顧客への連絡
-
-顧客と連絡先の電子メールを識別するには、次のようにします。
-
-1.  Cloud パートナー ポータルの左側のレールで、 **[Insights]\(分析情報\)** を選択します。
-2.  **[Orders and Usage]\(注文と使用量\)** タブで、 **[Start Date]\(開始日\)** フィールドと **[End Date]\(終了日\)** フィールドを使用して、必要な日付範囲内の使用量のクエリを実行します。 これにより、オファーに使用された Azure サブスクリプションが 1 日単位で表示されます。 このデータをエクスポートします。 
-3.  同様に、 **[Customer]\(顧客\)** タブで、顧客ベースのクエリを実行してエクスポートします。
-4.  手順 2 のサブスクリプション ID を手順 3 のサブスクリプション ID を照合して、必要な顧客情報を見つけます。

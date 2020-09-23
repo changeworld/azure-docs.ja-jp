@@ -4,8 +4,8 @@
   items:
     - name: Stream Analytics とは
       href: stream-analytics-introduction.md
-    - name: エンドツーエンド ソリューション パターン
-      href: stream-analytics-solution-patterns.md
+    - name: Stream Analytics クラスター
+      href: cluster-overview.md
 - name: クイックスタート
   expanded: true
   items:
@@ -23,7 +23,11 @@
         - name: "Visual\_Studio"
           href: stream-analytics-quick-create-vs.md
         - name: Visual Studio Code
-          href: quick-create-vs-code.md
+          href: quick-create-visual-studio-code.md
+    - name: クラスターの作成
+      items:
+        - name: Azure portal
+          href: create-cluster.md
 - name: チュートリアル
   items:
     - name: 1 - ジョブの作成/管理
@@ -42,6 +46,8 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
 - name: 概念
   items:
+    - name: エンドツーエンド ソリューション パターン
+      href: stream-analytics-solution-patterns.md
     - name: ストリーミング分析テクノロジの選択
       href: streaming-technologies.md
     - name: ジョブ開発ツールの選択
@@ -145,6 +151,14 @@
   items:
     - name: 管理する
       items:
+        - name: クラスター
+          items:
+            - name: プライベート エンドポイントの作成と削除
+              href: private-endpoints.md
+            - name: ジョブの追加と削除
+              href: manage-jobs-cluster.md
+            - name: クラスター サイズのスケーリング
+              href: scale-cluster.md
         - name: ジョブの自動スケーリング
           href: stream-analytics-autoscale.md
         - name: 資格情報の更新
@@ -234,6 +248,14 @@
           href: stream-analytics-cicd-api.md
         - name: Azure Resource Manager を使用したエクスポートおよびデプロイ
           href: resource-manager-export.md
+    - name: 継続的インテグレーションと継続的配置
+      items:
+        - name: CI/CD の概要
+          href: cicd-overview.md
+        - name: PowerShell を使用したビルド、テスト、デプロイ
+          href: cicd-tools.md
+        - name: Azure DevOps を使用したパイプラインの設定
+          href: set-up-cicd-pipeline.md
     - name: "Visual\_Studio"
       items:
         - name: ツールをインストールする
@@ -260,8 +282,6 @@
           href: visual-studio-code-local-run-live-input.md
         - name: ジョブ ダイアグラムを使用してクエリをデバッグする
           href: debug-locally-using-job-diagram-vs-code.md
-        - name: CI/CD パイプラインの設定
-          href: setup-cicd-vs-code.md
         - name: ジョブの探索
           href: visual-studio-code-explore-jobs.md
         - name: JobConfig.json のフィールド

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c261ea174f37de51a8fbd5b36aeb40c26d44e6a9
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 09e0b3bbac0bdc1d268aa7f24741aeb12a7d366d
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691396"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462583"
 ---
 # <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Windows Virtual Desktop (クラシック) 管理ツールをデプロイする
 
@@ -98,7 +98,7 @@ GitHub の Azure Resource Manager テンプレートが完成すると、Azure p
 
 これらの手順に従って、ツールを起動します。
 
-1. テンプレート内で指定した名前の Azure App Services リソース (たとえば、Apr3UX) を選択し、それに関連付けられている URL (たとえば、<https://rdmimgmtweb-210520190304.azurewebsites.net>) に移動します。
+1. テンプレート内で指定した名前の Azure App Services リソース (たとえば、Apr3UX) を選択し、それに関連付けられている URL (たとえば、`https://rdmimgmtweb-210520190304.azurewebsites.net`) に移動します。
 2. ご自分の Windows Virtual Desktop 資格情報を使用してサインインします。
 3. テナント グループを選択するよう求められたら、ドロップダウン リストから **[Default Tenant Group]\(既定のテナント グループ\)** を選択します。
 4. **[既定のテナント グループ]** を選択すると、ウィンドウの右側にメニューが表示されます。 このメニューの中から、テナント グループの名前を探して選択します。

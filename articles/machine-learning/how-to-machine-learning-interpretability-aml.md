@@ -11,16 +11,16 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8a0853d4a863f6b7677f665513bdac9ca8e6b673
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: dc07d2826d3c27fad1eee644da36cb7b4f85ea3c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144109"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897466"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>解釈可能性パッケージを使用して、Python ML モデルと予測について説明する (プレビュー)
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 この攻略ガイドでは、Azure Machine Learning Python SDK の解釈可能性パッケージを使用して次のタスクを実行する方法について学習します。
 

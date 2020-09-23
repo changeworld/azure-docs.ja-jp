@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/24/2020
-ms.openlocfilehash: e4511cf4393172e7d2b1ab8a985c76d8f98d4015
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ecf739ea838ad3742612eab7a1b42ac8c8ac455a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79456065"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905267"
 ---
 # <a name="permutation-feature-importance"></a>順列の特徴量の重要度
 
-この記事では、Azure Machine Learning デザイナー (プレビュー) で Permutation Feature Importance (順列の特徴量の重要度) モジュールを使用して、実際のデータセットに対する一連の特徴量の重要度スコアを計算する方法について説明します。 これらのスコアは、モデルで使用する最適な特徴を決定するために使用します。
+この記事では、Azure Machine Learning デザイナーで順列の特徴量の重要度モジュールを使用して、実際のデータセットに対する一連の特徴量の重要度スコアを計算する方法について説明します。 これらのスコアは、モデルで使用する最適な特徴を決定するために使用します。
 
 このモジュールでは、特徴の値は一度に 1 列ずつランダムにシャッフルされます。 その前後のモデルのパフォーマンスが測定されます。 標準メトリックの 1 つを選択してパフォーマンスを測定できます。
 
@@ -30,7 +30,7 @@ ms.locfileid: "79456065"
 
 特徴スコアのセットを生成するには、テスト データセットだけでなくトレーニング済みのモデルが必要です。  
 
-1.  Permutation Feature Importance (順列の特徴量の重要度) モジュールを自分のパイプラインに追加します。 このモジュールは、 **[Feature Selection]\(特徴選択\)** カテゴリにあります。 
+1.  Permutation Feature Importance (順列の特徴量の重要度) モジュールを自分のパイプラインに追加します。 このモジュールは、 **[Feature Selection]/(特徴選択/)** カテゴリにあります。 
 
 2.  トレーニング済みのモデルを左側の入力に接続します。 モデルは回帰モデルまたは分類モデルである必要があります。  
 
@@ -40,7 +40,7 @@ ms.locfileid: "79456065"
 
      シード値は省略可能ですが、同じパイプラインの実行間で再現性を向上させるには、値を指定する必要があります。  
 
-5.  **[Metric for measuring performance]\(パフォーマンスを測定するためのメトリック\)** については、順列後にモデルの品質を計算するときに使用する 1 つのメトリックを選択します。  
+5.  **[Metric for measuring performance]/(パフォーマンスを測定するためのメトリック/)** については、順列後にモデルの品質を計算するときに使用する 1 つのメトリックを選択します。  
 
      Azure Machine Learning デザイナーでは、分類モデルと回帰モデルのどちらを評価するかに応じて、次のメトリックがサポートされます。  
 

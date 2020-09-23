@@ -1,19 +1,19 @@
 ---
 title: クラスター サイズのスケーリング - Azure HDInsight
 description: Azure HDInsight でワークロードに合わせて Apache Hadoop クラスターをエラスティックにスケーリングする
-author: ashishthaps
+author: hrasheed-msft
 ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: a9d419052f000b220c993109e45d371398607275
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 44cfc5b651bdd5dc0d7abee575bd964ad0b603d0
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006452"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505014"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight クラスターのスケーリング
 

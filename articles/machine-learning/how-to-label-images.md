@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: a71b4096e791221057fdcc5d14351ceccab720fb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e34fa4af08be898785acbc6f00aa735c1412ec47
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87307201"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897575"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>ラベル付けプロジェクトで画像にタグを付ける 
 
@@ -111,7 +111,7 @@ Azure では、各画像に少なくとも 1 つのタグを適用した後に�
 1. **四角形のボックス** ツール ![四角形のボックス ツール](./media/how-to-label-images/rectangular-box-tool.png) を選択するか、R キーを押します。
 3. ターゲットをクリックして斜めにドラッグすると、大まかな境界ボックスが作成されます。 境界ボックスを調整するには、端または角をドラッグします。
 
-![基本的な境界ボックスの作成を示すスクリーンショット。](./media/how-to-label-images/bounding-box-sequence.png)
+![境界ボックスの作成](./media/how-to-label-images/bounding-box-sequence.png)
 
 境界ボックスを削除するには、作成後に境界ボックスの横に表示される X 形のターゲットをクリックします。
 

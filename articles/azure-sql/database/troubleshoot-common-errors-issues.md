@@ -10,12 +10,12 @@ author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: carlrab,vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: e1a018b06b7ee7230612d2ee6a582214a817547b
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 4a1cfcbf110ab375a0fb357c1856fd0567a1c57a
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985226"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459421"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database および Azure SQL Managed Instance の接続に関する問題とその他のエラーのトラブルシューティング
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -194,7 +194,7 @@ ADO.NET を使用するクライアントの*ブロック期間*については�
 2. ヘッド ブロッカーの**入力バッファー**を特定します。
 3. ヘッド ブロッカー クエリを調整します。
 
-   詳細なトラブルシューティング手順については、「[クラウドでクエリが正常に実行されているか](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx)」を参照してください。
+   詳細なトラブルシューティング手順については、「[クラウドでクエリが正常に実行されているか](https://docs.microsoft.com/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud)」を参照してください。
 
 ブロックしているクエリや実行時間の長いクエリに対応しているにもかかわらず、データベースが常に制限に達する場合は、より多くのリソースを含むエディション ([エディション](https://azure.microsoft.com/pricing/details/sql-database/)) にアップグレードすることを検討してください。
 
@@ -261,7 +261,7 @@ ADO.NET を使用するクライアントの*ブロック期間*については�
 
 また、クエリのバッチ処理も検討してください。 バッチ処理については、「[バッチ処理を使用して SQL Database アプリケーションのパフォーマンスを強化する方法](https://docs.microsoft.com/azure/sql-database/sql-database-use-batching-to-improve-performance)」を参照してください。
 
-詳細なトラブルシューティング手順については、「[クラウドでクエリが正常に実行されているか](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx)」を参照してください。
+詳細なトラブルシューティング手順については、「[クラウドでクエリが正常に実行されているか](https://docs.microsoft.com/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud)」を参照してください。
 
 ### <a name="error-40551-the-session-has-been-terminated-because-of-excessive-tempdb-usage"></a>エラー 40551:TEMPDB の使用量が多すぎるため、セッションを終了しました
 
@@ -292,7 +292,7 @@ ADO.NET を使用するクライアントの*ブロック期間*については�
 
 この問題を回避するには、クエリを最適化してみてください。
 
-詳細なトラブルシューティング手順については、「[クラウドでクエリが正常に実行されているか](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx)」を参照してください。
+詳細なトラブルシューティング手順については、「[クラウドでクエリが正常に実行されているか](https://docs.microsoft.com/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud)」を参照してください。
 
 ### <a name="table-of-additional-resource-governance-error-messages"></a>その他のリソース ガバナンス エラー メッセージの表
 
@@ -356,7 +356,7 @@ System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
 ClientConnectionId:<Client connection ID>
 ```
 
-クエリの問題によって例外がトリガーされた場合、次のような呼び出し履歴が表示されます (**SqlCommand** クラスへの参照に注意)。 このような場合は、[クエリを調整](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx)します。
+クエリの問題によって例外がトリガーされた場合、次のような呼び出し履歴が表示されます (**SqlCommand** クラスへの参照に注意)。 このような場合は、[クエリを調整](https://docs.microsoft.com/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud)します。
 
 ```
   at System.Data.SqlClient.SqlCommand.ExecuteReader()

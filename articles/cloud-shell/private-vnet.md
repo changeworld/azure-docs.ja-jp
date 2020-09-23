@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: damaerte
-ms.openlocfilehash: 1cb5716e2f02a99e4d39a4041a2e54e87cf43568
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 722d935c242a51ddfc01377676f026b71a8951b8
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114661"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468540"
 ---
 # <a name="deploy-cloud-shell-into-an-azure-virtual-network"></a>Azure 仮想ネットワークに Cloud Shell をデプロイする
 > [!NOTE]
@@ -52,7 +52,7 @@ Cloud Shell に使用する目的の仮想ネットワークを識別する必�
 ネットワーク プロファイルは、リソースの特定のネットワーク プロパティを指定する Azure リソースのネットワーク構成テンプレートです。
 
 ### <a name="azure-relay"></a>Azure Relay
-[Azure Relay](https://docs.microsoft.com/azure/azure-relay/relay-what-is-it) を使用すると、直接到達できない 2 つのエンドポイントが通信できるようになります。 この場合、これは管理者のブラウザーがプライベート ネットワーク内のコンテナーと通信できるようにするために使用されます。
+[Azure Relay](../azure-relay/relay-what-is-it.md) を使用すると、直接到達できない 2 つのエンドポイントが通信できるようになります。 この場合、これは管理者のブラウザーがプライベート ネットワーク内のコンテナーと通信できるようにするために使用されます。
 
 Cloud Shell に使用される Azure Relay インスタンスは、コンテナー リソースにアクセスできるネットワークを制御するように構成できます。 
 - パブリック インターネットからアクセス可能:この構成では、Cloud Shell は、外部から内部リソースに接続する手段を提供します。 
@@ -66,7 +66,7 @@ Cloud Shell に使用される Azure Relay インスタンスは、コンテナ�
 
 * プレビュー期間中は、仮想ネットワーク内の Cloud Shell でサポートされるリージョンが少なくなっています。 現時点では、次のものに制限されています。WestUS と WestCentralUS。
 
-* [Azure Relay](https://docs.microsoft.com/azure/azure-relay/relay-what-is-it) は無料のサービスではありません。[価格](https://azure.microsoft.com/pricing/details/service-bus/)をご確認ください。 Cloud Shell シナリオでは、Cloud Shell を使用している間、管理者ごとに 1 つのハイブリッド接続が使用されます。 Cloud Shell セッションが完了すると、接続は自動的にシャットダウンされます。
+* [Azure Relay](../azure-relay/relay-what-is-it.md) は無料のサービスではありません。[価格](https://azure.microsoft.com/pricing/details/service-bus/)をご確認ください。 Cloud Shell シナリオでは、Cloud Shell を使用している間、管理者ごとに 1 つのハイブリッド接続が使用されます。 Cloud Shell セッションが完了すると、接続は自動的にシャットダウンされます。
 
 ## <a name="register-the-resource-provider"></a>リソース プロバイダーの登録
 
@@ -114,4 +114,4 @@ Cloud Shell に接続すると、最初の実行エクスペリエンスを示�
 ![Cloud Shell 分離 VNET の最初のエクスペリエンス設定を示す図。](media/private-vnet/vnet-settings.png)
 
 ## <a name="next-steps"></a>次のステップ
-[Azure 仮想ネットワークについて](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
+[Azure 仮想ネットワークについて](../virtual-network/virtual-networks-overview.md)

@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 08/07/2020
 ms.author: irenehua
-ms.openlocfilehash: 10a0c186bb1a0d9f974d485e7d2d1d7326bd849c
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: a6d2b69b0b498601497c4b33fb6bdfede87002df
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033157"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500251"
 ---
 # <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>Azure Internal Load Balancer のアップグレード - 送信接続は不要
 [Azure Standard Load Balancer](load-balancer-overview.md) では、豊富な機能とゾーンの冗長性による高可用性が提供されます。 Load Balancer SKU の詳細については、[比較表](https://docs.microsoft.com/azure/load-balancer/skus#skus)を参照してください。
@@ -48,7 +48,7 @@ ms.locfileid: "88033157"
 
 ## <a name="download-the-script"></a>スクリプトのダウンロード
 
-[PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzureILBUpgrade/4.0)から移行スクリプトをダウンロードします。
+[PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzureILBUpgrade/5.0)から移行スクリプトをダウンロードします。
 ## <a name="use-the-script"></a>スクリプトの使用
 
 ローカルの PowerShell 環境のセットアップと設定に応じて、次の 2 つのオプションがあります。

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2019
 ms.author: yelevin
-ms.openlocfilehash: 2110d3319cebf693ef06deec26a29fa655e35035
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54c10d7941e053bec928f8f43310218d89124f9a
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77585273"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461733"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Azure Sentinel の操作に便利なリソース
 
@@ -82,4 +82,4 @@ Azure Sentinel の監査ログは、[Azure アクティビティ ログ](../azur
 
 
 ## <a name="next-steps"></a>次のステップ
-このドキュメントでは、Azure Sentinel の使用時に役立つリソースの一覧を示します。 Azure のセキュリティとコンプライアンスに関する追加情報については、[Microsoft Azure Security とコンプライアンスに関するブログ](https://blogs.msdn.com/b/azuresecurity/)を参照してください。
+このドキュメントでは、Azure Sentinel の使用時に役立つリソースの一覧を示します。 Azure のセキュリティとコンプライアンスに関する追加情報については、[Microsoft Azure Security とコンプライアンスに関するブログ](https://docs.microsoft.com/archive/blogs/azuresecurity/)を参照してください。
