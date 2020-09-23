@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU デバイスの Azure Resource Manager に接続する
-description: Azure PowerShell を使用して、Azure Stack Edge GPU 上で実行されている Azure Resource Manager に接続する方法について説明します。
+title: Azure Stack Edge Pro GPU デバイスの Azure Resource Manager に接続する
+description: Azure PowerShell を使用して、Azure Stack Edge Pro GPU 上で実行されている Azure Resource Manager に接続する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,29 +8,29 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: cf57d81c2ef56662abbd529a5de90e03c00e091a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5cf406dc0577f477858dd8a6570f7975747112e0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269813"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891253"
 ---
-# <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-device"></a>Azure Stack Edge デバイスの Azure Resource Manager に接続する
+# <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイスの Azure Resource Manager に接続する
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Azure Resource Manager には、Azure サブスクリプションのリソースを作成、更新、削除できる管理レイヤーが用意されています。 Azure Stack Edge デバイスにより、ローカル サブスクリプションで VM を作成、更新、削除する同じ Azure Resource Manager API がサポートされています。 このサポートにより、クラウドと一貫性のある方法でデバイスを管理できるようになります。 
+Azure Resource Manager には、Azure サブスクリプションのリソースを作成、更新、削除できる管理レイヤーが用意されています。 Azure Stack Edge Pro デバイスにより、ローカル サブスクリプションで VM を作成、更新、削除する同じ Azure Resource Manager API がサポートされています。 このサポートにより、クラウドと一貫性のある方法でデバイスを管理できるようになります。 
 
-このチュートリアルでは、Azure PowerShell を使用して Azure Resource Manager を介して Azure Stack Edge デバイスのローカル API に接続する方法について説明します。
+このチュートリアルでは、Azure PowerShell を使用して Azure Resource Manager を介して Azure Stack Edge Pro デバイスのローカル API に接続する方法について説明します。
 
 ## <a name="about-azure-resource-manager"></a>Azure Resource Manager について
 
-Azure Resource Manager には、Azure Stack Edge デバイス API を呼び出したり、VM の作成、更新、削除などの操作を実行したりするための一貫した管理レイヤーが用意されています。 Azure Resource Manager のアーキテクチャの詳細を次の図に示します。
+Azure Resource Manager には、Azure Stack Edge Pro デバイス API を呼び出したり、VM の作成、更新、削除などの操作を実行したりするための一貫した管理レイヤーが用意されています。 Azure Resource Manager のアーキテクチャの詳細を次の図に示します。
 
 ![Azure Resource Manager の図](media/azure-stack-edge-j-series-connect-resource-manager/edge-device-flow.svg)
 
 
-## <a name="endpoints-on-azure-stack-edge-device"></a>Azure Stack Edge デバイスのエンドポイント
+## <a name="endpoints-on-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイスのエンドポイント
 
 次の表は、デバイスで公開されているさまざまなエンドポイント、サポートされているプロトコル、およびそれらのエンドポイントにアクセスするためのポートをまとめたものです。 この記事全体を通して、これらのエンドポイントへの参照が見つかります。
 
@@ -47,7 +47,7 @@ Azure Resource Manager を使用してデバイスのローカル API に接続�
 
 | 手順番号 | 実行する手順 | .. 実行する場所 |
 | --- | --- | --- |
-| 1. | [Azure Stack Edge デバイスを構成する](#step-1-configure-azure-stack-edge-device) | ローカル Web UI |
+| 1. | [Azure Stack Edge Pro デバイスを構成する](#step-1-configure-azure-stack-edge-pro-device) | ローカル Web UI |
 | 2. | [証明書を作成してインストールする](#step-2-create-and-install-certificates) | Windows クライアント/ローカル Web UI |
 | 3. | [前提条件を確認して構成する](#step-3-install-powershell-on-the-client) | Windows クライアント |
 | 4. | [クライアントで Azure PowerShell を設定する](#step-4-set-up-azure-powershell-on-the-client) | Windows クライアント |
@@ -59,13 +59,13 @@ Azure Resource Manager を使用してデバイスのローカル API に接続�
 
 ## <a name="prerequisites"></a>前提条件
 
-開始する前に、Azure Resource Manager 経由でデバイスに接続するために使用されるクライアントで TLS 1.2 が使用されていることを確認してください。 詳細については、「[Azure Stack Edge デバイスにアクセスする Windows クライアントで TLS 1.2 を構成する](azure-stack-edge-j-series-configure-tls-settings.md)」を参照してください。
+開始する前に、Azure Resource Manager 経由でデバイスに接続するために使用されるクライアントで TLS 1.2 が使用されていることを確認してください。 詳細については、「[Azure Stack Edge Pro デバイスにアクセスする Windows クライアントで TLS 1.2 を構成する](azure-stack-edge-j-series-configure-tls-settings.md)」をご覧ください。
 
-## <a name="step-1-configure-azure-stack-edge-device"></a>手順 1:Azure Stack Edge デバイスを構成する 
+## <a name="step-1-configure-azure-stack-edge-pro-device"></a>手順 1:Azure Stack Edge Pro デバイスを構成する 
 
-Azure Stack Edge デバイスのローカル Web UI で、次の手順を行います。
+Azure Stack Edge Pro デバイスのローカル Web UI で、次の手順を行います。
 
-1. Azure Stack Edge デバイスのネットワーク設定を完了します。 
+1. Azure Stack Edge Pro デバイスのネットワーク設定を完了します。 
 
     ![ローカル Web UI の [ネットワーク設定] ページ](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-2.png)
 
@@ -83,7 +83,7 @@ Azure Stack Edge デバイスのローカル Web UI で、次の手順を行い�
 
 ## <a name="step-2-create-and-install-certificates"></a>手順 2:証明書を作成してインストールする
 
-証明書により、通信が信頼されていることが保証されます。 Azure Stack Edge デバイスによって、自己署名アプライアンス、BLOB、Azure Resource Manager の証明書が自動的に生成されます。 必要に応じて、独自の署名済み BLOB と Azure Resource Manager の証明書を取り込むこともできます。
+証明書により、通信が信頼されていることが保証されます。 Azure Stack Edge Pro デバイスによって、自己署名アプライアンス、BLOB、Azure Resource Manager の証明書が自動的に生成されます。 必要に応じて、独自の署名済み BLOB と Azure Resource Manager の証明書を取り込むこともできます。
 
 独自の署名入り証明書を取り込む場合は、証明書の対応する署名チェーンも必要です。 署名チェーン、Azure Resource Manager、およびデバイスの BLOB 証明書については、デバイスを認証して通信するために、クライアント マシンにも対応する証明書が必要になります。
 
@@ -319,7 +319,7 @@ Azure Resource Manager 環境を設定し、Azure Resource Manager を使用し�
     AzDBE https://management.dbe-n6hugc2ra.microsoftdatabox.com https://login.dbe-n6hugc2ra.microsoftdatabox.com/adfs/
     ```
 
-2. 環境を Azure Stack Edge として設定し、Azure Resource Manager の呼び出しに使用するポートを 443 として設定します。 環境を定義するには、次の 2 つの方法があります。
+2. 環境を Azure Stack Edge Pro として設定し、Azure Resource Manager の呼び出しに使用するポートを 443 として設定します。 環境を定義するには、次の 2 つの方法があります。
 
     - 環境を設定します。 次のコマンドを入力します。
 
@@ -329,7 +329,7 @@ Azure Resource Manager 環境を設定し、Azure Resource Manager を使用し�
     
     詳細については 「[Set-AzureRMEnvironment](https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermenvironment?view=azurermps-6.13.0)」を参照してください。
 
-    - 実行するすべてのコマンドレットに対して、環境をインラインで定義します。 これにより、すべての API 呼び出しが確実に正しい環境を経由するようになります。 既定では、呼び出しは Azure パブリックを経由しますが、Azure Stack Edge デバイス用に設定した環境を経由する必要があります。
+    - 実行するすべてのコマンドレットに対して、環境をインラインで定義します。 これにより、すべての API 呼び出しが確実に正しい環境を経由するようになります。 既定では、呼び出しは Azure パブリックを経由しますが、Azure Stack Edge Pro デバイス用に設定した環境を経由する必要があります。
 
     - AzureRM 環境を切り替える方法ついては、[こちら](#switch-environments)を参照してください。
 
@@ -376,7 +376,7 @@ Azure Resource Manager 環境を設定し、Azure Resource Manager を使用し�
 
 
 > [!IMPORTANT]
-> Azure Stack Edge デバイスが再起動されると、Azure Resource Manager への接続は 1.5 時間ごとに有効期限が切れます。 この場合、実行するすべてのコマンドレットで、Azure に接続されていないことを示すエラー メッセージが返されます。 再度サインインする必要があります。
+> Azure Stack Edge Pro デバイスが再起動されると、Azure Resource Manager への接続は 1.5 時間ごとに有効期限が切れます。 この場合、実行するすべてのコマンドレットで、Azure に接続されていないことを示すエラー メッセージが返されます。 再度サインインする必要があります。
 
 ## <a name="switch-environments"></a>環境を切り替える
 
@@ -460,4 +460,4 @@ ExtendedProperties : {}
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Stack Edge デバイスに VM をデプロイする](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md)。
+[Azure Stack Edge Pro デバイスに VM をデプロイする](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md)。

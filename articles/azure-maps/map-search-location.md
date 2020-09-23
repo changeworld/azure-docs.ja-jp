@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 678781ff4bade7484f28cc9ab14d960f2b24c323
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: be6d508da15b7c403259bd66c86c3b3e72ff2f12
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87130292"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089275"
 ---
 # <a name="show-search-results-on-the-map"></a>マップに検索結果を表示する
 
@@ -24,25 +24,25 @@ ms.locfileid: "87130292"
 
 ## <a name="make-a-search-request-via-service-module"></a>サービス モジュールを使用して検索要求を行う
 
-<iframe height='500' scrolling='no' title='マップに検索結果を表示する (サービス モジュール)' src='//codepen.io/azuremaps/embed/zLdYEB/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/zLdYEB/'>Show search results on a map (Service Module)</a>」Pen を表示します。
+<iframe height='500' scrolling='no' title='マップに検索結果を表示する (サービス モジュール)' src='//codepen.io/azuremaps/embed/zLdYEB/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/zLdYEB/'>Show search results on a map (Service Module)</a>」Pen を表示します。
 </iframe>
 
 上記のコードでは、最初のブロックでマップ オブジェクトが構築され、アクセス トークンを使用するための認証メカニズムが設定されます。 作成方法については、[マップの作成](./map-create.md)に関する記事を参照してください。
 
-アクセス トークンを使用して Azure Maps に対する HTTP 要求を認証するために、2 ブロック目のコードで `TokenCredential` が作成されます。 その後、`TokenCredential` が `atlas.service.MapsURL.newPipeline()` に渡され、[パイプライン](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) インスタンスが作成されます。 `searchURL` は、Azure Maps の [Search](https://docs.microsoft.com/rest/api/maps/search) 操作の URL を表します。
+アクセス トークンを使用して Azure Maps に対する HTTP 要求を認証するために、2 ブロック目のコードで `TokenCredential` が作成されます。 その後、`TokenCredential` が `atlas.service.MapsURL.newPipeline()` に渡され、[パイプライン](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline) インスタンスが作成されます。 `searchURL` は、Azure Maps の [Search](https://docs.microsoft.com/rest/api/maps/search) 操作の URL を表します。
 
-2 つ目のコード ブロックでは、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) クラスを使用してデータ ソース オブジェクトが作成され、検索結果がそこに追加されます。 [シンボル レイヤー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)は、テキストまたはアイコンを使用して、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) にラップされたポイントベースのデータをシンボルとしてマップにレンダリングします。  シンボル レイヤーが作成されます。 データ ソースがシンボル レイヤーに追加され、それがマップに追加されます。
+2 つ目のコード ブロックでは、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource) クラスを使用してデータ ソース オブジェクトが作成され、検索結果がそこに追加されます。 [シンボル レイヤー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer)は、テキストまたはアイコンを使用して、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource) にラップされたポイントベースのデータをシンボルとしてマップにレンダリングします。  シンボル レイヤーが作成されます。 データ ソースがシンボル レイヤーに追加され、それがマップに追加されます。
 
 4 番目のコード ブロックでは、[サーチ モジュール](how-to-use-services-module.md)で [SearchFuzzy](/javascript/api/azure-maps-rest/atlas.service.models.searchgetsearchfuzzyoptionalparams) メソッドが使用されます。 それにより、[Get Search Fuzzy rest API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) を介して自由形式のテキスト検索を実行して、POI を検索できます。 Get requests to the Search Fuzzy API では、どの組み合わせのあいまい入力も処理できます。 次に、`geojson.getFeatures()` メソッドを使用して応答から GeoJSON のフィーチャー コレクションが抽出されて、データ ソースに追加されます。それにより、シンボル レイヤーを介してマップ上でデータが自動的にレンダリングされます。
 
-最後のコード ブロックでは、マップの [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) プロパティを使用してマップのカメラ境界が調整されます。
+最後のコード ブロックでは、マップの [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) プロパティを使用してマップのカメラ境界が調整されます。
 
-検索要求、データ ソース、シンボル レイヤー、カメラの境界は、マップの[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)内にあります。 必ず、マップが完全に読み込まれた後に、結果が表示されるようにします。
+検索要求、データ ソース、シンボル レイヤー、カメラの境界は、マップの[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#events)内にあります。 必ず、マップが完全に読み込まれた後に、結果が表示されるようにします。
 
 
 ## <a name="make-a-search-request-via-fetch-api"></a>Fetch API を使用して検索要求を行う
 
-<iframe height='500' scrolling='no' title='マップに検索結果を表示する' src='//codepen.io/azuremaps/embed/KQbaeM/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/KQbaeM/'>Show search results on a map</a>」Pen を表示します。
+<iframe height='500' scrolling='no' title='マップに検索結果を表示する' src='//codepen.io/azuremaps/embed/KQbaeM/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/KQbaeM/'>Show search results on a map</a>」Pen を表示します。
 </iframe>
 
 上記のコードの最初のコード ブロックでは、マップ オブジェクトが作成されます。 アクセス トークンを使用する認証メカニズムを設定します。 作成方法については、[マップの作成](./map-create.md)に関する記事を参照してください。
@@ -51,11 +51,11 @@ ms.locfileid: "87130292"
 
 3 番目のコード ブロックでは、[Fetch API](https://fetch.spec.whatwg.org/) が使用されます。 [Fetch API](https://fetch.spec.whatwg.org/) は、 [Azure Maps Fuzzy search API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) への要求を行って目的地を検索するために使用されます。 あいまい検索 API は、あいまい入力の任意の組み合わせを処理できます。 次に、検索応答の処理と解析を行い、結果のピンを searchPins 配列に追加します。
 
-4 番目のコード ブロックでは、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) クラスを使用して、データ ソース オブジェクトが作成されます。 コードでは、ソース オブジェクトに検索結果が追加されます。 [シンボル レイヤー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)は、テキストまたはアイコンを使用して、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) にラップされたポイントベースのデータをシンボルとしてマップにレンダリングします。 シンボル レイヤーが作成されます。 データ ソースがシンボル レイヤーに追加され、それがマップに追加されます。
+4 番目のコード ブロックでは、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource) クラスを使用して、データ ソース オブジェクトが作成されます。 コードでは、ソース オブジェクトに検索結果が追加されます。 [シンボル レイヤー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer)は、テキストまたはアイコンを使用して、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource) にラップされたポイントベースのデータをシンボルとしてマップにレンダリングします。 シンボル レイヤーが作成されます。 データ ソースがシンボル レイヤーに追加され、それがマップに追加されます。
 
-最後のコード ブロックでは、[BoundingBox](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.boundingbox?view=azure-iot-typescript-latest) オブジェクトが作成されます。 結果の配列が使用され、その後、マップの [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) を使用してマップに対するカメラ境界が調整されます。 次に、結果のピンがレンダリングされます。
+最後のコード ブロックでは、[BoundingBox](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.boundingbox) オブジェクトが作成されます。 結果の配列が使用され、その後、マップの [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) を使用してマップに対するカメラ境界が調整されます。 次に、結果のピンがレンダリングされます。
 
-必ずマップの読み込みが完了した後に結果が表示されるように、マップの[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)内で検索要求、データ ソース、シンボル レイヤー、およびカメラ境界が設定されます。
+必ずマップの読み込みが完了した後に結果が表示されるように、マップの[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#events)内で検索要求、データ ソース、シンボル レイヤー、およびカメラ境界が設定されます。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -70,7 +70,7 @@ ms.locfileid: "87130292"
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 完全なコードの例については、次の記事を参照してください。
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: abcdc903e1509c266b9ea6666c296a59183e83c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7586cca21d470bcb0cf637ca0370f5dfcb59406
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711087"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901103"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Azure Security Center 上で SQL 情報保護ポリシーをカスタマイズする (プレビュー)
  
@@ -56,7 +56,7 @@ Azure テナントの情報保護ポリシーをカスタマイズするには�
  
 4. ラベルは、機密度の昇順で一覧表示されます。 ラベルの順位付けを変更するには、テーブル内でラベルをドラッグして並べ替えるか、 **[上へ移動]** と **[下へ移動]** を使用して順序を変更します。 
  
-    ![情報保護ポリシーを構成する](./media/security-center-info-protection-policy/move-up.png)
+    ![ラベル一覧](./media/security-center-info-protection-policy/move-up.png)
  
 5. 完了したら、画面の上部にある **[保存]** を必ずクリックしてください。
  
@@ -66,7 +66,7 @@ Azure テナントの情報保護ポリシーをカスタマイズするには�
 1. **[情報の種類を管理する]** をクリックして、情報の種類を管理およびカスタマイズできます。
 2. 新しい **[情報の種類]** を追加するには、トップ メニューの **[情報の種類を作成する]** を選択します。 **[情報の種類]** の名前、説明、検索パターン文字列を構成できます。 検索パターン文字列では、オプションで、ワイルドカード文字 ('%' 文字を使用) を含むキーワードを使用できます。自動検出エンジンでは、このキーワードを使用して、列のメタデータに基づいてデータベース内の機密データが識別されます。
  
-    ![情報保護ポリシーを構成する](./media/security-center-info-protection-policy/info-types.png)
+    ![情報の種類を作成する](./media/security-center-info-protection-policy/info-types.png)
  
 3. 追加の検索パターン文字列の追加、既存の文字列の一部の無効化、または説明の変更により、組み込みの **[情報の種類]** を構成することもできます。 組み込みの **[情報の種類]** を削除したり、その名前を編集したりすることはできません。 
 4. **[情報の種類]** は、検出の順位付けの昇順で一覧表示されます。つまり、リスト内の上位の種類の照合が最初に試みられます。 情報の種類間で順位を変更するには、テーブル内で種類を適切な位置にドラッグするか、 **[上へ移動]** と **[下へ移動]** を使用して順序を変更します。 

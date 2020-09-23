@@ -4,14 +4,14 @@ description: Azure HPC Cache インスタンスを作成する方法
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 07/10/2020
+ms.date: 09/03/2020
 ms.author: v-erkel
-ms.openlocfilehash: a988f08b2b6e30543c112b20e5b374130ceddc47
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5b1062556f1f971690f835274be15c11b072eca9
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092492"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612074"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Azure HPC キャッシュを作成する
 
@@ -29,7 +29,7 @@ Azure portal または Azure CLI を使用してキャッシュを作成しま�
 
 ![Azure portal のプロジェクト詳細ページのスクリーンショット](media/hpc-cache-create-basics.png)
 
-**[プロジェクトの詳細]** で、キャッシュのホストとなるサブスクリプションとリソース グループを選択します。 サブスクリプションが[アクセス](hpc-cache-prerequisites.md#azure-subscription)一覧にあることを確認します。
+**[プロジェクトの詳細]** で、キャッシュのホストとなるサブスクリプションとリソース グループを選択します。<!-- Make sure the subscription is on the [access](hpc-cache-prerequisites.md#azure-subscription) list.  -->
 
 **[サービスの詳細]** で、キャッシュの名前と、これらのその他の属性を設定します。
 
@@ -132,11 +132,11 @@ nets/<cache_subnet_name>"``
 
   | キャッシュ サイズ | Standard_2G | Standard_4G | Standard_8G |
   |------------|-------------|-------------|-------------|
-  | 3,072 GB    | 可         | no          | Ｘ          |
+  | 3,072 GB    | 可         | no          | no          |
   | 6144 GB    | 可         | 可         | no          |
   | 12288 GB   | 可         | 可         | 可         |
-  | 24576 GB   | Ｘ          | 可         | 可         |
-  | 49152 GB   | Ｘ          | no          | 可         |
+  | 24576 GB   | Ｘ          | はい         | 可         |
+  | 49152 GB   | Ｘ          | Ｘ          | 可         |
 
   料金、スループット、およびワークフローに応じてキャッシュのサイズを適切に設定する方法については、ポータルの指示タブにある「**キャッシュ容量を設定する**」セクションを参照してください。
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 51a9b85f4d19807c9e6d908b3d7944136e109e0f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7c5bc010653a936c00c5995142b5b34829591d24
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118734"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884698"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-portal"></a>Azure Portal を使用した Azure Database for MySQL ファイアウォール規則の作成と管理
 サーバーレベルのファイアウォール規則を使用して、指定した IP アドレスまたは IP アドレス範囲からの Azure Database for MySQL サーバーへのアクセスを管理できます。 
@@ -22,11 +22,11 @@ ms.locfileid: "86118734"
 
 1. MySQL サーバー ページの [設定] で、 **[接続のセキュリティ]** をクリックして Azure Database for MySQL の [接続のセキュリティ] ページを開きます。
 
-   ![Azure Portal - [接続のセキュリティ] のクリック](./media/howto-manage-firewall-using-portal/1-connection-security.png)
+   :::image type="content" source="./media/howto-manage-firewall-using-portal/1-connection-security.png" alt-text="Azure Portal - [接続のセキュリティ] のクリック":::
 
 2. ツール バーの **[自分の IP を追加]** をクリックします。 これにより、Azure システムによって認識されたコンピューターのパブリック IP アドレスでファイアウォール規則が自動的に作成されます。
 
-   ![Azure Portal - [自分の IP を追加] のクリック](./media/howto-manage-firewall-using-portal/2-add-my-ip.png)
+   :::image type="content" source="./media/howto-manage-firewall-using-portal/2-add-my-ip.png" alt-text="Azure Portal - [自分の IP を追加] のクリック":::
 
 3. 構成を保存する前に、IP アドレスを確認します。 場合によっては、Azure Portal で見られる IP アドレスは、インターネットおよび Azure サーバーにアクセスするときに使用する IP アドレスと異なることがあります。 そのため、開始 IP と終了 IP を変更してルール関数を予想どおりにする必要があります。
 
@@ -34,11 +34,11 @@ ms.locfileid: "86118734"
 
 4. アドレス範囲を追加します。 Azure Database for MySQL のファイアウォール規則では、単一の IP アドレスまたはアドレスの範囲を指定できます。 規則を単一の IP アドレスに限定する場合は、[開始 IP] フィールドと [終了 IP] フィールドに同じアドレスを入力します。 ファイアウォールを開くと、管理者、ユーザー、およびアプリケーションは、有効な資格情報を持っている MySQL サーバー上の任意のデータベースにアクセスできます。
 
-   ![Azure Portal - ファイアウォール規則](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
+   :::image type="content" source="./media/howto-manage-firewall-using-portal/4-specify-addresses.png" alt-text="Azure Portal - ファイアウォール規則":::
 
 5. ツール バーの **[保存]** をクリックしてこのサーバーレベルのファイアウォール規則を保存します。 ファイアウォール規則の更新が成功したという確認を待機します。
 
-   ![Azure Portal - [保存] のクリック](./media/howto-manage-firewall-using-portal/5-save-firewall-rule.png)
+   :::image type="content" source="./media/howto-manage-firewall-using-portal/5-save-firewall-rule.png" alt-text="Azure Portal - [保存] のクリック":::
 
 ## <a name="connecting-from-azure"></a>Azure からの接続
 Azure のアプリケーションが Azure Database for MySQL サーバーに接続できるようにするには、Azure 接続を有効にする必要があります。 たとえば、Azure Web Apps アプリケーションや Azure VM で実行されるアプリケーションをホストしたり、Azure Data Factory データ管理ゲートウェイから接続したりするためです。 ファイアウォール規則でこれらの接続を有効にするために、リソースが同じ仮想ネットワーク (VNet) またはリソース グループに存在する必要はありません。 Azure からアプリケーションがデータベース サーバーに接続しようとした場合、ファイアウォールは、Azure の接続が許可されていることを確認します。 これらの種類の接続を有効にするには、いくつかの方法があります。 開始アドレスと終了アドレスが 0.0.0.0 であるファイアウォール設定は、これらの接続が許可されていることを示します。 あるいは、ポータルの **[接続のセキュリティ]** ウィンドウから **[Azure サービスへのアクセスを許可]** オプションを **[オン]** に設定し、 **[保存]** をクリックすることもできます。 接続試行が許可されていない場合、この要求は Azure Database for MySQL サーバーに到達しません。

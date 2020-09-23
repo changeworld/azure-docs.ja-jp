@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 2192531aec7800314c6748740262f8746da0c4fc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: b24514ed477d1acd31dbc4ef0daa3aa89b8739f9
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956374"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530830"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Azure Load Balancer の複数のフロントエンド
 
@@ -163,9 +163,10 @@ Floating IP 規則タイプは、いくつかのロード バランサーの構�
 
 * 複数フロントエンドの構成は、IaaS VM でのみサポートされます。
 * Floating IP 規則の場合、ご利用のアプリケーションではアウトバウンド SNAT フローにプライマリ IP 構成を使用する必要があります。 ご利用のアプリケーションがゲスト OS のループバック インターフェイスに構成されているフロントエンド IP アドレスにバインドされると、Azure のアウトバウンド SNAT がアウトバウンド フローを書き換えることができないため、フローが失敗します。  [アウトバウンドのシナリオ](load-balancer-outbound-connections.md)を確認してください。
+* Floating IP は現在、内部負荷分散シナリオのセカンダリ IP 構成でサポートされていません。
 * パブリック IP アドレスは課金に影響します。 詳細については、「 [IP アドレスの価格](https://azure.microsoft.com/pricing/details/ip-addresses/)
 * サブスクリプションの制限が適用されます。 詳細については、「 [サービスの制限](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) 」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - 「[送信接続](load-balancer-outbound-connections.md)」を参照して、送信接続の動作への複数のフロントエンドの影響を理解します。

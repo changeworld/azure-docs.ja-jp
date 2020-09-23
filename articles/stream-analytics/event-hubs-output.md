@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: d18d4aa4bf9306bcdd667faa53f0d888c090e2fd
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 50d2d974815e0921d99154bce67f604b7314970d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875504"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892021"
 ---
 # <a name="event-hubs-output-from-azure-stream-analytics"></a>Azure Stream Analytics からの Event Hubs 出力
 
@@ -38,7 +38,7 @@ ms.locfileid: "88875504"
 
 ## <a name="partitioning"></a>パーティション分割
 
-パーティション分割はパーティションの配置によって異なります。 イベント ハブ出力のパーティション キーが上流の (以前の) クエリ ステップと等間隔で配置されている場合、ライターの数はイベント ハブ出力のパーティションの数と同じになります。 各ライターは、[EventHubSender クラス](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet)を使用して、特定のパーティションにイベントを送信します。 イベント ハブ出力のパーティション キーが上流の (以前の) クエリ ステップと一致していない場合、ライターの数はその前のステップのパーティションの数と同じになります。 各ライターは、**EventHubClient** の [SendBatchAsync クラス](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet)を使用して、すべての出力パーティションにイベントを送信します。 
+パーティション分割はパーティションの配置によって異なります。 イベント ハブ出力のパーティション キーが上流の (以前の) クエリ ステップと等間隔で配置されている場合、ライターの数はイベント ハブ出力のパーティションの数と同じになります。 各ライターは、[EventHubSender クラス](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet&preserve-view=true)を使用して、特定のパーティションにイベントを送信します。 イベント ハブ出力のパーティション キーが上流の (以前の) クエリ ステップと一致していない場合、ライターの数はその前のステップのパーティションの数と同じになります。 各ライターは、**EventHubClient** の [SendBatchAsync クラス](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet&preserve-view=true)を使用して、すべての出力パーティションにイベントを送信します。 
 
 ## <a name="output-batch-size"></a>出力バッチ サイズ
 
@@ -55,4 +55,4 @@ ms.locfileid: "88875504"
 * [クイック スタート: ARM テンプレートを使用して Azure Stream Analytics ジョブを作成する](quick-create-azure-resource-manager.md)
 * [クイック スタート: Azure PowerShell を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-powershell.md)
 * [クイック スタート:Visual Studio を使用して Azure Stream Analytics ジョブを作成する](stream-analytics-quick-create-vs.md)
-* [クイック スタート: Visual Studio Code で Azure Stream Analytics ジョブを作成する](quick-create-vs-code.md)
+* [クイック スタート: Visual Studio Code で Azure Stream Analytics ジョブを作成する](quick-create-visual-studio-code.md)

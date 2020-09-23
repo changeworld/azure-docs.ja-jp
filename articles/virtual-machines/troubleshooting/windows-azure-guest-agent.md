@@ -9,14 +9,14 @@ editor: ''
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 08/07/2020
+ms.date: 09/15/2020
 ms.author: genli
-ms.openlocfilehash: 38bf652ccefe98c2bd0fb28e8018d41df21651dc
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 597ea6e7ff7dbcfcb8a99d4e4de3c1b82915ee07
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88659468"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561263"
 ---
 # <a name="troubleshooting-windows-azure-guest-agent"></a>Windows Azure ゲスト エージェントのトラブルシューティング
 
@@ -53,7 +53,7 @@ Azure portal の VM プロパティ ページに移動して、 **[エージェ�
     
     次の PowerShell コマンドを実行すると、VM エージェントが VM にデプロイされているかどうかを確認できます。
     
-    `Get-Az VM -ResourceGroup “RGNAME” – Name “VMNAME” -displayhint expand`
+    `Get-AzVM -ResourceGroupName "RGNAME" -Name "VMNAME" -DisplayHint expand`
     
     出力で、**ProvisionVMAgent** プロパティを見つけ、値が **True** に設定されているかどうかを確認します。 設定されている場合は、エージェントが VM にインストールされていることを意味します。
     

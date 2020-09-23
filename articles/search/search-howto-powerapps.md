@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 08/21/2020
-ms.openlocfilehash: 887017f60deb832bd5c53f28bde4b57a3d82bde5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: fd74bfca73323209012dfd1fda61bbaada84092f
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918045"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530694"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>チュートリアル:Power Apps から Cognitive Search インデックスに対してクエリを実行する
 
@@ -31,7 +31,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Power Apps アカウント](http://make.powerapps.com)
+* [Power Apps アカウント](https://make.powerapps.com)
 
 * [Hotels-sample インデックス](search-get-started-portal.md)
 
@@ -41,7 +41,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Power Apps のコネクタは、データ ソース接続です。 この手順では、クラウド内の検索インデックスに接続するカスタム コネクタを作成します。
 
-1. Power Apps に[サインイン](http://make.powerapps.com)します。
+1. Power Apps に[サインイン](https://make.powerapps.com)します。
 
 1. 左側で **[データ]**  >  **[カスタム コネクタ]** の順に展開します。
  

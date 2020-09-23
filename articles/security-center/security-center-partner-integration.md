@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: 1af99f6317ac5888478c7df08fcc31478ef1ccef
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 40b96cac4c9ad638373fbb75f736dc7eded42b43
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180849"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883942"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Azure Security Center でのセキュリティ ソリューションの統合
 このドキュメントは、既に Azure Security Center に接続されているセキュリティ ソリューションを管理したり、新しいセキュリティ ソリューションを追加したりする際に役立ちます。
@@ -35,11 +35,11 @@ Security Center を使用すると、Azure で統合されたセキュリティ 
 > [!NOTE]
 > ほとんどのセキュリティ ベンダーがアプライアンス上での外部エージェントの実行を禁止しているため、Security Center はパートナー仮想アプライアンスに Log Analytics エージェントをインストールしません。
 
-Standard レベルのお客様が利用できる組み込みのスキャナーなど、Qualys の脆弱性スキャン ツールの統合の詳細については、[Azure Virtual Machines の脆弱性評価](deploy-vulnerability-assessment-vm.md)に関するページを参照してください。
+Azure Defender のお客様が利用できる組み込みのスキャナーなど、Qualys の脆弱性スキャン ツールの統合の詳細については、[Azure Virtual Machines の脆弱性評価](deploy-vulnerability-assessment-vm.md)に関するページを参照してください。
 
 Security Center では、次の脆弱性分析も提供しています：
 
-* SQL データベース - 「[脆弱性評価ダッシュボードで脆弱性評価レポートの探索をする](security-center-iaas-advanced-data.md#explore-vulnerability-assessment-reports) 」を参照する
+* SQL データベース - 「[脆弱性評価ダッシュボードで脆弱性評価レポートの探索をする](defender-for-sql-usage.md#explore-vulnerability-assessment-reports) 」を参照する
 * Azure Container Registry イメージ - 「[Azure Container Registry を Security Center と統合する （プレビュー）](azure-container-registry-integration.md)」を参照する
 
 ## <a name="how-security-solutions-are-integrated"></a>セキュリティ ソリューションを統合するしくみ
@@ -88,7 +88,7 @@ Security Center からデプロイされている Azure セキュリティ ソ�
 Security Center は、Azure で実行されていても Security Center に接続されていないセキュリティ ソリューションを自動的に検出し、 **[検出されたソリューション]** セクションにそのソリューションを表示します。 これらのソリューションには、[Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) などの Azure ソリューションや、パートナー ソリューションが含まれます。
 
 > [!NOTE]
-> 検出されたソリューション機能のサブスクリプション レベルで、Security Center の standard レベルが必要です。 価格レベルの詳細については、[価格](security-center-pricing.md)に関するページを参照してください。
+> 検出されたソリューション機能に対して、サブスクリプション レベルで **Azure Defender** を有効にします。 価格レベルの詳細については、[価格](security-center-pricing.md)に関するページを参照してください。
 >
 
 ソリューションの下の **[接続]** を選択して、Security Center と統合し、セキュリティのアラートが通知されるようにします。

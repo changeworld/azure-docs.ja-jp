@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU デバイスにアクセスする Windows クライアント上で TLS 1.2 を構成する
-description: Azure Stack Edge GPU デバイスにアクセスする Windows クライアント上で TLS 1.2 を構成する方法について説明します。
+title: Azure Stack Edge Pro GPU デバイスにアクセスする Windows クライアント上で TLS 1.2 を構成する
+description: Azure Stack Edge Pro GPU デバイスにアクセスする Windows クライアント上で TLS 1.2 を構成する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: bf6b591ef3158a5944b1ebeb37dd0ef5935f7215
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9a6b0910fcfd2a632f2520a2fe683b15592017cf
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268504"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891178"
 ---
-# <a name="configure-tls-12-on-windows-clients-accessing-azure-stack-edge-device"></a>Azure Stack Edge デバイスにアクセスする Windows クライアント上で TLS 1.2 を構成する
+# <a name="configure-tls-12-on-windows-clients-accessing-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイスにアクセスする Windows クライアント上で TLS 1.2 を構成する
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Windows クライアントを使用して Azure Stack Edge デバイスにアクセスする場合、クライアント上で TLS 1.2 を構成する必要があります。 この記事では、Windows クライアント上で TLS 1.2 を構成するためのリソースとガイドラインを提供します。 
+Windows クライアントを使用して Azure Stack Edge Pro デバイスにアクセスする場合、クライアント上で TLS 1.2 を構成する必要があります。 この記事では、Windows クライアント上で TLS 1.2 を構成するためのリソースとガイドラインを提供します。 
 
 ここで提供するガイドラインは、Windows Server 2016 を実行するクライアント上で実行されたテストに基づいています。
 

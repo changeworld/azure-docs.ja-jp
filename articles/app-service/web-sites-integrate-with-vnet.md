@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 399689f3f7d07a6e77128037be6b7439e7bf5184
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 8f356cb935f1cf63408b6fbc604f139439022a4f
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88960022"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646610"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>アプリを Azure 仮想ネットワークと統合する
 
@@ -80,7 +80,7 @@ App Service 内のアプリは、worker ロールでホストされます。 Bas
 
 ゲートウェイを作成するには:
 
-1. VNet 内に[ゲートウェイ サブネットを作成][creategatewaysubnet]します。  
+1. VNet 内に[ゲートウェイ サブネットを作成][creategatewaysubnet]します。
 
 1. [VPN ゲートウェイを作成][creategateway]します。 VPN の種類はルート ベースを選択します。
 
@@ -102,8 +102,8 @@ VNet 経由でオンプレミスのリソースにアクセスするために、
 
 > [!NOTE]
 > ゲートウェイが必要な VNet 統合機能では、アプリは ExpressRoute ゲートウェイを含む VNet とは統合されません。 ExpressRoute ゲートウェイが[共存モード][VPNERCoex]で構成されている場合であっても、VNet 統合は機能しません。 ExpressRoute 接続経由でリソースにアクセスする必要がある場合は、VNet で実行されるリージョン VNet 統合機能または [App Service Environment][ASE] を使用します。
-> 
-> 
+>
+>
 
 ### <a name="peering"></a>ピアリング
 
@@ -177,26 +177,27 @@ Commands:
 
 ```azurepowershell
 # Parameters
-$sitename="myWebApp"
-$resourcegroupname="myRG"
-$VNetname="myVNet"
-$location="myRegion"
-$integrationsubnetname = "myIntegrationSubnet"
-$subscriptionID = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
+$sitename = 'myWebApp'
+$resourcegroupname = 'myRG'
+$VNetname = 'myVNet'
+$location = 'myRegion'
+$integrationsubnetname = 'myIntegrationSubnet'
+$subscriptionID = 'aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee'
 
 #Property array with the SubnetID
 $properties = @{
-      "subnetResourceId" = "/subscriptions/"+$subscriptionID+"/resourceGroups/"+$resourcegroupname+"/providers/Microsoft.Network/virtualNetworks/"+$VNetname+"/subnets/"+$integrationsubnetname;
-      }
-      
-#Creation of the VNet integration
-$resourceID = $sitename+"/VirtualNetwork"
-New-AzResource -ResourceName $resourceID `
--Location $location  `
--ResourceGroupName $resourcegroupname `
--ResourceType Microsoft.Web/sites/networkConfig `
--PropertyObject $properties 
+  subnetResourceId = "/subscriptions/$subscriptionID/resourceGroups/$resourcegroupname/providers/Microsoft.Network/virtualNetworks/$VNetname/subnets/$integrationsubnetname"
+}
 
+#Creation of the VNet integration
+$vNetParams = @{
+  ResourceName = "$sitename/VirtualNetwork"
+  Location = $location
+  ResourceGroupName = $resourcegroupname
+  ResourceType = 'Microsoft.Web/sites/networkConfig'
+  PropertyObject = $properties
+}
+New-AzResource @vNetParams
 ```
 
 

@@ -6,12 +6,12 @@ author: su-jie
 ms.author: sujie
 ms.date: 11/14/2019
 ms.topic: how-to
-ms.openlocfilehash: 1b2268426b66ddb9ffdd48d6901ab991e76cb95c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 944c1a8cc4606c5e614f17cd0590331826527a7c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037445"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892167"
 ---
 # <a name="test-stream-analytics-queries-locally-against-live-stream-input-by-using-visual-studio-code"></a>Visual Studio Code を使用してライブ ストリーム入力に対して Stream Analytics クエリをローカルでテストする
 
@@ -21,39 +21,39 @@ Visual Studio Code の Azure Stream Analytics ツールを使用して、Stream 
 
 * [.NET Core SDK](https://dotnet.microsoft.com/download) をインストールし、Visual Studio Code を再起動します。
 
-* この[クイックスタート](quick-create-vs-code.md)を使用して、Visual Studio Code を使って Stream Analytics ジョブを作成する方法を学習します。
+* この[クイックスタート](quick-create-visual-studio-code.md)を使用して、Visual Studio Code を使って Stream Analytics ジョブを作成する方法を学習します。
 
 ## <a name="define-a-live-stream-input"></a>ライブ ストリーム入力を定義する
 
 1. Stream Analytics プロジェクトの **[Inputs]** フォルダーを右クリックします。 次に、コンテキスト メニューから **[ASA: 入力の追加]** を選択します。
 
-   ![Input フォルダーから入力を追加する](./media/quick-create-vs-code/add-input-from-inputs-folder.png)
+   ![Input フォルダーから入力を追加する](./media/quick-create-visual-studio-code/add-input-from-inputs-folder.png)
 
    または、**Ctrl + Shift + P** キーを選択してコマンド パレットを開き、 **[ASA: 入力の追加]** を入力します。
 
-   ![Visual Studio Code で Stream Analytics 入力を追加する](./media/quick-create-vs-code/add-input.png)
+   ![Visual Studio Code で Stream Analytics 入力を追加する](./media/quick-create-visual-studio-code/add-input.png)
 
 2. ドロップダウン リストから入力ソースの種類を選択します。
 
-   ![入力オプションとして IoT ハブを選択する](./media/quick-create-vs-code/iot-hub.png)
+   ![入力オプションとして IoT ハブを選択する](./media/quick-create-visual-studio-code/iot-hub.png)
 
 3. コマンド パレットから入力を追加した場合は、その入力を使用する Stream Analytics クエリ スクリプトを選択します。 **myASAproj.asaql** へのファイル パスが自動的に入力されます。
 
-   ![Visual Studio Code で Stream Analytics スクリプトを選択する](./media/quick-create-vs-code/asa-script.png)
+   ![Visual Studio Code で Stream Analytics スクリプトを選択する](./media/quick-create-visual-studio-code/asa-script.png)
 
 4. ドロップダウン メニューで **[Select from your Azure Subscriptions]\(自分の Azure サブスクリプションから選択\)** を選択します。
 
-    ![サブスクリプションから選択する](./media/quick-create-vs-code/add-input-select-subscription.png)
+    ![サブスクリプションから選択する](./media/quick-create-visual-studio-code/add-input-select-subscription.png)
 
 5. 新しく生成された JSON ファイルを構成します。 CodeLens 機能を使用すると、文字列の入力、ドロップダウン リストからの選択、テキストの変更をファイル内で直接行うことができます。 次のスクリーンショットは、例として **[Select from your Subscriptions]\(自分のサブスクリプションから選択\)** を示しています。
 
-   ![Visual Studio Code で入力を構成する](./media/quick-create-vs-code/configure-input.png)
+   ![Visual Studio Code で入力を構成する](./media/quick-create-visual-studio-code/configure-input.png)
 
 ## <a name="preview-input"></a>入力をプレビューする
 
 入力データが表示されるのを確認するには、ライブ入力構成ファイルの一番上の行から **[Preview data]\(データのプレビュー\)** を選択します。 一部の入力データが IoT Hub から取得され、プレビュー ウィンドウに表示されます。 プレビューが表示されるまでには数秒かかる場合があります。
 
- ![ライブ入力をプレビューする](./media/quick-create-vs-code/preview-live-input.png)
+ ![ライブ入力をプレビューする](./media/quick-create-visual-studio-code/preview-live-input.png)
 
 ## <a name="run-queries-locally"></a>ローカルでのクエリの実行
 

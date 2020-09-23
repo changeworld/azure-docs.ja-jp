@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: b5cbd5311c6070f59f8a5953d8b99789ab758c9c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6abe0ed88adbdf8263aa27d340fb2fff156d98e6
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524609"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089345"
 ---
 # <a name="drawing-tool-events"></a>描画ツール イベント
 
@@ -31,7 +31,7 @@ ms.locfileid: "86524609"
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="描画ツールのイベント" src="https://codepen.io/azuremaps/embed/dyPMRWo?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="描画ツールのイベント" src="https://codepen.io/azuremaps/embed/dyPMRWo?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen の<a href='https://codepen.io/azuremaps/pen/dyPMRWo'>描画ツール イベント</a>に関するページを参照してください。
 </iframe>
 
@@ -47,7 +47,7 @@ ms.locfileid: "86524609"
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="描画された多角形領域でデータを選択する" src="https://codepen.io/azuremaps/embed/XWJdeja?height=500&theme-id=default&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="描画された多角形領域でデータを選択する" src="https://codepen.io/azuremaps/embed/XWJdeja?height=500&theme-id=default&default-tab=result" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen の<a href='https://codepen.io/azuremaps/pen/XWJdeja'>描画された多角形領域でのデータの選択</a>に関するページを参照してください。
 </iframe>
 
@@ -59,7 +59,7 @@ ms.locfileid: "86524609"
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="多角形領域で描画および検索する" src="https://codepen.io/azuremaps/embed/eYmZGNv?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="多角形領域で描画および検索する" src="https://codepen.io/azuremaps/embed/eYmZGNv?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen の<a href='https://codepen.io/azuremaps/pen/eYmZGNv'>多角形領域での描画と検索</a>に関するページを参照してください。
 </iframe>
 
@@ -71,7 +71,7 @@ ms.locfileid: "86524609"
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="測定ツール" src="https://codepen.io/azuremaps/embed/RwNaZXe?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="測定ツール" src="https://codepen.io/azuremaps/embed/RwNaZXe?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen の<a href='https://codepen.io/azuremaps/pen/RwNaZXe'>測定ツール</a>に関するページを参照してください。
 </iframe>
 

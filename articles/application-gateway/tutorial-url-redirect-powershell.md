@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 03/19/2020
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 7a0e29d3fc90d50f23247a9c11cd4846aa4fb158
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8763c07ee91f228f63880c2be16497a7a78c6453
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806025"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595276"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-redirection-using-azure-powershell"></a>Azure PowerShell を使用して URL パスベースのリダイレクトのあるアプリケーション ゲートウェイを作成する
 
@@ -20,11 +20,10 @@ ms.locfileid: "84806025"
 
 この記事では、次のことについて説明します。
 
-> [!div class="checklist"]
-> * ネットワークのセットアップ
-> * アプリケーション ゲートウェイの作成
-> * リスナーとルーティング規則の追加
-> * バックエンド プールの仮想マシン スケール セットの作成
+* ネットワークのセットアップ
+* アプリケーション ゲートウェイの作成
+* リスナーとルーティング規則の追加
+* バックエンド プールの仮想マシン スケール セットの作成
 
 次の例は、ポート 8080 と 8081 の両方から送信されてきており、同じバックエンド プールに転送されているサイト トラフィックを示します。
 

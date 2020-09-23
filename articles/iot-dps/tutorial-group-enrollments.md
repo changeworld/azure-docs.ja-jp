@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 43ae9bd0e844a23adabf52e7fbb4b8cd077d23bd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 80efd92560bc7fb5c8bf16b524752e7dbfcdc74b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326717"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526665"
 ---
 # <a name="tutorial-create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>チュートリアル:シミュレートされた X.509 デバイスを IoT Hub Device Provisioning Service 対応の Java device and service SDK と登録グループを使用して作成、プロビジョニングする
 
@@ -260,4 +260,4 @@ ms.locfileid: "87326717"
 このチュートリアルでは、シミュレートされた X.509 デバイスを Windows コンピューター上に作成し、Azure IoT Hub Device Provisioning Service と登録グループを使用して IoT Hub にプロビジョニングしました。 X.509 デバイスの詳細については、引き続きデバイスの概念に進んでください。 
 
 > [!div class="nextstepaction"]
-> [IoT Hub Device Provisioning Service のデバイスの概念](concepts-device.md)
+> [Azure IoT Hub Device Provisioning サービスの概念](concepts-service.md)

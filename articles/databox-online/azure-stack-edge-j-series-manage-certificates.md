@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU で証明書を使用する | Microsoft Docs
-description: 証明書を使用する理由、証明書の種類、デバイスへの証明書のアップロード方法など、Azure Stack Edge GPU デバイスでの証明書の使用について説明します。
+title: Azure Stack Edge Pro GPU で証明書を使用する | Microsoft Docs
+description: 証明書を使用する理由、証明書の種類、デバイスへの証明書のアップロード方法など、Azure Stack Edge Pro GPU デバイスでの証明書の使用について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,28 +8,28 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: bf7f9236c8f0835d0041b4b0c454a492330ef878
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 59924312fe0483d11d0f70ce83b8f6e4b0e198dc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268878"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890750"
 ---
-# <a name="use-certificates-with-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU デバイスで証明書を使用する
+# <a name="use-certificates-with-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスで証明書を使用する
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-この記事では、Azure Stack Edge デバイスにインストールできる証明書の種類について説明します。 この記事には、各証明書の種類の詳細と、証明書をインストールして、有効期限を識別する手順も記載します。 
+この記事では、Azure Stack Edge Pro デバイスにインストールできる証明書の種類について説明します。 この記事には、各証明書の種類の詳細と、証明書をインストールして、有効期限を識別する手順も記載します。 
 
 ## <a name="about-certificates"></a>証明書について
 
 証明書は、**公開キー**と、信頼されたサード パーティ (**証明機関**など) が**署名** (検証) したエンティティ (ドメイン名など) を結び付けるものです。  証明書は、信頼された公開暗号化キーを配布するための便利な方法を提供します。 証明書によって、通信が信頼できるものであること、暗号化された情報を正しいサーバーに送信していることが確認されます。 
 
-Azure Stack Edge デバイスが最初に構成されたときに、自己署名証明書が自動的に生成されます。 必要に応じて、独自の証明書を導入できます。 独自の証明書を導入する場合は、従わなければならないガイドラインがあります。
+Azure Stack Edge Pro デバイスが最初に構成されたときに、自己署名証明書が自動的に生成されます。 必要に応じて、独自の証明書を導入できます。 独自の証明書を導入する場合は、従わなければならないガイドラインがあります。
 
 ## <a name="types-of-certificates"></a>証明書の種類
 
-Azure Stack Edge デバイスで使用される各種の証明書を次に示します。 
+Azure Stack Edge Pro デバイスで使用される各種の証明書を次に示します。 
 - 署名証明書
     - ルート CA
     - 中級
@@ -68,7 +68,7 @@ Azure Stack Edge デバイスで使用される各種の証明書を次に示し
 
 ## <a name="node-certificates"></a>ノード証明書
 
-<!--Your Azure Stack Edge device could be a 1-node device or a 4-node device.--> デバイス内のすべてのノードは常に相互に通信しているため、信頼関係が必要です。 ノード証明書は、その信頼を確立する手段を提供します。 https 経由のリモート PowerShell セッションを使用してデバイス ノードに接続するときにも、ノード証明書が関与します。
+<!--Your Azure Stack Edge Pro device could be a 1-node device or a 4-node device.--> デバイス内のすべてのノードは常に相互に通信しているため、信頼関係が必要です。 ノード証明書は、その信頼を確立する手段を提供します。 https 経由のリモート PowerShell セッションを使用してデバイス ノードに接続するときにも、ノード証明書が関与します。
 
 ### <a name="caveats"></a>注意事項
 
@@ -121,9 +121,9 @@ Azure Stack Edge デバイスで使用される各種の証明書を次に示し
 
 ## <a name="iot-edge-device-certificates"></a>IoT Edge デバイス証明書
 
-Azure Stack Edge デバイスも IoT デバイスの一種であり、IoT Edge デバイスが接続されていることにより、コンピューティングが有効になっています。 この IoT Edge デバイスと、それに接続可能なダウンストリーム デバイスの間でセキュリティで保護された通信を行うために、IoT Edge 証明書をアップロードすることもできます。 
+Azure Stack Edge Pro デバイスも IoT デバイスの一種であり、IoT Edge デバイスが接続されていることにより、コンピューティングが有効になっています。 この IoT Edge デバイスと、それに接続可能なダウンストリーム デバイスの間でセキュリティで保護された通信を行うために、IoT Edge 証明書をアップロードすることもできます。 
 
-このデバイスには、デバイスでコンピューティング シナリオのみ使用する場合に使用できる自己署名証明書が備わっています。 ただし、Azure Stack Edge デバイスがダウンストリーム デバイスに接続されている場合は、独自の証明書を導入する必要があります。
+このデバイスには、デバイスでコンピューティング シナリオのみ使用する場合に使用できる自己署名証明書が備わっています。 ただし、Azure Stack Edge Pro デバイスがダウンストリーム デバイスに接続されている場合は、独自の証明書を導入する必要があります。
 
 この信頼関係を有効にするために、次の 3 つの IoT Edge 証明書をインストールする必要があります。
 
@@ -140,7 +140,7 @@ IoT Edge 証明書の詳細については、[Azure IoT Edge 証明書の詳細]
 
 ## <a name="support-session-certificates"></a>サポート セッション証明書
 
-Azure Stack Edge デバイスで問題が発生した場合、その問題をトラブルシューティングするために、デバイスでリモート PowerShell サポート セッションを開くことができます。 セキュリティで保護された暗号化通信をこのサポート セッションで有効にするために、証明書をアップロードできます。
+Azure Stack Edge Pro デバイスで問題が発生した場合、その問題をトラブルシューティングするために、デバイスでリモート PowerShell サポート セッションを開くことができます。 セキュリティで保護された暗号化通信をこのサポート セッションで有効にするために、証明書をアップロードできます。
 
 ### <a name="caveats"></a>注意事項
 
@@ -155,7 +155,7 @@ Azure Stack Edge デバイスで問題が発生した場合、その問題をト
 
 <!--## VPN certificates
 
-If VPN is configured on your Azure Stack Edge device, then you will also need a certificate for any communication that occurs over the VPN channel. You can bring your own VPN certificate to ensure the communication is trusted.
+If VPN is configured on your Azure Stack Edge Pro device, then you will also need a certificate for any communication that occurs over the VPN channel. You can bring your own VPN certificate to ensure the communication is trusted.
 
 ### Caveats
 
@@ -262,7 +262,7 @@ $DeviceSerial = "HWDC1T2"
 New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSerial.$domain","management.$AppName.$domain","login.$AppName.$domain","*.blob.$AppName.$domain" -Subject "CN=$AppName.$domain" -KeyExportPolicy Exportable  -HashAlgorithm sha256 -KeyLength 2048  -CertStoreLocation "Cert:\LocalMachine\My" -Signer $cert -KeySpec KeyExchange -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.1")
 ```
 
-証明書を作成したら、次の手順として、Azure Stack Edge デバイスに証明書をアップロードします。
+証明書を作成したら、次の手順として、Azure Stack Edge Pro デバイスに証明書をアップロードします
 
 
 ## <a name="upload-certificates"></a>証明書をアップロードする 
@@ -401,7 +401,7 @@ Windows クライアントに証明書をインポートするには、次の手
 
 ## <a name="supported-certificate-algorithms"></a>サポートされる証明書アルゴリズム
 
- Azure Stack Edge デバイスでは、Rivest–Shamir–Adleman (RSA) 証明書のみサポートされています。 楕円曲線デジタル署名アルゴリズム (ECDSA) 証明書を使用する場合、デバイスの動作は不確定です。
+ Azure Stack Edge Pro デバイスでは、Rivest–Shamir–Adleman (RSA) 証明書のみサポートされています。 楕円曲線デジタル署名アルゴリズム (ECDSA) 証明書を使用する場合、デバイスの動作は不確定です。
 
  RSA 公開キーを含む証明書は、RSA 証明書と呼ばれます。 楕円曲線暗号 (ECC) 公開キーを含む証明書は、ECDSA (楕円曲線デジタル署名アルゴリズム) 証明書と呼ばれます。 
 
@@ -418,4 +418,4 @@ Windows クライアントに証明書をインポートするには、次の手
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Stack Edge デバイスを配置する](azure-stack-edge-gpu-deploy-prep.md)
+[Azure Stack Edge Pro デバイスを配置する](azure-stack-edge-gpu-deploy-prep.md)

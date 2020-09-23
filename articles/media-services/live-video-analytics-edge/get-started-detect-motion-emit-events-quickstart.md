@@ -3,12 +3,12 @@ title: Live Video Analytics on IoT Edge の概要 - Azure
 description: このクイックスタートでは、Live Video Analytics on IoT Edge の使用を開始する方法について説明します。 ライブ ビデオ ストリーム内のモーションを検出する方法について説明します。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: c7e5efa19c27c3f56f9653ed933c7ad290d18408
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 0d1aaf34ad38b50403a3cbefbc953f9140f2fe82
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89568049"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884943"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>クイック スタート:はじめに - Live Video Analytics on IoT Edge
 
@@ -84,6 +84,9 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
 接続に成功した場合、エッジ デバイスの一覧が表示されます。 少なくとも 1 つのデバイス (名前は **lva-sample-device**) が表示されます。 これでコンテキスト メニューから IoT Edge デバイスを管理し、Azure IoT Hub を操作できるようになりました。 エッジ デバイスにデプロイされたモジュールを表示するには、**lva-sample-device** の下の **[モジュール]** ノードを展開します。
 
 ![lva-sample-device ノード](./media/quickstarts/lva-sample-device-node.png)
+
+> [!TIP]
+> ユーザー自身がエッジ デバイス (ARM64 デバイスなど) に [Live Video Analytics on IoT Edge を手動でデプロイした](deploy-iot-edge-device.md)場合、Azure IoT Hub でそのデバイスの下に、そのモジュールが表示されます。 そのモジュールを選択し、以下の残りの手順に従います。
 
 ## <a name="use-direct-method-calls"></a>ダイレクト メソッドの呼び出しを使用する
 
