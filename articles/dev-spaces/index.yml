@@ -11,12 +11,12 @@ metadata:
   ms.author: zarhoads
   manager: gwallace
   ms.date: 09/30/2019
-  ms.openlocfilehash: ac8900298670323551a25d4ef7ac3f7b44249c5a
-  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+  ms.openlocfilehash: 0100ace6dcf4701a8491f034f36075dc483849ec
+  ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88209890"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90970069"
 landingContent:
 - title: Azure Dev Spaces について
   linkLists:
@@ -46,13 +46,11 @@ landingContent:
       url: how-to/ingress-https-traefik.md
     - text: カスタムのイングレスと HTTPS に NGINX を使用する
       url: how-to/ingress-https-nginx.md
-- title: プレビュー機能
+- title: Bridge to Kubernetes
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Azure Dev Spaces で GitHub アクションを使用する
-      url: how-to/github-actions.md
-    - text: Visual Studio Code を使用して Local Process with Kubernetes を利用する
-      url: https://code.visualstudio.com/docs/containers/local-process-kubernetes
-    - text: Visual Studio を使用して Local Process with Kubernetes を利用する
-      url: /visualstudio/containers/local-process-kubernetes
+    - text: Visual Studio Code で Bridge to Kubernetes を使用する
+      url: https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
+    - text: Visual Studio で Bridge to Kubernetes を使用する
+      url: /visualstudio/containers/bridge-to-kubernetes

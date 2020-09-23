@@ -17,12 +17,12 @@ ms.date: 08/06/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 4bcd36a1ce38d4d9eb6a0faec470f7427852894b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 0d8c835cdc501061607dc05d0b40ebf95deb36a8
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89260222"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969151"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID に関する FAQ と既知の問題
 
@@ -33,15 +33,13 @@ ms.locfileid: "89260222"
 > [!NOTE]
 > Azure リソースのマネージド ID は、以前のマネージドサービス ID (MSI) の新しい名前です。
 
-
 ### <a name="how-can-you-find-resources-that-have-a-managed-identity"></a>マネージド ID を持つリソースを見つけるにはどうすればいいですか?
 
 次の Azure CLI コマンドを使用して、システム割り当てマネージド ID を持つリソースの一覧を検索できます。 
 
-`az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  principalId:identity.principalId}" --output table`
-
-
-
+```azurecli-interactive
+az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  principalId:identity.principalId}" --output table
+```
 
 ### <a name="do-managed-identities-have-a-backing-app-object"></a>マネージド ID にバッキング アプリ オブジェクトはありますか?
 
@@ -72,8 +70,6 @@ ID のセキュリティ境界は、ID のアタッチ先リソースです。 �
 - システム割り当てマネージド ID が有効でなく、ユーザー割り当てマネージド ID が 1 つのみの場合、IMDS はその単一のユーザー割り当てマネージド ID を規定値とします。 
 - システム割り当てマネージド ID が有効でなく、複数のユーザー割り当てマネージド ID が存在する場合、要求内でのマネージド ID の指定が必要です。
 
-
-
 ### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>サブスクリプションを別のディレクトリに移動する場合、マネージド ID は自動的に再作成されますか?
 
 いいえ。 サブスクリプションを別のディレクトリに移動する場合、お客様が手動でそれらを再作成し、再度 Azure ロールの割り当てを許可する必要があります。
@@ -88,7 +84,6 @@ ID のセキュリティ境界は、ID のアタッチ先リソースです。 �
 
 - システム割り当てマネージド ID:リソースに対する書き込みアクセス許可が必要です。 たとえば、仮想マシンには Microsoft.Compute/virtualMachines/write が必要です。 このアクションは、[Virtual Machine Contributor](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) などのリソース固有の組み込みロールに含まれています。
 - ユーザー割り当てマネージド ID:リソースに対する書き込みアクセス許可が必要です。 たとえば、仮想マシンには Microsoft.Compute/virtualMachines/write が必要です。 さらにマネージド ID に対する [Managed Identity Operator](../../role-based-access-control/built-in-roles.md#managed-identity-operator) ロールの割り当て。
-
 
 
 ## <a name="known-issues"></a>既知の問題
@@ -112,7 +107,7 @@ Azure リソース VM 拡張機能のマネージド ID (2019 年 1 月に非推
 Azure リソースのマネージド ID の正しい値を取得できるように、VM 上で更新をトリガーします。 VM プロパティの変更を行って、Azure リソース ID のマネージド ID への参照を更新できます。 たとえば、次のコマンドを使用して、VM で新しいタグの値を設定できます。
 
 ```azurecli-interactive
- az  vm update -n <VM Name> -g <Resource Group> --set tags.fixVM=1
+az vm update -n <VM Name> -g <Resource Group> --set tags.fixVM=1
 ```
  
 このコマンドは、新しいタグ "fixVM" を値 1 で VM に設定します。 
@@ -124,8 +119,6 @@ VM が開始されると、次のコマンドを使用してタグを削除で�
 ```azurecli-interactive
 az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 ```
-
-
 
 ### <a name="transferring-a-subscription-between-azure-ad-directories"></a>Azure AD ディレクトリ間のサブスクリプションの転送
 
