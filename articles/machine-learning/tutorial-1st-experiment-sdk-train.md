@@ -1,233 +1,403 @@
 ---
-title: チュートリアル:Python で最初の Azure ML モデルをトレーニングする
+title: チュートリアル:初めての機械学習モデルをトレーニングする - Python
 titleSuffix: Azure Machine Learning
-description: このチュートリアルでは、Azure Machine Learning の基本的な設計パターンを学習し、糖尿病データ セットに基づいて単純な scikit-learn モデルをトレーニングします。
+description: Azure Machine Learning 入門シリーズの第 3 部では、機械学習モデルをトレーニングする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.author: sgilley
-author: sdgilley
-ms.date: 08/25/2020
+author: aminsaied
+ms.author: amsaied
+ms.reviewer: sgilley
+ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 7052617eb83dbd07c2d6938dcbb7a38ba19f3aad
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: a267231dd447b114c69e6ead20c8ab5252f85d0e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536231"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896725"
 ---
-# <a name="tutorial-train-your-first-ml-model"></a>チュートリアル:最初の ML モデルをトレーニングする
+# <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>チュートリアル:初めての機械学習モデルをトレーニングする (4 部構成中の第 3 部)
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+このチュートリアルでは、Azure Machine Learning で機械学習モデルをトレーニングする方法について説明します。
 
-このチュートリアルは、**2 部構成のチュートリアル シリーズのパート 2 です**。 前のチュートリアルでは、[ワークスペースを作成し、開発環境を選択](tutorial-1st-experiment-sdk-setup.md)しました。 このチュートリアルでは、Azure Machine Learning の基本的な設計パターンを学習し、糖尿病データ セットに基づいて単純な scikit-learn モデルをトレーニングします。 このチュートリアルを完了すると、より複雑な実験およびワークフローの開発にスケールアップするための、SDK の実用的な知識が得られます。
+このチュートリアルは、**4 部構成のチュートリアル シリーズの第 3 部**であり、Azure Machine Learning の基礎を学習し、Azure でジョブベースの機械学習タスクを完了させます。 このチュートリアルは次のパートで完了した作業を基にしています。このシリーズの[第 1 部: 設定](tutorial-1st-experiment-sdk-setup-local.md)と[第 2 部: "Hello World" の実行](tutorial-1st-experiment-hello-world.md)です。
 
-このチュートリアルでは、以下のタスクについて学習します。
+このチュートリアルでは、機械学習モデルをトレーニングするスクリプトを送信して、次のステップに進みます。 この例は、Azure Machine Learning を使用することで、ローカル デバッグとリモート実行との間で一貫した動作がどのように容易になるかを理解するのに役立ちます。
+
+このチュートリアルでは、次のことを行います。
 
 > [!div class="checklist"]
-> * 自分のワークスペースを接続し、実験を作成する
-> * データを読み込み、scikit-learn モデルをトレーニングする
-> * Studio でトレーニング結果を表示する
-> * 最高のモデルを取得する
+> * トレーニング スクリプトを作成する。
+> * Conda を使用して Azure Machine Learning 環境を定義する。
+> * コントロール スクリプトを作成する。
+> * Azure Machine Learning クラス (環境、実行、メトリック) について理解する。
+> * トレーニング スクリプトを送信して実行する。
+> * クラウドでのコード出力を表示する。
+> * メトリックを Azure Machine Learning にログする。
+> * クラウドのメトリックを表示する。
 
 ## <a name="prerequisites"></a>前提条件
 
-唯一の前提条件は、このチュートリアルのパート 1 に従って[環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)ことです。
+* まだ Azure Machine Learning ワークスペースがない場合は、[第 1 部](tutorial-1st-experiment-sdk-setup-local.md)を完了してください。
+* Python 言語と機械学習のワークフローに関する基礎知識。
+* ローカル開発環境。 Visual Studio Code、Jupyter、PyCharm などが該当しますが、これに限定するものではありません。
+* Python (バージョン 3.5 - 3.7)。
 
-チュートリアルのこのパートでは、パート 1 の最後で開いたサンプル Jupyter ノートブック *tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb* のコードを実行します。 この記事では、ノートブック内の同じコードについて説明します。
+## <a name="create-training-scripts"></a>トレーニング スクリプトを作成する
 
-## <a name="open-the-notebook"></a>ノートブックを開く
+まず、`model.py` ファイルでニューラル ネットワーク アーキテクチャを定義します。 すべてのトレーニング コードは、`src` サブディレクトリ (`model.py` を含む) に入ります。
 
-1. [Azure Machine Learning Studio](https://ml.azure.com/) にサインインします。
-
-1. [パート 1](tutorial-1st-experiment-sdk-setup.md#open) に示すように、フォルダー内の **tutorial-1st-experiment-sdk-train.ipynb** を開きます。
-
-Jupyter インターフェイスで "*新しい*" ノートブックを作成**しないでください**。 ノートブック *tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb* には、このチュートリアルに**必要なすべてのコードとデータ**が含まれています。
-
-## <a name="connect-workspace-and-create-experiment"></a>ワークスペースを接続し、実験を作成する
-
-<!-- nbstart https://raw.githubusercontent.com/Azure/MachineLearningNotebooks/master/tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb -->
-
-> [!TIP]
-> _tutorial-1st-experiment-sdk-train.ipynb_ の内容。 コードを実行しながら読み進めたい方は、ここで Jupyter Notebook に切り替えてください。 ノートブックで単一のコード セルを実行するには、そのコード セルをクリックして **Shift + Enter** キーを押します。 または、上部のツール バーから **[すべて実行]** を選択して、ノートブック全体を実行します。
-
-
-`Workspace` クラスをインポートし、`from_config().` 関数を使用して `config.json` ファイルから自分のサブスクリプション情報を読み込みます。これにより、既定で現在のディレクトリ内の JSON ファイルが検索されますが、`from_config(path="your/file/path")` を使用して、path パラメーターを指定してファイルを指すこともできます。 このノートブックを自分のワークスペース内のクラウド ノートブック サーバーで実行している場合、ファイルは自動的にルート ディレクトリに配置されます。
-
-次のコードで追加の認証が求められる場合は、単にリンクをブラウザーに貼り付け、認証トークンを入力します。 さらに、ユーザーに複数のテナントが関連付けられている場合は、次の行を追加する必要があります。
+次のコードは、PyTorch の[この入門の例](https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html)からの抜粋です。 Azure Machine Learning の概念は、PyTorch だけでなく、機械学習コードにも適用されることに注意してください。
 
 ```python
-from azureml.core.authentication import InteractiveLoginAuthentication
-interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
+# tutorial/src/model.py
+import torch.nn as nn
+import torch.nn.functional as F
+
+
+class Net(nn.Module):
+    def __init__(self):
+        super(Net, self).__init__()
+        self.conv1 = nn.Conv2d(3, 6, 5)
+        self.pool = nn.MaxPool2d(2, 2)
+        self.conv2 = nn.Conv2d(6, 16, 5)
+        self.fc1 = nn.Linear(16 * 5 * 5, 120)
+        self.fc2 = nn.Linear(120, 84)
+        self.fc3 = nn.Linear(84, 10)
+
+    def forward(self, x):
+        x = self.pool(F.relu(self.conv1(x)))
+        x = self.pool(F.relu(self.conv2(x)))
+        x = x.view(-1, 16 * 5 * 5)
+        x = F.relu(self.fc1(x))
+        x = F.relu(self.fc2(x))
+        x = self.fc3(x)
+        return x
 ```
 
-認証の詳細については、「[Azure Machine Learning での認証](https://aka.ms/aml-notebook-auth)」を参照してください。
+次に、トレーニング スクリプトを定義します。 このスクリプトは、PyTorch `torchvision.dataset` API を使用して CIFAR10 データセットをダウンロードし、`model.py` で定義されているネットワークを設定して、標準の SGD とクロスエントロピ損失を使用して 2 つのエポックに対してトレーニングを行います。
 
+`src` サブディレクトリに `train.py` スクリプトを作成します。
 
 ```python
+# tutorial/src/train.py
+import torch
+import torch.optim as optim
+import torchvision
+import torchvision.transforms as transforms
+
+from model import Net
+
+# download CIFAR 10 data
+trainset = torchvision.datasets.CIFAR10(
+    root="./data",
+    train=True,
+    download=True,
+    transform=torchvision.transforms.ToTensor(),
+)
+trainloader = torch.utils.data.DataLoader(
+    trainset, batch_size=4, shuffle=True, num_workers=2
+)
+
+if __name__ == "__main__":
+
+    # define convolutional network
+    net = Net()
+
+    # set up pytorch loss /  optimizer
+    criterion = torch.nn.CrossEntropyLoss()
+    optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
+
+    # train the network
+    for epoch in range(2):
+
+        running_loss = 0.0
+        for i, data in enumerate(trainloader, 0):
+            # unpack the data
+            inputs, labels = data
+
+            # zero the parameter gradients
+            optimizer.zero_grad()
+
+            # forward + backward + optimize
+            outputs = net(inputs)
+            loss = criterion(outputs, labels)
+            loss.backward()
+            optimizer.step()
+
+            # print statistics
+            running_loss += loss.item()
+            if i % 2000 == 1999:
+                loss = running_loss / 2000
+                print(f"epoch={epoch + 1}, batch={i + 1:5}: loss {loss:.2f}")
+                running_loss = 0.0
+
+    print("Finished Training")
+
+```
+
+これで、以下に示すディレクトリ構造ができました。
+
+```txt
+tutorial
+└──.azureml
+|  └──config.json
+└──src
+|  └──hello.py
+|  └──model.py
+|  └──train.py
+└──01-create-workspace.py
+└──02-create-compute.py
+└──03-run-hello.py
+```
+
+## <a name="define-a-python-environment"></a>Python 環境を定義する
+
+デモンストレーション目的で、Conda 環境を使用します (pip 仮想環境のステップはほぼ同じです)。
+
+隠しディレクトリ `.azureml` に `pytorch-env.yml` という名前のファイルを作成します。
+
+```yml
+# tutorial/.azureml/pytorch-env.yml
+name: pytorch-env
+channels:
+    - defaults
+    - pytorch
+dependencies:
+    - python=3.6.2
+    - pytorch
+    - torchvision
+```
+
+この環境には、モデルとトレーニング スクリプトに必要なすべての依存関係があります。 Azure Machine Learning Python SDK には依存関係がないことに注意してください。
+
+## <a name="test-locally"></a>ローカルでテストする
+
+次のようにして、この環境を使用してスクリプトの実行をローカルでテストします。
+
+```bash
+conda env create -f .azureml/pytorch-env.yml    # create conda environment
+conda activate pytorch-env             # activate conda environment
+python src/train.py                    # train model
+```
+
+このスクリプトを実行すると、`tutorial/data` という名前のディレクトリにダウンロードされたデータが表示されます。
+
+## <a name="create-the-control-script"></a>コントロール スクリプトを作成する
+
+下のコントロール スクリプトと "Hello World" の送信に使用されるコントロール スクリプトとの違いは、環境を設定するための行をいくつか追加することです。
+
+`tutorial` ディレクトリに `04-run-pytorch.py` という名前の新しい Python ファイルを作成します。
+
+```python
+# tutorial/04-run-pytorch.py
 from azureml.core import Workspace
-ws = Workspace.from_config()
-```
-
-次に、自分のワークスペース内に実験を作成します。 実験は、試行 (個々のモデルの実行) のコレクションを表すもう 1 つの基本的なクラウド リソースです。 このチュートリアルでは、実験を使用して実行を作成し、Azure Machine Learning Studio で自分のモデルのトレーニングを追跡します。 パラメーターには、自分のワークスペース参照と、実験の文字列名が含まれます。
-
-
-```python
 from azureml.core import Experiment
-experiment = Experiment(workspace=ws, name="diabetes-experiment")
+from azureml.core import Environment
+from azureml.core import ScriptRunConfig
+
+if __name__ == "__main__":
+    ws = Workspace.from_config()
+    experiment = Experiment(workspace=ws, name='day1-experiment-train')
+    config = ScriptRunConfig(source_directory='src', script='train.py', compute_target='cpu-cluster')
+
+    # set up pytorch environment
+    env = Environment.from_conda_specification(name='pytorch-env', file_path='.azureml/pytorch-env.yml')
+    config.run_config.environment = env
+
+    run = experiment.submit(config)
+
+    aml_url = run.get_portal_url()
+    print(aml_url)
 ```
 
-## <a name="load-data-and-prepare-for-training"></a>データを読み込み、トレーニングを準備する
+### <a name="understand-the-code-changes"></a>コードの変更を理解する
 
-このチュートリアルで使用する糖尿病データ セットは、年齢、性別、BMI などの特徴を使用して、糖尿病疾患の進行を予測します。 [Azure Open Datasets](https://azure.microsoft.com/services/open-datasets/) クラスからデータを読み込み、それを `train_test_split()` を使用してトレーニングとテストのセットに分割します。 この関数により、データが分離され、モデルのトレーニング後のテストに未知のデータが使用されるようになります。
+:::row:::
+   :::column span="":::
+      `env = Environment.from_conda_specification( ... )`
+   :::column-end:::
+   :::column span="2":::
+      Azure Machine Learning では、実験を実行するための、再現可能でバージョン管理された Python 環境を表す[環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true)の概念が提供されます。 ローカルの Conda 環境または pip 環境から環境を簡単に作成できます。
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      `config.run_config.environment = env`
+   :::column-end:::
+   :::column span="2":::
+      [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) に環境を追加します。
+   :::column-end:::
+:::row-end:::
 
+## <a name="submit-run-to-azure-machine-learning"></a>Azure Machine Learning に実行を送信する
+
+ローカル環境を切り替えた場合は、必ず Azure Machine Learning Python SDK がインストールされている環境に再び切り替えて、次を実行します。
+
+```bash
+python 04-run-pytorch.py
+```
+
+>[!NOTE] 
+> このスクリプトを初めて実行すると、Azure Machine Learning によって PyTorch 環境から新しい docker イメージが構築されます。 実行全体が完了するまでに 5 - 10 分かかることがあります。 docker ビルド ログは、Azure Machine Learning Studio で確認できます。リンクに従って Machine Learning Studio にアクセスし、[出力とログ] タブを選択し、`20_image_build_log.txt` を選択します。
+このイメージは、今後の実行で再利用され、実行がさらに高速化されます。
+
+イメージがビルドされたら、`70_driver_log.txt` を選択してトレーニング スクリプトの出力を表示します。
+
+```txt
+Downloading https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz to ./data/cifar-10-python.tar.gz
+...
+Files already downloaded and verified
+epoch=1, batch= 2000: loss 2.19
+epoch=1, batch= 4000: loss 1.82
+epoch=1, batch= 6000: loss 1.66
+epoch=1, batch= 8000: loss 1.58
+epoch=1, batch=10000: loss 1.52
+epoch=1, batch=12000: loss 1.47
+epoch=2, batch= 2000: loss 1.39
+epoch=2, batch= 4000: loss 1.38
+epoch=2, batch= 6000: loss 1.37
+epoch=2, batch= 8000: loss 1.33
+epoch=2, batch=10000: loss 1.31
+epoch=2, batch=12000: loss 1.27
+Finished Training
+```
+
+> [!WARNING]
+> エラー `Your total snapshot size exceeds the limit` が表示された場合は、`data` ディレクトリが `ScriptRunConfig` で使用されている `source_directory` にあることを示しています。
+> `data` を `src` の外側に移動するようにしてください。
+
+環境は `env.register(ws)` を使用してワークスペースに登録できるため、共有、再利用、バージョン管理が簡単にできます。 環境を使用すると、以前の結果の再現や、チームとの共同作業が容易に行えます。
+
+Azure Machine Learning では、キュレーションされた環境のコレクションも保持されます。 これらの環境は、一般的な機械学習のシナリオを対象とし、キャッシュされた Docker イメージによってサポートされています。 キャッシュされた Docker イメージによって、最初のリモート実行が高速になります。
+
+つまり、登録済み環境を使用すると時間を節約できます。 詳細については、[環境のドキュメント](./how-to-use-environments.md)を参照してください。
+
+## <a name="log-training-metrics"></a>トレーニング メトリックをログする
+
+これで Azure Machine Learning でのモデル トレーニングが完了したので、いくつかのパフォーマンス メトリックの追跡を開始します。
+現在のトレーニング スクリプトは、メトリックをターミナルに出力します。 Azure Machine Learning には、より多くの機能を備えたメトリックをログするためのメカニズムが用意されています。 数行のコードを追加することで、スタジオでメトリックを視覚化したり、複数の実行間でメトリックを比較したりできるようになります。
+
+### <a name="modify-trainpy-to-include-logging"></a>ログを含めるように `train.py` を変更する
+
+`train.py` スクリプトを変更して、次の 2 行のコードを追加します。
 
 ```python
-from azureml.opendatasets import Diabetes
-from sklearn.model_selection import train_test_split
+# train.py
+import torch
+import torch.optim as optim
+import torchvision
+import torchvision.transforms as transforms
 
-x_df = Diabetes.get_tabular_dataset().to_pandas_dataframe().dropna()
-y_df = x_df.pop("Y")
-
-X_train, X_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, random_state=66)
-```
-
-## <a name="train-a-model"></a>モデルをトレーニングする
-
-小規模なトレーニングでは、単純な scikit-learn モデルのトレーニングをローカルで簡単に行うことができます。しかし、数十もの異なる特徴の順列とハイパーパラメーターの設定を使用して多数の繰り返しをトレーニングする場合は、どのモデルをトレーニングしたか、またそれらをどのようにトレーニングしたかについて見失いがちです。 次の設計パターンは、SDK を利用してクラウドで自分のトレーニングを簡単に追跡する方法を示しています。
-
-さまざまなハイパーパラメーターのアルファ値を使用して、リッジ モデルをループでトレーニングするスクリプトを作成します。
-
-
-```python
-from sklearn.linear_model import Ridge
-from sklearn.metrics import mean_squared_error
-from sklearn.externals import joblib
-import math
-
-alphas = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
-
-for alpha in alphas:
-    run = experiment.start_logging()
-    run.log("alpha_value", alpha)
-    
-    model = Ridge(alpha=alpha)
-    model.fit(X=X_train, y=y_train)
-    y_pred = model.predict(X=X_test)
-    rmse = math.sqrt(mean_squared_error(y_true=y_test, y_pred=y_pred))
-    run.log("rmse", rmse)
-    
-    model_name = "model_alpha_" + str(alpha) + ".pkl"
-    filename = "outputs/" + model_name
-    
-    joblib.dump(value=model, filename=filename)
-    run.upload_file(name=model_name, path_or_stream=filename)
-    run.complete()
-```
-
-上記のコードでは、次のことが実行されます。
-
-1. `alphas` 配列内の各アルファ ハイパーパラメーター値に対して、実験内に新しい実行が作成されます。 アルファ値は、各実行を区別するためにログに記録されます。
-1. 各実行では、リッジ モデルがインスタンス化、トレーニング、および使用されて、予測が実行されます。 実際の値と予測された値に対して平均平方二乗誤差が計算され、実行に記録されます。 この時点で、実行には、アルファ値と rmse の精度の両方についてアタッチされたメタデータが含まれています。
-1. 次に、各実行のモデルがシリアル化され、実行にアップロードされます。 これにより、Studio で実行からモデル ファイルをダウンロードすることができます。
-1. 実行は、各繰り返しの終わりに `run.complete()` を呼び出すことによって完了します。
-
-トレーニングが完了したら、`experiment` 変数を呼び出して、Studio 内の実験へのリンクを取得します。
-
-```python
-experiment
-```
-
-<table style="width:100%"><tr><th>名前</th><th>ワークスペース</th><th>レポート ページ</th><th>ドキュメント ページ</th></tr><tr><td>diabetes-experiment</td><td><自分のワークスペースの名前></td><td>Azure Machine Learning Studio へのリンク</td><td>ドキュメントへのリンク</td></tr></table>
-
-## <a name="view-training-results-in-studio"></a>Studio でトレーニング結果を表示する
-
-**Azure Machine Learning Studio へのリンク**に従うと、メインの実験ページに移動します。 ここには、実験の個別の実行がすべて表示されます。 カスタムでログに記録された値 (この場合、`alpha_value` と `rmse`) は、各実行のフィールドになるほか、グラフで使用可能になります。 ログに記録されたメトリックで新しいグラフをプロットするには、[グラフの追加] をクリックし、プロットしたいメトリックを選択します。
-
-数百件および数千件を超える個別の実行を伴う大きな規模でモデルをトレーニングする場合、自分がトレーニングしたすべてのモデル (具体的には、それらがどのようにトレーニングされたか、そして時間の経過と共に一意のメトリックがどのように変化したか) をこのページで簡単に確認できます。
-
-:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/experiment-main.png" alt-text="Studio のメインの実験ページ。":::
-
-
-`RUN NUMBER` 列の実行番号リンクを選択すると、個々の実行のページが表示されます。 既定の **[詳細]** タブには、各実行の詳細情報が表示されます。 **[出力 + ログ]** タブに移動すると、各トレーニングの繰り返し中に実行にアップロードされたモデルの `.pkl` ファイルが表示されます。 ここでは、モデル ファイルをダウンロードすることができます。手動で再トレーニングする必要はありません。
-
-:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/model-download.png" alt-text="Studio の実行の詳細ページ。":::
-
-## <a name="get-the-best-model"></a>最適なモデルを取得する
-
-モデル ファイルは、Studio で実験からダウンロードできるだけでなく、プログラムによってダウンロードすることもできます。 次のコードでは、実験内の各実行を繰り返し、ログに記録された実行メトリックと実行詳細 (run_id を含む) の両方にアクセスします。 ここでは、最適な実行 (この場合は、平均平方二乗誤差が最小の実行) を追跡します。
-
-```python
-minimum_rmse_runid = None
-minimum_rmse = None
-
-for run in experiment.get_runs():
-    run_metrics = run.get_metrics()
-    run_details = run.get_details()
-    # each logged metric becomes a key in this returned dict
-    run_rmse = run_metrics["rmse"]
-    run_id = run_details["runId"]
-    
-    if minimum_rmse is None:
-        minimum_rmse = run_rmse
-        minimum_rmse_runid = run_id
-    else:
-        if run_rmse < minimum_rmse:
-            minimum_rmse = run_rmse
-            minimum_rmse_runid = run_id
-
-print("Best run_id: " + minimum_rmse_runid)
-print("Best run_id rmse: " + str(minimum_rmse))    
-```
-```output
-Best run_id: 864f5ce7-6729-405d-b457-83250da99c80
-Best run_id rmse: 57.234760283951765
-```
-
-実験オブジェクトと共に `Run` コンストラクターを使用して個々の実行を取得するには、最適な実行の ID を使用します。 次に、`get_file_names()` を呼び出して、この実行からダウンロード可能なすべてのファイルを表示します。 この場合、トレーニング中に実行ごとにファイルを 1 つだけアップロードしました。
-
-
-```python
+from model import Net
 from azureml.core import Run
-best_run = Run(experiment=experiment, run_id=minimum_rmse_runid)
-print(best_run.get_file_names())
+
+
+# ADDITIONAL CODE: get Azure Machine Learning run from the current context
+run = Run.get_context()
+
+# download CIFAR 10 data
+trainset = torchvision.datasets.CIFAR10(root='./data', train=True, download=True, transform=torchvision.transforms.ToTensor())
+trainloader = torch.utils.data.DataLoader(trainset, batch_size=4, shuffle=True, num_workers=2)
+
+if __name__ == "__main__":
+
+    # define convolutional network
+    net = Net()
+
+    # set up pytorch loss /  optimizer
+    criterion = torch.nn.CrossEntropyLoss()
+    optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
+
+    # train the network
+    for epoch in range(2):
+
+        running_loss = 0.0
+        for i, data in enumerate(trainloader, 0):
+            # unpack the data
+            inputs, labels = data
+
+            # zero the parameter gradients
+            optimizer.zero_grad()
+
+            # forward + backward + optimize
+            outputs = net(inputs)
+            loss = criterion(outputs, labels)
+            loss.backward()
+            optimizer.step()
+
+            # print statistics
+            running_loss += loss.item()
+            if i % 2000 == 1999:
+                loss = running_loss / 2000
+                run.log('loss', loss) # ADDITIONAL CODE: log loss metric to Azure Machine Learning
+                print(f'epoch={epoch + 1}, batch={i + 1:5}: loss {loss:.2f}')
+                running_loss = 0.0
+
+    print('Finished Training')
 ```
 
-```output
-['model_alpha_0.1.pkl']
-```
+#### <a name="understand-the-additional-two-lines-of-code"></a>追加する 2 行のコードを理解する
 
-実行オブジェクトに対して `download()` を呼び出し、ダウンロードするモデル ファイル名を指定します。 この関数の既定のダウンロード先は、現在のディレクトリです。
-
+`train.py` で、`Run.get_context()` メソッドを使用してトレーニング スクリプト自体の "_内部_" から実行オブジェクトにアクセスし、それを使用してメトリックをログします。
 
 ```python
-best_run.download_file(name="model_alpha_0.1.pkl")
+# in train.py
+run = Run.get_context()
+
+...
+
+run.log('loss', loss)
 ```
-<!-- nbend -->
 
-## <a name="clean-up-resources"></a>リソースをクリーンアップする
+Azure Machine Learning のメトリックは次のとおりです。
 
-Azure Machine Learning の他のチュートリアルを実行する予定の場合、このセクションを実行しないでください。
+- 実験ごとに整理されて実行されるため、メトリックの追跡と比較が簡単です。
+- UI を備えているため、スタジオでトレーニングのパフォーマンスを視覚化できます。
+- スケーリングするように設計されているため、数百回の実験を実行してもこれらのベネフィットを維持できます。
 
-### <a name="stop-the-compute-instance"></a>コンピューティング インスタンスの停止
+### <a name="update-the-conda-environment-file"></a>Conda 環境ファイルを更新する
 
-[!INCLUDE [aml-stop-server](../../includes/aml-stop-server.md)]
+`train.py` スクリプトにより、`azureml.core` に対して新しい依存関係が作成されました。 この変更を反映するように `pytorch-env.yml` を更新します。
 
-### <a name="delete-everything"></a>すべてを削除する
+```yaml
+# tutorial/.azureml/pytorch-env.yml
+name: pytorch-env
+channels:
+    - defaults
+    - pytorch
+dependencies:
+    - python=3.6.2
+    - pytorch
+    - torchvision
+    - pip
+    - pip:
+        - azureml-sdk
+```
 
-[!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
+### <a name="submit-run-to-azure-machine-learning"></a>Azure Machine Learning に実行を送信する
+このスクリプトをもう一度送信します。
 
-リソース グループは保持しつつ、いずれかのワークスペースを削除することもできます。 ワークスペースのプロパティを表示し、 **[削除]** を選択します。
+```bash
+python 04-run-pytorch.py
+```
 
-## <a name="next-steps"></a>次のステップ
+今回は、スタジオにアクセスしたら、[メトリック] タブに移動します。このタブで、モデル トレーニングの損失に関するライブ更新を確認できます。
 
-このチュートリアルでは、次のタスクを実行しました。
+:::image type="content" source="media/tutorial-1st-experiment-sdk-train/logging-metrics.png" alt-text="[メトリック] タブのトレーニング損失グラフ":::
 
-> [!div class="checklist"]
-> * 自分のワークスペースを接続し、実験を作成しました
-> * データを読み込み、scikit-learn モデルをトレーニングしました
-> * Studio でトレーニング結果を表示し、モデルを取得しました
+## <a name="next-steps"></a>次の手順
 
-Azure Machine Learning を使って[モデルをデプロイ](tutorial-deploy-models-with-aml.md)してください。
-[自動化された機械学習](tutorial-auto-train-models.md)の実験を開発する方法について学習します。
+このセッションでは、基本的な "Hello world!" スクリプトから、 特定の Python 環境を実行する必要がある、より現実的なトレーニング スクリプトにアップグレードしました。 Azure Machine Learning 環境を使用してローカルの Conda 環境をクラウドに移動する方法を確認しました。 最後に、数行のコードでメトリックを Azure Machine Learning にログする方法を確認しました。
+
+Azure Machine Learning 環境を作成する方法は他にもあります。たとえば、[pip requirements.txt から](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#from-pip-requirements-name--file-path-)、または[既存のローカル Conda 環境から](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#from-existing-conda-environment-name--conda-environment-name-)作成することもできます。
+
+次のセッションでは、CIFAR10 データセットを Azure にアップロードして Azure Machine Learning のデータを操作する方法について説明します。
+
+> [!div class="nextstepaction"]
+> [チュートリアル:データ持ち込み](tutorial-1st-experiment-bring-data.md)
+
+>[!NOTE] 
+> 次のステップに進まずに、ここでこのチュートリアル シリーズを終了する場合は、忘れずに[リソースをクリーンアップ](tutorial-1st-experiment-bring-data.md#clean-up-resources)してください。

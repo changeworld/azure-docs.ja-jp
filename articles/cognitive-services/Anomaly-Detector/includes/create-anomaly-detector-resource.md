@@ -6,14 +6,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/01/2020
+ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 8dbe36693e551bd03022f4a00044b75b912c834a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8f93e0ffe74ade79059fc845788faf36ab5b4f13
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80875125"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "91025188"
 ---
 ## <a name="create-an-anomaly-detector-resource"></a>Anomaly Detector リソースを作成する
 
@@ -28,7 +28,6 @@ ms.locfileid: "80875125"
     |Location|近くにある任意の使用可能な場所を選択します|
     |価格レベル|`F0` -最小限の価格レベル|
     |リソース グループ|使用可能なリソース グループを選択します|
-    |プレビュー確認チェックボックス (必須)|**プレビュー**の注意を読んだかどうか|
 
 1. **[作成]** をクリックして、リソースが作成されるまで待ちます。 作成後、リソース ページに移動します。
 1. 構成された `endpoint` と API キーを収集します。

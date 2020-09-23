@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: b74ca75b26d4d98c79091683f428eb39e5827665
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6e46cca28c049a794db617797d5f09e9f3b5720d
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183502"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006893"
 ---
 # <a name="transport-layer-security-in-azure-hdinsight"></a>Azure HDInsight でのトランスポート層セキュリティ
 
@@ -21,8 +21,6 @@ ms.locfileid: "82183502"
 
 既定では、Azure HDInsight クラスターのパブリック HTTPS エンドポイントで、TLS 1.2 接続と、下位互換性のために古いバージョンが受け入れられます。 クラスターの作成時に、Azure portal または Resource Manager テンプレートを使用して、ゲートウェイ ノードでサポートされる最小 TLS バージョンを制御できます。 ポータルでは、クラスターの作成時に **[セキュリティとネットワーク]** タブから TLS バージョンを選択します。 Resource Manager テンプレートでは、デプロイ時に **minSupportedTlsVersion** プロパティを使用します。 サンプル テンプレートについては、[HDInsight の最小 TLS 1.2 クイックスタートのテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls)を参照してください。 このプロパティでは、次の 3 つの値がサポートされています: "1.0"、"1.1"、"1.2"。それぞれ、TLS 1.0+、TLS 1.1+、TLS 1.2+ に対応します。
 
-> [!IMPORTANT]
-> 2020 年 6 月 30 日以降、Azure HDInsight ではすべての HTTPS 接続で TLS 1.2 以降のバージョンが適用されます。 すべてのクライアントで確実に TLS 1.2 以降のバージョンに対応できるようにすることをお勧めします。 詳細については、「[Azure HDInsight での TLS 1.2 の適用](https://azure.microsoft.com/updates/azure-hdinsight-tls-12-enforcement/)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: efd51e90bb14f3d97b76eb6ac45b384192bb8da0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2d596b6d0e291d197146bf5e00827d82b74c125c
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311570"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434539"
 ---
 # <a name="single-page-application-app-registration"></a>シングルページ アプリケーション：アプリの登録
 
@@ -32,7 +32,7 @@ MSAL.js 1.0 ベースと MSAL.js 2.0 ベースの両方のアプリケーショ�
 1. [Azure portal](https://portal.azure.com) にサインインします。 アカウントに複数のテナントへのアクセス権がある場合は、上部のメニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、作成しようとしているアプリ登録が含まれるテナントを選択します。
 1. **Azure Active Directory** を検索して選択します。
 1. **[管理]** の **[アプリの登録]** を選択します。
-1. **[新規登録]** を選択して、アプリケーションの **[名前]** を入力し、アプリケーションの **[サポートされているアカウントの種類]** を選択します。 **[リダイレクト URI]** は入力**しないでください**。 さまざまなアカウントの種類については、「[Azure portal を使用して新しいアプリケーションを登録します](quickstart-register-app.md#register-a-new-application-using-the-azure-portal)」を参照してください。
+1. **[新規登録]** を選択して、アプリケーションの **[名前]** を入力し、アプリケーションの **[サポートされているアカウントの種類]** を選択します。 **[リダイレクト URI]** は入力**しないでください**。 さまざまなアカウントの種類については、「[Azure portal を使用して新しいアプリケーションを登録します](quickstart-register-app.md)」を参照してください。
 1. **[登録]** を選択して、アプリの登録を作成します。
 
 次に、 **[リダイレクト URI]** を使用してアプリの登録を構成し、Microsoft ID プラットフォームがクライアントをセキュリティ トークンと共にリダイレクトする場所を指定します。 アプリケーションで使用している MSAL.js のバージョンに適した手順を使用します。

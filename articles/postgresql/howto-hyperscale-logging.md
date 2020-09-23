@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 7/13/2020
-ms.openlocfilehash: 4ca64a7793d229e7910fb122fb33996b1ac0c4fe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1dc7bc8e119de7c8fdcf09713286be2633457486
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094970"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895860"
 ---
 # <a name="logs-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) のログ
 
@@ -22,15 +22,15 @@ PostgreSQL のログは、Hyperscale (Citus) サーバー グループのすべ�
 
 Hyperscale (Citus) コーディネーターまたはワーカー ノードの PostgreSQL ログにアクセスするには、Azure portal でノードを開きます。
 
-![ノードのリスト](media/howto-hyperscale-logging/choose-node.png)
+:::image type="content" source="media/howto-hyperscale-logging/choose-node.png" alt-text="ノードのリスト":::
 
 選択したノードで **[診断設定]** を開き、 **[+ 診断設定の追加]** をクリックします。
 
-![[診断設定の追加] ボタン](media/howto-hyperscale-logging/diagnostic-settings.png)
+:::image type="content" source="media/howto-hyperscale-logging/diagnostic-settings.png" alt-text="[診断設定の追加] ボタン":::
 
 新しい診断設定の名前を選択し、 **[PostgreSQLLogs]** チェック ボックスをオンにします。  ログの受信先を選択します。
 
-![PostgreSQL のログを選択する](media/howto-hyperscale-logging/diagnostic-create-setting.png)
+:::image type="content" source="media/howto-hyperscale-logging/diagnostic-create-setting.png" alt-text="PostgreSQL のログを選択する":::
 
 ## <a name="next-steps"></a>次のステップ
 

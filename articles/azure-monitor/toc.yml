@@ -144,7 +144,7 @@
           href: platform/personal-data-mgmt.md
         - name: アプリケーション データの収集、保持、保存
           href: app/data-retention-privacy.md
-    - name: 警告
+    - name: アラート
       items:
         - name: 概要
           href: platform/alerts-overview.md
@@ -417,7 +417,7 @@
                   items:
                     - name: 仮想マシン
                       href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
-                    - name: VM スケール セット
+                    - name: 仮想マシン スケール セット
                       href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
                     - name: VM クラシック
                       href: platform/collect-custom-metrics-guestos-vm-classic.md
@@ -467,9 +467,9 @@
           href: platform/autoscale-common-scale-patterns.md
         - name: カスタム メトリックによるスケーリング
           href: platform/autoscale-custom-metric.md
-        - name: VM スケール セットのスケーリング
+        - name: 仮想マシン スケール セットのスケーリング
           href: ../virtual-machine-scale-sets/tutorial-autoscale-powershell.md?toc=/azure/azure-monitor/toc.json
-        - name: Resource Manager テンプレートを使用した VM スケール セットのスケーリング
+        - name: Resource Manager テンプレートを使用した仮想マシン スケール セットのスケーリング
           href: platform/autoscale-virtual-machine-scale-sets.md
         - name: Webhook と電子メール通知の使用
           href: platform/autoscale-webhook-email.md
@@ -677,7 +677,7 @@
           items:
             - name: 概要
               href: app/codeless-overview.md
-            - name: Azure VM とスケール セット
+            - name: Azure VM と仮想マシン スケール セット
               href: app/azure-vm-vmss-apps.md
             - name: Azure App Service
               displayname: 'App Service, web app, PaaS, Azure web app'
@@ -728,6 +728,8 @@
           href: app/create-new-resource.md
         - name: リソースの作成 (ワークスペースベース)
           href: app/create-workspace-resource.md
+        - name: ワークスペースベースのリソースへの移行
+          href: app/convert-classic-resource.md
         - name: アプリケーション ダッシュボード
           displayname: 'dashboard, Application Insights dashboard'
           href: app/overview-dashboard.md
@@ -1010,8 +1012,6 @@
               href: insights/container-insights-region-mapping.md
         - name: パフォーマンスの監視
           href: insights/container-insights-analyze.md
-        - name: 正常性の監視
-          href: insights/container-insights-health.md
         - name: GPU パフォーマンスの監視
           href: insights/container-insights-gpu-monitoring.md
         - name: デプロイと HPA の監視
@@ -1042,8 +1042,6 @@
           href: insights/container-insights-agent-config.md
         - name: 更新によるメトリックの有効化
           href: insights/container-insights-update-metrics.md
-        - name: 正常性の監視の構成
-          href: insights/container-insights-health-monitors-config.md
         - name: コストと使用量の管理
           href: insights/container-insights-cost.md
         - name: 監視を無効にする

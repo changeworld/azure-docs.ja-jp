@@ -4,15 +4,15 @@ description: 新しい Azure Monitor Application Insights のワークスペー�
 author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
-ms.date: 08/24/2020
-ms.openlocfilehash: d6d6731ae087604e0a53a6721bb76dfba5fbf40c
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.date: 09/10/2020
+ms.openlocfilehash: 196be1caf91b6f1f1731d7c4afbfe72482c8f2ac
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783843"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894542"
 ---
-# <a name="workspace-based-application-insights-resources-preview"></a>ワークスペース ベースの Application Insights リソース (プレビュー)
+# <a name="workspace-based-application-insights-resources"></a>ワークスペース ベースの Application Insights リソース
 
 ワークスペース ベースのリソースは、Application Insights と Log Analytics 間の完全な統合をサポートします。 Application Insights テレメトリを共通の Log Analytics ワークスペースに送信できるようになりました。これにより、アプリケーション、インフラストラクチャ、およびプラットフォームのログを 1 つの統合された場所に保持しながら、Log Analytics のすべての機能にフル アクセスできます。
 
@@ -21,7 +21,19 @@ ms.locfileid: "88783843"
 > [!NOTE]
 > ワークスペース ベースの Application Insights リソースのデータ インジェストとリテンション期間は、データが保管されている Log Analytics ワークスペースを通じて課金されます。 ワークスペース ベースの Application Insights リソースの課金に関する[詳細を参照]( ./pricing.md#workspace-based-application-insights)してください。
 
-新しいエクスペリエンスをテストするには、[Azure portal](https://portal.azure.com)にサインインし、Application Insights リソースを作成します。
+## <a name="new-capabilities"></a>新機能
+
+ワークスペースベースの Application Insights を使用すると、次のような、Azure Monitor および Log Analytics の最新の機能を活用できます。
+
+* [カスタマー マネージド キー (CMK)](../platform/customer-managed-keys.md) は、あなたのみがアクセスできる暗号化キーで、保存されているお使いのデータを暗号化します。
+* [Azure Private Link](../platform/private-link-security.md) を使用すると、プライベート エンドポイントを使用して Azure PaaS サービスを仮想ネットワークに安全に接続できます。
+* [Profiler およびスナップショット デバッガー向けの Bring Your Own Storage (BYOS)](./profiler-bring-your-own-storage.md) では、保存時の暗号化ポリシー、有効期間管理ポリシー、および Application Insights Profiler およびスナップショット デバッガーに関連付けられているすべてのデータのネットワーク アクセスを完全に制御できます。 
+* [容量予約レベル](../platform/manage-cost-storage.md#pricing-model)を利用すると、従量課金制の料金と比較して 25% も節約できます。 
+* Log Analytics ストリーミング インジェストにより、データ インジェストがより高速になります。
+
+## <a name="create-workspace-based-resource"></a>ワークスペースベースのリソースを作成する
+
+[Azure portal](https://portal.azure.com) にサインインし、Application Insights リソースを作成します。
 
 ![ワークスペース ベースの Application Insights リソース](./media/create-workspace-resource/create-workspace-based.png)
 
@@ -36,7 +48,7 @@ ms.locfileid: "88783843"
 青いリンク テキストをクリックすると、関連付けられている Log Analytics ワークスペースに移動します。このワークスペースでは、新しい統合ワークスペース クエリ環境を利用できます。
 
 > [!NOTE]
-> Application Insights のエクスペリエンスにおける Application Insights クラシック リソース クエリ、ブック、およびログベースのアラートについては、引き続き完全な下位互換性を提供します。 [新しいワークスペース ベースのテーブル構造またはスキーマ](apm-tables.md)に対してクエリ/ビューを実行するには、まず Log Analytics ワークスペースに移動する必要があります。 プレビュー中に [Application Insights] ウィンドウの **[ログ]** を選択すると、従来の Application Insights クエリ エクスペリエンスにアクセスできます。
+> Application Insights のエクスペリエンスにおける Application Insights クラシック リソース クエリ、ブック、およびログベースのアラートについては、引き続き完全な下位互換性を提供します。 [新しいワークスペース ベースのテーブル構造またはスキーマ](apm-tables.md)に対してクエリ/ビューを実行するには、まず Log Analytics ワークスペースに移動する必要があります。 [Application Insights] ペインの **[ログ (Analytics)]** を選択すると、従来の Application Insights クエリ エクスペリエンスにアクセスできます。
 
 ## <a name="copy-the-connection-string"></a>接続文字列のコピー
 
@@ -185,14 +197,6 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 
 ```
 
-## <a name="new-capabilities"></a>新機能
-
-ワークスペース ベースの Application Insights を使用すると、次を含む Azure Monitor の最新の機能をすべて活用できます。
-
-* [カスタマー マネージド キー (CMK)](../platform/customer-managed-keys.md) は、あなたのみがアクセスできる暗号化キーで、保存されているお使いのデータを暗号化します。
-* [Azure Private Link](../platform/private-link-security.md) を使用すると、プライベート エンドポイントを使用して Azure PaaS サービスを仮想ネットワークに安全に接続できます。
-* [Profiler およびスナップショット デバッガー向けの Bring Your Own Storage (BYOS)](./profiler-bring-your-own-storage.md) では、保存時の暗号化ポリシー、有効期間管理ポリシー、および Application Insights Profiler およびスナップショット デバッガーに関連付けられているすべてのデータのネットワーク アクセスを完全に制御できます。 
-
 ## <a name="modifying-the-associated-workspace"></a>関連付けられているワークスペースの変更
 
 ワークスペース ベースの Application Insights リソースが作成されたら、関連付けられている Log Analytics ワークスペースを変更できます。
@@ -207,8 +211,3 @@ Application Insights リソース ウィンドウで **[プロパティ]**  >  *
 
 * [メトリックを探索する](../platform/metrics-charts.md)
 * [Analytics クエリを作成する](../log-query/log-query-overview.md)
-
-[api]: ./api-custom-events-metrics.md
-[diagnostic]: ./diagnostic-search.md
-[metrics]: ../platform/metrics-charts.md
-[start]: ./app-insights-overview.md

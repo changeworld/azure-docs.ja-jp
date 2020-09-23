@@ -6,14 +6,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/30/2020
+ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 8d66b653f78de5b2dee1a42227fe64152ccc6fe9
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 98f68af11cf21cb795e7741585e55c195c066995
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89464209"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "91025104"
 ---
 Python 用 Anomaly Detector クライアント ライブラリを使ってみます。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。 Anomaly Detector サービスにより、業界、シナリオ、データ量に関係なく、最適なモデルを自動的に使用することで、時系列データ内の異常を検出できます。
 
@@ -21,8 +21,9 @@ Python 用 Anomaly Detector クライアント ライブラリは、次の目的
 
 * バッチ要求として、時系列データセット全体で異常を検出する
 * 時系列で最新のデータ ポイントの異常状態を検出する
+* データセット内の傾向変化点を検出する。
 
-[ライブラリのリファレンス ドキュメント](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector?view=azure-python) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector) | [パッケージ (PyPi)](https://pypi.org/project/azure-cognitiveservices-anomalydetector/) | [GitHub でサンプル コードを検索する](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/python-sdk-sample.py)
+[ライブラリのリファレンス ドキュメント](https://go.microsoft.com/fwlink/?linkid=2090370) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector) | [パッケージ (PyPi)](https://pypi.org/project/azure-ai-anomalydetector/) | [GitHub でサンプル コードを検索する](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/python-sdk-sample.py)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,7 +45,7 @@ Python 用 Anomaly Detector クライアント ライブラリは、次の目的
 
 [!code-python[import declarations](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=imports)]
 
-環境変数としてのキーの変数、時系列データ ファイルへのパスの変数、サブスクリプションの Azure の場所の変数を作成します。 たとえば、「 `westus2` 」のように入力します。
+環境変数としてのキー、時系列データ ファイルへのパス、およびサブスクリプションの Azure の場所の変数を作成します。 たとえば、「 `westus2` 」のように入力します。
 
 [!code-python[Vars for the key, path location and data path](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=initVars)]
 
@@ -53,16 +54,16 @@ Python 用 Anomaly Detector クライアント ライブラリは、次の目的
 Python をインストールしたら、次を使用してクライアント ライブラリをインストールすることができます。
 
 ```console
-pip install --upgrade azure-cognitiveservices-anomalydetector
+pip install --upgrade azure-ai-anomalydetector
 ```
 
 ## <a name="object-model"></a>オブジェクト モデル
 
-Anomaly Detector クライアントは、キーを使用して Azure に対する認証を行う [AnomalyDetectorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python)オブジェクトです。 クライアントによる異常検出の方法は 2 とおりあります。[entire_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-)を使用したデータセット全体での検出と [Last_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-)を使用した最新のデータ ポイントでの検出) を提供します。
+Anomaly Detector クライアントは、キーを使用して Azure に対する認証を行う [AnomalyDetectorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python)オブジェクトです。 クライアントは、[entire_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-) を使用してデータセット全体の異常検出を行うか、または [Last_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-) を使用して最新のデータ ポイントを対象にすることができます。 [ChangePointDetectAsync](https://go.microsoft.com/fwlink/?linkid=2090370) 関数は、傾向の変化を示すポイントを検出します。
 
 時系列データは、[Request](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request?view=azure-python) オブジェクト内の一連の [Point](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point?view=azure-python) として送信されます。 `Request` オブジェクトには、データを説明するプロパティ (たとえば、[細分性](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python)など) と異常検出のパラメーターが含まれます。
 
-Anomaly Detector の応答は、使用する方法に応じて、[LastDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python) オブジェクトまたは [EntireDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python) オブジェクトになります。
+Anomaly Detector の応答は、使用するメソッドに応じて、[LastDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python)、[EntireDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python)、または [ChangePointDetectResponse](https://go.microsoft.com/fwlink/?linkid=2090370) オブジェクトになります。
 
 ## <a name="code-examples"></a>コード例
 
@@ -72,6 +73,7 @@ Anomaly Detector の応答は、使用する方法に応じて、[LastDetectResp
 * [ファイルから時系列データ セットを読み込む](#load-time-series-data-from-a-file)
 * [データ セット全体で異常を検出する](#detect-anomalies-in-the-entire-data-set)
 * [最新のデータ ポイントの異常状態を検出する](#detect-the-anomaly-status-of-the-latest-data-point)
+* [データセット内の変化点を検出する](#detect-change-points-in-the-data-set)
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
@@ -107,6 +109,12 @@ API を呼び出し、クライアントの [entire_detect()](https://docs.micro
 Anomaly Detector API を呼び出し、クライアントの [last_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-) メソッドを使用して最新のデータ ポイントが異常かどうかを判断し、返された [LastDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python) オブジェクトを格納します。 応答の `is_anomaly` の値は、そのポイントの異常状態を指定するブール値です。  
 
 [!code-python[Batch anomaly detection sample](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=latestPointDetection)]
+
+## <a name="detect-change-points-in-the-data-set"></a>データセット内の変化点を検出する
+
+クライアントの [detect_change_point()](https://go.microsoft.com/fwlink/?linkid=2090370) メソッドを使用して、時系列データ内の変化点を検出する API を呼び出します。 返された [ChangePointDetectResponse](https://go.microsoft.com/fwlink/?linkid=2090370) オブジェクトを格納します。 応答の `is_change_point` 一覧を反復処理して、すべての `true` 値のインデックスを出力します。 これらの値は、傾向の変化点のインデックスに対応します (見つかった場合)。
+
+[!code-python[detect change points](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=changePointDetection)]
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 

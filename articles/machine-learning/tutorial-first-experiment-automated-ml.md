@@ -10,20 +10,17 @@ author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 07/10/2020
-ms.openlocfilehash: d11df9bae954dc654e22157639b74e5ca2363494
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f68867a7b24e9c5d8dafa0da65209e14eeae5210
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047830"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896471"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>チュートリアル:Azure Machine Learning の自動 ML で分類モデルを作成する
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-このチュートリアルでは、Azure Machine Learning Studio で自動機械学習を使用して、1 行のコードも記述せずに基本的な分類モデルを作成する方法について説明します。 この分類モデルは、クライアントが金融機関に定期預金を申し込むかどうかを予測します。
 
->[!IMPORTANT]
-> Azure Machine learning Studio での自動機械学習エクスペリエンスは、プレビュー段階にあります。 特定の機能がサポートされなかったり、機能が制限されたりすることがあります。
+このチュートリアルでは、Azure Machine Learning Studio で自動機械学習を使用して、1 行のコードも記述せずに単純な分類モデルを作成する方法について説明します。 この分類モデルは、クライアントが金融機関に定期預金を申し込むかどうかを予測します。
 
 自動機械学習を使用することで、時間がかかるタスクを自動化することができます。 自動機械学習では、アルゴリズムとハイパーパラメーターのさまざまな組み合わせをすばやく反復し、選択された成功のメトリックに基づいて最適なモデルを効率的に発見します。
 
@@ -47,9 +44,9 @@ ms.locfileid: "87047830"
 
 Azure Machine Learning ワークスペースは、機械学習モデルを実験、トレーニング、およびデプロイするために使用する、クラウドでの基本的なリソースです。 ワークスペースは、Azure サブスクリプションとリソース グループを、サービス内の簡単に使用できるオブジェクトに結び付けます。 
 
-Azure リソースを管理するための Web ベースのコンソールである Azure portal を使用して、**Enterprise Edition** ワークスペースを作成します。
+Azure リソースを管理するための Web ベースのコンソールである Azure portal を使用して、ワークスペースを作成します。
 
-[!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
+[!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
 >[!IMPORTANT] 
 > お使いの**ワークスペース**と**サブスクリプション**をメモしておきます。 これらは、適切な場所に実験を作成するために必要になります。 

@@ -1,14 +1,14 @@
 ---
 title: ポリシーのコンプライアンス データを取得する
 description: Azure Policy の評価と効果によって、コンプライアンスが決まります。 Azure リソースのコンプライアンスの詳細を取得する方法を説明します。
-ms.date: 08/10/2020
+ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 7795bba9fec79ee13600d9c72f68e9c763b169e4
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 2ab75bdab0dcf910da91eb60b5f0cf23892d6c51
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054654"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895427"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure リソースのコンプライアンス データを取得する
 
@@ -30,11 +30,13 @@ Azure Policy の最大の利点の 1 つは、サブスクリプション内の�
 
 割り当てられたポリシーとイニシアティブの評価は、次のようなさまざまなイベントの結果として発生します。
 
-- ポリシーまたはイニシアティブがスコープに新たに割り当てられる。 定義されたスコープに割り当てが適用されるまで、約 30 分かかります。 適用されると、新たに割り当てられたポリシーまたはイニシアティブに従って、そのスコープ内のリソースに対する評価サイクルが開始されます。リソースは、ポリシーまたはイニシアティブによって使用されている効果に応じて、準拠または非準拠としてマークされます。 大きなスコープのリソースに対する大きなポリシーまたはイニシアティブの評価には時間がかかることがあります。 そのため、評価サイクルがいつ完了するかを事前に予想することはできません。 完了すると、更新されたコンプライアンス結果をポータルと SDK で使用できるようになります。
+- ポリシーまたはイニシアティブがスコープに新たに割り当てられる。 定義されたスコープに割り当てが適用されるまで、約 30 分かかります。 適用されると、新たに割り当てられたポリシーまたはイニシアティブに従って、そのスコープ内のリソースに対する評価サイクルが開始されます。リソースは、ポリシーまたはイニシアティブによって使用されている効果に応じて、準拠、非準拠、または適用除外としてマークされます。 大きなスコープのリソースに対する大きなポリシーまたはイニシアティブの評価には時間がかかることがあります。 そのため、評価サイクルがいつ完了するかを事前に予想することはできません。 完了すると、更新されたコンプライアンス結果をポータルと SDK で使用できるようになります。
 
 - 既にスコープに割り当てられているポリシーまたはイニシアティブが更新される。 このシナリオでの評価サイクルとタイミングは、スコープへの新しい割り当ての場合と同じです。
 
 - Azure Resource Manager、REST API、またはサポート対象の SDK を介した割り当てで、リソースがスコープでデプロイまたは更新される。 このシナリオでは、個々のリソースに対する効果的なイベント (追加、監査、拒否、展開) とコンプライアンス ステータスの情報が、約 15 分後にポータルおよび SDKで利用可能です。 このイベントによって、他のリソースの評価が行われることはありません。
+
+- [ポリシー適用除外](../concepts/exemption-structure.md)が作成、更新、または削除される。 このシナリオでは、定義された適用除外スコープに対して、対応する割り当てが評価されます。
 
 - 標準コンプライアンス評価サイクル。 24 時間に 1 回、割り当てが自動的に再評価されます。 多くのリソースの大きなポリシーまたはイニシアティブでは時間がかかることがあるため、評価サイクルがいつ完了するかを事前に予想することはできません。 完了すると、更新されたコンプライアンス結果をポータルと SDK で使用できるようになります。
 
@@ -127,8 +129,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 ## <a name="how-compliance-works"></a>コンプライアンスのしくみ
 
-割り当てのリソースがポリシーや統括ルールに従っていない場合、そのリソースは**非準拠**になります。
-次の表は、さまざまなポリシーの効果での条件の評価と、その結果であるコンプライアンスの状態を示しています。
+割り当てで、リソースがポリシーまたはイニシアティブ ルールに従っておらず、"_適用除外_" でない場合、リソースは**非準拠**になります。 次の表は、さまざまなポリシーの効果での条件の評価と、その結果であるコンプライアンスの状態を示しています。
 
 | リソースの状態 | 結果 | ポリシーの評価 | コンプライアンスの状態 |
 | --- | --- | --- | --- |
@@ -137,29 +138,33 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 | 新規 | Audit、AuditIfNotExist\* | True | 準拠していない |
 | 新規 | Audit、AuditIfNotExist\* | False | 対応 |
 
-\* Append、DeployIfNotExist、AuditIfNotExist の各効果では、IF ステートメントが TRUE である必要があります。
-また、非準拠となるには、既存の条件が FALSE である必要があります。 TRUE のとき、IF 条件は関連するリソースの既存の条件の評価をトリガーします。
+\* Modify、Append、DeployIfNotExist、および AuditIfNotExist の各効果では、IF ステートメントが TRUE である必要があります。 また、非準拠となるには、既存の条件が FALSE である必要があります。 TRUE のとき、IF 条件は関連するリソースの既存の条件の評価をトリガーします。
 
 たとえば、ContosoRG というリソース グループがあり、このリソース グループの一部のストレージ アカウント (赤で強調表示されているアカウント) がパブリック ネットワークに公開されているとします。
 
-:::image type="content" source="../media/getting-compliance-data/resource-group01.png" alt-text="パブリック ネットワークに公開されるストレージ アカウント" border="false":::
+:::image type="complex" source="../media/getting-compliance-data/resource-group01.png" alt-text="Contoso R G リソース グループ内のパブリック ネットワークに公開されているストレージ アカウントの図。" border="false":::
+   Contoso R G リソース グループ内の 5 つのストレージ アカウントのイメージを示す図。  ストレージ アカウント 1 と 3 は青ですが、ストレージ アカウント 2、4、および 5 は赤です。
+:::image-end:::
 
-この例では、セキュリティ リスクに注意する必要があります。 これで、作成されたポリシー割り当てが、ContosoRG リソース グループ内のすべてのストレージ アカウントに対して評価されます。 3 つの非準拠のストレージ アカウントを監査し、結果としてそれらの状態を**非準拠**に変更します。
+この例では、セキュリティ リスクに注意する必要があります。 これで、作成したポリシー割り当てが、ContosoRG リソース グループ内のすべての包含されて適用除外でないストレージ アカウントに対して評価されます。 3 つの非準拠のストレージ アカウントを監査し、結果としてそれらの状態を**非準拠**に変更します。
 
-:::image type="content" source="../media/getting-compliance-data/resource-group03.png" alt-text="監査対象となった準拠していないストレージ アカウント" border="false":::
+:::image type="complex" source="../media/getting-compliance-data/resource-group03.png" alt-text="Contoso R G リソース グループ内のストレージ アカウント コンプライアンスの図。" border="false":::
+   Contoso R G リソース グループ内の 5 つのストレージ アカウントのイメージを示す図。 ストレージ アカウント 1 と 3 は、それらの下に緑色のチェックマークが表示されるようになりましたが、ストレージ アカウント 2、4、および 5 は、それらの下に赤い警告記号が表示されるようになりました。
+:::image-end:::
 
-**準拠**と**非準拠**の他に、ポリシーとリソースには次の 3 つの状態があります。
+**準拠**と**非準拠**の他に、ポリシーとリソースには次の 4 つの状態があります。
 
-- **競合**:2 つ以上のポリシーで規則が競合しています。 たとえば、2 つのポリシーで同じタグに異なる値が追加されています。
+- **適用除外**: リソースは割り当てのスコープ内にありますが、[定義された適用除外](../concepts/exemption-structure.md)があります。
+- **競合**:2 つ以上のポリシー定義で、ルールが競合しています。 たとえば、2 つの定義が、異なる値の同じタグを追加します。
 - **未開始**:ポリシーまたはリソースの評価サイクルが開始されていません。
 - **未登録**:Azure Policy リソース プロバイダーが登録されていないか、ログインしたアカウントにコンプライアンス データを読み取るアクセス許可がありません。
 
-Azure Policy では、定義内の **type** と **name** フィールドを使用して、リソースの一致が判別されます。 リソースが一致している場合、適用可能と見なされ、**準拠**または**非準拠**のどちらかの状態になります。 **型**または**名前**のどちらかが定義の唯一のプロパティである場合は、すべてのリソースが適用可能と見なされ、評価されます。
+Azure Policy では、定義内の **type** と **name** フィールドを使用して、リソースの一致が判別されます。 リソースが一致している場合、適用可能と見なされ、**準拠**、**非準拠**、**適用除外**のいずれかの状態になります。 **型**または**名前**のどちらかが定義の唯一のプロパティである場合は、すべての包含されて適用除外でないリソースが適用可能と見なされ、評価されます。
 
-コンプライアンス対応率は、**準拠している**リソースを _リソース合計_で割って算出されます。
-_リソース合計_は、**準拠**、**非準拠**、**競合**の各リソースの合計と定義されています。 全体的なコンプライアンスの数値は、**準拠**している個別のリソースの合計を、すべての個別のリソースの合計で除算したものです。 次の図では、適用可能な個別のリソースが 20 個あり、そのうち 1 つだけが**非準拠**です。 全体的なリソース コンプライアンスは 95% (19/20) となります。
+コンプライアンス対応率は、**準拠**および**適用除外**のリソースを "_総リソース数_" で割って算出されます。 "_総リソース数_" は、**準拠**、**非準拠**、**適用除外**、および**競合**の各リソースの合計と定義されています。 全体的なコンプライアンスの数値は、**準拠**または**適用除外**の個別のリソースの合計を、すべての個別のリソースの合計で除算したものです。 次の図では、適用可能な個別のリソースが 20 個あり、そのうち 1 つだけが**非準拠**です。
+全体的なリソース コンプライアンスは 95% (19/20) となります。
 
-:::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="[コンプライアンス] ページからのポリシー コンプライアンスの例" border="false":::
+:::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="[コンプライアンス] ページのポリシー コンプライアンスの詳細のスクリーンショット。" border="false":::
 
 > [!NOTE]
 > Azure Policy の規制コンプライアンスはプレビュー機能です。 SDK とポータルのページからのコンプライアンス プロパティは、有効化されているイニシアチブごとに異なります。 詳細については、[規制コンプライアンス](../concepts/regulatory-compliance.md)に関する記事をご覧ください
@@ -168,11 +173,11 @@ _リソース合計_は、**準拠**、**非準拠**、**競合**の各リソー
 
 Azure portal には、環境のコンプライアンス状態を視覚化して理解するためのグラフィカルなエクスペリエンスが表示されます。 **[ポリシー]** ページの **[概要]** オプションでは、ポリシーとイニシアティブの両方のコンプライアンスに関して、利用可能なスコープの詳細が表示されます。 コンプライアンス状態および割り当てごとの数と共に、過去 7 日間のコンプライアンスを示すグラフが含まれます。 **[コンプライアンス]** ページには、この同じ情報の大部分 (グラフを除く) が含まれていますが、フィルター処理と並べ替えのオプションが追加されています。
 
-:::image type="content" source="../media/getting-compliance-data/compliance-page.png" alt-text="[Azure Policy コンプライアンス] ページの例" border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-page.png" alt-text="フィルター処理のオプションと詳細が表示されている [コンプライアンス] ページのスクリーンショット。" border="false":::
 
-ポリシーまたはイニシアティブは異なるスコープに割り当てることができるため、表には、各割り当てのスコープと割り当てられた定義の種類が含まれます。 各割り当ての準拠していないリソースおよび準拠していないポリシーの数も提供されます。 表のポリシーまたはイニシアティブをクリックすると、その特定の割り当てのコンプライアンスに関する詳しい情報が表示されます。
+ポリシーまたはイニシアティブは異なるスコープに割り当てることができるため、表には、各割り当てのスコープと割り当てられた定義の種類が含まれます。 各割り当ての準拠していないリソースおよび準拠していないポリシーの数も提供されます。 表のポリシーまたはイニシアティブを選択すると、その特定の割り当てのコンプライアンスに関する詳しい情報が表示されます。
 
-:::image type="content" source="../media/getting-compliance-data/compliance-details.png" alt-text="[Azure Policy コンプライアンスの詳細] ページの例" border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-details.png" alt-text="数とリソース コンプライアンスの詳細が表示されている [ポリシー準拠状況の詳細] ページのスクリーンショット。" border="false":::
 
 **[リソース コンプライアンス]** タブのリソース リストには、現在の割り当てに対する既存のリソースの評価状態が表示されます。 タブでは既定で **[非対応]** に設定されますが、これをフィルター処理することができます。
 リソースの作成要求によってトリガーされるイベント (追加、監査、拒否、デプロイ) は、 **[イベント]** タブに表示されます。
@@ -180,15 +185,15 @@ Azure portal には、環境のコンプライアンス状態を視覚化して�
 > [!NOTE]
 > AKS エンジン ポリシーの場合、表示されるリソースはリソース グループです。
 
-:::image type="content" source="../media/getting-compliance-data/compliance-events.png" alt-text="Azure Policy コンプライアンス イベントの例" border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-events.png" alt-text="[ポリシー準拠状況の詳細] ページの [イベント] タブのスクリーンショット。" border="false":::
 
 [リソース プロバイダー モード](../concepts/definition-structure.md#resource-provider-modes) リソースについては、 **[リソースのコンプライアンス]** タブで、リソースを選択するか、行を右クリックして **[ポリシー準拠状況の詳細]** を選択すると、コンポーネントのコンプライアンスの詳細が表示されます。 このページには、このリソースに割り当てられているポリシー、イベント、コンポーネント イベント、変更履歴を表示するためのタブも用意されています。
 
-:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="Azure Policy コンポーネントのコンプライアンスの詳細の例" border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="[Component Compliance]\(コンポーネントのコンプライアンス\) タブと、リソース プロバイダー モードの割り当てに対するコンプライアンスの詳細のスクリーンショット。" border="false":::
 
 リソースのコンプライアンス ページに戻って、詳細情報を収集するイベントの行を右クリックし、 **[アクティビティ ログの表示]** を選択します。 アクティビティ ログ ページが開き、事前にフィルター処理されて、割り当ておよびイベントの詳細が検索して表示されます。 アクティビティ ログは、これらのイベントに関する追加のコンテキストと情報を提供します。
 
-:::image type="content" source="../media/getting-compliance-data/compliance-activitylog.png" alt-text="Azure Policy コンプライアンス アクティビティ ログの例" border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-activitylog.png" alt-text="Azure Policy アクティビティおよび評価のアクティビティ ログのスクリーンショット。" border="false":::
 
 ### <a name="understand-non-compliance"></a>コンプライアンス違反の把握
 
@@ -639,7 +644,7 @@ Trent Baker
 
 サブスクリプションに関連付けられた [Activity Log Analytics ソリューション](../../../azure-monitor/platform/activity-log.md)からの `AzureActivity` を使用した [Log Analytics ワークスペース](../../../azure-monitor/log-query/log-query-overview.md)がある場合は、単純な Kusto クエリと `AzureActivity` テーブルを使用して、評価サイクルでの非準拠の結果を表示することもできます。 Azure Monitor ログの詳細情報を使用して、非準拠を監視するようにアラートを構成できます。
 
-:::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="Azure Monitor ログを使用した Azure Policy のコンプライアンス" border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="AzureActivity テーブルに Azure Policy アクションを表示している Azure Monitor ログのスクリーンショット。" border="false":::
 
 ## <a name="next-steps"></a>次のステップ
 

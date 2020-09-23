@@ -10,16 +10,16 @@ ms.custom:
 ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
-ms.openlocfilehash: 93e4d3d0bed9090573d2b6ee87a29b86ccd72e42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7cf0d31895eaeaa41c23f9f07664b27bed1d3126
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81758942"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016760"
 ---
 # <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>RuuviTag センサーを Azure IoT Central アプリケーションに接続する
 
-"*この記事は、ソリューション ビルダーおよびデバイス開発者を対象としています。* "
+*この記事は、ソリューション ビルダーを対象としています。*
 
 この記事では、ソリューション ビルダーとして、RuuviTag センサーを、お使いの Microsoft Azure IoT Central アプリケーションに接続する方法について説明します。
 

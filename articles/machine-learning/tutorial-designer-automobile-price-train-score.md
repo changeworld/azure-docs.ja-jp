@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:デザイナー (プレビュー) を使用して自動車の価格を予測する
+title: チュートリアル:デザイナーを使用して自動車の価格を予測する
 titleSuffix: Azure Machine Learning
 description: ドラッグ アンド ドロップ インターフェイスを使用して、機械学習モデルのトレーニング、スコア付け、およびデプロイを行う方法を学習します。 このチュートリアルは、線形回帰を使用した自動車価格の予測に関する 2 部構成のシリーズのパート 1 です。
 author: peterclu
@@ -10,15 +10,15 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 3992bbe466241eb388874905237dbe00f07b3752
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 55d950435522a18eafda69d152619426fe54d87f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88812987"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896706"
 ---
-# <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>チュートリアル:デザイナーを使用して自動車の価格を予測する (プレビュー)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="tutorial-predict-automobile-price-with-the-designer"></a>チュートリアル:デザイナーを使用して自動車の価格を予測する
+
 
 この 2 部構成のチュートリアルでは、Azure Machine Learning のデザイナーを使用して、自動車の価格を予測する機械学習モデルをトレーニングおよびデプロイする方法について説明します。 このデザイナーはドラッグ アンド ドロップ式のツールであり、コードを 1 行も書くことなく機械学習モデルを作成できます。
 
@@ -49,10 +49,6 @@ Azure Machine Learning パイプラインを作成するには、Azure Machine L
 ### <a name="create-a-new-workspace"></a>新しいワークスペースを作成する
 
 デザイナーを使用するためには、まず Azure Machine Learning ワークスペースが必要です。 ワークスペースは、Azure Machine Learning の最上位のリソースで、Azure Machine Learning で作成するすべての成果物を操作するための一元的な場所を提供します。
-
-Azure Machine Learning ワークスペース (Enterprise Edition) がある場合は、[次のセクションに進みます](#create-the-pipeline)。
-
-[!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
 
 ### <a name="create-the-pipeline"></a>パイプラインを作成する
 
@@ -94,7 +90,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
 デザイナーには、実験に利用できるいくつかのサンプル データセットが含まれています。 このチュートリアルでは、**Automobile price data (Raw)** を使用します。 
 
-1. パイプライン キャンバスの左側には、データセットとモジュールのパレットがあります。 **[データセット]** を選択し、 **[サンプル]** セクションを見て、利用可能なサンプル データセットを確認します。
+1. パイプライン キャンバスの左側には、データセットとモジュールのパレットがあります。 **[サンプル データセット]** を選択して、使用可能なサンプル データセットを表示します。
 
 1. **Automobile price data (Raw)** データセットを選択し、キャンバスにドラッグします。
 

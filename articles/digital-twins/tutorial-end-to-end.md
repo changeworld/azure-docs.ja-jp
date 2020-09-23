@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: b22505d5152b005a054d36fafb965006d04b201e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 0b7e277518337072659bf5ccddd3436c05ff5201
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401777"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563796"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>チュートリアル:エンド ツー エンドのソリューションを構築する
 
@@ -162,13 +162,13 @@ Visual Studio のメイン ウィンドウに再度 *[発行]* ペインが表�
 
 Azure Cloud Shell で次のコマンドを使用して、関数アプリが Azure Digital Twins インスタンスを参照する目的で使用するアプリケーション設定を構成します。
 
-```azurecli-interactive
+```azurecli
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
 ```
 
 次のコマンドを使用して、システムによって管理される ID を作成します。 出力の *principalId* フィールドを書き留めてください。
 
-```azurecli-interactive
+```azurecli
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
 
@@ -203,7 +203,7 @@ Azure Digital Twins は、デバイスとそのデータを管理するための
 
 Azure Cloud Shell で、次のコマンドを使用して新しい IoT ハブを作成します。
 
-```azurecli-interactive
+```azurecli
 az iot hub create --name <name-for-your-IoT-hub> -g <your-resource-group> --sku S1
 ```
 
@@ -242,7 +242,7 @@ IoT ハブに付けた名前は保存しておいてください。 これは後
 
 Azure Cloud Shell で、IoT Hub にデバイスを作成するには、次のコマンドを使用します。
 
-```azurecli-interactive
+```azurecli
 az iot hub device-identity create --device-id thermostat67 --hub-name <your-IoT-hub-name> -g <your-resource-group>
 ```
 
@@ -330,7 +330,7 @@ ObserveProperties thermostat67 Temperature
 
 Event Grid トピックを作成するには、Azure Cloud Shell から次のコマンドを実行します。
 
-```azurecli-interactive
+```azurecli
 az eventgrid topic create -g <your-resource-group> --name <name-for-your-event-grid-topic> -l <region>
 ```
 
@@ -441,7 +441,7 @@ ObserveProperties thermostat67 Temperature room21 Temperature
 > [!IMPORTANT]
 > リソース グループを削除すると、元に戻すことができません。 リソース グループとそこに含まれるすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 
 
-```azurecli-interactive
+```azurecli
 az group delete --name <your-resource-group>
 ```
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery の復旧計画にスクリプトを追加する
 description: VMM クラウド上にある Hyper-V VM のディザスター リカバリー用復旧計画に、VMM スクリプトを追加する方法について説明します。
-author: rajani-janaki-ram
+author: Sharmistha-Rai
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: rajanaki
-ms.openlocfilehash: fb690dfb90c0f7b8216368cb6b26a9af7d895d18
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: sharrai
+ms.openlocfilehash: 3217c30737a133c1c1092fc4a8a8caaa0338e980
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130130"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425876"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>復旧計画への VMM スクリプトの追加
 
