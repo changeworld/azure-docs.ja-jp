@@ -1,27 +1,27 @@
 ---
-title: Synapse SQL での CETAS
-description: Synapse SQL での CETAS の使用
+title: Synapse SQL の CREATE EXTERNAL TABLE AS SELECT (CETAS)
+description: Synapse SQL での CREATE EXTERNAL TABLE AS SELECT (CETAS) の使用
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
-ms.date: 04/15/2020
+ms.date: 09/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 18f472da30b34fcacd70bba9ea7371b56f1a7abf
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: d33403f49429398d9bc006187c23bb8091d9b4a1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032913"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885340"
 ---
 # <a name="cetas-with-synapse-sql"></a>Synapse SQL での CETAS
 
-SQL プールまたは SQL オンデマンド (プレビュー) では、CREATE EXTERNAL TABLE AS SELECT (CETAS) を使用して、次のタスクを実行できます。  
+SQL プールまたは SQL オンデマンド (プレビュー) の CREATE EXTERNAL TABLE AS SELECT (CETAS) を使用して、次のタスクを実行できます。  
 
 - 外部テーブルを作成する
-- Transact-SQL SELECT ステートメントの結果を並行して次にエクスポートする
+- Transact-SQL SELECT ステートメントの結果を並行して次にエクスポートする:
 
   - Hadoop
   - Azure Storage BLOB
@@ -29,11 +29,12 @@ SQL プールまたは SQL オンデマンド (プレビュー) では、CREATE 
 
 ## <a name="cetas-in-sql-pool"></a>SQL プールでの CETAS
 
-SQL プールの場合、CETAS の使用法と構文については、[CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) に関する記事をご覧ください。 また、SQL プールを使用した CTAS のガイダンスについては、[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) に関する記事を参照してください。
+SQL プールの CETAS の使用法と構文については、「[CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」の記事をご覧ください。 また、SQL プールを使用した CTAS のガイダンスについては、[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) に関する記事を参照してください。
+SQL プールの CETAS の使用法と構文については、「[CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」の記事をご覧ください。 また、SQL プールを使用した CTAS のガイダンスについては、[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) に関する記事を参照してください。
 
 ## <a name="cetas-in-sql-on-demand"></a>SQL オンデマンドでの CETAS
 
-SQL オンデマンド リソースを使用しているときは、CETAS を使用して外部テーブルを作成し、クエリ結果を Azure Storage Blob または Azure Data Lake Storage Gen2 にエクスポートします。
+SQL オンデマンドを使用する場合は、CETAS を使用して外部テーブルを作成し、クエリ結果を Azure Storage Blob または Azure Data Lake Storage Gen2 にエクスポートします。
 
 ## <a name="syntax"></a>構文
 
@@ -68,18 +69,18 @@ DATA_SOURCE = *external_data_source_name*
 
 FILE_FORMAT = *external_file_format_name*
 
-外部データ ファイルの形式を含む、外部ファイル形式オブジェクトの名前を指定します。 外部ファイル形式を作成するには、[CREATE EXTERNAL FILE FORMAT (Transact-SQL)](develop-tables-external-tables.md#create-external-file-format) を使用します。 現在サポートされているのは、FORMAT='PARQUET' の外部ファイル形式のみです。
+外部データ ファイルの形式を含む、外部ファイル形式オブジェクトの名前を指定します。 外部ファイル形式を作成するには、[CREATE EXTERNAL FILE FORMAT (Transact-SQL)](develop-tables-external-tables.md#create-external-file-format) を使用します。 現在サポートされている外部ファイル形式は、FORMAT_TYPE=PARQUET と FORMAT_TYPE=DELIMITEDTEXT だけです。
 
 WITH *<common_table_expression>*
 
-共通テーブル式 (CTE) と呼ばれる一時的な名前付き結果セットを指定します。 詳細については、「[WITH common_table_expression (Transact-SQL)](/sql/t-sql/queries/with-common-table-expression-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。
+共通テーブル式 (CTE) と呼ばれる一時的な名前付き結果セットを指定します。 詳細については、「[WITH common_table_expression (Transact-SQL)](/sql/t-sql/queries/with-common-table-expression-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」を参照してください。
 
 SELECT <select_criteria>
 
-SELECT ステートメントの結果を新しいテーブルに追加します。 *select_criteria* は、新しいテーブルにコピーするデータを決定する SELECT ステートメントの本文です。 SELECT ステートメントについては、「[SELECT (Transact-SQL)](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。
+SELECT ステートメントの結果を新しいテーブルに追加します。 *select_criteria* は、新しいテーブルにコピーするデータを決定する SELECT ステートメントの本文です。 SELECT ステートメントについては、「[SELECT (Transact-SQL)](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」を参照してください。
 
 > [!NOTE]
-> CETAS の SELECT 部分での ORDER BY 句はサポートされていません。
+> SELECT での ORDER BY 句は、CETAS ではサポートされていません。
 
 ## <a name="permissions"></a>アクセス許可
 
@@ -112,7 +113,7 @@ FROM
 GROUP BY decennialTime, stateName
 GO
 
--- you can query created external table
+-- you can query the newly created external table
 SELECT * FROM population_by_year_state
 ```
 
@@ -132,7 +133,7 @@ FROM census_external_table
 GROUP BY decennialTime, stateName
 GO
 
--- you can query created external table
+-- you can query the newly created external table
 SELECT * FROM population_by_year_state
 ```
 
@@ -173,4 +174,4 @@ CETAS を使用して、次の SQL データ型の結果セットを格納でき
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Synapse 外部テーブルの Apache Spark](develop-storage-files-spark-tables.md) のクエリの実行を試すことができます。
+[Apache Spark for Azure Synapse 外部テーブル](develop-storage-files-spark-tables.md)のクエリを試してみます。

@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7aeea1a0b151968683248b26a2c12f49b437bd2
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: c16882f35c9ca79644cd2b51ce4cd88bba516ed2
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89278566"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89652067"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装
 この記事では、オンプレミスの Active Directory インスタンスから、クラウドベースの Azure Active Directory (Azure AD) インスタンスへの、ユーザー パスワードの同期に必要な情報を提供します。
@@ -132,7 +132,7 @@ Azure AD では、登録されたドメインごとに、個別のパスワー�
 
 同期済みユーザーに対して Azure AD 上で一時パスワードをサポートするには、Azure AD Connect サーバー上で次のコマンドを実行して *ForcePasswordChangeOnLogOn* 機能を有効にします。
 
-`Set-ADSyncAADCompanyFeature  -ForcePasswordChangeOnLogOn $true`
+`Set-ADSyncAADCompanyFeature -ForcePasswordChangeOnLogOn $true`
 
 > [!NOTE]
 > 次回ログオン時のパスワード変更をユーザーに強制すると、同時でのパスワード変更が必要になります。  Azure AD Connect では、パスワードの強制変更フラグは、パスワード ハッシュの同期中に行われた検出済みのパスワード変更に対する補足であり、単独では取得されません。

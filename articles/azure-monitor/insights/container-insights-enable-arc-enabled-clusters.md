@@ -3,12 +3,12 @@ title: Azure Arc 対応 Kubernetes クラスターに Azure Monitor for containe
 description: この記事では、Azure Monitor for containers を使用して Azure Arc 対応 Kubernetes クラスターの監視を構成する方法を説明します。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: f8002b20f37ca5149c58ca3e29402916ebbc1333
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 54a8fea6ddb46dc00fff29ad83a2a348d9218380
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092883"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090620"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Azure Arc 対応 Kubernetes クラスターの監視を有効にする
 
@@ -124,7 +124,7 @@ Azure Monitor for containers では、以下が公式にサポートされてい
 4. 既存の Azure Monitor Log Analytics ワークスペースを使用する場合は、ワークスペースのリソース ID を表す対応する値を使用して `$logAnalyticsWorkspaceResourceId` 変数を構成します。 そうでない場合、変数を `""` に設定すると、リージョンにワークスペースがまだ存在しない場合、クラスター サブスクリプションの既定のリソース グループにスクリプトが既定のワークスペースを作成します。 作成される既定のワークスペースは、*DefaultWorkspace-\<SubscriptionID>-\<Region>* のような形式になります。
 
     ```powershell
-    $logAnalyticsWorkspaceResourceId = “/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.operationalinsights/workspaces/<workspaceName>”
+    $logAnalyticsWorkspaceResourceId = "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.operationalinsights/workspaces/<workspaceName>"
     ```
 
 5. Arc 対応 Kubernetes クラスターがプロキシ サーバー経由で通信する場合は、プロキシ サーバーの URL を使用して変数 `$proxyEndpoint` を構成します。 クラスターがプロキシ サーバー経由で通信しない場合は、値を `""` に設定します。  詳細については、この記事の後半にある「[プロキシ エンドポイントを構成する](#configure-proxy-endpoint)」を参照してください。

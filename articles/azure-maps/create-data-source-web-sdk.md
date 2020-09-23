@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: fea2c4fab51db59c9159853e9b0bdaec0bcdbb56
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: a6ee36e3aee515b589f1e460626df91a38f79f25
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009088"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089379"
 ---
 # <a name="create-a-data-source"></a>データ ソースを作成する
 
@@ -27,7 +27,7 @@ Azure Maps Web SDK では、データがデータ ソースに格納されます
 
 GeoJSON ベースのデータ ソースは、`DataSource` クラスを使用してローカルでデータを読み込んで格納します。 GeoJSON データは、[atlas.data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) 名前空間に、手動で作成するかヘルパー クラスを使用して作成できます。 `DataSource` クラスには、ローカルまたはリモートの GeoJSON ファイルをインポートするための関数が用意されています。 リモートの GeoJSON ファイルは、CORS が有効なエンドポイント上でホストされている必要があります。 `DataSource` クラスには、ポイント データをクラスター化するための機能があります。 データは、`DataSource` クラスを使用して、簡単に追加、削除、および更新できます。 次のコードは、Azure Maps で GeoJSON データを作成する方法を示しています。
 
-```Javascript
+```javascript
 //Create raw GeoJSON object.
 var rawGeoJson = {
      "type": "Feature",
@@ -56,7 +56,7 @@ map.sources.add(dataSource);
 
 次のコードは、GeoJSON データを `DataSource` に追加するさまざまな方法を示しています。
 
-```Javascript
+```javascript
 //GeoJsonData in the following code can be a single or array of GeoJSON features or geometries, a GeoJSON feature colleciton, or a single or array of atlas.Shape objects.
 
 //Add geoJSON object to data source. 
@@ -213,16 +213,16 @@ map.layers.add([polygonLayer, lineLayer, bubbleLayer]);
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-maps-typescript-latest)
+> [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource)
 
 > [!div class="nextstepaction"]
-> [DataSourceOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.datasourceoptions?view=azure-maps-typescript-latest)
+> [DataSourceOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.datasourceoptions)
 
 > [!div class="nextstepaction"]
-> [VectorTileSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.vectortilesource?view=azure-maps-typescript-latest)
+> [VectorTileSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.vectortilesource)
 
 > [!div class="nextstepaction"]
-> [VectorTileSourceOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.vectortilesourceoptions?view=azure-maps-typescript-latest)
+> [VectorTileSourceOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.vectortilesourceoptions)
 
 マップに追加できる他のコード サンプルについては、次の記事をご覧ください。
 

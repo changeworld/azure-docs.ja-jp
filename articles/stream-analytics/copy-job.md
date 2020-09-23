@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/11/2019
-ms.openlocfilehash: 2c6b6af46ae89f794e05c3aa80716250c566257e
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: e0214cb9515a5974f1de9a27760dc037f7593f30
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037224"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892318"
 ---
 # <a name="copy-or-back-up-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブをコピーまたはバックアップする
 
@@ -23,7 +23,7 @@ Visual Studio Code または Visual Studio を使用して、デプロイされ�
 
 * [Azure portal](https://portal.azure.com/) にサインインします。
 
-* [Visual Studio Code の Azure Stream Analytics 拡張機能](quick-create-vs-code.md#install-the-azure-stream-analytics-tools-extension)または [Visual Studio の Azure Stream Analytics ツール](quick-create-vs-code.md#install-the-azure-stream-analytics-tools-extension)をインストールします。  
+* [Visual Studio Code の Azure Stream Analytics 拡張機能](quick-create-visual-studio-code.md#install-the-azure-stream-analytics-tools-extension)または [Visual Studio の Azure Stream Analytics ツール](quick-create-visual-studio-code.md#install-the-azure-stream-analytics-tools-extension)をインストールします。  
 
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
@@ -33,7 +33,7 @@ Visual Studio Code または Visual Studio を使用して、デプロイされ�
 
 2. ジョブをローカル プロジェクトにエクスポートするには、Visual Studio Code の **Stream Analytics Explorer** で、エクスポートするジョブを特定します。 次に、プロジェクトのフォルダーを選択します。
 
-    ![Visual Studio Code での ASA ジョブのエクスポート](./media/vscode-explore-jobs/export-job.png)
+    ![Visual Studio Code での ASA ジョブの特定](./media/vscode-explore-jobs/export-job.png)
 
     プロジェクトは選択したフォルダーにエクスポートされ、現在のワークスペースに追加されます。
 
@@ -41,7 +41,7 @@ Visual Studio Code または Visual Studio を使用して、デプロイされ�
 
 3. ジョブを別のリージョンに発行するか、または別の名前を使用してバックアップするには、クエリエディター (\*.asaql) で **[Select from your subscriptions to publish]\(発行先をサブスクリプションから選択\)** を選択し、指示に従います。
 
-    ![Visual Studio Code で Azure に発行する](./media/quick-create-vs-code/submit-job.png)
+    ![Visual Studio Code で Azure に発行する](./media/quick-create-visual-studio-code/submit-job.png)
 
 ## <a name="visual-studio"></a>Visual Studio
 
@@ -51,6 +51,6 @@ Visual Studio Code または Visual Studio を使用して、デプロイされ�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [クイック スタート: Visual Studio Code を使用して Stream Analytics ジョブを作成する](quick-create-vs-code.md)
+* [クイック スタート: Visual Studio Code を使用して Stream Analytics ジョブを作成する](quick-create-visual-studio-code.md)
 * [クイック スタート: Visual Studio を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-vs.md)
 * [Azure Pipelines を使用して CI/CD で Azure Stream Analytics ジョブをデプロイする](stream-analytics-tools-visual-studio-cicd-vsts.md)

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 0fc4e9a794429e7f1c1609fac287e67dabb3c878
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: d398cfe063dbbb2bc87a3debf1669afa6a16b43e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875505"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891989"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>Azure Stream Analytics からの Power BI 出力
 
@@ -20,7 +20,7 @@ ms.locfileid: "88875505"
 
 Stream Analytics からの Power BI 出力は、現在、Azure China 21Vianet および Azure Germany (T-Systems International) リージョンでは利用できません。
 
-## <a name="ouput-configuration"></a>出力構成
+## <a name="output-configuration"></a>出力の構成
 
 次の表に、ご自分の Power BI 出力を構成するためのプロパティの名前とその説明を示します。
 
@@ -82,4 +82,4 @@ Datetime | String | String |  Datetime | String
 * [クイック スタート: ARM テンプレートを使用して Azure Stream Analytics ジョブを作成する](quick-create-azure-resource-manager.md)
 * [クイック スタート: Azure PowerShell を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-powershell.md)
 * [クイック スタート:Visual Studio を使用して Azure Stream Analytics ジョブを作成する](stream-analytics-quick-create-vs.md)
-* [クイック スタート: Visual Studio Code で Azure Stream Analytics ジョブを作成する](quick-create-vs-code.md)
+* [クイック スタート: Visual Studio Code で Azure Stream Analytics ジョブを作成する](quick-create-visual-studio-code.md)

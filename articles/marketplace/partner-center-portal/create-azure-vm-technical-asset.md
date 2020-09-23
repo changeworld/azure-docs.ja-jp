@@ -3,16 +3,16 @@ title: Azure 仮想マシンの技術資産を作成する
 description: Azure Marketplace 向けの仮想マシン (VM) オファーの技術資産を作成および構成する方法について説明します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 08/14/2020
-ms.openlocfilehash: 496cd4aeb96ca1849e950331658014d91dc6d6ba
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 07c8de2a9d94b51f7183829466bd68d56e19efba
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89143911"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646794"
 ---
 # <a name="create-azure-virtual-machine-technical-assets"></a>Azure 仮想マシンの技術資産を作成する
 

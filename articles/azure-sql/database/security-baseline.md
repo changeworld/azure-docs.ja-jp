@@ -4,15 +4,15 @@ description: Azure SQL Database と Azure SQL Managed Instance 用の Azure セ�
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 09/21/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 846d66a1cf1bb1d97f7ab9d7dfd7bbcf43d3f8d6
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ce297b436ce79a4a0a14d0f6e9ad900de61a8dc9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231029"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885209"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database--sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance 用の Azure セキュリティ ベースライン
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -285,15 +285,15 @@ https://docs.microsoft.com/azure/sql-database/sql-database-insights-alerts-porta
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7:異常なアクティビティについてのアラートを有効にする
 
-**ガイダンス**: 異常なアクティビティを監視し、それに関するアラートを生成するには、Azure Security Center の Advanced Threat Protection for Azure SQL Database を使用します。 SQL データベース用に Advanced Data Security を有効にします。 Advanced Data Security には、機密データを検出して分類したり、データベースの潜在的な脆弱性を明らかにして軽減したり、データベースへの脅威を示す可能性のある異常なアクティビティを検出したりするための機能が含まれています。
+**ガイダンス**: 異常なアクティビティを監視し、それに関するアラートを生成するには、Azure Security Center の Advanced Threat Protection for Azure SQL Database を使用します。 ご使用の SQL Database に対して Azure Defender for SQL を有効にします。 Azure Defender for SQL には、データベースの潜在的な脆弱性を検出し、軽減する機能や、データベースに対する脅威を示す異常な行動を検出する機能が含まれています。
 
 Advanced Threat Protection および Azure SQL Database に関するアラートの概要:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
 
-Azure SQL Database 向け Advanced Data Security を有効にする方法:
+Azure SQL Database に対して Azure Defender for SQL を有効にする方法:
 
-https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security
+https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql
 
 Azure Security Center でアラートを管理する方法:
 
@@ -333,7 +333,7 @@ https://docs.microsoft.com/azure/security-center/security-center-managing-and-re
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 管理アカウントのインベントリを維持する
 
-**ガイダンス**: Azure Active Directory (AAD) には、明示的に割り当てる必要があるためにクエリ可能である組み込みロールがあります。 アドホック クエリを実行して、管理グループのメンバーであるアカウントを検出するには、AAD PowerShell モジュールを使用します。
+**ガイダンス**: Azure Active Directory (Azure AD) には、明示的に割り当てる必要があるためにクエリ可能である組み込みロールがあります。 Azure AD PowerShell モジュールを使用してアドホック クエリを実行し、管理グループのメンバーであるアカウントを検出します。
 
 PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法:
 
@@ -381,7 +381,7 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: すべての Azure Active Directory ベースのアクセスに多要素認証を使用する
 
-**ガイダンス**: Azure Active Directory (AAD) Multi-Factor Authentication (MFA) を有効にし、Azure Security Center ID とアクセス管理の推奨事項に従います。
+**ガイダンス**: Azure Active Directory (Azure AD) 多要素認証 (MFA) を有効にし、Azure Security Center ID とアクセス管理の推奨事項に従います。
 
 Azure で MFA を有効にする方法:
 
@@ -445,13 +445,13 @@ Azure でネームド ロケーションを構成する方法: https://docs.micr
 
 ### <a name="39-use-azure-active-directory"></a>3.9: Azure Active Directory を使用する
 
-**ガイダンス**: お使いのサーバーの Azure Active Directory (AAD) 管理者を作成します。
+**ガイダンス**: お使いのサーバーの Azure Active Directory (Azure AD) 管理者を作成します。
 
 Azure SQL による Azure Active Directory 認証を構成して管理する方法:
 
 https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure
 
-AAD インスタンスを作成して構成する方法:
+Azure AD インスタンスを作成して構成する方法:
 
 https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance
 
@@ -461,7 +461,7 @@ https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-creat
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: ユーザー アクセスを定期的に確認して調整する
 
-**ガイダンス**: Azure Active Directory (AAD) では、古いアカウントの検出に役立つログが提供されます。 さらに、Azure ID アクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、ロールの割り当てを効率的に管理します。 ユーザーのアクセスを定期的にレビューして、適切なユーザーのみが継続的なアクセス権を持っていることを確認できます。
+**ガイダンス**: Azure Active Directory (Azure AD) では、古いアカウントの検出に役立つログが提供されます。 さらに、Azure ID アクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、ロールの割り当てを効率的に管理します。 ユーザーのアクセスを定期的にレビューして、適切なユーザーのみが継続的なアクセス権を持っていることを確認できます。
 
 Azure ID アクセス レビューの使用方法:
 
@@ -473,7 +473,7 @@ https://docs.microsoft.com/azure/active-directory/governance/access-reviews-over
 
 ### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11: 非アクティブ化されたアカウントへのアクセス試行を監視する
 
-**ガイダンス**: Azure SQL による Azure Active Directory (AAD) 認証を構成し、Azure Active Directory ユーザー アカウントの診断設定を作成して、監査ログとサインイン ログを Log Analytics ワークスペースに送信します。 Log Analytics ワークスペース内に目的のアラートを構成します。
+**ガイダンス**: Azure SQL による Azure Active Directory (Azure AD) 認証を構成し、Azure Active Directory ユーザー アカウントの診断設定を作成して、監査ログとサインイン ログを Log Analytics ワークスペースに送信します。 Log Analytics ワークスペース内に目的のアラートを構成します。
 
 Azure SQL による Azure Active Directory 認証を構成して管理する方法:
 
@@ -489,7 +489,7 @@ https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integ
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: アカウント ログイン動作の偏差に関するアラートを生成する
 
-**ガイダンス**: ユーザー ID に関連して検出された疑わしいアクションへの自動応答を構成するには、Azure Active Directory (AAD) Identity Protection とリスク検出を使用します。 また、さらに調査するためにデータを Azure Sentinel に取り込むこともできます。
+**ガイダンス**: ユーザー ID に関連して検出された疑わしいアクションへの自動応答を構成するには、Azure Active Directory (Azure AD) Identity Protection とリスク検出を使用します。 また、さらに調査するためにデータを Azure Sentinel に取り込むこともできます。
 
 Azure AD の危険なサインインを表示する方法:
 
@@ -599,7 +599,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-cl
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: Azure SQL Database インスタンスへのアクセスを認証および制御するために Azure Active Directory (AAD) を使用します。
+**ガイダンス**:Azure SQL Database インスタンスへのアクセスを認証および制御するために Azure Active Directory (Azure AD) を使用します。
 
 認証のために Azure SQL Database と Azure Active Directory を統合する方法:
 
@@ -655,15 +655,15 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1:自動化された脆弱性スキャン ツールを実行する
 
-**ガイダンス**: Azure SQL Database 向け Advanced Data Security を有効にし、お使いのサーバーに対する脆弱性評価の実行に関する Azure Security Center の推奨事項に従います。
+**ガイダンス**: Azure SQL Database 向け Azure Defender for SQL を有効にし、お使いのサーバーに対する脆弱性評価の実行に関する Azure Security Center の推奨事項に従います。
 
 Azure SQL Database で脆弱性評価を実行する方法
 
 https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment
 
-Advanced Data Security を有効にする方法:
+Azure Defender for SQL を有効にする方法:
 
-https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security
+https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql
 
 Azure Security Center の脆弱性評価の推奨事項を実装する方法:
 
@@ -993,7 +993,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azur
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12:ID を安全かつ自動的に管理する
 
-**ガイダンス**: Azure サービスに Azure Active Directory (AAD) で自動的に管理される ID を提供するには、マネージド ID を使用します。 マネージド ID を使用すると、コード内に資格情報を記述することなく、AAD 認証をサポートする任意のサービス (Azure Key Vault を含む) に対して認証できます。
+**ガイダンス**: マネージド ID を使用して、Azure Active Directory (Azure AD) で自動的に管理される ID を Azure サービスに提供します。 マネージド ID を使用すると、コード内に資格情報を記述することなく、Azure AD 認証をサポートする任意のサービス (Azure Key Vault を含む) に対して認証できます。
 
 チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure SQL にアクセスする:
 

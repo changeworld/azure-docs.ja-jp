@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/05/2020
 ms.author: yelevin
-ms.openlocfilehash: b2cf984e629d6b86beef9292dac819b554f49749
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 5518da7d22d14de105c07e88b14e94d4b184269b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850697"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883816"
 ---
 # <a name="connect-windows-defender-firewall-with-advanced-security-to-azure-sentinel"></a>セキュリティが強化された Windows Defender ファイアウォールを Azure Sentinel に接続する
 
@@ -31,7 +31,7 @@ ms.locfileid: "87850697"
 > [!NOTE]
 > - データは、Azure Sentinel を実行しているワークスペースの地理的な場所に格納されます。
 >
-> - Azure Sentinel と Azure Security Center が同じワークスペースに収集される場合、このコネクタを介して Windows ファイアウォールソリューションを有効にする必要はありません。 この設定を有効にすると、重複したデータは発生しません。 
+> - Azure Security Center からの Azure Defender アラートが既に Azure Sentinel ワークスペースに収集されている場合、このコネクタを介して Windows ファイアウォールソリューションを有効にする必要はありません。 ただし、これを有効にした場合は、重複したデータは発生しません。 
 
 ## <a name="prerequisites"></a>前提条件
 

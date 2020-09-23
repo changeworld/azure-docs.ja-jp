@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
-ms.openlocfilehash: 1110199a8c02b29d70f0c12e1ed1a6341c44e403
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 39601da6cc8e10ba8f4a24eeddb97cfe677c031f
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037254"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651729"
 ---
 # <a name="azure-networking-services-overview"></a>Azure ネットワーク サービスの概要
 
@@ -38,7 +38,7 @@ Azure のネットワーク サービスにはさまざまなネットワーク�
 |[Azure DNS](#dns)|Microsoft Azure インフラストラクチャを使用して名前解決を行う DNS ドメインをホストします。|<p>[Azure DNS でドメインをホストする](../dns/dns-delegate-domain-azure-dns.md)</p><p>[Web アプリの DNS レコードを作成する](../dns/dns-web-sites-custom-domain.md)</p> <p>[Traffic Manager のエイリアス レコードを作成する](../dns/tutorial-alias-tm.md)</p> <p>[パブリック IP アドレスのエイリアス レコードを作成する](../dns/tutorial-alias-pip.md)</p> <p>[ゾーン リソース レコードのエイリアス レコードを作成する](../dns/tutorial-alias-rr.md)</p>|
 |[Azure Bastion](#bastion)|TLS を使用して Azure portal で直接、仮想マシンへの安全でシームレスな RDP/SSH 接続を構成します。 Azure Bastion 経由で接続する場合、仮想マシンにパブリック IP アドレスは必要ありません。|<p>[Azure Bastion ホストを作成する](../bastion/bastion-create-host-portal.md)</p><p>[SSH を使用して Linux VM に接続する](../bastion/bastion-connect-vm-ssh.md)</p><p>[RDP を使用して Windows VM に接続する](../bastion/bastion-connect-vm-rdp.md)</p>|
 |[Virtual Network NAT Gateway](#nat)|仮想マシンに送信接続を提供する NAT Gateway を作成します。|<p>[NAT Gateway を作成する](../virtual-network/quickstart-create-nat-gateway-portal.md)</p>|
-|[Azure Peering Service (プレビュー)](#azurepeeringservice)|サービス プロバイダーと協力して、パブリック ネットワーク経由で Microsoft クラウドへの最適で信頼性の高いルーティングを実現します。|<p>[Azure Peering Service を登録する](../peering-service/azure-portal.md)</p>|
+|[Azure Peering Service](#azurepeeringservice)|サービス プロバイダーと協力して、パブリック ネットワーク経由で Microsoft クラウドへの最適で信頼性の高いルーティングを実現します。|<p>[Azure Peering Service を登録する](../peering-service/azure-portal.md)</p>|
 ||||
 
 

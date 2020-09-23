@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: d94170ade3de7e7fc128fe85437db59822694add
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 25f263a5c9ccdc67f1ab8353e616a6dded0c7f7e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117816"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901668"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-postgresql---single-server"></a>Advanced Threat Protection for Azure Database for PostgreSQL - Single Server
 
@@ -34,7 +34,7 @@ Advanced Threat Protection は、高度なセキュリティ機能の統合パ�
    - サーバーでの Advanced Threat Protection を有効にします
    - **[Advanced Threat Protection 設定]** の **[アラートの送信先]** テキスト ボックスで、異常なデータベース アクティビティが検出されたときにセキュリティ アラートを受け取るメール アドレスの一覧を指定します。
   
-   ![脅威検出の設定](./media/howto-database-threat-protection-portal/set-up-threat-protection.png)
+   :::image type="content" source="./media/howto-database-threat-protection-portal/set-up-threat-protection.png" alt-text="脅威検出の設定":::
 
 ## <a name="explore-anomalous-database-activities"></a>異常なデータベース アクティビティの調査
 
@@ -42,15 +42,15 @@ Advanced Threat Protection は、高度なセキュリティ機能の統合パ�
     
 1. 電子メールの **[View recent alerts]\(最近のアラートの表示\)** リンクをクリックして Microsoft Azure portal を起動し、Azure Security Center のアラート ページを表示します。このページには、SQL データベースで検出されたアクティブな脅威の概要が示されます。
     
-    ![異常アクティビティ レポート](./media/howto-database-threat-protection-portal/anomalous-activity-report.png)
+    :::image type="content" source="./media/howto-database-threat-protection-portal/anomalous-activity-report.png" alt-text="異常アクティビティ レポート":::
 
     アクティブな脅威を表示する:
 
-    ![アクティブな脅威](./media/howto-database-threat-protection-portal/active-threats.png)
+    :::image type="content" source="./media/howto-database-threat-protection-portal/active-threats.png" alt-text="アクティブな脅威":::
 
 2. 特定のアラートをクリックすると、さらに詳細な情報と、この脅威を調査し、今後の脅威に対処するためのアクションが表示されます。
     
-    ![特定のアラート](./media/howto-database-threat-protection-portal/specific-alert.png)
+    :::image type="content" source="./media/howto-database-threat-protection-portal/specific-alert.png" alt-text="特定のアラート":::
 
 ## <a name="explore-threat-detection-alerts"></a>脅威検出アラートを調査する
 
@@ -58,7 +58,7 @@ Advanced Threat Protection では、アラートが [Azure Security Center](http
 
 **[脅威の防止]** の下の **[セキュリティアラート]** をクリックすると、Azure Security Center のアラート ページが起動され、データベースに対して検出されたアクティブな SQL 脅威の概要が表示されます。
 
-  ![脅威の防止と ASC](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
+  :::image type="content" source="./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png" alt-text="脅威の防止と ASC":::
 
 ## <a name="next-steps"></a>次のステップ
 

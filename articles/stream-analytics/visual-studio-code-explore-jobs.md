@@ -6,24 +6,24 @@ author: mamccrea
 ms.author: mamccrea
 ms.date: 05/15/2019
 ms.topic: how-to
-ms.openlocfilehash: 00705e40ca17959701af325ed52a4c3754d35122
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 4b4ddd7db4891c642ec2002bbe992314fe67a20f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039060"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891983"
 ---
 # <a name="explore-azure-stream-analytics-with-visual-studio-code-preview"></a>Visual Studio Code で使用する Azure Stream Analytics の詳細 (プレビュー)
 
 Visual Studio Code 用 Azure Stream Analytics 拡張機能は、Stream Analytics ジョブを管理するための軽量エクスペリエンスを開発者に提供します。 Windows、Mac、Linux 上で使用できます。 Azure Stream Analytics 拡張機能を使用すると、次のことができます。
 
-- ジョブの[作成](quick-create-vs-code.md)、開始、停止
+- ジョブの[作成](quick-create-visual-studio-code.md)、開始、停止
 - 既存のジョブのローカル プロジェクトへのエクスポート
 - ジョブを一覧表示してジョブ エンティティを表示する
 
 ## <a name="export-a-job-to-a-local-project"></a>ジョブのローカル プロジェクトへのエクスポート
 
-ジョブをローカル プロジェクトにエクスポートするには、Visual Studio Code の **Stream Analytics Explorer** で、エクスポートするジョブを特定します。 次に、プロジェクトのフォルダーを選択します。 プロジェクトが選択したフォルダーにエクスポートされ、Visual Studio Code からジョブの管理を続行できます。 Visual Studio Code を使用した Stream Analytics ジョブの管理の詳細については、Visual Studio Code の[クイック スタート](quick-create-vs-code.md)を参照してください。
+ジョブをローカル プロジェクトにエクスポートするには、Visual Studio Code の **Stream Analytics Explorer** で、エクスポートするジョブを特定します。 次に、プロジェクトのフォルダーを選択します。 プロジェクトが選択したフォルダーにエクスポートされ、Visual Studio Code からジョブの管理を続行できます。 Visual Studio Code を使用した Stream Analytics ジョブの管理の詳細については、Visual Studio Code の[クイック スタート](quick-create-visual-studio-code.md)を参照してください。
 
 ![Visual Studio Code での ASA ジョブのエクスポート](./media/vscode-explore-jobs/export-job.png)
 
@@ -44,4 +44,4 @@ Visual Studio Code 用 Azure Stream Analytics 拡張機能は、Stream Analytics
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Visual Studio Code で Azure Stream Analytics クラウド ジョブを作成する (プレビュー)](quick-create-vs-code.md)
+* [Visual Studio Code で Azure Stream Analytics クラウド ジョブを作成する (プレビュー)](quick-create-visual-studio-code.md)

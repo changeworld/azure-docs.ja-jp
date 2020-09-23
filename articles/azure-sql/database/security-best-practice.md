@@ -8,14 +8,14 @@ ms.custom: sqldbrb=2
 author: VanMSFT
 ms.author: vanto
 ms.topic: article
-ms.date: 02/20/2020
+ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: 6630b924decacc5ff59611c657e1d7e38b1813a7
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: e418e64fe9fbe98fbd8da4e75a81c05d5e3d118d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541721"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885168"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database と Azure SQL Managed Instance で一般的なセキュリティ要件を解決するためのプレイブック
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ ms.locfileid: "87541721"
 
 ### <a name="deployment-offers-not-covered-in-this-guide"></a>このガイドで扱っていないデプロイのオファー
 
-- Azure SQL Data Warehouse
+- Azure Synapse Analytics (旧称 SQL Data Warehouse)
 - Azure SQL VM (IaaS)
 - SQL Server
 
@@ -647,7 +647,7 @@ Advanced Threat Protection を使用すると、異常なアクティビティ�
 
 **ベスト プラクティス**:
 
-- 特定のサーバーまたはマネージド インスタンス用に [Advanced Data Security (ADS)](advanced-data-security.md#getting-started-with-ads)  を構成します。 [Azure Security Center の Standard レベル](../../security-center/security-center-pricing.md)に切り替えて、サブスクリプション内のすべてのサーバーおよびマネージド インスタンス用に ADS を構成することもできます。
+- 特定のサーバーまたはマネージド インスタンス用に [Azure Defender for SQL](azure-defender-for-sql.md)  を構成します。 [Azure Security Center の Standard レベル](../../security-center/security-center-pricing.md)に切り替えて、サブスクリプション内のすべてのサーバーおよびマネージド インスタンス用に Azure Defender for SQL を構成することもできます。
 
 - 完全な調査エクスペリエンスを実現するには、 [SQL Database Auditing](../../azure-sql/database/auditing-overview.md) を有効にすることをお勧めします。 監査を使用すると、データベース イベントを追跡し、Azure Storage アカウントまたは Azure Log Analytics ワークスペースの監査ログに書き込むことができます。
 

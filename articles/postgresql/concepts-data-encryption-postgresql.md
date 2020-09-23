@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: f444ff4e884e50ed75b02328bfbe4d4117bc4cc9
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 1be04c0617dc4ed235cc3f3bc29aa58f4c2cb1d2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064793"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902148"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>カスタマーマネージド キーを使用した Azure Database for PostgreSQL 単一サーバーのデータ暗号化
 
@@ -43,7 +43,7 @@ KEK で暗号化された DEK は、個別に格納されます。 KEK へのア
 
 ## <a name="how-data-encryption-with-a-customer-managed-key-work"></a>カスタマーマネージド キーによるデータ暗号化のしくみ
 
-![Bring Your Own Key の概要を示す図](media/concepts-data-access-and-security-data-encryption/postgresql-data-encryption-overview.png)
+:::image type="content" source="media/concepts-data-access-and-security-data-encryption/postgresql-data-encryption-overview.png" alt-text="Bring Your Own Key の概要を示す図":::
 
 PostgreSQL サーバーで DEK の暗号化のために Key Vault に格納されているカスタマーマネージド キーを使用する場合、Key Vault 管理者がサーバーに次のアクセス権を付与します。
 
@@ -79,7 +79,7 @@ Key Vault を構成するための要件を以下に示します。
 * DEK のラップとラップ解除操作のためのより高速なアクセスを保証するために、Key Vault と Azure Database for PostgreSQL 単一サーバーが同じリージョンに存在することを確認します。
 * Azure KeyVault を**プライベート エンドポイントと選択されたネットワーク**のみにロックダウンし、*信頼された Microsoft* サービスのみがリソースを保護できるようにします。
 
-    ![trusted-service-with-AKV](media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png)
+    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="trusted-service-with-AKV":::
 
 カスタマーマネージド キーを構成する場合の推奨事項は次のとおりです。
 
