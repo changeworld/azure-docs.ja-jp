@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: Operations'
-ms.openlocfilehash: bfd4f783c250a7bf0ec28cff903e4c59d8570d89
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4ded10d9475c363c3f44032c7aa8cc7db03ab37f
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87307524"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033644"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>ソリューションに適した IoT Hub のレベルを選択する
 
@@ -77,37 +77,37 @@ IoT Hub の Basic レベルと Standard レベルでサポートされる機能�
 
 | API | Basic レベル | Free または Standard レベル |
 | --- | ---------- | ------------- |
-| [デバイスの削除](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/deletedevice) | はい | はい |
-| [デバイスの取得](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/getdevice) | はい | はい |
-| [モジュールの削除](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/deletemodule) | はい | はい |
-| [モジュールの取得](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/getmodule) | はい | はい |
-| [レジストリの統計情報の取得](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/getdevicestatistics) | はい | はい |
-| [サービスの統計情報の取得](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/getservicestatistics) | はい | はい |
-| [デバイスの作成または更新](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/createorupdatedevice) | はい | はい |
-| [モジュールの作成または更新](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/createorupdatemodule) | はい | はい |
-| [IoT Hub にクエリを実行する](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/queryiothub) | はい | はい |
+| [デバイスの削除](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#deletedevice-string--models-registrymanagerdeletedeviceoptionalparams-) | はい | はい |
+| [デバイスの取得](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-getdevice) | はい | はい |
+| [モジュールの削除](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-deletemodule) | はい | はい |
+| [モジュールの取得](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service.registrymanager.getmodule?view=azure-java-stable) | はい | はい |
+| [レジストリの統計情報の取得](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#getdevicestatistics-msrest-requestoptionsbase-) | はい | はい |
+| [サービスの統計情報の取得](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#getservicestatistics-msrest-requestoptionsbase-) | はい | はい |
+| [デバイスの作成または更新](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#createorupdatedevice-string--device--servicecallback-device--) | はい | はい |
+| [モジュールの作成または更新](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#createorupdatemodule-string--string--module--models-registrymanagercreateorupdatemoduleoptionalparams-) | はい | はい |
+| [IoT Hub にクエリを実行する](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.registrymanager?view=azure-dotnet) | はい | はい |
 | [ファイル アップロード SAS URI の作成](https://docs.microsoft.com/rest/api/iothub/device/createfileuploadsasuri) | はい | はい |
 | [デバイス バインド通知の受け取り](https://docs.microsoft.com/rest/api/iothub/device/receivedeviceboundnotification) | はい | はい |
 | [デバイス イベントの送信](https://docs.microsoft.com/rest/api/iothub/device/senddeviceevent) | はい | はい |
 | モジュール イベントの送信 | AMQP と MQTT のみ | AMQP と MQTT のみ |
 | [ファイル アップロード ステータスの更新](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | はい | はい |
-| [デバイスの一括操作](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/bulkdevicecrud) | はい (IoT Edge 機能を除く) | はい |
-| [インポート/エクスポート ジョブの取り消し](https://docs.microsoft.com/rest/api/iothub/service/jobclient/cancelimportexportjob) | はい | はい |
-| [インポート/エクスポート ジョブの作成](https://docs.microsoft.com/rest/api/iothub/service/jobclient/createimportexportjob) | はい | はい |
-| [インポート/エクスポート ジョブの取得](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjob) | はい | はい |
-| [複数のインポート/エクスポート ジョブの取得](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjobs) | はい | はい |
-| [コマンド キューの消去](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/purgecommandqueue) |   | はい |
-| [デバイス ツインの取得](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin) |   | はい |
-| [モジュール ツインの取得](https://docs.microsoft.com/rest/api/iothub/service/twin/getmoduletwin) |   | はい |
-| [デバイス メソッドの呼び出し](https://docs.microsoft.com/rest/api/iothub/service/devicemethod/invokedevicemethod) |   | はい |
-| [デバイス ツインの更新](https://docs.microsoft.com/rest/api/iothub/service/twin/updatedevicetwin) |   | はい |
-| [モジュール ツインの更新](https://docs.microsoft.com/rest/api/iothub/service/twin/updatemoduletwin) |   | はい |
+| [デバイスの一括操作](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#bulkdevicecrud-exportimportdevice----msrest-requestoptionsbase-) | はい (IoT Edge 機能を除く) | はい |
+| [インポート/エクスポート ジョブの取り消し](https://docs.microsoft.com/rest/api/iothub/service/jobs/cancelimportexportjob) | はい | はい |
+| [インポート/エクスポート ジョブの作成](https://docs.microsoft.com/rest/api/iothub/service/jobs/createimportexportjob) | はい | はい |
+| [インポート/エクスポート ジョブの取得](https://docs.microsoft.com/rest/api/iothub/service/jobs/getimportexportjob) | はい | はい |
+| [複数のインポート/エクスポート ジョブの取得](https://docs.microsoft.com/rest/api/iothub/service/jobs/getimportexportjobs) | はい | はい |
+| [コマンド キューの消去](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#purgecommandqueue-string--msrest-requestoptionsbase-) |   | はい |
+| [デバイス ツインの取得](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?view=azure-java-stable) |   | はい |
+| [モジュール ツインの取得](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-getmoduletwin) |   | はい |
+| [デバイス メソッドの呼び出し](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-direct-methods) |   | はい |
+| [デバイス ツインの更新](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins) |   | はい |
+| [モジュール ツインの更新](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-updatemoduletwin) |   | はい |
 | [デバイス バインド通知の破棄](https://docs.microsoft.com/rest/api/iothub/device/abandondeviceboundnotification) |   | はい |
 | [デバイス バインド通知の完了](https://docs.microsoft.com/rest/api/iothub/device/completedeviceboundnotification) |   | はい |
-| [ジョブの取り消し](https://docs.microsoft.com/rest/api/iothub/service/jobclient/canceljob) |   | はい |
-| [ジョブの作成](https://docs.microsoft.com/rest/api/iothub/service/jobclient/createjob) |   | はい |
-| [ジョブの取得](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getjob) |   | はい |
-| [ジョブのクエリ](https://docs.microsoft.com/rest/api/iothub/service/jobclient/queryjobs) |   | はい |
+| [ジョブの取り消し](https://docs.microsoft.com/rest/api/media/jobs/canceljob) |   | はい |
+| [ジョブの作成](https://docs.microsoft.com/rest/api/media/jobs/create) |   | はい |
+| [ジョブの取得](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service.jobs.jobclient.getjob?view=azure-java-stable) |   | はい |
+| [ジョブのクエリ](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/jobclient?view=azure-node-latest#queryjobs-jobclientqueryjobsoptionalparams--servicecallback-queryresult--) |   | はい |
 
 ## <a name="message-throughput"></a>メッセージのスループット
 

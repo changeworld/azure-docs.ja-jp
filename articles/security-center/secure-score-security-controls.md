@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/15/2020
+ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: 596fc44cb3d449b73b681d17db879746ce3051d3
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: b7cbba051dd0833a039d378cd73a59314c0221c8
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277750"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905571"
 ---
-# <a name="enhanced-secure-score-in-azure-security-center"></a>Azure Security Center の強化されたセキュリティ スコア
+# <a name="secure-score-in-azure-security-center"></a>Azure Security Center 内のセキュリティ スコア
 
 ## <a name="introduction-to-secure-score"></a>セキュリティ スコアの概要
 
@@ -91,13 +91,21 @@ Secure Scores API を使用して構築されたツールの例については�
 |**セキュリティ スコア**<br>複数のサブスクリプション|<br>すべてのサブスクリプションのすべてのリソースの現在のスコアが加算され、1 つのサブスクリプションの場合と同じ方法で計算されます<br><br>複数のサブスクリプションを表示する場合、セキュリティ スコアは、すべての有効なポリシー内のすべてのリソースを評価し、各セキュリティ コントロールの最大スコアに対するその組み合わせの影響をグループ化します。<br>![すべてのコントロールが有効な複数のサブスクリプションのセキュリティ スコア](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>結合されたスコアは平均では**ありません**。これは、すべてのサブスクリプションのすべてのリソースの状態の体制を評価したものです。<br>ここでも、[推奨事項] ページにアクセスして、取得可能なポイントを追加すると、現在のスコア (24) と利用可能な最大スコア (60) の差を確認できます。|
 ||||
 
+### <a name="which-recommendations-are-included-in-the-secure-score-calculations"></a>セキュリティ スコアの計算に含まれる推奨事項
+
+セキュリティ スコアに影響するのは、組み込みの推奨事項のみです。
+
+**プレビュー**のフラグが設定されている推奨事項は、セキュリティ スコアの計算からは除外されます。 それでも、その推奨事項はプレビュー期間が終了した時点でスコアに反映されるため、可能な限り修復しておく必要があります。
+
+プレビューの推奨事項の例を次に示します。
+
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="プレビュー フラグが設定された推奨事項":::
+
 ## <a name="improve-your-secure-score"></a>セキュリティ スコアを向上させる
 
 セキュリティ スコアを向上させるには、推奨事項リストのセキュリティの推奨事項を修復してください。 各推奨事項は、リソースごとに手動で修復するか、リソースのグループに推奨設定の修復を迅速に適用するために **[クイック修正]** オプション (使用可能な場合) を使用して修復できます。 詳細については、「[推奨事項の修復](security-center-remediate-recommendations.md)」を参照してください。
 
->[!IMPORTANT]
-> セキュリティ スコアに影響するのは、組み込みの推奨事項のみです。
-
+関連する推奨事項に対して強制と拒否のオプションを構成することで、スコアを向上させ、ユーザーがスコアに悪影響を与えるリソースを作成しないようにすることもできます。 詳細については、「[適用/拒否の推奨事項を使用した構成ミスの防止](prevent-misconfigurations.md)」を参照してください。
 
 ## <a name="security-controls-and-their-recommendations"></a>セキュリティ コントロールとその推奨事項
 
@@ -128,7 +136,7 @@ Secure Scores API を使用して構築されたツールの例については�
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">脆弱性の修復 (最大スコア 6)</p></strong>脆弱性は、脅威アクターが、リソースの機密性、可用性、または整合性を侵害するために利用する可能性のある弱点です。 <a href="https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/next-gen-threat-and-vuln-mgt">脆弱性の管理</a>により、組織の露出の削減、エンドポイントの攻撃対象領域の強化、組織の回復力の向上、リソースの攻撃対象領域の縮小を実現できます。 脅威と脆弱性の管理機能は、ソフトウェアとセキュリティの構成の誤りを可視化し、軽減のための推奨事項を提示します。</td>
-    <td class="tg-lboi"; width=55%>- SQL Database で Advanced Data Security を有効にする必要があります<br>- Azure Container Registry イメージの脆弱性を修復する必要があります<br>- SQL データベースの脆弱性を修復する必要があります<br>- 脆弱性評価ソリューションによって脆弱性を修復する必要があります<br>- SQL Managed Instance で脆弱性評価を有効にする必要があります<br>- SQL サーバーで脆弱性評価を有効にする必要があります<br>- お使いの仮想マシンに脆弱性評価ソリューションをインストールする必要があります</td>
+    <td class="tg-lboi"; width=55%>- SQL Database で Advanced Data Security を有効にする必要があります<br>- Azure Container Registry イメージの脆弱性を修復する必要があります<br>- SQL データベースの脆弱性を修復する必要があります<br>- 脆弱性評価ソリューションによって脆弱性を修復する必要があります<br>- SQL Managed Instance で脆弱性評価を有効にする必要があります<br>- SQL サーバーで脆弱性評価を有効にする必要があります<br>- お使いの仮想マシンに脆弱性評価ソリューションをインストールする必要があります<br>- コンテナー イメージは信頼されたレジストリからのみデプロイする必要があります (プレビュー)<br>- Kubernetes 用の Azure Policy アドオンをクラスターにインストールして有効にする必要があります (プレビュー)</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">保存時の暗号化を有効化する (最大スコア 4)</p></strong><a href="https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest">保存時の暗号化</a>は、格納されているデータのデータ保護を提供します。 保存データに対する攻撃として、データが格納されているハードウェアへの物理的なアクセスを取得しようとする試みがあります。 Azure では、対称暗号化を使用して、大量の保存データの暗号化と暗号化解除を行います。 データがストレージに書き込まれるときに、対称暗号化キーを使用してデータが暗号化されます。 その暗号化キーは、メモリで、データを使用する準備として暗号化の解除を行うためにも使用されます。 キーは、ID ベースのアクセス制御と監査ポリシーが適用される、セキュリティで保護された場所に保存する必要があります。 このようなセキュリティで保護された場所の 1 つが、Azure Key Vault です。 攻撃者は、暗号化されたデータを取得しても、暗号化キーを取得しなければ、暗号を解読できず、データにアクセスすることはできません。</td>
@@ -140,15 +148,15 @@ Secure Scores API を使用して構築されたツールの例については�
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">アクセスおよびアクセス許可の管理 (最大スコア 4)</p></strong>セキュリティ プログラムの中核となるのは、ユーザーがそのジョブを実行するために必要なアクセスを付与しても、それ以上の権利を付与しないことです。つまり、<a href="https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models">最小限の特権モデル</a>に従う必要があります。<br>リソースへのアクセスを制御するには、<a href="https://docs.microsoft.com/azure/role-based-access-control/overview">ロールベースのアクセス制御 (RBAC)</a> を使用してロールの割り当てを作成します。 ロールの割り当ては、次の 3 つの要素で構成されます。<br>- <strong>セキュリティ プリンシパル</strong>: ユーザーがアクセスを要求するオブジェクト<br>- <strong>ロールの定義</strong>: ユーザーのアクセス許可<br>- <strong>スコープ</strong>: アクセス許可が適用される一連のリソース</td>
-    <td class="tg-lboi"; width=55%>- 非推奨のアカウントは、お使いのサブスクリプションから削除する必要があります (プレビュー)<br>- 所有者アクセス許可がある非推奨のアカウントは、お使いのサブスクリプションから削除する必要があります (プレビュー)<br>- 所有者アクセス許可がある外部アカウントは、お使いのサブスクリプションから削除する必要があります (プレビュー)<br>- 書き込みアクセス許可がある外部アカウントは、お使いのサブスクリプションから削除する必要があります (プレビュー)<br>- 複数の所有者がサブスクリプションに割り当てられている必要があります<br>- Kubernetes サービスではロールベースのアクセス制御 (RBAC) を使用する必要があります (プレビュー)<br>- Service Fabric クラスターでは、クライアント認証に Azure Active Directory のみを使用する必要があります<br>-サブスクリプションを保護するには、管理証明書ではなくサービス プリンシパルを使用する必要があります</td>
+    <td class="tg-lboi"; width=55%>- 非推奨のアカウントは、お使いのサブスクリプションから削除する必要があります (プレビュー)<br>- 所有者アクセス許可がある非推奨のアカウントは、お使いのサブスクリプションから削除する必要があります (プレビュー)<br>- 所有者アクセス許可がある外部アカウントは、お使いのサブスクリプションから削除する必要があります (プレビュー)<br>- 書き込みアクセス許可がある外部アカウントは、お使いのサブスクリプションから削除する必要があります (プレビュー)<br>- 複数の所有者がサブスクリプションに割り当てられている必要があります<br>- Kubernetes サービスではロールベースのアクセス制御 (RBAC) を使用する必要があります (プレビュー)<br>- Service Fabric クラスターでは、クライアント認証に Azure Active Directory のみを使用する必要があります<br>-サブスクリプションを保護するには、管理証明書ではなくサービス プリンシパルを使用する必要があります<br>- コンテナーには最小特権の Linux 機能を適用する必要があります (プレビュー)<br>- コンテナーには不変 (読み取り専用) のルート ファイル システムを適用する必要があります (プレビュー)<br>- 特権エスカレーションを含むコンテナーは避ける必要があります (プレビュー)<br>- コンテナーをルート ユーザーとして実行しないようにします (プレビュー)<br>- 機密性の高いホストの名前空間を共有するコンテナーは避ける必要があります (プレビュー)<br>- ポッド HostPath ボリューム マウントの使用は既知のリストに制限する必要があります (プレビュー)<br>- 特権コンテナーの使用を避けます (プレビュー)<br>- Kubernetes 用の Azure Policy アドオンをクラスターにインストールして有効にする必要があります (プレビュー)</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">セキュリティ構成の修復 (最大スコア 4)</p></strong>正しく構成されていない IT 資産は、攻撃の対象となる危険性が高くなります。 資産を展開するときに基本的な強化アクションを忘れてしまいがちですが、期限を満たす必要があります。 インフラストラクチャでのセキュリティ構成の誤りは、オペレーティング システムやネットワーク アプライアンスからクラウド リソースまでどのレベルでも起こり得ることです。<br>Azure Security Center では、リソースの構成が業界標準、規制、ベンチマークの要件と継続的に比較されます。 組織にとって重要な関連する "コンプライアンス パッケージ" (標準とベースライン) を構成した場合、何らかのギャップがあると、セキュリティの推奨事項が表示されます。これには、CCEID と、セキュリティへの潜在的な影響に関する説明が含まれます。<br>一般的に使用されるパッケージは、<a href="https://docs.microsoft.com/azure/security/benchmarks/introduction">Azure セキュリティ ベンチマーク</a>と <a href="https://www.cisecurity.org/benchmark/azure/">CIS Microsoft Azure Foundations Benchmark バージョン 1.1.0</a> です</td>
-    <td class="tg-lboi"; width=55%>- Kubernetes サービスではポッドのセキュリティ ポリシーを定義する必要があります<br>- コンテナーのセキュリティ構成の脆弱性を修復する必要があります<br>- お使いのマシンでセキュリティ構成の脆弱性を修復する必要があります<br>- Virtual Machine Scale Sets のセキュリティ構成の脆弱性を修復する必要があります<br>- お使いの仮想マシンに監視エージェントをインストールする必要があります<br>- お使いのマシンに監視エージェントをインストールする必要があります<br>- Log Analytics エージェントを Windows ベースの Azure Arc マシン (プレビュー) にインストールする必要があります<br>- Log Analytics エージェントを Linux ベースの Azure Arc マシン (プレビュー) にインストールする必要があります<br>- Virtual Machine Scale Sets に監視エージェントをインストールする必要があります<br>- お使いのマシンで監視エージェントの正常性の問題を解決する必要があります</td>
+    <td class="tg-lboi"; width=55%>- コンテナーのセキュリティ構成の脆弱性を修復する必要があります<br>- お使いのマシンでセキュリティ構成の脆弱性を修復する必要があります<br>- Virtual Machine Scale Sets のセキュリティ構成の脆弱性を修復する必要があります<br>- お使いの仮想マシンに監視エージェントをインストールする必要があります<br>- お使いのマシンに監視エージェントをインストールする必要があります<br>- Log Analytics エージェントを Windows ベースの Azure Arc マシン (プレビュー) にインストールする必要があります<br>- Log Analytics エージェントを Linux ベースの Azure Arc マシン (プレビュー) にインストールする必要があります<br>- Virtual Machine Scale Sets に監視エージェントをインストールする必要があります<br>- お使いのマシンで監視エージェントの正常性の問題を解決する必要があります<br>- コンテナーの AppArmor プロファイルのオーバーライドまたは無効化を制限する必要があります (プレビュー)<br>- Kubernetes 用の Azure Policy アドオンをクラスターにインストールして有効にする必要があります (プレビュー)</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">未承認のネットワーク アクセスの制限 (最大スコア 4)</p></strong>組織内のエンドポイントは、仮想ネットワークからサポートされている Azure サービスへの直接接続を提供します。 サブネット内の仮想マシンはすべてのリソースと通信できます。 サブネット内のリソース間の通信を制御するには、ネットワーク セキュリティ グループを作成して、それをサブネットに関連付けます。 組織は、インバウンド規則とアウトバウンド規則を作成することにより、不正なトラフィックを制限および防止することができます。</td>
-    <td class="tg-lboi"; width=55%>-お使いの仮想マシンでの IP 転送を無効にする必要があります<br>-Kubernetes サービスでは承認された IP 範囲を定義する必要があります (プレビュー)<br>- (非推奨) App Services へのアクセスを制限する必要があります (プレビュー)<br>- (非推奨) IaaS NSG 上の Web アプリケーションに対する規則を強化する必要があります<br>- 仮想マシンをネットワーク セキュリティ グループに関連付ける必要があります<br>- CORS で、必ずしもすべてのリソースに API アプリへのアクセスを許可しないようにする必要があります<br>- CORS で、必ずしもすべてのリソースに Function App へのアクセスを許可しないようにする必要があります<br>- CORS で、必ずしもすべてのリソースに Web アプリへのアクセスを許可しないようにする必要があります<br>-API アプリのリモート デバッグを無効にする必要があります<br>- Function App のリモート デバッグを無効にする必要があります<br>- Web アプリのリモート デバッグを無効にする必要があります<br>- インターネットに接続された VM を含む、制限のないネットワーク セキュリティ グループについてはアクセスを制限する必要があります<br>- インターネットに接続している仮想マシン用のネットワーク セキュリティ グループ ルールを強化する必要があります</td>
+    <td class="tg-lboi"; width=55%>-お使いの仮想マシンでの IP 転送を無効にする必要があります<br>-Kubernetes サービスでは承認された IP 範囲を定義する必要があります (プレビュー)<br>- (非推奨) App Services へのアクセスを制限する必要があります (プレビュー)<br>- (非推奨) IaaS NSG 上の Web アプリケーションに対する規則を強化する必要があります<br>- 仮想マシンをネットワーク セキュリティ グループに関連付ける必要があります<br>- CORS で、必ずしもすべてのリソースに API アプリへのアクセスを許可しないようにする必要があります<br>- CORS で、必ずしもすべてのリソースに Function App へのアクセスを許可しないようにする必要があります<br>- CORS で、必ずしもすべてのリソースに Web アプリへのアクセスを許可しないようにする必要があります<br>-API アプリのリモート デバッグを無効にする必要があります<br>- Function App のリモート デバッグを無効にする必要があります<br>- Web アプリのリモート デバッグを無効にする必要があります<br>- インターネットに接続された VM を含む、制限のないネットワーク セキュリティ グループについてはアクセスを制限する必要があります<br>- インターネットに接続している仮想マシン用のネットワーク セキュリティ グループ ルールを強化する必要があります<br>- Kubernetes 用の Azure Policy アドオンをクラスターにインストールして有効にする必要があります (プレビュー)<br>- コンテナーは許可されたポートでのみリッスンする必要があります (プレビュー)<br>- サービスは許可されたポートでのみリッスンする必要があります (プレビュー)<br>- ホスト ネットワークとポートの使用を制限する必要があります (プレビュー)</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">適応型アプリケーション制御の適用 (最大スコア 3)</p></strong>適応型アプリケーション制御 (AAC) は、自動化されたインテリジェントなエンドツーエンドのソリューションであり、これによって、Azure マシンと Azure 以外のマシンで実行可能なアプリケーションを制御できます。 また、これは、マルウェアに対してマシンを強化するためにも役立ちます。<br>Security Center では、機械学習を利用して、マシン グループの既知の安全なアプリケーションのリストを作成します。<br>承認されたアプリケーションのリストを作成するというこの革新的なアプローチにより、管理の複雑さを生じることなくセキュリティを強化することができます。<br>AAC は、特定のアプリケーション セットを実行する必要がある専用サーバーに特に関係があります。</td>
@@ -160,7 +168,7 @@ Secure Scores API を使用して構築されたツールの例については�
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">DDoS 攻撃からアプリケーションを保護する (最大スコア 2)</p></strong>分散型サービス拒否 (DDoS) 攻撃は、リソースに過剰な負荷をかけ、アプリケーションを使用できない状態にします。 <a href="https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview">Azure DDoS Protection Standard</a> を使用すると、次の 3 つの種類の DDoS 攻撃から組織を守ることができます。<br>- <strong>帯域幅消費型攻撃</strong>: ネットワークに大量の正当なトラフィックを送り込みます。 DDoS Protection Standard は、これらの攻撃を自動的に吸収またはスクラブして、これらを軽減します。<br>- <strong>プロトコル攻撃</strong>: レイヤー 3 とレイヤー 4 のプロトコル スタック内の弱点を悪用して、ターゲットをアクセスできない状態にします。 DDoS Protection Standard は、悪意のあるトラフィックをブロックして、これらを軽減します。<br>- <strong>リソース (アプリケーション) 層攻撃</strong>: Web アプリケーション パケットを標的にします。 この種類に対しては、Web アプリケーション ファイアウォールと DDoS Protection Standard で防御します。</td>
-    <td class="tg-lboi"; width=55%>- DDoS Protection Standard を有効にする必要があります</td>
+    <td class="tg-lboi"; width=55%>- DDoS Protection Standard を有効にする必要があります<br>- コンテナーの CPU とメモリの制限を適用する必要があります (プレビュー)<br>- Kubernetes 用の Azure Policy アドオンをクラスターにインストールして有効にする必要があります (プレビュー)</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Endpoint Protection を有効にする (最大スコア 2)</p></strong>エンドポイントをマルウェアから確実に保護するために、動作センサーは、エンドポイントのオペレーティング システムから送られてくるデータを収集し、処理して、そのデータを分析のためにプライベート クラウドに送信します。 セキュリティ分析では、ビッグデータ、機械学習、その他のソースを活用して、脅威に対する推奨される対応を提示します。 たとえば、<a href="https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection">Microsoft Defender ATP</a> は、脅威インテリジェンスを使用して、攻撃方法を特定し、セキュリティ アラートを生成します。<br>Security Center では、次の Endpoint Protection ソリューションがサポートされています: Windows Defender、System Center Endpoint Protection、Trend Micro、Symantec v12.1.1.1100、McAfee v10 for Windows、McAfee v10 for Linux、Sophos v9 for Linux。 Security Center でこれらのソリューションのいずれかが検出されると、Endpoint Protection のインストールを促す推奨事項は表示されなくなります。</td>

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
-ms.openlocfilehash: e6dfc0eb704b0b35ab4e181076d8f97fd3e8c9d7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e367851c4d709acbc0eb94a47d7e20d4d3c1cc46
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080753"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904809"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>PowerShell を使用した Azure Security Center へのオンボードの自動化
 
@@ -29,9 +29,9 @@ PowerShell を使用して Azure Security Center にオンボードすると、A
 
 この記事では、変更して環境内サブスクリプション全体に Security Center をロールアウトするために使用できる、PowerShell スクリプトのサンプルを提供します。 
 
-この例では、Security Center を ID: d07c0080-170c-4c24-861d-9c817742786c のサブスクリプションで有効にし、Security Center の Standard 階層を実装して、高レベルの保護を提供する推奨設定を適用します。これにより脅威からの高度な保護と検出機能が提供されます。
+この例では、Security Center を ID: d07c0080-170c-4c24-861d-9c817742786c のサブスクリプションで有効にし、Azure Defender を有効にして、高レベルの保護を提供する推奨設定を適用します。これにより高度な脅威防止および検出機能が提供されます。
 
-1. [Security Center の Standard レベルの保護](https://azure.microsoft.com/pricing/details/security-center/)を設定します。 
+1. [Azure Defender](azure-defender.md) を有効にする。 
  
 2. サブスクリプションに関連付けられている VM 上で Log Analytics エージェントが収集するデータの送信先である Log Analytics ワークスペースを設定します。この例では、既存のユーザーが定義したワークスペースです (myWorkspace)。
 
@@ -61,7 +61,7 @@ Security Center のコマンドレットを実行する前に、これらの手�
 
     ```Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security'```
 
-1. 省略可能:サブスクリプションのカバレッジ レベル (価格レベル) を設定します (定義されない場合、価格レベルは無料に設定されます)。
+1. 省略可能:サブスクリプションのカバレッジレベル (Azure Defender のオン/オフ) を設定します。 未定義の場合、Defender はオフになります。
 
     ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
 

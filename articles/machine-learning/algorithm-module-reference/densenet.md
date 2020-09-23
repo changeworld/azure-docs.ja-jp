@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: db0e2f90ee45d4e1c0173cbc037084793a66e149
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69c18c24ae9a8eb4c1fd54c1f8530e126a40b004
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84449986"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898512"
 ---
 # <a name="densenet"></a>DenseNet
 
-この記事では、Azure Machine Learning デザイナー (プレビュー) の **DenseNet** モジュールを使用し、DenseNet アルゴリズムを使ってイメージ分類モデルを作成する方法について説明します。  
+この記事では、Azure Machine Learning デザイナーの **DenseNet** モジュールを使用し、DenseNet アルゴリズムを使ってイメージ分類モデルを作成する方法について説明します。  
 
 この分類アルゴリズムは、教師あり学習手法であり、ラベル付きデータセットが必要となります。 ラベル付きイメージ ディレクトリを取得する方法の手順については、「[イメージ ディレクトリへの変換](convert-to-image-directory.md)」を参照してください。 モデルとラベル付きイメージ ディレクトリを [PyTorch モデルのトレーニング](train-pytorch-model.md)への入力として提供することにより、モデルをトレーニングすることができます。 その後は、トレーニングされたモデルで[画像モデルのスコア付け](score-image-model.md)を使用して、新しい入力例の値を予測することができます。
 

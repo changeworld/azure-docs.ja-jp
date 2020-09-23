@@ -1,18 +1,18 @@
 ---
 title: Azure Virtual Machines 用の組み込みポリシー定義
 description: Azure Virtual Machines 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 07/13/2020
+ms.date: 09/16/2020
 ms.topic: reference
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
 ms.custom: subject-policy-reference
-ms.openlocfilehash: a1afac276cc77268ef6b15cfaa8a8695adf9bfd7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: a3dcf1f7b4308cd6896e9992f9202ec590cccb91
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300739"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986183"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-virtual-machines"></a>Azure Virtual Machines 用の Azure Policy 組み込み定義
 

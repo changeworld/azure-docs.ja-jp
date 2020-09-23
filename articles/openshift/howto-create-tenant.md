@@ -6,16 +6,16 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: ad03538cafcce9c1d660d0f2ac5eb3c6ae5f4f38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 775aa44043e9c8900bd0c040ab603736314ea34e
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84694907"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469985"
 ---
 # <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift 用の Azure AD テナントの作成
 
-Microsoft Azure Red Hat OpenShift には、その中に自分のクラスターを作成するための [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) テナントが必要です。 *テナント*は、組織やアプリの開発者が、Azure、Microsoft Intune、または Microsoft 365 へのサインアップのような Microsoft とのリレーションシップを作成するときに受信する Azure AD の専用インスタンスです。 Azure AD テナントはそれぞれ異なり、他の Azure AD テナントとは分離されていて、職場や学校の ID とアプリの登録は個別です。
+Microsoft Azure Red Hat OpenShift には、その中に自分のクラスターを作成するための [Azure Active Directory (Azure AD)](../active-directory/develop/quickstart-create-new-tenant.md) テナントが必要です。 *テナント*は、組織やアプリの開発者が、Azure、Microsoft Intune、または Microsoft 365 へのサインアップのような Microsoft とのリレーションシップを作成するときに受信する Azure AD の専用インスタンスです。 Azure AD テナントはそれぞれ異なり、他の Azure AD テナントとは分離されていて、職場や学校の ID とアプリの登録は個別です。
 
 Azure AD テナントをまだお持ちでない場合は、次の手順に従って作成してください。
 
@@ -39,7 +39,7 @@ Azure AD テナントをまだお持ちでない場合は、次の手順に従�
 
 ## <a name="resources"></a>リソース
 
-[Azure AD テナント](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)の詳細については、[Azure Active Directory のドキュメント](https://docs.microsoft.com/azure/active-directory/)を参照してください。
+[Azure AD テナント](../active-directory/develop/quickstart-create-new-tenant.md)の詳細については、[Azure Active Directory のドキュメント](../active-directory/index.yml)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

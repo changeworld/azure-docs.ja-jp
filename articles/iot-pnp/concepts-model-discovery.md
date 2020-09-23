@@ -7,12 +7,12 @@ ms.date: 07/23/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 4cdd6f63c9e5e717a533b88702b2886387fe3e39
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 9752589c8863cc911369225d268035d9f61c0273
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475245"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032029"
 ---
 # <a name="use-iot-plug-and-play-models-in-an-iot-solution"></a>Iot ソリューションで IoT プラグ アンド プレイを使用する
 
@@ -40,7 +40,7 @@ IoT Hub は、デバイス接続フローの一環としてデバイス モデ�
 
 ### <a name="get-device-twin-api"></a>Get Device Twin API
 
-このソリューションでは、[Get Device Twin](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin) API を使用して、IoT プラグ アンド プレイ デバイスのモデル ID を取得することができます。
+このソリューションでは、[Get Device Twin](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?view=azure-java-stable) API を使用して、IoT プラグ アンド プレイ デバイスのモデル ID を取得することができます。
 
 次のデバイス ツイン応答スニペットでは、IoT プラグ アンド プレイ デバイスのモデル ID が `modelId` に含まれています。
 

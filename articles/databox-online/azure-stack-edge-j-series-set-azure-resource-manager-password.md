@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU デバイスに Azure Resource Manager パスワードを設定する
-description: Azure PowerShell を使用して、Azure Stack Edge GPU 上で実行されている Azure Resource Manager に接続する方法について説明します。
+title: Azure Stack Edge Pro GPU デバイスに Azure Resource Manager パスワードを設定する
+description: Azure PowerShell を使用して、Azure Stack Edge Pro GPU 上で実行されている Azure Resource Manager に接続する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 6a59510b342f7ebd3969a4bb4fcfd75fffd04804
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: df5fea8101834dae089ab97354c438363321a707
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254153"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904479"
 ---
-# <a name="set-azure-resource-manager-password-on-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU デバイスに Azure Resource Manager パスワードを設定する
+# <a name="set-azure-resource-manager-password-on-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスに Azure Resource Manager パスワードを設定する
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
@@ -122,7 +122,7 @@ ms.locfileid: "89254153"
     $pass = ConvertTo-SecureString $password -AsPlainText -Force
     $key = ConvertTo-SecureString $cik -AsPlainText -Force
     ```
-    上記で生成したセキュリティで保護された文字列を Set-AzDataBoxEdgeUser コマンドレットのパラメーターとして使用し、パスワードをリセットします。 Azure Stack Edge/Data Box Gateway リソースの作成時に使用したものと同じリソース グループを使用します。
+    上記で生成したセキュリティで保護された文字列を Set-AzDataBoxEdgeUser コマンドレットのパラメーターとして使用し、パスワードをリセットします。 Azure Stack Edge Pro および Data Box Gateway リソースの作成時に使用したものと同じリソース グループを使用します。
 
     ```azurepowershell
     Set-AzDataBoxEdgeUser -ResourceGroupName $resourceGroup -DeviceName $devicename -Name EdgeARMUser  -Password $pass -EncryptionKey $key

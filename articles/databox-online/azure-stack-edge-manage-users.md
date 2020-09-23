@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge のユーザー管理 | Microsoft Docs
-description: Azure portal を使用して Azure Stack Edge のユーザーを管理する方法について説明します。
+title: Azure Stack Edge Pro のユーザー管理 | Microsoft Docs
+description: Azure portal を使用して Azure Stack Edge Pro のユーザーを管理する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 1012ce417fb4952878dada29a9080c70954ed21f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3fb82e95d9d7dcfdf59bd05f91beff8e1184955e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339639"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904393"
 ---
-# <a name="use-the-azure-portal-to-manage-users-on-your-azure-azure-stack-edge"></a>Azure portal を使用して Azure Stack Edge のユーザーを管理する
+# <a name="use-the-azure-portal-to-manage-users-on-your-azure-azure-stack-edge-pro"></a>Azure portal を使用して Azure Stack Edge Pro のユーザーを管理する
 
-この記事では、Azure Stack Edge のユーザーを管理する方法について説明します。 Azure Stack Edge の管理は、Azure portal またはローカル Web UI を通じて行えます。 Azure portal を使用してユーザーを追加、変更、または削除します。
+この記事では、Azure Stack Edge Pro のユーザーを管理する方法について説明します。 Azure Stack Edge Pro の管理は、Azure portal またはローカル Web UI を通じて行えます。 Azure portal を使用してユーザーを追加、変更、または削除します。
 
 この記事では、次のことについて説明します。
 

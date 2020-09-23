@@ -10,18 +10,18 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: memildin
-ms.openlocfilehash: bd52cb9ba10cbbc7823cf631cea146cdccdad4e1
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: b2d5731ea9e8f2fb13d234fc9d951e221c0ab3e5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89278141"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905466"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure Security Center のセキュリティ アラート
 
 Azure Security Center には、さまざまなリソースの種類に対する各種のアラートがあります。 Azure Security Center では、Azure にデプロイされたリソースに対して、またオンプレミス環境とハイブリッド クラウド環境にデプロイされたリソースに対してもアラートが生成されます。
 
-セキュリティ アラートは、高度な検出によってトリガーされ、Azure Security Center の Standard レベルでのみ使用できます。 無料試用版が提供されています。 **[Pricing & settings]\(価格と設定\)** ページからアップグレードできます。 詳細については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」を参照してください。
+セキュリティ アラートは、高度な検出によってトリガーされ、Azure Defender でのみ使用できます。 無料試用版が提供されています。 **[Pricing & settings]\(価格と設定\)** ページからアップグレードできます。 詳細については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」を参照してください。
 
 ## <a name="respond-to-todays-threats"></a>今日の脅威への対応 <a name="respond-threats"> </a>
 
@@ -45,7 +45,7 @@ Security Center はインシデントを使用して、攻撃活動とすべて�
 
 ## <a name="how-does-security-center-detect-threats"></a>Security Center での脅威の検出方法 <a name="detect-threats"> </a>
 
-マイクロソフトのセキュリティ研究員は、絶えず脅威に目を光らせています。 クラウドやオンプレミスでの Microsoft のグローバルなプレゼンスにより、Microsoft は広範なテレメトリにアクセスすることが許されています。 この広範かつ多様なデータセットのコレクションによって、オンプレミスの消費者向け/企業向け製品からオンライン サービスに至るまで、攻撃の新しいパターンや傾向を把握することができます。 攻撃者によって脆弱性の悪用手法が次々に生み出され、しだいに複雑化する中で、Security Center は、その検出アルゴリズムを更新することができるのです。 この手法が、目まぐるしい脅威の環境の変化に対応するために役立てられます。
+マイクロソフトのセキュリティ研究員は、絶えず脅威に目を光らせています。 クラウドやオンプレミスでの Microsoft のグローバルなプレゼンスにより、Microsoft は広範なテレメトリにアクセスすることが許されています。 広範かつ多様なデータセットのコレクションによって、Microsoft は、オンプレミスの消費者向け/企業向け製品からオンライン サービスに至るまで、攻撃の新しいパターンや傾向を把握することができます。 攻撃者によって脆弱性の悪用手法が次々に生み出され、しだいに複雑化する中で、Security Center は、その検出アルゴリズムを更新することができるのです。 この手法が、目まぐるしい脅威の環境の変化に対応するために役立てられます。
 
 Security Center では、真の脅威を検出し、誤検知を減らすために、Azure のリソースやネットワークから、ログ データを収集、分析、統合します。 接続されているパートナー ソリューション (ファイアウォールやエンドポイント保護ソリューションなど) とも連動します。 Security Center は、この情報を分析し、多くの場合、複数の情報源から得た情報との関連性を探りながら、脅威を特定します。
 
@@ -90,6 +90,5 @@ Azure Security Center では、脅威に関する状況の変化を継続的に�
 
 この記事では、Security Center で利用できるさまざまな種類のアラートについて説明しました。 詳細については、次を参照してください。
 
-* [Azure Security Center での脅威の防止](threat-protection.md) -- Azure Security Center によって表示されるセキュリティ アラートのソースの簡単な説明 
-* **Azure Activity Log 内のセキュリティ アラート** - Azure portal またはプログラムで利用できるだけでなく、セキュリティ アラートとインシデントは [Azure アクティビティ ログ](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)でイベントとして監査されます。 イベント スキーマの詳細については、「[Azure アクティビティ ログでのセキュリティ アラート](https://go.microsoft.com/fwlink/?linkid=2114113)」を参照してください
+- **Azure Activity Log 内のセキュリティ アラート** - Azure portal またはプログラムで利用できるだけでなく、セキュリティ アラートとインシデントは [Azure アクティビティ ログ](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)でイベントとして監査されます。 イベント スキーマの詳細については、「[Azure アクティビティ ログでのセキュリティ アラート](https://go.microsoft.com/fwlink/?linkid=2114113)」を参照してください
 

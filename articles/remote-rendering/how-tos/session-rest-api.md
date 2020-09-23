@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: c27c5fae45f7cde57f2db12c05107d2b77b90a2c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0af9d6906e038a4b9285a2c302fc0c98345fdbd9
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012383"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023756"
 ---
 # <a name="use-the-session-management-rest-api"></a>セッション管理 REST API を使用する
 
@@ -122,7 +122,7 @@ $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
 既存のセッションのパラメーターを照会または変更するためのコマンドがいくつかあります。
 
 > [!CAUTION]
-すべての REST 呼び出しについて、それらのコマンドを頻繁に呼び出しすぎるとサーバーでスロットルが発生し、最終的にエラーが返されます。 この場合の状態コードは 429 ("要求が多すぎます") になります。 経験則として、**次の呼び出しとの間に 5 秒から 10 秒**の間隔が必要です。
+> すべての REST 呼び出しについて、それらのコマンドを頻繁に呼び出しすぎるとサーバーでスロットルが発生し、最終的にエラーが返されます。 この場合の状態コードは 429 ("要求が多すぎます") になります。 経験則として、**次の呼び出しとの間に 5 秒から 10 秒**の間隔が必要です。
 
 ### <a name="update-session-parameters"></a>セッション パラメーターの更新
 

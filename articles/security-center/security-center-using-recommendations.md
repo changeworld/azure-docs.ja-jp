@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: memildin
-ms.openlocfilehash: 8039be7b69444cc32e763e9a1fb074e7dda4a5ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 347c539abbe90119a74394eeb748af12d30d0b15
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783233"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904674"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Azure Security Center の推奨事項を使用してセキュリティを強化する
+
 セキュリティ ポリシーを構成し、Azure Security Center によって提供される推奨事項を実装することで、セキュリティに関する重大なイベントの可能性を低減できます。 この記事では、セキュリティ ポリシーと Security Center の推奨事項を使用してセキュリティ攻撃を軽減する方法を説明します。 
 
 Security Center は、継続的スキャンを自動的に実行し、Azure リソースのセキュリティの状態を分析します。 Security Center は、潜在的なセキュリティの脆弱性を識別すると、必要なセキュリティ管理を構成するプロセスを説明する推奨事項を作成します。 推奨事項は 24 時間以内に更新されます。ただし、次の場合を除きます。
@@ -40,7 +41,7 @@ David は Contoso の IT セキュリティ部門に所属しています。彼�
 
 Security Center は、Contoso の Azure リソースに関するセキュリティの状態を自動で分析し、既定のセキュリティ ポリシーを適用します。 Security Center では、潜在的なセキュリティの脆弱性が特定されると、セキュリティ ポリシーに設定されているコントロールに基づいて**推奨事項**が作成されます。 
 
-David は、Azure Security Standard レベルをすべてのサブスクリプションで実行し、推奨事項とセキュリティ機能のフル スイートを有効にしています。 Jeff も、使用している [Windows](quick-onboard-windows-computer.md) サーバーと [Linux](quick-onboard-linux-computer.md) サーバーで Security Center のハイブリッド サポートを利用できるように、まだクラウドに移行していない既存のオンプレミス サーバーすべてをオンボードしています。
+David は、Azure Defender を有効にして Azure Security をすべてのサブスクリプションで実行し、推奨事項とセキュリティ機能のフル スイートを有効にしています。 Jeff も、使用している [Windows サーバーと Linux サーバー](quickstart-onboard-machines.md)で Security Center のハイブリッド サポートを利用できるように、まだクラウドに移行していない既存のオンプレミス サーバーすべてをオンボードしています。
 
 Jeff はクラウド ワークロード所有者で、 Contoso のセキュリティ ポリシーに従ってセキュリティ制御を適用する責任があります。 
 
@@ -59,13 +60,18 @@ Jeff は、毎日の監視アクティビティの一環として、Azure にサ
 
 3. Jeff は、最初に処理する推奨事項を決定する必要があります。 それで、セキュリティ スコアをクリックし、[セキュリティ スコア](secure-score-security-controls.md)がどれほど改善されるかに注目しながらレコメンデーションについて処理を始めます。
 
-4. Jeff はたくさんの VM やサーバーに接続しているため、 **[計算とアプリ]** にターゲットを絞ることにします。
+4. Jeff はたくさんの VM に接続しているため、[資産インベントリ](asset-inventory.md)の Jeff のマシンにターゲットを絞ることにします。
 
-5. Jeff が **[計算とアプリ]** をクリックすると、レコメンデーションのリストが表示されます。セキュリティ スコアへの影響に照らしてそれらを処理します。
+5. Jeff が資産インベントリを開くと、推奨事項の一覧が表示されます。 Jeff は、セキュリティ スコアの影響に従ってそれを処理します。
 
 6. Jeff にはインターネットに接続された VM がたくさんあり、それらのポートが公開されているため、攻撃者によってサーバーが制御されてしまうのではないかと心配しています。 そこで Jeff は [**Just-In-Time VM アクセス**](security-center-just-in-time.md)の使用を選択します。
 
 Jeff は、高優先度と中優先度の推奨事項を確認し、実装について判断します。 各レコメンデーションについて、どのリソースが影響を受けるか、セキュリティ スコアの影響はどれほどか、各レコメンデーションが何を意味するか、そして各問題を軽減するための修復手順について解釈するため、Security Center によって提供される詳細情報に注目します。
+
+### <a name="enforce-recommendations-to-prevent-security-misconfigurations"></a>推奨事項を適用してセキュリティ構成ミスを防ぐ
+
+ユーザーは Jeff のスコアに悪影響を与えるリソースを作成しないように、ユーザーにとって最も重要な推奨事項に対して強制および拒否のオプションを構成します。 詳細については、「[適用/拒否の推奨事項を使用した構成ミスの防止](prevent-misconfigurations.md)」を参照してください。
+
 
 ## <a name="conclusion"></a>まとめ
 Security Center の推奨事項を監視することにより、攻撃が行われる前にセキュリティの脆弱性を排除できます。 レコメンデーションを修復すると、セキュリティ スコアとワークロードのセキュリティ体制が向上します。 Security Center は自動的に、デプロイした新しいリソースを検出し、それらをセキュリティ ポリシーに照らし合わせて評価し、それらを保護するための新しい推奨事項を提供します。

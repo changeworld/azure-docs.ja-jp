@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: c4f3ccce03f91b0567980d55b59bfb15d6985bb7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: db0c5890add303d85bdec76e00b8377567226a38
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299747"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904709"
 ---
 # <a name="feature-coverage-for-machines"></a>マシンを対象とする機能
 
@@ -28,23 +28,23 @@ ms.locfileid: "89299747"
 
 ### <a name="windows-machines"></a>[**Windows マシン**](#tab/features-windows)
 
-|**機能**|**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Azure 以外のマシン**|**料金**
+|**機能**|**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Azure 以外のマシン**|**Azure Defender が必要**
 |----|:----:|:----:|:----:|:----:|
-|[Microsoft Defender ATP の統合](security-center-wdatp.md)|✔</br>(サポートされているバージョン)|✔</br>(サポートされているバージョン)|✔|Standard|
-|[仮想マシン行動分析 (およびセキュリティ アラート)](threat-protection.md)|✔|✔|✔|Standard|
-|[ファイルレスのセキュリティ アラート](alerts-reference.md#alerts-windows)|✔|✔|✔|Standard|
-|[ネットワーク ベースのセキュリティ アラート](threat-protection.md#network-layer)|✔|✔|-|Standard|
-|[Just In Time VM アクセス](security-center-just-in-time.md)|✔|-|-|Standard|
-|[ネイティブ脆弱性評価](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Standard|
-|[ファイルの整合性の監視](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
-|[アダプティブ アプリケーション制御](security-center-adaptive-application.md)|✔|-|✔|Standard|
-|[ネットワーク マップ](security-center-network-recommendations.md#network-map)|✔|✔|-|Standard|
-|[アダプティブ ネットワークのセキュリティ強化機能](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
-|[規制へのコンプライアンス ダッシュボードおよびレポート](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
-|Docker でホストされている IaaS コンテナーに対する推奨事項と脅威の防止|-|-|-|Standard|
-|足りない OS パッチの評価|✔|✔|✔|Azure: Free<br><br>Azure 以外: Standard|
-|セキュリティの誤った構成の評価|✔|✔|✔|Azure: Free<br><br>Azure 以外: Standard|
-|[エンドポイント保護の評価](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: Free<br><br>Azure 以外: Standard|
+|[Microsoft Defender ATP の統合](security-center-wdatp.md)|✔</br>(サポートされているバージョン)|✔</br>(サポートされているバージョン)|✔|はい|
+|[仮想マシン行動分析 (およびセキュリティ アラート)](alerts-reference.md)|✔|✔|✔|はい|
+|[ファイルレスのセキュリティ アラート](alerts-reference.md#alerts-windows)|✔|✔|✔|はい|
+|[ネットワーク ベースのセキュリティ アラート](other-threat-protections.md#network-layer)|✔|✔|-|はい|
+|[Just In Time VM アクセス](security-center-just-in-time.md)|✔|-|-|はい|
+|[ネイティブ脆弱性評価](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|はい|
+|[ファイルの整合性の監視](security-center-file-integrity-monitoring.md)|✔|✔|✔|はい|
+|[アダプティブ アプリケーション制御](security-center-adaptive-application.md)|✔|-|✔|はい|
+|[ネットワーク マップ](security-center-network-recommendations.md#network-map)|✔|✔|-|はい|
+|[アダプティブ ネットワークのセキュリティ強化機能](security-center-adaptive-network-hardening.md)|✔|-|-|はい|
+|[規制へのコンプライアンス ダッシュボードおよびレポート](security-center-compliance-dashboard.md)|✔|✔|✔|はい|
+|Docker でホストされている IaaS コンテナーに対する推奨事項と脅威の防止|-|-|-|はい|
+|足りない OS パッチの評価|✔|✔|✔|Azure: Free<br><br>Azure 以外: はい|
+|セキュリティの誤った構成の評価|✔|✔|✔|Azure: いいえ<br><br>Azure 以外: はい|
+|[エンドポイント保護の評価](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: いいえ<br><br>Azure 以外: はい|
 |ディスク暗号化の評価|✔|✔|-|Free|
 |サードパーティの脆弱性評価|✔|-|-|Free|
 |[ネットワーク セキュリティ評価](security-center-network-recommendations.md)|✔|✔|-|Free|
@@ -52,22 +52,22 @@ ms.locfileid: "89299747"
 
 ### <a name="linux-machines"></a>[**Linux マシン**](#tab/features-linux)
 
-|**機能**|**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Azure 以外のマシン**|**料金**
+|**機能**|**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Azure 以外のマシン**|**Azure Defender が必要**
 |----|:----:|:----:|:----:|:----:|
-|[Microsoft Defender ATP の統合](security-center-wdatp.md)|-|-|-|Standard|
-|[仮想マシン行動分析 (およびセキュリティ アラート)](security-center-alerts-iaas.md)|✔</br>(サポートされているバージョン)|✔</br>(サポートされているバージョン)|✔|Standard|
-|[ファイルレスのセキュリティ アラート](alerts-reference.md#alerts-windows)|-|-|-|Standard|
-|[ネットワーク ベースのセキュリティ アラート](threat-protection.md#network-layer)|✔|✔|-|Standard|
-|[Just In Time VM アクセス](security-center-just-in-time.md)|✔|-|-|Standard|
-|[ネイティブ脆弱性評価](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Standard|
-|[ファイルの整合性の監視](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
-|[アダプティブ アプリケーション制御](security-center-adaptive-application.md)|✔|-|✔|Standard|
-|[ネットワーク マップ](security-center-network-recommendations.md#network-map)|✔|✔|-|Standard|
-|[アダプティブ ネットワークのセキュリティ強化機能](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
-|[規制へのコンプライアンス ダッシュボードおよびレポート](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
-|Docker でホストされている IaaS コンテナーに対する推奨事項と脅威の防止|✔|✔|✔|Standard|
-|足りない OS パッチの評価|✔|✔|✔|Azure: Free<br><br>Azure 以外: Standard|
-|セキュリティの誤った構成の評価|✔|✔|✔|Azure: Free<br><br>Azure 以外: Standard|
+|[Microsoft Defender ATP の統合](security-center-wdatp.md)|-|-|-|はい|
+|[仮想マシン行動分析 (およびセキュリティ アラート)](security-center-alerts-iaas.md)|✔</br>(サポートされているバージョン)|✔</br>(サポートされているバージョン)|✔|はい|
+|[ファイルレスのセキュリティ アラート](alerts-reference.md#alerts-windows)|-|-|-|はい|
+|[ネットワーク ベースのセキュリティ アラート](other-threat-protections.md#network-layer)|✔|✔|-|はい|
+|[Just In Time VM アクセス](security-center-just-in-time.md)|✔|-|-|はい|
+|[ネイティブ脆弱性評価](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|はい|
+|[ファイルの整合性の監視](security-center-file-integrity-monitoring.md)|✔|✔|✔|はい|
+|[アダプティブ アプリケーション制御](security-center-adaptive-application.md)|✔|-|✔|はい|
+|[ネットワーク マップ](security-center-network-recommendations.md#network-map)|✔|✔|-|はい|
+|[アダプティブ ネットワークのセキュリティ強化機能](security-center-adaptive-network-hardening.md)|✔|-|-|はい|
+|[規制へのコンプライアンス ダッシュボードおよびレポート](security-center-compliance-dashboard.md)|✔|✔|✔|はい|
+|Docker でホストされている IaaS コンテナーに対する推奨事項と脅威の防止|✔|✔|✔|はい|
+|足りない OS パッチの評価|✔|✔|✔|Azure: Free<br><br>Azure 以外: はい|
+|セキュリティの誤った構成の評価|✔|✔|✔|Azure: Free<br><br>Azure 以外: はい|
 |[エンドポイント保護の評価](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Free|
 |ディスク暗号化の評価|✔|✔|-|Free|
 |サードパーティの脆弱性評価|✔|-|-|Free|
@@ -77,7 +77,7 @@ ms.locfileid: "89299747"
 
 
 > [!TIP]
->Standard 価格レベルでのみ利用可能な機能を試すために、Free レベルのユーザーは 30 日間の試用版に登録できます。 詳細については、 [価格に関するページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
+>Azure Defender でのみ利用可能な機能を試すために、30 日間の試用版に登録できます。 詳細については、 [価格に関するページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
 
 
 ## <a name="supported-endpoint-protection-solutions"></a>サポートされているエンドポイント保護ソリューション <a name="endpoint-supported"></a>

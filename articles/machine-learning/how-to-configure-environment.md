@@ -11,15 +11,15 @@ ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a6e603ad5698e7a6a57799def8a0f2de28e0cada
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 4ccf89a4dcb2c91cfdd96b20d74b7f31596b6249
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144891"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898269"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning のための開発環境を構成する
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 この記事では、Azure Machine Learning を操作する開発環境を構成する方法について説明します。 Azure Machine Learning は、プラットフォームに依存しません。 開発環境のハード要件は Python 3 だけです。 Anaconda や Virtualenv などの分離環境もお勧めします。
 
@@ -61,7 +61,7 @@ Azure Machine Learning の[コンピューティング インスタンス](conce
 
 パッケージのインストール方法など、コンピューティング インスタンスの詳細については、[コンピューティング インスタンス](concept-compute-instance.md)に関する記事を参照してください。
 
-コンピューティング料金の発生を停止するには、[コンピューティング インスタンス](tutorial-1st-experiment-sdk-train.md#clean-up-resources)を停止します。
+コンピューティング料金の発生を停止するには、[コンピューティング インスタンス](tutorial-1st-experiment-bring-data.md#clean-up-resources)を停止します。
 
 ## <a name="data-science-virtual-machine"></a><a id="dsvm"></a>Data Science Virtual Machine
 
@@ -185,7 +185,7 @@ DSVM を開発環境として使用するには
    >
    >   `pip install --upgrade azureml-sdk\[notebooks,automl\]`
 
-   SDK をインストールするには数分かかります。 インストール オプションの詳細については、[インストール ガイド](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)を参照してください。
+   SDK をインストールするには数分かかります。 インストール オプションの詳細については、[インストール ガイド](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)を参照してください。
 
 1. 機械学習の実験に必要な他のパッケージをインストールします。
 
@@ -361,7 +361,7 @@ Azure Databricks が Azure Machine Learning と連携する仕組み:
 
 構成ファイルは 3 つの方法で作成できます。
 
-* **[ws.write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) を使用する**: *config.json* ファイルを描き込みます。 このファイルには、ワークスペースの構成情報が含まれています。 *config.json* を他の開発環境にダウンロードまたはコピーできます。
+* **[ws.write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) を使用する**: *config.json* ファイルを描き込みます。 このファイルには、ワークスペースの構成情報が含まれています。 *config.json* を他の開発環境にダウンロードまたはコピーできます。
 
 * **ファイルをダウンロードする**:[Azure portal](https://ms.portal.azure.com) で、お使いのワークスペースの **[概要]** セクションから **[config.json をダウンロード]** を選択します。
 
@@ -389,4 +389,4 @@ Azure Databricks が Azure Machine Learning と連携する仕組み:
 ## <a name="next-steps"></a>次のステップ
 
 - MNIST データセットを使用して Azure Machine Learning 上で[モデルをトレーニングする](tutorial-train-models-with-aml.md)
-- [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) リファレンスを表示する
+- [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) リファレンスを表示する

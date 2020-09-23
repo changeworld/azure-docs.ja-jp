@@ -11,16 +11,16 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: d06186b2ce4d8bb9143663d41f03b9508e4bd00e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6f557ac8476224cdb8414b2a45952d8f7d34513d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005957"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905010"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>ML 実行のログとメトリックを監視および表示する
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 この記事では、Azure Machine Learning の実行を監視し、そのログを表示する方法について説明します。 ログを表示するには、まずそれを有効にする必要があります。 詳細については、「[Azure ML のトレーニングの実行でログ記録を有効にする](how-to-track-experiments.md)」を参照してください。
 
@@ -58,7 +58,7 @@ ms.locfileid: "89005957"
 
 ## <a name="monitor-runs-using-the-jupyter-notebook-widget"></a>Jupyter Notebook ウィジェットを使用して実行を監視する
 
-**ScriptRunConfig** メソッドを使用して実行を送信するときに、[Jupyter ウィジェット](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)を使用して実行の進行状況を確認できます。 実行の送信と同様に、このウィジェットも非同期です。また、ジョブが完了するまで 10 秒から 15 秒ごとにライブ更新を提供します。
+**ScriptRunConfig** メソッドを使用して実行を送信するときに、[Jupyter ウィジェット](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true)を使用して実行の進行状況を確認できます。 実行の送信と同様に、このウィジェットも非同期です。また、ジョブが完了するまで 10 秒から 15 秒ごとにライブ更新を提供します。
 
 実行が完了するのを待っている間、Jupyter ウィジェットを表示します。
     
@@ -129,7 +129,7 @@ RunDetails(run).show()
 
 次の手順を試して、Azure Machine Learning を使用する方法を学習してください。
 
-* [Azure Machine Learning デザイナー (プレビュー) で実験を追跡してログを有効にする](how-to-track-designer-experiments.md)方法を学習します。
+* [Azure Machine Learning デザイナーで実験を追跡してログを有効にする](how-to-track-designer-experiments.md)方法を学習します。
 
 * 最適なモデルを登録し、チュートリアルでデプロイする方法の例については、「[Azure Machine Learning で画像分類モデルをトレーニングする](tutorial-train-models-with-aml.md)」をご覧ください。
 

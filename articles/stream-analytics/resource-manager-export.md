@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 76c2cf7164c3e2d683a9294cb500ed05381811b6
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: c421c730321213a9adbf0a0043874a21ba26bb05
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043531"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906246"
 ---
 # <a name="export-an-azure-stream-analytics-job-azure-resource-manager-template"></a>Azure Stream Analytics ジョブの Azure Resource Manager テンプレートをエクスポートする
 
@@ -28,7 +28,7 @@ Azure Resource Manager テンプレートをエクスポートすることによ
 
 ![Visual Studio Code で Stream Analytics ジョブを開く](./media/resource-manager-export/open-job-vs-code.png)
 
-Visual Studio Code を使用した Stream Analytics ジョブの管理の詳細については、[Visual Studio Code のクイック スタート](quick-create-vs-code.md)を参照してください。
+Visual Studio Code を使用した Stream Analytics ジョブの管理の詳細については、[Visual Studio Code のクイック スタート](quick-create-visual-studio-code.md)を参照してください。
 
 ## <a name="compile-the-script"></a>スクリプトをコンパイルする 
 

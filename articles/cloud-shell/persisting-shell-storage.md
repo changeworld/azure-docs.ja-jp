@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: 37005a722d4a1962b4f6e1ddb8bb1c7a1229d28a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16345ae479be70ffb1eaae95196a43ec99ca1586
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81273292"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89470138"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Azure Cloud Shell でファイルを永続化する
 Cloud Shell では Azure File ストレージを使用してセッション間でファイルを維持します。 Cloud Shell の初回起動時に、セッション間でファイルを維持するために新しいまたは既存のファイル共有を関連付けることを求められます。
@@ -83,7 +83,7 @@ Cloud Shell マシンは、次の各リージョンに存在します。
 ユーザーは、PowerShell で `(Get-CloudDrive | Get-AzStorageAccount).Location` を実行して、ファイル共有の場所を確認できます。
 
 ## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Azure リソース ポリシーによるリソース作成の制限
-Cloud Shell で作成したストレージ アカウントは `ms-resource-usage:azure-cloud-shell` でタグ付けされます。 Cloud Shell からストレージ アカウントを作成できないようにするには、この固有のタグによってトリガーされる[タグの Azure リソース ポリシー](../azure-policy/json-samples.md)を作成します。
+Cloud Shell で作成したストレージ アカウントは `ms-resource-usage:azure-cloud-shell` でタグ付けされます。 Cloud Shell からストレージ アカウントを作成できないようにするには、この固有のタグによってトリガーされる[タグの Azure リソース ポリシー](../governance/policy/samples/index.md)を作成します。
 
 ## <a name="how-cloud-shell-storage-works"></a>Cloud Shell のストレージのしくみ 
 Cloud Shell は、次の両方の方法を使用してファイルを永続化します。 
@@ -170,4 +170,4 @@ Cloud Shell にマウントされた Azure ファイル共有は、いつでも�
 ## <a name="next-steps"></a>次のステップ
 [Cloud Shell のクイック スタート](quickstart.md) <br>
 [Microsoft Azure Files ストレージについて](../storage/files/storage-files-introduction.md) <br>
-[ストレージのタグについて](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>
+[ストレージのタグについて](../azure-resource-manager/management/tag-resources.md) <br>

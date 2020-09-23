@@ -11,22 +11,19 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 09dd444d0d7409ca86955d2854aec82f07db0c4d
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 10c0200aae5ffa432c2da037d58d455fc28e8acd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185402"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904924"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Azure Machine Learning を使用して自動機械学習モデルを作成、確認、デプロイする
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+
 
 この記事では、Azure Machine Learning Studio で 1 行のコードも使わずに、自動化された機械学習モデルを作成、確認、およびデプロイする方法について説明します。
 
->[!IMPORTANT]
-> Azure Machine learning studio での自動 ML エクスペリエンスは、プレビュー段階にあります。 特定の機能がサポートされないことや、機能が制限されることがあります。
-
- 自動機械学習は、特定のデータに使用する最適な機械学習アルゴリズムを選択するプロセスです。 このプロセスにより、機械学習モデルを迅速に生成できます。 [自動化された機械学習の詳細については、こちらを参照してください](concept-automated-ml.md)。
+自動機械学習は、特定のデータに使用する最適な機械学習アルゴリズムを選択するプロセスです。 このプロセスにより、機械学習モデルを迅速に生成できます。 [自動化された機械学習の詳細については、こちらを参照してください](concept-automated-ml.md)。
  
 エンド ツー エンドの例については、[Azure Machine Learning の自動 ML インターフェイスでの分類モデルの作成に関するチュートリアル](tutorial-first-experiment-automated-ml.md)をお試しください。 
 
@@ -36,7 +33,7 @@ Python コードベースのエクスペリエンスでは、Azure Machine Learn
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
 
-* **Enterprise Edition** タイプの Azure Machine Learning のワークスペース [Azure Machine Learning ワークスペースを作成する](how-to-manage-workspace.md)方法に関するページを参照してください。  既存のワークスペースを Enterprise Edition にアップグレードする方法については、[Enterprise Edition へのアップグレード](how-to-manage-workspace.md#upgrade)に関する記事を参照してください。
+* Azure Machine Learning ワークスペース。 [Azure Machine Learning ワークスペースを作成する](how-to-manage-workspace.md)方法に関するページを参照してください。 
 
 ## <a name="get-started"></a>はじめに
 
@@ -69,11 +66,11 @@ Python コードベースのエクスペリエンスでは、Azure Machine Learn
 
     1. **[次へ]** を選択して、 **[データストアとファイルの選択] フォーム**を開きます。 このフォームで、データセットのアップロード先を選択します。ワークスペースで自動的に作成される既定のストレージ コンテナーか、実験に使用するストレージ コンテナーを選択します。 
     
-        1. データが仮想ネットワークの背後にある場合は、**検証をスキップする**機能を有効にして、ワークスペースがデータにアクセスできることを確認する必要があります。 [ネットワークの分離とプライバシー](how-to-enable-virtual-network.md#machine-learning-studio)についてさらに学習してください。 
+        1. データが仮想ネットワークの背後にある場合は、**検証をスキップする**機能を有効にして、ワークスペースがデータにアクセスできることを確認する必要があります。 詳細については、「[Azure 仮想ネットワークで Azure Machine Learning Studio を使用する](how-to-enable-studio-virtual-network.md)」を参照してください。 
     
     1. **[参照]** を選択してデータセットのデータ ファイルをアップロードします。 
 
-    1. **[Settings and preview]\(設定とプレビュー\)** フォームで入力が正しいか確認します。 フォームはファイルの種類に基づいてインテリジェントに設定されます。 
+    1. **[Settings and preview]/(設定とプレビュー/)** フォームで入力が正しいか確認します。 フォームはファイルの種類に基づいてインテリジェントに設定されます。 
 
         フィールド| 説明
         ----|----
@@ -120,11 +117,14 @@ Python コードベースのエクスペリエンスでは、Azure Machine Learn
 
 1. **[Task type and settings]\(タスクの種類と設定\)** フォームで、[classification]\(分類\)、[regression]\(回帰\)、または [forecasting]\(予測\) のタスクの種類を選択します。 [サポートされるタスクの種類](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast)に関する記事を参照してください。
 
-    1. **分類**のために、テキストの特徴量化に使用されるディープ ラーニングを有効にすることもできます。
+    1. **[分類]** については、ディープ ラーニングを有効にすることもできます。
+    
+        ディープ ラーニングが有効になっている場合、検証は _train_validation split_ に制限されます。 [検証オプションの詳細を確認してください](how-to-configure-cross-validation-data-splits.md)。
+
 
     1. **予測**のためには、以下が可能です。 
     
-        1. ディープ ラーニングを有効にする
+        1. ディープ ラーニングを有効にします。
     
         1. *時間列*を選択します。この列には、使用する時間データが含まれています。
 
@@ -135,10 +135,10 @@ Python コードベースのエクスペリエンスでは、Azure Machine Learn
     追加の構成|説明
     ------|------
     主要メトリック| モデルをスコアリングするために使用される主なメトリックです。 [モデルのメトリックの詳細については、こちらを参照してください](how-to-configure-auto-train.md#primary-metric)。
-    最適なモデルの説明 | 推奨される最適なモデルの説明を表示するために、選択して有効にするか、無効にします。
-    Blocked algorithm (ブロックするアルゴリズム)| トレーニング ジョブから除外するアルゴリズムを選択します。
+    最適なモデルの説明 | 推奨される最適なモデルの説明を表示するために、選択して有効または無効にします。 <br> この機能は、[特定の予測アルゴリズム](how-to-machine-learning-interpretability-automl.md#interpretability-during-training-for-the-best-model)では現在使用できません。 
+    Blocked algorithm (ブロックするアルゴリズム)| トレーニング ジョブから除外するアルゴリズムを選択します。 <br><br> 許可するアルゴリズムは、[SDK 実験](how-to-configure-auto-train.md#supported-models)でのみ使用できます。 <br> [各タスクの種類でサポートされているモデル](https://docs.microsoft.com/python/api/azureml-automl-core/azureml.automl.core.shared.constants.supportedmodels?view=azure-ml-py&preserve-view=true)を参照してください。
     終了条件| これらの基準のどれかが満たされると、トレーニング ジョブが終了します。 <br> *トレーニング ジョブ時間 (時間単位)* :トレーニング ジョブを実行できる時間の長さ。 <br> *Metric score threshold* (メトリック スコアのしきい値): すべてのパイプラインの最小メトリック スコアです。 これにより、達成目標のターゲット メトリックを定義した場合には、必要以上にトレーニング ジョブに時間を費やすことはなくなります。
-    検証| トレーニング ジョブで使用するクロス検証オプションをどれか選択します。 [クロス検証の詳細については、こちらを参照してください](how-to-configure-cross-validation-data-splits.md#prerequisites)。
+    検証| トレーニング ジョブで使用するクロス検証オプションをどれか選択します。 <br> [クロス検証の詳細については、こちらを参照してください](how-to-configure-cross-validation-data-splits.md#prerequisites)。<br> <br>予測では、k 分割交差検証のみがサポートされます。
     コンカレンシー| *コンカレント イテレーションの最大数*:トレーニング ジョブでテストするパイプライン (イテレーション) の最大数。 ジョブは、指定したイテレーションの数より多く実行されることはありません。
 
 1. (任意) 特徴量化の設定を表示する: **追加の構成設定**フォームで**自動を特徴量化**を有効にすることを選択した場合、既定の特徴量化手法が適用されます。 **特徴量化の表示設定**でこれらの既定値を変更し、それに応じてカスタマイズすることができます。 [特徴量化をカスタマイズする](#customize-featurization)方法をご覧ください。 
@@ -156,7 +156,7 @@ Python コードベースのエクスペリエンスでは、Azure Machine Learn
 
 統計|説明
 ------|------
-特徴量| 集約されている列の名前。
+機能| 集約されている列の名前。
 プロファイル| 推論された型に基づくインライン視覚化。 たとえば、文字列、ブール値、日付には値の数が示される一方、10 進数 (数値) は近似されたヒストグラムが示されます。 これにより、データの分布を簡単に把握できます。
 型の分布| 列内の型のインライン値カウント。 Null は独自の型であるため、この視覚化は変則値または欠損値を検出するために便利です。
 Type|推論される列の型。 使用可能な値には、文字列、ブール値、日付、10 進数が含まれます。
@@ -183,7 +183,7 @@ Included | トレーニングに含める列を指定します。
 特徴の種類| 選択された列の値の型を変更します。
 次で補完| データの欠損値を補完する値を選択します。
 
-![Azure Machine Learning Studio のタスク タイプ フォーム](media/how-to-use-automated-ml-for-ml-models/custom-featurization.png)
+![Azure Machine Learning Studio カスタム特徴量化](media/how-to-use-automated-ml-for-ml-models/custom-featurization.png)
 
 ## <a name="run-experiment-and-view-results"></a>実験を実行して結果を表示
 
@@ -237,7 +237,7 @@ Included | トレーニングに含める列を指定します。
     "*詳細設定*" メニューには、[データ収集](how-to-enable-app-insights.md)やリソース使用率の設定などの既定のデプロイ特徴量が用意されています。 これらの既定値をオーバーライドする場合は、このメニューでオーバーライドします。
 
 1. **[デプロイ]** を選択します。 デプロイの完了には 20 分程度かかる場合があります。
-    デプロイが開始されると、 **[モデルの概要]** タブが表示されます。 **[Deploy status] (デプロイの状態)** セクションで、デプロイの進行状況を確認します。 
+    デプロイが開始されると、 **[モデルの概要]** タブが表示されます。 **[Deploy status]\(デプロイの状態\)** セクションで、デプロイの進行状況を確認します。 
 
 これで、予測を生成するための運用 Web サービスが作成されました。 予測をテストするには、[Power BI の組み込みの Azure Machine Learning サポート](how-to-consume-web-service.md#consume-the-service-from-power-bi)からサービスのクエリを実行します。
 

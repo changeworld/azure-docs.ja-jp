@@ -8,12 +8,12 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 05/01/2020
-ms.openlocfilehash: 5f29e616c0643914ca28921eee481105a5feb0c5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2d89782b836db0daaf75c0337ad3b7f475824177
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047100"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90882874"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>チュートリアル: Logic Apps および Power Automate と共に Video Indexer コネクタを使用する
 
@@ -21,12 +21,15 @@ Azure Media Services [Video Indexer v2 REST API](https://api-portal.videoindexer
 
 統合をさらに容易にするために、Microsoft では、この API との互換性を備えた  [Logic Apps](https://azure.microsoft.com/services/logic-apps/)  および  [Power Automate](https://preview.flow.microsoft.com/connectors/shared_videoindexer-v2/video-indexer-v2/)  コネクタをサポートしています。 コネクタを使用することで、コードを 1 行も記述せずに、大量のビデオ ファイルやオーディオ ファイルにインデックスを付け、そこから効果的に分析情報を抽出するカスタム ワークフローを設定できます。 さらに、統合のためにコネクタを使用すると、ワークフローの正常性を確認しやすくなり、簡単にデバッグできるようになります。  
 
-Video Indexer コネクタの使用をすぐに開始できるように、設定可能な Logic Apps および Power Automate ソリューションの例について順を追って説明します。 
+Video Indexer コネクタの使用をすぐに開始できるように、設定可能な Logic Apps および Power Automate ソリューションの例について順を追って説明します。 このチュートリアルでは、Logic Apps を使用してフローを設定する方法を紹介しています。
 
-このチュートリアルでは、以下の内容を学習します。
+このチュートリアルで取り上げた "自動的にビデオをアップロードしてインデックスを付ける" シナリオは、連携する 2 つの異なるフローから成ります。 
+* 最初のフローは、Azure Storage アカウントで BLOB が追加または変更されたときにトリガーされます。 インデックス付けの操作が完了したら通知を送信するためのコールバック URL と共に、新しいファイルを Video Indexer にアップロードします。 
+* 2 番目のフローは、コールバック URL に基づいてトリガーされ、抽出された分析情報を Azure Storage の JSON ファイルに保存し直します。 この 2 つのフローによるアプローチを使用して、大きなファイルの非同期的なアップロードとインデックス付けを効果的にサポートします。 
+
+このチュートリアルでは、ロジック アプリを使用して次の作業を行う方法を紹介しています。
 
 > [!div class="checklist"]
-> * 自動的にビデオをアップロードしてインデックスを付ける
 > * ファイルのアップロード フローを設定する
 > * JSON の抽出フローを設定する
 
@@ -34,19 +37,13 @@ Video Indexer コネクタの使用をすぐに開始できるように、設定
 
 ## <a name="prerequisites"></a>前提条件
 
-まず、Video Indexer アカウントと、API キーによる API へのアクセスが必要になります。 
+* まず、Video Indexer アカウントと、[API キーによる API へのアクセス](video-indexer-use-apis.md)が必要になります。 
+* また、Azure Storage アカウントも必要です。 Storage アカウントのアクセス キーをメモしてください。 2 つのコンテナーを作成します。1 つはビデオを格納するコンテナーで、もう 1 つは Video Indexer によって生成される分析情報を格納するコンテナーです。  
+* 次に、Logic Apps または Power Automate で (どちらを使用しているかに応じて)、2 つの異なるフローを開く必要があります。 
 
-また、Azure Storage アカウントも必要です。 Storage アカウントのアクセス キーをメモしてください。 2 つのコンテナーを作成します。1 つはビデオを格納するコンテナーで、もう 1 つは Video Indexer によって生成される分析情報を格納するコンテナーです。  
+## <a name="set-up-the-first-flow---file-upload"></a>1 つ目のフローを設定する - ファイルのアップロード   
 
-次に、Logic Apps または Power Automate で (どちらを使用しているかに応じて)、2 つの異なるフローを開く必要があります。  
-
-## <a name="upload-and-index-your-video-automatically"></a>自動的にビデオをアップロードしてインデックスを付ける 
-
-このシナリオは、連携する 2 つの異なるフローで構成されます。 最初のフローは、Azure Storage アカウントで BLOB が追加または変更されたときにトリガーされます。 インデックス付けの操作が完了したら通知を送信するためのコールバック URL と共に、新しいファイルを Video Indexer にアップロードします。 2 番目のフローは、コールバック URL に基づいてトリガーされ、抽出された分析情報を Azure Storage の JSON ファイルに保存し直します。 この 2 つのフローによるアプローチを使用して、大きなファイルの非同期的なアップロードとインデックス付けを効果的にサポートします。 
-
-### <a name="set-up-the-file-upload-flow"></a>ファイルのアップロード フローを設定する 
-
-最初のフローは、BLOB が Azure Storage コンテナーに追加されるたびにトリガーされます。 トリガーされると、Video Indexer にビデオをアップロードしてインデックスを付けるために使用できる SAS URI が作成されます。 まず、次のフローを作成します。 
+最初のフローは、BLOB が Azure Storage コンテナーに追加されるたびにトリガーされます。 トリガーされると、Video Indexer にビデオをアップロードしてインデックスを付けるために使用できる SAS URI が作成されます。 このセクションでは、次のフローを作成します。 
 
 ![ファイルのアップロード フロー](./media/logic-apps-connector-tutorial/file-upload-flow.png)
 
@@ -56,15 +53,17 @@ Video Indexer コネクタの使用をすぐに開始できるように、設定
 
 ![接続名と API キー](./media/logic-apps-connector-tutorial/connection-name-api-key.png)
 
-ご自分の Azure Storage アカウントと Video Indexer アカウントに接続できたら、[BLOB が追加または変更されたとき] トリガーに移動し、ビデオ ファイルを配置するコンテナーを選択します。 
+ご使用の Azure Storage アカウントと Video Indexer アカウントに接続できたら、**Logic Apps デザイナー**で [BLOB が追加または変更されたとき] トリガーを探して選択します。 ビデオ ファイルの格納場所となるコンテナーを選択します。 
 
-![コンテナー](./media/logic-apps-connector-tutorial/container.png)
+![コンテナーを選択できる [BLOB が追加または変更されたとき] ダイアログ ボックスを示すスクリーンショット。](./media/logic-apps-connector-tutorial/container.png)
 
-次に、[パスを使用して SAS URI を作成する] アクションに移動し、[動的コンテンツ] のオプションから [List of Files Path]\(ファイル パスの一覧\) を選択します。  
+次に、[パスを使用して SAS URI を作成する] アクションを探して選択します。 アクションのダイアログで、[動的コンテンツ] のオプションから [List of Files Path]\(ファイル パスの一覧\) を選択します。  
+
+さらに、新しい [共有アクセスのプロトコル] パラメーターを追加します。 パラメーターの値に HttpsOnly を選択します。
 
 ![パスを使用した SAS URI](./media/logic-apps-connector-tutorial/sas-uri-by-path.jpg)
 
-[自分のアカウントの場所と ID](./video-indexer-use-apis.md#account-id) を入力して、Video Indexer のアカウント トークンを取得します。
+[自分のアカウントの場所](regions.md)と[アカウント ID](./video-indexer-use-apis.md#account-id)  を入力して、Video Indexer のアカウント トークンを取得します。
 
 ![アカウントのアクセス トークンを取得する](./media/logic-apps-connector-tutorial/account-access-token.png)
 
@@ -78,7 +77,7 @@ Video Indexer コネクタの使用をすぐに開始できるように、設定
 
 アップロードとインデックス付けが完了したら [保存] をクリックして、分析情報を抽出する 2 番目のフローの構成に移りましょう。 
 
-## <a name="set-up-the-json-extraction-flow"></a>JSON の抽出フローを設定する 
+## <a name="set-up-the-second-flow---json-extraction"></a>2 つ目のフローを設定する - JSON の抽出  
 
 最初のフローにおけるアップロードとインデックス付けが完了したら、適切なコールバック URL を使用して HTTP 要求が送信され、2 番目のフローがトリガーされます。 その結果、Video Indexer によって生成された分析情報が取得されます。 この例では、インデックス付けジョブの出力が Azure Storage に格納されます。  ただし、この出力を使用して何を実行するかはユーザーの自由です。  
 
@@ -90,7 +89,7 @@ Video Indexer コネクタの使用をすぐに開始できるように、設定
 
 トリガーには、[HTTP POST の URL] フィールドが表示されます。 この URL はフローを保存するまで生成されませんが、最終的にこの URL が必要になります。 ここにはもう一度戻ってきます。 
 
-[自分のアカウントの場所と ID](./video-indexer-use-apis.md#account-id) を入力して、Video Indexer のアカウント トークンを取得します。  
+[自分のアカウントの場所](regions.md)と[アカウント ID](./video-indexer-use-apis.md#account-id)  を入力して、Video Indexer のアカウント トークンを取得します。  
 
 [Get Video Index]\(ビデオ インデックスの取得\) アクションに移動し、必須パラメーターを入力します。 [ビデオ ID] には、次の式を入力します: triggerOutputs()['queries']['id'] 
 
@@ -104,7 +103,7 @@ Video Indexer コネクタの使用をすぐに開始できるように、設定
 
 この式は、このフローから [Get Video Index]\(ビデオ インデックスの取得\) アクションの出力を受け取ります。 
 
-[フローの保存] をクリックします。 
+**[フローの保存]** をクリックします。 
 
 フローを保存すると、トリガーに HTTP POST の URL が作成されます。 トリガーから URL をコピーします。 
 

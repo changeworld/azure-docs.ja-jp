@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: f03b5e93e4ed5155f6a713c152fbcf34dc873674
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 64be7f01cc9cc7ae77af5386be7a11cd16785dd1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065881"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90882397"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の接続アーキテクチャ
 この記事では、Azure Database for PostgreSQL 接続アーキテクチャと、Azure 内外の両方のクライアントからトラフィックがどのように Azure Database for PostgreSQL データベース インスタンスに転送されるかについて説明します。
@@ -19,7 +19,7 @@ ms.locfileid: "88065881"
 ## <a name="connectivity-architecture"></a>接続のアーキテクチャ
 Azure Database for PostgreSQL への接続は、受信接続を Microsoft のクラスター内にあるお客様のサーバーの物理的な場所にルーティングする役割を果たすゲートウェイを介して確立されます。 次の図に、そのトラフィック フローを示します。
 
-![接続アーキテクチャの概要](./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png)
+:::image type="content" source="./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png" alt-text="接続アーキテクチャの概要":::
 
 クライアントでは、データベースに接続するときに、ゲートウェイに接続する接続文字列を取得します。 このゲートウェイは、ポート 5432 をリッスンするパブリック IP アドレスを持っています。 データベース クラスター内では、トラフィックは適切な Azure Database for PostgreSQL に転送されます。 そのため、企業ネットワークなどからサーバーに接続するには、クライアント側のファイアウォールを開いて送信トラフィックがゲートウェイに到達できるようにする必要があります。 リージョンごとに Microsoft のゲートウェイで使用されている IP アドレスの完全な一覧を次に示します。
 

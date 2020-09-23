@@ -3,16 +3,17 @@ title: マネージド ディスクのバースト
 description: Azure ディスクのディスク バーストおよび Azure 仮想マシンのディスク バーストについて説明します。
 author: albecker1
 ms.author: albecker
-ms.date: 04/27/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 25aa9fc166e831acd2ed0389bbbe4d2dc7e04b19
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.custom: references_regions
+ms.openlocfilehash: ab54b68ab3f7984ee18a39cf3a81fa663af54dee
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594468"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889094"
 ---
 # <a name="disk-bursting"></a>ディスク バースト
 [!INCLUDE [managed-disks-bursting](../../../includes/managed-disks-bursting.md)]
@@ -21,10 +22,14 @@ ms.locfileid: "82594468"
 サポートされている次のサイズでは、パブリック クラウド内のすべてのリージョンで、VM レベルでのバーストのサポートが有効になっています。 
 - [Lsv2 シリーズ](../lsv2-series.md)
 
+サポートされている次のサイズについては、米国中西部でも VM レベルのバーストを利用できます。
+- [Dsv3 シリーズ](../dv3-dsv3-series.md)
+- [Esv3 シリーズ](../ev3-esv3-series.md)
+
 バーストをサポートしている仮想マシンでは、バーストが既定で有効になっています。
 
 ## <a name="disk-level-bursting"></a>ディスク レベルでのバースト
-バーストは、すべてのリージョンでディスク サイズ P20 以下の[プレミアム SSD ](disks-types.md#premium-ssd)でも利用できます。 ディスク バースティングは、それをサポートするディスク サイズの新しいデプロイでは既定で有効になっています。 既存のディスク サイズでは、次のいずれかの方法を使用してバースティングを有効にすることができます (ディスク バースティングをサポートしている場合)。 
+バーストは、すべてのリージョンでサイズが P20 以下のディスクの場合に、[プレミアム SSD ](disks-types.md#premium-ssd)上でも利用できます。 ディスク バースティングは、それをサポートするディスク サイズの新しいデプロイでは既定で有効になっています。 既存のディスク サイズでは、次のいずれかの方法を使用してバースティングを有効にすることができます (ディスク バースティングをサポートしている場合)。 
 - **VM を再起動する** 
 - **ディスクの接続を切断して、再接続する**
 

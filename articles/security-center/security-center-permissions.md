@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: memildin
-ms.openlocfilehash: e5728b220f12c3305aa896e64010fc7e5828d6fb
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: ed73c4781b9fd9926e12910ca1eb2f71d2b99245
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067224"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904832"
 ---
 # <a name="permissions-in-azure-security-center"></a>Azure Security Center におけるアクセス許可
 
@@ -44,7 +44,7 @@ Security Center は、リソースの構成を評価して、セキュリティ�
 |:--- |:---:|:---:|:---:|:---:|:---:|
 |セキュリティ ポリシーを編集する|-|✔|-|-|✔|
 |イニシアティブを追加する、または割り当てる (規制コンプライアンス標準を含む)|-|-|-|-|✔|
-|サブスクリプション価格レベルを変更する|-|✔|-|-|✔|
+|Azure Defender を有効または無効にする|-|✔|-|-|✔|
 |自動プロビジョニングを有効または無効にする|-|✔|-|✔|✔|
 |セキュリティに関する推奨事項をリソースに適用する</br> (および[クイック修復](security-center-remediate-recommendations.md#quick-fix-remediation)を使用する)|-|-|✔|✔|✔|
 |アラートを無視する|-|✔|-|✔|✔|
