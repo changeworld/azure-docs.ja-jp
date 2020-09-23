@@ -11,16 +11,16 @@ author: jpe316
 ms.date: 06/03/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: 263038ee1be8b31d493282cd920f386132420156
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 7637cc911ea2fbb950a18c2c8d91f5c3eaf02c23
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648787"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905089"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>フィールド プログラマブル ゲート アレイ (FPGA) の説明とデプロイ方法
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 この記事では、Field Programmable Gate Array (FPGA) についてその概要を説明し、[Azure Machine Learning](overview-what-is-azure-ml.md) を使用してモデルを Azure FPGA にデプロイする方法を示します。
 
@@ -78,7 +78,7 @@ FPGA は、次の Azure リージョンで使用できます。
 
 ## <a name="deploy-models-on-fpgas"></a>モデルの FPGA でのデプロイ
 
-[Azure Machine Learning Hardware Accelerated Models](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py) を使用して、モデルを FPGA 上の Web サービスとしてデプロイできます。 FPGA を使用すると、単一のバッチ サイズでも、待機時間が極端に短い推論を実行できます。 推論、つまりモデル スコアリングとは、通常は運用環境のデータに基づいて、デプロイしたモデルを使用して予測を行うフェーズです。
+[Azure Machine Learning Hardware Accelerated Models](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py&preserve-view=true) を使用して、モデルを FPGA 上の Web サービスとしてデプロイできます。 FPGA を使用すると、単一のバッチ サイズでも、待機時間が極端に短い推論を実行できます。 推論、つまりモデル スコアリングとは、通常は運用環境のデータに基づいて、デプロイしたモデルを使用して予測を行うフェーズです。
 
 FPGA にモデルをデプロイするには、次の手順を実行します。
 
@@ -121,7 +121,7 @@ FPGA にモデルをデプロイするには、次の手順を実行します。
     ```
 ### <a name="1-define-the-tensorflow-model"></a>1.TensorFlow モデルを定義する
 
-[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) を使用してサービス定義を作成します。 サービス定義は、TensorFlow に基づいてグラフ (入力、特徴抽出器、分類子) のパイプラインを記述しているファイルです。 デプロイ コマンドは、定義とグラフを ZIP ファイルに自動的に圧縮し、その ZIP を Azure Blob Storage にアップロードします。 DNN は、FPGA 上で実行するように既にデプロイされています。
+[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) を使用してサービス定義を作成します。 サービス定義は、TensorFlow に基づいてグラフ (入力、特徴抽出器、分類子) のパイプラインを記述しているファイルです。 デプロイ コマンドは、定義とグラフを ZIP ファイルに自動的に圧縮し、その ZIP を Azure Blob Storage にアップロードします。 DNN は、FPGA 上で実行するように既にデプロイされています。
 
 1. Azure Machine Learning ワークスペースを読み込む
 

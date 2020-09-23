@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 6391b21faaf6cd2a61dbe84af50ae12e4289dff9
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e49fd0d2b4d8fc801372dbc766c2fdc7beb21b10
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837291"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905922"
 ---
 # <a name="private-link-for-azure-database-for-mysql"></a>Azure Database for MySQL 用の Private Link
 
@@ -68,25 +68,25 @@ Private Link を有効にするには、プライベート エンドポイント
     * すべてのプライベート エンドポイント接続 (PEC) の一覧が表示されます
     * 対応するプライベート エンドポイント (PE) が作成されます
 
-![プライベート エンドポイントの選択のポータル](media/concepts-data-access-and-security-private-link/select-private-link-portal.png)
+:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link-portal.png" alt-text="プライベート エンドポイントの選択のポータル":::
 
 * リストから個々の PEC を選択します。
 
-![承認保留中のプライベート エンドポイントの選択](media/concepts-data-access-and-security-private-link/select-private-link.png)
+:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link.png" alt-text="承認保留中のプライベート エンドポイントの選択":::
 
 * MySQL サーバー管理者は、PEC の承認または拒否を選択できます。また、必要に応じて、短いテキスト応答を追加することもできます。
 
-![プライベート エンドポイントの選択のメッセージ](media/concepts-data-access-and-security-private-link/select-private-link-message.png)
+:::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link-message.png" alt-text="プライベート エンドポイントの選択のメッセージ":::
 
 * 承認または拒否すると、一覧には応答テキストと共に適切な状態が反映されます
 
-![プライベート エンドポイントの選択の最終状態](media/concepts-data-access-and-security-private-link/show-private-link-approved-connection.png)
+:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-approved-connection.png" alt-text="プライベート エンドポイントの選択の最終状態":::
 
 ## <a name="use-cases-of-private-link-for-azure-database-for-mysql"></a>Azure Database for MySQL 用の Private Link のユースケース
 
 クライアントは、同じ VNet または同じリージョン内でピアリングされた VNet から、またはリージョン間の VNet 間接続を介して、プライベート エンドポイントに接続できます。 さらに、クライアントは、ExpressRoute、プライベート ピアリング、または VPN トンネリングを使用して、オンプレミスから接続できます。 一般的なユース ケースを示す簡略化された図を以下に示します。
 
-![プライベート エンドポイントの選択の概要](media/concepts-data-access-and-security-private-link/show-private-link-overview.png)
+:::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-overview.png" alt-text="プライベート エンドポイントの選択の概要":::
 
 ### <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>ピアリングされた Virtual Network (VNet) での Azure VM からの接続
 [VNet ピアリング](https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-powershell)を構成して、ピアリングされた VNet 内の Azure VM から Azure Database for MySQL への接続を確立します。

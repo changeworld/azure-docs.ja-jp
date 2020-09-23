@@ -11,15 +11,15 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: d57122ee98eb6612f43d09ecff4797038ceaf5f2
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 21969f52223a4e0c7de6ee26c0a6f9e2f96366b1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654091"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902344"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>実験でデータセットをバージョン管理して追跡する
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 この記事では、再現性のために Azure Machine Learning データセットをバージョン管理する方法について説明します。 データセットのバージョン管理は、将来の実験のために特定のバージョンのデータセットを適用できるように、データの状態をブックマークする方法です。
 
@@ -32,7 +32,7 @@ ms.locfileid: "88654091"
 
 このチュートリアルには、次のものが必要です。
 
-- [Azure Machine Learning SDK for Python がインストール](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)されていること。 この SDK には、[azureml-datasets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset?view=azure-ml-py) パッケージが含まれています。
+- [Azure Machine Learning SDK for Python がインストール](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)されていること。 この SDK には、[azureml-datasets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset?view=azure-ml-py&preserve-view=true) パッケージが含まれています。
     
 - [Azure Machine Learning ワークスペース](concept-workspace.md)。 次のコードを実行して既存のものを取得するか、[新しいワークスペースを作成](how-to-manage-workspace.md)します。
 
@@ -63,7 +63,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ### <a name="retrieve-a-dataset-by-name"></a>名前でデータセットを取得する
 
-既定では、`Dataset` クラスの [get_by_name()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) メソッドでは、ワークスペースに登録されているデータセットの最新バージョンが返されます。 
+既定では、`Dataset` クラスの [get_by_name()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) メソッドでは、ワークスペースに登録されているデータセットの最新バージョンが返されます。 
 
 次のコードでは、`titanic_ds` データセットのバージョン 1 を取得します。
 
@@ -158,7 +158,7 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 各機械学習の実験ごとに、実験 `Run` オブジェクトを介して、入力として使用されるデータセットを簡単に追跡できます。
 
-次のコードでは、[`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--) メソッドを使用して、実験の実行でどの入力データセットが使用されたかを追跡します。
+次のコードでは、[`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=trueget-details--) メソッドを使用して、実験の実行でどの入力データセットが使用されたかを追跡します。
 
 ```Python
 # get input datasets

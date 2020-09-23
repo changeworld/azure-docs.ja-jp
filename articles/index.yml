@@ -13,12 +13,12 @@ metadata:
   ms.date: 09/10/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: ae4e327b7b4d230bd89baccdd27d5ac416ebb6cb
-  ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+  ms.openlocfilehash: aec131b8c7a3e5092b6b090668fb0eb006b079a3
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/15/2020
-  ms.locfileid: "90087951"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90904138"
 highlightedContent:
   items:
   - title: Azure 開発者向けファースト ステップ ガイド
@@ -36,7 +36,7 @@ highlightedContent:
 productDirectory:
   title: Azure 製品を参照する
   items:
-  - title: Anomaly Detector (プレビュー)
+  - title: Anomaly Detector
     summary: アプリに異常検出機能を簡単に追加できます
     imageSrc: https://static.docs.com/ui/media/product/azure/anomaly-detector.svg
     azureCategories:
@@ -144,6 +144,13 @@ productDirectory:
     azureCategories:
     - ai-machine-learning
     url: cognitive-services/bing-web-search/overview.md
+  - title: Communication Services
+    summary: リアルタイムの音声、ビデオ、テレフォニーをアプリに追加する
+    imageSrc: ./media/index/communication-services.svg
+    azureCategories:
+    - web
+    - mobile
+    url: communication-services/overview.md
   - title: Computer Vision
     summary: 画像から意思決定に役立つ情報を抽出します
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
@@ -610,7 +617,7 @@ productDirectory:
     azureCategories:
     - databases
     url: azure-sql/managed-instance/index.yml
-  - title: Azure SQL Edge (プレビュー)
+  - title: Azure SQL Edge
     summary: 占有領域が少なく、エッジに対して最適化され、AI が組み込まれたデータ エンジン
     imageSrc: https://static.docs.com/ui/media/product/azure/sql-database-edge.svg
     azureCategories:
@@ -900,7 +907,7 @@ productDirectory:
     - iot
     - security
     url: asc-for-iot/index.yml
-  - title: オートメーション
+  - title: Automation
     summary: プロセス自動化でクラウド管理を簡素化
     imageSrc: https://static.docs.com/ui/media/product/azure/automation.svg
     azureCategories:

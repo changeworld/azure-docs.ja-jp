@@ -1,7 +1,7 @@
 ---
-title: Azure Machine Learning デザイナーを使用してモデルを再トレーニングする (プレビュー)
+title: Azure Machine Learning デザイナーを使用してモデルを再トレーニングする
 titleSuffix: Azure Machine Learning
-description: 発行されたパイプラインを使用して Azure Machine Learning デザイナー (プレビュー) でモデルを再トレーニングする方法について説明します。
+description: 発行されたパイプラインを使用して Azure Machine Learning デザイナーでモデルを再トレーニングする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,15 +10,15 @@ author: likebupt
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 181d79c6aef87999bc1b4242a70870edf60ad7df
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d43bea855d9ac3dc34b8e72adcd9577e5933e52c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319628"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905679"
 ---
-# <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナーを使用してモデルを再トレーニングする (プレビュー)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="retrain-models-with-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーを使用してモデルを再トレーニングする
+
 
 このハウツー記事では、Azure Machine Learning デザイナーを使用して機械学習モデルを再トレーニングする方法について説明します。 発行されたパイプラインを使用してワークフローを自動化し、パラメーターを設定して新しいデータに対してモデルをトレーニングします。 
 
@@ -32,16 +32,16 @@ ms.locfileid: "87319628"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Enterprise SKU の Azure Machine Learning ワークスペース。
-* この操作方法シリーズのパート 1、[デザイナーでのデータの変換](how-to-designer-transform-data.md)に関する記事を完了してください。
+* Azure Machine Learning ワークスペース
+* この操作方法シリーズのパート 1、[デザイナーでのデータの変換](how-to-designer-transform-data.md)に関する記事を完了してください
 
 [!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
-また、この記事は、デザイナーでパイプラインを構築することの基本的知識を持っていることも前提としています。 ガイド付きの概要については、[チュートリアル](tutorial-designer-automobile-price-train-score.md)を完了してください。 
+また、この記事では、デザイナーでのパイプラインの構築に関する知識を持っていることも前提としています。 ガイド付きの概要については、[チュートリアル](tutorial-designer-automobile-price-train-score.md)を完了してください。 
 
 ### <a name="sample-pipeline"></a>サンプル パイプライン
 
-この記事で使用されているパイプラインは、[サンプル 3: 収入予測](samples-designer.md#classification)で取り上げたパイプラインの変更されたバージョンです。 サンプル データセットではなく[データのインポート](algorithm-module-reference/import-data.md) モジュールをパイプラインに使用して、独自のデータを利用してモデルをトレーニングする方法を示します。
+この記事で使用されているパイプラインは、デザイナーのホームページにある、サンプル パイプライン「[収入の予測](samples-designer.md#classification)」の変更されたバージョンです。 サンプル データセットではなく[データのインポート](algorithm-module-reference/import-data.md) モジュールをパイプラインに使用して、独自のデータを利用してモデルをトレーニングする方法を示します。
 
 ![データのインポート モジュールが強調表示されている、変更されたサンプル パイプラインを示すスクリーンショット](./media/how-to-retrain-designer/modified-sample-pipeline.png)
 
@@ -83,7 +83,8 @@ ms.locfileid: "87319628"
 1. **[その他の出力]** で実行ログと共にモデルを見つけることができます。
 1. または、 **[出力の表示]** アイコンを選択します。 ここでは、ダイアログの指示に従って、データストアに直接移動できます。 
 
-![トレーニングされたモデルをダウンロードする方法を示すスクリーンショット](./media/how-to-retrain-designer/trained-model-view-output.png)
+> [!div class="mx-imgBorder"]
+> ![トレーニングされたモデルをダウンロードする方法を示すスクリーンショット](./media/how-to-retrain-designer/trained-model-view-output.png)
 
 ## <a name="publish-a-training-pipeline"></a>トレーニング パイプラインを発行する
 
@@ -101,9 +102,9 @@ ms.locfileid: "87319628"
 
 これでトレーニング パイプラインが発行されたので、それを利用し、新しいデータに対してモデルを再トレーニングできます。 パイプライン エンドポイントから実行を送信するには、studio ワークスペースまたはプログラムを使用します。
 
-### <a name="submit-runs-by-using-the-designer"></a>デザイナーを使用して実行を送信する
+### <a name="submit-runs-by-using-the-studio-portal"></a>Studio ポータルを使用した実行の送信
 
-以下の手順を使用して、デザイナーからパラメーター化されたパイプライン エンドポイントの実行を送信します。
+以下の手順を使用して、Studio ポータルからパラメーター化されたパイプライン エンドポイントの実行を送信します。
 
 1. studio ワークスペースの **[エンドポイント]** ページに移動します。
 1. **[パイプライン エンドポイント]** タブを選択します。次に、パイプライン エンドポイントを選択します。

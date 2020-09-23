@@ -1,6 +1,6 @@
 ---
-title: テンプレートを使用して Azure Stack Edge デバイスに VM をデプロイする
-description: テンプレートを使用して、Azure Stack Edge デバイスに仮想マシン (VM) を作成し、管理する方法について説明します。
+title: テンプレートを使用して Azure Stack Edge Pro デバイスに VM をデプロイする
+description: テンプレートを使用して、Azure Stack Edge Pro デバイスに仮想マシン (VM) を作成し、管理する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: alkohli
-ms.openlocfilehash: 5b69d10bc2f3c5ec737e026059c82c3efac681b5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: eeefbcdc080620c60f7cd49b8f749375e23ddd02
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268161"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899718"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-templates"></a>テンプレートを使用して Azure Stack Edge GPU デバイスに VM をデプロイする
+# <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>テンプレートを使用して Azure Stack Edge Pro GPU デバイスに VM をデプロイする
 
-このチュートリアルでは、テンプレートを使用して、Azure Stack Edge デバイスに VM を作成し、管理する方法について説明します。 これらのテンプレートは、VM のインフラストラクチャと構成を定義する JavaScript Object Notation (JSON) ファイルです。 これらのテンプレートでは、デプロイするリソースとそれらのリソースのプロパティを指定します。
+このチュートリアルでは、テンプレートを使用して、Azure Stack Edge Pro デバイスに VM を作成し、管理する方法について説明します。 これらのテンプレートは、VM のインフラストラクチャと構成を定義する JavaScript Object Notation (JSON) ファイルです。 これらのテンプレートでは、デプロイするリソースとそれらのリソースのプロパティを指定します。
 
 テンプレートは、ファイルから実行時に入力としてパラメーターを受け取ることができるため、さまざまな環境で柔軟に使用できます。 標準的な名前付け構造は、テンプレートの場合は `TemplateName.json`、パラメーター ファイルの場合は `TemplateName.parameters.json` となります。 ARM テンプレートの詳細については、「[Azure Resource Manager テンプレートとは](../azure-resource-manager/templates/overview.md)」を参照してください。
 
@@ -25,7 +25,7 @@ ms.locfileid: "89268161"
 
 ## <a name="vm-deployment-workflow"></a>VM デプロイのワークフロー
 
-多数のデバイスに Azure Stack Edge VM をデプロイする場合は、完全なフリート用に 1 つの sysprep 済みの VHD を、デプロイ用に同じテンプレートを使用することができます。また、デプロイの場所ごとにそのテンプレートへのパラメーターに対して、わずかな変更を行うだけで済みます (これらの変更は、ここで行っているように手動で行うことも、プログラムで行うこともできます)。 
+多数のデバイスに Azure Stack Edge Pro VM をデプロイする場合は、完全なフリート用に 1 つの sysprep 済みの VHD を、デプロイ用に同じテンプレートを使用することができます。また、デプロイの場所ごとにそのテンプレートへのパラメーターに対して、わずかな変更を行うだけで済みます (これらの変更は、ここで行っているように手動で行うことも、プログラムで行うこともできます)。 
 
 テンプレートを使用するデプロイの大まかなワークフローは次のとおりです。
 
@@ -57,13 +57,13 @@ ms.locfileid: "89268161"
 
 ## <a name="device-prerequisites"></a>デバイスに関する前提条件
 
-Azure Stack Edge デバイスでこれらの前提条件を構成します。
+Azure Stack Edge Pro デバイスでこれらの前提条件を構成します。
 
 [!INCLUDE [azure-stack-edge-gateway-deploy-virtual-machine-prerequisites](../../includes/azure-stack-edge-gateway-deploy-virtual-machine-prerequisites.md)]
 
 ## <a name="client-prerequisites"></a>クライアントに関する前提条件
 
-Azure Stack Edge デバイスにアクセスするために使用されるクライアントで、これらの前提条件を構成します。
+Azure Stack Edge Pro デバイスにアクセスするために使用されるクライアントで、これらの前提条件を構成します。
 
 1. VHD をアップロードするために使用する場合は、[Storage Explorer をダウンロード](https://azure.microsoft.com/features/storage-explorer/)します。 AzCopy をダウンロードして VHD をアップロードすることもできます。 以前のバージョンの AzCopy を実行している場合は、クライアント コンピューターでの TLS 1.2 の構成が必要になることがあります。 
 1. クライアント コンピューターに [VM テンプレートとパラメーター ファイルをダウンロード](https://aka.ms/ase-vm-templates)します。 それを、作業ディレクトリとして使用するディレクトリに解凍します。
@@ -108,7 +108,7 @@ New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resou
 ```
 
 > [!NOTE]
-> Azure Resource Manager を使用して作成できるのは、ローカル冗長ストレージ (Standard_LRS または Premium_LRS) などのローカル ストレージ アカウントのみです。 階層型ストレージ アカウントを作成する場合は、[Azure Stack Edge でのストレージ アカウントの追加と接続](azure-stack-edge-j-series-deploy-add-storage-accounts.md)に関するページの手順を参照してください。
+> Azure Resource Manager を使用して作成できるのは、ローカル冗長ストレージ (Standard_LRS または Premium_LRS) などのローカル ストレージ アカウントのみです。 階層型ストレージ アカウントを作成する場合は、[Azure Stack Edge Pro でのストレージ アカウントの追加と接続](azure-stack-edge-j-series-deploy-add-storage-accounts.md)に関するページの手順を参照してください。
 
 サンプル出力を次に示します。
 
@@ -145,7 +145,7 @@ BLOB ストレージへの接続に使用するクライアント用に、hosts 
 
 `<Device IP> <storage account name>.blob.<Device name>.<DNS domain>`
 
-一般的な環境では、すべてのストレージ アカウントが、`*.blob.devicename.domainname.com` エントリがある Azure Stack Edge デバイスを指すように DNS を構成します。
+一般的な環境では、すべてのストレージ アカウントが、`*.blob.devicename.domainname.com` エントリがある Azure Stack Edge Pro デバイスを指すように DNS を構成します。
 
 ### <a name="optional-install-certificates"></a>(省略可能) 証明書をインストールする
 
@@ -215,7 +215,7 @@ BLOB ストレージへの接続に使用するクライアント用に、hosts 
 
 <!--### Use AzCopy for upload
 
-Before you use AzCopy, make sure that the [AzCopy is configured correctly](#configure-azcopy) for use with the blob storage REST API version that you are using with your Azure Stack Edge device.
+Before you use AzCopy, make sure that the [AzCopy is configured correctly](#configure-azcopy) for use with the blob storage REST API version that you are using with your Azure Stack Edge Pro device.
 
 
 ```powershell
@@ -245,11 +245,14 @@ VM のイメージと仮想ネットワークを作成するには、`CreateImag
 
 ```json
 "parameters": {
+        "osType": {
+              "value": "<Operating system corresponding to the VHD you upload can be Windows or Linux>"
+        },
         "imageName": {
             "value": "<Name for the VM iamge>"
         },
         "imageUri": {
-      "value": "<Path to the VHD that you uploaded in the Storage account>"
+              "value": "<Path to the VHD that you uploaded in the Storage account>"
         },
         "vnetName": {
             "value": "<Name for the virtual network where you will deploy the VM>"
@@ -266,7 +269,7 @@ VM のイメージと仮想ネットワークを作成するには、`CreateImag
     }
 ```
 
-`CreateImageAndVnet.parameters.json` ファイルを編集し、Azure Stack Edge デバイスに次のものを含めます。
+`CreateImageAndVnet.parameters.json` ファイルを編集し、Azure Stack Edge Pro デバイスに次のものを含めます。
 
 1. アップロードする VHD に対応する OS の種類を指定します。 OS の種類は、Windows または Linux にすることができます。
 
@@ -338,7 +341,7 @@ VM のイメージと仮想ネットワークを作成するには、`CreateImag
 テンプレート `CreateImageAndVnet.json` をデプロイします。 このテンプレートにより、後の手順で VM を作成するために使用される VNet およびイメージ リソースがデプロイされます。
 
 > [!NOTE]
-> テンプレートをデプロイするときに認証エラーが発生する場合は、このセッションの Azure 資格情報の有効期限が切れている可能性があります。 `login-AzureRM` コマンドを再実行し、Azure Stack Edge デバイスで Azure Resource Manager にもう一度接続します。
+> テンプレートをデプロイするときに認証エラーが発生する場合は、このセッションの Azure 資格情報の有効期限が切れている可能性があります。 `login-AzureRM` コマンドを再実行し、Azure Stack Edge Pro デバイスで Azure Resource Manager にもう一度接続します。
 
 1. 次のコマンドを実行します。 
     
@@ -434,7 +437,7 @@ VM を作成するには、`CreateVM.parameters.json` パラメーター ファ�
         }
 ```    
 
-`CreateVM.parameters.json` で、Azure Stack Edge デバイスに適したパラメーターを割り当てます。
+`CreateVM.parameters.json` で、Azure Stack Edge Pro デバイスに適したパラメーターを割り当てます。
 
 1. 一意の名前、ネットワーク インターフェイス名、および ipconfig 名を指定します。 
 1. ユーザー名、パスワード、およびサポートされている VM のサイズを入力します。
@@ -501,7 +504,7 @@ VM 作成テンプレートの `CreateVM.json` をデプロイします。 こ�
         
         $templateFile = "<Path to CreateVM.json>"
         $templateParameterFile = "<Path to CreateVM.parameters.json>"
-        $RGName = "RG1"
+        $RGName = "<Resource group name>"
              
         New-AzureRmResourceGroupDeployment `
             -ResourceGroupName $RGName `
@@ -547,7 +550,27 @@ VM 作成テンプレートの `CreateVM.json` をデプロイします。 こ�
         
         PS C:\07-30-2020>
     ```   
- 
+また、`–AsJob` パラメーターを使用して `New-AzureRmResourceGroupDeployment` コマンドを非同期に実行することもできます。 コマンドレットがバックグラウンドで実行される場合の出力例を次に示します。 その後、 `Get-Job` コマンドレットを使用して、作成されたジョブの状態をクエリできます。
+
+    ```powershell   
+    PS C:\WINDOWS\system32> New-AzureRmResourceGroupDeployment `
+    >>     -ResourceGroupName $RGName `
+    >>     -TemplateFile $templateFile `
+    >>     -TemplateParameterFile $templateParameterFile `
+    >>     -Name "Deployment2" `
+    >>     -AsJob
+     
+    Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
+    --     ----            -------------   -----         -----------     --------             -------
+    2      Long Running... AzureLongRun... Running       True            localhost            New-AzureRmResourceGro...
+     
+    PS C:\WINDOWS\system32> Get-Job -Id 2
+     
+    Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
+    --     ----            -------------   -----         -----------     --------             -------
+    2      Long Running... AzureLongRun... Completed     True            localhost            New-AzureRmResourceGro...
+    ```
+
 7. VM が正常にプロビジョニングされているかどうかを確認します。 次のコマンドを実行します。
 
     `Get-AzureRmVm`
@@ -555,11 +578,23 @@ VM 作成テンプレートの `CreateVM.json` をデプロイします。 こ�
 
 ## <a name="connect-to-a-vm"></a>VM への接続
 
+Windows と Linux のどちらの VM を作成したかによって、接続する手順が異なる場合があります。
+
+### <a name="connect-to-windows-vm"></a>Windows VM への接続
+
+Windows VM に接続するには、これらの手順に従います。
+
 [!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-windows.md)]
+
+### <a name="connect-to-linux-vm"></a>Linux VM への接続
+
+Linux VM に接続するには、これらの手順に従います。
+
+[!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-linux.md)]
 
 <!--## Manage VM
 
-The following section describes some of the common operations around the VM that you will create on your Azure Stack Edge device.
+The following section describes some of the common operations around the VM that you will create on your Azure Stack Edge Pro device.
 
 [!INCLUDE [azure-stack-edge-gateway-manage-vm](../../includes/azure-stack-edge-gateway-manage-vm.md)]-->
 
@@ -574,9 +609,9 @@ The following section describes some of the common operations around the VM that
 
 <!--## Configure AzCopy
 
-When you install the latest version of AzCopy, you will need to configure AzCopy to ensure that it matches the blob storage REST API version of your Azure Stack Edge device.
+When you install the latest version of AzCopy, you will need to configure AzCopy to ensure that it matches the blob storage REST API version of your Azure Stack Edge Pro device.
 
-On the client used to access your Azure Stack Edge device, set up a global variable to match the blob storage REST API version.
+On the client used to access your Azure Stack Edge Pro device, set up a global variable to match the blob storage REST API version.
 
 ### On Windows client 
 

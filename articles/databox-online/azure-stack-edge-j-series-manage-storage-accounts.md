@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU ストレージ アカウント管理 | Microsoft Docs
-description: Azure portal を使用して Azure Stack Edge のストレージ アカウントを管理する方法について説明します。
+title: Azure Stack Edge Pro GPU ストレージ アカウント管理 | Microsoft Docs
+description: Azure portal を使用して Azure Stack Edge Pro のストレージ アカウントを管理する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,24 +8,24 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 3b190a108651f4b127c2f009c383613922a59018
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a239b36a539cf7be3e880512b753d45ae4050bad
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254299"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904539"
 ---
-# <a name="use-the-azure-portal-to-manage-edge-storage-accounts-on-your-azure-stack-edge"></a>Azure portal を使用して Azure Stack Edge の Edge ストレージ アカウントを管理する
+# <a name="use-the-azure-portal-to-manage-edge-storage-accounts-on-your-azure-stack-edge-pro"></a>Azure portal を使用して Azure Stack Edge Pro の Edge ストレージ アカウントを管理する
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-この記事では、Azure Stack Edge の Edge ストレージ アカウントを管理する方法について説明します。 Azure Stack Edge の管理は、Azure portal またはローカル Web UI を通じて行えます。 Azure portal を使用して、デバイスの Edge ストレージ アカウントを追加または削除します。
+この記事では、Azure Stack Edge Pro の Edge ストレージ アカウントを管理する方法について説明します。 Azure Stack Edge Pro の管理は、Azure portal またはローカル Web UI を通じて行うことができます。 Azure portal を使用して、デバイスの Edge ストレージ アカウントを追加または削除します。
 
 ## <a name="about-edge-storage-accounts"></a>Edge ストレージ アカウントについて
 
-SMB、NFS、または REST プロトコルを使用して、Azure Stack Edge デバイスからデータを転送できます。 REST API を使用して BLOB ストレージにデータを転送するには、Edge ストレージ アカウントを Azure Stack Edge に作成する必要があります。 
+SMB、NFS、または REST プロトコルを使用して、Azure Stack Edge Pro デバイスからデータを転送できます。 REST API を使用して BLOB ストレージにデータを転送するには、Edge ストレージ アカウントを Azure Stack Edge Pro に作成する必要があります。 
 
-Azure Stack Edge デバイスに追加した Edge ストレージ アカウントは、Azure ストレージ アカウントにマップされます。 Edge ストレージ アカウントに書き込まれたデータは、自動的にクラウドにプッシュされます。
+Azure Stack Edge Pro デバイスに追加した Edge ストレージ アカウントは、Azure ストレージ アカウントにマップされます。 Edge ストレージ アカウントに書き込まれたデータは、自動的にクラウドにプッシュされます。
 
 2 種類のアカウントと、これらの各アカウントから Azure へのデータの流れについて説明する図を次に示します。
 

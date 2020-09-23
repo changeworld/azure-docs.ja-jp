@@ -9,15 +9,15 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/12/2020
-ms.openlocfilehash: bb213776d41c07238fcaba1ccdd4e06f5d5bbb5f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a548a1aa6b7c6382d00e218f1b61347002df2b38
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420891"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907777"
 ---
 # <a name="train-wide--deep-recommender"></a>ワイドかつディープなレコメンダーのトレーニング
-この記事では、Azure Machine Learning デザイナー (プレビュー) で**ワイドかつディープなレコメンダーのトレーニング** モジュールを使用して、推奨モデルをトレーニングする方法について説明します。 このモジュールは、Google によって提案されているワイド & ディープ ラーニング (Wide & Deep Learning) に基づいています。
+この記事では、Azure Machine Learning デザイナーで**ワイドかつディープなレコメンダーのトレーニング** モジュールを使用して、推奨モデルをトレーニングする方法について説明します。 このモジュールは、Google によって提案されているワイド & ディープ ラーニング (Wide & Deep Learning) に基づいています。
 
 **ワイドかつディープなレコメンダーのトレーニング** モジュールは、ユーザー項目の評価 3 要素のデータセットと、オプションで一部のユーザーと項目の特徴を読み取ります。 これにより、トレーニング済みのワイドかつディープなレコメンダーが返されます。  その後、トレーニング済みのモデルを使用して、[ワイドかつディープなレコメンダーのスコア付け](score-wide-and-deep-recommender.md)モジュールを使用して評価予測や提案を生成することができます。  
 
@@ -84,7 +84,7 @@ ms.locfileid: "87420891"
 
 ### <a name="train-the-model"></a>モデルをトレーニングする
 
-1.  **ワイドかつディープなレコメンダーのトレーニング** モジュールをデザイナー (プレビュー) 内の実験に追加し、これをトレーニング データセットに接続します。  
+1.  **ワイドかつディープなレコメンダーのトレーニング** モジュールをデザイナー内の実験に追加し、これをトレーニング データセットに接続します。  
   
 2. ユーザーの特徴または項目の特徴のいずれかの個別のデータセットがある場合は、これらを**ワイドかつディープなレコメンダーのトレーニング** モジュールに接続します。  
   

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 08/04/2020
-ms.openlocfilehash: 94a2c9bf3f65897809edaf94fc01b442e02b46d9
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 97cadfb8f5004cfd2701335172d4416c64f05259
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553004"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907877"
 ---
 # <a name="module-k-means-clustering"></a>モジュール:K-Means クラスタリング
 
-この記事では、Azure Machine Learning デザイナー (プレビュー) で *K-Means クラスタリング* モジュールを使用して、トレーニングされていない K-Means クラスタリング モデルを作成する方法について説明します。 
+この記事では、Azure Machine Learning デザイナーで *K-Means クラスタリング* モジュールを使用して、トレーニングされていない K-Means クラスタリング モデルを作成する方法について説明します。 
  
 K-Means は、最も単純であり、よく知られている "*教師なし*" 学習アルゴリズムの 1 つです。 以下のようなさまざまな機械学習タスクにこのアルゴリズムを使用できます。 
 

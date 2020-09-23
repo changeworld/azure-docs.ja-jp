@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/24/2020
-ms.openlocfilehash: 508e2d229c067ac84d4c8d6338e658df8d3fa932
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2bd698d9513310571c0e8c53136f85c62532df43
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113209"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905886"
 ---
 # <a name="configure-and-access-audit-logs-for-azure-database-for-mysql-in-the-azure-portal"></a>Azure portal での Azure Database for MySQL の監査ログの構成とアクセス
 
@@ -35,39 +35,39 @@ ms.locfileid: "86113209"
 1. Azure Database for MySQL サーバーを選択します。
 
 1. サイドバーの **[設定]** セクションで、 **[サーバー パラメーター]** を選択します。
-    ![サーバー パラメーター](./media/howto-configure-audit-logs-portal/server-parameters.png)
+    :::image type="content" source="./media/howto-configure-audit-logs-portal/server-parameters.png" alt-text="サーバー パラメーター":::
 
 1. **audit_log_enabled** パラメーターを ON に更新します。
-    ![監査ログの有効化](./media/howto-configure-audit-logs-portal/audit-log-enabled.png)
+    :::image type="content" source="./media/howto-configure-audit-logs-portal/audit-log-enabled.png" alt-text="監査ログの有効化":::
 
 1. **audit_log_events** パラメーターを更新して、ログに記録する[イベントの種類](concepts-audit-logs.md#configure-audit-logging)を選択します。
-    ![監査ログのイベント](./media/howto-configure-audit-logs-portal/audit-log-events.png)
+    :::image type="content" source="./media/howto-configure-audit-logs-portal/audit-log-events.png" alt-text="監査ログのイベント":::
 
 1. **audit_log_exclude_users** パラメーターを更新して、ログから除外する MySQL ユーザーを追加します。 ユーザーは MySQL ユーザー名で指定します。
-    ![監査ログの除外ユーザー](./media/howto-configure-audit-logs-portal/audit-log-exclude-users.png)
+    :::image type="content" source="./media/howto-configure-audit-logs-portal/audit-log-exclude-users.png" alt-text="監査ログの除外ユーザー":::
 
 1. パラメーターを変更すると、 **[保存]** をクリックできます。 または変更を **[破棄]** することができます。
-    ![および](./media/howto-configure-audit-logs-portal/save-parameters.png)
+    :::image type="content" source="./media/howto-configure-audit-logs-portal/save-parameters.png" alt-text="および":::
 
 ## <a name="set-up-diagnostic-logs"></a>診断ログの設定
 
 1. サイドバーの **[監視]** セクションの下で、 **[診断設定]** を選択します。
 
-1. [+ Add diagnostic setting] (診断設定の追加) をクリックします。![診断設定の追加](./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png)
+1. [+ Add diagnostic setting] (診断設定の追加) をクリックします。:::image type="content" source="./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png" alt-text="診断設定の追加":::
 
 1. 診断設定の名前を指定します。
 
 1. どのデータ シンク (ストレージ アカウント、イベント ハブ、Log Analytics ワークスペース) に監査ログを送信するか指定します。
 
 1. ログの種類として "MySqlAuditLogs" を選択します。
-![診断設定の構成](./media/howto-configure-audit-logs-portal/configure-diagnostic-setting.png)
+:::image type="content" source="./media/howto-configure-audit-logs-portal/configure-diagnostic-setting.png" alt-text="診断設定の構成":::
 
 1. 監査ログをパイプするようにデータ シンクを設定したら、 **[保存]** をクリックすることができます。
-![診断設定の保存](./media/howto-configure-audit-logs-portal/save-diagnostic-setting.png)
+:::image type="content" source="./media/howto-configure-audit-logs-portal/save-diagnostic-setting.png" alt-text="診断設定の保存":::
 
 1. 構成したデータ シンクを調べて監査ログにアクセスします。 ログが表示されるまでに最大で 10 分かかる可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
 
 - Azure Database for MySQL の[監査ログ](concepts-audit-logs.md)の詳細について学習します
-- [Azure CLI](howto-configure-audit-logs-cli.md) で監査ログを構成する方法について学習します
+- [Azure CLI](howto-configure-audit-logs-cli.md) で監査ログを構成する方法を学習します

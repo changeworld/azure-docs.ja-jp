@@ -1,6 +1,6 @@
 ---
-title: Azure portal を使用した Azure Stack Edge のトラブルシューティング | Microsoft Docs
-description: Azure Stack Edge に関する問題のトラブルシューティング方法について説明します。 診断を実行し、サポートに関する情報を収集し、ログを使用してトラブルシューティングを行うことができます。
+title: Azure portal を使用した Azure Stack Edge Pro のトラブルシューティング | Microsoft Docs
+description: Azure Stack Edge Pro に関する問題のトラブルシューティング方法について説明します。 診断を実行し、サポートに関する情報を収集し、ログを使用してトラブルシューティングを行うことができます。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: alkohli
-ms.openlocfilehash: f9dabdfd9df77822f06c41fa4355a1657bceb76c
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: bc4afa0d26f6ba256354d3802a0c4f9b9b04088e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88134566"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903646"
 ---
-# <a name="troubleshoot-your-azure-stack-edge-issues"></a>Azure Stack Edge に関する問題をトラブルシューティングする
+# <a name="troubleshoot-your-azure-stack-edge-pro-issues"></a>Azure Stack Edge Pro に関する問題をトラブルシューティングする
 
-この記事では、Azure Stack Edge に関する問題をトラブルシューティングする方法について説明します。 
+この記事では、Azure Stack Edge Pro に関する問題をトラブルシューティングする方法について説明します。 
 
 この記事では、次のことについて説明します。
 
@@ -65,7 +65,7 @@ ms.locfileid: "88134566"
 
       ![共有への接続とその内容の表示](media/azure-stack-edge-troubleshoot/troubleshoot-logs-1.png)
 
-2. "_Microsoft Azure Stack Edge フォルダー_" を選択します。 このフォルダーには、次の 2 つのサブフォルダーがあります。
+2. "_Microsoft Azure Stack Edge Pro フォルダー_" を選択します。 このフォルダーには、次の 2 つのサブフォルダーがあります。
 
     * アップロードのエラー用のログ ファイルがある Upload フォルダー。
     * 更新中のエラー用の Refresh フォルダー。

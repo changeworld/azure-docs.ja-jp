@@ -10,15 +10,15 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 60dd9631df0b997ce39134002bdb6ed9f69336ed
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9e24a652bb4e577ff9b604b6b4f5284883723ee5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319271"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906721"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>チュートリアル:多クラス画像分類のラベル付けプロジェクトを作成する 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 このチュートリアルでは、機械学習モデルを構築するためのデータとして使用する画像にラベルを付ける (タグ付けとも呼ばれます) プロセスを管理する方法について説明します。 Azure Machine Learning でのデータのラベル付けは、パブリック プレビュー段階にあります。
 
@@ -130,7 +130,7 @@ Azure Machine Learning データストアは、サブスクリプション ID �
 
 1. **[次へ]** を選択します。
 
-1. Enterprise ワークスペースを使用している場合は、 **[ML によるラベル付け]** セクションが表示されます。  チェック ボックスはオフのままにします。 ML によるラベル付けでは、このチュートリアルで使用するものよりも多くのデータが必要です。
+1. **[ML によるラベル付け]** セクションで、チェックボックスをオフのままにします。 ML によるラベル付けでは、このチュートリアルで使用するものよりも多くのデータが必要です。
 
 1. **[プロジェクトの作成]** を選択します。
 

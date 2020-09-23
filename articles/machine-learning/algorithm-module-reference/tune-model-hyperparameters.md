@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/17/2020
-ms.openlocfilehash: 916d23670e1db22efe43e2966d96aa1c82f1852a
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: b88a9477c9d63becb32bc95ca78b4a8117168a47
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782160"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907771"
 ---
 # <a name="tune-model-hyperparameters"></a>モデルのハイパーパラメーターの調整
 
-この記事では、Azure Machine Learning デザイナー (プレビュー) の "モデルのハイパーパラメーターの調整" モジュールの使用方法について説明します。 目標は、機械学習モデルの最適なハイパーパラメーターを特定することです。 このモジュールでは、さまざまに組み合わせた設定を使って複数のモデルをビルドし、テストします。 その後、すべてのモデルについてメトリックを比較し、設定の組み合わせを求めます。 
+この記事では、Azure Machine Learning デザイナーの "モデルのハイパーパラメーターの調整" モジュールの使用方法について説明します。 目標は、機械学習モデルの最適なハイパーパラメーターを特定することです。 このモジュールでは、さまざまに組み合わせた設定を使って複数のモデルをビルドし、テストします。 その後、すべてのモデルについてメトリックを比較し、設定の組み合わせを求めます。 
 
 "*パラメーター*" と "*ハイパーパラメーター*" は混同しやすい用語です。 モデルの "*パラメーター*" は、モジュールの右ペインで設定します。 つまり、このモジュールでは、指定されたパラメーター設定に対する "*パラメーター スイープ*" を行います。 デシジョン ツリー、データセット、回帰方法ごとに異なる可能性がある "_ハイパーパラメーター_" の最適なセットを学習します。 最適な構成を見つけるプロセスは、"*チューニング*" と呼ばれることもあります。 
 

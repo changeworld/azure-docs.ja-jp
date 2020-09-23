@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge デバイスでの Kubernetes ストレージ管理について | Microsoft Docs
-description: Azure Stack Edge デバイスで Kubernetes ストレージ管理がどのように行われるかについて説明します。
+title: Azure Stack Edge Pro デバイスでの Kubernetes ストレージ管理について | Microsoft Docs
+description: Azure Stack Edge Pro デバイスで Kubernetes ストレージ管理がどのように行われるかについて説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/27/2020
 ms.author: alkohli
-ms.openlocfilehash: 57574b66ddb20e592a5979a4b827347f7c8e09af
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: ff2a473ca008e9b283d03ebb05f35122473d778a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268093"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899261"
 ---
-# <a name="kubernetes-storage-management-on-your-azure-stack-edge-gpu-device"></a>Azure Stack Edge GPU デバイスでの Kubernetes ストレージ管理
+# <a name="kubernetes-storage-management-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスでの Kubernetes ストレージ管理
 
-Azure Stack Edge デバイスでは、コンピューティング ロールを構成するときに Kubernetes クラスターが作成されます。 Kubernetes クラスターが作成されると、コンテナー化されたアプリケーションを Kubernetes クラスターのポッドにデプロイできます。 Kubernetes クラスター内のポッドにストレージを提供するには、別の方法があります。 
+Azure Stack Edge Pro デバイスでは、コンピューティング ロールを構成するときに Kubernetes クラスターが作成されます。 Kubernetes クラスターが作成されると、コンテナー化されたアプリケーションを Kubernetes クラスターのポッドにデプロイできます。 Kubernetes クラスター内のポッドにストレージを提供するには、別の方法があります。 
 
-この記事では、Kubernetes クラスターでストレージをプロビジョニングする方法を全体的に、具体的にはお使いの Azure Stack Edge デバイスに即して説明します。 
+この記事では、Kubernetes クラスターでストレージをプロビジョニングする方法を全体的に、具体的にはお使いの Azure Stack Edge Pro デバイスに即して説明します。 
 
 ## <a name="storage-requirements-for-kubernetes-pods"></a>Kubernetes ポッドのストレージ要件
 
@@ -75,9 +75,9 @@ Kubernetes クラスター管理者は、ストレージを静的にプロビジ
 1. **PVC をコンテナーにマウントする**: PVC が PV にバインドされたら、静的プロビジョニングと同じ方法でコンテナーのパスに PVC をマウントし、共有に対して読み取りまたは書き込みを行うことができます。
 
 
-## <a name="storage-provisioning-on-azure-stack-edge"></a>Azure Stack Edge でのストレージのプロビジョニング
+## <a name="storage-provisioning-on-azure-stack-edge-pro"></a>Azure Stack Edge Pro でのストレージのプロビジョニング
 
-Azure Stack Edge デバイスでは、デバイスのストレージ機能を使用して、静的にプロビジョニングされた `PersistentVolumes` が作成されます。 共有をプロビジョニングし、 **[Edge コンピューティングで共有を使用する]** オプションを有効にすると、このアクションによって Kubernetes クラスター内に PV リソースが自動的に作成されます。
+Azure Stack Edge Pro デバイスでは、デバイスのストレージ機能を使用して、静的にプロビジョニングされた `PersistentVolumes` が作成されます。 共有をプロビジョニングし、 **[Edge コンピューティングで共有を使用する]** オプションを有効にすると、このアクションによって Kubernetes クラスター内に PV リソースが自動的に作成されます。
 
 ![静的プロビジョニングのための Azure portal でのローカル共有の作成](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-2.png)
 
@@ -85,7 +85,7 @@ Azure Stack Edge デバイスでは、デバイスのストレージ機能を使
 
 ![静的プロビジョニングのための Azure portal でのクラウド共有の作成](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-1.png)
 
-SMB 共有と NFS 共有の両方を作成して、Azure Stack Edge デバイスで PV を静的にプロビジョニングすることができます。 PV がプロビジョニングされたら、このストレージを要求する PVC を送信します。 ストレージを要求し、プロビジョニングした共有を使用する、PVC の展開 `yaml` の例を次に示します。
+SMB 共有と NFS 共有の両方を作成して、Azure Stack Edge Pro デバイスで PV を静的にプロビジョニングすることができます。 PV がプロビジョニングされたら、このストレージを要求する PVC を送信します。 ストレージを要求し、プロビジョニングした共有を使用する、PVC の展開 `yaml` の例を次に示します。
 
 
 ```yml
@@ -103,13 +103,13 @@ spec:
   storageClassName: ""
 ```
 
-詳細については、[kubectl 経由で Azure Stack Edge に静的プロビジョニングを使用したステートフル アプリケーションのデプロイ](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md)に関するページを参照してください。
+詳細については、[kubectl を使用した Azure Stack Edge Pro での静的プロビジョニングによるステートフル アプリケーションのデプロイ](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md)に関する記事をご覧ください。
 
-Azure Stack Edge には、Kubernetes ノードに接続されているデータ ディスク ストレージを使用する `ase-node-local` と呼ばれる組み込みの `StorageClass` もあります。 この `StorageClass` では動的プロビジョニングがサポートされています。 ポッド アプリケーションで `StorageClass` 参照を作成し、PV が自動的に作成されるようにすることができます。 詳細については、[Kubernetes ダッシュボード](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)で `ase-node-local StorageClass` を照会してください。
+Azure Stack Edge Pro には、Kubernetes ノードに接続されているデータ ディスク ストレージを使用する `ase-node-local` と呼ばれる組み込みの `StorageClass` もあります。 この `StorageClass` では動的プロビジョニングがサポートされています。 ポッド アプリケーションで `StorageClass` 参照を作成し、PV が自動的に作成されるようにすることができます。 詳細については、[Kubernetes ダッシュボード](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)で `ase-node-local StorageClass` を照会してください。
 
 ![Kubernetes ダッシュボードの組み込みストレージ クラス](./media/azure-stack-edge-gpu-kubernetes-storage/dynamic-provisioning-builtin-storage-class-1.png)
 
-詳細については、[kubectl 経由で Azure Stack Edge に動的プロビジョニングを使用したステートフル アプリケーションのデプロイ](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md)に関するページを参照してください。
+詳細については、[kubectl を使用した Azure Stack Edge Pro での動的プロビジョニングによるステートフル アプリケーションのデプロイ](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md)に関する記事をご覧ください。
 
 ## <a name="choose-storage-type"></a>ストレージの種類の選択
 
@@ -127,8 +127,8 @@ Azure Stack Edge には、Kubernetes ノードに接続されているデータ 
 
 `PersistentVolume` を静的にプロビジョニングする方法については、次を参照してください。
 
-- [kubectl 経由で Azure Stack Edge に静的プロビジョニングを使用してステートフル アプリケーションをデプロイする](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md)。
+- [kubectl を使用して Azure Stack Edge Pro で静的プロビジョニングによってステートフル アプリケーションをデプロイする](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md)。
 
 `StorageClass` を動的にプロビジョニングする方法については、次を参照してください。
 
-- [kubectl 経由で Azure Stack Edge に動的プロビジョニングを使用してステートフル アプリケーションをデプロイする](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md)。
+- [kubectl を使用して Azure Stack Edge Pro で動的プロビジョニングによってステートフル アプリケーションをデプロイする](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md)。

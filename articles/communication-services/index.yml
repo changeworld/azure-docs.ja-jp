@@ -1,0 +1,102 @@
+### YamlMime:Landing
+title: Azure Communication Services
+summary: Azure Communication Services は、音声、ビデオ、チャット、テレフォニーをアプリに追加できるクラウドベースの通信サービスです。 Azure Communication Services は現在パブリック プレビュー段階にあることに注意してください。
+metadata:
+  title: Azure Communication Services
+  description: Azure Communication Services は、音声、ビデオ、チャット、テレフォニーをアプリに追加できるクラウドベースの通信サービスです。 Azure Communication Services は現在パブリック プレビュー段階にあることに注意してください。
+  ms.service: azure-communication-services
+  ms.topic: landing-page
+  author: mikben
+  ms.author: mikben
+  ms.date: 08/10/2020
+  ms.openlocfilehash: 6081063605439982e29984cc4378ec3aee7ac08a
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90929036"
+landingContent:
+- title: Azure Communication Services について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Communication Services とは
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: クライアント ライブラリのオプション
+      url: concepts/sdk-options.md
+- title: 作業開始
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Communication Services のリソースを作成する
+      url: quickstarts/create-communication-resource.md
+    - text: ユーザー アクセス トークンを作成して管理する
+      url: quickstarts/access-tokens.md
+  - linkListType: concept
+    links:
+    - text: クライアントとサーバーのアーキテクチャ
+      url: concepts/client-and-server-architecture.md
+    - text: 認証と承認
+      url: concepts/authentication.md
+    - text: イベント処理
+      url: concepts/event-handling.md
+    - text: 通知
+      url: concepts/notifications.md
+- title: 音声およびビデオによる通話
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 音声およびビデオによる通話をアプリに追加する
+      url: quickstarts/voice-video-calling/getting-started-with-calling.md
+    - text: 通話クライアント ライブラリを使用する
+      url: quickstarts/voice-video-calling/calling-client-samples.md
+  - linkListType: concept
+    links:
+    - text: 音声とビデオに関する概念
+      url: concepts/voice-video-calling/about-call-types.md
+    - text: 通話クライアント ライブラリの概要
+      url: concepts/voice-video-calling/calling-sdk-features.md
+    - text: 通話のフロー
+      url: concepts/call-flows.md
+- title: テレフォニーと SMS
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 電話番号の取得
+      url: quickstarts/telephony-sms/get-phone-number.md
+    - text: SMS メッセージの送信
+      url: quickstarts/telephony-sms/send.md
+    - text: SMS イベントの処理
+      url: quickstarts/telephony-sms/handle-sms-events.md
+  - linkListType: concept
+    links:
+    - text: SMS に関する概念
+      url: concepts/telephony-sms/concepts.md
+    - text: SMS クライアント ライブラリの概要
+      url: concepts/telephony-sms/sdk-features.md
+    - text: 通話の概要
+      url: concepts/voice-video-calling/calling-sdk-features.md
+    - text: テレフォニーと SMS ソリューションの計画
+      url: concepts/telephony-sms/plan-solution.md
+- title: チャット
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: チャットをアプリに追加する
+      url: quickstarts/chat/get-started.md
+  - linkListType: concept
+    links:
+    - text: チャットに関する概念
+      url: concepts/chat/concepts.md
+    - text: チャット クライアント ライブラリの概要
+      url: concepts/chat/sdk-features.md
+- title: サンプル
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: グループ通話のヒーロー サンプルを使ってみる
+      url: samples/calling-hero-sample.md
+    - text: チャットのヒーロー サンプルを使ってみる
+      url: samples/chat-hero-sample.md

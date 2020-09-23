@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 506bd79a512a5d8d143f582ee84d292dff86d9df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5515c21d89b01576bb6aae8c9d480b439dc1507
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392813"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902708"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server 内のログ
 
@@ -23,7 +23,7 @@ Azure Database for PostgreSQL では、Postgres の標準ログを構成して�
 ## <a name="configure-logging"></a>ログの構成 
 サーバー パラメーターのログを使用して、サーバー上で Postgres 標準ログを構成できます。 各 Azure Database for PostgreSQL サーバーでは、`log_checkpoints` と `log_connections` が既定でオンになっています。 ログのニーズに合わせて調整できる追加のパラメーターがあります。 
 
-![Azure Database for PostgreSQL - ログ パラメーター](./media/concepts-server-logs/log-parameters.png)
+:::image type="content" source="./media/concepts-server-logs/log-parameters.png" alt-text="Azure Database for PostgreSQL - ログ パラメーター":::
 
 Postgres ログ パラメーターの詳細については、Postgres ドキュメントの[ログに記録するタイミング](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHEN)と[ログに記録する内容](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHAT)のセクションを参照してください。 すべてではありませんがほとんどの Postgre ログ パラメーターを Azure Database for PostgreSQL で構成できます。
 

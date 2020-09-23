@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: b949603b3e6ee51311f9c54f3e1326217f00c82d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 88ca997e2d22283babf582b10d9b0eeb7de122c0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039117"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905185"
 ---
 # <a name="score-image-model"></a>画像モデルのスコア付け
 
-この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナーのモジュールについて説明します。
 
 入力画像データに対してトレーニングされた画像モデルを使用して予測を生成するには、このモジュールを使用します。
 

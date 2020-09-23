@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: f54dd09ac82ddefeb2528462c7131aa921592d2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa81987f9214870e248ef9b625e6afcd1093fe5d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84487952"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907881"
 ---
 # <a name="init-image-transformation"></a>イメージ変換の初期化
 
-この記事では、Azure Machine Learning デザイナー (プレビュー) の**イメージ変換の初期化**モジュールを使用して、イメージ変換を初期化し、イメージを変換する方法を指定する方法について説明します。
+この記事では、Azure Machine Learning デザイナーの**イメージ変換の初期化**モジュールを使用して、イメージ変換を初期化し、イメージを変換する方法を指定する方法について説明します。
 
 ## <a name="how-to-configure-init-image-transformation"></a>イメージ変換の初期化の構成方法
 

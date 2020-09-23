@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 2be89f9263c71b7c9d7bc32edd0b1fc7cb2cfbce
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: cf22a165e9a6eadcd2e5d4cdb0efa301538be7e9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118156"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907537"
 ---
 # <a name="configure-and-access-azure-database-for-postgresql---single-server-logs-from-the-azure-portal"></a>Azure portal からの Azure Database for PostgreSQL - Single Server ログの構成とアクセス
 
@@ -29,7 +29,7 @@ Azure portal から [Azure Database for PostgreSQL のログ](concepts-server-lo
 
 3. サイドバーの **[監視]** セクションの下で、 **[サーバー ログ]** を選択します。 
 
-   ![[サーバー ログ] オプションのスクリーンショット](./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png)
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png" alt-text="[サーバー ログ] オプションのスクリーンショット":::
 
 4. サーバー パラメーターを表示するには、 **[ログを有効にし、ログ パラメーターを構成するには、ここをクリックしてください]** を選択します。
 
@@ -37,7 +37,7 @@ Azure portal から [Azure Database for PostgreSQL のログ](concepts-server-lo
 
    パラメーターを変更した後、 **[保存]** を選択します。 または、変更を破棄することができます。 
 
-   ![サーバー パラメーターのオプションのスクリーンショット](./media/howto-configure-server-logs-in-portal/3-save-discard.png)
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/3-save-discard.png" alt-text="サーバー パラメーターのオプションのスクリーンショット":::
 
 **[サーバー パラメーター]** ページを閉じると、ログの一覧に戻ることができます。
 
@@ -50,18 +50,18 @@ Azure portal から [Azure Database for PostgreSQL のログ](concepts-server-lo
 
 3. サイドバーの **[監視]** セクションの下で、 **[サーバー ログ]** を選択します。 ページに、ログ ファイルの一覧が表示されます。
 
-   ![ログの一覧が強調して示されている [サーバーログ] ページのスクリーンショット](./media/howto-configure-server-logs-in-portal/4-server-logs-list.png)
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/4-server-logs-list.png" alt-text="ログの一覧が強調して示されている [サーバーログ] ページのスクリーンショット":::
 
    > [!TIP]
    > ログの名前付け規則は、**postgresql-yyyy-mm-dd_hh0000.log** です。 ファイル名に使用されている日時は、ログが発行された日時です。 ログ ファイルのローテーションは、1 時間ごとか 100 MB ごとのどちらか早い方のタイミングで行われます。
 
 4. 必要に応じて、検索ボックスを使用して、日付と時刻に基づいて特定のログをすばやく絞り込みます。 検索はログの名前に対して行われます。
 
-   ![検索ボックスと結果が強調表示されている [サーバーログ] ページのスクリーンショット](./media/howto-configure-server-logs-in-portal/5-search.png)
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/5-search.png" alt-text="検索ボックスと結果が強調表示されている [サーバーログ] ページのスクリーンショット":::
 
 5. 個々のログ ファイルをダウンロードするには、表の行で各ログ ファイルの横にある下向き矢印アイコンを選択します。
 
-   ![下矢印アイコンが強調して示されている [サーバーログ] ページのスクリーンショット](./media/howto-configure-server-logs-in-portal/6-download.png)
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/6-download.png" alt-text="下矢印アイコンが強調して示されている [サーバーログ] ページのスクリーンショット":::
 
 ## <a name="next-steps"></a>次のステップ
 - [CLI のアクセス サーバー ログ](howto-configure-server-logs-using-cli.md)に関するページを参照して、プログラムでログをダウンロードする方法について学習します。

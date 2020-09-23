@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: e2277e2088a8cb386d6f19799b235d96e08959b0
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: e9496dc70d847d0e9e830a216e8f435b1c48d878
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543437"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900969"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics と Azure Machine Learning の統合 (プレビュー)
 
@@ -33,23 +33,39 @@ ms.locfileid: "87543437"
 
 ## <a name="add-a-machine-learning-model-to-your-job"></a>機械学習モデルをジョブに追加する
 
-Azure portal から直接、Azure Machine Learning 関数を Stream Analytics ジョブに追加できます。
+Azure portal または Visual Studio Code から直接、Azure Machine Learning 関数を Stream Analytics ジョブに追加できます。
 
-1. Azure portal で Stream Analytics ジョブに移動し、 **[ジョブ トポロジ]** で **[関数]** を選択します。 次に、 **[+ 追加]** ドロップダウン メニューから **[Azure ML Service]** を選択します。
+### <a name="azure-portal"></a>Azure portal
 
-   ![Azure ML UDF の追加](./media/machine-learning-udf/add-azureml-udf.png)
+1. Azure portal で Stream Analytics ジョブに移動し、 **[ジョブ トポロジ]** で **[関数]** を選択します。 次に、 **[+ 追加]** ドロップダウン メニューから **[Azure Machine Learning Service]** を選択します。
+
+   ![Azure Machine Learning UDF を追加する](./media/machine-learning-udf/add-azure-machine-learning-udf.png)
 
 2. **[Azure Machine Learning Service function]\(Azure Machine Learning Service 関数\)** フォームに次のプロパティ値を入力します。
 
-   ![Azure ML UDF の構成](./media/machine-learning-udf/configure-azureml-udf.png)
+   ![Azure Machine Learning UDF を構成する](./media/machine-learning-udf/configure-azure-machine-learning-udf.png)
 
-次の表は、Stream Analytics の Azure ML Service 関数の各プロパティの説明です。
+### <a name="visual-studio-code"></a>Visual Studio Code
+
+1. Visual Studio Code で Stream Analytics プロジェクトを開き、 **[関数]** フォルダーを右クリックします。 次に、 **[関数の追加]** を選択します。 ドロップダウン リストで **[Machine Learning UDF]** を選択します。
+
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function.png" alt-text="VS Code で UDF を追加する":::
+
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function-2.png" alt-text="VS Code で Azure Machine Learning UDF を追加する":::
+
+2. 関数名を入力し、CodeLens の **[Select from your subscriptions]\(サブスクリプションから選択する\)** を使用して、構成ファイルの設定を指定します。
+
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-function-name.png" alt-text="VS Code で Azure Machine Learning UDF を選択する":::
+
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-configure-settings.png" alt-text="VS Code で Azure Machine Learning UDF を構成する":::
+
+次の表は、Stream Analytics の Azure Machine Learning Service 関数の各プロパティの説明です。
 
 |プロパティ|説明|
 |--------|-----------|
 |関数のエイリアス|クエリ内で関数を呼び出すための名前を入力します。|
 |サブスクリプション|お使いの Azure サブスクリプション。|
-|Azure ML ワークスペース|モデルを Web サービスとしてデプロイするために使用した Azure Machine Learning ワークスペース。|
+|Azure Machine Learning ワークスペース|モデルを Web サービスとしてデプロイするために使用した Azure Machine Learning ワークスペース。|
 |デプロイメント|モデルをホストしている Web サービス。|
 |関数シグネチャ|API のスキーマ仕様から推測される Web サービスのシグネチャ。 シグネチャの読み込みに失敗した場合は、スキーマを自動生成するためにスコアリング スクリプトでサンプルの入力と出力を提供したことを確認してください。|
 |パーティションごとの並列要求の数|これは、高スケールのスループットを最適化するための高度な構成です。 この数は、ジョブの各パーティションから Web サービスに送信される同時要求を表します。 ストリーミング ユニット (SU) が 6 つ以下のジョブには、1 つのパーティションがあります。 SU が 12 個のジョブには 2 つのパーティションがあり、SU が 18 個であれば 3 つのパーティションがあり、以下同様です。<br><br> たとえば、ジョブに 2 つのパーティションがあり、このパラメーターを 4 に設定した場合、ジョブから Web サービスへの同時要求数は 8 になります。 パブリック プレビューのこの時点では、この値は既定で 20 であり、更新できません。|
@@ -168,4 +184,3 @@ Web サービスをデプロイした後、バッチ サイズを変えながら
 
 * [チュートリアル:Azure Stream Analytics の JavaScript ユーザー定義関数](stream-analytics-javascript-user-defined-functions.md)
 * [Azure Machine Learning Studio (クラシック) 関数を使用した Stream Analytics ジョブのスケーリング](stream-analytics-scale-with-machine-learning-functions.md)
-

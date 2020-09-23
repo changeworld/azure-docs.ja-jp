@@ -5,20 +5,20 @@ description: Visual Studio Code を使用して Azure Machine Learning のコー
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: troubleshooting
+ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 08/06/2020
-ms.openlocfilehash: 73cb8396876a5baad74190ec9a86237362037c36
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 3c2934c92be668d4b4c05f97a98395e2e219b7dc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87907354"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907620"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Visual Studio Code を使用した対話型デバッグ
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Visual Studio Code (VS Code) および [depugpy](https://github.com/microsoft/debugpy/) を使用して Azure Machine Learning のパイプラインとデプロイを対話形式でデバッグする方法について説明します。
 
@@ -37,7 +37,7 @@ Visual Studio Code (VS Code) および [depugpy](https://github.com/microsoft/de
   * 仮想ネットワーク内の Notebook VM のコンピューティング インスタンス
   * VPN または ExpressRoute を使用した仮想ネットワークへのプライベート ネットワーク接続があるクライアント コンピューター。
 
-Azure Machine Learning で Azure Virtual Network を使用する方法の詳細については、「[Azure Virtual Network 内で Azure ML の実験と推論のジョブを安全に実行する](how-to-enable-virtual-network.md)」を参照してください。
+Azure Machine Learning で Azure Virtual Network を使用する方法の詳細については、「[仮想ネットワークの分離とプライバシーの概要](how-to-network-security-overview.md)」を参照してください。
 
 > [!TIP]
 > 仮想ネットワークの内側にない Azure Machine Learning リソースを操作することもできますが、仮想ネットワークの使用をお勧めします。
@@ -109,7 +109,7 @@ ML パイプライン ステップでは、Python スクリプトが実行され
         print(f'Debugger attached = {debugpy.is_client_connected()}')
     ```
 
-次の Python の例は、デバッグを有効にする基本的な `train.py` ファイルを示しています。
+次の Python の例は、デバッグを有効にするシンプルな `train.py` ファイルを示しています。
 
 ```python
 # Copyright (c) Microsoft. All rights reserved.
@@ -281,7 +281,7 @@ ip_address: 10.3.0.5
 場合によっては、モデル デプロイに含まれる Python コードを対話的にデバッグする必要が生じることがあります。 たとえば、エントリ スクリプトが失敗し、追加のログ記録によっても理由を特定できない場合がこれにあたります。 VS Code と debugpy を使用すると、Docker コンテナー内で実行されているコードにアタッチできます。
 
 > [!IMPORTANT]
-> このデバッグ方法は、`Model.deploy()` と `LocalWebservice.deploy_configuration` を使用してローカルでモデルをデプロイしている場合は機能しません。 代わりに、[Model.package()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-) クラスを使用してイメージを作成する必要があります。
+> このデバッグ方法は、`Model.deploy()` と `LocalWebservice.deploy_configuration` を使用してローカルでモデルをデプロイしている場合は機能しません。 代わりに、[Model.package()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-) クラスを使用してイメージを作成する必要があります。
 
 ローカル Web サービスのデプロイでは、ローカル システムで動作する Docker インストールが必要です。 Docker の使用の詳細については、[Docker のドキュメント](https://docs.docker.com/)を参照してください。 コンピューティング インスタンスを使用する場合は、Docker が既にインストールされていることに注意してください。
 
