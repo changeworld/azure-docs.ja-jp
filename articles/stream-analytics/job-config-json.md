@@ -6,16 +6,16 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 02/14/2020
-ms.openlocfilehash: 0676b987725a33049d9da3256bdd4e6dc8028d00
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: f2dd759203655746601699f665436c78ee0758f8
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045180"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885497"
 ---
 # <a name="azure-stream-analytics-jobconfigjson-fields"></a>Azure Stream Analytics JobConfig.json フィールド
 
-[Visual Studio Code で Azure Stream Analytics ジョブを作成する](quick-create-vs-code.md)目的で使用される *JobConfig.json* ファイルでは次のフィールドがサポートされています。
+[Visual Studio Code で Azure Stream Analytics ジョブを作成する](quick-create-visual-studio-code.md)目的で使用される *JobConfig.json* ファイルでは次のフィールドがサポートされています。
 
 ```json
 {
@@ -55,7 +55,7 @@ ms.locfileid: "86045180"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Visual Studio Code で Azure Stream Analytics ジョブを作成する](quick-create-vs-code.md)
+* [Visual Studio Code で Azure Stream Analytics ジョブを作成する](quick-create-visual-studio-code.md)
 * [Visual Studio Code を使用してサンプル データで Stream Analytics クエリをローカルでテストする](visual-studio-code-local-run.md)
 * [Visual Studio Code を使用してライブ ストリーム入力に対して Stream Analytics クエリをローカルでテストする](visual-studio-code-local-run-live-input.md)
 *[CI/CD npm パッケージを使用して Azure Stream Analytics ジョブをデプロイする](setup-cicd-vs-code.md)

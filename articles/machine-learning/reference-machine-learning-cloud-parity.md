@@ -11,12 +11,12 @@ ms.author: andzha
 author: Anurzeuii
 ms.date: 08/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: c899d14b6e0eea8135b996aadfe2a7388a8fcb89
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 4a6f09fdff82b8e86c7fe75018c5267dba3c1b4a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88860520"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892975"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Azure Machine Learning ソブリン クラウドの同等性
 
@@ -49,9 +49,9 @@ Microsoft では、パブリック クラウドとソブリン リージョン�
 | Azure ML SDK を使用してパイプライン エンドポイントを作成する                           | GA                   | YES                | YES         |
 | Azure ML SDK を使用したパイプラインのスケジュールされた実行の作成、編集、削除 | GA                   | はい*               | はい*        |
 | Studio でパイプラインの実行の詳細を表示する                                        | GA                   | YES                | YES         |
-| Azure ML デザイナーでパイプラインを作成、実行、視覚化、および発行する          | パブリック プレビュー       | YES                | YES         |
+| Azure ML デザイナーでパイプラインを作成、実行、視覚化、および発行する          | GA      | YES                | YES         |
 | ML パイプラインとの Azure Databricks 統合                             | GA                   | NO                 | NO          |
-| Azure ML デザイナーでのパイプライン エンドポイントの作成                             | パブリック プレビュー       | YES                | YES         |
+| Azure ML デザイナーでのパイプライン エンドポイントの作成                             | GA      | YES                | YES         |
 | **統合されたノートブック** |   |  | | 
 | ワークスペース ノートブックとファイル共有                                        | GA                   | YES                | YES         |
 | R および Python のサポート                                                       | GA                   | YES                | YES         |
@@ -136,7 +136,7 @@ Microsoft では、パブリック クラウドとソブリン リージョン�
 * Azure Machine Learning のコンピューティング インスタンスでは、24 時間以上続くトークンを更新する機能は Azure Government では使用できません。
 * 米国アリゾナ リージョンでは、モデル プロファイルは 4 CPU をサポートしません。   
 * サンプル ノートブックは、パブリック データへのアクセスが必要な場合、Azure Government で機能しないことがあります。
-* IP アドレス:[VNet と強制トンネリング](how-to-enable-virtual-network.md#forced-tunneling)命令で使用される CLI コマンドは、IP 範囲を返しません。 代わりに [Azure Government の Azure IP 範囲とサービス タグ](https://www.microsoft.com/download/details.aspx?id=57063)を使用してください。
+* IP アドレス:[VNet と強制トンネリング](how-to-secure-training-vnet.md#forced-tunneling)命令で使用される CLI コマンドは、IP 範囲を返しません。 代わりに [Azure Government の Azure IP 範囲とサービス タグ](https://www.microsoft.com/download/details.aspx?id=57063)を使用してください。
 * スケジュールされたパイプラインの場合は、BLOB ベースのトリガー メカニズムも用意されています。 このメカニズムは CMK ワークスペースではサポートされていません。 CMK ワークスペースの BLOB ベースのトリガーを有効にするには、追加のセットアップを行う必要があります。 詳細については、「[ロジック アプリから Machine Learning パイプラインの実行をトリガーする](how-to-trigger-published-pipeline.md)」を参照してください。
 * ファイアウォール:Azure Government リージョンを使用する場合は、次の追加のホストをファイアウォール設定に追加します。
 
@@ -162,9 +162,9 @@ Microsoft では、パブリック クラウドとソブリン リージョン�
 | Azure ML SDK を使用してパイプライン エンドポイントを作成する                           | GA               | YES       | 該当なし        |
 | Azure ML SDK を使用したパイプラインのスケジュールされた実行の作成、編集、削除 | GA               | YES       | 該当なし        |
 | Studio でパイプラインの実行の詳細を表示する                                        | GA               | YES       | 該当なし        |
-| Azure ML デザイナーでパイプラインを作成、実行、視覚化、および発行する          | パブリック プレビュー   | YES       | 該当なし        |
+| Azure ML デザイナーでパイプラインを作成、実行、視覚化、および発行する          | GA  | YES       | 該当なし        |
 | ML パイプラインとの Azure Databricks 統合                             | GA               | NO        | 該当なし        |
-| Azure ML デザイナーでのパイプライン エンドポイントの作成                             | パブリック プレビュー   | YES       | 該当なし        |
+| Azure ML デザイナーでのパイプライン エンドポイントの作成                             | GA   | YES       | 該当なし        |
 | **統合されたノートブック** |   | | |
 | ワークスペース ノートブックとファイル共有                                        | GA               | YES       | 該当なし        |
 | R および Python のサポート                                                       | GA               | YES       | 該当なし        |
@@ -236,7 +236,7 @@ Microsoft では、パブリック クラウドとソブリン リージョン�
     | Azure Active Directory              | `https://login.microsoftonline.com`          | `https://login.chinacloudapi.cn`             |
 
 * サンプル ノートブックは、パブリック データへのアクセスが必要な場合に機能しないことがあります。
-* IP アドレス範囲:[VNet と強制トンネリング](how-to-enable-virtual-network.md#forced-tunneling)命令で使用される CLI コマンドは、IP 範囲を返しません。 代わりに [Azure China の Azure IP 範囲とサービス タグ](https://www.microsoft.com//download/details.aspx?id=57062)を使用してください。
+* IP アドレス範囲:[VNet と強制トンネリング](how-to-secure-training-vnet.md#forced-tunneling)命令で使用される CLI コマンドは、IP 範囲を返しません。 代わりに [Azure China の Azure IP 範囲とサービス タグ](https://www.microsoft.com//download/details.aspx?id=57062)を使用してください。
 * Azure Machine Learning コンピューティング インスタンスのプレビューは、プライベート リンクが有効になっているワークスペースでは現在サポートされていませんが、すべての AML リージョンにサービス展開する次回のデプロイでは CI がサポートされるようになります。
 
 ## <a name="next-steps"></a>次のステップ

@@ -47,12 +47,12 @@
       items:
         - name: エージェントの接続に関する問題
           href: troubleshoot-agent-onboard.md
-    - name: 関連項目
-      items:
-        - name: 利用可能なリージョンとデータの保存場所
-          href: data-residency.md
-        - name: REST
-          href: /rest/api/hybridcompute
-        - name: Azure Policy の組み込み
-          displayName: 'samples, policies, definitions'
-          href: policy-reference.md
+- name: 関連項目
+  items:
+    - name: データの保存場所
+      href: data-residency.md
+    - name: REST
+      href: /rest/api/hybridcompute
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: policy-reference.md

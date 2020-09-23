@@ -10,17 +10,17 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.date: 08/20/2020
-ms.openlocfilehash: 900e36ec3e508f9d3616cf0c0d19ea4ff067f775
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 982c7a41f1e05c34ddf0fbae9f944df4a4d08fa5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144789"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893367"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>時系列予測モデルを自動トレーニングする
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-この記事では、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py) の自動機械学習 (AutoML) を使用して、時系列予測回帰モデルを構成およびトレーニングする方法について説明します。 
+
+この記事では、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true) の自動機械学習 (AutoML) を使用して、時系列予測回帰モデルを構成およびトレーニングする方法について説明します。 
 
 コードの作成経験が少ない場合は、「[チュートリアル:自動機械学習を使用して自転車シェアリング需要を予測する](tutorial-automated-ml-forecast.md)」で [Azure Machine Learning Studio](https://ml.azure.com/) の自動機械学習を使用して、時系列の予測を行う方法について参照してください。
 
@@ -38,7 +38,7 @@ ms.locfileid: "89144789"
 
 * Azure Machine Learning ワークスペース。 ワークスペースを作成するには、[Azure Machine Learning ワークスペース](how-to-manage-workspace.md)の作成に関するページを参照してください。
 
-* この記事では、自動化された機械学習実験の設定に基本的に精通していることを前提としています。 [チュートリアル](tutorial-auto-train-models.md)または[ハウツー](how-to-configure-auto-train.md)に従って、自動化された機械学習実験の基本的な設計パターンについて確認してください。
+* この記事では、自動化された機械学習実験の設定にある程度精通していることを前提としています。 [チュートリアル](tutorial-auto-train-models.md)または[方法](how-to-configure-auto-train.md)に従って、自動化された機械学習実験の主要な設計パターンについて確認してください。
 
 ## <a name="preparing-data"></a>データの準備
 
@@ -93,7 +93,7 @@ test_labels = test_data.pop(label).values
 ```
 
 > [!IMPORTANT]
-> 将来の値を予測するためにモデルをトレーニングするときは、目的のトレーニングで使用されるすべての機能が、意図した期間の予測を実行するときに使用できることを確認してください。 たとえば、需要の予測を作成するときに、現在の株価の機能を含めれば、トレーニングの精度を大幅に高めることができます。 ただし、長期間にわたり予測する予定の場合、将来の時系列ポイントに応じた将来の株価を正確に予測できない可能性があり、モデルの精度が低下することがあります。
+> 将来の値を予測するためにモデルをトレーニングするときは、目的のトレーニングで使用されるすべての機能が、意図した期間の予測を実行するときに使用できることを確認してください。 <br> <br>たとえば、需要の予測を作成するときに、現在の株価の機能を含めれば、トレーニングの精度を大幅に高めることができます。 ただし、長期間にわたり予測する予定の場合、将来の時系列ポイントに応じた将来の株価を正確に予測できない可能性があり、モデルの精度が低下することがあります。
 
 <a name="config"></a>
 
@@ -101,11 +101,11 @@ test_labels = test_data.pop(label).values
 
 `AutoMLConfig` オブジェクトでは、個別のトレーニングおよび検証セットを直接指定できます。   [AutoMLConfig](#configure-experiment) の詳細について参照してください。
 
-時系列の予測では、トレーニング データと検証データを一緒に渡し、`AutoMLConfig` の `n_cross_validations` パラメーターでクロス検証のフォールド数を設定すると、**ローリング オリジン クロス検証 (ROCV)** が自動的に使用されます。 ROCV を使用すると、起点の時点を使用して系列をトレーニング データと検証データに分割することができます。 時間内の原点をスライドすると、クロス検証のフォールドが生成されます。 この戦略を使用すると、時系列データの整合性を維持し、データ漏えいのリスクを排除できます。
+時系列の予測の場合、既定では、**ローリング オリジン クロス検証 (ROCV)** のみが検証に使用されます。 トレーニングおよびと検証データを一緒に渡し、`AutoMLConfig` の `n_cross_validations` パラメーターでクロス検証の分割数を設定します。 ROCV を使用すると、起点の時点を使用して系列をトレーニング データと検証データに分割することができます。 時間内の原点をスライドすると、クロス検証のフォールドが生成されます。 この戦略を使用すると、時系列データの整合性を維持し、データ漏えいのリスクを排除できます。
 
-![alt text](./media/how-to-auto-train-forecast/ROCV.svg)
+![ローリング オリジン クロス検証](./media/how-to-auto-train-forecast/ROCV.svg)
 
-その他のクロス検証オプションとデータ分割オプションについては、[AutoML でのデータ分割とクロス検証の構成](how-to-configure-cross-validation-data-splits.md)に関するページを参照してください。
+また、独自の検証データを取り込むこともできます。詳細については、[AutoML でのデータの分割とクロス検証の構成](how-to-configure-cross-validation-data-splits.md#provide-validation-data)に関する記事を参照してください。
 
 
 ```python
@@ -118,7 +118,7 @@ automl_config = AutoMLConfig(task='forecasting',
 AutoML でクロス検証を適用して[モデルのオーバーフィットを防止](concept-manage-ml-pitfalls.md#prevent-over-fitting)する方法について、詳細情報をご覧ください。
 
 ## <a name="configure-experiment"></a>実験を構成する
-[`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) オブジェクトは、自動化された機械学習タスクに必要な設定とデータを定義します。 予測モデルの構成は、標準の回帰モデルの設定に似ていますが、特定の特徴量化の手順と構成オプションは時系列データ専用です。 
+[`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) オブジェクトは、自動化された機械学習タスクに必要な設定とデータを定義します。 予測モデルの構成は、標準の回帰モデルの設定に似ていますが、特定の特徴量化の手順と構成オプションは時系列データ専用です。 
 
 ### <a name="featurization-steps"></a>特徴量化の手順
 
@@ -163,13 +163,13 @@ featurization_config.add_transformer_params('Imputer', ['Quantity'], {"strategy"
 featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": "median"})
 ```
 
-Azure Machine Learning Studio を実験に使用している場合、[方法に関する記事](how-to-use-automated-ml-for-ml-models.md#customize-featurization)を参照してください。
+Azure Machine Learning Studio を実験に使用している場合は、[Studio で特徴量化をカスタマイズする方法](how-to-use-automated-ml-for-ml-models.md#customize-featurization)に関する記事を参照してください。
 
 ### <a name="configuration-settings"></a>構成設定
 
 回帰の問題と同様に、タスクの種類、イテレーションの数、トレーニング データ、クロス検証の数など、標準的なトレーニング パラメーターを定義します。 予測タスクの場合は、実験に影響を与える追加パラメーターを設定する必要があります。 
 
-これらの追加パラメーターの概要を次の表に示します。 構文のデザイン パターンについては、[リファレンス ドキュメント](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)を参照してください。
+これらの追加パラメーターの概要を次の表に示します。 構文のデザイン パターンについては、[リファレンス ドキュメント](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true)を参照してください。
 
 | パラメーター名&nbsp; | 説明 | 必須 |
 |-------|-------|-------|
@@ -245,7 +245,11 @@ automl_config = AutoMLConfig(task='forecasting',
                              ...
                              **time_series_settings)
 ```
+> [!Warning]
+> SDK を使用して作成された実験に対して DNN を有効にすると、[最適なモデル説明](how-to-machine-learning-interpretability-automl.md)が無効になります。
+
 Azure Machine Learning Studio で作成された AutoML 実験用の DNN を有効にするには、[Studio 入門にあるタスクの種類の設定に関するページ](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment)を参照してください。
+
 
 自動 ML では、レコメンデーション システムの一部として、ネイティブな時系列モデルとディープ ラーニング モデルの両方をユーザーに提供します。 
 
@@ -254,7 +258,6 @@ Azure Machine Learning Studio で作成された AutoML 実験用の DNN を有�
 Prophet (プレビュー)|Prophet は、強い季節的影響や複数の季節の履歴データを持つ時系列に最適です。 このモデルを利用するには、`pip install fbprophet` を使用してローカルにインストールします。 | 正確かつ高速で、時系列における外れ値、不足データ、および大幅な変化に対して有効です。
 自動 ARIMA (プレビュー)|自己回帰和分移動平均 (ARIMA) は、データが静的な場合に最適です。 これは、平均や分散などの統計的特性がセット全体で一定であることを意味します。 たとえば、コインを投げた場合、今日、明日、来年のいつ投げても、表が出る確率は 50% です。| 過去の値は将来の値を予測するために使用されるため、単変量系列に最適です。
 ForecastTCN (プレビュー)| ForecastTCN は、最も要求の厳しい予測タスクに対応するように設計されたニューラル ネットワーク モデルであり、データ内の非線形のローカル傾向とグローバル傾向と、時系列間の関係がキャプチャされます。|データの複雑な傾向を活用し、最大のデータセットに合わせて簡単にスケーリングできます。
-
 
 DNN を利用した詳細なコード例については、[飲料生産予測 ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb) をご参照ください。
 
@@ -266,8 +269,7 @@ DNN を利用した詳細なコード例については、[飲料生産予測 �
 
 この表は、ウィンドウ集計が適用されたときに発生する特徴エンジニアリングを示しています。 **最小値、最大値**、**合計値**の列は、定義された設定に基づいて、3 のスライディング ウィンドウで生成されます。 各行には新しい計算済みの特徴があります。2017 年 9 月 8 日の午前 4:00 のタイムスタンプの場合、最大値、最小値、合計値は、2017 年 9 月 8 日午前 1:00 から午前 3:00 までの**需要値**を使用して計算されます。 この 3 のウィンドウは、残りの行のデータを設定するためにシフトされます。
 
-![alt text](./media/how-to-auto-train-forecast/target-roll.svg)
-
+![ターゲットのローリング ウィンドウ](./media/how-to-auto-train-forecast/target-roll.svg)
 
 [ターゲットのローリング ウィンドウ集計の特徴](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)を利用した Python コードの例を参照してください。
 
@@ -336,5 +338,8 @@ day_datetime,store,week_of_year
 
 ## <a name="next-steps"></a>次のステップ
 
-* [チュートリアル](tutorial-auto-train-models.md)に従って、自動化された機械学習で実験を作成する方法について学習します。
-* [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) に関するリファレンス ドキュメントを確認します。
+* [モデルをデプロイする方法と場所](how-to-deploy-and-where.md)についてさらに詳しく学習する。
+* [解釈可能性: 自動機械学習のモデルの説明 (プレビュー)](how-to-machine-learning-interpretability-automl.md) について学習する。 
+* [多数モデル ソリューション アクセラレータ](https://aka.ms/many-models)で AutoML を使用して複数のモデルをトレーニングする方法について学習する。
+* 自動機械学習を使用して実験を作成するためのエンド ツー エンドの例については、[チュートリアル](tutorial-auto-train-models.md)に従ってください。
+

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
-ms.openlocfilehash: 154d28e4df9bad68f3c5e93208ccf62ba2721663
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: bd77af133b88e1ba93054dbb7e0f896d8d418f89
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144823"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893563"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure Machine Learning との Git 統合
 
@@ -70,12 +70,10 @@ Git 情報は、トレーニング実行のプロパティに格納されます�
 
 ### <a name="azure-portal"></a>Azure portal
 
-1. [Azure portal](https://portal.azure.com) でご自身のワークスペースを選択します。
+1. [Studio ポータル](https://ml.azure.com)で、ワークスペースを選択します。
 1. __[実験]__ を選択し、ご自身のいずれかの実験を選択します。
 1. __[RUN NUMBER]\(実行番号\)__ 列からいずれかの実行を選択します。
-1. __[ログ]__ を選択し、 __[ログ]__ エントリと __[azureml]__ エントリを展開します。 __###\_azure__ で始まるリンクを選択します。
-
-    ![ポータルでの ###_azure エントリ](./media/concept-train-model-git-integration/azure-machine-learning-logs.png)
+1. __[出力とログ]__ を選択し、 __[ログ]__ エントリと __[azureml]__ エントリを展開します。 __###\_azure__ で始まるリンクを選択します。
 
 次の JSON のようなテキストを含む情報が記録されています。
 
@@ -98,7 +96,7 @@ Git 情報は、トレーニング実行のプロパティに格納されます�
 
 ### <a name="python-sdk"></a>Python SDK
 
-トレーニング実行を送信すると、[Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) オブジェクトが返されます。 このオブジェクトの `properties` 属性には、ログに記録された git 情報が含まれています。 たとえば、次のコードではコミット ハッシュを取得します。
+トレーニング実行を送信すると、[Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) オブジェクトが返されます。 このオブジェクトの `properties` 属性には、ログに記録された git 情報が含まれています。 たとえば、次のコードではコミット ハッシュを取得します。
 
 ```python
 run.properties['azureml.git.commit']

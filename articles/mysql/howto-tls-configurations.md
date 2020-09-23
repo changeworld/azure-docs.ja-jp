@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: how-to
 ms.date: 06/02/2020
-ms.openlocfilehash: 46eaa6a3b97967da9c4743d0cf1f6edc8f90b1ce
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: d94e589a19b29e68883c0217b62b883f9d026789
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119786"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902736"
 ---
 # <a name="configuring-tls-settings-in-azure-database-for-mysql-using-azure-portal"></a>Azure portal を使用した Azure Database for MySQL での TLS 設定の構成
 
@@ -35,14 +35,14 @@ MySQL サーバーの TLS の最小バージョンを設定するには、次の
 
 1. **[TLS の最小バージョン]** で、 **[1.2]** を選択して、MySQL サーバーへの TLS 1.2 より低い TLS バージョンでの接続を拒否します。
 
-    ![Azure Database for MySQL の TLS 構成](./media/howto-tls-configurations/setting-tls-value.png)
+    :::image type="content" source="./media/howto-tls-configurations/setting-tls-value.png" alt-text="Azure Database for MySQL の TLS 構成":::
 
 1. **[保存]** をクリックして変更を保存します。
 
 1. 接続のセキュリティの設定が正常に有効化されたことを確認する通知が表示されます。
 
-    ![Azure Database for MySQL の TLS 構成の成功](./media/howto-tls-configurations/setting-tls-value-success.png)
+    :::image type="content" source="./media/howto-tls-configurations/setting-tls-value-success.png" alt-text="Azure Database for MySQL の TLS 構成の成功":::
 
 ## <a name="next-steps"></a>次のステップ
 
-- [メトリックに関するアラートを作成する方法](howto-alert-on-metric.md)について学習します。
+- [メトリックに関するアラートを作成する方法](howto-alert-on-metric.md)について学習します

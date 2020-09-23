@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 7178417a5c20afe5b1ed02bc526ec174704962df
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 444cb6a7819fa72f5987a21807fc707e0ba8b396
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79456252"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907917"
 ---
 # <a name="feature-hashing-module-reference"></a>特徴ハッシュ モジュール リファレンス
 
-この記事では Azure Machine Learning デザイナー (プレビュー) に含まれるモジュールについて説明します。
+この記事では Azure Machine Learning デザイナーに含まれるモジュールについて説明します。
 
 特徴ハッシュ モジュールを使用して、英語テキストのストリームを整数の特徴セットに変換します。 その後、このハッシュされた特徴セットを機械学習アルゴリズムに渡して、テキスト分析モデルをトレーニングすることができます。
 

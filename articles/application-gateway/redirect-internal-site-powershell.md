@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 03/03/2020
 ms.author: victorh
-ms.openlocfilehash: ab1cedf324c0391ce54773202b030b519c3e4766
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e3f53cc14b22e7d689e246c3f0609ce80c29ec4
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804257"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594307"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>Azure PowerShell を使用して内部リダイレクトと共にアプリケーション ゲートウェイを作成する
 
@@ -21,12 +21,11 @@ ms.locfileid: "84804257"
 
 この記事では、次の方法について説明します。
 
-> [!div class="checklist"]
-> * ネットワークのセットアップ
-> * アプリケーション ゲートウェイの作成
-> * リスナーとリダイレクト規則の追加
-> * バックエンド プールでの仮想マシン スケール セットの作成
-> * ドメインの CNAME レコードの作成
+* ネットワークのセットアップ
+* アプリケーション ゲートウェイの作成
+* リスナーとリダイレクト規則の追加
+* バックエンド プールでの仮想マシン スケール セットの作成
+* ドメインの CNAME レコードの作成
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 

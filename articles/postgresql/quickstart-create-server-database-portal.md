@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/27/2020
-ms.openlocfilehash: 9b3e1916301d6346defd6ebeab2f3784882f2d5f
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 0c390c64db8c5833f5bc5bf2be3367cb63127a0f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798858"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902654"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Database for PostgreSQL サーバーを作成する
 
@@ -34,17 +34,17 @@ Azure Database for PostgreSQL サーバーを作成するには:
 2. **[データベース]**  >  **[Azure Database for PostgreSQL]** の順に選択します。
 
    > [!div class="mx-imgBorder"]
-   > ![メニューにある [Azure Database for PostgreSQL] を示すスクリーンショット。](./media/quickstart-create-database-portal/1-create-database.png)
+   > :::image type="content" source="./media/quickstart-create-database-portal/1-create-database.png" alt-text="メニューにある Azure Database for PostgreSQL を示すスクリーンショット。":::
 
 3. **[単一サーバー]** デプロイ オプションを選択します。
 
    > [!div class="mx-imgBorder"]
-   > ![Azure Database for PostgreSQL の単一サーバー デプロイ オプションの選択を示すスクリーンショット。](./media/quickstart-create-database-portal/select-deployment-option.png)
+   > :::image type="content" source="./media/quickstart-create-database-portal/select-deployment-option.png" alt-text="Azure Database for PostgreSQL の単一サーバー デプロイ オプションの選択を示すスクリーンショット。":::
 
 4. **[基本情報]** フォームに次の情報を入力します。
 
    > [!div class="mx-imgBorder"]
-   > ![単一サーバーを作成する場合の [基本情報] タブを示すスクリーンショット。](./media/quickstart-create-database-portal/create-basics.png)
+   > :::image type="content" source="./media/quickstart-create-database-portal/create-basics.png" alt-text="単一サーバーを作成する場合の [基本情報] タブを示すスクリーンショット。":::
 
    設定|推奨値|説明
    ---|---|---
@@ -71,7 +71,7 @@ Azure Database for PostgreSQL サーバーを作成するには:
 既定では、作成したサーバーにはパブリックにアクセスできません。 自分の IP アドレスに対するアクセス許可を付与する必要があります。 Azure portal で対象のサーバー リソースに移動し、そのサーバー リソースの左側のメニューから **[接続のセキュリティ]** を選択します。 対象のリソースを見つける方法がわからない場合は、「[リソースを開く](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal#open-resources)」を参照してください。
 
 > [!div class="mx-imgBorder"]
-> ![接続のセキュリティのためのファイアウォール規則を示すスクリーンショット。](./media/quickstart-create-database-portal/add-current-ip-firewall.png)
+> :::image type="content" source="./media/quickstart-create-database-portal/add-current-ip-firewall.png" alt-text="接続のセキュリティのためのファイアウォール規則を示すスクリーンショット。":::
   
 **[現在のクライアント IP アドレスを追加する]** を選択し、 **[保存]** を選択します。 さらに IP アドレスを追加するか IP 範囲を指定することで、それらの IP アドレスから対象のサーバーに接続できるようになります。 詳細については、[Azure Database for PostgreSQL のファイアウォール規則](./concepts-firewall-rules.md)に関するページを参照してください。
    
@@ -90,7 +90,7 @@ Azure Database for PostgreSQL サーバーを作成するには:
    > 初めて Cloud Shell を開いた場合は、リソース グループとストレージ アカウントを作成するように求めるメッセージが表示されます。 これは 1 回限りの作業であり、それ以降はすべてのセッションで自動的に接続されます。 
 
    > [!div class="mx-imgBorder"]
-   > ![サーバー情報と、Azure Cloud Shell を開くためのアイコンを示すスクリーンショット。](media/quickstart-create-database-portal/use-in-cloud-shell.png)
+   > :::image type="content" source="media/quickstart-create-database-portal/use-in-cloud-shell.png" alt-text="サーバー情報と、Azure Cloud Shell を開くためのアイコンを示すスクリーンショット。":::
 
 3. Azure Cloud Shell ターミナルで次のコマンドを実行します。 値は実際のサーバー名と管理者ユーザーのログイン名に置き換えてください。 `<admin-username>@<servername>` 形式の管理者ユーザーで、空のデータベース **postgres** を使用します。
 
@@ -143,7 +143,7 @@ Azure Database for PostgreSQL サーバーを作成するには:
 サーバーを削除するには、対象のサーバーの **[概要]** ページで **[削除]** ボタンを選択します。
 
 > [!div class="mx-imgBorder"]
-> ![サーバーを削除するためのボタンを示すスクリーンショット。](media/quickstart-create-database-portal/12-delete.png)
+> :::image type="content" source="media/quickstart-create-database-portal/12-delete.png" alt-text="サーバーを削除するためのボタンを示すスクリーンショット。":::
 
 ## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]

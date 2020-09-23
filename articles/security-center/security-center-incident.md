@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: 28a6ea4ed40df909b4d74ff52703babb8e8cd949
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6ddfa1f6db06c2ca06b94efec7f890c2a714b2a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791744"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883859"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Azure Security Center でのセキュリティ インシデントの管理
 
@@ -62,6 +62,5 @@ Security Center でのセキュリティ インシデントとは、 [キル チ
 
 このページでは、Security Center のセキュリティ インシデント機能について説明しました。 関連情報については、次のページを参照してください。
 
-* [Security Center での脅威の防止](threat-protection.md)
-* [Security Center のセキュリティ アラート](security-center-alerts-overview.md)
-* [セキュリティ アラートの管理と対応](security-center-managing-and-responding-alerts.md)
+- [Security Center のセキュリティ アラート](security-center-alerts-overview.md)
+- [セキュリティ アラートの管理と対応](security-center-managing-and-responding-alerts.md)

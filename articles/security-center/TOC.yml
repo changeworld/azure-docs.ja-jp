@@ -4,38 +4,78 @@
   expanded: true
   items:
     - name: Security Center について
-      href: security-center-intro.md
-    - name: サポートされているプラットフォーム
-      href: security-center-os-coverage.md
-    - name: Security Center の機能
       items:
+        - name: Azure Security Center とは
+          href: security-center-introduction.md
+        - name: サポートされているプラットフォーム
+          displayName: coverage
+          href: security-center-os-coverage.md
         - name: VM を対象とする機能
           href: security-center-services.md
         - name: Azure PaaS リソースを対象とする機能
           href: features-paas.md
     - name: Security Center の最新情報
+      displayName: release notes
       href: release-notes.md
-    - name: セキュリティに関する推奨事項
-      href: recommendations-reference.md
-    - name: セキュリティ アラートと意図のキル チェーン
-      href: alerts-reference.md
-    - name: アクセス許可
-      href: security-center-permissions.md
+    - name: Security Center の基礎
+      items:
+        - name: Security Center の概要ページ
+          href: overview-page.md
+        - name: セキュリティに関する推奨事項
+          href: recommendations-reference.md
+        - name: セキュリティ アラートと意図のキル チェーン
+          href: alerts-reference.md
+        - name: Microsoft が顧客データの安全性を確保する方法
+          href: security-center-data-security.md
+        - name: アクセス許可
+          href: security-center-permissions.md
+    - name: Azure Defender の高度なセキュリティ
+      items:
+        - name: Azure Defender の概要
+          href: azure-defender.md
+        - name: サーバー用 Azure Defender
+          href: defender-for-servers-introduction.md
+        - name: Azure Defender for App Service
+          href: defender-for-app-service-introduction.md
+        - name: Azure Defender for Storage
+          href: defender-for-storage-introduction.md
+        - name: Azure Defender for SQL
+          href: defender-for-sql-introduction.md
+        - name: Azure Defender for IoT
+          href: defender-for-iot-introduction.md
+        - name: Azure Defender for Key Vault
+          displayName: KV
+          href: defender-for-key-vault-introduction.md
+        - name: Azure Defender for Kubernetes
+          displayName: 'clusters, k8s'
+          href: defender-for-kubernetes-introduction.md
+        - name: コンテナー レジストリ用 Azure Defender
+          displayName: 'ACR, registry, images'
+          href: defender-for-container-registries-introduction.md
+        - name: その他の脅威の防止
+          href: other-threat-protections.md
+    - name: Security Center のコンテナー セキュリティ機能
+      href: container-security.md
     - name: 価格
       href: security-center-pricing.md
 - name: クイックスタート
   items:
-    - name: Azure サブスクリプション
+    - name: はじめに
       href: security-center-get-started.md
-    - name: Windows コンピューター
-      href: quick-onboard-windows-computer.md
-    - name: Linux コンピューター
-      href: quick-onboard-linux-computer.md
-    - name: Azure Stack の仮想マシン
-      href: quick-onboard-azure-stack.md
+    - name: Azure 以外のマシンを接続する
+      displayName: 'azure stack, windows, linux'
+      href: quickstart-onboard-machines.md
+    - name: AWS と GCP アカウントを接続する
+      items:
+        - name: AWS アカウントを接続する
+          displayName: 'hybrid, multicloud, amazon'
+          href: quickstart-onboard-aws.md
+        - name: GCP アカウントを接続する
+          displayName: 'hybrid, multicloud, google'
+          href: quickstart-onboard-gcp.md
     - name: PowerShell を使用したオンボードの自動化
       href: security-center-powershell-onboarding.md
-    - name: データ収集の構成
+    - name: データ収集を構成する
       href: security-center-enable-data-collection.md
     - name: メール通知の設定
       href: security-center-provide-security-contact-details.md
@@ -53,85 +93,29 @@
       href: security-center-compliance-dashboard.md
 - name: 概念
   items:
-    - name: セキュリティで保護されたスコア、レコメンデーション、ポリシー
+    - name: クラウドのセキュリティ体制の管理
       items:
+        - name: Asset Inventory によるリソースの管理
+          href: asset-inventory.md
         - name: セキュリティ スコア
           href: secure-score-security-controls.md
         - name: セキュリティ レコメンデーションの概要
           href: security-center-recommendations.md
         - name: セキュリティ ポリシーの概要
           href: tutorial-security-policy.md
+        - name: 組み込みのセキュリティ ポリシー
+          displayName: 'samples, policy'
+          href: ./policy-reference.md
         - name: 推奨事項を使用してセキュリティを強化する
           href: security-center-using-recommendations.md
         - name: セキュリティ ベースライン
           href: security-baseline.md
-    - name: 脅威の防止とセキュリティ アラート
-      items:
-        - name: Security Center での脅威の防止の概要
-          href: threat-protection.md
-        - name: セキュリティ アラートの概要
-          href: security-center-alerts-overview.md
-        - name: アラートの参照リスト
-          href: alerts-reference.md
-        - name: アラートのスキーマ
-          href: alerts-schemas.md
-        - name: セキュリティ インシデントの概要
-          href: security-center-alerts-cloud-smart.md
-    - name: データのセキュリティ
-      href: security-center-data-security.md
-    - name: Just In Time VM アクセス
-      href: just-in-time-explained.md
-    - name: テナント間の管理
-      href: security-center-cross-tenant-management.md
-    - name: コンテナーのセキュリティ
-      items:
-        - name: コンテナーのセキュリティの概要
-          href: container-security.md
-        - name: Azure Container Registry との統合
-          href: azure-container-registry-integration.md
-        - name: Azure Kubernetes Service との統合
-          href: azure-kubernetes-service-integration.md
-- name: 操作方法ガイド
-  items:
-    - name: 高度なセキュリティへのアップグレード
-      href: security-center-onboarding.md
-    - name: セキュリティ ポリシーとコンプライアンス標準を構成する
-      items:
-        - name: カスタム セキュリティ ポリシーの作成
-          href: custom-security-policies.md
-        - name: Azure Policy REST API を使用したポリシーの管理
-          href: configure-security-policy-azure-policy.md
-        - name: コンプライアンス ダッシュボードの標準を選択する
-          href: update-regulatory-compliance-packages.md
-    - name: VM の脆弱性をスキャンする
-      items:
-        - name: 統合された脆弱性スキャナーを VM にデプロイする
-          href: deploy-vulnerability-assessment-vm.md
-        - name: BYOL 脆弱性ソリューションを VM にデプロイする
-          href: deploy-vulnerability-assessment-byol-vm.md
-        - name: VM 上の脆弱性を確認して修復する
-          href: remediate-vulnerability-findings-vm.md
-    - name: 脅威の防止の構成とアラートの処理
-      items:
-        - name: セキュリティ アラートの管理
-          href: security-center-managing-and-responding-alerts.md
-        - name: アラート抑制ルールの作成および管理
-          href: alerts-suppression-rules.md
-        - name: Azure Key Vault 向けの Advanced Threat Protection の設定
-          href: advanced-threat-protection-key-vault.md
-        - name: セキュリティ インシデントを管理する
-          href: security-center-incident.md
-        - name: 脅威インテリジェンス レポートを生成する
-          href: security-center-threat-report.md
-        - name: アラート構成を検証する (EICAR テスト ファイル)
-          href: security-center-alert-validation.md
-        - name: Azure VM 上の SQL 向けの Advanced Data Security の使用
-          href: security-center-iaas-advanced-data.md
-        - name: アラートへの応答を自動化する
-          href: workflow-automation.md
-        - name: アラートのエクスポート
-          displayName: continuous
-          href: continuous-export.md
+        - name: テナント間の管理
+          href: security-center-cross-tenant-management.md
+        - name: Windows Admin Center サーバーの保護
+          href: windows-admin-center-integration.md
+        - name: セキュリティ ソリューションとデータ ソースの統合
+          href: security-center-partner-integration.md
     - name: セキュリティのレコメンデーションを使用してセキュリティを強化する
       items:
         - name: 推奨事項の修復
@@ -140,51 +124,111 @@
           displayName: recommendations
           href: prevent-misconfigurations.md
         - name: セキュリティ体制の強化
-          displayName: recommendations
           href: security-center-monitoring.md
         - name: 推奨事項のリファレンス一覧
           href: recommendations-reference.md
-        - name: マシンとアプリの保護
-          href: security-center-virtual-machine-protection.md
         - name: ネットワーク リソースの保護
           href: security-center-network-recommendations.md
-        - name: データおよびストレージ サービスの保護
-          href: security-center-sql-service-recommendations.md
         - name: ID とアクセス権限の保護
           href: security-center-identity-access.md
-        - name: レコメンデーションへの応答を自動化する
+        - name: セキュリティに関する推奨事項の管理
+          items:
+            - name: レコメンデーションへの応答を自動化する
+              href: workflow-automation.md
+            - name: レコメンデーションのエクスポート
+              href: continuous-export.md
+            - name: リソースを推奨事項から除外する
+              href: exempt-resource.md
+    - name: Azure Defender アラート
+      items:
+        - name: Azure Defender アラートの概要
+          href: security-center-alerts-overview.md
+        - name: アラートの参照リスト
+          href: alerts-reference.md
+        - name: アラートのスキーマ
+          href: alerts-schemas.md
+        - name: セキュリティ インシデントの概要
+          href: security-center-alerts-cloud-smart.md
+- name: 操作方法ガイド
+  items:
+    - name: Azure Defender ダッシュボードを使用する
+      href: azure-defender-dashboard.md
+    - name: セキュリティ ポリシーとコンプライアンス標準を構成する
+      items:
+        - name: カスタム セキュリティ ポリシーの作成
+          href: custom-security-policies.md
+        - name: Azure Policy REST API を使用したポリシーの管理
+          href: configure-security-policy-azure-policy.md
+        - name: コンプライアンス ダッシュボードの標準を選択する
+          displayName: 'regulatory, regulation, CIS, PCI DSS, ISO, SOC, Benchmark, Azure Security Benchmark, HIPAA'
+          href: update-regulatory-compliance-packages.md
+    - name: サーバー用 Azure Defender を使用する
+      items:
+        - name: VM の脆弱性のスキャン
+          items:
+            - name: 統合 VA ソリューションで VM をスキャンする
+              displayName: 'qualys, vulnerability'
+              href: deploy-vulnerability-assessment-vm.md
+            - name: BYOL VA ソリューションで VM をスキャンする
+              displayName: 'qualys, rapid7, vulnerability'
+              href: deploy-vulnerability-assessment-byol-vm.md
+            - name: VM 上の脆弱性を確認して修復する
+              displayName: 'qualys, rapid7, vulnerability'
+              href: remediate-vulnerability-findings-vm.md
+        - name: Just-In-Time VM アクセスを使用して管理ポートをセキュリティで保護する
+          items:
+            - name: Just-In-Time VM アクセスの概要
+              displayName: 'jit, management'
+              href: just-in-time-explained.md
+            - name: Just-In-Time アクセスの管理
+              displayName: 'jit, management'
+              href: security-center-just-in-time.md
+        - name: 適応型アプリケーション制御を管理する
+          href: security-center-adaptive-application.md
+        - name: ファイルの整合性の監視を使用する
+          items:
+            - name: ファイルの整合性の監視の概要
+              href: security-center-file-integrity-monitoring.md
+            - name: ファイルの整合性の監視を使用してベースラインを比較する
+              href: security-center-file-integrity-monitoring-baselines.md
+        - name: アダプティブ ネットワークのセキュリティ強化機能を管理する
+          href: security-center-adaptive-network-hardening.md
+        - name: Microsoft Defender ATP を統合する
+          href: security-center-wdatp.md
+        - name: Docker ホストのセキュリティを強化する
+          displayName: containers
+          href: harden-docker-hosts.md
+    - name: Azure Defender for SQL を使用する
+      items:
+        - name: Azure VM 上の Azure Defender for SQL を構成する
+          href: defender-for-sql-usage.md
+        - name: 情報の保護ポリシーをカスタマイズする
+          href: security-center-info-protection-policy.md
+    - name: コンテナー レジストリ用 Azure Defender を使用する
+      displayName: 'ACR, registry, images'
+      href: defender-for-container-registries-usage.md
+    - name: Azure Defender アラートを処理する
+      items:
+        - name: セキュリティ アラートの管理
+          href: security-center-managing-and-responding-alerts.md
+        - name: アラート抑制ルールの作成および管理
+          href: alerts-suppression-rules.md
+        - name: Azure Defender の Key Vault アラートに対応する
+          href: defender-for-key-vault-usage.md
+        - name: セキュリティ インシデントを管理する
+          href: security-center-incident.md
+        - name: 脅威インテリジェンス レポートを生成する
+          href: security-center-threat-report.md
+        - name: アラート構成を検証する (EICAR テスト ファイル)
+          href: security-center-alert-validation.md
+        - name: アラートへの応答を自動化する
           href: workflow-automation.md
-        - name: レコメンデーションのエクスポート
+        - name: アラートのエクスポート
           displayName: continuous
           href: continuous-export.md
-    - name: Asset Inventory によるリソースの管理
-      href: asset-inventory.md
-    - name: 他のツールおよびサービスとの統合
-      items:
-        - name: Windows Admin Center サーバーの保護
-          href: windows-admin-center-integration.md
-        - name: Azure App Service Web アプリと API を保護する
-          href: security-center-app-services.md
-        - name: Microsoft Defender ATP との統合
-          href: security-center-wdatp.md
-        - name: セキュリティ ソリューションとデータ ソースの統合
-          href: security-center-partner-integration.md
-    - name: クラウドの防御の適用
-      items:
-        - name: Just-In-Time アクセスの管理
-          href: security-center-just-in-time.md
-        - name: アダプティブ アプリケーション制御
-          href: security-center-adaptive-application.md
-        - name: ファイルの整合性の監視
-          href: security-center-file-integrity-monitoring.md
-        - name: ファイルの整合性の監視を使用してベースラインを比較する
-          href: security-center-file-integrity-monitoring-baselines.md
-        - name: アダプティブ ネットワークのセキュリティ強化機能
-          href: security-center-adaptive-network-hardening.md
-    - name: コンテナーの監視
-      href: monitor-container-security.md
-    - name: 情報の保護ポリシーをカスタマイズする
-      href: security-center-info-protection-policy.md
+    - name: Kubernetes ワークロードを保護する
+      displayName: 'k8s, containers'
+      href: kubernetes-workload-protections.md
     - name: 調査で得られたユーザー データの管理
       href: security-center-investigation-user-data.md
     - name: テナント全体の可視性の確保
@@ -215,16 +259,13 @@
       href: security-center-features-retirement-july2019.md
     - name: エンドポイント保護の評価および推奨事項
       href: security-center-endpoint-protection.md
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける
       href: /learn/browse/?term=securityS
     - name: ユーザー データを管理する
       href: security-center-privacy.md
-    - name: Azure Security Center for IoT のドキュメント
+    - name: Azure Defender for IoT のドキュメント
       href: 'https://docs.microsoft.com/azure/asc-for-iot/'
     - name: Azure のセキュリティのドキュメント
       href: /azure/security/
@@ -232,12 +273,12 @@
       href: 'https://azure.microsoft.com/updates/?category=security-identity'
     - name: 準備のロードマップ
       href: security-center-readiness-roadmap.md
-    - name: Azure のセキュリティ、プライバシー、およびコンプライアンスのブログ
-      href: 'https://docs.microsoft.com/archive/blogs/azuresecurity/'
+    - name: Azure Security Center のテクニカル コミュニティ ブログ
+      href: 'https://techcommunity.microsoft.com/t5/azure-security-center/bg-p/AzureSecurityCenterBlog'
     - name: Stack Overflow の Azure Security Center
       href: 'https://stackoverflow.com/search?q=azure-security-center'
-    - name: ビデオ
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=security-center'
+    - name: ASCinTheField の YouTube 動画
+      href: 'https://www.youtube.com/results?search_query=%23ASCInTheField'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/security-center/'
     - name: リージョン別の提供状況

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: 873f0d7d2aa4493e77a10f62b0646f4f8233f6b9
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: d5ef8d6a9b0c0039b500ce9d0238609e8a8edc93
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337842"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908000"
 ---
 # <a name="execute-r-script-module"></a>R スクリプトの実行モジュール
 
-この記事では、R スクリプトの実行モジュールを使用して、Azure Machine Learning デザイナー (プレビュー) のパイプラインで R コードを実行する方法について説明します。
+この記事では、R スクリプトの実行モジュールを使用して、Azure Machine Learning デザイナー パイプラインで R コードを実行する方法について説明します。
 
 R を使用すると、既存のモジュールが現在サポートしていないタスクを実行できます。次に例を示します。 
 - カスタム データ変換を作成する
