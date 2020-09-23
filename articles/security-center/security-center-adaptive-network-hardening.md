@@ -13,15 +13,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: 1f69fe027772dc2d008a567723a5b3c04f3ee51b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: e8aea9b8abb5926fdb73df7c140ecfec1114f7a0
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378204"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894755"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Azure Security Center でのアダプティブ ネットワークのセキュリティ強化機能
 Azure Security Center のアダプティブ ネットワークのセキュリティ強化機能を構成する方法を説明します。
+
+## <a name="availability"></a>可用性
+|側面|詳細|
+|----|:----|
+|リリース状態:|一般提供 (GA)|
+|価格:|[Azure Defender for servers](defender-for-servers-introduction.md) が必要|
+|必要なロールとアクセス許可:|コンピューターの NSG の書き込みアクセス許可|
+|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
+|||
 
 ## <a name="what-is-adaptive-network-hardening"></a>アダプティブ ネットワークのセキュリティ強化機能とは
 [ネットワーク セキュリティ グループ (NSG)](https://docs.microsoft.com/azure/virtual-network/security-overview) を適用してリソースとの間でやり取りされるトラフィックをフィルター処理することにより、ネットワーク セキュリティ ポスチャを向上させることができます。 ただし、NSG を通過する実際のトラフィックが、定義される NSG ルールのサブセットとなる場合もあります。 このような場合は、実際のトラフィック パターンに基づいて NSG ルールを強化することによって、セキュリティ ポスチャをさらに向上させることができます。
@@ -37,15 +46,6 @@ Azure Security Center のアダプティブ ネットワークのセキュリテ
 ![ネットワーク強化のビュー](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
 
 
-## <a name="availability"></a>可用性
-
-|側面|詳細|
-|----|:----|
-|リリース状態:|一般公開|
-|価格:|Standard レベル|
-|必要なロールとアクセス許可:|コンピューターの NSG の書き込みアクセス許可|
-|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
-|||
 
 
 ## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>アダプティブ ネットワークのセキュリティ強化機能のアラートとルールの表示
@@ -56,7 +56,7 @@ Azure Security Center のアダプティブ ネットワークのセキュリテ
    * **スキャンされていないリソース**:以下のいずれかの理由でアダプティブ ネットワークのセキュリティ強化アルゴリズムを実行できない VM。
       * **VM がクラシック VM である**:Azure Resource Manager VM のみがサポートされています。
       * **使用できる十分なデータがない**:トラフィック強化に関する正確な推奨事項を生成するには、Security Center に少なくとも 30 日間のトラフィック データが必要です。
-      * **VM が ASC 標準によって保護されていない**:Security Center の Standard 価格レベルに設定された VM のみ、この機能を利用できます。
+      * **VM が Azure Defender によって保護されていない**:この機能の対象となるのは、[Azure Defender for servers](defender-for-servers-introduction.md) で保護されている VM のみです。
 
      ![異常なリソース](./media/security-center-adaptive-network-hardening/unhealthy-resources.png)
 
@@ -106,14 +106,14 @@ Azure Security Center のアダプティブ ネットワークのセキュリテ
 
 1. ルールのパラメーターの一部を変更するには、 **[ルール]** タブで、ルールの行の最後にある 3 つのドット (...) をクリックし、 **[編集]** をクリックします。
 
-   ![ルールの編集](./media/security-center-adaptive-network-hardening/edit-hard-rule.png)
+   ![S ルールの編集](./media/security-center-adaptive-network-hardening/edit-hard-rule.png)
 
 1. **[ルールの編集]** ウィンドウで、変更する詳細を更新し、 **[保存]** をクリックします。
 
    > [!NOTE]
-   > **[保存]** をクリックすると、ルールは正常に変更されます。 *ただし、NSG にはまだ適用されていません。* そのルールを適用するには、一覧でそのルールを選択し、 **[適用]** をクリックする必要があります (次の手順で説明します)。
+   > **[保存]** をクリックすると、ルールは正常に変更されます。 *ただし、NSG にはまだ適用されていません。* そのルールを適用するには、一覧でそのルールを選択し、 **[適用]** を選択する必要があります (次の手順で説明します)。
 
-   ![ルールの編集](./media/security-center-adaptive-network-hardening/edit-hard-rule3.png)
+   ![保存を選択](./media/security-center-adaptive-network-hardening/edit-hard-rule3.png)
 
 3. 更新されたルールを適用するには、一覧から更新されたルールを選択し、 **[適用]** をクリックします。
 
@@ -150,4 +150,4 @@ Security Center によって推奨されていない "許可" ルールを追加
 
 1. **[ルール]** タブで、ルールの行の最後にある 3 つのドット (...) をクリックし、 **[削除]** をクリックします。  
 
-    ![強化ルール](./media/security-center-adaptive-network-hardening/delete-hard-rule.png)
+    ![ルールの削除](./media/security-center-adaptive-network-hardening/delete-hard-rule.png)

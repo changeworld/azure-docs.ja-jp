@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: c31f3c998df918466e707c95f041592051e8251c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: f8885229c8ab6784c6c0bf45487812fcc43f9b22
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045316"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903824"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio-code"></a>Visual Studio Code のジョブ ダイアグラムを使用して Azure Stream Analytics のクエリをローカルでデバッグする
 
@@ -27,7 +27,7 @@ Azure Stream Analytics スクリプトは、入力データを出力データに
 
 ### <a name="start-local-testing"></a>ローカル テストを開始する
 
-この[クイックスタート](quick-create-vs-code.md)で、Visual Studio Code を使用して Stream Analytics ジョブを作成する方法を確認してください。また、既存のジョブをローカル プロジェクトにエクスポートする方法ついては、[こちら](visual-studio-code-explore-jobs.md)を確認してください。 入力および出力のための資格情報は、エクスポートされたジョブに対して自動的に設定されます。
+この[クイックスタート](quick-create-visual-studio-code.md)で、Visual Studio Code を使用して Stream Analytics ジョブを作成する方法を確認してください。また、既存のジョブをローカル プロジェクトにエクスポートする方法ついては、[こちら](visual-studio-code-explore-jobs.md)を確認してください。 入力および出力のための資格情報は、エクスポートされたジョブに対して自動的に設定されます。
 
 ローカルの入力データを使用してクエリをテストする場合は、こちらの[手順](visual-studio-code-local-run.md)を実行してください。 ライブ入力を使用してテストする場合は、[入力を構成](stream-analytics-add-inputs.md)してから、次の手順に進んでください。 
 
@@ -59,7 +59,7 @@ Azure Stream Analytics スクリプトは、入力データを出力データに
 3. 入力メトリックを表示するには、ドロップダウンから入力データ ソースの名前を選択します。 次のスクリーンショットの入力ソースの名前は "*見積もり*" になっています。 入力メトリックの詳細については、「[Stream Analytics ジョブ監視とクエリの監視方法の概要](stream-analytics-monitoring.md)」を参照してください。
 
    > [!div class="mx-imgBorder"]
-   > ![ジョブ ダイアグラムのメトリック](./media/debug-locally-using-job-diagram-vs-code/input-metrics.png)
+   > ![ジョブ ダイアグラムの入力メトリック](./media/debug-locally-using-job-diagram-vs-code/input-metrics.png)
 
 4. ジョブ ダイアグラムからクエリ ステップを選択するか、ドロップダウンからステップ名を選択すると、ステップ レベルのメトリックが表示されます。 使用可能なステップ メトリックは、透かしの遅延のみです。
 
@@ -108,7 +108,7 @@ Azure Stream Analytics スクリプトは、入力データを出力データに
 
 ## <a name="next-steps"></a>次のステップ
 
-* [クイック スタート: Visual Studio Code を使用して Stream Analytics ジョブを作成する](quick-create-vs-code.md)
+* [クイック スタート: Visual Studio Code を使用して Stream Analytics ジョブを作成する](quick-create-visual-studio-code.md)
 * [Visual Studio Code で Azure Stream Analytics の詳細を確認する](visual-studio-code-explore-jobs.md)
 * [Visual Studio Code を使用してサンプル データで Stream Analytics クエリをローカルでテストする](visual-studio-code-local-run.md)
 * [Visual Studio Code を使用してライブ入力で Azure Stream Analytics ジョブをローカルでテストする](visual-studio-code-local-run-live-input.md)

@@ -1,6 +1,6 @@
 ---
 title: ONNX を使用してデプロイと予測を行う
-description: モデルをトレーニングし、ONNX に変換して、Azure SQL Edge (プレビュー) または Azure SQL Managed Instance (プレビュー) にデプロイした後で、アップロードされた ONNX モデルを使用してネイティブ PREDICT をデータに対して実行する方法について説明します。
+description: モデルをトレーニングし、ONNX に変換して、Azure SQL Edge または Azure SQL Managed Instance (プレビュー) にデプロイした後で、アップロードされた ONNX モデルを使用してネイティブ PREDICT をデータに対して実行する方法について説明します。
 keywords: SQL Edge をデプロイする
 ms.prod: sql
 ms.technology: machine-learning
@@ -8,22 +8,22 @@ ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 07/14/2020
-ms.openlocfilehash: eeb50f682c8b3b225c6574b5276722b79465a511
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 1e70b48e4c28cdc74c5079e492b0266ea60900ad
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718783"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886816"
 ---
 # <a name="deploy-and-make-predictions-with-an-onnx-model"></a>ONNX モデルを使用してデプロイと予測を行う
 
-モデルをトレーニングし、ONNX に変換して、[Azure SQL Edge (プレビュー)](onnx-overview.md) または [Azure SQL Managed Instance (プレビュー)](../azure-sql/managed-instance/machine-learning-services-overview.md) にデプロイした後で、アップロードされた ONNX モデルを使用してネイティブ PREDICT をデータに対して実行する方法について説明します。
+モデルをトレーニングし、ONNX に変換して、[Azure SQL Edge](onnx-overview.md) または [Azure SQL Managed Instance (プレビュー)](../azure-sql/managed-instance/machine-learning-services-overview.md) にデプロイした後で、アップロードされた ONNX モデルを使用してネイティブ PREDICT をデータに対して実行する方法について説明します。
 
 このクイックスタートは **scikit-learn** に基づいており、[Boston Housing データセット](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html)を使用します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-* Azure SQL Edge を使用していて、Azure SQL Edge モジュールをデプロイしていない場合は、[Azure portal を使用して SQL Edge (プレビュー) をデプロイする](deploy-portal.md)手順に従います。
+* Azure SQL Edge を使用していて、Azure SQL Edge モジュールをデプロイしていない場合は、[Azure portal を使用して SQL Edge をデプロイする](deploy-portal.md)手順に従います。
 
 * [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download) をインストールします。
 

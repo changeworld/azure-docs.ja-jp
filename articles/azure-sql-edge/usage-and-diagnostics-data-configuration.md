@@ -8,12 +8,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 08/04/2020
-ms.openlocfilehash: 8547c07214e94176babe4909504b9292d45c06f9
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 130e23c290ce493d3fb92f6dd0be4cd7c61a86fd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87759616"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888049"
 ---
 # <a name="azure-sql-edge-usage-and-diagnostics-data-configuration"></a>Azure SQL Edge の使用状況と診断データの構成
 
@@ -61,6 +61,9 @@ group by data_source_type
 
 Azure SQL Edge での使用状況と診断データの収集は、次のいずれかの方法を使用して無効にできます。
 
+> [!NOTE]
+> 使用状況と診断データは、Developer バージョンでは無効にできません。
+
 ### <a name="disable-usage-and-diagnostics-using-environment-variables"></a>環境変数を使用して使用状況と診断を無効にする
 
 Azure SQL Edge での使用状況と診断データの収集を無効にするには、次の環境変数を追加し、その値を `*False*` に設定します。 環境変数を使用した Azure SQL Edge の構成の詳細については、[環境変数を使用した構成](configure.md#configure-by-using-environment-variables)に関するページを参照してください。
@@ -68,7 +71,7 @@ Azure SQL Edge での使用状況と診断データの収集を無効にする�
 `MSSQL_TELEMETRY_ENABLED = TRUE | FALSE`
 
 - TRUE - 使用状況と診断データの収集を有効にします。 これは既定の構成です。
-- FALSE - 使用状況と診断データの収集を無効にします
+- FALSE - 使用状況と診断データの収集を無効にします。
 
 ### <a name="disable-usage-and-diagnostics-using-mssqlconf-file"></a>mssql.conf ファイルを使用して使用状況と診断を無効にする
 

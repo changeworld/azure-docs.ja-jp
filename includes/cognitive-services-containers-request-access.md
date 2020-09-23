@@ -3,34 +3,21 @@ author: aahill
 ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/18/2020
-ms.openlocfilehash: 66bd78c94e6c54d26959778cc059730c13d02629
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.date: 08/31/2020
+ms.openlocfilehash: 1c374429ca910afeb9972841204bd3e51dcc8306
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698567"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888320"
 ---
-このフォームでは、ユーザー、会社、コンテナーを使用するユーザー シナリオに関する情報が要求されます。 フォームを送信すると、Azure Cognitive Services チームがそれをレビューして、プライベート コンテナー レジストリにアクセスするための条件を満たしていることを確認します。
+このフォームでは、ユーザー、会社、コンテナーを使用するユーザー シナリオに関する情報が要求されます。 フォームを送信すると、そのフォームは Azure Cognitive Services チームによってレビューされます。その後、チームから決定事項がメールで届きます。
 
 > [!IMPORTANT]
-> フォームでは、Microsoft アカウント (MSA) または Azure Active Directory (Azure AD) アカウントに関連付けられた電子メール アドレスを使用する必要があります。
+> * このフォームでは、Azure サブスクリプション ID に関連付けられているメール アドレスを使用する必要があります。
+> * コンテナーの実行に使用する Azure リソースは、承認された Azure サブスクリプション ID で作成されている必要があります。 
+> * Microsoft からのアプリケーションの状態に関する更新については、電子メール (受信トレイと迷惑フォルダーの両方) を確認してください。
 
-要求が承認されると、資格情報を取得してプライベート コンテナー レジストリにアクセスする方法を説明する手順が記載された電子メールを受け取ります。
+承認されると、Microsoft Container Registry (MCR) からコンテナーをダウンロードした後、そのコンテナーを実行できるようになります。これについては、記事の後半で説明します。 
 
-## <a name="log-in-to-the-private-container-registry"></a>プライベート コンテナー レジストリへのログイン
-
-Cognitive Services コンテナーのプライベート コンテナー レジストリで認証を行うにはいくつかの方法があります。 [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/) を使用したコマンドライン メソッドの使用を推奨しています。
-
-次の例のように [docker login](https://docs.docker.com/engine/reference/commandline/login/) コマンドを使用して、Cognitive Services コンテナーのプライベート コンテナー レジストリである `containerpreview.azurecr.io` にログインします。 *\<username\>* と *\<password\>* を Azure Cognitive Services チームから受け取った資格情報に指定されているユーザー名とパスワードにそれぞれ置き換えます。
-
-```
-docker login containerpreview.azurecr.io -u <username> -p <password>
-```
-
-テキスト ファイルに資格情報をセキュリティ保護した場合は、そのテキスト ファイルの内容を `docker login` コマンドに連結することができます。 次の例に示すように、`cat` コマンドを使用します。 *\<passwordFile\>* は、パスワードを含むテキスト ファイルのパスと名前に置き換えてください。 *\<username\>* は、資格情報に指定されているユーザー名に置き換えてください。
-
-```
-cat <passwordFile> | docker login containerpreview.azurecr.io -u <username> --password-stdin
-```
-
+Azure サブスクリプションが承認されていない場合、コンテナーを実行することはできません。

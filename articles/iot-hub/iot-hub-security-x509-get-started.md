@@ -13,16 +13,18 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-csharp
-ms.openlocfilehash: 1c1e29d43fefa6be1586aefc28249fe2f0f9e9fb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8c9555bc208766d5275e392ee22889f5b618e216
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001027"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018307"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Azure IoT Hub での X.509 セキュリティの設定
 
 このチュートリアルでは、"*X.509 証明書認証*" を使用して Azure IoT Hub をセキュリティで保護するために必要な手順を示します。 わかりやすくするために、オープン ソース ツールの OpenSSL を使用して Windows マシン上でローカルに証明書を作成します。 このチュートリアルはテスト目的でのみ使用することをお勧めします。 運用環境では、"*ルート証明機関 (CA)* " から証明書を購入する必要があります。
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-support-note](../../includes/iot-hub-include-x509-ca-signed-support-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 

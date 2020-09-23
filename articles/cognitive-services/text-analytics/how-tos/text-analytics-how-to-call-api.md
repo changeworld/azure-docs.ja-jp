@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: c6fbec35920c8afd08ab60fc380c9f816ae599b0
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: b2c994d23e63f9e2118cd3e6571c5dcc0449a367
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561021"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601097"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Text Analytics REST API を呼び出す方法
 
@@ -47,6 +47,30 @@ Text Analytics はステートレスであるため、管理するデータ資�
 
 制限の詳細については、[テキスト分析の概要 > データ制限](../overview.md#data-limits)を参照してください。 
 
+
+```json
+{
+  "documents": [
+    {
+      "language": "en",
+      "id": "1",
+      "text": "Sample text to be sent to the text analytics api."
+    },
+    {
+      "language": "en",
+      "id": "2",
+      "text": "It's incredibly sunny outside! I'm so happy."
+    },
+    {
+      "language": "en",
+      "id": "3",
+      "text": "Pike place market is my favorite Seattle attraction."
+    }
+  ]
+}
+```
+
+
 ## <a name="set-up-a-request-in-postman"></a>Postman での要求の設定
 
 このサービスは最大 1 MB のサイズの要求を受け入れます。 Postman (または別の Web API テスト ツール) を使用する場合、使用するリソースを含むようにエンドポイントを設定し、要求ヘッダーにアクセス キーを提供します。 各操作では、エンドポイントに適切なリソースを付加することが必要です。 
@@ -59,10 +83,10 @@ Text Analytics はステートレスであるため、管理するデータ資�
 
    リソースのエンドポイントは、次のようになります (地域により異なる場合があります)。
 
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/entities`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v3.0/sentiment`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v3.0/keyPhrases`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v3.0/languages`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v3.0/entities/recognition/general`
 
 2. 次の 3 つの要求ヘッダーを設定します。
 

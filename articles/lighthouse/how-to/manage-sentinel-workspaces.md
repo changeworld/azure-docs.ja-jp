@@ -3,12 +3,12 @@ title: Azure Sentinel ワークスペースの大規模な管理を行う
 description: 委任された顧客リソースで Azure Sentinel を効果的に管理する方法を学習します。
 ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 328c55afc141a7f2efd85104453342b62eae0bb2
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 78896d6458f6b1c40655bc36d2bf63e05ddb0a59
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050813"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019735"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Azure Sentinel ワークスペースの大規模な管理を行う
 
@@ -65,7 +65,7 @@ MSSP によって管理される各顧客サブスクリプションは、[Azure
 
 [Azure Sentinel の Azure Monitor ブック](../../sentinel/overview.md#workbooks)は、接続されたデータ ソースからのデータを視覚化および監視して洞察を得るのに役立ちます。 Azure Sentinel で組み込みのブック テンプレートを使用することも、シナリオに合わせてカスタム ブックを作成することもできます。
 
-管理テナントでブックをデプロイし、顧客テナント全体のデータを監視およびクエリするために大規模なダッシュボードを作成することができます。 詳細については、[ワークスペース間の監視](../../sentinel/extend-sentinel-across-workspaces-tenants.md#using-cross-workspace-workbooks)に関するセクションを参照してください。 一部の機能は[複数のワークスペースではサポートされていない](../../sentinel/extend-sentinel-across-workspaces-tenants.md#whats-not-supported-across-workspaces)ことに注意してください。
+管理テナントでブックをデプロイし、顧客テナント全体のデータを監視およびクエリするために大規模なダッシュボードを作成することができます。 詳細については、[ワークスペース間の監視](../../sentinel/extend-sentinel-across-workspaces-tenants.md#using-cross-workspace-workbooks)に関するセクションを参照してください。 
 
 また、ブックは、その顧客に固有のシナリオ用に管理する個々のテナントに直接配置することもできます。
 
@@ -76,8 +76,6 @@ MSSP によって管理される各顧客サブスクリプションは、[Azure
 ## <a name="use-automation-for-cross-workspace-management"></a>ワークスペース間の管理にオートメーションを使用する
 
 オートメーションを使用して複数の Azure Sentinel ワークスペースを管理し、[ハンティング クエリ](../../sentinel/hunting.md)、プレイブック、ブックを構成することができます。 詳細については、「[オートメーションを使用するワークスペース間の管理](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-management-using-automation)」を参照してください。
-
-一部の機能は、[複数のワークスペースでは現在サポートされていない](../../sentinel/extend-sentinel-across-workspaces-tenants.md#whats-not-supported-across-workspaces)ことに注意してください。
 
 ## <a name="manage-security-of-office-365-environments"></a>Office 365 環境のセキュリティの管理
 

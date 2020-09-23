@@ -1,20 +1,20 @@
 ---
-title: Azure Monitor for Azure Cache for Redis (プレビュー) | Microsoft Docs
+title: Azure Monitor for Azure Cache for Redis | Microsoft Docs
 description: この記事では、キャッシュ所有者がパフォーマンスと使用状況の問題をすばやく把握できる Azure Monitor for Azure Redis Cache の機能について説明します。
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 05/21/2020
-ms.openlocfilehash: 70bf39011761bcf59c8270ecdcc0542e326aef42
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/10/2020
+ms.openlocfilehash: e7b8a8e131cf7e0aae051f42043abf0640c927e4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045861"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887004"
 ---
-# <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>Azure Monitor for Azure Cache for Redis (プレビュー) について知る
+# <a name="explore-azure-monitor-for-azure-cache-for-redis"></a>Azure Monitor for Azure Cache for Redis を調べる
 
-Azure Monitor for Azure Cache for Redis (プレビュー) では、Azure Cache for Redis リソースのすべてに対して、次のような統合された対話型ビューが用意されています。
+Azure Monitor for Azure Cache for Redis では、Azure Cache for Redis リソースのすべてに対して、次のような統合された対話型ビューが用意されています。
 
 - 全体的なパフォーマンス
 - エラー
@@ -50,7 +50,7 @@ Azure Monitor for Azure Cache for Redis (プレビュー) では、Azure Cache f
 
     ![「監視」の語が入力された検索ボックスと、スピードメーター画像とともに「監視」を示した検索結果](./media/cosmosdb-insights-overview/search-monitor.png)
 
-1. **[Azure Cache for Redis (プレビュー)]** を選択します。 このオプションが存在しない場合は、 **[詳細]**  >  **[Azure Cache for Redis]** を選択します。
+1. **[Azure Cache for Redis]** を選択します。 このオプションが存在しない場合は、 **[詳細]**  >  **[Azure Cache for Redis]** を選択します。
 
 ### <a name="overview"></a>概要
 
@@ -128,9 +128,9 @@ Azure Monitor for Azure Cache for Redis (プレビュー) では、Azure Cache f
 
 1. Azure portal で、[Azure Cache for Redis] を選択します。
 
-2. 一覧から、個々の Azure Cache for Redis リソースを選択します。 [監視] セクションで [インサイト (プレビュー)] を選択します。
+2. 一覧から、個々の Azure Cache for Redis リソースを選択します。 [監視] セクションで、[分析情報] を選択します。
 
-    ![赤色のボックスで強調表示された "インサイト (プレビュー)" という単語を含むメニュー オプションのスクリーンショット](./media/redis-cache-insights-overview/insights.png)
+    ![赤色のボックスで強調表示された "分析情報" という単語を含むメニュー オプションのスクリーンショット](./media/redis-cache-insights-overview/insights.png)
 
 これらのビューには、Azure Monitor レベルのブックから Azure Cache for Redis リソースのリソース名を選択してアクセスすることもできます。
 
@@ -168,7 +168,7 @@ Azure Redis Cache の **[概要]** ブックには、複数のパフォーマン
 
 ![強調表示された拡張ブック記号](./media/cosmosdb-insights-overview/expand.png)
 
-## <a name="customize-azure-monitor-for-azure-cache-for-redis-preview"></a>Azure Monitor for Azure Cache for Redis (プレビュー) をカスタマイズする
+## <a name="customize-azure-monitor-for-azure-cache-for-redis"></a>Azure Monitor for Azure Cache for Redis をカスタマイズする
 
 このエクスペリエンスは、Azure Monitor ブック テンプレートをベースに作成されているため、 **[カスタマイズ]**  >  **[編集]**  >  **[保存]** の順に選択して、変更したバージョンのコピーをカスタム ブックに保存することができます。
 

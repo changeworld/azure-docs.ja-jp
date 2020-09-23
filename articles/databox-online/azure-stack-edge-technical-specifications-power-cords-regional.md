@@ -1,23 +1,23 @@
 ---
-title: 場所に基づく Microsoft Azure Stack Edge の電源コードの技術仕様 | Microsoft Docs
-description: Azure Stack Edge の電源コードの技術仕様について学習します。
+title: 場所に基づく Microsoft Azure Stack Edge Pro の電源コードの技術仕様 | Microsoft Docs
+description: Azure Stack Edge Pro の電源コードの技術仕様について学習します。
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
 ms.date: 04/16/2020
-ms.author: twooley
-ms.openlocfilehash: 8248f0a8e003351449186638fd4914c6b6fe4bed
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.author: alkohli
+ms.openlocfilehash: 76d8c84fd1dd403c88e8261cf49e3620f3a6ec14
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783979"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90903612"
 ---
-# <a name="azure-stack-edge-power-cord-specifications"></a>Azure Stack Edge 電源コードの仕様
+# <a name="azure-stack-edge-pro-power-cord-specifications"></a>Azure Stack Edge Pro 電源コードの仕様
 
-Azure Stack Edge デバイスには、Azure リージョンに応じて異なる、電源コードが必要です。
+Azure Stack Edge Pro デバイスには、Azure リージョンに応じて異なる、電源コードが必要です。
 
 ## <a name="supported-power-cords"></a>サポートされている電源コード
 
@@ -158,4 +158,4 @@ Azure Stack Edge デバイスには、Azure リージョンに応じて異なる
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Stack Edge の技術仕様](data-box-edge-technical-specifications-compliance.md)
+[Azure Stack Edge Pro の技術仕様](data-box-edge-technical-specifications-compliance.md)

@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: f38a973611cb1ab18eead4ec51e6be91ada2cc40
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: abd1bc9b53c303d094d74683da0d6e3fad4d715f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85318643"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887466"
 ---
 # <a name="deploy-ml-model-on-azure-sql-edge-using-onnx"></a>ONNX を使用して Azure SQL Edge に ML モデルをデプロイする 
 
@@ -225,4 +225,4 @@ Azure SQL Edge で鉄鉱石の不純物を予測する、この 3 部構成チ�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure SQL Edge での ONNX モデルの使用について詳しくは、「[SQL Edge (プレビュー) での ONNX を使用した機械学習と AI](onnx-overview.md)」を参照してください。
+Azure SQL Edge での ONNX モデルの使用の詳細については、「[SQL Edge での ONNX を使用した機械学習と AI](onnx-overview.md)」を参照してください。
