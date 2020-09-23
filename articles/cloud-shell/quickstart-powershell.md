@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/18/2018
-ms.openlocfilehash: b50922d129fb4c72db1d6077a49c4d1309d5fe55
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d4a7f1453ec686cfa16d260101ba81f429ce1da0
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512981"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469458"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Azure Cloud Shell の PowerShell のクイックスタート
 
@@ -261,7 +261,7 @@ SSH を使ってサーバーまたは VM に対する認証を行うには、Clo
 
 ### <a name="using-ssh"></a>SSH の使用
 
-[こちら](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell)の説明に従い、Azure PowerShell コマンドレットを使って新しい VM 構成を作成します。
+[こちら](../virtual-machines/linux/quick-create-powershell.md)の説明に従い、Azure PowerShell コマンドレットを使って新しい VM 構成を作成します。
 `New-AzVM` を呼び出してデプロイを始める前に、SSH 公開キーを VM の構成に追加します。
 新しく作成される VM には `~\.ssh\authorized_keys` にある公開キーが含まれ、それにより VM への資格情報不要の SSH セッションが有効になります。
 
@@ -345,6 +345,6 @@ Cloud Shell で Git リポジトリを複製するには、[個人用アクセ�
 [bashqs]:quickstart.md
 [gallery]:https://www.powershellgallery.com/
 [customex]:https://docs.microsoft.com/azure/virtual-machines/windows/extensions-customscript
-[profile]: https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/about/about_profiles
-[azmount]: https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows
+[profile]: /powershell/module/microsoft.powershell.core/about/about_profiles
+[azmount]: ../storage/files/storage-how-to-use-files-windows.md
 [githubtoken]: https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/

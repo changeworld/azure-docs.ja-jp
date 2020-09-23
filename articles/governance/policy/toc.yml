@@ -86,12 +86,18 @@
     - name: 効果を理解する
       displayName: 'order, evaluation'
       href: ./concepts/effects.md
+    - name: スコープ
+      displayName: 'location, notScope, exemption, waiver, save'
+      href: ./concepts/scope.md
     - name: イニシアチブ構造
       displayName: 'parameters, groups, domains, policies'
       href: ./concepts/initiative-definition-structure.md
     - name: 割り当ての構造
       displayName: 'parameters, enforcementmode, policyDefinitionId'
       href: ./concepts/assignment-structure.md
+    - name: 除外の構造
+      displayName: 'waiver, mitigated, compliance'
+      href: ./concepts/exemption-structure.md
     - name: 新しいポリシーの影響の評価
       displayName: 'audit, enforcementmode, compliance'
       href: ./concepts/evaluate-impact.md

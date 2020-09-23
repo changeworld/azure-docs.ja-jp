@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: douglas, carlrab
+ms.reviewer: ''
 ms.date: 07/11/2019
-ms.openlocfilehash: b7623a3c89f9ae4b20385caaac676b972f55f85e
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: a33ff6b927045389c3692201fa70839c6a466ede
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209487"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90887659"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Azure SQL Managed Instance への SQL Server インスタンスの移行
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -126,7 +126,7 @@ SQL Managed Instance では、次のデータベース移行オプションが�
 
 次の図は、プロセスの概要を示しています。
 
-![移行フロー](./media/migrate-to-instance-from-sql-server/migration-flow.png)
+![SQL Server、Azure Storage に向かう "BACKUP / Upload to URL" というラベルの矢印、Azure Storage から SQL の Managed Instance に向かう "RESTORE from URL" というラベルの 2 つ目の矢印を示す図。](./media/migrate-to-instance-from-sql-server/migration-flow.png)
 
 次の表は、実行しているソース SQL Server のバージョンに応じて使用できる方法に関する詳細情報を示しています。
 
@@ -198,7 +198,7 @@ SQL Managed Instance には、監視とトラブルシューティングのた�
 
 たとえば、マネージド インスタンスでバックアップを作成する必要はありません。サービスによってバックアップが自動的に実行されます。 バックアップのスケジュール設定、取得、管理について心配する必要はなくなります。 SQL マネージド インスタンスでは、[特定の時点への復旧 (PITR)](../database/recovery-using-backups.md#point-in-time-restore) を使用して、この保有期間内の任意の時点に復元する機能が提供されます。 さらに、[高可用性](../database/high-availability-sla.md)が組み込まれているため、高可用性の設定について心配する必要はありません。
 
-セキュリティを強化するには、[Azure Active Directory 認証](../database/security-overview.md)、[監査](auditing-configure.md)、[脅威の検出](../database/advanced-data-security.md)、[行レベル セキュリティ](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)、[動的データ マスク](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)の使用を検討します。
+セキュリティを強化するには、[Azure Active Directory 認証](../database/security-overview.md)、[監査](auditing-configure.md)、[脅威の検出](../database/azure-defender-for-sql.md)、[行レベル セキュリティ](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)、[動的データ マスク](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)の使用を検討します。
 
 高度な管理とセキュリティの機能に加えて、マネージド インスタンスでは[ワークロードの監視とチューニング](../database/monitor-tune-overview.md)に役立つ高度なツールのセットが提供されます。 [Azure SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) では、マネージド インスタンスの大規模なセットを監視し、多数のインスタンスとデータベースの監視を一元化することができます。 マネージド インスタンスの[自動チューニング](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction)では、SQL プランの実行統計のパフォーマンスが継続的に監視されて、識別されたパフォーマンスの問題が自動的に修正されます。
 

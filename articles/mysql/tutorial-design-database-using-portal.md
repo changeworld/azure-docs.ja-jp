@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: tutorial
 ms.date: 3/20/2020
 ms.custom: mvc
-ms.openlocfilehash: c0d0e9f0994f7d4d75a67911a5191d6e4ffecaa8
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: d34be152a0d104e688abd6e53c97353b69012670
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80382802"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906545"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-database-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure Database for MySQL データベースを設計する
 
@@ -43,11 +43,11 @@ Azure Database for MySQL サーバーは、定義済みの一連の[コンピュ
 
 2. **[データベース]**  >  **[Azure Database for MySQL]** の順に選択します。 **[データベース]** カテゴリ内に MySQL Server が見つからない場合は、 **[すべて表示]** をクリックして、使用可能なすべてのデータベース サービスを表示します。 検索ボックスに「**Azure Database for MySQL**」と入力すれば、サービスをすばやく探せます。
    
-   ![MySQL への移動](./media/tutorial-design-database-using-portal/1-Navigate-to-MySQL.png)
+   :::image type="content" source="./media/tutorial-design-database-using-portal/1-Navigate-to-MySQL.png" alt-text="MySQL への移動":::
 
 3. **[Azure Database for MySQL]** タイルをクリックします。 Azure Database for MySQL フォームに入力します。
    
-   ![フォームの作成](./media/tutorial-design-database-using-portal/2-create-form.png)
+   :::image type="content" source="./media/tutorial-design-database-using-portal/2-create-form.png" alt-text="フォームの作成":::
 
     **設定** | **推奨値** | **フィールドの説明**
     ---|---|---
@@ -62,7 +62,7 @@ Azure Database for MySQL サーバーは、定義済みの一連の[コンピュ
     Version | "*最新バージョン*"| 最新バージョン (別のバージョンを指定する特定の要件がある場合を除く)。
     Pricing tier | **汎用**、**Gen 5**、**2 仮想コア**、**5 GB**、**7 日**、**地理冗長** | 新しいサーバーのコンピューティング、ストレージ、およびバックアップ構成。 **[価格レベル]** を選択します。 次に、 **[汎用]** タブを選択します。*Gen 5*、*2 仮想コア*、*5 GB*、および *7 日* は、それぞれ **[コンピューティング世代]** 、 **[仮想コア]** 、 **[ストレージ]** 、および **[バックアップの保有期間]** の既定値です。 これらのスライダーはそのままにします。 サーバー バックアップを geo 冗長ストレージで有効にするには、 **[バックアップ冗長オプション]** から **[地理冗長]** を選択します。 この価格レベルの選択を保存するには、 **[OK]** を選択します。 次のスクリーンショットは、これらの選択を示しています。
 
-   ![Pricing tier](./media/tutorial-design-database-using-portal/3-pricing-tier.png)
+   :::image type="content" source="./media/tutorial-design-database-using-portal/3-pricing-tier.png" alt-text="価格レベル":::
 
    > [!TIP]
    > **自動拡張**が有効になっている場合、サーバーは、割り当てられた制限に近づくとワークロードに影響を与えずにストレージを増大させます。
@@ -75,7 +75,7 @@ Azure Databases for MySQL は、ファイアウォールによって保護され
 
 1. 新しく作成したサーバーをクリックし、 **[接続のセキュリティ]** をクリックします。
 
-   ![接続のセキュリティ](./media/tutorial-design-database-using-portal/1-Connection-security.png)
+   :::image type="content" source="./media/tutorial-design-database-using-portal/1-Connection-security.png" alt-text="接続のセキュリティ":::
 2. **自分の IP を追加**するか、またはファイアウォール規則を構成できます。 規則を作成したら、忘れずに **[保存]** をクリックしてください。
 これで、mysql コマンド ライン ツールまたは MySQL Workbench GUI ツールを使用してサーバーに接続することができます。
 
@@ -89,7 +89,7 @@ Azure Portal から、Azure Database for MySQL サーバーの完全修飾**サ�
 1. [Azure Portal](https://portal.azure.com/) の左側のメニューにある **[すべてのリソース]** をクリックして名前を入力し、Azure Database for MySQL サーバーを探します。 サーバー名を選択すると、詳細が表示されます。
 
 2. **[概要]** ページで、 **[サーバー名]** と **[サーバー管理者ログイン名]** の値をメモしておきます。 各フィールドの横にあるコピー ボタンをクリックすると、クリップボードにコピーできます。
-   ![4-2 サーバーのプロパティ](./media/tutorial-design-database-using-portal/2-server-properties.png)
+   :::image type="content" source="./media/tutorial-design-database-using-portal/2-server-properties.png" alt-text="4-2 サーバーのプロパティ":::
 
 この例では、サーバー名は *mydemoserver.mysql.database.azure.com*、サーバー管理者ログインは *myadmin\@mydemoserver* です。
 
@@ -168,11 +168,11 @@ SELECT * FROM inventory;
 
 1. Azure Portal で、ご利用の Azure Database for MySQL を探します。 **[概要]** ページのツール バーで **[復元]** をクリックします。 [復元] ページが表示されます。
 
-   ![10-1 データベースの復元](./media/tutorial-design-database-using-portal/1-restore-a-db.png)
+   :::image type="content" source="./media/tutorial-design-database-using-portal/1-restore-a-db.png" alt-text="10-1 データベースの復元":::
 
 2. **[復元]** フォームに必要な情報を入力します。
 
-   ![10-2 [復元] フォーム](./media/tutorial-design-database-using-portal/2-restore-form.png)
+   :::image type="content" source="./media/tutorial-design-database-using-portal/2-restore-form.png" alt-text="10-2 [復元] フォーム":::
 
    - **復元ポイント**:一覧表示された期間から、どの時点までさかのぼって復元するかを選択します。 ローカル タイム ゾーンは必ず UTC に変換してください。
    - **新しいサーバーに復元**: 復元先の新しいサーバー名を指定します。

@@ -11,20 +11,20 @@ ms.author: laobri
 ms.reviewer: laobri
 ms.date: 03/11/2020
 ms.custom: contperfq4, devx-track-python
-ms.openlocfilehash: c981bed2b30f47223a1fd562d4a5d0fff96e3adf
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: b6b4be2eb2cd490d525046541f68a45d87a8e638
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646974"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906685"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>チュートリアル:バッチ スコアリング用の Azure Machine Learning パイプラインを作成する
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-この高度なチュートリアルでは、Azure Machine Learning でパイプラインを作成してバッチ スコアリング ジョブを実行する方法について説明します。 機械学習パイプラインは、速度、移植性、再利用によってワークフローを最適化します。これにより、ユーザーはインフラストラクチャや自動化にではなく、機械学習に専念することができます。 パイプラインを作成して発行したら、REST エンドポイントを構成します。それを使用して、任意のプラットフォームで任意の HTTP ライブラリからパイプラインをトリガーできます。 
 
-この例では、TensorFlow で実装された事前トレーニング済みの [Inception-V3](https://arxiv.org/abs/1512.00567) 畳み込みニューラル ネットワーク モデルを使用して、ラベル付けされていない画像を分類します。 [機械学習パイプラインについての詳細情報をご覧ください](concept-ml-pipelines.md)。
+この高度なチュートリアルでは、[Azure Machine Learning パイプライン](concept-ml-pipelines.md)を作成して、バッチ スコアリング ジョブを実行する方法について説明します。 機械学習パイプラインは、速度、移植性、再利用によってワークフローを最適化します。これにより、ユーザーはインフラストラクチャや自動化にではなく、機械学習に専念することができます。 パイプラインを作成して発行したら、REST エンドポイントを構成します。それを使用して、任意のプラットフォームで任意の HTTP ライブラリからパイプラインをトリガーできます。 
+
+この例では、TensorFlow で実装された事前トレーニング済みの [Inception-V3](https://arxiv.org/abs/1512.00567) 畳み込みニューラル ネットワーク モデルを使用して、ラベル付けされていない画像を分類します。 
 
 このチュートリアルでは、次のタスクを実行します。
 

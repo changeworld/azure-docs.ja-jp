@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 8/10/2020
-ms.openlocfilehash: 85a1f0dcc2e778a09cf0d19b2a85d6faf371f032
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 5b1a5da688b162c85d2be8580e29dc6ee9db6d40
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88134524"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906484"
 ---
 # <a name="server-group-size"></a>サーバー グループのサイズ
 
@@ -40,9 +40,9 @@ Azure Database for PostgreSQL - Hyperscale (Citus) では、増加した負荷�
 
 ### <a name="add-worker-nodes"></a>ワーカー ノードの追加
 
-ノードを追加するには、Hyperscale (Citus) サーバー グループの **[構成]** タブに移動します。  **[ワーカー ノードの数]** のスライダーをドラッグすると、値が変化します。
+ノードを追加するには、ハイパースケール (Citus) サーバー グループの **[コンピューティングとストレージ]** タブに移動します。  **[ワーカー ノードの数]** のスライダーをドラッグすると、値が変化します。
 
-![リソースのスライダー](./media/howto-hyperscale-scaling/01-sliders-workers.png)
+:::image type="content" source="./media/howto-hyperscale-scaling/01-sliders-workers.png" alt-text="リソースのスライダー":::
 
 **[保存]** ボタンをクリックして、変更した値を有効にします。
 

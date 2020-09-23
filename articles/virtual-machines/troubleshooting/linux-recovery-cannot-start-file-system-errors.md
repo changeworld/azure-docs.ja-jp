@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: e26d4070bc9fabeb3467e7bdc805faad4e6646c3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bae0eb91460bf7ab72abbaa7fa56b2515367d37d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526505"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436189"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>ファイル システム エラーによる Linux VM の起動に関する問題のトラブルシューティング
 
@@ -83,7 +83,7 @@ Linux には、いくつかのファイル システム チェッカーが用意
 
    > [!Note]
    > Linux 用のシリアル コンソールの使用の詳細については、次を参照してください。
-   > * [シリアル コンソールを使用して GRUB とシングル ユーザー モードにアクセスする](../linux/serial-console-grub-single-user-mode.md)
+   > * [シリアル コンソールを使用して GRUB とシングル ユーザー モードにアクセスする](serial-console-grub-single-user-mode.md)
    > * [SysRq および NMI 呼び出しにシリアル コンソールを使用する](./serial-console-nmi-sysrq.md)
 
 2. [電源] アイコンボタンを選択してから、[VM の再起動] を選択します (シリアル コンソールが有効になっていない場合または正常に接続されていない場合、そのボタンは表示されません)。

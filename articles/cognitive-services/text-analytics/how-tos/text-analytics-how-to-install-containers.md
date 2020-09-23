@@ -11,19 +11,20 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 61303a52212c4cec88dee2ccd8a1c08fb971a9b8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a83fd67a9ad5e5a36555fcbaed65b1d76936c33d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545660"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906101"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Text Analytics コンテナーをインストールして実行する
 
 > [!NOTE]
 > * 感情分析 v3 用のコンテナーが一般公開されました。 制限なしのパブリック プレビューとして、キー フレーズ抽出コンテナーと言語検出コンテナーを使用できます。
 > * 現時点では、エンティティのリンクと NER をコンテナーとして使用することはできません。
-> * 現在、Text Analytics for Health コンテナーの使用には課金されません。
+> * Text Analytics for Health コンテナーには[要求フォーム](https://aka.ms/cognitivegate)が必要です。 現時点では、その使用に対しては課金されません。
+> * コンテナー イメージの場所が最近変更された可能性があります。 このコンテナーの更新された場所については、この記事をご覧ください。
 
 コンテナーを使用すると、独自の環境で Text Analytic API を実行でき、セキュリティとデータ ガバナンスの固有の要件に対応できます。 Text Analytics コンテナーは、未加工のテキストに対して高度な自然言語処理を提供し、主要な機能として、感情分析、キー フレーズ抽出、言語検出の 3 つを備えています。 
 

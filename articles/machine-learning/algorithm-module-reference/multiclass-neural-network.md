@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: c7fb02681936f575153f23ac60db43cc75541075
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1b5ccc9deb3c11d847cd194992d7972f82a5c160
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137758"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905286"
 ---
 # <a name="multiclass-neural-network-module"></a>Multiclass Neural Network (多クラス ニューラル ネットワーク) モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナーのモジュールについて説明します。
 
 このモジュールを使用すると、複数の値を持つターゲットを予測するのに使用できるニューラル ネットワーク モデルを作成できます。 
 

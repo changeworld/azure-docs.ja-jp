@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 0718151039d88ffb76a07ce082c08fb011dab88b
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: e3e2c9aa42ff3189e90f57d7c6e92b2a71f46639
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89652517"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061608"
 ---
 # <a name="tutorial-move-azure-sql-database-resources-to-another-region"></a>チュートリアル:Azure SQL Database リソースを別のリージョンに移動する
 
@@ -77,7 +77,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 3. **[リソースの移動]**  >  **[Source + destination]\(ソース + 宛先\)** で、ソース サブスクリプションおよびリージョンを選択します。
 4. **[宛先]** で、リソースの移動先となるリージョンを選択します。 続けて、 **[次へ]** をクリックします。
-5. **[Metadata region]\(メタデータ リージョン\)** で、移動しようとしているリソースに関するメタデータを格納する場所を選択します。 リソース グループはこの目的のために特別に作成されます。 続けて、 **[次へ]** をクリックします。
 
     ![ソースと宛先のリージョンを選択するページ](./media/tutorial-move-region-sql/source-target.png)
 

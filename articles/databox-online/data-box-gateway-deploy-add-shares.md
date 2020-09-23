@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 6db2d8fa6e957a63a4410f17b09a9f106bfba6e6
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 4e54f5254d38bca9c8ff30d5b7cefbe3fde69576
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923477"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904375"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>チュートリアル:Azure Data Box Gateway を使用してデータを転送する
 
@@ -57,7 +57,7 @@ ms.locfileid: "87923477"
 
     3. 共有を配置するストレージ アカウントを指定します。 コンテナーがまだ存在しない場合は、新しく作成された共有の名前が付いたものがストレージ アカウントに作成されます。 コンテナーが既に存在する場合は、そのコンテナーが使用されます。
        > [!IMPORTANT]
-       > Azure Stack Edge または Data Box Gateway デバイスで Azure Storage アカウントをご使用の場合、その Azure Storage アカウントで不変ポリシーが有効になっていないことを確認してください。 詳細については、「[BLOB ストレージの不変ポリシーを設定および管理する](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)」を参照してください。
+       > Azure Stack Edge Pro または Data Box Gateway デバイスで Azure Storage アカウントを使用する場合、そのアカウントに不変ポリシーが設定されていないことを確認してください。 詳細については、「[BLOB ストレージの不変ポリシーを設定および管理する](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)」を参照してください。
     
     4. ブロック BLOB、ページ BLOB、またはファイルから **[ストレージ サービス]** を選択します。 選択されるサービスの種類は、Azure に存在するデータの形式によって変わります。 たとえば、このインスタンスでは、BLOB ブロックとして Azure にデータを配置するため、ブロック BLOB を選択します。 ページ BLOB を選択する場合は、データに 512 バイトが割り当てられていることを確認する必要があります。 たとえば、VHDX は常に 512 バイトでアラインされています。
    
@@ -115,7 +115,7 @@ ms.locfileid: "87923477"
 
 ### <a name="connect-to-an-nfs-share"></a>NFS 共有に接続する
 
-お客様の Azure Stack Edge デバイスに接続されている Linux クライアントで、次の手順を実行します。
+お客様の Azure Stack Edge Pro デバイスに接続されている Linux クライアントで、次の手順を実行します。
 
 1. クライアントに NFSv4 クライアントがインストール済みであることを確認します。 NFS クライアントをインストールするには、次のコマンドを使用します。
 

@@ -2,18 +2,18 @@
 title: Azure Site Recovery データ暗号化機能の廃止 | Microsoft Docs
 description: Azure Site Recovery データ暗号化機能の詳細
 services: site-recovery
-author: rajani-janaki-ram
+author: Sharmistha-Rai
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 11/15/2019
-ms.author: rajanaki
-ms.openlocfilehash: 79c129fee6d0339eed752abe94059fa566859bc0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: sharrai
+ms.openlocfilehash: 5860928d71c0e7431190908d5df5d7496e8ffb17
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086185"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426318"
 ---
 # <a name="deprecation-of-site-recovery-data-encryption-feature"></a>Site Recovery のデータ暗号化機能の廃止
 

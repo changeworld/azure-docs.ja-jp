@@ -11,15 +11,15 @@ author: lostmygithubaccount
 ms.date: 06/25/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 270e93302a90c458ccbdfdc4d2ced8f0d3c263af
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d60a963f8ad4b29d3c282d30e6aca9973208860b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319679"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905156"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>データセットでデータ ドリフトを検出する (プレビュー)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 > [!IMPORTANT]
 > データセットでデータ ドリフトを検出する機能は、現在パブリック プレビュー段階にあります。
@@ -38,15 +38,12 @@ Azure Machine Learning データセット モニター (プレビュー) を使�
 
 データ ドリフト メトリックは、Python SDK または Azure Machine Learning Studio を使用して確認できます。  その他のメトリックと分析情報は、Azure Machine Learning ワークスペースに関連付けられている [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) リソースを通じて利用できます。
 
-> [!Important]
-> SDK を使用したデータ ドリフトの監視は、すべてのエディションで使用できます。 ただし、Studio を使用した Web 上でのデータ ドリフトの監視は Enterprise エディションのみです。
-
 ## <a name="prerequisites"></a>前提条件
 
 データセット モニターを作成して使用するには、以下が必要です。
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
 * [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)。
-* [Azure Machine Learning SDK for Python がインストール済み](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) (これには azureml-datasets パッケージが含まれています)。
+* [Azure Machine Learning SDK for Python がインストール済み](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true) (これには azureml-datasets パッケージが含まれています)。
 * データのファイル パス、ファイル名、または列にタイムスタンプが指定された構造化 (表形式) データ。
 
 ## <a name="what-is-data-drift"></a>データの誤差とは
@@ -105,7 +102,7 @@ Machine Learning データセットを使用して、データ ドリフトを�
 
 ### <a name="python-sdk"></a><a name="sdk-dataset"></a>Python SDK
 
-[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) クラスの [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) メソッドによって、データセットのタイムスタンプ列が定義されます。
+[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) クラスの [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) メソッドによって、データセットのタイムスタンプ列が定義されます。
 
 ```python 
 from azureml.core import Workspace, Dataset, Datastore
@@ -132,10 +129,9 @@ dset = dset.with_timestamp_columns('date')
 dset = dset.register(ws, 'target')
 ```
 
-データセットの `timeseries` 特性を使用する完全な例については、[ノートブックの例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb)または [Datasets SDK のドキュメント](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)を参照してください。
+データセットの `timeseries` 特性を使用する完全な例については、[ノートブックの例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb)または [Datasets SDK のドキュメント](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)を参照してください。
 
 ### <a name="azure-machine-learning-studio"></a><a name="studio-dataset"></a>Azure Machine Learning Studio
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku-inline.md)]
 
 Azure Machine Learning Studio を使用してデータセットを作成する場合は、データへのパスにタイムスタンプ情報が含まれていることを確認し、データが存在するすべてのサブフォルダーを含め、パーティション形式を設定します。
 
@@ -209,15 +205,13 @@ monitor = monitor.enable_schedule()
 `timeseries` データセットとデータ ドリフト検出機能を設定する完全な例については、[サンプルのノートブック](https://aka.ms/datadrift-notebook)を参照してください。
 
 ### <a name="azure-machine-learning-studio"></a><a name="studio-monitor"></a> Azure Machine Learning studio
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku-inline.md)]
 
-データセット モニターにアラートを設定するには、モニターを作成するデータセットを含むワークスペースに Enterprise Edition の機能が必要です。
+1. [スタジオのホームページ](https://ml.azure.com)に移動します。
+1. 左側の **[データセット]** タブを選択します。 
+1. **データセット モニター**を選択します。
+   ![モニターの一覧](./media/how-to-monitor-datasets/monitor-list.png)
 
-ワークスペースの機能を確認したら、[Studio のホームページ](https://ml.azure.com)に移動し、左側の **[データセット]** タブを選択します。 **データセット モニター**を選択します。
-
-![モニターの一覧](./media/how-to-monitor-datasets/monitor-list.png)
-
-**[+ モニターの作成]** をクリックし、 **[次へ]** をクリックしてウィザードの手順を続行します。  
+1. **[+ モニターの作成]** をクリックし、 **[次へ]** をクリックしてウィザードの手順を続行します。  
 
 :::image type="content" source="media/how-to-monitor-datasets/wizard.png" alt-text="[モニターの作成] ウィザード":::
 
