@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/28/2020
-ms.openlocfilehash: fa8bb310d6a088db92b3dfd8eb6d2f584e9ffab7
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 255fa9e058fdbb3b7edb73e75fd53f4a2490bfca
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181886"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023858"
 ---
 # <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>Azure Data Factory を使用して Snowflake のデータをコピーして変換する
 
@@ -63,7 +63,11 @@ Snowflake のリンクされたサービスでは、次のプロパティがサ�
     "properties": {
         "type": "Snowflake",
         "typeProperties": {
-            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&password=<password>&db=<database>&warehouse=<warehouse>&role=<myRole>"
+            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&db=<database>&warehouse=<warehouse>&role=<myRole>",
+            "password": {
+                "type": "SecureString",
+                "value": "<password>"
+            }
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",

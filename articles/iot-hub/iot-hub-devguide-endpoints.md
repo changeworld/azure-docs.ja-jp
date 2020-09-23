@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: System Architecture'
-ms.openlocfilehash: 7e59229f6664dc8966aa491e9d2ded1abbd5536f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9ae21b2a6d470b959f5e869e8a9edda9c56bec73
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323045"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019565"
 ---
 # <a name="reference---iot-hub-endpoints"></a>リファレンス - IoT Hub エンドポイント
 
@@ -55,6 +55,8 @@ Azure IoT Hub はさまざまなアクターに機能を公開するマルチテ
   * *デバイス ツインのプロパティを取得して更新します*。 デバイスは、このエンドポイントを使用して、その[デバイス ツイン](iot-hub-devguide-device-twins.md)のプロパティにアクセスします。 HTTPS はサポートされていません。
 
   * *ダイレクト メソッド要求の受信*。 デバイスは、このエンドポイントを使用して、[ダイレクト メソッド](iot-hub-devguide-direct-methods.md)の要求をリッスンします。 HTTPS はサポートされていません。
+
+  [!INCLUDE [iot-hub-include-x509-ca-signed-support-note](../../includes/iot-hub-include-x509-ca-signed-support-note.md)]
 
 * **サービス エンドポイント**。 各 IoT Hub では、ソリューション バックエンドに対して一連のエンドポイントを公開し、デバイスと通信を行います。 唯一の例外は、これらのエンドポイントが、[AMQP](https://www.amqp.org/) および WebSockets プロトコル経由の AMQP を使用して、公開されるのみの場合です。 ダイレクト メソッド呼び出しのエンドポイントは、HTTPS プロトコル経由で公開されます。
   

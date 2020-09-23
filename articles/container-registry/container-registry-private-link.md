@@ -3,12 +3,12 @@ title: プライベート リンクを設定する
 description: コンテナー レジストリにプライベート エンドポイントを設定し、ローカル仮想ネットワークでプライベート リンク経由のアクセスを有効にします。 プライベート リンク アクセスは、Premium サービス レベルの機能です。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: f21ea0db8d5aff306f2476e8f24191f60b532f34
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: da07d35ad944db8e9b8a7bac0602fff23cd222d8
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298234"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488747"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>Azure Private Link を使用して Azure Container Registry にプライベートで接続する
 
@@ -17,13 +17,9 @@ ms.locfileid: "89298234"
 
 設定がレジストリの割り当てられたプライベート IP アドレスに解決されるように、レジストリのプライベート エンドポイント用に [DNS 設定を構成する](../private-link/private-endpoint-overview.md#dns-configuration)ことができます。 DNS 構成では、ネットワーク内のクライアントとサービスは、レジストリの完全修飾ドメイン名 (*myregistry.azurecr.io*など) で引き続きレジストリにアクセスできます。 
 
-この機能は、**Premium** コンテナー レジストリ サービス レベルで使用できます。 レジストリ サービスのレベルと制限については、[Azure Container Registry のレベル](container-registry-skus.md)に関するページを参照してください。
+この機能は、**Premium** コンテナー レジストリ サービス レベルで使用できます。 現時点では、1 つのレジストリに対して最大 10 個のプライベート エンドポイントを設定できます。 レジストリ サービスのレベルと制限については、[Azure Container Registry のレベル](container-registry-skus.md)に関するページを参照してください。
 
-
-## <a name="things-to-know"></a>注意事項
-
-* 現在のところ、Azure Security Center を使用した画像スキャンは、プライベート エンドポイントで構成したレジストリでは利用できません。
-* 現時点では、1 つのレジストリに対して最大 10 個のプライベート エンドポイントを設定できます。
+[!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
 ## <a name="prerequisites"></a>前提条件
 

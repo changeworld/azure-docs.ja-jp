@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 08/28/2020
-ms.openlocfilehash: 2cb06b6802fdc4cebd04f687266f5ac08dde82c0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e813921727ee08bf9a76c0a2dbfe15f45fe4db79
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269912"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89490073"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database と Azure Synapse Analytics からのデータの共有と受信
 
@@ -34,7 +34,7 @@ Azure Data Share では、Azure SQL Database および Azure Synapse Analytics (
 
 ### <a name="prerequisites-for-sql-source"></a>SQL ソースの前提条件
 
-* 共有するテーブルとビューを含む Azure SQL Database または Azure Synapse Analytics (旧称 Azure SQL Data Warehouse)。
+* 共有するテーブルとビューを含む Azure SQL Database または Azure Synapse Analytics (旧称 SQL Data Warehouse)。
 * SQL サーバー上のデータベースに書き込む権限。これは、*Microsoft.Sql/servers/databases/write* に含まれています。 この権限は、投稿者ロール内に存在します。
 * データ共有からデータ ウェアハウスにアクセスするためのアクセス許可。 この操作を行うには、以下の手順を実行します。 
     1. 自分自身を SQL サーバーの Azure Active Directory 管理者として設定します。
@@ -150,7 +150,7 @@ Azure Storage へのデータを受信することを選択する場合、前提
 Azure SQL Database、Azure Synapse Analytics へのデータを受信することを選択した場合、前提条件の一覧を以下に示します。
 
 * SQL サーバー上のデータベースに書き込む権限。これは、*Microsoft.Sql/servers/databases/write* に含まれています。 この権限は、投稿者ロール内に存在します。 
-* データ共有リソースのマネージド ID が Azure SQL Database または Azure SQL Data Warehouse にアクセスするためのアクセス許可。 この操作を行うには、以下の手順を実行します。 
+* データ共有リソースのマネージド ID が Azure SQL Database または Azure Synapse Analytics にアクセスするためのアクセス許可。 この操作を行うには、以下の手順を実行します。 
     1. 自分自身を SQL サーバーの Azure Active Directory 管理者として設定します。
     1. Azure Active Directory を使用して Azure SQL Database/Data Warehouse に接続します。
     1. クエリ エディター (プレビュー) を使用して次のスクリプトを実行し、Data Share のマネージド ID を "db_datareader、db_datawriter、db_ddladmin" として追加します。 SQL Server 認証ではなく Active Directory を使用して接続する必要があります。 

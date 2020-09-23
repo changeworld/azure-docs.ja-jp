@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/17/2020
-ms.openlocfilehash: 371099610da129025f6683630b1824b8466b5aff
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: f114dd4d4f0a9a26a8aab1f8aeecd4d29678a8d2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833013"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896287"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Azure Database for MySQL の仮想ネットワーク サービス エンドポイントと規則を使用する
 
@@ -19,7 +19,7 @@ ms.locfileid: "87833013"
 
 仮想ネットワーク規則を作成するには、まず、[仮想ネットワーク][vm-virtual-network-overview] (VNet) と参照する規則の[仮想ネットワーク サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]が必要です。 次の図は、仮想ネットワーク サービス エンドポイントが Azure Database for MySQL でどのように動作するかを示しています。
 
-![VNet サービス エンドポイントの動作例](media/concepts-data-access-and-security-vnet/vnet-concept.png)
+:::image type="content" source="media/concepts-data-access-and-security-vnet/vnet-concept.png" alt-text="VNet サービス エンドポイントの動作例":::
 
 > [!NOTE]
 > この機能は、Azure Database for MySQL が汎用サーバーとメモリ最適化サーバー用にデプロイされている Azure のすべてのリージョンで利用できます。
@@ -112,7 +112,7 @@ Azure Database for MySQL の場合、仮想ネットワーク規則機能には�
 
 - 仮想ネットワーク規則は[クラシック デプロイ モデル][arm-deployment-model-568f] ネットワークではなく、Azure Resource Manager の仮想ネットワークのみに適用されます。
 
-- **Microsoft.Sql**  サービス タグを使用して Azure Database for MySQL への仮想ネットワーク サービス エンドポイントをオンにすると、次のすべての Azure Database サービスのエンドポイントも有効になります: Azure Database for MySQL、Azure Database for PostgreSQL、Azure SQL Database、Azure SQL Data Warehouse。
+- **Microsoft.Sql**  サービス タグを使用して Azure Database for MySQL への仮想ネットワーク サービス エンドポイントをオンにすると、次のすべての Azure Database サービスのエンドポイントも有効になります: Azure Database for MySQL、Azure Database for PostgreSQL、Azure SQL Database、Azure Synapse Analytics (旧称 SQL Data Warehouse)。
 
 - VNet サービス エンドポイントは、汎用サーバーとメモリ最適化サーバーでのみサポートされています。
 

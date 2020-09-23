@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge コンピューティング管理 | Microsoft Docs
-description: Azure portal を使用して、Azure Stack Edge のコンピューティング設定 (トリガー、モジュール) の管理、コンピューティング構成の表示、構成の削除などを行う方法について説明します。
+title: Azure Stack Edge Pro のコンピューティング管理 | Microsoft Docs
+description: Azure portal を使用して、Azure Stack Edge Pro のコンピューティング設定 (トリガー、モジュール) の管理、コンピューティング構成の表示、構成の削除などを行う方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 05/20/2019
 ms.author: alkohli
-ms.openlocfilehash: 9d34bd1750b798407b493dcde01b04118d66a2d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 00e5f8dc067d91e6ea6fed688d72b357d1d50678
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339826"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904430"
 ---
-# <a name="manage-compute-on-your-azure-stack-edge"></a>Azure Stack Edge でコンピューティングを管理する
+# <a name="manage-compute-on-your-azure-stack-edge-pro"></a>Azure Stack Edge Pro でコンピューティングを管理する
 
-この記事では、Azure Stack Edge でコンピューティングを管理する方法について説明します。 コンピューティングの管理は、Azure portal またはローカル Web UI から行うことができます。 Azure portal を使用してモジュール、トリガー、およびコンピューティング構成を管理し、ローカル Web UI を使用してコンピューティング設定を管理します。
+この記事では、Azure Stack Edge Pro でコンピューティングを管理する方法について説明します。 コンピューティングの管理は、Azure portal またはローカル Web UI から行うことができます。 Azure portal を使用してモジュール、トリガー、およびコンピューティング構成を管理し、ローカル Web UI を使用してコンピューティング設定を管理します。
 
 この記事では、次のことについて説明します。
 
@@ -28,7 +28,7 @@ ms.locfileid: "84339826"
 
 ## <a name="manage-triggers"></a>トリガーの管理
 
-イベントとは、クラウド環境内またはデバイス上で発生し、対応が必要になる可能性のある事象のことを指します。 たとえば、共有内でファイルが作成されると、それはイベントです。 トリガーは、イベントを発生させます。 Azure Stack Edge では、トリガーをファイル イベントやスケジュールへの応答にすることができます。
+イベントとは、クラウド環境内またはデバイス上で発生し、対応が必要になる可能性のある事象のことを指します。 たとえば、共有内でファイルが作成されると、それはイベントです。 トリガーは、イベントを発生させます。 Azure Stack Edge Pro では、トリガーをファイル イベントやスケジュールへの応答にすることができます。
 
 - **ファイル**:これらのトリガーは、ファイルの作成やファイルの変更などのファイル イベントへの応答です。
 - **Scheduled**: これらのトリガーは、開始日、開始時刻、および繰り返し間隔を指定して定義できるスケジュールへの応答です。
@@ -82,7 +82,7 @@ ms.locfileid: "84339826"
 
 ## <a name="manage-compute-configuration"></a>コンピューティング構成の管理
 
-Azure portal を使用して、Azure Stack Edge のコンピューティング構成の表示、既存のコンピューティング構成の削除、または IoT デバイスと IoT Edge デバイスのアクセス キーと同期するようコンピューティング構成の更新を行います。
+Azure portal を使用して、Azure Stack Edge Pro のコンピューティング構成の表示、既存のコンピューティング構成の削除、または IoT デバイスと IoT Edge デバイスのアクセス キーと同期するようコンピューティング構成の更新を行います。
 
 ### <a name="view-compute-configuration"></a>コンピューティング構成の表示
 
@@ -111,11 +111,11 @@ Azure portal を使用して、Azure Stack Edge のコンピューティング�
 
 ### <a name="sync-up-iot-device-and-iot-edge-device-access-keys"></a>IoT デバイスと IoT Edge デバイスのアクセス キーの同期
 
-Azure Stack Edge でコンピューティングを構成すると、IoT デバイスと IoT Edge デバイスが作成されます。 これらのデバイスには、対称のアクセス キーが自動的に割り当てられます。 セキュリティのベスト プラクティスとして、これらのキーは IoT Hub サービスを通じて定期的にローテーションされます。
+Azure Stack Edge Pro でコンピューティングを構成すると、IoT デバイスと IoT Edge デバイスが作成されます。 これらのデバイスには、対称のアクセス キーが自動的に割り当てられます。 セキュリティのベスト プラクティスとして、これらのキーは IoT Hub サービスを通じて定期的にローテーションされます。
 
 これらのキーをローテーションするには、作成した IoT Hub サービスに移動し、IoT デバイスまたは IoT Edge デバイスを選択します。 各デバイスに、プライマリ アクセス キーとセカンダリ アクセス キーがあります。 プライマリ アクセス キーをセカンダリ アクセス キーに割り当てて、プライマリ アクセス キーを再生成します。
 
-IoT デバイスと IoT Edge デバイスのキーをローテーションしたら、Azure Stack Edge 上の構成を更新して最新のアクセス キーを取得する必要があります。 この同期により、デバイスで IoT デバイスと IoT Edge デバイスの最新のキーを取得することができます。 Azure Stack Edge では、プライマリ アクセス キーのみが使用されます。
+IoT デバイスと IoT Edge デバイスのキーをローテーションしたら、Azure Stack Edge Pro 上の構成を更新して最新のアクセス キーを取得する必要があります。 この同期により、デバイスで IoT デバイスと IoT Edge デバイスの最新のキーを取得することができます。 Azure Stack Edge Pro では、プライマリ アクセス キーのみが使用されます。
 
 デバイスのアクセス キーを同期するには、Azure portal で次の手順を実行します。
 

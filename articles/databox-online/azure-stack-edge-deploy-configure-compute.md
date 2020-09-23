@@ -1,6 +1,6 @@
 ---
-title: 'チュートリアル: Azure Stack Edge のコンピューティングを使用してデータのフィルター処理、分析を行う | Microsoft Docs'
-description: Azure Stack Edge でコンピューティング ロールを構成し、Azure への送信前にこれを使用してデータを変換する方法を説明します。
+title: 'チュートリアル: Azure Stack Edge Pro のコンピューティングを使用してデータのフィルター処理、分析を行う | Microsoft Docs'
+description: Azure Stack Edge Pro でコンピューティング ロールを構成し、Azure への送信前にこれを使用してデータを変換する方法を説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,17 +8,17 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: ab9c93dc029498c70a828f38f297c1e02dcb29ee
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
+ms.openlocfilehash: b19bac439035da85d542d62f33e813822edc38d9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "83774064"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904597"
 ---
-# <a name="tutorial-transform-data-with-azure-stack-edge"></a>チュートリアル:Azure Stack Edge でデータを変換する
+# <a name="tutorial-transform-data-with-azure-stack-edge-pro"></a>チュートリアル:Azure Stack Edge Pro でデータを変換する
 
-このチュートリアルでは、お客様の Azure Stack Edge デバイスでコンピューティング ロールを構成する方法について説明します。 コンピューティング ロールを構成すると、Azure に送信する前に Azure Stack Edge でデータを変換できるようになります。
+このチュートリアルでは、お客様の Azure Stack Edge Pro デバイスでコンピューティング ロールを構成する方法について説明します。 コンピューティング ロールを構成すると、Azure に送信する前に Azure Stack Edge Pro でデータを変換できるようになります。
 
 この手順の所要時間はおおよそ 10 分から 15 分です。
 
@@ -33,14 +33,14 @@ ms.locfileid: "83774064"
  
 ## <a name="prerequisites"></a>前提条件
 
-お客様の Azure Stack Edge デバイスでコンピューティング ロールを設定する前に、次のことを確認してください。
+お客様の Azure Stack Edge Pro デバイスでコンピューティング ロールを設定する前に、次のことを確認してください。
 
-- [Azure Stack Edge の接続、設定、アクティブ化](azure-stack-edge-deploy-connect-setup-activate.md)に関するページで説明されているとおり、お客様の Azure Stack Edge デバイスをアクティブ化していること。
+- [Azure Stack Edge Pro の接続、設定、アクティブ化](azure-stack-edge-deploy-connect-setup-activate.md)に関するページで説明されているとおり、お客様の Azure Stack Edge Pro デバイスをアクティブ化していること。
 
 
 ## <a name="configure-compute"></a>コンピューティングを構成する
 
-Azure Stack Edge でコンピューティングを構成するために、IoT Hub リソースを作成します。
+Azure Stack Edge Pro でコンピューティングを構成するために、IoT Hub リソースを作成します。
 
 1. Azure portal で、Azure Stack Edge リソースの [概要] に移動します。 右側のウィンドウの **[コンピューティング]** タイルで **[開始]** を選択します。
 
@@ -62,7 +62,7 @@ Azure Stack Edge でコンピューティングを構成するために、IoT Hu
     ![コンピューティングの開始](./media/azure-stack-edge-deploy-configure-compute/configure-compute-3.png)
 
     > [!NOTE]
-    > Azure Stack Edge デバイスに IoT Hub が関連付けられる前に **[コンピューティングの構成]** ダイアログを閉じた場合、IoT Hub は作成されますが、コンピューティングの構成には表示されません。 
+    > Azure Stack Edge Pro デバイスに IoT Hub が関連付けられる前に **[コンピューティングの構成]** ダイアログが閉じた場合、IoT Hub は作成されますが、コンピューティングの構成には表示されません。 
     
     Edge デバイスで Edge コンピューティング ロールが設定されると、2 つのデバイスが作成されます (IoT デバイスと IoT Edge デバイス)。 IoT Hub リソースでは、両方のデバイスを表示できます。 IoT Edge ランタイムは、この IoT Edge デバイス上でも動作しています。 現時点では、お客様の IoT Edge デバイスに対して使用できるのは Linux プラットフォームのみです。
 
@@ -101,9 +101,9 @@ Azure Stack Edge でコンピューティングを構成するために、IoT Hu
 
 ## <a name="add-a-module"></a>モジュールを追加する
 
-カスタム モジュールまたはあらかじめ構築されたモジュールを追加できます。 この Edge デバイスにはカスタム モジュールがありません。 カスタム モジュールを作成する方法については、[Azure Stack Edge デバイス用の C# モジュールの開発](azure-stack-edge-create-iot-edge-module.md)に関するページを参照してください。
+カスタム モジュールまたはあらかじめ構築されたモジュールを追加できます。 この Edge デバイスにはカスタム モジュールがありません。 カスタム モジュールを作成する方法については、[Azure Stack Edge Pro デバイス用の C# モジュールの開発](azure-stack-edge-create-iot-edge-module.md)に関するページを参照してください。
 
-このセクションでは、[Azure Stack Edge 用の C# モジュールの開発](azure-stack-edge-create-iot-edge-module.md)に関するページでお客様が作成したカスタム モジュールを IoT Edge デバイスに追加します。 このカスタム モジュールによって、Edge デバイス上の Edge ローカル共有からファイルが受け取られ、デバイス上の Edge (クラウド) 共有にそれらが移動されます。 その後、クラウド共有から、そのクラウド共有に関連付けられた Azure ストレージ アカウントにファイルがプッシュされます。
+このセクションでは、[Azure Stack Edge Pro 用の C# モジュールの開発](azure-stack-edge-create-iot-edge-module.md)に関するページでお客様が作成したカスタム モジュールを IoT Edge デバイスに追加します。 このカスタム モジュールによって、Edge デバイス上の Edge ローカル共有からファイルが受け取られ、デバイス上の Edge (クラウド) 共有にそれらが移動されます。 その後、クラウド共有から、そのクラウド共有に関連付けられた Azure ストレージ アカウントにファイルがプッシュされます。
 
 1. **[Edge コンピューティング]、[開始]** の順に移動します。 **[モジュールの追加]** タイルで、シナリオの種類として **[シンプル]** を選択します。 **[追加]** を選択します。
 2. **[Configure and add module]\(モジュールの構成と追加\)** ブレードで、以下の値を入力します。
@@ -111,7 +111,7 @@ Azure Stack Edge でコンピューティングを構成するために、IoT Hu
     
     |フィールド  |値  |
     |---------|---------|
-    |名前     | モジュールの一意の名前。 このモジュールは、お客様の Azure Stack Edge に関連付けられている IoT Edge デバイスにデプロイできる Docker コンテナーです。        |
+    |名前     | モジュールの一意の名前。 このモジュールは、お客様の Azure Stack Edge Pro に関連付けられている IoT Edge デバイスにデプロイできる Docker コンテナーです。        |
     |イメージの URI     | モジュールの対応するコンテナー イメージのイメージ URI。        |
     |資格情報が必要です     | チェック ボックスをオンにすると、一致する URL が含まれているモジュールの取得にユーザー名とパスワードが使用されます。        |
     |Input share (入力共有)     | 入力共有を選択します。 この例では、Edge ローカル共有が入力共有です。 ここで使用されるモジュールによって、Edge ローカル共有から Edge 共有にファイルが移動され、そこでクラウドにアップロードされます。        |
@@ -165,7 +165,7 @@ Azure Stack Edge でコンピューティングを構成するために、IoT Hu
 > * コンピューティング モジュールを追加する
 > * データ変換を検証して転送する
 
-お客様の Azure Stack Edge デバイスを管理する方法を学習するには、次を参照してください。
+お客様の Azure Stack Edge Pro デバイスを管理する方法については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [ローカル Web UI を使用して Azure Stack Edge を管理する](azure-stack-edge-manage-access-power-connectivity-mode.md)
+> [ローカル Web UI を使用して Azure Stack Edge Pro を管理する](azure-stack-edge-manage-access-power-connectivity-mode.md)

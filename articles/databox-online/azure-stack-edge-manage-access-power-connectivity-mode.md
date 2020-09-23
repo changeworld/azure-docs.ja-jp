@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge デバイスのアクセス、電源、接続モード | Microsoft Docs
-description: Azure へのデータ転送に役立つ Azure Stack Edge デバイスのアクセス、電源、接続モードを管理する方法について説明します
+title: Azure Stack Edge Pro デバイスのアクセス、電源、接続モード | Microsoft Docs
+description: Azure へのデータ転送に役立つ Azure Stack Edge Pro デバイスのアクセス、電源、接続モードを管理する方法について説明します
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 75e7a43d545bea63d553ad01836ed5c6ebc2dcc9
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: e0e2ac43ce0157b4917e9c45f6a02ace63432137
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079797"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904418"
 ---
-# <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge"></a>Azure Stack Edge のアクセス、電源、接続モードを管理する
+# <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro"></a>Azure Stack Edge Pro のアクセス、電源、接続モードを管理する
 
-この記事では、Azure Stack Edge のアクセス、電源、接続モードを管理する方法について説明します。 これらの操作は、ローカル Web UI または Azure portal を使用して実行されます。
+この記事では、Azure Stack Edge Pro のアクセス、電源、接続モードを管理する方法について説明します。 これらの操作は、ローカル Web UI または Azure portal を使用して実行されます。
 
 この記事では、次の方法について説明します。
 
@@ -29,7 +29,7 @@ ms.locfileid: "89079797"
 
 ## <a name="manage-device-access"></a>デバイスのアクセスを管理する
 
-Azure Stack Edge デバイスへのアクセスは、デバイスのパスワードを使用して制御されます。 パスワードは、ローカル Web UI を使用して変更できます。 また、Azure portal ではデバイスのパスワードをリセットすることもできます。
+Azure Stack Edge Pro デバイスへのアクセスは、デバイスのパスワードを使用して制御されます。 パスワードは、ローカル Web UI を使用して変更できます。 また、Azure portal ではデバイスのパスワードをリセットすることもできます。
 
 ### <a name="change-device-password"></a>デバイスのパスワードを変更する
 
@@ -61,12 +61,12 @@ Azure Stack Edge または Data Box Gateway、IoT Hub、Azure Storage リソー�
 
 ### <a name="manage-microsoft-graph-api-permissions"></a>Microsoft Graph API のアクセス許可の管理
 
-Azure Stack Edge デバイスのアクティブ化キーを生成するとき、または資格情報が必要な何らかの操作を実行するときは、Azure Active Directory Graph API へのアクセス許可が必要です。 資格情報が必要な操作には、次のものがあります。
+Azure Stack Edge Pro デバイスのアクティブ化キーを生成するとき、または資格情報が必要な何らかの操作を実行するときは、Azure Active Directory Graph API へのアクセス許可が必要です。 資格情報が必要な操作には、次のものがあります。
 
 -  ストレージ アカウントが関連付けられた共有の作成。
 -  デバイス上の共有にアクセスできるユーザーの作成。
 
-`Read all directory objects` を実行できる必要があるため、Active Directory テナントに対する `User` アクセス権が必要です。 Guest ユーザーは `Read all directory objects` を実行するアクセス許可がないため、使用できません。 ゲストである場合は、アクティブ化キーの生成、Azure Stack Edge デバイス上の共有の作成、ユーザーの作成、Edge コンピューティング ロールの構成、デバイス パスワードのリセットなどの操作はすべて失敗します。
+`Read all directory objects` を実行できる必要があるため、Active Directory テナントに対する `User` アクセス権が必要です。 Guest ユーザーは `Read all directory objects` を実行するアクセス許可がないため、使用できません。 ゲストである場合は、アクティブ化キーの生成、Azure Stack Edge Pro デバイス上の共有の作成、ユーザーの作成、Edge コンピューティング ロールの構成、デバイス パスワードのリセットなどの操作はすべて失敗します。
 
 Microsoft Graph API へのアクセスをユーザーに提供する方法の詳細については、「[Microsoft Graph のアクセス許可のリファレンス](https://docs.microsoft.com/graph/permissions-reference)」を参照してください。
 
@@ -89,7 +89,7 @@ Microsoft Graph API へのアクセスをユーザーに提供する方法の詳
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-Azure Stack Edge デバイスの場合、`Microsoft.DataBoxEdge` を登録する必要があります。 `Microsoft.DataBoxEdge` を登録するには、サブスクリプション管理者が次のコマンドを実行する必要があります。
+Azure Stack Edge Pro デバイスの場合、`Microsoft.DataBoxEdge` を登録する必要があります。 `Microsoft.DataBoxEdge` を登録するには、サブスクリプション管理者が次のコマンドを実行する必要があります。
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge

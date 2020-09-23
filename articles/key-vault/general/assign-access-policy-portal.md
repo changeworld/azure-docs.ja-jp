@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c9fd2df1af3a9f15ca8a53a0094734188dd30bf1
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: d16d14ff51cb9a7e71193d93c6755a8e4cb93ed0
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89380548"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89481411"
 ---
 # <a name="assign-a-key-vault-access-policy-using-the-azure-portal"></a>Azure portal を使用して Key Vault アクセス ポリシーを割り当てる
 
@@ -41,7 +41,7 @@ Azure Active Directory での Azure portal を通じたグループの作成の�
 
     ![アクセス ポリシーのサービス プリンシパルを選択しています](../media/authentication/assign-policy-portal-03.png)
 
-    アプリにマネージド ID を使用している場合は、アプリ自体の名前を検索して選択します。 (マネージド ID とサービス プリンシパルの詳細については、[Key Vault 認証におけるアプリ ID とサービス プリンシパル](authentication.md#app-identity-and-service-principals)に関する記事を参照してください。)
+    アプリにマネージド ID を使用している場合は、アプリ自体の名前を検索して選択します。 (マネージド ID とサービス プリンシパルの詳細については、[Key Vault 認証におけるアプリ ID とサービス プリンシパル](authentication.md#app-identity-and-security-principals)に関する記事を参照してください。)
  
 1.  **[アクセス ポリシーの追加]** ウィンドウに戻り、 **[追加]** を選択して、アクセス ポリシーを保存します。
 

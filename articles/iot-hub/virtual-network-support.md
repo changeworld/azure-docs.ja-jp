@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: 3c097260812e72dfaa3678a4aade556a337e6a6c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: fadcefb0b802ec3064ac917ab98320f61f24ae5c
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272902"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033525"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Private Link とマネージド ID を使用した仮想ネットワークの IoT Hub サポート
 
@@ -226,6 +226,8 @@ IoT Hub は、顧客所有の Service Bus 名前空間にメッセージをル�
 
 IoT Hub のファイルのアップロード機能を使用すると、デバイスで顧客所有のストレージ アカウントにファイルをアップロードできます。 ファイルのアップロードを機能させるには、デバイスと IoT Hub の両方をストレージ アカウントに接続する必要があります。 ストレージ アカウントにファイアウォールの制限が適用されている場合、デバイスでは、サポートされているストレージ アカウントのいずれかのメカニズム ([プライベート エンドポイント](../private-link/create-private-endpoint-storage-portal.md)、[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)、または[ファイアウォールのダイレクト構成](../storage/common/storage-network-security.md)を含む) を使用して接続する必要があります。 同様に、ストレージ アカウントにファイアウォールの制限が適用されている場合は、信頼された Microsoft サービスの例外を使用して、ストレージ リソースにアクセスするように IoT Hub を構成する必要があります。 このため、IoT Hub にはマネージド ID が必要です。 マネージド ID がプロビジョニングされたら、以下の手順に従って、ストレージ アカウントにアクセスするためにハブのリソース ID に RBAC アクセス許可を付与します。
 
+[!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
+
 1. Azure portal で、ストレージ アカウントの **[アクセス制御 (IAM)]** タブに移動し、 **[ロールの割り当てを追加する]** セクションの下にある **[追加]** をクリックします。
 
 2. **ロール**として **[ストレージ BLOB データ共同作成者]** ([共同作成者やストレージ アカウント共同作成者 "*ではなく*"](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) を選択し、**アクセスの割当先**として **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選んでから、ドロップダウン リストで IoT Hub のリソース名を選択します。 **[保存]** ボタンをクリックします。
@@ -250,7 +252,7 @@ IoT Hub では、顧客指定のストレージ BLOB 間で、デバイスの情
 
 3. ストレージ アカウントの **[ファイアウォールと仮想ネットワーク]** タブに移動し、 **[Allow access from selected networks]\(選択したネットワークからのアクセスを許可する\)** オプションを有効にします。 **[例外]** 一覧で、 **[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]** のボックスをオンにします。 **[保存]** ボタンをクリックします。
 
-これで、[インポートとエクスポート ジョブの作成](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjobs) (一括インポートとエクスポート機能を使用する方法については、こちらを参照してください) に Azure IoT REST API を使用できるようになりました。 要求本文に `storageAuthenticationType="identityBased"` を指定し、ストレージ アカウントの入力および出力 URL として `inputBlobContainerUri="https://..."` と `outputBlobContainerUri="https://..."` をそれぞれ使用する必要があります。
+これで、[インポートとエクスポート ジョブの作成](https://docs.microsoft.com/rest/api/iothub/service/jobs/getimportexportjobs) (一括インポートとエクスポート機能を使用する方法については、こちらを参照してください) に Azure IoT REST API を使用できるようになりました。 要求本文に `storageAuthenticationType="identityBased"` を指定し、ストレージ アカウントの入力および出力 URL として `inputBlobContainerUri="https://..."` と `outputBlobContainerUri="https://..."` をそれぞれ使用する必要があります。
 
 Azure IoT Hub SDK では、サービス クライアントのレジストリ マネージャーでもこの機能がサポートされます。 次のコード スニペットでは、C# SDK を使用してインポート ジョブまたはエクスポート ジョブを開始する方法を示しています。
 

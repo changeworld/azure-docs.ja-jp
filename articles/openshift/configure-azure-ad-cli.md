@@ -8,16 +8,16 @@ author: sabbour
 ms.author: asabbour
 keywords: aro、openshift、az aro、red hat、cli
 ms.custom: mvc
-ms.openlocfilehash: 393185d2167e18df3f8c1319e7367efbc437de1a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: fd6ea0749cce154ae20479bc54ef9b7374a69d0c
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590338"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469424"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-cli"></a>Azure Red Hat OpenShift 4 クラスターの Azure Active Directory 認証を構成する (CLI)
 
-CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.6.0 以降を実行していることが要件となります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
+CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.6.0 以降を実行していることが要件となります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
 
 Azure Active Directory アプリケーションの構成に使用するクラスター固有の URL を取得します。
 
@@ -66,7 +66,7 @@ az account show --query tenantId -o tsv
 
 ## <a name="create-a-manifest-file-to-define-the-optional-claims-to-include-in-the-id-token"></a>マニフェスト ファイルを作成して、ID トークンに含める省略可能な要求を定義する
 
-アプリケーション開発者は、Azure AD アプリケーションで[省略可能な要求](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims)を使用して、アプリケーションに送信されるトークンに含める要求を指定できます。
+アプリケーション開発者は、Azure AD アプリケーションで[省略可能な要求](../active-directory/develop/active-directory-optional-claims.md)を使用して、アプリケーションに送信されるトークンに含める要求を指定できます。
 
 次の処理に省略可能な要求を使用できます。
 
@@ -127,7 +127,7 @@ az ad app permission add \
 
 Azure Active Directory (Azure AD) テナントに登録されたアプリケーションは、既定ではテナントの正常に認証されたすべてのユーザーが利用できます。 Azure AD により、テナントの管理者と開発者が、テナントのユーザーまたはセキュリティ グループの特定のセットにアプリを制限できるようになります。
 
-Azure Active Directory のドキュメントに記載されている手順に従って、[ユーザーとグループをアプリに割り当てます](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users#app-registration)。
+Azure Active Directory のドキュメントに記載されている手順に従って、[ユーザーとグループをアプリに割り当てます](../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md#app-registration)。
 
 ## <a name="configure-openshift-openid-authentication"></a>OpenShift OpenID 認証の構成
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2019
 ms.author: memildin
-ms.openlocfilehash: a636acab42d14925f507568e8a9fff4693c8f71c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7f235f9255df49c096e224e1754ad2bbdf664423
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519645"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90895815"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>チュートリアル:規制に対するコンプライアンスの向上
 ---
@@ -35,8 +35,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルで説明されている機能を実行するには、Security Center の Standard 価格レベルが必要です。 Security Center Standard は無料でお試しいただけます。
-詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。 Standard にアップグレードする方法については、[Azure サブスクリプションでの Security Center Standard の利用開始](https://docs.microsoft.com/azure/security-center/security-center-get-started)に関するクイックスタートを参照してください。
+このチュートリアルで説明されている機能を実行するには、[Azure Defender](azure-defender.md) が有効になっている必要があります。 Azure Defender は 30 日間無料でお試しいただけます。
 
 ##  <a name="assess-your-regulatory-compliance"></a>規制に対するコンプライアンスを評価する
 
@@ -72,13 +71,13 @@ Security Center では、お客様のリソースの構成を継続的に評価�
 
 1.  特定のリソースを選択すると、そのリソースの情報をさらに詳しく表示して、推奨事項を解決することができます。 <br>たとえば、**Azure CIS 標準**のタブで、 **[ストレージ アカウントへの安全な転送を必須にする]** という推奨事項をクリックすることができます。
 
-    ![コンプライアンスに関する推奨事項](./media/security-center-compliance-dashboard/compliance-recommendation.png)
+    ![**[ストレージ アカウントへの安全な転送を必須にする]** という推奨事項を選択する](./media/security-center-compliance-dashboard/compliance-recommendation.png)
 
 1. 推奨事項の情報をクリックして異常なリソースを選択すると、Azure portal 内で**安全なストレージ転送**を有効にするためのエクスペリエンスに直接誘導されます。
 
     レコメンデーションの適用方法の詳細については、「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」を参照してください。
 
-    ![コンプライアンスに関する推奨事項](./media/security-center-compliance-dashboard/compliance-remediate-recommendation.png)
+    ![Storage account configuration](./media/security-center-compliance-dashboard/compliance-remediate-recommendation.png)
 
 1.  推奨事項を解決するためのアクションを実行すると、お客様のコンプライアンス スコアが向上するので、コンプライアンス ダッシュボード レポートに影響が現れます。
 

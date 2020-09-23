@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 37c5a0fb1addf9f84c8a237b4d185d140553535e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1a99a91152f8308af122677ad3b8df3fb5005dbb
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825975"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896179"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>ポータルを使用して Azure Database for MySQL 用のプライベート リンクを作成および管理する
 
@@ -134,7 +134,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 2. **[プライベート リンク センター - 概要]** の**サービスへのプライベート接続を構築する**オプションで、 **[開始]** を選択します。
 
-    ![Private Link の概要](media/concepts-data-access-and-security-private-link/privatelink-overview.png)
+    :::image type="content" source="media/concepts-data-access-and-security-private-link/privatelink-overview.png" alt-text="Private Link の概要":::
 
 1. **[Create a private endpoint - Basics]\(プライベート エンドポイントの作成 - 基本\)** で次の情報を入力または選択します。
 
@@ -178,7 +178,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **[Review + create]\(レビュー + 作成\)** を選択します。 **[確認および作成]** ページが表示され、Azure によって構成が検証されます。 
 2. "**証に成功しました**" というメッセージが表示されたら、 **[作成]** を選択します。 
 
-    ![作成された Private Link](media/concepts-data-access-and-security-private-link/show-mysql-private-link.png)
+    :::image type="content" source="media/concepts-data-access-and-security-private-link/show-mysql-private-link.png" alt-text="作成された Private Link":::
 
     > [!NOTE] 
     > お客様の DNS 設定の FQDN は、構成されている非公開 IP では解決されません。 [こちら](../dns/dns-operations-recordsets-portal.md)で示すように、構成された FQDN の DNS ゾーンを設定する必要があります。

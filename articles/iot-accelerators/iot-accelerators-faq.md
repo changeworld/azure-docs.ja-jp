@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 7a2b167f90b4ec79f5fa515ded1c676ca7085e72
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: abab80f8c790a170ec30fa228dd86576079a73a0
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75647715"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462549"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>IoT ソリューション アクセラレータに関してよく寄せられる質問
 
@@ -101,7 +101,7 @@ Azure サブスクリプションが確かにある場合は、サブスクリ�
 
 ### <a name="how-do-i-delete-an-azure-ad-tenant"></a>Azure AD テナントを削除するにはどうすればよいですか。
 
-[Azure AD テナントの削除方法](https://blogs.msdn.com/b/ericgolpe/archive/2015/04/30/walkthrough-of-deleting-an-azure-ad-tenant.aspx)に関する Eric Golpe のブログ記事を参照してください。
+[Azure AD テナントの削除方法](https://docs.microsoft.com/archive/blogs/ericgolpe/walkthrough-of-deleting-an-azure-ad-tenant)に関する Eric Golpe のブログ記事を参照してください。
 
 ### <a name="next-steps"></a>次のステップ
 

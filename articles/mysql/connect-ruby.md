@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 15bbce208475a85e7be6efbadebcb4e43c2d8d17
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 8bedb7177c93eecd13f64d151c56baf5a394e0c2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029105"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896283"
 ---
 # <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-mysql"></a>クイック スタート:Ruby を使用して Azure Database for MySQL に接続してデータを照会する
 
@@ -25,11 +25,11 @@ ms.locfileid: "90029105"
 - [Azure Portal を使用した Azure Database for MySQL サーバーの作成](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Azure CLI を使用した Azure Database for MySQL サーバーの作成](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > [Azure portal](./howto-manage-firewall-using-portal.md) または [Azure CLI](./howto-manage-firewall-using-cli.md) を使用して、接続元の IP アドレスにサーバーのファイアウォール規則が追加されていることを確認します。
 
 ## <a name="install-ruby"></a>Ruby のインストール
-ご使用のコンピューターに Ruby、Gem、MySQL2 ライブラリをインストールします。 
+ご使用のコンピューターに Ruby、Gem、MySQL2 ライブラリをインストールします。
 
 ### <a name="windows"></a>Windows
 1. バージョン 2.3 の [Ruby](https://rubyinstaller.org/downloads/) をダウンロードしてインストールします。
@@ -61,9 +61,9 @@ Azure Database for MySQL に接続するために必要な接続情報を取得�
 2. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、作成したサーバー (例: **mydemoserver**) を検索します。
 3. サーバー名をクリックします。
 4. サーバーの **[概要]** パネルから、 **[サーバー名]** と **[サーバー管理者ログイン名]** を書き留めます。 パスワードを忘れた場合も、このパネルからパスワードをリセットすることができます。
- ![Azure Database for MySQL サーバー名](./media/connect-ruby/1_server-overview-name-login.png)
+ :::image type="content" source="./media/connect-ruby/1_server-overview-name-login.png" alt-text="Azure Database for MySQL サーバー名":::
 
-## <a name="run-ruby-code"></a>Ruby コードの実行 
+## <a name="run-ruby-code"></a>Ruby コードの実行
 1. 以下のセクションからテキスト ファイルに Ruby コードを貼り付け、.rb というファイル拡張子でプロジェクト フォルダーに保存します (例: `C:\rubymysql\createtable.rb`、`/home/username/rubymysql/createtable.rb`)。
 2. このコードを実行するには、コマンド プロンプトまたは Bash シェルを起動します。 プロジェクト フォルダーに移動します (`cd rubymysql`)。
 3. そのうえで、Ruby コマンドに続けてファイル名を入力し、アプリケーションを実行します (例: `ruby createtable.rb`)。
@@ -72,9 +72,9 @@ Azure Database for MySQL に接続するために必要な接続情報を取得�
 ## <a name="connect-and-create-a-table"></a>接続とテーブルの作成
 接続し、**CREATE TABLE** SQL ステートメントでテーブルを作成してから、**INSERT INTO** SQL ステートメントでそのテーブルに行を追加するには、次のコードを使用します。
 
-このコードは、[mysql2::client](https://www.rubydoc.info/gems/mysql2) クラスの .new() メソッドを使用して Azure Database for MySQL に接続しています。 次に、[query()](https://www.rubydoc.info/gems/mysql2#Usage) メソッドを何度か呼び出して、DROP、CREATE TABLE、INSERT INTO の各コマンドを実行します。 その後、[close()](https://www.rubydoc.info/gems/mysql2/Mysql2/Client#close-instance_method) メソッドを呼び出して、終了する前に接続を閉じます。
+このコードでは、MySQL サーバーへの接続に [mysql2::client](https://www.rubydoc.info/gems/mysql2) クラスが使用されます。 次に、```query()``` メソッドを呼び出して、DROP、CREATE TABLE、INSERT INTO の各コマンドを実行します。 最後に、```close()``` を呼び出して、終了する前に接続を閉じます。
 
-`host`、`database`、`username`、`password` の各文字列は、実際の値に置き換えてください。 
+`host`、`database`、`username`、`password` の各文字列は、実際の値に置き換えてください。
 ```ruby
 require 'mysql2'
 
@@ -115,11 +115,11 @@ end
 ```
 
 ## <a name="read-data"></a>データの読み取り
-接続し、**SELECT** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
+接続し、**SELECT** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。
 
-このコードは、[mysql2::client](https://www.rubydoc.info/gems/mysql2) クラスの .new() メソッドを使用して Azure Database for MySQL に接続しています。 次に、[query()](https://www.rubydoc.info/gems/mysql2#Usage) メソッドを呼び出して SELECT コマンドを実行します。 その後、[close()](https://www.rubydoc.info/gems/mysql2/Mysql2/Client#close-instance_method) メソッドを呼び出して、終了する前に接続を閉じます。
+このコードでは、Azure Database for MySQL への接続に [mysql2::client](https://www.rubydoc.info/gems/mysql2) クラスの ```new()``` メソッドが使用されます。 次に、```query()``` メソッドを呼び出して SELECT コマンドを実行します。 その後、```close()``` メソッドを呼び出して、終了する前に接続を閉じます。
 
-`host`、`database`、`username`、`password` の各文字列は、実際の値に置き換えてください。 
+`host`、`database`、`username`、`password` の各文字列は、実際の値に置き換えてください。
 
 ```ruby
 require 'mysql2'
@@ -156,9 +156,9 @@ end
 ## <a name="update-data"></a>データの更新
 接続し、**UPDATE** SQL ステートメントを使用してデータを更新するには、次のコードを使用します。
 
-このコードは、[mysql2::client](https://www.rubydoc.info/gems/mysql2) クラスの .new() メソッドを使用して Azure Database for MySQL に接続しています。 次に、[query()](https://www.rubydoc.info/gems/mysql2#Usage) メソッドを呼び出して UPDATE コマンドを実行します。 その後、[close()](https://www.rubydoc.info/gems/mysql2/Mysql2/Client#close-instance_method) メソッドを呼び出して、終了する前に接続を閉じます。
+このコードは、[mysql2::client](https://www.rubydoc.info/gems/mysql2) クラスの .new() メソッドを使用して Azure Database for MySQL に接続しています。 次に、```query()``` メソッドを呼び出して UPDATE コマンドが実行されます。 その後、```close()``` メソッドを呼び出して、終了する前に接続を閉じます。
 
-`host`、`database`、`username`、`password` の各文字列は、実際の値に置き換えてください。 
+`host`、`database`、`username`、`password` の各文字列は、実際の値に置き換えてください。
 
 ```ruby
 require 'mysql2'
@@ -191,11 +191,11 @@ end
 
 
 ## <a name="delete-data"></a>データの削除
-接続し、**DELETE** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
+接続し、**DELETE** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。
 
-このコードは、[mysql2::client](https://www.rubydoc.info/gems/mysql2) クラスの .new() メソッドを使用して Azure Database for MySQL に接続しています。 次に、[query()](https://www.rubydoc.info/gems/mysql2#Usage) メソッドを呼び出して DELETE コマンドを実行します。 その後、[close()](https://www.rubydoc.info/gems/mysql2/Mysql2/Client#close-instance_method) メソッドを呼び出して、終了する前に接続を閉じます。
+このコードでは、MySQL サーバーに接続し、DELETE コマンドを実行してからサーバーへの接続を閉じるのに、[mysql2::client](https://rubygems.org/gems/mysql2/) クラスが使用されます。
 
-`host`、`database`、`username`、`password` の各文字列は、実際の値に置き換えてください。 
+`host`、`database`、`username`、`password` の各文字列は、実際の値に置き換えてください。
 
 ```ruby
 require 'mysql2'
@@ -228,4 +228,8 @@ end
 
 ## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
-> [エクスポートとインポートを使用したデータベースの移行](./concepts-migrate-import-export.md)
+> [エクスポートとインポートを使用したデータベースの移行](./concepts-migrate-import-export.md) <br/>
+
+> [!div class="nextstepaction"]
+> [MySQL2 クライアントの詳細](https://www.rubydoc.info/gems/mysql2) <br/>
+

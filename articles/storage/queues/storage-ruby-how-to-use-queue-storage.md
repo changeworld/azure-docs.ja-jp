@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: ac47747f7789b23801900804522681e5a4b10e5a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c29b864fb3a547599f32c00c9e8c27cbdb0e0a92
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078701"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459608"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>Ruby から Queue ストレージを使用する方法
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -151,7 +151,7 @@ azure_queue_service.delete_queue("test-queue")
 ## <a name="next-steps"></a>次の手順
 これで、Queue ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行するには、次のリンク先を参照してください。
 
-* [Azure Storage チーム ブログ](https://blogs.msdn.com/b/windowsazurestorage/)
+* [Azure Storage チーム ブログ](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)
 * GitHub の [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
 
 この記事で説明されている Azure Queue サービスと、「[Service Bus キューの使用方法](https://azure.microsoft.com/develop/ruby/how-to-guides/service-bus-queues/)」で説明されている Azure Service Bus キューの比較については、「[Azure キューと Service Bus キューの比較](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)」をご覧ください。

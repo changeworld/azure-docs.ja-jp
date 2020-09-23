@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 440007767835de4641fb828b41d572f35997acd2
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 73178a9707d35fe7337210b11e76504794bc93ed
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064470"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90896398"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Azure Database for MySQL の接続アーキテクチャ
 この記事では、Azure Database for MySQL 接続アーキテクチャと、Azure 内外の両方のクライアントからトラフィックがどのように Azure Database for MySQL インスタンスに転送されるかについて説明します。
@@ -19,7 +19,7 @@ ms.locfileid: "88064470"
 ## <a name="connectivity-architecture"></a>接続のアーキテクチャ
 Azure Database for MySQL への接続は、受信接続をクラスター内のサーバーの物理的な場所にルーティングする役割を果たすゲートウェイ経由で確立されます。 次の図に、そのトラフィック フローを示します。
 
-![接続アーキテクチャの概要](./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png)
+:::image type="content" source="./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png" alt-text="接続アーキテクチャの概要":::
 
 クライアントでは、データベースに接続するときに、ゲートウェイに接続する接続文字列を取得します。 このゲートウェイは、ポート 3306 をリッスンするパブリック IP アドレスを持っています。 データベース クラスター内では、トラフィックは適切な Azure Database for MySQL に転送されます。 そのため、企業ネットワークなどからサーバーに接続するには、クライアント側のファイアウォールを開いて送信トラフィックがゲートウェイに到達できるようにする必要があります。 リージョンごとに Microsoft のゲートウェイで使用されている IP アドレスの完全な一覧を次に示します。
 

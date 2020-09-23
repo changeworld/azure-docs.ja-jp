@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 08/31/2020
 ms.custom: dpalled
-ms.openlocfilehash: 8d9b166d4ac9290a0389eac23f9d6882f667e1a0
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 43d3e80c66d54e3f7518246f7d75c5661995578c
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88856101"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489036"
 ---
 # <a name="adding-support-for-long-data-type-in-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 での Long データ型のサポートの追加
 
@@ -33,7 +33,7 @@ Long データ型のサポートの追加は、Azure Time Series Insights Gen2 �
 
 いずれかのケースに該当する場合は、モデルに変更を加えてください。 変数定義の Time Series の式 (TSX) を、推奨される変更で更新します。 両方を更新します。
 
-- Azure Time Series Insights TSI Explorer
+- Azure Time Series Insights Explorer
 - Microsoft の API を使用する任意のカスタム クライアント
 
 IoT ソリューションと制約によっては、Azure Time Series Insights Gen2 環境に送信されるデータを表示できない場合があります。 データが整数のみであるか、整数と非整数の両方であるかがわからない場合は、いくつかのオプションがあります。

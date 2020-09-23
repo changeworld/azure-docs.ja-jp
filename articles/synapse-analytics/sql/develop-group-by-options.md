@@ -6,17 +6,17 @@ author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 261f75344d250ae8a8d9687f4bcd80535d11716b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ad2b13fbfbd9871a55efb1826fa1e978d4eeb453
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426775"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032301"
 ---
 # <a name="group-by-options-in-synapse-sql"></a>Synapse SQL の GROUP BY オプション
 Synapse SQL によって、さまざまな GROUP BY オプションを実装してソリューションを開発できます。 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 8df54adf8f3aeaa58e30d6d9218cec8bec8c1121
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 94947499452c7f1b8515fee56996b13120232f34
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525923"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462379"
 ---
 # <a name="speech-service-release-notes"></a>Speech Service リリース ノート
 
@@ -250,7 +250,7 @@ ms.locfileid: "88525923"
 
 **サンプル**
 - **Go**: [音声認識](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/speech-to-text-from-microphone?pivots=programming-language-go)と[カスタム音声アシスタント](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/voice-assistants?pivots=programming-language-go)のクイックスタートを追加しました。 サンプル コードは[こちら](https://github.com/microsoft/cognitive-services-speech-sdk-go/tree/master/samples)を参照してください。 
-- **JavaScript**:[音声合成](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/text-to-speech?pivots=programming-language-javascript)、[翻訳](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/translate-speech-to-text?pivots=programming-language-javascript)、および[意図認識](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/intent-recognition?pivots=programming-language-javascript)のクイックスタートを追加しました。
+- **JavaScript**:[音声合成](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/text-to-speech?pivots=programming-language-javascript)、[翻訳](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started-speech-translation?tabs=script&pivots=programming-language-csharp)、および[意図認識](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/intent-recognition?pivots=programming-language-javascript)のクイックスタートを追加しました。
 - [C\#](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer) および [Java](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer) (Android) のキーワード認識サンプル。  
 
 **COVID-19 の影響によるテストの短縮:** 過去数週間にわたってリモートにて作業を行っているため、通常ならば実施するはずの手動による検証テストを行うことができませんでした。 問題発生の可能性が想定される変更はいっさい行っていません。また、自動テストはすべて成功しました。 しかし、もし仮に何らかの問題が発生した場合には、[GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen) にてお知らせください。<br>

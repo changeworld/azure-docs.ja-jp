@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge の制限 | Microsoft Docs
-description: Azure Stack Edge をデプロイして操作する際の制限 (サービスの制限、デバイスの制限、記憶域の制限など) と推奨されるサイズについて説明します。
+title: Azure Stack Edge Pro の制限 | Microsoft Docs
+description: Azure Stack Edge Pro を配置して操作するときの制限 (サービスの制限、デバイスの制限、記憶域の制限など) と推奨されるサイズについて説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,24 +8,24 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: e21f5a89d9f1f21eb99071a141794f99c07a8dfa
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5f3c39ce7334145d3ffc1d54badb1f7b766da70f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079814"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904453"
 ---
-# <a name="azure-stack-edge-limits"></a>Azure Stack Edge の制限
+# <a name="azure-stack-edge-pro-limits"></a>Azure Stack Edge Pro の制限
 
-Microsoft Azure Stack Edge ソリューションを配置および操作するときは、以下の制限事項を考慮してください。 
+Microsoft Azure Stack Edge Pro ソリューションを配置および操作するときは、以下の制限事項を考慮してください。 
 
 ## <a name="azure-stack-edge-service-limits"></a>Azure Stack Edge サービスの制限
 
 [!INCLUDE [data-box-edge-gateway-service-limits](../../includes/data-box-edge-gateway-service-limits.md)]
 
-## <a name="azure-stack-device-limits"></a>Azure Stack デバイスの制限
+## <a name="azure-stack-edge-device-limits"></a>Azure Stack Edge デバイスの制限
 
-次の表では、Azure Stack Edge デバイスの制限について説明します。 
+次の表では、Azure Stack Edge Pro デバイスの制限について説明します。 
 
 | 説明 | 値 |
 |---|---|
@@ -53,4 +53,4 @@ Microsoft Azure Stack Edge ソリューションを配置および操作する�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Stack Edge の配置を準備する](azure-stack-edge-deploy-prep.md)
+- [Azure Stack Edge Pro の配置を準備する](azure-stack-edge-deploy-prep.md)

@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 216cff03ac6ce64dee9aae1e9daa4a86385eeb0e
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: e230d3a4029d97a328280f581c126c7ec2d0bdb3
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783333"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460798"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理のトラブルシューティング
 
@@ -47,7 +47,7 @@ ms.locfileid: "88783333"
 
 * チームのメンバーを削除すると、Microsoft 365 グループからも削除されます。 チームのチャット機能から削除されるタイミングは遅れる場合があります。 詳細については、「[グループ メンバーシップ](/microsoftteams/office-365-groups#group-membership)」を参照してください。
 
-* ディレクトリが複数地域用に構成されていないことを確認してください。 エンタイトルメント管理では現在、SharePoint Online の複数地域の場所はサポートされません。 SharePoint Online サイトをエンタイトルメント管理で統制するためには、既定の地域の場所にサイトが存在する必要があります。 詳細については、「[OneDrive および SharePoint Online の複数地域機能](/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365)」を参照してください。
+* ディレクトリが複数地域用に構成されていないことを確認してください。 エンタイトルメント管理では現在、SharePoint Online の複数地域の場所はサポートされません。 SharePoint Online サイトをエンタイトルメント管理で統制するためには、既定の地域の場所にサイトが存在する必要があります。 詳細については、「[OneDrive および SharePoint Online の複数地域機能](/Microsoft 365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365)」を参照してください。
 
 ## <a name="access-packages"></a>アクセス パッケージ
 
