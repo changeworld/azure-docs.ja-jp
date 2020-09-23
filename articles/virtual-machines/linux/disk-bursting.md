@@ -3,16 +3,17 @@ title: マネージド ディスクのバースト
 description: Azure ディスクのディスク バーストおよび Azure 仮想マシンのディスク バーストについて説明します。
 author: albecker1
 ms.author: albecker
-ms.date: 06/02/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 4408b7d442ce3f4fbb1ea61031295375ae036493
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: references_regions
+ms.openlocfilehash: 107b1cbde35ef639883f86153859679a834735a3
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494549"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891833"
 ---
 # <a name="managed-disk-bursting"></a>マネージド ディスクのバースト
 [!INCLUDE [managed-disks-bursting](../../../includes/managed-disks-bursting.md)]
@@ -20,6 +21,10 @@ ms.locfileid: "86494549"
 ## <a name="virtual-machine-level-bursting"></a>仮想マシン レベルでのバースト
 サポートされている次のサイズでは、パブリック クラウド内のすべてのリージョンで、VM レベルでのバーストのサポートが有効になっています。 
 - [Lsv2 シリーズ](../lsv2-series.md)
+
+サポートされている次のサイズについては、米国中西部でも VM レベルのバーストを利用できます。
+- [Dsv3 シリーズ](../dv3-dsv3-series.md)
+- [Esv3 シリーズ](../ev3-esv3-series.md)
 
 バーストをサポートしている仮想マシンでは、バーストが既定で有効になっています。
 

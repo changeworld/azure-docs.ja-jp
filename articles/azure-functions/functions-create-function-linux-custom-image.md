@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: f068f91a104c15099809343438cc925fb8856248
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 1a29b8cfbc07e1232ffee788da8d195d39b9ca93
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146863"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531646"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>カスタム コンテナーを使用して Linux で関数を作成する
 
@@ -210,7 +210,7 @@ Docker Hub は、イメージのホストとしてイメージ サービスと�
 
 - リソース グループ。関連リソースの論理コンテナーです。
 - Azure ストレージ アカウント。プロジェクトについての状態とその他の情報を保持します。
-- Azure Functions アプリ。関数コードを実行するための環境となります。 関数アプリは、ローカルの関数プロジェクトと対応関係にあります。これを使用すると、リソースの管理、デプロイ、共有を容易にするための論理ユニットとして関数をグループ化できます。
+- Azure 関数アプリ。関数コードを実行するための環境となります。 関数アプリは、ローカルの関数プロジェクトと対応関係にあります。これを使用すると、リソースの管理、デプロイ、共有を容易にするための論理ユニットとして関数をグループ化できます。
 
 Azure CLI コマンドを使用して、これらの項目を作成しましょう。 それぞれのコマンドからは、完了時に JSON 出力が返されます。
 
@@ -254,7 +254,7 @@ Azure 上の関数アプリでは、ホスティング プランで関数の実�
 1. [az functionapp create](/cli/azure/functionapp#az-functionapp-create) コマンドを使用して関数アプリを作成します。 次の例の `<storage_name>` は、前のセクションで使用したストレージ アカウントの名前に置き換えてください。 また、`<app_name>` は適宜グローバルに一意の名前に、`<docker_id>` は実際の Docker ID に置き換えます。
 
     ```azurecli
-    az functionapp create --name <app_name> --storage-account <storage_name> --resource-group AzureFunctionsContainers-rg --plan myPremiumPlan --deployment-container-image-name <docker_id>/azurefunctionsimage:v1.0.0
+    az functionapp create --name <app_name> --storage-account <storage_name> --resource-group AzureFunctionsContainers-rg --plan myPremiumPlan --runtime <functions runtime stack> --deployment-container-image-name <docker_id>/azurefunctionsimage:v1.0.0
     ```
     
     *deployment-container-image-name* パラメーターでは、関数アプリに使用するイメージを指定します。 デプロイに使用されているイメージに関する情報は、[az functionapp config container show](/cli/azure/functionapp/config/container#az-functionapp-config-container-show) コマンドを使用して表示できます。 [az functionapp config container set](/cli/azure/functionapp/config/container#az-functionapp-config-container-set) コマンドを使用して、別のイメージからデプロイすることもできます。
@@ -507,7 +507,7 @@ Azure Functions を使用すると、独自の統合コードを記述するこ�
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-このチュートリアルで作成したリソースを使用して、引き続き Azure Functions に取り組む場合は、それらのリソースをすべてそのままにしてかまいません。 Azure Functions 用の Premium プランを作成したため、継続するためのコストとして、1 日につき 1 ドルまたは 2 ドルの料金がかかります。
+このチュートリアルで作成したリソースを使用して、引き続き Azure 関数に取り組む場合は、それらのリソースをすべてそのままにしてかまいません。 Azure Functions 用の Premium プランを作成したため、継続するためのコストとして、1 日につき 1 ドルまたは 2 ドルの料金がかかります。
 
 継続コストを避けるためには、`AzureFunctionsContainer-rg` リソース グループを削除して、そのグループのリソースをすべてクリーンアップしてください。 
 
@@ -517,6 +517,6 @@ az group delete --name AzureFunctionsContainer-rg
 
 ## <a name="next-steps"></a>次のステップ
 
-+ [Azure Functions の監視](functions-monitoring.md)
++ [関数の監視](functions-monitoring.md)
 + [スケールとホスティングのオプション](functions-scale.md)
 + [Kubernetes ベースのサーバーレス ホスティング](functions-kubernetes-keda.md)

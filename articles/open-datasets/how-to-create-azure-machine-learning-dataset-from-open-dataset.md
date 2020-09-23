@@ -8,15 +8,14 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 00718e15b069e9be25abdaf0e4460eae20c6afd0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: c90d11ba630dbb1e37054715855ae5547a8a034b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998076"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90902726"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>Azure Open Datasets から Azure Machine Learning データセットを作成する
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 この記事では、[Azure Machine Learning](../machine-learning/overview-what-is-azure-ml.md) データセットと [Azure Open Datasets](https://docs.microsoft.com/azure/open-datasets/) を使用して、ローカルまたはリモートの機械学習の実験にキュレーションされたエンリッチメント データを取り込む方法について説明します。 
 
@@ -111,7 +110,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 
     ![データセットを選択する](./media/how-to-create-dataset-from-open-dataset/open-datasets-2.png)
 
-1. データセットの登録先の名前を選択し、必要に応じて、使用可能なフィルターを使用してデータをフィルター処理します。 この例では、**Public Holidays** データセットについて、期間を 1 年に、国番号を米国のみにしてフィルター処理します。 フィールドの説明や日付範囲などのデータの詳細については、[Azure Open Datasets カタログ](https://azure.microsoft.com/services/op[en-datasets/catalog/)を参照してください。 **［作成］** を選択します
+1. データセットの登録先の名前を選択し、必要に応じて、使用可能なフィルターを使用してデータをフィルター処理します。 この例では、**Public Holidays** データセットについて、期間を 1 年に、国番号を米国のみにしてフィルター処理します。 フィールドの説明や日付範囲などのデータの詳細については、[Azure Open Datasets カタログ](https://azure.microsoft.com/services/open-datasets/catalog)を参照してください。 **［作成］** を選択します
 
     ![データセット パラメーターを設定してデータセットを作成する](./media/how-to-create-dataset-from-open-dataset/open-datasets-3.png)
 

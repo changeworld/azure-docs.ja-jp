@@ -5,14 +5,14 @@ author: Rodrigossz
 ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 09/22/2020
 ms.reviewer: sngun
-ms.openlocfilehash: f200fe96478e15e938899d294ecd5491d6a03206
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 4226676ed7fbaf5b2998306fa5240316c327d59c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814392"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891478"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Synapse Link for Azure Cosmos DB (プレビュー) とは
 
@@ -40,7 +40,6 @@ Azure Synapse Link では、Azure Synapse Analytics を使用して Azure Cosmos
 ### <a name="near-real-time-insights-into-your-operational-data"></a>オペレーショナル データに関するほぼリアルタイムの分析情報
 
 Azure Synapse Link を使用すると、オペレーショナル データに関する豊富な分析情報を、ほぼリアルタイムで取得できます。 ETL ベースのシステムでは、多くのレイヤーでオペレーショナル データを抽出、変換、読み込む必要があるため、オペレーショナル データを分析するための待機時間が長くなる傾向があります。 Azure Cosmos DB 分析ストアと Azure Synapse Analytics のネイティブな統合により、オペレーショナル データをほぼリアルタイムで分析でき、新しいビジネス シナリオが可能になります。 
-
 
 ### <a name="no-impact-on-operational-workloads"></a>運用ワークロードへの影響がない
 
@@ -91,7 +90,7 @@ Azure Synapse Analytics でサポートされているさまざまな分析ラ�
 
 この統合により、次のようなさまざまなユーザーに対する HTAP シナリオが可能になります。
 
-* Synapse SQL を通じて Azure Cosmos DB のオペレーショナル データに直接アクセスし、レポートをモデル化して発行する BI エンジニア。
+* Synapse SQL を通じて Azure Cosmos DB のライブ オペレーショナル データに直接アクセスし、Power BI レポートをモデル化して発行する BI エンジニア。
 
 * Synapse SQL でクエリを実行することで、Azure Cosmos DB コンテナー内のオペレーショナル データから分析情報を抽出し、大規模なデータを読み取り、その結果を他のデータ ソースと結合するデータ アナリスト。
 
@@ -115,16 +114,15 @@ Synapse Link は、次の場合にお勧めします。
 
 高いコンカレンシー、ワークロードの管理、複数のデータ ソース間での集計の永続化など、従来のデータ ウェアハウスの要件を探している場合は、Synapse Link は推奨されません。 詳細については、[Azure Synapse Link for Azure Cosmos DB を使用して実現できる一般的なシナリオ](synapse-link-use-cases.md)に関するページを参照してください。
 
-
 ## <a name="limitations"></a>制限事項
 
-* パブリック プレビューの間の Azure Synapse Link は、Azure Cosmos DB SQL (Core) API に対してのみサポートされます。 MongoDB 用の Azure Cosmos DB の API と Cassandra API に対するサポートは、現在限定的なプレビュー中です。 限定的なプレビューへのアクセスを要求するには、[Azure Cosmos DB チーム](mailto:cosmosdbsynapselink@microsoft.com)にメールでご連絡ください。
+* Azure Synapse Link は、Azure Cosmos DB SQL (Core) API と、Azure Cosmos DB の MongoDB 用 API に対してのみサポートされます。 Cassandra API のサポートは、現在、限定的なプレビュー段階にあります。 限定的なプレビューへのアクセスを要求するには、[Azure Cosmos DB チーム](mailto:cosmosdbsynapselink@microsoft.com)にメールでご連絡ください。
 
-* 現時点では、分析ストアは (新規と既存のどちらの Azure Cosmos DB アカウントでも) 新しいコンテナーに対してのみ有効にすることができます。
-
-* プレビューでは、Synapse Link が有効になっているデータベース アカウントでは、コンテナーのバックアップと復元はサポートされていません。 バックアップと復元の機能を必要とする運用環境のワークロードがある場合、それらのデータベース アカウントでは Synapse Link を有効にしないことをお勧めします。 
+* 現時点では、分析ストアは新しいコンテナーに対してのみ有効にすることができます。 既存のコンテナーに分析ストアを使用するには、[Azure Cosmos DB 移行ツール](cosmosdb-migrationchoices.md)を使用して、既存のコンテナーから新しいコンテナーにデータを移行します。 新規および既存の Azure Cosmos DB アカウントで Synapse Link を有効にすることができます。
 
 * Synapse SQL サーバーレスでの Azure Cosmos DB 分析ストアへのアクセスは、現在限定的なプレビューの段階にあります。 アクセスを要求するには、[Azure Cosmos DB チーム](mailto:cosmosdbsynapselink@microsoft.com)にメールでご連絡ください。
+
+* プレビューでは、Synapse Link が有効になっているデータベース アカウントでは、コンテナーのバックアップと復元はサポートされていません。 バックアップと復元の機能を必要とするワークロードがある場合、それらのデータベース アカウントでは Synapse Link を有効にしないことをお勧めします。 
 
 * プロビジョニングされた Synapse SQL での Azure Cosmos DB 分析ストアへのアクセスは、現在使用できません。
 

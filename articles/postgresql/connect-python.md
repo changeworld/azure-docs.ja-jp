@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter, devx-track-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: a9303909eb98fc0ff2d7582fa7f5807a879e7958
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 9fb0c02bcf040b1d27831e72d31ff07a7c38ad0a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182684"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90901817"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>クイック スタート:Python を使用して Azure Database for PostgreSQL - Single Server に接続し、データにクエリを実行する
 
@@ -46,7 +46,7 @@ Azure Database for PostgreSQL データベースに接続するには、完全�
    
    また、管理者パスワードも必要です。 忘れた場合は、このページでリセットできます。 
    
-   ![Azure Database for PostgreSQL サーバーの名前](./media/connect-python/1-connection-string.png)
+   :::image type="content" source="./media/connect-python/1-connection-string.png" alt-text="Azure Database for PostgreSQL サーバーの名前":::
 
 ## <a name="how-to-run-the-python-examples"></a>Python の例を実行する方法
 
@@ -105,7 +105,7 @@ conn.close()
 
 コードが正常に実行されると、次の出力が生成されます。
 
-![コマンドライン 出力](media/connect-python/2-example-python-output.png)
+:::image type="content" source="media/connect-python/2-example-python-output.png" alt-text="コマンドライン 出力":::
 
 ## <a name="read-data"></a>データの読み取り
 次のコード例では、Azure Database for PostgreSQL データベースに接続し、[cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) と SQL **SELECT** ステートメントを使用してデータを読み取ります。 この関数はクエリを受け取り、[cursor.fetchall()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall) を使用して反復処理する結果セットを返します。 

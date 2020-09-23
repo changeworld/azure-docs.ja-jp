@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Edge (プレビュー) でデータ変更を追跡する
-description: Azure SQL Edge (プレビュー) での変更の追跡と変更データ キャプチャについて説明します。
+title: Azure SQL Edge でデータ変更を追跡する
+description: Azure SQL Edge での変更の追跡と変更データ キャプチャについて説明します。
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,14 +9,14 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 6d0a081f2b0adb143a6b37a647a00014846f8fe2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7d5d5f74a816bf745faf5decf761cd453f40123
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669598"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900071"
 ---
-# <a name="track-data-changes-in-azure-sql-edge-preview"></a>Azure SQL Edge (プレビュー) でデータ変更を追跡する
+# <a name="track-data-changes-in-azure-sql-edge"></a>Azure SQL Edge でデータ変更を追跡する
 
 Azure SQL Edge では、データベースのデータに対する変更を追跡する 2 つの SQL Server 機能である[変更の追跡](https://docs.microsoft.com/sql/relational-databases/track-changes/track-data-changes-sql-server#Tracking)と[変更データ キャプチャ](https://docs.microsoft.com/sql/relational-databases/track-changes/track-data-changes-sql-server#Capture)がサポートされています。 これらの機能では、データベース内のユーザー テーブルに対して行われたデータ変更言語の変更 (挿入操作、更新操作、および削除操作) をアプリケーションで特定できます。 変更データ キャプチャと変更の追跡は、同じデータベースで有効にすることができます。 特に注意が必要な点はありません。
 
@@ -60,10 +60,10 @@ Azure SQL Edge では、SQL Server のテンポラル テーブル機能もサ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure SQL Edge (プレビュー) でのデータ ストリーミング](stream-data.md)
-- [Azure SQL Edge (プレビュー) での ONNX を使用した機械学習と AI](onnx-overview.md)
-- [Azure SQL Edge (プレビュー) へのレプリケーションを構成する](configure-replication.md)
-- [Azure SQL Edge (プレビュー) でのデータベースのバックアップと復元](backup-restore.md)
+- [Azure SQL Edge でのデータ ストリーミング](stream-data.md)
+- [Azure SQL Edge での ONNX を使用した機械学習と AI](onnx-overview.md)
+- [Azure SQL Edge へのレプリケーションを構成する](configure-replication.md)
+- [Azure SQL Edge でのデータベースのバックアップと復元](backup-restore.md)
 
 
 

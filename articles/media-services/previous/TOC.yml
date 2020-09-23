@@ -323,11 +323,12 @@
           items:
             - name: タスク プリセット
               href: indexer-task-preset.md
+    - name: コンテンツの分析
+      items:
         - name: Face Redactor で処理する
           href: media-services-face-redaction.md
-          items:
-            - name: Face Redactor のチュートリアル
-              href: media-services-redactor-walkthrough.md
+        - name: Face Redactor のチュートリアル
+          href: media-services-redactor-walkthrough.md
     - name: テレメトリの構成
       href: media-services-telemetry-overview.md
       items:

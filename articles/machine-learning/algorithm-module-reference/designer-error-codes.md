@@ -1,7 +1,7 @@
 ---
-title: デザイナー (プレビュー) モジュール エラーのトラブルシューティング
+title: デザイナー モジュール エラーのトラブルシューティング
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning デザイナーでのモジュール エラー コードのトラブルシューティング (プレビュー)
+description: Azure Machine Learning デザイナーでのモジュール エラー コードのトラブルシューティング
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: 023a28c6f1d89d0975ff8ecac2466c51c05fa9da
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: c0a55780687b4c03d6809d1d740bf0b0afcd63fd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876922"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908083"
 ---
-# <a name="exceptions-and-error-codes-for-the-designer-preview"></a>デザイナーの例外とエラー コード (プレビュー)
+# <a name="exceptions-and-error-codes-for-the-designer"></a>デザイナーの例外とエラー コード
 
-この記事では、Machine Learning パイプラインのトラブルシューティングに役立つ Azure Machine Learning デザイナー (プレビュー) のエラー メッセージと例外コードについて説明します。
+この記事では、Machine Learning パイプラインのトラブルシューティングに役立つ Azure Machine Learning デザイナーのエラー メッセージと例外コードについて説明します。
 
 デザイナーでエラー メッセージを確認するには、次の手順に従います。  
 

@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.openlocfilehash: 8ca4d3d2d52e79dbcaaa15eba5794a4d2d28366a
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 623b9c1eccefe5d7e6027ddbed61c89720d98e9a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274545"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884477"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Azure portal から Azure Database for PostgreSQL - 単一サーバーの読み取りレプリカを作成および管理する
 
@@ -41,15 +41,15 @@ ms.locfileid: "86274545"
 
 3. Azure レプリケーション サポートが少なくとも **[レプリカ]** に設定されていない場合は、設定します。 **[保存]** を選択します。
 
-   ![Azure Database for PostgreSQL - レプリケーション - レプリカの設定と保存](./media/howto-read-replicas-portal/set-replica-save.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/set-replica-save.png" alt-text="Azure Database for PostgreSQL - レプリケーション - レプリカの設定と保存":::
 
 4. サーバーを再起動して変更を適用するには、 **[はい]** を選択します。
 
-   ![Azure Database for PostgreSQL - レプリケーション - 再起動の確認](./media/howto-read-replicas-portal/confirm-restart.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-restart.png" alt-text="Azure Database for PostgreSQL - レプリケーション - 再起動の確認":::
 
 5. 操作が完了すると、Azure portal の通知を 2 つ受け取ります。 1 つの通知は、サーバー パラメーターの更新に関するものです。 もう 1 つの通知は、すぐ後のサーバーの再起動に関するものです。
 
-   ![成功通知](./media/howto-read-replicas-portal/success-notifications.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/success-notifications.png" alt-text="成功通知":::
 
 6. Azure portal のページを最新の情報に更新して、レプリケーション ツール バーを更新します。 このサーバーの読み取りレプリカを作成できるようになります。
    
@@ -63,15 +63,15 @@ ms.locfileid: "86274545"
 
 3. **[レプリカの追加]** を選択します。
 
-   ![レプリカを追加する](./media/howto-read-replicas-portal/add-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/add-replica.png" alt-text="レプリカを追加する":::
 
 4. 読み取りレプリカの名前を入力します。 
 
-    ![レプリカに名前を付ける](./media/howto-read-replicas-portal/name-replica.png)
+    :::image type="content" source="./media/howto-read-replicas-portal/name-replica.png" alt-text="レプリカに名前を付ける":::
 
 5. レプリカの場所を選択します。 既定の場所は、マスター サーバーの場所と同じです。
 
-    ![場所を選択します。](./media/howto-read-replicas-portal/location-replica.png)
+    :::image type="content" source="./media/howto-read-replicas-portal/location-replica.png" alt-text="場所を選択します。":::
 
    > [!NOTE]
    > レプリカを作成できるリージョンの詳細については、[読み取りレプリカの概念に関する記事](concepts-read-replicas.md)を参照してください。 
@@ -80,7 +80,7 @@ ms.locfileid: "86274545"
 
 読み取りレプリカが作成されたら、それを **[レプリケーション]** ウィンドウから表示できます。
 
-![[レプリケーション] ウィンドウに新しいレプリカを表示する](./media/howto-read-replicas-portal/list-replica.png)
+:::image type="content" source="./media/howto-read-replicas-portal/list-replica.png" alt-text="[レプリケーション] ウィンドウに新しいレプリカを表示する":::
  
 
 > [!IMPORTANT]
@@ -102,15 +102,15 @@ Azure Portal からマスター サーバーと読み取りレプリカの間の
 
 3. レプリケーションを停止するレプリカ サーバーを選択します。
 
-   ![レプリカを選択する](./media/howto-read-replicas-portal/select-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-replica.png" alt-text="レプリカを選択する":::
  
 4. **[レプリケーションを停止する]** を選択します。
 
-   ![レプリケーションの停止を選択する](./media/howto-read-replicas-portal/select-stop-replication.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-stop-replication.png" alt-text="レプリケーションの停止を選択する":::
  
 5. **[OK]** を選択して、レプリケーションを停止します。
 
-   ![レプリケーションの停止を確認する](./media/howto-read-replicas-portal/confirm-stop-replication.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-stop-replication.png" alt-text="レプリケーションの停止を確認する":::
  
 
 ## <a name="delete-a-master-server"></a>マスター サーバーを削除します
@@ -125,11 +125,11 @@ Azure Portal からサーバーを削除するには、次の手順に従いま�
 
 2. サーバーの **[概要]** ページを開きます。 **[削除]** を選択します。
 
-   ![サーバーの [概要] ページで、マスター サーバーの削除を選択します。](./media/howto-read-replicas-portal/delete-server.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/delete-server.png" alt-text="サーバーの [概要] ページで、マスター サーバーの削除を選択します。":::
  
 3. 削除するマスター サーバーの名前を入力します。 **[削除]** を選択して、マスター サーバーの削除を確認します。
 
-   ![マスター サーバーの削除を確認する](./media/howto-read-replicas-portal/confirm-delete.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-delete.png" alt-text="マスター サーバーの削除を確認する":::
  
 
 ## <a name="delete-a-replica"></a>レプリカの削除
@@ -137,7 +137,7 @@ Azure Portal からサーバーを削除するには、次の手順に従いま�
 
 - Azure Portal で、読み取りレプリカの **[概要]** ページを開きます。 **[削除]** を選択します。
 
-   ![レプリカの [概要] ページで、レプリカの削除を選択します。](./media/howto-read-replicas-portal/delete-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/delete-replica.png" alt-text="レプリカの [概要] ページで、レプリカの削除を選択します。":::
  
 次の手順に従って、 **[レプリケーション]** ウィンドウから読み取りレプリカを削除することもできます。
 
@@ -147,15 +147,15 @@ Azure Portal からサーバーを削除するには、次の手順に従いま�
 
 3. 削除する読み取りレプリカを選択します。
 
-   ![削除するレプリカを選択する](./media/howto-read-replicas-portal/select-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-replica.png" alt-text="削除するレプリカを選択する":::
  
 4. **[レプリカの削除]** を選択します。
 
-   ![レプリカの削除を選択する](./media/howto-read-replicas-portal/select-delete-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-delete-replica.png" alt-text="レプリカの削除を選択する":::
  
 5. 削除するレプリカの名前を入力します。 **[削除]** を選択して、レプリカの削除を確認します。
 
-   ![レプリカの削除を確認する](./media/howto-read-replicas-portal/confirm-delete-replica.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/confirm-delete-replica.png" alt-text="レプリカの削除を確認する":::
  
 
 ## <a name="monitor-a-replica"></a>レプリカの監視
@@ -168,7 +168,7 @@ Azure Portal からサーバーを削除するには、次の手順に従いま�
 
 2.  **[メトリック]** を選びます。 **[メトリック]** ウィンドウで、 **[Max Lag Across Replicas] (レプリカ間の最大ラグ)** を選択します。
 
-    ![レプリカ間の最大ラグを監視する](./media/howto-read-replicas-portal/select-max-lag.png)
+    :::image type="content" source="./media/howto-read-replicas-portal/select-max-lag.png" alt-text="レプリカ間の最大ラグを監視する":::
  
 3.  **[集計]** で **[Max] (最大)** を選択します。
 
@@ -180,7 +180,7 @@ Azure Portal からサーバーを削除するには、次の手順に従いま�
 
 2. **[メトリック]** を選びます。 **[メトリック]** ウィンドウで、 **[Replica Lag] (レプリカ ラグ)** を選択します。
 
-   ![レプリカ ラグを監視する](./media/howto-read-replicas-portal/select-replica-lag.png)
+   :::image type="content" source="./media/howto-read-replicas-portal/select-replica-lag.png" alt-text="レプリカ ラグを監視する":::
  
 3. **[集計]** で **[Max] (最大)** を選択します。 
  

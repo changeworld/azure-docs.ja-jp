@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: a5264c14294f84858cd489f5892b8cdd19e117d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b3a0b904d65e6597c058ccf05ec837696e9ca20e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79455912"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90893629"
 ---
 # <a name="select-columns-transform"></a>Select Columns Transform (列変換の選択)
 
-この記事では、Azure Machine Learning デザイナー (プレビュー) で Select Columns Transform (列変換の選択) モジュールを使用する方法について説明します。 Select Columns Transform (列変換の選択) モジュールの目的は、予測可能で一貫性のある一連の列がダウンストリームの機械学習操作で使用されるようにすることです。
+この記事では、Azure Machine Learning デザイナーで Select Columns Transform (列変換の選択) モジュールを使用する方法について説明します。 Select Columns Transform (列変換の選択) モジュールの目的は、予測可能で一貫性のある一連の列がダウンストリームの機械学習操作で使用されるようにすることです。
 
 このモジュールは、特定の列を必要とするスコアリングなどのタスクに役立ちます。 使用可能な列を変更すると、パイプラインが中断されたり、結果が変わったりする可能性があります。
 

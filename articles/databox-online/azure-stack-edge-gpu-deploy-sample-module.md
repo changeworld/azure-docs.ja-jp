@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU デバイスに GPU モジュールをデプロイする | Microsoft Docs
-description: ローカル UI からコンピューティングを有効化し、Azure Stack Edge デバイスでコンピューティングの準備をする方法について説明します。
+title: Azure Stack Edge Pro GPU デバイスに GPU モジュールをデプロイする | Microsoft Docs
+description: ローカル UI からコンピューティングを有効化し、Azure Stack Edge Pro デバイスでコンピューティングの準備をする方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,22 +8,22 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: alkohli
-ms.openlocfilehash: 5af86001d46bf194c9b61f325052a4cde0d86d5e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 1f16ef0ede25f17acb915a7812ae5b15b45f78a4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254561"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899731"
 ---
-# <a name="deploy-a-gpu-enabled-iot-module-on-azure-stack-edge-gpu-device"></a>GPU 対応 IoT モジュール Azure Stack Edge GPU デバイスにデプロイする
+# <a name="deploy-a-gpu-enabled-iot-module-on-azure-stack-edge-pro-gpu-device"></a>GPU 対応 IoT モジュール Azure Stack Edge Pro GPU デバイスにデプロイする
 
-この記事では、Azure Stack Edge GPU デバイスに GPU 対応 IoT Edge モジュールをデプロイする方法について説明します。 
+この記事では、Azure Stack Edge Pro GPU デバイスに GPU 対応 IoT Edge モジュールをデプロイする方法について説明します。 
 
 この記事では、次のことについて説明します。
-  - GPU モジュールを実行するために Azure Stack Edge を準備します。
+  - GPU モジュールを実行するために Azure Stack Edge Pro を準備します。
   - Git リポジトリからサンプ ルコードをダウンロードしてインストールします。
   - ソリューションをビルドし、配置マニフェストを生成します。
-  - ソリューションを Azure Stack Edge デバイスにデプロイします。
+  - ソリューションを Azure Stack Edge Pro デバイスにデプロイします。
   - モジュールの出力を監視します。
 
 
@@ -35,8 +35,8 @@ ms.locfileid: "89254561"
 
 開始する前に、次のものがあることを確認します。
 
-- GPU 対応の 1 ノード Azure Stack Edge デバイスにアクセスできること。 このデバイスと Azure のリソースがアクティブになっていること。 [デバイスをアクティブにする](azure-stack-edge-gpu-deploy-activate.md)に関する記事を参照してください。
-- このデバイスでコンピューティングを構成済みであること。 「[チュートリアル: Azure Stack Edge デバイスでコンピューティングを構成する](azure-stack-edge-gpu-deploy-configure-compute.md)」の手順に従います。
+- GPU 対応の 1 ノード Azure Stack Edge Pro デバイスにアクセスできること。 このデバイスと Azure のリソースがアクティブになっていること。 [デバイスをアクティブにする](azure-stack-edge-gpu-deploy-activate.md)に関する記事を参照してください。
+- このデバイスでコンピューティングを構成済みであること。 「[チュートリアル: Azure Stack Edge Pro デバイスでコンピューティングを構成する](azure-stack-edge-gpu-deploy-configure-compute.md)」の手順に従います。
 - Azure Container Registry (ACR)。 **[アクセス キー]** ブレードに移動し、ACR ログイン サーバー、ユーザー名、パスワードをメモしておきます。 詳細については、「[クイック スタート: Azure portal を使用したプライベート コンテナー レジストリの作成](../container-registry/container-registry-get-started-portal.md#create-a-container-registry)」を参照してください。
 - Windows クライアント上の次の開発リソース:
     - [Azure CLI 2.0 以降](https://aka.ms/installazurecliwindows)
@@ -144,9 +144,9 @@ ms.locfileid: "89254561"
 
 1. VS Code コマンド パレットで、**[Azure IoT Hub: Select IoT Hub]\(Azure IoT Hub: IoT ハブの選択\)** を実行します。
 
-2. 構成する IoT Edge デバイスが含まれているサブスクリプションと IoT ハブを選択します。 この場合、Azure Stack Edge デバイスのデプロイに使用するサブスクリプションを選択し、Azure Stack Edge デバイス用に作成された IoT Edge デバイスを選択します。 これは、前の手順で Azure portal からコンピューティングを構成した場合に発生します。
+2. 構成する IoT Edge デバイスが含まれているサブスクリプションと IoT ハブを選択します。 この場合、Azure Stack Edge Pro デバイスのデプロイに使用するサブスクリプションを選択し、Azure Stack Edge Pro デバイス用に作成された IoT Edge デバイスを選択します。 これは、前の手順で Azure portal からコンピューティングを構成した場合に発生します。
 
-3. VS Code エクスプローラーで、[Azure IoT Hub] セクションを展開します。 **[デバイス]** に、Azure Stack Edge デバイスに対応する IoT Edge デバイスが表示されます。 
+3. VS Code エクスプローラーで、[Azure IoT Hub] セクションを展開します。 **[デバイス]** に、Azure Stack Edge Pro デバイスに対応する IoT Edge デバイスが表示されます。 
 
     1. そのデバイスを選択して右クリックし、 **[組み込みイベント エンドポイントの監視を開始する]** を選択します。
   
@@ -156,7 +156,7 @@ ms.locfileid: "89254561"
 
         ![IoT Hub のモジュール](media/azure-stack-edge-gpu-deploy-sample-module/module-iot-hub-1.png)  
 
-    3. VS Code ターミナルでも Azure Stack Edge デバイスの監視出力に IoT Hub イベントが含まれていることを確認します。
+    3. VS Code ターミナルでも Azure Stack Edge Pro デバイスの監視出力に IoT Hub イベントが含まれていることを確認します。
 
         ![監視出力](media/azure-stack-edge-gpu-deploy-sample-module/monitor-events-output-1.png) 
 
