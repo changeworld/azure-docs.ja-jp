@@ -10,18 +10,18 @@ ms.subservice: core
 ms.date: 01/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: d5343e6c21da4c30dc18c8692b41dd66eb9566a4
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 39000a34d1d19026ce406eeb996f89d1acc7ea04
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846702"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897365"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>REST を使用して Azure ML リソースの作成、実行、削除を行う
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure ML リソースを管理するには、いくつかの方法があります。 [ポータル](https://portal.azure.com/)、[コマンド ライン インターフェイス](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)、または [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) を使用できます。 または、REST API を選択することもできます。 REST API では、標準的な方法で HTTP 動詞を使用して、リソースの作成、取得、更新、および削除を行います。 REST API は、HTTP 要求を作成できるすべての言語またはツールで使用できます。 REST は構造がわかりやすいため、多くの場合、スクリプト環境や MLOps オートメーションに適しています。 
+
+Azure ML リソースを管理するには、いくつかの方法があります。 [ポータル](https://portal.azure.com/)、[コマンド ライン インターフェイス](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)、または [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) を使用できます。 または、REST API を選択することもできます。 REST API では、標準的な方法で HTTP 動詞を使用して、リソースの作成、取得、更新、および削除を行います。 REST API は、HTTP 要求を作成できるすべての言語またはツールで使用できます。 REST は構造がわかりやすいため、多くの場合、スクリプト環境や MLOps オートメーションに適しています。 
 
 この記事では、次のことについて説明します。
 
@@ -423,5 +423,5 @@ Azure Machine Learning ワークスペースでは、一部の操作に対して
 ## <a name="next-steps"></a>次のステップ
 
 - 完全な [AzureML REST API リファレンス](https://docs.microsoft.com/rest/api/azureml/)を確認します。
-- Studio とデザイナーを使用して、[デザイナーを使用して自動車の価格を予測する (プレビュー)](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-train-score) 方法を学習します。
+- デザイナーを使用して、[デザイナーを使用して自動車の価格を予測する](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-train-score)方法を学習します。
 - [Jupyter ノートブックを使用した Azure Machine Learning](https://docs.microsoft.com/azure//machine-learning/samples-notebooks) について調べます。

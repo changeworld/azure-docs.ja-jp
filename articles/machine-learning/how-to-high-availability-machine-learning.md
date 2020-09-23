@@ -1,5 +1,5 @@
 ---
-title: 回復性を高める方法
+title: 回復性と高可用性
 titleSuffix: Azure Machine Learning
 description: 高可用性構成を使用して、Azure Machine Learning のリソースの障害に対する回復性を高める方法について説明します。
 services: machine-learning
@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
-ms.date: 07/16/2020
-ms.openlocfilehash: 9b298e10d3eb95bcb0ef525eb973259a3ab1dbbb
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.date: 09/16/2020
+ms.openlocfilehash: 64665c0b1e32970f29233f5abdd6b2d2d020a6b2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852554"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897522"
 ---
 # <a name="increase-azure-machine-learning-resiliency"></a>Azure Machine Learning の回復性を高める
 
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 この記事では、高可用性構成を使用して、Microsoft Azure Machine Learning のリソースの回復性を高める方法について説明します。 Azure Machine Learning が依存している Azure サービスを、高可用性対応に構成できます。 この記事では、高可用性のために構成できるサービスと、これらのリソースの構成に関する追加情報へのリンクを示します。
 

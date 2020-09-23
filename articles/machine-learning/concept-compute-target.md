@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: 805141dedddcd915d266c9651fc51732fb51e1b0
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 3e1832d656ea2bad772a686e52a357c1daf0ded5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146736"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883208"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning でのコンピューティング先とは 
 
@@ -51,7 +51,7 @@ Azure Machine Learning では、異なるコンピューティング リソー�
 Azure Machine Learning コンピューティング インスタンスまたはコンピューティング クラスターは次の場所から作成できます。
 * [Azure Machine Learning Studio](how-to-create-attach-compute-studio.md)
 * Azure portal
-* Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) と [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py) クラス
+* Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py&preserve-view=true) と [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py&preserve-view=true) クラス
 * [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (プレビュー)
 * Resource Manager テンプレート。 テンプレートの例については、[Azure Machine Learning コンピューティング テンプレートの作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-amlcompute)に関する記事を参照してください。
 * 機械学習の [Azure CLI 用拡張機能](reference-azure-machine-learning-cli.md#resource-management)。  
@@ -68,7 +68,7 @@ Azure Machine Learning コンピューティング インスタンスまたは�
 
 
 > [!NOTE]
-> コンピューティング クラスターがアイドル状態の場合、ノードは 0 に自動スケーリングされるため、使用されていないときは料金がかかりません。  ただし、コンピューティング *インスタンス*は常にオンであり、自動スケーリングされません。  追加コストを回避するには、使用していないときに[コンピューティング インスタンスを停止](tutorial-1st-experiment-sdk-train.md#stop-the-compute-instance)します。 
+> コンピューティング クラスターがアイドル状態の場合、ノードは 0 に自動スケーリングされるため、使用されていないときは料金がかかりません。  ただし、コンピューティング *インスタンス*は常にオンであり、自動スケーリングされません。  追加コストを回避するには、使用していないときに[コンピューティング インスタンスを停止](concept-compute-instance.md#managing-a-compute-instance)します。 
 
 ### <a name="supported-vm-series-and-sizes"></a>サポートされている VM シリーズおよびサイズ
 

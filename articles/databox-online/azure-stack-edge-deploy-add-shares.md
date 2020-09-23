@@ -1,6 +1,6 @@
 ---
-title: 'チュートリアル: Azure Stack Edge を使用して共有にデータを転送する | Microsoft Docs'
-description: このチュートリアルでは、Azure Stack Edge デバイスに共有を追加して接続し、Azure Stack Edge から Azure にデータを転送する方法について説明します。
+title: 'チュートリアル: Azure Stack Edge Pro を使用して共有にデータを転送する | Microsoft Docs'
+description: このチュートリアルでは、Azure Stack Edge Pro デバイスに共有を追加して接続し、Azure Stack Edge Pro から Azure にデータを転送する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,17 +8,17 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: fc47497eeceff20e8357195226c2d44cea64fa88
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
+ms.openlocfilehash: aeb5bceca11f595c1582596aeea401fe5f9b239f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926112"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883480"
 ---
-# <a name="tutorial-transfer-data-with-azure-stack-edge"></a>チュートリアル:Azure Stack Edge を使用してデータを転送する
+# <a name="tutorial-transfer-data-with-azure-stack-edge-pro"></a>チュートリアル:Azure Stack Edge Pro を使用してデータを転送する
 
-このチュートリアルでは、お客様の Azure Stack Edge デバイスに共有を追加して接続する方法について説明します。 共有を追加したら、Azure Stack Edge から Azure にデータを転送できます。
+このチュートリアルでは、お客様の Azure Stack Edge Pro デバイスに共有を追加して接続する方法について説明します。 共有を追加した後、Azure Stack Edge Pro から Azure にデータを転送できます。
 
 この手順の所要時間は約 10 分です。
 
@@ -31,11 +31,11 @@ ms.locfileid: "87926112"
  
 ## <a name="prerequisites"></a>前提条件
 
-共有を Azure Stack Edge に追加する前に、以下を確認してください。
+共有を Azure Stack Edge Pro に追加する前に、次のことを確認してください。
 
-- [Azure Stack Edge の設置](azure-stack-edge-deploy-install.md)に関するページで説明されているとおり、物理デバイスが設置されていること。
+- [Azure Stack Edge Pro の設置](azure-stack-edge-deploy-install.md)に関するページで説明されているように、物理デバイスが設置されていること。
 
-- [Azure Stack Edge の接続、設定、アクティブ化](azure-stack-edge-deploy-connect-setup-activate.md)に関するページで説明されているとおり、物理デバイスがアクティブ化されていること。
+- [Azure Stack Edge Pro の接続、設定、アクティブ化](azure-stack-edge-deploy-connect-setup-activate.md)に関するページで説明されているとおり、物理デバイスがアクティブ化されていること。
 
 
 ## <a name="add-a-share"></a>共有の追加
@@ -62,7 +62,7 @@ ms.locfileid: "87926112"
     c. 共有を配置するストレージ アカウントを指定します。 
 
     > [!IMPORTANT]
-    > Azure Stack Edge または Data Box Gateway デバイスで Azure Storage アカウントをご使用の場合、その Azure Storage アカウントで不変ポリシーが有効になっていないことを確認してください。 詳細については、「[BLOB ストレージの不変ポリシーを設定および管理する](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)」を参照してください。
+    > Azure Stack Edge Pro または Data Box Gateway デバイスで Azure Storage アカウントを使用する場合、そのアカウントに不変ポリシーが設定されていないことを確認してください。 詳細については、「[BLOB ストレージの不変ポリシーを設定および管理する](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)」を参照してください。
     
     d. **[ストレージ サービス]** ドロップダウン リストで、 **[ブロック BLOB]** 、 **[ページ BLOB]** 、 **[ファイル]** のいずれかを選択します。  
     お客様が選択するサービスの種類は、Azure で使用したいデータの形式によって変わります。 この例では、データをブロック BLOB として Azure に格納したいため、 **[ブロック BLOB]** を選択します。 **ページ BLOB** を選択する場合は、お客様のデータが 512 バイトでアラインされるようにします。 たとえば、VHDX は常に 512 バイトでアラインされています。
@@ -92,7 +92,7 @@ ms.locfileid: "87926112"
 
 ### <a name="connect-to-an-smb-share"></a>SMB 共有に接続する
 
-お客様の Azure Stack Edge デバイスに接続されている Windows Server クライアントで、コマンドを入力して SMB 共有に接続します。
+お客様の Azure Stack Edge Pro デバイスに接続されている Windows Server クライアントで、コマンドを入力して SMB 共有に接続します。
 
 
 1. コマンド ウィンドウで次を入力します。
@@ -125,7 +125,7 @@ ms.locfileid: "87926112"
 
 ### <a name="connect-to-an-nfs-share"></a>NFS 共有に接続する
 
-お客様の Azure Stack Edge デバイスに接続されている Linux クライアントで、次の手順を実行します。
+お客様の Azure Stack Edge Pro デバイスに接続されている Linux クライアントで、次の手順を実行します。
 
 1. クライアントに NFSv4 クライアントがインストール済みであることを確認します。 NFS クライアントをインストールするには、次のコマンドを使用します。
 
@@ -133,7 +133,7 @@ ms.locfileid: "87926112"
 
     詳細については、[NFSv4 クライアントのインストール](https://help.ubuntu.com/community/SettingUpNFSHowTo#NFSv4_client)に関するページを参照してください。
 
-2. NFS クライアントがインストールされたら、次のコマンドを使用して、お客様が作成した NFS 共有を Azure Stack Edge デバイスにマウントします。
+2. NFS クライアントがインストールされたら、次のコマンドを使用して、作成した NFS 共有を Azure Stack Edge Pro デバイスにマウントします。
 
    `sudo mount -t nfs -o sec=sys,resvport <device IP>:/<NFS shares on device> /home/username/<Folder on local Linux computer>`
 
@@ -141,7 +141,7 @@ ms.locfileid: "87926112"
     > 共有をマウントする際に `sync` オプションを使用すると、大きなファイルの転送速度が向上します。
     > 共有をマウントする前に、ローカル コンピューター上のマウント ポイントとして機能するディレクトリが既に作成されていることを確認します。 これらのディレクトリに、ファイルやサブフォルダーを含めることはできません。
 
-    NFS 経由で Azure Stack Edge デバイス上の共有に接続する方法の例を次に示します。 デバイスの IP アドレスは `10.10.10.60` です。 共有 `mylinuxshare2` は ubuntuVM にマウントされています。 共有マウント ポイントは `/home/databoxubuntuhost/edge` です。
+    NFS 経由で Azure Stack Edge Pro デバイス上の共有に接続する方法の例を次に示します。 デバイスの IP アドレスは `10.10.10.60` です。 共有 `mylinuxshare2` は ubuntuVM にマウントされています。 共有マウント ポイントは `/home/databoxubuntuhost/edge` です。
 
     `sudo mount -t nfs -o sec=sys,resvport 10.10.10.60:/mylinuxshare2 /home/databoxubuntuhost/Edge`
 
@@ -152,15 +152,15 @@ ms.locfileid: "87926112"
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure Stack Edge に関する次のトピックについて説明しました。
+このチュートリアルでは、Azure Stack Edge Pro に関する次のトピックについて説明しました。
 
 > [!div class="checklist"]
 > * 共有の追加
 > * 共有への接続
 
-Azure Stack Edge を使用してデータを変換する方法について学習するには、次のチュートリアルに進みます。
+Azure Stack Edge Pro を使用してデータを変換する方法について学習するには、次のチュートリアルに進みます。
 
 > [!div class="nextstepaction"]
-> [Azure Stack Edge でデータを変換する](./azure-stack-edge-deploy-configure-compute.md)
+> [Azure Stack Edge Pro でデータを変換する](./azure-stack-edge-deploy-configure-compute.md)
 
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: b29b5fa1beb19bc055f94c56b064ae2c0ae175b5
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 677cf60ff3e614fd1486445786154fbf026b7cd9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171144"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898685"
 ---
 # <a name="convert-to-image-directory"></a>イメージ ディレクトリへの変換
 
-この記事では、イメージ ディレクトリへの変換モジュールを使用して画像データセットを 'Image Directory' データ型に変換する方法について説明します。これは、Azure Machine Learning デザイナー (プレビュー) の画像関連タスク (画像分類など) で使用される標準のデータ形式です。
+この記事では、イメージ ディレクトリへの変換モジュールを使用して画像データセットを 'Image Directory' データ型に変換する方法について説明します。これは、Azure Machine Learning デザイナーの画像関連タスク (画像分類など) で使用される標準のデータ形式です。
 
 ## <a name="how-to-use-convert-to-image-directory"></a>イメージ ディレクトリへの変換を使用する方法  
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 7550bb7c6bbf7602245f9a9f1ac006ce693b36a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 63c61b12ad68a3add2e7b40ab0bec38d3c2835e5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477648"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898576"
 ---
 # <a name="cross-validate-model"></a>モデルのクロス検証
 
-この記事では、Azure Machine Learning デザイナー (プレビュー) でモデルのクロス検証モジュールを使用する方法について説明します。 "*クロス検証*" は、データセットの変動性と、そのデータによりトレーニングされたモデルの信頼性の両方を評価するために機械学習でよく使用される重要な手法です。  
+この記事では、Azure Machine Learning デザイナーのモデルのクロス検証モジュールを使用する方法について説明します。 "*クロス検証*" は、データセットの変動性と、そのデータによりトレーニングされたモデルの信頼性の両方を評価するために機械学習でよく使用される重要な手法です。  
 
 モデルのクロス検証モジュールは、トレーニングしていない分類モデルまたは回帰モデルと共に、ラベルが付けられたデータセットを入力として受け取ります。 これは、データセットをいくつかのサブセット ("*フォールド*") に分割し、各フォールドでモデルを構築してから、各フォールドの正確性の統計セットを返します。 すべてのフォールドについて正確性の統計を比較することで、データ セットの品質を判断できます。 さらに、モデルがデータの変動の影響を受けやすいかどうかも把握できます。  
 

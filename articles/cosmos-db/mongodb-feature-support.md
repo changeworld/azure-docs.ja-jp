@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 7c5164a032e77d85c995384473935b134ff528e5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5db25f993fa006fa635ac12c1be5ff1c3eb92f68
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009309"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883452"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>Azure Cosmos DB の MongoDB (3.2 バージョン) 用 API: サポートされる機能と構文
 
@@ -25,7 +25,9 @@ Azure Cosmos DB の MongoDB 用 API を使用すれば、使い慣れた MongoDB
 
 ## <a name="protocol-support"></a>プロトコルのサポート
 
-Azure Cosmos DB の MongoDB 用 API のすべての新しいアカウントは、MongoDB サーバー バージョン **3.6** と互換性があります。 この記事では、MongoDB バージョン 3.2 について説明します。 以下に、サポートされている演算子およびすべての制限事項や例外の一覧を示します。 これらのプロトコルを認識するクライアント ドライバーはすべて、Azure Cosmos DB の MongoDB 用 API に接続できるはずです。
+Azure Cosmos DB の MongoDB 用 API のすべての新しいアカウントは、MongoDB サーバー バージョン **3.6** と互換性があります。 この記事では、MongoDB バージョン 3.2 について説明します。 以下に、サポートされている演算子およびすべての制限事項や例外の一覧を示します。 これらのプロトコルを認識するクライアント ドライバーはすべて、Azure Cosmos DB の MongoDB 用 API に接続できるはずです。 
+
+また、Azure Cosmos DB の MongoDB 用 API は、条件を満たすアカウントにシームレスなアップグレード エクスペリエンスも提供します。 詳細については、[MongoDB バージョン アップグレード ガイド](mongodb-version-upgrade.md)を参照してください。
 
 ## <a name="query-language-support"></a>クエリ言語のサポート
 

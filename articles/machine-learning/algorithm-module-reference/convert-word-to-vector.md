@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
-ms.openlocfilehash: 21b207ece1a2a7fd6f218716912d4c4d2c2f1ee2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1c2aa9023a7081387d38b9f7c6cfe8323300ad6e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753889"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898609"
 ---
 # <a name="convert-word-to-vector-module"></a>Convert Word to Vector モジュール
 
-この記事では、Azure Machine Learning デザイナー (プレビュー) の Convert Word to Vector モジュールを使用して、以下のタスクを行う方法について説明します。
+この記事では、Azure Machine Learning デザイナーの Convert Word to Vector モジュールを使用して、以下のタスクを行う方法について説明します。
 
 - 入力として指定したテキストのコーパスで、さまざまな Word2Vec モデル (Word2Vec、FastText、GloVe トレーニング済みモデル) を適用します。
 - 単語埋め込みを使用してボキャブラリを生成します。
@@ -93,7 +93,7 @@ ms.locfileid: "84753889"
 
 + **埋め込みを含むボキャブラリ**:生成されたボキャブラリと共に、各単語の埋め込みが格納されます。 1 つの次元が 1 つの列を占めます。
 
-次の例では、Convert Word to Vector モジュールがどのように動作するかを示します。 Azure Machine Learning (プレビュー) で提供される前処理された Wikipedia SP 500 データセットに、既定の設定でこのモジュールを適用します。
+次の例では、Convert Word to Vector モジュールがどのように動作するかを示します。 Azure Machine Learning で提供される前処理された Wikipedia SP 500 データセットに、既定の設定でこのモジュールを適用します。
 
 ### <a name="source-dataset"></a>ソース データセット
 
@@ -149,4 +149,4 @@ loop|-0.391421|0.52366|0.141503|-0.105423|0.084503|-0.018424|...|-0.0521
 
 Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 
 
-デザイナー (プレビュー) モジュール固有のエラーの一覧については、[Machine Learning のエラー コード](designer-error-codes.md)に関する記事を参照してください。
+デザイナー モジュール固有のエラーの一覧については、[Machine Learning のエラー コード](designer-error-codes.md)に関する記事を参照してください。

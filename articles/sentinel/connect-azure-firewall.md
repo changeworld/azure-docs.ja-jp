@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 08/30/2020
 ms.author: yelevin
-ms.openlocfilehash: 167cfe6b8fb1394291866e51ec14ec91bf9035a1
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 05a2869152def0fc9a44defaa21f0643d9fdbb08
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89183528"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504878"
 ---
 # <a name="connect-data-from-azure-firewall"></a>Azure Firewall からデータを接続する
 
@@ -40,7 +40,7 @@ Azure Firewall ログを Azure Sentinel に接続すると、ブック内でロ�
 
 1. 接続するログが存在するすべてのファイアウォールで**診断ログ**を有効にします。
 
-    1. [[Azure Firewall を開く >]](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Network%2FazureFirewalls) リンクを選択します。
+    1. **[Azure Firewall を開く >]** リンクを選択します。
 
     1. **[ファイアウォール]** ナビゲーション メニューから **[診断設定]** を選択します。
 

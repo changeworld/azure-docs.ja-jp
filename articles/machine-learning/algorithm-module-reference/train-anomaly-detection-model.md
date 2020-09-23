@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 73e8f0de9f879498acb71e97fa47c81b3447252d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: edf35fada4233fbe43bc7f859c2414bfb8130714
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749610"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905734"
 ---
 # <a name="train-anomaly-detection-model-module"></a>異常検出モデルのトレーニング モジュール
 
-この記事では、Azure Machine Learning デザイナー (プレビュー) で異常検出モデルのトレーニング モジュールを使用して、トレーニング済みの異常検出モデルを作成する方法について説明します。
+この記事では、Azure Machine Learning デザイナーで異常検出モデルのトレーニング モジュールを使用して、トレーニングされた異常検出モデルを作成する方法について説明します。
 
 このモジュールでは、異常検出モデル用のパラメーター セットとラベル付けされていないデータセットを入力として受け取ります。 トレーニング済みの異常検出モデルがトレーニング データのラベル セットと共に返されます。  
 
@@ -53,5 +53,5 @@ ms.locfileid: "84749610"
 
 Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 
 
-デザイナー モジュール固有のエラーの一覧については、「[デザイナーの例外とエラー コード (プレビュー)](designer-error-codes.md)」を参照してください。
+デザイナー モジュール固有のエラーの一覧については、「[デザイナーの例外とエラー コード](designer-error-codes.md)」を参照してください。
 '

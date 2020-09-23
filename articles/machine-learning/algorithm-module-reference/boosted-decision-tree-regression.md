@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 08/24/2020
-ms.openlocfilehash: 171c53aa36ecc854cf32a64f9f2639a7086c24e5
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 21cd1491da4374babaff8b5b4b451a3cce874368
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782585"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90898846"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>ブースト デシジョン ツリー回帰モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナーのモジュールについて説明します。
 
 このモジュールを使用し、ブーストで回帰ツリーのアンサンブルを作成します。 *ブースティング*は、各ツリーが前のツリーに依存していることを意味します。 このアルゴリズムは、それに先行するツリーの残差をフィッティングにより学習します。 したがって、デシジョン ツリー アンサンブルのブースティングは、適用範囲が狭いという小さなリスクがありますが、精度を上げる傾向があります。  
 

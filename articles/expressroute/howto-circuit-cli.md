@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 31d3c95ffe94d6ff4ea6deee2fe87d3132e4550e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 5f3270bbed5042ef89d5818523005dfc31589945
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89393226"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566145"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>CLI を使用した ExpressRoute 回線の作成と変更
 
@@ -142,7 +142,7 @@ az group create -n ExpressRouteResourceGroup -l "West US"
 
 必ず、適切な SKU レベルと SKU ファミリを指定してください。
 
-* SKU 層 によって、ExpressRoute 回線が [Local](expressroute-faqs.md#expressroute-local)、Standard、[Premium](expressroute-faqs.md#expressroute-premium) のどれであるかが決まります。 "*Local*"、"*Standard*" または "*Premium*" を指定できます。
+* SKU 層 によって、ExpressRoute 回線が [Local](expressroute-faqs.md#expressroute-local)、Standard、[Premium](expressroute-faqs.md#expressroute-premium) のどれであるかが決まります。 "*Local*"、"*Standard*" または "*Premium*" を指定できます。 SKU を *[Standard] または [Premium]* から *[Local]* に変更することはできません。
 * SKU ファミリによって、課金の種類が決まります。 従量制課金データ プランの場合は *Metereddata*、無制限データ プランの場合は *Unlimiteddata* を指定できます。 課金の種類は *Metereddata* から *Unlimiteddata* に変更できますが、*Unlimiteddata* から *Metereddata* に変更することはできません。 "*Local*" 回線は "*Unlimiteddata*" のみです。
 
 
@@ -280,7 +280,7 @@ az network express-route show --resource-group ExpressRouteResourceGroup --name 
 
 ExpressRoute 回線の特定のプロパティは、接続に影響を与えることなく変更できます。 次の変更は、ダウンタイムなしで行うことができます。
 
-* ExpressRoute 回線の ExpressRoute Premium アドオンを有効または無効にすることができます。
+* ExpressRoute 回線の ExpressRoute Premium アドオンを有効または無効にすることができます。 SKU を *[Standard] または [Premium]* から *[Local]* に変更することはサポートされていません。
 * ポートに使用可能な容量があれば、ExpressRoute 回線の帯域幅を増やすことができます。 ただし、回線の帯域幅のダウングレードはサポートされていません。
 * 課金プランを従量制課金データから無制限データに変更することができます。 ただし、無制限データから従量制課金データへの課金プランの変更はサポートされていません。
 * *従来の操作の許可*を有効または無効にできます。

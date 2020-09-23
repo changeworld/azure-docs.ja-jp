@@ -1,6 +1,6 @@
 ---
-title: データベースのバックアップと復元 - Azure SQL Edge (プレビュー)
-description: Azure SQL Edge (プレビュー) のバックアップと復元の機能について説明します。
+title: データベースのバックアップと復元 - Azure SQL Edge
+description: Azure SQL Edge のバックアップと復元の機能について説明します。
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,16 +9,16 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 92a37babbcc0bbba3845267ca2eb0f95b9fceafa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2cc8901ee3952f7d258d768e175412254ec5d1a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84667864"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905950"
 ---
-# <a name="back-up-and-restore-databases-in-azure-sql-edge-preview"></a>Azure SQL Edge (プレビュー) でのデータベースのバックアップと復元 
+# <a name="back-up-and-restore-databases-in-azure-sql-edge"></a>Azure SQL Edge でのデータベースのバックアップと復元 
 
-Azure SQL Edge は、最新バージョンの Linux の Microsoft SQL Server データベース エンジンの上に構築されています。 コンテナーで実行される SQL Server on Linux と SQL Server で使用できるデータベースのバックアップおよび復元機能と同様の機能が提供されます。 バックアップおよび復元コンポーネントにより、Azure SQL Edge データベースに格納されるデータを保護するために不可欠な保護機能が提供されます。 
+Azure SQL Edge は、最新バージョンの Microsoft SQL データベース エンジンの上に構築されています。 コンテナーで実行される SQL Server on Linux と SQL Server で使用できるデータベースのバックアップおよび復元機能と同様の機能が提供されます。 バックアップおよび復元コンポーネントにより、Azure SQL Edge データベースに格納されるデータを保護するために不可欠な保護機能が提供されます。 
 
 致命的なデータ損失のリスクを最小限に抑えるために、データベースを定期的にバックアップして、データの変更を定期的に保持する必要があります。 十分に計画されたバックアップおよび復元戦略は、さまざまな障害が原因で発生するデータ損失からデータベースを保護します。 一連のバックアップの復元とデータベースの回復を実行することでご自分の戦略をテストして、災害に効率的に対応するための準備を整えてください。
 
@@ -75,7 +75,7 @@ Azure SQL Edge では、SQL Server でサポートされているのと同じバ
 
 ### <a name="back-up-to-url"></a>URL にバックアップする
 
-Azure SQL Edge では、ページ BLOB とブロック BLOB の両方へのバックアップがサポートされています。 詳細については、「[ブロック BLOB とページ BLOB へのバックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-ver15#blockbloborpageblob)」を参照してください。 次の例では、データベース *IronOreSilicaPrediction* がブロック BLOB にバックアップされます。 
+Azure SQL Edge では、ページ BLOB とブロック BLOB の両方へのバックアップがサポートされています。 詳細については、「[ブロック BLOB とページ BLOB へのバックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url#blockbloborpageblob)」を参照してください。 次の例では、データベース *IronOreSilicaPrediction* がブロック BLOB にバックアップされます。 
 
 1. ブロック BLOB へのバックアップを構成するには、まず Azure SQL Edge 上に SQL Server 資格情報を作成するために使用できる Shared Access Signature (SAS) トークンを生成します。 このスクリプトでは、保存されているアクセス ポリシーに関連付けられた SAS が作成されます。 詳細については、[共有アクセス署名のパート 1 のSAS モデルの説明](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)に関するページをご覧ください。 スクリプトはまた、SQL Server に対する資格情報を作成するのに必要な T-SQL コマンドも書き込みます。 次のスクリプトは、ストレージ アカウントを持つ Azure サブスクリプションとバックアップ用のストレージ コンテナーを既にお持ちであることを前提としています。
 
@@ -133,7 +133,10 @@ Azure SQL Edge では、ページ BLOB とブロック BLOB の両方へのバ�
 
 ## <a name="restore-a-database-in-azure-sql-edge"></a>Azure SQL Edge でデータベースを復元する
 
-Azure SQL Edge では、ローカル ディスク、ネットワークの場所、または Azure BLOB ストレージ アカウントから復元できます。 SQL Server での復元と回復の詳細については、「[復元と復旧の概要](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-and-recovery-overview-sql-server?view=sql-server-ver15)」を参照してください。 SQL Server での単純復旧モデルの概要については、「[データベースの全体復元 (単純復旧モデル)](https://docs.microsoft.com/sql/relational-databases/backup-restore/complete-database-restores-simple-recovery-model?view=sql-server-ver15)」を参照してください。
+Azure SQL Edge では、ローカル ディスク、ネットワークの場所、または Azure BLOB ストレージ アカウントから復元できます。 SQL Server での復元と回復の詳細については、「[復元と復旧の概要](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-and-recovery-overview-sql-server)」を参照してください。 SQL Server での単純復旧モデルの概要については、「[データベースの全体復元 (単純復旧モデル)](https://docs.microsoft.com/sql/relational-databases/backup-restore/complete-database-restores-simple-recovery-model)」を参照してください。
+
+> [!IMPORTANT] 
+> Azure SQL Edge で作成されたデータベースは、Microsoft SQL Server または Azure SQL のインスタンス上で復元できません。 また、Microsoft SQL Server または Azure SQL で作成されたデータベースは、Azure SQL Edge 上で復元できますが、Azure SQL Edge でサポートされていない機能がデータベースに含まれていないことが条件です。 
 
 ### <a name="restore-from-a-local-disk"></a>ローカル ディスクから復元する
 
