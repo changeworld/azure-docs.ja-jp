@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 92d4fb638e41c668c557ef9e618d30677481585d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 7d2bdb96485a811ea9b3dde5320084f666508622
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829851"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907503"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>ポータルを使用して Azure Database for PostgreSQL 単一サーバー用の Private Link を作成および管理する
 
@@ -130,10 +130,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このセクションでは、PostgreSQL サーバーを作成し、それにプライベート エンドポイントを追加します。 
 
-1. Azure portal の画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[Private Link]** を選択します。
+1. Azure portal の画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[プライベート リンク]** を選択します。
 2. **[プライベート リンク センター - 概要]** の**サービスへのプライベート接続を構築する**オプションで、 **[開始]** を選択します。
 
-    ![Private Link の概要](media/concepts-data-access-and-security-private-link/privatelink-overview.png)
+    :::image type="content" source="media/concepts-data-access-and-security-private-link/privatelink-overview.png" alt-text="Private Link の概要":::
 
 1. **[Create a private endpoint - Basics]\(プライベート エンドポイントの作成 - 基本\)** で次の情報を入力または選択します。
 
@@ -176,7 +176,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **[Review + create]\(レビュー + 作成\)** を選択します。 **[確認および作成]** ページが表示され、Azure によって構成が検証されます。 
 2. "**証に成功しました**" というメッセージが表示されたら、 **[作成]** を選択します。 
 
-    ![作成された Private Link](media/concepts-data-access-and-security-private-link/show-postgres-private-link.png)
+    :::image type="content" source="media/concepts-data-access-and-security-private-link/show-postgres-private-link.png" alt-text="作成された Private Link":::
 
     > [!NOTE] 
     > お客様の DNS 設定の FQDN は、構成されている非公開 IP では解決されません。 [こちら](../dns/dns-operations-recordsets-portal.md)で示すように、構成された FQDN の DNS ゾーンを設定する必要があります。
@@ -241,7 +241,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 7. (省略可能) postgreSQL サーバーから情報を作成またはクエリします。
 
-8. myVM へのリモート デスクトップ接続を閉じます。
+8. myVm へのリモート デスクトップ接続を閉じます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 プライベート エンドポイント、PostgreSQL サーバー、VM を使い終えたら、リソース グループとそこに含まれるすべてのリソースを削除します。

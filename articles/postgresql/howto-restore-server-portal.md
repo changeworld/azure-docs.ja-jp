@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: 7683d3472d382707de538874035c8448f589bf82
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 9ff62a568af4f60318ba0e5bdf2144bb43c9d2b1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110812"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884309"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Azure portal を使用して Azure Database for PostgreSQL - Single Server のサーバーをバックアップおよび復元する方法
 
@@ -28,7 +28,7 @@ Azure Database for PostgreSQL サーバーは、復元機能が有効になる�
 
 Azure Portal でサーバーを作成するときに、 **[価格レベル]** ウィンドウで、使用しているサーバーのバックアップとして **[ローカル冗長]** または **[地理冗長]** のいずれかを選択します。 また、このウィンドウの **[バックアップの保有期間]** で、サーバーのバックアップを保存する期間 (日数) を選択します。
 
-   ![価格レベル - バックアップ冗長の選択](./media/howto-restore-server-portal/pricing-tier.png)
+   :::image type="content" source="./media/howto-restore-server-portal/pricing-tier.png" alt-text="価格レベル - バックアップ冗長の選択":::
 
 作成中のこれらの値の設定について詳しくは、[Azure Database for PostgreSQL サーバーのクイック スタート](quickstart-create-server-database-portal.md)に関するページをご覧ください。
 
@@ -37,7 +37,7 @@ Azure Portal でサーバーを作成するときに、 **[価格レベル]** �
 2. Azure Database for PostgreSQL サーバーを選択します。 この操作で、 **[概要]** ページが開きます。
 3. **[設定]** で、メニューから **[価格レベル]** を選択します。 スライダーを使用して、**バックアップの保有期間**を 7 ～ 35 日の間で希望の値に変更します。
 次のスクリーンショットでは 34 日に変更されています。
-![長くしたバックアップのリテンション期間](./media/howto-restore-server-portal/3-increase-backup-days.png)
+:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="長くしたバックアップのリテンション期間":::
 
 4. **[OK]** をクリックして変更を確定します。
 
@@ -53,11 +53,11 @@ Azure Database for PostgreSQL では、サーバーの過去の特定時点ま�
 
 2. サーバーの **[概要]** ページのツール バーで **[復元]** を選択します。
 
-   ![Azure Database for PostgreSQL - 概要 - 復元ボタン](./media/howto-restore-server-portal/2-server.png)
+   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="Azure Database for PostgreSQL - 概要 - 復元ボタン":::
 
 3. [復元] フォームに必要な情報を入力します。
 
-   ![Azure Database for PostgreSQL - 情報の復元](./media/howto-restore-server-portal/3-restore.png)
+   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="Azure Database for PostgreSQL - 情報の復元":::
    - **復元ポイント**:復元先の特定の時点を選択します。
    - **対象サーバー**:新しいサーバーの名前を指定します。
    - **[場所]** :リージョンを選択することはできません。 既定では、ソース サーバーと同じになります。

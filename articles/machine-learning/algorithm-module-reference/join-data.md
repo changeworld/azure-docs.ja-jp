@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: 38606f424e38fc68519181f485b5b698d0705d6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0cde479e50c67006a9ef1668ba68b211c3a9af93
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477580"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907912"
 ---
 # <a name="join-data"></a>データの結合
 
-この記事では、Azure Machine Learning デザイナー (プレビュー) で **Join Data (データの結合)** モジュールを使用し、データベーススタイルの結合操作を使用して 2 つのデータセットをマージする方法について説明します。  
+この記事では、Azure Machine Learning デザイナーの**データの結合**モジュールを使用し、データベーススタイルの結合操作を使用して、2 つのデータセットをマージする方法について説明します。  
 
 ## <a name="how-to-configure-join-data"></a>[Join Data]\(データの結合\) を構成する方法
 

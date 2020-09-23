@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 34553c1b211b9e2c4b13a083f5c3a6732fb65472
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4aee41bc0188676ac0bd168474f1842199af9620
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502700"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595244"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Azure CLI を使用して URL に基づいて Web トラフィックをルーティングする
 
@@ -23,13 +23,12 @@ ms.locfileid: "87502700"
 
 この記事では、次のことについて説明します。
 
-> [!div class="checklist"]
-> * 必要なネットワーク リソースのリソース グループを作成する
-> * ネットワーク リソースを作成する
-> * アプリケーションから着信するトラフィックのアプリケーション ゲートウェイを作成する
-> * 各種トラフィックのサーバー プールとルーティング規則を指定する
-> * プールを自動的にスケーリングできるよう各プールのスケール セットを作成する
-> * 各種のトラフィックが適切なプールに誘導されることを確認するためのテストを実行する
+* 必要なネットワーク リソースのリソース グループを作成する
+* ネットワーク リソースを作成する
+* アプリケーションから着信するトラフィックのアプリケーション ゲートウェイを作成する
+* 各種トラフィックのサーバー プールとルーティング規則を指定する
+* プールを自動的にスケーリングできるよう各プールのスケール セットを作成する
+* 各種のトラフィックが適切なプールに誘導されることを確認するためのテストを実行する
 
 好みに応じて、[Azure PowerShell](tutorial-url-route-powershell.md) または [Azure portal](create-url-route-portal.md) を使用してこの手順を実行することもできます。
 

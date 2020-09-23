@@ -1,27 +1,27 @@
 ---
-title: Azure CLI と Python を使用して Azure Stack Edge GPU デバイスに VM をデプロイする
-description: Azure CLI と Python を使用して Azure Stack Edge GPU デバイスに仮想マシン (VM) を作成し、管理する方法について説明します。
+title: Azure CLI と Python を使用して Azure Stack Edge Pro GPU デバイスに VM をデプロイする
+description: Azure CLI と Python を使用して Azure Stack Edge Pro GPU デバイスに仮想マシン (VM) を作成し、管理する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 09/07/2020
 ms.author: alkohli
-ms.openlocfilehash: c633cc973cb9e4d4f0375dec638e278c48c6709c
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: c27f6ef47b8e4db83ceb63e308e318803800f8a5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500234"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890725"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-using-azure-cli-and-python"></a>Azure CLI と Python を使用して Azure Stack Edge GPU デバイスに VM をデプロイする
+# <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Azure CLI と Python を使用して Azure Stack Edge Pro GPU デバイスに VM をデプロイする
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
 [!INCLUDE [azure-stack-edge-gateway-deploy-virtual-machine-overview](../../includes/azure-stack-edge-gateway-deploy-virtual-machine-overview.md)]
 
-このチュートリアルでは、Azure コマンド ライン インターフェイス (CLI) と Python を使用して、Azure Stack Edge デバイスに VM を作成し、管理する方法について説明します。
+このチュートリアルでは、Azure コマンド ライン インターフェイス (CLI) と Python を使用して、Azure Stack Edge Pro デバイスに VM を作成し、管理する方法について説明します。
 
 ## <a name="vm-deployment-workflow"></a>VM デプロイのワークフロー
 
@@ -43,13 +43,13 @@ ms.locfileid: "89500234"
 10. VNet を作成する
 11. VNet のサブネット ID を使用して VNIC を作成する
 
-ワークフロー図の詳しい説明については、[Azure PowerShell を使用して Azure Stack Edge デバイスに VM をデプロイする方法](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md)に関するページを参照してください。 Azure Resource Manager に接続する方法については、[Azure PowerShell を使用して Azure Resource Manager に接続する方法](azure-stack-edge-j-series-connect-resource-manager.md)に関するページを参照してください。
+ワークフロー図の詳しい説明については、[Azure PowerShell を使用して Azure Stack Edge Pro デバイスに VM をデプロイする方法](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md)に関するページを参照してください。 Azure Resource Manager に接続する方法については、[Azure PowerShell を使用して Azure Resource Manager に接続する方法](azure-stack-edge-j-series-connect-resource-manager.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure CLI と Python を使用して、Azure Stack Edge デバイスに VM を作成して管理する前に、次の手順に記載された前提条件をすべて満たしていることを確認する必要があります。
+Azure CLI と Python を使用して、Azure Stack Edge Pro デバイスに VM を作成して管理する前に、次の手順に記載された前提条件をすべて満たしていることを確認する必要があります。
 
-1. 「[手順 1: Azure Stack Edge デバイスを構成する](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-device)」の説明に従い、Azure Stack Edge デバイスでネットワーク設定を完了します。
+1. 次の説明に従って Azure Stack Edge Pro デバイスでネットワーク設定を完了していること。「[手順 1: Azure Stack Edge Pro デバイスを構成する](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device)」
 
 2. コンピューティング用のネットワーク インターフェイスを有効にします。 このネットワーク インターフェイスの IP を使用して、VM デプロイ用の仮想スイッチを作成します。 このプロセスは、次の手順で実行します。
 
@@ -58,7 +58,7 @@ Azure CLI と Python を使用して、Azure Stack Edge デバイスに VM を�
         > [!IMPORTANT] 
         > コンピューティング用に構成できるポートは 1 つだけです。
 
-    2. そのネットワーク インターフェイスでコンピューティングを有効にします。 そのネットワーク インターフェイスに対応する仮想スイッチが Azure Stack Edge によって作成、管理されます。
+    2. そのネットワーク インターフェイスでコンピューティングを有効にします。 そのネットワーク インターフェイスに対応する仮想スイッチが Azure Stack Edge Pro によって作成、管理されます。
 
     <!--If you decide to use another network interface for compute, make sure that you:
 
@@ -68,9 +68,9 @@ Azure CLI と Python を使用して、Azure Stack Edge デバイスに VM を�
 
     - You can now enable another network interface for compute.-->
 
-3. すべての証明書を作成し、Azure Stack Edge デバイスと、お使いのクライアントの信頼されたストアにインストールします。 「[手順 2: 証明書を作成してインストールする](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)」で説明されている手順に従います。
+3. すべての証明書を作成し、Azure Stack Edge Pro デバイスと、お使いのクライアントの信頼されたストアにインストールします。 「[手順 2: 証明書を作成してインストールする](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)」で説明されている手順に従います。
 
-4. 自分の Azure Stack Edge デバイス用に、Base-64 でエンコードされた *.cer* 証明書 (PEM 形式) を作成します。 これが署名チェーンとしてあらかじめデバイスにアップロードされ、クライアントの信頼されたルート ストアにインストールされている必要があります。 また、このクライアントで Python が正しく動作するためには、この証明書が *pem* 形式になっている必要があります。
+4. 自分の Azure Stack Edge Pro デバイス用に、Base-64 でエンコードされた *.cer* 証明書 (PEM 形式) を作成します。 これが署名チェーンとしてあらかじめデバイスにアップロードされ、クライアントの信頼されたルート ストアにインストールされている必要があります。 また、このクライアントで Python が正しく動作するためには、この証明書が *pem* 形式になっている必要があります。
 
     `certutil` コマンドを使用して、この証明書を pem 形式に変換してください。 このコマンドは、証明書が格納されているディレクトリで実行する必要があります。
 
@@ -199,7 +199,7 @@ Azure CLI と Python を使用して、Azure Stack Edge デバイスに VM を�
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
     ```
 
-### <a name="trust-the-azure-stack-edge-ca-root-certificate"></a>Azure Stack Edge の CA ルート証明書を信頼します。
+### <a name="trust-the-azure-stack-edge-pro-ca-root-certificate"></a>Azure Stack Edge Pro の CA ルート証明書を信頼する
 
 1. マシンで証明書の場所を探します。 この場所は、`az cli` をインストールした場所に応じて異なる場合があります。 Windows PowerShell を管理者として実行します。 `az cli` による Python のインストール先パスに切り替えます (`C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\python.exe`)。
 
@@ -219,7 +219,7 @@ Azure CLI と Python を使用して、Azure Stack Edge デバイスに VM を�
       
     この場所は、後で使用するので、書き留めておいてください (`C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\certifi\cacert.pem`)。
 
-2. Azure Stack Edge の CA ルート証明書を Python の既存の証明書に追加して信頼します。 先ほど PEM 証明書を保存した場所のパスを指定してください。
+2. Azure Stack Edge Pro の CA ルート証明書を Python の既存の証明書に追加して信頼します。 先ほど PEM 証明書を保存した場所のパスを指定してください。
 
     ```powershell
     $pemFile = "<Path to the pem format certificate>"
@@ -252,12 +252,12 @@ Azure CLI と Python を使用して、Azure Stack Edge デバイスに VM を�
     Write-Host "Adding the certificate content to Python Cert store"
     Add-Content "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\CLI2\Lib\site-packages\certifi\cacert.pem" $rootCertEntry
     
-    Write-Host "Python Cert store was updated to allow the Azure Stack Edge CA root certificate"
+    Write-Host "Python Cert store was updated to allow the Azure Stack Edge Pro CA root certificate"
     ```
     
-### <a name="connect-to-azure-stack-edge"></a>Azure Stack Edge に接続する
+### <a name="connect-to-azure-stack-edge-pro"></a>Azure Stack Edge Pro に接続する
 
-1. `az cloud register` コマンドを実行して、自分の Azure Stack Edge 環境を登録します。
+1. `az cloud register` コマンドを実行して、自分の Azure Stack Edge Pro 環境を登録します。
 
     一部のシナリオでは、インターネットへの直接送信接続がプロキシまたはファイアウォール経由でルーティングされ、SSL インターセプトが適用されます。 このような場合は、az cloud register コマンドが、"\"クラウドからエンドポイントを取得できない\"" といったエラーで失敗するおそれがあります。このエラーを回避するには、Windows PowerShell で次の環境変数を設定します。
 
@@ -266,7 +266,7 @@ Azure CLI と Python を使用して、Azure Stack Edge デバイスに VM を�
     $ENV:ADAL_PYTHON_SSL_NO_VERIFY = 1
     ```
 
-2. Azure Resource Manager のエンドポイント、リソースの作成先、ソース VHD の保存先のパスについて、スクリプトの環境変数を設定します。 リソースの場所は、すべての Azure Stack Edge デバイスで固定であり、`dbelocal` に設定されます。 さらに、アドレス プレフィックスとプライベート IP アドレスも指定する必要があります。 以下の環境変数は、実際の値に基づいて設定してください。ただし `AZURE_RESOURCE_LOCATION` は、`"dbelocal"` としてハードコーディングする必要があります。
+2. Azure Resource Manager のエンドポイント、リソースの作成先、ソース VHD の保存先のパスについて、スクリプトの環境変数を設定します。 リソースの場所は、すべての Azure Stack Edge Pro デバイスで固定であり、`dbelocal` に設定されます。 さらに、アドレス プレフィックスとプライベート IP アドレスも指定する必要があります。 以下の環境変数は、実際の値に基づいて設定してください。ただし `AZURE_RESOURCE_LOCATION` は、`"dbelocal"` としてハードコーディングする必要があります。
 
     ```powershell
     $ENV:ARM_ENDPOINT = "https://management.team3device.teatraining1.com"
@@ -308,7 +308,7 @@ Azure CLI と Python を使用して、Azure Stack Edge デバイスに VM を�
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
     ```
 
-4. `az login` コマンドを使用して、Azure Stack Edge 環境にサインインします。 Azure Stack Edge 環境には、ユーザーまたは[サービス プリンシパル](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)としてサインインできます。
+4. `az login` コマンドを使用して、Azure Stack Edge Pro 環境にサインインします。 Azure Stack Edge Pro 環境には、ユーザーまたは[サービス プリンシパル](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)としてサインインできます。
 
    これらの手順に従い、"*ユーザー*" としてサインインします。
 

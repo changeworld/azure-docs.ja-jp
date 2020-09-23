@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 7b77ea9e0e1f322cb5ef0bc63885c3ccce1b76f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 37a3725fb7684a9e87f1936ef0ce8cc79de03894
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158685"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89594664"
 ---
 # <a name="change-iot-central-application-settings"></a>IoT Central アプリケーションの設定を変更する
 
@@ -45,7 +45,7 @@ ms.locfileid: "80158685"
 
 Node、Python、C#、フリガナ、Java、Go には､IoT Central の Azure Resource Manager SDK パッケージが用意されています｡ これらのパッケージを使用して、IoT Central アプリケーションを作成、一覧表示、更新、または削除することができます。 パッケージには、認証とエラー処理を管理するヘルパーが含まれています。
 
-Azure Resource Manager SDK を使用する方法例については､[https://github.com/emgarten/iotcentral-arm-sdk-examples](https://github.com/emgarten/iotcentral-arm-sdk-examples) をご覧ください｡
+Azure Resource Manager SDK を使用する方法例については､[https://github.com/Azure-Samples/azure-iot-central-arm-sdk-samples](https://github.com/Azure-Samples/azure-iot-central-arm-sdk-samples) をご覧ください｡
 
 詳細については、以下の GitHub リポジトリとパッケージを参照してください。
 

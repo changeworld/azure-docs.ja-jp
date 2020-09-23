@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: f6c6dd18ba57d83aa235f66285e7cb2ed42c1703
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dd73dc69fc2d40a0b4c24739dca6ad8174ad1047
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524968"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595859"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-azure-powershell"></a>Azure PowerShell を使用して、複数の Web サイトをホストするアプリケーション ゲートウェイを作成する
 
@@ -22,13 +22,12 @@ ms.locfileid: "86524968"
 
 この記事では、次のことについて説明します。
 
-> [!div class="checklist"]
-> * ネットワークのセットアップ
-> * アプリケーション ゲートウェイの作成
-> * バックエンド リスナーの作成
-> * ルーティング規則の作成
-> * バックエンド プールを含んだ仮想マシン スケール セットの作成
-> * ドメインの CNAME レコードの作成
+* ネットワークのセットアップ
+* アプリケーション ゲートウェイの作成
+* バックエンド リスナーの作成
+* ルーティング規則の作成
+* バックエンド プールを含んだ仮想マシン スケール セットの作成
+* ドメインの CNAME レコードの作成
 
 :::image type="content" source="./media/tutorial-multiple-sites-powershell/scenario.png" alt-text="複数サイト アプリケーション ゲートウェイ":::
 

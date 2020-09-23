@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 11/04/2019
-ms.openlocfilehash: 0c7702c8832e22d889a5d785dad845430bfb7d17
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/27/2020
+ms.openlocfilehash: 46b842994cbcf7efe66d5992c79246d77626e268
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116881"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907386"
 ---
 # <a name="configure-hyperscale-citus-high-availability"></a>Hyperscale (Citus) の高可用性を構成する
 
@@ -21,15 +21,15 @@ Azure Database for PostgreSQL - Hyperscale (Citus) は、データベースの�
 > [!IMPORTANT]
 > 高可用性では、グループ内のサーバーの数が 2 倍になるため、コストも 2 倍になります。
 
-高可用性は、サーバー グループの作成中、または後から Azure portal のサーバー グループの **[構成]** タブで、有効にすることができます。 どちらの場合でも、ユーザー インターフェイスは似ています。 **[高可用性]** のスライダーを [はい] にドラッグします。
+高可用性は、サーバー グループの作成中または作成後に、Azure portal のサーバー グループの **[コンピューティングとストレージ]** タブで、有効にすることができます。 どちらの場合でも、ユーザー インターフェイスは似ています。 **[高可用性]** のスライダーを [いいえ] から [はい] にドラッグします。
 
-![高可用性スライダー](./media/howto-hyperscale-high-availability/01-ha-slider.png)
+:::image type="content" source="./media/howto-hyperscale-high-availability/01-ha-slider.png" alt-text="高可用性スライダー":::
 
 **[保存]** ボタンをクリックして選択内容を適用します。 サーバー グループによりスタンバイがプロビジョニングされてデータがストリーミングされるため、高可用性の有効化には時間がかかることがあります。
 
 サーバー グループの **[概要]** タブには、すべてのノードとそのスタンバイが一覧表示されます。 **[高可用性]** 列には、各ノードで高可用性が正常に有効になっているかどうかが示されます。
 
-![サーバー グループの ha 列の概要](./media/howto-hyperscale-high-availability/02-ha-column.png)
+:::image type="content" source="./media/howto-hyperscale-high-availability/02-ha-column.png" alt-text="サーバー グループの ha 列の概要":::
 
 ### <a name="next-steps"></a>次のステップ
 

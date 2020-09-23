@@ -14,7 +14,7 @@
           href: ./quickstarts/client-libraries.md
     - name: REST API
       items:
-        - name: 'C# の使用'
+        - name: C# の使用
           href: quickstarts/detect-data-anomalies-csharp.md
         - name: Java の使用
           href: quickstarts/detect-data-anomalies-java.md
@@ -69,7 +69,7 @@
         - name: 対話型デモ
           href: 'https://aka.ms/adDemo'
         - name: Jupyter Notebook について
-          href: 'https://aka.ms/adNotebook'
+          href: 'https://github.com/Azure-Samples/AnomalyDetector/tree/master/ipython-notebook'
     - name: KDD 2019 の SR-CNN に関する文書
       href: 'https://arxiv.org/abs/1906.03821'
 - name: リソース

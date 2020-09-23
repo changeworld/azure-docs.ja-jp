@@ -1,6 +1,6 @@
 ---
-title: GPU 搭載の Azure Stack Edge 向け C# IoT Edge モジュール | Microsoft Docs
-description: Azure Stack Edge GPU デバイスにデプロイできる C# IoT Edge モジュールの開発方法について学習します。
+title: GPU 搭載の Azure Stack Edge Pro 向け C# IoT Edge モジュール | Microsoft Docs
+description: Azure Stack Edge Pro GPU デバイスにデプロイできる C# IoT Edge モジュールの開発方法について学習します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,37 +8,37 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: c981208438529ec7c23ab3c3089f4d57d77c2714
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 628dec7f1ba44d81243aeff2657e2311119c566a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268963"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891186"
 ---
-# <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge"></a>Azure Stack Edge 上のファイルを移動する C# IoT Edge モジュールを開発する
+# <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge-pro"></a>Azure Stack Edge Pro 上のファイルを移動する C# IoT Edge モジュールを開発する
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-この記事では、Azure Stack Edge デバイスにデプロイするために、IoT Edge モジュールを作成する方法を説明します。 Azure Stack Edge は、データを処理してネットワーク経由で Azure に送信できるストレージ ソリューションです。
+この記事では、Azure Stack Edge Pro デバイスにデプロイするために、IoT Edge モジュールを作成する方法を説明します。 Azure Stack Edge Pro は、データを処理してネットワーク経由で Azure に送信できるストレージ ソリューションです。
 
-Azure IoT Edge モジュールを Azure Stack Edge と共に使用して、データを変換し、Azure に移動することができます。 この記事で使用されるモジュールによって、Azure Stack Edge デバイス上でファイルをローカル共有からクラウド共有にコピーするロジックが実装されます。
+Azure IoT Edge モジュールを Azure Stack Edge Pro と共に使用して、データを変換し、Azure に移動することができます。 この記事で使用されるモジュールによって、Azure Stack Edge Pro デバイス上でファイルをローカル共有からクラウド共有にコピーするロジックが実装されます。
 
 この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * モジュールを格納して管理するコンテナー レジストリを作成する (Docker イメージ)。
-> * IoT Edge モジュールを作成して Azure Stack Edge デバイスにデプロイする。
+> * IoT Edge モジュールを作成して Azure Stack Edge Pro デバイスにデプロイする。
 
 
 ## <a name="about-the-iot-edge-module"></a>IoT Edge モジュールについて
 
-Azure Stack Edge デバイスでは、IoT Edge モジュールをデプロイして実行できます。 Edge モジュールは基本的には Docker コンテナーであり、デバイスからのメッセージの取り込み、メッセージの変換、IoT Hub へのメッセージの送信など、特定のタスクを実行できます。 この記事では、Azure Stack Edge デバイス上でファイルをローカル共有からクラウド共有にコピーするモジュールを作成します。
+Azure Stack Edge Pro デバイスでは、IoT Edge モジュールをデプロイして実行できます。 Edge モジュールは基本的には Docker コンテナーであり、デバイスからのメッセージの取り込み、メッセージの変換、IoT Hub へのメッセージの送信など、特定のタスクを実行できます。 この記事では、Azure Stack Edge Pro デバイス上でファイルをローカル共有からクラウド共有にコピーするモジュールを作成します。
 
-1. ファイルは、Azure Stack Edge デバイス上のローカル共有に書き込まれます。
+1. ファイルは、Azure Stack Edge Pro デバイス上のローカル共有に書き込まれます。
 2. ファイル イベント ジェネレーターは、ローカル共有に書き込まれる各ファイルに対して、ファイル イベントを作成します。 ファイル イベントは、ファイルが変更されたときも生成されます。 その後ファイル イベントは (IoT Edge ランタイムの) IoT Edge Hub に送信されます。
 3. IoT Edge のカスタム モジュールは、ファイル イベントを処理して、ファイルへの相対パスも含むファイル イベント オブジェクトを作成します。 モジュールは、相対ファイル パスを使用して絶対パスを生成し、ファイルをローカル共有からクラウド共有にコピーします。 その後、モジュールはファイルをローカル共有から削除します。
 
-![Azure Stack Edge での Azure IoT Edge モジュールのしくみ](./media/azure-stack-edge-j-series-create-iot-edge-module/how-module-works-1.png)
+![Azure Stack Edge Pro での Azure IoT Edge モジュールのしくみ](./media/azure-stack-edge-j-series-create-iot-edge-module/how-module-works-1.png)
 
 ファイルがクラウド共有に移動すると、ユーザーの Azure Storage アカウントに自動的にアップロードされます。
 
@@ -46,11 +46,11 @@ Azure Stack Edge デバイスでは、IoT Edge モジュールをデプロイし
 
 開始する前に、次のものがあることを確認します。
 
-- 実行中の Azure Stack Edge デバイス。
+- 実行中の Azure Stack Edge Pro デバイス。
 
     - デバイスには、関連付けられた IoT Hub リソースもある。
     - デバイスで Edge コンピューティング ロールが構成されている。
-    詳細については、Azure Stack Edge での「[コンピューティングの構成](azure-stack-edge-j-series-deploy-configure-compute.md#configure-compute)」を参照してください。
+    詳細については、Azure Stack Edge Pro での「[コンピューティングの構成](azure-stack-edge-j-series-deploy-configure-compute.md#configure-compute)」を参照してください。
 
 - 次の開発リソース。
 
@@ -278,4 +278,4 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Stack Edge でこのモジュールをデプロイして実行するには、「[モジュールの追加](azure-stack-edge-j-series-deploy-configure-compute.md#add-a-module)」の手順を参照してください。
+Azure Stack Edge Pro でこのモジュールをデプロイして実行するには、「[モジュールの追加](azure-stack-edge-j-series-deploy-configure-compute.md#add-a-module)」の手順を参照してください。

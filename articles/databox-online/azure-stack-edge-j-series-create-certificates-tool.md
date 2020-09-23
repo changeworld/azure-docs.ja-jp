@@ -1,29 +1,29 @@
 ---
 title: Microsoft Azure Stack Hub 適合性チェッカー ツールを使用して証明書を作成する | Microsoft Docs
-description: Azure Stack Hub 適合性チェッカー ツールを使用して証明書要求を作成し、Azure Stack Edge GPU デバイスで証明書を取得してインストールする方法について説明します。
-services: Azure Stack Edge
+description: Azure Stack Hub 適合性チェッカー ツールを使用して証明書要求を作成し、Azure Stack Edge Pro GPU デバイスで証明書を取得してインストールする方法について説明します。
+services: Azure Stack Edge Pro
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 7a6cf265f0be177aab436d544e694c5d59cfffd5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 544625fe9fd2dbd87ad7330d7277494cbfbe6eb9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267379"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891098"
 ---
-# <a name="create-certificates-for-your-azure-stack-edge-using-azure-stack-hub-readiness-checker-tool"></a>Microsoft Azure Stack Hub 適合性チェッカー ツールを使用して Azure Stack Edge の証明書を作成する 
+# <a name="create-certificates-for-your-azure-stack-edge-pro-using-azure-stack-hub-readiness-checker-tool"></a>Microsoft Azure Stack Hub 適合性チェッカー ツールを使用して Azure Stack Edge Pro の証明書を作成する 
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-この記事では、Microsoft Azure Stack Hub 適合性チェッカー ツールを使用して Azure Stack Edge の証明書を作成する方法について説明します。 
+この記事では、Microsoft Azure Stack Hub 適合性チェッカー ツールを使用して Azure Stack Edge Pro の証明書を作成する方法について説明します。 
 
 ## <a name="using-azure-stack-hub-readiness-checker-tool"></a>Azure Stack Hub 適合性チェッカー ツールを使用する
 
-Azure Stack Hub 適合性チェッカー ツールを使用して、Azure Stack Edge デバイスのデプロイのための証明書署名要求 (CSR) を作成できます。 これらの要求は、Azure Stack Edge デバイスの注文を行ってデバイスが届くのを待ってから作成できます。 
+Azure Stack Hub 適合性チェッカー ツールを使用して、Azure Stack Edge Pro デバイスのデプロイのための証明書署名要求 (CSR) を作成できます。 これらの要求は、Azure Stack Edge Pro デバイスの注文を行ってデバイスが届くのを待ってから作成できます。 
 
 > [!NOTE]
 > このツールは、実稼働デバイスではなく、テストまたは開発目的でのみ使用してください。 
@@ -39,10 +39,10 @@ Azure Stack Hub 対応性チェッカー ツール (AzsReadinessChecker) を使�
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Stack Edge デバイスのデプロイ用の CSR を作成するには、次のことを確認してください。 
+Azure Stack Edge Pro デバイスのデプロイ用の CSR を作成するには、次のことを確認してください。 
 
 - Windows 10 または Windows Server 2016 以降を実行しているクライアントがある。 
-- このシステムの [PowerShell ギャラリー](https://aka.ms/AzsReadinessChecker)から Microsoft Azure Stack Hub 適合性チェッカー ツール 1.2002.1133.85 をダウンロードした。 このパッケージの検索が必要になる場合があります。 Azure Stack Edge デバイス用の証明書を作成できるのは、このバージョンのツールだけです。
+- このシステムの [PowerShell ギャラリー](https://aka.ms/AzsReadinessChecker)から Microsoft Azure Stack Hub 適合性チェッカー ツール 1.2002.1133.85 をダウンロードした。 このパッケージの検索が必要になる場合があります。 Azure Stack Edge Pro デバイス用の証明書を作成できるのは、このバージョンのツールだけです。
 - 証明書のための次の情報がある。
   - [デバイス名]
   - ノードのシリアル番号
@@ -50,7 +50,7 @@ Azure Stack Edge デバイスのデプロイ用の CSR を作成するには、�
 
 ## <a name="generate-certificate-signing-requests"></a>証明書の署名要求を生成する
 
-次の手順を使用して、Azure Stack Edge デバイス証明書を準備します。
+次の手順を使用して、Azure Stack Edge Pro デバイス証明書を準備します。
 
 1. PowerShell (5.1 以降) を管理者として実行します。
 2. Azure Stack Hub 適合性チェッカー ツールをインストールします。 PowerShell プロンプトで次のように入力します。 
@@ -121,15 +121,15 @@ Azure Stack Edge デバイスのデプロイ用の CSR を作成するには、�
     INF フォルダーも表示されます。 ここには証明書の詳細を説明するクリア テキストの management.<edge-devicename> という情報ファイルが含まれています。  
 
 
-6. これらのファイルを証明機関 (内部またはパブリックのいずれか) に送信します。 CA によって、生成された要求が使用され、[ノード証明書](azure-stack-edge-j-series-manage-certificates.md#node-certificates)、[エンドポイント証明書](azure-stack-edge-j-series-manage-certificates.md#endpoint-certificates)、[ローカル UI 証明書](azure-stack-edge-j-series-manage-certificates.md#local-ui-certificates)に対する Azure Stack Edge 証明書要件を満たす証明書が生成されることを確認してください。
+6. これらのファイルを証明機関 (内部またはパブリックのいずれか) に送信します。 CA によって、生成された要求が使用され、[ノード証明書](azure-stack-edge-j-series-manage-certificates.md#node-certificates)、[エンドポイント証明書](azure-stack-edge-j-series-manage-certificates.md#endpoint-certificates)、[ローカル UI 証明書](azure-stack-edge-j-series-manage-certificates.md#local-ui-certificates)に対する Azure Stack Edge Pro 証明書要件を満たす証明書が生成されることを確認してください。
 
 ## <a name="prepare-certificates-for-deployment"></a>デプロイ用の証明書を準備する
 
-証明機関 (CA) から取得した証明書ファイルは、Azure Stack Edge デバイスの証明書要件に一致するプロパティを使用してインポートおよびエクスポートする必要があります。 証明書署名要求を生成したのと同じシステムで、次の手順を実行します。
+証明機関 (CA) から取得した証明書ファイルは、Azure Stack Edge Pro デバイスの証明書要件に一致するプロパティを使用してインポートおよびエクスポートする必要があります。 証明書署名要求を生成したのと同じシステムで、次の手順を実行します。
 
-- 証明書をインポートするには、[Azure Stack Edge デバイスにアクセスするクライアントに証明書をインポートする](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)方法に関する手順に従います。
+- 証明書をインポートするには、[Azure Stack Edge Pro デバイスにアクセスするクライアントに証明書をインポートする](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)方法に関する手順に従います。
 
-- 証明書をエクスポートするには、[Azure Stack Edge デバイスにアクセスするクライアントからの証明書のエクスポート](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)の手順に従います。
+- 証明書をエクスポートするには、[Azure Stack Edge Pro デバイスにアクセスするクライアントからの証明書のエクスポート](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)の手順に従います。
 
 
 ## <a name="validate-certificates"></a>証明書を検証する
@@ -152,4 +152,4 @@ Azure Stack Edge デバイスのデプロイ用の CSR を作成するには、�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Stack Edge デバイスを配置する](azure-stack-edge-gpu-deploy-prep.md)
+[Azure Stack Edge Pro デバイスをデプロイする](azure-stack-edge-gpu-deploy-prep.md)

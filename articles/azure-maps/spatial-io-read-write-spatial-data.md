@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: b094f63c075bdb8af225ff366343c60bc6818224
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 7c588e1db7cbf35d2a5192805674f88905599e8e
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816764"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085143"
 ---
 # <a name="read-and-write-spatial-data"></a>空間データの読み取りと書き込み
 
@@ -174,10 +174,10 @@ GML は、他の XML 仕様の拡張としてよく使用される、空間 XML 
 > [SpatialDataSetStats](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.spatialdatasetstats)
 
 > [!div class="nextstepaction"]
-> [GmlReader](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.gmlreader?view=azure-maps-typescript-latest)
+> [GmlReader](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.gmlreader)
 
 > [!div class="nextstepaction"]
-> [GmlWriter](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.gmlwriter?view=azure-maps-typescript-latest)
+> [GmlWriter](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.gmlwriter)
 
 > [!div class="nextstepaction"]
 > [atlas.io.ogc.WKT 関数](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.ogc.wkt)

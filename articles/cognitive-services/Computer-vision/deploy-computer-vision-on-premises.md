@@ -1,7 +1,7 @@
 ---
 title: Kubernetes と Helm と共に Computer Vision コンテナーを使用する
 titleSuffix: Azure Cognitive Services
-description: Computer Vision コンテナーを Azure Container Instance にデプロイし、Web ブラウザーでテストします。
+description: Kubernetes と Helm を使用して、Computer Vision コンテナーをデプロイする方法について説明します。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 9aac374de5af748eafbe4c22e5fc89f64e483c2a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9a8e0dde8b24c39180a584c26af725ab82ea0176
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80877977"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907103"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Kubernetes と Helm と共に Computer Vision コンテナーを使用する
 
@@ -44,7 +44,7 @@ ms.locfileid: "80877977"
 
 ## <a name="connect-to-the-kubernetes-cluster"></a>Kubernetes クラスターに接続する
 
-ホスト コンピューターには使用可能な Kubernetes クラスターがあることが想定されます。 ホスト コンピューターへの Kubernetes クラスターの展開方法の概念を理解するには、[Kubernetes クラスターの展開](../../aks/tutorial-kubernetes-deploy-cluster.md)に関するこのチュートリアルをご覧ください。
+ホスト コンピューターには使用可能な Kubernetes クラスターがあることが想定されます。 ホスト コンピューターへの Kubernetes クラスターの展開方法の概念を理解するには、[Kubernetes クラスターの展開](../../aks/tutorial-kubernetes-deploy-cluster.md)に関するこのチュートリアルをご覧ください。 デプロイの詳細については、[Kubernetes のドキュメント](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)をご覧ください。
 
 ### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>Kubernetes クラスターと Docker の資格情報を共有する
 
@@ -89,16 +89,25 @@ containerpreview      kubernetes.io/dockerconfigjson        1         30s
 
 ## <a name="configure-helm-chart-values-for-deployment"></a>展開に対する Helm チャートの値を構成する
 
-まず、*read* という名前のフォルダーを作成した後、次の YAML コンテンツを *Chart.yml* という名前の新しいファイルに貼り付けます。
+まず、*read* という名前のフォルダを作成します。 次に、次の YAML コンテンツを `chart.yaml` という名前の新しいファイルに貼り付けます。
 
 ```yaml
-apiVersion: v1
+apiVersion: v2
 name: read
 version: 1.0.0
 description: A Helm chart to deploy the microsoft/cognitive-services-read to a Kubernetes cluster
+dependencies:
+- name: rabbitmq
+  condition: read.image.args.rabbitmq.enabled
+  version: ^6.12.0
+  repository: https://kubernetes-charts.storage.googleapis.com/
+- name: redis
+  condition: read.image.args.redis.enabled
+  version: ^6.0.0
+  repository: https://kubernetes-charts.storage.googleapis.com/
 ```
 
-Helm チャートの既定値を構成するために、次の YAML をコピーし、`values.yaml` という名前のファイルに貼り付けます。 `# {ENDPOINT_URI}` と `# {API_KEY}` のコメントを独自の値に置き換えます。
+Helm チャートの既定値を構成するために、次の YAML をコピーし、`values.yaml` という名前のファイルに貼り付けます。 `# {ENDPOINT_URI}` と `# {API_KEY}` のコメントを独自の値に置き換えます。 必要に応じて、resultExpirationPeriod、Redis、RabbitMQ を構成します。
 
 ```yaml
 # These settings are deployment specific and users can provide customizations
@@ -107,7 +116,7 @@ read:
   enabled: true
   image:
     name: cognitive-services-read
-    registry: containerpreview.azurecr.io/
+    registry:  containerpreview.azurecr.io/
     repository: microsoft/cognitive-services-read
     tag: latest
     pullSecret: containerpreview # Or an existing secret
@@ -115,25 +124,52 @@ read:
       eula: accept
       billing: # {ENDPOINT_URI}
       apikey: # {API_KEY}
+      
+      # Result expiration period setting. Specify when the system should clean up recognition results.
+      # For example, resultExpirationPeriod=1, the system will clear the recognition result 1hr after the process.
+      # resultExpirationPeriod=0, the system will clear the recognition result after result retrieval.
+      resultExpirationPeriod: 1
+      
+      # Redis storage, if configured, will be used by read container to store result records.
+      # A cache is required if multiple read containers are placed behind load balancer.
+      redis:
+        enabled: false # {true/false}
+        password: password
+
+      # RabbitMQ is used for dispatching tasks. This can be useful when multiple read containers are
+      # placed behind load balancer.
+      rabbitmq:
+        enabled: false # {true/false}
+        rabbitmq:
+          username: user
+          password: password
 ```
 
 > [!IMPORTANT]
-> `billing` および `apikey` の値を指定しないと、サービスの有効期限は 15 分後に切れます。 同様に、サービスを利用できないため、検証が失敗します。
+> - `billing` 値と `apikey` 値が指定されていない場合、サービスは 15 分後に期限切れになります。 さらに、サービスが利用できないため、検証は失敗します。
+> 
+> - Docker Compose または Kubernetes の下など、ロード バランサーの背後に複数の読み取りコンテナーをデプロイする場合は、外部キャッシュが必要です。 処理コンテナーと GET 要求コンテナーは同じではない可能性があるため、外部キャッシュに結果が保存され、コンテナー間で共有されます。 キャッシュ設定の詳細については、「[Computer Vision Docker コンテナーを構成する](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-resource-container-config)」をご覧ください。
+>
 
 *read* ディレクトリの下に *templates* フォルダーを作成します。 次の YAML をコピーし、`deployment.yaml` という名前のファイルに貼り付けます。 `deployment.yaml` ファイルは Helm テンプレートとして機能します。
 
 > テンプレートによってマニフェスト ファイルが生成されます。マニフェスト ファイルは、Kubernetes が理解できる YAML 形式のリソース記述です。 [- Helm チャート テンプレート ガイド][chart-template-guide]
 
 ```yaml
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: read
+  labels:
+    app: read-deployment
 spec:
+  selector:
+    matchLabels:
+      app: read-app
   template:
     metadata:
       labels:
-        app: read-app
+        app: read-app       
     spec:
       containers:
       - name: {{.Values.read.image.name}}
@@ -147,14 +183,23 @@ spec:
           value: {{.Values.read.image.args.billing}}
         - name: apikey
           value: {{.Values.read.image.args.apikey}}
+        args:        
+        - ReadEngineConfig:ResultExpirationPeriod={{ .Values.read.image.args.resultExpirationPeriod }}
+        {{- if .Values.read.image.args.rabbitmq.enabled }}
+        - Queue:RabbitMQ:HostName={{ include "rabbitmq.hostname" . }}
+        - Queue:RabbitMQ:Username={{ .Values.read.image.args.rabbitmq.rabbitmq.username }}
+        - Queue:RabbitMQ:Password={{ .Values.read.image.args.rabbitmq.rabbitmq.password }}
+        {{- end }}      
+        {{- if .Values.read.image.args.redis.enabled }}
+        - Cache:Redis:Configuration={{ include "redis.connStr" . }}
+        {{- end }}
       imagePullSecrets:
-      - name: {{.Values.read.image.pullSecret}}
-
+      - name: {{.Values.read.image.pullSecret}}      
 --- 
 apiVersion: v1
 kind: Service
 metadata:
-  name: read
+  name: read-service
 spec:
   type: LoadBalancer
   ports:
@@ -163,6 +208,21 @@ spec:
     app: read-app
 ```
 
+同じ *templates* フォルダーで、次のヘルパー関数をコピーして `helpers.tpl` に貼り付けます。 `helpers.tpl` には、Helm テンプレートの生成に役立つ便利な関数が定義されています。
+
+```yaml
+{{- define "rabbitmq.hostname" -}}
+{{- printf "%s-rabbitmq" .Release.Name -}}
+{{- end -}}
+
+{{- define "redis.connStr" -}}
+{{- $hostMaster := printf "%s-redis-master:6379" .Release.Name }}
+{{- $hostSlave := printf "%s-redis-slave:6379" .Release.Name -}}
+{{- $passWord := printf "password=%s" .Values.read.image.args.redis.password -}}
+{{- $connTail := "ssl=False,abortConnect=False" -}}
+{{- printf "%s,%s,%s,%s" $hostMaster $hostSlave $passWord $connTail -}}
+{{- end -}}
+```
 テンプレートでは、ロード バランサー サービスと、読み取り用のコンテナー/イメージのデプロイが指定されています。
 
 ### <a name="the-kubernetes-package-helm-chart"></a>Kubernetes パッケージ (Helm チャート)

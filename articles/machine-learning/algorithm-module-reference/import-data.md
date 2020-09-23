@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: e47cb1180bbc6eaaaffd79b78563ab1b1d5e016a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85a54ce7c8b3beea102fad7c3adb58f92c8574dd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611817"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907941"
 ---
 # <a name="import-data-module"></a>データのインポート モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナーのモジュールについて説明します。
 
 このモジュールを使用し、既存のクラウド データ サービスのデータを機械学習パイプラインに読み込みます。 
 
@@ -45,7 +45,7 @@ ms.locfileid: "85611817"
 ソース データが変更された場合、[データのインポート](./import-data.md)を再実行することでデータセットを更新し、新しいデータを追加できます。
 
 > [!WARNING]
-> ワークスペースが仮想ネットワーク内にある場合は、デザイナーのデータ視覚化機能を使用するようにデータストアを構成する必要があります。 仮想ネットワークでデータストアとデータセットを使用する方法の詳細については、「[プライベート仮想ネットワークでのトレーニング中や推論中のネットワークの分離](../how-to-enable-virtual-network.md#machine-learning-studio)」を参照してください。
+> ワークスペースが仮想ネットワーク内にある場合は、デザイナーのデータ視覚化機能を使用するようにデータストアを構成する必要があります。 仮想ネットワークでデータストアとデータセットを使用する方法の詳細については、「[Azure 仮想ネットワークで Azure Machine Learning Studio を使用する](../how-to-enable-studio-virtual-network.md)」を参照してください。
 
 
 ## <a name="how-to-configure-import-data"></a>データのインポートを構成する方法

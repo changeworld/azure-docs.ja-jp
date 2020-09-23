@@ -9,19 +9,19 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: 4028d6732220dba4848c88306a501ce22af7487a
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 07edfa2bca25a9f3e8d985cfe36987ff04ca950f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144025"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906641"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>チュートリアル:CLI からのモデルのトレーニングとデプロイ
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 このチュートリアルでは、Azure CLI 用の機械学習拡張機能を使用して、モデルのトレーニング、登録、デプロイを行います。
 
-このチュートリアルの Python トレーニング スクリプトでは、基本的なモデルをトレーニングするために [scikit-learn](https://scikit-learn.org/) を使用します。 このチュートリアルのフォーカスは、スクリプトやモデルではなく、CLI を使用して Azure Machine Learning を操作するプロセスです。
+このチュートリアルの Python トレーニング スクリプトでは、単純なモデルをトレーニングするために [scikit-learn](https://scikit-learn.org/) を使用します。 このチュートリアルのフォーカスは、スクリプトやモデルではなく、CLI を使用して Azure Machine Learning を操作するプロセスです。
 
 次の操作の実行方法を確認してください。
 
@@ -75,7 +75,7 @@ git clone https://github.com/microsoft/MLOps.git
 
 ## <a name="connect-to-your-azure-subscription"></a>Azure サブスクリプションへの接続
 
-CLI から Azure サブスクリプションを認証するには、いくつかの方法があります。 最も基本的な方法は、ブラウザーを使用して対話形式で認証することです。 対話形式で認証するには、コマンド ラインまたはターミナルを開き、次のコマンドを使用します。
+CLI から Azure サブスクリプションを認証するには、いくつかの方法があります。 最も簡単な方法は、ブラウザーを使用して対話形式で認証することです。 対話形式で認証するには、コマンド ラインまたはターミナルを開き、次のコマンドを使用します。
 
 ```azurecli-interactive
 az login
@@ -101,7 +101,7 @@ az extension update -n azure-cli-ml
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-リソース グループは、Azure プラットフォーム上のリソースの基本的なコンテナーです。 Azure Machine Learning を使用する場合、リソース グループには Azure Machine Learning ワークスペースが含まれます。 また、ワークスペースによって使用される他の Azure サービスも含まれます。 たとえば、クラウドベースのコンピューティング リソースを使用してモデルをトレーニングすると、そのリソースがリソース グループ内に作成されます。
+リソース グループは、Azure プラットフォーム上のリソースのコンテナーです。 Azure Machine Learning を使用する場合、リソース グループには Azure Machine Learning ワークスペースが含まれます。 また、ワークスペースによって使用される他の Azure サービスも含まれます。 たとえば、クラウドベースのコンピューティング リソースを使用してモデルをトレーニングすると、そのリソースがリソース グループ内に作成されます。
 
 __新しいリソース グループを作成__ するには、次のコマンドを使用します。 `<resource-group-name>` をこのリソース グループに使用する名前に置き換えます。 `<location>` をこのリソース グループに使用する Azure リージョンに置き換えます。
 

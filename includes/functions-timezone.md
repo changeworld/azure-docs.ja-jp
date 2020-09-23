@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: b4fbeb6baa4516ca4cf3ca6194195fae2c688b07
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: dba7a3cc7a68d360fd6e56511b71ae364f624646
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165662"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569282"
 ---
 CRON 式で使用する既定のタイム ゾーンは、協定世界時 (UTC) です。 別のタイム ゾーンに基づく CRON 式を使うには、Function App 用に `WEBSITE_TIME_ZONE` という名前のアプリ設定を作成します。 
 
@@ -12,7 +12,7 @@ CRON 式で使用する既定のタイム ゾーンは、協定世界時 (UTC) �
 
 |オペレーティング システム |プラン |値 |
 |-|-|-|
-| **Windows** |All | この値を、[Microsoft のタイム ゾーン インデックス](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-vista/cc749073(v=ws.10) に関するページに示されている目的のタイム ゾーンの名前に設定します。 |
+| **Windows** |All | この値を、[Microsoft のタイム ゾーン インデックス](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-vista/cc749073(v=ws.10))に関するページに示されている目的のタイム ゾーンの名前に設定します。 |
 | **Linux** |Premium<br/>専用 |この値を、[tz データベース](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)に関するページに示されている目的のタイム ゾーンの名前に設定します。 |
 
 > [!NOTE]

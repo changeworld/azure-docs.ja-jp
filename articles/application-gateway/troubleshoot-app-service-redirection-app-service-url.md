@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 2af52d1e7c211ccc0b5c18ed1ecda66d46d80786
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3a3ba3ee908204668ad9d7201ddfddec0a26f28
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806490"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595946"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Application Gateway での App Service に関する問題のトラブルシューティング
 
@@ -23,9 +23,8 @@ Azure Application Gateway と共に Azure App Service をバックエンド タ�
 
 この記事では、次の問題のトラブルシューティング方法について説明します。
 
-> [!div class="checklist"]
-> * リダイレクトが生じたときに App Service URL がブラウザーに公開されます。
-> * App Service の ARRAffinity Cookie ドメインが元のホストではなく App Service のホスト名 (example.azurewebsites.net) に設定されます。
+* リダイレクトが生じたときに App Service URL がブラウザーに公開されます。
+* App Service の ARRAffinity Cookie ドメインが元のホストではなく App Service のホスト名 (example.azurewebsites.net) に設定されます。
 
 バックエンド アプリケーションでリダイレクト応答が送信されるとき、バックエンド アプリケーションで指定されているものとは別の URL にクライアントをリダイレクトしたい場合があります。 App Service が Application Gateway の背後でホストされており、クライアントに相対パスへのリダイレクトを行わせる必要があるときに、これを行うことがあります。 たとえば、contoso.azurewebsites.net/path1 から contoso.azurewebsites.net/path2 へのリダイレクトです。 
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 21e242d0a6a5aa2efa011289200654e71bd58662
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 67d22535f44d4d1b39b6c305fa0670d2d08be0c3
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89071450"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595803"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-azure-powershell"></a>Azure PowerShell で TLS 終端を使用してアプリケーション ゲートウェイを作成する
 
@@ -22,11 +22,10 @@ Azure PowerShell を使用して、バックエンド サーバーに[仮想マ�
 
 この記事では、次のことについて説明します。
 
-> [!div class="checklist"]
-> * 自己署名証明書の作成
-> * ネットワークの設定
-> * 証明書でのアプリケーション ゲートウェイの作成
-> * 既定のバックエンド プールでの仮想マシン スケール セットの作成
+* 自己署名証明書の作成
+* ネットワークの設定
+* 証明書でのアプリケーション ゲートウェイの作成
+* 既定のバックエンド プールでの仮想マシン スケール セットの作成
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 

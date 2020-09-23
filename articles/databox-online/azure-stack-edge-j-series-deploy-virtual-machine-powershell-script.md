@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell を使用して Azure Stack Edge GPU デバイスに VM をデプロイする
-description: Azure PowerShell を使用して Azure Stack Edge デバイスに仮想マシン (VM) を作成し、それを管理する方法について説明します。
+title: Azure PowerShell を使用して Azure Stack Edge Pro GPU デバイスに VM をデプロイする
+description: Azure PowerShell を使用して Azure Stack Edge Pro デバイスに仮想マシン (VM) を作成し、それを管理する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,26 +8,26 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: ab303dd42d9064a9fa1392e27adc361d5b761cf0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5ed6de28f1e1b0545ebd675c30249e2f2b4747e9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89256125"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890655"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-azure-powershell-script"></a>Azure PowerShell スクリプトを使用して Azure Stack Edge GPU デバイスに VM をデプロイする
+# <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell-script"></a>Azure PowerShell スクリプトを使用して Azure Stack Edge Pro GPU デバイスに VM をデプロイする
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-このチュートリアルでは、Azure PowerShell スクリプトを使用して、Azure Stack Edge デバイスに VM を作成し、それを管理する方法について説明します。
+このチュートリアルでは、Azure PowerShell スクリプトを使用して、Azure Stack Edge Pro デバイスに VM を作成し、それを管理する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-このスクリプトを使用して Azure Stack Edge デバイスに VM を作成して管理する前に、次の手順に記載された前提条件をすべて満たしていることを確認する必要があります。
+このスクリプトを使用して Azure Stack Edge Pro デバイスに VM を作成して管理する前に、次の手順に記載された前提条件をすべて満たしていることを確認する必要があります。
 
-### <a name="for-azure-stack-edge-device-via-the-local-web-ui"></a>Azure Stack Edge デバイスの条件 (ローカル Web UI を使用)
+### <a name="for-azure-stack-edge-pro-device-via-the-local-web-ui"></a>Azure Stack Edge Pro デバイスの条件 (ローカル Web UI を使用)
 
-1. 次の説明に従って Azure Stack Edge デバイスでネットワーク設定を完了していること。「[手順 1: Azure Stack Edge デバイスを構成する](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-device)」
+1. 次の説明に従って Azure Stack Edge Pro デバイスでネットワーク設定を完了していること。「[手順 1: Azure Stack Edge Pro デバイスを構成する](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device)」
 
 2. コンピューティング用のネットワーク インターフェイスを有効にしていること。 このネットワーク インターフェイスの IP を使用して、VM デプロイ用の仮想スイッチを作成します。 このプロセスは、次の手順で実行します。
 
@@ -36,9 +36,9 @@ ms.locfileid: "89256125"
         > [!IMPORTANT] 
         > コンピューティング用に構成できるポートは 1 つだけです。
 
-    2. そのネットワーク インターフェイスでコンピューティングを有効にします。 そのネットワーク インターフェイスに対応する仮想スイッチが Azure Stack Edge によって作成、管理されます。
+    2. そのネットワーク インターフェイスでコンピューティングを有効にします。 そのネットワーク インターフェイスに対応する仮想スイッチが Azure Stack Edge Pro によって作成、管理されます。
 
-3. すべての証明書を作成し、Azure Stack Edge デバイスと、お使いのクライアントの信頼されたルート ストアにインストールします。 次で説明されている手順に従います。「[手順 2: 証明書を作成してインストールする](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)」
+3. すべての証明書を作成し、Azure Stack Edge Pro デバイスと、お使いのクライアントの信頼されたルート ストアにインストールします。 次で説明されている手順に従います。「[手順 2: 証明書を作成してインストールする](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)」
 
 ### <a name="for-your-windows-client"></a>Windows クライアントの条件
 

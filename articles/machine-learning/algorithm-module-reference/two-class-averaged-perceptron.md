@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: daa0cfdedfe634acd2039cd4ec87606d30f7e76f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3e5351ed2d400e0b1a10a913bb62391851030053
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520580"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907758"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>2 クラス平均化パーセプトロン モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナーのモジュールについて説明します。
 
 平均化パーセプトロン アルゴリズムに基づいて機械学習モデルを作成するには、このモジュールを使用します。  
   

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 48c05bf7b4cbecb09ef3bb113832974bee4bc6b2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e6653f8f26f90b6ea7f911efab40ec7a3e0c2a60
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518777"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906785"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Azure Static Web Apps プレビューでのルート
 
@@ -32,7 +32,7 @@ Azure Static Web Apps でのルーティングでは、静的コンテンツと 
 
 _routes.json_ ファイルは、アプリのビルド成果物フォルダーのルートに存在する必要があります。 Web アプリに、ビルドされたファイルを特定のフォルダーからビルド成果物フォルダーにコピーするビルド ステップが含まれている場合は、_routes.json_ ファイルがその特定のフォルダーに存在している必要があります。
 
-次の表では、いくつかのフロントエンド JavaScript フレームワークとライブラリについて、_routes.json_ ファイルを配置する適切な場所を示します。
+次の表では、いくつかのフロントエンド フレームワークとライブラリについて、_routes.json_ ファイルを配置する適切な場所を示します。
 
 |フレームワーク/ライブラリ | 場所  |
 |---------|----------|
@@ -40,6 +40,9 @@ _routes.json_ ファイルは、アプリのビルド成果物フォルダーの
 | React   | _public_  |
 | Svelte  | _public_   |
 | Vue     | _public_ |
+| Blazor  | _wwwroot_ |
+
+上の表は、Azure Static Web Apps と互換性のあるいくつかのフレームワークとライブラリを表示したものに過ぎません。 詳細については、[フロントエンド フレームワークとライブラリの構成](./front-end-frameworks.md)に関するページを参照してください。
 
 ## <a name="defining-routes"></a>ルートの定義
 
@@ -106,7 +109,7 @@ _routes.json_ ファイルは、アプリのビルド成果物フォルダーの
 
 ## <a name="fallback-routes"></a>フォールバック ルート
 
-フロントエンドの JavaScript フレームワークまたはライブラリは、多くの場合、Web アプリ ナビゲーションのクライアント側ルーティングに依存します。 これらのクライアント側ルーティング規則では、要求をサーバーに返さずに、ブラウザーのウィンドウの場所が更新されます。 ページを更新する場合、またはクライアント側ルーティング規則によって生成された場所に直接移動する場合は、適切な HTML ページを提供するために、サーバー側フォールバック ルートが必要です。
+シングルページ アプリケーションは、フロントエンドの JavaScript フレームワークまたはライブラリを使用しているか、Blazor のような WebAssembly プラットフォームを使用しているかにかかわらず、多くの場合、クライアント側ルーティングを使用して Web アプリのナビゲーションを行っています。 これらのクライアント側ルーティング規則では、要求をサーバーに返さずに、ブラウザーのウィンドウの場所が更新されます。 ページを更新する場合、またはクライアント側ルーティング規則によって生成された場所に直接移動する場合は、適切な HTML ページを提供するために、サーバー側フォールバック ルートが必要です。
 
 一般的なフォールバック ルートの例を次に示します。
 
@@ -186,6 +189,9 @@ MIME の種類を使用するときは、次の考慮事項が重要です。
 
 - キーを null、空、または 50 文字より多くすることはできません
 - 値を null、空、または 1000 文字より多くすることはできません
+
+> [!NOTE]
+> Static Web Apps は、Blazor アプリケーションと、WASM ファイルおよび DLL ファイルに必要な MIME の種類を認識します。これらのアプリケーションのマッピングを追加する必要はありません。
 
 ## <a name="default-headers"></a>既定のヘッダー
 

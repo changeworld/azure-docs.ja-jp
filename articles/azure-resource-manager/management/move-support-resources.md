@@ -2,13 +2,13 @@
 title: リソースの種類別の移動操作のサポート
 description: 新しいリソース グループまたはサブスクリプションに移動できる Azure リソースの種類を一覧表示します。
 ms.topic: conceptual
-ms.date: 07/13/2020
-ms.openlocfilehash: 16197210326d73284a4a83edc7876e4faddded86
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/08/2020
+ms.openlocfilehash: 69fcb271ac94df3faf8e9e37c1ef30a6c0681441
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079511"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566128"
 ---
 # <a name="move-operation-support-for-resources"></a>リソースの操作のサポートの移動
 
@@ -744,7 +744,7 @@ ms.locfileid: "87079511"
 > | quotas | × | いいえ |
 > | resourcetypes | × | いいえ |
 > | validatesubscriptionmoveavailability | × | × |
-> | virtualmachines | はい | いいえ |
+> | virtualmachines | はい | はい |
 > | virtualmachines / diagnosticsettings | × | いいえ |
 > | virtualmachines / metricdefinitions | × | いいえ |
 > | virtualmachines / metrics | いいえ | × |
@@ -2789,7 +2789,7 @@ ms.locfileid: "87079511"
 > | locations / jobagentoperationresults | いいえ | いいえ |
 > | locations / longtermretentionbackupazureasyncoperation | いいえ | いいえ |
 > | locations / longtermretentionbackupoperationresults | いいえ | いいえ |
-> | locations / longtermretentionbackups | いいえ | いいえ |
+> | locations / longtermretentionbackups | はい | はい |
 > | locations / longtermretentionmanagedinstancebackupazureasyncoperation | いいえ | いいえ |
 > | locations / longtermretentionmanagedinstancebackupoperationresults | いいえ | いいえ |
 > | locations / longtermretentionmanagedinstancebackups | いいえ | いいえ |
@@ -2872,7 +2872,7 @@ ms.locfileid: "87079511"
 > | servers / databases / auditingsettings | いいえ | いいえ |
 > | servers / databases / auditrecords | いいえ | いいえ |
 > | servers / databases / automatictuning | いいえ | いいえ |
-> | servers / databases / backuplongtermretentionpolicies | いいえ | いいえ |
+> | servers / databases / backuplongtermretentionpolicies | はい | はい |
 > | servers / databases / backupshorttermretentionpolicies | いいえ | いいえ |
 > | servers / databases / connectionpolicies | いいえ | いいえ |
 > | servers / databases / datamaskingpolicies | いいえ | いいえ |

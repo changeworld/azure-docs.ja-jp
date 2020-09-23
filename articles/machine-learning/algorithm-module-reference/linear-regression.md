@@ -9,15 +9,15 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 9d83a9ffb9dc334ef959b7a8039b9a9c4a1fced7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 51a9b0ec0fc19b6b6efa0453d698a5a978dacabc
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137457"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907830"
 ---
 # <a name="linear-regression-module"></a>Linear Regression (線形回帰) モジュール
-この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナーのモジュールについて説明します。
 
 このモジュールを使用して、パイプラインで使用するために、線形回帰モデルを作成します。  線形回帰では、1 つまたは複数の独立変数と数値の結果、または属性変数との間の線形関係を確立しようとします。 
 
@@ -25,7 +25,7 @@ ms.locfileid: "82137457"
 
 ## <a name="about-linear-regression"></a>線形回帰について
 
-線形回帰は一般的な統計メソッドであり、機械学習に導入され、直線に合わせて誤差を測定するための多くの新しいメソッドと共に強化されています。 ほとんどの基本的な意味で、回帰は数値目標の予測を指します。 線形回帰は、引き続き基本的な予測タスクにシンプルなモデルが必要なときに適した選択です。 線形回帰は、複雑さが欠けている高次元のスパース データのセットで適切に機能する傾向もあります。
+線形回帰は一般的な統計メソッドであり、機械学習に導入され、直線に合わせて誤差を測定するための多くの新しいメソッドと共に強化されています。 簡単に言えば、回帰は数値ターゲットの予測を表します。 線形回帰は、引き続き基本的な予測タスクにシンプルなモデルが必要なときに適した選択です。 線形回帰は、複雑さが欠けている高次元のスパース データのセットで適切に機能する傾向もあります。
 
 Azure Machine Learning では、線形回帰に加えて、さまざまな回帰モデルをサポートします。 しかし、"回帰" という用語は大まかに解釈される場合があり、他のツールで提供される一部の種類の回帰はサポートされません。
 
