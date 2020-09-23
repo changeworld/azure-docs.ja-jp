@@ -15,21 +15,28 @@
 - name: チュートリアル
   expanded: true
   items:
-    - name: Python SDK
+    - name: Python (1 日目)
       expanded: true
       items:
-        - name: 初めての ML 実験を作成する
-          items:
-            - name: 1. ワークスペースと開発環境を設定する
-              href: tutorial-1st-experiment-sdk-setup.md
-            - name: 2. 最初のモデルをトレーニングする
-              href: tutorial-1st-experiment-sdk-train.md
+        - name: 1. ローカル コンピューターの設定
+          href: tutorial-1st-experiment-sdk-setup-local.md
+        - name: 2. Hello world
+          href: tutorial-1st-experiment-hello-world.md
+        - name: 3. モデルをトレーニングする
+          href: tutorial-1st-experiment-sdk-train.md
+        - name: 4. データ持ち込み
+          href: tutorial-1st-experiment-bring-data.md
+    - name: Jupyter Notebooks
+      expanded: true
+      items:
         - name: 画像の分類 (MNIST データ)
           items:
-            - name: 1. モデルをトレーニングする
+            - name: 1. コンピューティング インスタンスの設定
+              href: tutorial-1st-experiment-sdk-setup.md
+            - name: 2. モデルをトレーニングする
               displayName: build modeling
               href: tutorial-train-models-with-aml.md
-            - name: 2. モデルをデプロイする
+            - name: 3. モデルをデプロイする
               href: tutorial-deploy-models-with-aml.md
         - name: 自動 ML による回帰 (NYC タクシー データ)
           items:
@@ -92,8 +99,6 @@
       href: /azure/open-datasets/samples?context=azure/machine-learning/context/ml-context
 - name: 概念
   items:
-    - name: Enterprise およびBasic エディション
-      href: concept-editions.md
     - name: コストの計画と管理
       displayName: low priority VM
       href: concept-plan-manage-cost.md
@@ -201,6 +206,9 @@
         - name: 安全なコーディング
           href: concept-secure-code-best-practice.md
           displayName: security threat
+        - name: コンプライアンスの監査と管理
+          href: how-to-integrate-azure-policy.md
+          displayName: policy
     - name: 信頼できる ML
       items:
         - name: 信頼できる ML の概要
@@ -287,12 +295,15 @@
               href: how-to-designer-import-data.md
         - name: データにアクセスする
           items:
-            - name: Azure Storage への接続
+            - name: Azure ストレージに接続する (Python)
               displayName: 'blob, get, fileshare, access, mount, download, data lake, datastore'
               href: how-to-access-data.md
-            - name: データストアからデータを取得する
+            - name: データストアからデータを取得する (Python)
               displayName: 'data, data set, register, access data'
               href: how-to-create-register-datasets.md
+            - name: データに接続する (UI)
+              displayName: 'blob, get, fileshare, access, mount, download, data lake, datastore, dataset, data set'
+              href: how-to-connect-data-ui.md
         - name: データの管理と使用
           items:
             - name: データセットを使用したトレーニング
@@ -448,6 +459,9 @@
         - name: モデルのプロファイル
           displayName: profile resource requirement
           href: how-to-deploy-profile-model.md
+        - name: デザイナー モデルをデプロイする
+          displayName: 'designer, studio'
+          href: how-to-deploy-model-designer.md
         - name: (プレビュー) コードなしのデプロイ
           displayName: no code
           href: how-to-deploy-no-code-deployment.md

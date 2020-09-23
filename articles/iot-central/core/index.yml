@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 06/21/2020
-  ms.openlocfilehash: 870895980c90262a20cfd5ea95a4fdb01b39b4a3
-  ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+  ms.openlocfilehash: bdd087a2826c22d03decba231c2d441c99bca974
+  ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/11/2020
-  ms.locfileid: "90015876"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90974303"
 landingContent:
 - title: Azure IoT Central について
   linkLists:
@@ -85,7 +85,7 @@ landingContent:
     links:
     - text: テレメトリ ルールを作成する
       url: tutorial-create-telemetry-rules.md
-    - text: Azure で宛先にデータをエクスポートする
+    - text: データをクラウドの宛先にエクスポートする
       url: howto-export-data.md
     - text: IoT Central API を調べる
       url: https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/
