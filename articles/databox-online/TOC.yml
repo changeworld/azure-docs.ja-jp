@@ -7,6 +7,10 @@
       items:
         - name: GPU 搭載の Azure Stack Edge Pro とは
           href: azure-stack-edge-gpu-overview.md
+    - name: クイックスタート
+      items:
+        - name: 作業開始
+          href: azure-stack-edge-gpu-quickstart.md
     - name: チュートリアル
       items:
         - name: 0 - チェックリストの取得

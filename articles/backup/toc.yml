@@ -380,7 +380,7 @@
               href: backup-azure-arm-userestapi-managejobs.md
         - name: Resource Manager テンプレート
           href: backup-rm-template-samples.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: 概要
           href: security-overview.md
@@ -438,7 +438,7 @@
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.recoveryservices.backup
     - name: Azure CLI
-      href: /cli/azure/backup?view=azure-cli-latest
+      href: /cli/azure/backup
     - name: Azure PowerShell
       href: /powershell/module/az.recoveryservices
     - name: PowerShell – Azure Backup エージェント

@@ -80,7 +80,7 @@
     - name: データのエクスポート
       expanded: false
       items:
-        - name: 匿名化エクスポート
+        - name: データのエクスポート
           href: export-data.md
     - name: ID オブジェクト ID を見つける
       href: find-identity-object-ids.md
