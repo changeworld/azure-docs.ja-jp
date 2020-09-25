@@ -53,9 +53,9 @@ ms.locfileid: "88213042"
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 
-2. **[SQL データベース]** または **[SQL マネージド インスタンス]** ページに移動します。
+2. **[SQL Database]** または **[SQL Managed Instance]** ページに移動します。
 
-3. **[概要]** ページで、Azure SQL Database のデータベースの場合は **[サーバー名]** の横の完全修飾サーバー名を確認し、Azure SQL マネージド インスタンスまたは Azure VM 上の SQL Server の場合は **[ホスト]** の横の完全修飾サーバー名 (または IP アドレス) を確認します。 サーバー名またはホスト名をコピーするには、名前をポイントして **[コピー]** アイコンを選択します。
+3. **[概要]** ページで、Azure SQL Database のデータベースの場合は **[サーバー名]** の横の完全修飾サーバー名を確認し、Azure SQL Managed Instance または Azure VM 上の SQL Server の場合は **[ホスト]** の横の完全修飾サーバー名 (または IP アドレス) を確認します。 サーバー名またはホスト名をコピーするには、名前をポイントして **[コピー]** アイコンを選択します。
 
 > [!NOTE]
 > Azure VM 上の SQL Server の接続情報については、[SQL Server インスタンスへの接続](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server)に関するページをご覧ください。
