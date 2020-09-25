@@ -13,12 +13,12 @@ ms.date: 08/31/2020
 ms.author: ryanwi
 ms.reviewer: arielgo, jiml
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: 5e62472fdccd2ee71a0ef725f34a75492d1b8ffa
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 3ee59226853f4ea5aabf57a8866ba014aa874774
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226643"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706202"
 ---
 # <a name="branding-guidelines-for-applications"></a>アプリケーションのブランド化ガイドライン
 
@@ -36,7 +36,7 @@ Microsoft ID プラットフォームを使用してアプリケーションを�
 Microsoft は次の 2 種類のユーザー アカウントを管理しています。
 
 - **個人アカウント** (以前の Windows Live ID): このアカウントは、"*個々の*" ユーザーと Microsoft の関係を表し、コンシューマー向けデバイスや Microsoft のサービスにアクセスする際に使用されます。 このアカウントは個人的に使用するためのものです。
-- **職場または学校アカウント:** このアカウントは、Azure Active Directory を使用する組織に代わって Microsoft が管理しています。 このアカウントは、Office 365 や Microsoft の他のビジネス サービスにサインインする際に使用されます。
+- **職場または学校アカウント:** このアカウントは、Azure Active Directory を使用する組織に代わって Microsoft が管理しています。 このアカウントは、Microsoft 365 や Microsoft の他のビジネス サービスにサインインする際に使用されます。
 
 通常、Microsoft の職場または学校アカウントは、組織 (企業、学校、政府機関) がエンド ユーザー (従業員、学生、公務員) に割り当てます。 このアカウントは、Azure AD プラットフォームのクラウドで直接管理されるか、Windows Server Active Directory などのオンプレミス ディレクトリから Azure AD に同期されます。 職場または学校アカウントの " *管理人* " は Microsoft ですが、アカウントは組織が所有し、管理しています。
 
@@ -49,7 +49,7 @@ Microsoft は、Azure または Active Directory のブランド名をエンド 
 
 ## <a name="user-account-pictogram"></a>ユーザー アカウントのピクトグラム
 
-以前のバージョンのガイドラインでは、"ブルー バッジ" のピクトグラムを使用することを推奨していました。 ユーザーと開発者のフィードバックに基づき、現在は代わりに Microsoft のロゴを使用することを推奨しています。 Microsoft のロゴを使用することにより、ユーザーは、アプリケーションにサインインするときに、Office 365 や他の Microsoft ビジネス サービスで使用しているアカウントを再利用できることを理解しやすくなります。
+以前のバージョンのガイドラインでは、"ブルー バッジ" のピクトグラムを使用することを推奨していました。 ユーザーと開発者のフィードバックに基づき、現在は代わりに Microsoft のロゴを使用することを推奨しています。 Microsoft のロゴを使用することにより、ユーザーは、アプリケーションにサインインするときに、Microsoft 365 や他の Microsoft ビジネス サービスで使用しているアカウントを再利用できることを理解しやすくなります。
 
 ## <a name="signing-up-and-signing-in-with-azure-ad"></a>Azure AD によるサインアップとサインイン
 
@@ -63,13 +63,13 @@ Microsoft は、Azure または Active Directory のブランド名をエンド 
 
 "アプリケーションの入手" リンクでは、ユーザーを Azure AD のアクセス権の付与 (承認) ページにリダイレクトする必要があります。これにより、組織の管理者は、Microsoft がホストする組織のデータへのアクセス権をアプリケーションに付与できます。 アクセス権の要求方法の詳細については、記事「[Azure Active Directory とアプリケーションの統合](./quickstart-register-app.md)」を参照してください。
 
-管理者は、アプリケーションに同意したら、ユーザーの Office 365 アプリ起動ツール (ワッフルおよび [https://portal.office.com/myapps](https://portal.office.com/myapps)からアクセス可能) にアプリケーションを追加することを選択できます。 この機能を公表する場合は、"このアプリケーションを組織に追加" のような言葉を使って、次のようなボタンを表示できます。
+管理者は、アプリケーションに同意したら、ユーザーの Microsoft 365 アプリ起動ツール (ワッフルおよび [https://portal.office.com/myapps](https://portal.office.com/myapps)からアクセス可能) にアプリケーションを追加することを選択できます。 この機能を公表する場合は、"このアプリケーションを組織に追加" のような言葉を使って、次のようなボタンを表示できます。
 
 ![Microsoft ロゴと "Add to my organization" というテキストが表示されたボタン](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
 ただし、ボタンに頼るのではなく、説明文を作成することをお勧めします。 次に例を示します。
 
-> 「*Office 365 や Microsoft の他のビジネス サービスを既にお使いの場合は、組織のデータへのアクセス権を <your_app_name> に付与できます。これにより、ユーザーは既存の職場アカウントを使用して <your_app_name> にアクセスできるようになります。* 」
+> 「*Microsoft 365 や Microsoft の他のビジネス サービスを既にお使いの場合は、組織のデータへのアクセス権を <your_app_name> に付与できます。これにより、ユーザーは既存の職場アカウントを使用して <your_app_name> にアクセスできるようになります。* 」
 
 公式の Microsoft ロゴをダウンロードしてアプリで使用するためには、使用するロゴを右クリックして、コンピューターに保存します。
 
@@ -102,7 +102,7 @@ Microsoft は、Azure または Active Directory のブランド名をエンド 
 
 "職場または学校アカウント" は、"Microsoft でサインイン" ボタンと組み合わせて**使用してください**。補足的な説明を与えることで、その使用の可否をエンド ユーザーが認識しやすいようにします。 "企業アカウント"、"ビジネス アカウント"、"会社アカウント" などの言葉は**使用しないでください**。
 
-"Office 365 ID" または"Azure ID" を使用し**ないでください**。 Office 365 は、Azure AD を認証に使用しない Microsoft のコンシューマー向け製品の名前でもあります。
+"Microsoft 365 ID" または "Azure ID" は**使用しないでください**。 Microsoft 365 は、Azure AD を認証に使用しない Microsoft のコンシューマー向け製品の名前でもあります。
 
 Microsoft のロゴを変更 **しない** でください。
 

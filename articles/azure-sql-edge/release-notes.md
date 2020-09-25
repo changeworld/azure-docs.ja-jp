@@ -9,28 +9,74 @@ ms.subservice: ''
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
-ms.date: 07/27/2020
-ms.openlocfilehash: 74e9772ada010d79e81ef36cae89ba586db73077
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.date: 09/22/2020
+ms.openlocfilehash: 3306e51fe2fdbb2586be9684432d8f8c310afe95
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553412"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90900595"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge のリリース ノート 
 
 この記事では、Azure SQL Edge の新しいビルドごとに、新機能と変更点について説明します。
 
+## <a name="azure-sql-edge---100-rtm"></a>Azure SQL Edge - 1.0.0 (RTM)
+
+### <a name="sql-engine-build-number---15020001549"></a>SQL エンジンのビルド番号 - 15.0.2000.1549
+
+### <a name="whats-new"></a>新機能
+1. Ubuntu 18.04 ベースのコンテナー イメージ。 
+2. `LAST_VALUE()` および `FIRST_VALUE()` 関数を使用した `IGNORE NULL` および `RESPECT NULL` 構文のサポート。 
+3. ONNX を使用した PREDICT の信頼性の向上。
+4. データ保持ポリシー ベースのクリーンアップのサポート。      
+   - クラスター化列ストア インデックスの最適化されたクリーンアップのサポート。
+5. 新機能のサポート 
+   - 高速復旧
+   - クエリの自動チューニング
+
+### <a name="fixes"></a>修正
+1. TSQL ストリーミング操作のトラブルシューティングに関する追加のエラー メッセージと詳細。 
+2. アイドル モードでバッテリー寿命を維持するための機能強化。 
+3. TSQL ストリーミング エンジンの修正: 
+   - 停止したストリーミング ジョブのクリーンアップ 
+   - ローカライズの修正と Unicode 処理の機能強化
+4. データ保持ポリシー ベースのクリーンアップ
+   - アイテム保存ポリシーの作成とクリーンアップのシナリオの修正。
+5. 低電力モードで省電力を向上させるためのバックグラウンド タイマー タスクの修正。
+
+
+## <a name="ctp-23"></a>CTP 2.3
+### <a name="sql-engine-build-number---15020001549"></a>SQL エンジンのビルド番号 - 15.0.2000.1549
+### <a name="whats-new"></a>新機能
+1. Date_Bucket() 関数でのカスタム オリジンのサポート。 
+2. SQL 展開の一部としての BacPac ファイルのサポート。
+3. データ保持ポリシー ベースのクリーンアップのサポート。      
+   - アイテム保持ポリシーを有効にするための DDL のサポート 
+   - ストアド プロシージャのクリーンアップとバックグラウンド クリーンアップ タスク
+   - クリーンアップ タスクを監視する拡張イベント
+
+### <a name="fixes"></a>修正
+1. TSQL ストリーミング操作のトラブルシューティングに関する追加のエラー メッセージと詳細。 
+2. アイドル モードでバッテリー寿命を維持するための機能強化。 
+3. TSQL ストリーミング エンジンの修正: 
+   - サブストリーム化されたホッピング ウィンドウでの透かしのスタックに関する問題の修正 
+   - ユーザーが対処できるエラーとして収集されるようにフレームワークの例外処理を修正
+
+
 ## <a name="ctp-22"></a>CTP 2.2
 ### <a name="sql-engine-build-number---15020001546"></a>SQL エンジンのビルド番号 - 15.0.2000.1546
-### <a name="fixes"></a>修正
+### <a name="whats-new"></a>新機能
 1. ルート以外のコンテナーのサポート 
 2. 使用状況と診断データの収集のサポート 
 3. T-SQL ストリーミングの更新
    - ストリーム オブジェクト名の Unicode 文字のサポート
+
+### <a name="fixes"></a>修正
+1. T-SQL ストリーミングの更新
    - プロセス クリーンアップの機能強化
    - ログ記録と診断の機能強化
-4. データ インジェストのパフォーマンスの向上
+2. データ インジェストのパフォーマンスの向上
 
 ## <a name="ctp-21"></a>CTP 2.1 
 ### <a name="sql-engine-build-number---15020001545"></a>SQL エンジンのビルド番号 - 15.0.2000.1545

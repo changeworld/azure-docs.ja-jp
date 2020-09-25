@@ -1,21 +1,90 @@
 ---
-title: Azure Spring Cloud にデプロイするように Java Spring アプリケーションを準備する方法
-description: Azure Spring Cloud にデプロイするように Java Spring アプリケーションを準備する方法について説明します。
+title: Azure Spring Cloud にデプロイするアプリケーションを準備する方法
+description: Azure Spring Cloud にデプロイするアプリケーションを準備する方法について説明します。
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: how-to
-ms.date: 02/03/2020
+ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 79d3829eaea15c8e7909b98b83d1327cd90e4544
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: ff0582e3c4f654ed2a7f5efdc9ce8fd7a226595a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89260325"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906830"
 ---
-# <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Azure Spring Cloud で Java Spring アプリケーションをデプロイ用に準備する
+# <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Azure Spring Cloud にデプロイするアプリケーションを準備する
 
+::: zone pivot="programming-language-csharp"
+Azure Spring Cloud は、Steeltoe アプリをホスト、監視、スケール、更新するための堅牢なサービスを提供しています。 この記事では、Azure Spring Cloud にデプロイするために既存の Steeltoe アプリケーションを準備する方法について説明します。 
+
+この記事では、Azure Spring Cloud で .NET Core Steeltoe アプリを実行するために必要な依存関係、構成、およびコードについて説明します。 アプリケーションを Azure Spring Cloud にデプロイする方法については、「[初めての Azure Spring Cloud アプリケーションをデプロイする](spring-cloud-quickstart.md)」を参照してください。
+
+>[!Note]
+> Azure Spring Cloud の Steeltoe のサポートは、現時点ではパブリック プレビューとして提供されています。 パブリック プレビュー オファリングにより、お客様は公式リリースの前に新機能を試すことができます。  パブリック プレビューの機能とサービスは、運用環境での使用を目的としたものではありません。  プレビュー段階のサポートの詳細については、[FAQ](https://azure.microsoft.com/support/faq/) を参照するか、[サポート リクエスト](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)を提出してください。
+
+##  <a name="supported-versions"></a>サポートされているバージョン
+
+Azure Spring Cloud は以下をサポートしています。
+
+* .NET Core 3.1
+* Steeltoe 2.4
+
+## <a name="dependencies"></a>依存関係
+
+[Microsoft.Azure.SpringCloud.Client](https://www.nuget.org/packages/Microsoft.Azure.SpringCloud.Client/) パッケージをインストールします。
+
+## <a name="update-programcs"></a>Program.cs の更新
+
+`Program.Main` メソッドで、`UseAzureSpringCloudService` メソッドを呼び出します。
+
+```csharp
+public static IHostBuilder CreateHostBuilder(string[] args) =>
+    Host.CreateDefaultBuilder(args)
+        .ConfigureWebHostDefaults(webBuilder =>
+        {
+            webBuilder.UseStartup<Startup>();
+        })
+        .UseAzureSpringCloudService();
+```
+
+## <a name="enable-eureka-server-service-discovery"></a>Eureka Server サービスの検出を有効にする
+
+アプリが Azure Spring Cloud で実行されるときに使用される構成ソースで、`spring.application.name` をプロジェクトのデプロイ先の Azure Spring Cloud アプリと同じ名前に設定します。
+
+たとえば、`EurekaDataProvider` という名前の .NET プロジェクトを `planet-weather-provider` という名前の Azure Spring Cloud アプリにデプロイする場合、*appSettings.json* ファイルには次の JSON を含める必要があります。
+
+```json
+"spring": {
+  "application": {
+    "name": "planet-weather-provider"
+  }
+}
+```
+
+## <a name="use-service-discovery"></a>サービス検出を使用する
+
+Eureka Server のサービス検出を使用してサービスを呼び出すには、`http://<app_name>` に HTTP 要求を送信します (この `app_name` はターゲット アプリの `spring.application.name` の値です)。 たとえば、次のコードでは `planet-weather-provider` サービスを呼び出しています。
+
+```csharp
+using (var client = new HttpClient(discoveryHandler, false))
+{
+    var responses = await Task.WhenAll(
+        client.GetAsync("http://planet-weather-provider/weatherforecast/mercury"),
+        client.GetAsync("http://planet-weather-provider/weatherforecast/saturn"));
+    var weathers = await Task.WhenAll(from res in responses select res.Content.ReadAsStringAsync());
+    return new[]
+    {
+        new KeyValuePair<string, string>("Mercury", weathers[0]),
+        new KeyValuePair<string, string>("Saturn", weathers[1]),
+    };
+}
+```
+::: zone-end
+
+::: zone pivot="programming-language-java"
 このトピックでは、Azure Spring Cloud にデプロイできるように既存の Java Spring アプリケーションを準備する方法について説明します。 適切に構成すると、Azure Spring Cloud によって Java Spring Cloud アプリケーションの監視、スケーリング、更新を行う堅牢なサービスが実現します。
 
 この例を実行する前に、[基本的なクイックスタート](spring-cloud-quickstart.md)を試してみることができます。
@@ -128,9 +197,9 @@ Spring Boot と Spring Cloud を使用するアプリの正しい Azure Spring C
 
 Spring Boot のバージョン | Spring Cloud のバージョン | Azure Spring Cloud クライアント スターター バージョン
 ---|---|---
-2.1 | Greenwich.RELEASE | 2.1.2
-2.2 | Hoxton.SR8 | 不要
-2.3 | Hoxton.SR8 | 不要
+2.1.x | Greenwich.RELEASE | 2.1.2
+2.2.x | Hoxton.SR8 | 不要
+2.3.x | Hoxton.SR8 | 不要
 
 Spring Boot 2.1 を使用している場合は、次の依存関係を pom.xml ファイルに含めます。
 
@@ -244,3 +313,4 @@ pom.xml ファイルの依存関係セクションに次の `spring-cloud-starte
 このトピックでは、Java Spring Cloud アプリケーションを Azure Spring Cloud へのデプロイ用に構成する方法について学習しました。 Config Server インスタンスを設定する方法については、[Config Server インスタンスの設定](spring-cloud-tutorial-config-server.md)に関するページを参照してください。
 
 その他のサンプルを GitHub で入手できます ([Azure Spring Cloud のサンプル](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples))。
+::: zone-end

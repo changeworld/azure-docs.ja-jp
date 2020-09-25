@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: d89f0d08fec0b0f341094d422b1091de5a61055e
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: bccdb830fba4d55266dc9eff8f06c5ac4e3f2a34
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115766"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706185"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>アプリケーションを Azure AD に追加する方法と理由
 
@@ -70,9 +70,9 @@ Azure AD には、2 つの表現のアプリケーションがあります。
 
 * ユーザーが Azure AD と統合されたサードパーティ アプリケーションにサインインするとき
   * サインイン中、ユーザーのプロファイルにアプリケーションがアクセスするための許可とその他のアクセス許可を与えるように求められます。 最初のユーザーがそれに同意した時点で、アプリケーションを表すサービス プリンシパルがディレクトリに追加されます。
-* ユーザーが [Office 365](https://products.office.com/) などの Microsoft オンライン サービスにサインインするとき
-  * Office 365 にサブスクライブするか、または試用を開始すると、Office 365 に関連するすべての機能を提供するために使用されるさまざまなサービスを表す 1 つまたは複数のサービス プリンシパルがディレクトリに作成されます。
-  * SharePoint などの一部の Office 365 サービスは、ワークフローを含むコンポーネント間で安全に通信できるように、実行中にサービス プリンシパルを作成します。
+* ユーザーが [Microsoft 365](https://products.office.com/) などの Microsoft オンライン サービスにサインインするとき
+  * Microsoft 365 をサブスクライブするか、または試用を開始すると、Microsoft 365 に関連するすべての機能を提供するために使用されるさまざまなサービスを表す 1 つまたは複数のサービス プリンシパルがディレクトリに作成されます。
+  * SharePoint などの一部の Microsoft 365 サービスは、ワークフローを含むコンポーネント間で安全に通信できるように、実行中にサービス プリンシパルを作成します。
 * 管理者がアプリ ギャラリーからアプリケーションを追加するとき (これによって基になるアプリケーション オブジェクトも作成されます)
 * [Azure AD アプリケーション プロキシ](../manage-apps/application-proxy.md)を使用するアプリケーションを追加する
 * シングル サインオンのために、SAML またはパスワードのシングル サインオン (SSO) を使用してアプリを接続する
@@ -116,7 +116,7 @@ Azure AD と統合するアプリケーションのパブリッシャー/ベン�
 * フェデレーションまたはパスワードを使用する SSO
 * ユーザーのプロビジョニングと同期
 * ロール ベースのアクセス制御 - ディレクトリを使用して、アプリケーション内でロールに基づく承認チェックを実行するためのアプリケーション ロールを定義します。
-* OAuth 承認サービス (Office 365 や他の Microsoft アプリケーションによって API/リソースへのアクセスを承認するために使用されます)
+* OAuth 承認サービス (Microsoft 365 や他の Microsoft アプリケーションによって API/リソースへのアクセスを承認するために使用されます)
 * アプリケーションの発行とプロキシ。プライベート ネットワークからインターネットにアプリケーションを発行します。
 
 ## <a name="who-has-permission-to-add-applications-to-my-azure-ad-instance"></a>Azure AD インスタンスにアプリケーションを追加する権限のあるユーザー
