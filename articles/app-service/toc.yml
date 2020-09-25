@@ -146,7 +146,7 @@
           href: configure-language-java.md
         - name: Ruby の構成
           href: configure-language-ruby.md
-        - name: カスタム Linux コンテナーの構成
+        - name: カスタム コンテナーの構成
           href: configure-custom-container.md
         - name: オンプレミスのリソースへの接続
           href: web-sites-integrate-with-vnet.md
