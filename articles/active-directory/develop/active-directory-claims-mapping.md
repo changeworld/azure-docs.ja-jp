@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: e1c931b37cbe155d62aaffe47e36d84afa547638
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 4fca84c8e5aa562572792968d0438a61be5ab91b
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068645"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601471"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>方法:テナントの特定のアプリケーションに対するトークンに出力された要求のカスタマイズ (プレビュー)
 
@@ -301,7 +301,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 | User | companyname| 組織名 |
 | User | streetaddress | 番地 |
 | User | postalcode | 郵便番号 |
-| User | preferredlanguange | 優先言語 |
+| User | preferredlanguage | 優先言語 |
 | User | onpremisesuserprincipalname | オンプレミスの UPN |*
 | User | mailNickname | メールのニックネーム |
 | User | extensionattribute1 | 拡張属性 1 |

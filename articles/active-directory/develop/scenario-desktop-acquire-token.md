@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 300bc6acbe7821841b578dcc2166ecfc498ad750
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: ab6842fe6787b9e1a61b3c25fabb6c64c2597b9a
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141297"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032811"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Web API を呼び出すデスクトップ アプリ:トークンを取得する
 
@@ -38,7 +38,7 @@ Web API はその `scopes` によって定義されます。 どのようなエ�
 AuthenticationResult result;
 var accounts = await app.GetAccountsAsync();
 IAccount account = ChooseAccount(accounts); // for instance accounts.FirstOrDefault
-                                            // if the app manages is at most one account  
+                                            // if the app manages is at most one account
 try
 {
  result = await app.AcquireTokenSilent(scopes, account)
@@ -183,7 +183,7 @@ Android では、示されているように `.WithParentActivityOrWindow` を�
 
 #### <a name="withparentactivityorwindow"></a>WithParentActivityOrWindow
 
-UI は対話型であるため、重要です。 `AcquireTokenInteractive` には、特定の省略可能なパラメーターが 1 つあり、それをサポートするプラットフォームに対して親 UI を指定できます。 デスクトップ アプリケーションで使用する場合、`.WithParentActivityOrWindow` の型はプラットフォームによって異なります。
+UI は対話型であるため、重要です。 `AcquireTokenInteractive` には、特定の省略可能なパラメーターが 1 つあり、それをサポートするプラットフォームに対して親 UI を指定できます。 デスクトップ アプリケーションで使用する場合、`.WithParentActivityOrWindow` の型はプラットフォームによって異なります。 または、サインイン ダイアログが画面のどこに表示されるかを制御したくない場合は、省略可能な親ウィンドウ パラメーターを省略してウィンドウを作成することができます。 これは、呼び出しを他のバックエンド サービスに渡すために使用され、ユーザーの操作にウィンドウを必要としないコマンド ライン ベースのアプリケーションに適用できます。 
 
 ```csharp
 // net45
@@ -370,7 +370,7 @@ if accounts:
 if not result:
     result = app.acquire_token_by_authorization_code(
          request.args['code'],
-         scopes=config["scope"])    
+         scopes=config["scope"])
 
 ```
 
@@ -433,7 +433,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
   - または、テナント管理者が、テナント内のすべてのユーザーによるアプリケーションの使用に事前に同意しておく必要があります。
   - つまり、以下の要件が適用されます。
     - 開発者が自分で Azure portal 上の **[許可]** ボタンを選択しておきます。
-    - または、テナント管理者がアプリケーションの登録の **[API のアクセス許可]** タブにある **[{テナント ドメイン} の管理者の同意を付与/取り消す]** ボタンを選択しておきます。 詳細については、「[Web API にアクセスするためのアクセス許可を追加する](./quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)」を参照してください。
+    - または、テナント管理者がアプリケーションの登録の **[API のアクセス許可]** タブにある **[{テナント ドメイン} の管理者の同意を付与/取り消す]** ボタンを選択しておきます。 詳細については、「[Web API にアクセスするためのアクセス許可を追加する](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-your-web-api)」を参照してください。
     - または、ユーザーがアプリケーションに同意する方法を指定しておきます。 詳細については、「[個々のユーザーの同意を要求する](./v2-permissions-and-consent.md#requesting-individual-user-consent)」を参照してください。
     - または、テナント管理者がアプリケーションに同意する方法を指定しておきます。 詳細については、[管理者の同意](./v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)に関する記事を参照してください。
 
@@ -925,7 +925,7 @@ if not result:
 
 Web コントロールのないコマンドライン ツールを記述する際に前述のフローを使用できない (しない) 場合は、デバイス コード フローを使用する必要があります。
 
-Azure AD による対話型認証には Web ブラウザーが必要です。 詳細については、[Web ブラウザーの使用](https://aka.ms/msal-net-uses-web-browser)に関する記事を参照してください。 Web ブラウザーを提供しないデバイスまたはオペレーティング システム上でユーザーを認証する場合、ユーザーはデバイス コード フローによって別のデバイス (コンピューターや携帯電話など) を使用して対話形式でサインインできます。 デバイス コード フローを使用すると、アプリケーションでは、これらのデバイスまたはOS 用に設計された 2 ステップ プロセスを通じてトークンを取得します。 このようなアプリケーションには、IoT やコマンドライン ツール (CLI) で実行されるアプリケーションがあります。 考え方は次のとおりです。
+Azure AD による対話型認証には Web ブラウザーが必要です。 詳細については、[Web ブラウザーの使用](https://aka.ms/msal-net-uses-web-browser)に関する記事を参照してください。 Web ブラウザーを提供しないデバイスまたはオペレーティング システム上でユーザーを認証する場合、ユーザーはデバイス コード フローによって別のデバイス (コンピューターや携帯電話など) を使用して対話形式でサインインできます。 デバイス コード フローを使用すると、アプリケーションでは、これらのデバイスまたはオペレーティング システム用に設計された 2 ステップ プロセスを通じてトークンを取得します。 このようなアプリケーションには、IoT やコマンドライン ツール (CLI) で実行されるアプリケーションがあります。 考え方は次のとおりです。
 
 1. ユーザー認証が必要になるたびに、アプリではユーザーに対してコードを提供します。 ユーザーは、インターネットに接続されたスマートフォンなどの別のデバイスを使用して URL (例: `https://microsoft.com/devicelogin`) にアクセスするように求められます。 次に、ユーザーはそのコードを入力するように要求されます。 完了すると、Web ページにおいて通常の認証エクスペリエンス (必要に応じて、同意のプロンプトと多要素認証が含まれます) が実行されます。
 
@@ -978,7 +978,7 @@ static async Task<AuthenticationResult> GetATokenForGraph()
         // If you want to provide a more complex user experience, check out ex.Classification
 
         return await AcquireByDeviceCodeAsync(pca);
-    }         
+    }
 }
 
 private async Task<AuthenticationResult> AcquireByDeviceCodeAsync(IPublicClientApplication pca)

@@ -7,14 +7,16 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: a7905ae0fdbd797d9b544cb71f44b82af1295246
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 979ecf77fe53238dfd377c5fd2baf394de985c2f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688455"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892887"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>チュートリアル:Azure 仮想ネットワークに Azure Spring Cloud をデプロイする (VNet インジェクション)
+
+**この記事の適用対象:** ✔️ Java ✔️ C#
 
 このチュートリアルでは、Azure Spring Cloud サービス インスタンスを仮想ネットワークにデプロイする方法について説明します。 これは、VNet インジェクションとも呼ばれます。  
 
@@ -38,7 +40,7 @@ Azure Spring Cloud サービス インスタンスのデプロイ先となる仮
 * **サブネット**:仮想ネットワークには、Azure Spring Cloud サービス インスタンス専用の 2 つのサブネットが含まれている必要があります。 
     * サービス ランタイム用に 1 つ
     * Spring Boot マイクロサービス アプリケーション用に 1 つ。 
-    * これらのサブネットと Azure Spring Cloud サービス インスタンスの間には一対一のリレーションシップがあります。 複数のサービス インスタンスを 1 つのサブネットで共有することはできません。 デプロイするサービス インスタンスごとに新しいサブネットを使用する必要があります。
+    * これらのサブネットと Azure Spring Cloud サービス インスタンスの間には一対一のリレーションシップがあります。 デプロイするサービス インスタンスごとに新しいサブネットを使用する必要があります。また、各サブネットに含めることができるサービス インスタンスは 1 つだけです。
 * **[アドレス空間]** : サービス ランタイム サブネットに対して /28 までの CIDR ブロック 1 つ、および Spring Boot マイクロサービス アプリケーション サブネットに対して /24 までの別の CIDR ブロック。
 * **[ルート テーブル]** :サブネットに既存のルート テーブルを関連付けることはできません。
 

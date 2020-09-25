@@ -4,15 +4,16 @@ description: この記事では、Azure Spring Cloud についてよく寄せら
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 1ad008ff3ef4f29ee358b075802deba7eef919bd
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: 1947e57a5f200521fe57c6aaf41e9d57c1085592
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322043"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888709"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud に関する FAQ
 
@@ -61,9 +62,11 @@ Azure Spring Cloud で問題が発生した場合は、[Azure サポート要求
 
 Azure Spring Cloud の使用を開始するための最もすばやい方法として、「[クイック スタート: Azure portal を使用して Azure Spring Cloud アプリケーションを起動する](spring-cloud-quickstart.md)」の手順に従ってください。
 
+::: zone pivot="programming-language-java"
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Azure Spring Cloud はどの Java ランタイムをサポートしていますか?
 
 Azure Spring Cloud は、Java 8 および 11 をサポートしています。 「[Java ランタイムと OS バージョン](#java-runtime-and-os-versions)」を参照してください。
+::: zone-end
 
 ### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>Spring Cloud アプリケーションのログとメトリックはどこで表示できますか?
 
@@ -75,12 +78,14 @@ Azure Spring Cloud は、Spring Cloud アプリケーションのログとメト
 
 はい。 詳細については、[Azure Spring Cloud で分散トレースを使用する](spring-cloud-tutorial-distributed-tracing.md)」を参照してください。
 
+::: zone pivot="programming-language-java"
 ### <a name="what-resource-types-does-service-binding-support"></a>サービス バインディングでサポートされるリソースの種類は何ですか?
 
 現時点でサポートされているサービスは次の 3 種類です:
 * Azure Cosmos DB
 * Azure Database for MySQL
 * Azure Cache for Redis
+::: zone-end
 
 ### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>アプリケーション内から永続ボリュームを表示、追加、または移動できますか?
 
@@ -96,6 +101,7 @@ Azure CLI を使用して、Spring Cloud の診断設定を削除できます。
  az monitor diagnostic-settings delete --name $diagnosticSettingName --resource $azureSpringCloudResourceId
 ```
 
+::: zone pivot="programming-language-java"
 ## <a name="java-runtime-and-os-versions"></a>Java ランタイムと OS バージョン
 
 ### <a name="which-versions-of-java-runtime-are-supported-in-azure-spring-cloud"></a>Azure Spring Cloud では、どのバージョンの Java ランタイムがサポートされていますか?
@@ -136,10 +142,11 @@ Azure サポートでサポート チケットを開くことができます。 
 
 最新の Ubuntu LTS バージョンが使用されており、現在は、[Ubuntu 20.04 LTS (Focal Fossa)](https://releases.ubuntu.com/focal/) が既定の OS となっています。
 
-### <a name="how-often-will-os-security-patches-be-applied"></a>OS セキュリティ パッチはどのくらいの頻度で適用されますか?
+### <a name="how-often-are-os-security-patches-applied"></a>OS のセキュリティ パッチはどのくらいの頻度で適用されますか?
 
 Azure Spring Cloud に適用されるセキュリティ パッチは、月単位で運用環境に展開されます。
 Azure Spring Cloud に適用される重要なセキュリティ パッチ (CVE score 9 以上) は、可能な限り迅速に展開されます。
+::: zone-end
 
 ## <a name="deployment"></a>デプロイ
 
@@ -158,6 +165,7 @@ Azure Spring Cloud に適用される重要なセキュリティ パッチ (CVE 
 
 いいえ。
 
+::: zone pivot="programming-language-java"
 ### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>既存の Spring Cloud マイクロサービスを Azure Spring Cloud に移行するためのベスト プラクティスはどのようなものですか?
 
 既存の Spring Cloud マイクロサービスを Azure Spring Cloud に移行しようとしている場合は、次のベスト プラクティスを確認することをお勧めします。
@@ -168,8 +176,22 @@ Azure Spring Cloud に適用される重要なセキュリティ パッチ (CVE 
 * 公式の、安定した Pivotal Spring ライブラリを使用することをお勧めします。 非公式版、ベータ版、またはフォーク済みバージョンの Pivotal Spring ライブラリにはサービス レベル アグリーメント (SLA) のサポートがありません。
 
 移行したら、CPU/RAM のメトリックやネットワーク トラフィックを監視して、アプリケーション インスタンスが適切にスケーリングされていることを確認します。
+::: zone-end
 
-## <a name="trouble-shooting"></a>トラブルシューティング
+::: zone pivot="programming-language-csharp"
+## <a name="net-core-versions"></a>.NET Core のバージョン
+
+### <a name="which-net-core-versions-are-supported"></a>どのバージョンの .NET Core がサポートされていますか?
+
+.NET Core 3.1 以降のバージョンです。
+
+### <a name="how-long-will-net-core-31-be-supported"></a>.NET Core 3.1 はどのくらいの期間サポートされますか?
+
+2022 年 12 月 3 日までです。 「[.NET Core サポート ポリシー](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)」を参照してください。
+::: zone-end
+
+
+## <a name="troubleshooting"></a>トラブルシューティング
 
 ### <a name="what-are-the-impacts-of-service-registry-rarely-unavailable"></a>サービス レジストリがまれに利用できなくなると、どのような影響がありますか?
 

@@ -1,6 +1,6 @@
 ---
 title: Microsoft ID プラットフォームのスコープ、アクセス許可、および同意
-description: スコープ、アクセス許可、同意など、Microsoft ID プラットフォーム エンドポイントでの承認の説明。
+description: スコープ、アクセス許可、同意など、Microsoft ID プラットフォーム エンドポイントでの承認について説明します。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: d513dbd8449dad1d34117e06970f0c0881462aa3
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: f1c35fc80a4ab5b293a974b8f2901716e65f32b1
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84263229"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705692"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意
 
@@ -28,11 +28,11 @@ Microsoft ID プラットフォームと統合するアプリケーションは�
 Microsoft ID プラットフォームでは、[OAuth 2.0](active-directory-v2-protocols.md) 承認プロトコルが実装されています。 OAuth 2.0 は、ユーザーに代わってサードパーティのアプリが Web でホストされるリソースにアクセスできる方法です。 Microsoft ID プラットフォームと統合される、Web でホストされるすべてのリソースは、リソース識別子つまり "*アプリケーション ID URI*" を持っています。 Microsoft の Web でホストされるリソースには、次のようなものがあります。
 
 * Microsoft Graph: `https://graph.microsoft.com`
-* Office 365 メール API: `https://outlook.office.com`
+* Microsoft 365 メール API: `https://outlook.office.com`
 * Azure Key Vault: `https://vault.azure.net`
 
 > [!NOTE]
-> Office 365 メール API などではなく、Microsoft Graph を使用することを強くお勧めします。
+> Microsoft 365 メール API などではなく、Microsoft Graph を使用することを強くお勧めします。
 
 Microsoft ID プラットフォームと統合されたサードパーティのリソースも同様です。 これらのリソースのいずれでも、機能をより小さいまとまりに分割するために使用できるアクセス許可のセットを定義できます。 たとえば、[Microsoft Graph](https://graph.microsoft.com) では、特に次のタスクを実行するアクセス許可が定義されています。
 

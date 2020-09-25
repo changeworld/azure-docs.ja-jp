@@ -12,20 +12,22 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: ccbdc13f7efadff7fc4e101dfd0b736115d5351d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 92394138c5aa20d0abc33387aab1e9c37e6f9cb9
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897932"
+ms.locfileid: "90986393"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning データセットを作成する
 
 
 
-この記事では、Azure Machine Learning データセットを作成し、ローカルまたはリモートの実験のデータにアクセスする方法について説明します。 Azure Machine Learning のデータ アクセス ワークフロー全体におけるデータ セットの位置付けの詳細については、[データへの安全なアクセス](concept-data.md#data-workflow)に関するページを参照してください。
+この記事では、Azure Machine Learning Python SDK を使用して、Azure Machine Learning データセットを作成し、ローカルまたはリモートの実験のデータにアクセスする方法について説明します。 Azure Machine Learning のデータ アクセス ワークフロー全体におけるデータ セットの位置付けの詳細については、[データへの安全なアクセス](concept-data.md#data-workflow)に関するページを参照してください。
 
 データセットを作成することにより、データ ソースの場所への参照とそのメタデータのコピーを作成します。 データは既存の場所に残るため、追加のストレージ コストは発生せず、データ ソースの整合性が損なわれることはありません。 また、データセットは遅延評価されるので、ワークフローのパフォーマンス向上に役立ちます。 データセットは、データストア、パブリック URL、[Azure Open Dataset](../open-datasets/how-to-create-azure-machine-learning-dataset-from-open-dataset.md) から作成できます。
+
+コードの少ないエクスペリエンスについては、[Azure Machine Learning Studio での Azure Machine Learning データセットの作成](how-to-connect-data-ui.md#create-datasets)に関するページを参照してください。
 
 Azure Machine Learning データセットを使用すると、次のことを実行できます。
 
@@ -72,15 +74,14 @@ Azure Machine Learning データセットを使用すると、次のことを実
 
 ソース ファイルはどのような形式でもよく、ディープ ラーニングなどの、より幅広い機械学習シナリオが可能になるため、機械学習のワークフローには FileDataset を使用することをお勧めします。
 
-FileDataset は、[Python SDK](#create-a-filedataset) または [Azure Machine Learning Studio](#create-datasets-in-the-studio) を使用して作成します
-
+FileDataset を作成するには、[Python SDK](#create-a-filedataset) または [Azure Machine Learning Studio](how-to-connect-data-ui.md#create-datasets) を使用します。
 ### <a name="tabulardataset"></a>TabularDataset
 
 [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) は、指定されたファイルまたはファイルのリストを解析して、データを表形式で表します。 これにより、データを Pandas または Spark DataFrame に具体化できるため、ノートブックを離れることなく、使い慣れたデータ準備とトレーニングのライブラリを使用することができます。 `TabularDataset` オブジェクトは、.csv ファイル、.tsv ファイル、.parquet ファイル、.jsonl ファイル、[SQL クエリ結果](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#&preserve-view=truefrom-sql-query-query--validate-true--set-column-types-none--query-timeout-30-)から作成できます。
 
 TabularDataset を使用すると、データの列から、またはデータが格納されている任意のパス パターンからタイム スタンプを指定して、時系列特性を有効にすることができます。 この指定により、時間による簡単かつ効率的なフィルター処理が可能になります。 例については、「[NOAA 気象データを使用した表形式の時系列関連の API のデモ](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb)」を参照してください。
 
-TabularDataset は、[Python SDK](#create-a-tabulardataset) または [Azure Machine Learning Studio](#create-datasets-in-the-studio) を使用して作成します。
+TabularDataset は、[Python SDK](#create-a-tabulardataset) または [Azure Machine Learning Studio](how-to-connect-data-ui.md#create-datasets) を使用して作成します。
 
 >[!NOTE]
 > 現在、Azure Machine Learning Studio を使用して生成された AutoML ワークフローでは、TabularDataset のみをがポートされています。 
@@ -91,9 +92,9 @@ TabularDataset は、[Python SDK](#create-a-tabulardataset) または [Azure Mac
 
 <a name="datasets-sdk"></a>
 
-## <a name="create-datasets-via-the-sdk"></a>SDK を使用してデータセットを作成する
+## <a name="create-datasets"></a>データセットを作成する
 
- データを Azure Machine Learning からアクセスできるようにするには、[Azure データストア](how-to-access-data.md)またはパブリック Web URL のパスからデータセットを作成する必要があります。 
+データを Azure Machine Learning からアクセスできるようにするには、[Azure データストア](how-to-access-data.md)またはパブリック Web URL のパスからデータセットを作成する必要があります。 
 
 Python SDK を使用して [Azure データストア](how-to-access-data.md)からデータセットを作成するには:
 
@@ -220,26 +221,6 @@ titanic_ds = titanic_ds.register(workspace=workspace,
                                  name='titanic_ds',
                                  description='titanic training data')
 ```
-
-<a name="datasets-ui"></a>
-## <a name="create-datasets-in-the-studio"></a>Studio でデータストアを作成する
-次の手順とアニメーションでは、[Azure Machine Learning Studio](https://ml.azure.com) でデータセットを作成する方法を示します。
-
-> [!Note]
-> Azure Machine Learning Studio を介して作成されたデータセットは、自動的にワークスペースに登録されます。
-
-![UI を使用してデータセットを作成する](./media/how-to-create-register-datasets/create-dataset-ui.gif)
-
-Studio でデータセットを作成するには、次の手順を実行します。
-1. [https://ml.azure.com](https://ml.azure.com ) でサインインします。
-1. 左側のウィンドウの **[アセット]** セクションで **[データセット]** を選択します。 
-1. **[データセットの作成]** を選択して、データセットのソースを選択します。 このソースには、ローカル ファイル、データストア、またはパブリック URL を指定できます。
-1. データセットの種類として **[表形式]** または **[ファイル]** を選択します。
-1. **[次へ]** を選択して、 **[データストアとファイルの選択]** フォームを開きます。 このフォームでは、作成後にデータセットを保存する場所を選択し、データセットに使用するデータ ファイルを選択します。 
-    1. データが仮想ネットワーク内にある場合は、検証のスキップを有効にします。 詳細については、[仮想ネットワークでのデータセットとデータストアの使用](how-to-secure-workspace-vnet.md#secure-datastores-and-datasets)に関するページを参照してください。
-1. **[次へ]** を選択して **[Settings and preview]/(設定とプレビュー/)** および **[Schema]\(スキーマ\)** フォームを設定します。これらのフォームはファイルの種類に基づいてインテリジェントに設定され、これらのフォームで、作成前にデータセットを構成することができます。 
-1. **[次へ]** を選択して、 **[詳細の確認]** フォームを確認します。 選択内容を確認し、データセットについてのオプションのデータ プロファイルを作成します。 [データ プロファイル](how-to-use-automated-ml-for-ml-models.md#profile)についてさらに理解を深める。 
-1. **[作成]** を選択して、データセットの作成を完了します。
 
 ## <a name="create-datasets-with-azure-open-datasets"></a>Azure Open Datasets を使用してデータセットを作成する
 

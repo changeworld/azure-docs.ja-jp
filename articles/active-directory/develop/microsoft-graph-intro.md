@@ -11,19 +11,19 @@ ms.workload: identity
 ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
-ms.openlocfilehash: fb6f5c4840f127ac174b6b60359dd52a4797b3ec
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 13cbeca909b445d75fcbcf7b3751183421479d42
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119676"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052564"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 RESTful Web API である Microsoft Graph API を使用すると、Microsoft クラウド サービスのリソースにアクセスできます。 アプリを登録し、ユーザーまたはサービスのための認証トークンを取得した後、Microsoft Graph API に要求を行うことができます。 詳しくは、「[Microsoft Graph の概要](/graph/overview)」をご覧ください。
 
 Microsoft Graph では、次の Microsoft 365 サービスのデータにアクセスするための REST API とクライアント ライブラリが公開されています。
-- Office 365 サービス: Delve、Excel、Microsoft Bookings、Microsoft Teams、OneDrive、OneNote、Outlook/Exchange、Planner、SharePoint
+- Microsoft 365 サービス:Delve、Excel、Microsoft Bookings、Microsoft Teams、OneDrive、OneNote、Outlook/Exchange、Planner、SharePoint
 - Enterprise Mobility + Security サービス: Advanced Threat Analytics、Advanced Threat Protection、Azure Active Directory、Identity Manager、Intune
 - Windows 10 サービス: アクティビティ、デバイス、通知
 - Dynamics 365 Business Central

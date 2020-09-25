@@ -4,15 +4,15 @@ description: Azure に高可用性で回復力のあるアプリケーション�
 author: cynthn
 ms.service: azure
 ms.topic: article
-ms.date: 08/05/2020
+ms.date: 09/18/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: cf1fc81ea63db21d2e864c00e1987eec3d376b59
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: d7a158d91295aedc14f1f913ae152c496066fab5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853162"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891684"
 ---
 # <a name="regions-that-support-availability-zones-in-azure"></a>Azure での Availability Zones をサポートしているリージョン
 
@@ -24,36 +24,36 @@ Availability Zones は高可用性を備えたサービスで、アプリケー�
 
 ## <a name="americas"></a>アメリカ
 
-| サービス | 米国中部 | 米国東部 | 米国東部 2 | 米国西部 2 |
-| --- | :---: | :---: | :---: | :---: |
+| サービス | 米国中部 | 米国東部 | 米国東部 2 | 米国西部 2 | カナダ中部
+| --- | :---: | :---: | :---: | :---: | :---: |
 | **Compute** |  |  |  |  |
-| Linux Virtual Machines             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Windows Virtual Machines           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Virtual Machine Scale Sets         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Azure App Service Environment ILB | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Azure Kubernetes Service           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Linux Virtual Machines             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Windows Virtual Machines           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Virtual Machine Scale Sets         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Azure App Service Environment ILB | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Azure Kubernetes Service           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Storage** |  |  |  |  |
-| Managed Disks                      | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| ゾーン冗長ストレージ             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Managed Disks                      | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| ゾーン冗長ストレージ             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **ネットワーク** |  |  |  |  |
-| 標準 IP アドレス                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Standard Load Balancer             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| VPN Gateway                        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| ExpressRoute ゲートウェイ               | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Application Gateway (V2)           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Azure Firewall                     | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 標準 IP アドレス                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Standard Load Balancer             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| VPN Gateway                        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| ExpressRoute ゲートウェイ               | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Application Gateway (V2)           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Azure Firewall                     | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **データベース** |  |  |  |  |
-| Azure Data Explorer                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| SQL Database                       | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:(プレビュー) |
-| Azure Cache for Redis              | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Azure Cosmos DB                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Azure Data Explorer                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| SQL Database                       | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:(プレビュー) | :heavy_check_mark: |
+| Azure Cache for Redis              | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Azure Cosmos DB                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Analytics** |  |  |  |  |
-| Event Hubs                         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Event Hubs                         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **統合** |  |  |  |  |
-| Service Bus (Premium レベルのみ)    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Event Grid                         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Service Bus (Premium レベルのみ)    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Event Grid                         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **ID** |  |  |  |  |
-| Azure AD Domain Services           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Azure AD Domain Services           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |   |
 
 ## <a name="europe"></a>ヨーロッパ
 
@@ -86,7 +86,7 @@ Availability Zones は高可用性を備えたサービスで、アプリケー�
 | Service Bus (Premium レベルのみ)    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Event Grid                         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **ID** |  |  |  |  |
-| Azure AD Domain Services           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Azure AD Domain Services           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 
 ## <a name="asia-pacific"></a>アジア太平洋
 
@@ -96,8 +96,8 @@ Availability Zones は高可用性を備えたサービスで、アプリケー�
 | Linux Virtual Machines             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Windows Virtual Machines           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Virtual Machine Scale Sets         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Azure App Service Environment ILB | :heavy_check_mark: | :heavy_check_mark: |  |
-| Azure Kubernetes Service           | :heavy_check_mark: | :heavy_check_mark: |  |
+| Azure App Service Environment ILB | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Azure Kubernetes Service           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Storage** |  |  |  |
 | Managed Disks                      | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | ゾーン冗長ストレージ             | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -107,17 +107,17 @@ Availability Zones は高可用性を備えたサービスで、アプリケー�
 | VPN Gateway                        | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | ExpressRoute ゲートウェイ               | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Application Gateway (V2)           | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Azure Firewall                     | :heavy_check_mark: | :heavy_check_mark: |  |
+| Azure Firewall                     | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **データベース** |  |  |  |
-| Azure Data Explorer                | :heavy_check_mark: | :heavy_check_mark: |  |
+| Azure Data Explorer                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | SQL Database                       | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Azure Cache for Redis              | :heavy_check_mark: | :heavy_check_mark: |  |
+| Azure Cache for Redis              | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Cosmos DB                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Analytics** |  |  |  |
 | Event Hubs                         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **統合** |  |  |  |
 | Service Bus (Premium レベルのみ)    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Event Grid                         | :heavy_check_mark: | :heavy_check_mark: |  |
+| Event Grid                         | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **ID** |  |  |  |
 | Azure AD Domain Services           | :heavy_check_mark: | :heavy_check_mark: |  |
 
@@ -128,9 +128,8 @@ Azure は、次のリージョンでも Availability Zones サポートを提供
 - US Gov バージニア州
 - 南アフリカ北部
 - 米国中南部
-- カナダ中部
 
-これらの 4 つのリージョンでの Availability Zones サポートの詳細については、Microsoft の営業担当者かカスタマー担当者にお問い合わせください。または、テクニカル サポート リクエストを開きます。
+これらの 3 つのリージョンでの Availability Zones サポートの詳細については、Microsoft の営業担当者かカスタマー担当者にお問い合わせください。または、テクニカル サポート リクエストを開きます。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: aahi
-ms.openlocfilehash: 4dc3c46b65bab48b8923af985f0c2c29fcddc53b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f9ab340e73ce8d58da63a0089073ac4770bf2d52
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931023"
+ms.locfileid: "90973390"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>さまざまなデータ ソースからデータ フィードを Metrics Advisor に追加する
 
@@ -27,10 +27,10 @@ ms.locfileid: "90931023"
 | ---------------------|-------------|
 |**Basic** | データ ソースにアクセスするための基本パラメーターを指定できる必要があります。 たとえば、接続文字列やキーなどです。 データ フィード管理者は、これらの資格情報を表示できます。 |
 | **AzureManagedIdentity** | Azure リソースの[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) は、Azure Active Directory の機能です。 これにより、Azure AD で自動的に管理される ID が Azure サービスに提供されます。 ID を使用して、Azure AD 認証をサポートする任意のサービスに対する認証を行うことができます。|
-| **AzureSQLConnectionString**| AzureSQL 接続文字列を**認証エンティティ**として Metrics Advisor に保存し、メトリック データをオンボードするたびにそれを直接使用します。 これらの資格情報を表示できるのは認証エンティティの管理者だけですが、承認された閲覧者は、資格情報の詳細を知らなくてもデータ フィードを作成できます。 |
-| **DataLakeGen2SharedKey**| データ レイク アカウント キーを**認証エンティティ**として Metrics Advisor に保存し、メトリック データをオンボードするたびにそれを直接使用します。 これらの資格情報を表示できるのは認証エンティティの管理者だけですが、承認された閲覧者は、資格情報の詳細を知らなくてもデータ フィードを作成できます。|
-| **ServicePrincipal**| サービス プリンシパルを**認証エンティティ**として Metrics Advisor に保存し、メトリック データをオンボードするたびにそれを直接使用します。 この資格情報を表示できるのは認証エンティティの管理者だけですが、承認された閲覧者は、資格情報の詳細を知らなくてもデータ フィードを作成できます。|
-| **ServicePrincipalInKeyVault**|KeyVault のサービス プリンシパルを**認証エンティティ**として Metrics Advisor に保存し、メトリック データをオンボードするたびにそれを直接使用します。 資格情報を表示できるのは**認証エンティティ**の管理者だけですが、詳細な資格情報を知らなくても、閲覧者はデータ フィードを作成できます。 |
+| **AzureSQLConnectionString**| AzureSQL 接続文字列を**資格情報エンティティ**として Metrics Advisor に保存し、メトリック データをオンボードするたびにそれを直接使用します。 これらの資格情報を表示できるのは資格情報エンティティの管理者だけですが、承認された閲覧者は、資格情報の詳細を知らなくてもデータ フィードを作成できます。 |
+| **DataLakeGen2SharedKey**| データ レイク アカウント キーを**資格情報エンティティ**として Metrics Advisor に保存し、メトリック データをオンボードするたびにそれを直接使用します。 これらの資格情報を表示できるのは資格情報エンティティの管理者だけですが、承認された閲覧者は、資格情報の詳細を知らなくてもデータ フィードを作成できます。|
+| **サービス プリンシパル**| サービス プリンシパルを**資格情報エンティティ**として Metrics Advisor に保存し、メトリック データをオンボードするたびにそれを直接使用します。 これらの資格情報を表示できるのは資格情報エンティティの管理者だけですが、承認された閲覧者は、資格情報の詳細を知らなくてもデータ フィードを作成できます。|
+| **キー コンテナーからのサービス プリンシパル**|キー コンテナー内のサービス プリンシパルを**資格情報エンティティ**として Metrics Advisor に保存し、メトリック データをオンボードするたびにそれを直接使用します。 資格情報を表示できるのは**資格情報エンティティ**の管理者だけですが、詳細な資格情報を知らなくても、閲覧者はデータ フィードを作成できます。 |
 
 ## <a name="data-sources-supported-and-corresponding-authentication-types"></a>サポートされているデータ ソースと対応する認証の種類
 
@@ -41,8 +41,8 @@ ms.locfileid: "90931023"
 |[**Azure Blob Storage (JSON)** ](#blob) | Basic<br>ManagedIdentity|
 |[**Azure Cosmos DB (SQL)** ](#cosmosdb) | Basic |
 |[**Azure Data Explorer (Kusto)**](#kusto) | Basic<br>ManagedIdentity|
-|[**Azure Data Lake Storage Gen2**](#adl) | Basic<br>DataLakeGen2SharedKey<br>ServicePrincipal<br>ServicePrincipalInKeyVault<br> |
-|[**Azure SQL Database / SQL Server**](#sql) | Basic<br>ManagedIdentity<br>ServicePrincipal<br>ServicePrincipalInKeyVault<br>AzureSQLConnectionString
+|[**Azure Data Lake Storage Gen2**](#adl) | Basic<br>DataLakeGen2SharedKey<br>サービス プリンシパル<br>キー コンテナーからのサービス プリンシパル<br> |
+|[**Azure SQL Database / SQL Server**](#sql) | Basic<br>ManagedIdentity<br>サービス プリンシパル<br>キー コンテナーからのサービス プリンシパル<br>AzureSQLConnectionString
 |[**Azure Table Storage**](#table) | Basic | 
 |[**ElasticSearch**](#es) | Basic |
 |[**HTTP 要求**](#http) | Basic | 
@@ -51,7 +51,7 @@ ms.locfileid: "90931023"
 |[**MySQL**](#mysql) | Basic |
 |[**PostgreSQL**](#pgsql)| Basic|
 
-**認証エンティティ**を作成し、それを使用してデータ ソースへの認証を行います。 以降のセクションでは、"*基本*" 認証に必要なパラメーターを指定します。 
+**資格情報エンティティ**を作成し、それを使用してデータ ソースへの認証を行います。 以降のセクションでは、"*基本*" 認証に必要なパラメーターを指定します。 
 
 ## <a name="span-idappinsightsazure-application-insightsspan"></a><span id="appinsights">Azure Application Insights</span>
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: ae3efec3722570e7e94316c5d874a74c523b1f05
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 12c9b1226e3ba928a4062049c7839d4e46ef727d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86156498"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "91024876"
 ---
 ## <a name="for-users-in-your-directory"></a>ディレクトリ内のユーザーの場合
 
@@ -207,3 +207,33 @@ ms.locfileid: "86156498"
     ![[アクセス パッケージ] - [ポリシー] - [ポリシーを有効にする] 設定](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
 
 1. **[次へ]** をクリックします。
+
+## <a name="add-requestor-information-preview-to-an-access-package"></a>アクセス パッケージに要求元の情報 (プレビュー) を追加する
+
+1. **[Requestor information]\(要求元の情報\)** タブに移動し、 **[質問]** サブタブをクリックします。
+ 
+1. 要求元に質問する内容 (表示文字列とも呼ばれます) を **[質問]** ボックスに質問として入力します。
+
+    ![アクセス パッケージ - ポリシー - 要求元情報の有効化の設定](./media/active-directory-entitlement-management-request-policy/add-requestor-info-question.png)
+
+1. 独自のローカライズ オプションを追加する場合は、 **[add localization]\(ローカリゼーションの追加\)** をクリックします。
+    1. **[Add localizations for question]\(質問のローカリゼーションの追加\)** ペインで、質問をローカライズする言語の**言語コード**を選択します。
+    1. 構成した言語で、**Localized Text\(ローカライズされたテキスト)** ボックスに質問を入力します。
+    1. 必要なすべてのローカライズを追加したら、 **[保存]** をクリックします。
+
+    ![アクセス パッケージ - ポリシー - ローカライズされたテキストの構成](./media/active-directory-entitlement-management-request-policy/add-localization-question.png)
+
+1. 要求元が回答する**回答形式**を選択します。 回答形式には、"*短いテキスト*"、"*複数選択*"、および "*長いテキスト*" があります。
+ 
+    ![アクセス パッケージ - ポリシー - 複数選択の回答形式の表示と編集の選択](./media/active-directory-entitlement-management-request-policy/answer-format-view-edit.png)
+ 
+1. 複数選択を選択した場合、 **[view and edit]\(表示と編集\)** ボタンをクリックして、回答のオプションを構成します。
+    1. [view and edit]\(表示と編集\) を選択すると、 **[View/edit question]\(質問の表示と編集\)** ペインが開きます。
+    1. 質問の回答時に要求元に指定する回答のオプションを、 **[Answer values]\(回答の値\)** ボックスに入力します。
+    1. 必要な数の回答を入力し、 **[保存]** をクリックします。
+    
+    ![アクセス パッケージ - ポリシー - 複数選択オプションの入力](./media/active-directory-entitlement-management-request-policy/answer-multiple-choice.png)
+  
+1. アクセス パッケージへのアクセスの要求時に要求元にこの質問への回答を要求するには、 **[Required]\(必須\)** の下にあるチェック ボックスをオンにします。
+
+1. [Next]\(次へ\) をクリックします

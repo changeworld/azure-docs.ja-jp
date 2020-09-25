@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/05/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f7134d0e8087d17e78a13c958298006e321bd192
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 754a47b3692847957de7f3d666f4dc09dc309d25
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84346379"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "91024817"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>カスタム IPsec/IKE ポリシーはすべての Azure VPN Gateway SKU でサポートされていますか。
 カスタム IPsec/IKE ポリシーは、Basic SKU を除くすべての Azure SKU でサポートされています。
@@ -31,7 +31,7 @@ ms.locfileid: "84346379"
 | ---              | ---                                                                           |
 | IKEv2 暗号化 | AES256、AES192、AES128、DES3、DES                                             |
 | IKEv2 整合性  | SHA384、SHA256、SHA1、MD5                                                     |
-| DH グループ         | DHGroup24、ECP384、ECP256、DHGroup14 (DHGroup2048)、DHGroup2、DHGroup1、なし |
+| DH グループ         | DHGroup24、ECP384、ECP256、DHGroup14 (DHGroup2048)、DHGroup2、DHGroup1、なし  |
 | IPsec 暗号化 | GCMAES256、GCMAES192、GCMAES128、AES256、AES192、AES128、DES3、DES、なし      |
 | IPsec 整合性  | GCMAES256、GCMAES192、GCMAES128、SHA256、SHA1、MD5                            |
 | PFS グループ        | PFS24、ECP384、ECP256、PFS2048、PFS2、PFS1、なし                              |
@@ -99,6 +99,9 @@ SA の有効期間は、ローカルの指定のみとなります。一致し�
 
 ### <a name="do-i-need-to-specify-the-same-policy-on-both-vnet-to-vnet-connection-resources"></a>VNet 間接続の両方のリソースに同じポリシーを指定する必要はありますか。
 はい。 VNet 間トンネルは、Azure 内の 2 つの接続リソースで構成されます (1 方向につき 1 つ)。 両方の接続リソースに同じポリシーを適用する必要があります。それ以外の場合、VNet 間接続は確立されません。
+
+### <a name="what-is-the-default-dpd-timeout-value-can-i-specify-a-different-dpd-timeout"></a>DPD タイムアウトの既定値は何ですか。 別の DPD タイムアウトを指定できますか。
+既定の DPD タイムアウトは 45 秒です。 各 IPsec または VNet 間接続で、9 秒から 3600 秒の間で異なる DPD タイムアウト値を指定できます。
 
 ### <a name="does-custom-ipsecike-policy-work-on-expressroute-connection"></a>ExpressRoute 接続でカスタム IPsec/IKE ポリシーは機能しますか。
 いいえ。 IPsec/IKE ポリシーは、Azure VPN ゲートウェイを介した VNet 間接続と S2S VPN 接続でのみ機能します。

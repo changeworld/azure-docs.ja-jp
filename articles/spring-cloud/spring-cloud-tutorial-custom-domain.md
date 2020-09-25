@@ -7,14 +7,17 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 05107d0246be2273c09e91573bd30a4108ac7795
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: cd10421ddcf752625b8040e1afa4e7b15f142ce2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89290329"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885692"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>既存のカスタム ドメインを Azure Spring Cloud にマップする
+
+**この記事の適用対象:** ✔️ Java ✔️ C#
+
 ドメイン ネーム サービス (DNS) は、ネットワーク全体のネットワーク ノード名を格納するための手法です。 このチュートリアルでは、CNAME レコードを使用して、 www.contoso.com などのドメインをマップします。 証明書を使用してカスタム ドメインをセキュリティで保護し、トランスポート層セキュリティ (TLS。Secure Sockets Layer (SSL) とも呼ばれます) を強制する方法を示します。 
 
 証明書は、Web トラフィックを暗号化します。 これらの TLS/SSL 証明書は、Azure Key Vault に格納できます。 

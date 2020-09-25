@@ -1,0 +1,545 @@
+---
+author: mikben
+ms.service: azure-communication-services
+ms.topic: include
+ms.date: 9/1/2020
+ms.author: mikben
+ms.openlocfilehash: fa7fd73a7d8019919a89dd9e9522b7389dc9c18f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90931642"
+---
+## <a name="prerequisites"></a>前提条件
+
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+- デプロイ済みの Communication Services リソース。 [Communication Services リソースを作成します](../../create-communication-resource.md)。
+- 通話クライアントを有効にするための `User Access Token`。 [`User Access Token` を取得する方法](../../access-tokens.md)についての詳細
+- 省略可能:[アプリケーションへの通話の追加の概要](../getting-started-with-calling.md)に関するクイックスタートを完了します
+
+## <a name="setting-up"></a>設定
+
+### <a name="creating-the-xcode-project"></a>Xcode プロジェクトを作成する
+
+Xcode で、新しい iOS プロジェクトを作成し、 **[単一ビュー アプリ]** テンプレートを選択します。 このクイックスタートでは [SwiftUI フレームワーク](https://developer.apple.com/xcode/swiftui/)を使用します。そのため、 **[言語]** を **[Swift]** に設定し、 **[ユーザー インターフェイス]** を **[SwiftUI]** に設定する必要があります。 このクイックスタートでは、単体テストと UI テストは作成しません。 **[Include Unit Tests]\(単体テストを含める\)** のチェックをオフにし、また、 **[Include UI Tests]\(UI テストを含める\)** のチェックもオフにしてかまいません。
+
+:::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="Xcode 内での新たな [新しいプロジェクト] ウィンドウの作成を示すスクリーンショット。":::
+
+### <a name="install-the-package"></a>パッケージをインストールする
+
+Azure Communication Services 通話クライアント ライブラリとその依存関係 (AzureCore.framework と AzureCommunication.framework) をプロジェクトに追加します。
+
+> [!NOTE]
+> AzureCommunicationCalling SDK のリリースにより、bash スクリプト `BuildAzurePackages.sh` が見つかるようになります。 `sh ./BuildAzurePackages.sh` の実行時、このスクリプトによって、生成されたフレームワーク パッケージへのパスが示されます。これを、次のステップのサンプル アプリにインポートする必要があります。 スクリプトを実行する前に、Xcode コマンド ライン ツールを設定しておく必要があるので注意してください。Xcode を起動し、[設定] -> [場所] の順に選択します。 コマンド ライン ツールの Xcode バージョンを選択します。
+
+1. iOS 用の Azure Communication Services 通話クライアント ライブラリをダウンロードします。
+2. Xcode で、プロジェクト ファイルをクリックし、ビルド ターゲットを選択してプロジェクト設定エディターを開きます。
+3. **[全般]** タブで **[Frameworks, Libraries, and Embedded Content]\(フレームワーク、ライブラリ、埋め込みコンテンツ\)** セクションまでスクロールし、 **[+]** アイコンをクリックします。
+4. ダイアログの左下にある **[ファイルを追加]** を選択し、解凍されたクライアント ライブラリ パッケージの **AzureCommunicationCalling.framework** ディレクトリに移動します。
+    1. **AzureCore.framework** と **AzureCommunication.framework** を追加するための最後の手順を繰り返します。
+5. プロジェクト設定エディターの **[ビルド設定]** タブを開き、 **[検索パス]** セクションまでスクロールします。 **AzureCommunicationCalling.framework** を含むディレクトリに、新しい**フレームワーク検索パス** エントリを追加します。
+    1. 依存関係を含むフォルダーを指す別のフレームワーク検索パス エントリを追加します。
+
+:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="XCode 内のフレームワーク検索パスの更新を示すスクリーンショット。":::
+
+### <a name="request-access-to-the-microphone"></a>マイクへのアクセスを要求する
+
+デバイスのマイクにアクセスするには、アプリの情報プロパティ リストを `NSMicrophoneUsageDescription` によって更新する必要があります。 関連付けられた値を `string` に設定します。これは、ユーザーからのアクセスの要求を求めるためにシステムによって使用されるダイアログに含められます。
+
+プロジェクト ツリーの `Info.plist` のエントリを右クリックし、 **[Open As]\(形式を指定して開く\)**  >  **[Source Code]\(ソース コード\)** の順に選択します。 最上位の `<dict>` セクションに以下の行を追加してから、ファイルを保存します。
+
+```xml
+<key>NSMicrophoneUsageDescription</key>
+<string>Need microphone access for VOIP calling.</string>
+```
+
+### <a name="set-up-the-app-framework"></a>アプリのフレームワークを設定する
+
+プロジェクトの **ContentView. swift** ファイルを開き、ファイルの先頭に `import` 宣言を追加して `AzureCommunicationCalling library` をインポートします。 さらに、`AVFoundation` をインポートします。これは、コード内のオーディオ アクセス許可要求に必要になります。
+
+```swift
+import AzureCommunicationCalling
+import AVFoundation
+```
+
+## <a name="object-model"></a>オブジェクト モデル
+
+iOS 用 Azure Communication Services 通話クライアント ライブラリが備える主な機能のいくつかは、以下のクラスとインターフェイスにより処理されます。
+
+
+| 名前                                  | 説明                                                  |
+| ------------------------------------- | ------------------------------------------------------------ |
+| ACSCallClient | ACSCallClient は、通話クライアント ライブラリへのメイン エントリ ポイントです。|
+| ACSCallAgent | ACSCallAgent は、通話を開始および管理するために使用されます。 |
+| CommunicationUserCredential | CommunicationUserCredential は、CallAgent をインスタンス化するためのトークン資格情報として使用されます。| 
+| CommunicationIndentifier | CommunicationIndentifier はユーザーの ID を表すために使用され、次のいずれかになります: CommunicationUser/PhoneNumber/CallingApplication。 |
+
+> [!NOTE]
+> イベント デリゲートを実装する場合、アプリケーションによって、イベント サブスクリプションを必要とするオブジェクトへの強い参照が保持される必要があります。 たとえば、`call.addParticipant` メソッドの呼び出し時に `ACSRemoteParticipant` オブジェクトが返され、アプリケーションによって `ACSRemoteParticipantDelegate` でリッスンするようにデリゲートが設定された場合には、そのアプリケーションによって `ACSRemoteParticipant` オブジェクトへの強い参照が保持される必要があります。 それ以外の場合に、このオブジェクトが収集されると、呼び出し元の SDK によってオブジェクトの呼び出しが試行されるときに、デリゲートによって致命的な例外がスローされます。
+
+## <a name="initialize-the-acscallagent"></a>ACSCallAgent を初期化する
+
+`ACSCallClient` から `ACSCallAgent` インスタンスを作成するには、初期化されると `ACSCallAgent` オブジェクトを非同期に返す `callClient.createCallAgent` メソッドを使用する必要があります。
+
+通話クライアントを作成するには、`CommunicationUserCredential` オブジェクトを渡す必要があります。
+
+```swift
+
+import AzureCommunication
+
+let tokenString = "token_string"
+var userCredential: CommunicationUserCredential?
+do {
+    userCredential = try CommunicationUserCredential(
+        initialToken: tokenString, refreshProactively: true,
+        tokenRefresher: self.fetchTokenSync
+    )
+} catch {
+    print("Failed to create CommunicationCredential object")
+}
+
+// tokenProvider needs to be implemented by contoso which fetches new token
+public func fetchTokenSync(then onCompletion: TokenRefreshOnCompletion) {
+    let newToken = self.tokenProvider!.fetchNewToken()
+    onCompletion(newToken, nil)
+}
+```
+
+上で作成した CommunicationUserCredential オブジェクトを ACSCallClient に渡します
+
+```swift
+
+callClient = ACSCallClient()
+callClient?.createCallAgent(userCredential!,
+    withCompletionHandler: { (callAgent, error) in
+        if error != nil {
+            print("Create agent succeeded")
+            self.callAgent = callAgent
+        } else {
+            print("Create agent failed")
+        }
+})
+
+```
+
+## <a name="place-an-outgoing-call"></a>発信通話を行う
+
+通話を作成して開始するには、`ACSCallAgent` でいずれかの API を呼び出し、Communication Services 管理クライアント ライブラリを使用してプロビジョニングしたユーザーの Communication Services ID を指定する必要があります。
+
+通話の作成と開始は同期的に行います。 通話のすべてのイベントにサブスクライブできる通話インスタンスを受信します。
+
+### <a name="place-a-11-call-to-a-user-or-a-1n-call-with-users-and-pstn"></a>ユーザーに対する 1:1 の通話、またはユーザーおよび PSTN と 1:n の通話を行う
+
+```swift
+
+let callees = [CommunicationUser(identifier: 'acsUserId')]
+let oneToOneCall = self.CallingApp.callAgent.call(participants: callees, options: ACSStartCallOptions())
+
+```
+
+### <a name="place-a-1n-call-with-users-and-pstn"></a>ユーザーと PSTN で 1:n の通話を行う
+PSTN への通話を行うには、Communication Services で取得した電話番号を指定する必要があります
+```swift
+
+let pstnCallee = PhoneNumber('+1999999999')
+let callee = CommunicationUser(identifier: 'acsUserId')
+let groupCall = self.CallingApp.callAgent.call(participants: [pstnCallee, callee], options: ACSStartCallOptions())
+
+```
+
+### <a name="place-a-11-call-with-with-video"></a>動画を使用して 1:1 の通話を行う
+デバイス マネージャー インスタンスを取得するには、[こちら](#device-management)を参照してください
+
+```swift
+
+let camera = self.deviceManager!.getCameraList()![0]
+let localVideoStream = ACSLocalVideoStream(camera)
+let videoOptions = ACSVideoOptions(localVideoStream)
+
+let startCallOptions = ACSStartCallOptions()
+startCallOptions?.videoOptions = videoOptions
+
+let callee = CommunicationUser(identifier: 'acsUserId')
+let call = self.callAgent?.call([callee], options: startCallOptions)
+
+```
+
+### <a name="join-a-group-call"></a>グループ通話に参加する
+通話に参加するには、*CallAgent* でいずれかの API を呼び出す必要があります
+
+```swift
+
+let groupCallContext = ACSGroupCallContext()
+groupCallContext?.groupId = UUID(uuidString: "uuid_string")!
+let call = self.callAgent?.join(with: groupCallContext, joinCallOptions: ACSJoinCallOptions())
+
+```
+
+## <a name="push-notification"></a>プッシュ通知
+
+モバイル プッシュ通知は、モバイル デバイスで受け取るポップアップ通知です。 通話に関しては、Microsoft では VoIP (ボイス オーバー IP 通話) プッシュ通知に注目しています。 プッシュ通知に登録し、プッシュ通知を処理し、プッシュ通知を登録解除する機能が提供される予定です。
+
+### <a name="prerequisite"></a>前提条件
+
+- 手順 1:[Xcode] -> [Signing & Capabilities]\(署名と機能\) -> [Add Capability]\(機能の追加\) -> [Push Notifications]\(プッシュ通知\)
+- 手順 2:[Xcode] -> [Signing & Capabilities]\(署名と機能\) -> [Add Capability]\(機能の追加\) -> [Background Modes]\(バックグラウンド モード\)
+- 手順 3:[Background Modes]\(バックグラウンド モード\)-> [Voice over IP]\(ボイスオーバー IP\) と [リモート通知] を選択する
+
+:::image type="content" source="../media/ios/xcode-push-notification.png" alt-text="Xcode での機能の追加方法を示すスクリーンショット。" lightbox="../media/ios/xcode-push-notification.png":::
+
+#### <a name="register-for-push-notifications"></a>プッシュ通知に登録する
+
+プッシュ通知に登録するには、デバイス登録トークンを使用して *CallAgent* インスタンスで registerPushNotification() を呼び出します。
+
+初期化が正常に完了した後、プッシュ通知の登録が呼び出される必要があります。 `callAgent` オブジェクトが破棄されると、`logout` が呼び出されて、プッシュ通知が自動的に登録解除されます。
+
+
+```swift
+
+let deviceToken: Data = pushRegistry?.pushToken(for: PKPushType.voIP)
+callAgent.registerPushNotifications(deviceToken,
+                withCompletionHandler: { (error) in
+    if(error == nil) {
+        print("Successfully registered to push notification.")
+    } else {
+        print("Failed to register push notification.")
+    }
+})
+
+```
+
+#### <a name="push-notification-handling"></a>プッシュ通知の処理
+着信通話プッシュ通知を受信するには、ディクショナリ ペイロードを設定して *CallAgent* インスタンスで *handlePushNotification()* を呼び出します。
+
+```swift
+
+let dictionaryPayload = pushPayload?.dictionaryPayload
+callAgent.handlePushNotification(dictionaryPayload, withCompletionHandler: { (error) in
+    if (error != nil) {
+        print("Handling of push notification failed")
+    } else {
+        print("Handling of push notification was successful")
+    }
+})
+
+```
+#### <a name="unregister-push-notification"></a>プッシュ通知の登録を解除する
+
+アプリケーションによって、プッシュ通知の登録はいつでも解除できます。 *CallAgent* で `unRegisterPushNotification` メソッドを呼び出すだけです。
+> [!NOTE]
+> ログアウト時に、プッシュ通知からアプリケーションが自動的に登録解除されることはありません。
+
+```swift
+
+callAgent.unRegisterPushNotifications(completionHandler: { (error) in
+    if (error != nil) {
+        print("Unregister of push notification failed, please try again")
+    } else {
+        print("Unregister of push notification was successful")
+    }
+})
+
+```
+
+## <a name="mid-call-operations"></a>通話中の操作
+
+通話の間にさまざまな操作を実行し、動画やオーディオに関連する設定を管理できます。
+
+### <a name="mute-and-unmute"></a>ミュートとミュート解除
+
+ローカル エンドポイントをミュートまたはミュート解除するには、非同期 API の `mute` と `unmute` を使用できます。
+
+```swift
+call.mute(completionHandler: { (error) in
+    if error == nil {
+        print("Successfully muted")
+    } else {
+        print("Failed to mute")
+    }
+})
+
+```
+
+[非同期] ローカル ミュート解除
+
+```swift
+call.unmute(completionHandler:{ (error) in
+    if error == nil {
+        print("Successfully un-muted")
+    } else {
+        print("Failed to unmute")
+    }
+})
+```
+
+### <a name="start-and-stop-sending-local-video"></a>ローカル動画の送信を開始および停止する
+
+通話で他の参加者へのローカル動画の送信を開始するには、`startVideo` API を使用し、`camera` によって `localVideoStream` を渡します
+
+```swift
+
+let firstCamera: ACSVideoDeviceInfo? = self.deviceManager?.getCameraList()![0]
+let localVideoStream = ACSLocalVideoStream(firstCamera)
+
+call.startVideo(localVideoStream) { (error) in
+    if (error == nil) {
+        print("Local video started successfully")
+    }
+    else {
+        print("Local video failed to start")
+    }
+}
+
+```
+
+動画の送信を開始すると、`ACSLocalVideoStream` インスタンスが通話インスタンスの `localVideoStreams` コレクションに追加されます。
+
+```swift
+
+call.localVideoStreams[0]
+
+```
+
+[非同期] ローカル動画を停止するには、`call.startVideo` の呼び出しから返された `localVideoStream` を渡します。
+
+```swift
+
+call.stopVideo(localVideoStream,{ (error) in
+    if (error == nil) {
+        print("Local video stopped successfully")
+    }
+    else {
+        print("Local video failed to stop")
+    }
+}
+
+```
+
+## <a name="remote-participants-management"></a>リモート参加者の管理
+
+すべてのリモート参加者は `ACSRemoteParticipant` 型で表され、通話インスタンスの `remoteParticipants` コレクションを通して使用できます。
+
+### <a name="list-participants-in-a-call"></a>通話の参加者を一覧表示する
+
+```swift
+
+call.remoteParticipants
+
+```
+
+### <a name="remote-participant-properties"></a>リモート参加者のプロパティ
+
+```swift
+
+// [ACSRemoteParticipantDelegate] delegate - an object you provide to receive events from this ACSRemoteParticipant instance
+var remoteParticipantDelegate = remoteParticipant.delegate
+
+// [CommunicationIdentifier] identity - same as the one used to provision token for another user
+var identity = remoteParticipant.identity
+
+// ACSParticipantStateIdle = 0, ACSParticipantStateEarlyMedia = 1, ACSParticipantStateConnecting = 2, ACSParticipantStateConnected = 3, ACSParticipantStateOnHold = 4, ACSParticipantStateInLobby = 5, ACSParticipantStateDisconnected = 6
+var state = remoteParticipant.state
+
+// [ACSError] callEndReason - reason why participant left the call, contains code/subcode/message
+var callEndReason = remoteParticipant.callEndReason
+
+// [Bool] isMuted - indicating if participant is muted
+var isMuted = remoteParticipant.isMuted
+
+// [Bool] isSpeaking - indicating if participant is currently speaking
+var isSpeaking = remoteParticipant.isSpeaking
+
+// ACSRemoteVideoStream[] - collection of video streams this participants has
+var videoStreams = remoteParticipant.videoStreams // [ACSRemoteVideoStream, ACSRemoteVideoStream, ...]
+
+```
+
+### <a name="add-a-participant-to-a-call"></a>通話に参加者を追加する
+
+通話に参加者を追加するには (ユーザーまたは電話番号のいずれか)、`addParticipant` を呼び出します。 これにより、リモート参加者インスタンスが同期的に返されます。
+
+```swift
+
+let remoteParticipantAdded: ACSRemoteParticipant = call.addParticipant(CommunicationUser(identifier: "userId"))
+
+```
+
+### <a name="remove-a-participant-from-a-call"></a>通話から参加者を削除する
+通話から参加者を削除するには (ユーザーまたは電話番号のいずれか)、`removeParticipant` API を呼び出します。 これは、非同期に解決されます。
+
+```swift
+
+call!.remove(remoteParticipantAdded) { (error) in
+    if (error == nil) {
+        print("Successfully removed participant")
+    } else {
+        print("Failed to remove participant")
+    }
+}
+
+```
+
+## <a name="render-remote-participant-video-streams"></a>リモート参加者の動画ストリームをレンダリングする
+
+リモート参加者は、通話中に動画または画面共有を開始できます。
+
+### <a name="handle-remote-participant-videoscreen-sharing-streams"></a>リモート参加者の動画/画面共有ストリームを処理する
+
+リモート参加者のストリームを一覧表示するには、`videoStreams` コレクションを調べます。
+
+```swift
+
+var remoteParticipantVideoStream = call.remoteParticipants[0].videoStreams[0]
+
+```
+
+### <a name="remote-video-stream-properties"></a>リモート動画ストリームのプロパティ
+
+```swift
+
+var type: ACSMediaStreamType = remoteParticipantVideoStream.type // 'ACSMediaStreamTypeVideo'
+
+var isAvailable: Bool = remoteParticipantVideoStream.isAvailable // indicates if remote stream is available
+
+var id: Int = remoteParticipantVideoStream.id // id of remoteParticipantStream
+
+```
+
+### <a name="render-remote-participant-stream"></a>リモート参加者のストリームをレンダリングする
+
+リモート参加者のストリームのレンダリングを開始するには、次を利用します。
+
+```swift
+
+let renderer: ACSRenderer? = ACSRenderer(remoteVideoStream: remoteParticipantVideoStream)
+let targetRemoteParticipantView: ACSRendererView? = renderer?.createView(ACSRenderingOptions(ACSScalingMode.crop))
+// To update the scaling mode later
+targetRemoteParticipantView.update(ACSScalingMode.fit)
+
+```
+
+### <a name="remote-video-renderer-methods-and-properties"></a>リモート動画レンダラーのメソッドとプロパティ
+
+```swift
+// [Bool] isRendering - indicating if stream is being rendered
+remoteVideoRenderer.isRendering()
+```
+
+## <a name="device-management"></a>デバイス管理
+
+`DeviceManager` を使用すると、オーディオと動画のストリームを送信するために通話内で使用できるローカル デバイスを列挙できます。 また、マイクやカメラにアクセスするための許可をユーザーに要求することもできます。 `callClient` オブジェクトの `deviceManager` にアクセスできます。
+
+```swift
+
+self.callClient!.getDeviceManager(
+    completionHandler: { (deviceManager, error) in
+        if (error == nil) {
+            print("Got device manager instance")
+            self.deviceManager = deviceManager
+        } else {
+            print("Failed to get device manager instance")
+        }
+    })
+```
+
+### <a name="enumerate-local-devices"></a>ローカル デバイスを列挙する
+
+ローカル デバイスにアクセスするには、デバイス マネージャーで列挙メソッドを使用します。 列挙は同期アクションです。
+
+```swift
+// enumerate local cameras
+var localCameras = deviceManager.getCameraList() // [ACSVideoDeviceInfo, ACSVideoDeviceInfo...]
+// enumerate local cameras
+var localMicrophones = deviceManager.getMicrophoneList() // [ACSAudioDeviceInfo, ACSAudioDeviceInfo...]
+// enumerate local cameras
+var localSpeakers = deviceManager.getSpeakerList() // [ACSAudioDeviceInfo, ACSAudioDeviceInfo...]
+``` 
+
+### <a name="set-default-microphonespeaker"></a>既定のマイクとスピーカーを設定する
+
+デバイス マネージャーを使用すると、通話の開始時に使用される既定のデバイスを設定できます。 スタックの既定値が設定されていない場合、Communication Services は OS の既定値にフォールバックします。
+
+```swift
+// get first microphone
+var firstMicrophone = self.deviceManager!.getMicrophoneList()![0]
+// [Synchronous] set microphone
+deviceManager.setMicrophone(ACSAudioDeviceInfo())
+// get first speaker
+var firstSpeaker = self.deviceManager!.getSpeakerList()![0]
+// [Synchronous] set speaker
+deviceManager.setSpeakers(ACSAudioDeviceInfo())
+```
+
+### <a name="local-camera-preview"></a>ローカル カメラのプレビュー
+
+`ACSRenderer` を使用して、ローカル カメラからのストリームのレンダリングを開始できます。 このストリームは、他の参加者には送信されません。ローカル プレビュー フィードです。 これは、非同期アクションです。
+
+```swift
+
+let camera: ACSVideoDeviceInfo = self.deviceManager!.getCameraList()![0]
+let localVideoStream: ACSLocalVideoStream = ACSLocalVideoStream(camera)
+let renderer: ACSRenderer = ACSRenderer(localVideoStream: localVideoStream)
+self.view = renderer!.createView(ACSRenderingOptions())
+
+```
+
+### <a name="local-camera-preview-properties"></a>ローカル カメラのプレビューのプロパティ
+
+レンダラーには、レンダリングを制御できるプロパティとメソッドのセットが用意されています。
+
+```swift
+
+// Constructor can take in ACSLocalVideoStream or ACSRemoteVideoStream
+let localRenderer = ACSRenderer(localVideoStream:localVideoStream)
+let remoteRenderer = ACSRenderer(remoteVideoStream:remoteVideoStream)
+
+// [ACSStreamSize] size of the rendering view
+localRenderer.size
+
+// [ACSRendererDelegate] an object you provide to receive events from this ACSRenderer instance
+localRenderer.delegate
+
+// [Synchronous] create view with rendering options
+localRenderer.createView(options:ACSRenderingOptions())
+// [Synchronous] dispose rendering view
+localRenderer.dispose()
+
+```
+
+## <a name="eventing-model"></a>イベント モデル
+
+値が変更されたときに通知を受け取るように、ほとんどのプロパティとコレクションをサブスクライブすることができます。
+
+### <a name="properties"></a>Properties
+`property changed` イベントをサブスクライブするには:
+
+```swift
+call.delegate = self
+// Get the property of the call state by doing get on the call's state member
+public func onCallStateChanged(_ call: ACSCall!,
+                               _ args: ACSPropertyChangedEventArgs!)
+{
+    print("Callback from SDK when the call state changes, current state: " + call.state.rawValue)
+}
+
+ // to unsubscribe
+ self.call.delegate = nil
+
+```
+
+### <a name="collections"></a>コレクション
+`collection updated` イベントをサブスクライブするには:
+
+```swift
+call.delegate = self
+// Collection contains the streams that were added or removed only
+public func onLocalVideoStreamsChanged(_ call: ACSCall!,
+                                       _ args: ACSLocalVideoStreamsUpdatedEventArgs!)
+{
+    print(args.addedStreams.count)
+    print(args.removedStreams.count)
+}
+// to unsubscribe
+self.call.delegate = nil
+```

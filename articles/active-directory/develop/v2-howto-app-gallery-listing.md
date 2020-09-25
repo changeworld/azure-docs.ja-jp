@@ -12,12 +12,12 @@ ms.date: 08/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 1ce8f376d3264a06618cb7321c75142dcf92d9ea
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: dc271fa768bee66107e66a1b8d4f16c1188ce418
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88891863"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439746"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>アプリを Azure AD アプリ ギャラリーで公開する
 
@@ -278,5 +278,5 @@ Microsoft Partner Network では、排他的なリソース、プログラム、
 
 
 ## <a name="next-steps"></a>次のステップ
-
-Azure AD のサインインをサポートするアプリケーションの作成の詳細については、「[Azure AD の認証シナリオ](authentication-flows-app-scenarios.md)」を参照してください。
+* [SCIM エンドポイントの構築とユーザー プロビジョニングの構成](../app-provisioning/use-scim-to-provision-users-and-groups.md)
+* [Azure AD の認証シナリオ](authentication-flows-app-scenarios.md)

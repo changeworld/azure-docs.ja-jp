@@ -1,6 +1,6 @@
 ---
 title: 発行者確認の概要 - Microsoft ID プラットフォーム | Microsoft
-description: Microsoft ID プラットフォームの発行者確認プログラム (プレビュー) の概要について説明します。 利点、プログラムの要件、よく寄せられる質問の一覧を示します。 アプリケーションが発行者確認済みとしてマークされている場合は、Microsoft Partner Network アカウントを使用する ID の確認プロセスが完了していることを発行者が確認し、発行者がこの MPN アカウントをアプリケーションの登録に関連付けていることを意味します。
+description: Microsoft ID プラットフォームの発行者確認プログラムの概要について説明します。 利点、プログラムの要件、よく寄せられる質問の一覧を示します。 アプリケーションが発行者確認済みとしてマークされている場合は、Microsoft Partner Network アカウントを使用する ID の確認プロセスが完了していることを発行者が確認し、発行者がこの MPN アカウントをアプリケーションの登録に関連付けていることを意味します。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,16 +12,16 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 286f813c825bcc05ce8e9fa43df5dc0299625277
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 0c30b5305fb5496db86a20be7a37f36b894ecc8b
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068475"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089753"
 ---
-# <a name="publisher-verification-preview"></a>発行者の確認 (プレビュー)
+# <a name="publisher-verification"></a>発行者の確認
 
-発行者の確認 (プレビュー) は、管理者とエンド ユーザーが、Microsoft ID プラットフォームと統合するアプリケーション開発者の信頼性を理解するのに役立ちます。 アプリケーションが発行者確認済みとしてマークされている場合は、[Microsoft Partner Network](https://partner.microsoft.com/membership) アカウントを使用する ID の[確認](/partner-center/verification-responses)プロセスが完了していることを発行者が確認し、発行者がこの MPN アカウントをアプリケーションの登録に関連付けていることを意味します。 
+発行者の確認は、管理者とエンド ユーザーが、Microsoft ID プラットフォームと統合するアプリケーション開発者の信頼性を理解するのに役立ちます。 アプリケーションが発行者確認済みとしてマークされている場合は、[Microsoft Partner Network](https://partner.microsoft.com/membership) アカウントを使用する ID の[確認](/partner-center/verification-responses)プロセスが完了していることを発行者が確認し、発行者がこの MPN アカウントをアプリケーションの登録に関連付けていることを意味します。 
 
 Azure AD の同意プロンプトや他の画面に、青い "確認済み" バッジが表示されます。![同意プロンプト](./media/publisher-verification-overview/consent-prompt.png)
 
@@ -33,7 +33,7 @@ Azure AD の同意プロンプトや他の画面に、青い "確認済み" バ�
 
 - **ブランド化の向上** - "確認済み" バッジが、Azure AD [同意プロンプト](application-consent-experience.md)、エンタープライズ アプリ ページ、およびエンド ユーザーと管理者によって使用されるその他の UX サーフェイスに表示されます。 
 
-- **よりスムーズなエンタープライズ導入** - 管理者は新しいユーザー同意ポリシーを構成でき、発行者確認の状態は主要なポリシー条件の 1 つになります。 
+- **よりスムーズなエンタープライズ導入** - 管理者は[ユーザー同意ポリシー](../manage-apps/configure-user-consent.md)を構成でき、発行者確認の状態は主要なポリシー条件の 1 つになります。 
 
 - **リスク評価の向上** - Microsoft による "リスクの高い" 同意要求の検出には、発行者確認がシグナルとして含まれます。 
 
@@ -52,6 +52,8 @@ Azure AD の同意プロンプトや他の画面に、青い "確認済み" バ�
 
     -  パートナー センターでは、このユーザーには次のいずれかの[ロール](/partner-center/permissions-overview)が必要です: MPN 管理者、アカウント管理者、全体管理者 (これは、Azure AD で管理されている共有ロールです)。
     
+-  確認を実行するユーザーは、[多要素認証](../authentication/howto-mfa-getstarted.md)を使用してサインインする必要があります。
+
 -  発行者は、[開発者用の Microsoft ID プラットフォームの使用条件](/legal/microsoft-identity-platform/terms-of-use)に同意します。
 
 これらの前提条件を既に満たしている開発者は、数分で確認を受けることができます。 要件が満たされていない場合は、無料でセットアップできます。 

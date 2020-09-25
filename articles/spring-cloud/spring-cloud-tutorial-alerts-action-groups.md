@@ -7,14 +7,16 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 856bace0c67c5afedd6305158326af46037e7f21
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: dc8dffb12dcd205671e2219dbef45ac14f9f7df7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299229"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892534"
 ---
 # <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>チュートリアル:アラートとアクション グループを使用して Spring Cloud のリソースを監視する方法
+
+**この記事の適用対象:** ✔️ Java ✔️ C#
 
 Azure Spring Cloud のアラートは、使用可能なストレージ、要求の速度、データ使用状況などの条件に基づくリソースの監視をサポートします。 速度や条件が定義済みの仕様を満たしたときにアラートから通知が送信されます。
 
@@ -58,11 +60,11 @@ Azure Spring Cloud のアラートは、使用可能なストレージ、要求�
 
 ## <a name="set-up-alert"></a>アラートを設定する 
 
-前の手順では、メールを使用する**アクション グループ**を作成しました。 電話による通知や Webhook、Azure 関数なども使用できます。  
+前の手順では、メールを使用する**アクション グループ**を作成しました。 電話による通知や Webhook、Azure 関数なども使用できます。 以下の手順では、**アラート**を構成します。
 
-**アラート**を構成するには、 **[アラート]** ページに戻って **[アラート ルールの管理]** をクリックします。
+1. **[アラート]** ページに戻って、 **[アラート ルールの管理]** をクリックします。
 
-  ![ポータルのアラート定義のスクリーンショット](media/alerts-action-groups/alerts-2.png)
+   ![ポータルのアラート定義のスクリーンショット](media/alerts-action-groups/alerts-2.png)
 
 1. アラート対象の**リソース**を選択します。
 
@@ -84,9 +86,9 @@ Azure Spring Cloud のアラートは、使用可能なストレージ、要求�
 
 1. **[Done]** をクリックします。
 
-監視に使用できる条件の詳細については、「[ユーザー ポータルのメトリック オプション](spring-cloud-concept-metrics.md#user-metrics-options)」を参照してください。
+   監視に使用できる条件の詳細については、「[ユーザー ポータルのメトリック オプション](spring-cloud-concept-metrics.md#user-metrics-options)」を参照してください。
 
- **[アクション]** で、 **[アクション グループの選択]** をクリックします。 **[アクション]** ペインで、先ほど定義した**アクション グループ**を選択します。
+1. **[アクション]** で、 **[アクション グループの選択]** をクリックします。 **[アクション]** ペインで、先ほど定義した**アクション グループ**を選択します。
 
    ![ポータルの [新しいアラート ルール] のスクリーンショット 4](media/alerts-action-groups/alerts-3-3.png) 
 
@@ -98,13 +100,13 @@ Azure Spring Cloud のアラートは、使用可能なストレージ、要求�
 
    ![ポータルの [新しいアラート ルール] のスクリーンショット 5](media/alerts-action-groups/alerts-3-4.png)
 
-新しいアラート ルールが有効になっていることを確認します。
+1. 新しいアラート ルールが有効になっていることを確認します。
 
    ![ポータルの [新しいアラート ルール] のスクリーンショット 6](media/alerts-action-groups/alerts-4.png)
 
 **[Metrics]\(メトリック\)** ページを使用してルールを作成することもできます。
 
-   ![ポータルの [新しいアラート ルール] のスクリーンショット 7](media/alerts-action-groups/alerts-5.png)
+![ポータルの [新しいアラート ルール] のスクリーンショット 7](media/alerts-action-groups/alerts-5.png)
 
 ## <a name="next-steps"></a>次のステップ
 

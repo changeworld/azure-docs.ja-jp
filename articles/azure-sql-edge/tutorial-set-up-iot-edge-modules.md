@@ -7,14 +7,14 @@ ms.service: sql-edge
 ms.topic: tutorial
 author: VasiyaKrishnan
 ms.author: vakrishn
-ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: a4087ef56712e098443009bd0457029394ea7b51
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.reviewer: sourabha, sstein
+ms.date: 09/22/2020
+ms.openlocfilehash: 7b2432fda70e8f9a5fa8bc64ede846d977672e9e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235034"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90886489"
 ---
 # <a name="set-up-iot-edge-modules-and-connections"></a>IoT Edge のモジュールと接続を設定する
 
@@ -22,39 +22,6 @@ Azure SQL Edge で鉄鉱石の不純物を予測する、この 3 部構成チ�
 
 - Azure SQL Edge
 - データ ジェネレーター IoT Edge モジュール
-
-## <a name="create-azure-stream-analytics-module"></a>Azure Stream Analytics モジュールの作成
-
-このチュートリアルで使用する Azure Stream Analytics モジュールを作成します。 SQL Edge でのストリーミング ジョブの使用の詳細については、[SQL Edge でのストリーミング ジョブの使用](stream-analytics.md)に関するページを参照してください。
-
-Edge として設定されたホスティング環境で、Azure Stream Analytics ジョブが作成されたら、チュートリアルの入力と出力を設定します。
-
-1. **入力**を作成するには、 **[+ ストリーム入力の追加]** をクリックします。 [詳細] セクションに次の情報を入力します。
-
-   フィールド|値
-   -----|-----
-   イベント シリアル化形式|JSON
-   エンコード|UTF-8
-   イベントの圧縮タイプ|なし
-
-2. **出力**を作成するには、 **[+ 追加]** をクリックし、[SQL Database] を選択します。 [詳細] セクションに次の情報を入力します。
-
-   > [!NOTE]
-   > このセクションで指定したパスワードは、SQL Edge モジュールを「**Azure SQL Edge モジュールのデプロイ**」セクションでデプロイするときに SQL SA パスワードとして指定する必要があります。
-
-   フィールド|値
-   -----|-----
-   データベース|IronOreSilicaPrediction
-   サーバー名|tcp:.,1433
-   ユーザー名|sa
-   Password|強力なパスワードを指定
-   テーブル|IronOreMeasurements1
-
-3. **[クエリ]** セクションに移動し、次のようにクエリを設定します。
-
-   `SELECT * INTO <name_of_your_output_stream> FROM <name_of_your_input_stream>`
-   
-4. **[Configure]\(構成\)** で、 **[Publish]\(発行\)** を選択し、 **[Publish]\(発行\)** ボタンを選択します。 SQL Database Edge モジュールで使用するための SAS URI を保存します。
 
 ## <a name="specify-container-registry-credentials"></a>コンテナー レジストリの資格情報の指定
 
@@ -84,10 +51,12 @@ Edge として設定されたホスティング環境で、Azure Stream Analytic
   
 ## <a name="deploy-the-data-generator-module"></a>データ ジェネレーター モジュールのデプロイ
 
-1. **[IoT Edge モジュール]** セクションで、 **[+ 追加]** をクリックし、 **[IoT Edge モジュール]** を選択します。
+1. **[IoT Edge]** セクションの **[デバイスの自動管理]** で **[デバイス ID]** をクリックします。 このチュートリアルの ID は `IronOrePredictionDevice` です。次に **[モジュールの設定]** をクリックします。
 
-2. IoT Edge モジュール名とイメージ URI を指定します。
-   イメージ URI は、リソース グループのコンテナー レジストリにあります。 **[サービス]** の下にある **[リポジトリ]** セクションを選択します。 このチュートリアルでは、`silicaprediction` という名前のリポジトリを選択します。 適切なタグを選択します。 イメージの URI の形式は次のとおりです。
+2.  **[デバイスのモジュールを設定してください:]** ページの **[IoT Edge モジュール]** セクションで、 **[+ 追加]** をクリックして **[IoT Edge モジュール]** を選択します。
+
+3. [IoT Edge モジュール] に有効な名前およびイメージ URI を入力します。
+   イメージ URI は、このチュートリアルのパート 1 で作成されたリソース グループのコンテナー レジストリで確認できます。 **[サービス]** の下にある **[リポジトリ]** セクションを選択します。 このチュートリアルでは、`silicaprediction` という名前のリポジトリを選択します。 適切なタグを選択します。 イメージの URI の形式は次のとおりです。
 
    *<コンテナー レジストリのログイン サーバー>* / *<リポジトリ名>* : *<タグ名>*
 
@@ -97,36 +66,142 @@ Edge として設定されたホスティング環境で、Azure Stream Analytic
    ASEdemocontregistry.azurecr.io/silicaprediction:amd64
    ```
 
-3. **[追加]** をクリックします。
+4. *[再起動ポリシー]* と *[必要な状態]* の各フィールドはそのままにします。
+
+5. **[追加]** をクリックします。
+
 
 ## <a name="deploy-the-azure-sql-edge-module"></a>Azure SQL Edge モジュールのデプロイ
 
-1. 「[Azure SQL Edge (プレビュー) をデプロイする](https://docs.microsoft.com/azure/azure-sql-edge/deploy-portal)」の手順に従って、Azure SQL Edge モジュールをデプロイします。
+1. **[+ 追加]** 、 **[Marketplace モジュール]** の順にクリックして、Azure SQL Edge モジュールをデプロイします。 
 
-2. **[モジュールの設定]** ページの **[Specify Route]\(ルートの指定\)** で、モジュールから IoT Edge ハブへの通信のためのルートを次のように指定します。 
+2. **[IoT Edge モジュールの Marketplace]** ブレードで、*Azure SQL Edge* を検索して *[Azure SQL Edge Developer]* を選択します。 
+
+3. **[IoT Edge モジュール]** に新しく追加された *Azure SQL Edge* モジュールをクリックして、Azure SQL Edge モジュールを構成します。 構成オプションの詳細については、「[Azure SQL Edge のデプロイ](https://docs.microsoft.com/azure/azure-sql-edge/deploy-portal)」を参照してください。
+
+4. *Azure SQL Edge* モジュールのデプロイに `MSSQL_PACKAGE` 環境変数を追加して、このチュートリアルの[パート 1](tutorial-deploy-azure-resources.md) の手順 8 で作成したデータベース DACPAC ファイルの SAS URL を指定します。
+
+5. **[update]\(更新\)** をクリックします。
+
+6. **[デバイスのモジュールを設定してください]** ページで **[次へ: ルート] >** をクリックします。
+
+7. **[デバイスのモジュールを設定してください]** ページのルート ペインで、IoT Edge ハブ通信へのモジュールのルートを次のように指定します。 下記のルート定義でモジュール名を忘れずに更新してください。
 
    ```
-   FROM /messages/modules/<your_data_generator_module>/outputs/<your_output_stream_name> INTO
-   BrokeredEndpoint("/modules/<your_azure_sql_edge_module>/inputs/<your_input_stream_name>")
+   FROM /messages/modules/<your_data_generator_module>/outputs/IronOreMeasures INTO
+   BrokeredEndpoint("/modules/<your_azure_sql_edge_module>/inputs/IronOreMeasures")
    ```
 
    次に例を示します。
 
    ```
-   FROM /messages/modules/ASEDataGenerator/outputs/IronOreMeasures INTO BrokeredEndpoint("/modules/AzureSQLEdge/inputs/Input1")
+   FROM /messages/modules/ASEDataGenerator/outputs/IronOreMeasures INTO BrokeredEndpoint("/modules/AzureSQLEdge/inputs/IronOreMeasures")
    ```
 
-3. **モジュール ツイン**の設定では、チュートリアルで前に保存した関連する SAS URL で SQLPackage と ASAJonInfo を更新してください。
 
-   ```json
-       {
-         "properties.desired":
-         {
-           "SqlPackage": "<Optional_DACPAC_ZIP_SAS_URL>",
-           "ASAJobInfo": "<Optional_ASA_Job_ZIP_SAS_URL>"
-         }
-       }
+7. **[デバイスのモジュールを設定してください]** ページで、 **[次へ: 確認と作成] >** をクリックします。
+
+8. **[デバイスのモジュールを設定してください]** ページで **[作成]** をクリックします
+
+## <a name="create-and-start-the-t-sql-streaming-job-in-azure-sql-edge"></a>Azure SQL Edge で T-SQL ストリーミング ジョブを作成して開始します。
+
+1. Azure Data Studio を開きます。
+
+2. **[ようこそ]** タブで、次の詳細情報を使用して新しい接続を開始します。
+
+   |_フィールド_|_Value_|
+   |-------|-------|
+   |接続の種類| Microsoft SQL Server|
+   |サーバー|このデモのために作成された VM で示されているパブリック IP アドレス|
+   |ユーザー名|sa|
+   |Password|Azure SQL Edge インスタンスの作成時に使用された強力なパスワード|
+   |データベース|Default|
+   |[サーバー グループ]|Default|
+   |Name (名前) (省略可能)|必要に応じて名前を付けます。|
+
+3. **[接続]**
+
+4. **[ファイル]** メニュー タブで新しいノートブックを開くか、キーボード ショートカット Ctrl + N を使用します。
+
+5. [新しいクエリ] ウィンドウで、T-SQL ストリーミング ジョブを作成する次のスクリプトを実行します。 スクリプトを実行する前に、次の変数を変更してください。 
+   - *SQL_SA_Password:* Azure SQL Edge モジュールのデプロイ時に指定した MSSQL_SA_PASSWORD 値。 
+   
+   ```sql
+   Use IronOreSilicaPrediction
+   Go
+
+   Declare @SQL_SA_Password varchar(200) = '<SQL_SA_Password>'
+   declare @query varchar(max) 
+
+   /*
+   Create Objects Required for Streaming
+   */
+
+   CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'MyStr0ng3stP@ssw0rd';
+
+   If NOT Exists (select name from sys.external_file_formats where name = 'JSONFormat')
+   Begin
+      CREATE EXTERNAL FILE FORMAT [JSONFormat]  
+      WITH ( FORMAT_TYPE = JSON)
+   End 
+
+
+   If NOT Exists (select name from sys.external_data_sources where name = 'EdgeHub')
+   Begin
+      Create EXTERNAL DATA SOURCE [EdgeHub] 
+      With(
+         LOCATION = N'edgehub://'
+      )
+   End 
+
+   If NOT Exists (select name from sys.external_streams where name = 'IronOreInput')
+   Begin
+      CREATE EXTERNAL STREAM IronOreInput WITH 
+      (
+         DATA_SOURCE = EdgeHub,
+         FILE_FORMAT = JSONFormat,
+         LOCATION = N'IronOreMeasures'
+       )
+   End
+
+
+   If NOT Exists (select name from sys.database_scoped_credentials where name = 'SQLCredential')
+   Begin
+       set @query = 'CREATE DATABASE SCOPED CREDENTIAL SQLCredential
+                 WITH IDENTITY = ''sa'', SECRET = ''' + @SQL_SA_Password + ''''
+       Execute(@query)
+   End 
+
+   If NOT Exists (select name from sys.external_data_sources where name = 'LocalSQLOutput')
+   Begin
+      CREATE EXTERNAL DATA SOURCE LocalSQLOutput WITH (
+      LOCATION = 'sqlserver://tcp:.,1433',CREDENTIAL = SQLCredential)
+   End
+
+   If NOT Exists (select name from sys.external_streams where name = 'IronOreOutput')
+   Begin
+      CREATE EXTERNAL STREAM IronOreOutput WITH 
+      (
+         DATA_SOURCE = LocalSQLOutput,
+         LOCATION = N'IronOreSilicaPrediction.dbo.IronOreMeasurements'
+      )
+   End
+
+   EXEC sys.sp_create_streaming_job @name=N'IronOreData',
+   @statement= N'Select * INTO IronOreOutput from IronOreInput'
+
+   exec sys.sp_start_streaming_job @name=N'IronOreData'
    ```
+
+6. 次のクエリを使用して、データ生成モジュールからデータベースにデータがストリーム配信されていることを確認します。 
+
+   ```sql
+   Select Top 10 * from dbo.IronOreMeasurements
+   order by timestamp desc
+   ```
+
+
+このチュートリアルでは、データ ジェネレーター モジュールと SQL Edge モジュールをデプロイしました。 その後、データ生成モジュールによって生成されたデータを SQL にストリーム配信するストリーミング ジョブを作成しました。 
 
 ## <a name="next-steps"></a>次の手順
 

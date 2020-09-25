@@ -6,12 +6,12 @@ ms.author: jumeder
 ms.date: 06/15/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9ee6945cec4c2441334e665947568743aaf29226
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ebde1be459078f4f3473ebc3042d8acebcce910a
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013590"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613739"
 ---
 # <a name="debug-rendering"></a>デバッグ レンダリング
 
@@ -74,6 +74,10 @@ void EnableDebugRenderingEffects(ApiHandle<AzureSession> session, bool highlight
 
 * テキスト オーバーレイを有効にした場合、パフォーマンスのオーバーヘッドはほとんど発生しません。
 * ワイヤーフレーム モードを有効にすると、かなりのパフォーマンスのオーバーヘッドが発生します。ただし、これはシーンによって異なる場合があります。 複雑なシーンでは、このモードによってフレーム レートが 60 Hz のターゲットを下回ることがあります。
+
+## <a name="api-documentation"></a>API のドキュメント
+
+* [C++ RemoteManager::DebugRenderingSettings()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#debugrenderingsettings)
 
 ## <a name="next-steps"></a>次のステップ
 

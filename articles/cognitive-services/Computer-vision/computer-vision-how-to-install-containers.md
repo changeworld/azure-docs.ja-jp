@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 43fad8d09c069f5e054634fb46f40e63047d5426
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: bc55ab2697d8278bd975f618d17804499ba0128d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90888290"
+ms.locfileid: "90982079"
 ---
 # <a name="install-and-run-read-containers-preview"></a>Read コンテナーのインストールと実行 (プレビュー)
 
@@ -170,7 +170,15 @@ ApiKey={API_KEY}
 
 コンテナーには、REST ベースのクエリ予測エンドポイント API が用意されています。 
 
-コンテナー API には、ホストの `http://localhost:5000` を使用します。 Swagger パスは `http://localhost:5000/swagger/vision-v3.0-read/swagger.json` で確認できます。
+# <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-1)
+
+コンテナー API には、ホストの `http://localhost:5000` を使用します。 Swagger パスは `http://localhost:5000/swagger/vision-v3.0-preview-read/swagger.json` で確認できます。
+
+# <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
+
+コンテナー API には、ホストの `http://localhost:5000` を使用します。 Swagger パスは `http://localhost:5000/swagger/vision-v3.1-preview-read/swagger.json` で確認できます。
+
+---
 
 ### <a name="asynchronous-read"></a>非同期読み取り
 
@@ -335,7 +343,7 @@ Swagger UI で `asyncBatchAnalyze` を選択し、ブラウザーで展開しま
 
 `POST /vision/v3.1/read/syncAnalyze` 
 
-# <a name="version-30"></a>[Version 3.0](#tab/version-3)
+# <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
 
 `POST /vision/v3.0/read/SyncAnalyze`
 

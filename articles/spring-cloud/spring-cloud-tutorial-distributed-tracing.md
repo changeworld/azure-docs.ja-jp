@@ -7,17 +7,75 @@ ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 1ff76c38031ac367bf81f6d152642a4d9a209bb7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: 97926d5bdf3123ae50714d36ad0234872f67aa96
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294001"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908302"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Azure Spring Cloud で分散トレースを使用する
 
 Azure Spring Cloud の分散トレース ツールを使用すると、複雑な問題を簡単にデバッグおよび監視できます。 Azure Spring Cloud は、[Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) と Azure の [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) を統合します。 この統合により、Azure portal から強力な分散トレース機能を利用できます。
 
+::: zone pivot="programming-language-csharp"
+この記事では、.NET Core Steeltoe アプリで分散トレースを使用できるようにする方法について説明します。
+
+## <a name="prerequisites"></a>前提条件
+
+これらの手順を実行するには、[Azure Spring Cloud にデプロイする準備が既に整っている](spring-cloud-tutorial-prepare-app-deployment.md) Steeltoe アプリが必要です。
+
+## <a name="dependencies"></a>依存関係
+
+次の NuGet パッケージをインストールします
+
+* [Steeltoe.Management.TracingCore](https://www.nuget.org/packages/Steeltoe.Management.TracingCore/)
+* [Steeltoe.Management.ExporterCore](https://www.nuget.org/packages/Microsoft.Azure.SpringCloud.Client/)
+
+## <a name="update-startupcs"></a>Startup.cs を更新する
+
+1. `ConfigureServices` メソッドで、`AddDistributedTracing` メソッドと `AddZipkinExporter` メソッドを呼び出します。
+
+   ```csharp
+   public void ConfigureServices(IServiceCollection services)
+   {
+       services.AddDistributedTracing(Configuration);
+       services.AddZipkinExporter(Configuration);
+   }
+   ```
+
+1. `Configure` メソッドで、`UseTracingExporter` メソッドを呼び出します。
+
+   ```csharp
+   public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+   {
+        app.UseTracingExporter();
+   }
+   ```
+
+## <a name="update-configuration"></a>構成を更新する
+
+アプリが Azure Spring Cloud で実行されるときに使用される構成ソースに次の設定を追加します。
+
+1. `management.tracing.alwaysSample` を true に設定します。
+
+2. Eureka サーバー、構成サーバー、ユーザー アプリ間で送信されるトレース スパンを確認する場合: `management.tracing.egressIgnorePattern` を "/api/v2/spans|/v2/apps/. */permissions|/eureka/.* |/oauth/.*" に設定します。
+
+たとえば、*appsettings.json* には次のプロパティが含まれます。
+ 
+```json
+"management": {
+    "tracing": {
+      "alwaysSample": true,
+      "egressIgnorePattern": "/api/v2/spans|/v2/apps/.*/permissions|/eureka/.*|/oauth/.*"
+    }
+  }
+```
+
+.NET Core Steeltoe アプリでの分散トレースの詳細については、Steeltoe ドキュメントの[分散トレース](https://steeltoe.io/docs/3/tracing/distributed-tracing)に関するページを参照してください。
+::: zone-end
+::: zone pivot="programming-language-java"
 この記事では、次の方法について説明します。
 
 > [!div class="checklist"]
@@ -28,8 +86,8 @@ Azure Spring Cloud の分散トレース ツールを使用すると、複雑な
 
 ## <a name="prerequisites"></a>前提条件
 
-ここで説明する手順の実行には、既にプロビジョニングされ、運用されている Azure Spring Cloud サービスが必要です。 Azure Spring Cloud サービスをプロビジョニングし、実行するには、[Azure CLI を使用したアプリのデプロイのクイックスタート](spring-cloud-quickstart.md)を完了してください。
-    
+ここで説明する手順の実行には、既にプロビジョニングされ、運用されている Azure Spring Cloud サービスが必要です。 「[初めての Azure Spring Cloud アプリケーションをデプロイする](spring-cloud-quickstart.md)」クイックスタートを完了して、Azure Spring Cloud サービスをプロビジョニングして実行します。
+
 ## <a name="add-dependencies"></a>依存関係を追加する
 
 1. application.properties ファイルに次の行を追加します。
@@ -73,6 +131,7 @@ spring.sleuth.sampler.probability=0.5
 ```
 
 アプリケーションの構築とデプロイが既に完了している場合は、サンプル レートを変更できます。 これを行うには、Azure CLI または Azure portal で前の行を環境変数として追加します。
+::: zone-end
 
 ## <a name="enable-application-insights"></a>Application Insights を有効にする
 

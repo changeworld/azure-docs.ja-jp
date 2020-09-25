@@ -7,14 +7,16 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1c1ea19c22d003ed1aa7c3d3191ff20a69513bc5
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 93fd286aa76a0409a515abbf8c9dabd88a9a65c4
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299509"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904280"
 ---
 # <a name="manage-and-monitor-app-with-azure-spring-boot-actuator"></a>Azure Spring Boot アクチュエータを使用したアプリの管理と監視
+
+**この記事の適用対象:** ✔️ Java
 
 アプリに新しいバイナリをデプロイした後、機能をチェックし、実行中のアプリケーションに関する情報を確認できます。 この記事では、Azure Spring Cloud によって提供されるテスト エンドポイントから API にアクセスし、アプリの実稼働可能な機能を公開する方法について説明します。
 
@@ -73,5 +75,7 @@ ms.locfileid: "89299509"
 組み込みのエンドポイントをすべて表示するには、「[エンドポイントの公開](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-endpoints-exposing-endpoints)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
+
 * [Azure Spring Cloud のメトリックについて](spring-cloud-concept-metrics.md)
 * [Azure Spring Cloud でのアプリの状態の概要](spring-cloud-concept-app-status.md)
+

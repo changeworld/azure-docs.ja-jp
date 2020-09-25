@@ -7,14 +7,17 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 45f892064d0910029db37c56f731a072a6c7514e
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: eaf99f5e92cbb9277f2d4143e14070f1900cdbef
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299611"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888489"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Azure Spring Cloud アプリのログをリアルタイムでストリーム配信する
+
+**この記事の適用対象:** ✔️ Java ✔️ C#
+
 Azure Spring Cloud では Azure CLI のログ ストリーミングを使ってトラブルシューティングのためにリアルタイムのアプリケーション コンソール ログを取得できます。 さらに、[診断設定でログとメトリックを分析する](./diagnostic-services.md)こともできます。
 
 ## <a name="prerequisites"></a>前提条件

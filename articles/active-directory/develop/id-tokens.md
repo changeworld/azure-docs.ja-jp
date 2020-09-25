@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/29/2020
+ms.date: 09/09/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 66855260bd44ef83972fa251d076d0204cba32da
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 2059c473c8429e7498992e26c0a2c90ea835c537
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795240"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646598"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft ID プラットフォームの ID トークン
 
@@ -85,6 +85,8 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |`unique_name` | String | トークンのサブジェクトを識別する、人が判読できる値を提供します。 この値は特定の時点で一意ですが、電子メールやその他の識別子は再利用される場合があり、この値は他のアカウントで再表示される可能性があるため、表示目的でのみ使用してください。 v1.0 `id_tokens` のみで発行されます。 |
 |`uti` | 不透明な文字列 | Azure がトークンの再検証に使用する内部要求。 無視してください。 |
 |`ver` | 文字列、1.0 または 2.0 | id_token のバージョンを示します。 |
+|`hasgroups`|Boolean|存在する場合、常に true であり、ユーザーが 1 つ以上のグループに属していることを示します。 すべてのグループ要求で URL 長の制限 (現在は 6 以上のグループ) を超えて URI フラグメントが拡張された場合、暗黙的な許可フローの JWT で groups 要求の代わりに使用されます。 クライアントが Microsoft Graph API を使用して、ユーザーのグループを決定する必要があることを示します (`https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects`)。|
+|`groups:src1`|JSON オブジェクト | 長さは制限されていないが (上記 `hasgroups` を参照)、トークンには大きすぎるトークン要求の場合、ユーザーのすべてのグループ リストへのリンクが含まれます。 SAML では `groups` 要求の代わりに新しい要求として、JWT では分散要求として使用されます。 <br><br>**JWT 値の例**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }`<br><br> 詳細については、「[グループ超過要求](#groups-overage-claim)」を参照してください。|
 
 > [!NOTE]
 > v1.0 と v2.0 の id_token は、上記の例に示すように、含まれる情報の量に違いがあります。 バージョンは、要求元のエンドポイントに基づきます。 既存のアプリケーションでは Azure AD エンドポイントを使用する可能性がありますが、新しいアプリケーションでは v2.0 "Microsoft ID プラットフォーム" エンドポイントを使用する必要があります。
@@ -102,6 +104,26 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 > テナント間でユーザーを関連付けようとして、`idp` 要求を使用して、ユーザーに関する情報を格納しないでください。  これは機能しません。ユーザーの `oid` および `sub` 要求は、設計によってテナント間で変わり、アプリケーションで、テナントを越えてユーザーを追跡できないようにしているためです。  
 >
 > ユーザーが 1 つのテナントに所属し、別のテナントで認証するゲスト シナリオでは、ユーザーがサービスに対して新しいユーザーであるかのように、ユーザーを処理する必要があります。  Contoso テナントのドキュメントと特権は、Fabrikam テナントでは適用できません。 これは、テナント間での予期しないデータの漏洩を防ぐために重要です。
+
+### <a name="groups-overage-claim"></a>グループ超過要求
+トークンのサイズが HTTP ヘッダー サイズの上限を超えないよう、Azure AD では、`groups` 要求に含まれるオブジェクト ID の数が制限されます。 超過制限 (SAML トークンの場合は 150、JWT トークンの場合は 200) を超えるグループのメンバーにユーザーがなっている場合、Azure AD は、グループ要求をトークンに出力しません。 代わりに、Microsoft Graph API に照会してユーザーのグループ メンバーシップを取得するようアプリケーションに指示する超過要求がトークンに追加されます。
+
+```json
+{
+  ...
+  "_claim_names": {
+   "groups": "src1"
+    },
+    {
+  "_claim_sources": {
+    "src1": {
+        "endpoint":"[Url to get this user's group membership from]"
+        }
+       }
+     }
+  ...
+ }
+```
 
 ## <a name="validating-an-id_token"></a>id_token の検証
 

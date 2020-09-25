@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 56f392210aac6045a9dc8cc3522d36092162f26c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ce8dbe017e3cc80588cd1aa37ad02a82199ccc10
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086117"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892575"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>診断設定でログとメトリックを分析する
+
+**この記事の適用対象:** ✔️ Java ✔️ C#
 
 Azure Spring Cloud の診断機能を使用することで、次のいずれかのサービスを使用してログとメトリックを分析できます。
 
@@ -25,7 +27,7 @@ Azure Spring Cloud の診断機能を使用することで、次のいずれか�
 監視するログ カテゴリとメトリック カテゴリを選択します。
 
 > [!TIP]
-> ログをストリーミングするだけの場合は、 こちらの [Azure CLI コマンド](https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud/app?view=azure-cli-latest#ext-spring-cloud-az-spring-cloud-app-logs)を確認してください。
+> ログをストリーミングするだけの場合は、 こちらの [Azure CLI コマンド](https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud/app?view=azure-cli-latest&preserve-view=true#ext-spring-cloud-az-spring-cloud-app-logs)を確認してください。
 
 ## <a name="logs"></a>ログ
 
@@ -203,3 +205,7 @@ AppPlatformLogsforSpring
 | extend Log = array_strcat(split(Log, '\\n'), '\n')
 ```
 場合によっては、他の Java ログ ライブラリに同じ方法を利用することもできます。
+
+## <a name="next-steps"></a>次の手順
+
+* [クイック スタート: 初めての Azure Spring Cloud アプリケーションをデプロイする](spring-cloud-quickstart.md)

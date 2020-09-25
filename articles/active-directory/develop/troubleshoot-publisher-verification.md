@@ -1,6 +1,6 @@
 ---
 title: 発行者確認のトラブルシューティング - Microsoft ID プラットフォーム | Microsoft
-description: Microsoft Graph API を呼び出すことによって、Microsoft ID プラットフォームの発行者確認 (プレビュー) のトラブルシューティングを行う方法について説明します。
+description: Microsoft Graph API を呼び出すことによって、Microsoft ID プラットフォームの発行者確認のトラブルシューティングを行う方法について説明します。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,15 +12,15 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 3069e3caf81d9bb2f809b21c88383c419e3b90b3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fd49e922e5952f5a7c4b7f477dd33d6518010428
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282978"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088325"
 ---
-# <a name="troubleshoot-publisher-verification-preview"></a>発行者確認のトラブルシューティング (プレビュー)
-[発行者の確認 (プレビュー)](publisher-verification-overview.md) で、エラーが発生してプロセスを完了できない場合、または予期しない動作が発生する場合は、次の手順を行う必要があります。 
+# <a name="troubleshoot-publisher-verification"></a>発行者の確認に関するトラブルシューティング
+[発行者の確認](publisher-verification-overview.md)で、エラーが発生してプロセスを完了できない場合、または予期しない動作が発生する場合は、次の手順を行う必要があります。 
 
 1. [要件](publisher-verification-overview.md#requirements)を調べて、すべてが満たされていることを確認します。
 
@@ -39,10 +39,10 @@ ms.locfileid: "87282978"
     1. MPN アカウントが既に存在する場合は、これが認識され、アカウントに追加されます 
     1. MPN ID とプライマリ アカウントの連絡先が表示される[パートナー プロファイル ページ](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile)に移動します
 
-- **自分の Azure AD グローバル管理者 (会社の管理者またはテナント管理者とも呼ばれます) がわからない場合は、どのようにして見つけることができますか。アプリ管理者または別の管理者ロールの場合はどうですか。**
+- **自分の Azure AD グローバル管理者 (会社の管理者またはテナント管理者とも呼ばれます) がわからない場合は、どのようにして見つけることができますか。アプリケーション管理者またはクラウド アプリケーション管理者はどうですか。**
     1. 組織のプライマリ テナントのユーザー アカウントを使用して、[Azure AD ポータル](https://aad.portal.azure.com)にサインインします
     1. [[ロールと管理者]](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators) に移動します
-    1. [グローバル管理者] または目的の管理者ロールをクリックします
+    1. 目的の管理者ロールをクリックします。
     1. そのロールを割り当てられているユーザーの一覧が表示されます
 
 - **自分の MPN アカウントの管理者がわかりません** [MPN のユーザー管理ページ](https://partner.microsoft.com/pcv/users)にアクセスし、ユーザー一覧をフィルター処理して、さまざまな管理者ロールのユーザーを確認します。
@@ -51,22 +51,25 @@ ms.locfileid: "87282978"
     1. 自分の[パートナー プロファイル](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile)に移動し、次のことを確認します。 
         - MPN ID が正しい。 
         - エラーまたは "保留中のアクション" が表示されず、会社プロファイルとパートナー情報の両方の検証状態が "承認済み" または "成功" と表示される。
-    1. [MPN テナント管理ページ](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement)に移動し、アプリが登録されているテナント、およびサインインに使用しているユーザー アカウントのテナントが、関連付けられているテナントの一覧に含まれることを確認します。
-    1. [MPN ユーザー管理ページ](https://partner.microsoft.com/pcv/users)に移動し、サインインに使用しているユーザーが、グローバル管理者、MPN 管理者、またはアカウント管理者のいずれかであることを確認します。
+    1. [MPN テナント管理ページ](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement)に移動し、アプリが登録されているテナント、およびサインインに使用しているユーザー アカウントのテナントが、関連付けられているテナントの一覧に含まれることを確認します。 さらにテナントを追加する必要がある場合は、[こちら](https://docs.microsoft.com/partner-center/multi-tenant-account)の手順を実行します。 追加したテナントのすべてのグローバル管理者には、パートナー センター アカウントの全体管理者特権が付与されることに注意してください。
+    1. [MPN ユーザー管理ページ](https://partner.microsoft.com/pcv/users)に移動し、サインインに使用しているユーザーが、グローバル管理者、MPN 管理者、またはアカウント管理者のいずれかであることを確認します。パートナー センターのロールにユーザーを追加する必要がある場合は、[こちら](https://docs.microsoft.com/partner-center/create-user-accounts-and-set-permissions)の手順を実行します。
 
 - **Azure AD ポータルにサインインすると、登録されているアプリが表示されません。なぜですか?** 
-    アプリの登録が別のユーザー アカウントまたは別のテナントを使用して作成されている可能性があります。 アプリの登録が作成されたテナントで、正しいアカウントを使用してサインインしていることを確認します。
+    アプリの登録は、このテナントの別のユーザー アカウント、個人またはコンシューマー アカウント、または別のテナントを使用して作成された可能性があります。 アプリの登録が作成されたテナントで、正しいアカウントを使用してサインインしていることを確認します。
 
-- **Azure AD でのアプリ登録の所有者はどうすればわかりますか。** 
-    アプリが登録されているテナントにサインインしたら、[アプリの登録] ブレードに移動し、アプリをクリックして、[所有者] をクリックします。
+- **多要素認証に関連するエラーが発生します。どうすればよいですか。** 
+    [多要素認証](../fundamentals/concept-fundamentals-mfa-get-started.md)が有効になっていることを確認します。サインインに使用しているユーザーと、このシナリオには必要です。 たとえば、MFA には次のような条件があります。
+    - サインインに使用しているユーザーには常に必要です。
+    - [Azure の管理に必要です](../conditional-access/howto-conditional-access-policy-azure-management.md)。
+    - サインインに使用している[この種類の管理者には必要です](../conditional-access/howto-conditional-access-policy-admin-mfa.md)。
 
 ## <a name="making-microsoft-graph-api-calls"></a>Microsoft Graph API の呼び出しを行う 
 
-問題が発生しても、UI に表示されている内容に基づいてその理由を把握できない場合は、Microsoft Graph の呼び出しを使用して、アプリ登録ポータルで実行できる操作と同じ操作を実行することで、さらにトラブルシューティングを行うと役に立つことがあります。 プレビュー フェーズの間は、これらの API は Microsoft Graph の /beta エンドポイントでのみ使用できます。  
+問題が発生しても、UI に表示されている内容に基づいてその理由を把握できない場合は、Microsoft Graph の呼び出しを使用して、アプリ登録ポータルで実行できる操作と同じ操作を実行することで、さらにトラブルシューティングを行うと役に立つことがあります。
 
-これらの要求を行う最も簡単な方法は、[Graph エクスプローラー](https://developer.microsoft.com/graph/graph-explorer)を使用することです。 また、[Postman](https://www.postman.com/) の使用や、PowerShell を使用した [Web 要求の呼び出し](/powershell/module/microsoft.powershell.utility/invoke-webrequest?view=powershell-7)など、他のオプションを検討することもできます。  
+これらの要求を行う最も簡単な方法は、[Graph エクスプローラー](https://developer.microsoft.com/graph/graph-explorer)を使用することです。 また、[Postman](https://www.postman.com/) の使用や、PowerShell を使用した [Web 要求の呼び出し](/powershell/module/microsoft.powershell.utility/invoke-webrequest)など、他のオプションを検討することもできます。  
 
-Microsoft Graph を使用して、アプリの確認済み発行者を設定および設定解除し、これらの操作のいずれかを実行した後で結果を確認できます。 結果は、アプリの登録に対応する[アプリケーション](/graph/api/resources/application?view=graph-rest-beta) オブジェクトと、そのアプリからインスタンス化されている任意の[サービス プリンシパル](/graph/api/resources/serviceprincipal?view=graph-rest-beta)のどちらでも確認できます。 それらのオブジェクト間の関係の詳細については、次を参照してください: 「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](app-objects-and-service-principals.md)」。  
+Microsoft Graph を使用して、アプリの確認済み発行者を設定および設定解除し、これらの操作のいずれかを実行した後で結果を確認できます。 結果は、アプリの登録に対応する[アプリケーション](/graph/api/resources/application) オブジェクトと、そのアプリからインスタンス化されている任意の[サービス プリンシパル](/graph/api/resources/serviceprincipal)のどちらでも確認できます。 それらのオブジェクト間の関係の詳細については、次を参照してください: 「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](app-objects-and-service-principals.md)」。  
 
 いくつかの便利な要求の例を次に示します。  
 
@@ -105,7 +108,7 @@ Response
 ### <a name="get-verified-publisher-info-from-application"></a>アプリケーションから確認済み発行者の情報を取得する 
  
 ```
-GET https://graph.microsoft.com/beta/applications/0cd04273-0d11-4e62-9eb3-5c3971a7cbec 
+GET https://graph.microsoft.com/v1.0/applications/0cd04273-0d11-4e62-9eb3-5c3971a7cbec 
 
 HTTP/1.1 200 OK 
 
@@ -124,7 +127,7 @@ HTTP/1.1 200 OK
 
 ### <a name="get-verified-publisher-info-from-service-principal"></a>サービス プリンシパルから確認済み発行者の情報を取得する 
 ```
-GET https://graph.microsoft.com/beta/servicePrincipals/010422a7-4d77-4f40-9335-b81ef5c23dd4 
+GET https://graph.microsoft.com/v1.0/servicePrincipals/010422a7-4d77-4f40-9335-b81ef5c23dd4 
 
 HTTP/1.1 200 OK 
 
@@ -183,11 +186,7 @@ Microsoft Graph でのトラブルシューティングのとき、またはア�
 
 ### <a name="nopublisherdomainonapplication"></a>NoPublisherDomainOnApplication   
 
-ターゲット アプリケーション (<AppId>) には、パブリッシャー ドメインが設定されている必要があります。 パブリッシャー ドメインを設定してから、やり直してください。 
-
-### <a name="publisherdomainisnotdnsverified"></a>PublisherDomainIsNotDNSVerified  
-
-ターゲット アプリケーションのパブリッシャー ドメイン (<publisherDomain>) は、このテナントの検証済みドメインではありません。 DNS の検証を使用してテナント ドメインを確認してから、やり直してください。 
+ターゲット アプリケーション (\<AppId\>) には、パブリッシャー ドメインが設定されている必要があります。 パブリッシャー ドメインを設定してから、やり直してください。
 
 ### <a name="publisherdomainmismatch"></a>PublisherDomainMismatch  
 

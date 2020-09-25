@@ -11,16 +11,16 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/22/2020
 ms.custom: how-to, contperfq1, devx-track-python
-ms.openlocfilehash: 769b4d364412d3409ef95c4222197fe6f7ce222c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7a785aebc282a871d150f0c9b4cca59d7d03558e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893473"
+ms.locfileid: "90976775"
 ---
 # <a name="connect-to-azure-storage-services"></a>Azure Storage サービスに接続する
 
-この記事では、**Azure Machine Learning データストアを使用して Azure Storage サービスに接続する**方法について説明します。 データストアは、ユーザーの認証資格情報と元のデータ ソースの整合性を損なうことなく、Azure ストレージ サービスに安全に接続できます。 これらには、ワークスペースに関連付けられている[キー コンテナー](https://azure.microsoft.com/services/key-vault/)内のサブスクリプション ID やトークン承認のような接続情報が格納されるため、スクリプトでハードコーディングすることなく、ストレージに安全にアクセスできます。 [Azure Machine Learning Python SDK](#python) または [Azure Machine Learning Studio](#studio) を使用して、データストアを作成して登録できます。
+この記事では、**Azure Machine Learning データストアを使用して Azure Storage サービスに接続する**方法について説明します。 データストアは、ユーザーの認証資格情報と元のデータ ソースの整合性を損なうことなく、Azure ストレージ サービスに安全に接続できます。 これらには、ワークスペースに関連付けられている[キー コンテナー](https://azure.microsoft.com/services/key-vault/)内のサブスクリプション ID やトークン承認のような接続情報が格納されるため、スクリプトでハードコーディングすることなく、ストレージに安全にアクセスできます。 [Azure Machine Learning Python SDK](#python) または [Azure Machine Learning Studio](how-to-connect-data-ui.md) を使用して、データストアを作成して登録できます。
 
 Azure Machine Learning VS Code 拡張機能を使用してデータストアを作成および管理する場合は、詳細については、[VS Code リソース管理の攻略ガイド](how-to-manage-resources-vscode.md#datastores)に関するページを参照してください。
 
@@ -92,7 +92,7 @@ Azure ストレージ サービスに安全に接続できるように、Azure M
 
 ### <a name="access-validation"></a>アクセス検証
 
-**最初のデータストアの作成と登録のプロセスの一部として**、Azure Machine Learning では、基になるストレージ サービスが存在すること、およびユーザーが指定したプリンシパル (ユーザー名、サービス プリンシパル、または SAS トークン) で指定したストレージにアクセスできることが自動的に検証されます。
+**最初のデータストアの作成と登録のプロセスの一部として**、Azure Machine Learning により、基になるストレージ サービスが存在すること、およびユーザーが指定したプリンシパル (ユーザー名、サービス プリンシパル、または SAS トークン) で指定したストレージにアクセスできることが自動的に検証されます。
 
 **データストアの作成後**、この検証は、データストア オブジェクトが取得されるたび**ではなく**、基になるストレージ コンテナーにアクセスする必要があるメソッドに対してのみ実行されます。 たとえば、データストアからファイルをダウンロードする場合は検証が行われますが、既定のデータストアを変更するだけの場合は、検証は行われません。
 
@@ -117,7 +117,7 @@ Azure BLOB コンテナーと Azure Data Lake Gen 2 ストレージの場合は�
 
 <a name="python"></a>
 
-## <a name="create-and-register-datastores-via-the-sdk"></a>SDK を使用してデータストアを作成して登録する
+## <a name="create-and-register-datastores"></a>データストアの作成と登録
 
 Azure Storage ソリューションをデータストアとして登録すると、特定のワークスペースにそのデータストアが自動的に作成および登録されます。 仮想ネットワークのシナリオに関するガイダンスや、必要な認証資格情報を検索する場所については、「[ストレージへのアクセスとアクセス許可](#storage-access-and-permissions)」のセクションを参照してください。 
 
@@ -129,7 +129,7 @@ Azure Storage ソリューションをデータストアとして登録すると
 
  サポートされている他のストレージ サービスのデータストアを作成するには、[該当する `register_azure_*` メソッドに関するリファレンス ドキュメント](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#&preserve-view=truemethods)を参照してください。
 
-ローコード エクスペリエンスを希望する場合は、[Azure Machine Learning Studio でデータストアを作成する](#studio)方法に関する記事を参照してください。
+コードの少ないエクスペリエンスの方がよい場合は、[Azure Machine Learning Studio でのデータへの接続](how-to-connect-data-ui.md)に関する記事を参照してください。
 
 > [!NOTE]
 > データストア名は、小文字、数字、およびアンダースコアのみで構成する必要があります。 
@@ -199,25 +199,6 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
                                                              client_id=client_id, # client id of service principal
                                                              client_secret=client_secret) # the secret of service principal
 ```
-
-<a name="studio"></a>
-
-
-## <a name="create-datastores-in-the-studio"></a>Studio でデータストアを作成する 
-
-Azure Machine Learning Studio を使用して、少ない手順で新しいデータストアを作成します。
-
-> [!IMPORTANT]
-> データ ストレージ アカウントが仮想ネットワーク内にある場合は、Studio がデータにアクセスできるようにするために、追加の構成手順が必要になります。 適切な構成手順が適用されるようにするには、「[Azure 仮想ネットワークで Azure Machine Learning Studio を使用する](how-to-enable-studio-virtual-network.md)」を参照してください。 
-
-1. [Azure Machine Learning Studio](https://ml.azure.com/) にサインインします。
-1. 左側のウィンドウの **[管理]** で、 **[データストア]** を選択します。
-1. **[+ 新しいデータストア]** を選択します。
-1. 新しいデータストアのフォームに入力します。 このフォームは、選択した Azure Storage の種類と認証の種類に基づいて、インテリジェントに自動更新されます。 このフォームを設定するために必要な認証資格情報の場所については、[ストレージ アクセスとアクセス許可](#access-validation)に関するセクションを参照してください。
-
-次の例は、**Azure BLOB データストア**を作成するときにフォームがどのように表示されるかを示しています。 
-    
-![新しいデータストアのフォームに入力する](media/how-to-access-data/new-datastore-form.png)
 
 <a name="train"></a>
 ## <a name="use-data-in-your-datastores"></a>データストアでデータを使用する

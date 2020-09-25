@@ -7,14 +7,16 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 4315427598d004459862bcf12959e22e83c84d5d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 02772f153cdda7e3f3c866c727d589e755e19033
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299728"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906930"
 ---
 # <a name="integrate-azure-spring-cloud-with-azure-load-balance-solutions"></a>Azure Spring Cloud と Azure の負荷分散ソリューションを統合する
+
+**この記事の適用対象:** ✔️ Java ✔️ C#
 
 Azure Spring Cloud では、Azure 上のマイクロサービスがサポートされています。  ビジネスを拡大するには、複数のデータ センターで Azure Spring Cloud の複数のインスタンスの管理が必要になる場合があります。
 

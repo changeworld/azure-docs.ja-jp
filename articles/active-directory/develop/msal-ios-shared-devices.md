@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 5abb6852e267fa7d7277e0e0674a4099343e14ca
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: d5699c1d08df8364f33371f911ea3be892b4b285
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114916"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90528130"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>iOS デバイスの共有デバイス モード
 
@@ -60,12 +60,21 @@ ms.locfileid: "88114916"
 
     - **[種類]** :リダイレクト
     - **拡張 ID**: com.microsoft.azureauthenticator.ssoextension
-    - **チーム ID**:SGGM6D27TK
-    - **URL**: https://login.microsoftonline.com
-    - 構成する追加データ:
+    - **チーム ID**: (iOS ではこのフィールドは必要ありません)
+    - **URL**:   
+        - `https://login.microsoftonline.com`
+        - `https://login.microsoft.com`
+        - `https://sts.windows.net`
+        - `https://login.partner.microsoftonline.cn`
+        - `https://login.chinacloudapi.cn`
+        - `https://login.microsoftonline.de`
+        - `https://login.microsoftonline.us`
+        - `https://login.usgovcloudapi.net`
+        - `https://login-us.microsoftonline.com`
+    - **構成する追加データ**:
       - キー: sharedDeviceMode
       - 型: Boolean
-      - 値:True
+      - 値: true
 
     Intune による構成の詳細については、[Intune の構成に関するドキュメント](/intune/configuration/ios-device-features-settings)を参照してください。
 
@@ -76,7 +85,7 @@ ms.locfileid: "88114916"
     - 構成 1:
       - キー: sharedDeviceMode
       - 型: Boolean
-      - 値:True
+      - 値: true
 
 ## <a name="modify-your-ios-application-to-support-shared-device-mode"></a>共有デバイス モードをサポートするように iOS アプリケーションを変更する
 

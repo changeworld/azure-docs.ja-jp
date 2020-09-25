@@ -3,16 +3,16 @@ title: Azure Defender の概要と使用可能なプラン
 description: Azure Defender のプラン、保護、アラートについて説明します。 その後、サブスクリプションで Azure Defender を有効にする操作に進みます。
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 627fc52043054557ca6f6baf9827da22d2af5139
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: bb1c1e6443b5087b48aad7c3171bef557707adb1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931045"
+ms.locfileid: "90977285"
 ---
 # <a name="introduction-to-azure-defender"></a>Azure Defender の概要
 
@@ -21,7 +21,7 @@ Azure Security Center の機能は、クラウド セキュリティの 2 つの
 - **クラウド セキュリティ態勢管理 (CSPM)**
 - **クラウド ワークロード保護 (CWP)**
 
-Security Center の CSPM 機能 (セキュリティ スコア、Windows と Linux の Azure マシンでのセキュリティ構成の誤りの検出など) は、すべての Azure ユーザーが利用できる無料の Security Center エクスペリエンスの一部です。 これらの CSPM 機能を使用して、態勢を強化し、規制コンプライアンスを保証します。 
+Security Center の CSPM 機能 (セキュリティ スコア、Windows と Linux の Azure マシンでのセキュリティ構成の誤りの検出など) は、すべての Azure ユーザーが利用できる無料の Security Center エクスペリエンスの一部です。 これらの CSPM 機能を使用して、態勢を強化し、規制コンプライアンスを保証します。
 
 **Azure Defender** は、Azure とハイブリッド ワークロードを高度かつインテリジェントに保護するために Security Center 内に統合された、クラウド ワークロード保護プラットフォーム (CWPP) です。
 

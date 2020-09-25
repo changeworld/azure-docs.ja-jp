@@ -11,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 8be13a299de0fc3de0acaf0001722d8c96a460e6
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: bd6f88db2b55a5f0f445659e4b5ef609d3e146e9
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88205941"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030312"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>リダイレクト URI (応答 URL) に関する制約と制限
 
@@ -66,6 +66,8 @@ ms.locfileid: "88205941"
 * 複数のリダイレクト URI を localhost に登録して開発中にさまざまなフローをテストする必要がある場合は、URI の "*パス*" コンポーネントを使用してそれらを区別します。 たとえば、`http://127.0.0.1/MyWebApp` は `http://127.0.0.1/MyNativeApp` と一致しません。
 * RFC ガイダンスに従って、リダイレクト URI で `localhost` を使用しないでください。 代わりに、実際のループバック IP アドレス `127.0.0.1` を使用します。 これにより、正しく構成されていないファイアウォールや名前が変更されたネットワーク インターフェイスによるアプリの破損が防止されます。
 
+    localhost ではなくループバック アドレス (127.0.0.1) で `http` スキームを使用するには、[アプリケーション マニフェスト](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#replyurls-attribute)を編集する必要があります。 
+
     IPv6 ループバック アドレス (`[::1]`) は、現在サポートされていません。
 
 ## <a name="restrictions-on-wildcards-in-redirect-uris"></a>リダイレクト URI のワイルドカードに関する制限事項
@@ -93,6 +95,6 @@ ms.locfileid: "88205941"
 > [!WARNING]
 > この手法では、セキュリティを侵害されたクライアントが状態パラメーターで送信された追加パラメーターを変更し、ユーザーを別の URL にリダイレクトすることを許します。これは RFC 6819 に説明がある[オープン リダイレクターの脅威](https://tools.ietf.org/html/rfc6819#section-4.2.4)です。 そのため、クライアントは状態を暗号化するか、リダイレクト URI に含まれるドメイン名をトークンと比べて検証するなど、何か他の手段で状態を検証することによって、これらのパラメーターを保護する必要があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 アプリの登録の[アプリケーション マニフェスト](reference-app-manifest.md)について学習します。

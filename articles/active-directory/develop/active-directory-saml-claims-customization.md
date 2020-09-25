@@ -13,12 +13,12 @@ ms.date: 10/22/2019
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: f35e5971374f54940396f602a23ffa0ae3abd015
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 5de505ff9573fb186ca2bbe4f5bd6783022eb3ef
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552834"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89421460"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>方法: エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ
 
@@ -88,11 +88,11 @@ SAML 要求に NameIDPolicy 要素が含まれていない場合、指定した�
 
 1. 組織に応じて **[ソース属性]** に引用符を付けずに定数値を入力し、 **[保存]** をクリックします。
 
-    ![Azure portal で [ユーザー属性とクレーム] セクションを開く](./media/active-directory-saml-claims-customization/organization-attribute.png)
+    ![Azure portal の [Org Attributes & Claims]\(組織の属性と要求\) セクション](./media/active-directory-saml-claims-customization/organization-attribute.png)
 
 1. 定数値は次のように表示されます。
 
-    ![Azure portal で [ユーザー属性とクレーム] セクションを開く](./media/active-directory-saml-claims-customization/edit-attributes-claims.png)
+    ![Azure portal の [Edit Attributes & Claims]\(属性と要求の編集\) セクション](./media/active-directory-saml-claims-customization/edit-attributes-claims.png)
 
 ### <a name="special-claims---transformations"></a>特別な要求 - 変換
 
@@ -121,7 +121,7 @@ SAML 要求に NameIDPolicy 要素が含まれていない場合、指定した�
 2. 変換ドロップダウンから関数を選択します。 選択した関数に応じて、変換内で評価するパラメーターと定数値を指定する必要があります。 使用可能な関数の詳細については、次の表を参照してください。
 3. 複数の変換を適用するには、 **[変換の追加]** をクリックします。1 つの要求に対して最大 2 つの変換を適用できます。 たとえば、最初に `user.mail` のメール プレフィックスを抽出できます。 次に、文字列を大文字にします。
 
-   ![NameID (名前識別子の値) を編集する](./media/active-directory-saml-claims-customization/sso-saml-multiple-claims-transformation.png)
+   ![複数の要求の変換](./media/active-directory-saml-claims-customization/sso-saml-multiple-claims-transformation.png)
 
 次の関数を使用して、要求を変換できます。
 
@@ -129,8 +129,8 @@ SAML 要求に NameIDPolicy 要素が含まれていない場合、指定した�
 |----------|-------------|
 | **ExtractMailPrefix()** | メール アドレスまたはユーザー プリンシパル名からドメイン サフィックスを除去します。 これにより、渡されたユーザー名の最初の部分のみが抽出されます (例: joe_smith@contoso.com ではなく "joe_smith" のみ)。 |
 | **Join()** | 2 つの属性を結合することで、新しい値を作成します。 必要に応じて、2 つの属性の間に区切り記号を使用できます。 NameID 要求の変換では、結合は検証済みドメインに制限されます。 選択したユーザー ID 値にドメインが含まれる場合、ユーザー名が抽出されて、選択された検証済みドメインが追加されます。 たとえば、ユーザー ID 値としてメール アドレス (joe_smith@contoso.com) を選択し、検証済みドメインとして contoso.onmicrosoft.com を選択した場合、結果は joe_smith@contoso.onmicrosoft.com になります。 |
-| **ToLower()** | 選択した属性の文字を小文字に変換します。 |
-| **ToUpper()** | 選択した属性の文字を大文字に変換します。 |
+| **ToLowercase()** | 選択した属性の文字を小文字に変換します。 |
+| **ToUppercase()** | 選択した属性の文字を大文字に変換します。 |
 | **Contains()** | 入力が指定した値と一致する場合、属性または定数を出力します。 一致しない場合は、別の出力を指定できます。<br/>たとえば、ユーザーのメール アドレスに "@contoso.com" が含まれる場合はメール アドレスを値とする要求を出力し、それ以外の場合はユーザー プリンシパル名を出力するものとします。 これを行うには、次の値を構成します。<br/>*Parameter 1 (入力)* : user.email<br/>*Value*: "@contoso.com"<br/>Parameter 2 (出力): user.email<br/>Parameter 3 (一致しない場合の出力): user.userprincipalname |
 | **EndWith()** | 入力が指定した値で終わっている場合、属性または定数を出力します。 一致しない場合は、別の出力を指定できます。<br/>たとえば、ユーザーの従業員 ID が "000" で終わっている場合は従業員 ID を値とする要求を出力し、それ以外の場合は拡張属性を出力するものとします。 これを行うには、次の値を構成します。<br/>*Parameter 1 (入力)* : user.employeeid<br/>*値*: "000"<br/>Parameter 2 (出力): user.employeeid<br/>Parameter 3 (一致しない場合の出力): user.extensionattribute1 |
 | **StartWith()** | 入力が指定した値で始まっている場合、属性または定数を出力します。 一致しない場合は、別の出力を指定できます。<br/>たとえば、country/region が "US" で始まっている場合はユーザーの従業員 ID を値とする要求を出力し、それ以外の場合は拡張属性を出力するものとします。 これを行うには、次の値を構成します。<br/>*Parameter 1 (入力)* : user.country<br/>*値*: "US"<br/>Parameter 2 (出力): user.employeeid<br/>Parameter 3 (一致しない場合の出力): user.extensionattribute1 |

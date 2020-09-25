@@ -13,22 +13,22 @@ ms.date: 11/30/2018
 ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: 75d848c8d4459e5534e2954a11612bdf44f6d1ce
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: e9780332ad6279deef63910c7e6ba95e1ccf43bd
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141552"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706134"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Azure Active Directory 同意フレームワーク
 
-Azure Active Directory (Azure AD) の同意フレームワークを使用すると、マルチテナントの Web クライアント アプリケーションやネイティブ クライアント アプリケーションを簡単に開発できます。 こうしたアプリケーションには、登録されている Azure AD テナントとは異なるテナントのユーザー アカウントを使ってサインインできます。 また、独自の Web API に加えて、Microsoft Graph API (Azure AD、Intune、および Office 365 のサービスへのアクセスに使用する API) をはじめとする Microsoft サービスの API など、各種の Web API にもアクセスが必要になることがあります。
+Azure Active Directory (Azure AD) の同意フレームワークを使用すると、マルチテナントの Web クライアント アプリケーションやネイティブ クライアント アプリケーションを簡単に開発できます。 こうしたアプリケーションには、登録されている Azure AD テナントとは異なるテナントのユーザー アカウントを使ってサインインできます。 また、独自の Web API に加えて、Microsoft Graph API (Azure AD、Intune、および Microsoft 365 のサービスへのアクセスに使用する API) をはじめとする Microsoft サービスの API など、各種の Web API にもアクセスが必要になることがあります。
 
-このフレームワークの根底には、ディレクトリのデータにアクセスする可能性があるためにディレクトリへの登録を要求しているアプリケーションに対して同意を与えるユーザーまたは管理者が存在します。 たとえば、Web クライアント アプリケーションで Office 365 ユーザーの予定表情報を読み取る必要があるときは、まずそのユーザーがクライアント アプリケーションに同意を与える必要があります。 同意が与えられると、クライアント アプリケーションがユーザーに代わって Microsoft Graph API を呼び出し、必要に応じて予定表情報を利用できるようになります。 [Microsoft Graph API](https://developer.microsoft.com/graph) は、Office 365 のデータ (Exchange の予定表とメッセージ、SharePoint のサイトとリスト、OneDrive のドキュメント、OneNote のノートブック、Planner のタスク、Excel のブック)、Azure AD のユーザーとグループなど、Microsoft クラウド サービスのさまざまなデータ オブジェクトにアクセスするための API です。
+このフレームワークの根底には、ディレクトリのデータにアクセスする可能性があるためにディレクトリへの登録を要求しているアプリケーションに対して同意を与えるユーザーまたは管理者が存在します。 たとえば、Web クライアント アプリケーションで Microsoft 365 ユーザーの予定表情報を読み取る必要があるときは、まずそのユーザーがクライアント アプリケーションに同意を与える必要があります。 同意が与えられると、クライアント アプリケーションがユーザーに代わって Microsoft Graph API を呼び出し、必要に応じて予定表情報を利用できるようになります。 [Microsoft Graph API](https://developer.microsoft.com/graph) は、Microsoft 365 のデータ (Exchange の予定表とメッセージ、SharePoint のサイトとリスト、OneDrive のドキュメント、OneNote のノートブック、Planner のタスク、Excel のブック)、Azure AD のユーザーとグループなど、Microsoft クラウド サービスのさまざまなデータ オブジェクトにアクセスするための API です。
 
 Azure AD の同意フレームワークは、OAuth 2.0 と、public クライアントまたは confidential クライアントを使用した OAuth 2.0 のさまざまなフロー (Authorization Code Grant や Client Credentials Grant など) を基盤としています。 Azure AD では OAuth 2.0 を採用することによって、スマートフォン、タブレット、サーバーなどにインストールされるアプリケーションから Web アプリケーションに至るまで、多種多様なクライアント アプリケーションの作成と、そのアプリケーションが必要なリソースにアクセスすることを可能にしています。
 
-OAuth 2.0 の認可付与を採用している同意フレームワークの使い方の詳細については、[OAuth 2.0 と Azure AD を使用した Web アプリケーションへのアクセスの承認](v2-oauth2-auth-code-flow.md)に関するページと、「[Azure AD の認証シナリオ](./authentication-vs-authorization.md)」を参照してください。 Microsoft Graph を使って Office 365 に対するアクセスの承認を得る方法の詳細については、[Microsoft Graph によるアプリ認証](/graph/)に関するページを参照してください。
+OAuth 2.0 の認可付与を採用している同意フレームワークの使い方の詳細については、[OAuth 2.0 と Azure AD を使用した Web アプリケーションへのアクセスの承認](v2-oauth2-auth-code-flow.md)に関するページと、「[Azure AD の認証シナリオ](./authentication-vs-authorization.md)」を参照してください。 Microsoft Graph を使って Microsoft 365 に対するアクセスの承認を得る方法の詳細については、[Microsoft Graph によるアプリ認証](/graph/)に関するページを参照してください。
 
 ## <a name="consent-experience---an-example"></a>同意エクスペリエンス - 例
 

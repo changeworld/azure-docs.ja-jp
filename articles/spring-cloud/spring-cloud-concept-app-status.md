@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: e3ef202a1a98b8193b55bcc4c2cb616d4a2000d8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ec87c5523d6f608363ca615037f20365705609df
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037765"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892860"
 ---
 # <a name="understanding-app-status-in-azure-spring-cloud"></a>Azure Spring Cloud でのアプリの状態の概要
+
+**この記事の適用対象:** ✔️ Java ✔️ C#
 
 Azure Spring Cloud UI を使用すると、実行中のアプリケーションの状態に関する情報を把握できます。  サブスクリプションのリソース グループごとに、アプリケーションの種類の一般的な状態が表示される **[アプリ]** オプションがあります。  アプリケーションの種類ごとに、 **[アプリケーションのインスタンス]** が表示されます。
 
@@ -72,4 +74,4 @@ Azure Spring Cloud UI を使用すると、実行中のアプリケーション�
 
 
 ## <a name="see-also"></a>関連項目
-* [Azure Spring Cloud で Java Spring アプリケーションをデプロイ用に準備する](spring-cloud-tutorial-prepare-app-deployment.md)
+* [Azure Spring Cloud で Spring または Steeltoe アプリケーションをデプロイ用に準備する](spring-cloud-tutorial-prepare-app-deployment.md)

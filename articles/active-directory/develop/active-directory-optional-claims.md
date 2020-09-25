@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 08/25/2020
+ms.date: 09/03/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: e53cf38c9544884caddfdf03c2615217c49ec3d0
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 2d895a6703123d8725a375e29e2e26b64b621f23
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068728"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436852"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>方法:アプリに省略可能な要求を提供する
 
@@ -130,7 +130,7 @@ UI またはアプリケーション マニフェストを使用して、アプ�
 
 **UI を使用した省略可能な要求の構成：**
 
-[![UI を使用して省略可能な要求を構成する方法を示す](./media/active-directory-optional-claims/token-configuration.png)](./media/active-directory-optional-claims/token-configuration.png)
+[![UI で省略可能な要求を構成する](./media/active-directory-optional-claims/token-configuration.png)](./media/active-directory-optional-claims/token-configuration.png)
 
 1. **[管理]** セクションで、 **[トークン構成]** を選択します。
 1. **[省略可能な要求を追加]** を選択します。
@@ -238,7 +238,7 @@ SAML トークン内では、このような要求は `http://schemas.microsoft.
 1. 省略可能な要求を構成するアプリケーションを一覧から選択します
 1. **[管理]** セクションで、 **[トークン構成]** を選択します。
 1. **[Add groups claim]\(グループの要求の追加\)** を選択します
-1. 返されるグループの種類を選択します ( **[すべてのグループ]** 、 **[SecurityGroup]** 、または **[DirectoryRole]** )。 **[すべてのグループ]** オプションには **[SecurityGroup]** 、 **[DirectoryRole]** 、および **[DistributionList]** が含まれます
+1. 返すグループの種類を選択します ( **[セキュリティ グループ]** 、 **[ディレクトリ ロール]** 、 **[すべてのグループ]** 、 **[アプリケーションに割り当てられているグループ]** )。 **[アプリケーションに割り当てられているグループ]** オプションには、アプリケーションに割り当てられたグループのみが含まれます。 **[すべてのグループ]** オプションには、**SecurityGroup**、**DirectoryRole**、および **DistributionList** が含まれますが、 **[アプリケーションに割り当てられているグループ]** は含まれません。 
 1. 省略可能: 特定のトークンの種類のプロパティを選択して、オンプレミスのグループ属性を含めるようにグループの要求値を変更したり、要求の種類をロールに変更したりします
 1. **[保存]** を選びます。
 
@@ -256,6 +256,7 @@ SAML トークン内では、このような要求は `http://schemas.microsoft.
    - "All" (このオプションには [SecurityGroup]、[DirectoryRole]、および [DistributionList] が含まれます)
    - "SecurityGroup"
    - "DirectoryRole"
+   - "ApplicationGroup " (このオプションには、アプリケーションに割り当てられているグループのみが含まれます)
 
    次に例を示します。
 
@@ -307,7 +308,7 @@ SAML トークン内では、このような要求は `http://schemas.microsoft.
 
     **UI の構成：**
 
-    [![UI を使用して省略可能な要求を構成する方法を示す](./media/active-directory-optional-claims/groups-example-1.png)](./media/active-directory-optional-claims/groups-example-1.png)
+    [![省略可能な要求の構成](./media/active-directory-optional-claims/groups-example-1.png)](./media/active-directory-optional-claims/groups-example-1.png)
 
     **アプリケーションマニフェストのエントリ：**
 
@@ -328,7 +329,7 @@ SAML トークン内では、このような要求は `http://schemas.microsoft.
 
     **UI の構成：**
 
-    [![UI を使用して省略可能な要求を構成する方法を示す](./media/active-directory-optional-claims/groups-example-2.png)](./media/active-directory-optional-claims/groups-example-2.png)
+    [![マニフェストの省略可能な要求](./media/active-directory-optional-claims/groups-example-2.png)](./media/active-directory-optional-claims/groups-example-2.png)
 
     **アプリケーションマニフェストのエントリ：**
 
@@ -394,7 +395,7 @@ SAML トークン内では、このような要求は `http://schemas.microsoft.
 
 1. **[省略可能な要求の追加]** を選択し、 **[SAML]** トークンの型を選択して、要求の一覧から **[extn. skypeID]** を選択し (skypeID という Azure AD ユーザーオブジェクトを作成した場合にのみ適用されます)、 **[追加]** を選択します。
 
-    [![UI を使用して省略可能な要求を構成する方法を示す](./media/active-directory-optional-claims/token-config-example.png)](./media/active-directory-optional-claims/token-config-example.png)
+    [![SAML トークンの省略可能な要求](./media/active-directory-optional-claims/token-config-example.png)](./media/active-directory-optional-claims/token-config-example.png)
 
 **マニフェストの構成：**
 

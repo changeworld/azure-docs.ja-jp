@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 479e74f9c36864e041685393d35972e7365260da
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 0b54a8227594a81c17dcaaaaa6c599d70217c498
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119440"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705862"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>国内クラウド環境で MSAL を使用する
 
@@ -42,7 +42,7 @@ Azure Active Directory (Azure AD) は、グローバル クラウドの他に�
 
 [Azure Government](../../azure-government/index.yml) アプリケーションでは、ユーザーの認証に Azure AD Government ID と Azure AD Public ID を使用できます。 これらの ID のどちらも使用できるため、自分のシナリオにどの機関のエンドポイントを選択すべきかを決定する必要があります。
 
-- Azure AD Public:組織が Office 365 (Public または GCC) または別のアプリケーションをサポートする Azure AD Public テナントを既に持っている場合によく使用されます。
+- Azure AD Public:組織が Microsoft 365 (Public または GCC) または別のアプリケーションをサポートする Azure AD Public テナントを既に持っている場合によく使用されます。
 - Azure AD Government:組織が Office 365 (GCC High または DoD) をサポートする Azure AD Government テナントを既に持っている場合、または Azure AD Government で新しいテナントを作成する場合によく使用されます。
 
 決定したら、特別な考慮事項は、アプリの登録をどこで実行するかです。 Azure Government アプリケーションに Azure AD Public ID を選択した場合は、Azure AD Public テナントでアプリケーションを登録する必要があります。

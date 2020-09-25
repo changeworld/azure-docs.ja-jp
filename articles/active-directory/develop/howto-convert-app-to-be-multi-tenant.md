@@ -13,12 +13,12 @@ ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 966149cf1a4f40ccc565b22e9d5afdd599997b4e
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 7ff1e6e3b422f55da332e206aea184ca1b5902a6
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141366"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705896"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>方法:すべての Azure Active Directory ユーザーがマルチテナント アプリケーション パターンを使用してサインインする
 
@@ -153,7 +153,7 @@ Azure AD のアプリケーションにユーザーがサインインするに�
 
 #### <a name="multiple-tiers-in-multiple-tenants"></a>複数のテナント内の複数の階層
 
-同様のケースは、アプリケーションの各層を別々のテナントに登録する場合にも起こります。 たとえば、Office 365 Exchange Online API を呼び出すネイティブ クライアント アプリケーションを構築する場合を考えます。 ネイティブ アプリケーションを開発するため、また開発後にユーザーのテナントでこのネイティブ アプリケーションを実行するために、Exchange Online のサービス プリンシパルが存在する必要があります。 この場合、開発者とユーザーは、テナントでサービス プリンシパルを作成するために、Exchange Online を購入する必要があります。
+同様のケースは、アプリケーションの各層を別々のテナントに登録する場合にも起こります。 たとえば、Exchange Online API を呼び出すネイティブ クライアント アプリケーションを構築する場合を考えます。 ネイティブ アプリケーションを開発するため、また開発後にユーザーのテナントでこのネイティブ アプリケーションを実行するために、Exchange Online のサービス プリンシパルが存在する必要があります。 この場合、開発者とユーザーは、テナントでサービス プリンシパルを作成するために、Exchange Online を購入する必要があります。
 
 API が Microsoft 以外の組織によって作成されている場合、この API の開発者は、ユーザーがユーザーのテナントでアプリケーションに対して同意する手段を提供する必要があります。 推奨される設計は、サード パーティー開発者向けに、サインアップを実装する Web クライアントとしても機能できるような API を構築することです。 これを行うには、次の手順を実行します。
 
@@ -181,7 +181,7 @@ API が Microsoft 以外の組織によって作成されている場合、こ�
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、任意の Azure AD テナントからユーザーをサインインさせることのできるアプリケーションを構築する方法を説明しました。 アプリと Azure AD の間でのシングル サインオン (SSO) を有効にした後、Office 365 のように、アプリケーションを更新して Microsoft リソースによって公開される API にアクセスすることもできます。 そのため、パーソナライズされたエクスペリエンスをアプリケーションに提供できます。たとえば、プロファイル画像や次の予定などのコンテキスト情報をユーザーに表示できます。 Azure AD や、Exchange、SharePoint、OneDrive、OneNote などの Office 365 サービスへの API 呼び出しを行う方法の詳細については、[Microsoft Graph API][MSFT-Graph-overview] にアクセスしてください。
+この記事では、任意の Azure AD テナントからユーザーをサインインさせることのできるアプリケーションを構築する方法を説明しました。 アプリと Azure AD の間でのシングル サインオン (SSO) を有効にした後、Microsoft 365 のように、アプリケーションを更新して Microsoft リソースによって公開される API にアクセスすることもできます。 そのため、パーソナライズされたエクスペリエンスをアプリケーションに提供できます。たとえば、プロファイル画像や次の予定などのコンテキスト情報をユーザーに表示できます。 Azure AD や、Exchange、SharePoint、OneDrive、OneNote などの Microsoft 365 サービスへの API 呼び出しを行う方法の詳細については、[Microsoft Graph API][MSFT-Graph-overview] に関するページを参照してください。
 
 ## <a name="related-content"></a>関連コンテンツ
 

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: 3d419268302ac8fd55559c6af9cd328f22bd2404
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b17e2618cd87c0689fa531e893149a1b2fab8d20
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931063"
+ms.locfileid: "90987189"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>空間分析コンテナー (プレビュー) をインストールして実行する
 
@@ -69,9 +69,9 @@ Azure Stack Edge は、サービスとしてのハードウェア ソリュー�
 | Linux OS | [Ubuntu Desktop 18.04 LTS](http://releases.ubuntu.com/18.04/) をホスト コンピューターにインストールする必要があります。  |
 
 
-## <a name="request-access-to-the-spatial-analysis-functionality"></a>空間分析機能へのアクセスを要求する
+## <a name="request-approval-to-run-the-container"></a>コンテナーを実行するための承認を要求する
 
-コンテナーへのアクセスを要求するには、[要求フォーム](https://aka.ms/cognitivegate)に記入して送信します。 
+コンテナーを実行するための承認を要求するには、[要求フォーム](https://aka.ms/cognitivegate)に記入して送信します。 
 
 このフォームでは、ユーザー、会社、コンテナーを使用するユーザー シナリオに関する情報が要求されます。 フォームを送信すると、そのフォームは Azure Cognitive Services チームによって確認されます。その後、チームから決定事項がメールで届きます。
 
@@ -208,7 +208,8 @@ sudo systemctl restart docker
 ## <a name="enable-nvidia-mps-on-the-host-computer"></a>ホスト コンピューター上で NVIDIA MPS を有効にする
 
 > [!TIP]
-> ホスト コンピューターのターミナル ウィンドウから、MPS の手順を行います。 Docker コンテナー インスタンス内ではありません。
+> * お使いの GPU コンピューティング機能が 7.x より小さい (Volta より前) 場合は、MP をインストールしないでください。 詳細については、[CUDA の互換性](https://docs.nvidia.com/deploy/cuda-compatibility/index.html#support-title)に関するページを参照してください。 
+> * ホスト コンピューターのターミナル ウィンドウから、MPS の手順を行います。 Docker コンテナー インスタンス内ではありません。
 
 最適なパフォーマンスと使用率を得るには、[NVIDIA マルチプロセス サービス (MPS)](https://docs.nvidia.com/deploy/pdf/CUDA_Multi_Process_Service_Overview.pdf) 用にホスト コンピューターの GPU を構成します。 ホスト コンピューターのターミナル ウィンドウから、MPS の手順を行います。
 
@@ -262,7 +263,9 @@ az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-
 ホスト コンピューターが Azure Stack Edge デバイスでない場合は、[Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) バージョン 1.0.8 をインストールする必要があります。 次の手順に従って、正しいバージョンをダウンロードします。Ubuntu Server 18.04:
 ```bash
 curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
-Copy the generated list.
+```
+
+生成された一覧をコピーします。
 
 ```bash
 sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
@@ -335,7 +338,8 @@ Azure CLI を使用して、以下の手順に従ってコンテナーをデプ�
 ```azurecli
 az login
 az extension add --name azure-iot
-az iot edge deployment create --deployment-id "<deployment name>" --hub-name "<IoT Hub name>" --content DeploymentManifest.json --target-condition "deviceId='<IoT Edge device name>'" -–subscription "<subscriptionId>"
+az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json -–subscription "<subscriptionId>"
+
 ```
 
 |パラメーター  |説明  |

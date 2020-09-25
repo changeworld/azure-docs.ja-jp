@@ -3,12 +3,12 @@ title: ポリシー適用除外の構造の詳細
 description: Azure Policy でイニシアティブまたは定義の評価からリソースを除外するために使用されるポリシー適用除外の定義について説明します。
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: b3e6a6c9bc7993161697187b6131994c1973b49d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1fd14d31824dc86dcd3788607030f28f978f5801
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931100"
+ms.locfileid: "90968040"
 ---
 # <a name="azure-policy-exemption-structure"></a>Azure Policy 適用除外の構造
 
@@ -99,11 +99,12 @@ Azure Policy 適用除外 (プレビュー) 機能は、イニシアティブや
 
 `policyAssignmentId` がイニシアティブの割り当て用である場合、サブジェクト リソースが適用除外の対象とするイニシアティブ内のポリシー定義は、`policyDefinitionReferenceIds` プロパティを使用して指定できます。 このリソースは、含まれる 1 つまたは複数のポリシー定義から適用除外される可能性があるため、このプロパティは "_配列_" です。 値は、`policyDefinitions.policyDefinitionReferenceId` フィールドのイニシアティブ定義内の値と一致する必要があります。
 
-## <a name="required-permissions"></a>必要なアクセス許可
+## <a name="exemption-category"></a>適用除外カテゴリ
 
-ポリシー適用除外オブジェクトを管理するために必要な Azure RBAC のアクセス許可は、`Microsoft.Authorization/policyExemptions` 操作グループに存在します。 組み込みロールである[リソース ポリシーの共同作成者](../../../role-based-access-control/built-in-roles.md#resource-policy-contributor)と[セキュリティ管理者](../../../role-based-access-control/built-in-roles.md#security-admin)は、どちらも `read` アクセス許可と `write` アクセス許可を持ち、[Policy Insights データ ライター (プレビュー)](../../../role-based-access-control/built-in-roles.md#policy-insights-data-writer-preview) は `read` アクセス許可を持ちます。
+次の 2 つの適用除外カテゴリがあり、適用除外をグループ化するために使用されます。
 
-適用除外には、それを許可することの影響から、特別なセキュリティ対策が講じられています。 リソース階層または個々のリソースに対して `Microsoft.Authorization/policyExemptions/write` 操作を要求するだけでなく、適用除外の作成者は、ターゲットの割り当てに対する `exempt/Action` 動詞を持つ必要があります。
+- **軽減済み**: ポリシーの目的が別の方法で満たされているため、除外対象が許可されます。
+- **免除**: リソースの非コンプライアンスの状態が一時的に受け入れられるため、除外対象が許可されます。 このカテゴリを使用するもう 1 つの理由は、リソースまたはリソース階層をイニシアティブ内の 1 つ以上の定義から除外する必要はあるが、イニシアティブ全体から除外してはならない場合です。
 
 ## <a name="expiration"></a>有効期限
 
@@ -111,6 +112,12 @@ Azure Policy 適用除外 (プレビュー) 機能は、イニシアティブや
 
 > [!NOTE]
 > `expiresOn` の日付になってもポリシー適用除外は削除されません。 記録保持のためにオブジェクトは維持されますが、適用除外は無効となります。
+
+## <a name="required-permissions"></a>必要なアクセス許可
+
+ポリシー適用除外オブジェクトを管理するために必要な Azure RBAC のアクセス許可は、`Microsoft.Authorization/policyExemptions` 操作グループに存在します。 組み込みロールである[リソース ポリシーの共同作成者](../../../role-based-access-control/built-in-roles.md#resource-policy-contributor)と[セキュリティ管理者](../../../role-based-access-control/built-in-roles.md#security-admin)は、どちらも `read` アクセス許可と `write` アクセス許可を持ち、[Policy Insights データ ライター (プレビュー)](../../../role-based-access-control/built-in-roles.md#policy-insights-data-writer-preview) は `read` アクセス許可を持ちます。
+
+適用除外には、それを許可することの影響から、特別なセキュリティ対策が講じられています。 リソース階層または個々のリソースに対して `Microsoft.Authorization/policyExemptions/write` 操作を要求するだけでなく、適用除外の作成者は、ターゲットの割り当てに対する `exempt/Action` 動詞を持つ必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

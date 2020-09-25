@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 6af23f566e8768dd1213095402b7af029d494476
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 19e022073f43548a91fad76cb380a75205237bbd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076034"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892560"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Azure Spring Cloud のディザスター リカバリー
+
+**この記事の適用対象:** ✔️ Java ✔️ C#
 
 この記事では、Azure Spring Cloud アプリケーションをダウンタイムの発生から保護するために使用できるいくつかの戦略について説明します。  リージョンまたはデータセンターでは、地域的な災害によってダウンタイムが発生する可能性がありますが、慎重に計画することで顧客への影響を軽減できます。
 
@@ -62,3 +64,8 @@ Traffic Manager プロファイルは次のとおりです。
 4. DNS ゾーンに CNAME レコードを作成します: bcdr-test.contoso.com CNAME asc-bcdr.trafficmanager.net 
 
 5. これで、環境は完全に設定されました。 お客様は、bcdr-test.contoso.com を介してアプリにアクセスすることができます。
+
+## <a name="next-steps"></a>次の手順
+
+* [クイック スタート: 初めての Azure Spring Cloud アプリケーションをデプロイする](spring-cloud-quickstart.md)
+ 

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: a3cd250e53fb30e07795b184b5c949505e3b20ae
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: af32be357899090e0df96e2c67910a4f9ad5194d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905745"
+ms.locfileid: "90988086"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning のエンタープライズ セキュリティ
 
@@ -361,6 +361,17 @@ Machine Learning コンピューティングはマネージド コンピュー�
 * テレメトリも Microsoft/Azure サブスクリプションにプッシュされます。
 
 [![推論のワークフロー](media/concept-enterprise-security/inferencing.png)](media/concept-enterprise-security/inferencing.png#lightbox)
+
+## <a name="audit-and-manage-compliance"></a>コンプライアンスの監査と管理
+
+[Azure Policy](/azure/governance/policy) は、Azure リソースがポリシーに準拠していることを確認できるガバナンス ツールです。 Azure Machine Learning を使用すると、次のポリシーを割り当てることができます。
+
+* **カスタマー マネージド キー**: ワークスペースでカスタマー マネージド キーを使用する必要があることを監査または適用します。
+* **Private Link**: ワークスペースで仮想ネットワークとの通信にプライベート エンドポイントが使用されているかどうかを監査します。
+
+Azure Policy の詳細については、[ のドキュメント](/azure/governance/policy/overview)を参照してください。
+
+Azure Machine Learning に固有のポリシーの詳細については、[Azure Policy でのコンプライアンスの監査と管理](how-to-integrate-azure-policy.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

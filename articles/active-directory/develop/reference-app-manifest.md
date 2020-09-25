@@ -13,12 +13,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: b94bcd1cfbbf215ed912d506d27311aae502656b
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 554e5a022dcb49cd861ad7198a2c375634db6d10
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115069"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705747"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory のアプリ マニフェスト
 
@@ -82,7 +82,7 @@ Azure portal で、あるいは [REST API](/graph/api/resources/application) ま
 | :--- | :--- |
 | addIns | コレクション |
 
-使用するサービスが特定のコンテキストでアプリの呼び出しに使用できるカスタム動作を定義します。 たとえば、ファイル ストリームをレンダリングできるアプリケーションでは、その "FileHandler" 機能の `addIns` プロパティを設定できます。 このパラメーターを使うと、Office 365 などのサービスで、ユーザーが作業中のドキュメントのコンテキストでアプリケーションを呼び出すことができます。
+使用するサービスが特定のコンテキストでアプリの呼び出しに使用できるカスタム動作を定義します。 たとえば、ファイル ストリームをレンダリングできるアプリケーションでは、その "FileHandler" 機能の `addIns` プロパティを設定できます。 このパラメーターを使うと、Microsoft 365 などのサービスで、ユーザーが作業中のドキュメントのコンテキストでアプリケーションを呼び出すことができます。
 
 例:
 

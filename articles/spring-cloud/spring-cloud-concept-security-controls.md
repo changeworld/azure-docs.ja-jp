@@ -7,14 +7,17 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 2e001e5e927d9d4c5dc4c3eb74f7b5ad33617b99
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1472da4c87dc4579a30290460fb7811cf228be47
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037578"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892485"
 ---
 # <a name="security-controls-for-azure-spring-cloud-service"></a>Azure Spring Cloud Service のセキュリティ コントロール
+
+**この記事の適用対象:** ✔️ Java ✔️ C#
+
 セキュリティ コントロールは、Azure Spring Cloud Service に組み込まれています。
 
 セキュリティ コントロールとは、セキュリティの脆弱性の防止、検出、および対処を行う Azure サービスの能力に寄与する、そのサービスの品質または機能です。  各コントロールについて、 *[はい]* または *[いいえ]* を使用して、サービスに現在設定されているかどうかを示します。  サービスに適用されないコントロールには *[N/A]* を使用します。 
@@ -32,3 +35,7 @@ ms.locfileid: "87037578"
 | セキュリティ コントロール | はい/いいえ | Notes | ドキュメント |
 |:-------------|:-------|:-------------------------------|:----------------------|
 | サービス タグ | はい | **AzureSpringCloud** サービス タグを使用して、[ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)または [Azure Firewall](https://docs.microsoft.com/azure/firewall/service-tags) で送信ネットワーク アクセスの制御を定義し、Azure Spring Cloud アプリケーションへのトラフィックを許可します。<br><br>*注:* 現時点では、2020 年 7 月 14 日より後に作成された新しい Azure Spring Cloud サービス インスタンスでのみ、**AzureSpringCloud** サービス タグがサポートされています。 | [サービス タグ](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) |
+
+## <a name="next-steps"></a>次の手順
+
+* [クイック スタート: 初めての Azure Spring Cloud アプリケーションをデプロイする](spring-cloud-quickstart.md)

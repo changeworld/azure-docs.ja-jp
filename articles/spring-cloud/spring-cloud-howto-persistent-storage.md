@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 1ff09941d07ecd6d62483b1fca59c9003ddbd159
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9d769cb6e2cc33df259da46a82ad27a8bfd9e74b
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496272"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888530"
 ---
 # <a name="use-persistent-storage-in-azure-spring-cloud"></a>Azure Spring Cloud で永続ストレージを使用する
+
+**この記事の適用対象:** ✔️ Java ✔️ C#
 
 Azure Spring Cloud には、アプリケーション用に永続的ストレージと一時ストレージの 2 種類のストレージが用意されています。
 
@@ -30,7 +32,7 @@ Azure Spring Cloud の既定では、各アプリケーション インスタン
 
 ## <a name="use-the-azure-portal-to-enable-persistent-storage"></a>Azure portal を使用して永続的ストレージを有効にする
 
-1. Azure portal の**ホーム ページ**から、 **[すべてのリソース]** を選択します。
+1. Azure portal の**ホーム ページ**から、**[すべてのリソース]** を選択します。
 
     >![[すべてのリソース] アイコンを見つける](media/portal-all-resources.jpg)
 
@@ -44,9 +46,9 @@ Azure Spring Cloud の既定では、各アプリケーション インスタン
 
     > ![サービスを選択する](media/select-gateway.jpg)
 
-1. サービスの構成ページから、 **[構成]** を選択します
+1. サービスの構成ページから、**[構成]** を選択します
 
-1. **[Persistent Storage] (永続的ストレージ)** タブを選択し、 **[有効にする]** を選択します。
+1. **[Persistent Storage] (永続的ストレージ)** タブを選択し、**[有効にする]** を選択します。
 
     > ![永続的ストレージを有効にする](media/enable-persistent-storage.jpg)
 
@@ -82,7 +84,7 @@ az extension add --name spring-cloud
     > [!WARNING]
     > アプリケーションの永続的ストレージを無効にすると、すべてのストレージの割り当てが解除され、格納されているデータがすべて完全に失われます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * アプリケーションとサービスのクォータについては、[こちら](spring-cloud-quotas.md)をご覧ください。
 * [アプリケーションを手動でスケーリングする](spring-cloud-tutorial-scale-manual.md)方法について学習してください。

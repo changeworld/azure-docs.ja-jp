@@ -7,14 +7,16 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 665d508a7d95e177d0db09ad86e2a5f0ee4d605b
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 2f788452455bfbbc47f0a48689ccf3344515fdae
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89291298"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90904252"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>自分のサービス向けに Spring Cloud Config Server インスタンスを設定する
+
+**この記事の適用対象:** ✔️ Java ✔️ C#
 
 この記事では、Spring Cloud Config Server インスタンスを自分の Azure Spring Cloud サービスに接続する方法を紹介します。
 
@@ -163,7 +165,7 @@ SSH を使用するプライベート Git リポジトリを設定するため�
 
 リポジトリの設定を含む YAML ファイルを記述した場合は、ローカル コンピューターから Azure Spring Cloud に YAML ファイルを直接インポートできます。 基本認証を使用するプライベート リポジトリ用の簡単な YAML ファイルは次のようになります。
 
-```yml
+```yaml
 spring:
     cloud:
         config:

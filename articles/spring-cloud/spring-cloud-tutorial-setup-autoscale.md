@@ -7,14 +7,17 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/22/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 6e4494762c4652d3db66940dddebb13c3ab03af3
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 5ca0c498e9fd03ce6397824465f9e1e006eeccc1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449469"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905382"
 ---
 # <a name="tutorial-set-up-autoscale-for-microservice-applications"></a>チュートリアル:マイクロサービス アプリケーションの自動スケーリングを設定する
+
+**この記事の適用対象:** ✔️ Java ✔️ C#
+
 自動スケーリングは、需要の変化に応じてマイクロサービス アプリケーションが最高のパフォーマンスを発揮できるようにする Azure Spring Cloud の組み込み機能です。 これには、仮想 CPU、メモリ、アプリ インスタンスの数の変更が含まれます。 この記事では、Microsoft Azure portal または Azure CLI を使用してアプリケーションの自動スケーリングの設定をセットアップする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
@@ -68,4 +71,4 @@ Basic レベルを使用していて、その 1 つ以上の制限により制�
 ## <a name="next-steps"></a>次のステップ
 
 * [Microsoft Azure の自動スケーリングの概要](https://docs.microsoft.com/azure/azure-monitor/platform/autoscale-overview)
-* [Azure CLI での自動スケーリングの監視](https://docs.microsoft.com/cli/azure/monitor/autoscale?view=azure-cli-latest)
+* [Azure CLI での自動スケーリングの監視](https://docs.microsoft.com/cli/azure/monitor/autoscale?view=azure-cli-latest&preserve-view=true)

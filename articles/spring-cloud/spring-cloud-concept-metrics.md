@@ -4,15 +4,16 @@ description: Azure Spring Cloud でメトリックを確認する方法につい
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 12/06/2019
+ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 4a12658eada3d2660cde86b3eb80e332416ea7a3
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: e488f2ddc44f1339d648cd6fe6b1aae18b748679
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89046852"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892641"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Azure Spring Cloud のメトリックについて
 
@@ -109,6 +110,34 @@ Azure Spring Cloud は、1 分ごとに更新されるメトリックを使用�
 >| jvm.gc.pause.total.count | jvm.gc.pause (合計数) | Count | この JMV が起動した後の GC の合計数 (若い GC と古い GC を含む)。 |
 >| jvm.gc.pause.total.time | jvm.gc.pause (合計時間) | ミリ秒 | この JMV が起動した後に消費された GC 時間の合計 (若い GC と古い GC を含む)。 |
 
+::: zone pivot="programming-language-csharp"
+### <a name="performance-net"></a>パフォーマンス (.NET)
+
+>[!div class="mx-tdCol2BreakAll"]
+>| 名前 | Spring Actuator メトリック名 | ユニット | 詳細 |
+>|------|-----------------------------|------|---------|
+>| CPU 使用率       | cpu-usage      | ミリ秒 | プロセスによって CPU が使用された時間の長さ。 |
+>| Working set     | working-set    | メガバイト    | プロセスによって使用されたワーキング セットの量。 |
+>| GC heap size    | gc-heap-size   | メガバイト    | ガベージ コレクターによって報告された合計ヒープ サイズ。 |
+>| Gen 0 GC count  | gen-0-gc-count | Count        | 1 秒あたりの第 0 世代のガベージ コレクション数。 |
+>| Gen 1 GC count  | gen-1-gc-count | Count        | 1 秒あたりの第 1 世代のガベージ コレクション数。 |
+>| Gen 2 GC count  | gen-2-gc-count | Count        | 1 秒あたりの第 2 世代のガベージ コレクション数。 |
+>| Gen 0 heap size | gen-0-size     | バイト        | 第 0 世代のヒープ サイズ。 |
+>| Gen 1 heap size | gen-1-size     | バイト        | 第 1 世代のヒープ サイズ。 |
+>| Gen 2 heap size | gen-2-size     | バイト        | 第 2 世代のヒープ サイズ。 |
+>| LOH heap size   | loh-size       | バイト        | ラージ オブジェクト ヒープのヒープ サイズ。 |
+>| Allocation rate | alloc-rate     | バイト        | 1 秒あたりの割り当てられたバイト数。 |
+>| Assembly count  | assembly-count | Count        | 読み込まれたアセンブリ数。 |
+>| Exception count | exception-count | Count       | 1 秒あたりの例外数。 |
+>| Thread pool thread count      | threadpool-thread-count              | Count | スレッド プールのスレッド数 |
+>| Monitor lock contention count | monitor-lock-contention-count        | Count | モニターのロックを取得しようとしたときに競合が発生した 1 秒あたりの回数。 |
+>| Thread pool queue length      | threadpool-queue-length              | Count | スレッド プールの作業項目のキューの長さ。 |
+>| Thread pool completed items count | threadpool-completed-items-count | Count | スレッド プールの完了した作業項目数。 |
+>| Active timers count               | active-timer-count               | Count | 現在アクティブなタイマーの数。 アクティブなタイマーとは、将来のある時点でティックするように登録されていて、まだキャンセルされていないタイマーです。 |
+
+詳細については、[dotnet のカウンター](/dotnet/core/diagnostics/dotnet-counters)に関するページを参照してください。
+::: zone-end
+
 ### <a name="request"></a>Request
 >[!div class="mx-tdCol2BreakAll"]
 >| 名前 | Spring Actuator メトリック名 | ユニット | 詳細 |
@@ -117,6 +146,20 @@ Azure Spring Cloud は、1 分ごとに更新されるメトリックを使用�
 >| tomcat.global.received | tomcat.global.received | バイト | Tomcat Web サーバーが受信したデータの量 |
 >| tomcat.global.request.total.count | tomcat.global.request (合計数) | Count | Tomcat Web サーバーが処理した要求の合計数 |
 >| tomcat.global.request.max | tomcat.global.request.max | ミリ秒 | 要求を処理するための Tomcat Web サーバーの最大時間 |
+
+::: zone pivot="programming-language-csharp"
+### <a name="request-net"></a>要求 (.NET)
+
+>[!div class="mx-tdCol2BreakAll"]
+>| 名前 | Spring Actuator メトリック名 | ユニット | 詳細 |
+>|------|-----------------------------|------|---------|
+>| 1 秒あたりの要求数 | requests-per-second | Count | 要求レート。 |
+>| 要求の合計 | total-requests | Count | 要求の合計数。 |
+>| Current requests | current-requests | Count | 現在の要求数。 |
+>| 失敗した要求 | failed-requests | Count | 失敗した要求の数。 |
+
+詳細については、[dotnet のカウンター](/dotnet/core/diagnostics/dotnet-counters)に関するページを参照してください。
+::: zone-end
 
 ### <a name="session"></a>Session
 >[!div class="mx-tdCol2BreakAll"]
@@ -130,6 +173,7 @@ Azure Spring Cloud は、1 分ごとに更新されるメトリックを使用�
 >| tomcat.sessions.active.current | tomcat.sessions.active.current | Count | Tomcat セッションのアクティブ数 |
 
 ## <a name="see-also"></a>関連項目
+
 * [クイック スタート: ログ、メトリック、トレースを使用した Azure Spring Cloud アプリの監視](spring-cloud-quickstart-logs-metrics-tracing.md)に関するページ
 
 * [Azure メトリックス エクスプローラーの概要](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)
@@ -137,7 +181,7 @@ Azure Spring Cloud は、1 分ごとに更新されるメトリックを使用�
 * [診断設定でログとメトリックを分析する](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
 
 ## <a name="next-steps"></a>次のステップ
+
 * [チュートリアル:アラートとアクション グループを使用して Spring Cloud のリソースを監視する](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-alerts-action-groups)
 
 * [Azure Spring Cloud のクォータとサービス プラン](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quotas)
-

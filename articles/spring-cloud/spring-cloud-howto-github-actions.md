@@ -5,22 +5,147 @@ author: MikeDodaro
 ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
-ms.date: 01/15/2019
+ms.date: 09/08/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 3f004be0afc6c73fdabe57e568cd57b51e9abcc5
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: 9e635d606870d09e9aac82de7da32e074b124159
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299684"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906946"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>GitHub Actions を使用する Azure Spring Cloud CI/CD
 
 GitHub Actions は、自動化されたソフトウェア開発ライフサイクル ワークフローをサポートします。 Azure Spring Cloud 用 GitHub Actions を使用すると、リポジトリに構築、テスト、パッケージ化、リリース、および Azure へのデプロイを行うワークフローを作成できます。 
 
 ## <a name="prerequisites"></a>前提条件
-この例には [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) が必要です。
+この例には [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) が必要です。
 
+::: zone pivot="programming-language-csharp"
+## <a name="set-up-github-repository-and-authenticate"></a>GitHub リポジトリを設定して認証する
+Azure ログイン アクションを承認するには、Azure サービス プリンシパルの資格情報が必要です。 Azure の資格情報を取得するには、ローカル マシン上で次のコマンドを実行します。
+
+```
+az login
+az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID> --sdk-auth 
+```
+
+特定のリソース グループにアクセスするには、範囲を縮小できます。
+
+```
+az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP> --sdk-auth
+```
+
+このコマンドからは、次のような JSON オブジェクトが出力されます。
+
+```JSON
+{
+    "clientId": "<GUID>",
+    "clientSecret": "<GUID>",
+    "subscriptionId": "<GUID>",
+    "tenantId": "<GUID>",
+    ...
+}
+```
+
+この例では、[GitHub 上の steeltoe サンプル](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/steeltoe-sample)を使用しています。  リポジトリをフォークし、フォークの GitHub リポジトリ ページを開いて、 **[設定]** タブを選択します。 **[シークレット]** メニューを開き、 **[新しいシークレット]** を選択します。
+
+ ![新しいシークレットを追加する](./media/github-actions/actions1.png)
+
+シークレット名を `AZURE_CREDENTIALS` に設定し、その値を「*Set up your GitHub repository and authenticate (GitHub リポジトリを設定して認証する)* 」という見出しの下にある JSON 文字列に設定します。
+
+ ![シークレット データを設定する](./media/github-actions/actions2.png)
+
+[GitHub Actions で Key Vault を使用して Azure Spring を認証する](./spring-cloud-github-actions-key-vault.md)方法の記事で説明されているように、GitHub Actions で Key Vault から Azure のログイン資格情報を取得することもできます。
+
+## <a name="provision-service-instance"></a>サービス インスタンスをプロビジョニングする
+Azure Spring Cloud サービス インスタンスをプロビジョニングするには、Azure CLI を使用して次のコマンドを実行します。
+
+```azurecli
+az extension add --name spring-cloud
+az group create --location eastus --name <resource group name>
+az spring-cloud create -n <service instance name> -g <resource group name>
+az spring-cloud config-server git set -n <service instance name> --uri https://github.com/xxx/Azure-Spring-Cloud-Samples --label master --search-paths steeltoe-sample/config
+```
+
+## <a name="build-the-workflow"></a>ワークフローを構築する
+ワークフローは、次のオプションを使用して定義されます。
+
+### <a name="prepare-for-deployment-with-azure-cli"></a>Azure CLI を使用してデプロイを準備する
+
+コマンド `az spring-cloud app create` は現在べき等ではありません。 一度実行した後、同じコマンドを再度実行するとエラーが発生します。 既存の Azure Spring Cloud アプリおよびインスタンスにはこのワークフローをお勧めします。
+
+準備には、次の Azure CLI コマンドを使用します。
+```
+az configure --defaults group=<service group name>
+az configure --defaults spring-cloud=<service instance name>
+az spring-cloud app create --name planet-weather-provider
+az spring-cloud app create --name solar-system-weather
+```
+
+### <a name="deploy-with-azure-cli-directly"></a>Azure CLI を使用して直接デプロイする
+
+以下の内容の `.github/workflows/main.yml` ファイルをリポジトリに作成します。 `<your resource group name>` と `<your service name>` を正しい値に置き換えます。
+
+```yaml
+name: Steeltoe-CD
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    env:
+      working-directory: ./steeltoe-sample
+      resource-group-name: <your resource group name>
+      service-name: <your service name>
+    
+    # Supported .NET Core version matrix.
+    strategy:
+      matrix:
+        dotnet: [ '3.1.x' ]
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Set up .NET Core 3.1 SDK
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ matrix.dotnet }}
+          
+      # Set credential for az login
+      - uses: azure/login@v1.1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: install Azure CLI extension
+        run: |
+          az extension add --name spring-cloud --yes
+      
+      - name: Build and package planet-weather-provider app
+        working-directory: ${{env.working-directory}}/src/planet-weather-provider
+        run: |
+          dotnet publish
+          az spring-cloud app deploy -n planet-weather-provider --runtime-version NetCore_31 --main-entry Microsoft.Azure.SpringCloud.Sample.PlanetWeatherProvider.dll --artifact-path ./publish-deploy-planet.zip -s ${{ env.service-name }} -g ${{ env.resource-group-name }}
+      - name: Build solar-system-weather app
+        working-directory: ${{env.working-directory}}/src/solar-system-weather
+        run: |
+          dotnet publish
+          az spring-cloud app deploy -n solar-system-weather --runtime-version NetCore_31 --main-entry Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather.dll --artifact-path ./publish-deploy-solar.zip -s ${{ env.service-name }} -g ${{ env.resource-group-name }}
+```
+::: zone-end
+
+::: zone pivot="programming-language-java"
 ## <a name="set-up-github-repository-and-authenticate"></a>GitHub リポジトリを設定して認証する
 Azure ログイン アクションを承認するには、Azure サービス プリンシパルの資格情報が必要です。 Azure の資格情報を取得するには、ローカル マシン上で次のコマンドを実行します。
 ```
@@ -42,7 +167,7 @@ az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTIO
 }
 ```
 
-この例では、GitHub 上の [Piggy Metrics](https://github.com/Azure-Samples/piggymetrics) サンプルを使用します。  このサンプルをフォークし、GitHub リポジトリ ページを開き、 **[Settings]\(設定\)** タブをクリックします。 **[Secrets]\(シークレット\)** メニューを開き、 **[Add a new secret]\(新しいシークレットの追加\)** をクリックします。
+この例では、GitHub 上の [PiggyMetrics](https://github.com/Azure-Samples/piggymetrics) サンプルを使用します。  このサンプルをフォークし、GitHub リポジトリ ページを開き、 **[Settings]\(設定\)** タブをクリックします。 **[Secrets]\(シークレット\)** メニューを開き、 **[Add a new secret]\(新しいシークレットの追加\)** をクリックします。
 
  ![新しいシークレットを追加する](./media/github-actions/actions1.png)
 
@@ -198,18 +323,22 @@ jobs:
         mvn azure-spring-cloud:deploy
 ```
 
+::: zone-end
+
 ## <a name="run-the-workflow"></a>ワークフローを実行する
+
 `.github/workflow/main.yml` を GitHub にプッシュすると、GitHub **Actions** が自動的に有効になります。 このアクションは、新しいコミットがプッシュされたときにトリガーされます。 ブラウザーでこのファイルを作成する場合、アクションが既に実行されている必要があります。
 
 アクションが有効になっていることを確認するには、GitHub リポジトリ ページの **[Actions]\(アクション\)** タブをクリックします。
 
- ![アクションが有効かどうかを確認する](./media/github-actions/actions3.png)
+![アクションが有効かどうかを確認する](./media/github-actions/actions3.png)
 
 アクションの実行結果がエラーになる場合、たとえば、Azure の資格情報を設定していなかった場合は、エラーを修正した後にチェックを再実行できます。 GitHub リポジトリ ページの **[Actions]\(アクション\)** をクリックし、特定のワークフロー タスクを選択し、 **[Rerun checks]\(チェックの再実行\)** ボタンをクリックしてチェックを再実行します。
 
- ![チェックを再実行する](./media/github-actions/actions4.png)
+![チェックを再実行する](./media/github-actions/actions4.png)
 
 ## <a name="next-steps"></a>次のステップ
+
 * [Spring Cloud GitHub アクションの Key Vault](./spring-cloud-github-actions-key-vault.md)
-* [Azure Active Directory のサービス プリンシパル](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)
+* [Azure Active Directory のサービス プリンシパル](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true#az-ad-sp-create-for-rbac)
 * [GitHub Actions for Azure](https://github.com/Azure/actions/)

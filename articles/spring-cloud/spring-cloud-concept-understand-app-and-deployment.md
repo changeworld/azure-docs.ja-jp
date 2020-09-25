@@ -7,14 +7,16 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: a1f6d318c123b5907a8c434bb097fb86a351f5d1
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 9e909db0041979eb7bc4fc30bd9551382e83c488
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297537"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892501"
 ---
 # <a name="understand-app-and-deployment-in-azure-spring-cloud"></a>Azure Spring Cloud でのアプリとデプロイについて
+
+**この記事の適用対象:** ✔️ Java ✔️ C#
 
 **アプリ**と**デプロイ**は、Azure Spring Cloud のリソース モデルにおける 2 つの重要な概念です。 Azure Spring Cloud では、*アプリ*は、1 つのビジネス アプリまたは 1 つのマイクロサービスを抽象化したものです。  *アプリ*としてデプロイされたコードまたはバイナリの 1 つのバージョンが*デプロイ*で実行されます。  アプリは、次に示すように、"*Azure Spring Cloud サービス インスタンス*" (単に "*サービス インスタンス*" と呼ばれることもあります) で実行されます。
 

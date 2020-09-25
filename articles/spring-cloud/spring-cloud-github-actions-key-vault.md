@@ -5,16 +5,19 @@ author: MikeDodaro
 ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
-ms.date: 01/20/2019
+ms.date: 09/08/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 433cd9e7b8cfe69ce5008366db884659cccbc149
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 995d10b3c7064e462500e0bec4d5d8aa010afe64
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076012"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90888778"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>GitHub Actions で Key Vault を使用して Azure Spring Cloud を認証する
+
+**この記事の適用対象:** ✔️ Java ✔️ C#
+
 キー コンテナーは、キーを安全に格納できる場所です。 エンタープライズ ユーザーは、管理対象のスコープ内にある CI/CD 環境の資格情報を保存する必要があります。 キー コンテナー内の資格情報を取得するキーは、リソース スコープに制限する必要があります。  これは、Azure スコープ全体ではなく、キー コンテナー スコープに対してのみアクセスできます。 これは、建物内のすべてのドアを開くことができるマスター キーではなく、頑丈な箱のみを開くことができるキーのようなものです。 キーを別のキーで取得する方法であり、CICD ワークフローで役立ちます。 
 
 ## <a name="generate-credential"></a>資格情報を生成する
@@ -47,11 +50,11 @@ Azure portal の **[Key Vault]** ダッシュボードに移動し、 **[アク�
 
  ![アクセス ポリシーを設定する](./media/github-actions/key-vault1.png)
 
-資格情報の名前 (`azure-cli-2020-01-19-04-39-02` など) をコピーします。 **[アクセス ポリシー]** メニューを開き、 **[+ アクセス ポリシーの追加]** リンクをクリックします。  **[テンプレート]** に `Secret Management` を選択し、 **[プリンシパル]** を選択します。 **[プリンシパル]** / **[選択]** 入力ボックスに資格情報の名前を貼り付けます。
+資格情報の名前 (`azure-cli-2020-01-19-04-39-02` など) をコピーします。 **[アクセス ポリシー]** メニューを開き、**[+ アクセス ポリシーの追加]** リンクをクリックします。  **[テンプレート]** に `Secret Management` を選択し、**[プリンシパル]** を選択します。 **[プリンシパル]** / **[選択]** 入力ボックスに資格情報の名前を貼り付けます。
 
- ![Select](./media/github-actions/key-vault2.png)
+ ![選択](./media/github-actions/key-vault2.png)
 
- **[アクセス ポリシーの追加]** ダイアログの **[追加]** ボタンをクリックし、 **[保存]** をクリックします。
+ **[アクセス ポリシーの追加]** ダイアログの **[追加]** ボタンをクリックし、**[保存]** をクリックします。
 
 ## <a name="generate-full-scope-azure-credential"></a>完全なスコープの Azure 資格情報を生成する
 これは、建物のすべてのドアを開くことができるマスター キーです。 この手順は前の手順と似ていますが、ここではスコープを変更してマスター キーを生成します。
@@ -74,7 +77,7 @@ az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTIO
     "managementEndpointUrl": "https://management.core.windows.net/"
 }
 ```
-JSON 文字列全体をコピーします。  **[Key Vault]** ダッシュボードに戻ります。 **[シークレット]** メニューを開き、 **[生成]/[インポート]** ボタンをクリックします。 `AZURE-CREDENTIALS-FOR-SPRING` などのシークレット名を入力します。 JSON の資格情報文字列を **[値]** 入力ボックスに貼り付けます。 値の入力ボックスは、複数行のテキスト領域ではなく、1 行のテキスト フィールドであることがわかります。  ここには、完全な JSON 文字列を貼り付けることができます。
+JSON 文字列全体をコピーします。  **[Key Vault]** ダッシュボードに戻ります。 **[シークレット]** メニューを開き、**[生成]/[インポート]** ボタンをクリックします。 `AZURE-CREDENTIALS-FOR-SPRING` などのシークレット名を入力します。 JSON の資格情報文字列を **[値]** 入力ボックスに貼り付けます。 値の入力ボックスは、複数行のテキスト領域ではなく、1 行のテキスト フィールドであることがわかります。  ここには、完全な JSON 文字列を貼り付けることができます。
 
  ![完全なスコープの資格情報](./media/github-actions/key-vault3.png)
 
@@ -109,5 +112,5 @@ jobs:
 
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Spring Cloud GitHub Actions](./spring-cloud-howto-github-actions.md)

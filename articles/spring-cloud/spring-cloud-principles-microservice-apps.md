@@ -7,14 +7,17 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1c403398f7320cefa16a4a570645a6d7d750acc7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 8cda46a011ae92f26a15a4e9a918559801ce299c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297503"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906867"
 ---
 # <a name="java-and-base-os-for-spring-microservice-apps"></a>Spring マイクロサービス アプリ用の Java とベ基本 OS
+
+**この記事の適用対象:** ✔️ Java
+
 以下に示すのは、Azure Spring Cloud マイクロサービス アプリ用の Java および基本オペレーティング システムを正常に維持するための原則です。
 ## <a name="principles-for-healthy-java-and-base-os"></a>正常な Java および基本 OS の原則
 * すべてのサービス レベル (Basic、Standard、Premium) で同じ基本オペレーティング システムを使用する必要があります。
@@ -52,5 +55,6 @@ Azul Systems では、基本オペレーティング システムに対する変
 > ![既定のデプロイ](media/spring-cloud-principles/spring-cloud-default-deployment.png)
  
 ## <a name="next-steps"></a>次のステップ
-* [クイック スタート: Azure portal を使用して既存の Azure Spring Cloud アプリケーションを起動する](spring-cloud-quickstart.md)」をご覧ください。
+
+* [クイック スタート: 初めての Azure Spring Cloud アプリケーションをデプロイする](spring-cloud-quickstart.md)
 * [Azure および Azure Stack の Java 長期サポート](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)
