@@ -430,7 +430,5 @@
       href: 'https://docs.microsoft.com/search/index?search=LUIS'
     - name: ブログ
       href: 'https://blog.botframework.com/category/luis/'
-    - name: ナレッジ ベース
-      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service'
 - name: LUIS ポータル
   href: 'https://www.luis.ai'
