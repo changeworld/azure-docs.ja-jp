@@ -68,7 +68,7 @@
             - name: 基本
               href: data-lake-analytics-u-sql-get-started.md
             - name: 言語のリファレンス
-              href: 'https://msdn.microsoft.com/library/azure/mt591959'
+              href: 'https://docs.microsoft.com/u-sql/'
             - name: Catalog
               href: data-lake-analytics-u-sql-catalog.md
             - name: ユーザー定義演算子
