@@ -349,7 +349,7 @@
               href: database/sql-data-sync-best-practices.md
             - name: データ同期のトラブルシューティング
               href: database/sql-data-sync-troubleshoot.md
-        - name: セキュリティ
+        - name: Security
           items:
             - name: Azure SQL 監査
               href: database/auditing-overview.md
@@ -1210,6 +1210,8 @@
           href: database/database-import-export-hang.md
     - name: サービスの更新情報
       items:
+        - name: SSL ルート証明書の期限切れ
+          href: updates/ssl-root-certificate-expiring.md
         - name: ゲートウェイ IP アドレスの更新
           href: database/gateway-migration.md
         - name: 定期的なメンテナンス イベント
