@@ -115,8 +115,6 @@
     - name: コンテンツのエンコード
       href: media-services-encode-asset.md
       items:
-        - name: エンコーダーの比較
-          href: media-services-compare-encoders.md
         - name: エンコードの速度とコンカレンシーの管理
           href: media-services-manage-encoding-speed.md
         - name: Media Encoder Standard (MES)
@@ -205,20 +203,6 @@
                   href: media-services-mes-preset-H264-Single-Bitrate-High-Quality-SD-for-Android.md
                 - name: H264 Single Bitrate Low Quality SD for Android
                   href: media-services-mes-preset-H264-Single-Bitrate-Low-Quality-SD-for-Android.md
-        - name: メディア エンコーダー Premium ワークフロー
-          items:
-            - name: メディア エンコーダー プレミアム ワークフローの形式とコーデック
-              href: media-services-premium-workflow-encoder-formats.md
-            - name: メディア エンコーダー プレミアム ワークフローを使用したエンコード
-              items:
-                - name: メディア エンコーダー Premium ワークフロー
-                  href: media-services-encode-with-premium-workflow.md
-                - name: メディア エンコーダー Premium ワークフローのチュートリアル
-                  href: media-services-media-encoder-premium-workflow-tutorials.md
-                - name: ワークフロー デザイナーを使用して高度なエンコード ワークフローを作成する
-                  href: media-services-workflow-designer.md
-                - name: 複数入力の場合の Premium ワークフロー
-                  href: media-services-media-encoder-premium-workflow-multiplefilesinput.md
         - name: fMP4 チャンクを生成するタスクの作成
           href: media-services-generate-fmp4-chunks.md
         - name: メディア プロセッサ
