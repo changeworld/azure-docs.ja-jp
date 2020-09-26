@@ -88,8 +88,10 @@
       href: service-bus-outages-disasters.md
     - name: Throttling
       href: service-bus-throttling.md
-    - name: セキュリティ
+    - name: Security
       items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
         - name: 認証と権限承認
           href: service-bus-authentication-and-authorization.md
           items:

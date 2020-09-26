@@ -10,12 +10,12 @@ metadata:
   author: MGoedtel
   ms.author: magoedte
   ms.date: 09/23/2020
-  ms.openlocfilehash: ea57cbb94a45339c6de58ba1abdaa864ddc43186
-  ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+  ms.openlocfilehash: 2ebc8329466df4fba7963a2838c19e2b7a1c539f
+  ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
   ms.translationtype: HT
   ms.contentlocale: ja-JP
   ms.lasthandoff: 09/25/2020
-  ms.locfileid: "91317244"
+  ms.locfileid: "91357830"
 highlightedContent:
   items:
   - title: Azure Arc について
@@ -32,7 +32,7 @@ highlightedContent:
     url: ./data/overview.md
   - title: Azure Arc 対応 SQL Server (プレビュー)
     itemType: overview
-    url: https://docs.microsoft.com/sql/sql-server/azure-arc/overview
+    url: /sql/sql-server/azure-arc/overview
 productDirectory:
   title: Azure Arc 対応サービス
   summary: 場所を問わずサービスを実行する方法を参照してください。
@@ -48,7 +48,7 @@ productDirectory:
       text: PowerShell DSC を使用してマシンを Azure に接続する
     - url: ./servers/index.yml
       text: さらに表示...
-  - title: Azure Arc 対応 Kubernetes
+  - title: Azure Arc 対応 Kubernetes (プレビュー)
     imageSrc: ./media/01088-icon-arc-kubernetes-menu.svg
     links:
     - url: ./kubernetes/connect-cluster.md
@@ -71,9 +71,9 @@ productDirectory:
   - title: Azure Arc 対応 SQL Server (プレビュー)
     imageSrc: ./media/01850-icon-arc-sql-server-menu.svg
     links:
-    - url: https://docs.microsoft.com/sql/sql-server/azure-arc/assess
+    - url: /sql/sql-server/azure-arc/assess
       text: SQL インスタンスの評価
-    - url: https://docs.microsoft.com/sql/sql-server/azure-arc/overview
+    - url: /sql/sql-server/azure-arc/overview
       text: さらに表示...
 conceptualContent:
   title: 作業開始
