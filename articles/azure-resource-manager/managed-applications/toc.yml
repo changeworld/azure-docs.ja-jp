@@ -13,8 +13,6 @@
       href: deploy-service-catalog-quickstart.md
 - name: チュートリアル
   items:
-    - name: マーケットプレース アプリケーションの発行
-      href: publish-marketplace-app.md
     - name: カスタム プロバイダーを使用してマネージド アプリケーションを作成する
       href: tutorial-create-managed-app-with-custom-provider.md
 - name: サンプル
@@ -41,6 +39,8 @@
           href: create-uidefinition-overview.md
         - name: ポータルのインターフェイスをテストする
           href: test-createuidefinition.md
+        - name: Azure アプリケーション オファーを作成する
+          href: ../../marketplace/partner-center-portal/create-new-azure-apps-offer.md?toc=/azure/azure-resource-manager/managed-applications/toc.json
         - name: Just-In-Time アクセスを要求する
           href: request-just-in-time-access.md
         - name: 既存の仮想ネットワークを使用する
