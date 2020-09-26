@@ -23,7 +23,7 @@
       href: cognitive-services-apis-create-account-client-library.md
     - name: ARM テンプレートを使用して新しいリソースを作成する
       displayName: Resource Manager
-      href: resource-manager-template.md
+      href: create-account-resource-manager-template.md
     - name: 診断ログ
       href: diagnostic-logging.md
 - name: Security
