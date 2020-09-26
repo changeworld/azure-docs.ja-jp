@@ -34,12 +34,14 @@
         - name: Azure Defender の概要
           href: azure-defender.md
         - name: サーバー用 Azure Defender
+          displayName: VM
           href: defender-for-servers-introduction.md
         - name: Azure Defender for App Service
           href: defender-for-app-service-introduction.md
         - name: Azure Defender for Storage
           href: defender-for-storage-introduction.md
         - name: Azure Defender for SQL
+          displayName: database
           href: defender-for-sql-introduction.md
         - name: Azure Defender for IoT
           href: defender-for-iot-introduction.md
@@ -55,6 +57,7 @@
         - name: その他の脅威の防止
           href: other-threat-protections.md
     - name: Security Center のコンテナー セキュリティ機能
+      displayName: 'kubernetes, aks, acr, registries'
       href: container-security.md
     - name: 価格
       href: security-center-pricing.md
@@ -134,6 +137,7 @@
         - name: セキュリティに関する推奨事項の管理
           items:
             - name: レコメンデーションへの応答を自動化する
+              displayName: workflow
               href: workflow-automation.md
             - name: レコメンデーションのエクスポート
               href: continuous-export.md
@@ -222,6 +226,7 @@
         - name: アラート構成を検証する (EICAR テスト ファイル)
           href: security-center-alert-validation.md
         - name: アラートへの応答を自動化する
+          displayName: workflow
           href: workflow-automation.md
         - name: アラートのエクスポート
           displayName: continuous
