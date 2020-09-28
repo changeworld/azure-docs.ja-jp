@@ -456,7 +456,7 @@
           items:
             - name: Azure portal
               href: flexible-server/how-to-maintenance-portal.md
-        - name: ネットワーキング
+        - name: ネットワーク
           items:
             - name: プライベート アクセス (VNet 統合)
               items:
@@ -552,10 +552,6 @@
               href: concepts-hyperscale-choose-distribution-column.md
             - name: テーブル コロケーション
               href: concepts-hyperscale-colocation.md
-            - name: 構成オプション
-              href: concepts-hyperscale-configuration-options.md
-            - name: 予約容量の前払い
-              href: concepts-hyperscale-reserved-pricing.md
         - name: セキュリティ
           items:
             - name: ファイアウォール規則
@@ -577,6 +573,10 @@
           items:
             - name: 監視と調整
               href: concepts-hyperscale-monitoring.md
+        - name: 構成オプション
+          href: concepts-hyperscale-configuration-options.md
+        - name: 予約容量の前払い
+          href: concepts-hyperscale-reserved-pricing.md
         - name: PostgreSQL 拡張機能
           href: concepts-hyperscale-extensions.md
     - name: API リファレンス
