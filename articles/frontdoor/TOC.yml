@@ -9,6 +9,10 @@
   items:
     - name: Front Door を作成する - ポータル
       href: quickstart-create-front-door.md
+    - name: Front Door を作成する - PowerShell
+      href: quickstart-create-front-door-powershell.md
+    - name: Front Door を作成する - CLI
+      href: quickstart-create-front-door-cli.md
     - name: Front Door を作成する - ARM テンプレート
       href: quickstart-create-front-door-template.md
 - name: チュートリアル

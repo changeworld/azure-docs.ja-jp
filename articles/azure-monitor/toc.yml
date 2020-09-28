@@ -144,7 +144,7 @@
           href: platform/personal-data-mgmt.md
         - name: アプリケーション データの収集、保持、保存
           href: app/data-retention-privacy.md
-    - name: アラート
+    - name: 警告
       items:
         - name: 概要
           href: platform/alerts-overview.md
@@ -497,14 +497,16 @@
               href: platform/alerts-troubleshoot-metric.md
         - name: ログ アラート ルール
           items:
-            - name: 分析クエリのアラートを構成する
+            - name: ログ アラートの管理
               href: platform/alerts-log.md
-            - name: クエリ
+            - name: アラート クエリの最適化
               href: platform/alerts-log-query.md
-            - name: Webhook アクション
-              href: platform/alerts-log-webhook.md
+            - name: Resource Manager テンプレートの使用
+              href: platform/alerts-log-create-templates.md
             - name: ログ アラートのトラブルシューティング
               href: platform/alerts-troubleshoot-log.md
+            - name: Webhook アクション
+              href: platform/alerts-log-webhook.md
         - name: アクティビティ ログ アラート ルール
           items:
             - name: アクティビティ ログ イベントのアラート
@@ -1145,6 +1147,8 @@
               href: platform/workbooks-tree-visualizations.md
             - name: グラフ
               href: platform/workbooks-graph-visualizations.md
+            - name: 蜂の巣
+              href: platform/workbooks-honey-comb.md
             - name: 複合棒グラフ
               href: platform/workbooks-composite-bar.md
         - name: データ ソース
@@ -1245,8 +1249,6 @@
           href: app/auto-collect-dependencies.md
         - name: テレメトリの関連付け
           href: app/correlation.md
-        - name: NuGet パッケージ
-          href: app/nuget.md
         - name: プラットフォームのサポート
           href: app/platforms.md
         - name: エンドポイントのオーバーライド
@@ -1324,7 +1326,7 @@
           href: ./platform/classic-api-retirement-metrics-autoscale.md
         - name: 従来のアラートと監視
           href: platform/monitoring-classic-retirement.md
-        - name: ログ アラートの API 設定の切り替え
+        - name: 現在のログ アラート API に切り替える
           href: platform/alerts-log-api-switch.md
         - name: Web アプリ分析ソリューション
           href: insights/azure-web-apps-analytics.md

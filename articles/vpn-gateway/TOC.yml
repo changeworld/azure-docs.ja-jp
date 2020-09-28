@@ -138,8 +138,6 @@
               href: point-to-site-how-to-vpn-client-install-azure-cert.md
             - name: VPN クライアント構成ファイルの作成とインストール
               href: point-to-site-vpn-client-configuration-azure-cert.md
-            - name: セッションの管理
-              href: p2s-session-management.md
         - name: RADIUS 認証
           items:
             - name: P2S VPN の構成
@@ -170,6 +168,8 @@
               href: vpn-gateway-howto-openvpn-clients.md
             - name: SSTP から OpenVPN プロトコルまたは IKEv2 に移行する
               href: ikev2-openvpn-from-sstp.md
+        - name: P2S セッション管理の構成
+          href: p2s-session-management.md
         - name: P2S 用公開 CA ゲートウェイ証明書への移行
           href: vpn-gateway-point-to-site-gateway-public-ca.md
         - name: Always On VPN デバイス トンネルの構成

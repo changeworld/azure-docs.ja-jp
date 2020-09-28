@@ -15,19 +15,18 @@
 - name: チュートリアル
   expanded: true
   items:
-    - name: Python (1 日目)
+    - name: Python 作業を開始する (1 日目)
       expanded: true
       items:
         - name: 1. ローカル コンピューターの設定
           href: tutorial-1st-experiment-sdk-setup-local.md
-        - name: 2. Hello world
+        - name: 2. "Hello world"
           href: tutorial-1st-experiment-hello-world.md
         - name: 3. モデルをトレーニングする
           href: tutorial-1st-experiment-sdk-train.md
         - name: 4. データ持ち込み
           href: tutorial-1st-experiment-bring-data.md
     - name: Jupyter Notebooks
-      expanded: true
       items:
         - name: 画像の分類 (MNIST データ)
           items:
@@ -331,8 +330,13 @@
               displayName: parameter
               href: how-to-tune-hyperparameters.md
         - name: MLflow を操作する
-          displayName: 'log, monitor, deploy, metrics, Databricks, model registry, register'
-          href: how-to-use-mlflow.md
+          items:
+            - name: MLflow を使用して実験を追跡する
+              displayName: 'log, monitor, deploy, metrics,  model registry, register'
+              href: how-to-use-mlflow.md
+            - name: MLflow を使用して Azure Databricks 実行を追跡する
+              displayName: 'log, monitor, deploy, metrics, databricks'
+              href: how-to-use-mlflow-azure-databricks.md
         - name: Scikit-learn
           href: how-to-train-scikit-learn.md
         - name: TensorFlow
@@ -552,6 +556,9 @@
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
+    - name: キュレーションされた環境
+      displayName: 'environments, curated environments'
+      href: resource-curated-environments.md
 - name: リソース
   items:
     - name: リリース ノート
@@ -578,6 +585,3 @@
     - name: デザイナーのユーザー補助機能
       displayName: 'accessibility, designer, visual interface, screen reader, keyboard shortcuts'
       href: designer-accessibility.md
-    - name: キュレーションされた環境
-      displayName: 'environments, curated environments'
-      href: resource-curated-environments.md

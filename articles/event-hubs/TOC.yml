@@ -10,6 +10,8 @@
       href: event-hubs-capture-overview.md
     - name: Event Hubs Dedicated
       href: event-hubs-dedicated-overview.md
+    - name: Event Hubs の Azure スキーマ レジストリ (プレビュー)
+      href: schema-registry-overview.md
 - name: クイックスタート
   expanded: true
   items:
@@ -125,6 +127,8 @@
       maintainContext: true
 - name: 操作方法ガイド
   items:
+    - name: スキーマ レジストリの作成
+      href: create-schema-registry.md
     - name: 詳細ビュー
       items:
         - name: 名前空間を別のリージョンに移動する
@@ -219,6 +223,8 @@
           href: troubleshoot-authentication-authorization.md
         - name: Event Hubs 用 Kafka トラブルシューティング ガイド
           href: apache-kafka-troubleshooting-guide.md
+        - name: EventHubsException
+          href: exceptions-dotnet.md
         - name: .NET の例外
           href: event-hubs-messaging-exceptions.md
         - name: Resource Manager の例外

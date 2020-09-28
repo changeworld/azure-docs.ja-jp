@@ -13,7 +13,7 @@
       items:
         - name: 画像内の顔を検出する
           items:
-            - name: 'C#'
+            - name: C#
               href: QuickStarts/CSharp.md
             - name: cURL
               href: QuickStarts/curl.md
@@ -35,7 +35,7 @@
   items:
     - name: クライアント SDK の使用
       items:
-        - name: 'C#'
+        - name: C#
           href: Tutorials/FaceAPIinCSharpTutorial.md
 - name: 概念
   items:
@@ -47,9 +47,7 @@
   items:
     - name: 顔を検出する
       href: Face-API-How-to-Topics/HowtoDetectFacesinImage.md
-    - name: 顔を識別する
-      href: Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md
-    - name: 顔を追加する
+    - name: グループに顔を追加する
       href: Face-API-How-to-Topics/how-to-add-faces.md
     - name: HeadPose 属性を使用する
       href: Face-API-How-to-Topics/how-to-use-headpose.md

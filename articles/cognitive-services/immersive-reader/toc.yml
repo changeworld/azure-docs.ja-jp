@@ -16,7 +16,7 @@
       href: tutorial-multiple-resources.md
 - name: 操作方法
   items:
-    - name: イマーシブ リーダーのリソースを作成する
+    - name: イマーシブ リーダー リソースを作成する
       href: how-to-create-immersive-reader.md
     - name: Cookie のポリシーを設定する
       href: how-to/set-cookie-policy.md
@@ -24,7 +24,7 @@
       href: how-to/display-math.md
     - name: Immersive Reader を起動して HTML コンテンツを表示する
       href: how-to-launch-with-html.md
-    - name: Immersive Reader のボタンをカスタマイズする
+    - name: イマーシブ リーダーのボタンをカスタマイズする
       href: how-to-customize-launch-button.md
     - name: 認証トークンをキャッシュする
       href: how-to-cache-token.md

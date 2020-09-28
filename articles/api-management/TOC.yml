@@ -197,6 +197,8 @@
       items:
         - name: ポリシーの設定または編集
           href: set-edit-policies.md
+        - name: デバッグ ポリシー
+          href: api-management-debug-policies.md
         - name: ポリシー式
           href: api-management-policy-expressions.md
         - name: カスタム キャッシュ
@@ -221,6 +223,8 @@
           href: api-management-cross-domain-policies.md
         - name: 変換ポリシー
           href: api-management-transformation-policies.md
+        - name: 分散型アプリケーション ランタイム (Dapr) 統合ポリシー
+          href: api-management-dapr-policies.md
     - name: 運用環境でテストする
       items:
         - name: API を Power Platform にエクスポートする

@@ -115,6 +115,8 @@
           href: windows-stop-error-bad-system-config-info.md
         - name: Windows STOP エラー - メモリなし状態
           href: troubleshoot-windows-stop-error.md
+        - name: Windows STOP エラー - システム プロセスは終了しました
+          href: windows-stop-error-system-process-terminated.md
 - name: VM に接続できない
   items:
     - name: RDP
