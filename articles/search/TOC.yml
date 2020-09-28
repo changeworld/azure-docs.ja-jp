@@ -118,6 +118,8 @@
           href: ./security-controls-policy.md
         - name: インデクサー リソースのセキュリティ保護
           href: search-indexer-securing-resources.md
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
 - name: 操作方法ガイド
   items:
     - name: インデックスとコンストラクトの作成

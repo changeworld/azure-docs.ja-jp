@@ -311,8 +311,6 @@
           href: compute-benchmark-scores.md
     - name: 動作保証済みディストリビューション
       href: endorsed-distros.md
-    - name: 専用ホスト
-      href: dedicated-hosts.md
     - name: メンテナンスと更新
       href: ../maintenance-and-updates.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Disk Storage
@@ -391,11 +389,12 @@
         - name: VM のコピーまたは複製
           href: copy-vm.md
         - name: 専用ホストの使用
+          href: ../dedicated-hosts.md
           items:
             - name: CLI
               href: dedicated-hosts-cli.md
             - name: ポータル
-              href: dedicated-hosts-portal.md
+              href: ../dedicated-hosts-portal.md
         - name: スポット VM のデプロイ
           items:
             - name: CLI
@@ -858,6 +857,7 @@
         - name: 可用性セットの変更
           href: ../windows/change-availability-set.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 近接通信配置グループの作成
+          displayName: PPG aligned colocation co-location
           items:
             - name: CLI
               href: proximity-placement-groups.md
