@@ -2,11 +2,14 @@
   href: index.yml
   items:
     - name: 概要
+      expanded: true
       items:
         - name: External Identities のソリューションを比較する
           href: compare-with-b2c.md
         - name: B2B ゲスト ユーザー アクセスとは
           href: what-is-b2b.md
+        - name: Azure AD B2C とは
+          href: 'https://docs.microsoft.com/azure/active-directory-b2c/overview'
     - name: クイックスタート
       items:
         - name: ポータルでゲスト ユーザーを追加する
@@ -15,15 +18,15 @@
           href: b2b-quickstart-invite-powershell.md
     - name: チュートリアル
       items:
-        - name: PowerShell を使用した一括招待
+        - name: PowerShell を使用したゲスト ユーザーの一括招待
           href: bulk-invite-powershell.md
-        - name: ポータルを使用した一括招待
+        - name: ポータルを使用したゲスト ユーザーの一括招待
           href: tutorial-bulk-invite.md
-        - name: 多要素認証を適用する
+        - name: 多要素認証をゲスト ユーザーに適用する
           href: b2b-tutorial-require-mfa.md
     - name: サンプル
       items:
-        - name: セルフサービス サインアップのサンプル
+        - name: ゲスト ユーザーのセルフサービス サインアップのサンプル
           href: code-samples-self-service-sign-up.md
         - name: コードと Azure PowerShell のサンプル
           href: code-samples.md
@@ -63,9 +66,9 @@
     - name: 操作方法ガイド
       expanded: true
       items:
-        - name: 外部共有の構成
+        - name: 外部コラボレーションの設定を構成する
           href: delegate-invitations.md
-        - name: B2B ユーザーを招待する
+        - name: ゲスト ユーザーを招待する
           items:
             - name: 管理者による B2B ユーザーの追加
               href: add-users-administrator.md
@@ -91,7 +94,7 @@
               href: direct-federation-adfs.md
         - name: ワンタイム パスコード認証
           href: one-time-passcode.md
-        - name: セルフサービス サインアップ (プレビュー)
+        - name: ゲスト ユーザーのセルフサービス サインアップ (プレビュー)
           items:
             - name: セルフサービス サインアップのユーザー フローを追加する
               href: self-service-sign-up-user-flow.md
@@ -103,7 +106,7 @@
               href: self-service-sign-up-add-api-connector.md
             - name: カスタム承認システムを追加する
               href: self-service-sign-up-add-approvals.md
-        - name: ゲスト アカウントの管理
+        - name: ゲスト ユーザー アカウントを管理する
           items:
             - name: B2B ユーザーをロールに追加する
               href: add-guest-to-role.md
@@ -113,7 +116,7 @@
               href: user-properties.md
             - name: Azure AD 統合アプリ向けの B2B
               href: configure-saas-apps.md
-        - name: ハイブリッド組織でのアクセスの管理
+        - name: ハイブリッド組織でのゲスト アクセスの管理
           items:
             - name: ローカル ユーザーにクラウド アプリへのアクセスを付与する
               href: hybrid-on-premises-to-cloud.md

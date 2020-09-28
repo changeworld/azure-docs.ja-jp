@@ -70,10 +70,14 @@
           href: cache-how-to-premium-clustering.md
         - name: Redis データ永続化でキャッシュを保持する
           href: cache-how-to-premium-persistence.md
+        - name: レプリカをさらに追加する
+          href: cache-how-to-multi-replicas.md
         - name: 仮想ネットワークでキャッシュをセキュリティ保護する
           href: cache-how-to-premium-vnet.md
         - name: キャッシュに非公開で接続する
           href: cache-private-link.md
+        - name: ゾーン冗長性を有効にする
+          href: cache-how-to-zone-redundancy.md
         - name: geo レプリケーションの設定
           href: cache-how-to-geo-replication.md
         - name: 予約容量で保存する

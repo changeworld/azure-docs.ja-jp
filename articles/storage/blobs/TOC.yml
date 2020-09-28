@@ -312,6 +312,8 @@
               href: storage-blob-properties-metadata.md
             - name: BLOB のコピー (SDK)
               href: storage-blob-copy.md
+            - name: BLOB インデックスの使用
+              href: storage-blob-index-how-to.md
         - name: BLOB データへのアクセスの承認
           items:
             - name: ユーザーの承認オプション
@@ -460,8 +462,6 @@
           href: storage-custom-domain-name.md
         - name: カスタム エンドポイントへのイベントのルーティング
           href: storage-blob-event-quickstart.md
-        - name: BLOB インデックスの使用
-          href: storage-blob-index-how-to.md
         - name: データの転送
           items:
             - name: AzCopy

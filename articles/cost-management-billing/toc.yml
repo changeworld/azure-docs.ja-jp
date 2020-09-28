@@ -40,6 +40,10 @@
           href: costs/understand-work-scopes.md
         - name: グループとフィルターのオプション
           href: costs/group-filter.md
+        - name: コストの管理を計画する
+          href: understand/plan-manage-costs.md
+        - name: 予想外のコストを防ぐ
+          href: understand/analyze-unexpected-charges.md
         - name: 自動化を使用したコストの管理
           href: costs/manage-automation.md
         - name: パートナー向け Cost Management
@@ -114,6 +118,8 @@
           href: understand/mca-overview.md
         - name: Microsoft パートナー契約の課金アカウント
           href: understand/mpa-overview.md
+        - name: サブスクリプションの転送について
+          href: understand/subscription-transfer.md
         - name: パートナー間でのサブスクリプションの譲渡 (プレビュー)
           href: manage/azure-plan-subscription-transfer-partners.md
 - name: 操作方法ガイド
@@ -124,7 +130,7 @@
           items:
             - name: アカウント管理者のタスク
               href: manage/account-admin-tasks.md
-            - name: プロファイルを編集する
+            - name: 請求先の連絡先情報の編集
               href: manage/change-azure-account-profile.md
             - name: 過去の延滞残高を決済する
               href: manage/resolve-past-due-balance.md
@@ -246,8 +252,6 @@
               href: manage/upgrade-azure-subscription.md
     - name: 主要なコスト管理タスクの実行
       items:
-        - name: 予想外のコストを防ぐ
-          href: manage/getting-started.md
         - name: 料金の計算
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: 一般的なタスクにコスト分析を使用する

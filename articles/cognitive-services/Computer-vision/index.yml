@@ -10,13 +10,13 @@ metadata:
   ms.topic: landing-page
   author: PatrickFarley
   ms.author: pafarley
-  ms.date: 10/01/2019
-  ms.openlocfilehash: 45515fc865d989394c465a25b5474153f8370bd0
-  ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+  ms.date: 09/22/2020
+  ms.openlocfilehash: 3a11be023df31fc4f6babe44d869ae89862ae501
+  ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/15/2020
-  ms.locfileid: "90530218"
+  ms.lasthandoff: 09/25/2020
+  ms.locfileid: "91277242"
 landingContent:
 - title: Computer Vision について
   linkLists:
@@ -86,7 +86,7 @@ landingContent:
       url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
     - text: Go SDK の使用
       url: quickstarts-sdk/client-library.md?pivots=programming-language-go
-- title: コンテナーの使用
+- title: 読み取りコンテナーの使用
   linkLists:
   - linkListType: get-started
     links:
@@ -102,6 +102,26 @@ landingContent:
       url: deploy-computer-vision-on-container-instances.md
     - text: Kubernetes と Helm での使用
       url: deploy-computer-vision-on-premises.md
+- title: 空間分析コンテナーの使用
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: コンテナーのインストールと実行
+      url: spatial-analysis-container.md
+    - text: 操作を構成する
+      url: spatial-analysis-operations.md
+  - linkListType: deploy
+    links:
+    - text: 人数カウント アプリをデプロイする
+      url: spatial-analysis-web-app.md
+  - linkListType: concept
+    links:
+    - text: ゾーンとラインの配置
+      url: spatial-analysis-zone-line-placement.md
+    - text: カメラの配置
+      url: spatial-analysis-camera-placement.md
+    - text: ロギングおよびトラブルシューティング
+      url: spatial-analysis-logging.md
 - title: 画像内の顔を検出する
   linkLists:
   - linkListType: concept

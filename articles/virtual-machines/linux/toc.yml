@@ -362,6 +362,9 @@
           href: ../../bastion/bastion-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: 状態とライフサイクル
       href: ../states-lifecycle.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: 作成または更新操作の PUT 呼び出し
+      href: ../put-calls-create-or-update.md
+      maintainContext: true
     - name: 監視
       href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: ブート診断
@@ -534,7 +537,7 @@
                 - name: イメージ バージョンから VM を作成する
                   href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
             - name: 共有イメージのトラブルシューティングを行う
-              href: troubleshooting-shared-images.md
+              href: ../troubleshooting-shared-images.md
             - name: カスタマー マネージド キーの使用
               displayName: 'SSE, CMK, encrypt'
               href: ../image-version-encryption.md
@@ -556,8 +559,8 @@
                   href: image-builder-permissions-powershell.md
             - name: DevOps タスク
               href: image-builder-devops-task.md
-            - name: Resource Manager テンプレート リファレンス
-              displayName: 'ARM,Resource Manager'
+            - name: Image Builder テンプレート リファレンス
+              displayName: json
               href: image-builder-json.md
             - name: イメージ ギャラリー用のビルド
               href: image-builder-gallery.md
@@ -617,6 +620,8 @@
               href: how-to-verify-encryption-status.md
             - name: crypt で LVM RAID を構成する方法
               href: how-to-configure-lvm-raid-on-crypt.md
+            - name: 暗号化された LVM ボリュームのサイズを変更する方法
+              href: how-to-resize-encrypted-lvm.md
             - name: ディスク暗号化のトラブルシューティング
               href: disk-encryption-troubleshooting.md
             - name: ディスク暗号化の FAQ
@@ -849,7 +854,7 @@
         - name: 自動スケール
           href: ../../virtual-machine-scale-sets/overview.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json
         - name: 高可用性
-          href: manage-availability.md
+          href: ../manage-availability.md
         - name: 可用性セットの変更
           href: ../windows/change-availability-set.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 近接通信配置グループの作成

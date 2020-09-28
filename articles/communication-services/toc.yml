@@ -82,7 +82,13 @@
   items:
     - name: REST API のドキュメント
       href: 'https://docs.microsoft.com/rest/api/azure/'
+    - name: 呼び出し元ライブラリ (Android/Java)
+      href: 'https://docs.microsoft.com/java/api/com.azure.communication.calling?view=communication-services-java-android'
+    - name: 呼び出し元ライブラリ (JS)
+      href: 'https://docs.microsoft.com/javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js'
+    - name: 呼び出し元ライブラリ (iOS)
+      href: 'https://docs.microsoft.com/objectivec/communication-services/calling/'
 - name: リソース
   items:
     - name: リリース ノート
-      href: release-notes.md
+      href: 'https://github.com/Azure/Communication/blob/master/releasenotes/2020-September-22.md'

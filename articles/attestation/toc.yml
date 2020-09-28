@@ -46,3 +46,5 @@
       href: 'https://www.nuget.org/packages/Microsoft.Azure.DCAP/'
     - name: Linux 向け Azure DCAP ライブラリ
       href: 'https://packages.microsoft.com/ubuntu/18.04/prod/pool/main/a/az-dcap-client/'
+    - name: VBS 構成証明プロトコル
+      href: virtualization-based-security-protocol.md

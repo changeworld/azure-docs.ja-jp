@@ -18,8 +18,10 @@
       href: add-application-portal-configure.md
     - name: アプリにユーザーを割り当てる
       href: add-application-portal-assign-users.md
-    - name: シングル サインオンを設定する
+    - name: SAML ベースのシングル サインオンの設定
       href: add-application-portal-setup-sso.md
+    - name: OIDC ベースのシングル サインオンの設定
+      href: add-application-portal-setup-oidc-sso.md
     - name: アプリを削除する
       href: delete-application-portal.md
 - name: チュートリアル
@@ -89,7 +91,7 @@
           href: application-proxy-connectors.md
         - name: コネクタ グループ
           href: application-proxy-connector-groups.md
-        - name: セキュリティ
+        - name: Security
           href: application-proxy-security.md
         - name: ネットワーク トポロジ
           href: application-proxy-network-topology.md

@@ -16,6 +16,8 @@
       href: connectivity.md
     - name: ストレージの構成
       href: storage-configuration.md
+    - name: サイズ設定のガイダンス
+      href: sizing-guidance.md
 - name: 操作方法ガイド
   items:
     - name: ツールをインストールする
@@ -47,7 +49,7 @@
         - name: データ コントローラーの作成 (azdata)
           href: create-data-controller-using-azdata.md
         - name: Kubernetes を使用したデータ コントローラーの作成
-          href: create-data-controller-using-k8s-native-tools.md
+          href: create-data-controller-using-kubernetes-native-tools.md
     - name: Azure Arc 対応データ サービス全般に共通するエクスペリエンス
       items:
         - name: ダッシュボードの監視 (Azure Data Studio)
@@ -90,6 +92,8 @@
           href: create-postgresql-hyperscale-server-group.md
         - name: Postgres Hyperscale サーバー グループの作成 (Azure Data Studio)
           href: create-postgresql-hyperscale-server-group-azure-data-studio.md
+        - name: Postgres Hyperscale サーバー グループの作成 - Kubernetes ネイティブ ツール
+          href: create-postgresql-hyperscale-server-group-kubernetes-native-tools.md
         - name: 接続する
           href: get-connection-endpoints-and-connection-strings-postgres-hyperscale.md
     - name: 概念
@@ -148,6 +152,8 @@
           href: create-sql-managed-instance.md
         - name: SQL マネージド インスタンスの作成 (Azure Data Studio)
           href: create-sql-managed-instance-azure-data-studio.md
+        - name: Kubernetes ツールを使用して作成する
+          href: create-sql-managed-instance-using-kubernetes-native-tools.md
         - name: 接続する
           href: connect-managed-instance.md
     - name: 方法

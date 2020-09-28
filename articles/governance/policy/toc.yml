@@ -17,6 +17,9 @@
     - name: ポリシーの割り当て - Azure PowerShell
       displayName: 'assign, compliance'
       href: ./assign-policy-powershell.md
+    - name: ポリシーの割り当て - JavaScript
+      displayName: 'assign, compliance'
+      href: ./assign-policy-javascript.md
     - name: ポリシーの割り当て - Python
       displayName: 'assign, compliance'
       href: ./assign-policy-python.md
@@ -112,10 +115,10 @@
       href: ./concepts/policy-as-code.md
     - name: Kubernetes の統合
       items:
-        - name: Kubernetes 用の Azure Policy (プレビュー)
+        - name: Kubernetes 用の Azure Policy
           displayName: 'aks, engine, k8s, rego, opa, open policy agent, gatekeeper, v3, crd, constraints, arc'
           href: ./concepts/policy-for-kubernetes.md
-        - name: Azure Policy を使用したポッドのセキュリティ保護 (プレビュー)
+        - name: Azure Policy を使用したポッドのセキュリティ保護
           displayName: 'aks, psp, rego, opa'
           href: ../../aks/use-pod-security-on-azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
     - name: ゲスト構成を使用した VM の監査
