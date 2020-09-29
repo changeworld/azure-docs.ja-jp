@@ -1,6 +1,6 @@
 ---
 title: T-SQL 言語要素
-description: Synapse SQL プールでサポートされている T-SQL ステートメントのドキュメントへのリンク。
+description: Synapse SQL プールでサポートされている T-SQL 言語要素のドキュメントへのリンク。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 06/13/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 5c08da2b3e6a23d247b794f31449f2c2a86d6d79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bccbe67c1ea4b93a7a1938fbab6b6f3d06cb5da3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208809"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289499"
 ---
 # <a name="t-sql-language-elements-supported-in-synapse-sql-pool"></a>Synapse SQL プールでサポートされている T-SQL 言語要素
 
