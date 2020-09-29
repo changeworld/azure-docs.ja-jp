@@ -29,7 +29,7 @@ ms.locfileid: "90894057"
 > * 前提条件
 > * ネットワークを構成する
 > * コンピューティング ネットワークを有効にする
-> * Web プロキシの
+> * Webプロキシを構成する
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -126,7 +126,7 @@ GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に
     **[次へ: Web プロキシ]** を選択して、Web プロキシを構成します。  
 
   
-## <a name="configure-web-proxy"></a>Web プロキシの
+## <a name="configure-web-proxy"></a>Webプロキシを構成する
 
 これはオプション構成です。
 
@@ -162,7 +162,7 @@ GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に
 > * 前提条件
 > * ネットワークを構成する
 > * コンピューティング ネットワークを有効にする
-> * Web プロキシの
+> * Webプロキシを構成する
 
 
 Azure Stack Edge Pro デバイスを設定する方法については、以下を参照してください。
