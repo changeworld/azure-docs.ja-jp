@@ -69,6 +69,8 @@
       href: ../../backup/security-baseline.md
     - name: Azure Cache for Redis のセキュリティ ベースライン
       href: ../../azure-cache-for-redis/security-baseline.md
+    - name: Azure Cognitive Search のセキュリティ ベースライン
+      href: ../../search/security-baseline.md
     - name: Azure Data Box のセキュリティ ベースライン
       href: ../../databox/security-baseline.md
     - name: Azure Data Explorer のセキュリティ ベースライン

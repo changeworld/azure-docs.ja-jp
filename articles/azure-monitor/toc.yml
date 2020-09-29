@@ -292,7 +292,7 @@
               href: log-query/query-optimization.md
             - name: テキスト データの解析
               href: log-query/parse-text.md
-        - name: Workspaces
+        - name: ワークスペースとクラスター
           items:
             - name: ワークスペース デプロイの設計
               href: platform/design-logs-deployment.md
@@ -312,6 +312,8 @@
               href: platform/service-providers.md
             - name: アクセスを管理する
               href: platform/manage-access.md
+            - name: Dedicated クラスター
+              href: log-query/logs-dedicated-clusters.md
     - name: メトリックス エクスプローラー
       items:
         - name: メトリックス エクスプローラーの概要
