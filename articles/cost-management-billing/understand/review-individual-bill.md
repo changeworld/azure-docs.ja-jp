@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: a91f3781b490ee6f724e7d28a6be9a96c853426f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0c93375abd57ff5e96906ef7befbbb546a3a1caf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684628"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270527"
 ---
 # <a name="tutorial-review-your-individual-azure-bill"></a>チュートリアル:個々の Azure 請求書を確認する
 
@@ -22,7 +22,7 @@ ms.locfileid: "88684628"
 
 このチュートリアルは、個々のサブスクリプションを持つ Azure カスタマーだけに適用されます。 一般的な個々のサブスクリプションは、従量課金制の料金であり、Azure Web サイトから直接購入します。
 
-想定外の料金について不明な点がある場合は、「[想定外の料金を分析する](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started#analyze-unexpected-charges)」を参照してください。 または、Azure サブスクリプションを取り消す必要がある場合は、「[Azure サブスクリプションの取り消し](../manage/cancel-azure-subscription.md)」を参照してください。
+想定外の料金について不明な点がある場合は、「[想定外の料金を分析する](analyze-unexpected-charges.md)」を参照してください。 または、Azure サブスクリプションを取り消す必要がある場合は、「[Azure サブスクリプションの取り消し](../manage/cancel-azure-subscription.md)」を参照してください。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -54,7 +54,7 @@ Azure portal で、検索ボックスに「*サブスクリプション*」と�
 
 サブスクリプションの一覧で、サブスクリプションをクリックします。
 
-**[課金]** で **[請求書]** をクリックします。
+**[請求]** で **[請求書]** をクリックします。
 
 請求書の一覧で、ダウンロードする請求書を探して、ダウンロードの記号をクリックします。 古い請求書を表示するには、期間の変更が必要になる場合があります。 使用状況の詳細ファイルと請求書の生成には、数分かかる場合があります。
 
