@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: 07edfa2bca25a9f3e8d985cfe36987ff04ca950f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 294a3dc9525ba0a0c533d68027b148ad402cd7ee
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906641"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268844"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>チュートリアル:CLI からのモデルのトレーニングとデプロイ
 
@@ -39,7 +39,7 @@ ms.locfileid: "90906641"
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
 
-* ご使用の**ローカル環境**からこのドキュメントの CLI コマンドを使用するには、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) が必要です。
+* ご使用の**ローカル環境**からこのドキュメントの CLI コマンドを使用するには、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) が必要です。
 
     [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/) を使用する場合は、ブラウザーを使用してクラウド内に存在する CLI にアクセスします。
 
@@ -128,7 +128,7 @@ az group create --name <resource-group-name> --location <location>
 }
 ```
 
-リソース グループの操作の詳細については、「[az group](https://docs.microsoft.com//cli/azure/group?view=azure-cli-latest)」を参照してください。
+リソース グループの操作の詳細については、「[az group](https://docs.microsoft.com//cli/azure/group?view=azure-cli-latest&preserve-view=true)」を参照してください。
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成
 

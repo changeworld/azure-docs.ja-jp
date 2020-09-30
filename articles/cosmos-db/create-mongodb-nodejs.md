@@ -8,13 +8,13 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/21/2019
-ms.custom: seo-javascript-september2019, seo-javascript-october2019, devx-track-javascript
-ms.openlocfilehash: 1603e2c0d76415b612e81f88990805b0bb1de732
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: seo-javascript-september2019, seo-javascript-october2019, devx-track-js
+ms.openlocfilehash: 5af929991e96d1307c32d219a9807c6e6a58387c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423679"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253346"
 ---
 # <a name="quickstart-migrate-an-existing-mongodb-nodejs-web-app-to-azure-cosmos-db"></a>クイック スタート:既存の MongoDB Node.js Web アプリを Azure Cosmos DB に移行する 
 
@@ -212,7 +212,7 @@ Cosmos データベースの格納データは、Azure portal で表示したり
 
 上部の検索ボックスに、「**Azure Cosmos DB**」と入力します。 Cosmos アカウントのブレードが開いたら、自分の Cosmos アカウントを選択します。 左側のナビゲーションで、 **[データ エクスプローラー]** を選択します。 [コレクション] ウィンドウでコレクションを展開します。これで、コレクション内のドキュメントの表示とデータのクエリを実行でき、ストアド プロシージャ、トリガー、および UDF の作成と実行も行うことができます。 
 
-:::image type="content" source="./media/create-mongodb-nodejs/cosmosdb-connect-mongodb-data-explorer.png" alt-text="Azure portal でのデータ エクスプローラー":::
+:::image type="content" source="./media/create-mongodb-nodejs/cosmosdb-connect-mongodb-data-explorer.png" alt-text="MongoDB に正常に接続されている MEAN.js":::
 
 
 ## <a name="deploy-the-nodejs-application-to-azure"></a>Azure に Node.js アプリケーションをデプロイする

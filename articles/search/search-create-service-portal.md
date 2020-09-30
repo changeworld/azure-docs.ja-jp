@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 07/14/2020
-ms.openlocfilehash: 6813db0b7416695fb9433a701114f2684dd0e122
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/16/2020
+ms.openlocfilehash: 246cdb458b4529c60f61c3ddcb26280c1e3223af
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927121"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268368"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>クイック スタート:ポータルで Azure Cognitive Search サービスを作成する
 
@@ -177,3 +177,8 @@ Azure Cognitive Search はほとんどのリージョンで利用できます。
 
 > [!div class="nextstepaction"]
 > [クイック スタート: ポータルで Azure Cognitive Search インデックスを作成する](search-get-started-portal.md)
+
+クラウドの支出を最適化して節約しますか?
+
+> [!div class="nextstepaction"]
+> [Cost Management を使用してコスト分析を開始する](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

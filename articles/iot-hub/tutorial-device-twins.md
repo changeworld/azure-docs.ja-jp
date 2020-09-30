@@ -13,13 +13,13 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-- devx-track-javascript
-ms.openlocfilehash: f3dad81a5cba9dd817e0d4e75590d374fe059358
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+- devx-track-js
+ms.openlocfilehash: 0aee3fef5c2b9e7e1d8cdd8c3d27192b17161351
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424105"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251883"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 

@@ -3,13 +3,13 @@ title: クイック スタート:Node.js 用 QnA Maker クライアント ライ
 description: このクイックスタートでは、Node.js 用 QnA Maker クライアント ライブラリの使用を開始する方法について説明します。
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 4085ec5aaff75f33fc7a87708693084831ff5d8d
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.custom: devx-track-js
+ms.openlocfilehash: b64379e81f6c4d3da37526d75e08bc0fbed37103
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88246416"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253933"
 ---
 Node.js 用 QnA Maker クライアント ライブラリは、次の目的で使用することができます。
 

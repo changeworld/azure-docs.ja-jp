@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
-ms.custom: aaddev, identityplatformtop40, devx-track-javascript
-ms.openlocfilehash: 71516104ce5711f716b6af9d37ba96b431749fa3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: aaddev, identityplatformtop40, devx-track-js
+ms.openlocfilehash: 728c0b4dadfa23b2d52e773928a3f78df27068b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118197"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256826"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>ユーザーをサインインして、JavaScript シングルページ アプリケーション (SPA) から Microsoft Graph API を呼び出す
 

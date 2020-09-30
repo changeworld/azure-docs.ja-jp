@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
-ms.custom: aaddev, devx-track-javascript
-ms.openlocfilehash: 4613e22193de8dc374d1a9e1a293c317fb9c1b9b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: aaddev, devx-track-js
+ms.openlocfilehash: 7a136c03db6e27763a22d92d2c335f23c616856e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311546"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256808"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>チュートリアル:認証コード フローを使用して、ユーザーをサインインさせ、JavaScript シングルページ アプリ (SPA) から Microsoft Graph API を呼び出す
 
@@ -619,23 +619,23 @@ function callMSGraph(endpoint, token, callback) {
 
 ブラウザーに *index.html* ファイルが読み込まれたら、 **[サインイン]** を選択します。 Microsoft ID プラットフォーム エンドポイントにサインインするように求められます。
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="サインイン ダイアログを表示している Web ブラウザー":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="シングルページ アプリケーションでの認証コード フローを示す図":::
 
 ### <a name="provide-consent-for-application-access"></a>アプリケーションによるアクセスに同意する
 
 アプリケーションへの初回サインイン時には、お使いのプロファイルへのアクセスを許可してサインインすることを求められます。
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-02-consent-dialog.png" alt-text="Web ブラウザーに表示されているコンテンツ ダイアログ":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-02-consent-dialog.png" alt-text="シングルページ アプリケーションでの認証コード フローを示す図":::
 
 要求されたアクセス許可に同意すると、Web アプリケーションにはユーザー名が表示されます。これは、ログインが成功したことを示しています。
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-03-signed-in.png" alt-text="Web ブラウザーでの成功したサインインの結果":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-03-signed-in.png" alt-text="シングルページ アプリケーションでの認証コード フローを示す図":::
 
 ### <a name="call-the-graph-api"></a>Graph API を呼び出す
 
 サインインした後、 **[See Profile]** を選択して、Microsoft Graph API への呼び出しからの応答で返されるユーザー プロファイル情報を表示します。
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-04-see-profile.png" alt-text="ブラウザーに表示される Microsoft Graph からのプロファイル情報":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-04-see-profile.png" alt-text="シングルページ アプリケーションでの認証コード フローを示す図":::
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>スコープと委任されたアクセス許可の詳細
 
