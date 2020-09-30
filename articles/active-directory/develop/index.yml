@@ -3,18 +3,18 @@ title: Microsoft ID プラットフォームのドキュメント
 summary: Microsoft ID プラットフォームは、認証サービス、オープンソース ライブラリ、およびアプリケーション管理ツールです。 Microsoft が提供するクイックスタート、チュートリアル、コード サンプルを使用して、標準ベースの最新の認証ソリューションを作成する方法について説明します。 ユーザーと顧客が自分の Microsoft ID またはソーシャル アカウントを使用してサインインし、API または Microsoft Graph などの Microsoft API へのアクセスを承認するアプリケーションを構築します。
 metadata:
   ms.topic: landing-page
-  ms.date: 08/11/2020
+  ms.date: 09/26/2020
   author: mmacy
   ms.author: marsma
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: c0f87da61b0fa2d4aed57eeef7ee9829a17d0f80
-  ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+  ms.openlocfilehash: d80d722594e717319bda473e2cb86551acc8d9f0
+  ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/25/2020
-  ms.locfileid: "91258372"
+  ms.lasthandoff: 09/28/2020
+  ms.locfileid: "91403145"
 landingContent:
 - title: Microsoft ID プラットフォームについて
   linkLists:
@@ -64,8 +64,8 @@ landingContent:
       url: quickstart-v2-aspnet-webapp.md
     - text: ASP.NET Core
       url: quickstart-v2-aspnet-core-webapp.md
-    - text: Python
-      url: quickstart-v2-python-webapp.md
+    - text: Blazor サーバー
+      url: tutorial-blazor-server.md
 - title: モバイル/ネイティブ アプリ
   linkLists:
   - linkListType: get-started
@@ -120,6 +120,8 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
+    - text: チュートリアル:Blazor Server
+      url: tutorial-blazor-server.md
     - text: クイック スタート:ASP.NET Core Web API を保護する
       url: quickstart-v2-aspnet-core-web-api.md
     - text: MSAL Python API リファレンス
@@ -136,5 +138,3 @@ landingContent:
       url: msal-android-handling-exceptions.md
     - text: 要求のディレクトリ スキーマ拡張属性
       url: active-directory-schema-extensions.md
-    - text: MSAL.js 2.0 認証コード + PKCE および CORS
-      url: quickstart-v2-javascript-auth-code.md

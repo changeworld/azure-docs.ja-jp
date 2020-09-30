@@ -4,12 +4,16 @@
   items:
     - name: Service Fabric とは
       href: service-fabric-overview.md
+    - name: Service Fabric の管理対象クラスター
+      href: overview-managed-cluster.md
 - name: クイックスタート
   expanded: true
   items:
     - name: ARM テンプレート
       displayName: Resource Manager
       href: quickstart-cluster-template.md
+    - name: 管理対象クラスター
+      href: quickstart-managed-cluster-template.md
     - name: .NET アプリケーションの作成
       href: service-fabric-quickstart-dotnet.md
     - name: Linux コンテナー アプリケーションのデプロイ
@@ -64,6 +68,16 @@
           href: service-fabric-tutorial-package-containers.md
         - name: 3 - フェールオーバーとスケール
           href: service-fabric-tutorial-containers-failover.md
+    - name: Service Fabric の管理対象クラスターの作成
+      items:
+        - name: 1 - Service Fabric の管理対象クラスターのデプロイ
+          href: tutorial-managed-cluster-deploy.md
+        - name: 2 - 管理対象クラスター ノードの種類をスケールアウトする
+          href: tutorial-managed-cluster-scale.md
+        - name: 3 - 管理対象クラスター ノードの種類を追加および削除する
+          href: tutorial-managed-cluster-add-remove-node-type.md
+        - name: 4 - 管理対象クラスターに接続してアプリケーションをデプロイする
+          href: tutorial-managed-cluster-deploy-app.md
     - name: クラスターの作成と管理
       items:
         - name: 1 - Azure でのクラスターの作成
@@ -155,7 +169,7 @@
           items:
             - name: コンテナーの概要
               href: service-fabric-containers-overview.md
-            - name: Docker Compose (プレビュー)
+            - name: Docker Compose
               href: service-fabric-docker-compose.md
             - name: プローブ
               href: probes-codepackage.md
@@ -430,7 +444,7 @@
               href: service-fabric-deploy-existing-app.md
         - name: コンテナー サービスの構築
           items:
-            - name: Docker Compose (プレビュー)
+            - name: Docker Compose
               href: service-fabric-docker-compose.md
             - name: ボリュームとログ ドライバー
               href: service-fabric-containers-volume-logging-drivers.md
@@ -509,7 +523,7 @@
                   href: service-fabric-application-secret-management-windows.md
                 - name: Linux での暗号化証明書の設定とシークレットの暗号化
                   href: service-fabric-application-secret-management-linux.md
-                - name: KeyVaultReference を使用して安全にシークレットを保存する (プレビュー)
+                - name: KeyVaultReference を使用して安全にシークレットを保存する
                   href: service-fabric-keyvault-references.md
             - name: セキュリティで保護された通信用のリバース プロキシの構成
               href: service-fabric-reverseproxy-configure-secure-communication.md
@@ -675,6 +689,8 @@
                   href: service-fabric-how-to-remove-node-type.md
             - name: アップグレード
               items:
+                - name: 管理対象クラスター ノードの種類に VM スケールセット拡張機能を追加する
+                  href: how-to-managed-cluster-vmss-extension.md
                 - name: Service Fabric バージョンのアップグレード
                   href: service-fabric-cluster-upgrade-version-azure.md
                 - name: クラスター構成のアップグレード
@@ -901,6 +917,8 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 一般的な質問
       href: service-fabric-common-questions.md
+    - name: Service Fabric の管理対象クラスターに関するよくある質問
+      href: faq-managed-cluster.md
     - name: Microsoft Q&A 質問ページ
       href: /answers/topics/azure-service-fabric.html
     - name: Azure Resource Manager デプロイのガードレール

@@ -598,12 +598,9 @@
         - name: データ サイエンス仮想マシン
           tocHref: /azure/machine-learning/data-science-virtual-machine
           topicHref: /azure/machine-learning/data-science-virtual-machine/
-    - name: Marketplace のコンシューマー
-      tocHref: /azure/marketplace-consumer/
+    - name: 商業マーケットプレース
+      tocHref: /azure/marketplace
       topicHref: /azure/marketplace/
-    - name: Marketplace での発行
-      tocHref: /azure/marketplace-publishing/
-      topicHref: /azure/marketplace/marketplace-publishers-guide
     - name: Media Services
       tocHref: /azure/media-services/
       topicHref: /azure/media-services/

@@ -10,15 +10,15 @@ metadata:
   ms.topic: hub-page
   author: rolyon
   ms.author: rolyon
-  ms.date: 09/10/2020
+  ms.date: 09/25/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 07d167ca046bb4c4a5e5e50cec43c7685fcec8fb
-  ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+  ms.openlocfilehash: 07d038aef43594550e81b640a8dfd98452804143
+  ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/25/2020
-  ms.locfileid: "91262010"
+  ms.lasthandoff: 09/28/2020
+  ms.locfileid: "91409802"
 highlightedContent:
   items:
   - title: Azure 開発者向けファースト ステップ ガイド
@@ -32,7 +32,7 @@ highlightedContent:
     url: https://docs.microsoft.com/azure/cloud-adoption-framework/
   - title: Microsoft Learn でスキルを身に付ける
     itemType: learn
-    url: https://docs.microsoft.com/learn/browse/?products=azure&resource_type=learning+path
+    url: https://docs.microsoft.com/learn/browse/?products=azure&resource_type=learning%20path
 productDirectory:
   title: Azure 製品を参照する
   items:
@@ -963,8 +963,8 @@ productDirectory:
     azureCategories:
     - management-and-governance
     url: azure-resource-manager/index.yml
-  - title: Azure Resource Mover
-    summary: Azure リージョン間でリソースを移動
+  - title: Azure Resource Mover (プレビュー)
+    summary: Azure リージョン間で複数のリソースを移動する方法の簡略化
     imageSrc: https://static.docs.com/ui/media/product/azure/resource-mover.svg
     azureCategories:
     - management-and-governance
@@ -1110,6 +1110,19 @@ productDirectory:
     azureCategories:
     - networking
     url: bastion/index.yml
+  - title: Azure Defender
+    summary: ハイブリッド クラウド ワークロードの保護
+    imageSrc: ./media/index/defender.svg
+    azureCategories:
+    - security
+    url: security-center/azure-defender.md
+  - title: Azure Defender for IoT (プレビュー)
+    summary: アンマネージドとマネージド両方の IoT または OT デバイスの継続的なアセット管理と脅威検出
+    imageSrc: ./media/index/defender-iot.svg
+    azureCategories:
+    - security
+    - iot
+    url: security-center/defender-for-iot-introduction.md
   - title: Azure DDoS Protection
     summary: お客様のアプリケーションを分散型サービス拒否 (DDoS) 攻撃から保護
     imageSrc: https://static.docs.com/ui/media/product/azure/ddos-protection.svg

@@ -46,7 +46,7 @@
         - name: マルチテナント方式のプロビジョニング
           href: how-to-provision-multitenant.md
         - name: カスタム割り当てポリシーの使用
-          href: how-to-use-custom-allocation-policies.md
+          href: tutorial-custom-allocation-policies.md
 - name: サンプル
   items:
     - name: シミュレートされた TPM デバイス構成証明のサンプル
@@ -109,6 +109,8 @@
   items:
     - name: IoT Hub に対する MXChip IoT DevKit の接続
       href: how-to-connect-mxchip-iot-devkit.md
+    - name: カスタム割り当てポリシーを使用したデバイスのプロビジョニング
+      href: how-to-use-custom-allocation-policies.md
     - name: Device Provisioning Service の管理
       items:
         - name: 登録の管理 - ポータル

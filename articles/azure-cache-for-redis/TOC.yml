@@ -4,6 +4,8 @@
   items:
     - name: Azure Cache for Redis について
       href: cache-overview.md
+    - name: 新機能
+      href: cache-whats-new.md
 - name: クイックスタート
   expanded: true
   items:

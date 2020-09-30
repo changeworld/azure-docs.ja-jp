@@ -167,7 +167,7 @@
       href: concepts-pipeline-execution-triggers.md
     - name: 統合ランタイム
       href: concepts-integration-runtime.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -249,6 +249,8 @@
           href: connector-azure-database-for-mysql.md
         - name: Azure Database for PostgreSQL
           href: connector-azure-database-for-postgresql.md
+        - name: Azure Databricks Delta Lake
+          href: connector-azure-databricks-delta-lake.md
         - name: Azure File Storage
           href: connector-azure-file-storage.md
         - name: Azure SQL データベース
@@ -570,7 +572,7 @@
           href: control-flow-system-variables.md
         - name: マッピング データ フローをパラメーター化する
           href: parameters-data-flow.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: データ移動のセキュリティに関する考慮事項
           href: data-movement-security-considerations.md

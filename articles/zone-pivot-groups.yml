@@ -18,6 +18,14 @@ groups:
     title: cURL
   - id: url-test-tool-postman
     title: postman
+- id: python-frameworks-01
+  title: Web フレームワーク
+  prompt: フレームワークの選択
+  pivots:
+  - id: python-framework-flask
+    title: Flask
+  - id: python-framework-django
+    title: Django
 - id: programming-languages-set-one
   title: プログラミング言語
   prompt: プログラミング言語を選択する
@@ -55,7 +63,7 @@ groups:
   - id: programming-language-cpp
     title: C++
   - id: programming-language-go
-    title: 移動
+    title: Go
   - id: programming-language-java
     title: Java
   - id: programming-language-python
@@ -182,6 +190,18 @@ groups:
     title: Go
   - id: programming-language-ruby
     title: Ruby
+- id: programming-languages-set-seventeen
+  title: プログラミング言語
+  prompt: プログラミング言語または CLI を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-curl
+    title: REST
 - id: cogsvcs-text-analytics-features
   title: Text Analytics の機能
   prompt: Text Analytics の機能オファリングの選択
@@ -546,10 +566,28 @@ groups:
     title: C++
   - id: programming-language-java
     title: Java
-  - id: programming-language-python
-    title: Python
   - id: programming-language-javascript
     title: JavaScript
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-spx
+    title: CLI
+- id: speech-full-stack-objectivec-swift
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-languages-objectivec-swift
+    title: Objective-C/Swift
+  - id: programming-language-python
+    title: Python
   - id: programming-language-spx
     title: CLI
 - id: programming-languages-voice-assistants
@@ -729,9 +767,9 @@ groups:
   - id: platform-powershell
     title: PowerShell
 metadata:
-  ms.openlocfilehash: f55c7be76f2acf666d37db9618fa0303bf253e31
-  ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+  ms.openlocfilehash: 9e70f2b3f236bf24279550a1441b40fd0f9ae246
+  ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/22/2020
-  ms.locfileid: "90984246"
+  ms.lasthandoff: 09/29/2020
+  ms.locfileid: "91461174"
