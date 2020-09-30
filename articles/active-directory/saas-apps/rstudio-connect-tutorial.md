@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 80d444e9887a3aaa48262ccf59350b0108d7d709
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f71a9fa1151a1df2ae04fe47afd6bf36861aa2e5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543637"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273774"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rstudio-connect"></a>チュートリアル:Azure Active Directory と RStudio Connect の統合
 
@@ -126,7 +126,7 @@ RStudio Connect で Azure AD シングル サインオンを構成するには�
 
 ### <a name="configure-rstudio-connect-single-sign-on"></a>RStudio Connect のシングル サインオンの構成
 
-**RStudio Connect** でシングル サインオンを構成するには、上記で使用された **[アプリのフェデレーション メタデータ URL]** と **[サーバー アドレス]** を使用する必要があります。 これは、`/etc/rstudio-connect.rstudio-connect.gcfg` にある RStudio Connect 構成ファイルで実行されます。
+**RStudio Connect** でシングル サインオンを構成するには、上記で使用された **[アプリのフェデレーション メタデータ URL]** と **[サーバー アドレス]** を使用する必要があります。 これは、`/etc/rstudio-connect/rstudio-connect.gcfg` にある RStudio Connect 構成ファイルで実行されます。
 
 これは、構成ファイルの例です。
 

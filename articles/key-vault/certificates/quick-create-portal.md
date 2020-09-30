@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
-ms.openlocfilehash: ec1d02cefcdb443a74fab52496cd9428a852139f
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 0a2c1b39f5688b4fc544e5456666ccb8b4801517
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84169969"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281051"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Key Vault から証明書の設定と取得を行う
 
@@ -45,7 +45,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 次の 2 つのプロパティをメモしておきます。
 
 * **Vault Name**:この例では、これは **Example-Vault** です。 この名前は他の手順で使用します。
-* **Vault URI (コンテナー URI)** :この例では、これは https://example-vault.vault.azure.net/ です。 その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
+* **Vault URI (コンテナー URI)** :この例では、これは `https://example-vault.vault.azure.net/` です。 その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
 
 この時点で、使用している Azure アカウントが、この新しいコンテナーで操作を実行することを許可されている唯一のアカウントになります。
 

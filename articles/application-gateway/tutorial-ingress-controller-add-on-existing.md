@@ -1,18 +1,18 @@
 ---
-title: 既存の Azure Application Gateway を使用して既存の AKS クラスターのイングレス コントローラー アドオンを有効にする
+title: チュートリアル:既存の Azure Application Gateway を使用して既存の AKS クラスターのイングレス コントローラー アドオンを有効にする
 description: このチュートリアルを使用して、既存の Application Gateway で既存の AKS クラスターのイングレス コントローラー アドオンを有効にします
 services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 06/10/2020
+ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 35d9396ac1f4569002b95549a8752745537621cf
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: d0ce58c5bb6de4712117959f10b48ae3449f0b97
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595956"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285657"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway-through-azure-cli-preview"></a>チュートリアル:Azure CLI を介して、既存の Application Gateway を使用して既存の AKS クラスターで Application Gateway イングレス コントローラー アドオンを有効にする (プレビュー)
 
@@ -28,6 +28,8 @@ Azure CLI を使用して、[Azure Kubernetes Services (AKS)](https://azure.micr
 > * AKS クラスター仮想ネットワークを使用して Application Gateway 仮想ネットワークをピアリングする
 > * AKS クラスターで AGIC をイングレスに使用してサンプル アプリケーションをデプロイする
 > * アプリケーションが Application Gateway を介して到達可能であることを確認する
+
+## <a name="prerequisites"></a>前提条件
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -151,7 +153,6 @@ az group delete --name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>次のステップ
-* [AGIC アドオンの無効化に関する詳細情報](./ingress-controller-disable-addon.md)
-* [AGIC でサポートされている注釈に関する詳細情報](./ingress-controller-annotations.md)
-* [AGIC による問題のトラブルシューティング](./ingress-controller-troubleshoot.md)
 
+> [!div class="nextstepaction"]
+> [AGIC アドオンの無効化に関する詳細情報](./ingress-controller-disable-addon.md)

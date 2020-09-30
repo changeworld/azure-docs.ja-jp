@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 6422874f57b490773f70b6fb27d5b65c654ded07
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 11a0ddc5c7b297d0700e6fd07d60f8efe0e55a8f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212739"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285334"
 ---
 # <a name="what-is-azure-maps"></a>Azure Maps とは
 
@@ -52,7 +52,7 @@ Azure Maps Web SDK では、独自のコンテンツや映像を使用して、�
 
 Azure Maps Android SDK は、モバイル マッピング アプリケーションの作成に使用します。
 
-:::image type="content" source="./media/about-azure-maps/android_sdk.png" border="false" alt-text="モバイル デバイス上のマップの例":::
+:::image type="content" source="./media/about-azure-maps/android_sdk.png" border="false" alt-text="Azure Maps Web SDK を使用して作成された人口変動のマップの例":::
 
 ## <a name="services-in-azure-maps"></a>Azure Maps のサービス
 
@@ -78,7 +78,7 @@ Azure Maps Mobility Service では、輸送経路を指定したり、公共輸�
 
 現在プレビュー段階にある [Render Service V2](https://docs.microsoft.com/rest/api/maps/renderv2) では、新しいバージョンの [Get Map Tile V2 API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) が導入されています。 Get Map Tile V2 API では、Azure Maps Creator を使用して作成された Azure Maps の道路タイル、気象タイル、またはマップ タイルを要求できるようになりました。 新しい Get Map Tile V2 API を使用することをお勧めします。  
 
-:::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="Render Service V2 からのマップの例":::
+:::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="Azure Maps Web SDK を使用して作成された人口変動のマップの例":::
 
 詳細については、[Render Service V2 のドキュメント](https://docs.microsoft.com/rest/api/maps/renderv2)を参照してください。
 
@@ -88,7 +88,7 @@ GA (一般提供) 段階にある Render Service V1 の詳細については、[
 
 Route Service は、要求された各ルートの推定到着時間 (ETA) を計算するために使用できます。 Route API は、リアルタイムの交通情報や履歴交通データ (たとえば要求された曜日や時間帯の通常の道路速度) などの要因を考慮します。 API は、時間または距離に基づいて、複数の到着地に対して順番に、または最適化された順序で、利用できる最短または最速のルートを返します。 このサービスを使用すると、開発者は、自動車、トラック、自転車、徒歩、電気自動車などのいくつかの移動手段にわたる道順を計算できます。 このサービスでは、出発時刻、重量制限、危険物輸送などの入力も考慮されます。
 
-:::image type="content" source="./media/about-azure-maps/intro_route.png" border="false" alt-text="Route Service からのマップの例":::
+:::image type="content" source="./media/about-azure-maps/intro_route.png" border="false" alt-text="Azure Maps Web SDK を使用して作成された人口変動のマップの例":::
 
 Route Service では、以下のような一連の高度な機能が提供されます。
 
@@ -102,7 +102,7 @@ Route Service では、以下のような一連の高度な機能が提供され
 
 Search Service は、開発者が住所、場所、名前またはカテゴリ別の事業所一覧、およびその他の地理情報を検索するのに役立ちます。 また、緯度と経度に基づいて住所や交差点の[逆引き地理コード](https://en.wikipedia.org/wiki/Reverse_geocoding)を行うことができます。
 
-:::image type="content" source="./media/about-azure-maps/intro_search.png" border="false" alt-text="マップ上での検索の例":::
+:::image type="content" source="./media/about-azure-maps/intro_search.png" border="false" alt-text="Azure Maps Web SDK を使用して作成された人口変動のマップの例":::
 
 Search Service では、次のような高度な機能も提供されます。
 
@@ -204,7 +204,7 @@ Azure Maps は、モビリティ向けに構築されており、クロスプラ
 
 Power BI 用の Azure Maps ビジュアルを使用すると、地図上の空間データに対してさまざまなをデータ視覚化を提供できます。 80% を超えるビジネス データに位置情報コンテキストがあると推定されています。 Azure Maps ビジュアルを使用することで、この位置情報コンテキストとビジネス データの関連性や、ビジネス データへの影響といった分析情報を得るための、コード不要のソリューションが提供されます。
 
-:::image type="content" source="./media/about-azure-maps/intro-power-bi.png" border="false" alt-text="Azure Maps ビジュアルを使用してビジネス データを表示した Power BI Desktop":::
+:::image type="content" source="./media/about-azure-maps/intro-power-bi.png" border="false" alt-text="Azure Maps Web SDK を使用して作成された人口変動のマップの例":::
 
 詳細については、[Azure Maps Power BI ビジュアル](power-bi-visual-getting-started.md)に関するドキュメントを参照してください。
 
@@ -231,10 +231,8 @@ Azure Maps サービスは現在、以下を除くすべての国とリージョ
 
 Azure Maps を紹介するサンプル アプリを試す。
 
-> [!div class="nextstepaction"]
-> [クイック スタート: Web アプリを作成する](quick-demo-map-app.md)
+[クイック スタート: Web アプリを作成する](quick-demo-map-app.md)
 
 Azure Maps に関する最新情報を受け取る。
 
-> [!div class="nextstepaction"]
-> [Azure Maps のブログ](https://azure.microsoft.com/blog/topics/azure-maps/)
+[Azure Maps のブログ](https://azure.microsoft.com/blog/topics/azure-maps/)

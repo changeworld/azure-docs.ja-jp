@@ -8,14 +8,14 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jopapa
-ms.custom: seodec18, devx-track-javascript
+ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
-ms.openlocfilehash: e9cb30ca64fe697f9b8304f55381709083b8fbd2
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c16d7ccba24680604bc7f083f7242edd53abe102
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424241"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282903"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>Azure Cosmos DB の MongoDB 用 API を使用して Angular アプリを作成する - Angular を使用して UI を構築する
 
@@ -62,7 +62,7 @@ ms.locfileid: "87424241"
 
 4. 同じフォルダーの **app.module.ts** ファイルを開き、`HeroesComponent` が 5 行目の宣言に追加され、10 行目でもインポートされていることを確認します。
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png" alt-text="app-module.ts ファイルを開く":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png" alt-text="hero コンポーネントのインストール":::
 
 5. **heroes.component.html** ファイルに戻って、次のコードをコピーします。 `<div>` は、ページ全体のコンテナーです。 いずれかのヒーローをクリックして選択し、UI で編集したり削除したりできるよう、コンテナー内には作成するヒーローのリストが存在します。 またこの HTML には、どの項目が選択されたかを把握できるように、いくつかのスタイルが定義されています。 加えて、新しいヒーローを追加したり既存のヒーローを編集したりするための編集領域も存在します。 
 
@@ -394,9 +394,7 @@ ms.locfileid: "87424241"
 
 5. `Hero` という単語をクリックすると、Visual Studio によってコード ブロックの左側に電球アイコンが表示されます。 
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png" alt-text="Visual Studio Code の電球アイコン":::
-
-6. 電球をクリックして **[Import Hero from "/app/hero".]\(Hero を "/app/hero" からインポートします。\)** または **[Import Hero from "./hero".]\(Hero を "./hero" からインポートします。\)** をクリックします (メッセージは実際の設定によって異なります)。
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png" alt-text="hero コンポーネントのインストール" からインポートします。\)** をクリックします (メッセージは実際の設定によって異なります)。
 
     新しいコード行が 2 行目に表示されます。 2 行目で /app/hero が参照されている場合は、ローカル フォルダーの hero ファイル (./hero) を参照するように変更してください。 変更後の 2 行目は、次のようになります。
 
@@ -490,7 +488,7 @@ ms.locfileid: "87424241"
 
 3. インターネット ブラウザーを開いて **localhost:3000** に移動すると、アプリがローカルで実行されているようすを確認できます。
 
-     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png" alt-text="ローカルで実行中のヒーロー アプリケーション":::
+     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png" alt-text="hero コンポーネントのインストール":::
 
 ## <a name="next-steps"></a>次のステップ
 
