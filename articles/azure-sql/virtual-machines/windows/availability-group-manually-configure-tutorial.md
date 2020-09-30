@@ -8,18 +8,18 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 08a00342-fee2-4afe-8824-0db1ed4b8fca
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 22240c61b2341999528dcb477308990133042fa0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 30c7d525f821b828dcc4c389c32a27123b79a56b
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286857"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360924"
 ---
 # <a name="tutorial-configure-a-sql-server-availability-group-on-azure-virtual-machines-manually"></a>チュートリアル:Azure Virtual Machines で SQL Server 可用性グループを構成する
 
@@ -41,13 +41,13 @@ ms.locfileid: "87286857"
 
 | 要件 |説明 |
 |----- |----- |----- |
-|![正方形](./media/availability-group-manually-configure-tutorial/square.png) **2 つの SQL Server インスタンス** | - Azure 可用性セット内 <br/> - 単一のドメイン内 <br/> - フェールオーバー クラスタリング機能インストール済み |
-|![正方形](./media/availability-group-manually-configure-tutorial/square.png) **Windows Server** | クラスター監視用のファイル共有 |  
-|![正方形](./media/availability-group-manually-configure-tutorial/square.png) **SQL Server サービス アカウント** | ドメイン アカウント |
-|![正方形](./media/availability-group-manually-configure-tutorial/square.png) **SQL Server エージェント サービス アカウント** | ドメイン アカウント |  
-|![正方形](./media/availability-group-manually-configure-tutorial/square.png) **ファイアウォール ポートを開く** | - SQL Server:**1433** (既定インスタンス用) <br/> - データベース ミラーリング エンドポイント:**5022** または使用可能な任意のポート <br/> - 可用性グループ ロードバランサーの IP アドレスの正常性プローブ:**59999** または使用可能な任意のポート <br/> - クラスター コア ロードバランサーの IP アドレスの正常性プローブ:**58888** または使用可能な任意のポート |
-|![正方形](./media/availability-group-manually-configure-tutorial/square.png) **フェールオーバー クラスタリング機能を追加する** | 両方の SQL Server インスタンスにこの機能が必要です |
-|![正方形](./media/availability-group-manually-configure-tutorial/square.png) **インストール ドメイン アカウント** | - 各 SQL Server 上のローカル管理者 <br/> - SQL Server の各インスタンスの SQL Server sysadmin 固定サーバー ロールのメンバー  |
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **2 つの SQL Server インスタンス** | - Azure 可用性セット内 <br/> - 単一のドメイン内 <br/> - フェールオーバー クラスタリング機能インストール済み |
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **Windows Server** | クラスター監視用のファイル共有 |  
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **SQL Server サービス アカウント** | ドメイン アカウント |
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **SQL Server エージェント サービス アカウント** | ドメイン アカウント |  
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **ファイアウォール ポートを開く** | - SQL Server:**1433** (既定インスタンス用) <br/> - データベース ミラーリング エンドポイント:**5022** または使用可能な任意のポート <br/> - 可用性グループ ロードバランサーの IP アドレスの正常性プローブ:**59999** または使用可能な任意のポート <br/> - クラスター コア ロードバランサーの IP アドレスの正常性プローブ:**58888** または使用可能な任意のポート |
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **フェールオーバー クラスタリング機能を追加する** | 両方の SQL Server インスタンスにこの機能が必要です |
+|:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **インストール ドメイン アカウント** | - 各 SQL Server 上のローカル管理者 <br/> - SQL Server の各インスタンスの SQL Server sysadmin 固定サーバー ロールのメンバー  |
 
 
 チュートリアルを始める前に、[Azure Virtual Machines で Always On 可用性グループを作成するための前提条件を満たす](availability-group-manually-configure-prerequisites-tutorial.md)必要があります。 これらの前提条件が既に満たされている場合は、「[クラスターを作成する](#CreateCluster)」に進んでかまいません。

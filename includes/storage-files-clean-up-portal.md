@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 03/28/2018
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: 2ddf171090ab4a9e3dbe4506a399cbdbd2621bdd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 842c08ec36730eaab1c37fe61d3855f9e2ddd245
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67181249"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329459"
 ---
 作業が終わったら、リソース グループを削除できます。 リソース グループを削除すると、ストレージ アカウント、Auzre ファイル共有、およびリソース グループ内にデプロイしたリソースがすべて削除されます。
 
 1. 左側のメニューの **[リソース グループ]** を選択します。
-2. リソース グループを右クリックし、 **[リソース グループの削除]** を選択します。 ウィンドウが開き、リソース グループと共に削除されるリソースに関する警告が表示されます。
-3. リソース グループの名前を入力し、 **[削除]** を選択します。
+1. リソース グループを右クリックし、 **[リソース グループの削除]** を選択します。 ウィンドウが開き、リソース グループと共に削除されるリソースに関する警告が表示されます。
+1. リソース グループの名前を入力し、 **[削除]** を選択します。

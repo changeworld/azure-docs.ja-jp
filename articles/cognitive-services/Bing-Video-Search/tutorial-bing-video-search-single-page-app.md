@@ -10,13 +10,13 @@ ms.subservice: bing-video-search
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c3515d6dc7556995c990180330212bffb1445ad2
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 2bdd51218c098dcd778d9a72a98fe42b96357b4e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406233"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328719"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>チュートリアル:シングルページ Video Search アプリ
 Bing Video Search API を使うと、Web を検索して、検索クエリに関連するビデオの結果を取得できます。 このチュートリアルでは、Bing Search API を使用して検索結果をページに表示する単一ページの Web アプリケーションを構築します。 このアプリケーションには、HTML、CSS、JavaScript のコンポーネントが含まれます。

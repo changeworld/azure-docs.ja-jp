@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: cd10421ddcf752625b8040e1afa4e7b15f142ce2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5892fd732a1e66b2b7dd4c1031cabfcbcc768c6d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885692"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326152"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>既存のカスタム ドメインを Azure Spring Cloud にマップする
 
@@ -58,12 +58,12 @@ ms.locfileid: "90885692"
 
 次のコマンドを使用して、オブジェクト ID を取得します。
 ```
-az ad sp show --id 03b39d0f-4213-4864-a245-b1476ec03169 --query objectId
+az ad sp show --id <service principal id> --query objectId
 ```
 
 Azure Spring Cloud にキー コンテナーへの読み取りアクセス権を付与します。次のコマンドではオブジェクト ID を置き換えてください。
 ```
-az keyvault set-policy -g <key vault resource group> -n <key vault name>  --object-id <object id> --certificate-permissions get list --secret-permissions get list
+az keyvault set-policy -g <key vault resource group> -n <key vault name>  --object-id <object id> --certificate-permissions get list
 ``` 
 
 Azure Spring Cloud に証明書をインポートするには、次の操作を行います。
@@ -93,7 +93,7 @@ az keyvault set-policy -g <key vault resource group> -n <key vault name>  --obje
 または、Azure CLI を次のように使用して、証明書の一覧を表示することもできます。
 
 ```
-az spring-cloud certificate list
+az spring-cloud certificate list --resource-group <resource group name> --service <service name>
 ```
 
 > [!IMPORTANT] 
@@ -128,7 +128,7 @@ Azure Spring Cloud にアプリケーションがない場合は、「[クイッ
 
 または、Azure CLI を次のように使用して、カスタム ドメインを追加することもできます。
 ```
-az spring-cloud app custom-domain bind --domain-name <domain name> --app <app name> 
+az spring-cloud app custom-domain bind --domain-name <domain name> --app <app name> --resource-group <resource group name> --service <service name>
 ```
 
 1 つのアプリは複数のドメインを持つことができますが、1 つのドメインは 1 つのアプリにのみマップできます。 カスタムド メインがアプリに正常にマップされると、カスタム ドメイン テーブルにそのドメインが表示されます。
@@ -137,7 +137,7 @@ az spring-cloud app custom-domain bind --domain-name <domain name> --app <app na
 
 または、Azure CLI を次のように使用して、カスタム ドメインの一覧を表示することもできます。
 ```
-az spring-cloud app custom-domain list --app <app name> 
+az spring-cloud app custom-domain list --app <app name> --resource-group <resource group name> --service <service name>
 ```
 
 > [!NOTE]
@@ -168,7 +168,7 @@ SSL バインディングが正常に追加されると、ドメインの状態�
 
 または、Azure CLI を次のように使用して、HTTPS を適用することもできます。
 ```
-az spring-cloud app update -name <app-name> --https-only <true|false> -g <resource group> --service <service-name>
+az spring-cloud app custom-domain update --domain-name <domain name> --certificate <cert name> --app <app name> --resource-group <resource group name> --service <service name>
 ```
 
 操作が完了したら、アプリを指す HTTPS URL のいずれかに移動します。 HTTP URL では機能しないことに注意してください。

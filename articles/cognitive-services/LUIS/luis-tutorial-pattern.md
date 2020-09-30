@@ -1,14 +1,16 @@
 ---
 title: チュートリアル:パターン - LUIS
 description: このチュートリアルでは、パターンを使用して意図とエンティティの予測を改善すると共に、与える発話の例を減らします。 このパターンは、エンティティと無視できるテキストを識別するための構文を含むテンプレート発話の例として与えられます。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.openlocfilehash: 3ca8bb15d19b0fa0dd6b33d35a380c0b1b07abe0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 9814304aed4d7a5f307fb2179491b0fa9635fd68
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039502"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324656"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>チュートリアル:一般的なパターン テンプレート発話フォーマットを追加して予測を改善する
 

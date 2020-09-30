@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 699b3d9c9799b9d3a4ec148cbf395b212715f536
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b7d7380114046fbeaaf4b6eb2660997d64168715
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686090"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91368568"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>事前購入を利用して Azure Databricks のコストを最適化する
 
@@ -63,7 +63,7 @@ Databricks プランは [Azure portal](https://portal.azure.com/#blade/Microsoft
 購入後に予約に次の種類の変更を加えることができます。
 
 - 予約スコープの更新
-- ロールベースのアクセス
+- Azure ロールベースのアクセス制御 (Azure RBAC)
 
 Databricks コミット ユニットの事前購入を分割またはマージすることはできません。 予約の管理について詳しくは、[購入後の予約の管理](manage-reserved-vm-instance.md)に関する記事をご覧ください。
 

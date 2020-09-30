@@ -10,22 +10,17 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 09/15/2020
 ms.author: trbye
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp, cog-serv-seo-aug-2020
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: speech-full-stack-go
 keywords: 音声テキスト変換、音声テキスト変換ソフトウェア
-ms.openlocfilehash: 08c42c383e114d404e5b3728fc264a70932aa915
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 2e738222897b60e3a7578ca10bd7596be4fc4da6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706703"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327085"
 ---
 # <a name="get-started-with-speech-to-text"></a>音声変換の概要
-
-Speech Service の中核となる機能の 1 つは、人間の音声を認識して文字起こしをする機能です (多くの場合、音声テキスト変換と呼ばれます)。 このクイックスタートでは、アプリや製品で Speech SDK を使用し、高品質の音声テキスト変換を実行する方法について説明します。
-
-> [!TIP]
-> この記事をスキップしてサンプル コードをご覧になりたい方は、GitHub 上の[クイックスタート サンプル](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart)を参照してください。
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# Basics include](includes/how-to/speech-to-text-basics/speech-to-text-basics-csharp.md)]

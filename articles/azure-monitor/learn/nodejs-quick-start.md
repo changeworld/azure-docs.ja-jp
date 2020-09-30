@@ -6,13 +6,13 @@ ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
-ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-javascript
-ms.openlocfilehash: 17e01894ac3d26720b1e74be9d0fd7fc193c463f
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-js
+ms.openlocfilehash: 76cc09ab5283e10e8f25af3aba4278ec6cca4838
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077307"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333275"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>クイック スタート:Azure Application Insights で Node.js Web アプリケーションの監視を開始する
 

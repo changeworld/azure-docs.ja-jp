@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: c508591fe9909578dcc04b0922c0b76691898743
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 08e04749eae7158abb501f9a4d127cdd7a89a391
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90901087"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336277"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>チュートリアル:セキュリティ インシデントへの対応
 Security Center では、高度な分析および脅威インテリジェンスを使用してハイブリッド クラウド ワークロードを継続的に分析し、悪意のあるアクティビティに関するアラートを受け取ることができます。 さらに、他のセキュリティ製品およびサービスからのアラートを Security Center に統合し、独自のインジケーターまたはインテリジェンス ソースに基づいたカスタム アラートを作成できます。 アラートが生成されたら、調査と修復を行うために迅速なアクションが必要になります。 このチュートリアルでは、次の内容を学習します。
@@ -76,7 +76,7 @@ Security Center では、すべてのセキュリティ アラートを統合さ
 
    ![インシデントからのアラートの詳細](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
 
-   アラートの種類はさまざまです。アラートの種類と実行可能な修復の手順について詳しくは、「[Azure Security Center のセキュリティ アラートの概要](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)」を参照してください。 安心して無視できるアラートについては、そのアラートを右クリックして **[無視]** オプションを選択できます。
+   アラートの種類はさまざまです。アラートの種類と実行可能な修復の手順について詳しくは、「[Azure Security Center のセキュリティ アラートの概要](security-center-alerts-type.md)」を参照してください。 安心して無視できるアラートについては、そのアラートを右クリックして **[無視]** オプションを選択できます。
 
    ![アラート:](./media/tutorial-security-incident/tutorial-security-incident-fig4.png)
 

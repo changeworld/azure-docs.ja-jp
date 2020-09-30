@@ -6,13 +6,13 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 45dc137141491938367fb57c6955e8e3145f8ff9
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.custom: devx-track-js
+ms.openlocfilehash: e0bb4df611c6a9cfecf0aadbdfc3a577243856ba
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050456"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327620"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>チュートリアル:Azure Functions を使用した Azure SignalR Service 認証
 

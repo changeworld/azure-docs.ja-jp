@@ -8,29 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 09/01/2020
+ms.date: 10/01/2020
 ms.author: trbye
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp, cog-serv-seo-aug-2020
-zone_pivot_groups: speech-full-stack
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
+zone_pivot_groups: speech-full-stack-objectivec-swift
 keywords: テキスト読み上げ
-ms.openlocfilehash: 79409f95d698e015d15d9131dcf1f27b34b03343
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 91f7d9cd6393b7ce73dad53cc825ae98fb749f92
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400912"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332488"
 ---
 # <a name="get-started-with-text-to-speech"></a>テキスト読み上げの概要
-
-このクイックスタートでは、Speech SDK を使用してテキスト読み上げ合成を行うための一般的な設計パターンについて説明します。 まずは基本的な構成と合成を行った後、次のようなより高度なカスタム アプリケーション開発の例に進みます。
-
-* インメモリ ストリームとして応答を取得する
-* 出力のサンプル レートとビット レートをカスタマイズする
-* SSML (音声合成マークアップ言語) を使用して合成要求を送信する
-* ニューラル音声を使用する
-
-> [!TIP]
-> この記事をスキップしてサンプル コードをご覧になりたい方は、GitHub 上の[クイックスタート サンプル](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart)を参照してください。
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# Basics include](includes/how-to/text-to-speech-basics/text-to-speech-basics-csharp.md)]
@@ -48,12 +38,16 @@ ms.locfileid: "89400912"
 [!INCLUDE [JavaScript Basics include](includes/how-to/text-to-speech-basics/text-to-speech-basics-javascript.md)]
 ::: zone-end
 
+::: zone pivot="programming-languages-objectivec-swift"
+[!INCLUDE [Objective-C and Swift Basics include](includes/how-to/text-to-speech-basics/text-to-speech-basics-objectivec-swift.md)]
+::: zone-end
+
 ::: zone pivot="programming-language-python"
 [!INCLUDE [Python Basics include](includes/how-to/text-to-speech-basics/text-to-speech-basics-python.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-spx"
-[!INCLUDE [CLI include](includes/how-to/text-to-speech-basics/text-to-speech-basics-cli.md)]
+[!INCLUDE [CLI Basics include](includes/how-to/text-to-speech-basics/text-to-speech-basics-cli.md)]
 ::: zone-end
 
 ## <a name="next-steps"></a>次のステップ

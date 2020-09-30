@@ -10,13 +10,13 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.custom: devx-track-python, devx-track-javascript
-ms.openlocfilehash: 6a81e52b833a59f51f6961a0bd41d52b040050b2
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.custom: devx-track-python, devx-track-js
+ms.openlocfilehash: 41d7fe8e22b39d8755f86e5ee490aa6e7dff97fc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876888"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330623"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>チュートリアル:Azure Cognitive Services を使用して Flask アプリを作成する
 

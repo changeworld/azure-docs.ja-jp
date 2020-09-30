@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 98eff02dacb5b44839937f826cd676fe16670cbb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 92990df3049f7fa1074d55fc34734e13d6673cd7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017483"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328821"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-cli"></a>CLI を使用した Azure での仮想マシンのバックアップ
 
@@ -38,7 +38,7 @@ az backup vault create --resource-group myResourceGroup \
     --location eastus
 ```
 
-既定では、Recovery Services コンテナーが geo 冗長ストレージ用に設定されています。 geo 冗長ストレージでは、プライマリ リージョンから数百マイル離れたセカンダリ Azure リージョンにバックアップ データが確実にレプリケートされます。 ストレージの冗長性設定を変更する必要がある場合は、[az backup vault backup-properties set](/cli/azure/backup/vault/backup-properties?view=azure-cli-latest#az-backup-vault-backup-properties-set) コマンドレットを使用します。
+既定では、Recovery Services コンテナーが geo 冗長ストレージ用に設定されています。 geo 冗長ストレージでは、プライマリ リージョンから数百マイル離れたセカンダリ Azure リージョンにバックアップ データが確実にレプリケートされます。 ストレージの冗長性設定を変更する必要がある場合は、[az backup vault backup-properties set](/cli/azure/backup/vault/backup-properties#az-backup-vault-backup-properties-set) コマンドレットを使用します。
 
 ```azurecli
 az backup vault backup-properties set \
@@ -118,7 +118,7 @@ fe5d0414  ConfigureBackup  Completed   myvm         2017-09-19T03:03:57  0:00:31
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
-VM が不要になったら、VM の保護を無効にし、復旧ポイントと Recovery Services コンテナーを削除した後、リソース グループと関連付けられている VM リソースを削除することができます。 既存の VM を使用した場合、リソース グループと VM をそのままの状態にしておくために、最後の [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) コマンドを省略できます。
+VM が不要になったら、VM の保護を無効にし、復旧ポイントと Recovery Services コンテナーを削除した後、リソース グループと関連付けられている VM リソースを削除することができます。 既存の VM を使用した場合、リソース グループと VM をそのままの状態にしておくために、最後の [az group delete](/cli/azure/group#az-group-delete) コマンドを省略できます。
 
 VM のデータを復元する方法について説明したバックアップ チュートリアルに取り組むには、「[次のステップ](#next-steps)」に進んでください。
 

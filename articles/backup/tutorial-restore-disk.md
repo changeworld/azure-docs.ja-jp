@@ -4,12 +4,12 @@ description: Azure でバックアップおよび Recovery Services を使用し
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: d93f3d24762f4b9a3da4a9e725d28810f6700fe0
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 861c911e84c9de02467d443751902e71d2504422
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890690"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324990"
 ---
 # <a name="restore-a-vm-with-azure-cli"></a>Azure CLI を使用した VM の復元
 
@@ -43,13 +43,13 @@ Azure でバックアップが開始されると、VM のバックアップ拡�
 
 ディスクを復元するには、回復データのソースとして復旧ポイントを選択します。 既定のポリシーでは復旧ポイントが毎日作成され、30 日間保持されるため、一連の復旧ポイントを保持し、復旧の特定の時点を選択することができます。
 
-使用可能な復旧ポイントのリストを表示するには、[az backup recoverypoint list](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) を使用します。 ディスクの復旧には、復旧ポイント**名**が使用されます。 このチュートリアルでは、使用可能な最新の復旧ポイントが必要です。 `--query [0].name` パラメーターでは、次のように最新の復旧ポイント名が選択されます。
+使用可能な復旧ポイントのリストを表示するには、[az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) を使用します。 ディスクの復旧には、復旧ポイント**名**が使用されます。 このチュートリアルでは、使用可能な最新の復旧ポイントが必要です。 `--query [0].name` パラメーターでは、次のように最新の復旧ポイント名が選択されます。
 
 ```azurecli-interactive
 az backup recoverypoint list \
     --resource-group myResourceGroup \
     --vault-name myRecoveryServicesVault \
-    --backup-management-type AzureIaasVM
+    --backup-management-type AzureIaasVM \
     --container-name myVM \
     --item-name myVM \
     --query [0].name \
@@ -65,7 +65,7 @@ az backup recoverypoint list \
 
 バックアップされた VM にマネージド ディスクが存在し、復旧ポイントからマネージド ディスクを復元したい場合は、最初に Azure ストレージ アカウントを指定します。 このストレージ アカウントは、後で復元されたディスクから VM をデプロイするために使用できる、VM の構成とデプロイ テンプレートを格納するために使用されます。 次に、マネージド ディスクの復元先のターゲット リソース グループも指定します。
 
-1. ストレージ アカウントを作成するには、[az storage account create](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) を使用します。 ストレージ アカウント名はすべて小文字で、グローバルに一意である必要があります。 *mystorageaccount* は、次のように独自の一意の名前に置き換えます。
+1. ストレージ アカウントを作成するには、[az storage account create](/cli/azure/storage/account#az-storage-account-create) を使用します。 ストレージ アカウント名はすべて小文字で、グローバルに一意である必要があります。 *mystorageaccount* は、次のように独自の一意の名前に置き換えます。
 
     ```azurecli-interactive
     az storage account create \
@@ -74,7 +74,7 @@ az backup recoverypoint list \
         --sku Standard_LRS
     ```
 
-2. [az backup restore restore-disks](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-disks) を使用して、復旧ポイントからディスクを復元します。 *mystorageaccount* は、前述のコマンドで作成したストレージ アカウントの名前に置き換えます。 *myRecoveryPointName* は、前述の [az backup recoverypoint list](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) コマンドから出力を取得した復旧ポイント名に置き換えます。 ***マネージド ディスクの復元先となるターゲット リソース グループも指定します***。
+2. [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks) を使用して、復旧ポイントからディスクを復元します。 *mystorageaccount* は、前述のコマンドで作成したストレージ アカウントの名前に置き換えます。 *myRecoveryPointName* は、前述の [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) コマンドから出力を取得した復旧ポイント名に置き換えます。 ***マネージド ディスクの復元先となるターゲット リソース グループも指定します***。
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -109,7 +109,7 @@ az backup recoverypoint list \
 
 追加手順では、VM を作成するために復元されたディスクが使用されます。
 
-1. ストレージ アカウントを作成するには、[az storage account create](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) を使用します。 ストレージ アカウント名はすべて小文字で、グローバルに一意である必要があります。 *mystorageaccount* は、次のように独自の一意の名前に置き換えます。
+1. ストレージ アカウントを作成するには、[az storage account create](/cli/azure/storage/account#az-storage-account-create) を使用します。 ストレージ アカウント名はすべて小文字で、グローバルに一意である必要があります。 *mystorageaccount* は、次のように独自の一意の名前に置き換えます。
 
     ```azurecli-interactive
     az storage account create \
@@ -118,7 +118,7 @@ az backup recoverypoint list \
         --sku Standard_LRS
     ```
 
-2. [az backup restore restore-disks](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-disks) を使用して、復旧ポイントからディスクを復元します。 *mystorageaccount* は、前述のコマンドで作成したストレージ アカウントの名前に置き換えます。 *myRecoveryPointName* は、前述の [az backup recoverypoint list](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) コマンドから出力を取得した復旧ポイント名に置き換えます。
+2. [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks) を使用して、復旧ポイントからディスクを復元します。 *mystorageaccount* は、前述のコマンドで作成したストレージ アカウントの名前に置き換えます。 *myRecoveryPointName* は、前述の [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) コマンドから出力を取得した復旧ポイント名に置き換えます。
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -145,7 +145,7 @@ az backup recoverypoint list \
 
 ## Monitor the restore job
 
-To monitor the status of restore job, use [az backup job list](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list):
+To monitor the status of restore job, use [az backup job list](/cli/azure/backup/job#az-backup-job-list):
 
 ```azurecli-interactive
 az backup job list \
@@ -181,7 +181,7 @@ az backup job show \
     -n 1fc2d55d-f0dc-4ca6-ad48-aca0fe5d0414
 ```
 
-このクエリの出力ではすべての詳細が表示されますが、ここで関心があるのはストレージ アカウントの内容のみです。 Azure CLI の[クエリ機能](/cli/azure/query-azure-cli?view=azure-cli-latest)を使用して、関連する詳細を取得できます
+このクエリの出力ではすべての詳細が表示されますが、ここで関心があるのはストレージ アカウントの内容のみです。 Azure CLI の[クエリ機能](/cli/azure/query-azure-cli)を使用して、関連する詳細を取得できます
 
 ```azurecli-interactive
 az backup job show \
@@ -258,7 +258,7 @@ az group deployment create \
   --template-uri $url?$token
 ```
 
-VM が回復したディスクから作成されていることを確認するには、次のように、[az vm list](/cli/azure/vm?view=azure-cli-latest#az-vm-list) を使用してリソース グループの VM をリストします。
+VM が回復したディスクから作成されていることを確認するには、次のように、[az vm list](/cli/azure/vm#az-vm-list) を使用してリソース グループの VM をリストします。
 
 ```azurecli-interactive
 az vm list --resource-group myResourceGroup --output table

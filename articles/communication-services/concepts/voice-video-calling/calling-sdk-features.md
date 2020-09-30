@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9cc00cfa9f44c69a5880d53c0b7ac623f60be16b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6021bb4fa5d30de423ab56bfb5fdea6af2665a4a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90945766"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334482"
 ---
 # <a name="calling-client-library-overview"></a>通話クライアント ライブラリの概要
 
@@ -55,8 +55,7 @@ ms.locfileid: "90945766"
 |                   | PSTN 参加者とグループ通話を行う                                                                           | ✔️   | ✔️            | ✔️
 |                   | PSTN 参加者との一対一の通話をグループ通話に昇格させる                                                 | ✔️   | ✔️            | ✔️
 |                   | グループ通話から PSTN 参加者としてダイヤルアウトする                                                                    | ✔️   | ✔️            | ✔️   
-| 全般           | 最大 350 人の参加者を含むグループ通話に参加する                                                       |  ✔️  | ✔️            | ✔️    
-|                   | オーディオ テスト サービスを使用して、マイク、スピーカー、およびカメラをテストする (8:echo123 に通話することで利用可能)                   |  ✔️  | ✔️            | ✔️   
+| 全般           | オーディオ テスト サービスを使用して、マイク、スピーカー、およびカメラをテストする (8:echo123 に通話することで利用可能)                   |  ✔️  | ✔️            | ✔️   
 
 ## <a name="calling-client-library-browser-support"></a>通話クライアント ライブラリのブラウザー サポート
 

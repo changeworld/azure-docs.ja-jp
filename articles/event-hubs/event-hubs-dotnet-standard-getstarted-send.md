@@ -4,12 +4,12 @@ description: この記事では、最新の Azure.Messaging.EventHubs パッケ�
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1bf41eb5ef5b43a59330d1735086ca595d7604b5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 639be20b1d87dec3a7c85e5fcccc0c483337c5b7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89010584"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334227"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>Azure Event Hubs との間でイベントを送受信する - .NET (Azure.Messaging.EventHubs) 
 このクイックスタートでは、**Azure.Messaging.EventHubs** .NET ライブラリを使用して、イベント ハブとの間でイベントを送受信する方法について説明します。 
@@ -196,7 +196,7 @@ Azure Event Hubs を初めて使用する場合は、このクイックスター
         static async Task ProcessEventHandler(ProcessEventArgs eventArgs)
         {
             // Write the body of the event to the console window
-            Console.WriteLine("\tRecevied event: {0}", Encoding.UTF8.GetString(eventArgs.Data.Body.ToArray()));
+            Console.WriteLine("\tReceived event: {0}", Encoding.UTF8.GetString(eventArgs.Data.Body.Array, eventArgs.Data.Body.Offset, eventArgs.Data.Body.Count));
 
             // Update checkpoint in the blob storage so that the app receives only new events the next time it's run
             await eventArgs.UpdateCheckpointAsync(eventArgs.CancellationToken);
