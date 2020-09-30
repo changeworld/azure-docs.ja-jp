@@ -10,13 +10,13 @@ ms.subservice: bing-autosuggest
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: a45000c59f975a03f51aa5ee86846c772cbdfaaa
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 9a5749d115a4d5d9ce1e0ac454609c7b639c2f8e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406471"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309768"
 ---
 # <a name="tutorial-get-search-suggestions-on-a-web-page"></a>チュートリアル:Web ページ上で検索候補を取得する
 

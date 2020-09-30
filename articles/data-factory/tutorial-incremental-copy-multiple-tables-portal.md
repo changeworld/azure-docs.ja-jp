@@ -1,6 +1,6 @@
 ---
 title: Azure portal を使用して複数のテーブルを増分コピーする
-description: このチュートリアルでは、SQL Server データベースにある複数のテーブルから Azure SQL Database のデータベースに差分データを増分コピーする Azure Data Factory パイプラインを作成します。
+description: このチュートリアルでは、SQL Server データベースにある複数のテーブルから Azure SQL Database のデータベースに差分データを読み込むパイプラインを使用して Azure データ ファクトリを作成します。
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: c215c2cb256ab37bcb096c018aefb3a410ab1e4f
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 83c29740bd535d9508e5458a66fc8592500ceaf3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85251150"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320973"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>Azure portal を使用して、SQL Server にある複数のテーブルから Azure SQL Database のデータベースにデータを増分読み込みする
 

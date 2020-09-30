@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 590a0a1ce474d48e95163081dcdcacb52233badf
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: d49a1120ddda98430f4f9b3c488819829a9fd7b3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926078"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320695"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>チュートリアル:Azure Data Box に NFS 経由でデータをコピーする
 
@@ -85,7 +85,7 @@ Linux ホスト コンピューターを使用している場合は、次の手�
 Data Box の共有に接続したら、次にデータをコピーします。 データのコピーを開始する前に、次の考慮事項を確認してください。
 
 * 適切なデータ形式に対応する共有にデータをコピーする必要があります。 たとえば、ブロック BLOB データは、ブロック BLOB 用の共有にコピーしてください。 VHD をページ BLOB にコピーします。 データ形式が適切な共有の種類と一致しない場合、後続の手順で、Azure へのデータのアップロードに失敗します。
-*  データのコピー中は、そのサイズが [Azure Storage と Data Box の制限](data-box-limits.md)に関するページに記載されたサイズ制限に準拠していることを確認してください。 
+*  データのコピー中は、そのサイズが [Azure Storage と Data Box の制限](data-box-limits.md)に関するページに記載されたサイズ制限に準拠していることを確認してください。
 * Data Box によってアップロードされているデータが、Data Box の外部で別のアプリケーションによって同時にアップロードされた場合、アップロード ジョブ エラーやデータの破損が生じる可能性があります。
 * SMB と NFS の両方を同時に使用しないこと、または同じデータを Azure 上の同じ最終コピー先にコピーしないことをお勧めします。 このような場合は、最終的な結果がわからなくなります。
 * **常にコピーしようとするファイル用のフォルダーを共有下に作成してから、ファイルをそのフォルダーにコピーします**。 ブロック BLOB およびページ BLOB の共有の下に作成したフォルダーは、データが BLOB としてアップロードされるコンテナーになります。 ストレージ アカウント内の *root* フォルダーに直接ファイルをコピーすることはできません。

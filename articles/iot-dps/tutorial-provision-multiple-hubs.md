@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: e1a66da52eea6d5da711fa6def58eba65d0960ed
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6cca34774038156cfb01e872e751338c1c96efaa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74976742"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316002"
 ---
 # <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>チュートリアル:負荷分散された IoT ハブへのデバイスのプロビジョニング
 
@@ -67,8 +67,6 @@ Device Provisioning Service と IoT ハブをリンクして、Provisioning Serv
 4. **[Add link to IoT hub]\(IoT ハブへのリンクを追加\)** ページで、ラジオ ボタンを使用して、リンク対象の IoT ハブが現在のサブスクリプションと別のサブスクリプションのどちらにあるかを指定します。 次に、 **[IoT ハブ]** ボックスから IoT ハブの名前を選択します。
 5. **[保存]** をクリックします。
 
-## <a name="next-steps"></a>次のステップ
-
 このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
@@ -76,6 +74,8 @@ Device Provisioning Service と IoT ハブをリンクして、Provisioning Serv
 > * 2 つ目のデバイスに登録リスト エントリを追加する
 > * **均等に分散**させるように Device Provisioning Service 割り当てポリシーを設定する
 > * 新しい IoT ハブを Device Provisioning Service にリンクする
+
+## <a name="next-steps"></a>次の手順
 
 <!-- Advance to the next tutorial to learn how to 
  Replace this .md

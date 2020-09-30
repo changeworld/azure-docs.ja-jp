@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 05/11/2020
+ms.date: 09/22/2020
 ms.author: anfeldma
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 8ec5562af254aa1bcdb030057f61db496a17826b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 25e5d583b2ae94277b155e8e03d61a308a88ec8d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423390"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322752"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>クイック スタート:Node.js を使用して Azure Cosmos DB の SQL API アカウントに接続してデータを照会する
 
@@ -22,6 +22,7 @@ ms.locfileid: "87423390"
 > - [.NET V3](create-sql-api-dotnet.md)
 > - [.NET V4](create-sql-api-dotnet-V4.md)
 > - [Java SDK v4](create-sql-api-java.md)
+> * [Spring Data v3](create-sql-api-spring-data.md)
 > - [Node.js](create-sql-api-nodejs.md)
 > - [Python](create-sql-api-python.md)
 > - [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -176,7 +177,7 @@ npm install @azure/cosmos
 
 1. [Azure portal](https://portal.azure.com/) の Azure Cosmos DB アカウントで、左のナビゲーションの **[キー]** を選択してから **[読み取り/書き込みキー]** を選択します。 次の手順では、画面の右側にあるコピー ボタンを使用して、URI と主キーを _app.js_ ファイルにコピーします。
 
-   :::image type="content" source="./media/create-sql-api-dotnet/keys.png" alt-text="Azure portal の [キー] ブレードでアクセス キーを表示およびコピーする":::
+   :::image type="content" source="./media/create-sql-api-dotnet/keys.png" alt-text="Azure portal の [データ エクスプローラー] の [コンテナーの追加] ウィンドウ":::
 
 2. _config.js_ ファイルを開きます。
 

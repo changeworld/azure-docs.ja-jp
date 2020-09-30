@@ -1,6 +1,6 @@
 ---
 title: Azure portal を使用してテーブルを増分コピーする
-description: このチュートリアルでは、Azure SQL データベースから Azure BLOB ストレージにデータを増分コピーする Azure Data Factory パイプラインを作成します。
+description: このチュートリアルでは、Azure SQL Database 内のテーブルから Azure BLOB ストレージに差分データを読み込むパイプラインを使用して Azure Data Factory を作成します。
 services: data-factory
 author: dearandyxu
 ms.author: yexu
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 10253b435461d62a4176164ea2a929843283f414
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6567651f76ff19a8105158b243de7582256e0375
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082660"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320916"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Azure portal を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする
 

@@ -9,14 +9,14 @@ ms.devlang: PowerShell
 ms.topic: sample
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 07/16/2019
-ms.openlocfilehash: cbd9d08c788dee69990ef08a4fe80dfe03270167
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 65acde9ff6f9c6d2d32e5ac2cd2a19081665e8b7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049452"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321562"
 ---
 # <a name="use-powershell-to-add-a-database-to-a-failover-group"></a>PowerShell を使用してフェールオーバー グループにデータベースを追加する
 

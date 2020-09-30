@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: quickstart
 author: mumian
 ms.author: jgao
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 06/24/2020
-ms.openlocfilehash: 2c1ae6bd69a87ad0ae941fba66785344d91e8268
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: a3589ec9b1a4cf652e7bcce16023a83a8b41ee5f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660839"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319301"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure SQL Database で単一データベースを作成する
 

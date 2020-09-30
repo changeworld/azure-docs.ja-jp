@@ -8,13 +8,13 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 9554fa63d13c5da465653064d69d7950d91f0300
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 005473fa02dda2e5466ffbc5a32499006c41292c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421877"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322701"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>チュートリアル:JavaScript SDK を使用して Node.js Web アプリを構築して Azure Cosmos DB の SQL API アカウントを管理する 
 
@@ -439,7 +439,7 @@ ms.locfileid: "87421877"
 
 1. お客様のローカル コンピューター上でアプリケーションをテストするには、ターミナルで `npm start` を実行してお客様のアプリケーションを起動し、`http://localhost:3000` ブラウザー ページを更新します。 これで、ページは次のスクリーンショットのように表示されているはずです。
    
-    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png" alt-text="ブラウザー ウィンドウでの MyTodo List アプリケーションのスクリーンショット":::
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png" alt-text="Node.js について学習する - ブラウザー ウィンドウでの Hello World アプリケーションのスクリーンショット":::
 
     > [!TIP]
     > layout.jade ファイルまたは index.jade ファイルのインデントについてのエラーが表示される場合は、両ファイルの最初の 2 行がスペースなしで左揃えになっていることを確認してください。 最初の 2 行の前にスペースがある場合は、それらを削除し、両方のファイルを保存してから、ブラウザー ウィンドウを更新します。 
@@ -448,7 +448,7 @@ ms.locfileid: "87421877"
 
 3. ページが更新され、ToDo リストに新しく作成された項目が表示されます。
    
-    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png" alt-text="ToDo リストに新しい項目があるアプリケーションのスクリーンショット":::
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png" alt-text="Node.js について学習する - ブラウザー ウィンドウでの Hello World アプリケーションのスクリーンショット":::
 
 4. タスクを完了するには、[Complete] 列のチェック ボックスをオンにし、 **[Update tasks]** を選択します。 既に作成したドキュメントが更新され、ビューから削除されます。
 

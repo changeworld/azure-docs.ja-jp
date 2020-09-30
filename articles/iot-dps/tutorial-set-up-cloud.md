@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 925d1178ad630699cfd3d9e48677c0f029fc75af
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f45c3def84c548ba12221efa59e9ebbd4699df71
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74976725"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316071"
 ---
 # <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>チュートリアル:IoT Hub Device Provisioning Service を使用したデバイス プロビジョニングのためのクラウド リソースの構成
 
@@ -27,7 +27,7 @@ ms.locfileid: "74976725"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
+## <a name="prerequisites"></a>前提条件
 
 [Azure portal](https://portal.azure.com/) にサインインします。
 

@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: jopapa
 ms.reviewer: sngun
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 8fbf06d6bd93de578039959d9f0235f1f55d448e
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 83c4d7c0037a3f8bc1162993c8667df62e5d9123
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424275"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316173"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>React と Azure Cosmos DB を使って MongoDB アプリを作成する  
 

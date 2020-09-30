@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: f8c7e2cfb17ca48a67a009f532a9cbb6894cc05d
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: b0908aee6253a3be486f71c245ea1eee2ff8b9bb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442600"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319471"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database と Azure Synapse Analytics に対する Azure Private Link
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -23,28 +23,6 @@ Private Link を使用すると、**プライベート エンドポイント**�
 
 > [!IMPORTANT]
 > この記事は、Azure SQL Database と Azure Synapse Analytics (以前の SQL Data Warehouse) の両方に適用されます。 単純にするために、"データベース" という言葉で Azure SQL Database と Azure Synapse Analytics の両方のデータベースを表すことにします。 同様に、"サーバー" という言葉は、Azure SQL Database と Azure Synapse Analytics をホストする[論理 SQL サーバー](logical-servers.md)を表しています。 この記事は、**Azure SQL Managed Instance** には適用され "*ません*"。
-
-## <a name="data-exfiltration-prevention"></a>データの流出防止
-
-Azure SQL Database におけるデータの流出とは、データベース管理者などの承認されたユーザーが、あるシステムからデータを抽出して、組織外の別の場所またはシステムに移動できる場合です。 たとえば、ユーザーがサードパーティによって所有されているストレージ アカウントにデータを移動します。
-
-SQL Database 内のデータベースに接続している Azure 仮想マシン内で SQL Server Management Studio (SSMS) を実行しているユーザーのシナリオについて考えます。 このデータベースは、米国西部のデータ センターにあります。 次の例では、ネットワーク アクセス制御を使用して SQL Database のパブリック エンドポイントでアクセスを制限する方法を示します。
-
-1. [Allow Azure Services]\(Azure サービスを許可する\) を **[オフ]** に設定して、パブリック エンドポイント経由で SQL Database へのすべての Azure サービス トラフィックを無効にします。 サーバーおよびデータベース レベルのファイアウォール規則で IP アドレスが許可されていないことを確認してください。 詳細については、[Azure SQL Database および Azure Synapse Analytics のネットワーク アクセスの制御](network-access-controls-overview.md)に関するページを参照してください。
-1. VM のプライベート IP アドレスを使用して、SQL Database 内のデータベースへのトラフィックのみを許可します。 詳細については、[サービス エンドポイント](vnet-service-endpoint-rule-overview.md)と[仮想ネットワークのファイアウォール規則](firewall-configure.md)に関する記事を参照してください。
-1. Azure VM で、次のように[ネットワーク セキュリティ グループ (NSG)](../../virtual-network/manage-network-security-group.md) とサービス タグを使用して、送信接続の範囲を絞り込みます。
-    - 米国西部にある SQL Database への接続のみを許可するように、サービス タグへのトラフィックを許可する NSG ルールを指定します (Service Tag = SQL.WestUs)
-    - すべてのリージョンで SQL Database への接続を拒否するように、サービス タグへのトラフィックを拒否する NSG ルールを (**高い優先度**で) 指定します (Service Tag = SQL)
-
-この設定が終了すると、Azure VM は米国西部リージョンにある SQL Database 内のデータベースにのみ接続できます。 ただし、接続は SQL Database 内の 1 つのデータベースに限定されません。 この VM は、サブスクリプションに含まれていないデータベースも含め、米国西部リージョンの任意のデータベースに引き続き接続できます。 上記のシナリオでは、データの流出が特定のリージョンに限定されていますが、完全には除外されていません。
-
-Private Link を使用することで、お客様が NSG のようなネットワーク アクセス制御を設定してプライベート エンドポイントへのアクセスを制限できるようになりました。 その後、個々の Azure PaaS リソースが特定のプライベート エンドポイントにマップされます。 悪意のある内部関係者は、マップされた PaaS リソース (SQL Database 内のデータベースなど) にしかアクセスできず、その他のリソースにはアクセスできません。 
-
-## <a name="on-premises-connectivity-over-private-peering"></a>プライベート ピアリングを介したオンプレミス接続
-
-お客様がオンプレミスのマシンからパブリック エンドポイントに接続する場合、[サーバーレベルのファイアウォール規則](firewall-create-server-level-portal-quickstart.md)を使用して、ご自分の IP アドレスを IP ベースのファイアウォールに追加する必要があります。 このモデルは、開発またはテストのワークロード用に個々のコンピューターへのアクセスを許可する場合には適していますが、運用環境で管理するのは困難です。
-
-Private Link を使用すると、[ExpressRoute](../../expressroute/expressroute-introduction.md)、プライベート ピアリング、または VPN トンネリングを使用して、プライベート エンドポイントへのクロスプレミス アクセスを有効にすることができます。 その後、お客様はパブリック エンドポイント経由のすべてのアクセスを無効にし、IP ベースのファイアウォールを使用して任意の IP アドレスを許可しないようにすることができます。
 
 ## <a name="how-to-set-up-private-link-for-azure-sql-database"></a>Azure SQL Database に Private Link を設定する方法 
 
@@ -71,6 +49,12 @@ Private Link を使用すると、[ExpressRoute](../../expressroute/expressroute
 
 1. 承認または拒否すると、リストには応答テキストとともに適切な状態が反映されます。
 ![承認後のすべての PEC のスクリーンショット][5]
+
+## <a name="on-premises-connectivity-over-private-peering"></a>プライベート ピアリングを介したオンプレミス接続
+
+お客様がオンプレミスのマシンからパブリック エンドポイントに接続する場合、[サーバーレベルのファイアウォール規則](firewall-create-server-level-portal-quickstart.md)を使用して、ご自分の IP アドレスを IP ベースのファイアウォールに追加する必要があります。 このモデルは、開発またはテストのワークロード用に個々のコンピューターへのアクセスを許可する場合には適していますが、運用環境で管理するのは困難です。
+
+Private Link を使用すると、[ExpressRoute](../../expressroute/expressroute-introduction.md)、プライベート ピアリング、または VPN トンネリングを使用して、プライベート エンドポイントへのクロスプレミス アクセスを有効にすることができます。 その後、お客様はパブリック エンドポイント経由のすべてのアクセスを無効にし、IP ベースのファイアウォールを使用して任意の IP アドレスを許可しないようにすることができます。
 
 ## <a name="use-cases-of-private-link-for-azure-sql-database"></a>Azure SQL Database での Private Link のユース ケース 
 
@@ -154,6 +138,22 @@ Nmap done: 256 IP addresses (1 host up) scanned in 207.00 seconds
 select client_net_address from sys.dm_exec_connections 
 where session_id=@@SPID
 ````
+
+## <a name="data-exfiltration-prevention"></a>データの流出防止
+
+Azure SQL Database におけるデータの流出とは、データベース管理者などの承認されたユーザーが、あるシステムからデータを抽出して、組織外の別の場所またはシステムに移動できる場合です。 たとえば、ユーザーがサードパーティによって所有されているストレージ アカウントにデータを移動します。
+
+SQL Database 内のデータベースに接続している Azure 仮想マシン内で SQL Server Management Studio (SSMS) を実行しているユーザーのシナリオについて考えます。 このデータベースは、米国西部のデータ センターにあります。 次の例では、ネットワーク アクセス制御を使用して SQL Database のパブリック エンドポイントでアクセスを制限する方法を示します。
+
+1. [Allow Azure Services]\(Azure サービスを許可する\) を **[オフ]** に設定して、パブリック エンドポイント経由で SQL Database へのすべての Azure サービス トラフィックを無効にします。 サーバーおよびデータベース レベルのファイアウォール規則で IP アドレスが許可されていないことを確認してください。 詳細については、[Azure SQL Database および Azure Synapse Analytics のネットワーク アクセスの制御](network-access-controls-overview.md)に関するページを参照してください。
+1. VM のプライベート IP アドレスを使用して、SQL Database 内のデータベースへのトラフィックのみを許可します。 詳細については、[サービス エンドポイント](vnet-service-endpoint-rule-overview.md)と[仮想ネットワークのファイアウォール規則](firewall-configure.md)に関する記事を参照してください。
+1. Azure VM で、次のように[ネットワーク セキュリティ グループ (NSG)](../../virtual-network/manage-network-security-group.md) とサービス タグを使用して、送信接続の範囲を絞り込みます。
+    - 米国西部にある SQL Database への接続のみを許可するように、サービス タグへのトラフィックを許可する NSG ルールを指定します (Service Tag = SQL.WestUs)
+    - すべてのリージョンで SQL Database への接続を拒否するように、サービス タグへのトラフィックを拒否する NSG ルールを (**高い優先度**で) 指定します (Service Tag = SQL)
+
+この設定が終了すると、Azure VM は米国西部リージョンにある SQL Database 内のデータベースにのみ接続できます。 ただし、接続は SQL Database 内の 1 つのデータベースに限定されません。 この VM は、サブスクリプションに含まれていないデータベースも含め、米国西部リージョンの任意のデータベースに引き続き接続できます。 上記のシナリオでは、データの流出が特定のリージョンに限定されていますが、完全には除外されていません。
+
+Private Link を使用することで、お客様が NSG のようなネットワーク アクセス制御を設定してプライベート エンドポイントへのアクセスを制限できるようになりました。 その後、個々の Azure PaaS リソースが特定のプライベート エンドポイントにマップされます。 悪意のある内部関係者は、マップされた PaaS リソース (SQL Database 内のデータベースなど) にしかアクセスできず、その他のリソースにはアクセスできません。 
 
 ## <a name="limitations"></a>制限事項 
 プライベート エンドポイントへの接続では、**プロキシ**のみが[接続ポリシー](connectivity-architecture.md#connection-policy)としてサポートされます。

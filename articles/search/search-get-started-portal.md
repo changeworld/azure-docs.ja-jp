@@ -7,23 +7,15 @@ manager: nitinme
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: f405219701e910159de6f4fc91e9960a76f5a0cd
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/16/2020
+ms.openlocfilehash: 0a28bd0d4101fc9d49413adaaccc0a6d38ec64ed
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935315"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307723"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Cognitive Search インデックスを作成する
-> [!div class="op_single_selector"]
-> * [ポータル](search-get-started-portal.md)
-> * [C#](search-get-started-dotnet.md)
-> * [Java](search-get-started-java.md)
-> * [Node.js](search-get-started-nodejs.md)
-> * [PowerShell](search-get-started-powershell.md)
-> * [Postman](search-get-started-postman.md)
-> * [Python](search-get-started-python.md)
 
 **[データのインポート]** ウィザードは、検索インデックスの作成手順を案内する Azure portal ツールであり、これを使用すれば、関心のあるクエリを数分で記述することができます。 
 
@@ -264,7 +256,7 @@ Azure portal の **Search エクスプローラー**を使って、フィルタ�
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-独自のサブスクリプションを使用している場合は、プロジェクトの最後に、作成したリソースがまだ必要かどうかを確認してください。 リソースを実行したままにすると、お金がかかる場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
+独自のサブスクリプションを使用している場合は、プロジェクトの最後に、作成したリソースがまだ必要かどうかを確認してください。 リソースを実行状態のままにしておくと、料金が発生する場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
 
 ポータルの左側のナビゲーション ウィンドウにある **[すべてのリソース]** または **[リソース グループ]** リンクを使って、リソースを検索および管理できます。
 
@@ -276,8 +268,3 @@ Azure portal の **Search エクスプローラー**を使って、フィルタ�
 
 > [!div class="nextstepaction"]
 > [ポータルでデモ アプリを作成する](search-create-app-portal.md)
-
-クラウドの支出を最適化して節約することをご希望ですか?
-
-> [!div class="nextstepaction"]
-> [Cost Management を使用してコスト分析を開始する](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

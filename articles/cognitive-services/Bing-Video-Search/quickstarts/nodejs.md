@@ -10,13 +10,13 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 9658d488fac187e63d04ca435c9233629407ac07
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: ae049ede4ebfd6761665be9c9ea6b49e87111a20
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87408103"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309796"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>クイック スタート:Bing Video Search REST API と Node.js を使用して動画を検索する
 

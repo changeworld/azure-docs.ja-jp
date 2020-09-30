@@ -13,13 +13,13 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-- devx-track-javascript
-ms.openlocfilehash: 2e2d66e113c855830f841761cb11a70e4f26c19d
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+- devx-track-js
+ms.openlocfilehash: fe6c7f10ce64e25f46444cd2db8b67aab4ae2135
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87415076"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308301"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>チュートリアル:デバイス ファームウェアの更新プロセスを実装する
 

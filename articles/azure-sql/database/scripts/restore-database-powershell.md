@@ -9,14 +9,14 @@ ms.devlang: PowerShell
 ms.topic: sample
 author: mashamsft
 ms.author: mathoma
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 03/27/2019
-ms.openlocfilehash: ed66759ab2da28f004c704d4ea24ec4124355c98
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a072a81fd3ac6ce43420ec1bf33475c7b0d3d7ee
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084978"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319386"
 ---
 # <a name="use-powershell-to-restore-a-database-to-an-earlier-point-in-time"></a>PowerShell を使用して以前の時点にデータベースを復元する
 

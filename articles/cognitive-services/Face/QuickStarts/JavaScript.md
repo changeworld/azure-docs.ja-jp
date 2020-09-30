@@ -5,18 +5,18 @@ description: このクイック スタートでは、JavaScript で Cognitive Se
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
-ms.custom: devx-track-javascript
+ms.custom: devx-track-js
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 00b77b913f300f3a02c56553f8fc0f7fa349dcaa
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6992b6abb8ab54d5f08903f1b1393111bbd78c09
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833999"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322991"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>クイック スタート:REST API と JavaScript を使用して画像内の顔を検出する
 

@@ -1,14 +1,16 @@
 ---
 title: クイック スタート:LUIS ポータルで新しいアプリを作成する
 description: このクイックスタートでは、アプリの基本パーツ、意図、エンティティを作成すると共に、LUIS ポータルからサンプル発話を使ってテストを行います。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/19/2020
-ms.openlocfilehash: 7cf55a7891b7e06c18c80d9d359b19e54f0413a9
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 38fffd7793e1f5bd59ac6dde4499b2eb25009b52
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697278"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303861"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>クイック スタート:LUIS ポータルで新しいアプリを作成する
 

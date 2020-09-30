@@ -3,17 +3,17 @@ title: Azure エンタープライズ加入契約の請求書
 description: この記事では、Azure Enterprise の請求書を管理および操作する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 09/03/2020
+ms.date: 09/18/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: ca7aaea1e0bac1c00a373c8847623606d629e800
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: fec013395af9aeb3d83f86ab47cc52b3fedd7a1f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442515"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316139"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure エンタープライズ加入契約の請求書
 
@@ -162,20 +162,6 @@ Azure 前払いを超過分に適用するには、次の条件を満たす必�
 ### <a name="enterprise-agreement-units-of-measure"></a>エンタープライズ契約の測定単位
 
 エンタープライズ契約の測定単位は、多くの場合、Microsoft Online Services 契約プログラム (MOSA) などの他のプログラムのものとは異なります。 この違いは、多くのサービスでは、正規化された価格を提供するために測定単位が集約されることを意味します。 Azure エンタープライズ ポータルの [使用状況の概要] ビューに表示される測定単位は、常にエンタープライズ測定となります。 各サービスの現在の測定単位と変換の完全なリストは、[フレンドリ サービス名](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx)という Excel ファイルで提供されています。
-
-### <a name="rounding-rules"></a>丸め規則
-
-Azure エンタープライズ ポータルでは、IEEE 標準の銀行型丸めまたはガウス丸めのロジックに従います。 このロジックでは、数値は、半桁の値に対して最も近い偶数桁に丸められます。 より一般的な四捨五入の丸めロジックでは、常に半桁が次の最も高い桁に切り上げられます。 この Azure エンタープライズ ポータルの方法では、標準の Excel ロジックと比較した場合、実際にグループに対するより正確な合計数が得られます。
-
-たとえば、省かれる最初の桁が 5 で、それ以下の桁がないか、それ以下の桁がゼロの場合は、最も近い偶数桁に切り捨てられます。 たとえば、最も近い小数第 2 位に丸められた 2.315 と 2.325 は、どちらも 2.32 となります。
-
-参考までに、以下の表では、丸めおよび変換に関する Azure エンタープライズ ポータルの規則をモデル化するために使用できる、Excel の数式を示します。
-
-| シナリオ | 銀行型ロジック数式 |
-| --- | --- |
-| 使用量の丸め | =MROUND({_ソース_}, 0.0002) |
-| 価格の丸め (小数点以下 2 桁) | =MROUND({_ソース_}, 0.02) |
-| 価格の丸め (小数点以下 0 桁) | =MROUND({_ソース_}, 2) |
 
 ### <a name="conversion-between-usage-detail-report-and-the-usage-summary-page"></a>使用状況の詳細レポートと使用状況の概要ページの間の変換
 

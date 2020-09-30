@@ -9,14 +9,14 @@ ms.devlang: PowerShell
 ms.topic: sample
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 44a9b0b4d609013147f799ae19f750c34e81837c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c60bff122b6ad9bef4e9e4558d9858e1243ebd1f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084876"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321466"
 ---
 # <a name="use-powershell-to-update-the-sync-schema-in-an-existing-sync-group"></a>PowerShell を使用して、既存の同期グループの同期スキーマを更新する
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]

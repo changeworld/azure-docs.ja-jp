@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: chrwhit
-ms.openlocfilehash: 72bb38b7d9d28366fb75c5656832a1f37c770fd2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c11c2098d30ed6f00d94124fd77c2ebdb6cd2c7a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90945991"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303322"
 ---
 Communication Services Java SMS クライアント ライブラリを使用して SMS メッセージを送信することによって、Azure Communication Services の使用を開始します。
 
@@ -30,7 +30,8 @@ Communication Services Java SMS クライアント ライブラリを使用し�
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true) バージョン 8 以降。
 - [Apache Maven](https://maven.apache.org/download.cgi)。
-- デプロイ済みの Communication Services リソース。 [Communication Services リソースを作成します](../../create-communication-resource.md)。
+- アクティブな Communication Services リソースと接続文字列。 [Communication Services リソースを作成します](../../create-communication-resource.md)。
+- SMS が有効になっている電話番号。 [電話番号を取得します](../get-phone-number.md)。
 
 ### <a name="prerequisite-check"></a>前提条件のチェック
 

@@ -1,24 +1,24 @@
 ---
 title: クイック スタート:Azure Cosmos DB SQL API アカウントを使用して Python アプリを構築する
 description: Azure Cosmos DB SQL API への接続とクエリに使用できる Python コード サンプルについて説明します
-author: Rodrigossz
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 08/11/2020
-ms.author: rosouz
+ms.date: 09/22/2020
+ms.author: anfeldma
 ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
 - devx-track-python
-ms.openlocfilehash: 16f1a7d3608b13dd5423205dc75500d76f62d69a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 128e80572275924655e1da534553265407353fff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588145"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319012"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>クイック スタート:Azure Cosmos DB SQL API アカウントを使用して Python アプリケーションを構築する
 
@@ -26,6 +26,7 @@ ms.locfileid: "88588145"
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [.NET V4](create-sql-api-dotnet-V4.md)
 > * [Java SDK v4](create-sql-api-java.md)
+> * [Spring Data v3](create-sql-api-spring-data.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -116,7 +117,7 @@ Azure portal でデータ エクスプローラー ツールを使用してデ�
 
 1. [Azure portal](https://portal.azure.com/) の Azure Cosmos DB アカウントで、左側のナビゲーションから **[キー]** を選択します。 次の手順では、画面の右側のコピー ボタンを使用して、**URI** と**プライマリ キー**を *cosmos_get_started.py* ファイルにコピーします。
 
-    :::image type="content" source="./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png" alt-text="Azure portal でキー設定のアクセス キーと URI を取得する":::
+    :::image type="content" source="./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png" alt-text="Azure portal の [データ エクスプローラー] の [コンテナーの追加] ウィンドウ":::
 
 2. Visual Studio Code で、 *\git-samples\azure-cosmos-db-python-getting-started* の *cosmos_get_started.py* ファイルを開きます。
 

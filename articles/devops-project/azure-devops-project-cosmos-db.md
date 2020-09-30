@@ -8,13 +8,13 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 47e175a47d3548962f63e283c80abe8333e9ecc4
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 1ceac6edf6cadd380d6eeec545a85c4822748d3a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421622"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316122"
 ---
 # <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-starter"></a>DevOps Starter を使用して、Azure Cosmos DB を使用する Node.js アプリをデプロイする
 

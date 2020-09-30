@@ -11,15 +11,15 @@ ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 08/12/2020
+ms.date: 09/17/2020
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 3f8a43a1ff28206a4bcc5fd059f69492c83eb34d
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: f863ca855ca36603085ed96b5aa17d277ae00516
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224715"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317312"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>チュートリアル:ASP.NET Core アプリ内で機能フラグを使用する
 
@@ -230,6 +230,12 @@ public IActionResult Index()
 制御する機能フラグが "*オフ*" であるために MVC コントローラーまたはアクションがブロックされている場合、登録されている `IDisabledFeaturesHandler` インターフェイスが呼び出されます。 既定の `IDisabledFeaturesHandler` インターフェイスは、応答本文なしで 404 状態コードをクライアントに返します。
 
 ## <a name="mvc-views"></a>MVC ビュー
+
+*Views* ディレクトリの *_ViewImports.cshtml* を開き、機能マネージャーのタグ ヘルパーを追加します。
+
+```html
+@addTagHelper *, Microsoft.FeatureManagement.AspNetCore
+```
 
 MVC ビューでは、`<feature>` タグを使用して、機能フラグが有効かどうかに基づいてコンテンツをレンダリングできます。
 

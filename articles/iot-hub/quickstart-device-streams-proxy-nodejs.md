@@ -6,15 +6,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.custom: mvc, devx-track-javascript
+ms.custom: mvc, devx-track-js
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 910ea6d333da08e69b6c5e6d6fe86421bda743ee
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c54a112a85ad930dde524ba4293a3ad0b700a22f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422591"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303099"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>クイック スタート:Node.js プロキシ アプリケーションを使用して IoT Hub デバイス ストリーム経由で SSH および RDP を有効にする (プレビュー)
 
