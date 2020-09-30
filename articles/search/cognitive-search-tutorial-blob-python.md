@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 06/12/2020
+ms.date: 09/25/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 39891b69cdb8e7f392657514d255f5f85b3eba60
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 34265552122c1f8d1bcbbcfe95948683a5750a71
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936029"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531005"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>チュートリアル:Python と AI を使用して Azure Blob から検索可能なコンテンツを生成する
 
@@ -59,7 +59,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. *[ストレージ アカウント]* を検索し、Microsoft のストレージ アカウント オファリングを選択します。
 
-   ![ストレージ アカウントの作成](media/cognitive-search-tutorial-blob/storage-account.png "ストレージ アカウントの作成")
+   :::image type="content" source="media/cognitive-search-tutorial-blob/storage-account.png" alt-text="ストレージ アカウントの作成" border="false":::
 
 1. [基本] タブでは、次の項目が必要です。 それ以外のすべてのものには、既定値をそのまま使用します。
 
@@ -81,7 +81,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. *[cog-search-demo]* を選択し、 **[アップロード]** をクリックして、ダウンロード ファイルを保存したフォルダーを開きます。 画像以外のすべてのファイルを選択します。 7 個のファイルがあるはずです。 **[OK]** をクリックしてアップロードします。
 
-   ![サンプル ファイルをアップロードする](media/cognitive-search-tutorial-blob/sample-files.png "サンプル ファイルをアップロードする")
+   :::image type="content" source="media/cognitive-search-tutorial-blob/sample-files.png" alt-text="ストレージ アカウントの作成" border="false":::
 
 1. Azure Storage を終了する前に、Azure Cognitive Search で接続を作成できるように、接続文字列を取得します。 
 
@@ -117,7 +117,7 @@ Azure Blob Storage と同様に、アクセス キーを収集してください
 
    クエリ キーも入手します。 読み取り専用アクセスを使用してクエリ要求を発行することをお勧めします。
 
-   ![サービス名、管理キー、クエリ キーの取得](media/search-get-started-nodejs/service-name-and-keys.png)
+   :::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="ストレージ アカウントの作成" border="false":::
 
 すべての要求で、自分のサービスに送信される各要求のヘッダーに API キーが必要になります。 有効なキーにより、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼が確立されます。
 
@@ -190,7 +190,7 @@ print(r.status_code)
 
 Azure portal 内の Search サービスのダッシュボード ページに戻り、cogsrch-py-datasource が **[データ ソース]** 一覧内に出現していることを確認します。 **[最新の情報に更新]** をクリックしてページを更新します。
 
-![ポータルの [データ ソース] タイル](./media/cognitive-search-tutorial-blob-python/py-data-source-tile.png "ポータルの [データ ソース] タイル")
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-data-source-tile.png" alt-text="ストレージ アカウントの作成" border="false":::
 
 ### <a name="step-2-create-a-skillset"></a>手順 2:スキルセットを作成する
 
@@ -303,7 +303,7 @@ print(r.status_code)
 
 スキルセットのグラフィカル表示を以下に示します。
 
-![スキルセットを理解する](media/cognitive-search-tutorial-blob/skillset.png "スキルセットを理解する")
+:::image type="content" source="media/cognitive-search-tutorial-blob/skillset.png" alt-text="ストレージ アカウントの作成" border="false":::
 
 出力は、言語コードと同様に、インデックスにマッピングするか、ダウンストリーム スキルへの入力として使用できます (その両方も可能です)。 インデックスでは、言語コードはフィルター処理に役立ちます。 入力としての言語コードは、テキスト分析スキルによって、単語区切りに基づく言語学的規則を通知するために使用されます。
 
@@ -315,7 +315,7 @@ print(r.status_code)
 
 この演習では、次のフィールドとフィールドの型を使用します。
 
-| field-names: | id         | content   | languageCode | keyPhrases         | organizations     |
+| field-names: | ID         | content   | languageCode | keyPhrases         | organizations     |
 |--------------|----------|-------|----------|--------------------|-------------------|
 | field-types: | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
 
@@ -472,11 +472,11 @@ pprint(json.dumps(r.json(), indent=1))
 
 応答内で、`"lastResult"` の `"status"` と `"endTime"` の値を確認します。 状態を確認するため、定期的にスクリプトを実行します。 インデクサーが完了すると、状態は "success" に設定され、"endTime" が指定されます。また、応答にはエンリッチメント中に発生したエラーや警告が含まれるようになります。
 
-![インデクサーが作成された](./media/cognitive-search-tutorial-blob-python/py-indexer-is-created.png "インデクサーが作成された")
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-indexer-is-created.png" alt-text="ストレージ アカウントの作成" border="false":::
 
 警告は、一部のソース ファイルとスキルの組み合わせではよく見られ、必ずしも問題を示すわけではありません。 警告の多くは無害です。 たとえば、テキストを含んでいない JPEG ファイルのインデックスを作成しようとすると、次のスクリーンショットに示すような警告が表示されます。
 
-![インデクサーの警告の例](./media/cognitive-search-tutorial-blob-python/py-indexer-warning-example.png "インデクサーの警告の例")
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-indexer-warning-example.png" alt-text="ストレージ アカウントの作成" border="false":::
 
 ## <a name="5---search"></a>5 - 検索する
 
@@ -493,7 +493,7 @@ pprint(json.dumps(r.json(), indent=1))
 
 結果は次の例のようになります。 スクリーンショットに表示されているのは、応答の一部のみです。
 
-![すべてのフィールドのインデックスの照会](./media/cognitive-search-tutorial-blob-python/py-query-index-for-fields.png "すべてのフィールドのインデックスの照会")
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-query-index-for-fields.png" alt-text="ストレージ アカウントの作成" border="false":::
 
 出力は、インデックス スキーマと、各フィールドの名前、型、および属性です。
 
@@ -508,7 +508,7 @@ pprint(json.dumps(r.json(), indent=1))
 
 結果は次の例のようになります。 スクリーンショットに表示されているのは、応答の一部のみです。
 
-![組織のコンテンツを取得するクエリをインデックスに対して実行する](./media/cognitive-search-tutorial-blob-python/py-query-index-for-organizations.png "組織のコンテンツを取得するクエリをインデックスに対して実行する")
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-query-index-for-organizations.png" alt-text="ストレージ アカウントの作成" border="false":::
 
 その他のフィールド (この演習では、`content`、`languageCode`、`keyPhrases`、`organizations`) でも同様に繰り返します。 コンマ区切りリストを使用して、`$select` を介して複数のフィールドを返すことができます。
 
@@ -522,7 +522,7 @@ pprint(json.dumps(r.json(), indent=1))
 
 ポータルを使用して、インデックス、インデクサー、データ ソース、およびスキルセットを削除できます。 インデクサーを削除するときは、必要に応じて、インデックス、スキルセット、およびデータ ソースを選択して同時に削除できます。
 
-![検索オブジェクトを削除する](./media/cognitive-search-tutorial-blob-python/py-delete-indexer-delete-all.png "ポータル内で検索オブジェクトを削除する")
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-delete-indexer-delete-all.png" alt-text="ストレージ アカウントの作成" border="false":::
 
 それらはスクリプトを使用して削除することもできます。 次のスクリプトは、スキルセットを削除する方法を示しています。 
 

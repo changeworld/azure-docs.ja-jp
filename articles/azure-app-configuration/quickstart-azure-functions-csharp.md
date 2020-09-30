@@ -6,14 +6,14 @@ author: lisaguthrie
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: quickstart
-ms.date: 1/9/2019
+ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: e15c83504ee0eebb925c122d0efd4896e7b55916
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 7d4fe0f54ecd11c197f258d190e9eaef14bf2bb7
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590287"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91459925"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して Azure Functions アプリを作成する
 
@@ -21,7 +21,7 @@ ms.locfileid: "88590287"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
+- Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/dotnet)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs) と **Azure 開発**ワークロード。
 - [Azure Functions ツール](../azure-functions/functions-develop-vs.md#check-your-tools-version)
 

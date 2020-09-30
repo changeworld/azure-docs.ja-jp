@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 09273cf901830e850acca05c57c0b110ffd7e28a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 13e3f5a7d86d2e9b705fbeb104ba4f8eb690cb3a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002864"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534099"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用して Azure BLOB から AI で生成する検索可能なコンテンツ
 
@@ -170,7 +170,7 @@ AI エンリッチメントは、自然言語と画像の処理のための Text
       "AzureBlobConnectionString": "Put your Azure Blob connection string here",
     }
     ```
-    
+
 検索サービスと BLOB ストレージ アカウントの情報を追加します。 ご存じのように、この情報は、前のセクションで示したサービス プロビジョニング手順から入手することができます。
 
 **[SearchServiceName]** には、短いサービス名を入力してください。完全な URL ではありません。
@@ -586,11 +586,11 @@ private static Skillset CreateOrUpdateDemoSkillSet(SearchServiceClient serviceCl
 
 | フィールド名 | フィールドの型 |
 | --- | --- |
-| id | Edm.String |
-| content | Edm.String |
-| languageCode | Edm.String |
-| keyPhrases | List<Edm.String> |
-| organizations | List<Edm.String> |
+| `id` | Edm.String |
+| `content` | Edm.String |
+| `languageCode` | Edm.String |
+| `keyPhrases` | List<Edm.String> |
+| `organizations` | List<Edm.String> |
 
 #### <a name="create-demoindex-class"></a>DemoIndex クラスを作成する
 
@@ -906,7 +906,7 @@ catch (Exception e)
 }
 ```
 
-その他のフィールド (この演習では、content、languageCode、keyPhrases、および organizations) でも同様に繰り返します。 [Select](/dotnet/api/microsoft.azure.search.models.searchparameters.select?view=azure-dotnet) プロパティでコンマ区切りリストを使用すれば、複数のフィールドを取得することができます。
+その他のフィールド (この演習では、content、languageCode、keyPhrases、および organizations) でも同様に繰り返します。 [Select](/dotnet/api/microsoft.azure.search.models.searchparameters.select) プロパティでコンマ区切りリストを使用すれば、複数のフィールドを取得することができます。
 
 <a name="reset"></a>
 

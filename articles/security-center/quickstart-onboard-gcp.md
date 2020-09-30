@@ -3,16 +3,16 @@ title: Azure Security Center への GCP アカウントの接続
 description: Azure Security Center から GCP リソースを監視します。
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
-ms.topic: how-to
+ms.date: 9/22/2020
+ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d5f478c279eb4c07332d047935f7c5dab89fd4b7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 71f1de7b4ff265a5740181a2bb2032f33a83abe3
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931691"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448980"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>Azure Security Center への GCP アカウントの接続
 
@@ -80,7 +80,7 @@ Security Command Center API の詳細については、[こちら](https://cloud
     1. **[追加]** を選択します。
     1. **[新しいメンバー]** フィールドに、先ほどコピーした **[メール] の値**を貼り付けます。
     1. 役割として **[Security Center Admin Viewer]\(Security Center 管理者ビューアー\)** を指定し、[保存] を選択します。
-        :::image type="content" source="./media/quickstart-onboard-gcp/iam-settings-gcp-permissions-admin-viewer.png" alt-text="関連する GCP のアクセス許可の設定":::
+        :::image type="content" source="./media/quickstart-onboard-gcp/iam-settings-gcp-permissions-admin-viewer.png" alt-text="Security Center の概要ダッシュボードに一覧表示された 3 つの GCP プロジェクト":::
 
 
 ### <a name="step-4-create-a-private-key-for-the-dedicated-service-account"></a>手順 4. 専用サービス アカウントの秘密キーを作成する
@@ -107,7 +107,7 @@ Security Command Center API の詳細については、[こちら](https://cloud
 コネクタが正常に作成され、GCP Security Command Center が正しく構成されたら、次のようになります。
 
 - Security Center の規制コンプライアンス ダッシュボードに GCP CIS 標準が表示されます。
-- オンボードが完了してから 5 から 10 分後に、Security Center ポータルと規制コンプライアンス ダッシュボードに、GCP リソースのセキュリティに関する推奨事項が表示されます。 :::image type="content" source="./media/quickstart-onboard-gcp/gcp-resources-in-recommendations.png" alt-text="Security Center の推奨事項ページの GCP リソースと推奨事項":::
+- オンボードが完了してから 5 から 10 分後に、Security Center ポータルと規制コンプライアンス ダッシュボードに、GCP リソースのセキュリティに関する推奨事項が表示されます。 :::image type="content" source="./media/quickstart-onboard-gcp/gcp-resources-in-recommendations.png" alt-text="Security Center の概要ダッシュボードに一覧表示された 3 つの GCP プロジェクト":::
 
 
 ## <a name="monitoring-your-gcp-resources"></a>GCP リソースの監視
@@ -116,7 +116,7 @@ Security Command Center API の詳細については、[こちら](https://cloud
 
 リソースの種類別に、リソースのアクティブな推奨事項をすべて表示するには、Security Center の資産インベントリ ページを使用し、関心のある GCP リソースの種類にフィルターを適用します。
 
-:::image type="content" source="./media/quickstart-onboard-gcp/gcp-resource-types-in-inventory.png" alt-text="GCP オプションを示す資産インベントリ ページのリソースの種類のフィルター"::: 
+:::image type="content" source="./media/quickstart-onboard-gcp/gcp-resource-types-in-inventory.png" alt-text="Security Center の概要ダッシュボードに一覧表示された 3 つの GCP プロジェクト"::: 
 
 
 ## <a name="next-steps"></a>次の手順

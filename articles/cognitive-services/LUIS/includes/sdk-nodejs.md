@@ -2,20 +2,18 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.date: 09/01/2020
 ms.topic: include
-ms.custom: include file, devx-track-javascript, cog-serv-seo-aug-2020
-ms.author: diberry
-ms.openlocfilehash: b961bb0598a1f6e9cdc7b4df27af50e7af1d9d81
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.custom: include file, devx-track-js, cog-serv-seo-aug-2020
+ms.openlocfilehash: ca089ab973ceef876691a487bcb43c8582360d6a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89323077"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91545737"
 ---
 Node.js 用 Language Understanding (LUIS) クライアント ライブラリの用途は次のとおりです。
 
@@ -202,7 +200,7 @@ Quantity サブエンティティに特徴を割り当てるために、次の�
 
 [ExampleLabelObject](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/examplelabelobject?view=azure-node-latest) オブジェクトの一覧 (発話の例 1 件につき 1 つのオブジェクト) を作成し、発話の例を追加します。 それぞれの例では、エンティティの名前とエンティティの値から成る名前と値のペアのディクショナリを使用し、エンティティをすべてマークする必要があります。 エンティティの値は、発話の例のテキストに表示されているものと正確に一致している必要があります。
 
-:::image type="content" source="../media/quickstart-sdk/labeled-example-machine-learned-entity.png" alt-text="ポータルでのラベル付けされた発話の例を示す部分的なスクリーンショット。":::
+:::image type="content" source="../media/quickstart-sdk/labeled-example-machine-learned-entity.png" alt-text="ポータルの部分的なスクリーンショット。サブエンティティを備えた機械学習エンティティが作成され、さまざまな特徴が `Quantity` サブエンティティに適用される。":::
 
 アプリ ID、バージョン ID、および例を指定して [examples.add](https://docs.microsoft.com//javascript/api/@azure/cognitiveservices-luis-authoring/examples?view=azure-node-latest#add-string--string--examplelabelobject--models-examplesaddoptionalparams-) を呼び出します。
 

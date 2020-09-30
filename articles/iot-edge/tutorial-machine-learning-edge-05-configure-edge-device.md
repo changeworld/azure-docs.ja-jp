@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp
-ms.openlocfilehash: 353ed321ce3b6161b28bf67d852a81f809880603
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d7ff9efcedc1a6a5f92555a62e429be0431f2098
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "81733008"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448511"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>チュートリアル:IoT Edge デバイスの構成
 
@@ -167,7 +167,7 @@ Azure Marketplace にある [[Azure IoT Edge on Ubuntu]](https://azuremarketplac
     * まだ存在しない場合、リソース グループを作成する
     * 仮想マシンの作成
     * ポート 22 (SSH)、5671 (AMQP)、5672 (AMPQ)、および 443 (TLS) に対して VM の NSG 例外を追加する
-    * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-apt?view=azure-cli-latest) をインストールする
+    * [Azure CLI](/cli/azure/install-azure-cli-apt) をインストールします。
 
 7. スクリプトは、VM に接続するための SSH 接続文字列を出力します。 次のステップのために接続文字列をコピーします。
 

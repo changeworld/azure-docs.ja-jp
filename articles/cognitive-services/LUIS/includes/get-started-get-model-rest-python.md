@@ -2,18 +2,17 @@
 title: C# で REST 呼び出しを使用してモデルを取得する
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: include
 ms.date: 06/03/2020
-ms.author: diberry
-ms.openlocfilehash: a8ac208c77a3c25d03b09e0c70eb5edcd9bd0383
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: 4e4a5115ee83030b5cf3bd8c047f7ccadf4c9e2c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84416401"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534626"
 ---
 [リファレンス ドキュメント](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c45) | [サンプル](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/python-model-with-rest/model.py)
 

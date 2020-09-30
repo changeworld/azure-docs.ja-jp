@@ -12,14 +12,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/3/2018
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: e51d0bfb79eab4db9bb571cc0f4ee70ada352d92
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b583e3d86ba193a92080f2da9cc0b16d07c5a993
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90895772"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447177"
 ---
 # <a name="quickstart-setting-up-azure-security-center"></a>クイック スタート:Azure Security Center を設定する
 
@@ -61,7 +61,7 @@ Security Center のクイックスタートおよびチュートリアルの目�
 
 1. Security Center のサイドバーで、 **[作業の開始]** を選択します。
 
-    :::image type="content" source="./media/security-center-get-started/get-started-upgrade-tab.png" alt-text="[はじめに] ページの [アップグレード] タブ"::: 
+    :::image type="content" source="./media/security-center-get-started/get-started-upgrade-tab.png" alt-text="Security Center の概要ダッシュボード"::: 
 
     **[アップグレード]** タブに、オンボードの対象となるサブスクリプションとワークスペースが一覧表示されます。
 
@@ -82,7 +82,7 @@ Log Analytics エージェントの自動プロビジョニングを有効にす
 1. **[データ収集]** ページで、 **[自動プロビジョニング]** を **[オン]** に設定します。
 1. **[保存]** を選択します。
 
-    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Log Analytics エージェントの自動プロビジョニングの有効化":::
+    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Security Center の概要ダッシュボード":::
 
 >[!TIP]
 > ワークスペースをプロビジョニングする必要がある場合は、エージェントのインストールに最大で 25 分かかることがあります。
@@ -109,7 +109,6 @@ Log Analytics エージェントの自動プロビジョニングを有効にす
 [2]: ./media/security-center-get-started/overview.png
 [4]: ./media/security-center-get-started/get-started.png
 [5]: ./media/security-center-get-started/pricing.png
-[6]: ./media/security-center-get-started/enable-automatic-provisioning.png
 [7]: ./media/security-center-get-started/security-alerts.png
 [8]: ./media/security-center-get-started/recommendations.png
 [9]: ./media/security-center-get-started/select-subscription.png

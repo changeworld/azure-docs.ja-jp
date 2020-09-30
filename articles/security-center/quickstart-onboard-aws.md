@@ -3,16 +3,16 @@ title: Azure Security Center への AWS アカウントの接続
 description: Azure Security Center から AWS リソースを監視します
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
-ms.topic: how-to
+ms.date: 9/22/2020
+ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: ee1b8fe6ed97f3b71cda418cce9e432f7c045447
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: cddae0a7115fc2999b52eaba7df2b49db509981b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931702"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449034"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>Azure Security Center への AWS アカウントの接続
 
@@ -71,7 +71,7 @@ Security Center が AWS に対して認証を行えるようにするには、2 
 
 #### <a name="create-an-iam-role-for-security-center"></a>Security Center の IAM ロールを作成する
 1. アマゾン ウェブ サービス コンソールの **[セキュリティ、アイデンティティ、コンプライアンス]** の **[IAM]** を選択します。
-    :::image type="content" source="./media/quickstart-onboard-aws/aws-identity-and-compliance.png" alt-text="AWS サービス":::
+    :::image type="content" source="./media/quickstart-onboard-aws/aws-identity-and-compliance.png" alt-text="Security Center の概要ダッシュボードに一覧表示された 3 つの GCP プロジェクト":::
 
 1. **[ロール]** 、 **[ロールの作成]** の順に選択します。
 1. **[別の AWS アカウント]** を選択します。
@@ -127,12 +127,12 @@ Security Center が AWS に対して認証を行えるようにするには、2 
 
 1. Security Center のメニューから、 **[マルチ クラウド コネクタ]** を選択します。
 1. **[Add AWS account]\(AWS アカウントの追加\)** を選択します。
-    :::image type="content" source="./media/quickstart-onboard-aws/add-aws-account.png" alt-text="Security Center のマルチ クラウド コネクタ ページの [Add AWS account]\(AWS アカウントの追加\) ボタン":::
+    :::image type="content" source="./media/quickstart-onboard-aws/add-aws-account.png" alt-text="Security Center の概要ダッシュボードに一覧表示された 3 つの GCP プロジェクト":::
 1. **[AWS authentication]\(AWS 認証\)** タブでオプションを構成します。
     1. コネクタの**表示名**を入力します。
     1. サブスクリプションが正しいことを確認します。 これは、コネクタと AWS Security Hub の推奨事項が追加されるサブスクリプションです。
     1. 「[手順 2. AWS で Security Center に対する認証を設定する](#step-2-set-up-authentication-for-security-center-in-aws)」で選択した認証オプションに応じて、次の操作を行います。
-        - **[Assume Role]\(ロールを想定\)** を選択し、「[Security Center の IAM ロールを作成する](#create-an-iam-role-for-security-center)」から ARN を貼り付けます :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="Azure portal で AWS 接続ウィザードの関連フィールドに ARN ファイルを貼り付ける":::
+        - **[Assume Role]\(ロールを想定\)** を選択し、「[Security Center の IAM ロールを作成する](#create-an-iam-role-for-security-center)」から ARN を貼り付けます :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="Security Center の概要ダッシュボードに一覧表示された 3 つの GCP プロジェクト":::
 
             OR
 
@@ -164,7 +164,7 @@ Security Center が AWS に対して認証を行えるようにするには、2 
 - ASC サービスは、新しい AWS EC2 インスタンスを 6 時間ごとにスキャンして探し、構成に従ってそれらオンボードします。
 - Security Center の規制コンプライアンス ダッシュボードに AWS CIS 標準が表示されます。
 - Security Hub ポリシーが有効になっている場合、オンボードが完了してから 5 分から 10 分後、推奨事項が Security Center ポータルと規制コンプライアンス ダッシュボードに表示されます。
-    :::image type="content" source="./media/quickstart-onboard-aws/aws-resources-in-recommendations.png" alt-text="Security Center の推奨事項ページの AWS リソースと推奨事項":::
+    :::image type="content" source="./media/quickstart-onboard-aws/aws-resources-in-recommendations.png" alt-text="Security Center の概要ダッシュボードに一覧表示された 3 つの GCP プロジェクト":::
 
 
 
@@ -174,7 +174,7 @@ Security Center が AWS に対して認証を行えるようにするには、2 
 
 リソースのアクティブな推奨事項を、リソースの種類別にすべて表示するには、Security Center の資産インベントリ ページを使用し、関心のある AWS リソースの種類にフィルターを適用します。
 
-:::image type="content" source="./media/quickstart-onboard-aws/aws-resource-types-in-inventory.png" alt-text="AWS オプションを示す資産インベントリ ページのリソースの種類のフィルター"::: 
+:::image type="content" source="./media/quickstart-onboard-aws/aws-resource-types-in-inventory.png" alt-text="Security Center の概要ダッシュボードに一覧表示された 3 つの GCP プロジェクト"::: 
 
 
 ## <a name="aws-in-security-center-faq"></a>Security Center の AWS に関する FAQ

@@ -2,20 +2,18 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.date: 09/01/2020
 ms.topic: include
 ms.custom: include file, devx-track-dotnet, cog-serv-seo-aug-2020
-ms.author: diberry
-ms.openlocfilehash: fff4e8c43263dfcc49be6cb6269078643118e8df
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 2a3129e6a4ce51d9c50d210c6ce87a8d6fbda6de
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89323092"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91545675"
 ---
 .NET 用 Language Understanding (LUIS) クライアント ライブラリを使用して次のことを行います。
 * アプリを作成する
@@ -180,7 +178,7 @@ Quantity サブエンティティに特徴を割り当てるために、クラ�
 
 [ExampleLabelObject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.models.examplelabelobject?view=azure-dotnet) オブジェクトの一覧 (発話の例 1 件につき 1 つのオブジェクト) を作成し、発話の例を追加します。 それぞれの例では、エンティティの名前とエンティティの値から成る名前と値のペアのディクショナリを使用し、エンティティをすべてマークする必要があります。 エンティティの値は、発話の例のテキストに表示されているものと正確に一致している必要があります。
 
-:::image type="content" source="../media/quickstart-sdk/labeled-example-machine-learned-entity.png" alt-text="ポータルでのラベル付けされた発話の例を示す部分的なスクリーンショット。":::
+:::image type="content" source="../media/quickstart-sdk/labeled-example-machine-learned-entity.png" alt-text="ポータルの部分的なスクリーンショット。サブエンティティを備えた機械学習エンティティが作成され、さまざまな特徴が `Quantity` サブエンティティに適用される。":::
 
 アプリ ID、バージョン ID、および例を指定して [Examples.AddAsync](https://docs.microsoft.com//dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.examplesextensions.addasync?view=azure-dotnet) を呼び出します。
 

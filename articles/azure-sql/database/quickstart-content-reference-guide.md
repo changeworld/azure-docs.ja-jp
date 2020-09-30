@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: single-database
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: quickstart
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: carlr
+ms.topic: guide
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 07/29/2019
-ms.openlocfilehash: 3265b1f8234e1f2a2f19fb488d5c311e501c770e
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: cd1880f58d4ef457cdc411e065588204a5ad6672
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84338296"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448770"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Azure SQL Database の単一データベースの概要
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

@@ -6,17 +6,17 @@ ms.service: sql-db-mi
 ms.subservice: service
 ms.custom: overview-samples sqldbrb=2
 ms.devlang: ''
-ms.topic: sample
+ms.topic: guide
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/04/2019
-ms.openlocfilehash: ee2c6580285246d3b170602e507aed038b2507f4
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 48a2c00f7ff487def13e9872c4f43a3ca36809ba
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85983640"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91444629"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database--sql-managed-instance"></a>Azure SQL Database および SQL Managed Instance 用 Azure Resource Manager テンプレート
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

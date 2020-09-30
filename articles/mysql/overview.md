@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 3/18/2020
-ms.openlocfilehash: 2a44896ff7cabb9e44c02be9f3dba201298d4794
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 51c194ca9b091bc685f293320750da55925ad49d
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903942"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565617"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Azure Database for MySQL とは -
 
@@ -58,6 +58,15 @@ Azure Database for MySQL フレキシブル サーバーは、データベース
 - マネージド メンテナンス期間
 
 フレキシブル サーバー デプロイ モードの詳細については、[フレキシブル サーバーの概要](flexible-server/overview.md)を参照してください。
+
+## <a name="contacts"></a>連絡先
+Azure Database for MySQL についての質問や提案は、Azure Database for MySQL チームにメール ([@Ask Azure DB for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)) でお送りください。 このメール アドレスはテクニカル サポートのエイリアスではありません。
+
+さらに、適切な連絡先について次の点を考慮してください。
+
+- Azure サポートに問い合わせる場合は、[Azure portal からチケットを申請します](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+- アカウントを使用して問題を修正するには、Azure Portal で[サポート要求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を提出します。
+- フィードバックを提供したり、新しい機能を要求したりするには、[UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql) でエントリを作成します。
 
 ## <a name="next-steps"></a>次の手順
 

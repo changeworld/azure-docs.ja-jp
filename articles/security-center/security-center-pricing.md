@@ -8,17 +8,17 @@ manager: rkarlin
 ms.assetid: 4d1364cd-7847-425a-bb3a-722cb0779f78
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/28/2020
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 6d2127af2c2c9e04141551dae72f0177f495b165
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c5537552e35c1738e6c3cd4873b4c6444685a5fe
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904799"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448300"
 ---
 # <a name="pricing-of-azure-security-center"></a>Azure Security Center の価格
 Azure Security Center は、Azure、オンプレミス、他のクラウドで実行されているワークロードの統合セキュリティ管理と高度な脅威保護を実現します。 ハイブリッド クラウド ワークロードの可視化と制御、脅威にさらされる機会を減らす積極的防御、急速に進化するサイバー攻撃への対応に役立つインテリジェント検出などの機能が提供されます。

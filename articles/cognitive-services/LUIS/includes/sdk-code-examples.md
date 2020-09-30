@@ -2,20 +2,18 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.date: 09/01/2020
 ms.topic: include
-ms.custom: include file, devx-track-javascript
-ms.author: diberry
-ms.openlocfilehash: 51b8fc9aae787b0fe033e9046059a65a4d79616c
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.custom: include file, devx-track-js
+ms.openlocfilehash: 7fd44bd6feb5ee256b2a6b723fc684ea8c9ed736
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89323076"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91545038"
 ---
 ## <a name="code-examples"></a>コード例
 

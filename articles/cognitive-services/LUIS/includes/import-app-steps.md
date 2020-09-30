@@ -1,18 +1,17 @@
 ---
 title: アプリのインポート手順
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: include
 ms.date: 06/22/2020
-ms.author: diberry
-ms.openlocfilehash: 37f1b85b4ce8510d5e288df985a55dba659f0c9b
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: aa0ba1de63cbcf1d9485c71b6bec7a29afb5140f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86035879"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91545384"
 ---
 1. [LUIS ポータル](https://www.luis.ai)の **[マイ アプリ]** ページで、 **[+ New app for conversation]\(+ 会話用の新しいアプリ\)** を選択し、次に **[Import as JSON]\(JSON としてインポート\)** を選択します。 前の手順で保存した JSON ファイルを見つけます。 アプリの名前を変更する必要はありません。 **[完了]** を選択します
 

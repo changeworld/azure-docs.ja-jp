@@ -10,16 +10,16 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ffcb2c741838b1292eaf0793cd625c99d252068c
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: e1a52a15012e367dc902992f7f7b905fc6c6a5eb
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462073"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541545"
 ---
 # <a name="quickstart-create-a-search-index-using-the-azuresearchdocuments-client-library"></a>クイック スタート:Azure.Search.Documents クライアント ライブラリを使用して検索インデックスを作成する
 
-新しい [Azure.Search.Documents (バージョン 11) クライアント ライブラリ](/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet)を使用して、検索インデックスの作成、読み込み、照会を行う C# の .NET Core コンソール アプリケーションを作成します。
+新しい [Azure.Search.Documents (バージョン 11) クライアント ライブラリ](/dotnet/api/overview/azure/search.documents-readme)を使用して、検索インデックスの作成、読み込み、照会を行う C# の .NET Core コンソール アプリケーションを作成します。
 
 [ソース コードをダウンロード](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v11)して完成済みのプロジェクトで開始するか、この記事の手順に従いながらご自身でアプリケーションを作成してみましょう。
 

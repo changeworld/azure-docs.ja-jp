@@ -2,20 +2,18 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.date: 05/19/2020
 ms.subservice: language-understanding
 ms.topic: include
-ms.author: diberry
-ms.openlocfilehash: 0e00845684ab44b94b3c6823452e85c967cb9e3c
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: f07ac2027f165eb4e9722330cb779ec32999a5e3
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "87336373"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534604"
 ---
 チャットボットや他のクライアント アプリケーションで LUIS の予測を受け取るには、アプリを予測エンドポイントに公開する必要があります。
 

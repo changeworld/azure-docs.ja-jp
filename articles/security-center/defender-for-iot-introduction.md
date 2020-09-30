@@ -3,16 +3,16 @@ title: Azure Defender for IoT
 description: Azure Defender for IoT について学習します
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
-ms.topic: conceptual
+ms.date: 9/22/2020
+ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 67bb01092cb6171ae56b8ab8b308e0c2ea3bece0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2f41aac085fef62e0356a93a07823f21d7ba3667
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931582"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448335"
 ---
 # <a name="introduction-to-azure-defender-for-iot"></a>Azure Defender for IoT の概要
 

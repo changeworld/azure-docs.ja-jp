@@ -4,15 +4,15 @@ description: Security Center の概要ページの機能について学習しま
 author: memildin
 ms.author: memildin
 ms.date: 9/12/2020
-ms.topic: conceptual
+ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 637f7dde63d562f71aa31561a960ed3502a80229
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: cc52610eacc3916b7a8978cba17a1db3f3d50686
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90930855"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447684"
 ---
 # <a name="azure-security-centers-overview-page"></a>Azure Security Center の概要ページ
 
@@ -27,7 +27,7 @@ Security Center の概要ページで、ワークロードのセキュリティ�
 
 ## <a name="features-of-the-overview-page"></a>概要ページの機能
 
-:::image type="content" source="media/overview-page/top-bar-of-overview.png" alt-text="Security Center の概要ページの上部バー":::
+:::image type="content" source="media/overview-page/top-bar-of-overview.png" alt-text="Security Center の概要ページ":::
 
 **上部のメニュー バー**では、次のものが提供されます。
 - **サブスクリプション** - このボタンを選択して、サブスクリプションの一覧を表示およびフィルター処理できます。 選択されたサブスクリプションのセキュリティの状態を反映するように、Security Center の表示が調整されます。
