@@ -7,13 +7,13 @@ ms.author: terrychr
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 05/19/2020
-ms.openlocfilehash: b6164ef955ac92a7ef8776e560ea4d3a92abaf8d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: 8bbd0b1979da69e5d4d18009100a7caee5a3d722
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935978"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397404"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>チュートリアル:スキルセットに対する診断、修復、および変更のコミットを行う
 
@@ -59,7 +59,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 1. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
 
-![HTTP エンドポイントとアクセス キーを取得する](media/search-get-started-postman/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
+:::image type="content" source="media/search-get-started-postman/get-url-key.png" alt-text="HTTP エンドポイントとアクセス キーを取得する" border="false":::
 
 すべての要求では、サービスに送信されるすべての要求に API キーが必要です。 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
 
@@ -78,15 +78,13 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 1. Azure Storage アカウントのキー ページにある storageConnectionString を入力します。
 1. ストレージ アカウントに作成したコンテナーの containerName を入力します。
 
-> [!div class="mx-imgBorder"]
-> ![Postman で変数を編集する](media/cognitive-search-debug/postman-enter-variables.png)
+> :::image type="content" source="media/cognitive-search-debug/postman-enter-variables.png" alt-text="HTTP エンドポイントとアクセス キーを取得する":::
 
 コレクションには、このセクションを完了するために使用される 4 種類の REST 呼び出しが含まれています。
 
 最初の呼び出しでは、データ ソースが作成されます。 `clinical-trials-ds`. 2 つ目の呼び出しでは、スキルセット `clinical-trials-ss` が作成されます。 3 つ目の呼び出しでは、インデックスの `clinical-trials` が作成されます。 最後の 4 つ目の呼び出しでは、インデクサーの `clinical-trials-idxr` が作成されます。 コレクション内のすべての呼び出しが完了したら、Postman を閉じて Azure portal に戻ります。
 
-> [!div class="mx-imgBorder"]
-> ![Postman を使用してデータ ソースを作成する](media/cognitive-search-debug/postman-create-data-source.png)
+> :::image type="content" source="media/cognitive-search-debug/postman-create-data-source.png" alt-text="HTTP エンドポイントとアクセス キーを取得する":::
 
 ## <a name="check-the-results"></a>結果を確認する
 
@@ -109,8 +107,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 ## <a name="start-your-debug-session"></a>デバッグ セッションを開始する
 
-> [!div class="mx-imgBorder"]
-> ![新しいデバッグ セッションを開始する](media/cognitive-search-debug/new-debug-session-screen-required.png)
+> :::image type="content" source="media/cognitive-search-debug/new-debug-session-screen-required.png" alt-text="HTTP エンドポイントとアクセス キーを取得する":::
 
 1. [Debug sessions (preview)]\(デバッグ セッション (プレビュー)\) タブをクリックします。
 1. [+NewDebugSession] を選択します
@@ -123,8 +120,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 > [!Important]
 > デバッグ セッションは、1 つのドキュメントでのみ機能します。 データ セット内の特定のドキュメントを選択できます。また、セッションでは既定で最初のドキュメントが対象になります。
 
-> [!div class="mx-imgBorder"]
-> ![開始された新しいデバッグ セッション](media/cognitive-search-debug/debug-execution-complete1.png)
+> :::image type="content" source="media/cognitive-search-debug/debug-execution-complete1.png" alt-text="HTTP エンドポイントとアクセス キーを取得する":::
 
 デバッグ セッションの実行が完了すると、セッションでは既定で [AI Enrichments]\(AI エンリッチメント\) タブが表示され、スキル グラフが強調表示されます。
 
@@ -144,89 +140,25 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 1. 行の先頭にある **</>** 記号を選択し、式エバリュエーターを開きます。
 1. **[評価]** ボタンをクリックして、この式の結果がエラーになることを確認します。 "languageCode" プロパティが有効な入力ではないことが確認されます。
 
-> [!div class="mx-imgBorder"]
-> ![式エバリュエーター](media/cognitive-search-debug/expression-evaluator-language.png)
+> :::image type="content" source="media/cognitive-search-debug/expression-evaluator-language.png" alt-text="HTTP エンドポイントとアクセス キーを取得する" に対応する、マッピングされたパスがありません。
 
-セッションでこのエラーを調査するには、2 つの方法があります。 1 つ目は、入力がどこから来ているかを調べることです。この結果を生成すると考えられるのは、階層内のどのスキルでしょうか。 スキルの詳細ペインの [実行] タブに、入力のソースが表示されるはずです。 ソースが存在しない場合は、フィールド マッピング エラーであることを意味します。
-
-1. **[実行]** タブをクリックします。
-1. [INPUTS]\(入力\) で "languageCode" を見つけます。 この入力のソースが一覧に表示されていません。 
-1. 左ペインを切り替えて、エンリッチ処理されたデータ構造を表示します。 "languageCode" に対応する、マッピングされたパスがありません。
-
-> [!div class="mx-imgBorder"]
-> ![エンリッチ処理されたデータ構造](media/cognitive-search-debug/enriched-data-structure-language.png)
-
-"language" にはマッピングされたパスがあります。 つまり、スキルの設定に入力ミスがあります。 これを解決するには、式 "/document/language" がある #1 スキルの式を更新する必要があります。
-
-1. パス "language" の **</>** で式エバリュエーターを開きます。
-1. 式をコピーします。 ウィンドウを閉じます。
-1. #1 スキルのスキル設定に移動し、入力 "languageCode" の **</>** で式エバリュエーターを開きます。
-1. 新しい値 "/document/language" を [式] ボックスに貼り付けて、 **[評価]** をクリックします。
-1. 正しい入力 "en" が表示されるはずです。 [適用] をクリックして、式を更新します。
-1. 右側のスキルの詳細ペインで **[保存]** をクリックします。
-1. セッションのウィンドウ メニューで **[実行]** をクリックします。 これにより、ドキュメントを使用してスキルセットの別の実行が開始されます。 
-
-デバッグ セッションの実行が完了してから、[エラー/警告] タブをクリックすると、"Enrichment.NerSkillV2.#1" というラベルのエラーが表示されなくなります。 ただし、サービスが組織および場所の出力フィールドを検索インデックスにマップできなかったという警告が、まだ 2 つあります。 "/document/merged_content/organizations" と "/document/merged_content/locations" という値が不足しています。
+> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-language.png" alt-text="HTTP エンドポイントとアクセス キーを取得する" という値が不足しています。
 
 ## <a name="fix-missing-skill-output-values"></a>不足しているスキル出力値を修正する
 
-> [!div class="mx-imgBorder"]
-> ![エラーおよび警告](media/cognitive-search-debug/warnings-missing-value-locations-organizations.png)
+> :::image type="content" source="media/cognitive-search-debug/warnings-missing-value-locations-organizations.png" alt-text="HTTP エンドポイントとアクセス キーを取得する" として一覧表示されているそれぞれの式が表示されます。
 
-スキルからの出力値が不足しています。 エラーが発生したスキルを特定するには、エンリッチ処理されたデータ構造に移動し、値の名前を検索して、[Originating Source]\(元のソース\) を確認します。 組織と場所の値が不足している場合、それらはスキル #1 からの出力です。 各パスの </> で式エバリュエーターを開くと、"/document/content/organizations" および "/document/content/locations" として一覧表示されているそれぞれの式が表示されます。
+> :::image type="content" source="media/cognitive-search-debug/expression-eval-missing-value-locations-organizations.png" alt-text="HTTP エンドポイントとアクセス キーを取得する" の **</>** で式エバリュエーターを開きます。
 
-> [!div class="mx-imgBorder"]
-> ![式エバリュエーターの organizations エンティティ](media/cognitive-search-debug/expression-eval-missing-value-locations-organizations.png)
+> :::image type="content" source="media/cognitive-search-debug/input-skill-missing-value-locations-organizations.png" alt-text="HTTP エンドポイントとアクセス キーを取得する" の **</>** で式エバリュエーターを開きます。
 
-これらのエンティティの出力は空ですが、空にするべきではありません。 この結果を生成する入力は何でしょうか。
+> :::image type="content" source="media/cognitive-search-debug/merge-output-detail-missing-value-locations-organizations.png" alt-text="HTTP エンドポイントとアクセス キーを取得する" エンティティの **</>** で式エバリュエーターを開きます。
 
-1. **スキル グラフ**に移動して、スキル #1 を選択します。
-1. 右側のスキルの詳細ペインで **[実行]** タブを選択します。
-1. 入力 "text" の **</>** で式エバリュエーターを開きます。
-
-> [!div class="mx-imgBorder"]
-> ![テキスト スキルの入力](media/cognitive-search-debug/input-skill-missing-value-locations-organizations.png)
-
-この入力に表示される結果は、テキスト入力のようには見えません。 改行で囲まれた画像のように見えます。 テキストがないことは、エンティティを識別できないことを意味します。 スキルセットの階層を見ると、コンテンツは最初に #6 (OCR) スキルによって処理され、次に #5 (マージ) スキルに渡されると表示されています。 
-
-1. **スキル グラフ**で #5 (マージ) スキルを選択します。
-1. 右側のスキルの詳細ペインで **[実行]** タブを選択し、出力 "mergedText" の **</>** で式エバリュエーターを開きます。
-
-> [!div class="mx-imgBorder"]
-> ![マージ スキルの出力](media/cognitive-search-debug/merge-output-detail-missing-value-locations-organizations.png)
-
-ここで、テキストは画像とペアになっています。 式 "/document/merged_content" を見ると、#1 スキルの "organizations" および "locations" パスのエラーが表示されています。 "text" 入力には、"/document/content" ではなく、"/document/merged_content" を使用する必要があります。
-
-1. "mergedText" 出力の式をコピーし、式エバリュエーター ウィンドウを閉じます。
-1. **スキル グラフ**でスキル #1 を選択します。
-1. 右側のスキルの詳細ペインで **[Skill Settings]\(スキルの設定\)** タブを選択します。
-1. "text" 入力の **</>** で式エバリュエーターを開きます。
-1. 新しい式をボックスに貼り付けます。 **[評価]** をクリックします。
-1. 追加したテキストを含む正しい入力が表示されるはずです。 **[適用]** をクリックして、スキルの設定を更新します。
+> :::image type="content" source="media/cognitive-search-debug/skill-output-detail-missing-value-locations-organizations.png" alt-text="HTTP エンドポイントとアクセス キーを取得する" となるように編集します。
 1. 右側のスキルの詳細ペインで **[保存]** をクリックします。
 1. セッションのウィンドウ メニューで **[実行]** をクリックします。 これにより、ドキュメントを使用してスキルセットの別の実行が開始されます。
 
-インデクサーの実行の完了後、エラーは引き続き発生します。 スキル #1 に戻り、調査します。 スキルへの入力は、"content" から "merged_content" に修正しました。 スキルにおけるこれらのエンティティの出力は何でしょうか。
-
-1. **[AI Enrichments]\(AI エンリッチメント\)** タブを選択します。
-1. **スキル グラフ**を選択して、スキル #1 をクリックします。
-1. **スキルの設定**内を移動して、"outputs" を探します。
-1. "organizations" エンティティの **</>** で式エバリュエーターを開きます。
-
-> [!div class="mx-imgBorder"]
-> ![organizations エンティティの出力](media/cognitive-search-debug/skill-output-detail-missing-value-locations-organizations.png)
-
-式の結果を評価すると、正しい結果が得られます。 このスキルは、"organizations" というエンティティの正しい値を識別するために機能しています。 ただし、エンティティのパス内の出力マッピングでは、引き続きエラーがスローされます。 スキルの出力パスとエラーの出力パスを比較すると、/document/content ノードの下の出力、組織、および場所の親となっているスキルがあります。 一方、出力フィールド マッピングでは、結果が /document/merged_content ノードの下で子になることが想定されています。 前の手順では、入力を "/document/content" から "/document/merged_content" に変更しました。 出力が正しいコンテキストで生成されるようにするには、スキル設定のコンテキストを変更する必要があります。
-
-1. **[AI Enrichments]\(AI エンリッチメント\)** タブを選択します。
-1. **スキル グラフ**を選択して、スキル #1 をクリックします。
-1. **スキルの設定**内を移動して、"context" を探します。
-1. "context" の設定をダブルクリックして、"/document/merged_content" となるように編集します。
-1. 右側のスキルの詳細ペインで **[保存]** をクリックします。
-1. セッションのウィンドウ メニューで **[実行]** をクリックします。 これにより、ドキュメントを使用してスキルセットの別の実行が開始されます。
-
-> [!div class="mx-imgBorder"]
-> ![スキルの設定でのコンテキストの修正](media/cognitive-search-debug/skill-setting-context-correction-missing-value-locations-organizations.png)
+> :::image type="content" source="media/cognitive-search-debug/skill-setting-context-correction-missing-value-locations-organizations.png" alt-text="HTTP エンドポイントとアクセス キーを取得する":::
 
 すべてのエラーが解決されました。
 

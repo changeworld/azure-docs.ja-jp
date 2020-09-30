@@ -1,20 +1,20 @@
 ---
 title: Gremlin API を使用して Azure Cosmos DB Node.js アプリケーションを構築する
 description: Azure Cosmos DB への接続とデータの照会に使用できる Node.js コード サンプルについて説明します
-author: luisbosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/05/2019
-ms.author: lbosq
-ms.custom: devx-track-javascript
-ms.openlocfilehash: f1e619468ecbcd533c8cda725cb316d1e2a0e256
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.author: jasonh
+ms.custom: devx-track-js
+ms.openlocfilehash: c44f7218734af4bc3144137356b85e8845208f6f
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420432"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409376"
 ---
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>クイック スタート:Azure Cosmos DB Gremlin API アカウントを使用して Node.js アプリケーションをビルドする
 
@@ -161,7 +161,7 @@ GitHub から Gremlin API アプリの複製を作成し、接続文字列を設
 
     `config.primaryKey = "PRIMARYKEY";`
 
-   :::image type="content" source="./media/create-graph-nodejs/keys.png" alt-text="Azure portal キー ブレード":::
+   :::image type="content" source="./media/create-graph-nodejs/keys.png" alt-text="Azure portal の [概要] ページでアクセス キーを表示およびコピーする":::
 
 4. データベース名とグラフ (コンテナー) 名を config.database と config.collection の値として入力します。 
 

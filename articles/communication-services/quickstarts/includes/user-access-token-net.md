@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: marobert
-ms.openlocfilehash: 12a8bccbf9c177c92160d52f4506618d03c791e6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e4a52095f7fc1c8252ffbbbbedf4520773d3efc1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90945743"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377083"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -45,7 +45,7 @@ dotnet build
 まだアプリケーション ディレクトリにいる間に、`dotnet add package` コマンドを使用して、.NET 用の Azure Communication Services 管理ライブラリ パッケージをインストールします。
 
 ```console
-dotnet add package Azure.Communication.Administration
+dotnet add package Azure.Communication.Administration --version 1.0.0-beta.1
 ```
 
 ### <a name="set-up-the-app-framework"></a>アプリのフレームワークを設定する

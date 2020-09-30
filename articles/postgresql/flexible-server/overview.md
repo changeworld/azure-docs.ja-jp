@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/22/2020
-ms.openlocfilehash: 71cf11673756dcefb828ad1fad0412a791b43efd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 268eedf6f9d64d52539e20006322b6b1dd9964e8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90945574"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439960"
 ---
 # <a name="azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバー
 
@@ -49,15 +49,14 @@ Azure Database for PostgreSQL - フレキシブル サーバーは、データ�
 1. 新しいコンピューティング Linux VM がプロビジョニングされます。
 2. データ ファイルを含むストレージが新しい仮想マシンにマップされます
 3. 新しい仮想マシン上で PostgreSQL データベース エンジンがオンラインになります。
-4. ゲートウェイ サービスによって透過的なフェールオーバーが確保されるので、アプリケーション側の変更は不要です。
 
 次の図は、VM とストレージの障害の遷移を示しています。
 
- :::image type="content" source="./media/overview/overview-azure-postgres-flex-virtualmachine-storage-failure.png" alt-text="フレキシブル サーバー - VM とストレージの障害":::
+ :::image type="content" source="./media/overview/overview-azure-postgres-flex-virtualmachine.png" alt-text="フレキシブル サーバー - VM とストレージの障害":::
 
 ゾーン冗長の高可用性が構成されている場合は、サービスによって同じ Azure リージョン内の可用性ゾーンにホット スタンバイ サーバーがプロビジョニングされ、管理されます。 データ損失をゼロにするために、ソース サーバー上でのデータの変更は、スタンバイ サーバーに同期的にレプリケートされます。 ゾーン冗長の高可用性により、計画済みまたは計画外のフェールオーバー イベントがトリガーされると、スタンバイ サーバーが直ちにオンラインになり、受信トランザクションを処理できるようになります。 これにより、次の図に示すように、複数の可用性ゾーンをサポートする Azure リージョン内の可用性ゾーンの障害からサービスを回復できます。
 
- :::image type="content" source="./media/business-continuity/concepts-zone-redundant-high-availability-architecture.png" alt-text="ゾーン冗長の高可用性":::
+ :::image type="content" source="./media/business-continuity/concepts-zone-redundant-high-availability-architecture.png" alt-text="フレキシブル サーバー - VM とストレージの障害":::
 
  詳細については、[高可用性のドキュメント](./concepts-high-availability.md)を参照してください。
 

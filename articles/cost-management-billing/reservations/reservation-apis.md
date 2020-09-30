@@ -9,12 +9,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: cffb753d515c4d066c8ce52e7dacebe5a8f6f8ca
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 12b20f7556a460506067305401fb2379678ee58e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682639"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371696"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>Azure の予約の自動化に関する API
 
@@ -88,9 +88,9 @@ EA のお客様の場合、組織の予約がどのように使用されてい�
 
 ユーザーがアクセス権を持っているすべての予約の一覧を取得するには、[予約操作の一覧取得 API](/rest/api/reserved-vm-instances/reservationorder/list) を使用します。 プログラムで予約へのアクセス権を付与するには、次のいずれかの記事をご覧ください。
 
-- [RBAC と REST API を使用してアクセスを管理する](../../role-based-access-control/role-assignments-rest.md)
-- [RBAC と Azure PowerShell を使用してアクセスを管理する](../../role-based-access-control/role-assignments-powershell.md)
-- [RBAC と Azure CLI を使用してアクセスを管理する](../../role-based-access-control/role-assignments-cli.md)
+- [REST API を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-rest.md)
+- [Azure PowerShell を使用して Azure でのロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-powershell.md)
+- [Azure CLI を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-cli.md)
 
 ## <a name="split-or-merge-reservation"></a>予約を分割または統合する
 

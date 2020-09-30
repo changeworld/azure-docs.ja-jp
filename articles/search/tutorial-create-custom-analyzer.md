@@ -7,13 +7,13 @@ author: dereklegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/22/2020
-ms.openlocfilehash: e714c58827ebb4ee7e50696db27644fa65a73af1
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 09/25/2020
+ms.openlocfilehash: ac7cee2c1d72b4102fb397aa8093c2d38686fc88
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89290312"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397268"
 ---
 # <a name="tutorial-create-a-custom-analyzer-for-phone-numbers"></a>チュートリアル:電話番号のカスタム アナライザーを作成する
 
@@ -59,7 +59,7 @@ ms.locfileid: "89290312"
 
 1. `<YOUR-ADMIN-API-KEY>` を、検索サービスのプライマリ キーまたはセカンダリ キーに置き換えます。
 
-  ![Postman の要求 URL とヘッダー](media/search-get-started-postman/postman-url.png "Postman の要求 URL とヘッダー")
+  :::image type="content" source="media/search-get-started-postman/postman-url.png" alt-text="Postman の要求 URL とヘッダー" border="false":::
 
 Postman に慣れていない場合は、[Postman を使用して Azure Cognitive Search REST API を調べる方法](search-get-started-postman.md)に関するページを参照してください。
 
@@ -239,11 +239,11 @@ GET https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basic
 
 以下の図を見ると、この 3 つのコンポーネントが連携して文がトークン化されるようすをご覧いただけます。
 
-  ![文をトークン化するアナライザー処理の図](media/tutorial-create-custom-analyzer/analyzers-explained.png)
+  :::image type="content" source="media/tutorial-create-custom-analyzer/analyzers-explained.png" alt-text="Postman の要求 URL とヘッダー":::
 
 その後、高速なフルテキスト検索を可能にする転置インデックスにこれらのトークンが格納されます。  フルテキスト検索は、字句解析中に抽出された一意の語句すべてを、それが出現するドキュメントへと、転置インデックスによってマッピングすることで実現されます。 以下の図に例を示します。
 
-  ![転置インデックスの例](media/tutorial-create-custom-analyzer/inverted-index-explained.png)
+  :::image type="content" source="media/tutorial-create-custom-analyzer/inverted-index-explained.png" alt-text="Postman の要求 URL とヘッダー":::
 
 すべての検索は、転置インデックスに格納された語句の検索に帰結します。 ユーザーからクエリが送信されると、次の処理が行われます。
 
@@ -251,7 +251,7 @@ GET https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basic
 1. 転置インデックスがスキャンされて、一致する語句を含んだドキュメントが検出されます。
 1. 最後に、取得されたドキュメントが[類似性アルゴリズム](index-ranking-similarity.md)によってランク付けされます。
 
-  ![類似性をランク付けするアナライザー処理の図](media/tutorial-create-custom-analyzer/query-architecture-explained.png)
+  :::image type="content" source="media/tutorial-create-custom-analyzer/query-architecture-explained.png" alt-text="Postman の要求 URL とヘッダー":::
 
 検索語が転置インデックス内の語句と一致しなかった場合、結果は返されません。 クエリの機構について詳しくは、[フルテキスト検索](search-lucene-query-architecture.md)に関する記事を参照してください。
 

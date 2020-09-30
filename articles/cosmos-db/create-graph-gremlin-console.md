@@ -1,18 +1,18 @@
 ---
 title: TinkerPop Gremlin コンソールを使用して Azure Cosmos DB Gremlin API でクエリを実行する:チュートリアル
 description: Azure Cosmos DB Gremlin API を使用して頂点、辺、およびクエリを作成するための Azure Cosmos DB クイック スタート。
-author: luisbosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/10/2020
-ms.author: lbosq
-ms.openlocfilehash: e1ce632a04269704b498a69e1a0dd4fe72e00c87
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.author: jasonh
+ms.openlocfilehash: ca1ca258296f5ac8f1fb7120d2965ccacf74b5d5
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543777"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409393"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>クイック スタート:Gremlin コンソールを使用して Azure Cosmos DB グラフ データベースを作成、クエリ、および走査する
 
@@ -65,11 +65,11 @@ Gremlin コンソールは Groovy/Java ベースであり、Linux、Mac、およ
 
    hosts の値には、 **[概要]** ページから **[Gremlin URI]** の値をコピーします。
 
-   :::image type="content" source="./media/create-graph-gremlin-console/gremlin-uri.png" alt-text="Azure Portal の [概要] ページで Gremlin URI の値を表示してコピー":::
+   :::image type="content" source="./media/create-graph-gremlin-console/gremlin-uri.png" alt-text="Apache Gremlin コンソールからの Azure Cosmos DB":::
 
    パスワードの値には、 **[キー]** ページから **[主キー]** をコピーします。
 
-   :::image type="content" source="./media/create-graph-gremlin-console/keys.png" alt-text="Azure portal の [キー] ページでプライマリ キーを表示してコピーする":::
+   :::image type="content" source="./media/create-graph-gremlin-console/keys.png" alt-text="Apache Gremlin コンソールからの Azure Cosmos DB":::
 
    remote secure.yaml ファイルは、次のようになります。
 

@@ -8,13 +8,13 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: references_regions
-ms.openlocfilehash: 57e8c2cab69e68d10eb57afa01a9968041bb5906
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: f545bac522eaac65cc5a3390e0cfcbd445805708
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87771134"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376462"
 ---
 マネージド ディスクのインポートまたはエクスポート用のプライベート リンクは、現在、以下でのみ使用できます。
 
-- 米国中北部
+- 米国東部 2

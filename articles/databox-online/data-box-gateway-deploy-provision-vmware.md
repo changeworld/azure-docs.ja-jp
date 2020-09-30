@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 03/25/2019
+ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 6488871067416b2cee533561bae47874413d9012
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 4818755e48a4d497d70920a62a9505346176ed73
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892118"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371288"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>チュートリアル:VMware で Azure Data Box Gateway をプロビジョニングする
 
@@ -194,7 +194,7 @@ VMware ESXi 6.0、6.5、または 6.7 を実行しているホスト システ�
 
    ![仮想デバイス パスワードを入力する](./media/data-box-gateway-deploy-provision-vmware/image23.png)
 
-6. 手順 5 ～ 7 は、非 DHCP 環境での起動時にのみ適用されます。 DHCP 環境の場合は、これらの手順をスキップして手順 8 に進みます。 非 DHCP 環境でデバイスを起動した場合は、"**ネットワークを構成するには、Set-HcsIPAddress コマンドレットを使用します**" という趣旨のメッセージが表示されます。 
+6. 手順 6. ～ 8. は、非 DHCP 環境での起動時にのみ適用されます。 DHCP 環境の場合は、手順 6 ～ 8 をスキップし、手順 9 に進みます。 非 DHCP 環境でデバイスを起動した場合は、"**ネットワークを構成するには、Set-HcsIPAddress コマンドレットを使用します**" という趣旨のメッセージが表示されます。 
    
 7. ネットワークを構成するには、コマンド プロンプトで `Get-HcsIpAddress` コマンドを使用して、仮想デバイスで有効なネットワーク インターフェイスの一覧を表示します。 デバイスで単一のネットワーク インターフェイスが有効になっている場合、このインターフェイスに割り当てられる既定の名前は `Ethernet`です。
 

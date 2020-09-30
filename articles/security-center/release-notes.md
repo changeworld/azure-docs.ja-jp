@@ -7,17 +7,17 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 3cb35cdf217d497b612dee12aedb869b0583e464
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b1bd0ff28906f35ddc56afbd0287bbe29879deb4
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986701"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91438936"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Security Center の最新情報
 
@@ -122,7 +122,7 @@ Security Center では、Azure リソースのセキュリティの状態が定�
 
 Azure Defender には、Azure Container Registry とお使いの仮想マシンのイメージをスキャンするための脆弱性スキャナーが含まれています。
 
-組織のニーズとして、検出結果を修復するのではなく無視する必要がある場合は、必要に応じて検出結果を無効にできます。 検出結果を無効にすると、セキュリティ スコアが影響を受けることも、不要なノイズが生成されることもなくなります。
+組織のニーズとして、検出結果を修復するのではなく無視する必要がある場合は、必要に応じて検出結果を無効にできます。 無効化された検出結果は、セキュリティ スコアに影響を与えたり、不要なノイズを生成したりすることはありません。
 
 無効化のルールで定義した条件と一致する検出結果は、検出結果の一覧には表示されません。
 
@@ -245,7 +245,7 @@ Security Center は、セキュリティの問題について、リソース、�
 
 プレビューの推奨事項の例を次に示します。
 
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="プレビュー フラグが設定された推奨事項":::
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="連続エクスポート構成でのセキュリティに関する調査結果トグルを含める":::
 
 [セキュリティ スコアの詳細](secure-score-security-controls.md)。
 
@@ -254,7 +254,7 @@ Security Center は、セキュリティの問題について、リソース、�
 
 推奨事項の詳細ページに、更新間隔インジケーター (関連する場合) が追加され、推奨事項の重大度が明確に表示されるようになりました。
 
-:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="更新間隔と重大度が表示されている推奨事項ページ":::
+:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="連続エクスポート構成でのセキュリティに関する調査結果トグルを含める":::
 
 
 
@@ -288,7 +288,7 @@ Security Center に、Microsoft の無料の ID セキュリティ保護であ�
 
 Security Center では現在、セキュリティの既定値群が有効になっていない Azure サブスクリプションを識別した時点で、セキュリティの推奨事項を提供します。 Security Center ではこれまで、Azure Active Directory (AD) Premium ライセンスの一部である条件付きアクセスを使用した多要素認証の有効化を推奨していました。 Azure AD Free をご利用のお客様には、セキュリティの既定値群を有効にすることを現在お勧めしています。 
 
-私たちの目標は、より多くのお客様に対して、MFA を使用してクラウド環境をセキュリティで保護し、[セキュリティ スコア](https://docs.microsoft.com/azure/security-center/secure-score-security-controls)に対しても最もインパクトの高いリスクの 1 つを軽減することを推奨することです。
+私たちの目標は、より多くのお客様に対して、MFA を使用してクラウド環境をセキュリティで保護し、[セキュリティ スコア](secure-score-security-controls.md)に対しても最もインパクトの高いリスクの 1 つを軽減することを推奨することです。
 
 [セキュリティの既定値群](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)の詳細を確認してください。
 
@@ -429,7 +429,7 @@ BLOB コンテナー、ファイル共有、またはデータ レイクのい�
 
 各項目の詳細については、[セキュリティに関する推奨事項のリファレンス ページ](recommendations-reference.md)を参照してください。
 
-詳細については、「[Azure Security Center での脅威の防止](https://docs.microsoft.com/azure/security-center/threat-protection)」を参照してください。
+詳細については、「[Azure Security Center での脅威の防止](azure-defender.md)」を参照してください。
 
 
 
@@ -442,13 +442,13 @@ Azure Security Center のコンテナーのセキュリティ機能に関する�
 
 Security Center でのコンテナー セキュリティの詳細については、次の記事を参照してください。
 
-- [Security Center のコンテナーのセキュリティ機能の概要](https://docs.microsoft.com/azure/security-center/container-security)
-- [Azure Container Registry との統合の詳細](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
-- [Azure Kubernetes Service との統合の詳細](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration)
-- [レジストリをスキャンして Docker ホストを強化する方法](https://docs.microsoft.com/azure/security-center/monitor-container-security)
-- [Azure Kubernetes Service クラスターの脅威防止機能からのセキュリティ アラート](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-akscluster)
-- [Azure Kubernetes Service ホストの脅威防止機能からのセキュリティ アラート](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-containerhost)
-- [コンテナーに関するセキュリティの推奨事項](https://docs.microsoft.com/azure/security-center/recommendations-reference#recs-containers)
+- [Security Center のコンテナーのセキュリティ機能の概要](container-security.md)
+- [Azure Container Registry との統合の詳細](defender-for-container-registries-introduction.md)
+- [Azure Kubernetes Service との統合の詳細](defender-for-kubernetes-introduction.md)
+- [レジストリをスキャンして Docker ホストを強化する方法](container-security.md)
+- [Azure Kubernetes Service クラスターの脅威防止機能からのセキュリティ アラート](alerts-reference.md#alerts-akscluster)
+- [Azure Kubernetes Service ホストの脅威防止機能からのセキュリティ アラート](alerts-reference.md#alerts-containerhost)
+- [コンテナーに関するセキュリティの推奨事項](recommendations-reference.md#recs-containers)
 
 
 
@@ -537,10 +537,9 @@ Advanced Data Security では、SQL マシンに対して、場所によらず�
 
 これら 2 つの新しい推奨事項の詳細については、「[コンピューティングとアプリの推奨事項](recommendations-reference.md#recs-computeapp)」テーブルを参照してください。
 
-Azure Security Center でエージェントを使用する方法の詳細については、「[Log Analytics エージェントとは](https://docs.microsoft.com/azure/security-center/faq-data-collection-agents#what-is-the-log-analytics-agent)」を参照してください。
+Azure Security Center でエージェントを使用する方法の詳細については、「[Log Analytics エージェントとは](faq-data-collection-agents.md#what-is-the-log-analytics-agent)」を参照してください。
 
-詳細については、[Azure Arc マシンの拡張機能](https://docs.microsoft.com/azure/azure-arc/servers/manage-vm-extensions#enable-extensions-from-the-portal)に関するページを参照してください。
-
+詳細については、[Azure Arc マシンの拡張機能](../azure-arc/servers/manage-vm-extensions.md#enable-extensions-from-the-portal)に関するページを参照してください。
 
 
 ### <a name="new-policies-to-create-continuous-export-and-workflow-automation-configurations-at-scale"></a>連続エクスポートとワークフローの自動化の構成を大規模に作成するための新しいポリシー
@@ -597,7 +596,7 @@ Azure Security Center でエージェントを使用する方法の詳細につ�
 | [Virtual Machines で Advanced Threat Protection を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da35fc9-c9e7-4960-aec9-797fe7d9051d)           | 4da35fc9-c9e7-4960-aec9-797fe7d9051d |
 |                                                                                                                                                                                                                                                                       |                                      |
 
-詳細については、「[Azure Security Center での脅威の防止](https://docs.microsoft.com/azure/security-center/threat-protection)」を参照してください。
+詳細については、「[Azure Security Center での脅威の防止](azure-defender.md)」を参照してください。
 
 
 
@@ -679,7 +678,7 @@ Security Center には、VM の管理ポートを保護するオプションの�
 
 セキュリティ コントロールの詳細については、「[Azure Security Center の強化されたセキュア スコア (プレビュー)](secure-score-security-controls.md)」を参照してください。
 
-:::image type="content" source="./media/secure-score-security-controls/recommendations-group-by-toggle.gif" alt-text="推奨設定の コントロールによるグループ化 トグル":::
+:::image type="content" source="./media/secure-score-security-controls/recommendations-group-by-toggle.gif" alt-text="連続エクスポート構成でのセキュリティに関する調査結果トグルを含める":::
 
 ### <a name="expanded-security-control-implement-security-best-practices"></a>拡張されたセキュリティ コントロール "セキュリティのベスト プラクティスの実装" 
 
@@ -721,7 +720,7 @@ Azure Policy でカスタム イニシアチブを作成し、それにポリシ
 
 ### <a name="crash-dump-analysis-capabilities-migrating-to-fileless-attack-detection"></a>ファイルレス攻撃検出へのクラッシュ ダンプ分析機能の移行 
 
-Microsoft は Windows クラッシュ ダンプ (CDA) 検出機能を[ファイルレス攻撃検出](https://docs.microsoft.com/azure/security-center/threat-protection#windows-fileless)に移行しています。 ファイルレス攻撃検出分析では、Windows マシンで次のセキュリティ アラートの高度なバージョンを利用できます。コード インジェクションの検出、Windows モジュールの偽装の検出、シェルコードの検出、疑わしいコード セグメントの検出。
+Microsoft は Windows クラッシュ ダンプ (CDA) 検出機能を[ファイルレス攻撃検出](defender-for-servers-introduction.md#what-are-the-benefits-of-azure-defender-for-servers)に移行しています。 ファイルレス攻撃検出分析では、Windows マシンで次のセキュリティ アラートの高度なバージョンを利用できます。コード インジェクションの検出、Windows モジュールの偽装の検出、シェルコードの検出、疑わしいコード セグメントの検出。
 
 この移行のメリットをいくつか紹介します。
 
