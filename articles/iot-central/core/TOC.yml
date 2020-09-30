@@ -81,12 +81,16 @@
       items:
         - name: デバイス テンプレートを設定する
           href: howto-set-up-template.md
+        - name: プロパティの使用方法
+          href: howto-use-properties.md
         - name: Azure Sphere DevKit を準備して接続する
           href: howto-connect-sphere.md
         - name: RuuviTag デバイスを準備して接続する
           href: howto-connect-ruuvi.md
         - name: Rigado Cascade 500 を準備して接続する
           href: howto-connect-rigado-cascade-500.md
+        - name: X.509 を使用してデバイスを接続する
+          href: how-to-connect-devices-x509.md
         - name: その他の IoT クラウドの接続
           href: howto-build-iotc-device-bridge.md
     - name: 接続を維持する

@@ -474,7 +474,7 @@
       href: error-codes.md
     - name: Extensions アプリ
       href: extensions-app.md
-    - name: IEF リリース ノート
+    - name: カスタム ポリシー (IEF) のリリース ノート
       href: custom-policy-developer-notes.md
     - name: Microsoft Graph API の操作
       href: microsoft-graph-operations.md

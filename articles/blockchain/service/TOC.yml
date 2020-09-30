@@ -13,6 +13,8 @@
       href: create-member.md
     - name: CLI を使用してメンバーを作成する
       href: create-member-cli.md
+    - name: Azure PowerShell を使用してメンバーを作成する
+      href: create-member-powershell.md
     - name: ARM テンプレートを使用してメンバーを作成する
       displayName: Resource Manager
       href: create-member-template.md
@@ -81,7 +83,7 @@
     - name: コミュニティ サポート
       href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
     - name: Stack Overflow サポート
-      href: 'https://stackoverflow.com/questions/tagged/AzureBlockchainService'
+      href: 'https://stackoverflow.com/questions/tagged/azure-blockchain-service'
     - name: 製品フィードバック
       href: 'https://feedback.azure.com/forums/921130-azure-blockchain-service'
     - name: 価格
