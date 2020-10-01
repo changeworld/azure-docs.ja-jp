@@ -418,6 +418,8 @@
               href: id-tokens.md
             - name: アクセス トークン
               href: access-tokens.md
+            - name: トークンの有効期間の構成
+              href: active-directory-configurable-token-lifetimes.md
             - name: UserInfo エンドポイント
               href: userinfo.md
             - name: 証明書の資格情報
@@ -522,7 +524,7 @@
         - name: 要求でのディレクトリ スキーマ拡張属性の使用
           href: active-directory-schema-extensions.md
         - name: トークンの有効期間の構成
-          href: active-directory-configurable-token-lifetimes.md
+          href: configure-token-lifetimes.md
         - name: Chrome ブラウザーにおける SameSite Cookie の変更の処理
           href: howto-handle-samesite-cookie-changes-chrome-browser.md
         - name: Safari での ITP の処理
