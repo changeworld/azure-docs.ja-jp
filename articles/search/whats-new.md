@@ -6,20 +6,33 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 08/01/2020
+ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 788b3f5e9f4012e418ece691ebb5fbc5d2f866af
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 4526e4916a89b53ae13a31bcdef6cd4715dd7e8c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931847"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979592"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Cognitive Search の新機能
 
 サービス内の新機能について説明します。 このページをブックマークして、常にサービスの最新情報を確認してください。
 
 ## <a name="feature-announcements-in-2020"></a>2020 年の機能のお知らせ
+
+### <a name="september-2020"></a>2020 年 9 月
+
+Azure Active Directory に検索サービスの ID を作成した後、RBAC のアクセス許可を使用して、その ID に、Azure データ ソースへの読み取り専用アクセス許可を与えます。 IP 規則が選択できない場合は、必要に応じて、[信頼されたサービスの例外](search-indexer-howto-access-trusted-service-exception.md)機能を選択してください。
+
+
+|機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | カテゴリ | 説明 | 可用性  |
+|------------------------------|----------|-------------|---------------|
+| [マネージド サービス ID](search-howto-managed-identities-data-sources.md) | インデクサー、セキュリティ | Azure Active Directory に検索サービスの ID を作成した後、RBAC のアクセス許可を使用して、その ID に Azure データ ソースへのアクセス権を与えます。 このアプローチを使用すると、接続文字列での資格情報が不要になります。 <br><br>IP 規則が選択できない場合、[信頼されたサービスの例外](search-indexer-howto-access-trusted-service-exception.md)を通じてマネージド サービス ID を使用することもできます。 | 一般提供されています。 この機能にアクセスするには、ポータルを使用するか、api-version=2020-06-30 の [Create Data Source (REST)](https://docs.microsoft.com/rest/api/searchservice/create-data-source) を使用します。 |
+| [プライベート リンクを使用したアウトバウンド要求](search-indexer-howto-access-private.md) | インデクサー、セキュリティ | Azure Private Link によって保護された Azure リソースにインデクサーがアクセスするときに使用できる共有プライベート リンク リソースを作成します。 インデクサーの接続を保護する方法すべてについて詳しくは、[Azure ネットワーク セキュリティ機能を使用してインデクサー リソースを保護する](search-indexer-securing-resources.md)方法に関するページを参照してください。 | 一般提供されています。 この機能にアクセスするには、ポータルを使用するか、api-version=2020-08-01 の[共有プライベート リンク リソース](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources)を使用します。 |
+| [Management REST API (2020-08-01)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | 新しい安定版 REST API には、共有プライベート リンク リソースを作成する機能が追加されています。 | 一般提供されています。 |
+| [Management REST API (2020-08-01-Preview)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | Azure Functions と Azure SQL for MySQL Databases 用の共有プライベート リンク リソースを追加します。 | パブリック プレビュー。 |
+| [Management .NET SDK 4.0](https://docs.microsoft.com/dotnet/api/overview/azure/search/management) | .NET SDK | Azure SDK の更新です。REST API バージョン 2020-08-01 を対象とする管理 SDK に適用されます。 | 一般提供されています。 |
 
 ### <a name="august-2020"></a>2020 年 8 月
 
@@ -31,9 +44,9 @@ ms.locfileid: "88931847"
 
 |機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | カテゴリ | 説明 | 可用性  |
 |---------|------------------|-------------|---------------|
-| [Azure.Search.Documents クライアント ライブラリ](/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) | Azure SDK for .NET | Azure SDK チームによってリリースされた .NET クライアント ライブラリです。他の .NET クライアント ライブラリとの一貫性を保つように設計されています。 <br/><br/>バージョン 11 は Search REST api-version=2020-06-30 を対象としていますが、ナレッジ ストア、地理空間型、[FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder?view=azure-dotnet) はまだサポートしていません。 <br/><br/>詳細については、[インデックスの作成に関するクイックスタート](search-get-started-dotnet.md)および [Azure.Search.Documents (v11) へのアップグレード](search-dotnet-sdk-migration-version-11.md)に関するページをご覧ください。 | 一般提供されています。 </br> NuGet から [Azure.Search.Documents パッケージ](https://www.nuget.org/packages/Azure.Search.Documents/)をインストールします。 |
-| [azure.search.documents クライアント ライブラリ](/python/api/overview/azure/search-documents-readme?view=azure-python)  | Azure SDK for Python| Azure SDK チームによってリリースされた Python クライアント ライブラリです。他の Python クライアント ライブラリとの一貫性を保つように設計されています。 <br/><br/>バージョン 11 は Search REST api-version=2020-06-30 を対象としています。 | 一般提供されています。 </br> PyPI から [azure-search-documents パッケージ](https://pypi.org/project/azure-search-documents/)をインストールします。 |
-| [@azure/search-documents クライアント ライブラリ](/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest)  | Azure SDK for JavaScript | Azure SDK チームによってリリースされた JavaScript クライアント ライブラリです。他の JavaScript クライアント ライブラリとの一貫性を保つように設計されています。 <br/><br/>バージョン 11 は Search REST api-version=2020-06-30 を対象としています。 | 一般提供されています。 </br> npm から [@azure/search-documents パッケージ](https://www.npmjs.com/package/@azure/search-documents)をインストールします。 |
+| [Azure.Search.Documents クライアント ライブラリ](/dotnet/api/overview/azure/search.documents-readme) | Azure SDK for .NET | Azure SDK チームによってリリースされた .NET クライアント ライブラリです。他の .NET クライアント ライブラリとの一貫性を保つように設計されています。 <br/><br/>バージョン 11 は Search REST api-version=2020-06-30 を対象としていますが、ナレッジ ストア、地理空間型、[FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder) はまだサポートしていません。 <br/><br/>詳細については、[インデックスの作成に関するクイックスタート](search-get-started-dotnet.md)および [Azure.Search.Documents (v11) へのアップグレード](search-dotnet-sdk-migration-version-11.md)に関するページをご覧ください。 | 一般提供されています。 </br> NuGet から [Azure.Search.Documents パッケージ](https://www.nuget.org/packages/Azure.Search.Documents/)をインストールします。 |
+| [azure.search.documents クライアント ライブラリ](/python/api/overview/azure/search-documents-readme)  | Azure SDK for Python| Azure SDK チームによってリリースされた Python クライアント ライブラリです。他の Python クライアント ライブラリとの一貫性を保つように設計されています。 <br/><br/>バージョン 11 は Search REST api-version=2020-06-30 を対象としています。 | 一般提供されています。 </br> PyPI から [azure-search-documents パッケージ](https://pypi.org/project/azure-search-documents/)をインストールします。 |
+| [@azure/search-documents クライアント ライブラリ](/javascript/api/overview/azure/search-documents-readme)  | Azure SDK for JavaScript | Azure SDK チームによってリリースされた JavaScript クライアント ライブラリです。他の JavaScript クライアント ライブラリとの一貫性を保つように設計されています。 <br/><br/>バージョン 11 は Search REST api-version=2020-06-30 を対象としています。 | 一般提供されています。 </br> npm から [@azure/search-documents パッケージ](https://www.npmjs.com/package/@azure/search-documents)をインストールします。 |
 
 ### <a name="june-2020"></a>2020 年 6 月
 

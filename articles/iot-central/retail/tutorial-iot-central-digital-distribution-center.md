@@ -5,14 +5,14 @@ author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: overview
+ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: cb40252460fe62deb94ce495bb41d38c326f10e2
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: a76df67d1ef9d203d5e5d54cb95bb8fc90f70180
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "81001341"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980740"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>チュートリアル:デジタル配布センター アプリケーション テンプレートを展開して調べる
 
@@ -35,7 +35,7 @@ ms.locfileid: "81001341"
 1. Azure IoT Central のアプリケーション マネージャー Web サイトに移動します。 左側のナビゲーションバーから **[ビルド]** を選択し、 **[Retail]\(小売り\)** タブをクリックします。
 
     > [!div class="mx-imgBorder"]
-    > ![デジタル配布センター](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
+    > ![デジタル流通センター アプリケーション テンプレートを選択する方法を示す画面のスクリーンショット](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
 
 2. **[小売業]** タブを選択し、 **[デジタル流通センター]** の下にある **[アプリの作成]** を選択します
 
@@ -46,10 +46,10 @@ ms.locfileid: "81001341"
    **作成**:ページの下部にある [作成] を選択して、アプリケーションをデプロイします。
 
     > [!div class="mx-imgBorder"]
-    > ![デジタル配布センター](./media/tutorial-iot-central-ddc/ddc-create.png)
+    > ![デジタル流通センター アプリケーション テンプレートからのアプリの作成方法を示すスクリーンショット](./media/tutorial-iot-central-ddc/ddc-create.png)
 
     > [!div class="mx-imgBorder"]
-    > ![デジタル流通センターの課金情報](./media/tutorial-iot-central-ddc/ddc-create-billinginfo.png)
+    > ![アプリケーション作成時の課金オプションを示す画面のスクリーンショット](./media/tutorial-iot-central-ddc/ddc-create-billinginfo.png)
 
 ## <a name="walk-through-the-application-dashboard"></a>アプリケーション ダッシュボードを調べる 
 
@@ -62,31 +62,31 @@ ms.locfileid: "81001341"
    * ソリューションの一部であるすべてのカメラを管理します。 
 
 > [!div class="mx-imgBorder"]
-> ![デジタル配布センター](./media/tutorial-iot-central-ddc/ddc-dashboard.png)
+> ![デジタル流通センターのダッシュボードを示すスクリーンショット](./media/tutorial-iot-central-ddc/ddc-dashboard.png)
 
 ## <a name="device-template"></a>デバイス テンプレート
 
 [デバイス テンプレート] タブをクリックすると、ゲートウェイ機能モデルが表示されます。 機能モデルは、 **[Camera]\(カメラ\)** と **[Digital Distribution Gateway]\(デジタル配布ゲートウェイ\)** という 2 つの異なるインターフェイスを中心に構成されています
 
 > [!div class="mx-imgBorder"]
-> ![デジタル配布センター](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
+> ![アプリケーションのデジタル流通ゲートウェイ デバイス テンプレートを表示する画面のスクリーンショット](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
 
 **[Camera]\(カメラ\)** - このインターフェイスには、すべてのカメラ固有のコマンド機能が整理されています 
 
 > [!div class="mx-imgBorder"]
-> ![デジタル配布センター](./media/tutorial-iot-central-ddc/ddc-camera.png)
+> ![デジタル流通ゲートウェイ デバイス テンプレートのカメラ インターフェイスを表示する画面のスクリーンショット](./media/tutorial-iot-central-ddc/ddc-camera.png)
 
 **[Digital Distribution Gateway]\(デジタル配布ゲートウェイ\)** - このインターフェイスは、カメラから送られてくるすべてのテレメトリ、クラウドで定義されているデバイス ツインのプロパティ、ゲートウェイ情報を表します。
 
 > [!div class="mx-imgBorder"]
-> ![デジタル配布センター](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
+> ![デジタル流通ゲートウェイ デバイス テンプレートのデジタル流通ゲートウェイ インターフェイスを表示する画面のスクリーンショット](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
 
 
 ## <a name="gateway-commands"></a>ゲートウェイ コマンド
 このインターフェイスには、すべてのゲートウェイ コマンド機能が整理されています
 
 > [!div class="mx-imgBorder"]
-> ![デジタル配布センター](./media/tutorial-iot-central-ddc/ddc-camera.png)
+> ![デジタル流通ゲートウェイ デバイス テンプレートのゲートウェイ コマンド インターフェイスを表示する画面のスクリーンショット](./media/tutorial-iot-central-ddc/ddc-camera.png)
 
 ## <a name="rules"></a>ルール
 [Rules]\(規則\) タブを選択して、このアプリケーション テンプレートに存在する 2 つの異なる規則を表示します。 これらの規則は、詳細な調査のためオペレーターにメールで通知するように構成されています。
@@ -96,7 +96,7 @@ ms.locfileid: "81001341"
 **[Large package]\(大きいパッケージ\)** - この規則は、品質を検査できない大きなパッケージをカメラが検出するとトリガーされます。 
 
 > [!div class="mx-imgBorder"]
-> ![デジタル配布センター](./media/tutorial-iot-central-ddc/ddc-rules.png)
+> ![デジタル流通センター アプリケーションのルール一覧を表示する画面のスクリーンショット](./media/tutorial-iot-central-ddc/ddc-rules.png)
 
 ## <a name="jobs"></a>ジョブ
 [ジョブ] タブを選択すると、このアプリケーション テンプレートの一部として存在する 5 つの異なるジョブが表示されます。ジョブ機能を利用して、ソリューション全体の操作を実行できます。 このデジタル配布センター ジョブでは、デバイス コマンドとツイン機能を使用して、次のようなタスクが実行されます。
@@ -105,15 +105,17 @@ ms.locfileid: "81001341"
    * テレメトリの間隔を変更して、データのアップロードを管理します
 
 > [!div class="mx-imgBorder"]
-> ![デジタル配布センター](./media/tutorial-iot-central-ddc/ddc-jobs.png)
+> ![デジタル流通センター アプリケーションのジョブを一覧表示する画面のスクリーンショット](./media/tutorial-iot-central-ddc/ddc-jobs.png)
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 このアプリケーションをもう使わない場合は、 **[管理]**  >  **[アプリケーションの設定]** に移動し、 **[削除]** をクリックすることによって、アプリケーション テンプレートを削除します。
 
 > [!div class="mx-imgBorder"]
-> ![デジタル配布センター](./media/tutorial-iot-central-ddc/ddc-cleanup.png)
+> ![使い終えたアプリケーションを削除する方法を示す画面のスクリーンショット](./media/tutorial-iot-central-ddc/ddc-cleanup.png)
 
 ## <a name="next-steps"></a>次のステップ
-* デジタル配布センター ソリューション アーキテクチャの[デジタル配布センターの概念](./architecture-digital-distribution-center.md)についてさらに詳しく学習します
+* デジタル流通センター ソリューション アーキテクチャについてさらに詳しく学習します 
+> [!div class="nextstepaction"]
+> [デジタル流通センターの概念](./architecture-digital-distribution-center.md)
 * 他の [IoT Central 小売りテンプレート](./overview-iot-central-retail.md)についてさらに詳しく学習します
 * [IoT Central の概要](../core/overview-iot-central.md)に関する記事を参照し、IoT Central についてさらに詳しく学習します

@@ -7,23 +7,22 @@ author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/20/2020
+ms.date: 09/14/2020
 ms.author: nitinme
-ms.openlocfilehash: 2455297cd9dd77d2b5f605bf36ed46b6240b3f4d
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: 7a298de40264a06e18aa4b7c77abfd622be4bb75
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505398"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978253"
 ---
-[イマーシブ リーダー](https://www.onenote.com/learningtools)は、読解力向上のために実証済みの手法を実装する、包括的に設計されたツールです。
+[Immersive Reader](https://www.onenote.com/learningtools) は、新しい読者、言語学習者、ディスレクシア (失読症) などの学習障碍者の読解力向上のために実証済みの手法を実装する、包括的に設計されたツールです。 アプリケーションに Immersive Reader を使用すると、テキストを分離することによって、集中しやすくする、よく用いられる単語に画像を表示する、品詞を強調表示する、選択テキストを読み上げる、単語や文章をリアルタイムで翻訳する、といったことができます。
 
 このクイックスタートでは、iOS アプリを一から作成してイマーシブ リーダーを統合します。 このクイック スタートの完全なサンプルは[こちら](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios)で入手できます。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
-
 ## <a name="prerequisites"></a>前提条件
 
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services)
 * [Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
 * Azure Active Directory 認証用に構成されたイマーシブ リーダー リソース。 設定するには、[これらの手順](../../how-to-create-immersive-reader.md)に従ってください。 サンプル プロジェクトのプロパティを構成するときに、ここで作成した値の一部が必要になります。 後で参照するために、実際のセッションの出力をテキスト ファイルに保存します。
 
@@ -31,21 +30,21 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Xcode で新しいプロジェクトを作成します。
 
-![[新しいプロジェクト]](../../media/ios/xcode-create-project.png)
+![新しいプロジェクト - Swift](../../media/ios/xcode-create-project.png)
 
 **[単一ビュー アプリ]** を選択します。
 
-![新しい単一ビュー アプリ](../../media/ios/xcode-single-view-app.png)
+![新しい単一ビュー アプリ - Swift](../../media/ios/xcode-single-view-app.png)
 
 ## <a name="set-up-authentication"></a>認証の設定
 
 上部のメニューで、 **[製品]、[スキーム]、[スキームの編集]** の順にクリックします。
 
-![スキームの編集](../../media/ios/quickstart-ios-edit-scheme.png)
+![スキームの編集 - Swift](../../media/ios/quickstart-ios-edit-scheme.png)
 
 **[実行]** ビューで、 **[引数]** タブをクリックします。
 
-![スキームの編集](../../media/ios/quickstart-ios-env-vars.png)
+![スキームの環境変数の編集 - Swift](../../media/ios/quickstart-ios-env-vars.png)
 
 **[環境変数]** セクションで、以下の名前と変数を追加し、イマーシブ リーダー リソースを作成したときに取得した値を指定します。
 
@@ -557,19 +556,19 @@ function sendContentToReader(message) {
 
 シミュレーターまたはデバイスのターゲットを選択して、Xcode でアーカイブ スキームを設定します。
 
-![アーカイブ スキーム](../../media/ios/xcode-archive-scheme.png)
+![アーカイブ スキーム - Swift](../../media/ios/xcode-archive-scheme.png)
 
-![ターゲットを選択する](../../media/ios/xcode-select-target.png)
+![ターゲットの選択 - Swift](../../media/ios/xcode-select-target.png)
 
 Xcode で、**Ctrl + R** キーを押すか再生ボタンをクリックして、プロジェクトを実行します。 指定したシミュレーターまたはデバイスで、アプリが起動します。
 
 お使いのアプリでは次のように表示されます。
 
-![サンプル アプリ](../../media/ios/sample-app-ipad.png)
+![サンプル アプリ - Swift](../../media/ios/sample-app-ipad.png)
 
 **[Immersive Reader]** ボタンをクリックすると、イマーシブ リーダーが起動し、アプリのコンテンツが表示されます。
 
-![Immersive Reader](../../media/ios/immersive-reader-ipad.png)
+![Immersive Reader - Swift](../../media/ios/immersive-reader-ipad.png)
 
 ## <a name="next-steps"></a>次のステップ
 

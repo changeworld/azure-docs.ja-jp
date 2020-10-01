@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: e40a42afc99d505dc48794d5ad919e4d682b7070
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 354568fa3ab3816b643a8f08305ab55868a9b0b6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961841"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973713"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>App Service 環境の Web アプリケーション ファイアウォール (WAF) を構成する
 ## <a name="overview"></a>概要
@@ -26,7 +26,7 @@ Azure Application Gateway に加えて、[Azure 用 Barracuda WAF](https://www.b
 ## <a name="setup"></a>セットアップ
 このドキュメントでは、複数の負荷分散されたBarracuda WAF インスタンスの背後に App Service 環境を構成して、WAF からのトラフィックのみが App Service 環境に到着でき、DMZ からアクセスできないようにします。 さらに、Azure Traffic Manager を Barracuda WAF インスタンスの前に配置して、Azure のデータセンターとリージョン全体で負荷が分散されるようにします。 設定の概要図は次のようになります。
 
-![アーキテクチャ][Architecture] 
+![この図は、Web Application Firewall のインスタンスに接続するオプションの Azure Traffic Manager を示しています。その接続先のネットワーク ACL では、2 つのリージョンの Web、API、Mobile Apps を含んだ App Service Environment 内のファイアウォールからのトラフィックのみが許可されます。][Architecture] 
 
 > [!NOTE]
 > [App Service 環境での ILB のサポート](app-service-environment-with-internal-load-balancer.md)の導入により、ASE を DMZ からアクセスできないように設定し、プライベート ネットワークでのみ使用できるように構成することができます。 

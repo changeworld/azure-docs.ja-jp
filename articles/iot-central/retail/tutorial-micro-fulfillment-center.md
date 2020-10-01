@@ -5,14 +5,14 @@ author: avneet723
 ms.author: avneets
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: overview
+ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: 74deb4253a21445e21f7ef04f53f3bfe3f1fe0d0
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 880d8ee0e6e2b3984f6bea4b994642724085d512
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "81001271"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980543"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>チュートリアル:マイクロフルフィルメント センター アプリケーション テンプレートを展開して調べる
 
@@ -62,11 +62,11 @@ ms.locfileid: "81001271"
    * フルフィルメント建造物内の見取り図や搬送ロボットの場所を表示する。
    * 制御システムのリセット、搬送機のファームウェアの更新、ネットワークの再構成などのコマンドをトリガーする。
 
-     ![Northwind Traders マイクロフルフィルメント センター ダッシュボードのスクリーンショット](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
+     ![Northwind Traders マイクロフルフィルメント センター ダッシュボード (上半分) のスクリーンショット](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
    * オペレーターがフルフィルメント センター内の状態を監視するために使用できるダッシュボードの例を確認する。 
    * フルフィルメント センター内のゲートウェイ デバイスで実行されているペイロードの正常性を監視する。    
 
-     ![Northwind Traders マイクロフルフィルメント センター ダッシュボードのスクリーンショット](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
+     ![Northwind Traders マイクロフルフィルメント センター ダッシュボード (下半分) のスクリーンショット](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
 
 ## <a name="device-template"></a>デバイス テンプレート
 [デバイス テンプレート] タブを選択すると、このテンプレートには 2 種類のデバイスが含まれていることがわかります。 
@@ -91,6 +91,9 @@ ms.locfileid: "81001271"
 ![マイクロフルフィルメント センターの [アプリケーションの設定] ページのスクリーンショット](./media/tutorial-micro-fulfillment-center-app/delete.png)
 
 ## <a name="next-steps"></a>次のステップ
-* [マイクロフルフィルメント センター ソリューション アーキテクチャ](./architecture-micro-fulfillment-center.md)について詳細を確認する。
-* 他の [Azure IoT Central 小売りテンプレート](./overview-iot-central-retail.md)について詳細を確認する。
-* [Azure IoT Central の概要](../preview/overview-iot-central.md)を読む。
+
+項目ごとに詳しい情報を確認できます。
+> [!div class="nextstepaction"]
+> [マイクロフルフィルメント センターのソリューション アーキテクチャ](./architecture-micro-fulfillment-center.md)
+* [Azure IoT Central 小売りテンプレート](./overview-iot-central-retail.md)について詳細を確認する。
+* 他の [Azure IoT Central 概要](../preview/overview-iot-central.md)について詳細を確認する。

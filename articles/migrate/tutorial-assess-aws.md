@@ -1,27 +1,26 @@
 ---
-title: Azure Migrate の Server Assessment を使用して Azure VM に移行する Hyper-V VM を評価する
-description: Server Assessment を使用して、Azure VM に移行する Hyper-V VM を評価する方法について説明します。
+title: Azure に移行する AWS インスタンスを Azure Migrate Server Assessment を使用して評価する
+description: Azure に移行する AWS インスタンスを Azure Migrate Server Assessment を使用して評価する方法について説明します。
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: be5099aa515a2331cb05fa8bf6ea76c7544ec1df
+ms.openlocfilehash: 14928c8a3249cca172ad088f290b54a22a125ae7
 ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089236"
+ms.locfileid: "90108336"
 ---
-# <a name="tutorial-assess-hyper-v-vms-for-migration-to-azure"></a>チュートリアル:Azure に移行する Hyper-V VM を評価する
+# <a name="tutorial-assess-aws-instances-for-migration-to-azure"></a>チュートリアル:Azure への移行のために AWS インスタンスを評価する
 
 Azure への移行に取り組む過程では、オンプレミスのワークロードを評価し、クラウドへの対応性を測り、リスクを明らかにして、コストと複雑さを見積もります。
 
-この記事では、Azure Migrate を使用し、検出された Hyper-V 仮想マシン (VM) を Azure への移行に向けて評価する方法について説明します。Server Assessment ツールを追加済みであることを確認してください。
-
+この記事では、Azure Migrate を使用して、Azure に移行するアマゾン ウェブ サービス (AWS) インスタンスを評価する方法について説明します。Server Assessment ツールを追加済みであることを確認してください。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
-- 評価を実行する。
-- 評価を分析する。
+- マシンのメタデータと構成情報に基づいて評価を実行する。
+- パフォーマンス データに基づいて評価を実行する。
 
 > [!NOTE]
 > チュートリアルでは、シナリオを試すための最も簡単な方法を説明し、可能な限り既定のオプションを使用します。 
@@ -31,10 +30,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-- このチュートリアルに従って Azure VM に移行するマシンを評価する前に、評価対象のマシンを検出しておく必要があります。
-    - Azure Migrate アプライアンスを使用してマシンを検出するには、[こちらのチュートリアルに従ってください](tutorial-discover-hyper-v.md)。 
-    - インポートした CSV ファイルを使用してマシンを検出するには、[こちらのチュートリアルに従ってください](tutorial-discover-import.md)。
-
+- このチュートリアルの手順に従う前に、このシリーズの最初のチュートリアルに取り組んで、[オンプレミス インベントリを検出](tutorial-discover-aws.md)しておいてください。 
+- AWS インスタンスで Windows Server 2003 も SUSE Linux も実行されていないことを確認します。 これらのマシンの評価はサポートされていません。
 
 
 ## <a name="decide-which-assessment-to-run"></a>実行する評価を決定する
@@ -44,9 +41,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 **評価** | **詳細** | **推奨**
 --- | --- | ---
-**現状のオンプレミス** | マシン構成データ (またはメタデータ) に基づいて評価します。  | 推奨される Azure VM サイズは、オンプレミスの VM サイズに基づきます。<br/><br> 推奨される Azure ディスクの種類は、評価におけるストレージの種類の設定で選択する内容に基づきます。
-**パフォーマンスベース** | 収集された動的パフォーマンス データに基づいて評価します。 | 推奨される Azure VM サイズは、CPU とメモリ使用率のデータに基づきます。<br/><br/> 推奨されるディスクの種類は、オンプレミス ディスクの IOPS とスループットに基づきます。
-
+**現状のオンプレミス** | マシン構成データ (またはメタデータ) に基づいて評価します。  | 推奨される Azure VM サイズは、オンプレミスの VM サイズに基づきます。<br/><br> 推奨される Azure ディスクの種類は、評価の [ストレージの種類] 設定で選択した内容に基づきます。
+**パフォーマンスベース** | 収集された動的パフォーマンス データに基づいて評価します。 | 推奨される Azure VM サイズは、CPU とメモリ使用率データに基づきます。<br/><br/> 推奨されるディスクの種類は、オンプレミス ディスクの IOPS とスループットに基づきます。
 
 ## <a name="run-an-assessment"></a>評価を実行する
 
@@ -54,22 +50,21 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[サーバー]** ページの **[Windows と Linux のサーバー]** で、 **[サーバーの評価と移行]** をクリックします。
 
-   ![[サーバーの評価と移行] ボタンの場所](./media/tutorial-assess-vmware-azure-vm/assess.png)
+   ![[サーバーの評価と移行] ボタンの場所](./media/tutorial-assess-aws/assess.png)
 
 2. **[Azure Migrate: Server Assessment]** の **[評価]** をクリックします。
 
-    ![[評価] ボタンの場所](./media/tutorial-assess-vmware-azure-vm/assess-servers.png)
+    ![[評価] ボタンの場所](./media/tutorial-assess-aws/assess-servers.png)
 
 3. **[サーバーの評価]**  >  **[評価の種類]** で、 **[Azure VM]** を選択します。
-4. **[検出ソース]** では:
+4. **[検出ソース]** で次の操作を行います。
 
     - アプライアンスを使用してマシンを検出した場合、 **[Azure Migrate アプライアンスから検出されたマシン]** を選択します。
     - インポートした CSV ファイルを使用してマシンを検出した場合、 **[インポートされたマシン]** を選択します。 
-    
 5. 評価の名前を指定します。 
 6. **[すべて表示]** をクリックして、評価のプロパティを確認します。
 
-    ![評価のプロパティを確認するための [すべて表示] ボタンの場所](./media/tutorial-assess-vmware-azure-vm/assessment-name.png)
+    ![評価のプロパティを確認するための [すべて表示] ボタンの場所](./media/tutorial-assess-aws/assessment-name.png)
 
 7. **[評価のプロパティ]**  >  **[ターゲット プロパティ]** で:
     - 移行先となる Azure リージョンを **[ターゲットの場所]** で指定します。
@@ -89,7 +84,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     - 検討したい Azure VM シリーズを **[VM シリーズ]** で指定します。
         - パフォーマンスベースの評価を使用する場合、Azure Migrate によって自動的に値が提示されます。
         - 必要に応じて設定を調整します。 たとえば、Azure 内に A シリーズの VM を必要とする運用環境がない場合、シリーズの一覧から A シリーズを除外することができます。
-    - 評価中に使用したいバッファーを **[快適性係数]** で指定します。 ここでは、季節ごとの使用量、短期間のパフォーマンス履歴、将来に使用量が増える可能性などの問題が考慮されます。 たとえば、快適性係数を 2 とした場合、**コンポーネント** | **有効使用率** | **快適性係数の追加 (2.0)** コア数 | 2 | 4 メモリ | 8 GB | 16 GB になります     
+    - 評価中に使用したいバッファーを **[快適性係数]** で指定します。 ここでは、季節ごとの使用量、短期間のパフォーマンス履歴、将来に使用量が増える可能性などの問題が考慮されます。 たとえば、快適性係数を 2 とした場合、**詳細** | **使用率** | **快適性係数の追加 (2.0)** 読み取り IOPS | 100 | 200 書き込み IOPS | 100 | 200 読み取りスループット | 100 Mbps | 200 Mbps 書き込みスループット | 100 Mbps | 200 Mbps
    
 9. **[価格]** では:
     - [Azure プラン](https://azure.microsoft.com/support/legal/offer-details/)に登録している場合、 **[プラン]** にそれを指定します。 Server Assessment はそのプランのコストを見積もります。
@@ -105,7 +100,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 10. 変更内容を確定する場合は **[保存]** をクリックします。
 
-    ![評価のプロパティ](./media/tutorial-assess-vmware-azure-vm/assessment-properties.png)
+    ![評価のプロパティ](./media/tutorial-assess-aws/assessment-properties.png)
 
 11. **[サーバーの評価]** で **[次へ]** をクリックします。
 12. **[評価するマシンの選択]** で **[新規作成]** を選択し、グループ名を指定します。 
@@ -129,7 +124,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **[サーバー]**  >  **[Azure Migrate: Server Assessment]** で、 **[評価]** の横にある数字をクリックします。
 2. **[評価]** で、評価を選択して開きます。 以下はその例です (見積もりとコストはあくまで例です)。 
 
-    ![評価の概要](./media/tutorial-assess-vmware-azure-vm/assessment-summary.png)
+    ![評価の概要](./media/tutorial-assess-aws/assessment-summary.png)
 
 3. 評価の概要を確認します。 評価のプロパティを編集して、評価を再計算することもできます。
  
@@ -162,12 +157,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 パフォーマンスベースの評価には、Server Assessment によって信頼度レーティングが割り当てられます。 レーティングの範囲は、星 1 つ (最も低い) から星 5 つ (最も高い) までです。
 
-![信頼度レーティング](./media/tutorial-assess-vmware-azure-vm/confidence-rating.png)
+![信頼度レーティング](./media/tutorial-assess-aws/confidence-rating.png)
 
 信頼度レーティングは、評価の推奨サイズの信頼性を見積もるのに役立ちます。 このレーティングは、評価の計算に必要なデータ ポイントの有効性に基づいています。
 
 > [!NOTE]
 > CSV ファイルに基づいて評価を作成した場合、信頼度レーティングは割り当てられません。
+
 
 信頼度レーティングは次のとおりです。
 

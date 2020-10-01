@@ -2,18 +2,18 @@
 title: Azure Data Box の注文方法のチュートリアル | Microsoft Docs
 description: このチュートリアルでは、オンプレミスのデータを Azure にインポートするハイブリッド ソリューション Azure Data Box とその注文方法について説明します。
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/21/2020
-ms.author: twooley
-ms.openlocfilehash: 2000ecc84a92bef5ad6b80fecde4aee0157e4bc5
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.date: 09/15/2020
+ms.author: alkohli
+ms.openlocfilehash: c2d971c2c9375f58fd5f41a46716fac4bff29f88
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783571"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604310"
 ---
 # <a name="tutorial-order-azure-data-box"></a>チュートリアル:Azure Data Box を注文する
 
@@ -268,8 +268,21 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
     ![マネージド ディスクの Data Box 注文](media/data-box-deploy-ordered/select-data-box-import-07b.png)
 
     マネージド ディスクに指定されたストレージ アカウントは、ステージング ストレージ アカウントとして使用されます。 VHD は、Data Box サービスにより、ページ BLOB としてステージング ストレージ アカウントにアップロードされた後、マネージド ディスクに変換され、リソース グループに移動されます。 詳細については、「[Azure へのデータのアップロードを確認する](data-box-deploy-picked-up.md#verify-data-upload-to-azure)」を参照してください。
+   > [!NOTE]
+   > ページ BLOB は、正常にマネージド ディスクに変換されなかった場合、ストレージ アカウントに残るため、ストレージの使用料が課金されます。
 
-    **[Next:連絡先の詳細]** を選択して続行します。
+    **[Next:Security]\(次へ: セキュリティ\)** を選択して続行します。
+
+1. **[セキュリティ]** で、ソフトウェアベースの二重暗号化を有効にしたい場合は、 **[Enable double encryption for the order]\(この注文に関して二重暗号化を有効にする\)** を選択します。 
+
+   Data Box 上のデータに対し、AES-256 ビットの暗号化に加えて、ソフトウェアベースの暗号化が実行されます。
+
+   > [!NOTE]
+   > このオプションを有効にすると、注文の処理とデータのコピーにかかる時間が長くなることがあります。 注文後に、このオプションを変更することはできません。
+
+   ![Data Box インポートの [セキュリティ] 画面 (二重暗号化)](media/data-box-deploy-ordered/select-data-box-import-07c.png)
+
+   **[Next:連絡先の詳細]** を選択して続行します。
 
 8. **[連絡先の詳細]** で、 **[+ 配送先住所の追加]** を選択します。
 

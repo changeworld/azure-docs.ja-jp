@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/14/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 030f2b893cd429bfdb451d24e799689fdb8a3cf8
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: d26c7f544c9754f455b67aadf9e923344cda3fdf
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89255700"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968684"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>チュートリアル:Windows VM 上でユーザー割り当てマネージド ID を使用して Azure Resource Manager にアクセスする
 
@@ -48,19 +48,42 @@ ms.locfileid: "89255700"
 - [Windows 仮想マシンを作成する](../../virtual-machines/windows/quick-create-portal.md)
 
 - このチュートリアルの必要なリソース作成およびロール管理のステップを実行するために、お使いのアカウントには、適切な範囲 (サブスクリプションまたはリソース グループ) を対象とする "所有者" アクセス許可が必要となります。 ロールの割り当てに関するサポートが必要な場合は、「[ロールベースのアクセス制御を使用して Azure サブスクリプション リソースへのアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
-- [Azure PowerShell モジュールの最新バージョンをインストール](/powershell/azure/install-az-ps)します。 
-- `Connect-AzAccount` を実行して、Azure との接続を作成します。
-- [PowerShellGet の最新バージョン](/powershell/scripting/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget)をインストールします。
-- `Install-Module -Name PowerShellGet -AllowPrerelease` を実行して `PowerShellGet` モジュールのプレリリース バージョンを取得します (`Az.ManagedServiceIdentity` モジュールをインストールするには、このコマンドを実行した後に現在の PowerShell セッションから `Exit` することが必要になる場合があります)。
-- `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` を実行して `Az.ManagedServiceIdentity` モジュールのプレリリース バージョンをインストールして、この記事のユーザー割り当て ID 操作を実行します。
 
+- サンプル スクリプトを実行するには、次の 2 つのオプションがあります。
+    - [Azure Cloud Shell](../../cloud-shell/overview.md) を使用します。これは、コード ブロックの右上隅にある **[Try It]\(試してみる\)** ボタンを使用して開くことができます。
+    - Azure PowerShell を使用して、スクリプトをローカルで実行します。次のセクションの説明を参照してください。
+
+### <a name="configure-azure-powershell-locally"></a>Azure PowerShell をローカルで構成する
+
+この記事では、(Cloud Shell ではなく) Azure PowerShell をローカルで使用して、次の手順を実行します。
+
+1. [最新バージョンの Azure PowerShell](/powershell/azure/install-az-ps) をインストールします (まだインストールしていない場合)。
+
+1. Azure にサインインします。
+
+    ```azurepowershell
+    Connect-AzAccount
+    ```
+
+1. [PowerShellGet の最新バージョン](/powershell/scripting/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget)をインストールします。
+
+    ```azurepowershell
+    Install-Module -Name PowerShellGet -AllowPrerelease
+    ```
+
+    次の手順に備えて、このコマンドを実行した後に現在の PowerShell セッションから `Exit` することが必要になる場合があります。
+
+1. `Az.ManagedServiceIdentity` モジュールのプレリリース バージョンをインストールして、この記事のユーザー割り当てマネージド ID 操作を実行します。
+
+    ```azurepowershell
+    Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease
+    ```
 
 ## <a name="enable"></a>有効化
 
 ユーザー割り当て ID に基づくシナリオの場合は、次の手順を実行する必要があります。
 
 - ID の作成
- 
 - 新たに作成された ID の割り当て
 
 ### <a name="create-identity"></a>ID の作成
@@ -131,7 +154,7 @@ CanDelegate: False
 
 1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 
-2. ポータルで **[Virtual Machines]** にナビゲートして Windows 仮想マシンに移動し、 **[概要]** の **[接続]** をクリックします。
+2. ポータルで **[Virtual Machines]** にナビゲートして Windows 仮想マシンに移動し、**[概要]** の **[接続]** をクリックします。
 
 3. Windows VM を作成したときに使用した**ユーザー名**と**パスワード**を入力します。
 
@@ -158,7 +181,7 @@ CanDelegate: False
 {"id":"/subscriptions/<SUBSCRIPTIONID>/resourceGroups/myResourceGroupVM","name":"myResourceGroupVM","location":"eastus","properties":{"provisioningState":"Succeeded"}}
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Azure Resource Manager API にアクセスするために、ユーザー割り当て ID を作成して、それを Azure 仮想マシンに添付する方法について学習しました。  Azure Resource Manager の詳細については、以下を参照してください。
 

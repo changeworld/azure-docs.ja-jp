@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3915108b9bd182053b62ee427fb95b5b984233db
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: caf37fcd236f1483580d007d1432284116f728ca
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89255394"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969047"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-azure-cli"></a>Azure CLI を使用して仮想マシン スケール セットで Azure リソースのマネージド ID を構成する
 
@@ -45,15 +45,9 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
     - [仮想マシン共同作成者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor): 仮想マシン スケール セットを作成する、システム割り当てマネージド ID またはユーザー割り当てマネージド ID を有効にする、および仮想マシン スケール セットから削除することができるロールです。
     - [マネージド ID 共同作成者](../../role-based-access-control/built-in-roles.md#managed-identity-contributor)ロール。ユーザー割り当てマネージド ID を作成します。
     - [マネージド ID オペレーター](../../role-based-access-control/built-in-roles.md#managed-identity-operator)ロール。ユーザー割り当てマネージド ID の仮想マシン スケール セットへの割り当ておよび仮想マシン スケール セットからの削除を実行します。
-- CLI スクリプトの例を実行するには、次の 3 つのオプションがあります。
-    - Azure ポータルから [Azure Cloud Shell](../../cloud-shell/overview.md) を使用する (次のセクションを参照してください)。
-    - 各コード ブロックの右上隅にある「使ってみる」ボタンを利用して、埋め込まれた Azure Cloud Shell シェルを使用します。
-    - ローカル CLI コンソールを使用する場合は、[Azure CLI の最新バージョン (2.0.13 以降) をインストール](/cli/azure/install-azure-cli)します。 
-      
-      > [!NOTE]
-      > コマンドは、[Azure CLI](/cli/azure/install-azure-cli) の最新リリースを反映するように更新されています。
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+- サンプル スクリプトを実行するには、次の 2 つのオプションがあります。
+    - [Azure Cloud Shell](../../cloud-shell/overview.md) を使用します。これは、コード ブロックの右上隅にある **[Try It]\(試してみる\)** ボタンを使用して開くことができます。
+    - 最新バージョンの [Azure CLI](/cli/azure/install-azure-cli) をインストールしてスクリプトをローカルで実行した後、[az login](/cli/azure/reference-index#az-login) を使用して Azure にサインインします。 リソースを作成する Azure サブスクリプションに関連付けられているアカウントを使用します。
 
 ## <a name="system-assigned-managed-identity"></a>システム割り当てマネージド ID
 
@@ -63,19 +57,13 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 システム割り当てマネージド ID を有効にして仮想マシン スケール セットを作成する場合:
 
-1. ローカルのコンソールで Azure CLI を使用している場合は、最初に [az login](/cli/azure/reference-index#az-login) を使用して Azure にサインインします。 仮想マシン スケール セットをデプロイする Azure サブスクリプションに関連付けられているアカウントを使用します。
-
-   ```azurecli-interactive
-   az login
-   ```
-
-2. [az group create](/cli/azure/group/#az-group-create) を使用して、仮想マシン スケール セットとその関連リソースの管理およびデプロイ用に[リソース グループ](../../azure-resource-manager/management/overview.md#terminology)を作成します。 代わりに使用するリソース グループが既にある場合は、この手順をスキップできます。
+1. [az group create](/cli/azure/group/#az-group-create) を使用して、仮想マシン スケール セットとその関連リソースの管理およびデプロイ用に[リソース グループ](../../azure-resource-manager/management/overview.md#terminology)を作成します。 代わりに使用するリソース グループが既にある場合は、この手順をスキップできます。
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
    ```
 
-3. 仮想マシン スケール セットを[作成します](/cli/azure/vmss/#az-vmss-create)。 次の例では、`--assign-identity` パラメーターからの要求により、システム割り当てマネージド ID を使用して *myVM* という仮想マシン スケール セットを作成します。 `--admin-username` および `--admin-password` パラメーターは、仮想マシンのサインイン用の管理ユーザー名とパスワードを指定します。 これらの値は、お使いの環境に合わせて更新してください。 
+1. 仮想マシン スケール セットを[作成します](/cli/azure/vmss/#az-vmss-create)。 次の例では、`--assign-identity` パラメーターからの要求により、システム割り当てマネージド ID を使用して *myVM* という仮想マシン スケール セットを作成します。 `--admin-username` および `--admin-password` パラメーターは、仮想マシンのサインイン用の管理ユーザー名とパスワードを指定します。 これらの値は、お使いの環境に合わせて更新してください。 
 
    ```azurecli-interactive 
    az vmss create --resource-group myResourceGroup --name myVMSS --image win2016datacenter --upgrade-policy-mode automatic --custom-data cloud-init.txt --admin-username azureuser --admin-password myPassword12 --assign-identity --generate-ssh-keys
@@ -83,19 +71,11 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 ### <a name="enable-system-assigned-managed-identity-on-an-existing-azure-virtual-machine-scale-set"></a>既存の Azure 仮想マシン スケール セット上でシステム割り当てマネージド ID を有効にする
 
-既存の Azure 仮想マシン スケール セット上でシステム割り当てマネージド ID を有効にする必要がある場合:
+既存の Azure 仮想マシン スケール セット上でシステム割り当てマネージド ID を[有効](/cli/azure/vmss/identity/#az-vmss-identity-assign)にする必要がある場合:
 
-1. ローカルのコンソールで Azure CLI を使用している場合は、最初に [az login](/cli/azure/reference-index#az-login) を使用して Azure にサインインします。 目的の仮想マシン スケール セットが含まれる Azure サブスクリプションに関連付けられたアカウントを使用します。
-
-   ```azurecli-interactive
-   az login
-   ```
-
-2. 既存の VM でシステム割り当てマネージド ID を[有効にします](/cli/azure/vmss/identity/#az-vmss-identity-assign)。
-
-   ```azurecli-interactive
-   az vmss identity assign -g myResourceGroup -n myVMSS
-   ```
+```azurecli-interactive
+az vmss identity assign -g myResourceGroup -n myVMSS
+```
 
 ### <a name="disable-system-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Azure 仮想マシン スケール セットでシステム割り当てマネージド ID を無効にする
 
@@ -113,8 +93,6 @@ az vmss update -n myVM -g myResourceGroup --set identity.type='UserAssigned'
 ```azurecli-interactive
 az vmss update -n myVM -g myResourceGroup --set identity.type="none"
 ```
-
-
 
 ## <a name="user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID
 
@@ -216,6 +194,4 @@ az vmss update -n myVMSS -g myResourceGroup --set identity.type='SystemAssigned'
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure リソースのマネージド ID の概要](overview.md)
-- Azure 仮想マシン スケール セットの全作成に関するクイック スタートについては、次を参照してください。 
-
-  - [CLI を使用して仮想マシン スケール セットを作成する](../../virtual-machines/linux/tutorial-create-vmss.md#create-a-scale-set)
+- Azure 仮想マシン スケール セットの全作成に関するクイックスタートについては、[CLI を使用して仮想マシン スケール セットを作成する](../../virtual-machines/linux/tutorial-create-vmss.md#create-a-scale-set)方法に関するセクションを参照してください。

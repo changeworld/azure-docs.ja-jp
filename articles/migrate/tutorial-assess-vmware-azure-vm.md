@@ -1,27 +1,27 @@
 ---
-title: Azure Migrate の Server Assessment を使用して Azure VM に移行する Hyper-V VM を評価する
-description: Server Assessment を使用して、Azure VM に移行する Hyper-V VM を評価する方法について説明します。
+title: Azure Migrate の Server Assessment を使用して Azure VM に移行する VMware VM を評価する
+description: Server Assessment を使用して、Azure VM に移行する VMware VM を評価する方法について説明します。
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: be5099aa515a2331cb05fa8bf6ea76c7544ec1df
+ms.openlocfilehash: 01db7128cd990098caa25ba2cd79f2f2a2b28d78
 ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089236"
+ms.locfileid: "90108304"
 ---
-# <a name="tutorial-assess-hyper-v-vms-for-migration-to-azure"></a>チュートリアル:Azure に移行する Hyper-V VM を評価する
+# <a name="tutorial-assess-vmware-vms-for-migration-to-azure-vms"></a>チュートリアル:Azure VM への移行のために VMware VM を評価する
 
 Azure への移行に取り組む過程では、オンプレミスのワークロードを評価し、クラウドへの対応性を測り、リスクを明らかにして、コストと複雑さを見積もります。
 
-この記事では、Azure Migrate を使用し、検出された Hyper-V 仮想マシン (VM) を Azure への移行に向けて評価する方法について説明します。Server Assessment ツールを追加済みであることを確認してください。
+この記事では、Azure Migrate を使用し、検出された VMware 仮想マシン (VM) を Azure VM への移行に備えて評価する方法について説明します。Server Assessment ツールを追加済みであることを確認してください。
 
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
-- 評価を実行する。
-- 評価を分析する。
+- マシンのメタデータと構成情報に基づいて評価を実行する。
+- パフォーマンス データに基づいて評価を実行する。
 
 > [!NOTE]
 > チュートリアルでは、シナリオを試すための最も簡単な方法を説明し、可能な限り既定のオプションを使用します。 
@@ -31,10 +31,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-- このチュートリアルに従って Azure VM に移行するマシンを評価する前に、評価対象のマシンを検出しておく必要があります。
-    - Azure Migrate アプライアンスを使用してマシンを検出するには、[こちらのチュートリアルに従ってください](tutorial-discover-hyper-v.md)。 
-    - インポートした CSV ファイルを使用してマシンを検出するには、[こちらのチュートリアルに従ってください](tutorial-discover-import.md)。
+Azure VM に移行するマシンをこのチュートリアルに従って評価する前に、評価対象のマシンを検出しておく必要があります。
 
+- Azure Migrate アプライアンスを使用してマシンを検出するには、[こちらのチュートリアルに従ってください](tutorial-discover-vmware.md)。 
+- インポートした CSV ファイルを使用してマシンを検出するには、[こちらのチュートリアルに従ってください](tutorial-discover-import.md)。
 
 
 ## <a name="decide-which-assessment-to-run"></a>実行する評価を決定する
@@ -44,8 +44,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 **評価** | **詳細** | **推奨**
 --- | --- | ---
-**現状のオンプレミス** | マシン構成データ (またはメタデータ) に基づいて評価します。  | 推奨される Azure VM サイズは、オンプレミスの VM サイズに基づきます。<br/><br> 推奨される Azure ディスクの種類は、評価におけるストレージの種類の設定で選択する内容に基づきます。
-**パフォーマンスベース** | 収集された動的パフォーマンス データに基づいて評価します。 | 推奨される Azure VM サイズは、CPU とメモリ使用率のデータに基づきます。<br/><br/> 推奨されるディスクの種類は、オンプレミス ディスクの IOPS とスループットに基づきます。
+**現状のオンプレミス** | マシン構成データ (またはメタデータ) に基づいて評価します。  | 推奨される Azure VM サイズは、オンプレミスの VM サイズに基づきます。<br/><br> 推奨される Azure ディスクの種類は、評価の [ストレージの種類] 設定で選択した内容に基づきます。
+**パフォーマンスベース** | 収集された動的パフォーマンス データに基づいて評価します。 | 推奨される Azure VM サイズは、CPU とメモリ使用率データに基づきます。<br/><br/> 推奨されるディスクの種類は、オンプレミス ディスクの IOPS とスループットに基づきます。
 
 
 ## <a name="run-an-assessment"></a>評価を実行する
@@ -56,22 +56,22 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![[サーバーの評価と移行] ボタンの場所](./media/tutorial-assess-vmware-azure-vm/assess.png)
 
-2. **[Azure Migrate: Server Assessment]** の **[評価]** をクリックします。
+2. **Azure Migrate:Server Assessment** で、**評価** をクリックします。
 
     ![[評価] ボタンの場所](./media/tutorial-assess-vmware-azure-vm/assess-servers.png)
 
 3. **[サーバーの評価]**  >  **[評価の種類]** で、 **[Azure VM]** を選択します。
-4. **[検出ソース]** では:
+4. **[検出ソース]** で次の操作を行います。
 
     - アプライアンスを使用してマシンを検出した場合、 **[Azure Migrate アプライアンスから検出されたマシン]** を選択します。
     - インポートした CSV ファイルを使用してマシンを検出した場合、 **[インポートされたマシン]** を選択します。 
     
-5. 評価の名前を指定します。 
-6. **[すべて表示]** をクリックして、評価のプロパティを確認します。
+1. 評価の名前を指定します。 
+1. **[すべて表示]** をクリックして、評価のプロパティを確認します。
 
     ![評価のプロパティを確認するための [すべて表示] ボタンの場所](./media/tutorial-assess-vmware-azure-vm/assessment-name.png)
 
-7. **[評価のプロパティ]**  >  **[ターゲット プロパティ]** で:
+1. **[評価のプロパティ]**  >  **[ターゲット プロパティ]** で:
     - 移行先となる Azure リージョンを **[ターゲットの場所]** で指定します。
         - サイズとコストは、指定した場所に基づいて推奨されます。
         - Azure Government では、[こちらのリージョン](migrate-support-matrix.md#supported-geographies-azure-government)から評価の対象を選択できます。
@@ -81,7 +81,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     - VM の移行時に予約インスタンスを使用するかどうかを **[予約済みインスタンス]** で指定します。
         - 予約インスタンスを使用するように選択した場合は、 **[割引 (%)]** や **[VM のアップタイム]** は指定できません。 
         - [詳細については、こちらを参照してください](https://aka.ms/azurereservedinstances)。
-8. **[VM サイズ]** では:
+ 7. **[VM サイズ]** では:
  
     - **[サイズ変更の設定基準]** で、マシン構成データ (またはメタデータ) とパフォーマンスベースのデータのどちらを評価の基準にするかを選択します。 パフォーマンス データを使用する場合:
         - 評価の基準とするデータ期間を **[パフォーマンス履歴]** で指定します。
@@ -91,7 +91,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         - 必要に応じて設定を調整します。 たとえば、Azure 内に A シリーズの VM を必要とする運用環境がない場合、シリーズの一覧から A シリーズを除外することができます。
     - 評価中に使用したいバッファーを **[快適性係数]** で指定します。 ここでは、季節ごとの使用量、短期間のパフォーマンス履歴、将来に使用量が増える可能性などの問題が考慮されます。 たとえば、快適性係数を 2 とした場合、**コンポーネント** | **有効使用率** | **快適性係数の追加 (2.0)** コア数 | 2 | 4 メモリ | 8 GB | 16 GB になります     
    
-9. **[価格]** では:
+8. **[価格]** では:
     - [Azure プラン](https://azure.microsoft.com/support/legal/offer-details/)に登録している場合、 **[プラン]** にそれを指定します。 Server Assessment はそのプランのコストを見積もります。
     - 自分のアカウントの請求通貨を **[通貨]** で選択します。
     - Azure プランとは別に適用されるサブスクリプション固有の割引を **[割引 (%)]** に追加します。 既定の設定は 0% です。
@@ -103,14 +103,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     - Enterprise Agreement (EA) サブスクリプションの割引をコスト見積もりの計算に含めるかどうかを **[EA サブスクリプション]** で指定します。 
     - Windows Server ライセンスを既に所有しているかどうかを **[Azure ハイブリッド特典]** で指定します。 ライセンスを所有しており、アクティブな Windows Server サブスクリプションのソフトウェア アシュアランスの対象となっている場合は、ライセンスを Azure に持ち込む際に [Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-use-benefit/)を申請することができます。
 
-10. 変更内容を確定する場合は **[保存]** をクリックします。
+9. 変更内容を確定する場合は **[保存]** をクリックします。
 
     ![評価のプロパティ](./media/tutorial-assess-vmware-azure-vm/assessment-properties.png)
 
-11. **[サーバーの評価]** で **[次へ]** をクリックします。
-12. **[評価するマシンの選択]** で **[新規作成]** を選択し、グループ名を指定します。 
-13. アプライアンスを選択し、グループに追加したい VM を選択します。 続けて、 **[次へ]** をクリックします。
-14. **[評価の確認と作成]** で評価の詳細を確認したら、 **[評価の作成]** をクリックしてグループを作成し、評価を実行します。
+10. **[サーバーの評価]** で **[次へ]** をクリックします。
+11. **[評価するマシンの選択]** で **[新規作成]** を選択し、グループ名を指定します。 
+12. アプライアンスを選択し、グループに追加したい VM を選択します。 続けて、 **[次へ]** をクリックします。
+
+     ![VM をグループに追加する](./media/tutorial-assess-vmware-azure-vm/assess-group.png)
+
+13. **[評価の確認と作成]** で評価の詳細を確認したら、 **[評価の作成]** をクリックしてグループを作成し、評価を実行します。
 
 
     > [!NOTE]
@@ -184,4 +187,4 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="next-steps"></a>次の手順
 
 - [依存関係マッピング](concepts-dependency-visualization.md)を使用してマシンの依存関係を明らかにします。
-- [エージェントベース](how-to-create-group-machine-dependencies.md)の依存関係マッピングを設定します。
+- [エージェントレス](how-to-create-group-machine-dependencies-agentless.md)または[エージェントベース](how-to-create-group-machine-dependencies.md)の依存関係マッピングを設定します。

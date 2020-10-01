@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09a66f45fe3e20bedf5ff99ee924ac267b4fd869
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a2b776ba64d96d092ad51ad2888b891e19e8b521
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266801"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968878"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>REST API 呼び出しを使用して仮想マシン スケール セットで Azure リソースのマネージド ID を構成する
 
@@ -45,12 +45,9 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
     - 仮想マシン スケール セットを作成して、システム割り当てマネージド ID またはユーザー割り当てマネージド ID を有効化したり、仮想マシン スケール セットから削除したりするための[仮想マシン共同作成者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)。
     - [マネージド ID 共同作成者](../../role-based-access-control/built-in-roles.md#managed-identity-contributor)ロール。ユーザー割り当てマネージド ID を作成します。
     - 仮想マシン スケール セットのユーザー割り当て ID を割り当てたり削除したりするための[マネージド ID オペレーター](../../role-based-access-control/built-in-roles.md#managed-identity-operator) ロール。
-- Windows を使用している場合は、[Windows Subsystem for Linux](/windows/wsl/about) をインストールするか、Azure Portal で [Azure Cloud Shell](../../cloud-shell/overview.md) を使用します。
-- [Windows Subsystem for Linux](/windows/wsl/about) または [Linux ディストリビューション OS](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) を使用する場合は、[Azure CLI ローカル コンソールをインストール](/cli/azure/install-azure-cli)します。
-- Azure CLI ローカル コンソールを使用している場合は、システム割り当てマネージド ID またはユーザー割り当てマネージド ID を管理する Azure サブスクリプションに関連付けられているアカウントで `az login` を使用して Azure にサインインします。
-
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+- この記事で取り上げるすべてのコマンドは、クラウドでもローカルでも実行できます。
+    - クラウドで実行するには、[Azure Cloud Shell](../../cloud-shell/overview.md) を使用します。
+    - ローカルから実行するには、[curl](https://curl.haxx.se/download.html) と [Azure CLI](/cli/azure/install-azure-cli) をインストールし、システム割り当てマネージド ID またはユーザー割り当てマネージド ID を管理する Azure サブスクリプションに関連付けられているアカウントで [az login](/cli/azure/reference-index#az-login) を使用して Azure にサインインします。
 
 ## <a name="system-assigned-managed-identity"></a>システム割り当てマネージド ID
 

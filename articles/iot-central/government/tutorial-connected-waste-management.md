@@ -7,12 +7,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 274d725a0e7987c8cb15363ba276aec7ebc541d5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 53304f14286577bf0bc25b2a66442286527c5140
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77426362"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972425"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>チュートリアル:IoT Central で接続された廃棄物管理アプリケーションを作成する
 
@@ -131,13 +131,13 @@ Azure IoT Central のデバイス テンプレートは、デバイスの機能�
 
 1. IoT Central で、アプリケーションの左側のペインにある **[デバイス テンプレート]** をクリックします。 
 
-    ![デバイス テンプレート](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
+    ![アプリケーションのデバイス テンプレートを一覧表示する画面のスクリーンショット](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
 
 2. [デバイス テンプレート] リストに、 **[Connected Waste Bin]\(接続された廃棄物処理\)** が表示されます。 名前をクリックして開きます。
 
 3. デバイス テンプレートの機能を理解します。 "*充填レベル*"、"*臭気メーター*"、"*重量*"、"*場所*" などのセンサーが定義されているのを確認できます。
 
-   ![デバイス テンプレート](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
+   ![接続された廃棄物処理デバイス テンプレートの詳細を表示する画面のスクリーンショット](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
 
    
 
@@ -265,8 +265,9 @@ IoT Central では、ジョブを使用して、複数のデバイスで、デ�
 1. IoT Central アプリケーションの左側のウィンドウで [管理] タブを開きます。
 2. [アプリケーションの設定] を選択し、ページの下部にある [削除] ボタンをクリックします。
 
-  
-
 ## <a name="next-steps"></a>次のステップ
 
-* [接続された廃棄物管理の概念](./concepts-connectedwastemanagement-architecture.md)の詳細を確認する
+* 次のトピックについて詳細をご覧ください。
+ 
+> [!div class="nextstepaction"]
+> [接続された廃棄物管理の概念](./concepts-connectedwastemanagement-architecture.md)
