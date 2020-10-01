@@ -12,12 +12,12 @@ ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 1d196ea33eafbfae0d9db68588c0adb131a383f4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 2ebba2bb957a1c05fd591181f0a784ed778c6c57
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90998494"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333377"
 ---
 # <a name="enterprise-application-permissions-for-custom-roles-in-azure-active-directory"></a>Azure Active Directory のカスタム ロールに対するエンタープライズ アプリケーションのアクセス許可
 
@@ -138,7 +138,6 @@ microsoft.directory/servicePrincipals/appRoleAssignedTo/read | サービス プ�
 microsoft.directory/servicePrincipals/appRoleAssignedTo/update | サービス プリンシパルのロールの割り当てを更新します。
 microsoft.directory/servicePrincipals/appRoleAssignments/read | サービス プリンシパルに割り当てられたロールの割り当てを読み取ります。
 microsoft.directory/servicePrincipals/audience/update | サービス プリンシパルの対象ユーザー プロパティを更新します。
-microsoft.directory/servicePrincipals/authentication/read |  
 microsoft.directory/servicePrincipals/authentication/update | サービス プリンシパルの認証プロパティを更新します。
 microsoft.directory/servicePrincipals/basic/update | サービス プリンシパルで基本プロパティを更新します。
 microsoft.directory/servicePrincipals/create | サービス プリンシパルを作成します。
@@ -167,7 +166,7 @@ microsoft.directory/servicePrincipals/synchronization/standard/read | サービ�
 microsoft.directory/servicePrincipals/synchronizationSchema/manage | サービス プリンシパル リソースのスキーマ同期の側面をすべて管理します。
 microsoft.directory/provisioningLogs/allProperties/read | プロビジョニング ログのすべてのプロパティを読み取ります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure portal、Azure AD PowerShell、および Graph API を使用してカスタム ロールを作成する](roles-create-custom.md)
 - [カスタム ロールの割り当てを表示する](roles-view-assignments.md)

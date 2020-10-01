@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 09/15/2020
+ms.date: 09/24/2020
 ms.author: banders
-ms.openlocfilehash: b26958037cf7fd752c6cf07078b4a627fed64b2b
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: a579dd22aa814340b4b72d74907739c942570c23
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "91003115"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270699"
 ---
 # <a name="delete-an-azure-billing-payment-method-preview"></a>Azure の課金の支払い方法を削除する (プレビュー)
 

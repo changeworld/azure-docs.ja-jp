@@ -3,15 +3,17 @@ title: クイック スタート:Language Understanding (LUIS) SDK クライア�
 description: C#、Python、または JavaScript を使用したこのクイックスタートでは、LUIS SDK クライアント ライブラリを使用して LUIS アプリを作成し、クエリを実行します。
 ms.topic: quickstart
 ms.date: 09/14/2020
+ms.service: cognitive-services
+ms.subservice: language-understanding
 keywords: Azure, 人工知能, AI, 自然言語処理, NLP, LUIS, Azure LUIS, 自然言語理解, AI チャットボット, チャットボット メーカー, 自然言語の理解
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp, cog-serv-seo-aug-2020
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-diberry-3core
-ms.openlocfilehash: 64288bbffa2d2c24e2f719477d98426f52da4070
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c2bc607fb5a5b5b38249453a1d0fce833547191f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90972619"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327286"
 ---
 # <a name="quickstart-language-understanding-luis-sdk-client-libraries-to-create-and-query-your-luis-app"></a>クイック スタート:LUIS アプリを作成して照会するための Language Understanding (LUIS) SDK クライアント ライブラリ
 
