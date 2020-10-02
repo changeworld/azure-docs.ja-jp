@@ -4,12 +4,12 @@ description: Azure Monitor Application Insights を使用した .NET Core/.NET F
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/11/2020
-ms.openlocfilehash: 6f31236e516e44df9f5115e3efeb48db46853e8d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 2ca5fc2d8f5e9e399fd7dfd3238d0ec16056d537
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933275"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007215"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>ワーカー サービス アプリケーション (非 HTTP アプリケーション) 向け Application Insights
 
@@ -19,7 +19,7 @@ Application Insights では、`Microsoft.ApplicationInsights.WorkerService` と�
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 
-[ワーカー サービス向け Application Insights SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) は、実行されている場所や方法に関係なく、非 HTTP アプリケーションに最適です。 アプリケーションが実行されていて、Azure へのネットワーク接続がある場合は、テレメトリを収集することができます。 Application Insights の監視は、.NET Core がサポートされているすべての場所でサポートされます。 このパッケージは、新しく導入された [.NET Core 3.0 ワーカー サービス](https://devblogs.microsoft.com/aspnet/dotnet-core-workers-in-azure-container-instances)、[ Asp.Net Core 2.1/2.2 のバックグラウンド タスク](/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2)、コンソール アプリ (.NET Core/.NET Framework) などで使用できます。
+[ワーカー サービス向け Application Insights SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) は、実行されている場所や方法に関係なく、非 HTTP アプリケーションに最適です。 アプリケーションが実行されていて、Azure へのネットワーク接続がある場合は、テレメトリを収集することができます。 Application Insights の監視は、.NET Core がサポートされているすべての場所でサポートされます。 このパッケージは、新しく導入された [.NET Core 3.0 ワーカー サービス](https://devblogs.microsoft.com/aspnet/dotnet-core-workers-in-azure-container-instances)、[ Asp.Net Core 2.1/2.2 のバックグラウンド タスク](/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&preserve-view=true)、コンソール アプリ (.NET Core/.NET Framework) などで使用できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -134,7 +134,7 @@ Application Insights では、`Microsoft.ApplicationInsights.WorkerService` と�
 
 ## <a name="aspnet-core-background-tasks-with-hosted-services"></a>ホステッド サービスを使用した ASP.NET Core のバックグラウンド タスク
 
-ASP.NET Core 2.1/2.2 アプリケーションでのバックグラウンド タスクの作成方法については、[こちら](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-2.2)のドキュメントで説明されています。
+ASP.NET Core 2.1/2.2 アプリケーションでのバックグラウンド タスクの作成方法については、[こちら](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-2.2&preserve-view=true)のドキュメントで説明されています。
 
 完全な例は、[こちら](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService)で共有されています
 
@@ -358,6 +358,7 @@ SDK では、上記の説明のとおり、テレメトリが自動的に収集�
 |EnableAdaptiveSampling | アダプティブ サンプリングを有効または無効にします | true
 |EnableHeartbeat | ハートビート機能を有効または無効にします。この機能は、"HeartBeatState" という名前のカスタム メトリックを、.NET バージョン、Azure 環境情報 (該当する場合) などのランタイムに関する情報と共に定期的に (既定では 15 分) 送信します。 | true
 |AddAutoCollectedMetricExtractor | AutoCollectedMetrics エクストラクターを有効または無効にします。これは、サンプリングが行われる前に要求/依存関係に関する事前に集計されたメトリックを送信する TelemetryProcessor です。 | true
+|EnableDiagnosticsTelemetryModule | `DiagnosticsTelemetryModule` を有効または無効にします。 これを無効にすると、次の設定が無視されます: `EnableHeartbeat`、`EnableAzureInstanceMetadataTelemetryModule`、`EnableAppServicesHeartbeatTelemetryModule` | true
 
 最新の一覧については、[`ApplicationInsightsServiceOptions` の構成可能な設定](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs)を参照してください。
 
@@ -533,9 +534,9 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 [.NET Core コンソール アプリケーション](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) .NET Core (2.0 以上) または .NET Framework (4.7.2 以上) で記述されたコンソール アプリケーションを使用している場合は、このサンプルを使用します
 
-[HostedService を使用した ASP .NET Core バックグラウンド タスク](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService) Asp.Net Core 2.1/2.2 を使用していて、[こちら](/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2)の公式のガイダンスに従ってバックグラウンド タスクを作成する場合は、このサンプルを使用します
+[HostedService を使用した ASP .NET Core バックグラウンド タスク](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService) Asp.Net Core 2.1/2.2 を使用していて、[こちら](/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&preserve-view=true)の公式のガイダンスに従ってバックグラウンド タスクを作成する場合は、このサンプルを使用します
 
-[.NET Core 3.0 ワーカー サービス](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights)[こちら](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-3.0#worker-service-template)の公式のガイダンスに従って .NET Core 3.0 ワーカー サービス アプリケーションを作成した場合は、このサンプルを使用します
+[.NET Core 3.0 ワーカー サービス](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights)[こちら](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-3.0&preserve-view=true#worker-service-template)の公式のガイダンスに従って .NET Core 3.0 ワーカー サービス アプリケーションを作成した場合は、このサンプルを使用します
 
 ## <a name="open-source-sdk"></a>オープンソース SDK
 
@@ -547,4 +548,3 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 * [自動的に追跡されない追加の依存関係を追跡します](./auto-collect-dependencies.md)。
 * [自動収集されたテレメトリを強化またはフィルター処理します](./api-filtering-sampling.md)。
 * [ASP.NET Core での依存関係の挿入](/aspnet/core/fundamentals/dependency-injection)。
-

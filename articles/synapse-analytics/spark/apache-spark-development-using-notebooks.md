@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 6e0062450889a2bbbdfcd47137ffbe36b83cae57
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 2feaf33f7bc31396764bfbaa3ae6291b6752e961
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849100"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612808"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Synapse Studio (プレビュー) ノートブックを作成、開発、管理する
 
@@ -232,7 +232,7 @@ from pyspark.sql.types import *
 account_name = "Your account name"
 container_name = "Your container name"
 relative_path = "Your path"
-adls_path = 'abfss://%s@%s.dfs.core.windows.net/%s' % (blob_container_name, blob_account_name,  blob_relative_path)
+adls_path = 'abfss://%s@%s.dfs.core.windows.net/%s' % (container_name, account_name, relative_path)
 
 spark.conf.set("fs.azure.account.auth.type.%s.dfs.core.windows.net" %account_name, "SharedKey")
 spark.conf.set("fs.azure.account.key.%s.dfs.core.windows.net" %account_name ,"Your ADLSg2 Primary Key")
@@ -349,7 +349,7 @@ displayHTML(html)
    ![notebook-properties](./media/apache-spark-development-using-notebooks/synapse-notebook-properties.png)
 
 ## <a name="magic-commands"></a>マジック コマンド
-Azure Synapse Studio ノートブックでは、使い慣れた Jupyter マジック コマンドを使用できます。 以下の一覧で、現在使用可能なマジック コマンドを確認してください。 ご自分のニーズに合わせて、引き続きマジック コマンドをさらに作成できるように、GitHub でユース ケースをお知らせください。
+Azure Synapse Studio ノートブックでは、使い慣れた Jupyter マジック コマンドを使用できます。 以下の一覧で、現在使用可能なマジック コマンドを確認してください。 ユーザーのニーズに合ったマジック コマンドを引き続き作成できるよう、[GitHub でユース ケース](https://github.com/MicrosoftDocs/azure-docs/issues/new)についてお知らせください。
 
 使用可能なライン マジック: [%lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic)、[%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)、[%time it](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
 

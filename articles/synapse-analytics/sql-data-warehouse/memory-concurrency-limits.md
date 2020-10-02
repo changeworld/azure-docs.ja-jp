@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 443ac9ee1c2f05cf90e866793449220d71e37b89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b72694f93ed5b712a0f684887df5b69a7b35c72
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210663"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441682"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Azure Synapse Analytics のメモリと同時実行の制限
 
@@ -125,7 +125,7 @@ Azure Synapse Analytics のさまざまなパフォーマンス レベルとリ�
 | DW15000c      | 32                         |  600                        | 18                    | 60                     | 132                   | 420                    |
 | DW30000c      | 32                         | 1200                        | 36                    | 120                    | 264                   | 840                    |
 
-クエリの実行を開始するのに十分な数のコンカレンシー スロットが空いていない場合、クエリはキューに入れられ、重要度に基づいて実行されます。  重要度が同じ場合、クエリは先入れ先出しで実行されます。  クエリが完了してクエリおよびスロットの数が制限値を下回ると、キューに入れられていたクエリは解放されます。
+クエリの実行を開始するのに十分な数のコンカレンシー スロットが空いていない場合、クエリはキューに入れられ、重要度に基づいて実行されます。  重要度が同じ場合、クエリは先入れ先出しで実行されます。  クエリが完了してクエリおよびスロットの数が制限値を下回ると、Azure Synapse Analytics では、キューに入れられていたクエリが解放されます。
 
 ## <a name="next-steps"></a>次のステップ
 

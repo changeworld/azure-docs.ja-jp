@@ -1,6 +1,5 @@
 ---
 title: Azure SQL とは
-titleSuffix: " "
 description: 次の Azure SQL ファミリのサービス内のさまざまなオプションについて説明します:Azure SQL Database、Azure SQL Managed Instance、および Azure VM 上の SQL Server。
 services: sql-database
 ms.service: sql-database
@@ -13,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: ff8dd9d10bf5970a5a96080beb51e2c111d481e3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 344e52da8ef41e26ab0bfa7ef8e09a31f5d135ca
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280853"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611824"
 ---
 # <a name="what-is-azure-sql"></a>Azure SQL とは 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -32,6 +31,11 @@ Azure SQL は、管理され、セキュリティで保護されたインテリ�
 Azure SQL は使い慣れた SQL Server エンジンに基づいて構築されているので、アプリケーションを簡単に移行し、使い慣れたツール、言語、リソースを使い続けることができます。 お客様のスキルと経験をクラウドに移すことにより、既に持っているスキルと経験でさらに多くのことを行うことができます。 
 
 ビジネス要件に適したオプションを判断するために、各製品が Microsoft のどの Azure SQL データ プラットフォームに適しているかについて学ぶことができます。 この記事を参照することで、コスト削減と管理の最小化のいずれを優先するかに関係なく、最大の関心事項であるビジネス要件に適したアプローチを判断できます。
+
+
+Azure SQL を初めて使用する場合は、[Azure SQL ビデオ シリーズ](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)の "*Azure SQL の概要*" に関するビデオをご覧ください。
+> [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/What-is-Azure-SQL-3-of-61/player]
+
 
 
 ## <a name="overview"></a>概要

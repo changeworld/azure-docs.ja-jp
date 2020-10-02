@@ -4,12 +4,12 @@ description: Azure Monitor のパートナーと、そのパートナーとの�
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 2e3fae1b942083d78798fccebd7a7f2c58f7659a
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: dbac5f28723b712788df61eda34a0db61b9c5652
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142411"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526478"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor パートナーとの統合
 
@@ -77,6 +77,8 @@ CloudMonix は、Microsoft Azure Platform の監視、自動化、および自�
 Datadog は、クラウド規模のアプリケーションに対する世界をリードする監視サービスです。 サーバー、データベース、ツール、およびサービスからデータを集めて、スタック全体の一元化されたビューを提示します。 これらの機能は、SaaS ベースのデータ分析プラットフォーム上で提供されます。 このサービスによって、開発チームと運用チームが連携して、ダウンタイムの回避、パフォーマンスに関する問題の解決、開発サイクルとデプロイ サイクルの予定どおりの完了を行うことができます。 Datadog と Azure を統合することで、インフラストラクチャ全体からメトリックを収集して表示できます。 VM のメトリックをアプリケーションレベルのメトリックに相関させることができます。 プロパティとカスタム タグの任意の組み合わせを使用して、メトリックを詳細に分析できます。
 
 [ドキュメントを確認する。][datadog-doc]
+
+Datadog の新しい Azure マーケットプレース統合は、2020 年 10 月上旬のリリースが予定されています。 リリース時、ここにリンクが追加されます。 
 
 ## <a name="dynatrace"></a>Dynatrace
 
@@ -147,7 +149,7 @@ Microfocus **Operations Bridge** では、実行される箇所やあらゆる�
 
 ## <a name="moogsoft"></a>Moogsoft
 
-![Moogsoft](./media/partners/moogsoft.png)
+![Moogsoft ロゴ](./media/partners/moogsoft.png)
 
 Moogsoft AIOps を使用すると、迅速にビジネスを変換できます。
 

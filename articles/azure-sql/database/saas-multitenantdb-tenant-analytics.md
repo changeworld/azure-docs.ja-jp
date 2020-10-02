@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: a264e40814952577d3a7db3b36c168dfc396f388
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9339ed7d0ab122420b37a67a96ee0d9d324e2f15
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85249167"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442907"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>抽出されたデータを使用したクロステナント分析 - マルチテナント アプリ
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -44,7 +44,7 @@ ms.locfileid: "85249167"
 
 すべてのデータが 1 つのマルチテナント データベースに存在する場合は、すべてのテナントのデータに簡単にアクセスできます。 しかし、何千ものデータベースに分散している場合、アクセスは複雑になります。 この複雑さを軽減する 1 つの方法として、分析データベースまたはデータ ウェアハウスにデータを抽出します。 その後、そのデータ ウェアハウスにクエリを実行して、すべてのテナントのチケット データから分析情報を収集します。
 
-このチュートリアルでは、この SaaS サンプル アプリケーションの完全な分析シナリオを紹介します。 まず、エラスティック ジョブを使用して、各テナント データベースからのデータの抽出をスケジュールします。 データは分析ストアに送信されます。 分析ストアには、SQL Database または SQL Data Warehouse を使用できます。 大規模なデータ抽出には、[Azure Data Factory](../../data-factory/introduction.md) が推奨されます。
+このチュートリアルでは、この SaaS サンプル アプリケーションの完全な分析シナリオを紹介します。 まず、エラスティック ジョブを使用して、各テナント データベースからのデータの抽出をスケジュールします。 データは分析ストアに送信されます。 分析ストアには、SQL Database または Azure Synapse Analytics (旧称 SQL Data Warehouse) を使用できます。 大規模なデータ抽出には、[Azure Data Factory](../../data-factory/introduction.md) が推奨されます。
 
 次に、集計データを一連の[スター スキーマ](https://www.wikipedia.org/wiki/Star_schema) テーブルに細分化します。 これらのテーブルは、中央のファクト テーブルと関連するディメンション テーブルで構成されます。
 

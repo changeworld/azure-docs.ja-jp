@@ -11,12 +11,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 41b74ed713485679576fdf7f4f0df54803b56caa
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 6e6038e2c0aa4f6b41c4a4da9bde6e98555ceb31
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192115"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613569"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Azure 仮想マシン (Linux) における SQL Server の概要
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,6 +28,9 @@ ms.locfileid: "88192115"
 Azure Virtual Machines 上の SQL Server では、オンプレミスのハードウェアを一切管理することなく全バージョンの SQL Server をクラウドで利用することができます。 また、SQL Server VM によって従量課金制のライセンス料が単純化されます。
 
 Azure 仮想マシンは、世界中のさまざまな[リージョン](https://azure.microsoft.com/regions/)で実行されます。 また、[マシンのサイズ](../../../virtual-machines/windows/sizes.md)も各種用意されています。 適切なバージョン、エディション、オペレーティング システムの SQL Server VM を仮想マシン イメージ ギャラリーで作成することができます。 さまざまな SQL Server ワークロードに合った最適な仮想マシンを選ぶことができます。 
+
+Azure SQL を初めて使用する場合は、[Azure SQL ビデオ シリーズ](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)の "*Azure VM の SQL Server の概要*" に関するビデオをご覧ください。
+> [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/SQL-Server-on-Azure-VM-Overview-4-of-61/player]
 
 ## <a name="get-started-with-sql-server-vms"></a><a id="create"></a> SQL Server VM の概要
 
@@ -54,9 +57,9 @@ SQL Server on Linux を構成するときには、データベース エンジ�
 
 | Distribution | [データベース エンジン](https://docs.microsoft.com/sql/linux/sql-server-linux-setup) | [ツール](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) | [SQL Server エージェント](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-sql-agent) | [フルテキスト検索](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-full-text-search) | [SSIS](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-ssis) | [HA アドオン](https://docs.microsoft.com/sql/linux/sql-server-linux-business-continuity-dr) |
 |---|---|---|---|---|---|---|
-| RHEL | ![はい](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![はい](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![はい](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![はい](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![はい](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![はい](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) |
-| SLES | ![はい](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![はい](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![はい](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![はい](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![no](./media/sql-server-on-linux-vm-what-is-iaas-overview/no.png) | ![はい](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png)|
-| Ubuntu | ![はい](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![はい](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![はい](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![はい](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![はい](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![はい](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) |
+| RHEL | ![RHEL とデータベース エンジン](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL とツール](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL と SQL Server エージェント](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL とフルテキスト検索](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL と SSIS](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL と HA アドオン](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) |
+| SLES | ![SLES とデータベース エンジン](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES とツール](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES と SQL Server エージェント](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES とフルテキスト検索](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES と SSIS](./media/sql-server-on-linux-vm-what-is-iaas-overview/no.png) | ![SLES と HA アドオン](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png)|
+| Ubuntu | ![Ubuntu とデータベース エンジン](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu とツール](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu と SQL Server エージェント](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu とフルテキスト検索](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu と SSIS](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Ubuntu と HA アドオン](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) |
 
 ## <a name="related-products-and-services"></a>関連製品およびサービス
 

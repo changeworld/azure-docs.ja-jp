@@ -1,241 +1,100 @@
 ---
-title: ログ取り込み用の顧客所有のストレージ アカウント
-description: 独自のストレージ アカウントを使用して、Azure Monitor の Log Analytics ワークスペースにログ データを取り込みます。
+title: Azure Monitor Log Analytics でのカスタマー マネージド ストレージ アカウントの使用
+description: 独自のストレージ アカウントを Log Analytics のシナリオに使用します
 ms.subservice: logs
 ms.topic: conceptual
-author: bwren
-ms.author: bwren
-ms.date: 05/20/2020
-ms.openlocfilehash: 58d6f98c87e37254e77bcc8dda1cdca6e608cafc
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+author: noakup
+ms.author: noakuper
+ms.date: 09/03/2020
+ms.openlocfilehash: 9d54e6eb84e3269eb95f8d314875474f78536652
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962674"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526427"
 ---
-# <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Azure Monitor におけるログ取り込み用の顧客所有のストレージ アカウント
+# <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Azure Monitor Log Analytics でのカスタマー マネージド ストレージ アカウントの使用
 
-Azure Monitor では、[カスタム ログ](data-sources-custom-logs.md)や [Azure ログ](./diagnostics-extension-logs.md)などの一部のデータ型の取り込みプロセスでストレージ アカウントを使用します。 取り込みプロセス中、ログはまずストレージ アカウントに送信され、その後 Log Analytics または Application Insights に取り込まれます。 取り込み中にデータを制御する場合は、サービスで管理されたストレージの代わりに独自のストレージ アカウントを使用します。 独自のストレージ アカウントを使用すると、取り込み中にログのアクセス、コンテンツ、暗号化、リテンション期間を制御できます。 これは、"独自ストレージの持ち込み" または "BYOS" と呼ばれています。 
+Log Analytics は、さまざまなシナリオで Azure Storage に依存しています。 この使用は、通常、自動的に管理されます。 ただし、場合によっては、独自のストレージ アカウント (カスタマー マネージド ストレージ アカウントとも呼ばれます) を提供して管理することが必要になります。 このドキュメントでは、WAD/LAD ログのインジェスト、Private Link 固有のシナリオ、および CMK 暗号化に対するカスタマー マネージド ストレージの使用について詳しく説明します。 
 
-BYOS を必要とするシナリオの 1 つが、 Private Link によるネットワークの分離です。 VNet を使用する場合、ネットワークの分離は多くの場合要件であり、パブリック インターネットへのアクセスは制限されています。 このような場合、ログ取り込みのために Azure Monitor サービス ストレージにアクセスすることは完全にブロックされるか、または不適切な方法と考えられます。 代わりに、VNet 内の顧客所有のストレージ アカウント経由で取り込むか、または簡単にアクセスできるログを取り込む必要があります。
+> [!NOTE]
+> 書式と内容が変更される可能性があるため、Log Analytics によってカスタマー マネージド ストレージにアップロードされたコンテンツには依存しないことをお勧めします。
 
-もう 1 つのシナリオは、カスタマー マネージド キー (CMK) を使用したログの暗号化です。 ユーザーはログを保存するクラスターで CMK を使用して、ログに記録されたデータを暗号化できます。 同じキーを使用して、取り込みプロセス中にログを暗号化することもできます。
+## <a name="ingesting-azure-diagnostics-extension-logs-wadlad"></a>Azure Diagnostics 拡張機能ログ (WAD/LAD) の取り込み
+Azure Diagnostics 拡張機能エージェント (Windows エージェントの場合は WAD、Linux エージェントの場合は LAD とも呼ばれます) により、さまざまなオペレーティング システム ログが収集されて、カスタマー マネージド ストレージ アカウントに格納されます。 その後、これらのログを Log Analytics に取り込み、それらを確認したり分析したりすることができます。
+ストレージ アカウントから Azure Diagnostics 拡張機能ログを収集するには、[Azure portal](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-logs#collect-logs-from-azure-storage) を使用するか、[Storage Insights API](https://docs.microsoft.com/rest/api/loganalytics/connectedsources/storage%20insights/createorupdate) を呼び出して、ストレージ アカウントをストレージ データ ソースとして Log Analytics ワークスペースに接続します。
 
-## <a name="data-types-supported"></a>サポートされているデータ型
+サポートされるデータ型:
+* syslog
+* Windows イベント
+* Service Fabric
+* ETW イベント
+* IIS ログ
 
-ストレージ アカウントから取り込まれるデータ型には、次のものがあります。 これらの型の取り込みの詳細については、「[Azure Diagnostics 拡張機能から Azure Monitor ログにデータを収集する](./diagnostics-extension-logs.md)」を参照してください。
+## <a name="using-private-links"></a>プライベート リンクの使用
+Azure Monitor リソースへの接続にプライベート リンクを使用する場合、一部のユース ケースでは、カスタマー マネージド ストレージ アカウントが必要になります。 そのようなケースの 1 つは、カスタム ログまたは IIS ログのインジェストです。 これらのデータの種類は、最初に BLOB として中間 Azure ストレージ アカウントにアップロードされ、その後でのみワークスペースに取り込まれます。 同様に、一部の Azure Monitor ソリューションでは、ストレージ アカウントを使用して、Azure Security Center ソリューションで使用される Watson ダンプ ファイルなどの大きなファイルが格納される場合があります。 
 
-| Type | テーブル情報 |
-|:-----|:------------------|
-| IIS ログ | Blob: wad-iis-logfiles|
-|Windows イベント ログ | 表: WADWindowsEventLogsTable |
-| syslog | 表: LinuxsyslogVer2v0 |
-| Windows ETW のログ | 表: WADETWEventTable|
-| Service Fabric | 表: WADServiceFabricSystemEventTable <br/> WADServiceFabricReliableActorEventTable<br/> WADServiceFabricReliableServicEventTable |
-| カスタム ログ | 該当なし |
-| Azure Security Center のワトソン博士のダンプ ファイル | 該当なし|  
+##### <a name="private-link-scenarios-that-require-a-customer-managed-storage"></a>カスタマー マネージド ストレージを必要とするプライベート リンクのシナリオ
+* カスタム ログと IIS ログのインジェスト
+* ASC ソリューションで Watson ダンプ ファイルを収集できるようにする
 
-## <a name="storage-account-requirements"></a>ストレージ アカウントの要件 
-ストレージ アカウントは、次の要件を満たしている必要があります。
+### <a name="how-to-use-a-customer-managed-storage-account-over-a-private-link"></a>カスタマー マネージド ストレージ アカウントをプライベート リンクで使用する方法
+##### <a name="workspace-requirements"></a>ワークスペースの要件
+プライベート リンクを介して Azure Monitor に接続すると、Log Analytics エージェントでは、プライベート リンク経由でネットワークにリンクされたワークスペースにのみログを送信できます。 この規則を使用するには、Azure Monitor プライベート リンク スコープ (AMPLS) オブジェクトを適切に構成し、それをワークスペースに接続してから、AMPLS をプライベート リンク経由でネットワークに接続する必要があります。 AMPLS の構成手順の詳細については、「[Azure Private Link を使用して、ネットワークを Azure Monitor に安全に接続する](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)」を参照してください。 
+##### <a name="storage-account-requirements"></a>ストレージ アカウントの要件
+プライベート リンクに正常に接続するには、ストレージ アカウントが次のようになっている必要があります。
+* VNet 上またはピアリングされたネットワーク上に存在し、プライベート リンク経由で VNet に接続されていること。 これにより、VNet 上のエージェントはストレージ アカウントにログを送信できるようになります。
+* リンク先のワークスペースと同じリージョンに存在していること。
+* Azure Monitor によるストレージ アカウントへのアクセスが許可されていること。 ストレージ アカウントへのアクセスを選択したネットワークだけに許可する場合は、この例外 "信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します" も許可する必要があります。 これにより、このストレージ アカウントに取り込まれたログを Log Analytics で読み取ることができます。
+* ワークスペースで他のネットワークからのトラフィックも処理する場合は、関連するネットワークまたはインターネットからの受信トラフィックを許可するように、ストレージ アカウントを構成する必要があります。
 
-- ストレージにログを書き込む VNet 上のリソースにアクセスできること。
-- リンク先のワークスペースと同じリージョンにあること。
-- Azure Monitor アクセスを許可する - ストレージ アカウントのアクセスを特定のネットワークに制限することを選択した場合は、必ず「*信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します*」の例外を許可してください。
+##### <a name="link-your-storage-account-to-a-log-analytics-workspace"></a>ストレージ アカウントを Log Analytics ワークスペースにリンクする
+ストレージ アカウントをワークスペースにリンクするには、[Azure CLI](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage) または [REST API](https://docs.microsoft.com/rest/api/loganalytics/linkedstorageaccounts) を使用します。 適用可能な dataSourceType の値:
+* CustomLogs – インジェストの間にカスタム ログと IIS ログにストレージを使用します。
+* AzureWatson – ASC (Azure Security Center) ソリューションによってアップロードされた Watson ダンプ ファイルにストレージを使用します。 データ保持の管理、リンクされたストレージ アカウントの置換、ストレージ アカウントのアクティビティの監視の詳細については、「[リンクされたストレージ アカウントの管理](#managing-linked-storage-accounts)」を参照してください。 
 
-## <a name="process-to-configure-customer-owned-storage"></a>顧客所有のストレージを構成するプロセス
-独自のストレージ アカウントを取り込みに使用する基本的なプロセスは次のとおりです。
+## <a name="encrypting-data-with-cmk"></a>CMK でのデータの暗号化
+ストレージ アカウント内の保存データはすべて、Azure Storage によって暗号化されます。 既定では、Microsoft マネージド キー (MMK) がデータの暗号化に使用されます。 ただし、Azure Storage では代わりに、Azure Key Vault のカスタマー マネージド キー (CMK) を使用して、ストレージ データを暗号化することができます。 独自のキーを Azure Key Vault にインポートするか、または Azure Key Vault API を使用してキーを生成することができます。
+##### <a name="cmk-scenarios-that-require-a-customer-managed-storage-account"></a>カスタマー マネージド ストレージ アカウントを必要とする CMK のシナリオ
+* CMK によるログ アラート クエリの暗号化
+* CMK による保存されたクエリの暗号化
 
-1. ストレージ アカウントを作成するか、既存のアカウントを選択します。
-2. ストレージ アカウントを Log Analytics ワークスペースにリンクします。
-3. 負荷とリテンション期間を確認してストレージを管理し、期待どおりに機能していることを確認します。
+### <a name="how-to-apply-cmk-to-customer-managed-storage-accounts"></a>カスタマー マネージド ストレージ アカウントに CMK を適用する方法
+##### <a name="storage-account-requirements"></a>ストレージ アカウントの要件
+ストレージ アカウントとキー コンテナーは同じリージョンに存在していることが必要です。ただし、サブスクリプションは異なっていてもかまいません。 Azure Storage ストレージの暗号化およびキー管理の詳細については、「[保存データに対する Azure Storage 暗号化](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)」を参照してください。
 
-リンクの作成と削除に使用できる唯一の方法は、REST API を使用することです。 各プロセスに必要な特定の API 要求の詳細については、以下のセクションで説明します。
+##### <a name="apply-cmk-to-your-storage-accounts"></a>ストレージ アカウントに CMK を適用する
+Azure Key Vault でカスタマー マネージド キーを使用するように Azure ストレージ アカウントを構成するには、[Azure portal](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal?toc=/azure/storage/blobs/toc.json)、[PowerShell](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-powershell?toc=/azure/storage/blobs/toc.json)、または [CLI](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-cli?toc=/azure/storage/blobs/toc.json) を使用します。 
 
-## <a name="command-line-and-rest-api"></a>コマンド ラインと REST API
+## <a name="managing-linked-storage-accounts"></a>リンクされたストレージ アカウントの管理
 
-### <a name="command-line"></a>コマンド ライン
-リンクされたストレージ アカウントを作成および管理するには、[az monitor log-analytics workspace linked-storage](/cli/azure/monitor/log-analytics/workspace/linked-storage) を使用します。 このコマンドでは、ワークスペースからストレージ アカウントをリンクおよびリンク解除したり、リンクされたストレージ アカウントを一覧表示したりできます。
+ストレージ アカウントをワークスペースにリンクしたり、リンクを解除したりするには、[Azure CLI](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage) または [REST API](https://docs.microsoft.com/rest/api/loganalytics/linkedstorageaccounts) を使用します。
 
-### <a name="request-and-cli-values"></a>要求と CLI の値
+##### <a name="create-or-modify-a-link"></a>リンクを作成または変更する
+ストレージ アカウントをワークスペースにリンクすると、Log Analytics ではサービスによって所有されているストレージ アカウントの代わりにそのアカウントが使用されるようになります。 そのための方法は次のとおりです。 
+* 複数のストレージ アカウントを登録して、ログの負荷を分散する
+* 複数のワークスペースに同じストレージ アカウントを再利用する
 
-#### <a name="datasourcetype"></a>dataSourceType 
+##### <a name="unlink-a-storage-account"></a>ストレージ アカウントのリンクを解除する
+ストレージ アカウントの使用を停止するには、ワークスペースからストレージのリンクを解除します。 ワークスペースからすべてのストレージ アカウントのリンクを解除すると、Log Analytics ではサービスで管理されたストレージ アカウントの利用が試みられます。 ネットワークでインターネットへのアクセスが制限されている場合、これらのストレージが使用できない可能性があり、ストレージに依存するシナリオはすべて失敗します。
 
-- AzureWatson - Azure Security Center のワトソン博士のダンプ ファイルには、この値を使用します。
-- CustomLogs – 次のデータ型にはこの値を使用します。
-  - カスタム ログ
-  - IIS ログ
-  - イベント (Windows)
-  - Syslog (Linux)
-  - ETW ログ
-  - Service Fabric イベント
-  - 評価データ  
+##### <a name="replace-a-storage-account"></a>ストレージ アカウントを置換する
+インジェストに使用されるストレージ アカウントを置き換えるには
+1.  **新しいストレージ アカウントへのリンクを作成します。** ログ エージェントによって更新された構成が取得され、さらに、新しいストレージへのデータの送信を開始します。 このプロセスには数分かかることがあります。
+2.  **次に、古いストレージ アカウントのリンクを解除して、エージェントから削除されたアカウントへの書き込みを停止します。** データがこのアカウントからすべて取り込まれるまで、取り込みプロセスでデータを読み取り続けます。 すべてのログが取り込まれるまでは、ストレージ アカウントを削除しないでください。
 
-#### <a name="storage_account_resource_id"></a>storage_account_resource_id
-この値は、次の構造を使用します。
+### <a name="maintaining-storage-accounts"></a>ストレージアカウントのメンテナンス
+##### <a name="manage-log-retention"></a>ログの保持期間を管理する
+独自のストレージ アカウントを使用する場合、保持期間はユーザーが設定します。 つまり、プライベート ストレージに格納されているログは、Log Analytics では削除されません。 代わりに、ユーザー設定に従って負荷を処理するポリシーを設定する必要があります。
 
-```
-subscriptions/{subscriptionId}/resourcesGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName1}
-```
-
-
-## <a name="get-linked-storage-accounts"></a>リンクされたストレージ アカウントを取得する
-
-### <a name="get-linked-storage-accounts-for-all-data-source-types"></a>すべてのデータソースの型のリンクされたストレージ アカウントを取得する
-
-#### <a name="api-request"></a>API 要求
-
-```
-GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts?api-version=2019-08-01-preview  
-```
-
-#### <a name="response"></a>Response
-
-```json
-{
-    [
-        {
-            "properties":
-            {
-                "dataSourceType": "CustomLogs",
-                "storageAccountIds  ": 
-                [  
-                    "<storage_account_resource_id_1>",
-                    "<storage_account_resource_id_2>"
-                ],
-            },
-            "id":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoft. operationalinsights/workspaces/{resourceName}/linkedStorageAccounts/CustomLogs",
-            "name": "CustomLogs",
-            "type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
-        },
-        {
-            "properties":
-            {
-                "dataSourceType": " AzureWatson "
-                "storageAccountIds  ": 
-                [  
-                    "<storage_account_resource_id_3>",
-                    "<storage_account_resource_id_4>"
-                ],
-            },
-            "id":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoft. operationalinsights/workspaces/{resourceName}/linkedStorageAccounts/AzureWatson",
-            "name": "AzureWatson",
-            "type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
-        }
-    ]
-}
-```
-
-
-### <a name="get-linked-storage-accounts-for-a-specific-data-source-type"></a>特定のデータソースの型のリンクされたストレージ アカウントを取得する
-
-#### <a name="api-request"></a>API 要求
-
-```
-GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}?api-version=2019-08-01-preview  
-```
-
-#### <a name="response"></a>Response 
-
-```json
-{
-    "properties":
-    {
-        "dataSourceType": "CustomLogs",
-        "storageAccountIds  ": 
-        [  
-            "<storage_account_resource_id_1>",
-            "<storage_account_resource_id_2>"
-        ],
-    },
-    "id":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoft. operationalinsights/workspaces/{resourceName}/linkedStorageAccounts/CustomLogs",
-    "name": "CustomLogs",
-    "type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
-}
-```
-
-## <a name="create-or-modify-a-link"></a>リンクを作成または変更する
-
-ストレージ アカウントをワークスペースにリンクすると、Log Analytics ではサービスによって所有されているストレージ アカウントの代わりにそのアカウントが使用されるようになります。 ストレージ アカウントの一覧を同時に登録したり、同じストレージ アカウントを複数のワークスペースに対して使用したりすることができます。
-
-ワークスペースで VNet リソースと VNet 外のリソースの両方を処理する場合は、インターネットからのトラフィックを拒否していないことを確認する必要があります。 お使いのストレージには、ワークスペースと同じ設定が適用され、VNet 外のリソースで使用できるようになっている必要があります。 
-
-### <a name="api-request"></a>API 要求
-
-```
-PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}?api-version=2019-08-01-preview  
-```
-
-### <a name="payload"></a>ペイロード
-
-```json
-{
-    "properties":
-    {
-        "storageAccountIds  " : 
-        [  
-            "<storage_account_resource_id_1>",
-            "<storage_account_resource_id_2>"
-        ],
-    }
-}
-```
-
-### <a name="response"></a>Response
-
-```json
-{
-    "properties":
-    {
-        "dataSourceType": "CustomLogs"
-        "storageAccountIds  ": 
-        [  
-            "<storage_account_resource_id_1>",
-            "<storage_account_resource_id_2>"
-        ],
-    },
-"id":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoft. operationalinsights/workspaces/{resourceName}/linkedStorageAccounts/CustomLogs",
-"name": "CustomLogs",
-"type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
-}
-```
-
-
-## <a name="unlink-a-storage-account"></a>ストレージ アカウントのリンクを解除する
-取り込みにストレージ アカウントを使用することを停止する場合、または使用するワークスペースを置換する場合は、ワークスペースからストレージのリンクを解除する必要があります。
-
-ワークスペースからすべてのストレージ アカウントのリンクを解除すると、取り込みはサービスで管理されたストレージ アカウントに依存することになります。 インターネットへのアクセスが制限されている VNet でエージェントが実行されている場合は、取り込みに失敗することが予想されます。 ワークスペースには、監視対象リソースからアクセスできるリンクされたストレージ アカウントが必要です。
-
-ストレージ アカウントを削除する前に、格納されているすべてのデータがワークスペースに取り込まれていることを確認します。 予防策として、別のストレージをリンクした後も、ストレージ アカウントを使用可能な状態にしておきます。 すべてのコンテンツが取り込まれ、新しいデータが新しく接続したストレージ アカウントに書き込まれていることを確認してから削除します。
-
-
-### <a name="api-request"></a>API 要求
-```
-DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}?api-version=2019-08-01-preview  
-```
-
-## <a name="replace-a-storage-account"></a>ストレージ アカウントを置換する
-
-取り込みに使用したストレージ アカウントを置き換えるには、最初に新しいストレージ アカウントのリンクを作成します。 ログ エージェントによって更新された構成が取得され、さらに、新しいストレージへのデータの送信を開始します。
-
-次に、古いストレージ アカウントのリンクを解除して、エージェントから削除されたアカウントへの書き込みを停止します。 データがこのアカウントからすべて取り込まれるまで、取り込みプロセスでデータを読み取り続けます。 すべてのログが取り込まれるまでは、ストレージ アカウントを削除しないでください。
-
-エージェントの構成は数分後に更新され、新しいストレージに切り替えられます。
-
-## <a name="manage-storage-account"></a>ストレージ アカウントを管理する
-
-### <a name="load"></a>[読み込み]
-
-ストレージ アカウントでは、要求の調整が開始されるまでに、特定の量の読み取り要求と書き込み要求の負荷を処理できます。 調整はログの取り込みにかかる時間に影響するため、データが失われる可能性があります。 ストレージが過負荷になっている場合は、追加のストレージ アカウントを登録し、負荷をアカウント間で分散します。 
+##### <a name="consider-load"></a>負荷を考慮する
+ストレージ アカウントは、要求の調整を開始する前に、読み取り要求と書き込み要求の特定の負荷を処理できます (詳細については、[BLOB ストレージのスケーラビリティとパフォーマンスのターゲット](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account)に関するページを参照してください)。 調整が行われると、ログの取り込みに要する時間に影響します。 ストレージ アカウントが過負荷になっている場合は、追加のストレージ アカウントを登録し、負荷をアカウント間で分散します。 ストレージ アカウントの容量とパフォーマンスを監視するには、[Azure portal でその分析情報]( https://docs.microsoft.com/azure/azure-monitor/insights/storage-insights-overview)を確認します。
 
 ### <a name="related-charges"></a>関連料金
-
-ストレージ アカウントは、格納されているデータの量、ストレージの種類、および冗長性の種類に応じて課金されます。 詳細については、「[ブロック BLOB の価格](https://azure.microsoft.com/pricing/details/storage/blobs/)」と「[Table Storage の料金](https://azure.microsoft.com/pricing/details/storage/tables/)」に関するページを参照してください。
-
-ワークスペースの登録済みストレージ アカウントが別のリージョンにある場合は、これらの「[帯域幅の料金詳細](https://azure.microsoft.com/pricing/details/bandwidth/)」に従って、送信の料金が発生します。
+ストレージ アカウントは、格納されているデータの量、ストレージの種類、冗長性の種類に応じて課金されます。 詳細については、「[ブロック BLOB の価格](https://azure.microsoft.com/pricing/details/storage/blobs)」と「[Table Storage の料金](https://azure.microsoft.com/pricing/details/storage/tables)」に関するページを参照してください。
 
 
+## <a name="next-steps"></a>次の手順
 
-## <a name="next-steps"></a>次のステップ
-
-- プライベート リンクの設定に関する詳細については、「[Azure Private Link を使用して、ネットワークを Azure Monitor に安全に接続する](private-link-security.md)」を参照してください。
-
+- [Azure Private Link を使用して、ネットワークを Azure Monitor に安全に接続する](private-link-security.md)方法を確認する
+- [Azure Monitor のカスタマー マネージド キー](customer-managed-keys.md)について確認する

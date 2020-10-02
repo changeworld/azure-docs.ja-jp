@@ -1,17 +1,17 @@
 ---
-title: 拡張機能 - Azure Database for PostgreSQL - Single Server
+title: 拡張子 - Azure Database for PostgreSQL - Single Server
 description: Azure Database for PostgreSQL - Single Server での PostgreSQL 拡張機能の使用の可用性について学びます。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: b97b373936f9c485eaa96cdd34ed33c49e75ad9a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 09/14/2020
+ms.openlocfilehash: 3f7796dd565238eb853fcea431a6bcb7d18ee05a
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242068"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530235"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の PostgreSQL 拡張機能
 PostgreSQL では拡張機能を使用してデータベースの機能を拡張することができます。 拡張機能により、関連する複数の SQL オブジェクトを単一のパッケージにまとめて、単一のコマンドでデータベースに対する読み込みや削除を行うことができます。 データベースに読み込まれた後、拡張機能は組み込み機能と同じように機能します。
@@ -26,7 +26,7 @@ Azure Database for PostgreSQL でサポートされる主要な拡張機能の�
 Postgres バージョン 11 を搭載した Azure Database for PostgreSQL サーバーでは、次の拡張機能を使用できます。 
 
 > [!div class="mx-tableFixed"]
-> | **拡張機能**| **拡張機能のバージョン** | **説明** |
+> | **拡張子**| **拡張機能のバージョン** | **説明** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | 構成要素へのアドレスの解析に使用されます。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Address Standardizer US データセットの例|
@@ -71,7 +71,7 @@ Postgres バージョン 11 を搭載した Azure Database for PostgreSQL サー
 Postgres バージョン 10 を搭載した Azure Database for PostgreSQL サーバーでは、次の拡張機能を使用できます。
 
 > [!div class="mx-tableFixed"]
-> | **拡張機能**| **拡張機能のバージョン** | **説明** |
+> | **拡張子**| **拡張機能のバージョン** | **説明** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | 構成要素へのアドレスの解析に使用されます。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Address Standardizer US データセットの例|
@@ -117,7 +117,7 @@ Postgres バージョン 10 を搭載した Azure Database for PostgreSQL サー
 Postgres バージョン 9.6 を搭載した Azure Database for PostgreSQL サーバーでは、次の拡張機能を使用できます。
 
 > [!div class="mx-tableFixed"]
-> | **拡張機能**| **拡張機能のバージョン** | **説明** |
+> | **拡張子**| **拡張機能のバージョン** | **説明** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.2           | 構成要素へのアドレスの解析に使用されます。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.2           | Address Standardizer US データセットの例|
@@ -163,7 +163,7 @@ Postgres バージョン 9.6 を搭載した Azure Database for PostgreSQL サ�
 Postgres バージョン 9.5 を搭載した Azure Database for PostgreSQL サーバーでは、次の拡張機能を使用できます。
 
 > [!div class="mx-tableFixed"]
-> | **拡張機能**| **拡張機能のバージョン** | **説明** |
+> | **拡張子**| **拡張機能のバージョン** | **説明** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.0           | 構成要素へのアドレスの解析に使用されます。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.0           | Address Standardizer US データセットの例|
@@ -228,7 +228,7 @@ Postgres 11 以降では、プレウォームが[自動的に](https://www.postg
 ## <a name="timescaledb"></a>TimescaleDB
 TimescaleDB は、PostgreSQL の拡張機能としてパッケージされた時系列データベースです。 TimescaleDB は、時間指向の分析関数、最適化を提供し、時系列ワークロードに合わせて PostgreSQL を拡大縮小します。
 
-[Timescale, Inc.](https://www.timescale.com/)の登録商標である[TimescaleDBの詳細をご覧ください](https://docs.timescale.com/latest)。 Azure Database for PostgreSQL には、タイムスケールのオープンソースバージョンが用意されています。 このバージョンで使用できるタイムスケール機能については、「[時系列製品の比較](https://www.timescale.com/products/)」を参照してください。
+[Timescale, Inc.](https://www.timescale.com/)の登録商標である[TimescaleDBの詳細をご覧ください](https://docs.timescale.com/latest)。 Azure Database for PostgreSQL には、TimescaleDB [Apache-2 エディション](https://www.timescale.com/legal/licenses)が用意されています。
 
 ### <a name="installing-timescaledb"></a>TimescaleDB をインストールする
 TimescaleDB をインストールするには、それをサーバーの共有プリロード ライブラリに含める必要があります。 Postgres の `shared_preload_libraries` パラメーターへの変更を有効にするには、**サーバーの再起動**が必要です。 [Azure portal](howto-configure-server-parameters-using-portal.md) または [Azure CLI](howto-configure-server-parameters-using-cli.md) を使用してパラメーターを変更できます。

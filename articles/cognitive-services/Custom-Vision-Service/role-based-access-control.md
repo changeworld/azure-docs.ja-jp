@@ -1,0 +1,50 @@
+---
+title: ロールベースのアクセス制御 - Custom Vision
+titleSuffix: Azure Cognitive Services
+description: この記事では、Custom Vision プロジェクトに対してロールベースのアクセス制御を構成する方法について説明します。
+services: cognitive-services
+author: PatrickFarley
+manager: nitinme
+ms.service: cognitive-services
+ms.subservice: custom-vision
+ms.topic: conceptual
+ms.date: 09/11/2020
+ms.author: pafarley
+ms.openlocfilehash: fc536b3b0c7af113919f274fc4bdd5fad63cbd06
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90057124"
+---
+# <a name="role-based-access-control"></a>ロールベースのアクセス制御
+
+Custom Vision では、Azure リソースへの個々のアクセスを管理するための承認システムである、Azure のロールベースのアクセス制御 (Azure RBAC) がサポートされています。 RBAC を使用すると、チーム メンバーによって異なる Custom Vision プロジェクトに対するアクセス許可レベルを割り当てることができます。 RBAC の詳細については、「[Azure RBAC のドキュメント](https://docs.microsoft.com/azure/role-based-access-control/)」を参照してください。
+
+## <a name="add-role-assignment-to-custom-vision-resource"></a>Custom Vision リソースへのロールの割り当ての追加
+
+Azure RBAC は、Custom Vision リソースに割り当てることができます。 Azure リソースへのアクセス権を付与するには、ロールの割り当てを追加します。
+1. [Azure portal](https://ms.portal.azure.com/) で **[すべてのサービス]** を選択します。 
+1. 次に、 **[Cognitive Services]** を選択し、特定の Custom Vision トレーニング リソースに移動します。
+   > [!NOTE]
+   > また、リソース グループ、サブスクリプション、または管理グループ全体に対して RBAC を設定することもできます。 これを行うには、目的のスコープ レベルを選択し、目的の項目に移動します (たとえば、 **[リソース グループ]** を選択し、目的のリソース グループをクリックします)。
+1. 左側のナビゲーション ウィンドウで **[アクセス制御 (IAM)]** を選択します。
+1. **[ロールの割り当て]** タブを選択して、このスコープのロールの割り当てを表示します。
+1. **[追加]**  ->  **[ロール割り当ての追加]** の順に選択します。
+1. **[ロール]** ドロップダウン リストで追加するロールを選択します。
+1. **[選択]** 一覧で、ユーザー、グループ、サービス プリンシパル、またはマネージド ID を選択します。 一覧にセキュリティ プリンシパルが表示されない場合には、[選択] ボックスに表示名、メール アドレス、オブジェクト識別子を入力してディレクトリを検索します。
+1. **[保存]** を選択してロールを割り当てます。
+
+数分以内に、選択したスコープで選択したロールがターゲットに割り当てられます。
+
+## <a name="custom-vision-role-types"></a>Custom Vision ロールの種類
+
+次の表を使用して、Custom Vision リソースのアクセス ニーズを判断してください。
+
+|Role  |アクセス許可  |
+|---------|---------|
+|`Cognitive Service Custom Vision Contributor`     | プロジェクトの作成、編集、または削除を含む、プロジェクトへのフル アクセス。        |
+|`Cognitive Service Custom Vision Trainer`     | プロジェクトの作成または削除を除くフル アクセス。 トレーナーは、プロジェクトの表示と編集、モデルのトレーニング、公開、非公開、エクスポートを行うことができます。        |
+|`Cognitive Service Custom Vision Labeler`     | トレーニング画像のアップロード、編集、または削除、タグの作成、追加、削除、または削除を行うことができます。 ラベラーはプロジェクトを表示できますが、トレーニング画像とタグ以外は更新できません。         |
+|`Cognitive Service Custom Vision Deployment`     | モデルの公開、非公開、またはエクスポートができます。 デプロイ担当者はプロジェクトを表示できますが、プロジェクト、トレーニング画像、タグを更新することはできません。        |
+|`Cognitive Service Custom Vision Reader`     | プロジェクトを表示できます。 閲覧者は変更を加えることはできません。        |

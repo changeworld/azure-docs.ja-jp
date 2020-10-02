@@ -4,12 +4,12 @@ description: Azure Monitor におけるアクション ルールとはどのよ�
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 083db4ad046ee586f139309b62eedf0fcc2ffa6a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 723da36093c895a3a4aefbe66c2d8ca2ac0cba32
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045720"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983143"
 ---
 # <a name="action-rules-preview"></a>アクション ルール (プレビュー)
 
@@ -44,11 +44,11 @@ Azure Monitor の**アラート** ランディング ページから **[アク�
 
 **[+ New Action Rule]\(+ 新しいアクション ルール\)** を選択します。
 
-![新しいアクション ルールを追加する](media/alerts-action-rules/action-rules-new-rule.png)
+![スクリーンショットには、[アクションの管理] ページが表示され、[New Action Rule]\(新しいアクション ルール\) ボタンが強調表示されています。](media/alerts-action-rules/action-rules-new-rule.png)
 
 または、警告ルールを構成するときにアクション ルールを作成できます。
 
-![新しいアクション ルールを追加する](media/alerts-action-rules/action-rules-alert-rule.png)
+![スクリーンショットには、[ルールの作成] ページが表示され、[アクション ルールを作成] ボタンが強調表示されています。](media/alerts-action-rules/action-rules-alert-rule.png)
 
 アクション ルールを作成するためのフロー ページは次のとおりです。 次の要素を構成します。
 
@@ -255,7 +255,7 @@ az monitor action-rule delete --resource-group MyResourceGroupName --name MyActi
 
 [結果の数](alerts-unified-log.md)オプションで作成したログ アラートでは、検索結果全体を使用して 1 つのアラート インスタンスが生成されます (たとえば、複数のコンピューターが含まれる可能性があります)。 このシナリオでは、アクション ルールで**アラート コンテキスト (ペイロード)** フィルターが使用される場合、一致する限りアラート インスタンスに対して作用します。 前に説明したシナリオ 2 では、生成されたログ アラートの検索結果に、**Computer-01** と **Computer-02** の両方が含まれる場合は、通知全体が抑制されます。 つまり、**Computer-02** に対しても通知はまったく生成されません。
 
-![アクション ルールとログ アラート (結果の数)](media/alerts-action-rules/action-rules-log-alert-number-of-results.png)
+![アクション ルールとログ アラートの図。アラート インスタンスが 1 つ強調表示されています。](media/alerts-action-rules/action-rules-log-alert-number-of-results.png)
 
 アクション ルールでログ アラートを最適に利用するには、[メトリック測定](alerts-unified-log.md)オプションを使ってログ アラートを作成します。 このオプションを使用すると、その定義されたグループ フィールドに基づいて個別のアラート インスタンスが生成されます。 シナリオ 2 では、**Computer-01** と **Computer-02** に対して個別のアラート インスタンスが生成されます。 シナリオで説明されているアクション ルールに従って、**Computer-01** の通知のみが抑制されます。 **Computer-02** の通知は、引き続き通常どおり起動されます。
 
@@ -272,7 +272,7 @@ az monitor action-rule delete --resource-group MyResourceGroupName --name MyActi
 * スーパーセット: たとえば、定義しているアクション ルールはリソース グループに対するもので、重複するアクション ルールはそのリソース グループを含むサブスクリプションに対するものです。
 * 交差: たとえば、定義しているアクション ルールは **VM1** と **VM2** に対するもので、重複するアクション ルールは **VM2** と **VM3** に対するものです。
 
-![アクション ルールの重複](media/alerts-action-rules/action-rules-overlapping.png)
+![[新しいアクション ルール] ページのスクリーンショット。同じスコープ ウィンドウで定義されているアクション ルールに重複するアクション ルールが表示されています。](media/alerts-action-rules/action-rules-overlapping.png)
 
 ### <a name="while-im-configuring-an-alert-rule-is-it-possible-to-know-if-there-are-already-action-rules-defined-that-might-act-on-the-alert-rule-im-defining"></a>警告ルールを構成するとき、定義している警告ルールに作用する可能性のあるアクション ルールが既に定義されているかどうかを確認することはできますか?
 

@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 09/08/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 84a5b1cd7b2229defd4e38a227f75cfbf9ebdd95
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 8d1e2454dc4b9a9fbc85d2e5edc5ba3ede33f9c0
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933666"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595653"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Monitor ログで使用量とコストを管理する    
 
@@ -160,13 +160,16 @@ Log Analytics [消去 API](https://docs.microsoft.com/rest/api/loganalytics/work
 /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent
 ```
 
-データの種類 (テーブル) では大文字と小文字が区別されることに注意してください。  特定のデータの種類 (この例では SecurityEvent) におけるデータの種類別リテンション期間設定の現在の値を取得するには、次を使用します。
+データの種類 (テーブル) では大文字と小文字が区別されることに注意してください。  特定のデータ型 (この例では SecurityEvent) について、データ型別のリテンション期間の現在の設定を取得するには、次を使用します。
 
 ```JSON
     GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent?api-version=2017-04-26-preview
 ```
 
-ご利用のワークスペース内のすべてのデータの種類について、データの種類別リテンション期間設定の現在の値を取得するには、次のように特定のデータの種類を省略します。
+> [!NOTE]
+> データ型のリテンション期間は、そのデータ型に対して明示的に設定されている場合にのみ返されます。  リテンション期間が明示的に設定されていない (そのため、ワークスペースのリテンション期間を継承する) データ型は、この呼び出しからは何も返しません。 
+
+ご使用のワークスペース内の、データ型別のリテンション期間が設定されているすべてのデータ型について、データ型別のリテンション期間の現在の設定を取得するには、次のように特定のデータ型を単に省略します。
 
 ```JSON
     GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables?api-version=2017-04-26-preview
@@ -575,7 +578,7 @@ union *
 - **[アラートの条件を定義します]** では、リソース ターゲットとして Log Analytics ワークスペースを指定します。
 - **[アラートの条件]** では、以下を指定します。
    - **[シグナル名]** では、 **[カスタム ログ検索]** を選択します。
-   - **[検索クエリ]** : `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50`。 
+   - **[検索クエリ]** : `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50`。 他のものが必要な場合 
    - **[アラート ロジック]** は "*結果の数*" **に基づき、** **[条件]** は**しきい値**の *0* "*より大きい*" です
    - 1 日に 1 回実行するため、 **[期間]** を *1,440* 分に設定し、 **[アラートの頻度]** を *1,440* 分間隔に設定します。
 - **[アラートの詳細を定義します]** では、以下を指定します。
@@ -604,7 +607,7 @@ Operation | where OperationCategory == 'Data Collection Status'
 |収集が停止する原因| 解決策| 
 |-----------------------|---------|
 |ワークスペースの 1 日あたりの上限に達した|収集が自動的に再開されるまで待つか、「最大日次データ ボリュームを管理する」で説明されているようにして 1 日のデータ ボリューム制限を増やします。 日次上限のリセット時間が **[日次上限]** ページに表示されます。 |
-| お使いのワークスペースが[データ インジェストのボリューム レート](https://docs.microsoft.com/azure/azure-monitor/service-limits#log-analytics-workspaces)に達しました | ワークスペースには、既定のインジェスト ボリューム レートのしきい値である 500 MB (圧縮) が適用されており、これは約 **6 GB/分** (非圧縮) に相当します。実際のサイズは、ログの長さとその圧縮率に左右され、データの種類によって異なることがあります。 このしきい値は、[診断設定](diagnostic-settings.md)、[Data Collector API](data-collector-api.md)、エージェントのどれを使用して Azure リソースから送信されたかを問わず、すべてのインジェスト データに適用されます。 ワークスペースに構成されているしきい値の 80% を超えるボリューム レートでワークスペースにデータを送信すると、しきい値を超え続けている間、6 時間ごとにワークスペースの *Operation* テーブルにイベントが送信されます。 インジェスト ボリューム レートがしきい値を超えると、一部のデータが削除され、しきい値を超え続けている間、6 時間ごとにワークスペースの *Operation* テーブルにイベントが送信されます。 インジェスト ボリューム レートがしきい値を超え続けている場合、または間もなくそれに達すると予測される場合は、サポート リクエストを開き、ワークスペースでのしきい値の引き上げを依頼できます。 ワークスペースでのそのようなイベントについて通知を受けるには、ゼロより大きい結果数、5 分間の評価期間、5 分間の頻度に基づくアラート ロジックを使った次のクエリを使用して、[ログ アラート ルール](alerts-log.md)を作成します。 インジェスト ボリューム レートがしきい値の 80% に到達した場合: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"`。 インジェスト ボリューム レートがしきい値に到達した場合: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed the threshold"`。 |
+| お使いのワークスペースが[データ インジェストのボリューム レート](https://docs.microsoft.com/azure/azure-monitor/service-limits#log-analytics-workspaces)に達しました | 診断設定を利用して Azure リソースから送信されるデータの既定のインジェスト ボリューム レート上限はワークスペースあたり約 6 GB/分です。 これは概算値であり、実際のサイズはログの長さとその圧縮率に左右され、データの種類によって異なることがあります。 この上限は、エージェントまたはデータ コレクター API から送信されるデータには適用されません。 1 つのワークスペースに高い比率でデータを送信すると、一部のデータが削除され、しきい値を超え続けている間、6 時間ごとにワークスペースの操作テーブルにイベントが送信されます。 インジェスト ボリュームがインジェスト率の制限を超えている場合、または間もなくそれに達すると予測される場合は、LAIngestionRate@microsoft.com にメールを送信するかサポート リクエストを開いて、ワークスペースの増加を要求できます。 データ インジェスト レート制限を示すイベントは、クエリ `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The rate of data crossed the threshold"` によって見つけることができます。 |
 |レガシの無料価格レベルの 1 日の制限に到達している |収集が自動的に再開される次の日まで待つか、または有料の価格レベルに変更します。|
 |次のために、Azure サブスクリプションが中断された状態にある<br> 無料試用版が終了した<br> Azure パスの期限が切れた<br> 1 月の使用制限に達した (たとえば、MSDN または Visual Studio サブスクリプションで)|有料のサブスクリプションに変換する<br> 制限を削除するか、または制限がリセットされるまで待つ|
 

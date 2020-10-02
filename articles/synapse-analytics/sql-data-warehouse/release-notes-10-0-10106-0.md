@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 01b6a72dfe3180324919fd712412ae88578c641b
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 6f7af74cce6bbafea7924d505f768503c7b1f108
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047454"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89457993"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics リリース ノート
 
@@ -35,7 +35,7 @@ ms.locfileid: "89047454"
 > ```sql
 > SELECT SERVERPROPERTY('ProductVersion')
 >
-> --To return engine edition, use this command that returns 6 for Azure Synapse Analytics (Formerly SQL Data Warehouse):
+> --To return engine edition, use this command that returns 6 for Azure Synapse Analytics (formerly SQL Data Warehouse):
 >
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
@@ -51,7 +51,7 @@ ms.locfileid: "89047454"
 
 | サービスの機能強化 | 詳細 |
 | --- | --- |
-|**列レベルの暗号化 (パブリック プレビュー)**|Transact-SQL を使用してデータの列に対称暗号化を適用することで、Synapse SQL データ ウェアハウス内の機密情報を保護します。 列レベルの暗号化には、証明書、パスワード、対称キー、または非対称キーでさらに保護される対称キーを使用してデータを暗号化するために使用できる、組み込み関数が用意されています。 詳細については、「[データの列の暗号化](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest)」を参照してください。|
+|**列レベルの暗号化 (パブリック プレビュー)**|Transact-SQL を使用してデータの列に対称暗号化を適用することで、Azure Synapse Analytics 内の機密情報を保護します。 列レベルの暗号化には、証明書、パスワード、対称キー、または非対称キーでさらに保護される対称キーを使用してデータを暗号化するために使用できる、組み込み関数が用意されています。 詳細については、「[データの列の暗号化](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest)」を参照してください。|
 |**互換性レベルのサポート (GA)**|ユーザーはこのリリースで、Synapse SQL エンジンの特定のバージョンの Transact-SQL 言語とクエリ処理の動作を使用できるよう、データベースの互換性レベルを設定できるようになりました。 詳細については、「[sys.database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」と「[データベース スコープ構成の変更](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。|
 |**行レベルのセキュリティ**|このリリースには、RLS が適用された行に対する更新および削除の操作の改善が含まれています。 このリリースでは、組み込み関数で DML ターゲット テーブルの列が参照されていない場合、"is_rolemember" のような組み込み関数での更新操作と削除操作は成功します。 この改善の前は、これらの操作は、基になる DML 操作での制限のために失敗しました。|
 |**DBCC SHRINKDATABASE (GA)**|指定したデータベース内のデータ ファイルとログ ファイルのサイズを圧縮できるようになりました。 詳細については、この[ドキュメント](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql?view=sql-server-ver15)を参照してください。|

@@ -4,12 +4,12 @@ description: Application Insights の使用を開始します。 オンプレミ
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.openlocfilehash: d624286d214a86364fe85192bf5ede885d4b6a78
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f84e1065f93fc2cca950f12d5df537b931faac8d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323453"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987154"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Web アプリケーションのパフォーマンスを監視する
 
@@ -112,11 +112,11 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 
 この操作のユーザー エクスペリエンスをより深く理解するために、より長い時間範囲を選択することができます。 また、操作が低速な特定の時間枠で時間を絞り込むこともできます。 次の例では、既定の 24 時間の時間範囲から 7 日間の時間範囲に切り替えた後、12 日 (火) から 13 日 (水) の 9:47 ～ 12:47 の時間枠にズームインしています。 右側では期間分布と、サンプルとプロファイラー トレースの数が両方とも更新されています。
 
-![7 日間の範囲と時間枠における [GET Customers/Details]\(顧客/詳細の取得\) の 3 つの期間スパイク](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrend.png)
+![パフォーマンス (プレビュー) のスクリーンショット。1 つの時間枠で 7 日間という範囲に期間スパイクが 3 つあります。](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrend.png)
 
 次に、低速なエクスペリエンスを絞り込むために、95 番目から 99 番目のパーセンタイルまでの期間にズームインします。 これらは、ユーザーの操作のうち低速な 4% を表します。
 
-![7 日間の範囲と時間枠における [GET Customers/Details]\(顧客/詳細の取得\) の 3 つの期間スパイク](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrendZoomed95th99th.png)
+![7 日間の範囲と時間枠における [GET Customers/Details]\(顧客/詳細の取得\) の 3 つの期間スパイクのスクリーンショット。](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrendZoomed95th99th.png)
 
 ここで、[サンプル] ボタンをクリックして代表的なサンプルを見たり、[Profiler traces]\(Profiler トレース\) ボタンをクリックして代表的なプロファイラー トレースを見たりできます。 この例には、対象の時間枠と範囲期間で、[GET Customers/Details]\(顧客/詳細の取得\) 操作について収集された 4 つのトレースがあります。
 
@@ -126,7 +126,7 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 
 パフォーマンス調査によって、重点としたサンプル セットと共に関連情報が表示されます。 利用可能なすべての洞察を調べる最も良い方法は、30 日間の時間範囲に切り替えた後、[Overall]\(全体\) を選択して、過去 1 か月間のすべての操作についての分析を表示することです。
 
-![7 日間の範囲と時間枠における [GET Customers/Details]\(顧客/詳細の取得\) の 3 つの期間スパイク](./media/web-monitor-performance/Performance30DayOveralllnsights.png)
+![パフォーマンス (プレビュー) のスクリーンショット。[Overall]\(全体\) ウィンドウが開いており、[分析情報] が選択されています。](./media/web-monitor-performance/Performance30DayOveralllnsights.png)
 
 
 ## <a name="next-steps"></a><a name="next"></a>次のステップ

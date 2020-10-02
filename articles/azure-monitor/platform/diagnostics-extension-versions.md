@@ -6,12 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/29/2020
-ms.openlocfilehash: 16fba1f036299a84db8301dbc09c7f4884d985f3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9fa0fbea9a6c0e95eb9bec2795ae12e5fae36bfb
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87305093"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568662"
 ---
 # <a name="windows-azure-diagnostics-extension-wad-configuration-schema-versions-and-history"></a>Windows Azure Diagnostics 拡張機能 (WAD) の構成スキーマのバージョンと履歴
 この記事では、Microsoft Azure SDK の一部として付属している、[Windows 用の Azure Diagnostics 拡張機能 (WAD)](diagnostics-extension-overview.md) スキーマ バージョンのバージョン履歴を提供します。  
@@ -160,7 +160,7 @@ Sink 要素と、診断データを [Application Insights](../app/cloudservices.
 ### <a name="azure-sdk-26-and-diagnostics-extension-13"></a>Azure SDK 2.6 と診断拡張 1.3
 Visual Studio のクラウド サービス プロジェクトで、次の変更が行われました (これらの変更はそれ以降のバージョンの Azure SDK にも当てはまります)。
 
-* ローカル エミュレーターで診断がサポートされるようになりました。 この変更により、Visual Studio での開発およびテスト時に診断データを収集し、開発中のアプリケーションで正しくトレースが作成されることを確認できるようになりました。 Visual Studio で Azure ストレージ エミュレーターを使ってクラウド サービス プロジェクトを実行している間に行われる診断データ収集が、接続文字列 `UseDevelopmentStorage=true` を指定すると有効になります。 すべての診断データは、(開発ストレージ) ストレージ アカウントに収集されます。
+* ローカル エミュレーターで診断がサポートされるようになりました。 この変更により、Visual Studio での開発およびテスト時に診断データを収集し、開発中のアプリケーションで正しくトレースが作成されることを確認できるようになりました。 接続文字列 `UseDevelopmentStorage=true` を指定すると、Visual Studio で Azure Storage エミュレーターを使ってクラウド サービス プロジェクトを実行している間に診断データを収集できます。 すべての診断データは、(開発ストレージ) ストレージ アカウントに収集されます。
 * 診断ストレージ アカウントの接続文字列 (Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString) の保存先が、再びサービス構成 (.cscfg) ファイルに戻されました。 Azure SDK 2.5 では、診断ストレージ アカウントが diagnostics.wadcfgx ファイルで指定されていました。
 
 Azure SDK 2.4 以前と Azure SDK 2.6 以降とで、接続文字列の働きに大きな違いがいくつかあります。

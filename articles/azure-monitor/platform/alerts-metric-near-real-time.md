@@ -7,12 +7,12 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 8/20/2020
 ms.subservice: alerts
-ms.openlocfilehash: 05586f95de03b09b95eb589812935970126b12f2
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 8a608e43ef41abfb7002811df5629eb789c3ae22
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661318"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595582"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure Monitor のメトリック アラートでサポートされるリソース
 
@@ -112,7 +112,7 @@ Azure Monitor が[新しいタイプのメトリック アラート](./alerts-ov
 |Microsoft.Web/sites | はい | いいえ | [App Services](./metrics-supported.md#microsoftwebsites-excluding-functions) と [Functions](./metrics-supported.md#microsoftwebsites-functions)|
 |Microsoft.Web/sites/slots | はい | いいえ | [App Service スロット](./metrics-supported.md#microsoftwebsitesslots)|
 
-<sup>1</sup> (カスタム メトリックではなく) プラットフォーム メトリックのみでサポートされます
+<sup>1</sup> 仮想マシンのネットワーク メトリック (受信ネットワーク合計、送信ネットワーク合計、受信フロー数、送信フロー数、受信フローの最大作成速度、送信フローの最大作成速度) およびカスタム メトリックに対してはサポートされていません。
 
 ## <a name="payload-schema"></a>ペイロード スキーマ
 

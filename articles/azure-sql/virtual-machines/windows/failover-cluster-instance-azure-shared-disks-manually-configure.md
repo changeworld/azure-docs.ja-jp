@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: ffb739affac68898f6ed5ff1d972d3fd4a70df2f
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: ddd6e08d9be36035b2db02ec5feb3ae4e957ec49
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055262"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604446"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Azure 共有ディスクを使用して FCI を作成する (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -33,13 +33,13 @@ ms.locfileid: "89055262"
 この記事に記載されている手順を完了するには、次のものが必要です。
 
 - Azure サブスクリプション。 [無料](https://azure.microsoft.com/free/)で開始しましょう。 
-- 同じ[可用性セット](../../../virtual-machines/linux/tutorial-availability-sets.md)と[近接配置グループ](../../../virtual-machines/windows/co-location.md#proximity-placement-groups)に含まれる、[2 つ以上の米国中西部の準備済み Windows Azure 仮想マシン](failover-cluster-instance-prepare-vm.md)。可用性セットは、障害ドメインと更新ドメインを **1** に設定して作成する必要があります。 
+- [2 台以上の Windows Azure 仮想マシン](failover-cluster-instance-prepare-vm.md)。 [可用性セット](../../../virtual-machines/windows/tutorial-availability-sets.md)と[近接通信配置グループ](../../../virtual-machines/windows/co-location.md#proximity-placement-groups) (PPG) の両方がサポートされています。 PPG を使用する場合、すべてのノードが同じグループ内にある必要があります。
 - Azure の仮想マシンと Active Directory の両方にオブジェクトを作成するためのアクセス許可を持つアカウント。
 - 最新バージョンの [PowerShell](/powershell/azure/install-az-ps?view=azps-4.2.0)。 
 
 
 ## <a name="add-azure-shared-disk"></a>Azure 共有ディスクを追加する
-共有ディスク機能を有効にしてマネージド Premium SSD ディスクをデプロイします。 `maxShares` を **2** に設定して、両方の FCI ノード間でディスクを共有できるようにします。 
+共有ディスク機能を有効にしてマネージド Premium SSD ディスクをデプロイします。 `maxShares` に設定し、**クラスター ノードの数に合わせる**と、全 FCI ノード間でディスクが共有可能になります。 
 
 次の手順に従って、Azure 共有ディスクを追加します。 
 
@@ -161,7 +161,7 @@ UI を使用してクラスターを検証するには、いずれかの仮想�
 
 ## <a name="test-cluster-failover"></a>クラスターのフェールオーバーをテストする
 
-クラスターのフェールオーバーをテストします。 **[フェールオーバー クラスター マネージャー]** で、クラスターを右クリックし、 **[その他の操作]**  >  **[Move Core Cluster Resource]\(コア クラスター リソースの移動\)**  >  **[ノードの選択]** の順に選択した後、クラスターの他のノードを選択します。 コア クラスター リソースをクラスターのすべてのノードに移動してから、プライマリ ノードに戻します。 クラスターを各ノードに正常に移動できる場合は、SQL Server をインストールする準備ができています。  
+クラスターのフェールオーバーをテストします。 **[フェールオーバー クラスター マネージャー]** で、クラスターを右クリックし、 **[その他の操作]**  >  **[コア クラスター リソースの移動]**  >  **[ノードの選択]** の順に選択した後、クラスターの他のノードを選択します。 コア クラスター リソースをクラスターのすべてのノードに移動してから、プライマリ ノードに戻します。 クラスターを各ノードに正常に移動できる場合は、SQL Server をインストールする準備ができています。  
 
 :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="コア リソースを他のノードに移動して、クラスター フェールオーバーをテストする":::
 
@@ -213,11 +213,10 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>接続の構成 
 
-現在のプライマリ ノードに適切にトラフィックをルーティングするには、お使いの環境に適した接続オプションを構成します。 [Azure Load Balancer](hadr-vnn-azure-load-balancer-configure.md) を作成するか、または SQL Server 2019 と Windows Server 2016 (以降) を使用している場合は、代わりに[分散ネットワーク名](hadr-distributed-network-name-dnn-configure.md)機能をプレビューできます。 
+現在のプライマリ ノードに適切にトラフィックをルーティングするには、お使いの環境に適した接続オプションを構成します。 [Azure Load Balancer](hadr-vnn-azure-load-balancer-configure.md) を作成するか、または SQL Server 2019 CU2+ と Windows Server 2016 (以降) を使用している場合は、代わりに[分散ネットワーク名](hadr-distributed-network-name-dnn-configure.md)機能をプレビューできます。 
 
 ## <a name="limitations"></a>制限事項
 
-- Windows Server 2019 上の SQL Server 2019 のみがサポートされています。 
 - [軽量管理モード](sql-vm-resource-provider-register.md#management-modes)での SQL VM リソース プロバイダーへの登録のみがサポートされています。
 
 ## <a name="next-steps"></a>次のステップ

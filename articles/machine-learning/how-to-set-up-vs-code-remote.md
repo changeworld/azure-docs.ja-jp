@@ -1,7 +1,7 @@
 ---
-title: '対話型デバッグ: VS Code および ML のコンピューティング インスタンス (プレビュー)'
+title: Visual Studio Code でコンピューティング インスタンスに接続する (プレビュー)
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning で自分のコードを対話形式でデバッグできるように VS Code Remote を設定します。
+description: Visual Studio Code で Azure Machine Learning コンピューティング インスタンスに接続する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,34 +9,73 @@ ms.topic: conceptual
 ms.custom: how-to
 ms.author: jmartens
 author: j-martens
-ms.date: 08/06/2020
-ms.openlocfilehash: 37d0ec0295d76f740b2e8bf70ae72f0c95e68d14
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.date: 09/03/2020
+ms.openlocfilehash: 2c7ff633705d3db327c563b41ce199a5342dda82
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904481"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461563"
 ---
-# <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote-preview"></a>VS Code Remote を使用して Azure Machine Learning コンピューティング インスタンス上で対話形式でデバッグする (プレビュー)
+# <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>Visual Studio Code で Azure Machine Learning コンピューティング インスタンスに接続する (プレビュー)
 
-この記事では、VS Code から**自分のコードを対話形式でデバッグ**できるように、Azure Machine Learning コンピューティング インスタンスに対して Visual Studio Code Remote 拡張機能を設定する方法について説明します。
+この記事では、Visual Studio Code を使用して Azure Machine Learning コンピューティング インスタンスに接続する方法について説明します。
 
-* [Azure Machine Learning コンピューティング インスタンス](concept-compute-instance.md)は、データ サイエンティスト向けのクラウドベースのフルマネージド ワークステーションであり、IT 管理者用の管理およびエンタープライズ対応機能を備えています。 
+[Azure Machine Learning コンピューティング インスタンス](concept-compute-instance.md)は、データ サイエンティスト向けのクラウドベースのフルマネージド ワークステーションであり、IT 管理者用の管理およびエンタープライズ対応機能を備えています。
 
-* [Visual Studio Code Remote](https://code.visualstudio.com/docs/remote/remote-overview) Development を使用すると、コンテナー、リモート コンピューター、または Linux 用 Windows サブシステム (WSL) を完全な機能を備えた開発環境として使用できるようになります。 
+Visual Studio Code からコンピューティング インスタンスに接続するには、次の 2 つの方法があります。
 
-## <a name="prerequisite"></a>前提条件  
+* リモート Jupyter Notebook サーバー。 このオプションを使用すると、コンピューティング インスタンスをリモート Jupyter Notebook サーバーとして設定できます。
+* [Visual Studio Code リモート開発](https://code.visualstudio.com/docs/remote/remote-overview) Visual Studio Code リモート開発を使用すると、コンテナー、リモート コンピューター、または Linux 用 Windows サブシステム (WSL) を完全な機能を備えた開発環境として使用できるようになります。
 
-* SSH 対応のコンピューティング インスタンス。 詳細については、[コンピューティング インスタンスの作成ガイドを参照してください](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance#create)。
-* Windows プラットフォーム上で、まだ存在していない場合に [OpenSSH と互換性のある SSH クライアントをインストール](https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client)する必要があります。 
+## <a name="configure-compute-instance-as-remote-notebook-server"></a>コンピューティング インスタンスをリモート ノートブック サーバーとして構成する
 
-> [!Note]
-> PuTTY は Windows ではサポートされていません。パスに ssh コマンドを含める必要があるからです。 
+コンピューティング インスタンスをリモート Jupyter Notebook サーバーとして構成するには、いくつかの前提条件が必要です。
 
-## <a name="get-the-ip-and-ssh-port-for-your-compute-instance"></a>コンピューティング インスタンスの IP と SSH のポートを取得する
+* Visual Studio Code の Azure Machine Learning 拡張機能 詳細については、[Visual Studio Code の Azure Machine Learning 拡張機能セットアップ ガイド](tutorial-setup-vscode-extension.md)を参照してください。
+* Azure Machine Learning ワークスペース。 まだ用意していない場合は、[Visual Studio Code の Azure Machine Learning 拡張機能を使用して新しいワークスペースを作成](how-to-manage-resources-vscode.md#create-a-workspace)します。
+
+コンピューティング インスタンスに接続するには、次のようにします。
+
+1. Visual Studio Code で Jupyter Notebook を開きます。
+1. 統合ノートブックのエクスペリエンスが読み込まれたら、**Jupyter Server** を選択します。
+
+    > [!div class="mx-imgBorder"]
+    > ![Launch Azure Machine Learning のリモート Jupyter Notebook サーバー ドロップダウン](media/how-to-set-up-vs-code-remote/launch-server-selection-dropdown.png)
+
+    または、次のようにコマンド パレットを使用することもできます。
+
+    1. メニュー バーから **[表示]、[コマンド パレット]** の順に選択して、コマンド パレットを開きます。
+    1. テキストボックスに「`Azure ML: Connect to Compute instance Jupyter server`」と入力します。
+
+1. Jupyter サーバー オプションの一覧から [`Azure ML Compute Instances`] を選択します。
+1. サブスクリプションの一覧からご利用のサブスクリプションを選択します。 既定の Azure Machine Learning ワークスペースをあらかじめ構成済みである場合、この手順はスキップされます。
+1. ワークスペースを選択します。
+1. 一覧から自分のコンピューティング インスタンスを選択します。 それがない場合は、 **[Create new Azure ML Compute Instance]\(新しい Azure ML コンピューティング インスタンスを作成する\)** を選択し、プロンプトに従って作成します。
+1. 変更を有効にするには、Visual Studio Code を再度読み込む必要があります。
+1. Jupyter Notebook を開き、セルを実行します。
+
+> [!IMPORTANT]
+> 接続を確立するために、セルを実行する**必要があります**。
+
+この時点では、ご利用の Jupyter Notebook でセルを実行し続けることができます。
+
+> [!TIP]
+> Jupyter のようなコード セルを含む Python スクリプト ファイル (.py) を操作することもできます。 詳細については、[Visual Studio Code Python Interactive のドキュメント](https://code.visualstudio.com/docs/python/jupyter-support-py)を参照してください。
+
+## <a name="configure-compute-instance-remote-development"></a>コンピューティング インスタンス リモート開発を構成する
+
+完全な機能を備えたリモート開発エクスペリエンスを実現するには、いくつかの前提条件が必要です。
+
+* [Visual Studio Code リモート SSH 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh)。
+* SSH 対応のコンピューティング インスタンス。 詳細については、[コンピューティング インスタンスの作成に関するガイド](concept-compute-instance.md#create)を参照してください。
+
+> [!NOTE]
+> Windows プラットフォーム上で、まだ存在していない場合に [OpenSSH と互換性のある SSH クライアントをインストール](https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client)する必要があります。 PuTTY は Windows ではサポートされていません。パスに ssh コマンドを含める必要があるからです。
+
+### <a name="get-the-ip-and-ssh-port-for-your-compute-instance"></a>コンピューティング インスタンスの IP と SSH のポートを取得する
 
 1. https://ml.azure.com/ で Azure Machine Learning Studio に移動します。
-
 2. ご利用の[ワークスペース](concept-workspace.md)を選択します。
 1. **[コンピューティング インスタンス]** タブをクリックします。
 1. **[アプリケーション URI]** 列で、リモート コンピューティングとして使用するコンピューティング インスタンスの **SSH** リンクをクリックします。 
@@ -73,9 +112,9 @@ ms.locfileid: "87904481"
    chmod 600 ~/.ssh/id_azmlcitest_rsa
    ```
 
-## <a name="add-instance-as-a-host"></a>インスタンスをホストとして追加する
+### <a name="add-instance-as-a-host"></a>インスタンスをホストとして追加する
 
-ファイル `~/.ssh/config` (Linux) または `C:\Users<username>.ssh\config` (Windows) をエディターで開き、次のような新しいエントリを追加します。
+ファイル `~/.ssh/config` (Linux) または `C:\Users<username>.ssh\config` (Windows) をエディターで開き、次のような内容の新しいエントリを追加します。
 
 ```
 Host azmlci1 
@@ -101,13 +140,9 @@ Host azmlci1
 
 これで、前に使用した短縮形 `ssh azmlci1` を使用して、ご利用のコンピューティング インスタンスに ssh 接続できるようになったはずです。
 
-## <a name="connect-vs-code-to-the-instance"></a>インスタンスに VS Code を接続する
+### <a name="connect-vs-code-to-the-instance"></a>インスタンスに VS Code を接続する
 
-1. [Visual Studio Code をインストールする](https://code.visualstudio.com/)。
-
-1. [リモート SSH 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh)をインストールします。
-
-1. 左側の [リモート SSH] アイコンをクリックして、自分の SSH 構成を表示します。
+1. Visual Studio Code アクティビティ バーの [リモート SSH] アイコンをクリックして、ご利用の SSH 構成を表示します。
 
 1. 作成したばかりの SSH ホスト構成を右クリックします。
 

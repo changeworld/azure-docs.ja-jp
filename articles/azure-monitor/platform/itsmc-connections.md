@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: bf1721b45ff63c225c378e50bff9040948820c8b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 9d037fa0faa1419e4cd1b600eea1b3b3eb0a29c0
+ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035027"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90058769"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM 製品/サービスを IT Service Management Connector に追加する
 この記事では、ITSM 製品/サービスと Log Analytics の IT Service Management Connector (ITSMC) の間の接続を構成して、作業項目を一元的に管理する方法に関する情報を提供します。 ITSMC の詳細については、[概要](./itsmc-overview.md)に関する記事をご覧ください。
@@ -25,7 +25,8 @@ ms.locfileid: "88035027"
 
 > [!NOTE]
 > 
-> ITSM Connector は、クラウドベースの ServiceNow インスタンスにのみ接続できます。 オンプレミスの ServiceNow インスタンスは現在サポートされていません。
+> 2020 年 10 月 1 日以降、新規のお客様が Cherwell と Provance ITSM を Azure Alert と統合することはできなくなります。 新しい ITSM 接続はサポートされません。 
+> 既存の ITSM 接続はサポートされます。
 
 ## <a name="connect-system-center-service-manager-to-it-service-management-connector-in-azure"></a>System Center Service Manager を Azure の IT Service Management Connector に接続する
 
@@ -40,6 +41,10 @@ ms.locfileid: "88035027"
 - ハイブリッド接続が作成および構成されている。 詳細情報: [ハイブリッド接続の構成](#configure-the-hybrid-connection)。
 - サポートされている Service Manager のバージョン: 2012 R2 または 2016。
 - ユーザー ロール: [上級オペレーター](/previous-versions/system-center/service-manager-2010-sp1/ff461054(v=technet.10))。
+
+> [!NOTE]
+> 
+> ITSM Connector は、クラウドベースの ServiceNow インスタンスにのみ接続できます。 オンプレミスの ServiceNow インスタンスは現在サポートされていません。
 
 ### <a name="connection-procedure"></a>接続手順
 
@@ -298,6 +303,10 @@ ServiceNow 接続を作成するには、次の手順に従います。
 
 以降のセクションでは、Provance 製品を Azure の ITSMC に接続する方法について詳細に説明します。
 
+> [!NOTE]
+> 
+> 2020 年 10 月 1 日以降、新規のお客様が Provance ITSM を Azure Alert と統合することはできなくなります。 新しい ITSM 接続はサポートされません。 
+> 既存の ITSM 接続はサポートされます。
 
 ### <a name="prerequisites"></a>前提条件
 
@@ -352,6 +361,11 @@ Provance 接続を作成するには、次の手順に従います。
 
 以降のセクションでは、Cherwell 製品を Azure の ITSMC に接続する方法について詳細に説明します。
 
+> [!NOTE]
+> 
+> 2020 年 10 月 1 日以降、新規のお客様が Cherwell ITSM を Azure Alert と統合することはできなくなります。 新しい ITSM 接続はサポートされません。 
+> 既存の ITSM 接続はサポートされます。
+
 ### <a name="prerequisites"></a>前提条件
 
 次の前提条件が満たされていることを確認してください。
@@ -362,7 +376,7 @@ Provance 接続を作成するには、次の手順に従います。
 
 ### <a name="connection-procedure"></a>接続手順
 
-Provance 接続を作成するには、次の手順に従います。
+Cherwell 接続を作成するには、次の手順に従います。
 
 1. Azure Portal で、 **[すべてのリソース]** に移動し、**ServiceDesk(YourWorkspaceName)** を探します
 

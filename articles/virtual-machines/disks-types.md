@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 53089fa42c536cbdc59865f80f63a77c76720e2c
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: bfc1a818aeb85eca04faca713d4c7acbbce3626a
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752016"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088495"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Azure で利用できるディスクの種類
 
@@ -71,7 +71,7 @@ Ultra ディスクの使用を開始したい場合は、この件に関する�
 
 Azure Premium SSD では、IO (入出力) を集中的に行うワークロードが存在する仮想マシン (VM) 向けに、高パフォーマンスで待ち時間の少ないディスク サポートが提供されます。 Premium Storage ディスクの速度とパフォーマンスを活用するために、既存の VM ディスクを Premium SSD に移行することができます。 Premium SSD は、ミッション クリティカルな運用アプリケーションに適しています。 Premium SSD は、Premium Storage に互換性のある VM シリーズでのみ使用できます。
 
-Premium Storage に互換性のあるサイズなど、Windows または Linux 用の Azure 内の個別の VM の種類とサイズについて詳しくは、「[Azure の仮想マシンのサイズ](sizes.md)」を参照してください。 Premium Storage に互換性のあるサイズなど、Linux 用の Azure 内の個別の VM の種類とサイズについて詳しくは、「[Azure の仮想マシンのサイズ](sizes.md)」を参照してください。 これらのいずれかの記事から、個々の VM サイズの記事を確認し、Premium ストレージと互換性があるかどうかを判断する必要があります。
+Premium Storage に互換性のあるサイズなど、Windows または Linux 用の Azure 内の個別の VM の種類とサイズについて詳しくは、「[Azure の仮想マシンのサイズ](sizes.md)」を参照してください。 この記事から、個々の VM サイズの記事を確認し、Premium ストレージと互換性があるかどうかを判断する必要があります。
 
 ### <a name="disk-size"></a>ディスク サイズ
 [!INCLUDE [disk-storage-premium-ssd-sizes](../../includes/disk-storage-premium-ssd-sizes.md)]

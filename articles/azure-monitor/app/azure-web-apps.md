@@ -4,12 +4,12 @@ description: Azure App Services のアプリケーション パフォーマン�
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-javascript, devx-track-dotnet
-ms.openlocfilehash: 1e06aacaa12a428b42090ecb8e8ae89ae1e5ad76
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 952cd9669ecc3fb5ff1326d15aef25e1a1524ca5
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933785"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979443"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service のパフォーマンスの監視
 
@@ -55,7 +55,7 @@ Azure App Services がホストするアプリケーションについてアプ�
 
 2. 使用するリソースを指定した後、アプリケーションのプラットフォームごとのデータを Application Insights でどのように収集するかを選択できます。 ASP.NET アプリの監視は既定でオンであり、2 つの異なる収集レベルがあります。
 
-    ![プラットフォームごとのオプションを選択する](./media/azure-web-apps/choose-options-new.png)
+    ![Application Insights サイト拡張機能ページのスクリーンショット。[新しいリソースの作成] が選択されています。](./media/azure-web-apps/choose-options-new.png)
  
  それぞれのルートで収集されるデータは次のとおりです。
         

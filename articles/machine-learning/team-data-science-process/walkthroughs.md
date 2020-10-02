@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8fa21cc690742a71100c53b4e5b6ce122d1a6147
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 76027275d6f0b838ed6fbb7275086f190701d286
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75864079"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439829"
 ---
 # <a name="walkthroughs-executing-the-team-data-science-process"></a>Team Data Science Process を実行するチュートリアル
 
@@ -32,11 +32,11 @@ ms.locfileid: "75864079"
 - [Hive を使用した HDInsight Hadoop のチュートリアル](walkthroughs-hdinsight-hadoop.md) Hive と HDInsight Hadoop クラスターを使って予測分析を行うチュートリアルを紹介します。
 - [U-SQL を使用した Azure Data Lake のチュートリアル](walkthroughs-azure-data-lake.md) U-SQL と Azure Data Lake を使って予測分析を行うチュートリアルを紹介します。
 - [SQL Server](walkthroughs-sql-server.md) SQL Server、SQL Server R Services、SQL Server Python Services を使って予測分析を行うチュートリアルを紹介します。
-- [SQL Data Warehouse](walkthroughs-sql-data-warehouse.md) SQL Data Warehouse を使って予測分析を行うチュートリアルを紹介します。 
+- [Azure Synapse Analytics](walkthroughs-sql-data-warehouse.md) Azure Synapse Analytics を使って予測分析を行うチュートリアルを紹介します。 
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Team Data Science Process を構成する主な要素については、[Team Data Science Process の概要](overview.md)に関するページを参照してください。
 

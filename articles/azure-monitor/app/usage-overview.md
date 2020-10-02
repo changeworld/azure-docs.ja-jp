@@ -3,12 +3,12 @@ title: Azure Application Insights による利用状況分析 | Microsoft docs
 description: ユーザーを理解し、提供しているアプリでユーザーが何を実行するかを理解します。
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 4ace90b0893eed24227cadcb9a5b9fae7d502ff8
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 4f4954451bfa195b07c580ffa451b8cb333eb32c
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800213"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532105"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights による利用状況分析
 
@@ -54,7 +54,7 @@ Application Insights で一定期間にわたってユーザーを追跡する�
 
 [ユーザー] および [セッション] レポートでは、ページごとまたはカスタム イベントごとにデータをフィルター処理し、場所、環境、ページなどのプロパティでデータをセグメント化できます。 独自のフィルターを追加することもできます。
 
-![ユーザー](./media/usage-overview/users.png)  
+![スクリーン キャプチャからは、架空の会社の [ユーザー概要] ページを確認できます。](./media/usage-overview/users.png)  
 
 右側の洞察では、データのセットで興味深いパターンが示されています。  
 
@@ -71,7 +71,7 @@ Application Insights で一定期間にわたってユーザーを追跡する�
 - 実際のユーザー データに基づいて仮説を立てます 
 - 製品でリテンション期間が問題になるかどうかを確認します。 
 
-![保持](./media/usage-overview/retention.png) 
+![スクリーン キャプチャからは、[リテンション期間の概要] ページを確認できます。ユーザーがアプリの使用を再開する頻度に関する情報が表示されています。](./media/usage-overview/retention.png) 
 
 上部のリテンション期間コントロールでは、特定のイベントと時間範囲を定義して、リテンション期間を計算できます。 中央のグラフは、指定した時間範囲別のリテンション期間全体のパーセンテージを視覚的に表しています。 下部のグラフは、特定の期間における個々のリテンション期間を表しています。 この詳細レベルでは、ユーザーが何を実行し、どのような理由でユーザーが使用を再開するかをさらに詳しく把握できます。  
 
@@ -110,7 +110,7 @@ Application Insights で一定期間にわたってユーザーを追跡する�
 ### <a name="slice-and-dice-events"></a>イベントの詳細な分析
 
 [ユーザー]、[セッション]、および [イベント] ツールでは、ユーザー、イベント名、プロパティごとにカスタム イベントを詳細に分析することができます。
-![ユーザー](./media/usage-overview/users.png)  
+![スクリーン キャプチャからは、架空の会社の [ユーザー概要] ページを確認できます。](./media/usage-overview/users.png)  
   
 ## <a name="design-the-telemetry-with-the-app"></a>アプリでのテレメトリの設計
 

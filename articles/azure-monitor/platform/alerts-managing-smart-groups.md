@@ -4,12 +4,12 @@ description: アラート インスタンスに対して作成されたスマー
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 09/24/2018
-ms.openlocfilehash: d7077e51282864f1208080838a1bb94ddd773b7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a84e1ed514bce0f4dda496a5304cbfa0665c7c51
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77667467"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983066"
 ---
 # <a name="manage-smart-groups"></a>スマート グループを管理する
 
@@ -17,14 +17,14 @@ ms.locfileid: "77667467"
 
 1. アラート インスタンスに対して作成されたスマート グループを表示するには、次のどちらかの方法を使用できます。
 
-     1. **[Alerts Summary]\(アラートの概要\)** ページで **[スマート グループ]** をクリックします    
-    ![Monitoring](./media/alerts-managing-smart-groups/sg-alerts-summary.jpg)
+     1. **[Alerts Summary]\(アラートの概要\)** ページで **[スマート グループ]** をクリックします。    
+    ![[Alerts Summary]\(アラートの概要\) ページのスクリーンショット。[スマート グループ] が強調表示されています。](./media/alerts-managing-smart-groups/sg-alerts-summary.jpg)
     
-     1. [すべてのアラート] ページで [スマート グループ別のアラート] をクリックします   
-     ![監視](./media/alerts-managing-smart-groups/sg-all-alerts.jpg)
+     1. [すべてのアラート] ページで [スマート グループ別のアラート] をクリックします。   
+     ![スクリーンショットには、[すべてのアラート] ページが表示され、[スマート グループ別のアラート] が強調表示されています。](./media/alerts-managing-smart-groups/sg-all-alerts.jpg)
 
 2. アラート インスタンスに対して作成されたすべてのスマート グループのリスト ビューが表示されます。 複数のアラートを選別する代わりに、スマート グループを処理できるようになります。   
-![監視](./media/alerts-managing-smart-groups/sg-list.jpg)
+![[すべてのアラート] ページのスクリーンショット。](./media/alerts-managing-smart-groups/sg-list.jpg)
 
 3. いずれかのスマート グループをクリックすると詳細ページが開き、グループ化の理由とメンバーのアラートを見ることができます。 この集計により、複数のアラートを選別するのではなく、1 つのスマート グループを扱うことができるようになります。   
-![監視](./media/alerts-managing-smart-groups/sg-details.jpg)
+![[詳細] ページのスクリーンショット。](./media/alerts-managing-smart-groups/sg-details.jpg)

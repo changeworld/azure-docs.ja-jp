@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: c0f31ddb0e0aeabff06d14d40d254c2577b38b5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ffe3d457d4827250418c9c2d838df35c11e01af7
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84906804"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974716"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Azure Monitor (プレビュー) の Log Analytics ワークスペースでカスタム フィールドを作成する
 
@@ -23,7 +23,7 @@ ms.locfileid: "84906804"
 
 Azure Monitor の**カスタム フィールド**機能を使用すると、独自の検索可能なフィールドを追加して、ご自身の Log Analytics ワークスペースの既存のレコードを拡張できます。  カスタム フィールドは、同じレコードの他のプロパティから抽出したデータから自動的に設定されます。
 
-![概要](media/custom-fields/overview.png)
+![図からは、Log Analytics ワークスペースの変更済みレコードに関連付けられている元のレコードを確認できます。変更済みレコードの元のプロパティにプロパティ値ペアが追加されています。](media/custom-fields/overview.png)
 
 たとえば、以下のサンプル レコードには、イベントの説明に埋もれている有益なデータがあります。 このデータを別のプロパティに抽出すると、並べ替えやフィルター処理などに使用できます。
 
@@ -81,7 +81,7 @@ Azure Portal で Log Analytics ワークスペースの **[詳細設定]** メ�
 
 Service Control Manager からイベント ID が 7036 のすべてのイベント (サービスの開始または停止を示すイベント) を返すために、ここでは次のクエリを入力します。
 
-![クエリ](media/custom-fields/query.png)
+![イベント ソースと ID のクエリのスクリーンショット。](media/custom-fields/query.png)
 
 イベント ID が 7036 の任意のレコードを選択して展開します。
 

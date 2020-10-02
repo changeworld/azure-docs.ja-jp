@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 9bc323e0fafc576c5e75f46b3c38fdf140b1b0f4
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 240c96016304c009c36485869ac15f5f38076fb7
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799804"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088291"
 ---
 # <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>Azure Policy を使用して Azure Monitor for VMs を有効にする
 この記事では、Azure Policy を使用して、Azure 仮想マシンまたは Azure Arc (プレビュー) に接続されたハイブリッド仮想マシンで Azure Monitor for VMs を有効にする方法について説明します。 Azure Policy を使用すると、Azure 環境全体にわたって Azure Monitor for VMs に必要なエージェントをインストールし、各仮想マシンが作成されたら VM に対する監視を自動的に有効にするポリシー定義を割り当てることができます。 Azure Monitor for VMs には、環境内の準拠していない VM を検出して修復できる機能が用意されています。 この機能は、Azure Policy を直接操作する代わりに使用します。
@@ -102,7 +102,7 @@ Azure Monitor for VMs には、Azure 仮想マシンに Log Analytics エージ�
 
 **[修復]** をクリックして修復タスクを作成した後、 **[修復]** をクリックしてそれを起動します。 ほとんどの場合は、複数の修復タスク (ポリシー定義ごとに 1 つ) の作成が必要になります。 イニシアティブに対して修復タスクを作成することはできません。
 
-[![修復](media/vminsights-enable-at-scale-policy/remediation.png)](media/vminsights-enable-at-scale-policy/remediation.png#lightbox)
+[![モニターのポリシーの修復ウィンドウのスクリーンショット | 仮想マシン。](media/vminsights-enable-at-scale-policy/remediation.png)](media/vminsights-enable-at-scale-policy/remediation.png#lightbox)
 
 
 修復タスクが完了すると、VM はエージェントがインストールされた準拠した状態になり、Azure Monitor for VM が有効になります。 

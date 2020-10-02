@@ -3,12 +3,12 @@ title: Azure Monitor for containers の Prometheus 統合を構成する | Micro
 description: この記事では、Kubernetes クラスターで Prometheus からメトリックをスクレーピングするために、Azure Monitor for containers エージェントを構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: 8c83d962a31150b31f5883150a2f7bd8d4b49183
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: f5a9b364bc3e51307bd44d8338485f482bda6e1e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069426"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971353"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>Azure Monitor for containers で Prometheus メトリックのスクレーピングを構成する
 
@@ -347,7 +347,7 @@ InsightsMetrics
 
 出力では、次のような結果が示されます。
 
-![データ インジェスト ボリュームのログ クエリの結果](./media/container-insights-prometheus-integration/log-query-example-usage-03.png)
+![データ インジェスト ボリュームのログ クエリの結果を示すスクリーンショット](./media/container-insights-prometheus-integration/log-query-example-usage-03.png)
 
 1 か月間の各メトリック サイズ (GB 単位) を推定し、ワークスペースで受け取る取り込まれたデータの量が多いかどうかを把握するため、次のクエリが用意されています。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 195e606a66b1b49821fc1b46381fdc551f142a6a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4c9f74f5a9950a299b34e22c1e86dd91f8c82364
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325527"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983603"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Azure Monitor からのデータを視覚化する
 この記事では、Azure Monitor に格納されたログとメトリック データを視覚化するために使用可能な方法の概要を提供します。
@@ -21,7 +21,7 @@ ms.locfileid: "87325527"
 ## <a name="workbooks"></a>Workbooks
 [Workbooks](./platform/workbooks-overview.md) は、データの詳細な分析情報、調査、およびチーム内のコラボレーションを提供する対話型のドキュメントです。 Workbooks が役立つ具体的な例は、トラブルシューティング ガイドとインシデントの事後分析です。
 
-![Workbooks](media/visualizations/workbook.png)
+![図には、ページ ビューの分析、使用状況、ページで費やされた時間を含む、ブックからのいくつかのページのスクリーンショットが示されています。](media/visualizations/workbook.png)
 
 ### <a name="advantages"></a>長所
 - メトリックとログの両方をサポート。
@@ -39,7 +39,7 @@ ms.locfileid: "87325527"
 ## <a name="azure-dashboards"></a>Azure ダッシュボード
 [Azure ダッシュボード](../azure-portal/azure-portal-dashboards.md)は、Azure の主要なダッシュボード テクノロジです。 ダッシュボードは、重要な問題をすばやく特定できるように、Azure インフラストラクチャとサービスに関する 1 つのウィンドウを提供するという点で特に役立ちます。
 
-![ダッシュボード](media/visualizations/dashboard.png)
+![スクリーンショットには、Azure ダッシュボードの例とカスタマイズ可能な情報が表示されています。](media/visualizations/dashboard.png)
 
 ダッシュボードの作成に関するビデオ チュートリアルはこちらです。
 
@@ -88,7 +88,7 @@ ms.locfileid: "87325527"
 ## <a name="grafana"></a>Grafana
 [Grafana](https://grafana.com/) は、運用ダッシュボードに優れたオープン プラットフォームです。 運用上のインシデントの検出、分離、トリアージに特に役立ちます。 お使いの Azure サブスクリプションに [Grafana Azure Monitor データ ソース プラグイン](platform/grafana-plugin.md)を追加することで、Azure のメトリック データを視覚化することができます。
 
-![Grafana](media/visualizations/grafana.png)
+![Grafana 視覚化のスクリーンショット。](media/visualizations/grafana.png)
 
 ### <a name="advantages"></a>長所
 - 高度な視覚化。
@@ -120,7 +120,7 @@ Azure Monitor のメトリック データとログ データには、その API
 [Azure Monitor のビュー](platform/view-designer.md)では、ログ データを使用して、カスタム視覚化を作成できます。 これらのビューは、[監視ソリューション](insights/solutions.md)が収集したデータを表示するために使用します。
 
 
-![表示](media/visualizations/view.png)
+![スクリーンショットには、コンテナー監視ソリューション タイルと、選択すると開く詳細な Azure Monitor ビューが表示されています。](media/visualizations/view.png)
 
 ### <a name="advantages"></a>長所
 - ログ データの高度な視覚化。

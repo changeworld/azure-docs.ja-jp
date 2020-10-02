@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 09/16/2020
 ms.author: cherylmc
-ms.openlocfilehash: cc9cb06c2154202f319d57aa77700a356ffe19c1
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 18367ec163511fac2e90cc5dd0dd0ad6b091afc9
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419573"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976229"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>VPN ゲートウェイの構成設定について
 
@@ -27,8 +27,6 @@ VPN Gateway の接続は複数のリソースの構成に依存し、それぞ�
 * ゾーン冗長ゲートウェイについては、[ゾーン冗長ゲートウェイについて](about-zone-redundant-vnet-gateways.md)の記事をご覧ください。
 
 * 仮想 WAN については、「[Virtual WAN について](../virtual-wan/virtual-wan-about.md)」をご覧ください。
-
-
 
 ## <a name="gateway-types"></a><a name="gwtype"></a>ゲートウェイの種類
 
@@ -152,9 +150,9 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/2
 
 ## <a name="local-network-gateways"></a><a name="lng"></a>ローカル ネットワーク ゲートウェイ
 
- ローカル ネットワーク ゲートウェイは、仮想ネットワーク ゲートウェイとは異なります。 VPN ゲートウェイの構成を作成する場合、通常、ローカル ネットワーク ゲートウェイはオンプレミスの場所を表します。 クラシック デプロイ モデルでは、ローカル ネットワーク ゲートウェイはローカル サイトとして参照されます。
+ローカル ネットワーク ゲートウェイは、仮想ネットワーク ゲートウェイとは異なります。 VPN ゲートウェイの構成を作成する場合、通常、ローカル ネットワーク ゲートウェイはオンプレミス ネットワークとそれに対応する VPN デバイスを表します。 クラシック デプロイ モデルでは、ローカル ネットワーク ゲートウェイはローカル サイトとして参照されます。
 
-ローカル ネットワーク ゲートウェイに名前とオンプレミス VPN デバイスのパブリック IP アドレスを指定し、オンプレミスの場所に存在するアドレスのプレフィックスを指定します。 Azure は、ネットワーク トラフィックの宛先アドレスのプレフィックスを参照して、ローカル ネットワーク ゲートウェイに指定された構成を確認し、それに応じてパケットをルーティングします。 また、VPN ゲートウェイ接続を使用している VNet 間の構成に対して、ローカル ネットワーク ゲートウェイを指定します。
+ローカル ネットワーク ゲートウェイに名前とオンプレミス VPN デバイスのパブリック IP アドレスまたは完全修飾ドメイン名 (FQDN) を指定し、オンプレミスの場所に存在するアドレスのプレフィックスを指定します。 Azure は、ネットワーク トラフィックの宛先アドレスのプレフィックスを参照して、ローカル ネットワーク ゲートウェイに指定された構成を確認し、それに応じてパケットをルーティングします。 VPN デバイスで Border Gateway Protocol (BGP) を使用する場合、VPN デバイスの BGP ピア IP アドレスとオンプレミス ネットワークの自律システム番号 (ASN) を指定します。 また、VPN ゲートウェイ接続を使用している VNet 間の構成に対して、ローカル ネットワーク ゲートウェイを指定します。
 
 次の PowerShell の例では、新しいローカル ネットワーク ゲートウェイを作成します。
 

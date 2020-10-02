@@ -8,12 +8,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 877467b65d346c871dd93f4b3f96b2c1664fa4b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 05b582e24afddf25b7f50d4c8cd1a029684a2d4f
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73906790"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023807"
 ---
 # <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>IoT Hub のメッセージ ルーティングと Event Grid の比較
 
@@ -31,9 +32,9 @@ Azure IoT Hub には、接続されたデバイスからデータをストリー
 
 | 機能 | IoT Hub メッセージ ルーティング | IoT Hub の Event Grid との統合 |
 | ------- | --------------- | ---------- |
-| **デバイスのメッセージとイベント** | はい。メッセージ ルーティングは、利用統計情報のデータ、レポート デバイス ツインの変更、デバイス ライフサイクル イベント、およびデジタル ツイン変更イベント ([IoT プラグ アンド プレイのパブリック プレビュー](../iot-pnp/overview-iot-plug-and-play.md)の一部) に対して使用できます。 | はい、利用統計情報に Event Grid を使用することはできますが、IoT Hub のデバイスが作成、削除、接続、切断されたときにレポートすることもできます。 |
+| **デバイスのメッセージとイベント** | はい。利用統計情報にメッセージ ルーティングを使用できます。デバイス ツイン変更、デバイス ライフサイクル イベント (例: IoT Hub でのデバイスの作成時、削除時、接続時、接続解除時)、デジタル ツイン変更イベント ([IoT プラグ アンド プレイ パブリック プレビュー](../iot-pnp/overview-iot-plug-and-play.md)の一部) にメッセージ ルーティングを使用できます。 | はい。Event Grid は利用統計情報とデバイス ライフサイクル イベントに使用できます。 ただし、Event Grid は、デバイス ツイン変更イベントとデジタル ツイン変更イベントには使用できません。 |
 | **順序付け** | はい、イベントの順序付けは維持されます。  | いいえ、イベントの順序付けは保証されません。 | 
-| **Filtering** | メッセージ アプリケーション プロパティ、メッセージ システム プロパティ、メッセージ本文、デバイス ツインのタグおよびプロパティに基づく豊富なフィルター。 フィルター処理は、デジタル ツイン変更イベントには適用されません。 例については、[メッセージ ルーティングのクエリ構文](iot-hub-devguide-routing-query-syntax.md)に関するページを参照してください。 | 各イベントのイベントの種類、サブジェクトの種類、属性に基づくフィルター処理。 たとえば、[Event Grid サブスクリプションでのフィルター処理イベントの理解](../event-grid/event-filtering.md)に関するページを参照してください。 利用統計情報をサブスクライブしている場合、Event Grid に発行する前に、データに追加のフィルターを適用し、ご利用の IoT Hub のメッセージ プロパティ、メッセージ本文、デバイス ツインにフィルターを適用することができます。 [イベントのフィルター方法](../iot-hub/iot-hub-event-grid.md#filter-events)に関するページを参照してください。 |
+| **フィルター処理** | メッセージ アプリケーション プロパティ、メッセージ システム プロパティ、メッセージ本文、デバイス ツインのタグおよびプロパティに基づく豊富なフィルター。 フィルター処理は、デジタル ツイン変更イベントには適用されません。 例については、[メッセージ ルーティングのクエリ構文](iot-hub-devguide-routing-query-syntax.md)に関するページを参照してください。 | 各イベントのイベントの種類、サブジェクトの種類、属性に基づくフィルター処理。 たとえば、[Event Grid サブスクリプションでのフィルター処理イベントの理解](../event-grid/event-filtering.md)に関するページを参照してください。 利用統計情報をサブスクライブしている場合、Event Grid に発行する前に、データに追加のフィルターを適用し、ご利用の IoT Hub のメッセージ プロパティ、メッセージ本文、デバイス ツインにフィルターを適用することができます。 [イベントのフィルター方法](../iot-hub/iot-hub-event-grid.md#filter-events)に関するページを参照してください。 |
 | **エンドポイント** | <ul><li>Event Hubs</li> <li>Azure Blob Storage</li> <li>Service Bus キュー</li> <li>Service Bus トピック</li></ul><br>有料の IoT Hub SKU (S1、S2、S3) は、10 のカスタム エンドポイントに制限されます。 IoT Hub あたり 100 のルートを作成できます。 | <ul><li>Azure Functions</li> <li>Azure Automation</li> <li>Event Hubs</li> <li>Logic Apps</li> <li>ストレージ BLOB</li> <li>カスタム トピック</li> <li>Queue Storage</li> <li>Microsoft Flow</li> <li>WebHook を通じたサード パーティのサービス</li></ul><br>IoT Hub ごとに 500 個のエンドポイントがサポートされます。 最新のエンドポイントの一覧については、[Event Grid のイベント ハンドラー](../event-grid/overview.md#event-handlers)に関する記事を参照してください。 |
 | **コスト** | メッセージ ルーティングについては、別料金はかかりません。 IoT Hub へのテレメトリのイングレスのみが課金されます。 たとえば、3 つの異なるエンドポイントにメッセージをルーティングする場合、1 つのメッセージに対してのみ課金されます。 | IoT Hub からの課金はありません。 Event Grid では、毎月最初の 100,000 操作が無料で提供され、それ以降は 100 万操作あたり 0.60 ドルが課金されます。 |
 
@@ -41,14 +42,14 @@ Azure IoT Hub には、接続されたデバイスからデータをストリー
 
 IoT Hub メッセージ ルーティングと Event Grid には類似点もあります。そのいくつかについて以下の表で詳しく説明します。
 
-| 機能 | IoT Hub メッセージ ルーティング | IoT Hub の Event Grid との統合 |
+| 特徴量 | IoT Hub メッセージ ルーティング | IoT Hub の Event Grid との統合 |
 | ------- | --------------- | ---------- |
 | **最大メッセージ サイズ** | 256 KB、device-to-cloud | 256 KB、device-to-cloud |
 | **信頼性** | 高い: ルートごとに少なくとも 1 回はエンドポイントに各メッセージを配信します。 1 時間内に配信されないメッセージはすべて有効期限切れになります。 | 高い: サブスクリプションごとに少なくとも 1 回は webhook に各メッセージを配信します。 24 時間内に配信されないイベントはすべて有効期限切れになります。 | 
 | **スケーラビリティ** | 高い: 何十億ものメッセージを送信する数百万の同時接続されたデバイスをサポートするように最適化されます。 | 高い: リージョンあたり 10,000,000 イベント/秒をルーティングすることができます。 |
 | **待機時間** | 少ない: ほぼリアルタイムです。 | 少ない: ほぼリアルタイムです。 |
 | **複数のエンドポイントへの送信** | はい、1 つのメッセージを複数のエンドポイントに送信します。 | はい、1 つのメッセージを複数のエンドポイントに送信します。  
-| **セキュリティ** | IoT Hub では、デバイスごとの ID と取り消し可能なアクセス制御が用意されます。 詳細については、[IoT Hub のアクセス制御](iot-hub-devguide-security.md)に関する記事を参照してください。 | Event Grid には 3 点での検証が用意されています。イベント サブスクリプション、イベントの発行、webhook のイベント配信です。 詳細については、「[Event Grid security and authentication](../event-grid/security-authentication.md)」(Event Grid のセキュリティと認証) を参照してください。 |
+| **Security** | IoT Hub では、デバイスごとの ID と取り消し可能なアクセス制御が用意されます。 詳細については、[IoT Hub のアクセス制御](iot-hub-devguide-security.md)に関する記事を参照してください。 | Event Grid には 3 点での検証が用意されています。イベント サブスクリプション、イベントの発行、webhook のイベント配信です。 詳細については、「[Event Grid security and authentication](../event-grid/security-authentication.md)」(Event Grid のセキュリティと認証) を参照してください。 |
 
 ## <a name="how-to-choose"></a>選択する方法
 
@@ -72,7 +73,7 @@ IoT Hub メッセージ ルーティングと IoT Hub の Event Grid との統�
 
    Event Grid では、エンドポイントがその発生順にイベントを取得することは保証されません。 メッセージの絶対的な順序が重要なケースや、コンシューマーが信頼できるメッセージの一意識別子を必要とするケースでは、メッセージ ルーティングを使用することをお勧めします。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [IoT Hub メッセージ ルーティング](iot-hub-devguide-messages-d2c.md)および [IoT Hub エンドポイント](iot-hub-devguide-endpoints.md)について学習します。
 * [Azure Event Grid](../event-grid/overview.md) について学習します。

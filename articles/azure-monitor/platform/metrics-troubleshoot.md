@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 4800234b55507b7c8d8a16d16ce4d2fef3365baa
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 54f99f2f8708fca9c02950a8886a2a9b976a93dd
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829596"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440679"
 ---
 # <a name="troubleshooting-metrics-charts"></a>メトリック グラフのトラブルシューティング
 
@@ -110,7 +110,7 @@ Azure のメトリック グラフでは、2 つの既知の時間グレイン �
 
 1. ストレージ アカウントがファイアウォールによって保護されていないことを確認します。 Azure portal では、メトリック データを取得してグラフをプロットするために、ストレージ アカウントにアクセスする必要があります。
 
-1. [Azure ストレージ エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)を使って、メトリックがストレージ アカウントに送られていることを検証します。 メトリックが収集されていない場合は、[Azure Diagnostics 拡張機能のトラブルシューティング ガイド](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal)に従ってください。
+1. [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使って、メトリックがストレージ アカウントに送られていることを検証します。 メトリックが収集されていない場合は、[Azure Diagnostics 拡張機能のトラブルシューティング ガイド](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal)に従ってください。
 
 ## <a name="next-steps"></a>次のステップ
 

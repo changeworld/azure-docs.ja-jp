@@ -4,12 +4,12 @@ description: メトリック アラートの用途と、Azure Monitor での機�
 ms.date: 08/16/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 035b68afed7383956beb13e367aa7a1f6dfcd070
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 8e57ec698f96826f493d048490ac053672e45895
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258437"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595565"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure Monitor でのメトリック アラートの機能
 
@@ -137,13 +137,15 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 
 | サービス | パブリック Azure | Government | 中国 |
 |:--------|:--------|:--------|:--------|
-| 仮想マシン  | **はい** | いいえ | いいえ |
+| 仮想マシン<sup>1</sup>  | **はい** | いいえ | いいえ |
 | SQL Server データベース | **はい** | **はい** | **あり** |
 | SQL Server エラスティック プール | **はい** | **はい** | **あり** |
 | NetApp ファイル容量プール | **はい** | **あり** | **あり** |
 | NetApp ファイル ボリューム | **あり** | **あり** | **あり** |
 | キー コンテナー | **あり** | **あり** | **あり** |
 | Data Box Edge のデバイス | **はい** | **あり** | **あり** |
+
+<sup>1</sup> 仮想マシンのネットワーク メトリック (受信ネットワーク合計、送信ネットワーク合計、受信フロー数、送信フロー数、受信フローの最大作成速度、送信フローの最大作成速度) に対してはサポートされていません。
 
 1 つのメトリック警告ルールで監視の範囲を指定するには、次の 3 つの方法があります。 たとえば、仮想マシンではスコープを次のように指定できます。  
 

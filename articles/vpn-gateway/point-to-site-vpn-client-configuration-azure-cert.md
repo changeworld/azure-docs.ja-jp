@@ -1,19 +1,19 @@
 ---
 title: 'P2S VPN クライアント構成ファイルを作成してインストールする: 証明書認証'
 titleSuffix: Azure VPN Gateway
-description: P2S 証明書認証のために、Windows、Linux、Linux (strongSwan)、および Mac OS X VPN クライアント構成ファイルを作成してインストールします。
+description: P2S 証明書認証のために、Windows、Linux、Linux (strongSwan)、および macOS X VPN クライアント構成ファイルを作成してインストールします。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 17a9339fff27a0fbd7fa389933d21ef85e29248b
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 3a7a9711f04a4b54459d57a05ae65b4eedf1d6b6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420780"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986639"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>ネイティブ Azure 証明書認証の P2S 構成のための VPN クライアント構成ファイルを作成およびインストールする
 
@@ -96,7 +96,7 @@ PowerShell または Azure Portal を使用してクライアント構成ファ�
 
    **[インターフェイス]** の値は "VPN"、 **[VPN タイプ]** の値は "IKEv2" です。 **[サービス名]** フィールドにプロファイルの名前を指定し、 **[作成]** をクリックして VPN クライアント接続プロファイルを作成します。
 
-   ![ネットワーク](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
+   ![スクリーンショットには [ネットワーク] ウィンドウが表示され、インターフェイス、VPN の種類の選択、サービス名の入力オプションが表示されています。](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
 4. **Generic** フォルダーの **VpnSettings.xml** ファイルから、**VpnServer** タグの値をコピーします。 この値をプロファイルの **[サーバー アドレス]** フィールドと **[リモート ID]** フィールドに貼り付けます。
 
    ![サーバー情報](./media/point-to-site-vpn-client-configuration-azure-cert/server.png)
@@ -106,14 +106,14 @@ PowerShell または Azure Portal を使用してクライアント構成ファ�
 
    * Catalina の場合は、 **[None]\(なし\)** を選択し、 **[Certificate]\(証明書\)** を選択します。 正しい証明書を**選択**してください。
    
-   ![catalina](./media/point-to-site-vpn-client-configuration-azure-cert/catalina.png)
+   ![スクリーンショットには [ネットワーク] ウィンドウが表示され、[認証設定] に [なし] が選択され、[証明書] が選択されています。](./media/point-to-site-vpn-client-configuration-azure-cert/catalina.png)
 
 6. **[選択]** をクリックして、 認証に使用するクライアント証明書を選択します。 これは、手順 2 でインストールした証明書です。
 
-   ![証明書 (certificate)](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)
+   ![スクリーンショットには [ネットワーク] ウィンドウに [認証設定] が表示され、ここで証明書を選択できます。](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)
 7. **[Choose An Identity]\(ID の選択\)** では、選択できる証明書の一覧が表示されます。 適切な証明書を選択し、 **[続ける]** をクリックします。
 
-   ![identity](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
+   ![[Choose An Identity]\(ID の選択\) ダイアログ ボックスのスクリーンショット。適切な証明書を選択できます。](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
 8. **[ローカル ID]** フィールドに、(手順 6 の) 証明書の名前を指定します。 この例では、"ikev2Client.com" です。 次に、 **[適用]** ボタンをクリックして変更を保存します。
 
    ![apply](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
@@ -213,4 +213,4 @@ PowerShell または Azure Portal を使用してクライアント構成ファ�
 P2S 接続のトラブルシューティングを行うには、次の記事を参照してください。
 
   * [Azure ポイント対サイト接続のトラブルシューティング](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
-  * [Mac OS X VPN クライアントからの VPN 接続のトラブルシューティング](vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md)
+  * [macOS X VPN クライアントからの VPN 接続のトラブルシューティング](vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md)

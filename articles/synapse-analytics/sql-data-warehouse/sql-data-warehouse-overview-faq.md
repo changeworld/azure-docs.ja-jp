@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: b3ee3f729e1e2f03d7c72a72081ad2e3f0316cbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 228fa18fef0f681437fd2c0c87e3114d14977a49
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482532"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462651"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics (旧称 SQL DW) のよく寄せられる質問
 
@@ -27,7 +27,7 @@ A. Azure Synapse は、データ ウェアハウスとビッグ データ分析�
 
 Q. Azure SQL Data Warehouse はどうなりましたか
 
-A. Azure Synapse は、Azure SQL Data Warehouse (SQL DW) の進化版です。 業界をリードする同じデータ ウェアハウスに、まったく新しいレベルのパフォーマンスと機能を搭載しました。 Azure Synapse を使用すると、運用環境で既存のデータ ウェアハウスのワークロードを引き続き実行できます。 詳しくは、[Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md) に関する記事をご覧ください。
+A. Azure Synapse は、Azure SQL Data Warehouse の進化版です。 業界をリードする同じデータ ウェアハウスに、まったく新しいレベルのパフォーマンスと機能を搭載しました。 Azure Synapse を使用すると、運用環境で既存のデータ ウェアハウスのワークロードを引き続き実行できます。 詳しくは、[Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md) に関する記事をご覧ください。
 
 Q. Synapse SQL プールとはなんですか。
 

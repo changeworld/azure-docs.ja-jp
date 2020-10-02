@@ -4,12 +4,12 @@ description: アプリをインストルメント化することなく、任意�
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: ca3094197deb7c74ba9b51422a78ee0f5d3687d2
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 561a6405a49d8f15affbf6d8d4de1a7f4886826a
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374288"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056100"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>構成オプション - Azure Monitor Application Insights の Java スタンドアロン エージェント
 
@@ -113,18 +113,18 @@ Application Insights Java 3.0 Preview では、Log4j、Logback、java.util.loggi
 
 以下に、`ApplicationInsights.json` ファイルに指定できる有効な `threshold` 値と、それらが、各種ログ フレームワークでどのようにログ レベルに対応するかを示しています。
 
-| `threshold`  | Log4j  | Logback | JUL     |
-|--------------|--------|---------|---------|
-| OFF          | OFF    | OFF     | OFF     |
-| FATAL        | FATAL  | ERROR   | SEVERE  |
-| ERROR/SEVERE | ERROR  | ERROR   | SEVERE  |
-| WARN/WARNING | WARN   | WARN    | WARNING |
-| INFO         | INFO   | INFO    | INFO    |
-| CONFIG       | DEBUG  | DEBUG   | CONFIG  |
-| DEBUG/FINE   | DEBUG  | DEBUG   | FINE    |
-| FINER        | DEBUG  | DEBUG   | FINER   |
-| TRACE/FINEST | TRACE  | TRACE   | FINEST  |
-| ALL          | ALL    | ALL     | ALL     |
+| しきい値   | Log4j  | Logback | JUL     |
+|-------------------|--------|---------|---------|
+| OFF               | OFF    | OFF     | OFF     |
+| FATAL             | FATAL  | ERROR   | SEVERE  |
+| ERROR (または SEVERE) | ERROR  | ERROR   | SEVERE  |
+| WARN (または WARNING) | WARN   | WARN    | WARNING |
+| INFO              | INFO   | INFO    | INFO    |
+| CONFIG            | DEBUG  | DEBUG   | CONFIG  |
+| DEBUG (または FINE)   | DEBUG  | DEBUG   | FINE    |
+| FINER             | DEBUG  | DEBUG   | FINER   |
+| TRACE (または FINEST) | TRACE  | TRACE   | FINEST  |
+| ALL               | ALL    | ALL     | ALL     |
 
 ## <a name="jmx-metrics"></a>JMX メトリック
 
@@ -134,7 +134,7 @@ Application Insights Java 3.0 Preview では、Log4j、Logback、java.util.loggi
 {
   "instrumentationSettings": {
     "preview": {
-        "jmxMetrics": [
+      "jmxMetrics": [
         {
           "objectName": "java.lang:type=ClassLoading",
           "attribute": "LoadedClassCount",
@@ -181,9 +181,9 @@ Application Insights Java 3.0 Preview では、Log4j、Logback、java.util.loggi
 {
   "instrumentationSettings": {
     "preview": {
-        "heartbeat": {
-            "intervalSeconds": 60
-        }
+      "heartbeat": {
+        "intervalSeconds": 60
+      }
     }
   }
 }
@@ -205,13 +205,13 @@ Application Insights Java 3.0 Preview では、Log4j、Logback、java.util.loggi
 {
   "instrumentationSettings": {
     "preview": {
-        "sampling": {
-            "fixedRate": {
-                "percentage": 10
-            }
-          }
+      "sampling": {
+        "fixedRate": {
+          "percentage": 10
         }
+      }
     }
+  }
 }
 ```
 
@@ -244,10 +244,10 @@ Application Insights Java 3.0 Preview では、Log4j、Logback、java.util.loggi
 {
   "instrumentationSettings": {
     "preview": {
-        "selfDiagnostics": {
-            "destination": "console",
-            "level": "WARN"
-        }
+      "selfDiagnostics": {
+        "destination": "console",
+        "level": "WARN"
+      }
     }
   }
 }
@@ -261,12 +261,12 @@ Application Insights Java 3.0 Preview では、Log4j、Logback、java.util.loggi
 {
   "instrumentationSettings": {
     "preview": {
-        "selfDiagnostics": {
-            "destination": "file",
-            "directory": "/var/log/applicationinsights",
-            "level": "WARN",
-            "maxSizeMB": 10
-        }    
+      "selfDiagnostics": {
+        "destination": "file",
+        "directory": "/var/log/applicationinsights",
+        "level": "WARN",
+        "maxSizeMB": 10
+      }
     }
   }
 }

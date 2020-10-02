@@ -3,12 +3,12 @@ title: Azure Monitor for containers での Kubernetes の監視 | Microsoft Docs
 description: この記事では、Azure Monitor for containers を使用して Kubernetes クラスターのパフォーマンスを表示および分析する方法について説明します。
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: d8b298208794e4ba562a608f22f4d0a539b81b47
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 888853f0e9e7634cafa5e480752371c501376158
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166639"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988134"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Azure Monitor for containers を使用して Kubernetes クラスターのパフォーマンスを監視する
 
@@ -161,7 +161,7 @@ Linux OS を実行している Azure Container Instances 仮想ノードは、�
 
 展開されたノードでは、ノード上で実行されているポッドまたはコンテナーからコントローラーにドリルダウンして、そのコントローラーでフィルター処理されたパフォーマンス データを見ることができます。 特定のノードの **[コントローラー]** 列の値を選択します。
 
-![パフォーマンス ビューでのノードからコントローラーへのドリルダウンの例](./media/container-insights-analyze/drill-down-node-controller.png)
+![スクリーンショットでは、パフォーマンス ビューでノードからコントローラーにドリルダウンする様子を示しています。](./media/container-insights-analyze/drill-down-node-controller.png)
 
 ページ上部のコントローラーまたはコンテナーを選択し、それらのオブジェクトの状態やリソース使用率を確認します。 メモリ使用率を確認するには、 **[メトリック]** ドロップダウン リストで **[メモリ RSS]** または **[メモリ ワーキング セット]** を選択します。 **[Memory RSS]\(使用メモリ (RSS)\)** は、Kubernetes 1.8 以降でのみサポートされています。 それ以外のバージョンでは、**Min&nbsp;%** の値が、未定義または表示できない値を示す数値データ型である、*NaN&nbsp;%* として示されます。
 

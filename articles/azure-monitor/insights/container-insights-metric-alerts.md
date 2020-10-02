@@ -3,12 +3,12 @@ title: Azure Monitor for containers からのメトリック アラート | Micr
 description: この記事では、Azure Monitor for containers から利用可能なパブリック プレビュー段階の推奨メトリック アラートを確認します。
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: 1826896ad2d5c64d389219018f51238826c840d0
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: aace260ff22d63211424f2ce4a7319bf577436f4
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563366"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019888"
 ---
 # <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Azure Monitor for containers からの推奨メトリック アラート (プレビュー)
 
@@ -144,7 +144,7 @@ Azure Resource Manager テンプレートとパラメーター ファイルを�
 
 2. カスタマイズされたテンプレートを portal からデプロイするには、[Azure portal](https://portal.azure.com)で **[リソースの作成]** を選択します。
 
-3. **template** を検索して、**Template** deployment を選択します。
+3. **template** を検索して、 **[テンプレートのデプロイ]** を選択します。
 
 4. **［作成］** を選択します
 

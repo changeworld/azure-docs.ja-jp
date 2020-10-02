@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: bf4974fdd0c587bd537c63a454b5d5efeb54415b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: ea2fae483da495bce9551899b9646868251f0454
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378493"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030829"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure Monitor エージェントの概要 (プレビュー)
 Azure Monitor エージェント (AMA) では、仮想マシンのゲスト オペレーティング システムから監視データが収集され、それが Azure Monitor に配信されます。 この記事では、Azure Monitor エージェントのインストール方法やデータ収集の構成方法など、Azure Monitor エージェントの概要について説明します。
@@ -88,7 +88,7 @@ Azure Monitor エージェントでは、現在次のオペレーティング �
   - CentOS 6<sup>1</sup>、7
   - Debian 9、10
   - Oracle Linux 6<sup>1</sup>、7
-  - RHEL 6<sup>1</sup>、7、8
+  - RHEL 6<sup>1</sup>、7
   - SLES 11、12、15
   - Ubuntu 14.04 LTS、16.04 LTS、18.04 LTS
 
@@ -99,6 +99,8 @@ Azure Monitor エージェントでは、現在次のオペレーティング �
 ## <a name="security"></a>セキュリティ
 Azure Monitor エージェントにはキーは必要ありませんが、代わりに[システム割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity) が必要です。 エージェントをデプロイする前に、各仮想マシンで、システム割り当てマネージド ID を有効にしている必要があります。
 
+## <a name="networking"></a>ネットワーキング
+Azure Monitor エージェントでは Azure サービス タグ (AzureMonitor タグと AzureResourceManager タグの両方が必要) がサポートされますが、Azure Monitor プライベート リンク スコープや直接プロキシとはまだ連動していません。
 
 ## <a name="install-the-azure-monitor-agent"></a>Azure Monitor エージェントのインストール
 Azure Monitor エージェントは、次の表に示す詳細で [Azure VM 拡張機能](../../virtual-machines/extensions/overview.md)として実装されます。 

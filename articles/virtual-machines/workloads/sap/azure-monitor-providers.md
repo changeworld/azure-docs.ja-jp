@@ -1,6 +1,6 @@
 ---
 title: SAP ソリューション向け Azure Monitor のプロバイダー | Microsoft Docs
-description: この記事では、SAP ソリューション向け Azure Monitor に関してよく寄せられる質問に対する回答を示します
+description: この記事では、SAP ソリューション プロバイダー向け Azure Monitor に関してよく寄せられる質問に対する回答を示します
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: 267d600270e834cf4f1f077452fda7459fac3029
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e18d0b84e987e6c36f3f3b4215743025cac76d45
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525451"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987253"
 ---
 # <a name="azure-monitor-for-sap-solutions-providers-preview"></a>SAP ソリューション向け Azure Monitor のプロバイダー (プレビュー)
 

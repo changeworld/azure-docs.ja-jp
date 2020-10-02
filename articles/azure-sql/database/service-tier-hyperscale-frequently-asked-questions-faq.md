@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: 359de25d2bdb57ad5c6386586f987942acc120ef
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: be8e38d38408bd7cf11608d71035bd7cf0808b60
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500148"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488968"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database ハイパースケールに関する FAQ
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -114,11 +114,11 @@ Hyperscale サービス レベルの対象として意図されているのは�
 
 ハイパースケールはすべての SQL Server ワークロードをサポートしますが、主に OLTP 用に最適化されています。 ハイブリッド (HTAP) および分析 (データ マート) のワークロードにも対応できます。
 
-### <a name="how-can-i-choose-between-azure-sql-data-warehouse-and-azure-sql-database-hyperscale"></a>Azure SQL Data Warehouse と Azure SQL Database ハイパースケールのどちらを選ぶべきか
+### <a name="how-can-i-choose-between-azure-synapse-analytics-and-azure-sql-database-hyperscale"></a>Azure Synapse Analytics と Azure SQL Database ハイパースケールのどちらを選ぶべきか
 
 現在、SQL Server をデータ ウェアハウスとして使用して対話型分析クエリを実行している場合、ハイパースケールがオプションとして優れています。小規模および中規模データ ウェアハウス (数 TB から最大 100 TB) をホスティングするコストを抑えることができ、最小限の T-SQL コードの変更で SQL Server データ ウェアハウス ワークロードをハイパースケールに移行できます。
 
-Parallel Data Warehouse (PDW)、Teradata、またはその他の超並列処理 (MPP) データ ウェアハウスを使用して、複雑なクエリおよびデータ インジェスト速度 100 MB/秒で大規模にデータ分析を実行している場合は、SQL Data Warehouse が最適な選択肢となるでしょう。
+複雑なクエリおよび持続的に 100 MB/秒を超えるデータ インジェスト速度で大規模にデータ分析を実行している場合、または Parallel Data Warehouse (PDW)、Teradata またはその他の超並列処理 (MPP) データ ウェアハウスを使用している場合は、Azure Synapse Analytics (旧称 SQL Data Warehouse) が最適な選択肢となるでしょう。
   
 ## <a name="hyperscale-compute-questions"></a>ハイパースケールのコンピューティングに関する質問
 
@@ -229,7 +229,7 @@ Parallel Data Warehouse (PDW)、Teradata、またはその他の超並列処理 
 
 ハイパースケールは、新規または変更されたデータを 100 MB/秒で利用できますが、Azure SQL Database のデータベースにデータを移動するために必要な時間は、使用可能なネットワーク スループット、ソースの読み取り速度、ターゲット データベースのサービス レベル目標の影響も受けます。
 
-### <a name="can-i-read-data-from-blob-storage-and-do-fast-load-like-polybase-in-sql-data-warehouse"></a>Blob ストレージからデータを読み取って高速読み込みできるか (SQL Data Warehouse の Polybase のように)
+### <a name="can-i-read-data-from-blob-storage-and-do-fast-load-like-polybase-in-azure-synapse-analytics"></a>BLOB ストレージからデータを読み取って高速読み込みできるか (Azure Synapse Analytics の Polybase のように)
 
 クライアント アプリケーションで Azure Storage からデータを読み取り、ハイパースケール データベースに読み込むことができます (他の Azure SQL Database データベースの場合と同様です)。 Polybase は現在 Azure SQL Database でサポートされていません。 高速読み込みを提供する代替手段として、[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) を使用するか、[SQL 用 Spark コネクタ](spark-connector.md)で Spark ジョブを [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) で使用できます。 SQL 用の Spark コネクタでは一括挿入がサポートされます。
 
@@ -269,7 +269,7 @@ SQL Server 2005。 詳しくは、「[単一データベースまたはプール
 
 ### <a name="what-is-the-recovery-point-objective-rporecovery-time-objective-rto-for-database-restore-in-hyperscale"></a>ハイパースケールのデータベース復元における目標復旧ポイント (RPO)/目標復旧時間 (RTO) とは
 
-RPO は 0 分です。RTO はデータベース サイズにかかわらず 10 分未満です。
+RPO は 0 分です。ほとんどの復元操作は、データベース サイズにかかわらず、60 分以内に完了します。 大規模なデータベースの場合、および復元ポイントの前とそこに至るまでの時間に大量の書き込みアクティビティが発生した場合は、復元時間が長くなる可能性があります。
 
 ### <a name="does-database-backup-affect-compute-performance-on-my-primary-or-secondary-replicas"></a>データベース バックアップは、プライマリ レプリカまたはセカンダリ レプリカのコンピューティング パフォーマンスに影響するか
 
@@ -345,9 +345,9 @@ IOPS と IO 待ち時間は、ワークロードのパターンによって異�
 
 エンドユーザー。 自動ではありません。  
 
-### <a name="does-the-size-of-my-tempdb-database-also-grow-as-the-compute-is-scaled-up"></a>コンピューティングがスケールアップされると `tempdb` データベースのサイズも拡張されるか
+### <a name="does-the-size-of-my-tempdb-database-and-rbpex-cache-also-grow-as-the-compute-is-scaled-up"></a>コンピューティングがスケールアップされると `tempdb` データベースと RBPEX キャッシュのサイズも増大するか
 
-はい。 `tempdb` データベースは、コンピューティングの拡張に合わせて自動的にスケールアップされます。  
+はい。 コンピューティング ノードの `tempdb` データベースと [RBPEX キャッシュ](service-tier-hyperscale.md#distributed-functions-architecture)のサイズは、コア数の増加に応じて自動的にスケールアップされます。
 
 ### <a name="can-i-provision-multiple-primary-compute-replicas-such-as-a-multi-master-system-where-multiple-primary-compute-heads-can-drive-a-higher-level-of-concurrency"></a>複数のプライマリ コンピューティング ヘッドでより高レベルの同時実行を推進できる、複数のプライマリ計算レプリカ (マルチマスター システムなど) をプロビジョニングできるか
 
@@ -361,7 +361,7 @@ IOPS と IO 待ち時間は、ワークロードのパターンによって異�
 
 ### <a name="how-do-i-connect-to-these-secondary-compute-replicas"></a>これらのセカンダリ計算レプリカにどのように接続するか
 
-これらの追加読み取り専用計算レプリカに接続するには、接続文字列の `ApplicationIntent` 引数を `ReadOnly` に設定してください。 `ReadOnly` がマークされたすべての接続は、追加読み取り専用計算レプリカのいずれかに自動的にルーティングされます。  
+これらの追加読み取り専用計算レプリカに接続するには、接続文字列の `ApplicationIntent` 引数を `ReadOnly` に設定してください。 `ReadOnly` がマークされたすべての接続は、追加読み取り専用計算レプリカのいずれかに自動的にルーティングされます。 詳細については、「[読み取り専用レプリカを使用して読み取り専用クエリ ワークロードをオフロードする](read-scale-out.md)」を参照してください。
 
 ### <a name="how-do-i-validate-if-i-have-successfully-connected-to-secondary-compute-replica-using-ssms-or-other-client-tools"></a>SSMS やその他のクライアント ツールを使用してセカンダリ計算レプリカに正常に接続したかどうかをどのように確認するか
 
@@ -390,7 +390,7 @@ T-SQL クエリ `SELECT DATABASEPROPERTYEX ('<database_name>', 'Updateability')`
 
 ### <a name="how-much-delay-is-there-going-to-be-between-the-primary-and-secondary-compute-replicas"></a>プライマリ計算レプリカとセカンダリ計算レプリカの間の遅延はどれくらいか
 
-トランザクションがプライマリ上でコミットされてからセカンダリに表示されるまでのデータ待機時間は、現在のログ生成速度によって異なりますが、 一般的なデータ待機時間は数ミリ秒です。
+トランザクションがプライマリ上でコミットされてからセカンダリで読み取り可能になるまでのデータ待機時間は、現在のログ生成速度、トランザクション サイズ、レプリカへの負荷、およびその他の要因によって異なります。 小規模なトランザクションの一般的なデータ待機時間は数十ミリ秒ですが、データ待機時間に上限はありません。 特定のセカンダリ レプリカのデータは、トランザクションに対して常に一貫性があります。 ただし、特定の時点でのデータの待機時間は、セカンダリ レプリカによって異なる場合があります。 コミットされたデータの読み取りが直ちに必要なワークロードは、プライマリ レプリカで実行される必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

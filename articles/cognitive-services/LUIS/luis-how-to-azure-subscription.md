@@ -3,14 +3,14 @@ title: オーサリング キーとランタイム キーの使用方法 - LUIS
 description: Language Understanding (LUIS) を初めて使用するときは、オーサリング キーを作成する必要はありません。 アプリを発行する場合は、ランタイム エンドポイントを使用し、ランタイム キーを作成してアプリに割り当てる必要があります。
 services: cognitive-services
 ms.topic: how-to
-ms.date: 07/07/2020
+ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6bd8cc807a393d6c8027f5990b9897d93f2b78d2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 99f73399c410641be352111302b1d4999d1ebc1b
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496901"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565907"
 ---
 # <a name="create-luis-resources"></a>LUIS リソースの作成
 
@@ -25,14 +25,18 @@ ms.locfileid: "87496901"
 
 LUIS では、次の 3 種類の Azure リソースと Azure 以外の 1 つのリソースを使用できます。
 
-|Key|目的|Cognitive service `kind`|Cognitive service `type`|
+|リソース|目的|Cognitive service `kind`|Cognitive service `type`|
 |--|--|--|--|
-|オーサリング キー|作成、トレーニング、発行、テストを使用して、アプリケーションのデータにアクセスして管理します。 プログラムを使用して LUIS アプリを作成する場合は、LUIS オーサリング キーを作成します。<br><br>`LUIS.Authoring` キーの目的は、次のことを可能にすることです。<br>* トレーニングや発行など、Language Understanding のアプリとモデルをプログラムで管理する<br> * [共同作成者ロール](#contributions-from-other-authors)にユーザーを割り当てることで、オーサリング リソースへのアクセス許可を制御する|`LUIS.Authoring`|`Cognitive Services`|
-|クエリ予測キー| 予測エンドポイント要求に対してクエリを実行します。 クライアント アプリでスターター リソースによって提供される 1000 件を超えて予測を要求する前に、LUIS 予測キーを作成します。 |`LUIS`|`Cognitive Services`|
+|作成リソース|これにより、アプリケーションの作成、管理、トレーニング、テスト、および発行を行うことができます。 LUIS アプリの作成をプログラムによって、または LUIS ポータルから行う場合は、[LUIS オーサリング リソースを作成](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-azure-subscription#create-luis-resources-in-azure-portal)します。 まずは、Azure オーサリング リソースをアプリケーションにリンクできるようにするために、[LUIS アカウントを移行](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring#what-is-migration)する必要があります。 [共同作成者ロール](#contributions-from-other-authors)にユーザーを割り当てることで、オーサリング リソースへのアクセス許可を制御することができます。 <br><br> LUIS オーサリング リソースで利用できるサービス レベルは次の 1 つです。<br> * **F0 オーサリング リソース**。これによって、毎月 100 万件の無料オーサリング トランザクションと 1,000 件の無料予測エンドポイント要求が提供されます。 |`LUIS.Authoring`|`Cognitive Services`|
+|予測リソース| LUIS アプリケーションを発行したら、予測リソースまたはキーを使用して、予測エンドポイント要求をクエリします。 クライアント アプリで要求する予測がオーサリングまたはスターター リソースによって提供される 1,000 件の要求を超える場合は、事前に LUIS 予測リソースを作成しておきます。 <br><br> 予測リソースで利用できるサービス レベルは次の 2 つです。<br> * **F0 予測リソース**。これによって、毎月 10,000 件の無料予測エンドポイント要求が提供されます。<br> * **S0 予測リソース**。これは有料のサービス レベルです。 [価格に関する詳細情報](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
+|スターターまたは試用版のリソース|これにより、アプリケーションの作成、管理、トレーニング、テスト、および発行を行うことができます。 最初に LUIS にサインアップするときにスターター リソース オプションを選択した場合は、これが既定で作成されます。 ただし、スタート キーは最終的に非推奨となるので、すべての LUIS ユーザーは[自分のアカウントを移行](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring#what-is-migration)し、自分の LUIS アプリケーションをオーサリング リソースにリンクする必要があります。 オーサリング リソースの場合とは違い、このリソースによって、ロールベースのアクセス制御のためのアクセス許可が付与されることはありません。 <br><br> オーサリング リソースと同様に、スターター リソースでも、100 万件の無料オーサリング トランザクションと 1,000 件の無料予測エンドポイント要求が提供されます。|-|Azure リソースではありません|
 |[Cognitive Service マルチサービスのリソース キー](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|LUIS およびその他のサポートされている Cognitive Services と共有される予測エンドポイント要求に対するクエリを実行します。|`CognitiveServices`|`Cognitive Services`|
-|スターター|LUIS ポータルまたは API (SDK を含む) を使用した無料オーサリング (ロールベースのアクセス制御なし)、ブラウザー、API、または SDK を使用した 1 か月あたり 1,000 件の無料の予測エンドポイント要求|-|Azure リソースではありません|
 
-Azure リソースの作成プロセスが完了したら、LUIS ポータルでアプリに[キーを割り当てます](#assign-a-resource-to-an-app)。
+
+> [!Note]
+> LUIS が提供する F0 (Free レベル) リソースには 2 つの種類があります。 1 つはトランザクションを作成するためのもの、もう 1 つは予測トランザクション用です。 予測トランザクション用の無料クォータが不足している場合は、毎月 1,000 件の予測トランザクションを提供するオーサリング リソースではなく、毎月 10,000 件の無料トランザクションを提供する F0 予測リソースを実際に使用していることを確認してください。
+
+Azure リソースの作成プロセスが完了したら、LUIS ポータルでアプリに[リソースを割り当て](#assign-a-resource-to-an-app)ます。
 
 発行およびクエリを行う[リージョン](luis-reference-regions.md#publishing-regions)内で LUIS アプリを作成することが重要です。
 
@@ -211,15 +215,19 @@ LUIS の 1 つのアプリまたはすべてのアプリに対して、オーサ
 
 ## <a name="assign-a-resource-to-an-app"></a>アプリにリソースを割り当てる
 
-次の手順でアプリに割り当てることができます。
+Azure サブスクリプションを持っていない場合は、新しいリソースを割り当てることも作成することもできません。 まず [Azure 無料試用版](https://azure.microsoft.com/en-us/free/)を作成し、次に LUIS に戻ってポータルから新しいリソースを作成する必要があります。
 
-1. [LUIS ポータル](https://www.luis.ai)にサインインし、 **[マイ アプリ]** の一覧からアプリを選択します。
-1. **[管理] -> [Azure リソース]** ページに移動します。
+次の手順に従えば、オーサリングまたは予測リソースのアプリケーションへの割り当てまたは作成を行うことができます。
+
+1. [LUIS ポータル](https://www.luis.ai)にサインインして、 **[マイ アプリ]** の一覧からアプリを選択します
+1. **[管理] -> [Azure リソース]** ページに移動します
 
     ![LUIS ポータルで [管理] -> [Azure リソース] を選択して、アプリにリソースを割り当てます。](./media/luis-how-to-azure-subscription/manage-azure-resources-prediction.png)
 
-1. [Prediction resources]\(予測リソース\) または [Authoring resource]\(オーサリング リソース\) タブを選択し、 **[Add prediction resource]\(予測リソースの追加\)** または **[Add authoring resource]\(オーサリング リソースの追加\)** ボタンを選択します。
-1. フォーム内のフィールドを選択して適切なリソースを探し、 **[保存]** を選択します。
+1. [Prediction resources]\(予測リソース\) または [Authoring resource]\(オーサリング リソース\) タブを選択し、次に **[Add prediction resource]\(予測リソースの追加\)** または **[Add authoring resource]\(オーサリング リソースの追加\)** ボタンを選択します
+1. フォーム内のフィールドを選択して適切なリソースを探して、 **[保存]** を選択します
+1. 既存のリソースがない場合は作成できます。それには、[Create a new LUIS resource]\(新しい LUIS リソースを作成しますか?\) を ウィンドウの下部から選択します。
+
 
 ### <a name="assign-query-prediction-runtime-resource-without-using-luis-portal"></a>LUIS ポータルを使用せずにクエリ予測ランタイム リソースを割り当てる
 

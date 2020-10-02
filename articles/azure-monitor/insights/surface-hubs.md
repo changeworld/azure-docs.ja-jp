@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2018
-ms.openlocfilehash: 7999735bf2d182b2811d01172adcfc89cba27dc8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e3b0f92770b48ef5163846e67940efe80fb669a
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77662503"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085350"
 ---
 # <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>Azure Monitor で Surface Hub を監視して正常性を追跡する
 
@@ -60,7 +60,7 @@ Surface Hub を管理する Log Analytics ワークスペースのワークス�
 3. **[This device (このデバイス)]** をクリックし、 **[監視]** の下の **[Log Analytics 設定の構成]** をクリックします。
 4. **[監視を有効にする]** を選択します。
 5. [Log Analytics の設定] ダイアログで、Log Analytics の **[ワークスペース ID]** と **[ワークスペース キー]** を入力します。  
-   ![設定](./media/surface-hubs/settings.png)
+   ![Microsoft Operations Manager Suite 設定のスクリーンショット。[監視を有効にする] が選択されています。[ワークスペース ID] と [ワークスペース キー] にテキスト ボックスがあります。](./media/surface-hubs/settings.png)
 6. **[OK]** をクリックして、構成を完了します。
 
 デバイスに構成が正常に適用されたかどうかを示す確認メッセージが表示されます。 成功した場合は、エージェントが Azure Monitor に正常に接続されたことを示すメッセージが表示されます。 その後、デバイスでは Azure Monitor へのデータ送信が開始されます。Azure Monitor でデータを表示し、対応することができます。

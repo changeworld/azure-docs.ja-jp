@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/02/2020
+ms.date: 09/16/2020
 ms.author: cherylmc
-ms.openlocfilehash: 57288d49fdfa193e9ebebe5f2ce4d24327997980
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: af3513c4a4f3b3187e85c65de51ad2e6e2d7279c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89392478"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983178"
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-portal"></a>Azure Portal を使用したローカル ネットワーク ゲートウェイの設定の変更
 
@@ -27,19 +27,64 @@ ms.locfileid: "89392478"
 >
 >
 
+## <a name="local-network-gateway-configuration"></a><a name="configure-lng"></a>ローカル ネットワーク ゲートウェイ構成
+
+下のスクリーンショットは、パブリック IP アドレス エンドポイントを使用したローカル ネットワーク ゲートウェイ リソースの **[構成]** ページを示しています。
+
+:::image type="content" source="./media/vpn-gateway-modify-local-network-gateway-portal/ip-address.png" alt-text="ローカル ネットワーク ゲートウェイの構成 - IP アドレス":::
+
+FQDN エンドポイントの場合、同じ構成ページが次のようになります。
+
+:::image type="content" source="./media/vpn-gateway-modify-local-network-gateway-portal/fqdn.png" alt-text="ローカル ネットワーク ゲートウェイの構成 - IP アドレス":::
+
+## <a name="modify-the-gateway-ip-address"></a><a name="ip"></a>ゲートウェイの IP アドレスを変更する
+
+接続先の VPN デバイスのパブリック IP アドレスが変更された場合には、ローカル ネットワーク ゲートウェイを変更してアドレスの変更を反映する必要があります。
+
+1. ローカル ネットワーク ゲートウェイ リソースの **[設定]** セクションで、**[構成]** をクリックします。
+2. **[IP アドレス]** ボックスの IP アドレスを変更します。
+3. **[保存]** をクリックして設定を保存します。
+
+## <a name="modify-the-gateway-fqdn"></a><a name="fqdn"></a>ゲートウェイ FQDN の変更
+
+接続先の VPN デバイスの FQDN (完全修飾ドメイン名) が変更された場合には、ローカル ネットワーク ゲートウェイを変更してアドレスの変更を反映する必要があります。
+
+1. ローカル ネットワーク ゲートウェイ リソースの **[設定]** セクションで、**[構成]** をクリックします。
+2. **[FQDN]** ボックスでドメイン名を変更します。
+3. **[保存]** をクリックして設定を保存します。
+
+> ![注記] FQDN エンドポイントと IP アドレス エンドポイントの間でローカル ネットワーク ゲートウェイを変更することはできません。 このローカル ネットワーク ゲートウェイに関連付けられている接続をすべて削除し、新しいエンドポイント (IP アドレスまたは FQDN) で新規作成し、接続を再作成する必要があります。
 
 ## <a name="modify-ip-address-prefixes"></a><a name="ipaddprefix"></a>IP アドレスのプレフィックスを変更する
 
-IP アドレス プレフィックスを変更するときに従う手順は、ローカル ネットワーク ゲートウェイ接続が存在するかどうかによって異なります。
+### <a name="to-add-additional-address-prefixes"></a>アドレス プレフィックスを追加するには:
 
-[!INCLUDE [modify prefix](../../includes/vpn-gateway-modify-ip-prefix-portal-include.md)]
+1. ローカル ネットワーク ゲートウェイ リソースの **[設定]** セクションで、**[構成]** をクリックします。
+2. *[その他のアドレス範囲の追加]* ボックスに、IP アドレス空間を追加します。
+3. **[Save]** をクリックして設定を保存します。
 
-## <a name="modify-the-gateway-ip-address"></a><a name="gwip"></a>ゲートウェイの IP アドレスを変更する
+### <a name="to-remove-address-prefixes"></a>アドレス プレフィックスを削除するには:
 
-接続先の VPN デバイスのパブリック IP アドレスが変更された場合には、ローカル ネットワーク ゲートウェイを変更してアドレスの変更を反映する必要があります。 パブリック IP アドレスを変更するときに従う手順は、ローカル ネットワーク ゲートウェイ接続が存在するかどうかによって異なります。
+1. ローカル ネットワーク ゲートウェイ リソースの **[設定]** セクションで、**[構成]** をクリックします。
+2. 削除するプレフィックスが含まれる行の **[...]** をクリックします。
+3. **[削除]** をクリックします。
+4. **[Save]** をクリックして設定を保存します。
 
-[!INCLUDE [modify gateway IP](../../includes/vpn-gateway-modify-lng-gateway-ip-portal-include.md)]
+## <a name="modify-bgp-settings"></a><a name="bgp"></a>BGP 設定を変更する
 
-## <a name="next-steps"></a>次のステップ
+### <a name="to-add-or-update-bgp-settings"></a>BGP 設定を追加または更新するには:
+
+1. ローカル ネットワーク ゲートウェイ リソースの **[設定]** セクションで、**[構成]** をクリックします。
+2. このローカル ネットワーク ゲートウェイの BGP 構成を表示したり、更新したりするには、 **[BGP 設定の構成]** を選択します。
+3. 対応するフィールドで自律システム番号か BGP ピア IP アドレスを追加するか更新します。
+4. **[Save]** をクリックして設定を保存します。
+
+### <a name="to-remove-bgp-settings"></a>BGP 設定を削除するには:
+
+1. ローカル ネットワーク ゲートウェイ リソースの **[設定]** セクションで、**[構成]** をクリックします。
+2. 既存の BGP ASN と BGP ピア IP アドレスを削除するには、 **[BGP 設定の構成]** の選択を解除します。
+3. **[Save]** をクリックして設定を保存します。
+
+## <a name="next-steps"></a>次の手順
 
 ゲートウェイの接続を確認することができます。 「 [Verify a gateway connection (ゲートウェイの接続を確認する)](vpn-gateway-verify-connection-resource-manager.md)」を参照してください。

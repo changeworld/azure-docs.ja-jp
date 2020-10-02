@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: b14f3c241fd21d3d4f9c4e17ae95d8048139cec1
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 12ab54e51b26c4b3d77f5518d4e4f44efe34affd
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442873"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983309"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Azure ポータルを使用して VNet 間 VPN ゲートウェイ接続を構成する
 
@@ -178,7 +178,7 @@ VNet1 と VNet4 の仮想ネットワーク ゲートウェイの作成が両方
    ![接続を確認する](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/view-connections.png "接続を確認する")
 3. **[名前]** 列で、いずれかの接続を選択して詳細を表示します。 データのフローが開始されると、 **[データ入力]** と **[データ出力]** に値が表示されます。
 
-   ![状態](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/status.png "Status")
+   ![リソース グループのスクリーンショット。[データ入力] と [データ出力] に値が含まれています。](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/status.png "Status")
 
 ## <a name="add-additional-connections"></a>さらに接続を追加する
 

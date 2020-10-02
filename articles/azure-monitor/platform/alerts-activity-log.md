@@ -4,12 +4,12 @@ description: Azure portal、Azure Resource Manager テンプレート、およ�
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: b202e3d47b98c5e395b3a8b525b9b8c0a04c0f76
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7914f3ee57d014de2f34fca301b587c6297bebe3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322416"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983086"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する  
 
@@ -111,7 +111,7 @@ Azure portal を使用して、アクティビティ ログ アラート ルー�
 
 1. Azure portal で、 **[モニター]**  >  **[アラート]** の順に選択します。 ウィンドウの左上隅にある **[アラート ルールの管理]** を選択します。
 
-    ![アラート ルールの管理](media/alerts-activity-log/manage-alert-rules.png)
+    ![アクティビティ ログのスクリーンショット。検索ボックスが強調表示されています。](media/alerts-activity-log/manage-alert-rules.png)
 
     使用可能なルールの一覧が表示されます。
 

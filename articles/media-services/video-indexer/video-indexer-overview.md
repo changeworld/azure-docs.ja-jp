@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 08/31/2020
+ms.date: 09/11/2020
 ms.author: juliako
-ms.openlocfilehash: bff99cdd44763c0df6bb5b2dd863b27728c23fcd
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: b327facc2ac9ad64cf5237ecddc3e4024f75daa6
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318687"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052139"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>Azure Media Services Video Indexer とは
 
@@ -81,7 +81,7 @@ Video Indexer の分析情報は、次のような多くのシナリオに適用
 * **2 チャネル処理**:個別のトランスクリプトを自動検出し、1 つのタイムラインに結合します。
 * **ノイズリダクション**:(Skype フィルターに基づいて) テレフォニー音声やノイズの多い録音を明瞭にします。
 * **トランスクリプトのカスタマイズ** (CRIS):音声テキスト変換のカスタム モデルをトレーニングして、業界固有のトランスクリプトを作成します。 詳細については、「[Video Indexer Web サイトから言語モデルをカスタマイズする](customize-language-model-with-website.md)」と「[Video Indexer API を使用して言語モデルをカスタマイズする](customize-language-model-with-api.md)」をご覧ください。
-* **話者の列挙**:どの話者がどの言葉をいつ話したかをマップして認識します。
+* **話者の列挙**:どの話者がどの言葉をいつ話したかをマップして認識します。 16 人の話者を 1 つの音声ファイルで検出できます。
 * **話者の統計情報**:話者の音声率の統計情報を提供します。
 * **テキストのコンテンツ モデレーション**:音声トランスクリプト内の明示的なテキストを検出します。
 * **音声効果**:拍手、発言、沈黙などの音声効果を識別します。
