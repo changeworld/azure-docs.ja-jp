@@ -9,18 +9,18 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: banders
-ms.openlocfilehash: 0f1b4751ae2448b519387d57e4dbfa1eecf8a576
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8366c0681f1ac29d9e265225dfaeeab44aa4b8ca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984272"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252971"
 ---
 # <a name="add-or-update-a-credit-card-for-azure"></a>Azure のクレジット カードの追加または更新
 
 このドキュメントは、クレジット カードを使用して Azure オンラインにサインアップされているお客様を対象としています。
 
-Azure portal では、既定の支払い方法から新しいクレジット カードへの変更と、クレジット カードの詳細の更新を行うことができます。 クレジット カードを変更するには、[アカウント管理者](billing-subscription-transfer.md#whoisaa)になる必要があります。
+Azure portal では、既定の支払い方法から新しいクレジット カードへの変更と、クレジット カードの詳細の更新を行うことができます。 クレジット カードを変更するには、[アカウント管理者](../understand/subscription-transfer.md#whoisaa)になる必要があります。
 
 クレジット カードを削除する場合は、「[Azure の課金の支払い方法を削除する](delete-azure-payment-method.md)」を参照してください。
 
