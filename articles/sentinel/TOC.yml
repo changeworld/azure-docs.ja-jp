@@ -172,7 +172,7 @@
           href: connect-azure-stack.md
     - name: ユーザーとエンティティの動作分析の有効化
       href: enable-entity-behavior-analytics.md
-    - name: 複数のテナントの操作 (MSSP)
+    - name: 複数のテナントの管理 (MSSP)
       href: multiple-tenants-service-providers.md
     - name: 複数のワークスペースでインシデントを操作する
       href: multiple-workspace-view.md

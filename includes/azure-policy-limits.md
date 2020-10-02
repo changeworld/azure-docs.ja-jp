@@ -4,16 +4,17 @@ description: インクルード ファイル
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/22/2020
+ms.date: 09/30/2020
 ms.author: dacoulte
-ms.openlocfilehash: 2707523947cae77dd800dd5f560ebe1c47f3893a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f3f706789e14cb20214bf17fd91f6ec1e503848f
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905958"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91605841"
 ---
-Azure Policy では、オブジェクトの種類ごとに最大数があります。 _Scope_ というエントリは、サブスクリプションまたは[管理グループ](../articles/governance/management-groups/overview.md)のいずれかを意味します。
+Azure Policy では、オブジェクトの種類ごとに最大数があります。 定義について、_Scope_ というエントリは[管理グループ](../articles/governance/management-groups/overview.md)またはサブスクリプションを意味します。
+割り当てと除外の場合、_スコープ_ というエントリは [管理グループ](../articles/governance/management-groups/overview.md)、サブスクリプション、リソース グループ、または個々のリソースを意味します。
 
 | Where | 対象 | 最大数 |
 |---|---|---|

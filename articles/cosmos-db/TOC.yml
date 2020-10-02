@@ -112,7 +112,7 @@
           displayName: 'request units, RUs, RU'
           href: scaling-throughput.md
         - name: 競合のタイプと解決ポリシー
-          displayName: 'last write wins, custom, multi master, multi-master'
+          displayName: 'last write wins, custom, multi-region writes, multi-master'
           href: conflict-resolution-policies.md
         - name: グローバル配信 - 内部のしくみ
           href: global-dist-under-the-hood.md
@@ -584,7 +584,7 @@
         - name: データの暗号化
           href: database-encryption-at-rest.md
         - name: データへのアクセスをセキュリティで保護する
-          displayName: 'master key, resource token, users, roles'
+          displayName: 'primary key, resource token, users, roles'
           href: secure-access-to-data.md
         - name: IP ファイアウォール
           href: firewall-support.md
@@ -977,7 +977,7 @@
           href: how-to-move-regions.md
     - name: グローバル配信
       items:
-        - name: マルチマスターを構成する
+        - name: マルチリージョンの書き込みを構成する
           href: how-to-multi-master.md
         - name: 整合性レベルを管理する
           displayName: 'session, consistency prefix, strong, eventual, bounded staleness'

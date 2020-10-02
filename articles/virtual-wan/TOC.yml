@@ -76,6 +76,8 @@
       href: upgrade-virtual-wan.md
     - name: 仮想ハブに NVA を作成する
       href: How-to-nva-hub.md
+    - name: クロステナント VNet 接続を作成する
+      href: cross-tenant-vnet.md
     - name: ExpressRoute
       items:
         - name: ExpressRoute 接続を作成する
@@ -128,7 +130,7 @@
               href: virtual-wan-route-table-nva-portal.md
             - name: Azure PowerShell
               href: virtual-wan-route-table-nva.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: Azure Firewall をハブにデプロイする
           href: howto-firewall.md

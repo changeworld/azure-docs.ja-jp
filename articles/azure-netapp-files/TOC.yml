@@ -4,6 +4,8 @@
   items:
     - name: Azure NetApp Files とは
       href: azure-netapp-files-introduction.md
+    - name: 新着情報
+      href: whats-new.md
     - name: Azure NetApp Files のストレージ階層
       href: azure-netapp-files-understand-storage-hierarchy.md
 - name: クイックスタート
@@ -27,6 +29,8 @@
           href: azure-netapp-files-performance-metrics-volumes.md
         - name: Linux のパフォーマンス ベンチマーク
           href: performance-benchmarks-linux.md
+        - name: Azure NetApp Files の単一ボリュームでの Oracle データベースのパフォーマンス
+          href: performance-oracle-single-volumes.md
         - name: SMB のパフォーマンスに関する FAQ
           href: azure-netapp-files-smb-performance.md
     - name: Azure NetApp Files のコスト モデル

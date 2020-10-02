@@ -43,6 +43,8 @@
       href: basic-concepts.md
     - name: セキュリティ
       items:
+        - name: Key Vault 認証の基礎
+          href: authentication-fundamentals.md
         - name: Azure Key Vault セキュリティ
           href: overview-security.md
         - name: Key Vault を使用するためのベスト プラクティス - Azure Key Vault
@@ -130,6 +132,8 @@
           href: access-behind-firewall.md
     - name: 論理的な削除
       items:
+        - name: Key Vault の回復 (論理的な削除と消去保護)
+          href: key-vault-recovery.md
         - name: CLI での論理的な削除の使用
           href: soft-delete-cli.md
         - name: PowerShell での論理的な削除の使用

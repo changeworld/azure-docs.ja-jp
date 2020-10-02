@@ -19,6 +19,12 @@
     - name: 管理グループの作成 - Azure PowerShell
       displayName: hierarchy
       href: ./create-management-group-powershell.md
+    - name: 管理グループの作成 - .NET
+      displayName: hierarchy
+      href: ./create-management-group-dotnet.md
+    - name: 管理グループの作成 - JavaScript
+      displayName: hierarchy
+      href: ./create-management-group-javascript.md
     - name: 管理グループの作成 - REST
       displayName: hierarchy
       href: ./create-management-group-rest-api.md

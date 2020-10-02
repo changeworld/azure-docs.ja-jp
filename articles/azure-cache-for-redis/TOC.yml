@@ -68,6 +68,8 @@
       items:
         - name: キャッシュ レベルを選択する
           href: cache-overview.md#choosing-the-right-tier
+        - name: Redis バージョンを設定する
+          href: cache-how-to-version.md
         - name: クラスタリングによってキャッシュを分散する
           href: cache-how-to-premium-clustering.md
         - name: Redis データ永続化でキャッシュを保持する

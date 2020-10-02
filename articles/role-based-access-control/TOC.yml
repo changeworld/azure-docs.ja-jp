@@ -28,6 +28,10 @@
       href: tutorial-custom-role-cli.md
 - name: 概念
   items:
+    - name: ロールの定義
+      href: role-definitions.md
+    - name: スコープ
+      href: scope-overview.md
     - name: ベスト プラクティス
       href: best-practices.md
     - name: Azure 管理の条件付きアクセス
@@ -40,11 +44,7 @@
 - name: 操作方法ガイド
   items:
     - name: ロール定義の一覧表示
-      items:
-        - name: 概要
-          href: role-definitions.md
-        - name: ロール定義の一覧表示
-          href: role-definitions-list.md
+      href: role-definitions-list.md
     - name: ロールの割り当ての一覧表示
       items:
         - name: ポータル
@@ -57,6 +57,8 @@
           href: role-assignments-list-rest.md
     - name: ロールの割り当てを追加または削除する
       items:
+        - name: ロールの割り当てを追加する手順
+          href: role-assignments-steps.md
         - name: ポータル
           href: role-assignments-portal.md
         - name: ポータル - ゲスト ユーザー

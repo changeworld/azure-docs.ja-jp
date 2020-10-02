@@ -10,6 +10,10 @@
       href: language-support.md
     - name: リージョンのサポート
       href: regions.md
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
+    - name: クォータと制限
+      href: speech-services-quotas-and-limits.md
     - name: ドキュメントの最新情報
       href: whats-new.md
 - name: 音声テキスト変換
@@ -347,6 +351,8 @@
       items:
         - name: 音声アシスタントとは
           href: voice-assistants.md
+        - name: 音声アシスタントのサンプル (GitHub)
+          href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
     - name: カスタム コマンド
       items:
         - name: カスタム コマンドとは
@@ -459,11 +465,58 @@
       items:
         - name: Speaker Recognition REST API
           href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
-- name: Hosting
+- name: ツール
   items:
-    - name: ドキュメントのホスト
-      href: index-hosting.yml
-    - name: 操作方法ガイド
+    - name: Speech SDK
+      items:
+        - name: Speech SDK の概要
+          href: speech-sdk.md
+        - name: Speech SDK を設定する
+          href: quickstarts/setup-platform.md
+        - name: Speech SDK リリース ノート
+          href: releasenotes.md
+        - name: リファレンス
+          items:
+            - name: C++
+              href: 'https://aka.ms/csspeech/cppref'
+            - name: C#
+              href: 'https://aka.ms/csspeech/csharpref'
+            - name: Java
+              href: 'https://aka.ms/csspeech/javaref'
+            - name: JavaScript
+              href: 'https://aka.ms/csspeech/javascriptref'
+            - name: Objective-C
+              href: 'https://aka.ms/csspeech/objectivecref'
+            - name: Python
+              href: 'https://aka.ms/csspeech/pythonref'
+    - name: Speech CLI
+      displayName: SPX
+      items:
+        - name: Speech CLI の概要
+          displayName: What is SPX?
+          href: spx-overview.md
+        - name: Speech CLI の基本
+          displayName: SPX basics
+          href: spx-basics.md
+    - name: Speech Studio
+      items:
+        - name: Speech Studio の概要
+          href: 'https://speech.microsoft.com'
+        - name: Speech Studio を使用してカスタム コマンド アプリを作成する
+          href: quickstart-custom-speech-commands-create-new.md
+- name: デプロイ
+  items:
+    - name: ログの有効化
+      href: how-to-use-logging.md
+    - name: メモリ使用量の追跡
+      href: how-to-track-speech-sdk-memory-usage.md
+    - name: Linux 用 OpenSSL の構成
+      displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
+      href: how-to-configure-openssl-linux.md
+    - name: RHEL/CentOS 7 の構成
+      href: how-to-configure-rhel-centos-7.md
+      displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentO'
+    - name: コンテナー
       items:
         - name: Speech コンテナーをインストールおよび実行する
           displayName: 'containers,install container,run container'
@@ -479,53 +532,8 @@
         - name: Azure Container Instances 上の Speech コンテナー
           displayName: 'ACI,azure container instances,container instances,containers'
           href: deploy-speech-on-container-instances.md
-    - name: リソース
-      items:
         - name: コンテナーの FAQ
           href: speech-container-faq.md
-- name: Speech SDK
-  items:
-    - name: Speech SDK の概要
-      href: speech-sdk.md
-    - name: Speech SDK を設定する
-      displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'
-      href: quickstarts/setup-platform.md
-    - name: 操作方法ガイド
-      items:
-        - name: ログの有効化
-          href: how-to-use-logging.md
-        - name: メモリ使用量の追跡
-          href: how-to-track-speech-sdk-memory-usage.md
-        - name: Linux 用 OpenSSL の構成
-          displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
-          href: how-to-configure-openssl-linux.md
-        - name: RHEL/CentOS 7 の構成
-          href: how-to-configure-rhel-centos-7.md
-          displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentOS'
-    - name: サンプル
-      items:
-        - name: Speech SDK のサンプル (GitHub)
-          href: 'https://github.com/Azure-Samples/cognitive-services-speech-sdk'
-        - name: Speech Devices SDK のサンプル (GitHub)
-          href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
-        - name: 音声アシスタントのサンプル (GitHub)
-          href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
-    - name: リファレンス
-      items:
-        - name: C++
-          href: 'https://aka.ms/csspeech/cppref'
-        - name: C#
-          href: 'https://aka.ms/csspeech/csharpref'
-        - name: Java
-          href: 'https://aka.ms/csspeech/javaref'
-        - name: JavaScript
-          href: 'https://aka.ms/csspeech/javascriptref'
-        - name: Objective-C
-          href: 'https://aka.ms/csspeech/objectivecref'
-        - name: Python
-          href: 'https://aka.ms/csspeech/pythonref'
-        - name: Speech SDK リリース ノート
-          href: releasenotes.md
 - name: デバイス
   items:
     - name: Speech Devices のドキュメント
@@ -536,6 +544,8 @@
           href: speech-devices-sdk.md
         - name: Speech Devices SDK の取得
           href: get-speech-devices-sdk.md
+        - name: Speech Devices SDK のサンプル (GitHub)
+          href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
     - name: ハードウェア
       items:
         - name: マイク配列の推奨事項
@@ -560,23 +570,6 @@
       items:
         - name: Speech Devices SDK のリリース ノート
           href: devices-sdk-release-notes.md
-- name: ツール
-  items:
-    - name: Speech CLI
-      displayName: SPX
-      items:
-        - name: Speech CLI とは
-          displayName: What is SPX?
-          href: spx-overview.md
-        - name: Speech CLI の基本
-          displayName: SPX basics
-          href: spx-basics.md
-    - name: Speech Studio
-      items:
-        - name: Speech Studio とは
-          href: 'https://speech.microsoft.com'
-        - name: Speech Studio を使用してカスタム コマンド アプリを作成する
-          href: quickstart-custom-speech-commands-create-new.md
 - name: 移行
   items:
     - name: Bing Speech から
@@ -595,12 +588,8 @@
     - name: ソブリン クラウド
       displayName: 'fairfax,mooncake,compliant,secret,compliance,government,government cloud,dod,china'
       href: sovereign-clouds.md
-    - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
-    - name: クォータと制限
-      href: speech-services-quotas-and-limits.md
     - name: コンプライアンス
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 暗号化
