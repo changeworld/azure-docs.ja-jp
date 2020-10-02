@@ -17,6 +17,9 @@
     - name: ポリシーの割り当て - Azure PowerShell
       displayName: 'assign, compliance'
       href: ./assign-policy-powershell.md
+    - name: ポリシーの割り当て - .NET
+      displayName: 'assign, compliance'
+      href: ./assign-policy-dotnet.md
     - name: ポリシーの割り当て - JavaScript
       displayName: 'assign, compliance'
       href: ./assign-policy-javascript.md
@@ -139,6 +142,9 @@
     - name: 配列プロパティのポリシーの作成
       displayName: 'array property, alias, aliases, in, notIn, type, defaultValue'
       href: ./how-to/author-policies-for-arrays.md
+    - name: Azure Policy リソースをエクスポートする
+      displayName: 'github, json, definition'
+      href: ./how-to/export-resources.md
     - name: ゲスト構成
       items:
         - name: Windows でのゲスト構成ポリシーの作成

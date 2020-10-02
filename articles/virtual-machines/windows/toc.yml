@@ -337,7 +337,7 @@
       href: ../../virtual-machine-scale-sets/overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: インフラストラクチャの自動化
       href: ../infrastructure-automation.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティとポリシー
           href: ../security-policy.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -407,7 +407,7 @@
           href: ps-template.md
         - name: VM への接続
           href: connect-logon.md
-        - name: Linux VM への接続
+        - name: Linux VM への SSH 接続
           displayName: ssh keygen ssk-key putty
           items:
             - name: ポータルで
@@ -595,7 +595,7 @@
               href: disk-encryption-troubleshooting.md
             - name: ディスク暗号化の FAQ
               href: disk-encryption-faq.md
-            - name: ディスク暗号化 - 以前のバージョン (Azure AD)
+            - name: ディスク暗号化 - 以前のバージョン
               items:
                 - name: 概要
                   href: disk-encryption-overview-aad.md

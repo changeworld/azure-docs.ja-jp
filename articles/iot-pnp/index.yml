@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: IoT プラグ アンド プレイ プレビュー更新版のドキュメント
+title: IoT プラグ アンド プレイのドキュメント
 summary: IoT プラグ アンド プレイを使用すると、デバイス モデルを定義することができます。デバイス モデルを使用すると、クラウド ソリューションにデバイスを自動的に認識させ、対話させることが可能になります。
 metadata:
-  title: IoT プラグ アンド プレイ プレビューのアーキテクチャ
-  description: IoT プラグ アンド プレイ プレビューにより、ソリューション ビルダーは手動で構成することなくデバイスをソリューションに統合できます。 この記事では、これを実現する主要なアーキテクチャ要素について説明します。
+  title: IoT プラグ アンド プレイのアーキテクチャ
+  description: IoT プラグ アンド プレイにより、ソリューション ビルダーは手動で構成することなくデバイスをソリューションに統合できます。 この記事では、この作業を実現する主要なアーキテクチャ要素について説明します。
   services: iot-pnp
   ms.service: iot-pnp
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   ms.author: dobett
   manager: philmea
   ms.date: 10/31/2019
-  ms.openlocfilehash: 6fe77d059974bcc37fb0b0bbc6a171d371a93478
-  ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+  ms.openlocfilehash: 5b01154fa3e5821ca577e4a910facff8d9cb968a
+  ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/28/2020
-  ms.locfileid: "87337366"
+  ms.lasthandoff: 09/30/2020
+  ms.locfileid: "91598037"
 landingContent:
 - title: IoT プラグ アンド プレイ
   linkLists:
@@ -24,8 +24,8 @@ landingContent:
     links:
     - text: IoT プラグ アンド プレイとは
       url: overview-iot-plug-and-play.md
-    - text: プレビュー更新版の更新内容 (2020)
-      url: overview-iot-plug-and-play-preview-updates.md
+    - text: 現在のリリースの内容
+      url: overview-iot-plug-and-play-current-release.md
 - title: デバイスを構築する
   linkLists:
   - linkListType: quickstart
@@ -43,11 +43,13 @@ landingContent:
   - linkListType: concept
     links:
     - text: 開発者ガイド
-      url: concepts-developer-guide.md
-    - text: IoT プラグ アンド プレイの規則
-      url: concepts-convention.md
+      url: concepts-developer-guide-device-csharp.md
     - text: コンポーネント
       url: concepts-components.md
+    - text: IoT プラグ アンド プレイの規則
+      url: concepts-convention.md
+    - text: IoT プラグ アンド プレイ ブリッジ
+      url: concepts-iot-pnp-bridge.md
 - title: ソリューションを構築する
   linkLists:
   - linkListType: quickstart

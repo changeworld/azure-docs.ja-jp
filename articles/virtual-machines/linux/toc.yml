@@ -595,10 +595,6 @@
                   href: ../../bastion/create-host-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Bastion を使用して接続する
               href: ../../bastion/bastion-connect-vm-ssh.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-              items:
-                - name: Bastion SSH 接続
-            - name: Bastion RDP 接続
-              href: ../../bastion/bastion-connect-vm-rdp.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Encrypt
           items:
             - name: Linux のディスク暗号化のシナリオ
@@ -625,7 +621,7 @@
               href: disk-encryption-troubleshooting.md
             - name: ディスク暗号化の FAQ
               href: disk-encryption-faq.md
-            - name: ディスク暗号化 - 以前のバージョン (Azure AD)
+            - name: ディスク暗号化 - 以前のバージョン
               items:
                 - name: 概要
                   href: disk-encryption-overview-aad.md
@@ -640,6 +636,7 @@
         - name: Key Vault の作成
           href: key-vault-setup.md
         - name: SSH キーの作成と使用
+          displayName: ssh keys ssh openssh
           items:
             - name: Linux または macOS の場合
               href: mac-create-ssh-keys.md

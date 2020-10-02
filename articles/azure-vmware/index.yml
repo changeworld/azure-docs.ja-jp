@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: dikamath
   ms.author: dikamath
-  ms.date: 05/04/2020
-  ms.openlocfilehash: aad6bc60066d76c96dd38fa3ba1e94069bb9e25a
-  ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+  ms.date: 09/21/2020
+  ms.openlocfilehash: 76a879f1c2c228fd509f0b0725b7ff3ddac4fa41
+  ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/22/2020
-  ms.locfileid: "88752120"
+  ms.lasthandoff: 09/30/2020
+  ms.locfileid: "91574910"
 landingContent:
 - title: Azure VMware Solution について
   linkLists:
@@ -22,15 +22,61 @@ landingContent:
     links:
     - text: Azure VMware Solution とは
       url: introduction.md
+  - linkListType: concept
+    links:
+    - text: プライベート クラウドとクラスター
+      url: concepts-private-clouds-clusters.md
+    - text: プライベート クラウドのネットワークと相互接続
+      url: concepts-networking.md
+    - text: プライベート クラウドのストレージ
+      url: concepts-storage.md
+    - text: プライベート クラウドのアクセスと ID
+      url: concepts-identity.md
+    - text: ロールベースのアクセス制御
+      url: concepts-role-based-access-control.md
+    - text: プライベート クラウドのアップグレード
+      url: concepts-upgrades.md
+- title: Azure VMware Solution のデプロイ
+  linkLists:
   - linkListType: get-started
     links:
-    - text: ネットワークのチェックリスト
-      url: tutorial-network-checklist.md
+    - text: デプロイ前のプロセス
+      url: production-ready-deployment-steps.md
+    - text: デプロイ前のチェック リスト
+      url: pre-deployment-checklist.md
+    - text: 1 - Azure VMware Solution のデプロイ
+      url: deploy-azure-vmware-solution.md
+    - text: 2 - オンプレミスに接続する
+      url: azure-vmware-solution-on-premises.md
+    - text: 3 - HCX のデプロイと構成
+      url: tutorial-deploy-vmware-hcx.md
   - linkListType: tutorial
     links:
-    - text: AVS プライベート クラウドを作成する
+    - text: ネットワーク計画のチェックリスト
+      url: tutorial-network-checklist.md
+    - text: プライベート クラウドを作成する
       url: tutorial-create-private-cloud.md
-    - text: ネットワークを構成する
-      url: tutorial-configure-networking.md
     - text: プライベート クラウドへのアクセス
       url: tutorial-access-private-cloud.md
+    - text: ネットワークを構成する
+      url: tutorial-configure-networking.md
+    - text: NSX-T ネットワーク セグメントの作成
+      url: tutorial-nsx-t-network-segment.md
+    - text: オンプレミスからプライベート クラウドへのピアリング
+      url: tutorial-expressroute-global-reach-private-cloud.md
+    - text: VMware HCX をデプロイして構成する
+      url: tutorial-deploy-vmware-hcx.md
+    - text: プライベート クラウドをスケーリングする
+      url: tutorial-scale-private-cloud.md
+- title: Azure VMware Solution を拡張する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 移行評価
+      url: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=/azure/migrate/context/migrate-context.json
+    - text: DHCP の管理
+      url: manage-dhcp.md
+    - text: VM のディザスター リカバリーをデプロイする
+      url: disaster-recovery-for-virtual-machines.md
+    - text: コンテンツ ライブラリを介して VM をデプロイする
+      url: tutorial-deploy-vm-content-library.md
