@@ -1,14 +1,14 @@
 ---
-title: Australian Government ISM PROTECTED ブループリント サンプルの概要
-description: Australian Government ISM PROTECTED ブループリント サンプルの概要。 このブループリント サンプルは、お客様が特定の ISM PROTECTED コントロールを評価するのに役立ちます。
-ms.date: 08/03/2020
+title: Australian Government ISM PROTECTED ブループリント サンプルのコントロール
+description: Australian Government ISM PROTECTED ブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy 定義に対応します。
+ms.date: 09/11/2020
 ms.topic: sample
-ms.openlocfilehash: 750cc5551f0bbf05e0da6ad41d46729231243f72
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 605e92b75da1e5363884fc6ef9457251cfbc6e4e
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760432"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030108"
 ---
 # <a name="control-mapping-of-the-australian-government-ism-protected-blueprint-sample"></a>Australian Government ISM PROTECTED ブループリント サンプルのコントロール マッピング
 
@@ -350,6 +350,10 @@ ms.locfileid: "87760432"
 ## <a name="next-steps"></a>次のステップ
 
 ブループリントとその使用方法に関するその他の記事:
+
+> [!div class="nextstepaction"]
+> [ISM PROTECTED ブループリント - 概要](./index.md)
+> [ISM PROTECTED ブループリント - デプロイ手順](./deploy.md)
 
 - [ブループリントのライフサイクル](../../concepts/lifecycle.md)を参照する。
 - [静的および動的パラメーター](../../concepts/parameters.md)の使用方法を理解する。

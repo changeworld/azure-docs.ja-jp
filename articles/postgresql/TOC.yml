@@ -4,6 +4,8 @@
   items:
     - name: Azure DB for PostgreSQL とは
       href: overview.md
+    - name: 選択すべき PostgreSQL デプロイ オプション
+      href: overview-postgres-choose-server-options.md
     - name: サービスの更新情報
       items:
         - name: SSL ルート証明書の期限切れ
