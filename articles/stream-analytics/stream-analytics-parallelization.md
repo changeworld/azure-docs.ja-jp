@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 8a86c1df5925097fa85d09590b59f8f30fde41d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aed0c83bfa61f6afdbdcca3c10dbd5fac3f823d3
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85296323"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458180"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Azure Stream Analytics でのクエリの並列処理の活用
 この記事では、Azure Stream Analytics で並列処理を活用する方法を示します。 入力パーティションの構成と分析クエリ定義のチューニングによって Stream Analytics ジョブをスケールする方法について説明します。
@@ -41,7 +41,7 @@ Azure Stream Analytics を使用するときは、出力でパーティション
 -   Event Hubs (パーティション キーを明示的に設定する必要があります)
 -   IoT Hub (パーティション キーを明示的に設定する必要があります)
 -   Service Bus
-- オプションのパーティション分割を使用した SQL および SQL Data Warehouse: 詳細については、[Azure SQL Database への出力](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-sql-output-perf)に関するページを参照してください。
+- オプションのパーティション分割を使用した SQL および Azure Synapse Analytics: 詳細については、[Azure SQL Database への出力に関するページ](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-sql-output-perf)を参照してください。
 
 Power BI では、パーティション分割がサポートされていません。 ただし、[このセクション](#multi-step-query-with-different-partition-by-values)の説明に従って入力をパーティション分割することはできます 
 

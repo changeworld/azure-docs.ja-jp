@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2018
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 974e45b761fb45e4bc1c451fa6755e16cab49e11
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 25c58f99f56a4328527d1dd970e3ade21eb51819
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76834687"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987174"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>チュートリアル:Azure portal を使用してネットワーク間の通信に関する問題を診断する
 
@@ -73,12 +73,12 @@ VPN 診断を使用するには、既存の動作している VPN ゲートウ�
 8. テストの実行中には、前の図のように、 **[Not started (未開始)]** が表示されている **[TROUBLESHOOTING STATUS (トラブルシューティングの状態)]** 列に、 **[Running (実行中)]** と表示されます。 このテストの実行には数分かかることがあります。
 9. 完了したテストの状態を表示します。 次の図は、完了した診断テストの状態の結果を示しています。
 
-    ![Status](./media/diagnose-communication-problem-between-networks/status.png)
+    ![概要と詳細を含む、診断テストの状態の結果 (この例では異常) を示すスクリーンショット。](./media/diagnose-communication-problem-between-networks/status.png)
 
     **[TROUBLESHOOTING STATUS (トラブルシューティングの状態)]** が **[異常]** であるのを確認できるのと同時に、 **[状態]** タブで問題の **[概要]** と **[Detail (詳細)]** を確認できます。
 10. **[アクション]** タブを選択すると、VPN 診断から追加の情報が提供されます。 この例では、次の図に示すように、VPN 診断により、各接続の正常性を調べる必要があることがわかります。
 
-    ![アクション](./media/diagnose-communication-problem-between-networks/action.png)
+    ![追加情報を提供する [アクション] タブを示すスクリーンショット。](./media/diagnose-communication-problem-between-networks/action.png)
 
 ## <a name="diagnose-a-gateway-connection"></a>ゲートウェイ接続を診断する
 
@@ -86,7 +86,7 @@ VPN 診断を使用するには、既存の動作している VPN ゲートウ�
 
 1. 今回は接続を選択して、「[ゲートウェイを診断する](#diagnose-a-gateway)」の手順 7. を完了します。 次の例では、**VNet1toSite1** という名前の接続がテストされます。
 
-    ![Connection](./media/diagnose-communication-problem-between-networks/connection.png)
+    ![選択した接続のトラブルシューティングを開始する方法を示すスクリーンショット。](./media/diagnose-communication-problem-between-networks/connection.png)
 
     テストは数分間実行されます。
 2. 接続のテストが完了した後は、 **[状態]** タブと **[アクション]** タブに、以下の図に示すような結果が表示されます。

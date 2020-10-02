@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5adc2a91df5d394fbed3ff10b0ebc5cb543a3ba3
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: c2d1a46a35ef38791b6a3b47c300aa1b47f70324
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378017"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086921"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>1 セットの認証資格情報を使用したリソースを対象にシークレットのローテーションを自動化する
 
@@ -24,7 +24,7 @@ Azure サービスに対する認証を行う最善の方法は[マネージド 
 
 このチュートリアルでは、1 セットの認証資格情報を使用するデータベースとサービスを対象に、シークレットの定期的なローテーションを自動化する方法について説明します。 具体的には、このチュートリアルでは Azure Event Grid の通知によってトリガーされる関数を使用して、Azure Key Vault に格納されている SQL Server のパスワードをローテーションします。
 
-![ローテーション ソリューションの図](../media/rotate1.png)
+![ローテーション ソリューションの図](../media/rotate-1.png)
 
 1. シークレットの有効期限が切れる 30 日前に、Key Vault から "有効期限が近づいている" ことを示すイベントが Event Grid に発行されます。
 1. Event Grid がイベント サブスクリプションを確認し、HTTP POST を使用して、このイベントをサブスクライブしている関数アプリ エンドポイントを呼び出します。
@@ -49,7 +49,7 @@ Azure サービスに対する認証を行う最善の方法は[マネージド 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。
 1. **[作成]**
 
-    ![リソース グループを作成する](../media/rotate2.png)
+    ![リソース グループを作成する](../media/rotate-2.png)
 
 これで、キー コンテナーと SQL Server インスタンスが完成しました。 このセットアップは、Azure CLI から次のコマンドを実行して検証できます。
 
@@ -91,7 +91,7 @@ akvrotation-sql/master  akvrotation      eastus      Microsoft.Sql/servers/datab
 1. **[Review + create]\(レビュー + 作成\)** を選択します。
 1. **［作成］** を選択します
 
-   ![[確認および作成] を選択します。](../media/rotate3.png)
+   ![[確認および作成] を選択します。](../media/rotate-3.png)
 
 上記の手順を完了すると、ストレージ アカウント、サーバー ファーム、関数アプリを使用できるようになります。 このセットアップは、Azure CLI から次のコマンドを実行して検証できます。
 
@@ -207,11 +207,11 @@ az keyvault secret set --name sqlPassword --vault-name akvrotation-kv --value "S
 
 シークレットのローテーションが完了したことを確認するために、 **[Key Vault]**  >  **[シークレット]** に移動します。
 
-![[シークレット] に移動する](../media/rotate8.png)
+![[シークレット] に移動する](../media/rotate-8.png)
 
 **sqlPassword** シークレットを開き、元のバージョンとローテーション後のバージョンを確認します。
 
-![sqluser シークレットを開く](../media/rotate9.png)
+![sqluser シークレットを開く](../media/rotate-9.png)
 
 ### <a name="create-a-web-app"></a>Web アプリを作成する
 
@@ -245,6 +245,6 @@ https://akvrotation-app.azurewebsites.net/
 ## <a name="learn-more"></a>詳細情報
 
 - チュートリアル:[2 セットの資格情報を使用したリソースのローテーション](tutorial-rotation-dual.md)
-- 概要:[Azure Event Grid での Key Vault の監視 (プレビュー)](../general/event-grid-overview.md)
+- 概要:[Azure Event Grid での Key Vault の監視](../general/event-grid-overview.md)
 - 方法:[キー コンテナーのシークレットが変更されたときにメールを受信する](../general/event-grid-logicapps.md)
-- [Azure Key Vault 用の Azure Event Grid イベント スキーマ (プレビュー)](../../event-grid/event-schema-key-vault.md)
+- [Azure Key Vault 用の Azure Event Grid イベント スキーマ](../../event-grid/event-schema-key-vault.md)

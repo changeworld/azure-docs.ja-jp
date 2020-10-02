@@ -4,12 +4,12 @@ description: Personalizer ループを使用して C# .NET チャット ボッ�
 ms.topic: tutorial
 ms.date: 07/17/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ee037632b068b0d8d2f3ed3b6ea7a83d157c5083
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 2d95a6999186b964e59ff8f287d917b1f93e1813
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935655"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089889"
 ---
 # <a name="tutorial-use-personalizer-in-net-chat-bot"></a>チュートリアル:.NET チャット ボットで Personalizer を使用する
 
@@ -21,7 +21,7 @@ C# .NET チャット ボットを Personalizer ループとともに使用して
 > [!div class="checklist"]
 > * Azure リソースの設定
 > * ボットの構成と実行
-> * ボット エミュレーターを使用したボットとの対話
+> * Bot Framework Emulator を使用してボットと対話する
 > * ボットが Personalizer を使用する場面と方法の理解
 
 
@@ -174,20 +174,20 @@ LUIS を初めて使用する場合は、[サインイン](https://www.luis.ai)�
 
 ## <a name="set-up-the-bot-emulator"></a>ボット エミュレーターをセットアップする
 
-1. ボット エミュレーターを開き、 **[Open Bot]\(ボットを開く\)** を選択します。
+1. Bot Framework Emulator を開き、 **[Open Bot]\(ボットを開く\)** を選択します。
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="ボット エミュレーターの起動画面のスクリーンショット。":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="チャットボット Web サイトを表示しているブラウザーのスクリーンショット。":::
 
 
 1. 次の **[Bot URL]\(ボット URL\)** を使用してボットを構成し、 **[Connect]\(接続\)** を選択します。
 
     `http://localhost:3978/api/messages`
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-open-bot-settings.png" alt-text="ボット エミュレーターのボットを開く設定のスクリーンショット。":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-open-bot-settings.png" alt-text="チャットボット Web サイトを表示しているブラウザーのスクリーンショット。":::
 
     エミュレーターはチャット ボットに接続し、ローカル開発に役立つログやデバッグ情報とともに、説明テキストを表示します。
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-bot-conversation-first-turn.png" alt-text="会話の最初のターンにおけるボット エミュレーターのスクリーンショット。":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-bot-conversation-first-turn.png" alt-text="チャットボット Web サイトを表示しているブラウザーのスクリーンショット。":::
 
 ## <a name="use-the-bot-in-the-bot-emulator"></a>ボット エミュレーターでボットを使用する
 

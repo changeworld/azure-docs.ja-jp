@@ -1,14 +1,14 @@
 ---
 title: DoD 影響レベル 4 ブループリント サンプルのコントロール
 description: DoD 影響レベル 4 ブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy にマップされています。
-ms.date: 06/30/2020
+ms.date: 09/17/2020
 ms.topic: sample
-ms.openlocfilehash: a704731f4fe8e810235507fd84c90b17571a8442
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 9ee3214f8cdacd1d70a59bc5a23e4638cadb579d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923290"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978392"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>DoD 影響レベル 4 ブループリント サンプルのコントロール マッピング
 
@@ -102,11 +102,11 @@ Azure では、Azure のリソースにアクセスするユーザーを効果�
 Azure Monitor で収集されたログ データは、Log Analytics ワークスペースに保存されるので、集中的に構成と管理が可能です。 このブループリントは、Azure 仮想マシンに対する Log Analytics エージェントのデプロイを監査および強制するための [Azure Policy](../../../policy/overview.md) 定義を割り当てることによって、イベントのログ記録の徹底を支援するものです。
 
 - \[プレビュー\]:Audit Log Analytics エージェントのデプロイ - 一覧にない VM イメージ (OS)
-- \[プレビュー\]:VMSS の Log Analytics エージェントのデプロイの監査 - VM イメージ (OS) が一覧にない
+- Virtual Machine Scale Sets における Log Analytics エージェントのデプロイの監査 - 一覧にない VM イメージ (OS)
 - \[プレビュー\]:VM 用 Audit Log Analytics ワークスペース - 不一致の報告
-- \[プレビュー\]:Linux VM スケール セット (VMSS) 用の Log Analytics エージェントのデプロイ
+- Linux 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ
 - \[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ
-- \[プレビュー\]:Windows VM Scale Sets (VMSS) 用の Log Analytics エージェントのデプロイ
+- Windows 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ
 - \[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ
 
 ## <a name="au-5-response-to-audit-processing-failures"></a>AU-5 監査処理エラーへの対応
@@ -123,11 +123,11 @@ Azure Monitor で収集されたログ データは、Log Analytics ワークス
 Azure Monitor で収集されたログ データは、Log Analytics ワークスペースに保存されるので、集中的にレポートと分析が可能です。 このブループリントは、Azure 仮想マシンに対する Log Analytics エージェントのデプロイを監査および強制するための [Azure Policy](../../../policy/overview.md) 定義を割り当てることによって、イベントのログ記録の徹底を支援するものです。
 
 - \[プレビュー\]:Audit Log Analytics エージェントのデプロイ - 一覧にない VM イメージ (OS)
-- \[プレビュー\]:VMSS の Log Analytics エージェントのデプロイの監査 - VM イメージ (OS) が一覧にない
+- Virtual Machine Scale Sets における Log Analytics エージェントのデプロイの監査 - 一覧にない VM イメージ (OS)
 - \[プレビュー\]:VM 用 Audit Log Analytics ワークスペース - 不一致の報告
-- \[プレビュー\]:Linux VM スケール セット (VMSS) 用の Log Analytics エージェントのデプロイ
+- Linux 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ
 - \[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ
-- \[プレビュー\]:Windows VM Scale Sets (VMSS) 用の Log Analytics エージェントのデプロイ
+- Windows 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ
 - \[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ
 
 ## <a name="au-6-5-audit-review-analysis-and-reporting--integration--scanning-and-monitoring-capabilities"></a>AU-6 (5) 監査の確認、分析、および報告 | 統合/スキャンおよび監視機能
@@ -144,7 +144,7 @@ Azure Monitor で収集されたログ データは、Log Analytics ワークス
 - 脆弱性評価ソリューションによって脆弱性を修復する必要がある
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
 - \[プレビュー\]:Audit Log Analytics エージェントのデプロイ - 一覧にない VM イメージ (OS)
-- \[プレビュー\]:VMSS の Log Analytics エージェントのデプロイの監査 - VM イメージ (OS) が一覧にない
+- Virtual Machine Scale Sets における Log Analytics エージェントのデプロイの監査 - 一覧にない VM イメージ (OS)
 
 ## <a name="au-12-audit-generation"></a>AU-12 監査の生成
 
@@ -152,11 +152,11 @@ Azure Monitor で収集されたログ データは、Log Analytics ワークス
 また、これらのポリシー定義では、診断ログの構成も監査され、Azure リソース内で実行された処理に関する分析情報が提供されます。 さらに、SQL サーバーには監査と Advanced Data Security が構成されます。
 
 - \[プレビュー\]:Audit Log Analytics エージェントのデプロイ - 一覧にない VM イメージ (OS)
-- \[プレビュー\]:VMSS の Log Analytics エージェントのデプロイの監査 - VM イメージ (OS) が一覧にない
+- Virtual Machine Scale Sets における Log Analytics エージェントのデプロイの監査 - 一覧にない VM イメージ (OS)
 - \[プレビュー\]:VM 用 Audit Log Analytics ワークスペース - 不一致の報告
-- \[プレビュー\]:Linux VM スケール セット (VMSS) 用の Log Analytics エージェントのデプロイ
+- Linux 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ
 - \[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ
-- \[プレビュー\]:Windows VM Scale Sets (VMSS) 用の Log Analytics エージェントのデプロイ
+- Windows 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ
 - \[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ
 - 診断設定の監査
 - SQL Server の高度なデータ セキュリティ設定で監査を有効にする必要がある
@@ -336,11 +336,8 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 
 ## <a name="si-02-06-flaw-remediation--removal-of-previous-versions-of-software--firmware"></a>SI-02 (06) 欠陥の修復 | 以前のバージョンのソフトウェアおよびファームウェアの削除
 
-このブループリントでは、最新バージョンの .NET Framework、HTTP、Java、PHP、Python、および TLS がアプリに使用されていることの確認に役立つポリシー定義を割り当てます。 また、このブループリントは、Kubernetes サービスが脆弱性のないバージョンにアップグレードされることを保証するポリシー定義も割り当てます。
+このブループリントでは、最新バージョンの HTTP、Java、PHP、Python、および TLS がアプリに使用されていることの確認に役立つポリシー定義を割り当てます。 また、このブループリントは、Kubernetes サービスが脆弱性のないバージョンにアップグレードされることを保証するポリシー定義も割り当てます。
 
-- API アプリの一部として使用された ".NET Framework" のバージョンが最新であることを確認する
-- 関数アプリの一部として使用された ".NET Framework" のバージョンが最新であることを確認する
-- Web アプリの一部として使用された ".NET Framework" のバージョンが最新であることを確認する
 - API アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する
 - 関数アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する
 - Web アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する
@@ -348,7 +345,6 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 - 関数アプリの一部として使用された "Java のバージョン" が最新であることを確認する
 - Web アプリの一部として使用された "Java のバージョン" が最新であることを確認する
 - API アプリの一部として使用された "PHP のバージョン" が最新であることを確認する
-- 関数アプリの一部として使用された "PHP のバージョン" が最新であることを確認する
 - Web アプリの一部として使用された "PHP のバージョン" が最新であることを確認する
 - API アプリの一部として使用された "Python のバージョン" が最新であることを確認する
 - 関数アプリの一部として使用された "Python のバージョン" が最新であることを確認する
@@ -356,7 +352,7 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 - API アプリでは最新の TLS バージョンを使用する必要がある
 - 関数アプリでは最新の TLS バージョンを使用する必要がある
 - Web アプリでは最新の TLS バージョンを使用する必要がある
-- \[プレビュー\]:Kubernetes Service を脆弱性のない Kubernetes バージョンにアップグレードする必要がある
+- Kubernetes Service を脆弱性のない Kubernetes バージョンにアップグレードする必要がある
 
 ## <a name="si-3-malicious-code-protection"></a>SI-3 悪意のあるコードからの保護
 
@@ -378,11 +374,11 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 このブループリントは、さまざまな Azure リソースを対象にログ記録とデータ セキュリティを監査および適用することによって、システムの監視を支援するものです。 具体的には、割り当てられるポリシーによって、Log Analytics エージェントのデプロイが監査および実施されるほか、SQL データベース、ストレージ アカウント、ネットワーク リソースの高度なセキュリティ設定が監査および適用されます。 これらの機能は、異常な動作や攻撃の兆候の検出に役立つので、適切な措置を講じることができるようになります。
 
 - \[プレビュー\]:Audit Log Analytics エージェントのデプロイ - 一覧にない VM イメージ (OS)
-- \[プレビュー\]:VMSS の Log Analytics エージェントのデプロイの監査 - VM イメージ (OS) が一覧にない
+- Virtual Machine Scale Sets における Log Analytics エージェントのデプロイの監査 - 一覧にない VM イメージ (OS)
 - \[プレビュー\]:VM 用 Audit Log Analytics ワークスペース - 不一致の報告
-- \[プレビュー\]:Linux VM スケール セット (VMSS) 用の Log Analytics エージェントのデプロイ
+- Linux 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ
 - \[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ
-- \[プレビュー\]:Windows VM Scale Sets (VMSS) 用の Log Analytics エージェントのデプロイ
+- Windows 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ
 - \[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ
 - Advanced Data Security を、マネージド インスタンス上で有効にする必要がある
 - Advanced Data Security を、SQL サーバー上で有効にする必要がある

@@ -4,12 +4,12 @@ description: このチュートリアルでは、Visual Studio Azure DevOps を�
 ms.topic: tutorial
 ms.date: 08/29/2018
 ms.custom: mvc
-ms.openlocfilehash: 9cf619eddd07bbe55cd7aea5f27051a7d0415c24
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 498513d1e31108d633de8165b2684dffbebdf37d
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75614131"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563949"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>チュートリアル:CI/CD を使用して Service Fabric クラスターへコンテナー アプリケーションをデプロイする
 
@@ -142,7 +142,7 @@ Azure Active Directory の資格情報の場合は、クラスターの作成に
 
 Azure DevOps へのコード変更をチェックインして、継続的インテグレーション パイプラインが機能していることを確認します。
 
-コードを記述すると、変更内容は Visual Studio によって自動的に追跡されます。 右下のステータス バーから [保留中の変更] アイコン (![保留中][pending]) を選択して、ローカル Git リポジトリへ変更をコミットします。
+コードを記述すると、変更内容は Visual Studio によって自動的に追跡されます。 右下のステータス バーから [保留中の変更] アイコン (![[保留中の変更] アイコンには、鉛筆と数字が表示されます。][pending]) を選択して、ローカル Git リポジトリへ変更をコミットします。
 
 チーム エクスプローラーの **[変更]** ビューで、更新内容を説明するメッセージを追加し、変更をコミットします。
 

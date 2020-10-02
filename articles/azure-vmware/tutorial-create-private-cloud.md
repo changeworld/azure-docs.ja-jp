@@ -3,12 +3,12 @@ title: チュートリアル - Azure に vSphere クラスターをデプロイ�
 description: Azure VMware Solution を使用して Azure に vSphere クラスターをデプロイする方法について説明します
 ms.topic: tutorial
 ms.date: 09/07/2020
-ms.openlocfilehash: 69a29a459ba283bb34169112ac2fa174ac6a14af
-ms.sourcegitcommit: 8791f69d44150767807d215cafc4076f3ed43f9f
+ms.openlocfilehash: 2aa9d64dfa143e77b0edcc0c32a853645803ef67
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89512373"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985951"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>チュートリアル:Azure に Azure VMware Solution のプライベート クラウドをデプロイする
 
@@ -76,14 +76,24 @@ azurecli-interactive
 az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --location eastus --cluster-size 3 --network-block xx.xx.xx.xx/22 --sku AV36
 ```
 
-## <a name="delete-a-private-cloud-azure-portal"></a>プライベート クラウドを削除する (Azure portal)
+## <a name="delete-an-azure-vmware-solution-private-cloud"></a>Azure VMware Solution のプライベート クラウドを削除する
 
-Azure VMware Solution のプライベート クラウドが不要になった場合は、削除できます。 プライベート クラウドを削除すると、すべてのクラスターとそのすべてのコンポーネントが削除されます。
-
-これを行うには、Azure portal でプライベート クラウドに移動し、 **[削除]** を選択します。 確認ページでプライベート クラウドの名前を確認し、 **[はい]** を選択します。
+Azure VMware Solution のプライベート クラウドが不要になった場合は、削除できます。 Azure VMware Solution のプライベート クラウドには、分離されたネットワーク ドメイン、専用のサーバー ノードにプロビジョニングされる 1 つ以上の vSphere クラスター、および通常は多くの仮想マシンが含まれています。 プライベート クラウドを削除すると、すべての仮想マシン、そのデータ、およびクラスターが削除されます。 専用のベアメタル ノードが安全にワイプされ、空きプールに返されます。 顧客用にプロビジョニングされたネットワーク ドメインは削除されます。  
 
 > [!CAUTION]
-> プライベート クラウドを削除する操作は、元に戻すことができません。 プライベート クラウドを削除すると、実行中のすべてのワークロードとコンポーネントが中止され、パブリック IP アドレスを含むすべてのプライベート クラウド データと構成設定が破棄されるので、データを回復することはできなくなります。 
+> プライベート クラウドを削除する操作は、元に戻すことができません。 プライベート クラウドを削除すると、実行中のすべてのワークロードとコンポーネントが中止され、パブリック IP アドレスを含むすべてのプライベート クラウド データと構成設定が破棄されるので、データを復旧することはできなくなります。
+
+### <a name="prerequisites"></a>前提条件
+
+プライベート クラウドを削除した場合、仮想マシンとそのデータを復旧する方法はありません。 後で仮想マシンのデータが必要になる場合、管理者はまず、プライベート クラウドを削除する前に、すべてのデータをバックアップする必要があります。
+
+### <a name="steps-to-delete-an-azure-vmware-solution-private-cloud"></a>Azure VMware Solution のプライベート クラウドを削除する手順
+
+1. Azure portal で [Azure VMware Solutions] ページにアクセスします。
+
+2. 削除するプライベート クラウドを選択します。
+ 
+3. プライベート クラウドの名前を入力し、 **[はい]** を選択します。 数時間で、削除プロセスが完了します。  
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -92,6 +102,7 @@ Azure VMware Solution のプライベート クラウドが不要になった場
 > [!div class="checklist"]
 > * Azure VMware Solution のプライベート クラウドを作成する
 > * デプロイされたプライベート クラウドを確認する
+> * Azure VMware Solution のプライベート クラウドを削除する
 
 次のチュートリアルに進み、プライベート クラウド クラスターのローカル管理を設定する一環として、プライベート クラウドで使用する仮想ネットワークを作成する方法を学習します。
 

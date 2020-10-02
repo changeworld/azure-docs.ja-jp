@@ -3,19 +3,19 @@ title: Video Indexer を利用できるリージョン - Azure
 titleSuffix: Azure Media Services
 description: この記事では、Azure Media Services Video Indexer を使用できる Azure リージョンについて説明します。
 services: media-services
-author: anikaz
-manager: johndeu
+author: Juliako
+manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
-ms.author: kumud
-ms.openlocfilehash: 45da0556d074fdb81002f73cd89d0c35cb37276e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 09/14/2020
+ms.author: juliako
+ms.openlocfilehash: 6ebdb22f50efbefc695f9752c6e6fc333571828c
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86530051"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530941"
 ---
 # <a name="azure-regions-in-which-video-indexer-exists"></a>Video Indexer が存在する Azure リージョン
 
@@ -23,7 +23,18 @@ Video Indexer API には、呼び出しがルーティングされる Azure リ�
 
 ## <a name="locations"></a>場所
 
-`location` パラメーターには、その値として Azure リージョンのコード名を指定する必要があります。 Video Indexer をプレビュー モードで使用する場合は、値として `"trial"` を指定する必要があります。 `trial` は、`location` パラメーターの既定値です。 それ以外の場合は、お使いのアカウントが存在し、呼び出しがルーティングされる Azure リージョンのコード名を取得するために、次の行を [Azure CLI](/cli/azure) で実行できます。
+`location` パラメーターには、その値として Azure リージョンのコード名を指定する必要があります。 Video Indexer をプレビュー モードで使用する場合は、値として `"trial"` を指定する必要があります。 `trial` は、`location` パラメーターの既定値です。 それ以外の場合は、お使いのアカウントが存在し、呼び出しがルーティングされる Azure リージョンのコード名を取得するために、Azure portal を使用するか、[Azure CLI](/cli/azure) コマンドを実行できます。
+
+### <a name="azure-portal"></a>Azure portal
+
+1. [Video Indexer](https://www.videoindexer.ai/) Web サイトにサインインします。
+1. ページの右上隅にある **[ユーザー アカウント]** を選択します。
+1. 右上隅で、アカウントの場所を見つけます。  
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/location/location1.png" alt-text="場所":::
+    
+###  <a name="cli-command"></a>CLI コマンド
 
 ```azurecli-interactive
 az account list-locations
@@ -36,7 +47,7 @@ az account list-locations
 ```json
    {
       "displayName": "West US 2",
-      "id": "/subscriptions/35c2594a-23da-4fce-b59c-f6fb9513eeeb/locations/westus2",
+      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/locations/westus2",
       "latitude": "47.233",
       "longitude": "-119.852",
       "name": "westus2",

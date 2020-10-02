@@ -3,12 +3,12 @@ title: リソース階層を保護する方法 - Azure のガバナンス
 description: 既定の管理グループの設定を含む階層設定を使用して、リソース階層を保護する方法について説明します。
 ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: e73a72339b58a30a3fc5b1008ea1b70e449f77c7
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 19d699b54a9979df1030c0f6e294d5a4492f2853
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401695"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469781"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>リソース階層を保護する方法
 
@@ -74,7 +74,7 @@ REST API を使用してこの設定を構成するために、[階層設定](/r
 
 既定では、すべてのユーザーがテナント内に新しい管理グループを作成できます。 テナントの管理者は、管理グループ階層内の整合性と適合性を維持するために、これらのアクセス許可を特定のユーザーのみに提供したい場合があります。 有効にした場合、ユーザーは新しい子管理グループを作成するために、ルート管理グループに対する `Microsoft.Management/managementGroups/write` 操作が必要になります。
 
-### <a name="set-default-management-group-in-portal"></a>ポータルで既定の管理グループを設定する
+### <a name="set-require-authorization-in-portal"></a>ポータルで承認の要求を設定する
 
 Azure portal でこの設定を構成するには、次の手順を実行します。
 

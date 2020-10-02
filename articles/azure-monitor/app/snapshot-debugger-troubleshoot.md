@@ -2,15 +2,15 @@
 title: Azure Application Insights スナップショット デバッガーのトラブルシューティング
 description: この記事では、Application Insights Snapshot Debugger の有効化または使用で問題が発生している開発者に役立つ、トラブルシューティングの手順と情報を示します。
 ms.topic: conceptual
-author: brahmnes
+author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 485f35ed249ab7f6bbb987d8c79afe20287cd25a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 935e1832629827b0286a79ab8ea6d1dfbb143e1c
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671411"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707834"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Application Insights Snapshot Debugger の有効化やスナップショットの表示に関する問題のトラブルシューティング
 アプリケーションに対して Application Insights Snapshot Debugger を有効にしたにもかかわらず、例外のスナップショットが表示されない場合は、次の手順を使用してトラブルシューティングを行うことができます。 スナップショットが生成されない理由としては、さまざまなことが考えられます。 スナップショットの正常性チェックを実行すると、いくつかの一般的な原因を特定できます。
@@ -31,6 +31,30 @@ ms.locfileid: "77671411"
 ## <a name="verify-the-instrumentation-key"></a>インストルメンテーション キーの確認
 
 公開したアプリケーションで、正しいインストルメンテーション キーを使用していることを確認します。 通常、インストルメンテーション キーは、ApplicationInsights.config ファイルから読み取られます。 値が、ポータルに表示される Application Insights リソースのインストルメンテーション キーと同じであることを確認します。
+
+## <a name="check-ssl-client-settings-aspnet"></a><a id="SSL"></a>SSL クライアント設定の確認 (ASP.NET)
+
+ASP.NET アプリケーションが、Azure App Service または仮想マシンの IIS でホストされている場合、SSL セキュリティ プロトコルがないため、お使いのアプリケーションがスナップショット デバッガー サービスに接続できない可能性があります。
+[スナップショット デバッガー エンドポイントには、TLS バージョン 1.2 が必要です](snapshot-debugger-upgrade.md?toc=/azure/azure-monitor/toc.json)。 SSL セキュリティ プロトコルのセットは、web.config の system.web セクションの httpRuntime targetFramework 値によって有効にされる特性の 1 つです。httpRuntime targetFramework が 4.5.2 以下の場合、TLS 1.2 は既定では含まれていません。
+
+> [!NOTE]
+> httpRuntime targetFramework 値は、アプリケーションのビルド時に使用されるターゲット フレームワークに依存しません。
+
+設定を確認するには、web.config ファイルを開き、system.web セクションを見つけます。 `httpRuntime` の `targetFramework` が 4.6 以上に設定されていることを確認します。
+
+   ```xml
+   <system.web>
+      ...
+      <httpRuntime targetFramework="4.7.2" />
+      ...
+   </system.web>
+   ```
+
+> [!NOTE]
+> httpRuntime targetFramework の値を変更すると、アプリケーションに適用されるランタイムの特性が変更され、その他の微妙な動作の変更が発生する可能性があります。 この変更を行った後は、アプリケーションを十分にテストするようにしてください。 互換性の変更の完全な一覧については、 https://docs.microsoft.com/dotnet/framework/migration-guide/application-compatibility#retargeting-changes を参照してください。
+
+> [!NOTE]
+> targetFramework が 4.7 以上の場合、使用可能なプロトコルは Windows によって決定されます。 Azure App Service では、TLS 1.2 を使用できます。 ただし、独自の仮想マシンを使用している場合は、OS で TLS 1.2 を有効にすることが必要になる場合があります。
 
 ## <a name="preview-versions-of-net-core"></a>.NET Core のプレビュー バージョン
 アプリケーションにプレビュー バージョンの .NET Core が使用され、ポータルの [Application Insights ウィンドウ](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)でスナップショット デバッガーが有効な場合、スナップショット デバッガーが起動しない場合があります。 まず「[その他の環境用にスナップショット デバッガーを有効にする](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)」の手順を実行して [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet パッケージをアプリケーションに含め、"***さらに***" [Application Insights ウィンドウで有効にします](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)。

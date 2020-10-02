@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/10/2020
-ms.openlocfilehash: ca4e79977132586c619f323015f9d915e04707f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e6a502ae7ed71beaeefe603e0810264e62187ba
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84449517"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708004"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB の自動スケーリングでプロビジョニングされたスループットについてよく寄せられる質問
 
@@ -27,7 +27,7 @@ Azure Cosmos DB で自動スケーリング プロビジョニング スルー�
 
 たとえば、以前に 400 から 4,000 RU/秒の間でスケーリングされる階層を選択していた場合、データベースまたはコンテナーの最大 RU/秒は 4,000 RU/秒 (400 から 4,000 RU/秒の間でのスケーリング) になります。 これに基づいて、最大 RU/秒をワークロードに合わせてカスタム値に変更できます。 
 
-### <a name="how-quickly-will-autoscale-scale-up-and-down-based-on-spikes-in-traffic"></a>自動スケーリングでは、トラフィックの急増に応じてスケールアップとスケールダウンがどれほど迅速に行われますか?
+### <a name="how-quickly-will-autoscale-scale-up-based-on-spikes-in-traffic"></a>自動スケーリングでは、トラフィックの急増に応じてスケールアップがどれほど迅速に行われますか?
 自動スケーリングでは、スループット (RU/秒) `T` は、受信トラフィックに基づいて、`0.1 * Tmax` と `Tmax` の範囲内でスケールアップおよびスケールダウンされます。 スケーリングは自動的かつ瞬時に行われるため、どの時点でも、プロビジョニングされた `Tmax` まで遅延なく使用できます。 
 
 ### <a name="how-do-i-determine-what-rus-the-system-is-currently-scaled-to"></a>システムが現在どのくらいの RU/秒までスケールアップされているかを判別するにはどうすればよいですか?

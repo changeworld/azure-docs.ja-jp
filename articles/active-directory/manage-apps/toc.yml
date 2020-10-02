@@ -26,7 +26,7 @@
       href: delete-application-portal.md
 - name: チュートリアル
   items:
-    - name: 統合されたギャラリー アプリ (ServiceNow、Salesforce、Dropbox など)
+    - name: 事前構成済みのアプリの一覧
       href: /azure/active-directory/saas-apps/
     - name: アプリケーション プロキシを使用してオンプレミス アプリを追加する
       href: application-proxy-add-on-premises-application.md
@@ -91,7 +91,7 @@
           href: application-proxy-connectors.md
         - name: コネクタ グループ
           href: application-proxy-connector-groups.md
-        - name: Security
+        - name: セキュリティ
           href: application-proxy-security.md
         - name: ネットワーク トポロジ
           href: application-proxy-network-topology.md
@@ -142,7 +142,7 @@
       items:
         - name: 移行リソース
           href: migration-resources.md
-        - name: Azure への ADFS アプリの移行
+        - name: Azure への AD FS アプリの移行
           href: migrate-adfs-apps-to-azure.md
         - name: AD FS アプリケーション アクティビティ レポートの使用 (プレビュー)
           href: migrate-adfs-application-activity.md

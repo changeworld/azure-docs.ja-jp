@@ -1,7 +1,7 @@
 ---
 title: クイックスタート - C# で Bing Local Business Search を使用して API にクエリを送信する
 titleSuffix: Azure Cognitive Services
-description: このクイック スタートを利用して、Azure Cognitive Service である Bing Local Business Search API への要求の送信を開始します。
+description: このクイックスタートを利用して、Azure Cognitive Service である Bing Local Business Search API に C# から要求を送信してみましょう。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/12/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 127834034cf1de00b61794c6cfd51a041a37a8c3
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3102742d19e7e0dffa6135c9267f51b1231dafc8
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88925149"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970458"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>クイック スタート:C# で Bing Local Business Search API にクエリを送信する
 

@@ -96,6 +96,8 @@
       href: hana-vm-operations.md
     - name: SAP HANA Azure 仮想マシンのストレージ構成
       href: hana-vm-operations-storage.md
+    - name: SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム
+      href: hana-vm-operations-netapp.md
     - name: Azure Virtual Machines での SAP HANA の可用性
       items:
         - name: SAP HANA on Azure の可用性の概要

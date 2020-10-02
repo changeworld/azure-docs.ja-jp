@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a9528b31bfd1be40b478f3c47fd0a16047a7f6ff
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 37faf5d8e6292844245f475d9fcf0f832a0cca10
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86028118"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439999"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>データ サイエンス プロジェクトのためのプラットフォームとツール
 
@@ -63,11 +63,11 @@ HDInsight で Spark クラスターを作成するときは、Spark をインス
 Microsoft の TDSP チームは、Azure HDInsight Spark クラスターを使用してデータ サイエンス ソリューションを構築する方法を示す 2 つのエンド ツー エンド チュートリアルを公開しています。1 つは Python を使用し、もう 1 つは Scala を使用します。 Azure HDInsight **Spark クラスター**の詳細については、[HDInsight Linux の Apache Spark の概要](../../hdinsight/spark/apache-spark-overview.md)に関する記事をご覧ください。 Azure HDInsight Spark クラスターで **Python** を使用してデータ サイエンス ソリューションを構築する方法については、「[Azure HDInsight 上の Spark を使用したデータ サイエンスの概要](spark-overview.md)」をご覧ください。 Azure HDInsight Spark クラスターで **Scala** を使用してデータ サイエンス ソリューションを構築する方法については、「[Scala および Azure 上の Spark を使用したデータ サイエンス](scala-walkthrough.md)」をご覧ください。 
 
 
-##  <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
+##  <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-Azure SQL Data Warehouse では、過剰なプロビジョニングや過払いが発生することなく、コンピューティング リソースを数秒で簡単にスケールできます。 また、コンピューティング リソースの使用を一時停止する独自のオプションも用意されており、クラウドの適切なコスト管理を自由に行うことができます。 スケーラブルなコンピューティング リソースをデプロイできるので、すべてのデータを Azure SQL Data Warehouse に取り込むことができます。 ストレージ コストが最小限に抑えられており、分析する必要があるデータセットの部分だけを対象に計算を実行できます。 
+Azure Synapse Analytics では、過剰なプロビジョニングや過払いが発生することなく、コンピューティング リソースを数秒で簡単にスケールできます。 また、コンピューティング リソースの使用を一時停止する独自のオプションも用意されており、クラウドの適切なコスト管理を自由に行うことができます。 スケーラブルなコンピューティング リソースをデプロイできるので、すべてのデータを Azure Synapse Analytics に取り込むことができます。 ストレージ コストが最小限に抑えられており、分析する必要があるデータセットの部分だけを対象に計算を実行できます。 
 
-Azure SQL Data Warehouse の詳細については、[SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse) の Web サイトをご覧ください。 SQL Data Warehouse を使用してエンド ツー エンドの高度な分析ソリューションを構築する方法については、「[Team Data Science Process の活用: SQL Data Warehouse の使用](sqldw-walkthrough.md)」をご覧ください。
+Azure Synapse Analytics の詳細については、[Azure Synapse Analytics](https://azure.microsoft.com/services/sql-data-warehouse) の Web サイトをご覧ください。 SQL Data Warehouse を使用してエンド ツー エンドの高度な分析ソリューションを構築する方法については、「[Team Data Science Process の活用: Azure Synapse Analytics の使用](sqldw-walkthrough.md)」をご覧ください。
 
 
 ## <a name="azure-data-lake"></a>Azure Data Lake

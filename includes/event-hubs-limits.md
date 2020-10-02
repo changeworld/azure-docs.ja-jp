@@ -5,15 +5,15 @@ services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.topic: include
-ms.date: 05/22/2019
+ms.date: 09/10/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 333f2317fcc834a10b7336bbda9a43ba16a7ad38
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 8700bbfe697a6b5fb81380831950d704fcb1f5ff
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84317676"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90012881"
 ---
 次の表に、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) に固有のクォータと制限を示します。 Event Hubs の価格については、「[Event Hubs の価格](https://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。
 
@@ -39,8 +39,8 @@ ms.locfileid: "84317676"
 | イベント ハブあたりのコンシューマー グループの数 |Entity | &nbsp; |1 |20 |
 | 名前空間あたりの AMQP 接続の数 |名前空間 |追加の接続に関する後続の要求は拒否され、呼び出し元コードが例外を受け取ります。 |100 |5,000|
 | イベント データの最大リテンション期間 |Entity | &nbsp; |1 日 |1 ～ 7 日間 |
-|Apache Kafka 対応の名前空間|名前空間 |Event Hubs 名前空間では、Kafka プロトコルを使用してアプリケーションがストリーム配信されます |いいえ | はい |
-|キャプチャ |Entity | 有効な場合、同じストリーム上のマイクロバッチ |いいえ |はい |
+|Apache Kafka 対応の名前空間|名前空間 |Event Hubs 名前空間では、Kafka プロトコルを使用してアプリケーションがストリーム配信されます。 詳細については、「[Apache Kafka アプリケーションから Azure Event Hubs を使用する](../articles/event-hubs/event-hubs-for-kafka-ecosystem-overview.md)」を参照してください。 |いいえ | はい |
+|キャプチャ |Entity | 有効な場合は、同じストリーム上のマイクロバッチ。 詳細については、「[Azure Event Hubs で Azure Blob Storage または Azure Data Lake Storage にイベントをキャプチャする](../articles/event-hubs/event-hubs-capture-overview.md)」を参照してください。 |いいえ |はい |
 
 
 ### <a name="event-hubs-dedicated---quotas-and-limits"></a>Event Hubs Dedicated - クォータと制限

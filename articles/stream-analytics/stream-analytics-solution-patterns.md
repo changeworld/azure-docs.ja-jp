@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: c3d487c1595a077ac8609813a41d15e28ede0e0b
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: b82dd4ea8a74c51606b7a388b8d6ede07b1057c4
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903325"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461546"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure Stream Analytics のソリューション パターン
 
@@ -102,7 +102,7 @@ Azure Stream Analytics のビルトインの[異常検出モデル](stream-analy
 
 ## <a name="use-reference-data-for-enrichment"></a>エンリッチメントに参照データを使用する
 
-データ エンリッチメントは、多くの場合、ETL エンジンの要件となっています。 Azure Stream Analytics は、SQL Database と Azure Blob Storage の両方の[参照データ](stream-analytics-use-reference-data.md)を使ったデータ エンリッチメントをサポートします。 データ エンリッチメントによって、Azure Data Lake と SQL Data Warehouse の両方へのデータ ランディングを実現できます。
+データ エンリッチメントは、多くの場合、ETL エンジンの要件となっています。 Azure Stream Analytics は、SQL Database と Azure Blob Storage の両方の[参照データ](stream-analytics-use-reference-data.md)を使ったデータ エンリッチメントをサポートします。 データ エンリッチメントによって、Azure Data Lake と Azure Synapse Analytics の両方へのデータ ランディングを実現できます。
 
 
 ![ASA のオフライン分析とデータ エンリッチメント](media/stream-analytics-solution-patterns/offline-analytics-enriched.png)

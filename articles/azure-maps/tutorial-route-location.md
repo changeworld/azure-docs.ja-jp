@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 992640424f6fdb632327866e132fdbb1c6244492
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 35a3f6d1e7894eec9baa4ea5432a8e3fec138a21
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400332"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085044"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>チュートリアル:Azure Maps Route Service とマップ コントロールを使用してルートの道順を表示する方法
 
@@ -106,7 +106,7 @@ ms.locfileid: "89400332"
 
 ## <a name="define-route-display-rendering"></a>ルート表示レンダリングを定義する
 
-このチュートリアルでは、線レイヤーを使用してルートをレンダリングします。 始点と終点は、シンボル レイヤーを使用してレンダリングされます。 線レイヤーの追加の詳細については、「[マップに線レイヤーを追加する](map-add-line-layer.md)」を参照してください。 シンボル レイヤーの詳細については、「[マップにシンボル レイヤーを追加する](map-add-pin.md)」を参照してください。
+このチュートリアルでは、線レイヤーを使用してルートをレンダリングします。 起点と終点は、シンボル レイヤーを使用してレンダリングされます。 線レイヤーの追加の詳細については、「[マップに線レイヤーを追加する](map-add-line-layer.md)」を参照してください。 シンボル レイヤーの詳細については、「[マップにシンボル レイヤーを追加する](map-add-pin.md)」を参照してください。
 
 1. `GetMap` 関数に、次の JavaScript コードを追加します。 このコードは、マップ コントロールの `ready` イベント ハンドラーを実装します。 このチュートリアルの残りのコードは、`ready` イベント ハンドラー内に配置されます。
 
@@ -143,7 +143,7 @@ ms.locfileid: "89400332"
 
     マップ コントロールの `ready` イベント ハンドラーで、始点から終点までのルートを格納するためのデータ ソースが作成されます。 ルートの線のレンダリング方法を定義するために、線レイヤーが作成され、データ ソースにアタッチされます。  ルートの線で道路のラベルが覆い隠されないようにするために、`'labels'` の値を持つ 2 番目のパラメーターを渡しました。
 
-    次に、シンボル レイヤーが作成され、データ ソースにアタッチされます。 起点と終点のレンダリング方法は、このレイヤーで指定します。 ここでは、各ポイント オブジェクトのプロパティからアイコン画像とテキスト ラベル情報を取得するための式を追加しています。
+    次に、シンボル レイヤーが作成され、データ ソースにアタッチされます。 起点と終点のレンダリング方法は、このレイヤーで指定します。各ポイント オブジェクトのプロパティからアイコン画像とテキスト ラベル情報を取得するための式が追加されています。 式の詳細については、[データ ドリブンのスタイルの式](data-driven-style-expressions-web-sdk.md)に関するページをご覧ください。
 
 2. Microsoft を始点として、シアトルにあるガソリン スタンドを終点として設定します。  マップ コントロールの `ready` イベント ハンドラーに次のコードを追加します。
 
@@ -168,17 +168,22 @@ ms.locfileid: "89400332"
     });
     ```
 
-    このコードにより、ルートの始点と終点を表す 2 つの [GeoJSON ポイント オブジェクト](https://en.wikipedia.org/wiki/GeoJSON)が作成され、データ ソースに追加されます。 最後のコード ブロックでは、始点と終点の緯度と経度を使用してカメラ ビューを設定します。 マップ コントロールの setCamera プロパティの詳細については、[setCamera(CameraOptions | CameraBoundsOptions & AnimationOptions)](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) プロパティを参照してください。
+    このコードにより、ルートの始点と終点を表す 2 つの [GeoJSON ポイント オブジェクト](https://en.wikipedia.org/wiki/GeoJSON)が作成され、データ ソースに追加されます。 
+
+    最後のコード ブロックでは、始点と終点の緯度と経度を使用してカメラ ビューを設定します。 起点と終点をデータ ソースに追加します。 起点と終点の境界ボックスは、`atlas.data.BoundingBox.fromData` 関数を使用して計算されます。 この境界ボックスと `map.setCamera` 関数を使用して、ルート全体にマップのカメラ ビューが設定されます。 記号アイコンのピクセル寸法を補正するためにパディングを追加しています。 マップ コントロールの setCamera プロパティの詳細については、[setCamera(CameraOptions | CameraBoundsOptions & AnimationOptions)](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-&preserve-view=false) プロパティを参照してください。
 
 3. **MapRoute.html** を保存し、ブラウザーを更新します。 これで、マップの中心がシアトルに設定されました。 涙形の青いピンは、始点をマークしています。 円形の青いピンは、終点をマークしています。
 
-    :::image type="content" source="./media/tutorial-route-location/map-pins.png" alt-text="マップ上の起点と終点を結ぶルートを表示する":::
+    :::image type="content" source="./media/tutorial-route-location/map-pins.png" alt-text="マップ コントロールの基本的なマップ レンダリング":::
 
 <a id="getroute"></a>
 
 ## <a name="get-route-directions"></a>ルートの道順を取得する
 
-このセクションでは、Azure Maps Route Service API を使用して、ある地点から別の地点への道順を取得する方法について説明します。 このサービス内には他の API があり、それらを使用すると、2 つの場所を結ぶ "*最速*"、"*最短*"、"*エコ*"、または "*スリリング*" なルートを計画することができます。 また、このサービスを使用すると、ユーザーは過去の交通条件に基づいて将来のルートを計画することもできます。 ユーザーは、指定された任意の時刻におけるルート所要時間の予測を確認できます。 詳しくは、[Get Route Directions API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) に関する記事をご覧ください。
+このセクションでは、Azure Maps Route Directions API を使用して、ルートの道順と、特定ポイント間の推定到着時間を取得する方法について説明します。
+
+>[!TIP]
+>Azure Maps Route Service には、距離、渋滞状況、使用する輸送モードに基づく、"*最速*"、"*最短*"、"*エコ*"、"*スリリング*" などのさまざまなルートの種類を基にルートを計画できる API シリーズが用意されています。 また、このサービスを使用すると、ユーザーは過去の渋滞状況に基づいて今後のルートを計画することもできます。 ユーザーは、指定された任意の時刻におけるルート所要時間の予測を確認できます。 詳しくは、[Get Route Directions API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) に関する記事をご覧ください。
 
 1. `GetMap` 関数のコントロールの `ready` イベント ハンドラー内で、JavaScript コードに以下を追加します。
 
@@ -193,7 +198,7 @@ ms.locfileid: "89400332"
     var routeURL = new atlas.service.RouteURL(pipeline);
     ```
 
-   サブスクリプション キーを使用して Azure Maps に対する HTTP 要求を認証するために、`SubscriptionKeyCredential` によって `SubscriptionKeyCredentialPolicy` が作成されます。 `atlas.service.MapsURL.newPipeline()` は、`SubscriptionKeyCredential` ポリシーを取り込んで、[パイプライン](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) インスタンスを作成します。 `routeURL` は、Azure Maps の [Route](https://docs.microsoft.com/rest/api/maps/route) 操作の URL を表します。
+   サブスクリプション キーを使用して Azure Maps に対する HTTP 要求を認証するために、`SubscriptionKeyCredential` によって `SubscriptionKeyCredentialPolicy` が作成されます。 `atlas.service.MapsURL.newPipeline()` は、`SubscriptionKeyCredential` ポリシーを取り込んで、[パイプライン](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline) インスタンスを作成します。 `routeURL` は、Azure Maps の [Route](https://docs.microsoft.com/rest/api/maps/route) 操作の URL を表します。
 
 2. 資格情報と URL を設定した後、コントロールの `ready` イベント ハンドラーに次のコードを追加します。 このコードにより、始点から終点までのルートが構築されます。 `routeURL` は、Azure Maps Route Service API に対して、ルートの道順を計算するように要求します。 `geojson.getFeatures()` メソッドを使用して応答から GeoJSON フィーチャー コレクションが抽出され、データ ソースに追加されます。
 
@@ -211,7 +216,7 @@ ms.locfileid: "89400332"
 
 3. **MapRoute.html** ファイルを保存し、Web ブラウザーを更新します。 マップに、始点から終点までのルートが表示されます。
 
-     :::image type="content" source="./media/tutorial-route-location/map-route.png" alt-text="Azure マップ コントロールと Route Service":::
+     :::image type="content" source="./media/tutorial-route-location/map-route.png" alt-text="マップ コントロールの基本的なマップ レンダリング":::
 
     サンプルの完全なソース コードは、[こちら](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)から取得できます。 ライブ サンプルは、[こちら](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)でご覧いただけます。
 

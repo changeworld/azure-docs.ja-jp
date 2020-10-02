@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: c000d48043a46ecdbdfee263cc5c8ce877f66b4b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 30a782c7d7c13eb9c92e4a4bf64e268416a2b382
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923706"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561552"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>チュートリアル:Azure Digital Twins API を使用したコーディング
 
@@ -112,7 +112,7 @@ using Azure.Identity;
 >[!TIP]
 > "*ディレクトリ (テナント) ID*" が不明な場合は、[Azure Cloud Shell](https://shell.azure.com) で次のコマンドを実行することで確認できます。
 > 
-> ```azurecli-interactive
+> ```azurecli
 > az account show --query tenantId
 > ```
 
@@ -322,12 +322,13 @@ for(int i=0; i<3; i++) {
 
 次に、作成したツイン間に**リレーションシップ**を作成することで、それらのツインを接続し、**ツイン グラフ**を形成することができます。 [ツイン グラフ](concepts-twins-graph.md)は、ご自分の環境全体を表すために使用されます。
 
-リレーションシップを作成できるようにするには、SDK にあるリレーションシップの基本データ型を対象にした `using` ステートメントを追加します (追加済みの場合はスキップします)。
+リレーションシップを作成するためには、`Azure.DigitalTwins.Core.Serialization` 名前空間が必要となります。 これは、次の `using` ステートメントでプロジェクトに追加済みです。
+
 ```csharp
 using Azure.DigitalTwins.Core.Serialization;
 ```
 
-次に、新しい静的メソッドを `Program` クラスの `Main` メソッドの下に追加します。
+新しい静的メソッドを `Program` クラスの `Main` メソッドの下に追加します。
 ```csharp
 public async static Task CreateRelationship(DigitalTwinsClient client, string srcId, string targetId)
 {

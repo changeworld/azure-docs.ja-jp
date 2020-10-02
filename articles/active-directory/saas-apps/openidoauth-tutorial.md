@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1934b6256ecf4f35c54bbc2ac497c331b2c5ee89
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f36c80b9d08f2fde07483c1dde3afe99ec9f92d7
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543926"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705624"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Azure AD アプリ ギャラリーの OpenID および OAuth アプリケーションを構成する
 
@@ -76,13 +76,13 @@ Azure AD では、既定でマルチテナント アプリケーションが奨�
 ## <a name="consent-framework"></a>同意フレームワーク
 
 Azure AD の同意フレームワークを使用して、マルチテナントの Web クライアント アプリケーションとネイティブ クライアント アプリケーションを開発できます。 こうしたアプリケーションには、登録されている Azure AD テナントとは異なるテナントのユーザー アカウントを使ってサインインできます。 また、次のような Web API へのアクセスが必要になることもあります。
-- Microsoft Graph API (Azure AD、Intune、Office 365 のサービスにアクセスするため)。
+- Microsoft Graph API (Azure AD、Intune、Microsoft 365 のサービスにアクセスするため)。
 - その他の Microsoft サービスの API。
 - お客様独自の Web API。
 
 このフレームワークは、ディレクトリへの登録を要求するアプリケーションに対して同意を与えるユーザーまたは管理者の存在が前提となっています。 登録には、ディレクトリ データへのアクセスが伴う場合があります。 同意が与えられると、クライアント アプリケーションがユーザーに代わって Microsoft Graph API を呼び出し、必要に応じて情報を利用できるようになります。
 
-[Microsoft Graph API](https://developer.microsoft.com/graph/) を使用してアクセスできる Office 365 のデータの例を次に示します。
+[Microsoft Graph API](https://developer.microsoft.com/graph/) を使用してアクセスできる Microsoft 365 のデータの例を次に示します。
 
 - Exchange の予定表とメッセージ。
 - SharePoint のサイトとリスト。
@@ -121,7 +121,7 @@ Azure AD のユーザーとグループや、Microsoft クラウド サービス
 
 3. ユーザーの認証がまだであれば、Azure AD の /authorize エンドポイントによってサインイン画面が表示されます。
 
-    ![認証](./media/openidoauth-tutorial/authentication.png)
+    ![アカウントのサインイン プロンプトのスクリーンショット](./media/openidoauth-tutorial/authentication.png)
 
 4. ユーザーのサインインが終わると、そのユーザーに対して同意ページを表示する必要があるかどうかが Azure AD により判定されます。 表示の要否の判定基準は、ユーザー (またはそのユーザーが所属する組織の管理者) がアプリケーションに既に同意を与えているかどうかです。
 

@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0163fcc62ea6c813af8e9e5693ca35fa0e650f96
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9e841cccdfb3d304d63eb19b45be5555eea2a66c
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497530"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069409"
 ---
 # <a name="tutorial-add-a-resource-to-your-arm-template"></a>チュートリアル:ARM テンプレートにリソースを追加する
 
@@ -85,7 +85,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> デプロイに失敗した場合は、デプロイ コマンドで **debug** スイッチを使用してデバッグ ログを表示します。  **verbose** スイッチを使用して、詳細なデバッグ ログを表示することもできます。
+> デプロイに失敗した場合は、**verbose** スイッチを使用して、作成しているリソースに関する情報を取得します。 デバッグの詳細については、**debug** スイッチを使用してください。
 
 発生する可能性のあるデプロイ エラーとして、次の 2 つが考えられます。
 

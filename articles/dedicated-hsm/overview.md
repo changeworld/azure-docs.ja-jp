@@ -1,6 +1,6 @@
 ---
 title: 専用 HSM とは - Azure Dedicated HSM | Microsoft Docs
-description: Azure Dedicated HSM の概要では、FIPS 140-2 レベル 3 認定を満たす Azure 内でのキーの保管機能について説明します
+description: Azure 内に暗号化キーの保管場所を提供する Azure サービス、Azure Dedicated HSM について説明します。
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: dd5ce117645ef2b368bbf8f0e441770d6e746b5b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6eb82400b2f598b4b54da4b238f4bce71d83de6b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "70881075"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970208"
 ---
 # <a name="what-is-azure-dedicated-hsm"></a>Azure Dedicated HSM とは何か
 
@@ -46,7 +46,7 @@ Microsoft のお客様の多くは、暗号の保管デバイスのシングル 
  
  この監視は必要であればお客様が自由に無効化できます。 ただし、これを無効にした場合、Microsoft からプロアクティブな正常性アラートは通知されません。
 
-### <a name="high-performance"></a>高パフォーマンス
+### <a name="high-performance"></a>高性能
 
 Gemalto デバイスがこのサービスに選ばれたのには、さまざまな理由があります。 幅広い暗号アルゴリズムのサポート、さまざまなオペレーティング システムのサポート、広範な API のサポートが提供されます。 デプロイされた特定のモデルは、RSA-2048 の場合に毎秒 10,000 操作という優れたパフォーマンスを発揮します。 一意のアプリケーションのインスタンスについて、10 個のパーティションを使用することができます。 短い待ち時間、大容量、高スループットのデバイスです。
 
@@ -60,7 +60,7 @@ Azure Dedicated HSM は、特定の種類の大規模な組織に固有の要件
 
 ### <a name="best-fit"></a>最適
 
-Azure Dedicated HSM は、HSM デバイスに直接かつ単独でアクセスすることが求められる "リフトアンドシフト" のシナリオに最適です。 たとえば、次のようになります。
+Azure Dedicated HSM は、HSM デバイスに直接かつ単独でアクセスすることが求められる "リフトアンドシフト" のシナリオに最適です。 以下に例を示します。
 
 - オンプレミスから Azure Virtual Machines にアプリケーションを移行する
 - AWS Cloud HSM Classic サービスを使用するアプリケーションを Amazon AWS EC2 から仮想マシンに移行する (Amazon は、このサービスを新規顧客に提供していません)
@@ -81,7 +81,7 @@ Azure Dedicated HSM が適しているかどうかは、発生し得る複雑な
 - Azure Storage のクライアント側暗号化
 - SQL Server と Azure SQL DB の Always Encrypted
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 これは非常に特殊なサービスです。 そのため、このドキュメント セットの主要な概念について、価格、サポート、サービス レベル アグリーメントを含めて十分に理解しておくことをお勧めします。 
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 3f24e3538f05ca3b6a27907e0b794705402fce7c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4a6f6a052269bbfef6cafb359626031692a7d9c6
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285443"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89418587"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Azure Database for MySQL でのバックアップと復元
 
@@ -76,6 +76,13 @@ Azure Database for MySQL で復元を実行すると、元のサーバーのバ�
 ### <a name="point-in-time-restore"></a>ポイントインタイム リストア
 
 バックアップ冗長オプションに関係なく、バックアップのリテンション期間内の任意の時点への復元を実行できます。 新しいサーバーは、元のサーバーと同じ Azure リージョンに作成されます。 価格レベル、コンピューティング世代、仮想コア数、ストレージ サイズ、バックアップのリテンション期間、およびバックアップ冗長オプションについては、元のサーバーの構成を使用して作成されます。
+
+> [!NOTE]
+> 復元操作の後で既定値にリセットされる (そして、プライマリ サーバーからコピーで上書きされない) サーバー パラメーターが 2 つあります
+> * time_zone - この値は、既定値 **SYSTEM** に設定されます
+> * event_scheduler - event_scheduler は、復元されたサーバーで **OFF** に設定されます
+>
+> [サーバー パラメーター](howto-server-parameters.md)を再構成して、これらのサーバー パラメーターを設定する必要があります。
 
 ポイントインタイム リストアは複数のシナリオで役に立ちます。 たとえば、ユーザーが誤ってデータを削除したとき、重要なテーブルやデータベースを削除したとき、またはアプリケーションの不具合が原因で、適切なデータが不適切なデータで誤って上書きされた場合などです。
 

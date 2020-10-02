@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 0330e72ad74726f97bfdfd78ef8d5f9b24a5d172
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 6eaf00679566aa8dfb7a90db95228349c81fcfec
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85513307"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983408"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory パイプラインでのアクティビティの分岐と連鎖
 
@@ -26,7 +26,7 @@ ms.locfileid: "85513307"
 
 次の図は、シナリオの概要を示しています。
 
-![概要](media/tutorial-control-flow/overview.png)
+![コピー対象の Azure Blob Storage を示す図。成功した場合は詳細を含む電子メールを送信し、失敗した場合はエラーの詳細を含む電子メールを送信する。](media/tutorial-control-flow/overview.png)
 
 このチュートリアルでは、以下のタスクの実行方法を説明します。
 

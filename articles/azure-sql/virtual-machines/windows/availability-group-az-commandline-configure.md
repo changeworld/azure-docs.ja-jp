@@ -13,12 +13,12 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a74a791c8c6a95c71faf1f4a0ce6eaacd7c68901
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 212ead54f0f8212ae251175d40873e7cec4e0240
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002999"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482659"
 ---
 # <a name="configure-an-availability-group-for-sql-server-on-azure-vm-powershell--az-cli"></a>Azure VM に SQL Server の可用性グループを構成する (PowerShell & Az CLI)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -44,13 +44,13 @@ Azure CLI を使用して Always On 可用性グループを構成するには�
 - ドメインで**コンピューター オブジェクトを作成する**ためのアクセス許可を持っている既存のドメイン ユーザー アカウント。 たとえばドメイン管理者アカウントは、一般に十分なアクセス許可を持っています (例: account@domain.com)。 _クラスターを作成するには、このアカウントが、各 VM でローカル管理者グループに含まれている必要もあります。_
 - SQL Server を制御するドメイン ユーザー アカウント。 
  
-## <a name="create-a-storage-account-as-a-cloud-witness"></a>クラウド監視としてのストレージ アカウントを作成する
+## <a name="create-a-storage-account"></a>ストレージ アカウントの作成 
+
 クラスターには、クラウド監視として機能するストレージ アカウントが必要です。 いずれかの既存のストレージ アカウントを使用するか、または新しいストレージ アカウントを作成できます。 既存のストレージ アカウントを使用する場合は、次のセクションに進んでください。 
 
 次のコード スニペットは、ストレージ アカウントを作成します。 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
 
 ```azurecli-interactive
 # Create the storage account
@@ -80,7 +80,7 @@ New-AzStorageAccount -ResourceGroupName <resource group name> -Name <name> `
 
 ---
 
-## <a name="define-windows-failover-cluster-metadata"></a>Windows フェールオーバー クラスターのメタデータを定義する
+## <a name="define-cluster-metadata"></a>クラスター メタデータを定義する
 
 Azure CLI の [az sql vm group](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest) コマンド グループは、可用性グループをホストする Windows Server フェールオーバー クラスター (WSFC) サービスのメタデータを管理するものです。 クラスター メタデータには、Active Directory ドメイン、クラスター アカウント、クラウド監視として使用されるストレージ アカウント、および SQL Server バージョンが含まれています。 [az sql vm group create](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest#az-sql-vm-group-create) を使用して WSFC のメタデータを定義し、最初の SQL Server VM が追加されたら、定義のとおりにクラスターが作成されるようにします。 
 
@@ -183,6 +183,17 @@ Update-AzSqlVM -ResourceId $sqlvm2.ResourceId -SqlVM $sqlvmconfig2
 ```
 
 ---
+
+
+## <a name="validate-cluster"></a>クラスターを検証する 
+
+Microsoft によってフェールオーバー クラスターがサポートされるためには、クラスター検証に合格する必要があります。 任意の方法 (リモート デスクトップ プロトコル (RDP) など) を使用して VM に接続し、先に進む前に、クラスターが検証に合格していることを確認します。 これに失敗すると、クラスターはサポートされていない状態のままになります。 
+
+フェールオーバー クラスター マネージャー (FCM) または次の PowerShell コマンドを使用して、クラスターを検証できます。
+
+   ```powershell
+   Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
+   ```
 
 ## <a name="create-availability-group"></a>可用性グループを作成する
 

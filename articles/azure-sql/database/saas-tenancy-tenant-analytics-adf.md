@@ -11,19 +11,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: fff308f241a29cbf40bf2884fc412acf5942497b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2f4f81f8159e5800da7dfec58c01f474cb1c0d07
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84036483"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437447"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-azure-synapse-analytics-data-factory-and-power-bi"></a>Azure SQL Database、Azure Synapse Analytics、Data Factory、Power BI による SaaS 分析を調べる
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 このチュートリアルでは、分析シナリオについて最初から最後まで説明します。 このシナリオでは、テナント データを分析することでソフトウェア ベンダーのスマートな意思決定能力がどのように向上するのかを説明します。 各テナント データベースから抽出されたデータを使用した分析によって、テナントの動作 (Wingtip Tickets SaaS サンプル アプリケーションの使用など) に関する洞察を獲得します。 このシナリオには、次の 3 つの手順が含まれます。
 
-1. 各テナント データベースから分析ストア (この場合は SQL Data Warehouse) に**データを抽出**します。
+1. 各テナント データベースから分析ストア (この場合は SQL プール) に**データを抽出**します。
 2. 分析処理のために、**抽出されたデータを最適化**します。
 3. **ビジネス インテリジェンス** ツールを使用して、意思決定を支援する有益な洞察を引き出します。
 
@@ -45,7 +45,7 @@ SaaS アプリケーションは、クラウドに膨大な量のテナント �
 
 すべてのデータが 1 つのマルチテナント データベースに存在する場合は、すべてのテナントのデータに簡単にアクセスできます。 しかし、何千ものデータベースに分散している場合、アクセスは複雑になります。 この複雑さを軽減する 1 つの方法として、クエリ用の分析データベースまたはデータ ウェアハウスにデータを抽出します。
 
-このチュートリアルでは、Wingtip Tickets アプリケーションのエンド ツー エンドの分析シナリオを紹介します。 最初に、[Azure Data Factory (ADF)](../../data-factory/introduction.md) をオーケストレーション ツールとして使って、各テナント データベースからチケットの販売および関連するデータを抽出します。 このデータは、分析ストアのステージング テーブルに読み込まれます。 分析ストアには、SQL Database または SQL Data Warehouse を使用できます。 このチュートリアルでは、分析ストアとして [SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is) を使います。
+このチュートリアルでは、Wingtip Tickets アプリケーションのエンド ツー エンドの分析シナリオを紹介します。 最初に、[Azure Data Factory (ADF)](../../data-factory/introduction.md) をオーケストレーション ツールとして使って、各テナント データベースからチケットの販売および関連するデータを抽出します。 このデータは、分析ストアのステージング テーブルに読み込まれます。 分析ストアには、SQL Database または SQL プールを使用できます。 このチュートリアルでは、分析ストアとして [Azure Synapse Analytics (旧称 SQL Data Warehouse)](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is) を使います。
 
 次に、抽出されたデータを変換して一連の[スター スキーマ](https://www.wikipedia.org/wiki/Star_schema) テーブルに読み込みます。 これらのテーブルは、中央のファクト テーブルと関連するディメンション テーブルで構成されます。
 
@@ -83,11 +83,11 @@ SaaS アプリケーションは、クラウドに膨大な量のテナント �
     - **$DemoScenario** = **1**: すべての会場でイベントのチケットを購入
 2. **F5** キーを押してスクリプトを実行し、すべての会場のチケット購入履歴を作成します。 20 のテナントについて、スクリプトは数万件のチケットを生成し、10 分以上かかる場合があります。
 
-### <a name="deploy-sql-data-warehouse-data-factory-and-blob-storage"></a>SQL Data Warehouse、Data Factory、Blob Storage をデプロイする
+### <a name="deploy-azure-synapse-analytics-data-factory-and-blob-storage"></a>Azure Synapse Analytics、Data Factory、Blob Storage をデプロイする
 
-Wingtip Tickets アプリでは、テナントのトランザクション データは多くのデータベースに分散されます。 Azure Data Factory (ADF) を使って、データ ウェアハウスへのこのデータの抽出、読み込み、変換 (ELT) を調整します。 最も効率的に SQL Data Warehouse にデータを読み込むため、ADF は中間 BLOB ファイルにデータを抽出した後、[PolyBase](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading) を使ってデータ ウェアハウスにデータを読み込みます。
+Wingtip Tickets アプリでは、テナントのトランザクション データは多くのデータベースに分散されます。 Azure Data Factory (ADF) を使って、データ ウェアハウスへのこのデータの抽出、読み込み、変換 (ELT) を調整します。 最も効率的に Azure Synapse Analytics (旧称 SQL Data Warehouse) にデータを読み込むため、ADF は中間 BLOB ファイルにデータを抽出した後、[PolyBase](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading) を使ってデータ ウェアハウスにデータを読み込みます。
 
-この手順において、チュートリアルで使われるその他のリソースをデプロイします。つまり、_tenantanalytics_ という名前の SQL Data Warehouse、_dbtodwload-\<user\>_ という名前の Azure Data Factory、_wingtipstaging\<user\>_ という名前の Azure ストレージ アカウントです。 ストレージ アカウントは、抽出されたデータ ファイルを、データ ウェアハウスに読み込む前に、BLOB として一時的に保持するために使われます。 この手順では、データ ウェアハウス スキーマもデプロイし、ELT プロセスを調整する ADF パイプラインを定義します。
+この手順において、チュートリアルで使われるその他のリソースをデプロイします。つまり、_tenantanalytics_ という名前の SQL プール、_dbtodwload-\<user\>_ という名前の Azure Data Factory、_wingtipstaging\<user\>_ という名前の Azure ストレージ アカウントです。 ストレージ アカウントは、抽出されたデータ ファイルを、データ ウェアハウスに読み込む前に、BLOB として一時的に保持するために使われます。 この手順では、データ ウェアハウス スキーマもデプロイし、ELT プロセスを調整する ADF パイプラインを定義します。
 
 1. PowerShell ISE で *…\Learning Modules\Operational Analytics\Tenant Analytics DW\Demo-TenantAnalyticsDW.ps1* を開き、次のように設定します。
     - **$DemoScenario** = **2**: テナント分析データ ウェアハウス、BLOB ストレージ、データ ファクトリをデプロイする
@@ -159,7 +159,7 @@ Azure Data Factory は、データの抽出、読み込み、変換の調整に�
 
 **パイプライン 3 - TableCopy** は、SQL Database の行バージョン番号 (_rowversion_) を使って、変更または更新された行を識別します。 このアクティビティは、ソース テーブルから行を抽出するために開始と終了の行バージョンを検索します。 各テナント データベースに格納されている **CopyTracker** テーブルは、各実行において各ソース テーブルから抽出された最後の行を追跡します。 新しい行または変更された行は、データ ウェアハウス内の対応するステージング テーブル **raw_Tickets**、**raw_Customers**、**raw_Venues**、**raw_Events** にコピーされます。 最後に、次の抽出の最初の行バージョンとして使われるために、最後の行バージョンが **CopyTracker** テーブルに保存されます。
 
-また、3 つのリンクされたサービスがパラメーター化されており、データ ファクトリをソース SQL Databases、ターゲット SQL Data Warehouse、および中間 BLOB ストレージにそれぞれリンクしています。 **[作成者]** タブで **[接続]** をクリックして、次の図のように、リンクされたサービスを調べます。
+また、3 つのリンクされたサービスがパラメーター化されており、データ ファクトリをソース SQL Database、ターゲット SQL プール、および中間 BLOB ストレージにそれぞれリンクしています。 **[作成者]** タブで **[接続]** をクリックして、次の図のように、リンクされたサービスを調べます。
 
 ![adf_linkedservices](./media/saas-tenancy-tenant-analytics-adf/linkedservices.JPG)
 
@@ -167,7 +167,7 @@ Azure Data Factory は、データの抽出、読み込み、変換の調整に�
   
 ### <a name="data-warehouse-pattern-overview"></a>データ ウェアハウスのパターンの概要
 
-Azure Synapse (旧称 Azure SQL Data Warehouse) は、テナント データに対して集計を実行するための分析ストアとして使われます。 このサンプルでは、データ ウェアハウスにデータを読み込むには PolyBase が使用されます。 生データが読み込まれるステージング テーブルには、スター スキーマ テーブルに変換された行を追跡するための ID 列があります。 次の図は読み込みのパターンを示しています。![loadingpattern](./media/saas-tenancy-tenant-analytics-adf/loadingpattern.JPG)
+Azure Synapse (旧称 SQL Data Warehouse) は、テナント データに対して集計を実行するための分析ストアとして使われます。 このサンプルでは、データ ウェアハウスにデータを読み込むには PolyBase が使用されます。 生データが読み込まれるステージング テーブルには、スター スキーマ テーブルに変換された行を追跡するための ID 列があります。 次の図は読み込みのパターンを示しています。![loadingpattern](./media/saas-tenancy-tenant-analytics-adf/loadingpattern.JPG)
 
 緩やかに変化するディメンション (SCD) タイプ 1 のディメンション テーブルが、この例では使用されます。 各ディメンションでは、ID 列を使って代理キーが定義されています。 ベスト プラクティスとして、時間を節約するため日付ディメンション テーブルはあらかじめ設定されています。 他のディメンション テーブルについては、CREATE TABLE AS SELECT...(CTAS) ステートメントを使って、既存の変更された行と変更されていない行および代理キーを格納する一時テーブルが作成されます。 これは、IDENTITY_INSERT=ON で行われます。 その後、新しい行が IDENTITY_INSERT=OFF でテーブルに挿入されます。 ロールバックが簡単なように、既存のディメンション テーブルの名前が変更された後、一時テーブルの名前が変更されて新しいディメンション テーブルになります。 各実行の前に、古いディメンション テーブルが削除されます。
 

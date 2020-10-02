@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 34a048c702b62caeecaf21e710a9dcd9156e4aea
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 0a5c788b4429b5048a1b94fa8adfb2d9367982da
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87801298"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033474"
 ---
 # <a name="deploy-azure-monitor"></a>Azure Monitor をデプロイする
 Azure Monitor ですべての Azure リソースを監視できるようにするには、Azure Monitor コンポーネントの構成と、Azure Monitor で収集される監視データを生成するための Azure リソースの構成を、組み合わせて行います。 この記事では、一般的な構成を使用して Azure Monitor を完全に実装して Azure サブスクリプション内のすべてのリソースを監視するために必要なさまざまなステップについて説明します。 各ステップの基本的な説明は、詳細な構成要件に関する他のドキュメントへのリンクで提供されます。
@@ -118,9 +118,9 @@ Azure Monitor for VMs によって使用される Log Analytics エージェン�
 カスタムア プリケーションを監視するために Azure Monitor によって使用される [Application Insights](app/app-insights-overview.md) を、監視するアプリケーションごとに構成する必要があります。 構成プロセスは、監視対象のアプリケーションの種類と、実行する監視の種類によって異なります。 Application Insights によって収集されたデータは、機能に応じて、Azure Monitor Metrics、Azure Monitor Logs、Azure Blob Storage に格納されます。 パフォーマンス データは Azure Monitor Metrics と Azure Monitor Logs の両方に格納され、追加の構成は必要ありません。
 
 ### <a name="create-an-application-resource"></a>アプリケーション リソースを作成する
-監視するアプリケーションごとに、Application Insights でリソースを作成する必要があります。 Application Insights によって収集されたログ データは Azure Monitor Logs に格納されますが、「[Azure Monitor ログのデータの構造](platform/data-platform-logs.md#how-is-data-in-azure-monitor-logs-structured)」で説明されているように、Log Analytics ワークスペースとは異なります。 現在プレビューの段階ですが、アプリケーション データを他のデータと共に Log Analytics ワークスペースに直接格納する機能があります。 これにより、構成が単純化され、アプリケーションで Log Analytics ワークスペースのすべての機能を利用できるようになります。
+監視するアプリケーションごとに、Application Insights でリソースを作成する必要があります。 Application Insights によって収集されたログ データは、ワークスペースベースのアプリケーションの Azure Monitor ログに格納されます。 クラシック アプリケーションのログ データは、[データの構造](platform/data-platform-logs.md#structure-of-data)に関するページで説明されているように、Log Analytics ワークスペースとは別に保存されます。
 
- アプリケーションを作成するときに、クラシックまたはワークスペース ベース (プレビュー) のどちらを使用するかを選択する必要があります。 クラシック アプリケーションを作成するには、「[Application Insights リソースの作成](app/create-new-resource.md)」を参照してください。 ワークスペース ベースのアプリケーションを作成するには、「[ワークスペース ベースの Application Insights リソース (プレビュー)](app/create-workspace-resource.md)」を参照してください。
+ アプリケーションを作成するときに、クラシックまたはワークスペース ベースのどちらを使用するかを選択する必要があります。 クラシック アプリケーションを作成するには、「[Application Insights リソースの作成](app/create-new-resource.md)」を参照してください。 ワークスペース ベースのアプリケーションを作成するには、「[ワークスペース ベースの Application Insights リソース (プレビュー)](app/create-workspace-resource.md)」を参照してください。
 
 ### <a name="configure-codeless-or-code-based-monitoring"></a>コード不要の監視またはコード ベースの監視を構成する
 アプリケーションの監視を有効にするには、コード不要の監視またはコード ベースの監視を使用するかどうかを決定する必要があります。 構成プロセスは、この決定と監視対象のアプリケーションの種類によって異なります。

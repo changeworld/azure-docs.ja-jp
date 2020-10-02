@@ -3,12 +3,12 @@ title: 準拠していないリソースを修復する
 description: このガイドでは、Azure Policy のポリシーに準拠していないリソースを修復する手順を説明します。
 ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 1274b049d7ce19601968697b22da38f0eb2cb5ff
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 52d8ef6dd66c52edd574b2ccfa51da16623a1afb
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958747"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651365"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Azure Policy を使って準拠していないリソースを修復する
 
@@ -19,7 +19,7 @@ ms.locfileid: "88958747"
 **deployIfNotExists** ポリシー定義にあるテンプレートを実行するとき､Azure Policy では[マネージド ID](../../../active-directory/managed-identities-azure-resources/overview.md) が使用されます｡
 マネージド ID は Azure Policy によって各割り当てに対して作成されますが、どのようなロールをマネージド ID に付与するかについての詳細が必要です。 管理対象 ID にロールが存在しない場合、そのポリシーまたはイニシアチブの割り当て中にこのエラーが表示されます。 ポータルを使用している場合、割り当てが開始されると、Azure Policy によって、示されているロールが自動的にマネージド ID に付与されます。 マネージド ID の "_場所_" は、Azure Policy による操作に影響を与えません。
 
-:::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="管理対象 ID - ロールが存在しない" border="false":::
+:::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="マネージド ID に対して定義されたアクセス許可がない deployIfNotExists ポリシーのスクリーンショット。" border="false":::
 
 > [!IMPORTANT]
 > **deployIfNotExists** や **modify** で変更されたリソースがポリシー割り当てのスコープの範囲外の場合､あるいはテンプレートがポリシー割り当てのスコープの範囲外にあるリソース上のプロパティにアクセスした場合､その割り当ての管理対象 ID には[手動でアクセス権を付与](#manually-configure-the-managed-identity)する必要があります。さもないと､修復デプロイは失敗します。
@@ -90,15 +90,15 @@ if ($roleDefinitionIds.Count -gt 0)
 
 ### <a name="grant-defined-roles-through-portal"></a>定義したロールをポータルから付与する
 
-ポータルを使用して､割り当ての管理対象 ID に定義したロールを付与する方法は 2 通りあります｡1 つは **アクセス制御 (IAM)** を利用する方法､もう 1 つはポリシーまたはイニシアティブ割り当てを編集する方法です(最後に **保存** をクリック)。
+ポータルを使用して、定義したロールを割り当てのマネージド ID に付与するには、**アクセス制御 (IAM)** を使用する方法と、ポリシーまたはイニシアチブの割り当てを編集して **[保存]** を選択する方法の 2 つがあります。
 
 割り当ての管理対象 ID にロールを追加するには、次の手順に従います｡
 
-1. Azure portal 上で **[すべてのサービス]** をクリックし、 **[ポリシー]** を検索して選択し、Azure Policy サービスを起動します。
+1. Azure portal で **[すべてのサービス]** を選択し、「**Policy**」を検索して選択することで、Azure Policy サービスを起動します。
 
 1. Azure Policy ページの左側にある **[割り当て]** を選択します。
 
-1. 管理対象 ID がある割り当てを見つけて、その名前をクリックします。
+1. マネージド ID がある割り当てを見つけて、その名前を選択します。
 
 1. 編集ページで**割り当て ID** を見つけます｡ 割り当て ID は以下のような ID です。
 
@@ -110,10 +110,10 @@ if ($roleDefinitionIds.Count -gt 0)
 
 1. ロールの定義で手動で追加する必要があるリソース､またはリソースの親コンテナー (リソース グループ、サブスクリプション、管理グループ) に移動します。
 
-1. リソース ページにある **アクセス制御 (IAM)** のリンクをクリックして、アクセス制御ページの上部にある **[+ Add role assignment]\(+ ロール割り当ての追加\)** をクリックします。
+1. リソース ページにある**アクセス制御 (IAM)** のリンクを選択して、アクセス制御ページの上部にある **[+ Add role assignment]\(+ ロール割り当ての追加\)** を選択します。
 
 1. ポリシー定義から､ **roleDefinitionIds** に一致するロールを選択します｡
-   **Assign access to** は ''Azure AD user, group, or application という既定値の設定のままにします｡ **[選択]** ボックスで、前の手順で見つけた割り当てリソース ID の部分を貼り付けるか､入力します。 検索が完了したら、同じ名前のオブジェクトをクリックすることで ID を選択し､ **[保存]** をクリックします。
+   **Assign access to** は ''Azure AD user, group, or application という既定値の設定のままにします｡ **[選択]** ボックスで、前の手順で見つけた割り当てリソース ID の部分を貼り付けるか､入力します。 検索が完了したら、同じ名前のオブジェクトを選択することで ID を選択し､ **[保存]** を選択します。
 
 ## <a name="create-a-remediation-task"></a>修復タスクを作成する
 
@@ -123,32 +123,32 @@ if ($roleDefinitionIds.Count -gt 0)
 
 **修復タスク** を作成するには､次の手順に従います。
 
-1. Azure portal 上で **[すべてのサービス]** をクリックし、 **[ポリシー]** を検索して選択し、Azure Policy サービスを起動します。
+1. Azure portal で **[すべてのサービス]** を選択し、「**Policy**」を検索して選択することで、Azure Policy サービスを起動します。
 
-   :::image type="content" source="../media/remediate-resources/search-policy.png" alt-text="[すべてのサービス] で [ポリシー] を検索する" border="false":::
+   :::image type="content" source="../media/remediate-resources/search-policy.png" alt-text="マネージド ID に対して定義されたアクセス許可がない deployIfNotExists ポリシーのスクリーンショット。" border="false":::
 
 1. Azure Policy ページの左側にある **[修復]** を選択します。
 
-   :::image type="content" source="../media/remediate-resources/select-remediation.png" alt-text="[ポリシー] ページで [修復] を選択する" border="false":::
+   :::image type="content" source="../media/remediate-resources/select-remediation.png" alt-text="マネージド ID に対して定義されたアクセス許可がない deployIfNotExists ポリシーのスクリーンショット。" border="false":::
 
-1. **deployIfNotExists** および **modify** のポリシー割り当てのうち、準拠していないリソースがあるものはすべて､ **[修復するポリシー]** タブとデータ テーブルに含まれます。 準拠していないリソースがあるポリシーをクリックします。 **新しい修復タスク**ページが開きます。
+1. **deployIfNotExists** および **modify** のポリシー割り当てのうち、準拠していないリソースがあるものはすべて､ **[修復するポリシー]** タブとデータ テーブルに含まれます。 準拠していないリソースがあるポリシーを選択します。 **新しい修復タスク**ページが開きます。
 
    > [!NOTE]
-   > **修復タスク**ページは、**コンプライアンス** ページから問題のポリシーを見つけて､クリックし、ページの [] をクリックし、**修復タスクの作成**ボタンをクリックしても開くことができます。
+   > **[修復タスク]** ページは、 **[コンプライアンス]** ページからポリシーを見つけて選択し、 **[修復タスクの作成]** ボタンを選択して開くこともできます。
 
 1. **[New remediation task]\(新しい修復タスク\)** ページで **[Scope]\(スコープ\)** 省略記号ボタンを使って、ポリシーが割り当てられている子リソースを選択することで、修復するリソースをフィルター処理します (個々のリソース オブジェクトまでフィルター可能)。 また、 **[場所]** ドロップダウンを使って､リソースをさらにフィルター処理することもできます｡ 表に示されたリソースのみ修復されます。
 
-   :::image type="content" source="../media/remediate-resources/select-resources.png" alt-text="修復 - 修復するリソースを選択する" border="false":::
+   :::image type="content" source="../media/remediate-resources/select-resources.png" alt-text="マネージド ID に対して定義されたアクセス許可がない deployIfNotExists ポリシーのスクリーンショット。" border="false":::
 
-1. リソースのフィルター処理を終えたら、 **[修復]** をクリックして、修復タスクを開始します。 **[修復タスク]** タブに対するポリシー コンプライアンス ページが開いて、タスクの進行状況が表示されます。 修復タスクによって作成されたデプロイが、すぐに開始されます。
+1. リソースのフィルター処理を終えたら、 **[修復]** を選択して、修復タスクを開始します。 **[修復タスク]** タブに対するポリシー コンプライアンス ページが開いて、タスクの進行状況が表示されます。 修復タスクによって作成されたデプロイが、すぐに開始されます。
 
-   :::image type="content" source="../media/remediate-resources/task-progress.png" alt-text="修復 - 修復タスクの進行状況" border="false":::
+   :::image type="content" source="../media/remediate-resources/task-progress.png" alt-text="マネージド ID に対して定義されたアクセス許可がない deployIfNotExists ポリシーのスクリーンショット。" border="false":::
 
-1. ポリシー コンプライアンス ページの **[修復タスク]** をクリックすると､進行状況の詳細が表示されます｡ 修復されているリソースの一覧と共に、タスクに使用されたフィルターが表示されます。
+1. ポリシー コンプライアンス ページの **[修復タスク]** を選択すると､進行状況の詳細が表示されます｡ 修復されているリソースの一覧と共に、タスクに使用されたフィルターが表示されます。
 
-1. **[修復タスク]** ページで、修復タスクを右クリックすると、その修復タスクのデプロイまたはリソースのいずれかが表示されます。 行の末尾にあると **[関連イベント]** をクリックすると､エラー メッセージなどの詳細が表示されます｡
+1. **[修復タスク]** ページで、リソースを右クリックして、修復タスクのデプロイまたはリソースのいずれかを表示します。 行の末尾にある **[関連イベント]** を選択すると､エラー メッセージなどの詳細が表示されます｡
 
-   :::image type="content" source="../media/remediate-resources/resource-task-context-menu.png" alt-text="修復 - リソース タスクのコンテキスト メニュー" border="false":::
+   :::image type="content" source="../media/remediate-resources/resource-task-context-menu.png" alt-text="マネージド ID に対して定義されたアクセス許可がない deployIfNotExists ポリシーのスクリーンショット。" border="false":::
 
 **[修復タスク]** を使ってデプロイされたリソースは、ポリシー コンプライアンス ページの **[デプロイされたリソース]** タブに追加されます。
 

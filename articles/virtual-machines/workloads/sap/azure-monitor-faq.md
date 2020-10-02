@@ -1,6 +1,6 @@
 ---
 title: よくあるご質問 - SAP ソリューション向け Azure Monitor | Microsoft Docs
-description: この記事では、SAP ソリューション向け Azure Monitor に関してよく寄せられる質問に対する回答を示します
+description: この記事では、SAP ソリューション向け Azure Monitor に関してよく寄せられる質問 (FAQ) に対する回答を紹介します。
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: cf0366300c4fab18a0f6231a97ca050eddd50132
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: f70aa684a089e0f21cb50932e212b71f77df0e01
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852183"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987237"
 ---
 # <a name="azure-monitor-for-sap-solutions-faq-preview"></a>SAP ソリューション向け Azure Monitor に関する FAQ (プレビュー)
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問

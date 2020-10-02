@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/28/2020
+ms.date: 09/08/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0f26c83f87811acc5853f1bff5303cd37092b33f
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 986e4fd8c7043f5c01868302ffc2b554e2ce76f7
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89075955"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567080"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure を使用して SAP ワークロード シナリオをホストして実行する
 
@@ -62,23 +62,17 @@ Azure for SAP HANA の独自性は、Azure を一線を画すものにしてい�
 ## <a name="sap-netweaver-deployed-on-azure-virtual-machines"></a>Azure 仮想マシン上にデプロイされた SAP NetWeaver
 このセクションでは、SAP NetWeaver、SAP LaMa、および Business One on Azure の計画とデプロイに関するドキュメントを紹介します。 ドキュメントでは、Azure 上で SAP ワークロードを利用する非 HANA データベースの基礎と使用に注目しています。 また、高可用性に関するドキュメントや記事は、Azure における SAP HANA の高可用性の基礎にもなります。
 
-Azure 上での SAP ワークロードの高可用性については、以下をご覧ください。
-
-- [SAP NetWeaver のための Azure Virtual Machines 高可用性](./sap-high-availability-guide-start.md)
-
+## <a name="sap-netweaver-and-s4hana-high-availability"></a>SAP NetWeaver と S/4HANA の高可用性
+SAP アプリケーション レイヤーと DBMS の高可用性に関する詳細は、「[SAP NetWeaver のための Azure Virtual Machines 高可用性](./sap-high-availability-guide-start.md)」ドキュメントから始まる文書で説明されています。
 
 
-Azure Active Directory (AAD) と SAP サービス間の統合とシングル サインオンについては、以下をご覧ください。
 
-- [チュートリアル:Azure Active Directory と SAP Cloud for Customer の統合](../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [チュートリアル:Azure Active Directory と SAP Cloud Platform Identity Authentication の統合](../../../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [チュートリアル:Azure Active Directory と SAP Cloud Platform の統合](../../../active-directory/saas-apps/sap-hana-cloud-platform-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [チュートリアル:Azure Active Directory と SAP NetWeaver の統合](../../../active-directory/saas-apps/sap-netweaver-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [チュートリアル:Azure Active Directory と SAP Business ByDesign の統合](../../../active-directory/saas-apps/sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [チュートリアル:Azure Active Directory と SAP HANA の統合](../../../active-directory/saas-apps/saphana-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [お使いの S/4HANA 環境:Azure AD を使用した Fiori Launchpad SAML シングル サインオン](https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad/)
+## <a name="integrate-azure-ad-with-sap-services"></a>Azure AD と SAP サービスの統合
+このセクションでは、ほとんどの SAP SaaS および PaaS サービス、NetWeaver および Fiori で SSO を構成する方法に関する情報を確認できます。 
 
-SAP コンポーネントへの Azure サービスの統合については、以下をご覧ください。
+
+
+## <a name="documentation-on-integration-of-azure-services-into-sap-components"></a>SAP コンポーネントへの Azure サービスの統合に関するドキュメント
 
 - [Power BI Desktop での SAP HANA の使用](/power-bi/desktop-sap-hana)
 - [DirectQuery と SAP HANA](/power-bi/desktop-directquery-sap-hana)
@@ -88,6 +82,9 @@ SAP コンポーネントへの Azure サービスの統合については、以
 
 ## <a name="change-log"></a>変更履歴
 
+- 2020 年 9 月 8 日stonith の定義を明確にするために、[SLES 上の Azure VM での SAP HANA の高可用性](./sap-hana-high-availability.md)が変更されました
+- 2020 年 9 月 3 日:Ultra disk を使用した最小で 1 GB あたり 2 IOPS に適合させるために、[SAP HANA Azure 仮想マシンのストレージ構成](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)が変更されました
+- 2020 年 9 月 2 日:どの SKU が HANA 認定であるかをより明確にするために、[HLI で利用可能な SKU](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus) が変更されました
 - 08/28/2020:誤植を修正するため、[ANF のある SLES 上の Azure VM において SAP NW の HA](./high-availability-guide-suse-netapp-files.md) が変更されました
 - 2020 年 8 月 25 日: [WSFC と共有ディスクを使用した SAP ASCS/SCS の HA ガイド](./sap-high-availability-guide-wsfc-shared-disk.md)、[WSFC と共有ディスクを使用して SAP ASCS/SCS 用に Azure インフラストラクチャを準備](./sap-high-availability-infrastructure-wsfc-shared-disk.md)に関するページ、[WSFC と共有ディスクを使用した SAP NW HA のインストール](./sap-high-availability-guide-wsfc-shared-disk.md)に関するページでの変更。Azure 共有ディスクを使用するオプションを紹介し、SAP ERS2 アーキテクチャをドキュメント化するためのものです。
 - 2020 年 8 月 25 日: [WSFC と Azure 共有ディスクを使用した SAP ASCS/SCS のマルチ SID HA ガイド](./sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md)のリリース
@@ -122,7 +119,7 @@ SAP コンポーネントへの Azure サービスの統合については、以
 - 2020 年 4 月 16 日:「[Azure デプロイでサポートされている SAP ソフトウェア](./sap-supported-product-on-azure.md)」および「[Microsoft Azure で実行されているSAP の認定と構成](./sap-certifications.md)」の記事に、SAP (Hybris) Commerce Platform 用のサポートされている DBMS として、SAP HANA を追加
 - 2020 年 4 月 13 日:「[SAP ワークロードのための SAP ASE Azure Virtual Machines DBMS のデプロイ](./dbms_guide_sapase.md)」での正確な SAP ASE リリース番号への修正
 - 2020 年 4 月 7 日:「[Azure の SUSE Linux Enterprise Server に Pacemaker をセットアップする](./high-availability-guide-suse-pacemaker.md)」での、cloud-netconfig-azure の手順を明確にするための変更
-- 2020 年 4 月 6 日「[SUSE Linux Enterprise Server 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする](./sap-hana-scale-out-standby-netapp-files-suse.md)」および「[Red Hat Enterprise Linux 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする](./sap-hana-scale-out-standby-netapp-files-rhel.md)」での、NetApp [TR-4435](https://www.netapp.com/us/media/tr-4746.pdf) への参照を削除するための変更 ([TR-4746](https://www.netapp.com/us/media/tr-4746.pdf) に置き換えられました)
+- 2020 年 4 月 6 日:「[SUSE Linux Enterprise Server 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする](./sap-hana-scale-out-standby-netapp-files-suse.md)」および「[Red Hat Enterprise Linux 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする](./sap-hana-scale-out-standby-netapp-files-rhel.md)」での、NetApp [TR-4435](https://www.netapp.com/us/media/tr-4746.pdf) への参照を削除するための変更 ([TR-4746](https://www.netapp.com/us/media/tr-4746.pdf) に置き換えられました)
 - 2020 年 3 月 31 日: 「[SUSE Linux Enterprise Server 上の Azure VM での SAP HANA の高可用性](./sap-hana-high-availability.md)」および「[Red Hat Enterprise Linux 上の Azure VM での SAP HANA の高可用性](./sap-hana-high-availability-rhel.md)」での、ストライプ ボリュームを作成するときにストライプ サイズを指定する方法の手順を追加するための変更
 - 2020 年 3 月 27 日: 「[SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の Azure VM 上の SAP NetWeaver の高可用性](./high-availability-guide-suse-netapp-files.md)」での、ファイル システム マウント オプションを NetApp TR-4746 (同期マウント オプションを削除する) に合わせるための変更
 - 2020 年 3 月 26 日: 「[SUSE Linux Enterprise Server for SAP Applications マルチ SID 上の Azure VM での SAP NetWeaver の高可用性ガイド](./high-availability-guide-suse-multi-sid.md)」での、NetApp TR-4746 に参照を追加するための変更

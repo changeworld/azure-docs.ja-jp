@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 8/7/2020
-ms.openlocfilehash: 7697ba514b74935f8da6d71cdfb380e704d66f56
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.date: 9/8/2020
+ms.openlocfilehash: 979976ba88c2acca282a7f8bef4784b9d91ce0aa
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121359"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565091"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database サーバーレス
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -114,11 +114,12 @@ CPU 使用率が低い場合、使用パターンによってはアクティブ�
 
 必要な場合に自動一時停止を無効にするオプションが用意されています。
 
-次の機能では自動一時停止はサポートされていませんが、自動スケールはサポートされています。  つまり、次の機能のいずれかを使用する場合、データベースの非アクティブな期間に関係なくデータベースはオンラインのままになります。
+次の機能では自動一時停止はサポートされていませんが、自動スケールはサポートされています。  次の機能のいずれかが使用されている場合、自動一時停止を無効にする必要があります。データベースは、非アクティブである期間に関係なくオンラインのままとなります。
 
 - geo レプリケーション (アクティブ geo レプリケーションと自動フェールオーバー グループ)
 - 長期的なバックアップ保有期間 (LTR)。
 - SQL データ同期で使用される同期データベース。同期データベースとは異なり、ハブ データベースとメンバー データベースでは自動一時停止がサポートされています。
+- DNS エイリアシング
 - エラスティック ジョブで使用されるジョブ データベース (プレビュー)。
 
 データベースをオンラインにする必要がある一部のサービス更新プログラムのデプロイ中は、自動一時停止は一時的に回避されます。  このような場合、サービス更新プログラムが完了すると、自動一時停止は再び許可されます。

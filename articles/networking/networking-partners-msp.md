@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: sukishen
-ms.openlocfilehash: 237ca65d5feadd019b734dd751d943c06c9a2213
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: b0b2e4953d135176fcebab59c040dbf162bc5cb8
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587006"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531187"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Azure ネットワーク MSP パートナーについて
 
@@ -46,16 +46,17 @@ Azure ネットワーク MSP パートナーによって提供されるマネー
 |[Liquid Telecom](https://liquidcloud.africa/azure-networking)|[クラウドの対応性 - 2 時間の評価](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/liquidtelecommunicationsoperationslimited.liquid_cloud_readiness_assessment)|||||
 |[Macquarie Telecom](https://macquariecloudservices.com/azure-managed-services/)|[Macquarie Cloud による Azure 管理サービス](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/macquariecloudservices.managed_services?tab=Overview)||[Macquarie クラウドによる SD-WAN 仮想エッジのインストール](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/macquariecloudservices.nanaged_network_services?tab=Overview)|||
 |[Megaport](https://www.megaport.com/services/microsoft-expressroute/)||[mcr](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/megaport1582290752989.megaport_mcr?tab=Overview)||||
+|[Nokia](https://www.nokia.com/networks/services/managed-services/)|||[NBConsult Nokia Nuage SDWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/nbconsult1588859334197.nbconsult-nokia-nuage?tab=Overview)、[Nuage SD-WAN 2.0 Azure Virtual WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/nokiaofamericacorporation1591716055441.nuage_sd-wan_2-0_azure_virtual_wan?tab=Overview)|[Nokia 4G & 5G Private Wireless (NDAC)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/nokiaofamericacorporation1591716055441.ndac_5g-ready_private_wireless?tab=Overview)|
 |[Oncore Cloud Services]( https://www.oncore.cloud/services/ue-for-expressroute/)|[Enterprise クラウドの基礎: ワークショップ (最高 10 日間)](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/oncore_cloud_services-4944214.oncore_cloud_onboard_201810)|[Azure ExpressRoute 用の UniversalEdge](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oncore_cloud_services-4944214.universaledge_for_expressroute?tab=Overview)||||
 |[Orixcom]( https://www.orixcom.com/cloud-solutions/)||[Orixcom マネージド ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/orixcom.orixcom_managed_expressroute?tab=Overview)|[Orixcom SD-WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/orixcom.orixcom_sd_wan?tab=Overview)|||
 |[SoftBank]( https://www.softbank.jp/biz/nw/nwp/cloud_access/direct_access_for_az/)|[Azure ネットワーク コンサルティング サービス:1 週間での評価](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/sbmpn.softbank_nw_msp_service_azure); [Azure Assessment サービス:1 週間](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/sbmpn.softbank_msp_service_azure_01?tab=Overview&pub_source=email&pub_status=success)|||||
 |[TCTS](https://www.tatacommunications-ts.com/index.php)|[Azure への移行: 3 週間の評価](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/tcs.azure_migration_assessment)|||||
 |[Tata Communications](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/)||[マネージド Azure ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tata_communications.managed_expressroute?tab=Overview)|[マネージド仮想 WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tata_communications.managed_azure_vwan_for_sdwan?tab=Overview)|||
-|[Tech Mahindra](https://networkservices.techmahindra.com/pages/default.aspx)|[E2E マネージド ネットワーク ソリューション](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/techm.techm-network-transformstrategy?tab=Overview)|||[Azure Private LTE MSP](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/techm.techm-networking-azureprivate5g?tab=Overview)|
+|[Tech Mahindra](https://www.techmahindra.com/en-in/network-services/)|[E2E マネージド ネットワーク ソリューション](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/techm.techm-network-transformstrategy?tab=Overview)|||[Azure Private LTE MSP](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/techm.techm-networking-azureprivate5g?tab=Overview)|
 |[Vigilant IT](https://vigilant.it/manage-cloud-service/)|[Azure 正常性チェック: 5 日の評価](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.ahc01)|[ExpressRoute: 5 日間の実装](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.erd01)|||
 |[Vandis](https://www.vandis.com/microsoft-azure-practice/)||[Vandis Managed ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[Fortinet を利用する Vandis Managed VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview)。[Palo Alto Networks を利用する Vandis Managed VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview)|
 
-Microsoft のロードマップには、次の Azure ネットワーク MSP パートナーが提供する、マネージド ExpressRoute、Virtual WAN、セキュリティ サービス、Private Edge Zone サービスのための Azure Marketplace オファーがあります:[Amdocs](https://www.amdocs.com/)、[Deutsche Telekom](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406)、[IX Reach](https://www.ixreach.com/services/sdn-cloud-connect/)、[InterCloud](https://intercloud.com/partners/microsoft-azure/)、[KINX](https://www.kinx.net/service/cloud/?lang=en)、[OmniClouds](https://omniclouds.com/)、[Orange Business Services](https://www.orange-business.com/en/solutions/cloud-computing)、[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)
+Microsoft のロードマップには、次の Azure ネットワーク MSP パートナーが提供する、マネージド ExpressRoute、Virtual WAN、セキュリティ サービス、Private Edge Zone サービスのための Azure Marketplace オファーがあります:[Amdocs](https://www.amdocs.com/)、[Deutsche Telekom](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406)、[IX Reach](https://www.ixreach.com/services/sdn-cloud-connect/)、[InterCloud](https://intercloud.com/partners/microsoft-azure/)、[KINX](https://www.kinx.net/service/cloud/?lang=en)、[OmniClouds](https://omniclouds.com/)、[OpenSystems](https://open-systems.com/solutions/microsoft-azure-virtual-wan)、[Orange Business Services](https://www.orange-business.com/en/partners/orange-business-services-become-microsoft-azure-networking-managed-services-provider)、[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)
 
 ## <a name="expressroute-partners"></a><a name="expressroute"></a>ExpressRoute パートナー
 

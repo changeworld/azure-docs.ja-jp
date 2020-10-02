@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/19/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 01a40e48f606c2e9c92d38b453a058d3ad5ba058
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fe1f5f718ce54845dea2fc9da3ea2c9f4e18ce92
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88531295"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659402"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-vyond"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Vyond の統合
 
@@ -35,9 +35,6 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * Vyond でのシングル サインオン (SSO) が有効なサブスクリプション。
 
-> [!NOTE]
-> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
-
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
@@ -45,6 +42,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 * Vyond では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
 * Vyond を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+
+> [!NOTE]
+> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
 
 ## <a name="adding-vyond-from-the-gallery"></a>ギャラリーからの Vyond の追加
 
@@ -58,7 +58,7 @@ Azure AD への Vyond の統合を構成するには、ギャラリーからマ�
 1. 結果のパネルから **[Vyond]** を選択し、そのアプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-vyond"></a>Vyond の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-vyond"></a>Vyond の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、Vyond に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Vyond の関連ユーザーとの間にリンク関係を確立する必要があります。
 

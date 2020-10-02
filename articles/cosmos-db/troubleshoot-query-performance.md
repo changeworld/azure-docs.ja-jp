@@ -4,16 +4,16 @@ description: Azure Cosmos DB の SQL クエリに関する問題を特定、診�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 04/22/2020
+ms.date: 09/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 80e966bf190dcbe4490269ef28a95babadda68d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6833f9d59eca4c2f0b49dd70684ade900226aba
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117915"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089991"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Azure Cosmos DB を使用する場合のクエリの問題のトラブルシューティング
 
@@ -26,22 +26,21 @@ Azure Cosmos DB では、次のようにクエリ最適化を幅広く分類で�
 
 クエリの RU 使用量を減らすことで、待機時間も短くなります。
 
-この記事では、[栄養](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)データセットを使用して再作成できる例を示します。
+この記事では、[栄養データセット](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)を使用して再作成できる例を示します。
 
 ## <a name="common-sdk-issues"></a>SDK に関する一般的な問題
 
 このガイドを読む前に、クエリ エンジンに関連しない一般的な SDK の問題について検討することをお勧めします。
 
-- 最適なパフォーマンスを得るためには、これらの[パフォーマンスに関するヒント](performance-tips.md)に従ってください。
-    > [!NOTE]
-    > パフォーマンス向上のため、Windows 64 ビットのホスト処理をお勧めします。 SQL SDK には、ローカル環境でクエリを解析して最適化するためのネイティブ ServiceInterop.dll が含まれています。 ServiceInterop.dll は、Windows x64 プラットフォームでのみサポートされています。 Linux および ServiceInterop.dll を使用できない他のサポート対象外プラットフォームでは、最適化されたクエリを取得するために、ゲートウェイに対して追加のネットワーク呼び出しが行われます。
+- これらの [SDK パフォーマンスのヒント](performance-tips.md)に従ってください。
+    - [.NET SDK トラブルシューティング ガイド](troubleshoot-dot-net-sdk.md)
+    - [Java SDK トラブルシューティング ガイド](troubleshoot-java-sdk-v4-sql.md)
 - SDK では、クエリの `MaxItemCount` を設定できますが、最小項目数は指定できません。
     - コードで、0 から `MaxItemCount` までのすべてのページ サイズを処理する必要があります。
-    - ページ内の項目数は、常に、指定された `MaxItemCount` 以下になります。 ただし、`MaxItemCount` は厳密に最大値であり、結果の数はこの量よりも少なくなる可能性があります。
 - 将来のページには結果がある場合でも、クエリで空のページを受け取ることがあります。 これには、次のような理由が考えられます。
     - SDK が複数のネットワーク呼び出しを実行している可能性があります。
     - クエリでドキュメントを取得するのに時間がかかっている可能性があります。
-- すべてのクエリには、クエリの続行を許可する継続トークンがあります。 必ず、クエリを完全にドレインするようにしてください。 SDK のサンプルを参照し、`FeedIterator.HasMoreResults` で `while` ループを使用して、クエリ全体をドレインします。
+- すべてのクエリには、クエリの続行を許可する継続トークンがあります。 必ず、クエリを完全にドレインするようにしてください。 [複数にわたる結果のページの処理](sql-query-pagination.md#handling-multiple-pages-of-results)に関するページをご覧ください
 
 ## <a name="get-query-metrics"></a>クエリのメトリックを取得する
 

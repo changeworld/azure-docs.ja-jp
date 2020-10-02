@@ -4,12 +4,12 @@ description: Service Fabric、Virtual Machines、Web Apps、クラウド サー�
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.subservice: autoscale
-ms.openlocfilehash: 9780cf88070110c4efc13c477d65307aa3985fe5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a29b5d11a6ea06af9d5b6a8b5120c6f0caa6601e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75751337"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979037"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Azure 自動スケーリングのトラブルシューティング
  
@@ -47,7 +47,7 @@ Azure Monitor 自動スケーリングを使用すると、適切な量のリソ
 
 自動スケーリング サービスのメトリックを確認してみましょう。
  
-![仮想マシン スケール セットの CPU 使用率の例](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-1.png)
+![仮想マシン スケール セットの CPU 使用率の例を示すスクリーンショット。](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-1.png)
 
 ![仮想マシン スケール セットの CPU 使用率の例](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-2.png)
 
@@ -72,7 +72,7 @@ Azure Monitor 自動スケーリングを使用すると、適切な量のリソ
 
 この場合、自動スケーリング エンジンの実際のメトリック値は、インスタンスの数で割った実際のメトリック値として計算されます。 実際のメトリック値がしきい値未満の場合、スケールアウト アクションは開始されません。 
  
-![仮想マシン スケール セットの自動スケーリング メトリック グラフの例](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-1.png)
+![Average Outbound Flows ページで、仮想マシン スケール セットの自動スケーリング メトリック グラフの例を示すスクリーンショット。](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-1.png)
 
 ![仮想マシン スケール セットの自動スケーリング メトリック グラフの例](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-2.png)
 

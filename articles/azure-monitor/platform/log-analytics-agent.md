@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: fb58728e005ad70ac5392aa9e3e6a254ed317276
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8a086830398555d962bb13d1d9b0fea3554f7924
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016336"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032522"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics エージェントの概要
 Azure Log Analytics エージェントによって、任意のクラウドの Windows および Linux 仮想マシン、オンプレミスのマシン、[System Center Operations Manager](/system-center/scom/) で監視しているマシンからテレメトリを収集し、Azure Monitor の Log Analytics ワークスペースに収集したデータを送信できます。 Log Analytics エージェントはインサイトや [Azure Monitor for VMs](../insights/vminsights-enable-overview.md)、[Azure Security Center](../../security-center/index.yml)、[Azure Automation](../../automation/automation-intro.md) といった Azure Monitor のその他のサービスもサポートします。 この記事では、エージェント、システムとネットワークの要件、およびデプロイ方法の詳細な概要について説明します。
@@ -63,7 +63,7 @@ Linux および Windows 用のエージェントは、Azure Monitor に接続す
 
 ## <a name="security-limitations"></a>セキュリティの制限事項
 
-* Windows エージェントでは [FIPS 140 規格](/windows/security/threat-protection/fips-140-validation)がサポートされていますが、Linux エージェントではサポートされていません。  
+* Windows および Linux エージェントでは [FIPS 140 標準](/windows/security/threat-protection/fips-140-validation)がサポートされていますが、[他の種類のセキュリティ強化はサポートされていない可能性があります](agent-linux.md#supported-linux-hardening)。
 
 
 ## <a name="installation-options"></a>インストール オプション

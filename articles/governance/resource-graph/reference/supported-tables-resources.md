@@ -1,15 +1,15 @@
 ---
 title: サポートされている Azure Resource Manager のリソースの種類
 description: Azure Resource Graph でサポートされている Azure Resource Manager のリソースの種類と変更履歴の一覧を示します。
-ms.date: 08/10/2020
+ms.date: 09/15/2020
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 91b8a88fd056db2fd8495c85dccbcc08f4a94fda
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: a52378422c6ee740f30f155cdfb0839a3f281abe
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066000"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600604"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph のテーブルとリソースの種類のリファレンス
 
@@ -25,6 +25,10 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 ## <a name="alertsmanagementresources"></a>alertsmanagementresources
 
 - microsoft.alertsmanagement/alerts
+
+## <a name="guestconfigurationresources"></a>guestconfigurationresources
+
+- microsoft.guestconfiguration/guestconfigurationassignments
 
 ## <a name="healthresources"></a>healthresources
 
@@ -56,8 +60,10 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - livearena.broadcast/services
 - mailjet.email/services
 - microsoft.aad/domainservices
+- microsoft.aadiam/azureadmetrics
 - microsoft.aadiam/privatelinkforazuread
 - microsoft.aadiam/tenants
+- microsoft.agfoodplatform/farmbeats
 - microsoft.aisupercomputer/accounts
 - microsoft.aisupercomputer/accounts/jobgroups
 - microsoft.aisupercomputer/accounts/jobgroups/jobs
@@ -69,13 +75,18 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.appplatform/spring
 - microsoft.archive/collections
 - microsoft.attestation/attestationproviders
+- microsoft.authorization/resourcemanagementprivatelinks
+- microsoft.automanage/accounts
+- microsoft.automanage/configurationprofilepreferences
 - microsoft.automation/automationaccounts
 - microsoft.automation/automationaccounts/configurations
 - microsoft.automation/automationaccounts/runbooks
+- microsoft.autonomousdevelopmentplatform/accounts
 - microsoft.autonomoussystems/workspaces
 - microsoft.avs/privateclouds
 - microsoft.azconfig/configurationstores
 - microsoft.azureactivedirectory/b2cdirectories
+- microsoft.azureactivedirectory/guestusages
 - microsoft.azuredata/datacontrollers
 - microsoft.azuredata/hybriddatamanagers
 - microsoft.azuredata/postgresinstances
@@ -84,6 +95,8 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.azuredata/sqlmanagedinstances
 - microsoft.azuredata/sqlserverinstances
 - microsoft.azuredata/sqlserverregistrations
+- microsoft.azurestack/edgesubscriptions
+- microsoft.azurestack/linkedsubscriptions
 - microsoft.azurestack/registrations
 - microsoft.azurestackhci/clusters
 - microsoft.baremetal/consoleconnections
@@ -114,6 +127,10 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.classicstorage/storageaccounts
 - microsoft.cloudes/accounts
 - microsoft.cloudsearch/indexes
+- microsoft.cloudtest/accounts
+- microsoft.cloudtest/images
+- microsoft.cloudtest/pools
+- microsoft.codespaces/plans
 - microsoft.cognition/syntheticsaccounts
 - microsoft.cognitiveservices/accounts
 - microsoft.compute/availabilitysets
@@ -141,6 +158,8 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.compute/virtualmachines/extensions
 - microsoft.compute/virtualmachines/runcommands
 - microsoft.compute/virtualmachinescalesets
+- microsoft.confluent/organizations
+- microsoft.connectedcache/cachenodes
 - microsoft.containerinstance/containergroups
 - microsoft.containerregistry/registries
 - microsoft.containerregistry/registries/agentpools
@@ -152,14 +171,17 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.containerservice/containerservices
 - microsoft.containerservice/managedclusters
 - microsoft.containerservice/openshiftmanagedclusters
+- microsoft.contoso/clusters
 - microsoft.contoso/employees
 - microsoft.costmanagement/connectors
 - microsoft.customproviders/resourceproviders
+- microsoft.d365customerinsights/instances
 - microsoft.databox/jobs
 - microsoft.databoxedge/databoxedgedevices
 - microsoft.databricks/workspaces
 - microsoft.datacatalog/catalogs
 - microsoft.datacatalog/datacatalogs
+- microsoft.datacollaboration/workspaces
 - microsoft.datadog/monitors
 - microsoft.datafactory/datafactories
 - microsoft.datafactory/factories
@@ -169,9 +191,12 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.datamigration/services/projects
 - microsoft.datamigration/slots
 - microsoft.dataprotection/backupvaults
+- microsoft.dataprotection/resourceoperationgatekeepers
 - microsoft.datashare/accounts
 - microsoft.dbformariadb/servers
+- microsoft.dbformysql/flexibleservers
 - microsoft.dbformysql/servers
+- microsoft.dbforpostgresql/flexibleservers
 - microsoft.dbforpostgresql/servergroups
 - microsoft.dbforpostgresql/servers
 - microsoft.dbforpostgresql/serversv2
@@ -189,6 +214,8 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.devices/elasticpools/iothubtenants
 - microsoft.devices/iothubs
 - microsoft.devices/provisioningservices
+- microsoft.deviceupdate/accounts
+- microsoft.deviceupdate/accounts/instances
 - microsoft.devops/pipelines
 - microsoft.devspaces/controllers
 - microsoft.devtestlab/labcenters
@@ -209,7 +236,9 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.eventhub/clusters
 - microsoft.eventhub/namespaces
 - microsoft.experimentation/experimentworkspaces
+- microsoft.extendedlocation/customlocations
 - microsoft.falcon/namespaces
+- microsoft.footprintmonitoring/profiles
 - microsoft.gaming/titles
 - microsoft.genomics/accounts
 - microsoft.guestconfiguration/automanagedaccounts
@@ -222,8 +251,14 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.hybridcompute/machines
 - microsoft.hybridcompute/machines/extensions
 - microsoft.hybriddata/datamanagers
+- microsoft.hybridnetwork/devices
+- microsoft.hybridnetwork/virtualnetworkfunctions
 - microsoft.importexport/jobs
+- microsoft.industrydatalifecycle/basemodels
+- microsoft.industrydatalifecycle/custodiancollaboratives
 - microsoft.industrydatalifecycle/derivedmodels
+- microsoft.industrydatalifecycle/membercollaboratives
+- microsoft.industrydatalifecycle/pipelinesets
 - microsoft.insights/actiongroups
 - microsoft.insights/activitylogalerts
 - microsoft.insights/alertrules
@@ -235,13 +270,16 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.insights/notificationgroups
 - microsoft.insights/notificationrules
 - microsoft.insights/privatelinkscopes
+- microsoft.insights/querypacks
 - microsoft.insights/scheduledqueryrules
 - microsoft.insights/webtests
 - microsoft.insights/workbooks
 - microsoft.insights/workbooktemplates
+- microsoft.intelligentitdigitaltwin/digitaltwins
 - microsoft.iotcentral/iotapps
 - microsoft.iotspaces/graph
 - microsoft.keyvault/hsmpools
+- microsoft.keyvault/managedhsms
 - microsoft.keyvault/vaults
 - microsoft.kubernetes/connectedclusters
 - microsoft.kusto/clusters
@@ -256,6 +294,8 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.machinelearning/workspaces
 - microsoft.machinelearningcompute/operationalizationclusters
 - microsoft.machinelearningservices/workspaces
+- microsoft.machinelearningservices/workspaces/inferenceendpoints
+- microsoft.machinelearningservices/workspaces/inferenceendpoints/deployments
 - microsoft.maintenance/maintenanceconfigurations
 - microsoft.maintenance/maintenancepolicies
 - microsoft.managedidentity/groups
@@ -294,9 +334,11 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.network/azurefirewalls
 - microsoft.network/bastionhosts
 - microsoft.network/connections
+- microsoft.network/customipprefixes
 - microsoft.network/ddoscustompolicies
 - microsoft.network/ddosprotectionplans
 - microsoft.network/dnszones
+- microsoft.network/dscpconfigurations
 - microsoft.network/expressroutecircuits
 - microsoft.network/expressroutecrossconnections
 - microsoft.network/expressroutegateways
@@ -308,6 +350,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.network/ipgroups
 - microsoft.network/loadbalancers
 - microsoft.network/localnetworkgateways
+- microsoft.network/mastercustomipprefixes
 - microsoft.network/natgateways
 - microsoft.network/networkexperimentprofiles
 - microsoft.network/networkintentpolicies
@@ -346,6 +389,8 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.network/vpnsites
 - microsoft.notificationhubs/namespaces
 - microsoft.notificationhubs/namespaces/notificationhubs
+- microsoft.nutanix/interfaces
+- microsoft.nutanix/nodes
 - microsoft.objectstore/osnamespaces
 - microsoft.offazure/hypervsites
 - microsoft.offazure/importsites
@@ -359,6 +404,8 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.peering/peeringservices
 - microsoft.portal/dashboards
 - microsoft.portalsdk/rootresources
+- microsoft.powerbi/privatelinkservicesforpowerbi
+- microsoft.powerbi/tenants
 - microsoft.powerbi/workspacecollections
 - microsoft.powerbidedicated/capacities
 - microsoft.projectbabylon/accounts
@@ -373,6 +420,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.resources/templatespecs/versions
 - microsoft.saas/applications
 - microsoft.scheduler/jobcollections
+- microsoft.scvmm/vmmservers
 - microsoft.search/searchservices
 - microsoft.security/automations
 - microsoft.security/iotsecuritysolutions
@@ -412,9 +460,13 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.storagesyncdev/storagesyncservices
 - microsoft.storagesyncint/storagesyncservices
 - microsoft.storsimple/managers
+- microsoft.streamanalytics/clusters
 - microsoft.streamanalytics/streamingjobs
+- microsoft.swiftlet/virtualmachines
+- microsoft.synapse/privatelinkhubs
 - microsoft.synapse/workspaces
 - microsoft.synapse/workspaces/bigdatapools
+- microsoft.synapse/workspaces/sqldatabases
 - microsoft.synapse/workspaces/sqlpools
 - microsoft.terraformoss/providerregistrations
 - microsoft.timeseriesinsights/environments
@@ -439,6 +491,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.vmwarevirtustream/privateclouds
 - microsoft.vsonline/accounts
 - microsoft.vsonline/plans
+- microsoft.web/apimanagementaccounts
 - microsoft.web/apimanagementaccounts/apis
 - microsoft.web/certificates
 - microsoft.web/connectiongateways
@@ -453,6 +506,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.web/staticsites
 - microsoft.windowsesu/multipleactivationkeys
 - microsoft.windowsiot/deviceservices
+- microsoft.workloadbuilder/workloads
 - myget.packagemanagement/services
 - paraleap.cloudmonix/services
 - pokitdok.platform/services
@@ -476,15 +530,20 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - wandisco.fusion/fusiongroups/managedonpremzones
 - wandisco.fusion/fusiongroups/onpremzones
 - wandisco.fusion/fusiongroups/replicationrules
+- wandisco.fusion/migrators
+- wandisco.fusion/migrators/targets
 
 ## <a name="securityresources"></a>securityresources
 
 - microsoft.security/assessments
 - microsoft.security/assessments/subassessments
+- microsoft.security/locations/alerts
 - microsoft.security/pricings
 - microsoft.security/regulatorycompliancestandards
 - microsoft.security/regulatorycompliancestandards/regulatorycompliancecontrols
 - microsoft.security/regulatorycompliancestandards/regulatorycompliancecontrols/regulatorycomplianceassessments
+- microsoft.security/securescores
+- microsoft.security/securescores/securescorecontrols
 
 ## <a name="next-steps"></a>次のステップ
 

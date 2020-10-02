@@ -9,18 +9,22 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: sudbalas
-ms.openlocfilehash: 35814f34550ac7bf4ad85a96d0838df62fe63be6
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 27d8d4de308fe7cf6e6f36dd33f33bb73c495073
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89073184"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983231"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure Key Vault の可用性と冗長性
 
 Azure Key Vault には複数層の冗長性が備わっています。そのため、サービスの個々のコンポーネントで障害が発生した場合でも、アプリケーションでは引き続きキーとシークレットを使用することができます。
 
+> [!NOTE]
+> このガイドは、コンテナーに適用されます。 Managed HSM プールでは、別の高可用性とディザスター リカバリーのモデルが使用されます。 詳細については、[Managed HSM のディザスター リカバリー ガイド](../managed-hsm/disaster-recovery-guide.md)を参照してください。
+
 キー コンテナーのコンテンツは、キーとシークレットの高い持続性を維持するために、リージョン内と、同じ地域内の 150 マイル (約 241 km) 以上離れたセカンダリ リージョンにレプリケートされます。 特定のリージョン ペアの詳細については、「[Azure のペアになっているリージョン](../../best-practices-availability-paired-regions.md)」ドキュメントを参照してください。
+
 
 Key Vault サービス内の個々のコンポーネントで障害が発生した場合、リージョン内の代替コンポーネントが要求を処理し、機能が低下しないようにします。 このプロセスを開始するために操作を行う必要はありません。これは自動的に実行され、ユーザーに透過的になります。
 
@@ -45,6 +49,7 @@ Azure リージョン全体が使用できない場合がまれにあります�
   * Verify (英語の可能性あり)
   * 署名
   * バックアップ
-* フェールオーバー中、キー コンテナーのプロパティを変更することはできません。 アクセス ポリシーやファイアウォールの構成および設定を変更することはできません。
-* フェールオーバーがフェールバックされると、すべての種類の要求 (つまり、読み取り "*および*" 書き込み要求) が可能になります。
 
+* フェールオーバー中、キー コンテナーのプロパティを変更することはできません。 アクセス ポリシーやファイアウォールの構成および設定を変更することはできません。
+
+* フェールオーバーがフェールバックされると、すべての種類の要求 (つまり、読み取り "*および*" 書き込み要求) が可能になります。

@@ -12,12 +12,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: a4da74c01f732f3a62d29847d5f61934dede9778
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1364da4849a07100ac28644a51409837012f93cc
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208095"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986213"
 ---
 # <a name="column-level-security"></a>列レベルのセキュリティ
 
@@ -28,9 +28,9 @@ ms.locfileid: "85208095"
 
 列レベルのセキュリティにより、アプリケーションのセキュリティの設計とコーディングが簡略化されるため、列のアクセスを制限して機密データを保護することができます。 たとえば、特定のユーザーが、所属する部門に関連するテーブルの一定の列にのみアクセスできるようにします。 アクセスの制限のロジックは、別のアプリケーション層のデータから離れてではなく、データベース層にあります。 任意の階層からデータ アクセスが試行されるたびに、データベースによってアクセス制限が適用されます。 この制限により、セキュリティ全体の外部からのアクセスが減り、そのシステムの信頼性と堅牢性が向上します。 さらに、列レベルのセキュリティは、列を除外してユーザーにアクセス制限を課すためのビューの導入も不要にします。
 
-列レベルのセキュリティは [GRANT](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL ステートメントで実装できます。 このメカニズムでは、SQL と Azure Active Directory (AAD) 認証がどちらもサポートされます。
+列レベルのセキュリティは [GRANT](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL ステートメントで実装できます。 このメカニズムでは、SQL と Azure Active Directory (Azure AD) 認証がどちらもサポートされます。
 
-![CLS](./media/column-level-security/cls.png)
+![最初の列は、ヘッダーに閉じた南京錠が示され、セルがオレンジ色になっており、その他の列は白色のセルである概略テーブルを示す図。](./media/column-level-security/cls.png)
 
 ## <a name="syntax"></a>構文
 

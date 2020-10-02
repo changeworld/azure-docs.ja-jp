@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 08/14/2020
-ms.openlocfilehash: 902fa34be149f0b876729409c530186e34c706e5
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.date: 09/14/2020
+ms.openlocfilehash: 3c9389e6063279e214e3650f6364dc25ff773db5
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587312"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069596"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL Managed Instance のリソース制限の概要
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -99,12 +99,12 @@ SQL Managed Instance には 2 つのサービス レベルがあります。[Gen
 
 ### <a name="file-io-characteristics-in-general-purpose-tier"></a>General Purpose サービス レベルでのファイル IO 特性
 
-General Purpose サービス レベルでは、すべてのデータベース ファイルで、ファイルのサイズに依存する専用の IOPS とスループットが取得されます。 データ ファイルが大きいほど、IOPS とスループットも大きくなります。 次の表に、データベース ファイルの IO 特性を示します。
+General Purpose サービス レベルでは、すべてのデータベース ファイルで、ファイルのサイズに依存する専用の IOPS とスループットが取得されます。 ファイルが大きいほど、IOPS とスループットも大きくなります。 次の表に、データベース ファイルの IO 特性を示します。
 
-| ファイル サイズ | >=0 および <=128 GiB | >128 および <=256 GiB | >256 および <= 512 GiB | >0.5 および <=1 TiB    | >1 および <=2 TiB    | >2 および <=4 TiB | >4 および <=8 TiB |
+| ファイル サイズ | >=0 および <=128 GiB | >128 および <= 512 GiB | >0.5 および <=1 TiB    | >1 および <=2 TiB    | >2 および <=4 TiB | >4 および <=8 TiB |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
-| ファイルあたりの IOPS       | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12,500   |
-| ファイルあたりのスループット | 100 MiB/秒 | 125 MiB/秒 | 150 MiB/秒 | 200 MiB/秒 | 250 MiB/秒 | 250 MiB/秒 | 480 MiB/s | 
+| ファイルあたりの IOPS       | 500   | 2300              | 5000              | 7500              | 7500              | 12,500   |
+| ファイルあたりのスループット | 100 MiB/秒 | 150 MiB/秒 | 200 MiB/秒 | 250 MiB/秒 | 250 MiB/秒 | 480 MiB/s | 
 
 何らかのデータベース ファイルに対する IO 待機時間が長いことに気付いた場合、または IOPS/スループットが上限に達している場合は、[ファイルのサイズを大きくする](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Increase-data-file-size-to-improve-HammerDB-workload-performance/ba-p/823337)ことで、パフォーマンスを改善できる場合があります。
 

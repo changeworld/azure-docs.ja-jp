@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: tisande
-ms.openlocfilehash: f723d7ac218869313f02212d27d9f96b74bb7f0f
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: f9e1ff633f70e544a3cde579f1550d3fd708f269
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607524"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089515"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB でのインデックス作成ポリシー
 
@@ -81,7 +81,7 @@ Azure Cosmos DB では 2 つのインデックス作成モードがサポート�
 
 パスを含めたり除外したりするときに、次の属性が見つかる場合があります。
 
-- `kind` には、`range` または `hash` のいずれかを指定できます。 範囲インデックス機能ではハッシュ インデックスのすべての機能が提供されるため、範囲インデックスを使用することをお勧めします。
+- `kind` には、`range` または `hash` のいずれかを指定できます。 ハッシュ インデックスのサポートは、等値フィルターに限定されています。 範囲インデックス機能は、ハッシュ インデックスのすべての機能に加えて、効率的な並べ替え、範囲フィルター、システム関数を提供します。 常に、範囲インデックスを使用することをお勧めします。
 
 - `precision` は、含まれるパスのインデックス レベルで定義された数値です。 値 `-1` は、最大有効桁数を示します。 この値は常に `-1` に設定することをお勧めします。
 

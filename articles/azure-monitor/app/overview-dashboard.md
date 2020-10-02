@@ -3,12 +3,12 @@ title: Azure Application Insights の概要ダッシュボード | Microsoft Doc
 description: Azure の Application Insights と概要ダッシュボードの機能を使用してアプリケーションを監視します。
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 8c8aa4460a545f032eaa60560de00efff27ae1ef
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 714488d88b269f252dfd6677f847db315969a270
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322535"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970612"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights の概要ダッシュボード
 
@@ -36,7 +36,7 @@ Application Insights では常に、アプリケーションの正常性とパ�
 
 既定のダッシュボードにアクセスするには、左上隅の _[アプリケーション ダッシュボード]_ を選びます。
 
-![ダッシュボード ビュー](./media/overview-dashboard/app-insights-overview-dashboard-05.png)
+![スクリーンショットには、強調表示された [アプリケーション ダッシュボード] ボタンが示されています。](./media/overview-dashboard/app-insights-overview-dashboard-05.png)
 
 初めてダッシュボードにアクセスした場合は、既定のビューが表示されます。
 

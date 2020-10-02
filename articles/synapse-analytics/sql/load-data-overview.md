@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 31e1eb952bb37f5864e296811ba6e61bb0e58320
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d96604cd23f49ff61dce2087fde2c13b8fa2069d
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87490287"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483730"
 ---
 # <a name="design-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>Azure Synapse SQL プール用の PolyBase データ読み込み戦略を設計する
 
@@ -38,7 +38,7 @@ SQL プール用に PolyBase ELT を実装する基本的な手順は次のと�
 5. データを変換します。
 6. 運用環境テーブルにデータを挿入します。
 
-読み込みのチュートリアルについては、「[PolyBase を使用して Azure Blob Storage から Azure SQL Data Warehouse にデータを読み込む](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)」を参照してください。
+読み込みのチュートリアルについては、[PolyBase を使用した Azure Blob Storage から Azure Synapse Analytics へのデータの読み込み](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページをご覧ください。
 
 詳細については、[読み込みパターンに関するブログ](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/)をご覧ください。
 
@@ -50,7 +50,7 @@ SQL プール用に PolyBase ELT を実装する基本的な手順は次のと�
 
 PolyBase は、UTF-8 と UTF-16 でエンコードされた区切りテキスト ファイルからデータを読み込みます。 この区切りテキスト ファイルに加え、Hadoop ファイル形式の RC ファイル、ORC、Parquet からも読み込みます。 PolyBase は、Gzip や Snappy の圧縮ファイルからデータを読み込むこともできます。 PolyBase では現在、拡張 ASCII、固定幅形式、および WinZip、JSON、XML などの入れ子形式はサポートされていません。
 
-SQL Server からエクスポートする場合は、[bcp コマンドライン ツール](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)を使用して、区切りテキスト ファイルにデータをエクスポートすることができます。 Parquet から SQL DW へのデータ型のマッピングは次のとおりです。
+SQL Server からエクスポートする場合は、[bcp コマンドライン ツール](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)を使用して、区切りテキスト ファイルにデータをエクスポートすることができます。 Parquet と Azure Synapse Analytics のデータ型マッピングは次のとおりです。
 
 | **Parquet データ型** |                      **SQL データ型**                       |
 | :-------------------: | :----------------------------------------------------------: |
@@ -121,7 +121,7 @@ PolyBase を使用してデータを読み込むには、次のいずれかの�
 - [T-SQL を使用した PolyBase](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) - データが Azure Blob Storage または Azure Data Lake Store 内にある場合に最適です。 読み込みプロセスを細かく制御できますが、外部データ オブジェクトの定義も必要となります。 その他の方法では、外部データ オブジェクトは、ソース テーブルを移行先テーブルにマップするときにバック グラウンドで定義されます。  T-SQL の読み込みを調整するには、Azure Data Factory、SSIS、または Azure Functions を使用します。
 - [SSIS を使用した PolyBase](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) は、ソースデータが SQL Server にある場合に適しています。 SSIS は、移動元テーブルと移動先テーブルのマッピングを定義するほか、読み込みの調整も行います。 SSIS パッケージが既にある場合、そのパッケージが移動先の新しいデータ ウェアハウスで機能するように変更できます。
 - [Azure Data Factory (ADF) を使用した PolyBase](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) - もう 1 つのオーケストレーション ツールです。  このツールはパイプラインを定義し、ジョブのスケジュールを設定します。
-- [Azure Databricks を使用した PolyBase](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) は、SQL Data Warehouse のテーブルから Databricks のデータフレームにデータを転送したり、PolyBase を使用して Databricks のデータフレームから SQL Data Warehouse のテーブルにデータを書き込んだりします。
+- [Azure Databricks を使用した PolyBase](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) - PolyBase を使用して、Azure Synapse Analytic テーブルから Databricks データ フレームにデータを転送することや、Databricks データ フレームから Azure Synapse Analytics テーブルにデータを書き込むことができます。
 
 ### <a name="non-polybase-loading-options"></a>PolyBase 以外の読み込みオプション
 

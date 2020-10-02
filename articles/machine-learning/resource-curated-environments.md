@@ -8,14 +8,14 @@ ms.author: luquinta
 ms.reviewer: luquinta
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.date: 09/02/2020
-ms.openlocfilehash: 45b4c9aa32536e0b7b043ecdd49d856ce2d5fbce
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.topic: reference
+ms.date: 09/03/2020
+ms.openlocfilehash: 4ae96976f81aab9a0949594551c82d3a3fec4f0a
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401165"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662074"
 ---
 # <a name="azure-machine-learning-curated-environments"></a>Azure Machine Learning のキュレーションされた環境
 

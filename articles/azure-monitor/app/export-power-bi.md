@@ -3,12 +3,12 @@ title: Azure Application Insights から Power BI にエクスポートする | 
 description: Power BI で Analytics クエリを表示できます。
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 51a553452643fc979846ab4604762f11c5b7ff68
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 804da7d3aaa2fd1b7973a686bc9ca5cb5ee973a2
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324371"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979156"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Application Insights のデータを Power BI に入力する
 [Power BI](https://www.powerbi.com/) は、データを分析し、洞察を共有できる一連のビジネス ツールです。 あらゆるデバイスで機能豊富なダッシュボードを利用できます。 [Azure Application Insights](./app-insights-overview.md) の Analytics クエリなど、さまざまなソースのデータを組み合わせることができます。
@@ -67,11 +67,11 @@ Application Insights のクエリをインポートするには、Power BI の�
 
    エクスポートした M 言語スクリプトを詳細エディターに貼り付けます。 
 
-   ![詳細エディターが強調表示されている Power BI Desktop のスクリーンショット](./media/export-power-bi/advancedquery.png)
+   ![スクリーンショットには、詳細エディターを強調表示した Power BI Desktop が示されています](./media/export-power-bi/advancedquery.png)
 
 4. クエリから項目を選び、[フィルター] 視覚エフェクトを選びます。
 
-   ![Power BI Desktop の視覚エフェクト オプションのスクリーンショット](./media/export-power-bi/selectsequence.png)
+   ![スクリーンショットには、Power BI Desktop Funnel の視覚エフェクト オプションが示されています](./media/export-power-bi/selectsequence.png)
 
 5. わかりやすいタイトルに変更し、レポートを Power BI クラウド ワークスペースに発行します。 
 
@@ -86,7 +86,7 @@ Application Insights のクエリをインポートするには、Power BI の�
 
 1. Azure portal にサインインし、リソースにアクセスできることを確認します。
 2. ダッシュボードの資格情報を更新します。
-3. PowerBI Desktop からキャッシュをクリアします。
+3. Power BI Desktop からキャッシュをクリアします。
 
 
    アクセス権があり、資格情報の更新がうまくいかない場合は、サポート チケットを開いてください。
@@ -121,14 +121,14 @@ Analytics クエリから取得するデータセットを小さくすると要�
 1. [Power BI](https://app.powerbi.com/) にサインインします。
 2. **[データの取得]** (![左下隅の GetData アイコンのスクリーンショット](./media/export-power-bi/001.png))、 **[サービス]** の順に開きます。
 
-    ![Application Insights データ ソースから取得する手順のスクリーンショット](./media/export-power-bi/002.png)
+    ![スクリーンショットには、[サービス] ウィンドウの [取得] ボタンが示されています。](./media/export-power-bi/002.png)
 
 3. Application Insights で **[今すぐ入手する]** を選択します。
 
    ![Application Insights データ ソースから取得する手順のスクリーンショット](./media/export-power-bi/003.png)
 4. Application Insights リソースの詳細を入力し、**サインイン**します。
 
-    ![Application Insights データ ソースから取得する手順のスクリーンショット](./media/export-power-bi/005.png)
+    ![スクリーンショットには、[Application Insights に接続する] ウィンドウが示されています。](./media/export-power-bi/005.png)
 
      この情報は、Application Insights の概要ウィンドウにあります。
 

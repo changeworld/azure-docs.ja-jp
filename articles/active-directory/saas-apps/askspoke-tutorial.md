@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/21/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 280dda4d3864f2c659272ffb63d6ac2566524c45
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 64a95a14f6832e3f109335b5525b9a5dc1a9ec27
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549434"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662286"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-askspoke"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と askSpoke の統合
 
@@ -35,9 +35,6 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * askSpoke でのシングル サインオン (SSO) が有効なサブスクリプション。
 
-> [!NOTE]
-> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
-
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
@@ -45,6 +42,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 * askSpoke では、**SP Initiated SSO と IDP Initiated SSO** がサポートされています
 * askSpoke では、**Just-In-Time** ユーザー プロビジョニングがサポートされています
 * askSpoke を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+
+> [!NOTE]
+> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
 
 ## <a name="adding-askspoke-from-the-gallery"></a>ギャラリーからの askSpoke の追加
 
@@ -57,7 +57,7 @@ Azure AD に askSpoke を統合するには、ギャラリーからご自分の�
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**askSpoke**」と入力します。
 1. 結果のパネルから **[askSpoke]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-askspoke"></a>askSpoke の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-askspoke"></a>askSpoke の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、askSpoke に Azure AD SSO を構成してテストします。 SSO が機能するには、Azure AD ユーザーと askSpoke のその関連ユーザーとの間にリンク関係を確立する必要があります。
 
@@ -89,7 +89,7 @@ askSpoke で Azure AD SSO を構成してテストするには、次の構成要
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    **[サインオン URL]** テキスト ボックスに URL として「`https://askspoke.com/login`」と入力します。
+    **[サインオン URL]** テキスト ボックスに、URL として「`https://askspoke.com/login`」と入力します。
 
 1. askSpoke アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングをお使いの SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
@@ -146,15 +146,15 @@ askSpoke で Azure AD SSO を構成してテストするには、次の構成要
 
 1. 左側のナビゲーション ウィンドウで **[設定]** タブをクリックします。
 
-    ![askSpoke の構成](./media/askspoke-tutorial/configure1.png)
+    ![askSpoke の設定タブ](./media/askspoke-tutorial/configure1.png)
 
 1. **[SSO]** までスクロールダウンし、 **[接続]** をクリックします。
 
-    ![askSpoke の構成](./media/askspoke-tutorial/configure2.png)
+    ![askSpoke の接続](./media/askspoke-tutorial/configure2.png)
 
 1. **[Enable SAML & SCIM]** \(SAML および SCIM の有効化\) セクションで、次の手順を実行します。
 
-    ![askSpoke の構成](./media/askspoke-tutorial/configure3.png)
+    ![askSpoke の [Enable SAML & SCIM]\(SAML および SCIM の有効化\) セクション](./media/askspoke-tutorial/configure3.png)
 
     1. **[シングル サインオン URL]** テキストボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
@@ -187,6 +187,3 @@ askSpoke で Azure AD SSO を構成してテストするには、次の構成要
 - [Azure AD で askSpoke を試す](https://aad.portal.azure.com/)
 
 - [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [高度な可視性と制御によって askSpoke を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-

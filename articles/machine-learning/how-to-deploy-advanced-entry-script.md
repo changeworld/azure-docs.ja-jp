@@ -8,12 +8,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: gopalv
-ms.openlocfilehash: 0499cd6885454604e89ce4cadc313b2f68c45156
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: c135d649feb42c8fa735e67ad6f3c3e51551d3e9
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544506"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530286"
 ---
 # <a name="advanced-entry-script-authoring"></a>高度なエントリ スクリプトの作成
 
@@ -34,12 +34,16 @@ Web サービスのスキーマを自動生成するには、定義された型�
 * `pyspark`
 * 標準的な Python オブジェクト
 
-スキーマ生成を使用するには、オープンソースの `inference-schema` パッケージを依存関係ファイルに含めます。 このパッケージの詳細については、[https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema) を参照してください。 変数 `input_sample` と `output_sample` で入力と出力のサンプル形式を定義します。これは Web サービスの要求と応答の形式を表します。 これらのサンプルを、`run()` 関数の入力と出力の関数デコレーターで使用します。 下の scikit-learn の例では、スキーマ生成が使用されています。
+スキーマ生成を使用するには、オープンソースの `inference-schema` パッケージのバージョン 1.1.0 以上を依存関係ファイルに含めます。 このパッケージの詳細については、[https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema) を参照してください。 準拠する Swagger 自動 Web サービスの使用を生成するには、スコアリング スクリプトの run() 関数が次のような API の形状である必要があります。
+* 最初のパラメーターが Inputs という名前の "StandardPythonParameterType" 型で、入れ子になっていて PandasDataframeParameterTypes を含んでいる。
+* オプションの 2 番目のパラメーターが GlobalParameter という名前の "StandardPythonParameterType" 型で、入れ子になっていない。
+* "StandardPythonParameterType" 型のディクショナリを返す (入れ子になっていて PandasDataFrameParameterTypes を含んでいる場合がある)。
+変数 `input_sample` と `output_sample` で入力と出力のサンプル形式を定義します。これは Web サービスの要求と応答の形式を表します。 これらのサンプルを、`run()` 関数の入力と出力の関数デコレーターで使用します。 下の scikit-learn の例では、スキーマ生成が使用されています。
 
 
 ## <a name="power-bi-compatible-endpoint"></a>Power BI 互換エンドポイント 
 
-次の例では、DataFrame を使用して、`<key: value>` ディクショナリとして入力データを定義する方法を示しています。 このメソッドは、Power BI からデプロイされた Web サービスを使用するためにサポートされています。 ([詳細については、Power BI から Web サービスを使用する方法に関するページを参照してください](https://docs.microsoft.com/power-bi/service-machine-learning-integration)。)
+次の例は、上記の指示に従って API の形状を定義する方法を示しています。 このメソッドは、Power BI からデプロイされた Web サービスを使用するためにサポートされています。 ([詳細については、Power BI から Web サービスを使用する方法に関するページを参照してください](https://docs.microsoft.com/power-bi/service-machine-learning-integration)。)
 
 ```python
 import json
@@ -48,9 +52,10 @@ import numpy as np
 import pandas as pd
 import azureml.train.automl
 from sklearn.externals import joblib
-from azureml.core.model import Model
+from sklearn.linear_model import Ridge
 
 from inference_schema.schema_decorators import input_schema, output_schema
+from inference_schema.parameter_types.standard_py_parameter_type import StandardPythonParameterType
 from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
 from inference_schema.parameter_types.pandas_parameter_type import PandasParameterType
 
@@ -58,31 +63,32 @@ from inference_schema.parameter_types.pandas_parameter_type import PandasParamet
 def init():
     global model
     # Replace filename if needed.
-    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'model_file.pkl')
+    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_regression_model.pkl')
     # Deserialize the model file back into a sklearn model.
     model = joblib.load(model_path)
 
+# providing 3 sample inputs for schema generation
+numpy_sample_input = NumpyParameterType(np.array([[1,2,3,4,5,6,7,8,9,10],[10,9,8,7,6,5,4,3,2,1]],dtype='float64'))
+pandas_sample_input = PandasParameterType(pd.DataFrame({'name': ['Sarah', 'John'], 'age': [25, 26]}))
+standard_sample_input = StandardPythonParameterType(0.0)
 
-input_sample = pd.DataFrame(data=[{
-    # This is a decimal type sample. Use the data type that reflects this column in your data.
-    "input_name_1": 5.1,
-    # This is a string type sample. Use the data type that reflects this column in your data.
-    "input_name_2": "value2",
-    # This is an integer type sample. Use the data type that reflects this column in your data.
-    "input_name_3": 3
-}])
+# This is a nested input sample, any item wrapped by `ParameterType` will be described by schema
+sample_input = StandardPythonParameterType({'input1': numpy_sample_input, 
+                                            'input2': pandas_sample_input, 
+                                            'input3': standard_sample_input})
 
-# This is an integer type sample. Use the data type that reflects the expected result.
-output_sample = np.array([0])
+sample_global_parameters = StandardPythonParameterType(1.0) #this is optional
+sample_output = StandardPythonParameterType([1.0, 1.0])
 
-# To indicate that we support a variable length of data input,
-# set enforce_shape=False
-@input_schema('data', PandasParameterType(input_sample, enforce_shape=False))
-@output_schema(NumpyParameterType(output_sample))
-def run(data):
+@input_schema('inputs', sample_input)
+@input_schema('global_parameters', sample_global_parameters) #this is optional
+@output_schema(sample_output)
+def run(inputs, global_parameters):
     try:
+        data = inputs['input1']
+        # data will be convert to target format
+        assert isinstance(data, np.ndarray)
         result = model.predict(data)
-        # You can return any data type, as long as it is JSON serializable.
         return result.tolist()
     except Exception as e:
         error = str(e)
@@ -260,7 +266,7 @@ second_model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), second_model_na
 
 ### <a name="get_model_path"></a>get_model_path
 
-モデルを登録するときに、レジストリ内のモデルを管理するために使用されるモデル名を指定します。 この名前は、ローカル ファイル システム上のモデル ファイルのパスを取得する [Model.get_model_path()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) メソッドで使用します。 フォルダーまたはファイルのコレクションを登録した場合、この API では、これらのファイルを含むディレクトリのパスが返されます。
+モデルを登録するときに、レジストリ内のモデルを管理するために使用されるモデル名を指定します。 この名前は、ローカル ファイル システム上のモデル ファイルのパスを取得する [Model.get_model_path()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) メソッドで使用します。 フォルダーまたはファイルのコレクションを登録した場合、この API では、これらのファイルを含むディレクトリのパスが返されます。
 
 モデルを登録する場合は名前を指定します。 この名前は、モデルがローカルにデプロイされるか、またはサービスのデプロイ時に配置されるときの場所に対応します。
 
@@ -268,7 +274,7 @@ second_model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), second_model_na
 
 * [失敗したデプロイのトラブルシューティング](how-to-troubleshoot-deployment.md)
 * [Azure Kubernetes Service にデプロイする](how-to-deploy-azure-kubernetes-service.md)
-* [Web サービスを使用するクライアント アプリケーションを作成する](how-to-consume-web-service.md)
+* [Web サービスを使用するクライアント アプリケーションの作成](how-to-consume-web-service.md)
 * [Web サービスを更新する](how-to-deploy-update-web-service.md)
 * [カスタム Docker イメージを使用してモデルをデプロイする方法](how-to-deploy-custom-docker-image.md)
 * [TLS を使用して Azure Machine Learning による Web サービスをセキュリティで保護する](how-to-secure-web-service.md)

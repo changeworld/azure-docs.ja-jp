@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 43ed46f56be1ad4fa2aa643a6ed06f8fbe094a5b
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: f8be96fb008471d040839141a230c13b8f1657a5
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87351899"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708174"
 ---
 # <a name="monitor-your-synapse-workspace"></a>Synapse ワークスペースを監視する
 
@@ -51,5 +51,4 @@ Synapse Studio を開き、 **[監視]** ハブに移動します。 ここに�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Azure Synapse Analytics (ワークスペース プレビュー)](overview-what-is.md)
-
+> [Knowledge Center を探索する](get-started-knowledge-center.md)

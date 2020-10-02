@@ -3,16 +3,16 @@ title: Azure Image Builder サービスのトラブルシューティング
 description: Azure VM Image Builder サービスを使用するときの一般的な問題とエラーのトラブルシューティングを行います
 author: cynthn
 ms.author: danis
-ms.date: 08/07/2020
+ms.date: 09/03/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 754d9324137632b928e67bbe4c67a3e6c72e452a
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: ee65cd1605e23dfd5699f92a900bdb5e7952fe13
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067995"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459931"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>Azure Image Builder サービスのトラブルシューティング
 
@@ -502,6 +502,28 @@ D1_V2 VM のサイズによるタイミングの問題が原因である可能�
 
 VM のサイズを増やします。 または、60 秒の PowerShell スリープ カスタマイズを追加して、タイミングの問題を回避することもできます。
 
+### <a name="cancelling-builder-after-context-cancellation-context-canceled"></a>コンテキストの取り消しコンテキストの取り消し後にビルダーがキャンセルされる
+
+#### <a name="error"></a>エラー
+```text
+PACKER ERR 2020/03/26 22:11:23 Cancelling builder after context cancellation context canceled
+PACKER OUT Cancelling build after receiving terminated
+PACKER ERR 2020/03/26 22:11:23 packer-builder-azure-arm plugin: Cancelling hook after context cancellation context canceled
+..
+PACKER ERR 2020/03/26 22:11:23 packer-builder-azure-arm plugin: Cancelling provisioning due to context cancellation: context canceled
+PACKER ERR 2020/03/26 22:11:25 packer-builder-azure-arm plugin: [ERROR] Remote command exited without exit status or exit signal.
+PACKER ERR 2020/03/26 22:11:25 packer-builder-azure-arm plugin: [INFO] RPC endpoint: Communicator ended with: 2300218
+PACKER ERR 2020/03/26 22:11:25 [INFO] 148974 bytes written for 'stdout'
+PACKER ERR 2020/03/26 22:11:25 [INFO] 0 bytes written for 'stderr'
+PACKER ERR 2020/03/26 22:11:25 [INFO] RPC client: Communicator ended with: 2300218
+PACKER ERR 2020/03/26 22:11:25 [INFO] RPC endpoint: Communicator ended with: 2300218
+```
+#### <a name="cause"></a>原因
+Image Builder サービスは、ポート 22 (Linux) または 5986 (Windows) を使用してビルド VM に接続します。これはイメージのビルド中にサービスがビルド VM から切断された場合に発生します。 切断の理由はさまざまですが、スクリプトでファイアウォールを有効にしたり構成したりすると、上記のポートがブロックされる可能性があります。
+
+#### <a name="solution"></a>解決策
+ファイアウォールの変更または有効化、あるいは SSH または WinRM への変更についてスクリプトを確認し、上記のポートでサービスとビルド VM の間の常時接続を確立できるように変更してください。 Image Builder のネットワークの詳細については、[要件](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-networking)に関する記事を確認してください。
+
 ## <a name="devops-task"></a>DevOps タスク 
 
 ### <a name="troubleshooting-the-task"></a>タスクのトラブルシューティング
@@ -633,9 +655,9 @@ Write-Output '>>> Sysprep complete ...'
 ケース製品を選択します。
 ```bash
 Product Family: Azure
-Product: Virtual Machine Running Windows
-Support Topic: Management
-Support Subtopic: Issues with Azure Image Builder
+Product: Virtual Machine Running (Window\Linux)
+Support Topic: Azure Features
+Support Subtopic: Azure Image Builder
 ```
 
 ## <a name="next-steps"></a>次の手順

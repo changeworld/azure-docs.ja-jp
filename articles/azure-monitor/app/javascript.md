@@ -4,12 +4,12 @@ description: ページ ビューとセッション数、Web クライアント�
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 3acb7379644b5bfcb22ed86b6bde7031095fef24
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 9f335ca6912545b39fb8276f5895f98e653735d0
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224855"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89656947"
 ---
 # <a name="application-insights-for-web-pages"></a>Web ページ向けの Application Insights
 
@@ -104,7 +104,7 @@ SDK の読み込みに失敗する原因となるだけでなく、エラーの�
 
 使用できる構成オプションは次のとおりです。 
 
-| 名前 | Type | 説明
+| 名前 | 種類 | 説明
 |------|------|----------------
 | src | string **[必須]** | SDK の読み込み元の完全な URL。 この値は、動的に追加される &lt;script /&gt; タグの "src" 属性に使用されます。 パブリック CDN の場所を使用することも、プライベートにホストされている独自の場所を使用することもできます。
 | name | string *[省略可能]* | 初期化された SDK のグローバル名。既定値は `appInsights` です。 ```window.appInsights``` は、初期化されたインスタンスへの参照になります。 注: name 値を指定した場合や、(グローバル名 appInsightsSDK によって) 以前のインスタンスが割り当てられているように見える場合は、この name 値もグローバル名前空間で ```window.appInsightsSDK=<name value>``` として定義されます。これは、スニペットの正しいスケルトン メソッドとプロキシ メソッドを確実に初期化および更新できるように、SDK の初期化コードで必要となります。
@@ -204,8 +204,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 既定では、この SDK では、シングル ページ アプリケーションで発生する状態ベースのルート変更は処理され**ません**。 シングル ページ アプリケーションの自動ルート変更追跡を有効にするには、`enableAutoRouteTracking: true` をセットアップ構成に追加します。
 
-現在、この SDK で初期化できる個別の [React プラグイン](#react-extensions)が提供されています。 これによって、ルート変更追跡が実現し、[他の React 固有テレメトリ](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)の収集も行われます。
-
+現在、この SDK で初期化できる個別の [React プラグイン](javascript-react-plugin.md)が提供されています。 これによって、ルート変更追跡が実現し、他の React 固有テレメトリの収集も行われます。
 > [!NOTE]
 > `enableAutoRouteTracking: true` は、React プラグインを使用して**いない**場合にのみ使用します。 いずれも、ルートの変更時、新しい PageViews を送信できます。 両方が有効になっている場合、PageViews が重複して送信されることがあります。
 
@@ -213,12 +212,13 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 `autoTrackPageVisitTime: true` を設定することで、ユーザーが各ページで費やした時間が追跡されます。 新しい PageView のたびに、"*前の*" ページでユーザーが費やした時間が `PageVisitTime` という名前の[カスタム メトリック](../platform/metrics-custom-overview.md)に送信されます。 このカスタム メトリックは、"ログベースのメトリック" として[メトリックス エクスプローラー](../platform/metrics-getting-started.md)に表示されます。
 
-## <a name="react-extensions"></a>React の拡張機能
+## <a name="extensions"></a>拡張機能
 
 | 拡張機能 |
 |---------------|
 | [React](javascript-react-plugin.md)|
 | [React Native](javascript-react-native-plugin.md)|
+| [Angular](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-angularplugin-js) |
 
 ## <a name="correlation"></a>相関関係
 
@@ -315,7 +315,7 @@ npm i --save @microsoft/applicationinsights-web-basic
 
 ## <a name="examples"></a>例
 
-実行できる例については、[Application Insights JavaScript SDK サンプル](https://github.com/topics/applicationinsights-js-demo)を参照してください。
+実行できる例については、[Application Insights JavaScript SDK サンプル](https://github.com/Azure-Samples?q=applicationinsights-js-demo)を参照してください。
 
 ## <a name="upgrading-from-the-old-version-of-application-insights"></a>以前のバージョンの Application Insights からのアップグレード
 

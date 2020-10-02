@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: 音声テキスト変換、音声テキスト変換ソフトウェア
-ms.openlocfilehash: 42696728427c34d5000881af8bbbf97ae2313111
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 804acd17f3df91cc3df949d6d9ccac0450bb225f
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401267"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569222"
 ---
 # <a name="what-is-speech-to-text"></a>音声変換の概要
 
@@ -34,23 +34,11 @@ ms.locfileid: "89401267"
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-## <a name="get-started-with-speech-to-text"></a>音声変換の概要
+## <a name="get-started"></a>作業開始
 
-音声変換サービスは、[Speech SDK](speech-sdk.md) を介して利用できます。 さまざまな言語とプラットフォームで、いくつかの一般的なシナリオがクイックスタートとして用意されています。
+音声テキスト変換の使用を開始するには、[クイックスタート](get-started-speech-to-text.md)を参照してください。 サービスは、[Speech SDK](speech-sdk.md)、[REST API](rest-speech-to-text.md#pronunciation-assessment-parameters)、および [Speech CLI](spx-overview.md) を介して利用できます。
 
- - [クイック スタート: マイク入力を使用して音声を認識する](quickstarts/speech-to-text-from-microphone.md)
- - [クイック スタート: ファイルから音声を認識する](quickstarts/speech-to-text-from-file.md)
- - [クイック スタート: BLOB ストレージに格納された音声を認識する](quickstarts/from-blob.md)
-
-音声変換 REST サービスを使用する場合は、[REST API](rest-speech-to-text.md) に関するページを参照してください。
-
- - [クイック スタート: 参照入力による発音評価](rest-speech-to-text.md#pronunciation-assessment-parameters)
-
-## <a name="tutorials-and-sample-code"></a>チュートリアルおよびサンプル コード
-
-Speech Service を使ってみた後、Speech SDK と LUIS を使用して音声から意図を認識する方法がわかるチュートリアルを試してください。
-
-- [チュートリアル:C# を使用して、Speech SDK と LUIS で音声の意図を認識する](how-to-recognize-intents-from-speech-csharp.md)
+## <a name="sample-code"></a>サンプル コード
 
 Speech SDK のサンプル コードは、GitHub 上で入手できます。 これらのサンプルでは、ファイルやストリームからの音声の読み取り、連続的な認識と単発の認識、カスタム モデルの使用など、一般的なシナリオについて説明されています。
 

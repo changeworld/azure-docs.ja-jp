@@ -7,55 +7,49 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/15/2020
 ms.author: banders
-ms.openlocfilehash: c7622c4916b186a39aad9dafb54a1e2404458794
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 0f1b4751ae2448b519387d57e4dbfa1eecf8a576
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569358"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984272"
 ---
-# <a name="add-update-or-remove-a-credit-card-for-azure"></a>Azure 用にクレジット カードを追加、更新、または削除する
+# <a name="add-or-update-a-credit-card-for-azure"></a>Azure のクレジット カードの追加または更新
 
 このドキュメントは、クレジット カードを使用して Azure オンラインにサインアップされているお客様を対象としています。
 
-Azure portal では、既定の支払い方法の新しいクレジット カードへの変更、クレジット カードの詳細の更新、使用しないクレジット カードの削除を行えます。 クレジット カードを変更するには、[アカウント管理者](billing-subscription-transfer.md#whoisaa)になる必要があります。
+Azure portal では、既定の支払い方法から新しいクレジット カードへの変更と、クレジット カードの詳細の更新を行うことができます。 クレジット カードを変更するには、[アカウント管理者](billing-subscription-transfer.md#whoisaa)になる必要があります。
+
+クレジット カードを削除する場合は、「[Azure の課金の支払い方法を削除する](delete-azure-payment-method.md)」を参照してください。
 
 Microsoft Azure でサポートされている支払い方法は、クレジット カードと小切手/電信送金です。 小切手/電信送金による支払いの承認を受けるには、[Azure サブスクリプションの請求書による支払い](pay-by-invoice.md)に関する記事を参照してください。
 
-Microsoft 顧客契約を結んでいる場合、支払い方法は課金プロファイルに関連付けられています。 [Microsoft 顧客契約にアクセスする](#check-the-type-of-your-account)方法をご覧ください。 MCA を結んでいる場合は、「[Microsoft 顧客契約のクレジット カードを管理する](#manage-credit-cards-for-a-microsoft-customer-agreement)」に進んでください。
+Microsoft 顧客契約では、支払い方法は課金プロファイルに関連付けられています。 [Microsoft 顧客契約にアクセスする](#check-the-type-of-your-account)方法をご覧ください。 MCA を結んでいる場合は、「[Microsoft 顧客契約のクレジット カードを管理する](#manage-credit-cards-for-a-microsoft-customer-agreement)」に進んでください。
 
 <a id="addcard"></a>
 
 ## <a name="manage-credit-cards-for-an-azure-subscription"></a>Azure サブスクリプションのクレジット カードを管理する
 
-以降のセクションは、Microsoft Online Services Program 課金アカウントを持つお客様に適用されます。 [課金アカウントの種類を確認する](#check-the-type-of-your-account)方法をご覧ください。 課金アカウントの種類が Microsoft Online Services Program である場合、支払い方法は個別の Azure サブスクリプションに関連付けられています。 クレジット カードを追加したあとでエラーが発生する場合は、「[Azure へのサインアップ時にクレジット カード拒否される](../../billing/billing-credit-card-fails-during-azure-sign-up.md)」を参照してください。
+以降のセクションは、Microsoft Online Services Program 課金アカウントを持つお客様に適用されます。 [課金アカウントの種類を確認する](#check-the-type-of-your-account)方法をご覧ください。 課金アカウントの種類が Microsoft Online Services Program である場合、支払い方法は個別の Azure サブスクリプションに関連付けられています。 クレジット カードを追加したあとでエラーが発生する場合は、「[Azure へのサインアップ時にクレジット カード拒否される](/troubleshoot-declined-card.md)」を参照してください。
 
 ### <a name="change-credit-card-for-a-subscription-by-adding-a-new-credit-card"></a>新しいクレジット カードを追加してサブスクリプションのクレジット カードを変更する
 
 Azure サブスクリプションの既定のクレジット カードを、新しいクレジット カードまたは Azure portal で以前に保存したクレジット カードに変更できます。 クレジット カードを変更するには、アカウント管理者である必要があります。 複数のサブスクリプションに同じアクティブな支払い方法が指定されている場合は、これらのうちのいずれかのサブスクリプションのアクティブな支払い方法を変更すると、それ以外のサブスクリプションのアクティブな支払い方法も更新されます。
 
-
 次の手順に従って、サブスクリプションの既定のクレジット カードを新しいものに変更できます。
 
 1. [Azure Portal](https://portal.azure.com) にアカウント管理者としてサインインします。
-1. "**コスト管理 + 請求**" を検索します。
-
+1. "**コスト管理 + 請求**" を検索します。  
     ![検索を示すスクリーンショット](./media/change-credit-card/search.png)
-
 1. クレジット カードを追加するサブスクリプションを選択します。
-1. **[支払い方法]** を選択します。
-
-    ![選択した [支払い方法の管理] オプションのスクリーン ショット。](./media/change-credit-card/payment-methods-blade-x.png)
-
+1. **[支払い方法]** を選択します。  
+    ![[支払い方法の管理] オプションが選択されているスクリーンショット](./media/change-credit-card/payment-methods-blade-x.png)
 1. 左上隅にある [+] を選択してカードを追加します。 クレジット カードのフォームが右側に表示されます。
-1. クレジット カードの詳細を入力します。
-
-    ![新しいカードの追加を示すスクリーンショット。](./media/change-credit-card/sub-add-new-x.png)
-
+1. クレジット カードの詳細を入力します。  
+    ![新しいカードの追加を示すスクリーンショット](./media/change-credit-card/sub-add-new-x.png)
 1. このカードをアクティブな支払い方法にするには、フォームの上にある **[これをアクティブな支払い方法にする]** の横のチェック ボックスをオンにします。 選択したサブスクリプションと同じカードを使用しているすべてのサブスクリプションで、このカードがアクティブな支払い方法になります。
-
 1. **[次へ]** を選択します。
 
 ### <a name="change-credit-card-for-a-subscription-to-a-previously-saved-credit-card"></a>サブスクリプションのクレジット カードを以前保存したクレジット カードに変更する
@@ -63,18 +57,14 @@ Azure サブスクリプションの既定のクレジット カードを、新�
 また、次の手順に従って、サブスクリプションの既定のクレジット カードをアカウントに保存済みのものに変更することもできます。
 
 1. [Azure Portal](https://portal.azure.com) にアカウント管理者としてサインインします。
-1. "**コスト管理 + 請求**" を検索します。
-
+1. "**コスト管理 + 請求**" を検索します。  
     ![検索を示すスクリーンショット](./media/change-credit-card/search.png)
-
 1. クレジット カードを追加するサブスクリプションを選択します。
 1. **[支払い方法]** を選択します。
-
-    ![選択した [支払い方法の管理] オプションのスクリーン ショット。](./media/change-credit-card/payment-methods-blade-x.png)
-
+    ![[支払い方法の管理] オプションが選択されているスクリーンショット](./media/change-credit-card/payment-methods-blade-x.png)
 1. アクティブな支払い方法にするカードの横にあるチェック ボックスを選択します。
-1. **[アクティブに設定]** をクリックします。
-    ![選択されているクレジット カードと [アクティブに設定] を示すスクリーンショット。](./media/change-credit-card/sub-change-active-x.png)
+1. **[アクティブに設定]** を選択します。
+    ![選択されているクレジット カードと [アクティブに設定] を示すスクリーンショット](./media/change-credit-card/sub-change-active-x.png)
 
 ### <a name="edit-credit-card-details"></a>クレジット カードの詳細を編集する
 
@@ -82,35 +72,13 @@ Azure サブスクリプションの既定のクレジット カードを、新�
 
 1. [Azure Portal](https://portal.azure.com) にアカウント管理者としてサインインします。
 1. "**コスト管理 + 請求**" を検索します。
-
     ![検索を示すスクリーンショット](./media/change-credit-card/search.png)
-
 1. **[支払い方法]** を選択します。
-
-    ![選択した [支払い方法の管理] オプションのスクリーン ショット。](./media/change-credit-card/payment-methods-blade-x.png)
-
-1. 編集するクレジット カードをクリックします。 クレジット カードのフォームが右側に表示されます。
-
-    ![選択されているクレジット カードを示すスクリーンショット。](./media/change-credit-card/edit-card-x.png)
-
+    ![[支払い方法の管理] オプションが選択されているスクリーンショット](./media/change-credit-card/payment-methods-blade-x.png)
+1. 編集するクレジット カードを選択します。 クレジット カードのフォームが右側に表示されます。
+    ![選択されたクレジット カードを示すスクリーンショット](./media/change-credit-card/edit-card-x.png)
 1. クレジット カードの詳細を更新します。
 1. **[保存]** を選択します。
-
-### <a name="delete-a-credit-card-from-the-account"></a>クレジット カードをアカウントから削除する
-
-1. [Azure Portal](https://portal.azure.com) にアカウント管理者としてサインインします。
-1. ページの左側にある **[コスト管理と請求]** を選択します。
-
-    ![検索を示すスクリーンショット](./media/change-credit-card/search.png)
-
-1. **[請求]** で、 **[支払方法]** を選択します。
-
-    ![選択した [支払い方法の管理] オプションのスクリーン ショット。](./media/change-credit-card/payment-methods-blade-x.png)
-
-1. 削除するカードの横にあるチェック ボックスを選択します。
-1. **[削除]** をクリックします。
-
-クレジット カードがいずれかの Microsoft サブスクリプションのアクティブな支払い方法である場合は、Azure アカウントから削除できません。 このクレジット カードにリンクされているすべてのサブスクリプションのアクティブな支払い方法を変更し、再度お試しください
 
 ## <a name="manage-credit-cards-for-a-microsoft-customer-agreement"></a>Microsoft 顧客契約のクレジット カードを管理する
 
@@ -126,53 +94,38 @@ Microsoft 顧客契約を結んでいる場合、クレジット カードは課
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. **[コストの管理と請求]** で検索します。
-1. 左側のメニューで、 **[課金プロファイル]** をクリックします。
+1. 左側のメニューで、 **[課金プロファイル]** を選択します。
 1. 課金プロファイルを選択します。
-1. 左側のメニューで **[支払い方法]** を選択します。
-
+1. 左側のメニューで **[支払い方法]** を選択します。  
    ![メニューの支払い方法を示すスクリーン ショット](./media/change-credit-card/payment-methods-tab-mca.png)
+1. **[既定の支払方法]** セクションで、 **[変更]** を選択します。  
+    :::image type="content" source="./media/change-credit-card/change-payment-method-mca.png" alt-text="置換オプションを示すスクリーンショット" :::
+1. 右側の新しい領域で、ドロップダウンから既存のカードを選択するか、青色の **[新しい支払方法を追加]** リンクを選択して新しく追加します。
 
-1. **[既定の支払方法]** セクションで、 **[変更]** をクリックします。
+### <a name="edit-a-credit-card"></a>クレジット カードを編集する
 
-    ![[変更] ボタンを示すスクリーンショット](./media/change-credit-card/change-payment-method-mca.png)
+Azure portal で、クレジット カードの詳細を編集できます (有効期限の更新など)。 
 
-1. 右側の新しいブレードで、ドロップダウンから既存のカードを選択するか、青色の [新しい支払方法を追加] リンクをクリックして新しく追加します。
-
-### <a name="edit-or-delete-a-credit-card"></a>クレジット カードを編集または削除する
-
-Azure portal で、クレジット カードの詳細を編集したり (有効期限の更新など)、アカウントからクレジット カードを削除したりできます。 クレジット カードは、Azure サブスクリプションまたは課金プロファイルに関連付けられていない場合にのみ削除できます。 無効な Azure サブスクリプションに関連付けられている場合は、クレジット カードを削除するために、サブスクリプションが削除される (取り消しの 30 から 90 日後) まで待つ必要があります。
-
-クレジット カードを編集または削除するには、次の手順に従います。
+クレジット カードを編集するには、次の手順に従います。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. **[コストの管理と請求]** で検索します。
-1. 左側のメニューで、 **[課金プロファイル]** をクリックします。
+1. 左側のメニューで、 **[課金プロファイル]** を選択します。
 1. 課金プロファイルを選択します。
-1. 左側のメニューで **[支払い方法]** を選択します。
-
+1. 左側のメニューで **[支払い方法]** を選択します。  
    ![メニューの支払い方法を示すスクリーン ショット](./media/change-credit-card/payment-methods-tab-mca.png)
-
-1. **[Your credit cards]\(クレジット カード\)** セクションで、編集または削除するクレジット カードを見つけます。
-1. 行の末尾にある省略記号 (`...`) を選択します。
-
-    ![省略記号を示すスクリーンショット](./media/change-credit-card/edit-delete-credit-card-mca.png)
-
+1. **[クレジット カード]** セクションで、編集するクレジット カードを見つけます。
+1. 行の末尾にある省略記号 (`...`) を選択します。  
+    :::image type="content" source="./media/change-credit-card/edit-delete-credit-card-mca.png" alt-text="置換オプションを示すスクリーンショット" :::
 1. クレジット カードの詳細を編集するには、コンテキスト メニューから **[編集]** を選択します。
-1. クレジット カードを削除するには、コンテキスト メニューから **[削除]** を選択します。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-バーチャル カードやプリペイド カードはサポートされません。 有効なクレジット カードを追加または更新するときにエラーが発生する場合は、ブラウザーをプライベート モードで開いてみてください。
+Azure では、バーチャル カードやプリペイド カードはサポートされていません。 有効なクレジット カードを追加または更新するときにエラーが発生する場合は、ブラウザーをプライベート モードで開いてみてください。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 次のセクションでは、クレジット カードの情報の変更についてよく寄せられる質問に回答します。
-
-### <a name="my-subscription-is-disabled-why-cant-i-remove-my-credit-card-now"></a>使用しているサブスクリプションが無効です。 現在、クレジット カードを削除できないのはなぜですか。
-
-お客様のサブスクリプションが無効化または取り消された後、サブスクリプションを完全に削除するまで 90 日間待機します。 サブスクリプションを再アクティブ化する場合に備えて、保有期間中はファイル上に支払い方法を保持しています。 その後、サブスクリプションは永久に削除されます。
-
-90 日間の保有期間が終了する前に、クレジット カードを削除する必要がある場合は、[サブスクリプションを再アクティブ化してください](subscription-disabled.md)。 再アクティブ化することはできない場合は、[Azure サポートにお問い合わせください](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
 ### <a name="why-do-i-keep-getting-your-login-session-has-expired-please-click-here-to-log-back-in"></a>"ログイン セッションの期限が切れています。 ここをクリックして、ログインし直してください。" という表示が消えないのはなぜですか。
 
@@ -203,3 +156,4 @@ Azure portal で、クレジット カードの詳細を編集したり (有効�
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure の予約](../reservations/save-compute-costs-reservations.md)について学習し、コストを節約できるかどうか確認してください。
+- クレジット カードを削除する場合は、「[Azure の課金の支払い方法を削除する](delete-azure-payment-method.md)」を参照してください。

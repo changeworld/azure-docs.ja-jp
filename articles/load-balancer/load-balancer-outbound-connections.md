@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/24/2020
 ms.author: allensu
-ms.openlocfilehash: 738b54d9fcd86313c2581c5d0f055a7cca8230b8
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 4368a025ecc158afa1ee78b8abd86bd6db42ba75
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88706066"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438667"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure の Outbound connections
 
@@ -44,7 +44,7 @@ Azure Load Balancer は、さまざまなメカニズムを使用してアウト
 
 Azure では、アルゴリズムを使用して、割り当てられる利用可能な SNAT ポートの数が決定されます。これは、PAT を使用する際のバックエンド プールのサイズに基づきます。 ロード バランサーに関連付けられている各パブリック IP アドレスでは、各 IP トランスポート プロトコルに対して 64,000 のポートを SNAT ポートとして使用できます。 同じ数の SNAT ポートが UDP と TCP にそれぞれ事前に割り当てられ、IP トランスポート プロトコルに従って個別に使用されます。  ただし、SNAT ポートの使用方法は、フローが UDP または TCP のどちらかに応じて異なります。 アウトバウンド フローが作成されると、これらのポートは (事前に割り当てられた上限に達するまで) 動的に消費されます。そして、フローが終了するか[アイドル タイムアウト](../load-balancer/troubleshoot-outbound-connection.md#idletimeout)が発生すると解放されます。 ポートは、フローを一意にするために必要な場合にのみ消費されます。
 
-#### <a name="default-snat-ports-allocated"></a><a name="snatporttable"></a> 割り当てられる既定の SNAT ポート
+#### <a name="dynamic-snat-ports-allocated"></a><a name="snatporttable"></a>割り当てられる動的 SNAT ポート
 
 次の表は、バックエンド プール サイズのレベルに対する SNAT ポートの事前割り当てを示しています。
 

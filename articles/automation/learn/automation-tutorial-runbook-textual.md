@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: dd9aee01edf45f89feb6a6010c8d958511bc3904
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 613ce41820dc5f388af441836bdb4a93e43e5d07
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185400"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987635"
 ---
 # <a name="tutorial-create-a-powershell-workflow-runbook"></a>チュートリアル:PowerShell Workflow Runbook を作成する
 
@@ -109,17 +109,17 @@ Runbook を発行して運用環境で使用できるようにする前に、テ
 
 6. ジョブの状態は **[ジョブの概要]** に表示されることに注意してください。 この状態は、Runbook のテスト時に確認した状態と一致します。
 
-   ![ジョブの概要](../media/automation-tutorial-runbook-textual/job-pane-status-blade-jobsummary.png)
+   :::image type="content" source="../media/automation-tutorial-runbook-textual/job-pane-status-blade-jobsummary.png" alt-text="[ジョブの概要] セクションが強調表示されている Runbook ジョブ ペインのスクリーンショット。":::
 
 7. Runbook の状態が [完了]になったら、 **[出力]** をクリックします。 [出力] ページが開き、`Hello World` メッセージが表示されます。
 
-   ![ジョブの概要](../media/automation-tutorial-runbook-textual/job-pane-status-blade-outputtile.png)
+   :::image type="content" source="../media/automation-tutorial-runbook-textual/job-pane-status-blade-outputtile.png" alt-text="[ジョブの概要] セクションが強調表示されている Runbook ジョブ ペインのスクリーンショット。":::
 
 8. [出力] ページを閉じます。
 
 9. **[すべてのログ]** をクリックして、Runbook ジョブのストリーム ウィンドウを開きます。 出力ストリームには `Hello World` のみが表示されます。 Runbook で詳細ストリームやエラー ストリームに書き込まれている場合は、[ストリーム] ペインで Runbook ジョブの他のストリームも表示できることに注意してください。
 
-   ![ジョブの概要](../media/automation-tutorial-runbook-textual/job-pane-status-blade-alllogstile.png)
+   :::image type="content" source="../media/automation-tutorial-runbook-textual/job-pane-status-blade-alllogstile.png" alt-text="[ジョブの概要] セクションが強調表示されている Runbook ジョブ ペインのスクリーンショット。":::
 
 10. [ストリーム] ウィンドウと [ジョブ] ウィンドウを閉じ、MyFirstRunbook ページに戻ります。
 

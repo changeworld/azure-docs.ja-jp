@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 8917c73474b81ee76e6acdf8c6f274e962ee1215
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: b337065f125d12e309dd1f7fcc56c2af72b1c28c
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874233"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088359"
 ---
 # <a name="tutorial-get-started-with-log-analytics-queries"></a>チュートリアル:Log Analytics クエリの使用方法
 
@@ -42,7 +42,7 @@ Azure Monitor を使用して 1 つ以上の Azure リソースに関するロ�
 
 Log Analytics ワークスペースの **[テーブル]** タブには、スキーマ テーブルが表示されます。 このテーブルには複数の列が含まれ、各列では列名の隣にアイコンによりデータ型が示されます。 たとえば、**Event** テーブルには、**Computer** などのテキスト列と **EventCategory** などの数値列が含まれています。
 
-![スキーマ](media/get-started-portal/schema.png)
+![スクリーンショットには、Azure portal の [ログ] ページに新しいクエリが表示されています。また、[テーブル] ペインと [Computer] および [EventCategory] が強調表示されています。](media/get-started-portal/schema.png)
 
 ## <a name="write-and-run-basic-queries"></a>基本的なクエリの記述と実行
 
@@ -120,7 +120,7 @@ Log Analytics の結果は、上限の 10,000 件に制限されます。 `Event
    
 1. **[フィルター]** を選択します。
    
-   ![Assert](media/get-started-portal/filter.png)
+   ![スクリーンショットには、結果のテーブルが表示されています。また、[EventLevelName] で結果をフィルター処理するコンテキスト メニューも表示されています。](media/get-started-portal/filter.png)
 
 ## <a name="sort-group-and-select-columns"></a>列の並べ替え、グループ分け、選択を行う
 **TimeGenerated [UTC]** などの特定の列を基準にしてクエリ結果を並べ替えるには、目的の列見出しを選択します。 もう一度列見出しを選択すると、昇順と降順が切り替わります。
@@ -129,7 +129,7 @@ Log Analytics の結果は、上限の 10,000 件に制限されます。 `Event
 
 結果は、グループで整理することもできます。 特定の列を基準にして結果をグループ分けするには、結果テーブル上部にある、 **[Drag a column header and drop it here to group by that column]\(列でグループ分けするにはその列見出しをここにドラッグ アンド ドロップしてください\)** というラベル付きのバーに列見出しをドラッグします。 サブグループを作成する場合は、他の列を上部のバーにドラッグします。 バー内のグループとサブグループの階層および並び順は変更できます。
 
-![グループ](media/get-started-portal/groups.png)
+![スクリーンショットには、EventLevelName と Computer のサブグループを含むクエリ結果が表示されています。](media/get-started-portal/groups.png)
 
 結果の列の非表示と表示を切り替えるには、テーブル上部の **[列]** を選択してから、ドロップダウン リストで目的の列を選択または選択解除します。
 

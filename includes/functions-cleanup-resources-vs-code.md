@@ -2,18 +2,18 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 01/12/2020
+ms.date: 09/28/2020
 ms.author: glenga
-ms.openlocfilehash: 2eb8b988d7d65b444fe41ecb21dddfab4ff4cfa1
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 0d83f3a92efe7bddcefdeebb5b6d580caf749206
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125846"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408565"
 ---
-1. Visual Studio Code で、F1 キーを押してコマンド パレットを開きます。 コマンド パレットで、`Azure Functions: Open in portal` を検索して選択します。
+1. Visual Studio Code で、<kbd>F1</kbd> キーを押してコマンド パレットを開きます。 コマンド パレットで、`Azure Functions: Open in portal` を検索して選択します。
 
-1. 関数アプリを選択し、Enter キーを押します。 その関数アプリのページが Azure portal で開きます。
+1. 関数アプリを選択し、<kbd>Enter</kbd> キーを押します。 その関数アプリのページが Azure portal で開きます。
 
 1. **[概要]** タブで、 **[リソース グループ]** の横にある名前付きリンクを選択します。
 

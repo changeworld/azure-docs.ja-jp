@@ -11,18 +11,18 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d4459547300f5dfc7b7c22d1e531b928a13aa66c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91b6dac5fba4bb8dfd8cf4a3bb4e5952f8388bb5
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213433"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459149"
 ---
 # <a name="using-labels-to-instrument-queries-in-synapse-sql-pool"></a>Synapse SQL プールでのラベルを使用したクエリのインストルメント化
 
 この記事に含まれているのは、SQL プールでラベルを使用してクエリをインストルメント化するソリューションを開発するためのヒントです。
 
-ソリューション開発のための Azure SQL Data Warehouse でのラベルを使用してクエリのインストルメント化に関するヒント。
+ソリューション開発のための Azure Synapse Analytics でのラベルを使用してクエリのインストルメント化に関するヒント。
 
 ## <a name="what-are-labels"></a>ラベルとは?
 

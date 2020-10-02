@@ -11,12 +11,12 @@ ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d7fa9336a7a90ab73d3dc60c6c865ebadfb2af1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddb6dbde941d5a2f399aba55eec415c879e74384
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213501"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461207"
 ---
 # <a name="optimizing-transactions-in-synapse-sql"></a>Synapse SQL でのトランザクションの最適化
 
@@ -419,4 +419,4 @@ Synapse SQL を使用して、必要に応じて SQL プールの[一時停止�
 
 ## <a name="next-steps"></a>次のステップ
 
-分離レベルとトランザクションの制限の詳細については、[Synapse SQL のトランザクション](sql-data-warehouse-develop-transactions.md)に関するページを参照してください。  その他のベスト プラクティスの概要については、「[Azure SQL Data Warehouse のベスト プラクティス](sql-data-warehouse-best-practices.md)」を参照してください。
+分離レベルとトランザクションの制限の詳細については、[Synapse SQL のトランザクション](sql-data-warehouse-develop-transactions.md)に関するページを参照してください。  その他のベスト プラクティスの概要については、「[Azure Synapse Analytics (旧称 SQL DW) での Synapse SQL プールのベスト プラクティス](sql-data-warehouse-best-practices.md)」をご覧ください。

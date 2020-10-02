@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 283c66eb3b49b60b87283c5d94cc4f110adceffe
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: d7bb697879f40b45c886cd90bbb1e34906d35f66
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588749"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530507"
 ---
-# <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid-preview"></a>Azure Event Grid でキー コンテナー通知を受信して応答する (プレビュー)
+# <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid"></a>Azure Event Grid でキー コンテナー通知を受信して応答する
 
-Azure Key Vault と Azure Event Grid (現在プレビュー段階) の統合により、キー コンテナーに格納されているシークレットの状態が変更されたときにユーザーに通知することができます。 この機能の概要については、[Event Grid による Key Vault の監視](event-grid-overview.md)に関するページをご覧ください。
+Azure Key Vault と Azure Event Grid の統合により、キー コンテナーに格納されているシークレットの状態が変更されたときにユーザーに通知することができます。 この機能の概要については、[Event Grid による Key Vault の監視](event-grid-overview.md)に関するページをご覧ください。
 
 このガイドでは、Event Grid によって Key Vault の通知を受信する方法、および Azure Automation によって状態の変更に応答する方法について説明します。
 
@@ -32,7 +32,7 @@ Azure Key Vault と Azure Event Grid (現在プレビュー段階) の統合に�
 
 Event Grid は、クラウドのイベント処理サービスです。 このガイドの手順に従って、Key Vault のイベントをサブスクライブして、イベントを Automation にルーティングします。 キー コンテナー内でいずれかのシークレットの有効期限がまもなく切れる場合、状態の変更が Event Grid に通知されます。また、エンドポイントへの HTTP POST が実行されます。 その後、Web hook によって PowerShell スクリプトの Automation 実行がトリガーされます。
 
-![HTTP POST フローチャート](../media/image1.png)
+![HTTP POST フローチャート](../media/event-grid-tutorial-1.png)
 
 ## <a name="create-an-automation-account"></a>Automation アカウントを作成する
 
@@ -46,7 +46,7 @@ Event Grid は、クラウドのイベント処理サービスです。 この�
 
 1.  **[追加]** を選択します。
 
-    ![[Automation アカウント] ウィンドウ](../media/image2.png)
+    ![[Automation アカウント] ウィンドウ](../media/event-grid-tutorial-2.png)
 
 1.  **[Automation アカウントの追加]** ウィンドウに必要な情報を入力し、 **[作成]** を選択します。
 
@@ -54,7 +54,7 @@ Event Grid は、クラウドのイベント処理サービスです。 この�
 
 ご自身の Automation アカウントの準備ができたら、Runbook を作成します。
 
-![Runbook UI を作成する](../media/image3.png)
+![Runbook UI を作成する](../media/event-grid-tutorial-3.png)
 
 1.  作成したばかりの Automation アカウントを選択します。
 
@@ -92,7 +92,7 @@ write-Error "No input data found."
 }
 ```
 
-![Runbook UI の発行](../media/image4.png)
+![Runbook UI の発行](../media/event-grid-tutorial-4.png)
 
 ## <a name="create-a-webhook"></a>webhook を作成する
 
@@ -102,7 +102,7 @@ write-Error "No input data found."
 
 1.  **[Webhook の追加]** を選択します。
 
-    ![[Webhook の追加] ボタン](../media/image5.png)
+    ![[Webhook の追加] ボタン](../media/event-grid-tutorial-5.png)
 
 1.  **[新しい Webhook を作成します]** を選択します。
 
@@ -115,15 +115,15 @@ write-Error "No input data found."
 
 1. **[OK]** を選択し、 **[作成]** を選択します。
 
-    ![新しい Webhook UI の作成](../media/image6.png)
+    ![新しい Webhook UI の作成](../media/event-grid-tutorial-6.png)
 
 ## <a name="create-an-event-grid-subscription"></a>Event Grid のサブスクリプションを作成する
 
 [Azure portal](https://portal.azure.com) を使用して Event Grid サブスクリプションを作成します。
 
-1.  ご自身のキー コンテナーにアクセスし、 **[イベント]** タブを選択します。それが表示されない場合は、[ポータルのプレビュー バージョン](https://ms.portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true)を使用していることを確認します。
+1.  ご自身のキー コンテナーにアクセスし、**[イベント]** タブを選択します。
 
-    ![Azure portal の [イベント] タブ](../media/image7.png)
+    ![Azure portal の [イベント] タブ](../media/event-grid-tutorial-7.png)
 
 1.  **[+ イベント サブスクリプション]** ボタンを選択します。
 
@@ -143,15 +143,15 @@ write-Error "No input data found."
 
 1.  **［作成］** を選択します
 
-    ![イベント サブスクリプションの作成](../media/image8.png)
+    ![イベント サブスクリプションの作成](../media/event-grid-tutorial-8.png)
 
 ## <a name="test-and-verify"></a>テストして検証する
 
 Event Grid サブスクリプションが適切に構成されていることを確認します。 このテストは、「[Event Grid のサブスクリプションを作成する](#create-an-event-grid-subscription)」で "シークレットの新しいバージョンが作成されました" という通知をサブスクライブしたこと、およびシークレットの新しいバージョンをキー コンテナーに作成するのに必要な権限を持っていることを前提としています。
 
-![Event Grid サブスクリプションの構成のテスト](../media/image9.png)
+![Event Grid サブスクリプションの構成のテスト](../media/event-grid-tutorial-9.png)
 
-![[シークレットの作成] ウィンドウ](../media/image10.png)
+![[シークレットの作成] ウィンドウ](../media/event-grid-tutorial-10.png)
 
 1.  Azure portal で、ご自身のキー コンテナーに移動します
 
@@ -161,7 +161,7 @@ Event Grid サブスクリプションが適切に構成されていることを
 
 1.  **[メトリック]** で、イベントがキャプチャされたかどうかを確認します。 2 つのイベントが想定されます。1 つは SecretNewVersion で、もう 1 つは SecretNearExpiry です。 これらのイベントにより、キー コンテナーにあるシークレットの状態の変更が、Event Grid によって正常にキャプチャされたことが検証されます。
 
-    ![[メトリック] ウィンドウ: キャプチャしたイベントの確認](../media/image11.png)
+    ![[メトリック] ウィンドウ: キャプチャしたイベントの確認](../media/event-grid-tutorial-11.png)
 
 1.  Automation アカウントに移動します。
 
@@ -169,13 +169,13 @@ Event Grid サブスクリプションが適切に構成されていることを
 
 1.  **[Webhook]** タブを選択し、"最終トリガー" のタイム スタンプが、新しいシークレット作成から 60 秒以内であることを確認します。 この結果により、キー コンテナーの状態変更イベントの詳細を含む POST が Event Grid によって Webhook に対して実行され、Webhook がトリガーされたことが確認されます。
 
-    ![[Webhook] タブ、最終トリガー タイムスタンプ](../media/image12.png)
+    ![[Webhook] タブ、最終トリガー タイムスタンプ](../media/event-grid-tutorial-12.png)
 
 1. ご自身の Runbook に戻り、 **[概要]** タブを選択します。
 
 1. **[最近のジョブ]** の一覧を確認します。 ジョブが作成され、状態が "完了" になっていることがわかります。 これにより、Webhook によって Runbook がトリガーされ、そのスクリプトの実行が開始されたことが確認されます。
 
-    ![Webhook 最近のジョブの一覧](../media/image13.png)
+    ![Webhook 最近のジョブの一覧](../media/event-grid-tutorial-13.png)
 
 1. 最近のジョブを選択し、Event Grid から Webhook に送信された POST 要求を確認します。 JSON を調べ、キー コンテナーとイベントの種類のパラメーターが正しいことを確認します。 JSON オブジェクトの "イベントの種類" パラメーターが、キー コンテナーで発生したイベント (この例では Microsoft.KeyVault.SecretNearExpiry) と一致する場合、テストは成功しました。
 
@@ -194,9 +194,9 @@ Event Grid サブスクリプションが適切に構成されていることを
 詳細情報:
 
 
-- 概要:[Azure Event Grid での Key Vault の監視 (プレビュー)](event-grid-overview.md)
+- 概要:[Azure Event Grid での Key Vault の監視](event-grid-overview.md)
 - 方法:[キー コンテナーのシークレットが変更されたときにメールを受信する](event-grid-logicapps.md)
-- [Azure Key Vault 用の Azure Event Grid イベント スキーマ (プレビュー)](../../event-grid/event-schema-key-vault.md)
+- [Azure Key Vault 用の Azure Event Grid イベント スキーマ](../../event-grid/event-schema-key-vault.md)
 - [Azure Key Vault の概要](overview.md)
 - [Azure Event Grid の概要](../../event-grid/overview.md)
 - [Azure Automation の概要](../../automation/index.yml)

@@ -6,12 +6,12 @@ ms.author: sudbalas
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 08/25/2020
-ms.openlocfilehash: bfcaf9d4b1d03457f2e4cddd2e0eaf9d9d58eee2
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: f77d197c30d00083b280a97079fe03146fcfeb82
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869186"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061803"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>チュートリアル:Kubernetes 上のシークレット ストア CSI ドライバー向けに Azure Key Vault プロバイダーを構成して実行する
 
@@ -70,7 +70,7 @@ Azure Cloud Shell を使用する必要はありません。 Azure CLI がイン
     ```azurecli
     kubectl version
     ```
-1. Kubernetes のバージョンが 1.16.0 以降であることを確認します。 次のコマンドを実行すると、Kubernetes クラスターとノード プールの両方がアップグレードされます。 このコマンドの実行には数分かかる場合があります。 この例では、リソース グループは *contosoResourceGroup*、Kubernetes クラスターは *contosoAKSCluster* です。
+1. Kubernetes のバージョンが 1.16.0 以降であることを確認します。 Windows クラスターの場合、Kubernetes のバージョンが 1.18.0 以降であることを確認します。 次のコマンドを実行すると、Kubernetes クラスターとノード プールの両方がアップグレードされます。 このコマンドの実行には数分かかる場合があります。 この例では、リソース グループは *contosoResourceGroup*、Kubernetes クラスターは *contosoAKSCluster* です。
     ```azurecli
     az aks upgrade --kubernetes-version 1.16.9 --name contosoAKSCluster --resource-group contosoResourceGroup
     ```
@@ -110,18 +110,20 @@ Azure Cloud Shell を使用する必要はありません。 Azure CLI がイン
 
 ## <a name="create-your-own-secretproviderclass-object"></a>独自の SecretProviderClass オブジェクトを作成する
 
-シークレット ストア CSI ドライバーのプロバイダー固有のパラメーターを使用して独自のカスタム SecretProviderClass オブジェクトを作成するには、[このテンプレートを使用](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/test/bats/tests/azure_v1alpha1_secretproviderclass.yaml)します。 このオブジェクトにより、自分のキー コンテナーへのアクセス権が ID に提供されます。
+シークレット ストア CSI ドライバーのプロバイダー固有のパラメーターを使用して独自のカスタム SecretProviderClass オブジェクトを作成するには、[このテンプレートを使用](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/v1alpha1_secretproviderclass_service_principal.yaml)します。 このオブジェクトにより、自分のキー コンテナーへのアクセス権が ID に提供されます。
 
 サンプルの SecretProviderClass YAML ファイルで、不足しているパラメーターを入力します。 次のパラメーターが必要です。
 
-* **userAssignedIdentityID**: サービス プリンシパルのクライアント ID
+* **userAssignedIdentityID**: # [必須] サービス プリンシパルを使用している場合は、クライアント ID を使用して、使用するユーザー割り当てマネージド ID を指定します。 ユーザー割り当て ID を VM のマネージド ID として使用している場合は、その ID のクライアント ID を指定します。値が空の場合、既定では VM のシステム割り当て ID が使用されます 
 * **keyvaultName**: キー コンテナーの名前
 * **objects**: マウントするすべてのシークレット コンテンツ用のコンテナー
     * **objectName**: シークレット コンテンツの名前
     * **objectType**: オブジェクトの種類 (シークレット、キー、証明書)
-* **resourceGroup**: リソース グループの名前
-* **subscriptionId**: お使いのキー コンテナーのサブスクリプション ID
+* **resourceGroup**: リソース グループの名前 # [0.0.4 より前のバージョンの場合は必須] キー コンテナーのリソース グループ
+* **subscriptionId**: キー コンテナーのサブスクリプション ID # [0.0.4 より前のバージョンの場合は必須] キー コンテナーのサブスクリプション ID
 * **tenantID**: お使いのキー コンテナーのテナント ID またはディレクトリ ID
+
+すべての必須フィールドに関するドキュメントは、次のページで入手できます: [リンク](https://github.com/Azure/secrets-store-csi-driver-provider-azure#create-a-new-azure-key-vault-resource-or-use-an-existing-one)
 
 更新されたテンプレートを次のコードに示します。 これを YAML ファイルとしてダウンロードし、必須フィールドに入力します。 この例のキー コンテナーは **contosoKeyVault5** です。 これには、**secret1** と **secret2** という 2 つのシークレットが含まれています。
 
@@ -210,6 +212,11 @@ az ad sp credential reset --name contosoServicePrincipal --credential-descriptio
 1. ユーザー割り当てのマネージド ID の作成、一覧表示、または読み取りを行うには、AKS クラスターに[マネージド ID オペレーター](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) ロールを割り当てる必要があります。 **$clientId** が Kubernetes クラスターの clientId であることを確認します。 スコープについては、お使いの Azure サブスクリプション サービス、特に AKS クラスターの作成時に作成されたノード リソース グループの下に配置されます。 このスコープによって、そのグループ内のリソースのみが、以下に割り当てられたロールの影響を受けるようになります。 
 
     ```azurecli
+    RESOURCE_GROUP=contosoResourceGroup
+    az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$RESOURCE_GROUP
+
+    az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$RESOURCE_GROUP
+    
     az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
     
     az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
@@ -304,6 +311,8 @@ spec:
         readOnly: true
         volumeAttributes:
           secretProviderClass: azure-kvname
+          nodePublishSecretRef:
+              name: secrets-store-creds 
 ```
 
 次のコマンドを実行してポッドをデプロイします。

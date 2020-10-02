@@ -1,19 +1,19 @@
 ---
-title: Azure IoT Central アプリケーションでデバイス グループを使用する | Microsoft Docs
-description: オペレーターとして、デバイス グループを使用して Azure IoT Central アプリケーションでデバイスからのテレメトリを分析する方法について説明します。
+title: チュートリアル - Azure IoT Central アプリケーションでデバイス グループを使用する | Microsoft Docs
+description: チュートリアル - オペレーターとして、デバイス グループを使用して Azure IoT Central アプリケーションでデバイスからのテレメトリを分析する方法について学習します。
 author: dominicbetts
 ms.author: dobett
 ms.date: 02/12/2020
-ms.topic: conceptual
+ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: 58fc71ab05c34e8acd252e7a1984c55996d1b3a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3192a9f121d4380a3e681747596fc91997662bf0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80999039"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967946"
 ---
 # <a name="tutorial-use-device-groups-to-analyze-device-telemetry"></a>チュートリアル:デバイス グループを使用してデバイス テレメトリを分析する
 

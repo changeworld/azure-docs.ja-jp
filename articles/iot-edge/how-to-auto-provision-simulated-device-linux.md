@@ -8,16 +8,16 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3bc9344459802f4bb4268093d905a051525d78dc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9bd597bbff54687af1ba8536dddd6f0d8dfc621e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684458"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531493"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Linux で TPM を使用して IoT Edge デバイスを作成およびプロビジョニングする
 
-この記事では、トラステッド プラットフォーム モジュール (TPM) を使用して Linux IoT Edge デバイスに対して自動プロビジョニングをテストする方法について説明します。 Azure IoT Edge デバイスは、[Device Provisioning Service](../iot-dps/index.yml) を使用して自動プロビジョニングできます。 自動プロビジョニングの処理に慣れていない場合は、「[自動プロビジョニングの概念](../iot-dps/concepts-auto-provisioning.md)」を読んでから先に進んでください。
+この記事では、トラステッド プラットフォーム モジュール (TPM) を使用して Linux IoT Edge デバイスに対して自動プロビジョニングをテストする方法について説明します。 Azure IoT Edge デバイスは、[Device Provisioning Service](../iot-dps/index.yml) を使用して自動プロビジョニングできます。 自動プロビジョニングの処理に慣れていない場合は、[プロビジョニング](../iot-dps/about-iot-dps.md#provisioning-process)の概要を読んでから先に進んでください。
 
 タスクは次のとおりです。
 

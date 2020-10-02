@@ -3,12 +3,12 @@ title: パラメーターを使用して動的ブループリントを作成す�
 description: 静的パラメーターと動的パラメーターについて、およびこれらを使用して、セキュリティで保護された動的ブループリントを作成する方法について説明します。
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: b9c80a50ebb4be8dc530c73544a704035d777225
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: b6cefe7ec75ec622cb341d8f12edfd9c0cfa66e6
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051561"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651953"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>パラメーターを使用して動的ブループリントを作成する
 
@@ -61,11 +61,11 @@ Azure Key Vault の詳細については、[Key Vault の概要](../../../key-va
 
 1. パラメーター オプションを持つブループリントに追加されたアーティファクトの **[パラメーター]** 列に、 **[X of Y parameters populated]\(X/Y のパラメーターが設定されました\)** が表示されます。 パラメーターを編集するには、そのアーティファクト行を選択します。
 
-   :::image type="content" source="../media/parameters/parameter-column.png" alt-text="ブループリント定義でのブループリントのパラメーター" border="false":::
+   :::image type="content" source="../media/parameters/parameter-column.png" alt-text="ブループリントの定義と、[X of Y parameters populated]\(X/Y のパラメーターが設定されました\) のメッセージが強調表示されたスクリーンショット。" border="false":::
 
-1. **[成果物の編集]** ページには、クリックしたアーティファクトに適した値オプションが表示されます。 アーティファクトの各パラメーターには、タイトル、値ボックス、チェックボックスがあります。 **静的パラメーター**にするには、チェックボックスをオフに設定します。 次の例では、 _[場所]_ のチェックボックスがオフで、 _[リソース グループ名]_ のチェックボックスはオンになっているため、場所のみが**静的パラメーター**です。
+1. **[成果物の編集]** ページには、選択したアーティファクトに適した値のオプションが表示されます。 アーティファクトの各パラメーターには、タイトル、値ボックス、チェックボックスがあります。 **静的パラメーター**にするには、チェックボックスをオフに設定します。 次の例では、 _[場所]_ のチェックボックスがオフで、 _[リソース グループ名]_ のチェックボックスはオンになっているため、場所のみが**静的パラメーター**です。
 
-   :::image type="content" source="../media/parameters/static-parameter.png" alt-text="ブループリント アーティファクトでのブループリントの静的パラメーター" border="false":::
+   :::image type="content" source="../media/parameters/static-parameter.png" alt-text="ブループリントの定義と、[X of Y parameters populated]\(X/Y のパラメーターが設定されました\) のメッセージが強調表示されたスクリーンショット。" border="false":::
 
 #### <a name="setting-static-parameters-from-rest-api"></a>REST API で静的パラメーターを設定する
 
@@ -176,7 +176,7 @@ REST API を使用してブループリントを作成するときに、[ブル�
 
 1. **[ブループリントの割り当て]** ページで、 **[アーティファクト パラメーター]** セクションを見つけます。 少なくとも 1 つ以上の**動的パラメーター**を持つアーティファクトごとに、アーティファクトと構成オプションが表示されます。 ブループリントを割り当てる前に、パラメーターに必要な値を指定します。 次の例では、_Name_ がブループリント割り当てを完了するために定義する必要がある**動的パラメーター**です。
 
-   :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="ブループリント割り当て時のブループリントの動的パラメーター" border="false":::
+   :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="ブループリントの定義と、[X of Y parameters populated]\(X/Y のパラメーターが設定されました\) のメッセージが強調表示されたスクリーンショット。" border="false":::
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>REST API で動的パラメーターを設定する
 

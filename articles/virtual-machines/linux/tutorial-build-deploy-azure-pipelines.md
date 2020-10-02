@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops, devx-track-javascript
-ms.openlocfilehash: c83a67f7d524a062485f2c68e0adb7fdd2855a84
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 6025e1c257ad7b94586ceb4f89c02c3a44c59c3e
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462175"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090314"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>チュートリアル:Azure DevOps Services と Azure Pipelines を使用して Azure の Linux 仮想マシンにアプリをデプロイする
 
@@ -147,6 +147,7 @@ Web アプリケーションを発行する継続的インテグレーション 
 **starter** テンプレートを選択し、Java プロジェクトをビルドして Apache Maven でテストを実行する次の YAML スニペットをコピーします。
 
 ```YAML
+jobs:
 - job: Build
   displayName: Build Maven Project
   steps:
@@ -209,7 +210,7 @@ Web アプリケーションを発行する継続的インテグレーション 
 
 ## <a name="define-cd-steps-to-deploy-to-the-linux-vm"></a>Linux VM にデプロイするための CD 手順を定義する
 
-1. 上記のパイプラインを編集し、次の YAML 構文を使用して、前の環境と VM リソースを参照することにより、[デプロイ ジョブ](/azure/devops/pipelines/process/deployment-jobs)を組み込みます。
+1. 上記のパイプラインの YAML ファイルを編集し、次の YAML 構文を使用して、前の環境と VM リソースを参照することにより、[デプロイ ジョブ](/azure/devops/pipelines/process/deployment-jobs)を組み込みます。
 
    ```YAML
    jobs:  
@@ -218,8 +219,7 @@ Web アプリケーションを発行する継続的インテグレーション 
      environment:
        name:  <environment name>
        resourceType: VirtualMachine
-       tags: web1
-     strategy:
+       tags: web
    ```
 2. 環境内の各仮想マシンに対して定義した**タグ**を指定することにより、デプロイを受け取る特定の仮想マシンのセットを環境から選択できます。
 デプロイ ジョブの完全な YAML スキーマについては、[こちら](/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job)をご覧ください。

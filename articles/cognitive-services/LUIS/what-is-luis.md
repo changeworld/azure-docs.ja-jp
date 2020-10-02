@@ -1,24 +1,24 @@
 ---
 title: Language Understanding (LUIS) とは
 description: Language Understanding (LUIS) - 機械学習を自然言語での会話に使用して、意味を予測し、情報を抽出するクラウドベースの API サービス。
-keywords: Azure, 人工知能, ai, 自然言語処理, nlp, 自然言語理解, nlu, ai 会話, 会話型 ai, ai チャットボット, チャットボット メーカー, LUIS, nlp ai, luis ai, azure luis, 自然言語の理解
+keywords: Azure, 人工知能, ai, 自然言語処理, nlp, 自然言語理解, nlu, LUIS, 会話型 AI, ai チャットボット, nlp ai, azure luis
 ms.topic: overview
 ms.date: 09/02/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: ff9aa2652fe8a1e503b5e2c93ca149112770b081
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 3a8905ca1b9e7d7b4b1e4f5add000def9e91f9c6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400944"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985855"
 ---
 # <a name="what-is-language-understanding-luis"></a>Language Understanding (LUIS) とは
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Language Understanding (LUIS) は、カスタムの機械学習インテリジェンスをユーザーの自然言語での会話に適用して、全体の意味を予測し、関連性のある詳細な情報を引き出すクラウド ベースの API サービスです。
+Language Understanding (LUIS) は、カスタムの機械学習インテリジェンスをユーザーの自然言語での会話テキストに適用して、全体の意味を予測し、関連性のある詳細な情報を引き出す、クラウドベースの会話型 AI サービスです。
 
-LUIS のクライアント アプリケーションは、ユーザーと自然言語でコミュニケーションを行ってタスクを完了する会話型アプリケーションであれば、どれでもかまいません。 クライアント アプリケーションの例として、ソーシャル メディア アプリ、チャットボット、音声対応デスクトップ アプリケーションがあります。
+LUIS のクライアント アプリケーションは、ユーザーと自然言語でコミュニケーションを行ってタスクを完了する会話型アプリケーションであれば、どれでもかまいません。 クライアント アプリケーションの例として、ソーシャル メディア アプリ、AI チャットボット、音声対応デスクトップ アプリケーションがあります。
 
 ![Cognitive Services Language Understanding (LUIS) と連携する 3 つのクライアント アプリケーションの概念図](./media/luis-overview/luis-entry-point.png "Cognitive Services Language Understanding (LUIS) と連携する 3 つのクライアント アプリケーションの概念図")
 
@@ -26,7 +26,7 @@ LUIS のクライアント アプリケーションは、ユーザーと自然�
 
 <a name="Accessing-LUIS"></a>
 
-LUIS アプリの発行後、クライアント アプリケーションは、LUIS 自然言語処理エンドポイント [API][endpoint-apis] に発話 (テキスト) を送信し、その結果を JSON 応答として受信します。 LUIS の一般的なクライアント アプリケーションはチャット ボットです。
+Azure LUIS アプリの公開後、クライアント アプリケーションは、LUIS 自然言語処理エンドポイント [API][endpoint-apis] に発話 (テキスト) を送信し、その結果を JSON 応答として受信します。 LUIS の一般的なクライアント アプリケーションはチャット ボットです。
 
 
 ![自然言語の理解 (NLP) でユーザー テキストを予測するためにチャット ボットと連携する LUIS の概念図](./media/luis-overview/LUIS-chat-bot-request-response.svg "自然言語の理解 (NLP) でユーザー テキストを予測するためにチャット ボットと連携する LUIS の概念図")
@@ -44,7 +44,7 @@ LUIS アプリは、クライアント アプリケーションが賢明な選�
 
 ## <a name="natural-language-understanding-nlu"></a>自然言語理解 (NLU)
 
-LUIS は、自然言語処理 (NLP) のサブセットである NLU の形式で[人工知能 (AI) を提供](artificial-intelligence.md "LUIS は人工知能 (AI) を提供します")します。
+LUIS は、自然言語処理 AI のサブセットである NLU の形式で[人工知能 (AI) を提供](artificial-intelligence.md "LUIS は人工知能 (AI) を提供します")します。
 
 LUIS アプリには、特定の領域 (ドメイン) に固有の自然言語モデルが含まれます。 LUIS アプリは、構築済みのドメイン モデルをひな形にできるほか、独自にモデルを構築したり、構築済みのドメインの一部に独自の情報を融合したりすることができます。
 
@@ -52,7 +52,7 @@ LUIS アプリには、特定の領域 (ドメイン) に固有の自然言語�
 
 * **カスタム モデル**の LUIS を使うと、意図を含む独自のカスタムモデルやエンティティを複数の方法で識別できます。 エンティティには、機械学習エンティティ、特定のエンティティまたはリテラル エンティティ、機械学習エンティティとリテラル エンティティの組み合わせが含まれます。
 
-[NLP](artificial-intelligence.md "NLP")、および NLU の LUIS 固有の領域の詳細を確認してください。
+[NLP AI](artificial-intelligence.md "NLP") の詳細と、NLU の LUIS 固有の領域について学習してください。
 
 ## <a name="step-1-design-and-build-your-model"></a>手順 1:モデルを設計して構築する
 

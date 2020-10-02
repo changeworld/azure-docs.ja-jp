@@ -3,12 +3,12 @@ title: 効果のしくみを理解する
 description: Azure Policy の定義には、コンプライアンスが管理および報告される方法を決定するさまざまな効果があります。
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7eb1178bbf767f6962c797da4474af81d576545a
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: d2ea27ceda36d2feebcf12cc47ac741093b0729c
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079661"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425536"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 
@@ -156,7 +156,8 @@ AuditIfNotExists 効果の **details** プロパティは、照合する関連�
   - **details.type** が **if** 条件リソース下にあるリソースの型である場合、この **type** のリソースが、ポリシーによって評価対象リソースのスコープ内から照会されます。 それ以外の場合は、評価対象リソースと同じリソース グループ内から照会されます。
 - **Name** (省略可能)
   - 照合するリソースの正確な名前を指定して、指定した型のすべてのリソースではなく 1 つの特定のリソースを取得します。
-  - **if.field.type** と **then.details.type** の条件値が一致する場合、**Name** は "_必須_" になり、`[field('name')]` であることが必要です。 ただし、代わりに [audit](#audit) の影響を考慮する必要があります。
+  - **if.field.type** と **then.details.type** の条件値が一致する場合、**Name** は "_必須_" になり、子リソースに対し `[field('name')]` または `[field('fullName')]` であることが必要です。
+    ただし、代わりに [audit](#audit) の影響を考慮する必要があります。
 - **ResourceGroupName** (省略可能)
   - 別のリソース グループに由来する関連リソースを照合できるようにします。
   - **type** が **if** 条件リソースの下にあるリソースである場合は適用されません。
@@ -277,7 +278,7 @@ DeployIfNotExists 効果の **details** プロパティは、照合する関連�
   - 最初に **if** 条件リソースの下にあるリソースを取得しようとし、次に **if** 条件リソースと同じリソース グループ内を検索します。
 - **Name** (省略可能)
   - 照合するリソースの正確な名前を指定して、指定した型のすべてのリソースではなく 1 つの特定のリソースを取得します。
-  - **if.field.type** と **then.details.type** の条件値が一致する場合、**Name** は "_必須_" になり、`[field('name')]` であることが必要です。
+  - **if.field.type** と **then.details.type** の条件値が一致する場合、**Name** は "_必須_" になり、子リソースに対し `[field('name')]` または `[field('fullName')]` であることが必要です。
 - **ResourceGroupName** (省略可能)
   - 別のリソース グループに由来する関連リソースを照合できるようにします。
   - **type** が **if** 条件リソースの下にあるリソースである場合は適用されません。

@@ -1,15 +1,15 @@
 ---
 title: 組み込みのポリシー定義の一覧
 description: Azure Policy の組み込みのポリシー定義を一覧表示します。 カテゴリには、タグ、規制コンプライアンス、Key Vault、Kubernetes、ゲスト構成などが含まれます。
-ms.date: 09/10/2020
+ms.date: 09/16/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 92d7c56e0867418097b3eead11c3a623fde3c2ab
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: ca8472c1ee4873977bac47a0b54925b892721a0b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90005463"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982405"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy の組み込みのポリシー定義
 
@@ -37,7 +37,11 @@ ms.locfileid: "90005463"
 
 [!INCLUDE [azure-policy-reference-policies-app-service](../../../../includes/policy/reference/bycat/policies-app-service.md)]
 
-## <a name="automation"></a>オートメーション
+## <a name="automanage"></a>自動管理
+
+[!INCLUDE [azure-policy-reference-policies-automanage](../../../../includes/policy/reference/bycat/policies-automanage.md)]
+
+## <a name="automation"></a>Automation
 
 [!INCLUDE [azure-policy-reference-policies-automation](../../../../includes/policy/reference/bycat/policies-automation.md)]
 

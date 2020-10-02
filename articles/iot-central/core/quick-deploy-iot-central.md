@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Central アプリケーションを作成する | Microsoft Docs
-description: 新しい Azure IoT Central アプリケーションを作成します。 無料プランまたはいずれかの標準料金プランを使用して、アプリケーションを作成します。
+title: クイックスタート - Azure IoT Central アプリケーションを作成する | Microsoft Docs
+description: クイックスタート - 新しい Azure IoT Central アプリケーションを作成します。 無料プランまたはいずれかの標準料金プランを使用して、アプリケーションを作成します。
 author: viv-liu
 ms.author: viviali
 ms.date: 07/30/2020
@@ -9,14 +9,14 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 4b939505f807385f235def2606d0f29564f5d08f
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 477da41bab48ee49727ec2a8c029e748d6e7f863
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552579"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987371"
 ---
-# <a name="create-an-azure-iot-central-application"></a>Azure IoT Central アプリケーションの作成
+# <a name="quickstart---create-an-azure-iot-central-application"></a>クイックスタート - Azure IoT Central アプリケーションを作成する
 
 このクイックスタートでは、Azure IoT Central アプリケーションを作成する方法を説明します。
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 294c93242a3fee5db14f5919ebb367aebcca3a80
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 85c4807d5bf71078e3cfb26bbc27e9eecc10c041
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326190"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029463"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Azure Monitor を使用して Azure 仮想マシンを監視する
 この記事では、Azure Monitor を使用して Azure 仮想マシンから監視データを収集して分析し、正常性を維持する方法について説明します。 仮想マシンは、[他の Azure リソース](monitor-azure-resource.md)と同様に、Azure Monitor を使用して可用性とパフォーマンスを監視できますが、ゲスト オペレーティング システムとそこで実行されるワークロードも監視する必要があるため、他のリソースと異なります。 
@@ -70,9 +70,9 @@ Azure の仮想マシンによって、次の図に示すような[ログ](../pl
 - 仮想マシンのゲスト オペレーティング システムからコア パフォーマンス メトリックの分析を可能にする、事前に定義された傾向を示すパフォーマンス グラフとブック。
 - 各仮想マシンで実行されているプロセスと、他のマシンや外部ソースと相互接続されたコンポーネントを表示する依存関係マップ。
 
-![VM に対する Azure Monitor](media/monitor-vm-azure/vminsights-01.png)
+![Azure Monitor for VMs パフォーマンス ビュー](media/monitor-vm-azure/vminsights-01.png)
 
-![VM に対する Azure Monitor](media/monitor-vm-azure/vminsights-02.png)
+![Azure Monitor for VMs マップ ビュー](media/monitor-vm-azure/vminsights-02.png)
 
 
 Azure portal の仮想マシン メニューの **[分析情報]** オプションで Azure Monitor for VMs を有効にします。 詳細情報およびその他の構成方法については、「[Azure Monitor for VMs の有効化の概要](vminsights-enable-overview.md)」を参照してください。
@@ -80,7 +80,7 @@ Azure portal の仮想マシン メニューの **[分析情報]** オプショ�
 ![Azure Monitor for VMs の有効化](media/monitor-vm-azure/enable-vminsights.png)
 
 ### <a name="configure-log-analytics-workspace"></a>Log Analytics ワークスペースを構成する
-Azure Monitor for VMs によって使用される Log Analytics エージェントは、[Log Analytics ワークスペース](../platform/data-platform-logs.md#how-is-data-in-azure-monitor-logs-structured)にデータを送信します。 Log Analytics ワークスペースを構成することにより、エージェントから追加のパフォーマンス データ、イベント、およびその他の監視データの収集を有効にすることができます。 ワークスペースに接続しているすべてのエージェントによって構成が自動的にダウンロードされ、定義されたデータの収集がすぐに開始されるため、これは一度だけ構成すれば済みます。 
+Azure Monitor for VMs によって使用される Log Analytics エージェントは、[Log Analytics ワークスペース](../platform/data-platform-logs.md)にデータを送信します。 Log Analytics ワークスペースを構成することにより、エージェントから追加のパフォーマンス データ、イベント、およびその他の監視データの収集を有効にすることができます。 ワークスペースに接続しているすべてのエージェントによって構成が自動的にダウンロードされ、定義されたデータの収集がすぐに開始されるため、これは一度だけ構成すれば済みます。 
 
 Azure Monitor for VMs からワークスペースの構成に直接アクセスするには、 **[始める]** から **[ワークスペースの構成]** を選択します。 ワークスペース名をクリックして、そのメニューを開きます。
 
@@ -96,7 +96,7 @@ Azure Monitor for VMs からワークスペースの構成に直接アクセス�
 
 
 ### <a name="enable-diagnostics-extension-and-telegraf-agent"></a>診断拡張機能と Telegraf エージェントを有効にする
-Azure Monitor for VMs は、Log Analytics ワークスペースにデータを収集する Log Analytics エージェントに基づいています。 [ログ クエリ](../log-query/log-query-overview.md)、[ログ アラート](../platform/alerts-log.md)、[ブック](../platform/workbooks-overview.md)など、[Azure Monitor の複数の機能](../platform/data-platform-logs.md#what-can-you-do-with-azure-monitor-logs)がサポートされています。 [診断拡張機能](../platform/diagnostics-extension-overview.md)により、Windows 仮想マシンのゲスト オペレーティング システムから Azure Storage にパフォーマンスデータが収集され、必要に応じて、パフォーマンス データが [Azure Monitor メトリック](../platform/data-platform-metrics.md)に送信されます。 Linux 仮想マシンの場合、Azure メトリックにデータを送信するには、[Telegraf エージェント](../platform/collect-custom-metrics-linux-telegraf.md) が必要です。  これにより、[メトリックス エクスプローラー](../platform/metrics-getting-started.md)や[メトリック アラート](../platform/alerts-metric.md)など、Azure Monitor の他の機能が有効になります。 また、Azure Event Hubs を使用して Azure Monitor の外部でイベントとパフォーマンス データを送信するように診断拡張機能を構成することもできます。
+Azure Monitor for VMs は、Log Analytics ワークスペースにデータを送信する Log Analytics エージェントに基づいています。 ログ クエリ、[ログ アラート](../platform/alerts-log.md)、[ブック](../platform/workbooks-overview.md)など、[Azure Monitor の複数の機能](../log-query/log-query-overview.md)がサポートされています。 [診断拡張機能](../platform/diagnostics-extension-overview.md)により、Windows 仮想マシンのゲスト オペレーティング システムから Azure Storage にパフォーマンスデータが収集され、必要に応じて、パフォーマンス データが [Azure Monitor メトリック](../platform/data-platform-metrics.md)に送信されます。 Linux 仮想マシンの場合、Azure メトリックにデータを送信するには、[Telegraf エージェント](../platform/collect-custom-metrics-linux-telegraf.md) が必要です。  これにより、[メトリックス エクスプローラー](../platform/metrics-getting-started.md)や[メトリック アラート](../platform/alerts-metric.md)など、Azure Monitor の他の機能が有効になります。 また、Azure Event Hubs を使用して Azure Monitor の外部でイベントとパフォーマンス データを送信するように診断拡張機能を構成することもできます。
 
 Azure portal で [VM] メニューの **[診断設定]** オプションから、単一の Windows 仮想マシンに診断拡張機能をインストールします。 **[シンク]** タブで **[Azure Monitor]** を有効にするオプションを選択します。複数の仮想マシンに対してテンプレートまたはコマンド ラインから拡張機能を有効にするには、「[インストールと構成](../platform/diagnostics-extension-overview.md#installation-and-configuration)」を参照してください。 Log Analytics エージェントとは異なり、収集するデータは、各仮想マシンの拡張機能の構成で定義されます。
 
@@ -154,7 +154,7 @@ az monitor diagnostic-settings create \
 | ゲスト (クラシック) | ゲスト オペレーティング システムとアプリケーションのパフォーマンス データの限られたセット。 メトリックス エクスプローラーで使用できますが、メトリック アラートなどの他の Azure Monitor 機能では使用できません。  | [診断の拡張機能](../platform/diagnostics-extension-overview.md)がインストールされていること。 データは Azure Storage から読み取られます。  |
 | 仮想マシンのゲスト | メトリックを使用するすべての Azure Monitor 機能で使用可能な、ゲスト オペレーティング システムとアプリケーションのパフォーマンス データ。 | Windows の場合、[診断拡張機能がインストール](../platform/diagnostics-extension-overview.md)されて、Azure Monitor シンクが有効になっていること。 Linux の場合、[Telegraf エージェントがインストール](../platform/collect-custom-metrics-linux-telegraf.md)されていること。 |
 
-![メトリック](media/monitor-vm-azure/metrics.png)
+![Azure portal でのメトリック エクスプローラー](media/monitor-vm-azure/metrics.png)
 
 ## <a name="analyzing-log-data"></a>ログ データの分析
 Azure 仮想マシンにより、次のデータが Azure Monitor ログに収集されます。 
@@ -212,7 +212,7 @@ Heartbeat
 | summarize max(TimeGenerated) by Computer
 ```
 
-![ログ アラート](media/monitor-vm-azure/log-alert-01.png)
+![ハートビートがない場合のログ アラート](media/monitor-vm-azure/log-alert-01.png)
 
 サブスクリプション内のいずれかの Windows 仮想マシンで過剰な数の失敗したログオンが発生した場合にアラートを作成するには、過去 1 時間に失敗した各ログオン イベントのレコードが返される次のクエリを使用します。 失敗したログオンの許容回数に設定されたしきい値を使用します。 
 
@@ -222,20 +222,20 @@ Event
 | where EventID == 4625
 ```
 
-![ログ アラート](media/monitor-vm-azure/log-alert-02.png)
+![失敗したログオンのログ アラート](media/monitor-vm-azure/log-alert-02.png)
 
 
 ## <a name="system-center-operations-manager"></a>System Center Operations Manager
-System Center Operations Manager (SCOM) を使用すると、仮想マシン上のワークロードを詳細に監視できます。 監視プラットフォームと実装に関するさまざまな戦略の比較については、「[クラウド監視ガイド](/azure/cloud-adoption-framework/manage/monitor/)」を参照してください。
+System Center Operations Manager を使用すると、仮想マシン上のワークロードを詳細に監視できます。 監視プラットフォームと実装に関するさまざまな戦略の比較については、「[クラウド監視ガイド](/azure/cloud-adoption-framework/manage/monitor/)」を参照してください。
 
-使用し続ける予定の既存の SCOM 環境がある場合は、それを Azure Monitor と統合して追加の機能を提供することができます。 Azure Monitor によって使用される Log Analytics エージェントは、監視対象の仮想マシンが両方にデータを送信できるように、SCOM で使用されるものと同じです。 Azure Monitor for VMs にエージェントを追加して、上で指定したように追加データを収集するようにワークスペースを構成する必要は依然としてありますが、仮想マシンは引き続き SCOM 環境で既存の管理パックを変更せずに実行できます。
+使用し続ける予定の既存の Operations Manager 環境がある場合は、それを Azure Monitor と統合して追加の機能を提供することができます。 Azure Monitor によって使用される Log Analytics エージェントは、監視対象の仮想マシンが両方にデータを送信できるように、Operations Manager で使用されるものと同じです。 Azure Monitor for VMs にエージェントを追加して、上で指定したように追加データを収集するようにワークスペースを構成する必要は依然としてありますが、仮想マシンは引き続き Operations Manager 環境で既存の管理パックを変更せずに実行できます。
 
-既存の SCOM 機能を強化する Azure Monitor の機能には、次のようなものがあります。
+既存の Operations Manager 機能を強化する Azure Monitor の機能には、次のようなものがあります。
 
 - ログとパフォーマンス データを対話形式で分析するには、Log Analytics を使用します。
-- 複数の仮想マシンにわたるアラート条件と、SCOM でアラートを使用できない長期的な傾向の使用を定義するには、ログ アラートを使用します。   
+- 複数の仮想マシンにわたるアラート条件と、Operations Manager でアラートを使用できない長期的な傾向の使用を定義するには、ログ アラートを使用します。   
 
-既存の SCOM 管理グループを自分の Log Analytics ワークスペースに接続する方法の詳細については、「[Operations Manager を Azure Monitor に接続する](../platform/om-agents.md)」を参照してください。
+既存の Operations Manager 管理グループを自分の Log Analytics ワークスペースに接続する方法の詳細については、「[Operations Manager を Azure Monitor に接続する](../platform/om-agents.md)」を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

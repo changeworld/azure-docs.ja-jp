@@ -97,6 +97,8 @@
       href: ../../azure-functions/security-baseline.md
     - name: Azure IoT Hub のセキュリティ ベースライン
       href: ../../iot-hub/security-baseline.md
+    - name: Azure Load Balancer のセキュリティ ベースライン
+      href: ../../load-balancer/security-baseline.md
     - name: Azure Monitor のセキュリティ ベースライン
       href: ../../azure-monitor/security-baseline.md
     - name: Azure Machine Learning のセキュリティ ベースライン

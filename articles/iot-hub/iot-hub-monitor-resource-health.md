@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Technical Support'
 - devx-track-csharp
-ms.openlocfilehash: c7b2055494d61ba348ae6226e6fc0ad9ce5775bb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 100f87b8a13fb424706c3b5ec13268cd3ba42bbe
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022141"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438401"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Azure IoT Hub の正常性を監視し、問題をすばやく診断する
 
@@ -61,7 +61,7 @@ Azure Monitor を使用すると、IoT Hub で発生するさまざまな操作�
             "operationName": "deviceConnect",
             "category": "Connections",
             "level": "Information",
-            "properties": "{\"deviceId\":\"<deviceId>\",\"protocol\":\"<protocol>\",\"authType\":\"{\\\"scope\\\":\\\"device\\\",\\\"type\\\":\\\"sas\\\",\\\"issuer\\\":\\\"iothub\\\",\\\"acceptingIpFilterRule\\\":null}\",\"maskedIpAddress\":\"<maskedIpAddress>\"}",
+            "properties": "{\"deviceId\":\"<deviceId>\",\"sdkVersion\":\"<sdkVersion>\",\"protocol\":\"<protocol>\",\"authType\":\"{\\\"scope\\\":\\\"device\\\",\\\"type\\\":\\\"sas\\\",\\\"issuer\\\":\\\"iothub\\\",\\\"acceptingIpFilterRule\\\":null}\",\"maskedIpAddress\":\"<maskedIpAddress>\"}",
             "location": "Resource location"
         }
     ]
@@ -470,6 +470,42 @@ IoT Hub 構成ログでは、自動デバイス管理機能セットのイベン
          }
     ]
 }
+```
+
+### <a name="sdk-version"></a>SDK バージョン
+
+一部の操作では、`properties` オブジェクトに `sdkVersion` プロパティが返されます。 これらの操作では、デバイスまたはバックエンド アプリがいずれかの Azure IoT SDK を使用している場合、このプロパティには、使用されている SDK、SDK のバージョン、および SDK が実行されているプラットフォームに関する情報が含まれています。 次の例では、Node.js device SDK を使用するときに `deviceConnect` 操作に対して生成される `sdkVersion` プロパティを示しています: `"azure-iot-device/1.17.1 (node v10.16.0; Windows_NT 10.0.18363; x64)"`。 .NET (C#) SDK に対して生成される値の例は次のとおりです: `".NET/1.21.2 (.NET Framework 4.8.4200.0; Microsoft Windows 10.0.17763 WindowsProduct:0x00000004; X86)"`。
+
+次の表には、さまざまな Azure IoT SDK に使用される SDK 名が示されています。
+
+| sdkVersion プロパティでの SDK 名 | 言語 |
+|----------|----------|
+| .NET | .NET (C#) |
+| microsoft.azure.devices | .NET (C#) サービス SDK |
+| microsoft.azure.devices.client | .NET (C#) デバイス SDK |
+| iothubclient | C または Python v1 (非推奨) デバイス SDK |
+| iothubserviceclient | C または Python v1 (非推奨) サービス SDK |
+| azure-iot-device-iothub-py | Python デバイス SDK |
+| azure-iot-device | Node.js デバイス SDK |
+| azure-iothub | Node.js サービス SDK |
+| com.microsoft.azure.iothub-java-client | Java デバイス SDK |
+| com.microsoft.azure.iothub.service.sdk | Java サービス SDK |
+| com.microsoft.azure.sdk.iot.iot-device-client | Java デバイス SDK |
+| com.microsoft.azure.sdk.iot.iot-service-client | Java サービス SDK |
+| C | 埋め込み C |
+| C + (OSSimplified = Azure RTOS) | Azure RTOS |
+
+診断ログに対してクエリを実行するときに、SDK バージョン プロパティを抽出できます。 次のクエリは、接続イベントで返されるプロパティから、SDK バージョン プロパティ (およびデバイス ID) を抽出します。 これら 2 つのプロパティは、イベントの時刻と、デバイスが接続している IoT ハブのリソース ID と一緒に結果に書き込まれます。
+
+```kusto
+// SDK version of devices
+// List of devices and their SDK versions that connect to IoT Hub
+AzureDiagnostics
+| where ResourceProvider == "MICROSOFT.DEVICES" and ResourceType == "IOTHUBS"
+| where Category == "Connections"
+| extend parsed_json = parse_json(properties_s) 
+| extend SDKVersion = tostring(parsed_json.sdkVersion) , DeviceId = tostring(parsed_json.deviceId)
+| distinct DeviceId, SDKVersion, TimeGenerated, _ResourceId
 ```
 
 ### <a name="read-logs-from-azure-event-hubs"></a>Azure Event Hubs からのログの読み取り

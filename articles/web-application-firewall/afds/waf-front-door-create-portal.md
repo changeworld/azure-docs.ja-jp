@@ -5,18 +5,18 @@ author: vhorne
 ms.service: web-application-firewall
 services: web-application-firewall
 ms.topic: tutorial
-ms.date: 03/10/2020
+ms.date: 09/15/2020
 ms.author: victorh
-ms.openlocfilehash: be66a93ea4a518b26d973d222caf58e73b6986a3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7c7ea5297276ed9a1d1f2ca8f4190997dcab57c3
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79475843"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602219"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure Front Door で Web アプリケーション ファイアウォール ポリシーを作成する
 
-このチュートリアルでは、基本的な Azure Web アプリケーション ファイアウォール (WAF) ポリシーを作成し、Azure Front Door でフロントエンド ホストに適用する方法について説明します。
+このチュートリアルでは、基本的な Azure Web Application Firewall (WAF) ポリシーを作成し、Azure Front Door でフロントエンド ホストに適用する方法について説明します。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -68,7 +68,7 @@ WAF の動作を確認するには、モードの設定を **[検出]** から *
 
 **[カスタム ルール]** セクションの下の **[Add custom rule]\(カスタム ルールの追加\)** を選択することで、カスタム ルールを作成できます。 これで、カスタム ルールの構成ページが起動されます。 次に示すのは、クエリ文字列に **blockme** が含まれているときに要求をブロックするというカスタム ルールの構成方法の例です。
 
-![WAF ポリシー モードを変更する](../media/waf-front-door-create-portal/customquerystring2.png)
+![カスタム規則](../media/waf-front-door-create-portal/customquerystring2.png)
 
 ### <a name="default-rule-set-drs"></a>既定の規則セット (DRS)
 
@@ -76,8 +76,11 @@ Azure で管理される既定の規則セットは既定で有効になりま�
 
  ![WAF 規則セットを変更する](../media/waf-front-door-create-portal/managed2.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+リソース グループおよび関連するすべてのリソースは、不要になったら削除します。
+
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Azure Web アプリケーション ファイアウォールについて確認する](../overview.md)
-> [Azure Front Door の詳細を確認する](../../frontdoor/front-door-overview.md)
+> [Azure Front Door の詳細](../../frontdoor/front-door-overview.md)を確認する

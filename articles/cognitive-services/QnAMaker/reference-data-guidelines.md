@@ -1,14 +1,14 @@
 ---
 title: データのインポートとエクスポートのリファレンス - QnA Maker
-description: QnA ペアのインポートおよび作成で URL の種類がどのように使用されるのかについて理解します。
+description: ナレッジ ベースのバックアップ、ストレージ、および置換に最適な結果を得るには、このインポートおよびエクスポートのリファレンスを使用してください。
 ms.topic: reference
 ms.date: 01/02/2020
-ms.openlocfilehash: e4a423ef9478cd39181c6440801f9fe954dc896c
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: c77f51263206c3cc0d4b546e1728963211a186c6
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804245"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532156"
 ---
 # <a name="import-and-export-data-reference"></a>データのインポートとエクスポートのリファレンス
 

@@ -1,14 +1,14 @@
 ---
 title: Azure Monitor for containers からのログ アラート | Microsoft Docs
-description: この記事では、コンテナー用 Azure Monitor からのメモリおよび CPU の使用率に対するログ クエリに基づいてカスタム アラートを作成する方法について説明します。
+description: この記事では、Azure Monitor for containers からのメモリおよび CPU の使用率に対するカスタム ログ アラートを作成する方法について説明します。
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: c023471ae041fa524fc4a2164c633ca80bcfdd88
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2d86edc5994070ba909c6e3a0da2cf76e8359773
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094706"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973729"
 ---
 # <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>Azure Monitor for containers からログ アラートを作成する方法
 

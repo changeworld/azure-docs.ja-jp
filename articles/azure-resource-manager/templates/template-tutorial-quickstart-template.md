@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 90d5c2688d20b62a4a5fda78eb67ed01777bc28c
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a798fd9d4ec7b937fbae231a8e17596abcb897f9
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496884"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069528"
 ---
 # <a name="tutorial-use-azure-quickstart-templates"></a>チュートリアル:Azure クイックスタート テンプレートを使用する
 
@@ -91,7 +91,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> デプロイに失敗した場合は、デプロイ コマンドで **debug** スイッチを使用してデバッグ ログを表示します。  **verbose** スイッチを使用して、詳細なデバッグ ログを表示することもできます。
+> デプロイに失敗した場合は、**verbose** スイッチを使用して、作成しているリソースに関する情報を取得します。 デバッグの詳細については、**debug** スイッチを使用してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

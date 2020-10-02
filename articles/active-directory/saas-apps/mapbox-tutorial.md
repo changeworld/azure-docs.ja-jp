@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/21/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: faedec24bc4b962044d55a47345739592e276b61
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4111752d949b7ed2b0ea14734e5d795564718611
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554772"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661915"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mapbox"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Mapbox の統合
 
@@ -41,6 +41,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * Mapbox で **IDP** Initiated SSO がサポートされています
 * Mapbox を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+
+> [!NOTE]
+> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
 
 ## <a name="adding-mapbox-from-the-gallery"></a>ギャラリーからの Mapbox の追加
 
@@ -136,15 +139,15 @@ Mapbox で Azure AD SSO を構成してテストするには、次の構成要�
 
 1. **[設定]** タブをクリックします。
 
-    ![Mapbox の構成](./media/mapbox-tutorial/configure1.png)
+    ![Mapbox の [Settings]\(設定\) タブ](./media/mapbox-tutorial/configure1.png)
 
 1. 左側のナビゲーション ウィンドウで、 **[セキュリティ]** をクリックします。
 
-    ![Mapbox の構成](./media/mapbox-tutorial/configure2.png)
+    ![Mapbox の [Security]\(セキュリティ\) タブ](./media/mapbox-tutorial/configure2.png)
 
 1. **[シングル サインオンの編集]** をクリックします。
 
-    ![Mapbox の構成](./media/mapbox-tutorial/configure3.png)
+    ![Mapbox の [Edit single sign-on]\(シングルサインオンの編集\)](./media/mapbox-tutorial/configure3.png)
 
 1. **[手順 3:Setup SAML single sign-on for Mapbox]\(Mapbox に SAML シングル サインオンを設定する\)** までスクロールダウンし、次の手順を実行します。
 

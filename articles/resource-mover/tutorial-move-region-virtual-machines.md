@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 49b7a3700bf497ad868b7c4ab1f0802564b61bf3
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 3a5489241aa15ce105dbe4d89086aff00373ca55
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89652493"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603970"
 ---
 # <a name="tutorial-move-azure-vms-across-regions"></a>チュートリアル:リージョン間で Azure VM を移動する
 
@@ -68,11 +68,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 移動するリソースを選択します。
 
 - 選択されたソース リージョン内のリソース グループでサポートされているすべてのリソースの種類が表示されます。
+- リージョン間を移動するために既に追加されているリソースは表示されません。
 - ソース リージョンと同じサブスクリプションのターゲット リージョンにリソースを移動します。 サブスクリプションを変更する場合は、リソースの移動後に変更を行うことができます。
 
-1. Azure portal で、*resource mover* を検索します。 その後、 **[サービス]** で **[Azure Resource Mover]** を選択します。
+1. Azure portal で、*Resource Mover* を検索します。 その後、 **[サービス]** で **[Azure Resource Mover]** を選択します。
 
-    ![Azure portal での resource mover の検索結果](./media/tutorial-move-region-virtual-machines/search.png)
+    ![Azure portal での Resource Mover の検索結果](./media/tutorial-move-region-virtual-machines/search.png)
 
 2. **[概要]** で、 **[開始]** をクリックします。
 
@@ -80,7 +81,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 3. **[リソースの移動]**  >  **[Source + destination]\(ソース + 宛先\)** で、ソース サブスクリプションおよびリージョンを選択します。
 4. **[宛先]** で、VM の移動先となるリージョンを選択します。 続けて、 **[次へ]** をクリックします。
-5. **[Metadata region]\(メタデータ リージョン\)** で、移動しようとしているリソースに関するメタデータを格納する場所を選択します。 リソース グループはこの目的のために特別に作成されます。 続けて、 **[次へ]** をクリックします。
 
     ![ソースと宛先のリージョンを選択するページ](./media/tutorial-move-region-virtual-machines/source-target.png)
 
@@ -90,7 +90,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ![移動する VM を選択するページ](./media/tutorial-move-region-virtual-machines/select-vm.png)
 
 8.  **[移動するリソース]** で、 **[次へ]** をクリックします。
-9. **[確認 + 追加]** で、ソースと宛先の設定を確認します。 移動に関するメタデータが、メタデータ リージョン内のこの目的のために作成されたリソース グループに格納されることを理解していることを確認します。
+9. **[確認 + 追加]** で、ソースと宛先の設定を確認します。 
 
     ![設定を確認し、移動を続行するためのページ](./media/tutorial-move-region-virtual-machines/review.png)
 10. **[続行]** をクリックして、リソースの追加を開始します。
@@ -235,7 +235,8 @@ VM の準備と移動を行う前に、VM リソース グループがターゲ�
 
 ## <a name="configure-settings-after-the-move"></a>移動後に設定を構成する
 
-Mobility Service は VM から自動的にアンインストールされません。 手動でアンインストールします。あるいは、サーバーをもう一度移動する予定であれば、そのままにしておきます。
+- Mobility Service は VM から自動的にアンインストールされません。 手動でアンインストールします。あるいは、サーバーをもう一度移動する予定であれば、そのままにしておきます。
+- 移動後、Azure ロールベースのアクセス制御 (Azure RBAC) 規則を変更します。
 
 ## <a name="delete-source-resources-after-commit"></a>コミット後にソース リソースを削除する
 

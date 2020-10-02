@@ -4,12 +4,12 @@ description: このチュートリアルでは、Azure Pipelines を使用して
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 992d720d86fc2e7fedd8e7fd4b559220ff3c0512
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 302ad1dcfaa93564d70fab739726787ef09c79df
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260358"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563932"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>チュートリアル:CI/CD を使用して Service Fabric クラスターへアプリケーションをデプロイする
 
@@ -139,7 +139,7 @@ Azure Active Directory の資格情報の場合は、クラスターの作成に
 
 Azure DevOps へのコード変更をチェックインして、継続的インテグレーション パイプラインが機能していることを確認します。
 
-コードを記述すると、変更内容は Visual Studio によって自動的に追跡されます。 右下のステータス バーから [保留中の変更] アイコン (![保留中][pending]) を選択して、ローカル Git リポジトリへ変更をコミットします。
+コードを記述すると、変更内容は Visual Studio によって自動的に追跡されます。 右下のステータス バーから [保留中の変更] アイコン (![[保留中の変更] アイコンには、鉛筆と数字が表示されます。][pending]) を選択して、ローカル Git リポジトリへ変更をコミットします。
 
 チーム エクスプローラーの **[変更]** ビューで、更新内容を説明するメッセージを追加し、変更をコミットします。
 

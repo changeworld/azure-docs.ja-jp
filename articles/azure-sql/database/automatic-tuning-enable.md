@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: 94ffe2852380d238e9829a8ab0cc69ebe82b74fe
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: e7a3dd1c58f2bddb767dcac4ac2b5e354be77f65
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373506"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981450"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>クエリの監視とワークロード パフォーマンスの向上のために Azure portal で自動チューニングを有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -51,7 +51,7 @@ Azure SQL Database では、データ サービスが自動的に管理されま
 
 Azure SQL Database の[サーバー](logical-servers.md)で自動チューニングを有効にするには、Azure portal でサーバーに移動し、メニューで **[自動チューニング]** を選択します。
 
-![サーバー](./media/automatic-tuning-enable/server.png)
+![スクリーンショットには、サーバーのオプションを適用できる、Azure portal での自動チューニングが示されています。](./media/automatic-tuning-enable/server.png)
 
 > [!NOTE]
 > **DROP_INDEX** オプションは、現時点では、パーティションの切り替えとインデックス ヒントを使うアプリケーションと互換性がなく、このような場合は有効にしてはならないことに注意してください。 Premium および Business Critical サービスレベルでは、使われていないインデックスの削除はサポートされていません。
@@ -77,7 +77,7 @@ Azure SQL Database では、各データベースの自動チューニング構�
 
 個々の自動チューニング設定は、データベースごとに個別に構成できます。 個々の自動チューニング オプションを手動で構成したり、オプションがサーバーから設定を継承するように指定したりできます。
 
-![データベース](./media/automatic-tuning-enable/database.png)
+![スクリーンショットには、単一データベースのオプションを適用できる、Azure portal での自動チューニングを示されています。](./media/automatic-tuning-enable/database.png)
 
 DROP_INDEX オプションは、現時点では、パーティションの切り替えとインデックス ヒントを使うアプリケーションと互換性がなく、このような場合は有効にしてはならないことに注意してください。
 

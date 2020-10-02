@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 06/26/2020
-ms.openlocfilehash: 4d48ca3685dca36157307e7cb4b3d25261c243aa
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 10108fdf4f2b7090eaeaa4b378992c2e94d3b04c
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705743"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489580"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Azure SQL Database と Azure Synapse Analytics の接続アーキテクチャ
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -94,6 +94,7 @@ Azure 外から接続する場合、接続には既定で `Proxy` の接続ポ�
 | フランス中部       | 40.79.137.0、40.79.129.1 |
 | ドイツ中部      | 51.4.144.100       |
 | ドイツ北東部   | 51.5.144.179       |
+| ドイツ中西部 | 51.116.240.0、51.116.248.0、51.116.152.0 |
 | インド中部        | 104.211.96.159     |
 | インド南部          | 104.211.224.146    |
 | インド西部           | 104.211.160.80     |

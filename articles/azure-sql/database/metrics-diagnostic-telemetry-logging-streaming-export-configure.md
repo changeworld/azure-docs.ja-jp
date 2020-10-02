@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 04/06/2020
-ms.openlocfilehash: efb99e23466e4615dfa1f4a429addcd8c4ac68f5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 51d86e51d89bdaf83be4a722d0350b35d2146cff
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085601"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973042"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>Azure SQL Database および SQL Managed Instance 診断テレメトリのストリーミング エクスポートを構成する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -72,7 +72,7 @@ Intelligent Insights ログのエクスポートをストリーミングする�
 
 これらの送信先のいずれかにストリーミングされたこの診断テレメトリを使用することで、リソース使用率とクエリ実行統計を測定し、パフォーマンスの監視を容易にできます。
 
-![アーキテクチャ](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/architecture.png)
+![図は、多くの SQL データベースおよびマネージド インスタンス内のデータベースから Azure Diagnostics へテレメトリが送信され、そこから情報が Azure SQL Analytics、Event Hub、およびストレージに転送される様子を示しています。](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/architecture.png)
 
 ## <a name="enable-and-configure-the-streaming-export-of-diagnostic-telemetry"></a>診断テレメトリのストリーミング エクスポートを有効にして構成する
 

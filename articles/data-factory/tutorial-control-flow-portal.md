@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: e12f0cd44143621d34096a6c1161a22a89d21d9b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c046d2e437004146b5ee4c53dd98942ca1781ad4
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077655"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983728"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>Azure portal を使用して Azure Data Factory パイプラインのアクティビティを分岐または連結する
 
@@ -24,7 +24,7 @@ ms.locfileid: "86077655"
 
 このチュートリアルでは、いくつかの制御フロー機能を紹介する Data Factory パイプラインを作成します。 このパイプラインでは、Azure Blob Storage 内のコンテナーから同じストレージ アカウント内の別のコンテナーへの単純なコピーを行います。 コピー アクティビティが成功した場合、成功したコピー操作の詳細 (書き込まれたデータの量など) がパイプラインによって成功電子メールで送信されます。 コピー アクティビティが失敗した場合、コピー失敗の詳細 (エラー メッセージなど) がパイプラインによって失敗電子メールで送信されます。 チュートリアル全体を通じて、パラメーターを渡す方法が示されます。
 
-シナリオの概要:![概要](media/tutorial-control-flow-portal/overview.png)
+シナリオの概要:![コピー対象の Azure Blob Storage を示す図。成功した場合は詳細を含む電子メールを送信し、失敗した場合はエラーの詳細を含む電子メールを送信する。](media/tutorial-control-flow-portal/overview.png)
 
 このチュートリアルでは、以下の手順を実行します。
 

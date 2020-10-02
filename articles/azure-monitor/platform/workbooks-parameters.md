@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor ブックの作成パラメーター
-description: 作成済みのブックやパラメーター化されたカスタム ブックを使用して複雑なレポート作成を簡素化します。
+description: ブックの作成者がパラメーターを使用してコンシューマーからの入力を収集し、それをブックの他の部分で参照できるようにする方法について説明します。
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 3e7dda85f1f890d5ae0eb4722c3e028b373fdcab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8be7dd170d5e4e3bddb09bc1b163fba7a841a6b7
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77658219"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984574"
 ---
 # <a name="workbook-parameters"></a>ブックのパラメーター
 

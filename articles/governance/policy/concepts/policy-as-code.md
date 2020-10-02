@@ -3,12 +3,12 @@ title: コードとしてのポリシー ワークフローの設計
 description: Azure Policy 定義をコードとしてデプロイし、リソースを自動的に検証するようにワークフローを設計する方法について説明します。
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: d46680a9978cd4ec5cdc612a709f031841716749
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: bc7a6d72e344868a799638f724b5c225516b5a32
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047328"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651877"
 ---
 # <a name="design-policy-as-code-workflows"></a>コードとしてのポリシー ワークフローの設計
 
@@ -43,7 +43,9 @@ Policy as Code ワークフローの詳細を説明する前に、次の定義�
 
 コードとしてのポリシーの推奨される一般的なワークフローは、次の図のようになります。
 
-:::image type="content" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="コードとしてのポリシー ワークフローの概要" border="false":::
+:::image type="complex" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="作成からテスト、デプロイまでの、コードとしてのポリシーのワークフロー ボックスを示している図。" border="false":::
+   図は、コードとしてのポリシー ワークフロー ボックスを示しています。 作成には、ポリシーとイニシアチブ定義の作成が含まれます。 テストには、強制モードが無効な割り当てが含まれます。 コンプライアンス対応状態のゲートウェイ チェックの後に、M S I アクセス許可の割り当ての付与およびリソースの修復が行われます。  デプロイには、強制モードが有効な割り当ての更新が含まれます。
+:::image-end:::
 
 ### <a name="create-and-update-policy-definitions"></a>ポリシー定義を作成および更新する
 

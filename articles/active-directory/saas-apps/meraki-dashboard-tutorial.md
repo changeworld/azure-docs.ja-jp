@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/20/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: f4a4c38cf079c22dbd2b8eda5e68cc3f147b1fc0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 84db28348baebc4f6b62f9cacb0035b4df1f6145
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88534982"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660770"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-meraki-dashboard"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Meraki Dashboard の統合
 
@@ -42,6 +42,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 * Meraki Dashboard では、**IDP** Initiated SSO がサポートされます
 * Meraki Dashboard を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
+> [!NOTE]
+> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
+
 ## <a name="adding-meraki-dashboard-from-the-gallery"></a>ギャラリーからの Meraki Dashboard の追加
 
 Azure AD への Meraki Dashboard の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Meraki Dashboard を追加する必要があります。
@@ -53,7 +56,7 @@ Azure AD への Meraki Dashboard の統合を構成するには、ギャラリ�
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Meraki Dashboard**」と入力します。
 1. 結果のパネルから **[Meraki Dashboard]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-meraki-dashboard"></a>Meraki Dashboard の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-meraki-dashboard"></a>Meraki Dashboard の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、Meraki Dashboard に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Meraki Dashboard の関連ユーザーとの間にリンク関係を確立する必要があります。
 
@@ -147,15 +150,15 @@ Meraki Dashboard に対する Azure AD SSO を構成してテストするには�
 
 1. **[Organization]\(組織\)**  ->  **[Settings]\(設定\)** に移動します。
 
-    ![Meraki Dashboard の構成](./media/meraki-dashboard-tutorial/configure1.png)
+    ![Meraki Dashboard の [Settings]\(設定\) タブ](./media/meraki-dashboard-tutorial/configure1.png)
 
 1. [Authentication]\(認証\) で、 **[SAML SSO]** を **[SAML SSO enabled]\(SAML SSO が有効\)** に変更します。
 
-    ![Meraki Dashboard の構成](./media/meraki-dashboard-tutorial/configure2.png)
+    ![Meraki Dashboard の [Authentication]\(認証\)](./media/meraki-dashboard-tutorial/configure2.png)
 
 1. **[Add a SAML IdP]\(SAML IdP の追加\)** をクリックします。
 
-    ![Meraki Dashboard の構成](./media/meraki-dashboard-tutorial/configure3.png)
+    ![Meraki Dashboard の [Add a SAML IdP]\(SAML IdP の追加\)](./media/meraki-dashboard-tutorial/configure3.png)
 
 1. Azure portal からコピーした **[拇印]** の値を **[X.590 cert SHA1 fingerprint]\(X.590 証明書 SHA1 のフィンガープリント\)** ボックスに貼り付けます。 **[保存]** をクリックします。 保存すると、コンシューマー URL が表示されます。 [Consumer URL]\(コンシューマー URL\) の値をコピーして、Azure portal の **[基本的な SAML 構成] セクション**の **[応答 URL]** ボックスに貼り付けます。
 
@@ -167,15 +170,15 @@ Meraki Dashboard に対する Azure AD SSO を構成してテストするには�
 
 1. **[Organization]\(組織\)**  ->  **[Administrators]\(管理者\)** に移動します。
 
-    ![Meraki Dashboard の構成](./media/meraki-dashboard-tutorial/user1.png)
+    ![Meraki Dashboard [Administrators]\(管理者\)](./media/meraki-dashboard-tutorial/user1.png)
 
 1. [SAML administrator roles]\(SAML 管理者ロール\) セクションで、 **[Add SAML role]\(SAML ロールの追加\)** をクリックします。
 
-    ![Meraki Dashboard の構成](./media/meraki-dashboard-tutorial/user2.png)
+    ![Meraki Dashboard の [Add SAML role]\(SAML ロールの追加\) ボタン](./media/meraki-dashboard-tutorial/user2.png)
 
 1. ロール **meraki_full_admin** を入力し、 **[Organization access]\(組織アクセス\)** を **[Full]\(完全\)** としてマークします。次に、 **[Create role]\(ロールの作成\)** をクリックします。 **meraki_readonly_admin** に対してこの手順を繰り返します。今回は **[Organization access]\(組織アクセス\)** を **[Read-only]\(読み取り専用\)** ボックスとしてマークします。
  
-    ![Meraki Dashboard の構成](./media/meraki-dashboard-tutorial/user3.png)
+    ![Meraki Dashboard のユーザーの作成](./media/meraki-dashboard-tutorial/user3.png)
 
 ## <a name="test-sso"></a>SSO のテスト 
 
@@ -194,6 +197,3 @@ Meraki Dashboard に対する Azure AD SSO を構成してテストするには�
 - [Azure AD で Meraki Dashboard を試す](https://aad.portal.azure.com/)
 
 - [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [高度な可視性と制御によって Meraki Dashboard を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-

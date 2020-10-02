@@ -3,12 +3,12 @@ title: ポータルから既存の割り当てを更新する
 description: Azure Blueprints でポータルから既存のブループリントの割り当てを更新する方法について説明します。
 ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 888ebbf0149f8f75f867bb17115988cb20d25df2
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: ddaac8110885d817bc96745965c1af7e522b1919
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051425"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651371"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>既存のブループリントの割り当てを更新する方法
 
@@ -26,17 +26,17 @@ ms.locfileid: "89051425"
 
 1. ブループリントの一覧で、ブループリントの割り当てを選択します。 **[割り当ての更新]** ボタンを使用するか、ブループリントの割り当てを右クリックし、 **[割り当ての更新]** を選択します。
 
-   :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="既存のブループリントの割り当てを更新する" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="[割り当ての更新] ボタンが強調表示された [ブループリント割り当て] ページのスクリーンショット。" border="false":::
 
 1. 元の割り当てからすべての値が事前入力された状態で、 **[ブループリントの割り当て]** ページが読み込まれます。 **ブループリント定義のバージョン**、**ロック割り当て**状態、およびブループリント定義に存在する任意の動的パラメーターを変更できます。 変更が完了したら、 **[割り当て]** を選択します。
 
 1. 更新された割り当ての詳細ページで、新しいステータスを確認します。 この例では、割り当てに**ロック**を追加しました。
 
-   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="既存のブループリントの割り当てを更新した - 変更されたロック モード" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="[割り当ての更新] ボタンが強調表示された [ブループリント割り当て] ページのスクリーンショット。" border="false":::
 
 1. ドロップダウン リストを使用して、他の**割り当て操作**に関する詳細を確認します。 選択した割り当て操作によって、**マネージド リソース**のテーブルが更新されます。
 
-   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="ブループリント割り当ての割り当て操作" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="[割り当ての更新] ボタンが強調表示された [ブループリント割り当て] ページのスクリーンショット。" border="false":::
 
 ## <a name="rules-for-updating-assignments"></a>割り当ての更新の規則
 

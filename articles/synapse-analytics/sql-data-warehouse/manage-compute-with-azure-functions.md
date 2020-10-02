@@ -11,12 +11,12 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 60e79ecd4148829c38b237c0e28d60796e84ac01
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 11cb0c30a1a6ed70cca82e494fcec73936975f39
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543658"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442224"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Azure Synapse Analytics SQL プールで Azure Functions を使用してコンピューティング リソースを管理します
 
@@ -54,7 +54,7 @@ Azure Function App を SQL プールと組み合わせて使用するために�
 
 3. この時点で表示される値は、 *%ScaleDownTime%* と *%ScaleUpTime%* のどちらかです。 これらの値は、スケジュールが [[アプリケーション設定]](../../azure-functions/functions-how-to-use-azure-function-app-settings.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) に定義された値に基づいていることを示します。 差し当たり、この値は無視してかまいません。以降の手順に基づき、必要な時刻に合わせてスケジュールを変更してください。
 
-4. SQL Data Warehouse のスケールアップ頻度を表す時刻 (CRON 式) をスケジュール領域に追加します。
+4. Azure Synapse Analytics のスケールアップ頻度を表す時刻 (CRON 式) をスケジュール領域に追加します。
 
    ![関数のスケジュールを変更](./media/manage-compute-with-azure-functions/change-schedule.png)
 

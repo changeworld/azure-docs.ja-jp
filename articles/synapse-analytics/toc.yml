@@ -10,34 +10,24 @@
       items:
         - name: はじめに
           href: get-started.md
-          displayName: 'get, started'
-        - name: 1 ワークスペースを作成する
+        - name: 1 Synapse ワークスペースを作成する
           href: get-started-create-workspace.md
-          displayName: 'get, started'
-        - name: 2 SQL プールを使用する
+        - name: 2 SQL プールを使用して分析する
           href: get-started-analyze-sql-pool.md
-          displayName: 'get, started'
-        - name: 3 Spark を使用する
+        - name: 3 Spark を使用して分析する
           href: get-started-analyze-spark.md
-          displayName: 'get, started'
-        - name: 4 SQL オンデマンドを使用する
+        - name: 4 SQL オンデマンドを使用して分析する
           href: get-started-analyze-sql-on-demand.md
-          displayName: 'get, started'
         - name: 5 ストレージ アカウント内のデータを分析する
           href: get-started-analyze-storage.md
-          displayName: 'get, started'
         - name: 6 パイプラインを使用したオーケストレーション
           href: get-started-pipelines.md
-          displayName: 'get, started'
         - name: 7 Power BI で視覚化する
           href: get-started-visualize-power-bi.md
-          displayName: 'get, started'
         - name: 8 監視する
           href: get-started-monitor.md
-          displayName: 'get, started'
-        - name: 9 Knowledge Center を探索する
+        - name: 9 Knowledge Center を調べる
           href: get-started-knowledge-center.md
-          displayName: 'get, started'
     - name: チート シート
       href: overview-cheat-sheet.md
     - name: よく寄せられる質問
@@ -58,16 +48,16 @@
       href: quickstart-power-bi.md
     - name: プールを作成する
       items:
-        - name: Synapse Studio を使用して SQL プールを作成する
-          href: quickstart-create-sql-pool-studio.md
+        - name: Web ツールを使用して Apache Spark ノートブックを作成する
+          href: quickstart-apache-spark-notebook.md
+        - name: Azure portal を使用して Apache Spark プールを作成する
+          href: quickstart-create-apache-spark-pool-portal.md
+        - name: Synapse Studio を使用して Apache Spark プールを作成する
+          href: quickstart-create-apache-spark-pool-studio.md
         - name: Azure portal を使用して SQL プールを作成する
           href: quickstart-create-sql-pool-portal.md
-        - name: ノートブックを作成する
-          href: quickstart-apache-spark-notebook.md
-        - name: Azure portal を使用して Spark プールを作成する
-          href: quickstart-create-apache-spark-pool-portal.md
-        - name: Synapse Studio を使用して Spark プールを作成する
-          href: quickstart-create-apache-spark-pool-studio.md
+        - name: Synapse Studio を使用して SQL プールを作成する
+          href: quickstart-create-sql-pool-studio.md
     - name: SQL プールを使用したデータの読み込み
       items:
         - name: COPY ステートメント
@@ -84,16 +74,12 @@
   items:
     - name: Apache Spark アプリケーションを実行する
       href: ./spark/intellij-tool-synapse.md
-    - name: Spark プールに対して PySpark アプリケーションを実行する
-      href: ./spark/vscode-tool-synapse.md
     - name: Spark ジョブ定義
       href: ./spark/apache-spark-job-definitions.md
     - name: Power BI Desktop
       href: ./sql/tutorial-connect-power-bi-desktop.md
     - name: データ サイエンティスト
       items:
-        - name: Azure AutoML を使用して回帰実験を実行する
-          href: ./spark/apache-spark-azure-machine-learning-tutorial.md
         - name: Apache Spark MLlib を使用して分類モデルを作成する
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
     - name: データ アナリスト
@@ -212,8 +198,8 @@
               href: ../data-factory/concepts-data-flow-expression-builder.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 式言語
               href: ../data-factory/data-flow-expression-functions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Azure Data Factory との違い
-              href: ./data-integration/concepts-data-factory-differences.md
+        - name: Azure Data Factory との違い
+          href: ./data-integration/concepts-data-factory-differences.md
     - name: Spark
       items:
         - name: 概要
@@ -386,6 +372,22 @@
           href: ../cosmos-db/synapse-link-frequently-asked-questions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Synapse Link のユース ケース
           href: ../cosmos-db/synapse-link-use-cases.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+    - name: Machine Learning
+      items:
+        - name: 概要
+          items:
+            - name: Synapse Analytics の機械学習とは
+              href: machine-learning/what-is-machine-learning.md
+        - name: クイックスタート
+          items:
+            - name: Azure Machine Learning のリンクされたサービスの新規作成
+              href: machine-learning/quickstart-integrate-azure-machine-learning.md
+        - name: チュートリアル
+          items:
+            - name: SQL プール向けのモデル スコアリング ウィザード
+              href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
+            - name: Azure AutoML を使用して回帰実験を実行する (DW でのスコアリング)
+              href: ./spark/apache-spark-azure-machine-learning-tutorial.md
     - name: ツール統合 (AI、ETL、BI)
       items:
         - name: Synapse Studio のトラブルシューティング
@@ -478,31 +480,27 @@
               href: ../cosmos-db/configure-synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Cosmos DB の Azure Synapse Link に接続する
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
-            - name: Apache Spark を使用して Azure Cosmos DB 分析ストアに対してクエリを実行する
+            - name: Azure Synapse Analytics の Apache Spark を使用して Azure Cosmos DB 分析ストアに対してクエリを実行する
               href: ./synapse-link/how-to-query-analytical-store-spark.md
             - name: Apache Spark を使用して Synapse Link のデータを SQL プールにコピーする
               href: ./synapse-link/how-to-copy-to-sql-pool.md
-            - name: SQL オンデマンドを使用して Azure Cosmos DB 分析ストアのクエリを実行する
-              href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Synapse SQL
           items:
-            - name: 外部データに対してクエリを実行する
+            - name: ストレージ内のデータのクエリ
               items:
                 - name: 概要
                   href: sql/query-data-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: CSV ファイルに対してクエリを実行する
+                - name: CSV ファイルのクエリ
                   href: sql/query-single-csv-file.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Parquet ファイルのクエリ
                   href: sql/query-parquet-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: Parquet の入れ子にされた型のクエリ
+                  href: sql/query-parquet-nested-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: JSON ファイルのクエリ
                   href: sql/query-json-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Azure Cosmos DB に対してクエリを実行する
-                  href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: 入れ子になっている型に対してクエリを実行する
-                  href: sql/query-parquet-nested-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: クエリ フォルダーと複数のファイル
                   href: sql/query-folders-multiple-csv-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: ファイル メタデータを使用してパーティション分割済みファイルに対するクエリを実行する
+                - name: ファイルのメタデータを使用する
                   href: sql/query-specific-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: ビューの作成および使用
                   href: sql/create-use-views.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json

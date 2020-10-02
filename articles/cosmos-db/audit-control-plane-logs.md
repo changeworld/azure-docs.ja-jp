@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: sngun
-ms.openlocfilehash: ae1d2743934c5ae8df9f2a1514bdda9b34262b9d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 691c6ec0559eceb60d57bf04819701edebbffd83
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023689"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462447"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Azure Cosmos DB コントロール プレーン操作を監査する方法
 
@@ -69,17 +69,17 @@ Azure portal を使用して、コントロール プレーン操作の診断ロ
 
 次のスクリーンショットでは、Azure Cosmos アカウントの整合性レベルが変更されたときのログがキャプチャされています。
 
-:::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="VNet が追加されたときのコントロール プレーンのログ":::
+:::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="コントロール プレーン要求のログを有効にする":::
 
 次のスクリーンショットは、Cassandra アカウントのキースペースまたはテーブルが作成されたとき、およびスループットが更新されたときにログをキャプチャします。 次のスクリーンショットに示すように、データベースやコンテナーでの作成と更新の操作に関するコントロール プレーンのログは、個別にログに記録されます。
 
-:::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="スループットが更新されたときのコントロール プレーンのログ":::
+:::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="コントロール プレーン要求のログを有効にする":::
 
 ## <a name="identify-the-identity-associated-to-a-specific-operation"></a>特定の操作に関連付けられている ID を識別する
 
 さらにデバッグする場合は、アクティビティ ID の使用または操作のタイムスタンプにより、**アクティビティ ログ** 内の特定の操作を特定できます。 タイムスタンプは、アクティビティ ID が明示的に渡されていない一部の Resource Manager クライアントに使用されます。 アクティビティ ログには、操作が開始された ID の詳細が示されます。 次のスクリーンショットは、アクティビティ ID を使用し、アクティビティ ログでその ID に関連付けられている操作を検索する方法を示しています。
 
-:::image type="content" source="./media/audit-control-plane-logs/find-operations-with-activity-id.png" alt-text="アクティビティ ID を使用して操作を検索する":::
+:::image type="content" source="./media/audit-control-plane-logs/find-operations-with-activity-id.png" alt-text="コントロール プレーン要求のログを有効にする":::
 
 ## <a name="control-plane-operations-for-azure-cosmos-account"></a>Azure Cosmos アカウントのコントロール プレーン操作
 
@@ -193,6 +193,22 @@ AzureDiagnostics 
 AzureDiagnostics 
 | where Category =="ControlPlaneRequests"
 | where  OperationName startswith "SqlContainersThroughputUpdate"
+```
+
+activityId と、コンテナー削除操作を開始した呼び出し元を取得するクエリ。
+
+```kusto
+(AzureDiagnostics
+| where Category == "ControlPlaneRequests"
+| where OperationName == "SqlContainersDelete"
+| where TimeGenerated >= todatetime('9/3/2020, 5:30:29.300 PM')
+| summarize by activityId_g )
+| join (
+AzureActivity
+| parse HTTPRequest with * "clientRequestId\": \"" activityId_g "\"" * 
+| summarize by Caller, HTTPRequest, activityId_g)
+on activityId_g
+| project Caller, activityId_g
 ```
 
 ## <a name="next-steps"></a>次のステップ

@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 24117e914afa0e443ce979ae71eb506156fa11b3
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4fc8a0a4ea5063f52b6f9553018bddddd7bcf312
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830412"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974607"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>チュートリアル:Azure Security Center を使用して Linux 仮想マシンを監視する
 
@@ -41,7 +41,7 @@ Azure ポータルから Security Center ダッシュボードにアクセスす
 
 Security Center の機能はデータを検出するだけではありません。検出された問題についての推奨事項が提供されます。 たとえばネットワーク セキュリティ グループが関連付けられていない状態で VM がデプロイされていた場合、Security Center によって推奨事項と修復手順が表示されます。 修復は自動化されており、Security Center を離れる必要はありません。  
 
-![Recommendations](./media/tutorial-azure-security/recommendations.png)
+![[Recommendations]\(推奨事項\) ページのスクリーンショット。推奨事項の説明、リソース、状態、重要度などが表示される。](./media/tutorial-azure-security/recommendations.png)
 
 ## <a name="set-up-data-collection"></a>データ収集を設定する
 

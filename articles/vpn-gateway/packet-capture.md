@@ -5,14 +5,14 @@ services: vpn-gateway
 author: radwiv
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/15/2019
+ms.date: 09/03/2020
 ms.author: radwiv
-ms.openlocfilehash: eb64e542c8b4ca9307a232bda3aa88d87294027b
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 486ac23f26a7eee6b31322de79bfb68076a598ec
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400281"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441597"
 ---
 # <a name="configure-packet-capture-for-vpn-gateways"></a>VPN ゲートウェイのパケット キャプチャを構成する
 
@@ -353,6 +353,7 @@ Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourReso
 - パケット キャプチャの実行は、パフォーマンスに影響を与える可能性があります。 必要ない場合は、パケット キャプチャを忘れずに停止してください。
 - 推奨される最小パケット キャプチャ期間は 600 秒です。 パス上の複数のコンポーネント間で同期の問題が発生するため、パケット キャプチャの時間が短いと、完全なデータを取得できない場合があります。
 - パケット キャプチャ データ ファイルは PCAP 形式で生成されます。 PCAP ファイルを開くには、Wireshark または他の一般に利用できるアプリケーションを使用します。
+- パケット キャプチャは、ポリシーベースのゲートウェイではサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 

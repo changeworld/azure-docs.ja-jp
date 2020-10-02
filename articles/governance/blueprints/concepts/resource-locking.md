@@ -3,12 +3,12 @@ title: リソース ロックについて
 description: ブループリントを割り当てるときにリソースを保護するための Azure Blueprints 内のロック オプションについて説明します。
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5e60724a276bce94770c5fdc33ee0c8b4e7712fe
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 9d400abce5d428c01b43cdda38a5c6f0df2d4db8
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051504"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651934"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Azure Blueprint でのリソース ロックについて
 
@@ -103,7 +103,7 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 
 ブループリントの割り当て時には、**読み取り専用**オプションまたは**削除しない**オプションがその割り当てによって選択された場合、RBAC [拒否割り当て](../../../role-based-access-control/deny-assignments.md)の拒否アクションがアーティファクト リソースに適用されます。 この拒否アクションは、ブループリント割り当てのマネージド ID によって追加され、アーティファクト リソースから削除するには、同じマネージド ID を使用する必要があります。 このセキュリティ対策により、ロック メカニズムが強制されて、Azure Blueprints 外からブループリントのロックを解除できなくなります。
 
-:::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="リソース グループに対するブループリント拒否割り当て" border="false":::
+:::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="リソースグループのアクセス制御 (I A M) ページと [拒否割り当て] タブのスクリーンショット。" border="false":::
 
 各モードの[拒否割り当てプロパティ](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties)は、次のようになります。
 

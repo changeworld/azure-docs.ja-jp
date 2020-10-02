@@ -4,12 +4,12 @@ description: このチュートリアルでは、Service Fabric クラスター�
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 93a7e2507ab3a467ef83924479872694cae2dd5b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e9f62f944fff331bcf2dad1b380161e563614219
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75614011"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561842"
 ---
 # <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>チュートリアル:Service Fabric クラスターをホストする Azure VM インフラストラクチャを作成する
 
@@ -49,7 +49,7 @@ Service Fabric で採用されている "すべての OS、すべてのクラウ
 
 8. 次に、 **[NIC ネットワーク セキュリティ グループ]** を **[高度]** に設定します。 新しいセキュリティ グループを作成し、その名前をメモします。また、次の規則を作成して、任意のソースからの TCP トラフィックを許可します。
 
-   ![sf-inbound][sf-inbound]
+   ![インバウンド TCP トラフィックを許可するルールの作成画面のスクリーンショット。][sf-inbound]
 
    * ポート `3389` は RDP および ICMP 用です (基本的な接続)。
    * ポート `19000-19003` は Service Fabric 用です。
@@ -61,7 +61,7 @@ Service Fabric で採用されている "すべての OS、すべてのクラウ
 
 9. 別の規則を追加します。 ソースを **[サービス タグ]** に設定し、ソースのサービス タグを **[VirtualNetwork]** に設定します。 Service Fabric では、クラスター内の通信のために次のポートをオープンにしておく必要があります: 135、137 から 139、445、20001 から 20031、20606 から 20861。
 
-   ![vnet-inbound][vnet-inbound]
+   ![クラスターの TCP トラフィックを許可するルールの作成画面のスクリーンショット。][vnet-inbound]
 
 10. 残りのオプションは、既定の状態でかまいません。 必要に応じてそれらを確認してから、仮想マシンを起動します。
 

@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 3e1cfa13a3fd568ab2f1253c015880c57f99ce7e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 83c0fd796b7527c6f5e396a813def984b88ee9ac
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012487"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440356"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine でサポートされているデータ プラットフォーム
 
@@ -53,7 +53,7 @@ SQL Server Management Studio を実行するには、プログラムの一覧か
 
 既定では、既定のデータベース インスタンスがあるデータベース サーバーは自動的に実行されます。 VM 上の SQL Server Management Studio などのツールを使用して、SQL Server データベースにローカルでアクセスできます。 ローカル管理者アカウントには、データベースへの管理者アクセス権があります。
 
-また DSVM には、Python、Machine Learning Server を含む複数の言語で記述されたアプリケーションから SQL Server、Azure SQL データベース、および Azure SQL Data Warehouse と通信するための ODBC ドライバーおよび JDBC ドライバーが付属しています。
+また DSVM には、Python、Machine Learning Server を含む複数の言語で記述されたアプリケーションから SQL Server、Azure SQL データベース、および Azure Synapse Analytics と通信するための ODBC ドライバーおよび JDBC ドライバーが付属しています。
 
 ### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>DSVM での構成とインストール方法 
 

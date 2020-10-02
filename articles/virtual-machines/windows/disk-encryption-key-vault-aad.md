@@ -1,6 +1,6 @@
 ---
 title: Azure AD を使用した Azure Disk Encryption 用のキー コンテナーの作成と構成 (以前のリリース)
-description: この記事では、IaaS VM 用に Microsoft Azure Disk Encryption を使用する場合の前提条件について説明します。
+description: この記事では、Azure AD を使用して Azure Disk Encryption 用のキー コンテナーを作成して構成する方法について説明します。
 author: msmbaldwin
 ms.service: virtual-machines-windows
 ms.subservice: security
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: eb625624fa6faa4fdf3ef4fba3b49a0d2d5d7e09
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f983c0f5fc951376246fdbed9869211c8b495402
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284542"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90977956"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>Azure AD を使用した Azure Disk Encryption 用のキー コンテナーの作成と構成 (以前のリリース)
 

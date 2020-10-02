@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/14/2020
 ms.author: jeedes
-ms.openlocfilehash: 81e02bdc483c4b68901d7e81b29f3a7f423480d9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 48009246dd491ca3f4080cf85036c66605a73272
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88537602"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707001"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adobe-creative-cloud"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Adobe Creative Cloud の統合
 
@@ -102,7 +102,7 @@ Adobe Creative Cloud に対する Azure AD SSO を構成してテストするに
     | Email | User.mail |
 
     > [!NOTE]
-    > ユーザーは、電子メール要求の値を、SAML 応答で設定するために、 有効な Office 365 ExO ライセンス　を持つ必要があります。
+    > ユーザーは、電子メール要求の値を、SAML 応答で設定するために、有効な Microsoft 365 ExO ライセンスを持つ必要があります。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[Federation Data XML]\(フェデレーション データ XML\)** を見つけて **[ダウンロード]** を選択し、XML メタデータ ファイルをダウンロードしてコンピューターに保存します。
 

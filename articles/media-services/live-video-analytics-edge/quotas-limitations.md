@@ -1,14 +1,14 @@
 ---
-title: Live Video Analytics on IoT Edge のクォータ - Azure
+title: Live Video Analytics on IoT Edge のクォータと制限 - Azure
 description: この記事では、Live Video Analytics on IoT Edge のクォータと制限について説明します。
 ms.topic: conceptual
 ms.date: 05/22/2020
-ms.openlocfilehash: 32a24079b36655bfdacd25b07d419009f5012507
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: df1978de4ee1bbbe15d0df3b02a70fb51491e9d2
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750226"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90529232"
 ---
 # <a name="quotas-and-limitations"></a>クォータと制限
 
@@ -65,6 +65,10 @@ ms.locfileid: "88750226"
 * あるサブスクリプションから別のサブスクリプションにメディア サービス アカウントを中断なく移行する機能。
 * メディア サービス アカウントで複数のストレージ アカウントを使用する機能。
 * 再起動せずに、モジュールの目的のプロパティ内のサービス プリンシパル情報を動的に変更する機能。
+
+RTSP プロトコルをサポートする IP カメラのみを使用できます。 RTSP をサポートする IP カメラは、[ONVIF 準拠製品](https://www.onvif.org/conformant-products)のページで見つけることができます。 プロファイル G、S、または T に準拠しているデバイスを探します。
+
+さらに、これらのカメラは、H.264 ビデオと AAC オーディオを使用するように構成する必要があります。 他のコーデックは現在サポートされていません。 
 
 ## <a name="next-steps"></a>次のステップ
 

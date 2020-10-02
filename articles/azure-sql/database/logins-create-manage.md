@@ -13,19 +13,19 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/23/2020
-ms.openlocfilehash: 8408025478e2776423b0d1f10cc70828e408f87e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 891d5907ee8c964ebe7e281f6298205712ce1186
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290102"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441172"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>SQL Database、SQL Managed Instance、Azure Synapse Analytics へのデータベース アクセスを承認する
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 この記事では、次の内容について説明します。
 
-- Azure SQL Database、Azure SQL Managed Instance、Azure Synapse Analytics (旧称 Azure SQL Data Warehouse) を構成して、ユーザーが管理タスクを実行し、これらのデータベースに格納されているデータにアクセスできるようにするためのオプション。
+- Azure SQL Database、Azure SQL Managed Instance、Azure Synapse Analytics (旧称 SQL Data Warehouse) を構成して、ユーザーが管理タスクを実行し、これらのデータベースに格納されているデータにアクセスできるようにするためのオプション。
 - 最初に新しいサーバーを作成した後のアクセスと承認の構成。
 - マスター データベースとユーザー アカウントにログインとユーザー アカウントを追加し、これらのアカウントに管理アクセス許可を付与する方法。
 - ログインに関連付けられているユーザー アカウントまたは包含ユーザー アカウントとして、ユーザー データベースにユーザー アカウントを追加する方法。

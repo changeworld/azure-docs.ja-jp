@@ -12,12 +12,12 @@ ms.reviewer: larryfr
 ms.date: 03/01/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: b756e83f1d810007e9e9ef6cf2987c3cf60b7f7d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: ad04566699b2eebb0cbd7a9f242de38bc75e2015
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852856"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986403"
 ---
 # <a name="data-ingestion-with-azure-data-factory"></a>Azure Data Factory を使用したデータ インジェスト
 
@@ -35,7 +35,7 @@ ms.locfileid: "87852856"
 
 ## <a name="adf-with-azure-functions"></a>ADF と Azure Functions
 
-![adf-function](media/how-to-data-ingest-adf/adf-function.png)
+![図には、Azure 関数と ML パイプラインの実行を含む Azure Data Factory パイプライン、モデルのトレーニングを含む Azure Machine Learning パイプライン、およびこれらが生データおよび準備されたデータを操作する方法が示されています。](media/how-to-data-ingest-adf/adf-function.png)
 
 Azure Functions を使用すると、アプリケーションのインフラストラクチャについて気にすることなく、小規模なコード (関数) を実行できます。 このオプションでは、Azure 関数にラップされたカスタム Python コードを使用してデータが処理されます。 
 
@@ -51,7 +51,7 @@ Azure Functions を使用すると、アプリケーションのインフラス�
 
 ## <a name="adf-with-custom-component-activity"></a>ADF とカスタム コンポーネント アクティビティ
 
-![adf-customcomponent](media/how-to-data-ingest-adf/adf-customcomponent.png)
+![図には、カスタム コンポーネントと ML パイプラインの実行を含む Azure Data Factory パイプライン、モデルのトレーニングを含む Azure Machine Learning パイプライン、およびそれらが生データおよび準備されたデータを操作する方法が示されています。](media/how-to-data-ingest-adf/adf-customcomponent.png)
 
 このオプションでは、実行可能ファイルにラップされたカスタム Python コードを使用してデータが処理されます。 これは、[ADF カスタム コンポーネント アクティビティ](https://docs.microsoft.com/azure/data-factory/transform-data-using-dotnet-custom-activity)を使用して呼び出されます。 この方法は、前の手法に比べて大規模なデータにより適しています。
 
@@ -64,7 +64,7 @@ Azure Functions を使用すると、アプリケーションのインフラス�
 
 ## <a name="adf-with-azure-databricks-python-notebook"></a>ADF と Azure Databricks Python ノートブック
 
-![adf-databricks](media/how-to-data-ingest-adf/adf-databricks.png)
+![図には、Azure Databricks Python と ML パイプラインの実行を含む Azure Data Factory パイプライン、モデルのトレーニングを含む Azure Machine Learning パイプライン、およびこれらが生データおよび準備されたデータを操作する方法が示されています。](media/how-to-data-ingest-adf/adf-databricks.png)
 
 [Azure Databricks](https://azure.microsoft.com/services/databricks/) は、Microsoft クラウドの Apache Spark ベースの分析プラットフォームです。
 
@@ -82,7 +82,7 @@ Azure Functions を使用すると、アプリケーションのインフラス�
 
 ## <a name="consuming-data-in-azure-machine-learning-pipelines"></a>Azure Machine Learning パイプラインでのデータの使用
 
-![aml-dataset](media/how-to-data-ingest-adf/aml-dataset.png)
+![図には、Azure Data Factory パイプラインと Azure Machine Learning パイプライン、およびこれらが生データおよび準備されたデータを操作する方法が示されています。 Data Factory パイプラインが準備されたデータのデータベースにデータをフィードし、このデータベースがデータストアにフィードし、このデータストアが Machine Learning ワークスペースにデータセットをフィードします。](media/how-to-data-ingest-adf/aml-dataset.png)
 
 ADF パイプラインから変換されたデータは、データ ストレージ (Azure Blob など) に保存されます。 Azure Machine Learning は、[データストア](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#create-and-register-datastores)と[データセット](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets)を使用してこのデータにアクセスできます。
 
@@ -95,7 +95,7 @@ ADF パイプラインを実行するたびに、データはストレージ内�
 
 データセットはバージョン管理をサポートし、パイプラインから実行するたびに新しいバージョンが作成されるため、モデルのトレーニングに使用されたデータのバージョンを簡単に把握できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Azure Data Factory で Databricks ノートブックを実行する](https://docs.microsoft.com/azure/data-factory/transform-data-using-databricks-notebook)
 * [Azure ストレージ サービスのデータにアクセスする](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#create-and-register-datastores)

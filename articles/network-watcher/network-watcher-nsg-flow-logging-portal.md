@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: da7d56a0fd8571e796567331a7543074f0bf1eda
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 89258b05831170ff502cde80577f3a6851659bf2
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84808703"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986326"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して仮想マシンへの送受信ネットワーク トラフィックをログに記録する
 
@@ -101,7 +101,7 @@ NSG フローのログ記録には、**Microsoft.Insights** プロバイダー�
 4. ポータルの左上隅の **[すべてのサービス]** を選択します。 *[フィルター]* ボックスに「**Network Watcher**」と入力します。 検索結果に **[Network Watcher]** が表示されたら、それを選択します。
 5. 次の図に示すように、 **[ログ]** の　 **[NSG フロー ログ]** を選択します。
 
-    ![NSG](./media/network-watcher-nsg-flow-logging-portal/nsgs.png)
+    ![Network Watcher の NSG フロー ログを示すスクリーンショット。](./media/network-watcher-nsg-flow-logging-portal/nsgs.png)
 
 6. NSG の一覧から **myVm-nsg** という名前の NSG を選択します。
 7. **[フローのログ設定]** の下で **[オン]** を選択します。

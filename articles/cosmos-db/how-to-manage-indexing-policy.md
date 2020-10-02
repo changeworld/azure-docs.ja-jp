@@ -7,16 +7,19 @@ ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-javascript, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 2b1fe86c09349a25c8ebfda38ffc3ec352fdaba3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6a1848adfd61d9d8f6db0bb16fe75c04b4a22005
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019557"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604276"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB でインデックス作成ポリシーを管理する
 
 Azure Cosmos DB では、コンテナーごとに定義された[インデックス作成ポリシー](index-policy.md)に従ってデータのインデックスが作成されます。 新しく作成したコンテナーの既定のインデックス作成ポリシーでは、文字列または数値に範囲インデックスが適用されます。 このポリシーは、独自のカスタム インデックス作成ポリシーでオーバーライドできます。
+
+> [!NOTE]
+> この記事で説明するインデックス作成ポリシーの更新方法は、Azure Cosmos DB の SQL (Core) API にのみ適用されます。 「[Azure Cosmos DB の MongoDB 用 API](mongodb-indexing.md)」と「[Azure Cosmos DB Cassandra API でのセカンダリ インデックス作成](cassandra-secondary-index.md)」でインデックス作成の詳細について説明します。
 
 ## <a name="indexing-policy-examples"></a>インデックス作成ポリシーの例
 

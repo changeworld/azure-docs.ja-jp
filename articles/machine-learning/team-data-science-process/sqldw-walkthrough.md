@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 21bede74ee265ffbe530c7697817186ac0e8dd3b
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 59935d2659d27059617059c021fef9b6a2b552e0
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845699"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440203"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Team Data Science Process の活用: Azure Synapse Analytics の使用
 このチュートリアルでは、公開されている使用可能なデータセット ([NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) データセット) で Azure Synapse Analytics を使用して、機械学習モデルを構築し、デプロイする方法を説明します。 構築される二項分類モデルでは、乗車でチップが支払われるかどうかを予測します。  モデルには、多クラス分類 (チップがあるかどうかを問わない) と回帰 (支払われたチップ金額の分布) が含まれます。
@@ -91,14 +91,14 @@ Azure データ サイエンス環境をセット アップするには、以下
   * **コンテナー名** (Azure BLOB ストレージ内のデータの格納先)
 
 **Azure Synapse Analytics インスタンスをプロビジョニングします。**
-「[Azure portal で Azure SQL Data Warehouse を作成し、クエリを実行する](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)」の説明に従って、Azure Synapse Analytics インスタンスをプロビジョニングします。 後の手順で使用される次の Azure Synapse Analytics の資格情報は必ずメモしておいてください。
+[Azure portal での Azure Synapse Analytics の作成とクエリの実行](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)に関するドキュメントの説明に従って、Azure Synapse Analytics インスタンスをプロビジョニングします。 後の手順で使用される次の Azure Synapse Analytics の資格情報は必ずメモしておいてください。
 
 * **サーバー名**: \<server Name>.database.windows.net
 * **SQLDW (データベース) 名**
 * **ユーザー名**
 * **パスワード**
 
-**Visual Studio と SQL Server Data Tools をインストールします。** 手順については、「[SQL Data Warehouse 用の Visual Studio 2019 を始める](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)」を参照してください。
+**Visual Studio と SQL Server Data Tools をインストールします。** 手順については、[Azure Synapse Analytics 用の Visual Studio 2019 の概要](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)に関するページを参照してください。
 
 **Visual Studio で Azure Synapse Analytics に接続します。** 手順については、[Azure Synapse Analytics 内で SQL Analytics に接続する方法](../../synapse-analytics/sql/connect-overview.md)に関する記事の手順 1 と 2 を参照してください。
 

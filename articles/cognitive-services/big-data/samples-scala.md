@@ -1,6 +1,6 @@
 ---
 title: ビッグ データ向けの Cognitive Services - Scala サンプル
-description: Azure Databricks 向けに Python で記述された Cognitive Services のサンプルを試して、ビッグ データ向けの MMLSpark パイプラインを実行してみましょう。
+description: Azure Databricks 向けの Cognitive Services を使用して、ビッグ データの MMLSpark パイプラインを実行します。
 services: cognitive-services
 author: mhamilton723
 manager: nitinme
@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: sample
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 098b59b8de0d0d7e5c3929ce084276350c04810a
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 4546ef03c82f19d188a71a86f6964ca87c0f834e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86189312"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90524965"
 ---
 # <a name="quick-examples"></a>簡単な例
 

@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: quickstart
 ms.date: 03/11/2020
 ms.author: charwen
-ms.openlocfilehash: 3c2780c8c99fd4568a7213b625ce785d3a99129c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0155ae92e3179918273d6a19773aa15b67949ea
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743985"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985596"
 ---
 # <a name="quickstart-connect-to-a-virtual-machine-using-a-private-ip-address-and-azure-bastion"></a>クイック スタート:プライベート IP アドレスと Azure Bastion を使用して仮想マシンに接続する
 
@@ -72,7 +72,7 @@ Bastion が仮想ネットワークにデプロイされると、画面が [接�
 
 1. 仮想マシン用のユーザー名とパスワードを入力します。 次に、 **[接続]** を選択します。
 
-   ![接続する](./media/quickstart-host-portal/connect.png)
+   ![ユーザー名とパスワードの入力を求めるメッセージが表示されている、Azure Bastion を使用した接続のダイアログを示すスクリーンショット。](./media/quickstart-host-portal/connect.png)
 1. Bastion を使用したこの仮想マシンへの RDP 接続は、ポート 443 と Bastion サービスを使用して (HTML5 を介して) Azure portal で直接開きます。
 
    ![RDP 接続](./media/quickstart-host-portal/443-rdp.png)

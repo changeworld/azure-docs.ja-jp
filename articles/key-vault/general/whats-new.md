@@ -6,15 +6,15 @@ author: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
-ms.topic: overview
+ms.topic: reference
 ms.date: 07/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b469ea0d0a91cc4ca7f0602dffbcc63b31c60855
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 78d0f483bb18213fa7d6718f15dd77733a10049c
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588366"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069358"
 ---
 # <a name="whats-new-for-azure-key-vault"></a>Azure Key Vault の新機能
 
@@ -36,6 +36,7 @@ Microsoft では、異なるルート証明機関 (CA) のセットからの TLS
 - 2020 年 7 月 7 日に、Azure Active Directory (Azure AD) サービスでこの移行が開始されました。
 - 新しく作成されるすべての Azure TLS/SSL エンドポイントには、新しいルート CA にチェーンする更新された証明書が含まれています。 
 - 既存の Azure エンドポイントは、2020 年 8 月 13 日から 2020 年 10 月 26 日までの期間に、段階的に移行されます。
+- [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) と [DPS](/azure/iot-dps/) は Baltimore CyberTrust ルート CA に残りますが、中間 CA は変更されます。 詳細については、[こちら](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456)をクリックしてください。
 
 > [!IMPORTANT]
 > お客様は、Azure サービスに接続しようとしたときの接続エラーを防ぐため、この変更後にアプリケーションを更新することが必要になる場合があります。 

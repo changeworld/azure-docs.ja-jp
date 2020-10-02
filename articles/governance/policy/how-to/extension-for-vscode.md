@@ -3,12 +3,12 @@ title: Visual Studio Code 用の Azure Policy 拡張機能
 description: Visual Studio Code 用の Azure Policy 拡張機能を使用して Azure Resource Manager エイリアスを検索する方法について説明します。
 ms.date: 06/16/2020
 ms.topic: how-to
-ms.openlocfilehash: c91d39414a376b410e52c2ba60ce15ed0c5054f6
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 9b3f27492bee5301e22e83ebf9734afa3de43897
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970758"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648330"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Visual Studio Code 用の Azure Policy 拡張機能を使用する
 
@@ -52,7 +52,7 @@ Visual Studio Code 用の Azure Policy 拡張機能は、Visual Studio Code で�
 
 1. 一覧から国内のクラウドを選択します。
 
-   :::image type="content" source="../media/extension-for-vscode/set-default-azure-cloud-sign-in.png" alt-text="Visual Studio Code の既定の Azure クラウド サインインを設定する" border="false":::
+   :::image type="content" source="../media/extension-for-vscode/set-default-azure-cloud-sign-in.png" alt-text="Visual Studio Code 用の国内の Azure クラウド サインインを選択するスクリーンショット。" border="false":::
 
 ## <a name="connect-to-an-azure-account"></a>Azure アカウントに接続する
 
@@ -64,13 +64,13 @@ Visual Studio Code 用の Azure Policy 拡張機能は、Visual Studio Code で�
 
      Azure Policy 拡張機能から、 **[Azure にサインイン]** を選択します。
 
-     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png" alt-text="Azure Policy 拡張機能からの Visual Studio Code の Azure クラウド サインイン" border="false":::
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png" alt-text="Visual Studio Code 用の国内の Azure クラウド サインインを選択するスクリーンショット。" border="false":::
 
    - コマンド パレット
 
      メニュー バーから、 **[ビュー]**  >  **[コマンド パレット]** の順に移動し、「**Azure: Sign In**」と入力します。
 
-     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="コマンド パレットからの Visual Studio Code の Azure クラウド サインイン" border="false":::
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="Visual Studio Code 用の国内の Azure クラウド サインインを選択するスクリーンショット。" border="false":::
 
 1. サインインの手順に従って Azure にサインインします。 接続すると、Visual Studio Code ウィンドウの下部にあるステータス バーに Azure アカウント名が表示されます。
 
@@ -125,7 +125,7 @@ Azure Policy 拡張機能では、 **[リソース]** ウィンドウに、選�
 
 リソースが開いたら、リソース マネージャーのプロパティ名または値の上にカーソルを合わせると、Azure Policy エイリアスが表示されます (存在する場合)。 この例では、リソースの種類は `Microsoft.Compute/virtualMachines` リソースであり、**properties.storageProfile.imageReference.offer** プロパティの上にカーソルが合わせられています。 カーソルを合わせると、一致するエイリアスが表示されます。
 
-:::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Azure Policy 拡張機能でカーソルを合わせてリソース マネージャーのプロパティのエイリアスを表示する" border="false":::
+:::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Visual Studio Code 用の国内の Azure クラウド サインインを選択するスクリーンショット。" border="false":::
 
 > [!NOTE]
 > VS Code 拡張機能では、Resource Manager モードのプロパティのみが公開され、[リソースプロバイダー モード](../concepts/definition-structure.md#mode)のプロパティは表示されません。

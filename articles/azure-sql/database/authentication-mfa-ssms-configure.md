@@ -12,20 +12,20 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: 791402f5d9648c8d235f8853de1b6c41f8082e1b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b1dbd66e34790599020233c5b1249593a4c0472d
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018305"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442651"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>SQL Server Management Studio と Azure AD 用に多要素認証を構成する
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-この記事では、Azure Active Directory (Azure AD) の多要素認証 (MFA) と SQL Server Management Studio (SSMS) を使用する方法について説明します。 Azure AD MFA は、SSMS または SqlPackage.exe を [Azure SQL Database](sql-database-paas-overview.md)、[Azure Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md)、および [Azure Synapse Analytics (旧称 Azure SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に接続するときに使用できます。 多要素認証の概要については、[SQL Database、SOL Managed Instance、Azure Synapse でのユニバーサル認証 (MFA 対応の SSMS サポート)](../database/authentication-mfa-ssms-overview.md) に関するページを参照してください。
+この記事では、Azure Active Directory (Azure AD) の多要素認証 (MFA) と SQL Server Management Studio (SSMS) を使用する方法について説明します。 Azure AD MFA は、SSMS または SqlPackage.exe を [Azure SQL Database](sql-database-paas-overview.md)、[Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md)、および [Azure Synapse Analytics (旧称 SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に接続するときに使用できます。 多要素認証の概要については、[SQL Database、SOL Managed Instance、Azure Synapse でのユニバーサル認証 (MFA 対応の SSMS サポート)](../database/authentication-mfa-ssms-overview.md) に関するページを参照してください。
 
 > [!IMPORTANT]
-> Azure SQL Database、Azure SQL Managed Instance、Azure Synapse (旧称 Azure SQL Data Warehouse) のデータベースは、この記事の残りの部分ではまとめてデータベースと呼ばれています。また、サーバーは、Azure SQL Database と Azure Synapse のデータベースをホストする[サーバー](logical-servers.md)を指しています。
+> Azure SQL Database、Azure SQL Managed Instance、Azure Synapse (旧称 SQL Data Warehouse) のデータベースは、この記事の残りの部分ではまとめてデータベースと呼ばれています。また、サーバーは、Azure SQL Database と Azure Synapse のデータベースをホストする[サーバー](logical-servers.md)を指しています。
 
 ## <a name="configuration-steps"></a>構成の手順
 
@@ -52,7 +52,7 @@ ms.locfileid: "89018305"
 
    ![mfa-tenant-ssms](./media/authentication-mfa-ssms-configure/mfa-tenant-ssms.png)
 
-4. **[オプション]** を選択し、 **[オプション]** ダイアログ ボックスでデータベースを指定します。 接続ユーザーがゲスト ユーザーの場合 (つまり joe@outlook.com)、このチェックボックスをオンにして、オプションの一部として現在の AD ドメイン名またはテナント ID を追加する必要があります。 「[SQL Database と SQL Data Warehouse でのユニバーサル認証 (MFA 対応の SSMS サポート)](../database/authentication-mfa-ssms-overview.md)」を参照してください。 次いで **[Connect]** をクリックします。  
+4. **[オプション]** を選択し、 **[オプション]** ダイアログ ボックスでデータベースを指定します。 接続ユーザーがゲスト ユーザーの場合 (つまり joe@outlook.com)、このチェックボックスをオンにして、オプションの一部として現在の AD ドメイン名またはテナント ID を追加する必要があります。 「[SQL Database と Azure Synapse Analytics を使用したユニバーサル認証 (SSMS での MFA のサポート)](../database/authentication-mfa-ssms-overview.md)」をご覧ください。 次いで **[Connect]** をクリックします。  
 5. **[アカウントにサインイン]** ダイアログ ボックスが開いたら、Azure Active Directory ID のアカウントとパスワードを入力します。 ユーザーが Azure AD とフェデレーションされているドメインに属している場合、パスワードは不要です。
 
    ![2mfa-sign-in](./media/authentication-mfa-ssms-configure/2mfa-sign-in.png)  

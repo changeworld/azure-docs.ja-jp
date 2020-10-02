@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 04/14/2020
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: 072f13f5a0884cf95fe760e17ff0d770111f4da0
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 9ed918c841989cb50efa362251d09c0b655b7fc4
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204506"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89570035"
 ---
 | リソース | 制限 |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -42,6 +42,6 @@ ms.locfileid: "82204506"
 <sup>5</sup>この制限は Basic、Standard、および Premium レベルに適用されます。 従量課金レベルのポリシー ドキュメントのサイズは 4 KiB に制限されています。<br/>
 <sup>6</sup>複数のカスタム ドメインは、Developer レベルと Premium レベルでのみサポートされます。<br/>
 <sup>7</sup>CA 証明書は従量課金レベルではサポートされていません。<br/>
-<sup>8</sup>このリソースは従量課金レベルにのみ適用されます。<br/>
+<sup>8</sup>この制限は、従量課金レベルにのみ適用されます。 他のレベルについては、これらのカテゴリに制限はありません。<br/>
 <sup>9</sup>従量課金レベルにのみ適用されます。 最大 2,048 バイト長のクエリ文字列を含みます。<br/>
 <sup>10</sup>セルフホステッド ゲートウェイは、Developer レベルと Premium レベルでのみサポートされます。 この制限は、[セルフホステッド ゲートウェイ リソース](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/gateway)の数に適用されます。 この制限を引き上げるには、[サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。 セルフホステッド ゲートウェイ リソースに関連付けられるノード (またはレプリカ) の数は、Premium レベルでは無制限であり、Developer レベルでは単一のノードに制限されることに注意してください。

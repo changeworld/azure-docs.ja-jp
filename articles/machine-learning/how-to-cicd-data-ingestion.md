@@ -12,12 +12,12 @@ author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 7a52dcabb448c39d9ae4e4edb4f5b7f701be6603
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 47b41e807c4d7b9a9fce6591da6655db74f483f3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228887"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971258"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>データ インジェスト パイプラインの DevOps
 
@@ -168,11 +168,11 @@ labels = np.array(data['target'])
 
 この名前は、***Dev***、***QA***、***UAT***、および ***PROD*** 環境で異なります。 複数のアクティビティがある複雑なパイプラインでは、いくつかのカスタム プロパティを使用できます。 1 つの場所でこれらのすべての値を収集し、パイプライン "***変数***" として定義することをお勧めします。
 
-![adf-variables](media/how-to-cicd-data-ingestion/adf-variables.png)
+![スクリーンショットには、PrepareData というノートブックと、ML Execute Pipeline という ML Execute Pipeline が上部に示され、その下には [変数] タブが選択され、新しい変数を名前、種類、および既定値とともに追加するオプションが示されています。](media/how-to-cicd-data-ingestion/adf-variables.png)
 
 パイプライン アクティビティでは、実際に使用するときに、パイプライン変数を参照する場合があります。
 
-![adf-notebook-parameters](media/how-to-cicd-data-ingestion/adf-notebook-parameters.png)
+![スクリーンショットには、PrepareData と呼ばれるノートブックと、ML Execute Pipeline と呼ばれる ML Execute Pipeline が上部に示され、その下には [設定] タブが選択されています。](media/how-to-cicd-data-ingestion/adf-notebook-parameters.png)
 
 Azure Data Factory ワークスペースの既定では、Azure Resource Manager テンプレート パラメーターとしてパイプライン変数を公開 "***していません***"。 このワークスペースでは、[Default Parameterization](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template) を使用して、Azure Resource Manager テンプレート パラメーターとして公開するパイプライン プロパティを指定します。 パイプライン変数を一覧に追加するには、[既定のパラメーター化テンプレート](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template)の `"Microsoft.DataFactory/factories/pipelines"` セクションを次のスニペットで更新し、結果の JSON ファイルをソース フォルダーのルートに配置します。
 

@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 10a6c2e4f6f9dcbb29eb16cbfabd8fba31668f06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34a536ea535fa222340bd004253ee54b9c13bea9
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85201635"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441223"
 ---
 # <a name="best-practices-for-loading-data-using-synapse-sql-pool"></a>Synapse SQL プールを使用したデータの読み込みに関するベスト プラクティス
 
@@ -175,6 +175,6 @@ ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SE
 
 ## <a name="next-steps"></a>次のステップ
 
-- 抽出、読み込み、変換 (ELT) プロセスを設計するときの COPY ステートメントまたは PolyBase の詳細については、[SQL Data Warehouse のための ELT の設計](design-elt-data-loading.md)に関するページを参照してください。
+- 抽出、読み込み、変換 (ELT) プロセスを設計するときの COPY ステートメントまたは PolyBase の詳細については、[Azure Synapse Analytics の ELT の設計](design-elt-data-loading.md)に関するページを参照してください。
 - 読み込みのチュートリアルについては、[COPY ステートメントを使用した Azure BLOB ストレージから Synapse SQL へのデータの読み込み](load-data-from-azure-blob-storage-using-polybase.md)に関するページを参照してください。
 - データの読み込みの監視については、「[DMV を利用してワークロードを監視する](sql-data-warehouse-manage-monitor.md)」を参照してください。

@@ -1,19 +1,19 @@
 ---
-title: チュートリアル:ASP.NET Core と SQL Database
-description: SQL Database に接続された .NET Core アプリを Azure App Service で動作させる方法について説明します。
+title: チュートリアル:Azure SQL Database を使用した ASP.NET Core
+description: Azure SQL Database に接続された .NET Core アプリを Azure App Service で動作させる方法について説明します。
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 06/20/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 27b01a86d1bc44b5adb977f10339a0f2d56a64d4
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: b83dfbd715a6b27491fd5f5efd41213210092325
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958543"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982883"
 ---
-# <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>チュートリアル:Azure App Service での ASP.NET Core および SQL Database アプリの作成
+# <a name="tutorial-build-an-aspnet-core-and-azure-sql-database-app-in-azure-app-service"></a>チュートリアル:Azure App Service での ASP.NET Core および Azure SQL Database アプリの作成
 
 ::: zone pivot="platform-windows"  
 

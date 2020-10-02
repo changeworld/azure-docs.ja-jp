@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 5582056f1bae2dbeb69a7d05044f055ff1394bd5
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: ebc6ca630ea3cabb519805ae8505abf336a2a9ea
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244671"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604293"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>チュートリアル:IoT デバイスで Custom Vision を使用して視覚的な状態を報告する
 
@@ -52,7 +52,7 @@ IoT Visual Alerts アプリは状況に応じて 4 つの異なる状態を切�
 * **トレーニング済みモデルの待機中**:この状態では、アプリは 1 秒ごとに Custom Vision API を呼び出して、ターゲット プロジェクトにトレーニング済みのイテレーションが含まれているかどうかを確認します。 トレーニング済みのイテレーションが検出されると、対応する ONNX モデルがローカル ファイルにダウンロードされ、**スコアリング**状態に切り替わります。
 * **スコアリング**:この状態では、アプリはローカル ONNX モデルに対して Windows ML を使用してカメラから 1 つのフレームを評価します。 最終的なイメージの分類が画面に表示され、IoT Hub にメッセージとして送信されます。 アプリは、新しいイメージをスコアリングする前に 1 秒間スリープ状態になります。
 
-## <a name="understand-the-code-structure"></a>コードの構造を理解する
+## <a name="examine-the-code-structure"></a>コードの構造を調べる
 
 このアプリの主な機能は、以下のファイルで処理されています。
 
@@ -98,13 +98,13 @@ ARM プロセッサを搭載した IoT デバイスにデプロイする場合�
 
 ## <a name="train-the-custom-vision-model"></a>Custom Vision モデルをトレーニングする
 
-アプリでイメージのキャプチャが完了すると、イメージがアップロードされ、**トレーニング済みモデルの待機中**状態に切り替わります。 切り替わったら [Custom Vision ポータル](https://www.customvision.ai/)にアクセスし、新しいトレーニング イメージに基づいてモデルを作成する必要があります。 以下のアニメーションはこのプロセスの例を示したものです。
+アプリでイメージのキャプチャが完了すると、イメージがアップロードされ、**トレーニング済みモデルの待機中**状態に切り替わります。 切り替わったら [Custom Vision Web サイト](https://www.customvision.ai/)にアクセスし、新しいトレーニング イメージに基づいてモデルを作成する必要があります。 以下のアニメーションはこのプロセスの例を示したものです。
 
 ![アニメーション: 複数のバナナの画像にタグ付けする](./media/iot-visual-alerts-tutorial/labeling.gif)
 
 独自のシナリオでこのプロセスを繰り返すには、次のステップを実行します。
 
-1. [Custom Vision ポータル](http://customvision.ai)にサインインします。
+1. [Custom Vision Web サイト](http://customvision.ai)にサインインします。
 1. アプリがアップロードしたすべてのトレーニング イメージが含まれているターゲット プロジェクトを見つけます。
 1. 識別する視覚的な状態ごとに適切なイメージを選択し、タグを手動で適用します。
     * たとえば、空の部屋と人がいる部屋を区別することが目的である場合は、人が含まれている 5 枚以上の画像を新しいクラス (**人**) としてタグ付けし、人がいない 5 枚以上の写真を**負**のタグとしてタグ付けすることをお勧めします。 これにより、モデルは 2 つの状態を区別できます。

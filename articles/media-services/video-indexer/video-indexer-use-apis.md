@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/21/2020
+ms.date: 09/03/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 94d5b0cac332cf777f9393104861ee766ef2488c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 85d392323b24df3cede196d2c68f05c9522b2293
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022430"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458299"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>チュートリアル:Video Indexer API の使用
 
@@ -36,7 +36,6 @@ Video Indexer アカウントを作成する場合、無料試用アカウント
    > * Video Indexer へのサインアップ時と同じプロバイダーを使用する必要があります。
    > * 個人用の Google アカウントと Microsoft (Outlook/Live) アカウントは試用アカウントにのみ使用できます。 Azure に接続するアカウントには、Azure AD が必要です。
    > * 1 つのメール アドレスで有効にすることができるアカウントは 1 つのみです。 ユーザーが user@gmail.com を使用して LinkedIn にサインインし、後から user@gmail.com を使用して Google にサインインしようとすると、ユーザーは既に存在しているというエラー ページが表示されます。
-
 2. サブスクライブします。
 
     [[製品]](https://api-portal.videoindexer.ai/products) タブを選択します。次に、[承認] を選択し、サブスクライブします。
@@ -46,7 +45,7 @@ Video Indexer アカウントを作成する場合、無料試用アカウント
     > [!NOTE]
     > 新しいユーザーは自動的に Authorization にサブスクライブされます。
     
-    サブスクライブすると、サブスクリプション、プライマリ キー、セカンダリ キーを確認できます。 キーは保護する必要があります。 キーはサーバー コードでのみ使用してください。 クライアント側 (.js、.html など) では使用できないようにします。
+    サブスクライブした後は、 **[製品]**  ->  **[承認]** の下にサブスクリプションが表示されます。 サブスクリプションのページには、プライマリとセカンダリ キーが表示されます。 キーは保護する必要があります。 キーはサーバー コードでのみ使用してください。 クライアント側 (.js、.html など) では使用できないようにします。
 
     ![Video Indexer 開発者ポータルでのサブスクリプションとキー](./media/video-indexer-use-apis/video-indexer-api03.png)
 

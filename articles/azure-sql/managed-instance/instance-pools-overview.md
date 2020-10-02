@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 54eb9b1b28de562395b4926c599bc5cb157fc63b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c49f751bae048d2faf7047e538eebcac5d818b5
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708843"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658737"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>Azure SQL Managed Instance プール (プレビュー) とは
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -79,6 +79,7 @@ ms.locfileid: "84708843"
 - インスタンスレベルの制限に加えて、次の 2 つの制限も "*インスタンス プール レベルで*" 適用されます。
   - プールあたりの合計ストレージ サイズ (8 TB)。
   - プールあたりのデータベースの合計数 (100)。
+- AAD 管理者は、インスタンス プール内にデプロイされたインスタンスに対して設定できないため、AAD 認証は使用できません。
 
 すべてのインスタンスのストレージの割り当てとデータベースの数の合計は、インスタンス プールによってさらされる制限以下にする必要があります。
 

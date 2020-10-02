@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/29/2020
 ms.author: aahi
-ms.openlocfilehash: 6271cb449b6bbc80269dd325bd5acd7edd2e0a6d
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 8e0798f75aaa79031ca7cc03814282daa049fbfe
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88011053"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662684"
 ---
 このエンティティ カテゴリには、銀行関係の情報や公的な ID 形式が含まれます。 モデル バージョン `2019-10-01` 以降で使用できます。 以下に示したのは、そのサブタイプです。 
 
@@ -116,7 +116,7 @@ ms.locfileid: "88011053"
 * フランスの国民 ID カード (CNI)
 * フランスのパスポート番号
 * フランスの社会保障番号 (INSEE)
-* フランスの納税者番号 (numéro SPI)
+* フランスの納税者番号 (Numéro SPI)
 * フランスの付加価値税番号
 
 ドイツ

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/16/2020
+ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 71c1bea58f17b457f417a5b050640d04d44019d5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0bbfdc2463795770b52f5008fc633fe9e95244a0
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551061"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056525"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>チュートリアル: Azure Active Directory と FreshDesk の統合
 
@@ -55,7 +55,7 @@ Azure AD への FreshDesk の統合を構成するには、ギャラリーから
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**FreshDesk**」と入力します。
 1. 結果のパネルから **FreshDesk** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-freshdesk"></a>FreshDesk の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-freshdesk"></a>FreshDesk の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、FreshDesk に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと FreshDesk の関連ユーザーとの間にリンク関係を確立する必要があります。
 
@@ -81,9 +81,11 @@ FreshDesk に対する Azure AD SSO を構成してテストするには、次�
     a. **[サインオン URL]** ボックスに、`https://<tenant-name>.freshdesk.com` のパターン、または FreshDesk から示されたその他の値を使用して URL を入力します。
 
     b. **[Identifier (Entity ID)]\(ID (エンティティ ID)\)** ボックスに、`https://<tenant-name>.freshdesk.com` のパターン、または FreshDesk から示されたその他の値を使用して URL を入力します。
-
+     
+    c. **[応答 URL]** ボックスに、`https://<tenant-name>.freshdesk.com/login/saml` のパターンを使用して URL を入力します
+    
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[FreshDesk サポート チーム](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 これらの値を実際のサインオン URL、識別子、および応答 URL で更新してください。 これらの値を取得するには、[FreshDesk サポート チーム](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. FreshDesk アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示したものです。 **[一意のユーザー ID]** は **user.userprincipalname** にマップされていますが、FreshDesk ではこの要求は **user.mail** にマップされている必要があるため、[編集] アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 

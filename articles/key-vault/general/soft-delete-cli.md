@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: a86402fec698a299c7f233dcd8c7fde8270dd74d
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: da821da08594180b9dd94728252e1a43c04fbde2
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585663"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531663"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>CLI で Key Vault の論理的な削除を使用する方法
 
@@ -25,7 +25,7 @@ Azure Key Vault の論理的な削除機能を使用すると、削除された�
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure CLI - お使いの環境にこのセットアップがない場合は、「[Azure CLI を使用した Key Vault の管理](manage-with-cli2.md)」をご覧ください。
+- Azure CLI - お使いの環境にこのセットアップがない場合は、「[CLI 2.0 を使用した Key Vault の管理](manage-with-cli2.md)」をご覧ください。
 
 Key Vault のCLI に関する具体的なリファレンス情報については、[Azure CLI Key Vault のリファレンス](https://docs.microsoft.com/cli/azure/keyvault)に関するページをご覧ください。
 
@@ -39,7 +39,7 @@ Key Vault の操作は、次のようにロールベースのアクセス制御 
 |復旧|削除されたキー コンテナーを復元します。|Microsoft.KeyVault/vaults/write|
 |消去|削除されたキー コンテナーとそのコンテンツを永続的に削除します。|Microsoft.KeyVault/locations/deletedVaults/purge/action|
 
-アクセス許可とアクセスの制御の詳細については、[キー コンテナーのセキュリティ保護](secure-your-key-vault.md)に関する記事をご覧ください。
+アクセス許可とアクセスの制御について詳しくは、「[キー コンテナーのセキュリティ保護](secure-your-key-vault.md)」をご覧ください。
 
 ## <a name="enabling-soft-delete"></a>論理的な削除を有効にする
 
@@ -58,7 +58,7 @@ az keyvault update -n ContosoVault --enable-soft-delete true
 
 ### <a name="new-key-vault"></a>新しいキー コンテナー
 
-論理的な削除は、既定ですべてのキー コンテナーで自動的に有効になります。 2020 年 12 月 31 日までに、論理的な削除を有効にしていない新しいキー コンテナーを作成することはできなくなります。
+論理的な削除は、既定ですべてのキー コンテナーで自動的に有効になります。 2020 年 12 月 31 日以降、論理的な削除を有効にしていない新しいキー コンテナーを作成することはできなくなります。
 
 ### <a name="verify-soft-delete-enablement"></a>論理的な削除が有効になっていることを確認する
 
@@ -242,5 +242,5 @@ az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge
 ## <a name="other-resources"></a>その他のリソース
 
 - Key Vault の論理的な削除機能の概要については、「[Azure Key Vault の論理的な削除機能の概要](soft-delete-overview.md)」をご覧ください。
-- Azure Key Vault の使用方法の概要については、「[Azure Key Vault とは](overview.md)」をご覧ください。
+- Azure Key Vault の使用方法の概要については、[Azure Key Vault の概要](overview.md)に関するページを参照してください。
 

@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 05ecce2d6ef0f8a3f241570ba9364c5e38682f3e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 1293534849c98cee51349bbefd3073cc8b94f876
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319441"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647215"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>ラベル付き Azure Machine Learning データセットを作成して探索する
 
@@ -22,13 +22,13 @@ ms.locfileid: "87319441"
 
 ## <a name="what-are-datasets-with-labels"></a>ラベル付きデータセットとは 
 
-ラベル付き Azure Machine Learning データセットとは、ラベル プロパティを持つ [TabularDataset](how-to-create-register-datasets.md#dataset-types) のことで、ラベル付きデータセットと呼ばれています。 これらの特定の種類の TabularDataset は、Azure Machine Learning データ ラベル付けプロジェクトの出力としてのみ作成されます。 データ ラベル付けプロジェクトを作成するには、[こちらの手順](how-to-create-labeling-projects.md)を使用します。 Machine Learning では、画像の分類 (複数ラベルまたは多クラス) のほか、境界ボックスと組み合わせたオブジェクトの識別でデータ ラベル付けプロジェクトをサポートしています。
+ラベル付きの Azure Machine Learning データセットは、ラベル付きデータセットと呼ばれています。 ラベル付きデータセットというこれらの特定の種類のデータセットは、Azure Machine Learning データ ラベル付けプロジェクトの出力としてのみ作成されます。 データ ラベル付けプロジェクトを作成するには、[こちらの手順](how-to-create-labeling-projects.md)を使用します。 Machine Learning では、画像の分類 (複数ラベルまたは多クラス) のほか、境界ボックスと組み合わせたオブジェクトの識別でデータ ラベル付けプロジェクトをサポートしています。
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション。 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://aka.ms/AMLFree)を作成してください。
-* [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)、または [Azure Machine Learning Studio](https://ml.azure.com/) へのアクセス。
-    * [azure-contrib-dataset](https://docs.microsoft.com/python/api/azureml-contrib-dataset/?view=azure-ml-py) パッケージをインストールする
+* [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)、または [Azure Machine Learning Studio](https://ml.azure.com/) へのアクセス。
+    * [azure-contrib-dataset](https://docs.microsoft.com/python/api/azureml-contrib-dataset/?view=azure-ml-py&preserve-view=true) パッケージをインストールする
 * Machine Learning ワークスペース。 [Azure Machine Learning ワークスペースを作成する](how-to-manage-workspace.md)方法に関するページを参照してください。
 * Azure Machine Learning データのラベル付けプロジェクトへのアクセス。 ラベル付けプロジェクトがない場合は、[こちらの手順](how-to-create-labeling-projects.md)を使用して作成します。
 
@@ -52,7 +52,7 @@ ms.locfileid: "87319441"
 
 ### <a name="pandas-dataframe"></a>Pandas データフレーム
 
-ラベル付きデータセットは、`azureml-contrib-dataset` クラスの [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) メソッドを使用して Pandas データフレーム に読み込むことができます。 次のシェル コマンドを使用して、このクラスをインストールします。 
+ラベル付きデータセットは、`azureml-contrib-dataset` クラスの [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#&preserve-view=trueto-pandas-dataframe-on-error--null---out-of-range-datetime--null--) メソッドを使用して Pandas データフレーム に読み込むことができます。 次のシェル コマンドを使用して、このクラスをインストールします。 
 
 ```shell
 pip install azureml-contrib-dataset
@@ -80,7 +80,7 @@ imgplot = plt.imshow(img)
 
 ### <a name="torchvision-datasets"></a>Torchvision データセット
 
-`azureml-contrib-dataset` クラスの [to_torchvision()](https://docs.microsoft.com/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?view=azure-ml-py#to-torchvision--) メソッドを使用して、ラベル付きデータセットを Torchvision データセットに読み込むことができます。 このメソッドを使用するには、[PyTorch](https://pytorch.org/) がインストールされている必要があります。 
+`azureml-contrib-dataset` クラスの [to_torchvision()](https://docs.microsoft.com/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?view=azure-ml-py#&preserve-view=trueto-torchvision--) メソッドを使用して、ラベル付きデータセットを Torchvision データセットに読み込むことができます。 このメソッドを使用するには、[PyTorch](https://pytorch.org/) がインストールされている必要があります。 
 
 ```python
 from torchvision.transforms import functional as F

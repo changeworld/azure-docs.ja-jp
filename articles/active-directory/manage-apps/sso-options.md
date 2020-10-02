@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
-ms.openlocfilehash: ab4d150d79b2c53ad23d892efacef6a848d97854
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 5c02733167db5071b1f2a9c5e04dc05a069fda3c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469815"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604208"
 ---
 # <a name="single-sign-on-options-in-azure-ad"></a>Azure AD のシングル サインオン オプション
 
@@ -24,7 +24,7 @@ ms.locfileid: "89469815"
 
 - **シングル サインオンの使用時**には、ユーザーは 1 つのアカウントで、ドメインに参加しているデバイス、会社のリソース、サービスとしてのソフトウェア (SaaS) アプリケーション、および Web アプリケーションに 1 回サインインします。 サインイン後、ユーザーは Office 365 ポータルやマイ アプリからアプリケーションを起動できます。 管理者は、ユーザー アカウントの管理を一元化し、グループのメンバーシップに基づいてアプリケーションに対するユーザー アクセスを自動的に追加または削除できます。
 
-- **シングル サインオンを使用しない**場合、ユーザーはアプリケーション固有のパスワードを覚えておき、各アプリケーションにサインインする必要があります。 IT スタッフは、Office 365、Box、Salesforce など、アプリケーションごとにユーザー アカウントを作成し、更新する必要があります。 ユーザーはパスワードを覚えておくのに加えて、各アプリケーションにサインインするのに時間を費やす必要があります。
+- **シングル サインオンを使用しない**場合、ユーザーはアプリケーション固有のパスワードを覚えておき、各アプリケーションにサインインする必要があります。 IT スタッフは、Microsoft 365、Box、Salesforce などのアプリケーションごとにユーザー アカウントを作成し、更新する必要があります。 ユーザーはパスワードを覚えておくのに加えて、各アプリケーションにサインインするのに時間を費やす必要があります。
 
 シングル サインオンの詳細については、「[シングル サインオンとは](what-is-single-sign-on.md)」を参照してください。
 
@@ -137,7 +137,7 @@ Azure AD は、リンクされたサインオンによって、既に別のサ�
 
 ### <a name="linked-sign-on-for-application-migration"></a>アプリケーション移行の場合のリンクされたサインオン
 
-リンクされたサインオンでは、一定期間にわたってアプリケーションを移行するときに、一貫したユーザー エクスペリエンスを提供できます。 アプリケーションを Azure Active Directory に移行する場合は、リンクされたサインオンを使用して、移行する予定のすべてのアプリケーションへのリンクをすばやく発行できます。  ユーザーはすべてのリンクを、[MyApps ポータル](../user-help/active-directory-saas-access-panel-introduction.md)または [Office 365 アプリケーション起動プログラム](https://support.office.com/article/meet-the-office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a)で見つけられます。 アクセスしているのが、リンクされているアプリケーションであるか、移行されたアプリケーションであるか、ユーザーには分かりません。  
+リンクされたサインオンでは、一定期間にわたってアプリケーションを移行するときに、一貫したユーザー エクスペリエンスを提供できます。 アプリケーションを Azure Active Directory に移行する場合は、リンクされたサインオンを使用して、移行する予定のすべてのアプリケーションへのリンクをすばやく発行できます。  ユーザーは、[MyApps ポータル](../user-help/active-directory-saas-access-panel-introduction.md)または [Microsoft 365 アプリケーション起動ツール](https://support.office.com/article/meet-the-office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a)ですべてのリンクを見つけることができます。 アクセスしているのが、リンクされているアプリケーションであるか、移行されたアプリケーションであるか、ユーザーには分かりません。  
 
 リンクされているアプリケーションでいったんユーザーが認証されたら、エンドユーザーにシングル サインオン アクセスが提供される前に、アカウント レコードを作成する必要があります。 このアカウント レコードのプロビジョニングは、自動的に実行することも、管理者が手動で実行することもできます。
 

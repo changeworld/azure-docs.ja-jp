@@ -11,12 +11,12 @@ ms.reviewer: jmartens
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4, devx-track-python
-ms.openlocfilehash: 3f8a3c705878e212e6a26670e20b5a81a3f2a6ba
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 22f9c709ced1069caa39ba2145981efa353caadf
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904379"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602635"
 ---
 # <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>Azure Kubernetes Service と Azure Container Instances を使用したモデルの Docker デプロイのトラブルシューティング 
 
@@ -24,8 +24,8 @@ Azure Machine Learning を使用する Azure Container Instances (ACI) と Azure
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure サブスクリプション**。 お持ちでない場合は、[無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
-* [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+* **Azure サブスクリプション**。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
+* [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 * [Azure Machine Learning 用 CLI 拡張機能](reference-azure-machine-learning-cli.md)。
 * ローカルでデバッグするには、ローカル システム上に機能する Docker のインストールが必要です。
@@ -34,14 +34,12 @@ Azure Machine Learning を使用する Azure Container Instances (ACI) と Azure
 
 ## <a name="steps-for-docker-deployment-of-machine-learning-models"></a>機械学習モデルの Docker デプロイの手順
 
-Azure Machine Learning にモデルをデプロイすると、システムによって多数のタスクが実行されます。
-
-モデル デプロイでは、[環境](how-to-use-environments.md)オブジェクトを入力パラメーターとして使用して、[Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API を経由する方法が推奨されます。 この場合、サービスによってデプロイ段階で基本的な Docker イメージが作成され、必要なモデルがすべて 1 回の呼び出しでマウントされます。 基本的なデプロイ タスクは次のとおりです。
+Azure Machine Learning でモデルをデプロイするときに、[Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API と[環境](how-to-use-environments.md)オブジェクトを使用します。 サービスによってデプロイ段階で基本的な Docker イメージが作成され、必要なモデルがすべて 1 回の呼び出しでマウントされます。 基本的なデプロイ タスクは次のとおりです。
 
 1. ワークスペース モデル レジストリにモデルを登録します。
 
 2. 推論構成を定義する:
-    1. 環境 yaml ファイルで指定した依存関係に基づいて、[環境](how-to-use-environments.md)オブジェクトを作成するか、調達された環境のいずれかを使用します。
+    1. [環境](how-to-use-environments.md)オブジェクトを作成します。 このオブジェクトは、環境 yaml ファイル内の依存関係と、いずれかのキュレーションされた環境を使用できます。
     2. 環境とスコアリング スクリプトに基づいて、推論構成 (InferenceConfig オブジェクト) を作成します。
 
 3. モデルを Azure コンテナー インスタンス (ACI) サービスまたは Azure Kubernetes Service (AKS) にデプロイします。
@@ -52,7 +50,7 @@ Azure Machine Learning にモデルをデプロイすると、システムによ
 
 問題に直面したら、最初に行うべきことは、(前述の) デプロイ タスクを個々の手順に分割し、問題を隔離することです。
 
-[環境](how-to-use-environments.md)オブジェクトを入力パラメーターとして指定し、[Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API 経由で新しいまたは推奨されるデプロイ方法を使用していると仮定した場合、コードは次の 3 つの主な手順に分けることができます。
+[環境](how-to-use-environments.md)オブジェクトを入力パラメーターとして指定して [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) を使用する場合、コードは次の 3 つの主な手順に分けることができます。
 
 1. モデルを登録します。 サンプル コードをいくつか以下に示します。
 
@@ -95,11 +93,11 @@ Azure Machine Learning にモデルをデプロイすると、システムによ
     aci_service.wait_for_deployment(show_output=True)
     ```
 
-デプロイ プロセスを個別タスクに分割できたところで、最も一般的なエラーをいくつか確認してみましょう。
+デプロイ プロセスを個々のタスクに分割すると、いくつかの一般的なエラーを確認しやすくなります。
 
 ## <a name="debug-locally"></a>ローカル デバッグ
 
-モデルを ACI または AKS にデプロイする際に問題が発生した場合は、ローカル Web サービスとしてデプロイしてみてください。 ローカル Web サービスを使用すると、問題のトラブルシューティングが簡単になります。 モデルを含む Docker イメージがダウンロードされ、ローカル システムで起動されます。
+モデルを ACI または AKS にデプロイする際に問題が発生した場合は、ローカル Web サービスとしてデプロイしてください。 ローカル Web サービスを使用すると、問題のトラブルシューティングが簡単になります。
 
 [MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks) リポジトリにあるサンプル[ローカル展開ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb)から、実行可能な例を探索します。
 
@@ -128,9 +126,9 @@ service.wait_for_deployment(True)
 print(service.port)
 ```
 
-独自の conda 仕様 YAML を定義する場合、pip の依存関係として 1.0.45 以降のバージョンの azureml-defaults を列挙する必要があります。 このパッケージには、Web サービスとしてモデルをホストするために必要な機能が含まれています。
+独自の conda 仕様 YAML を定義する場合、pip の依存関係として 1.0.45 以降のバージョンの azureml-defaults を列挙します。 このパッケージは、Web サービスとしてモデルをホストするために必要です。
 
-この時点で、通常どおりにサービスを操作できます。 たとえば、次のコードは、サービスにデータを送信する方法を示しています。
+この時点で、通常どおりにサービスを操作できます。 次のコードは、サービスにデータを送信する方法を示しています。
 
 ```python
 import json
@@ -163,7 +161,7 @@ print(service.run(input_data=test_sample))
 > [!NOTE]
 > スクリプトは、サービスによって使用される `InferenceConfig` オブジェクトによって指定された場所から再度読み込まれます。
 
-モデル、Conda の依存関係、またはデプロイ構成を変更するには、[update()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#update--args-) を使用します。 次の例では、サービスで使用されるモデルを更新します。
+モデル、Conda の依存関係、またはデプロイ構成を変更するには、[update()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#&preserve-view=trueupdate--args-) を使用します。 次の例では、サービスで使用されるモデルを更新します。
 
 ```python
 service.update([different_model], inference_config, deployment_config)
@@ -171,7 +169,7 @@ service.update([different_model], inference_config, deployment_config)
 
 ### <a name="delete-the-service"></a>サービスの削除
 
-サービスを削除するには、[delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#delete--) を使用します。
+サービスを削除するには、[delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#&preserve-view=truedelete--) を使用します。
 
 ### <a name="inspect-the-docker-log"></a><a id="dockerlog"></a> Docker ログの確認
 
@@ -189,7 +187,7 @@ print(ws.webservices['mysvc'].get_logs())
  
 ## <a name="container-cannot-be-scheduled"></a>コンテナーをスケジュールできない
 
-Azure Kubernetes Service コンピューティング ターゲットにサービスをデプロイするときに、Azure Machine Learning では、要求された量のリソースを使用してサービスをスケジュールすることを試みます。 5 分後、利用可能な適切な量のリソースがある利用可能なノードがクラスターにない場合、"`Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00`" というメッセージが表示されてデプロイは失敗します。 このエラーに対処するには、ノードを追加するか、ノードの SKU を変更するか、またはサービスのリソース要件を変更します。 
+Azure Kubernetes Service コンピューティング ターゲットにサービスをデプロイするときに、Azure Machine Learning では、要求された量のリソースを使用してサービスをスケジュールすることを試みます。 5 分後、適切な量のリソースがある利用可能なノードがクラスターにない場合、デプロイは失敗します。 エラー メッセージは `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00` です。 このエラーに対処するには、ノードを追加するか、ノードの SKU を変更するか、またはサービスのリソース要件を変更します。 
 
 通常、このエラー メッセージでは、追加する必要があるリソースが示されます。たとえば、"`0/3 nodes are available: 3 Insufficient nvidia.com/gpu`" というエラー メッセージが表示された場合、これは、サービスに GPU が必要であり、クラスターの 3 つのノードには利用可能な GPU がないことを意味します。 これに対処するには、ノードを追加するか (GPU SKU を使用している場合)、GPU 対応の SKU に切り替えるか (SKU が GPU 対応でない場合)、GPU を必要としないように環境を変更します。  
 
@@ -201,7 +199,7 @@ Azure Kubernetes Service コンピューティング ターゲットにサービ
 
 ## <a name="function-fails-get_model_path"></a>get_model_path() 関数が失敗する
 
-多くの場合、スコアリング スクリプトの `init()` 関数では、コンテナー内のモデル ファイルまたはモデル ファイルのフォルダーを見つける目的で [Model.get_model_path()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) 関数が呼び出されます。 モデル ファイルまたはフォルダーが見つからない場合、この関数は失敗します。 このエラーをデバッグする最も簡単な方法は、Container シェルで以下の Python コードを実行することです。
+多くの場合、スコアリング スクリプトの `init()` 関数では、コンテナー内のモデル ファイルまたはモデル ファイルのフォルダーを見つける目的で [Model.get_model_path()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) 関数が呼び出されます。 モデル ファイルまたはフォルダーが見つからない場合、この関数は失敗します。 このエラーをデバッグする最も簡単な方法は、Container シェルで以下の Python コードを実行することです。
 
 ```python
 from azureml.core.model import Model
@@ -239,13 +237,16 @@ def run(input_data):
 
 ## <a name="http-status-code-503"></a>HTTP 状態コード 503
 
-Azure Kubernetes Service のデプロイでは、自動スケールがサポートされているため、レプリカを加えて、追加の負荷に対応することができます。 しかし、自動スケールは、**段階的な**負荷の変化に対処するように設計されています。 1 秒あたりに受信する要求の量が急増した場合、クライアントは HTTP 状態コード 503 を受信する可能性があります。
+Azure Kubernetes Service のデプロイでは、自動スケールがサポートされているため、レプリカを加えて、追加の負荷に対応することができます。 自動スケールは、**段階的な**負荷の変化に対処するように設計されています。 1 秒あたりに受信する要求の量が急増した場合、クライアントは HTTP 状態コード 503 を受信する可能性があります。 オートスケーラーは迅速に反応しますが、AKS で追加のコンテナーを作成するにはかなりの時間がかかります。
+
+スケールアップ/スケールダウンの決定は、コンテナーの現在のレプリカの使用率に基づきます。 ビジー状態 (要求を処理中) のレプリカの数を現在のレプリカの総数で除算した数が、現在の使用率です。 この数が `autoscale_target_utilization` を超えると、さらにレプリカが作成されます。 これが下回ると、レプリカが減少します。 レプリカの追加は、集中的かつ迅速に決定されます (約 1 秒)。 レプリカの削除は慎重に決定されます (約 1 分)。 既定では、自動スケールの目標使用率は **70%** に設定されています。これは、1 秒あたりに受信する要求の量 (RPS) が**最大 30%** 増加した場合まで対処できることを意味します。
 
 状態コード 503 を防ぐには、次の 2 つのことが役立ちます。
 
-* 自動スケールによって新しいレプリカが作成される使用率レベルを変更します。
-    
-    既定では、自動スケールの目標使用率は 70% に設定されています。これは、1 秒あたりに受信する要求の量 (RPS) が最大 30% 増加した場合まで対処できることを意味します。 使用率の目標を調整するには、`autoscale_target_utilization` をより小さい値に設定します。
+> [!TIP]
+> これらの 2 つの方法は、個別に使用することも、組み合わせて使用することもできます。
+
+* 自動スケールによって新しいレプリカが作成される使用率レベルを変更します。 使用率の目標を調整するには、`autoscale_target_utilization` をより小さい値に設定します。
 
     > [!IMPORTANT]
     > この変更によって、レプリカの作成時間は*短縮*されません。 その代わり、より低い使用率しきい値で作成されます。 サービスの使用率が 70% になるまで待機するのでなく値を 30% に変更すると、使用率が 30% になった段階でレプリカが作成されます。
@@ -276,7 +277,7 @@ Azure Kubernetes Service のデプロイでは、自動スケールがサポー�
     > [!NOTE]
     > 受信する要求の量が、新しい最小レプリカ数で対処できるレベルを超えて急増した場合、再び 503 が発生する可能性があります。 たとえば、ご利用のサービスへのトラフィックが増えた場合、レプリカの最小個数を増やすことが必要な場合があります。
 
-`autoscale_target_utilization`、`autoscale_max_replicas`、`autoscale_min_replicas` の設定方法の詳細については、[AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) モジュール リファレンスを参照してください。
+`autoscale_target_utilization`、`autoscale_max_replicas`、`autoscale_min_replicas` の設定方法の詳細については、[AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py&preserve-view=true) モジュール リファレンスを参照してください。
 
 ## <a name="http-status-code-504"></a>HTTP 状態コード 504
 
@@ -286,7 +287,11 @@ Azure Kubernetes Service のデプロイでは、自動スケールがサポー�
 
 ## <a name="advanced-debugging"></a>高度なデバッグ
 
-場合によっては、モデル デプロイに含まれる Python コードを対話的にデバッグする必要が生じることがあります。 たとえば、エントリ スクリプトが失敗し、追加のログ記録によっても理由を特定できない場合がこれにあたります。 Visual Studio Code と debugpy を使用すると、Docker コンテナー内で実行されているコードにアタッチできます。 詳細については、[VS Code での対話型デバッグのガイド](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-deployments)を参照してください。
+モデル デプロイに含まれる Python コードを対話的にデバッグする必要が生じることがあります。 たとえば、エントリ スクリプトが失敗し、追加のログ記録によっても理由を特定できない場合がこれにあたります。 Visual Studio Code と debugpy を使用すると、Docker コンテナー内で実行されているコードにアタッチできます。
+
+詳細については、[VS Code での対話型デバッグのガイド](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-deployments)を参照してください。
+
+## <a name="model-deployment-user-forum"></a>[モデル デプロイ ユーザー フォーラム](https://docs.microsoft.com/answers/topics/azure-machine-learning-inference.html)
 
 ## <a name="next-steps"></a>次のステップ
 

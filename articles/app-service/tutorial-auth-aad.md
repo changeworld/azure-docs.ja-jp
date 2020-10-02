@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/29/2020
 ms.custom: devx-track-csharp, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: c1c3f52dafe63e3f829eb12d4fb872ed3ce85f36
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: abda26e359becb137d4c0c9f2965ebfbb5ee047c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211706"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982904"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>チュートリアル:Azure App Service でユーザーをエンド ツー エンドで認証および承認する
 
@@ -145,7 +145,7 @@ http://<back-end-app-name>.azurewebsites.net
 http://<front-end-app-name>.azurewebsites.net
 ```
 
-![Azure App Service で実行される ASP.NET Core API](./media/tutorial-auth-aad/azure-run.png)
+:::image type="content" source="./media/tutorial-auth-aad/azure-run.png" alt-text="ブラウザー ウィンドウでの Azure App Service Rest API Sample のスクリーンショット。To do list アプリが表示されている。":::
 
 > [!NOTE]
 > アプリが再起動されると、新しいデータが消去されていることに気付く場合があります。 サンプル ASP.NET Core アプリではメモリ内データベースが使用されているため、この動作は仕様です。
@@ -225,7 +225,7 @@ git push frontend master
 
 `http://<back-end-app-name>.azurewebsites.net` に移動して、フロントエンド アプリから追加された項目を確認します。 また、`from back end 1` や `from back end 2` などのいくつかの項目を追加し、フロントエンド アプリを更新して、変更が反映されているかどうかを確認します。
 
-![Azure App Service で実行される ASP.NET Core API](./media/tutorial-auth-aad/remote-api-call-run.png)
+:::image type="content" source="./media/tutorial-auth-aad/remote-api-call-run.png" alt-text="ブラウザー ウィンドウでの Azure App Service Rest API Sample のスクリーンショット。To do list アプリが表示されている。":::
 
 ## <a name="configure-auth"></a>auth を構成する
 
@@ -239,7 +239,7 @@ ID プロバイダーとして Azure Active Directory を使用します。 詳�
 
 **[リソース グループ]** でリソース グループを検索して選択します。 **[概要]** でバックエンド アプリの管理ページを選択します。
 
-![Azure App Service で実行される ASP.NET Core API](./media/tutorial-auth-aad/portal-navigate-back-end.png)
+:::image type="content" source="./media/tutorial-auth-aad/portal-navigate-back-end.png" alt-text="ブラウザー ウィンドウでの Azure App Service Rest API Sample のスクリーンショット。To do list アプリが表示されている。":::
 
 バックエンド アプリの左側のメニューで **[認証/承認]** を選択し、 **[オン]** を選択して App Service 認証を有効にします。
 
@@ -247,7 +247,7 @@ ID プロバイダーとして Azure Active Directory を使用します。 詳�
 
 **[認証プロバイダー]** の下の **[Azure Active Directory]** をクリックします。
 
-![Azure App Service で実行される ASP.NET Core API](./media/tutorial-auth-aad/configure-auth-back-end.png)
+:::image type="content" source="./media/tutorial-auth-aad/configure-auth-back-end.png" alt-text="ブラウザー ウィンドウでの Azure App Service Rest API Sample のスクリーンショット。To do list アプリが表示されている。":::
 
 **[簡易]** を選択し、既定の設定のままで新しい AD アプリを作成して、 **[OK]** を選択します。
 
@@ -259,9 +259,7 @@ ID プロバイダーとして Azure Active Directory を使用します。 詳�
 
 Azure AD アプリケーションの**クライアント ID** をメモ帳にコピーします。 この値は、後で必要になります。
 
-![Azure App Service で実行される ASP.NET Core API](./media/tutorial-auth-aad/get-application-id-back-end.png)
-
-ここで終えた場合でも、既に App Service の認証と承認によってセキュリティが確保された自己完結型のアプリが完成します。 残りのセクションでは、認証済みのユーザーをフロント エンドからバックエンドに "送る" ことによって、マルチアプリ ソリューションのセキュリティを確保する方法について説明します。 
+:::image type="content" source="./media/tutorial-auth-aad/get-application-id-back-end.png" alt-text="ブラウザー ウィンドウでの Azure App Service Rest API Sample のスクリーンショット。To do list アプリが表示されている。" ことによって、マルチアプリ ソリューションのセキュリティを確保する方法について説明します。 
 
 ### <a name="enable-authentication-and-authorization-for-front-end-app"></a>フロントエンド アプリの認証と承認を有効にする
 
@@ -284,13 +282,13 @@ Azure AD アプリケーションの**クライアント ID** をメモ帳にコ
 
 **[アプリの登録]**  >  **[所有しているアプリケーション]**  >  **[View all applications in this directory]\(このディレクトリのすべてのアプリケーションを表示\)** の順に選択します。 フロントエンド アプリ名を選択し、 **[API のアクセス許可]** を選択します。
 
-![Azure App Service で実行される ASP.NET Core API](./media/tutorial-auth-aad/add-api-access-front-end.png)
+:::image type="content" source="./media/tutorial-auth-aad/add-api-access-front-end.png" alt-text="ブラウザー ウィンドウでの Azure App Service Rest API Sample のスクリーンショット。To do list アプリが表示されている。":::
 
 **[アクセス許可の追加]** を選択し、 **[所属する組織で使用している API]**  >  **\<back-end-app-name>** の順に選択します。
 
 バックエンド アプリの **[API アクセス許可の要求]** ページで、 **[委任されたアクセス許可]** と **[user_impersonation]** を選択し、次に **[アクセス許可の追加]** を選択します。
 
-![Azure App Service で実行される ASP.NET Core API](./media/tutorial-auth-aad/select-permission-front-end.png)
+:::image type="content" source="./media/tutorial-auth-aad/select-permission-front-end.png" alt-text="ブラウザー ウィンドウでの Azure App Service Rest API Sample のスクリーンショット。To do list アプリが表示されている。":::
 
 ### <a name="configure-app-service-to-return-a-usable-access-token"></a>使用可能なアクセス トークンを返すように App Service を構成する
 
@@ -300,7 +298,7 @@ Azure AD アプリケーションの**クライアント ID** をメモ帳にコ
 
 リソース ツリーでフロントエンド アプリが選択された状態で、[Azure Resource Explorer](https://resources.azure.com) が開きます。 ページの上部にある **[読み取り/書き込み]** をクリックして、Azure リソースの編集を有効にします。
 
-![Azure App Service で実行される ASP.NET Core API](./media/tutorial-auth-aad/resources-enable-write.png)
+:::image type="content" source="./media/tutorial-auth-aad/resources-enable-write.png" alt-text="ブラウザー ウィンドウでの Azure App Service Rest API Sample のスクリーンショット。To do list アプリが表示されている。":::
 
 左側のブラウザーで、**config** > **authsettings** にドリルダウンします。
 
@@ -310,7 +308,7 @@ Azure AD アプリケーションの**クライアント ID** をメモ帳にコ
 "additionalLoginParams": ["response_type=code id_token","resource=<back-end-client-id>"],
 ```
 
-![Azure App Service で実行される ASP.NET Core API](./media/tutorial-auth-aad/additional-login-params-front-end.png)
+:::image type="content" source="./media/tutorial-auth-aad/additional-login-params-front-end.png" alt-text="ブラウザー ウィンドウでの Azure App Service Rest API Sample のスクリーンショット。To do list アプリが表示されている。":::
 
 **[PUT]** をクリックして、設定を保存します。
 

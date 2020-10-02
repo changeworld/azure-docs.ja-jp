@@ -11,20 +11,20 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 76a31b10c15f2dff3d6d9304dcff6d0fb489ea7f
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 827d66b51aa2080c4fb10209439d7781ddf787a7
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210388"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436927"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Azure SQL Database のサーバー用の仮想ネットワーク サービス エンドポイントと規則の使用
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-"*仮想ネットワーク規則*" は 1 つのファイアウォール セキュリティ機能であり、[Azure SQL Database](sql-database-paas-overview.md) 内のデータベースおよびエラスティック プール用、または [Azure Synapse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 内のデータベース用のサーバーが、仮想ネットワーク内の特定のサブネットから送信される通信を許可するかどうかを制御します。 この記事では、仮想ネットワーク規則機能が、場合によっては Azure SQL Database と SQL Data Warehouse のデータベースへの通信を安全に許可するための最適な選択肢となる理由を説明します。
+"*仮想ネットワーク規則*" は 1 つのファイアウォール セキュリティ機能であり、[Azure SQL Database](sql-database-paas-overview.md) 内のデータベースおよびエラスティック プール用、または [Azure Synapse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 内のデータベース用のサーバーが、仮想ネットワーク内の特定のサブネットから送信される通信を許可するかどうかを制御します。 この記事では、仮想ネットワーク規則機能が、場合によっては Azure SQL Database と Azure Synapse Analytics (以前の SQL Data Warehouse) のデータベースへの通信を安全に許可するための最適な選択肢となる理由を説明します。
 
 > [!NOTE]
-> この記事は、Azure SQL Database と Azure Synapse Analytics (以前の SQL Data Warehouse) の両方に適用されます。 単純にするために、"データベース" という言葉で Azure SQL Database と Azure Synapse Analytics の両方のデータベースを表すことにします。 同様に、"サーバー" という言葉は、Azure SQL Database と Azure Synapse Analytics をホストする[論理 SQL サーバー](logical-servers.md)を表しています。
+> この記事は、Azure SQL Database と Azure Synapse Analytics の両方に適用されます。 単純にするために、"データベース" という言葉で Azure SQL Database と Azure Synapse Analytics の両方のデータベースを表すことにします。 同様に、"サーバー" という言葉は、Azure SQL Database と Azure Synapse Analytics をホストする[論理 SQL サーバー](logical-servers.md)を表しています。
 
 仮想ネットワーク規則を作成するには、まず、参照する規則の[仮想ネットワーク サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]が必要です。
 
@@ -104,7 +104,7 @@ When searching for blogs about ASM, you probably need to use this old and now-fo
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Azure Storage で VNet サービス エンドポイントを使用した場合の影響
 
-Azure Storage は、Azure ストレージ アカウントへの接続を制限できる同じ機能を実装しています。 Azure SQL Database で使用されている Azure ストレージ アカウントでこの機能を使用することにした場合は、問題が発生する可能性があります。 次に、この影響を受ける Azure SQL Database と Azure SQL Data Warehouse の機能の一覧と説明を示します。
+Azure Storage は、Azure ストレージ アカウントへの接続を制限できる同じ機能を実装しています。 Azure SQL Database で使用されている Azure ストレージ アカウントでこの機能を使用することにした場合は、問題が発生する可能性があります。 次に、この影響を受ける Azure SQL Database と Azure Synapse Analytics の機能の一覧と説明を示します。
 
 ### <a name="azure-synapse-polybase-and-copy-statement"></a>Azure Synapse PolyBase と COPY ステートメント
 

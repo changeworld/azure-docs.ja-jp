@@ -4,12 +4,12 @@ description: ASP.NET Core Web アプリケーションの可用性、パフォ�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 719bf997254c98c5790d6d6733982fea08541967
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ac742aae88b3e3c62ffca857dcb690fa71434482
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936522"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006761"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights for ASP.NET Core アプリケーション
 
@@ -122,6 +122,7 @@ Visual Studio for Mac の場合は、[手動のガイダンス](#enable-applicat
 ### <a name="user-secrets-and-other-configuration-providers"></a>ユーザー シークレットとその他の構成プロバイダー
 
 インストルメンテーション キーを ASP.NET Core ユーザー シークレットに格納するか、別の構成プロバイダーから取得する場合は、`Microsoft.Extensions.Configuration.IConfiguration` パラメーターでオーバーロードを使用できます。 たとえば、「 `services.AddApplicationInsightsTelemetry(Configuration);` 」のように入力します。
+Microsoft.ApplicationInsights.AspNetCore バージョン [2.15.0-beta3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) 以降、`services.AddApplicationInsightsTelemetry()` の呼び出しによって、アプリケーションの `Microsoft.Extensions.Configuration.IConfiguration` からインストルメンテーション キーが自動的に読み取られます。 `IConfiguration` を明示的に指定する必要はありません。
 
 ## <a name="run-your-application"></a>アプリケーションを実行する
 
@@ -158,17 +159,17 @@ ASP.NET Core での[パフォーマンス カウンター](./web-monitor-perform
 
 1. `_ViewImports.cshtml` で、インジェクションを追加します。
 
-    ```cshtml
-        @inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
-    ```
+```cshtml
+    @inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+```
 
 2. `_Layout.cshtml` で、`<head>` セクションの終わりに (ただし、他のスクリプトの前に) `HtmlHelper` を挿入します。 ページからカスタム JavaScript テレメトリを報告する場合は、このスニペットの後に挿入します。
 
-    ```cshtml
-        @Html.Raw(JavaScriptSnippet.FullScript)
-        </head>
-    ```
-    
+```cshtml
+    @Html.Raw(JavaScriptSnippet.FullScript)
+    </head>
+```
+
 または、`FullScript` を使用するには、SDK v2.14 で `ScriptBody` を使用します。 コンテンツ セキュリティ ポリシーを設定するために `<script>` タグをコントロールする必要がある場合は、次のようにします。
 
 ```cshtml
@@ -183,7 +184,7 @@ ASP.NET Core での[パフォーマンス カウンター](./web-monitor-perform
 
 ## <a name="configure-the-application-insights-sdk"></a>Application Insights SDK を構成する
 
-Application Insights SDK for ASP.NET Core をカスタマイズして、既定の構成を変更できます。 Application Insights ASP.NET SDK のユーザーであれば、`ApplicationInsights.config` を使用する構成または `TelemetryConfiguration.Active` の変更に慣れている場合もあります。 ASP.NET Core の場合、構成は別の方法で変更します。 ASP.NET Core SDK をアプリケーションに追加し、ASP.NET Core の組み込み[依存関係インジェクション](/aspnet/core/fundamentals/dependency-injection)を使用して構成します。 他の方法が指示されていない限り、ほとんどすべての構成の変更は、`Startup.cs` クラスの `ConfigureServices()` メソッドで行います。 以下のセクションではさらに詳しく説明します。
+Application Insights SDK for ASP.NET Core をカスタマイズして、既定の構成を変更できます。 Application Insights ASP.NET SDK のユーザーであれば、`ApplicationInsights.config` を使用する構成または `TelemetryConfiguration.Active` の変更に慣れている場合もあります。 ASP.NET Core の場合、他の方法が指定されていない限り、ほとんどすべての構成の変更は、`Startup.cs` クラスの `ConfigureServices()` メソッドで行われます。 以下のセクションではさらに詳しく説明します。
 
 > [!NOTE]
 > ASP.NET Core アプリケーションでは、`TelemetryConfiguration.Active` を変更することによる構成の変更はサポートされていません。
@@ -221,8 +222,25 @@ public void ConfigureServices(IServiceCollection services)
 |EnableHeartbeat | ハートビート機能を有効または無効にします。この機能は、"HeartbeatState" という名前のカスタム メトリックを、.NET バージョン、Azure 環境情報 (該当する場合) などのランタイムに関する情報と共に定期的に (既定では 15 分) 送信します。 | true
 |AddAutoCollectedMetricExtractor | AutoCollectedMetrics エクストラクターを有効または無効にします。これは、サンプリングが行われる前に要求/依存関係に関する事前に集計されたメトリックを送信する TelemetryProcessor です。 | true
 |RequestCollectionOptions.TrackExceptions | 要求収集モジュールによる未処理の例外の追跡についてのレポートを有効または無効にします。 | NETSTANDARD 2.0 では false (例外は ApplicationInsightsLoggerProvider で追跡されるため) で、それ以外の場合は true です。
+|EnableDiagnosticsTelemetryModule | `DiagnosticsTelemetryModule` を有効または無効にします。 これを無効にすると、次の設定が無視されます: `EnableHeartbeat`、`EnableAzureInstanceMetadataTelemetryModule`、`EnableAppServicesHeartbeatTelemetryModule` | true
 
 最新の一覧については、[`ApplicationInsightsServiceOptions` の構成可能な設定](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs)を参照してください。
+
+### <a name="configuration-recommendation-for-microsoftapplicationinsightsaspnetcore-sdk-2150-beta3--above"></a>Microsoft.ApplicationInsights.AspNetCore SDK 2.15.0-beta3 以降の構成に関する推奨事項
+
+Microsoft.ApplicationInsights.AspNetCore SDK バージョン [2.15.0-beta3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0-beta3) 以降、アプリケーション `IConfiguration` インスタンスを使用する instrumentationkey を含む、`ApplicationInsightsServiceOptions` で使用可能なすべての設定を構成することをお勧めします。 次の例に示すように、設定は "ApplicationInsights" セクションの下に記されている必要があります。 appsettings.json の次のセクションは、インストルメンテーション キーを構成し、アダプティブ サンプリングとパフォーマンス カウンターの収集も無効にします。
+
+```json
+{
+    "ApplicationInsights": {
+    "InstrumentationKey": "putinstrumentationkeyhere",
+    "EnableAdaptiveSampling": false,
+    "EnablePerformanceCounterCollectionModule": false
+    }
+}
+```
+
+`services.AddApplicationInsightsTelemetry(aiOptions)` を使用した場合、これにより `Microsoft.Extensions.Configuration.IConfiguration` の設定がオーバーライドされます。
 
 ### <a name="sampling"></a>サンプリング
 
@@ -473,4 +491,3 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 * [API を使用](./api-custom-events-metrics.md)して、アプリのパフォーマンスと使用の詳細を表示するための独自のイベントとメトリックスを送信します。
 * [可用性テスト](./monitor-web-app-availability.md)の使用: 世界中からアプリを常にチェックします。
 * [ASP.NET Core での依存関係の挿入](/aspnet/core/fundamentals/dependency-injection)
-

@@ -5,15 +5,15 @@ services: active-directory
 author: curtand
 ms.service: active-directory
 ms.topic: include
-ms.date: 02/28/2020
+ms.date: 09/10/2020
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: 4a506f4098b8bbff0a927334e0de5ed47f2e4eb0
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 49d0d3e8665e0e80b1626c180300611149eff23f
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376224"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90005984"
 ---
 ここでは、Azure Active Directory (Azure AD) サービスの使用上の制約およびその他のサービスの制限を説明します。
 
@@ -30,4 +30,4 @@ ms.locfileid: "89376224"
 | アクセス パネル |割り当てられたライセンスに関係なく、各ユーザーのアクセス パネルに表示できるアプリケーション数に制限はありません。  |
 | Reports | いずれのレポートでも、最大 1,000 行を表示またはダウンロードできます。 それを超えるデータは切り捨てられます。 |
 | 管理単位 | Azure AD リソースは最大 30 個の管理単位のメンバーにすることができます。 |
-| 管理者ロールとアクセス許可 | <ul><li>Azure AD 組織には、最大 30 個のカスタム ロールを作成できます。</li><li>グループを[所有者](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership)として追加することはできません。</li><li>管理者以外の全ユーザーがすべてのテナント情報にアクセスできないよう、他のユーザーのテナント情報を読み取るユーザーの権限を Azure AD 組織全体での切り替え以外の方法で制限することはできません (推奨されません)。 既定のアクセス許可の詳細については、[ここ](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users)を参照してください。</li><li>管理者ロールのメンバーシップの追加や失効が有効になるには、最大 15 分またはサインアウト/サインインが必要になることがあります。</li></ul> |
+| Azure AD ロールとアクセス許可 | <ul><li>Azure AD 組織ごとに、最大 30 個の [Azure AD カスタム ロール](https://docs.microsoft.com/azure/active-directory//users-groups-roles/roles-custom-overview?context=azure/active-directory/users-groups-roles/context/ugr-context)を作成できます。</li><li>グループを[グループ所有者](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership)として追加することはできません。</li><li>ユーザーが他のユーザーのテナント情報を読み取ることができる権限は、管理者以外の全ユーザーがすべてのテナント情報にアクセスできないようにする、Azure AD 組織全体のスイッチでのみ制限できます (これは推奨されません)。 詳細については、「[メンバー ユーザーの既定のアクセス許可を制限するには](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users)」を参照してください。</li><li>管理者ロールのメンバーシップの追加や失効が有効になるには、最大 15 分またはサインアウト/サインインが必要になることがあります。</li></ul> |

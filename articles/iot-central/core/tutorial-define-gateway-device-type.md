@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Central で新しい種類のゲートウェイ デバイスを定義する | Microsoft Docs
+title: チュートリアル - Azure IoT Central で新しい種類のゲートウェイ デバイスを定義する | Microsoft Docs
 description: このチュートリアルでは、ビルダーとして Azure IoT Central アプリケーションで新しい種類の IoT ゲートウェイ デバイスを定義する方法について説明します。
 author: rangv
 ms.author: rangv
@@ -9,14 +9,14 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 2411eab50cc921a09ba55780b3c6620744a78f3f
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 58e481e34d9f798b73b72b114b071cf035c3319f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758135"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967909"
 ---
-# <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションで新しい種類の IoT ゲートウェイ デバイスを定義する
+# <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>チュートリアル - Azure IoT Central アプリケーションで新しい種類の IoT ゲートウェイ デバイスを定義する
 
 "*この記事は、ソリューション ビルダーおよびデバイス開発者を対象としています。* "
 
@@ -31,6 +31,9 @@ ms.locfileid: "81758135"
 * 自身のテレメトリ (温度など) を送信する。
 * オペレーターによって行われた書き込み可能なプロパティの更新に応答する (たとえば、オペレーターはテレメトリの送信間隔を変更できます)。
 * コマンド (デバイスの再起動など) に応答する。
+
+> [!div class="checklist"]
+> ダウンストリーム デバイス テンプレートを作成する ゲートウェイ デバイス テンプレートを作成する デバイス テンプレートを公開する シミュレートされたデバイスを作成する
 
 ## <a name="prerequisites"></a>前提条件
 

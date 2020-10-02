@@ -4,12 +4,12 @@ description: Azure Migrate を使用して VMware VM のエージェントレス
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: c9a7e76496c2851b90c8fd1d164645c46d02609b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 37181246a20044f16414735e2247fa90fc36433b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376037"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530524"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware VM を Azure に移行する (エージェントレス)
 
@@ -121,7 +121,7 @@ Azure Migrate Server Migration は、VMware VM の検出、評価、エージェ
 
 11. **[ディスク]** で、VM ディスクを Azure にレプリケートするかどうかを指定し、Azure でのディスクの種類 (Standard SSD か HDD、または Premium マネージド ディスク) を選択します。 続けて、 **[次へ]** をクリックします。
    
-    ![ディスク](./media/tutorial-migrate-vmware/disks.png)
+    ![[レプリケート] ダイアログ ボックスの [ディスク] タブを表示するスクリーンショット。](./media/tutorial-migrate-vmware/disks.png)
 
 12. **[レプリケーションの確認と開始]** で、設定を確認し、 **[レプリケート]** をクリックして、サーバーの初期レプリケーションを開始します。
 

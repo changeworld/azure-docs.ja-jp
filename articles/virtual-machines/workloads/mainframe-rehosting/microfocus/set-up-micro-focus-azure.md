@@ -1,6 +1,6 @@
 ---
 title: Azure で Micro Focus Enterprise Server 5.0 および Enterprise Developer 5.0 をインストールする | Microsoft Docs
-description: Azure 仮想マシン (VM) 上で Micro Focus 開発およびテスト環境を使用して IBM z/OS メインフレーム ワークロードをリホストします。
+description: この記事では、Microsoft Azure で Micro Focus Enterprise Server 5.0 と Enterprise Developer 5.0 をインストールする方法について説明します。
 services: virtual-machines-linux
 documentationcenter: ''
 author: maggsl
@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 59566fc051b1e84d8e271b3c9d061f2481dcc58f
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 11fde4480f4e2ed9feda00fa2af0e5937a77b9ad
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245317"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986875"
 ---
 # <a name="install-micro-focus-enterprise-server-50-and-enterprise-developer-50-on-azure"></a>Azure で Micro Focus Enterprise Server 5.0 および Enterprise Developer 5.0 をインストールする
 

@@ -1,6 +1,6 @@
 ---
 title: Cloudyn への Azure サブスクリプションの登録
-description: このクイック スタートでは、Cloudyn 試用版サブスクリプションの作成に必要な登録プロセスと、Cloudyn ポータルへのサインインについて詳しく説明します。
+description: Azure サブスクリプションを Cloudyn に登録し、Cloudyn ポータルにサインインする方法について説明します。
 author: bandersmsft
 ms.author: banders
 ms.date: 03/12/2020
@@ -10,12 +10,12 @@ ms.service: cost-management-billing
 ms.subservice: cloudyn
 ms.reviewer: benshy
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3a4501374ef6045170d380422763729372f0ec0c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: bb7add199186ab54eb28131070e717e4298bedf1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690104"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985556"
 ---
 # <a name="register-an-individual-azure-subscription-and-view-cost-data"></a>個別の Azure サブスクリプションを登録し、コスト データを確認する
 

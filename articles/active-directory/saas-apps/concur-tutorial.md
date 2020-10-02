@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Concur の統合 | Microsoft Docs
-description: Azure Active Directory と Concur の間でシングル サインオンを構成する方法について説明します。
+description: Azure Active Directory と Concur の間で SSO を構成する方法について説明します。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 71e6dc8bdb8bdccdaaf845498eebdbe75a8b35c4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 38cc5458b2e62e071227a2372d56e4647e347338
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547187"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056015"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Concur の統合
 
@@ -41,7 +41,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * Concur では、**SP** によって開始される SSO がサポートされます
 * Concur では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
-* Concur を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
+* Concur を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 ## <a name="adding-concur-from-the-gallery"></a>ギャラリーからの Concur の追加
 
@@ -54,7 +54,7 @@ Azure AD への Concur の統合を構成するには、ギャラリーから管
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Concur**」と入力します。
 1. 結果のパネルから **[Concur]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-concur"></a>Concur の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-concur"></a>Concur の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、Concur に対する Azure AD SSO を構成してテストします。 SSO を機能させるためには、Azure AD ユーザーと Concur の関連ユーザーの間で、リンク関係を確立する必要があります。
 
@@ -82,9 +82,18 @@ Concur で Azure AD SSO を構成してテストするには、次の構成要�
     a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://www.concursolutions.com/UI/SSO/<OrganizationId>`
 
     b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<customer-domain>.concursolutions.com`
+    
+    c. **[応答 URL]** に、次の URL パターンのいずれかを入力します。
 
+    | [応答 URL]|
+    |----------|
+    | `https://www.concursolutions.com/SAMLRedirector/SAMLReceiver.ashx` |
+    | `https://<customer-domain>.concursolutions.com/<OrganizationId>` |
+    | `https://<customer-domain>.concur.com` |
+    | `https://<customer-domain>.concursolutions.com` | 
+    
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Concur クライアント サポート チーム](https://www.concur.co.in/contact)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得するには、[Concur クライアント サポート チーム](https://www.concur.co.in/contact)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -126,7 +135,7 @@ Concur で Azure AD SSO を構成してテストするには、次の構成要�
 
 ## <a name="configure-concur-sso"></a>Concur の SSO の構成
 
-**Concur**  側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Concur サポート チーム](https://www.concur.co.in/contact)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Concur ** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Concur サポート チーム](https://www.concur.co.in/contact)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
   > [!NOTE]
   > SAML を使用したフェデレーション SSO 用に Concur サブスクリプションを構成するには、別の作業が必要です。対応については [Concur クライアント サポート チーム](https://www.concur.co.in/contact)に連絡してください。

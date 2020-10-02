@@ -3,12 +3,12 @@ title: メディア グラフの概念 - Azure
 description: メディア グラフを使用すると、メディアのキャプチャ元、処理方法、および結果の配信先を定義できます。 この記事では、メディア グラフの概念の詳細について説明します。
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 6be741ee38cc8f1980fe9aa96883f9aacc1be8e2
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 1e280d6fe8303a85bee41adf83ac54e7c96df304
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048426"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567939"
 ---
 # <a name="media-graph"></a>メディア グラフ
 
@@ -21,7 +21,8 @@ ms.locfileid: "89048426"
 
 メディア グラフを使用すると、メディアのキャプチャ元、処理方法、および結果の配信先を定義できます。 これを行うには、必要な方法でコンポーネントまたはノードを接続します。 メディア グラフを図で表わすと、次の図のようになります。  
 
-![メディア グラフのグラフィック表示](./media/media-graph/overview.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/media-graph/media-graph.svg" alt-text="メディア グラフ":::
 
 IoT Edge の Live Video Analytics では、さまざまな種類のソース、プロセッサ、およびシンクがサポートされています。
 
@@ -39,7 +40,8 @@ IoT Edge の Live Video Analytics では、"グラフ トポロジ" と "グラ�
 
 グラフ トポロジとグラフ インスタンスのライフサイクルを次の状態ダイアグラムに示します。
 
-![グラフ トポロジとグラフ インスタンスのライフサイクル](./media/media-graph/graph-topology-lifecycle.svg)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/media-graph/graph-topology-lifecycle.svg" alt-text="メディア グラフ":::
 
 まず、[グラフ トポロジの作成](direct-methods.md#graphtopologyset)から始めます。 次に、このトポロジを使用して処理するライブ ビデオ フィードごとに、[グラフ インスタンスを作成](direct-methods.md#graphinstanceset)します。 
 
@@ -88,11 +90,11 @@ RTSP ソース ノードを使用すると、[RTSP] (https://tools.ietf.org/html
 
 #### <a name="http-extension-processor"></a>HTTP 拡張プロセッサ
 
-HTTP 拡張プロセッサ ノードを使用すると、独自の IoT Edge モジュールをメディア グラフに接続できます。 このノードは、デコードされたビデオ フレームを入力として受け取り、そのようなフレームをモジュールによって公開される HTTP REST エンドポイントにリレーします。 このノードは、必要に応じて、REST エンドポイントで認証することができます。 また、ノードには、ビデオ フレームを REST エンドポイントにリレーする前に、スケールおよびエンコードするための組み込みのイメージ フォーマッタがあります。 スケーラーには、画像の縦横比を維持、埋め込み、または拡張するオプションがあります。 イメージ エンコーダーでは、JPEG、PNG、BMP 形式がサポートされています。
+HTTP 拡張プロセッサ ノードを使用すると、独自の IoT Edge モジュールをメディア グラフに接続できます。 このノードは、デコードされたビデオ フレームを入力として受け取り、そのようなフレームをモジュールによって公開される HTTP REST エンドポイントにリレーします。 このノードは、必要に応じて、REST エンドポイントで認証することができます。 また、ノードには、ビデオ フレームを REST エンドポイントにリレーする前に、スケールおよびエンコードするための組み込みのイメージ フォーマッタがあります。 スケーラーには、画像の縦横比を維持、埋め込み、または拡張するオプションがあります。 イメージ エンコーダーでは、JPEG、PNG、BMP 形式がサポートされています。 プロセッサの詳細については、[こちら](media-graph-extension-concept.md#http-extension-processor)をご覧ください。
 
 #### <a name="grpc-extension-processor"></a>gRPC 拡張プロセッサ
 
-gRPC 拡張プロセッサ ノードは、デコードされたビデオ フレームを入力として受け取り、そのようなフレームをモジュールによって公開される [gRPC](terminology.md#grpc) エンドポイントにリレーします。 また、ノードには、ビデオ フレームを gRPC エンドポイントにリレーする前に、スケールおよびエンコードするための組み込みのイメージ フォーマッタがあります。 スケーラーには、画像の縦横比を維持、埋め込み、または拡張するオプションがあります。 イメージ エンコーダーでは、jpeg、png、bmp 形式がサポートされています。
+gRPC 拡張プロセッサ ノードは、デコードされたビデオ フレームを入力として受け取り、そのようなフレームをモジュールによって公開される [gRPC](terminology.md#grpc) エンドポイントにリレーします。 ノードでは、[共有メモリ](https://en.wikipedia.org/wiki/Shared_memory)を使用したデータの転送や、gRPC メッセージの本文へのコンテンツの直接埋め込みをサポートします。 また、ノードには、ビデオ フレームを gRPC エンドポイントにリレーする前に、スケールおよびエンコードするための組み込みのイメージ フォーマッタがあります。 スケーラーには、画像の縦横比を維持、埋め込み、または拡張するオプションがあります。 イメージ エンコーダーでは、jpeg、png、bmp 形式がサポートされています。 プロセッサの詳細については、[こちら](media-graph-extension-concept.md#grpc-extension-processor)をご覧ください。
 
 #### <a name="signal-gate-processor"></a>シグナル ゲート プロセッサ  
 

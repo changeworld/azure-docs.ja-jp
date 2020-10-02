@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ee5fa52f59ea2ef3332fe66c81c24ff44c64e81
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: cf911a240456871275abbd7f1e7313a1d2289b98
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582883"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054605"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>チュートリアル:グループ メンバーを自動的に追加/削除する
 
-Azure Active Directory (Azure AD) では、セキュリティ グループまたは Office 365 グループのユーザーを自動的に追加したり削除したりできるので、この作業を必ずしも手動で行う必要はありません。 ユーザーまたはデバイスのいずれかのプロパティが変更されると、Azure AD は Azure AD 組織内のすべての動的グループ規則を評価し、その変更によってメンバーの追加または削除が必要であるかどうかを確認します。
+Azure Active Directory (Azure AD) では、セキュリティ グループまたは Microsoft 365 グループのユーザーを自動的に追加したり削除したりできるので、この作業を必ずしも手動で行う必要はありません。 ユーザーまたはデバイスのいずれかのプロパティが変更されると、Azure AD は Azure AD 組織内のすべての動的グループ規則を評価し、その変更によってメンバーの追加または削除が必要であるかどうかを確認します。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]

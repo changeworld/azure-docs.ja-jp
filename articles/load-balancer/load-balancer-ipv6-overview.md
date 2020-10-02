@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: d2966f32fcf7f8be2a93d1639f0a63f49768c306
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 443e8c09ea46c0c20b557d77d6ed7bd63db00085
+ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981853"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90058752"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure Load Balancer の IPv6 の概要
 
@@ -79,7 +79,7 @@ Azure Resource Manager を介してデプロイされた VM のネイティブ I
 * VM 上の IPv6 エンドポイントはインターネットに直接公開されません。 ロード バランサーの内側にあります。 ロード バランサー規則で指定されているポートのみ、IPv6 を介してアクセスできます。
 * IPv6 の IdleTimeout パラメーターの変更は、**現在サポートされていません**。 既定では 4 分です。
 * IPv6 の loadDistributionMethod パラメーターの変更は、**現在サポートされてません**。
-* 予約済み IPv6 IP (IPAllocationMethod = static) は、**現在サポートされていません**。
+* Basic Load Balancer 用の IPv6 は**動的** SKU にロックされています。  Standard Load Balancer 用の IPv6 は、**静的** SKU にロックされています。
 * NAT64 (IPv6 の IPv4 への変換) はサポートされていません。
 * IPv6 のサブネットを参照しているセカンダリ NIC をバックエンド プールに接続することは、**現在はサポートされてません**。
 

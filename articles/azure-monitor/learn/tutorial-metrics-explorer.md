@@ -6,12 +6,12 @@ ms.author: bwren
 ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 03/09/2020
-ms.openlocfilehash: d8f72471dd3109bf584d18f032ec2f4d949a4993
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 72f90918afa275e56528016539ecb2eec93d5db0
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79082814"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090093"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>チュートリアル:Azure Monitor でのメトリック グラフの作成
 メトリックス エクスプローラーは、Azure portal 内の Azure Monitor の 1 機能であり、メトリック値からグラフを作成したり、傾向を視覚的に関連付けたり、メトリック値の急上昇または急降下を調査したりすることができます。 メトリックス エクスプローラーを使用して、ご利用の Azure リソースの正常性と使用率を調べ、カスタム メトリックに基づいてグラフをプロットします。 
@@ -52,7 +52,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 
 4. 必要に応じて、メトリックの**集計**を変更することができます。 これにより、グラフの時間粒度全体でメトリック値がどのように集計されるかが定義されます。 たとえば、時間の粒度を 15 分に設定し、集計を合計に設定した場合、グラフ内の各ポイントは、15 分セグメントごとに収集されたすべての値の合計になります。
 
-    ![グラフ](media/tutorial-metrics-explorer/chart.png)
+    ![スクリーンショットには、Sum Ingress for contosoretailweb というタイトルのグラフが表示されています。](media/tutorial-metrics-explorer/chart.png)
 
 5. 同じグラフに複数のメトリックをプロットして表示する場合は、 **[メトリックの追加]** ボタンを使用して上記の手順を繰り返します。 1 つのビューに複数のグラフを表示する場合は、 **[+ New chart]\(+ 新規グラフ\)** ボタンを選択します。
 

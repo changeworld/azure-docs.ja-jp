@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 08/05/2020
+ms.date: 09/03/2020
 ms.author: juliako
-ms.openlocfilehash: 1b11dc0ee17fd0686776a7262c4bc99bd98bcc3e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e2b45ebf9acea7334678110015d8cfd3022675f4
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837311"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505340"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer リリース ノート
 
@@ -29,6 +29,16 @@ ms.locfileid: "87837311"
 * 既知の問題
 * バグの修正
 * 非推奨の機能
+
+## <a name="august-2020"></a>2020 年 8 月
+
+### <a name="mobile-design-for-the-video-indexer-website"></a>Video Indexer Web サイトのモバイル設計
+
+Video Indexer Web サイトのエクスペリエンスが、モバイル デバイスをサポートするようになりました。 ユーザー エクスペリエンスは、モバイル画面のサイズに合わせて最適化されます (カスタマイズ UI は除く)。 
+
+### <a name="accessibility-improvements-and-bug-fixes"></a>アクセシビリティの向上とバグ修正 
+
+WCAG (Web Content Accessibility Guidelines) の一部として、ならびに Microsoft アクセシビリティ標準の一部として、Video Indexer web サイトのエクスペリエンスが第 C レベルに揃えられました。 キーボード ナビゲーション、プログラムによるアクセス、スクリーン リーダーに関連するいくつかのバグ修正および改善が行われました。 
 
 ## <a name="july-2020"></a>2020 年 7 月
 

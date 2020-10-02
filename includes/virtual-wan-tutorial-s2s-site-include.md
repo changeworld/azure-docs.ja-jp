@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 06/23/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: bc94f31887526f387413f78fe3270784a4e3bd88
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ba69b94514a0c1b59001011a64a4fb28e5e4a827
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525172"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606553"
 ---
 1. 仮想 WAN のポータル ページの **[接続]** セクションで、 **[VPN サイト]** を選択して VPN サイト ページを開きます。
 2. **[VPN サイト]** ページで **[+ サイトの作成]** をクリックします。
 
-   ![基本操作](./media/virtual-wan-tutorial-site-include/basics.png "基本")
+   ![スクリーンショットには、[VPN サイトを作成する] ペインが開いた状態の [VPN (Site to site)]\(VPN (サイト間)\) ウィンドウが表示されています。](./media/virtual-wan-tutorial-site-include/basics.png "基本")
 3. **[VPN サイトを作成する]** ページの **[基本]** タブで、次のフィールドを入力します。
 
     * **[リージョン]** - 旧称は場所。 これは、このサイト リソースを作成する場所です。
@@ -29,7 +29,7 @@ ms.locfileid: "86525172"
     * **[ハブ]** - サイトを接続する先のハブ。 サイトは、VPN Gateway を持つハブにのみ接続できます。 ハブが表示されない場合は、まずそのハブで VPN ゲートウェイを作成してください。
 4. ブランチにある物理的なリンクに関する情報を追加するには、 **[リンク]** を選択します。 仮想 WAN パートナーの CPE デバイスがある場合は、システムから設定されたブランチ情報のアップロードの一部として、この情報が Azure と交換されるかどうかを確認します。
 
-   ![リンク](./media/virtual-wan-tutorial-site-include/links.png "リンク")
+   ![スクリーンショットには、[リンク] タブが選択された状態の [VPN サイトを作成する] ペインが表示されています。](./media/virtual-wan-tutorial-site-include/links.png "リンク")
 
     * **[リンク名]** - VPN サイトで物理リンクに付ける名前を指定します。 例: mylink1。
     * **[プロバイダー名]** - VPN サイトの物理リンクの名前。 例:ATT、Verizon。

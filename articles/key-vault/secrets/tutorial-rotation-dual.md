@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: b9478d3b171189decb4e2cca7fc93ba2fa75e32e
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 904355b28af93d4a277f2158b1548517118a67ba
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89482784"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90529419"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-with-two-sets-of-authentication-credentials"></a>2 セットの認証資格情報を使用したリソースを対象にシークレットのローテーションを自動化する
 
@@ -80,7 +80,7 @@ akvrotationstorage2    akvrotation      eastus      Microsoft.Storage/storageAcc
 
 1. Azure テンプレートのデプロイのリンクを選択します。 
 
-   [![[Azure に配置する] というラベルの付いたボタンが示されている画像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json)
+   [![[Azure に配置する] というラベルの付いたボタンが示されている画像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FFunction%2Fazuredeploy.json)
 
 1. **[リソース グループ]** 一覧から **[akvrotation]** を選択します。
 1. ローテーションするアクセス キーがあるストレージ アカウントの名前を **[ストレージ アカウント名]** に入力します。
@@ -204,7 +204,7 @@ az storage account keys list -n akvrotationstorage
 - [Redis Cache](https://github.com/jlichwa/KeyVault-Rotation-RedisCacheKey-PowerShell)
 
 ## <a name="learn-more"></a>詳細情報
-- 概要:[Azure Event Grid での Key Vault の監視 (プレビュー)](../general/event-grid-overview.md)
+- 概要:[Azure Event Grid での Key Vault の監視](../general/event-grid-overview.md)
 - 方法:[Azure portal で初めての関数を作成する](../../azure-functions/functions-create-first-azure-function.md)
 - 方法:[キー コンテナーのシークレットが変更されたときにメールを受信する](../general/event-grid-logicapps.md)
-- [Azure Key Vault 用の Azure Event Grid イベント スキーマ (プレビュー)](../../event-grid/event-schema-key-vault.md)
+- [Azure Key Vault 用の Azure Event Grid イベント スキーマ](../../event-grid/event-schema-key-vault.md)

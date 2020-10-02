@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 9520369861623e60a0118baa20a7871437433a4b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6677f9275d3b6f0569216eb16046d096c574beab
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290704"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030903"
 ---
 # <a name="technical-guide-to-the-solution-template-for-predictive-maintenance-in-aerospace"></a>航空宇宙の業務における予測メンテナンスのためのソリューション テンプレートに関する技術ガイド
 
@@ -182,7 +182,7 @@ Power BI は、そのデータ ソースとして、予測結果が格納され�
    * 次のポップアップ ウィンドウで、左側のウィンドウに 2 つのオプション ( **[Windows]** と **[データベース]** ) が表示されます。 **[データベース]** をクリックし、 **[ユーザー名]** と **[パスワード]** (初めてソリューションをデプロイし、Azure SQL Database を作成したときに入力したユーザー名とパスワード) を入力します。 ***[これらの設定の適用対象レベルの選択]*** で、データベース レベル オプションをオンにします。 次に **[接続]** をクリックします。
    * 2 番目のテーブル **[PMResult]** をクリックし、右側の **[クエリの設定]** パネルの **[適用したステップ]** の **[ソース]** の横にある ![ナビゲーション アイコン](./media/predictive-maintenance-technical-guide/icon-navigation.png) をクリックし、上記の手順と同様に、サーバーとデータベース名を更新して、[OK] をクリックします。
    * 前のページに戻ったら、ウィンドウを閉じます。 メッセージが表示されるので、 **[適用]** をクリックします。 最後に、 **[保存]** ボタンをクリックして、変更を保存します。 これで、Power BI ファイルは、サーバーへの接続を確立しました。 視覚エフェクトが空の場合、凡例の右上隅にある消しゴム アイコンをクリックして、視覚エフェクトの選択をクリアし、すべてのデータを表示します。 更新ボタンを使用して、視覚エフェクトに新しいデータを反映させます。 最初、視覚エフェクトにはシード データのみ表示されます。データ ファクトリは 3 時間ごとに更新されるようにスケジュールされています。 3 時間後、データを更新すると、視覚エフェクトに反映された新しい予測が表示されます。
-3. (省略可能) コールド パス ダッシュボードを [Power BI オンライン](https://www.powerbi.com/)に公開します。 この手順では、Power BI アカウント (または Office 365 アカウント) が必要です。
+3. (省略可能) コールド パス ダッシュボードを [Power BI オンライン](https://www.powerbi.com/)に公開します。 この手順では、Power BI アカウント (あるいは職場または学校アカウント) が必要です。
    
    * **[公開]** をクリックします。 数秒後、緑色のチェック マークの付いた 「Power BI への公開が成功しました」と表示するウィンドウが表示されます。 "Power BI で PredictiveMaintenanceAerospace.pbix を開く" の下のリンクをクリックします。 詳細な手順については、「 [Power BI Desktop からの発行](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop)」を参照してください。
    * 新しいダッシュボードを作成するには、左側のウィンドウで **[ダッシュボード]** セクションの横の **[+]** 記号をクリックします。 この新しいダッシュボードの名前として、「Predictive Maintenance Demo」と入力します。

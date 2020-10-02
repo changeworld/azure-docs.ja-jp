@@ -6,12 +6,12 @@ ms.author: aul
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: fb53a966b0dc4959253ac0786ef09ef3c497e809
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7614dd1d60bad5c124269ae2af02d30a5aacfe3e
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77658848"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564034"
 ---
 # <a name="view-designer-to-workbooks-conversion-summary-and-access"></a>ビュー デザイナーからブックへの変換の概要とアクセス
 [ビュー デザイナー](view-designer.md)は Azure Monitor の機能で、Log Analytics ワークスペース内のデータを、グラフ、リスト、タイムラインを使用して視覚化するのに役立つカスタム ビューを作成できます。 これらは段階的に廃止され、追加機能を提供するブックに置き換えられています。 この記事では、概要サマリーを作成する方法と、ブックにアクセスするために必要なアクセス許可について詳しく説明します。
@@ -21,7 +21,7 @@ ms.locfileid: "77658848"
 
 Azure ダッシュボードに用意されている高度なカスタマイズ機能を利用できます。これにより、ピン留めされたアイテムや視覚化に対する自動更新、移動、サイズ変更、追加のフィルター処理が可能になります。 
 
-![ダッシュボード](media/view-designer-conversion-access/dashboard.png)
+![ワークスペースの概要という名前の、カスタマイズされた Azure ダッシュボードを示すスクリーンショット。](media/view-designer-conversion-access/dashboard.png)
 
 新しい Azure ダッシュボードを作成するか、既存のダッシュボードを選択して、ブック アイテムのピン留めを開始します。
 

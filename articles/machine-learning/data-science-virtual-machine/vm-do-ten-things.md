@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: dba0f22f1dfece7edd92a80ae1c3a91616a4236c
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: b570968a66a0cfd60ac4d6ce6dd7dc31a1003240
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815931"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440458"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>Windows Data Science Virtual Machine を使用したデータ サイエンス
 
@@ -163,7 +163,7 @@ Azure Blob Storage は、大規模データにも小規模データにも対応�
    ![Azure portal でのストレージ アカウント作成プロセスのスクリーンショット](./media/vm-do-ten-things/create-azure-blob.png)
 
 * コマンドライン AzCopy ツールが ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe``` にプレインストールされていることを確認します。 azcopy.exe を含むディレクトリが既に PATH 環境変数上にあるので、このツールの実行時に完全なコマンド パスを入力せずに済みます。 AzCopy ツールの詳細については、[AzCopy のドキュメント](../../storage/common/storage-use-azcopy.md)を参照してください。
-* Azure Storage Explorer ツールを起動します。 これは [Storage Explorer の Web ページ](https://storageexplorer.com/)からダウンロードできます。 
+* Azure ストレージ エクスプローラー ツールを起動します。 これは [Storage Explorer の Web ページ](https://storageexplorer.com/)からダウンロードできます。 
 
    ![ストレージ アカウントにアクセスする Azure Storage Explorer のスクリーンショット](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
 
@@ -192,7 +192,7 @@ AzCopy コマンドを実行して Azure BLOB にコピーすると、対象フ�
 
 ![アップロードされた CSV ファイルを表示する、ストレージ アカウントのスクリーンショット](./media/vm-do-ten-things/AzCopy_run_finshed_Storage_Explorer_v3.png)
 
-#### <a name="move-data-from-a-vm-to-an-azure-blob-azure-storage-explorer"></a>VM から Azure BLOB にデータを移動する: Azure Storage Explorer
+#### <a name="move-data-from-a-vm-to-an-azure-blob-azure-storage-explorer"></a>VM から Azure BLOB にデータを移動する: Azure ストレージ エクスプローラー
 
 Azure Storage Explorer を使用して、ご利用の VM 内のローカル ファイルからデータをアップロードすることもできます。
 
@@ -255,7 +255,7 @@ print 'the size of the data is: %d rows and  %d columns' % df1.shape
 ### <a name="azure-synapse-analytics-formerly-sql-dw-and-databases"></a>Azure Synapse Analytics (旧称 SQL DW) およびデータベース
 Azure Synapse Analytics (旧称 SQL DW) は、エンタープライズ規模の SQL Server エクスペリエンスを備えた、サービスとしてのエラスティック データ ウェアハウスです。
 
-Azure Synapse Analytics をプロビジョニングするには、こちらの[記事](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)に記載されている手順に従ってください。 SQL データ ウェアハウスをプロビジョニングしたら、[こちらのチュートリアル](../team-data-science-process/sqldw-walkthrough.md)を使用して、SQL データ ウェアハウス内のデータを使用したデータのアップロード、探索、モデリングを実行できます。
+Azure Synapse Analytics をプロビジョニングするには、こちらの[記事](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)に記載されている手順に従ってください。 Azure Synapse Analytics をプロビジョニングした後、[こちらのチュートリアル](../team-data-science-process/sqldw-walkthrough.md)を利用して、Azure Synapse Analytics 内のデータを使用してデータのアップロード、探索、およびモデリングを行うことができます。
 
 #### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 Azure Cosmos DB は、クラウドにおける NoSQL データベースです。 それを使用すれば、JSON などのドキュメントを操作することや、そうしたドキュメントを格納してクエリを実行することができます。

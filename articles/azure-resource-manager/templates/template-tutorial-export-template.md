@@ -6,12 +6,12 @@ ms.date: 09/09/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7aaeb7af3876c2603208faaf46bead01199906cd
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 6a2c59a9cbaddc02159ee89497900509f33772c0
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650061"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069545"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>チュートリアル:Azure portal からエクスポートしたテンプレートを使用する
 
@@ -111,7 +111,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> デプロイに失敗した場合は、デプロイ コマンドで **debug** スイッチを使用してデバッグ ログを表示します。  **verbose** スイッチを使用して、詳細なデバッグ ログを表示することもできます。
+> デプロイに失敗した場合は、**verbose** スイッチを使用して、作成しているリソースに関する情報を取得します。 デバッグの詳細については、**debug** スイッチを使用してください。
 
 ## <a name="verify-deployment"></a>デプロイの確認
 

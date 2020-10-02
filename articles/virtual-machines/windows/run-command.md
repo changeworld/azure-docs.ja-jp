@@ -9,12 +9,12 @@ ms.date: 04/26/2019
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 manager: carmonm
-ms.openlocfilehash: dd1e20504d96b55d6a450512ea287b9352fb043a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 3393cb66735ffb881520a11bf9d1680c35d3d374
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496935"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89424805"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>実行コマンドを使用して Windows VM で PowerShell スクリプトを実行する
 
@@ -40,6 +40,7 @@ ms.locfileid: "87496935"
 * スクリプトの実行を取り消すことはできません。
 * スクリプトを実行できる最大時間は 90 分です。 それを過ぎると、タイムアウトになります。
 * スクリプトの結果を返すために、VM からの送信接続が必要
+* VM エージェントの停止または更新の原因となるスクリプトを実行することはお勧めしません。 これにより、拡張が遷移状態になり、タイムアウトになります。
 
 > [!NOTE]
 > 正常に機能するには、実行コマンドに Azure のパブリック IP アドレスへの接続 (ポート 443) が必要です。 この拡張機能にこれらのエンドポイントへのアクセス権がない場合、スクリプトが正常に実行されても結果が返されないことがあります。 仮想マシン上のトラフィックをブロックしている場合、[サービス タグ](../../virtual-network/security-overview.md#service-tags)を使用し、`AzureCloud` タグを使用して Azure パブリック IP アドレスへのトラフィックを許可できます。

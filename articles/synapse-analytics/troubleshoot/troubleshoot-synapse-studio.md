@@ -8,12 +8,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3b0070b35d6ee85f698960708363e7b4d226a8af
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f859700be32bda5d8245429076c2359d1adf9d5a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070264"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988060"
 ---
 # <a name="azure-synapse-studio-preview-troubleshooting"></a>Azure Synapse Studio (プレビュー) のトラブルシューティング
 
@@ -31,7 +31,7 @@ ms.locfileid: "87070264"
 
 "SQL オンデマンド" を使用してクエリを実行すると、"サーバーへの接続を確立できませんでした" というエラー メッセージが表示されます。
 
-![現象 2](media/troubleshooting-synapse-studio/symptom2.png)
+![サーバーへの接続を確立できませんでしたというメッセージを表示するスクリーンショット。](media/troubleshooting-synapse-studio/symptom2.png)
 
 ## <a name="troubleshooting-steps"></a>トラブルシューティングの手順
 
@@ -54,7 +54,7 @@ ms.locfileid: "87070264"
 
 実行した操作を Azure Synapse Studio で再試行します。 "開発者ツール" の [ネットワーク] の一覧に新しい項目が表示される場合があります。 現在のシステム時刻をメモして、サポート チケットに記載してください。
 
-![ネットワーク パネル](media/troubleshooting-synapse-studio/network-panel.png)
+![[ネットワーク] および [Disable cache Online]\(オンラインでキャッシュを無効化\) が選択された DevTools ウィンドウを表示するスクリーンショット。](media/troubleshooting-synapse-studio/network-panel.png)
 
 URL 列が次のパターンに一致する項目を探します。
 
@@ -66,7 +66,7 @@ URL 列が次のパターンに一致する項目を探します。
 
 - 状態が "(失敗)" で始まる場合は、[状態] 列を拡大するか、状態テキストの上にポインターを置き、テキスト全体を表示します。 サポート チケットを開くときに、テキストまたはスクリーンショットあるいはその両方を含めます。
 
-    ![状態テキスト](media/troubleshooting-synapse-studio/status-text.png)
+    ![[状態] 列に失敗の値があるものを含む結果を表示するスクリーンショット。](media/troubleshooting-synapse-studio/status-text.png)
 
     - ERR_NAME_NOT_RESOLVED が表示され、10 分以内にワークスペースを作成した場合は、10 分間待機してから、問題がまだ存在するかどうかを確認してください。
     - ERR_INTERNET_DISCONNECTED または ERR_NETWORK_CHANGED が表示された場合は、PC ネットワーク接続に問題があることを示している可能性があります。 ネットワーク接続を確認して、操作をやり直してください。
@@ -83,21 +83,21 @@ URL 列が次のパターンに一致する項目を探します。
 
 ヘッダーが表示されない場合、またはヘッダーに上記の値のいずれかが示されていない場合は、チケットを開いたときに項目の詳細のスクリーンショットを添付します。
 
-![項目の詳細](media/troubleshooting-synapse-studio/item-details.png)
+![[応答ヘッダー] の URL が強調表示されている DevTools ウィンドウを表示するスクリーンショット。](media/troubleshooting-synapse-studio/item-details.png)
 
 上記の手順で問題が解決しない場合は、サポート チケットを開くことが必要な可能性があります。 サポート チケットを送信するときは、このガイドの冒頭でダウンロードした "セッション ID" または "診断情報" を含めてください。
 
 問題を報告するときに、必要に応じて、"開発者ツール" の [コンソール] タブのスクリーンショットを取得し、サポート チケットに添付することもできます。 コンテンツをスクロールし、必要に応じて複数のスクリーンショットを取得して、メッセージ全体をキャプチャします。
 
-![開発者ツールのコンソール](media/troubleshooting-synapse-studio/developer-tool-console.png)
+![可能性のあるスクリーンショットのメッセージ全体を表示するようにサイズ変更された DevTools ウィンドウを表示するスクリーンショット。](media/troubleshooting-synapse-studio/developer-tool-console.png)
 
 スクリーンショットを添付する場合は、スクリーンショットを取得した時刻 (または推定時間の範囲) を記述します。 それは問題を調査するときに役立ちます。
 
 一部のブラウザーでは、[コンソール] タブでのタイムスタンプの表示がサポートされています。Chromium Edge または Chrome の場合は、"開発者ツール" の [設定] ダイアログを開き、[基本設定] タブの [タイムスタンプを表示] をオンにします。
 
-![開発者ツールのコンソール設定](media/troubleshooting-synapse-studio/developer-tool-console-settings.png)
+![コンテキスト メニューで [設定] が選択された DevTools ウィンドウを表示するスクリーンショット。](media/troubleshooting-synapse-studio/developer-tool-console-settings.png)
 
-![タイムスタンプの表示](media/troubleshooting-synapse-studio/show-time-stamp.png)
+![[タイムスタンプを表示] が選択された DevTools ウィンドウの [基本設定] を表示するスクリーンショット。](media/troubleshooting-synapse-studio/show-time-stamp.png)
 
 ## <a name="next-steps"></a>次のステップ
 前の手順で問題が解決しない場合は、[サポート チケットを作成](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)してください

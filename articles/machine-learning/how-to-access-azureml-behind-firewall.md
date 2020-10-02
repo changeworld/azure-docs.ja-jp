@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 581feff516e0f0cd820c94290d4aaa729cc4d3a4
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 081c07be49178be2415edccbfc2026336eb8a8a5
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88889942"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604412"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>ファイアウォールの内側で Azure Machine Learning のワークスペースを使用する
 
@@ -33,6 +33,10 @@ ms.locfileid: "88889942"
 >
 > Azure Firewall の構成について詳しくは、[Azure Firewall のデプロイと構成](../firewall/tutorial-firewall-deploy-portal.md#configure-an-application-rule)に関する記事をご覧ください。
 
+## <a name="routes"></a>ルート
+
+Azure Machine Learning リソースを含むサブネットの送信ルートを構成するときに、トレーニング環境をセキュリティで保護するための、[強制トンネリング](how-to-secure-training-vnet.md#forced-tunneling)のセクションにおけるガイダンスを使用してください。
+
 ## <a name="microsoft-hosts"></a>Microsoft のホスト
 
 正しく構成しないと、ワークスペースを使用したときにファイアウォールが原因で問題が発生する可能性があります。 いずれも Azure Machine Learning ワークスペースで使用されるさまざまなホスト名があります。
@@ -41,6 +45,8 @@ ms.locfileid: "88889942"
 
 | **ホスト名** | **目的** |
 | ---- | ---- |
+| **login.microsoftonline.com** | 認証 |
+| **management.azure.com** | ワークスペース情報を取得するために使用されます |
 | **\*.batchai.core.windows.net** | クラスターをトレーニングします |
 | **ml.azure.com** | Azure Machine Learning Studio |
 | **default.exp-tas.com** | Azure Machine Learning スタジオによって使用されます |
@@ -59,13 +65,16 @@ ms.locfileid: "88889942"
 | **\*.notebooks.azure.net** | Azure Machine Learning studio のノートブックで必要です。 |
 | **graph.windows.net** | ノートブックに必要です |
 
+> [!TIP]
+> フェデレーション ID を使用する予定の場合は、「[Active Directory フェデレーション サービス (AD FS) をセキュリティで保護するためのベスト プラクティス](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs)」の記事に従ってください。
+
 ## <a name="python-hosts"></a>Python のホスト
 
 このセクションのホストは、Python パッケージをインストールするために使用されます。 開発、トレーニング、デプロイ時に必要になります。 
 
 | **ホスト名** | **目的** |
 | ---- | ---- |
-| **anaconda.com** | 既定のパッケージをインストールするために使用されます。 |
+| **anaconda.com**</br>**\*.anaconda.com** | 既定のパッケージをインストールするために使用されます。 |
 | **\*.anaconda.org** | リポジトリ データを取得するために使用されます。 |
 | **pypi.org** | 既定のインデックスからの依存関係 (存在する場合) を一覧表示するために使用されます。ユーザー設定によってこのインデックスが上書きされることはありません。 インデックスが上書きされる場合は、 **\*pythonhosted.org** も許可する必要があります。 |
 
@@ -92,4 +101,4 @@ Azure Government リージョンに必要な URL。
 ## <a name="next-steps"></a>次のステップ
 
 * [チュートリアル:Azure portal を使用して Azure Firewall をデプロイして構成する](../firewall/tutorial-firewall-deploy-portal.md)
-* [Azure Virtual Network 内で Azure ML の実験と推論のジョブを安全に実行する](how-to-enable-virtual-network.md)
+* [Azure Virtual Network 内で Azure ML の実験と推論のジョブを安全に実行する](how-to-network-security-overview.md)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/07/2020
-ms.openlocfilehash: 04f2d11b9fc8bbd61319a057c091cddbf140b9db
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: d509862fe4dafff174ee03c3b5cc887fa9d9ff22
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135533"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085996"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Monitor での監視ソリューション
 
@@ -26,7 +26,7 @@ Azure Monitor のソリューションの **[概要]** ページには、Log Ana
 
 画面上部のドロップダウン ボックスを使用して、タイルに使用するワークスペースまたは時間の範囲を変更します。 ソリューションのタイルをクリックして、収集されたデータのより詳細な分析を含むビューを開きます。
 
-[![概要](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
+[![スクリーンショットには、[ソリューション] が選択され、[ソリューション] ウィンドウにソリューションが表示された Azure portal メニューが示されています。](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
 
 監視ソリューションには、複数の種類の Azure リソースが含まれる可能性があり、ソリューションに含まれる任意のリソースは、他のリソースと同様に表示できます。 たとえば、ソリューションに含まれるすべてのログ クエリは、[クエリ エクスプローラー](../log-query/get-started-portal.md#load-queries)の **[ソリューション クエリ]** に一覧表示されます。[ログ クエリ](../log-query/log-query-overview.md)でアドホック分析を実行するときにこれらのクエリを使用できます。
 
@@ -109,18 +109,18 @@ Microsoft およびパートナーの監視ソリューションは、[Azure Mar
     az login
     ```
 
-1. `log-analytics` 拡張機能をインストールする
+1. `log-analytics-solution` 拡張機能をインストールする
 
-   `log-analytics` コマンドは、コア Azure CLI の試験段階の拡張機能です。 拡張機能のリファレンスの詳細については、「[Azure CLI で拡張機能を使用する](/cli/azure/azure-cli-extensions-overview?)」を参照してください。
+   `log-analytics-solution` コマンドは、コア Azure CLI の試験段階の拡張機能です。 拡張機能のリファレンスの詳細については、「[Azure CLI で拡張機能を使用する](/cli/azure/azure-cli-extensions-overview?)」を参照してください。
 
    ```azurecli
-   az extension add --name log-analytics
+   az extension add --name log-analytics-solution
    ```
 
    次の警告が生成されます。
 
    ```output
-   The installed extension `log-analytics` is experimental and not covered by customer support.  Please use with discretion.
+   The installed extension `log-analytics-solution` is experimental and not covered by customer support.  Please use with discretion.
    ```
 
 ### <a name="install-a-solution-with-the-azure-cli"></a>Azure CLI を使用したソリューションのインストール
@@ -159,7 +159,6 @@ az monitor log-analytics solution create --resource-group MyResourceGroup \
 
 * ソリューションの各インストールで使うことができる Log Analytics ワークスペースと Automation アカウントは、それぞれ 1 つのみです。 複数のワークスペースにソリューションを個別にインストールできます。
 * ソリューションに Automation アカウントが必要な場合は、Log Analytics ワークスペースと Automation アカウントを互いにリンクさせる必要があります。 1 つの Automation アカウントにリンクできる Log Analytics ワークスペースは 1 つのみであり、同様に 1 つの Log Analytics ワークスペースにリンクできる Automation アカウントは 1 つのみです。
-* リンクを設定するには、Log Analytics ワークスペースと Automation アカウントが同じサブスクリプションに含まれている必要がありますが、同じリージョンにデプロイされた異なるリソース グループに含まれていても構いません。 例外として、米国東部リージョンのワークスペースと米国東部 2 の Automation アカウントはリンク可能です。
 
 Azure Marketplace からソリューションをインストールする場合は、ワークスペースと Automation アカウントが求められます。 まだリンクされていない場合は、これらの間にリンクが作成されます。
 

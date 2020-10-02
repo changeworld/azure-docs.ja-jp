@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: b9cbb873066131264732d6f46320461bae8c3188
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: a9fe083818c5850ad05556b18911c19fe19e0e72
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84981763"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987393"
 ---
 # <a name="privacy-guidelines-for-voice-assistants-on-windows"></a>Windows の音声アシスタントのプライバシー ガイドライン
 
@@ -31,7 +31,7 @@ Windows で音声アシスタントを開発する人は、アシスタントの
 Windows ユーザーはアシスタント アプリケーションを利用できるかどうかを **`Settings > Privacy > Voice activation`** で確認し、制御できます。
 
  > [!div class="mx-imgBorder"]
- > [![privacy-app-listing](media/voice-assistants/windows_voice_assistant/privacy-app-listing.png "アシスタント アプリケーションの Windows 音声アクティブ化プライバシー設定エントリ")](media/voice-assistants/windows_voice_assistant/privacy-app-listing.png#lightbox)
+ > [![Cortana の利用可能性を制御するオプションを示すスクリーンショット。](media/voice-assistants/windows_voice_assistant/privacy-app-listing.png "アシスタント アプリケーションの Windows 音声アクティブ化プライバシー設定エントリ")](media/voice-assistants/windows_voice_assistant/privacy-app-listing.png#lightbox)
 
 この一覧に含める対象となるには、初めに Microsoft (winvoiceassistants@microsoft.com) にご連絡ください。 既定では、ユーザーは **`Settings > Privacy > Voice Activation`** で新しいアシスタントに対して音声によるアクティブ化を明示的に有効にする必要があります。これにより、アプリケーションは `ms-settings:privacy-voiceactivation` とのプロトコル リンクを行うことができます。 許可されたアプリケーションは、一度実行されて `Windows.ApplicationModel.ConversationalAgent` API を使用すると、一覧に表示されます。 音声によるアクティブ化の設定は、アプリケーションがユーザーからマイクの同意を得ると変更可能になります。
 

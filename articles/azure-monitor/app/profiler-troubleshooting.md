@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: aa9b186e74ed3b8fe5496afd5b21c54f50537d5f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d9acd322c454002613e21e8591c3e83aeec2d51e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049786"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979376"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Application Insights Profiler の有効化または表示に関する問題のトラブルシューティング
 
@@ -79,12 +79,12 @@ Profiler を正常に動作させるためには:
    1. **[Tools]\(ツール\)** メニューの **[WebJobs Dashboard]\(WebJobs ダッシュボード\)** を選択します。  
       **[WebJobs]\(WebJobs\)** ウィンドウが開きます。 
    
-      ![profiler-webjob]   
+      ![ジョブの名前、状態、および最終実行時刻が表示された [WebJobs] ウィンドウを表示するスクリーンショット。][profiler-webjob]   
    
    1. ログなどの WebJob の詳細を見るには、**ApplicationInsightsProfiler3** リンクを選択します。  
      **[Continuous WebJob Details]\(継続的な WebJob の詳細\)** ウィンドウが開きます。
 
-      ![profiler-webjob-log]
+      ![[Continuous WebJob Details]\(継続的な WebJob の詳細\) ウィンドウを表示するスクリーンショット。][profiler-webjob-log]
 
 Profiler が動作していない理由がわからない場合は、ログをダウンロードし、チームに送信して支援を受けることができます (serviceprofilerhelp@microsoft.com)。 
     

@@ -10,17 +10,19 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: sudbalas
-ms.openlocfilehash: c5509d6a284ab7afe827f67b79b7be027e76f66c
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: bf758a07cff248fc0da3f279e68a14e88797e382
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068848"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984610"
 ---
 # <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>すべてのキー コンテナーでの論理的な削除の有効化
 
 > [!WARNING]
 > **破壊的変更**:論理的な削除をオプトアウトする機能は、本年の終わりまでに非推奨になり、すべてのキー コンテナーに対して論理的な削除の保護が自動的に有効になります。  Azure Key Vault のユーザーと管理者は、キー コンテナーの論理的な削除を直ちに有効にする必要があります。
+>
+> Managed HSM の場合、論理的な削除は既定で有効になっており、無効にすることはできません。
 
 論理的な削除の保護なしでキー コンテナーからシークレットを削除すると、シークレットは完全に削除されます。 現在、ユーザーは、キー コンテナーの作成中に論理的な削除をオプトアウトできますが、ユーザーによる偶発的または悪意のある削除からシークレットを保護するために、Microsoft は間もなく**すべての**キー コンテナーに対して論理的な削除の保護を有効にし、ユーザーは論理的な削除をオプトアウトまたはオフにするオプションを使用できなくなります。
 

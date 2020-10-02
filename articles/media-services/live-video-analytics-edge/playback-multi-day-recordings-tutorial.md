@@ -3,12 +3,12 @@ title: 数日間の記録の再生 - Azure
 description: このチュートリアルでは、Azure Media Services API を使用して数日間の継続的なビデオ記録を再生する方法について説明します。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 19a42c61ef250fecce4503d3aed70b36d71ee3cf
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: e01c8603869f17ef2d68a39861f11818a4cea975
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649093"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530575"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>チュートリアル:数日間の記録の再生  
 
@@ -72,11 +72,11 @@ ms.locfileid: "88649093"
 
 Visual Studio Code で、左側の [実行] アイコンをクリックすると (または Ctrl + Shift + D キー)、実行するために使用可能なアプリケーションを表示できます。
 
-![ラン](./media/playback-multi-day-recordings-tutorial/run.png)
+![[実行] 項目が選択された Visual Studio Code メニューのスクリーンショット。](./media/playback-multi-day-recordings-tutorial/run.png)
  
 次に示すように、ドロップダウン ボックスから AMS Asset Player アプリケーションを選択し、F5 キーを押してデバッグを開始します。
 
-![デバッグ](./media/playback-multi-day-recordings-tutorial/debug.png)
+![AMS Asset Player が選択された Visual Studio Code メニューのスクリーンショット。](./media/playback-multi-day-recordings-tutorial/debug.png)
 
 このサンプル アプリケーションでは、既定のブラウザー アプリをビルドして起動し、AMS Asset Player ページを開きます。
 

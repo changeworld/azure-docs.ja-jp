@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 08/01/2020
 ms.custom: mvc, devcenter, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 4ce14b9d467e4badc833a1e1e4d8e1d08d232b1a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: f88960207188779949560218b298fd36d6a8f25e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88084073"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985233"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Azure で Node.js Web アプリを作成する
 
@@ -69,7 +69,7 @@ Visual Studio Code を使用して Node.js または Express アプリをロー�
 
 1. VS Code の **Azure App Service** エクスプローラーで青色の上矢印アイコンを選択して、自分のアプリを Azure にデプロイします。 (**コマンド パレット** (**Ctrl** + **Shift** + **P** キー) から同じコマンドを呼び出すこともできます。「Web アプリにデプロイ」と入力し、 **[Azure App Service: Web アプリにデプロイ]** を選択します)。
 
-    ![Web アプリへのデプロイ](media/quickstart-nodejs/deploy.png)
+    :::image type="content" source="media/quickstart-nodejs/deploy.png" alt-text="選択されている青い矢印アイコンを示している、VS Code での Azure App Service のスクリーンショット。&quot;:::
         
 1. *nodejs-docs-hello-world* フォルダーを選択します。
 
@@ -78,7 +78,7 @@ Visual Studio Code を使用して Node.js または Express アプリをロー�
     - Linux: **[Create new Web App]\(新しい Web アプリの作成\)** を選択します
     - Windows: **[Create new Web App]\(新しい Web アプリの作成\)、[詳細設定]** の順に選択します
 
-1. 自分の Web アプリ用にグローバルに一意な名前を入力し、**Enter** キーを押します。 名前は Azure 全体で一意である必要があり、英数字 ("A-Z"、"a-z"、"0-9") およびハイフン ("-") のみを使用する必要があります。
+1. 自分の Web アプリ用にグローバルに一意な名前を入力し、**Enter** キーを押します。 名前は Azure 全体で一意である必要があり、英数字 (&quot;A-Z&quot;、&quot;a-z&quot;、&quot;0-9&quot;) およびハイフン (&quot;-&quot;) のみを使用する必要があります。
 
 1. Linux を対象とする場合は、メッセージが表示されたら Node.js バージョンを選択します。 **LTS** バージョンが推奨されます。
 
@@ -95,9 +95,9 @@ Visual Studio Code を使用して Node.js または Express アプリをロー�
 
     ![ターゲットの Linux サーバー上で構成を更新するように求めるメッセージ](media/quickstart-nodejs/server-build.png)
 
-1. "**Always deploy the workspace "nodejs-docs-hello-world" to (app name) (ワークスペース "nodejs-docs-hello-world" を常に (アプリ名) にデプロイ)** " というメッセージが表示されたら、 **[はい]** を選択します。 **[はい]** を選択すると、後続のデプロイで同じ App Service Web アプリを自動的に対象とするように VS Code に指示されます。
+1. &quot;**Always deploy the workspace &quot;nodejs-docs-hello-world&quot; to (app name) (ワークスペース &quot;nodejs-docs-hello-world&quot; を常に (アプリ名) にデプロイ)** &quot; というメッセージが表示されたら、 **[はい]** を選択します。 **[はい]** を選択すると、後続のデプロイで同じ App Service Web アプリを自動的に対象とするように VS Code に指示されます。
 
-1. Linux へのデプロイでは、デプロイが完了したら、プロンプトで **[Web サイトの参照]** を選択して、新しくデプロイした Web アプリを表示します。 ブラウザーに "Hello World!" と表示されます。
+1. Linux へのデプロイでは、デプロイが完了したら、プロンプトで **[Web サイトの参照]** を選択して、新しくデプロイした Web アプリを表示します。 ブラウザーに &quot;Hello World!" と表示されます。
 
 1. Windows にデプロイする場合は、最初に Web アプリの Node.js バージョン番号を設定する必要があります。
 
@@ -141,7 +141,35 @@ export HTTP_PROXY=http://username:password@proxy:8080
 
 1. 確認を求められたら、ログを有効にしてアプリケーションを再起動します。 アプリが再起動すると、ログ ストリームへの接続と共に VS Code の出力ウィンドウが開きます。 
 
-    ![ログの有効化と再起動](media/quickstart-nodejs/enable-restart.png)
+    :::image type="content" source="media/quickstart-nodejs/enable-restart.png" alt-text="選択されている青い矢印アイコンを示している、VS Code での Azure App Service のスクリーンショット。&quot;:::
+        
+1. *nodejs-docs-hello-world* フォルダーを選択します。
+
+1. デプロイ先のオペレーティング システムに基づいて、作成オプションを選択します。
+
+    - Linux: **[Create new Web App]\(新しい Web アプリの作成\)** を選択します
+    - Windows: **[Create new Web App]\(新しい Web アプリの作成\)、[詳細設定]** の順に選択します
+
+1. 自分の Web アプリ用にグローバルに一意な名前を入力し、**Enter** キーを押します。 名前は Azure 全体で一意である必要があり、英数字 (&quot;A-Z&quot;、&quot;a-z&quot;、&quot;0-9&quot;) およびハイフン (&quot;-&quot;) のみを使用する必要があります。
+
+1. Linux を対象とする場合は、メッセージが表示されたら Node.js バージョンを選択します。 **LTS** バージョンが推奨されます。
+
+1. Windows を対象とする場合は、追加のプロンプトに従います。
+    1. **[Create a new resource group]\(新しいリソース グループの作成\)** を選択し、リソース グループの名前を入力します (たとえば、`AppServiceQS-rg`)。
+    1. オペレーティング システムとして **[Windows]** を選択します。
+    1. **[新しい App Service プランの作成]** を選択し、プランの名前 (たとえば、`AppServiceQS-plan`) を入力してから、価格レベルに **[F1 Free]** を選択します。
+    1. Application Insights について確認するメッセージが表示されたら、 **[後で確認する]** を選択します。
+    1. 近くのリージョン、またはアクセスするリソースの近くのリージョンを選択します。
+
+1. すべてのプロンプトに応答すると、自分のアプリ用に作成される Azure リソースが VS Code の通知ポップアップに表示されます。
+
+    Linux へのデプロイ時にターゲット Linux サーバーで `npm install` を実行するように構成を更新するよう求められたら、 **[はい]** を選択します。
+
+    ![ターゲットの Linux サーバー上で構成を更新するように求めるメッセージ](media/quickstart-nodejs/server-build.png)
+
+1. &quot;**Always deploy the workspace &quot;nodejs-docs-hello-world&quot; to (app name) (ワークスペース &quot;nodejs-docs-hello-world&quot; を常に (アプリ名) にデプロイ)** &quot; というメッセージが表示されたら、 **[はい]** を選択します。 **[はい]** を選択すると、後続のデプロイで同じ App Service Web アプリを自動的に対象とするように VS Code に指示されます。
+
+1. Linux へのデプロイでは、デプロイが完了したら、プロンプトで **[Web サイトの参照]** を選択して、新しくデプロイした Web アプリを表示します。 ブラウザーに &quot;Hello World!":::
 
 1. 数秒後、ログストリーミング サービスに接続されていることを示すメッセージが出力ウィンドウに表示されます。 ブラウザーでページを更新することにより、より多くの出力アクティビティを生成できます。
 
@@ -263,16 +291,35 @@ code .
 
 **Azure App Service** エクスプローラーで青色の上矢印アイコンを選択して、自分のアプリを Azure にデプロイします。
 
-![Web アプリへのデプロイ](./media/quickstart-nodejs/deploy.png)
+:::image type="content" source="./media/quickstart-nodejs/deploy.png" alt-text="選択されている青い矢印アイコンを示している、VS Code での Azure App Service のスクリーンショット。&quot;:::
+        
+1. *nodejs-docs-hello-world* フォルダーを選択します。
 
-> [!TIP]
-> **コマンド パレット** (Ctrl + Shift + P) からデプロイすることもできます。「deploy to web app」と入力し、**Azure App Service: Deploy to Web App** コマンドを実行します。
+1. デプロイ先のオペレーティング システムに基づいて、作成オプションを選択します。
 
-1. 現在開いているディレクトリ (`myExpressApp`) を選択します。
+    - Linux: **[Create new Web App]\(新しい Web アプリの作成\)** を選択します
+    - Windows: **[Create new Web App]\(新しい Web アプリの作成\)、[詳細設定]** の順に選択します
 
-1. **[Create new Web App]\(新しい Web アプリの作成\)** を選択します。既定のデプロイ先は App Service on Linux になります。
+1. 自分の Web アプリ用にグローバルに一意な名前を入力し、**Enter** キーを押します。 名前は Azure 全体で一意である必要があり、英数字 (&quot;A-Z&quot;、&quot;a-z&quot;、&quot;0-9&quot;) およびハイフン (&quot;-&quot;) のみを使用する必要があります。
 
-1. 自分の Web アプリ用にグローバルに一意な名前を入力し、Enter キーを押します。 アプリ名に使用できる有効な文字は "a-z"、"0-9"、"-" です。
+1. Linux を対象とする場合は、メッセージが表示されたら Node.js バージョンを選択します。 **LTS** バージョンが推奨されます。
+
+1. Windows を対象とする場合は、追加のプロンプトに従います。
+    1. **[Create a new resource group]\(新しいリソース グループの作成\)** を選択し、リソース グループの名前を入力します (たとえば、`AppServiceQS-rg`)。
+    1. オペレーティング システムとして **[Windows]** を選択します。
+    1. **[新しい App Service プランの作成]** を選択し、プランの名前 (たとえば、`AppServiceQS-plan`) を入力してから、価格レベルに **[F1 Free]** を選択します。
+    1. Application Insights について確認するメッセージが表示されたら、 **[後で確認する]** を選択します。
+    1. 近くのリージョン、またはアクセスするリソースの近くのリージョンを選択します。
+
+1. すべてのプロンプトに応答すると、自分のアプリ用に作成される Azure リソースが VS Code の通知ポップアップに表示されます。
+
+    Linux へのデプロイ時にターゲット Linux サーバーで `npm install` を実行するように構成を更新するよう求められたら、 **[はい]** を選択します。
+
+    ![ターゲットの Linux サーバー上で構成を更新するように求めるメッセージ](media/quickstart-nodejs/server-build.png)
+
+1. &quot;**Always deploy the workspace &quot;nodejs-docs-hello-world&quot; to (app name) (ワークスペース &quot;nodejs-docs-hello-world&quot; を常に (アプリ名) にデプロイ)** &quot; というメッセージが表示されたら、 **[はい]** を選択します。 **[はい]** を選択すると、後続のデプロイで同じ App Service Web アプリを自動的に対象とするように VS Code に指示されます。
+
+1. Linux へのデプロイでは、デプロイが完了したら、プロンプトで **[Web サイトの参照]** を選択して、新しくデプロイした Web アプリを表示します。 ブラウザーに &quot;Hello World!" です。
 
 1. 該当する **Node.js バージョン**を選択します (LTS を推奨)。
 
@@ -280,11 +327,67 @@ code .
 
 1. ターゲット サーバーで `npm install` を実行するように構成を更新するよう求められたら、 **[はい]** を選択します。 その後、アプリがデプロイされます。
 
-    ![構成済みのデプロイ](./media/quickstart-nodejs/server-build.png)
+    :::image type="content" source="./media/quickstart-nodejs/server-build.png" alt-text="選択されている青い矢印アイコンを示している、VS Code での Azure App Service のスクリーンショット。&quot;:::
+        
+1. *nodejs-docs-hello-world* フォルダーを選択します。
+
+1. デプロイ先のオペレーティング システムに基づいて、作成オプションを選択します。
+
+    - Linux: **[Create new Web App]\(新しい Web アプリの作成\)** を選択します
+    - Windows: **[Create new Web App]\(新しい Web アプリの作成\)、[詳細設定]** の順に選択します
+
+1. 自分の Web アプリ用にグローバルに一意な名前を入力し、**Enter** キーを押します。 名前は Azure 全体で一意である必要があり、英数字 (&quot;A-Z&quot;、&quot;a-z&quot;、&quot;0-9&quot;) およびハイフン (&quot;-&quot;) のみを使用する必要があります。
+
+1. Linux を対象とする場合は、メッセージが表示されたら Node.js バージョンを選択します。 **LTS** バージョンが推奨されます。
+
+1. Windows を対象とする場合は、追加のプロンプトに従います。
+    1. **[Create a new resource group]\(新しいリソース グループの作成\)** を選択し、リソース グループの名前を入力します (たとえば、`AppServiceQS-rg`)。
+    1. オペレーティング システムとして **[Windows]** を選択します。
+    1. **[新しい App Service プランの作成]** を選択し、プランの名前 (たとえば、`AppServiceQS-plan`) を入力してから、価格レベルに **[F1 Free]** を選択します。
+    1. Application Insights について確認するメッセージが表示されたら、 **[後で確認する]** を選択します。
+    1. 近くのリージョン、またはアクセスするリソースの近くのリージョンを選択します。
+
+1. すべてのプロンプトに応答すると、自分のアプリ用に作成される Azure リソースが VS Code の通知ポップアップに表示されます。
+
+    Linux へのデプロイ時にターゲット Linux サーバーで `npm install` を実行するように構成を更新するよう求められたら、 **[はい]** を選択します。
+
+    ![ターゲットの Linux サーバー上で構成を更新するように求めるメッセージ](media/quickstart-nodejs/server-build.png)
+
+1. &quot;**Always deploy the workspace &quot;nodejs-docs-hello-world&quot; to (app name) (ワークスペース &quot;nodejs-docs-hello-world&quot; を常に (アプリ名) にデプロイ)** &quot; というメッセージが表示されたら、 **[はい]** を選択します。 **[はい]** を選択すると、後続のデプロイで同じ App Service Web アプリを自動的に対象とするように VS Code に指示されます。
+
+1. Linux へのデプロイでは、デプロイが完了したら、プロンプトで **[Web サイトの参照]** を選択して、新しくデプロイした Web アプリを表示します。 ブラウザーに &quot;Hello World!":::
 
 1. デプロイが開始されると、以後デプロイのターゲットが自動的に同じ App Service Web アプリとなるように自分のワークスペースを更新するよう求められます。 自分の変更が適切なアプリにデプロイされるよう **[はい]** を選択してください。
 
-    ![構成済みのデプロイ](./media/quickstart-nodejs/save-configuration.png)
+    :::image type="content" source="./media/quickstart-nodejs/save-configuration.png" alt-text="選択されている青い矢印アイコンを示している、VS Code での Azure App Service のスクリーンショット。&quot;:::
+        
+1. *nodejs-docs-hello-world* フォルダーを選択します。
+
+1. デプロイ先のオペレーティング システムに基づいて、作成オプションを選択します。
+
+    - Linux: **[Create new Web App]\(新しい Web アプリの作成\)** を選択します
+    - Windows: **[Create new Web App]\(新しい Web アプリの作成\)、[詳細設定]** の順に選択します
+
+1. 自分の Web アプリ用にグローバルに一意な名前を入力し、**Enter** キーを押します。 名前は Azure 全体で一意である必要があり、英数字 (&quot;A-Z&quot;、&quot;a-z&quot;、&quot;0-9&quot;) およびハイフン (&quot;-&quot;) のみを使用する必要があります。
+
+1. Linux を対象とする場合は、メッセージが表示されたら Node.js バージョンを選択します。 **LTS** バージョンが推奨されます。
+
+1. Windows を対象とする場合は、追加のプロンプトに従います。
+    1. **[Create a new resource group]\(新しいリソース グループの作成\)** を選択し、リソース グループの名前を入力します (たとえば、`AppServiceQS-rg`)。
+    1. オペレーティング システムとして **[Windows]** を選択します。
+    1. **[新しい App Service プランの作成]** を選択し、プランの名前 (たとえば、`AppServiceQS-plan`) を入力してから、価格レベルに **[F1 Free]** を選択します。
+    1. Application Insights について確認するメッセージが表示されたら、 **[後で確認する]** を選択します。
+    1. 近くのリージョン、またはアクセスするリソースの近くのリージョンを選択します。
+
+1. すべてのプロンプトに応答すると、自分のアプリ用に作成される Azure リソースが VS Code の通知ポップアップに表示されます。
+
+    Linux へのデプロイ時にターゲット Linux サーバーで `npm install` を実行するように構成を更新するよう求められたら、 **[はい]** を選択します。
+
+    ![ターゲットの Linux サーバー上で構成を更新するように求めるメッセージ](media/quickstart-nodejs/server-build.png)
+
+1. &quot;**Always deploy the workspace &quot;nodejs-docs-hello-world&quot; to (app name) (ワークスペース &quot;nodejs-docs-hello-world&quot; を常に (アプリ名) にデプロイ)** &quot; というメッセージが表示されたら、 **[はい]** を選択します。 **[はい]** を選択すると、後続のデプロイで同じ App Service Web アプリを自動的に対象とするように VS Code に指示されます。
+
+1. Linux へのデプロイでは、デプロイが完了したら、プロンプトで **[Web サイトの参照]** を選択して、新しくデプロイした Web アプリを表示します。 ブラウザーに &quot;Hello World!":::
 
 > [!TIP]
 > 必ず、PORT 環境変数 (`process.env.PORT`) に指定されたポートで自分のアプリケーションがリッスンするようにしてください。
@@ -314,7 +417,35 @@ code .
 
 ![ストリーミング ログの表示](./media/quickstart-nodejs/view-logs.png)
 
-![ログの有効化と再起動](./media/quickstart-nodejs/enable-restart.png)
+:::image type="content" source="./media/quickstart-nodejs/enable-restart.png" alt-text="選択されている青い矢印アイコンを示している、VS Code での Azure App Service のスクリーンショット。&quot;:::
+        
+1. *nodejs-docs-hello-world* フォルダーを選択します。
+
+1. デプロイ先のオペレーティング システムに基づいて、作成オプションを選択します。
+
+    - Linux: **[Create new Web App]\(新しい Web アプリの作成\)** を選択します
+    - Windows: **[Create new Web App]\(新しい Web アプリの作成\)、[詳細設定]** の順に選択します
+
+1. 自分の Web アプリ用にグローバルに一意な名前を入力し、**Enter** キーを押します。 名前は Azure 全体で一意である必要があり、英数字 (&quot;A-Z&quot;、&quot;a-z&quot;、&quot;0-9&quot;) およびハイフン (&quot;-&quot;) のみを使用する必要があります。
+
+1. Linux を対象とする場合は、メッセージが表示されたら Node.js バージョンを選択します。 **LTS** バージョンが推奨されます。
+
+1. Windows を対象とする場合は、追加のプロンプトに従います。
+    1. **[Create a new resource group]\(新しいリソース グループの作成\)** を選択し、リソース グループの名前を入力します (たとえば、`AppServiceQS-rg`)。
+    1. オペレーティング システムとして **[Windows]** を選択します。
+    1. **[新しい App Service プランの作成]** を選択し、プランの名前 (たとえば、`AppServiceQS-plan`) を入力してから、価格レベルに **[F1 Free]** を選択します。
+    1. Application Insights について確認するメッセージが表示されたら、 **[後で確認する]** を選択します。
+    1. 近くのリージョン、またはアクセスするリソースの近くのリージョンを選択します。
+
+1. すべてのプロンプトに応答すると、自分のアプリ用に作成される Azure リソースが VS Code の通知ポップアップに表示されます。
+
+    Linux へのデプロイ時にターゲット Linux サーバーで `npm install` を実行するように構成を更新するよう求められたら、 **[はい]** を選択します。
+
+    ![ターゲットの Linux サーバー上で構成を更新するように求めるメッセージ](media/quickstart-nodejs/server-build.png)
+
+1. &quot;**Always deploy the workspace &quot;nodejs-docs-hello-world&quot; to (app name) (ワークスペース &quot;nodejs-docs-hello-world&quot; を常に (アプリ名) にデプロイ)** &quot; というメッセージが表示されたら、 **[はい]** を選択します。 **[はい]** を選択すると、後続のデプロイで同じ App Service Web アプリを自動的に対象とするように VS Code に指示されます。
+
+1. Linux へのデプロイでは、デプロイが完了したら、プロンプトで **[Web サイトの参照]** を選択して、新しくデプロイした Web アプリを表示します。 ブラウザーに &quot;Hello World!":::
 
 数秒後、ログストリーミング サービスに接続されていることを示すメッセージが表示されます。 数回ページを更新して、さらにアクティビティを表示します。
 
@@ -338,7 +469,7 @@ code .
 * [Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
 * [Docker ツール](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
 * [Azure CLI Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azurecli)
-* [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+* [Azure リソース マネージャー ツール](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
 
 または、[Node Pack for Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) 拡張機能パックをインストールして、これらすべてを入手しましょう。
 

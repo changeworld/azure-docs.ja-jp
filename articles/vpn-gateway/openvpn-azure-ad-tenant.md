@@ -1,25 +1,25 @@
 ---
 title: 'VPN Gateway: P2S VPN 接続用の Azure AD テナント:Azure AD 認証'
-description: P2S VPN を使用して VNet に接続する場合には、Azure AD 認証を使用できます
+description: P2S Open VPN 認証用の Azure AD テナントを設定する方法について説明します。
 services: vpn-gateway
-author: kumudD
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 04/17/2020
+ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: 74999b2bf1a34e3c7b8190dd04206b2b541c465f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 74df878baa6ed4e2ba902a73a7830c0b075c58ce
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087035"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981522"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>P2S OpenVPN プロトコル接続用の Azure Active Directory テナントを作成する
 
 VNet に接続する際には、証明書ベースの認証か、 RADIUS 認証を使用できます。 ただし、Open VPN プロトコルを使用する場合は、Azure Active Directory 認証を使用することもできます。 この記事では、P2S Open VPN 認証用の Azure AD テナントを設定する方法について説明します。
 
 > [!NOTE]
-> Azure AD 認証は、OpenVPN® プロトコル接続でのみサポートされています。
+> Azure AD 認証は、OpenVPN® プロトコル接続でのみサポートされ、Windows 10 でのみ使用できる Azure VPN クライアントを必要とします。
 >
 
 
@@ -85,7 +85,7 @@ Azure AD テナントには、全体管理者アカウントとマスター ユ�
 
 6. メッセージが表示されたら、 **[同意する]** を選択します。
 
-    ![Accept](./media/openvpn-create-azure-ad-tenant/accept.jpg)
+    ![スクリーンショットには、[Permissions requested Accept for your organization]\(アクセス許可は組織の同意を要求しています\) というメッセージが、詳細および同意を示すオプションと一緒に示されています。](./media/openvpn-create-azure-ad-tenant/accept.jpg)
 
 7. Azure AD の **[エンタープライズ アプリケーション]** に、**Azure VPN** が表示されます。
 

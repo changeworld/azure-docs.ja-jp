@@ -3,12 +3,12 @@ title: 監視とログ記録 - Azure
 description: この記事では、Live Video Analytics on IoT Edge の監視とログ記録の概要について説明します。
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: e1f31c6bb3ea344286ad9af89417ca9f8fd59527
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ef00517fc61ac532bdd99c1e887dfd93d56a8c4f
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934295"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567556"
 ---
 # <a name="monitoring-and-logging"></a>監視およびログ記録
 
@@ -20,7 +20,8 @@ ms.locfileid: "88934295"
 
 Live Video Analytics on IoT Edge では、次の分類に従ってイベントまたはテレメトリ データが出力されます。
 
-![Live Video Analytics on IoT Edge のスキーマ](./media/telemetry-schema/taxonomy.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/telemetry-schema/taxonomy.png" alt-text="イベントの分類&quot;:::
 
 * 操作: ユーザーによって実行されるアクションの一部として、または[メディア グラフ](media-graph-concept.md)の実行中に生成されるイベント。
    
@@ -31,16 +32,16 @@ Live Video Analytics on IoT Edge では、次の分類に従ってイベント�
       
       ```
       {
-        "body": {
-          "outputType": "assetName",
-          "outputLocation": "sampleAssetFromEVR-LVAEdge-20200512T233309Z"
+        &quot;body&quot;: {
+          &quot;outputType&quot;: &quot;assetName&quot;,
+          &quot;outputLocation&quot;: &quot;sampleAssetFromEVR-LVAEdge-20200512T233309Z&quot;
         },
-        "applicationProperties": {
-          "topic": "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/<my-resource-group>/providers/microsoft.media/mediaservices/<ams-account-name>",
-          "subject": "/graphInstances/Sample-Graph-2/sinks/assetSink",
-          "eventType": "Microsoft.Media.Graph.Operational.RecordingStarted",
-          "eventTime": "2020-05-12T23:33:10.392Z",
-          "dataVersion": "1.0"
+        &quot;applicationProperties&quot;: {
+          &quot;topic&quot;: &quot;/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/<my-resource-group>/providers/microsoft.media/mediaservices/<ams-account-name>&quot;,
+          &quot;subject&quot;: &quot;/graphInstances/Sample-Graph-2/sinks/assetSink&quot;,
+          &quot;eventType&quot;: &quot;Microsoft.Media.Graph.Operational.RecordingStarted&quot;,
+          &quot;eventTime&quot;: &quot;2020-05-12T23:33:10.392Z&quot;,
+          &quot;dataVersion&quot;: &quot;1.0"
         }
       }
       ```
@@ -71,6 +72,7 @@ Live Video Analytics on IoT Edge では、次の分類に従ってイベント�
    * 例 :
       
       モーションが検出された (以下)、推論の結果。
+
    ```      
    {
      "body": {
@@ -98,15 +100,19 @@ Live Video Analytics on IoT Edge では、次の分類に従ってイベント�
      }
    }
    ```
+
 モジュールによって出力されたイベントは [IoT Edge ハブ](../../iot-edge/iot-edge-runtime.md#iot-edge-hub)に送信され、そこから他の送信先にルーティングできます。 
 
 ### <a name="timestamps-in-analytic-events"></a>分析イベントのタイムスタンプ
+
 上記のとおり、ビデオ分析の一部として生成されたイベントには、タイムスタンプが関連付けられています。 グラフ トポロジの一部として[ライブ ビデオを記録した](video-recording-concept.md)場合は、このタイムスタンプを使用すると、記録したビデオ内のどこで特定のイベントが発生したかを見つけることができます。 次に示すのは、[Azure Media Service 資産](terminology.md#asset)に記録されたビデオのタイムラインに分析イベントのタイムスタンプをマップする方法に関するガイドラインです。
 
 まず、`eventTime` 値を抽出します。 [時間範囲フィルター](playback-recordings-how-to.md#time-range-filters)でこの値を使用して、記録から適切な部分を取得します。 たとえば、`eventTime` の 30 秒前に開始し、30 秒後に終了するビデオを取り込むことができます。 上記の例では、`eventTime` が 2020-05-12T23:33:09.381Z の場合、+/- 30 秒間の時間枠に対する HLS マニフェストの要求は次のようになります。
+
 ```
 https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2020-05-12T23:32:39Z,endTime=2020-05-12T23:33:39Z).m3u8
 ```
+
 上記の URL は、メディアのプレイリストが含まれる、いわゆる[マスター プレイリスト](https://developer.apple.com/documentation/http_live_streaming/example_playlists_for_http_live_streaming)を返します。 メディアのプレイリストには、次のようなエントリが含まれます。
 
 ```

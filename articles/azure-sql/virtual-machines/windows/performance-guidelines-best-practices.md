@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/18/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a2ba89a9adec5443ed8ae2a10e0230874b571f46
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9abc6574117b194a626c2697f5297a13566e0447
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690240"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89481792"
 ---
 # <a name="performance-guidelines-for-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server のパフォーマンスに関するガイドライン
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -198,9 +198,22 @@ SQL Server 2012 より前のバージョンでは、 [SQL Server Backup to Azure
 
 記憶域スペースを使っている場合に、 **[使用可能な記憶域をすべてクラスターに追加する]** をオフにしないと、Windows はクラスター作成処理中に仮想ディスクをデタッチします。 その結果、記憶域スペースがクラスターから削除され、PowerShell を使って再アタッチされるまで、仮想ディスクはディスク マネージャーやエクスプローラーに表示されなくなります。 記憶域スペースは、複数のディスクを記憶域プールにグループ化します。 詳細については、[記憶域スペース](/windows-server/storage/storage-spaces/overview)に関するページを参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="multiple-instances"></a>複数インスタンス 
 
-ストレージとパフォーマンスの詳細については、「[Azure Virtual Machines 上の SQL Server 用ストレージ構成ガイドライン](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/25/storage-configuration-guidelines-for-sql-server-on-azure-vm/)」を参照してください。
+1 つの仮想マシンに複数の SQL Server インスタンスをデプロイする場合は、次のベスト プラクティスを考慮してください。 
+
+- SQL Server インスタンスごとに最大サーバー メモリを設定して、オペレーティング システム用のメモリが残されるようにします。 仮想マシンに割り当てるメモリの量を変更する場合は、必ず SQL Server インスタンスのメモリ制限を更新してください。 
+- データ、ログ、および TempDB にはそれぞれ異なるワークロード パターンがあり、互いに影響を与えないようにするため、それぞれに個別の LUN を用意します。 
+- アプリケーション SLA 内でピーク ワークロード容量を処理できることを確認するために、高負荷の実稼働環境と同様のワークロードを使用して環境を十分にテストします。 
+
+過剰な負荷がかかっているシステムには、ワーカー スレッドの枯渇、応答の遅延、ディスパッチャー システム メモリの一時停止などの症状があります (ただし、これだけではありません)。 
+
+
+
+
+## <a name="next-steps"></a>次の手順
+
+ストレージとパフォーマンスの詳細については、「[Azure Virtual Machines 上の SQL Server 用ストレージ構成ガイドライン](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/25/storage-configuration-guidelines-for-sql-server-on-azure-vm/)」をご覧ください
 
 セキュリティのベスト プラクティスについては、「[Azure Virtual Machines 上の SQL Server のセキュリティに関する考慮事項](security-considerations-best-practices.md)」をご覧ください。
 

@@ -1,32 +1,32 @@
 ---
 title: Azure Database for MySQL 用の Azure セキュリティ ベースライン
-description: Azure Database for MySQL 用の Azure セキュリティ ベースライン
+description: Azure Database for MySQL セキュリティ ベースラインでは、Azure セキュリティ ベンチマークで指定されているセキュリティに関する推奨事項を実装するための手順のガイダンスとリソースが提供されます。
 author: msmbaldwin
-ms.service: security
+ms.service: mysql
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 09/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 379cecf8e810b8689533d5c162e983b762fc76a4
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 80a7067b1d8d5417a6a448ee8a3be563344e9a72
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89393583"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420253"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mysql"></a>Azure Database for MySQL 用の Azure セキュリティ ベースライン
 
 Azure Database for MySQL 用の Azure セキュリティ ベースラインには、デプロイのセキュリティ体制を改善するために役立つ推奨事項が含まれています。
 
-このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview) に基づいて作成されています。
+このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](../security/benchmarks/overview.md) に基づいて作成されています。
 
-詳細については、[Azure セキュリティ ベースラインの概要](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)に関するページを参照してください。
+詳細については、[Azure セキュリティ ベースラインの概要](../security/benchmarks/security-baselines-overview.md)に関するページを参照してください。
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
-*詳細については、「[セキュリティ コントロール: ネットワークのセキュリティ](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「ネットワークのセキュリティ](../security/benchmarks/security-control-network-security.md)」を参照してください。*
 
-### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1:Virtual Network でネットワーク セキュリティ グループまたは Azure Firewall を使用してリソースを保護する
+### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1:仮想ネットワーク内の Azure リソースを保護する
 
 **ガイダンス**: プライベート エンドポイントを使用して、Azure Database for MySQL 用に Private Link を構成します。 Private Link を使用すると、プライベート エンドポイントを経由して Azure 内のさまざまな PaaS サービスに接続できます。 Azure Private Link は基本的に、プライベート仮想ネットワーク (VNet) 内に Azure サービスを提供します。 仮想ネットワークと MySQL インスタンスの間のトラフィックは、Microsoft のバックボーンネットワークを経由します。
 
@@ -34,25 +34,25 @@ Azure Database for MySQL 用の Azure セキュリティ ベースラインに�
 
 ファイアウォール規則を使用して、Azure Database for MySQL サーバーをセキュリティで保護することもできます。 サーバー ファイアウォールでは、どのコンピューターに権限を持たせるかを指定するまで、データベース サーバーへのすべてのアクセスを防ぎます。 ファイアウォールを構成するには、受け入れ可能な IP アドレスの範囲を指定するファイアウォール規則を作成します。 ファイアウォール規則はサーバー レベルで作成できます。
 
-Azure Database for MySQL 用に Private Link を構成する方法: https://docs.microsoft.com/azure/mysql/howto-configure-privatelink-portal
+- [Azure Database for MySQL 用に Private Link を構成する方法](howto-configure-privatelink-portal.md)
 
-Azure Database for MySQL で VNet サービス エンドポイントおよび VNet 規則を作成して管理する方法: https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview
+- [Azure Database for MySQL で VNet サービス エンドポイントおよび VNet 規則を作成して管理する方法](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)
 
-Azure Database for MySQL のファイアウォール規則を構成する方法: https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-portal
+- [Azure Database for MySQL のファイアウォール規則を構成する方法](howto-manage-firewall-using-portal.md)
 
 **Azure Security Center の監視**: 使用不可
 
 **責任**: Customer
 
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2:VNet、サブネット、NIC の構成とトラフィックを監視してログに記録する
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1.2:仮想ネットワーク、サブネット、ネットワーク インターフェイスの構成とトラフィックを監視してログに記録する
 
 **ガイダンス**: Azure Database for MySQL インスタンスがプライベート エンドポイントに対してセキュリティで保護されている場合は、同じ仮想ネットワークに仮想マシンをデプロイできます。 ネットワーク セキュリティ グループ (NSG) を使用して、データ流出のリスクを軽減することができます。 NSG フロー ログを有効にし、トラフィック監査のためにログをストレージ アカウントに送信します。 また、NSG フロー ログを Log Analytics ワークスペースに送信し、Traffic Analytics を使用して Azure クラウド内のトラフィック フローに関する分析情報を提供することもできます。 Traffic Analytics のいくつかの利点として、ネットワーク アクティビティを視覚化してホット スポットを特定したり、セキュリティの脅威を識別したり、トラフィック フロー パターンを把握したり、ネットワークの誤った構成の正確な場所を特定したりする機能が挙げられます。
 
-Azure Database for MySQL 用に Private Link を構成する方法: https://docs.microsoft.com/azure/mysql/howto-configure-privatelink-portal
+- [Azure Database for MySQL 用に Private Link を構成する方法](howto-configure-privatelink-portal.md)
 
-NSG フロー ログを有効にする方法: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+- [NSG フロー ログを有効にする方法](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-Traffic Analytics を有効にして使用する方法: https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+- [Traffic Analytics を有効にして使用する方法](../network-watcher/traffic-analytics.md)
 
 **Azure Security Center の監視**: はい
 
@@ -68,35 +68,35 @@ Traffic Analytics を有効にして使用する方法: https://docs.microsoft.c
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4:既知の悪意のある IP アドレスとの通信を拒否する
 
-**ガイダンス**: Azure Database for MySQL の Advanced Threat Protection を使用します。 Advanced Threat Protection では、データベースにアクセスしたり、データベースを悪用したりしようとする、通常とは異なる、害を及ぼす可能性のある試行を示す異常なアクティビティを検出します。
+**ガイダンス**:Azure Database for MySQL の Advanced Threat Protection を使用します。 Advanced Threat Protection では、データベースにアクセスしたり、データベースを悪用したりしようとする、通常とは異なる、害を及ぼす可能性のある試行を示す異常なアクティビティを検出します。
 
 Azure Database for MySQL インスタンスに関連付けられている仮想ネットワークで DDoS Protection Standard を有効にして、DDoS 攻撃から保護します。 Azure Security Center の統合された脅威インテリジェンスを使用して、既知の悪意のある、または未使用のインターネット IP アドレスとの通信を拒否します。
 
-Azure Database for MySQL 用に Advanced Threat Protection を構成する方法: https://docs.microsoft.com/azure/mysql/howto-database-threat-protection-portal
+- [Azure Database for MySQL 用に Advanced Threat Protection を構成する方法](howto-database-threat-protection-portal.md)
 
-DDoS 保護を構成する方法: https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
+- [DDoS 保護を構成する方法](../virtual-network/manage-ddos-protection.md)
 
 **Azure Security Center の監視**: はい
 
 **責任**: Customer
 
-### <a name="15-record-network-packets-and-flow-logs"></a>1.5:ネットワーク パケットとフロー ログを記録する
+### <a name="15-record-network-packets"></a>1.5:ネットワーク パケットを記録する
 
 **ガイダンス**: Azure Database for MySQL インスタンスがプライベート エンドポイントに対してセキュリティで保護されている場合は、同じ仮想ネットワークに仮想マシンをデプロイできます。 その後、データ流出のリスクを軽減するために、ネットワーク セキュリティ グループ (NSG) を構成することができます。 NSG フロー ログを有効にし、トラフィック監査のためにログをストレージ アカウントに送信します。 また、NSG フロー ログを Log Analytics ワークスペースに送信し、Traffic Analytics を使用して Azure クラウド内のトラフィック フローに関する分析情報を提供することもできます。 Traffic Analytics のいくつかの利点として、ネットワーク アクティビティを視覚化してホット スポットを特定したり、セキュリティの脅威を識別したり、トラフィック フロー パターンを把握したり、ネットワークの誤った構成の正確な場所を特定したりする機能が挙げられます。
 
-NSG フロー ログを有効にする方法: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+- [NSG フロー ログを有効にする方法](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-Traffic Analytics を有効にして使用する方法: https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+- [Traffic Analytics を有効にして使用する方法](../network-watcher/traffic-analytics.md)
 
 **Azure Security Center の監視**: はい
 
 **責任**: Customer
 
-### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6:ネットワーク ベースの侵入検出/侵入防止システム (IDS/IPS) をデプロイする
+### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6:ネットワーク ベースの侵入検出または侵入防止システム (IDS または IPS) をデプロイする
 
 **ガイダンス**:Azure Database for MySQL の Advanced Threat Protection を使用します。 Advanced Threat Protection では、データベースにアクセスしたり、データベースを悪用したりしようとする、通常とは異なる、害を及ぼす可能性のある試行を示す異常なアクティビティを検出します。
 
-Azure Database for MySQL 用に Advanced Threat Protection を構成する方法: https://docs.microsoft.com/azure/mysql/howto-database-threat-protection-portal
+- [Azure Database for MySQL 用に Advanced Threat Protection を構成する方法](howto-database-threat-protection-portal.md)
 
 **Azure Security Center の監視**: はい
 
@@ -116,9 +116,9 @@ Azure Database for MySQL 用に Advanced Threat Protection を構成する方法
 
 注:Azure Database for MySQL では、"Microsoft.Sql" サービス タグが使用されます。
 
-サービス タグの使用について詳しくは、 https://docs.microsoft.com/azure/virtual-network/service-tags-overview を参照してください
+- [サービス タグの使用に関する詳細](../virtual-network/service-tags-overview.md)
 
-Azure Database for MySQL のサービス タグの使用方法について: https://docs.microsoft.com/azure/mysql/concepts-data-access-and-security-vnet#terminology-and-description
+- [Azure Database for MySQL のサービス タグの使用方法について](concepts-data-access-and-security-vnet.md#terminology-and-description)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -132,11 +132,11 @@ Azure Database for MySQL のサービス タグの使用方法について: http
 
 - MySQL データベース サーバーで [SSL 接続を強制する] が有効でなければならない
 
-Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+- [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-ネットワークに関する Azure Policy のサンプル: https://docs.microsoft.com/azure/governance/policy/samples/
+- [ネットワークに関する Azure Policy のサンプル](/azure/governance/policy/samples/)
 
-Azure Blueprint を作成する方法: https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
+- [Azure Blueprint を作成する方法](../governance/blueprints/create-blueprint-portal.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -146,11 +146,11 @@ Azure Blueprint を作成する方法: https://docs.microsoft.com/azure/governan
 
 **ガイダンス**: Azure Database for MySQL インスタンスのネットワーク セキュリティとトラフィック フローに関連するリソースにタグを使用すると、メタデータで論理的にリソースを整理することができます。
 
-すべてのリソースが確実にタグ付きで作成され、既存のタグ付けされていないリソースがユーザーに通知されるようにするには、タグ付けに関連したいずれかの組み込みの Azure Policy 定義 ([タグとその値が必要] など) を使用します。
+すべてのリソースが確実にタグ付きで作成され、既存のタグ付けされていないリソースがユーザーに通知されるようにするには、タグ付けに関連したいずれかの組み込みの Azure Policy 定義 (**タグとその値が必要**など) を使用します。
 
 リソースに対するアクションをそのタグに基づいて検索または実行するには、Azure PowerShell または Azure CLI を使用できます。
 
-タグを作成して使用する方法: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -160,9 +160,9 @@ Azure Blueprint を作成する方法: https://docs.microsoft.com/azure/governan
 
 **ガイダンス**: ネットワーク リソース構成を監視し、Azure Database for MySQL インスタンスに関連したネットワーク リソースの変更を検出するには、Azure アクティビティ ログを使用します。 重要なネットワーク リソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-Azure アクティビティ ログ イベントを表示して取得する方法: https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
+- [Azure アクティビティ ログ イベントを表示して取得する方法](/azure/azure-monitor/platform/activity-log-view)
 
-Azure Monitor でアラートを作成する方法: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+- [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -170,7 +170,7 @@ Azure Monitor でアラートを作成する方法: https://docs.microsoft.com/a
 
 ## <a name="logging-and-monitoring"></a>ログ記録と監視
 
-*詳細については、「[セキュリティ コントロール: ログ記録と監視](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)」を参照してください。*
+*詳しくは、「[Azure Security ベンチマーク:ログ記録と監視](../security/benchmarks/security-control-logging-monitoring.md)」を参照してください。*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1:承認された時刻同期ソースを使用する
 
@@ -184,9 +184,9 @@ Azure Monitor でアラートを作成する方法: https://docs.microsoft.com/a
 
 **ガイダンス**: 診断設定とサーバー ログを有効にし、ログを取り込み、Azure Database for MySQL インスタンスによって生成されるセキュリティ データを集約します。 Azure Monitor 内で Log Analytics ワークスペースを使用してクエリを発行し、分析を実行して、長期/アーカイブ ストレージには Azure Storage アカウントを使用します。 または、Azure Sentinel またはサードパーティの SIEM に対してデータを有効にしてオンボードすることもできます。
 
-Azure Database for MySQL のサーバー ログを理解する: https://docs.microsoft.com/azure/mysql/concepts-monitoring#server-logs
+- [Azure Database for MySQL のサーバー ログを理解する](concepts-monitoring.md#server-logs)
 
-Azure Sentinel をオンボードする方法: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+- [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center の監視**: 使用不可
 
@@ -196,13 +196,13 @@ Azure Sentinel をオンボードする方法: https://docs.microsoft.com/azure/
 
 **ガイダンス**: 監査、低速クエリ、MySQL メトリクス ログにアクセスするために、Azure Database for MySQL インスタンスに関する診断設定を有効にします。 MySQL 監査ログを必ず明示的に有効にします。 自動的に使用できるアクティビティ ログには、イベント ソース、日付、ユーザー、タイムスタンプ、送信元アドレス、送信先アドレス、その他の役立つ要素が含まれています。 また、Azure アクティビティ ログの診断設定を有効にし、同じ Log Analytics ワークスペースまたはストレージ アカウントにログを送信することもできます。
 
-Azure Database for MySQL のサーバー ログを理解する: https://docs.microsoft.com/azure/mysql/concepts-monitoring#server-logs
+- [Azure Database for MySQL のサーバー ログを理解する](concepts-monitoring.md#server-logs)
 
-Azure Database for MySQL の低速クエリ ログを構成してアクセスする方法: https://docs.microsoft.com/azure/mysql/howto-configure-server-logs-in-portal
+- [Azure Database for MySQL の低速クエリ ログを構成してアクセスする方法](howto-configure-server-logs-in-portal.md)
 
-Azure Database for MySQL の監査ログの構成およびアクセス方法: https://docs.microsoft.com/azure/mysql/howto-configure-audit-logs-portal
+- [Azure Database for MySQL の監査ログの構成およびアクセス方法](howto-configure-audit-logs-portal.md)
 
-Azure アクティビティ ログ用に診断設定を構成する方法: https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+- [Azure アクティビティ ログ用に診断設定を構成する方法](/azure/azure-monitor/platform/diagnostic-settings-legacy)
 
 **Azure Security Center の監視**: 使用不可
 
@@ -220,9 +220,9 @@ Azure アクティビティ ログ用に診断設定を構成する方法: https
 
 **ガイダンス**:Azure Monitor 内で、Azure Database for MySQL ログを保持するために使用される Log Analytics ワークスペースについて、組織のコンプライアンス規則に従って保有期間を設定します。 長期/アーカイブ ストレージには Azure Storage アカウントを使用します。
 
-Log Analytics ワークスペースのログ保持パラメーターを設定する方法: https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
+- [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-Azure ストレージ アカウントでのリソース ログの格納: https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage
+- [ Azure ストレージ アカウントでのリソース ログの格納](/azure/azure-monitor/platform/resource-logs-collect-storage)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -232,33 +232,33 @@ Azure ストレージ アカウントでのリソース ログの格納: https:/
 
 **ガイダンス**: Azure Database for MySQL インスタンスからのログを分析および監視して、異常な動作がないか確認します。 ログを確認し、ログ データに対してクエリを実行するには、Azure Monitor の Log Analytics を使用します。 または、Azure Sentinel またはサード パーティの SIEM に対してデータを有効にしてオンボードすることもできます。
 
-Azure Sentinel をオンボードする方法: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+- [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-Log Analytics の詳細については、 https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal を参照してください
+- [Log Analytics に関する詳細](../azure-monitor/log-query/get-started-portal.md)
 
-Azure Monitor でカスタム クエリを実行する方法: https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
+- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/log-query/get-started-queries.md)
 
 **Azure Security Center の監視**: 適用なし
 
 **責任**: Customer
 
-### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7:異常なアクティビティについてのアラートを有効にする
+### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7:異常なアクティビティについてのアラートを有効にする
 
 **ガイダンス**: Azure Database for MySQL の Advanced Threat Protection を有効にします。 Advanced Threat Protection では、データベースにアクセスしたり、データベースを悪用したりしようとする、通常とは異なる、害を及ぼす可能性のある試行を示す異常なアクティビティを検出します。
 
 さらに、MySQL のサーバー ログと診断設定を有効にし、Log Analytics ワークスペースにログを送信することもできます。 Log Analytics ワークスペースを Azure Sentinel にオンボードします。セキュリティ オーケストレーション自動応答 (SOAR) ソリューションが提供されます。 これにより、プレイブック (自動化されたソリューション) を作成して、セキュリティの問題を修復するために使用できます。
 
-Azure Database for MySQL (プレビュー) 用の Advanced Threat Protection を有効にする方法: https://docs.microsoft.com/azure/mysql/howto-database-threat-protection-portal
+- [Azure Database for MySQL (プレビュー) 用の Advanced Threat Protection を有効にする方法](howto-database-threat-protection-portal.md)
 
-Azure Database for MySQL のサーバー ログを理解する: https://docs.microsoft.com/azure/mysql/concepts-monitoring#server-logs
+- [Azure Database for MySQL のサーバー ログを理解する](concepts-monitoring.md#server-logs)
 
-Azure Database for MySQL の低速クエリ ログを構成してアクセスする方法: https://docs.microsoft.com/azure/mysql/howto-configure-server-logs-in-portal
+- [Azure Database for MySQL の低速クエリ ログを構成してアクセスする方法](howto-configure-server-logs-in-portal.md)
 
-Azure Database for MySQL の監査ログの構成およびアクセス方法: https://docs.microsoft.com/azure/mysql/howto-configure-audit-logs-portal
+- [Azure Database for MySQL の監査ログの構成およびアクセス方法](howto-configure-audit-logs-portal.md)
 
-Azure アクティビティ ログ用に診断設定を構成する方法: https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+- [Azure アクティビティ ログ用に診断設定を構成する方法](/azure/azure-monitor/platform/diagnostic-settings-legacy)
 
-Azure Sentinel をオンボードする方法: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+- [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center の監視**: はい
 
@@ -288,9 +288,9 @@ Azure Sentinel をオンボードする方法: https://docs.microsoft.com/azure/
 
 **責任**: 該当なし
 
-## <a name="identity-and-access-control"></a>ID およびアクセス制御
+## <a name="identity-and-access-control"></a>ID とアクセスの制御
 
-*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「ID およびアクセス制御](../security/benchmarks/security-control-identity-access-control.md)」を参照してください。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 管理アカウントのインベントリを維持する
 
@@ -298,11 +298,11 @@ Azure Sentinel をオンボードする方法: https://docs.microsoft.com/azure/
 
 Azure Database for MySQL では、組み込みのロールベースのアクセス制御はサポートされませんが、特定のリソース プロバイダー オプションに基づいてカスタム ロールを作成することはできます。
 
-Azure サブスクリプションのカスタム ロールについて: https://docs.microsoft.com/azure/role-based-access-control/custom-roles 
+- [Azure サブスクリプションのカスタム ロールについて](../role-based-access-control/custom-roles.md) 
 
-Azure Database for MySQL リソース プロバイダーの操作について: https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdbformysql
+- [Azure Database for MySQL リソース プロバイダーの操作について](../role-based-access-control/resource-provider-operations.md#microsoftdbformysql)
 
-Azure Database for MySQL のアクセス管理について: https://docs.microsoft.com/azure/mysql/concepts-security#access-management
+- [Azure Database for MySQL のアクセス管理について](concepts-security.md#access-management)
 
 **Azure Security Center の監視**: はい
 
@@ -314,9 +314,9 @@ Azure Database for MySQL のアクセス管理について: https://docs.microso
 
 Azure Database for MySQL リソース自体の作成時に、Azure では強力なパスワードを使用する管理ユーザーの作成が強制されます。 しかしながら、MySQL インスタンスが作成されたら、作成した最初のサーバー管理者アカウントを使用し、追加のユーザーを作成し、それらに管理アクセス権を付与できます。 これらのアカウントを作成するときは、確実に、アカウントごとに異なる強力なパスワードを構成してください。
 
-Azure Database for MySQL 用に追加のアカウントを作成する方法: https://docs.microsoft.com/azure/mysql/howto-create-users
+- [Azure Database for MySQL 用に追加のアカウントを作成する方法](howto-create-users.md)
 
-管理者パスワードを更新する方法: https://docs.microsoft.com/azure/mysql/howto-create-manage-server-portal#update-admin-password
+- [管理者パスワードを更新する方法](howto-create-manage-server-portal.md#update-admin-password)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -326,25 +326,25 @@ Azure Database for MySQL 用に追加のアカウントを作成する方法: ht
 
 **ガイダンス**: Azure Database for MySQL インスタンスにアクセスできる専用管理者アカウントの使用に関する標準的な操作手順を作成します。 Azure Security Center ID とアクセス管理を使用して、管理者アカウントの数を監視します。
 
-Azure Security Center ID とアクセスの概要: https://docs.microsoft.com/azure/security-center/security-center-identity-access
+- [Azure Security Center ID とアクセスについて](../security-center/security-center-identity-access.md)
 
-Azure Database for MySQL で管理者ユーザーを作成する方法について: https://docs.microsoft.com/azure/mysql/howto-create-users
+- [Azure Database for MySQL で管理者ユーザーを作成する方法について](howto-create-users.md)
 
 **Azure Security Center の監視**: 適用なし
 
 **責任**: Customer
 
-### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: シングル サインオン (SSO) と Azure Active Directory を統合する
+### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4: Azure Active Directory シングル サインオン (SSO) を使用する
 
 **ガイダンス**: Azure Database for MySQL へのサインインでは、データベースで直接構成されたユーザー名とパスワードの両方の使用がサポートされます。また、Azure Active Directory (AD) ID を使用することも、Azure AD トークンを利用して接続することもできます。 Azure AD トークンを使用する場合、Azure AD ユーザー、Azure AD グループ、データベースに接続している Azure AD アプリケーションなど、さまざまな方法がサポートされます。
 
 これとは別に、MySQL のコントロール プレーン アクセスは、REST API 経由で利用でき、SSO がサポートされます。 認証を行うには、Azure Active Directory から取得した要求の Authorization ヘッダーを JSON Web トークンに設定します。
 
-Azure Database for MySQL での認証に Azure Active Directory を使用する: https://docs.microsoft.com/azure/mysql/howto-configure-sign-in-azure-ad-authentication
+- [Azure Database for MySQL での認証に Azure Active Directory を使用する](howto-configure-sign-in-azure-ad-authentication.md)
 
-Azure Database for MySQL の REST API について: https://docs.microsoft.com/rest/api/mysql/
+- [Azure Database for MySQL の REST API について](/rest/api/mysql/)
 
-Azure AD を使用した SSO について: https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
+- [Azure AD を使用した SSO の概要](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -354,29 +354,29 @@ Azure AD を使用した SSO について: https://docs.microsoft.com/azure/acti
 
 **ガイダンス**:Azure Active Directory の Multi-Factor Authentication (MFA) を有効にし、Azure Security Center ID とアクセス管理の推奨事項に従います。 Azure AD トークンを利用してデータベースにサインインする場合、データベースのサインインに対して多要素認証を要求することができます。
 
-Azure で MFA を有効にする方法: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+- [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
-Azure Database for MySQL での認証に Azure Active Directory を使用する: https://docs.microsoft.com/azure/mysql/howto-configure-sign-in-azure-ad-authentication
+- [Azure Database for MySQL での認証に Azure Active Directory を使用する](howto-configure-sign-in-azure-ad-authentication.md)
 
-Azure Security Center で ID とアクセスを監視する方法: https://docs.microsoft.com/azure/security-center/security-center-identity-access
+- [Azure Security Center で ID とアクセスを監視する方法](../security-center/security-center-identity-access.md)
 
 **Azure Security Center の監視**: はい
 
 **責任**: Customer
 
-### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: すべての管理タスクに専用マシン (特権アクセス ワークステーション) を使用する
+### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3.6: セキュリティで保護された Azure マネージド ワークステーションを管理タスクに使用する
 
 **ガイダンス**: Multi-Factor Authentication (MFA) が構成された特権アクセス ワークステーション (PAW) を使用してログインし、Azure リソースを構成します。
 
-特権アクセス ワークステーションについて: https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+- [特権アクセス ワークステーションについて](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-Azure で MFA を有効にする方法: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+- [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center の監視**: 適用なし
 
 **責任**: Customer
 
-### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7: 管理者アカウントからの疑わしいアクティビティを記録してアラートを生成する
+### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7: 管理者アカウントからの疑わしいアクティビティに関するログとアラート
 
 **ガイダンス**:Azure Database for MySQL 用の Advanced Threat Protection を有効にして、疑わしいアクティビティに関するアラートを生成します。
 
@@ -384,11 +384,11 @@ Azure で MFA を有効にする方法: https://docs.microsoft.com/azure/active-
 
 Azure AD のリスク検出を使用して、危険なユーザーの行動に関するアラートとレポートを表示します。
 
-Azure Database for MySQL 用に Advanced Threat Protection を構成する方法: https://docs.microsoft.com/azure/mysql/howto-database-threat-protection-portal
+- [Azure Database for MySQL 用に Advanced Threat Protection を構成する方法](howto-database-threat-protection-portal.md)
 
-Privileged Identity Management (PIM) をデプロイする方法: https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
+- [Privileged Identity Management (PIM) をデプロイする方法](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-Azure AD のリスク検出の概要: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+- [Azure AD のリスク検出の概要](/azure/active-directory/reports-monitoring/concept-risk-events)
 
 **Azure Security Center の監視**: はい
 
@@ -398,7 +398,7 @@ Azure AD のリスク検出の概要: https://docs.microsoft.com/azure/active-di
 
 **ガイダンス**: ポータルや Azure Resource Manager での IP アドレス範囲または国と地域の特定の論理グループからのアクセスのみを許可するには、条件付きアクセスのネームド ロケーションを使用します。
 
-Azure でネームド ロケーションを構成する方法: https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
+- [Azure でネームド ロケーションを構成する方法](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -412,7 +412,7 @@ Azure Database for MySQL にサインインする場合は、Azure AD を使用�
 
 Azure AD 資格情報は、MySQL 管理者アカウントを制御するための管理プレーン レベル (Azure portal など) での管理にも使用できます。
 
-Azure Database for MySQL での認証に Azure Active Directory を使用する: https://docs.microsoft.com/azure/mysql/howto-configure-sign-in-azure-ad-authentication
+- [Azure Database for MySQL での認証に Azure Active Directory を使用する](howto-configure-sign-in-azure-ad-authentication.md)
 
 **Azure Security Center の監視**: はい
 
@@ -422,29 +422,29 @@ Azure Database for MySQL での認証に Azure Active Directory を使用する:
 
 **ガイダンス**: Azure Active Directory ログを確認します。これは、Azure Database for MySQL 管理ロールを持つアカウントを含めることができる古いアカウントを検出するのに役立ちます。 また、Azure ID アクセス レビューを使用して、グループ メンバーシップ、Azure Database for MySQL へのアクセスに使用される可能性のあるエンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理します。 ユーザー アクセスを定期的 (たとえば、90 日ごと) に確認し、正当なユーザーだけが継続してアクセスできるようにする必要があります。
 
-Azure AD のレポートについて: https://docs.microsoft.com/azure/active-directory/reports-monitoring/
+- [Azure AD のレポートについて](/azure/active-directory/reports-monitoring/)
 
-Azure ID アクセスレビューの使用方法: https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
+- [Azure ID アクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
 **Azure Security Center の監視**: はい
 
 **責任**: Customer
 
-### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11: 非アクティブ化されたアカウントへのアクセス試行を監視する
+### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11: 非アクティブ化された資格情報へのアクセスの試行を監視する
 
 **ガイダンス**: Azure Database for MySQL および Azure Active Directory の診断設定を有効にし、すべてのログを Log Analytics ワークスペースに送信します。 Log Analytics 内で、必要なアラート (認証試行の失敗など) を構成します。
 
-Azure Database for MySQL の低速クエリ ログを構成してアクセスする方法: https://docs.microsoft.com/Azure/mysql/howto-configure-server-logs-in-portal
+- [Azure Database for MySQL の低速クエリ ログを構成してアクセスする方法](/Azure/mysql/howto-configure-server-logs-in-portal)
 
-Azure Database for MySQL の監査ログの構成およびアクセス方法: https://docs.microsoft.com/Azure/mysql/howto-configure-audit-logs-portal
+- [Azure Database for MySQL の監査ログの構成およびアクセス方法](/Azure/mysql/howto-configure-audit-logs-portal)
 
-Azure Activity Logs を Azure Monitor に統合する方法: https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
+- [Azure アクティビティ ログを Azure Monitor に統合する方法](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
 **Azure Security Center の監視**: 使用不可
 
 **責任**: Customer
 
-### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: アカウント ログイン動作の偏差に関するアラートを生成する
+### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3.12: アカウントのサインイン動作の偏差に関するアラートを生成する
 
 **ガイダンス**:Azure Database for MySQL 用の Advanced Threat Protection を有効にして、疑わしいアクティビティに関するアラートを生成します。
 
@@ -452,13 +452,13 @@ Azure Activity Logs を Azure Monitor に統合する方法: https://docs.micros
 
 さらに調査するために、Azure Sentinel にログを取り込むこともできます。
 
-Azure Database for MySQL 用に Advanced Threat Protection を構成する方法: https://docs.microsoft.com/azure/mysql/howto-database-threat-protection-portal
+- [Azure Database for MySQL 用に Advanced Threat Protection を構成する方法](howto-database-threat-protection-portal.md)
 
-Azure AD Identity Protection の概要: https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection
+- [Azure AD Identity Protection の概要](../active-directory/identity-protection/overview-identity-protection.md)
 
-Azure AD の危険なサインインを表示する方法: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
+- [Azure AD の危険なサインインを表示する方法](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
 
-Azure Sentinel をオンボードする方法: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+- [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center の監視**: 使用不可
 
@@ -468,7 +468,7 @@ Azure Sentinel をオンボードする方法: https://docs.microsoft.com/azure/
 
 **ガイダンス**: 適用なし。カスタマー ロックボックスは Azure Database for MySQL ではまだサポートされていません。
 
-カスタマー ロックボックスでサポートされているサービスの一覧: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+- [カスタマー ロックボックスでサポートされているサービスの一覧](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -476,13 +476,13 @@ Azure Sentinel をオンボードする方法: https://docs.microsoft.com/azure/
 
 ## <a name="data-protection"></a>データ保護
 
-*詳細については、「[セキュリティ コントロール: データ保護](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「データ保護](../security/benchmarks/security-control-data-protection.md)」を参照してください。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: 機密情報のインベントリを維持する
 
 **ガイダンス**: タグを使用すると、機密情報を格納または処理する Azure Database for MySQL インスタンスや関連リソースの追跡に役立ちます。
 
-タグを作成して使用する方法: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -492,16 +492,15 @@ Azure Sentinel をオンボードする方法: https://docs.microsoft.com/azure/
 
 **ガイダンス**:開発、テスト、および運用で別々のサブスクリプションまたは管理グループ、あるいはその両方を実装します。 Private Link、サービスエンド ポイント、またはファイアウォール規則の組み合わせを使用して、Azure Database for MySQL インスタンスへのネットワーク アクセスを分離して制限します。
 
-追加の Azure サブスクリプションを作成する方法: https://docs.microsoft.com/azure/billing/billing-create-subscription
+- [追加の Azure サブスクリプションを作成する方法](/azure/billing/billing-create-subscription)
 
-管理グループを作成する方法: https://docs.microsoft.com/azure/governance/management-groups/create
+- [管理グループを作成する方法](/azure/governance/management-groups/create)
 
-Azure Database for MySQL 用に Private Link を構成する方法: https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link
+- [Azure Database for MySQL 用に Private Link を構成する方法](concepts-data-access-security-private-link.md)
 
-Azure Database for MySQL で VNet サービス エンドポイントおよび VNet 規則を作成して管理する方法: https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview
+- [Azure Database for MySQL で VNet サービス エンドポイントおよび VNet 規則を作成して管理する方法](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)
 
-Azure Database for MySQL のファイアウォール規則を構成する方法: https://docs.microsoft.com/azure/mysql/concepts-firewall-rules
-
+- [Azure Database for MySQL のファイアウォール規則を構成する方法](concepts-firewall-rules.md)
 
 **Azure Security Center の監視**: 使用不可
 
@@ -513,9 +512,9 @@ Azure Database for MySQL のファイアウォール規則を構成する方法:
 
 Microsoft では、Azure Database for MySQL 用の基になるインフラストラクチャを管理しており、顧客データの損失や漏えいを防ぐために厳重な管理を行っています。
 
-Azure Database for MySQL のデータ流出を軽減する方法: https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link#data-exfiltration-prevention
+- [Azure Database for MySQL のデータ流出を軽減する方法](concepts-data-access-security-private-link.md#data-exfiltration-prevention)
 
-Azure での顧客データの保護の概要: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+- [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -527,7 +526,7 @@ Azure での顧客データの保護の概要: https://docs.microsoft.com/azure/
 
 現在、Azure Database for MySQL でサポートされている TLS のバージョンは、TLS 1.0、TLS 1.1、TLS 1.2 です。
 
-Azure Database for MySQL 用に転送中の暗号化を構成する方法: https://docs.microsoft.com/azure/mysql/concepts-ssl-connection-security
+- [Azure Database for MySQL 用に転送中の暗号化を構成する方法](concepts-ssl-connection-security.md)
 
 **Azure Security Center の監視**: 使用不可
 
@@ -539,19 +538,19 @@ Azure Database for MySQL 用に転送中の暗号化を構成する方法: https
 
 Microsoft によって管理される基になるプラットフォームの場合、Microsoft は顧客のすべてのコンテンツを機密として扱い、顧客データを損失や漏洩から保護するためにあらゆる手段を尽くします。 Azure 内の顧客データが確実にセキュリティで保護されるように、Microsoft では一連の堅牢なデータ保護制御および機能を実装して管理しています。
 
-Azure での顧客データの保護の概要: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+- [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center の監視**: 使用不可
 
 **責任**: 共有
 
-### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
+### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6:ロールベースのアクセス制御を使用してリソースへのアクセスを制御する
 
 **ガイダンス**: Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure Database for MySQL コントロール プレーン (Azure portal など) へのアクセスを制御します。 (データベース自体内の) データ プレーン アクセスの場合は、SQL クエリを使用してユーザーを作成し、ユーザーのアクセス許可を構成します。 Azure RBAC は、データベース内のユーザーのアクセス許可には影響しません。
 
-Azure RBAC を構成する方法: https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
+- [Azure RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
 
-Azure Database for MySQL の SQL を使用してユーザー アクセスを構成する方法: https://docs.microsoft.com/azure/mysql/howto-create-users
+- [Azure Database for MySQL の SQL を使用してユーザー アクセスを構成する方法](howto-create-users.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -563,7 +562,7 @@ Azure Database for MySQL の SQL を使用してユーザー アクセスを構�
 
 Microsoft では、Azure Database for MySQL 用の基になるインフラストラクチャを管理しており、顧客データの損失や漏えいを防ぐために厳重な管理を行っています。
 
-Azure での顧客データの保護の概要: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+- [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -573,13 +572,13 @@ Azure での顧客データの保護の概要: https://docs.microsoft.com/azure/
 
 **ガイダンス**: Azure Database for MySQL サービスでは、保存データのストレージ暗号化に FIPS 140-2 認証済みの暗号モジュールが使用されます。 バックアップを含むデータは、クエリの実行中に作成された一時ファイルを除き、ディスク上で暗号化されます。 このサービスでは、Azure ストレージ暗号化に含まれる AES 256 ビット暗号が使用され、キーはシステムによって管理されます。 ストレージの暗号化は常にオンになっており、無効にすることはできません。
 
-Azure Database for MySQL のカスタマーマネージド キーによるデータ暗号化では、保存データの保護に Bring Your Own Key (BYOK) を使用できます。 現時点では、この機能を使用するにはアクセス権をリクエストする必要があります。 これを行う場合は、下記にお問い合わせください。
+Azure Database for MySQL のカスタマーマネージド キーによるデータ暗号化では、保存データの保護に Bring Your Own Key (BYOK) を使用できます。 現時点では、この機能を使用するにはアクセス権をリクエストする必要があります。 これを行う場合は、以下にお問い合わせください。
 
 AskAzureDBforMySQL@service.microsoft.com
 
-Azure Database for MySQL の保存時の暗号化について: https://docs.microsoft.com/azure/mysql/concepts-security
+- [Azure Database for MySQL の保存時の暗号化について](concepts-security.md)
 
-Azure Database for MySQL の顧客管理キーの構成方法: https://docs.microsoft.com/azure/mysql/concepts-data-encryption-mysql
+- [Azure Database for MySQL の顧客管理キーの構成方法](concepts-data-encryption-mysql.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -589,7 +588,7 @@ Azure Database for MySQL の顧客管理キーの構成方法: https://docs.micr
 
 **ガイダンス**: Azure Database for MySQL の運用インスタンスやその他の重要なまたは関連リソースへの変更がいつ発生したかに関するアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
 
-Azure アクティビティ ログ イベントのアラートを作成する方法: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -597,17 +596,21 @@ Azure アクティビティ ログ イベントのアラートを作成する方
 
 ## <a name="vulnerability-management"></a>脆弱性の管理
 
-*詳細については、「[セキュリティ コントロール: 脆弱性の管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「脆弱性の管理](../security/benchmarks/security-control-vulnerability-management.md)」を参照してください。*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1:自動化された脆弱性スキャン ツールを実行する
 
-**ガイダンス**: 現時点ではご利用いただけません。Azure Security Center では、Azure Database for MySQL の脆弱性評価はまだサポートされていません。
+**ガイダンス**: Azure Database for MySQL および関連リソースの保護に関する Azure Security Center の推奨事項に従ってください。
 
-Azure Security Center の Azure PaaS サービスを対象とする機能: https://docs.microsoft.com/azure/security-center/features-paas
+Microsoft では、Azure Database for MySQL をサポートする基になるシステムで脆弱性の管理を行います。
+
+- [Azure Security Center の推奨事項について](../security-center/recommendations-reference.md)
+
+- [Azure Security Center の Azure PaaS サービスを対象とする機能](../security-center/features-paas.md)
 
 **Azure Security Center の監視**: はい
 
-**責任**: Customer
+**責任**: 共有
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2:自動化されたオペレーティング システム修正プログラム管理ソリューションを展開する
 
@@ -617,7 +620,7 @@ Azure Security Center の Azure PaaS サービスを対象とする機能: https
 
 **責任**: 該当なし
 
-### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3:サードパーティの自動化されたソフトウェア修正プログラム管理ソリューションを展開する
+### <a name="53-deploy-automated-patch-management-solution-for-third-party-software-titles"></a>5.3:サード パーティ ソフトウェア タイトル用の自動化された修正プログラム管理ソリューションをデプロイする
 
 **ガイダンス**: 適用できません。このガイドラインは、コンピューティング リソースを対象にしています。
 
@@ -637,24 +640,23 @@ Azure Security Center の Azure PaaS サービスを対象とする機能: https
 
 **ガイダンス**:Microsoft では、Azure Database for MySQL をサポートする基になるシステムで脆弱性の管理を行います。
 
-
 **Azure Security Center の監視**: 適用なし
 
 **責任**: Microsoft
 
 ## <a name="inventory-and-asset-management"></a>インベントリと資産の管理
 
-*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「インベントリと資産の管理](../security/benchmarks/security-control-inventory-asset-management.md)」を参照してください。*
 
-### <a name="61-use-azure-asset-discovery"></a>6.1:Azure Asset Discovery を使用する
+### <a name="61-use-automated-asset-discovery-solution"></a>6.1:自動化された資産検出ソリューションを使用する
 
 **ガイダンス**: サブスクリプション内のすべてのリソース (Azure Database for MySQL インスタンスを含む) のクエリや検出を実行するには、Azure Resource Graph を使用します。 テナント内の適切な (読み取り) アクセス許可を持っており、サブスクリプション内のリソースだけでなく、すべての Azure サブスクリプションを列挙できることを確認します。
 
-Azure Resource Graph を使用してクエリを作成する方法: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+- [Azure Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-Azure サブスクリプションを表示する方法: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+- [Azure サブスクリプションを表示する方法](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-Azure RBAC の概要: https://docs.microsoft.com/azure/role-based-access-control/overview
+- [Azure RBAC について](../role-based-access-control/overview.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -664,7 +666,7 @@ Azure RBAC の概要: https://docs.microsoft.com/azure/role-based-access-control
 
 **ガイダンス**: メタデータを提供する Azure Database for MySQL インスタンスやその他の関連リソースにタグを適用し、論理的に分類してまとめます。
 
-タグを作成して使用する方法: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -674,17 +676,17 @@ Azure RBAC の概要: https://docs.microsoft.com/azure/role-based-access-control
 
 **ガイダンス**:必要に応じて、タグ付け、管理グループ、および個別のサブスクリプションを使用して、Azure Database for MySQL インスタンスと関連リソースの整理と追跡を行います。 定期的にインベントリを調整し、承認されていないリソースがサブスクリプションから適切なタイミングで削除されるようにします。
 
-追加の Azure サブスクリプションを作成する方法: https://docs.microsoft.com/azure/billing/billing-create-subscription
+- [追加の Azure サブスクリプションを作成する方法](/azure/billing/billing-create-subscription)
 
-管理グループを作成する方法: https://docs.microsoft.com/azure/governance/management-groups/create
+- [管理グループを作成する方法](/azure/governance/management-groups/create)
 
-タグを作成して使用する方法: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center の監視**: 適用なし
 
 **責任**: Customer
 
-### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4:承認された Azure リソースとソフトウェア タイトルのインベントリを管理する
+### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4:承認された Azure リソースのインベントリを定義および管理する
 
 **ガイダンス**:適用できません。この推奨事項は、コンピューティング リソースと Azure 全体を対象にしています。
 
@@ -702,9 +704,9 @@ Azure RBAC の概要: https://docs.microsoft.com/azure/role-based-access-control
 
 また、Azure Resource Graph を使用すると、サブスクリプション内のリソースのクエリまたは検出を行えます。
 
-Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+- [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-Azure Graph を使用してクエリを作成する方法: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+- [Azure Resource Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -742,15 +744,15 @@ Azure Graph を使用してクエリを作成する方法: https://docs.microsof
 
 - 許可されるリソースの種類
 
-Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+- [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-Azure Policy を使用して特定のリソースの種類を拒否する方法: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+- [Azure Policy を使用して特定のリソースの種類を拒否する方法](/azure/governance/policy/samples/not-allowed-resource-types)
 
 **Azure Security Center の監視**: 適用なし
 
 **責任**: Customer
 
-### <a name="610-implement-approved-application-list"></a>6.10:承認されたアプリケーションの一覧を実装する
+### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10:承認されたソフトウェア タイトルのインベントリを管理する
 
 **ガイダンス**: 適用できません。この推奨事項は、コンピューティング リソースを対象にしています。
 
@@ -758,11 +760,11 @@ Azure Policy を使用して特定のリソースの種類を拒否する方法:
 
 **責任**: 該当なし
 
-### <a name="611-limit-users-ability-to-interact-with-azure-resources-manager-via-scripts"></a>6.11:スクリプトを使用して Azure Resource Manager を操作するユーザーの機能を制限する
+### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11:Azure Resource Manager を操作するユーザーの機能を制限する
 
 **ガイダンス**: Azure Conditional Access を使用して Azure Resource Manager を操作するユーザーの権限を制限するには、"Microsoft Azure 管理" アプリに対して [アクセスのブロック] を構成します。 これにより、機密情報を含む Azure Database for MySQL のインスタンスなど、高セキュリティ環境内でのリソースの作成と変更を防ぐことができます。
 
-条件付きアクセスを構成して Azure Resource Manager へのアクセスをブロックする方法: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+- [Azure Resource Manager へのアクセスをブロックするように条件付きアクセスを構成する方法](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -786,17 +788,17 @@ Azure Policy を使用して特定のリソースの種類を拒否する方法:
 
 ## <a name="secure-configuration"></a>セキュリティで保護された構成
 
-*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「セキュリティで保護された構成](../security/benchmarks/security-control-secure-configuration.md)」を参照してください。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:すべての Azure リソースに対してセキュリティで保護された構成を確立する
 
-**ガイダンス**: Azure Policy を使用して、Azure Database for MySQL インスタンスの標準的なセキュリティ構成を定義して実装します。 Azure Database for MySQL インスタンスのネットワーク構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.DBforMySQL" 名前空間で Azure Policy エイリアスを使用します。 次のように、Azure Database for MySQL インスタンスに関連する組み込みのポリシー定義を使用することもできます。
+**ガイダンス**: Azure Policy を使用して、Azure Database for MySQL インスタンスの標準的なセキュリティ構成を定義して実装します。 Azure Database for MySQL インスタンスのネットワーク構成を監査または適用するためのカスタム ポリシーを作成するには、**Microsoft.DBforMySQL** 名前空間で Azure Policy エイリアスを使用します。 次のように、Azure Database for MySQL インスタンスに関連する組み込みのポリシー定義を使用することもできます。
 
 MySQL データベース サーバーで [SSL 接続を強制する] が有効でなければならない
 
-使用可能な Azure Policy エイリアスを表示する方法: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+- [使用可能な Azure Policy エイリアスを表示する方法](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+- [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -812,11 +814,11 @@ Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3:セキュリティで保護された Azure リソースの構成を維持する
 
-**ガイダンス**:Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
+**ガイダンス**: Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
 
-Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+- [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-Azure Policy の効果の概要: https://docs.microsoft.com/azure/governance/policy/concepts/effects
+- [Azure Policy の効果について](../governance/policy/concepts/effects.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -834,9 +836,9 @@ Azure Policy の効果の概要: https://docs.microsoft.com/azure/governance/pol
 
 **ガイダンス**:Azure Database for MySQL インスタンスと関連リソースにカスタム Azure Policy 定義を使用する場合は、Azure Repos を使ってコードを安全に格納および管理します。
 
-Azure DevOps でコードを格納する方法: https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+- [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-Azure Repos のドキュメント: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+- [Azure Repos のドキュメント](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -850,17 +852,17 @@ Azure Repos のドキュメント: https://docs.microsoft.com/azure/devops/repos
 
 **責任**: 該当なし
 
-### <a name="77-deploy-system-configuration-management-tools"></a>7.7:システム構成管理ツールをデプロイする
+### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7:Azure リソース用の構成管理ツールをデプロイする
 
 **ガイダンス**: システム構成を警告処理、監査、適用するためのカスタム ポリシーを作成するには、"Microsoft.DBforMySQL" 名前空間で Azure Policy エイリアスを使用します。 さらに、ポリシー例外を管理するためのプロセスとパイプラインを作成します。
 
-Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+- [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center の監視**: 適用なし
 
 **責任**: Customer
 
-### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8:オペレーティング システム用のシステム構成管理ツールをデプロイする
+### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7.8:オペレーティング システム用の構成管理ツールをデプロイする
 
 **ガイダンス**: 適用できません。この推奨事項は、コンピューティング リソースを対象にしています。
 
@@ -868,11 +870,11 @@ Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure
 
 **責任**: 該当なし
 
-### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9:Azure サービスの自動構成監視を実装する
+### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9:Azure リソースの自動構成監視を実装する
 
-**ガイダンス**: システム構成を警告処理、監査、適用するためのカスタム ポリシーを作成するには、"Microsoft.DBforMySQL" 名前空間で Azure Policy エイリアスを使用します。 Azure Policy の [audit]、[deny]、[deploy if not exist] を使用して、Azure Database for MySQL インスタンスおよび関連リソースの構成を自動的に適用します。
+**ガイダンス**: システム構成を警告処理、監査、適用するためのカスタム ポリシーを作成するには、**Microsoft.DBforMySQL** 名前空間で Azure Policy エイリアスを使用します。 Azure Policy の [audit]、[deny]、[deploy if not exist] を使用して、Azure Database for MySQL インスタンスおよび関連リソースの構成を自動的に適用します。
 
-Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+- [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -890,13 +892,11 @@ Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure
 
 **ガイダンス**: Azure Database for MySQL インスタンスへのアクセスに使用される Azure App Service で実行されている Azure Virtual Machines または Web アプリケーションの場合は、Azure Key Vault と組み合わせてマネージド サービス ID を使用して、Azure Database for MySQL シークレットの管理を簡素化およびセキュリティで保護します。 Key Vault の論理的な削除を確実に有効にします。
 
-Azure マネージド ID と統合する方法: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+- [Azure マネージド ID と統合する方法](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-キー コンテナーを作成する方法: https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
+- [キー コンテナーを作成する方法](../key-vault/general/quick-create-portal.md)
 
-Key Vault に対して認証する方法: https://docs.microsoft.com/azure/key-vault/general/authentication
-
-Key Vault のアクセス ポリシーを割り当てる方法: https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
+- [マネージド ID で Key Vault の認証を提供する方法](/azure/key-vault/general/managed-identity)
 
 **Azure Security Center の監視**: はい
 
@@ -910,9 +910,9 @@ Azure Database for MySQL インスタンスへのアクセスに使用される 
 
 マネージド ID を使用して、Azure Active Directory (AD) で自動的に管理される ID を Azure サービスに提供します。 マネージド ID を使用すると、コードに資格情報を追加しなくても、Azure AD の認証をサポートするさまざまなサービス (Key Vault を含む) に対して認証を行うことができます。
 
-マネージド ID を構成する方法: https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
+- [マネージド ID を構成する方法](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
-Azure マネージド ID と統合する方法: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+- [Azure マネージド ID と統合する方法](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -922,7 +922,7 @@ Azure マネージド ID と統合する方法: https://docs.microsoft.com/azure
 
 **ガイダンス**: コード内で資格情報を特定する資格情報スキャナーを実装します。 また、資格情報スキャナーを使うと、検出された資格情報を、Azure Key Vault などのより安全な場所に移動しやすくなります。
 
-資格情報スキャナーを設定する方法: https://secdevtools.azurewebsites.net/helpcredscan.html
+- [資格情報スキャナーを設定する方法](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -930,9 +930,9 @@ Azure マネージド ID と統合する方法: https://docs.microsoft.com/azure
 
 ## <a name="malware-defense"></a>マルウェアからの防御
 
-*詳細については、「[セキュリティ コントロール: マルウェアからの防御](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「マルウェアからの防御](../security/benchmarks/security-control-malware-defense.md)」を参照してください。*
 
-### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1:一元管理されるマルウェア対策ソフトウェアを使用する
+### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1:一元管理されたマルウェア対策ソフトウェアを使用する
 
 **ガイダンス**: 適用できません。この推奨事項は、コンピューティング リソースを対象にしています。
 
@@ -964,30 +964,29 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Database for M
 
 ## <a name="data-recovery"></a>データの復旧
 
-*詳細については、「[セキュリティ コントロール: データの復旧](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)」を参照してください。*
+*詳しくは、「[Azure Security ベンチマーク:データの復旧](../security/benchmarks/security-control-data-recovery.md)」を参照してください。*
 
-### <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的に自動バックアップを行う
+### <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的な自動バックアップを保証する
 
 **ガイダンス**:Azure Database for MySQL では、データ ファイルとトランザクション ログのバックアップが作成されます。 サポートされている最大ストレージ サイズに応じて、完全バックアップと差分バックアップ (最大 4 TB のストレージ サーバー) またはスナップショット バックアップ (最大 16 TB のストレージ サーバー) を使用します。 これらのバックアップを使用すると、サーバーを、バックアップの構成済みリテンション期間内の任意の時点に復元できます。 バックアップの既定のリテンション期間は 7 日です。 これは、必要に応じて、最大 35 日に設定できます。 すべてのバックアップが、AES 256 ビット暗号化を使用して暗号化されます。
 
-Azure Database for MySQL のバックアップを理解する: https://docs.microsoft.com/azure/mysql/concepts-backup
+- [Azure Database for MySQL のバックアップを理解する](concepts-backup.md)
 
-Azure Database for MySQL の初期構成について: https://docs.microsoft.com/azure/mysql/tutorial-design-database-using-portal
+- [Azure Database for MySQL の初期構成について](tutorial-design-database-using-portal.md)
 
 **Azure Security Center の監視**: はい
 
 **責任**: 共有
 
-### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: システムの完全バックアップを実行し、カスタマー マネージド キーをバックアップする
+### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: システムの完全バックアップを実行し、すべてのカスタマー マネージド キーをバックアップする
 
 **ガイダンス**: Azure Database for MySQL では、サーバーのバックアップを自動的に作成し、ユーザーの選択に応じて、ローカル冗長または geo 冗長ストレージに格納します。 バックアップを使用すると、サーバーを特定の時点に復元できます。 不慮の破損または削除からデータを保護するバックアップと復元は、ビジネス継続性戦略の最も重要な部分です。 
 
 Azure Database for MySQL インスタンスの資格情報を格納するために Azure Key Vault を使用する場合は、必ず、キーの定期的な自動バックアップを行ってください。 
 
-Azure Database for MySQL のバックアップを理解する: https://docs.microsoft.com/azure/mysql/howto-restore-server-portal 
+- [Azure Database for MySQL のバックアップを理解する](howto-restore-server-portal.md) 
 
-Key Vault のキーをバックアップする方法: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
-
+- [Key Vault のキーをバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 **Azure Security Center の監視**: はい
 
@@ -1001,17 +1000,17 @@ Key Vault のキーをバックアップする方法: https://docs.microsoft.com
 
 Azure Database for MySQL インスタンスの復元を定期的にテストします。
 
-Azure Database for MySQL でのバックアップと復元について: https://docs.microsoft.com/azure/mysql/concepts-backup
+- [Azure Database for MySQL でのバックアップと復元について](concepts-backup.md)
 
 **Azure Security Center の監視**: 適用なし
 
 **責任**: Customer
 
-### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: バックアップとカスタマー マネージド キーの保護を確保する
+### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: バックアップとカスタマー マネージド キーの保護を保証する
 
 **ガイダンス**: Azure Database for MySQL では、完全バックアップ、差分バックアップ、およびトランザクション ログ バックアップが作成されます。 これらのバックアップを使用すると、サーバーを、バックアップの構成済みリテンション期間内の任意の時点に復元できます。 バックアップの既定のリテンション期間は 7 日です。 これは、必要に応じて、最大 35 日に設定できます。 すべてのバックアップが、AES 256 ビット暗号化を使用して暗号化されます。 Key Vault の論理的な削除を確実に有効にします。
 
-Azure Database for MySQL でのバックアップと復元について: https://docs.microsoft.com/azure/mysql/concepts-backup
+- [Azure Database for MySQL でのバックアップと復元について](concepts-backup.md)
 
 **Azure Security Center の監視**: はい
 
@@ -1019,19 +1018,19 @@ Azure Database for MySQL でのバックアップと復元について: https://
 
 ## <a name="incident-response"></a>インシデント対応
 
-*詳細については、「[セキュリティ コントロール: インシデント対応](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「インシデント対応](../security/benchmarks/security-control-incident-response.md)」を参照してください。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1:インシデント対応ガイドを作成する
 
 **ガイダンス**: 組織のインシデント対応ガイドを作成します。 要員のすべてのロールを定義するインシデント対応計画が記述されていることと、検出からインシデント後のレビューまでのインシデント対応/管理のフェーズがあることを確認します。
 
-Azure Security Center 内でワークフロー自動化を構成する方法: https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
+- [Azure Security Center 内でワークフロー自動化を構成する方法](../security-center/security-center-planning-and-operations-guide.md)
 
-独自のセキュリティ インシデント対応プロセスを構築するためのガイダンス: https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
+- [独自のセキュリティ インシデント対応プロセスを構築するためのガイダンス](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
-Microsoft Security Response Center のインシデントの構造: https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
+- [Microsoft Security Response Center のインシデントの構造](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
-お客様は、独自のインシデント対応計画の作成に役立つ NIST の「コンピューター セキュリティ インシデント対応ガイド」を利用することもできます: https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
+- [お客様は、独自のインシデント対応計画の作成に役立つ NIST の「コンピューター セキュリティ インシデント対応ガイド」を利用することもできます](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1051,7 +1050,7 @@ Microsoft Security Response Center のインシデントの構造: https://msrc-
 
 **ガイダンス**:定期的にシステムのインシデント対応機能をテストする演習を実施します。 弱点やギャップを特定し、必要に応じて計画を見直します。
 
-NIST の出版物を参照してください。IT の計画と機能に関するテスト、トレーニング、演習プログラムのガイド: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
+- [NIST の出版物「IT 計画と機能に関するテスト、トレーニング、演習プログラムのガイド」を参照してください。](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1061,7 +1060,7 @@ NIST の出版物を参照してください。IT の計画と機能に関する
 
 **ガイダンス**: セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) で、不正なユーザーまたは権限のないユーザーによるお客様のデータへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。  事後にインシデントをレビューして、問題が解決されていることを確認します。
 
-Azure Security Center のセキュリティ連絡先を設定する方法: https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
+- [Azure Security Center のセキュリティ連絡先を設定する方法](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Security Center の監視**: はい
 
@@ -1071,9 +1070,9 @@ Azure Security Center のセキュリティ連絡先を設定する方法: https
 
 **ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用して、アラートの Sentinel のストリーミングを実行できます。
 
-連続エクスポートを構成する方法: https://docs.microsoft.com/azure/security-center/continuous-export
+- [連続エクスポートを構成する方法](../security-center/continuous-export.md)
 
-Azure Sentinel にアラートをストリーミングする方法: https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
+- [Azure Sentinel にアラートをストリーミングする方法](../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1083,7 +1082,7 @@ Azure Sentinel にアラートをストリーミングする方法: https://docs
 
 **ガイダンス**:セキュリティ アラートやセキュリティに関する推奨事項に対して "Logic Apps" 経由で応答を自動的にトリガーするには、Azure Security Center のワークフローの自動化機能を使用します。
 
-ワークフローの自動化と Logic Apps を構成する方法: https://docs.microsoft.com/azure/security-center/workflow-automation
+- [ワークフローの自動化と Logic Apps を構成する方法](../security-center/workflow-automation.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1091,13 +1090,13 @@ Azure Sentinel にアラートをストリーミングする方法: https://docs
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>侵入テストとレッド チーム演習
 
-*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「侵入テストとレッド チーム演習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)」を参照してください。*
 
-### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1:Azure リソースの通常の侵入テストを実施し、セキュリティに関する重大な調査結果がすべて、60 日以内に確実に修復されるようにします
+### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1:Azure リソースの通常の侵入テストを実施し、セキュリティに関する重大な調査結果がすべて、確実に修復されるようにする
 
 **ガイダンス**: お客様の侵入テストが Microsoft のポリシーに違反しないように、確実に次の Microsoft の活動規則に従ってください。 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
 
-Microsoft が管理しているクラウド インフラストラクチャ、サービス、アプリケーションに対する Red Teaming およびライブ サイト侵入テストに関する Microsoft の戦略と実施の詳細については、こちらの https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e で確認できます。
+- [Microsoft が管理しているクラウド インフラストラクチャ、サービス、アプリケーションに対する Red Teaming およびライブ サイト侵入テストに関する Microsoft の戦略と実施の詳細については、こちらを参照してください。](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1105,5 +1104,5 @@ Microsoft が管理しているクラウド インフラストラクチャ、サ
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティ ベンチマーク](https://docs.microsoft.com/azure/security/benchmarks/overview)に関するページを参照する
-- [Azure セキュリティ ベースライン](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- [Azure セキュリティ ベンチマーク](/azure/security/benchmarks/overview)に関するページを参照する
+- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する

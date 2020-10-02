@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: d3937eaa5017ed66641d886ecd45e812f7070b83
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 91094879de1e1762f95d35e22c1ea441e211b99e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566286"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979683"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Log Analytics ワークスペースを別のサブスクリプションまたはリソース グループに移動する
 
@@ -96,7 +96,7 @@ Azure portal を使用してワークスペースを移動するには、次の�
 4. 移動先の **[サブスクリプション]** と **[リソース グループ]** を選択します。 同じサブスクリプション内の別のリソース グループにワークスペースを移動する場合は、 **[サブスクリプション]** オプションは表示されません。
 5. **[OK]** をクリックして、ワークスペースと選択したリソースを移動します。
 
-    ![ポータル](media/move-workspace/portal.png)
+    ![スクリーンショットには、リソース グループとサブスクリプション名を変更するオプションを備えた、Log Analytics ワークスペース内の [概要] ウィンドウが示されています。](media/move-workspace/portal.png)
 
 ### <a name="powershell"></a>PowerShell
 PowerShell を使用してワークスペースを移動するには、次の例のように [Move-AzResource](/powershell/module/AzureRM.Resources/Move-AzureRmResource) を使用します。

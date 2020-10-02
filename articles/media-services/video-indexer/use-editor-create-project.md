@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: juliako
-ms.openlocfilehash: 9f16ab34dc9b37806f9c58b22a3f02afe839632e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5eaf17281fef32d682a2dac17b379faf7ec23a53
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73839164"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970084"
 ---
 # <a name="use-the-video-indexer-editor-to-create-projects"></a>Video Indexer エディターを使用してプロジェクトを作成する
 
@@ -51,7 +51,7 @@ Video Indexer Web サイトでは、ビデオの詳細な分析情報を使用�
     
     たとえば次の画像では、"GitHub" に言及するビデオを検索しています。
     
-    ![GitHub](./media/video-indexer-view-edit/github.png)
+    ![GitHub に言及するビデオを検索して得た 2 つの結果を示すスクリーンショット。](./media/video-indexer-view-edit/github.png)
 
     **[結果のフィルター処理]** を選択して、結果をさらにフィルター処理することができます。 フィルター処理によって、特定の人物が登場するビデオを表示したり、特定の言語または所有者のビデオのみを結果として表示するように指定したりできます。 <br/> クエリのスコープを指定することもできます。 たとえば、"GitHub" を OCR から検索する場合、 **[ビジュアル テキスト]** を選択します。
 
@@ -63,7 +63,7 @@ Video Indexer Web サイトでは、ビデオの詳細な分析情報を使用�
 
     ドラッグ アンド ドロップによって、またはリスト メニュー ボタンを選択して **[下へ移動]** または **[上へ移動]** を選択することによって、ビデオの順序を変更することができます。 リスト メニューでは、このプロジェクトからビデオを削除することもできます。 
 
-    ![並べ替え](./media/video-indexer-view-edit/rearrange.png)
+    ![Video Indexer で、ビデオの 1 つを削除、選択をクリア、または下へ移動するためのコンテキスト メニューを示すスクリーンショット。](./media/video-indexer-view-edit/rearrange.png)
     
     **[ビデオを追加する]** を選択すると、いつでもこのプロジェクトにビデオを追加できます。 同じビデオの複数のオカレンスをプロジェクトに追加することもできます。 これを行うのは、あるビデオのクリップ、別のビデオのクリップ、そして最初のビデオの別のクリップという順序で表示したい場合です。 
 
@@ -81,7 +81,7 @@ Video Indexer Web サイトでは、ビデオの詳細な分析情報を使用�
 
     たとえば、GitHub に言及していて Donovan Brown が画面に映っているクリップが見たいとします。 このためには、分析情報のタイプに "People" がある "include" フィルターを追加する必要があります。 次に、フィルターの検索ボックスに「Donovan Brown」と入力する必要があります。
     
-    ![Include (含める)](./media/video-indexer-view-edit/include.png)
+    ![Video Indexer で、include フィルターに People が選択された状態を示すスクリーンショット。](./media/video-indexer-view-edit/include.png)
     
     GitHub に言及していて Donovan Brown が画面に _映っていない_ クリップが必要な場合は、ドロップダウンを使用して "include" フィルターを "exclude" フィルターに変更するだけです。 
 
@@ -96,7 +96,7 @@ Video Indexer Web サイトでは、ビデオの詳細な分析情報を使用�
 > [!TIP]
 > クリップを選択したり並べ替えたりしながら、ページの右側にあるプレーヤーでビデオをプレビューできます。 
 
-![プレビュー](./media/video-indexer-view-edit/preview.png)
+![ウィンドウの右側にビデオのプレビューが表示されている Video Indexer を示すスクリーンショット。](./media/video-indexer-view-edit/preview.png)
 
 変更を加えたら、必ず **[プロジェクトの保存]** を選択してプロジェクトを保存してください。 
 
@@ -107,7 +107,7 @@ Video Indexer Web サイトでは、ビデオの詳細な分析情報を使用�
 
 1. 終了したら、プロジェクトが保存されていることを確認します。 このプロジェクトをレンダリングできるようになりました。 **[Render and Download]\(レンダリングとダウンロード)** を選択します。 
 
-    ![保存](./media/video-indexer-view-edit/save.png)
+    ![プロジェクトのレンダリングとダウンロードのオプションがある Video Indexer を示すスクリーンショット。](./media/video-indexer-view-edit/save.png)
 
     Video indexer がファイルをレンダリングした後、ダウンロード リンクが電子メールに送信されることを知らせるポップアップが表示されます。 [続行] を選択します。 
     

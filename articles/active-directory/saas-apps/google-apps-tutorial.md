@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.openlocfilehash: d20d527c35eac422efdc3719f153b6d7e8f4ef07
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7e6b4524523d0659126bcd6cbe1294d700e79ed9
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017535"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707817"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Google Cloud (G Suite) Connector の統合
 
@@ -72,9 +72,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
     メール属性は、有効な Exchange ライセンスを持つユーザーに自動的に設定されます。 メールが有効になっていないユーザーの場合、アプリケーションでアクセス権を付与するにはこの属性を取得する必要があるため、このエラーを受け取ります。
 
-    管理者アカウントで portal.office.com に移動し、管理センターで課金とサブスクリプションをクリックし、Office 365 サブスクリプションを選択し、ユーザーへの割り当てをクリックし、右側のウィンドウでサブスクリプションを確認するユーザーを選択し、ライセンスの編集をクリックします。
+    管理者アカウントで portal.office.com に移動し、管理センター、課金、サブスクリプションの順にクリックして、Microsoft 365 サブスクリプションを選択します。次に、ユーザーへの割り当てをクリックし、サブスクリプションを確認するユーザーを選択して、右側のペインでライセンスの編集をクリックします。
 
-    O365 ライセンスの割り当てが適用されるまで、数分かかる場合があります。 その後、user.mail 属性が自動的に設定されて、問題は解決します。
+    Microsoft 365 ライセンスの割り当てが適用されるまでに数分かかる場合があります。 その後、user.mail 属性が自動的に設定されて、問題は解決します。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -240,7 +240,7 @@ Google Cloud (G Suite) Connector で Azure AD の SSO を構成してテスト�
 
 ### <a name="create-google-cloud-g-suite-connector-test-user"></a>Google Cloud (G Suite) Connector のテスト ユーザーの作成
 
-このセクションの目的は、B.Simon という[ユーザーを Google Cloud (G Suite) Connector で作成する](https://support.google.com/a/answer/33310?hl=en)ことです。 Google Cloud (G Suite) Connector で手動で作成したユーザーは、自分の Office 365 のログイン資格情報を使用してサインインできるようになります。
+このセクションの目的は、B.Simon という[ユーザーを Google Cloud (G Suite) Connector で作成する](https://support.google.com/a/answer/33310?hl=en)ことです。 Google Cloud (G Suite) Connector で手動で作成されたユーザーは、Microsoft 365 のログイン資格情報を使用してサインインできるようになります。
 
 Google Cloud (G Suite) Connector では、自動ユーザー プロビジョニングがサポートされています。 自動ユーザープロビジョニングを構成するには、まず [Google Cloud (G Suite) Connector を構成し、自動ユーザー プロビジョニングに対応させる](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)必要があります。
 

@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 9cf6fa26cec0abbc52a990d71c1c2fcc5d6023e4
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: f59f8af3f9a845f7e8663877f6d806c33b216a41
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612556"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482846"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Azure Virtual Machines に SQL Server Always On 可用性グループのロード バランサーを構成する
 
@@ -40,7 +40,7 @@ ms.locfileid: "88612556"
 
 この記事では、Azure Portal でロード バランサーを作成し、必要な構成を行います。 その作業が済んだら、可用性グループ リスナーのロード バランサーの IP アドレスを使用するようにクラスターを構成します。
 
-## <a name="create-and-configure-the-load-balancer-in-the-azure-portal"></a>Azure ポータルでのロード バランサーの作成と構成
+## <a name="create--configure-load-balancer"></a>ロード バランサーを作成および構成する 
 
 この作業の一環として、次の手順を実行します。
 
@@ -71,7 +71,7 @@ ms.locfileid: "88612556"
    | --- | --- |
    | **名前** |ロード バランサーを表すテキスト名 (例: **sqlLB**)。 |
    | **Type** |**内部**:ほとんどの実装では、内部ロード バランサーを使います。この場合、同じ仮想ネットワーク内のアプリケーションを可用性グループに接続できます。  </br> **外部**:アプリケーションをパブリック インターネット接続経由で可用性グループに接続できます。 |
-   | **SKU** |**Standard**:SQL インスタンスがロード バランサーとは別の可用性セットに含まれている場合に必要です。 </br> **Basic**:既定のオプション。 |
+   | **SKU** |**Basic**:既定のオプション。 SQL Server インスタンスが同じ可用性セット内にある場合にのみ有効です。 </br> **Standard**:推奨。 SQL Server インスタンスが同じ可用性セット内にある場合に有効です。 SQL Server インスタンスが異なる可用性ゾーンに存在する場合は必須です。 |
    | **Virtual Network** |SQL Server インスタンスが存在する仮想ネットワークを選択します。 |
    | **サブネット** |SQL Server インスタンスが存在するサブネットを選択します。 |
    | **IP アドレスの割り当て** |**静的** |

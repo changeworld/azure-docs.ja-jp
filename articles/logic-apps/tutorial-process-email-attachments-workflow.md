@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 02/27/2020
-ms.openlocfilehash: 79ce5125283a234530435891044ead3141665433
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4adec4579cf1a413aeac54782b4f9a833d557ad9
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002778"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029972"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>チュートリアル:Azure Logic Apps、Azure Functions、Azure Storage を使用してメール処理のタスクを自動化する
 
@@ -40,7 +40,7 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
 
 * Logic Apps がサポートするメール プロバイダー (Office 365 Outlook、Outlook.com、Gmail など) のメール アカウント。 その他のプロバイダーについては、[こちらのコネクタ一覧を参照](/connectors/)してください。
 
-  このロジック アプリでは、Office 365 Outlook アカウントを使います。 別のメール アカウントを使う場合、おおよその手順は変わりませんが、UI の表示がやや異なることがあります。
+  このロジック アプリでは、職場または学校アカウントを使用します。 別のメール アカウントを使う場合、おおよその手順は変わりませんが、UI の表示がやや異なることがあります。
 
   > [!IMPORTANT]
   > Gmail コネクタの使用を希望する場合、ロジック アプリで制限なしにこのコネクタを使用できるのは、G-Suite ビジネス アカウントだけです。 Gmail コンシューマー アカウントを持っている場合は、Google によって承認された特定のサービスのみでこのコネクタを使用できるほか、[認証に使用する Google クライアント アプリを Gmail コネクタで作成する](/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 詳細については、「[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)」を参照してください。
@@ -110,7 +110,7 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
 
 ロジック アプリによって添付ファイルが BLOB としてストレージ コンテナーに正しく保存されるかどうかを確認できるように、ストレージ アカウントに Storage Explorer を接続します。
 
-1. Microsoft Azure Storage Explorer を起動します。
+1. Microsoft Azure ストレージ エクスプローラーを起動します。
 
    Storage Explorer に、ストレージ アカウントへの接続を求めるメッセージが表示されます。
 

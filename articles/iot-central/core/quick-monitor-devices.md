@@ -1,6 +1,6 @@
 ---
 title: クイックスタート - Azure IoT Central でデバイスを監視する
-description: オペレーターとして Azure IoT Central アプリケーションを使用して、デバイスを監視する方法について説明します。
+description: クイックスタート - オペレーターとして Azure IoT Central アプリケーションを使用して、デバイスを監視する方法について説明します。
 author: dominicbetts
 ms.author: dobett
 ms.date: 02/12/2020
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 1dec52bbf1435cd7e363edf111f769d3e2cffb6a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: af5683bf253e26ab928e46059f9af9d2ab8af3bd
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80998913"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987336"
 ---
 # <a name="quickstart-use-azure-iot-central-to-monitor-your-devices"></a>クイック スタート:Azure IoT Central を使用してデバイスを監視する
 

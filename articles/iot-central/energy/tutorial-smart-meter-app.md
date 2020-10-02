@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 9e954e9c1a7efa43a19849b1c5b40284ec84eeed
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bdcfeeede8b16bf9a92a885364e4c8fef7ea5cbc
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77016002"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986561"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>チュートリアル:スマート メーター監視アプリ テンプレートを作成して操作する 
 
@@ -104,8 +104,10 @@ Adatum は、スマート メーターを監視および管理する架空のエ
     > [!div class="mx-imgBorder"]
     > ![アプリケーションを削除する](media/tutorial-iot-central-smart-meter/smart-meter-delete-app.png)
 
-
 ## <a name="next-steps"></a>次のステップ
-* スマート メーター アプリのアーキテクチャの詳細については[概念](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-smart-meter-app)に関する記事を参照してください。
+
+スマート メーター アプリのアーキテクチャの詳細については、 
+> [!div class="nextstepaction"]
+> [概念に関する記事](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-smart-meter-app)を参照してください
 * スマート メーター アプリケーション テンプレートを無料で作成する: [スマート メーター アプリ](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring)
 * IoT Central の詳細について、[IoT Central の概要](https://docs.microsoft.com/azure/iot-central/)を参照する

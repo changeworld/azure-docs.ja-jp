@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59f60a0167e7ac09b1fdfee87cc8412cdbe19053
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 1b9d7ad93c287aa9313658ec6b8d5df9f2219f27
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89255955"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968868"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>REST API 呼び出しを使用して Azure VM 上に Azure リソースのマネージド ID を構成する
 
@@ -37,11 +37,9 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 - Azure リソースのマネージド ID の基本点な事柄については、[概要](overview.md)に関するセクションを参照してください。 **[システム割り当てマネージド ID とユーザー割り当てマネージド ID の違い](overview.md#managed-identity-types)を必ず確認してください**。
 - まだ Azure アカウントを持っていない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
-- Windows を使用している場合は、[Windows Subsystem for Linux](/windows/wsl/about) をインストールするか、Azure Portal で [Azure Cloud Shell](../../cloud-shell/overview.md) を使用します。
-- [Windows Subsystem for Linux](/windows/wsl/about) または [Linux ディストリビューション OS](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) を使用する場合は、[Azure CLI ローカル コンソールをインストール](/cli/azure/install-azure-cli)します。
-- Azure CLI ローカル コンソールを使用している場合は、システム割り当てマネージド ID またはユーザー割り当てマネージド ID を管理する Azure サブスクリプションに関連付けられているアカウントで `az login` を使用して Azure にサインインします。
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+- この記事で取り上げるすべてのコマンドは、クラウドでもローカルでも実行できます。
+    - クラウドで実行するには、[Azure Cloud Shell](../../cloud-shell/overview.md) を使用します。
+    - ローカルから実行するには、[curl](https://curl.haxx.se/download.html) と [Azure CLI](/cli/azure/install-azure-cli) をインストールし、システム割り当てマネージド ID またはユーザー割り当てマネージド ID を管理する Azure サブスクリプションに関連付けられているアカウントで [az login](/cli/azure/reference-index#az-login) を使用して Azure にサインインします。
 
 ## <a name="system-assigned-managed-identity"></a>システム割り当てマネージド ID
 

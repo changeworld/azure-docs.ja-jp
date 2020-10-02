@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/07/2019
+ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 1255d8c0456101bb9059de834c871812d5c5bceb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9626ea5fa03ac956670c879506f458fa75c5768e
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88533660"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053380"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sumtotalcentral"></a>チュートリアル: Azure Active Directory と SumTotalCentral の統合
 
@@ -43,59 +43,45 @@ Azure AD と SumTotalCentral の統合を構成するには、次のものが必
 
 * SumTotalCentral では、**SP** Initiated SSO がサポートされます
 
+* SumTotalCentral を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
+    
+> [!NOTE]
+> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
+
 ## <a name="adding-sumtotalcentral-from-the-gallery"></a>ギャラリーから SumTotalCentral を追加する
 
 Azure AD への SumTotalCentral の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に SumTotalCentral を追加する必要があります。
 
-**ギャラリーから SumTotalCentral を追加するには、次の手順に従います。**
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
+1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**SumTotalCentral**」と入力します。
+1. 結果のパネルから **[SumTotalCentral]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
-
-    ![Azure Active Directory のボタン](common/select-azuread.png)
-
-2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
-
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
-
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
-
-    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
-
-4. 検索ボックスに「**SumTotalCentral**」と入力し、結果パネルから **[SumTotalCentral]** を選択し、 **[追加]** をクリックしてアプリケーションを追加します。
-
-     ![結果リスト内の SumTotalCentral](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
 
 このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、SumTotalCentral で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと SumTotalCentral 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 SumTotalCentral で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[SumTotalCentral シングル サインオンの構成](#configure-sumtotalcentral-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
-3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[SumTotalCentral のテスト ユーザーの作成](#create-sumtotalcentral-test-user)** - SumTotalCentral で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
+    * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+    * **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+2. **[SumTotalCentral の SSO の構成](#configure-sumtotalcentral-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+    * **[SumTotalCentral のテスト ユーザーの作成](#create-sumtotalcentral-test-user)** - SumTotalCentral で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+3. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
+これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-SumTotalCentral で Azure AD のシングル サインオンを構成するには、次の手順に従います。
+1. [Azure portal](https://portal.azure.com/) の **SumTotalCentral** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
+1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
-1. [Azure portal](https://portal.azure.com/) の **SumTotalCentral** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
-
-    ![シングル サインオン構成のリンク](common/select-sso.png)
-
-2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
-
-    ![シングル サインオン選択モード](common/select-saml-option.png)
-
-3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
-
-    ![基本的な SAML 構成を編集する](common/edit-urls.png)
+   ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
@@ -105,8 +91,11 @@ SumTotalCentral で Azure AD のシングル サインオンを構成するに�
 
     b. **[識別子 (エンティティ ID)]** ボックスに、`SumTotalFederationGateway` という値を入力します。
 
+    c. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します:    
+    `https://<subdomain>.sumtotalsystems.com/Broker/Token/CUSTOM_URL`
+
     > [!NOTE]
-    > サインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[SumTotalCentral クライアント サポート チーム](http://www.sumtotalsystems.com/support/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際のサインオン URL と応答 URL で値を更新してください。 この値を取得するには、[SumTotalCentral クライアント サポート チーム](http://www.sumtotalsystems.com/support/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -122,66 +111,45 @@ SumTotalCentral で Azure AD のシングル サインオンを構成するに�
 
     c. ログアウト URL
 
-### <a name="configure-sumtotalcentral-single-sign-on"></a>SumTotalCentral のシングル サインオンの構成
-
-**SumTotalCentral** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [SumTotalCentral サポート チーム](http://www.sumtotalsystems.com/support/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
-
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
-このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
+このセクションでは、Azure portal で B. Simon というテスト ユーザーを作成します。
 
 1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
-
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
-
-2. 画面の上部にある **[新しいユーザー]** を選択します。
-
-    ![[新しいユーザー] ボタン](common/new-user.png)
-
-3. [ユーザーのプロパティ] で、次の手順を実行します。
-
-    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
-
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
-    b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
-    たとえば、BrittaSimon@contoso.com のように指定します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
-
-    d. **Create** をクリックしてください。
+1. 画面の上部にある **[新しいユーザー]** を選択します。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
+   1. **[名前]** フィールドに「**B.Simon**」と入力します。  
+   1. **[ユーザー名]** フィールドに「`<username>@<companydomain>.<extension>`」と入力します。 (例: `B.Simon@contoso.com`)。
+   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
+   1. **［作成］** を選択します
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon に SumTotalCentral へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、B.Simon に SumTotalCentral へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[SumTotalCentral]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. アプリケーションの一覧で **[SumTotalCentral]** を選択します。
+1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-2. アプリケーションの一覧で **[SumTotalCentral]** を選択します。
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![アプリケーションの一覧の SumTotalCentral リンク](common/all-applications.png)
+    ![[ユーザーの追加] リンク](common/add-assign-user.png)
 
-3. 左側のメニューで **[ユーザーとグループ]** を選びます。
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
+## <a name="configure-sumtotalcentral-sso"></a>SumTotalCentral の SSO の構成
 
-4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
-
-5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-
-6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
-
-7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
+**SumTotalCentral** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [SumTotalCentral サポート チーム](http://www.sumtotalsystems.com/support/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-sumtotalcentral-test-user"></a>SumTotalCentral のテスト ユーザーの作成
 
 このセクションでは、SumTotalCentral で Britta Simon というユーザーを作成します。  [SumTotalCentral サポート チーム](http://www.sumtotalsystems.com/support/)と協力して、SumTotalCentral プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: 299bbfa31584b260f85dfa7bafddea268084f876
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 7cbb67a215d44759b2b503929c37cb50ea94709c
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235164"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069766"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>リモート デスクトップを介して Azure VM に接続しようとするときに、内部エラーが発生する
 
@@ -26,7 +26,7 @@ ms.locfileid: "88235164"
 
 ## <a name="symptoms"></a>現象
 
-リモート デスクトップ プロトコル (RDP) を使用して Azure VM に接続できません。 "リモートの構成" セクションで接続がスタックするか、次のエラー メッセージが表示されます。
+リモート デスクトップ プロトコル (RDP) を使用して Azure VM に接続できません。 **リモートの構成**セクションで接続がスタックするか、次のエラー メッセージが表示されます。
 
 - RDP の内部エラー
 - 内部エラーが発生しました
@@ -37,20 +37,24 @@ ms.locfileid: "88235164"
 
 この問題は、次の理由で発生する可能性があります。
 
+- 仮想マシンが攻撃を受けている可能性がある。
 - ローカルの RSA 暗号化キーにアクセスできない。
 - TLS プロトコルが無効になっている。
 - 証明書が破損しているか、有効期限が切れている。
 
 ## <a name="solution"></a>解決策
 
-これらの手順を実行する前に、バックアップとして、影響を受ける VM の OS ディスクのスナップショットを取得します。 詳細については、[ディスクのスナップショット](../windows/snapshot-copy-managed-disk.md)に関する記事を参照してください。
+この問題をトラブルシューティングするには、以下のセクションの手順を実行します。 始める前に、バックアップとして、影響を受ける VM の OS ディスクのスナップショットを取得します。 詳細については、[ディスクのスナップショット](../windows/snapshot-copy-managed-disk.md)に関する記事を参照してください。
 
-この問題をトラブルシューティングするには、シリアル コンソールを使用するか、VM の OS ディスクを復旧 VM にアタッチして [VM をオフライン修復](#repair-the-vm-offline)します。
+### <a name="check-rdp-security"></a>RDP セキュリティを確認する
 
+まず、RDP ポート 3389 のネットワーク セキュリティ グループがセキュリティで保護されていない (開いている) かどうかを確認します。 セキュリティで保護されておらず、受信の発信元 IP アドレスとして \* が表示されている場合は、RDP ポートを特定のユーザーの IP アドレスに制限し、RDP アクセスをテストします。 これが失敗した場合、次のセクションの手順を実行します。
 
 ### <a name="use-serial-control"></a>シリアル コントロールを使用する
 
-[シリアル コンソールに接続し、PowerShell インスタンスを開きます](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
+シリアル コンソールを使用するか、VM の OS ディスクを復旧 VM にアタッチして [VM をオフライン修復](#repair-the-vm-offline)します。
+
+まず、[シリアル コンソールに接続し、PowerShell インスタンスを開きます](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
 )。 VM でシリアル コンソールが有効になっていない場合は、「[VM をオフライン修復する](#repair-the-vm-offline)」セクションに移動します。
 
 #### <a name="step-1-check-the-rdp-port"></a>手順 1: RDP ポートを確認する

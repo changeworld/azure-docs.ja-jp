@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 62a30fada32a23546323dae34f875ab9c7da228c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c570c43560ad865b8bcc5161cbd0c6731ea4a237
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028551"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090654"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Windows 用 Azure パフォーマンス診断 VM 拡張機能
 
@@ -29,7 +29,15 @@ Azure パフォーマンス診断 VM 拡張機能は、Windows VM からパフ�
 
 ## <a name="prerequisites"></a>前提条件
 
-この拡張機能は、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2、および Windows Server 2016 にインストールできます。 また、Windows 8.1 および Windows 10 にインストールすることもできます。
+この拡張機能は、次にインストールできます。
+* Windows Server 2019
+* Windows Server 2016
+* Windows Server 2012 R2
+* Windows Server 2012
+* Windows Server 2008 R2
+* Windows 10
+* Windows 8.1
+* Windows 8
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 次に示す JSON は、Azure パフォーマンス診断 VM 拡張機能のスキーマです。 この拡張機能では、診断の出力とレポートを保存するために、ストレージ アカウントの名前とキーが必要です。 これらは機密性の高い値です。 ストレージ アカウント キーは、保護された設定構成内に格納する必要があります。 Azure VM 拡張機能の保護された設定データは暗号化され、ターゲットの仮想マシンでのみ、暗号化が解除されます。 **storageAccountName** と **storageAccountKey** は大文字と小文字が区別されることに注意してください。 他の必要なパラメーターについては、以下のセクションで示します。
@@ -73,7 +81,7 @@ Azure パフォーマンス診断 VM 拡張機能は、Windows VM からパフ�
 |type|AzurePerformanceDiagnostics|VM 拡張機能の種類。
 |typeHandlerVersion|1.0|拡張機能ハンドラーのバージョン。
 |performanceScenario|basic|データをキャプチャするパフォーマンス シナリオ。 有効な値: **basic**、**vmslow**、**azurefiles**、**custom**。
-|traceDurationInSeconds|該当なし|いずれかのトレース オプションを選択した場合、トレースの期間。
+|traceDurationInSeconds|300|いずれかのトレース オプションを選択した場合、トレースの期間。
 |perfCounterTrace|p|パフォーマンス カウンターのトレースを有効にするオプション。 有効な値: **p**、または空の値。 このトレースをキャプチャしない場合は、値を空のままにします。
 |networkTrace|n|ネットワーク トレースを有効にするオプション。 有効な値は、**n** または空の値です。 このトレースをキャプチャしない場合は、値を空のままにします。
 |xperfTrace|x|XPerf のトレースを有効にするオプション。 有効な値: **x**、または空の値。 このトレースをキャプチャしない場合は、値を空のままにします。

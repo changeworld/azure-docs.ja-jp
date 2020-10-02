@@ -11,12 +11,12 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: eaea80ae874b93a640c885e0d4b7afde2a165c16
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 0138b4dcc547b961f941522abd03cd351d4d3737
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798569"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89460549"
 ---
 # <a name="design-tables-in-synapse-sql-pool"></a>Synapse SQL プールでのテーブルの設計
 
@@ -111,7 +111,7 @@ SQL プールの基本的特徴は、[複数のディストリビューション
 
 ## <a name="table-partitions"></a>テーブルのパーティション
 
-パーティション テーブルでは、データ範囲に基づいてテーブル行が格納され、操作が実行されます。 たとえば、day、month、または year でテーブルをパーティション分割できます。 クエリ スキャンをあるパーティション内のデータに制限するパーティション除外によってクエリ パフォーマンスを向上させることができます。 パーティションを切り替えてデータを維持することもできます。 SQL Data Warehouse のデータは既に分散されているため、パーティションが多すぎるとクエリ パフォーマンスが低下することがあります。 詳しくは、[パーティション分割のガイダンス](sql-data-warehouse-tables-partition.md)に関する記事をご覧ください。  空でないテーブル パーティションにパーティションを切り替えるとき、既存のデータが切り詰められる場合は、[ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ステートメントに TRUNCATE_TARGET オプションを使用することを検討してください。 以下のコードは、既存のデータを上書きして、変換された 1 日のデータを SalesFact にスイッチインします。
+パーティション テーブルでは、データ範囲に基づいてテーブル行が格納され、操作が実行されます。 たとえば、day、month、または year でテーブルをパーティション分割できます。 クエリ スキャンをあるパーティション内のデータに制限するパーティション除外によってクエリ パフォーマンスを向上させることができます。 パーティションを切り替えてデータを維持することもできます。 Azure Synapse Analytics のデータは既に分散されているため、パーティションが多すぎるとクエリ パフォーマンスが低下することがあります。 詳しくは、[パーティション分割のガイダンス](sql-data-warehouse-tables-partition.md)に関する記事をご覧ください。  空でないテーブル パーティションにパーティションを切り替えるとき、既存のデータが切り詰められる場合は、[ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ステートメントに TRUNCATE_TARGET オプションを使用することを検討してください。 以下のコードは、既存のデータを上書きして、変換された 1 日のデータを SalesFact にスイッチインします。
 
 ```sql
 ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION 256 WITH (TRUNCATE_TARGET = ON);  
@@ -294,9 +294,6 @@ SELECT *
 FROM size
 ;
 ```
-
->[!TIP]
-> Synapse SQL のパフォーマンスを向上させるには、永続的なユーザー テーブルで、**sys.pdw_table_mappings** ではなく **sys.pdw_permanent_table_mappings** を使用することを検討してください。 詳細については、「 **[sys.pdw_permanent_table_mappings &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** 」を参照してください。
 
 ### <a name="table-space-summary"></a>テーブル領域の概要
 

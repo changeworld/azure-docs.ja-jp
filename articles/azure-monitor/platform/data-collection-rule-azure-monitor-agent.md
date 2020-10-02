@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 97ba976c841e192646ebb484fe4d004556e34c54
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: aa3225378f921792d1e8ba0442f2c555d095fb9d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640839"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968406"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Azure Monitor エージェント用のデータ収集の構成 (プレビュー)
 データ収集ルール (DCR) では、Azure Monitor に入ってくるデータを定義し、そのデータの送信先を指定します。 この記事では、Azure Monitor エージェントを使用して、仮想マシンからデータを収集するデータ収集ルールを作成する方法について説明します。
@@ -26,7 +26,7 @@ DCR を仮想マシンに適用するには、仮想マシンの関連付けを�
 
 たとえば、基幹業務アプリケーションを実行している一連の仮想マシンと SQL Server を実行しているほかの仮想マシンがある環境について考えてみます。 すべての仮想マシンに適用する 1 つの既定のデータ収集ルールと、基幹業務アプリケーション用と SQL Server 用に特別にデータを収集する個別のデータ収集ルールを指定することができます。 データ収集ルールへの仮想マシンの関連付けは、次の図のようになります。
 
-![Associations](media/data-collection-rule-azure-monitor-agent/associations.png)
+![基幹業務アプリケーションと SQL Server をホストしている仮想マシンを示す図。基幹業務アプリケーションは central-it-default および lob-app、SQL Server は central-it-default および sql という名前のデータ収集ルールに関連付けられています。](media/data-collection-rule-azure-monitor-agent/associations.png)
 
 ## <a name="create-using-the-azure-portal"></a>Azure Portal を使用した作成
 Azure portal を使用してデータ収集ルールを作成し、サブスクリプション内の仮想マシンをそのルールに関連付けることができます。 Azure Monitor エージェントは自動的にインストールされ、まだそれがインストールされていないすべての仮想マシンに対して、マネージド ID が作成されます。

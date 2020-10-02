@@ -12,17 +12,17 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 06/17/2020
-ms.openlocfilehash: e18c0470a2d1be8323c2fe1c0780bfd47f3f64cb
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ef46a0040ba767197028d170372a4a9edca9feee
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085091"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442703"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL Database と Azure Synapse の IP ファイアウォール規則
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-たとえば、Azure SQL Database または Azure Synapse Analytics 内に *mysqlserver* という名前の新しいサーバーを作成すると、サーバー レベルのファイアウォールによって、そのサーバー (*mysqlserver.database.windows.net* でアクセス可能) のパブリック エンドポイントへのすべてのアクセスがブロックされます。 簡潔にするため、*SQL Database* という言葉を使用して、SQL Database と Azure Synapse Analytics (旧称 Azure SQL Data Warehouse) の両方を言い表します。
+たとえば、Azure SQL Database または Azure Synapse Analytics 内に *mysqlserver* という名前の新しいサーバーを作成すると、サーバー レベルのファイアウォールによって、そのサーバー (*mysqlserver.database.windows.net* でアクセス可能) のパブリック エンドポイントへのすべてのアクセスがブロックされます。 簡潔にするため、*SQL Database* という言葉を使用して、SQL Database と Azure Synapse Analytics (旧称 SQL Data Warehouse) の両方を言い表します。
 
 > [!IMPORTANT]
 > この記事は、*Azure SQL Managed Instance* には適用され "*ません*"。 ネットワーク構成については、「[Azure SQL Managed Instance にアプリケーションを接続する](../managed-instance/connect-application-instance.md)」を参照してください。

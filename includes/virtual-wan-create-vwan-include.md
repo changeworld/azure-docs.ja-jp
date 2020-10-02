@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/09/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 56f79bf38b627f80d73b59dbbfbb73dddd809458
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5c9c8fa8099848eec09e689bf9491f71f378e9e3
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525174"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606214"
 ---
 ブラウザーから Azure portal に移動し、Azure アカウントでサインインします。
 
@@ -21,7 +21,7 @@ ms.locfileid: "86525174"
 1. 結果から **[Virtual WAN]** を選択します。 [Virtual WAN] (仮想 WAN) ページで、 **[作成]** をクリックして [WAN の作成] ページを開きます。
 1. **[WAN の作成]** ページの **[基本]** タブで、次のフィールドに入力します。
 
-   :::image type="content" source="./media/virtual-wan-create-vwan-include/basics.png" alt-text="基本操作":::
+   :::image type="content" source="./media/virtual-wan-create-vwan-include/basics.png" alt-text="スクリーンショットには、[基本] タブが選択された [WAN の作成] ペインが表示されています。":::
 
    * **[サブスクリプション]** - 使用するサブスクリプションを選択します。
    * **[リソース グループ]** - 新規作成するか、または既存のものを使用します。

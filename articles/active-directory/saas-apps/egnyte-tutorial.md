@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 08/27/2020
 ms.author: jeedes
-ms.openlocfilehash: 512b96b6b785c0694bb41fab657f0a45c4321f10
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4890ee7fe013aa4dba8cdc9740481874ccfc1430
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544334"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657586"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-egnyte"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Egnyte の統合
 
@@ -42,6 +42,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 * Egnyte では、**SP** Initiated SSO がサポートされます
 * Egnyte を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
+> [!NOTE]
+> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
+
 ## <a name="adding-egnyte-from-the-gallery"></a>ギャラリーからの Egnyte の追加
 
 Azure AD への Egnyte の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Egnyte を追加する必要があります。
@@ -53,7 +56,7 @@ Azure AD への Egnyte の統合を構成するには、ギャラリーから管
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Egnyte**」と入力します。
 1. 結果のパネルから **[Egnyte]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
 
 このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Egnyte で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Egnyte 内の関連ユーザー間にリンク関係が確立されている必要があります。
@@ -71,30 +74,24 @@ Egnyte に対する Azure AD SSO を構成してテストするには、次の�
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
+これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-Egnyte で Azure AD シングル サインオンを構成するには、次の手順に従います。
+1. [Azure portal](https://portal.azure.com/) の **Egnyte** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
+1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
-1. [Azure portal](https://portal.azure.com/) の **Egnyte** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
-
-    ![シングル サインオン構成のリンク](common/select-sso.png)
-
-2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
-
-    ![シングル サインオン選択モード](common/select-saml-option.png)
-
-3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
-
-    ![基本的な SAML 構成を編集する](common/edit-urls.png)
+   ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
     ![Egnyte のドメインおよび URL のシングル サインオン情報](common/sp-signonurl.png)
 
-    **[サインオン URL]** ボックスに、`https://<companyname>.egnyte.com` という形式で URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.egnyte.com` という形式で URL を入力します。
 
+    b. **[応答 URL]** ボックスに、`https://<companyname>.egnyte.com/samlconsumer/AzureAD` のパターンを使用して URL を入力します
+    
     > [!NOTE]
-    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Egnyte クライアント サポート チーム](https://www.egnyte.com/corp/contact_egnyte.html)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際のサインオン URL と応答 URL で値を更新してください。 この値を取得するには、[Egnyte クライアント サポート チーム](https://www.egnyte.com/corp/contact_egnyte.html)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -112,54 +109,33 @@ Egnyte で Azure AD シングル サインオンを構成するには、次の�
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
-このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
+このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
-1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
-
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
-
-2. 画面の上部にある **[新しいユーザー]** を選択します。
-
-    ![[新しいユーザー] ボタン](common/new-user.png)
-
-3. [ユーザーのプロパティ] で、次の手順を実行します。
-
-    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
-
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
-    たとえば、BrittaSimon@contoso.com のように指定します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
-
-    d. **Create** をクリックしてください。
+1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. 画面の上部にある **[新しいユーザー]** を選択します。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
+   1. **Create** をクリックしてください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon に Egnyte へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、B.Simon に BambooHR へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Egnyte]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. アプリケーションの一覧で、**[BambooHR]** を選択します。
+1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-2. アプリケーションの一覧で **[Egnyte]** を選択します。
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![アプリケーションの一覧の Egnyte のリンク](common/all-applications.png)
+    ![[ユーザーの追加] リンク](common/add-assign-user.png)
 
-3. 左側のメニューで **[ユーザーとグループ]** を選びます。
-
-    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
-4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
-
-5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-
-6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
-
-7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ## <a name="configure-egnyte-sso"></a>Egnyte の SSO の構成
 
@@ -167,23 +143,23 @@ Egnyte で Azure AD シングル サインオンを構成するには、次の�
 
 2. **[設定]** をクリックします。
    
-    ![設定](./media/egnyte-tutorial/ic787819.png "設定")
+    ![設定 1](./media/egnyte-tutorial/ic787819.png "設定")
 
-3. メニューで **[設定]** をクリックします。
+3. メニューで、[**設定**] をクリックします。
 
     ![設定](./media/egnyte-tutorial/ic787820.png "設定")
 
-4. **[構成]** タブをクリックし、 **[セキュリティ]** をクリックします。
+4. **[構成]** タブをクリックし、**[セキュリティ]** をクリックします。
 
-    ![Security](./media/egnyte-tutorial/ic787821.png "Security")
+    ![Security](./media/egnyte-tutorial/ic787821.png "セキュリティ")
 
-5. **[シングル サインオン認証]** セクションで、次の手順を実行します。
+5. **[シングル サインオン認証]** セクションで、以下の手順を実行します。
 
     ![シングル サインオン認証](./media/egnyte-tutorial/ic787822.png "シングル サインオン認証")   
     
-    a. **[シングル サインオン認証]** として **[SAML 2.0]** を選択します。
+    a. [**シングル サインオン認証**] として [**SAML 2.0**] を選択します。
    
-    b. **[ID プロバイダー]** として **[AzureAD]** を選択します。
+    b. [**Id プロバイダー**] として [**AzureAD**] を選択します。
    
     c. Azure portal からコピーした**ログイン URL** を **[ID プロバイダーのログイン URL]** テキスト ボックス内に貼り付けます。
    
@@ -191,9 +167,9 @@ Egnyte で Azure AD シングル サインオンを構成するには、次の�
       
     e. Azure Portal からダウンロードした base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして **[Identity provider certificate]\(ID プロバイダー証明書\)** ボックスに貼り付けます。
    
-    f. **[既定のユーザー マッピング]** として **[メール アドレス]** を選択します。
+    f. **[既定のユーザー マッピング]** として **[電子メール アドレス]** を選択します。
    
-    g. **[ドメイン固有の発行者の値を使用]** として **[無効]** を選択します。
+    g. **[ドメイン固有の発行者の値を使用]** として、**[無効]** を選択します。
    
     h. **[保存]** をクリックします。
 

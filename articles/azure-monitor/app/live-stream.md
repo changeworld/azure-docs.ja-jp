@@ -4,12 +4,12 @@ description: カスタム メトリックを使用して Web アプリをリア�
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: c12126c23ce1f1e2bd72f88eead5b8f34e4fd83d
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 1b8b4c43c559831810db9b92da6c2743556cd2ac
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142215"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973592"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream:1 秒の待機時間での監視と診断
 
@@ -148,7 +148,7 @@ Application Insights Telemetry だけでなく、Windows パフォーマンス �
 
 ライブ フィードの項目をクリックして詳細を表示します。 フィードを一時停止するには、 **[一時停止]** をクリックするか、下にスクロールするか、または項目をクリックします。 スクロールして上部に戻るか、一時停止されている間に収集された項目のカウンターをクリックすると、ライブ フィードが再開されます。
 
-![サンプリングされたライブ エラー](./media/live-stream/sample-telemetry.png)
+![スクリーンショットには、例外が選択され、ウィンドウの下部に例外の詳細が表示された [Sample telemetry]\(サンプル テレメトリ\) ウィンドウが示されています。](./media/live-stream/sample-telemetry.png)
 
 ## <a name="filter-by-server-instance"></a>サーバー インスタンスによるフィルター処理
 

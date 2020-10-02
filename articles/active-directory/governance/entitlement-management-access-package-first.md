@@ -16,12 +16,12 @@ ms.date: 07/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b79a631ba82d0b4a420ef27684e5a62571ddf85a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e58a98f8503c271eec113298a7e7a0cab5e0003e
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034578"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707494"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>チュートリアル:Azure AD エンタイトルメント管理で最初のアクセス パッケージを作成する
 
@@ -41,6 +41,8 @@ ms.locfileid: "87034578"
 最初のアクセス パッケージの作成など、Azure Active Directory のエンタイトルメント管理をデプロイするプロセスのステップバイステップのデモンストレーションについては、次のビデオを参照してください。
 
 >[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
+
+Microsoft Graph を使用して、プログラムでアクセス パッケージを作成することもできます。 プログラムでアクセス パッケージを作成する方法については、[エンタイトルメント管理 API](https://docs.microsoft.com/graph/tutorial-access-package-api?view=graph-rest-beta) に関するチュートリアルをご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -106,7 +108,7 @@ Azure AD エンタイトルメント管理を使用するには、次のいず�
 
 9. [グループの選択] ウィンドウで、前に作成した **Marketing resources** グループを見つけて選択します。
 
-    既定では、 **[標準]** カタログ内外のグループが表示されます。 **[標準]** カタログ外のグループを選択すると、 **[標準]** カタログに追加されます。
+     既定では、[標準] カタログ内のグループが表示されます。 **[すべて表示]** チェック ボックスをオンにすると表示される、[標準] カタログ外のグループを選択すると、それが [標準] カタログに追加されます。
 
     ![[New access package]\(新しいアクセス パッケージ\) - [Resource roles]\(リソース ロール\) タブ](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
 

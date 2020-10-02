@@ -1,6 +1,6 @@
 ---
 title: チュートリアル - Azure IoT Central でビデオ分析用 IoT Edge インスタンスを作成する (Linux VM)
-description: このチュートリアルでは、ビデオ分析 (物体とモーションの検出) アプリケーション テンプレートを使用して、ビデオ分析用 IoT Edge インスタンスを作成する方法について説明します。
+description: このチュートリアルでは、ビデオ分析 (物体とモーションの検出) アプリケーション テンプレートを使用して、ビデオ分析用 IoT Edge インスタンスを Linux VM に作成する方法について説明します。
 services: iot-central
 ms.service: iot-central
 ms.subservice: iot-central-retail
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 69e5b757036a2d68fa779e3fc232cc42a034e33c
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 0b39ec9c8cb70adac1474b2647ac1c9591b9d5cd
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88038017"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526393"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>チュートリアル:ビデオ分析用の IoT Edge インスタンスを作成する (Linux VM)
 

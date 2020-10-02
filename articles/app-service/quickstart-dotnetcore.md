@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 08/01/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 5604153d31a2828bcefbeccbd2f4fea428e878b5
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 95f877c9030d51e68b97a21875ff3ff05b383457
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961535"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973753"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>クイック スタート:Azure に ASP.NET Core Web アプリを作成する
 
@@ -137,7 +137,7 @@ Web アプリを管理するには、[Azure portal](https://portal.azure.com) �
 
 **[App Services]** ページで、Web アプリの名前を選択します。
 
-![Azure アプリへのポータル ナビゲーション](./media/quickstart-dotnetcore/select-app-service.png)
+:::image type="content" source="./media/quickstart-dotnetcore/select-app-service.png" alt-text="サンプル Web アプリが選択されている App Service ページのスクリーンショット。":::
 
 Web アプリの **[概要]** ページには、参照、停止、開始、再起動、削除などの基本的な管理のためのオプションが含まれています。 左側のメニューは、アプリを構成するためのさらなるページを示しています。
 
@@ -304,7 +304,7 @@ git push azure master
 
 左側のメニューで **[App Services]** をクリックしてから、お客様の Azure アプリの名前をクリックします。
 
-![Azure アプリへのポータル ナビゲーション](./media/quickstart-dotnetcore/portal-app-service-list.png)
+:::image type="content" source="./media/quickstart-dotnetcore/portal-app-service-list.png" alt-text="サンプル Web アプリが選択されている App Service ページのスクリーンショット。":::
 
 お客様のアプリの [概要] ページを確認します。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクを行うことができます。 
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Site Recovery を使用して Azure IaaS VM を別のリージョンに移動する
-description: Azure Site Recovery を使用して、異なる Azure リージョン間で Azure IaaS VM を移動します。
+title: Azure Site Recovery を使用して Azure VM を別の Azure リージョンに移動する
+description: Azure Site Recovery を使用して、Azure VM を異なる Azure リージョン間で移動します。
 services: site-recovery
 author: Sharmistha-Rai
 ms.service: site-recovery
@@ -8,20 +8,20 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: sharrai
 ms.custom: MVC
-ms.openlocfilehash: e8f14b86678f7d395f445438d7e869168b13e54b
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: f33d5ff37cbc9923262963b3e59b9266ea6760a6
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425927"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006416"
 ---
-# <a name="move-azure-vms-to-another-region"></a>Azure VM を別のリージョンに移動する
+# <a name="move-vms-to-another-azure-region"></a>VM を別の Azure リージョンに移動する
 
-既存の Azure IaaS 仮想マシン (VM) を別のリージョンに移動するシナリオには、さまざまなケースがあります。 たとえば、既存の VM の信頼性と可用性を高めるケースや、管理を容易にするケース、またガバナンス上の理由で移動するケースも考えられます。 詳細については、[Azure VM の移動の概要](azure-to-azure-move-overview.md)に関するページを参照してください。 
+既存の Azure IaaS 仮想マシン (VM) を異なるリージョン間で移動する必要が生じるさまざまなシナリオがあります。 たとえば、既存の VM の信頼性と可用性を高めるケースや、管理を容易にするケース、またガバナンス上の理由で移動するケースも考えられます。 詳細については、[Azure VM の移動の概要](azure-to-azure-move-overview.md)に関するページを参照してください。 
 
-[Azure Site Recovery](site-recovery-overview.md) サービスを使用すれば、オンプレミス マシンと Azure VM のディザスター リカバリーを管理および調整して、事業継続とディザスター リカバリー (BCDR) を実現できます。 Site Recovery を使用して、セカンダリ リージョンへの Azure VM の移動を管理することもできます。
+[Azure Site Recovery](site-recovery-overview.md) サービスを使用すると、Azure VM をセカンダリ リージョンに移動できます。
 
-このチュートリアルでは、次のことについて説明します。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > 
@@ -30,7 +30,19 @@ ms.locfileid: "89425927"
 > * データをコピーしてレプリケーションを有効にする
 > * 構成をテストして移動を実行する
 > * ソース リージョンのリソースを削除する
-> 
+
+
+> [!IMPORTANT]
+> Azure VM を別のリージョンに移動する場合、[Azure Resource Mover](../resource-mover/tutorial-move-region-virtual-machines.md) を使用することをお勧めします。 Resource Mover は、現在、パブリック プレビュー段階にあり、以下を実現します。
+> - 単一のハブを使用してリージョン間でリソースを移動できます。
+> - 移動時間と複雑さを軽減できます。 必要なものをすべて 1 か所にまとめることができます。
+> - シンプルかつ一貫性のあるエクスペリエンスによって、さまざまな種類の Azure リソースを移動できます。
+> - 移動するリソース間の依存関係を簡単に識別できます。 これにより、関連リソースをまとめて移動することができるため、移動後にすべてのリソースがターゲット リージョンで期待どおりに動作します。
+> - 移動後にソース リージョンのリソースを削除する場合は、自動的にクリーンアップされます。
+> - テスト。 移動を試してみて、完全に移動することは望まない場合は破棄することができます。
+
+
+
 > [!NOTE]
 > このチュートリアルでは、Azure VM をそのまま別のリージョンに移動する方法を説明しています。 可用性セット内の VM を別のリージョンのゾーン固定 VM に移動することによって可用性を高める必要がある場合は、[Azure VM を Availability Zones に移動するチュートリアル](move-azure-vms-avset-azone.md)を参照してください。
 

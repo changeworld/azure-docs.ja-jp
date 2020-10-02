@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/15/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 67016d930e2cc40ccf38e89c8dfc7700db7d3109
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7d249005e77328460a0e7152e0a3ff125857534b
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536719"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659481"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datava-enterprise-service-platform"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Datava Enterprise Service Platform の統合
 
@@ -35,9 +35,6 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * Datava Enterprise Service Platform でのシングルサインオン (SSO) が有効なサブスクリプション。
 
-> [!NOTE]
-> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
-
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
@@ -45,6 +42,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 * Datava Enterprise Service Platform では **SP** によって開始される SSO がサポートされます
 * Datava Enterprise Service Platform では、**Just In Time** ユーザー プロビジョニングがサポートされます
 * Datava Enterprise Service Platform を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+
+> [!NOTE]
+> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
 
 ## <a name="adding-datava-enterprise-service-platform-from-the-gallery"></a>ギャラリーからの Datava Enterprise Service Platform の追加
 
@@ -57,7 +57,7 @@ Azure AD への Datava Enterprise Service Platform の統合を構成するに�
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Datava Enterprise Service Platform**」と入力します。
 1. 結果パネルから **[Datava Enterprise Service Platform]** を選択して、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-datava-enterprise-service-platform"></a>Datava Enterprise Service Platform の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-datava-enterprise-service-platform"></a>Datava Enterprise Service Platform の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、Datava Enterprise Service Platform に対する Azure AD SSO を構成してテストします。 SSO を機能させるために、Azure AD ユーザーと Datava Enterprise Service Platform の関連ユーザーとの間にリンク関係を確立する必要があります。
 
@@ -84,7 +84,7 @@ Datava Enterprise Service Platform で Azure AD SSO を構成してテストす�
 
     a. **[サインオン URL]** ボックスに、`https://go.datava.com/<TENANT_NAME>` という形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、次の URL を入力します。`https://go.datava.com/saml/module.php/saml/sp/saml2-acs.php/azure-sp`
+    b. **[応答 URL]** ボックスに、URL として「`https://go.datava.com/saml/module.php/saml/sp/saml2-acs.php/azure-sp`」と入力します。
 
     > [!NOTE]
     > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Datava Enterprise Service Platform Client クライアント サポート チーム](mailto:support@datava.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -148,5 +148,3 @@ Datava Enterprise Service Platform で Azure AD SSO を構成してテストす�
 - [Azure AD で Datava Enterprise Service Platform を試す](https://aad.portal.azure.com/)
 
 - [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [高度な可視性と制御によって Datava Enterprise Service Platform を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

@@ -5,18 +5,18 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 77892cc9a05c569e431fb9c66c2f6eb92068b3af
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c3fd06e2ac399fa18b588b1db5e154eaf013753b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082422"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979485"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で Ruby および Postgres のアプリを構築する
 
 [Azure App Service](overview.md) は、非常にスケーラブルな、自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、Ruby アプリを作成し、PostgreSQL データベースに接続する方法について説明します。 このチュートリアルを終了すると、App Service on Linux で実行される [Ruby on Rails](https://rubyonrails.org/) アプリが完成します。
 
-![Azure App Service で動作している Ruby on Rails アプリ](./media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
+:::image type="content" source="./media/tutorial-ruby-postgres-app/complete-checkbox-published.png" alt-text="Tasks という Ruby on Rails サンプル アプリのスクリーンショット。":::
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -255,7 +255,7 @@ git commit -m "database.yml updates"
 
 ### <a name="configure-database-settings"></a>データベース設定を構成する
 
-App Service では、Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用して、環境変数を "_アプリ設定_" として設定します。
+App Service では、Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest&preserve-view=true#az-webapp-config-appsettings-set) コマンドを使用して、環境変数を "_アプリ設定_" として設定します。
 
 次の Cloud Shell コマンドでは、アプリ設定 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME`、および `DB_PASSWORD` を構成します。 プレースホルダーの _&lt;appname>_ と _&lt;postgres-server-name>_ を置き換えます。
 
@@ -316,7 +316,7 @@ remote: Running deployment command...
 
 `http://<app-name>.azurewebsites.net` を参照し、一覧にいくつかのタスクを追加します。
 
-![Azure App Service で動作している Ruby on Rails アプリ](./media/tutorial-ruby-postgres-app/ruby-postgres-in-azure.png)
+:::image type="content" source="./media/tutorial-ruby-postgres-app/ruby-postgres-in-azure.png" alt-text="Tasks という Ruby on Rails サンプル アプリのスクリーンショット。":::
 
 データ主導型の Ruby on Rails アプリが Azure App Service で実行されるようになりました。
 

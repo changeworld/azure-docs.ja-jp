@@ -1,14 +1,14 @@
 ---
 title: DoD 影響レベル 5 ブループリント サンプルのコントロール
 description: DoD 影響レベル 5 ブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy にマップされています。
-ms.date: 06/30/2020
+ms.date: 09/17/2020
 ms.topic: sample
-ms.openlocfilehash: a7d1439a73cf387cee773d558ced50ce1c07f6dc
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 456560a8042b239a4d53e1c309742650c00bfa6a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921318"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978356"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-5-blueprint-sample"></a>DoD 影響レベル 5 ブループリント サンプルのコントロール マッピング
 
@@ -307,11 +307,8 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 
 ## <a name="si-02-06-flaw-remediation--removal-of-previous-versions-of-software--firmware"></a>SI-02 (06) 欠陥の修復 | 以前のバージョンのソフトウェアおよびファームウェアの削除
 
-このブループリントでは、最新バージョンの .NET Framework、HTTP、Java、PHP、Python、および TLS がアプリに使用されていることの確認に役立つポリシー定義を割り当てます。 また、このブループリントは、Kubernetes サービスが脆弱性のないバージョンにアップグレードされることを保証するポリシー定義も割り当てます。
+このブループリントでは、最新バージョンの HTTP、Java、PHP、Python、および TLS がアプリに使用されていることの確認に役立つポリシー定義を割り当てます。 また、このブループリントは、Kubernetes サービスが脆弱性のないバージョンにアップグレードされることを保証するポリシー定義も割り当てます。
 
-- API アプリの一部として使用された ".NET Framework" のバージョンが最新であることを確認する
-- 関数アプリの一部として使用された ".NET Framework" のバージョンが最新であることを確認する
-- Web アプリの一部として使用された ".NET Framework" のバージョンが最新であることを確認する
 - API アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する
 - 関数アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する
 - Web アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する
@@ -319,7 +316,6 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 - 関数アプリの一部として使用された "Java のバージョン" が最新であることを確認する
 - Web アプリの一部として使用された "Java のバージョン" が最新であることを確認する
 - API アプリの一部として使用された "PHP のバージョン" が最新であることを確認する
-- 関数アプリの一部として使用された "PHP のバージョン" が最新であることを確認する
 - Web アプリの一部として使用された "PHP のバージョン" が最新であることを確認する
 - API アプリの一部として使用された "Python のバージョン" が最新であることを確認する
 - 関数アプリの一部として使用された "Python のバージョン" が最新であることを確認する

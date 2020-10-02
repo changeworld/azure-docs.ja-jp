@@ -3,12 +3,12 @@ title: Azure Application Insights からの Stream Analytics のエクスポー�
 description: Stream Analytics は、Application Insights からエクスポートされたデータを継続的に変換、フィルター処理、ルーティングできます。
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: d90b965ca65af0acf7032067c77591a2ac4d4b02
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e90daf2516b00f7a27ac47e34cfc4ace03fee6e2
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324354"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979181"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Application Insights からエクスポートされたデータを、Stream Analytics を使って処理する
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) は、[Application Insights からエクスポートされた](export-telemetry.md)データを処理するのに理想的なツールです。 Stream Analytics は、さまざまなソースからデータを取り込むことができます。 Stream Analytics は、データを変換してフィルター処理し、さまざまなシンクにルーティングできます。
@@ -196,7 +196,7 @@ FROM flat
 
 このデータセットを、 [Power BI](https://powerbi.microsoft.com)のレポートやダッシュボードで使用できるようになりました。
 
-![Power BI で、データセットとフィールドを選択します。](./media/export-stream-analytics/210.png)
+![スクリーンショットは、Power BI のデータセットから作成されたレポートの例を示しています。](./media/export-stream-analytics/210.png)
 
 ## <a name="no-data"></a>データが表示されない場合
 * [日付の書式が YYYY-MM-DD (ダッシュ付き) に正しく設定されている](#set-path-prefix-pattern) ことを確認してください。

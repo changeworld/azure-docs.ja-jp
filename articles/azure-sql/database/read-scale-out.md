@@ -10,18 +10,18 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
-ms.date: 06/26/2020
-ms.openlocfilehash: cf9f48b0907d3bfe1d07dcffcc0d0b9534f74c83
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.date: 09/03/2020
+ms.openlocfilehash: 2e7c931d6d99187b4ee7985be19374048c226312
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135898"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442192"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>読み取り専用レプリカを使用して読み取り専用クエリ ワークロードをオフロードする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-[高可用性アーキテクチャ](high-availability-sla.md#premium-and-business-critical-service-tier-availability)の一部として、Premium および Business Critical サービス レベルの各データベースとマネージド インスタンスは、1 つのプライマリ読み取り/書き込みレプリカと複数のセカンダリ読み取り専用レプリカを使用して自動的にプロビジョニングされます。 セカンダリ レプリカは、プライマリ レプリカと同じコンピューティング サイズでプロビジョニングされます。 "*読み取りスケールアウト*" 機能では、読み取り/書き込みレプリカ上で実行する代わりに、読み取り専用レプリカのいずれか 1 つのコンピューティング能力を使用して読み取り専用ワークロードをオフロードできます。 これにより、読み取り専用のワークロードを読み取り/書き込みワークロードから分離でき、パフォーマンスに影響が及ぶことがありません。 この機能は、分析などの論理的に分離された読み取り専用ワークロードを含むアプリケーション向けです。 Premium および Business Critical サービス レベルでは、余分なコストをかけることなく、この追加の処理能力を使用してパフォーマンス上のメリットをアプリケーションで得ることが可能です。
+[高可用性アーキテクチャ](high-availability-sla.md#premium-and-business-critical-service-tier-availability)の一部として、Premium および Business Critical サービス レベルの各単一データベース、エラスティック プール データベース、およびマネージド インスタンスは、1 つのプライマリ読み取り/書き込みレプリカと複数のセカンダリ読み取り専用レプリカを使用して自動的にプロビジョニングされます。 セカンダリ レプリカは、プライマリ レプリカと同じコンピューティング サイズでプロビジョニングされます。 "*読み取りスケールアウト*" 機能では、読み取り/書き込みレプリカ上で実行する代わりに、読み取り専用レプリカのいずれか 1 つのコンピューティング能力を使用して読み取り専用ワークロードをオフロードできます。 これにより、読み取り専用のワークロードを読み取り/書き込みワークロードから分離でき、パフォーマンスに影響が及ぶことがありません。 この機能は、分析などの論理的に分離された読み取り専用ワークロードを含むアプリケーション向けです。 Premium および Business Critical サービス レベルでは、余分なコストをかけることなく、この追加の処理能力を使用してパフォーマンス上のメリットをアプリケーションで得ることが可能です。
 
 また、少なくとも 1 つのセカンダリ レプリカが作成されている場合は、ハイパースケール サービス レベルで "*読み取りスケールアウト*" 機能を使用することもできます。 複数のセカンダリ レプリカを使用して、1 つのセカンダリ レプリカで利用可能なリソースよりも多くのリソースを必要とする読み取り専用ワークロードを負荷分散できます。
 

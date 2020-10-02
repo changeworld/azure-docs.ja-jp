@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/20/2019
-ms.openlocfilehash: d9d2f29ffc34c203e5f3b3ebf094e73fb9cdfb75
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: c802fafa92ace2260002f7156b0df9841af8338c
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132400"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029581"
 ---
 # <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>チュートリアル:Azure Logic Apps を使用して承認ベースの自動化されたワークフローを作成する
 
@@ -40,7 +40,7 @@ ms.locfileid: "87132400"
 
 * "test-members-ML" という名前のリストを含む MailChimp アカウント。ロジック アプリでは、承認されたメンバーの電子メール アドレスを追加できます。 アカウントがない場合は、[無料アカウントにサインアップ](https://login.mailchimp.com/signup/)して、[MailChimp リストの作成方法](https://us17.admin.mailchimp.com/lists/#)を確認してください。
 
-* 承認ワークフローに対応した Office 365 Outlook または Outlook.com のメール アカウント。 この記事では Office 365 Outlook を使います。 別のメール アカウントを使う場合、おおよその手順は変わりませんが、UI の表示がやや異なることがあります。
+* 承認ワークフローに対応した Microsoft 365 の Outlook または Outlook.com のメール アカウント。 この記事では Office 365 Outlook を使います。 別のメール アカウントを使う場合、おおよその手順は変わりませんが、UI の表示がやや異なることがあります。
 
 ## <a name="create-your-logic-app"></a>ロジック アプリを作成する
 

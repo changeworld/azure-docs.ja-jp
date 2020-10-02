@@ -232,6 +232,8 @@
               href: how-to-use-perfinsights.md
             - name: パフォーマンス診断拡張機能
               href: performance-diagnostics-vm-extension.md
+            - name: Azure Windows 仮想マシンの CPU が高い問題のトラブルシューティング
+              href: troubleshoot-high-cpu-issues-azure-windows-vm.md
         - name: Linux
           items:
             - name: PerfInsights を使用する方法

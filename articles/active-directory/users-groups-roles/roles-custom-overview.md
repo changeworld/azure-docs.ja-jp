@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory でのカスタム管理者ロール | Microsoft Docs
-description: ID 管理を委任するためのカスタム Azure AD ロールをプレビューします。 Azure portal、PowerShell、または Graph API で Azure ロールを管理します。
+description: ロールベースのアクセス制御とリソース スコープを使用する Azure Active Directory (Azure AD) での Azure AD カスタム ロールを理解する方法について説明します。
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e962bea893e8a658b876aabf417e64b11a31dfc1
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: aac8713affd56d011e5e1f5e9326de501fb3ce67
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033508"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975566"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Azure Active Directory でのカスタム管理者ロール (プレビュー)
 

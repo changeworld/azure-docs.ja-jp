@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/30/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 994d427fb91f04ea0d2002a2c95e12366f4c6420
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2f3e540174643f20c87396b8568f6e5b0a1ab16d
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553567"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658935"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-prezi"></a>チュートリアル:Azure Active Directory シングル サインオンと Prezi の統合
 
@@ -42,6 +42,9 @@ ms.locfileid: "88553567"
 * Prezi では、SP Initiated SSO と IDP Initiated SSO がサポートされます。
 * Prezi では、Just-In-Time ユーザー プロビジョニングがサポートされます。
 * Prezi を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 詳細については、[Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)に関するページを参照してください。
+
+> [!NOTE]
+> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
 
 ## <a name="add-prezi-from-the-gallery"></a>ギャラリーからの Prezi の追加
 
@@ -81,7 +84,7 @@ Azure portal で Azure AD SSO を有効にするには、次のようにしま�
 
 1. アプリケーションを **SP** Initiated モードで構成する場合は、 **[追加の URL を設定します]** を選択して次の手順を実行します。
 
-    **[サインオン URL]** ボックスに、URL の「`https://prezi.com/login/sso/`」を入力します。
+    **[サインオン URL]** ボックスに、URL として「`https://prezi.com/login/sso/`」を入力します。
 
 1. **[保存]** を選択します。
 

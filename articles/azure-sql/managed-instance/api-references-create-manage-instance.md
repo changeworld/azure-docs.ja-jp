@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 8cc2930422bf644f217737d0f0ba585c243575ee
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4627c094c3913d01f06c237b133e1ed0ea4ed2e0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503006"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969793"
 ---
 # <a name="managed-api-reference-for-azure-sql-managed-instance"></a>Azure SQL Managed Instance のマネージド API リファレンス
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -44,6 +44,8 @@ Azure PowerShell を使用してマネージド インスタンスを作成お�
 |[Get-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstance)|マネージド インスタンスに関する情報を返します。|
 |[Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)|マネージド インスタンスのプロパティを設定します。|
 |[Remove-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance)|マネージド インスタンスを削除します。|
+|[Get-AzSqlInstanceOperation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstanceoperation)|マネージド インスタンスまたは特定の操作で実行された管理操作の一覧を取得します。|
+|[Stop-AzSqlInstanceOperation](https://docs.microsoft.com/powershell/module/az.sql/stop-azsqlinstanceoperation)|マネージド インスタンスで実行された特定の管理操作を取り消します。|
 |[New-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstancedatabase)|SQL Managed Instance データベースを作成します。|
 |[Get-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabase)|SQL Managed Instance データベースに関する情報を返します。|
 |[Remove-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabase)|SQL Managed Instance データベースを削除します。|
@@ -63,6 +65,9 @@ Azure PowerShell を使用してマネージド インスタンスを作成お�
 |[az sql mi show](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-show)|マネージド インスタンスの詳細を取得します。|
 |[az sql mi update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)|マネージド インスタンスを更新します。|
 |[az sql mi delete](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-delete)|マネージド インスタンスを削除します。|
+|[az sql mi op list](https://docs.microsoft.com/cli/azure/sql/mi/op#az_sql_mi_op_list)|マネージド インスタンス上で実行された管理操作の一覧を取得します。|
+|[az sql mi op show](https://docs.microsoft.com/cli/azure/sql/mi/op#az_sql_mi_op_show)|マネージド インスタンスで実行された特定の管理操作を取得します。|
+|[az sql mi op cancel](https://docs.microsoft.com/cli/azure/sql/mi/op#az_sql_mi_op_cancel)|マネージド インスタンスで実行された特定の管理操作を取り消します。|
 |[az sql midb create](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-create) |マネージド データベースを作成します。|
 |[az sql midb list](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-list)|使用可能なマネージド データベースを一覧表示します。|
 |[az sql midb restore](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-restore)|マネージド データベースを復元します。|
@@ -80,8 +85,8 @@ Azure PowerShell を使用してマネージド インスタンスを作成お�
 
 | コマンド | 説明 |
 | --- | --- |
-|[CREATE DATABASE](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current)|SQL Managed Instance に新しいインスタンス データベースを作成します。 新しいデータベースを作成するには、master データベースに接続している必要があります。|
-| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) |SQL Managed Instance のインスタンス データベースを変更します。|
+|[CREATE DATABASE](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true)|SQL Managed Instance に新しいインスタンス データベースを作成します。 新しいデータベースを作成するには、master データベースに接続している必要があります。|
+| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true) |SQL Managed Instance のインスタンス データベースを変更します。|
 
 ## <a name="rest-api-create-and-configure-managed-instances"></a>REST API:マネージド インスタンスを作成して構成する
 
@@ -95,6 +100,9 @@ Azure PowerShell を使用してマネージド インスタンスを作成お�
 |[Managed Instances - List](https://docs.microsoft.com/rest/api/sql/managedinstances/list)|サブスクリプション内のマネージド インスタンスの一覧を返します。|
 |[Managed Instances - List By Resource Group](https://docs.microsoft.com/rest/api/sql/managedinstances/listbyresourcegroup)|リソース グループ内のマネージド インスタンスの一覧を取得します。|
 |[Managed Instances - Update](https://docs.microsoft.com/rest/api/sql/managedinstances/update)|マネージド インスタンスを更新します。|
+|[Managed Instance の操作 - Managed Instance 別に一覧表示](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/listbymanagedinstance)|マネージド インスタンス上で実行された管理操作の一覧を取得します。|
+|[Managed Instance の操作 - 取得](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/get)|マネージド インスタンスで実行された特定の管理操作を取得します。|
+|[Managed Instance の操作 - キャンセル](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/cancel)|マネージド インスタンスで実行された特定の管理操作を取り消します。|
 
 ## <a name="next-steps"></a>次のステップ
 

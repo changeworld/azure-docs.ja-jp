@@ -4,14 +4,14 @@ description: Azure Monitor のメトリック警告に関する一般的な問�
 author: harelbr
 ms.author: harelbr
 ms.topic: reference
-ms.date: 08/13/2020
+ms.date: 09/14/2020
 ms.subservice: alerts
-ms.openlocfilehash: 1c1fe613721ea2bc2d4b9665d6da73b094487efc
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: b0e39982b3d62e0ef722a139024b499efc254f5f
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190668"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068764"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Monitor のメトリック警告に関する問題のトラブルシューティング 
 
@@ -234,7 +234,7 @@ Resource Manager テンプレート、REST API、PowerShell、または Azure �
 - メトリック警告ルール名は、作成後に変更できません
 - メトリック警告ルール名はリソース グループ内で一意である必要があります
 - メトリック警告ルール名に次の文字を含めることはできません: * # & +: < >? @ % { } \ / 
-- メトリック警告ルール名の末尾の文字を . にすることはできません
+- メトリック警告ルール名の末尾の文字をスペースやピリオドにすることはできません
 
 
 ## <a name="restrictions-when-using-dimensions-in-a-metric-alert-rule-with-multiple-conditions"></a>複数の条件を含むメトリック警告ルールでディメンションを使用する場合の制限事項

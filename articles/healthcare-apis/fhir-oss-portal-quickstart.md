@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 7fa119db0c974c93aff667060d153b21b8de16bb
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 57ab6bca820c4c25a9a56e4a801aa7d917d317ec
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843489"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978588"
 ---
 # <a name="quickstart-deploy-open-source-fhir-server-using-azure-portal"></a>クイック スタート:Azure portal を使用してオープンソースの FHIR サーバーをデプロイする
 
@@ -25,17 +25,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [GitHub デプロイ ページ](https://github.com/Microsoft/fhir-server/blob/master/docs/DefaultDeployment.md)に移動し、[Deploy to Azure]\(Azure へのデプロイ\) ボタンを探します。
 
-![オープンソース デプロイ ページ](media/quickstart-oss-portal/deployment-page-oss.png)
+>[!div class="mx-imgBorder"]
+>![オープンソース デプロイ ページ](media/quickstart-oss-portal/deployment-page-oss.png)
 
 デプロイ ボタンをクリックすると、Azure portal が開きます。
 
 ## <a name="fill-in-deployment-parameters"></a>デプロイのパラメーターを入力する
 
-リソース グループの新規作成を選択し、名前を付けます。 それ以外で必要なパラメーターは、サービスの名前だけです。
+リソース グループの新規作成を選択し、名前を付けます。 それ以外で必要なパラメーターは、サービスの名前と Sql Admin のパスワードだけです。
 
-![カスタム デプロイのパラメーター](media/quickstart-oss-portal/deployment-custom-parameters.png)
-
-このデプロイでは、GitHub 上のオープンソース リポジトリから直接ソース コードがプルされることに注意してください。 リポジトリをフォークした場合は、自分のフォークと特定のブランチをポイントすることができます。
+>[!div class="mx-imgBorder"]
+>![カスタム デプロイのパラメーター](media/quickstart-oss-portal/deployment-custom-parameters.png)
 
 詳細を入力したら、デプロイを開始することができます。
 

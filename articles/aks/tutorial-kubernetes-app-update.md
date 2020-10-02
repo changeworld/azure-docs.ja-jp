@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.custom: mvc
-ms.openlocfilehash: d5457d790cd3c95bb23ec0c517097b443a2389ed
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e9981f9df31f6de21262aedc9790dbf1a7725fc7
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77593378"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985349"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションの更新
 
@@ -64,7 +64,7 @@ docker-compose up --build -d
 
 更新後のコンテナー イメージに変更内容が反映されていることを確認するために、ローカル Web ブラウザーで `http://localhost:8080` を開きます。
 
-![Azure 上の Kubernetes クラスターの図](media/container-service-kubernetes-tutorials/vote-app-updated.png)
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated.png" alt-text="ローカル Web ブラウザーとローカル ホストを使用して Azure Voting App によって開かれた、更新されたコンテナー イメージの例を示すスクリーンショット。":::
 
 実行中のアプリケーションに、*config_file.cfg* ファイルで指定した更新後の値が表示されます。
 
@@ -145,7 +145,7 @@ kubectl get service azure-vote-front
 
 次に、ローカル Web ブラウザーを開き、サービスの IP アドレスに移動します。
 
-![Azure 上の Kubernetes クラスターの図](media/container-service-kubernetes-tutorials/vote-app-updated-external.png)
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated-external.png" alt-text="ローカル Web ブラウザーとローカル ホストを使用して Azure Voting App によって開かれた、更新されたコンテナー イメージの例を示すスクリーンショット。":::
 
 ## <a name="next-steps"></a>次のステップ
 

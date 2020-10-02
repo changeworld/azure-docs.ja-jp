@@ -1,6 +1,6 @@
 ---
 title: 具体化されたビューを使用したパフォーマンスのチューニング
-description: 具体化されたビューを使用したクエリ パフォーマンスの向上に関して知っておくべき推奨事項と考慮事項
+description: 具体化されたビューを使用したクエリ パフォーマンスの向上に関して知っておくべき推奨事項と考慮事項について説明します。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: e624cf343209af722bfd007bd66a5e48b56eaff2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 7c7109999d478121ba0251de8e7470bc0f38d64c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956391"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984117"
 ---
 # <a name="performance-tune-with-materialized-views"></a>具体化されたビューを使用したパフォーマンスのチューニング
 
@@ -52,7 +52,7 @@ SQL プールでは、標準ビューと具体化されたビューがサポー�
 
 SQL プールに実装されている具体化されたビューには、さらに次の追加の利点があります。
 
-他のデータ ウェアハウス プロバイダーと比較して、Azure SQL Data Warehouse に実装されている具体化されたビューには、さらに次の追加の利点があります。
+他のデータ ウェアハウス プロバイダーと比較して、Azure Synapse Analytics に実装されている具体化されたビューには、さらに次の追加の利点があります。
 
 - ベース テーブル内のデータ変更で自動的かつ同期的にデータが更新されます。 ユーザーによる操作は不要です。
 - 幅広い集計関数がサポートされます。 [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) に関するページを参照してください。

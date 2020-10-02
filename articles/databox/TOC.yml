@@ -72,12 +72,14 @@
                   href: data-box-system-requirements-rest.md
             - name: 制限を理解する
               href: data-box-limits.md
-            - name: Security
+            - name: セキュリティ
               items:
                 - name: セキュリティ ベースライン
                   href: security-baseline.md
                 - name: セキュリティを確認する
                   href: data-box-security.md
+            - name: ACL とメタデータの転送
+              href: data-box-file-acls-preservation.md
             - name: よく寄せられる質問
               href: data-box-faq.md
         - name: 方法

@@ -4,12 +4,12 @@ description: Application Insights で Web テストを設定します。 Web サ
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 6f9c5fa691456195943f97419c1175fd5b586878
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a5bee2da5059213e85e03d5a0e4df0ef88c26b03
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87310278"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986029"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>任意の Web サイトの可用性を監視する
 
@@ -78,7 +78,7 @@ Azure portal で、 **[リソースの作成]**  >  **[開発者ツール]**  > 
 
 数分後に、 **[更新]** をクリックすると、テスト結果が表示されます。
 
-![折れ線グラフ](./media/monitor-web-app-availability/availability-refresh-002.png)
+![スクリーンショットには、[更新] ボタンが強調表示された [可用性] ページが示されています。](./media/monitor-web-app-availability/availability-refresh-002.png)
 
 散布図には、診断テスト手順の詳細が含まれたテスト結果のサンプルが表示されます。 テスト エンジンは、失敗したテストの診断の詳細を格納します。 成功したテストの場合、診断の詳細は実行のサブセットに対して格納されます。 緑色/赤色の点の上にポインターを置くと、テスト、テスト名、および場所が表示されます。
 
