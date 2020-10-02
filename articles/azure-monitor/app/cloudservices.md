@@ -4,12 +4,12 @@ description: Application Insights で Web と worker ロールを効果的に監
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: 2de853655524e99e958f043b7801ee73e937e7ad
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 1662b45d8243217357d1e69124832c499d587812
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923859"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437328"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure クラウド サービス向けの Application Insights
 [Application Insights][start] では、Application Insights SDK からのデータとお客様のクラウド サービスからの [Azure 診断](../platform/diagnostics-extension-overview.md)データを組み合わせることで、[Azure クラウド サービス アプリ](https://azure.microsoft.com/services/cloud-services/)の可用性、パフォーマンス、障害、使用状況を監視できます。 アプリのパフォーマンスと効果に関するフィードバックが得られたら、各開発ライフサイクルにおける設計の方向性について、情報に基づいて選択できます。
@@ -66,6 +66,8 @@ Application Insights を使ってクラウド サービスを監視する最も�
 この状況を回避するには、お客様のシステムの各ビルド構成または "スタンプ" (開発、テスト、運用など) 用に別個のリソースを作成します。 各ビルド構成用のリソースを別個のリソース グループに配置します。 
 
 テレメトリを適切なリソースに送信するには、ビルド構成に応じて異なるインストルメンテーション キーを選択するように Application Insights SDK を設定できます。 
+
+さまざまな段階の[インストルメンテーション キーを動的に設定する](https://docs.microsoft.com/azure/azure-monitor/app/separate-resources#dynamic-ikey)方法について説明します。 
 
 ## <a name="create-an-application-insights-resource-for-each-role"></a>役割ごとに Application Insights リソースを作成する
 

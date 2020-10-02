@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 09/04/2020
 ms.author: kgremban
-ms.openlocfilehash: 4078d7e6c20571db2387cfd138ecb325fc3469e7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 21fde76dc5791030a7afa280e00642119cbe464c
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022090"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660048"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする
 
@@ -25,7 +25,7 @@ Azure IoT Edge ランタイムを使用すると、デバイスを IoT Edge デ�
 > [!NOTE]
 > Linux ソフトウェア リポジトリ内のパッケージは、各パッケージ (/usr/share/doc/*パッケージ名*) 内にあるライセンス条項の対象となります。 パッケージを使用する前に、ライセンス条項をお読みください。 インストールし、パッケージを使用すると、これらの条項に同意したものと見なされます。 ライセンス条項に同意しない場合は、パッケージを使用しないでください。
 
-## <a name="install-iot-edge-and-container-runtimes"></a>IoT Edge とコンテナーのランタイムをインストールする
+## <a name="install-container-runtime-and-iot-edge"></a>コンテナー ランタイムと IoT Edge をインストールする
 
 以下のセクションを使用して、最新バージョンの Azure IoT Edge ランタイムをデバイスにインストールします。
 
@@ -272,7 +272,7 @@ sudo iotedge list
 
 リソースに制約のあるデバイスでは、[トラブルシューティング ガイド](troubleshoot.md)に示されているように、*OptimizeForPerformance* 環境変数を *false* に設定することを強くお勧めします。
 
-ネットワークにプロキシ サーバーがある場合は、「[Configure an IoT Edge device to communicate through a proxy server](how-to-configure-proxy-support.md)」(プロキシ サーバー経由で通信するように IoT Edge デバイスを構成する) の手順に従ってください。
+デバイスで IoT Hub に接続できないときに、ネットワークにプロキシ サーバーがある場合は、「[IoT Edge デバイスを構成してプロキシ サーバー経由で通信する](how-to-configure-proxy-support.md)」の手順に従います。
 
 ### <a name="verify-your-linux-kernel-for-moby-compatibility"></a>Linux カーネルを確認して Moby の互換性を確保する
 
@@ -290,13 +290,15 @@ sudo iotedge list
 
 `apt-get install` を介して使用できない特定のバージョンの Azure IoT Edge ランタイムをインストールする場合は、このセクションの手順を使用します。 Microsoft パッケージのリストには、最近のバージョンとそのサブバージョンの限られたセットしか含まれていないので、これらの手順は、古いバージョンまたはリリース候補バージョンをインストールするユーザーが対象となります。
 
-curl コマンドを使用すると、IoT Edge GitHub リポジトリから直接、コンポーネント ファイルをターゲットにすることができます。 libiothsm と IoT Edge セキュリティ デーモンをインストールするには、次の手順に従います。 「[コンテナー ランタイムをインストールする](#install-a-container-runtime)」セクションの手順に従って、Moby エンジンと CLI をインストールします。
+curl コマンドを使用すると、IoT Edge GitHub リポジトリから直接、コンポーネント ファイルをターゲットにすることができます。 libiothsm と IoT Edge セキュリティ デーモンをインストールするには、次の手順に従います。
 
-1. [Azure IoT Edge リリース](https://github.com/Azure/azure-iotedge/releases)に移動し、対象とするリリース バージョンを見つけます。
+1. デバイスにコンテナー エンジンをインストールして準備します。 コンテナー エンジンを持っていない場合は、この記事の「[コンテナー ランタイムと IoT Edge をインストールする](#install-container-runtime-and-iot-edge)」セクションの手順に従って、Microsoft リポジトリの登録と Moby のインストールを実行します。
 
-2. そのバージョンの **[Assets]** セクションを展開します。
+2. [Azure IoT Edge リリース](https://github.com/Azure/azure-iotedge/releases)に移動し、対象とするリリース バージョンを見つけます。
 
-3. 各リリースには、IoT Edge セキュリティ デーモンと hsmlib の新しいファイルが必要です。 以下のコマンドを使用して、これらのコンポーネントを更新します。
+3. そのバージョンの **[Assets]** セクションを展開します。
+
+4. 各リリースには、IoT Edge セキュリティ デーモンと hsmlib の新しいファイルが必要です。 以下のコマンドを使用して、これらのコンポーネントを更新します。
 
    1. IoT Edge デバイスのアーキテクチャに対応する **libiothsm-std** ファイルを見つけます。 ファイル リンクを右クリックし、リンクのアドレスをコピーします。
 

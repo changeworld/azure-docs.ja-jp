@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor ブックの概要
-description: 作成済みのブックやパラメーター化されたカスタム ブックを使用して複雑なレポート作成を簡素化します。
+description: Azure portal 内でデータを分析し、高度な視覚的レポートを作成するためのブックの柔軟なキャンバスについて説明します。
 author: mrbullwinkle
 manager: carmonm
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: mbullwin
-ms.openlocfilehash: 1d85f011289bfa27bcf1e94d8da8cd7a32092c2c
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: d6ac552640b4a557c51b674624e6a4493241e0ed
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799567"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90977566"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor ブック
 
@@ -43,12 +43,13 @@ ms.locfileid: "87799567"
 
 ブックには、データを視覚化するための豊富な機能セットが用意されています。 各視覚化の種類の詳細な例については、以下の例のリンクを参照してください。
 
-* [[テキスト]](workbooks-visualizations.md#text)
-* [グラフ](workbooks-visualizations.md#charts)
-* [グリッド](workbooks-visualizations.md#grids)
-* [タイル](workbooks-visualizations.md#tiles)
-* [ツリー](workbooks-visualizations.md#trees)
-* [グラフ](workbooks-visualizations.md#graphs)
+* [[テキスト]](workbooks-text-visualizations.md)
+* [グラフ](workbooks-chart-visualizations.md)
+* [グリッド](workbooks-grid-visualizations.md)
+* [タイル](workbooks-tile-visualizations.md)
+* [ツリー](workbooks-tree-visualizations.md)
+* [グラフ](workbooks-graph-visualizations.md)
+* [複合棒グラフ](workbooks-composite-bar.md)
 
 ![ブックの視覚化の例](./media/workbooks-overview/visualizations.png)
 
@@ -86,9 +87,9 @@ ms.locfileid: "87799567"
 
 ### <a name="editing-mode"></a>編集モード
 
-このブック テンプレートがどのように構成されているかを理解するには、 **[編集]** を選択して編集モードに切り替える必要があります。 
+このブック テンプレートがどのように構成されているかを理解するには、 **[編集]** を選択して編集モードに切り替える必要があります。
 
-![アプリケーションの障害分析テンプレートのスクリーンショット](./media/workbooks-overview/edit.png)
+![ブックの [編集] ボタンのスクリーンショット。](./media/workbooks-overview/edit.png)
 
 編集モードに切り替えると、ブックの個々の側面に対応する多数の **[編集]** ボックスが右側に表示されます。
 

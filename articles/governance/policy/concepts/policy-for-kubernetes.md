@@ -3,12 +3,12 @@ title: プレビュー - Kubernetes 用の Azure Policy について学習する
 description: Azure Policy で Rego および Open Policy Agent を使用して、Azure 内またはオンプレミスで Kubernetes を実行しているクラスターを管理する方法について説明します。 これはプレビュー機能です。
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: e9da5caf13994e1c198345958feec43867c0b5f5
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: a824548cb45f886bcf82bedad6e5d5c216bb7fea
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509877"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645596"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Kubernetes 用の Azure Policy について理解する (プレビュー)
 
@@ -57,13 +57,13 @@ Azure Policy アドオンをインストールするか、このサービスの�
 
      1. **Microsoft.ContainerService** と **Microsoft.PolicyInsights** リソース プロバイダーに登録します。 手順については、「[リソース プロバイダーと種類](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)」を参照してください。
 
-     1. Azure portal 上で **[すべてのサービス]** をクリックし、 **[ポリシー]** を検索して選択し、Azure Policy サービスを起動します。
+     1. Azure portal で **[すべてのサービス]** を選択し、 **[Policy]** を検索して選択することで、Azure Policy サービスを起動します。
 
-        :::image type="content" source="../media/policy-for-kubernetes/search-policy.png" alt-text="[すべてのサービス] で [ポリシー] を検索する" border="false":::
+        :::image type="content" source="../media/policy-for-kubernetes/search-policy.png" alt-text="[すべてのサービス] で [Policy] を検索する操作のスクリーンショット。" border="false":::
 
      1. Azure Policy ページの左側にある **[プレビューに参加する]** を選択します。
 
-        :::image type="content" source="../media/policy-for-kubernetes/join-aks-preview.png" alt-text="AKS プレビューのポリシーに参加する" border="false":::
+        :::image type="content" source="../media/policy-for-kubernetes/join-aks-preview.png" alt-text="[すべてのサービス] で [Policy] を検索する操作のスクリーンショット。" border="false":::
 
      1. プレビューに追加するサブスクリプションの行を選択します。
 
@@ -120,17 +120,17 @@ Azure Policy アドオンをインストールするか、このサービスの�
 
 - Azure portal
 
-  1. Azure portal で **[すべてのサービス]** をクリックし、 **[Kubernetes サービス]** を検索して選択することによって AKS サービスを起動します。
+  1. Azure portal で **[すべてのサービス]** を選択し、 **[Kubernetes サービス]** を検索して選択することで AKS サービスを起動します。
 
   1. お使いのいずれかの AKS クラスターを選択します。
 
   1. [Kubernetes サービス] ページの左側の **[ポリシー (プレビュー)]** を選択します。
 
-     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="AKS クラスターからのポリシー定義" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="[すべてのサービス] で [Policy] を検索する操作のスクリーンショット。" border="false":::
 
   1. メイン ページで、 **[アドオンを有効にする]** ボタンを選択します。
 
-     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="AKS 用の Azure Policy アドオンを有効にする":::
+     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="[すべてのサービス] で [Policy] を検索する操作のスクリーンショット。":::
 
      <a name="migrate-from-v1"></a>
      > [!NOTE]
@@ -460,17 +460,17 @@ AKS クラスターから Azure Policy アドオンを削除するには、Azure
 
 - Azure portal
 
-  1. Azure portal で **[すべてのサービス]** をクリックし、 **[Kubernetes サービス]** を検索して選択することによって AKS サービスを起動します。
+  1. Azure portal で **[すべてのサービス]** を選択し、 **[Kubernetes サービス]** を検索して選択することで AKS サービスを起動します。
 
   1. Azure Policy アドオンを無効にする AKS クラスターを選択します。
 
   1. [Kubernetes サービス] ページの左側の **[ポリシー (プレビュー)]** を選択します。
 
-     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="AKS クラスターからのポリシー定義" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="[すべてのサービス] で [Policy] を検索する操作のスクリーンショット。" border="false":::
 
   1. メイン ページで、 **[アドオンを無効にする]** ボタンを選択します。
 
-     :::image type="content" source="../media/policy-for-kubernetes/disable-policy-add-on.png" alt-text="AKS 用の Azure Policy アドオンを無効にする" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/disable-policy-add-on.png" alt-text="[すべてのサービス] で [Policy] を検索する操作のスクリーンショット。" border="false":::
 
 - Azure CLI
 

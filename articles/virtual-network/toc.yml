@@ -95,6 +95,8 @@
           href: public-ip-security-baseline.md
     - name: Security
       items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
         - name: ネットワーク セキュリティ グループ
           items:
             - name: 概要

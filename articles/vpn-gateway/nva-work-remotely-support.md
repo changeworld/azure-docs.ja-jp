@@ -5,14 +5,14 @@ services: vpn-gateway
 author: scottnap
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 03/21/2020
+ms.date: 09/08/2020
 ms.author: scottnap
-ms.openlocfilehash: 8a22e8f0bde2d13b4055566d96680fadc2db6e11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4783016e472907392f2d379efa0fed2d90ed21bc
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80337092"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595361"
 ---
 # <a name="working-remotely-network-virtual-appliance-nva-considerations-for-remote-work"></a>リモートでの作業：リモート作業でのネットワーク仮想アプライアンス (NVA) に関する考慮事項
 
@@ -52,6 +52,8 @@ Azure Marketplace のすべての主要な NVA ベンダーは、ソリューシ
 主要な NVA パートナーの多くは、COVID-19 パンデミック中における予期せぬ急激な増加に対応したスケーリングに関するガイダンスをすでに投稿しました。 パートナー リソースへの便利なリンクをいくつか紹介します。
 
 [Barracuda で、COVID-19 パンデミック中にデータを保護しながら自宅からの作業が可能に](https://www.barracuda.com/covid-19/work-from-home "COVID-19 パンデミック中にデータを保護しながら自宅からの作業が可能に")
+
+[コロナウイルスが蔓延している間、Check Point によってリモート ワークフォースをセキュリティで保護する](https://www.checkpoint.com/solutions/secure-remote-workforce-during-coronavirus/ "コロナウイルスが蔓延している間、リモート ワークフォースをセキュリティで保護する")
 
 [COVID-19 への備えとしての Cisco AnyConnect 実装とパフォーマンス/スケーリングの参考情報](https://www.cisco.com/c/en/us/support/docs/security/anyconnect-secure-mobility-client/215331-anyconnect-implementation-and-performanc.html "COVID-19 への備えとしての Cisco AnyConnect 実装とパフォーマンス/スケーリングの参考情報")
 

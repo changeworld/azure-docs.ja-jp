@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: f382e3cf0f5d2d60c2868c6698b1ea901fbac023
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: a5f4ff3dade381cf1a68ac5e9e820be153acf5ee
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121444"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483747"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Azure VM における SQL Server についてよく寄せられる質問
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -164,6 +164,9 @@ ms.locfileid: "88121444"
 
    はい。 SQL Server インストール メディアは、 **C** ドライブ上のフォルダーにあります。 その場所から、 **Setup.exe** を実行して、新しい SQL Server インスタンスを追加するか、またはコンピューター上の SQL Server の他のインストールされている機能を変更します。 一部の機能 (自動バックアップ、自動修正、Azure Key Vault の統合など) は、既定のインスタンスまたは正しく構成された名前付きインスタンス (質問 3 を参照) でしか動作しないので注意が必要です。 [Azure ハイブリッド特典によるソフトウェア アシュアランス](licensing-model-azure-hybrid-benefit-ahb-change.md)、または**従量課金制**ライセンス モデルをご利用のお客様は、余分なライセンス コストを発生させることなく、仮想マシンに複数の SQL Server インスタンスをインストールすることができます。 追加の SQL Server インスタンスは、正しく構成されていなければ、システム リソースに負荷がかかる場合があります。 
 
+1. **1 つの VM 上のインスタンスの最大数とは**
+   SQL Server 2012 から SQL Server 2019 では、スタンドアロン サーバー上で [50 のインスタンス](/sql/sql-server/editions-and-components-of-sql-server-version-15#RDBMSSP)をサポートできます。 これは、Azure でもオンプレミスでも同じ制限です。 環境をより適切に準備する方法については、[ベスト プラクティス](performance-guidelines-best-practices.md#multiple-instances)を参照してください。 
+
 1. **SQL Server の既定のインスタンスをアンインストールできますか?**
 
    はい。ただし、考慮事項がいくつかあります。 まず、VM のライセンス モデルによっては、SQL Server 関連の請求が引き続き発生することがあります。 2 つ目に、前出の回答で述べたように、[SQL Server IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)に依存する機能があります。 IaaS 拡張機能を削除せずに既定のインスタンスをアンインストールすると、拡張機能が既定のインスタンスを探し続けるために、イベント ログ エラーが生成される可能性があります。 これらのエラーは次の 2 つのソースから発生します:**Microsoft SQL Server Credential Management**、**Microsoft SQL Server IaaS Agent**。 エラーの例を次に示します。
@@ -179,6 +182,9 @@ ms.locfileid: "88121444"
 1. **SQL Server VM から SQL Server を完全に削除できますか?**
 
    はい。ただし、[SQL Server Azure VM の価格に関するガイダンス](pricing-guidance.md)のページで説明されているように、SQL Server VM に対して引き続き課金されます。 SQL Server が不要になった場合は、新しい仮想マシンをデプロイし、データとアプリケーションを新しい仮想マシンに移行してから、 SQL Server 仮想マシンを削除してください。
+
+1. **Azure portal を利用し、同じ VM で複数のインスタンスを管理できますか?**
+   いいえ。 ポータル管理は、SQL Server IaaS Agent 拡張機能に依存する SQL VM リソース プロバイダーによって提供されます。 そのため、拡張機能と同じ制限がリソース プロバイダーに適用されます。 ポータルでは、正しく構成されている場合に限り、既定のインスタンスまたは名前付きインスタンスを 1 つだけ管理できます。 詳細については、[SQL Server IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)に関するページをご覧ください。 
    
 ## <a name="updating-and-patching"></a>更新プログラムと修正プログラムの適用
 

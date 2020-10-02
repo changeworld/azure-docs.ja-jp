@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: e5862daa21f8bf0075bb1dee567cbe887ec32d72
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 6d77855f095c59b47156af735f4581076ce5a09c
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653275"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611633"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server を使用したフェールオーバー クラスター インスタンス
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -66,7 +66,7 @@ Azure VM 上の SQL Server には、SQL Server フェールオーバー クラ�
 **利点**: 
 - 高可用性とディザスター リカバリー (HADR) のアーキテクチャをそのまま維持しながら Azure に移行することを検討しているアプリケーションに役立ちます。 
 - SCSI 永続的な予約 (SCSI PR) のサポートにより、クラスター化されたアプリケーションをそのまま Azure に移行できます。 
-- すべてのバージョンの SQL Server に対して共有 Azure Premium SSD が、SQL Server 2019 に対して共有 Azure Ultra Disk Storage がサポートされます。 
+- 共有された Azure Premium SSD と Azure Ultra Disk storage がサポートされます。
 - 1 つの共有ディスクを使用することも、複数の共有ディスクをストライプして共有記憶域プールを作成することもできます。 
 - FileStream がサポートされます。
 
@@ -153,10 +153,11 @@ Azure Virtual Machines 上の SQL Server を使用するフェールオーバー
 
 完全拡張機能では、自動バックアップ、パッチ適用、高度なポータル管理などの機能がサポートされます。 エージェントを軽量管理モードで再インストールすると、これらの機能は SQL Server VM で動作しなくなります。
 
-### <a name="msdtc"></a>MSDTC   
-Azure Virtual Machines では、クラスター化共有ボリューム (CSV) および [Azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) 上の記憶域を備えた Windows Server 2019 で、MSDTC がサポートされています。
+### <a name="msdtc"></a>MSDTC 
 
-Azure Virtual Machines では、次の理由により、Windows Server 2016 以前では MSDTC がサポートされていません。
+Azure Virtual Machines では、クラスター共有ボリューム (CSV) と [Azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) 上のストレージを使用する Windows Server 2019、または Azure 共有ディスクを使用する SQL Server VM で、Microsoft 分散トランザクション コーディネーター (MSDTC) がサポートされます。 
+
+Azure Virtual Machines では、次の理由により、クラスター共有ボリュームを使用する Windows Server 2016 以前では、MSDTC はサポートされません。
 
 - クラスター化された MSDTC リソースは、共有ストレージを使用するように構成することはできません。 Windows Server 2016 では、MSDTC リソースを作成した場合、ストレージが使用可能であっても、使用可能な共有ストレージは 1 つも表示されません。 この問題は、Windows Server 2019 で修正済みです。
 - Basic Load Balance は、RPC ポートを処理しません。

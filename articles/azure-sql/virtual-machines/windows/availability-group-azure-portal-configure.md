@@ -13,12 +13,12 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 46e2563b0d1c26c984616b523a367c8b2cff7aaa
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4020f47184e141a69586fc958f641547d7bde94d
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89026093"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482801"
 ---
 # <a name="configure-an-availability-group-for-sql-server-on-azure-vm-azure-portal---preview"></a>Azure VM 上で SQL Server の可用性グループを構成する (Azure portal - プレビュー)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -67,16 +67,14 @@ Azure portal を使用してクラスターを構成します。 新しいクラ
 
 1. クラスターに名前を付け、クラウド監視として使用するストレージ アカウントを指定します。 既存のストレージ アカウントを使用するか、 **[新規作成]** を選択して新しいストレージ アカウントを作成します。 ストレージ アカウント名は、長さが 3 文字から 24 文字で、数字と小文字だけを使用できます。
 
-   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-1.png" alt-text="クラスターの名前、ストレージ アカウント、および資格情報を指定する":::
+   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-1.png" alt-text="ポータルで [+ new cluster]\(+ 新しいクラスター\) を選択して新しいクラスターを作成する":::
 
 1. **[Windows Server Failover Cluster credentials]\(Windows Server フェールオーバー クラスターの資格情報\)** を展開して、SQL Server サービス アカウントの[資格情報](https://docs.microsoft.com/rest/api/sqlvm/sqlvirtualmachinegroups/createorupdate#wsfcdomainprofile)を指定し、さらにクラスター オペレーターとブートストラップ アカウントが SQL Server サービスに使用されるアカウントとは異なる場合は、これらも指定します。 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-2.png" alt-text="SQL サービス アカウント、クラスター オペレーター アカウント、およびクラスター ブートストラップ アカウントの資格情報を入力する":::
+   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-2.png" alt-text="ポータルで [+ new cluster]\(+ 新しいクラスター\) を選択して新しいクラスターを作成する"
+    ```
+    
 
-1. クラスターに追加する SQL Server VM を選択します。 再起動が必要かどうかを確認し、慎重に進めてください。 完全管理モードで SQL VM リソース プロバイダーに登録され、プライマリ SQL Server VM と同じ場所、ドメイン、および同じ仮想ネットワーク上にある VM だけが表示されます。 
-1. **[適用]** を選択してクラスターを作成します。 
-
-デプロイの状態は、上部のナビゲーション バーにあるベルのアイコンからアクセスできる **[アクティビティ ログ]** で確認できます。 
 
 ### <a name="onboard-existing-cluster"></a>既存のクラスターのオンボード
 
@@ -89,10 +87,12 @@ SQL Server VM 環境でクラスターがすでに構成されている場合は
 1. **[設定]** の **[高可用性]** を選択します。 
 1. **[Onboard existing Windows Server Failover Cluster]\(既存の Windows Server フェールオーバー クラスターのオンボード\)** を選択して **[Onboard Windows Server Failover Cluster]\(Windows Server フェールオーバー クラスターのオンボード\)** ページを開きます。 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/onboard-existing-cluster.png" alt-text="SQL 仮想マシン リソースの [高可用性] ページから既存のクラスターをオンボードする":::
+   :::image type="content" source="media/availability-group-az-portal-configure/onboard-existing-cluster.png" alt-text="ポータルで [+ new cluster]\(+ 新しいクラスター\) を選択して新しいクラスターを作成する":::
 
 1. クラスターの設定を確認します。 
 1. **[適用]** を選択してクラスターをオンボードし、プロンプトで **[はい]** を選択して続行します。
+
+
 
 
 ## <a name="create-availability-group"></a>可用性グループを作成する
@@ -104,21 +104,21 @@ SQL Server VM 環境でクラスターがすでに構成されている場合は
 1. **[設定]** の **[高可用性]** を選択します。 
 1. **[+ New Always On availability group]\(+ 新しい Always On 可用性グループ\)** を選択して **[Create availability group]\(可用性グループの作成\)** ページを開きます。
 
-   :::image type="content" source="media/availability-group-az-portal-configure/create-new-availability-group.png" alt-text="[new always on availability group]\(新しい Always On 可用性グループ\) を選択して [Create availability group]\(可用性グループの作成\) ページを開く。":::
+   :::image type="content" source="media/availability-group-az-portal-configure/create-new-availability-group.png" alt-text="ポータルで [+ new cluster]\(+ 新しいクラスター\) を選択して新しいクラスターを作成する":::
 
 1. 可用性グループの名前を入力します。 
 1. **[Configure listener]\(リスナーの構成\)** を選択して **[可用性グループのリスナーの構成]** ページを開きます。 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/create-availability-group.png" alt-text="可用性グループの名前を指定してリスナーを構成する":::
+   :::image type="content" source="media/availability-group-az-portal-configure/create-availability-group.png" alt-text="ポータルで [+ new cluster]\(+ 新しいクラスター\) を選択して新しいクラスターを作成する":::
 
 1. 値を入力し、既存のロード バランサーを使用するか、 **[新規作成]** を選択して新しいロード バランサーを作成します。  **[適用]** を選択して設定を保存し、リスナーとロード バランサーを作成します。 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-listener.png" alt-text="フォームに値を入力して、新しいリスナーとロード バランサーを作成する":::
+   :::image type="content" source="media/availability-group-az-portal-configure/configure-new-listener.png" alt-text="ポータルで [+ new cluster]\(+ 新しいクラスター\) を選択して新しいクラスターを作成する":::
 
 1. **[+ Select replica]\(+ レプリカの選択\)** を選択して、 **[Configure availability group replicas]\(可用性グループ レプリカの構成\)** ページを開きます。
 1. 可用性グループに追加する仮想マシンを選択し、ビジネス ニーズに最適な可用性グループの設定を選択します。 **[適用]** を選択して設定を保存します。 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/add-replicas.png" alt-text="可用性グループに追加する VM を選択し、ビジネスに適した設定を構成する":::
+   :::image type="content" source="media/availability-group-az-portal-configure/add-replicas.png" alt-text="ポータルで [+ new cluster]\(+ 新しいクラスター\) を選択して新しいクラスターを作成する":::
 
 1. 可用性グループの設定を確認し、 **[適用]** を選択して可用性グループを作成します。 
 
@@ -140,7 +140,7 @@ SQL Server Management Studio を使用して可用性グループにデータベ
 1. **オブジェクト エクスプローラー**で **[Always On 高可用性]** を展開します。
 1. **[可用性グループ]** を展開し、可用性グループを右クリックして、 **[データベースの追加...]** を選択します。
 
-   :::image type="content" source="media/availability-group-az-portal-configure/add-database.png" alt-text="オブジェクト エクスプローラーで可用性グループを右クリックし、データベースを追加するよう選択":::
+   :::image type="content" source="media/availability-group-az-portal-configure/add-database.png" alt-text="ポータルで [+ new cluster]\(+ 新しいクラスター\) を選択して新しいクラスターを作成する":::
 
 1. プロンプトに従って、可用性グループに追加するデータベースを選択します。 
 1. **[OK]** を選択して設定を保存し、データベースを可用性グループに追加します。 
@@ -148,7 +148,7 @@ SQL Server Management Studio を使用して可用性グループにデータベ
 
 データベースを追加した後は、Azure portal で可用性グループの状態を確認できます。 
 
-:::image type="content" source="media/availability-group-az-portal-configure/healthy-availability-group.png" alt-text="データベースが同期された後に Azure portal の [高可用性] ページから可用性グループの状態を確認する":::
+:::image type="content" source="media/availability-group-az-portal-configure/healthy-availability-group.png" alt-text="ポータルで [+ new cluster]\(+ 新しいクラスター\) を選択して新しいクラスターを作成する":::
 
 ## <a name="add-more-vms"></a>VM を追加する
 
@@ -159,7 +159,7 @@ SQL Server Management Studio を使用して可用性グループにデータベ
 1. **[設定]** の **[高可用性]** を選択します。 
 1. **[Windows Server フェールオーバー クラスターの構成]** を選択して **[Windows Server フェールオーバー クラスターの構成]** ページを開きます。 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/configure-existing-cluster.png" alt-text="[Windows Server フェールオーバー クラスターの構成] を選択してクラスターに VM を追する。":::
+   :::image type="content" source="media/availability-group-az-portal-configure/configure-existing-cluster.png" alt-text="ポータルで [+ new cluster]\(+ 新しいクラスター\) を選択して新しいクラスターを作成する":::
 
 1. **[Windows Server Failover Cluster credentials]\(Windows Server フェールオーバー クラスターの資格情報\)** を展開し、SQL Server サービス、クラスター オペレーター、およびクラスター ブートストラップ アカウントに使用するアカウントを入力します。 
 1. クラスターに追加する SQL Server VM を選択します。 
@@ -173,7 +173,7 @@ SQL Server Management Studio を使用して可用性グループにデータベ
 
 Azure portal の **[高可用性]** ページから、可用性グループの横にある省略記号 (...) を選択することで、可用性グループへの**レプリカの追加**、**リスナーの構成**、および**リスナーの削除**を行うことができます。 
 
-:::image type="content" source="media/availability-group-az-portal-configure/configure-listener.png" alt-text="可用性グループの横にある省略記号を選択し、[レプリカの追加] を選択して、可用性グループにレプリカを追加する。":::
+:::image type="content" source="media/availability-group-az-portal-configure/configure-listener.png" alt-text="ポータルで [+ new cluster]\(+ 新しいクラスター\) を選択して新しいクラスターを作成する":::
 
 ## <a name="remove-cluster"></a>クラスターの削除
 
@@ -191,7 +191,7 @@ az sql vm remove-from-group --name <VM1 name>  --resource-group <resource group 
 az sql vm remove-from-group --name <VM2 name>  --resource-group <resource group name>
 ```
 
-これらがクラスター内にある唯一の VM であった場合、クラスターは破棄されます。 削除された SQL Server VM とは別に、クラスター内に他の VM がある場合、他の VM は削除されず、クラスターは破棄されません。 
+これらがクラスター内にある VM のすべてであった場合、クラスターは破棄されます。 削除された SQL Server VM とは別に、クラスター内に他の VM がある場合、他の VM は削除されず、クラスターは破棄されません。 
 
 次に、SQL VM リソース プロバイダーからクラスターのメタデータを削除します。 
 
@@ -218,7 +218,7 @@ $sqlvm = Get-AzSqlVM -Name <VM Name> -ResourceGroupName <Resource Group Name>
    Update-AzSqlVM -ResourceId $sqlvm -SqlVM $sqlvm
 ```
 
-これらがクラスター内にある唯一の VM であった場合、クラスターは破棄されます。 削除された SQL Server VM とは別に、クラスター内に他の VM がある場合、他の VM は削除されず、クラスターは破棄されません。 
+これらがクラスター内にある VM のすべてであった場合、クラスターは破棄されます。 削除された SQL Server VM とは別に、クラスター内に他の VM がある場合、他の VM は削除されず、クラスターは破棄されません。 
 
 
 次に、SQL VM リソース プロバイダーからクラスターのメタデータを削除します。 
@@ -248,7 +248,7 @@ Remove-AzSqlVMGroup -ResourceGroupName "<resource group name>" -Name "<cluster n
 1. デプロイの詳細については、その目的のデプロイを選択してください。 
 
 
-   :::image type="content" source="media/availability-group-az-portal-configure/failed-deployment.png" alt-text="詳細については、その目的のデプロイを選択してください。" :::
+   :::image type="content" source="media/availability-group-az-portal-configure/failed-deployment.png" alt-text="ポータルで [+ new cluster]\(+ 新しいクラスター\) を選択して新しいクラスターを作成する" :::
 
 ### <a name="common-errors"></a>一般的なエラー
 

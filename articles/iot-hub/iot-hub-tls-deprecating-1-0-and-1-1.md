@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: 5c717a02c2008436617d16f08625a1cecc204340
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: fcf7620f53c9bfdb51eb62598f2c8b441574eca6
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849520"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006082"
 ---
 # <a name="deprecation-of-tls-10-and-11-in-iot-hub"></a>IoT Hub での TLS 1.0 と 1.1 の非推奨化
 
@@ -38,9 +38,9 @@ IoT Hub は、将来通知があるまで TLS 1.0/1.1 を引き続きサポー�
 * `TLS_RSA_WITH_AES_128_CBC_SHA`
 * `TLS_RSA_WITH_3DES_EDE_CBC_SHA`
 
-## <a name="tls-12-ciphers"></a>TLS 1.2 暗号
+## <a name="tls-12-cipher-suites"></a>TLS 1.2 暗号スイート
 
-[IoT Hub TLS 1.2 の推奨される暗号](iot-hub-tls-support.md#recommended-ciphers)に関する記事を参照してください。
+[IoT Hub TLS 1.2 暗号スイート](iot-hub-tls-support.md#cipher-suites)に関するページをご覧ください。
  
 ## <a name="customer-feedback"></a>カスタマー フィードバック
 

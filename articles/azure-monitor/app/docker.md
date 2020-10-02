@@ -3,12 +3,12 @@ title: Application Insights で Docker アプリケーションを監視する |
 description: Docker のパフォーマンス カウンター、イベント、および例外を、コンテナー化されたアプリからのテレメトリと共に Application Insights に表示できます。
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 1cbb2968fec68eb750ce3c9b6cac09f23a1d36c5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 272b4e8af7b1ed3d01d8af0979b56954585f795d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324422"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90977577"
 ---
 # <a name="monitor-docker-applications-in-application-insights-deprecated"></a>Application Insights で Docker アプリケーションを監視する (非推奨)
 
@@ -71,12 +71,12 @@ Docker タイルをクリックします。
 特に Docker エンジンで他のコンテナーを実行している場合は、Docker コンテナーから到着するデータがすぐに表示されます 。
 
 ### <a name="docker-container-events"></a>Docker コンテナーのイベント
-![例](./media/docker/13.png)
+![スクリーンショットには、[検索] の選択、診断の検索結果ウィンドウ、カスタム イベントからカスタム データの表示されたウィンドウを指す矢印が示されています。](./media/docker/13.png)
 
 個々のイベントを調べるには、 [[検索]](./diagnostic-search.md)をクリックします。 検索およびフィルターを使用して必要なイベントを探します。 イベントをクリックすると詳細情報が表示されます。
 
 ### <a name="exceptions-by-container-name"></a>コンテナー名別の例外
-![例](./media/docker/14.png)
+![スクリーンショットには、グラフが選択されたメトリック エクスプローラー ページと、右側に開いているグラフの詳細ウィンドウが示されています。](./media/docker/14.png)
 
 ### <a name="docker-context-added-to-app-telemetry"></a>アプリのテレメトリに追加された Docker コンテキスト
 AI SDK でインストルメント化されたアプリケーションから送信された要求テレメトリは、Docker コンテキストの情報でエンリッチされます。

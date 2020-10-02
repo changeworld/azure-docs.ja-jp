@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: a853a28cf7633b5e81bfec2865cc8dc91f2d2f40
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 59e064dc2b9d33bda966eb50544c8383b0394dd3
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903988"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566604"
 ---
 # <a name="translator-30-translate"></a>Translator 3.0:Translate
 
@@ -280,7 +280,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
     }
 ]
 ```
-応答は、前の例での応答に似ています。 言語自動検出が要求されたので、入力テキストで検出された言語に関する情報も含まれています。 
+応答は、前の例での応答に似ています。 言語自動検出が要求されたので、入力テキストで検出された言語に関する情報も含まれています。 言語自動検出は、入力テキストが長いほど、うまく機能します。
 
 ### <a name="translate-with-transliteration"></a>音訳を使用して翻訳する
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Disk Encryption と Azure AD アプリの前提条件 (以前のリリース)
-description: この記事では、IaaS VM 用に Microsoft Azure Disk Encryption を使用する場合の前提条件について説明します。
+description: この記事では、Linux VM 用の Azure Disk Encryption の補足情報と、Azure AD を使用した Azure Disk Encryption の追加の要件と前提条件について説明します。
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: c85d362f7295e8edef1b4070a779c6aa99c3991f
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b258d499c78aa5fb734cbee01fb753c292bf2678
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372639"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970878"
 ---
 # <a name="azure-disk-encryption-with-azure-active-directory-ad-previous-release"></a>Azure Active Directory (AD) での Azure Disk Encryption (以前のリリース)
 

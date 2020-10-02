@@ -50,6 +50,8 @@
       href: concepts-identity.md
     - name: セキュリティ
       items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
         - name: アプリケーションとクラスターのセキュリティ
           href: concepts-security.md
         - name: Azure Policy によるセキュリティ制御

@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 04a3499da15bc226fe2cada2283d7a115036a48c
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 4e17af8289c68ded282a9c4a9ca2d400d31ca30d
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318295"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602671"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>カスタマー マネージド キーを使用した Azure SQL Transparent Data Encryption
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -93,6 +93,10 @@ AKV の TDE 保護機能を使用するようにサーバーを構成すると�
 - キーは、"*有効*" 状態になっている必要があります。
 
 - キー コンテナーに既存のキーをインポートする場合は、サポートされているファイル形式 (.pfx、.byok、または. backup) で提供する必要があります。
+
+> [!NOTE]
+> Azure SQL では、マネージド HSM に格納されている RSA キーを TDE プロテクターとして使用できるようになりました。 この機能は**パブリック プレビュー**段階にあります。 Azure Key Vault Managed HSM は、フル マネージド、高可用性、シングル テナント、標準準拠を特徴とするクラウド サービスで、FIPS 140-2 レベル 3 適合の HSM を使用してクラウド アプリケーションの暗号化キーを保護することができます。 [マネージド HSM](https://aka.ms/mhsm) の詳細を参照してください。
+
 
 ## <a name="recommendations-when-configuring-customer-managed-tde"></a>カスタマー マネージド TDE を構成する際の推奨事項
 

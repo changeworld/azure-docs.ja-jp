@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: 4dced0e0597e4df2fe215c9f4b85e3e8defd92c3
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 1524e51fff64b00a798f15425973145feee730fe
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230383"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651654"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning の既知の問題とトラブルシューティング
 
@@ -173,7 +173,9 @@ ms.locfileid: "89230383"
 > [!WARNING]
 > Azure Machine Learning ワークスペースを別のサブスクリプションに移動したり、所有するサブスクリプションを新しいテナントに移動したりすることは、サポートされていません。 エラーの原因になります。
 
-* **Azure ポータル**:SDK またはポータルで共有リンクからワークスペースを直接表示した場合、拡張機能のサブスクリプション情報を含む通常の **[概要]** ページは表示できません。 また、別のワークスペースに切り替えることもできません。 別のワークスペースを表示する必要がある場合は、[Azure Machine Learning Studio](https://ml.azure.com) に直接移動し、そのワークスペース名を検索してください。
+* **Azure ポータル**: 
+  * SDK または Azure portal で共有リンクからワークスペースに直接移動する場合、拡張機能のサブスクリプション情報を含む標準の **[概要]** ページは表示できません。 このシナリオでは、別のワークスペースに切り替えることもできません。 別のワークスペースを表示するには、[Azure Machine Learning Studio](https://ml.azure.com) に直接移動し、そのワークスペース名を検索します。
+  * すべての資産 (データセット、実験、コンピューティングなど) は、[Azure Machine Learning Studio](https://ml.azure.com) でのみ使用できます。 Azure portal から使用することは "*できません*"。
 
 * **Azure Machine Learning スタジオの Web ポータルでサポートされているブラウザー**:オペレーティング システムと互換性のある最新ブラウザーを使うことをお勧めします。 次のブラウザーがサポートされています。
   * Microsoft Edge (新しい Microsoft Edge の最新バージョンです。 Microsoft Edge レガシではありません)。
@@ -239,7 +241,7 @@ ms.locfileid: "89230383"
     1. **[データセット モニター]** タブで、実験リンクを選択し、実行状態を確認します。  このリンクはテーブルの右端にあります。
     1. 実行が正常に完了したら、生成されているメトリックの数や警告メッセージがあるかどうかをドライバー ログで確認します。  実験をクリックしたら、 **[出力 + ログ]** タブでドライバー ログを見つけます。
 
-* SDK の `backfill()` 関数で予期された出力が生成されない場合は、認証の問題が原因である可能性があります。  この関数に渡す計算を作成するときに、`Run.get_context().experiment.workspace.compute_targets` を使用しないでください。  代わりに、次のような [ServicePrincipalAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) を使用して、その `backfill()` 関数に渡す計算を作成します。 
+* SDK の `backfill()` 関数で予期された出力が生成されない場合は、認証の問題が原因である可能性があります。  この関数に渡す計算を作成するときに、`Run.get_context().experiment.workspace.compute_targets` を使用しないでください。  代わりに、次のような [ServicePrincipalAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py&preserve-view=true) を使用して、その `backfill()` 関数に渡す計算を作成します。 
 
   ```python
    auth = ServicePrincipalAuthentication(
@@ -294,7 +296,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     Azure ML では、TensorFlow、PyTorch、Chainer、および SKLearn に対応するフレームワーク固有の Estimator も提供されています。 これらの Estimator を使用すると、ユーザーに代わって、トレーニングに使用される環境にコア フレームワークの依存関係が確実にインストールされます。 前述のように、追加の依存関係を指定することもできます。 
  
     Azure ML によって保守される docker イメージとそのコンテンツは、[AzureML のコンテナー](https://github.com/Azure/AzureML-Containers)内で確認できます。
-    フレームワーク固有の依存関係は、それぞれのフレームワークのドキュメント ([Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks)、[PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks)、[TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks)、[SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks)) に示されています。
+    フレームワーク固有の依存関係は、それぞれのフレームワークのドキュメント ([Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#&preserve-view=trueremarks)、[PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#&preserve-view=trueremarks)、[TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#&preserve-view=trueremarks)、[SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#&preserve-view=trueremarks)) に示されています。
 
     > [!Note]
     > 特定のパッケージが Azure ML によって保守されるイメージと環境に追加できるほど十分に一般的だと考えられる場合は、[AzureML のコンテナー](https://github.com/Azure/AzureML-Containers)に関するページで、GitHub の問題を作成してください。 
@@ -303,7 +305,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 * **Horovod がシャットダウンされている**:"AbortedError:Horovod がシャットダウンされました" に遭遇した場合のほとんどで、この例外は、プロセスの 1 つにおいて horovod のシャットダウンを引き起こす基となる例外が発生していたことを意味します。 MPI ジョブの各ランクでは、Azure ML 内にある固有の専用ログ ファイルが取得されます。 これらのログは、`70_driver_logs` という名前です。 分散トレーニングの場合、ログを区別しやすいようにログ名の末尾に `_rank` が付与されます。 実際に Horovod シャットダウンの原因となったエラーを見つけるには、すべてのログ ファイルを確認して、driver_log ファイルの末尾にある `Traceback` を探します。 これらのファイルの 1 つから、基になる実際の例外がわかります。 
 
-* **実行または実験の削除**:実験をアーカイブするには、[Experiment.archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#archive--) メソッドを使用するか、[Archive experiment]\(アーカイブ実験\) ボタンを介して Azure Machine Learning Studio クライアントの [実験] タブ ビューを使用します。 この操作により、実験はリスト クエリおよびビューから非表示になりますが、削除はされません。
+* **実行または実験の削除**:実験をアーカイブするには、[Experiment.archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#&preserve-view=truearchive--) メソッドを使用するか、[Archive experiment]\(アーカイブ実験\) ボタンを介して Azure Machine Learning Studio クライアントの [実験] タブ ビューを使用します。 この操作により、実験はリスト クエリおよびビューから非表示になりますが、削除はされません。
 
     個々の実験または実行を完全に削除することは現在サポートされていません。 ワークスペース アセットの削除の詳細については、「[Machine Learning service のワークスペース データをエクスポートまたは削除する](how-to-export-delete-data.md)」を参照してください。
 
@@ -337,6 +339,8 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     pip install --upgrade pandas==0.23.4
     pip install --upgrade scikit-learn==0.20.3
   ```
+ 
+* **R2 スコアの予測は常にゼロになります**。この問題は、指定されたトレーニング データに、最後の `n_cv_splits` + `forecasting_horizon` データポイントと同じ値を含む時系列がある場合に発生します。 時系列でこのパターンが想定される場合は、プライマリ メトリックを正規化された平均平方根誤差に切り替えることができます。
  
 * **TensorFlow**: SDK のバージョン 1.5.0 以降の自動機械学習では、TensorFlow モデルは既定ではインストールされません。 自動 ML 実験で TensorFlow をインストールして使用するには、CondaDependecies を使用して tensorflow==1.12.0 をインストールしてください。 
  

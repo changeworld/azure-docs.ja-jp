@@ -6,16 +6,20 @@ author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: 464bf650cbcaa99e947a21f5a87a5872f7b11178
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f0583af05ae7d8e365b50610bfb812ac7764f223
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326921"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602467"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>クイック スタート:Java Web プロジェクトで Application Insights を使う
 
-このクイックスタートでは、Application Insights を使用して、要求のインストルメント化、依存関係の追跡、およびパフォーマンス カウンターの収集を自動的に行い、パフォーマンスの問題と例外を診断し、ユーザーによるアプリの操作内容を追跡するコードを作成します。
+
+> [!IMPORTANT]
+> Java アプリケーションを監視する際に推奨される方法は、コードを変更せずに自動インストルメンテーションを使用することです。 [Application Insights Java 3.0 エージェント](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)のガイドラインに従ってください。
+
+このクイックスタートでは、Application Insights SDK を使用して、要求のインストルメント化、依存関係の追跡、およびパフォーマンス カウンターの収集を行い、パフォーマンスの問題と例外を診断し、ユーザーによるアプリの操作内容を追跡するコードを作成します。
 
 Application Insights は、ライブ アプリケーションのパフォーマンスと使用状況を把握するのに役立つ、Web 開発者向けの拡張可能な分析サービスです。 Application Insights は、Linux、Unix、Windows で動作する Java アプリをサポートします。
 
@@ -193,22 +197,10 @@ HTTP 要求データが概要ブレードに表示されます (表示されな�
 
     (このコンポーネントにより、パフォーマンス カウンターが有効になります。)
 
-## <a name="azure-app-service-config-spring-boot"></a>Azure App Service の構成 (Spring Boot)
+## <a name="azure-app-service-aks-vms-config"></a>Azure App Service、AKS、VM の構成
 
-Windows で動作する Spring Boot アプリでは、 Azure App Services での追加構成の実行を必要とします。 **web.config** を変更し、次の構成を追加します。
+Azure リソース プロバイダーのいずれかで実行されているアプリケーションを監視する際に最適で最も簡単な方法は、[Java 3.0 エージェント](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)を介して Application Insights の自動インストルメンテーションを使用することです。
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<configuration>
-    <system.webServer>
-        <handlers>
-            <add name="httpPlatformHandler" path="*" verb="*" modules="httpPlatformHandler" resourceType="Unspecified"/>
-        </handlers>
-        <httpPlatform processPath="%JAVA_HOME%\bin\java.exe" arguments="-Djava.net.preferIPv4Stack=true -Dserver.port=%HTTP_PLATFORM_PORT% -jar &quot;%HOME%\site\wwwroot\AzureWebAppExample-0.0.1-SNAPSHOT.jar&quot;">
-        </httpPlatform>
-    </system.webServer>
-</configuration>
-```
 
 ## <a name="exceptions-and-request-failures"></a>例外と要求エラー
 ハンドルされない例外と要求エラーは、Application Insights Web フィルターによって自動的に収集されます。

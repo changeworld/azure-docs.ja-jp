@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub X.509 セキュリティの概念 | Microsoft Docs
-description: 概念 - IoT デバイスの製造および認証における X.509 証明機関証明書を使用する価値を理解します。
+description: 概念 - IoT デバイスの製造および認証における X.509 証明機関証明書の価値を理解します。
 author: eustacea
 manager: arjmands
 ms.service: iot-hub
@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 3c7e1167b3326620863d35cb2d4b07235cbd5517
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4487772aba22f1ce577e6a0d8263ce1200b6345f
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61320522"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019905"
 ---
 # <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>IoT 業界における X.509 CA 証明書の概念理解
 
@@ -28,6 +28,8 @@ ms.locfileid: "61320522"
 * X.509 CA ベースの認証用に製造サプライ チェーンを設定する方法
 
 * X.509 CA で署名されたデバイスから IoT Hub に接続する方法
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-support-note](../../includes/iot-hub-include-x509-ca-signed-support-note.md)]
 
 ## <a name="overview"></a>概要
 
@@ -63,13 +65,13 @@ Company-X には、公的なルート証明機関から X.509 CA 証明書を購
 
 ### <a name="purchasing-an-x509-ca-certificate"></a>X.509 CA 証明書の購入
 
-CA 証明書を購入することで、既知のルート CA が IoT デバイスの接続時にデバイスの正当性を保証する信頼されたサード パーティとして機能するという利点が得られます。 Company-X は、Smart-X-Widget が IoT Hub に最初に接続した後にサード パーティ製の製品やサービスと対話することを考えている場合は、このオプションを選択します。
+CA 証明書を購入することで、既知のルート CA が IoT デバイスの接続時にデバイスの正当性を保証する信頼されたサード パーティとして機能するという利点が得られます。 Company-X は、Smart-X-Widget が IoT Hub に最初に接続された後にサード パーティの製品またはサービスを操作することを考えている場合は、このオプションを選択します。
 
 X.509 CA 証明書を購入するには、Company-X は、ルート証明書のサービス プロバイダーを選択する必要があります。 "ルート CA" という語句をインターネットで検索すると、良い手がかりが得られます。 ルート CA により、Company-X に対して、公開キーと秘密キーのペアの作成方法と、サービスの証明書署名要求 (CSR) の生成方法が示されます。 CSR は、証明機関からの証明書を申請する正式なプロセスです。 この購入の結果、証明機関の証明書として使用するための証明書を取得できます。 X.509 証明書の遍在性を考慮すると、この証明書は IETF の RFC 5280 標準に合わせて適切に書式設定されている可能性があります。
 
 ### <a name="creating-a-self-signed-x509-ca-certificate"></a>自己署名 X.509 CA 証明書の作成
 
-ルート証明機関のようなサード パーティの署名者が関与する点を除けば、購入プロセスと自己署名 X.509 CA 証明書の作成プロセスは似ています。 この例では、Company-X が、ルート証明機関に代わってその証明機関の証明書に署名します。 Company-X は、証明機関の証明書を購入する準備が整うまで、テスト目的でこのオプションを選択できます。 また、Company-X は、Smart-X-Widget が IoT Hub 以外のサード パーティのサービスに接続することを目的としていない場合に運用環境で自己署名 X.509 CA 証明書を使用することもあります。
+ルート証明機関のようなサード パーティの署名者が関与する点を除けば、購入と自己署名 X.509 CA 証明書の作成のプロセスは似ています。 この例では、Company-X が、ルート証明機関に代わってその証明機関の証明書に署名します。 Company-X は、証明機関の証明書を購入する準備が整うまで、テスト目的でこのオプションを選択できます。 また、Company-X は、Smart-X-Widget が IoT Hub 以外のサード パーティのサービスに接続することを目的としていない場合に、運用環境で自己署名 X.509 CA 証明書を使用することもあります。
 
 ## <a name="register-the-x509-certificate-to-iot-hub"></a>X.509 証明書を IoT Hub に登録する
 

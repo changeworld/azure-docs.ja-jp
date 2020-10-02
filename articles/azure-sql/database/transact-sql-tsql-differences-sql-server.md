@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/03/2018
-ms.openlocfilehash: c4c340282becf34ae34bf9e48bceeb86d68f237b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa10f97d0eb2f48e80d20f90a254c44c6e95a8e8
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345327"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436971"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>SQL Database への移行時に Transact-SQL の相違点を解決する
 
@@ -45,7 +45,7 @@ SQL Database でサポートされる機能とサポートされない機能の�
 「 [Azure SQL Database の機能の比較](features-comparison.md)」で説明されている、サポートされていない機能に関連する Transact-SQL ステートメントに加えて、次のステートメントとステートメントのグループはサポートされていません。 そのため、移行するデータベースが次の機能のいずれかを使用している場合は、T-SQL を再構築してこれらの T-SQL の機能とステートメントを取り除きます。
 
 - システム オブジェクトの照合順序
-- 接続関連:エンドポイント ステートメント。 SQL Database は Windows 認証をサポートしていませんが、同様の Azure Active Directory 認証はサポートしています。 いくつかの認証の種類には、最新バージョン の SSMS が必要です。 詳細については、[Azure Active Directory 認証を使用した SQL Database または Azure SQL Data Warehouse への接続](authentication-aad-overview.md)に関するページを参照してください。
+- 接続関連:エンドポイント ステートメント。 SQL Database は Windows 認証をサポートしていませんが、同様の Azure Active Directory 認証はサポートしています。 いくつかの認証の種類には、最新バージョン の SSMS が必要です。 詳細については、[Azure Active Directory 認証を使用した SQL Database または Azure Synapse Analytics (旧称 SQL Data Warehouse) への接続](authentication-aad-overview.md)に関するページを参照してください。
 - 3 部構成または 4 部構成の名前を使用したデータベース間クエリ (読み取り専用のデータベース間クエリは、[エラスティック データベース クエリ](elastic-query-overview.md)を使用してサポートされます)。
 - データベース間での所有権の継承、`TRUSTWORTHY` 設定
 - `EXECUTE AS LOGIN` 代わりに 'EXECUTE AS USER' を使用してください。
@@ -82,7 +82,7 @@ Transact-SQL の文法、使用方法、例の詳細については、Microsoft 
 
 ### <a name="about-the-applies-to-tags"></a>「適用先」タグについて
 
-Transact-SQL リファレンスには、SQL Server 2008 以降のバージョンに関連する記事が含まれています。 記事のタイトルの下にアイコン バーがあり、4 つの SQL Server プラットフォームを一覧表示し、適用性を示しています。 たとえば、可用性グループは SQL Server 2012 で導入されました。  [CREATE AVAILABILITY GROUP](https://msdn.microsoft.com/library/ff878399.aspx)  の記事では、そのステートメントが **SQL Server (2012 以降)** に適用されることが示されています。 このステートメントは、SQL Server 2008、SQL Server 2008 R2、Azure SQL Database、Azure SQL Data Warehouse、Parallel Data Warehouse には適用されません。
+Transact-SQL リファレンスには、SQL Server 2008 以降のバージョンに関連する記事が含まれています。 記事のタイトルの下にアイコン バーがあり、4 つの SQL Server プラットフォームを一覧表示し、適用性を示しています。 たとえば、可用性グループは SQL Server 2012 で導入されました。  [CREATE AVAILABILITY GROUP](https://msdn.microsoft.com/library/ff878399.aspx)  の記事では、そのステートメントが **SQL Server (2012 以降)** に適用されることが示されています。 このステートメントは、SQL Server 2008、SQL Server 2008 R2、Azure SQL Database、Azure Synapse Analytics (旧称 SQL Data Warehouse)、Parallel Data Warehouse には適用されません。
 
 場合によっては、記事にある一般的な項目を製品で使用できますが、製品間で若干の違いがあることがあります。 相違点は、必要に応じて記事の中で示されます。 場合によっては、記事にある一般的な項目を製品で使用できますが、製品間で若干の違いがあることがあります。 相違点は、必要に応じて記事の中で示されます。 たとえば、CREATE TRIGGER の記事は SQL Database で使用できます。 ただし、サーバー レベルのトリガーの **ALL SERVER** オプションは、SQL Database ではサーバー レベルのトリガーを使用できないことを示します。 代わりにデータベース レベルのトリガーを使用します。
 

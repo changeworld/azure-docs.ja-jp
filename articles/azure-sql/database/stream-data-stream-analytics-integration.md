@@ -11,12 +11,12 @@ author: ajetasin
 ms.author: ajetasi
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 945e9019d75f9597d89a63c9322cbd4a8d502f15
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 7f3ae912b12f85be16d3df49dc10c022358f3af8
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869866"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437073"
 ---
 # <a name="stream-data-into-azure-sql-database-using-azure-stream-analytics-integration-preview"></a>Azure Stream Analytics 統合を使用して Azure SQL Database にデータをストリーム配信する (プレビュー)
 
@@ -31,7 +31,7 @@ ms.locfileid: "88869866"
 - プレビュー データによる使いやすさの向上:イベント ソース (イベント ハブ/IoT ハブ) から受信したデータを選択したテーブルのコンテキストでプレビューできます
 
 > [!IMPORTANT]
-> Azure Stream Analytics ジョブは、Azure SQL Database、Azure SQL Managed Instance、または Azure Synapse Analytics (以前の Azure SQL Data Warehouse) に出力できます。 詳細については、「[出力](../../stream-analytics/sql-database-output.md)」を参照してください。
+> Azure Stream Analytics ジョブは、Azure SQL Database、Azure SQL Managed Instance、または Azure Synapse Analytics (旧称 SQL Data Warehouse) に出力できます。 詳細については、「[出力](../../stream-analytics/stream-analytics-define-outputs.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

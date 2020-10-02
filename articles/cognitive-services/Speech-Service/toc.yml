@@ -581,8 +581,6 @@
     - name: サポート
       displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'
       href: support.md
-    - name: リージョン
-      href: regions.md
     - name: Swagger ドキュメント
       href: swagger-documentation.md
     - name: ソブリン クラウド

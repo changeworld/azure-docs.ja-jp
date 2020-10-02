@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2020
 ms.author: allensu
-ms.openlocfilehash: 55a86eeee4f819955e3f8adfcc0f55f24d58bed0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 541aa7da3e804931c1793e455bcbfca83c809dae
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420313"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669178"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Standard Load Balancer と可用性ゾーン
 
@@ -67,7 +67,7 @@ Azure Standard Load Balancer は、可用性ゾーンのシナリオをサポー
   <img src="./media/az-zonal/zonal-lb-1.svg" alt="Figure depicts three zonal standard load balancers each directing traffic in a zone to three different subnets in a zonal configuration." width="512" title="Virtual Network NAT">
 </p>
 
-*図:ゾーン冗長ロード バランサー*
+*図:ゾーン ロード バランサー*
 
 これらの概念を組み合わせる (同じバックエンドでゾーン冗長とゾーン ベースを使う) 場合は、[Azure Load Balancer での複数のフロントエンド](load-balancer-multivip-overview.md)に関するページをご覧ください。
 

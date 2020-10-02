@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4a7132221d2db58e4dea0e41f2761f4f395b9632
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: ffd374f650140b5b65988578756b25f5d0fb21cc
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401403"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657357"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure Machine Learning の Azure セキュリティ ベースライン
 
@@ -28,7 +28,7 @@ Microsoft Azure Machine Learning の Azure セキュリティ ベースライン
 
 Azure Firewall を使用して、Azure Machine Learning ワークスペースとパブリック インターネットへのアクセスを制御できます。
 
-- [分離された仮想ネットワークで実験と推論を安全に実行する方法](how-to-enable-virtual-network.md)
+- [仮想ネットワークの分離とプライバシーの概要](how-to-network-security-overview.md)
 
 - [Azure Firewall の内側で Azure Machine Learning のワークスペースを使用する](how-to-access-azureml-behind-firewall.md)
 
@@ -58,7 +58,7 @@ Azure Firewall を使用して、Azure Machine Learning ワークスペースと
 
 - [TLS を使用して Azure Machine Learning による Web サービスをセキュリティで保護する](how-to-secure-web-service.md)
 
-- [プライベート仮想ネットワークでのトレーニング中 &amp; 推論中のネットワークの分離](how-to-enable-virtual-network.md)
+- [仮想ネットワークの分離とプライバシーの概要](how-to-network-security-overview.md)
 
 **Azure Security Center の監視**: 適用外
 
@@ -122,7 +122,7 @@ Azure Machine Learning service では、複雑さが最小限になるように�
 
 - [サービス タグの使用に関する詳細](../virtual-network/service-tags-overview.md)
 
-- [Azure Machine Learning 仮想ネットワークの場合](how-to-enable-virtual-network.md)
+- [仮想ネットワークの分離とプライバシーの概要](how-to-network-security-overview.md)
 
 **Azure Security Center の監視**: 適用外
 
@@ -326,7 +326,7 @@ Azure AD PowerShell モジュールを使用してアドホック クエリを�
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3: 専用管理者アカウントを使用する
 
-**ガイダンス**: Azure Machine Learning では、新しいワークスペースの作成時に 3 つの既定のロールが提供されます。所有者アカウントの使用に関する標準的な操作手順を作成します。
+**ガイダンス**:Azure Machine Learning では、新しいワークスペースの作成時に 3 つの既定のロールが提供され、所有者アカウントの使用に関する標準的な操作手順が作成されます。
 
 また、Azure AD Privileged Identity Management および Azure Resource Manager を使用して、管理者アカウントへの Just-In-Time アクセスを有効にすることもできます。 
 

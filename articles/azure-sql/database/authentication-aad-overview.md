@@ -11,18 +11,18 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 04/23/2020
-ms.openlocfilehash: e1f97b1a29681a65cddf3a5904020555e903fe63
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 943569a16101ac170d01d08250b31ba67c0e590e
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984777"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434284"
 ---
 # <a name="use-azure-active-directory-authentication"></a>Azure Active Directory 認証を使用する
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Azure Active Directory (Azure AD) 認証は、Azure AD の ID を使用して Azure [SQL Database](sql-database-paas-overview.md)、[Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md)、[Azure Synapse Analytics (旧称 Azure SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に接続するメカニズムです。
+Azure Active Directory (Azure AD) 認証は、Azure AD の ID を使用して [Azure SQL Database](sql-database-paas-overview.md)、[Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md)、[Azure Synapse Analytics (旧称 SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に接続するメカニズムです。
 
 > [!NOTE]
 > この記事は、Azure SQL Database、SQL Managed Instance、Azure Synapse Analytics に当てはまります。

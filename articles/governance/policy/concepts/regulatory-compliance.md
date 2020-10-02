@@ -3,12 +3,12 @@ title: イニシアチブ定義の規制コンプライアンス
 description: イニシアチブ定義を使用して、アクセスの制御、構成管理などの規制ドメイン別にポリシーをグループ化する方法について説明します。
 ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 296febc1aad62d06c8e9dfcf4f285b16cacf0a40
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 15b03b5a40cba1290859b02883df70e3df54c5cf
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544623"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645534"
 ---
 # <a name="regulatory-compliance-in-azure-policy"></a>Azure Policy の規制コンプライアンス
 
@@ -33,18 +33,18 @@ Microsoft が責任を持つコントロールは、`type`[静的](./definition-
 
 新しいタブ **[コントロール]** がページに追加されます。 フィルター処理は**コンプライアンス ドメイン**ごとに使用でき、ポリシー定義は **policyMetadata** オブジェクトの `title` フィールドによってグループ化されます。 各行は**コントロール**を表します。コンプライアンスの状態、所属する**コンプライアンス ドメイン**、責任情報、およびその**コントロール**を構成する非準拠ポリシー定義と準拠ポリシー定義の数を示します。
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-overview.png" alt-text="NIST SP 800-53 R4 組み込み定義の規制コンプライアンスの概要のサンプル。":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-overview.png" alt-text="準拠しているコントロールと非準拠のコントロールを示す NIST SP 800-53 R4 の組み込み定義に関する法令遵守の概要のスクリーンショット。":::
 
 **コントロール**を選択すると、そのコントロールに関する詳細のページが開きます。 **概要**には、`description` と `requirements` の情報が含まれています。 **[ポリシー]** タブには、この**コントロール**に寄与する、イニシアチブに含まれる個々のポリシー定義がすべて含まれています。 **[リソース コンプライアンス]** タブには、現在表示されている**コントロール**のメンバー ポリシーによって評価される各リソースの詳細なビューが表示されます。
 
 > [!NOTE]
 > **Microsoft による管理**の評価タイプは、[静的](./definition-structure.md#type)ポリシー定義 `type` です。
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-policies.png" alt-text="NIST SP 800-53 R4 の組み込み定義のシステムおよび通信保護ドメインの境界保護制御における規制コンプライアンス ポリシー定義のサンプル。":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-policies.png" alt-text="準拠しているコントロールと非準拠のコントロールを示す NIST SP 800-53 R4 の組み込み定義に関する法令遵守の概要のスクリーンショット。":::
 
 同じ**コントロール**のページで、 **[リソース コンプライアンス]** タブに変更すると、この**コントロール**のポリシー定義に含まれるすべてのリソースが表示されます。 フィルターは、名前または ID、コンプライアンスの状態、リソースの種類、場所に対して使用できます。
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-resources.png" alt-text="NIST SP 800-53 R4 の組み込み定義のシステムおよび通信保護ドメインの境界保護制御におけるポリシー定義に影響を受ける規制コンプライアンス リソースのサンプル。":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-resources.png" alt-text="準拠しているコントロールと非準拠のコントロールを示す NIST SP 800-53 R4 の組み込み定義に関する法令遵守の概要のスクリーンショット。":::
 
 ## <a name="regulatory-compliance-in-sdk"></a>SDK の規制コンプライアンス
 
@@ -66,7 +66,7 @@ Microsoft が責任を持つコントロールは、`type`[静的](./definition-
 
 ## <a name="next-steps"></a>次のステップ
 
-- [イニシアチブ定義の構造](./initiative-definition-structure.md)を参照します
+- [イニシアチブ定義の構造](./initiative-definition-structure.md)を参照してください
 - [Azure Policy のサンプル](../samples/index.md)を確認します。
 - 「[Policy の効果について](./effects.md)」を確認します。
 - [準拠していないリソースを修復する](../how-to/remediate-resources.md)方法を学習します。

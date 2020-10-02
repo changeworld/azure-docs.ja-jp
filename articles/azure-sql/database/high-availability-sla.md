@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 08/12/2020
-ms.openlocfilehash: 62dfa3214b86139a8f836b3d9bd72585653b7fa2
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 16e15976c6f09881b75dcec207833f48aa1c4e7a
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88189945"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437675"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance の高可用性
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -91,7 +91,7 @@ Hyperscale の高可用性の詳細については、「[ハイパースケー�
 
 ## <a name="accelerated-database-recovery-adr"></a>高速データベース復旧 (ADR)
 
-[高速データベース復旧 (ADR)](../accelerated-database-recovery.md) は、特に実行時間の長いトランザクションがある場合に、データベースの可用性を大幅に向上させる、新しいデータベース エンジン機能です。 ADR は現在、Azure SQL Database、Azure SQL Managed Instance、および Azure SQL Data Warehouse で使用できます。
+[高速データベース復旧 (ADR)](../accelerated-database-recovery.md) は、特に実行時間の長いトランザクションがある場合に、データベースの可用性を大幅に向上させる、新しいデータベース エンジン機能です。 ADR は、現時点では Azure SQL Database、Azure SQL Managed Instance、および Azure Synapse Analytics (旧称 SQL Data Warehouse) で使用できます。
 
 ## <a name="testing-application-fault-resiliency"></a>アプリケーションの障害回復性のテスト
 

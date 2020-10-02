@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c097c14406349d973e905fadb806cc159d9b16d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 113c11b749b42bbaf9e5e40cdf63623288997a92
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76722103"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440288"
 ---
 # <a name="agile-development-of-data-science-projects"></a>データ サイエンス プロジェクトのアジャイル開発
 
@@ -51,7 +51,7 @@ TDSP スプリント計画フレームワークには、よく使用される 4 
   
 - **タスク**:タスクは、特定のユーザー ストーリーを完了するために行う必要がある割り当て可能な作業項目です。 たとえば、ユーザー ストーリー "*データの取得*" のタスクは次のようになります。
   - SQL Server の資格情報を取得する
-  - SQL Data Warehouse にデータをアップロードする
+  - Azure Synapse Analytics にデータをアップロードする
   
 - **バグ**:バグは、タスクを完了するために修正しなければならない、既存のコードまたはドキュメントに存在する問題です。 バグの原因が作業項目の不足である場合、ユーザー ストーリーまたはタスクとしてエスカレートできます。 
 

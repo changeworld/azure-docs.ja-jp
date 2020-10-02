@@ -11,12 +11,14 @@ ms.author: jlian
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 2b1dc7873140f885ec3efac11dec5fbf6aab7aa9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+- fasttrack-edit
+- iot
+ms.openlocfilehash: 3e3dd49c622c1a35571fdb53af470789dc9a26bb
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81732573"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462039"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>分散トレース (プレビュー) を使用して Azure IoT の cloud-to-device メッセージをトレースする
 
@@ -307,10 +309,10 @@ Microsoft は、分散トレースのより広範な採用をサポートする�
 
 1. IoT デバイスでメッセージが生成されます。
 1. IoT デバイスは、このメッセージにトレース コンテキストを割り当てる必要があるかを (クラウドからサポートを受けて) 判断します。
-1. SDK によって、メッセージ作成タイムスタンプを格納する `tracestate` がメッセージ アプリケーション プロパティに追加されます。
+1. SDK によって、メッセージ作成タイムスタンプを格納する `tracestate` がメッセージ プロパティに追加されます。
 1. IoT デバイスによって、IoT Hub にメッセージが送信されます。
 1. メッセージが IoT Hub ゲートウェイに到着します。
-1. IoT Hub は、メッセージ アプリケーション プロパティで `tracestate` を探し、それが正しい形式であるかどうか確認します。
+1. IoT Hub で、メッセージ プロパティ内の `tracestate` が調べられ、それが正しい形式であるかどうか確認されます。
 1. そうである場合、IoT Hub によって、メッセージのグローバルに一意の `trace-id` ("ホップ" の場合は `span-id`) が生成され、それらが `DiagnosticIoTHubD2C` の操作で Azure Monitor 診断ログに記録されます。
 1. メッセージの処理が終了すると、IoT Hub によって別の `span-id` が生成され、`DiagnosticIoTHubIngress` の操作で既存の `trace-id` とともにそれが記録されます。
 1. メッセージに対してルーティングが有効になっている場合、IoT Hub はそれをカスタム エンドポイントに書き込み、同じ `trace-id` を持つ別の `span-id` をカテゴリ `DiagnosticIoTHubEgress` に記録します。

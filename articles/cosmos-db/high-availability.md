@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 8bae89e68e5a016dbdc10c763f1ea2daedece3c8
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: c357720c937a5b63944b7fc598eaff428f85bfb6
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605326"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706806"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Azure Cosmos DB での高可用性
 
@@ -62,7 +62,7 @@ Azure Cosmos アカウントが *N* 個の Azure リージョンに分散して�
 ### <a name="multi-region-accounts-with-a-single-write-region-read-region-outage"></a>単一書き込みリージョンで構成された複数リージョン アカウント (読み取りリージョン障害)
 
 - 読み取りリージョンの停止中、整合性レベルを使用しているか、3 つ以上の読み取りリージョンとの厳密な整合性を持つ Azure Cosmos アカウントでは、読み取りと書き込みの高可用性が維持されます。
-- 2 つ以下の読み取りリージョン (読み取りおよび書き込みリージョンを含む) との厳密な整合性を使用する Azure Cosmos アカウントでは、読み取りリージョンの停止時に書き込みを利用できませんが、残りのリージョンでは読み取りの可用性が維持されます。
+- 2 つ以下の読み取りリージョン (読み取りおよび書き込みリージョンを含む) との強力な整合性を使用する Azure Cosmos アカウントでは、読み取りリージョンの停止中は読み取りおよび書き込みの可用性が失われます。
 - 影響を受けるリージョンは自動的に切断され、オフラインとマークされます。 [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) は、読み取り呼び出しを、優先リージョンの一覧にある次の使用可能なリージョンにリダイレクトします。
 - 優先リージョンの一覧にあるいずれのリージョンも使用可能でない場合、呼び出しは自動的に現在の書き込みリージョンに戻ります。
 - 読み取りリージョン障害を処理するアプリケーション コードは、変更する必要はありません。 影響を受けた読み取りリージョンはオンラインに戻ると、現在の書き込みリージョンと自動的に同期され、読み取り要求に再び対応できるようになります。
@@ -125,7 +125,7 @@ az cosmosdb create \
 
 Azure Cosmos アカウントを作成するときに Azure portal を使用して、可用性ゾーンを有効にすることができます。 アカウントを作成するときは、必ず **[geo 冗長性]** 、 **[マルチ リージョン書き込み]** を有効にして、可用性ゾーンがサポートされているリージョンを選択します。
 
-:::image type="content" source="./media/high-availability/enable-availability-zones-using-portal.png" alt-text="Azure portal を使用して可用性ゾーンを有効にする"::: 
+:::image type="content" source="./media/high-availability/enable-availability-zones-using-portal.png" alt-text="物理的パーティション分割"::: 
 
 ## <a name="building-highly-available-applications"></a>高可用性アプリケーションの構築
 

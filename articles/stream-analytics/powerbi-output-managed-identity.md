@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/10/2020
-ms.openlocfilehash: 647ab275fb7f34ee9721e4f085df0d22048fc04d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 85925369da8fec83a613226fe248b396fd88105a
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044245"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613405"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>マネージド ID を使用して、Power BI に対して Azure Stream Analytics ジョブを認証する
 
@@ -155,7 +155,7 @@ Azure Resource Manager を使用すると、Stream Analytics ジョブのデプ�
 
 ## <a name="give-the-stream-analytics-job-access-to-your-power-bi-workspace"></a>Stream Analytics ジョブに Power BI ワークスペースへのアクセス権を付与する
 
-Stream Analytics ジョブが作成されたので、Power BI ワークスペースへのアクセス権を付与することができます。
+Stream Analytics ジョブが作成されたので、Power BI ワークスペースへのアクセス権を付与することができます。 ジョブにアクセス権を付与したら、ID が伝達されるまで数分待ちます。
 
 ### <a name="use-the-power-bi-ui"></a>Power BI UI を使用する
 

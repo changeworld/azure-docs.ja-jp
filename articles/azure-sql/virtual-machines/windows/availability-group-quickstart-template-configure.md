@@ -14,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1359acfb768f7ac2fa3527afd041595d313249d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d1dedfcd4a93446b615d84e86666059fd210c18
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669241"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485755"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Azure クイックスタート テンプレートを使用して Azure VM に SQL Server の可用性グループを構成する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -49,7 +49,7 @@ Azure クイックスタート テンプレートを使用して Always On 可�
 - SQL Server を制御するドメイン ユーザー アカウント。 
 
 
-## <a name="step-1-create-the-failover-cluster-and-join-sql-server-vms-to-the-cluster-by-using-a-quickstart-template"></a>手順 1:フェールオーバー クラスターを作成し、クイックスタート テンプレートを使用して SQL Server VM をクラスターに参加させる 
+## <a name="create-cluster"></a>クラスターの作成
 SQL Server VM が SQL VM のリソース プロバイダーに登録されたら、SQL Server VM を *SqlVirtualMachineGroups* に参加させることができます。 このリソースでは、Windows フェールオーバー クラスターのメタデータが定義されています。 メタデータには、バージョン、エディション、完全修飾ドメイン名、クラスターと SQL Server の両方を管理する Active Directory アカウント、クラウド監視としてのストレージ アカウントが含まれます。 
 
 SQL Server VM を *SqlVirtualMachineGroups* リソース グループに追加することで、Windows フェールオーバー クラスター サービスをブートストラップし、クラスターを作成します。次にそのクラスターに、それらの SQL Server VM を参加させます。 この手順は、**101-sql-vm-ag-setup** クイックスタート テンプレートで自動化されます。 以下の手順を使用して実装することができます。
@@ -83,13 +83,25 @@ SQL Server VM を *SqlVirtualMachineGroups* リソース グループに追加�
 > テンプレートのデプロイ中に指定された資格情報は、デプロイの期間中のみ保存されます。 デプロイが完了した後、これらのパスワードは削除されます。 クラスターに SQL Server VM をさらに追加する場合、それらを再度指定するように求められます。 
 
 
-## <a name="step-2-manually-create-the-availability-group"></a>手順 2:可用性グループを手動で作成する 
+
+## <a name="validate-cluster"></a>クラスターを検証する 
+
+Microsoft によってフェールオーバー クラスターがサポートされるためには、クラスター検証に合格する必要があります。 任意の方法 (リモート デスクトップ プロトコル (RDP) など) を使用して VM に接続し、先に進む前に、クラスターが検証に合格していることを確認します。 これに失敗すると、クラスターはサポートされていない状態のままになります。 
+
+フェールオーバー クラスター マネージャー (FCM) または次の PowerShell コマンドを使用して、クラスターを検証できます。
+
+   ```powershell
+   Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
+   ```
+
+
+## <a name="create-availability-group"></a>可用性グループを作成する 
 [SQL Server Management Studio](/sql/database-engine/availability-groups/windows/use-the-availability-group-wizard-sql-server-management-studio)、[PowerShell](/sql/database-engine/availability-groups/windows/create-an-availability-group-sql-server-powershell)、[Transact-SQL](/sql/database-engine/availability-groups/windows/create-an-availability-group-transact-sql) のいずれかを使用して、通常どおりに可用性グループを手動で作成します。 
 
 >[!IMPORTANT]
 > 手順 4 で **101-sql-vm-aglistener-setup** クイックスタート テンプレートによって自動的にそれが行われるため、この時点ではリスナーを "*作成しない*" でください。 
 
-## <a name="step-3-manually-create-the-internal-load-balancer"></a>手順 3:内部ロード バランサーを手動で作成する
+## <a name="create-load-balancer"></a>ロード バランサーの作成
 Always On 可用性グループ リスナーには、Azure Load Balancer の内部インスタンスが必要です。 内部ロード バランサーでは、より高速なフェールオーバーと再接続を可能にする可用性グループ リスナー用の "フローティング" IP アドレスが提供されます。 可用性グループ内の SQL Server VM が同じ可用性セットの一部である場合は、Basic ロード バランサーを使用できます。 それ以外の場合は、Standard ロード バランサーを使用する必要があります。 
 
 > [!IMPORTANT]
@@ -122,7 +134,7 @@ Always On 可用性グループ リスナーには、Azure Load Balancer の内�
 >[!IMPORTANT]
 > 各 SQL Server VM 用のパブリック IP リソースには、Standard Load Balancer と互換性のある Standard SKU が必要です。 VM のパブリック IP リソースの SKU を決定するには、 **[リソース グループ]** に移動し、SQL Server VM 用の **[パブリック IP アドレス]** リソースを選択し、 **[概要]** ウィンドウの **[SKU]** で値を見つけます。 
 
-## <a name="step-4-create-the-availability-group-listener-and-configure-the-internal-load-balancer-by-using-the-quickstart-template"></a>手順 4:クイックスタート テンプレートを使用して、可用性グループ リスナーを作成し、内部ロード バランサーを構成する
+## <a name="create-listener"></a>リスナーを作成する 
 
 **101-sql-vm-aglistener-setup** クイックスタート テンプレートを使用して、自動的に可用性グループ リスナーを作成し、内部ロード バランサーを構成します。 テンプレートでは、Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups/AvailabilityGroupListener リソースがプロビジョニングされます。 **101-sql-vm-aglistener-setup** クイック スタート テンプレートでは、SQL VM リソース プロバイダーを介して、以下の操作を行います。
 
@@ -159,9 +171,9 @@ Always On 可用性グループ リスナーには、Azure Load Balancer の内�
 1. デプロイを監視するには、上部のナビゲーション バナーの **[通知]** ベル アイコンからデプロイを選択するか、Azure portal で **[リソース グループ]** に移動します。 **[設定]** の **[デプロイ]** を選択し、**Microsoft.Template** のデプロイを選択します。 
 
 >[!NOTE]
->デプロイが途中で失敗した場合は、**101-sql-vm-aglistener-setup** クイックスタート テンプレートを再デプロイする前に、PowerShell を使用して、手動で[新たに作成されたリスナーを削除する](#remove-the-availability-group-listener)必要があります。 
+>デプロイが途中で失敗した場合は、**101-sql-vm-aglistener-setup** クイックスタート テンプレートを再デプロイする前に、PowerShell を使用して、手動で[新たに作成されたリスナーを削除する](#remove-listener)必要があります。 
 
-## <a name="remove-the-availability-group-listener"></a>可用性グループ リスナーを削除する
+## <a name="remove-listener"></a>リスナーを削除する
 テンプレートで構成された可用性グループ リスナーを後で削除する必要がある場合は、SQL VM リソース プロバイダーを経由する必要があります。 リスナーは SQL VM リソースプロバイダーを介して登録されるため、SQL Server Management Studio を使用して削除するだけでは十分ではありません。 
 
 最もよい方法は、PowerShell で次のコード スニペットを使用して、SQL VM リソース プロバイダーから削除することです。 そうすることで、SQL VM リソースプロバイダーから可用性グループ リスナー メタデータが削除されます。 また、可用性グループから物理的にリスナーが削除されます。 
@@ -175,19 +187,15 @@ Remove-AzResource -ResourceId '/subscriptions/<SubscriptionID>/resourceGroups/<r
 ## <a name="common-errors"></a>一般的なエラー
 このセクションでは、いくつかの既知の問題とその考えられる解決策について説明します。 
 
-### <a name="availability-group-listener-for-availability-group-ag-name-already-exists"></a>可用性グループ '\<AG-Name>' の可用性グループ リスナーが既に存在する
-Azure クイックスタート テンプレートで可用性グループ リスナー用に選択されている可用性グループには、既にリスナーが含まれています。 それは可用性グループ内に物理的に存在するか、またはそのメタデータが SQL VM リソース プロバイダー内に残っています。 **101-sql-vm-aglistener-setup** クイック スタート テンプレートを再デプロイする前に、[PowerShell](#remove-the-availability-group-listener) を使用してリスナーを削除します。 
+**可用性グループ "\<AG-Name>" の可用性グループ リスナーが既に存在する** Azure クイックスタート テンプレートで可用性グループ リスナー用に選択されている可用性グループには、既にリスナーが含まれています。 それは可用性グループ内に物理的に存在するか、またはそのメタデータが SQL VM リソース プロバイダー内に残っています。 **101-sql-vm-aglistener-setup** クイック スタート テンプレートを再デプロイする前に、[PowerShell](#remove-listener) を使用してリスナーを削除します。 
 
-### <a name="connection-only-works-from-primary-replica"></a>プライマリ レプリカからの接続のみが機能する
-**101-sql-vm-aglistener-setup** テンプレートのデプロイに失敗し、内部ロード バランサーの構成が不整合な状態のままになっている場合、このような動作になる可能性があります。 バックエンド プールで可用性セットがリストされ、正常性プローブの規則と負荷分散規則が存在することを確認します。 何か足りないものがある場合、内部ロード バランサーの構成は不整合状態になります。 
+**プライマリ レプリカからの接続のみが機能する** **101-sql-vm-aglistener-setup** テンプレートのデプロイに失敗し、内部ロード バランサーの構成が不整合な状態のままになっている場合、このような動作になる可能性があります。 バックエンド プールで可用性セットがリストされ、正常性プローブの規則と負荷分散規則が存在することを確認します。 何か足りないものがある場合、内部ロード バランサーの構成は不整合状態になります。 
 
-この動作を解決するには、[PowerShell](#remove-the-availability-group-listener) を使用してリスナーを削除し、Azure portal で内部ロード バランサーを削除した後、再び手順 3 から始めます。 
+この動作を解決するには、[PowerShell](#remove-listener) を使用してリスナーを削除し、Azure portal で内部ロード バランサーを削除した後、再び手順 3 から始めます。 
 
-### <a name="badrequest---only-sql-virtual-machine-list-can-be-updated"></a>BadRequest - SQL 仮想マシン リストしか更新できない
-このエラーは、SQL Server Management Studio (SSMS) ではリスナーを削除したが、SQL VM リソース プロバイダーでは削除しなかった場合に、**101-sql-vm-aglistener-setup** テンプレートをデプロイすると、発生する可能性があります。 SSMS でリスナーを削除しても、リスナーのメタデータは SQL VM リソース プロバイダーから削除されません。 [PowerShell](#remove-the-availability-group-listener) を使用してリソース プロバイダーからリスナーを削除する必要があります。 
+**BadRequest - SQL 仮想マシン リストしか更新できない** このエラーは、SQL Server Management Studio (SSMS) ではリスナーを削除したが、SQL VM リソース プロバイダーでは削除しなかった場合に、**101-sql-vm-aglistener-setup** テンプレートをデプロイすると発生する可能性があります。 SSMS でリスナーを削除しても、リスナーのメタデータは SQL VM リソース プロバイダーから削除されません。 [PowerShell](#remove-listener) を使用してリソース プロバイダーからリスナーを削除する必要があります。 
 
-### <a name="domain-account-does-not-exist"></a>ドメイン アカウントが存在しない
-このエラーには 2 つの原因が考えられます。 指定したドメイン アカウントが存在しないか、または[ユーザー プリンシパル名 (UPN)](/windows/desktop/ad/naming-properties#userprincipalname) のデータがありません。 **101-sql-vm-ag-setup** テンプレートでは、ドメイン アカウントを UPN 形式 (つまり user@domain.com) で指定する必要がありますが、一部のドメイン アカウントはこの形式では指定されていません。 これは一般に、サーバーがドメイン コントローラーに昇格されたときにローカル ユーザーが最初のドメイン管理者アカウントに移行された場合や、ユーザーが PowerShell を使用して作成された場合に発生します。 
+**ドメイン アカウントが存在しない** このエラーには 2 つの原因が考えられます。 指定したドメイン アカウントが存在しないか、または[ユーザー プリンシパル名 (UPN)](/windows/desktop/ad/naming-properties#userprincipalname) のデータがありません。 **101-sql-vm-ag-setup** テンプレートでは、ドメイン アカウントを UPN 形式 (つまり user@domain.com) で指定する必要がありますが、一部のドメイン アカウントはこの形式では指定されていません。 これは一般に、サーバーがドメイン コントローラーに昇格されたときにローカル ユーザーが最初のドメイン管理者アカウントに移行された場合や、ユーザーが PowerShell を使用して作成された場合に発生します。 
 
 アカウントが存在することを確認します。 その場合、2 番目の状況になっている可能性があります。 それを解決するには、次のようにします。
 
@@ -202,7 +210,6 @@ Azure クイックスタート テンプレートで可用性グループ リス
 6. **[適用]** を選択して変更内容を保存し、 **[OK]** を選択してダイアログ ボックスを閉じます。 
 
 これらの変更を行った後、もう一度 Azure クイックスタート テンプレートのデプロイを試みます。 
-
 
 
 ## <a name="next-steps"></a>次のステップ

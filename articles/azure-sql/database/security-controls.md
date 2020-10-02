@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 97d2cd8e9ba51e4fc6ebab8459b04f4f37e876d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eec032ad56d00778627fc147761f61c03ba8bafd
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84668425"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442090"
 ---
 # <a name="security-controls-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance のセキュリティ コントロール
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -69,7 +69,7 @@ ms.locfileid: "84668425"
 | セキュリティ コントロール | はい/いいえ | Notes|
 |---|---|--|
 | 予防: 脆弱性評価 | はい | 「[SQL の脆弱性評価サービスは、データベースの脆弱性を特定するのに役に立ちます](sql-vulnerability-assessment.md)」をご覧ください。 |
-| 予防: データの検出と分類  | はい | 「[Azure SQL Database および SQL Data Warehouse のデータの検出と分類](data-discovery-and-classification-overview.md)」をご覧ください。 |
+| 予防: データの検出と分類  | はい | 「[Azure SQL Database と Azure Synapse Analytics のデータ検出と分類](data-discovery-and-classification-overview.md)」を参照してください。 |
 | 検出: 脅威の検出 | はい | 「[Azure SQL Database の Advanced Threat Protection](threat-detection-overview.md)」をご覧ください。 |
 
 ## <a name="next-steps"></a>次のステップ

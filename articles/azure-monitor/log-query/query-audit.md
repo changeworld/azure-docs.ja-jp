@@ -5,21 +5,16 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/25/2020
-ms.openlocfilehash: cb38dcba2f61a432decb56164b816688ad3192d8
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.date: 09/03/2020
+ms.openlocfilehash: bfaa9d8908d9401441d8811c3edcd087781b1d89
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88893641"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458639"
 ---
 # <a name="audit-queries-in-azure-monitor-logs-preview"></a>Azure Monitor ログでの監査クエリ (プレビュー)
 ログ クエリの監査ログには、Azure Monitor で実行されるログ クエリに関するテレメトリが用意されています。 これには、クエリがいつ実行されたか、誰が実行したか、どのツールが使用されたか、クエリ テキスト、クエリの実行を説明するパフォーマンス統計などの情報が含まれています。
-
-## <a name="current-limitations"></a>現在の制限
-パブリック プレビュー段階では、次の制限事項が適用されます。
-
-- ワークスペース中心のクエリのみがログに記録されます。 クエリがリソース中心のモードで実行される場合、またはワークスペースベースとして構成されていない Application Insights に対して実行される場合は、ログに記録されません。
 
 
 ## <a name="configure-query-auditing"></a>クエリの監査を構成する
@@ -55,10 +50,11 @@ Resource Manager テンプレートの例は、「[Log Analytics ワークスペ
 | QueryTimeRangeEnd     | クエリに対して選択された時間範囲の終了。 これは一部のシナリオでは設定されない場合があります。たとえば、クエリが Log Analytics から開始され、時間範囲が時間ピッカーではなくクエリ内で指定されている場合などです。  |
 | QueryText             | 実行されたクエリのテキスト。 |
 | RequestTarget         | クエリを送信するために API URL が使用されました。  |
-| RequestContext        | クエリが実行を要求された対象のリソースの一覧。 最大 3 つの文字列配列 (ワークスペース、アプリケーション、リソース) が含まれます。 サブスクリプションまたはリソース グループを対象とするクエリは、*resources* と示されます。 RequestTarget によって暗黙的に示されたターゲットが含まれます。 |
+| RequestContext        | クエリが実行を要求された対象のリソースの一覧。 最大 3 つの文字列配列 (ワークスペース、アプリケーション、リソース) が含まれます。 サブスクリプションまたはリソース グループを対象とするクエリは、*resources* と示されます。 RequestTarget によって暗黙的に示されたターゲットが含まれます。<br>解決できる場合は、各リソースのリソース ID が含まれます。 リソースへのアクセス時にエラーが返された場合は、解決できない可能性があります。 この場合は、クエリの特定のテキストが使用されます。<br>クエリであいまいな名前 (複数のサブスクリプションに存在するワークスペース名など) が使用されている場合は、このあいまいな名前が使用されます。 |
 | RequestContextFilters | クエリの呼び出しの一部として指定されたフィルターのセット。 次の文字列配列が最大 3 つ含まれます。<br>- ResourceTypes - クエリのスコープを制限するリソースの種類<br>- Workspaces - クエリを制限するワークスペースの一覧<br>- WorkspaceRegions - クエリを制限するワークスペース リージョンの一覧 |
 | ResponseCode          | クエリの送信時に返された HTTP 応答コード。 |
 | ResponseDurationMs    | 応答が返された時刻。  |
+| ResponseRowCount     | クエリによって返される行の合計数。 |
 | StatsCPUTimeMs       | 計算、解析、データの取得に使用された合計コンピューティング時間。 クエリが状態コード 200 で返された場合にのみ設定されます。 |
 | StatsDataProcessedKB | クエリを処理するためにアクセスされたデータの量。 対象のテーブルのサイズ、使用された期間、適用されたフィルター、参照されている列の数の影響を受けます。 クエリが状態コード 200 で返された場合にのみ設定されます。 |
 | StatsDataProcessedStart | クエリを処理するためにアクセスされた最も古いデータの時刻。 クエリの明示的な期間と適用されるフィルターの影響を受けます。 これは、データのパーティション分割のために、明示的な期間よりも長くなる場合があります。 クエリが状態コード 200 で返された場合にのみ設定されます。 |
@@ -66,7 +62,11 @@ Resource Manager テンプレートの例は、「[Log Analytics ワークスペ
 | StatsWorkspaceCount | クエリによってアクセスされたワークスペースの数。 クエリが状態コード 200 で返された場合にのみ設定されます。 |
 | StatsRegionCount | クエリによってアクセスされたリージョンの数。 クエリが状態コード 200 で返された場合にのみ設定されます。 |
 
+## <a name="considerations"></a>考慮事項
 
+- Azure Data Explorer プロキシからのクエリでパフォーマンス統計を使用することはできません。 これらのクエリのその他すべてのデータは、引き続き設定されます。
+- [文字列リテラルを難読化する](/azure/data-explorer/kusto/query/scalar-data-types/string#obfuscated-string-literals)文字列に対する *h* ヒントは、クエリ監査ログに影響しません。 クエリは、文字列が難読化されることなく、送信されたとおりにキャプチャされます。 このデータを表示するためのコンプライアンス権限を持つユーザーのみが、Log Analytics ワークスペースで利用可能なさまざまな RBAC モードを使用してそれを実行できるようにする必要があります。
+- 複数のワークスペースのデータを含むクエリの場合、クエリは、ユーザーがアクセスできるワークスペースでのみキャプチャされます。
 
 ## <a name="next-steps"></a>次のステップ
 

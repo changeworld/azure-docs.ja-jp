@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 07/05/2020
-ms.openlocfilehash: 9b47326d32b393af5dcf167c373b6873fe39cd7c
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.date: 09/09/2020
+ms.openlocfilehash: 5d44758ebf94c7487935ef47a17ad810dc5cf9f8
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279739"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657303"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor のカスタマー マネージド キー 
 
@@ -21,17 +21,15 @@ ms.locfileid: "89279739"
 
 ## <a name="customer-managed-key-cmk-overview"></a>カスタマー マネージド キー (CMK) の概要
 
-[保存時の暗号化](../../security/fundamentals/encryption-atrest.md) は、組織の一般的なプライバシーおよびセキュリティ要件です。 保存時の暗号化は Azure で完全に管理できますが、暗号化または暗号化キーを厳密に管理するさまざまなオプションが提供されています。
+[保存時の暗号化](../../security/fundamentals/encryption-atrest.md)は、組織の一般的なプライバシーおよびセキュリティ要件です。 保存時の暗号化は Azure で完全に管理できますが、暗号化または暗号化キーを厳密に管理するさまざまなオプションが提供されています。
 
-Azure Monitor により、Microsoft マネージド キー (MMK) を使用して、すべてのデータおよび保存されたクエリが保存時に暗号化されるようになります。 Azure Monitor には、[Azure Key Vault](../../key-vault/general/overview.md) に格納され、システムによって割り当てられた[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) 認証を使用してアクセスされる、独自のキーを使用した暗号化のオプションも用意されています。 このキー (CMK) は、[ソフトウェアまたはハードウェアの HSM で保護](../../key-vault/general/overview.md)できます。
+Azure Monitor により、Microsoft マネージド キー (MMK) を使用して、すべてのデータおよび保存されたクエリが保存時に暗号化されるようになります。 Azure Monitor には、[Azure Key Vault](../../key-vault/general/overview.md) に格納され、システムによって割り当てられた[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) 認証を使用してアクセスされる、独自のキーを使用した暗号化のオプションも用意されています。 このキー (CMK) は、[ソフトウェアまたはハードウェアの HSM で保護](../../key-vault/general/overview.md)できます。 Azure Monitor での暗号化の使用は、[Azure Storage の暗号化](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption)での運用方法とまったく同じです。
 
-Azure Monitor の暗号化の使用は、 [Azure Storage の暗号化](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption) と同じように動作します。
+CMK 機能は専用の Log Analytics クラスターに提供され、データへのアクセスをいつでも取り消し、[ロックボックス](#customer-lockbox-preview) コントロールを使用して保護することができます。 お客様のリージョン内の専用クラスターで必要な容量があることを確認するために、お客様のサブスクリプションが事前に許可されている必要があります。 CMK の構成を開始する前に、Microsoft の担当者に依頼して、お客様のサブスクリプションを許可してください。
 
-CMK を使用すると、データへのアクセスを制御し、いつでもそれを取り消すことができます。 Azure Monitor Storage は、常に 1 時間以内にキーのアクセス許可の変更に対応します。 過去 14 日間に取り込まれたデータも、効率的なクエリ エンジン操作のためにホットキャッシュ (SSD ベース) で保持されます。 このデータは、CMK 構成に関係なく、Microsoft キーで暗号化されたままになりますが、SSD データに対する制御は [キーの失効](#cmk-kek-revocation)に従います。 2020 年の後半には、SSD データを CMK で暗号化できるように取り組んでいます。
+[Log Analytics クラスターの価格モデル](./manage-cost-storage.md#log-analytics-dedicated-clusters)では、1,000 GB/日レベルから始まる容量予約が使用されます。
 
-CMK 機能は専用の Log Analytics クラスターで提供されます。 お客様のリージョンに必要な容量があることを確認するために、お客様のサブスクリプションが事前に許可されている必要があります。 CMK の構成を開始する前に、Microsoft の担当者に依頼して、お客様のサブスクリプションを許可してください。
-
- [Log Analytics クラスターの価格モデル](./manage-cost-storage.md#log-analytics-dedicated-clusters) では、1000 GB/日レベルから始まる容量予約が使用されます。
+過去 14 日間に取り込まれたデータも、効率的なクエリ エンジン操作のためにホットキャッシュ (SSD ベース) で保持されます。 このデータは、CMK 構成に関係なく、Microsoft キーで暗号化されたままになりますが、SSD データに対する制御は[キーの失効](#cmk-kek-revocation)に従います。 2020 年の後半には、SSD データを CMK で暗号化できるように取り組んでいます。
 
 ## <a name="how-cmk-works-in-azure-monitor"></a>Azure Monitor での CMK の動作
 
@@ -533,6 +531,13 @@ Content-type: application/json
 ```
 
 構成が完了すると、新しいアラート クエリがストレージに保存されます。
+
+## <a name="customer-lockbox-preview"></a>カスタマー ロックボックス (プレビュー)
+お客様は、ロックボックスを使用して、サポート リクエストへの対応時の Microsoft のエンジニアによる顧客データへのアクセス要求を承認または拒否できます。
+
+Azure Monitor では、Log Analytics 専用クラスターに関連付けられているワークスペースのデータに対してこの制御権が与えられます。 ロックボックス コントロールは Log Analytics 専用クラスターに格納されているデータに適用され、ロックボックスで保護されているサブスクリプションの下にあるクラスターのストレージ アカウントに分離されたままになります。  
+
+詳細については、「[Microsoft Azure 用カスタマー ロックボックス](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)」を参照してください。
 
 ## <a name="cmk-management"></a>CMK 管理
 

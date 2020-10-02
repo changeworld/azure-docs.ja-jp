@@ -11,17 +11,20 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: 72d0745e5a885ddbc57a9a849a7537a40e0b1215
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 3d8bf3f087592a7d629a247b1c10721237699fdc
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590066"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613534"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Azure SQL Managed Instance とは
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Azure SQL Managed Instance はインテリジェントでスケーラブルなクラウド データベース サービスであり、幅広い SQL Server データベース エンジンとの互換性と、フル マネージドの常に最新のサービスとしてのプラットフォームのすべての利点を兼ね備えています。 SQL Managed Instance には、最新の SQL Server (Enterprise Edition) データベース エンジンとの 100% 近い互換性が備わっており、一般的なセキュリティ上の懸念事項に対処するネイティブの[仮想ネットワーク (VNet)](../../virtual-network/virtual-networks-overview.md) の実装と、SQL Server の既存のお客様にとって有利な[ビジネス モデル](https://azure.microsoft.com/pricing/details/sql-database/)を提供します。 SQL Managed Instance により、既存の SQL Server の顧客は最小限のアプリケーションおよびデータベースの変更のみで、オンプレミスのアプリケーションをクラウドに移行 (リフト アンド シフト) することができます。 これと同時に、SQL Managed Instance では、管理のオーバーヘッドと TCO を大幅に削減するすべての PaaS 機能 (自動的な修正プログラムの適用およびバージョン更新、[自動バックアップ](../database/automated-backups-overview.md)、[高可用性](../database/high-availability-sla.md)) を維持します。
+
+Azure SQL Managed Instance を初めてお使いの方は、[Azure SQL ビデオ シリーズ](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)の *Azure SQL Managed Instance* に関するビデオをご覧ください。
+> [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Managed-Instance-Overview-6-of-61/player]
 
 > [!IMPORTANT]
 > 現在 SQL Managed Instance が提供されているリージョンの一覧については、「[サポートされているリージョン](resource-limits.md#supported-regions)」を参照してください。
@@ -41,7 +44,7 @@ SQL Managed Instance では、Azure SQL Database と SQL Server データベー�
 
 | **PaaS の特典** | **ビジネス継続性** |
 | --- | --- |
-|ハードウェアの購入と管理が不要 <br>基になるインフラストラクチャを管理するための管理オーバーヘッドが不要 <br>迅速なプロビジョニングとサービスのスケーリング <br>自動的に行われる修正プログラムの適用とバージョンのアップグレード <br>その他の PaaS データ サービスとの統合 |99.99% アップタイム SLA  <br>組み込みの[高可用性](../database/high-availability-sla.md) <br>[自動バックアップ](../database/automated-backups-overview.md)によるデータの保護 <br>顧客が構成可能なバックアップの保有期間 <br>ユーザーによって開始される[バックアップ](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[データベースのポイントインタイム リストア](../database/recovery-using-backups.md#point-in-time-restore)機能 |
+|ハードウェアの購入と管理が不要 <br>基になるインフラストラクチャを管理するための管理オーバーヘッドが不要 <br>迅速なプロビジョニングとサービスのスケーリング <br>自動的に行われる修正プログラムの適用とバージョンのアップグレード <br>その他の PaaS データ サービスとの統合 |99.99% アップタイム SLA  <br>組み込みの[高可用性](../database/high-availability-sla.md) <br>[自動バックアップ](../database/automated-backups-overview.md)によるデータの保護 <br>顧客が構成可能なバックアップの保有期間 <br>ユーザーによって開始される[バックアップ](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current&preserve-view=true) <br>[データベースのポイントインタイム リストア](../database/recovery-using-backups.md#point-in-time-restore)機能 |
 |**セキュリティとコンプライアンス** | **管理**|
 |分離環境 ([VNet 統合](connectivity-architecture-overview.md)、シングル テナント サービス、専用のコンピューティングおよびストレージ) <br>[透過的なデータ暗号化 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure Active Directory (Azure AD) 認証](../database/authentication-aad-overview.md)、シングル サインオンのサポート <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD サーバー プリンシパル (ログイン)</a>  <br>Azure SQL Database と同じコンプライアンス標準に準拠 <br>[SQL 監査](auditing-configure.md) <br>[Advanced Threat Protection](threat-detection-configure.md) |サービスのプロビジョニングとスケーリングを自動化するための Azure Resource Manager API <br>手動でのサービスのプロビジョニングとスケーリングに対応する Azure Portal の機能 <br>データ移行サービス
 
@@ -182,7 +185,7 @@ SQL Managed Instance のターゲットは、オンプレミスまたは IaaS �
 
 ### <a name="backup-and-restore"></a>バックアップと復元  
 
-移行のアプローチでは、Azure Blob Storage への SQL バックアップが活用されます。 Azure ストレージ BLOB に格納されたバックアップは、[T-SQL RESTORE コマンド](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current)を使用して、マネージド インスタンスに直接復元できます。
+移行のアプローチでは、Azure Blob Storage への SQL バックアップが活用されます。 Azure ストレージ BLOB に格納されたバックアップは、[T-SQL RESTORE コマンド](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current&preserve-view=true)を使用して、マネージド インスタンスに直接復元できます。
 
 - Wide World Importers - Standard データベースのバックアップ ファイルを復元する方法を説明したクイック スタートについては、[バックアップ ファイルをマネージド インスタンスに復元する](restore-sample-database-quickstart.md)方法に関するページを参照してください。 このクイック スタートでは、バックアップ ファイルを Azure BLOB ストレージにアップロードし、Secure Access Signature (SAS) キーを使用してセキュリティで保護する必要があることが説明されています。
 - URL からの復元については、「[URL からのネイティブ復元](migrate-to-instance-from-sql-server.md#native-restore-from-url)」を参照してください。
@@ -202,7 +205,7 @@ SQL Managed Instance では、SQL Server 2008 データベースとの下位互�
   
 次の図では、SQL Managed Instance でのセキュリティ、外部からのアクセス互換性について概説します。  
 
-![移行](./media/sql-managed-instance-paas-overview/migration.png)
+![外部からのアクセス互換性](./media/sql-managed-instance-paas-overview/migration.png)
 
 ### <a name="key-differences-between-sql-server-on-premises-and-sql-managed-instance"></a>SQL Server オンプレミスと SQL Managed Instance の主な相違点
 

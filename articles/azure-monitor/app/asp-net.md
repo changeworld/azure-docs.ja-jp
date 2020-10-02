@@ -3,12 +3,12 @@ title: Azure Application Insights を使用した ASP.NET の Web アプリ分�
 description: オンプレミスまたは Azure でホストされている ASP.NET Web サイトのパフォーマンス、可用性、およびユーザー動作の分析ツールを構成します。
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: acfba63cba520631831888a1480929be3b1897f0
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: c07e7c8e7bd710cb591719fe8d53a3bad6ca2ee0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475534"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973799"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>ASP.NET Web サイトに Application Insights を設定する
 
@@ -42,7 +42,7 @@ Application Insights の構成画面:
 
 **[開始]** を選択します。
 
-![[アプリを Application Insights に登録します] ページのスクリーンショット](./media/asp-net/00004-start-free.png)
+![スクリーンショットには、Application Insights ページと [開始] ボタンが示されています。](./media/asp-net/00004-start-free.png)
 
 データを格納するリソース グループまたは場所を設定するには、 **[設定の構成]** をクリックします。 リソース グループは、データへのアクセスの制御に使用されます。 たとえば、同じシステムの一部を構成する複数のアプリがある場合、そのアプリに関する Application Insights のデータを同じリソース グループ内に配置することができます。
 

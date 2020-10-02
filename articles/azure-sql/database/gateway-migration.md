@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: af5486630eb89de198b6ed2975a919b04b01a902
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: ee55e0a66a0487291233713498f6eb541980dbba
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507503"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004274"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database トラフィックの新しいゲートウェイへの移行
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,6 +27,14 @@ Azure インフラストラクチャの機能強化に伴い、Microsoft は可�
 ## <a name="status-updates"></a>ステータスの更新
 
 # <a name="in-progress"></a>[[実行中]](#tab/in-progress-ip)
+### <a name="october-2020"></a>2020 年 10 月
+
+新しい SQL ゲートウェイが、次のリージョンに追加されます。
+
+- ドイツ中西部:51.116.240.0、51.116.248.0
+
+2020 年 10 月 12 日に、これらの SQL ゲートウェイによって、お客様のトラフィックの受け入れが開始されます。 
+
 ### <a name="september-2020"></a>2020 年 9 月
 新しい SQL ゲートウェイが、以下のリージョンに追加されます。 これらの SQL ゲートウェイでは、**2020 年 9 月 15 日**にお客様のトラフィックの受け入れを開始します。
 

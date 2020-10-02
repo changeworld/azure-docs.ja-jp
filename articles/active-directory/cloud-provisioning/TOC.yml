@@ -34,6 +34,10 @@
           href: how-to-install.md
         - name: クラウド プロビジョニングの構成
           href: how-to-configure.md
+        - name: オンデマンド プロビジョニング
+          href: how-to-on-demand-provision.md
+        - name: 属性マッピング
+          href: how-to-attribute-mapping.md
         - name: シングル サインオンの使用
           href: how-to-sso.md
     - name: 計画と設計
@@ -56,7 +60,7 @@
           href: how-to-troubleshoot.md
         - name: 重複する属性
           href: /office365/troubleshoot/administration/duplicate-attributes-prevent-dirsync
-- name: 参照先
+- name: リファレンス
   items:
     - name: Azure AD Connect クラウド プロビジョニング エージェントのバージョン履歴
       href: ../app-provisioning/provisioning-agent-release-version-history.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context

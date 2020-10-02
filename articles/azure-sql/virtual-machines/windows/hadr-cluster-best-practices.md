@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: de773bb2188f09822cae59ce42924a9a49f8087e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 50546a3efc008e074f4e7831d2cc657539b2f98b
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285630"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612324"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>クラスター構成のベスト プラクティス (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,26 +35,23 @@ Azure Virtual Machines (VM) 上の SQL Server を使用して高可用性とデ�
 
 2 ノード クラスターは[クォーラム リソース](/windows-server/storage/storage-spaces/understand-quorum)なしでも機能しますが、実稼働サポートを受けるにはクォーラム リソースを使用することが必須です。 クラスターの検証で、クォーラム リソースを使用していないクラスターが合格することはありません。 
 
-技術的には、3 ノード クラスターの場合、クォーラム リソースなしでも 1 つのノードの損失 (2 ノードにダウンします) を乗り切ることができます。 しかし、クラスターが 2 ノードにダウンした後は、次が発生するリスクがあります。 
+技術的には、3 ノード クラスターの場合、クォーラム リソースなしでも 1 つのノードの損失 (2 ノードにダウンします) を乗り切ることができます。 しかし、クラスターが 2 ノードまで下がると、ノードが失われたり通信エラーが発生したりした場合、スプリットブレイン シナリオを防ぐために、クラスター化されたリソースがオフラインになるリスクがあります。
 
-- **領域のパーティション分割** (スプリット ブレイン):サーバー、NIC、またはスイッチ上の問題により、ネットワーク上で各クラスター ノードが分離されます。 
-- **時間のパーティション分割** (アムネジア):クラスターにノードが追加または再追加され、クラスター グループまたはクラスターの役割の所有権の不適切な要求が試行されます。 
-
-クォーラム リソースにより、これらのいずれの問題からもクラスターが保護されます。 
+クォーラム リソースを構成することで、1 つのノードのみをオンラインにしてクラスターのオンラインを続行できます。
 
 次の表に、使用できるクォーラム オプションを、Azure VM での使用が推奨される順序で示します。推奨されている選択肢はディスク監視です。 
 
 
 ||[ディスク監視](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |[クラウド監視](/windows-server/failover-clustering/deploy-cloud-witness)  |[ファイル共有監視](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |
 |---------|---------|---------|---------|
-|**サポートされる OS**| All |Windows Server 2016 以降| Windows Server 2012 以降|
+|**サポートされる OS**| All |Windows Server 2016 以降| All|
 
 
 
 
 ### <a name="disk-witness"></a>ディスク監視
 
-ディスク監視は、クラスターの使用可能記憶域グループ内にある小規模なクラスター化されたディスクです。 このディスクは可用性が高く、ノード間でフェールオーバーできます。 クラスター データベースのコピーが含まれ、通常 1 GB 未満の既定のサイズを持ちます。 ディスク監視は、クラウド監視やファイル共有監視とは異なり、時間のパーティション分割の問題を解決できるため、Azure VM の推奨されるクォーラム オプションとなっています。 
+ディスク監視は、クラスターの使用可能記憶域グループ内にある小規模なクラスター化されたディスクです。 このディスクは可用性が高く、ノード間でフェールオーバーできます。 クラスター データベースのコピーが含まれ、通常 1 GB 未満の既定のサイズを持ちます。 ディスク監視は、Azure 共有ディスク (または共有 SCSI、iSCSI、ファイバー チャネル SAN などの共有ディスク ソリューション) を使用するすべてのクラスターに最適なクォーラム オプションです。  クラスター共有ボリュームをディスク監視として使用することはできません。
 
 Azure 共有ディスクをディスク監視として構成します。 
 
@@ -95,8 +92,8 @@ Azure Load Balancer または分散ネットワーク名 (DNN) と共に VNN を
 
 | |**仮想ネットワーク名 (VNN)**  |**分散ネットワーク名 (DNN)**  |
 |---------|---------|---------|
-|**OS の最小バージョン**| Windows Server 2012 | Windows Server 2016|
-|**SQL Server の最小バージョン** |SQL Server 2012 |SQL Server 2019 CU2|
+|**OS の最小バージョン**| All | All |
+|**SQL Server の最小バージョン** |All |SQL Server 2019 CU2|
 |**サポートされる HADR ソリューション** | フェールオーバー クラスター インスタンス <br/> 可用性グループ | フェールオーバー クラスター インスタンス|
 
 
@@ -108,9 +105,9 @@ Azure では仮想 IP アクセス ポイントの動作が異なるため、FCI
 
 作業を開始するには、[FCI 用に Azure Load Balancer を構成する](hadr-vnn-azure-load-balancer-configure.md)方法をご確認ください。 
 
-**サポートされる OS**:Windows Server 2012 以降   
-**サポートされる SQL バージョン**:SQL Server 2012 以降   
-**サポートされる HADR ソリューション**:フェールオーバー クラスター インスタンス、可用性グループ 
+**サポートされる OS**:All   
+**サポートされる SQL バージョン**:All   
+**サポートされる HADR ソリューション**:フェールオーバー クラスター インスタンス、可用性グループ   
 
 
 ### <a name="distributed-network-name-dnn"></a>分散ネットワーク名 (DNN)
@@ -138,9 +135,10 @@ DNN リソースを作成すると、クラスターではその DNS 名がク�
 FCI または可用性グループと Azure Virtual Machines 上の SQL Server を使用する場合は、次の制限事項を考慮してください。 
 
 ### <a name="msdtc"></a>MSDTC 
-Azure Virtual Machines では、クラスター化共有ボリューム (CSV) および [Azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) 上の記憶域を備えた Windows Server 2019 で、Microsoft 分散トランザクション コーディネーター (MSDTC) がサポートされています。
 
-Azure Virtual Machines では、次の理由により、Windows Server 2016 以前では MSDTC がサポートされていません。
+Azure Virtual Machines では、クラスター共有ボリューム (CSV) と [Azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) 上のストレージを使用する Windows Server 2019、または Azure 共有ディスクを使用する SQL Server VM で、Microsoft 分散トランザクション コーディネーター (MSDTC) がサポートされます。 
+
+Azure Virtual Machines では、次の理由により、クラスター共有ボリュームを使用する Windows Server 2016 以前では、MSDTC はサポートされません。
 
 - クラスター化された MSDTC リソースは、共有ストレージを使用するように構成することはできません。 Windows Server 2016 では、MSDTC リソースを作成した場合、ストレージが使用可能であっても、使用可能な共有ストレージは 1 つも表示されません。 この問題は、Windows Server 2019 で修正済みです。
 - Basic Load Balance は、RPC ポートを処理しません。

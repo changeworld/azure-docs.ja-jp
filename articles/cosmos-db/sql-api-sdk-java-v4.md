@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: af0964dceca8b862d0008d878045203983a96bda
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: aabd52d47bfc59de7a1d79bbe5ffbdda90d099bf
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586217"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90060698"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Core (SQL) API 用 Azure Cosmos DB Java SDK v4: リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -68,7 +68,20 @@ Core (SQL) 用 Azure Cosmos DB Java SDK v4 では、非同期 API と同期 API 
 
 ## <a name="release-history"></a>リリース履歴
 
-### <a name="440-beta1-unreleased"></a>4.4.0-beta.1 (未リリース)
+### <a name="450-beta1-unreleased"></a>4.5.0-beta.1 (未リリース)
+
+### <a name="440-2020-09-12"></a>4.4.0 (2020-09-12)
+#### <a name="key-bug-fixes"></a>主要なバグ修正
+* 依存関係 `netty-tcnative-boringssl` を有効にしたときの RequestTimeoutException を修正しました。
+* `GATEWAY` モードでの `Delete` 操作におけるメモリ リークの問題を修正しました。
+* エンドポイント URI が無効なときの `CosmosClient` のインスタンス化でのリークを修正しました。
+* `CPU History` の診断を改善しました。
+
+### <a name="431-2020-08-13"></a>4.3.1 (2020-08-13)
+#### <a name="key-bug-fixes"></a>主要なバグ修正
+* 1 ページしか返されなかった `GROUP BY` クエリの問題を修正しました。
+* Central SDK のガイドラインに準拠するように、ユーザー エージェント文字列の形式を修正しました。
+* クエリ プランの診断が含まれるように、診断情報を拡張しました。
 
 ### <a name="430-2020-07-29"></a>4.3.0 (2020-07-29)
 #### <a name="new-features"></a>新機能

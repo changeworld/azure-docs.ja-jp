@@ -3,12 +3,12 @@ title: Logic Apps を使用して Azure Application Insights プロセスを自�
 description: Application Insights コネクタをお使いのロジック アプリに追加することで、反復可能なプロセスを迅速に自動化する方法を説明します。
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.openlocfilehash: d023d774c130a9db513fbcf9452b05fa030a967a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f6406c2e6fb933c561a8ae54009499768c81a204
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323198"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970861"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Logic Apps を使って Application Insights のプロセスを自動化する
 
@@ -53,7 +53,7 @@ ms.locfileid: "87323198"
 
 この手順を完了するには、お使いのリソースのアプリケーション ID と API キーが必要です。 以下の図に示すように、Azure ポータルから ID と キーを取得できます。
 
-![Azure ポータルのアプリケーション ID](./media/automate-with-logic-apps/5apiaccess.png)
+![スクリーンショットには、[API キーの作成] ボタンが選択された Azure portal の [API アクセス] ページが示されています。](./media/automate-with-logic-apps/5apiaccess.png)
 
 ![Azure ポータルのアプリケーション ID](./media/automate-with-logic-apps/6apikey.png)
 
@@ -103,7 +103,7 @@ ms.locfileid: "87323198"
     
    d. **[新しいパラメーターの追加]** ドロップダウンをクリックし、[添付ファイル] と [HTML] を選択します。
 
-      ![Office 365 Outlook の設定](./media/automate-with-logic-apps/10emailbody.png)
+      ![スクリーンショットには、[本文] ボックスが強調表示された [メールの送信] ウィンドウと、右側の [本文] が強調表示された [動的なコンテンツ] メニューが示されています。](./media/automate-with-logic-apps/10emailbody.png)
 
       ![Office 365 Outlook の設定](./media/automate-with-logic-apps/11emailparameter.png)
 

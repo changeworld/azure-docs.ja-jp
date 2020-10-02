@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: d425953b278a98af35a172d8777ab758db52709e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 0b3e1b3bc296676c44eddf34b35a0d4e06d3b8c4
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89257757"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007334"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure のブート診断
 
@@ -24,18 +24,19 @@ Azure portal で VM を作成するとき、ブート診断は既定で有効に
 別のブート診断エクスペリエンスでは、ユーザーが管理するストレージ アカウントを使用します。 ユーザーは、新しいストレージ アカウントを作成することも、既存のものを使用することもできます。
 
 > [!IMPORTANT]
-> Azure のお客様は、2020 年 10 月までは、マネージド ストレージ アカウントを使用したブート診断に関連するストレージ コストが請求されることはありません。
+> Azure のお客様には、2020 年 10 月までは、マネージド ストレージ アカウントを使用したブート診断に関連するストレージ コストが請求されることはありません。
 
 ## <a name="boot-diagnostics-view"></a>ブート診断のビュー
 仮想マシンのブレードにある [ブート診断] オプションは、Azure portal の *[サポートとトラブルシューティング]* セクションにあります。 [ブート診断] を選択すると、スクリーンショットとシリアル ログ情報が表示されます。 シリアル ログには、カーネル メッセージングが含まれています。スクリーンショットは、VM の現在の状態のスナップショットです。 VM で Windows と Linux のどちらが実行されているかによって、どのような外観のスクリーンショットが予想されるかが決まります。 Windows の場合、ユーザーにはデスクトップの背景が表示され、Linux の場合はログイン プロンプトが表示されます。
 
 :::image type="content" source="./media/boot-diagnostics/boot-diagnostics-linux.png" alt-text="Linux のブート診断のスクリーンショット":::
-:::image type="content" source="./media/boot-diagnostics/boot-diagnostics-windows.png" alt-text="Windows のブート診断のスクリーンショット":::
+:::image type="content" source="./media/boot-diagnostics/boot-diagnostics-windows.png" alt-text="Linux のブート診断のスクリーンショット":::
 
 
 ## <a name="limitations"></a>制限事項
 - ブート診断は、Azure Resource Manager VM でのみ使用できます。 
 - ブート診断は、Premium Storage アカウントをサポートしていません。ブート診断に Premium Storage アカウントを使用すると、ユーザーは VM の起動時に `StorageAccountTypeNotSupported` エラーを受け取ります。 
+- マネージド ストレージ アカウントは、Resource Manager API バージョン "2020-06-01" 以降でサポートされています。
 - Azure シリアル コンソールは現在、ブート診断用のマネージド ストレージ アカウントと互換性がありません。 [Azure シリアル コンソール](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-overview)についてさらに詳しく学習します。
 
 ## <a name="next-steps"></a>次の手順

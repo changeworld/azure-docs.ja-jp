@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: a5707ef266f3d49bdcbff9793a0b90e6c3f4cb68
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c1dc3b5fe4eecea42baf7073b9c806eea1648cff
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327652"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056168"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする
 
@@ -188,7 +188,7 @@ Event Grid 経由でテレメトリ イベントをサブスクライブする�
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>デバイス接続イベントおよびデバイス切断イベントの制限事項
 
-デバイス接続状態イベントを受信するには、デバイスで IoT Hub を使用して "D2C テレメトリ送信" または "C2D メッセージ受信" 操作を実行する必要があります。 しかし、AMQP プロトコルを使用して IoT Hub に接続するデバイスについては、"C2D メッセージ受信" 操作を実行することが推奨されます。そうしないと、接続状態の通知が数分遅延することがあります。 デバイスが MQTT プロトコルを使用している場合、IoT Hub は C2D リンクを開いたままにします。 AMQP では、[Receive Async API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet) (IoT Hub C# SDK) または[デバイス クライアント (AMQP)](iot-hub-amqp-support.md#device-client) を呼び出すことによって C2D リンクを開くことができます。
+デバイス接続状態イベントを受信するには、デバイスで IoT Hub を使用して "D2C テレメトリ送信" または "C2D メッセージ受信" 操作を実行する必要があります。 しかし、AMQP プロトコルを使用して IoT Hub に接続するデバイスについては、"C2D メッセージ受信" 操作を実行することが推奨されます。そうしないと、接続状態の通知が数分遅延することがあります。 デバイスが MQTT プロトコルを使用している場合、IoT Hub は C2D リンクを開いたままにします。 AMQP では、Receive Async API (IoT Hub C# SDK) または[デバイス クライアント (AMQP)](iot-hub-amqp-support.md#device-client) を呼び出すことによって、C2D リンクを開くことができます。
 
 テレメトリを送信する場合は、D2C リンクが開いています。 
 
@@ -214,4 +214,4 @@ IoT Hub イベントを処理するアプリケーションは、以下の推奨
 
 * [IoT Hub のイベントとメッセージのルーティングの違いを比較します](iot-hub-event-grid-routing-comparison.md)
 
-* [IoT テレメトリ イベントを使用して、Azure Maps を使用して IoT 空間分析を実装する方法について学びます](../azure-maps/tutorial-iot-hub-maps.md#create-an-azure-function-and-add-an-event-grid-subscription)
+* [IoT テレメトリ イベントを使用して、Azure Maps を使用して IoT 空間分析を実装する方法について学びます](../azure-maps/tutorial-iot-hub-maps.md)

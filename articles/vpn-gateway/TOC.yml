@@ -42,8 +42,10 @@
       href: vpn-gateway-about-point-to-site-routing.md
     - name: 可用性ゾーンのゾーン冗長ゲートウェイについて
       href: about-zone-redundant-vnet-gateways.md
-    - name: 組み込みのセキュリティ制御
-      href: vpn-gateway-security-controls.md
+    - name: セキュリティ
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
     - name: バックエンド接続の相互運用性
       items:
         - name: 前書きとテスト セットアップ

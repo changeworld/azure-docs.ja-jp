@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 72f0d361f69232894df3a9131d173411614a2055
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 035b13140ee1fb7a48d0cea9a3611eac145d9f8c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921216"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970680"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>パフォーマンスに関する推奨事項の検索と適用
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -35,7 +35,7 @@ Azure portal でパフォーマンスに関する推奨事項を調べるには�
 
 パフォーマンスの推奨事項は、次の図のようなテーブルに表示されます。
 
-![Recommendations](./media/database-advisor-find-recommendations-portal/recommendations.png)
+![スクリーンショットには、アクションと推奨事項の説明と共に、パフォーマンスに関する推奨事項がテーブルに示されています。](./media/database-advisor-find-recommendations-portal/recommendations.png)
 
 推奨事項は、パフォーマンスへの潜在的な影響ごとに、次のカテゴリの順に表示されます。
 

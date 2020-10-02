@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2020
-ms.openlocfilehash: b14eba63d848b5f583e16b39f3ade6bd7e7ba83f
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 75cd86bd1587a9294caef00efdf973fe8a26c150
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031202"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612014"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server でのビジネス継続性の概要
 
@@ -19,7 +19,7 @@ ms.locfileid: "88031202"
 
 ## <a name="features-that-you-can-use-to-provide-business-continuity"></a>ビジネス継続性を提供するときに使用できる機能
 
-Azure Database for PostgreSQL で提供されるビジネス継続性機能には、自動バックアップや、ユーザーによる geo リストア開始機能などが含まれます。 機能ごとに、推定復旧時間 (ERT) と潜在的なデータ損失に関する特性が異なります。 これらのオプションについて理解した後は、その中から適切なものを選んで、さまざまなシナリオに対して組み合わせて使うことができます。 ビジネス継続性計画を開発するときは、破壊的なイベントが発生してから、アプリケーションが完全に復旧するまでの最大許容時間について理解する必要があります。これが目標復旧時間 (RTO) です。 さらに、破壊的なイベントの発生後、復旧中にアプリケーションが損失を許容できる最大データ更新 (期間) 量についても理解しなければなりません。これは目標復旧時点 (RPO) です。
+Azure Database for PostgreSQL で提供されるビジネス継続性機能には、自動バックアップや、ユーザーによる geo リストア開始機能などが含まれます。 機能ごとに、推定復旧時間 (ERT) と潜在的なデータ損失に関する特性が異なります。 推定復旧時間 (ERT) は、復元/フェールオーバー要求の後、データベースが完全に機能するようになるまでの推定所要時間です。 これらのオプションについて理解した後は、その中から適切なものを選んで、さまざまなシナリオに対して組み合わせて使うことができます。 ビジネス継続性計画を開発するときは、破壊的なイベントが発生してから、アプリケーションが完全に復旧するまでの最大許容時間について理解する必要があります。これが目標復旧時間 (RTO) です。 さらに、破壊的なイベントの発生後、復旧中にアプリケーションが損失を許容できる最大データ更新 (期間) 量についても理解しなければなりません。これは目標復旧時点 (RPO) です。
 
 次の表は、利用できる機能の ERT と RPO を比較したものです。
 
