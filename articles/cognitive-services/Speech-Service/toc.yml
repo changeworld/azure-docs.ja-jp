@@ -449,12 +449,6 @@
               href: windows-voice-assistants-best-practices.md
             - name: サンプルとよく寄せられる質問
               href: windows-voice-assistants-faq.md
-    - name: カスタム キーワード
-      items:
-        - name: カスタム キーワードの概要
-          href: custom-keyword-overview.md
-        - name: カスタム キーワードの基本
-          href: custom-keyword-basics.md
 - name: Speaker Recognition
   items:
     - name: Speaker Recognition の概要
@@ -465,6 +459,12 @@
       items:
         - name: Speaker Recognition REST API
           href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
+- name: カスタム キーワード
+  items:
+    - name: カスタム キーワードの概要
+      href: custom-keyword-overview.md
+    - name: カスタム キーワードの基本
+      href: custom-keyword-basics.md
 - name: ツール
   items:
     - name: Speech SDK
