@@ -51,6 +51,8 @@
       href: cli-samples.md
 - name: 概念
   items:
+    - name: 高可用性
+      href: cache-high-availability.md
     - name: フェールオーバーと修正プログラムの適用
       href: cache-failover.md
     - name: ベスト プラクティス
@@ -90,8 +92,6 @@
           href: cache-reserved-pricing.md
         - name: Azure Cache for Redis への移行
           href: cache-migration-guide.md
-        - name: Managed Cache Service からの移行 (非推奨)
-          href: cache-migrate-to-redis.md
         - name: 計画に関する FAQ
           href: cache-planning-faq.md
     - name: ビルド
