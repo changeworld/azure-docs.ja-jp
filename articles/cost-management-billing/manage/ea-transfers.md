@@ -8,12 +8,12 @@ ms.subservice: enterprise
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: banders
-ms.openlocfilehash: c4d328d2e2ef562813bcb529c104b3559f03066e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 140fc450623f0dcb6c7cf1bf08a8cfc43b094763
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442430"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371900"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure エンタープライズ転送
 
@@ -101,13 +101,13 @@ Azure EA Portal では、アカウント所有者間でサブスクリプショ�
 
 同じ Azure Active Directory テナント内のアカウントに Azure サブスクリプションを転送した場合、リソースを管理するための [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) が付与されていたユーザー、グループ、サービス プリンシパルはすべて、そのアクセス権を維持します。
 
-サブスクリプションに対する RBAC アクセス権を持つユーザーを表示するには、次の手順を実行します。
+サブスクリプションへの Azure RBAC アクセス権を持つユーザーを表示するには、次の手順を実行します。
 
 1. Azure portal で **[サブスクリプション]** を開きます。
 2. 表示するサブスクリプションを選択し、 **[アクセス制御 (IAM)]** を選択します。
-3. **[ロールの割り当て]** を選択します。 [ロールの割り当て] ページに、サブスクリプションに対する RBAC アクセス権が付与されているすべてのユーザーが一覧表示されます。
+3. **[ロールの割り当て]** を選択します。 [ロールの割り当て] ページに、サブスクリプションへの Azure RBAC アクセス権が付与されているすべてのユーザーが一覧表示されます。
 
-別の Azure AD テナント内のアカウントにサブスクリプションを転送した場合は、リソースを管理するための [RBAC](../../role-based-access-control/overview.md) が付与されていたユーザー、グループ、サービス プリンシパルはすべて、そのアクセス権を "_失います_"。 RBAC アクセス権がなくなっても、サブスクリプションへのアクセスは、次のようなセキュリティ メカニズムを通じて使用できる場合があります。
+別の Azure AD テナント内のアカウントにサブスクリプションが転送される場合、リソースを管理するための [Azure RBAC](../../role-based-access-control/overview.md) が付与されていたユーザー、グループ、サービス プリンシパルはすべて、そのアクセス権を "_失います_"。 Azure RBAC アクセス権がなくても、次のようなセキュリティ メカニズムを使用すれば、サブスクリプションにアクセスできる場合があります。
 
 - サブスクリプションのリソースに対する管理者権限をユーザーに付与する管理証明書。 詳細については、「[Azure の管理証明書の作成とアップロード](../../cloud-services/cloud-services-certs-create.md)」をご覧ください。
 - Storage などのサービス用のアクセス キー。 詳細については、「[Azure ストレージ アカウントの概要](../../storage/common/storage-account-overview.md)」を参照してください。

@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2886b842aab81732beec0fdd7957aab8e2b4f5e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3853d0e5754f368043414ea4eaade8c4adf179e9
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76548868"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661863"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect 同期: 既定の構成について
 この記事では、既定の構成ルールについて説明します。 規則とそれが構成に与える影響について記載されています。 また、Azure AD Connect 同期の既定の構成についても説明します。この記事の目標は、宣言型のプロビジョニングと呼ばれる構成モデルのしくみを実例を用いて読者に理解してもらうことです。 この記事では、インストール ウィザードを使用して既に Azure AD Connect 同期をインストールし、構成していることを前提としています。
@@ -223,7 +223,7 @@ NULL
 | 名前 | 解説 |
 |:--- |:--- |
 | AD からの受信 - ユーザー結合 |コネクタ スペース オブジェクトをメタバースと結合するための規則。 |
-| AD からの受信 - ユーザー アカウント有効 |Azure AD と Office 365 にサインインするために必要な属性。 これらの属性は有効なアカウントから取得します。 |
+| AD からの受信 - ユーザー アカウント有効 |Azure AD と Microsoft 365 にサインインするために必要な属性。 これらの属性は有効なアカウントから取得します。 |
 | AD からの受信 - Exchange からのユーザー共通 |グローバル アドレス一覧で見つかった属性。 ユーザーのメールボックスが見つかったフォレストのデータ品質が最も優れていると想定しています。 |
 | AD からの受信 - ユーザー共通 |グローバル アドレス一覧で見つかった属性。 メールボックスが見つからなかった場合、それ以外の結合済みオブジェクトが属性値に影響する可能性があります。 |
 | AD からの受信 - ユーザー Exchange |Exchange が検出された場合にのみ存在します。 インフラストラクチャの Exchange 属性がすべてフローされます。 |

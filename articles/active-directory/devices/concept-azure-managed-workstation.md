@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05a3a8cf14a591dd3037175e4eed5b5bd8d3096c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4298518dae9afdf197321073846fa1ab9262ec0a
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78672656"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601386"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>セキュリティで保護された Azure マネージド ワークステーションを理解する
 
@@ -64,7 +64,7 @@ ms.locfileid: "78672656"
 * SWIFT 支払い端末などの機密性の高いワークステーション
 * 企業機密を扱うワークステーション
 
-リスクを軽減するには、これらのアカウントが使用されている特権ワークステーションに対して、管理者特権でのセキュリティ制御を実装する必要があります。 詳細については、「[Azure Active Directory 機能のデプロイ ガイド](../fundamentals/active-directory-deployment-checklist-p2.md)」、[Office 365 ロードマップ](https://aka.ms/o365secroadmap)、および[特権アクセスのセキュリティ保護のロードマップ](https://aka.ms/sparoadmap)に関するページを参照してください。
+リスクを軽減するには、これらのアカウントが使用されている特権ワークステーションに対して、管理者特権でのセキュリティ制御を実装する必要があります。 詳細については、「[Azure Active Directory 機能のデプロイ ガイド](../fundamentals/active-directory-deployment-checklist-p2.md)」、[Microsoft 365 ロードマップ](https://aka.ms/o365secroadmap)および[特権アクセスのセキュリティ保護のロードマップ](https://aka.ms/sparoadmap)に関するページを参照してください。
 
 ## <a name="why-use-dedicated-workstations"></a>専用のワークステーションを使用する理由
 
@@ -73,7 +73,7 @@ ms.locfileid: "78672656"
 メールや Web の閲覧によって攻撃ベクトルの数が増え続けていることで、デバイスを信頼できると保証することがますます困難になっています。 このガイドでは、専用のワークステーションが標準的な生産性、閲覧、およびメールから分離されていることを前提としています。 デバイスから生産性、Web の閲覧、およびメールを取り除くと、生産性に悪影響を及ぼす可能性があります。 ただし、この保護は通常、ジョブ タスクで明示的に要求されず、セキュリティ インシデントのリスクが高いシナリオには適しています。
 
 > [!NOTE]
-> ここでの Web の閲覧は、リスクの高いアクティビティになる可能性がある任意の Web サイトへの一般的なアクセスを指しています。 このような閲覧は、Web ブラウザーを使用してサービス (Azure、Office 365、その他のクラウド プロバイダー、SaaS アプリケーションなど) のために少数の既知の正常な管理用 Web サイトにアクセスすることとは明らかに違います。
+> ここでの Web の閲覧は、リスクの高いアクティビティになる可能性がある任意の Web サイトへの一般的なアクセスを指しています。 このような閲覧は、サービス (Azure、Microsoft 365、その他のクラウド プロバイダー、SaaS アプリケーションなど) 用の数少ない既知の管理用 Web サイトにアクセスするために Web ブラウザーを使用することとは、明らかに違います。
 
 コンテインメント戦略では、攻撃者が機密性の高い資産へのアクセスを得ることを阻止するコントロールの数と種類を増やすことで、セキュリティを強化します。 この記事で説明されているモデルは、階層化された権限設計を使用して、特定のデバイスへの管理特権を制限します。
 

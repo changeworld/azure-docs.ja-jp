@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 53db148eac0d56e53bb96e0597ad53d3183d86e9
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: f49af1488a0c044639a72fc2ea52ba0a47727a24
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192514"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433672"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>CDN ファイルの圧縮のトラブルシューティング
 この記事では、 [CDN ファイルの圧縮](cdn-improve-performance.md)に関する問題のトラブルシューティングについて説明します。
@@ -111,8 +111,8 @@ ms.locfileid: "88192514"
 
 圧縮の対象であるには、ファイルは次のサイズ要件を満たす必要があります。
 
-* 128 バイトより大きい
-* 1 MB 未満
+* 128 バイトを超える (Content-Length: 128)
+* 3 MB 未満
 
 ### <a name="check-the-request-at-the-origin-server-for-a-via-header"></a>配信元サーバーで要求の **Via** ヘッダーをチェックする
 **Via** HTTP ヘッダーは、その要求がプロキシ サーバーを介して送信されていることを Web サーバーに伝えます。  既定では、要求に **Via** ヘッダーが含まれている場合、Microsoft IIS Web サーバーは応答を圧縮しません。  この動作をオーバーライドするには、次の作業を実行します。

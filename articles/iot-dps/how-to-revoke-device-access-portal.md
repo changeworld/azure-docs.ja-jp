@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: abc625c27617c27a79fe284393cdf7b281973bc4
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: f5bedde9e5e095b1b8637a09263bf18b06bcddea
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299260"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532343"
 ---
 # <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning サービスからデバイスの登録を抹消する方法
 
 IoT ソリューションなどの重要なシステムでは、デバイスの資格情報を適切に管理することが極めて重要です。 このようなシステムでは、デバイスの資格情報 (Shared Access Aignatures (SAS) トークンと X.509 証明書のいずれでも) が侵害された場合にデバイスのアクセスを取り消す方法について明確なプランを立てることが最善の方法です。 
 
-デバイス プロビジョニング サービスに登録すると、デバイスを[自動プロビジョニング](concepts-auto-provisioning.md)できます。 プロビジョニングされたデバイスは、IoT Hub で登録されているデバイスで、最初の[デバイス ツイン](~/articles/iot-hub/iot-hub-devguide-device-twins.md)状態を受け取り、利用統計情報の報告を開始できます。 この記事では、プロビジョニング サービス インスタンスからデバイスの登録を抹消して、今後プロビジョニングが行われないようにする方法について説明します。
+デバイス プロビジョニング サービスに登録すると、デバイスを[プロビジョニング](about-iot-dps.md#provisioning-process)できます。 プロビジョニングされたデバイスは、IoT Hub で登録されているデバイスで、最初の[デバイス ツイン](~/articles/iot-hub/iot-hub-devguide-device-twins.md)状態を受け取り、利用統計情報の報告を開始できます。 この記事では、プロビジョニング サービス インスタンスからデバイスの登録を抹消して、今後プロビジョニングが行われないようにする方法について説明します。
 
 > [!NOTE] 
 > アクセスを取り消すデバイスの再試行ポリシーに注意してください。 たとえば、無限に再試行するポリシーを持つデバイスでは、プロビジョニング サービスへの登録が継続的に試行される場合があります。 その状況では、サービス リソースが消費され、パフォーマンスに影響を及ぼす可能性があります。

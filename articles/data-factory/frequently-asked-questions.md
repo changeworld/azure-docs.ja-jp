@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: b8bd471c5fd5346fcc7e95b9afb49e833e7c6384
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 2d2c4145ab0a070e4cb20d89b8a0d3973b23d9ed
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84187289"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440509"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory FAQ
 
@@ -190,7 +190,7 @@ Microsoft では、データ フローに関するサポートやトラブルシ
 
 ### <a name="how-do-i-access-data-by-using-the-other-90-dataset-types-in-data-factory"></a>Data Factory で他の 90 個のデータセット型を使用してデータにアクセスする方法はありますか?
 
-現在、マッピング データ フロー機能では、ネイティブのソースおよびシンクとして、Azure SQL Database、Azure SQL Data Warehouse のほか、Azure Blob Storage または Azure Data Lake Storage Gen2 からの区切りテキスト ファイル、および BLOB ストレージまたは Data Lake Storage Gen2 からの Parquet ファイルが許可されています。 
+現在、マッピング データ フロー機能では、ネイティブのソースおよびシンクとして、Azure SQL Database、Azure Synapse Analytics (旧称 SQL Data Warehouse) のほか、Azure Blob Storage または Azure Data Lake Storage Gen2 からの区切りテキスト ファイル、および BLOB ストレージまたは Data Lake Storage Gen2 からの Parquet ファイルが許可されています。 
 
 コピー アクティビティを使用して、データを他の任意のコネクタから段階的に送り、Data Flow のアクティビティを実行してステージングの後にデータを変換します。 たとえば、まずパイプラインを BLOB ストレージにコピーし、次に Data Flow のアクティビティでソースのデータセットを使用して、データを変換します。
 

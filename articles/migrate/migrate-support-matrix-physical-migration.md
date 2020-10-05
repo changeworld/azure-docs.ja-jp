@@ -4,12 +4,12 @@ description: Azure Migrate での物理サーバーの移行のサポートに�
 ms.topic: conceptual
 ms.custom: fasttrack-edit
 ms.date: 06/14/2020
-ms.openlocfilehash: 30c96b11fb15ca1783b6ffc574d9d258dff9da06
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 2e71ab5cd934f2fe931cd901d425061455cc9f0e
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051136"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89535450"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>物理サーバーの移行のサポート マトリックス
 
@@ -45,7 +45,7 @@ ms.locfileid: "89051136"
 **モビリティ サービス** | 移行する各コンピューターにモビリティ サービス エージェントがインストールされている必要があります。
 **UEFI ブート** | Azure の移行されたコンピューターは、BIOS ブート Azure VM に自動的に変換されます。 Windows Server 2012 以降を実行しているサーバーのみがサポートされます。<br/><br/> OS ディスクには最大 4 つのパーティションが必要で、ボリュームは NTFS でフォーマットされている必要があります。
 **UEFI - セキュア ブート**         | 移行はサポートされません。
-**ターゲット ディスク** | コンピューターは、Azure のマネージド ディスク (Standard HDD、Premium SSD) にのみ移行できます。
+**ターゲット ディスク** | コンピューターは、Azure のマネージド ディスク (Standard HDD、Standard SSD、Premium SSD) にのみ移行できます。
 **ディスク サイズ** | 2 TB の OS ディスク。データ ディスク用に 8 TB。
 **ディスクの制限** |  コンピューターあたり最大 63 台のディスク。
 **暗号化されたディスクまたはボリューム** |  移行では、暗号化されたディスク/ボリュームを含むコンピューターはサポートされません。

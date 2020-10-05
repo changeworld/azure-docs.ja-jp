@@ -1,30 +1,28 @@
 ---
 title: Windows 用の Azure Notification Hubs の安全なプッシュ
 description: Azure でセキュリティで保護されたプッシュ通知を送信する方法について説明します。 コード サンプルは .NET API を使用して C# で記述されています。
-documentationcenter: windows
 author: sethmanheim
 manager: femila
-editor: jwargo
+editor: thsomasu
 services: notification-hubs
-ms.assetid: 5aef50f4-80b3-460e-a9a7-7435001273bd
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: windows
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 09/14/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4c75af054a342e74606696f09c227822f385e096
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 98e587103e63cd5cc26eab5b00864d00e0b9007f
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017993"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089950"
 ---
-# <a name="securely-push-notifications-from-azure-notification-hubs"></a>Azure Notification Hubs から通知を安全にプッシュする
+# <a name="send-secure-push-notifications-from-azure-notification-hubs"></a>Azure Notification Hubs から安全なプッシュ通知を送信する
 
 > [!div class="op_single_selector"]
 > * [Windows ユニバーサル](notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md)
@@ -48,21 +46,22 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 重要なのは、前のフロー (およびこのチュートリアル) では、デバイスは、ユーザーがログインした後、認証トークンをローカル ストレージに保存すると想定していることです。 デバイスはこのトークンを使用して通知の安全なペイロードを取得できるため、これによって完全にシームレスなエクスペリエンスが保証されます。 アプリケーションがデバイスに認証トークンを格納しない、またはそれらのトークンが期限切れの場合、デバイスのアプリケーションは、通知を受け取ったときにアプリケーションの起動を促す一般的な通知を表示する必要があります。 その後、アプリケーションはユーザーを認証し、通知ペイロードを表示します。
 
-この安全なプッシュのチュートリアルでは、プッシュ通知を安全に送信する方法を説明します。 このチュートリアルは「 [ユーザーへの通知](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md) 」チュートリアルに基づいて記述されているため、先にそのチュートリアルでの手順を完了してください。
+このチュートリアルでは、プッシュ通知を安全に送信する方法について説明します。 このチュートリアルは、[ユーザーへの通知](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md)に関するチュートリアルに基づいて作成されているため、先にそのチュートリアルの手順を完了する必要があります。
 
 > [!NOTE]
-> このチュートリアルは、「 [Notification Hubs の使用 (Windows ストア)](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)」の説明に従って通知が作成され、構成されていることを前提としています。
+> このチュートリアルは、[ユニバーサル Windows プラットフォーム アプリへの通知の送信](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)に関するチュートリアルでの説明に従って、通知ハブの作成および構成が行われていることを想定しています。
 > また、Windows Phone 8.1 には (Windows Phone ではなく) Windows の資格情報が必要で、Windows Phone 8.0 または Silverlight 8.1 ではバックグラウンド タスクが機能しないことに注意してください。 Windows ストア アプリケーションの場合は、アプリケーションでロック画面が有効 (Appmanifest でチェック ボックスをオンにする) な場合にだけバックグラウンド タスクから通知を受信できます。
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
-## <a name="modify-the-windows-phone-project"></a>Windows Phone プロジェクトを変更する
+## <a name="modify-the-windows-phone-project"></a>Windows Phone プロジェクトの変更
 
 1. **NotifyUserWindowsPhone** プロジェクトで、次のコードを App.xaml.cs に追加して、プッシュ バックグラウンド タスクを登録します。 `OnLaunched()` メソッドの最後に次のコード行を追加します。
 
     ```csharp
     RegisterBackgroundTask();
     ```
+
 2. 引き続き App.xaml.cs で、 `OnLaunched()` の直後に次のコードを追加します。
 
     ```csharp
@@ -80,15 +79,17 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
         }
     }
     ```
+
 3. App.xaml.cs ファイルの先頭に次の `using` ステートメントを追加します。
 
     ```csharp
     using Windows.Networking.PushNotifications;
     using Windows.ApplicationModel.Background;
     ```
+
 4. Visual Studio の **[ファイル]** メニューで **[すべて保存]** をクリックします。
 
-## <a name="create-the-push-background-component"></a>プッシュ バックグラウンド コンポーネントを作成する
+## <a name="create-the-push-background-component"></a>プッシュ バックグラウンド コンポーネントの作成
 
 次の手順では、プッシュ バックグラウンド コンポーネントを作成します。
 
@@ -143,6 +144,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
             }
         }
     ```
+
 5. ソリューション エクスプローラーで **PushBackgroundComponent (Windows Phone 8.1)** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。
 6. 左側で、 **[オンライン]** をクリックします。
 7. **[検索]** ボックスに、「**Http Client**」と入力します。
@@ -160,6 +162,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
     using Windows.UI.Notifications;
     using Windows.Data.Xml.Dom;
     ```
+
 11. ソリューション エクスプローラーで、**NotifyUserWindowsPhone (Windows Phone 8.1)** プロジェクトの **[参照]** を右クリックし、 **[参照の追加]** をクリックします。参照マネージャー ダイアログで、**PushBackgroundComponent** のチェック ボックスをオンにして、 **[OK]** をクリックします。
 12. ソリューション エクスプローラーで、**NotifyUserWindowsPhone (Windows Phone 8.1)** プロジェクトの **[Package.appxmanifest]** をダブルクリックします。 **[通知]** で、 **[トースト対応]** を **[はい]** に設定します。
 

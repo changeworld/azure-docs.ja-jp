@@ -4,12 +4,12 @@ description: Azure Backup と PowerShell を使用して Azure VM 内の SQL Dat
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: b355aaa465132e86c636c68552f3d650b51b08f1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 37e2336b262311ea00e833ad91fe5e8c5c1ddf1e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004988"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975193"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>PowerShell を使用して Azure VM で SQL データベースをバックアップおよび復元する
 
@@ -102,7 +102,7 @@ Recovery Services コンテナーは Resource Manager のリソースである�
 
 3. コンテナー ストレージに使用する冗長性の種類を指定します。
 
-    * [ローカル冗長ストレージ](../storage/common/storage-redundancy.md)または [geo 冗長ストレージ](../storage/common/storage-redundancy.md)を使用できます。
+    * [ローカル冗長ストレージ](../storage/common/storage-redundancy.md#locally-redundant-storage)、[geo 冗長ストレージ](../storage/common/storage-redundancy.md#geo-redundant-storage)、または[ゾーン冗長ストレージ](../storage/common/storage-redundancy.md#zone-redundant-storage)を使用することができます。
     * 次の例では、**testvault** に対する [Set-AzRecoveryServicesBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) コマンドの **-BackupStorageRedundancy** オプションが **GeoRedundant** に設定されています。
 
     ```powershell

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b14dd4aa44620f2b13891a18fc473acbcb0f3245
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 760e0212d2d863e6b869c23c2e523a0e056a28ed
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89082321"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033032"
 ---
 # <a name="how-to-resolve-azure-advisor-recommendations"></a>Azure Advisor の推奨事項を解決する方法
 
@@ -34,7 +34,7 @@ ms.locfileid: "89082321"
 
 2. 次に、運用環境から検証環境に変更するホスト プールを選択します。
 
-3. ホスト プールで、画面右側の列にある **[プロパティ]** タブを選択します。 次に、[検証環境] が表示されるまで下にスクロールします。 **[はい]** を選択してから、 **[適用]** を選択します。
+3. ホスト プールの左列で **[プロパティ]** を選択します。 次に、[検証環境] が表示されるまで下にスクロールします。 **[はい]** を選択してから、 **[適用]** を選択します。
 
 >[!div class="mx-imgBorder"]
 >![[プロパティ] メニューのスクリーンショット。 [検証環境] が赤色で強調表示され、[はい] ボタンが選択されている。](media/validation-yes.png)

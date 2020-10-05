@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: b4905b1aba11a2f8c457d4785897cbe70dd31f76
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 63e648681a63daafe1eaeb1d2e8e5a6cd607aa70
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687418"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446338"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>組織の Azure の価格の表示とダウンロード
 
@@ -28,17 +28,17 @@ Azure Enterprise Agreement (EA)、Microsoft 顧客契約 (MCA)、Microsoft Partn
 1. エンタープライズ管理者として [Azure portal](https://portal.azure.com/) にサインインします。
 1. "*コスト管理 + 請求*" を検索します。
 
-   ![Azure portal の検索を表示するスクリーンショット](./media/ea-pricing/portal-cm-billing-search.png)
+   ![Azure portal での検索を示すスクリーンショット。](./media/ea-pricing/portal-cm-billing-search.png)
 
 1. 課金アカウントの下で、 **[使用量 + 請求金額]** を選択します。
 
    ![[請求] で使用量と請求金額を確認できることを示すスクリーンショット](./media/ea-pricing/ea-pricing-usage-charges-nav.png)
 
-1. その月の ![[Azure portal の検索を表示するスクリーンショット]](./media/ea-pricing/download-icon.png) を選択し、 **[ダウンロード]** を選択します。
+1. ![ダウンロード アイコン](./media/ea-pricing/download-icon.png)を選択します。 その月の **[ダウンロード]** を選択します。
 
 1. **[価格シート]** の下で **[CSV のダウンロード]** を選択します。
 
-   ![価格シートの [CSV のダウンロード] ボタンを示すスクリーンショット](./media/ea-pricing/download-ea-price-sheet.png)
+   ![[使用量と請求金額をダウンロードする] オプションを示すスクリーンショット。](./media/ea-pricing/download-ea-price-sheet.png)
 
 ## <a name="download-pricing-for-an-mca-or-mpa-account"></a>MCA または MPA アカウントの価格をダウンロードする
 
@@ -54,8 +54,8 @@ MCA を結んでいる場合、価格を表示してダウンロードするた�
 1. 行の末尾にある省略記号 (`...`) をクリックします。
 ![選択されている省略記号を示すスクリーンショット](./media/ea-pricing/billingprofile-invoicegrid-new.png)
 
-1. 選択した請求書のサービスの価格を表示する場合は、 **[請求書価格シート]** を選択してください。
-1. 特定の請求期間のすべての Azure サービスの価格を表示する場合は、 **[Azure 価格シート]** を選択してください。
+1. 選択した請求書のサービスの価格を表示する場合は、**[請求書価格シート]** を選択してください。
+1. 特定の請求期間のすべての Azure サービスの価格を表示する場合は、**[Azure 価格シート]** を選択してください。
 
 ![コンテキスト メニューと価格シートを示すスクリーンショット](./media/ea-pricing/contextmenu-pricesheet01.png)
 
@@ -70,7 +70,7 @@ MCA を結んでいる場合、現在の請求期間の価格をダウンロー�
 1. **[Azure 価格シート]** を選択します。
 ![概要からのダウンロードを示すスクリーンショット](./media/ea-pricing/open-pricing01.png)
 
-## <a name="estimate-costs-with-the-azure-pricing-calculator"></a>Azure 料金計算ツールを利用してコストを見積もる
+## <a name="estimate-costs-with-the-azure-pricing-calculator"></a>Azure 料金計算ツールでコストを見積もる
 
 組織の価格と Azure 料金計算ツールを利用してコストを見積もることもできます。
 
@@ -79,7 +79,7 @@ MCA を結んでいる場合、現在の請求期間の価格をダウンロー�
 1. **[Programs and Offer]\(プログラムとオファー\)**  >  の **[ライセンス プログラム]** の下で、 **[Enterprise Agreement (EA)]** を選択します。
 1. **[Programs and Offer]\(プログラムとオファー\)**  >  の **[選択された契約]** の下で、 **[選択されていません]** を選択します。
 
-    ![価格シートの [CSV のダウンロード] ボタンを示すスクリーンショット](./media/ea-pricing/ea-pricing-calculator-estimate.png)
+    ![使用できる状態の [Programs and Offer]\(プログラムとプラン\) を示すスクリーンショット。](./media/ea-pricing/ea-pricing-calculator-estimate.png)
 
 1. 組織を選択します。
 1. **[適用]** を選択します。

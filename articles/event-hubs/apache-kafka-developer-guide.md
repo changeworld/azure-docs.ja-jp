@@ -3,18 +3,18 @@ title: Event Hubs 用 Apache Kafka 開発者ガイド
 description: この記事では、Kafka アプリケーションを Azure Event Hubs と統合する方法を説明している記事のリンクを紹介します。
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: bbd173a7f81042c0839cec81838172b21f80d5cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 757db4faf2a933e366bc818d5cf6aab04d0b08ba
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314236"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061735"
 ---
 # <a name="apache-kafka-developer-guide-for-azure-event-hubs"></a>Azure Event Hubs のための Apache Kafka 開発者ガイド
 この記事では、Apache Kafka アプリケーションを Azure Event Hubs と統合する方法を説明している記事のリンクを紹介します。 
 
 ## <a name="overview"></a>概要
-Event Hubs は、独自の Kafka クラスターを実行する代わりに、既存の Kafka ベースのアプリケーションが使用できる Kafka エンドポイントを提供します。 Event Hubs は、Apache Kafka プロトコル 1.0 以降をサポートしており、MirrorMaker を含む既存の Kafka アプリケーションに対応します。 詳細については、[Apache Kafka 用の Event Hubs](event-hubs-for-kafka-ecosystem-overview.md) に関するページを参照してください
+Event Hubs は、独自の Kafka クラスターを実行する代わりに、既存の Kafka ベースのアプリケーションが使用できる Kafka エンドポイントを提供します。 Event Hubs は、既存の Kafka アプリケーションの多くで動作します。 詳細については、[Apache Kafka 用の Event Hubs](event-hubs-for-kafka-ecosystem-overview.md) に関するページを参照してください
 
 ## <a name="quickstarts"></a>クイックスタート
 GitHub とこのコンテンツ セットには、Kafka 用の Event Hubs をすぐに把握できるクイックスタートがあります。

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: d266583a2bd73c92a58fad1882a1c572ed4f3769
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: a93c127d0b04667b0f28949f4b384f22769bace4
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056263"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018596"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -1257,23 +1257,7 @@ $orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
 
 問題が解決されない場合は、AFSDiag ツールを実行し、その .zip ファイルの出力を、ケースに割り当てられたサポート エンジニアに送信して、さらに詳しい診断を依頼します。
 
-エージェント バージョン v11 以降の場合:
-
-1. 管理者特権で PowerShell ウィンドウを開き、次のコマンドを実行します (各コマンドの後で Enter キーを押します)。
-
-    > [!NOTE]
-    >AFSDiag はログを収集する前に、出力ディレクトリとその中の一時フォルダーを作成し、実行後に一時フォルダーを削除します。 データが含まれていない出力場所を指定してください。
-    
-    ```powershell
-    cd "c:\Program Files\Azure\StorageSyncAgent"
-    Import-Module .\afsdiag.ps1
-    Debug-AFS -OutputDirectory C:\output -KernelModeTraceLevel Verbose -UserModeTraceLevel Verbose
-    ```
-
-2. 問題を再現します。 操作が終了したら、 **[D]** を入力します。
-3. ログファイルとトレース ファイルを含む .zip ファイルが、指定した出力ディレクトリに保存されます。 
-
-エージェント バージョン v10 以前の場合:
+AFSDiag を実行するには、次の手順を行います。
 1. AFSDiag の出力が保存されるディレクトリを作成します (例: C:\Output)。
     > [!NOTE]
     >AFSDiag では、ログが収集される前に、出力ディレクトリ内のすべてのコンテンツが削除されます。 データが含まれていない出力場所を指定してください。

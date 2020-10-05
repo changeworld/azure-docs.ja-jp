@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d662689d44bcdbd468c882de0679fd60c9ab4f4
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 6b24bd190eac9cb6c29ceab6eb597d8d1c48f2ff
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640448"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605092"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Azure Active Directory 用の基幹業務アプリをの開発する
-このガイドでは、Azure Active Directory (AD) 用の基幹業務 (LoB) アプリケーションの開発の概要について説明します。Active Directory/Office 365 のグローバル管理者向けに記述されています。
+このガイドでは、Active Directory/Microsoft 365 のグローバル管理者を対象に、Azure Active Directory (AD) 用の基幹業務 (LoB) アプリケーションの開発の概要について説明します。
 
 ## <a name="overview"></a>概要
-Azure AD と統合されるアプリケーションを構築すると、組織内のユーザーは、Office 365 でシングル サインオンできます。 アプリケーションを Azure AD と統合すると、アプリケーションの認証ポリシーを管理できます。 条件付きアクセスと多要素認証 (MFA) によってアプリを保護する方法については、「[アクセス ルールの構成](../conditional-access/app-based-mfa.md)」を参照してください。
+Azure AD と統合されるアプリケーションを構築すると、組織内のユーザーは Microsoft 365 でシングル サインオンできます。 アプリケーションを Azure AD と統合すると、アプリケーションの認証ポリシーを管理できます。 条件付きアクセスと多要素認証 (MFA) によってアプリを保護する方法については、「[アクセス ルールの構成](../conditional-access/app-based-mfa.md)」を参照してください。
 
 Azure Active Directory を使用するようにアプリケーションを登録します。 アプリケーションを登録することで、開発者が Azure AD を使用してユーザーを認証し、電子メール、カレンダー、ドキュメントなどのユーザー リソースへのアクセスを要求できます。
 

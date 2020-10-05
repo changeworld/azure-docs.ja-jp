@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 27073cb7cbd78183e519290c676c2499700b0cca
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: cc44f05491cc17adb9ca51963d09667400fa1ff6
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442549"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371917"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA Portal の管理
 
@@ -175,7 +175,7 @@ Azure エンタープライズのユーザーは、認証の種類を Microsoft 
 
 ### <a name="how-many-azure-account-owners-can-you-have-per-subscription"></a>サブスクリプションあたりの Azure アカウント所有者は何人までですか?
 
-サブスクリプションごとに 1 人のアカウント所有者のみが許可されます。  [Azure portal](https://portal.azure.com) のページの左上にある [サブスクリプション] タブで、ロールベースのアクセスまたは (アクセス制御 (IAM)) を使用してさらにロールを追加できます。
+サブスクリプションごとに 1 人のアカウント所有者のみが許可されます。  [Azure portal](https://portal.azure.com) のページの左上隅にある [サブスクリプション] タブでは、ロールベースのアクセス制御 (Azure RBAC) を使用して、さらにロールを追加できます。
 
 ### <a name="can-an-azure-account-owner-be-listed-under-more-than-one-department"></a>Azure アカウント所有者は複数の部門の下に表示できますか?
 
@@ -191,7 +191,7 @@ Azure アカウントの所有者は、無制限の数のサブスクリプシ�
 
 ### <a name="how-can-i-accessview-all-my-organizations-subscriptions"></a>組織のすべてのサブスクリプションにアクセスする、または表示するにはどうすればよいですか?
 
-現時点では、これはポリシーによって行われる必要があります。つまり、すべての作成されたサブスクリプションについて、ロールベースのアクセスを使用してアカウントをサブスクリプションロールに追加する必要があります。
+現時点、これはポリシーによって行われる必要があります。つまり、すべての作成されたサブスクリプションについて、Azure ロールベースのアクセス制御 (Azure RBAC) を使用してアカウントをサブスクリプション ロールに追加する必要があります。
 
 ### <a name="where-do-i-go-to-create-a-subscription"></a>サブスクリプションを作成するにはどうすればよいですか?
 

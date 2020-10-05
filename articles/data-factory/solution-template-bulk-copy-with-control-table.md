@@ -11,20 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/14/2018
-ms.openlocfilehash: 46e81242c1fba463f547015a244650ae6e574580
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: be3b82765f2f5268a75147e8e1ef6de34aeb8ff2
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629084"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441070"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>制御テーブルを使用してデータベースから一括コピーを行う
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Oracle サーバー、Netezza、Teradata、または SQL Server 内のデータ ウェアハウスから Azure SQL Data Warehouse にデータをコピーするには、複数のテーブルから膨大な量のデータを読み込む必要があります。 通常は、複数のスレッドを並列して使用して単一のテーブルから行が読み込まれるように、各テーブルでデータをパーティション化する必要があります。 この記事では、これらのシナリオで使用するテンプレートについて説明します。
+Oracle サーバー、Netezza、Teradata、または SQL Server 内のデータ ウェアハウスから Azure Synapse Analytics (旧称 SQL Data Warehouse) にデータをコピーするには、複数のテーブルから膨大な量のデータを読み込む必要があります。 通常は、複数のスレッドを並列して使用して単一のテーブルから行が読み込まれるように、各テーブルでデータをパーティション化する必要があります。 この記事では、これらのシナリオで使用するテンプレートについて説明します。
 
- >注: データのボリュームが比較的小さい少数のデータ ボリュームからデータを SQL Data Warehouse にコピーする場合、[Azure Data Factory のデータ コピー ツール](copy-data-tool.md)を使用するのがより効率的です。 この記事で説明するテンプレートは、そのシナリオで必要とするものより大きくなっています。
+ >注: データのボリュームが比較的小さい少数のテーブルからデータを Azure Synapse Analytics にコピーする場合、[Azure Data Factory のデータ コピー ツール](copy-data-tool.md)を使用するのがより効率的です。 この記事で説明するテンプレートは、そのシナリオで必要とするものより大きくなっています。
 
 ## <a name="about-this-solution-template"></a>このソリューション テンプレートについて
 
@@ -44,7 +44,7 @@ Oracle サーバー、Netezza、Teradata、または SQL Server 内のデータ 
 - *Data_Destination_Container* は、データが宛先ストアにコピーされる先のルート フォルダーのパスです。 
 - *Data_Destination_Directory* は、データが宛先ストアにコピーされる先のルート以下のディレクトリ パスです。 
 
-宛先ストアのパスを定義する最後の 3 つのパラメーターは、選択した宛先がファイルベースのストレージである場合にのみ表示されます。 宛先ストアとして "Azure Synapse Analytics (旧称 SQL DW)" を選択した場合、これらのパラメーターは不要です。 ただし、SQL Data Warehouse 内のテーブル名とスキーマは、ソース データベース内のものと同じである必要があります。
+宛先ストアのパスを定義する最後の 3 つのパラメーターは、選択した宛先がファイルベースのストレージである場合にのみ表示されます。 宛先ストアとして "Azure Synapse Analytics (旧称 SQL DW)" を選択した場合、これらのパラメーターは不要です。 ただし、Azure Synapse Analytics 内のテーブル名とスキーマは、ソース データベース内のものと同じである必要があります。
 
 ## <a name="how-to-use-this-solution-template"></a>このソリューション テンプレートの使用方法
 
@@ -94,7 +94,7 @@ Oracle サーバー、Netezza、Teradata、または SQL Server 内のデータ 
 
     ![結果を確認する](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
 
-9. (省略可能) データの宛先として "Azure Synapse Analytics (旧称 SQL DW)" を選択した場合、SQL Data Warehouse Polybase に必要であれば、ステージングのために Azure Blob Storage への接続を入力する必要があります。 テンプレートを使うと、Blob ストレージのコンテナー パスが自動的に生成されます。 パイプラインの実行後は、コンテナーが作成されているかどうかを確認します。
+9. (省略可能) データの宛先として "Azure Synapse Analytics (旧称 SQL DW)" を選択した場合、Azure Synapse Analytics Polybase に必要であれば、ステージングのために Azure Blob Storage への接続を入力する必要があります。 テンプレートを使うと、Blob ストレージのコンテナー パスが自動的に生成されます。 パイプラインの実行後は、コンテナーが作成されているかどうかを確認します。
     
     ![Polybase 設定](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
        

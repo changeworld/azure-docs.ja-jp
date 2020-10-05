@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 2a66ef2f91715180ae84036fc7eead759e7ee00f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0174c8a0c96d884f42aea9b6fb1cb0d9c06ce400
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685053"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447664"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Enterprise Agreement (EA) 用の Azure Cost Management Power BI アプリを使用してコストを分析する
 
@@ -47,7 +47,7 @@ Azure Cost Management Power BI アプリは現在、[Enterprise Agreement](https
 9. 表示されるダイアログで、**BillingProfileIdOrEnrollmentNumber** の EA 登録番号を入力します。 取得するデータの月数を指定します。 既定の **[範囲]** 値である **[Enrollment Number]\(登録番号\)** のままにして、 **[次へ]** を選択します。  
   ![EA 登録情報を入力する](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
 10. 次のダイアログでは、Azure に接続し、予約インスタンスの推奨事項に必要なデータを取得します。 "*構成された既定値のままにして*"、 **[サインイン]** を選択します。  
-  ![Azure への接続](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
+  ![既定値が表示されている [Connect to Azure Cost Management App]\(Azure Cost Management アプリに接続する\) ダイアログ ボックスを示すスクリーンショット。](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
 11. 最後のインストール手順では、EA 登録に接続し、[エンタープライズ管理者](../manage/understand-ea-roles.md)アカウントが必要です。 **[サインイン]** を選択して、お客様の EA 登録で認証します。 この手順では、Power BI でデータ更新操作も開始します。  
   ![EA 登録に接続する](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png)  
     > [!NOTE]
@@ -76,7 +76,7 @@ Azure Cost Management Power BI アプリは現在、[Enterprise Agreement](https
 
 **[Top 5 Usage drivers]\(上位 5 つの使用量ドライバー)** - このレポートには、上位 5 つの MeterCategory および対応する MeterName によるフィルター処理されたコストの概要が表示されます。
 
-**[Windows Server AHB Usage]\(Windows Server AHB 使用量\)** - このレポートには、Azure ハイブリッド特典が有効になっている仮想マシンの数が表示されます。 また、仮想マシンによって使用されるコア/vCPU の数も表示されます。
+**[Windows Server AHB Usage]/(Windows Server AHB 使用量/)** - このレポートには、Azure ハイブリッド特典が有効になっている仮想マシンの数が表示されます。 また、仮想マシンによって使用されるコア/vCPU の数も表示されます。
 
 ![Azure ハイブリッド特典の完全なレポート](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report-full.png)
 
@@ -189,7 +189,7 @@ Failed to update data source credentials: The credentials provided for the Azure
 
 1. 対象のデータに接続します。
 1. EA 登録と月数を入力した後、認証方法に既定値の **[匿名]** をそのまま使用し、プライバシー レベルの設定に **[なし]** を使用します。  
-  ![Azure への接続](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png)  
+  ![[匿名] と [なし] の各値が入力されている [Connect to Azure Cost Management App]\(Azure Cost Management アプリに接続する\) ダイアログ ボックスを示すスクリーンショット。](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png)  
 1. 次のページで、認証方法に **[OAuth2]** を設定し、プライバシー レベルに **[なし]** を設定します。 次に、サインインしてお客様の登録で認証します。 この手順により、Power BI データの更新操作も開始されます。
 
 

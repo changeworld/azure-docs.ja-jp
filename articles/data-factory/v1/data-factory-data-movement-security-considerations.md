@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: c22168aade11bbba66682efea0e2f5a1fcc2ac1f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19b37472d7decb46825da4760511f1761493c246
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021502"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441937"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory - データ移動のセキュリティに関する考慮事項
 
@@ -42,7 +42,7 @@ Azure コンプライアンスと、Azure が独自のインフラストラク�
 
 この記事では、次の 2 つのデータ移動シナリオでセキュリティに関する考慮事項を確認します。 
 
-- **クラウド シナリオ** - このシナリオでは、ソースと移動先の両方にインターネットを通じてパブリックにアクセスできます。 これには、Azure Storage、Azure SQL Data Warehouse、Azure SQL Database、Azure Data Lake Store、Amazon S3、Amazon Redshift などの管理クラウド ストレージ サービス、Salesforce などの SaaS サービス、FTP や OData などの Web プロトコルが該当します。 サポートされているデータ ソースの完全な一覧は、[ここで](data-factory-data-movement-activities.md#supported-data-stores-and-formats)確認できます。
+- **クラウド シナリオ** - このシナリオでは、ソースと移動先の両方にインターネットを通じてパブリックにアクセスできます。 これには、Azure Storage、Azure Synapse Analytics (旧称 SQL Data Warehouse)、Azure SQL Database、Azure Data Lake Store、Amazon S3、Amazon Redshift などのマネージド クラウド ストレージ サービス、Salesforce などの SaaS サービス、FTP や OData などの Web プロトコルが該当します。 サポートされているデータ ソースの完全な一覧は、[ここで](data-factory-data-movement-activities.md#supported-data-stores-and-formats)確認できます。
 - **ハイブリッド シナリオ** - このシナリオでは、ソースと移動先のどちらかがファイアウォールの内側またはオンプレミスの企業ネットワーク内にあるか、データ ストアがプライベート ネットワーク/仮想ネットワーク内 (ほとんどの場合はソース) にあり、パブリックにアクセスできません。 仮想マシンでホストされているデータベース サーバーもこのシナリオに該当します。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -55,13 +55,13 @@ Azure Data Factory では、データ ストアの資格情報を保護するた
 クラウド データ ストアが HTTPS または TLS をサポートしている場合、Data Factory のデータ移動サービスとクラウド データ ストア間のデータ転送はすべて、セキュリティで保護されたチャネル HTTPS または TLS を介して行われます。
 
 > [!NOTE]
-> データがデータベースとの間で転送中である間は、常に **Azure SQL Database** および **Azure SQL Data Warehouse** への接続をすべて (SSL/TLS を使用して) 暗号化する必要があります。 JSON エディターを使用してパイプラインを作成する場合は、**encryption** プロパティを追加し、**接続文字列**で **true** に設定します。 [コピー ウィザード](data-factory-azure-copy-wizard.md)を使用すると、既定でこのプロパティが設定されます。 **Azure Storage** では、接続文字列で **HTTPS** を使用できます。
+> データベースとの間でのデータ転送中は、**Azure SQL Database** および **Azure Synapse Analytics** へのすべての接続を常に (SSL/TLS を使用して) 暗号化する必要があります。 JSON エディターを使用してパイプラインを作成する場合は、**encryption** プロパティを追加し、**接続文字列**で **true** に設定します。 [コピー ウィザード](data-factory-azure-copy-wizard.md)を使用すると、既定でこのプロパティが設定されます。 **Azure Storage** では、接続文字列で **HTTPS** を使用できます。
 
 ### <a name="data-encryption-at-rest"></a>保存データの暗号化
 一部のデータ ストアは、保存データの暗号化をサポートしています。 そうしたデータ ストアに対してはデータ暗号化メカニズムを有効にすることをお勧めします。 
 
-#### <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
-Azure SQL Data Warehouse の Transparent Data Encryption (TDE) を使用すると、保存データの暗号化と暗号化解除をリアルタイムで実行することによって、悪意のあるアクティビティの脅威から保護できます。 この動作はクライアントに対して透過的です。 詳細については、「[SQL Data Warehouse でのデータベース保護](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)」をご覧ください。
+#### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
+Azure Synapse Analytics の Transparent Data Encryption (TDE) を使用すると、保存データの暗号化と暗号化の解除をリアルタイムで実行することによって、悪意のあるアクティビティの脅威から保護できます。 この動作はクライアントに対して透過的です。 詳細については、[Synapse Analytics でのデータベース保護](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)に関する記事を参照してください。
 
 #### <a name="azure-sql-database"></a>Azure SQL データベース
 Azure SQL Database では、Transparent Data Encryption (TDE) もサポートしています。TDE を使用すると、データの暗号化と暗号化解除をリアルタイムで実行することによって、悪意のあるアクティビティの脅威から保護できます。アプリケーションを変更する必要はありません。 この動作はクライアントに対して透過的です。 詳細については、「[Azure SQL Database での Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database)」をご覧ください。 
@@ -154,11 +154,11 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 | `*.servicebus.windows.net` | 443、80 | ゲートウェイが Data Factory のデータ移動サービスに接続するために必要です。 |
 | `*.core.windows.net` | 443 | [ステージング コピー](data-factory-copy-activity-performance.md#staged-copy)機能を使用する場合に、ゲートウェイが Azure ストレージ アカウントに接続するために使用します。 | 
 | `*.frontend.clouddatahub.net` | 443 | ゲートウェイが Azure Data Factory サービスに接続するために必要です。 | 
-| `*.database.windows.net` | 1433   | (オプション) 移動先が Azure SQL Database または Azure SQL Data Warehouse である場合に必要です。 ステージング コピー機能を使用すると、ポート 1433 を開かずに Azure SQL Database または Azure SQL Data Warehouse にデータをコピーします。 | 
+| `*.database.windows.net` | 1433   | (省略可能) 移動先が Azure SQL Database または Azure Synapse Analytics である場合に必要です。 ステージング コピー機能を使用すると、ポート 1433 を開かずに Azure SQL Database または Azure Synapse Analytics にデータをコピーします。 | 
 | `*.azuredatalakestore.net` | 443 | (オプション) 移動先が Azure Data Lake Store である場合に必要です。 | 
 
 > [!NOTE] 
-> 各データ ソースで必要な場合は、企業ファイアウォール レベルでポート/ホワイトリストに登録するドメインを管理する必要があります。 この表では、例として Azure SQL Database、Azure SQL Data Warehouse、Azure Data Lake Store のみを使用しています。   
+> 各データ ソースで必要な場合は、企業ファイアウォール レベルでポート/ホワイトリストに登録するドメインを管理する必要があります。 この表では、例として Azure SQL Database、Azure Synapse Analytics、Azure Data Lake Store のみを使用しています。   
 
 次の表には、**Windows ファイアウォール**の**受信ポート**の要件を示しています。
 
@@ -174,7 +174,7 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 以下のクラウド データ ストアでは、ゲートウェイ コンピューターの IP アドレスをホワイトリストに登録する必要があります。 これらのデータ ストアの中には、既定では、IP アドレスをホワイトリストに登録する必要がないものもあります。 
 
 - [Azure SQL Database](../../azure-sql/database/firewall-configure.md) 
-- [Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
+- [Azure Synapse Analytics](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
 - [Azure Data Lake Store](../../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../../cosmos-db/firewall-support.md)
 - [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
@@ -185,7 +185,7 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 **回答:** この機能はまだサポートされていません。 現在、この機能のサポートに積極的に取り組んでいます。
 
 **質問:** ゲートウェイが動作するためのポートの要件は何ですか?
-**回答:** ゲートウェイは、インターネットを開くために HTTP ベースの接続を確立します。 ゲートウェイがこの接続を確立するためには、**送信ポート 443 と 80** を開く必要があります。 資格情報マネージャー アプリケーションのコンピューター レベル (オンプレミスのファイアウォール レベルではない) でのみ**受信ポート 8050** を開きます。 Azure SQL Database または Azure SQL Data Warehouse をソースまたは移動先として使用する場合は、ポート **1433** も開く必要があります。 詳細については、[ファイアウォール構成とホワイトリストに登録する IP アドレス](#firewall-configurations-and-whitelisting-ip-address-of gateway)に関するセクションを参照してください。 
+**回答:** ゲートウェイは、インターネットを開くために HTTP ベースの接続を確立します。 ゲートウェイがこの接続を確立するためには、**送信ポート 443 と 80** を開く必要があります。 資格情報マネージャー アプリケーションのコンピューター レベル (オンプレミスのファイアウォール レベルではない) でのみ**受信ポート 8050** を開きます。 Azure SQL Database または Azure Synapse Analytics をソースまたは移動先として使用する場合は、ポート **1433** も開く必要があります。 詳細については、[ファイアウォール構成とホワイトリストに登録する IP アドレス](#firewall-configurations-and-whitelisting-ip-address-of gateway)に関するセクションを参照してください。 
 
 **質問:** ゲートウェイの証明書の要件は何ですか?
 **回答:** 現行のゲートウェイには、資格情報マネージャー アプリケーションがデータ ストアの資格情報を安全に設定するために使用する証明書が必要です。 この証明書は、ゲートウェイの設定によって作成および構成された自己署名証明書です。 代わりに独自の TLS または SSL 証明書を使用できます。 詳細については、「[ClickOnce 資格情報マネージャー アプリケーション](#click-once-credentials-manager-app)」セクションを参照してください。 

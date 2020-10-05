@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: c0fcc9d5753ce90365829fba658031e633819513
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6ef5a457bac7b384dc1b4349b1782a752c41ea26
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683268"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447610"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>チュートリアル:データをエクスポートし、管理する
 
@@ -91,9 +91,9 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com/) にサイン�
 
 1. まだ管理グループを作成していない場合は作成し、そのグループにサブスクリプションを割り当てます。
 1. コスト分析で、管理グループにスコープを設定し、 **[Select this management group]\(この管理グループを選択する\)** を選択します。  
-    :::image type="content" source="./media/tutorial-export-acm-data/management-group-scope.png" alt-text="[Select this management group]\(この管理グループを選択する\) オプションを示す例" lightbox="./media/tutorial-export-acm-data/management-group-scope.png":::
+    :::image type="content" source="./media/tutorial-export-acm-data/management-group-scope.png" alt-text="新しいエクスポートの例" lightbox="./media/tutorial-export-acm-data/management-group-scope.png":::
 1. そのスコープでエクスポートを作成し、管理グループに含まれるサブスクリプションのコスト管理データを取得します。  
-    :::image type="content" source="./media/tutorial-export-acm-data/new-export-management-group-scope.png" alt-text="新しいエクスポートの作成オプションを示す例。スコープとして管理グループが設定されています":::
+    :::image type="content" source="./media/tutorial-export-acm-data/new-export-management-group-scope.png" alt-text="新しいエクスポートの例":::
 
 ## <a name="verify-that-data-is-collected"></a>データが収集されたことを確認する
 
@@ -103,7 +103,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com/) にサイン�
 
 ![情報の例と、[Explorer で開く] へのリンクを示すストレージ アカウント ページ](./media/tutorial-export-acm-data/storage-account-page.png)
 
-Storage Explorer で、開くコンテナーに移動し、当月のフォルダーを選択します。 CSV ファイルの一覧が表示されます。 1 つを選択して、 **[開く]** を選択します。
+ストレージ エクスプローラーで、開くコンテナーに移動し、当月のフォルダーを選択します。 CSV ファイルの一覧が表示されます。 1 つを選択して、 **[開く]** を選択します。
 
 ![ストレージ エクスプローラーに表示される情報の例](./media/tutorial-export-acm-data/storage-explorer.png)
 
@@ -128,11 +128,11 @@ Storage Explorer で、開くコンテナーに移動し、当月のフォルダ
 
 エクスポートの一覧ページで個々のエクスポートを選択することによって、スケジュールされたエクスポートの実行履歴を表示できます。 エクスポートの一覧ページでは、前回のエクスポートの実行日時と、次回のエクスポートの実行日時をすばやく確認することもできます。 実行履歴の表示例を次に示します。
 
-:::image type="content" source="./media/tutorial-export-acm-data/run-history.png" alt-text="エクスポートの実行履歴を示す例":::
+:::image type="content" source="./media/tutorial-export-acm-data/run-history.png" alt-text="新しいエクスポートの例":::
 
 実行履歴を表示するエクスポートを選択します。
 
-:::image type="content" source="./media/tutorial-export-acm-data/single-export-run-history.png" alt-text="エクスポートの実行履歴を示す例":::
+:::image type="content" source="./media/tutorial-export-acm-data/single-export-run-history.png" alt-text="新しいエクスポートの例":::
 
 ## <a name="access-exported-data-from-other-systems"></a>エクスポートしたデータに他のシステムからアクセスする
 

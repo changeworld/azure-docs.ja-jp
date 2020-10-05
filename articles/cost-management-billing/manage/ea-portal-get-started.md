@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 8997cf5e86eb79b527c0b37ef0b85556469aea98
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0404e3b268f5797e34b3818df8eebeefbe68a1f3
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687639"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371951"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Azure エンタープライズ ポータルを使い始める
 
@@ -242,10 +242,10 @@ Azure エンタープライズ ポータルの階層は、次のもので構成�
 
 - サブスクリプションの転送が完了すると、Microsoft によってアカウント所有者が更新されます。
 
-ロールベースのアクセス制御 (RBAC) の以下のポリシーを理解してください。
+次の Azure ロールベースのアクセス制御 (Azure RBAC) について理解してください。
 
-- 同じテナント内の 2 つの組織 ID 間でサブスクリプション転送を行う場合は、RBAC ポリシーと既存のサービス管理者および共同管理者ロールが保持されます。
-- その他のサブスクリプション譲渡では、RBAC ポリシーとロールの割り当てが失われます。
+- 同じテナント内の 2 つの組織 ID 間でサブスクリプションの譲渡を行う場合は、Azure RBAC ポリシーと既存のサービス管理者ロールおよび共同管理者ロールが保持されます。
+- その他のサブスクリプションの譲渡では、Azure RBAC ポリシーとロールの割り当てが失われます。
 - ポリシーと管理者ロールが、異なるディレクトリ間で転送されることはありません。 サービス管理者は、ターゲット アカウントの所有者に更新されます。
 
 アカウント所有者を変更する前に:
@@ -569,7 +569,7 @@ Reporting API を使用して、使用状況データにアクセスすること
 
 利用量クォータを定義するには、部署を選択した後、編集アイコンを選択します。 利用量制限の詳細を編集した後、 **[保存]** を選択します。
 
-### <a name="i-used-resource-groups-to-implement-rbac-and-track-usage-how-can-i-view-the-associated-usage-details"></a>リソース グループを使用して RBAC を実装し、使用状況を追跡しました。 関連する使用状況の詳細を表示するにはどうすればよいですか?
+### <a name="i-used-resource-groups-to-implement-azure-rbac-and-track-usage-how-can-i-view-the-associated-usage-details"></a>リソース グループを使用して Azure RBAC を実装し、使用状況を追跡しました。 関連する使用状況の詳細を表示するにはどうすればよいですか?
 
 "_リソース グループ_" と "_タグ_" を使用している場合、この情報はサービス レベルで追跡され、詳細な使用状況のダウンロード (CSV) ファイルでアクセスできます。 Azure エンタープライズ ポータルの[使用状況レポートのダウンロード](https://ea.azure.com/report/downloadusage)を参照してください。
 

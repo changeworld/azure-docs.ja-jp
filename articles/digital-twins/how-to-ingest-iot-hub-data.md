@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: IoT Hub からデバイスのテレメトリ メッセージを取り込む方法について説明します。
 author: alexkarcher-msft
 ms.author: alkarche
-ms.date: 8/11/2020
+ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7e6c200f0bec90fb73122e50885f2e6ad7420aeb
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 9fa3c27f9cc35b31fc78b2a09bea725934093e63
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564391"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983370"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Azure Digital Twins に IoT Hub テレメトリを取り込む
 
@@ -31,20 +31,20 @@ Azure Digital Twins にデータを取り込むプロセスとは、外部コン
 
 ### <a name="example-telemetry-scenario"></a>テレメトリのシナリオ例
 
-このハウツーでは、Azure 関数を使用して、IoT Hub から Azure Digital Twins にメッセージを送信する方法の概要について説明します。 このために使用できる構成とマッチング戦略は多数ありますが、この記事の例には次のパーツが含まれています。
-* 既知のデバイス ID を持つ IoT Hub の温度計デバイス。
+このハウツーでは、Azure 関数を使用して、IoT Hub から Azure Digital Twins にメッセージを送信する方法の概要について説明します。 メッセージの送信に使用できる構成とマッチング戦略は多数ありますが、この記事の例には次のパーツが含まれています。
+* 既知のデバイス ID を持つ IoT Hub の温度計デバイス
 * ID が一致するデバイスを表すデジタル ツイン
 
 > [!NOTE]
 > この例では、デバイス ID と対応するデジタル ツインの ID の間の単純な ID 一致を使用していますが、(マッピング テーブルなどを使用して) デバイスからツインへのより高度なマッピングを用意することもできます。
 
-温度計デバイスから温度テレメトリ イベントが送信されるたびに、デジタル ツインの *temperature* プロパティが更新されます。 このシナリオの概要を次の図に示します。
+サーモスタット デバイスから温度テレメトリ イベントが送信されるたびに、Azure 関数によってそのテレメトリが処理され、デジタル ツインの *temperature* プロパティが更新されます。 このシナリオの概要を次の図に示します。
 
 :::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="フロー チャートを示す図。このグラフでは、IoT Hub を通じて、温度テレメトリが IoT Hub デバイスから Azure 関数に送信されます。これにより、Azure Digital Twins 内にあるツインの temperature プロパティが更新されます。" border="false":::
 
 ## <a name="add-a-model-and-twin"></a>モデルとツインの追加
 
-IoT ハブの情報を更新するには、ツインが必要です。
+次の CLI コマンドを使用してモデルを追加またはアップロードできます。その後、このモデルを使用して IoT Hub の情報で更新されるツインを作成できます。
 
 モデルは次のようになります。
 ```JSON
@@ -129,7 +129,9 @@ await client.UpdateDigitalTwinAsync(deviceId, uou.Serialize());
 
 ### <a name="update-your-azure-function-code"></a>Azure 関数コードの更新
 
-前のサンプルのコードを理解したので、Visual Studio を開き、Azure 関数のコードを次のサンプル コードに置き換えます。
+前のサンプルのコードを理解したので、Visual Studio で「[*前提条件*](https://docs.microsoft.com/azure/digital-twins/how-to-ingest-iot-hub-data#prerequisites)」セクションから Azure 関数を開きます。 (Azure 関数がない場合は、前提条件のリンクにアクセスして、今すぐ作成してください。)
+
+Azure 関数のコードをこのサンプル コードに置き換えます。
 
 ```csharp
 using System;
@@ -191,21 +193,52 @@ namespace IotHubtoTwins
     }
 }
 ```
+関数コードを保存し、関数アプリを Azure に発行します。 これを行うには、[*関数アプリの発行*](https://docs.microsoft.com/azure/digital-twins/how-to-create-azure-function#publish-the-function-app-to-azure)に関するセクションがある[*方法: データを処理するための Azure 関数の設定*](how-to-create-azure-function.md)に関するページを参照してください。
+
+発行が成功すると、次に示すように、Visual Studio のコマンド ウィンドウに出力が表示されます。
+
+```cmd
+1>------ Build started: Project: adtIngestFunctionSample, Configuration: Release Any CPU ------
+1>adtIngestFunctionSample -> C:\Users\source\repos\Others\adtIngestFunctionSample\adtIngestFunctionSample\bin\Release\netcoreapp3.1\bin\adtIngestFunctionSample.dll
+2>------ Publish started: Project: adtIngestFunctionSample, Configuration: Release Any CPU ------
+2>adtIngestFunctionSample -> C:\Users\source\repos\Others\adtIngestFunctionSample\adtIngestFunctionSample\bin\Release\netcoreapp3.1\bin\adtIngestFunctionSample.dll
+2>adtIngestFunctionSample -> C:\Users\source\repos\Others\adtIngestFunctionSample\adtIngestFunctionSample\obj\Release\netcoreapp3.1\PubTmp\Out\
+2>Publishing C:\Users\source\repos\Others\adtIngestFunctionSample\adtIngestFunctionSample\obj\Release\netcoreapp3.1\PubTmp\adtIngestFunctionSample - 20200911112545669.zip to https://adtingestfunctionsample20200818134346.scm.azurewebsites.net/api/zipdeploy...
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
+========== Publish: 1 succeeded, 0 failed, 0 skipped ==========
+```
+発行プロセスの状態は、[Azure portal](https://portal.azure.com/) で確認することもできます。 "_リソース グループ_" を検索し、 _[アクティビテ ィログ]_ に移動して、一覧で _[Get web app publishing profile]\(Web アプリ発行プロファイルの取得\)_ を探し、状態が [成功] であることを確認します。
+
+:::image type="content" source="media/how-to-ingest-iot-hub-data/azure-function-publish-activity-log.png" alt-text="フロー チャートを示す図。このグラフでは、IoT Hub を通じて、温度テレメトリが IoT Hub デバイスから Azure 関数に送信されます。これにより、Azure Digital Twins 内にあるツインの temperature プロパティが更新されます。":::
 
 ## <a name="connect-your-function-to-iot-hub"></a>関数の IoT Hub への接続
 
-1. ハブ データのイベントの宛先を設定します。 [Azure portal](https://portal.azure.com/) で、IoT Hub インスタンスに移動します。 **[イベント]** で、Azure 関数のサブスクリプションを作成します。 
+ハブ データのイベントの宛先を設定します。
+[Azure portal](https://portal.azure.com/) で、「[*前提条件*](https://docs.microsoft.com/azure/digital-twins/how-to-ingest-iot-hub-data#prerequisites)」セクションで作成した IoT Hub インスタンスに移動します。 **[イベント]** で、Azure 関数のサブスクリプションを作成します。
 
-    :::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="イベント サブスクリプションの追加を示す Azure portal のスクリーンショット。":::
+:::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="フロー チャートを示す図。このグラフでは、IoT Hub を通じて、温度テレメトリが IoT Hub デバイスから Azure 関数に送信されます。これにより、Azure Digital Twins 内にあるツインの temperature プロパティが更新されます。":::
 
-2. **[イベント サブスクリプションの作成]** ページで、各フィールドに次のように入力します。
-    1. **[名前]** で、サブスクリプションに任意の名前を付けます。
-    2. **[イベント スキーマ]** で、 **[Event Grid スキーマ]** を選択します。
-    3. **[システム トピック名]** で、一意の名前を選択します。
-    4. **[イベントの種類]** で、フィルター処理するイベントの種類として **[デバイス テレメトリ]** を選択します。
-    5. **[エンドポイントの詳細]** で、エンドポイントとして Azure 関数を選択します。
+**[イベント サブスクリプションの作成]** ページで、各フィールドに次のように入力します。
+  1. **[名前]** で、サブスクリプションに任意の名前を付けます。
+  2. **[イベント スキーマ]** で、 _[Event Grid スキーマ]_ を選択します。
+  3. **[イベントの種類]** で、 _[Device Telemetry]\(デバイス テレメトリ\)_ チェックボックスをオンにし、その他のイベントの種類をオフにします。
+  4. **[エンドポイントのタイプ]** で _[Azure 関数]_ を選択します。
+  5. **[エンドポイント]** で、 _[エンドポイントの選択]_ リンクを選択してエンドポイントを作成します。
+    
+:::image type="content" source="media/how-to-ingest-iot-hub-data/create-event-subscription.png" alt-text="フロー チャートを示す図。このグラフでは、IoT Hub を通じて、温度テレメトリが IoT Hub デバイスから Azure 関数に送信されます。これにより、Azure Digital Twins 内にあるツインの temperature プロパティが更新されます。":::
 
-    :::image type="content" source="media/how-to-ingest-iot-hub-data/event-subscription-2.png" alt-text="イベント サブスクリプションの詳細を示す Azure portal のスクリーンショット。":::
+_[Azure 関数の選択]_ ページが開いたら、次の詳細を確認します。
+ 1. **サブスクリプション**:お使いの Azure サブスクリプション
+ 2. **[リソース グループ]** :該当するリソース グループ
+ 3. **関数アプリ**:自分の関数アプリの名前
+ 4. **Slot**:_運用_
+ 5. **関数**:ドロップダウンから Azure 関数を選択します。
+
+_[選択の確認]_ ボタンを選択して詳細を保存します。            
+      
+:::image type="content" source="media/how-to-ingest-iot-hub-data/select-azure-function.png" alt-text="フロー チャートを示す図。このグラフでは、IoT Hub を通じて、温度テレメトリが IoT Hub デバイスから Azure 関数に送信されます。これにより、Azure Digital Twins 内にあるツインの temperature プロパティが更新されます。":::
+
+_[作成]_ ボタンを選択してイベント サブスクリプションを作成します。
 
 ## <a name="send-simulated-iot-data"></a>シミュレートされた IoT データの送信
 

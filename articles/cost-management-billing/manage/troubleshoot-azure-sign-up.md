@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 08/20/2020
 ms.author: v-miegge
-ms.openlocfilehash: 86f9f92810cff241f816dadfc6e1e8ca120f1f4a
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 3e611e25288d52b0be93c76e8a3a28ce6d7d5088
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686651"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326608"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Azure portal または Azure アカウント センターで新しいアカウントをサインアップするときの問題をトラブルシューティングする
 
@@ -131,7 +131,7 @@ InPrivate ブラウズはどうですか。
 
 ### <a name="i-saw-a-charge-on-my-free-trial-account"></a>無料試用版アカウントに料金が表示されている
 
-サインアップ後にお客様のクレジット カード アカウントに少額の承認保留が一時的に表示されることがあります。 この保留は 3 日から 5 日以内に削除されます。 コストの管理についての不安がある場合は、[予想外のコストを防ぐ](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started)方法に関する記事をご覧ください。
+サインアップ後にお客様のクレジット カード アカウントに少額の承認保留が一時的に表示されることがあります。 この保留は 3 日から 5 日以内に削除されます。 コストの管理について不安がある場合の詳細については、「[想定外の料金を分析する](../understand/analyze-unexpected-charges.md)」を参照してください。
 
 ## <a name="agreement"></a>契約
 

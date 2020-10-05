@@ -1,6 +1,6 @@
 ---
 title: Microsoft Partner Agreement (MPA) に Azure サブスクリプションの課金所有権を取得する
-description: 他のユーザーから Azure サブスクリプションの課金所有権を要求する方法について説明します。
+description: Microsoft Partner Agreement (MPA) に関して、他のユーザーから Azure サブスクリプションの課金所有権を要求する方法について説明します。
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: eef36726db735cfdd42f5a103073303cf3b3a632
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: bb2a58b76445f2cfd14a905de1fb66dbff3eee7e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684951"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371016"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>MPA アカウントに Azure サブスクリプションの課金所有権を取得する
 
@@ -35,7 +35,7 @@ ms.locfileid: "88684951"
 
 1. CSP テナントの CSP 管理エージェントの資格情報を使用して、[Azure portal](https://portal.azure.com) にサインインします。
 1. "**コスト管理 + 請求**" を検索します。  
-    ![Azure portal でのコストの管理と請求の検索を示すスクリーンショット](./media/mpa-request-ownership/search-cmb.png)
+    ![課金所有権の要求を目的とした、Azure portal での [コストの管理と請求] の検索を示すスクリーンショット。](./media/mpa-request-ownership/search-cmb.png)
 1. 左側で **[顧客]** を選択し、一覧から顧客を選択します。  
     [![顧客の選択を示すスクリーンショット](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
 1. 左下で **[譲渡要求]** を選択し、 **[新しい要求を追加]** を選択します。  
@@ -56,7 +56,7 @@ ms.locfileid: "88684951"
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. "**コスト管理 + 請求**" を検索します。  
-    ![Azure portal でのコストの管理と請求の検索を示すスクリーンショット](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
+    ![譲渡状態の要求を目的とした、Azure portal での [コストの管理と請求] の検索を示すスクリーンショット。](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
 1. 左側で **[顧客]** を選択します。  
     [![顧客の選択を示すスクリーンショット](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
 1. 一覧から、譲渡要求を送信した顧客を選択します。
@@ -127,7 +127,7 @@ Azure 予約は、自動的にはサブスクリプションとともに移動�
 
 ### <a name="access-to-azure-services"></a>Azure サービスへのアクセス
 
-移転中、[Azure RBAC (ロールベースのアクセス制御)](../../role-based-access-control/overview.md) を使用して割り当てられた既存のユーザー、グループ、またはサービス プリンシパルのアクセスは影響を受けません。 パートナーは、サブスクリプションへの新しい RBAC アクセスを取得しません。
+[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) を使用して割り当てられた既存のユーザー、グループ、またはサービス プリンシパルへのアクセスは、移転中に影響を受けることはありません。 パートナーは、サブスクリプションへの新しい Azure RBAC アクセス権を取得しません。
 
 パートナーは、顧客と協力して、サブスクリプションにアクセスできるようにする必要があります。 パートナーは、[代理管理者 - AOBO](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) または [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/concepts/cloud-solution-provider) のオープン サポート チケットにアクセスする必要があります。
 
@@ -174,4 +174,4 @@ SaaS 製品は、サブスクリプションとともには渡されません。
 ## <a name="next-steps"></a>次のステップ
 
 * Azure サブスクリプションの課金所有権は、お客様に譲渡されます。 [Azure portal](https://portal.azure.com) でこれらのサブスクリプションの料金を追跡します。
-* 顧客と協力して、譲渡された Azure サブスクリプションにアクセスします。 [RBAC を使用して、Azure リソースへのアクセスを管理](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)します。
+* 顧客と協力して、譲渡された Azure サブスクリプションにアクセスします。 [Azure portal を使用して Azure ロールの割り当てを追加または削除する](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。

@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: dc4d319e0e6b55af8af460fa8a56b9ef24a53341
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 03953e210f1c4caf1541db272ce4c02c271dafaa
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89487353"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371832"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Azure アカウントにパートナー ID をリンクする
 
@@ -151,9 +151,9 @@ C:\ az managementpartner delete --partner-id 12345
 
 レポートに顧客が表示されないのは、次の理由によります。
 
-1. リンクされたユーザー アカウントに、顧客の Azure サブスクリプションまたはリソースに対する[ロールベースのアクセス](https://docs.microsoft.com/azure/role-based-access-control/overview)がありません。
+1. リンクされたユーザー アカウントに、顧客の Azure サブスクリプションまたはリソースに対する [Azure ロールベースのアクセス制御 (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) がありません。
 
-2. ユーザーの[ロールベースのアクセス](https://docs.microsoft.com/azure/role-based-access-control/overview)がある Azure サブスクリプションで使用量が発生していません。
+2. ユーザーに [Azure ロールベースのアクセス制御 (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) のアクセス権が付与されている Azure サブスクリプションで、使用量が発生していません。
 
 **パートナー ID のリンクは、Azure Stack で動作しますか。**
 

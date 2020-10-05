@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: bdf328222fef1f763776bd26c47f5cd4d65e487e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: afb4026a7865f2cc8f831d8d1d7b1d332014d310
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000007"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007572"
 ---
 # <a name="features"></a>特徴
 
@@ -98,14 +98,24 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 | 検索操作       | サポート対象 - PaaS | サポート対象 - OSS (SQL) | サポート対象 - OSS (Cosmos DB) | 解説 |
 |-------------------------|-----------|-----------|-----------|---------|
 | `_filter`               | いいえ        | いいえ        | いいえ        |         |
-| `_sort`                 | いいえ        | Partial   | 部分的        |   `_sort=_lastUpdated` がサポートされています       |
+| `_sort`                 | Partial        | Partial   | 部分的        |   `_sort=_lastUpdated` がサポートされています       |
 | `_score`                | いいえ        | いいえ        | いいえ        |         |
 | `_count`                | はい       | はい       | はい       |         |
 | `_summary`              | 部分的   | 部分的   | 部分的   | `_summary=count` がサポートされています |
 | `_include`              | いいえ        | はい       | いいえ        |         |
 | `_revinclude`           | いいえ        | はい       | いいえ        | 含まれる項目は 100 に制限されています。 |
 | `_contained`            | いいえ        | いいえ        | いいえ        |         |
-| `_elements`             | いいえ        | いいえ        | いいえ        |         |
+| `_elements`             | はい        | はい        | はい        |         |
+
+## <a name="extended-operations"></a>拡張操作
+
+サポートされており、RESTful API を拡張するあらゆる操作。
+
+| 検索パラメーターの種類 | サポート対象 - PaaS | サポート対象 - OSS (SQL) | サポート対象 - OSS (Cosmos DB) | 解説 |
+|-----------------------|-----------|-----------|-----------|---------|
+| $export (システム全体)                | はい       | はい       | はい       |         |
+| Patient/$export         | はい       | はい       | はい       |         |
+| Group/$export               | はい       | はい       | はい       |         |
 
 ## <a name="persistence"></a>永続化
 

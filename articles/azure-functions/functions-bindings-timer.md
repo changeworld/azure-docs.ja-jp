@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 45f704afce28967237b2905ef068678ba05ae085
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 4b2d882e6956fa23464e620e9820b0616e13b6f6
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206654"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563089"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Functions のタイマー トリガー 
 
@@ -22,15 +22,15 @@ ms.locfileid: "88206654"
 
 タイマーによってトリガーされる関数を手動で実行する方法については、「[HTTP によってトリガーされない関数を手動で実行する](./functions-manually-run-non-http.md)」を参照してください。
 
-## <a name="packages---functions-1x"></a>パッケージ - Functions 1.x
-
-タイマー トリガーは、[Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet パッケージ、バージョン 2.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Timers/) GitHub リポジトリにあります。
-
-[!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
-
 ## <a name="packages---functions-2x-and-higher"></a>パッケージ - Functions 2.x 以降
 
 タイマー トリガーは、[Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet パッケージ、バージョン 3.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) GitHub リポジトリにあります。
+
+[!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
+
+## <a name="packages---functions-1x"></a>パッケージ - Functions 1.x
+
+タイマー トリガーは、[Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet パッケージ、バージョン 2.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Timers/) GitHub リポジトリにあります。
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
@@ -250,6 +250,7 @@ public void keepAlive(
 
 現在の関数の呼び出しがスケジュールより遅い場合、`IsPastDue` プロパティは `true` になります。 たとえば、関数アプリが再起動すると、呼び出しが行われない可能性があります。
 
+
 ## <a name="ncrontab-expressions"></a>NCRONTAB 式 
 
 Azure Functions では、NCRONTAB 式を解釈するのに [NCronTab](https://github.com/atifaziz/NCrontab) ライブラリが使用されます。 NCRONTAB 式は CRON 式に似ていますが、秒単位の時間精度に使用するために、追加の 6 番目のフィールドが最初に含まれている点が異なります。
@@ -282,6 +283,8 @@ Azure Functions のタイマー トリガーに使用できる NCRONTAB 式の�
 |`"0 30 9 * * 1-5"`|平日の毎日午前 9 時 30 分|
 |`"0 30 9 * Jan Mon"`|1 月の毎週月曜日の午前 9時 30分|
 
+> [!NOTE]
+> NCRONTAB 式には **6 フィールド**形式が必要です。 5 フィールド CRON 式は Azure ではサポートされていません。
 
 ### <a name="ncrontab-time-zones"></a>NCRONTAB タイム ゾーン
 

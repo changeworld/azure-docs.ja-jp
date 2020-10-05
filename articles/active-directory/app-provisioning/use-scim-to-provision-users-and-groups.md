@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/07/2020
+ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 3f21fa2df32644ff1c415db656fc3b0beed03965
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: fc77d8cbb88385d9be65ccb8df80e922704640a4
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89292777"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563807"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>SCIM エンドポイントの構築と Azure AD を使用したユーザー プロビジョニングの構成
 
@@ -147,7 +147,7 @@ SCIM RFC では複数のエンドポイントが定義されています。 /Use
 [SCIM 2.0 プロトコル仕様](http://www.simplecloud.info/#Specification)の中で、アプリケーションは次の要件を満たす必要があります。
 
 * [SCIM プロトコルのセクション 3.3](https://tools.ietf.org/html/rfc7644#section-3.3) に従って、ユーザー、グループ (オプション) の作成をサポートする。  
-* [SCIM プロトコルのセクション 3.5.2](https://tools.ietf.org/html/rfc7644#section-3.5.2) に従って、PATCH 要求によるユーザーまたはグループの変更をサポートする。  
+* [SCIM プロトコルのセクション 3.5.2](https://tools.ietf.org/html/rfc7644#section-3.5.2) に従って、PATCH 要求によるユーザーまたはグループの変更をサポートする。 サポートにより確実に、パフォーマンスの高い方法でグループとユーザーがプロビジョニングされます。 
 * [SCIM プロトコルのセクション 3.4.1](https://tools.ietf.org/html/rfc7644#section-3.4.1) に従って、これまで作成したユーザーまたはグループの既知のリソースの取得をサポートする。  
 * [SCIM プロトコルのセクション 3.4.2](https://tools.ietf.org/html/rfc7644#section-3.4.2) に従って、ユーザーまたはグループのクエリをサポートする。  既定では、ユーザーの取得には `id`、ユーザーのクエリには `username` と `externalId`、グループのクエリには `displayName` が使用されます。  
 * SCIM プロトコルのセクション 3.4.2 に従って、ID と管理者によるユーザーの照会をサポートする。  
@@ -167,6 +167,7 @@ Azure AD との互換性を確保するために、SCIM エンドポイントの
 * [https://tools.ietf.org/html/rfc7644#section-3.5.2](https://tools.ietf.org/html/rfc7644#section-3.5.2 ) に定義されているように、特に PATCH `op` 操作値の場合、SCIM 内の構造要素に対して大文字と小文字を区別した一致を要求しないでください。 Azure AD では、'op' の値が `Add`、`Replace`、`Remove` として出力されます。
 * Microsoft Azure AD では、エンドポイントと資格情報が有効であることを確認するため、ランダムなユーザーとグループをフェッチする要求を行います。 [Azure portal](https://portal.azure.com) 内で、**テスト接続**フローの一部としても行われます。 
 * リソースのクエリが可能な属性は、[Azure portal](https://portal.azure.com) 内でアプリケーション上の照合属性として設定される必要があります。 詳細については、[ユーザー プロビジョニング属性マッピングのカスタマイズ](customize-application-attributes.md)に関するページを参照してください。
+* SCIM エンドポイントで HTTPS をサポートする
 
 ### <a name="user-provisioning-and-deprovisioning"></a>ユーザーのプロビジョニングとプロビジョニング解除
 
@@ -1175,7 +1176,7 @@ Azure AD は、割り当てられたユーザーとグループを、[SCIM 2.0 �
 アプリケーションの迅速なオンボードと顧客のスムーズなデプロイ エクスペリエンスを確実なものとするために、以下のチェックリストに従ってください。 ギャラリーにオンボードする際に、ご自身から情報が収集されます。 
 > [!div class="checklist"]
 > * [SCIM 2.0 ](#step-2-understand-the-azure-ad-scim-implementation) のユーザーおよびグループ エンドポイントをサポートする (必要なのは 1 つだけですが両方を推奨)
-> * テナントごとに少なくとも 1 秒あたり 25 個の要求をサポートする (必須)
+> * ユーザーとグループが遅延なく確実にプロビジョニングされ、プロビジョニング解除されるよう、テナントあたり、少なくとも毎秒 25 件の要求をサポートする (必須)
 > * 顧客のギャラリー オンボード後のガイドを行うエンジニアリングとサポートの連絡先を確立する (必須)
 > * アプリケーションの 3 つの無期限のテスト資格情報 (必須)
 > * 次に示すように、OAuth 承認コードの付与または有効期間が長いトークンをサポートする (必須)

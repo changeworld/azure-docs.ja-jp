@@ -4,12 +4,12 @@ description: Azure Blockchain Service のトランザクション ノードを�
 ms.date: 11/20/2019
 ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: 90836ad94410dfec5caa32275362f1407c9f5b1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3a4650977f1ad1a7a6967daa162adc8d2ef7bff
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85212566"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530388"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Azure Blockchain Service のトランザクション ノードを構成する
 
@@ -52,7 +52,7 @@ ms.locfileid: "85212566"
 
 1. Azure portal で Azure Blockchain Service メンバーのトランザクション ノードの 1 つに移動して、 **[概要]** を選択します。
 
-    ![エンドポイント](./media/configure-transaction-nodes/endpoints.png)
+    ![ブロックチェーン メンバーに対するトランザクション ノードの概要のスクリーンショット。](./media/configure-transaction-nodes/endpoints.png)
 
 トランザクション ノード エンドポイントはセキュリティで保護されており、認証が必要です。 トランザクション エンドポイントに接続するには、Azure AD Authentication、HTTPS 基本認証、および HTTPS または TLS 経由の WebSocket を介したアクセス キーを使用できます。
 

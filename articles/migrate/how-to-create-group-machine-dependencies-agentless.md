@@ -3,12 +3,12 @@ title: Azure Migrate Server Assessment でエージェントレスの依存関�
 description: Azure Migrate Server Assessment でエージェントレスの依存関係の分析を設定します。
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: dc2ea0656198927cc8ae58533d296a2bedc37c13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e6e562a18fa2ee0b89416ea67cc15394e760ada
+ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84771378"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89536440"
 ---
 # <a name="analyze-machine-dependencies-agentless"></a>マシンの依存関係の分析 (エージェントレス)
 
@@ -25,7 +25,7 @@ ms.locfileid: "84771378"
 
 - 依存関係の分析ビューでは、グループのサーバーを追加または削除することはできません。
 - 現在、サーバーのグループに対する依存関係マップは使用できません。
-- 依存関係データを表形式でダウンロードすることはできません。
+- 依存関係のデータ収集は、400 基のサーバーで同時に設定できます。 400 をバッチ単位としてシーケンス処理することで、さらに多くのサーバーを分析することができます。
 
 ## <a name="before-you-start"></a>開始する前に
 
@@ -117,10 +117,10 @@ Source server name (依存元サーバー名) | 依存元マシンの名前
 Source application (依存元アプリケーション) | 依存元マシン上のアプリケーションの名前 
 Source process (依存元プロセス) | 依存元マシン上のプロセスの名前 
 Destination server name (依存先サーバー名) | 依存先マシンの名前
-Destination IP (依存先 IP) | 依存先マシンの IP アドレス
+宛先 IP | 依存先マシンの IP アドレス
 Destination application (依存先アプリケーション) | 依存先マシン上のアプリケーションの名前
 Destination process (依存先プロセス) | 依存先マシン上のプロセスの名前 
-Destination port (依存先ポート) | 依存先マシンのポート番号
+宛先ポート | 依存先マシンのポート番号
 
 
 ## <a name="stop-dependency-discovery"></a>依存関係の検出を停止する

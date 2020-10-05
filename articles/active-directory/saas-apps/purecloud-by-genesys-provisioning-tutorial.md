@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 02/05/2020
 ms.author: Zhchia
-ms.openlocfilehash: 1397aa350ccc3114954902a6bfd02826cdff965f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4983a4a637ae636c6a3ef4a485c1777fc9b8a77a
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553284"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015162"
 ---
 # <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>チュートリアル:PureCloud by Genesys を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -111,6 +111,8 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
      |phoneNumbers[type eq "work"].value|String|
      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|String|
      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|リファレンス|
+     |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|String|
+     
 
 10. **[マッピング]** セクションの **[Synchronize Azure Active Directory Groups to PureCloud by Genesys]\(Azure Active Directory グループを PureCloud by Genesys に同期する\)** を選択します。
 
@@ -124,7 +126,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 12. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
-13. PureCloud by Genesys に対して Azure AD プロビジョニング サービスを有効にするには、 **[Settings]\(設定\)** セクションで **[Provisioning Status]\(プロビジョニング状態\)** を **[On]\(オン\)** に変更します。
+13. PureCloud by Genesys に対して Azure AD プロビジョニング サービスを有効にするには、**[Settings]\(設定\)** セクションで **[Provisioning Status]\(プロビジョニング状態\)** を **[On]\(オン\)** に変更します。
 
     ![プロビジョニングの状態を [オン] に切り替える](common/provisioning-toggle-on.png)
 
@@ -144,6 +146,10 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 * [プロビジョニング ログ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
 * [進行状況バー](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
 * プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)を参照してください。
+
+## <a name="change-log"></a>ログの変更
+
+09/10 - エンタープライズ属性 "employeeNumber" のサポートが追加されました。
 
 ## <a name="additional-resources"></a>その他のリソース
 

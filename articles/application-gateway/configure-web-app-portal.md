@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: absha
-ms.openlocfilehash: 1109dae90790c9667b3c60afb6416c20061a95fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbaad0f6639d65d88da6847886d3aa3d39b93e82
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808102"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563755"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>Application Gateway を使用した App Service の構成
 
@@ -23,10 +23,8 @@ Application Gateway には、Application Gateway からバックエンドに要�
 
 この記事では、次の方法について説明します。
 
-> [!div class="checklist"]
->
-> - バックエンド プールを作成し、そこに App Service を追加する
-> - "ホスト名の選択" スイッチを有効にして HTTP 設定とカスタム プローブを作成する
+- バックエンド プールを作成し、そこに App Service を追加する
+- "ホスト名の選択" スイッチを有効にして HTTP 設定とカスタム プローブを作成する
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -69,9 +67,9 @@ Application Gateway には、Application Gateway からバックエンドに要�
 
 5. **[OK]** をクリックして HTTP 設定を作成します。
 
-   ![HTTP 設定 1](./media/configure-web-app-portal/http-setting1.png)
+   ![HTTP 設定の追加ウィンドウのスクリーンショット。[App Service 用に使用します] と [OK] が選択されています。](./media/configure-web-app-portal/http-setting1.png)
 
-   ![HTTP 設定 2](./media/configure-web-app-portal/http-setting2.png)
+   ![正常性プローブのスクリーンショット。バックエンド http 設定からホスト名を選択するオプションが選択されています。](./media/configure-web-app-portal/http-setting2.png)
 
 
 
@@ -87,7 +85,7 @@ Application Gateway には、Application Gateway からバックエンドに要�
 
 5. **[OK]** をクリックしてこのルールを保存します。
 
-   ![ルール](./media/configure-web-app-portal/rule.png)
+   ![基本ルールの追加ウィンドウのスクリーンショット。リスナー、バックエンド プール、HTTP 設定が強調表示されています。](./media/configure-web-app-portal/rule.png)
 
 ## <a name="additional-configuration-in-case-of-redirection-to-app-services-relative-path"></a>App Service の相対パスにリダイレクトする場合の追加構成
 

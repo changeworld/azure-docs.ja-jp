@@ -2,13 +2,13 @@
 title: ACR タスクの概要
 description: クラウド内でのコンテナー イメージの安全で自動化されたビルド、管理、修正プログラム適用を提供する、Azure Container Registry の機能スイートである ACR タスクの概要。
 ms.topic: article
-ms.date: 01/22/2020
-ms.openlocfilehash: 4fda57c1d7c866f2e6f72b04d75e53f91e995baf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 08/12/2020
+ms.openlocfilehash: 24cc0415fe8756e900a8ea0ce7039f6b4710cf6f
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79087284"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488645"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>ACR タスクでコンテナー イメージのビルドとメンテナンスを自動化する
 
@@ -111,6 +111,7 @@ ACR タスクはこの自動検出とリビルドによって、更新された�
 | GitHub コミット | 公開または非公開 GitHub リポジトリの特定のコミット。 例では、コミット ハッシュ (SHA) とサブフォルダーの指定の組み合わせが示されています。 | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |
 | Azure DevOps サブフォルダー | 公開または非公開 Azure リポジトリのサブフォルダー内のファイル。 例では、ブランチとサブフォルダーの指定の組み合わせが示されています。 | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
 | リモート tarball | リモート Web サーバー上の圧縮されたアーカイブ内のファイル。 | `http://remoteserver/myapp.tar.gz` |
+| コンテナー レジストリの成果物 | コンテナー レジストリ リポジトリ内の [OCI 成果物](container-registry-oci-artifacts.md)ファイル。 | `oci://myregistry.azurecr.io/myartifact:mytag` |
 
 > [!NOTE]
 > 非公開 Git リポジトリをタスクのコンテキストとして使用する場合、非公開アクセストークン（PAT）を提供する必要があります。

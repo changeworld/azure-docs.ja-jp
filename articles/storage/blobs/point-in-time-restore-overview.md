@@ -1,27 +1,29 @@
 ---
-title: ブロック BLOB のポイントインタイム リストア (プレビュー)
+title: ブロック BLOB のポイントインタイム リストア
 titleSuffix: Azure Storage
 description: ブロック BLOB のポイントインタイム リストアでは、特定の時点でストレージ アカウントを以前の状態に復元できるようにすることで、誤った削除や破損を防ぐことができます。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/11/2020
+ms.date: 09/18/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 1187b01fa623264055edecf21ea5c9d35d59a152
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 7fbebf21b79d2a533de0a872dfe6a10bc8f8e7e5
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068304"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987034"
 ---
-# <a name="point-in-time-restore-for-block-blobs-preview"></a>ブロック BLOB のポイントインタイム リストア (プレビュー)
+# <a name="point-in-time-restore-for-block-blobs"></a>ブロック BLOB のポイントインタイム リストア
 
 ポイントインタイム リストアでは、ブロック BLOB データを以前の状態に復元できるようにすることで、誤った削除や破損を防ぐことができます。 ポイントインタイム リストアは、ユーザーまたはアプリケーションによって誤ってデータが削除された場合や、アプリケーション エラーによってデータが破損した場合に役立ちます。 また、ポイントインタイム リストアでは、さらにテストを実行する前にデータセットを既知の状態に戻す必要があるテスト シナリオも有効になります。
 
-ストレージ アカウントのポイントインタイム リストアを有効にする方法については、「[ブロック BLOB でポイントインタイム リストアを有効にして管理する (プレビュー)](point-in-time-restore-manage.md)」を参照してください。
+ポイントインタイム リストアは、汎用 v2 ストレージ アカウントでのみサポートされています。 ポイントインタイム リストアでは、ホットおよびクール アクセス層のデータのみを復元できます。
+
+ストレージ アカウントのポイントインタイム リストアを有効にする方法については、「[ブロック BLOB データに対してポイントインタイム リストアを実行する](point-in-time-restore-manage.md)」を参照してください。
 
 ## <a name="how-point-in-time-restore-works"></a>ポイントインタイム リストアのしくみ
 
@@ -48,17 +50,15 @@ Azure Storage では、要求された復元ポイント (UTC 時刻で指定) �
 > ストレージ アカウントが geo レプリケートされている場合は、復元操作中にセカンダリ ロケーションからの読み取り操作を続行できます。
 
 > [!CAUTION]
-> ポイントインタイム リストアでは、ブロック BLOB に対する復元操作のみがサポートされます。 コンテナーに対する操作は復元できません。 ポイントインタイム リストアのプレビュー中に [Delete Container](/rest/api/storageservices/delete-container) 操作を呼び出してストレージ アカウントからコンテナーを削除した場合、そのコンテナーは復元操作を使って復元できません。 プレビュー中は、コンテナーを削除するのではなく、それらを復元する可能性がある場合は個々の BLOB を削除してください。
+> ポイントインタイム リストアでは、ブロック BLOB に対する復元操作のみがサポートされます。 コンテナーに対する操作は復元できません。 [Delete Container](/rest/api/storageservices/delete-container) 操作を呼び出してストレージ アカウントからコンテナーを削除した場合、そのコンテナーは復元操作を使って復元できません。 復元が必要になる可能性がある場合は、コンテナーを削除するのではなく、個々の BLOB を削除してください。
 
 ### <a name="prerequisites-for-point-in-time-restore"></a>ポイントインタイム リストアの前提条件
 
-ポイントインタイム リストアでは、次の Azure Storage 機能が有効になっている必要があります。
+ポイントインタイム リストアを有効にするには、ポイントインタイム リストアで次の Azure Storage 機能が有効になっている必要があります。
 
 - [論理的な削除](soft-delete-overview.md)
-- [変更フィード (プレビュー)](storage-blob-change-feed.md)
-- [BLOB バージョン管理](versioning-overview.md)
-
-ポイントインタイム リストアを有効にする前に、ストレージ アカウントに対してこれらの機能を有効にします。 変更フィードと BLOB バージョン管理のプレビューを有効にする前に、必ず登録してください。
+- [変更フィード](storage-blob-change-feed.md)
+- [BLOB のバージョン管理](versioning-overview.md)
 
 ### <a name="retention-period-for-point-in-time-restore"></a>ポイントインタイム リストアの保有期間
 
@@ -72,83 +72,17 @@ Azure Storage では、要求された復元ポイント (UTC 時刻で指定) �
 
 復元操作を開始するには、クライアントはストレージ アカウントのすべてのコンテナーに対する書き込みアクセス許可を持っている必要があります。 Azure Active Directory (Azure AD) で復元操作を承認するアクセス許可を付与するには、ストレージ アカウント、リソースグループ、またはサブスクリプションのレベルでセキュリティ プリンシパルに**ストレージ アカウント共同作成者**ロールを割り当てます。
 
-## <a name="about-the-preview"></a>プレビューについて
+## <a name="limitations-and-known-issues"></a>制限事項と既知の問題
 
-ポイントインタイム リストアは、汎用 v2 ストレージ アカウントでのみサポートされています。 ポイントインタイム リストアでは、ホットおよびクール アクセス層のデータのみを復元できます。
+ブロック BLOB のポイントインタイム リストアには、次の制限事項と既知の問題があります。
 
-次のリージョンでは、プレビュー段階でのポイントインタイム リストアがサポートされています。
-
-- カナダ中部
-- カナダ東部
-- フランス中部
-
-プレビューには、次の制限があります。
-
-- Premium ブロック BLOB の復元はサポートされていません。
-- アーカイブ層での BLOB の復元はサポートされていません。 たとえば、ホット層の BLOB が 2 日前にアーカイブ層に移動し、復元操作によって 3 日前の時点に復元された場合、BLOB はホット層に復元されません。
+- ポイントインタイム リストア操作の一部として復元できるのは、標準の汎用 v2 ストレージ アカウントのブロック BLOB のみです。 追加 BLOB、ページ BLOB、Premium ブロック BLOB は復元されません。 保持期間中にコンテナーを削除した場合、そのコンテナーは、ポイントインタイム リストア操作では復元されません。 コンテナーの削除からの保護の詳細については、「[コンテナーの論理的な削除 (プレビュー)](soft-delete-container-overview.md)」を参照してください。
+- ポイントインタイム リストア操作で復元できるのは、ホット層またはクール層のブロック BLOB だけです。 アーカイブ層でのブロック BLOB の復元はサポートされていません。 たとえば、ホット層の BLOB が 2 日前にアーカイブ層に移動し、復元操作によって 3 日前の時点に復元された場合、BLOB はホット層に復元されません。 アーカイブされた BLOB を復元するには、最初にアーカイブ層の外に移動します。
+- 復元する範囲内のブロック BLOB にアクティブなリースがある場合、ポイントインタイム リストア操作は失敗します。 復元操作を開始する前に、アクティブなリースをすべて中断します。
 - Azure Data Lake Storage Gen2 のフラット名前空間と階層名前空間の復元はサポートされていません。
-- 顧客が指定したキーを使用したストレージ アカウントの復元はサポートされていません。
 
 > [!IMPORTANT]
-> ポイントインタイム プレビューは、非運用環境での使用のみを意図しています。 運用環境のサービス レベル契約(SLA) は現在使用できません。
-
-### <a name="register-for-the-preview"></a>プレビューに登録する
-
-プレビューに登録するには、次のコマンドを実行します。
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-```powershell
-# Register for the point-in-time restore preview
-Register-AzProviderFeature -FeatureName RestoreBlobRanges -ProviderNamespace Microsoft.Storage
-
-# Register for change feed (preview)
-Register-AzProviderFeature -FeatureName Changefeed -ProviderNamespace Microsoft.Storage
-
-# Register for Blob versioning
-Register-AzProviderFeature -FeatureName Versioning -ProviderNamespace Microsoft.Storage
-
-# Refresh the Azure Storage provider namespace
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-```azurecli
-az feature register --namespace Microsoft.Storage --name RestoreBlobRanges
-az feature register --namespace Microsoft.Storage --name Changefeed
-az feature register --namespace Microsoft.Storage --name Versioning
-az provider register --namespace 'Microsoft.Storage'
-```
-
----
-
-### <a name="check-registration-status"></a>登録状態を確認する
-
-ポイントインタイム リストアの登録は自動的に実行されます。所要時間は 10 分未満です。 登録の状態を確認するには、次のコマンドを実行します。
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-```powershell
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName RestoreBlobRanges
-
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName Changefeed
-
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName Versioning
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-```azurecli
-az feature list -o table --query "[?contains(name, 'Microsoft.Storage/RestoreBlobRanges')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.Storage/Changefeed')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.Storage/Versioning')].{Name:name,State:properties.state}"
-```
-
----
+> ブロック BLOB を 2020 年 9 月 22 日より前の時点に復元すると、ポイントインタイム リストアのプレビュー制限が有効になります。 一般公開されているポイントインタイム リストア機能を利用するには、2020 年 9 月 22 日以降の復元ポイントを選択することをお勧めします。
 
 ## <a name="pricing-and-billing"></a>価格と課金
 
@@ -158,13 +92,9 @@ az feature list -o table --query "[?contains(name, 'Microsoft.Storage/Versioning
 
 ポイントインタイム リストアの価格の詳細については、「[ブロック BLOB の価格](https://azure.microsoft.com/pricing/details/storage/blobs/)」を参照してください。
 
-## <a name="ask-questions-or-provide-feedback"></a>質問したり、フィードバックを提供したりする
-
-ポイントインタイム リストアのプレビューについて質問したり、フィードバックを提供したりするには、Microsoft (pitrdiscussion@microsoft.com) にお問い合わせください。
-
 ## <a name="next-steps"></a>次のステップ
 
-- [ブロック BLOB でポイントインタイム リストアを有効にして管理する (プレビュー)](point-in-time-restore-manage.md)
-- [Azure Blob Storage の変更フィードのサポート (プレビュー)](storage-blob-change-feed.md)
+- [ブロック BLOB データに対してポイントインタイム リストアを実行する](point-in-time-restore-manage.md)
+- [Azure Blob Storage の変更フィードのサポート](storage-blob-change-feed.md)
 - [BLOB の論理的な削除を有効にする](soft-delete-enable.md)
 - [BLOB のバージョン管理を有効にして管理する](versioning-enable.md)

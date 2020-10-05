@@ -1,6 +1,6 @@
 ---
-title: Azure サービスの中断が Azure Key Vault に影響を与える場合の対処方法 - Azure Key Vault | Microsoft Docs
-description: Azure サービスの中断が Azure Key Vault に影響を与える場合の対処方法について説明します。
+title: Azure Key Vault の可用性と冗長性 - Azure Key Vault | Microsoft Docs
+description: Azure Key Vault の可用性と冗長性について説明します。
 services: key-vault
 author: ShaneBala-keyvault
 manager: ravijan
@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: sudbalas
-ms.openlocfilehash: 27d8d4de308fe7cf6e6f36dd33f33bb73c495073
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 3cc4bdc0fabd9d1e209634a88bed1bf063db917c
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983231"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597876"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure Key Vault の可用性と冗長性
 
@@ -25,8 +25,7 @@ Azure Key Vault には複数層の冗長性が備わっています。そのた�
 
 キー コンテナーのコンテンツは、キーとシークレットの高い持続性を維持するために、リージョン内と、同じ地域内の 150 マイル (約 241 km) 以上離れたセカンダリ リージョンにレプリケートされます。 特定のリージョン ペアの詳細については、「[Azure のペアになっているリージョン](../../best-practices-availability-paired-regions.md)」ドキュメントを参照してください。
 
-
-Key Vault サービス内の個々のコンポーネントで障害が発生した場合、リージョン内の代替コンポーネントが要求を処理し、機能が低下しないようにします。 このプロセスを開始するために操作を行う必要はありません。これは自動的に実行され、ユーザーに透過的になります。
+Key Vault サービス内の個々のコンポーネントで障害が発生した場合、リージョン内の代替コンポーネントが要求を処理し、機能が低下しないようにします。 このプロセスを開始するために、いずれの操作も行う必要はありません。これは自動的に実行され、ユーザーに透過的になります。
 
 Azure リージョン全体が使用できない場合がまれにありますが、そのような場合でもそのリージョン内の Azure Key Vault に対する要求は自動的にセカンダリ リージョンにルーティング ("*フェールオーバー*") されます。 プライマリ リージョンが再び使用できるようになったときに、要求は再びプライマリ リージョンにルーティング ("*フェールバック*") されます。 この動作も自動的に行われるため、ユーザーによる操作は必要ありません。
 
@@ -34,7 +33,8 @@ Azure リージョン全体が使用できない場合がまれにあります�
 
 その場合の注意事項をいくつか次に示します。
 
-* リージョン フェールオーバーの場合、サービスのフェールオーバーには数分かかることがあります。 フェールオーバー前のこの期間に行われた要求は、失敗する可能性があります。
+* リージョン フェールオーバーの場合、サービスのフェールオーバーには数分かかることがあります。 フェールオーバー前のこの時間に行われた要求は、失敗する可能性があります。
+* プライベート リンクを使用してキー コンテナーに接続している場合は、フェールオーバーが発生した場合に接続が再確立されるまで、最大 20 分かかることがあります。 
 * フェールオーバー中、キー コンテナーは読み取り専用モードになります。 このモードでサポートされる要求は次のとおりです。
   * 証明書の一覧の取得
   * 証明書を取得する

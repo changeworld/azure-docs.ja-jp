@@ -3,15 +3,15 @@ title: Windows Virtual Desktop 用に Azure Multi-Factor Authentication を設�
 description: Windows Virtual Desktop でセキュリティを強化するために Azure Multi-Factor Authentication を設定する方法。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/27/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e8e723aa26ab08c8a09e75f506802101dc07f7e8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e31693eafcf32de1460cfa5b74ae35ffd05b5a67
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017781"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089923"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Windows Virtual Desktop 用に Azure Multi-Factor Authentication を有効にする
 
@@ -48,10 +48,19 @@ Windows Virtual Desktop 用の Windows クライアントは、Windows Virtual D
 7. **[Done]** を選択します。
 8. **[クラウド アプリまたはアクション]**  >  **[Include]\(含める\)** で、 **[アプリを選択]** を選択します。
 9. 使用している Windows Virtual Desktop のバージョンに基づいて、次のいずれかのアプリを選択します。
+   
    - Windows Virtual Desktop (クラシック) を使用している場合は、次のアプリを選択します。
+       
        - **Windows Virtual Desktop** (アプリ ID 5a0aa725-4958-4b0c-80a9-34562e23f3b7)
+       - **Windows Virtual Desktop クライアント** (アプリ ID fa4345a4-a730-4230-84a8-7d9651b86739) これを使用すると、Web クライアントでポリシーを設定することができます
+       
+        その後、手順 11 に進みます。
+
    - Windows Virtual Desktop を使用している場合は、代わりに次のアプリを選択します。
+       
        -  **Windows Virtual Desktop** (アプリ ID 9cdead84-a844-4324-93f2-b2e6bb768d07)
+       
+        その後、手順 10 に進みます。
 
    >[!IMPORTANT]
    > Windows Virtual Desktop Azure Resource Manager Provider (50e95039-b200-4007-bc97-8d5790743a63) という名前のアプリは選択しないでください。 このアプリは、ユーザー フィードを取得するためだけに使用され、MFA を持つことはできません。

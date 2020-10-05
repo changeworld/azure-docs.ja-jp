@@ -14,16 +14,16 @@ ms.date: 04/24/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4096c65fa4375152f44891d4a0a5aac4b9077cf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4dd0b63e08f44167b89b6e2d491722f3708b4036
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743849"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055437"
 ---
 # <a name="review-access-to-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールのアクセスをレビューする
 
-Privileged Identity Management (PIM) を使用すると、企業が Azure Active Directory (AD) や他の Microsoft オンライン サービス (Office 365 や Microsoft Intune など) 内のリソースへの特権アクセスを管理する方法が簡略化されます。 この記事に記載された手順を行うと、割り当てられたロールを問題なく自己レビューできます。
+Privileged Identity Management (PIM) を使用すると、企業が Azure Active Directory (AD) や他の Microsoft Online Services (Microsoft 365 や Microsoft Intune など) 内のリソースへの特権アクセスを管理する方法が簡略化されます。 この記事に記載された手順を行うと、割り当てられたロールを問題なく自己レビューできます。
 
 既に管理者ロールに割り当てられているユーザーは、組織の特権ロール管理者から、自分の業務にそのロールがまだ必要であるかどうかを定期的に確認するよう求められることがあります。 リンクが記載された電子メールが届く場合もあれば、直接 [Azure portal](https://portal.azure.com) にアクセスして開始することもできます。
 

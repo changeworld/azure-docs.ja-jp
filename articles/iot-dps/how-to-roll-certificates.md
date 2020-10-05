@@ -7,12 +7,12 @@ ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: c2bbfcb4832adba767750256a25c378356cf4c23
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: fbcb3656bc824e2fd352f92314652bd04167b4d8
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299267"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531408"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>デバイスの X.509 証明書を展開する方法
 
@@ -20,14 +20,14 @@ IoT ソリューションのライフサイクルの間に、証明書を展開�
 
 セキュリティ違反が発生した際にシステムを保護するためのセキュリティのベスト プラクティスは、証明書を展開することです。 「[Assume Breach Methodology](https://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf)」(侵害想定の方法) の一環として、マイクロソフトは予防措置に加えて事後対応型のセキュリティ プロセスの必要性を提唱しています。 デバイスの証明書の展開は、これらのセキュリティ プロセスの一部として含まれる必要があります。 証明書を展開する頻度は、ソリューションのセキュリティのニーズに左右されます。 非常に機密性の高いデータを扱うソリューションを持つ顧客は証明書を毎日展開する場合がある一方で、数年ごとに展開する顧客もいます。
 
-デバイスの証明書の展開は、デバイスに格納されている証明書や IoT ハブの更新が関与します。 後ほど、デバイスはデバイス プロビジョニング サービスの通常の[自動プロビジョニング](concepts-auto-provisioning.md)を使用して、IoT ハブと再プロビジョニングします。
+デバイスの証明書の展開は、デバイスに格納されている証明書や IoT ハブの更新が関与します。 後ほど、デバイスはデバイス プロビジョニング サービス (DPS) の通常の[プロビジョニング](about-iot-dps.md#provisioning-process)を使用して、IoT ハブと再プロビジョニングします。
 
 
 ## <a name="obtain-new-certificates"></a>新しい証明書を取得する
 
 お使いの IoT デバイス用の新しい証明書を取得する方法は数多くあります。 これらには、デバイス ファクトリから証明書を取得する、独自の証明書を作成する、サード パーティに証明書の作成を管理してもらうなどの方法があります。 
 
-証明書は互いに署名され、ルート CA 証明書から[リーフ証明書](concepts-security.md#end-entity-leaf-certificate)への信頼チェーンを形成します。 署名証明書は、信頼チェーンの最後のリーフ証明書の署名に使用される証明書です。 署名証明書には、ルート CA 証明書、または信頼チェーンの中間証明書を指定できます。 詳しくは、「[X.509 証明書](concepts-security.md#x509-certificates)」をご覧ください。
+証明書は互いに署名され、ルート CA 証明書から[リーフ証明書](concepts-x509-attestation.md#end-entity-leaf-certificate)への信頼チェーンを形成します。 署名証明書は、信頼チェーンの最後のリーフ証明書の署名に使用される証明書です。 署名証明書には、ルート CA 証明書、または信頼チェーンの中間証明書を指定できます。 詳しくは、「[X.509 証明書](concepts-x509-attestation.md#x509-certificates)」をご覧ください。
  
 署名証明書を取得する方法は 2 つあります。 最初の方法は、ルート証明機関 (CA) から署名証明書を購入する方法で、実稼働システムで推奨されます。 この方法は、信頼できる発行元にセキュリティをチェーンでつなぎます。 
 
@@ -36,7 +36,7 @@ IoT ソリューションのライフサイクルの間に、証明書を展開�
 
 ## <a name="roll-the-certificate-on-the-device"></a>証明書を端末に展開する
 
-デバイス上の証明書は、常に[ハードウェア セキュリティ モジュール (HSM)](concepts-device.md#hardware-security-module) などの安全な場所に格納する必要があります。 デバイスの証明書を展開する方法は、それらが作成された方法と、最初にデバイスにインストールされた方法によって異なります。 
+デバイス上の証明書は、常に[ハードウェア セキュリティ モジュール (HSM)](concepts-service.md#hardware-security-module) などの安全な場所に格納する必要があります。 デバイスの証明書を展開する方法は、それらが作成された方法と、最初にデバイスにインストールされた方法によって異なります。 
 
 サード パーティから証明書を取得した場合は、その証明書を展開する方法を確認する必要があります。 そのプロセスはサード パーティとの取り決めの中に含まれている場合もあれば、別個のサービスとして提供される場合もあります。 
 
@@ -75,7 +75,7 @@ IoT ソリューションのライフサイクルの間に、証明書を展開�
 
     プライマリとセカンダリの証明書の両方が侵害されている場合、両方に対して次のステップを実行してください。
 
-    ![個々の登録を管理する](./media/how-to-roll-certificates/manage-individual-enrollments-portal.png)
+    ![個々の登録とセキュリティ違反を管理する](./media/how-to-roll-certificates/manage-individual-enrollments-portal.png)
 
 3. プロビジョニング サービスからセキュリティが侵害された証明書が削除されても、その証明書に対するデバイスの登録が存在する限り、証明書を使用して IoT ハブにデバイスを接続できます。 これに対処するには 2 つの方法があります。 
 
@@ -96,7 +96,7 @@ IoT ソリューションのライフサイクルの間に、証明書を展開�
 
 2. **[セカンダリ証明書]** をクリックし、フォルダー アイコンをクリックしてアップロードする登録エントリ用の新しい証明書を選択します。 **[保存]** をクリックします。
 
-    ![セカンダリ証明書を使用して個々の登録を管理する](./media/how-to-roll-certificates/manage-individual-enrollments-secondary-portal.png)
+    ![セカンダリ証明書の有効期限を使用して個々の登録を管理する](./media/how-to-roll-certificates/manage-individual-enrollments-secondary-portal.png)
 
 3. 後ほどプライマリ証明書の期限が切れたら、戻って **[Delete current certificate]\(現在の証明書の削除\)** ボタンをクリックしてそのプライマリ証明書を削除します。
 
@@ -118,7 +118,7 @@ IoT ソリューションのライフサイクルの間に、証明書を展開�
 
 5. **[CA 証明書]** をクリックし、新しいルート CA 証明書を選択します。 **[保存]** をクリックします。 
 
-    ![新しいルート CA 証明書を選択する](./media/how-to-roll-certificates/select-new-root-cert.png)
+    ![侵害された証明書に新しいルート CA 証明書を選択する](./media/how-to-roll-certificates/select-new-root-cert.png)
 
 6. プロビジョニング サービスからセキュリティが侵害された証明書が削除されても、その証明書に対するデバイスの登録が存在する限り、証明書を使用して IoT ハブにデバイスを接続できます。 これに対処するには 2 つの方法があります。 
 
@@ -136,9 +136,9 @@ IoT ソリューションのライフサイクルの間に、証明書を展開�
 
 2. **[Intermediate Certificate]\(中間証明書\)** をクリックし、 **[Delete current certificate]\(現在の証明書の削除\)** をクリックします。 フォルダー アイコンをクリックして、登録グループ用にアップロードする新しい中間証明書に移動します。 完了したら、 **[保存]** をクリックします。 プライマリとセカンダリの両方が侵害されている場合は、両方の証明書に対して次のステップを実行してください。
 
-    この新しい中間証明書は、プロビジョニング サービスに既に追加されている検証済みのルート CA 証明書で署名する必要があります。 詳しくは、「[X.509 証明書](concepts-security.md#x509-certificates)」をご覧ください。
+    この新しい中間証明書は、プロビジョニング サービスに既に追加されている検証済みのルート CA 証明書で署名する必要があります。 詳しくは、「[X.509 証明書](concepts-x509-attestation.md#x509-certificates)」をご覧ください。
 
-    ![個々の登録を管理する](./media/how-to-roll-certificates/enrollment-group-delete-intermediate-cert.png)
+    ![侵害された中間証明書の個別登録を管理する](./media/how-to-roll-certificates/enrollment-group-delete-intermediate-cert.png)
 
 
 3. プロビジョニング サービスからセキュリティが侵害された証明書が削除されても、その証明書に対するデバイスの登録が存在する限り、証明書を使用して IoT ハブにデバイスを接続できます。 これに対処するには 2 つの方法があります。 
@@ -164,7 +164,7 @@ IoT ソリューションのライフサイクルの間に、証明書を展開�
 
 3. **[CA 証明書]** をクリックし、 **[セカンダリ証明書]** の構成で新しいルート CA 証明書を選択します。 **[保存]** をクリックします。 
 
-    ![新しいルート CA 証明書を選択する](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
+    ![有効期限に新しいルート CA 証明書を選択する](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
 
 4. 後ほどプライマリ証明書の有効期限が切れるときに、お使いの Device Provisioning Service インスタンスの **[証明書]** タブをクリックします。 リスト内の有効期限が切れた証明書をクリックし、 **[削除]** ボタンをクリックします。 証明書の名前を入力して削除を確定し、 **[OK]** をクリックします。
 
@@ -179,9 +179,9 @@ IoT ソリューションのライフサイクルの間に、証明書を展開�
 
 2. **[セカンダリ証明書]** をクリックし、フォルダー アイコンをクリックしてアップロードする登録エントリ用の新しい証明書を選択します。 **[保存]** をクリックします。
 
-    この新しい中間証明書は、プロビジョニング サービスに既に追加されている検証済みのルート CA 証明書で署名する必要があります。 詳しくは、「[X.509 証明書](concepts-security.md#x509-certificates)」をご覧ください。
+    この新しい中間証明書は、プロビジョニング サービスに既に追加されている検証済みのルート CA 証明書で署名する必要があります。 詳しくは、「[X.509 証明書](concepts-x509-attestation.md#x509-certificates)」をご覧ください。
 
-   ![セカンダリ証明書を使用して個々の登録を管理する](./media/how-to-roll-certificates/manage-enrollment-group-secondary-portal.png)
+   ![セカンダリ証明書の期限切れを使用して登録グループを管理する](./media/how-to-roll-certificates/manage-enrollment-group-secondary-portal.png)
 
 3. 後ほどプライマリ証明書の期限が切れたら、戻って **[Delete current certificate]\(現在の証明書の削除\)** ボタンをクリックしてそのプライマリ証明書を削除します。
 
@@ -208,6 +208,6 @@ IoT ソリューションのライフサイクルの間に、証明書を展開�
 
 ## <a name="next-steps"></a>次のステップ
 
-- デバイス プロビジョニング サービスの X.509 証明書について詳しくは、「[セキュリティ](concepts-security.md)」をご覧ください。 
+- デバイス プロビジョニング サービスの X.509 証明書について詳しくは、「[X.509 証明書の構成証明](concepts-x509-attestation.md)」をご覧ください 
 - Azure IoT Hub Device Provisioning Service で X.509 CA 証明書の所有証明を行う方法について詳しくは、[証明書を検証する方法](how-to-verify-certificates.md)に関する記事をご覧ください。
 - ポータルを使って登録グループを作成する方法について詳しくは、「[Azure Portal でデバイス登録を管理する方法](how-to-manage-enrollments.md)」をご覧ください。

@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: af935aeaaeee11ab50b327b7f7b5b77246cb974b
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: e6b12c2bac4a9732f868f6a6ac3491ef993f54c3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566048"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976570"
 ---
 # <a name="limitations"></a>制限事項
 
@@ -28,7 +28,7 @@ ms.locfileid: "88566048"
 
 ## <a name="geometry"></a>ジオメトリ
 
-* 1 つの資産内で許容される素材の合計数: 65,535。
+* 1 つの資産内で許容される素材の合計数: 65,535。 詳細については、[素材の重複除去](../how-tos/conversion/configure-model-conversion.md#material-de-duplication)に関する記事を参照してください。
 * 1 つのテクスチャの最大寸法: 16,384 x 16,384。 これより大きいソース テクスチャは、変換プロセスによって縮小されます。
 
 ## <a name="overall-number-of-polygons"></a>多角形の全体数

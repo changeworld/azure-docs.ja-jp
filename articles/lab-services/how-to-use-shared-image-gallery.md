@@ -2,16 +2,19 @@
 title: Azure Lab Services で共有イメージ ギャラリーを使用する | Microsoft Docs
 description: 共有イメージ ギャラリーを使用するようにラボ アカウントを構成して、ユーザーが他のユーザーとイメージを共有したり、他のユーザーがイメージを使用してラボでテンプレート VM を作成したりできるようにする方法について説明します。
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: 4dc001a5e4c95db608c38f0a7c00190fd1859998
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/11/2020
+ms.openlocfilehash: 04e3764b095706d091bb72baaae77f5a4016fd28
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445153"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052836"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Azure Lab Services で共有イメージ ギャラリーを使用する
 この記事では、教育者やラボ管理者がテンプレート仮想マシンのイメージを[共有イメージ ギャラリー](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)に保存して、他のユーザーがラボを作成するために使用できるようにする方法について説明します。 
+
+> [!IMPORTANT]
+> 共有イメージ ギャラリーの使用中は、Azure Lab Services では、128 GB 未満の OS ディスク領域を持つイメージのみがサポートされます。 128 GB を超えるディスク領域を持つイメージ、または複数のディスクのイメージは、ラボの作成時に仮想マシン イメージの一覧に表示されません。
 
 ## <a name="scenarios"></a>シナリオ
 この機能でサポートされるいくつかのシナリオを次に示します。 

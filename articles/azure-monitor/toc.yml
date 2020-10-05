@@ -976,6 +976,8 @@
           href: insights/vminsights-maps.md
         - name: パフォーマンスの監視
           href: insights/vminsights-performance.md
+        - name: 変更の監視
+          href: insights/vminsights-change-analysis.md
         - name: ログ クエリによるデータの分析
           href: insights/vminsights-log-search.md
         - name: ブックを使用したデータの視覚化

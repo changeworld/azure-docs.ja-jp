@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 08/25/2020
-ms.openlocfilehash: db2bae9d9e1c9658937e725a04d919743ff9999e
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 2dca0ae02f2d079e98b51e1222114db1f2104b96
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855778"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030799"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Azure Table ストレージを使用して商用マーケットプレースのリードを管理する
 
@@ -38,7 +38,7 @@ Microsoft AppSource と Azure Marketplace のリードを受信できるよう�
 
 1. Azure portal の **[ホーム]** ページから **[すべてのリソースを表示する]** を選択して、お使いのストレージ アカウントにアクセスします。 Azure portal の左側のメニュー バーから **[すべてのリソース]** を選択することもできます。
 
-    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png" alt-text="Azure ストレージ アカウントにアクセスする。":::
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png" alt-text="Azure ストレージ アカウントを作成する手順。":::
 
 1. ストレージ アカウントのウィンドウで、 **[アクセス キー ]** を選択し、キーの **[接続文字列]** 値をコピーします。 この値を保存します。これは、Azure Marketplace オファーのリードを受信するために発行ポータル内で提供する必要がある **[ストレージ アカウント接続文字列]** の値です。
 
@@ -48,7 +48,7 @@ Microsoft AppSource と Azure Marketplace のリードを受信できるよう�
     DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.screens.net
     ```
 
-    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-keys.png" alt-text="Azure ストレージ キー。":::
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-keys.png" alt-text="Azure ストレージ アカウントを作成する手順。":::
 
 
 1. ストレージ アカウント ウィンドウで、 **[テーブル]** を選択し、 **[+ テーブル]** を選択してテーブルを作成します。 テーブルの名前を入力し、 **[OK]** を選択します。 この値を保存します。これは、リードを受信したときに電子メール通知を受け取るようにフローを構成する場合に必要になります。
@@ -135,7 +135,7 @@ Microsoft AppSource と Azure Marketplace のリードを受信できるよう�
    次の数個の手順では、条件の結果に基づいて実行するアクションを設定します。
 
    * 条件が **[If no] (いいえの場合)** に解決される場合は、何もしません。
-   * 条件が **[If yes] (はいの場合)** に解決される場合は、電子メールを送信するために Office 365 アカウントに接続するアクションをトリガーします。
+   * 条件を解決すると**はいの場合**は、メールを送信するために職場または学校のアカウントに接続するアクションをトリガーします。 
 
 1. **[はいの場合]** の下で **[アクションの追加]** のリンクを選択します。
 
@@ -185,7 +185,7 @@ Microsoft AppSource と Azure Marketplace のリードを受信できるよう�
 
 1. **[潜在顧客]** セクションで、 **[接続]** を選択します。
 
-    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-table/customer-leads.png" alt-text="[潜在顧客]":::
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-table/customer-leads.png" alt-text="Azure ストレージ アカウントを作成する手順。":::
 
 1. **[接続の詳細]** ポップアップ ウィンドウで、 **[リードのターゲット]** として **[Azure テーブル]** を選択します。 
      ![リード管理、接続の詳細](./media/commercial-marketplace-lead-management-instructions-azure-table/connection-details.png)

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7223d33f8f26897d24841f84454405f91cf3bc49
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 1e758a886e32c5a3f7cd3c744ac451b948a74802
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686345"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308862"
 ---
 # <a name="upgrade-your-azure-free-account-or-azure-for-students-starter-account"></a>Azure 無料アカウントまたは Azure for Students Starter アカウントをアップグレードする
 
@@ -80,4 +80,4 @@ Azure 無料アカウントをアップグレードしても、サインアッ�
 
 ## <a name="next-steps"></a>次のステップ
 
-以上でアカウントのアップグレードは完了です。「[Azure の課金とコスト管理で想定外の料金を防ぐ](getting-started.md)」を参照してください。
+アカウントのアップグレードが完了したので、「[Azure のコストの管理を計画する](../understand/plan-manage-costs.md)」を参照してください。

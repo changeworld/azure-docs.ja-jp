@@ -2,14 +2,14 @@
 title: カスタマー マネージド キーを使用した保存時の暗号化
 description: Azure コンテナー レジストリの保存時の暗号化、および Azure Key Vault に格納されているカスタマー マネージド キーを使用して Premium レジストリを暗号化する方法について説明します。
 ms.topic: article
-ms.date: 05/01/2020
+ms.date: 08/26/2020
 ms.custom: ''
-ms.openlocfilehash: 67fb58d0e11709b3d801a81f15d856e9b3db922b
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 0e1810c8e3da334570dd1c4d6adb500e2cfa95e3
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225888"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89487234"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>カスタマー マネージド キーを使用してレジストリを暗号化する
 
@@ -22,10 +22,14 @@ ms.locfileid: "88225888"
 
 ## <a name="things-to-know"></a>注意事項
 
-* 現在カスタマー マネージド キーを有効にできるのは、レジストリを作成するときだけです。
-* レジストリでカスタマー マネージド キーを有効にした後、それを無効にすることはできません。
+* 現在カスタマー マネージド キーを有効にできるのは、レジストリを作成するときだけです。 キーを有効にするときは、"*ユーザー割り当て*" マネージド ID を構成して、キー コンテナーにアクセスします。
+* レジストリでカスタマー マネージド キーを使用して暗号化を有効にすると、この暗号化は無効にできなくなります。  
 * 現在、カスタマー マネージド キーで暗号化されたレジストリでは、[コンテンツの信頼](container-registry-content-trust.md)はサポートされていません。
 * カスタマー マネージド キーで暗号化されたレジストリでは、現在、[ACR タスク](container-registry-tasks-overview.md)に対する実行ログは 24 時間だけ保持されます。 それより長くログを保持する必要がある場合は、[タスク実行ログのエクスポートと保存](container-registry-tasks-logs.md#alternative-log-storage)に関するガイダンスを参照してください。
+
+
+> [!NOTE]
+> [Key Vault ファイアウォール](../key-vault/general/network-security.md)を持つ仮想ネットワークを使用することで Azure key vault へのアクセスが制限される場合は、追加の構成手順が必要です。 レジストリを作成し、カスタマー マネージド キーを有効にした後、レジストリの "*システム割り当て*" マネージド ID を使用してキーへのアクセスを設定し、Key Vault ファイアウォールをバイパスするようにレジストリを構成します。 この記事の手順に従って、カスタマー マネージド キーを使用して暗号化を有効にし、この記事の後半で、「[高度なシナリオ: Key Vault ファイアウォール](#advanced-scenario-key-vault-firewall)」についてのガイダンスを参照します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -439,9 +443,15 @@ az keyvault delete-policy \
 
 キーを取り消すと、レジストリは暗号化キーにアクセスできないため、すべてのレジストリ データへのアクセスが実質的にブロックされます。 キーへのアクセスを有効にするか、削除したキーを復元すると、レジストリによってキーが取得されるので、暗号化されたレジストリ データに再びアクセスできるようになります。
 
-## <a name="advanced-scenarios"></a>高度なシナリオ
+## <a name="advanced-scenario-key-vault-firewall"></a>高度なシナリオ: Key Vault ファイアウォール
 
-### <a name="system-assigned-identity"></a>システム割り当て ID
+Key Vault ファイアウォールがある仮想ネットワークに Azure Key Vault がデプロイされている場合は、レジストリでカスタマー マネージド キーの暗号化を有効にしてから、次の追加の手順を行います。
+
+1. レジストリのシステム割り当て ID を使用するようにレジストリ暗号化を構成します
+1. レジストリを有効にして Key Vault ファイアウォールをバイパスします
+1. カスタマー マネージド キーをローテーションします
+
+### <a name="configure-system-assigned-identity"></a>システム割り当て ID を構成する
 
 暗号化キー用のキー コンテナーにアクセスするために、レジストリのシステム割り当てマネージド ID を構成できます。 Azure リソース用の各種マネージド ID の基本点な事柄については、[概要](../active-directory/managed-identities-azure-resources/overview.md)を参照してください。
 
@@ -466,14 +476,18 @@ ID を使用するようにレジストリの暗号化設定を更新するに�
 1. **[設定]** で、 **[暗号化]**  >  **[キーの変更]** を選択します。
 1. **[ID]** で、 **[システム割り当て]** を選択し、 **[保存]** を選択します。
 
-### <a name="key-vault-firewall"></a>Key Vault ファイアウォール
+### <a name="enable-key-vault-bypass"></a>キー コンテナーのバイパスを有効にする
 
-Key Vault ファイアウォールがある仮想ネットワークに Azure Key Vault がデプロイされている場合は、次の手順を実行します。
+Key Vault ファイアウォールを使用して構成されたキー コンテナーにアクセスするには、レジストリでファイアウォールをバイパスする必要があります。 [信頼されたサービス](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services)によるアクセスを許可するようにキー コンテナーを構成します。 Azure Container Registry は、信頼されたサービスの 1 つです。
 
-1. レジストリのシステム割り当て ID を使用するようにレジストリ暗号化を構成します。 前のセクションを参照してください。
-2. [信頼されたサービス](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services)によるアクセスを許可するようにキー コンテナーを構成します。
+1. ポータルで、キー コンテナーに移動します。
+1. **[設定]**  >  **[ネットワーク]** の順に選択します。
+1. 仮想ネットワークの設定を確認、更新、追加します。 詳しい手順については、「[Azure Key Vault のファイアウォールと仮想ネットワークを構成する](../key-vault/general/network-security.md)」を参照してください。
+1. **[信頼された Microsoft サービスがこのファイアウォールをバイパスすることを許可しますか?]** で、 **[はい]** を選択します。 
 
-詳しい手順については、「[Azure Key Vault のファイアウォールと仮想ネットワークを構成する](../key-vault/general/network-security.md)」を参照してください。
+### <a name="rotate-the-customer-managed-key"></a>カスタマー マネージド キーをローテーションする
+
+上記の手順を完了したら、ファイアウォールの背後にあるキー コンテナー内の新しいキーに、キーをローテーションします。 手順については、この記事の「[キーをローテーションする](#rotate-key)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

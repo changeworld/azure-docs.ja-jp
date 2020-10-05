@@ -3,12 +3,12 @@ title: Azure Kubernetes Service (AKS) についてよく寄せられる質問
 description: Azure Kubernetes Service (AKS) についてよく寄せられる質問にお答えします。
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 7a56756855319ee72bd5b3dc60ad1ae440afd7fe
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 4150f850263aed7b8aa4317028386dc285f06ade
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927149"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905333"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) についてよく寄せられる質問
 
@@ -174,6 +174,10 @@ AKS クラスターやその関連リソースを移動したり、名前を変�
 ## <a name="my-cluster-was-working-but-suddenly-cannot-provision-loadbalancers-mount-pvcs-etc"></a>クラスターは動作していましたが、突然、LoadBalancers のプロビジョニングや PVC のマウントなどができなくなりました。 
 
 サービス プリンシパルの有効期限が切れていないことを確認してください。  詳細については、[AKS サービス プリンシパル](./kubernetes-service-principal.md)と [AKS の資格情報の更新](./update-credentials.md)に関するページを参照してください。
+
+## <a name="can-i-scale-my-aks-cluster-to-zero"></a>AKS クラスターを 0 (ゼロ) にスケーリングできますか?
+[実行中の AKS クラスター](start-stop-cluster.md)を完全に停止して、それぞれのコンピューティング コストを節約できます。 さらに、必要なクラスター構成のみを維持しながら、[すべてまたは特定の `User` ノード プールのスケーリングまたは自動スケーリング](scale-cluster.md#scale-user-node-pools-to-0)を 0 (ゼロ) に向けて行うこともできます。
+[システム ノード プール](use-system-pools.md)を 0 (ゼロ) に直接スケーリングすることはできません。
 
 ## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>仮想マシン スケール セット API を使用して手動でスケーリングできますか?
 

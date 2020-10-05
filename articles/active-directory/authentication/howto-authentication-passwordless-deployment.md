@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d9ca8b7e188a7ed438feb5e2b99c6db22ad12b3
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 95f4221b390071ad149699608d3937b9af4e1d5d
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717151"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527005"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Azure Active Directory でパスワードレス認証のデプロイを計画する
 
@@ -160,7 +160,7 @@ Microsoft Authenticator アプリは Google Play または Apple App Store か�
 -    Windows 10 バージョン 1809 では、FIDO2 サインインがサポートされており、場合によっては、FIDO2 キーの製造元のソフトウェアをデプロイする必要があります。 バージョン 1903 以降を使用することをお勧めします。 
 
 **ハイブリッド Azure Active Directory ドメイン参加済みデバイスの場合**: 
--    Windows 10 Insider ビルド 18945 以降
+-    Windows 10 バージョン 2004 以降
 -    Windows Server 2016 または 2019 を実行している、完全にパッチが適用されたドメイン サーバー。
 -    最新バージョンの Azure AD Connect
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: davidspo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e0e0ad9086a7945201b1752126253f12eb751bf
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 4f4d9d1a2a4c88601e7dd7e0d6f56025b79aaac1
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320037"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705369"
 ---
 # <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>Azure AD を使用してセキュリティで保護された ID に迅速に対応する
 
@@ -42,16 +42,15 @@ ms.locfileid: "89320037"
 
 セキュリティで保護された ID インフラストラクチャには多数の側面がありますが、このチェックリストでは、ユーザーがリモートで作業できるようにセキュリティで保護された安全な ID インフラストラクチャに焦点を当てています。 ID をセキュリティで保護することは、セキュリティ対策の一環にすぎず、データ、アプリケーション、デバイスの保護も考慮する必要があります。
 
-### <a name="guidance-for-azure-ad-free-or-office-365-customers"></a>Azure AD Free または Office 365 のお客様向けのガイダンス
+### <a name="guidance-for-azure-ad-free-office-365-or-microsoft-365-customers"></a>Azure AD Free、Office 365、または Microsoft 365 のお客様向けのガイダンス
 
-Azure AD Free または Office 365 アプリのお客様が自分のユーザー ID を保護するために行う必要があるいくつかの推奨事項があります。次の表は、次のライセンス サブスクリプション向けの主要なアクションを強調することを目的としています。
+Azure AD Free、Office 365、または Microsoft 365 の各アプリのお客様が自分のユーザー ID を保護するために行うべき、いくつかの推奨事項があります。次の表は、次のライセンス サブスクリプション向けの主要なアクションを強調することを目的としています。
 
-- Office 365 (O365 E1、E3、E5、F1、A1、A3、A5)
-- Office 365 Business (Essentials、Business、Business Premium)
-- Microsoft 365 (M365 Business、A1)
+- Office 365 (Office 365 E1、E3、E5、F1、A1、A3、A5)
+- Microsoft 365 (Business Basic、ビジネス向けアプリ、Business Standard、Business Premium、A1)
 - Azure AD Free (Azure、Dynamics 365、Intune、および Power Platform に含まれています)
 
-| 推奨される操作 | Detail |
+| 推奨アクション | Detail |
 | --- | --- |
 | [セキュリティの既定値群を有効にする](concept-fundamentals-security-defaults.md) | MFA を有効にし、レガシ認証をブロックすることで、すべてのユーザー ID とアプリケーションを保護します |
 | [パスワード ハッシュ同期を有効にする](../hybrid/how-to-connect-password-hash-synchronization.md) (ハイブリッド ID を使用している場合) | 認証に冗長性を提供し、セキュリティを強化します (スマート ロックアウト、IP ロックアウト、漏洩した資格情報を検出する機能など) |
@@ -74,7 +73,7 @@ Azure AD Free または Office 365 アプリのお客様が自分のユーザー
 - Enterprise Mobility + Security (EMS E3)
 - Microsoft 365 (M365 E3、A3、F1、F3)
 
-| 推奨される操作 | Detail |
+| 推奨アクション | Detail |
 | --- | --- |
 | [Azure MFA と SSPR の統合された登録エクスペリエンスを有効にして、ユーザー登録エクスペリエンスを簡略化する](../authentication/howto-registration-mfa-sspr-combined.md) | Azure Multi-Factor Authentication とセルフサービス パスワード リセットの両方について、ユーザーが 1 つの共通操作で登録できるようにします。 |
 | [組織の MFA 設定を構成する](../authentication/howto-mfa-getstarted.md) | 多要素認証を使用した侵害からアカウントを確実に保護する |
@@ -104,7 +103,7 @@ Azure AD Free または Office 365 アプリのお客様が自分のユーザー
 - Enterprise Mobility + Security (EMS E5)
 - Microsoft 365 (M365 E5、A5)
 
-| 推奨される操作 | Detail |
+| 推奨アクション | Detail |
 | --- | --- |
 | [Azure MFA と SSPR の統合された登録エクスペリエンスを有効にして、ユーザー登録エクスペリエンスを簡略化する](../authentication/howto-registration-mfa-sspr-combined.md) | Azure Multi-Factor Authentication とセルフサービス パスワード リセットの両方について、ユーザーが 1 つの共通操作で登録できるようにします。 |
 | [組織の MFA 設定を構成する](../authentication/howto-mfa-getstarted.md) | 多要素認証を使用した侵害からアカウントを確実に保護する |
@@ -129,7 +128,7 @@ Azure AD Free または Office 365 アプリのお客様が自分のユーザー
 | [ゲスト ユーザー アクセスの計画を作成する](../external-identities/what-is-b2b.md) | ゲスト ユーザーが各自の職場 ID、学校 ID、またはソーシャル ID を使用してアプリやサービスにサインインできるようにして、共同作業を行います。 |
 | [Privileged Identity Management を有効にする](../privileged-identity-management/pim-configure.md) | 管理者が必要なときに承認を受けた場合にのみアクセス権が得られるように、組織内の重要なリソースへのアクセスの管理、制御、監視を可能にします。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - Azure AD の個々の機能に関する詳細なデプロイ ガイダンスについては、[Azure AD プロジェクトのデプロイ計画](active-directory-deployment-plans.md)に関する記事を参照してください。
 

@@ -5,15 +5,15 @@ services: data-factory
 author: ceespino
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 09/02/2020
+ms.date: 09/03/2020
 ms.author: ceespino
 ms.reviewer: daperlov
-ms.openlocfilehash: e0c5ab4f6d36a24ff9f59ec373291e00669e1e92
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 9f23155df6d9e63448b35974c331bf78c3e5f90c
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320121"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89426226"
 ---
 # <a name="troubleshoot-azure-data-factory-ux-issues"></a>Azure Data Factory UX の問題のトラブルシューティング
 
@@ -100,6 +100,16 @@ ADF UX では、ブラウザーの Cookie を使用してユーザー セッシ�
 これ以外のものが表示される場合は、通常、お使いの DNS サーバーでの DNS 名の解決で問題があることを意味します。 通常、ISP (インターネット サービス プロバイダー) または DNS (たとえば、Google DNS 8.8.8.8) を変更してみると解決できます。 これでも問題が解決しない場合は、さらに「**nslookup datafactory.azure.com**」と「**nslookup azure.com**」を試して、自分の DNS 解決がどのレベルで失敗しているかを確認し、トラブルシューティングのためにこの全情報を、自分のローカルの IT サポートまたは自分の ISP に送信できます。 問題が Microsoft 側にあるとされた場合は、ADF UX のエラー メッセージの**アクティビティ ID** と共にサポート チケットを提出します。
 
 ![コマンド応答 2](media/data-factory-ux-troubleshoot-guide/command-response-2.png)
+
+## <a name="change-linked-service-type-in-datasets"></a>データセット内にリンクされたサービスの種類を変更する
+
+ファイル形式のデータセットは、ファイルベースのすべてのコネクタで使用できます。たとえば、Parquet データセットを Azure BLOB または Azure Data Lake Storage Gen2 で構成できます。 各コネクタにより、アクティビティ上で、別のアプリ モデルを使用して、データ ストアのさまざまなセットに関連する設定がサポートされることにご注意ください。 
+
+ADF 作成 UI では、アクティビティ (Copy、Lookup、GetMetadata、Delete アクティビティなど) でファイル形式のデータセットを使用し、データセットで現在とは異なる種類のリンクされたサービスを示す (ファイルシステムから ADLS Gen2 へ切り替えるなど) と、次の警告メッセージが表示されます。 これがクリーンなスイッチであることを確認するために、このデータセットを参照するパイプラインとアクティビティは、ユーザーの合意の下で、新しい種類も使用されるように変更されます。また、新しい種類と互換性のない既存のデータ ストア設定は、適用されなくなると消去されます。
+
+各コネクタに対してサポートされているデータ ストア設定の詳細については、対応するコネクタに関する記事から [コピー アクティビティのプロパティ] に進み、詳細なプロパティ リストを確認してください。 [Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure File Storage](connector-azure-file-storage.md)、[File System](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、[SFTP](connector-sftp.md) を参照してください。
+
+![警告メッセージ](media/data-factory-ux-troubleshoot-guide/warning-message.png)
 
 ## <a name="next-steps"></a>次のステップ
 

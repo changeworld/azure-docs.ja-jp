@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12193b469b6e1f014e6c948da7b2adb370e78d4b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 48f924cef12db974faae8fb8ed73f01ff8c9a3f8
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795336"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056253"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Azure Active Directory のカスタム ドメイン名の管理
 
@@ -55,7 +55,7 @@ Azure AD テナントに contoso.com ドメインを既に追加している場�
 
 ## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>カスタム ドメイン名の DNS レジストラーを変更する場合にすべきこと
 
-DNS レジストラーを変更する場合、Azure AD で追加の構成タスクはありません。 中断することなく、Azure AD でドメイン名の使用を続けることができます。 Office 365 や Intune など、Azure AD のカスタム ドメイン名を使用するサービスで、自社のカスタム ドメイン名を使用する場合は、各サービスのマニュアルを参照してください。
+DNS レジストラーを変更する場合、Azure AD で追加の構成タスクはありません。 中断することなく、Azure AD でドメイン名の使用を続けることができます。 Microsoft 365 や Intune など、Azure AD のカスタム ドメイン名を使用するサービスで、自社のカスタム ドメイン名を使用する場合は、各サービスのマニュアルを参照してください。
 
 ## <a name="delete-a-custom-domain-name"></a>カスタム ドメイン名を削除する
 
@@ -75,7 +75,7 @@ Azure AD ディレクトリ内にこのようなリソースがある場合は�
 
 Azure portal で **ForceDelete** を呼び出すには、ドメイン名に対する参照が 1000 個未満であることを確認し、Exchange がプロビジョニング サービスであるすべての参照を、[Exchange 管理センター](https://outlook.office365.com/ecp/)で更新または削除する必要があります。 これには、Exchange のメールが有効なセキュリティ グループと配布リストが含まれます。詳しくは、「[Removing mail-enabled security groups](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups)」(メールが有効なセキュリティ グループの削除) に関する記事をご覧ください。 また、次のいずれかの場合、**ForceDelete** 操作は成功しません。
 
-* Office 365 ドメイン サブスクリプション サービスを使用してドメインを購入した
+* Microsoft 365 ドメイン サブスクリプション サービスを使用してドメインを購入した
 * 別の顧客組織の代わりに管理を行っているパートナーである
 
 **ForceDelete** 操作の一部として、次のアクションが実行されます。

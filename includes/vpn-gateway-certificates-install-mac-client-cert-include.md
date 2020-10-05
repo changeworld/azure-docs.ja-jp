@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b214932f43ce20480ee37a7b4edf942f080b38e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce39e23208398f6060103345a6c6cb3541834abc
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67181068"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606784"
 ---
 クライアント証明書をインストールするときに、クライアント証明書のエクスポート時に作成されたパスワードが必要になります。
 
@@ -23,4 +23,4 @@ ms.locfileid: "67181068"
    ![証明書の追加](./media/vpn-gateway-certificates-install-mac-client-cert-include/addcert.png)
 3. クライアント証明書をエクスポートしたときに作成したパスワードを入力します。 パスワードは、証明書の秘密キーを保護するためのものです。 **[OK]** をクリックしてインストールを完了します。
 
-   ![Password](./media/vpn-gateway-certificates-install-mac-client-cert-include/password.png)
+   ![パスワードの入力を求めるダイアログ ボックスを示すスクリーンショット。](./media/vpn-gateway-certificates-install-mac-client-cert-include/password.png)

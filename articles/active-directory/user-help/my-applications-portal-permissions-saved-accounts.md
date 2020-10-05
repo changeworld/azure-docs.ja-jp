@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 02/03/2020
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 8507a53959e7d28cbcec2dec6783b2470696d59b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 993e75f6a5a39e076a9e7161b62abba85d9b0eab
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798110"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031094"
 ---
 # <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>マイ アプリ ポータルでのアプリケーションのアクセス許可の編集または取り消し
 
@@ -28,9 +28,9 @@ ms.locfileid: "88798110"
 >[!Important]
 >このコンテンツはユーザーを対象としています。 管理者の方は、「[アプリケーション管理のドキュメント](../manage-apps/access-panel-collections.md)」で、クラウドベースのアプリの設定と管理の方法を詳しくご覧いただけます。
 
-## <a name="manage-app-permissions"></a>アプリのアクセス許可の管理
+## <a name="manage-app-accounts"></a>アプリ アカウントの管理
 
-自分または管理者によって同意されたアクセス許可を表示するには、 **[マイ アプリ]** ポータルでアプリにマウス ポインターを置いて **[...]** を選択し、 **[アプリケーションの管理]** を選択します。
+自分または管理者によって同意されたアプリを表示するには、 **[マイ アプリ]** ポータルでアプリにマウス ポインターを置いて **[...]** を選択し、 **[アプリケーションの管理]** を選択します。
 
 ![マイ アプリ ポータルでのアプリケーションの管理](media/my-applications-portal-permissions-saved-accounts/manage-your-application.png)
 

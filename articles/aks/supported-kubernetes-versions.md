@@ -3,19 +3,19 @@ title: Azure Kubernetes Service でサポートされている Kubernetes のバ
 description: Azure Kubernetes Service (AKS) の Kubernetes バージョン サポート ポリシーとクラスターのライフサイクルを理解する
 services: container-service
 ms.topic: article
-ms.date: 07/08/2020
+ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 45c60069c27a2bb9b34cc53eb394bd44a04bd0ba
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: fb5b9c446ea5574970b14c683fac258c17199fef
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144619"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565375"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でサポートされている Kubernetes のバージョン
 
-Kubernetes コミュニティでは、おおよそ 3 か月おきにマイナー バージョンをリリースしています。 これらのリリースには、新しい機能と機能強化が含まれます。 修正プログラムのリリースは、より頻繁で (場合によっては毎週)、マイナー バージョンでの重要なバグ修正のみを目的としています。 これらの修正プログラムのリリースには、セキュリティの脆弱性または重大なバグの修正が含まれています。
+Kubernetes コミュニティでは、おおよそ 3 か月おきにマイナー バージョンをリリースしています。 最近、Kubernetes コミュニティでは、バージョン 1.19 以降の[各バージョンのサポート期間が 9 か月間から 12 か月間に延長](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/)されました。 これらのリリースには、新しい機能と機能強化が含まれます。 修正プログラムのリリースは、より頻繁な (場合によっては毎週)、マイナー バージョンでの重要なバグ修正を目的としています。 これらの修正プログラムのリリースには、セキュリティの脆弱性または重大なバグの修正が含まれています。
 
 ## <a name="kubernetes-versions"></a>Kubernetes のバージョン
 
@@ -41,8 +41,8 @@ Example:
 
 AKS では、すべての SLO または SLA 測定で有効なバージョン、およびすべてのリージョンで利用可能になった際に、一般提供バージョンとして定義されます。 AKS では、Kubernetes の 3 つの GA マイナー バージョンがサポートされています。
 
-* AKS でリリースされた最新の GA マイナー バージョン (N と呼ばれます)。 
-* 2 つの以前のマイナー バージョン。 
+* AKS でリリースされた最新の GA マイナー バージョン (N と呼ばれます)。
+* 2 つの以前のマイナー バージョン。
 * サポートされている各マイナー バージョンでは、最大 2 つの安定性の高い修正プログラムもサポートされています。
 * さらに、AKS では、明示的にラベル付けされ、[プレビューの利用規約][preview-terms]の対象となるプレビュー バージョンがサポートされる場合もあります。
 
@@ -143,6 +143,10 @@ az aks get-versions --location eastus --output table
 \* アップストリームのリリース日の確定が保留中です。
 
 ## <a name="faq"></a>よく寄せられる質問
+
+**サポートを利用し続けるには、どのくらいの頻度で Kubernetes のバージョンをアップグレードする必要がありますか?**
+
+Kubernetes 1.19 以降では、[オープン ソース コミュニティへのサポートが 1 年間延長](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/)されています。 AKS により、少なくともアップストリーム コミットメントに一致するパッチとサポートを有効にすることがコミットされています。 つまり、1.19 以降の AKS クラスターでは、サポートされているバージョンを利用し続けることができるように、1 年に 1 回以上アップグレードできます。 1\.18 以前のバージョンのサポート期間は 9 か月のままです。サポートされているバージョンを利用し続けるには、9 か月ごとにアップグレードする必要があります。 新しいバージョンを定期的にテストすること、および Kubernetes 内で最新かつ安定した拡張機能をキャプチャするために新しいバージョンへのアップグレードに備えておくことをお勧めします。
 
 **ユーザーがサポートされていないマイナー バージョンの Kubernetes クラスターをアップグレードするとどうなりますか。**
 

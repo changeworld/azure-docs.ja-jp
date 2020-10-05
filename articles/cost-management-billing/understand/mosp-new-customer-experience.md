@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: banders
-ms.openlocfilehash: 27a6f8f0ed0d58deb64f768d2e47bafebc910edb
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: fce0ca7df3851aa0e96b6ee630a4a1b0b85eb070
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690427"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371744"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>更新された Azure 課金アカウントの使用を開始する
 
@@ -113,7 +113,7 @@ Cost Management API シリーズまたは Billing API シリーズを使用し�
 
 **サービスのダウンタイムが発生しない** ご利用のサブスクリプションの Azure サービスは、中断することなく引き続き実行されます。 唯一の更新は、課金エクスペリエンスに対するものです。 既存のリソース、リソース グループ、管理グループには影響しません。
 
-**Azure リソースに対する変更はない** Azure RBAC (ロールベースのアクセス制御) を使用して設定された Azure リソースへのアクセスには、この更新による影響がありません。
+**Azure リソースに対する変更がない** Azure ロールベースのアクセス制御 (Azure RBAC) を使用して設定された Azure リソースへのアクセスは、この更新による影響を受けません。
 
 **過去の請求書を新しいエクスペリエンスで利用できる** お使いのアカウントが更新される前に生成された請求書は、引き続き Azure portal で利用できます。
 

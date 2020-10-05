@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 1b0600b164186097bc41a7e4d655e32bb2d0acbd
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: ca8f2e1721c99c79188917e5b44950b8db6895ce
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318779"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006399"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>コマーシャル マーケットプレースの販売機能
 
@@ -146,7 +146,7 @@ BYOL のコスト構造は次のとおりです。
 
 ### <a name="reduced-service-fee"></a>サービス料金の減額
 
-コマーシャル マーケットプレースで公開する特定のオファーに関しては、([Microsoft 発行元契約](https://go.microsoft.com/fwlink/?LinkID=699560)の説明に従って) Microsoft によって Marketplace サービス料金が 20% から 10% に減額されます。 お客様のオファーが対象となるには、オファーが Microsoft によって Azure IP 共同販売インセンティブの対象に指定されている必要があります。 ある月に Marketplace サービス料金の減額を受け取るには、各カレンダー月の月末から少なくとも 5 営業日前に資格を満たす必要があります。 Marketplace サービス料金の減額は、Azure IP 共同販売インセンティブ対象 SaaS、VM、マネージド アプリのほか、コマーシャル マーケットプレースを通じて公開された正規の取引可能 IaaS オファーに適用されます。
+コマーシャル マーケットプレースで公開する特定のオファーに関しては、([Microsoft 発行元契約](https://go.microsoft.com/fwlink/?LinkID=699560)の説明に従って) Microsoft によって Marketplace サービス料金が 20% から 10% に減額されます。 お客様のオファーが対象となるには、オファーが Microsoft によって Azure IP 共同販売インセンティブの対象に指定されている必要があります。 ある月に Marketplace サービス料金の減額を受け取るには、各カレンダー月の月末から少なくとも 5 営業日前に資格を満たす必要があります。 Marketplace サービス料金の減額は、Azure IP 共同販売インセンティブ対象 SaaS、VM、マネージド アプリのほか、コマーシャル マーケットプレースを通じて公開された正規の取引可能 IaaS オファーに適用されます。 1 つの Microsoft Teams アプリまたは少なくとも 2 つの Microsoft 365 アドイン (Excel、PowerPoint、Word、Outlook、SharePoint) に関連付けられており、AppSource で公開されている有料 SaaS オファーでもこの割引が与えられます。
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>顧客の請求、支払い、課金、回収
 

@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.author: mialdrid
-ms.openlocfilehash: e7f80bb7f9be2e01aa24090d7305b1a5d882da04
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ee90d80230f9115946525ede325e874e98e358e
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255516"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024334"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-cli"></a>Azure CLI を使用して Azure Bastion ホストを作成する
 
@@ -30,23 +30,25 @@ Azure サブスクリプションを持っていることを確認します。 A
 
 このセクションでは、Azure CLI を使用して新しい Azure Bastion リソースを作成する方法について説明します。
 
+> [!NOTE]
+> 例に示すように、すべてのコマンドで `--resource-group` と共に `--location` パラメーターを使用すると、リソースが確実にまとめてデプロイされます。
+
 1. 仮想ネットワークと Azure Bastion サブネットを作成します。 名前の値として **AzureBastionSubnet** を使用して Azure Bastion サブネットを作成する必要があります。 この値によって、Azure でリソースをデプロイするサブネットを把握できます。 これはゲートウェイ サブネットとは異なります。 /27 またはそれより大きいサブネットを使用する必要があります (/27、/26 など)。 ルート テーブルまたは委任なしで **AzureBastionSubnet** を作成します。 **AzureBastionSubnet** でネットワーク セキュリティ グループを使用する場合、[NSG の使用](bastion-nsg.md)に関する記事を参照してください。
 
    ```azurecli-interactive
-   az network vnet create -g MyResourceGroup -n MyVnet --address-prefix 10.0.0.0/16 --subnet-name AzureBastionSubnet  --subnet-prefix 10.0.0.0/24
+   az network vnet create --resource-group MyResourceGroup --name MyVnet --address-prefix 10.0.0.0/16 --subnet-name AzureBastionSubnet --subnet-prefix 10.0.0.0/24 --location northeurope
    ```
 
 2. Azure Bastion のパブリック IP アドレスを作成します。 このパブリック IP は (ポート 443 経由で) RDP/SSH がアクセスされる Bastion リソースのパブリック IP アドレスです。 パブリック IP アドレスは、作成している Bastion リソースと同じリージョン内にある必要があります。
 
    ```azurecli-interactive
-   az network public-ip create -g MyResourceGroup -n MyIp --sku Standard
+   az network public-ip create --resource-group MyResourceGroup --name MyIp --sku Standard --location northeurope
    ```
 
 3. 仮想ネットワークの AzureBastionSubnet 内に新しい Azure Bastion リソースを作成します。 Bastion リソースを作成してデプロイするには、約 5 分かかります。
 
    ```azurecli-interactive
-   az network bastion create --name $name--public-ip-address $publicip--resource-group $RgName --vnet-name $VNetName --location $location
-                           
+   az network bastion create --name MyBastion --public-ip-address MyIp --resource-group MyResourceGroup --vnet-name MyVnet --location northeurope
    ```
 
 ## <a name="next-steps"></a>次のステップ

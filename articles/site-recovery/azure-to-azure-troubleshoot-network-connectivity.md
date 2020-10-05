@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: afa2cbdb7b0703f9fc0b419442570744c6fefae1
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 6adfd9bc778318b406d5ce27cadccdad02d73d69
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049691"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437464"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Azure 間の VM ネットワーク接続の問題のトラブルシューティング
 
@@ -74,14 +74,11 @@ Office 365 認証と ID IP4 エンドポイントへの接続を確立できま�
 
 1. 次のスクリーンショットで示すように、NSG の HTTPS 送信セキュリティ ルールを作成します。 この例では、次の **[宛先サービス タグ]** を使用します。_Storage.EastUS_ および **[宛先ポート範囲]** : _443_。
 
-     :::image type="content" source="./media/azure-to-azure-about-networking/storage-tag.png" alt-text="storage-tag":::
+     :::image type="content" source="./media/azure-to-azure-about-networking/storage-tag.png" alt-text="com-error":::
 
 1. 次のスクリーンショットで示すように、NSG の HTTPS 送信セキュリティ ルールを作成します。 この例では、次の **[宛先サービス タグ]** を使用します。_AzureActiveDirectory_ および **[宛先ポート範囲]** : _443_。
 
-     :::image type="content" source="./media/azure-to-azure-about-networking/aad-tag.png" alt-text="aad-tag":::
-
-1. 上記のセキュリティ規則と同様に、ターゲットの場所に対応する NSG 上の "EventHub.CentralUS" に対して送信方向の HTTPS (443) セキュリティ規則を作成します。 これにより、Site Recovery 監視にアクセスできるようになります。
-1. NSG 上の "AzureSiteRecovery" に対して送信方向の HTTPS (443) セキュリティ規則を作成します。 これにより、任意のリージョンの Site Recovery Service にアクセスできます。
+     :::image type="content" source="./media/azure-to-azure-about-networking/aad-tag.png" alt-text="com-error" に対して送信方向の HTTPS (443) セキュリティ規則を作成します。 これにより、任意のリージョンの Site Recovery Service にアクセスできます。
 
 #### <a name="nsg-rules---central-us"></a>NSG ルール - 米国中部
 
@@ -108,7 +105,7 @@ Azure Site Recovery サービスのエンドポイントに対する接続を確
 
 #### <a name="resolution"></a>解像度
 
-Azure Site Recovery では、リージョンに基づいて [Site Recovery の IP 範囲](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)にアクセスする必要がありました。 必要な IP 範囲に VM からアクセスできることを確認します。
+マシンでの発信ネットワーク接続の制御に Azure ネットワーク セキュリティ グループ (NSG) 規則またはファイアウォール プロキシを使用している場合は、許可が必要なサービス タグがいくつか存在します。 [詳細については、こちらを参照してください](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)。
 
 ### <a name="issue-4-azure-to-azure-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>問題 4:ネットワーク トラフィックがオンプレミス プロキシ サーバーを経由するときに Azure 間レプリケーションが失敗しました (151072)
 

@@ -6,16 +6,16 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 99f57c212dfc44d84640224b1526ab770fe97230
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: c098dc6b1d3b41a41246857f8a353dd4f5dfcef1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009459"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884190"
 ---
 # <a name="hierarchical-state-override"></a>階層状態のオーバーライド
 
-多くの場合、[モデル](../../concepts/models.md)のパーツの外観を動的に変更する必要があります (サブグラフを非表示にしたり、パーツを透明なレンダリングに切り替えたりするなど)。 シーン グラフ全体を反復処理し、ノードごとに素材の複製と割り当てを管理する必要があるため、関連する各パーツの素材を変更することは現実的ではありません。
+多くの場合、[モデル](../../concepts/models.md)のパーツの外観を動的に変更する必要があります (サブグラフを非表示にする、パーツを透明なレンダリングに切り替える、など)。 シーン グラフ全体を反復処理し、ノードごとに素材の複製と割り当てを管理する必要があるため、関連する各パーツの素材を変更することは現実的ではありません。
 
 考えられる最小限のオーバーヘッドでこのユース ケースを実現するには、`HierarchicalStateOverrideComponent` を使用します。 このコンポーネントは、シーン グラフの任意の分岐に階層状態の更新を実装します。 つまり、シーン グラフ内のどのレベルにも状態を定義でき、その状態は、新しい状態でオーバーライドされるか、リーフ オブジェクトに適用されるまで、下位の階層へと徐々に伝わっていきます。
 
@@ -31,20 +31,27 @@ ms.locfileid: "89009459"
 * **`Hidden`** :シーン グラフ内の各メッシュが非表示になるか、表示されます。
 * **`Tint color`** :レンダリングされたオブジェクトに、個別の濃淡の色と濃淡の重みを使用して色合いを付けることができます。 次の画像は、ホイールの縁への色付けを示しています。
   
-  ![色付け](./media/color-tint.png)
+  ![オブジェクトを緑色にするために使用される濃淡の色](./media/color-tint.png)
 
 * **`See-through`** :オブジェクトの内部部品を見せるなどのために、ジオメトリが半透明にレンダリングされます。 次の画像は、赤のブレーキ キャリパーを除き、透過モードでレンダリングされている車全体を示しています。
 
-  ![透過](./media/see-through.png)
+  ![選択したオブジェクトを透明にするために使用される透過モード](./media/see-through.png)
 
   > [!IMPORTANT]
   > *TileBasedComposition* [レンダリング モード](../../concepts/rendering-modes.md)が使用されている場合にのみ、透過効果が働きます。
 
 * **`Selected`** :ジオメトリが、[選択アウトライン](outlines.md)でレンダリングされます。
 
-  ![選択アウトライン](./media/selection-outline.png)
+  ![選択したパーツを強調表示するために使用されるアウトライン オプション](./media/selection-outline.png)
 
 * **`DisableCollision`** :ジオメトリには、[空間クエリ](spatial-queries.md)が適用されません。 **`Hidden`** フラグによる競合状態フラグへの影響はないため、これらの 2 つのフラグを同時に設定することがよくあります。
+
+* **`UseCutPlaneFilterMask`** :個々のフィルター ビット マスクを使用して、切断面の選択を制御します。 このフラグによって、個々のフィルター マスクを使用する必要があるか、その親から継承する必要があるかが決まります。 フィルター ビット マスク自体は、`CutPlaneFilterMask` プロパティを使用して設定されます。 フィルター処理のしくみの詳細については、[選択的切断面の段落](cut-planes.md#selective-cut-planes)を参照してください。
+![選択的切断面](./media/selective-cut-planes.png)
+
+
+> [!TIP]
+> 完全なサブ グラフの可視性と空間クエリを無効にする代替手段として、game オブジェクトの `enabled` 状態を切り替えることができます。 階層が無効になっている場合、これはすべての `HierarchicalStateOverrideComponent` よりも優先されます。
 
 ## <a name="hierarchical-overrides"></a>階層のオーバーライド
 
@@ -95,6 +102,11 @@ component->SetState(
 `HierarchicalStateOverrideComponent` 自体のインスタンスで、ランタイム オーバーヘッドが大幅に増えることはありません。 ただし、アクティブなコンポーネントの数は常に少なくしておくことをお勧めします。 たとえば、選択したオブジェクトが強調表示される選択システムを実装している場合、強調表示が取り除かれたときにコンポーネントを削除することをお勧めします。 コンポーネントをニュートラルな機能で持ち続けると、たちまち膨れ上がる可能性があります。
 
 透明なレンダリングでは、標準のレンダリングよりも大きいワークロードがサーバーの GPU にかかります。 ジオメトリの多数のレイヤーが表示されている状態でシーン グラフの大きなパーツを*透過*に切り替えると、パフォーマンスのボトルネックになる可能性があります。 [選択アウトライン](../../overview/features/outlines.md#performance)を含むオブジェクトについても同じことが当てはまります。
+
+## <a name="api-documentation"></a>API のドキュメント
+
+* [C# HierarchicalStateOverrideComponent クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent)
+* [C++ HierarchicalStateOverrideComponent クラス](https://docs.microsoft.com/cpp/api/remote-rendering/hierarchicalstateoverridecomponent)
 
 ## <a name="next-steps"></a>次のステップ
 

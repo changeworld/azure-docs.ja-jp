@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: f81c33f3b49352933801c8b89a2c3a1787c2356a
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 203a3b93f200a54ec40c96ee79c7fc822fac140b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682928"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270612"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>Azure 無料アカウントでの課金を避ける
 
@@ -31,7 +31,7 @@ Azure 無料アカウントには、月ごとの容量が制限された無料�
 
 ## <a name="you-used-some-services-that-arent-free"></a>無料ではないサービスを使用した
 
-アカウントのアップグレード後は、Azure 無料アカウントに無料で付随する以外のサービスを使用した場合、従量課金制で課金されます。 無料アカウントに付随しているサービスについては、「[Azure 無料アカウント FAQ](https://azure.microsoft.com/free/free-account-faq/)」を参照してください。 Azure portal でサービスの使用状況を確認できます。 詳細については、[ポータルでコストの内訳とバーン レートを定期的に確認する方法](getting-started.md#costs)に関するセクションを参照してください。
+アカウントのアップグレード後は、Azure 無料アカウントに無料で付随する以外のサービスを使用した場合、従量課金制で課金されます。 無料アカウントに付随しているサービスについては、「[Azure 無料アカウント FAQ](https://azure.microsoft.com/free/free-account-faq/)」を参照してください。 Azure portal でサービスの使用状況を確認できます。 詳細については、「[想定外の料金を分析する](../understand/analyze-unexpected-charges.md)」を参照してください。
 
 ## <a name="you-reached-the-end-of-your-free-12-months"></a>無料の 12 か月間が終了した
 

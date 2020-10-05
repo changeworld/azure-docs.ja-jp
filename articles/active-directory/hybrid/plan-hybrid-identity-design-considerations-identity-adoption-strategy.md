@@ -1,6 +1,6 @@
 ---
 title: ハイブリッド ID 設計 - 導入戦略 - Azure | Microsoft Docs
-description: 条件付きアクセス制御を使用して、Azure Active Directory では、ユーザーの認証時、アプリケーションにアクセスを与える前に、選択された特定の条件を確認します。 条件が満たされていれば、ユーザーは承認され、アプリケーションにアクセスできます。
+description: 条件付きアクセス制御を使用して、Azure AD では、ユーザーの認証時、アプリケーションにアクセスを与える前に、選択された特定の条件を確認します。
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7263d6a73a78b4b804cddd77f979898008ebadd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1608039b051cb17684ca77cf7f00c705c9a8e7b5
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555386"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659528"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>ハイブリッド ID 導入戦略の定義
 このタスクでは、次のトピックで検討したビジネス要件を満たすために、ハイブリッド ID ソリューションのハイブリッド ID 導入戦略を定義します。
@@ -32,7 +32,7 @@ ms.locfileid: "85555386"
 * [多要素認証要件の決定](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
 
 ## <a name="define-business-needs-strategy"></a>ビジネス ニーズ戦略の定義
-最初のタスクでは、組織のビジネス ニーズの決定に対応します。  組織のビジネス ニーズは非常に多岐にわたり、注意を怠るとスコープ クリープが発生する可能性があります。  最初はシンプルさを心がけながら、今後の変更に対応し、容易にするような設計の計画を常に意識してください。  設計がシンプルか複雑かを問わず、Azure Active Directory は、Office 365、Microsoft Online Services、クラウド対応アプリケーションをサポートする Microsoft ID プラットフォームです。
+最初のタスクでは、組織のビジネス ニーズの決定に対応します。  組織のビジネス ニーズは非常に多岐にわたり、注意を怠るとスコープ クリープが発生する可能性があります。  最初はシンプルさを心がけながら、今後の変更に対応し、容易にするような設計の計画を常に意識してください。  設計がシンプルか複雑かを問わず、Azure Active Directory は、Microsoft 365、Microsoft Online Services、クラウド対応アプリケーションをサポートする Microsoft ID プラットフォームです。
 
 ## <a name="define-an-integration-strategy"></a>統合戦略の定義
 マイクロソフトでは、クラウド ID、同期済み ID、フェデレーション ID の 3 つの主な統合シナリオを用意しています。  これらの統合戦略の 1 つを導入する計画を行う必要があります。  選択する戦略はさまざまで、選択の決定要因には、どのようなタイプのユーザー エクスペリエンスを提供するか、既存のインフラストラクチャがあるか、何が最もコスト効率に優れているか、などがあります。  
@@ -171,7 +171,7 @@ ms.locfileid: "85555386"
 * Azure AD のディレクトリは、分離するように設計されています。 ディレクトリ間に共通の統合された GAL を構築しようとする際に他の Azure AD ディレクトリからデータを読み取るような、Azure AD Connect Sync の構成の変更はサポートされていません。 Azure AD Connect Sync を使用している別のオンプレミス AD の連絡先としてユーザーをエクスポートすることもサポートされていません。
 
 > [!NOTE]
-> 組織でネットワーク上のコンピューターからインターネットへの接続が制限されている場合、次の記事の一覧にあるエンドポイント (FQDN、IPv4 と IPv6 のアドレス範囲) を、クライアント コンピューターの送信許可リストと Internet Explorer の信頼済みサイト ゾーンに追加して、コンピューターで Office 365 を正常に使用できるようにしてください。 詳細については、「 [Office 365 の URL と IP アドレスの範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=en-US&rs=en-US&ad=US)」をお読みください。
+> 組織でネットワーク上のコンピューターからインターネットへの接続が制限されている場合、次の記事の一覧にあるエンドポイント (FQDN、IPv4 と IPv6 のアドレス範囲) を、クライアント コンピューターの送信許可リストと Internet Explorer の信頼済みサイト ゾーンに追加して、コンピューターで Microsoft 365 を正常に使用できるようにしてください。 詳細については、「 [Office 365 の URL と IP アドレスの範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=en-US&rs=en-US&ad=US)」をお読みください。
 > 
 > 
 

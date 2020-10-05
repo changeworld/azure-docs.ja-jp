@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: e8aa5515bf8ae8e842a98656167f4198ac652981
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 87d455a77096a2ae9339c578f3405c629d79fa76
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642386"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603341"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>シングル サインオンのデプロイを計画する
 
@@ -28,7 +28,7 @@ ms.locfileid: "88642386"
 
 シングル サインオン (SSO) によって、ユーザーが Azure Active Directory (Azure AD) 内のアプリケーションにサインオンするときのセキュリティと利便性が向上します。 
 
-多くの組織では、エンド ユーザーの生産性向上のため、Office 365、Box、Salesforce などのサービスとしてのソフトウェア (SaaS) アプリケーションに依存しています。 従来は、IT スタッフが各 SaaS アプリケーションのユーザー アカウントを個別に作成して更新する必要があり、ユーザーはそれぞれのパスワードを覚える必要がありました。
+多くの組織では、エンド ユーザーの生産性向上のため、Microsoft 365、Box、Salesforce などのサービスとしてのソフトウェア (SaaS) アプリケーションに依存しています。 従来は、IT スタッフが各 SaaS アプリケーションのユーザー アカウントを個別に作成して更新する必要があり、ユーザーはそれぞれのパスワードを覚える必要がありました。
 
 Azure Marketplace には、SSO 接続を事前に統合したアプリケーションが 3000 以上あり、お使いのテナントでこれらを簡単に統合できます。
 

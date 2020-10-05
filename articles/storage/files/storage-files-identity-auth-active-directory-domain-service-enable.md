@@ -8,12 +8,12 @@ ms.date: 04/21/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: contperfq1
-ms.openlocfilehash: f87d8c32902cfcde3207909da16fae17cc6ff68f
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: f64e3459863cc7b7ffddfae824f9c4012802a457
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294171"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500319"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Azure Files に対する Azure Active Directory Domain Services 認証を有効にする
 
@@ -59,7 +59,7 @@ Azure ファイル共有への SMB 経由の Azure AD を有効にする前に�
 
 ## <a name="regional-availability"></a>リージョン別の提供状況
 
-Azure AD DS を使用した Azure Files 認証は、[すべての Azure パブリック リージョン](https://azure.microsoft.com/global-infrastructure/locations/)で利用できます。
+Azure AD DS を使用した Azure Files 認証は、[すべての Azure パブリック リージョンおよび Gov リージョン](https://azure.microsoft.com/global-infrastructure/locations/)で利用できます。
 
 ## <a name="overview-of-the-workflow"></a>ワークフローの概要
 

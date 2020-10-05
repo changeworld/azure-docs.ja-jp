@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0711c25187a15c48e1e9b19b7c99b1e528c7b199
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 515cfd5267917f88131571adcb1bea0db274157c
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89393549"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89437940"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure Data Factory 用の Azure セキュリティ ベースライン
 
@@ -578,7 +578,7 @@ Private Link が使用可能な場合は、プライベート エンドポイン
 
 **ガイダンス**:クラウド データ ストアが HTTPS または TLS をサポートしている場合、Data Factory のデータ移動サービスとクラウド データ ストア間のデータ転送はすべて、セキュリティで保護されたチャネル HTTPS または TLS を介して行われます。 使用される TLS のバージョンは、1.2 です。
 
-データがデータベースとの間で転送中である間は、Azure SQL Database および Azure SQL Data Warehouse への接続をすべて (SSL/TLS を使用して) 暗号化する必要があります。 JSON を使用してパイプラインを作成する場合は、encryption プロパティを追加し、接続文字列で true に設定します。 Azure Storage では、接続文字列で HTTPS を使用できます。
+データベースとの間でのデータ転送中は、Azure SQL Database および Azure Synapse Analytics (旧称 SQL Data Warehouse) へのすべての接続を (SSL/TLS を使用して) 暗号化する必要があります。 JSON を使用してパイプラインを作成する場合は、encryption プロパティを追加し、接続文字列で true に設定します。 Azure Storage では、接続文字列で HTTPS を使用できます。
 
 * [Azure Data Factory での転送中の暗号化について](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
 
@@ -738,7 +738,7 @@ Security Center で脆弱性が識別されると、検出結果と推奨事項�
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1:自動化された Asset Discovery ソリューションを使用する
 
-**ガイダンス**: Azure Resource Graph を使用して、サブスクリプション内のすべてのリソース (コンピューティング、ストレージ、ネットワーク、ポート、プロトコルなど) のクエリまたは検出を行います。 テナントで適切な (読み取り) アクセス許可を確認し、サブスクリプション内のリソースだけでなく、すべての Azure サブスクリプションを列挙します。
+**ガイダンス**:Azure Resource Graph を使用して、サブスクリプション内のすべてのリソース (コンピューティング、ストレージ、ネットワーク、ポート、プロトコルなど) のクエリまたは検出を行います。 テナントで適切な (読み取り) アクセス許可を確認し、サブスクリプション内のリソースだけでなく、すべての Azure サブスクリプションを列挙します。
 
 従来の Azure リソースは Resource Graph で検出できますが、今後は Azure Resource Manager リソースを作成して使用することを強くお勧めします。
 
@@ -782,7 +782,7 @@ Security Center で脆弱性が識別されると、検出結果と推奨事項�
 
 ### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4:承認された Azure リソースのインベントリを定義および管理する
 
-**ガイダンス**: コンピューティング リソース用に承認された Azure リソースと承認されたソフトウェアを定義します。
+**ガイダンス**:コンピューティング リソース用に承認された Azure リソースと承認されたソフトウェアを定義します。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -940,7 +940,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3:セキュリティで保護された Azure リソースの構成を維持する
 
-**ガイダンス**:Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
+**ガイダンス**: Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
 
 * [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -984,13 +984,13 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6:カスタム オペレーティング システム イメージを安全に格納する
 
-**ガイダンス**: カスタム イメージを使用している場合は、Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、承認されたユーザーのみがイメージにアクセスできるようにします。 コンテナー イメージの場合は、Azure Container Registry に保存し、Azure RBAC を利用して、承認されたユーザーのみがイメージにアクセスできるようにします。
+**ガイダンス**: カスタム イメージを使用している場合は、Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、確実に承認されたユーザーのみがイメージにアクセスできるようにします。 コンテナー イメージの場合は、Azure Container Registry に保存し、Azure RBAC を利用して、承認されたユーザーのみがイメージにアクセスできるようにします。
 
 Data Factory 共同作成者ロールを使って、データ ファクトリのほか、それらの中の子リソースの作成と管理を行うことができます。
 
 * [Azure RBAC について](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
 
-* [コンテナー レジストリの Azure RBAC について](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+* [コンテナー レジストリの Azure RBAC を理解する](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
 
 * [Azure RBAC を構成する方法](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
 

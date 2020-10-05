@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: c9da25a7d7521108195d3183f52b914e13105e8d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 2bdfdd31e2cc9bc964abc040d0631c4760fca283
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082286"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984877"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Azure Data Factory 内で SQL Server Integration Services (SSIS) と共に Azure SQL Managed Instance を使用する
 
@@ -141,7 +141,7 @@ SQL Server Integration Services (SSIS) プロジェクト、パッケージ、�
 
     パブリック エンドポイントのホスト名が <mi_name>.public.<dns_zone>.database.windows.net 形式になっており、接続に使用されるポートが 3342 です。  
 
-    ![カタログ-パブリック-エンドポイント](./media/how-to-use-sql-managed-instance-with-ir/catalog-public-endpoint.png)
+    ![統合ランタイム セットアップのスクリーンショット。SSIS カタログの作成が選択されており、Catalog データベース サーバー エンドポイントが入力されています。](./media/how-to-use-sql-managed-instance-with-ir/catalog-public-endpoint.png)
 
 1. 適用する場合は、[Azure AD 認証] を選択します。
 
@@ -157,7 +157,7 @@ SQL Server Integration Services (SSIS) プロジェクト、パッケージ、�
 
     Azure-SSIS IR を仮想ネットワークに参加させる方法の詳細については、「[Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる](join-azure-ssis-integration-runtime-virtual-network.md)」をご覧ください。
 
-    ![参加-仮想-ネットワーク](./media/how-to-use-sql-managed-instance-with-ir/join-virtual-network.png)
+    ![統合ランタイム セットアップの詳細設定のスクリーンショット。ここで、参加するランタイムに仮想ネットワークを選択できます。](./media/how-to-use-sql-managed-instance-with-ir/join-virtual-network.png)
 
 Azure-SSIS IR を作成する方法の詳細については、「[Azure Data Factory で Azure-SSIS 統合ランタイムを作成する](create-azure-ssis-integration-runtime.md#provision-an-azure-ssis-integration-runtime)」を参照してください。
 

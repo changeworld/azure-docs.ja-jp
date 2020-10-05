@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 015feac819467cf60bfb2faab27af769fadc3cfa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 76181f089511a6645a51707f9a8537c1589d82bf
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522875"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484954"
 ---
 # <a name="data-access-strategies"></a>データ アクセス戦略
 
@@ -55,7 +55,7 @@ Azure Integration Runtime とセルフホステッド統合ランタイムのデ
     |                              | Azure Database for MariaDB、Azure Database for MySQL、Azure Database for PostgreSQL       | -                | -                   | ○             | -            | [はい]                  |
     |                              | Azure File Storage                                  | ○              | -                   | [はい]             | -            | .                    |
     |                              | Azure Storage (BLOB、ADLS Gen2)                     | はい              | はい (MSI 認証のみ) | はい             | -            | .                    |
-    |                              | Azure SQL DB、SQL DW (Synapse Analytics)、SQL Ml  | はい (Azure SQL DB/DW のみ)        | -                   | ○             | -            | [はい]                  |
+    |                              | Azure SQL DB、Azure Synapse Analytics)、SQL   Ml  | はい (Azure SQL DB/DW のみ)        | -                   | ○             | -            | [はい]                  |
     |                              | Azure Key Vault (シークレットまたは接続文字列をフェッチするため) | はい      | ○                 | [はい]             | -            | -                    |
     | その他の PaaS/SaaS データ ストア | AWS S3、SalesForce、Google Cloud Storage など    | -                | -                   | はい             | -            | -                    |
     | Azure laaS                   | SQL Server、Oracle など                          | -                | -                   | ○             | [はい]          | -                    |
@@ -73,7 +73,7 @@ Azure Integration Runtime とセルフホステッド統合ランタイムのデ
     |                                | Azure Database for MariaDB、Azure Database for MySQL、Azure Database for PostgreSQL               | はい       | -                   |
     |                                | Azure File Storage                                            | はい       | -                   |
     |                                | Azure Storage (Blog、ADLS Gen2)                             | はい       | はい (MSI 認証のみ) |
-    |                                | Azure SQL DB、SQL DW (Synapse Analytics)、SQL Ml          | はい       | -                   |
+    |                                | Azure SQL DB、Azure Synapse Analytics)、SQL   Ml          | はい       | -                   |
     |                                | Azure Key Vault (シークレットまたは接続文字列をフェッチするため) | ○       | はい                 |
     | その他の PaaS/SaaS データ ストア | AWS S3、SalesForce、Google Cloud Storage など              | はい       | -                   |
     | Azure laaS                     | SQL Server、Oracle など                                  | はい       | -                   |

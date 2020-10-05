@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 211e06695d3cabef8cfeb0a7bbf581835819345c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d22ab9f028f0491db33d62d0a6dff8d06282f925
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686209"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91368721"
 ---
 # <a name="buy-a-reservation"></a>予約の購入
 
@@ -123,7 +123,7 @@ Azure サブスクリプションの支払い方法によっては、組織内�
 EA サブスクリプションをお持ちのお客様の場合:
 
 - 通知は、EA 通知の連絡先にのみ送信されます。
-- RBAC (IAM) アクセス許可を使用して予約に追加されたユーザーは、メール通知を受け取りません。
+- Azure RBAC (IAM) アクセス許可を使用して予約に追加されたユーザーは、メール通知を受け取りません。
 
 個々のサブスクリプションをお持ちのお客様の場合:
 

@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: ad39b9980562c345aff87f4e0771f265011886b3
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 469ccad773693047391f56c1f1109a9c444ee90b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683302"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447699"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Azure portal でのアカウント管理者のタスク
 
@@ -35,14 +35,14 @@ ms.locfileid: "88683302"
 
 1. **[個人用サブスクリプション]** 一覧で、クレジット カードを追加するサブスクリプションを選択します。
 
-   ![[概要] の [個人用サブスクリプション] グリッドを示すスクリーンショット](./media/account-admin-tasks/cost-management-billing-overview-x.png)
+   ![サブスクリプションを選択できる [コストの管理と請求] ページを示すスクリーンショット。](./media/account-admin-tasks/cost-management-billing-overview-x.png)
 
    > [!NOTE]
    > サブスクリプションの一部がここに表示されない場合、原因として、ある時点でサブスクリプション ディレクトリを変更したことが考えられます。 これらのサブスクリプションについては、ディレクトリを元のディレクトリ (最初にサインアップしたディレクトリ) に切り替える必要があります。 その後、手順 2 を繰り返します。
 
 1. **[支払い方法]** を選択します。
 
-    ![[支払方法] ブレードを示すスクリーンショット。](./media/account-admin-tasks/subscription-payment-methods-blade.png)
+    ![支払い方法を追加できる [支払い方法] ページを示すスクリーンショット。](./media/account-admin-tasks/subscription-payment-methods-blade.png)
 
 ここでは、新しいクレジット カードの追加、アクティブな支払い方法の変更、クレジット カードの詳細の編集、およびクレジット カードの削除を行えます。
 
@@ -100,7 +100,7 @@ ms.locfileid: "88683302"
 
 1. コマンド バーで **[Pay by invoice]\(請求書による支払い\)** を選択します。
 
-    ![[支払方法] ブレードを示すスクリーンショット。](./media/account-admin-tasks/subscription-payment-methods-pay-by-invoice.png)
+    ![[請求書による支払い] が選択されている [支払い方法] ページを示すスクリーンショット。](./media/account-admin-tasks/subscription-payment-methods-pay-by-invoice.png)
 
 1. 請求書による支払い方法用に、住所を入力します。
 1. **[次へ]** をクリックします。
@@ -124,7 +124,7 @@ Azure の使用制限により、クレジット額を超過する支出が防�
 
 1. **[個人用サブスクリプション]** 一覧で、Visual Studio Enterprise サブスクリプションを選択します。
 
-   ![[概要] の [個人用サブスクリプション] グリッドを示すスクリーンショット](./media/account-admin-tasks/cost-management-overview-msdn-x.png)
+   ![[Visual Studio Enterprise サブスクリプション] を選択できる [個人用サブスクリプション] 領域を示すスクリーンショット。](./media/account-admin-tasks/cost-management-overview-msdn-x.png)
 
     > [!NOTE]
     > Visual Studio サブスクリプションの一部がここに表示されない場合、原因として、ある時点でサブスクリプション ディレクトリを変更したことが考えられます。 これらのサブスクリプションについては、ディレクトリを元のディレクトリ (最初にサインアップしたディレクトリ) に切り替える必要があります。 その後、手順 2 を繰り返します。
@@ -152,7 +152,7 @@ Azure イン オープン プランのライセンス サブスクリプショ�
 
 1. **[個人用サブスクリプション]** 一覧で、Azure イン オープン プラン サブスクリプションを選択します。
 
-    ![[概要] の [個人用サブスクリプション] グリッドを示すスクリーンショット](./media/account-admin-tasks/cost-management-overview-aio-x.png)
+    ![[Azure イン オープン プラン サブスクリプション] を選択できる [個人用サブスクリプション] 領域を示すスクリーンショット。](./media/account-admin-tasks/cost-management-overview-aio-x.png)
 
    > [!NOTE]
    > サブスクリプションがここに表示されない場合、原因として、ある時点でサブスクリプション ディレクトリを変更したことが考えられます。 サブスクリプションのディレクトリを元のディレクトリ (最初にサインアップしたディレクトリ) に切り替える必要があります。 その後、手順 2 を繰り返します。
@@ -183,4 +183,4 @@ Azure イン オープン プランのライセンス サブスクリプショ�
 バーチャル カードやプリペイド カードはサポートされません。 有効なクレジット カードを追加または更新するときにエラーが発生する場合は、ブラウザーをプライベート モードで開いてみてください。
 
 ## <a name="next-steps"></a>次のステップ
-- [Azure portal での予想外のコストの分析と防止](getting-started.md)に関する詳細を確認する
+- [想定外の料金の分析](../understand/analyze-unexpected-charges.md)に関する詳細情報

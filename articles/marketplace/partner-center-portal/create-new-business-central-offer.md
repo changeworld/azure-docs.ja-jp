@@ -3,16 +3,16 @@ title: Dynamics 365 Business Central オファーを作成する - Microsoft コ
 description: パートナー センターの Microsoft コマーシャル マーケットプレースで、新しい Dynamics 365 Business Central オファーを作成するための手順と考慮事項について説明します。 Azure Marketplace で、またはクラウド ソリューション プロバイダー (CSP) プログラムを使用して、オファーを一覧表示したり、販売したりすることができます。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: 4226f9cc45589b8c555d3d54918e31a04acbfc6b
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 1e2af29779c93175ccc4c7f6964862b79febd8e6
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817053"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527090"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Dynamics 365 Business Central オファーの作成
 
@@ -71,9 +71,7 @@ ms.locfileid: "88817053"
 
 ### <a name="test-drive"></a>体験版
 
-体験版は、購入前に試用するオプションを提供することで潜在顧客へのオファーを披露し、その結果、コンバージョンが増加し、見込みの高いリードが生成される優れた方法です。 詳細については、まず「[体験版とは](../what-is-test-drive.md)」をご覧ください。
-
-一定期間、体験版を有効にするには、 **[体験版を有効にする]** チェック ボックスをオンにします。 オファーから体験版を削除するには、このチェック ボックスをオフにします。
+この時点では、Dynamics 365 Business Central オファーでは体験版がサポートされていません。 オファーから体験版を削除するには、 **[体験版を有効にする]** チェック ボックスをオフにします。
 
 ### <a name="customer-leads"></a>潜在顧客
 

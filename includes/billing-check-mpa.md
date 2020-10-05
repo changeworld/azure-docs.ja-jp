@@ -4,12 +4,12 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 02/28/2019
 ms.author: amberb
-ms.openlocfilehash: 0cdcc26ca0ae64455f8a27b13c2e4bc87e0ecb68
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 18f36664b670c7c19ac3783c1e9699d61ff354d7
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74222653"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361188"
 ---
 契約の種類を確認して、Microsoft Partner Agreement の課金アカウントにアクセスできるかどうかを判断します。
  
@@ -17,7 +17,7 @@ ms.locfileid: "74222653"
  
 2. **[コストの管理と請求]** で検索します。
  
-   ![Azure portal の検索を表示するスクリーンショット](./media/billing-check-mpa/search-cmb.png)
+   ![Azure portal での [コストの管理と請求] の検索を示すスクリーンショット。](./media/billing-check-mpa/search-cmb.png)
  
 3. 1 つの課金スコープのみにアクセスできる場合は、左側から **[プロパティ]** を選択します。 課金アカウントの種類が **Microsoft Partner Agreement** の場合、Microsoft Partner Agreement の課金アカウントにアクセスできます。
  

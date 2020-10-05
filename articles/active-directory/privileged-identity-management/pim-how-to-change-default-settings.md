@@ -14,12 +14,12 @@ ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3a42cdfbf251e24ed2b59adca1a73b4dfe427a7
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: cedd6d019005a4c55bbabf6070c6d864da90f40a
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420007"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055488"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールの設定を構成する
 
@@ -123,7 +123,7 @@ Privileged Identity Management では、2 つの異なるシナリオで、必�
 
 # <a name="previous-version"></a>[以前のバージョン](#tab/previous)
 
-## <a name="open-role-settings"></a>ロールの設定を開く
+## <a name="open-role-settings-previous-version"></a>ロール設定を開く (以前のバージョン)
 
 次の手順を実行して、Azure AD ロールの設定を開きます。
 
@@ -168,7 +168,7 @@ Privileged Identity Management では、2 つの異なるシナリオで、必�
 **[多要素認証]** スイッチを使用して、ユーザーに対して、ロールのアクティブ化で MFA を使用した ID 確認を必須とするかどうかを指定します。 ユーザーが自分の ID を確認する必要があるのは、ロールのアクティブ化のたびではなく、セッションごとに 1 回だけです。 MFA を有効化する場合は次の 2 点に留意してください。
 
 - メール アドレス (一般には @outlook.com ですが、例外もあります) の Microsoft アカウントを持つユーザーは、Azure Multi-Factor Authentication に登録できません。 Microsoft アカウントを持つユーザーにロールを割り当てるには、ユーザーを永続的な管理者にするか、そのロールの Multi-Factor Authentication を無効化する必要があります。
-- Azure AD および Office 365 の高い特権ロールでは、Azure Multi-Factor Authentication は無効化できません。 この安全機能は、次のロールの保護に役立ちます。  
+- Azure AD および Microsoft 365 の高い特権ロールでは、Azure Multi-Factor Authentication は無効化できません。 この安全機能は、次のロールの保護に役立ちます。  
   
   - Azure Information Protection 管理者
   - 課金管理者

@@ -1,14 +1,14 @@
 ---
 title: テナント間の管理エクスペリエンス
 description: Azure の委任されたリソース管理によって、テナント間の管理エクスペリエンスが可能になります。
-ms.date: 08/12/2020
+ms.date: 09/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 41e93f2a6a9fb21720dd2348dd611160b05b65c0
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 1ec2beeef86478e36fe3809e8dabcd40333c098a
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146914"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602389"
 ---
 # <a name="cross-tenant-management-experiences"></a>テナント間の管理エクスペリエンス
 
@@ -48,13 +48,13 @@ Azure PowerShell の [Get-AzSubscription コマンドレット](/powershell/modu
 
 [Azure Arc](../../azure-arc/index.yml):
 
-- ハイブリッド サーバーを大規模に管理する - [Azure Arc for servers (プレビュー)](../../azure-arc/servers/overview.md):
-  - Azure 内の委任されたサブスクリプションまたはリソース グループに [Azure外の Windows Server または Linux コンピューターを接続する](../../azure-arc/servers/onboard-portal.md)
+- ハイブリッド サーバーを大規模に管理する - [Azure Arc 対応サーバー (プレビュー)](../../azure-arc/servers/overview.md):
+  - Azure 内の委任されたサブスクリプションまたはリソース グループに[接続されている Azure 外の Windows Server または Linux コンピューターを管理する](../../azure-arc/servers/onboard-portal.md)
   - Azure Policy やタグ付けなどの Azure コンストラクトを使用して接続されたコンピューターを管理する
   - 顧客のハイブリッド環境全体に同じポリシー セットが提供されていることを確認する
   - Azure Security Center を使用して、顧客のハイブリッド環境全体のコンプライアンスを監視する
 - ハイブリッド Kubernetes クラスターを大規模に管理する - [Azure Arc 対応 Kubernetes (プレビュー)](../../azure-arc/kubernetes/overview.md):
-  - [Kubernetes クラスターを Azure Arc に接続](../../azure-arc/kubernetes/connect-cluster.md)し、Azure 内の委任されたサブスクリプションやリソース グループに接続する
+  - Azure 内の委任されたサブスクリプションまたはリソース グループに[接続されている Kubernetes クラスターを管理する](../../azure-arc/kubernetes/connect-cluster.md)
   - 接続されたクラスターに [GitOps](../../azure-arc/kubernetes/use-gitops-connected-cluster.md) を使用する
   - 接続されたクラスター全体にポリシーを適用する
 
@@ -64,7 +64,7 @@ Azure PowerShell の [Get-AzSubscription コマンドレット](/powershell/modu
 
 [Azure Backup](../../backup/index.yml):
 
-- 顧客のテナントにあるデータをバックアップおよび復元する
+- [オンプレミスのワークロード、Azure VM、Azure ファイル共有などから](../..//backup/backup-overview.md#what-can-i-back-up)顧客データをバックアップして復元する
 - [バックアップ エクスプローラー](../../backup/monitor-azure-backup-with-backup-explorer.md)を使用すると、バックアップ項目 (まだバックアップ対象として構成されていない Azure リソースを含む) の運用情報と、委任されたサブスクリプションの監視情報 (ジョブとアラート) を表示できます。 バックアップ エクスプローラーは、現在、Azure VM データに対してのみ使用できます。
 - 委任されたサブスクリプション全体で[バックアップ レポート](../../backup/configure-reports.md)を使用して、過去の傾向を追跡し、バックアップ ストレージの使用量を分析し、バックアップと復元を監査します。
 
@@ -82,6 +82,7 @@ Azure PowerShell の [Get-AzSubscription コマンドレット](/powershell/modu
 - 委任されたサブスクリプションのアクティビティ ログの詳細を表示する
 - ログ分析: 複数のテナントにあるリモートのワークスペースからデータを照会する
 - 顧客のテナント内に、Webhook を使用して管理側テナントで Azure Automation Runbook や Azure Functions などの自動化をトリガーするアラートを作成する
+- 顧客テナント内で診断設定を作成して、管理テナント内のワークスペースにリソース ログを送信する
 - SAP ワークロードに対しては、[顧客のテナント全体で集計されたビューを使って SAP ソリューションのメトリックを監視する](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293)
 
 [Azure のネットワーク](../../networking/networking-overview.md):

@@ -10,13 +10,13 @@ manager: anandsub
 ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/30/2020
-ms.openlocfilehash: 66cc7b0d4f205a93c41f49ecaadac495a98b6da6
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.date: 09/08/2020
+ms.openlocfilehash: 2f4e0728a863521f772f4d1c9531b07f427bfb3e
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949135"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595090"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory のソース管理
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -242,13 +242,13 @@ Data Factory のリンクされたサービスのすべての接続文字列ま�
 
 ## <a name="switch-to-a-different-git-repository"></a>別の Git リポジトリに切り替える
 
-別の Git リポジトリに切り替えるには、[Data Factory overview]\(Data Factory の概要\) ページの右上にある **[Git Repo Settings]\(Git リポジトリの設定\)** アイコンをクリックします。 アイコンが表示されていない場合は、ローカル ブラウザーのキャッシュをクリアします。 アイコンを選択して現在のリポジトリとの関連付けを削除します。
+別の Git リポジトリに切り替えるには、 **[ソース管理]** の管理ハブにある [Git 構成] ページに移動します。 **[切断]** を選択します。 
 
-![Git アイコン](media/author-visually/remove-repo.png)
+![Git アイコン](media/author-visually/remove-repository.png)
 
-[Repository Settings]\(リポジトリの設定\) ウィンドウが表示されたら、 **[Remove Git]\(Git の削除\)** を選択します。 データ ファクトリ名を入力し、 **[confirm]\(確認\)** をクリックして、データ ファクトリに関連付けられている Git リポジトリを削除します。
+データ ファクトリ名を入力し、 **[confirm]\(確認\)** をクリックして、データ ファクトリに関連付けられている Git リポジトリを削除します。
 
-![現在の Git リポジトリとの関連付けを削除する](media/author-visually/remove-repo2.png)
+![現在の Git リポジトリとの関連付けを削除する](media/author-visually/remove-repository-2.png)
 
 現在のリポジトリとの関連付けを削除すると、別のリポジトリを使用するように Git 設定を構成してから、既存の Data Factory リソースを新しいリポジトリにインポートできるようになります。
 

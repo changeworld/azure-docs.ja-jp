@@ -2,13 +2,13 @@
 title: Azure Migrate アプライアンスの FAQ
 description: Azure Migrate アプライアンスに関する一般的な質問の回答を示します。
 ms.topic: conceptual
-ms.date: 06/03/2020
-ms.openlocfilehash: de34bba40b9200c198f3c07262bd6b7a00b62060
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.date: 09/15/2020
+ms.openlocfilehash: 6c1e5099f208788919d27ba3d2b1de296f0d91a6
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050677"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526563"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate アプライアンス:一般的な質問
 
@@ -21,7 +21,7 @@ ms.locfileid: "89050677"
 
 ## <a name="what-is-the-azure-migrate-appliance"></a>Azure Migrate アプライアンスとは何ですか。
 
-Azure Migrate アプライアンスは、Azure Migrate が次のことを行う、軽量アプライアンスです。オンプレミスのサーバーを検出して評価するためのサーバー評価ツールです。 Azure Migrate: オンプレミス VMware VM のエージェントレス移行を行うためにアプライアンスも使用するサーバー移行ツールです。
+Azure Migrate アプライアンスは、Azure Migrate が次のことを行う、軽量アプライアンスです。サーバー評価ツールが使用して、オンプレミスまたは任意のクラウドの物理サーバーまたは仮想サーバーを検出して評価する、軽量アプライアンスです。 Azure Migrate: オンプレミス VMware VM のエージェントレス移行を行うためにアプライアンスも使用するサーバー移行ツールです。
 
 Azure Migrate アプライアンスに関する詳細を示します。
 
@@ -35,13 +35,14 @@ Azure Migrate アプライアンスに関する詳細を示します。
 
 アプライアンスは次のようにデプロイできます。
 
-- VMware VM と Hyper-V VM 用のテンプレート (VMware の場合は OVA テンプレート、Hyper-V の場合は VHD) を使用します。
-- テンプレートを使用しない場合、または Azure Government を利用している場合は、PowerShell スクリプトを使用して VMware または Hyper-V 用のアプライアンスをデプロイできます。
-- 物理サーバーの場合は、必ずスクリプトを使用してアプライアンスをデプロイします。
+- VMware VM (.OVA ファイル) および Hyper-V VM (.VHD ファイル) を検出するためのテンプレートを使用して、アプライアンスをホストする新しい VM を作成します。
+- テンプレートを使用しない場合は、ポータルから zip ファイルでダウンロードできる PowerShell インストーラー スクリプトを使用して、VMware VM または Hyper-V VM を検出するための既存の物理マシンまたは仮想マシンにアプライアンスをデプロイすることができます。
+- オンプレミスまたは任意のクラウドの物理サーバーまたは仮想サーバーの場合は、既存のサーバー上のスクリプトを使用して、常にアプライアンスをデプロイします。
+- Azure Government では、3 つのアプライアンスすべてを、PowerShell インストーラー スクリプトのみを使用してデプロイできます。
 
 ## <a name="how-does-the-appliance-connect-to-azure"></a>アプライアンスはどのように Azure に接続しますか。
 
-アプライアンスはインターネット経由、または Azure ExpressRoute を使用して接続できます。
+アプライアンスはインターネット経由、または Azure ExpressRoute を使用して接続できます。 これらの [URL](https://docs.microsoft.com/azure/migrate/migrate-appliance#url-access) が、Azure に接続するためのアプライアンスのホワイトリストに登録されていることを確認します。
 
 - Azure Migrate レプリケーション トラフィックに Azure ExpressRoute を使用するには、Microsoft ピアリングまたは既存のパブリック ピアリングが必要です (新しい ER 作成では、パブリック ピアリングは非推奨となっています)。
 - プライベート ピアリング (のみ) が有効になっている Azure ExpressRoute 経由のレプリケーションはサポートされていません。
@@ -66,6 +67,7 @@ Azure Migrate アプライアンスが VM 上で収集するデータの詳細�
 
 - **VMware VM**:収集データを[レビュー](migrate-appliance.md#collected-data---vmware)します。
 - **Hyper-V VM**:収集データを[レビュー](migrate-appliance.md#collected-data---hyper-v)します。
+- **物理サーバーまたは仮想サーバー**: 収集データを[レビュー](migrate-appliance.md#collected-data---physical)します。
 
 ## <a name="how-is-data-stored"></a>データをどのように格納するか
 
@@ -74,7 +76,7 @@ Azure Migrate アプライアンスによって収集されたデータは、Azu
 データの格納方法の詳細については、こちらをご覧ください。
 
 - 収集したデータは、Microsoft サブスクリプションの CosmosDB に安全に格納されます。 このデータは、Azure Migrate プロジェクトを削除すると削除されます。 ストレージは Azure Migrate によって処理されます。 収集したデータに対してストレージ アカウントを具体的に選択することはできません。
-- [依存関係の視覚化](concepts-dependency-visualization.md)を使用する場合、収集されたデータは、Azure サブスクリプションで作成された米国の Azure Log Analytics ワークスペースに格納されます。 サブスクリプションの Log Analytics ワークスペースを削除すると、このデータは削除されます。
+- [依存関係の視覚化](concepts-dependency-visualization.md)を使用する場合、収集されたデータは、Azure サブスクリプションで作成された Azure Log Analytics ワークスペースに格納されます。 サブスクリプションの Log Analytics ワークスペースを削除すると、このデータは削除されます。 
 
 ## <a name="how-much-data-is-uploaded-during-continuous-profiling"></a>継続的プロファイリングでアップロードされるデータの量はどのくらいですか。
 
@@ -107,8 +109,7 @@ Azure Migrate に送信されるデータの量は、複数のパラメーター
 
 ## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>Azure Migrate アプライアンス/レプリケーション アプライアンスは同じ vCenter に接続できますか。
 
-はい。 Azure Migrate アプライアンス (評価とエージェントレスの VMware 移行に使用) とレプリケーション アプライアンス (VMware VM のエージェントベースの移行に使用) の両方を、同じ vCenter サーバーに追加できます。
-
+はい。 Azure Migrate アプライアンス (評価とエージェントレスの VMware 移行に使用) とレプリケーション アプライアンス (VMware VM のエージェントベースの移行に使用) の両方を、同じ vCenter サーバーに追加できます。 ただし、同じ VM 上に両方のアプライアンスを設定していないことと、現在サポートされていないことを確認してください。
 
 ## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>1 つのアプライアンスで検出できる VM またはサーバーの数を教えてください
 
@@ -124,7 +125,9 @@ Azure Migrate に送信されるデータの量は、複数のパラメーター
 
 ## <a name="can-i-use-the-appliance-with-a-different-subscription-or-project"></a>別のサブスクリプションまたはプロジェクトでアプライアンスを使用できますか。
 
-アプライアンスを使用して検出を開始した後、別の Azure サブスクリプションでアプライアンスを再構成したり、別の Azure Migrate プロジェクトでそのアプライアンスを使用したりすることはできません。 また、別の vCenter Server のインスタンスで VM を検出することもできません。 これらのタスクには新しいアプライアンスを設定してください。
+別のサブスクリプションまたはプロジェクトでアプライアンスを使用するには、アプライアンス マシンで特定のシナリオ (VMware/Hyper-V/物理) の PowerShell インストーラー スクリプトを実行して、既存のアプライアンスを再構成する必要があります。 このスクリプトでは、既存のアプライアンス コンポーネントと設定がクリーンアップされ、新しいアプライアンスがデプロイされます。 新たにデプロイされたアプライアンス構成マネージャーの使用を開始する前に、ブラウザーのキャッシュを必ず消去してください。
+
+また、再構成されたアプライアンスでは、既存の Azure Migrate プロジェクト キーを再利用することができません。 アプライアンスの登録を完了するには、目的のサブスクリプションまたはプロジェクトから、必ず新しいキーを生成してください。
 
 ## <a name="can-i-set-up-the-appliance-on-an-azure-vm"></a>Azure VM 上にアプライアンスを設定できますか。
 

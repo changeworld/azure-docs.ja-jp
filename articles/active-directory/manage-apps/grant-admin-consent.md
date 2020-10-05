@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 713b4ed2559e3cd16943af92e68818047e249ef4
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 96b4cb6f751a5d2bc4259117007b3abec2e0598d
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501016"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069579"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>アプリケーションに対してテナント全体の管理者の同意を付与する
 
@@ -32,15 +32,12 @@ ms.locfileid: "87501016"
 > [!IMPORTANT]
 > アプリケーションにテナント全体の管理者の同意が付与されていると、ユーザーの割り当てが必要であると構成されていない限り、すべてのユーザーがアプリにサインインできるようになります。 アプリケーションにサインインできるユーザーを制限するには、ユーザー割り当てを要求してから、アプリケーションにユーザーまたはグループを割り当てます。 詳細については、[ユーザーとグループの割り当て方法](methods-for-assigning-users-and-groups.md)に関するページを参照してください。
 >
-> Microsoft Graph API に管理者の同意を与えるには、グローバル管理者ロールが必要です。
->
-
+> Microsoft Graph API にアプリケーション許可のための管理者の同意を与えるには、グローバル管理者ロールが必要です。
 
 > [!WARNING]
 > テナント全体の管理者の同意をアプリケーションに付与すると、アプリおよびアプリの発行者に、組織のデータへのアクセスが許可されます。 同意を付与する前に、アプリケーションで要求されているアクセス許可をよく確認してください。
 >
-> Microsoft Graph API に管理者の同意を与えるには、グローバル管理者ロールが必要です。
->
+> Microsoft Graph API にアプリケーション許可のための管理者の同意を与えるには、グローバル管理者ロールが必要です。
 
 ## <a name="grant-admin-consent-from-the-azure-portal"></a>Azure portal から管理者の同意を付与する
 
@@ -57,6 +54,9 @@ ms.locfileid: "87501016"
 5. アプリケーションに必要なアクセス許可を慎重に確認します。
 6. アプリケーションで必要なアクセス許可に同意する場合は、同意を付与します。 そうでない場合は、 **[キャンセル]** をクリックするか、ウィンドウを閉じます。
 
+> [!WARNING]
+> **エンタープライズ アプリ**経由でテナント全体に管理者の同意を与えると、以前にテナント全体に与えられていたアクセス許可が取り消されます。 以前にユーザーが自分で与えたアクセス許可は影響を受けません。 
+
 ### <a name="grant-admin-consent-in-app-registrations"></a>アプリの登録で管理者の同意を付与する
 
 組織で開発したアプリケーション、または Azure AD テナントに直接登録されているアプリケーションの場合は、Azure portal の **[アプリの登録]** から、テナント全体の管理者の同意を付与することもできます。
@@ -69,6 +69,9 @@ ms.locfileid: "87501016"
 4. **[API のアクセス許可]** を選択し、 **[管理者の同意を与える]** をクリックします。
 5. アプリケーションに必要なアクセス許可を慎重に確認します。
 6. アプリケーションで必要なアクセス許可に同意する場合は、同意を付与します。 そうでない場合は、 **[キャンセル]** をクリックするか、ウィンドウを閉じます。
+
+> [!WARNING]
+> **アプリの登録**経由でテナント全体に管理者の同意を与えると、以前にテナント全体に与えられていたアクセス許可が取り消されます。 以前にユーザーが自分で与えたアクセス許可は影響を受けません。 
 
 ## <a name="construct-the-url-for-granting-tenant-wide-admin-consent"></a>テナント全体の管理者の同意を付与するための URL を作成する
 
@@ -86,6 +89,9 @@ https://login.microsoftonline.com/{tenant-id}/adminconsent?client_id={client-id}
 * `{tenant-id}` は、組織のテナント ID または検証済みのドメイン名です。
 
 この場合も、同意を付与する前に、アプリケーションで要求されているアクセス許可をよく確認してください。
+
+> [!WARNING]
+> この URL 経由でテナント全体に管理者の同意を与えると、以前にテナント全体に与えられていたアクセス許可が取り消されます。 以前にユーザーが自分で与えたアクセス許可は影響を受けません。 
 
 ## <a name="next-steps"></a>次のステップ
 
