@@ -1,15 +1,15 @@
 ---
 title: Azure portal を使用して VM を復元する
-description: Azure Portal を使用して復旧ポイントから Azure 仮想マシンを復元します
+description: Azure Portal を使用して復旧ポイントから Azure 仮想マシンを復元します。たとえば、リージョンをまたがる復元機能があります。
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 582ec3e5409e5ada6f98a0c2db77c0bb73eaed18
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: d2b5c00df9f9b5b41877fe21181f11ea7fe76084
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050422"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986533"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal で Azure VM データを復元する方法
 
@@ -144,12 +144,15 @@ CRR が有効になっているかどうかを確認するには、「[リージ
 
 CRR が有効になっている場合は、セカンダリ リージョンのバックアップ項目を表示できます。
 
-1. ポータルから **[Recovery Services コンテナー]**  >  **[バックアップ項目]** に移動します。
+1. ポータルから **[Recovery Services コンテナー]** 、 **[バックアップ項目]** の順に移動します。
 1. セカンダリ リージョンの項目を表示するには、 **[セカンダリ リージョン]** を選択します。
 
-    ![セカンダリ リージョン内の仮想マシン](./media/backup-azure-arm-restore-vms/secbackedupitem.png)
+>[!NOTE]
+>CRR 機能をサポートする種類のバックアップ管理のみが一覧に表示されます。 現時点では、セカンダリ リージョン データをセカンダリ リージョンに復元することのみが許可されています。
 
-    ![セカンダリ リージョンを選択する](./media/backup-azure-arm-restore-vms/backupitems-sec.png)
+![セカンダリ リージョン内の仮想マシン](./media/backup-azure-arm-restore-vms/secbackedupitem.png)
+
+![セカンダリ リージョンを選択する](./media/backup-azure-arm-restore-vms/backupitems-sec.png)
 
 ### <a name="restore-in-secondary-region"></a>セカンダリ リージョンに復元する
 
