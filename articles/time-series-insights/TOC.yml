@@ -131,8 +131,6 @@
           href: time-series-insights-send-events.md
         - name: 環境のスケーリング
           href: time-series-insights-how-to-scale-your-environment.md
-        - name: イングレスとクエリに対する JSON の調整
-          href: how-to-shape-query-json.md
         - name: 調整の緩和
           href: time-series-insights-environment-mitigate-latency.md
         - name: 診断とトラブルシューティング

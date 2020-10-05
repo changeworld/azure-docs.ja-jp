@@ -3,17 +3,17 @@ title: Azure Database for PostgreSQL シングル サーバーのドキュメン
 summary: Azure Database for PostgreSQL は、オープンソースの PostgreSQL データベース エンジンに基づいたリレーショナル データベース サービスです。  シングル サーバーは、Postgres サーバーを作成するための各種デプロイ オプションの 1 つです。 クイックスタート、チュートリアル、およびサンプルを使用して、シングル サーバーの使用方法を学習してください。
 metadata:
   description: Azure Database for PostgreSQL は、オープンソースの PostgreSQL データベース エンジンに基づいて開発者向けに構築されている、Microsoft クラウドのリレーショナル データベース サービスです。
-  author: rachel-msft
-  ms.author: raagyema
+  author: sunilagarwal
+  ms.author: sunila
   ms.date: 09/20/2020
   ms.service: postgresql
   ms.topic: landing-page
-  ms.openlocfilehash: 833b35b7a2f597186c69d95fc4ab8f2704b59c91
-  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.openlocfilehash: 34ecc6339f1ade7fd9f0bc427982b1b322d79f56
+  ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/22/2020
-  ms.locfileid: "90929002"
+  ms.lasthandoff: 10/04/2020
+  ms.locfileid: "91710157"
 landingContent:
 - title: シングル サーバーについて
   linkLists:
