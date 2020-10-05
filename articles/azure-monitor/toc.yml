@@ -117,15 +117,10 @@
       items:
         - name: 概要
           href: platform/data-platform.md
-        - name: データの場所
-          href: platform/data-locations.md
-        - name: メトリック
-          href: platform/data-platform-metrics.md
         - name: ログ
           href: platform/data-platform-logs.md
-        - name: ログ データ インジェスト時間
-          displayname: latency
-          href: platform/data-ingestion-time.md
+        - name: メトリック
+          href: platform/data-platform-metrics.md
         - name: Event Hubs へのデータのストリーム配信
           href: platform/stream-monitoring-data-event-hubs.md
     - name: 洞察
@@ -209,39 +204,42 @@
           href: platform/diagnostic-settings.md
     - name: Log Analytics
       items:
-        - name: ログ クエリの概要
-          displayname: 'log query, log queries, query, queries'
+        - name: 概要
+          displayname: 'Log Analytics, log query, log queries, query, queries'
           href: log-query/log-query-overview.md
+        - name: チュートリアル
+          displayname: 'Log Analytics workspace, log query, log queries, query, queries'
+          href: log-query/get-started-portal.md
+        - name: クエリ スコープ
+          href: log-query/scope.md
         - name: シンプルなログ エクスペリエンス
           href: log-query/simple-logs.md
-        - name: 監査ログ クエリ
-          href: log-query/query-audit.md
-        - name: チュートリアル
+        - name: ログ クエリ
           items:
-            - name: Log Analytics のチュートリアル
-              href: log-query/get-started-portal.md
-            - name: ログ クエリのチュートリアル
-              href: log-query/get-started-queries.md
-        - name: ログ データ
-          items:
-            - name: クエリ スコープ
-              href: log-query/scope.md
             - name: 標準列
               href: platform/log-standard-columns.md
+            - name: クエリの監査
+              href: log-query/query-audit.md
+            - name: クエリの最適化
+              href: log-query/query-optimization.md
+            - name: 関数
+              href: log-query/functions.md
+            - name: テキスト データの解析
+              href: log-query/parse-text.md
+            - name: クエリの例
+              href: log-query/saved-queries.md
             - name: コンピューター グループ
               href: platform/computer-groups.md
         - name: クエリ言語
           items:
-            - name: クエリ言語のドキュメント
-              href: log-query/query-language.md
-            - name: 言語の相違点
+            - name: KQL リファレンス
+              href: /azure/data-explorer/kusto/query/
+            - name: Azure Data Explorer との違い
               href: log-query/data-explorer-difference.md
-            - name: 便利な演算子
-              href: log-query/useful-operators.md
-            - name: 関数
-              href: log-query/functions.md
-            - name: ログ検索からの切り替え
-              href: log-query/log-search-transition.md
+            - name: 例
+              href: log-query/examples.md
+            - name: スマート分析の例
+              href: log-query/smart-analytics.md
             - name: レッスン
               items:
                 - name: 文字列操作
@@ -268,9 +266,9 @@
                   href: log-query/sql-cheatsheet.md
                 - name: Splunk
                   href: log-query/splunk-cheatsheet.md
-        - name: リソース間
+        - name: リソース間のクエリ
           items:
-            - name: リソース間のクエリ
+            - name: 概要
               href: log-query/cross-workspace-query.md
             - name: アプリの式
               href: log-query/app-expression.md
@@ -280,32 +278,25 @@
               href: log-query/resource-expression.md
             - name: アプリケーション データ リソースの統合
               href: log-query/unify-app-resource-data.md
-        - name: 例とガイダンス
-          items:
-            - name: クエリの例
-              href: log-query/saved-queries.md
-            - name: ログ クエリの例
-              href: log-query/examples.md
-            - name: スマート分析の例
-              href: log-query/smart-analytics.md
-            - name: クエリの最適化
-              href: log-query/query-optimization.md
-            - name: テキスト データの解析
-              href: log-query/parse-text.md
         - name: ワークスペースとクラスター
           items:
             - name: ワークスペース デプロイの設計
               href: platform/design-logs-deployment.md
             - name: ワークスペースの作成
               items:
-                - name: Azure Portal の使用
+                - name: Azure portal
                   href: learn/quick-create-workspace.md
-                - name: Azure CLI の使用
+                - name: Azure CLI
                   href: learn/quick-create-workspace-cli.md
-                - name: PowerShell の使用
+                - name: PowerShell
                   href: platform/powershell-workspace-configuration.md
+                - name: Resource Manager テンプレート
+                  href: platform/template-workspace-configuration.md
             - name: ワークスペースの削除と復旧
               href: platform/delete-workspace.md
+            - name: アクセスを管理する
+              displayName: Log Analytics workspace
+              href: platform/manage-access.md
             - name: ワークスペースの移動
               href: platform/move-workspace.md
             - name: サービス プロバイダー向けの設計
@@ -328,6 +319,9 @@
       items:
         - name: データ収集ルール
           href: platform/data-collection-rule-overview.md
+        - name: ログ データ インジェスト時間
+          displayname: latency
+          href: platform/data-ingestion-time.md
         - name: エージェントのデータ ソース
           items:
             - name: 概要
@@ -1167,12 +1161,18 @@
               href: platform/workbooks-time.md
             - name: テキスト パラメーター
               href: platform/workbooks-text.md
+            - name: リソース パラメーター
+              href: platform/workbooks-resources.md
         - name: 構成
           items:
             - name: アクセス制御
               href: platform/workbooks-access-control.md
             - name: Azure Resource Manager を使用したデプロイ
               href: platform/workbooks-automate.md
+            - name: グループ
+              href: platform/workbooks-groups.md
+            - name: JSONPath を使用して JSON データを変換する
+              href: platform/workbooks-jsonpath.md
             - name: 別のリージョンへのブックの移動
               href: platform/workbooks-move-region.md
             - name: 別のリージョンへのブック テンプレートの移動

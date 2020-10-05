@@ -73,7 +73,7 @@
           href: time-series-insights-update-query-data-csharp.md
         - name: C# を使用してデータのクエリを実行する - Gen1
           href: time-series-insights-query-data-csharp.md
-        - name: C# での参照データの管理
+        - name: C# での参照データの管理 - Gen1
           href: time-series-insights-manage-reference-data-csharp.md
         - name: カスタム ビューの共有
           href: time-series-insights-parameterized-urls.md

@@ -18,6 +18,8 @@
       items:
         - name: ストレージ ターゲットを追加する
           href: hpc-cache-add-storage.md
+        - name: 名前空間パスを追加する
+          href: add-namespace-paths.md
         - name: データをストレージ ターゲットに移動する (必要な場合)
           items:
             - name: 新しい Blob Storage を事前に読み込む
@@ -42,8 +44,6 @@
   items:
     - name: Azure CLI
       href: /cli/azure/ext/hpc-cache/hpc-cache
-    - name: Azure PowerShell
-      href: /powershell/module/Az.HPCCache
 - name: リソース
   items:
     - name: サポート チケットを開く

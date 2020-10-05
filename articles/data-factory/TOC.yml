@@ -700,6 +700,8 @@
               href: how-to-data-flow-error-rows.md
             - name: Azure SQL DB から Azure Cosmos DB
               href: how-to-sqldb-to-cosmosdb.md
+            - name: スニペットを使用した重複除去と NULL チェック
+              href: how-to-data-flow-dedupe-nulls-snippets.md
         - name: オンプレミスからの SSIS の移行
           items:
             - name: SSIS の移行の概要

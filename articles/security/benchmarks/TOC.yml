@@ -97,6 +97,8 @@
       href: ../../azure-functions/security-baseline.md
     - name: Azure IoT Hub のセキュリティ ベースライン
       href: ../../iot-hub/security-baseline.md
+    - name: Azure Kubernetes Service のセキュリティ ベースライン
+      href: ../../aks/security-baseline.md
     - name: Azure Load Balancer のセキュリティ ベースライン
       href: ../../load-balancer/security-baseline.md
     - name: Azure Monitor のセキュリティ ベースライン
@@ -117,6 +119,8 @@
       href: ../../sql-database/security-baseline.md
     - name: Azure Storage のセキュリティ ベースライン
       href: ../../storage/common/security-baseline.md
+    - name: Azure Traffic Manager のセキュリティ ベースライン
+      href: ../../traffic-manager/security-baseline.md
     - name: Batch のセキュリティ ベースライン
       href: ../../batch/security-baseline.md
     - name: Cognitive Services のセキュリティ ベースライン
@@ -163,3 +167,7 @@
       href: ../../virtual-machines/linux/security-baseline.md
     - name: Virtual Machines Windows のセキュリティ ベースライン
       href: ../../virtual-machines/windows/security-baseline.md
+    - name: Virtual Network のセキュリティ ベースライン
+      href: ../../virtual-network/security-baseline.md
+    - name: VPN Gateway のセキュリティ ベースライン
+      href: ../../vpn-gateway/security-baseline.md

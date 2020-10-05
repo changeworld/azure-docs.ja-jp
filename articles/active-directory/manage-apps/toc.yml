@@ -57,10 +57,16 @@
           href: developer-guidance-for-integrating-applications.md
     - name: シングル サインオン
       items:
-        - name: シングル サインオンのオプション
-          href: sso-options.md
         - name: シングル サインオンのデプロイを計画する
           href: plan-sso-deployment.md
+        - name: シングル サインオンのオプション
+          href: sso-options.md
+        - name: SAML ベースの SSO
+          href: configure-saml-single-sign-on.md
+        - name: パスワードベースの SSO
+          href: configure-password-single-sign-on-non-gallery-applications.md
+        - name: リンクベースの SSO
+          href: configure-linked-sign-on.md
         - name: ワンクリック SSO
           href: one-click-sso-tutorial.md
     - name: アプリケーションのセキュリティ
@@ -102,14 +108,6 @@
 - name: 操作方法ガイド
   expanded: false
   items:
-    - name: Configure single sign-on
-      items:
-        - name: SAML ベースのシングル サインオンの構成
-          href: configure-saml-single-sign-on.md
-        - name: パスワードベースのサインオンの構成
-          href: configure-password-single-sign-on-non-gallery-applications.md
-        - name: リンクされたサインオンの構成
-          href: configure-linked-sign-on.md
     - name: ユーザーの割り当てとアプリへのアクセスの管理
       items:
         - name: ユーザーの同意の構成

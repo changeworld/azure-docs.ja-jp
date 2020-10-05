@@ -450,6 +450,8 @@
               href: how-to-enable-data-collection.md
             - name: Application Insights での監視
               href: how-to-enable-app-insights.md
+        - name: Triton を使用した高パフォーマンスのサービス
+          href: how-to-deploy-with-triton.md
         - name: モデルを継続的にデプロイする
           displayName: ci cd azure devops models
           href: how-to-deploy-continuously-deploy.md
