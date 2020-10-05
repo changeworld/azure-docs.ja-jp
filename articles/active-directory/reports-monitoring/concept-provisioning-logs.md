@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 09/01/2020
+ms.date: 09/02/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16b2ab39e9bcd6dff44387edc60be9bfc649f224
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a15024362b31d49e51b291c10401bbf2965f1d82
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229873"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469866"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Azure Active Directory ポータルのプロビジョニング レポート (プレビュー)
 
@@ -99,7 +99,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 - アクション
 
 
-![Assert](./media/concept-provisioning-logs/default-filter.png "Assert")
+![フィルターの追加](./media/concept-provisioning-logs/default-filter.png "Assert")
 
 **ID** フィルターを使用すると、関心のある名前または ID を指定できます。 この ID には、ユーザー、グループ、ロール、またはその他のオブジェクトを指定できます。 オブジェクトの名前または ID で検索できます。 ID はシナリオによって異なります。 たとえば、Azure AD から SalesForce にオブジェクトをプロビジョニングする場合、ソース ID は Azure AD 内のユーザーのオブジェクト ID であり、ターゲット ID は Salesforce のユーザーの ID です。 Workday から Active Directory にプロビジョニングする場合、ソース ID は Workday ワーカーの従業員 ID です。 ユーザーの名前が必ずしも ID 列に存在するとは限らないことに注意してください。 常に 1 つの ID が存在します。 
 
@@ -175,7 +175,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 - まとめ
 
 
-![Assert](./media/concept-provisioning-logs/provisioning-tabs.png "タブ")
+![プロビジョニングの詳細](./media/concept-provisioning-logs/provisioning-tabs.png "タブ")
 
 
 
@@ -190,7 +190,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 
 
-![Assert](./media/concept-provisioning-logs/steps.png "Assert")
+![手順](./media/concept-provisioning-logs/steps.png "Assert")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>トラブルシューティングと推奨事項
@@ -214,11 +214,13 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 - [変更 ID] 属性は、一意の識別子として使用できます。 これは、たとえば製品サポートとやり取りするときに便利です。
 
-- 現在、プロビジョニング データをダウンロードするオプションはありません。
+- プロビジョニング データを CSV ファイルとしてダウンロードするオプションは現在ありませんが、[Microsoft Graph](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http) を使用してデータをエクスポートできます。
 
 - ログの分析は、現時点ではサポートされていません。
 
 - ユーザーがスコープに含まれていない場合、スキップされたイベントが表示されることがあります。 同期スコープがすべてのユーザーとグループに設定されているときは特にこれが予想されます。 Microsoft のサービスでは、スコープ外であっても、テナント内のすべてのオブジェクトが評価されます。 
+
+- プロビジョニング ログは現在、政府のクラウドで利用できません。 プロビジョニング ログにアクセスできない場合は、一時的な回避策として監査ログを使用してください。  
 
 ## <a name="error-codes"></a>エラー コード
 
@@ -244,6 +246,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 |DuplicateSourceEntries | 複数のユーザーに、構成済みの一致する属性があると検出されたため、操作を完了できませんでした。 重複しているユーザーを削除するか、[ここ](../app-provisioning/customize-application-attributes.md)で説明されているように、属性マッピングを再構成します。|
 |ImportSkipped | 各ユーザーを評価するときに、ソース システムからユーザーをインポートするよう試みます。 このエラーが発生するのは一般的に、インポートするユーザーが、属性マッピングで定義されている一致するプロパティを持っていない場合です。 一致する属性のユーザー オブジェクトに値が指定されていない場合、スコープ、一致、またはエクスポートの変更を評価することはできません。 このエラーが発生したとしても、このユーザーのスコープがまだ評価されていないため、ユーザがスコープ内にあることを示すものではないことに注意してください。|
 |EntrySynchronizationSkipped | プロビジョニング サービスによってソース システムに対するクエリが正常に実行され、ユーザーが識別されました。 ユーザーに対してこれ以上の操作は行われず、スキップされました。 スキップの原因としては、ユーザーがスコープ外にあるか、ユーザーがターゲット システムに既に存在していて、それ以上の変更は必要ないためです。|
+|SystemForCrossDomainIdentityManagementMultipleEntriesInResponse| GET 要求を実行してユーザーまたはグループを取得すると、複数のユーザーまたはグループが応答で受信されました。 応答で受信すると想定していたユーザーまたはグループは 1 つだけです。 [たとえば](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#get-group)、グループを取得するための GET 要求を実行してメンバーを除外するフィルターを指定したときに、SCIM エンドポイントがメンバーを返した場合、このエラーがスローされます。|
 
 ## <a name="next-steps"></a>次のステップ
 

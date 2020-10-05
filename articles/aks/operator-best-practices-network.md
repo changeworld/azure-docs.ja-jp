@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) での仮想ネットワーク リ�
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: fc839fd69e3b574c47aa7bb712583dfc0b9c711d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 9ec6423a853aacbc8a03cc5472bf1a95a5623b1f
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542706"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482727"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのネットワーク接続とセキュリティに関するベスト プラクティス
 
@@ -31,7 +31,7 @@ Azure Kubernetes Service (AKS) のクラスターを作成および管理する�
 仮想ネットワークは、AKS ノードおよび顧客がアプリケーションにアクセスするための基本的な接続を提供します。 仮想ネットワークに AKS クラスターをデプロイするには、次の 2 つの異なる方法があります。
 
 * **Kubenet ネットワーク** - クラスターがデプロイされ、そのクラスターで [kubenet][kubenet] Kubernetes プラグインが使用される場合、Azure によって仮想ネットワーク リソースが管理されます。
-* **Azure CNI ネットワーク** - 既存の仮想ネットワークにデプロイし、[Azure Container Networking Interface (CNI)][cni-networking] Kubernetes プラグインを使用します。 ポッドは、他のネットワーク サービスまたはオンプレミス リソースにルーティングできる個々の IP を受け取ります。
+* **Azure CNI ネットワーク** - 仮想ネットワークにデプロイし、[Azure Container Networking Interface (CNI)][cni-networking] Kubernetes プラグインを使用します。 ポッドは、他のネットワーク サービスまたはオンプレミス リソースにルーティングできる個々の IP を受け取ります。
 
 Container Networking Interface (CNI) は、コンテナー ランタイムがネットワーク プロバイダーに要求を行うことを可能にする、ベンダーに依存しないプロトコルです。 Azure CNI はポッドとノードの IP アドレスを割り当てられるし、既存の Azure 仮想ネットワークに接続する際に IP アドレス管理 (IPAM) 機能を提供します。 各ノードおよびポッド リソースは、Azure 仮想ネットワーク内の IP アドレスを受け取ります。他のリソースまたはサービスと通信するのに追加のルーティングは必要ありません。
 
@@ -64,7 +64,7 @@ Kubenet は、AKS クラスターから仮想ネットワークとサブネッ�
 
 **ベスト プラクティス ガイダンス** - アプリケーションに HTTP または HTTPS トラフィックを分散するには、イングレス リソースとコントローラーを使用します。 イングレス コントローラーは、通常の Azure ロード バランサー経由で追加機能を提供し、ネイティブの Kubernetes リソースとして管理できます。
 
-Azure ロード バランサーは、AKS クラスター内のアプリケーションに顧客のトラフィックを分散できますが、そのトラフィックについて認識できる内容は制限されます。 ロード バランサー リソースはレイヤー 4 で動作し、プロトコルまたはポートに基づいてトラフィックを分散します。 HTTP または HTTPS を使用するほとんどの Web アプリケーションは、レイヤー 7 で動作する Kuberenetes イングレス リソースおよびコントローラーを使用する必要があります。 イングレスは、アプリケーションの URL に基づいてトラフィックを分散し、TLS/SSL ターミネーションを処理することができます。 また、この機能により、公開してマップする IP アドレスの数が減少します。 ロード バランサーでは、通常、各アプリケーションのパブリック IP アドレスが AKS クラスター内のサービスに割り当てられてマップされている必要があります。 イングレス リソースでは、単一の IP アドレスが複数のアプリケーションにトラフィックを分散できます。
+Azure ロード バランサーは、AKS クラスター内のアプリケーションに顧客のトラフィックを分散できますが、そのトラフィックについて認識できる内容は制限されます。 ロード バランサー リソースはレイヤー 4 で動作し、プロトコルまたはポートに基づいてトラフィックを分散します。 HTTP または HTTPS を使用するほとんどの Web アプリケーションは、レイヤー 7 で動作する Kubernetes イングレス リソースおよびコントローラーを使用する必要があります。 イングレスは、アプリケーションの URL に基づいてトラフィックを分散し、TLS/SSL ターミネーションを処理することができます。 また、この機能により、公開してマップする IP アドレスの数が減少します。 ロード バランサーでは、通常、各アプリケーションのパブリック IP アドレスが AKS クラスター内のサービスに割り当てられてマップされている必要があります。 イングレス リソースでは、単一の IP アドレスが複数のアプリケーションにトラフィックを分散できます。
 
 ![AKS クラスターでのイングレス トラフィック フローを示す図](media/operator-best-practices-network/aks-ingress.png)
 

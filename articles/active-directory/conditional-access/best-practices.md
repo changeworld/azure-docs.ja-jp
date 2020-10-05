@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5536c3c427e5b6225d81d649722d8af48c23091
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 161b02ec962df5c5e1c8dee7e124ef78b3ca4db3
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948455"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601981"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセスのベスト プラクティス
 
@@ -97,13 +97,13 @@ Azure Active Directory によって両方のポリシーが適用されます。
 
 はい。条件付きアクセス ポリシーで Exchange ActiveSync を使用できます。
 
-SharePoint Online や Exchange Online などの一部のクラウド アプリでは、レガシ認証プロトコルもサポートされています。 クライアント アプリでクラウド アプリへのアクセスにレガシ認証プロトコルを利用できる場合、そのようなアクセスの試行に対しては Azure AD の条件付きアクセス ポリシーを適用できません。 クライアント アプリがポリシーの適用を回避する事態を防ぐため、該当するクラウド アプリで先進認証のみを有効にできるかどうかを確認する必要があります。
+SharePoint や Exchange Online などの一部のクラウド アプリでは、レガシ認証プロトコルもサポートされています。 クライアント アプリでクラウド アプリへのアクセスにレガシ認証プロトコルを利用できる場合、そのようなアクセスの試行に対しては Azure AD の条件付きアクセス ポリシーを適用できません。 クライアント アプリがポリシーの適用を回避する事態を防ぐため、該当するクラウド アプリで先進認証のみを有効にできるかどうかを確認する必要があります。
 
-### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>Office 365 アプリでは条件付きアクセスをどのように構成すればよいですか。
+### <a name="how-should-you-configure-conditional-access-with-microsoft-365-apps"></a>Microsoft 365 アプリでは条件付きアクセスをどのように構成すればよいですか。
 
-Office 365 のアプリは相互接続されているため、ポリシーを作成する際は、よく使うアプリを一緒に割り当てることをお勧めします。
+Microsoft 365 のアプリは相互接続されているため、ポリシーを作成する際は、よく使うアプリを一緒に割り当てることをお勧めします。
 
-相互接続される一般的なアプリケーションとしては、Microsoft Flow、Microsoft Planner、Microsoft Teams、Office 365 Exchange Online、Office 365 SharePoint Online、Office 365 Yammer などがあります。
+相互接続される一般的なアプリケーションとしては、Microsoft Flow、Microsoft Planner、Microsoft Teams、Exchange Online、SharePoint、Yammer などがあります。
 
 このことは、多要素認証など、ユーザーとのやり取りを必要とするポリシーで、セッションまたはタスクの開始時にアクセスを制御する際に重要となります。 そのようにしなかった場合、ユーザーがアプリ内で一部のタスクを実行できなくなります。 たとえば、アンマネージド デバイスで SharePoint にアクセスする際にのみ多要素認証を要求し、メールにアクセスする際には要求しなかった場合、メールで作業しているユーザーが、SharePoint ファイルをメッセージに添付できなくなります。 詳細については、「[Azure Active Directory 条件付きアクセスのサービス依存関係の概要](service-dependencies.md)」をご覧ください。
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: duau
-ms.openlocfilehash: ab281f6ead148aa19242ebd7a2661379b25e918a
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 0cc07f9647c4f7836438adbe2b4cf9fa24a1c890
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89397374"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566400"
 ---
 # <a name="about-expressroute-direct"></a>ExpressRoute Direct について
 
@@ -44,7 +44,7 @@ ExpressRoute Direct を利用する前に、まず、サブスクリプション
 
 ## <a name="expressroute-direct-circuits"></a>ExpressRoute Direct の回線
 
-Microsoft Azure ExpressRoute を利用すれば、接続プロバイダーが提供するプライベート接続で、オンプレミスのネットワークを Microsoft Cloud に拡張できます。 ExpressRoute では、Microsoft Azure、Office 365 などの Microsoft クラウド サービスへの接続を確立できます。
+Microsoft Azure ExpressRoute を利用すれば、接続プロバイダーが提供するプライベート接続で、オンプレミスのネットワークを Microsoft Cloud に拡張できます。 ExpressRoute を使用すると、Microsoft Azure、Microsoft 365 などの Microsoft クラウド サービスへの接続を確立できます。
 
 各ピアリングの場所からは Microsoft のグローバル ネットワークにアクセスできます。また、既定で地理的ゾーン内のすべてのリージョンにアクセス可能であり、Premium 回線を使用してすべてのグローバル リージョンにアクセスすることができます。  
 

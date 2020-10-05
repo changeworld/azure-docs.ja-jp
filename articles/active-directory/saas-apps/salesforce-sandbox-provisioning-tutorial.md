@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 4666768d7e975e976601810bbbfadb1685fa91ff
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5fa40e954c84d4d2d70974bc799a198c6bf7d3e9
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543525"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979759"
 ---
 # <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>チュートリアル: Salesforce Sandbox を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -63,7 +63,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 1. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![プロビジョニング](./media/salesforce-sandbox-provisioning-tutorial/provisioning.png)
+    ![スクリーンショットは、Salesforce Sandbox のプロビジョニング ページを示しています。[プロビジョニング モード] は [自動] に設定され、設定可能なその他の値が表示されています。](./media/salesforce-sandbox-provisioning-tutorial/provisioning.png)
 
 1. **[管理者資格情報]** セクションに次の構成設定を指定します。
    

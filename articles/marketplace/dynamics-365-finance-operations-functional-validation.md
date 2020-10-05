@@ -7,12 +7,12 @@ ms.topic: article
 author: emuench
 ms.author: navits
 ms.date: 07/17/2020
-ms.openlocfilehash: 1b5c756fed5d172593b23c2a157c280caa614940
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e512c233ccfd793b87f203f837b11e97966d8102
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094854"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016250"
 ---
 # <a name="appsource-dynamics-365-finance-and-operations-functional-validation"></a>AppSource Dynamics 365 Finance and Operations の機能検証
 
@@ -35,7 +35,7 @@ Microsoft 認定チームはビデオとファイルをレビューしてから�
 
 ### <a name="option-1-30-minute-conference-call"></a>オプション 1: 30 分間の電話会議
 
-最終レビューの電話会議をスケジュールするには、[appsourceCRM@microsoft.com](mailto:appsourceCRM@microsoft.com) にお問い合わせください。プランの名前と 太平洋標準時の午前 8 時から午後 5 時 の間のご希望の時間帯を記載してください。
+最終レビューの電話会議をスケジュールするには、[appsourceCRM@microsoft.com](mailto:appsourceCRM@microsoft.com) にお問い合わせください。プランの名前と午前 8 時から午後 5 時 (太平洋標準時) の間のご希望の時間帯を記載してください。
 
 ### <a name="option-2-upload-a-demo-video-and-lcs-screenshots"></a>オプション 2:デモ ビデオと LCS スクリーンショットをアップロードする
 

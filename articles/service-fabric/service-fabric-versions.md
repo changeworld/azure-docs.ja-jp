@@ -3,12 +3,12 @@ title: Azure Service Fabric でサポートされているクラスターのバ�
 description: Service Fabric チーム ブログからの最新リリースへのリンクなど、Azure Service Fabric のクラスターのバージョンについて説明します。
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 9a2278769d75de19a3006e3a9f39b424dbc02b1f
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: d6e9bbe3a1a99a8e4ee726cb88796dccb6f6ccbd
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88205891"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89652063"
 ---
 # <a name="supported-service-fabric-versions"></a>サポートされている Service Fabric のバージョン
 
@@ -47,6 +47,7 @@ Service Fabric ランタイムの特定のバージョンでは、指定され�
 | 7.1.417.* | 7.0.466.* |バージョン 4.1 以前 |最新バージョンのため、終了日なし |
 | 7.1.428.* | 7.0.466.* |バージョン 4.1 以前 |最新バージョンのため、終了日なし |
 | 7.1.456.* | 7.0.466.* |バージョン 4.1 以前 |最新バージョンのため、終了日なし |
+| 7.1.458.* | 7.0.466.* |バージョン 4.1 以前 |最新バージョンのため、終了日なし |
 
 ## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
@@ -119,4 +120,5 @@ Service Fabric ランタイムの特定のバージョンでは、指定され�
 | 7.1 CU1 | 7.1.417.9590 | 7.1.418.1 |
 | 7.1 CU2 | 7.1.428.9590 | 7.1.428.1 |
 | 7.1 CU3 | 7.1.456.9590 | 7.1.452.1 |
+| 7.1 CU5 | 7.1.458.9590 | 7.1.454.1 |
 

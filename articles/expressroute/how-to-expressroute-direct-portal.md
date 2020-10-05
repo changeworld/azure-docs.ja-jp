@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 08/06/2020
 ms.author: duau
-ms.openlocfilehash: 09d3723224f9c678e41a6cbc86b5f8f9655173c8
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 52aba71ba289a1b5479a6a9eaef7e07418b563fd
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401471"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986376"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>Azure portal を使用して ExpressRoute Direct を作成する
 
@@ -47,7 +47,7 @@ ExpressRoute Direct を使用すると、世界中に戦略的に分散された
 
 1. 次に、 **[構成]** ページのフィールドを設定します。
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration.png" alt-text="[構成] ページ":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration.png" alt-text="[基本] ページ":::
 
     * **[ピアリングの場所]** : ExpressRoute Direct リソースに接続するピアリングの場所。 ピアリングの場所の詳細については、[ExpressRoute の場所](expressroute-locations-providers.md)に関する記事を参照してください。
    * "**帯域幅**": 予約するポート ペアの帯域幅。 ExpressRoute Direct では、10 Gb と 100 Gb の両方の帯域幅オプションがサポートされています。 指定したピアリングの場所で目的の帯域幅が使用できない場合は、[Azure portal でサポート リクエストを開きます](https://aka.ms/azsupt)。
@@ -61,7 +61,7 @@ ExpressRoute Direct を使用すると、世界中に戦略的に分散された
 
 1. リソース タグを指定し、 **[確認と作成]** を選択して、ExpressRoute Direct リソースの設定を検証します。
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/validate.png" alt-text="確認と作成":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/validate.png" alt-text="[基本] ページ":::
 
 1. **［作成］** を選択します デプロイが進行中であることを知らせるメッセージが表示されます。 リソースが作成されたときに、状態がこのページに表示されます。 
 
@@ -71,11 +71,11 @@ ExpressRoute Direct を使用すると、世界中に戦略的に分散された
 
 1. ExpressRoute Direct リソースの **[概要]** ページで、 **[Links]\(リンク\)** セクションの **[link1]\(リンク 1\)** を選択します。
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/link.png" alt-text="リンク 1" lightbox="./media/how-to-expressroute-direct-portal/link-expand.png":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/link.png" alt-text="[基本] ページ" lightbox="./media/how-to-expressroute-direct-portal/link-expand.png":::
 
 1. **[Admin State]\(管理状態\)** 設定を **[有効]** に切り替えて、 **[保存]** を選択します。
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/state.png" alt-text="管理状態":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/state.png" alt-text="[基本] ページ":::
 
     >[!IMPORTANT]
     >いずれかのリンクで管理状態を有効にすると、課金が開始されます。
@@ -97,15 +97,15 @@ ExpressRoute Direct のワークフローから ExpressRoute 回線を作成す�
 
 1. ExpressRoute Direct の **[設定]** セクションで、 **[Circuits]\(回線\)** を選択してから、 **[+ 追加]** を選択します。 
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/add.png" alt-text="追加" lightbox="./media/how-to-expressroute-direct-portal/add-expand.png":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/add.png" alt-text="[基本] ページ" lightbox="./media/how-to-expressroute-direct-portal/add-expand.png":::
 
 1. **[構成]** ページで設定を構成します。
 
-   :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration2.png" alt-text="[構成] ページ":::
+   :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration2.png" alt-text="[基本] ページ":::
 
 1. リソース タグを指定します。リソースを作成する前に値を検証するには、 **[確認と作成]** を選択します。
 
-   :::image type="content" source="./media/how-to-expressroute-direct-portal/review.png" alt-text="確認と作成":::
+   :::image type="content" source="./media/how-to-expressroute-direct-portal/review.png" alt-text="[基本] ページ":::
 
 1. **［作成］** を選択します デプロイが進行中であることを知らせるメッセージが表示されます。 リソースが作成されたときに、状態がこのページに表示されます。 
 

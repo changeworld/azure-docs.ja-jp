@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d05aaa7a6bd48c92e863d38dcee9f0bf925bafa
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 68ab302e5c24835174d03b3579c9ec587bfd9006
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049266"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601590"
 ---
 # <a name="conditional-access-block-access"></a>条件付きアクセス:アクセスのブロック
 
@@ -40,7 +40,7 @@ ms.locfileid: "89049266"
 
 次の手順では、ユーザーが信頼できるネットワークにいない場合に [Office 365](concept-conditional-access-cloud-apps.md#office-365-preview) を除くすべてのアプリへのアクセスをブロックする条件付きアクセス ポリシーを作成します。 これらのポリシーは[レポート専用モード](howto-conditional-access-insights-reporting.md)となり、管理者が既存のユーザーに与える影響を判断できるようになります。 意図したとおりにポリシーが適用されていることを確認したら、管理者はそのポリシーを**オン**に切り替えることができます。
 
-最初のポリシーでは、信頼できる場所にいない場合、Office 365 アプリケーションを除くすべてのアプリへのアクセスをブロックします。
+最初のポリシーでは、信頼できる場所にいない場合、Microsoft 365 アプリケーションを除くすべてのアプリへのアクセスをブロックします。
 
 1. **Azure portal** にグローバル管理者、セキュリティ管理者、または条件付きアクセス管理者としてサインインします。
 1. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[条件付きアクセス]** の順に移動します。
@@ -64,7 +64,7 @@ ms.locfileid: "89049266"
 1. 設定を確認し、 **[ポリシーの有効化]** を **[レポート専用]** に設定します。
 1. **[作成]** を選択して、ポリシーを作成および有効化します。
 
-次のようにして、Office 365 のユーザーに多要素認証または準拠デバイスを要求する 2 番目のポリシーを作成します。
+次のようにして、Microsoft 365 のユーザーに多要素認証または準拠デバイスを要求する 2 番目のポリシーを作成します。
 
 1. **[新しいポリシー]** を選択します。
 1. ポリシーに名前を付けます。 ポリシーの名前に対する意味のある標準を組織で作成することをお勧めします。

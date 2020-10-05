@@ -1,14 +1,14 @@
 ---
 title: Service Health の概要 | Microsoft Docs
-description: お使いの Azure アプリが現在および将来の Azure サービスの問題やメンテナンスの影響をどのように受けるかに関するカスタマイズした情報。
+description: ユーザーが Azure サービスを使用するリージョン内で、そのサービスの正常性を追跡するカスタマイズ可能なダッシュボードを、Service Health でどのように提供しているかについて説明します。
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 2f2f0c8bf2cf4fe5beae7d48b198a23edba4e9ae
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8246b0ab93b95c13858e4ff96d0f24b255d05e55
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089602"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967784"
 ---
 # <a name="service-health-overview"></a>Service Health の概要
 

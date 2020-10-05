@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4b895054f8fa81526bf72cadd2fea1a3691d758
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: eef04be1891eac35577a5f4cb18d5b83b8d0f301
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87907497"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669381"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google を B2B ゲスト ユーザーの ID プロバイダーとして追加する
 
@@ -51,39 +51,43 @@ Teams では、すべてのデバイスで Google ゲスト ユーザーを完�
 ## <a name="step-1-configure-a-google-developer-project"></a>手順 1:Google 開発者プロジェクトを構成する
 最初に、Google Developers Console で新しいプロジェクトを作成して、Azure AD に後で追加するクライアント ID とクライアント シークレットを取得します。 
 1. https://console.developers.google.com で Google API に移動し、Google アカウントでサインインします。 共有のチーム Google アカウントを使用することをお勧めします。
-2. 新しいプロジェクトを作成します。ダッシュボードで **[プロジェクトを作成]** 、 **[作成]** の順に選択します。 [新しいプロジェクト] ページで、 **[プロジェクト名]** に入力を行ってから **[作成]** を選択します。
+2. メッセージが表示されたらサービス使用条件に同意します
+3. 新しいプロジェクトを作成します。ダッシュボードで、 **[プロジェクトの作成]** を選択し、プロジェクトに名前 ("Azure AD B2B" など) を付け、 **[作成]** を選択します。 
    
    ![Google の [New project] ページを示すスクリーンショット](media/google-federation/google-new-project.png)
 
-3. 新しいプロジェクトがプロジェクト メニューで選択されていることを確認します。 次に、 **[APIs & Services]\(API とサービス\)** で、 **[OAuth consent screen]\(OAuth 同意画面\)** を選択します。
+4. 現在表示されている **[APIs & Services]\(API とサービス\)** ページで、新しいプロジェクトの下にある **[View]\(表示\)** をクリックします。
 
-4. **[External]\(外部\)** を選択し、 **[Create]\(作成\)** を選択します。 
-5. **[OAuth consent screen]\(OAuth 同意画面\)** で、 **[Application name]\(アプリケーション名\)** を入力します。 (他の設定はそのままにします)。
+5. API カードで **[Go to APIs overview]\(API の概要に移動\)** をクリックします。 **[OAuth 同意画面]** を選択します。
+
+6. **[External]\(外部\)** を選択し、 **[Create]\(作成\)** を選択します。 
+
+7. **[OAuth consent screen]\(OAuth 同意画面\)** で、 **[Application name]\(アプリケーション名\)** を入力します。 
 
    ![Google の [OAuth consent] 画面を示すスクリーンショット](media/google-federation/google-oauth-consent-screen.png)
 
-6. **[Authorized domains]\(承認済みドメイン\)** セクションまでスクロールし、「microsoftonline.com」と入力します。
+8. **[Authorized domains]\(承認済みドメイン\)** セクションまでスクロールし、「microsoftonline.com」と入力します。
 
-   ![[Authorized domains] セクションを示すスクリーンショット](media/google-federation/google-oauth-authorized-domains.png)
+   ![[Authorized domains] セクションを示すスクリーンショット](media/google-federation/google-oauth-authorized-domains.PNG)
 
-7. **[保存]** を選択します。
+9. **[保存]** を選択します。
 
-8. **[Credentials]\(資格情報\)** を選択します。 **[認証情報を作成]** メニューで、 **[OAuth クライアント ID]** を選択します。
+10. **[Credentials]\(資格情報\)** を選択します。 **[認証情報を作成]** メニューで、 **[OAuth クライアント ID]** を選択します。
 
-   ![Google の [APIs create credentials] オプションを示すスクリーンショット](media/google-federation/google-api-credentials.png)
+    ![Google の [APIs create credentials] オプションを示すスクリーンショット](media/google-federation/google-api-credentials.png)
 
-9. **[アプリケーションの種類]** で **[Web アプリケーション]** を選択し、 **[承認済みのリダイレクト URI]** で次の URI を入力します。
-   - `https://login.microsoftonline.com` 
-   - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(`<directory id>` は自分のディレクトリ ID に置き換えます)
+11. **[アプリケーションの種類]** で **[Web アプリケーション]** を選択し、アプリケーションに適切な名前を付け ("Azure AD B2B" など)、 **[承認済みのリダイレクト URI]** で次の URI を入力します。
+    - `https://login.microsoftonline.com` 
+    - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(`<directory id>` は自分のディレクトリ ID に置き換えます)
    
-     > [!NOTE]
-     > ディレクトリ ID を見つけるには、 https://portal.azure.com に移動します。 **[Azure Active Directory]** で **[プロパティ]** を選択して、**ディレクトリ ID** をコピーします。
+    > [!NOTE]
+    > ディレクトリ ID を見つけるには、 https://portal.azure.com に移動します。 **[Azure Active Directory]** で **[プロパティ]** を選択して、**ディレクトリ ID** をコピーします。
 
-   ![[Authorized redirect URIs] セクションを示すスクリーンショット](media/google-federation/google-create-oauth-client-id.png)
+    ![[Authorized redirect URIs] セクションを示すスクリーンショット](media/google-federation/google-create-oauth-client-id.png)
 
-10. **［作成］** を選択します クライアント ID とクライアント シークレットをコピーします。これらは、Azure AD ポータルで ID プロバイダーを追加する際に使用します。
+12. **［作成］** を選択します クライアント ID とクライアント シークレットをコピーします。これらは、Azure AD ポータルで ID プロバイダーを追加する際に使用します。
 
-   ![OAuth クライアント ID とクライアント シークレットを示すスクリーンショット](media/google-federation/google-auth-client-id-secret.png)
+    ![OAuth クライアント ID とクライアント シークレットを示すスクリーンショット](media/google-federation/google-auth-client-id-secret.png)
 
 ## <a name="step-2-configure-google-federation-in-azure-ad"></a>手順 2:Azure AD で Google フェデレーションを構成する 
 次に、Google クライアント ID とクライアント シークレットを設定します。Azure AD ポータルで入力するか、または PowerShell を使用します。 Gmail アドレスを使って自分自身を招待したうえで、招待した Google アカウントを使って招待を利用してみて、Google フェデレーション構成をテストするようにしてください。 
@@ -92,7 +96,7 @@ Teams では、すべてのデバイスで Google ゲスト ユーザーを完�
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。 左ウィンドウで、 **[Azure Active Directory]** を選択します。 
 2. **[外部 ID]** を選択します。
 3. **[すべての ID プロバイダー]** を選択し、 **[Google]** ボタンをクリックします。
-4. 名前を入力します。 次に、先ほど取得したクライアント ID とクライアント シークレットを入力します。 **[保存]** を選択します。 
+4. 次に、先ほど取得したクライアント ID とクライアント シークレットを入力します。 **[保存]** を選択します。 
 
    ![[Add Google identity provider] ページを示すスクリーンショット](media/google-federation/google-identity-provider.png)
 

@@ -12,19 +12,74 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 8/17/2020
 ms.author: yohaddad
-ms.openlocfilehash: 5e5bcef36bb283b8b3f2b67578e0f3118302d936
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: bb2b9da291bf75542c942d785d995018b597f742
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510166"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024300"
 ---
 # <a name="azure-guest-os"></a>Azure ゲスト OS
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。 この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。 更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
 
-## <a name="august-2020-guest-os"></a>2020 年 8 月のゲスト OS
+## <a name="september-2020-guest-os"></a>2020 年 9 月のゲスト OS
 >[!NOTE]
->8 月のゲスト OS は、現在、自動更新が構成されているクラウド サービス VM にロールアウトされています。 ロールアウトが完了すると、このバージョンは Azure portal と構成ファイルを通した手動更新で使用できるようになります。 8 月のゲスト OS には、次の修正プログラムが含まれています。 この一覧は変更されることがあります。
+>9 月のゲスト OS は、現在、自動更新が構成されているクラウド サービス VM にロール アウトされているところです。 ロールアウトが完了すると、このバージョンは Azure portal と構成ファイルを通した手動更新で使用できるようになります。 9 月のゲスト OS には、以下の修正プログラムが含まれています。 この一覧は変更されることがあります。
+
+
+| 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| --- | --- | --- | --- | --- |
+|  Rel 20-09 |  [4577010]  |  Internet Explorer | 2.102、3.89、4.82 | 2020 年 9 月 8 日 |
+|  Rel 20-09 |  [4561600]  |  Flash の更新プログラム | 3.89、4.82、5.47、6.23 | 2020 年 9 月 8 日 |
+|  Rel 20-09 |  [4577015]  |  最新の累積的な更新プログラム (LCU) | 5.47 | 2020 年 9 月 8 日 |
+|  Rel 20-09 |  [4570333]  |  最新の累積的な更新プログラム (LCU) | 6.23 | 2020 年 9 月 8 日 |
+|  Rel 20-09 |  [4570673]  |  サービス スタック更新プログラム | 2.102 | 2020 年 9 月 8 日 |
+|  Rel 20-09 |  [4577051]  |  マンスリー ロールアップ | 2.102 | 2020 年 9 月 8 日 |
+|  Rel 20-09 |  [4569767]  |  .NET Framework 3.5 のセキュリティと品質のロールアップ | 2.102 | 2020 年 9 月 8 日 |
+|  Rel 20-09 |  [4569780]  |  .NET Framework 4.5.2 のセキュリティと品質のロールアップ | 2.102 | 2020 年 9 月 8 日 |
+|  Rel 20-09 |  [4566426]  |  サービス スタック更新プログラム | 3.89 | 2020 年 9 月 8 日 |
+|  Rel 20-09 |  [4577038]  |  マンスリー ロールアップ | 3.89 | 2020 年 9 月 8 日 |
+|  Rel 20-09 |  [4569765]  |  .NET Framework 3.5 のセキュリティと品質のロールアップ | 3.89 | 2020 年 9 月 8 日 |
+|  Rel 20-09 |  [4569779]  |  .NET Framework 4.5.2 のセキュリティと品質のロールアップ | 3.89 | 2020 年 9 月 8 日 |
+|  Rel 20-09 |  [4566425]  |  サービス スタック更新プログラム | 2.102 | 2020 年 9 月 8 日 |
+|  Rel 20-09 |  [4577066]  |  マンスリー ロールアップ | 2.102 | 2020 年 9 月 8 日 |
+|  Rel 20-09 |  [4569768]  |  .NET Framework 3.5 のセキュリティと品質のロールアップ | 2.102 | 2020 年 9 月 8 日 |
+|  Rel 20-09 |  [4569778]  |  .NET Framework 4.5.2 のセキュリティと品質のロールアップ | 2.102 | 2020 年 9 月 8 日 |
+|  Rel 20-09 |  [4578013]  |  セキュリティ更新プログラム | 2.102 | 2020 年 9 月 8 日 |
+|  Rel 20-09 |  [4576750]  |  サービス スタック更新プログラム | 5.47 | 2020 年 9 月 8 日 |
+|  Rel 20-09 |  [4576479]  |  .NET Framework 4.8 のセキュリティと品質のロールアップ | 5.47 | 2020 年 9 月 8 日 |
+|  Rel 20-09 |  [4494175]  |  マイクロコード | 5.47 | 2020 年 9 月 8 日 |
+|  Rel 20-09 |  [4570332]  |  サービス スタック更新プログラム | 6.23 | 2020 年 9 月 8 日 |
+|  Rel 20-09 |  [4570720]  |  .NET Framework 3.5 と 4.7.2 の累積的な更新プログラム | 6.23 | 2020 年 9 月 8 日 |
+|  Rel 20-09 |  [4576483]  |  .NET Framework 4.8 のセキュリティと品質のロールアップ | 6.23 | 2020 年 9 月 8 日 |
+|  Rel 20-09 |  [4494174]  |  マイクロコード | 6.23 | 2020 年 9 月 8 日 |
+
+[4577010]: https://support.microsoft.com/kb/4577010
+[4561600]: https://support.microsoft.com/kb/4561600
+[4577015]: https://support.microsoft.com/kb/4577015
+[4570333]: https://support.microsoft.com/kb/4570333
+[4570673]: https://support.microsoft.com/kb/4570673
+[4577051]: https://support.microsoft.com/kb/4577051
+[4569767]: https://support.microsoft.com/kb/4569767
+[4569780]: https://support.microsoft.com/kb/4569780
+[4566426]: https://support.microsoft.com/kb/4566426
+[4577038]: https://support.microsoft.com/kb/4577038
+[4569765]: https://support.microsoft.com/kb/4569765
+[4569779]: https://support.microsoft.com/kb/4569779
+[4566425]: https://support.microsoft.com/kb/4566425
+[4577066]: https://support.microsoft.com/kb/4577066
+[4569768]: https://support.microsoft.com/kb/4569768
+[4569778]: https://support.microsoft.com/kb/4569778
+[4578013]: https://support.microsoft.com/kb/4578013
+[4576750]: https://support.microsoft.com/kb/4576750
+[4576479]: https://support.microsoft.com/kb/4576479
+[4494175]: https://support.microsoft.com/kb/4494175
+[4570332]: https://support.microsoft.com/kb/4570332
+[4570720]: https://support.microsoft.com/kb/4570720
+[4576483]: https://support.microsoft.com/kb/4576483
+[4494174]: https://support.microsoft.com/kb/4494174
+
+## <a name="august-2020-guest-os"></a>2020 年 8 月のゲスト OS
 
 
 | 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |

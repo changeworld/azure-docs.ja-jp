@@ -12,12 +12,12 @@ ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea7f2fbd910f574a6486f1db2eaa9b99a4e3ca3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07c1405482f107e370327ffbc049c77f483c29bd
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357870"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662580"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect 同期: 既定の構成に変更を加える
 この記事の目的は、Azure Active Directory (Azure AD) Connect Sync の既定の構成を変更する方法について説明することです。ここでは、いくつかの一般的なシナリオの手順を紹介します。 この知識があれば、独自のビジネス ルールに基づき独自の構成に対して簡単な変更を加えることができます。
@@ -113,7 +113,7 @@ ms.locfileid: "85357870"
 前のセクションでは、属性フローを変更する方法について説明しました。 このセクションでは、いくつかの例を紹介します。 同期規則の作成方法に関する手順は省略しますが、前のセクションで詳しい手順を確認できます。
 
 ### <a name="use-an-attribute-other-than-the-default"></a>既定以外の属性の使用
-この Fabrikam シナリオでは、地域ごとのアルファベットを名 (given name)、姓 (surname)、表示名 (display name) に用いたフォレストが存在します。 それらの属性については、対応するラテン文字表現が拡張属性で見つかります。 Azure AD や Office 365 にグローバル アドレス一覧を作成する際は、それらの属性を使用するのが一般的です。
+この Fabrikam シナリオでは、地域ごとのアルファベットを名 (given name)、姓 (surname)、表示名 (display name) に用いたフォレストが存在します。 それらの属性については、対応するラテン文字表現が拡張属性で見つかります。 Azure AD や Microsoft 365 にグローバル アドレス一覧を作成する際は、それらの属性を使用するのが一般的です。
 
 既定の構成では、ローカル フォレストから取得されたオブジェクトが次のように表示されます。  
 ![Attribute flow 1](./media/how-to-connect-sync-change-the-configuration/attributeflowjp1.png)

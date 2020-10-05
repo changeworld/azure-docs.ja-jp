@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 14184c09cc9d5eebab7f33323cd8ce587fdf9e88
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a5b625ea2b5b76d0938ac62be2202127ff0af66e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014593"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982978"
 ---
 # <a name="troubleshoot"></a>トラブルシューティング
 
@@ -156,7 +156,8 @@ Azure Remote Rendering では、動画を使用してフレーム合成を行っ
 
 ## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>モデルの読み込み後にチェッカーボード パターンがレンダリングされる
 
-レンダリングされたイメージが次のように表示される場合:![チェッカーボード](../reference/media/checkerboard.png) レンダラーが[標準の構成サイズのポリゴンの制限](../reference/vm-sizes.md)に達しています。 解消するには、**Premium**  の構成サイズに切り替えるか、表示されるポリゴンの数を減らします。
+レンダリングされたイメージが次のように表示される場合:![黒と白の正方形のグリッドと [ツール] メニューを示すスクリーンショット。](../reference/media/checkerboard.png)
+レンダラーが[標準の構成サイズのポリゴンの制限](../reference/vm-sizes.md)に達しています。 解消するには、**Premium**  の構成サイズに切り替えるか、表示されるポリゴンの数を減らします。
 
 ## <a name="the-rendered-image-in-unity-is-upside-down"></a>Unity でレンダリングされるイメージが上下反転している
 
@@ -216,7 +217,7 @@ ARR には [Z ファイティングの軽減機能](../overview/features/z-fight
 
 ARR には、サーフェスが Z ファイティングになるかどうかを判断するための[チェッカーボードの強調表示](../overview/features/z-fighting-mitigation.md)という機能があります。 また、Z ファイティングの原因を視覚的に判断することもできます。 次の最初のアニメーションは、距離における深さの精度の損失の例を示しています。2 番目のアニメーションは、ほぼ同一平面のサーフェスの例を示しています。
 
-![深さの精度 - Z ファイティング](./media/depth-precision-z-fighting.gif)  ![同一平面 - Z ファイティング](./media/coplanar-z-fighting.gif)
+![アニメーションは、距離における深さの精度の損失の例を示しています。](./media/depth-precision-z-fighting.gif)  ![アニメーションは、ほぼ同一平面のサーフェスの例を示しています。](./media/coplanar-z-fighting.gif)
 
 これらの例を実際の Z ファイティングと比較して原因を特定するか、必要に応じて次のステップバイステップのワークフローに従ってください。
 

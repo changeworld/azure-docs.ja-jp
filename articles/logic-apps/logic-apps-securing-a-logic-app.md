@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 08/27/2020
-ms.openlocfilehash: 9dc63de56a71ab07f513efefe2cf068f6a7be7b0
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.date: 09/08/2020
+ms.openlocfilehash: 75c434b5c1927251940a691a16069425b4cc88a3
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276050"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500404"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps におけるアクセスとデータのセキュリティ保護
 
@@ -814,7 +814,7 @@ HTTP および HTTPS エンドポイントでは、さまざまな種類の認�
 | [クライアント証明書](#client-certificate-authentication) | Azure API Management、Azure App Service、HTTP、HTTP + Swagger、HTTP Webhook |
 | [Active Directory OAuth](#azure-active-directory-oauth-authentication) | Azure API Management、Azure App Service、Azure Functions、HTTP、HTTP + Swagger、HTTP Webhook |
 | [Raw](#raw-authentication) | Azure API Management、Azure App Service、Azure Functions、HTTP、HTTP + Swagger、HTTP Webhook |
-| [管理対象 ID](#managed-identity-authentication) | Azure API Management、Azure App Services、Azure Functions、HTTP |
+| [管理対象 ID](#managed-identity-authentication) | Azure API Management、Azure App Service、Azure Functions、HTTP、HTTP Webhook |
 |||
 
 <a name="basic-authentication"></a>

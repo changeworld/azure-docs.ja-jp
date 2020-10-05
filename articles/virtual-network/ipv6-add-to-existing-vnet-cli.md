@@ -13,17 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 0ba8e34c1fb219d86086e73203acf65c2351c340
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 654924d25a567ed6c63405d27444eb6ff96d480d
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708350"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603647"
 ---
 # <a name="add-ipv6-to-an-ipv4-application-in-azure-virtual-network---azure-cli"></a>Azure 仮想ネットワーク内の IPv4 アプリケーションに IPv6 を追加する - Azure CLI
 
 この記事では、Standard Load Balancer に対して Azure 仮想ネットワーク内の IPv4 パブリック IP アドレスを使用しているアプリケーションに、Azure CLI を使用して IPv6 アドレスを追加する方法を示します。 インプレース アップグレードには、仮想ネットワークとサブネット、IPv4 + IPV6 フロントエンド構成の Standard Load Balancer、IPv4 + IPv6 構成の NIC を含む VM、ネットワーク セキュリティ グループ、パブリック IP が含まれます。
-
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -37,8 +36,7 @@ ms.locfileid: "84708350"
 
 Standard Load Balancer に対して [az network public-ip create](/cli/azure/network/public-ip) を使用してパブリック IPv6 アドレスを作成します。 次の例では、*PublicIP_v6* という名前の IPv6 パブリック IP アドレスを *myResourceGroupSLB* リソース グループに作成します。
 
-```azurecli
-  
+```azurecli-interactive
 az network public-ip create \
 --name PublicIP_v6 \
 --resource-group MyResourceGroupSLB \
@@ -52,7 +50,7 @@ az network public-ip create \
 
 次のように [az network lb frontend-ip create](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create) を使用して、新しい IPv6 IP アドレスが割り当てられたロード バランサーを構成します。
 
-```azurecli
+```azurecli-interactive
 az network lb frontend-ip create \
 --lb-name myLoadBalancer \
 --name dsLbFrontEnd_v6 \
@@ -64,7 +62,7 @@ az network lb frontend-ip create \
 
 次のように、[az network lb address-pool create](https://docs.microsoft.com/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create) を使用して、IPv6 アドレスが割り当てられた NIC のバックエンド プールを作成します。
 
-```azurecli
+```azurecli-interactive
 az network lb address-pool create \
 --lb-name myLoadBalancer \
 --name dsLbBackEndPool_v6 \
@@ -75,7 +73,7 @@ az network lb address-pool create \
 
 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) を使用して IPv6 ロード バランサー規則を作成します。
 
-```azurecli
+```azurecli-interactive
 az network lb rule create \
 --lb-name myLoadBalancer \
 --name dsLBrule_v6 \
@@ -91,9 +89,9 @@ az network lb rule create \
 
 次のように、ロード バランサーをホストする仮想ネットワークとサブネットに IPv6 アドレス範囲を追加します。
 
-```azurecli
+```azurecli-interactive
 az network vnet update \
---name myVnet  `
+--name myVnet  \
 --resource-group MyResourceGroupSLB \
 --address-prefixes  "10.0.0.0/16"  "ace:cab:deca::/48"
 
@@ -108,7 +106,7 @@ az network vnet subnet update \
 
 次のように [az network nic ip-config create](https://docs.microsoft.com/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-create) を使用して、IPv6 アドレスが割り当てられた VM NIC を構成します。
 
-```azurecli
+```azurecli-interactive
 az network nic ip-config create \
 --name dsIp6Config_NIC1 \
 --nic-name myNicVM1 \
@@ -138,10 +136,10 @@ az network nic ip-config create \
 --private-ip-address-version IPv6 \
 --lb-address-pools dsLbBackEndPool_v6 \
 --lb-name myLoadBalancer
-
 ```
 
 ## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>Azure portal で IPv6 デュアル スタック仮想ネットワークを表示する
+
 次のようにして、Azure portal で IPv6 デュアル スタック仮想ネットワークを表示することができます。
 1. ポータルの検索バーに、「*myVnet*」と入力します。
 2. 検索結果に **myVnet** が表示されたら、それを選択します。 これにより、*myVNet* という名前のデュアル スタック仮想ネットワークの **[概要]** ページが起動します。 デュアル スタック仮想ネットワークには、*mySubnet* という名前のデュアル スタック サブネットにある、IPv4 と IPv6 の両方の構成を持つ 3 つの NIC が表示されます。
@@ -153,8 +151,8 @@ az network nic ip-config create \
 
 必要がなくなったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。
 
-```azurepowershell-interactive
-Remove-AzResourceGroup -Name MyAzureResourceGroupSLB
+```azurecli-interactive
+az group delete --name MyAzureResourceGroupSLB
 ```
 
 ## <a name="next-steps"></a>次のステップ

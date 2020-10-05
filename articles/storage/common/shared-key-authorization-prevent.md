@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 3d46df8847a5865c42438ea36245ead0f1e6e528
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 9bf656989dc331fdd4ce044126ea9d0be9414930
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950831"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088801"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Azure ストレージ アカウントの共有キーによる承認を禁止する (プレビュー)
 
@@ -67,7 +67,7 @@ Azure ストレージ アカウントに対するセキュリティで保護さ�
 
 メトリックを構成すると、ストレージ アカウントに対する要求がグラフに表示されるようになります。 次の図では、共有キーを使用して承認されたか、SAS トークンを使用して行われた要求が示されています。 過去 30 日間の要求が、1 日ごとに集計されています。
 
-:::image type="content" source="media/shared-key-authorization-prevent/metric-shared-key-requests.png" alt-text="共有キーを使用して承認された要求の集計を示すスクリーンショット":::
+:::image type="content" source="media/shared-key-authorization-prevent/metric-shared-key-requests.png" alt-text="共有キーまたは SAS を使用して行われたトランザクション数を合計するようにメトリックを構成する方法を示すスクリーンショット":::
 
 ストレージ アカウントで共有キーを使用して承認された要求が一定数に達したら通知する警告ルールを構成することもできます。 詳細については、「[Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../../azure-monitor/platform/alerts-metric.md)」を参照してください。
 
@@ -93,7 +93,7 @@ Azure Monitor で Azure Storage のデータをログに記録し、Azure Log An
 1. **[カテゴリの詳細]** の **[ログ]** セクションで、**StorageRead**、**StorageWrite**、**StorageDelete** を選択して、選択したサービスに対するすべてのデータ要求をログに記録します。
 1. **[宛先の詳細]** で、 **[Log Analytics への送信]** を選択します。 以下の図に示すように、ご利用のサブスクリプションと、先ほど作成した Log Analytics ワークスペースを選択します。
 
-    :::image type="content" source="media/shared-key-authorization-prevent/create-diagnostic-setting-logs.png" alt-text="要求のログを記録するための診断設定の作成方法を示すスクリーンショット":::
+    :::image type="content" source="media/shared-key-authorization-prevent/create-diagnostic-setting-logs.png" alt-text="共有キーまたは SAS を使用して行われたトランザクション数を合計するようにメトリックを構成する方法を示すスクリーンショット":::
 
 ストレージ アカウント内の Azure Storage リソースの種類ごとに、診断設定を作成できます。
 
@@ -133,7 +133,7 @@ Azure portal でストレージ アカウントに対する共有キーによる
 1. **[設定]** から **[構成]** 設定を探します。
 1. **[Allow shared key access]\(共有キーによるアクセスを許可する\)** を **[無効]** に設定します。
 
-    :::image type="content" source="media/shared-key-authorization-prevent/shared-key-access-portal.png" alt-text="アカウントに対する共有キーによるアクセスを禁止する方法を示すスクリーンショット":::
+    :::image type="content" source="media/shared-key-authorization-prevent/shared-key-access-portal.png" alt-text="共有キーまたは SAS を使用して行われたトランザクション数を合計するようにメトリックを構成する方法を示すスクリーンショット":::
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -213,10 +213,10 @@ Shared Access Signature の詳細については、「[Shared Access Signatures 
 
 | Azure ツール | Azure Storage に対する Azure AD 承認 |
 |-|-|
-| Azure portal | サポートされています。 Azure portal からの Azure AD アカウントを使用した承認の詳細については、「[Azure portal で BLOB またはキュー データへのアクセスの承認方法を選択する](storage-access-blobs-queues-portal.md)」を参照してください。 |
+| Azure portal | サポートされています。 Azure portal からの Azure AD アカウントを使用した承認の詳細については、「[Azure portal で BLOB データへのアクセスの承認方法を選択する](../blobs/authorize-blob-access-portal.md)」を参照してください。 |
 | AzCopy | Blob Storage の場合、サポートされています。 AzCopy の操作の承認については、AzCopy のドキュメントの「[認証資格情報の提供方法を選択する](storage-use-azcopy-v10.md#choose-how-youll-provide-authorization-credentials)」を参照してください。 |
 | Azure ストレージ エクスプローラー | Blob Storage と Azure Data Lake Storage Gen2 の場合にのみ、サポートされています。 Queue storage に対する Azure AD のアクセスはサポートされていません。 正しい Azure AD テナントを選択してください。 詳細については、「[Storage Explorer の概要](/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows#sign-in-to-azure)」を参照してください |
-| Azure PowerShell | サポートされています。 BLOB およびキューのデータにアクセスするために、Azure AD で PowerShell コマンドを承認する方法については、「[Azure AD 資格情報を使用して PowerShell コマンドを実行して BLOB またはキューのデータにアクセスする](authorize-active-directory-powershell.md)」を参照してください。 |
+| Azure PowerShell | サポートされています。 Azure AD で BLOB またはキューの操作の PowerShell コマンドを承認する方法の詳細については、「[Azure AD の資格情報を使用して PowerShell コマンドを実行して BLOB データにアクセスする](../blobs/authorize-active-directory-powershell.md)」または「[Azure AD 資格情報を使用して PowerShell コマンドを実行してキューのデータにアクセスする](../queues/authorize-active-directory-powershell.md)」を参照してください。 |
 | Azure CLI | サポートされています。 BLOB およびキューのデータにアクセスするために、Azure AD で Azure CLI コマンドを承認する方法については、[Azure AD 資格情報を使用して Azure CLI コマンドを実行して BLOB またはキューのデータにアクセスする方法](authorize-data-operations-cli.md)に関する記事を参照してください。 |
 | Azure IoT Hub | サポートされています。 詳細については、[IoT Hub による仮想ネットワークのサポート](../../iot-hub/virtual-network-support.md)に関する記事を参照してください。 |
 | Azure Cloud Shell | Azure Cloud Shell は、Azure portal の統合シェルです。 Azure Cloud Shell では、ストレージ アカウントの Azure ファイル共有で永続化するためのファイルがホストされています。 そのストレージ アカウントで共有キーによる承認が許可されていない場合、これらのファイルはアクセスできなくなります。 詳細については、「[Microsoft Azure Files ストレージの接続](/azure/cloud-shell/overview#connect-your-microsoft-azure-files-storage)」を参照してください。 <br /><br /> Azure Cloud Shell でコマンドを実行して、共有キーによるアクセスが禁止されているストレージ アカウントを管理するには、最初に、ロールベースのアクセス制御 (RBAC) で、これらのアカウントに必要なアクセス許可が付与されていることを確認します。 詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。 |

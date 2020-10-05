@@ -6,16 +6,16 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: chenyl
-ms.openlocfilehash: be7736d0c90d1c384e15e8c7dee29d016b052dbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3e317a87ba888fac3c069cc5327bd89c859e9de
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559428"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514239"
 ---
 # <a name="upstream-settings"></a>アップストリームの設定
 
-アップストリームは、Azure SignalR Service からサーバーレス モードで一連のエンドポイントにメッセージと接続イベントを送信できるようになる機能です。 アップストリームを使用すると、サーバーレス モードのクライアントからハブ メソッドを呼び出し、クライアント接続が確立または切断されたときにエンドポイントに通知を送信することができます。
+アップストリームは、Azure SignalR Service からサーバーレス モードで一連のエンドポイントにメッセージと接続イベントを送信できるようになるプレビュー機能です。 アップストリームを使用すると、サーバーレス モードのクライアントからハブ メソッドを呼び出し、クライアント接続が確立または切断されたときにエンドポイントに通知を送信することができます。
 
 > [!NOTE]
 > アップストリーム設定を構成できるのは、サーバーレス モードのみです。
@@ -59,6 +59,10 @@ http://host.com/chat/api/messages/broadcast
 - すべてのイベントに一致させるには、アスタリスク (*) を使用します。
 - 複数のイベントを結合するには、コンマ (,) を使用します。 たとえば、`connected, disconnected` は connected イベントと disconnected イベントと一致します。
 - イベントと一致させるには、完全なイベント名を使用します。 たとえば、`connected` は connected イベントと一致します。
+
+> [!NOTE]
+> Azure Functions および [SignalR トリガー](../azure-functions/functions-bindings-signalr-service-trigger.md)を使用している場合、SignalR トリガーは、次の形式で単一のエンドポイントを公開します: `https://<APP_NAME>.azurewebsites.net/runtime/webhooks/signalr?code=<API_KEY>`。
+> URL テンプレートはこの URL にのみ構成できます。
 
 ### <a name="authentication-settings"></a>[認証設定]
 
@@ -141,7 +145,7 @@ Content-Type, application/json
 
 Content-Type: `application/json`
 
-|名前  |Type  |説明  |
+|名前  |種類  |説明  |
 |---------|---------|---------|
 |エラー |string |閉じられた接続のエラー メッセージ。 エラーなしで接続が閉じた場合は空。|
 
@@ -149,7 +153,7 @@ Content-Type: `application/json`
 
 Content-Type: `application/json` または `application/x-msgpack`
 
-|名前  |Type  |説明  |
+|名前  |種類  |説明  |
 |---------|---------|---------|
 |InvocationId |string | 呼び出しメッセージを表す省略可能な文字列。 詳細については、「[Invocations](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocations)」 (呼び出し) を参照してください。|
 |移行先 |string | イベントと同じであり、[呼び出しメッセージ](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)のターゲットと同じです。 |

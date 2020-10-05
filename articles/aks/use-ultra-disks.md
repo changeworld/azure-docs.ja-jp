@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) クラスターで Ultra Disks を�
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 6ad739a128839eac4d664ffb6f9e3b2fcd07f2d9
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 3f15f075604c104b467af289f6f5d4b92dc12659
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650181"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420865"
 ---
 # <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>Azure Kubernetes Service での Azure Ultra Disks の使用 (プレビュー)
 
@@ -21,11 +21,6 @@ ms.locfileid: "88650181"
 
 > [!IMPORTANT]
 > Azure Ultra Disks では、特定の VM シリーズだけでなく、これらのディスクをサポートする可用性ゾーンとリージョンにデプロイされたノードプールが必要です。 [**Ultra Disks の GA の範囲と制限事項**](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations)に関する説明を参照してください。
-
-### <a name="prerequisites"></a>前提条件
-
-- `EnableUltraSSD` 機能フラグが有効になっていることを確認します。
-- 最新の `aks-preview` [CLI 拡張機能][az-extension-add] がインストールされていることを確認します。
 
 ### <a name="register-the-enableultrassd-preview-feature"></a>`EnableUltraSSD` プレビュー機能を登録する
 
@@ -78,7 +73,7 @@ Azure リソース グループを作成します。
 az group create --name myResourceGroup --location westus2
 ```
 
-マネージド Azure AD 統合と Kubernetes 認可用の Azure RBAC を使用して、AKS クラスターを作成します。
+Ultra Disks をサポートする AKS クラスターを作成します。
 
 ```azurecli-interactive
 # Create an AKS-managed Azure AD cluster
@@ -133,7 +128,7 @@ storageclass.storage.k8s.io/ultra-disk-sc created
 
 ## <a name="create-a-persistent-volume-claim"></a>永続ボリューム要求の作成
 
-永続ボリューム要求 (PVC) を使用して、ストレージ クラスに基づいてストレージを自動的にプロビジョニングします。 この場合、PVC は、事前作成されているストレージ クラスのいずれかを使用して、標準のまたはプレミアムな Azure マネージド ディスクを作成できます。
+永続ボリューム要求 (PVC) を使用して、ストレージ クラスに基づいてストレージを自動的にプロビジョニングします。 この場合、PVC は以前に作成したストレージ クラスを使用して、Ultra Disks を作成できます。
 
 `azure-ultra-disk-pvc.yaml` という名前のファイルを作成し、そこに次のマニフェストをコピーします。 クレームでは、サイズが *1000 GB* で *ReadWriteOnce* アクセスがある `ultra-disk` という名前のディスクを要求します。 ストレージ クラスとして、*ultra-disk-sc* ストレージ クラスが指定されます。
 

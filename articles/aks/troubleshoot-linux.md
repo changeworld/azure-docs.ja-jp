@@ -1,19 +1,19 @@
 ---
 title: Linux のパフォーマンス ツール
 titleSuffix: Azure Kubernetes Service
-description: Azure Kubernetes Service (AKS) を使用するときに発生する一般的な問題をトラブルシューティングおよび解決する方法について説明します
+description: Linux のパフォーマンス ツールを使用して、Azure Kubernetes Service (AKS) を使用するときに発生する一般的な問題をトラブルシューティングおよび解決する方法について説明します。
 services: container-service
 author: alexeldeib
 ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 02/10/2020
 ms.author: aleldeib
-ms.openlocfilehash: eb6b126b4d1794adf0380432040190b91a17a675
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 74f65780594c7bc938ed6d59437473c4363e5848
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77921694"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982029"
 ---
 # <a name="linux-performance-troubleshooting"></a>Linux のパフォーマンスのトラブルシューティング
 

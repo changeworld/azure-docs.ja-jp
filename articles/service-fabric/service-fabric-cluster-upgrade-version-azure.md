@@ -3,12 +3,12 @@ title: クラスターの Azure Service Fabric のバージョンをアップグ
 description: Service Fabric クラスターを実行している Service Fabric コード、構成、またはその両方をアップグレードします。たとえば、クラスター アップグレード モードの設定、証明書のアップグレード、アプリケーション ポートの追加、OS 修正プログラムの適用などを行います。 アップグレードを実行しているときに、どのようなことが起きるでしょうか?
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.openlocfilehash: b0fef612725d606f1415e7e8d004aacee025cedf
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 01fe916f0ee78c8481ac6b17b8f7409b47c852ee
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261055"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564289"
 ---
 # <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>クラスターの Service Fabric バージョンをアップグレードする
 
@@ -28,7 +28,7 @@ Microsoft からのリリース時に自動ファブリック アップグレー
 ## <a name="set-the-upgrade-mode-in-the-azure-portal"></a>Azure portal でアップグレード モードを設定する
 ファブリックのアップグレード モードは、クラスターの作成時に自動または手動に設定することができます。
 
-![Create_Manualmode][Create_Manualmode]
+![スクリーンショットは、オプション 2 の [クラスター構成] が選択された [Service Fabric クラスターの作成] ペインと、[クラスター構成] ペインが開いた状態を示しています。][Create_Manualmode]
 
 稼働中のクラスターに対しては、管理操作からファブリックのアップグレード モードを自動または手動に設定することができます。 
 
@@ -39,12 +39,12 @@ Microsoft からのリリース時に自動ファブリック アップグレー
 
 ロールバックの原因となった問題を解決した後、前述の手順に従ってもう一度アップグレードを実行してください。
 
-![Manage_Automaticmode][Manage_Automaticmode]
+![スクリーンショットは、[ファブリックのアップグレード] ペインが開き、自動、手動などのアップグレード オプションが強調表示された [Service Fabric クラスター] ウィンドウを示しています。][Manage_Automaticmode]
 
 ## <a name="set-the-upgrade-mode-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用してアップグレード モードを設定する
 Microsoft.ServiceFabric/クラスター リソース定義に "upgradeMode" 構成を追加し、サポートされているいずれかのファブリック バージョンを "clusterCodeVersion" に指定して (下記)、テンプレートをデプロイします。 "upgradeMode" には "Manual" または "Automatic" のいずれかを値として指定できます。
 
-![ARMUpgradeMode][ARMUpgradeMode]
+![スクリーンショットはテンプレートを示しています。これは、構造を反映するようにインデントされたプレーンテキストで、clusterCodeVersion と upgradeMode が強調表示されています。][ARMUpgradeMode]
 
 ### <a name="upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-a-resource-manager-template"></a>Resource Manager テンプレートで手動モードに設定されたクラスターを新バージョンにアップグレードする
 手動モードのクラスターを新バージョンにアップグレードするには、"clusterCodeVersion" に指定されているバージョンを、サポートされているいずれかのバージョンに変更してデプロイします。 テンプレートをデプロイすると、ファブリックのアップグレードが自動的に開始されます。 クラスター正常性ポリシー (ノードの正常性と、クラスターで実行されているすべてのアプリケーションの正常性の組み合わせ) は、アップグレードの実行中、遵守されます。

@@ -7,18 +7,21 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: a01d9e90e87d1c23b9aefc5f2d9ba3ba84d0f59f
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 4044690bf042d05e4efd531826fab6cb5459b3b7
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904923"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707647"
 ---
-# <a name="troubleshoot-azure-files-problems-in-linux"></a>Linux での Azure Files に関する問題のトラブルシューティング
+# <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>Linux での Azure Files に関する問題のトラブルシューティング (SMB)
 
 この記事では、Linux クライアントから接続するときに生じる、Azure File に関係する一般的な問題を示します。 これらの問題の考えられる原因と解決策についても説明します。 
 
 この記事のトラブルシューティングの手順のほかに、[AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Linux) を使用して、Linux クライアントが前提条件を適切に満たしていることを確認できます。 AzFileDiagnostics では、この記事で説明しているほとんどの症状が自動的に検出されます。 最適なパフォーマンスが得られる環境をセットアップするために役立ちます。 この情報は、[Azure ファイル共有のトラブルシューティング ツール](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)で入手することもできます。 トラブルシューティング ツールには、Azure Files 共有の接続、マッピング、およびマウントに関する問題の解決に役立つ手順が用意されています。
+
+> [!IMPORTANT]
+> この記事の内容は SMB 共有にのみ適用されます。 NFS 共有の詳細については、「[Azure NFS ファイル共有に関するトラブルシューティング](storage-troubleshooting-files-nfs.md)」を参照してください。
 
 ## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Azure ファイル共有を接続またはマウントできない
 

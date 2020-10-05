@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 892bdcc08bd19b92c8b3d32d2954583f80005e87
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: beeb771ea5053dd0ad867a7568aa64bbb2d0b4ed
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022886"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985300"
 ---
 # <a name="configure-the-application-dashboard"></a>アプリケーション ダッシュボードの構成
 
@@ -25,15 +25,17 @@ ms.locfileid: "84022886"
 
 次のスクリーンショットは、**カスタム アプリケーション** テンプレートから作成されたアプリケーションのダッシュボードを示しています。 現在のダッシュボードをカスタマイズする場合は **[編集]** を、カスタム個人用ダッシュボードまたは共有ダッシュボードを追加する場合は **[新規]** を選択します。
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/dashboard-sample-contoso.png" alt-text="カスタム アプリケーション テンプレートに基づくアプリケーションのダッシュボード":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/dashboard-sample-contoso.png" alt-text="カスタム アプリケーション テンプレートに基づくアプリケーションのダッシュボード&quot;:::
 
-**[編集]** または **[新規]** を選択すると、ダッシュボードは "*編集*" モードになります。 **[ダッシュボードの編集]** パネルのツールを使用して、ダッシュボードへのタイルの追加、ダッシュボード上でのタイルのカスタマイズと削除を実行できます。 たとえば、**テレメトリ** タイルを追加して、1 台以上のデバイスによって報告された現在の温度を表示するには、次のようにします。
+**[編集]** または **[新規]** を選択すると、ダッシュボードは &quot;*編集*" モードになります。 **[ダッシュボードの編集]** パネルのツールを使用して、ダッシュボードへのタイルの追加、ダッシュボード上でのタイルのカスタマイズと削除を実行できます。 たとえば、**テレメトリ** タイルを追加して、1 台以上のデバイスによって報告された現在の温度を表示するには、次のようにします。
 
 1. **[ダッシュボードの編集]** パネルで、 **[デバイス グループ]** を選択します。
 1. **[デバイス]** ドロップダウンから、タイルに表示する 1 台以上のデバイスを選択します。 これで、デバイスから入手できるテレメトリ、プロパティ、およびコマンドが表示されます。
 1. [テレメトリ] セクションで **[温度]** を選択した後、 **[タイルの追加]** を選択します。 これで、ダッシュボードにタイルが表示され、視覚化を変更したり、タイルのサイズを変更したり、タイルを構成したりすることができます。
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/device-details.png" alt-text="温度テレメトリ タイルをダッシュボードに追加する":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/device-details.png" alt-text="カスタム アプリケーション テンプレートに基づくアプリケーションのダッシュボード&quot;:::
+
+**[編集]** または **[新規]** を選択すると、ダッシュボードは &quot;*編集*":::
 
 ダッシュボードでのタイルの追加とカスタマイズが完了したら、 **[保存]** を選択します。
 
@@ -75,11 +77,33 @@ ms.locfileid: "84022886"
 
 折れ線グラフ、横棒グラフ、および円グラフでは、異なるテレメトリ値の色をカスタマイズできます。 カスタマイズするテレメトリの横にあるパレット アイコンを選択します。
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/color-customization.png" alt-text="テレメトリ値の色を変更する":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/color-customization.png" alt-text="カスタム アプリケーション テンプレートに基づくアプリケーションのダッシュボード&quot;:::
+
+**[編集]** または **[新規]** を選択すると、ダッシュボードは &quot;*編集*":::
 
 文字列プロパティやテレメトリ値を表示するタイルでは、テキストの表示方法を選択できます。 たとえば、デバイスで文字列プロパティに URL が格納されている場合は、クリック可能リンクとして表示できます。 URL が画像を参照している場合は、最後に認識された値またはプロパティ タイルで画像を表示できます。 文字列の表示方法を変更するには、タイルの構成で、テレメトリの種類またはプロパティの横にある歯車アイコンを選択します。
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/string-customization.png" alt-text="タイルに表示する文字列を変更する方法":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/string-customization.png" alt-text="カスタム アプリケーション テンプレートに基づくアプリケーションのダッシュボード&quot;:::
+
+**[編集]** または **[新規]** を選択すると、ダッシュボードは &quot;*編集*":::
+
+数値 **KPI**、**最後の既知の値**、および**プロパティ**のタイルでは、条件付き書式を使用して、現在の値に基づいてタイルの色をカスタマイズできます。 条件付き書式を追加するには、タイルで **[構成]** を選択し、カスタマイズする値の横にある **[条件付き書式]** アイコンを選択します。
+
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-1.png" alt-text="カスタム アプリケーション テンプレートに基づくアプリケーションのダッシュボード&quot;:::
+
+**[編集]** または **[新規]** を選択すると、ダッシュボードは &quot;*編集*":::
+
+条件付き書式規則を追加します。
+
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-2.png" alt-text="カスタム アプリケーション テンプレートに基づくアプリケーションのダッシュボード&quot;:::
+
+**[編集]** または **[新規]** を選択すると、ダッシュボードは &quot;*編集*":::
+
+次のスクリーンショットは、条件付き書式規則の効果を示しています。
+
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-3.png" alt-text="カスタム アプリケーション テンプレートに基づくアプリケーションのダッシュボード&quot;:::
+
+**[編集]** または **[新規]** を選択すると、ダッシュボードは &quot;*編集*":::
 
 ## <a name="next-steps"></a>次のステップ
 

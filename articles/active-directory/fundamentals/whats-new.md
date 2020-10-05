@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 09/03/2020
 ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d90e63940a5c2e70dc50062b96857d297d2c3642
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 9ff942cdad74c3b8b71a8f1658f13faae021b983
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320819"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567454"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
@@ -112,9 +112,9 @@ Microsoft Graph デルタ クエリで、v1.0 のリソースの種類がサポ�
 **サービス カテゴリ:** エンタープライズ アプリケーション  
 **製品の機能:** サード パーティ統合
 
-2020 年 8 月には、フェデレーションをサポートする次の 26 個の新しいアプリケーションがアプリ ギャラリーに追加されました。
+2020 年 8 月には、フェデレーションをサポートする次の 25 個の新しいアプリケーションがアプリ ギャラリーに追加されました。
 
-[Backup365](https://portal.backup365.io/login)、[Soapbox](https://app.soapboxhq.com/create?step=auth&provider=azure-ad2-oauth2)、[Alma SIS](https://almau.getalma.com/)、[Enlyft Dynamics 365 Connector](http://enlyft.com/)、[Serraview Space Utilization Software Solutions](../saas-apps/serraview-space-utilization-software-solutions-tutorial.md)、[Uniq](https://web.uniq.app/)、[Visibly](../saas-apps/visibly-tutorial.md), [Zylo](../saas-apps/zylo-tutorial.md)、[Edmentum - Courseware Assessments Exact Path](https://auth.edmentum.com/elf/login)、[CyberLAB](https://cyberlab.evolvesecurity.com/#/welcome)、[Altamira HRM](../saas-apps/altamira-hrm-tutorial.md)、[WireWheel](../saas-apps/wirewheel-tutorial.md)、[Zix Compliance and Capture](https://sminstall.zixcorp.com/teams/teams.php?install_request=true&tenant_id=common)、[Greenlight Enterprise Business Controls Platform](../saas-apps/greenlight-enterprise-business-controls-platform-tutorial.md)、[Genetec Clearance](https://www.clearance.network/)、[iSAMS](../saas-apps/isams-tutorial.md)、[VeraSMART](../saas-apps/verasmart-tutorial.md)、[Amiko](https://amiko.web.rivero.app/)、[Twingate](https://auth.twingate.com/signup)、[Funnel Leasing](https://nestiolistings.com/sso/oidc/azure/authorize/)、[Scalefusion](https://scalefusion.com/users/sign_in/)、[Bpanda](https://goto.bpanda.com/login)、[Vivun Calendar Connect](https://app.vivun.com/dashboard/calendar/connect)、[RStudio Server Pro](../saas-apps/rstudio-server-pro-tutorial.md)、[FortiGate SSL VPN](../saas-apps/fortigate-ssl-vpn-tutorial.md)、[Wandera End User](https://www.wandera.com/)
+[Backup365](https://portal.backup365.io/login)、[Soapbox](https://app.soapboxhq.com/create?step=auth&provider=azure-ad2-oauth2)、[Alma SIS](https://almau.getalma.com/)、[Enlyft Dynamics 365 Connector](http://enlyft.com/)、[Serraview Space Utilization Software Solutions](../saas-apps/serraview-space-utilization-software-solutions-tutorial.md)、[Uniq](https://web.uniq.app/)、[Visibly](../saas-apps/visibly-tutorial.md), [Zylo](../saas-apps/zylo-tutorial.md)、[Edmentum - Courseware Assessments Exact Path](https://auth.edmentum.com/elf/login)、[CyberLAB](https://cyberlab.evolvesecurity.com/#/welcome)、[Altamira HRM](../saas-apps/altamira-hrm-tutorial.md)、[WireWheel](../saas-apps/wirewheel-tutorial.md)、[Zix Compliance and Capture](https://sminstall.zixcorp.com/teams/teams.php?install_request=true&tenant_id=common)、[Greenlight Enterprise Business Controls Platform](../saas-apps/greenlight-enterprise-business-controls-platform-tutorial.md)、[Genetec Clearance](https://www.clearance.network/)、[iSAMS](../saas-apps/isams-tutorial.md)、[VeraSMART](../saas-apps/verasmart-tutorial.md)、[Amiko](https://amiko.web.rivero.app/)、[Twingate](https://auth.twingate.com/signup)、[Funnel Leasing](https://nestiolistings.com/sso/oidc/azure/authorize/)、[Scalefusion](https://scalefusion.com/users/sign_in/)、[Bpanda](https://goto.bpanda.com/login)、[Vivun Calendar Connect](https://app.vivun.com/dashboard/calendar/connect)、[FortiGate SSL VPN](../saas-apps/fortigate-ssl-vpn-tutorial.md)、[Wandera End User](https://www.wandera.com/)
 
 すべてのアプリケーションのドキュメントについては、こちら (https://aka.ms/AppsTutorial ) をご覧ください
 
@@ -524,7 +524,7 @@ riskyUsers および riskDetections Microsoft Graph API が一般提供される
 
 秘密度ラベルを作成し、そのラベルの設定を使用して、プライバシー (パブリックまたはプライベート) と外部ユーザー アクセス ポリシーを含むポリシーを Microsoft 365 グループに適用できるようになりました。 プライバシー ポリシーをプライベートに設定し、外部ユーザー アクセス ポリシーを、ゲスト ユーザーの追加を許可しないように設定したラベルを作成できます。 ユーザーがこのラベルをグループに適用すると、そのグループはプライベートになり、ゲスト ユーザーをグループに追加することは許可されません。 
 
-秘密度ラベルは、ビジネスに不可欠なデータを保護するうえで重要であり、これを使用することにより、コンプライアンスに準拠しセキュリティで保護された方法で、大規模なグループを管理できます。 秘密度ラベルの使用のガイダンスについては、「[Azure Active Directory で Office 365 グループに秘密度ラベルを割り当てる (プレビュー)](../users-groups-roles/groups-assign-sensitivity-labels.md)」を参照してください。
+秘密度ラベルは、ビジネスに不可欠なデータを保護するうえで重要であり、これを使用することにより、コンプライアンスに準拠しセキュリティで保護された方法で、大規模なグループを管理できます。 秘密度ラベルの使用のガイダンスについては、「[Azure Active Directory で Microsoft 365 グループに秘密度ラベルを割り当てる (プレビュー)](../users-groups-roles/groups-assign-sensitivity-labels.md)」を参照してください。
  
 ---
 
@@ -648,7 +648,7 @@ signIns v1.0 API に新しい riskEventsTypes_v2 (string) プロパティが導�
 **サービス カテゴリ:** ソブリン クラウド  
 **製品の機能:** ユーザー認証
  
-2018 年 6 月 1 日、Azure Government に対する Azure Active Directory (AAD) の公式な機関が、 https://login-us.microsoftonline.com から https://login.microsoftonline.us に変更されました。 Azure Government テナント内でアプリケーションを所有している場合は、.us エンドポイント上でユーザーをサインインさせるようにご使用のアプリケーションを更新する必要があります。
+2018 年 6 月 1 日、Azure Government に対する Azure Active Directory (Azure AD) の公式な機関が、 https://login-us.microsoftonline.com から https://login.microsoftonline.us に変更されました。 Azure Government テナント内でアプリケーションを所有している場合は、.us エンドポイント上でユーザーをサインインさせるようにご使用のアプリケーションを更新する必要があります。
 
 5 月 5 日以降、Azure AD でエンドポイントの変更の適用が開始され、Azure Government ユーザーはパブリック エンドポイント (microsoftonline.com) を使用して Azure Government テナント内でホストされているアプリにサインインできなくなります。 影響を受けるアプリでは、エラー AADSTS900439 - USGClientNotSupportedOnPublicEndpoint が表示されます。 
 
@@ -946,7 +946,7 @@ B2B の招待機能は拡張中であり、今後、B2B コラボレーション
 
 2020 年 4 月に、フェデレーションを使用した以下の 31 の新規アプリのサポートが、アプリ ギャラリーに追加されました。 
 
-[SincroPool Apps](https://www.sincropool.com/)、[SmartDB](https://hibiki.dreamarts.co.jp/smartdb/trial/)、[Float](../saas-apps/float-tutorial.md)、[LMS365](https://lms.365.systems/)、[IWT Procurement Suite](../saas-apps/iwt-procurement-suite-tutorial.md)、[Lunni](https://lunni.fi/)、[EasySSO for Jira](../saas-apps/easysso-for-jira-tutorial.md)、[Virtual Training Academy](https://vta.c3p.ca/app/en/openid?authenticate_with=microsoft)、[Meraki Dashboard](../saas-apps/meraki-dashboard-tutorial.md)、[Office 365 Mover](https://app.mover.io/login)、[Speaker Engage](https://speakerengage.com/login.php)、[Honestly](../saas-apps/honestly-tutorial.md)、[Ally](../saas-apps/ally-tutorial.md)、[DutyFlow](https://app.dutyflow.nl/)、[AlertMedia](../saas-apps/alertmedia-tutorial.md)、[gr8 People](../saas-apps/gr8-people-tutorial.md)、[Pendo](../saas-apps/pendo-tutorial.md)、[HighGround](../saas-apps/highground-tutorial.md)、[Harmony](../saas-apps/harmony-tutorial.md)、[Timetabling Solutions](../saas-apps/timetabling-solutions-tutorial.md)、[SynchroNet CLICK](../saas-apps/synchronet-click-tutorial.md)、[empower](https://www.made-in-office.com/en/)、[Fortes Change Cloud](../saas-apps/fortes-change-cloud-tutorial.md)、[Litmus](../saas-apps/litmus-tutorial.md)、[GroupTalk](https://recorder.grouptalk.com/)、[Frontify](../saas-apps/frontify-tutorial.md)、[MongoDB Cloud](../saas-apps/mongodb-cloud-tutorial.md)、[TickitLMS Learn](../saas-apps/tickitlms-learn-tutorial.md)、[COCO](https://hexaware.com/partnerships-and-alliances/digital-transformation-using-microsoft-azure/)、[Nitro Productivity Suite](../saas-apps/nitro-productivity-suite-tutorial.md) 、[Trend Micro Web Security(TMWS)](https://review.docs.microsoft.com/azure/active-directory/saas-apps/trend-micro-tutorial)
+[SincroPool Apps](https://www.sincropool.com/)、[SmartDB](https://hibiki.dreamarts.co.jp/smartdb/trial/)、[Float](../saas-apps/float-tutorial.md)、[LMS365](https://lms.365.systems/)、[IWT Procurement Suite](../saas-apps/iwt-procurement-suite-tutorial.md)、[Lunni](https://lunni.fi/)、[EasySSO for Jira](../saas-apps/easysso-for-jira-tutorial.md)、[Virtual Training Academy](https://vta.c3p.ca/app/en/openid?authenticate_with=microsoft)、[Meraki Dashboard](../saas-apps/meraki-dashboard-tutorial.md)、[Microsoft 365 Mover](https://app.mover.io/login)、[Speaker Engage](https://speakerengage.com/login.php)、[Honestly](../saas-apps/honestly-tutorial.md)、[Ally](../saas-apps/ally-tutorial.md)、[DutyFlow](https://app.dutyflow.nl/)、[AlertMedia](../saas-apps/alertmedia-tutorial.md)、[gr8 People](../saas-apps/gr8-people-tutorial.md)、[Pendo](../saas-apps/pendo-tutorial.md)、[HighGround](../saas-apps/highground-tutorial.md)、[Harmony](../saas-apps/harmony-tutorial.md)、[Timetabling Solutions](../saas-apps/timetabling-solutions-tutorial.md)、[SynchroNet CLICK](../saas-apps/synchronet-click-tutorial.md)、[empower](https://www.made-in-office.com/en/)、[Fortes Change Cloud](../saas-apps/fortes-change-cloud-tutorial.md)、[Litmus](../saas-apps/litmus-tutorial.md)、[GroupTalk](https://recorder.grouptalk.com/)、[Frontify](../saas-apps/frontify-tutorial.md)、[MongoDB Cloud](../saas-apps/mongodb-cloud-tutorial.md)、[TickitLMS Learn](../saas-apps/tickitlms-learn-tutorial.md)、[COCO](https://hexaware.com/partnerships-and-alliances/digital-transformation-using-microsoft-azure/)、[Nitro Productivity Suite](../saas-apps/nitro-productivity-suite-tutorial.md) 、[Trend Micro Web Security(TMWS)](https://review.docs.microsoft.com/azure/active-directory/saas-apps/trend-micro-tutorial)
 
 アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://aka.ms/azureadapprequest)」を参照してください。
 
@@ -1070,7 +1070,7 @@ oAuth2PermissionGrant に対するデルタ クエリがパブリック プレ�
 
 **製品の機能:** アクセス制御
 
-このロールを持つユーザーは、ユーザーの場所からのネットワーク テレメトリに基づいて、Microsoft によるネットワーク境界アーキテクチャに関する推奨事項を確認できます。 Office 365 のネットワーク パフォーマンスは、通常はユーザーの場所に固有である、企業の顧客の慎重なネットワーク境界アーキテクチャに依存します。 このロールを使用では、検出されたユーザーの場所と、それらの場所に対するネットワーク パラメーターの構成を編集して、テレメトリの測定と設計に関する推奨事項の改善できます。 [詳細情報。](../users-groups-roles/directory-assign-admin-roles.md#network-administrator)
+このロールを持つユーザーは、ユーザーの場所からのネットワーク テレメトリに基づいて、Microsoft によるネットワーク境界アーキテクチャに関する推奨事項を確認できます。 Microsoft 365 のネットワーク パフォーマンスは、通常はユーザーの場所に固有である、企業の顧客の慎重なネットワーク境界アーキテクチャに依存します。 このロールを使用では、検出されたユーザーの場所と、それらの場所に対するネットワーク パラメーターの構成を編集して、テレメトリの測定と設計に関する推奨事項の改善できます。 [詳細情報。](../users-groups-roles/directory-assign-admin-roles.md#network-administrator)
 
 ---
 

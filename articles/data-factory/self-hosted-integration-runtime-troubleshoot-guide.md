@@ -5,14 +5,14 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 08/05/2020
+ms.date: 09/14/2020
 ms.author: abnarain
-ms.openlocfilehash: 49d173e0d0f2b96c385b4325335483d25e9a7c2d
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 1a68263598cb2cba8cc0853f5dd1be7c62dc062e
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800715"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069477"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムのトラブルシューティング
 
@@ -519,7 +519,7 @@ Localhost 127.0.0.1 を使用してファイルをホストすれば、この問
 
 ### <a name="connectivity-issue-between-self-hosted-ir-and-data-factory-or-self-hosted-ir-and-data-sourcesink"></a>セルフホステッド IR と Data Factory の間、またはセルフホステッド IR とデータソース (またはシンク) の間の接続に関する問題
 
-ネットワーク接続の問題のトラブルシューティングを行うには、[ネットワーク トレースの収集](#how-to-collect-netmon-trace)方法を確認して、その使用方法を理解し、[Netmon トレースを分析](#how-to-analyze-netmon-trace)してから、実際のケースでセルフホステッド IR から Netmon ツールを適用する必要があります。
+ネットワーク接続の問題のトラブルシューティングを行うには、ネットワーク トレースの収集方法を確認して、その使用方法を理解し、[Netmon トレースを分析](#how-to-analyze-netmon-trace)してから、実際のケースでセルフホステッド IR から Netmon ツールを適用する必要があります。
 
 #### <a name="symptoms"></a>現象
 
@@ -575,53 +575,12 @@ Netmon トレースを取得して、さらに分析します。
 
     このため、セルフホステッド IR からの 4 番目のホップを確認するには、ネットワーク チームと協力する必要があります。 Linux システムのファイアウォールである場合は、TCP 3 ハンドシェイクの後にそのデバイスがパッケージをリセットした理由をログで確認します。 ただし、調査する場所がわからない場合は、セルフホステッド IR とファイアウォールから問題が発生したときの netmon トレースを取得して、どのデバイスによってこのパッケージがリセットされて切断されるのかを特定してください。 この場合も、ネットワーク チームと協力して作業を進める必要があります。
 
-### <a name="how-to-collect-netmon-trace"></a>Netmon トレースを収集する方法
-
-1.  [この Web サイト](https://www.microsoft.com/en-sg/download/details.aspx?id=4865)から Netmon ツールをダウンロードし、サーバー マシン (問題が発生しているサーバー) とクライアント (セルフホステッド IR など) にインストールします。
-
-2.  フォルダーを作成します (たとえば、*D:\netmon* というパスに作成します)。 ログを保存するための十分な領域があることを確認します。
-
-3.  IP とポートの情報をキャプチャします。 
-    1. コマンド プロンプトを起動します。
-    2. [管理者として実行] を選択し、次のコマンドを実行します。
-       
-        ```
-        Ipconfig /all >D:\netmon\IP.txt
-        netstat -abno > D:\netmon\ServerNetstat.txt
-        ```
-
-4.  Netmon トレース (ネットワーク パッケージ) をキャプチャします。
-    1. コマンド プロンプトを起動します。
-    2. [管理者として実行] を選択し、次のコマンドを実行します。
-        
-        ```
-        cd C:\Program Files\Microsoft Network Monitor 3
-        ```
-    3. 次の 3 種類のコマンドを使用して、ネットワーク ページをキャプチャできます。
-        - オプション A: ラウンドロビン ファイル コマンド (ファイルが 1 つだけキャプチャされ、古いログが上書きされます)。
-
-            ```
-            nmcap /network * /capture /file D:\netmon\ServerConnection.cap:200M
-            ```         
-        - オプション B: チェーン ファイル コマンド (200 MB に達すると、新しいファイルが作成されます)。
-        
-            ```
-            nmcap /network * /capture /file D:\netmon\ServerConnection.chn:200M
-            ```          
-        - オプション C:スケジュール ファイル コマンド。
-
-            ```
-            nmcap /network * /capture /StartWhen /Time 10:30:00 AM 10/28/2011 /StopWhen /Time 11:30:00 AM 10/28/2011 /file D:\netmon\ServerConnection.chn:200M
-            ```  
-
-5.  Netmon トレースのキャプチャを停止するには、**Ctrl + C** を押します。
- 
-> [!NOTE]
-> クライアント コンピューターでのみ netmon トレースを収集できる場合は、サーバーの IP アドレスを取得してトレースの分析に役立ててください。
-
 ### <a name="how-to-analyze-netmon-trace"></a>Netmon トレースを分析する方法
 
-上記で収集された netmon トレースを使用して telnet **8.8.8.8 888** を実行しようとすると、次のトレースが表示されます。
+> [!NOTE] 
+> 次の指示は Netmon トレースに適用されます。 Netmon トレースが現在サポート対象外なので、Wireshark を同じものとして利用できます。
+
+収集された Netmon トレースを使用して telnet **8.8.8.8 888** を実行しようとすると、次のトレースが表示されます。
 
 ![Netmon トレース 1](media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-1.png)
 

@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
-ms.date: 06/22/2020
+ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 612584a71aa6be54d726ccdd74d9368ba9cddbc9
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: ce6325abf34813a9ca397f5bcbe2e774af3442d4
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535078"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061480"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>パート 1: Azure ファイル共有に対する AD DS 認証を有効にする 
 
@@ -28,7 +28,7 @@ AzFilesHybrid PowerShell モジュールのコマンドレットによって、�
 
 ### <a name="download-azfileshybrid-module"></a>AzFilesHybrid モジュールをダウンロードする
 
-- [AzFilesHybrid モジュールをダウンロードして解凍します](https://github.com/Azure-Samples/azure-files-samples/releases) (GA モジュール v0.2.0 以降)
+- [AzFilesHybrid モジュール (GA モジュール: v0.2.0+) をダウンロードして解凍する](https://github.com/Azure-Samples/azure-files-samples/releases)AES 256 Kerberos 暗号化は、v0.2.2 以上でサポートされることに注意してください。 この機能を 0.2.2 未満の AzFilesHybrid バージョンで有効にし、AES 256 Kerberos 暗号化がサポートされるように更新する場合は、[この記事](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems)をご覧ください。 
 - ターゲット AD でサービス ログオン アカウントまたはコンピューター アカウントを作成する権限がある AD DS 資格情報を使用して、オンプレミスの AD DS に参加しているデバイスにモジュールをインストールして実行します。
 -  Azure AD に同期されているオンプレミスの AD DS 資格情報を使用して、スクリプトを実行します。 オンプレミスの AD DS 資格情報には、ストレージ アカウント所有者または共同作成者の Azure ロールのアクセス許可が必要です。
 

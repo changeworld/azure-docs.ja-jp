@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: 2e8173277d15ffbe85d38d8f0df842602d03342b
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 072eeb0bee0d0441549d2edad448f3b1c85a28a4
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89397646"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566502"
 ---
 # <a name="expressroute-circuits-and-peering"></a>ExpressRoute 回線とピアリング
 
@@ -54,7 +54,7 @@ Azure Compute Services、つまり、仮想ネットワーク内にデプロイ�
 
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
-Microsoft オンライン サービス (Office 365 および Azure PaaS サービス) への接続は、Microsoft ピアリング経由で行われます。 Microsoft ピアリング ルーティング ドメイン経由で、ご使用の WAN と Microsoft クラウド サービスの双方向接続を実現できます。 お客様または接続プロバイダーが所有するパブリック IP アドレスのみを使用して Microsoft クラウド サービスに接続する必要があり、定義されてするすべての規則を遵守する必要があります。 詳細については、[ExpressRoute の前提条件](expressroute-prerequisites.md)に関するページを参照してください。
+Microsoft オンライン サービス (Microsoft 365 および Azure PaaS サービス) への接続は、Microsoft ピアリング経由で行われます。 Microsoft ピアリング ルーティング ドメイン経由で、ご使用の WAN と Microsoft クラウド サービスの双方向接続を実現できます。 お客様または接続プロバイダーが所有するパブリック IP アドレスのみを使用して Microsoft クラウド サービスに接続する必要があり、定義されてするすべての規則を遵守する必要があります。 詳細については、[ExpressRoute の前提条件](expressroute-prerequisites.md)に関するページを参照してください。
 
 サポートされるサービス、料金、および構成の詳細については、 [FAQ のページ](expressroute-faqs.md) を参照してください。 Microsoft ピアリングのサポートを提供している接続プロバイダーの一覧については、 [ExpressRoute の場所](expressroute-locations.md) に関するページを参照してください。
 

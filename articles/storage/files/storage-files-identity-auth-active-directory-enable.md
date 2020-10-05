@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
-ms.date: 07/12/2020
+ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 3faa86fe67e3f0a208bf42dc3e49de8335b25c95
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 1a517b5eeac12f7d1ff342206300831d7c38ed28
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272333"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563405"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>概要 - SMB を使用した Azure ファイル共有へのオンプレミスの Active Directory Domain Services 認証
 
@@ -24,11 +24,12 @@ Azure ファイル共有を初めて使用する場合は、次の一連の記�
 
 - Azure Files のオンプレミス AD DS 認証に使用される AD DS ID は、Azure AD に同期されている必要があります。 パスワード ハッシュの同期はオプションです。 
 - Azure File Sync によって管理されている Azure ファイル共有がサポートされます。
-- AD と RC4-HMAC 暗号化を使用した Kerberos 認証がサポートされます。 AES Kerberos 暗号化はまだサポートされていません。
+- AD と RC4-HMAC および AES 256 暗号化を使用した Kerberos 認証がサポートされています。 AES 128 Kerberos 暗号化はまだサポートされていません。
 - シングル サインオン エクスペリエンスがサポートされます。
 - Windows 7 または Windows Server 2008 R2 より新しい OS バージョンで実行されるクライアント上でのみ、サポートされます。
 - ストレージ アカウントの登録先の AD フォレストに対してサポートされのみます。 既定では、単一のフォレストからのみ、AD DS 資格情報を使用して Azure ファイル共有にアクセスできます。 別のフォレストから Azure ファイル共有にアクセスする必要がある場合は、適切なフォレストの信頼が構成されていることを確認してください。詳細については、[よくあるご質問](storage-files-faq.md#ad-ds--azure-ad-ds-authentication)に関するページを参照してください。
-- AD DS で作成されたコンピューター アカウントに対する認証はサポートされていません。 
+- AD DS で作成されたコンピューター アカウントに対する認証はサポートされていません。
+- Network File System (NFS) ファイル共有に対する認証はサポートされていません。
 
 SMB 経由の Azure ファイル共有に対して AD DS を有効にすると、AD DS に参加しているマシンでは、既存の AD DS 資格情報を使用して Azure ファイル共有をマウントできます。 この機能は、オンプレミス マシンでホストされているか、Azure でホストされている AD DS 環境で有効にすることができます。
 

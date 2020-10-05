@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 62df01a02feacb8311d14e0bae7ceccb44d47a5a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b6a3e67ffd909262da2f890874f049dfac59a4ce
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497660"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562011"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory のパイプラインとアクティビティ
 
@@ -30,7 +30,7 @@ ms.locfileid: "86497660"
 
 パイプライン内の複数のアクティビティは、データに対して実行するアクションを定義します。 たとえば、コピー アクティビティを使用して、SQL Server から Azure Blob Storage にデータをコピーできます。 次に、データ フロー アクティビティまたは Databricks Notebook アクティビティを使用して、BLOB ストレージから、ビジネス インテリジェンス レポート ソリューションが構築された Azure Synapse Analytics プールにデータを処理して変換します。
 
-Data Factory では、[データ移動アクティビティ](copy-activity-overview.md)、[データ変換アクティビティ](transform-data.md)、[制御アクティビティ](control-flow-web-activity.md)の 3 種類のアクティビティ グループがあります。 アクティビティは 0 個以上の入力[データセット](concepts-datasets-linked-services.md)を受け取り、1 個以上の出力[データセット](concepts-datasets-linked-services.md)を生成できます。 次の図は、Data Factory でのパイプライン、アクティビティ、データセットの関係を示しています。
+Data Factory では、[データ移動アクティビティ](copy-activity-overview.md)、[データ変換アクティビティ](transform-data.md)、[制御アクティビティ](#control-flow-activities)の 3 種類のアクティビティ グループがあります。 アクティビティは 0 個以上の入力[データセット](concepts-datasets-linked-services.md)を受け取り、1 個以上の出力[データセット](concepts-datasets-linked-services.md)を生成できます。 次の図は、Data Factory でのパイプライン、アクティビティ、データセットの関係を示しています。
 
 ![データセット、アクティビティ、パイプラインの関係](media/concepts-pipelines-activities/relationship-between-dataset-pipeline-activity.png)
 
@@ -57,7 +57,7 @@ Azure Data Factory は、次の変換アクティビティをサポートして�
 [Hadoop ストリーミング](transform-data-using-hadoop-streaming.md) | HDInsight [Hadoop]
 [Spark](transform-data-using-spark.md) | HDInsight [Hadoop]
 [Machine Learning アクティビティ:バッチ実行とリソースの更新](transform-data-using-machine-learning.md) | Azure VM
-[ストアド プロシージャ](transform-data-using-stored-procedure.md) | Azure SQL、Azure SQL Data Warehouse、または SQL Server
+[ストアド プロシージャ](transform-data-using-stored-procedure.md) | Azure SQL、Azure Synapse Analytics (旧称 SQL Data Warehouse)、または SQL Server
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
 [カスタム アクティビティ](transform-data-using-dotnet-custom-activity.md) | Azure Batch
 [Databricks Notebook](transform-data-databricks-notebook.md) | Azure Databricks

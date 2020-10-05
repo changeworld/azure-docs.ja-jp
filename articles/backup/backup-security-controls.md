@@ -3,12 +3,12 @@ title: セキュリティ コントロール
 description: Azure Backup サービスで使用されるセキュリティ コントロールについて説明します。 これらのコントロールは、このサービスがセキュリティ脆弱性の防止、検出、対応を行う助けとなります。
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: ce1ca0a79476e4985569c677b58892fad91866a5
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 7ff3ff5c1b024a228778b0214e67239d3c8ab721
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892964"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89418757"
 ---
 # <a name="security-controls-for-azure-backup"></a>Azure Backup のセキュリティ コントロール
 
@@ -22,8 +22,9 @@ ms.locfileid: "88892964"
 |---|---|--|--|
 | サービス エンドポイントのサポート| いいえ |  |  |
 | VNet インジェクションのサポート| いいえ |  |  |
-| ネットワークの分離とファイアウォールのサポート| はい | VM バックアップでは、強制トンネリングがサポートされます。 VM 内で実行されるワークロードでは、強制トンネリングはサポートされません。 |  |
-| 強制トンネリングのサポート| いいえ |  |  |
+| ネットワークの分離とファイアウォールのサポート| はい | |  |
+| Azure VM の強制トンネリングのサポート | Yes  |  |  |
+| Azure VM 内で実行されているアプリケーションの強制トンネリングのサポート| いいえ  |  |  |
 
 ## <a name="monitoring--logging"></a>監視およびログ記録
 

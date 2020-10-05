@@ -16,12 +16,12 @@ ms.date: 11/29/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d26f1cdd6184ca10c3a7b9c9a7dc5724cc5e8129
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: b8eec72666eadf90a401dc8f0adb77df77dbf782
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266308"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969303"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-using-azure-cli"></a>Azure CLI を使用してマネージド ID のサービス プリンシパルを表示する
 
@@ -34,12 +34,9 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 - Azure リソースのマネージド ID の基本点な事柄については、[概要](overview.md)に関するセクションを参照してください。
 - まだ Azure アカウントを持っていない場合は、[無料アカウントを新規登録](https://azure.microsoft.com/free/)してください。
 - [仮想マシン](./qs-configure-portal-windows-vm.md#system-assigned-managed-identity)または[アプリケーション](../../app-service/overview-managed-identity.md#add-a-system-assigned-identity)でシステム割り当ての ID を有効にします。
-- CLI スクリプトの例を実行するには、次の 3 つのオプションがあります。
-    - Azure ポータルから [Azure Cloud Shell](../../cloud-shell/overview.md) を使用する (次のセクションを参照してください)。
-    - 各コード ブロックの右上隅にある「使ってみる」ボタンを利用して、埋め込まれた Azure Cloud Shell シェルを使用します。
-    - ローカル CLI コンソールを使用し、`az login` を使用して Azure にサインインする場合は、[最新バージョンの Azure CLI をインストール](/cli/azure/install-azure-cli)します。
- 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+- サンプル スクリプトを実行するには、次の 2 つのオプションがあります。
+    - [Azure Cloud Shell](../../cloud-shell/overview.md) を使用する。これは、コード ブロックの右上隅にある **[Try It]\(試してみる\)** ボタンを使用して開くことができます。
+    - 最新バージョンの [Azure CLI](/cli/azure/install-azure-cli) をインストールしてスクリプトをローカルで実行した後、[az login](/cli/azure/reference-index#az-login) を使用して Azure にサインインする。 リソースを作成する Azure サブスクリプションに関連付けられているアカウントを使用します。   
 
 ## <a name="view-the-service-principal"></a>サービス プリンシパルを表示する
 

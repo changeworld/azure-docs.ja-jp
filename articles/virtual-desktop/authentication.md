@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 09/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8328fa9c9e32a22e8e5093aa343f333cd1914ddc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5681228e5da2708912d69f16a4b09a4a93d8bb04
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89026119"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500302"
 ---
 # <a name="supported-authentication-methods"></a>サポートされている認証方法
 
@@ -43,9 +43,13 @@ Windows Virtual Desktop では、セッション ホスト認証に NT LAN Manag
 >[!NOTE]
 >スマートカードと Windows Hello では、サインインに Kerberos のみが使用できます。 Kerberos でサインインするには、ドメイン コントローラーへの通信経路が必要になります。
 
+## <a name="hybrid-identity"></a>ハイブリッド ID
+
+Windows Virtual Desktop では、[ハイブリッド ID](../active-directory/hybrid/whatis-hybrid-identity.md) がサポートされています。これを実現するのが Azure Active Directory (AD) で、対象には Active Directory フェデレーション サービス (AD FS) を使用してフェデレーションされているものも含まれます。 ユーザーは Azure AD で検出可能である必要があるため、ADFS を使用したスタンドアロンの Active Directory デプロイは Windows Virtual Desktop ではサポートされません。
+
 ## <a name="single-sign-on-sso"></a>シングル サインオン (SSO)
 
-現在、Windows Virtual Desktop では認証または SSO において Active Directory フェデレーション サービス (ADFS) はサポートされていません。
+現在、Windows Virtual Desktop では SSO に対する Active Directory フェデレーション サービス (ADFS) はサポートされていません。
 
 セッション ホストの認証情報を要求されないようにする唯一の方法は、クライアントに保存することです。 他のユーザーがリソースにアクセスできないようにするため、これはセキュリティで保護されたデバイスを使用している場合にのみ行うことをお勧めします。
 

@@ -2,14 +2,14 @@
 title: Shared Image Gallery を使用してカスタム イメージ プールを作成する
 description: カスタム イメージ プールは、Batch ワークロードを実行する計算ノードを構成するための効率的な方法です。
 ms.topic: conceptual
-ms.date: 07/01/2020
+ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: aad8b279ce821496d4c947bc7f9c707243468f07
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 31fcbff50a2a66aec1643f1bac351e0401205861
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852414"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605194"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Shared Image Gallery を使用してカスタム イメージ プールを作成する
 
@@ -43,7 +43,9 @@ ms.locfileid: "87852414"
 - **Shared Image Gallery のイメージ**。 共有イメージを作成するには、マネージド イメージ リソースが必要です。ない場合は作成する必要があります。 イメージは、VM の OS ディスクと、それに接続されたデータ ディスク (後者はオプション) のスナップショットから作成する必要があります。
 
 > [!NOTE]
-> 共有イメージは、Batch アカウントと同じサブスクリプションに存在する必要があります。 Batch アカウントと同じリージョンにレプリカがある限り、イメージを異なるリージョンに配置できます。
+> 共有イメージが Batch アカウントと同じサブスクリプションに含まれていない場合は、そのサブスクリプションの [Microsoft.Batch リソース プロバイダーを登録](../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)する必要があります。 2 つのサブスクリプションが同じ Azure AD テナントに存在する必要があります。
+>
+> Batch アカウントと同じリージョンにレプリカがある限り、イメージを異なるリージョンに配置できます。
 
 Azure AD アプリケーションを使用して Shared Image Gallery のイメージを持つカスタム イメージ プールを作成する場合、そのアプリケーションに Shared Image へのアクセスを許可する [Azure 組み込みロール](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles)が付与されている必要があります。 Azure portal でこのアクセス権を付与するには、Shared Image に移動し、 **[アクセス制御 (IAM)]** を選択して、アプリケーションにロールの割り当てを追加します。
 

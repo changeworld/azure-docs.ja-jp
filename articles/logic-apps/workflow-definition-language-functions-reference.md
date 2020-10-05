@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 08/26/2020
-ms.openlocfilehash: e4f9fa554a7c0e45abe1e9686605c95bb79d1739
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/04/2020
+ms.openlocfilehash: c8bc9e844687c85255be972011eba03e9c38de48
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88932952"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488305"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Azure Logic Apps および Power Automate の式で関数を使用するためのリファレンス ガイド
 
@@ -85,6 +85,7 @@ ms.locfileid: "88932952"
 | [guid](../logic-apps/workflow-definition-language-functions-reference.md#guid) | 文字列としてグローバル一意識別子 (GUID) を生成します。 |
 | [indexOf](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | 部分文字列の開始位置を返します。 |
 | [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | 部分文字列の最後の出現箇所の開始位置を返します。 |
+| [length](../logic-apps/workflow-definition-language-functions-reference.md#length) | 文字列または配列内の項目の数を返します。 |
 | [replace](../logic-apps/workflow-definition-language-functions-reference.md#replace) | 部分文字列を指定した文字列で置換し、更新された文字列を返します。 |
 | [split](../logic-apps/workflow-definition-language-functions-reference.md#split) | 元の文字列で指定された区切り文字に基づいたより大きい文字列から、コンマで区切られた部分文字列を含む配列を返します。 |
 | [startsWith](../logic-apps/workflow-definition-language-functions-reference.md#startswith) | 文字列が特定の部分文字列で始まっているかどうかを調べます。 |
@@ -350,7 +351,7 @@ action()
 action().outputs.body.<property>
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*property*> | いいえ | String | 値が必要なアクション オブジェクトのプロパティの名前: **name**、**startTime**、**endTime**、**inputs**、**outputs**、**status**、**code**、**trackingId**、**clientTrackingId**。 Azure portal では、特定の実行履歴の詳細を調べることで、これらのプロパティを確認できます。 詳しくは、[REST API のワークフロー実行アクション](/rest/api/logic/workflowrunactions/get)に関するページをご覧ください。 |
 |||||
@@ -372,7 +373,7 @@ action().outputs.body.<property>
 actionBody('<actionName>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*actionName*> | はい | String | 取得するアクションの `body` 出力の名前 |
 |||||
@@ -417,7 +418,7 @@ actionBody('Get_user')
 actionOutputs('<actionName>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*actionName*> | はい | String | 取得するアクションの出力の名前 |
 |||||
@@ -490,7 +491,7 @@ actions('<actionName>')
 actions('<actionName>').outputs.body.<property>
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*actionName*> | はい | String | 出力を取得するアクション オブジェクトの名前  |
 | <*property*> | いいえ | String | 値が必要なアクション オブジェクトのプロパティの名前: **name**、**startTime**、**endTime**、**inputs**、**outputs**、**status**、**code**、**trackingId**、**clientTrackingId**。 Azure portal では、特定の実行履歴の詳細を調べることで、これらのプロパティを確認できます。 詳しくは、[REST API のワークフロー実行アクション](/rest/api/logic/workflowrunactions/get)に関するページをご覧ください。 |
@@ -521,7 +522,7 @@ actions('Get_user').outputs.body.status
 add(<summand_1>, <summand_2>)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*summand_1*>、<*summand_2*> | はい | 整数、浮動小数点数、または混合 | 加算する数値 |
 |||||
@@ -551,7 +552,7 @@ add(1, 1.5)
 addDays('<timestamp>', <days>, '<format>'?)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
 | <*days*> | はい | Integer | 追加する正または負の日数 |
@@ -593,7 +594,7 @@ addDays('2018-03-15T00:00:00Z', -5)
 addHours('<timestamp>', <hours>, '<format>'?)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
 | <*hours*> | はい | Integer | 追加する正または負の時間数 |
@@ -635,7 +636,7 @@ addHours('2018-03-15T15:00:00Z', -5)
 addMinutes('<timestamp>', <minutes>, '<format>'?)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
 | <*minutes*> | はい | Integer | 追加する正または負の分数 |
@@ -677,7 +678,7 @@ JSON オブジェクトにプロパティとその値または名前と値のペ
 addProperty(<object>, '<property>', <value>)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*object*> | はい | Object | プロパティを追加する JSON オブジェクト |
 | <*property*> | はい | String | 追加するプロパティの名前 |
@@ -695,7 +696,7 @@ addProperty(<object>, '<property>', <value>)
 addProperty(<object>['<parent-property>'], '<child-property>', <value>)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*object*> | はい | Object | プロパティを追加する JSON オブジェクト |
 | <*parent-property*> | はい | String | 子プロパティを追加する親プロパティの名前 |
@@ -776,7 +777,7 @@ addProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" }
 addSeconds('<timestamp>', <seconds>, '<format>'?)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
 | <*seconds*> | はい | Integer | 追加する正または負の秒数 |
@@ -819,7 +820,7 @@ addSeconds('2018-03-15T00:00:30Z', -5)
 addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
 | <*interval*> | はい | Integer | 追加する指定した時間単位の数 |
@@ -863,7 +864,7 @@ addToTime('2018-01-01T00:00:00Z', 1, 'Day', 'D')
 and(<expression1>, <expression2>, ...)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*expression1*>, <*expression2*>, ... | はい | Boolean | 調べる式 |
 |||||
@@ -916,7 +917,7 @@ and(equals(1, 2), equals(1, 3))
 array('<value>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | はい | String | 配列を作成するための文字列 |
 |||||
@@ -949,7 +950,7 @@ array('hello')
 base64('<value>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | はい | String | 入力文字列 |
 |||||
@@ -982,7 +983,7 @@ base64 エンコード文字列のバイナリ バージョンを返します。
 base64ToBinary('<value>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | はい | String | 変換する base64 エンコード文字列 |
 |||||
@@ -1017,7 +1018,7 @@ base64 エンコード文字列の文字列バージョンを返し、実質的�
 base64ToString('<value>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | はい | String | デコードする base64 エンコード文字列 |
 |||||
@@ -1047,7 +1048,7 @@ base64ToString('aGVsbG8=')
 binary('<value>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | はい | String | 変換する文字列 |
 |||||
@@ -1081,7 +1082,7 @@ binary('hello')
 body('<actionName>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*actionName*> | はい | String | 取得するアクションの `body` 出力の名前 |
 |||||
@@ -1126,7 +1127,7 @@ body('Get_user')
 bool(<value>)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | はい | Any | ブール値に変換する値。 |
 |||||
@@ -1144,7 +1145,7 @@ bool(<value>)
 
 | 入力値 | 種類 | 戻り値 |
 | ----------- | ---------- | ---------------------- |
-| `bool(1)` | 整数型 | `true` |
+| `bool(1)` | Integer | `true` |
 | `bool(0)` | 整数型    | `false` |
 | `bool(-1)` | Integer | `true` |
 | `bool('true')` | String | `true` |
@@ -3914,8 +3915,7 @@ sub(10.3, .3)
 
 ### <a name="substring"></a>substring
 
-文字列から、指定された位置またはインデックスから始まる文字を返します。
-インデックス値は 0 から始まります。
+文字列から、指定された位置またはインデックスから始まる文字を返します。 インデックス値は 0 から始まります。
 
 ```
 substring('<text>', <startIndex>, <length>)
@@ -3927,6 +3927,10 @@ substring('<text>', <startIndex>, <length>)
 | <*startIndex*> | はい | Integer | 開始位置またはインデックスの値として使用する 0 以上の正の数 |
 | <*length*> | はい | Integer | 取得する部分文字列の文字数を示す正の値 |
 |||||
+
+> [!NOTE]
+> *startIndex* および *length* パラメーター値の追加による合計が、*text* パラメーターに指定する文字列の長さより短いことを確認します。
+> それ以外の場合は、他の言語での同様の関数とは異なりエラーが発生します。他の言語での結果は *startIndex* から文字列の最後までの部分文字列になります。
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/26/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45c8694c90fedccbecee1fee09e7146bf2d0aaa6
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 37fad118fe314b1392c31906a3f0a0989e39d876
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601165"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969410"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>REST API 呼び出しを使用して、ユーザー割り当てマネージド ID を作成、一覧表示、削除する
 
@@ -34,10 +34,23 @@ Azure リソースのマネージド ID を使用すれば、Azure サービス�
 
 - Azure リソースのマネージド ID の基本点な事柄については、[概要](overview.md)に関するセクションを参照してください。 **[システム割り当てマネージド ID とユーザー割り当てマネージド ID の違い](overview.md#managed-identity-types)を必ず確認してください**。
 - まだ Azure アカウントを持っていない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
-- Windows を使用している場合は、[Windows Subsystem for Linux](/windows/wsl/about) をインストールするか、Azure Portal で [Azure Cloud Shell](../../cloud-shell/overview.md) を使用します。
-- [Windows Subsystem for Linux](/windows/wsl/about) または [Linux ディストリビューション OS](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) を使用する場合は、[Azure CLI ローカル コンソール](/cli/azure/install-azure-cli)をインストールします。
-- Azure CLI ローカル コンソールを使用している場合は、ユーザー割り当てマネージド ID の情報をデプロイまたは取得する Azure サブスクリプションに関連付けられているアカウントで `az login` を使用して Azure にサインインします。
-- 以下のユーザー割り当てマネージド ID の操作を実行するには、`az account get-access-token` を使用して Bearer アクセス トークンを取得します。
+- この記事で取り上げるすべてのコマンドは、クラウドでもローカルでも実行できます。
+    - クラウドで実行するには、[Azure Cloud Shell](../../cloud-shell/overview.md) を使用します。
+    - ローカルで実行するには、[curl](https://curl.haxx.se/download.html) と [Azure CLI](/cli/azure/install-azure-cli) をインストールします。
+
+## <a name="obtain-a-bearer-access-token"></a>ベアラー アクセス トークンを取得する
+
+1. ローカルで実行している場合は、Azure CLI を使用して Azure にサインインします。
+
+    ```
+    az login
+    ```
+
+1. [az account get-access-token](/cli/azure/account#az_account_get_access_token) を使用してアクセス トークンを取得する
+
+    ```azurecli-interactive
+    az account get-access-token
+    ```
 
 ## <a name="create-a-user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID を作成する 
 
@@ -91,7 +104,7 @@ GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/
 ユーザー割り当てマネージド ID を削除するには、お使いのアカウントに[マネージド ID 共同作成者](../../role-based-access-control/built-in-roles.md#managed-identity-contributor)ロールの割り当てが必要です。
 
 > [!NOTE]
-> ユーザー割り当てマネージド ID を削除しても、それが割り当てられていたリソースから参照が削除されることはありません。 CURL を使用して VM からユーザー割り当てマネージド ID を削除する場合は、「[Azure VM からユーザー割り当て ID を削除する](qs-configure-rest-vm.md#remove-a-user-assigned identity-from-an-azure-vm)」を参照してください。
+> ユーザー割り当てマネージド ID を削除しても、それが割り当てられていたリソースから参照が削除されることはありません。 CURL を使用して VM からユーザー割り当てマネージド ID を削除する場合は、「[Azure VM からユーザー割り当て ID を削除する](qs-configure-rest-vm.md#remove-a-user-assigned-managed-identity-from-an-azure-vm)」を参照してください。
 
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/18/2020
+ms.date: 09/09/2020
 ms.author: b-juche
-ms.openlocfilehash: eeb22672829dca9ba342079183dcc5ed7c35393c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 9822d7bd769ea161ddcf195d695f27024351ca4b
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590372"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662453"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files についての FAQ
 
@@ -49,6 +49,10 @@ ms.locfileid: "88590372"
 ### <a name="can-i-set-or-select-my-own-ip-address-for-an-azure-netapp-files-volume"></a>Azure NetApp Files ボリュームの独自の IP アドレスを設定または選択できますか?  
 
 いいえ。 Azure NetApp Files ボリュームへの IP 割り当ては動的です。 静的 IP の割り当てはサポートされていません。 
+
+### <a name="does-azure-netapp-files-support-dual-stack-ipv4-and-ipv6-vnet"></a>Azure NetApp Files はデュアル スタック (IPv4 および IPv6) VNet をサポートしていますか?
+
+いいえ。Azure NetApp Files は現時点ではデュアル スタック (IPv4 および IPv6) VNet をサポートしていません。  
  
 ## <a name="security-faqs"></a>セキュリティに関する FAQ
 
@@ -66,10 +70,9 @@ Azure NetApp Files のすべてのボリュームは、FIPS 140-2 標準を使�
 
 Azure NetApp Files のキー管理は、サービスによって処理されます。 ボリュームごとに一意の XTS-AES-256 データ暗号化キーが生成されます。 すべてのボリューム キーは、暗号化キーの階層を使用して暗号化され、保護されます。 これらの暗号化キーは決して表示されず、また、暗号化されていない形式でレポートされることもありません。 ボリュームが削除されると暗号化キーは直ちに削除されます。
 
-Azure Dedicated HSM を使用した ユーザー マネージド キー (Bring Your Own Keys) のサポートは、制御ベースで、米国東部、米国西部 2、および米国中南部の各リージョンで利用できます。  **anffeedback@microsoft.com** にアクセスを要求することもできます。 容量が利用可能になると、要求が承認されます。
+Azure Dedicated HSM を使用したカスタマー マネージド キー (Bring Your Own Key) のサポートは、制御ベースで、米国東部、米国中南部、米国西部 2、および US Gov バージニアの各リージョンで利用できます。 [anffeedback@microsoft.com](mailto:anffeedback@microsoft.com) にアクセスを要求することもできます。 容量が利用可能になると、要求が承認されます。
 
 ### <a name="can-i-configure-the-nfs-export-policy-rules-to-control-access-to-the-azure-netapp-files-service-mount-target"></a>NFS エクスポート ポリシー規則を、Azure NetApp Files サービスのマウント ターゲットへのアクセスを制御するように構成できますか?
-
 
 はい。1 つの NFS エクスポート ポリシーで、最大 5 つの規則を構成できます。
 

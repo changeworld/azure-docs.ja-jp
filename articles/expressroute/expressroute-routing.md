@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: duau
-ms.openlocfilehash: 8cac675f91e0ca65f9654d7a13577b9ab7e3ed0a
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 5b7af755c9843456c25c8d18b78be48d83b96acd
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394943"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569613"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute のルーティングの要件
 ExpressRoute を使用して Microsoft クラウド サービスに接続するには、ルーティングをセットアップして管理する必要があります。 一部の接続プロバイダーでは、ルーティングのセットアップと管理が管理されたサービスとして提供されています。 このサービスが提供されているかどうか、接続プロバイダーに問い合わせてください。 提供されていない場合は、次の要件に従う必要があります。
@@ -83,7 +83,7 @@ a.b.c.d/29 を使用してピアリングをセットアップすることを選
 パブリックまたはプライベート IPv4 アドレスをプライベート ピアリングに使用することもできます。 プライベート ピアリングの場合に他の顧客とのアドレスの重複が発生しないように、トラフィックのエンド ツー エンドの分離が提供されます。 これらのアドレスはインターネットにはアドバタイズされません。 
 
 ### <a name="microsoft-peering"></a>Microsoft ピアリング
-Microsoft ピアリング パスを使用して、Microsoft クラウド サービスに接続できます。 対象となるサービスには、Exchange Online、SharePoint Online、Skype for Business、Microsoft Teams などの Office 365 サービスが含まれます。 Microsoft では、Microsoft ピアリングで双方向接続をサポートしています。 Microsoft クラウド サービスに送信されるトラフィックが Microsoft ネットワークに入るには、有効なパブリック IPv4 アドレスを使用している必要があります。
+Microsoft ピアリング パスを使用して、Microsoft クラウド サービスに接続できます。 対象となるサービスには、Exchange Online、SharePoint Online、Skype for Business、Microsoft Teams などの Microsoft 365 サービスが含まれます。 Microsoft では、Microsoft ピアリングで双方向接続をサポートしています。 Microsoft クラウド サービスに送信されるトラフィックが Microsoft ネットワークに入るには、有効なパブリック IPv4 アドレスを使用している必要があります。
 
 以下のレジストリのいずれかで IP アドレスと AS 番号が自分に登録されていることを確認します。
 
@@ -100,7 +100,7 @@ Microsoft ピアリング パスを使用して、Microsoft クラウド サー�
 Microsoft ピアリングではプライベート AS 番号を使用できますが、手動による検証も必要になります。 さらに、受信したプレフィックスの AS PATH からプライベート AS 番号が削除されます。 その結果、[Microsoft ピアリングのルーティングを制御するために](expressroute-optimize-routing.md)、AS PATH にプライベート AS 番号を付加できません。 
 
 > [!IMPORTANT]
-> パブリック インターネット向けと ExpressRoute 経由で同じパブリック IP ルートをアドバタイズしないでください。 非対称ルーティングの原因となる間違った構成のリスクを減らすために、ExpressRoute 経由で Microsoft にアドバタイズされる [NAT IP アドレス](expressroute-nat.md) は、インターネットにまったくアドバタイズされない範囲のものにすることを強くお勧めします。 これを実現するのが不可能な場合は、インターネット接続の範囲よりもさらに具体的な ExpressRoute 経由の範囲をアドバタイズしていることを確認する必要があります。 NAT 用のパブリック ルートに加えて、Microsoft 内の Office 365 エンドポイントと通信するオンプレミスのネットワーク内のサーバーによって使用されるパブリック IP アドレスを ExpressRoute 経由でアドバタイズすることもできます。 
+> パブリック インターネット向けと ExpressRoute 経由で同じパブリック IP ルートをアドバタイズしないでください。 非対称ルーティングの原因となる間違った構成のリスクを減らすために、ExpressRoute 経由で Microsoft にアドバタイズされる [NAT IP アドレス](expressroute-nat.md) は、インターネットにまったくアドバタイズされない範囲のものにすることを強くお勧めします。 これを実現するのが不可能な場合は、インターネット接続の範囲よりもさらに具体的な ExpressRoute 経由の範囲をアドバタイズしていることを確認する必要があります。 NAT 用のパブリック ルートに加えて、Microsoft 内の Microsoft 365 エンドポイントと通信するオンプレミスのネットワーク内のサーバーによって使用されるパブリック IP アドレスを ExpressRoute 経由でアドバタイズすることもできます。 
 > 
 > 
 
@@ -138,7 +138,7 @@ ExpressRoute をトランジット ルーターとして構成することはで
 * ユーザー定義のルーティングを使用して、インターネット接続を必要とするすべてのサブネットに対してインターネット接続を許可している。
 
 > [!NOTE]
-> デフォルト ルートをアドバタイズすると、Windows VM や他の VM のライセンス認証が破棄されます。 これを回避する方法については、 [このページ](https://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx) を参照してください。
+> デフォルト ルートをアドバタイズすると、Windows VM や他の VM のライセンス認証が破棄されます。 これを回避する方法については、 [このページ](https://docs.microsoft.com/archive/blogs/mast/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling) を参照してください。
 > 
 > 
 

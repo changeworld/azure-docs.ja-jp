@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
 ms.date: 05/12/2020
-ms.openlocfilehash: 529988ce456b9017d700880d55b349fa93e15f96
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 6088569efed56d4453e4f1b0806af68f206cd2e9
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104233"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033253"
 ---
 # <a name="co-sell-option-in-partner-center"></a>パートナー センターの [共同販売] オプション
 
@@ -62,11 +62,11 @@ ms.locfileid: "86104233"
 
 ## <a name="documents"></a>Documents
 
-Microsoft がお客様のニーズを評価するために使用する資料を提供できます。
+Microsoft がオファーの詳細を確認し、顧客のニーズに適合するか評価するために使用する関連ドキュメントを提供するオプションがあります。 次の表に記載されているすべてのドキュメントはオプションです。
 
 | **ドキュメント**    | **説明**  |
 | :------------------- | :-------------------|
-| *Customer one-pager (顧客 1 ページャー)* | オファリングのお客様対応の説明。 Microsoft のセールス チームはこの情報をお客様と共有し、オファリングが最適かどうかを判断したり、お客様の準備ができているかどうかを判断することができます。 <br> <br> パートナー センターで利用可能な関連テンプレートのいずれかを使用します。 <br> <ul> <li> Microsoft Azure one-pager template (Microsoft Azure 1 ページャー テンプレート) </li> <li> Microsoft Dynamics 365 one-pager template (Microsoft Dynamics 365 1 ページャー テンプレート) </li> <li> Office 365 one-pager template (Office 365 1 ページャー テンプレート) </li> <li> Windows 10 one-pager template (Windows 10 1 ページャー テンプレート) </li> </ul> |
+| *Customer one-pager (顧客 1 ページャー)* | オファリングのお客様対応の説明。 Microsoft のセールス チームはこの情報をお客様と共有し、オファリングが最適かどうかを判断したり、お客様の準備ができているかどうかを判断することができます。 <br> <br> パートナー センターで利用可能な関連テンプレートのいずれかを使用します。 <br> <ul> <li> Microsoft Azure one-pager template (Microsoft Azure 1 ページャー テンプレート) </li> <li> Microsoft Dynamics 365 one-pager template (Microsoft Dynamics 365 1 ページャー テンプレート) </li> <li> Microsoft 365 one-pager template (Microsoft 365 1 ページャー テンプレート) </li> <li> Windows 10 one-pager template (Windows 10 1 ページャー テンプレート) </li> </ul> |
 | *Customer presentation (顧客向けプレゼンテーション)* | ソリューションとその価値提案を表示するスライド デッキ。 オファーがお客様に適していることを確認した後、Microsoft のセールス チームはプレゼンテーションをお客様と共有し、双方の会社が共同ソリューションを展開する場合にもたらされる価値を明確にすることができます。 プレゼンテーションでは、ソリューションの実行内容、お客様にどのように役立つか、どのような業界向けのソリューションか、競合しているソリューションと比較する方法を取り上げるようにします。 <br> <br> パートナー センターで利用可能なテンプレートを使用します。|
 | *Customer case study (お客様のケース スタディ)* | この情報は、お客様と Microsoft が以前のケースでこのソリューションを適切に展開した方法を潜在顧客に示します。 <br> <br> パートナー センターで利用可能なテンプレートを使用します。 |
 | *Verifiable customer wins (検証可能なお客様の成功事例) (省略可能)* | ソリューションが展開された後のお客様の具体的な例。 |
@@ -79,14 +79,14 @@ Microsoft がお客様のニーズを評価するために使用する資料を�
 
 連絡先情報を使用すると、Microsoft のセールス チームやチャネル リセラーは、組織内の適切なリソースから追加情報を要求できます。 連絡先情報は、すべての Microsoft セールス チームが利用できます。 CSP プログラムでオファーを利用できるようにする場合、チャネル リセラーもこの連絡先情報を利用できるようになります。
 
-このドキュメントでは、パートナーのさまざまな役割と、その選択方法に関するガイダンスを提供します。 連絡先を指定するには、パートナー センターから CSV テンプレートをダウンロードし、各行に連絡先に関する情報を入力し、この CSV ファイルをインポートします。 CSV ファイルをインポートすると、既存の連絡先が上書きされます。
+連絡先を指定するには、パートナー センターから CSV テンプレートをダウンロードし、各行に連絡先に関する情報を入力し、この CSV ファイルをインポートします。 CSV ファイルをインポートすると、既存の連絡先が上書きされます。
 
 また、オファーの既存の連絡先一覧をエクスポートし、そのファイルに変更を加えることもできます。
 
 * *名前 (必須)* :連絡先の名前。
 * *メール アドレス (必須)* :連絡先のメール アドレス。
 * *役職 (必須)* :役職。
-* *ロール (必須)* :テンプレートのこのフィールドでは、次のいずれかのロールを使用します。
+* *ロール (必須)* :次のいずれかのロールを使用します。
 
     | **ロール**    | **説明**  |
     | :------------------- | :-------------------|

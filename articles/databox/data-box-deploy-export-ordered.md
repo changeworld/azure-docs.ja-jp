@@ -2,18 +2,18 @@
 title: Azure Data Box からデータをエクスポートするチュートリアル | Microsoft Docs
 description: デプロイの前提条件と、Azure Data Box からデータをエクスポートする方法について説明します
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
-ms.date: 07/10/2020
-ms.author: twooley
-ms.openlocfilehash: 0ddadd8d2bddda0fdff6a126fe6c09d863139b44
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.date: 09/10/2020
+ms.author: alkohli
+ms.openlocfilehash: 5494c2dd57220888ad846aaf69fde2f7a59353e4
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783622"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053056"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>チュートリアル:Azure Data Box のエクスポート注文を作成する (プレビュー)
 
@@ -115,9 +115,20 @@ Azure Data Box は、Azure から特定の場所にデータを移動できる�
 
    XML 入力の例については、[XML 入力のサンプル](data-box-deploy-export-ordered.md#sample-xml-file)を参照してください
 
-9. **[Data Selection]\(データの選択\)** で、設定を確認し、 **[Next:Contact details>]\(次へ: 連絡先の詳細>\)** を選択します。
+9. **[Data Selection]\(データの選択\)** で、設定を確認し、 **[Next:Security>]\(次へ: セキュリティ\)** を選択します。
 
    ![Contact Details (連絡先の詳細)](media/data-box-deploy-export-ordered/azure-data-box-export-05.png)
+
+1. **[セキュリティ]** で、ソフトウェアベースの二重暗号化を有効にしたい場合は、 **[Enable double encryption for the order]\(この注文に関して二重暗号化を有効にする\)** を選択します。 
+
+   Data Box 上のデータに対し、AES-256 ビットの暗号化に加えて、ソフトウェアベースの暗号化が実行されます。
+
+   > [!NOTE]
+   > このオプションを有効にすると、注文の処理とデータのコピーにかかる時間が長くなることがあります。 注文後に、このオプションを変更することはできません。
+
+   ![Data Box インポートの [セキュリティ] 画面 (二重暗号化)](media/data-box-deploy-export-ordered/azure-data-box-export-05b.png)
+
+   **[Next:連絡先の詳細]** を選択して続行します。
 
 10. **[Contact Details]\(連絡先の詳細\)** で、 **[+ Add Shipping Address]\(+ 配送先住所の追加\)** を選択して発送情報を入力します。
 

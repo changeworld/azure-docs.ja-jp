@@ -3,12 +3,12 @@ title: DPM サーバーを準備してワークロードをバックアップす
 description: この記事では、Azure Backup サービスを使用して、Azure への System Center Data Protection Manager (DPM) バックアップを準備する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 4534b75018fb91cedda00b8c1167012858c5e562
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0089c3d86eb36b82287570ecdfd6e8c782e6fb8a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021036"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975457"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>System Center DPM を使用して Azure にワークロードをバックアップするための準備
 
@@ -61,7 +61,7 @@ geo 冗長ストレージとローカル冗長ストレージのどちらかを�
 
 - 既定では、コンテナーには geo 冗長ストレージがあります。
 - コンテナーがプライマリ バックアップの場合は、オプションの設定を geo 冗長ストレージのままにします。 耐久性が十分でなくても低コストなバックアップが必要な場合は、以下の手順を使用して、ローカル冗長ストレージを構成します。
-- [Azure ストレージ](../storage/common/storage-redundancy.md)、[geo 冗長](../storage/common/storage-redundancy.md)ストレージおよび[ローカル冗長](../storage/common/storage-redundancy.md)ストレージの各オプションについて学習します。
+- [Azure ストレージ](../storage/common/storage-redundancy.md)、[geo 冗長](../storage/common/storage-redundancy.md#geo-redundant-storage)ストレージ、[ローカル冗長](../storage/common/storage-redundancy.md#locally-redundant-storage)ストレージ、および[ゾーン冗長](../storage/common/storage-redundancy.md#zone-redundant-storage)ストレージの各オプションについて学習します。
 - 初期バックアップの前にストレージ設定を変更します。 項目をバックアップ済みの場合、ストレージ設定を変更する前にコンテナーへのバックアップを停止します。
 
 ストレージ レプリケーション設定を編集するには、次の手順を実行します。
@@ -165,7 +165,7 @@ Azure Backup によってバックアップされるすべてのマシンに、B
 
 7. **[登録]** を選択してコンテナーに DPM サーバーを登録します。
 
-サーバーがコンテナーに正常に登録されると、Microsoft Azure へのバックアップを開始できるようになります。 ワークロードを Azure にバックアップするには、DPM コンソールで保護グループを構成する必要があります。 保護グループを展開する[方法を確認](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019)してください。
+サーバーがコンテナーに正常に登録されると、Microsoft Azure へのバックアップを開始できるようになります。 ワークロードを Azure にバックアップするには、DPM コンソールで保護グループを構成する必要があります。 保護グループを展開する[方法を確認](/system-center/dpm/create-dpm-protection-groups)してください。
 
 ## <a name="troubleshoot-vault-credentials"></a>コンテナーの資格情報のトラブルシューティング
 

@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 08/17/2017
-ms.openlocfilehash: e405ea35dcaa33ac7c8227385e4aaff86d9244cb
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 65a88f309602462e77336181316c0d5bf19a8a1e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87540004"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980684"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Threat Modeling Tool 機能の概要
 
@@ -122,7 +122,7 @@ Threat Modeling Tool は、脅威モデリングのニーズに応えます。 �
 
 **[Feedback, Suggestions and Issues]\(フィードバック、提案、問題\)** を選択すると、SDL ツールの MSDN フォーラムが表示されます。 回避策や新しいアイデアなど、他のユーザーがツールについて述べている内容を読むことができます。
 
-![フィードバック](./media/threat-modeling-tool-feature-overview/feedback.png)
+![スクリーンショットには、"Feedback, Suggestions and Issues" というテキストが示されています。](./media/threat-modeling-tool-feature-overview/feedback.png)
 
 ## <a name="design-view"></a>デザイン ビュー
 
@@ -158,7 +158,7 @@ Threat Modeling Tool は、脅威モデリングのニーズに応えます。 �
 
 脅威モデルを作成し、データ フローを要素に接続し忘れた場合は、通知が表示されます。 メッセージを無視するか、指示に従って問題を修正することができます。 
 
-![メッセージ](./media/threat-modeling-tool-feature-overview/messages.png)
+![スクリーンショットには、要素に接続されていない脅威モデル コネクタと、この問題が発生したことを示すメッセージが示されています。](./media/threat-modeling-tool-feature-overview/messages.png)
 
 ### <a name="notes"></a>メモ
 
@@ -196,7 +196,7 @@ Threat Modeling Tool は、脅威モデリングのニーズに応えます。 �
 
 優先度の変更と、生成された各脅威の状態の更新が終わったら、ファイルを保存したり、レポートを印刷したりすることができます。 **[レポート]**  >  **[Create Full Report]\(フル レポートの作成\)** の順に移動します。 レポートに名前を付けると、次の図のような内容が表示されます。
 
-![レポート](./media/threat-modeling-tool-feature-overview/report.png)
+![スクリーンショットには、概要、図、およびその他の情報を含む、脅威のモデル化レポートの例が示されています。](./media/threat-modeling-tool-feature-overview/report.png)
 
 ## <a name="next-steps"></a>次のステップ
 

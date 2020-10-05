@@ -16,18 +16,18 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b013c4edcaceeea585494bd8924ccea08aa1d37
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 4a0765f5279eb41324691c431c5973bb55a8b52d
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277053"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662482"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同期: ディレクトリ拡張機能
 ディレクトリ拡張機能を使用すると、オンプレミスの Active Directory から独自の属性を使用して、Azure Active Directory (Azure AD) のスキーマを拡張できます。 この機能により、オンプレミスで引き続き管理する属性を使用して LOB アプリを構築できます。 これらの属性は、[拡張機能](/graph/extensibility-overview
 )から使用できます。 使用可能な属性を確認するには、[Microsoft Graph エクスプローラー](https://developer.microsoft.com/graph/graph-explorer)を使用します。 この機能を使用して、Azure AD に動的グループを作成することもできます。
 
-現在のところ、これらの属性を使用する Office 365 ワークロードはありません。
+現在のところ、これらの属性を使用する Microsoft 365 ワークロードはありません。
 
 ## <a name="customize-which-attributes-to-synchronize-with-azure-ad"></a>Azure AD と同期する属性をカスタマイズする
 
@@ -73,7 +73,7 @@ Azure AD のオブジェクトでは、ディレクトリ拡張機能に対し�
 
 ## <a name="use-the-attributes-in-dynamic-groups"></a>動的グループで属性を使用する
 
-より有益なシナリオの 1 つは、動的セキュリティや Office 365 グループでこれらの属性を使用することです。
+より有益なシナリオの 1 つは、動的セキュリティや Microsoft 365 グループでこれらの属性を使用することです。
 
 1. Azure AD に新しいグループを作成します。 適切な名前を付け、 **[メンバーシップの種類]** が **[動的ユーザー]** になっていることを確認します。
 

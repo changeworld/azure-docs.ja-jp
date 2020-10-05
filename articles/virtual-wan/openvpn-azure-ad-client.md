@@ -1,18 +1,18 @@
 ---
 title: 'VPN Gateway: OpenVPN プロトコル P2S 接続用の VPN クライアント:Azure AD 認証'
-description: P2S VPN を使用して VNet に接続する場合には、Azure AD 認証を使用できます
+description: P2S VPN で Azure AD 認証を使用して VNet に接続する方法について説明します。
 services: vpn-gateway
-author: kumudD
+author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 08/04/2020
-ms.author: alzam
-ms.openlocfilehash: 97620192fb645dd453d1479d1e755e87cf9afd5c
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.date: 09/22/2020
+ms.author: cherylmc
+ms.openlocfilehash: e64de987bd82f6b93350cdd706fc1a243d2855b1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761180"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90977841"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>P2S OpenVPN プロトコル接続用に VPN クライアントを構成する:Azure AD 認証
 

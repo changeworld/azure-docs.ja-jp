@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: duau
-ms.openlocfilehash: df24544a1eb5b857e92e5be05bdbffdfc64a846d
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 87c8a7523222afd3ae4daeb8fb5824025e693cd1
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395045"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89569630"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>ExpressRoute の前提条件とチェック リスト
 ExpressRoute を使用して Microsoft クラウド サービスに接続する場合は、次のセクションにある前提条件を満たしていることを確認する必要があります。
@@ -20,8 +20,8 @@ ExpressRoute を使用して Microsoft クラウド サービスに接続する�
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
 ## <a name="azure-account"></a>Azure アカウント
-* 有効でアクティブな Microsoft Azure アカウント。 このアカウントは ExpressRoute 回線のセットアップに必要です。 ExpressRoute 回線は Azure サブスクリプション内のリソースです。 Office 365 など、Azure 以外の Microsoft クラウド サービスに接続が限定される場合でも、Azure サブスクリプションが要件となります。
-* アクティブな Office 365 サブスクリプション (Office 365 サービスを利用する場合)。 詳細については、この記事の Office 365 固有の要件に関するセクションを参照してください。
+* 有効でアクティブな Microsoft Azure アカウント。 このアカウントは ExpressRoute 回線のセットアップに必要です。 ExpressRoute 回線は Azure サブスクリプション内のリソースです。 Microsoft 365 など、Azure 以外の Microsoft クラウド サービスに接続が限定される場合でも、Azure サブスクリプションが要件となります。
+* アクティブな Microsoft 365 サブスクリプション (Microsoft 365 サービスを使用している場合)。 詳細については、この記事の Microsoft 365 固有の要件に関するセクションを参照してください。
 
 ## <a name="connectivity-provider"></a>接続プロバイダー
 
@@ -36,16 +36,16 @@ ExpressRoute を使用して Microsoft クラウド サービスに接続する�
 * **QoS**:Skype for Business にはさまざまなサービス (音声、ビデオ、テキストなど) があり、それぞれに特化した QoS 処理を必要とします。 自社またはプロバイダーで [QoS 要件](expressroute-qos.md)に従うことが必要です。
 * **ネットワーク セキュリティ**: ExpressRoute を介して Microsoft Cloud に接続する場合は、[ネットワーク セキュリティ](../best-practices-network-security.md)について考慮してください。
 
-## <a name="office-365"></a>Office 365
-ExpressRoute で Office 365 を有効にする予定がある場合は、以下のドキュメントで Office 365 の要件の詳細について確認してください。
+## <a name="microsoft-365"></a>Microsoft 365
+ExpressRoute で Microsoft 365 を有効にする予定がある場合は、以下のドキュメントで Microsoft 365 の要件の詳細について確認してください。
 
-* [Office 365 向け ExpressRoute の概要](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd)
-* [Office 365 向け ExpressRoute を使用したルーティング](https://support.office.com/article/Routing-with-ExpressRoute-for-Office-365-e1da26c6-2d39-4379-af6f-4da213218408)
+* [Microsoft 365 向け Azure ExpressRoute](/microsoft-365/enterprise/azure-expressroute)
+* [Microsoft 365 向け ExpressRoute を使用したルーティング](/microsoft-365/enterprise/routing-with-expressroute)
 * [ExpressRoute による高可用性とフェールオーバー](https://aka.ms/erhighavailability)
-* [Office 365 URL および IP アドレス範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)
-* [Office 365 のネットワーク計画とパフォーマンスのチューニング](https://support.office.com/article/Network-planning-and-performance-tuning-for-Office-365-e5f1228c-da3c-4654-bf16-d163daee8848)
-* [ネットワーク帯域幅の計算ツールと各種ツール](https://support.office.com/article/Network-and-migration-planning-for-Office-365-f5ee6c33-bcd7-4b0b-b0f8-dc1d9fb8d132)
-* [Office 365 とオンプレミス環境との統合](https://support.office.com/article/Office-365-integration-with-on-premises-environments-263faf8d-aa21-428b-aed3-2021837a4b65)
+* [Microsoft 365 URL および IP アドレス範囲](/microsoft-365/enterprise/urls-and-ip-address-ranges)
+* [Microsoft 365 のネットワーク計画とパフォーマンスのチューニング](/microsoft-365/enterprise/network-planning-and-performance)
+* [Microsoft 365 のネットワークおよび移行の計画](/microsoft-365/enterprise/network-and-migration-planning)
+* [Microsoft 365 とオンプレミス環境との統合](/microsoft-365/enterprise/microsoft-365-integration)
 * [Office 365 での ExpressRoute に関する高度なトレーニング ビデオ](https://channel9.msdn.com/series/aer/)
 
 ## <a name="next-steps"></a>次のステップ

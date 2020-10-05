@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82e4cf561ced97acfee0953dcc667bbb500f293c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 15f4f5d9eea8f53a894289160df00a1c1d8d8048
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394230"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601760"
 ---
 # <a name="continuous-access-evaluation"></a>継続的アクセス評価
 
@@ -48,26 +48,26 @@ ms.locfileid: "89394230"
 - 管理者が、ユーザーのすべての更新トークンを明示的に取り消した
 - Azure AD Identity Protection によって管理者特権のユーザー リスクが検出された
 
-このプロセスにより、これらの重大なイベントのいずれかが発生してから数分以内に、O365 クライアント アプリから組織の SharePoint Online ファイル、電子メール、予定表、タスク、および Teams にアクセスできなくなるというシナリオが可能になります。 
+このプロセスにより、これらの重大なイベントのいずれかが発生してから数分以内に、Microsoft 365 クライアント アプリから組織の SharePoint Online ファイル、電子メール、予定表、タスク、および Teams にアクセスできなくなるというシナリオが可能になります。 
 
 ### <a name="conditional-access-policy-evaluation-preview"></a>条件付きアクセス ポリシーの評価 (プレビュー)
 
 Exchange と SharePoint は、重要な条件付きアクセス ポリシーを同期できます。これにより、これらのポリシーをサービス自体内で評価できます。
 
-このプロセスにより、ネットワークの場所が変更された場合はただちに、O365 クライアント アプリまたは SharePoint Online から組織のファイル、電子メール、予定表、タスクにアクセスできなくなるというシナリオが可能になります。
+このプロセスにより、ネットワークの場所が変更された場合はただちに、Microsoft 365 クライアント アプリまたは SharePoint Online から組織のファイル、電子メール、予定表、タスクにアクセスできなくなるというシナリオが可能になります。
 
 > [!NOTE]
 > アプリとリソース プロバイダーのすべての組み合わせがサポートされているわけではありません。 次の表を参照してください。 Office は Word、Excel、PowerPoint を示します
 
 | | Outlook Web | Outlook Win32 | Outlook iOS | Outlook Android | Outlook Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| SharePoint Online | サポートされています | サポートされています | サポートされていません | サポートされていません | サポートされています |
-| Exchange Online | サポートされています | サポートされています | サポートされています | サポートされています | サポートされています |
+| **SharePoint Online** | サポートされています | サポートされています | サポートされていません | サポートされていません | サポートされています |
+| **Exchange Online** | サポートされています | サポートされています | サポートされています | サポートされています | サポートされています |
 
 | | Office Web アプリ | Office Win32 アプリ | Office for iOS | Office for Android | Office for Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| SharePoint Online | サポートされています | サポートされています | サポートされていません | サポートされています | サポートされています |
-| Exchange Online | サポートされています | サポートされています | サポートされていません | サポートされています | サポートされています |
+| **SharePoint Online** | サポートされています | サポートされています | サポートされていません | サポートされています | サポートされています |
+| **Exchange Online** | サポートされています | サポートされています | サポートされていません | サポートされています | サポートされています |
 
 ### <a name="client-side-claim-challenge"></a>クライアント側の要求チャレンジ
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory へのアプリケーションの追加に関する一般的な問題のトラブルシューティング
-description: Azure Active Directory にアプリを追加するときに直面する一般的な問題のトラブルシューティングを行います。
+title: Azure Active Directory へのアプリケーションの追加または削除に関する一般的な問題のトラブルシューティング
+description: Azure Active Directory にアプリを追加または削除するときに直面する一般的な問題のトラブルシューティングを行います。
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -10,15 +10,15 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/11/2018
 ms.author: kenwith
-ms.openlocfilehash: 1502c97e625d3af128772451be8db4dd6187e3a7
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e9e97aec66d99d149320938540c48b9ad68eaf0e
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89410368"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068032"
 ---
-# <a name="troubleshoot-common-problem-adding-an-application-to-azure-active-directory"></a>Azure Active Directory へのアプリケーションの追加に関する一般的な問題のトラブルシューティング
-この記事は、Azure Active Directory にアプリを追加するときに直面する一般的な問題について理解するのに役立ちます。
+# <a name="troubleshoot-common-problem-adding-or-removing-an-application-to-azure-active-directory"></a>Azure Active Directory へのアプリケーションの追加または削除に関する一般的な問題のトラブルシューティング
+この記事は、Azure Active Directory にアプリを追加または削除するときに直面する一般的な問題について理解するのに役立ちます。
 
 ## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>[追加] ボタンをクリックしたがアプリケーションが表示されるまでに長い時間がかかる
 状況によって、アプリケーションがディレクトリに追加されてから表示されるまで、1 ～ 2 分 (またはそれ以上) かかる場合があります。 これは、通常期待されるパフォーマンスではありませんが、[Azure portal](https://portal.azure.com/) の右上隅にある **[通知]** アイコン (ビープ音) をクリックし、**[進行中]** または **[アプリケーションの追加]** というラベルが付いた **[完了]** 通知を検索して、アプリケーションの追加が進行中であることを確認できます。
@@ -34,6 +34,16 @@ ms.locfileid: "89410368"
 アプリケーションの学習について支援が必要な場合は、[SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)に関する記事から始めることをお勧めします。
 
 さらに、[Azure AD アプリケーションのドキュメント ライブラリ](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index)では、Azure AD を使用したシングル サインオンおよびそのしくみの詳細について確認できます。
+
+## <a name="i-want-to-delete-an-application-but-the-delete-button-is-disabled"></a>アプリケーションを削除しようとしたら、削除ボタンが無効になっていた
+
+次のシナリオでは、削除ボタンが無効になります。
+
+- エンタープライズ アプリケーションの配下のアプリケーションの場合、次のいずれのロールも持っていないとき:グローバル管理者、クラウド アプリケーション管理者、アプリケーション管理者、またはサービス プリンシパルの所有者。
+
+- Microsoft のアプリケーションの場合は、ロールに関係なく UI から削除することはできません。
+
+- マネージ ID に対応する ServicePrincipal の場合。 マネージド ID のサービス プリンシパルは、エンタープライズ アプリ ブレードでは削除できません。 それを管理するには、Azure リソースにアクセスする必要があります。 [マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) の詳細を確認してください
 
 ## <a name="how-to-see-the-details-of-a-portal-notification"></a>ポータルの通知の詳細を確認する方法
 ポータルの通知の詳細を確認するには、次の手順に従います。

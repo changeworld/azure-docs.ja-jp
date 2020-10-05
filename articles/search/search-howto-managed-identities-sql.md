@@ -1,25 +1,22 @@
 ---
-title: マネージド ID を使用して Azure SQL Database への接続を設定する (プレビュー)
+title: マネージド ID を使用して Azure SQL Database への接続を設定する
 titleSuffix: Azure Cognitive Search
-description: マネージド ID を使用して Azure SQL Database へのインデクサー接続を設定する方法 (プレビュー) について説明します
+description: マネージド ID を使用して Azure SQL Database へのインデクサー接続を設定する方法について説明します
 manager: luisca
 author: markheff
 ms.author: maheff
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: 8dabf69af8628bb0b168bfea94af5333df341423
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/22/2020
+ms.openlocfilehash: 9f90125edeee453dc9e8b8b80f8eb09d9fc6e84c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88924131"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971532"
 ---
-# <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity-preview"></a>マネージド ID を使用して Azure SQL Database へのインデクサー接続を設定する (プレビュー)
-
-> [!IMPORTANT] 
-> マネージド ID を使用したデータ ソースへの接続の設定のサポートは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。
+# <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity"></a>マネージド ID を使用して Azure SQL Database へのインデクサー接続を設定する
 
 このページでは、データ ソース オブジェクトの接続文字列に資格情報を指定する代わりに、マネージド ID を使用して Azure SQL Database へのインデクサー接続を設定する方法について説明します。
 
@@ -97,7 +94,7 @@ ms.locfileid: "88924131"
 
 ### <a name="5---create-the-data-source"></a>5 - データ ソースを作成する
 
-[REST API](/rest/api/searchservice/create-data-source)、Azure portal、および [.NET SDK](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) では、マネージド ID 接続文字列がサポートされています。 次に、[REST API](/rest/api/searchservice/create-data-source) とマネージド ID 接続文字列を使用し、Azure SQL Database のデータにインデックスを付けてデータ ソースを作成する方法例を示します。 マネージド ID 接続文字列の形式は、REST API、.NET SDK、および Azure portal において同じです。
+[REST API](/rest/api/searchservice/create-data-source)、Azure portal、および [.NET SDK](/dotnet/api/microsoft.azure.search.models.datasource) では、マネージド ID 接続文字列がサポートされています。 次に、[REST API](/rest/api/searchservice/create-data-source) とマネージド ID 接続文字列を使用し、Azure SQL Database のデータにインデックスを付けてデータ ソースを作成する方法例を示します。 マネージド ID 接続文字列の形式は、REST API、.NET SDK、および Azure portal において同じです。
 
 [REST API](/rest/api/searchservice/create-data-source) を使用してデータ ソースを作成する場合、データ ソースには次の必須プロパティが必要です。
 

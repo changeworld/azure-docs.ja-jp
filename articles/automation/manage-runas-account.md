@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 06/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3e5f75a5ff9c6baff9bbefea7846ffe78655c6a9
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: cb804b21d6f5312c13bfdbf7b0fc0404961ba1e3
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401760"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90005736"
 ---
 # <a name="manage-an-azure-automation-run-as-account"></a>Azure Automation の実行アカウントを管理する
 
@@ -26,16 +26,16 @@ Azure Automation では、次の 2 種類の実行アカウントが使用され
 >[!NOTE]
 >Azure Cloud Solution Provider (CSP) サブスクリプションでは、Azure Resource Manager モデルのみがサポートされます。 Azure Resource Manager 以外のサービスは、プログラムでは使用できません。 CSP サブスクリプションを使用する場合、Azure クラシック実行アカウントは作成されませんが、Azure 実行アカウントは作成されます。 CSP サブスクリプションの詳細については、[CSP サブスクリプションで利用可能なサービス](/azure/cloud-solution-provider/overview/azure-csp-available-services)に関するページを参照してください。
 
-実行アカウントのサービス プリンシパルには、既定では、Azure AD を読み取るためのアクセス許可はありません。 Azure AD の読み取り、または管理を行うためのアクセス許可を追加する場合は、 **[API のアクセス許可]** の下でサービス プリンシパルにそのアクセス許可を付与する必要があります。 詳細については、「[Web API にアクセスするためのアクセス許可を追加する](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)」を参照してください。
+実行アカウントのサービス プリンシパルには、既定では、Azure AD を読み取るためのアクセス許可はありません。 Azure AD の読み取り、または管理を行うためのアクセス許可を追加する場合は、 **[API のアクセス許可]** の下でサービス プリンシパルにそのアクセス許可を付与する必要があります。 詳細については、「[Web API にアクセスするためのアクセス許可を追加する](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-your-web-api)」を参照してください。
 
 ### <a name="run-as-account"></a>実行アカウント
 
 実行アカウントでは、[Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md) リソースを管理します。 次のタスクが行われます。
 
 * 自己署名証明書を含む Azure AD アプリケーションを作成し、このアプリケーションの Azure AD におけるサービス プリンシパル アカウントを作成します。また、現在のサブスクリプションにおける、このアカウントの共同作成者ロールが割り当てられます。 証明書の設定は、所有者や他の任意のロールに変更できます。 詳細については、「[Azure Automation におけるロールベースのアクセス制御](automation-role-based-access-control.md)」を参照してください。
-  
+
 * 指定された Automation アカウントに `AzureRunAsCertificate` という名前の Automation 証明書資産を作成します。 証明書資産には、Azure AD アプリケーションで使用される証明書の秘密キーが保持されます。
-  
+
 * 指定された Automation アカウントに `AzureRunAsConnection` という名前の Automation 接続資産を作成します。 この接続資産には、アプリケーション ID、テナント ID、サブスクリプション ID、証明書の拇印が格納されます。
 
 ### <a name="azure-classic-run-as-account"></a>Azure クラシック実行アカウント
@@ -80,7 +80,7 @@ Azure クラシック実行アカウントでは、次のタスクが行われ�
 
 1. Azure portal の Azure Active Directory ペインで、 **[ユーザーとグループ]** を選択します。
 2. **[すべてのユーザー]** を選択します。
-3. ご自分の名前を選んでから、 **[プロファイル]** を選択します。 
+3. ご自分の名前を選んでから、 **[プロファイル]** を選択します。
 4. ユーザーのプロファイルの下にある **[ユーザーの種類]** 属性の値が、確実に **[ゲスト]** には設定されていないようにします。
 
 ### <a name="get-permissions-to-configure-classic-run-as-accounts"></a><a name="permissions-classic"></a>クラシック実行アカウントを構成するためのアクセス許可を取得する
@@ -99,7 +99,7 @@ Azure クラシック実行アカウントでは、次のタスクが行われ�
 
 4. 左ペインで、アカウントの設定セクションの **[実行アカウント]** を選択します。
 
-5. 必要なアカウントに応じて、 **[Azure 実行アカウント]** または **[Azure クラシック実行アカウント]** を選択します。 
+5. 必要なアカウントに応じて、 **[Azure 実行アカウント]** または **[Azure クラシック実行アカウント]** を選択します。
 
 6. 関心のあるアカウントに応じて、 **[Azure 実行アカウントを追加する]** または **[Azure クラシック実行アカウントを追加する]** ペインを使用します。 概要情報を確認した後、 **[作成]** クリックします。
 
@@ -113,7 +113,7 @@ Azure クラシック実行アカウントでは、次のタスクが行われ�
 
 2. 左ペインで、アカウントの設定セクションの **[実行アカウント]** を選択します。
 
-3. 実行アカウントのプロパティ ページで、削除する実行アカウントまたはクラシック実行アカウントを選択します。 
+3. 実行アカウントのプロパティ ページで、削除する実行アカウントまたはクラシック実行アカウントを選択します。
 
 4. 選択したアカウントの [プロパティ] ペインで、 **[削除]** をクリックします。
 
@@ -127,7 +127,7 @@ Azure クラシック実行アカウントでは、次のタスクが行われ�
 
 ## <a name="renew-a-self-signed-certificate"></a><a name="cert-renewal"></a>自己署名証明書を更新する
 
-実行アカウント用に作成した自己署名証明書は、作成日から 1 年後に有効期限が切れます。 実行アカウントの有効期限が切れる前のある時点で、証明書を更新する必要があります。 有効期限が切れる前にいつでも更新することができます。 
+実行アカウント用に作成した自己署名証明書は、作成日から 1 年後に有効期限が切れます。 実行アカウントの有効期限が切れる前のある時点で、証明書を更新する必要があります。 有効期限が切れる前にいつでも更新することができます。
 
 自己署名証明書を更新するときに、現在有効な証明書は保持されます。これにより、キューに登録されているかアクティブに実行されていて、実行アカウントで認証される Runbook は確実に悪影響を受けることがなくなります。 証明書は、有効期限日を迎えるまで存在し続けます。
 
@@ -168,10 +168,10 @@ $roleDefinition.NotActions.Add("Microsoft.Compute/*")
 $roleDefinition | Set-AzRoleDefinition
 ```
 
-実行アカウントで使用されるサービス プリンシパルが、共同作成者とカスタムのどちらのロールの定義にあるかを確認できます。 
+実行アカウントで使用されるサービス プリンシパルが、共同作成者とカスタムのどちらのロールの定義にあるかを確認できます。
 
 1. Automation アカウントに移動し、アカウントの設定セクションで **[実行アカウント]** を選択します。
-2. **[Azure 実行アカウント]** を選択します。 
+2. **[Azure 実行アカウント]** を選択します。
 3. **[ロール]** を選択し、使用されているロールの定義を見つけます。
 
 :::image type="content" source="media/manage-runas-account/verify-role.png" alt-text="実行アカウント ロールを検証します。" lightbox="media/manage-runas-account/verify-role-expanded.png":::
@@ -207,7 +207,7 @@ PowerShell ギャラリーの [Extend-AutomationRunAsAccountRoleAssignmentToKeyV
 The Run As account is incomplete. Either one of these was deleted or not created - Azure Active Directory Application, Service Principal, Role, Automation Certificate asset, Automation Connect asset - or the Thumbprint is not identical between Certificate and Connection. Please delete and then re-create the Run As Account.
 ```
 
-こうした実行アカウントの問題は、アカウントを削除してから再作成すればすぐに解決できます。
+こうした実行アカウントの問題は、実行アカウントを削除してから再作成すればすぐに解決できます。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -2,13 +2,13 @@
 title: テンプレート関数 - リソース
 description: Azure Resource Manager テンプレートで、リソースに関する値を取得するために使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 09/01/2020
-ms.openlocfilehash: 5a685255385d54fa21d672d0267fb4ad5ff5037b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.date: 09/03/2020
+ms.openlocfilehash: 3f916be4431aa6b2b100967465450447ecc1d626
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378425"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468676"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM テンプレート用のリソース関数
 
@@ -102,6 +102,12 @@ Resource Manager では、Azure Resource Manager (ARM) テンプレートでリ�
 }
 ```
 
+管理グループにデプロイされたカスタム ポリシー定義は、拡張リソースとして実装されます。 ポリシーを作成して割り当てるには、次のテンプレートを管理グループにデプロイします。
+
+:::code language="json" source="~/quickstart-templates/managementgroup-deployments/mg-policy/azuredeploy.json":::
+
+組み込みのポリシー定義は、テナント レベルのリソースです。 組み込みのポリシー定義をデプロイする例については、「[tenantResourceId](#tenantresourceid)」を参照してください。
+
 <a id="listkeys"></a>
 <a id="list"></a>
 
@@ -113,7 +119,7 @@ Resource Manager では、Azure Resource Manager (ARM) テンプレートでリ�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | resourceName または resourceIdentifier |はい |string |リソースの一意識別子です。 |
 | apiVersion |はい |string |リソースのランタイム状態の API バージョン。 通常、**yyyy-mm-dd** の形式。 |
@@ -341,7 +347,7 @@ listKeyValue の例については、「[クイックスタート:App Configurat
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | providerNamespace | はい | string | ゾーンのサポートについて確認するためのリソースの種類のリソース プロバイダーの名前空間。 |
 | resourceType | はい | string | ゾーンのサポートについて確認するためのリソースの種類。 |
@@ -407,7 +413,7 @@ listKeyValue の例については、「[クイックスタート:App Configurat
 
 前の例からの出力は、3 つの配列を返します。
 
-| 名前 | Type | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ----- |
 | サポート対象 | array | [ "1" ] |
 | notSupportedRegion | array | [] |
@@ -429,7 +435,7 @@ listKeyValue の例については、「[クイックスタート:App Configurat
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | providerNamespace |はい |string |プロバイダーの名前空間 |
 | resourceType |いいえ |string |指定した名前空間内にあるリソースの種類。 |
@@ -504,7 +510,7 @@ listKeyValue の例については、「[クイックスタート:App Configurat
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | resourceName または resourceIdentifier |はい |string |名前またはリソースの一意の識別子。 現在のテンプレート内のリソースを参照する場合は、パラメーターとしてリソース名のみを指定します。 以前にデプロイされたリソースを参照する場合、またはリソースの名前があいまいな場合は、リソース ID を指定します。 |
 | apiVersion |いいえ |string |指定したリソースの API バージョンです。 **このパラメーターは、同じテンプレート内でリソースがプロビジョニングされない場合に必要です。** 通常、**yyyy-mm-dd** の形式。 リソースに有効な API のバージョンについては、[テンプレート リファレンス](/azure/templates/)を参照してください。 |
@@ -827,7 +833,7 @@ resourceGroup 関数を使用して、リソース グループからリソー�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |いいえ |文字列 (GUID 形式) |既定値は、現在のサブスクリプションです。 別のサブスクリプション内のリソースを取得する必要がある場合は、この値を指定します。 リソース グループまたはサブスクリプションのスコープでデプロイする場合にのみ、この値を指定します。 |
 | resourceGroupName |いいえ |string |既定値は、現在のリソース グループです。 別のリソース グループ内のリソースを取得する必要がある場合は、この値を指定します。 リソース グループのスコープでデプロイする場合にのみ、この値を指定します。 |
@@ -845,23 +851,27 @@ resourceGroup 関数を使用して、リソース グループからリソー�
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
-[サブスクリプションレベルのデプロイ](deploy-to-subscription.md)で使用する場合、リソース ID は次の形式で返されます。
+他のデプロイのスコープ用の resourceId 関数を使用できますが、ID の形式は変更されます。
+
+サブスクリプションにデプロイするときに resourceId を使用する場合、リソース ID は次の形式で返されます。
 
 ```json
 /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
-[管理グループレベルのデプロイ](deploy-to-management-group.md)またはテナントレベルのデプロイで使用する場合、リソース ID は次の形式で返されます。
+管理グループまたはテナントにデプロイするときに resourceId を使用する場合、リソース ID は次の形式で返されます。
 
 ```json
 /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
-ID を他の形式で取得するには、以下を参照してください。
+混乱を避けるために、サブスクリプション、管理グループ、またはテナントにデプロイされたリソースを操作するときは、resourceId を使用しないことをお勧めします。 代わりに、そのスコープに対して設計されている ID 関数を使用します。
 
-* [extensionResourceId](#extensionresourceid)
-* [subscriptionResourceId](#subscriptionresourceid)
-* [tenantResourceId](#tenantresourceid)
+[サブスクリプション レベルのリソース](deploy-to-subscription.md)の場合、[subscriptionResourceId](#subscriptionresourceid) 関数を使用します。
+
+[管理グループレベルのリソース](deploy-to-management-group.md)の場合、[extensionResourceId](#extensionresourceid) 関数を使用して、管理グループの拡張として実装されているリソースを参照してください。 たとえば、管理グループにデプロイされているカスタム ポリシー定義は、管理グループの拡張機能です。 テナントにデプロイされているが管理グループで使用できるリソースを参照するには、[tenantResourceId](#tenantresourceid) 関数を使用します。 たとえば、組み込みのポリシー定義は、テナント レベルのリソースとして実装されます。
+
+[テナントレベルのリソース](deploy-to-tenant.md)の場合、[tenantResourceId](#tenantresourceid) 関数を使用します。 組み込みのポリシー定義はテナント レベルで実装されているため、tenantResourceId を使用します。
 
 ### <a name="remarks"></a>解説
 
@@ -967,7 +977,7 @@ ID を他の形式で取得するには、以下を参照してください。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ----- |
 | sameRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
@@ -1023,7 +1033,7 @@ ID を他の形式で取得するには、以下を参照してください。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |いいえ |文字列 (GUID 形式) |既定値は、現在のサブスクリプションです。 別のサブスクリプション内のリソースを取得する必要がある場合は、この値を指定します。 |
 | resourceType |はい |string |リソース プロバイダーの名前空間を含むリソースの種類。 |
@@ -1105,7 +1115,7 @@ ID を他の形式で取得するには、以下を参照してください。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | resourceType |はい |string |リソース プロバイダーの名前空間を含むリソースの種類。 |
 | resourceName1 |はい |string |リソースの名前。 |
@@ -1124,6 +1134,44 @@ ID を他の形式で取得するには、以下を参照してください。
 ### <a name="remarks"></a>解説
 
 テナントにデプロイされているリソースのリソース ID を取得するには、この関数を使用します。 返される ID は、リソース グループまたはサブスクリプションの値を含まないという点で、他のリソース ID 関数から返される値とは異なります。
+
+### <a name="tenantresourceid-example"></a>tenantResourceId の例
+
+組み込みのポリシー定義は、テナント レベルのリソースです。 組み込みのポリシー定義を参照するポリシー割り当てをデプロイするには、tenantResourceId 関数を使用します。
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "policyAssignmentName": {
+      "type": "string",
+      "defaultValue": "[guid(parameters('policyDefinitionID'), resourceGroup().name)]",
+      "metadata": {
+        "description": "Specifies the name of the policy assignment, can be used defined or an idempotent name as the defaultValue provides."
+      }
+    },
+    "policyDefinitionID": {
+      "type": "string",
+      "defaultValue": "0a914e76-4921-4c19-b460-a2d36003525a",
+      "metadata": {
+        "description": "Specifies the ID of the policy definition or policy set definition being assigned."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Authorization/policyAssignments",
+      "name": "[parameters('policyAssignmentName')]",
+      "apiVersion": "2019-09-01",
+      "properties": {
+        "scope": "[subscriptionResourceId('Microsoft.Resources/resourceGroups', resourceGroup().name)]",
+        "policyDefinitionId": "[tenantResourceId('Microsoft.Authorization/policyDefinitions', parameters('policyDefinitionID'))]"
+      }
+    }
+  ]
+}
+```
 
 ## <a name="next-steps"></a>次のステップ
 

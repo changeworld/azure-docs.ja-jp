@@ -3,12 +3,12 @@ title: Recovery Services コンテナーに Azure VM をバックアップする
 description: Azure Backup を使用して Recovery Services コンテナーに Azure VM をバックアップする方法について説明します
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 29895c0358547679a9db7b2f4da203e2b546d67f
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 28cc995afc131e747314032c1363f73531e6915c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89145656"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986506"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Recovery Services コンテナーに Azure VM をバックアップする
 
@@ -41,10 +41,11 @@ ms.locfileid: "89145656"
 
 ### <a name="modify-storage-replication"></a>ストレージ レプリケーションを変更する
 
-既定では、コンテナーには [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy.md) が使用されます。
+既定では、コンテナーには [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) が使用されます。
 
 * コンテナーをプライマリ バックアップ メカニズムとする場合は、GRS を使用することをお勧めします。
-* コストを抑えるオプションとして[ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy.md?toc=/azure/storage/blobs/toc.json) を使用できます。
+* コストを抑えるオプションとして[ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) を使用できます。
+* [ゾーン冗長ストレージ (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) は、[可用性ゾーン](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)内のデータをレプリケートし、同じリージョン内でデータ所在地と回復性を保証します。
 
 ストレージ レプリケーションの種類を変更にするには、次の手順に従います。
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e294aa2580dd9f0cceb539a2696e7ebbf08c4afe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 829a82cb94e5c2a7e7cbc9190047c368299612cd
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051001"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052751"
 ---
 # <a name="features-and-licenses-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の機能とライセンス
 
@@ -41,7 +41,7 @@ Azure Multi-Factor Authentication は、組織のニーズに応じて、いく�
 
 次の表に、さまざまなバージョンの Azure Multi-Factor Authentication で使用できる機能の一覧を示します。 ユーザー認証のセキュリティ保護に必要なものを詳しく検討し、その要件を満たす方法を決定します。 たとえば、Azure AD Free は Azure Multi-Factor Authentication を提供するセキュリティの既定値群を提供しますが、認証プロンプトに使用できるのはモバイル認証アプリだけであり、電話や SMS は使用できません。 モバイル認証アプリがユーザーの個人のデバイスにインストールされていることを保証できない場合、この方法は制約を受けるかもしれません。
 
-| 特徴量 | Azure AD Free - セキュリティの既定値群 | Azure AD Free - Azure AD 全体管理者 | Office 365 アプリ | Azure AD Premium P1 または P2 |
+| 特徴量 | Azure AD Free - セキュリティの既定値群 | Azure AD Free - Azure AD 全体管理者 | Microsoft 365 アプリ | Azure AD Premium P1 または P2 |
 | --- |:---:|:---:|:---:|:---:|
 | MFA で Azure AD テナント管理者アカウントを保護する | ● | ● (*Azure AD 全体管理者*アカウントの場合のみ) | ● | ● |
 | モバイル アプリを 2 番目の要素にする | ● | ● | ● | ● |
@@ -58,7 +58,7 @@ Azure Multi-Factor Authentication は、組織のニーズに応じて、いく�
 
 ## <a name="purchase-and-enable-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication を購入して有効にする
 
-Azure Multi-Factor Authentication を使用するには、資格のある Azure AD のレベルに登録するか、ご購入ください。 Azure AD には、Free、Office 365 アプリ、Premium P1、および Premium P2 の 4 つのエディションが用意されています。
+Azure Multi-Factor Authentication を使用するには、資格のある Azure AD のレベルに登録するか、ご購入ください。 Azure AD には、Free、Microsoft 365 アプリ、Premium P1、および Premium P2 の 4 つのエディションが用意されています。
 
 Free エディションは、Azure サブスクリプションに含まれます。 セキュリティの既定値群を使用する方法、または *Azure AD 全体管理者*ロールでアカウントを保護する方法についての情報は、[下記のセクション](#azure-ad-free-tier)を参照してください。
 

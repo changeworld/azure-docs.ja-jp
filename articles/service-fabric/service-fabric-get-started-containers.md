@@ -4,12 +4,12 @@ description: Azure Service Fabric で初めての Windows コンテナー アプ
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 6303e37eaa8fa7ad45677d551b89337d20b1b604
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e8c3a0d60e10b1cf1f8a827cec8fcc25f3d33b05
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844441"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564323"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Windows で初めての Service Fabric コンテナー アプリケーションを作成する
 
@@ -290,7 +290,7 @@ v6.4 の最新の更新リリース以降、Docker の HEALTHCHECK 評価をエ�
 
 コンテナーの正常性の監視のために実行される実際のチェックを指す **HEALTHCHECK** 命令は、コンテナー イメージを生成するときに使用される Dockerfile に存在する必要があります。
 
-![HealthCheckHealthy][3]
+![スクリーンショットからは、デプロイされたサービス パッケージ NodeServicePackage の詳細を確認できます。][3]
 
 ![HealthCheckUnhealthyApp][4]
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 robots: noindex
 ms.date: 01/22/2018
-ms.openlocfilehash: dbbbdebdcf1db7afe485166f5744f2291b757d50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b7936fcd1e4a629a813c4266920f6c34a15cf9b4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74979004"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438944"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure Data Factory - .NET API の変更ログ
 > [!NOTE]
@@ -75,7 +75,7 @@ ms.locfileid: "74979004"
 ### <a name="feature-additions"></a>機能の追加
 * Optimized Row Columnar (ORC) 形式でファイルをコピーするための新しい StorageFormat タイプ ( [OrcFormat](https://msdn.microsoft.com/library/mt723391.aspx) ) を追加しました。
 * [AllowPolyBase](https://msdn.microsoft.com/library/mt723396.aspx) プロパティと PolyBaseSettings プロパティを SqlDWSink に追加しました。
-  * PolyBase を使用して SQL Data Warehouse にデータをコピーすることができます。
+  * PolyBase を使用して Azure Synapse Analytics (旧称 SQL Data Warehouse) にデータをコピーすることができます。
 
 ## <a name="version-461"></a>Version 4.6.1
 ### <a name="bug-fixes"></a>バグの修正
@@ -181,5 +181,5 @@ ms.locfileid: "74979004"
 * **List** パイプライン API では、全詳細ではなく、パイプラインの概要だけが返されます。 たとえば、パイプライン概要のアクティビティには、名前と種類だけが含まれます。
 
 ### <a name="feature-additions"></a>機能の追加
-* [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx) クラスでは、Azure SQL Data Warehouse へのべき等コピーをサポートするために、**SliceIdentifierColumnName** と **SqlWriterCleanupScript** の 2 つの新しいプロパティがサポートされるようになりました。 これらのプロパティの詳細については、[Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md) に関する記事をご覧ください。
-* コピー アクティビティの一環として、Azure SQL Database ソースと Azure SQL Data Warehouse ソースに対するストアド プロシージャの実行がサポートされるようになりました。 [SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) クラスと [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) クラスには、**SqlReaderStoredProcedureName** プロパティと **StoredProcedureParameters** プロパティがあります。 これらのプロパティの詳細については、Azure.com の [Azure SQL Database](data-factory-azure-sql-connector.md#sqlsource) と [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) に関する記事をご覧ください。  
+* [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx) クラスでは、Azure Synapse Analytics へのべき等コピーをサポートするために、**SliceIdentifierColumnName** と **SqlWriterCleanupScript** の 2 つの新しいプロパティがサポートされるようになりました。 これらのプロパティの詳細については、[Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md) に関する記事をご覧ください。
+* コピー アクティビティの一環として、Azure SQL Database ソースと Azure Synapse Analytics ソースに対するストアド プロシージャの実行がサポートされるようになりました。 [SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) クラスと [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) クラスには、**SqlReaderStoredProcedureName** プロパティと **StoredProcedureParameters** プロパティがあります。 これらのプロパティの詳細については、Azure.com の [Azure SQL Database](data-factory-azure-sql-connector.md#sqlsource) と [Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) に関する記事をご覧ください。  

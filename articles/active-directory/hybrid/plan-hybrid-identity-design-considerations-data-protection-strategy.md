@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a01f5a87092f0111a5dbf9d180e785a47bd70a0b
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: e991fb0c60e8f08eb43cb7799027d4200263c9b5
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279059"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659545"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションのデータ保護戦略の定義
 このタスクでは、次のトピックで定義したビジネス要件を満たすために、ハイブリッド ID ソリューションのデータ保護戦略を定義します。
@@ -63,7 +63,7 @@ Azure AD を使用してハイブリッド ID インフラストラクチャを�
 
 データのプライバシーを懸念する組織では、一般的に、使用するソリューションにデータ分類が不可欠です。 現在のオンプレミス インフラストラクチャで既にデータ分類を使っている場合は、ユーザー ID の主要リポジトリとして Azure AD を使うことができます。 オンプレミスでのデータ分類に使用されている一般的なツールは [Data Classification Toolkit](/previous-versions/tn-archive/hh204743(v=technet.10)) for Windows Server 2012 R2 です。 このツールは、プライベート クラウド内のファイル サーバーにあるデータを識別、分類、保護するのに役立ちます。 Windows Server 2012 の[自動ファイル分類](/windows-server/identity/solution-guides/deploy-automatic-file-classification--demonstration-steps-)を使ってこのタスクを実現することもできます。
 
-組織がデータ分類を配置していないが、オンプレミスで新しいサーバーを追加せずに機密ファイルを保護する必要がある場合、Microsoft [Azure Rights Management Service](/azure/information-protection/what-is-azure-rms)を使用できます。  Azure RMS では、暗号化、ID、承認ポリシーを使用してファイルと電子メールを保護し、携帯電話、タブレット、PC などの複数のデバイスで動作します。 Azure RMS はクラウド サービスであるため、保護されたコンテンツを共有する前に、他の組織との信頼関係を明示的に構成する必要はありません。 既に Office 365 や Azure AD ディレクトリが組織にある場合、組織間のコラボレーションが自動的にサポートされます。 また、Azure Active Directory 同期サービス (AAD Sync) または Azure AD Connect を使用することにより、Azure RMS でオンプレミスの Active Directory アカウントの共通 ID をサポートするために必要なディレクトリ属性のみを同期することもできます。
+組織がデータ分類を配置していないが、オンプレミスで新しいサーバーを追加せずに機密ファイルを保護する必要がある場合、Microsoft [Azure Rights Management Service](/azure/information-protection/what-is-azure-rms)を使用できます。  Azure RMS では、暗号化、ID、承認ポリシーを使用してファイルと電子メールを保護し、携帯電話、タブレット、PC などの複数のデバイスで動作します。 Azure RMS はクラウド サービスであるため、保護されたコンテンツを共有する前に、他の組織との信頼関係を明示的に構成する必要はありません。 既に Microsoft 365 や Azure AD ディレクトリが組織にある場合、組織間のコラボレーションが自動的にサポートされます。 また、Azure Active Directory 同期サービス (Azure AD Sync) または Azure AD Connect を使用することにより、Azure RMS でオンプレミスの Active Directory アカウントの共通 ID をサポートするために必要なディレクトリ属性のみを同期することもできます。
 
 コンテンツ管理で重要な部分は、どのユーザーがどのリソースにアクセスするかを理解することです。したがって、ID 管理ソリューションの場合、機能豊富なログ記録機能が重要です。 Azure AD では、30 日間にわたり次を記録するログを提供します。
 
@@ -82,7 +82,7 @@ Azure AD を使用してハイブリッド ID インフラストラクチャを�
 
 | コンテンツ管理オプション | 長所 | 短所 |
 | --- | --- | --- |
-| オンプレミスでの一元化 (Active Directory Rights Management Server) |データ分類を行うサーバー インフラストラクチャを完全に制御 <br> Windows Server の組み込み機能。追加のライセンスまたはサブスクリプションは不要 <br> ハイブリッド シナリオで Azure AD への統合が可能 <br> Exchange Online、SharePoint Online、Office 365 などの Microsoft Online Services の Information Rights Management (IRM) 機能をサポート <br> Exchange Server、SharePoint Server などのオンプレミスの Microsoft サーバー製品、および Windows Server とファイル分類インフラストラクチャ (FCI) を実行するファイル サーバーをサポート。 |IT 部門がサーバーを所有しているため、より高度なメンテナンスが必要 (更新プログラム、構成、潜在的なアップグレードなどを最新の状態に保つ非必要あり) <br> オンプレミスのサーバー インフラストラクチャが必要<br> Azure の機能をネイティブで利用していない |
+| オンプレミスでの一元化 (Active Directory Rights Management Server) |データ分類を行うサーバー インフラストラクチャを完全に制御 <br> Windows Server の組み込み機能。追加のライセンスまたはサブスクリプションは不要 <br> ハイブリッド シナリオで Azure AD への統合が可能 <br> Exchange Online、SharePoint Online、Microsoft 365 などの Microsoft Online Services の Information Rights Management (IRM) 機能をサポート <br> Exchange Server、SharePoint Server などのオンプレミスの Microsoft サーバー製品、および Windows Server とファイル分類インフラストラクチャ (FCI) を実行するファイル サーバーをサポート。 |IT 部門がサーバーを所有しているため、より高度なメンテナンスが必要 (更新プログラム、構成、潜在的なアップグレードなどを最新の状態に保つ非必要あり) <br> オンプレミスのサーバー インフラストラクチャが必要<br> Azure の機能をネイティブで利用していない |
 | クラウド (Azure RMS) で一元化 |オンプレミス ソリューションに比べて管理が容易 <br> ハイブリッド シナリオで AD DS への統合が可能 <br>  Azure AD への完全統合 <br> サービスをデプロイするためのオンプレミス サーバーが不要 <br> Exchange Server、SharePoint Server などのオンプレミスの Microsoft サーバー製品、および Windows Server とファイル分類インフラストラクチャ (FCI) を実行するファイル サーバーをサポート <br> BYOK 機能を使用してテナントのキーを IT 部門で完全に制御可能 |RMS をサポートするクラウド サブスクリプションが組織に必要 <br> RMS のユーザー認証をサポートするための Azure AD ディレクトリが組織に必要 |
 | ハイブリッド (Azure RMS とオンプレミスの Active Directory Rights Management Server の統合) |このシナリオには、オンプレミスでの一元化とクラウドでの一元化の両方の利点があります。 |RMS をサポートするクラウド サブスクリプションが組織に必要 <br> RMS のユーザー認証をサポートするための Azure AD ディレクトリが組織に必要 <br> Azure のクラウド サービスとオンプレミスのインフラストラクチャの接続が必要 |
 
@@ -131,7 +131,7 @@ Azure AD を使ってユーザーが認証されたら、そのユーザーが�
    > アプリケーションをビルドしていて、それらのアクセスの制御をカスタマイズする必要がある場合、Azure AD アプリケーション ロールを使用して承認を実行することもできます。 この機能を使用するアプリケーションをビルドする方法については、こちらの [WebApp-RoleClaims-DotNet の例](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet) を参照してください。
 
 
-3. Microsoft Intune を使用した Office 365 アプリケーションへの条件付きアクセス: IT 管理者は、条件付きアクセスのデバイス ポリシーをプロビジョニングすることで、会社リソースをセキュリティで保護し、同時にインフォメーション ワーカーに準拠しているデバイスからサービスへのアクセスを許可できます。 
+3. Microsoft Intune を使用した Microsoft 365 アプリケーションへの条件付きアクセス:IT 管理者は、条件付きアクセスのデバイス ポリシーをプロビジョニングすることで、会社リソースをセキュリティで保護し、同時にインフォメーション ワーカーに準拠しているデバイスからサービスへのアクセスを許可できます。 
   
 4. SaaS アプリ向けの条件付きアクセス: [この機能](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work/)を使用すると、アプリケーションごとの多要素認証のアクセス規則と、信頼されたネットワークにないユーザーのアクセスをブロックする機能を構成できます。 Multi-Factor Authentication の規則は、アプリケーションに割り当てられているすべてのユーザーに適用することも、指定したセキュリティ グループのユーザーにのみ適用することもできます。 ユーザーが組織のネットワーク内の IP アドレスからアプリケーションにアクセスしている場合は、そのユーザーを Multi-Factor Authentication の要件から除外できます。
 

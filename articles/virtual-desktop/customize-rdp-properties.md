@@ -3,15 +3,15 @@ title: PowerShell を使用した RDP プロパティのカスタマイズ - Azu
 description: PowerShell コマンドレットを使用して Windows Virtual Desktop 用の RDP プロパティをカスタマイズする方法。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 09/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 439f009d70775428a00f627160bf4d6b8ab9b089
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 7c4bda1ecf28e964db6ba672157790114affe650
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009105"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462226"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>ホスト プールのリモート デスクトップ プロトコル (RDP) プロパティをカスタマイズする
 
@@ -21,6 +21,16 @@ ms.locfileid: "88009105"
 マルチ モニター エクスペリエンスやオーディオ リダイレクトなど、ホスト プールのリモート デスクトップ プロトコル (RDP) のプロパティをカスタマイズすると、ニーズに基づいてユーザーに最適なエクスペリエンスを提供できます。 Azure portal を使用するか、**Update-AzWvdHostPool** コマンドレットで *-CustomRdpProperty* パラメーターを使用して、Windows Virtual Desktop の RDP プロパティをカスタマイズできます。
 
 サポートされているプロパティとその既定値の全リストについては、「[サポートされるリモート デスクトップ RDP ファイルの設定](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context)」を参照してください。
+
+## <a name="default-rdp-file-properties"></a>既定の RDP ファイルのプロパティ
+
+RDP ファイルには、既定で次のプロパティがあります。
+
+|RDP プロパティ|デスクトップ上|RemoteApp として|
+|---|---|---|
+|マルチモニター モード|Enabled|該当なし|
+|ドライブ リダイレクト有効|ドライブ、クリップボード、プリンター、COM ポート、USB デバイス、スマートカード|ドライブ、クリップボード、プリンター|
+|リモート オーディオ モード|ローカルで再生|ローカルで再生|
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: b32e0a60e099b5ad184f8919be3f93646c3a68b3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 817bc7624bb3a6b69d56265e40681287b7fc09fa
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018146"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969598"
 ---
 # <a name="configure-role-based-access-control-in-the-remote-monitoring-solution-accelerator"></a>リモート監視ソリューション アクセラレータでロール ベースのアクセス制御を構成する
 
@@ -62,7 +62,7 @@ Azure Active Directory アプリケーション所有者は、Azure Portal を�
 
 1. アプリケーションをクリックし、 **[所有者]** をクリックして、自分がアプリケーションの所有者であることを確認します。 次のスクリーンショットでは、**Contoso admin** が **contoso rm4** アプリケーションの所有者です。
 
-    ![所有者](media/iot-accelerators-remote-monitoring-rbac/owners.png)
+    ![スクリーンショットでは、[所有者の管理] オプションが選択されており、contoso r m 4 アプリケーションの所有者が表示されています。](media/iot-accelerators-remote-monitoring-rbac/owners.png)
 
     自分が所有者でない場合は、一覧に追加してもらうように既存の所有者に頼む必要があります。 所有者だけが、**管理者**や**読み取り専用**などのアプリケーション ロールを他のユーザーに割り当てることができます。
 

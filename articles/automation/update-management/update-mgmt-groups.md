@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 20e6d26808964c8e697c694bd796af2851e7ca48
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 61339a22fc3823325ff5356112c2df8a800010a0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449666"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985195"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>Update Management を利用して動的グループを使用する
 
@@ -45,7 +45,7 @@ Azure マシンの動的グループ クエリを定義する場合は、次の�
 
 Azure 以外のマシンの動的グループでは、保存された検索 (コンピューター グループとも呼ばれます) を使用します。 保存された検索の作成方法については、「[コンピューター グループの作成](../../azure-monitor/platform/computer-groups.md#creating-a-computer-group)」を参照してください。 保存された検索が作成されると、Azure portal の **Update Management** で保存された検索の一覧から選択できるようになります。 **[プレビュー]** をクリックすると、保存された検索でコンピューターをプレビューできます。
 
-![グループを選択する](./media/update-mgmt-groups/select-groups-2.png)
+![Azure 以外のための [グループの選択] ページ (プレビュー) および右側に [プレビュー] ペインを表示するスクリーンショット。](./media/update-mgmt-groups/select-groups-2.png)
 
 ## <a name="next-steps"></a>次のステップ
 

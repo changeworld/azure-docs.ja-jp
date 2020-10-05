@@ -9,18 +9,19 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: db6dfb36c579f57f9cef66fa00a07b0d1dc2bc03
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 9402b1d38457c979f00d05f56b8ed45d2d37dfca
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929671"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971689"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Azure Cognitive Search でインデクサーを使用して Cosmos DB データのインデックスを作成する方法 
 
 > [!IMPORTANT] 
 > SQL API は一般提供されています。
-> MongoDB API、Gremlin API、Cassandra API のサポートは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 プレビュー機能に対するアクセスの要求は、[こちらのフォーム](https://aka.ms/azure-cognitive-search/indexer-preview)に必要事項を入力して行うことができます。 プレビュー機能は [REST API バージョン 2020-06-30-Preview](search-api-preview.md) で提供しています。 現時点でポータルによるサポートは一部のみにとどまります。また、.NET SDK によるサポートはありません。
+> MongoDB API、Gremlin API、Cassandra API のサポートは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 プレビュー機能に対するアクセスの要求は、[こちらのフォーム](https://aka.ms/azure-cognitive-search/indexer-preview)に必要事項を入力して行うことができます。 
+> [REST API プレビュー バージョン](search-api-preview.md)にはこれらの機能が用意されています。 現時点でポータルによるサポートは一部のみにとどまります。また、.NET SDK によるサポートはありません。
 
 > [!WARNING]
 > Azure Cognitive Search でサポートされるのは、[インデックス作成ポリシー](/azure/cosmos-db/index-policy)が [[常に]](/azure/cosmos-db/index-policy#indexing-mode) に設定されている Cosmos DB コレクションだけです。 [遅延] インデックス作成ポリシーを使用したコレクションのインデックス作成はお勧めできず、データが失われることがあります。 インデックス作成が無効になっているコレクションはサポートされません。
@@ -31,7 +32,7 @@ ms.locfileid: "88929671"
 
 Azure Cognitive Search の Cosmos DB インデクサーでは、アクセスのためのプロトコルがさまざまに異なる [Azure Cosmos DB 項目](../cosmos-db/databases-containers-items.md#azure-cosmos-items)をクロールできます。 
 
-+ [SQL API](../cosmos-db/sql-query-getting-started.md) (一般提供開始済み) では、データ ソースとインデクサーの作成に[ポータル](#cosmos-indexer-portal)、[REST API](/rest/api/searchservice/indexer-operations)、[.NET SDK](/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet) を利用できます。
++ [SQL API](../cosmos-db/sql-query-getting-started.md) (一般提供開始済み) では、データ ソースとインデクサーの作成に[ポータル](#cosmos-indexer-portal)、[REST API](/rest/api/searchservice/indexer-operations)、[.NET SDK](/dotnet/api/microsoft.azure.search.models.indexer) を利用できます。
 
 + [MongoDB API (プレビュー)](../cosmos-db/mongodb-introduction.md) では、データ ソースとインデクサーの作成に[ポータル](#cosmos-indexer-portal)または [REST API バージョン 2020-06-30-Preview](search-api-preview.md) を作成できます。
 
@@ -304,10 +305,10 @@ SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @High
 
 一般提供されている .NET SDK では、一般提供されている REST API による完全なパリティを保持しています。 前の REST API セクションを確認し、概念、ワークフロー、要件を理解することをお勧めします。 その後は、次の .NET API リファレンス ドキュメントを参照して、マネージド コードで JSON インデクサーを実装できます。
 
-+ [microsoft.azure.search.models.datasource](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
-+ [microsoft.azure.search.models.datasourcetype](/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
-+ [microsoft.azure.search.models.index](/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
-+ [microsoft.azure.search.models.indexer](/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
++ [microsoft.azure.search.models.datasource](/dotnet/api/microsoft.azure.search.models.datasource)
++ [microsoft.azure.search.models.datasourcetype](/dotnet/api/microsoft.azure.search.models.datasourcetype)
++ [microsoft.azure.search.models.index](/dotnet/api/microsoft.azure.search.models.index)
++ [microsoft.azure.search.models.indexer](/dotnet/api/microsoft.azure.search.models.indexer)
 
 <a name="DataChangeDetectionPolicy"></a>
 

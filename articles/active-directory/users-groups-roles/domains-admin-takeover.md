@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2ccf986f81ec3abed54c85640b8afb1c5cf7172
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a6a7dcb1d24f3c1ff848e3393687b04d79d28058
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015886"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054706"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory の非管理対象ディレクトリを管理者として引き継ぐ
 
@@ -34,7 +34,7 @@ ms.locfileid: "87015886"
 
 ## <a name="internal-admin-takeover"></a>内部管理者の引き継ぎ
 
-Office 365 など SharePoint と OneDrive が搭載されている一部の製品では、外部引き継ぎをサポートしていません。 このシナリオに該当する場合、または管理されていない ("シャドウ") Azure AD 組織の作成をセルフサービス サインアップを使用したユーザーから引き継ぎたいと考えている管理者の場合は、内部管理者の引き継ぎを使ってこれを実行できます。
+Microsoft 365 など SharePoint と OneDrive が搭載されている一部の製品では、外部引き継ぎをサポートしていません。 このシナリオに該当する場合、または管理されていない ("シャドウ") Azure AD 組織の作成をセルフサービス サインアップを使用したユーザーから引き継ぎたいと考えている管理者の場合は、内部管理者の引き継ぎを使ってこれを実行できます。
 
 1. Power BI のサインアップを使って、管理されていない組織にユーザー コンテキストを作成します。 わかりやすい例にするために、この手順では Power BI を使用した方法を仮定します。
 
@@ -52,7 +52,7 @@ Office 365 など SharePoint と OneDrive が搭載されている一部の製�
 
 DNS TXT レコードがドメイン名のレジストラーで確認済みの場合、Azure AD 組織を管理できます。
 
-上記の手順を完了すると、Office 365 の Fourth Coffee 組織のグローバル管理者になります。 お使いの他の Azure サービスとドメイン名を統合するには、ドメイン名を Office 365 から削除して、Azure の別の管理対象組織に追加します。
+上記の手順を完了すると、Microsoft 365 の Fourth Coffee 組織のグローバル管理者になります。 お使いの他の Azure サービスとドメイン名を統合するには、ドメイン名を Microsoft 365 から削除して、Azure の別の管理対象組織に追加します。
 
 ### <a name="adding-the-domain-name-to-a-managed-organization-in-azure-ad"></a>Azure AD の管理対象組織にドメイン名を追加する
 
@@ -61,9 +61,9 @@ DNS TXT レコードがドメイン名のレジストラーで確認済みの場
 3. 新しいユーザー アカウントに Azure AD 組織のグローバル管理者特権が付与されていることを確認します。
 4. Microsoft 365 管理センターで **[ドメイン]** タブを開き、ドメイン名を選択して **[削除]** を選択します。 
   
-   ![Office 365 からドメイン名を削除する](./media/domains-admin-takeover/remove-domain-from-o365.png)
+   ![Microsoft 365 からドメイン名を削除する](./media/domains-admin-takeover/remove-domain-from-o365.png)
   
-5. 削除されたドメイン名を参照しているユーザーまたはグループが Office 365 にある場合、.onmicrosoft.com ドメインに名前を変更する必要があります。 ドメイン名を強制的に削除した場合、すべてのユーザーの名前が自動的に変更されます。この例では、*user\@fourthcoffeexyz.onmicrosoft.com* になります。
+5. 削除されたドメイン名を参照しているユーザーまたはグループが Microsoft 365 にある場合、.onmicrosoft.com ドメインに名前を変更する必要があります。 ドメイン名を強制的に削除した場合、すべてのユーザーの名前が自動的に変更されます。この例では、*user\@fourthcoffeexyz.onmicrosoft.com* になります。
   
 6. Azure AD 組織のグローバル管理者のアカウントで [Azure AD 管理センター](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)にサインインします。
   
@@ -72,11 +72,11 @@ DNS TXT レコードがドメイン名のレジストラーで確認済みの場
    ![Azure AD に追加済みと確認されたドメイン](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
 > [!NOTE]
-> Office 365 組織に割り当てられているライセンスを所有する、Power BI または Azure Rights Management サービスのユーザーは、ドメイン名が削除された場合、ダッシュ ボードを保存しておく必要があります。 *user\@fourthcoffee.xyz* ではなく、*user\@fourthcoffeexyz.onmicrosoft.com* のようなユーザー名でサインインする必要があります。
+> Microsoft 365 組織に割り当てられているライセンスを所有する、Power BI または Azure Rights Management サービスのユーザーは、ドメイン名が削除された場合、ダッシュ ボードを保存しておく必要があります。 *user\@fourthcoffee.xyz* ではなく、*user\@fourthcoffeexyz.onmicrosoft.com* のようなユーザー名でサインインする必要があります。
 
 ## <a name="external-admin-takeover"></a>外部管理者の引き継ぎ
 
-Azure サービスまたは Office 365 を使って既に組織を管理している場合、別の Azure AD 組織で既に確認されているカスタム ドメイン名を追加することはできません。 ただし、Azure AD で管理されている組織から、外部管理者の引き継ぎとして管理されていない組織を引き継ぐことは可能です。 一般的な手順については、[カスタム ドメインの Azure AD への追加](../fundamentals/add-custom-domain.md)に関する記事に従ってください。
+Azure サービスまたは Microsoft 365 を使って既に組織を管理している場合、別の Azure AD 組織で既に確認されているカスタム ドメイン名を追加することはできません。 ただし、Azure AD で管理されている組織から、外部管理者の引き継ぎとして管理されていない組織を引き継ぐことは可能です。 一般的な手順については、[カスタム ドメインの Azure AD への追加](../fundamentals/add-custom-domain.md)に関する記事に従ってください。
 
 ドメイン名の所有権を確認するときは、Azure AD では、管理されていない組織からドメイン名を削除し、既存の組織に移動します。 非管理対象ディレクトリの外部管理者の引き継ぎには、内部管理者の引き継ぎと同じ DNS TXT の確認プロセスを行う必要があります。 相違点は、ドメイン名と共に次の内容も移行されることです。
 
@@ -120,7 +120,7 @@ Azure サービスまたは Office 365 を使って既に組織を管理して�
 `new-msoldomain –name <domainname>` | "未確認" (DNS の確認がまだ実行されていない) として組織にドメイン名を追加します。
 `get-msoldomain` | ドメイン名は、管理対象組織に関連付けられているドメイン名の一覧に含まれるようになりましたが、"**未確認**" として表示されます。
 `get-msoldomainverificationdns –Domainname <domainname> –Mode DnsTxtRecord` | ドメインの新しい DNS TXT レコード (MS=xxxxx) に含める情報を提示します。 TXT レコードのプロパゲートに一定の時間がかかるため、確認が直ちに行われるわけではありません。数分間待機してから、 **-ForceTakeover** オプションを検討します。 
-`confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>お使いのドメイン名がまだ確認済みではない場合、 **-ForceTakeover** オプションを使って続行できます。 TXT レコードが作成され、引き継ぎプロセスが開始されたことを確認します。<li>**- ForceTakeover** オプションは、引き継ぎをブロックしている Office 365 サービスが管理されていない組織に含まれている場合など、外部管理者の引き継ぎを強制的に行う場合のみ、コマンドレットに追加する必要があります。
+`confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>お使いのドメイン名がまだ確認済みではない場合、 **-ForceTakeover** オプションを使って続行できます。 TXT レコードが作成され、引き継ぎプロセスが開始されたことを確認します。<li>**- ForceTakeover** オプションは、引き継ぎをブロックしている Microsoft 365 サービスが管理されていない組織に含まれている場合など、外部管理者の引き継ぎを強制的に行う場合のみ、コマンドレットに追加する必要があります。
 `get-msoldomain` | ドメインの一覧に、ドメイン名が "**確認済み**" と表示されるようになりました。
 
 > [!NOTE]

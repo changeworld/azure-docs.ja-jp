@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/21/2019
-ms.openlocfilehash: aacec8830948e08f66d71da88897670f7ef43788
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/14/2020
+ms.openlocfilehash: c6a2d38644d844cb1231a24465478b7f70a85111
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81606132"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531154"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>マッピング データ フロー内の列パターンを使用する
 
@@ -27,17 +27,17 @@ ms.locfileid: "81606132"
 
 ## <a name="column-patterns-in-derived-column-and-aggregate"></a>派生列および集計の列パターン
 
-派生列内または集計変換の [集計] タブ内で列パターンを追加するには、既存の列の右側にあるプラス記号のアイコンをクリックします。 **[Add column pattern]\(列パターンを追加する\)** を選択します。 
+派生列、集計、またはウィンドウ変換における列パターンを追加するには、列リストの上にある **[追加]** か、既存の派生列の横にあるプラス記号をクリックします。 **[列パターンの追加]** を選択します。
 
-![列パターン](media/data-flow/columnpattern.png "列パターン")
+![列パターン](media/data-flow/add-column-pattern.png "列パターン")
 
 [式ビルダー](concepts-data-flow-expression-builder.md)を使用して、一致条件を入力します。 列の `name`、`type`、`stream`、および `position` を基に列と照合するブール式を作成します。 パターンは、条件から true が返される任意の列 (誤差または定義) に影響を及ぼします。
 
 下の 2 つの式ボックスには、影響を受ける列の新しい名前と値を、一致条件によって指定します。 一致したフィールドの既存の値を参照するには、`$$` を使用します。 左側の式ボックスには名前を定義し、右側の式ボックスには値を定義します。
 
-![列パターン](media/data-flow/columnpattern2.png "列パターン")
+![列パターン](media/data-flow/edit-column-pattern.png "列パターン")
 
-上の列パターンでは、double 型のすべての列と照合して、一致ごとに 1 つの集計列を作成します。 新しい列の名前は、一致した列の名前を '_total' と連結したものになります。 新しい列の値は、既存の double 値を丸めて集計した合計です。
+上の列パターンでは、double 型のすべての列と照合して、一致ごとに 1 つの派生列を作成します。 列名フィールドとして `$$` を記すことによって、一致した各列が同じ名前で更新されます。 各列の値は、小数点以下第 3 位を四捨五入した既存の値です。
 
 一致条件が正しいことを確認するには、 **[検査]** タブ内にある定義列の出力スキーマを検証するか、または **[データのプレビュー]** タブ内にあるデータのスナップショットを取得できます。 
 

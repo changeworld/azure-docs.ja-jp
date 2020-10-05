@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 02/25/2019
 ms.topic: conceptual
 ms.custom: devx-track-python
-ms.openlocfilehash: 0b0fab40eb95fabd4b74e809c9e6cd6f6573f513
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 1ab0b2def1a22470c1d0b6339e1525cd683b4a0b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852907"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987565"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>Azure Automation で Python 2 パッケージを管理する
 
@@ -21,15 +21,15 @@ Azure Automation では、Azure および Linux Hybrid Runbook Worker で Python
 
 Automation アカウントの **[共有リソース]** で **[Python 2 パッケージ]** を選択します。 **[+ Python 2 パッケージを追加する]** をクリックします。
 
-![Python パッケージを追加する](media/python-packages/add-python-package.png)
+:::image type="content" source="media/python-packages/add-python-package.png" alt-text="左側のメニューに Python 2 パッケージが表示され、[Python 2 パッケージを追加する] が強調表示されている [Python 2 パッケージ] ページのスクリーンショット。":::
 
 [Python 2 パッケージの追加] ページで、アップロードするローカル パッケージを選択します。 パッケージは、 **.whl** または **.tar.gz** ファイルの場合があります。 パッケージを選択したら、 **[OK]** をクリックしてアップロードします。
 
-![Python パッケージを追加する](media/python-packages/upload-package.png)
+:::image type="content" source="media/python-packages/upload-package.png" alt-text="左側のメニューに Python 2 パッケージが表示され、[Python 2 パッケージを追加する] が強調表示されている [Python 2 パッケージ] ページのスクリーンショット。":::
 
 パッケージがインポートされると、Automation アカウントの [Python 2 パッケージ] ページに一覧表示されます。 パッケージを削除する必要がある場合は、パッケージを選択し、 **[削除]** をクリックします。
 
-![パッケージ一覧](media/python-packages/package-list.png)
+:::image type="content" source="media/python-packages/package-list.png" alt-text="左側のメニューに Python 2 パッケージが表示され、[Python 2 パッケージを追加する] が強調表示されている [Python 2 パッケージ] ページのスクリーンショット。":::
 
 ## <a name="import-packages-with-dependencies"></a>依存関係があるパッケージをインポートする
 
@@ -54,7 +54,7 @@ C:\Python27\Scripts\pip2.7.exe download -d <output dir> <package name>
 * -a \<automationAccount\>
 * -m \<modulePackage\>
 
-![パッケージ一覧](media/python-packages/import-python-runbook.png)
+:::image type="content" source="media/python-packages/import-python-runbook.png" alt-text="左側のメニューに Python 2 パッケージが表示され、[Python 2 パッケージを追加する] が強調表示されている [Python 2 パッケージ] ページのスクリーンショット。":::
 
 Runbook では、ダウンロードするパッケージを指定できます。 たとえば、`Azure` パラメーターを使用すると、すべての Azure モジュールとすべての依存関係 (約 105 個) がダウンロードされます。
 

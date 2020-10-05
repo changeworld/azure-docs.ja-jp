@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/02/2020
-ms.openlocfilehash: 5a40328274fbc776ea02efa0a86422763794d5be
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.date: 09/04/2020
+ms.openlocfilehash: 5a09105dac89f3dc241140f16f3d4be72cc97493
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378816"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483628"
 ---
 # <a name="azure-ad-and-transactable-saas-offers-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースにおける Azure AD と取引可能な SaaS オファー
 
@@ -25,7 +25,7 @@ ms.locfileid: "89378816"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-パートナー センターで [SaaS オファーを作成する](./partner-center-portal/create-new-saas-offer.md)場合、オファーのリスト登録に表示されるアクション オプションに対する特定の呼び出しのセットから選択します。 選択することで、コマーシャル マーケットプレースでオファーがどのように処理されるかが決まります。 Microsoft を通じて販売されたオファーは、取引可能なオファーと呼ばれます。 すべての取引可能なオファーに対して、Microsoft が顧客に代わって請求を行います。 Microsoft を通して販売し、Microsoft が代理で取引をホストすることを選んだ場合は ( **[はい]** オプション)、取引可能なオファーを作成することを選択しており、この記事が参考になります。 全体を読むことをお勧めします。
+パートナー センターで [SaaS オファーを作成する](./partner-center-portal/create-new-saas-offer.md)場合、オファーのリスト登録に表示される特定のリスト オプションのセットから選択します。 選択することで、コマーシャル マーケットプレースでオファーがどのように処理されるかが決まります。 Microsoft を通じて販売されたオファーは、取引可能なオファーと呼ばれます。 すべての取引可能なオファーに対して、Microsoft が顧客に代わって請求を行います。 Microsoft を通して販売し、Microsoft が代理で取引をホストすることを選んだ場合は ( **[はい]** オプション)、取引可能なオファーを作成することを選択しており、この記事が参考になります。 全体を読むことをお勧めします。
 
 コマーシャル マーケットプレース経由で単にオファーを一覧に表示するだけで、取引は別個に処理することを選んだ場合は ( **[なし]** オプション)、潜在顧客がオファーにアクセスする方法として、次の 3 つのオプションがあります: [今すぐ入手する] (無料)、[お試し]、[連絡してください]。 **[今すぐ入手する] (無料)** または **[お試し]** を選んだ場合は、この記事は参考になりません。 代わりに、「[コマーシャル マーケットプレースで無料または試用版 SaaS オファーのランディング ページを構築する](./azure-ad-free-or-trial-landing-page.md)」を参照してください。 **[連絡してください]** を選んだ場合は、発行元に直接の責任はありません。 パートナー センターでのオファーの作成を継続してください。
 
@@ -45,7 +45,7 @@ Azure AD を利用すると、コマーシャル マーケットプレースの�
 
 この図は、購入管理の 4 つのプロセスの手順を示しています。
 
-:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-1-4.png" alt-text="購入管理の 4 つのプロセスの手順を示します。":::
+:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-1-4.png" alt-text="購入管理、サブスクリプション管理、および省略可能なユーザー管理プロセスの手順を示します。":::
 
 この表は、購入管理プロセスの手順の詳細を示しています。
 
@@ -61,7 +61,7 @@ Azure AD を利用すると、コマーシャル マーケットプレースの�
 
 この図は、サブスクリプション管理の 2 つのプロセスの手順を示しています。
 
-:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-5-6.png" alt-text="サブスクリプション管理の 2 つのプロセスの手順を示します。":::
+:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-5-6.png" alt-text="購入管理、サブスクリプション管理、および省略可能なユーザー管理プロセスの手順を示します。":::
 
 この表は、サブスクリプション管理プロセスの手順の詳細を示しています。
 
@@ -75,7 +75,7 @@ Azure AD を利用すると、コマーシャル マーケットプレースの�
 
 この図は、ユーザー管理の 3 つのプロセスの手順を示しています。
 
-:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-7-9.png" alt-text="ユーザー管理の 3 つの省略可能なプロセスの手順を示しています。":::
+:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-7-9.png" alt-text="購入管理、サブスクリプション管理、および省略可能なユーザー管理プロセスの手順を示します。":::
 
 プロセスの手順 7 から 9 は、省略可能なユーザー管理プロセスの手順です。 Azure AD シングル サインオン (SSO) をサポートする発行元に対して、追加の特典が提供されます。 この表は、ユーザー管理プロセスの手順の詳細を示しています。
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 9c8238e6e0b52a625c76f79fa0dd5a91dd640fb8
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: dabe914ffd4e84e8ded5c0e3b519036479fe33ec
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447847"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987601"
 ---
 # <a name="migrate-azure-monitor-logs-update-deployments-to-azure-portal"></a>Azure Monitor ログの更新プログラムの展開を Azure portal に移行する
 
@@ -33,7 +33,7 @@ Operations Management Suite (OMS) ポータルは[非推奨](../azure-monitor/pl
 
 3. Automation アカウントで、 **[Update Management]** をクリックします。
 
-    ![更新管理](media/migrate-oms-update-deployments/azure-automation.png)
+    :::image type="content" source="media/migrate-oms-update-deployments/azure-automation.png" alt-text="[Update Management] ページのスクリーンショット。":::
 
 4. Azure portal で、 **[すべてのサービス]** の下の **[Automation アカウント]** を選択します。 
 
@@ -43,7 +43,7 @@ Operations Management Suite (OMS) ポータルは[非推奨](../azure-monitor/pl
 
 OMS ポータルで作成されたすべての更新プログラムの展開には、[保存された検索条件](../azure-monitor/platform/computer-groups.md)があります。これはコンピューター グループとも呼ばれ、存在する更新プログラムの展開と同じ名前を持ちます。 保存された検索条件には、更新プログラムの展開でスケジュールされていたコンピューターの一覧が含まれています。
 
-![更新管理](media/migrate-oms-update-deployments/oms-deployment.png)
+:::image type="content" source="media/migrate-oms-update-deployments/oms-deployment.png" alt-text="[Update Management] ページのスクリーンショット。":::
 
 この既存の保存された検索条件を使用するには、次の手順に従います。
 

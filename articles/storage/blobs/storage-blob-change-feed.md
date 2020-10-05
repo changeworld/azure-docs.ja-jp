@@ -1,21 +1,21 @@
 ---
-title: Azure Blob Storage の変更フィード (プレビュー) | Microsoft Docs
+title: Azure Blob Storage の変更フィード | Microsoft Docs
 description: Azure Blob Storage の変更フィード ログとその使用方法を学習します。
 author: normesta
 ms.author: normesta
-ms.date: 11/04/2019
+ms.date: 09/08/2020
 ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 09a97897ca7e3984c7003c1dbbca65cddaec1ee6
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: c3348356561ea74bb5e0b5bc46fccee1ada82755
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055426"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89568236"
 ---
-# <a name="change-feed-support-in-azure-blob-storage-preview"></a>Azure Blob Storage の変更フィードのサポート (プレビュー)
+# <a name="change-feed-support-in-azure-blob-storage"></a>Azure Blob Storage の変更フィードのサポート
 
 変更フィードの目的は、ストレージ アカウント内の BLOB と BLOB メタデータに対して行われるすべての変更のトランザクション ログを提供することです。 変更フィードでは、これらの変更の**順序指定済み**、**保証済み**、**永続**、**不変**、**読み取り専用**ログが提供されます。 クライアント アプリケーションでは、ストリーミングまたはバッチ モードで、いつでもこれらのログを読み取ることができます。 変更フィードを使用すると、低コストで、BLOB ストレージ アカウントで発生する変更イベントを処理する効率的でスケーラブルなソリューションを構築できます。
 
@@ -56,9 +56,6 @@ ms.locfileid: "88055426"
 
 - GPv2 と BLOB ストレージ アカウントだけが、変更フィードを有効にできます。 Premium BlockBlobStorage アカウント、および階層型名前空間が有効なアカウントは現在サポートされていません。 GPv1 ストレージ アカウントはサポートされていませんが、ダウンタイムなしで GPv2 にアップグレードできます。詳細については、[GPv2 ストレージ アカウントへのアップグレード](../common/storage-account-upgrade.md)に関するページを参照してください。
 
-> [!IMPORTANT]
-> 変更フィードはパブリック プレビュー段階であり、**米国中西部**、**米国西部 2**、**フランス中部**、**フランス南部**、**カナダ中部**、および **カナダ東部**リージョンで利用できます。 この記事の[条件](#conditions)に関するセクションを参照してください。 プレビューに登録する場合は、この記事の[サブスクリプションの登録](#register)に関するセクションを参照してください。 ストレージ アカウントで変更フィードを有効にする前に、サブスクリプションを登録する必要があります。
-
 ### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 Azure portal を使用して、ストレージ アカウントで変更フィードを有効にします。
@@ -85,10 +82,10 @@ PowerShell を使用して変更フィードを有効にします。
 
 2. PowerShell コンソールを閉じてから、再度開きます。
 
-3. **Az.Storage** プレビュー モジュールをインストールします。
+3. **Az.Storage** モジュールのバージョン 2.5.0 以降をインストールします。
 
    ```powershell
-   Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.8.1-preview –AllowPrerelease –AllowClobber –Force
+   Install-Module Az.Storage –Repository PSGallery -RequiredVersion 2.5.0 –AllowClobber –Force
    ```
 
 4. `Connect-AzAccount` コマンドで Azure サブスクリプションにサインインし、画面上の指示に従って認証を行います。
@@ -289,43 +286,18 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 
 ```
 
-<a id="register"></a>
-
-## <a name="register-your-subscription-preview"></a>サブスクリプションを登録する (プレビュー)
-
-変更フィードはパブリックプ レビュー段階にすぎないため、この機能を使用するにはサブスクリプションを登録する必要があります。
-
-### <a name="register-by-using-powershell"></a>PowerShell を使用して登録する
-
-PowerShell コンソールで、これらのコマンドを実行します。
-
-```powershell
-Register-AzProviderFeature -FeatureName Changefeed -ProviderNamespace Microsoft.Storage
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-   
-### <a name="register-by-using-azure-cli"></a>Azure CLI を使用して登録する
-
-Azure Cloud Shell で、これらのコマンドを実行します。
-
-```azurecli
-az feature register --namespace Microsoft.Storage --name Changefeed
-az provider register --namespace 'Microsoft.Storage'
-```
-
 <a id="conditions"></a>
 
-## <a name="conditions-and-known-issues-preview"></a>条件と既知の問題 (プレビュー)
+## <a name="conditions-and-known-issues"></a>条件と既知の問題
 
-このセクションでは、変更フィードの現在のパブリック プレビューにおける既知の問題と条件について説明します。 
-- プレビューでは、最初に[サブスクリプションを登録](#register)する必要があります。その後、米国中西部、米国西部 2、フランス中部、フランス南部、カナダ中部、およびカナダ東部の各リージョンで、お使いのストレージ アカウントに対して変更フィードを有効にすることができます。 
-- 変更フィードでは、作成、更新、削除、およびコピー操作のみをキャプチャします。 BLOB プロパティとメタデータの変更もキャプチャされます。 ただし、アクセス層のプロパティは、現在キャプチャされていません。 
+このセクションでは、変更フィードの現在のリリースにおける既知の問題と条件について説明します。 
+
 - 1 つの変更の変更イベント レコードは、変更フィードに複数回表示される場合があります。
 - 変更フィード ログ ファイルに時間ベースの保持ポリシーを設定してそのファイルの有効期間を管理することはまだできず、BLOB を削除できません。
 - ログ ファイルの `url` プロパティは現在、常に空です。
 - segments.json ファイルの `LastConsumable` プロパティでは、変更フィードで終了する最初のセグメントがリストされません。 この問題は、最初のセグメントが終了した後でのみ発生します。 最初の 1 時間後の後続のすべてのセグメントは、`LastConsumable` プロパティで正確にキャプチャされます。
 - 現在、ListContainers API を呼び出しても **$blobchangefeed** コンテナーを表示できず、このコンテナーは Azure portal や Storage Explorer に表示されません。 コンテンツを表示するには、$blobchangefeed コンテナーで直接 ListBlobs API を呼び出します。
-- 以前に[アカウントのフェールオーバー](../common/storage-disaster-recovery-guidance.md)を開始したストレージ アカウントでは、ログ ファイルが表示されない問題が発生することがあります。 また、将来のアカウントのフェールオーバーもプレビュー中にログ ファイルに影響を与える可能性があります。
+- 以前に[アカウントのフェールオーバー](../common/storage-disaster-recovery-guidance.md)を開始したストレージ アカウントでは、ログ ファイルが表示されない問題が発生することがあります。 また、将来のアカウントのフェールオーバーもログ ファイルに影響を与える可能性があります。
 
 ## <a name="faq"></a>よく寄せられる質問
 

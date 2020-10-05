@@ -12,22 +12,22 @@ ms.date: 03/28/2019
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f45cc2444a14fc138d201e3d7f81e687f53d3ac
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1cce42cdb63fcfcb9a5841f2f2199daf2bb92304
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285902"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604174"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する
 
-セキュリティを重視する大規模な組織は、Office 365 などのクラウド サービスへの移行を望んでいますが、ユーザーが承認済みリソースにしかアクセスできないことを認識しておく必要があります。 従来より、企業ではアクセスを管理するときにドメイン名や IP アドレスを制限しています。 この方法は、SaaS (サービスとしてのソフトウェア) アプリがパブリック クラウドでホストされ、[outlook.office.com](https://outlook.office.com/) や [login.microsoftonline.com](https://login.microsoftonline.com/) などの共有ドメイン名で実行されている環境では失敗します。 これらのアドレスをブロックすると、ユーザーを承認済みの ID やリソースに単に制限するのではなく、ユーザーは Web 上の Outlook にまったくアクセスできなくなります。
+セキュリティを重視する大規模な組織は、Microsoft 365 などのクラウド サービスへの移行を望んでいますが、ユーザーが承認済みリソースにしかアクセスできないことを認識しておく必要があります。 従来より、企業ではアクセスを管理するときにドメイン名や IP アドレスを制限しています。 この方法は、SaaS (サービスとしてのソフトウェア) アプリがパブリック クラウドでホストされ、[outlook.office.com](https://outlook.office.com/) や [login.microsoftonline.com](https://login.microsoftonline.com/) などの共有ドメイン名で実行されている環境では失敗します。 これらのアドレスをブロックすると、ユーザーを承認済みの ID やリソースに単に制限するのではなく、ユーザーは Web 上の Outlook にまったくアクセスできなくなります。
 
-この課題を解決する Azure Active Directory (Azure AD) ソリューションが、テナント制限と呼ばれる機能です。 テナント制限を使用すると、組織は、アプリケーションがシングル サインオンに使用する Azure AD テナントに基づいて SaaS クラウド アプリケーションへのアクセスを制御できます。 たとえば、自分の組織の Office 365 アプリケーションへのアクセスは許可し、これらの同じアプリケーションの他の組織のインスタンスにはアクセスできないようにすることが可能です。  
+この課題を解決する Azure Active Directory (Azure AD) ソリューションが、テナント制限と呼ばれる機能です。 テナント制限を使用すると、組織は、アプリケーションがシングル サインオンに使用する Azure AD テナントに基づいて SaaS クラウド アプリケーションへのアクセスを制御できます。 たとえば、自分の組織の Microsoft 365 アプリケーションへのアクセスは許可し、これらの同じアプリケーションの他の組織のインスタンスにはアクセスできないようにすることが可能です。  
 
 テナント制限では、組織はユーザーがアクセスを許可されているテナントの一覧を指定できます。 Azure AD は、これらの許可されているテナントへのアクセスだけを許可します。
 
-この記事では Office 365 のテナント制限に重点を置いていますが、この機能は、Azure AD でのシングル サインオンに先進認証プロトコルを使用するすべての SaaS クラウド アプリで動作します。 Office 365 で使用する Azure AD テナントとは異なる テナントで SaaS アプリを使用する場合は、必要なすべてのテナントが許可されていることを確認してください。 SaaS クラウド アプリの詳細については、[Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory) をご覧ください。
+この記事では Microsoft 365 のテナント制限に重点を置いていますが、この機能は、Azure AD でのシングル サインオンに先進認証プロトコルを使用するすべての SaaS クラウド アプリで動作します。 Microsoft 365 で使用する Azure AD テナントとは異なる テナントで SaaS アプリを使用する場合は、必要なすべてのテナントが許可されていることを確認してください。 SaaS クラウド アプリの詳細については、[Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory) をご覧ください。
 
 ## <a name="how-it-works"></a>しくみ
 
@@ -37,11 +37,11 @@ ms.locfileid: "87285902"
 
 2. **オンプレミスのプロキシ サーバー インフラストラクチャ**: このインフラストラクチャは、トランスポート層セキュリティ (TLS) 検査に対応したプロキシ デバイスです。 許可されているテナントのリストを含むヘッダーを Azure AD 宛てのトラフィックに挿入するようにプロキシを構成する必要があります。
 
-3. **クライアント ソフトウェア**: テナント制限をサポートするには、プロキシ インフラストラクチャがトラフィックをインターセプトできるように、クライアント ソフトウェアはトークンを直接 Azure AD に要求する必要があります。 先進認証 (OAuth 2.0 など) を使用する Office クライアントと同様に、ブラウザー ベースの Office 365 アプリケーションは現在、テナント制限をサポートしています。
+3. **クライアント ソフトウェア**: テナント制限をサポートするには、プロキシ インフラストラクチャがトラフィックをインターセプトできるように、クライアント ソフトウェアはトークンを直接 Azure AD に要求する必要があります。 先進認証 (OAuth 2.0 など) を使用する Office クライアントと同様に、ブラウザー ベースの Microsoft 365 アプリケーションは現在、テナント制限をサポートしています。
 
-4. **先進認証**: テナント制限を使用し、許可されていないすべてのテナントへのアクセスをブロックするには、クラウド サービスは先進認証を使用する必要があります。 既定で先進認証プロトコルを使用するように Office 365 クラウド サービスを構成する必要があります。 Office 365 による最新の認証のサポートに関する最新情報については、「[Updated Office 365 modern authentication (Office 365 の最新の認証の更新)](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)」をご覧ください。
+4. **先進認証**: テナント制限を使用し、許可されていないすべてのテナントへのアクセスをブロックするには、クラウド サービスは先進認証を使用する必要があります。 既定で先進認証プロトコルを使用するように Microsoft 365 クラウド サービスを構成する必要があります。 Microsoft 365 による最新の認証のサポートに関する最新情報については、[Office 365 の最新の認証の更新](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)に関するページをご覧ください。
 
-次の図は、おおまかなトラフィック フローを示しています。 テナント制限では、TLS 検査は Office 365 クラウド サービスではなく、Azure AD へのトラフィック上でのみ必要です。 Azure AD への認証のためのトラフィック量は一般に、Exchange Online や SharePoint Online などの SaaS アプリケーションへのトラフィック量よりはるかに少ないため、この区別が重要です。
+次の図は、おおまかなトラフィック フローを示しています。 テナント制限では、TLS 検査は Microsoft 365 クラウド サービスではなく、Azure AD へのトラフィック上でのみ必要です。 Azure AD への認証のためのトラフィック量は一般に、Exchange Online や SharePoint Online などの SaaS アプリケーションへのトラフィック量よりはるかに少ないため、この区別が重要です。
 
 ![テナント制限のトラフィック フロー - 図](./media/tenant-restrictions/traffic-flow.png)
 
@@ -63,7 +63,7 @@ ms.locfileid: "87285902"
 
 - クライアントは、TLS 通信でプロキシによって提示される証明書チェーンを信頼する必要があります。 たとえば、内部[公開キー インフラストラクチャ (PKI)](/windows/desktop/seccertenroll/public-key-infrastructure) からの証明書が使用されている場合は、内部発行のルート証明機関証明書を信頼する必要があります。
 
-- この機能は Office 365 サブスクリプションに含まれていますが、テナント制限を使用して他の SaaS アプリへのアクセスを制御する場合は、Azure AD Premium 1 ライセンスが必要です。
+- この機能は Microsoft 365 サブスクリプションに含まれていますが、テナント制限を使用して他の SaaS アプリへのアクセスを制御する場合は、Azure AD Premium 1 ライセンスが必要です。
 
 #### <a name="configuration"></a>構成
 
@@ -129,16 +129,16 @@ Azure Portal の他のレポートと同様に、フィルターを使用して�
 - **場所**
 - **ターゲット テナント ID**
 
-## <a name="office-365-support"></a>Office 365 サポート
+## <a name="microsoft-365-support"></a>Microsoft 365 サポート
 
-テナント制限を完全にサポートするには、Office 365 アプリケーションは次の 2 つの条件を満たす必要があります。
+テナント制限を完全にサポートするには、Microsoft 365 アプリケーションは次の 2 つの条件を満たす必要があります。
 
 1. 使用されるクライアントが先進認証をサポートしている。
 2. クラウド サービスの既定の認証プロトコルとして最新の認証が有効になっている。
 
 最新の認証を現在サポートしている Office クライアントに関する最新情報については、「[Updated Office 365 modern authentication (Office 365 の最新の認証の更新)](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)」をご覧ください。 このページには、特定の Exchange Online テナントと Skype for Business Online テナントで最新の認証を有効にする手順へのリンクも含まれています。 SharePoint Online では、先進認証が既定で有効になっています。
 
-Office 365 ブラウザー ベースのアプリケーション (Office ポータル、Yammer、SharePoint サイト、Outlook on the Web など) は現在、テナント制限をサポートしています。 シック クライアント (Outlook、Skype for Business、Word、Excel、PowerPoint など) は、先進認証を使用している場合にのみテナント制限を適用できます。  
+Microsoft 365 ブラウザー ベースのアプリケーション (Office ポータル、Yammer、SharePoint サイト、Outlook on the Web など) は現在、テナント制限をサポートしています。 シック クライアント (Outlook、Skype for Business、Word、Excel、PowerPoint など) は、先進認証を使用している場合にのみテナント制限を適用できます。  
 
 先進認証をサポートする Outlook および Skype for Business クライアントは、先進認証が有効になっていないテナントに対して従来のプロトコルを引き続き使用できる可能性があるため、テナント制限を実質的に迂回します。 テナント制限では、従来のプロトコルを使用するアプリケーションが認証中に login.microsoftonline.com、login.microsoft.com、または login.windows.net に接続する場合、それらのアプリケーションがブロックされる可能性があります。
 

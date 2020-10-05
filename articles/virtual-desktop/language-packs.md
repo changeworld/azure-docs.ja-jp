@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 08/21/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: de495d18220500e5aa5653e89776c2634d5b1c85
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: fbc2aba21212a83bd73d5664f4fe288017954c0d
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719149"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084211"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>Windows 10 マルチセッション イメージへの言語パックの追加
 
@@ -30,7 +30,7 @@ Windows 10 Enterprise マルチセッション イメージをカスタマイズ
 
 - Windows 10 Enterprise マルチセッション バージョン 1903 以降を搭載した Azure 仮想マシン (VM)
 
-- イメージで使用する OS バージョンの言語 ISO およびオンデマンド機能 (FOD) ディスク 1。 いずれも次の場所からダウンロードできます。
+- イメージで使用する OS バージョンの言語 ISO、オンデマンド機能 (FOD) ディスク 1、および受信トレイ アプリ ISO。 いずれも次の場所からダウンロードできます。
      
      - 言語 ISO:
         - [Windows 10 バージョン 1903 または 1909 言語パック ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
@@ -39,6 +39,10 @@ Windows 10 Enterprise マルチセッション イメージをカスタマイズ
      - FOD ディスク 1 ISO:
         - [Windows 10 バージョン 1903 または 1909 FOD ディスク 1 ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
         - [Windows 10 バージョン 2004 FOD ディスク 1 ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
+        
+     - 受信トレイ アプリ ISO:
+        - [Windows 10 バージョン 1903 または 1909 受信トレイ アプリ ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_InboxApps.iso)
+        - [Windows 10 バージョン 2004 受信トレイ アプリ ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_InboxApps.iso)
 
 - Azure ファイル共有または Windows ファイル サーバー仮想マシン上のファイル共有
 
@@ -47,15 +51,16 @@ Windows 10 Enterprise マルチセッション イメージをカスタマイズ
 
 ## <a name="create-a-content-repository-for-language-packages-and-features-on-demand"></a>言語パッケージとオンデマンド機能のコンテンツ リポジトリを作成する
 
-言語パッケージと FOD のコンテンツ リポジトリを作成するには、次のようにします。
+言語パッケージと FOD 用のコンテンツ リポジトリおよび受信トレイ アプリ パッケージ用のリポジトリを作成するには、次の手順に従います。
 
-1. Azure VM 上で、Windows 10 Enterprise マルチセッション バージョン 1903、1909、2004 イメージの Windows 10 Multi-Language ISO と FOD を「[前提条件](#prerequisites)」のリンクからダウンロードします。
+1. Azure VM 上で、Windows 10 Enterprise マルチセッション バージョン 1903、1909、2004 イメージの Windows 10 Multi-Language ISO、FOD、および受信トレイ アプリを「[前提条件](#prerequisites)」のリンクからダウンロードします。
 
 2. VM 上で ISO ファイルを開いてマウントします。
 
 3. 言語パック ISO にアクセスし、**LocalExperiencePacks** および **x64\\langpacks** フォルダーの内容をコピーし、その内容をファイル共有に貼り付けます。
 
 4. **FOD ISO ファイル**にアクセスし、その内容をすべてコピーしてファイル共有に貼り付けます。
+5. 受信トレイ アプリ ISO で **amd64fre** フォルダーにアクセスし、準備した受信トレイ アプリ用のリポジトリにコンテンツをコピーします。
 
      >[!NOTE]
      > 限られたストレージを使用して作業している場合は、ユーザーに必要なことがわかっている言語のファイルのみをコピーします。 ファイル名に含まれる言語コードを参照して、ファイルを区別することができます。 たとえば、フランス語のファイル名には "fr-FR" というコードが含まれています。 使用可能なすべての言語の言語コードの完全な一覧については、[Windows で利用可能な言語パック](/windows-hardware/manufacture/desktop/available-language-packs-for-windows)のページを参照してください。
@@ -66,7 +71,7 @@ Windows 10 Enterprise マルチセッション イメージをカスタマイズ
      > [!div class="mx-imgBorder"]
      > ![ファイル名に言語タグ "Jpan" を含む日本語の言語パックの例。](media/language-pack-example.png)
 
-5. 言語コンテンツ リポジトリ共有に対するアクセス許可を設定して、カスタム イメージの作成に使用する VM から読み取りアクセスができるようにします。
+6. 言語コンテンツ リポジトリ共有に対するアクセス許可を設定して、カスタム イメージの作成に使用する VM から読み取りアクセスができるようにします。
 
 ## <a name="create-a-custom-windows-10-enterprise-multi-session-image-manually"></a>カスタム Windows 10 Enterprise マルチセッション イメージを手動で作成する
 
@@ -75,7 +80,7 @@ Windows 10 Enterprise マルチセッション イメージをカスタマイズ
 1. Azure VM をデプロイし、Azure ギャラリーにアクセスして、使用している Windows 10 Enterprise マルチセッションの現在のバージョンを選択します。
 2. VM をデプロイしたら、ローカル管理者として RDP を使用して VM に接続します。
 3. VM に最新の Windows 更新プログラムがすべて含まれていることを確認します。 必要に応じて、更新プログラムをダウンロードし、VM を再起動します。
-4. 言語パッケージと FOD のファイル共有リポジトリに接続して、ドライブ (たとえば、ドライブ E) にマウントします。
+4. 言語パッケージ、FOD、受信トレイ アプリのファイル共有リポジトリに接続して、ドライブ (たとえば、ドライブ E) にマウントします。
 
 ## <a name="create-a-custom-windows-10-enterprise-multi-session-image-automatically"></a>カスタム Windows 10 Enterprise マルチセッション イメージを自動的に作成する
 
@@ -161,6 +166,56 @@ Set-WinUserLanguageList $LanguageList -force
 
 スクリプトの実行が完了したら、言語パックが正しくインストールされていることを確認します。そのためには、 **[スタート]**  >  **[設定]**  >  **[時刻と言語]**  >  **[言語]** に移動します。 そこに言語ファイルがある場合は、完了しています。
 
+Windows イメージに言語を追加したら、追加した言語がサポートされるように受信トレイ アプリを更新する必要もあります。 これを行うには、プレインストールされているアプリを受信トレイ アプリ ISO のコンテンツで更新します。 この更新を切断されている (VM からインターネットにアクセスできない) 環境で実行するには、次の PowerShell スクリプト サンプルを使用してプロセスを自動化します。
+
+```powershell
+#########################################
+## Update Inbox Apps for Multi Language##
+#########################################
+##Set Inbox App Package Content Stores##
+[string]$InboxApps = "F:\"
+##Update Inbox Store Apps##
+$AllAppx = Get-Item $inboxapps\*.appx | Select-Object name
+$AllAppxBundles = Get-Item $inboxapps\*.appxbundle | Select-Object name
+$allAppxXML = Get-Item $inboxapps\*.xml | Select-Object name
+foreach ($Appx in $AllAppx) {
+    $appname = $appx.name.substring(0,$Appx.name.length-5)
+    $appnamexml = $appname + ".xml"
+    $pathappx = $InboxApps + "\" + $appx.Name
+    $pathxml = $InboxApps + "\" + $appnamexml
+    
+    if($allAppxXML.name.Contains($appnamexml)){
+    
+    Write-Host "Handeling with xml $appname"  
+  
+    Add-AppxProvisionedPackage -Online -PackagePath $pathappx -LicensePath $pathxml
+    } else {
+      
+      Write-Host "Handeling without xml $appname"
+      
+      Add-AppxProvisionedPackage -Online -PackagePath $pathappx -skiplicense
+    }
+}
+foreach ($Appx in $AllAppxBundles) {
+    $appname = $appx.name.substring(0,$Appx.name.length-11)
+    $appnamexml = $appname + ".xml"
+    $pathappx = $InboxApps + "\" + $appx.Name
+    $pathxml = $InboxApps + "\" + $appnamexml
+    
+    if($allAppxXML.name.Contains($appnamexml)){
+    Write-Host "Handeling with xml $appname"
+    
+    Add-AppxProvisionedPackage -Online -PackagePath $pathappx -LicensePath $pathxml
+    } else {
+       Write-Host "Handeling without xml $appname"
+      Add-AppxProvisionedPackage -Online -PackagePath $pathappx -skiplicense
+    }
+}
+```
+
+>[!IMPORTANT]
+>ISO に含まれている受信トレイ アプリは、プレインストールされている Windows アプリの最新バージョンではありません。 すべてのアプリの最新バージョンを入手するには、追加の言語をインストールした後に、Windows ストア アプリを使用してアプリを更新し、更新プログラムの手動検索を実行する必要があります。
+
 完了したら、必ず共有を解除してください。
 
 ## <a name="finish-customizing-your-image"></a>イメージのカスタマイズを完了する
@@ -177,15 +232,15 @@ Sysprep を実行するには、次のようにします。
      C:\Windows\System32\Sysprep\sysprep.exe /oobe /generalize /shutdown
      ```
 
-2. それを VM シャットダウン後にマネージド イメージにキャプチャします。「[Azure で一般化された VM の管理対象イメージを作成する](../virtual-machines/windows/capture-image-resource.md)」の手順に従ってください。
+2. 「[Azure で一般化された VM の管理対象イメージを作成する](../virtual-machines/windows/capture-image-resource.md)」の手順に従って、VM を停止してから、それをマネージド イメージにキャプチャします。
 
 3. これで、カスタマイズしたイメージを使用して Windows Virtual Desktop ホスト プールをデプロイできるようになりました。 ホスト プールのデプロイ方法の詳細については、「[チュートリアル: Azure portal を使用してホスト プールを作成する](create-host-pools-azure-marketplace.md)」を参照してください。
 
 ## <a name="enable-languages-in-windows-settings-app"></a>Windows 設定アプリで言語を有効にする
 
-最後に、各ユーザーの言語一覧に言語を追加して、[設定] メニューで優先する言語を選択できるようにする必要があります。
+最後に、ホスト プールをデプロイしたら、各ユーザーの言語一覧に言語を追加して、[設定] メニューで優先する言語を選択できるようにする必要があります。
 
-インストールした言語をユーザーが確実に選択できるようにするには、ユーザーとしてサインインし、次の PowerShell コマンドレットを実行して、インストールした言語パックを [言語] メニューに追加します。 このスクリプトは、ユーザーが自分のセッションにサインインしたときにアクティブになる自動化されたタスクとして設定することもできます。
+インストールした言語をユーザーが確実に選択できるようにするには、ユーザーとしてサインインし、次の PowerShell コマンドレットを実行して、インストールした言語パックを [言語] メニューに追加します。 このスクリプトは、ユーザーが自分のセッションにサインインしたときにアクティブになる自動化されたタスクまたはログオン スクリプトとして設定することもできます。
 
 ```powershell
 $LanguageList = Get-WinUserLanguageList

@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/10/2020
+ms.date: 09/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 6c0b03db281a054410b3c4f44e278dbccf32029f
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 12e6ae9dd14ebafb1da6bfbcfef64e2d65e876d8
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042685"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531714"
 ---
 # <a name="xml-format-in-azure-data-factory"></a>Azure Data Factory での XML 形式
 
@@ -35,7 +35,7 @@ XML 形式は、以下のコネクタでサポートされています。[Amazon
 | encodingName     | テスト ファイルの読み取り/書き込みに使用するエンコードの種類です。 <br>使用できる値は次のとおりです。"UTF-8"、"UTF-16"、"UTF-16BE"、"UTF-32"、"UTF-32BE"、"US-ASCII"、"UTF-7"、"BIG5"、"EUC-JP"、"EUC-KR"、"GB2312"、"GB18030"、"JOHAB"、"SHIFT-JIS"、"CP875"、"CP866"、"IBM00858"、"IBM037"、"IBM273"、"IBM437"、"IBM500"、"IBM737"、"IBM775"、"IBM850"、"IBM852"、"IBM855"、"IBM857"、"IBM860"、"IBM861"、"IBM863"、"IBM864"、"IBM865"、"IBM869"、"IBM870"、"IBM01140"、"IBM01141"、"IBM01142"、"IBM01143"、"IBM01144"、"IBM01145"、"IBM01146"、"IBM01147"、"IBM01148"、"IBM01149"、"ISO-2022-JP"、"ISO-2022-KR"、"ISO-8859-1"、"ISO-8859-2"、"ISO-8859-3"、"ISO-8859-4"、"ISO-8859-5"、"ISO-8859-6"、"ISO-8859-7"、"ISO-8859-8"、"ISO-8859-9"、"ISO-8859-13"、"ISO-8859-15"、"WINDOWS-874"、"WINDOWS-1250"、"WINDOWS-1251"、"WINDOWS-1252"、"WINDOWS-1253"、"WINDOWS-1254"、"WINDOWS-1255"、"WINDOWS-1256"、"WINDOWS-1257"、"WINDOWS-1258"。| いいえ       |
 | nullValue | null 値の文字列表現を指定します。<br/>既定値は**空の文字列**です。 | いいえ |
 | compression | ファイル圧縮を構成するためのプロパティのグループ。 アクティビティの実行中に圧縮/圧縮解除を行う場合は、このセクションを構成します。 | いいえ |
-| type<br>( *`compression` の下にあります*) | XML ファイルの読み取り/書き込みに使用される圧縮コーデックです。 <br>使用できる値は、**bzip2**、**gzip**、**deflate**、**ZipDeflate**、**snappy**、**lz4** です。 ファイルを保存するときに使用します。 既定では圧縮されません。<br>現在、コピー アクティビティでは "snappy" と "lz4" はサポートされておらず、マッピング データ フローでは "ZipDeflate" はサポートされていないことに**注意**してください。<br>コピー アクティビティを使用して **ZipDeflate** ファイルを圧縮解除し、ファイルベースのシンク データ ストアに書き込む場合、ファイルは既定で `<path specified in dataset>/<folder named as source zip file>/` フォルダーに抽出されることに**注意**してください。ZIP ファイル名をフォルダー構造として保持するかどうかを制御するには、[コピー アクティビティのソース](#xml-as-source)に対して `preserveZipFileNameAsFolder` を使用します。 | いいえ。  |
+| type<br>( *`compression` の下にあります*) | XML ファイルの読み取り/書き込みに使用される圧縮コーデックです。 <br>使用できる値は、**bzip2**、**gzip**、**deflate**、**ZipDeflate**、**TarGzip**、**snappy**、または **lz4** です。 既定では圧縮されません。<br>現在、コピー アクティビティでは "snappy" と "lz4" はサポートされておらず、マッピング データ フローでは "ZipDeflate" はサポートされていないことに**注意**してください。<br>コピー アクティビティを使用して **ZipDeflate**/**TarGzip** ファイルを圧縮解除し、ファイルベースのシンク データ ストアに書き込む場合、ファイルは既定で `<path specified in dataset>/<folder named as source compressed file>/` フォルダーに解凍されることに**注意**してください。圧縮ファイル名をフォルダー構造として保持するかどうかを制御するには、[コピー アクティビティのソース](#xml-as-source)に対して `preserveZipFileNameAsFolder`/`preserveCompressionFileNameAsFolder` を使用します。 | いいえ。  |
 | level<br/>( *`compression` の下にあります*) | 圧縮率です。 <br>使用できる値は、**Optimal** または **Fastest** です。<br>- **Fastest:** 圧縮操作は可能な限り短時間で完了しますが、圧縮後のファイルが最適に圧縮されていない場合があります。<br>- **Optimal**: 圧縮操作で最適に圧縮されますが、操作が完了するまでに時間がかかる場合があります。 詳細については、 [圧縮レベル](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) に関するトピックをご覧ください。 | いいえ       |
 
 Azure Blob Storage 上の XML データセットの例を次に示します。
@@ -87,7 +87,8 @@ Azure Blob Storage 上の XML データセットの例を次に示します。
 | validationMode | XML スキーマを検証するかどうかを指定します。<br>使用できる値は、**none** (既定値、検証なし)、**xsd** (XSD を使用して検証)、**dtd** (DTD を使用して検証) です。 | いいえ |
 | namespacePrefixes | 名前空間 URI とプレフィックスのマッピング。XML ファイルの解析時にフィールドに名前を付けるために使用されます。<br/>XML ファイルに名前空間があり、名前空間が有効になっている場合、既定では、フィールド名は XML ドキュメント内のものと同じになります。<br>このマップの名前空間 URI に対して定義された項目がある場合、フィールド名は `prefix:fieldName` です。 | いいえ |
 | compressionProperties | 特定の圧縮コーデックのデータを圧縮解除する方法のプロパティ グループ。 | いいえ       |
-| preserveZipFileNameAsFolder<br>( *`compressionProperties` の下にあります*) | **ZipDeflate** で入力データセットが圧縮構成されている場合に適用されます。 コピー時にソースの ZIP ファイル名をフォルダー構造として保持するかどうかを指定します。<br>- **true (既定)** に設定した場合、Data Factory は解凍されたファイルを `<path specified in dataset>/<folder named as source zip file>/` に書き込みます。<br>- **false** に設定した場合、Data Factory は解凍されたファイルを `<path specified in dataset>` に直接書き込みます。 競合または予期しない動作を避けるために、異なるソース ZIP ファイルに重複したファイル名がないことを確認します。  | いいえ |
+| preserveZipFileNameAsFolder<br>( *`compressionProperties`->`type` の下に `ZipDeflateReadSettings` として*)  | **ZipDeflate** で入力データセットが圧縮構成されている場合に適用されます。 コピー時にソースの ZIP ファイル名をフォルダー構造として保持するかどうかを指定します。<br>- **true (既定)** に設定した場合、Data Factory は解凍されたファイルを `<path specified in dataset>/<folder named as source zip file>/` に書き込みます。<br>- **false** に設定した場合、Data Factory は解凍されたファイルを `<path specified in dataset>` に直接書き込みます。 競合または予期しない動作を避けるために、異なるソース ZIP ファイルに重複したファイル名がないことを確認します。  | いいえ |
+| preserveCompressionFileNameAsFolder<br>( *`compressionProperties`->`type` の下に `TarGZipReadSettings` として*) | **TarGzip** で入力データセットが圧縮構成されている場合に適用されます。 コピー時にソースの圧縮ファイル名をフォルダー構造として保持するかどうかを指定します。<br>- **true (既定)** に設定した場合、Data Factory は圧縮解除されたファイルを `<path specified in dataset>/<folder named as source compressed file>/` に書き込みます。 <br>- **false** に設定した場合、Data Factory は圧縮解除されたファイルを `<path specified in dataset>` に直接書き込みます。 競合または予期しない動作を避けるために、異なるソース ファイルに重複したファイル名がないことを確認します。 | いいえ |
 
 ## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
 

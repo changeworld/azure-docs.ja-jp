@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 09/08/2020
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: c0031b09dbb3335113cb52c9b3ec5e4fd4fa2758
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8be53838f6262eaafc643bc78fd08b6f02d9bac6
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011581"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660269"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>クライアント アプリにオートコンプリートと検索候補を追加する
 
@@ -139,9 +139,11 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 ### <a name="suggest-function"></a>Suggest 関数
 
-C# と MVC アプリケーションを使用している場合は、Controllers ディレクトリにある **HomeController.cs** ファイルで、候補の結果用のクラスを作成できます。 .NET の場合、Suggest 関数は [DocumentsOperationsExtensions.Suggest メソッド](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet)に基づいています。
+C# と MVC アプリケーションを使用している場合は、Controllers ディレクトリにある **HomeController.cs** ファイルで、候補の結果用のクラスを作成できます。 .NET の場合、Suggest 関数は [DocumentsOperationsExtensions.Suggest メソッド](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet)に基づいています。 .NET SDK の詳細については、「[.NET アプリケーションから Azure Cognitive Search を使用する方法](./search-howto-dotnet-sdk.md)」を参照してください。
 
-`InitSearch` メソッドにより、Azure Cognitive Search サービスに対して認証済みの HTTP インデックス クライアントが作成されます。 .NET SDK の詳細については、「[.NET アプリケーションから Azure Cognitive Search を使用する方法](./search-howto-dotnet-sdk.md)」を参照してください。
+`InitSearch` メソッドにより、Azure Cognitive Search サービスに対して認証済みの HTTP インデックス クライアントが作成されます。 [SuggestParameters](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggestparameters) クラスのプロパティによって、結果で検索され返されるフィールド、一致の数、およびあいまい一致を使用するかどうかが決まります。 
+
+オートコンプリートの場合、あいまい一致は 1 つの編集距離に制限されます (1 つの文字が省略されているか間違っています)。 オートコンプリート クエリであいまい一致が発生した場合、インデックスのサイズとそのシャード化方法に応じて、予期しない結果が生じることがあります。 詳細については、[パーティションとシャード化の概念](search-capacity-planning.md#concepts-search-units-replicas-partitions-shards)に関するページをご覧ください。
 
 ```csharp
 public ActionResult Suggest(bool highlights, bool fuzzy, string term)
@@ -250,5 +252,5 @@ Autocomplete 関数は、検索用語の入力を取得します。 このメソ
 エンドツーエンドの手順や、入力と並行した検索の 2 つのエクスペリエンスを示すコードについては、次のリンクを参照してください。 どちらのコード例にも、検索候補とオートコンプリートのハイブリッド実装が含まれています。
 
 + [チュートリアル:C# での最初のアプリの作成 (レッスン 3)](tutorial-csharp-type-ahead-and-suggestions.md)
-+ [C# コード サンプル: azure-search-dotnet-samples/create-first-app/3-add-typeahead/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/3-add-typeahead)
++ [C# コード サンプル: azure-search-dotnet-samples/create-first-app/3-add-typeahead/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10/3-add-typeahead)
 + [C# および JavaScript と REST のサイド バイ サイド コード サンプル](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)

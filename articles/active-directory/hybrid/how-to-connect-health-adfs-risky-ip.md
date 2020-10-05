@@ -16,15 +16,15 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37489e2f2df063c6a974eaf5d401e6192cbf027c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 431b45f4ef3431e7fd1d34cf80278892470c36ef
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89296364"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660846"
 ---
 # <a name="risky-ip-report-public-preview"></a>危険な IP のレポート (パブリック プレビュー)
-AD FS のお客様は、エンド ユーザーが Office 365 などの SaaS アプリケーションにアクセスするための認証サービスを提供する目的で、パスワード認証エンドポイントをインターネットに公開する場合があります。 この場合、悪意のあるアクターが AD FS システムへのログインを試みて、エンド ユーザーのパスワードを推測し、アプリケーションのリソースにアクセスする可能性があります。 Windows Server 2012 R2 の AD FS 以降、これらの種類の攻撃を防止するためのエクストラネット アカウント ロックアウト機能が用意されています。 これよりも古いバージョンを使用している場合は、AD FS システムを Windows Server 2016 にアップグレードすることを強くお勧めします。 <br />
+AD FS のお客様は、エンド ユーザーが Microsoft 365 などの SaaS アプリケーションにアクセスするための認証サービスを提供する目的で、パスワード認証エンドポイントをインターネットに公開する場合があります。 この場合、悪意のあるアクターが AD FS システムへのログインを試みて、エンド ユーザーのパスワードを推測し、アプリケーションのリソースにアクセスする可能性があります。 Windows Server 2012 R2 の AD FS 以降、これらの種類の攻撃を防止するためのエクストラネット アカウント ロックアウト機能が用意されています。 これよりも古いバージョンを使用している場合は、AD FS システムを Windows Server 2016 にアップグレードすることを強くお勧めします。 <br />
 
 さらに、単一の IP アドレスから複数のユーザーに対してログイン試行が複数回実行される可能性もあります。 このような場合、ユーザーあたりの試行回数が AD FS のアカウント ロックアウト保護のしきい値に達しない可能性があります。 Azure AD Connect Health では、この状態を検出し、その発生時に管理者に通知する "危険な IP のレポート" が提供されるようになりました。 このレポートの主要な利点を次に示します。 
 - 失敗したパスワードベースのログインのしきい値を超える IP アドレスの検出

@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e230d3a4029d97a328280f581c126c7ec2d0bdb3
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 296aabdd79e1cd5c37248a0a44d57ebf17a4ea44
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89460798"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979417"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理のトラブルシューティング
 
@@ -75,7 +75,7 @@ ms.locfileid: "89460798"
 
 ### <a name="view-a-requests-delivery-errors"></a>要求の配信エラーを表示する
 
-**事前に必要なロール:** グローバル管理者、ユーザー管理者、カタログ所有者、またはアクセス パッケージ マネージャー
+**事前に必要なロール:** グローバル管理者、ユーザー管理者、カタログ所有者、アクセス パッケージマ ネージャーまたはアクセス パッケージ割り当てマネージャー
 
 1. Azure portal で **[Azure Active Directory]** をクリックし、 **[Identity Governance]** をクリックします。
 
@@ -103,7 +103,7 @@ ms.locfileid: "89460798"
 
 - 試用期間中にエラーが修正されなかった場合、要求の状態は **[Delivery failed]\(配信が失敗しました\)** または **[partially delivered]\(部分的に配信されました\)** である可能性があります。 その場合は **[再処理]** ボタンを使用できます。 要求の再処理には 7 日間かかります。
 
-**事前に必要なロール:** グローバル管理者、ユーザー管理者、カタログ所有者、またはアクセス パッケージ マネージャー
+**事前に必要なロール:** グローバル管理者、ユーザー管理者、カタログ所有者、アクセス パッケージマ ネージャーまたはアクセス パッケージ割り当てマネージャー
 
 1. Azure portal で **[Azure Active Directory]** をクリックし、 **[Identity Governance]** をクリックします。
 
@@ -121,7 +121,7 @@ ms.locfileid: "89460798"
 
 キャンセルできるのは、まだ配信されていないか、配信に失敗した保留中の要求のみです。それ以外の場合、**キャンセル** ボタンは淡色表示されます。
 
-**事前に必要なロール:** グローバル管理者、ユーザー管理者、カタログ所有者、またはアクセス パッケージ マネージャー
+**事前に必要なロール:** グローバル管理者、ユーザー管理者、カタログ所有者、アクセス パッケージマ ネージャーまたはアクセス パッケージ割り当てマネージャー
 
 1. Azure portal で **[Azure Active Directory]** をクリックし、 **[Identity Governance]** をクリックします。
 

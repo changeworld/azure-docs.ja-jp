@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 3d6f3a7a5fafc643b346d3df1306820114827049
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 058862f2b274ef4e956c82fbcc44dec92a270d32
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193668"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441053"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Data Lake Storage Gen1 を使用してビッグ データの要件に対応する
 
@@ -130,5 +130,5 @@ Data Lake Storage Gen1 でデータが利用できるようになったら、サ
 
 ![Data Lake Storage Gen1 のデータを視覚化する](./media/data-lake-store-data-scenarios/visualize-data.png "Data Lake Storage Gen1 のデータを視覚化する")
 
-* まず、[Azure Data Factory を使って、Data Lake Storage Gen1 から Azure SQL Data Warehouse にデータを移動](../data-factory/copy-activity-overview.md)することができます。
-* その後、 [Power BI を Azure SQL Data Warehouse と統合](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) して、データを視覚的に表現することができます。
+* まず、[Azure Data Factory を使って、Data Lake Storage Gen1 から Azure Synapse Analytics (旧称 SQL Data Warehouse) にデータを移動](../data-factory/copy-activity-overview.md)できます。
+* その後、[Power BI を Azure Synapse Analytics と統合](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md)して、データを視覚的に表現できます。

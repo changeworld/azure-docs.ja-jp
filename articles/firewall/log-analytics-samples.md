@@ -1,20 +1,20 @@
 ---
-title: Azure Firewall ログ分析のサンプル
+title: Azure Firewall の Azure Monitor ログ
 description: Azure Monitor ログを使って、Azure Firewall を分析できます。 サンプル ファイルが、Azure Monitor のビュー デザイナーに組み込まれています。
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: article
-ms.date: 01/23/2020
+ms.topic: how-to
+ms.date: 09/11/2020
 ms.author: victorh
-ms.openlocfilehash: bc34afe82c1b73afb5f3d5d1a07f2a5059590146
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5acbc1f3b8c5519c22105f05219ab2cef5c15892
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76705987"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023875"
 ---
-# <a name="azure-firewall-log-analytics-samples"></a>Azure Firewall ログ分析のサンプル
+# <a name="azure-monitor-logs-for-azure-firewall"></a>Azure Firewall の Azure Monitor ログ
 
 次の Azure Monitor ログのサンプルは、Azure Firewall のログの分析に使用できます。 サンプル ファイルは Azure Monitor のビュー デザイナーに組み込まれ、[Azure Monitor ビュー デザイナー](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer) の記事には、ビュー デザインの概念に関する詳細な情報が記載されています。
 
@@ -170,11 +170,11 @@ AzureDiagnostics
 
 次のログ サンプルは、ログ エントリに含まれるデータを示しています。
 
-![ログ エントリ](media/log-analytics-samples/log1.png)
+![ログ エントリ 1](media/log-analytics-samples/log1.png)
 
-![ログ エントリ](media/log-analytics-samples/log2.png)
+![ログ エントリ 2 ](media/log-analytics-samples/log2.png)
 
-![ログ エントリ](media/log-analytics-samples/log3.png)
+![ログ エントリ 3](media/log-analytics-samples/log3.png)
 ## <a name="next-steps"></a>次のステップ
 
 Azure Firewall の監視と診断については、「[チュートリアル: Azure Firewall のログとメトリックを監視する](tutorial-diagnostics.md)」を参照してください。

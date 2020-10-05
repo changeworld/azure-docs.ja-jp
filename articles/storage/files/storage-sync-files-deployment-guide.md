@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f2c8dbebce685eea67672a2b8c93d51e356ac69c
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: deffa5c75cbde4f9d95be549844478d4de87a685
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88226050"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069630"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure File Sync のデプロイ
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -157,7 +157,7 @@ Azure File Sync のデプロイでは最初に、選択したサブスクリプ�
 
 開いたウィンドウに、次の情報を入力します。
 
-- **Name**:ストレージ同期サービスの (サブスクリプションごとに) 一意の名前。
+- **Name**:ストレージ同期サービスの (リージョンごとに) 一意の名前。
 - **サブスクリプション**:ストレージ同期サービスを作成するサブスクリプション。 組織の構成方針によっては、1 つ以上のサブスクリプションにアクセスできることがあります。 Azure サブスクリプションは、各クラウド サービス (Azure Files など) に対する課金の最も基本的なコンテナーです。
 - **[リソース グループ]** :リソース グループは、ストレージ アカウントやストレージ同期サービスなどの Azure リソースの論理グループです。 Azure File Sync 用の新しいリソース グループを作成するか、既存のリソース グループを選択できます (リソース グループをコンテナーとして使用して、組織のリソースを論理的に分離することをお勧めします。たとえば、HR リソースや特定のプロジェクトのリソースをグループ化します)。
 - **[場所]** :Azure File Sync をデプロイするリージョン。この一覧ではサポートされているリージョンのみを使用できます。
@@ -403,6 +403,9 @@ az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup
 
 ## <a name="create-a-server-endpoint"></a>サーバー エンドポイントを作成する
 サーバー エンドポイントは、登録済みサーバー上の特定の場所を表します。たとえば、サーバー ボリュームのフォルダーなどです。 サーバー エンドポイントは (マウントされた共有ではなく) 登録されたサーバー上のパスであり、クラウドの階層化を使用するには、パスが非システム ボリューム上にある必要があります。 ネットワーク接続ストレージ (NAS) はサポートされていません。
+
+> [!NOTE]
+> ボリューム上でサーバー エンドポイントを確立した後もパスまたはドライブ文字を変更することはサポートされていません。 登録済みサーバーで最終的なパスを使用していることを確認します。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 サーバー エンドポイントを追加するには、新しく作成した同期グループに移動し、 **[サーバー エンドポイントの追加]** を選びます。

@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26a223a409c64a65413527f381775f94feb96273
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 1708b3b8777b32aac7c160a1084235ba1b2eda13
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89278532"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658349"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオン
 
@@ -56,7 +56,7 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 - アプリケーション (たとえば、`https://myapps.microsoft.com/contoso.com`) が Azure AD サインイン要求で `domain_hint` (OpenID Connect) パラメーターや `whr` (SAML) パラメーター (テナントを識別する)、または `login_hint` パラメーター (ユーザーを識別する) を転送する場合、ユーザーはユーザー名やパスワードを入力することなく自動的にサインインします。
 - アプリケーション (たとえば、`https://contoso.sharepoint.com`) がサインイン要求を、Azure AD の共通エンドポイント (つまり、`https://login.microsoftonline.com/common/<...>`) ではなく、Azure AD のテナントとして設定されているエンドポイント (つまり、`https://login.microsoftonline.com/contoso.com/<..>` または `https://login.microsoftonline.com/<tenant_ID>/<..>`) に送信する場合、ユーザーにはサイレント サインオン エクスペリエンスも提供されます。
 - サインアウトがサポートされています。 そのため、ユーザーは、シームレス SSO を使用して自動的にサインインするのではなく、サインインに別の Azure AD アカウントを使用することを選択できます。
-- バージョン 16.0.8730.xxxx 以降の Office 365 Win32 クライアント (Outlook、Word、Excel など) は、非対話型フローを使用してサポートされています。 OneDrive の場合、サイレント サインオン エクスペリエンス用の [OneDrive サイレント構成機能](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894)をアクティブにする必要があります。
+- バージョン 16.0.8730.xxxx 以降の Microsoft 365 Win32 クライアント (Outlook、Word、Excel など) は、非対話型フローを使用してサポートされています。 OneDrive の場合、サイレント サインオン エクスペリエンス用の [OneDrive サイレント構成機能](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894)をアクティブにする必要があります。
 - この機能は、Azure AD Connect を使用して有効にできます。
 - これは無料の機能であり、この機能を使用するために Azure AD の有料エディションは不要です。
 - この機能は、Web ブラウザー ベースのクライアントと、Kerberos 認証に対応したプラットフォームおよびブラウザーで[最新の認証](/office365/enterprise/modern-auth-for-office-2013-and-2016)をサポートする Office クライアントでサポートされています。

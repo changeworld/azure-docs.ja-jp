@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: d339e68dcf49c74c508029fda3e7eb548ec92588
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d464124c6841cb2e3186d521b93d7ae08f94c9e9
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770962"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440526"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>コピー アクティビティのパフォーマンスのトラブルシューティング
 
@@ -179,7 +179,7 @@ ms.locfileid: "84770962"
 * Azure Blob ストレージ:[BLOB ストレージのスケーラビリティとパフォーマンスのターゲット](../storage/blobs/scalability-targets.md)および [BLOB ストレージのパフォーマンスとスケーラビリティのチェックリスト](../storage/blobs/storage-performance-checklist.md)。
 * Azure Table ストレージ:[Table ストレージのスケーラビリティとパフォーマンスのターゲット](../storage/tables/scalability-targets.md)および [Table ストレージのパフォーマンスとスケーラビリティのチェックリスト](../storage/tables/storage-performance-checklist.md)。
 * Azure SQL Database:[パフォーマンスを監視](../sql-database/sql-database-single-database-monitor.md)し、データベース トランザクション ユニット (DTU) の割合を確認できます。
-* Azure SQL Data Warehouse: その機能は、データ ウェアハウス単位 (DWU) で測定されます。 「[Azure SQL Data Warehouse のコンピューティング能力の管理 (概要)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)」を参照してください。
+* Azure Synapse Analytics (旧称 SQL Data Warehouse):その機能は、データ ウェアハウス単位 (DWU) で測定されます。 「[Azure Synapse Analytics のコンピューティング能力の管理 (概要)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)」を参照してください。
 * Azure Cosmos DB:[Azure Cosmos DB のパフォーマンス レベル](../cosmos-db/performance-levels.md)。
 * SQL Server:[パフォーマンスの監視とチューニング](https://msdn.microsoft.com/library/ms189081.aspx)。
 * オンプレミスのファイル サーバー: [ファイル サーバーのパフォーマンス チューニング](https://msdn.microsoft.com/library/dn567661.aspx)。

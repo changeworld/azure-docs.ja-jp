@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d00b0558f85e18dfb53736d89fead953cc01ee60
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 957e827e621d07ed9b5533a1607f955f05985d9b
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053169"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004784"
 ---
 # <a name="use-azure-files-with-linux"></a>Linux で Azure Files を使用する
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、[SMB カーネル クライアント](https://wiki.samba.org/index.php/LinuxCIFS)を使用して Linux ディストリビューションにマウントできます。 この記事では、Azure ファイル共有を `mount` コマンドを使用してオンデマンドでマウントするか、`/etc/fstab` にエントリを作成することで起動時にマウントするという 2 つの方法について説明します。
@@ -69,7 +69,7 @@ uname -r
 
 * **Azure コマンド ライン インターフェイス (CLI) の最新バージョン。** Azure CLI をインストールする方法の詳細については、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照し、ご利用のオペレーティング システムを選択してください。 PowerShell 6 以降で Azure PowerShell モジュールを使用することは可能ですが、以下の手順は Azure CLI 用に提供されています。
 
-* **ポート 445 が開いていることを確認する**: SMB は、TCP ポート 445 経由で通信します。ファイアウォールによってクライアント コンピューターの TCP ポート 445 がブロックされないことを確認してください。  **<your-resource-group>** と **<your-storage-account>** を置き換えます
+* **ポート 445 が開いていることを確認する**: SMB は、TCP ポート 445 経由で通信します。ファイアウォールによってクライアント コンピューターの TCP ポート 445 がブロックされないことを確認してください。  `<your-resource-group>` と `<your-storage-account>` を置き換え、次のスクリプトを実行します。
     ```bash
     resourceGroupName="<your-resource-group>"
     storageAccountName="<your-storage-account>"
@@ -114,6 +114,7 @@ Linux ディストリビューションで Azure ファイル共有を使用す�
 1. **mount コマンドを使用して Azure ファイル共有をマウントします**。 次の例では、ローカルの Linux ファイルとフォルダーのアクセス許可の既定値は 0755 です。これは、所有者 (ファイル/ディレクトリの Linux 所有者に基づく) の読み取り、書き込み、および実行、所有者グループのユーザーの読み取りおよび実行、システム上の他のユーザーの読み取りおよび実行を意味します。 `uid` および `gid` マウント オプションを使用して、マウントのユーザー ID とグループ ID を設定できます。 また、`dir_mode` および `file_mode` を使用して、必要に応じてカスタム アクセス許可を設定することもできます。 アクセス許可を設定する方法の詳細については、Wikipedia の「[UNIX numeric notation](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation)」 (UNIX の数値表記) を参照してください。 
 
     ```bash
+    # This command assumes you have logged in with az login
     httpEndpoint=$(az storage account show \
         --resource-group $resourceGroupName \
         --name $storageAccountName \
@@ -176,6 +177,7 @@ Azure ファイル共有の使用を完了したら、`sudo umount $mntPath` を
 1. **後続のコマンドを使用して、`/etc/fstab`** に下記の行を追加します。次の例では、ローカルの Linux ファイルとフォルダーのアクセス許可の既定値は 0755 です。これは、所有者 (ファイル/ディレクトリの Linux 所有者に基づく) の読み取り、書き込み、および実行、所有者グループのユーザーの読み取りおよび実行、システム上の他のユーザーの読み取りおよび実行を意味します。 `uid` および `gid` マウント オプションを使用して、マウントのユーザー ID とグループ ID を設定できます。 また、`dir_mode` および `file_mode` を使用して、必要に応じてカスタム アクセス許可を設定することもできます。 アクセス許可を設定する方法の詳細については、Wikipedia の「[UNIX numeric notation](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation)」 (UNIX の数値表記) を参照してください。
 
     ```bash
+    # This command assumes you have logged in with az login
     httpEndpoint=$(az storage account show \
         --resource-group $resourceGroupName \
         --name $storageAccountName \

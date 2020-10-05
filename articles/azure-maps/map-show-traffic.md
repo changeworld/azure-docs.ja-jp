@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 063fbd2ad4f2f5d427fd2cb39b8ce9b231eba374
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: cd59bb411a598603ccef215cd9a56b7619115e72
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036427"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090569"
 ---
 # <a name="show-traffic-on-the-map"></a>マップ上にトラフィックを表示する
 
@@ -40,7 +40,7 @@ map.setTraffic({
 
 <br/>
 
-<iframe height='500' scrolling='no' title='マップ上にトラフィックを表示する' src='//codepen.io/azuremaps/embed/WMLRPw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/WMLRPw/'>Show traffic on a map</a>」Pen を表示します。
+<iframe height='500' scrolling='no' title='マップ上にトラフィックを表示する' src='//codepen.io/azuremaps/embed/WMLRPw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/WMLRPw/'>Show traffic on a map</a>」Pen を表示します。
 </iframe>
 
 ## <a name="traffic-overlay-options"></a>トラフィック オーバーレイのオプション
@@ -49,9 +49,31 @@ map.setTraffic({
 
 <br/>
 
-<iframe height="700" style="width: 100%;" scrolling="no" title="トラフィック オーバーレイのオプション" src="//codepen.io/azuremaps/embed/RwbPqRY/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="700" style="width: 100%;" scrolling="no" title="トラフィック オーバーレイのオプション" src="//codepen.io/azuremaps/embed/RwbPqRY/?height=700&theme-id=0&default-tab=result" frameborder='no' loading="lazy" loading="lazy" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen の<a href='https://codepen.io/azuremaps/pen/RwbPqRY/'>トラフィック オーバーレイのオプション</a>を参照してください。
 </iframe>
+
+
+## <a name="add-traffic-controls"></a>トラフィック コントロールを追加する
+
+マップに追加できるトラフィック コントロールは 2 種類あります。 最初のコントロールである `TrafficControl` は、トラフィックのオンとオフの切り替えに使用できるトグル ボタンを追加します。 このコントロールのオプションを使用すると、トラフィックを表示するときに使用するトラフィック設定を指定できます。 このコントロールは既定では、相対トラフィック フローとインシデント データを表示しますが、必要に応じて絶対トラフィック フローを表示し、インシデントを表示しないように変更できます。 2 番目のコントロールである `TrafficLegendControl` は、トラフィック フローの凡例をマップに追加し、ユーザーはこれに基づいて、カラー コードによる道路の強調表示の意味を理解できます。 このコントロールは、マップにトラフィック フロー データが表示されているときにのみマップ上に表示され、それ以外のときは表示されません。
+
+次のコードは、トラフィック コントロールをマップに追加する方法を示しています。
+
+```JavaScript
+//Att the traffic control toogle button to the top right corner of the map.
+map.controls.add(new atlas.control.TrafficControl(), { position: 'top-right' });
+
+//Att the traffic legend control to the bottom left corner of the map.
+map.controls.add(new atlas.control.TrafficLegendControl(), { position: 'bottom-left' });
+```
+
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="トラフィック コントロール" src="https://codepen.io/azuremaps/embed/ZEWaeLJ?height500&theme-id=0&default-tab=js,result&embed-version=2&editable=true" frameborder='no' loading="lazy" loading="lazy" allowtransparency="true" allowfullscreen="true">
+<a href='https://codepen.io'>CodePen</a> での Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen <a href='https://codepen.io/azuremaps/pen/ZEWaeLJ'>トラフィック コントロール</a>を参照してください。
+</iframe>
+
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -2,13 +2,13 @@
 title: 管理グループにリソースをデプロイする
 description: Azure Resource Manager テンプレートを使用して、管理グループのスコープでリソースをデプロイする方法について説明します。
 ms.topic: conceptual
-ms.date: 07/27/2020
-ms.openlocfilehash: 992882859ed1c67cf66c31f69f21e151081cf087
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 09/15/2020
+ms.openlocfilehash: 2325e9f5a03f7451492c9b9b8e929df95ddc3852
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002894"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605228"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>管理グループ レベルでリソースを作成する
 
@@ -65,7 +65,7 @@ https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json
 
 管理グループのデプロイ用のコマンドは、リソース グループのデプロイ用のコマンドとは異なります。
 
-Azure CLI の場合は、[az deployment mg create](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-create) を使用します。
+Azure CLI の場合は、[az deployment mg create](/cli/azure/deployment/mg#az-deployment-mg-create) を使用します。
 
 ```azurecli-interactive
 az deployment mg create \
@@ -136,7 +136,7 @@ REST API の場合は、[管理グループ スコープでの作成によるデ
             "properties": {
                 "mode": "Incremental",
                 "template": {
-                    nested-template
+                    nested-template-with-resources-in-different-mg
                 }
             }
         }
@@ -172,7 +172,7 @@ REST API の場合は、[管理グループ スコープでの作成によるデ
               "properties": {
                 "mode": "Incremental",
                 "template": {
-                  nested-template
+                  nested-template-with-resources-in-resource-group
                 }
               }
             }
@@ -184,6 +184,8 @@ REST API の場合は、[管理グループ スコープでの作成によるデ
 }
 ```
 
+サブスクリプション内にリソース グループを作成し、そのリソース グループにストレージ アカウントをデプロイするために、管理グループのデプロイを使用するには、「[サブスクリプションとリソース グループにデプロイする](#deploy-to-subscription-and-resource-group)」を参照してください。
+
 ## <a name="use-template-functions"></a>テンプレート関数を使用する
 
 管理グループ レベルのデプロイの場合、テンプレート関数の使用時にいくつかの重要な考慮事項があります。
@@ -191,87 +193,91 @@ REST API の場合は、[管理グループ スコープでの作成によるデ
 * [resourceGroup ()](template-functions-resource.md#resourcegroup) 関数は、サポートされて**いません**。
 * [subscription()](template-functions-resource.md#subscription) 関数は、サポートされて**いません**。
 * [reference()](template-functions-resource.md#reference) および [list()](template-functions-resource.md#list) 関数がサポートされています。
-* [resourceId()](template-functions-resource.md#resourceid) 関数は、サポートされています。 管理グループ レベルのデプロイで使用されているリソースのリソース ID を取得するには、これを使用します。 リソース グループ パラメーターに値を指定しないでください。
+* 管理グループにデプロイされたリソース用に [resourceId()](template-functions-resource.md#resourceid) 関数を使用しないでください。
 
-  たとえば、ポリシー定義のリソース ID を取得するには、次を使用します。
+  代わりに、管理グループの拡張機能として実装されているリソースに対して、[extensionResourceId](template-functions-resource.md#extensionresourceid) 関数を使用します。 管理グループにデプロイされているカスタム ポリシー定義は、管理グループの拡張機能です。
+
+  管理グループ レベルでカスタム ポリシー定義のリソース ID を取得するには、次を使用します。
   
   ```json
-  resourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))
+  "policyDefinitionId": "[extensionResourceId(variables('mgScope'), 'Microsoft.Authorization/policyDefinitions', parameters('policyDefinitionID'))]"
   ```
-  
-  返されるリソース ID の形式は次のとおりです。
+
+  管理グループ内で使用できるテナント リソースには、[tenantResourceId](template-functions-resource.md#tenantresourceid) 関数を使用します。 組み込みのポリシー定義は、テナント レベルのリソースです。
+
+  組み込みのポリシー定義のリソース ID を取得するには、次を使用します。
   
   ```json
-  /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  "policyDefinitionId": "[tenantResourceId('Microsoft.Authorization/policyDefinitions', parameters('policyDefinitionID'))]"
   ```
 
 ## <a name="azure-policy"></a>Azure Policy
 
-### <a name="define-policy"></a>ポリシーの定義
-
-次の例は、管理グループ レベルでポリシーを[定義する](../../governance/policy/concepts/definition-structure.md)方法を示しています。
+次の例は、管理グループ レベルでポリシーを[定義](../../governance/policy/concepts/definition-structure.md)して割り当てる方法を示しています。
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "variables": {},
-  "resources": [
-    {
-      "type": "Microsoft.Authorization/policyDefinitions",
-      "apiVersion": "2018-05-01",
-      "name": "locationpolicy",
-      "properties": {
-        "policyType": "Custom",
-        "parameters": {},
-        "policyRule": {
-          "if": {
-            "field": "location",
-            "equals": "northeurope"
-          },
-          "then": {
-            "effect": "deny"
-          }
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "targetMG": {
+            "type": "string",
+            "metadata": {
+                "description": "Target Management Group"
+            }
+        },
+        "allowedLocations": {
+            "type": "array",
+            "defaultValue": [
+                "australiaeast",
+                "australiasoutheast",
+                "australiacentral"
+            ],
+            "metadata": {
+                "description": "An array of the allowed locations, all other locations will be denied by the created policy."
+            }
         }
-      }
-    }
-  ]
-}
-```
-
-### <a name="assign-policy"></a>ポリシーの割り当て
-
-次の例では、既存のポリシー定義を管理グループに割り当てています。 ポリシーがパラメーターを受け取る場合は、オブジェクトとして指定します。 ポリシーがパラメーターを受け取らない場合は、既定の空のオブジェクトを使用します。
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "policyDefinitionID": {
-      "type": "string"
     },
-    "policyName": {
-      "type": "string"
+    "variables": {
+        "mgScope": "[tenantResourceId('Microsoft.Management/managementGroups', parameters('targetMG'))]",
+        "policyDefinition": "LocationRestriction"
     },
-    "policyParameters": {
-      "type": "object",
-      "defaultValue": {}
-    }
-  },
-  "variables": {},
-  "resources": [
-    {
-      "type": "Microsoft.Authorization/policyAssignments",
-      "apiVersion": "2018-03-01",
-      "name": "[parameters('policyName')]",
-      "properties": {
-        "policyDefinitionId": "[parameters('policyDefinitionID')]",
-        "parameters": "[parameters('policyParameters')]"
-      }
-    }
-  ]
+    "resources": [
+        {
+            "type": "Microsoft.Authorization/policyDefinitions",
+            "name": "[variables('policyDefinition')]",
+            "apiVersion": "2019-09-01",
+            "properties": {
+                "policyType": "Custom",
+                "mode": "All",
+                "parameters": {
+                },
+                "policyRule": {
+                    "if": {
+                        "not": {
+                            "field": "location",
+                            "in": "[parameters('allowedLocations')]"
+                        }
+                    },
+                    "then": {
+                        "effect": "deny"
+                    }
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Authorization/policyAssignments",
+            "name": "location-lock",
+            "apiVersion": "2019-09-01",
+            "dependsOn": [
+                "[variables('policyDefinition')]"
+            ],
+            "properties": {
+                "scope": "[variables('mgScope')]",
+                "policyDefinitionId": "[extensionResourceId(variables('mgScope'), 'Microsoft.Authorization/policyDefinitions', variables('policyDefinition'))]"
+            }
+        }
+    ]
 }
 ```
 

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/29/2020
+ms.date: 09/10/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 2439bec08c16ce109b271844dc72b8fd2569aa07
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 4c88791815d248cc20546d7942e7b0f107071186
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755910"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018579"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>ストレージ アカウントへの要求に必要な最小バージョンのトランスポート層セキュリティ (TLS) を適用する
 
@@ -69,7 +69,7 @@ StorageBlobLogs
 
 結果には、各バージョンの TLS で行われた要求の数が表示されます。
 
-:::image type="content" source="media/transport-layer-security-configure-minimum-version/log-analytics-query-version.png" alt-text="TLS のバージョンを返す Log Analytics クエリの結果を示すスクリーンショット":::
+:::image type="content" source="media/transport-layer-security-configure-minimum-version/log-analytics-query-version.png" alt-text="要求のログを記録するための診断設定の作成方法を示すスクリーンショット":::
 
 ### <a name="query-logged-requests-by-caller-ip-address-and-user-agent-header"></a>呼び出し元の IP アドレスとユーザー エージェント ヘッダーでログに記録された要求に対してクエリを実行する
 
@@ -92,21 +92,25 @@ StorageBlobLogs
 ストレージ アカウントの TLS の最小バージョンを構成するには、アカウントに対して **MinimumTlsVersion** バージョンを設定します。 このプロパティは、Azure Resource Manager デプロイ モデルで作成されたすべてのストレージ アカウントで使用できます。 Azure Resource Manager デプロイ モデルの詳細については、「[ストレージ アカウントの概要](storage-account-overview.md)」を参照してください。
 
 > [!NOTE]
-> **minimumTlsVersion** プロパティは既定では設定されず、明示的に設定するまで値は返されません。 プロパティ値が **null** の場合は、ストレージ アカウントでは TLS バージョン 1.0 以降で送信された要求が許可されます。
+> **MinimumTlsVersion** プロパティは現在、Azure パブリック クラウド内のストレージ アカウントでのみ使用できます。
 
 # <a name="portal"></a>[ポータル](#tab/portal)
 
-Azure portal を使用してストレージ アカウントの TLS の最小バージョンを構成するには、これらの手順に従います。
+Azure portal でストレージ アカウントを作成する場合、TLS の最小バージョンは既定で 1.2 に設定されます。
+
+Azure portal を使用して既存のストレージ アカウントの TLS の最小バージョンを構成するには、これらの手順に従います。
 
 1. Azure Portal のストレージ アカウントに移動します。
 1. **[構成]** 設定を選択します。
 1. 次の図に示すように、 **[TLS の最小バージョン]** で、ドロップダウンを使用して、このストレージ アカウントのデータにアクセスするために必要な TLS の最小バージョンを選択します。
 
-    :::image type="content" source="media/transport-layer-security-configure-minimum-version/configure-minimum-version-portal.png" alt-text="Azure portal で TLS の最小バージョンを構成する方法を示すスクリーンショット":::
+    :::image type="content" source="media/transport-layer-security-configure-minimum-version/configure-minimum-version-portal.png" alt-text="要求のログを記録するための診断設定の作成方法を示すスクリーンショット":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 PowerShell を使用してストレージ アカウントの最小 TLS バージョンを構成するには、[Azure PowerShell バージョン 4.4.0](https://www.powershellgallery.com/packages/Az/4.4.0) 以降をインストールします。 次に、新規または既存のストレージ アカウントに **MinimumTLSVersion** プロパティを構成します。 **MinimumTlsVersion** の有効な値は、`TLS1_0`、`TLS1_1`、`TLS1_2` です。
+
+PowerShell を使用してストレージ アカウントを作成する場合、**MinimumTlsVersion** プロパティは既定では設定されません。 このプロパティは、明示的に設定されるまで値を返しません。 プロパティ値が **null** の場合は、ストレージ アカウントでは TLS バージョン 1.0 以降で送信された要求が許可されます。
 
 次の例では、ストレージ アカウントを作成し、**MinimumTLSVersion** を TLS 1.1 に設定した後、アカウントを更新して、**MinimumTLSVersion** を TLS 1.2 に設定します。 この例では、各ケースのプロパティ値も取得します。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
 
@@ -116,18 +120,18 @@ $accountName = "<storage-account>"
 $location = "<location>"
 
 # Create a storage account with MinimumTlsVersion set to TLS 1.1.
-New-AzStorageAccount -ResourceGroupName $rgName \
-    -AccountName $accountName \
-    -Location $location \
-    -SkuName Standard_GRS \
+New-AzStorageAccount -ResourceGroupName $rgName `
+    -AccountName $accountName `
+    -Location $location `
+    -SkuName Standard_GRS `
     -MinimumTlsVersion TLS1_1
 
 # Read the MinimumTlsVersion property.
 (Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName).MinimumTlsVersion
 
 # Update the MinimumTlsVersion version for the storage account to TLS 1.2.
-Set-AzStorageAccount -ResourceGroupName $rgName \
-    -AccountName $accountName \
+Set-AzStorageAccount -ResourceGroupName $rgName `
+    -AccountName $accountName `
     -MinimumTlsVersion TLS1_2
 
 # Read the MinimumTlsVersion property.
@@ -137,6 +141,8 @@ Set-AzStorageAccount -ResourceGroupName $rgName \
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure CLI を使用してストレージ アカウントの最小 TLS バージョンを構成するには、Azure CLI バージョン 2.9.0 以降をインストールします。 詳細については、「 [Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。 次に、新規または既存のストレージ アカウントに **minimumTlsVersion** プロパティを構成します。 **minimumTlsVersion** の有効な値は、`TLS1_0`、`TLS1_1`、`TLS1_2` です。
+
+Azure CLI を使用してストレージ アカウントを作成する場合、**minimumTlsVersion** プロパティは既定では設定されません。 このプロパティは、明示的に設定されるまで値を返しません。 プロパティ値が **null** の場合は、ストレージ アカウントでは TLS バージョン 1.0 以降で送信された要求が許可されます。
 
 次の例では、ストレージ アカウントを作成し、**minimumTLSVersion** を TLS 1.1 に設定します。 次に、アカウントを更新して、**minimumTLSVersion** プロパティを TLS 1.2 に設定します。 この例では、各ケースのプロパティ値も取得します。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
 
@@ -301,7 +307,7 @@ Azure portal でコンプライアンス レポートを表示するには、次
 1. 前の手順で作成したポリシー割り当ての名前の結果をフィルター処理します。 このレポートには、ポリシーに準拠していないリソースの数が表示されます。
 1. レポートをドリルダウンして、準拠していないストレージ アカウントの一覧などの詳細を表示できます。
 
-    :::image type="content" source="media/transport-layer-security-configure-minimum-version/compliance-report-policy-portal.png" alt-text="最小 TLS バージョンについての監査ポリシーのコンプライアンス レポートを示すスクリーンショット":::
+    :::image type="content" source="media/transport-layer-security-configure-minimum-version/compliance-report-policy-portal.png" alt-text="要求のログを記録するための診断設定の作成方法を示すスクリーンショット":::
 
 ## <a name="use-azure-policy-to-enforce-the-minimum-tls-version"></a>Azure Policy を使用して最小 TLS バージョンを適用する
 
@@ -337,7 +343,7 @@ Deny 効果を持つポリシーを作成し、これをスコープに割り当
 
 次の図では、Deny 効果を持つポリシーで、最小 TLS バージョンを TLS 1.2 に設定することが要求されているときに、最小 TLS バージョンを TLS 1.0 に設定して (新しいアカウントの既定) ストレージ アカウントを作成しようとした場合に発生するエラーが示されています。
 
-:::image type="content" source="media/transport-layer-security-configure-minimum-version/deny-policy-error.png" alt-text="ポリシーに違反するストレージ アカウントを作成したときに発生したエラーを示すスクリーンショット":::
+:::image type="content" source="media/transport-layer-security-configure-minimum-version/deny-policy-error.png" alt-text="要求のログを記録するための診断設定の作成方法を示すスクリーンショット":::
 
 ## <a name="network-considerations"></a>ネットワークに関する考慮事項
 

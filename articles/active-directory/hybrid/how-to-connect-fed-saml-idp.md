@@ -14,21 +14,21 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa9d2aa94970e7d17102e5a5696c6b61330aff80
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 6c341235a646fff28a16d30d1bf010932b02cf19
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279960"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660965"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>シングル サインオンに SAML 2.0 ID プロバイダー (IdP) を使用する
 
-このドキュメントでは、SAML 2.0 に準拠している SP-Lite プロファイル ベースの ID プロバイダーを、優先セキュリティ トークン サービス (STS)/ID プロバイダーとして使用する方法について説明します。 このシナリオは、SAML 2.0 を使用してアクセスできるユーザー ディレクトリとパスワード ストアがオンプレミスに既にある場合に役立ちます。 この既存のユーザー ディレクトリを使用して、Office 365 やその他の Azure AD で保護されたリソースにサインオンできます。 SAML 2.0 SP-Lite プロファイルは、サインオンおよび属性交換フレームワークを提供するために広く使用されている Security Assertion Markup Language (SAML) フェデレーション ID 標準に基づいています。
+このドキュメントでは、SAML 2.0 に準拠している SP-Lite プロファイル ベースの ID プロバイダーを、優先セキュリティ トークン サービス (STS)/ID プロバイダーとして使用する方法について説明します。 このシナリオは、SAML 2.0 を使用してアクセスできるユーザー ディレクトリとパスワード ストアがオンプレミスに既にある場合に役立ちます。 この既存のユーザー ディレクトリを使用して、Microsoft 365 やその他の Azure AD で保護されたリソースにサインオンできます。 SAML 2.0 SP-Lite プロファイルは、サインオンおよび属性交換フレームワークを提供するために広く使用されている Security Assertion Markup Language (SAML) フェデレーション ID 標準に基づいています。
 
 >[!NOTE]
 >Azure AD との使用テストが行われているサード パーティの IDP の一覧については、「[Azure AD のフェデレーション互換性リスト](how-to-connect-fed-compatibility.md)」を参照してください。
 
-Microsoft では、適切に構成された SAML 2.0 プロファイル ベースの IDP と Microsoft クラウド サービス (Office 365 など) の統合として、このサインオン エクスペリエンスをサポートします。 SAML 2.0 ID プロバイダーはサード パーティ製品であるため、Microsoft では、それらのデプロイ、構成、トラブルシューティングに関するベスト プラクティスをサポートしません。 適切に構成したら、後ほど詳述する Microsoft 接続アナライザー ツールを使用して、SAML 2.0 ID プロバイダーとの統合が適切な構成かどうかをテストできます。 SAML 2.0 SP-Lite プロファイル ベースの ID プロバイダーの詳細については、提供元の組織にお問い合わせください。
+Microsoft では、適切に構成された SAML 2.0 プロファイル ベースの IDP と Microsoft クラウド サービス (Microsoft 365 など) の統合として、このサインオン エクスペリエンスをサポートします。 SAML 2.0 ID プロバイダーはサード パーティ製品であるため、Microsoft では、それらのデプロイ、構成、トラブルシューティングに関するベスト プラクティスをサポートしません。 適切に構成したら、後ほど詳述する Microsoft 接続アナライザー ツールを使用して、SAML 2.0 ID プロバイダーとの統合が適切な構成かどうかをテストできます。 SAML 2.0 SP-Lite プロファイル ベースの ID プロバイダーの詳細については、提供元の組織にお問い合わせください。
 
 > [!IMPORTANT]
 > SAML 2.0 ID プロバイダーを使用するこのサインオン シナリオで利用できるクライアントは、以下に限定されています。
@@ -44,12 +44,12 @@ Microsoft では、適切に構成された SAML 2.0 プロファイル ベー�
 他のすべてのクライアントは、SAML 2.0 ID プロバイダーを使用するこのサインオン シナリオでは利用できません。 たとえば、Lync 2010 デスクトップ クライアントは、シングル サインオン用に SAML 2.0 ID プロバイダーが構成されているサービスにサインインすることはできません。
 
 ## <a name="azure-ad-saml-20-protocol-requirements"></a>Azure AD SAML 2.0 プロトコル要件
-このドキュメントには、1 つ以上の Microsoft クラウド サービス (Office 365 など) にサインオンできるように、SAML 2.0 ID プロバイダーが Azure AD とフェデレーションするために実装する必要があるプロトコルとメッセージ形式に関する詳細な要件が含まれています。 このシナリオで使用される Microsoft クラウド サービスの SAML 2.0 証明書利用者 (SP-STS) は Azure AD です。
+このドキュメントには、1 つ以上の Microsoft クラウド サービス (Microsoft 365 など) にサインオンできるように、SAML 2.0 ID プロバイダーが Azure AD とフェデレーションするために実装する必要があるプロトコルとメッセージ形式に関する詳細な要件が含まれています。 このシナリオで使用される Microsoft クラウド サービスの SAML 2.0 証明書利用者 (SP-STS) は Azure AD です。
 
 SAML 2.0 ID プロバイダーの出力メッセージが、用意されているサンプル トレースのメッセージとできるだけ類似していることを確認することをお勧めします。 また、可能であれば、提供されている Azure AD メタデータの特定の属性値を使用してください。 出力メッセージに問題がなければ、後で説明する Microsoft 接続アナライザーでテストできます。
 
 Azure AD メタデータは、この URL [https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml](https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml) からダウンロードできます。
-Office 365 の中国固有のインスタンスを使用している中国国内のお客様は、次のフェデレーション エンドポイントを使用する必要があります: [https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml](https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml)。
+Microsoft 365 の中国固有のインスタンスを使用している中国国内のお客様は、次のフェデレーション エンドポイントを使用する必要があります: [https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml](https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml)。
 
 ## <a name="saml-protocol-requirements"></a>SAML プロトコル要件
 このセクションでは、メッセージを正しく書式設定するために、要求と応答のメッセージのペアをまとめる方法を詳しく説明します。
@@ -80,7 +80,7 @@ SAML 応答メッセージでは、署名ノードにメッセージ自体のデ
 |属性|説明|
 | ----- | ----- |
 |NameID|このアサーションの値は、Azure AD ユーザーの ImmutableID と同じである必要があります。 最大 64 文字の英数字にすることができます。 HTML で安全に使用できない文字はエンコードする必要があります。たとえば、"+" 文字は ".2B" と表示されます。|
-|IDPEmail|ユーザー プリンシパル名 (UPN) は、SAML 応答内で IDPEmail という名前の要素として示されます。これは、Azure AD/Office 365 でのユーザーの UserPrincipalName (UPN) です。 UPN は電子メール アドレス形式です。 Windows Office 365 (Azure Active Directory) での UPN 値です。|
+|IDPEmail|ユーザー プリンシパル名 (UPN) は、SAML 応答内で IDPEmail という名前の要素として示されます。これは、Azure AD/Microsoft 365 でのユーザーの UserPrincipalName (UPN) です。 UPN は電子メール アドレス形式です。 Windows Microsoft 365 (Azure Active Directory) での UPN 値です。|
 |発行者|ID プロバイダーの URI を指定する必要があります。 サンプル メッセージの発行者を再利用しないでください。 Azure AD テナントに複数のトップ レベル ドメインがある場合、発行者は、ドメインごとに構成される指定の URI 設定と一致する必要があります。|
 
 >[!IMPORTANT]
@@ -103,7 +103,7 @@ Azure AD からサンプル SAML 2.0 ID プロバイダーに送信されるサ�
     </samlp:AuthnRequest>
 ```
 
-サンプル SAML 2.0 準拠 ID プロバイダーから Azure AD/Office 365 に送信されるサンプル応答メッセージを次に示します。
+サンプル SAML 2.0 準拠 ID プロバイダーから Azure AD/Microsoft 365 に送信されるサンプル応答メッセージを次に示します。
 
 ```xml
     <samlp:Response ID="_592c022f-e85e-4d23-b55b-9141c95cd2a5" Version="2.0" IssueInstant="2014-01-31T15:36:31.357Z" Destination="https://login.microsoftonline.com/login.srf" Consent="urn:oasis:names:tc:SAML:2.0:consent:unspecified" InResponseTo="_049917a6-1183-42fd-a190-1d2cbaf9b144" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
@@ -159,7 +159,7 @@ Azure AD からサンプル SAML 2.0 ID プロバイダーに送信されるサ�
 ```
 
 ## <a name="configure-your-saml-20-compliant-identity-provider"></a>SAML 2.0 に準拠している ID プロバイダーを構成する
-このセクションには、SAML 2.0 プロトコルを使用して、1 つ以上の Microsoft クラウド サービス (Office 365 など) にシングル サインオンでアクセスできるようにするために、Azure AD とフェデレーションするように SAML 2.0 ID プロバイダーを構成する方法に関するガイドラインが含まれています。 このシナリオで使用される Microsoft クラウド サービスの SAML 2.0 証明書利用者は Azure AD です。
+このセクションには、SAML 2.0 プロトコルを使用して、1 つ以上の Microsoft クラウド サービス (Microsoft 365 など) にシングル サインオンでアクセスできるようにするために、Azure AD とフェデレーションするように SAML 2.0 ID プロバイダーを構成する方法に関するガイドラインが含まれています。 このシナリオで使用される Microsoft クラウド サービスの SAML 2.0 証明書利用者は Azure AD です。
 
 ## <a name="add-azure-ad-metadata"></a>Azure AD メタデータを追加する
 SAML 2.0 ID プロバイダーは、Azure AD 証明書利用者に関する情報を使用する必要があります。 Azure AD は、メタデータを https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml で発行します。
@@ -200,7 +200,7 @@ SAML 2.0 ID プロバイダーを使用してフェデレーションする各 A
     Connect-MsolService
     ```
     
-2. SAML 2.0 とのフェデレーションで使用する目的の Office 365 ドメインを構成します。
+2. SAML 2.0 とのフェデレーションで使用する目的の Microsoft 365 ドメインを構成します。
 
     ```powershell
     $dom = "contoso.com" 
@@ -245,8 +245,8 @@ SAML 2.0 ID プロバイダーを使用してフェデレーションする各 A
 
 フェデレーションが構成された後で、"非フェデレーション" ("マネージ") に切り替えることもできます。ただし、この変更は、完了までに最大 2 時間かかり、クラウドベースのサインイン用の新しいランダム パスワードを各ユーザーに割り当てる必要があります。 "マネージド" への切り替えは、一部のシナリオで設定のエラーをリセットするために必要になる場合があります。 ドメインの変換の詳細については、[/previous-versions/azure/dn194122(v=azure.100)](/previous-versions/azure/dn194122(v=azure.100)) をご覧ください。
 
-## <a name="provision-user-principals-to-azure-ad--office-365"></a>ユーザー プリンシパルを Azure AD/Office 365 にプロビジョニングする
-Office 365 に対してユーザーを認証するには、SAML 2.0 要求のアサーションに対応するユーザー プリンシパルを使用して Azure AD をプロビジョニングしておく必要があります。 これらのユーザー プリンシパルが Azure AD で事前に認識されていない場合、フェデレーション サインインで使用することはできません。 ユーザー プリンシパルは、Azure AD Connect または Windows PowerShell を使用してプロビジョニングできます。
+## <a name="provision-user-principals-to-azure-ad--microsoft-365"></a>ユーザー プリンシパルを Azure AD/Microsoft 365 にプロビジョニングする
+Microsoft 365 に対してユーザーを認証するには、SAML 2.0 要求のアサーションに対応するユーザー プリンシパルを使用して Azure AD をプロビジョニングしておく必要があります。 これらのユーザー プリンシパルが Azure AD で事前に認識されていない場合、フェデレーション サインインで使用することはできません。 ユーザー プリンシパルは、Azure AD Connect または Windows PowerShell を使用してプロビジョニングできます。
 
 Azure AD Connect を使用して、オンプレミスの Active Directory から Azure AD ディレクトリ内のドメインにプリンシパルをプロビジョニングできます。 詳細については、「[オンプレミスのディレクトリと Azure Active Directory の統合](whatis-hybrid-identity.md)」を参照してください。
 
@@ -283,7 +283,7 @@ Windows PowerShell は、新しいユーザーの Azure AD への追加を自動
 2.  SAML 2.0 ID プロバイダーを構成している
 3.  SAML 2.0 ID プロバイダーでシングル サインオンするための Windows PowerShell をインストールしている
 4.  SAML 2.0 ID プロバイダーと Azure AD との間に信頼を確立している
-5.  Windows PowerShell または Azure AD Connect を介して Azure Active Directory (Office 365) に既知のテスト ユーザー プリンシパルをプロビジョニングしている
+5.  Windows PowerShell または Azure AD Connect を介して Azure Active Directory (Microsoft 365) に既知のテスト ユーザー プリンシパルをプロビジョニングしている
 6.  [Azure AD Connect](whatis-hybrid-identity.md) を使用してディレクトリ同期を構成している
 
 SAML 2.0 SP-Lite ベースの ID プロバイダーを使用するシングル サインオンを設定したら、それが正しく動作していることを検証する必要があります。

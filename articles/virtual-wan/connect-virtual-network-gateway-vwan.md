@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 07/28/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9d94904e580cefb53b2c71d21259bebfc07c1ad6
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 6dac922f1a50dd54973f7eefff7011aab3b49994
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431289"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983757"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>VPN Gateway (仮想ネットワーク ゲートウェイ) を Virtual WAN に接続する
 
@@ -47,7 +47,7 @@ Azure Virtual Network
 
 仮想ネットワーク ゲートウェイの **[構成]** ページで  **[BGP ASN]** を構成できます。 BGP ASN に変更を加えます。 BGP の ASN を 65515 にすることはできません。 66515 は、Azure Virtual WAN が使用します。
 
-![BGP](./media/connect-virtual-network-gateway-vwan/bgp.png "bgp")
+![スクリーンショットには、[BGP ASN の構成] が選択された仮想ネットワーク ゲートウェイの [構成] ページが示されています。](./media/connect-virtual-network-gateway-vwan/bgp.png "bgp")
 
 ### <a name="public-ip-addresses"></a><a name="pip"></a>パブリック IP アドレス
 

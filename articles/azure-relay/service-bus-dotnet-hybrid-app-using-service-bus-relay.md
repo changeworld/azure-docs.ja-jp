@@ -4,12 +4,12 @@ description: Azure Relay を使用してオンプレミスの WCF サービス�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 06/23/2020
-ms.openlocfilehash: d6299899ee45bbad8b5e5fdbca01805604794d62
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 22b582634b623b39545eca225c8df0130606c2bb
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922550"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983881"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>Azure Relay を使用してオンプレミスの WCF サービスをクラウドの Web アプリケーションに公開する
 
@@ -344,7 +344,7 @@ Azure アプリケーションの開発を開始する前に、ツールをダ�
 
 アプリケーションがブラウザーに表示され、実行されます。
 
-![Web アプリケーション][21]
+![スクリーンショットは、ブラウザーで実行され、URL が強調表示されているアプリケーションの例を示しています。][21]
 
 ## <a name="put-the-pieces-together"></a>統合する
 

@@ -2,13 +2,13 @@
 title: Azure Event Grid イベントに対するイベント ハンドラーとしての Service Bus のキューとトピック
 description: Azure Event Grid のイベントに対するイベント ハンドラーとして Service Bus のキューとトピックを使用する方法を説明します。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: c573f7ee088fe1d88f832623891377d4fd50bd4b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/03/2020
+ms.openlocfilehash: 9edf9ebd66eca2f1a6749d40ee22437bf17e55c4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105695"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440798"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>Azure Event Grid イベントに対するイベント ハンドラーとしての Service Bus のキューとトピック
 イベント ハンドラーは、イベントの送信先となる場所です。 ハンドラーは、さらにいくつかのアクションを行ってイベントを処理します。 一部の Azure サービスは、イベントを処理するように自動的に構成されます。**Azure Service Bus** はその 1 つです。 
@@ -62,9 +62,9 @@ Event Grid からのイベントのイベント ハンドラーとして**Servic
 | aeg-data-version | <p>イベントのデータ バージョン。</p><p>例:"1"。</p><p>**Event Grid のイベント スキーマ**の場合、このプロパティはデータのバージョンを表し、**クラウド イベント スキーマ**の場合は適用されません。</p> |
 
 ## <a name="message-headers"></a>メッセージ ヘッダー
-ブローカー メッセージとして Service Bus のキューまたはトピックにイベントを送信する場合、ブローカー メッセージの `messageid` は**イベント ID** です。
+ブローカー メッセージとして Service Bus のキューまたはトピックにイベントを送信する場合、ブローカー メッセージの `messageid` は内部システム ID です。
 
-イベント ID は、イベントの再配信間で保持されるので、Service Bus のエンティティで**重複検出**をオンにすることで、配信の重複を回避できます。 Service Bus エンティティでの重複検出の期間を、イベントの有効期限 (TTL) または最大再試行期間のいずれか長い方に設定することをお勧めします。
+メッセージの内部システム ID は、イベントの再配信間で保持されるので、Service Bus のエンティティで**重複検出**をオンにすることで、配信の重複を回避できます。 Service Bus エンティティでの重複検出の期間を、イベントの有効期限 (TTL) または最大再試行期間のいずれか長い方に設定することをお勧めします。
 
 ## <a name="rest-examples-for-put"></a>REST の例 (PUT 用)
 

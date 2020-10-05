@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 89162a0b8ca20e59319802f9e2359c2f27ff163f
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 5eaf107861d20cea395209418c343d25461b3836
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962181"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469934"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure App Service でのアプリの診断ログの有効化
 ## <a name="overview"></a>概要
@@ -191,7 +191,7 @@ Windows アプリの場合、ZIP ファイルには、App Service ファイル �
 | AppServiceHTTPLogs | はい | はい | Web サーバー ログ |
 | AppServiceEnvironmentPlatformLogs | はい | はい | App Service Environment: スケーリング、構成変更、および状態ログ|
 | AppServiceAuditLogs | はい | はい | FTP および Kudu 経由のログイン アクティビティ |
-| AppServiceFileAuditLogs | はい | TBD | FTP および Kudu 経由のファイル変更 |
+| AppServiceFileAuditLogs | はい | TBD | サイト コンテンツに行われたファイルの変更。Premium レベル以上でのみ使用可能 |
 | AppServiceAppLogs | TBA | Java SE および Tomcat | アプリケーション ログ |
 | AppServiceIPSecAuditLogs  | はい | はい | IP ルールからの要求 |
 | AppServicePlatformLogs  | TBA | はい | コンテナー ログ |

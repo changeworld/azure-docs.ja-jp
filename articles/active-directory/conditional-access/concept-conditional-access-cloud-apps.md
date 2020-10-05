@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8b1440f34feb1cda2661178e520590cb9ec54f1
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 838d2a1dd1c7b89c1f5c9fec6578312107264958
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948404"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602066"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>条件付きアクセス:クラウド アプリまたはアクション
 
@@ -55,9 +55,9 @@ ms.locfileid: "88948404"
 - Microsoft StaffHub
 - Microsoft Stream
 - Microsoft Teams
-- Office 365 Exchange Online
-- Office 365 SharePoint Online
-- Office 365 Yammer
+- Exchange Online
+- SharePoint
+- Yammer
 - Office Delve
 - Office Sway
 - Outlook Groups
@@ -69,7 +69,7 @@ ms.locfileid: "88948404"
 
 ### <a name="office-365-preview"></a>Office 365 (プレビュー)
 
-Office 365 では、Exchange、SharePoint、Microsoft Teams などのクラウドベースの生産性およびコラボレーション サービスが提供されます。 Office 365 クラウド サービスは、スムーズに共同作業を行うために緊密に統合されています。 Microsoft Teams などの一部のアプリは SharePoint や Exchange などの他のアプリに依存しているため、この統合により、ポリシーの作成時に混乱が生じる可能性があります。
+Microsoft 365 では、Exchange、SharePoint、Microsoft Teams などのクラウドベースの生産性およびコラボレーション サービスが提供されます。 Microsoft 365 クラウド サービスは、スムーズに共同作業を行うために緊密に統合されています。 Microsoft Teams などの一部のアプリは SharePoint や Exchange などの他のアプリに依存しているため、この統合により、ポリシーの作成時に混乱が生じる可能性があります。
 
 Office 365 (プレビュー) アプリを使用すると、これらのサービスを一度にすべてターゲットにすることができます。 Microsoft では、[サービスの依存関係](service-dependencies.md)の問題を回避するために、個々のクラウド アプリをターゲットにするのではなく、新しい Office 365 (プレビュー) アプリを使用することをお勧めしています。 このアプリケーション グループをターゲットにすることで、ポリシーと依存関係の不整合が原因で発生する可能性のある問題を回避できます。
 
@@ -82,10 +82,10 @@ Office 365 (プレビュー) クライアント アプリに含まれる主要�
    - Microsoft Stream
    - Microsoft To-Do
    - Microsoft Teams
-   - Office 365 Exchange Online
-   - Office 365 SharePoint Online
-   - Office 365 Search Service
-   - Office 365 Yammer
+   - Exchange Online
+   - SharePoint Online
+   - Microsoft 365 Search サービス
+   - Yammer
    - Office Delve
    - Office Online
    - Office.com

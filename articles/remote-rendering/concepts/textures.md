@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 20c2951b601690beb9ec64040cf650bb5208d0e4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: dc38b53705c24cb12a001237a9a80ec66ec33e14
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997712"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613784"
 ---
 # <a name="textures"></a>テクスチャ
 
@@ -82,11 +82,19 @@ void LoadMyTexture(ApiHandle<AzureSession> session, std::string textureUri)
 }
 ```
 
-
 用途に対してサポートされるテクスチャの種類によっては、テクスチャの種類とコンテンツに制限がある場合があります。 たとえば、[PBR 素材](../overview/features/pbr-materials.md)の粗さマップはグレースケールである必要があります。
 
 > [!CAUTION]
 > ARR ではすべての *Async* 関数が非同期操作オブジェクトを返します。 操作が完了するまで、これらのオブジェクトへの参照を保存する必要があります。 そうしないと、C# ガベージ コレクターによって操作が早期に削除されて、完了できなくなる場合があります。 上のサンプル コードでは、*Completed* イベントが到着するまで参照を保持するために、メンバー変数 ' _textureLoad ' が使用されています。
+
+## <a name="api-documentation"></a>API のドキュメント
+
+* [C# Texture クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.texture)
+* [C# RemoteManager.LoadTextureAsync()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadtextureasync)
+* [C# RemoteManager.LoadTextureFromSASAsync()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadtexturefromsasasync)
+* [C++ Texture クラス](https://docs.microsoft.com/cpp/api/remote-rendering/texture)
+* [C++ RemoteManager::LoadTextureAsync()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#loadtextureasync)
+* [C++ RemoteManager::LoadTextureFromSASAsync()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#loadtexturefromsasasync)
 
 ## <a name="next-steps"></a>次のステップ
 

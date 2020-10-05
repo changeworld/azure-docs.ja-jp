@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4eaf0ab6cc412b7f5a02f898682e90fdde9de3a1
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 5d90391dd5512b08ee6995a32bcd0b0f111b0f2b
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542363"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053938"
 ---
 # <a name="linkedin-account-connections-data-sharing-and-consent"></a>LinkedIn アカウント接続のデータ共有と同意
 
@@ -73,7 +73,7 @@ Microsoft のアカウントと LinkedIn のアカウントを接続するとき
 * プロファイル データ - 名、姓、プロフィール写真、メール アドレス、上司、部下などの情報です。
 * 予定表データ - 予定表の会議、日時、場所、出席者の連絡先情報などです。 議題、内容、タイトルなどの会議に関する情報は、予定表のデータには含まれません。
 * 関心についてのデータ - Cortana や Bing for Business などの Microsoft のサービスの使用に基づく、アカウントに関連付けられている関心に関する情報です。
-* サブスクリプション データ - Office 365 などの Microsoft のアプリとサービスに対して組織によって提供するサブスクリプションです。
+* サブスクリプション データ - Microsoft 365 などの Microsoft のアプリとサービスに対して組織によって提供するサブスクリプションです。
 * 連絡先データ - 頻繁に通信または共同作業する人の連絡先情報など、Outlook、Skype、他の Microsoft アカウント サービスでの連絡先リストです。 連絡先情報は、たとえば接続の提案、連絡先の整理、連絡先に関する更新の表示などのために、LinkedIn によって定期的にインポートされ、格納されて、使用されます。
 
 連絡先を除き、Microsoft からアクセスされるデータが LinkedIn に永続的に格納されることはありません。 Microsoft の連絡先は、ユーザーが削除するまで LinkedIn に格納されます。 詳しくは、[インポートされた連絡先の LinkedIn からの削除](https://www.linkedin.com/help/linkedin/answer/43377)に関するページをご覧ください。

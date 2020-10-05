@@ -4,12 +4,12 @@ description: Microsoft Power BI で Azure Blockchain Workbench SQL DB のデー�
 ms.date: 04/22/2020
 ms.topic: how-to
 ms.reviewer: sunri
-ms.openlocfilehash: 2a5e67a8416c57c1a0cb039733a93608a8919be6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e0e585ce45616c2402972c725b502f4b704d1cd
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214232"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532377"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>Microsoft Power BI で Azure Blockchain Workbench データを使用する
 
@@ -41,7 +41,7 @@ Microsoft Power BI は Power BI Desktop を使用して SQL DB データベー�
 
 6.  データベース接続に成功すると、**ナビゲーター** ダイアログに、テーブルとデータベース内で使用可能なビューが表示されます。 ビューは、レポート向けに設計されており、すべてに **vw** のプレフィックスが付いています。
 
-    ![ナビゲーター](./media/data-powerbi/navigator.png)
+    ![vwContractAction が選択されている [ナビゲーター] ダイアログ ボックスが表示された Power BI デスクトップの画面キャプチャ。](./media/data-powerbi/navigator.png)
 
 7.  含めるビューを選択します。 ここではデモのため、コントラクト上で実行されたアクションの詳細を提供する **vwContractAction** を含めます。
 

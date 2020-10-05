@@ -11,13 +11,13 @@ author: swinarko
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 08/10/2020
-ms.openlocfilehash: 006b7db9f63f5ba74fee936383206b18c42aa038
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.date: 09/06/2020
+ms.openlocfilehash: fb5b5cb0ac4a9ace7b5de5e92308da58fd2b1fec
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041852"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504946"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>SSDT から Azure 内で SSIS パッケージを実行する
 
@@ -57,7 +57,7 @@ Azure-SSIS IR にすぐに接続する場合、詳細については「[Azure-SS
 
    ![Visual Studio の構成を選択](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-select-visual-studio-configurations.png)
 
-3. 既存の SSIS プロジェクトを Azure 対応にするには、ターゲット サーバーのバージョンを Azure-SSIS IR でサポートされている最新のバージョンに設定する必要があります。 現時点では、Azure-SSIS IR の既定の互換性レベルは 140 で、**SQL Server 2017** に相当します。 SQL Server 2017 でサポートされない追加のコンポーネントがパッケージに含まれていないことを確認してください。 また、互換性のあるすべての追加コンポーネントがカスタム セットアップを使用して Azure-SSIS IR にインストールされていることも確認してください ([Azure-SSIS IR のカスタマイズ](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)に関する記事を参照してください)。 **[次へ]** ボタンをクリックして続行します。
+3. 既存の SSIS プロジェクトを Azure 対応にするには、ターゲット サーバーのバージョンを Azure-SSIS IR でサポートされている最新のバージョンに設定する必要があります。 Azure-SSIS IR は現在、**SQL Server 2017** に基づいています。 SQL Server 2017 でサポートされない追加のコンポーネントがパッケージに含まれていないことを確認してください。 また、互換性のあるすべての追加コンポーネントがカスタム セットアップを使用して Azure-SSIS IR にインストールされていることも確認してください ([Azure-SSIS IR のカスタマイズ](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)に関する記事を参照してください)。 **[次へ]** ボタンをクリックして続行します。
 
    ![ターゲット サーバーのバージョンの切り替え](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-switch-target-server-version-step.png)
 

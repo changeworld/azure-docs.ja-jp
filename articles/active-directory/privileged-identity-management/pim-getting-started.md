@@ -10,22 +10,22 @@ ms.service: active-directory
 ms.subservice: pim
 ms.topic: how-to
 ms.workload: identity
-ms.date: 08/24/2020
+ms.date: 09/15/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bad5b0256ee445767689ea2752e918a1fbf5fae
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 5bcfb21ab15355653780355f1b5e459bc806ec8c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815999"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600723"
 ---
 # <a name="start-using-privileged-identity-management"></a>Privileged Identity Management の使用開始
 
 この記事では、Privileged Identity Management (PIM) を有効にしてその使用を開始する方法について説明します。
 
-Privileged Identity Management (PIM) を使用すると、Azure Active Directory (Azure AD) 組織内のアクセス権を管理、制御、および監視できます。 PIM を使用すると、Azure リソース、Azure AD リソースのほか、Office 365 や Microsoft Intune などのその他の Microsoft オンライン サービスへのアクセスを、必要に応じて適切なタイミングで提供できます。
+Privileged Identity Management (PIM) を使用すると、Azure Active Directory (Azure AD) 組織内のアクセス権を管理、制御、および監視できます。 PIM を使用すると、Azure リソースや Azure AD リソースのほか、Microsoft 365 や Microsoft Intune などのその他の Microsoft オンライン サービスへのアクセスを、必要に応じて適切なタイミングで提供できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,6 +35,14 @@ Privileged Identity Management を使用するには、次のライセンスの�
 - Enterprise Mobility + Security (EMS) E5
 
 詳細については、「[Privileged Identity Management を使用するためのライセンスの要件](subscription-requirements.md)」を参照してください。
+
+> [!Note]
+> Premium P2 ライセンスの Azure AD 組織で特権ロールを持っているアクティブなユーザーが、Azure AD の **[ロールと管理者]** にアクセスしてロールを選択する (または単に Privileged Identity Management にアクセスする) と、次のようになります。
+>
+> - 組織に対して PIM が自動的に有効になります
+> - "通常の" ロールの割り当てと資格のあるロールの割り当てのどちらも行えるようになります
+>
+> PIM が有効になっても、その他の面では、心配しなければならないような影響は組織にはありません。 アクティブなのか資格があるのか、開始と終了時刻など、追加の割り当てオプションが提供されます。 また、PIM では、管理単位とカスタム ロールを使用してロール割り当ての範囲を定義することもできます。 全体管理者または特権ロール管理者には、PIM の週刊ダイジェストなど、いくつかの追加メールが届き始める可能性があります。 さらに、ロールの割り当てに関連する監査ログに MS-PIM サービス プリンシパルが表示される場合もあります。 これは予期された変更であり、ワークフローに対する影響はありません。
 
 ## <a name="prepare-pim-for-azure-ad-roles"></a>Azure AD ロール用に PIM を準備する
 

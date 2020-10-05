@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 2daa88d258e0bf761d9afce48b94e6cd6ff2fb95
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 103315b61592cc711f61ec5e95468e50314b9fa6
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981437"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440832"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 の使用に関するベスト プラクティス
 
@@ -49,7 +49,7 @@ Data Lake Storage Gen1 には、ファイアウォールを有効にして、ア
 
 ![Data Lake Storage Gen1 のファイアウォール設定](./media/data-lake-store-best-practices/data-lake-store-firewall-setting.png "Data Lake Storage Gen1 のファイアウォール設定")
 
-ファイアウォールを有効にすると、HDInsight、Data Factory、SQL Data Warehouse などの Azure のサービスのみが Data Lake Storage Gen1 にアクセスできます。 Azure で使用される内部ネットワーク アドレス変換により、Data Lake Storage Gen1 のファイアウォールでは IP により特定のサービスを制限することができません。これは、Azure 外のエンドポイント (オンプレミスなど) を制限することのみを意図しています。
+ファイアウォールを有効にすると、HDInsight、Data Factory、Azure Synapse Analytics (旧称 SQL Data Warehouse) などの Azure のサービスのみが Data Lake Storage Gen1 にアクセスできます。 Azure で使用される内部ネットワーク アドレス変換により、Data Lake Storage Gen1 のファイアウォールでは IP により特定のサービスを制限することができません。これは、Azure 外のエンドポイント (オンプレミスなど) を制限することのみを意図しています。
 
 ## <a name="performance-and-scale-considerations"></a>パフォーマンスとスケールに関する考慮事項
 

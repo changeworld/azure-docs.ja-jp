@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 7/17/2020
-ms.openlocfilehash: d681c79cb3c7874cbcd75d03db08721dd4b25f4d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6fc0add55caccd7721f3ee2c72db68fbcf6bc0dc
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835461"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458503"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>仮想ネットワーク サービス エンドポイントと規則を Azure Database for MariaDB に対して使用する
 
@@ -112,7 +112,7 @@ Azure Database for MariaDB の場合、仮想ネットワーク規則機能に�
 
 - 仮想ネットワーク規則は[クラシック デプロイ モデル][resource-manager-deployment-model-568f] ネットワークではなく、Azure Resource Manager の仮想ネットワークのみに適用されます。
 
-- **Microsoft.Sql** サービス タグを使用して Azure Database for MariaDB への仮想ネットワーク サービス エンドポイントを有効にすると、次のすべての Azure データベース サービスのエンドポイントも有効になります。Azure Database for MariaDB、Azure Database for MySQL、Azure Database for PostgreSQL、Azure SQL Database、および Azure SQL Data Warehouse。
+- **Microsoft.Sql** サービス タグを使用して Azure Database for MariaDB への仮想ネットワーク サービス エンドポイントを有効にすると、次のすべての Azure データベース サービスのエンドポイントも有効になります。Azure Database for MariaDB、Azure Database for MySQL、Azure Database for PostgreSQL、Azure SQL Database、Azure Synapse Analytics (旧称 SQL Data Warehouse)。
 
 - VNet サービス エンドポイントは、汎用サーバーとメモリ最適化サーバーでのみサポートされています。
 

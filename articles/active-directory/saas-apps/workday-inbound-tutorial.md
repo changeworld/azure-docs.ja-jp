@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 51ab05a995ba5b620b759f419fb5b4594873d2f5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 87085d4a4911801933993720ae0ab23aeb19956d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88527810"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974362"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>チュートリアル:Workday を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -31,13 +31,13 @@ ms.locfileid: "88527810"
 
 ユーザー アカウントをプロビジョニングするために、[Azure Active Directory ユーザー プロビジョニング サービス](../app-provisioning/user-provisioning.md)を [Workday Human Resources API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) と統合します。 Azure AD のユーザー プロビジョニング サービスでサポートされている Workday ユーザー プロビジョニング ワークフローは、次の人事管理および ID ライフサイクル管理シナリオを自動化します。
 
-* **新しい従業員の雇用** - Workday に新しい従業員が追加されると、Active Directory、Azure Active Directory、必要に応じて Office 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](../app-provisioning/user-provisioning.md)でユーザー アカウントが自動的に作成され、IT 管理の連絡情報が Workday に書き戻されます。
+* **新しい従業員の雇用** - Workday に新しい従業員が追加されると、Active Directory、Azure Active Directory、必要に応じて Microsoft 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](../app-provisioning/user-provisioning.md)でユーザー アカウントが自動的に作成され、IT 管理の連絡情報が Workday に書き戻されます。
 
-* **従業員の属性とプロファイルの更新** - Workday で従業員レコード (名前、職名、マネージャなど) が更新されると、Active Directory、Azure Active Directory、必要に応じて Office 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](../app-provisioning/user-provisioning.md)でユーザー アカウントが自動的に更新されます。
+* **従業員の属性とプロファイルの更新** - Workday で従業員レコード (名前、職名、マネージャーなど) が更新されると、Active Directory、Azure Active Directory、必要に応じて Microsoft 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](../app-provisioning/user-provisioning.md)でユーザー アカウントが自動的に更新されます。
 
-* **従業員の退職** - Workday で従業員が退職状態になると、Active Directory、Azure Active Directory、必要に応じて Office 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](../app-provisioning/user-provisioning.md)でユーザー アカウントが自動的に無効になります。
+* **従業員の退職** - Workday で従業員が退職状態になると、Active Directory、Azure Active Directory、必要に応じて Microsoft 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](../app-provisioning/user-provisioning.md)でユーザー アカウントが自動的に無効になります。
 
-* **従業員の再雇用** - Workday で従業員が再雇用されると、Active Directory、Azure Active Directory、必要に応じて Office 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](../app-provisioning/user-provisioning.md)に以前のアカウントが (設定に応じて) 自動的に再アクティブ化または再プロビジョニングされます。
+* **従業員の再雇用** - Workday で従業員が再雇用されると、Active Directory、Azure Active Directory、必要に応じて Microsoft 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](../app-provisioning/user-provisioning.md)に以前のアカウントが (設定に応じて) 自動的に再アクティブ化または再プロビジョニングされます。
 
 ### <a name="whats-new"></a>新機能
 このセクションでは、最新の Workday 統合の機能強化について説明します。 更新内容、予定されている変更、アーカイブの包括的な一覧については、「[Azure Active Directory の新着情報](../fundamentals/whats-new.md)」のページを参照してください。 
@@ -60,7 +60,7 @@ ms.locfileid: "88527810"
 
 * 1 つ以上の Active Directory フォレスト、ドメイン、および OU と同期するために、Workday HCM モジュールで検出された変更情報のみに基づいてユーザーの登録、移動、削除を行う必要がある組織 ([Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) を参照してください)
 
-* 電子メールに Office 365 を使用している組織
+* 電子メールに Microsoft 365 を使用している組織
 
 ## <a name="solution-architecture"></a>ソリューションのアーキテクチャ
 
@@ -373,7 +373,7 @@ Workday から Active Directory へのユーザー プロビジョニングを�
 1. [サービス] スナップインを開き、"Microsoft Azure AD Connect Provisioning Agent" という名前のサービスを探して、エージェントのインストールを確認し、実行中であることを確認します
 
    >[!div class="mx-imgBorder"]
-   >![サービス](./media/workday-inbound-tutorial/services.png)
+   >![Services で実行されている Microsoft Azure AD Connect プロビジョニング エージェントのスクリーンショット。](./media/workday-inbound-tutorial/services.png)
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory"></a>パート 3: プロビジョニング アプリで Workday と Active Directory への接続を構成する
 この手順では、Azure portal で Workday および Active Directory との接続を確立します。 

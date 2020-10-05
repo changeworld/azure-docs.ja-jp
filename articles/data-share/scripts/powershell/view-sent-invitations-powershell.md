@@ -1,6 +1,6 @@
 ---
 title: 'PowerShell スクリプト: コンシューマーに送信された Azure Data Share の招待を一覧表示する |Microsoft Docs'
-description: この PowerShell スクリプトでは、既存のデータ共有からの招待を受け入れます。
+description: この PowerShell スクリプトが、コンシューマーに送信された招待を取得する方法について説明します。また、使用できるスクリプトの例を確認します。
 services: data-share
 author: joannapea
 ms.service: data-share
@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
-ms.openlocfilehash: 157b844afd9d59b6c03c7ae8585bc2182370d3a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3f0374ba5b98c145359d18143584e23fc543c552
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70307144"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985623"
 ---
 # <a name="use-powershell-to-get-a-data-share-invitation"></a>PowerShell を使用してデータ共有の招待を取得する
 

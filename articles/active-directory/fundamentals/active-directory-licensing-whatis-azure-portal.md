@@ -14,16 +14,16 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ce0d543f11a1dcc61616d8a386176272ab44aee
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 9bb0c1773a08bc934eebc4f110cec43e4b07e49e
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797272"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565057"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Azure Active Directory のグループベースのライセンスとは
 
-マイクロソフトの Office 365、Enterprise Mobility + Security、Dynamics 365 などの有料クラウド サービスやその他の類似製品では、ライセンスが必要です。 これらのライセンスは、各サービスにアクセスする必要があるユーザーにそれぞれ割り当てられます。 ライセンス管理は、管理者が管理ポータル (Office、Azure) と PowerShell コマンドレットのどちらかを使用して行います。 マイクロソフトのすべてのクラウド サービスの ID を管理する基盤インフラストラクチャは、Azure Active Directory (Azure AD) です。 ユーザーのライセンスの割り当て状態に関する情報は Azure AD に格納されます。
+マイクロソフトの Microsoft 365、Enterprise Mobility + Security、Dynamics 365 などの有料クラウド サービスやその他の類似製品では、ライセンスが必要です。 これらのライセンスは、各サービスにアクセスする必要があるユーザーにそれぞれ割り当てられます。 ライセンス管理は、管理者が管理ポータル (Office、Azure) と PowerShell コマンドレットのどちらかを使用して行います。 マイクロソフトのすべてのクラウド サービスの ID を管理する基盤インフラストラクチャは、Azure Active Directory (Azure AD) です。 ユーザーのライセンスの割り当て状態に関する情報は Azure AD に格納されます。
 
 従来、ライセンスは個々のユーザー レベルでしか割り当てることができず、大規模な管理を行いづらい場合がありました。 たとえば、組織や部署でのユーザーの異動などの組織の変化に応じてユーザー ライセンスの追加または削除を行うには、管理者は多くの場合、複雑な PowerShell スクリプトを記述する必要がありました。 このスクリプトは、クラウド サービスを一つ一つ呼び出します。
 
@@ -45,9 +45,9 @@ ms.locfileid: "87797272"
 
 - ライセンスを、Azure AD 内の任意のセキュリティ グループに割り当てられます。 セキュリティ グループは、Azure AD Connect を使用してオンプレミスから同期できます。 また、セキュリティ グループは Azure AD 内で直接作成する (クラウド専用グループとも呼ばれます) ことも、Azure AD の動的グループ機能で自動作成することもできます。
 
-- 製品ライセンスをグループに割り当てる場合、管理者はその製品の 1 つまたは複数のサービス プランを無効にできます。 通常、この割り当ては、製品に含まれるサービスを組織で使用する準備が整っていないときに行います。 たとえば、管理者は Office 365 を部署に割り当てる一方で、Yammer のサービスを一時的に無効にできます。
+- 製品ライセンスをグループに割り当てる場合、管理者はその製品の 1 つまたは複数のサービス プランを無効にできます。 通常、この割り当ては、製品に含まれるサービスを組織で使用する準備が整っていないときに行います。 たとえば、管理者は Microsoft 365 を部署に割り当てる一方で、Yammer のサービスを一時的に無効にできます。
 
-- ユーザーレベルのライセンスが必要なすべての Microsoft クラウド サービスがサポートされています。 このサポートには、すべての Office 365 製品、Enterprise Mobility + Security、Dynamics 365 が含まれます。
+- ユーザーレベルのライセンスが必要なすべての Microsoft クラウド サービスがサポートされています。 このサポートには、すべての Microsoft 365 製品、Enterprise Mobility + Security、Dynamics 365 が含まれます。
 
 - グループベースのライセンスは、現時点では [Azure portal](https://portal.azure.com) を介してのみ使用できます。 ユーザーとグループの管理に主に別の管理ポータル ([Microsoft 365 管理センター](https://admin.microsoft.com)など) を使用する場合は、引き続き使用できます。 ただし、グループ レベルでライセンスを管理するには Azure Portal の使用をお勧めします。
 

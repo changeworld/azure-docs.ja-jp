@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: article
-ms.date: 06/30/2020
+ms.date: 09/14/2020
 ms.author: victorh
-ms.openlocfilehash: 7a06111fbe38f167ddf3512fdb312d7de754a738
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71ff23e749139087f24da406474403167dcc1c0d
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563566"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563150"
 ---
 # <a name="what-are-the-azure-firewall-manager-architecture-options"></a>Azure Firewall Manager のアーキテクチャのオプション
 
@@ -44,6 +44,7 @@ Azure Firewall Manager は、次の 2 種類のネットワーク アーキテ�
 |**複数のセキュリティ プロバイダーのサポート**|サードパーティのファイアウォールへの強制トンネリングを手動で構成してサポート|2 つのセキュリティ プロバイダーの自動サポート:プライベート トラフィックのフィルタリング用の Azure Firewall とインターネット フィルタリング用のサードパーティ|
 |**Application Gateway上の Web アプリケーション ファイアウォール** |Virtual Network でサポート|現在はスポーク ネットワークでサポート|
 |**ネットワーク仮想アプライアンス**|Virtual Network でサポート|現在はスポーク ネットワークでサポート|
+|**Azure DDoS Protection Standard のサポート**|はい|いいえ|
 
 ## <a name="next-steps"></a>次のステップ
 

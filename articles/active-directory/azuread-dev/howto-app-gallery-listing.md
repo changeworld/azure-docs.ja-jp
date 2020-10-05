@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 662bda03fc2d389ed316bd2c7141d5e6a30cef1a
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 40d299049a0a1bbff81c412a5beb84f28e64ff46
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814633"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706304"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する
 
@@ -124,7 +124,7 @@ HTML サインイン ページがある Web アプリケーションを作成し
 
 ## <a name="update-or-remove-an-existing-listing"></a>既存の一覧を更新または削除する
 
-Azure AD アプリ ギャラリーの既存のアプリケーションを更新または削除するには、まず[アプリケーション ネットワーク ポータル](https://microsoft.sharepoint.com/teams/apponboarding/Apps)で要求を送信する必要があります。 Office 365 アカウントがある場合は、それを使ってこのポータルにサインインします。 ない場合は、自分の Microsoft アカウント (Outlook、Hotmail など) を使ってサインインします。
+Azure AD アプリ ギャラリーの既存のアプリケーションを更新または削除するには、まず[アプリケーション ネットワーク ポータル](https://microsoft.sharepoint.com/teams/apponboarding/Apps)で要求を送信する必要があります。 職場または学校アカウントがある場合は、それを使ってこのポータルにサインインします。 ない場合は、自分の Microsoft アカウント (Outlook、Hotmail など) を使ってサインインします。
 
 - 次の画像に示すように適切なオプションを選択します。
 

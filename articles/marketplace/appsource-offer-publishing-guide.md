@@ -1,24 +1,24 @@
 ---
 title: Microsoft AppSource のオファーの公開ガイド
-description: Office 365、Dynamics 365、Power Apps、Power BI で Microsoft AppSource にアプリを公開するためのステップ バイ ステップ ガイドおよび公開チェックリスト
+description: Microsoft 365、Dynamics 365、Power Apps、Power BI 向けに Microsoft AppSource にアプリを公開するためのステップ バイ ステップ ガイドおよび公開チェックリスト。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 04/15/2020
-ms.openlocfilehash: c0052b515d87ecb744783d57942d2557fc1db913
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/04/2020
+ms.openlocfilehash: 68b11c672d362e7af7dfc01e2679d035d9e1e4c9
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110285"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484818"
 ---
-# <a name="offer-publishing-guide-for-office-365-dynamics-365-power-apps-and-power-bi"></a>Office 365、Dynamics 365、Power Apps、Power BI のオファーの公開ガイド
+# <a name="offer-publishing-guide-for-microsoft-365-dynamics-365-power-apps-and-power-bi"></a>Microsoft 365、Dynamics 365、Power Apps、Power BI のオファーの公開ガイド
 
-Microsoft AppSource には、Office 365、Dynamics 365、Power Apps、Power BI 上でビルドされる、またはそれらを拡張するオファーが含まれます。 これらの製品にはそれぞれ、公開プロセスをガイドする固有のドキュメントが用意されています。 
+Microsoft AppSource には、Microsoft 365、Dynamics 365、Power Apps、Power BI 上に構築される、またはそれらを拡張するオファーが含まれています。 これらの製品にはそれぞれ、公開プロセスをガイドする固有のドキュメントが用意されています。 
 
-AppSource には有料オファー、一覧オファー、試用版オファーがあり、行動喚起は "*今すぐ入手*"、"*お問い合わせ*"、"*今すぐ試す*" です。
+AppSource には、有料、一覧、試用版のオファーがあり、"*今すぐ入手*"、"*連絡する*"、"*今すぐ試す*" のリスト オプションが使用されています。
 
 ## <a name="product-specific-guides"></a>製品固有のガイド
 
@@ -26,7 +26,7 @@ AppSource には有料オファー、一覧オファー、試用版オファー�
 
 | Product    | 公開ガイダンス  |
 | :------------------- | :-------------------|
-| Office 365 | [公開プロセスとガイドライン](/office/dev/store/submit-to-appsource-via-partner-center)を確認します。 |
+| Microsoft 365 | [公開プロセスとガイドライン](/office/dev/store/submit-to-appsource-via-partner-center)を確認します。 |
 | Dynamics 365 Business Central | パートナー センターでオファーを公開するには、「[新しい Dynamics 365 Business Central オファーの作成](./partner-center-portal/create-new-business-central-offer.md)」を参照してください。 |
 | Dynamics 365 for Finance and Operations | Enterprise Edition 向けに開発している場合は、[公開プロセスとガイドライン](/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)を確認します。<br/>パートナー センターでオファーを公開するには、「[新しい Dynamics 365 for Operations オファーを作成する](./partner-center-portal/create-new-operations-offer.md)」を参照してください。  |
 | Dynamics 365 for Customer Engagement | [公開プロセスとガイドライン](/dynamics365/customer-engagement/developer/publish-app-appsource)を確認します。<br/>パートナー ポータルでオファーを公開するには、「[新しい Dynamics 365 for Customer Engagement & Power Apps オファーの作成](./partner-center-portal/create-new-customer-engagement-offer.md)」を参照してください。  |

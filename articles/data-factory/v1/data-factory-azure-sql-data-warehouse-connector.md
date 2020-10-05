@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Data Warehouse との間でデータをコピーする
-description: Azure Data Factory を使用して Azure SQL Data Warehouse との間でデータをコピーする方法を説明します
+title: Azure Synapse Analytics (旧称 SQL Data Warehouse) との間でデータをコピーする
+description: Azure Data Factory を使用して Azure Synapse Analytics (旧称 SQL Data Warehouse) との間でデータをコピーする方法を説明します
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,69 +12,69 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4335763269f4a39b4893d9022f4789296b178e92
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: b7324115c880fb1ee4d5a1730a3b84a289cee4b0
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419325"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89490141"
 ---
-# <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Azure Data Factory を使用した Azure SQL Data Warehouse との間でのデータのコピー
+# <a name="copy-data-to-and-from-azure-synapse-analytics-formerly-sql-data-warehouse-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Synapse Analytics (旧称 SQL Data Warehouse) との間でデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-azure-sql-data-warehouse-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-azure-sql-data-warehouse.md)
 
 > [!NOTE]
-> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の Azure SQL Data Warehouse コネクタ](../connector-azure-sql-data-warehouse.md)に関するページを参照してください。
+> この記事は、Data Factory のバージョン 1 に適用されます。 最新バージョンの Data Factory サービスを使用している場合は、[V2 の Azure Synapse Analytics コネクタ](../connector-azure-sql-data-warehouse.md)に関するページをご覧ください。
 
-この記事では、Azure Data Factory のコピー アクティビティを使って Azure SQL Data Warehouse との間でデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
+この記事では、Azure Data Factory のコピー アクティビティを使って、Azure Synapse Analytics との間でデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
 
 > [!TIP]
-> 最高のパフォーマンスを実現するには、PolyBase を使用して、Azure SQL Data Warehouse にデータを読み込みます。 「 [PolyBase を使用して Azure SQL Data Warehouse にデータを読み込む](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) 」セクションに詳細が記載されています。 ユース ケースを使用したチュートリアルについては、[1 TB のデータを Azure Data Factory を使用して 15 分以内に Azure SQL Data Warehouse に読み込む方法](data-factory-load-sql-data-warehouse.md)に関するページを参照してください。
+> 最高のパフォーマンスを実現するには、PolyBase を使用して、Azure Synapse Analytics にデータを読み込みます。 詳細については、「[PolyBase を使用して Azure Synapse Analytics にデータを読み込む](#use-polybase-to-load-data-into-azure-synapse-analytics)」をご覧ください。 ユース ケースを使用したチュートリアルについては、[Azure Data Factory を使用して 1 TB のデータを 15 分以内に Azure Synapse Analytics に読み込む方法](data-factory-load-sql-data-warehouse.md)に関する記事をご覧ください。
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
-**Azure SQL Data Warehouse から**以下のデータ ストアにデータをコピーできます。
+**Azure Synapse Analytics から**以下のデータ ストアにデータをコピーできます。
 
 [!INCLUDE [data-factory-supported-sinks](../../../includes/data-factory-supported-sinks.md)]
 
-以下のデータ ストアから **Azure SQL Data Warehouse に**データをコピーできます。
+以下のデータ ストアから **Azure Synapse Analytics に**データをコピーできます。
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
 > [!TIP]
-> SQL Server または Azure SQL Database から Azure SQL Data Warehouse にデータをコピーするとき、コピー先ストアにテーブルが存在しない場合、Data Factory では、ソース データ ストアのテーブルのスキーマを使用して、SQL Data Warehouse にテーブルを自動的に作成することができます。 詳細については、「[テーブルの自動作成](#auto-table-creation)」を参照してください。
+> SQL Server または Azure SQL Database から Azure Synapse Analytics にデータをコピーするとき、コピー先ストアにテーブルが存在しない場合、Data Factory では、ソース データ ストアのテーブルのスキーマを使用して、Synapse Analytics にテーブルを自動的に作成することができます。 詳細については、「[テーブルの自動作成](#auto-table-creation)」を参照してください。
 
 ## <a name="supported-authentication-type"></a>サポートされている認証の種類
-Azure SQL Data Warehouse コネクタは基本認証をサポートしています。
+Azure Synapse Analytics コネクタは基本認証をサポートしています。
 
 ## <a name="getting-started"></a>作業の開始
-さまざまなツールや API を使用して、Azure SQL Data Warehouse との間でデータを移動するコピー アクティビティを含むパイプラインを作成できます。
+さまざまなツール/API を使用して、Azure Synapse Analytics との間でデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
-Azure SQL Data Warehouse との間でデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。 「[チュートリアル:Azure Data Factory を使用した Azure SQL Data Warehouse へのデータの読み込み](../../sql-data-warehouse/sql-data-warehouse-load-with-data-factory.md)」を参照して、データのコピー ウィザードを使用してパイプラインを作成する簡単な手順を確認してください。
+Azure Synapse Analytics との間でデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。 「[チュートリアル:Azure Data Factory を使用した Azure Synapse Analytics へのデータの読み込み](../../sql-data-warehouse/sql-data-warehouse-load-with-data-factory.md)」を参照して、データのコピー ウィザードを使用してパイプラインを作成する簡単な手順を確認してください。
 
 また、次のツールを使用してパイプラインを作成することもできます。**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
 1. **Data Factory**を作成します。 データ ファクトリには、1 つまたは複数のパイプラインを設定できます。 
-2. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。 たとえば、Azure Blob Storage から Azure SQL Data Warehouse にデータをコピーする場合、リンクされたサービスを 2 つ作成して、Azure ストレージ アカウントと Azure SQL Data Warehouse をデータ ファクトリにリンクします。 Azure SQL Data Warehouse に固有のリンクされたサービスのプロパティについては、「[リンクされたサービスのプロパティ](#linked-service-properties)」セクションをご覧ください。 
-3. コピー操作用の入力データと出力データを表す**データセット**を作成します。 最後の手順で説明されている例では、データセットを作成して入力データを含む BLOB コンテナーとフォルダーを指定します。 また、もう 1 つのデータセットを作成して、Blob Storage からコピーされたデータを保持する Azure SQL Data Warehouse のテーブルを指定します。 Azure SQL Data Warehouse に固有のデータセットのプロパティについては、「[データセットのプロパティ](#dataset-properties)」セクションをご覧ください。
-4. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 前に説明した例では、コピー アクティビティのソースとして BlobSource を、シンクとして SqlDWSink を使います。 同様に、Azure SQL Data Warehouse から Azure Blob Storage にコピーする場合は、SqlDWSource と BlobSink をコピー アクティビティで使います。 Azure SQL Data Warehouse に固有のコピー アクティビティのプロパティについては、「[コピー アクティビティのプロパティ](#copy-activity-properties)」セクションをご覧ください。 ソースまたはシンクとしてデータ ストアを使う方法について詳しくは、前のセクションのデータ ストアのリンクをクリックしてください。
+2. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。 たとえば、Azure Blob Storage から Azure Synapse Analytics にデータをコピーする場合、リンクされたサービスを 2 つ作成して、Azure ストレージ アカウントと Azure Synapse Analytics をデータ ファクトリにリンクします。 Azure Synapse Analytics に固有のリンクされたサービスのプロパティについては、「[リンクされたサービスのプロパティ](#linked-service-properties)」セクションをご覧ください。 
+3. コピー操作用の入力データと出力データを表す**データセット**を作成します。 最後の手順で説明されている例では、データセットを作成して入力データを含む BLOB コンテナーとフォルダーを指定します。 また、もう 1 つのデータセットを作成して、Blob Storage からコピーされたデータを保持する Azure Synapse Analytics のテーブルを指定します。 Azure Synapse Analytics に固有のデータセットのプロパティについては、「[データセットのプロパティ](#dataset-properties)」セクションをご覧ください。
+4. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 前に説明した例では、コピー アクティビティのソースとして BlobSource を、シンクとして SqlDWSink を使います。 同様に、Azure Synapse Analytics から Azure Blob Storage にコピーする場合は、SqlDWSource と BlobSink をコピー アクティビティで使います。 Azure Synapse Analytics に固有のコピー アクティビティのプロパティについては、「[コピー アクティビティのプロパティ](#copy-activity-properties)」セクションをご覧ください。 ソースまたはシンクとしてデータ ストアを使う方法について詳しくは、前のセクションのデータ ストアのリンクをクリックしてください。
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 Azure SQL Data Warehouse との間でのデータ コピーに使用する Data Factory エンティティの JSON 定義サンプルは、この記事の「[JSON の例](#json-examples-for-copying-data-to-and-from-sql-data-warehouse)」セクションをご覧ください。
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 Azure Synapse Analytics との間でデータをコピーするときに使用する Data Factory エンティティの JSON 定義のサンプルについては、この記事の「[JSON の使用例](#json-examples-for-copying-data-to-and-from-azure-synapse-analytics)」を参照してください。
 
-以下のセクションでは、Azure SQL Data Warehouse に固有の Data Factory エンティティの定義に使用される JSON プロパティの詳細を説明します。
+以下のセクションでは、Azure Synapse Analytics に固有の Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
-次の表は、Azure SQL Data Warehouse のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
+次の表は、Azure Synapse Analytics のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | type |type プロパティは、次のように設定する必要があります:**AzureSqlDW** |はい |
-| connectionString |connectionString プロパティの Azure SQL Data Warehouse インスタンスに接続するために必要な情報を指定します。 基本認証だけがサポートされています。 |はい |
+| connectionString |connectionString プロパティには、Azure Synapse Analytics インスタンスに接続するために必要な情報を指定します。 基本認証だけがサポートされています。 |はい |
 
 > [!IMPORTANT]
-> [サーバーへのアクセスを Azure サービスに許可する](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)ように [Azure SQL Database ファイアウォール](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) とデータベース サーバーを構成します。 さらに、Azure の外部から (たとえば、Data Factory ゲートウェイのあるオンプレミスのデータ ソースから) Azure SQL Data Warehouse にデータをコピーする場合は、Azure SQL Data Warehouse にデータを送信するマシンに適切な IP アドレス範囲を設定します。
+> [サーバーへのアクセスを Azure サービスに許可する](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)ように [Azure SQL Database ファイアウォール](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) とデータベース サーバーを構成します。 また、Azure の外部から (たとえば、Data Factory ゲートウェイのあるオンプレミスのデータ ソースから) Azure Synapse Analytics にデータをコピーする場合、Azure Synapse Analytics にデータを送信するマシンに適切な IP アドレス範囲を設定します。
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
@@ -83,7 +83,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| tableName |リンクされたサービスが参照する Azure SQL Data Warehouse データベースのテーブルまたはビューの名前です。 |はい |
+| tableName |リンクされたサービスが参照する Azure Synapse Analytics データベースのテーブルまたはビューの名前です。 |はい |
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」という記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
@@ -102,11 +102,11 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 | sqlReaderStoredProcedureName |ソース テーブルからデータを読み取るストアド プロシージャの名前。 |ストアド プロシージャの名前。 最後の SQL ステートメントはストアド プロシージャの SELECT ステートメントにする必要があります。 |いいえ |
 | storedProcedureParameters |ストアド プロシージャのパラメーター。 |名前と値のペア。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 |いいえ |
 
-SqlDWSource に **sqlReaderQuery** が指定されている場合、コピー アクティビティでは、データを取得するために SQL Data Warehouse ソースに対してこのクエリを実行します。
+SqlDWSource に **sqlReaderQuery** が指定されている場合、コピー アクティビティでは、データを取得するために Azure Synapse Analytics ソースに対してこのクエリを実行します。
 
 または、**sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することができます (ストアド プロシージャでパラメーターを使用する場合)。
 
-sqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、Azure SQL Data Warehouse に対して実行するクエリを作成するために、データセット JSON の構造セクションで定義された列が使用されます。 例: `select column1, column2 from mytable`. データセット定義に構造がない場合は、すべての列がテーブルから選択されます。
+sqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、Azure Synapse Analytics に対して実行するクエリを作成するために、データセット JSON の構造セクションで定義された列が使用されます。 例: `select column1, column2 from mytable`. データセット定義に構造がない場合は、すべての列がテーブルから選択されます。
 
 #### <a name="sqldwsource-example"></a>SqlDWSource の例
 
@@ -145,7 +145,7 @@ GO
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | sqlWriterCleanupScript |特定のスライスのデータを消去するコピー アクティビティのクエリを指定します。 詳細については、 [再現性に関するセクション](#repeatability-during-copy)をご覧ください。 |クエリ ステートメント。 |いいえ |
-| allowPolyBase |BULKINSERT メカニズムではなく PolyBase (該当する場合) を使用するかどうかを示します。 <br/><br/> **SQL Data Warehouse へのデータ読み込みには、PolyBase の使用をお勧めします。** 制約と詳細については、「 [PolyBase を使用して Azure SQL Data Warehouse にデータを読み込む](#use-polybase-to-load-data-into-azure-sql-data-warehouse) 」をご覧ください。 |True <br/>False (既定値) |いいえ |
+| allowPolyBase |BULKINSERT メカニズムではなく PolyBase (該当する場合) を使用するかどうかを示します。 <br/><br/> **Azure Synapse Analytics へのデータ読み込みには、PolyBase の使用をお勧めします。** 制約と詳細については、「[PolyBase を使用して Azure Synapse Analytics にデータを読み込む](#use-polybase-to-load-data-into-azure-synapse-analytics)」をご覧ください。 |True <br/>False (既定値) |いいえ |
 | polyBaseSettings |**allowPolybase** プロパティが **true** に設定されているときに指定できるプロパティのグループ。 |&nbsp; |いいえ |
 | rejectValue |クエリが失敗するまでに拒否できる行の数または割合を指定します。 <br/><br/>PolyBase の拒否オプションの詳細については、「**CREATE EXTERNAL TABLE (Transact-SQL)** 」トピックの「[引数](https://msdn.microsoft.com/library/dn935021.aspx)」セクションをご覧ください。 |0 (既定値)、1、2、… |いいえ |
 | rejectType |rejectValue オプションをリテラル値と割合のどちらで指定するかを指定します。 |Value (既定値)、Percentage |いいえ |
@@ -163,13 +163,13 @@ GO
 }
 ```
 
-## <a name="use-polybase-to-load-data-into-azure-sql-data-warehouse"></a>PolyBase を使用して Azure SQL Data Warehouse にデータを読み込む
-**[PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)** を使用すると、高いスループットで Azure SQL Data Warehouse に大量のデータを効率的に読み込むことができます。 既定の BULKINSERT メカニズムではなく PolyBase を使用することで、スループットが大幅に向上することがわかります。 詳細な比較については、[コピー パフォーマンスの参考数値](data-factory-copy-activity-performance.md#performance-reference)に関するページを参照してください。 ユース ケースを使用したチュートリアルについては、[1 TB のデータを Azure Data Factory を使用して 15 分以内に Azure SQL Data Warehouse に読み込む方法](data-factory-load-sql-data-warehouse.md)に関するページを参照してください。
+## <a name="use-polybase-to-load-data-into-azure-synapse-analytics"></a>PolyBase を使用して Azure Synapse Analytics にデータを読み込む
+**[PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)** を使用すると、高いスループットで Azure Synapse Analytics に大量のデータを効率的に読み込むことができます。 既定の BULKINSERT メカニズムではなく PolyBase を使用することで、スループットが大幅に向上することがわかります。 詳細な比較については、[コピー パフォーマンスの参考数値](data-factory-copy-activity-performance.md#performance-reference)に関するページを参照してください。 ユース ケースを使用したチュートリアルについては、[Azure Data Factory を使用して 1 TB のデータを 15 分以内に Azure Synapse Analytics に読み込む方法](data-factory-load-sql-data-warehouse.md)に関する記事をご覧ください。
 
-* ソース データが **Azure Blob または Azure Data Lake Store** 内にあり、PolyBase と互換性のある形式の場合は、PolyBase を使用して Azure SQL Data Warehouse に直接コピーできます。 詳細については、「 **[PolyBase を使用して直接コピーする](#direct-copy-using-polybase)** 」を参照してください。
-* ソース データのストアと形式が、本来は PolyBase でサポートされていない形式の場合は、代わりに **[PolyBase を使用したステージング コピー](#staged-copy-using-polybase)** を使用できます。 これによりデータが自動的に PolyBase に対応する形式に変換されたうえで、Azure Blob Storage に格納されるため、スループットも向上します。 その後、データは SQL Data Warehouse に読み込まれます。
+* ソース データが **Azure BLOB または Azure Data Lake Store** 内にあり、PolyBase と互換性のある形式の場合は、PolyBase を使用して Azure Synapse Analytics に直接コピーできます。 詳細については、「 **[PolyBase を使用して直接コピーする](#direct-copy-using-polybase)** 」を参照してください。
+* ソース データのストアと形式が、本来は PolyBase でサポートされていない形式の場合は、代わりに **[PolyBase を使用したステージング コピー](#staged-copy-using-polybase)** を使用できます。 これによりデータが自動的に PolyBase に対応する形式に変換されたうえで、Azure Blob Storage に格納されるため、スループットも向上します。 続いて Azure Synapse Analytics にデータを読み込みます。
 
-次の例に示すように、Azure Data Factory で PolyBase を使用して Azure SQL Data Warehouse にデータをコピーするために、`allowPolyBase` プロパティを **true** に設定します。 allowPolyBase を true に設定すると、`polyBaseSettings` プロパティ グループを使用して PolyBase 固有のプロパティを指定できます。 polyBaseSettings で使用できるプロパティの詳細については、上記の「 [SqlDWSink](#sqldwsink) 」をご覧ください。
+次の例に示すように、Azure Data Factory で PolyBase を使用して Azure Synapse Analytics にデータをコピーするために、`allowPolyBase` プロパティを **true** に設定します。 allowPolyBase を true に設定すると、`polyBaseSettings` プロパティ グループを使用して PolyBase 固有のプロパティを指定できます。 polyBaseSettings で使用できるプロパティの詳細については、上記の「 [SqlDWSink](#sqldwsink) 」をご覧ください。
 
 ```JSON
 "sink": {
@@ -186,10 +186,10 @@ GO
 ```
 
 ### <a name="direct-copy-using-polybase"></a>PolyBase を使用して直接コピーする
-SQL Data Warehouse の PolyBase は (サービス プリンシパルを使用して)、Azure Blob と Azure Data Lake Store をソースとして、特定のファイル形式の要件付きで直接サポートしています。 ソース データがこのセクションで説明する条件を満たす場合は、PolyBase を使用してソース データ ストアから Azure SQL Data Warehouse に直接コピーできます。 それ以外の場合は、 [PolyBase を使用したステージング コピー](#staged-copy-using-polybase)を利用できます。
+Azure Synapse Analytics の PolyBase は (サービス プリンシパルを使用して)、Azure BLOB と Azure Data Lake Store をソースとして、特定のファイル形式の要件付きで直接サポートしています。 ソース データがこのセクションで説明する条件を満たす場合は、PolyBase を使用してソース データ ストアから Azure Synapse Analytics に直接コピーできます。 それ以外の場合は、 [PolyBase を使用したステージング コピー](#staged-copy-using-polybase)を利用できます。
 
 > [!TIP]
-> データを効率的に Data Lake Store から SQL Data Warehouse にコピーするには、「[Azure Data Factory makes it even easier and convenient to uncover insights from data when using Data Lake Store with SQL Data Warehouse](https://blogs.msdn.microsoft.com/azuredatalake/2017/04/08/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse/)」(Azure Data Factory を利用すれば、SQL Data Warehouse と共に Data Lake Store を使用する場合にデータからさらに容易かつ便利に情報を引き出せるようになる) を参考にしてください。
+> データを効率的に Data Lake Store から Azure Synapse Analytics にコピーするには、「[Azure Data Factory を利用すれば、Azure Synapse Analytics と共に Data Lake Store を使用する場合にデータからさらに容易かつ便利に情報を引き出せるようになる](https://blogs.msdn.microsoft.com/azuredatalake/2017/04/08/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse/)」を参考にしてください。
 
 要件が満たされない場合は、Azure Data Factory が設定を確認し、データ移動には自動的に BULKINSERT メカニズムが使用されるように戻ります。
 
@@ -224,10 +224,10 @@ SQL Data Warehouse の PolyBase は (サービス プリンシパルを使用し
 5. 関連付けられたコピー アクティビティで `columnMapping` が使用されていないこと。
 
 ### <a name="staged-copy-using-polybase"></a>PolyBase を使用したステージング コピー
-ソース データが前のセクションで紹介した条件を満たしていない場合は、中間ステージング Azure Blob Storage 経由でのデータのコピーを有効にすることができます (Premium Storage にはできません)。 その場合、Azure Data Factory は PolyBase のデータ形式の要件を満たすためにデータの変換を自動的に実行し、PolyBase を使用して SQL Data Warehouse にデータを読み込み、最後に Blob ストレージから一時データをクリーンアップします。 ステージング Azure BLOB 経由でデータをコピーする通常の操作方法の詳細については、「 [ステージング コピー](data-factory-copy-activity-performance.md#staged-copy) 」をご覧ください。
+ソース データが前のセクションで紹介した条件を満たしていない場合は、中間ステージング Azure Blob Storage 経由でのデータのコピーを有効にすることができます (Premium Storage にはできません)。 その場合、Azure Data Factory は PolyBase のデータ形式の要件を満たすためにデータの変換を自動的に実行し、PolyBase を使用して Azure Synapse Analytics にデータを読み込み、最後に Blob ストレージから一時データをクリーンアップします。 ステージング Azure BLOB 経由でデータをコピーする通常の操作方法の詳細については、「 [ステージング コピー](data-factory-copy-activity-performance.md#staged-copy) 」をご覧ください。
 
 > [!NOTE]
-> オンプレミスのデータ ストアから PolyBase を使用して Azure SQL Data Warehouse にデータをコピーし、ステージングする場合、Data Management Gateway のバージョンが 2.4 未満であれば、ソース データを適切な形式に変換するために使用するゲートウェイ マシンに JRE (Java ランタイム環境) をインストールする必要があります。 このような依存関係を回避するため、ゲートウェイは最新バージョンにアップグレードすることをお勧めします。
+> オンプレミスのデータ ストアから PolyBase を使用して Azure Synapse Analytics にデータをコピーし、ステージングする場合、Data Management Gateway のバージョンが 2.4 未満であれば、ソース データを適切な形式に変換するために使用するゲートウェイ マシンに JRE (Java ランタイム環境) をインストールする必要があります。 このような依存関係を回避するため、ゲートウェイは最新バージョンにアップグレードすることをお勧めします。
 >
 
 この機能を使用するには、中間 Blob Storage がある Azure ストレージ アカウントを参照する [Azure Storage のリンクされたサービス](data-factory-azure-blob-connector.md#azure-storage-linked-service)を作成し、次のコードに示すように、コピー アクティビティの `enableStaging` および `stagingSettings` プロパティを指定します。
@@ -235,7 +235,7 @@ SQL Data Warehouse の PolyBase は (サービス プリンシパルを使用し
 ```json
 "activities":[
 {
-    "name": "Sample copy activity from SQL Server to SQL Data Warehouse via PolyBase",
+    "name": "Sample copy activity from SQL Server to Azure Synapse Analytics via PolyBase",
     "type": "Copy",
     "inputs": [{ "name": "OnpremisesSQLServerInput" }],
     "outputs": [{ "name": "AzureSQLDWOutput" }],
@@ -257,20 +257,20 @@ SQL Data Warehouse の PolyBase は (サービス プリンシパルを使用し
 ```
 
 ## <a name="best-practices-when-using-polybase"></a>PolyBase を使用する際のベスト プラクティス
-次のセクションでは、「[Azure SQL Data Warehouse のベスト プラクティス](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md)」に記載されている内容に追加するベスト プラクティスを説明します。
+次のセクションでは、「[ Azure Synapse Analytics のベスト プラクティス](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md)」に記載されている内容に追加するベスト プラクティスを説明します。
 
 ### <a name="required-database-permission"></a>必要なデータベース アクセス許可
-PolyBase を使用するには、データを SQL Data Warehouse に読み込むために使用されるユーザーが、ターゲット データベースでの ["CONTROL" アクセス許可](https://msdn.microsoft.com/library/ms191291.aspx)を持っている必要があります。 これを実現する方法の 1 つに、ユーザーを "db_owner" ロールのメンバーとして追加するという方法があります。 具体的な手順については、[こちらのセクション](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization)に従ってください。
+PolyBase を使用するには、データを Azure Synapse Analytics に読み込むために使用されるユーザーが、ターゲット データベースでの ["CONTROL" アクセス許可](https://msdn.microsoft.com/library/ms191291.aspx)を持っている必要があります。 これを実現する方法の 1 つに、ユーザーを "db_owner" ロールのメンバーとして追加するという方法があります。 具体的な手順については、[こちらのセクション](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization)に従ってください。
 
 ### <a name="row-size-and-data-type-limitation"></a>行のサイズとデータ型の制限
 Polybase 読み込みは両方が **1 MB** 未満の行の読み込みに制限され、VARCHR(MAX)、NVARCHAR(MAX)、VARBINARY(MAX) に読み込むことはできません。 [こちら](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads)を参照してください。
 
-ソース データの行のサイズが 1 MB を超える場合は、ソース テーブルを垂直方向に複数の小さいテーブルに分割し、各テーブルの行の最大サイズが制限を超えないようにすることができます。 その後、この分割した小さいテーブルは、PolyBase を使用して Azure SQL Data Warehouse に読み込み、マージすることができます。
+ソース データの行のサイズが 1 MB を超える場合は、ソース テーブルを垂直方向に複数の小さいテーブルに分割し、各テーブルの行の最大サイズが制限を超えないようにすることができます。 その後、これらの小さいテーブルは、PolyBase を使用して Azure Synapse Analytics に読み込み、マージすることができます。
 
-### <a name="sql-data-warehouse-resource-class"></a>SQL Data Warehouse リソース クラス
-可能な限りスループットを最大化するには、PolyBase を通じて SQL Data Warehouse にデータを読み込むために使用されるユーザーに、より大きなリソース クラスを割り当てることを検討してください。 「[ユーザー リソース クラスの変更例](../../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md)」で、実行方法を確認してください。
+### <a name="azure-synapse-analytics-resource-class"></a>Azure Synapse Analytics リソース クラス
+可能な限りスループットを最大化するには、PolyBase を通じて Azure Synapse Analytics にデータを読み込むために使用されるユーザーに、より大きなリソース クラスを割り当てることを検討してください。 「[ユーザー リソース クラスの変更例](../../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md)」で、実行方法を確認してください。
 
-### <a name="tablename-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse の tableName
+### <a name="tablename-in-azure-synapse-analytics"></a>Azure Synapse Analytics の tableName
 次の表では、スキーマとテーブル名のさまざまな組み合わせについて、データセットの JSON で **tableName** プロパティを指定する方法の例を示します。
 
 | DB スキーマ | テーブル名 | tableName JSON プロパティ |
@@ -292,14 +292,14 @@ Type=System.Data.SqlClient.SqlException,Message=Invalid object name 'stg.Account
 ```
 All columns of the table must be specified in the INSERT BULK statement.
 ```
-null 値は、特殊な形式の既定値です。 列が null 値を許容している場合は、その列の (BLOB 内の) 入力データが空である可能性があります (入力データセットからなくすことはできません)。 PolyBase は、その列の null 値を Azure SQL Data Warehouse に挿入します。
+null 値は、特殊な形式の既定値です。 列が null 値を許容している場合は、その列の (BLOB 内の) 入力データが空である可能性があります (入力データセットからなくすことはできません)。 PolyBase は、その列の null 値を Azure Synapse Analytics に挿入します。
 
 ## <a name="auto-table-creation"></a>テーブルの自動作成
-コピー ウィザードを使用して SQL Server または Azure SQL Database から Azure SQL Data Warehouse にデータをコピーするとき、ソース テーブルに対応するテーブルがコピー先ストアにが存在しない場合、Data Factory では、ソース テーブル スキーマを使用して、そのテーブルをデータ ウェアハウスに自動的に作成できます。
+コピー ウィザードを使用して SQL Server または Azure SQL Database から Azure Synapse Analytics にデータをコピーするとき、ソース テーブルに対応するテーブルがコピー先ストアに存在しない場合、Data Factory では、ソース テーブル スキーマを使用して、そのテーブルをデータ ウェアハウスに自動的に作成できます。
 
 Data Factory は、コピー元データ ストアのテーブルと同じ名前を使って、コピー先にテーブルを作成します。 列のデータ型は、次の型マッピングに基づいて選択されます。 必要に応じて型変換が実行され、コピー元とコピー先のストアの非互換性が修正されます。 また、ラウンド ロビン テーブルのディストリビューションも使用されます。
 
-| コピー元 SQL Database の列の型 | コピー先 SQL DW の列の型 (サイズ制限) |
+| コピー元 SQL Database の列の型 | コピー先 Azure Synapse Analytics の列の型 (サイズの制限) |
 | --- | --- |
 | int | int |
 | BigInt | BigInt |
@@ -332,13 +332,13 @@ Data Factory は、コピー元データ ストアのテーブルと同じ名前
 
 [!INCLUDE [data-factory-type-repeatability-for-sql-sources](../../../includes/data-factory-type-repeatability-for-sql-sources.md)]
 
-## <a name="type-mapping-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse の型のマッピング
+## <a name="type-mapping-for-azure-synapse-analytics"></a>Azure Synapse Analytics の型のマッピング
 [データ移動アクティビティ](data-factory-data-movement-activities.md) に関する記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
 
 1. ネイティブの source 型から .NET 型に変換する
 2. .NET 型からネイティブの sink 型に変換する
 
-Azure SQL Data Warehouse との間でデータを移動するとき、SQL 型から .NET 型へのマッピング (およびその逆) に次のマッピングが使用されます。
+Azure Synapse Analytics との間でデータを移動するとき、SQL 型から .NET 型へのマッピング (およびその逆) に次のマッピングが使用されます。
 
 マッピングは [ADO.NET の SQL Server データ型マッピング](https://msdn.microsoft.com/library/cc716729.aspx)と同じです。
 
@@ -379,10 +379,10 @@ Azure SQL Data Warehouse との間でデータを移動するとき、SQL 型か
 
 コピー アクティビティ定義で、ソース データセットの列をシンク データセットの列にマップすることもできます。 詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページを参照してください。
 
-## <a name="json-examples-for-copying-data-to-and-from-sql-data-warehouse"></a>SQL Data Warehouse との間でのデータのコピーに関する JSON の例
-次の例は、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、SQL Data Warehouse と Azure BLOB ストレージの間でデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、 **こちら** に記載されているいずれかのシンクに、任意のソースからデータを [直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats) コピーすることができます。
+## <a name="json-examples-for-copying-data-to-and-from-azure-synapse-analytics"></a>Azure Synapse Analytics との間でのデータのコピーに関する JSON の例
+次の例は、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、Azure Synapse Analytics と Azure Blob Storage の間でデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、 **こちら** に記載されているいずれかのシンクに、任意のソースからデータを [直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats) コピーすることができます。
 
-### <a name="example-copy-data-from-azure-sql-data-warehouse-to-azure-blob"></a>例:Azure SQL Data Warehouse から Azure BLOB にデータをコピーする
+### <a name="example-copy-data-from-azure-synapse-analytics-to-azure-blob"></a>例:Azure Synapse Analytics から Azure BLOB にデータをコピーする
 このサンプルでは、次の Data Factory のエンティティを定義します。
 
 1. [AzureSqlDW](#linked-service-properties)型のリンクされたサービス。
@@ -391,9 +391,9 @@ Azure SQL Data Warehouse との間でデータを移動するとき、SQL 型か
 4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 5. [SqlDWSource](#copy-activity-properties) と [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
-このサンプルは時系列 (時間単位、日単位など) のデータを 1 時間おきに Azure SQL Data Warehouse データベースのテーブルから BLOB にコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
+このサンプルは時系列 (時間単位、日単位など) のデータを 1 時間おきに Azure Synapse Analytics データベースのテーブルから BLOB にコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
-**Azure SQL Data Warehouse のリンクされたサービス:**
+**Azure Synapse Analytics のリンクされたサービス:**
 
 ```JSON
 {
@@ -419,9 +419,9 @@ Azure SQL Data Warehouse との間でデータを移動するとき、SQL 型か
   }
 }
 ```
-**Azure SQL Data Warehouse の入力データセット:**
+**Azure Synapse Analytics 入力データセット:**
 
-このサンプルでは、Azure SQL Data Warehouse で "MyTable" というテーブルを作成し、時系列データ用に "timestampcolumn" という列が含まれているものと想定しています。
+このサンプルでは、Azure Synapse Analytics で「MyTable」という名前のテーブルを作成し、時系列データ用に「timestampcolumn」という名前の列が含まれているものと想定しています。
 
 "external" を "true" に設定すると、データセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 
@@ -560,15 +560,15 @@ Azure SQL Data Warehouse との間でデータを移動するとき、SQL 型か
 }
 ```
 > [!NOTE]
-> この例では、SqlDWSource に **sqlReaderQuery** が指定されています。 コピー アクティビティでは、データを取得するために SQL Data Warehouse ソースに対してこのクエリを実行します。
+> この例では、SqlDWSource に **sqlReaderQuery** が指定されています。 コピー アクティビティでは、データを取得するために Azure Synapse Analytics ソースに対してこのクエリを実行します。
 >
 > または、**sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することができます (ストアド プロシージャでパラメーターを使用する場合)。
 >
-> SqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、Azure SQL Database に対して実行するクエリを作成するために、データセット JSON の構造セクションで定義された列が使用されます (mytable から column1 と column2 を選択)。 データセット定義に構造がない場合は、すべての列がテーブルから選択されます。
+> SqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、Azure Synapse Analytics に対して実行するクエリを作成するために、データセット JSON の構造セクションで定義された列が使用されます (mytable から column1 と column2 を選択)。 データセット定義に構造がない場合は、すべての列がテーブルから選択されます。
 >
 >
 
-### <a name="example-copy-data-from-azure-blob-to-azure-sql-data-warehouse"></a>例:Azure BLOB から Azure SQL Data Warehouse にデータをコピーする
+### <a name="example-copy-data-from-azure-blob-to-azure-synapse-analytics"></a>例:Azure BLOB から Azure Synapse Analytics にデータをコピーする
 このサンプルでは、次の Data Factory のエンティティを定義します。
 
 1. [AzureSqlDW](#linked-service-properties)型のリンクされたサービス。
@@ -577,9 +577,9 @@ Azure SQL Data Warehouse との間でデータを移動するとき、SQL 型か
 4. [AzureSqlDWTable](#dataset-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 5. [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) と [SqlDWSink](#copy-activity-properties) を使用するコピー アクティビティの[パイプライン](data-factory-create-pipelines.md)。
 
-このサンプルは、Azure SQL Data Warehouse データベースのテーブルから Azure BLOB に時系列データ (時間単位、日単位など) を 1 時間おきにコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
+このサンプルは、Azure Synapse Analytics データベースのテーブルから Azure BLOB に時系列データ (時間単位、日単位など) を 1 時間おきにコピーします。 これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
-**Azure SQL Data Warehouse のリンクされたサービス:**
+**Azure Synapse Analytics のリンクされたサービス:**
 
 ```JSON
 {
@@ -673,9 +673,9 @@ Azure SQL Data Warehouse との間でデータを移動するとき、SQL 型か
   }
 }
 ```
-**Azure SQL Data Warehouse の出力データセット:**
+**Azure Synapse Analytics 出力データセット:**
 
-このサンプルでは、Azure SQL Data Warehouse の "MyTable" という名前のテーブルにデータをコピーします。 BLOB CSV ファイルに含めることが予想される列の数と同じ列数で Azure SQL Data Warehouse にテーブルを作成する必要があります。 新しい行は 1 時間ごとにテーブルに追加されます。
+このサンプルは Azure Synapse Analytics の "MyTable" というテーブルにデータをコピーします。 BLOB CSV ファイルに含めることが予想される列の数と同じ列数で Azure Synapse Analytics にテーブルを作成します。 新しい行は 1 時間ごとにテーブルに追加されます。
 
 ```JSON
 {
@@ -744,7 +744,7 @@ Azure SQL Data Warehouse との間でデータを移動するとき、SQL 型か
   }
 }
 ```
-チュートリアルについては、Azure SQL Data Warehouse ドキュメントの「[1 TB のデータを Azure Data Factory を使用して 15 分以内に Azure SQL Data Warehouse に読み込む](data-factory-load-sql-data-warehouse.md)」および [Azure Data Factory でのデータの読み込み](../../sql-data-warehouse/sql-data-warehouse-get-started-load-with-azure-data-factory.md)に関する記事をご覧ください。
+チュートリアルについては、Azure Synapse Analytics ドキュメントの「[1 TB のデータを Azure Data Factory を使用して 15 分以内に Azure Synapse Analytics に読み込む](data-factory-load-sql-data-warehouse.md)」および [Azure Data Factory でのデータの読み込み](../../sql-data-warehouse/sql-data-warehouse-get-started-load-with-azure-data-factory.md)に関する記事をご覧ください。
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。

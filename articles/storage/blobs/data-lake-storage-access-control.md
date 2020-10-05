@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 9edf348c856de5c75c95d8a8f1957dcf73fc8ec1
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: fa6a226926439e30b9ca51c75743ce35915ffd85
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030488"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017236"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 のアクセス制御
 
@@ -67,7 +67,7 @@ SAS トークンには、トークンの一部として許可されるアクセ�
 
 | 環境 | [アーティクル] |
 |--------|-----------|
-|Azure Storage Explorer |[Azure Storage Explorer を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-explorer.md#managing-access)|
+|Azure ストレージ エクスプローラー |[Azure Storage Explorer を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-explorer.md#managing-access)|
 |.NET |[.NET を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-directory-file-acl-dotnet.md)|
 |Java|[Java を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-directory-file-acl-java.md)|
 |Python|[Python を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-directory-file-acl-python.md)|
@@ -256,7 +256,7 @@ Azure Data Lake Storage Gen2 に対する umask は、007 に設定される定�
 | umask.owning_group  |    0         |   `---`      | 所有グループの場合、親の既定の ACL を子のアクセス ACL にコピーします | 
 | umask.other         |    7         |   `RWX`      | その他の場合、子のアクセス ACL 上のすべてのアクセス許可を削除します |
 
-Azure Data Lake Storage Gen2 で umask の値が使用されると、実際上は、既定の ACL が何を示しているかに関係なく、既定では、**その他**に対する値は、新しい子では決して送信されないことを意味します。 
+Azure Data Lake Storage Gen2 で umask 値の値が使用されると、実質的に、既定の ACL が親ディレクトリに定義されていない限り、**other** の値は新しい子では既定で送信されないことを意味してます。 その場合、umask は実質的に無視され、既定の ACL によって定義されたアクセス許可が子項目に適用されます。 
 
 次の疑似コードは、子項目に ACL を作成するときに、unmask がどのように適用されるかを示しています。
 

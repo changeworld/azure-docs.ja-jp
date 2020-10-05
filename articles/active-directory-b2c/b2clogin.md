@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 07/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 79807e8e0f798a73063576a00b8d0c32cdfe5a4b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 53d41b5024b29a8c6c394d65a3ce36f8bb878fc2
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005346"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90524982"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の b2clogin.com にリダイレクト URL を設定する
 
-Azure Active Directory B2C (Azure AD B2C) アプリケーションへのサインアップおよびサインイン用に ID プロバイダーを設定する際に、リダイレクト URL を指定する必要があります。 アプリケーションと API での *login.microsoftonline.com* の参照は、これ以上実行しないでください。 代わりに、すべての新しいアプリケーションで *b2clogin.com* を使用し、既存のアプリケーションを *login.microsoftonline.com* から *b2clogin.com* に移行してください。
+Azure Active Directory B2C (Azure AD B2C) アプリケーションへのサインアップおよびサインイン用に ID プロバイダーを設定する際に、リダイレクト URL を指定する必要があります。 Azure AD B2C でユーザーを認証する際に、アプリケーションと API で *login.microsoftonline.com* を今後は参照しないでください。 代わりに、すべての新しいアプリケーションで *b2clogin.com* を使用し、既存のアプリケーションを *login.microsoftonline.com* から *b2clogin.com* に移行してください。
 
 ## <a name="deprecation-of-loginmicrosoftonlinecom"></a>login.microsoftonline.com の廃止
 
@@ -31,6 +31,23 @@ Azure Active Directory B2C (Azure AD B2C) アプリケーションへのサイ�
 login.microsoftonline.com の廃止は、2020年 12 月 4 日にすべての Azure AD B2C テナントで実施されます。この間、既存のテナントには b2clogin.com に移行するために 1 年の猶予期間が与えられます。 2019 年 12 月 4 日より後に作成された新しいテナントは、login.microsoftonline.com からの要求を受け付けません。 b2clogin.com エンドポイントでは、すべての機能が同じままです。
 
 login.microsoftonline.com の廃止は、Azure Active Directory のテナントには影響しません。 この変更によって影響を受けるのは、Azure Active Directory B2C のテナントだけです。
+
+## <a name="what-endpoints-does-this-apply-to"></a>これが適用されるエンドポイント
+b2clogin.com への移行は、ユーザーを認証するために Azure AD B2C ポリシー (ユーザー フローまたはカスタム ポリシー) を使用する認証エンドポイントにのみ適用されます。 これらのエンドポイントには、Azure AD B2C で使用するポリシーを指定する `<policy-name>` パラメーターがあります。 [Azure AD B2C ポリシーの詳細については、こちらを参照してください](technical-overview.md#identity-experiences-user-flows-or-custom-policies)。 
+
+これらのエンドポイントは次のようになります。
+- <code>https://login.microsoft.com/\<tenant-name\>.onmicrosoft.com/<b>\<policy-name\></b>/oauth2/v2.0/authorize</code>
+
+- <code>https://login.microsoft.com/\<tenant-name\>.onmicrosoft.com/<b>\<policy-name\></b>/oauth2/v2.0/token</code>
+
+または、`<policy-name>` をクエリ パラメーターとして渡すこともできます。
+- <code>https://login.microsoft.com/\<tenant-name\>.onmicrosoft.com/oauth2/v2.0/authorize?<b>p=\<policy-name\></b></code>
+- <code>https://login.microsoft.com/\<tenant-name\>.onmicrosoft.com/oauth2/v2.0/token?<b>p=\<policy-name\></b></code>
+
+> [!IMPORTANT]
+> 'policy' パラメーターを使用するエンドポイント、および [ID プロバイダーのリダイレクト URL](#change-identity-provider-redirect-urls) を更新する必要があります。
+
+Azure AD B2C の一部のお客様は、OAuth 2.0 クライアントの資格情報付与フローなど、Azure AD エンタープライズ テナント の共有機能を使用しています。 これらの機能には、Azure AD の login.microsoftonline.com エンドポイントを使用してアクセスします。*これには、ポリシー パラメーターは含まれていません*。 __これらのエンドポイントは影響を受けません。__
 
 ## <a name="benefits-of-b2clogincom"></a>b2clogin.com の利点
 
@@ -45,8 +62,15 @@ login.microsoftonline.com の廃止は、Azure Active Directory のテナント�
 アプリケーションを *b2clogin.com* に移行するには、いくつかの変更が必要になることがあります。
 
 * ID プロバイダーのアプリケーション内のリダイレクト URL を、*b2clogin.com* を参照するように変更します。
-* お使いの Azure AD B2C アプリケーションのユーザー フロー参照とトークン エンドポイントの参照で、*b2clogin.com* を使用するように更新します。
+* お使いの Azure AD B2C アプリケーションのユーザー フロー参照とトークン エンドポイントの参照で、*b2clogin.com* を使用するように更新します。 これには、使用している Microsoft Authentication Library (MSAL) などの認証ライブラリを更新することが含まれる場合があります。
 * [ユーザー インターフェイスのカスタマイズ](custom-policy-ui-customization.md)用に CORS の設定に定義されている**許可されたオリジン**を変更します。
+
+古いエンドポイントは次のようになります。
+- <b><code>https://login.microsoft.com/</b>\<tenant-name\>.onmicrosoft.com/\<policy-name\>/oauth2/v2.0/authorize</code>
+
+対応する更新されたエンドポイントは次のようになります。
+- <code><b>https://\<tenant-name\>.b2clogin.com/</b>\<tenant-name\>.onmicrosoft.com/\<policy-name\>/oauth2/v2.0/authorize</code>
+
 
 ## <a name="change-identity-provider-redirect-urls"></a>ID プロバイダーのリダイレクト URL を変更する
 

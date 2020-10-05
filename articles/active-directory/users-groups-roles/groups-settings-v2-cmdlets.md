@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2da67b9996156f136aa2eddb8aa3d2b1777a554
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: c00c89e5f81bcb142c50e5f3438c1af2d72a9de5
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88794554"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056219"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>グループ管理用の Azure Active Directory バージョン 2 のコマンドレット
 
@@ -53,7 +53,7 @@ Azure AD PowerShell モジュールをインストールするには、次のコ
 これで、モジュールのコマンドレットの使用を開始できます。 Azure AD モジュールのコマンドレットについて詳しくは、[Azure Active Directory PowerShell バージョン 2](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) に関するオンライン リファレンス ドキュメントをご覧ください。
 
 > [!NOTE]
-> Azure AD PowerShell コマンドレットは .Net Core をベースにしているため、新しい PowerShell 7 では動作しません。 この点は把握しており、更新に取り組んでいます。 現時点では、Azure AD の Powershell の操作には、Windows PowerShell 5.x を使用することを推奨します。 
+> Azure AD PowerShell コマンドレットは .Net Core をベースにしているため、新しい PowerShell 7 では動作しません。 この点は把握しており、更新に取り組んでいます。 現時点では、Azure AD の PowerShell の操作には、Windows PowerShell 5.x を使用することを推奨します。 
 
 
 ## <a name="connect-to-the-directory"></a>ディレクトリに接続する
@@ -328,13 +328,13 @@ Azure AD PowerShell コマンドレットを使用してグループの管理を
 
 ## <a name="group-writeback-to-on-premises-preview"></a>オンプレミスへのグループの書き戻し (プレビュー)
 
-現在でも、多くのグループがオンプレミスの Active Directory で管理されています。 クラウド グループをオンプレミスに逆同期するという要望に応えるために、Azure AD の Office 365 グループ書き戻し機能がプレビューで利用できるようになりました。
+現在でも、多くのグループがオンプレミスの Active Directory で管理されています。 クラウド グループをオンプレミスに逆同期するという要望に応えるために、Azure AD の Microsoft 365 グループ書き戻し機能がプレビューで利用できるようになりました。
 
-Office 365 グループはクラウドで作成および管理されます。 書き戻し機能を使用すると、Exchange がインストールされている Active Directory フォレストに Office 365 グループを配布グループとして書き戻すことができます。 オンプレミスの Exchange メールボックスを持つユーザーは、これらのグループとの間で電子メールを送受信できます。 グループの書き戻し機能は、Azure AD のセキュリティ グループまたは配布グループをサポートしていません。
+Microsoft 365 グループはクラウドで作成および管理されます。 書き戻し機能を使用すると、Exchange がインストールされている Active Directory フォレストに Microsoft 365 グループを配布グループとして書き戻すことができます。 オンプレミスの Exchange メールボックスを持つユーザーは、これらのグループとの間で電子メールを送受信できます。 グループの書き戻し機能は、Azure AD のセキュリティ グループまたは配布グループをサポートしていません。
 
 詳細については、[Azure AD Connect の同期サービス](../hybrid/how-to-connect-syncservice-features.md)に関するドキュメントを参照してください。
 
-Office 365 のグループの書き戻しは Azure Active Directory (Azure AD) のパブリック プレビュー機能であり、すべての有料 Azure AD ライセンス プランに付属します。 プレビューに関する法的情報については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+Microsoft 365 のグループの書き戻しは Azure Active Directory (Azure AD) のパブリック プレビュー機能であり、すべての有料 Azure AD ライセンス プランに付属します。 プレビューに関する法的情報については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

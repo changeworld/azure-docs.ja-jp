@@ -1,6 +1,6 @@
 ---
 title: Azure AD 参加済みデバイスとは
-description: デバイス ID 管理を活用して、環境内のリソースにアクセスしているデバイスを管理する方法について説明します。
+description: Azure AD 参加済みデバイスについて説明し、デバイス ID 管理を活用して、環境内のリソースにアクセスしているデバイスを管理する方法について説明します。
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31374b851d90e43e7380024923c3ad025859b7a0
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 2b7cc0535549f2dbcdef4ab043ee506527fdbc5f
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923732"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601454"
 ---
 # <a name="azure-ad-joined-devices"></a>Azure AD 参加済みデバイス
 
@@ -58,7 +58,7 @@ Azure AD への参加は、主にオンプレミスの Windows Server Active Dir
 
 - Azure AD および Intune などの MDM を使用してクラウド ベースのインフラストラクチャに移行しようと考えています。
 - たとえばタブレットや電話などのモバイル デバイスを管理する必要があるが、オンプレミスのドメインへの参加を使用できない。
-- ユーザーが主に必要としているのは、Office 365 や Azure AD に統合されているその他の SaaS アプリにアクセスすることである。
+- ユーザーが主に必要としているのは、Microsoft 365 や Azure AD に統合されているその他の SaaS アプリにアクセスすることである。
 - ユーザーのグループを Active Directory ではなく Azure AD で管理したい。 このシナリオは、季節従業員、請負業者、学生などに適用できます。
 - リモートの支店の作業員に制限のあるオンプレミスのインフラに対する参加機能を提供したい。
 

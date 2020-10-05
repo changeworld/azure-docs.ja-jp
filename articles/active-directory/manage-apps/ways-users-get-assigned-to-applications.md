@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: kenwith
-ms.openlocfilehash: 243e5ece0d0a14cb7e3ade409ee68510cef64a9c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 411e9a6e059075dfc2928ed09c0c604d600fd9be
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89397102"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604157"
 ---
 # <a name="understand-how-users-are-assigned-to-apps-in-azure-active-directory"></a>Azure Active Directory でユーザーをアプリに割り当てる方法を理解する
 この記事では、ユーザーがテナントでアプリケーションに割り当てられる方法について説明します。
@@ -28,14 +28,14 @@ ms.locfileid: "89397102"
     * オンプレミスから同期されたグループ
     * クラウドで作成された静的なセキュリティ グループ
     * クラウドで作成された[動的なセキュリティ グループ](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal)
-    * クラウドで作成された Office 365 グループ
+    * クラウドで作成された Microsoft 365 グループ
     * [すべてのユーザー](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups) グループ
 *  管理者が [[アプリケーションのセルフ サービス アクセス]](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) を有効にして、**ビジネス承認なし**でユーザーが[マイ アプリ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)の **[アプリの追加]** 機能を使用してアプリケーションを追加することを許可します
 *  管理者が [[アプリケーションのセルフ サービス アクセス]](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) を有効にして、ユーザーが[マイ アプリ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)の **[アプリの追加]** 機能を使用してアプリケーションを追加することを許可しますが、**選択された一連のビジネス承認者からの事前の承認があった**場合に限ります
 *  管理者が [[セルフサービスによるグループ管理]](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) を有効にして、アプリケーションが**ビジネス承認なし**で割り当てられているグループにユーザーが参加することを許可します。
 *  管理者が [[セルフサービスによるグループ管理]](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) を有効にして、アプリケーションが割り当てられているグループにユーザーが参加することを許可しますが、**選択された一連のビジネス承認者からの事前の承認があった**場合に限ります。
-*  管理者は、[Microsoft Office 365](https://products.office.com/) などのファースト パーティ アプリケーションのライセンスを直接ユーザーに割り当てます。
-*  管理者は、[Microsoft Office 365](https://products.office.com/) などのファースト パーティ アプリケーションのライセンスを、ユーザーがメンバーとなっているグループに割り当てます。
+*  管理者は、[Microsoft 365](https://products.office.com/) などのファースト パーティ アプリケーションのライセンスを直接ユーザーに割り当てます。
+*  管理者は、[Microsoft 365](https://products.office.com/) などのファースト パーティ アプリケーションのライセンスを、ユーザーがメンバーとなっているグループに割り当てます。
 *  [管理者がすべてのユーザーによるアプリケーションの使用に同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)したら、ユーザーはアプリケーションにサインインします。
 * ユーザーはアプリケーションにサインインすることで、[アプリケーションに同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)します。
 

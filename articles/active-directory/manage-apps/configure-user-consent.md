@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: 0c9844d5e3f65dba5e51170367cfd16715a08883
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 433ff5498baeb4c31473e43fc4a5d24f4ba9fd1c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763467"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605160"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>エンド ユーザーがアプリケーションに同意する方法を構成する
 
@@ -32,7 +32,7 @@ ms.locfileid: "84763467"
 
 * **ユーザーの同意を無効にする** - ユーザーはアプリケーションにアクセス許可を付与できません。 ユーザーは、以前に同意していたアプリ、または管理者によって代理で同意されているアプリにサインインし続けることができますが、新しいアクセス許可や新しいアプリに独自に同意することは許可されません。 同意を許可するアクセス許可を含むディレクトリ ロールが付与されているユーザーのみが、新しいアクセス許可または新しいアプリに同意できます。
 
-* **ユーザーは、確認済み発行者からのアプリに対し、選択されたアクセス許可にのみ同意できる (プレビュー)** - すべてのユーザーが同意できるのは、[確認済み発行者](../develop/publisher-verification-overview.md) によって発行されたアプリと、テナントに登録されているアプリのみです。 ユーザーは、"低影響" として分類されたアクセス許可に対してのみ同意できます。
+* **ユーザーは、確認済み発行者からのアプリに対し、選択されたアクセス許可にのみ同意できる (プレビュー)** - すべてのユーザーが同意できるのは、[確認済み発行者](../develop/publisher-verification-overview.md) によって発行されたアプリと、テナントに登録されているアプリのみです。 ユーザーは、"低影響" ("低リスク" とも呼ばれます) として分類されたアクセス許可に対してのみ同意できます。 ユーザーのメール アドレスを表示するアプリなど、ある組織にとっては低リスクと見なされるものが、別の組織にとっては高リスクと見なされる場合があります。 このため、"低リスク" のアクセス許可は、テナントの管理者によって設定されます。
 
   [アクセス許可を分類](#configure-permission-classifications-preview)して、ユーザーが同意を許可できるアクセス許可を選択してください。
 
@@ -56,7 +56,7 @@ Azure portal を使用してユーザーの同意設定を構成するには:
 
 ### <a name="configure-user-consent-settings-using-powershell"></a>PowerShell を使用してユーザーの同意設定を構成する
 
-最新の Azure AD PowerShell プレビュー モジュールである [AzureADPreview](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) を使用して、アプリケーションに対するユーザーの同意を制御する同意ポリシーを選択できます。
+最新の Azure AD PowerShell プレビュー モジュールである [AzureADPreview](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) を使用して、アプリケーションに対するユーザーの同意を制御する同意ポリシーを選択できます。
 
 * **ユーザーの同意を無効にする** - ユーザーの同意を無効にするには、ユーザーの同意を制御する同意ポリシーを空に設定します。
 
@@ -102,14 +102,14 @@ Azure portal を使用してユーザーの同意設定を構成するには:
 
 この例では、シングル サインオンに必要な最小限のアクセス許可セットを分類しました。
 
-:::image type="content" source="media/configure-user-consent/permission-classifications.png" alt-text="アクセス許可の分類":::
+:::image type="content" source="media/configure-user-consent/permission-classifications.png" alt-text="ユーザーの同意設定":::
 
 > [!TIP]
 > Microsoft Graph API の場合、基本的なシングル サインオンを実行するために必要な最低限のアクセス許可は、`openid`、`profile`、`User.Read`、および `offline_access` です。 これらのアクセス許可を使用すると、アプリはサインインしているユーザーのプロファイルの詳細を読み取ることができ、ユーザーがアプリを使用しなくなった場合でもこのアクセスを維持できます。
 
 ### <a name="classify-permissions-using-powershell"></a>PowerShell を使用してアクセス許可を分類する
 
-最新の Azure AD PowerShell プレビュー モジュールである [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) を使用して、アクセス許可を分類できます。 アクセス許可の分類は、アクセス許可を発行する API の **ServicePrincipal** オブジェクトに構成されます。
+最新の Azure AD PowerShell プレビュー モジュールである [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) を使用して、アクセス許可を分類できます。 アクセス許可の分類は、アクセス許可を発行する API の **ServicePrincipal** オブジェクトに構成されます。
 
 #### <a name="to-read-the-current-permission-classifications-for-an-api"></a>API の現在のアクセス許可の分類を読み取るには、次のようにします。
 
@@ -192,13 +192,13 @@ Azure portal を使用してユーザーの同意設定を構成するには:
 
 この例では、すべてのグループ所有者が、そのグループのデータにアクセスするアプリに同意することが許可されています。
 
-:::image type="content" source="media/configure-user-consent/group-owner-consent.png" alt-text="グループ所有者の同意設定":::
+:::image type="content" source="media/configure-user-consent/group-owner-consent.png" alt-text="ユーザーの同意設定":::
 
 ### <a name="configure-group-owner-consent-using-powershell"></a>PowerShell を使用してグループ所有者の同意を構成する
 
-Azure AD PowerShell プレビュー モジュールである [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) を使用して、グループ所有者が所有するグループに関連する組織のデータにアクセスするアプリケーションに対してグループ所有者が同意する機能を有効または無効にできます。
+Azure AD PowerShell プレビュー モジュールである [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) を使用して、グループ所有者が所有するグループに関連する組織のデータにアクセスするアプリケーションに対してグループ所有者が同意する機能を有効または無効にできます。
 
-1. [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) モジュールを使用していることを確認します。 この手順は、[AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0) モジュールと [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) モジュールの両方がインストールされている場合に重要です。
+1. [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) モジュールを使用していることを確認します。 この手順は、[AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true) モジュールと [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) モジュールの両方がインストールされている場合に重要です。
 
     ```powershell
     Remove-Module AzureAD
@@ -280,7 +280,7 @@ Azure AD PowerShell プレビュー モジュールである [AzureADPreview](ht
 
 ### <a name="disable-or-re-enable-risk-based-step-up-consent-using-powershell"></a>PowerShell を使用して、リスクに基づくステップアップ同意を無効にしたり再度有効にしたりする
 
-Microsoft によってリスクが検出された場合に必要となる管理者の同意へのステップアップは、Azure AD PowerShell プレビュー モジュールである [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) を使用して無効にしたり、過去に無効にされていた場合は再度有効にしたりすることができます。
+Microsoft によってリスクが検出された場合に必要となる管理者の同意へのステップアップは、Azure AD PowerShell プレビュー モジュールである [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) を使用して無効にしたり、過去に無効にされていた場合は再度有効にしたりすることができます。
 
 上記の「[PowerShell を使用してグループの所有者の同意を構成する](#configure-group-owner-consent-using-powershell)」と同じ手順で実行できますが、設定する値が異なります。 手順には 3 つの違いがあります。 
 

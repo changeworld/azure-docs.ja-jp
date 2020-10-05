@@ -1,14 +1,14 @@
 ---
 title: Azure Portal を使用したサービス正常性通知の表示
-description: サービス正常性通知を使用すると、Microsoft Azure によって発行されるサービスの正常性に関するメッセージを表示できます。
+description: Azure portal にサービス正常性通知を表示します。 サービス正常性通知は、Azure インフラストラクチャから Azure アクティビティ ログに発行されます。
 ms.topic: conceptual
 ms.date: 6/27/2019
-ms.openlocfilehash: 9f8297ae708d3f4e7921221f2c4bacee12a7a2b1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 615d08b6a04aef9e8ef2033154da8ff8caeebe04
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089568"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967773"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Azure Portal を使用したサービス正常性通知の表示
 

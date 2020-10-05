@@ -7,12 +7,12 @@ ms.reviewer: deli, logicappspm
 ms.topic: article
 ms.date: 05/14/2019
 ms.custom: devx-track-javascript
-ms.openlocfilehash: a1c3828a4b1899ff4b22c0a9520f676add21fe02
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a1fca14035dd4a9af00ecfb8d1d01dc27ab0b8d0
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420126"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658178"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Azure Logic Apps 内でインライン コードを使用してコード スニペットを追加および実行する
 
@@ -29,7 +29,7 @@ ms.locfileid: "87420126"
 
 このアクションでは、コード スニペットが実行され、そのスニペットから **[結果]** という名前のトークンとして出力が返されます。このトークンは、ロジック アプリ内の後続のアクションで使用できます。 コードの関数を作成する別のシナリオでは、ロジック アプリ内で [Azure 関数の作成および呼び出し](../logic-apps/logic-apps-azure-functions.md)を試みてください。
 
-この記事では、Office 365 Outlook アカウントに新しい電子メールが届いたときに、サンプルのロジック アプリがトリガーされます。 このコード スニペットでは、電子メール本文に表示されているすべての電子メール アドレスが抽出されて、返されます。
+この記事では、職場または学校アカウントに新しい電子メールが届いたときに、サンプルのロジック アプリがトリガーされます。 このコード スニペットでは、電子メール本文に表示されているすべての電子メール アドレスが抽出されて、返されます。
 
 ![サンプルの概要](./media/logic-apps-add-run-inline-code/inline-code-example-overview.png)
 

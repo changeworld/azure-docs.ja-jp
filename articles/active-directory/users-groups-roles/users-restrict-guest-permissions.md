@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 08/20/2020
+ms.date: 09/04/2020
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28125ff55fe6ab3e68d56dc26a074d0498c2b413
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 418be35cb7996acaa7f11f37627d065451c9c7c6
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798433"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055216"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>Azure Active Directory でゲストのアクセス許可を制限する (プレビュー)
 
@@ -40,10 +40,7 @@ Azure Active Directory (Azure AD) を使用すると、Azure AD 内の組織で�
 
 ゲスト ユーザーのアクセス許可に対して既存の Azure portal コントロールを変更しました。
 
-> [!IMPORTANT]
-> しばらくの間、ゲスト ユーザーのアクセス許可に対する新しいポータル コントロールは、URL [https://aka.ms/AADRestrictedGuestAccess](https://aka.ms/AADRestrictedGuestAccess) を使用してのみ表示されます。 PowerShell と Microsoft Graph は引き続きコントロールを設定するために使用でき、変更はポータルによって受け入れられます。
-
-1. 全体管理者アクセス許可を使用して [Azure AD 管理センター](https://aka.ms/AADRestrictedGuestAccess)にサインインします。
+1. 全体管理者アクセス許可を使用して [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
 1. 組織の **Azure Active Directory** 概要ページで、 **[ユーザー設定]** を選択します。
 1. **[外部ユーザー]** で、 **[Manage external collaboration settings (外部コラボレーション設定の管理)]** を選択します。
 1. **[外部コラボレーションの設定]** ページで、 **[Guest user access is restricted to properties and memberships of their own directory objects] (ゲスト ユーザーのアクセスを、自分のディレクトリ オブジェクトのプロパティとメンバーシップに制限する)** オプションを選択します。
@@ -157,7 +154,7 @@ PS C:\WINDOWS\system32> Set-AzureADMSAuthorizationPolicy -GuestUserRoleId '2af84
 
 Question | Answer
 -------- | ------
-これらのアクセス許可はどこに適用されますか。 | これらのディレクトリ レベルのアクセス許可は、Microsoft Graph、PowerShell v2、Azure portal、マイ アプリ ポータルなどの Azure AD サービスとポータルに適用されます。 コラボレーション シナリオに Office 365 グループを利用する Microsoft 365 サービスも、特に Outlook、Microsoft Teams、および SharePoint が影響を受けます。
+これらのアクセス許可はどこに適用されますか。 | これらのディレクトリ レベルのアクセス許可は、Microsoft Graph、PowerShell v2、Azure portal、マイ アプリ ポータルなどの Azure AD サービスとポータルに適用されます。 コラボレーション シナリオに Microsoft 365 グループを利用する Microsoft 365 サービスも、特に Outlook、Microsoft Teams、および SharePoint が影響を受けます。
 この機能によって影響を受けるのは、マイ アプリ ポータルのどの部分ですか。 | マイ アプリ ポータルのグループ機能では、これらの新しいアクセス許可が優先されます。 これには、マイ アプリのグループ一覧とグループ メンバーシップを表示するためのすべてのパスが含まれます。 グループ タイルの可用性に変更は加えられていません。 グループ タイルの可用性は、Azure 管理ポータルの既存のグループ設定によって引き続き制御されます。
 これらのアクセス許可は、SharePoint または Microsoft Teams のゲスト設定をオーバーライドしますか。 | いいえ。 これらの既存の設定は、引き続きこれらのアプリケーションのエクスペリエンスとアクセスを制御します。 たとえば、SharePoint で問題が発生した場合は、外部共有の設定を再確認してください。
 Planner と Yammer には、互換性に関する既知の問題がありますか。 | <li>アクセス許可が "制限" に設定されている場合、Planner アプリにログインしたゲスト、または Microsoft Teams の Planner にアクセスしているゲストは、プランやタスクにアクセスすることはできません。<li>アクセス許可が "制限" に設定されている場合、Yammer にログインしたゲストはグループから脱退できません。

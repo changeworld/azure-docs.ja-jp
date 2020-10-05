@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e210a11dbcde17c8a5dfd16c46c0d3b3d5c6523
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: c1927cc103ba14b4b9b545eca82aee28cd32eeb2
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716335"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052387"
 ---
 # <a name="self-service-password-reset-frequently-asked-questions"></a>セルフサービス パスワード リセットについてよく寄せられる質問
 
@@ -104,7 +104,7 @@ ms.locfileid: "88716335"
   > * ディレクトリ内の認証データの書式が正しいことを確認してください (例: +1 4255551234 または *user\@contoso.com*)。 
 * **Q:パスワードのリセットはどの言語に対応していますか。**
 
-  > **A:** パスワードのリセット UI、SMS メッセージ、音声通話は、Office 365 でサポートされているのと同じ言語にローカライズされています。
+  > **A:** パスワードのリセット UI、SMS メッセージ、音声通話は、Microsoft 365 でサポートされているのと同じ言語にローカライズされています。
   >
   >
 * **Q:ディレクトリの [構成] タブで組織のブランド項目を設定した場合、パスワード リセット エクスペリエンスのどの部分がブランド化されますか。**

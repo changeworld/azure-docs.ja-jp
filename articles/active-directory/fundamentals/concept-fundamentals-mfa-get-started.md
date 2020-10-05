@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38f3a6d9cea1aa1ebcb76f61882dcf2615dc4832
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13bb7782f6396466200fbb3e2df77158bb75d8a4
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554654"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705403"
 ---
 # <a name="overview-of-azure-multi-factor-authentication-for-your-organization"></a>組織での Azure Multi-Factor Authentication の概要
 
@@ -34,10 +34,10 @@ Azure AD の無料特典を利用しているお客様は、[セキュリティ�
 
 ## <a name="microsoft-365-business-e3-or-e5"></a>Microsoft 365 Business、E3、または E5
 
-Office 365 をお持ちのお客様には、次の 2 つのオプションがあります。
+Microsoft 365 をお持ちのお客様には、次の 2 つのオプションがあります。
 
 * Azure Multi-Factor Authentication は、すべてのユーザーの、すべてのサインイン イベントに対して有効にするか無効にするかのどちらかとなります。 ユーザーのサブセットに対してのみ、もしくは特定のシナリオでのみ多要素認証を有効にすることはできません。 管理は Office 365 ポータルを介して行われます。 
-* ユーザー エクスペリエンスを向上させるには、Azure AD Premium P1 または P2 にアップグレードし、条件付きアクセスを使用します。 詳細については、多要素認証を使用した Office 365 リソースのセキュリティ保護に関するページを参照してください。
+* ユーザー エクスペリエンスを向上させるには、Azure AD Premium P1 または P2 にアップグレードし、条件付きアクセスを使用します。 詳細については、多要素認証を使用した Microsoft 365 リソースのセキュリティ保護に関するページを参照してください。
 
 ## <a name="azure-ad-premium-p1"></a>Azure AD Premium P1
 

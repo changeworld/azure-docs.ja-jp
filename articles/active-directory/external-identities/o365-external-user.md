@@ -1,6 +1,6 @@
 ---
-title: Office 365 の外部共有と B2B コラボレーション - Azure AD
-description: O365 および Azure Active Directory B2B コラボレーションを使用する外部パートナーとのリソースの共有について説明します。
+title: Microsoft 365 の外部共有と B2B コラボレーション - Azure AD
+description: Microsoft 365 および Azure Active Directory B2B コラボレーションを使用する外部パートナーとのリソースの共有について説明します。
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,16 +11,16 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcb407735cff5a0c43d3a584ff37a0eabc178381
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 563d925aa3e0d6922756ab037226f5a86534b19f
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87907421"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705437"
 ---
-# <a name="office-365-external-sharing-and-azure-active-directory-azure-ad-b2b-collaboration"></a>Office 365 の外部共有と Azure Active Directory (Azure AD) B2B コラボレーション
+# <a name="microsoft-365-external-sharing-and-azure-active-directory-azure-ad-b2b-collaboration"></a>Microsoft 365 の外部共有と Azure Active Directory (Azure AD) B2B コラボレーション
 
-Azure AD B2B コラボレーションと Office 365 の外部共有 (OneDrive、SharePoint Online、統合グループなど) では、外部ユーザーは Azure AD B2B を使用して認証されます。
+Azure AD B2B コラボレーションと Microsoft 365 の外部共有 (OneDrive、SharePoint Online、統合グループなど) では、外部ユーザーは Azure AD B2B を使用して認証されます。
 
 ## <a name="how-does-azure-ad-b2b-differ-from-external-sharing-in-sharepoint-online"></a>Azure AD B2B と SharePoint Online の外部共有との違い
 
@@ -37,7 +37,7 @@ OneDrive/SharePoint Online には、独自の招待マネージャーがあり�
 OneDrive/SharePoint Online と Azure AD B2B コラボレーションの外部共有を管理するには、OneDrive/SharePoint Online の外部共有の設定を **[Allow sharing only with the external users that already exist in your organization's directory]\(既にディレクトリに存在する外部ユーザーのみに共有を許可する\)** に設定します。 ユーザーは外部の共有サイトに移動し、管理者が追加した外部コラボレーターを選択できます。 管理者は、B2B コラボレーションの招待 API を通じて、外部コラボレーターを追加できます。
 
 
-![OneDrive/SharePoint Online の外部共有の設定](media/o365-external-user/odsp-sharing-setting.png)
+![OneDrive/SharePoint の外部共有の設定](media/o365-external-user/odsp-sharing-setting.png)
 
 外部共有を有効にした後、SharePoint Online (SPO) のユーザー選択ウィンドウで既存のゲスト ユーザーを検索する機能は、従来の動作と一致させるために、既定ではオフになっています。
 

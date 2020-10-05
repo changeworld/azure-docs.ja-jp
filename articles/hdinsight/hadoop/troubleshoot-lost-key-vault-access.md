@@ -1,18 +1,18 @@
 ---
 title: ディスク暗号化を使用する Azure HDInsight クラスターにおいて Key Vault のアクセスが失われる
-description: Azure HDInsight クラスターと対話するときの問題のトラブルシューティング手順と可能な解決策。
+description: Azure HDInsight クラスターと対話するときの Key Vault アクセスの問題のトラブルシューティング手順と可能な解決策。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/30/2020
-ms.openlocfilehash: b1d941fbf86d453a56a5157ed988a32173c614fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e34c1002be3dffb719490fee01e481e8df45901
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81461533"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532564"
 ---
 # <a name="scenario-azure-hdinsight-clusters-with-disk-encryption-lose-key-vault-access"></a>シナリオ:ディスク暗号化を使用する Azure HDInsight クラスターにおいて Key Vault のアクセスが失われる
 
@@ -28,7 +28,7 @@ Resource Health Center (RHC) のアラート `The HDInsight cluster is unable to
 
 **ディスク暗号化の Key Vault ステータス**からのアラートに関する詳細情報を検索するには、Apache Ambari UI に移動します。 このアラートには、検証エラーの理由に関する詳細が含まれます。
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解像度
 
 ### <a name="kvaad-outage"></a>KV/AAD の停止
 

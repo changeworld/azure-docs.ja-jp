@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: 4882fadcc2f05e4047366d8d097a3918091035bb
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e52bd150f72ba663c504b81832ce83d3e38cbf04
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005314"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986784"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でリソースを管理するアプリケーション開発者のベスト プラクティス
 
@@ -22,7 +22,7 @@ Azure Kubernetes Service (AKS) でアプリケーションを開発して実行�
 
 > [!div class="checklist"]
 > * ポッドのリソースの要求と制限とは
-> * Dev Spaces と Visual Studio Code でのアプリケーションの開発およびデプロイ方法
+> * Bridge to Kubernetes と Visual Studio Code を使用したアプリケーションの開発およびデプロイ方法
 > * `kube-advisor` ツールを使用してデプロイに関する問題を確認する方法
 
 ## <a name="define-pod-resource-requests-and-limits"></a>ポッドのリソースの要求と制限を定義する
@@ -74,13 +74,13 @@ spec:
 
 ## <a name="develop-and-debug-applications-against-an-aks-cluster"></a>AKS クラスターに対するアプリケーションの開発とデバッグを行う
 
-**ベスト プラクティス ガイダンス** - 開発チームでは、Dev Spaces を使用して AKS クラスターに対するデプロイおよびデバッグを行う必要があります。 この開発モデルを使用することで、アプリが運用環境にデプロイされる前に、ロールベースのアクセス制御 (RBAC)、ネットワーク、またはストレージのニーズが確実に実装されるようになります。
+**ベスト プラクティス ガイダンス** - 開発チームでは、Bridge to Kubernetes を使用して AKS クラスターに対するデプロイおよびデバッグを行う必要があります。
 
-Azure Dev Spaces を使用して、AKS クラスターに対して直接アプリケーションを開発、デバッグ、テストします。 チーム内の開発者は連携して、アプリケーション ライフサイクル全体を通してビルドとテストを行います。 Visual Studio または Visual Studio Code などの既存のツールを引き続き使用することができます。 Dev Spaces 用に拡張機能がインストールされ、AKS クラスターでのアプリケーションの実行およびデバッグのオプションが提供されます。
+Bridge to Kubernetes を使用すると、AKS クラスターに対して直接アプリケーションを開発、デバッグ、テストできます。 チーム内の開発者は連携して、アプリケーション ライフサイクル全体を通してビルドとテストを行います。 Visual Studio または Visual Studio Code などの既存のツールを引き続き使用することができます。 Bridge to Kubernetes 用の拡張機能がインストールされているため、AKS クラスターで直接開発できます。
 
-Dev Spaces を使用するこの統合開発およびテスト プロセスにより、[minikube][minikube] などのローカル テスト環境の必要性が軽減されます。 代わりに、AKS クラスターに対する開発およびテストを行います。 クラスターを論理的に分離するための名前空間の使用に関する前のセクションで説明したように、このクラスターをセキュリティで保護し、分離することができます。 アプリを運用環境にデプロイする準備ができたら、開発は実際の AKS クラスターに対してすべて行われているため、自信を持ってデプロイできます。
+Bridge to Kubernetes を使用するこの統合された開発とテストのプロセスにより、[minikube][minikube] などのローカル テスト環境の必要性が低くなります。 代わりに、AKS クラスターに対する開発およびテストを行います。 クラスターを論理的に分離するための名前空間の使用に関する前のセクションで説明したように、このクラスターをセキュリティで保護し、分離することができます。
 
-Azure Dev Spaces は、Linux ポッドおよびノード上で実行されるアプリケーションで使用することを目的としています。
+Bridge to Kubernetes は、Linux ポッドおよびノード上で実行されるアプリケーションで使用することを目的としています。
 
 ## <a name="use-the-visual-studio-code-extension-for-kubernetes"></a>Kubernetes 用の Visual Studio Code 拡張機能を使用する
 
@@ -106,7 +106,7 @@ kube-advisor ツールは、PodSpecs for Windows アプリケーションおよ�
 
 これらのベスト プラクティスのいくつかを実装する場合は、次の記事を参照してください。
 
-* [Dev Spaces を使用した開発][dev-spaces]
+* [Bridge to Kubernetes を使用した開発][btk]
 * [kube-advisor を使用した問題の確認][aks-kubeadvisor]
 
 <!-- EXTERNAL LINKS -->
@@ -117,7 +117,7 @@ kube-advisor ツールは、PodSpecs for Windows アプリケーションおよ�
 
 <!-- INTERNAL LINKS -->
 [aks-kubeadvisor]: kube-advisor-tool.md
-[dev-spaces]: /visualstudio/containers/overview-local-process-kubernetes
+[btk]: /visualstudio/containers/overview-bridge-to-kubernetes
 [operator-best-practices-isolation]: operator-best-practices-cluster-isolation.md
 [resource-quotas]: operator-best-practices-scheduler.md#enforce-resource-quotas
 [k8s-node-selector]: concepts-clusters-workloads.md#node-selectors

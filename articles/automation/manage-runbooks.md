@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 62b60afb7dc4adb70a0963984ee7848ab056e823
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 023864e23c0cd23df0de603e76acac651bd2458e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447832"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987576"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Azure Automation で Runbook を管理する
 
@@ -293,7 +293,7 @@ Azure Automation におけるジョブの処理について詳しくは、「[�
 
 タイルをクリックすると、実行されたすべてのジョブの概要を示す一覧が含まれた [ジョブ] ページが表示されます。 このページには、各ジョブの状態、Runbook 名、開始時刻、完了時間が表示されます。
 
-![Automation アカウントの [ジョブ] ページ](./media/manage-runbooks/automation-account-jobs-status-blade.png)
+:::image type="content" source="./media/manage-runbooks/automation-account-jobs-status-blade.png" alt-text="[ジョブ] ページのスクリーンショット。":::
 
 **[ジョブのフィルター]** を選択すると、ジョブの一覧をフィルター処理すできます。 特定の Runbook、ジョブの状態、またはドロップダウン リストから選択したものでフィルター処理し、検索の時間範囲を指定します。
 
@@ -301,7 +301,7 @@ Azure Automation におけるジョブの処理について詳しくは、「[�
 
 また、Automation アカウントの [Runbook] ページで Runbook を選択してから、 **[ジョブ]** を選択することで、特定の Runbook のジョブ概要の詳細を表示することができます。 この操作により、[ジョブ] ページが表示されます。 ここから、ジョブ レコードをクリックして、その詳細と出力を表示できます。
 
-![Automation アカウントの [ジョブ] ページ](./media/manage-runbooks/automation-runbook-job-summary-blade.png)
+:::image type="content" source="./media/manage-runbooks/automation-runbook-job-summary-blade.png" alt-text="[ジョブ] ページのスクリーンショット。":::
 
 ### <a name="retrieve-job-statuses-using-powershell"></a>PowerShell を使用してジョブの状態を取得する
 

@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 08/26/2020
-ms.openlocfilehash: 73037ac3725ad1e7e9dd84597936c47406244630
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.date: 09/22/2020
+ms.openlocfilehash: ca4dccb82ae6a907a2f7e944174b8ecc05a443b6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949883"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986900"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Azure Cognitive Search の API のバージョン
 
@@ -53,7 +53,7 @@ Azure Cognitive Search サービスのインスタンスでは、最新のバー
 
 検索サービスでコンテンツを作成して管理します。
 
-| バージョン&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | Status | 下位互換性に関する問題 |
+| バージョン&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | Status | 説明 |
 |-------------------------|--------|------------------------------|
 | [Search 2020-06-30](/rest/api/searchservice/index)| Stable | 関連性のスコアリングが強化され、ナレッジ ストアが一般公開されている、Search REST API の最新の安定リリースです。|
 | [Search 2020-06-30-Preview](/rest/api/searchservice/index-preview)| プレビュー | 安定バージョンに関連付けられているプレビュー バージョン。 複数の[プレビュー機能](search-api-preview.md)が含まれています。 |
@@ -72,12 +72,14 @@ Azure Cognitive Search サービスのインスタンスでは、最新のバー
 
 検索サービスを作成および構成し、API キーを管理します。
 
-| バージョン&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | Status | 下位互換性に関する問題 |
+| バージョン&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | Status | 説明 |
 |-------------------------|--------|------------------------------|
-| [Management 2020-03-13](/rest/api/searchmanagement/) | Stable | エンドポイントの保護が強化された、Management REST API の最新の安定リリースです。 プライベート リンクを使用する[プライベート エンドポイント](service-create-private-endpoint.md)、および[ネットワーク IP 規則](service-configure-firewall.md)が新しいサービスに追加されています。 |
-| [Management 2019-10-01-Preview](/rest/api/searchmanagement/index-2019-10-01-preview) | プレビュー  | バージョン番号にかかわらず、これは引き続き Management REST API の現在のプレビュー バージョンです。 現時点ではプレビュー機能はありません。 最近、すべてのプレビュー機能が最近一般公開されました。 |
-| Management 2015-08-19  | Stable | Management REST API の最初の一般公開バージョン。 サービスのプロビジョニング、スケールアップ、および API キーの管理が可能です。 |
-| Management 2015-08-19-Preview | プレビュー | Management REST API の最初のプレビュー バージョン。 |
+| [管理 2020-08-01](https://docs.microsoft.com/rest/api/searchmanagement/) | Stable | 管理 REST API の最新の安定バージョン リリースです。 プレビュー バージョンに記載されているものを除くすべての送信アクセス リソースに、一般公開されている共有プライベート リンク リソースのサポートが追加されています |
+| [管理 2020-08-01-Preview](https://docs.microsoft.com/rest/api/searchmanagement/index-preview) | プレビュー  | 現在プレビューの段階: Azure Functions と Azure Database for MySQL 用の共有プライベート リンク リソースのサポート。 |
+| 管理 2020-03-13  | Stable | プライベート リンクを使用する[プライベート エンドポイント](service-create-private-endpoint.md)、および[ネットワーク IP 規則](service-configure-firewall.md)が新しいサービスに追加されています。 詳細については、この [Swagger 仕様](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2020-08-01)を参照してください。 |
+| 管理 2019-10-01-Preview | [プレビュー]  | この一覧には、導入されたプレビュー機能はありませんでした。 このプレビューは機能的には 2020-03-13 と同等です。 詳細については、この [Swagger 仕様](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/preview/2019-10-01-preview)を参照してください。 |
+| Management 2015-08-19  | Stable | Management REST API の最初の一般公開バージョン。 サービスのプロビジョニング、スケールアップ、および API キーの管理が可能です。 詳細については、この [Swagger 仕様](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2015-08-19)を参照してください。 |
+| Management 2015-08-19-Preview  | プレビュー | Management REST API の最初のプレビュー バージョン。 詳細については、この [Swagger 仕様](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2015-08-19-preview)を参照してください。 |
 
 ## <a name="azure-sdk-for-net"></a>Azure SDK for .NET
 
@@ -85,19 +87,17 @@ Azure Cognitive Search サービスのインスタンスでは、最新のバー
 
 | SDK バージョン | Status | 説明 |
 |-------------|--------|------------------------------|
-| [Azure.Search.Documents 11.0](https://www.nuget.org/packages/Azure.Search.Documents/1.0.0-preview.4) | Stable | 2020 年 7 月にリリースされた、Azure .NET SDK の新しいクライアント ライブラリです。 Search REST api-version=2020-06-30 REST API を対象としていますが、geo フィルターまたは [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder?view=azure-dotnet) はまだサポートされていません。 |
+| [Azure.Search.Documents 11.0](/dotnet/api/overview/azure/search.documents-readme) | Stable | 2020 年 7 月にリリースされた、Azure .NET SDK の新しいクライアント ライブラリです。 Search REST api-version=2020-06-30 REST API を対象としていますが、geo フィルターまたは [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder) はまだサポートされていません。 |
 | [Microsoft.Azure.Search 10.0](https://www.nuget.org/packages/Microsoft.Azure.Search/) | Stable | リリース日: 2019 年 5 月。 Search REST api-version=2019-05-06 を対象としています。|
-| [Microsoft.Azure.Search 8.0-preview](https://www.nuget.org/packages/Microsoft.Azure.Search/8.0.0-preview) | プレビュー | リリース日: 2019 年 4 月。 Search REST api-version=2019-05-06-Preview を対象としています。|
-| [Microsoft.Azure.Management.Search 3.0.0](/dotnet/api/overview/azure/search/management?view=azure-dotnet) | Stable | Management REST api-version=2015-08-19 を対象としています。  |
-
-以前のリリースの Microsoft.Azure.Search に関する詳細については、任意のリリースの [NuGet パッケージのページ](https://www.nuget.org/packages/Microsoft.Azure.Search/)にアクセスし、**バージョン履歴**まで下にスクロールしてセクションを展開し、リリースの完全な一覧を表示してください。
+| [Microsoft.Azure.Management.Search 4.0.0](/dotnet/api/overview/azure/search/management) | Stable | Management REST api-version=2020-08-01 を対象としています。  |
+| Microsoft.Azure.Management.Search 3.0.0 | Stable | Management REST api-version=2015-08-19 を対象としています。  |
 
 ## <a name="azure-sdk-for-java"></a>Azure SDK for Java
 
 | SDK バージョン | Status | 説明  |
 |-------------|--------|------------------------------|
-| [Java azure-search-documents 11](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-search-documents/11.0.0/index.html) | Stable | 2020 年 7 月にリリースされた、Azure .NET SDK の新しいクライアント ライブラリです。 Search REST api-version=2019-05-06 を対象としています。 |
-| [Java Management Client 1.35.0](/java/api/overview/azure/search/management?view=azure-java-stable) | Stable | Management REST api-version=2015-08-19 を対象としています。 |
+| [Java azure-search-documents 11](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-search-documents) | Stable | 2020 年 7 月にリリースされた、Azure .NET SDK の新しいクライアント ライブラリです。 Search REST api-version=2019-05-06 を対象としています。 |
+| [Java Management Client 1.35.0](/java/api/overview/azure/search/management) | Stable | Management REST api-version=2015-08-19 を対象としています。 |
 
 ## <a name="azure-sdk-for-javascript"></a>Azure SDK for JavaScript
 
@@ -110,5 +110,5 @@ Azure Cognitive Search サービスのインスタンスでは、最新のバー
 
 | SDK バージョン | Status | 説明  |
 |-------------|--------|------------------------------|
-| [Python azure-search-documents 11.0](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-search-documents/11.0.0/index.html) | Stable | 2020 年 7 月にリリースされた、Azure .NET SDK の新しいクライアント ライブラリです。 Search REST api-version=2019-05-06 を対象としています。 |
-| [Python azure-mgmt-search 1.0](/python/api/overview/azure/search?view=azure-python) | Stable | Management REST api-version=2015-08-19 を対象としています。 |
+| [Python azure-search-documents 11.0](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-search-documents) | Stable | 2020 年 7 月にリリースされた、Azure .NET SDK の新しいクライアント ライブラリです。 Search REST api-version=2019-05-06 を対象としています。 |
+| [Python azure-mgmt-search 1.0](/python/api/overview/azure/search) | Stable | Management REST api-version=2015-08-19 を対象としています。 |

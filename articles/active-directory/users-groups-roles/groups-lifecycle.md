@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ed286cf2b11429d5f0f56b3a85f173c2a39bc81
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: eb51f402cd7032358e6a9d2f9fad9aa64316b809
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799300"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054553"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Microsoft 365 グループの有効期限ポリシーを構成する
 
@@ -42,7 +42,7 @@ Azure AD PowerShell コマンドレットをダウンロードしてインスト
 
 ## <a name="activity-based-automatic-renewal"></a>アクティビティベースの自動更新
 
-Azure AD インテリジェンスを使うと、最近使用されたかどうかに基づいてグループが自動的に更新されるようになります。 この機能は、Outlook、SharePoint、Teams などの Office 365 サービス全体のグループに含まれるユーザー アクティビティに基づいているため、グループ所有者による手動操作は不要になります。 たとえば、所有者またはグループ メンバーが、SharePoint でドキュメントをアップロードする、Teams チャンネルにアクセスする、Outlook でグループにメールを送信するなどの操作を行うと、グループは自動的に更新され、所有者には更新通知が送信されません。
+Azure AD インテリジェンスを使うと、最近使用されたかどうかに基づいてグループが自動的に更新されるようになります。 この機能は、Outlook、SharePoint、Teams などの Microsoft 365 サービス全体のグループに含まれるユーザー アクティビティに基づいているため、グループ所有者による手動操作は不要になります。 たとえば、所有者またはグループ メンバーが、SharePoint でドキュメントをアップロードする、Teams チャンネルにアクセスする、Outlook でグループにメールを送信するなどの操作を行うと、グループは自動的に更新され、所有者には更新通知が送信されません。
 
 ### <a name="activities-that-automatically-renew-group-expiration"></a>グループの有効期限を自動的に更新するアクティビティ
 

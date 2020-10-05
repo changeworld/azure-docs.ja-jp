@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c0b203647bc57c7c7eb48e321895cf3b3fa7d44
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 97a8f372a90d3add99390220d89214c6ad205db6
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795424"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056304"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>Azure Active Directory でテナントを削除する
 
@@ -27,12 +27,12 @@ Azure AD 組織 (テナント) を削除すると、その組織に含まれる�
 
 ## <a name="prepare-the-organization"></a>組織を準備する
 
-いくつかのチェックに合格するまで、Azure AD の組織を削除することはできません。 これらのチェックにより、Azure AD 組織の削除がユーザーのアクセス (Office 365 へのサインインや Azure のリソースへのアクセスなど) に悪影響を及ぼすリスクが軽減されます。 たとえば、サブスクリプションに関連付けられた組織が誤って削除された場合、ユーザーはそのサブスクリプションの Azure リソースにアクセスできなくなります。 次の条件がチェックされます。
+いくつかのチェックに合格するまで、Azure AD の組織を削除することはできません。 これらのチェックにより、Azure AD 組織の削除がユーザーのアクセス (Microsoft 365 へのサインインや Azure のリソースへのアクセスなど) に悪影響を及ぼすリスクが軽減されます。 たとえば、サブスクリプションに関連付けられた組織が誤って削除された場合、ユーザーはそのサブスクリプションの Azure リソースにアクセスできなくなります。 次の条件がチェックされます。
 
 * 組織を削除するグローバル管理者 1 人を除き、ユーザーが Azure AD 組織 (テナント) 内に存在しないこと。 組織を削除するには、他のすべてのユーザーを削除しておく必要があります。 ユーザーがオンプレミスから同期されている場合は、まず同期を無効にする必要があります。また、Azure portal または Azure PowerShell のコマンドレットを使用して、クラウド組織内のユーザーを削除する必要があります。
 * 組織内にアプリケーションが存在しないこと。 組織を削除できるようにするには、すべてのアプリケーションを削除しておく必要があります。
 * その組織にリンクされる多要素認証プロバイダーが存在しない。
-* 組織に関連付けられている、Microsoft Online Services のサブスクリプション (Microsoft Azure、Office 365、Azure AD Premium など) が存在しないこと。 たとえば、Azure で既定の Azure AD 組織が作成されている場合、Azure サブスクリプションが認証にこの組織を引き続き使用していれば、この組織を削除することはできません。 同様に、別のユーザーが組織にサブスクリプションを関連付けている場合、その組織を削除することはできません。
+* 組織に関連付けられている、Microsoft Online Services のサブスクリプション (Microsoft Azure、Microsoft 365、Azure AD Premium など) が存在しないこと。 たとえば、Azure で既定の Azure AD 組織が作成されている場合、Azure サブスクリプションが認証にこの組織を引き続き使用していれば、この組織を削除することはできません。 同様に、別のユーザーが組織にサブスクリプションを関連付けている場合、その組織を削除することはできません。
 
 ## <a name="delete-the-organization"></a>組織を削除する
 
@@ -52,16 +52,16 @@ Azure AD 組織 (テナント) を削除すると、その組織に含まれる�
 
 ## <a name="if-you-cant-delete-the-organization"></a>組織を削除できない場合
 
-Azure AD 組織を構成したときに、Azure AD Premium P2、Office 365 Business Premium、または Enterprise Mobility + Security E5 など、組織のライセンスベースのサブスクリプションもアクティブになっていた可能性があります。 偶発的なデータ損失を回避するため、サブスクリプションが完全に削除されるまでは組織を削除できません。 組織の削除を許可するには、サブスクリプションが**プロビジョニング解除済み**状態である必要があります。 **有効期限切れ**または**キャンセル済み**のサブスクリプションは、**無効** 状態に移行します。そして、最終段階が**プロビジョニング解除済み**状態です。
+Azure AD 組織を構成したときに、Azure AD Premium P2、Microsoft 365 Business Standard、または Enterprise Mobility + Security E5 など、組織のライセンスベースのサブスクリプションもアクティブになっていた可能性があります。 偶発的なデータ損失を回避するため、サブスクリプションが完全に削除されるまでは組織を削除できません。 組織の削除を許可するには、サブスクリプションが**プロビジョニング解除済み**状態である必要があります。 **有効期限切れ**または**キャンセル済み**のサブスクリプションは、**無効** 状態に移行します。そして、最終段階が**プロビジョニング解除済み**状態です。
 
-試用版の Office 365 サブスクリプション (有償のパートナー/CSP、Enterprise Agreement、ボリューム ライセンスは含まれません) の有効期限が切れたときに起こることについては、次の表を参照してください。 Office 365 のデータ保有とサブスクリプションのライフ サイクルの詳細については、「[一般法人向け Office 365 のサブスクリプションが終了したとき、データとアクセスはどうなりますか?](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3)」を参照してください。 
+試用版の Microsoft 365 サブスクリプション (有償のパートナー/CSP、Enterprise Agreement、ボリューム ライセンスは含まれません) の有効期限が切れたときに起こることについては、次の表を参照してください。 Microsoft 365 のデータ保有とサブスクリプションのライフ サイクルの詳細については、「[一般法人向け Microsoft 365 のサブスクリプションが終了したとき、データとアクセスはどうなりますか?](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3)」を参照してください。 
 
 サブスクリプションの状態 | Data | データへのアクセス
 ----- | ----- | -----
-アクティブ (試用版の 30 日間) | 誰もがアクセスできるデータ | ユーザーは Office 365 のファイルやアプリへの通常のアクセス権を持ちます<br>管理者は Microsoft 365 管理センターとリソースへの通常のアクセス権を持ちます 
-有効期限切れ (30 日間) | 誰もがアクセスできるデータ| ユーザーは Office 365 のファイルやアプリへの通常のアクセス権を持ちます<br>管理者は Microsoft 365 管理センターとリソースへの通常のアクセス権を持ちます
-無効 (30 日間) | 管理者だけがアクセスできるデータ | ユーザーは Office 365 のファイルやアプリにアクセスできません<br>管理者は Microsoft 365 管理センターにアクセスできますが、ライセンスを割り当てたり、ユーザーを更新したりすることはできません
-プロビジョニング解除 (無効後 30 日間) | 削除されたデータ (使用中の他のサービスがない場合は自動的に削除) | ユーザーは Office 365 のファイルやアプリにアクセスできません<br>管理者は Microsoft 365 管理センターにアクセスして他のサブスクリプションの購入および管理ができます
+アクティブ (試用版の 30 日間) | 誰もがアクセスできるデータ | ユーザーは Microsoft 365 のファイルやアプリへの通常のアクセス権を持ちます<br>管理者は Microsoft 365 管理センターとリソースへの通常のアクセス権を持ちます 
+有効期限切れ (30 日間) | 誰もがアクセスできるデータ| ユーザーは Microsoft 365 のファイルやアプリへの通常のアクセス権を持ちます<br>管理者は Microsoft 365 管理センターとリソースへの通常のアクセス権を持ちます
+無効 (30 日間) | 管理者だけがアクセスできるデータ | ユーザーは Microsoft 365 のファイルやアプリにアクセスできません<br>管理者は Microsoft 365 管理センターにアクセスできますが、ライセンスを割り当てたり、ユーザーを更新したりすることはできません
+プロビジョニング解除 (無効後 30 日間) | 削除されたデータ (使用中の他のサービスがない場合は自動的に削除) | ユーザーは Microsoft 365 のファイルやアプリにアクセスできません<br>管理者は Microsoft 365 管理センターにアクセスして他のサブスクリプションの購入および管理ができます
 
 ## <a name="delete-a-subscription"></a>サブスクリプションを削除する
 
@@ -97,7 +97,7 @@ Microsoft 365 管理センターを使用して、サブスクリプションを
 
 ## <a name="i-have-a-trial-subscription-that-blocks-deletion"></a>削除をブロックする試用版サブスクリプションがある
 
-Microsoft Power BI、Rights Management サービス、Microsoft Power Apps、Dynamics 365 などの[セルフサービス サインアップ製品](/office365/admin/misc/self-service-sign-up?view=o365-worldwide)では、個々のユーザーが Office 365 を通じてサインアップできるだけでなく、Azure AD 組織内に認証用のゲスト ユーザーを作成することもできます。 これらのセルフサービスの製品では、データ損失を回避するために、組織から製品が完全に削除されるまでディレクトリの削除がブロックされます。 これらを削除できるのは、ユーザーが個別にサインアップしたか、製品を割り当てられたかに関係なく、Azure AD 管理者のみです。
+Microsoft Power BI、Rights Management サービス、Microsoft Power Apps、Dynamics 365 などの[セルフサービス サインアップ製品](/office365/admin/misc/self-service-sign-up?view=o365-worldwide)では、個々のユーザーが Microsoft 365 を通じてサインアップできるだけでなく、Azure AD 組織内に認証用のゲスト ユーザーを作成することもできます。 これらのセルフサービスの製品では、データ損失を回避するために、組織から製品が完全に削除されるまでディレクトリの削除がブロックされます。 これらを削除できるのは、ユーザーが個別にサインアップしたか、製品を割り当てられたかに関係なく、Azure AD 管理者のみです。
 
 セルフサービス サインアップ製品の割り当て方法は 2 とおりあります。 
 
@@ -108,7 +108,7 @@ Microsoft Power BI、Rights Management サービス、Microsoft Power Apps、Dyn
 
 現在使用可能なセルフサービス サインアップ製品およびサービスの詳細については、「[利用可能なセルフサービス プログラム](/office365/admin/misc/self-service-sign-up?view=o365-worldwide#available-self-service-programs)」を参照してください。
 
-試用版の Office 365 サブスクリプション (有償のパートナー/CSP、Enterprise Agreement、ボリューム ライセンスは含まれません) の有効期限が切れたときに起こることについては、次の表を参照してください。 Office 365 のデータ保有とサブスクリプションのライフ サイクルの詳細については、「[一般法人向け Office 365 のサブスクリプションが終了したとき、データとアクセスはどうなりますか?](/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide)」を参照してください。
+試用版の Microsoft 365 サブスクリプション (有償のパートナー/CSP、Enterprise Agreement、ボリューム ライセンスは含まれません) の有効期限が切れたときに起こることについては、次の表を参照してください。 Microsoft 365 のデータ保有とサブスクリプションのライフ サイクルの詳細については、「[一般法人向け Microsoft 365 のサブスクリプションが終了したとき、データとアクセスはどうなりますか?](/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide)」を参照してください。
 
 製品の状態 | Data | データへのアクセス
 ------------- | ---- | --------------

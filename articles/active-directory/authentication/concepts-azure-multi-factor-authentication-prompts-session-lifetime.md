@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0019f7d8195dc39127b992a31ebd8c33e55452f6
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 9d5ffaf996f51348334f4adeeae150db9eb0defa
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179353"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052666"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>再認証プロンプトを最適化し、Azure Multi-Factor Authentication のセッションの有効期間を理解する
 
@@ -36,7 +36,7 @@ Azure Active Directory (Azure AD) には、ユーザーが再認証を必要と�
     * [マネージド デバイス](../devices/overview.md)または[シームレス SSO](../hybrid/how-to-connect-sso.md) を使用して、アプリケーション間でシングル サインオン (SSO) を有効にします。
     * 再認証が必要な場合は、条件付きアクセスの[サインイン頻度ポリシー](../conditional-access/howto-conditional-access-session-lifetime.md)を使用します。
     * 管理対象外のデバイスまたはモバイル デバイスからサインインするユーザーの場合は、条件付きアクセスを使用して、永続的なブラウザー セッションとサインイン頻度ポリシーを有効にします。
-* Office 365 アプリのライセンスまたは Free レベルの Azure AD をお使いの場合:
+* Microsoft 365 アプリのライセンスまたは Free レベルの Azure AD をお使いの場合:
     * [マネージド デバイス](../devices/overview.md)または[シームレス SSO](../hybrid/how-to-connect-sso.md) を使用して、アプリケーション間でシングル サインオン (SSO) を有効にします。
     * *[Remain signed-in] (サインインしたままの状態を続ける)* オプションを有効にしたままにして、ユーザーに同意するようガイドします。
 * モバイル デバイス シナリオの場合、ユーザーが Microsoft Authenticator アプリを必ず使用するようにします。 このアプリは他の Azure AD フェデレーション アプリとして使用され、デバイスの認証プロンプトを減らします。
@@ -123,13 +123,13 @@ Multi-Factor Authentication の設定を記憶するには、次の手順を実�
 
 トークンの有効期間を確認するには、[Azure AD PowerShell を使用して Azure AD ポリシーに対してクエリを実行します](../develop/active-directory-configurable-token-lifetimes.md#prerequisites)。 使用しているすべてのポリシーを無効にします。
 
-テナントで複数の設定が有効になっている場合は、使用可能なライセンスに基づいて設定を更新することをお勧めします。 たとえば、Azure AD Premium ライセンスをお持ちの場合は、 *[サインインの頻度]* と *[永続的ブラウザー セッション]* の条件付きアクセス ポリシーのみを使用する必要があります。 Office 365 アプリまたは Azure AD 無料ライセンスをお持ちの場合は、 *[Remain signed-in?] (サインインしたままの状態を続ける)* を使用する必要があります。
+テナントで複数の設定が有効になっている場合は、使用可能なライセンスに基づいて設定を更新することをお勧めします。 たとえば、Azure AD Premium ライセンスをお持ちの場合は、 *[サインインの頻度]* と *[永続的ブラウザー セッション]* の条件付きアクセス ポリシーのみを使用する必要があります。 Microsoft 365 アプリまたは Azure AD 無料ライセンスをお持ちの場合は、 *[Remain signed-in?] (サインインしたままの状態を続ける)* を使用する必要があります。
 
 構成可能なトークンの有効期間が有効になっている場合、この機能はすぐに削除されます。 条件付きアクセス ポリシーへの移行を計画します。
 
 ライセンスに基づく推奨事項を次の表に示します。
 
-|              | Azure AD Free と Office 365 アプリ | Azure AD Premium |
+|              | Azure AD Free アプリと Microsoft 365 アプリ | Azure AD Premium |
 |------------------------------|-----------------------------------|------------------|
 | **SSO**                      | アンマネージド デバイスの [Azure AD 参加](../devices/concept-azure-ad-join.md)または [Hybrid Azure AD 参加](../devices/concept-azure-ad-join-hybrid.md)、または[シームレス SSO](../hybrid/how-to-connect-sso.md)。 | Azure AD 参加<br />ハイブリッド Azure AD 参加 |
 | **再認証の設定** | Remain signed-in (サインインしたままの状態を続ける)                  | サインインの頻度と永続的なブラウザー セッションに条件付きアクセス ポリシーを使用する |

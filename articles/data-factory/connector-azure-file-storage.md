@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/31/2020
-ms.openlocfilehash: fe48f27cdf2aa09f47e3ed58433a5695036e4cfa
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: b4c1e3eb7793a393004cde6f98a09777341e0e0e
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182483"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89418978"
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用して File Storage をコピー元またはコピー先としてデータをコピーする
 
@@ -223,7 +223,7 @@ Azure File Storage では、形式ベースのデータセットの `location` �
 
 | プロパティ   | 説明                                                  | 必須 |
 | ---------- | ------------------------------------------------------------ | -------- |
-| type       | データセットの `location` の type プロパティは、**FileServerLocation** に設定する必要があります。 | はい      |
+| type       | データセットの `location` の type プロパティは、**AzureFileStorageLocation** に設定する必要があります。 | はい      |
 | folderPath | フォルダーのパス。 フォルダーをフィルター処理するためにワイルドカードを使用する場合は、この設定をスキップし、アクティビティのソースの設定で指定します。 | いいえ       |
 | fileName   | 特定の folderPath の下のファイル名。 ファイルをフィルター処理するためにワイルドカードを使用する場合は、この設定をスキップし、アクティビティのソースの設定で指定します。 | いいえ       |
 
@@ -241,7 +241,7 @@ Azure File Storage では、形式ベースのデータセットの `location` �
         "schema": [ < physical schema, optional, auto retrieved during authoring > ],
         "typeProperties": {
             "location": {
-                "type": "FileServerLocation",
+                "type": "AzureFileStorageLocation",
                 "folderPath": "root/folder/subfolder"
             },
             "columnDelimiter": ",",
@@ -265,7 +265,7 @@ Azure File Storage では、形式ベースのコピー ソースの `storeSetti
 
 | プロパティ                 | 説明                                                  | 必須                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| type                     | `storeSettings` の type プロパティは **FileServerReadSettings** に設定する必要があります。 | はい                                           |
+| type                     | `storeSettings` の type プロパティは **AzureFileStorageReadSettings** に設定する必要があります。 | はい                                           |
 | ***コピーするファイルを特定する:*** |  |  |
 | オプション 1: 静的パス<br> | データセットに指定されている所定のフォルダーまたはファイル パスからコピーします。 フォルダーからすべてのファイルをコピーする場合は、さらに `*` として `wildcardFileName` を指定します。 |  |
 | オプション 2: ファイルのプレフィックス<br>- prefix | ソース ファイルをフィルター処理するために、データセットで構成されている、指定されたファイル共有にあるファイル名のプレフィックス。 `fileshare_in_linked_service/this_prefix` で始まる名前のファイルが選択されます。 ワイルドカード フィルターより優れたパフォーマンスを提供する、Azure File Storage 用のサービス側フィルターを利用します。 [レガシのリンクされたサービス モデル](#legacy-model)を使用する場合、この機能はサポートされません。 | いいえ                                                          |
@@ -273,7 +273,7 @@ Azure File Storage では、形式ベースのコピー ソースの `storeSetti
 | オプション 3: ワイルドカード<br>- wildcardFileName | ソース ファイルをフィルター処理するための、特定の folderPath/wildcardFolderPath の下のワイルドカード文字を含むファイル名。 <br>使用できるワイルドカーは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。実際のフォルダー名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。  「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の他の例をご覧ください。 | はい |
 | オプション 4: ファイルの一覧<br>- fileListPath | 指定されたファイル セットをコピーすることを示します。 コピーするファイルの一覧を含むテキスト ファイルをポイントします。データセットで構成されているパスへの相対パスであるファイルを 1 行につき 1 つずつ指定します。<br/>このオプションを使用する場合は、データ セットにファイル名を指定しないでください。 その他の例については、[ファイル リストの例](#file-list-examples)を参照してください。 |いいえ |
 | ***追加の設定:*** |  | |
-| recursive | データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 recursive が true に設定され、シンクがファイル ベースのストアである場合、空のフォルダーおよびサブフォルダーはシンクでコピーも作成もされないことに注意してください。 <br>使用可能な値: **true** (既定値) および **false**。<br>`fileListPath` を構成する場合、このプロパティは適用されません。 |いいえ |
+| recursive | データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 recursive が true に設定されていて、シンクがファイル ベースのストアである場合、空のフォルダーまたはサブフォルダーはシンクでコピーも作成もされません。 <br>使用可能な値: **true** (既定値) および **false**。<br>`fileListPath` を構成する場合、このプロパティは適用されません。 |いいえ |
 | deleteFilesAfterCompletion | 宛先ストアに正常に移動した後、バイナリ ファイルをソース ストアから削除するかどうかを示します。 ファイルの削除はファイルごとに行われるので、コピー操作が失敗した場合、一部のファイルが既に宛先にコピーされソースからは削除されているが、他のファイルはまだソース ストアに残っていることがわかります。 <br/>このプロパティは、データ ソース ストアが Blob、ADLS Gen1、ADLS Gen2、S3、Google Cloud Storage、ファイル、Azure ファイル、SFTP、または FTP であるバイナリ コピー シナリオでのみ有効です。 既定値: false。 |いいえ |
 | modifiedDatetimeStart    | ファイルはフィルター処理され、元になる属性は最終更新時刻です。 <br>最終変更時刻が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の間に含まれる場合は、ファイルが選択されます。 時刻は "2018-12-01T05:00:00Z" の形式で UTC タイム ゾーンに適用されます。 <br> プロパティは、ファイル属性フィルターをデータセットに適用しないことを意味する NULL にすることができます。  `modifiedDatetimeStart` に datetime 値を設定し、`modifiedDatetimeEnd` を NULL にした場合は、最終更新時刻属性が datetime 値以上であるファイルが選択されることを意味します。  `modifiedDatetimeEnd` に datetime 値を設定し、`modifiedDatetimeStart` を NULL にした場合は、最終更新時刻属性が datetime 値以下であるファイルが選択されることを意味します。<br/>`fileListPath` を構成する場合、このプロパティは適用されません。 | いいえ                                            |
 | modifiedDatetimeEnd      | 上記と同じです。                                               | いいえ                                            |
@@ -308,7 +308,7 @@ Azure File Storage では、形式ベースのコピー ソースの `storeSetti
                     "skipLineCount": 10
                 },
                 "storeSettings":{
-                    "type": "FileServerReadSettings",
+                    "type": "AzureFileStorageReadSettings",
                     "recursive": true,
                     "wildcardFolderPath": "myfolder*A",
                     "wildcardFileName": "*.csv"
@@ -330,7 +330,7 @@ Azure File Storage では、形式ベースのコピー シンクの `storeSetti
 
 | プロパティ                 | 説明                                                  | 必須 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| type                     | `storeSettings` の type プロパティは **FileServerWriteSettings** に設定する必要があります。 | はい      |
+| type                     | `storeSettings` の type プロパティは **AzureFileStorageWriteSettings** に設定する必要があります。 | はい      |
 | copyBehavior             | ソースがファイル ベースのデータ ストアのファイルの場合は、コピー動作を定義します。<br/><br/>使用できる値は、以下のとおりです。<br/><b>- PreserveHierarchy (既定値)</b>:ターゲット フォルダー内でファイル階層を保持します。 ソース フォルダーに対するソース ファイルの相対パスと、ターゲット フォルダーに対するターゲット ファイルの相対パスが一致します。<br/><b>- FlattenHierarchy</b>:ソース フォルダーのすべてのファイルをターゲット フォルダーの第一レベルに配置します。 ターゲット ファイルは、自動生成された名前になります。 <br/><b>- MergeFiles</b>:ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。 ファイル名を指定した場合、マージされたファイル名は指定した名前になります。 それ以外は自動生成されたファイル名になります。 | いいえ       |
 | maxConcurrentConnections | 同時にデータ ストアに接続する接続の数。 データ ストアへのコンカレント接続を制限する場合にのみ指定します。 | いいえ       |
 
@@ -360,7 +360,7 @@ Azure File Storage では、形式ベースのコピー シンクの `storeSetti
             "sink": {
                 "type": "ParquetSink",
                 "storeSettings":{
-                    "type": "FileServerWriteSettings",
+                    "type": "AzureFileStorageWriteSettings",
                     "copyBehavior": "PreserveHierarchy"
                 }
             }

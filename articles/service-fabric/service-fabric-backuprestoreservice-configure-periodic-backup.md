@@ -1,16 +1,16 @@
 ---
 title: 定期的なバックアップの構成について
-description: アプリケーションデータの定期バックアップを可能にする Service Fabric の定期バックアップと復元機能を使用します。
+description: Service Fabric の定期的なバックアップと復元機能を使用して、Reliable Stateful Services または Reliable Actors の定期的なバックアップを構成します。
 author: hrushib
 ms.topic: article
 ms.date: 2/01/2019
 ms.author: hrushib
-ms.openlocfilehash: c77f069d93e368652c30cd100b0f99ca55341882
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 53f63f341fe614f2287a09f37fafd2eedc614be7
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261226"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530915"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Azure Service Fabric の定期バックアップ構成を理解する
 

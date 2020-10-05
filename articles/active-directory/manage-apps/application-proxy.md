@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 82e984b629c8d838ba179b25a78262eccf078a04
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 65e1b1b5e84c3344a082b73b7768935d788a3394
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377864"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707409"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシからのオンプレミス アプリケーションへのリモート アクセス
 
@@ -24,7 +24,7 @@ Azure Active Directory アプリケーション プロキシは、オンプレ�
 
 Azure AD アプリケーション プロキシの特徴:
 
-- **簡単に使用できる**。 ユーザーは、O365 にアクセスするのと同じようにオンプレミスのアプリケーションにアクセスでき、Azure AD に統合された他の SaaS アプリにもアクセスできます。 アプリケーション プロキシを使用するためにアプリケーションを変更または更新する必要はありません。
+- **簡単に使用できる**。 ユーザーは、Microsoft 365 や Azure AD に統合された他の SaaS アプリにアクセスするのと同じように、オンプレミスのアプリケーションにアクセスできます。 アプリケーション プロキシを使用するためにアプリケーションを変更または更新する必要はありません。
 
 - **セキュリティ保護**。 オンプレミスのアプリケーションは、Azure の承認制御とセキュリティ分析を使用できます。 たとえば、オンプレミス アプリケーションでは、条件付きアクセスと 2 段階認証を使用できます。 アプリケーション プロキシでは、ファイアウォールを介した受信接続を開く必要がありません。
 

@@ -13,18 +13,18 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a76a20d2cbc8a7b12b283c2858a13e9343499335
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 04e1d35ab17a49dd1c4e9bd2bd19289de2b8658a
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321295"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565856"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>組織の Azure Active Directory のサインイン ページにブランドを追加する
-組織のロゴとカスタム カラー スキーマを使用して、Azure Active Directory (Azure AD) のサインイン ページの外観に一貫性を持たせます。 サインイン ページは、Azure AD を ID プロバイダーとして使用している組織の Web ベースのアプリ (Office 365 など) にユーザーが サインインするときに表示されます。
+組織のロゴとカスタム カラー スキーマを使用して、Azure Active Directory (Azure AD) のサインイン ページの外観に一貫性を持たせます。 サインイン ページは、Azure AD を ID プロバイダーとして使用している組織の Web ベースのアプリ (Microsoft 365 など) にユーザーが サインインするときに表示されます。
 
 >[!NOTE]
->カスタム ブランドを追加するには、Azure Active Directory Premium 1 エディション、Premium 2 エディション、または Basic エディションを使用しているか、Office 365 ライセンスを持っている必要があります。 ライセンスとエディションの詳細については、「[Azure AD Premium へのサインアップ](active-directory-get-started-premium.md)」を参照してください。<br><br>Azure Active Directory のワールドワイド インスタンスを使用している中国のお客様は、Azure AD Premium および Basic エディションを使用できます。 中国の 21Vianet が運営する Azure サービスでは、Azure AD Premium エディションと Basic エディションは現在サポートされていません。 詳細については、[Azure Active Directory フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/)を利用してお問い合わせください。
+>カスタム ブランドを追加するには、Azure Active Directory Premium 1 エディション、Premium 2 エディション、または Basic エディションを使用しているか、Microsoft 365 ライセンスを持っている必要があります。 ライセンスとエディションの詳細については、「[Azure AD Premium へのサインアップ](active-directory-get-started-premium.md)」を参照してください。<br><br>Azure Active Directory のワールドワイド インスタンスを使用している中国のお客様は、Azure AD Premium および Basic エディションを使用できます。 中国の 21Vianet が運営する Azure サービスでは、Azure AD Premium エディションと Basic エディションは現在サポートされていません。 詳細については、[Azure Active Directory フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/)を利用してお問い合わせください。
 
 ## <a name="customize-your-azure-ad-sign-in-page"></a>Azure AD のサインイン ページをカスタマイズする
 Azure AD のサインイン ページをカスタマイズできます。このページは、ユーザーが組織のテナント固有のアプリ (`https://outlook.com/contoso.com` など) にサインインするとき、またはドメイン変数 (`https://passwordreset.microsoftonline.com/?whr=contoso.com`) を渡すときに表示されます。
@@ -32,7 +32,7 @@ Azure AD のサインイン ページをカスタマイズできます。この�
 カスタム ブランドは、ユーザーが www\.office.com などのサイトに移動したときにすぐに表示されるわけではありません。 カスタマイズされたブランドは、ユーザーがサインインした後で表示されます。 ユーザーがサインインすると、ブランド化に 15 分以上かかることがあります。 
 
 > [!NOTE]
-> すべてのブランド要素は省略可能です。 たとえば、背景画像なしでバナー ロゴを指定した場合、サインイン ページには目的のサイト (たとえば Office 365) の既定の背景画像とロゴが表示されます。<br><br>さらに、サインイン ページのブランド情報は、個人用 Microsoft アカウントに継承されることはありません。 ユーザーまたはゲスト ユーザーが個人用 Microsoft アカウントを使用してサインインした場合、そのサインイン ページには組織のブランドは反映されません。
+> すべてのブランド要素は省略可能です。 たとえば、背景画像なしでバナー ロゴを指定した場合、サインイン ページには目的のサイト (たとえば Microsoft 365) の既定の背景画像とロゴが表示されます。<br><br>さらに、サインイン ページのブランド情報は、個人用 Microsoft アカウントに継承されることはありません。 ユーザーまたはゲスト ユーザーが個人用 Microsoft アカウントを使用してサインインした場合、そのサインイン ページには組織のブランドは反映されません。
 
 ### <a name="to-customize-your-branding"></a>ブランドをカスタマイズするには
 1. ディレクトリのグローバル管理者アカウントを使用して [Azure portal](https://portal.azure.com/) にサインインします。

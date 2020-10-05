@@ -3,12 +3,12 @@ title: ラボ内の VM を Azure DevTest Labs で再デプロイする | Microso
 description: Azure DevTest Labs で仮想マシンを再デプロイする (1 つの Azure ノードから別のノードに移動する) 方法を説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: da0edf13adaa0d7ecd84ee2c190f376c19b398db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a38b112165b893d877733b967c21bb62b20ca2f6
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85480237"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530320"
 ---
 # <a name="redeploy-a-vm-in-a-lab-in-azure-devtest-labs"></a>ラボ内の VM を Azure DevTest Labs で再デプロイする
 ラボの仮想マシン (VM) に対してリモート デスクトップ接続経由で接続できない場合は、VM を再デプロイし、接続を再試行します。 VM を再デプロイするときに、DevTest Labs は、それが実行されているノードから Azure インフラストラクチャ内の新しいノードに VM を移動します。 次に、すべての構成オプションと関連するリソースを保持したまま VM が起動されます。 この機能によって、ラボ内の Windows ベースの VM へのリモート デスクトップ接続やアプリケーション アクセスのトラブルシューティングに費やす時間を節約できます。 
@@ -23,7 +23,7 @@ Azure DevTest Labs でラボ内の VM を再デプロイするには、次の手
 5. VM の一覧で、VM を選択します。
 6. VM の [仮想マシン] ページの左メニューにある **[操作]** の下の **[再デプロイ]** を選択します。
 
-    ![Redeploy](media/devtest-lab-redeploy-vm/redeploy.png)
+    ![[再デプロイ] が選択された [仮想マシン] ページが表示されている画面キャプチャ。](media/devtest-lab-redeploy-vm/redeploy.png)
 7. このページの情報を読んで、 **[再デプロイ]** ボタンをクリックします。 9. **[通知]** ウィンドウで再デプロイ操作の状態を確認します。
 
     ![状態を再デプロイする](media/devtest-lab-redeploy-vm/redeploy-status.png)

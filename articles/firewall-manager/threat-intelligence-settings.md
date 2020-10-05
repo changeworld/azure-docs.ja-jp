@@ -1,18 +1,18 @@
 ---
 title: Azure Firewall の脅威インテリジェンスの構成
-description: ファイアウォール用に脅威インテリジェンスベースのフィルター処理を有効にして、既知の悪意のある IP アドレスやドメインとの間のトラフィックの警告と拒否を行うことができます。
+description: Azure Firewall ポリシー用に脅威インテリジェンスベースのフィルター処理を構成して、既知の悪意のある IP アドレスおよびドメインとの間で送受信されるトラフィックを警告および拒否する方法について説明します。
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 136ceeb271bec29bdbfc4572626936ee67f05556
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a663c5f3bcf3492c4a9bc74fe93c6ed6a86137ee
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85567703"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530643"
 ---
 # <a name="azure-firewall-threat-intelligence-configuration"></a>Azure Firewall の脅威インテリジェンスの構成
 

@@ -16,12 +16,12 @@ ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2b65f8cd22e72e0ba90918121a02d66fe6bf3e7
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: ad7b0039602add7f4cd3cdd300bd829c4f148a79
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053050"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084738"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect 同期: Scheduler
 このトピックでは、Azure AD Connect 同期の組み込みのスケジューラ (同期エンジン) について説明します。
@@ -160,12 +160,15 @@ d - 日数、HH - 時間数、mm - 分数、ss - 秒数
 ## <a name="stop-the-scheduler"></a>スケジューラの停止
 スケジューラが同期サイクルを実行中に、停止しなければならない場合があります。 たとえば、インストール ウィザードを開始して、次のエラーが発生したとします。
 
-![SyncCycleRunningError](./media/how-to-connect-sync-feature-scheduler/synccyclerunningerror.png)
+![スクリーンショットは、構成を変更できないというエラー メッセージを示しています。](./media/how-to-connect-sync-feature-scheduler/synccyclerunningerror.png)
 
 同期サイクルの実行中は、構成を変更できません。 スケジューラが処理を終了するまで待つこともできますが、すぐに変更を行うことができるように、スケジューラを停止することもできます。 現在のサイクルを停止しても害はなく、保留になった変更は次回の実行で処理されます。
 
 1. まず、PowerShell コマンドレット `Stop-ADSyncSyncCycle` で、現在のサイクルを停止するようスケジューラに指示します。
-2. 1\.1.281 より前のビルドを使用している場合は、スケジューラを停止しても、現在のコネクタの現在のタスクは停止しません。 コネクタを強制的に停止させるには、以下の操作を行います。![StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
+2. 1\.1.281 より前のビルドを使用している場合は、スケジューラを停止しても、現在のコネクタの現在のタスクは停止しません。 コネクタを強制的に停止させるには、以下の操作を行います。
+
+   ![スクリーンショットでは、Sychronization Service Manager の [コネクタ] が選択されています。実行中の 1 つのコネクタが強調表示されて、停止アクションが選択されています。](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
+
    * [スタート] メニューから **[Synchronization Service (同期サービス)]** を起動します。 **[コネクタ]** に移動し、状態が **[実行中]** のコネクタを強調表示して、[操作] で **[停止]** を選択します。
 
 スケジューラはアクティブなままで、次の機会に再度開始されます。

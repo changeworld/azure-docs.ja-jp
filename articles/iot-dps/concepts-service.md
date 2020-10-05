@@ -1,23 +1,23 @@
 ---
-title: Azure IoT Hub Device Provisioning サービスにおけるサービスの概念 | Microsoft Docs
-description: デバイス プロビジョニング サービス (DPS) と IoT Hub を備えたデバイスに固有のサービス プロビジョニングの概念を説明します
-author: nberdy
-ms.author: nberdy
+title: Azure IoT Hub Device Provisioning Service で使用される用語 | Microsoft Docs
+description: Device Provisioning Service (DPS) と IoT Hub で使用される一般的な用語について説明します
+author: wesmc7777
+ms.author: wesmc
 ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: briz
-ms.openlocfilehash: f42502ac4db12a060af5906243d3f8e7584c5df3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+manager: eliotga
+ms.openlocfilehash: b9fc37c6589cdd0bc6a5cdce7b7ebebe2c6e9a85
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79237543"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531612"
 ---
-# <a name="iot-hub-device-provisioning-service-concepts"></a>Azure IoT Hub Device Provisioning サービスの概念
+# <a name="iot-hub-device-provisioning-service-dps-terminology"></a>IoT Hub Device Provisioning Service (DPS) の用語
 
-Azure IoT Hub Device Provisioning サービスは IoT Hub のヘルパー サービスです。このサービスは、指定された IoT Hub にプロビジョニングするゼロタッチ デバイスの構成に使用されます。 デバイス プロビジョニング サービスを利用すると、セキュリティで保護されたスケーラブルな方法でいくつものデバイスを[自動プロビジョニング](concepts-auto-provisioning.md)できます。
+Azure IoT Hub Device Provisioning サービスは IoT Hub のヘルパー サービスです。このサービスは、指定された IoT Hub にプロビジョニングするゼロタッチ デバイスの構成に使用されます。 Device Provisioning Service を使用すると、セキュリティで保護されたスケーラブルな方法で何百万台ものデバイスを[プロビジョニング](about-iot-dps.md#provisioning-process)できます。
 
 デバイス プロビジョニングのプロセスには、2 つの部分があります。 最初の部分では、デバイスを*登録*することで、デバイスと IoT ソリューション間の初期接続を確立します。 2 番目の部分では、ソリューションの特定の要件に基づいて、デバイスに適切な*構成*を適用します。 両方のステップを完了すると、デバイスが完全に*プロビジョニング*されたことになります。 デバイス プロビジョニング サービスでは、デバイスにシームレスなプロビジョニング エクスペリエンスを提供するために、両方のステップを自動化しています。
 
@@ -35,6 +35,7 @@ Azure IoT Hub Device Provisioning サービスは IoT Hub のヘルパー サー
 
 デバイス プロビジョニング サービスでは、このサービスにリンクされた IoT Hub にのみデバイスをプロビジョニングできます。 デバイス プロビジョニング サービスのインスタンスに IoT Hub をリンクすると、サービスの読み取り/書き込みのアクセス許可が IoT Hub のデバイス レジストリに付与されます。デバイス プロビジョニング サービスでは、リンクを使用して、デバイス ツインにデバイス ID を登録して初期構成を設定できます。 リンクされた IoT Hub は、任意の Azure リージョン内に置くことができます。 お使いのプロビジョニング サービスに他のサブスクリプションのハブをリンクすることもできます。
 
+
 ## <a name="allocation-policy"></a>割り当てポリシー
 
 サービス レベルの設定では、デバイス プロビジョニング サービスがデバイスを IoT Hub に割り当てる方法を指定します。 次の 3 つの割り当てポリシーがサポートされています。
@@ -45,10 +46,12 @@ Azure IoT Hub Device Provisioning サービスは IoT Hub のヘルパー サー
 
 * **Static configuration via the enrollment list\(加入契約リストによる静的構成\)** : 加入契約リストの目的の IoT Hub の仕様が、サービス レベルの割り当てポリシーよりも優先されます。
 
-## <a name="enrollment"></a>加入
+* **カスタム (Azure 関数を使用)** :カスタム割り当てポリシーを使用すると、デバイスを IoT ハブに割り当てる方法をより細かく制御できます。 これは、デバイスを IoT ハブに割り当てる際に、Azure 関数でカスタム コードを使用することで実現されます。 Device Provisioning Service により、デバイスと登録に関するすべての関連情報をコードに提供する Azure 関数コードが呼び出されます。 関数コードが実行され、デバイスのプロビジョニングに使用する IoT ハブ情報が返されます。
+
+## <a name="enrollment"></a>登録
 
 登録とは、自動プロビジョニングで登録できるデバイスまたはデバイス グループのレコードのことです。 登録レコードには、次のようなデバイスまたはデバイス グループに関する情報が含まれています。
-- デバイスで使用される[構成証明メカニズム](concepts-security.md#attestation-mechanism)
+- デバイスで使用される[構成証明メカニズム](#attestation-mechanism)
 - オプションの初期に必要な構成
 - 目的の IoT Hub
 - 目的のデバイス ID
@@ -69,9 +72,56 @@ Azure IoT Hub Device Provisioning サービスは IoT Hub のヘルパー サー
 > [!TIP]
 > 固有の初期構成を必要とするデバイスや、TPM 構成証明を介した SAS トークンを使用してのみ認証できるデバイスには、個別登録を使用することをお勧めします。
 
+
+## <a name="attestation-mechanism"></a>構成証明メカニズム
+
+構成証明メカニズムは、デバイスの ID の確認に使用される方法です。 構成証明メカニズムを登録エントリに対して構成すると、登録時にデバイスの ID の確認に使用する方法がプロビジョニング サービスに通知されます。
+
+> [!NOTE]
+> IoT Hub は、そのサービスでの同様の概念として "認証スキーム" を使用します。
+
+デバイス プロビジョニング サービスは、以下の形式の構成証明をサポートします。
+* 標準の X.509 証明書の認証フローに基づく**X.509 証明書**。 詳細については、[X.509 の構成証明](concepts-x509-attestation.md)に関する記事をご覧ください。
+* nonce チャレンジに基づく**トラステッド プラットフォーム モジュール (TPM)** 。キーの TPM 標準を使用し、署名された Shared Access Signature (SAS) トークンを提示します。 このトークンでは、デバイス上の物理 TPM は必須ではありませんが、[TPM 仕様](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)ごとに保証キーを使用して証明するために、サービスからは物理 TPM が期待されます。詳細については、「[TPM の構成証明](concepts-tpm-attestation.md)」をご覧ください。
+* 共有アクセス署名 (SAS) **セキュリティ トークン**に基づく[対称キー](../iot-hub/iot-hub-devguide-security.md#security-tokens)。これにはハッシュの署名と埋め込みの有効期限が含まれています。 詳細については、「[対称キーの構成証明](concepts-symmetric-key-attestation.md)」を参照してください。
+
+
+## <a name="hardware-security-module"></a>ハードウェア セキュリティ モジュール
+
+ハードウェア セキュリティ モジュール (HSM) は、デバイス シークレットの安全なハードウェア ベースのストレージに使用されます。これは、最も安全な形式のシークレット ストレージです。 X.509 証明書と SAS トークンの両方を HSM に格納できます。 HSM は、プロビジョニング サービスがサポートする両方の構成証明メカニズムで使用できます。
+
+> [!TIP]
+> デバイス上に安全にシークレットを保管するために、デバイスに HSM を使用することを強くお勧めします。
+
+デバイス シークレットもソフトウェア (メモリ) に保存できますが、HSM よりも安全性の低い形式のストレージです。
+
+
+
+## <a name="id-scope"></a>ID スコープ
+
+ID スコープは、ユーザーによって作成されたときに、デバイス プロビジョニング サービスに割り当てられます。デバイスの登録に利用される特定のプロビジョニング サービスを一意に識別するために使用されます。 サービスによって ID スコープが生成され、この ID スコープが不変であるため、一意性が保証されます。
+
+> [!NOTE]
+> 実行時間の長いデプロイ操作や統合と取得のシナリオでは、一意性が重要です。
+
+
 ## <a name="registration"></a>登録
 
 登録は、デバイス プロビジョニング サービス経由で IoT Hub に正常に登録/プロビジョニングされるデバイスのレコードです。 登録レコードは自動的に作成されます。また、削除はできますが、更新はできません。
+
+
+## <a name="registration-id"></a>登録 ID
+
+登録 ID は、Device Provisioning Service のデバイス登録を一意に識別するために使用されます。 デバイス ID は、プロビジョニング サービスの[ ID スコープ](#id-scope)内で一意である必要があります。 各デバイスに登録 ID が必要です。 登録 ID は大文字と小文字が区別されない英数字であり、コロン、ピリオド、アンダースコア、ハイフンなどの特殊文字を含めることができます。
+
+* TPM の場合、登録 ID は TPM 自身によって提供されます。
+* X.509 ベースの構成証明の場合、登録 ID は、証明書のサブジェクト名として提供されます。
+
+## <a name="device-id"></a>デバイス ID
+
+デバイス ID は、IoT Hub に表示される ID です。 加入契約エントリに目的のデバイス ID を設定できますが、設定は必須ではありません。 希望するデバイス ID の設定は、個別の登録でのみサポートされています。 加入契約リストに目的のデバイス ID が指定されていない場合、デバイスの登録時の登録 ID がデバイス ID として使用されます。 詳細については、[IoT Hub のデバイス ID](../iot-hub/iot-hub-devguide-identity-registry.md) に関する記事をご覧ください。
+
+
 
 ## <a name="operations"></a>操作
 

@@ -16,12 +16,12 @@ ms.date: 10/09/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18853699ae45cbc36ade1d31b7e372b4343b475d
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 7d61a3dd995efd1f433c2e862c4b7a59d31f79a3
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279892"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660852"
 ---
 # <a name="azure-ad-connect-and-federation"></a>Azure AD Connect とフェデレーション
 Azure Active Directory (Azure AD) Connect を使用すると、オンプレミスの Active Directory フェデレーション サービス (AD FS) と Azure AD でフェデレーションを構成できます。 フェデレーション サインインでは、ユーザーはオンプレミスのパスワードを使用して Azure AD ベースのサービスにサインインできます。また、企業ネットワーク上では、パスワードを再度入力する必要はありません。 AD FS によるフェデレーション オプションを使用すると、AD FS の新しいインストールをデプロイすることも、Windows Server 2012 R2 ファームの既存のインストールを指定することもできます。
@@ -38,12 +38,12 @@ Azure Active Directory (Azure AD) Connect を使用すると、オンプレミ�
 | [AD FS ファームの構成](how-to-connect-install-custom.md#configuring-federation-with-ad-fs) |Azure AD Connect を使用して、新しい AD FS ファームをインストールします。 |
 | [代替ログイン ID を使用して Azure AD とフェデレーションする](how-to-connect-fed-management.md#alternateid) | 代替ログイン ID を使用してフェデレーションを構成する  |
 | **AD FS 構成の変更** | |
-| [信頼を修復する](how-to-connect-fed-management.md#repairthetrust) |オンプレミスの AD FS と Office 365 または Azure 間の現在の信頼を修復します。 |
+| [信頼を修復する](how-to-connect-fed-management.md#repairthetrust) |オンプレミスの AD FS と Microsoft 365 または Azure 間の現在の信頼を修復します。 |
 | [新しい AD FS サーバーの追加](how-to-connect-fed-management.md#addadfsserver) |初期インストール後に、追加の AD FS サーバーで AD FS ファームを拡張します。 |
 | [新しい AD FS WAP サーバーの追加](how-to-connect-fed-management.md#addwapserver) |初期インストール後に、追加の Web アプリケーション プロキシ (WAP) サーバーで AD FS ファームを拡張します。 |
 | [新しいフェデレーション ドメインの追加](how-to-connect-fed-management.md#addfeddomain) |Azure AD とフェデレーションする別のドメインを追加します。 |
 | [TLS/SSL 証明書の更新](how-to-connect-fed-ssl-update.md)| AD FS ファームの TLS/SSL 証明書を更新します。 |
-| [Office 365 および Azure AD 用のフェデレーション証明書の更新](how-to-connect-fed-o365-certs.md)|Azure AD で O365 証明書を更新します。|
+| [Microsoft 365 および Azure AD 用のフェデレーション証明書の更新](how-to-connect-fed-o365-certs.md)|Azure AD で O365 証明書を更新します。|
 | **他のフェデレーション構成** | |
 | [Azure AD の複数のインスタンスと AD FS の単一インスタンスのフェデレーションを行う](how-to-connect-fed-single-adfs-multitenant-federation.md) | 複数の Azure AD と単一の AD FS ファームとのフェデレーション| 
 | [カスタムの会社のロゴまたはイラストの追加](how-to-connect-fed-management.md#customlogo) |AD FS サインイン ページに表示されるカスタム ロゴを指定して、サインイン エクスペリエンスを変更します。 |

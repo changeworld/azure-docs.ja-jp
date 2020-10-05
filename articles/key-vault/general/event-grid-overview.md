@@ -9,16 +9,16 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: cdbd78808d1758b43d2b2fe6e8f7ac03652ff92b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ee38196f0b1a6e00d385dc0d2c88d45a4291d3b
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85296340"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087438"
 ---
-# <a name="monitoring-key-vault-with-azure-event-grid-preview"></a>Azure Event Grid での Key Vault の監視 (プレビュー)
+# <a name="monitoring-key-vault-with-azure-event-grid"></a>Azure Event Grid での Key Vault の監視
 
-Key Vault と Event Grid の統合は現在プレビュー段階です。 それにより、キー コンテナーに格納されているシークレットの状態が変更されたときにユーザーに通知することができます。 状態の変更は、有効期限が切れる直前 (期限切れの 30 日前) のシークレット、有効期限が切れたシークレット、または新しいバージョンが利用可能になったシークレットとして定義されます。 3 つすべての種類のシークレット (キー、証明書、シークレット) の通知がサポートされています。
+Key Vault と Event Grid の統合により、キー コンテナーに格納されているシークレットの状態が変更されたときにユーザーに通知できます。 状態の変更は、有効期限が切れる直前 (期限切れの 30 日前) のシークレット、有効期限が切れたシークレット、または新しいバージョンが利用可能になったシークレットとして定義されます。 3 つすべての種類のシークレット (キー、証明書、シークレット) の通知がサポートされています。
 
 アプリケーションでは、最新のサーバーレス アーキテクチャを使って、これらのイベントに対応できます。複雑なコードや、高価で非効率的なポーリング サービスは必要ありません。 イベントが [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) を通してイベント ハンドラー ([Azure Functions](https://azure.microsoft.com/services/functions/)、[Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) など) やユーザー独自の Webhook へのイベントにもプッシュされるため、支払いは使用した分だけで済みます。 価格の詳細については、[Event Grid の価格](https://azure.microsoft.com/pricing/details/event-grid/)に関する記事をご覧ください。
 
@@ -44,7 +44,7 @@ Key Vault イベントを処理するアプリケーションは、いくつか�
 
 - [Azure Key Vault の概要](overview.md)
 - [Azure Event Grid の概要](../../event-grid/overview.md)
-- 方法:[Automation Runbook への Key Vault イベントのルーティング (プレビュー)](event-grid-tutorial.md)
+- 方法:[Automation Runbook への Key Vault イベントのルーティング](event-grid-tutorial.md)
 - 方法:[キー コンテナーのシークレットが変更されたときにメールを受信する](event-grid-logicapps.md)
-- [Azure Key Vault 用の Azure Event Grid イベント スキーマ (プレビュー)](../../event-grid/event-schema-key-vault.md)
+- [Azure Key Vault 用の Azure Event Grid イベント スキーマ](../../event-grid/event-schema-key-vault.md)
 - [Azure Automation の概要](../../automation/index.yml)

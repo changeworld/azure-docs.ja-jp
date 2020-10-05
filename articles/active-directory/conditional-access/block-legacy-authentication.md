@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1973d45197044c325caf2d9938838f438d7755c
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: ca9f4e290c5dad45e5bf87439ebcd1c88a7c540f
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049538"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602005"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>方法:条件付きアクセスを使用して Azure AD へのレガシ認証をブロックする   
 
@@ -125,4 +125,4 @@ Azure AD では、レガシ認証を含め、最も広く使用されている�
 - [条件付きアクセスのレポート専用モードを使用した影響を判断する](howto-conditional-access-insights-reporting.md)
 - 条件付きアクセス ポリシー構成についてまだよくご存知でない場合は、「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](../authentication/tutorial-enable-azure-mfa.md)」で例を参照してください。
 - 先進認証のサポートの詳細については、「[How modern authentication works for Office 2013 and Office 2016 client apps](/office365/enterprise/modern-auth-for-office-2013-and-2016)」 (Office 2013 クライアント アプリと Office 2016 クライアント アプリでの先進認証のしくみ) を参照してください 
-- [Office 365 および Microsoft 365 を使用して電子メールを送信するように多機能機器またはアプリケーションを設定する方法](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-office-3)
+- [Microsoft 365 を使用して電子メールを送信するように多機能機器またはアプリケーションを設定する方法](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-office-3)

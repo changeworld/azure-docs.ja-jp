@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb376ebacdd76fdde30178e19fa3c3062e57da1c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e427a68751cc348a7b0024fb01402bd15ca87d2a
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267243"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705726"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Azure Active Directory の Enterprise State Roaming の設定のトラブルシューティング
 
@@ -78,9 +78,9 @@ Enterprise State Roaming では、デバイスを Azure AD に登録する必要
 
 Azure Multi-Factor Authentication が構成されている場合、特定の条件下で Enterprise State Roaming がデータの同期に失敗する可能性があります。 このような場合の詳細については、サポート ドキュメント [KB3193683](https://support.microsoft.com/kb/3193683) を参照してください。 
 
-**潜在的な問題**:お使いのデバイスが Azure Active Directory ポータルで Multi-Factor Authentication を要求するように構成されている場合、パスワードを使用して Windows 10 デバイスのサインインしている状態で設定の同期が失敗することがあります。 このタイプの Multi-Factor Authentication 構成は、Azure 管理者アカウントの保護を意図したものです。 管理者ユーザーは、Microsoft Passport for Work の PIN を使用するか、他の Azure サービス (Office 365 など) にアクセスしている状態で Multi-Factor Authentication を行い、Windows 10 デバイスにサインインすることで同期を実行できる場合があります。
+**潜在的な問題**:お使いのデバイスが Azure Active Directory ポータルで Multi-Factor Authentication を要求するように構成されている場合、パスワードを使用して Windows 10 デバイスのサインインしている状態で設定の同期が失敗することがあります。 このタイプの Multi-Factor Authentication 構成は、Azure 管理者アカウントの保護を意図したものです。 管理者ユーザーは、Microsoft Passport for Work の PIN を使用するか、他の Azure サービス (Microsoft 365 など) にアクセスしている状態で Multi-Factor Authentication を行い、Windows 10 デバイスにサインインすることで同期を実行できる場合があります。
 
-**潜在的な問題**:管理者が Active Directory フェデレーション サービス Multi-Factor Authentication 条件付きアクセス ポリシーを構成し、デバイスのアクセス トークンの有効期限が切れている場合、同期が失敗することがあります。 一度サインアウトしてから Microsoft Passport for Work の PIN を使用してサインインし直すか、または他の Azure サービス (Office 365 など) にアクセスしている状態で Multi-Factor Authentication を行ってください。
+**潜在的な問題**:管理者が Active Directory フェデレーション サービス Multi-Factor Authentication 条件付きアクセス ポリシーを構成し、デバイスのアクセス トークンの有効期限が切れている場合、同期が失敗することがあります。 一度サインアウトしてから Microsoft Passport for Work の PIN を使用してサインインし直すか、または他の Azure サービス (Microsoft 365 など) にアクセスしている状態で Multi-Factor Authentication を行ってください。
 
 ### <a name="event-viewer"></a>イベント ビューアー
 

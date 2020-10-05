@@ -1,18 +1,18 @@
 ---
 title: Azure HDInsight のサービス開始時のポートの競合
-description: Azure HDInsight クラスターと対話するときの問題のトラブルシューティング手順と可能な解決策。
+description: Azure HDInsight クラスターと対話するときのポートの競合問題のトラブルシューティング手順と可能な解決策。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/23/2020
-ms.openlocfilehash: 4cb0d464a82d8da0a09f5391eb1d06dfacd84290
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0d39f31e9d52359d0c91317280a7f8db06c1c1b0
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76776048"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530966"
 ---
 # <a name="scenario-port-conflict-when-starting-services-in-azure-hdinsight"></a>シナリオ:Azure HDInsight のサービス開始時のポートの競合
 
@@ -26,7 +26,7 @@ ms.locfileid: "76776048"
 
 ポートの競合が存在します。
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解像度
 
 ### <a name="method-1"></a>方法 1
 

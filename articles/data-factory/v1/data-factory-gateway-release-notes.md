@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: d8324b0b861829b02b589f8145121559114b7435
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 0538777cadf7935a6684932a17fadc10849518d8
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89289581"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89490090"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Data Management Gateway のリリース ノート
 > [!NOTE]
@@ -198,7 +198,7 @@ Data Management Gateway とその使用方法の詳細については、次の�
 
 *  構成マネージャーでの診断ツールのサポート
 *  Azure Data Factory の表形式データ ソースのテーブル列のサポート
-*  Azure Data Factory の SQL DW のサポート
+*  Azure Data Factory の Azure Synapse Analytics のサポート
 *  Azure Data Factory の BlobSource と FileSource の個別サポート
 *  CopyBehavior のサポート – Azure Data Factory のバイナリ コピーを含む BlobSink と FileSink の MergeFiles、PreserveHierarchy、および FlattenHierarchy
 *  Azure Data Factory のコピー アクティビティ レポートの進行のサポート

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9b5a2bb939384ff06423693c8e4a788b80f3908c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e47f82323919f4fec3f28ec2f7698d734ab72ac6
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85318894"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89490124"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON スクリプトのリファレンス
 > [!NOTE]
@@ -377,7 +377,7 @@ structure:
 | &nbsp; |Azure Data Lake Store |
 | &nbsp; |[Azure Cosmos DB](#azure-cosmos-db) |
 | &nbsp; |[Azure SQL Database](#azure-sql-database) |
-| &nbsp; |[Azure SQL Data Warehouse](#azure-sql-data-warehouse) |
+| &nbsp; |[Azure Synapse Analytics (旧称 SQL Data Warehouse)](#azure-synapse-analytics) |
 | &nbsp; |[Azure Cognitive Search](#azure-cognitive-search) |
 | &nbsp; |[Azure Table Storage](#azure-table-storage) |
 | **データベース** |[Amazon Redshift](#amazon-redshift) |
@@ -1100,14 +1100,14 @@ Azure SQL Database にデータをコピーする場合は、コピー アクテ
 
 詳細については、[Azure SQL コネクタ](data-factory-azure-sql-connector.md#copy-activity-properties)に関する記事を参照してください。
 
-## <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
+## <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
 ### <a name="linked-service"></a>リンクされたサービス
-Azure SQL Data Warehouse のリンクされたサービスを定義するには、リンクされたサービスの **type** を **AzureSqlDW** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
+Azure Synapse Analytics のリンクされたサービスを定義するには、リンクされたサービスの **type** を **AzureSqlDW** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| connectionString |connectionString プロパティの Azure SQL Data Warehouse インスタンスに接続するために必要な情報を指定します。 |はい |
+| connectionString |connectionString プロパティには、Azure Synapse Analytics インスタンスに接続するために必要な情報を指定します。 |はい |
 
 
 
@@ -1125,14 +1125,14 @@ Azure SQL Data Warehouse のリンクされたサービスを定義するには�
 }
 ```
 
-詳細については、[Azure SQL Data Warehouse コネクタ](data-factory-azure-sql-data-warehouse-connector.md#linked-service-properties)に関する記事を参照してください。
+詳細については、[Azure Synapse Analytics のコネクタ](data-factory-azure-sql-data-warehouse-connector.md#linked-service-properties)に関する記事を参照してください。
 
 ### <a name="dataset"></a>データセット
-Azure SQL Data Warehouse データセットを定義するには、データセットの **type** を **AzureSqlDWTable** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
+Azure Synapse Analytics データセットを定義するには、データセットの **type** を **AzureSqlDWTable** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| tableName |リンクされたサービスが参照する Azure SQL Data Warehouse データベースのテーブルまたはビューの名前です。 |はい |
+| tableName |リンクされたサービスが参照する Azure Synapse Analytics データベースのテーブルまたはビューの名前です。 |はい |
 
 #### <a name="example"></a>例
 
@@ -1161,10 +1161,10 @@ Azure SQL Data Warehouse データセットを定義するには、データセ�
 }
 ```
 
-詳細については、[Azure SQL Data Warehouse コネクタ](data-factory-azure-sql-data-warehouse-connector.md#dataset-properties)に関する記事を参照してください。
+詳細については、[Azure Synapse Analytics のコネクタ](data-factory-azure-sql-data-warehouse-connector.md#dataset-properties)に関する記事を参照してください。
 
-### <a name="sql-dw-source-in-copy-activity"></a>コピー アクティビティの SQL DW ソース
-Azure SQL Data Warehouse からデータをコピーする場合は、コピー アクティビティの **source type** を **SqlDWSource** に設定し、**source** セクションで以下のプロパティを指定します。
+### <a name="azure-synapse-analytics-source-in-copy-activity"></a>コピー アクティビティでの Azure Synapse Analytics ソース
+Azure Synapse Analytics からデータをコピーする場合は、コピー アクティビティの **source type** を **SqlDWSource** に設定し、**source** セクションで以下のプロパティを指定します。
 
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
@@ -1216,15 +1216,15 @@ Azure SQL Data Warehouse からデータをコピーする場合は、コピー 
 }
 ```
 
-詳細については、[Azure SQL Data Warehouse コネクタ](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)に関する記事を参照してください。
+詳細については、[Azure Synapse Analytics のコネクタ](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)に関する記事を参照してください。
 
-### <a name="sql-dw-sink-in-copy-activity"></a>コピー アクティビティの SQL DW シンク
-Azure SQL Data Warehouse にデータをコピーする場合は、コピー アクティビティの **sink type** を **SqlDWSink** に設定し、**sink** セクションで以下のプロパティを指定します。
+### <a name="azure-synapse-analytics-sink-in-copy-activity"></a>コピー アクティビティでの Azure Synapse Analytics シンク
+Azure Synapse Analytics にデータをコピーする場合は、コピー アクティビティの **sink type** を **SqlDWSink** に設定し、**sink** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | sqlWriterCleanupScript |特定のスライスのデータを消去するコピー アクティビティのクエリを指定します。 |クエリ ステートメント。 |いいえ |
-| allowPolyBase |BULKINSERT メカニズムではなく PolyBase (該当する場合) を使用するかどうかを示します。 <br/><br/> **SQL Data Warehouse へのデータ読み込みには、PolyBase の使用をお勧めします。** |True <br/>False (既定値) |いいえ |
+| allowPolyBase |BULKINSERT メカニズムではなく PolyBase (該当する場合) を使用するかどうかを示します。 <br/><br/> **Synapse Analytics へのデータ読み込みには、PolyBase の使用をお勧めします。** |True <br/>False (既定値) |いいえ |
 | polyBaseSettings |**allowPolybase** プロパティが **true** に設定されているときに指定できるプロパティのグループ。 |&nbsp; |いいえ |
 | rejectValue |クエリが失敗するまでに拒否できる行の数または割合を指定します。 <br/><br/>PolyBase の拒否オプションの詳細については、「 **CREATE EXTERNAL TABLE (Transact-SQL)** 」の「 [Arguments (引数)](https://msdn.microsoft.com/library/dn935021.aspx) 」をご覧ください。 |0 (既定値)、1、2、… |いいえ |
 | rejectType |rejectValue オプションをリテラル値と割合のどちらで指定するかを指定します。 |Value (既定値)、Percentage |いいえ |
@@ -1277,7 +1277,7 @@ Azure SQL Data Warehouse にデータをコピーする場合は、コピー ア
 }
 ```
 
-詳細については、[Azure SQL Data Warehouse コネクタ](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)に関する記事を参照してください。
+詳細については、[Azure Synapse Analytics のコネクタ](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)に関する記事を参照してください。
 
 ## <a name="azure-cognitive-search"></a>Azure Cognitive Search
 
@@ -4826,7 +4826,7 @@ Web テーブルからデータをコピーする場合は、コピー アクテ
 | [Azure Batch](#azure-batch) |[.NET カスタム アクティビティ](#net-custom-activity) |
 | [Azure Machine Learning](#azure-machine-learning) | [Machine Learning バッチ実行アクティビティ](#machine-learning-batch-execution-activity)、[Machine Learning 更新リソース アクティビティ](#machine-learning-update-resource-activity) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics) |[Data Lake Analytics U-SQL](#data-lake-analytics-u-sql-activity) |
-| [Azure SQL Database](#azure-sql-database)、[Azure SQL Data Warehouse](#azure-sql-data-warehouse)、[SQL Server](#sql-server-stored-procedure) |[ストアド プロシージャ](#stored-procedure-activity) |
+| [Azure SQL Database](#azure-sql-database)、[Azure Synapse Analytics](#azure-synapse-analytics)、[SQL Server](#sql-server-stored-procedure) |[ストアド プロシージャ](#stored-procedure-activity) |
 
 ## <a name="on-demand-azure-hdinsight-cluster"></a>オンデマンド Azure HDInsight クラスター
 Azure Data Factory サービスは、データを処理するための Windows/Linux ベースのオンデマンド HDInsight クラスターを自動的に作成します。 このクラスターはクラスターに関連付けられているストレージ アカウント (JSON の linkedServiceName プロパティ) と同じリージョンで作成されます。 このリンクされたサービスでは、変換アクティビティとして、[.NET カスタム アクティビティ](#net-custom-activity)、[Hive アクティビティ](#hdinsight-hive-activity)、[Pig アクティビティ](#hdinsight-pig-activity)、[MapReduce アクティビティ](#hdinsight-mapreduce-activity)、Hadoop ストリーミング アクティビティ、[Spark アクティビティ](#hdinsight-spark-activity)を実行することができます。
@@ -5066,7 +5066,7 @@ SQL Server のリンクされたサービスを作成し、 [ストアド プロ
 [HDInsight Spark アクティビティ](#hdinsight-spark-activity) | Data Factory パイプラインの HDInsight Spark アクティビティでは、独自の HDInsight クラスターで Spark プログラムを実行します。
 [Machine Learning バッチ実行アクティビティ](#machine-learning-batch-execution-activity) | Azure Data Factory を使用すると、公開された Azure Machine Learning Web サービスを利用して予測分析を行うパイプラインを簡単に作成できます。 Azure Data Factory パイプラインでバッチ実行アクティビティを使用すると、Machine Learning Web サービスを呼び出して、データの予測を一括で行うことができます。
 [Machine Learning 更新リソース アクティビティ](#machine-learning-update-resource-activity) | 時間の経過と共に、Machine Learning スコア付け実験の予測モデルには、新しい入力データセットを使用した再トレーニングが必要になります。 再トレーニングが完了したら、再トレーニング済みの Machine Learning モデルでスコア付け Web サービスを更新する必要があります。 更新リソース アクティビティを使用して、新しくトレーニングを行ったモデルで Web サービスを更新します。
-[ストアド プロシージャ アクティビティ](#stored-procedure-activity) | Data Factory パイプラインでストアド プロシージャ アクティビティを使用して、次のいずれかのデータ ストアでストアド プロシージャを呼び出すことができます。企業または Azure VM 内の Azure SQL Database、Azure SQL Data Warehouse、SQL Server データベース。
+[ストアド プロシージャ アクティビティ](#stored-procedure-activity) | Data Factory パイプラインでストアド プロシージャ アクティビティを使用して、次のいずれかのデータ ストアでストアド プロシージャを呼び出すことができます。企業または Azure VM 内の Azure SQL Database、Azure Synapse Analytics、SQL Server データベース。
 [Data Lake Analytics U-SQL アクティビティ](#data-lake-analytics-u-sql-activity) | Data Lake Analytics U-SQL アクティビティは、Azure Data Lake Analytics クラスターで U-SQL スクリプトを実行します。
 [.NET カスタム アクティビティ](#net-custom-activity) | Data Factory でサポートされていない方法でデータを変換する必要がある場合は、独自のデータ処理ロジックを使用するカスタム アクティビティを作成し、パイプラインでそのアクティビティを使用できます。 Azure Batch サービスまたは Azure HDInsight クラスターを使用して実行するようにカスタム .NET アクティビティを構成できます。
 
@@ -5541,18 +5541,18 @@ U-SQL アクティビティの JSON 定義では、以下のプロパティを�
 
 - SQL Server
 - Azure SQL データベース
-- Azure SQL Data Warehouse
+- Azure Synapse Analytics
 
 アクティビティの種類を SqlServerStoredProcedure に設定する場合、**typeProperties** セクションで以下のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| storedProcedureName |出力テーブルに使用するリンク サービスで示される Azure SQL Database または Azure SQL Data Warehouse のストアド プロシージャ名を指定します。 |はい |
+| storedProcedureName |出力テーブルに使用するリンク サービスで示される Azure SQL Database または Azure Synapse Analytics のストアド プロシージャ名を指定します。 |はい |
 | storedProcedureParameters |ストアド プロシージャのパラメーター値を指定します。 パラメーターで null を渡す必要がある場合は、構文として "param1": null (すべて小文字) を使用します。 このプロパティの使用方法については、次のサンプルをご覧ください。 |いいえ |
 
 入力データセットを指定した場合、ストアド プロシージャ アクティビティの実行に使用できる ("準備完了" 状態である) 必要があります。 ストアド プロシージャで入力データセットをパラメーターとして使用することはできません。 入力データセットは、ストアド プロシージャ アクティビティを開始する前に、依存関係の確認にのみ使用されます。 ストアド プロシージャ アクティビティの出力データセットを指定する必要があります。
 
-出力データセットでは、ストアド プロシージャ アクティビティの**スケジュール** (毎時、毎週、毎月など) を指定します。 出力データセットでは、ストアド プロシージャを実行する、Azure SQL Database、Azure SQL Data Warehouse、または SQL Server Database を表す**リンクされたサービス**を使用する必要があります。 出力データセットは、パイプラインの別のアクティビティ ([連鎖するアクティビティ](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)) による後続処理のために、ストアド プロシージャの結果を渡す 1 つの方法として使用できます。 ただし、Data Factory では、ストアド プロシージャの出力をこのデータセットに自動的に書き込むわけではありません。 出力データセットが参照する SQL テーブルへの書き込みは、ストアド プロシージャが実行します。 出力データセットに**ダミー データセット**を指定できる場合もあります。ダミー データセットは、ストアド プロシージャ アクティビティを実行するスケジュールの指定にのみ使用されます。
+出力データセットでは、ストアド プロシージャ アクティビティの**スケジュール** (毎時、毎週、毎月など) を指定します。 出力データセットでは、ストアド プロシージャを実行する Azure SQL Database、Azure Synapse Analytics、または SQL Server Database を表す**リンクされたサービス**を使用する必要があります。 出力データセットは、パイプラインの別のアクティビティ ([連鎖するアクティビティ](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)) による後続処理のために、ストアド プロシージャの結果を渡す 1 つの方法として使用できます。 ただし、Data Factory では、ストアド プロシージャの出力をこのデータセットに自動的に書き込むわけではありません。 出力データセットが参照する SQL テーブルへの書き込みは、ストアド プロシージャが実行します。 出力データセットに**ダミー データセット**を指定できる場合もあります。ダミー データセットは、ストアド プロシージャ アクティビティを実行するスケジュールの指定にのみ使用されます。
 
 ### <a name="json-example"></a>JSON の例
 

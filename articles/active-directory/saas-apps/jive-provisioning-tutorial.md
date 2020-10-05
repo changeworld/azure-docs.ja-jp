@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: fec959ee34f9491b6510390d4b390e652690897e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 351c7e21bfe59b22f451adddad8fed220c218358
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547088"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983123"
 ---
 # <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>チュートリアル:Jive を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -63,7 +63,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 1. **[プロビジョニング モード]** を **[自動]** に設定します。 
 
-    ![プロビジョニング](./media/jive-provisioning-tutorial/provisioning.png)
+    ![スクリーンショットは、Jive のプロビジョニング ページを示しています。[プロビジョニング モード] は [自動] に設定され、ユーザーが設定できるその他の値が表示されています。](./media/jive-provisioning-tutorial/provisioning.png)
 
 1. **[管理者資格情報]** セクションに次の構成設定を指定します。
    

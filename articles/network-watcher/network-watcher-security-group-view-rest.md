@@ -1,7 +1,7 @@
 ---
 title: ネットワーク セキュリティを分析する - セキュリティ グループ ビュー - Azure REST API
 titleSuffix: Azure Network Watcher
-description: この記事では、PowerShell を使用して、セキュリティ グループ ビューで仮想マシンのセキュリティを分析する方法について説明します。
+description: この記事では、Azure REST API を使用して、セキュリティ グループ ビューで仮想マシンのセキュリティを分析する方法について説明します。
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 466879daae65b8c7fa896b0ead417c8d5eb51e28
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 156da7504a1a5e2a704e52a783fcd3e437a59867
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084349"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986267"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>REST API を使用してセキュリティ グループ ビューで仮想マシンのセキュリティを分析する
 

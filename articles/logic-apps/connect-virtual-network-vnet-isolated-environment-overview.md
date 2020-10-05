@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/05/2020
-ms.openlocfilehash: f152283b1280cde2a26569b8acf10738e883e39e
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 86d647a79b7babc2780cb0db904e689f3916673f
+ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816025"
+ms.lasthandoff: 09/06/2020
+ms.locfileid: "89500387"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>統合サービス環境 (ISE) を使用して、Azure Logic Apps から Azure Virtual Network リソースにアクセスする
 
@@ -60,7 +60,7 @@ ISE にロジック アプリを作成して実行すると、マルチテナン
   * Azure Automation、Azure Key Vault、Azure Event Grid、および Azure Monitor ログ
   * FTP、SFTP-SSH、File System、および SMTP
   * SAP、IBM MQ、IBM DB2、および IBM 3270
-  * SQL Server、Azure SQL Data Warehouse、Azure Cosmos DB
+  * SQL Server、Azure Synapse Analytics、Azure Cosmos DB
   * AS2、X12、EDIFACT
 
   オンプレミスのシステムまたはデータ ソース用の ISE コネクタを使用できる場合は、ほぼ例外なく、[オンプレミスのデータ ゲートウェイ](../logic-apps/logic-apps-gateway-connection.md)を使用せずに、直接接続できます。 詳細については、このトピックの後の方の「[オンプレミス システムへのアクセス](#on-premises)」のセクションを参照してください。
@@ -142,7 +142,7 @@ ISE 内で実行されるロジック アプリ、組み込みトリガー、組
 
 ## <a name="integration-accounts-with-ise"></a>ISE での統合アカウント
 
-統合サービス環境 (ISE) の内部のロジック アプリで統合アカウントを使用できます。 ただし、これらの統合アカウントでは、リンクされているロジック アプリと "*同じ ISE*" を使用する必要があります。 ISE のロジック アプリは、同じ ISE にある統合アカウントのみを参照できます。 統合アカウントを作成すると、ご利用の統合アカウントの場所として、自分の ISE を選択できます。 統合アカウントと ISE に対する価格と課金のしくみについては、「[固定価格モデル](../logic-apps/logic-apps-pricing.md#fixed-pricing)」を参照してください。 価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)に関する記事を参照してください。
+統合サービス環境 (ISE) の内部のロジック アプリで統合アカウントを使用できます。 ただし、これらの統合アカウントでは、リンクされているロジック アプリと "*同じ ISE*" を使用する必要があります。 ISE のロジック アプリは、同じ ISE にある統合アカウントのみを参照できます。 統合アカウントを作成すると、ご利用の統合アカウントの場所として、自分の ISE を選択できます。 統合アカウントと ISE に対する価格と課金のしくみについては、「[固定価格モデル](../logic-apps/logic-apps-pricing.md#fixed-pricing)」を参照してください。 価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)に関する記事を参照してください。 制限の詳細については、「[統合アカウントの制限](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

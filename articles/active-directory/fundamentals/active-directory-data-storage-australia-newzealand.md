@@ -1,6 +1,6 @@
 ---
-title: オーストラリア国内のお客様の識別データの保存 - Azure AD
-description: Azure Active Directory によってオーストラリア国内のお客様の識別関連データがどこに保存されるかについて説明します。
+title: オーストラリアとニュージーランドの顧客データの保存 - Azure AD
+description: Azure Active Directory によってオーストラリアとニュージーランド国内の顧客関連データがどこに保存されるかについて説明します。
 services: active-directory
 author: ajburnle
 manager: daveba
@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.date: 7/21/2020
 ms.custom: it-pro, seodec18, references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: edc53152fe532a071de744db77d5c08d799c445a
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 0bbd31bf47c7ce7ae75a6934da0ea769698ef187
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318524"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565109"
 ---
 # <a name="customer-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>Azure Active Directory でのオーストラリアとニュージーランドの顧客データの保存
 
-Azure Active Directory (Azure AD) の顧客データは、お客様が Microsoft オンライン サービスにサインアップしたときに指定した国に基づいて地理的な場所に保存されます。 Microsoft オンライン サービスには、Office 365 や Azure があります。 
+Azure Active Directory (Azure AD) の顧客データは、お客様が Microsoft オンライン サービスにサインアップしたときに指定した国に基づいて地理的な場所に保存されます。 Microsoft オンライン サービスには、Microsoft 365 や Azure があります。 
 
-Azure AD およびその他の Microsoft サービスのデータが配置される場所の詳細については、Microsoft トラスト センターの[お客様のデータの場所](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)に関するセクションを参照してください。
+Azure AD およびその他の Microsoft サービスのデータが配置される場所の詳細については、Microsoft セキュリティ センターの[お客様のデータの場所](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)に関するセクションを参照してください。
 
 2020 年 2 月 26 日から、Microsoft は、オーストラリアまたはニュージーランドの請求先住所を含む新しいテナントについて、Azure AD の顧客データをオーストラリアのデータセンター内に格納し始めました。 2020 年 5 月 1 日から 2020 年 10 月 31 日までの期間に、Microsoft は、オーストラリアまたはニュージーランドの請求先住所が保存された既存のテナントをオーストラリアのデータセンターに移行します。お客様に操作の必要ありません。 移行プロセスは、お客様のダウンタイムを必要とせず、移行中、テナントの機能に影響を与えません。
 

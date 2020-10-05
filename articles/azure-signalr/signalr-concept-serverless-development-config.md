@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
 ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 0b5056f221fdd6036e5f6dff3d69a21c3a2dc27e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ce42c0ec75ebed52311fe6aa026f794d6c2f7584
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88928566"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89513944"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure SignalR Service を使用した Azure Functions の開発と構成
 
@@ -53,6 +53,8 @@ SignalR Service から送信されたメッセージを処理するには、"*Si
 
 詳細については、"[*SignalR トリガー*" バインドのリファレンス](../azure-functions/functions-bindings-signalr-service-trigger.md)を参照してください。
 
+また、クライアントからのメッセージが存在する関数がサービスによってトリガーされるように、関数エンドポイントをアップストリームとして構成する必要もあります。 アップストリームを構成する方法の詳細については、この[ドキュメント](concept-upstream.md)を参照してください。
+
 ### <a name="sending-messages-and-managing-group-membership"></a>メッセージの送信とグループ メンバーシップの管理
 
 *SignalR* 出力バインドを使用して、Azure SignalR Service に接続したクライアントにメッセージを送信します。 すべてのクライアントにメッセージをブロードキャストすることも、特定のユーザー ID で認証されたか、特定のグループに追加されたクライアントのサブセットにそれらを送信することもできます。
@@ -69,7 +71,7 @@ SignalR には「ハブ」の概念があります。 各クライアント接�
 
 クラス ベース モデルは C# 専用です。 クラス ベース モデルでは、一貫性のある SignalR サーバー側プログラミング エクスペリエンスを得ることができます。 これには、次の機能があります。
 
-* 構成作業が少ない: クラス名は `HubName` として使用され、メソッド名は `Event` として使用され、`Category` はメソッド名にしたがって自動的に決定されます。
+* 構成作業が少ない:クラス名は `HubName` として使用され、メソッド名は `Event` として使用され、`Category` はメソッド名にしたがって自動的に決定されます。
 * 自動パラメーター バインディング: `ParameterNames` も属性 `[SignalRParameter]` も必要ありません。 パラメーターは、Azure Function メソッドの引数に順番に自動的にバインドされます。
 * 便利な出力と negotiate エクスペリエンス。
 
@@ -109,7 +111,7 @@ public class SignalRTestHub : ServerlessHub
 
 ### <a name="define-hub-method"></a>ハブ メソッドを定義する
 
-すべてのハブ メソッドは、`[SignalRTrigger]` 属性を持っている**必要があり**、パラメーターなしのコンストラクターを使用する**必要があります**。 **メソッド名**は、パラメーター **イベント**として扱われます。
+すべてのハブ メソッドには、`[SignalRTrigger]` 属性で装飾された `InvocationContext` の引数が必要であり、パラメーターなしのコンストラクターを使用する**必要があります**。 **メソッド名**は、パラメーター **イベント**として扱われます。
 
 既定では、メソッド名以外の `category=messages` は次のいずれかの名前になります。
 
@@ -202,7 +204,11 @@ SignalR クライアント SDK を使用する方法の詳細については、�
 
 ### <a name="sending-messages-from-a-client-to-the-service"></a>クライアントからサービスへのメッセージの送信
 
-SignalR SDK では、クライアント アプリケーションが SignalR ハブでバックエンド ロジックを呼び出すことができますが、この機能は、Azure Functions で SignalR Service を使用するときに、まだサポートされていません。 HTTP 要求を使用して Azure Functions を呼び出します。
+SignalR リソースに対して[アップストリーム](concept-upstream.md)を構成している場合は、任意の SignalR クライアントを使用して、クライアントから Azure Functions にメッセージを送信できます。 次に JavaScript の例を示します。
+
+```javascript
+connection.send('method1', 'arg1', 'arg2');
+```
 
 ## <a name="azure-functions-configuration"></a>Azure Functions の構成
 

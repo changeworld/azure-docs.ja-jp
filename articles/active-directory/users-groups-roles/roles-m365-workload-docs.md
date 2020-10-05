@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14d5b458aeccd2587f24b30548c4b5e76912bce1
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6060bc286024183661024abd56567eeefed76430
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798280"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053550"
 ---
 # <a name="administrator-roles-for-microsoft-365-services"></a>Microsoft 365 サービスの管理者ロール
 
@@ -29,10 +29,10 @@ Microsoft 365 のすべての製品は、Azure AD の管理者ロールで管理
 
 Microsoft 365 サービス | ロール コンテンツ | API コンテンツ
 ---------------------- | ------------------ | -----------------
-Office 365 と Microsoft 365 のビジネス プランでの管理者ロール | [Office 365 の管理者ロール](/office365/admin/add-users/about-admin-roles?view=o365-worldwide) | 使用不可
+Office 365 と Microsoft 365 のビジネス プランでの管理者ロール | [Microsoft 365 管理者ロール](/office365/admin/add-users/about-admin-roles?view=o365-worldwide) | 使用不可
 Azure Active Directory (Azure AD) および Azure AD Identity Protection| [Azure AD 管理者ロール](directory-assign-admin-roles.md) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[ロールの割り当てのフェッチ](/graph/api/directoryrole-list?view=graph-rest-1.0)
 Exchange Online| [Exchange のロール ベースのアクセス制御](/exchange/understanding-role-based-access-control-exchange-2013-help) |  [PowerShell for Exchange](/powershell/module/exchange/role-based-access-control/add-managementroleentry?view=exchange-ps)<br>[ロールの割り当てのフェッチ](/powershell/module/exchange/role-based-access-control/get-rolegroup?view=exchange-ps)
-SharePoint Online | [Azure AD 管理者ロール](directory-assign-admin-roles.md)<br>[Office 365 での SharePoint 管理者ロールについて](/sharepoint/sharepoint-admin-role) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[ロールの割り当てのフェッチ](/graph/api/directoryrole-list?view=graph-rest-1.0)
+SharePoint Online | [Azure AD 管理者ロール](directory-assign-admin-roles.md)<br>[Microsoft 365 での SharePoint 管理者ロール](/sharepoint/sharepoint-admin-role)について | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[ロールの割り当てのフェッチ](/graph/api/directoryrole-list?view=graph-rest-1.0)
 チーム/Skype for Business | [Azure AD 管理者ロール](directory-assign-admin-roles.md) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[ロールの割り当てのフェッチ](/graph/api/directoryrole-list?view=graph-rest-1.0)
 セキュリティ/コンプライアンス センター (Office 365 の Advanced Threat Protection、Exchange Online Protection、Information Protection) | [Office 365 の管理者ロール](/office365/SecurityCompliance/permissions-in-the-security-and-compliance-center) | [Exchange PowerShell](/powershell/module/exchange/role-based-access-control/add-managementroleentry?view=exchange-ps)<br>[ロールの割り当てのフェッチ](/powershell/module/exchange/role-based-access-control/get-rolegroup?view=exchange-ps)
 セキュリティ スコア | [Azure AD 管理者ロール](directory-assign-admin-roles.md) | [Graph API](/graph/api/overview?view=graph-rest-1.0)<br>[ロールの割り当てのフェッチ](/graph/api/directoryrole-list?view=graph-rest-1.0)

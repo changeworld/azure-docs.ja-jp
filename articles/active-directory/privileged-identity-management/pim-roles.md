@@ -14,12 +14,12 @@ ms.date: 05/11/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 862b304d1f36567aecd4452f91f31d1a50c3198a
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 0403fe3cf0bf8cfaf9c722edadbecd2fee61cb46
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782483"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056287"
 ---
 # <a name="roles-you-cant-manage-in-privileged-identity-management"></a>Privileged Identity Management で管理できないロール
 
@@ -35,9 +35,9 @@ Privileged Identity Management では、次の従来のサブスクリプショ�
 
 従来のサブスクリプション管理者ロールの詳細については、[従来のサブスクリプション管理者ロール、Azure ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md)に関する記事を参照してください。
 
-## <a name="what-about-office-365-admin-roles"></a>Office 365 の管理者ロールの場合
+## <a name="what-about-microsoft-365-admin-roles"></a>Microsoft 365 管理者ロールについて
 
-Exchange 管理者や SharePoint 管理者など、Azure AD ロールと管理者ポータルのエクスペリエンスでは、すべての Office365 ロールがサポートされていますが、Exchange RBAC または SharePoint RBAC 内の特定のロールはサポートされていません。 これらの Office 365 サービスの詳細については、[Office 365 の管理者ロール](/office365/admin/add-users/about-admin-roles)に関するページを参照してください。
+Exchange 管理者や SharePoint 管理者など、Azure AD ロールと管理者ポータルのエクスペリエンスでは、すべての Microsoft 365 のロールがサポートされていますが、Exchange RBAC および SharePoint RBAC 内の特定のロールはサポートされていません。 これらの Microsoft 365 サービスの詳細については、[Microsoft 365 の管理者ロール](/office365/admin/add-users/about-admin-roles)に関するページをご覧ください。
 
 > [!NOTE]
 > SharePoint 管理者ロール、デバイス管理者ロール、および Microsoft セキュリティ センターとコンプライアンス センターにアクセスしようとしているすべてのロールの対象ユーザーは、ロールをアクティブ化した後、最大で数時間の遅延に遭遇する可能性があります。 これらのチームと協力して問題の解決に取り組んでいます。

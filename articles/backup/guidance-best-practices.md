@@ -3,12 +3,12 @@ title: ガイダンスとベスト プラクティス
 description: クラウドとオンプレミスのワークロードをクラウドにバックアップするためのベストプラクティスとガイダンスについて説明します
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: db6eec5351a9015b136226610d2bb3deb8bdc651
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f999c568dda6eae60f3060cc4672eccaf06541c1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000364"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985519"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>クラウドとオンプレミスのワークロードをクラウドにバックアップする
 
@@ -48,7 +48,7 @@ Azure Backup では、さまざまなワークロード (オンプレミスと�
 
 ### <a name="management-plane"></a>管理プレーン
 
-* **アクセス制御** – Recovery Services コンテナーには管理機能が用意されており、Azure portal、SDK、CLI、REST API などからアクセスできます。 これは RBAC の境界でもあり、バックアップへのアクセスを、承認されたバックアップ管理者のみに制限するオプションも用意されています。
+* **アクセスの制御** – コンテナー (Recovery Services コンテナーとバックアップ コンテナー) により、管理機能が提供されます。これには、Azure portal、バックアップ センター、コンテナー ダッシュボード、SDK、CLI、さらに REST API を使用してアクセスできます。 これは RBAC の境界でもあり、バックアップへのアクセスを、承認されたバックアップ管理者のみに制限するオプションも用意されています。
 
 * **ポリシー管理** – 各コンテナー内の Azure Backup ポリシーでは、バックアップをトリガーすべきタイミングやバックアップを保持する必要がある期間を定義します。 また、これらのポリシーを管理して、複数の項目に適用することもできます。
 
@@ -58,7 +58,7 @@ Azure Backup では、さまざまなワークロード (オンプレミスと�
 
 ## <a name="vault-considerations"></a>コンテナーに関する考慮事項
 
-Azure Backup では、Recovery Services コンテナーを使用して、バックアップを調整および管理しています。 また、コンテナーを使用してバックアップ データを格納しています。 有効なコンテナー設計によって、組織はビジネスの優先順位が維持されるように Azure のバックアップ資産を整理および管理するための構造を確立できます。 コンテナーを作成する場合は、次のガイドラインを考慮してください。  
+Azure Backup では、コンテナー (Recovery Services コンテナーとバックアップ コンテナー) を使用して、バックアップを調整および管理しています。 また、コンテナーを使用してバックアップ データを格納しています。 有効なコンテナー設計によって、組織はビジネスの優先順位が維持されるように Azure のバックアップ資産を整理および管理するための構造を確立できます。 コンテナーを作成する場合は、次のガイドラインを考慮してください。  
 
 ### <a name="align-to-subscription-design-strategy"></a>サブスクリプションの設計戦略に合わせる
 
@@ -71,7 +71,8 @@ Azure Backup では、Recovery Services コンテナーを使用して、バッ�
 * ワークロードがすべて 1 つのサブスクリプションと 1 つのリソースで管理されている場合は、1 つのコンテナーを使用してバックアップ資産を監視および管理できます。
 
 * ワークロードが複数のサブスクリプションに分散している場合は、複数のコンテナー (サブスクリプションごとに 1 つまたは複数) を作成できます。
-  * すべてのコンテナー、サブスクリプション、およびテナントにわたって操作アクティビティの監視を簡略化する場合は、バックアップ エクスプローラーとレポートを使用できます。 集約ビューを取得するには、[こちら](monitor-azure-backup-with-backup-explorer.md)を参照してください。
+  * バックアップ センターでは、Backup に関連するすべてのタスクを 1 つのウィンドウで管理できます。 [こちら]()を参照してください。
+  * ブック テンプレートを使用して、ビューをカスタマイズできます。 バックアップ エクスプローラーは、Azure VM 用のそのようなテンプレートの 1 つです。 [こちら](monitor-azure-backup-with-backup-explorer.md)を参照してください。
   * コンテナー間で一貫したポリシーが必要な場合は、Azure policy を使用して、複数のコンテナーにバックアップ ポリシーを伝達できます。 ['deployifnotexists'](../governance/policy/concepts/effects.md#deployifnotexists) 効果を使用して複数のコンテナーにバックアップ ポリシーを伝達するカスタムの [Azure Policy 定義](../governance/policy/concepts/definition-structure.md)を作成できます。 この Azure Policy 定義を特定のスコープ (サブスクリプションまたは RG) に[割り当てる](../governance/policy/assign-policy-portal.md)ことができ、それによって Azure Policy 割り当てのスコープ内にあるすべての Recovery Services コンテナーに "バックアップ ポリシー" リソースがデプロイされます。 バックアップ ポリシーの設定 (バックアップ頻度、保有期間など) は、Azure Policy 割り当てのパラメーターとしてユーザーが指定する必要があります。
 
 * 組織のフットプリントが増加するにつれ、次のような理由により、サブスクリプション間でワークロードを移動することが必要になる場合があります。バックアップ ポリシー別の配置、コンテナーの統合、コスト削減のための低い冗長性に基づいたトレードオフ (GRS から LRS への移行) です。  Azure Backup では、Recovery Services コンテナーを Azure のサブスクリプション間で移動することも、同じサブスクリプション内の別のリソース グループに移動することもできます。 [こちら](backup-azure-move-recovery-services-vault.md)を参照してください。

@@ -3,12 +3,12 @@ title: Azure Lighthouse と Azure Managed Applications
 description: Azure Lighthouse と Azure Managed Applications がさまざまなシナリオの実現にどのように役立つか、およびこれらを組み合わせて使用する方法について説明します。
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 81ff61a6d1b7487d3da0643bac3987589de46c1e
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 7fd8801fc714a0f0c245d27462e368602dc41eb5
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163426"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483849"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse と Azure Managed Applications
 
@@ -23,7 +23,7 @@ Azure Managed Applications と Azure Lighthouse はどちらも、サービス �
 
 [Azure Lighthouse](../overview.md) により、サービス プロバイダーはお客様のサブスクリプション (またはリソース グループ) でさまざまな管理タスクを直接実行できます。 このアクセスは、サービス プロバイダーが独自のテナントにサインインして、お客様のテナントに属するリソースにアクセスできる、論理プロジェクションによって達成されます。 お客様は、サービス プロバイダーに委任するサブスクリプションまたはリソース グループを決定でき、これらのリソースへのフル アクセスはお客様が保持します。 また、サービス プロバイダーのアクセス権をいつでも削除することができます。
 
-Azure Lighthouse を使用するために、お客様は [ARM テンプレートを展開する](../how-to/onboard-customer.md)か、[Azure Marketplace のマネージド サービス オファー](managed-services-offers.md)を使用して [Azure の委任されたリソース管理](azure-delegated-resource-management.md)にオンボードされます。 [パートナー ID をリンクする](../../cost-management-billing/manage/link-partner-id.md)ことで、顧客エンゲージメントへの影響を追跡できます。
+Azure Lighthouse を使用するために、お客様は [ARM テンプレートを展開する](../how-to/onboard-customer.md)か、[Azure Marketplace のマネージド サービス オファー](managed-services-offers.md)を使用して [Azure の委任されたリソース管理](azure-delegated-resource-management.md)にオンボードされます。 [パートナー ID をリンクする](../how-to/partner-earned-credit.md)ことで、顧客エンゲージメントへの影響を追跡し、パートナー獲得クレジットを受け取ることができます。
 
 Azure Lighthouse は通常、サービス プロバイダーがお客様の管理タスクを継続的に実行するときに使用されます。
 

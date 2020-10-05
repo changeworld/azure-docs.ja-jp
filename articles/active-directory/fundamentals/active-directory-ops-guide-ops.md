@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: edb35986fcfc0e8855fa712b519ee7a8ca2f0ed8
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 921a56dca8f1cda67e6f32458914fef4ac2d324c
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321958"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601311"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Azure Active Directory 一般的な運用ガイド リファレンス
 
@@ -125,9 +125,9 @@ Azure AD Connect および AD FS を監視するために組織は [Azure AD Con
 
 ### <a name="notifications"></a>通知
 
-Microsoft は、管理者に電子メール通知を送信して、サービスのさまざまな変更、必要な構成の更新、および管理者の介入が必要なエラーを通知します。 お客様は、通知の電子メールアドレスを設定して、すべての通知を確認して対処することができる適切なチームメンバーに通知を送信することが重要です。 [Office 365 メッセージ センター](/office365/admin/manage/message-center) に複数の受信者を追加し、通知 (Azure AD Connect Health 通知を含む) を配布リストまたは共有メールボックスに送信するように要求することをお勧めします。 メール アドレスを持つグローバル管理者アカウントが 1 つしかない場合は、メールに対応しているアカウントを少なくとも 2 つ構成してください。
+Microsoft は、管理者に電子メール通知を送信して、サービスのさまざまな変更、必要な構成の更新、および管理者の介入が必要なエラーを通知します。 お客様は、通知の電子メールアドレスを設定して、すべての通知を確認して対処することができる適切なチームメンバーに通知を送信することが重要です。 [メッセージ センター](/office365/admin/manage/message-center) に複数の受信者を追加し、通知 (Azure AD Connect Health 通知を含む) を配布リストまたは共有メールボックスに送信するように要求することをお勧めします。 メール アドレスを持つグローバル管理者アカウントが 1 つしかない場合は、メールに対応しているアカウントを少なくとも 2 つ構成してください。
 
-Azure AD によって使用される "差出人" アドレスは 2 つあります。<o365mc@email2.microsoft.com> は、Office 365 のメッセージ センターの通知に使用され、<azure-noreply@microsoft.com> 以下に関連する通知を送信します。
+Azure AD によって使用される "差出人" アドレスは 2 つあります。<o365mc@email2.microsoft.com> は、メッセージ センターの通知に使用され、<azure-noreply@microsoft.com> 以下に関連する通知を送信します。
 
 - [Azure AD アクセス レビュー](../governance/access-reviews-overview.md)
 - [Azure AD Connect Health](../hybrid/how-to-connect-health-operations.md#enable-email-notifications)
@@ -141,14 +141,14 @@ Azure AD によって使用される "差出人" アドレスは 2 つありま�
 | 通知の送信元 | 送信内容 | 確認する場所 |
 |:-|:-|:-|
 | 技術部連絡先 | 同期エラー | Azure portal - プロパティ ブレード |
-| Office 365 メッセージ センター | Identity Services および O365 バックエンド サービスのインシデントと低下の通知 | Office ポータル |
+| メッセージ センター | Identity Services および Microsoft 365 バックエンド サービスのインシデントと低下の通知 | Office ポータル |
 | Identity Protection の毎週のダイジェスト | Identity Protection のダイジェスト | Azure AD Identity Protection ブレード |
 | Azure AD Connect Health | アラート通知 | Azure Portal - Azure AD Connect Health ブレード |
 | エンタープライズ アプリケーションの通知 | 証明書の有効期限が近い場合、およびプロビジョニング エラーが発生したときの通知 | Azure portal - エンタープライズ アプリケーション ブレード (各アプリには独自のメール アドレス設定があります) |
 
 #### <a name="notifications-recommended-reading"></a>通知に関する推奨資料
 
-- [組織の住所、技術部連絡先、およびその他の情報を変更する - Office 365](/office365/admin/manage/change-address-contact-and-more)
+- [組織の住所、技術部連絡先、およびその他の情報を変更する](/office365/admin/manage/change-address-contact-and-more)
 
 ## <a name="operational-surface-area"></a>運用における外部からのアクセス
 

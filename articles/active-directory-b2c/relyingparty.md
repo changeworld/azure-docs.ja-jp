@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/17/2020
+ms.date: 09/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 40672ac958e84d816d4b582472ae04502a910c6a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2d00942331b7e6c881803af366d1c08e173462b3
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521265"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90023790"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -138,7 +138,7 @@ ms.locfileid: "88521265"
 | --------- | -------- | ----------- |
 | TelemetryEngine | はい | 値は `ApplicationInsights` である必要があります。 |
 | InstrumentationKey | はい | Application Insights 要素のインストルメンテーション キーを含む文字列。 |
-| DeveloperMode | はい | 指定できる値: `true` または `false`。 `true` であれば、Application Insights はパイプラインの処理を通じてテレメトリを迅速化します。 この設定は、開発に適していますが、大量に制約されています。詳細なアクティビティ ログは、カスタム ポリシーの開発のみを支援するように設計されています。 実稼働環境では開発モードを使わないでください。 ログは、開発中に ID プロバイダーとの間で送受信されるすべての要求を収集します。 実稼働環境で使う場合、開発者は、自分が所有する App Insights ログに PII (個人を特定できる情報) が収集されることに対して責任を追うことになります。 これらの詳細なログは、この値が `true` に設定されている場合のみ収集されます。|
+| DeveloperMode | はい | 指定できる値: `true` または `false`。 `true` であれば、Application Insights はパイプラインの処理を通じてテレメトリを迅速化します。 この設定は開発には適していますが、大量の場合は制約があります。 詳細なアクティビティ ログは、カスタム ポリシーの開発を支援することだけを目的として設計されています。 実稼働環境では開発モードを使わないでください。 ログは、開発中に ID プロバイダーとの間で送受信されるすべての要求を収集します。 実稼働環境で使う場合、開発者は、自分が所有する App Insights ログに PII (個人を特定できる情報) が収集されることに対して責任を追うことになります。 これらの詳細なログは、この値が `true` に設定されている場合のみ収集されます。|
 | ClientEnabled | はい | 指定できる値: `true` または `false`。 `true` とした場合、ページ ビューとクライアント側エラーを追跡するためのクライアント側スクリプトを Application Insights に送信します。 |
 | ServerEnabled | はい | 指定できる値: `true` または `false`。 `true` では、既存の UserJourneyRecorder JSON をカスタム イベントとして Application Insights に送信します。 |
 | TelemetryVersion | はい | 値は `1.0.0` である必要があります。 |
@@ -161,7 +161,7 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 
 **ContentDefinitionParameter** 要素には、次の属性が含まれています。
 
-| 属性 | Required | Description |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | 名前 | はい | キーと値のペアの名前。 |
 
@@ -171,13 +171,13 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 
 **TechnicalProfile** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Id | はい | 値は `PolicyProfile` である必要があります。 |
 
 **TechnicalProfile** には、次の属性が含まれています。
 
-| 要素 | 発生回数 | Description |
+| 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | 技術プロファイルの名前を含む文字列。 |
 | 説明 | 0:1 | 技術プロファイルの説明を含む文字列。 |
@@ -188,7 +188,7 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 
 **プロトコル** 要素には、次の属性が含まれています。
 
-| 属性 | Required | Description |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | 名前 | はい | 技術プロファイルの一部として使用される Azure AD B2C によってサポートされている有効なプロトコルの名前。 指定できる値: `OpenIdConnect` または `SAML2`。 `OpenIdConnect` 値は、OpenID 基盤の仕様に従って、OpenID Connect 1.0 プロトコルの標準を表します。 `SAML2` 値は、OASIS 仕様に従って、SAML 2.0 プロトコルの標準を表します。 |
 
@@ -196,9 +196,14 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 
 プロトコルが `SAML` である場合、メタデータ要素には次の要素が含まれます。
 
-| 属性 | 必須 | Description |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
+| IdpInitiatedProfileEnabled | いいえ | IDP Initiated フローがサポートされているかどうかを示します。 指定できる値: `true` または `false`(既定値)。 | 
 | XmlSignatureAlgorithm | いいえ | SAML 応答に署名するために Azure AD B2C で使用されるメソッド。 指定できる値: `Sha256`、`Sha384`、`Sha512`、または `Sha1`。 両方の側で同じ値の署名アルゴリズムを構成するようにします。 証明書でサポートされているアルゴリズムのみを使用してください。 SAML アサーションを構成するには、[SAML 発行者の技術プロファイルのメタデータ](saml-issuer-technical-profile.md#metadata)に関する記事を参照してください。 |
+| DataEncryptionMethod | No | Advanced Encryption Standard (AES) アルゴリズムを使用してデータを暗号化するために Azure AD B2C で使用される方法を示します。 このメタデータにより、SAML 応答内の `<EncryptedData>` 要素の値が制御されます。 可能な値: `Aes256` (既定)、`Aes192`、`Sha512`、または ` Aes128`。 |
+| KeyEncryptionMethod| No | データの暗号化に使用されたキーのコピーを暗号化するために Azure AD B2C で使用される方法を示します。 このメタデータにより、SAML 応答内の `<EncryptedKey>` 要素の値が制御されます。 使用可能な値: ` Rsa15` (既定) - RSA 公開鍵暗号化標準 (PKCS) バージョン 1.5 アルゴリズム、` RsaOaep` - RSA OAEP (Optimal Asymmetric Encryption Padding) 暗号化アルゴリズム。 |
+| UseDetachedKeys | No |  指定できる値: `true` または `false` (既定値)。 値が `true` に設定されている場合、暗号化されたアサーションの形式が変わります。 デタッチされたキーを使用すると、暗号化されたアサーションが EncryptedData ではなく、EncrytedAssertion の子として追加されます。 |
+| WantsSignedResponses| No | Azure AD B2C が SAML 応答の `Response` セクションに署名するかどうかを示します。 指定できる値: `true` (既定値) または `false`。  |
 
 ### <a name="outputclaims"></a>OutputClaims
 

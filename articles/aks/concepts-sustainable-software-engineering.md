@@ -4,18 +4,18 @@ description: Azure Kubernetes Service (AKS) での持続可能なソフトウェ
 services: container-service
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: bc2240b3cb8508109f6dd25c4c80ff31ba197cfd
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 2457de7bdaa94a6e2269515fafe6689d44960625
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89082164"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984984"
 ---
-# <a name="sustainable-software-engineering-principals-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での持続可能なソフトウェア エンジニアリングの原則
+# <a name="sustainable-software-engineering-principles-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での持続可能なソフトウェア エンジニアリングの原則
 
-持続可能なソフトウェア エンジニアリングの原則は、持続可能なアプリケーションの定義、構築、実行に役立つ一連の能力です。 全体的な目標は、アプリケーションのすべての側面の炭素排出量を削減することです。 [Principles.Green プロジェクト][principals-green]には、持続可能なソフトウェア エンジニアリングの原則の概要があります。
+持続可能なソフトウェア エンジニアリングの原則は、持続可能なアプリケーションの定義、構築、実行に役立つ一連の能力です。 全体的な目標は、アプリケーションのすべての側面の炭素排出量を削減することです。 [Principles.Green プロジェクト][principles-green]には、持続可能なソフトウェア エンジニアリングの原則の概要があります。
 
-持続可能なソフトウェア エンジニアリングについて理解するための重要なアイデアは、それが優先順位と焦点の変化であることです。 多くの場合、ソフトウェアは、高速なパフォーマンスと短い待機時間に焦点を当てる方法で設計および実行されます。 持続可能なソフトウェア エンジニアリングでは、炭素排出量をできるだけ多く削減することに焦点を当てます。 場合によっては、ネットワークの移動全体を減らすなど、持続可能なソフトウェア エンジニアリングの原則を適用することで、パフォーマンスの高速化や待機時間の短縮を実現できます。 一方で、優先度の低いワークロードを遅らせるなどして炭素排出量を削減すると、パフォーマンスの低速化や待機時間の増加を招く場合もあります。 持続可能なソフトウェア エンジニアリングの原則をアプリケーションに適用することを検討する前に、アプリケーションの優先順位、ニーズ、およびトレードオフを確認してください。
+持続可能なソフトウェア エンジニアリングについて理解するための重要なアイデアは、それが優先順位と焦点の変化であることです。 多くの場合、ソフトウェアは、高速なパフォーマンスと短い待機時間に焦点を当てる方法で設計および実行されます。 持続可能なソフトウェア エンジニアリングでは、炭素排出量をできるだけ多く削減することに焦点を当てます。 場合によっては、ネットワークの移動全体を減らすなど、持続可能なソフトウェア エンジニアリングの原則を適用することで、パフォーマンスの高速化や待機時間の短縮を実現できます。 一方で、優先度の低いワークロードを遅らせるなどして炭素排出量を削減すると、パフォーマンスの低速化や待機時間の増加を招く場合もあります。 持続可能なソフトウェア エンジニアリングの原則をアプリケーションに適用することを検討する前に、アプリケーションの優先順位、ニーズ、トレードオフを確認してください。
 
 ## <a name="measure-and-optimize"></a>測定と最適化
 
@@ -74,4 +74,4 @@ AKS クラスターの炭素排出量を削減するには、クラスターの�
 [node-sizing]: use-multiple-node-pools.md#specify-a-vm-size-for-a-node-pool
 [sustainability-calculator]: https://azure.microsoft.com/blog/microsoft-sustainability-calculator-helps-enterprises-analyze-the-carbon-emissions-of-their-it-infrastructure/
 [system-pools]: use-system-pools.md
-[principals-green]: https://principles.green/
+[principles-green]: https://principles.green/

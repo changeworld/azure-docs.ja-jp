@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/24/2018
-ms.openlocfilehash: 4da54318bea21daf9ec363be61bea18adaa2ce63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 255e4085e24ee7520c603f8a00b3e46c23367a77
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82629033"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442005"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>データベースから制御テーブルを使用して差分コピーを行う
 
@@ -140,7 +140,7 @@ ms.locfileid: "82629033"
 
     宛先に新規行のみがコピーされたことがわかります。
 
-15. (省略可能:)データの宛先として Azure Synapse Analytics (旧称 SQL DW) を選択した場合、ステージング用に Azure BLOB ストレージへの接続も指定する必要があります。これは SQL Data Warehouse の Polybase に必要です。 テンプレートによって、コンテナーのパスが生成されます。 パイプラインの実行後、コンテナーが BLOB ストレージに作成されているかどうかを確認します。
+15. (省略可能:)データの宛先として Azure Synapse Analytics (旧称 SQL DW) を選択した場合、ステージング用に Azure BLOB ストレージへの接続も指定する必要があります。これは Azure Synapse Analytics (旧称 SQL Data Warehouse) の Polybase に必要です。 テンプレートによって、コンテナーのパスが生成されます。 パイプラインの実行後、コンテナーが BLOB ストレージに作成されているかどうかを確認します。
     
     ![PolyBase の構成](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable15.png)
     

@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 08/25/2020
 ms.author: raynew
-ms.openlocfilehash: 8c18a4d2fa6e5bdb211b77d4d7bb28af7e5b1c1a
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 608d9511b14ef8dd3815d6f9b45cda31e6b38b94
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948115"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004308"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>リージョン間の Azure リソースの移動のサポート
 
@@ -363,9 +363,9 @@ ms.locfileid: "88948115"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
-> | availabilitysets | いいえ | 
+> | availabilitysets | はい <br/><br/> 可用性セットを移動するには [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md) を使用します。 | 
 > | diskencryptionsets | いいえ | 
-> | disks | いいえ | 
+> | disks | はい <br/><br/> Azure VM および関連ディスクを移動するには [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md) を使用します。 | 
 > | galleries | いいえ | 
 > | galleries/images | いいえ | 
 > | galleries/images/versions | いいえ | 
@@ -377,7 +377,7 @@ ms.locfileid: "88948115"
 > | sharedvmimages | いいえ | 
 > | sharedvmimages/versions | いいえ | 
 > | スナップショット | いいえ | 
-> | virtualmachines | はい | 
+> | virtualmachines | はい <br/><br/> Azure VM を移動するには [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md) を使用します。 | 
 > | virtualmachines/extensions | いいえ | 
 > | virtualmachinescalesets | いいえ | 
 
@@ -908,13 +908,13 @@ ms.locfileid: "88948115"
 > | expressrouteports | いいえ | 
 > | frontdoors | いいえ | 
 > | frontdoorwebapplicationfirewallpolicies | いいえ | 
-> | loadbalancers | はい <br/><br/> 既存の構成をテンプレートとしてエクスポートし、そのテンプレートを新しいリージョンにデプロイすることができます。 [外部](../..//load-balancer/move-across-regions-external-load-balancer-portal.md)または[内部](../../load-balancer/move-across-regions-internal-load-balancer-portal.md)のロード バランサーを移動する方法をご覧ください。 |
+> | loadbalancers | はい <br/><br/> 内部および外部のロード バランサーを移動するには [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md) を使用します。 |
 > | localnetworkgateways |  いいえ | 
 > | natgateways |  いいえ | 
 > | networkintentpolicies |  いいえ | 
-> | networkinterfaces | はい | 
+> | networkinterfaces | はい <br/><br/> NIC を移動するには [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md) を使用します。 | 
 > | networkprofiles | いいえ | 
-> | networksecuritygroups | はい | 
+> | networksecuritygroups | はい <br/><br/> ネットワーク セキュリティ グループ (NSG) を移動するには [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md) を使用します。 | 
 > | networkwatchers |  いいえ |  
 > | networkwatchers/connectionmonitors |  いいえ | 
 > | networkwatchers/lenses |  いいえ | 
@@ -924,7 +924,7 @@ ms.locfileid: "88948115"
 > | privatednszones/virtualnetworklinks |  いいえ |  
 > | privateendpoints | いいえ | 
 > | privatelinkservices | いいえ | 
-> | publicipaddresses | はい<br/><br/> 既存のパブリック IP アドレス構成をテンプレートとしてエクスポートし、そのテンプレートを新しいリージョンにデプロイすることができます。 パブリック IP アドレスの移動の[詳細をご覧ください](../../virtual-network/move-across-regions-publicip-portal.md)。 |
+> | publicipaddresses | はい<br/><br/> パブリック IP アドレスを移動するには [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md) を使用します。 |
 > | publicipprefixes | いいえ | 
 > | routefilters | いいえ | 
 > | routetables |  いいえ | 
@@ -1134,11 +1134,11 @@ ms.locfileid: "88948115"
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
 > | instancepools | いいえ | 
-> | managedinstances | はい | 
+> | managedinstances | はい <br/><br/> マネージド インスタンスのリージョン間での移動に関する[詳細を参照してください](/azure/azure-sql/database/move-resources-across-regions)。 | 
 > | managedinstances/databases | はい | 
 > | servers | はい | 
-> | servers/databases | はい | 
-> | servers/elasticpools | はい | 
+> | servers/databases | はい <br/><br/> データベースのリージョン間での移動に関する[詳細を参照してください](/azure/azure-sql/database/move-resources-across-regions)。<br/><br/> Azure Resource Mover を使用した Azure SQL データベースの移動に関する[詳細を参照してください](../../resource-mover/tutorial-move-region-sql.md)。  | 
+> | servers/elasticpools | はい <br/><br/> エラスティック プールのリージョン間での移動に関する[詳細を参照してください](/azure/azure-sql/database/move-resources-across-regions)。<br/><br/> Azure Resource Mover を使用した Azure SQL エラスティック プールを移動に関する[詳細を参照してください](../../resource-mover/tutorial-move-region-sql.md)。  | 
 > | virtualclusters | はい | 
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine

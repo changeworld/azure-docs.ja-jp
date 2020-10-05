@@ -13,12 +13,12 @@ ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e2c09bcd43b08778324a32cc052fad5b85714c4
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 15bcb0f7ca30c343072da396abeac8d08dee03a9
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279586"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087011"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Azure AD Connect のパフォーマンスに影響を及ぼす因子
 
@@ -41,7 +41,7 @@ Azure AD Connect は、Active Directory を Azure AD に同期します。 こ�
 
 次の図は、単一のフォレストに接続しているプロビジョニング エンジンのアーキテクチャの概要を示しています (ただし、複数のフォレストには対応していません)。 このアーキテクチャは、さまざまなコンポーネントが相互にやり取りする方法を示しています。
 
-![AzureADConnentInternal](media/plan-connect-performance-factors/AzureADConnentInternal.png)
+![図には、接続されているディレクトリと、SQL Database のコネクタ スペースやメタバース コンポーネントを含む Azure AD Connect プロビジョニング エンジンとがどのようにやり取りしているかが示されています。 ](media/plan-connect-performance-factors/AzureADConnentInternal.png)
 
 プロビジョニング エンジンは、各 Active Directory フォレストと Azure AD に接続しています。 各ディレクトリから情報を読み取るプロセスを、インポートと言います。 エクスポートは、プロビジョニング エンジンからディレクトリを更新することを指します。 同期は、プロビジョニング エンジン内のオブジェクトのフロー方法の規則を評価します。 詳細については、「[Azure AD Connect 同期: アーキテクチャの概要](./concept-azure-ad-connect-sync-architecture.md)」を参照してください。
 

@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect クラウド プロビジョニングがサポートされているトポロジとシナリオ
-description: このトピックでは、クラウド プロビジョニングの前提条件とハードウェア要件について説明します。
+description: Azure AD Connect クラウド プロビジョニングを使用する、さまざまなオンプレミス トポロジおよび Azure Active Directory (Azure AD) トポロジについて説明します。
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,12 +11,12 @@ ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 386af46bbee623d37bc914d2ee9130c914c6c885
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d442c980ad5bbe3b56eae127b6e9eaeddf380a4e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77620865"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526852"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-supported-topologies-and-scenarios"></a>Azure AD Connect クラウド プロビジョニングがサポートされているトポロジとシナリオ
 この記事では、Azure AD Connect クラウド プロビジョニングを使用する、さまざまなオンプレミス トポロジおよび Azure Active Directory (Azure AD) トポロジについて説明します。 この記事には、サポートされている構成とシナリオのみが含まれています。

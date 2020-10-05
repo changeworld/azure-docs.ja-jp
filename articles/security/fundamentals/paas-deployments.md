@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 9adbe7b03283a00f78222ffdc77dca7aaadcbda0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53a41c3921ee92b1ec79edf95999c97f80cbce45
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81461703"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462362"
 ---
 # <a name="securing-paas-deployments"></a>PaaS デプロイをセキュリティで保護する
 
@@ -151,10 +151,10 @@ Application Insights には、収集されたデータを操作するための�
 
 
 ## <a name="next-steps"></a>次のステップ
-この記事では、Azure PaaS デプロイのセキュリティ上の利点およびクラウド アプリケーションのセキュリティのベスト プラクティスに重点を置いてきました。 次に、特定の Azure サービスを使用して PaaS の Web ソリューションとモバイル ソリューションをセキュリティ保護するための推奨されるプラクティスについて説明します。 まず、Azure App Service、Azure SQL Database、Azure SQL Data Warehouse、および Azure Storage から始めましょう。 他の Azure サービスの推奨されるプラクティスに関する記事が公開されると、次の一覧にリンクが提供されます。
+この記事では、Azure PaaS デプロイのセキュリティ上の利点およびクラウド アプリケーションのセキュリティのベスト プラクティスに重点を置いてきました。 次に、特定の Azure サービスを使用して PaaS の Web ソリューションとモバイル ソリューションをセキュリティ保護するための推奨されるプラクティスについて説明します。 まず、Azure App Service、Azure SQL Database、Azure Synapse Analytics、および Azure Storage から始めましょう。 他の Azure サービスの推奨されるプラクティスに関する記事が公開されると、次の一覧にリンクが提供されます。
 
 - [Azure App Service](paas-applications-using-app-services.md)
-- [Azure SQL Database と Azure SQL Data Warehouse](paas-applications-using-sql.md)
+- [Azure SQL Database と Azure Synapse Analytics](paas-applications-using-sql.md)
 - [Azure ストレージ](paas-applications-using-storage.md)
 - Azure Cache for Redis
 - Azure Service Bus

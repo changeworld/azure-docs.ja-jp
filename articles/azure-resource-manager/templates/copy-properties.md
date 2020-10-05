@@ -2,17 +2,19 @@
 title: プロパティの複数のインスタンスを定義する
 description: Azure Resource Manager テンプレートで copy 操作を使用して、リソースのプロパティを作成する際に複数回反復処理する方法について説明します。
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: 61122b01889da832a73f729833ab0af676904d54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/15/2020
+ms.openlocfilehash: f199872d5bb8a0333bf7bedb9501a6ca1b884691
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678462"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605245"
 ---
 # <a name="property-iteration-in-arm-templates"></a>ARM テンプレートでのプロパティの反復処理
 
-この記事では、Azure Resource Manager (ARM) テンプレートでプロパティの複数のインスタンスを作成する方法について説明します。 テンプレート内のリソースの properties セクションに **copy** 要素を追加することにより、デプロイ時にプロパティの項目数を動的に設定できます。 テンプレートの構文を繰り返す必要もありません。
+この記事では、Azure Resource Manager テンプレート (ARM テンプレート) でプロパティの複数のインスタンスを作成する方法について説明します。 テンプレート内のリソースの properties セクションに **copy** 要素を追加することにより、デプロイ時にプロパティの項目数を動的に設定できます。 テンプレートの構文を繰り返す必要もありません。
+
+コピーをプロパティに適用する場合でも、最上位リソースでのみコピーを使用できます。 子リソースを最上位リソースに変更する方法の詳細については、「[子リソースの反復処理](copy-resources.md#iteration-for-a-child-resource)」を参照してください。
 
 [リソース](copy-resources.md)、[変数](copy-variables.md)、および [出力](copy-outputs.md)でもコピーを使用できます。
 

@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2087e5f8ec397123df504e9d30d351a0ba79b4a5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2927cbe9a586d8e7a35cea1b523122f9c1c3fed7
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018758"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085639"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Azure リソースに対するマネージド ID を使用して BLOB およびキュー データへのアクセスを認証する
 
@@ -165,4 +165,4 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 
 - [RBAC を使用してストレージ データへのアクセス権を管理する](storage-auth-aad-rbac.md)。
 - [ストレージ アプリケーションで Azure AD を使用する](storage-auth-aad-app.md)。
-- [Azure AD 資格情報で Azure CLI または PowerShell コマンドを実行して BLOB またはキューのデータにアクセスする](authorize-active-directory-powershell.md)。
+- [Azure AD 資格情報を使用して PowerShell コマンドを実行して BLOB データにアクセスする](../blobs/authorize-active-directory-powershell.md)

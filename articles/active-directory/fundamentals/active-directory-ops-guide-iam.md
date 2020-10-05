@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: ab4e9f7410954292290b6acf0895197ff013b1d8
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 2312befa5fe534cc2042b7586755ac5322d036db
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321669"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601310"
 ---
 # <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Azure Active Directory の ID およびアクセス管理の運用リファレンス ガイド
 
@@ -35,8 +35,8 @@ Azure Active Directory を管理するには、ロールアウト プロジェ�
 | :- | :- |
 | Azure サブスクリプションを作成するプロセスを定義する | 組織によって異なる |
 | Enterprise Mobility + Security: ライセンスを取得するユーザーを決定する | IAM 運用チーム |
-| Office 365 のライセンスを取得するユーザーを決定する | 生産性チーム |
-| 他のライセンス (Dynamics、VSO など) を取得するユーザーを決定する | Application Owner |
+| Microsoft 365 のライセンスを取得するユーザーを決定する | 生産性チーム |
+| 他のライセンス (Dynamics、Visual Studio Codespaces など) を取得するユーザーを決定する | Application Owner |
 | ライセンスを割り当てる | IAM 運用チーム |
 | ライセンスの割り当てエラーをトラブルシューティングして修復する | IAM 運用チーム |
 | Azure AD のアプリケーションに ID をプロビジョニングする | IAM 運用チーム |
@@ -140,7 +140,7 @@ Azure AD Connect カスタム規則を使用すると、オンプレミスのオ
 
 Azure Active Directory は、Microsoft クラウド サービスの[グループベースのライセンス](./active-directory-licensing-whatis-azure-portal.md) を使用してライセンスの管理を効率化します。 このようにして IAM は、グループのインフラストラクチャと、組織内の適切なチームに対するそれらのグループの委任管理を提供します。 Azure AD でグループのメンバーシップを設定するには、次のような複数の方法があります。
 
-- **オンプレミスからの同期** - グループはオンプレミスのディレクトリから取得できます。これは、Office 365 でライセンスを割り当てるために拡張できるグループ管理プロセスが確立されている組織に適しています。
+- **オンプレミスからの同期** - グループはオンプレミスのディレクトリから取得できます。これは、Microsoft 365 でライセンスを割り当てるために拡張できるグループ管理プロセスが確立されている組織に適しています。
 
 - **属性ベース/動的** - グループは、ユーザー属性に基づいた式に基づいてクラウドで作成できます。たとえば、Department は "sales" となります。 Azure AD は、定義された式との一貫性を維持したまま、グループのメンバーを保持します。 ライセンスの割り当てにこの種類のグループを使用すると、属性ベースのライセンスの割り当てが有効になります。これは、ディレクトリ内のデータ品質が高い組織に適しています。
 
@@ -188,7 +188,7 @@ Azure Active Directory は、Microsoft クラウド サービスの[グループ
 
 #### <a name="azure-ad-connect-troubleshooting-recommended-reading"></a>Azure AD Connect のトラブルシューティングに関する推奨資料
 
-- [IdFix ツールを使用した Office 365 との同期のためのディレクトリ属性の準備 - Office 365](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
+- [IdFix ツールを使用した Microsoft 365 との同期のためのディレクトリ属性の準備](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
 - [Azure AD Connect:同期中のエラーのトラブルシューティング](../hybrid/tshoot-connect-sync-errors.md)
 
 ## <a name="summary"></a>まとめ

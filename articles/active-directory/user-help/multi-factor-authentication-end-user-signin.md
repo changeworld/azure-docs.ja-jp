@@ -13,12 +13,12 @@ ms.date: 04/02/2017
 ms.author: curtand
 ms.reviewer: librown
 ms.custom: end-user, seo-update-azuread-jan
-ms.openlocfilehash: daa2cfae4ed8371e245d12a9f805fe07f31a6d76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51cfe2c448fde8c50f8b846979a4b35fa4be5ec1
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83742950"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056030"
 ---
 # <a name="sign-in-to-your-work-or-school-account-using-your-two-factor-verification-method"></a>2 要素検証方法を使用して職場または学校アカウントにサインインする
 
@@ -39,14 +39,14 @@ ms.locfileid: "83742950"
 ## <a name="signing-in-with-a-phone-call"></a>電話の呼び出しを使用してサインインする
 ユーザーの携帯電話または職場の電話への呼び出しによる 2 段階認証のエクスペリエンスは次のとおりです。
 
-1. Office 365 などのアプリケーションまたはサービスにユーザー名とパスワードを使用してサインインします。  
+1. Microsoft 365 などのアプリケーションまたはサービスにユーザー名とパスワードを使用してサインインします。  
 2. Microsoft がユーザーに電話をかけます。  
 3. 電話に出て、# キーを押します。  
 
 ## <a name="signing-in-with-a-text-message"></a>テキスト メッセージを使用してサインインする
 ユーザーの携帯電話へのテキスト メッセージによる 2 段階認証のエクスペリエンスは次のとおりです。
 
-1. Office 365 などのアプリケーションまたはサービスにユーザー名とパスワードを使用してサインインします。
+1. Microsoft 365 などのアプリケーションまたはサービスにユーザー名とパスワードを使用してサインインします。
 2. Microsoft からユーザーに、番号コードを含むテキスト メッセージが送信されます。
 3. サインイン ページのボックスにコードを入力します。
 
@@ -54,7 +54,7 @@ ms.locfileid: "83742950"
 2 段階認証に Microsoft Authenticator アプリを使用するエクスペリエンスは次のとおりです。 アプリを使用したサインインの方法は 2 種類あります。 デバイスでプッシュ通知を受け取るか、アプリを開いて確認コードを取得します。
 
 ### <a name="to-sign-in-with-a-notification-from-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリの通知を使用してサインインするには
-1. Office 365 などのアプリケーションまたはサービスにユーザー名とパスワードを使用してサインインします。
+1. Microsoft 365 などのアプリケーションまたはサービスにユーザー名とパスワードを使用してサインインします。
 2. Microsoft がお客様のデバイス上の Microsoft Authenticator アプリに通知を送信します。
 
    ![Microsoft が通知を送信する](./media/multi-factor-authentication-end-user-signin/notify.png)
@@ -66,7 +66,7 @@ ms.locfileid: "83742950"
 
 Microsoft Authenticator アプリを使用して確認コードを取得する場合、アプリを開くとアカウント名の下に番号が表示されます。 この番号は 30 秒ごとに変更されるので、同じ番号を再度使用することはありません。 確認コードを求められたらアプリを開き、そのとき表示されている番号を入力してください。
 
-1. Office 365 などのアプリケーションまたはサービスにユーザー名とパスワードを使用してサインインします。
+1. Microsoft 365 などのアプリケーションまたはサービスにユーザー名とパスワードを使用してサインインします。
 2. Microsoft によって確認コードを求めるプロンプトが表示されます。
 
    ![検証コードを入力する](./media/multi-factor-authentication-end-user-signin/verify3.png)
@@ -76,7 +76,7 @@ Microsoft Authenticator アプリを使用して確認コードを取得する�
 ## <a name="signing-in-with-an-alternate-method"></a>別の方法を使用してサインインする
 場合によっては、通常の確認方法として設定した電話やデバイスを使用できないこともあります。 アカウントにバックアップの方法を設定することをお勧めするのはそのためです。 次のセクションでは、主要な方法が使用できないときに、別の方法でサインインする方法を示します。
 
-1. Office 365 などのアプリケーションまたはサービスにユーザー名とパスワードを使用してサインインします。
+1. Microsoft 365 などのアプリケーションまたはサービスにユーザー名とパスワードを使用してサインインします。
 2. **[別の確認オプションを使用する]** を選択します。 設定済みの確認オプションが表示されます。
 3. 代替方法を選択し、サインインします。
 

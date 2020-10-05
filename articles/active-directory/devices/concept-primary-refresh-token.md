@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9971eb554825a968f8cfa72d6a0cf78d7c0bcb76
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b55d8bcc2f2042dc36c6875750893a345deb552
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025882"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468608"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>プライマリ更新トークンとは
 
@@ -86,6 +86,10 @@ PRT は 2 つの異なる方法で更新されます。
 * **Azure AD WAM プラグイン (アプリ トークンの要求中)** : WAM プラグインは、アプリケーションに対するサイレント トークン要求を有効にすることによって、Windows 10 デバイス上で SSO を有効にします。 WAM プラグインは、これらのトークン要求中に 2 つの異なる方法で PRT を更新できます。
    * アプリは WAM にアクセス トークンをサイレントに要求しますが、そのアプリに対して利用可能な更新トークンがありません。 この場合、WAM は PRT を使用してアプリのトークンを要求し、応答で新しい PRT を再取得します。
    * アプリが WAM にアクセス トークンを要求しますが、PRT が無効であるか、または Azure AD が (Azure Multi-Factor Authentication などの) 追加の認可を要求しています。 このシナリオでは、WAM は対話型ログオンを開始し、再認証または追加認証の提供をユーザーに要求し、認証が成功したら新しい PRT が発行されます。
+
+ADFS 環境では、PRT を更新するために、ドメイン コントローラーへの直接の通信経路を確保する必要はありません。 PRT の更新には、WS-Trust プロトコルを使用してプロキシで有効になっている /adfs/services/trust/2005/usernamemixed と /adfs/services/trust/13/usernamemixed エンドポイントのみが必要です。
+
+Windows トランスポート エンドポイントは、パスワードが変更された場合にのみパスワード認証に必要であり、PRT の更新には必要ありません。
 
 ### <a name="key-considerations"></a>重要な考慮事項
 

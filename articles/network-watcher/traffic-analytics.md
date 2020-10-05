@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: 8deb3d81895629e817aeb9dbc1eb6520e1fb7aad
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: f978343bd47c4b8c86653024e651b56c782f768c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747525"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967502"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -339,7 +339,7 @@ Application Gateway および Load Balancer ごとのトラフィック分布、
  - どのサブネットがどの Application Gateway または Load Balancer と会話しているかを把握します。 想定外の会話を見つけた場合は、構成を修正できます。
  - 非承認ネットワークが、Application Gateway または Load Balancer と会話している場合、非承認ネットワークをブロックするように NSG ルールを構成することで修正できます。 
 
-    ![subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
+    ![スクリーンショットは、フローに関してアプリケーション ゲートウェイ サブネットへのトラフィック分散を含むサブネット トポロジを示しています。](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
 
 ### <a name="view-ports-and-virtual-machines-receiving-traffic-from-the-internet"></a>インターネットからのトラフィックを受信するポートと仮想マシンを表示する
 

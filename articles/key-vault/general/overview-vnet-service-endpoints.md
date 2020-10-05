@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 891ea69dc6d53370f5f73f8bb3072a9795f07635
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 3b1e71a5aadbe9e6a4fa89d4b3ec0fb6b1d9e6ce
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190578"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530456"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault の仮想ネットワーク サービス エンドポイント
 
@@ -71,7 +71,7 @@ Azure Key Vault の仮想ネットワーク サービス エンドポイント�
 |Exchange Online と SharePoint Online|[カスタマー キー](/microsoft-365/compliance/customer-key-overview)を使用する Azure Storage サービス暗号化のためにカスタマー キーへのアクセスを許可する。|
 |Azure Information Protection|[Azure Information Protection](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) のテナント キーへのアクセスを許可する。|
 |Azure App Service|[Key Vault を介して Azure Web アプリ証明書をデプロイする](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html)。|
-|Azure SQL データベース|[Azure SQL Database と Data Warehouse のに対する Transparent Data Encryption での Bring Your Own Key のサポート](../../azure-sql/database/transparent-data-encryption-byok-overview.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current)。|
+|Azure SQL データベース|[Azure SQL Database と Azure Synapse Analytics (旧称 SQL Data Warehouse) に対する Transparent Data Encryption での Bring Your Own Key のサポート](../../azure-sql/database/transparent-data-encryption-byok-overview.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current)。|
 |Azure Storage|[Azure Key Vault で顧客が管理するキーを Storage Service Encryption に使用する](../../storage/common/storage-service-encryption-customer-managed-keys.md)。|
 |Azure Data Lake Store|顧客が管理するキーによる [Azure Data Lake Store 内のデータの暗号化](../../data-lake-store/data-lake-store-encryption.md)。|
 |Azure Databricks|[高速で使いやすい、コラボレーション対応の Apache Spark ベースの分析サービス](../../azure-databricks/what-is-azure-databricks.md)|
@@ -87,5 +87,5 @@ Azure Key Vault の仮想ネットワーク サービス エンドポイント�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [キー コンテナーをセキュリティで保護する](secure-your-key-vault.md))
+* [キー コンテナーのセキュリティ保護](secure-your-key-vault.md)
 * [Azure Key Vault のファイアウォールと仮想ネットワークを構成する](network-security.md)

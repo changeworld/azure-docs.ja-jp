@@ -3,12 +3,12 @@ title: 重要な Azure Advisor の推奨事項を表示する
 description: Azure Advisor の推奨事項を表示したり、ノイズを減らすためにフィルター処理したりします。
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 10d7b16864f8e449dc51e870c5ff9f20d8c0dc87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 43bdaba7d774bba8857a6eb3ef296d7ab8e1c264
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75422369"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986856"
 ---
 # <a name="view-azure-advisor-recommendations-that-matter-to-you"></a>重要な Azure Advisor の推奨事項を表示する
 
@@ -34,7 +34,7 @@ Azure portal で変更を行うには、次の手順に従います。
 
 構成設定は、変更されるまではアクティブのままになります。 推奨事項のビューを 1 つの表示に制限する場合は、Advisor パネルの上部に表示されるドロップダウン リストを使用できます。 [概要]、[高可用性]、[セキュリティ]、[パフォーマンス]、[コスト]、および [All Recommendation] (すべての推奨事項) の各パネルから、表示したいサブスクリプション、リソースの種類、および推奨事項の状態を選択できます。
 
-   ![Advisor のフィルター メニュー](./media/view-recommendations/filtering.png)
+   :::image type="content" source="./media/view-recommendations/filtering.png" alt-text="フィルター オプションを示した Azure Advisor のスクリーンショット。":::
 
 ## <a name="dismissing-and-postponing-recommendations"></a>推奨事項の却下と延期
 
@@ -47,7 +47,7 @@ Azure Advisor では、1 つのリソースに関する推奨事項を却下ま�
 1. 推奨事項の一覧にある推奨事項を選択します
 1. 延期または却下する推奨事項で [延期] または [却下] を選択します
 
-     ![Advisor のフィルター メニュー](./media/view-recommendations/postpone-dismiss.png)
+     :::image type="content" source="./media/view-recommendations/postpone-dismiss.png" alt-text="フィルター オプションを示した Azure Advisor のスクリーンショット。":::
 
 ### <a name="postpone-or-dismiss-a-multiple-recommendations-in-the-azure-portal"></a>Azure portal での複数の推奨事項を延期または却下する
 
@@ -57,7 +57,7 @@ Azure Advisor では、1 つのリソースに関する推奨事項を却下ま�
 1. 推奨事項を延期または却下するすべてのリソースの行の左側にあるチェック ボックスをオンにします。
 1. テーブルの左上にある **[延期]** または **[却下]** を選択します。
 
-     ![Advisor のフィルター メニュー](./media/view-recommendations/postpone-dismiss-multiple.png)
+     :::image type="content" source="./media/view-recommendations/postpone-dismiss-multiple.png" alt-text="フィルター オプションを示した Azure Advisor のスクリーンショット。":::
 
 > [!NOTE]
 > 推奨事項を却下または延期するには、共同作成者または所有者のアクセスが必要です。 「Azure Advisor でのアクセス許可」を参照してください。
@@ -73,7 +73,7 @@ Azure Advisor では、1 つのリソースに関する推奨事項を却下ま�
 
 1. [概要] パネルのフィルターを **[延期]** に変更します。 その後、Advisor で、延期または却下した推奨事項が表示されます。
 
-    ![Advisor のフィルター メニュー](./media/view-recommendations/activate-postponed.png)
+    :::image type="content" source="./media/view-recommendations/activate-postponed.png" alt-text="フィルター オプションを示した Azure Advisor のスクリーンショット。":::
 
 1. カテゴリを選択して、 **[延期]** および **[却下]** の推奨事項を表示します。
 
@@ -81,7 +81,7 @@ Azure Advisor では、1 つのリソースに関する推奨事項を却下ま�
 
 1. 行の末尾にある **[アクティブ化]** をクリックします。 クリックすると、そのリソースの推奨事項がアクティブになるため、このテーブルから削除されます。 これで推奨事項が **[アクティブ]** タブに表示されます。
  
-     ![Advisor のフィルター メニュー](./media/view-recommendations/activate-postponed-2.png)
+     :::image type="content" source="./media/view-recommendations/activate-postponed-2.png" alt-text="フィルター オプションを示した Azure Advisor のスクリーンショット。":::
 
 ## <a name="next-steps"></a>次のステップ
 

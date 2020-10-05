@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8dfeb8a38e07d94671691bb797d26a32973c910
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: d0ea9259e701e2ad9a4026401f5aef39c0ecfa51
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042481"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601828"
 ---
 # <a name="conditional-access-conditions"></a>条件付きアクセス:条件
 
@@ -149,27 +149,27 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 | クライアント アプリ | 対象サービス | プラットフォーム |
 | --- | --- | --- |
 | Dynamics CRM アプリ | Dynamics CRM | Windows 10、Windows 8.1、iOS、Android |
-| メール/カレンダー/People アプリ、Outlook 2016、Outlook 2013 (先進認証を使用)| Office 365 Exchange Online | Windows 10 |
+| メール/カレンダー/People アプリ、Outlook 2016、Outlook 2013 (先進認証を使用)| Exchange Online | Windows 10 |
 | アプリ用の MFA と場所のポリシー。 デバイス ベースのポリシーはサポートされていません。| 任意のマイ アプリ アプリ サービス | Android および iOS |
 | Microsoft Teams Services - このコントロールは Microsoft Teams とそのすべてのクライアント アプリ (Windows デスクトップ、iOS、Android、WP、および Web クライアント) をサポートするすべてのサービスを制御する | Microsoft Teams | Windows 10、Windows 8.1、Windows 7、iOS、Android、および macOS |
-| Office 2016 アプリ、Office 2013 (最新の認証を使用)、[OneDrive 同期クライアント](/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 8.1、Windows 7 |
-| Office 2016 アプリ、ユニバーサル Office アプリ、Office 2013 (最新の認証を使用)、[OneDrive 同期クライアント](/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 10 |
-| Office 2016 (Word、Excel、PowerPoint、OneNote のみ)。 | Office 365 SharePoint Online | macOS |
-| Office 2019| Office 365 SharePoint Online | Windows 10、macOS |
-| Office モバイル アプリ | Office 365 SharePoint Online | Android、iOS |
-| Office Yammer アプリ | Office 365 Yammer | Windows 10、iOS、Android |
-| Outlook 2019 | Office 365 SharePoint Online | Windows 10、macOS |
-| Outlook 2016 (Office for macOS) | Office 365 Exchange Online | macOS |
-| Outlook 2016、Outlook 2013 (先進認証を使用)、Skype for Business (先進認証を使用) | Office 365 Exchange Online | Windows 8.1、Windows 7 |
-| Outlook Mobile アプリ | Office 365 Exchange Online | Android、iOS |
+| Office 2016 アプリ、Office 2013 (最新の認証を使用)、[OneDrive 同期クライアント](/onedrive/enable-conditional-access) | SharePoint | Windows 8.1、Windows 7 |
+| Office 2016 アプリ、ユニバーサル Office アプリ、Office 2013 (最新の認証を使用)、[OneDrive 同期クライアント](/onedrive/enable-conditional-access) | SharePoint Online | Windows 10 |
+| Office 2016 (Word、Excel、PowerPoint、OneNote のみ)。 | SharePoint | macOS |
+| Office 2019| SharePoint | Windows 10、macOS |
+| Office モバイル アプリ | SharePoint | Android、iOS |
+| Office Yammer アプリ | Yammer | Windows 10、iOS、Android |
+| Outlook 2019 | SharePoint | Windows 10、macOS |
+| Outlook 2016 (Office for macOS) | Exchange Online | macOS |
+| Outlook 2016、Outlook 2013 (先進認証を使用)、Skype for Business (先進認証を使用) | Exchange Online | Windows 8.1、Windows 7 |
+| Outlook Mobile アプリ | Exchange Online | Android、iOS |
 | Power BI アプリ | Power BI サービス | Windows 10、Windows 8.1、Windows 7、Android、iOS |
-| Skype for Business | Office 365 Exchange Online| Android、iOS |
+| Skype for Business | Exchange Online| Android、iOS |
 | Visual Studio Team Services アプリ | Visual Studio Team Services | Windows 10、Windows 8.1、Windows 7、iOS、Android |
 
 ### <a name="exchange-activesync-clients"></a>Exchange ActiveSync クライアント
 
 - 組織が Exchange ActiveSync クライアントを選択できるのは、ユーザーまたはグループにポリシーを割り当てるときにだけです。 **[すべてのユーザー]** 、 **[すべてのゲストと外部ユーザー]** 、または **[ディレクトリ ロール]** を選択すると、すべてのユーザーがブロックされます。
-- Exchange ActiveSync クライアントに割り当てられるポリシーを作成する場合は、**Office 365 Exchange Online** が、そのポリシーに割り当てられる唯一のクラウド アプリケーションである必要があります。 
+- Exchange ActiveSync クライアントに割り当てられるポリシーを作成する場合は、**Exchange Online** が、そのポリシーに割り当てられる唯一のクラウド アプリケーションである必要があります。 
 - 組織は、 **[デバイス プラットフォーム]** の条件を使用して、このポリシーの範囲を特定のプラットフォームに限定することができます。
 
 ポリシーに割り当てられたアクセス制御で、 **[承認済みクライアント アプリを必須にする]** が使用されている場合、ユーザーは Outlook モバイル クライアントをインストールして使用するように指示されます。 **多要素認証**が必須の場合、基本認証では多要素認証がサポートされていないため、影響を受けるユーザーはブロックされます。

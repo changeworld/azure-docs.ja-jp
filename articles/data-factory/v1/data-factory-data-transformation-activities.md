@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 74cf34438ca142302a6853e8e488b0c7188b162b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: eb320cb71de43c40522bf93213fd98247a0d5b59
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522365"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89436299"
 ---
 # <a name="transform-data-in-azure-data-factory-version-1"></a>Azure Data Factory バージョン 1 でデータを変換する
 > [!div class="op_single_selector"]
@@ -65,7 +65,7 @@ Azure Data Factory を使用すると、公開された Azure Machine Learning W
 これらの Machine Learning アクティビティの詳細については、 [Azure Machine Learning アクティビティの使用](data-factory-azure-ml-batch-execution-activity.md) に関する記事を参照してください。 
 
 ## <a name="stored-procedure-activity"></a>ストアド プロシージャ アクティビティ
-SQL Server ストアド プロシージャ アクティビティを Data Factory のパイプライン内で使用して、次のいずれかのデータ ストア内のストアド プロシージャを呼び出すことができます。企業または Azure VM 内の Azure SQL Database、Azure SQL Data Warehouse、SQL Server データベース。 詳細については、記事「 [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md) 」を参照してください。  
+SQL Server ストアド プロシージャ アクティビティを Data Factory のパイプライン内で使用して、次のいずれかのデータ ストア内のストアド プロシージャを呼び出すことができます。企業または Azure VM 内の Azure SQL Database、Azure Synapse Analytics (旧称 SQL Data Warehouse)、SQL Server データベース。 詳細については、記事「 [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md) 」を参照してください。  
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL アクティビティ
 Data Lake Analytics U-SQL アクティビティは、Azure Data Lake Analytics クラスターで U-SQL スクリプトを実行します。 詳細については、 [Data Analytics U-SQL アクティビティ](data-factory-usql-activity.md) に関する記事を参照してください。 
@@ -93,7 +93,7 @@ Azure Data Factory では、次のデータ変換アクティビティと、ア�
 | [MapReduce](data-factory-map-reduce.md) |HDInsight [Hadoop] |
 | [Hadoop ストリーミング](data-factory-hadoop-streaming-activity.md) |HDInsight [Hadoop] |
 | [Machine Learning アクティビティ:バッチ実行とリソースの更新](data-factory-azure-ml-batch-execution-activity.md) |Azure VM |
-| [ストアド プロシージャ](data-factory-stored-proc-activity.md) |Azure SQL、Azure SQL Data Warehouse、または SQL Server |
+| [ストアド プロシージャ](data-factory-stored-proc-activity.md) |Azure SQL、Azure Synapse Analytics、または SQL Server |
 | [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |Azure Data Lake Analytics |
 | [DotNet](data-factory-use-custom-activities.md) |HDInsight [Hadoop] または Azure Batch |
 

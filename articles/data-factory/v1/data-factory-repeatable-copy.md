@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7188cb5774699fc6e31fc3b8c78068bb33c6f552
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10476544e513b52567eb0ca0182039f2c5f482c3
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707295"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441631"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Azure Data Factory での反復可能なコピー
 
@@ -104,7 +104,7 @@ ID    Product        Quantity    ModifiedDate
 
 ### <a name="mechanism-2-using-sliceidentifiercolumnname"></a>メカニズム 2: sliceIdentifierColumnName の使用
 > [!IMPORTANT]
-> 現在、Azure SQL Data Warehouse では sliceIdentifierColumnName はサポートされていません。 
+> 現在、Azure Synapse Analytics (旧称 SQL Data Warehouse) では sliceIdentifierColumnName はサポートされていません。 
 
 再現性を実現するための 2 つ目のメカニズムは、対象のテーブルに専用の列 (sliceIdentifierColumnName) を用意する方法です。 この列は、Azure Data Factory がソースと対象の同期状態を保つために使用されます。 この手法は、対象の SQL テーブル スキーマを変更または定義する際に柔軟性がある場合に機能します。 
 
@@ -151,5 +151,5 @@ ID    Product        Quantity    ModifiedDate
 完全な JSON の例については、次のコネクタに関する記事を参照してください。 
 
 - [Azure SQL Database](data-factory-azure-sql-connector.md)
-- [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)
+- [Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md)
 - [SQL Server](data-factory-sqlserver-connector.md)

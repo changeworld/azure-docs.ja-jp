@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: feaf72de1d2c578d2b2d0df9e86ec0fbe0b49445
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 594ad352d5fd8431ffaf6d681c891c967cf9d32a
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79371754"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606222"
 ---
 デバイス トンネルを正常に確立するには、次の要件を満たす必要があります。
 
@@ -123,18 +123,18 @@ ms.locfileid: "79371754"
    PsExec64.exe Powershell for 64-bit Windows
    ```
 
-   ![powershell](./media/vpn-gateway-vwan-always-on-device/powershell.png)
+   ![64 ビット バージョンの PowerShell を起動するコマンドを使用したコマンド プロンプト ウィンドウを示すスクリーンショット。](./media/vpn-gateway-vwan-always-on-device/powershell.png)
 1. PowerShell で、**devicecert.ps1** と **VPNProfile.xml** が配置されているフォルダーに切り替えて、次のコマンドを実行します。
 
    ```powershell
    .\devicecert.ps1 .\VPNProfile.xml MachineCertTest
    ```
    
-   ![MachineCertTest](./media/vpn-gateway-vwan-always-on-device/machinecerttest.png)
+   ![devicesert スクリプトを使用して MachineCertTest を実行した PowerShell ウィンドウを示すスクリーンショット。](./media/vpn-gateway-vwan-always-on-device/machinecerttest.png)
 1. **rasphone** を実行します。
 
-   ![rasphone](./media/vpn-gateway-vwan-always-on-device/rasphone.png)
+   ![rasphone が選択された [実行] ダイアログボックスを示すスクリーンショット。](./media/vpn-gateway-vwan-always-on-device/rasphone.png)
 1. **MachineCertTest** エントリを探して、 **[接続]** をクリックします。
 
-   ![接続する](./media/vpn-gateway-vwan-always-on-device/connect.png)
+   ![MachineCertTest が選択され、[接続] ボタンが表示された [ネットワーク接続] ダイアログボックスを示すスクリーンショット。](./media/vpn-gateway-vwan-always-on-device/connect.png)
 1. 接続に成功したら、コンピューターを再起動します。 トンネルが自動的に接続されます。

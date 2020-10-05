@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5189270a7b9de9ff5a222ad76ce46254ae5d2ee3
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: d839ea042dec2224885f9ba4a0cb6adef5108568
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542961"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458622"
 ---
 # <a name="azure-encryption-overview"></a>Azure の暗号化の概要
 
@@ -83,7 +83,7 @@ Key Vault のクライアント側暗号化の詳細について確認し、手�
 
 #### <a name="transparent-data-encryption"></a>透過的なデータ暗号化
 
-[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) は、[SQL Server](https://www.microsoft.com/sql-server/sql-server-2016)、[Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md)、[Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) のデータ ファイルをリアルタイムで暗号化するために使用されます。その際、復旧時の可用性のためにデータベースのブート レコードに格納されるデータベース暗号化キー (DEK) が使用されます。
+[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) は、[SQL Server](https://www.microsoft.com/sql-server/sql-server-2016)、[Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md)、[Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) のデータ ファイルをリアルタイムで暗号化するために使用されます。その際、復旧時の可用性のためにデータベースのブート レコードに格納されるデータベース暗号化キー (DEK) が使用されます。
 
 TDE は、AES と Triple Data Encryption Standard (3DES) の暗号化アルゴリズムを使用して、データとログ ファイルを保護します。 データベース ファイルの暗号化は、ページ レベルで実行されます。 暗号化されたデータベース内のページは、ディスクに書き込まれる前に暗号化され、メモリに読み込まれるときに暗号化が解除されます。 現在、新しく作成された Azure SQL データベースでは、TDE は既定で有効になっています。
 

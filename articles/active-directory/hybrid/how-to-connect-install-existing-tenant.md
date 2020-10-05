@@ -16,12 +16,12 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 582ec01a7a843358bef749aec693a59f88a1d655
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 9398fc9ee61bed41cd1e8c227fc4b4068e4b3e69
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640652"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662242"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existing-tenant"></a>Azure AD Connect:既存のテナントがある場合
 Azure AD Connect の使い方に関するトピックではほとんどの場合、新しい Azure AD テナントで作業を開始すること、そしてユーザーまたはその他のオブジェクトがないことを想定しています。 しかし、ユーザーとその他のオブジェクトが存在する Azure AD テナントを既に使用していて Connect が必要になった場合は、このトピックを参照してください。
@@ -41,7 +41,7 @@ Azure AD Connect をインストールして同期を開始すると、(Azure AD
 Connect で生成されたオブジェクトと属性値が同じであるオブジェクトが Azure AD によって検出され、それが Azure AD に既にあることが判明すると、Azure AD のオブジェクトは Connect によって引き継がれます。 以前クラウドで管理されていたオブジェクトには、オンプレミスで管理されていることを示すフラグが付きます。 オンプレミスの AD の値が設定された Azure AD の属性はすべて、オンプレミスの値で上書きされます。 オンプレミスで属性が **NULL** 値である場合は例外です。 このケースでは、Azure AD の値はそのままですが、オンプレミスで別の値に変更することはできます。
 
 > [!WARNING]
-> Azure AD のすべての属性はオンプレミスの値で上書きされるため、重要なデータは必ずオンプレミスで保持するようにしてください。 たとえば、電子メール アドレスを Office 365 でしか管理しておらず、オンプレミスの AD DS で更新していなかった場合、AD DS に存在しない Azure AD/Office 365 の値はすべて失われます。
+> Azure AD のすべての属性はオンプレミスの値で上書きされるため、重要なデータは必ずオンプレミスで保持するようにしてください。 たとえば、電子メール アドレスを Microsoft 365 でしか管理しておらず、オンプレミスの AD DS で更新していなかった場合、AD DS に存在しない Azure AD/Microsoft 365 の値はすべて失われます。
 
 > [!IMPORTANT]
 > (簡易設定で常に使用される) パスワード同期を使用する場合、Azure AD のパスワードはオンプレミスの AD のパスワードで上書きされます。 ユーザーが異なるパスワードの管理に慣れている場合、Connect をインストールした後に、オンプレミスのパスワードを使用する必要があることをユーザーに伝える必要があります。

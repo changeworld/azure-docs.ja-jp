@@ -2,13 +2,13 @@
 title: よく寄せられる質問 - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Event Hubs に関するよく寄せられる質問 (FAQ) とその回答の一覧を示します。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 9995588e618679ae38a11aff26485d1ba0b60688
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 09/16/2020
+ms.openlocfilehash: b852af961327fbecb773c0608dfb823093e17267
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89288969"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883395"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs のよく寄せられる質問
 
@@ -55,6 +55,9 @@ Event Hubs Standard レベルは現在、最大 7 日間の保有期間をサポ
 ### <a name="how-do-i-monitor-my-event-hubs"></a>Event Hubs を監視するにはどうしたらよいですか。
 Event Hubs は、リソースの状態を示す網羅的なメトリックを [Azure Monitor](../azure-monitor/overview.md) に出力します。 また、Event Hubs サービスの全体的な正常性を名前空間レベルだけでなく、エンティティ レベルでも評価することができます。 どのような監視が提供されるかについては、[Azure Event Hubs](event-hubs-metrics-azure-monitor.md) に関するページを参照してください。
 
+### <a name="where-does-azure-event-hubs-store-customer-data"></a><a name="in-region-data-residency"></a>Azure Event Hubs では顧客データはどこに格納されますか。
+Azure Event Hubs では顧客データが格納されます。 このデータは、Event Hubs によって 1 つのリージョンに自動的に格納されるため、このサービスは、[セキュリティ センター](https://azuredatacentermap.azurewebsites.net/)に指定されているものも含めて、リージョンのデータ保存場所の要件を自動的に満たします。
+
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>ファイアウォールで開く必要があるのはどのポートですか。 
 Azure Service Bus でメッセージを送受信する場合、次のプロトコルを使用できます。
 
@@ -78,9 +81,9 @@ Azure Service Bus でメッセージを送受信する場合、次のプロト�
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. `Non-authoritative answer` で返された IP アドレスをメモします。 これが変更されるのは、名前空間を別のクラスターに復元する場合のみです。
+2. `Non-authoritative answer` で返された IP アドレスをメモします。 
 
-名前空間にゾーン冗長性を使用している場合は、次の追加手順を実行する必要があります。 
+名前空間に**ゾーン冗長性**を使用している場合は、次の追加手順を実行する必要があります。 
 
 1. まず、名前空間に対して nslookup を実行します。
 
@@ -94,9 +97,12 @@ Azure Service Bus でメッセージを送受信する場合、次のプロト�
     <name>-s2.cloudapp.net
     <name>-s3.cloudapp.net
     ```
+
+    > [!NOTE]
+    > `nslookup` コマンドによって返された IP アドレスは、静的 IP アドレスではありません。 ただし、基になるデプロイが削除されるか別のクラスターに移動されるまでは変わりません。
 3. s1、s2、s3 のサフィックスが付いているそれぞれについて nslookup を実行し、3 つの可用性ゾーンで実行されている 3 つのインスタンスすべての IP アドレスを取得します。 
 
-### <a name="where-can-i-find-client-ip-sending-or-receiving-msgs-to-my-namespace"></a>名前空間へのメッセージの送信または受信を行うクライアント IP はどこで確認できますか。
+### <a name="where-can-i-find-client-ip-sending-or-receiving-messages-to-my-namespace"></a>名前空間へのメッセージの送信または受信を行うクライアント IP はどこで確認できますか。
 まず、名前空間で [IP フィルター](event-hubs-ip-filtering.md)を有効にします。 
 
 次に、「[診断ログを有効にする](event-hubs-diagnostic-logs.md#enable-diagnostic-logs)」の手順に従って、[Event Hubs 仮想ネットワーク接続イベント](event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema)の診断ログを有効にします。 接続が拒否された IP アドレスが表示されます。

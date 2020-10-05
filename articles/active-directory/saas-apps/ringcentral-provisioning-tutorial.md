@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: fb990b5aa615e37d9893a891143cb04933b603bb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: aaaa073f798998ed97be1bd3cd66795d7b3dfb23
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542617"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069664"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に RingCentral を構成する
 
@@ -113,7 +113,6 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
    |userName|String|
    |externalId|String|
    |active|Boolean|
-   |displayName|String|
    |title|String|
    |emails[type eq "work"].value|String|
    |addresses[type eq "work"].country|String|
@@ -125,11 +124,10 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
    |name.familyName|String|
    |phoneNumbers[type eq "mobile"].value|String|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|String|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|リファレンス|
 
 10. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
-11. RingCentral に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+11. RingCentral に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
     ![プロビジョニングの状態を [オン] に切り替える](common/provisioning-toggle-on.png)
 
@@ -149,6 +147,10 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 1. [プロビジョニング ログ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
 2. [進行状況バー](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
 3. プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)を参照してください。
+
+## <a name="change-log"></a>ログの変更
+
+* 2020 年 9 月 10 日 - "displayName" および "manager" 属性のサポートを削除しました。
 
 ## <a name="additional-resources"></a>その他のリソース
 

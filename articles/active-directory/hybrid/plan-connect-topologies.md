@@ -16,12 +16,12 @@ ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 062b2cac093c3049f65dd485e280776602c06e4b
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 7616ceed812b21f471609d95f59a0d0270dd7f52
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279722"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658504"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect のトポロジ
 この記事では、主な統合ソリューションとして Azure AD Connect 同期を使用する、さまざまなオンプレミス トポロジおよび Azure Active Directory (Azure AD) トポロジについて説明します。 この記事には、サポートされている構成とサポートされていない構成の両方が含まれています。
@@ -117,15 +117,15 @@ Azure AD Connect 同期の既定の構成では、次のことを前提として
 
 このシナリオでは、1 つ (以上) のリソース フォレストがすべてのアカウント フォレストを信頼します。 リソース フォレストには、通常、Exchange および Lync を使用する拡張 Active Directory スキーマがあります。 すべての Exchange および Lync サービスと、他の共有サービスは、このフォレストに配置されます。 ユーザーのユーザー アカウントはこのフォレストで無効になり、メールボックスはアカウント フォレストにリンクされます。
 
-## <a name="office-365-and-topology-considerations"></a>Office 365 とトポロジの考慮事項
-Office 365 の一部のワークロードでは、サポートされるトポロジに一定の制限が生じます。
+## <a name="microsoft-365-and-topology-considerations"></a>Microsoft 365 とトポロジの考慮事項
+Microsoft 365 の一部のワークロードでは、サポートされるトポロジに一定の制限が生じます。
 
 | ワークロード | 制限 |
 | --------- | --------- |
 | Exchange Online | Exchange Online でサポートされているハイブリッド トポロジの詳細については、「[Hybrid deployments with multiple Active Directory forests (複数の Active Directory フォレストを伴うハイブリッド展開)](/Exchange/hybrid-deployment/hybrid-with-multiple-forests)」を参照してください。 |
 | Skype for Business | 複数のオンプレミス フォレストを使用している場合は、アカウント リソース フォレスト トポロジのみがサポートされます。 詳細については、「[Skype for Business Server 2015 の環境要件](/skypeforbusiness/plan-your-deployment/requirements-for-your-environment/environmental-requirements)」を参照してください。 |
 
-大規模な組織の場合は、[Office 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) 機能を使用することを検討してください。 これにより、ユーザーのリソースが配置されているデータ センターのリージョンを定義できます。
+大規模な組織の場合は、[Microsoft 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) 機能を使用することを検討してください。 これにより、ユーザーのリソースが配置されているデータ センターのリージョンを定義できます。
 
 ## <a name="staging-server"></a>ステージング サーバー
 ![トポロジでのステージング サーバー](./media/plan-connect-topologies/MultiForestStaging.png)

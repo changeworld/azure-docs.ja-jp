@@ -1,6 +1,6 @@
 ---
 title: Azure Data Factory でサポートされるコンピューティング環境
-description: Azure Data Factory パイプライン (Azure HDInsight など) でデータの変換または処理に使うことができるコンピューティング環境について説明します。
+description: Azure Data Factory パイプライン (Azure HDInsight など) でデータの変換または処理に使用できるコンピューティング環境。
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -10,12 +10,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.date: 05/08/2019
-ms.openlocfilehash: 98f3c96fe1d1e8dd0f73d0441db8319fc2241cd7
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 3d8e667cd96cc6d7091682a4530633588591d3a4
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563740"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483191"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされるコンピューティング環境
 
@@ -33,7 +33,7 @@ ms.locfileid: "87563740"
 | [Azure Machine Learning](#azure-machine-learning-linked-service) | [Azure Machine Learning 実行パイプライン](transform-data-machine-learning-service.md) |
 | [Azure Machine Learning](#azure-machine-learning-linked-service) | [Azure Machine Learning 実行パイプライン](transform-data-machine-learning-service.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md) |
-| [Azure SQL](#azure-sql-database-linked-service)、[Azure SQL Data Warehouse](#azure-sql-data-warehouse-linked-service)、[SQL Server](#sql-server-linked-service) | [ストアド プロシージャ](transform-data-using-stored-procedure.md) |
+| [Azure SQL](#azure-sql-database-linked-service)、[Azure Synapse Analytics (旧称 SQL Data Warehouse)](#azure-synapse-analytics-linked-service)、[SQL Server](#sql-server-linked-service) | [ストアド プロシージャ](transform-data-using-stored-procedure.md) |
 | [Azure Databricks](#azure-databricks-linked-service)         | [Notebook](transform-data-databricks-notebook.md)、[Jar](transform-data-databricks-jar.md)、[Python](transform-data-databricks-python.md) |
 | [Azure 関数](#azure-function-linked-service)         | [Azure 関数アクティビティ](control-flow-azure-function-activity.md)
 >  
@@ -265,7 +265,7 @@ D4 サイズのヘッド ノードとワーカー ノードを作成する場合
 * Azure Batch
 * Azure Machine Learning
 * Azure Data Lake Analytics
-* Azure SQL DB、Azure SQL DW、SQL Server
+* Azure SQL DB、Azure Synapse Analytics、SQL Server
 
 ## <a name="azure-hdinsight-linked-service"></a>Azure HDInsight のリンクされたサービス
 Azure HDInsight の「リンクされたサービス」を作成し、独自の HDInsight クラスターを Data Factory に登録できます。
@@ -562,9 +562,9 @@ Azure Machine Learning のリンクされたサービスを作成して、Azure 
 
 Azure SQL のリンクされたサービスを作成し、 [ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md) で使用して、Data Factory パイプラインからストアド プロシージャを起動します。 このリンクされたサービスの詳細については、 [Azure SQL コネクタ](connector-azure-sql-database.md#linked-service-properties) に関する記事を参照してください。
 
-## <a name="azure-sql-data-warehouse-linked-service"></a>Azure SQL Data Warehouse のリンクされたサービス
+## <a name="azure-synapse-analytics-linked-service"></a>Azure Synapse Analytics のリンクされたサービス
 
-Azure SQL Data Warehouse のリンクされたサービスを作成し、 [ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md) で使用して、Data Factory パイプラインからストアド プロシージャを起動します。 このリンクされたサービスの詳細については、 [Azure SQL Data Warehouse コネクタ](connector-azure-sql-data-warehouse.md#linked-service-properties) に関する記事をご覧ください。
+Azure Synapse Analytics (旧称 SQL Data Warehouse) のリンクされたサービスを作成し、[ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md)で使用して、Data Factory パイプラインからストアド プロシージャを起動します。 このリンクされたサービスの詳細については、[Azure Synapse Analytics (旧称 SQL Data Warehouse) コネクタ](connector-azure-sql-data-warehouse.md#linked-service-properties) に関する記事をご覧ください。
 
 ## <a name="sql-server-linked-service"></a>SQL Server のリンクされたサービス
 

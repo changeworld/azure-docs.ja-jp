@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: f35a43e9cbffb2613f7a98e02b03840c774e5999
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: a52dd48bb97c8e7979771bdc2dbb50654493b088
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708157"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972605"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>Azure Database for MariaDB のルート CA の変更について
 
@@ -122,8 +122,28 @@ Azure Database for MariaDB によって使用されるこれらの証明書は�
 ### <a name="11-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-master-server-or-the-read-replicas"></a>11.読み取りレプリカを使用している場合、この更新を行う必要があるのはマスター サーバーだけですか、または読み取りレプリカでも必要ですか?
 この更新はクライアント側の変更であるため、レプリカ サーバーからデータを読み取るためにクライアントを使用している場合は、それらのクライアントにも変更を適用する必要があります。
 
-### <a name="12-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>12.SSL が使用されているかどうかを確認するためのサーバー側クエリはありますか?
+### <a name="12-if-i-am-using-data-in-replication-do-i-need-to-perform-any-action"></a>12.データイン レプリケーションを使用している場合は、何かアクションを実行する必要がありますか?
+[データイン レプリケーション](concepts-data-in-replication.md)を使用して Azure Database for MySQL に接続している場合は、次の 2 つの点を考慮する必要があります。
+*   仮想マシン (オンプレミスまたは Azure 仮想マシン) から Azure Database for MySQL へのデータ レプリケーションの場合は、レプリカを作成するために SSL が使用されているかどうかを確認する必要があります。 **SHOW SLAVE STATUS** を実行し、次の設定を確認します。  
+
+    ```azurecli-interactive
+    Master_SSL_Allowed            : Yes
+    Master_SSL_CA_File            : ~\azure_mysqlservice.pem
+    Master_SSL_CA_Path            :
+    Master_SSL_Cert               : ~\azure_mysqlclient_cert.pem
+    Master_SSL_Cipher             :
+    Master_SSL_Key                : ~\azure_mysqlclient_key.pem
+    ```
+
+    CA_file、SSL_Cert、SSL_Key に対して証明書が提供されていることがわかった場合は、[新しい証明書](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)を追加してファイルを更新する必要があります。
+
+*   2 つの Azure Database for MySQL 間のデータ レプリケーションの場合は、**CALL mysql.az_replication_change_master** を実行し、最後のパラメーター [master_ssl_ca](howto-data-in-replication.md#link-the-master-and-replica-servers-to-start-data-in-replication) として新しいデュアル ルート証明書を指定することによってレプリカをリセットする必要があります。
+
+### <a name="13-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>13.SSL が使用されているかどうかを確認するためのサーバー側クエリはありますか?
 サーバーへの接続に SSL 接続を使用しているかどうかを確認するには、[SSL の検証](howto-configure-ssl.md#verify-the-ssl-connection)に関する記事を参照してください。
 
-### <a name="13-what-if-i-have-further-questions"></a>13.さらに質問がある場合はどうすればよいですか?
-質問がある場合は、[Microsoft Q&A](mailto:AzureDatabaseformariadb@service.microsoft.com) でコミュニティの専門家から回答を得ることができます。 サポート プランをお持ちで技術的なヘルプが必要な場合は、[こちらまでお問い合わせください](mailto:AzureDatabaseformariadb@service.microsoft.com)
+### <a name="14-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>14. 証明書ファイルに DigiCertGlobalRootG2 が既に含まれている場合、必要なアクションはありますか?
+いいえ。 証明書ファイルに **DigiCertGlobalRootG2** が既に含まれている場合、必要なアクションはありません。
+
+### <a name="15-what-if-i-have-further-questions"></a>15. さらに質問がある場合はどうすればよいですか?
+質問がある場合は、[Microsoft Q&A](mailto:AzureDatabaseformariadb@service.microsoft.com) でコミュニティの専門家から回答を得ることができます。 サポート プランに加入していて技術的な支援が必要な場合は、[お問い合わせください](mailto:AzureDatabaseformariadb@service.microsoft.com)。

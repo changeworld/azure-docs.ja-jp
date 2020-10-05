@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2020
 ms.author: memildin
-ms.openlocfilehash: e378ffe00be9215c692a832e232fac7e866ab3c9
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: faa61dc351bebd3d2a85ad229036e5b9fba9256e
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890826"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514613"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>未解決の DNS エントリを防ぎ、サブドメインの乗っ取りを回避する
 
@@ -27,27 +27,33 @@ ms.locfileid: "88890826"
 
 ## <a name="what-is-subdomain-takeover"></a>サブドメインの乗っ取りとは
 
-サブドメインの乗っ取りは、多くのリソースを定期的に作成したり削除したりする組織にとって、重大度の高い一般的な脅威です。 サブドメインの乗っ取りは、プロビジョニング解除された Azure リソースを参照する DNS レコードがある場合に発生する可能性があります。 このような DNS レコードは、"未解決の DNS" エントリとも呼ばれます。 CNAME レコードは、この脅威に対して特に脆弱です。
+サブドメインの乗っ取りは、多くのリソースを定期的に作成したり削除したりする組織にとって、重大度の高い一般的な脅威です。 サブドメインの乗っ取りは、プロビジョニング解除された Azure リソースを参照する [DNS レコード](https://docs.microsoft.com/azure/dns/dns-zones-records#dns-records)がある場合に発生する可能性があります。 このような DNS レコードは、"未解決の DNS" エントリとも呼ばれます。 CNAME レコードは、この脅威に対して特に脆弱です。 サブドメインの乗っ取りが発生すると、悪意のあるアクターが悪意のあるアクティビティを実行しているサイトに、組織のドメイン向けのトラフィックをリダイレクトできるようになります。
 
 サブドメインの乗っ取りの一般的なシナリオは次のとおりです。
 
-1. Web サイトが作成されます。 
+1. **作成:**
 
-    この例では、 `app-contogreat-dev-001.azurewebsites.net`です。
+    1. `app-contogreat-dev-001.azurewebsites.net` の完全修飾ドメイン名 (FQDN) を使用して、Azure リソースをプロビジョニングします。
 
-1. この Web サイトを指す CNAME エントリが DNS に追加されます。 
+    1. Azure リソースにトラフィックをルーティングするサブドメイン `greatapp.contoso.com` を使用して、DNS ゾーンに CNAME レコードを割り当てます。
 
-    この例では、次のフレンドリ名が作成されました: `greatapp.contoso.com`。
+1. **プロビジョニング解除:**
 
-1. 数か月後、サイトは不要になったため、対応する DNS エントリを削除**せずに** Web サイトが削除されました。 
+    1. Azure リソースは、不要になるとプロビジョニング解除または削除されます。 
+    
+        この時点で、CNAME レコード `greatapp.contoso.com` を DNS ゾーンから削除する*必要があります*。 CNAME レコードが削除されていない場合でも、アクティブなドメインとして公開されますが、トラフィックはアクティブな Azure リソースにルーティングされません。 これは、"未解決の" DNS レコードの定義です。
 
-    CNAME DNS エントリは、これで "未解決" になります。
+    1. 未解決のサブドメイン `greatapp.contoso.com` が現在脆弱であり、別の Azure サブスクリプションのリソースに割り当てられることで乗っ取られる可能性があります。
 
-1. サイトが削除されると、脅威アクターは即座に不足しているサイトを検出し、`app-contogreat-dev-001.azurewebsites.net` に独自の Web サイトを作成します。
+1. **乗っ取り:**
 
-    これで、`greatapp.contoso.com` に向けたトラフィックが脅威アクターの Azure サイトに送信され、脅威アクターが表示されるコンテンツを制御できるようになります。 
+    1. 脅威アクターが一般的に使用可能な方法とツールを使用して、未解決のサブドメインを検出します。  
 
-    未解決の DNS が悪用され、Contoso のサブドメイン "GreatApp" がサブドメインの乗っ取りの対象となりました。 
+    1. 脅威アクターは、以前に管理していたリソースと同じ FQDN を使用して Azure リソースをプロビジョニングします。 この例では、 `app-contogreat-dev-001.azurewebsites.net`です。
+
+    1. この時点で、サブドメイン `myapp.contoso.com` に送信されるトラフィックは、コンテンツが制御される悪意のあるアクターのリソースにルーティングされます。
+
+
 
 ![プロビジョニング解除された Web サイトからのサブドメインの乗っ取り](./media/subdomain-takeover/subdomain-takeover.png)
 
@@ -63,17 +69,85 @@ DNS レコードが使用できないリソースへポイントしている場�
 
 - **疑いを持たないサイト閲覧者からの Cookie 収集** - Web アプリでは、セッション Cookie をサブドメイン (*.contoso.com) に公開するのが一般的です。そのため、どのサブドメインからでもアクセスできるようになっています。 脅威アクターは、サブドメインの乗っ取りを使用して、本物に似せた検索ページを作成し、疑いを持たないユーザーを騙してアクセスさせることで Cookie (セキュリティで保護されているものも含む) を収集することができます。 よくある誤解は、SSL 証明書を使用することで、サイトとユーザーの Cookie を乗っ取りから保護できるというものです。 しかし、脅威アクターはハイジャックしたサブドメインを使用して、有効な SSL 証明書を適用して受け取ることができます。 有効な SSL 証明書により、セキュリティで保護された Cookie へのアクセスが許可され、悪意のあるサイトの見かけの正当性をさらに向上させることになります。
 
-- **フィッシング キャンペーン** - 本物に見せかけたサブドメインは、フィッシング キャンペーンで使用されることがあります。 これは、悪意のあるサイトや、脅威アクターが既知の安全なブランドの正当なサブドメイン宛ての電子メールを受信できるようにする MX レコードに対しても当てはまります。
+- **フィッシング キャンペーン** - 本物に見せかけたサブドメインは、フィッシング キャンペーンで使用される可能性があります。 これは、悪意のあるサイトや、脅威アクターが既知の安全なブランドの正当なサブドメイン宛ての電子メールを受信できるようにする MX レコードに当てはまります。
 
-- **さらなるリスク** - 悪意のあるサイトは、XSS、CSRF、CORS バイパスなどの他の古典的な攻撃にエスカレートさせるために使用できます。
+- **さらなるリスク** - 悪意のあるサイトは、XSS、CSRF、CORS バイパスなどの他の古典的な攻撃にエスカレートさせるために使用される可能性があります。
 
 
 
-## <a name="preventing-dangling-dns-entries"></a>未解決の DNS エントリの防止
+## <a name="identify-dangling-dns-entries"></a>未解決の DNS エントリを特定する
+
+未解決の可能性がある組織内の DNS エントリを特定するには、Microsoft の GitHub でホストされた PowerShell ツール ["DanglingDnsRecords"](https://aka.ms/DanglingDNSDomains) を使用します。
+
+このツールを使用すると、Azure の顧客がサブスクリプションまたはテナントで作成された既存の Azure リソースに CNAME が関連付けられているすべてのドメインを一覧表示できます。
+
+CNAME が他の DNS サービス内にあり、Azure リソースを示している場合は、入力ファイルの CNAME をツールに指定します。
+
+このツールでは、以下の表に示す Azure リソースがサポートされています。 このツールでは、すべてのテナントの CNAME が抽出されるか、または入力として処理されます。
+
+
+| サービス                   | 種類                                        | FQDNproperty                               | 例                         |
+|---------------------------|---------------------------------------------|--------------------------------------------|---------------------------------|
+| Azure Front Door          | microsoft.network/frontdoors                | properties.cName                           | `abc.azurefd.net`               |
+| Azure Blob Storage        | microsoft.storage/storageaccounts           | properties.primaryEndpoints.blob           | `abc. blob.core.windows.net`    |
+| Azure CDN                 | microsoft.cdn/profiles/endpoints            | properties.hostName                        | `abc.azureedge.net`             |
+| パブリック IP アドレス       | microsoft.network/publicipaddresses         | properties.dnsSettings.fqdn                | `abc.EastUs.cloudapp.azure.com` |
+| Azure の Traffic Manager     | microsoft.network/trafficmanagerprofiles    | properties.dnsConfig.fqdn                  | `abc.trafficmanager.net`        |
+| Azure Container Instances  | microsoft.containerinstance/containergroups | properties.ipAddress.fqdn                  | `abc.EastUs.azurecontainer.io`  |
+| Azure API Management      | microsoft.apimanagement/service             | properties.hostnameConfigurations.hostName | `abc.azure-api.net`             |
+| Azure App Service         | microsoft.web/sites                         | properties.defaultHostName                 | `abc.azurewebsites.net`         |
+| Azure App Service - Slots | microsoft.web/sites/slots                   | properties.defaultHostName                 | `abc-def.azurewebsites.net`     |
+
+
+
+### <a name="prerequisites"></a>前提条件
+
+次のものを持つユーザーとして、クエリを実行します。
+
+- 少なくとも Azure サブスクリプションへの閲覧者レベルのアクセス権
+- Azure Resource Graph への読み取りアクセス権
+
+組織のテナントのグローバル管理者である場合は、「[Azure のすべてのサブスクリプションと管理グループを管理する目的でアクセス権を昇格させる](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin)」のガイダンスを使用して、組織のすべてのサブスクリプションへのアクセス権が付与されるようにアカウントを昇格させます。
+
+
+> [!TIP]
+> Azure Resource Graph には、大規模な Azure 環境を使用している場合に考慮する必要がある調整およびページングの制限があります。 大規模な Azure リソース データセットを処理する方法について[参照してください](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data)。 
+> 
+> このツールでは、サブスクリプションのバッチ処理を使用してこれらの制限を回避しています。
+
+### <a name="run-the-script"></a>スクリプトを実行する
+
+スクリプトには 2 つのバージョンがあり、両方のバージョンで同じ入力パラメーターが使用され、同様の出力が生成されます。
+
+|スクリプト  |情報  |
+|---------|---------|
+|**Get-DanglingDnsRecordsPsCore.ps1**    |並列モードは、PowerShell バージョン 7 以降でのみサポートされています。それ以外のバージョンでは、シリアル モードが実行されます。|
+|**Get-DanglingDnsRecordsPsDesktop.ps1** |このスクリプトでは [Windows Workflow](https://docs.microsoft.com/dotnet/framework/windows-workflow-foundation/overview) が使用されるため、PowerShell デスクトップ/バージョン 6 未満でのみサポートされています。|
+
+詳細については、GitHub https://aka.ms/DanglingDNSDomains から PowerShell スクリプトをダウンロードしてください。
+
+## <a name="remediate-dangling-dns-entries"></a>未解決の DNS エントリを修復する 
+
+DNS ゾーンをレビューし、未解決の CNAME レコードまたは乗っ取られている CNAME レコードを特定します。 サブドメインが未解決であるか、または乗っ取られていることが判明した場合は、次の手順に従って、脆弱なサブドメインを削除して、リスクを軽減します。
+
+1. DNS ゾーンから、プロビジョニングされなくなったリソースの FQDN を示す CNAME レコードをすべて削除します。
+
+1. コントロール内のリソースにトラフィックをルーティングできるようにするには、未解決のサブドメインの CNAME レコードに指定されている FQDN を使用して、追加のリソースをプロビジョニングします。
+
+1. アプリケーション コードで特定のサブドメインへの参照をレビューし、誤ったサブドメイン参照や古いサブドメイン参照を更新します。
+
+1. 侵害が発生しているかどうかを調査し、組織のインシデント対応手順に従って対処します。 この問題を調査するためのヒントとベストプラクティスについては、以下をご覧ください。
+
+    アプリケーション ロジックで OAuth 資格情報などのシークレットが未解決のサブドメインに送信された場合や、機密性の高い情報が未解決のサブドメインに送信された場合は、そのデータがサードパーティに公開されている可能性があります。
+
+1. リソースのプロビジョニングが解除されたときに、CNAME レコードが DNS ゾーンから削除されなかった理由について理解し、今後は Azure リソースのプロビジョニングが解除されたときに、DNS レコードが適切に更新されるようにするための手順を実行します。
+
+
+## <a name="prevent-dangling-dns-entries"></a>未解決の DNS エントリを防止する
 
 未解決の DNS エントリと、その結果として生じるサブドメインの乗っ取りを防止するためのプロセスを組織で導入していることを確認することは、セキュリティ プログラムの重要な部分です。
 
-現在使用できる予防策を以下に示します。
+一部の Azure サービスでは、予防策の作成に役立つ機能が提供されています。詳細については、以下で説明します。 この問題を防止するための他の方法は、組織のベスト プラクティスまたは標準の操作手順に従って確立する必要があります。
 
 
 ### <a name="use-azure-dns-alias-records"></a>Azure DNS エイリアス レコードの使用
@@ -121,110 +195,6 @@ Azure App Service の DNS エントリを作成する場合は、Domain Verifica
         - 所有者が自分であるかどうか - DNS サブドメインが対象としているすべてのリソースを所有していることを確認します。
 
     - Azure の完全修飾ドメイン名 (FQDN) エンドポイントとアプリケーション所有者のサービス カタログを維持します。 サービス カタログをビルドするには、次の Azure Resource Graph クエリ スクリプトを実行します。 このスクリプトからは、アクセスできるリソースの FQDN エンドポイント情報が表示され、それらが CSV ファイルに出力されます。 テナントのあらゆるサブスクリプションにアクセスできる場合、このスクリプトでは、次のサンプル スクリプトで確認できるように、それらすべてのサブスクリプションが考慮されます。 特定のサブスクリプション セットに結果を制限するには、画像のようにスクリプトを編集します。
-
-        >[!IMPORTANT]
-        > **アクセス許可** - すべての Azure サブスクリプションにアクセスできるユーザーとしてクエリを実行します。 
-        >
-        > **制限** - Azure Resource Graph には、大規模な Azure 環境を使用している場合に考慮する必要がある調整およびページングの制限があります。 大規模な Azure リソース データセットを処理する方法について[参照してください](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data)。 次のサンプル スクリプトでは、サブスクリプションのバッチ処理を使用してこれらの制限を回避しています。
-
-        ```powershell
-        
-            # Fetch the full array of subscription IDs.
-            $subscriptions = Get-AzSubscription
-
-            $subscriptionIds = $subscriptions.Id
-                    # Output file path and names
-                    $date = get-date
-                    $fdate = $date.ToString("MM-dd-yyy hh_mm_ss tt")
-                    $fdate #log to console
-                    $rpath = [Environment]::GetFolderPath("MyDocuments") + '\' # Feel free to update your path.
-                    $rname = 'Tenant_FQDN_Report_' + $fdate + '.csv' # Feel free to update the document name.
-                    $fpath = $rpath + $rname
-                    $fpath #This is the output file of FQDN report.
-
-            # queries
-            $allTypesFqdnsQuery = "where type in ('microsoft.network/frontdoors',
-                                    'microsoft.storage/storageaccounts',
-                                    'microsoft.cdn/profiles/endpoints',
-                                    'microsoft.network/publicipaddresses',
-                                    'microsoft.network/trafficmanagerprofiles',
-                                    'microsoft.containerinstance/containergroups',
-                                    'microsoft.web/sites',
-                                    'microsoft.web/sites/slots')
-                        | extend FQDN = case(
-                            type =~ 'microsoft.network/frontdoors', properties['cName'],
-                            type =~ 'microsoft.storage/storageaccounts', parse_url(tostring(properties['primaryEndpoints']['blob'])).Host,
-                            type =~ 'microsoft.cdn/profiles/endpoints', properties['hostName'],
-                            type =~ 'microsoft.network/publicipaddresses', properties['dnsSettings']['fqdn'],
-                            type =~ 'microsoft.network/trafficmanagerprofiles', properties['dnsConfig']['fqdn'],
-                            type =~ 'microsoft.containerinstance/containergroups', properties['ipAddress']['fqdn'],
-                            type =~ 'microsoft.web/sites', properties['defaultHostName'],
-                            type =~ 'microsoft.web/sites/slots', properties['defaultHostName'],
-                            '')
-                        | project id, type, name, FQDN
-                        | where isnotempty(FQDN)";
-
-            $apiManagementFqdnsQuery = "where type =~ 'microsoft.apimanagement/service'
-                        | project id, type, name,
-                            gatewayUrl=parse_url(tostring(properties['gatewayUrl'])).Host,
-                            portalUrl =parse_url(tostring(properties['portalUrl'])).Host,
-                            developerPortalUrl = parse_url(tostring(properties['developerPortalUrl'])).Host,
-                            managementApiUrl = parse_url(tostring(properties['managementApiUrl'])).Host,
-                            gatewayRegionalUrl = parse_url(tostring(properties['gatewayRegionalUrl'])).Host,
-                            scmUrl = parse_url(tostring(properties['scmUrl'])).Host,
-                            additionaLocs = properties['additionalLocations']
-                        | mvexpand additionaLocs
-                        | extend additionalPropRegionalUrl = tostring(parse_url(tostring(additionaLocs['gatewayRegionalUrl'])).Host)
-                        | project id, type, name, FQDN = pack_array(gatewayUrl, portalUrl, developerPortalUrl, managementApiUrl, gatewayRegionalUrl, scmUrl,             
-                            additionalPropRegionalUrl)
-                        | mvexpand FQDN
-                        | where isnotempty(FQDN)";
-
-            $queries = @($allTypesFqdnsQuery, $apiManagementFqdnsQuery);
-
-            # Paging helper cursor
-            $Skip = 0;
-            $First = 1000;
-
-            # If you have large number of subscriptions, process them in batches of 2,000.
-            $counter = [PSCustomObject] @{ Value = 0 }
-            $batchSize = 2000
-            $response = @()
-
-            # Group the subscriptions into batches.
-            $subscriptionsBatch = $subscriptionIds | Group -Property { [math]::Floor($counter.Value++ / $batchSize) }
-
-            foreach($query in $queries)
-            {
-                # Run the query for each subscription batch with paging.
-                foreach ($batch in $subscriptionsBatch)
-                { 
-                    $Skip = 0; #Reset after each batch.
-
-                    $response += do { Start-Sleep -Milliseconds 500;   if ($Skip -eq 0) {$y = Search-AzGraph -Query $query -First $First -Subscription $batch.Group ; } `
-                    else {$y = Search-AzGraph -Query $query -Skip $Skip -First $First -Subscription $batch.Group } `
-                    $cont = $y.Count -eq $First; $Skip = $Skip + $First; $y; } while ($cont)
-                }
-            }
-
-            # View the completed results of the query on all subscriptions
-            $response | Export-Csv -Path $fpath -Append  
-
-        ```
-
-        前の Resource Graph クエリに指定されている型とその `FQDNProperty` 値の一覧:
-
-        |リソース名  | `<ResourceType>`  | `<FQDNproperty>`  |
-        |---------|---------|---------|
-        |Azure Front Door|microsoft.network/frontdoors|properties.cName|
-        |Azure Blob Storage|microsoft.storage/storageaccounts|properties.primaryEndpoints.blob|
-        |Azure CDN|microsoft.cdn/profiles/endpoints|properties.hostName|
-        |パブリック IP アドレス|microsoft.network/publicipaddresses|properties.dnsSettings.fqdn|
-        |Azure の Traffic Manager|microsoft.network/trafficmanagerprofiles|properties.dnsConfig.fqdn|
-        |Azure Container Instances|microsoft.containerinstance/containergroups|properties.ipAddress.fqdn|
-        |Azure API Management|microsoft.apimanagement/service|properties.hostnameConfigurations.hostName|
-        |Azure App Service|microsoft.web/sites|properties.defaultHostName|
-        |Azure App Service - Slots|microsoft.web/sites/slots|properties.defaultHostName|
 
 
 - **修復手順を作成する:**

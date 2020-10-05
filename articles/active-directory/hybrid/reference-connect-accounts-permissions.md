@@ -17,12 +17,12 @@ ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ccffe5e6e12d828acb4ced46bf3abf36113c588
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 28fc05be7a5b54713aec8c4f830eeb2f7e6a251c
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276492"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662336"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect:アカウントとアクセス許可
 
@@ -149,7 +149,7 @@ AD DS コネクタ アカウントは、Windows Server AD の読み取りと書�
 | Exchange メールのパブリック フォルダー |パブリック フォルダーに関して、「[Exchange メールのパブリック フォルダー](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder)」に記載された属性への読み取りアクセス許可。 | 
 | パスワードの書き戻し |ユーザー向けの「[パスワード管理の概要](../authentication/tutorial-enable-sspr-writeback.md)」に記載された属性への書き込みアクセス許可。 |
 | デバイスの書き戻し |「[デバイスの書き戻し](how-to-connect-device-writeback.md)」に説明されているように、PowerShell スクリプトを使用して付与されたアクセス許可。 |
-| グループの書き戻し |**Office 365 グループ**を Exchange がインストールされているフォレストに書き戻すことができます。|
+| グループの書き戻し |**Microsoft 365 グループ**を Exchange がインストールされているフォレストに書き戻すことができます。|
 
 ## <a name="upgrade"></a>アップグレード
 Azure AD Connect のいずれかのバージョンから新しいリリースにアップグレードする場合、次のアクセス許可が必要です。

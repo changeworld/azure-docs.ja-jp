@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: ac08f2cee19b2d8860323c48d89205d5ca939157
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: c09c5b33f7960ffebfdfc8005537e75a249b8d99
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922805"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661102"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Azure Cognitive Search の価格レベルの選択
 
@@ -39,7 +39,7 @@ Azure Cognitive Search サービスを作成すると、サービスの有効期
 
 レベルは次の方法で区別されます。
 
-+ 作成できるインデックスとインデクサーの数
++ インデックスおよびインデクサーの数量 (上限)
 + パーティション (物理ストレージ) のサイズと速度
 
 選択したレベルによって課金対象のレートが決まります。 次の Azure portal のスクリーンショットは、使用可能なレベルを示しています。価格は除外されていますが、ポータルと[価格に関するページ](https://azure.microsoft.com/pricing/details/search/)で確認できます。 最も一般的なレベルは、**Free**、**Basic**、**Standard** です。

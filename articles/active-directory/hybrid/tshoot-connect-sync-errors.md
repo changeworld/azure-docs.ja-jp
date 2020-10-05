@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1279ef9b8767ba05f329678429dff40f9bfed640
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 5bd779c26cd523bbf33fa1be6c87f21b4415c152
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89280115"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016420"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>同期中のエラーのトラブルシューティング
 エラーが発生する可能性があるのは、Windows Server Active Directory (AD DS) と Azure Active Directory (Azure AD) で ID データが同期されているときです。 この記事では、さまざまな種類の同期エラーの概要、これらのエラーを引き起こすシナリオ、エラーを修正する方法について説明します。 この記事では一般的なエラーの種類を取り上げます。発生する可能性があるすべてのエラーについて説明するものではありません。
@@ -106,17 +106,17 @@ Azure AD Connect Health for sync の同期エラーレポートは 30 分ごと�
 >
 
 #### <a name="related-articles"></a>関連記事
-* [Office 365 でのディレクトリ同期を妨げる重複または無効な属性に関する記事](https://support.microsoft.com/kb/2647098)
+* [Microsoft 365 でのディレクトリ同期を妨げる重複または無効な属性に関する記事](https://support.microsoft.com/kb/2647098)
 
 ### <a name="objecttypemismatch"></a>ObjectTypeMismatch
 #### <a name="description"></a>説明
 Azure AD が 2 つのオブジェクトのあいまい一致を試行するとき、"オブジェクトの種類" (ユーザー、グループ、連絡先など) が異なる 2 つのオブジェクトで、あいまい一致の実行に使用される属性の値が同一である場合があります。 これらの属性の重複は Azure AD では許可されないため、この操作は "ObjectTypeMismatch" 同期エラーで終了します。
 
 #### <a name="example-scenarios-for-objecttypemismatch-error"></a>ObjectTypeMismatch エラーのシナリオ例
-* メール対応セキュリティ グループが Office 365 で作成されます。 管理者は、ProxyAddresses 属性の値が Office 365 グループと同じ新しいユーザーまたは連絡先をオンプレミス ADに追加します (まだ Azure AD に同期されません)。
+* メール対応セキュリティ グループが Microsoft 365 で作成されます。 管理者は、ProxyAddresses 属性の値が Microsoft 365 グループと同じ新しいユーザーまたは連絡先をオンプレミス AD に追加します (まだ Azure AD に同期されません)。
 
 #### <a name="example-case"></a>事例
-1. 管理者が、税部門のために新しいメール対応セキュリティ グループを Office 365 に作成し、電子メール アドレスを tax@contoso.com と設定します。 このグループには、**smtp: tax\@contoso.com** の ProxyAddresses 属性値が割り当てられています。
+1. 管理者が、税部門のために新しいメール対応セキュリティ グループを Microsoft 365 に作成し、電子メール アドレスを tax@contoso.com と設定します。 このグループには、**smtp: tax\@contoso.com** の ProxyAddresses 属性値が割り当てられています。
 2. 新しいユーザーが Contoso.com に加わり、そのユーザーのアカウントが proxyAddress を **smtp: tax\@contoso.com** としてオンプレミスに作成されます。
 3. Azure AD Connect が新しいユーザー アカウントを同期するとき、"ObjectTypeMismatch" エラーが生成されます。
 
@@ -164,7 +164,7 @@ AttributeValueMustBeUnique エラーの最も一般的な理由は、2 つのオ
 4. オンプレミス AD で変更を行った場合は、エラーを修正するために Azure AD Connect で変更を同期します。
 
 #### <a name="related-articles"></a>関連記事
--[Office 365 でのディレクトリ同期を妨げる重複または無効な属性に関する記事](https://support.microsoft.com/kb/2647098)
+-[Microsoft 365 でのディレクトリ同期を妨げる重複または無効な属性に関する記事](https://support.microsoft.com/kb/2647098)
 
 ## <a name="data-validation-failures"></a>データ検証の失敗
 ### <a name="identitydatavalidationfailed"></a>IdentityDataValidationFailed
@@ -179,7 +179,7 @@ b. UserPrincipalName 属性が必要な形式ではありません。
 a. userPrincipalName 属性の文字がサポートされており、必要な形式であることを確認します。
 
 #### <a name="related-articles"></a>関連記事
-* [Office 365 へのディレクトリ同期を通してユーザーをプロビジョニングするための準備](https://support.office.com/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)
+* [Microsoft 365 へのディレクトリ同期を通してユーザーをプロビジョニングするための準備](https://support.office.com/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)
 
 ### <a name="federateddomainchangeerror"></a>FederatedDomainChangeError
 #### <a name="description"></a>説明

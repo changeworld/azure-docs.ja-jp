@@ -3,14 +3,14 @@ title: Azure Automation Hybrid Runbook Worker の概要
 description: この記事では、ローカル データ センターまたはクラウド プロバイダー内のコンピューターで Runbook を実行できるようにする Hybrid Runbook Worker の概要について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 07/16/2020
+ms.date: 09/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4d29979e28140b728478d405db934cb41783f4b0
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: f5dc9305df8ce0e26e13738d605849fa75cc53a7
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448087"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087892"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Hybrid Runbook Worker の概要
 
@@ -63,7 +63,7 @@ Azure Automation と、Log Analytics エージェントを実行しているマ�
 
 ### <a name="firewall-use"></a>ファイアウォールの使用
 
-ファイアウォールを使用してインターネットへのアクセスを制限する場合は、アクセスを許可するようにファイアウォールを構成する必要があります。 Log Analytics ゲートウェイをプロキシとして使用した場合、Hybrid Runbook Worker 用に構成されていることを確認してください。 [Automation Hybrid Worker に向けた Log Analytics ゲートウェイの構成](../azure-monitor/platform/gateway.md)に関するセクションを参照してください。
+ファイアウォールを使用してインターネットへのアクセスを制限する場合は、アクセスを許可するようにファイアウォールを構成する必要があります。 Log Analytics ゲートウェイをプロキシとして使用した場合、Hybrid Runbook Worker 用に構成されていることを確認してください。 [Automation Hybrid Runbook Worker 用の Log Analytics ゲートウェイの構成](../azure-monitor/platform/gateway.md)に関するページをご覧ください。
 
 ### <a name="service-tags"></a>サービス タグ
 
@@ -115,6 +115,20 @@ Hybrid Runbook Worker のホスト コンピューターが再起動された場
 ### <a name="runbook-permissions-for-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker に対する Runbook のアクセス許可
 
 Hybrid Runbook Worker で実行される Runbook は Azure 以外のリソースにアクセスするため、Azure リソースへの認証に Runbook で通常使用される認証メカニズムを使用できません。 Runbook では、ローカル リソースに対して独自の認証を提供するか、または [Azure リソース用のマネージド ID](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager) を使用して認証を構成します。 また、すべての Runbook にユーザー コンテキストを提供する実行アカウントを指定することもできます。
+
+## <a name="view-hybrid-runbook-workers"></a>Hybrid Runbook Worker を表示する
+
+Windows サーバーまたは VM で Update Management 機能を有効にしたら、Azure portal 内のシステム Hybrid Runbook Worker グループ一覧のインベントリを作成できます。 選択した Automation アカウントの左側のペインにある **[Hybrid worker groups]\(ハイブリッド worker グループ\)** オプションから **[System hybrid worker groups]\(システム ハイブリッド worker グループ\)** タブを選択することにより、ポータル内で最大 2,000 の worker を表示できます。
+
+:::image type="content" source="./media/automation-hybrid-runbook-worker/system-hybrid-workers-page.png" alt-text="Automation アカウントの [System hybrid worker groups]\(システム ハイブリッド worker グループ\) ページ" border="false" lightbox="./media/automation-hybrid-runbook-worker/system-hybrid-workers-page.png":::
+
+ハイブリッド worker の数が 2,000 を超えている場合、そのすべての一覧を取得するには、次の PowerShell スクリプトを実行します。
+
+```powershell
+"Get-AzSubscription -SubscriptionName "<subscriptionName>" | Set-AzContext
+$workersList = (Get-AzAutomationHybridWorkerGroup -ResourceGroupName "<resourceGroupName>" -AutomationAccountName "<automationAccountName>").Runbookworker
+$workersList | export-csv -Path "<Path>\output.csv" -NoClobber -NoTypeInformation"
+```
 
 ## <a name="next-steps"></a>次のステップ
 

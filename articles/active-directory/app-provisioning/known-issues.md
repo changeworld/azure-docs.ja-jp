@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 08/12/2020
+ms.date: 09/11/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: 23c3dfc6670c96f44a10b2ad5d5bfeb3ff96382c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 2f83679a39f919e5e9932303731560aedd796233
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271007"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052386"
 ---
 # <a name="known-issues-application-provisioning"></a>既知の問題:アプリケーションのプロビジョニング
 アプリのプロビジョニングを使用するときに注意する必要がある既知の問題。 UserVoice のアプリケーション プロビジョニング サービスに関するフィードバックを提供することができます。[Azure AD のアプリケーションのプロビジョニングの UserVoice](https://aka.ms/appprovisioningfeaturerequest) ページを参照してください。 Microsoft では、サービスを改善するために UserVoice を注意深く確認しています。 
@@ -66,7 +66,13 @@ UI のソース属性ドロップダウンにスキーマの拡張機能が表�
 - 入れ子になったグループのプロビジョニングはサポートされていません。 
 - テナントのサイズにより、B2C テナントへのプロビジョニングはサポートされていません。 
 
-**プロビジョニング間隔は固定されています** プロビジョニング サイクル間の[時間](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user#how-long-will-it-take-to-provision-users)は現在構成できません。 
+**OIDC ベースのアプリケーションで自動プロビジョニングを使用できない**
+
+アプリの登録を作成した場合、エンタープライズ アプリ内の対応するサービス プリンシパルが、自動ユーザー プロビジョニングで有効になりません。 ギャラリーにアプリを追加するように要求するか (複数の組織での使用を想定している場合)、プロビジョニング用にギャラリー以外の 2 つ目のアプリを作成する必要があります。 
+
+**プロビジョニングの間隔が固定されている**
+
+プロビジョニング サイクル間の[時間](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user#how-long-will-it-take-to-provision-users)は現在構成できません。 
 
 **変更がターゲット アプリから Azure AD に反映されない**
 

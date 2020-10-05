@@ -4,12 +4,12 @@ description: この記事では、REST API を使用して Azure 仮想マシン
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: f9cd0cca938dac79071d7ded6f6139f4e3c3840d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ad60436d82ccc8049a4509ba5bf1e244bee150ea
+ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011192"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89506680"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>REST API を使用して Azure 仮想マシンを復元する
 
@@ -242,6 +242,30 @@ Azure VM バックアップからのディスクの復元をトリガーする�
     }
   }
 }
+```
+
+### <a name="restore-disks-selectively"></a>選択的にディスクを復元する
+
+[選択的にディスクをバックアップ](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup)している場合は、現在バックアップされているディスク リストが、[回復ポイントの概要](#select-recovery-point)および[詳細な応答](https://docs.microsoft.com/rest/api/backup/recoverypoints/get)に記されます。 ディスクを選択的に復元することもできます。詳細については[こちら](selective-disk-backup-restore.md#selective-disk-restore)を参照してください。 バックアップ ディスクの一覧からディスクを選択的に復元するには、回復ポイントの応答からディスクの LUN を探し、次に示すように、[上記の要求本文](#example-request)に **restoreDiskLunList** プロパティを追加します。
+
+```json
+{
+    "properties": {
+        "objectType": "IaasVMRestoreRequest",
+        "recoveryPointId": "20982486783671",
+        "recoveryType": "RestoreDisks",
+        "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+        "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Storage/storageAccounts/testAccount",
+        "region": "westus",
+        "createNewCloudService": false,
+        "originalStorageAccountOption": false,
+        "encryptionDetails": {
+          "encryptionEnabled": false
+        },
+        "restoreDiskLunList" : [0]
+    }
+}
+
 ```
 
 [上記で](#responses)説明されているように応答を追跡し、実行時間の長いジョブが完了すると、バックアップされていた仮想マシン ("VMConfig.json") のディスクと構成が、特定のストレージ アカウント内に存在しています。

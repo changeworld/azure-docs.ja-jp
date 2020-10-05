@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
 ms.reviewer: arvindh
-ms.openlocfilehash: d3b7dbbb9aab29e083795025ad5bf7381a4fa0ee
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 8968fd54968f3115641d2315a534ba61a247a06d
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231216"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605126"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Azure Active Directory でのアプリケーションのエンド ユーザー エクスペリエンス
 
 Azure Active Directory (Azure AD) には、組織内のエンド ユーザーにアプリケーションをデプロイするためのカスタマイズ可能な方法が複数用意されています。
 
 * Azure AD のマイ アプリ
-* Office 365 アプリケーション起動プログラム
+* Microsoft 365 アプリケーション起動プログラム
 * フェデレーション アプリへの直接サインオン
 * フェデレーション アプリ、パスワードベースのアプリ、または既存のアプリへのディープ リンク
 
@@ -35,13 +35,13 @@ Azure Active Directory (Azure AD) には、組織内のエンド ユーザーに
 
 既定では、すべてのアプリケーションが 1 つのページにまとめて表示されます。 しかし、コレクションを使用して関連するアプリケーションをグループ化し、別々のタブで表示すれば、アプリケーションが見つけやすくなります。 たとえば、コレクションを使用して、特定の担当業務、タスク、プロジェクトなどに関連したアプリケーションの論理グループを作成することができます。 詳細については、「[マイ アプリ ポータルでコレクションを作成する](access-panel-collections.md)」を参照してください。 
 
-マイ アプリは Azure portal から独立しているため、ユーザーが Azure サブスクリプションや Office 365 サブスクリプションを持っている必要はありません。
+マイ アプリは Azure portal から独立しているため、ユーザーが Azure サブスクリプションや Microsoft 365 サブスクリプションを持っている必要はありません。
 
 Azure AD のマイ アプリの詳細については、[マイ アプリの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。
 
-## <a name="office-365-application-launcher"></a>Office 365 アプリケーション起動プログラム
+## <a name="microsoft-365-application-launcher"></a>Microsoft 365 アプリケーション起動プログラム
 
-Office 365 をデプロイしている組織では、Azure AD を介してユーザーに割り当てられているアプリケーションは Office 365 ポータル ([https://portal.office.com/myapps](https://portal.office.com/myapps)) にも表示されます。 これにより、組織のユーザーは、2 つ目のポータルを使用することなく簡単かつ手軽にアプリを起動できます。これは、Office 365 を使用する組織に対して推奨されるアプリ起動ソリューションです。
+Microsoft 365 をデプロイしている組織では、Azure AD を介してユーザーに割り当てられているアプリケーションは Office 365 ポータル ([https://portal.office.com/myapps](https://portal.office.com/myapps)) にも表示されます。 これにより、組織のユーザーは、2 つ目のポータルを使用することなく簡単かつ手軽にアプリを起動できます。これは、Microsoft 365 を使用する組織に対して推奨されるアプリ起動ソリューションです。
 
 Office 365 アプリケーション起動プログラムの詳細については、 [Office 365 アプリ起動プログラムにアプリを表示する方法](https://msdn.microsoft.com/office/office365/howto/connect-your-app-to-o365-app-launcher)に関するページを参照してください。
 
@@ -53,7 +53,7 @@ SAML 2.0、WS-Federation、または OpenID Connect をサポートするほと�
 
 Azure AD では、パスワードベースのシングル サインオン、リンクされたシングル サインオン、任意の形式のフェデレーション シングル サインオンをサポートする個々のアプリケーションへの直接シングル サインオン リンクもサポートされます。
 
-これらのリンクは、特定のアプリケーションについてユーザーを Azure AD サインイン プロセスに送るための特別に生成された URL です。ユーザーは、Office 365 または Azure AD のマイ アプリからアプリケーションを起動する必要はありません。 これらの**ユーザー アクセス URL** は、使用できるエンタープライズ アプリケーションのプロパティの下にあります。 Azure portal で、 **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]** を選択します。 アプリケーションを選択し、**[プロパティ]** を選択します。
+これらのリンクは、特定のアプリケーションについてユーザーを Azure AD サインイン プロセスに送るための特別に生成された URL です。ユーザーは、Azure AD のマイ アプリまたは Microsoft 365 からアプリケーションを起動する必要はありません。 これらの**ユーザー アクセス URL** は、使用できるエンタープライズ アプリケーションのプロパティの下にあります。 Azure portal で、 **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]** を選択します。 アプリケーションを選択し、**[プロパティ]** を選択します。
 
 ![Twitter プロパティのユーザー アクセス URL の例](media/end-user-experiences/direct-sign-on-link.png)
 
@@ -67,7 +67,7 @@ Azure AD では、パスワードベースのシングル サインオン、リ�
 
 許可されたユーザーがこれらのアプリケーションに固有のリンクのいずれかをクリックすると、最初に組織のサインイン ページ (まだ署名されていない状態を想定) が表示され、サインイン後は最初にマイ アプリで停止することなくアプリにリダイレクトされます。 パスワードベースのシングル サインオン用ブラウザー拡張機能など、ユーザーがアプリケーションにアクセスするための前提条件を満たしていない場合、リンクをクリックすると、ユーザーは不足している拡張機能をインストールするよう要求されます。 アプリケーションのシングル サインオン構成が変更された場合でもリンク URL は変わりません。
 
-これらのリンクにはマイ アプリや Office 365 と同じアクセス制御メカニズムが使用され、Azure portal でアプリケーションに割り当てられているユーザーまたはグループのみが正常に認証されます。 ただし、許可されていないユーザーには、アクセスが与えられていないことを示すメッセージと、アクセスが許可されている使用可能なアプリケーションを表示するマイ アプリを呼び出すためのリンクが示されます。
+これらのリンクにはマイ アプリや Microsoft 365 と同じアクセス制御メカニズムが使用され、Azure portal でアプリケーションに割り当てられているユーザーまたはグループのみが正常に認証されます。 ただし、許可されていないユーザーには、アクセスが与えられていないことを示すメッセージと、アクセスが許可されている使用可能なアプリケーションを表示するマイ アプリを呼び出すためのリンクが示されます。
 
 ## <a name="next-steps"></a>次のステップ
 

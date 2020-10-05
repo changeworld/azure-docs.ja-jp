@@ -4,12 +4,12 @@ description: Azure Site Recovery で VM/物理サーバーを Azure にフェー
 ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
-ms.openlocfilehash: bebc4cd56f248d09579dcde2fc234f63dd65a09f
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: d2f7fed25955d6a34c6162b87b82bfae5e58ff41
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309970"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563983"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>オンプレミスから Azure へのフェールオーバーを実行する
 
@@ -46,7 +46,7 @@ ms.locfileid: "84309970"
 1. Site Recovery コンテナーで、 **[復旧計画]**  > *recoveryplan_name* を選択します。
 2. **[フェールオーバー]** をクリックします。
 
-    ![[フェールオーバー]](./media/site-recovery-failover/Failover.png)
+    ![スクリーンショットには、[フェールオーバー] が [その他] メニューで選択されている ADRP ウィンドウが示されています。](./media/site-recovery-failover/Failover.png)
 
 3. **[フェールオーバー]**  >  **[フェールオーバーの方向]** では、Azure にレプリケートする場合は規定値のままにします。
 4. **[フェールオーバー]** で、フェールオーバーする **[復旧ポイント]** を選択します。

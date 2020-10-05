@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: ac92e45e69522fe3de8abdb3afcf6049e5f07ac8
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: cf7a3ff478100c892e59e98c91e9605c88bdc667
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563502"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438825"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory-version-1"></a>Azure Data Factory バージョン 1 でサポートされるコンピューティング環境
 > [!NOTE]
@@ -32,7 +32,7 @@ ms.locfileid: "87563502"
 | [Azure Batch](#azure-batch-linked-service) | [DotNet](data-factory-use-custom-activities.md) |
 | [Azure Machine Learning](#azure-machine-learning-linked-service) | [Machine Learning アクティビティ:バッチ実行とリソースの更新](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
-| [Azure SQL](#azure-sql-linked-service)、[Azure SQL Data Warehouse](#azure-sql-data-warehouse-linked-service)、[SQL Server](#sql-server-linked-service) | [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md) |
+| [Azure SQL](#azure-sql-linked-service)、[Azure Synapse Analytics](#azure-synapse-analytics-linked-service)、[SQL Server](#sql-server-linked-service) | [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md) |
 
 ## <a name="hdinsight-versions-supported-in-data-factory"></a><a name="supported-hdinsight-versions-in-azure-data-factory"></a>Data Factory でサポートされる HDInsight バージョン
 Azure HDInsight では、いつでもデプロイできる Hadoop クラスター バージョンが複数サポートされます。 サポートされる各バージョンにより、特定のバージョンの Hortonworks Data Platform (HDP) ディストリビューションと、そのディストリビューションの一連のコンポーネントが作成されます。 
@@ -232,7 +232,7 @@ D4 サイズのヘッド ノードと worker ノードを作成する場合は�
 * Azure Batch
 * Azure Machine Learning
 * Azure Data Lake Analytics
-* Azure SQL Database、Azure SQL Data Warehouse、SQL Server
+* Azure SQL Database、Azure Synapse Analytics (旧称 SQL Data Warehouse)、SQL Server
 
 ## <a name="azure-hdinsight-linked-service"></a>Azure HDInsight のリンクされたサービス
 HDInsight のリンクされたサービスを作成し、独自の HDInsight クラスターを Data Factory に登録できます。
@@ -462,8 +462,8 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 ## <a name="azure-sql-linked-service"></a>Azure SQL のリンクされたサービス
 SQL のリンクされたサービスを作成し、[ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)で使用して、Data Factory パイプラインからストアド プロシージャを起動できます。 詳細については、[Azure SQL コネクタ](data-factory-azure-sql-connector.md#linked-service-properties)に関するページをご覧ください。
 
-## <a name="azure-sql-data-warehouse-linked-service"></a>Azure SQL Data Warehouse のリンクされたサービス
-SQL Data Warehouse のリンクされたサービスを作成し、[ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)で使用して、Data Factory パイプラインからストアド プロシージャを起動できます。 詳細については、[Azure SQL Data Warehouse コネクタ](data-factory-azure-sql-data-warehouse-connector.md#linked-service-properties)に関する記事をご覧ください。
+## <a name="azure-synapse-analytics-linked-service"></a>Azure Synapse Analytics のリンクされたサービス
+Azure Synapse Analytics のリンクされたサービスを作成し、[ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)で使用して、Data Factory パイプラインからストアド プロシージャを起動できます。 詳細については、[Azure Synapse Analytics のコネクタ](data-factory-azure-sql-data-warehouse-connector.md#linked-service-properties)に関する記事を参照してください。
 
 ## <a name="sql-server-linked-service"></a>SQL Server のリンクされたサービス
 SQL Server のリンクされたサービスを作成し、[ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md) で使用して、Data Factory パイプラインからストアド プロシージャを起動できます。 詳細については、[SQL Server コネクタ](data-factory-sqlserver-connector.md#linked-service-properties)に関する記事を参照してください。

@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 033752eed30e898f5306154f73a9ca6741c1f81c
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d845c1fbefd5c9a6119d089824eba6cc35228a3e
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179574"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055811"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 
@@ -114,7 +114,7 @@ Azure AD Privileged Identity Management が組織内にない場合は、[PowerS
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>多要素認証を有効にし、その他のすべての高度な特権を持つシングル ユーザー非フェデレーション管理者アカウントを登録します。
 
-1 つまたは複数の Azure AD 管理者ロール グローバル管理者、特権ロール管理者、Exchange 管理者、および SharePoint 管理者。 ガイドを使用して[管理者アカウントの Multi-Factor Authentication (MFA)](../authentication/howto-mfa-userstates.md) を有効にし、[https://aka.ms/mfasetup](https://aka.ms/mfasetup) でそれらすべてのユーザーが登録されていることを確認しします。 詳しくは、「[Office 365 でデータやサービスへのアクセスを保護する](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)」の手順 2. と手順 3. をご覧ください。 
+1 つまたは複数の Azure AD 管理者ロール グローバル管理者、特権ロール管理者、Exchange 管理者、および SharePoint 管理者。 ガイドを使用して[管理者アカウントの Multi-Factor Authentication (MFA)](../authentication/howto-mfa-userstates.md) を有効にし、[https://aka.ms/mfasetup](https://aka.ms/mfasetup) でそれらすべてのユーザーが登録されていることを確認しします。 詳しくは、[Microsoft 365 におけるデータとサービスへのアクセスの保護](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)に関するページの手順 2 と手順 3 をご覧ください。 
 
 ## <a name="stage-2-mitigate-frequently-used-attacks"></a>ステージ 2:よく使用される攻撃の緩和
 
@@ -130,7 +130,7 @@ Azure AD Privileged Identity Management が組織内にない場合は、[PowerS
 
 * 管理者ロールを持つユーザーと、それらのユーザーが管理できるサービスを識別します。
 * Azure AD PIM を使用して、Azure AD への管理者アクセス権を持つ組織内のユーザーを確認します。
-* Azure AD で定義されているロール以外に、Office 365 には、組織内のユーザーに割り当てることができる管理者ロールのセットが付属します。 各管理者ロールは、共通のビジネス機能にマップされ、[Microsoft 365 管理センター](https://admin.microsoft.com)で特定のタスクを行うためのアクセス許可を組織のユーザーに付与します。 Microsoft 365 管理センターを使用して、Azure AD で管理されていないロール経由を含め、Office 365 への管理者アクセス権を持つ組織内のユーザーを確認します。 詳しくは、[Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)と [Office 365 のセキュリティ プラクティス](/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center)に関する記事をご覧ください。
+* Azure AD で定義されているロール以外に、Microsoft 365 には、組織内のユーザーに割り当てることができる管理者ロールのセットが用意されています。 各管理者ロールは、共通のビジネス機能にマップされ、[Microsoft 365 管理センター](https://admin.microsoft.com)で特定のタスクを行うためのアクセス許可を組織のユーザーに付与します。 Microsoft 365 管理センターを使用して、Azure AD で管理されていないロール経由を含め、組織内で Microsoft 365 への管理者アクセス権を持つユーザーを確認します。 詳しくは、[Microsoft 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)と [Office 365 のセキュリティ プラクティス](/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center)に関する記事をご覧ください。
 * Azure、Intune、Dynamics 365 など、組織が利用しているサービスでインベントリを実行します。
 * 管理目的で使用されているアカウントが次のようになっていることを確認します。
 
@@ -175,17 +175,17 @@ Windows Hello for Business を使用する場合は、Windows Hello サインイ
 
 Azure AD Identity Protection は、アルゴリズムベースの監視およびレポート ツールで、組織の ID に影響する潜在的な脆弱性を検出します。 検出された不審なアクティビティへの自動対応を構成し、それらを解決するのに適切なアクションを実行できます。 詳細については、「[Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md)」をご覧ください。
 
-#### <a name="obtain-your-office-365-secure-score-if-using-office-365"></a>Office 365 セキュリティ スコアを取得する (Office 365 を使用している場合)
+#### <a name="obtain-your-microsoft-365-secure-score-if-using-microsoft-365"></a>Microsoft 365 のセキュリティ スコアを取得する (Microsoft 365 を使用している場合)
 
-セキュリティ スコアでは、使用している Office 365 サービスの設定とアクティビティを参照して、Microsoft によって確立されたベースラインと比較します。 セキュリティ プラクティスにどの程度従っているかに基づいてスコアが算出されます。 Office 365 Business Premium または Enterprise サブスクリプションの管理者アクセス許可を持つユーザーは、[https://securescore.office.com](https://securescore.office.com/) でセキュリティ スコアにアクセスできます。
+セキュリティ スコアは、使用している Microsoft 365 サービスの設定とアクティビティを参照して、Microsoft によって確立されたベースラインと比較します。 セキュリティ プラクティスにどの程度従っているかに基づいてスコアが算出されます。 Microsoft 365 Business Standard または Enterprise サブスクリプションの管理者アクセス許可を持つユーザーは、[https://securescore.office.com](https://securescore.office.com/) でセキュリティ スコアにアクセスできます。
 
-#### <a name="review-the-office-365-security-and-compliance-guidance-if-using-office-365"></a>Office 365 セキュリティおよびコンプライアンス ガイダンスを確認する (Office 365 を使用している場合)
+#### <a name="review-the-microsoft-365-security-and-compliance-guidance-if-using-microsoft-365"></a>Microsoft 365 のセキュリティおよびコンプライアンス ガイダンスを確認する (Microsoft 365 を使用している場合)
 
-[セキュリティとコンプライアンスの計画](https://support.office.com/article/Plan-for-security-and-compliance-in-Office-365-dc4f704c-6fcc-4cab-9a02-95a824e4fb57)に関するページでは、Office 365 のお客様が Office 365 を構成し、その他の EMS 機能を有効にするアプローチについて概説しています。 次に、「[Office 365 でデータやサービスへのアクセスを保護する](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)」の手順 3. ～ 6. と「[Office 365 でセキュリティとコンプライアンスを監視する](https://support.office.com/article/Monitor-security-and-compliance-in-Office-365-b62f1722-fd39-44eb-8361-da61d21509b6)」のガイドを確認します。
+[セキュリティとコンプライアンスの計画](https://support.office.com/article/Plan-for-security-and-compliance-in-Office-365-dc4f704c-6fcc-4cab-9a02-95a824e4fb57)に関するページでは、Office 365 のお客様が Office 365 を構成し、その他の EMS 機能を有効にするアプローチについて概説しています。 次に、[Microsoft 365 でのデータとサービスへのアクセスの保護](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)に関するページの手順 3 から 6 と [Microsoft 365 でのセキュリティとコンプライアンスの監視](https://support.office.com/article/Monitor-security-and-compliance-in-Office-365-b62f1722-fd39-44eb-8361-da61d21509b6)方法に関するガイドを確認します。
 
-#### <a name="configure-office-365-activity-monitoring-if-using-office-365"></a>Office 365 アクティビティの監視を構成する (Office 365 を使用している場合)
+#### <a name="configure-microsoft-365-activity-monitoring-if-using-microsoft-365"></a>Microsoft 365 のアクティビティ監視を構成する (Microsoft 365 を使用している場合)
 
-Office 365 を使用しているユーザーの組織を監視して、管理者アカウントを持っているが、これらのポータルにサインインしないために Office 365 へのアクセスを必要としないユーザーを識別します。 詳細については、「[Microsoft 365 管理センターのアクティビティ レポート](https://support.office.com/article/Activity-Reports-in-the-Office-365-admin-center-0d6dfb17-8582-4172-a9a9-aed798150263)」を参照してください。
+Microsoft 365 を使用しているユーザーについて組織を監視し、管理者アカウントを持っているが、これらのポータルにサインインしないために Microsoft 365 へのアクセスを必要としない可能性があるユーザーを識別します。 詳細については、「[Microsoft 365 管理センターのアクティビティ レポート](https://support.office.com/article/Activity-Reports-in-the-Office-365-admin-center-0d6dfb17-8582-4172-a9a9-aed798150263)」を参照してください。
 
 #### <a name="establish-incidentemergency-response-plan-owners"></a>インシデント/緊急時対応計画の所有者を設定する
 
@@ -229,7 +229,7 @@ Azure アクティビティ ログは、Azure でのサブスクリプション 
 
 #### <a name="complete-an-access-review-of-users-in-administrator-roles"></a>管理者ロールに属するユーザーのアクセス レビューを実行する
 
-クラウド サービス経由で特権アクセス権を得る企業ユーザーの増加は、管理されないアクセスにつながる可能性があります。 今日のユーザーは、Office 365 のグローバル管理者や Azure サブスクリプション管理者になったり、VM や SaaS アプリの管理者アクセス権を持ったりすることができます。
+クラウド サービス経由で特権アクセス権を得る企業ユーザーの増加は、管理されないアクセスにつながる可能性があります。 今日のユーザーは、SaaS アプリを介して、Microsoft 365 の全体管理者や Azure サブスクリプション管理者になったり、VM への管理者アクセス権を持ったりすることができます。
 
 組織では、すべての従業員が通常のビジネス トランザクションを特権のないユーザーとして処理し、必要な場合にのみ管理者権限を付与する必要があります。 アクセス レビューを完了して、管理者特権をアクティブ化する資格のあるユーザーを特定し、確認します。
 
@@ -281,13 +281,13 @@ Azure Active Directory の場合は、[Azure AD Privileged Identity Management](
 
 資格情報が侵害された場合に、組織にとって致命的になる可能性のあるすべてのユーザーを識別することをお勧めします。 これらのユーザーには、強力な認証要件を設定し、Azure AD 条件付きアクセスを使用して、ユーザー名とパスワードを使用して電子メールにサインインしないようにします。 [条件付きアクセスを使用してレガシ認証](../conditional-access/block-legacy-authentication.md)をブロックすることができます。また、Exchange Online を使用して[基本認証をブロック](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online)することができます。
 
-#### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>Office 365 ロールのロール レビュー アセスメントを実行する (Office 365 を使用している場合)
+#### <a name="complete-a-roles-review-assessment-for-microsoft-365-roles-if-using-microsoft-365"></a>Microsoft 365 ロールのロール レビュー アセスメントを実行する (Microsoft 365 を使用している場合)
 
 すべての管理者ユーザーが適切なロールに属しているどうかを評価します (このアセスメントに基づいて削除または再割り当てします)。
 
-#### <a name="review-the-security-incident-management-approach-used-in-office-365-and-compare-with-your-own-organization"></a>Office 365 で使用されているセキュリティ インシデント管理アプローチを確認し、自分の組織と比較する
+#### <a name="review-the-security-incident-management-approach-used-in-microsoft-365-and-compare-with-your-own-organization"></a>Microsoft 365 で使用されているセキュリティ インシデント管理アプローチを確認し、自分の組織と比較する
 
-このレポートは、「[Security Incident Management in Microsoft Office 365 (Microsoft Office 365 でのセキュリティ インシデント管理)](https://www.microsoft.com/download/details.aspx?id=54302)」からダウンロードできます。
+このレポートは、「[Security Incident Management in Microsoft 365 (Microsoft 365 でのセキュリティ インシデント管理)](https://www.microsoft.com/download/details.aspx?id=54302)」からダウンロードできます。
 
 #### <a name="continue-to-secure-on-premises-privileged-administrative-accounts"></a>オンプレミスの特権管理者アカウントのセキュリティ保護に進む
 
@@ -348,7 +348,7 @@ Microsoft Cloud App Security を使用すると、ファイルを調査し、Azu
 * データの漏えいを防ぐ
 * リスクを最小限に抑え、脅威の防止とポリシーの適用を自動化する
 
-Cloud App Security SIEM エージェントは、Cloud App Security を SIEM サーバーと統合して、Office 365 のアラートとアクティビティの一元的な監視を可能にします。 サーバー上で稼働し、Cloud App Security からのアラートとアクティビティをプルして、SIEM サーバーにストリーム送信します。 詳しくは、「[SIEM の統合](/cloud-app-security/siem)」をご覧ください。
+Cloud App Security SIEM エージェントは、Cloud App Security を SIEM サーバーと統合して、Microsoft 365 のアラートとアクティビティの一元的な監視を可能にします。 サーバー上で稼働し、Cloud App Security からのアラートとアクティビティをプルして、SIEM サーバーにストリーム送信します。 詳しくは、「[SIEM の統合](/cloud-app-security/siem)」をご覧ください。
 
 ## <a name="stage-4-continue-building-defenses"></a>ステージ 4: 防御の構築を継続する
 
@@ -387,8 +387,8 @@ Cloud App Security SIEM エージェントは、Cloud App Security を SIEM サ�
 
 詳しくは、「[ハイブリッド Azure Active Directory 参加済みデバイスの構成方法](../devices/hybrid-azuread-join-plan.md)」をご覧ください。
 
-#### <a name="review-members-of-built-in-office-365-admin-roles"></a>[Office 365 の組み込み管理者ロール](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)のメンバーを確認する
-Office 365 を使用していない場合は、この手順をスキップします。
+#### <a name="review-members-of-built-in-microsoft-365-admin-roles"></a>[Microsoft 365 の組み込み管理者ロール](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)のメンバーを確認する
+Microsoft 365 を使用していない場合は、この手順をスキップします。
 ‎
 #### <a name="validate-incident-response-plan"></a>インシデント対応計画を検証する
 

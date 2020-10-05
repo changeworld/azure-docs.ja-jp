@@ -3,12 +3,12 @@ title: Azure サブスクリプションの制限とクォータ
 description: 一般的な Azure サブスクリプションとサービスの制限、クォータ、制約の一覧を示します。 この記事では、制限を引き上げる方法と、最大値に関する情報について説明します。
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 87018f58a59c34c5027ca63102e4c5ca841e652b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: fcbca4a1e3152dfa36d71031c2f69e8a40125380
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376225"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971038"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 
@@ -26,6 +26,9 @@ Azure の価格の詳細については、[Azure の価格の概要](https://azu
 > 制限を調整できる場合、表には "**既定の制限**" および "**最大制限**" の見出しが含まれます。 既定の制限を超えて制限を引き上げることはできますが、最大制限を超えることはできません。
 >
 > 制限を引き上げるまたは既定の制限を超えるクォータが必要な場合は、[オンライン カスタマー サポートに申請 (無料)](../templates/error-resource-quota.md) してください。
+>
+> "*ソフト制限*" と "*ハード制限*" という用語が、現在調整可能な制限 (ソフト制限) と最大の制限 (ハード制限) を言い表すために非公式に使用されることがよくあります。 制限を調整できない場合、ソフト制限はなく、ハード制限のみ存在します。
+>
 
 [無料試用版サブスクリプション](https://azure.microsoft.com/offers/ms-azr-0044p)は、制限およびクォータ引き上げの適用対象外です。 [無料試用版](https://azure.microsoft.com/offers/ms-azr-0044p)をお持ちの場合は、[従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)サブスクリプションにアップグレードしてください。 詳しくは、[無料試用版の従量課金制へのアップグレード](../../cost-management-billing/manage/upgrade-azure-subscription.md)および[無料試用版サブスクリプションの FAQ](https://azure.microsoft.com/free/free-account-faq) に関する記事をご覧ください。
 
@@ -74,6 +77,10 @@ Resource Manager API の読み取りと書き込みの制限については、�
 ## <a name="automation-limits"></a>Automation の制限
 
 [!INCLUDE [automation-limits](../../../includes/azure-automation-service-limits.md)]
+
+## <a name="azure-app-configuration"></a>Azure App Configuration
+
+[!INCLUDE [app-configuration-limits](../../../includes/app-configuration-limits.md)]
 
 ## <a name="azure-cache-for-redis-limits"></a>Azure Cache for Redis の制限
 
@@ -232,10 +239,6 @@ Azure Resource Manager デプロイ モデルではなくクラシック デプ�
 
 [!INCLUDE [azure-servicebus-limits](../../../includes/event-hubs-limits.md)]
 
-## <a name="identity-manager-limits"></a>Identity Manager の制限
-
-[!INCLUDE [automation-limits](~/includes/managed-identity-limits.md)]
-
 ## <a name="iot-central-limits"></a>IoT Central の制限
 [!INCLUDE [iot-central-limits](../../../includes/iot-central-limits.md)]
 
@@ -250,6 +253,11 @@ Azure Resource Manager デプロイ モデルではなくクラシック デプ�
 ## <a name="key-vault-limits"></a>Key Vault の制限
 
 [!INCLUDE [key-vault-limits](../../../includes/key-vault-limits.md)]
+
+## <a name="managed-identity-limits"></a>マネージド ID の制限
+
+[!INCLUDE [Managed-Identity-Limits](../../../includes/managed-identity-limits.md)]
+
 
 ## <a name="media-services-limits"></a>Media Services の制限
 

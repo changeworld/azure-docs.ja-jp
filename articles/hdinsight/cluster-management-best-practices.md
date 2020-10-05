@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 3010c1d597907e7d5c7f82c8b42721dc1f934f6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd79568944d81e267a45287104bd0fa9698df2fb
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74781859"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89648695"
 ---
 # <a name="hdinsight-cluster-management-best-practices"></a>HDInsight クラスター管理のベスト プラクティス
 
@@ -62,6 +62,8 @@ HDInsight クラスターを管理するためのベストプラクティスを�
 | 手動スケーリング | [Azure HDInsight クラスターのスケーリング](./hdinsight-scaling-best-practices.md) |
 | Ambari を使用した監視| [Azure HDInsight でクラスター パフォーマンスを監視する](./hdinsight-key-scenarios-to-monitor.md) |
 | Azure Monitor ログでの監視 | [Azure Monitor ログを使用して Azure HDInsight クラスターを監視する](./hdinsight-hadoop-oms-log-analytics-tutorial.md) |
+| サービスの問題、計画メンテナンス、正常性およびセキュリティに関する勧告 | [サブスクリプション固有のサービス正常性アラートをサブスクライブする](https://docs.microsoft.com/azure/service-health/alerts-activity-log-service-notifications-portal) |
+
 
 ## <a name="how-do-i-check-on-deleted-hdinsight-clusters"></a>削除された HDInsight クラスターを確認する方法ha?
 
@@ -74,7 +76,7 @@ AzureActivity
 | where ResourceProvider == "Microsoft.HDInsight" and (OperationName == "Create or Update Cluster" or OperationName == "Delete Cluster") and ActivityStatus == "Succeeded"
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [HDInsight クラスターの容量計画](./hdinsight-capacity-planning.md)
-* [Azure HDInsight のデフォルトおよび推奨ノード構成は何ですか?](./hdinsight-supported-node-configuration.md)
+* [Azure HDInsight の既定および推奨のノード構成](./hdinsight-supported-node-configuration.md)

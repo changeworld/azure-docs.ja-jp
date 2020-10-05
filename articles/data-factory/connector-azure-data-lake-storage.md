@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/28/2020
-ms.openlocfilehash: 62c4813caa1d35f20824223c77fb3a652b0cc6b8
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.date: 09/09/2020
+ms.openlocfilehash: 06c09144fc112d6f095271c510fa33b816e8f906
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182583"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89612656"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Data Lake Storage Gen2 でのデータのコピーと変換
 
@@ -68,7 +68,7 @@ Azure Data Lake Storage Gen2 コネクタでは、次の認証の種類がサポ
 - [Azure リソースのマネージド ID 認証](#managed-identity)
 
 >[!NOTE]
->PolyBase を使用して SQL Data Warehouse にデータを読み込むときに、ソース Data Lake Storage Gen2 が仮想ネットワーク エンドポイントで構成されている場合、PolyBase で要求されるマネージド ID 認証を使用する必要があります。 構成の前提条件の詳細については、[マネージド ID 認証](#managed-identity)セクションを参照してください。
+>PolyBase を使用して zure Synapse Analytics (旧称 SQL Data Warehouse) にデータを読み込むときに、ソース Data Lake Storage Gen2 が仮想ネットワーク エンドポイントで構成されている場合、PolyBase で要求されるマネージド ID 認証を使用する必要があります。 構成の前提条件の詳細については、[マネージド ID 認証](#managed-identity)セクションを参照してください。
 
 ### <a name="account-key-authentication"></a>アカウント キー認証
 
@@ -131,12 +131,16 @@ Azure Data Lake Storage Gen2 コネクタでは、次の認証の種類がサポ
 | type | type プロパティは **AzureBlobFS** に設定する必要があります。 |はい |
 | url | Data Lake Storage Gen2 のエンドポイントのパターンは `https://<accountname>.dfs.core.windows.net` です。 | はい |
 | servicePrincipalId | アプリケーションのクライアント ID を取得します。 | はい |
-| servicePrincipalKey | アプリケーションのキーを取得します。 Data Factory に安全に格納するには、このフィールドを `SecureString` としてマークします。 また、[Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 | はい |
+| servicePrincipalCredentialType | サービス プリンシパル認証に使用する資格情報の種類。 使用できる値は **ServicePrincipalKey** と **ServicePrincipalCert** です。 | Yes |
+| servicePrincipalCredential | サービス プリンシパルの資格情報。 <br/> 資格情報の種類として **ServicePrincipalKey** を使用する場合は、アプリケーションのキーを指定します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 <br/> 資格情報として **ServicePrincipalCert** を使用する場合、Azure Key Vault 内の証明書を参照します。 | はい |
+| servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 <br/> このプロパティは `servicePrincipalId` + `servicePrincipalKey` でもそのままサポートされています。 ADF により、新しいサービス プリンシパル証明書認証が追加されると、サービス プリンシパル認証の新しいモデルは `servicePrincipalId` + `servicePrincipalCredentialType` + `servicePrincipalCredential` になります。 | いいえ |
 | tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 これは、Azure portal の右上隅をマウスでポイントすることで取得できます。 | はい |
 | azureCloudType | サービス プリンシパル認証の場合は、Azure Active Directory アプリケーションの登録先である Azure クラウド環境の種類を指定します。 <br/> 指定できる値は、**AzurePublic**、**AzureChina**、**AzureUsGovernment**、および **AzureGermany** です。 既定では、データ ファクトリのクラウド環境が使用されます。 | いいえ |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 データ ストアがプライベート ネットワーク内にある場合、Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
-**例:**
+**例: サービス プリンシパル キー認証の使用**
+
+サービス プリンシパル キーを Azure Key Vault に格納することもできます。
 
 ```json
 {
@@ -146,9 +150,38 @@ Azure Data Lake Storage Gen2 コネクタでは、次の認証の種類がサポ
         "typeProperties": {
             "url": "https://<accountname>.dfs.core.windows.net", 
             "servicePrincipalId": "<service principal id>",
-            "servicePrincipalKey": {
+            "servicePrincipalCredentialType": "ServicePrincipalKey",
+            "servicePrincipalCredential": {
                 "type": "SecureString",
                 "value": "<service principal key>"
+            },
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>" 
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**例: サービス プリンシパル認証の使用**
+```json
+{
+    "name": "AzureDataLakeStorageGen2LinkedService",
+    "properties": {
+        "type": "AzureBlobFS",
+        "typeProperties": {
+            "url": "https://<accountname>.dfs.core.windows.net", 
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalCredentialType": "ServicePrincipalCert",
+            "servicePrincipalCredential": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<AKV reference>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<certificate name in AKV>" 
             },
             "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>" 
         },
@@ -177,7 +210,7 @@ Azure リソースのマネージド ID 認証を使用するには、次の手�
 >Data Factory の UI を使用して作成する場合で、なおかつ IAM でマネージド ID に "ストレージ BLOB データ閲覧者またはストレージ BLOB データ共同作成者" ロールが設定されていない場合、テスト接続時またはフォルダーの参照 (または移動) 時は、[Test connection to file path]\(ファイル パスへのテスト接続\) または [Browse from specified path]\(指定したパスから参照\) を選択し、**読み取りおよび実行**アクセス許可のあるパスを指定して続行してください。
 
 >[!IMPORTANT]
->PolyBase を使用して Data Lake Storage Gen2 から SQL Data Warehouse にデータを読み込むときに、Data Lake Storage Gen2 にマネージド ID 認証を使用する場合は、[こちらのガイダンス](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)の手順 1 と 2 に従って、1) Azure Active Directory (Azure AD) に登録し、2) お使いのサーバーにストレージ BLOB データ共同作成者ロールを割り当てます。残りは Data Factory によって処理されます。 Data Lake Storage Gen2 が Azure Virtual Network エンドポイントで構成されている場合、PolyBase を使用してそこからデータを読み込むには、PolyBase で要求されるマネージド ID 認証を使用する必要があります。
+>PolyBase を使用して Data Lake Storage Gen2 から Azure Synapse Analytics (旧称 SQL Data Warehouse) にデータを読み込むときに、Data Lake Storage Gen2 にマネージド ID 認証を使用する場合は、[こちらのガイダンス](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)の手順 1 と 2 に従って、1) Azure Active Directory (Azure AD) に登録し、2) お使いのサーバーにストレージ BLOB データ共同作成者ロールを割り当てます。残りは Data Factory によって処理されます。 Data Lake Storage Gen2 が Azure Virtual Network エンドポイントで構成されている場合、PolyBase を使用してそこからデータを読み込むには、PolyBase で要求されるマネージド ID 認証を使用する必要があります。
 
 リンクされたサービスでは、次のプロパティがサポートされています。
 
@@ -276,8 +309,8 @@ Data Lake Storage Gen2 では、形式ベースのコピー ソースの `storeS
 | deleteFilesAfterCompletion | 宛先ストアに正常に移動した後、バイナリ ファイルをソース ストアから削除するかどうかを示します。 ファイルの削除はファイルごとに行われるので、コピー操作が失敗した場合、一部のファイルが既に宛先にコピーされソースからは削除されているが、他のファイルはまだソース ストアに残っていることがわかります。 <br/>このプロパティは、データ ソース ストアが Blob、ADLS Gen1、ADLS Gen2、S3、Google Cloud Storage、ファイル、Azure ファイル、SFTP、または FTP であるバイナリ コピー シナリオでのみ有効です。 既定値: false。 |いいえ |
 | modifiedDatetimeStart    | ファイルはフィルター処理され、元になる属性は最終更新時刻です。 <br>最終変更時刻が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の間に含まれる場合は、ファイルが選択されます。 時刻は "2018-12-01T05:00:00Z" の形式で UTC タイム ゾーンに適用されます。 <br> プロパティは、ファイル属性フィルターをデータセットに適用しないことを意味する NULL にすることができます。  `modifiedDatetimeStart` に datetime 値を設定し、`modifiedDatetimeEnd` を NULL にした場合は、最終更新時刻属性が datetime 値以上であるファイルが選択されることを意味します。  `modifiedDatetimeEnd` に datetime 値を設定し、`modifiedDatetimeStart` を NULL にした場合は、最終更新時刻属性が datetime 値以下であるファイルが選択されることを意味します。<br/>`fileListPath` を構成する場合、このプロパティは適用されません。 | いいえ                                            |
 | modifiedDatetimeEnd      | 上記と同じです。                                               | いいえ                                            |
-| enablePartitionDiscovery | パーティション分割されているファイルの場合は、ファイル パスのパーティションを解析し、それを追加のソース列として追加するかどうかを指定します。<br/>指定できる値は **false** (既定値) と **true** です。 | いいえ                                            |
-| partitionRootPath | パーティション検出が有効になっている場合は、パーティション分割されたフォルダーをデータ列として読み取るための絶対ルート パスを指定します。<br/><br/>指定されない場合、既定では、<br/>- ソース上のデータセットまたはファイルの一覧内のファイル パスを使用する場合、パーティションのルート パスはそのデータセットで構成されているパスです。<br/>- ワイルドカード フォルダー フィルターを使用する場合、パーティションのルート パスは最初のワイルドカードの前のサブパスです。<br/><br/>たとえば、データセット内のパスを "root/folder/year=2020/month=08/day=27" として構成するとします。<br/>- パーティションのルート パスを "root/folder/year=2020" として指定した場合は、コピー アクティビティによって、ファイル内の列とは別に、それぞれ "08" と "27" の値を持つ `month` と `day` という 2 つの追加の列が生成されます。<br/>- パーティションのルート パスが指定されない場合、追加の列は生成されません。 | いいえ                                            |
+| enablePartitionDiscovery | パーティション分割されているファイルの場合、ファイル パスからのパーティションを解析し、追加のソース列として追加するかどうかを指定します。<br/>指定できる値は **false** (既定値) と **true** です。 | いいえ                                            |
+| partitionRootPath | パーティション検出が有効になっている場合、パーティション分割されているフォルダーをデータ列として読み取る目的で絶対ルート パスを指定します。<br/><br/>指定されない場合、既定では、<br/>- ソースでファイルのデータセットまたはリストにあるファイル パスを使用するとき、パーティション ルート パスはデータセットに構成されているパスになります。<br/>- ワイルドカード フォルダー フィルターを使用するとき、パーティション ルート パスは最初のワイルドカードの前のサブパスになります。<br/><br/>たとえば、データセットのパスを "root/folder/year=2020/month=08/day=27" として構成するとします。<br/>- パーティション ルート パスを "root/folder/year=2020" として指定する場合、コピー アクティビティによって、ファイル内の列に加え、さらに 2 つの列、`month` と `day` がそれぞれ値 "08" と "27" で生成されます。<br/>- パーティション ルート パスが指定されない場合、追加の列は生成されません。 | いいえ                                            |
 | maxConcurrentConnections | ストレージ ストアに同時に接続する接続の数。 データ ストアへのコンカレント接続を制限する場合にのみ指定します。 | いいえ                                            |
 
 **例:**

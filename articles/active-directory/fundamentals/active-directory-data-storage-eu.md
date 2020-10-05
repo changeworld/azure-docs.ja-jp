@@ -9,32 +9,36 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 09/15/2020
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d57b7a559464bfff0d3d1c6436641257c925d75e
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 8dc229b366a7816c861da665c73d6421e67545c6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318473"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985909"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Azure Active Directory でのヨーロッパの顧客のための ID データ ストレージ
-Office 365 や Azure などの Microsoft Online サービスをサブスクライブしている場合、ID データは Azure AD により、組織によって提供されるアドレスに基づいて地理的な場所に格納されます。 ID データの格納場所については、Microsoft Trust Center の「[データの保管場所](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)」のセクションを参照してください。
+Microsoft 365 や Azure などの Microsoft Online サービスをサブスクライブしている場合、識別データは Azure AD により、組織によって提供されたアドレスに基づく地理的な場所に格納されます。 ID データの格納場所については、Microsoft Trust Center の「[データの保管場所](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)」のセクションを参照してください。
 
 ヨーロッパ内でアドレスを提供したお客様の場合、Azure AD は、ヨーロッパ データセンター内でほとんどの ID データを保持します。 このドキュメントでは、Azure AD サービスによりヨーロッパの外部に格納されているすべてのデータについての情報を提供します。
 
-## <a name="microsoft-azure-multi-factor-authentication-mfa"></a>Microsoft Azure 多要素認証 (MFA)
-    
-- 電話または米国データセンターからの SMS を使用するすべての 2 要素認証は、グローバル プロバイダーによってもルーティングされます。
-- Microsoft Authenticator アプリを使用するプッシュ通知は、米国内データセンターから発信されます。 さらに、デバイス ベンダー固有のサービスも機能することができ、それらのサービスもヨーロッパの外部からである場合があります。
-- OATH コードは常に米国で検証されます。 
+## <a name="microsoft-azure-multi-factor-authentication"></a>Microsoft Azure Multi-Factor Authentication
+
+クラウドベースの Azure Multi-Factor Authentication では、ユーザーに最も近いデータセンターで認証が完了します。 Azure Multi-Factor Authentication のデータセンターは、北米、ヨーロッパ、アジア太平洋にあります。
+
+* 電話を使用する多要素認証は、米国のデータセンターから発信され、グローバル プロバイダーによってルーティングされます。
+* SMS を使用する多要素認証は、グローバル プロバイダーによってルーティングされます。
+* ヨーロッパのデータセンターから発信される Microsoft Authenticator アプリのプッシュ通知を使用する多要素認証要求は、ヨーロッパのデータセンターで処理されます。
+    * Apple のプッシュ通知などのデバイス ベンダー固有のサービスは、ヨーロッパ外部にある可能性があります。
+* ヨーロッパのデータセンターから発信される OATH コードを使用する多要素認証要求は、ヨーロッパで検証されます。
 
 Azure Multi-Factor Authentication Server (MFA Server) およびクラウドベースの Azure MFA によって収集されるユーザー情報の詳細については、「[Azure Multi-Factor Authentication によるユーザー データの収集](../authentication/howto-mfa-reporting-datacollection.md)」を参照してください。
 
 ## <a name="microsoft-azure-active-directory-b2c-azure-ad-b2c"></a>Microsoft Azure Active Directory B2C (Azure AD B2C)
 
-Azure AD B2C ポリシー構成データおよびキー コンテナーは、米国内のデータセンターに格納されます。 これにはユーザーのいかなる個人データも含まれません。 ポリシー構成の詳細については、「[Azure Active Directory B2C:組み込みのポリシー](../../active-directory-b2c/user-flow-overview.md)」を参照してください。
+Azure AD B2C ポリシー構成データおよびキー コンテナーは、米国内のデータセンターに格納されます。 これにはユーザーのいかなる個人データも含まれません。 ポリシー構成の詳細については、「[Azure Active Directory B2C: 組み込みのポリシー](../../active-directory-b2c/user-flow-overview.md)」を参照してください。
 
 ## <a name="microsoft-azure-active-directory-b2b-azure-ad-b2b"></a>Microsoft Azure Active Directory B2B (Azure AD B2B) 
     
@@ -59,7 +63,7 @@ Azure AD と統合されるサービスとアプリケーションは、ID デ�
 
 Microsoft サービスのデータ保存場所の詳細については、Microsoft セキュリティ センターの[データの保存場所](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)に関するセクションを参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 上記の機能の詳細については、以下の記事を参照してください。
 - [Multi-Factor Authentication とは](../authentication/concept-mfa-howitworks.md)
 

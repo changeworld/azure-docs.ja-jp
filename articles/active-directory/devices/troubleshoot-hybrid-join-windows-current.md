@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: bc926c385aeee40601c00b3b4ab68065a4260f2f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: ec59c07d66150bf7b184c149a9b1ed9015c17645
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268776"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433655"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>ハイブリッド Azure Active Directory 参加済みデバイスのトラブルシューティング
 
@@ -99,7 +99,7 @@ WamDefaultAuthority: organizations
 
 #### <a name="workplacejoined--no"></a>WorkplaceJoined :NO
 
-このフィールドは、デバイスが ("*ワークプレースに参加済み*" としてマークされた) 個人所有のデバイスとして Azure AD に登録されているかどうかを示します。 ドメインに参加していて、なおかつハイブリッド Azure AD 参加済みのコンピューターでは、この値は **NO** になります。 この値が **YES** である場合、ハイブリッド Azure AD 参加が完了する前に、職場または学校アカウントが追加されています。 このケースで Anniversary Update バージョンの Windows 10 (1607) を使用すると、そのアカウントは無視されます。
+このフィールドは、デバイスが ("*ワークプレースに参加済み*" としてマークされた) 個人所有のデバイスとして Azure AD に登録されているかどうかを示します。 ドメインに参加していて、なおかつハイブリッド Azure AD 参加済みのコンピューターでは、この値は **NO** になります。 この値が **YES** である場合、ハイブリッド Azure AD 参加が完了する前に、職場または学校アカウントが追加されています。 この場合、Windows 10 バージョン 1607 以降を使用しているときは、このアカウントは無視されます。
 
 #### <a name="azureadjoined--yes"></a>AzureAdJoined :YES
 

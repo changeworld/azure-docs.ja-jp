@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 252abcac6e9e39930593c1b110bf6d55ffdfc33f
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 36945d998bf00d7b229b5ae3cce1958953ade601
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843523"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978623"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Azure API for FHIR についてよく寄せられる質問
 
@@ -48,6 +48,23 @@ FHIR Server for Azure を実行している場合、基になるサービスに�
 
 SMART (Substitutable Medical Applications and Reusable Technology) on FHIR は、FHIR サーバーやその他の医療 IT システム (電子カルテ、医療情報交換など) にパートナー アプリケーションを統合するための一連のオープン仕様です。 SMART on FHIR アプリケーションを作成することにより、多数の異なるシステムから確実にそのアプリケーションにアクセスして活用することができます。
 認証と Azure API for FHIR。 SMART の詳細については、[SMART Health IT](https://smarthealthit.org/) に関するページを参照してください。
+
+### <a name="can-i-create-a-custom-fhir-resource"></a>カスタム FHIR リソースを作成できますか?
+
+カスタム FHIR リソースは使用できません。 カスタム FHIR リソースが必要な場合、拡張機能を使用して[基本的なリソース](http://www.hl7.org/fhir/basic.html)の上にカスタム リソースを構築できます。 
+
+### <a name="are-extensions-supported-on-azure-api-for-fhir"></a>[拡張機能](https://www.hl7.org/fhir/extensibility.html)は、Azure API for FHIR でサポートされていますか?
+
+有効な FHIR JSON データをサーバーに読み込むことができます。 拡張機能を定義する構造定義を格納する場合は、これを構造定義リソースとして保存できます。 現時点では、拡張機能を検索することはできません。
+
+### <a name="what-is-the-limit-on-_count"></a>_count にはどのような制限がありますか?
+
+現在の上限は 100 です。
+
+### <a name="are-there-any-limitations-on-the-group-export-functionality"></a>グループ エクスポート機能に制限はありますか?
+
+グループ エクスポートでは、[グループ リソース](https://www.hl7.org/fhir/group.html)のすべての特性ではなく、含まれている参照のみがグループからエクスポートされます。
+
 
 ## <a name="azure-iot-connector-for-fhir-preview"></a>Azure IoT Connector for FHIR (プレビュー)
 

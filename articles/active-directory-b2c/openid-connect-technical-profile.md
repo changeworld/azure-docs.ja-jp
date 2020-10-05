@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/26/2020
+ms.date: 09/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 459e2184f5236278377bd9e655e2b1ed154cc6a3
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: f06ae55dc48152c2c10183cc60cb098b6c3786fa
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377218"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433757"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OpenID Connect 技術プロファイルを定義する
 
@@ -91,6 +91,8 @@ Azure Active Directory B2C (Azure AD B2C) では、[OpenID Connect](https://open
 | MarkAsFailureOnStatusCode5xx | いいえ | Http 状態コードが 5xx の範囲にある場合、外部サービスへの要求を失敗としてマークする必要があるかどうかを示します。 既定では、 `false`です。 |
 | DiscoverMetadataByTokenIssuer | いいえ | JWT トークンで発行者を使用して OIDC メタデータを検出する必要があるかどうかを示します。 |
 | IncludeClaimResolvingInClaimsHandling  | いいえ | 入力と出力の要求について、[要求の解決](claim-resolver-overview.md)を技術プロファイルに含めるかどうかを指定します。 指定できる値: `true` または `false` (既定値)。 技術プロファイルで要求リゾルバーを使用する場合は、これを `true` に設定します。 |
+|token_endpoint_auth_method| No| Azure AD B2C からトークン エンドポイントに認証ヘッダーを送信する方法を指定します。 指定できる値は、`client_secret_post` (既定値) と `client_secret_basic` (パブリック プレビュー) です。 詳細については、[OpenID Connect クライアント認証](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication)に関するセクションをご覧ください。 |
+
 
 ```xml
 <Metadata>
@@ -109,19 +111,19 @@ Azure Active Directory B2C (Azure AD B2C) では、[OpenID Connect](https://open
  
 次の設定を使用して、失敗したときに表示されるエラー メッセージを構成できます。 メタデータは、OpenID Connect 技術プロファイルで構成する必要があります。 エラー メッセージは、[ローカライズ](localization-string-ids.md#sign-up-or-sign-in-error-messages)できます。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| UserMessageIfClaimsPrincipalDoesNotExist | いいえ | 指定されたユーザー名のアカウントがディレクトリに見つからなかった場合に、ユーザーに表示するメッセージ。 |
-| UserMessageIfInvalidPassword | いいえ | パスワードが正しくない場合にユーザーに表示するメッセージ。 |
-| UserMessageIfOldPasswordUsed| いいえ |  古いパスワードが使用されている場合にユーザーに表示するメッセージ。|
+| UserMessageIfClaimsPrincipalDoesNotExist | No | 指定されたユーザー名のアカウントがディレクトリに見つからなかった場合に、ユーザーに表示するメッセージ。 |
+| UserMessageIfInvalidPassword | No | パスワードが正しくない場合にユーザーに表示するメッセージ。 |
+| UserMessageIfOldPasswordUsed| No |  古いパスワードが使用されている場合にユーザーに表示するメッセージ。|
 
 ## <a name="cryptographic-keys"></a>暗号化キー
 
 **CryptographicKeys** 要素には次の属性が存在します。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| client_secret | はい | ID プロバイダー アプリケーションのクライアント シークレット。 **response_types** メタデータが `code` に設定されている場合にのみ、暗号化キーが必要です。 この場合、Azure AD B2C は、アクセス トークンの認証コードを交換するために、別の呼び出しを行います。 メタデータが `id_token` に設定されている場合は、暗号化キーを省略できます。  |
+| client_secret | Yes | ID プロバイダー アプリケーションのクライアント シークレット。 **response_types** メタデータが `code` に設定されている場合にのみ、暗号化キーが必要です。 この場合、Azure AD B2C は、アクセス トークンの認証コードを交換するために、別の呼び出しを行います。 メタデータが `id_token` に設定されている場合は、暗号化キーを省略できます。  |
 
 ## <a name="redirect-uri"></a>リダイレクト URI
 

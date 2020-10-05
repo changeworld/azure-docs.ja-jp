@@ -3,15 +3,15 @@ title: Windows Virtual Desktop 環境のホスト プールの作成 - Azure
 description: Windows Virtual Desktop 環境のセットアップ中にテナントとホスト プールの問題をトラブルシューティングおよび解決する方法。
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 08/11/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4d504c46288ebe2a8112586ce6be6449178df16a
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: d02642b49951b4b116eaae6dbea490ef2720c15d
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121376"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084415"
 ---
 # <a name="host-pool-creation"></a>ホスト プールの作成
 
@@ -46,6 +46,12 @@ Windows 10 Enterprise マルチセッションのイメージを使用するに�
 - 同じパラメーターで、ただし VM数と VM コア数を減らして、新しいホスト プールを作成します。
 
 - ブラウザーで statusMessage フィールドに表示されているリンクを開き、指定した VM SKU の Azure サブスクリプションのクォータを増やす要求を送信します。
+
+### <a name="error-cant-see-user-assignments-in-app-groups"></a>エラー:アプリ グループでユーザー割り当てが表示されない。
+
+原因: このエラーは通常、ある Azure Active Directory (AD) テナントから別のテナントにサブスクリプションを移した後に発生します。 以前の割り当てが古い Azure AD テナントにまだ関連付けられている場合、Azure portal はこれらを見失います。
+
+解決策:ユーザーをアプリ グループに再割り当てする必要があります。
 
 ## <a name="azure-resource-manager-template-errors"></a>Azure Resource Manager テンプレート エラー
 

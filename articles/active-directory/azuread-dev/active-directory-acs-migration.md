@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: 75c3b325b29e6738a61728d53b85464bb61655f8
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 9fddd5cb749b1dfe50505c139ed7900f709b584e
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117789"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706253"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>方法:Azure Access Control Service からの移行
 
@@ -173,7 +173,7 @@ SharePoint 2013、2016、SharePoint Online のユーザーは、クラウド、�
 
 #### <a name="migrate-to-azure-active-directory"></a>Azure Active Directory への移行
 
-候補となる経路として、アプリケーションとサービスの Azure AD との直接統合があります。 Azure AD は、Microsoft の職場または学校アカウントに対応した、クラウド ベースの ID プロバイダーです。 Azure AD は、Office 365、Azure などに対応した ID プロバイダーです。 これは、Access Control と同様のフェデレーション認証機能を提供しますが、一部の Access Control の機能をサポートしていません。 
+候補となる経路として、アプリケーションとサービスの Azure AD との直接統合があります。 Azure AD は、Microsoft の職場または学校アカウントに対応した、クラウド ベースの ID プロバイダーです。 Azure AD は、Microsoft 365、Azure などに対応した ID プロバイダーです。 これは、Access Control と同様のフェデレーション認証機能を提供しますが、一部の Access Control の機能をサポートしていません。 
 
 主な例は、Facebook、Google、Yahoo などのソーシャル ID プロバイダーとのフェデレーションです。 ユーザーがこの種類の資格情報でサインインする場合、Azure AD はソリューションとして適しません。 
 
@@ -316,7 +316,7 @@ Access Control のサービス ID は、通常はサーバー対サーバー認�
 
 #### <a name="migrate-to-azure-active-directory"></a>Azure Active Directory への移行
 
-この種類の認証フローに対する推奨事項は、[Azure Active Directory](https://azure.microsoft.com/develop/identity/signin/) に移行することです。 Azure AD は、Microsoft の職場または学校アカウントに対応した、クラウド ベースの ID プロバイダーです。 Azure AD は、Office 365、Azure などに対応した ID プロバイダーです。 
+この種類の認証フローに対する推奨事項は、[Azure Active Directory](https://azure.microsoft.com/develop/identity/signin/) に移行することです。 Azure AD は、Microsoft の職場または学校アカウントに対応した、クラウド ベースの ID プロバイダーです。 Azure AD は、Microsoft 365、Azure などに対応した ID プロバイダーです。 
 
 OAuth クライアント資格情報の付与の Azure AD 実装を使用して、Azure AD をサーバー対サーバー認証に使用することもできます。 次の表は、サーバー対サーバー認証での Access Control の機能を、Azure AD で使用可能な機能と比較したものです。
 

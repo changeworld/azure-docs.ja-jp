@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3959fc7df78a5c1f255f7551a018eec6b7279eb1
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 690dead3cb0059dd1b20ff042a93c36d674e62d2
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717440"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052683"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Azure Active Directory でのセルフサービス パスワード リセットによる書き戻しのしくみ
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) のセルフサービス パスワード リ�
 
 * **オンプレミスの Active Directory Domain Services (AD DS) パスワード ポリシーの強制**: ユーザーが自分のパスワードをリセットすると、パスワードがオンプレミスの AD DS ポリシーに準拠していることが確認されてから、そのディレクトリにコミットされます。 この確認には、履歴、複雑さ、年齢、パスワード フィルター、AD DS で定義された他のパスワード制限のチェックが含まれます。
 * **ゼロ遅延フィードバック**:  パスワード ライトバックは同期操作です。 ユーザーのパスワードがポリシーに合わなかった場合や、何らかの理由でリセットまたは変更できなかった場合は、すぐにユーザーに通知します。
-* **アクセス パネルと Office 365 からのパスワード変更のサポート**: フェデレーション ユーザーかパスワード ハッシュ同期されたユーザーが有効期限切れ、または有効期限切れでないパスワードを変更すると、これらのパスワードは AD DS に書き戻されます。
+* **アクセス パネルと Microsoft 365 からのパスワード変更のサポート**: フェデレーション ユーザーかパスワード ハッシュ同期されたユーザーが有効期限切れ、または有効期限切れでないパスワードを変更すると、これらのパスワードは AD DS に書き戻されます。
 * **管理者が Azure portal でパスワードをリセットするときのパスワード ライトバックのサポート**: 管理者が [Azure portal](https://portal.azure.com) でユーザーのパスワードをリセットするときに、そのユーザーがフェデレーションまたはパスワード ハッシュ同期されている場合は、パスワードがオンプレミスに書き戻されます。 現在、この機能は Office 管理ポータルではサポートされていません。
 * **受信ファイアウォール規則は不要**: パスワード ライトバックは、基盤の通信チャネルとして Azure Service Bus リレーを使います。 すべての通信はポート 443 経由で送信されます。
 

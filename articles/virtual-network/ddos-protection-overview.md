@@ -11,35 +11,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: af10ec10a1622f32dbc34a607b1200cb4cff8b59
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 90dbc0b888c6d6eeed97a676024abc9cc0dca6fe
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168050"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017168"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Protection Standard の概要
 
 分散型サービス拒否 (DDoS) 攻撃は、アプリケーションをクラウドに移行している顧客が直面する可用性とセキュリティに関する最大の関心事の一部です。 DDoS 攻撃では、アプリケーションのリソースを使い果たし、正当なユーザーがアプリケーションを使用できなくなるようにすることが試みられます。 DDoS 攻撃は、インターネット経由で一般に到達可能なすべてのエンドポイントで実行できます。
 
-Azure DDoS Protection をアプリケーション設計のベスト プラクティスと組み合わせることにより、DDoS 攻撃に対する防御が提供されます。 Azure DDoS Protection では、次のサービス レベルが提供されます。
+Azure DDoS Protection をアプリケーション設計のベスト プラクティスと組み合わせることにより、DDoS 攻撃に対する防御が提供されます。 Azure のすべてのプロパティは、Azure のインフラストラクチャ DDoS (Basic) Protection によて保護されています。 Azure DDoS Protection Standard は、Basic サービス レベルに加えて、特に Azure Virtual Network リソースに合わせてチューニングされた追加の軽減機能を提供します。 
 
-- **Basic**:Azure プラットフォームの一部として、自動的に有効になります。 常時接続のトラフィック監視および一般的なネットワークレベル攻撃のリアルタイムの軽減策によって、Microsoft のオンライン サービスによって使用されるのと同じ防御が提供されます。 Azure のグローバル ネットワークのスケール全体を使用すると、各リージョンにまたがる攻撃トラフィックを分散および軽減できます。 IPv4 と IPv6 の Azure [パブリック IP アドレス](virtual-network-public-ip-address.md)に対して保護が提供されます。
-- **Standard**: Basic サービス レベルに加えて、特に Azure Virtual Network リソースに対してチューニングされた追加の軽減機能を提供します。 DDoS Protection Standard を有効にすることは簡単であり、アプリケーションの変更は必要ありません。 保護ポリシーは、専用のトラフィック監視および機械学習アルゴリズムによってチューニングされます。 ポリシーは、Azure Load Balancer、Azure Application Gateway、Azure Service Fabric のインスタンスなど、仮想ネットワーク内に展開されたリソースに関連付けられたパブリック IP アドレスに適用されますが、この保護は App Service 環境には適用されません。 攻撃中および履歴の表示のために、Azure Monitor ビューからリアルタイムのテレメトリを使用できます。 診断設定を使用して、多くの機能を持つ攻撃軽減分析を利用できます。 アプリケーション レイヤー保護は、[Azure Application Gateway Web アプリケーション ファイアウォール](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を通して、または Azure Marketplace からサードパーティ製のファイアウォールをインストールすることで、追加できます。 IPv4 と IPv6 の Azure [パブリック IP アドレス](virtual-network-public-ip-address.md)に対して保護が提供されます。
+DDoS Protection Standard を有効にすることは簡単であり、アプリケーションの変更は必要ありません。 保護ポリシーは、専用のトラフィック監視および機械学習アルゴリズムによってチューニングされます。 ポリシーは、Azure Load Balancer、Azure Application Gateway、Azure Service Fabric のインスタンスなど、仮想ネットワーク内に展開されたリソースに関連付けられたパブリック IP アドレスに適用されますが、この保護は App Service 環境には適用されません。 攻撃中および履歴の表示のために、Azure Monitor ビューからリアルタイムのテレメトリを使用できます。 診断設定を使用して、多くの機能を持つ攻撃軽減分析を利用できます。 アプリケーション レイヤー保護は、[Azure Application Gateway Web アプリケーション ファイアウォール](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を通して、または Azure Marketplace からサードパーティ製のファイアウォールをインストールすることで、追加できます。 IPv4 と IPv6 の Azure [パブリック IP アドレス](virtual-network-public-ip-address.md)に対して保護が提供されます。
 
-|機能                                         |DDoS Protection Basic                 |DDoS Protection Standard                      |
-|------------------------------------------------|--------------------------------------|----------------------------------------------|
-|アクティブなトラフィックの監視および常時検出 |はい                                   |はい                                           |
-|攻撃の自動軽減                    |はい                                   |はい                                           |
-|可用性の保証                          |Azure リージョン                          |Application                                   |
-|軽減ポリシー                             |Azure トラフィック リージョン ボリュームに合わせて調整 |アプリケーション トラフィック ボリュームに合わせて調整          |
-|メトリックとアラート                                |いいえ                                    |Azure Monitor を使用したリアルタイムの攻撃メトリックとリソース ログ                                 |
-|軽減レポート                              |いいえ                                    |攻撃軽減後レポート                |
-|軽減フロー ログ                            |いいえ                                    |SIEM 統合の NRT ログ ストリーム           |
-|リスク軽減ポリシーのカスタマイズ                 |いいえ                                    |DDoS エキスパートとの連携                           |
-|サポート                                         |ベスト エフォート                           |アクティブな攻撃時の DDoS エキスパートへのアクセス|
-|SLA                                             |Azure リージョン                          |アプリケーション保証とコスト保護       |
-|価格                                         |Free                                  |毎月および使用量ベース                         |
+![DDoS Protection Basic と Standard](./media/ddos-protection-overview/ddoscomparison.png)
+
+Azure DDoS Protection では、顧客データは保存されません。
 
 ## <a name="types-of-ddos-attacks-that-ddos-protection-standard-mitigates"></a>DDoS Protection Standard によって軽減される DDoS 攻撃の種類
 
@@ -63,7 +52,7 @@ DDoS Protection Standard の機能には、次のものが含まれます。
 - **アダプティブ チューニング:** インテリジェント トラフィック プロファイリングにより、一定期間にわたってアプリケーションのトラフィックが学習され、そのサービスに最も適したプロファイルが選択および更新されます。 このプロファイルは、時間の経過とともにトラフィックが変化すると調整されます。
 - **多層保護:** Web アプリケーション ファイアウォールと併用すると、全スタックにわたって DDoS 保護が提供されます。
 - **広範囲にわたる軽減スケール:** 60 種類を超える攻撃を軽減することができ、地球規模の容量を利用して、過去最大の DDoS 攻撃からも保護されます。
-- **攻撃の分析:** 攻撃中の 5 分ごとの詳細なレポートと、攻撃終了後の完全な概要を取得します。 攻撃中もほぼリアルタイムで監視されている軽減フローのログをオフラインのセキュリティ情報イベント管理 (SIEM) システムにストリーム配信します。
+- **攻撃の分析:** 攻撃中の 5 分ごとの詳細なレポートと、攻撃終了後の完全な概要を取得します。 攻撃中のほぼリアルタイムの監視のために、軽減フローのログが [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-ddos-protection) に、またはオフラインのセキュリティ情報イベント管理 (SIEM) システムにストリーム配信されます。
 - **攻撃メトリック:** 各攻撃から要約されたメトリックに Azure Monitor 経由でアクセスできます。
 - **攻撃アラート:** 組み込みの攻撃メトリックを使用して、攻撃の開始時と停止時、およびその攻撃の期間にわたってアラートを構成できます。 アラートは、Microsoft Azure Monitor ログ、Splunk、Azure Storage、電子メール、Azure portal などの運用ソフトウェアに統合されます。
 - **コストの保証:** データ転送とアプリケーションは、ドキュメント化された DDoS 攻撃のサービス クレジットをスケールアウトします。

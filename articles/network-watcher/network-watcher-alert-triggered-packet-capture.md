@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: fb5ae2408c15baee0f37acaacc780f4d198b1521
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eefd67d4d150c0c8d152002a174c62d31fcb8b5f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738058"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975061"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>パケット キャプチャを使用してアラートと Azure Functions によるプロアクティブなネットワーク監視を実行する
 
@@ -30,7 +30,7 @@ Azure でデプロイされたリソースは、24 時間 365 日実行されて
 
 Azure エコシステム内部から Network Watcher、アラート、関数を使うことにより、データとツールでプロアクティブに対応してネットワークの問題を解決できます。
 
-![シナリオ][scenario]
+![図は、仮想マシンの Network Watcher 拡張機能を示しています。これは、T C P Segments sent > 100 へ、次に Azure Functions へ、さらに Network Watcher へとフローし、そこから Network Watcher 拡張機能に戻っています。][scenario]
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]

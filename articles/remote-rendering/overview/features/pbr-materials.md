@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: e4ee6abe7481fef4d56c980da80e319624975384
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a1fedb637bee9d98fb09d8fc3fa133b2992ce86e
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021315"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613668"
 ---
 # <a name="pbr-materials"></a>PBR 素材
 
@@ -55,7 +55,7 @@ PBR は、**P**hysically **B**ased **R**endering (物理ベース レンダリ�
 
   metalness の値と metalnessMap の両方を指定した場合、最終的な値は両方の積になります。
 
-  ![metalness と roughness](./media/metalness-roughness.png)
+  ![さまざまな metalness と roughness の値を使用してレンダリングされた球](./media/metalness-roughness.png)
 
   上の図では、右下隅の球は実際の金属素材のように見え、左下はセラミックまたはプラスチックのように見えます。 アルベド カラーも、物理的なプロパティに応じて変化します。 粗さが増すと、素材の反射のシャープさが失われます。
 
@@ -63,13 +63,13 @@ PBR は、**P**hysically **B**ased **R**endering (物理ベース レンダリ�
 
 * **occlusionMap** と **aoScale:** [アンビエント オクルージョン](https://en.wikipedia.org/wiki/Ambient_occlusion)を使用すると、間に隙間があるオブジェクトの隠されている領域にシャドウが追加されて、外観がいっそう現実的になります。 オクルージョン値の範囲は `0.0` から `1.0` です。`0.0` は暗い (隠されている) ことを意味し、`1.0` は隠されていないことを意味します。 2D テクスチャをオクルージョン マップとして提供した場合、効果が有効になり、*aoScale* は乗数として機能します。
 
-  ![オクルージョン マップ](./media/boom-box-ao2.gif)
+  ![アンビエント オクルージョンあり/なしでレンダリングされたオブジェクト](./media/boom-box-ao2.gif)
 
 * **transparent:** PBR 素材の場合、透過性の設定は、有効か否かの 1 つだけです。 不透明度は、アルベド カラーのアルファ チャネルによって定義されます。 有効にすると、より複雑なレンダリング パイプラインが呼び出されて、半透明の表面が描画されます。 Azure Remote Rendering では、真の[順序に依存しない透明度](https://en.wikipedia.org/wiki/Order-independent_transparency) (Order Independent Transparency: OIT) が実装されています。
 
   透明なジオメトリは、レンダリングの負荷が大きくなます。 表面に穴が必要なだけの場合は (木の葉など)、代わりにアルファ クリッピングを使用することをお勧めします。
 
-  ![透明度](./media/transparency.png) 上の図では、右端の球は完全に透明ですが、反射がまだ表示されていることに注意してください。
+  ![ゼロから完全までの透明度を使用してレンダリングされた球](./media/transparency.png)上の図では、右端の球は完全に透明ですが、反射がまだ表示されていることに注意してください。
 
   > [!IMPORTANT]
   > 実行時に素材が不透明から透明に切り替わることが想定される場合は、レンダラーで *TileBasedComposition* [レンダリング モード](../../concepts/rendering-modes.md)を使用する必要があります。 この制限は、最初から透明な素材として変換される素材には適用されません。
@@ -80,6 +80,13 @@ Azure Remote Rendering では、Cook-Torrance マイクロファセット BRDF �
 
  Azure Remote Rendering で使用されている *Metalness-Roughness* PBR に代わるものとして、*Specular-Glossiness* PBR モデルがあります。 このモデルでは、より広い範囲の素材を表すことができます。 ただし、コストが高く、通常、リアルタイムでは適切に機能しません。
 *(BaseColor、Metalness)* に変換できない " *(拡散、反射)* " の値のペアがあるため、*Specular-Glossiness* から *Metalness-Roughness* に常に変換できるとは限りません。 *(BaseColor、Metalness)* のすべてのペアは明確に定義された " *(拡散、反射)* " のペアに対応するため、反対方向への変換は、より簡単で正確です。
+
+## <a name="api-documentation"></a>API のドキュメント
+
+* [C# PbrMaterial class](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.pbrmaterial)
+* [C# RemoteManager.CreateMaterial()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.creatematerial)
+* [C++ PbrMaterial class](https://docs.microsoft.com/cpp/api/remote-rendering/pbrmaterial)
+* [C++ RemoteManager::CreateMaterial()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#creatematerial)
 
 ## <a name="next-steps"></a>次のステップ
 

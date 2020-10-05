@@ -1,6 +1,6 @@
 ---
 title: Azure Disk Encryption と Azure 仮想マシン スケール セットの拡張機能のシーケンス処理
-description: この記事では、Linux IaaS VM で Microsoft Azure Disk Encryption を有効にする手順を説明します。
+description: この記事では、Linux IaaS VM で Microsoft Azure Disk Encryption を有効にする方法を説明します。
 author: ju-shim
 ms.author: jushiman
 ms.topic: how-to
@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/10/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 1c93359486379ecfc8bf6df1f29978ba369f551a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1aff05e51bcbc99f33325efb905ade819ae22e02
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83117259"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988027"
 ---
 # <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>Azure Disk Encryption を仮想マシン スケール セットの拡張機能のシーケンス処理と共に使用する
 

@@ -1,6 +1,6 @@
 ---
 title: クラウド グループを使用して Azure Active Directory でロールの割り当てを管理する | Microsoft Docs
-description: ID 管理を委任するためのカスタム Azure AD ロールをプレビューします。 Azure portal、PowerShell、または Graph API で Azure ロールを管理します。
+description: ID 管理を委任するためのカスタム Azure AD ロールをプレビューします。 Azure portal、PowerShell、または Graph API で Azure ロールの割り当てを管理します。
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe509879c38f979525a673890c05fcfe5c8e3880
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 2932bfc2f9606326ae38711237e5e10912d41aca
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798314"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053771"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>クラウド グループを使用して Azure Active Directory でロールの割り当てを管理する (プレビュー)
 
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) には、Azure AD の組み込みロールに�
 
 ## <a name="how-this-feature-works"></a>この機能のしくみ
 
-"isAssignableToRole" プロパティを "true" に設定して、新しい Office 365 またはセキュリティ グループを作成します。 このプロパティは、Azure portal でグループを作成するときに、 **[グループに Azure AD ロールを割り当てることができる]** をオンにすることによって有効にすることもできます。 どちらの場合も、ユーザーにロールを割り当てるのと同じ方法で、1 つまたは複数の Azure AD ロールにグループを割り当てることができます。 1 つの Azure AD 組織 (テナント) には、最大 200 個のロール割り当て可能なグループを作成できます。
+"isAssignableToRole" プロパティを "true" に設定して、新しい Microsoft 365 またはセキュリティ グループを作成します。 このプロパティは、Azure portal でグループを作成するときに、 **[グループに Azure AD ロールを割り当てることができる]** をオンにすることによって有効にすることもできます。 どちらの場合も、ユーザーにロールを割り当てるのと同じ方法で、1 つまたは複数の Azure AD ロールにグループを割り当てることができます。 1 つの Azure AD 組織 (テナント) には、最大 200 個のロール割り当て可能なグループを作成できます。
 
 グループのメンバーにロールへの継続的なアクセスを許可しない場合は、Azure AD Privileged Identity Management を使用できます。 Azure AD ロールの有資格メンバーとしてグループを割り当てます。 その後、グループの各メンバーは、そのグループが割り当てられているロールに対して割り当てをアクティブにすることができます。 その後、一定期間、ロールの割り当てをアクティブ化できます。
 

@@ -4,16 +4,16 @@ description: Azure の Analysis Services サーバーに接続してデータを
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/17/2020
+ms.date: 09/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 170cf0081e6671451ece6dc2924ae7e418f520a2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 71caad8ce650b86f4350b32974bb8d980538b223
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506776"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489019"
 ---
 # <a name="connecting-to-servers"></a>サーバーへの接続
 
@@ -76,6 +76,24 @@ Analysis Services サーバーを Azure に作成するとき、一意の名前�
 ## <a name="connect-using-an-odc-file"></a>.odc ファイルを使用した接続
 
 以前のバージョンの Excel を使用するユーザーは、Office データ接続 (.odc) ファイルを使って Azure Analysis Services サーバーに接続することができます。 詳細については、「[Office データ接続 (.odc) ファイルの作成](analysis-services-odc.md)」を参照してください。
+
+## <a name="connect-as-a-linked-server-from-sql-server"></a>SQL Server からリンク サーバーとして接続する
+
+SQL Server は、MSOLAP をデータ ソース プロバイダーとして指定することによって、[リンク サーバー](https://docs.microsoft.com/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine)として Azure Analysis Services リソースに接続できます。 リンク サーバー接続を構成する前に、必ず最新の [MSOLAP クライアント ライブラリ](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) (プロバイダー) をインストールしてください。 
+
+Azure Analysis Services へのリンク サーバー接続の場合、SQL Server プロセスの外で MSOLAP プロバイダーのインスタンスを作成する必要があります。 リンク サーバー オプションを構成する際は、 **[InProcess 許可]** オプションが**選択されていない**ことを確認してください。
+
+**[InProcess 許可]** が選択されていて、SQL Server プロセス内でプロバイダーのインスタンスが作成された場合、次のエラーが返されます。
+
+```
+OLE DB provider "MSOLAP" for linked server "(null)" returned message "The following system error occurred: ".
+
+OLE DB provider "MSOLAP" for linked server "(null)" returned message "The connection failed because user credentials are needed and Sign-In UI is not allowed.".
+
+Msg 7303, Level 16, State 1, Line 2
+Cannot initialize the data source object of OLE DB provider "MSOLAP" for linked server "(null)".
+```
+
 
 
 ## <a name="next-steps"></a>次のステップ

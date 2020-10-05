@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 11e08427067efa5e7bd33b8d08d84443444a190b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 17be7cb8e3330a9bd0391e0750f5e37ac64b0484
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078267"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970995"
 ---
 # <a name="determine-which-azure-storage-encryption-key-model-is-in-use-for-the-storage-account"></a>ストレージアカウントに使用されている Azure Storage 暗号化キーモデルを決定する
 
@@ -79,4 +79,4 @@ key_source=$(az storage account show \
 ## <a name="next-steps"></a>次のステップ
 
 - [保存データに対する Azure Storage 暗号化](storage-service-encryption.md)
-- [Azure Key Vault で顧客マネージド キーを使用して Azure Storage の暗号化を管理する](encryption-customer-managed-keys.md)
+- [Azure Storage の暗号化のためのカスタマー マネージド キー](customer-managed-keys-overview.md)

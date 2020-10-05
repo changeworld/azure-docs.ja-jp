@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 08/04/2020
-ms.openlocfilehash: 5bd78f2db8ea1f2a26d26269822ec78978a3cfde
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: ce63d86c3256646782775c84636c4d248e0a6735
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553310"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984338"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>チュートリアル:DMS を使用してオンラインで SQL Server を Azure SQL Managed Instance に移行する
 
@@ -35,7 +35,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 > [!IMPORTANT]
 > Azure Database Migration Service を使用した SQL Server から SQL Managed Instance へのオンラインでの移行のためには、そのサービスによるデータベースの移行に使用できる、データベースの完全バックアップとそれに続くログ バックアップを SMB ネットワーク共有上に用意する必要があります。 Azure Database Migration Service によってバックアップが開始されることはなく、移行には既存のバックアップが使用されます。これは、ディザスター リカバリー計画の一部として既に作成されている場合があります。
-> 必ず [WITH CHECKSUM オプションを使用してバックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017)を作成してください。 また、単一のバックアップ メディアに複数のバックアップ (完全ログとトランザクション ログ) を追加しないでください。各バックアップを別々のバックアップ ファイルに作成します。 最後に、圧縮されたバックアップを使用すると、大きなバックアップの移行に関連する潜在的な問題が発生する可能性を低減できます。
+> 必ず [WITH CHECKSUM オプションを使用してバックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017&preserve-view=true)を作成してください。 また、単一のバックアップ メディアに複数のバックアップ (完全ログとトランザクション ログ) を追加しないでください。各バックアップを別々のバックアップ ファイルに作成します。 最後に、圧縮されたバックアップを使用すると、大きなバックアップの移行に関連する潜在的な問題が発生する可能性を低減できます。
 
 > [!NOTE]
 > Azure Database Migration Service を使用してオンライン移行を実行するには、Premium 価格レベルに基づいてインスタンスを作成する必要があります。
@@ -245,7 +245,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
     データベースとログインのカテゴリを展開して、該当するサーバー オブジェクトの移行状態を監視できます。
 
-   ![進行中の移行アクティビティ](media/tutorial-sql-server-to-managed-instance-online/dms-monitor-migration-extend2.png)
+   ![移行アクティビティの状態](media/tutorial-sql-server-to-managed-instance-online/dms-monitor-migration-extend2.png)
 
 ## <a name="performing-migration-cutover"></a>移行カットオーバーの実行
 
@@ -264,7 +264,7 @@ SQL Managed Instance のターゲット インスタンスで完全なデータ�
     ![カットオーバー完了の準備](media/tutorial-sql-server-to-managed-instance-online/dms-complete-cutover.png)
 
     > [!IMPORTANT]
-    > カットオーバーの後、Business Critical サービス レベルでの SQL Managed Instance の可用性だけは、AlwaysOn 高可用性グループに対して 3 つのセカンダリ レプリカをシードする必要があるため、General Purpose よりかなり長くかかることがあります。 この操作の所要時間は、データのサイズに依存します。詳細については、「[管理操作の所要時間](../azure-sql/managed-instance/management-operations-overview.md#management-operations-duration)」を参照してください。
+    > カットオーバーの後、Business Critical サービス レベルでの SQL Managed Instance の可用性だけは、AlwaysOn 高可用性グループに対して 3 つのセカンダリ レプリカをシードする必要があるため、General Purpose よりかなり長くかかることがあります。 この操作の所要時間は、データのサイズに依存します。詳細については、「[管理操作の所要時間](../azure-sql/managed-instance/management-operations-overview.md#duration)」を参照してください。
 
 5. データベース移行の状態が **[完了]** と表示されたら、SQL Managed Instance の新しいターゲット インスタンスにアプリケーションを接続します。
 

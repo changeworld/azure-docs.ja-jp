@@ -16,12 +16,12 @@ ms.date: 02/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18c982b09aa8a28d520c709c9b8db2c9be4c7bb4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 48584fa4042cf53fa1084e519dca0e64f530ca59
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356952"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090127"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect:ステージング サーバーとディザスター リカバリー
 ステージング モードのサーバーでは、構成を変更した後、そのサーバーをアクティブにする前に変更内容をプレビューできます。 また、フル インポートおよび完全同期を実行して、変更を運用環境に加える前に、すべての変更が予定どおりに加えられていることを確認できます。
@@ -57,7 +57,7 @@ ms.locfileid: "85356952"
 
 #### <a name="prepare"></a>準備
 1. Azure AD Connect をインストールし、 **[ステージング モード]** を選択します。インストール ウィザードの最後のページで、 **[同期の開始]** を選択解除します。 このモードにより、同期エンジンを手動で実行することができます。
-   ![ReadyToConfigure](./media/how-to-connect-sync-staging-server/readytoconfigure.png)
+   ![スクリーンショットには、[Azure AD Connect] ダイアログ ボックスの [構成の準備完了] ページが示されています。](./media/how-to-connect-sync-staging-server/readytoconfigure.png)
 2. いったんサインオフし、サインインし直してから、[スタート] メニューの **[Synchronization Service (同期サービス)]** を選択します。
 
 #### <a name="configuration"></a>構成
@@ -73,7 +73,7 @@ ms.locfileid: "85356952"
 
 #### <a name="verify"></a>Verify (英語の可能性あり)
 1. コマンド プロンプトを起動し、`%ProgramFiles%\Microsoft Azure AD Sync\bin` に移動します。
-2. 次のコマンドを実行します。`csexport "Name of Connector" %temp%\export.xml /f:x` 同期サービスにコネクタの名前があることを確認できます。 Azure AD の場合は、"contoso.com - AAD" のような名前が表示されます。
+2. 次のコマンドを実行します。`csexport "Name of Connector" %temp%\export.xml /f:x` 同期サービスにコネクタの名前があることを確認できます。 Azure AD の場合は、"contoso.com - Azure AD" のような名前が表示されます。
 3. 次のコマンドを実行します。`CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` %temp% に export.csv という名前のファイルが生成されます。このファイルは、Microsoft Excel で開くことができます。 このファイルには、エクスポートの対象となるすべての変更が含まれています。
 4. データまたは構成に必要な変更を加え、エクスポートの対象となる変更が希望どおりになるまで、(「インポートおよび同期」と「確認」の) 手順を実行します。
 

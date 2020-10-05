@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: duau
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2b88fb32fd4bc07bbaaaf8834646e8d585491dc6
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 460ea446fc6dfc43e81a1a57bbba032a61f3a72d
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395691"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532547"
 ---
 # <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>PowerShell を使用してクラシック デプロイ モデルから Resource Manager デプロイ モデルに ExpressRoute 回線を移行する
 
@@ -95,14 +95,14 @@ Move-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Locati
 クラシック モードの場合、ExpressRoute 回線には、リージョンに関連付けられるという概念はありません。 しかし、Resource Manager の場合、すべてのリソースを Azure リージョンにマップする必要があります。 Move-AzExpressRouteCircuit コマンドレットに指定するリージョンは、技術的には任意のリージョンにすることが可能です。 組織化を目的とする場合は、ピアリングの場所を厳密に表すリージョンを選択してください。
 
 > [!NOTE]
-> 移行が完了した後は、前のコマンドレットで表示される新しい名前を使用してリソースにアクセスします。 回線の名前は実質的に変更されます。
-> 
+> * クラシック ExpressRoute 回線を Resource Manager デプロイ モデルに移行した後、既定でクラシック デプロイ モデルと Resource Manager デプロイ モデルの両方にアクセスできます。
+> * 前のコマンドレットで表示される新しい名前を使用してリソースに対応します。 回線の名前は実質的に変更されます。
 
 ## <a name="modify-circuit-access"></a>回線アクセスの変更
 
 ### <a name="to-enable-expressroute-circuit-access-for-both-deployment-models"></a>両方のデプロイメント モデルに対して ExpressRoute 回線アクセスを有効にするには
 
-クラシック ExpressRoute 回線を Resource Manager デプロイ モデルに移行した後に、両方のデプロイ モデルへのアクセスを有効にできます。 以下のコマンドレットを実行して、両方のデプロイメント モデルへのアクセスを有効にします。
+Resource Manager デプロイ モデルで作成された ExpressRoute 回線に対し、クラシック デプロイ モデルへのアクセスを有効にできます。 以下のコマンドレットを実行して、両方のデプロイメント モデルへのアクセスを有効にします。
 
 1. 回線の詳細を取得します。
 

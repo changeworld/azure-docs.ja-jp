@@ -11,16 +11,16 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c4e34c6f13f7013847e99a362716fc9c570cdaf
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 12be5109f339223c11970041922ed2172f67382b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224919"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526903"
 ---
 # <a name="enable-and-use-azure-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>アプリ パスワードを使用して、レガシ アプリケーションで Azure Multi-Factor Authentication を有効にして使用する
 
-Office 2010 以前や iOS 11 以前の Apple Mail のような一部のアプリケーションでは、多要素認証がサポートされません。 アプリは、セカンダリ形式の認証やプロンプトを受け入れるように構成されていません。 ユーザーアカウントに対して Azure Multi-Factor Authentication を有効にした安全な方法で、これらのアプリケーションを使用するには、アプリ パスワードを使用できます。 これらのアプリ パスワードは従来のパスワードを置き換えて、アプリが多要素認証をバイパスして正常に動作できるようにします。
+一部の古い非ブラウザー アプリ (Office 2010 以前や iOS 11 より前の Apple Mail など) では、認証プロセスの一時停止や中断が認識されません。 ユーザーが Azure Multi-Factor Authentication を有効にしていて、このような古い非ブラウザー アプリのいずれかを使用しようとすると、通常は正常に認証できません。 ユーザーアカウントに対して Azure Multi-Factor Authentication を有効にした安全な方法で、これらのアプリケーションを使用するには、アプリ パスワードを使用できます。 これらのアプリ パスワードは従来のパスワードを置き換えて、アプリが多要素認証をバイパスして正常に動作できるようにします。
 
 Microsoft Office 2013 クライアント以降向けの最新の認証がサポートされています。 Office 2013 クライアント (Outlook を含む) は、最新の認証プロトコルをサポートしており、2 段階認証で機能するように有効にできます。 クライアントを有効にした場合、そのクライアントではアプリ パスワードは必要ありません。
 

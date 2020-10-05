@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 64ee8f2daddd53d37aeaf0f02208e02500b48f57
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 2c056bd4d5fa9037ce00588269c0da2937ff57ff
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320870"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705335"
 ---
 # <a name="what-are-security-defaults"></a>セキュリティの既定値群とは
 
@@ -92,7 +92,7 @@ Microsoft は、誰もがセキュリティの既定値群を利用できるよ�
 > [!WARNING]
 > セキュリティの既定値群を有効にする前に、管理者が古い認証プロトコルを使用していないことを確認してください。 詳細については、[レガシ認証から移行する方法](concept-fundamentals-block-legacy-authentication.md)に関するページを参照してください。
 
-- [Office 365 および Microsoft 365 を使用して電子メールを送信するように多機能機器またはアプリケーションを設定する方法](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-microsoft-365-or-office-365)
+- [Microsoft 365 を使用して電子メールを送信するように多機能機器またはアプリケーションを設定する方法](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-microsoft-365-or-office-365)
 
 ### <a name="protecting-privileged-actions"></a>特権アクションの保護
 

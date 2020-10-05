@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 09/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cda04ad57f1984064692cb1df4accc5a99de0910
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b45f5ae64a7b8fd97d5242c82fb90ee6c57286ac
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204032"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89433892"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OAuth2 技術プロファイルを定義する
 
@@ -98,14 +98,15 @@ Azure Active Directory B2C (Azure AD B2C) では、OAuth2 プロトコルの ID 
 | ExtraParamsInClaimsEndpointRequest | いいえ | **ClaimsEndpoint** 要求に、一部の ID プロバイダーにより返される可能性がある余分なパラメーターが存在します。 複数のパラメーター名をエスケープし、コンマ ',' 区切り記号で区切るようにしてください。 |
 | IncludeClaimResolvingInClaimsHandling  | いいえ | 入力と出力の要求について、[要求の解決](claim-resolver-overview.md)を技術プロファイルに含めるかどうかを指定します。 指定できる値: `true` または `false` (既定値)。 技術プロファイルで要求リゾルバーを使用する場合は、これを `true` に設定します。 |
 | ResolveJsonPathsInJsonTokens  | いいえ | 技術プロファイルが JSON パスを解決するかどうかを示します。 指定できる値: `true` または `false` (既定値)。 このメタデータを使用して、入れ子になった JSON 要素からデータを読み取ります。 [OutputClaim](technicalprofiles.md#outputclaims) で、`PartnerClaimType` を、出力する JSON パス要素に設定します。 例: `firstName.localized`、または `data.0.to.0.email`。|
+|token_endpoint_auth_method| No| Azure AD B2C からトークン エンドポイントに認証ヘッダーを送信する方法を指定します。 指定できる値は、`client_secret_post` (既定値) と `client_secret_basic` (パブリック プレビュー) です。 詳細については、[OpenID Connect クライアント認証](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication)に関するセクションをご覧ください。 |
 
 ## <a name="cryptographic-keys"></a>暗号化キー
 
 **CryptographicKeys** 要素には次の属性が存在します。
 
-| Attribute | 必須 | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| client_secret | はい | ID プロバイダー アプリケーションのクライアント シークレット。 **response_types** メタデータが `code` に設定されている場合にのみ、暗号化キーが必要です。 この場合、Azure AD B2C は、アクセス トークンの認証コードを交換するために、別の呼び出しを行います。 メタデータが `id_token` に設定されている場合は、暗号化キーを省略できます。 |
+| client_secret | Yes | ID プロバイダー アプリケーションのクライアント シークレット。 **response_types** メタデータが `code` に設定されている場合にのみ、暗号化キーが必要です。 この場合、Azure AD B2C は、アクセス トークンの認証コードを交換するために、別の呼び出しを行います。 メタデータが `id_token` に設定されている場合は、暗号化キーを省略できます。 |
 
 ## <a name="redirect-uri"></a>リダイレクト URI
 

@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 08/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: a0f1e7789c0cebdd1cb5b22f21151020a0be09c9
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: c05de0462dde2b09e0e01919dfc691a85df153fa
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855110"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483271"
 ---
 # <a name="data-storage"></a>データ ストレージ
 
@@ -24,7 +24,7 @@ Azure Time Series Insights Gen2 環境を作成するときは、次の 2 つの
 * ウォーム データ ストレージ用に構成できる Azure Time Series Insights Gen2 環境。
 * コールド データ ストレージ用の Azure Storage アカウント。
 
-ウォーム ストア内のデータは、[Time Series Query API](./time-series-insights-update-tsq.md) および [Azure Time Series Insights TSI エクスプローラー](./time-series-insights-update-explorer.md)を介してのみ使用できます。 ウォーム ストアには、Azure Time Series Insights Gen2 環境の作成時に選択された[保持期間](./time-series-insights-update-plan.md#the-preview-environment)内の最新のデータが含まれます。
+ウォーム ストア内のデータは、[Time Series Query API](./time-series-insights-update-tsq.md) および [Azure Time Series Insights Explorer](./time-series-insights-update-explorer.md) を介してのみ使用できます。 ウォーム ストアには、Azure Time Series Insights Gen2 環境の作成時に選択された[保持期間](./time-series-insights-update-plan.md#the-preview-environment)内の最新のデータが含まれます。
 
 Azure Time Series Insights Gen2 を使用すると、コールド ストア データが [Parquet ファイル形式](#parquet-file-format-and-folder-structure)で Azure BLOB ストレージに保存されます。 Azure Time Series Insights Gen2 ではこのコールド ストア データが排他的に管理されますが、標準の Parquet ファイルとして直接読み取ることができます。
 
@@ -58,7 +58,7 @@ Azure Time Series Insights Gen2 では、Azure Storage アカウント内の各�
 
 #### <a name="accessing-cold-store-data"></a>コールド ストア データへのアクセス
 
-[Azure Time Series Insights TSI エクスプローラー](./time-series-insights-update-explorer.md)および [Time Series Query API](./time-series-insights-update-tsq.md) からデータにアクセスするだけでなく、コールド ストアに格納されている Parquet ファイルから直接データにアクセスすることもできます。 たとえば、Jupyter Notebook でデータの読み取り、変換、クレンジングを行った後、それを使用して同じ Spark ワークフローで Azure Machine Learning モデルをトレーニングできます。
+[Azure Time Series Insights Explorer](./time-series-insights-update-explorer.md) および [Time Series Query API](./time-series-insights-update-tsq.md) からデータにアクセスするだけでなく、コールド ストアに格納されている Parquet ファイルから直接データにアクセスすることもできます。 たとえば、Jupyter Notebook でデータの読み取り、変換、クレンジングを行った後、それを使用して同じ Spark ワークフローで Azure Machine Learning モデルをトレーニングできます。
 
 Azure Storage アカウントから直接データにアクセスするには、Azure Time Series Insights Gen2 データを格納するために使用しているアカウントへの読み取りアクセス権が必要です。 次に、「[Parquet ファイル形式](#parquet-file-format-and-folder-structure)」セクションで説明されている `PT=Time` フォルダーにある Parquet ファイルの作成時刻に基づいて、選択したデータを読み取ることができます。  ストレージ アカウントへの読み取りアクセスを有効にする方法の詳細については、[ストレージ アカウント リソースへのアクセスの管理](../storage/blobs/storage-manage-access-to-resources.md)に関するページを参照してください。
 

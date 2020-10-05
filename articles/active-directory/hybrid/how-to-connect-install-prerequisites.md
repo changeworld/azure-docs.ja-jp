@@ -16,12 +16,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17209919e9bcd93a9a0184d8d4df9c29fff62ef9
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 1fa96d6bd0032f675ffaeabc58c62c13312039dc
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277325"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662158"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect の前提条件
 この記事では、Azure Active Directory (Azure AD) Connect を使用するための前提条件とハードウェア要件について説明します。
@@ -34,10 +34,10 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
   * [Azure ポータル](https://portal.azure.com)。
   * [Office ポータル](https://portal.office.com)。
 * [ドメインを追加して検証](../fundamentals/add-custom-domain.md) します。 たとえば、ユーザー向けに contoso.com を使用する予定の場合は、そのドメインが検証されていることと、使用しているドメインが既定のドメインである contoso.onmicrosoft.com だけではないことを確認します。
-* Azure AD テナントでは、既定で 50,000 個のオブジェクトを使用できます。 ドメインを検証すると、このオブジェクトの制限が 300,000 個に増加します。 Azure AD でさらに多くのオブジェクトが必要な場合は、制限をさらに増加させるためにサポート ケースを開きます。 500,000 個を超えるオブジェクトが必要な場合は、Office 365、Azure AD Premium、または Enterprise Mobility + Security などのライセンスが必要です。
+* Azure AD テナントでは、既定で 50,000 個のオブジェクトを使用できます。 ドメインを検証すると、このオブジェクトの制限が 300,000 個に増加します。 Azure AD でさらに多くのオブジェクトが必要な場合は、制限をさらに増加させるためにサポート ケースを開きます。 500,000 個を超えるオブジェクトが必要な場合は、Microsoft 365、Azure AD Premium、または Enterprise Mobility + Security などのライセンスが必要です。
 
 ### <a name="prepare-your-on-premises-data"></a>オンプレミスのデータの準備
-* Azure AD および Office 365 に同期する前に、[IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) を使用して、ディレクトリ内の重複部分や書式の問題などのエラーを特定してください。
+* Azure AD および Microsoft 365 に同期する前に、[IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) を使用して、ディレクトリ内の重複部分や書式の問題などのエラーを特定してください。
 * [Azure AD で有効にできるオプションの同期機能](how-to-connect-syncservice-features.md)について確認し、どの機能を有効にする必要があるかを検討してください。
 
 ### <a name="on-premises-active-directory"></a>オンプレミスの Active Directory

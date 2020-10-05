@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect で同期規則をカスタマイズする方法 | Microsoft Docs
-description: このトピックでは、Azure AD Connect のインストールに関する問題のトラブルシューティングの手順を示します。
+description: 同期規則エディターを使用して、新しい同期規則の編集や作成を行う方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -15,12 +15,12 @@ ms.date: 01/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f33cbb8caaf81b862198d694b0562d461de8a74
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: e2bb86988454141dc692b4a9967997c4ff7574a2
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279280"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530490"
 ---
 # <a name="how-to-customize-a-synchronization-rule"></a>同期規則をカスタマイズする方法
 

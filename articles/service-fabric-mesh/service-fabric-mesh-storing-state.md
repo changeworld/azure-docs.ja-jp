@@ -5,12 +5,12 @@ author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.openlocfilehash: d56ce811155f7b7f60fa870dbdae2550afab2eac
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 01c54c8baa411e7d57698c626b098dc19e66be4e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246828"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984126"
 ---
 # <a name="state-management-with-service-fabric"></a>Service Fabric を使用した状態の管理
 
@@ -22,7 +22,7 @@ Service Fabric Mesh を使用することにより、新しいアプリケーシ
 
 多くの場合、コンテナーでは一時ディスクが利用されます。 ただし、一時ディスクは一時的なので、コンテナーがクラッシュすると、新しい一時ディスクが取得され、情報は失われます。 また、一時ディスク上の情報を他のコンテナーと共有することは困難でもあります。 ボリュームは、コンテナー インスタンス内にマウントされ、状態を保持するために使用できるディレクトリです。 ボリュームを利用することで、汎用目的のファイル ストレージが提供され、通常のディスク I/O ファイル API を利用してファイルを読み書きすることができます。 ボリューム リソースには、ディレクトリをマウントする方法と、使用するバッキング ストレージについて説明されています。 データを保存するには、Azure File Storage または Service Fabric ボリューム ディスクを選択できます。
 
-![ボリューム][image3]
+![サービスを示す図 (ボリュームに送信され、レプリケートされたローカル ディスク上の Service Fabric Reliable ボリュームとネットワーク ストレージ上の Azure Files ボリュームの両方に送信されます)。][image3]
 
 ### <a name="service-fabric-reliable-volume"></a>Service Fabric Reliable Volume
 

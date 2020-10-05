@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) で Kubernetes マスター ノー�
 services: container-service
 ms.topic: article
 ms.date: 01/03/2019
-ms.openlocfilehash: 721ef4f60d263602b01b5957bfb9bc3b5682a2df
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: a0207ebbb1596e41ad65e21a769d7041a239f767
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048280"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90004869"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Kubernetes マスター ノード ログの有効化とレビュー
 
@@ -69,42 +69,43 @@ pod/nginx created
 
 診断ログが有効になって表示されるまでには、数分かかる場合があります。 Azure portal で、AKS クラスターに移動し、左側にある **[ログ]** を選択します。 *[クエリの例]* ウィンドウが表示されている場合は閉じます。
 
-
 左側で、**[ログ]** を選択します。 *kube-audit* ログを表示するには、テキスト ボックスに次のクエリを入力します。
 
 ```
-AzureDiagnostics
-| where Category == "kube-audit"
-| project log_s
+KubePodInventory
+| where TimeGenerated > ago(1d)
 ```
 
 おそらく、多くのログが返されます。 クエリの対象を絞り込み、前の手順で作成した NGINX ポッドに関するログを表示するには、次の例のように *where* ステートメントを追加して、*nginx* を検索します。
 
 ```
-AzureDiagnostics
-| where Category == "kube-audit"
-| where log_s contains "nginx"
-| project log_s
+KubePodInventory
+| where TimeGenerated > ago(1d)
+| where Name contains "nginx"
 ```
-
-クエリの*カテゴリ*名を *kube-controller-manager* や *kube-scheduler* に更新して (つまり、有効にするログの名前を指定して)、追加のログを表示することもできます。 さらに、*where* ステートメントを追加して目的のイベントを絞り込むこともできます。
 
 クエリの実行やログ データの絞り込みの方法について詳しくは、「[Log Analytics のログ検索で収集されたデータの表示または分析][analyze-log-analytics]」をご覧ください。
 
 ## <a name="log-event-schema"></a>ログのイベント スキーマ
 
-次の表は、各イベントに使用されるスキーマの説明をまとめたものです。ログ データを分析する際にご使用ください。
+AKS では、次のイベントがログに記録されます。
 
-| フィールド名               | 説明 |
-|--------------------------|-------------|
-| *resourceId*             | ログを生成した Azure リソース |
-| *time*                   | ログがアップロードされた時刻のタイムスタンプ |
-| *category*               | ログを生成するコンテナー/コンポーネントの名前 |
-| *operationName*          | 常に *Microsoft.ContainerService/managedClusters/diagnosticLogs/Read* |
-| *properties.log*         | コンポーネントから送られたログのフルテキスト |
-| *properties.stream*      | *stderr* または *stdout* |
-| *properties.pod*         | ログの取得元のポッド名 |
-| *properties.containerID* | このログの取得元の docker コンテナーの ID |
+* [AzureActivity][log-schema-azureactivity]
+* [AzureMetrics][log-schema-azuremetrics]
+* [ContainerImageInventory][log-schema-containerimageinventory]
+* [ContainerInventory][log-schema-containerinventory]
+* [ContainerLog][log-schema-containerlog]
+* [ContainerNodeInventory][log-schema-containernodeinventory]
+* [ContainerServiceLog][log-schema-containerservicelog]
+* [ハートビート][log-schema-heartbeat]
+* [InsightsMetrics][log-schema-insightsmetrics]
+* [KubeEvents][log-schema-kubeevents]
+* [KubeHealth][log-schema-kubehealth]
+* [KubeMonAgentEvents][log-schema-kubemonagentevents]
+* [KubeNodeInventory][log-schema-kubenodeinventory]
+* [KubePodInventory][log-schema-kubepodinventory]
+* [KubeServices][log-schema-kubeservices]
+* [Perf][log-schema-perf]
 
 ## <a name="log-roles"></a>ログのロール
 
@@ -131,3 +132,19 @@ AzureDiagnostics
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
+[log-schema-azureactivity]: /azure/azure-monitor/reference/tables/azureactivity
+[log-schema-azuremetrics]: /azure/azure-monitor/reference/tables/azuremetrics
+[log-schema-containerimageinventory]: /azure/azure-monitor/reference/tables/containerimageinventory
+[log-schema-containerinventory]: /azure/azure-monitor/reference/tables/containerinventory
+[log-schema-containerlog]: /azure/azure-monitor/reference/tables/containerlog
+[log-schema-containernodeinventory]: /azure/azure-monitor/reference/tables/containernodeinventory
+[log-schema-containerservicelog]: /azure/azure-monitor/reference/tables/containerservicelog
+[log-schema-heartbeat]: /azure/azure-monitor/reference/tables/heartbeat
+[log-schema-insightsmetrics]: /azure/azure-monitor/reference/tables/insightsmetrics
+[log-schema-kubeevents]: /azure/azure-monitor/reference/tables/kubeevents
+[log-schema-kubehealth]: /azure/azure-monitor/reference/tables/kubehealth
+[log-schema-kubemonagentevents]: /azure/azure-monitor/reference/tables/kubemonagentevents
+[log-schema-kubenodeinventory]: /azure/azure-monitor/reference/tables/kubenodeinventory
+[log-schema-kubepodinventory]: /azure/azure-monitor/reference/tables/kubepodinventory
+[log-schema-kubeservices]: /azure/azure-monitor/reference/tables/kubeservices
+[log-schema-perf]: /azure/azure-monitor/reference/tables/perf

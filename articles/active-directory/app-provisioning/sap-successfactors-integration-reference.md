@@ -10,12 +10,12 @@ ms.topic: reference
 ms.workload: identity
 ms.date: 07/20/2020
 ms.author: chmutali
-ms.openlocfilehash: ea47f8a6fc29571a27f8976bd0ad9bbd30ed0ad9
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 805cdc0713afd43502bb224cce60167adbc418ee
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808458"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969516"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-sap-successfactors"></a>Azure Active Directory のプロビジョニングと SAP SuccessFactors の統合方法 
 
@@ -199,11 +199,11 @@ Azure AD SuccessFactors プロビジョニング アプリでは、次のカス�
 1. 下にスクロールし、 **[詳細オプションの表示]** をクリックします。
 1. **[Review your schema here]\(ここでスキーマを確認する\)** リンクをクリックして、スキーマ エディターを開きます。 
 
-   >![スキーマの確認](media/sap-successfactors-integration-reference/review-schema.png#lightbox)
+   >![スキーマ エディターを開く [Review your schema here]\(ここでスキーマを確認する\) リンクを示すスクリーンショット。](media/sap-successfactors-integration-reference/review-schema.png#lightbox)
 
 1. **[ダウンロード]** リンクをクリックして、編集前にスキーマのコピーを保存します。 
 
-   >![スキーマのダウンロード](media/sap-successfactors-integration-reference/download-schema.png#lightbox)
+   >![スキーマ エディターでスキーマのコピーを保存するために選択する [ダウンロード] を示すスクリーンショット。](media/sap-successfactors-integration-reference/download-schema.png#lightbox)
 1. スキーマ エディターで Ctrl + H キーを押して、検索して置換コントロールを開きます。
 1. 検索テキスト ボックスに値 `$.employmentNav.results[0]` をコピーして貼り付けます
 1. 置換テキスト ボックスに値 `$.employmentNav.results[?(@.userNav != null)]` をコピーして貼り付けます。 `!=` 演算子の前後の空白文字に注意してください。これは、JSONPath 式を正常に処理するために重要です。 

@@ -11,13 +11,13 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 08/11/2020
-ms.openlocfilehash: 3bc8458aa009920f183b076d12185295ef294e07
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.date: 09/15/2020
+ms.openlocfilehash: ff56ef55066fd0f56b5b8dc7507bfb63b8b8baa0
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88186082"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090603"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムのセットアップのカスタマイズ
 
@@ -40,7 +40,7 @@ Azure Data Factory (ADF) でカスタム セットアップを使用して Azure
 
 次の制限事項は、標準カスタム セットアップにのみ適用されます。
 
-- ご自分のスクリプトで *gacutil.exe* を使用してアセンブリをグローバル アセンブリ キャッシュ (GAC) にインストールする場合は、ご自分のカスタム セットアップの一部として *gacutil.exe* を指定する必要があります。 また、「手順」のセクションで後述するように、"*パブリック プレビュー*" コンテナーに用意されているコピーを使用することもできます。
+- ご自分のスクリプトで *gacutil.exe* を使用してアセンブリをグローバル アセンブリ キャッシュ (GAC) にインストールする場合は、ご自分のカスタム セットアップの一部として *gacutil.exe* を指定する必要があります。 または、*パブリック プレビュー* コンテナーの*Sample* フォルダーで提供されているコピーを使用することもできます。下の「**標準カスタム セットアップのサンプル**」のセクションを参照してください。
 
 - ご自分のスクリプト内でサブフォルダーを参照する場合、*msiexec.exe* ではルート フォルダーを参照する `.\` 表記はサポートされていません。 `msiexec /i ".\MySubfolder\MyInstallerx64.msi" ...` ではなく、`msiexec /i "MySubfolder\MyInstallerx64.msi" ...` などのコマンドを使用します。
 
@@ -147,9 +147,9 @@ ADF UI で高速カスタム セットアップを使用して Azure-SSIS IR を
 
    * **[oh22 の SQLPhonetics.NET]** コンポーネントを選択した場合は、Azure-SSIS IR に oh22 の [SQLPhonetics.NET](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) データ品質または照合コンポーネントをインストールできます。 これを行うには、 **[ライセンス キー]** テキスト ボックスに、事前に購入した製品ライセンス キーを入力します。 現在の統合バージョンは **1.0.45** です。
 
-   * **[KingswaySoft の SSIS Integration Toolkit]** コンポーネントを選択した場合は、お使いの Azure-SSIS IR に KingswaySoft から Microsoft Dynamics、SharePoint、Project Server、Oracle、Salesforce Marketing Cloud などの CRM、ERP、マーケティング、コラボレーション アプリ用の [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) という一連のコンポーネントをインストールできます。 これを行うには、 **[ライセンス キー]** テキスト ボックスに、事前に購入した製品ライセンス キーを入力します。 現在の統合バージョンは **2019.2** です。
+   * **[KingswaySoft の SSIS Integration Toolkit]** コンポーネントを選択した場合は、お使いの Azure-SSIS IR に KingswaySoft から Microsoft Dynamics、SharePoint、Project Server、Oracle、Salesforce Marketing Cloud などの CRM、ERP、マーケティング、コラボレーション アプリ用の [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) という一連のコンポーネントをインストールできます。 これを行うには、 **[ライセンス キー]** テキスト ボックスに、事前に購入した製品ライセンス キーを入力します。 現在の統合バージョンは **2020.1** です。
 
-   * **[KingswaySoft の SSIS Productivity Pack]** コンポーネントを選択した場合は、お使いの Azure-SSIS IR に KingswaySoft から [SSIS Productivity Pack](https://www.kingswaysoft.com/products/ssis-productivity-pack) という一連のコンポーネントをインストールできます。 これを行うには、 **[ライセンス キー]** テキスト ボックスに、事前に購入した製品ライセンス キーを入力します。 現在の統合バージョンは **10.0** です。
+   * **[KingswaySoft の SSIS Productivity Pack]** コンポーネントを選択した場合は、お使いの Azure-SSIS IR に KingswaySoft から [SSIS Productivity Pack](https://www.kingswaysoft.com/products/ssis-productivity-pack) という一連のコンポーネントをインストールできます。 これを行うには、 **[ライセンス キー]** テキスト ボックスに、事前に購入した製品ライセンス キーを入力します。 現在の統合バージョンは **20.1** です。
 
    * **[Theobald Software の Xtract IS]** コンポーネントを選択した場合は、お使いの Azure-SSIS IR に Theobald Software から SAP システム (ERP、S/4HANA、BW) 用の [Xtract IS](https://theobald-software.com/en/xtract-is/) という一連のコンポーネントをインストールできます。 これを行うには、事前に購入した製品ライセンス ファイルを **[ライセンス ファイル]** 入力ボックスにドラッグ アンド ドロップするか、アップロードします。 現在の統合バージョンは **6.1.1.3** です。
 

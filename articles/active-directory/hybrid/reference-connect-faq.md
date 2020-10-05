@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe4350a721b025858493739e78011458f89f33ee
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 7f6c75337c27e14fb77161cf641cde0a582901e7
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276339"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90014635"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect に関する FAQ
 
@@ -139,10 +139,10 @@ Microsoft では、Azure AD Connect サーバーを強化して、お客様の I
 いいえ、NAT を介した Azure AD Connect の使用はサポートされていません。 
 
 ## <a name="federation"></a>フェデレーション
-**Q:Office 365 の証明書を更新するように求める電子メールを受け取った場合はどうすればいいですか。**  
+**Q:Microsoft 365 の証明書を更新するように求める電子メールを受け取った場合はどうすればいいですか。**  
 証明書の更新方法については、[証明書の更新](how-to-connect-fed-o365-certs.md)に関する記事を参照してください。
 
-**Q:Office 365 証明書利用者の "証明書利用者の自動更新" を設定しました。トークン署名証明書が自動的にロールオーバーされるときに、何か必要な操作はありますか。**  
+**Q:Microsoft 365 証明書利用者の "証明書利用者の自動更新" を設定しました。トークン署名証明書が自動的にロールオーバーされるときに、何か必要な操作はありますか。**  
 [証明書の更新](how-to-connect-fed-o365-certs.md)に関する記事に記載されているガイダンスに従ってください。
 
 ## <a name="environment"></a>環境
@@ -155,14 +155,14 @@ Microsoft では、Azure AD Connect サーバーを強化して、お客様の I
 **Q.Azure portal で同期されているデバイス (たとえば HAADJ) を無効にしても、再び有効になるのはなぜですか?**<br>
 同期されているデバイスは、オンプレミスで作成または管理されている場合があります。 同期されているデバイスがオンプレミスで有効になっているときは、前に管理者によって無効になった場合でも、Azure portal で再び有効になることがあります。 同期されているデバイスを無効にするには、オンプレミスの Active Directory を使用して、コンピューター アカウントを無効にします。
 
-**Q.Office 365 または Azure AD ポータルで同期されているユーザーのサインインをブロックした場合、サインイン時に再びブロックが解除されるのはなぜですか?**<br>
+**Q.Microsoft 365 または Azure AD ポータルで同期されているユーザーのサインインをブロックした場合、サインイン時に再びブロックが解除されるのはなぜですか?**<br>
 同期されているユーザーは、オンプレミスで作成または管理されている場合があります。 アカウントがオンプレミスで有効になっている場合、管理者によって実行されたサインイン ブロックは解除される可能性があります。
 
 ## <a name="identity-data"></a>ID データ
 **Q:Azure AD の userPrincipalName (UPN) 属性がオンプレミス UPN と一致しないのはなぜですか。**  
 詳細については、以下の記事を参照してください。
 
-* [Office 365、Azure、Intune におけるユーザー名が、オンプレミスの UPN または代替ログイン ID と一致しない](https://support.microsoft.com/kb/2523192)
+* [Microsoft 365、Azure、Intune におけるユーザー名が、オンプレミスの UPN または代替ログイン ID と一致しない](https://support.microsoft.com/kb/2523192)
 * [異なるフェデレーション ドメインを使用するようにユーザー アカウントの UPN を変更した後、Azure Active Directory 同期ツールによって変更が同期されない](https://support.microsoft.com/kb/2669550)
 
 また、「[Azure AD Connect 同期サービスの機能](how-to-connect-syncservice-features.md)」に記載された手順に従って、同期エンジンによる UPN の更新が許可されるように Azure AD を構成することもできます。
@@ -253,10 +253,10 @@ Office チームでは、Office ポータルに現在の製品名が反映され
 はい、ステージング モードの Azure AD Connect サーバーは自動アップグレードされます。
 
 **Q:自動アップグレードが失敗し、Azure AD Connect サーバーが起動しない場合には、どうすればよいのでしょうか。**  
-まれに、アップグレードの実行後、Azure AD Connect サービスが開始されないことがあります。 そのような場合は、サーバーを再起動してください。通常はこれで問題が解決します。 それでも Azure AD Connect サービスが開始されない場合は、サポート チケットを発行してください。 詳細については、[サービス要求を作成して Office 365 サポートに問い合わせる](/archive/blogs/praveenkumar/how-to-create-service-requests-to-contact-office-365-support)方法に関する記事を参照してください。 
+まれに、アップグレードの実行後、Azure AD Connect サービスが開始されないことがあります。 そのような場合は、サーバーを再起動してください。通常はこれで問題が解決します。 それでも Azure AD Connect サービスが開始されない場合は、サポート チケットを発行してください。 詳細については、[サービス要求を作成して Microsoft 365 サポートに問い合わせる](/archive/blogs/praveenkumar/how-to-create-service-requests-to-contact-office-365-support)方法に関する記事を参照してください。 
 
 **Q:Azure AD Connect を新しいバージョンにアップグレードする際のリスクがよくわかりません。アップグレードについて電話で説明を受けることはできますか。**  
-新しいバージョンの Azure AD Connect にアップグレードする場合は、[サービス要求を作成して Office 365 サポートに問い合わせる](/archive/blogs/praveenkumar/how-to-create-service-requests-to-contact-office-365-support)方法に関する記事を参照してサポート チケットを開いてください。
+新しいバージョンの Azure AD Connect にアップグレードする場合は、[サービス要求を作成して Microsoft 365 サポートに問い合わせる](/archive/blogs/praveenkumar/how-to-create-service-requests-to-contact-office-365-support)方法に関する記事を参照してサポート チケットを開いてください。
 
 ## <a name="operational-best-practice"></a>操作のベスト プラクティス    
 Windows Server Active Directory と Azure Active Directory 間で同期を行う場合に実行する必要があるベスト プラクティスを次に示します。

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
 ms.topic: how-to
-ms.date: 05/29/2019
+ms.date: 09/14/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cead917c6c98d10d3f9e5ebe2f75bd5513574c5
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 19c6bf058af62f830c825eef900bff712ba07181
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948914"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085911"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory Terms of Use
 
@@ -264,7 +264,7 @@ Azure AD 監査ログを使い始める手順は次のとおりです。
 
 - デバイスは、1 つのテナントにのみ参加させることができます。
 - ユーザーは、デバイスを参加させるアクセス許可を持っている必要があります。
-- Intune Enrollment アプリはサポートされていません。
+- Intune Enrollment アプリはサポートされていません。 使用条件を必要とするすべての条件付きアクセス ポリシーからこれが除外されていることを確認してください。
 - Azure AD B2B ユーザーはサポートされていません。
 
 ユーザーのデバイスが参加していない場合、デバイスを参加させる必要があるというメッセージを受け取ります。 操作方法は、プラットフォームとソフトウェアによって異なります。

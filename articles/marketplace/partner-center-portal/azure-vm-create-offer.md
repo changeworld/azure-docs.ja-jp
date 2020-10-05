@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 08/07/2020
-ms.openlocfilehash: 33b3dcdc4fbcf08114f6ba6d63bb949250380d63
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: b9bacb352b3559c33a4a2ef92dc0c3af6ebbc7d6
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816526"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029704"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Azure Marketplace で Azure 仮想マシン オファーを作成する
 
@@ -27,7 +27,7 @@ ms.locfileid: "88816526"
 Azure Marketplace でオファーを発行すると、以下が可能になります。
 
 - Microsoft ブランドの支援の下、自社の宣伝ができる。
-- 1 億人を超える Office 365 と Dynamics 365 のユーザーおよび 20 万を超える組織にリーチできる。
+- 1 億人を超える Microsoft 365 と Dynamics 365 のユーザーおよび 20 万を超える組織にリーチできる。
 - これらのマーケットプ レースから質の高い潜在顧客を獲得できる。
 - Microsoft のフィールド セールス チームとテレセールス チームにより、自社のサービスを宣伝してもらえる。
 
@@ -162,7 +162,7 @@ Azure Marketplace でオファーを発行すると、以下が可能になり�
 
        a. **[カスタム変更条件]** ボックスに独自の変更条件を入力します。 入力できる文字数は無制限です。 これらのカスタム条件に対して指定したテナント ID の顧客に対してのみ、Azure portal でのオファーの購入フローでそれらの条件が表示されます。
 
-       b. (必須) **[テナント ID]** を指定します。 それぞれのカスタム修正で対象にできるテナント ID は 20 個までです。 カスタム修正を追加する場合、Azure での顧客を示すテナント ID を少なくとも 1 つ指定する必要があります。 顧客は Azure で **[Azure Active Directory]**  >  **[プロパティ]** の順に選択することで、これを自分で見つけられます。 ディレクトリ ID の値はテナント ID です (例: 50c464d3-4930-494c-963c-1e951d15360e)。 「[Microsoft Azure と Office 365 のテナント ID の確認](https://www.whatismytenantid.com/)」で、顧客のドメイン名の Web アドレスを使用して顧客の組織のテナント ID を検索することもできます。
+       b. (必須) **[テナント ID]** を指定します。 それぞれのカスタム修正で対象にできるテナント ID は 20 個までです。 カスタム修正を追加する場合、Azure での顧客を示すテナント ID を少なくとも 1 つ指定する必要があります。 顧客は Azure で **[Azure Active Directory]**  >  **[プロパティ]** の順に選択することで、これを自分で見つけられます。 ディレクトリ ID の値はテナント ID です (例: 50c464d3-4930-494c-963c-1e951d15360e)。 「[Microsoft Azure と Microsoft 365 のテナント ID の確認](https://www.whatismytenantid.com/)」で、顧客のドメイン名の Web アドレスを使用して顧客の組織のテナント ID を検索することもできます。
 
        c. (省略可能) 変更の対象となる顧客を特定しやすくするために、テナント ID のわかりやすい**説明**を入力します。
 
@@ -547,7 +547,7 @@ Azure Marketplace でのオファー情報の表示例を次に示します。
 
 <br>Azure Marketplace の検索結果におけるオファー情報の表示例を次に示します。
 
-:::image type="content" source="media/example-azure-marketplace-virtual-machine-search-results.png" alt-text="Azure Marketplace の検索結果でこのオファーがどのように表示されるかを示しています。":::
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-search-results.png" alt-text="Azure Marketplace でこのオファーがどのように表示されるかを示しています。":::
 
 #### <a name="call-out-descriptions"></a>コールアウトの説明
 
@@ -558,7 +558,7 @@ Azure Marketplace でのオファー情報の表示例を次に示します。
 
 <br>Azure Marketplace でのプランの詳細の例を次に示します。
 
-:::image type="content" source="media/example-azure-marketplace-virtual-machine-plan-details.png" alt-text="Azure Marketplace でのプランの詳細を示しています。":::
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-plan-details.png" alt-text="Azure Marketplace でこのオファーがどのように表示されるかを示しています。":::
 
 #### <a name="call-out-descriptions"></a>コールアウトの説明
 
@@ -568,7 +568,7 @@ Azure Marketplace でのオファー情報の表示例を次に示します。
 
 <br>Azure portal でのオファー情報の表示例を次に示します。
 
-:::image type="content" source="media/example-azure-portal-virtual-machine-offer.png" alt-text="Azure portal でこのオファーがどのように表示されるかを示しています。":::
+:::image type="content" source="media/example-azure-portal-virtual-machine-offer.png" alt-text="Azure Marketplace でこのオファーがどのように表示されるかを示しています。":::
 
 #### <a name="call-out-descriptions"></a>コールアウトの説明
 
@@ -579,7 +579,7 @@ Azure Marketplace でのオファー情報の表示例を次に示します。
 
 <br>Azure portal の検索結果におけるオファー情報の表示例を次に示します。
 
-:::image type="content" source="media/example-azure-portal-virtual-machine-search-results.png" alt-text="Azure portal の検索結果でこのオファーがどのように表示されるかを示しています。":::
+:::image type="content" source="media/example-azure-portal-virtual-machine-search-results.png" alt-text="Azure Marketplace でこのオファーがどのように表示されるかを示しています。":::
 
 #### <a name="call-out-descriptions"></a>コールアウトの説明
 
@@ -589,7 +589,7 @@ Azure Marketplace でのオファー情報の表示例を次に示します。
 
 <br>Azure portal でのプランの詳細の例を次に示します。
 
-:::image type="content" source="media/example-azure-portal-virtual-machine-plan-details.png" alt-text="Azure portal でのプラン詳細を示しています。":::
+:::image type="content" source="media/example-azure-portal-virtual-machine-plan-details.png" alt-text="Azure Marketplace でこのオファーがどのように表示されるかを示しています。":::
 
 #### <a name="call-out-descriptions"></a>コールアウトの説明
 

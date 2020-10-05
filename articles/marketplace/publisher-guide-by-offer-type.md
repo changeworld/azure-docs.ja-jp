@@ -6,21 +6,21 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 04/14/2020
-ms.openlocfilehash: 50284f2c655f8c7b4bcae6876ac8cf2e2e6901b6
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.date: 09/04/2020
+ms.openlocfilehash: 565ad4267bcdab095a85ab537c10728981eadb0d
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378306"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484155"
 ---
 # <a name="publishing-guide-by-offer-type"></a>プランの種類別の公開ガイド
 
-この記事では、商用マーケットプレースで利用できるオファーの種類について説明します。 マーケットプレースでのオファーの提示に使用するオファーの構造 (メタデータ、成果物、およびその他のコンテンツを含む) は、*オファーの種類*によって定義されます。
+この記事では、商用マーケットプレースで利用できるオファーの種類について説明します。 商用マーケットプレースで提示されたオファーの構造 (メタデータ、成果物、およびその他のコンテンツを含む) は、*オファーの種類*によって定義されます。
 
-オファーを作成する前に、[公開オプションを決定](determine-your-listing-type.md)した後、オファーの提示に使用されるオファーの種類を選択する必要があります。 オファーの種類は、公開するソリューション、アプリ、またはサービスの種類および Microsoft の製品とサービスとの連携方法に対応します。
+[公開オプションを決定](determine-your-listing-type.md)した後、オファーの作成を開始する前に、オファーの種類を選択する必要があります。 オファーの種類は、公開するソリューション、アプリ、またはサービスの種類および Microsoft の製品とサービスとの連携方法に対応します。
 
-1 つのオファーの種類をさまざまな方法で構成して、異なる公開オプション、行動喚起、プロビジョニング、または価格を使用することができます。 オファーの種類の公開オプションと構成は、オファーの適格性と技術面の要件に合わせて指定されます。
+1 つのオファーの種類をさまざまな方法で構成して、異なる公開オプション、リスト オプション、プロビジョニング、または価格を使用することができます。 オファーの種類の公開オプションと構成は、オファーの適格性と技術面の要件に合わせて指定されます。
 
 オファーの作成前に、オンライン ストアおよびオファーの種類の適格性の要件と、公開に関する技術面の要件を確認してください。
 
@@ -37,7 +37,7 @@ ms.locfileid: "89378306"
 | [**コンテナー オファー**](./marketplace-containers.md) | 対象となるソリューションが、Kubernetes ベースの Azure コンテナー サービスとしてプロビジョニングされる Docker コンテナー イメージであるときは、オファーの種類としてコンテナーを使用します。 |
 | [**Azure IoT Edge モジュール**](./iot-edge-module.md) | Azure IoT Edge モジュールは、IoT Edge によって管理される計算の最小単位であり、Azure Stream Analytics などの Microsoft サービス、サードパーティー サービス、独自ソリューション固有のコードのいずれかを含めることができます。 |
 | [**コンサルティング サービス**](./consulting-services.md) | コンサルティング サービスは、Azure、Dynamics 365、または Power Suite サービスの使用をサポートし、拡張するために、お客様とサービスを結ぶうえで役立ちます。|
-| [**Office 365、Dynamics 365、および Power BI**](./appsource-offer-publishing-guide.md) | Dynamics 365、Office 365、Power BI、および Power Apps 上でビルドされる、またはそれらを拡張する AppSource オファーを公開できます。|
+| [**Microsoft 365、Dynamics 365、Power BI**](./appsource-offer-publishing-guide.md) | Dynamics 365、Microsoft 365、Power BI、および Power Apps 上でビルドされる、またはそれらを拡張する AppSource オファーを公開できます。|
 | [**統合ソリューション**](./integrated-solutions-for-publishers.md) | テクノロジとサービスを単一のオファーとして組み合わせる、業界に合わせた統合ソリューションを公開できます。|
 
 リスト オプションとオファーの種類別のシングル サインオンの要件については、「[**Azure AD 要件**](./enable-appsource-marketplace-using-azure-ad.md)」を参照してください。
@@ -45,4 +45,4 @@ ms.locfileid: "89378306"
 ## <a name="next-steps"></a>次のステップ
 
 - オファーの種類に対応する記事に示されている適格性の要件を確認し、オファーの選択と構成を確定する。
-- ネットショップごとの公開パターン (ソリューションをオファーの種類や構成にマップする方法など) を確認する。
+- オンライン ショップごとの公開パターン (ソリューションをオファーの種類や構成にマップする方法など) を確認します。

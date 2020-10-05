@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: bbe813b46b41bf0e2b8bf9c6b3fe3e3e843204ed
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 54a1135931c2be9c6b7941c9ff740fd29f855eee
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319748"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601250"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>すべてのアプリを Azure AD と統合するための 5 つの手順
 
@@ -70,7 +70,7 @@ Azure Active Directory (Azure AD) には、簡単に開始できるようにす�
 
 アプリを Azure AD と統合するビジネス プロセスの管理に関するガイダンスを公開しています。これには、ビジネスおよびアプリケーションの所有者に気付かせ、関心を持ってもらうために使用できる[ポスター](https://aka.ms/AppOnePager)と[プレゼンテーション](https://aka.ms/AppGuideline) が含まれます。 このプロセスの実行を進めながら、それらのサンプルを独自のブランドで変更し、会社のポータル、ニュースレター、またはその他のメディアを通じて、それらを組織に公開できます。
 
-開始点として、Active Directory フェデレーション サービス (AD FS) の使用を評価することが推奨されます。 多くの組織で、SaaS アプリ、カスタム基幹業務アプリ、Office 365、Azure AD ベースのアプリでの認証に ADFS が使われています。
+開始点として、Active Directory フェデレーション サービス (AD FS) の使用を評価することが推奨されます。 多くの組織で、SaaS アプリ、カスタム基幹業務アプリ、Microsoft 365、Azure AD ベースのアプリでの認証に ADFS が使われています。
 
 ![図は、オンプレミスのアプリ、基幹業務アプリ、SaaS アプリ、Azure AD 経由の Office 365 がすべて Active Directory と AD FS に点線で接続されていることを示しています。](\media\five-steps-to-full-application-integration-with-azure-ad\adfs-integration-1.png)
 

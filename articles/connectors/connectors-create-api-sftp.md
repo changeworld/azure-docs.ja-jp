@@ -1,21 +1,22 @@
 ---
-title: SFTP アカウントに接続する
-description: Azure Logic Apps を使用して SSH 経由で SFTP サーバーのファイルを監視、作成、管理、送信、および受信するタスクおよびプロセスを自動化する
+title: SFTP アカウントに接続する (非推奨)
+description: Azure Logic Apps を使用して、SFTP サーバーのファイルの監視、作成、管理、受信を行うタスクとプロセスを自動化します
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
-ms.reviewer: divswa, klam, logicappspm
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: d0da98070fa8da5403677e1a67bda75456c74d80
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ROBOTS: NOINDEX
+ms.openlocfilehash: cd2f8ce45ef9270866941cdedb7c768529c3175f
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74789275"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033304"
 ---
-# <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して SFTP ファイルの監視、作成、および管理を行う
+# <a name="monitor-create-and-manage-sftp-files-in-azure-logic-apps"></a>Azure Logic Apps で SFTP ファイルの監視、作成、および管理を行う
 
 > [!IMPORTANT]
 > SFTP コネクタは非推奨となっているため、[SFTP-SSH コネクタ](../connectors/connectors-sftp-ssh.md)を使用してください。 Logic App Designer では、SFTP トリガーおよびアクションを選択できなくなりました。
@@ -116,7 +117,7 @@ SFTP トリガーは、SFTP ファイル システムをポーリングし、前
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-コネクタの OpenAPI (以前の Swagger) の説明に記載されているトリガー、アクション、および制限に関する技術的な詳細については、コネクタの[リファレンス ページ](/connectors/sftpconnector/)を参照してください。
+コネクタの OpenAPI (以前の Swagger) の説明に記載されているトリガー、アクション、および制限に関する技術的な詳細については、コネクタの[リファレンス ページ](/azure/data-factory/connector-sftp)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

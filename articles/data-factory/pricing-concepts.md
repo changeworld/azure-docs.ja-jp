@@ -9,13 +9,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/27/2019
-ms.openlocfilehash: d679dbb7a14767b83d6508e4b1e637584f33210a
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.date: 09/14/2020
+ms.openlocfilehash: a80e0f1b62257fdbce6598c9cc4088701cc2ae9c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949960"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983624"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Data Factory の価格を実例から理解する
 
@@ -38,7 +38,7 @@ ms.locfileid: "88949960"
 
 3. パイプラインを毎時実行するスケジュールトリガー。
 
-   ![Scenario1](media/pricing-concepts/scenario1.png)
+   ![図には、スケジュール トリガーを伴うパイプラインが示されています。 パイプラインでは、コピー アクティビティが入力データセットに送信され、ここから AWS S3 のリンクされたサービスに送信されます。また、コピー アクティビティは出力データセットにも送信され、ここから Azure Storate のリンクされたサービスに送信されます。](media/pricing-concepts/scenario1.png)
 
 | **操作** | **タイプとユニット** |
 | --- | --- |
@@ -69,7 +69,7 @@ ms.locfileid: "88949960"
 2. データ変換のための１つの Azure Databricks アクティビティ。
 3. パイプラインを 1 時間ごとに実行する 1 つのスケジュールトリガー。
 
-![Scenario2](media/pricing-concepts/scenario2.png)
+![図には、スケジュール トリガーを伴うパイプラインが示されています。 パイプラインでは、コピー アクティビティが入力データセット、出力データセット、および Azure Databricks で実行される DataBricks アクティビティに送信されます。 入力データセットは、AWS S3 のリンクされたサービスに送信されます。 出力データセットは、Azure Storage のリンクされたサービスに送信されます。](media/pricing-concepts/scenario2.png)
 
 | **操作** | **タイプとユニット** |
 | --- | --- |
@@ -103,7 +103,7 @@ ms.locfileid: "88949960"
 3. データ変換のための１つの Azure Databricks アクティビティ。
 4. パイプラインを 1 時間ごとに実行する 1 つのスケジュールトリガー。
 
-![Scenario3](media/pricing-concepts/scenario3.png)
+![図には、スケジュール トリガーを伴うパイプラインが示されています。 パイプラインでは、コピー アクティビティが入力データセット、出力データセット、およびルックアップ アクティビティに送信されます。ルックアップ アクティビティは DataBricks アクティビティに送信され、このアクティビティは Azure Databricks で実行されます。 入力データセットは、AWS S3 のリンクされたサービスに送信されます。 出力データセットは、Azure Storage のリンクされたサービスに送信されます。](media/pricing-concepts/scenario3.png)
 
 | **操作** | **タイプとユニット** |
 | --- | --- |
@@ -130,9 +130,13 @@ ms.locfileid: "88949960"
 
 ## <a name="using-mapping-data-flow-debug-for-a-normal-workday"></a>通常の平日にマッピング データ フロー デバッグを使用する
 
-あなたは、データ エンジニアとして、毎日マッピング データ フローを設計、構築、テストする責任があります。 あなたは、朝に ADF UI にログインし、データ フローのデバッグ モードを有効にします。 デバッグ セッションの既定の TTL は、60 分です。 あなたは 1 日 8 時間働いているので、デバッグ セッションは期限切れになりません。 したがって、その日の料金は次のようになります。
+Sam は、データ エンジニアとして、毎日マッピング データ フローを設計、構築、テストする責任があります。 Sam は、朝に ADF UI にログインし、データ フローのデバッグ モードを有効にします。 デバッグ セッションの既定の TTL は、60 分です。 Sam は 1 日 8 時間働いているので、デバッグ セッションは期限切れになりません。 したがって、Sam のその日の料金は次のようになります。
 
 **8 (時間) x 8 (コンピューティング最適化コア数) x $0.193 = $12.35**
+
+同時に、別のデータ エンジニアの Chris も、データ プロファイルおよび ETL 設計作業のために ADF ブラウザー UI にログインします。 Chris は、Sam のように終日 ADF で作業するわけではありません。 Chris は、上記の Sam と同じ日の同じ期間に 1 時間、データ フロー デバッガーを使用する必要があるだけです。 デバッグの使用に対して Chris が負う料金は次のとおりです。
+
+**1 (時間) x 8 (汎用コア数) x $0.274 = $2.19**
 
 ## <a name="transform-data-in-blob-store-with-mapping-data-flows"></a>マッピング データ フローを使用して BLOB ストア内のデータを変換する
 

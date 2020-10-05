@@ -7,13 +7,13 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: terrylan
 manager: rkarlin
-ms.date: 11/04/2019
-ms.openlocfilehash: 5330c751aaa3fcbd5c7fc268e4a4de08d336d474
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/09/2020
+ms.openlocfilehash: 5c24bd80721f626e38dcb886e89231c0b86056df
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82735438"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650973"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Microsoft Azure 用カスタマー ロックボックス
 
@@ -25,6 +25,49 @@ Microsoft Azure 用カスタマー ロックボックスには、お客様が顧
 この記事では、カスタマー ロックボックス要求の開始、追跡、後のレビューと監査のための保存の方法について説明します。
 
 カスタマー ロックボックスは一般提供が開始され、現在は仮想マシンへのリモート デスクトップ アクセスに使用できます。
+
+## <a name="supported-services-and-scenarios-in-preview"></a>プレビューでサポートされるサービスとシナリオ
+
+カスタマー ロックボックスのプレビューで現在提供されているサービスは次のとおりです。
+
+- API Management
+- Azure App Service
+- Azure Database for MySQL
+- Azure Databricks
+- Azure Synapse Analytics
+- Cognitive Services
+- Container Registry
+- Azure Data Factory
+- Azure Database for PostgreSQL
+- Azure Kubernetes Service
+- Azure Data Box
+- HDInsight
+- 関数
+- Azure Storage
+- Azure SQL DB
+- Azure Data Explorer
+- 仮想マシン (現在、メモリ ダンプとマネージド ディスクへのアクセスも含まれます)
+- Azure サブスクリプションの譲渡
+
+組織でこれらのプレビュー オファリングのカスタマー ロックボックスを有効にするには、[Azure パブリック プレビュー用カスタマー ロックボックス](https://aka.ms/customerlockbox/insiderprogram)にサインアップします。
+
+## <a name="supported-services-and-scenarios-in-general-availability"></a>一般提供でサポートされるサービスとシナリオ
+
+次のサービスとシナリオは、現在、カスタマー ロックボックスで一般提供されています。
+
+### <a name="remote-desktop-access-to-virtual-machines"></a>仮想マシンへのリモート デスクトップ アクセス
+
+カスタマー ロックボックスは、現在、仮想マシンへのリモート デスクトップ アクセス要求に対して使用できます。 次のワークロードがサポートされています。
+- サービスとしてのプラットフォーム (PaaS) - Azure Cloud Services (Web ロールと worker ロール)
+- サービスとしてのインフラストラクチャ (IaaS) - Windows と Linux (Azure Resource Manager のみ)
+- 仮想マシン スケール セット - Windows と Linux
+
+> [!NOTE]
+> IaaS クラシック インスタンスは、カスタマー ロックボックスではサポートされていません。 IaaS Classic インスタンス上でワークロードを実行している場合は、それらを Classic から Resource Manager デプロイ モデルに移行することをお勧めします。 手順については、「[プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行の概要](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)」を参照してください。
+
+#### <a name="detailed-audit-logs"></a>詳細な監査ログ
+
+リモート デスクトップ アクセスが関係するシナリオでは、Windows イベント ログを使用して Microsoft のエンジニアが行ったアクションを確認できます。 Azure Security Center を使用してイベント ログを収集し、データをワークスペースにコピーして分析することを検討してください。 詳細については、「[Azure Security Center でのデータ収集](../../security-center/security-center-enable-data-collection.md)」を参照してください。
 
 ## <a name="workflow"></a>ワークフロー
 
@@ -91,40 +134,9 @@ Microsoft Azure 用カスタマー ロックボックスには、お客様が顧
 
 ![Azure カスタマー ロックボックス - アクティビティ ログ](./media/customer-lockbox-overview/customer-lockbox-activitylogs.png)
 
-## <a name="supported-services-and-scenarios-in-general-availability"></a>一般提供でサポートされるサービスとシナリオ
+## <a name="customer-lockbox-integration-with-azure-security-benchmark"></a>カスタマー ロックボックスと Azure セキュリティ ベンチマークとの統合
 
-次のサービスとシナリオは、現在、カスタマー ロックボックスで一般提供されています。
-
-### <a name="remote-desktop-access-to-virtual-machines"></a>仮想マシンへのリモート デスクトップ アクセス
-
-カスタマー ロックボックスは、現在、仮想マシンへのリモート デスクトップ アクセス要求に対して使用できます。 次のワークロードがサポートされています。
-- サービスとしてのプラットフォーム (PaaS) - Azure Cloud Services (Web ロールと worker ロール)
-- サービスとしてのインフラストラクチャ (IaaS) - Windows と Linux (Azure Resource Manager のみ)
-- 仮想マシン スケール セット - Windows と Linux
-
-> [!NOTE]
-> IaaS クラシック インスタンスは、カスタマー ロックボックスではサポートされていません。 IaaS Classic インスタンス上でワークロードを実行している場合は、それらを Classic から Resource Manager デプロイ モデルに移行することをお勧めします。 手順については、「[プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行の概要](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)」を参照してください。
-
-#### <a name="detailed-audit-logs"></a>詳細な監査ログ
-
-リモート デスクトップ アクセスが関係するシナリオでは、Windows イベント ログを使用して Microsoft のエンジニアが行ったアクションを確認できます。 Azure Security Center を使用してイベント ログを収集し、データをワークスペースにコピーして分析することを検討してください。 詳細については、「[Azure Security Center でのデータ収集](../../security-center/security-center-enable-data-collection.md)」を参照してください。
-
-## <a name="supported-services-and-scenarios-in-preview"></a>プレビューでサポートされるサービスとシナリオ
-
-カスタマー ロックボックスのプレビューで現在提供されているサービスは次のとおりです。
-
-- Azure Storage
-
-- Azure SQL DB
-
-- Azure Data Explorer
-
-- 仮想マシン (現在、メモリ ダンプとマネージド ディスクへのアクセスも含まれます)
-
-- Azure サブスクリプションの譲渡
-
-組織でこれらのプレビュー オファリングのカスタマー ロックボックスを有効にするには、[Azure パブリック プレビュー用カスタマー ロックボックス](https://aka.ms/customerlockbox/insiderprogram)にサインアップします。
-
+カスタマー ロックボックス適用性を対象とする新しいベースライン コントロール ([3.13](../benchmarks/security-control-identity-access-control.md#313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios)) が Azure セキュリティ ベンチマークに導入されました。 お客様は、ベンチマークを利用して、サービスのカスタマー ロックボックス適用性を確認できるようになりました。
 
 ## <a name="exclusions"></a>除外
 

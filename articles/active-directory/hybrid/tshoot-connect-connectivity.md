@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 7bc39e409d0ac10e41fae58c5e5216f386427e30
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 897c0f3c51d6d9bea1f90a66ccf50aa51e22f118
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541738"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088308"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Azure AD 接続性のトラブルシューティング
 この記事では、Azure AD Connect と Azure AD の間の接続のしくみと、接続に関する問題のトラブルシューティング方法について説明します。 このような問題は、プロキシ サーバーを備えた環境において発生する可能性が最も高くなります。
@@ -33,7 +33,7 @@ Azure AD Connect では、認証に先進認証方式 (ADAL ライブラリを�
 この記事では、Fabrikam がプロキシを介して Azure AD に接続する方法について説明します。 プロキシ サーバーは fabrikamproxy という名前で、ポート 8080 を使用しています。
 
 最初に、[**machine.config**](how-to-connect-install-prerequisites.md#connectivity) が正しく構成されており、machine.config ファイルの更新後に **Microsoft Azure AD 同期サービス**が再起動されていることを確認する必要があります。
-![machineconfig](./media/tshoot-connect-connectivity/machineconfig.png)
+![スクリーンショットは、machine.config ファイルの一部を示しています。](./media/tshoot-connect-connectivity/machineconfig.png)
 
 > [!NOTE]
 > Microsoft 以外の一部のブログでは、machine.config ではなく miiserver.exe.config に変更を加える必要があると記載されていますが、 このファイルはアップグレードのたびに上書きされるため、初回インストール時には有効であっても、初回アップグレード時には機能しません。 このような理由から、machine.config を更新することをお勧めします。
@@ -60,7 +60,7 @@ Azure AD Connect では、認証に先進認証方式 (ADAL ライブラリを�
 
 ### <a name="the-installation-wizard-has-not-been-correctly-configured"></a>インストール ウィザードが正しく構成されていない
 このエラーは、ウィザード自体がプロキシに接続できない場合に表示されます。
-![nomachineconfig](./media/tshoot-connect-connectivity/nomachineconfig.png)
+![スクリーンショットは次のエラーを示しています: 資格情報を検証できません。](./media/tshoot-connect-connectivity/nomachineconfig.png)
 
 * このエラーが表示された場合は、[machine.config](how-to-connect-install-prerequisites.md#connectivity) が正しく構成されていることを確認します。
 * 正しいようであれば、「 [プロキシ接続を検証する](#verify-proxy-connectivity) 」の手順に従って、ウィザード外部でも同じように問題が発生するかどうかを確認してください。
@@ -225,14 +225,14 @@ Multi-Factor Authentication (MFA) 要求が取り消されました。
 ビルド番号 1.1.105.0 (2016 年 2 月リリース) 以降のリリースでは、サインイン アシスタントが提供されなくなりました。 このセクションと構成は必要がなくなりますが、参照用に残されています。
 
 シングル サインイン アシスタントを機能させるには、winhttp を構成する必要があります。 この構成には [**netsh**](how-to-connect-install-prerequisites.md#connectivity) を使用します。
-![netsh](./media/tshoot-connect-connectivity/netsh.png)
+![スクリーンショットは、プロキシを設定するための netsh ツールが実行されているコマンド プロンプト ウィンドウを示しています。](./media/tshoot-connect-connectivity/netsh.png)
 
 ### <a name="the-sign-in-assistant-has-not-been-correctly-configured"></a>サインイン アシスタントが正しく構成されていない
 このエラーは、サインイン アシスタントがプロキシに接続できないか、プロキシが要求を許可していない場合に表示されます。
-![nonetsh](./media/tshoot-connect-connectivity/nonetsh.png)
+![スクリーンショットは次のエラーを示しています: 資格情報を検証できません。ネットワーク接続とファイアウォールまたはプロキシの設定を確認してください。](./media/tshoot-connect-connectivity/nonetsh.png)
 
 * このエラーが表示された場合は、[netsh](how-to-connect-install-prerequisites.md#connectivity) でプロキシ構成が正しいことを確認します。
-  ![netshshow](./media/tshoot-connect-connectivity/netshshow.png)
+  ![スクリーンショットは、プロキシ構成を表示するための netsh ツールが実行されているコマンド プロンプト ウィンドウを示しています。](./media/tshoot-connect-connectivity/netshshow.png)
 * 正しいようであれば、「 [プロキシ接続を検証する](#verify-proxy-connectivity) 」の手順に従って、ウィザード外部でも同じように問題が発生するかどうかを確認してください。
 
 ## <a name="next-steps"></a>次のステップ

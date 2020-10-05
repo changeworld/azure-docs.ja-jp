@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
-ms.openlocfilehash: 7d630fac1f848e691ddb96dc47596a2e9927309f
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 7f4c09a32794e13b0e0041ee916401b714d8509e
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799436"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055233"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリとは
 
@@ -41,8 +41,8 @@ Microsoft Authenticator アプリは次のような複数の方法で使用で�
 | ----|-----------|
 | 2 要素認証 | わずか 2 種類の認証情報 (パスワードと PIN など) を特に使用しなければならない認証プロセスです。 Microsoft Authenticator アプリでは、標準の 2 要素認証とパスワードなしのサインインの両方がサポートされます。 |
 | Multi-Factor Authentication (MFA) | すべての 2 要素認証は多要素認証です。お客様の組織の要件に基づいて、"*少なくとも*" 2 種類の認証情報を使用することが求められます。 |
-| Microsoft アカウント (別称: MSA) | コンシューマー向けの Microsoft 製品およびクラウド サービス (Outlook、OneDrive、Xbox LIVE、Office 365 など) にアクセスするために、お客様が自分の個人アカウントを作成します。 お使いの Microsoft アカウントは、Microsoft が運営する Microsoft コンシューマー ID アカウント システムを使用して作成、保存されます。 |
-| 会社または学校のアカウント | 内部リソースおよび制限付きの可能性があるリソース (Microsoft Azure、Windows Intune、Office 365 など) へのアクセスをお客様に許可するために、お客様の組織が職場または学校アカウント (alain@contoso.com など) を作成します。 |
+| Microsoft アカウント (別称: MSA) | コンシューマー向けの Microsoft 製品およびクラウド サービス (Outlook、OneDrive、Xbox LIVE、Microsoft 365 など) にアクセスするために、お客様が自分の個人アカウントを作成します。 お使いの Microsoft アカウントは、Microsoft が運営する Microsoft コンシューマー ID アカウント システムを使用して作成、保存されます。 |
+| 会社または学校のアカウント | 内部リソースおよび制限付きの可能性があるリソース (Microsoft Azure、Windows Intune、Microsoft 365 など) へのアクセスをお客様に許可するために、お客様の組織が職場または学校アカウント (alain@contoso.com など) を作成します。 |
 | 確認コード | 認証アプリで、追加された各アカウントの下に表示される 6 桁のコードです。 他のユーザーによってコードが複数回使用されないように、確認コードは 30 秒ごとに変更されます。 これは、ワンタイム パスコード (OTP) とも呼ばれます。 |
 
 ## <a name="how-two-factor-verification-works-with-the-app"></a>アプリでの 2 要素認証のしくみ

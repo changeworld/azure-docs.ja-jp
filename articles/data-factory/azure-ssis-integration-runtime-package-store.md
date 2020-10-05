@@ -11,13 +11,13 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 07/20/2020
-ms.openlocfilehash: 6455c186e05fc98b1ec340c152f9b3e5710f1dd5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/06/2020
+ms.openlocfilehash: 84a7a205e52ba37eb6fcb3b624e0f71a9b9bbc10
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087911"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89505490"
 ---
 # <a name="manage-packages-with-azure-ssis-integration-runtime-package-store"></a>Azure-SSIS Integration Runtime パッケージ ストアを使用したパッケージの管理
 
@@ -57,7 +57,7 @@ SSMS 上の Azure-SSIS IR に接続すると、任意のパッケージ スト�
       > [!NOTE]
       > Azure-SSIS IR パッケージ ストアへの SSIS パッケージのインポートは 1 つずつ実行する必要があります。これらは、SQL Server/SSIS のバージョンを維持したままで、基になる MSDB、ファイル システム、または Azure Files に単にコピーされます。 
       >
-      > 現在、Azure-SSIS IR の既定の互換性レベルは 140 です。これは **SQL Server 2017** に相当します。それよりも前のバージョンのパッケージを実行すると、実行時に SSIS 2017 パッケージにアップグレードされます。 より新しいバージョンのパッケージの実行はサポートされていません。
+      > 現在、Azure-SSIS IR は **SQL Server 2017** に基づいているため、それよりも前のバージョンのパッケージを実行すると、実行時に SSIS 2017 パッケージにアップグレードされます。 より新しいバージョンのパッケージの実行はサポートされていません。
       >
       > さらに、レガシ SSIS パッケージ ストアは特定の SQL Server バージョンにバインドされ、そのバージョンの SSMS でのみアクセスできるため、レガシ SSIS パッケージ ストアの下位バージョンのパッケージは、SSMS 2019 以降のバージョンを使用して Azure-SSIS IR パッケージ ストアにインポートする前に、まず指定の SSMS バージョンを使用してファイル システムにエクスポートする必要があります。
       >
@@ -72,7 +72,7 @@ SSMS 上の Azure-SSIS IR に接続すると、任意のパッケージ スト�
       > [!NOTE]
       > Azure-SSIS IR パッケージ ストアからの SSIS パッケージのエクスポートは、1 つずつ実行する必要があります。保護レベルを切り替えずにこれを行うと、SQL Server/SSIS のバージョンを維持したままで、単にコピーされます。それ以外の場合は、SSIS 2019 以降のバージョンのパッケージにアップグレードされます。
       >
-      > 現在、Azure-SSIS IR の既定の互換性レベルは 140 です。これは **SQL Server 2017** に相当します。それよりも前のバージョンのパッケージを実行すると、実行時に SSIS 2017 パッケージにアップグレードされます。 より新しいバージョンのパッケージの実行はサポートされていません。
+      > 現在、Azure-SSIS IR は **SQL Server 2017** に基づいているため、それよりも前のバージョンのパッケージを実行すると、実行時に SSIS 2017 パッケージにアップグレードされます。 より新しいバージョンのパッケージの実行はサポートされていません。
       >
       > また、複数の SSIS パッケージを Azure-SSIS IR パッケージ ストアからエクスポートし、さらに保護レベルを切り替えるには、[dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility?view=sql-server-2017) コマンド ライン ユーティリティを使用できます。「[dtutil を使用した複数のパッケージのデプロイ](#deploying-multiple-packages-with-dtutil)」を参照してください。
 
@@ -124,7 +124,7 @@ SSMS 上の Azure-SSIS IR に接続すると、右クリックしてメニュー
 
 SQL Server/SSIS のインストールに付属している [dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility?view=sql-server-2017) コマンド ライン ユーティリティを使用すると、複数のパッケージをバッチでデプロイすることができます。 これは特定の SSIS バージョンにバインドされているため、保護レベルを切り替えずに下位バージョンのパッケージをデプロイすると、SSIS バージョンを維持したままで、単にコピーされます。 デプロイにこれを使用し、同時に保護レベルを切り替えると、SSIS バージョンにアップグレードされます。
 
- 現在、Azure-SSIS IR の既定の互換性レベルは 140 です。これは **SQL Server 2017** に相当します。それよりも前のバージョンのパッケージを実行すると、実行時に SSIS 2017 パッケージにアップグレードされます。 より新しいバージョンのパッケージの実行はサポートされていません。
+ 現在、Azure-SSIS IR は **SQL Server 2017** に基づいているため、それよりも前のバージョンのパッケージを実行すると、実行時に SSIS 2017 パッケージにアップグレードされます。 より新しいバージョンのパッケージの実行はサポートされていません。
 
 そのため、ランタイム アップグレードを回避するには、パッケージ デプロイ モデルで Azure-SSIS IR で実行するパッケージをデプロイするときに、SQL Server/SSIS 2017 のインストールに付属している dtutil 2017 を使用する必要があります。 この用途のために、無料の [SQL Server/SSIS 2017 Developer Edition](https://go.microsoft.com/fwlink/?linkid=853016) をダウンロードしてインストールすることができます。 インストールが完了すると、`YourLocalDrive:\Program Files\Microsoft SQL Server\140\DTS\Binn` フォルダーで dtutil 2017 を見つけることができます。
 

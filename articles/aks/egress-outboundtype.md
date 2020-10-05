@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: juluk
 ms.date: 06/29/2020
 author: jluk
-ms.openlocfilehash: 5095931e28438beebf3250155ede1a8af0bb5c64
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d8ae03d52691a6c30f78439a579e7e7c136dda76
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796971"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975288"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>ユーザー定義ルートを使用してクラスターのエグレスをカスタマイズする
 
@@ -51,7 +51,7 @@ AKS クラスターは、種類が `loadBalancer` または `userDefinedRouting`
 
 既定で AKS クラスターにデプロイされるネットワーク トポロジを次に示します。これには `loadBalancer` の `outboundType` が使用されます。
 
-![outboundtype-lb](media/egress-outboundtype/outboundtype-lb.png)
+![イングレス IP とエグレス IP を示す図 (トラフィックはイングレス IP からロード バランサーに送信され、内部クラスター間で送受信され、他のトラフィックはエグレス IP に送信され、インターネット、MCR、Azure の必須サービス、AKS コントロール プレーンに送信されます)。](media/egress-outboundtype/outboundtype-lb.png)
 
 ### <a name="outbound-type-of-userdefinedrouting"></a>userDefinedRouting の送信の種類
 

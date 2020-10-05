@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c9cd790edcb186ed2f80d467076512cd558ca40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a3cdb851ca00300d995bcf2075252a360242197
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253394"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601964"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>方法:条件付きアクセスを使用してクラウド アプリへのアクセスに承認されたクライアント アプリを要求する
 
 人々は、個人的な作業と業務上の作業のどちらにもモバイル デバイスを日常的に使用します。 組織は、スタッフの生産性を確保する一方で、安全でない可能性のあるアプリケーションによるデータ損失を防止する必要があります。 条件付きアクセスを使用すると、組織は、承認済み (先進認証対応) クライアント アプリへのアクセスを制限できます。
 
-この記事では、Office 365、Exchange Online、SharePoint Online などのリソースの条件付きアクセス ポリシーを構成する 2 つのシナリオを紹介します。
+この記事では、Microsoft 365、Exchange Online、SharePoint Online などのリソースの条件付きアクセス ポリシーを構成する 2 つのシナリオを紹介します。
 
-- [シナリオ 1: Office 365 アプリで、承認済みクライアント アプリの使用を必須にする](#scenario-1-office-365-apps-require-an-approved-client-app)
+- [シナリオ 1: Microsoft 365 アプリで、承認済みクライアント アプリの使用を必須にする](#scenario-1-microsoft-365-apps-require-an-approved-client-app)
 - [シナリオ 2: Exchange Online と SharePoint Online で、承認済みクライアント アプリの使用を必須にする](#scenario-2-exchange-online-and-sharepoint-online-require-an-approved-client-app)
 
 条件付きアクセスでは、これは "承認済みクライアント アプリの使用を必須にする" 機能と呼ばれます。 承認されたクライアント アプリの一覧は、[承認されたクライアント アプリの要件](concept-conditional-access-grant.md#require-approved-client-app)に関するセクションを参照してください。
@@ -32,9 +32,9 @@ ms.locfileid: "85253394"
 > [!NOTE]
 > iOS および Android デバイス用の承認済みクライアント アプリを要求するには、まずそれらのデバイスを Azure AD に登録する必要があります。
 
-## <a name="scenario-1-office-365-apps-require-an-approved-client-app"></a>シナリオ 1:Office 365 アプリで、承認済みクライアント アプリの使用を必須にする
+## <a name="scenario-1-microsoft-365-apps-require-an-approved-client-app"></a>シナリオ 1:Microsoft 365 アプリで、承認済みクライアント アプリの使用を必須にする
 
-このシナリオでは、Contoso は、モバイル デバイスを使用しているユーザーが Outlook Mobile、OneDrive、Microsoft Teams などの承認済みクライアント アプリを使用している場合に限りすべての Office 365 サービスにアクセスできることを決定しました。 すべてのユーザーは既に Azure AD 資格情報でサインインしていて、Azure AD Premium P1 または P2、および Microsoft Intune を含むライセンスが割り当てられています。
+このシナリオでは、Contoso は、モバイル デバイスを使用しているユーザーが Outlook Mobile、OneDrive、Microsoft Teams などの承認済みクライアント アプリを使用している場合に限りすべての Microsoft 365 サービスにアクセスできることを決定しました。 すべてのユーザーは既に Azure AD 資格情報でサインインしていて、Azure AD Premium P1 または P2、および Microsoft Intune を含むライセンスが割り当てられています。
 
 組織は、モバイル デバイスで承認済みクライアント アプリの使用を必須にするために、次の 3 つの手順を完了する必要があります。
 

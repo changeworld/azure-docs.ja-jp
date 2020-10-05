@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e6b6cebfd146ffe23bdc21751f86c71d14ea875e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 96cd460ddfea863eb27a1087ff59f3b87acf65d8
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002251"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531306"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Azure Service Fabric の容量計画とスケーリング
 
@@ -36,6 +36,9 @@ Azure Service Fabric クラスターの作成前、またはクラスターを�
 
 > [!NOTE]
 > Service Fabric のステートフル サービス fabric:/System/InfastructureService/<NODE_TYPE_NAME> は、持続性が Silver 以上であるすべてのノードの種類で実行されます。 これは、クラスター ノードの種類がどれであっても Azure での実行がサポートされる唯一のシステム サービスです。
+
+> [!IMPORTANT]
+> Service Fabric オートスケーリングは `Default` および `NewestVM` の仮想マシン スケール セットの[スケールイン構成](../virtual-machine-scale-sets/virtual-machine-scale-sets-scale-in-policy.md)をサポートしています。
 
 ## <a name="vertical-scaling-considerations"></a>垂直方向のスケーリングに関する考慮事項
 
@@ -168,7 +171,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 > [!NOTE]
 > クラスターをスケール インすると、削除されたノード/VM のインスタンスが Service Fabric Explorer に異常状態で表示されます。 この動作の説明については、「[Service Fabric Explorer で確認できる動作](./service-fabric-cluster-scale-in-out.md#behaviors-you-may-observe-in-service-fabric-explorer)」をご覧ください。 次のようにすることができます。
-> * 適切なノード名で [Remove-ServiceFabricNodeState コマンド](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps)を呼び出します。
+> * 適切なノード名で [Remove-ServiceFabricNodeState コマンド](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps&preserve-view=true)を呼び出します。
 > * クラスターに [Service Fabric 自動スケーリング ヘルパー アプリケーション](https://github.com/Azure/service-fabric-autoscale-helper/)をデプロイします。 このアプリケーションにより、スケールダウンされたノードが Service Fabric Explorer から確実にクリアされます。
 
 ## <a name="reliability-levels"></a>信頼性レベル

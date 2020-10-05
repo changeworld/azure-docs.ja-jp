@@ -11,16 +11,16 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: caf0fdf5fd167987ea0fd7111a05b04bd5bf848f
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 6a1acdbeb29091bae0be214b740023f13928506a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279790"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319845"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>Azure Active Directory でのユーザー プリンシパル名の変更の計画とトラブルシューティング
 
-ユーザー プリンシパル名 (UPN) は、ユーザー アカウントのインターネット通信標準である属性です。 UPN は、UPN プレフィックス (ユーザー アカウント名) と UPN サフィックス (DNS ドメイン名) とから成ります。 プレフィックスとサフィックスは、"@" 記号を使用して結合されます。 たとえば、「 someone@example.com 」のように入力します。 UPN は、ディレクトリ フォレスト内のすべてのセキュリティ プリンシパル オブジェクトの中で一意であることが必要です。 
+ユーザー プリンシパル名 (UPN) は、ユーザー アカウントのインターネット通信標準である属性です。 UPN は、UPN プレフィックス (ユーザー アカウント名) と UPN サフィックス (DNS ドメイン名) とから成ります。 プレフィックスとサフィックスは、"\@" 記号を使用して結合されます。 たとえば、「 someone@example.com 」のように入力します。 UPN は、ディレクトリ フォレスト内のすべてのセキュリティ プリンシパル オブジェクトの中で一意であることが必要です。 
 
 **この記事では、ユーザー識別子として UPN を使用していることを前提としています。UPN の変更の計画と、UPN の変更によって発生する可能性がある問題からの復旧について説明します。**
 
@@ -94,7 +94,7 @@ username@labs.contoso.com.
 
 ユーザー アカウントを Active Directory から Azure AD に同期するときは、Active Directory の UPN が Azure AD 内の検証済みドメインにマップされていることを確認します。
 
-![検証済みドメインのスクリーンショット](./media/howto-troubleshoot-upn-changes/verified-domains.png)
+![検証済みの Azure AD ドメインにマップされた UPN の例を示すスクリーンショット。](./media/howto-troubleshoot-upn-changes/verified-domains.png)
 
 userPrincipalName 属性の値が Azure AD の検証済みドメインに対応しない場合は、同期プロセスによってサフィックスが既定値 .onmicrosoft.com に置き換えられます。
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 196b1dda17de1c9430ab048ac90d1d10b6a595b4
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 24481abb6606d9ce830e5b65285b31637417cbd7
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104692"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562453"
 ---
 # <a name="manage-an-azure-database-for-mariadb-server-using-the-azure-portal"></a>Azure portal を使用した Azure Database for MariaDB サーバーの管理
 この記事では、Azure Database for MariaDB サーバーを管理する方法について説明します。 管理タスクには、コンピューティングとストレージのスケーリング、管理者パスワードのリセット、サーバーの詳細の表示が含まれます。
@@ -34,7 +34,7 @@ Azure Database for MariaDB サーバーを作成して使用を開始する方�
 
 2. スケーリングの対象に応じて、 **[汎用]** または **[メモリ最適化]** を選択します。 
 
-    ![change-pricing-tier](./media/howto-create-manage-server-portal/change-pricing-tier.png)
+    ![スクリーンショットには、価格レベルが選択され、メモリ最適化の値が選択された Azure portal が示されています。](./media/howto-create-manage-server-portal/change-pricing-tier.png)
 
     > [!NOTE]
     > レベルを変更すると、サーバーが再起動されます。
@@ -79,7 +79,7 @@ Azure portal を使用して、管理者ロールのパスワードを変更で�
 
 2. 新しいパスワードを入力し、そのパスワードを確認します。 テキストボックスに、パスワードの複雑さの要件についてのメッセージが表示されます。
 
-   ![reset-password](./media/howto-create-manage-server-portal/reset-password.png)
+   ![スクリーンショットには、[パスワード] および [パスワードの確認入力] を備えた [パスワードのリセット] ダイアログボックスが示されています。](./media/howto-create-manage-server-portal/reset-password.png)
 
 3. **[OK]** を選択して新しいパスワードを保存します。
 
@@ -94,7 +94,7 @@ Azure portal を使用して、管理者ロールのパスワードを変更で�
 
 2. 入力ボックスにサーバーの名前を入力して、削除するサーバーであることを確認します。
 
-    ![confirm-delete](./media/howto-create-manage-server-portal/confirm-delete.png)
+    ![スクリーンショットには、データベースを削除してよいか (元に戻すことができません) を確認するダイアログが示されています。](./media/howto-create-manage-server-portal/confirm-delete.png)
 
     > [!NOTE]
     > サーバーを削除すると、元に戻せません。

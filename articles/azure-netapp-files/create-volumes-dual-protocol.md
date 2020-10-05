@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 8/11/2020
 ms.author: b-juche
-ms.openlocfilehash: f4cc253de0de9d099cfc4881f48182cf9b2a1616
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: dcdb3e8ce545227bc11cc60e3885c1a985ed34f4
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88134583"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459999"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files のデュアルプロトコル (NFSv3 と SMB) ボリュームを作成する
 
@@ -76,7 +76,7 @@ Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMBv3、またはデュア
     
         ![サブネットの作成](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-    * 既存のスナップショット ポリシーをボリュームに適用する場合は、 **[詳細セクションの表示]** をクリックして展開し、プルダウン メニューでスナップショット ポリシーを選択します。 
+    * 既存のスナップショット ポリシーをボリュームに適用する場合は、 **[詳細セクションの表示]** をクリックして展開し、スナップショットのパスを非表示にするかどうかを指定して、プルダウン メニューでスナップショット ポリシーを選択します。 
 
         スナップショット ポリシーの作成については、「[スナップショット ポリシーを管理する](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)」を参照してください。
 

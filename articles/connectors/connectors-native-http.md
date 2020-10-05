@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 09/14/2020
 tags: connectors
-ms.openlocfilehash: 9ed490dba1547db6ec3c0ddcff38aa3e0c393fcf
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 5f6328144760b3c55c55fbef13917359fa9e1a62
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226431"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526750"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Azure Logic Apps から HTTP または HTTPS でサービス エンドポイントを呼び出す
 
@@ -168,6 +168,14 @@ HTTP 要求に `multipart/form-data` 型を含むコンテンツを処理する�
 }
 ```
 
+## <a name="content-with-applicationx-www-form-urlencoded-type"></a>Content with application/x-www-form-urlencoded type
+
+HTTP 要求の本文に form-urlencoded データを提供するには、データのコンテンツの種類が `application/x-www-form-urlencoded` であることを指定する必要があります。 HTTP トリガーまたはアクションで、`content-type` ヘッダーを追加します。 ヘッダー値を `application/x-www-form-urlencoded` に設定します。
+
+たとえば、HTTP POST 要求を Web サイトに送信するロジック アプリがあり、`application/x-www-form-urlencoded` 型をサポートするとします。 このアクションは次のようになります。
+
+!['content-type' ヘッダーが 'application/x-www-form-urlencoded' に設定されている HTTP 要求を示すスクリーンショット](./media/connectors-native-http/http-action-urlencoded.png)
+
 <a name="asynchronous-pattern"></a>
 
 ## <a name="asynchronous-request-response-behavior"></a>非同期の要求 - 応答の動作
@@ -263,4 +271,3 @@ Logic Apps では、これらのヘッダーが含まれる HTTP トリガーま
 
 * [アクセスとデータのセキュリティ保護 - 他のサービスやシステムへの送信呼び出しへのアクセス](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests)
 * [Logic Apps のコネクタ](../connectors/apis-list.md)
-

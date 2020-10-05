@@ -1,7 +1,7 @@
 ---
 title: Azure AD Connect - AD FS の管理とカスタマイズ | Microsoft Docs
 description: Azure AD Connect を使用した AD FS の管理と、Azure AD Connect および PowerShell を使用したユーザー AD FS サインイン エクスペリエンスのカスタマイズ。
-keywords: AD FS, ADFS, AD FS 管理, AAD Connect, Connect, サインイン, AD FS カスタマイズ, 信頼の修復, O365, フェデレーション, 証明書利用者
+keywords: AD FS, ADFS, AD FS 管理, AAD Connect, Connect, サインイン, AD FS カスタマイズ, 信頼の修復, M365, フェデレーション, 証明書利用者
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,12 +18,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72339d9ce492446d05f23b63ac2d0a1c2d62f766
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: dadffd6fe3e6b438b21900f957f0d4ef71bb23cb
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276781"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661258"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Azure AD Connect を使用した Active Directory フェデレーション サービスの管理とカスタマイズ
 この記事では、Azure Active Directory (Azure AD) Connect を使用して、Active Directory フェデレーション サービス (AD FS) を管理およびカスタマイズする方法について説明します。 また、AD FS ファームの完全な構成のために必要となる可能性のある他の一般的な AD FS タスクについても説明します。
@@ -31,7 +31,7 @@ ms.locfileid: "89276781"
 | トピック | 内容 |
 |:--- |:--- |
 | **AD FS の管理** | |
-| [信頼を修復する](#repairthetrust) |Office 365 とのフェデレーション信頼を修復する方法 |
+| [信頼を修復する](#repairthetrust) |Microsoft 365 とのフェデレーション信頼を修復する方法 |
 | [代替ログイン ID を使用して Azure AD とフェデレーションする](#alternateid) | 代替ログイン ID を使用してフェデレーションを構成する  |
 | [AD FS サーバーを追加する](#addadfsserver) |追加の AD FS サーバーで AD FS ファームを拡張する方法 |
 | [AD FS Web アプリケーション プロキシ サーバーを追加する](#addwapserver) |追加の Web アプリケーション プロキシ (WAP) サーバーで AD FS ファームを拡張する方法 |

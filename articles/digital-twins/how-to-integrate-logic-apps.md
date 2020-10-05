@@ -4,16 +4,16 @@ titleSuffix: Azure Digital Twins
 description: カスタム コネクタを使用して Logic Apps を Azure Digital Twins に接続する方法について説明します
 author: baanders
 ms.author: baanders
-ms.date: 8/14/2020
+ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 20959709854f8366cc067437fe86c245fcbc3ef0
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 09181a28edf21f0a4da11a244d3c094469446ab5
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401063"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983554"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>カスタム コネクタを使用して Logic Apps と統合する
 
@@ -26,8 +26,12 @@ ms.locfileid: "89401063"
 ## <a name="prerequisites"></a>前提条件
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に **[無料のアカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成**してください。
+このアカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。 
 
-このアカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+この手順については、残りのセクションで順を追って説明します。
+- Azure Digital Twins インスタンスを設定する
+- アプリの登録のクライアント シークレットを取得する
+- デジタル ツインを追加する
 
 ### <a name="set-up-azure-digital-twins-instance"></a>Azure Digital Twins インスタンスを設定する
 
@@ -49,7 +53,12 @@ Azure AD アプリの登録に対する "**_クライアント シークレッ�
 :::image type="content" source="media/how-to-integrate-logic-apps/client-secret.png" alt-text="Azure AD アプリの登録のポータル表示。リソース メニューの [証明書とシークレット] とページの [新しいクライアント シークレット] が強調して示されている":::
 
 [説明] と [有効期限] に適切な値を入力して、 *[追加]* クリックします。
-*[証明書とシークレット]* ページのクライアント シークレットの一覧にシークレットが追加されます。 後で使用するので値を記録しておきます ([コピー] アイコンを使用してクリップボードにコピーすることもできます)。
+
+:::image type="content" source="media/how-to-integrate-logic-apps/add-client-secret.png" alt-text="Azure AD アプリの登録のポータル表示。リソース メニューの [証明書とシークレット] とページの [新しいクライアント シークレット] が強調して示されている":::
+
+_[証明書とシークレット]_ ページで、 _[有効期限]_ および _[値]_ フィールドと共にクライアント シークレットが表示されていることを確認します。 後で使用するので _[値]_ を記録しておきます ([コピー] アイコンを使用してクリップボードにコピーすることもできます)
+
+:::image type="content" source="media/how-to-integrate-logic-apps/client-secret-value.png" alt-text="Azure AD アプリの登録のポータル表示。リソース メニューの [証明書とシークレット] とページの [新しいクライアント シークレット] が強調して示されている":::
 
 ### <a name="add-a-digital-twin"></a>デジタル ツインを追加する
 
@@ -65,11 +74,15 @@ Azure AD アプリの登録に対する "**_クライアント シークレッ�
 
 Azure portal の [[Logic Apps カスタム コネクタ]](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Web%2FcustomApis) ページに移動します (このリンクを使用しても、ポータルの検索バーで検索してもかまいません)。 *[+ 追加]* をクリックします。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-custom-connector.png" alt-text="Azure portal の [Logic Apps カスタム コネクタ] ページ。[追加] ボタンが強調して示されている":::
+:::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-custom-connector.png" alt-text="Azure AD アプリの登録のポータル表示。リソース メニューの [証明書とシークレット] とページの [新しいクライアント シークレット] が強調して示されている":::
 
-次の *[Logic Apps カスタム コネクタの作成]* ページで、お使いのサブスクリプション、リソース グループ、新しいコネクタの名前とデプロイの場所を選択します。 *[確認および作成]* をクリックします。 これにより表示される *[確認および作成]* タブによって、下部にある *[作成]* をクリックしてリソースを作成できます。
+次の *[Logic Apps カスタム コネクタの作成]* ページで、お使いのサブスクリプション、リソース グループ、新しいコネクタの名前とデプロイの場所を選択します。 *[確認および作成]* をクリックします。 
 
-:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-apps-custom-connector.png" alt-text="Azure portal の [Logic Apps カスタム コネクタの作成] ページの [確認および作成] タブ。[作成] ボタンが強調して示されている":::
+:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-apps-custom-connector.png" alt-text="Azure AD アプリの登録のポータル表示。リソース メニューの [証明書とシークレット] とページの [新しいクライアント シークレット] が強調して示されている":::
+
+これにより表示される *[確認および作成]* タブによって、下部にある *[作成]* をクリックしてリソースを作成できます。
+
+:::image type="content" source="media/how-to-integrate-logic-apps/review-logic-apps-custom-connector.png" alt-text="Azure AD アプリの登録のポータル表示。リソース メニューの [証明書とシークレット] とページの [新しいクライアント シークレット] が強調して示されている":::
 
 コネクタのデプロイ ページが表示されます。 デプロイが完了したら、 *[リソースに移動]* ボタンをクリックして、ポータルでコネクタの詳細を表示します。
 
@@ -81,7 +94,7 @@ Azure portal の [[Logic Apps カスタム コネクタ]](https://portal.azure.c
 
 次に、[Azure portal](https://portal.azure.com) のコネクタの [概要] ページに進み、 *[編集]* を押します。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/edit-connector.png" alt-text="前のステップで作成したコネクタの [概要] ページ。[編集] ボタンが強調して示されている":::
+:::image type="content" source="media/how-to-integrate-logic-apps/edit-connector.png" alt-text="Azure AD アプリの登録のポータル表示。リソース メニューの [証明書とシークレット] とページの [新しいクライアント シークレット] が強調して示されている":::
 
 次の *[Logic Apps カスタム コネクタの編集]* ページで、次の情報を構成します。
 * **カスタム コネクタ**
@@ -89,36 +102,29 @@ Azure portal の [[Logic Apps カスタム コネクタ]](https://portal.azure.c
     - インポート モード: OpenAPI ファイル (既定値のまま)
     - ファイル: これは、前にダウンロードしたカスタム Swagger ファイルです。 *[インポート]* を押し、お使いのコンピューターでファイルを見つけ (*Azure_Digital_Twins_Custom_Swaggers\LogicApps\preview\2020-05-31-preview\digitaltwins.json*)、 *[開く]* を押します。
 * **一般情報**
-    - アイコン、アイコンの背景色、説明: 任意の値を入力します。
+    - アイコン: 使用するアイコンをアップロードします
+    - アイコンの背景色:'#xxxxxx' という形式で、色の 16 進コードを入力します。
+    - 説明:任意の値を入力します。
     - スキーム: HTTPS (既定値のまま)
     - [Host]\(ホスト\):Azure Digital Twins インスタンスの "*ホスト名*"。
     - ベース URL: / (既定値のまま)
 
 次に、ウィンドウの下部にある *[セキュリティ]* ボタンをクリックして、次の構成ステップに進みます。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/configure-next.png" alt-text="[Logic Apps カスタム コネクタの編集] ページの下部のスクリーンショット。セキュリティに進むためのボタンが強調して示されている":::
-
-[セキュリティ] ステップで、 *[編集]* クリックして次の情報を構成します。
-* **[認証の種類]** : OAuth 2.0
-* **OAuth 2.0**:
-    - ID プロバイダー: Azure Active Directory
-    - クライアント ID: お使いの Azure AD アプリ登録の "*アプリケーション (クライアント) ID*"
-    - クライアント シークレット:Azure AD アプリ登録の "[*前提条件*](#prerequisites)" で作成した "*クライアント シークレット*"
-    - ログイン URL: https://login.windows.net (既定のまま)
-    - テナント ID: Azure AD アプリ登録の "*ディレクトリ (テナント) ID*"
+:::image type="content" source="media/how-to-integrate-logic-apps/configure-next.png" alt-text="Azure AD アプリの登録のポータル表示。リソース メニューの [証明書とシークレット] とページの [新しいクライアント シークレット] が強調して示されている"
     - リソース URL: 0b07f429-9f4b-4714-9392-cc5e8e80c8b0
     - スコープ:Directory.AccessAsUser.All
     - リダイレクト URL: (現時点では既定のまま)
 
 [リダイレクト URL] フィールドに *[カスタム コネクタを保存してリダイレクト URL を生成します]* と表示されていることにご注意ください。 ペインの上部にある *[コネクタの更新]* をクリックしてこれを行い、コネクタの設定を確認します。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/update-connector.png" alt-text="[Logic Apps カスタム コネクタの編集] ページの上部のスクリーンショット。[コネクタの更新] ボタンの周囲が強調して示されている":::
+:::image type="content" source="media/how-to-integrate-logic-apps/update-connector.png" alt-text="Azure AD アプリの登録のポータル表示。リソース メニューの [証明書とシークレット] とページの [新しいクライアント シークレット] が強調して示されている":::
 
 <!-- Success message? didn't see one -->
 
 [リダイレクト URL] フィールドに戻り、生成された値をコピーします。 次の手順で使用します。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/copy-redirect-url.png" alt-text="[Logic Apps カスタム コネクタの編集] ページの [リダイレクト URL] フィールドの値が、https://logic-apis-westus2.consent.azure-apim.net/redirect になっている。値をコピーするボタンが強調して示されている。":::
+:::image type="content" source="media/how-to-integrate-logic-apps/copy-redirect-url.png" alt-text="Azure AD アプリの登録のポータル表示。リソース メニューの [証明書とシークレット] とページの [新しいクライアント シークレット] が強調して示されている":::
 
 コネクタを作成するために必要な情報は、これですべてです ([セキュリティ] に続けて [定義] ステップを行う必要はありません)。 *[Logic Apps カスタム コネクタの編集]* ペインを閉じてかまいません。
 
@@ -133,11 +139,9 @@ Azure portal の [[アプリの登録]](https://portal.azure.com/#blade/Microsof
 
 登録のメニューの *[認証]* で、URI を追加します。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/add-uri.png" alt-text="Azure portal でのアプリ登録の認証ページ。メニューの [認証] と、そのページの [URI の追加] ボタンが強調して示されている。"::: 
+:::image type="content" source="media/how-to-integrate-logic-apps/add-uri.png" alt-text="Azure AD アプリの登録のポータル表示。リソース メニューの [証明書とシークレット] とページの [新しいクライアント シークレット] が強調して示されている" を新しいフィールドに入力し、 *[保存]* アイコンをクリックします。
 
-カスタム コネクタの "*リダイレクト URL*" を新しいフィールドに入力し、 *[保存]* アイコンをクリックします。
-
-:::image type="content" source="media/how-to-integrate-logic-apps/save-uri.png" alt-text="Azure portal でのアプリ登録の認証ページ。新しいリダイレクト URL と、そのページの [保存] ボタンが強調して示されている。":::
+:::image type="content" source="media/how-to-integrate-logic-apps/save-uri.png" alt-text="Azure AD アプリの登録のポータル表示。リソース メニューの [証明書とシークレット] とページの [新しいクライアント シークレット] が強調して示されている":::
 
 これで、Azure Digital Twins API にアクセスできるカスタム コネクタの設定が完了しました。 
 
@@ -145,11 +149,15 @@ Azure portal の [[アプリの登録]](https://portal.azure.com/#blade/Microsof
 
 次に、新しいコネクタを使用して Azure Digital Twins の更新を自動化するロジック アプリを作成します。
 
-Azure portal で [[Logic Apps]](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Logic%2Fworkflows) ページに移動します (このリンクを使用しても、ポータルの検索バーで検索してもかまいません)。 *[ロジック アプリの作成]* をクリックします。
+Azure portal で [[Logic Apps (従量課金)]](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Logic%2Fworkflows) ページに移動します (このリンクを使用しても、ポータルの検索バーで検索してもかまいません)。 ロジック アプリを作成するには、 *[追加]* ボタンをクリックします。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="Azure portal の [Logic Apps] ページ。[ロジック アプリの作成] ボタンの周囲が強調して示されている":::
+:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="Azure AD アプリの登録のポータル表示。リソース メニューの [証明書とシークレット] とページの [新しいクライアント シークレット] が強調して示されている":::
 
-次の *[ロジック アプリ]* ページで、お使いのサブスクリプション、リソース グループ、および新しいロジック アプリの名前とデプロイの場所を選択します。 *[確認および作成]* をクリックします。 これにより表示される *[確認および作成]* タブによって、下部にある *[作成]* をクリックしてリソースを作成できます。
+表示された *[Logic Apps (従量課金)]* ページで、サブスクリプションとリソース グループを入力します。 また、ロジック アプリの名前を選択し、場所を選択します。
+
+_[確認と作成] ボタンを選択します。_
+
+これにより表示される *[確認と作成]* タブで、詳細を確認し、下部にある *[作成]* をクリックしてリソースを作成できます。
 
 ロジック アプリのデプロイ ページが表示されます。 デプロイが完了したら、 *[リソースに移動]* ボタンをクリックして *[Logic Apps デザイナー]* に進み、そこでワークフローのロジックを入力します。
 
@@ -157,7 +165,7 @@ Azure portal で [[Logic Apps]](https://portal.azure.com/#blade/HubsExtension/Br
 
 *[Logic Apps デザイナー]* で、 *[一般的なトリガーで開始する]* の _**[繰り返し]**_ を選択します。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-designer-recurrence.png" alt-text="Azure portal の [Logic Apps デザイナー] ページ。[繰り返し] 一般トリガーが強調して示されている":::
+:::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-designer-recurrence.png" alt-text="Azure AD アプリの登録のポータル表示。リソース メニューの [証明書とシークレット] とページの [新しいクライアント シークレット] が強調して示されている":::
 
 次の *[Logic Apps デザイナー]* ページで、 **[繰り返し]** 頻度を *[秒]* に変更して、イベントが 3 秒ごとにトリガーされるようにします。 これにより、後で非常に長い時間待つことなく、簡単に結果を確認できるようになります。
 
@@ -165,20 +173,15 @@ Azure portal で [[Logic Apps]](https://portal.azure.com/#blade/HubsExtension/Br
 
 これにより、 *[アクションの選択]* ボックスが開きます。 *[カスタム]* タブに切り替えます。上部のボックスに、前に作成したカスタム コネクタが表示されます。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/custom-action.png" alt-text="Azure portal の Logic Apps デザイナーでのフローの作成。[アクションの選択] ボックスの [カスタム] タブが選択されている。前に作成したユーザーのカスタム コネクタがボックスに表示され、その周囲が強調して示されている。":::
-
-それを選択して、そのコネクタに含まれる API の一覧を表示します。 検索バーを使用するか、一覧をスクロールして、**DigitalTwins_Add** を選択します。 (この記事ではこの API が使用されていますが、他の API を Logic Apps の接続用に選択してもかまいません)。
-
-コネクタに接続するために、Azure の資格情報でサインインするように求められる場合があります。 *[要求されているアクセス許可]* ダイアログが表示される場合は、画面の指示に従ってアプリに同意して受け入れます。
-
-新しい *DigitalTwinsAdd* ボックスのフィールドを次のように設定します。
-* id: ロジック アプリで更新するインスタンス内のデジタル ツインの "*ツイン ID*" を入力します。
-* Item - 1: このフィールドには、選択した API 要求で必要な本文を入力します。 *DigitalTwinsUpdate* の場合、この本文は JSON Patch コードの形式です。 ツインを更新するための JSON Patch の構成の詳細については、「[デジタル ツインを更新する](how-to-manage-twin.md#update-a-digital-twin)」セクションを参照してください ("*方法: 「デジタル ツインを管理する」方法*を参照してください。
-* api-version: 現在のパブリック プレビューでは、この値は *2020-05-31-preview* です。
+:::image type="content" source="media/how-to-integrate-logic-apps/custom-action.png" alt-text="Azure AD アプリの登録のポータル表示。リソース メニューの [証明書とシークレット] とページの [新しいクライアント シークレット] が強調して示されている" を入力します。
+* _ツイン_:このフィールドには、選択した API 要求で必要な本文を入力します。 *DigitalTwinsUpdate* の場合、この本文は JSON Patch コードの形式です。 ツインを更新するための JSON Patch の構成の詳細については、「[デジタル ツインを更新する](how-to-manage-twin.md#update-a-digital-twin)」セクションを参照してください ("*方法: 「デジタル ツインを管理する」方法*を参照してください。
+* _API バージョン_:現在のパブリック プレビューでは、この値は *2020-05-31-preview* です。
 
 Logic Apps デザイナーで *[保存]* をクリックします。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/save-logic-app.png" alt-text="ロジック アプリ コネクタで完成したアプリの表示。DigitalTwinsAdd ボックスに、JSON Patch 本文のサンプルなど、上で説明した値が入力されている。ウィンドウの [保存] ボタンが強調して示されている。":::
+同じウィンドウで、 _[+ 新しいステップ]_ を選択すると、他の操作を選択できます。
+
+:::image type="content" source="media/how-to-integrate-logic-apps/save-logic-app.png" alt-text="Azure AD アプリの登録のポータル表示。リソース メニューの [証明書とシークレット] とページの [新しいクライアント シークレット] が強調して示されている":::
 
 ## <a name="query-twin-to-see-the-update"></a>ツインのクエリを実行して更新を確認する
 

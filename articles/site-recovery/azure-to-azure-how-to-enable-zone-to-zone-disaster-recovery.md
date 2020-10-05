@@ -5,16 +5,16 @@ author: sideeksh
 manager: gaggupta
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/28/2020
+ms.date: 04/28/2019
 ms.author: sideeksh
-ms.openlocfilehash: a1952f6dccf12de4cb1571dacabecf78c65cd01b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 001ac4918ed5d87bdb801d1bf918a4450e7cf8e0
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021649"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007793"
 ---
-# <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>Azure 仮想マシンのゾーン間ディザスター リカバリーを有効にする
+# <a name="enable-azure-vm-disaster-recovery-between-availability-zones"></a>可用性ゾーン間で Azure VM のディザスター リカバリーを有効にする
 
 この記事では、同じ Azure リージョン内の可用性ゾーン間で Azure 仮想マシンをレプリケート、フェールオーバー、およびフェールバックする方法について説明します。
 
@@ -27,6 +27,8 @@ Site Recovery サービスは、計画された停止や計画外の停止の際
 
 Availability Zones は、Azure リージョン内の一意の物理的な場所です。 各ゾーンには、1 つまたは複数のデータセンターがあります。 
 
+VM を別のリージョン内の可用性ゾーンに移動する場合は、[この記事をレビュー](../resource-mover/move-region-availability-zone.md)してください。
+
 ## <a name="using-availability-zones-for-disaster-recovery"></a>ディザスター リカバリーへの可用性ゾーン の使用 
 
 通常、可用性ゾーンは VM を高可用性構成でデプロイするために使用されます。 可用性ゾーンは、ゾーン間の間隔が狭すぎて、自然災害が発生した場合にディザスター リカバリー ソリューションとしての役割を果たせないことがあります。
@@ -37,7 +39,7 @@ Availability Zones は、Azure リージョン内の一意の物理的な場所�
 
 - 他の多くの顧客は、複雑なネットワーク インフラストラクチャを備えており、関連コストと複雑さのせいで、セカンダリ リージョンにそれを再作成することを望みません。 ゾーン間ディザスター リカバリーでは、可用性ゾーン全体に冗長ネットワークの概念を活用して構成をより一層簡単なものにするため、複雑さが軽減されます。 このような顧客はシンプルさを好むため、ディザスター リカバリーに可用性ゾーンを使用することもできます。
 
-- 同じ法務管轄内でペアになっているリージョンを持たない一部のリージョン (東南アジアなど) では、アプリケーションとデータが国境を越えないため、ゾーン間ディザスター リカバリーは法的なコンプライアンスの確保に役立つので、事実上ディザスター リカバリー ソリューションとしての役割を果たすことができます。 
+- 同じ法務管轄内でペアになっているリージョンを持たない一部のリージョン (東南アジアなど) では、アプリケーションとデータが国境を越えて移動しないため、ゾーン間ディザスター リカバリーは法的なコンプライアンスの確保に役立つので、事実上ディザスター リカバリー ソリューションとしての役割を果たすことができます。 
 
 - ゾーン間ディザスター リカバリーは、Azure 間のディザスター リカバリーに比べて、より短い距離間でのデータのレプリケーションを意味するため、待機時間が短縮され、結果として RPO が低くなるように見えることがあります。
 
@@ -69,11 +71,11 @@ Availability Zones は、Azure リージョン内の一意の物理的な場所�
 |---------|---------|
 |クラシック VM   |     サポートされていません    |
 |ARM VM    |    サポートされています    |
-|Azure Disk Encryption v1 (デュアル パス、AAD あり)     |     サポートされています |
-|Azure Disk Encryption v2 (AAD なし)    |    サポートされています    |
+|Azure Disk Encryption v1 (デュアル パス、Azure Active Directory (Azure AD) あり)     |     サポートされています   |
+|Azure Disk Encryption v2 (シングル パス、Azure AD なし)    |    サポートされています    |
 |非管理対象ディスク    |    サポートされていません    |
 |マネージド ディスク    |    サポートされています    |
-|顧客管理キー    |    サポートされています    |
+|カスタマー マネージド キー    |    サポートされています    |
 |近接通信配置グループ    |    サポートされています    |
 |バックアップの相互運用性    |    ファイル レベルのバックアップと復元がサポートされています。 ディスク レベルおよび VM レベルのバックアップと復元はサポートされていません。    |
 |ホット アド/削除    |    ゾーン間のレプリケーションを有効にした後で、ディスクを追加できます。 ゾーン間のレプリケーションを有効にした後のディスクの削除はサポートされていません。    | 
@@ -82,7 +84,7 @@ Availability Zones は、Azure リージョン内の一意の物理的な場所�
 
 ### <a name="log-in"></a>ログイン
 
-Azure portal にログインします。
+Azure ポータルにログインします。
 
 ### <a name="enable-replication-for-the-zonal-azure-virtual-machine"></a>ゾーン ベースの Azure 仮想マシンのレプリケーションを有効にする
 

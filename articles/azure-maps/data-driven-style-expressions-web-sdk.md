@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: c8de7148e91f8fafa4a2b1f8a661964a77ead215
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ea88797a6423118cba40d117a37dc9df75b0b7a1
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009139"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089447"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>データ ドリブンのスタイルの式 (Web SDK)
 
@@ -72,7 +72,12 @@ Azure Maps Web SDK では、さまざまな種類の式がサポートされて�
         "subTitle": "Building 40", 
         "temperature": 72,
         "title": "Cafeteria", 
-        "zoneColor": "red"
+        "zoneColor": "red",
+        "abcArray": ['a', 'b', 'c'],
+        "array2d": [['a', 'b'], ['x', 'y']],
+        "_style": {
+            "fillColor": 'red'
+        }
     }
 }
 ```
@@ -136,6 +141,28 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 ```
 
 同様に、線レイヤーでは多角形のアウトラインがレンダリングされます。 線レイヤーでこの動作を無効にするには、`LineString` 機能と `MultiLineString` 機能のみを許可するフィルターを追加します。  
+
+データ式を使用する方法のその他の例は次のとおりです。
+
+```javascript
+//Get item [2] from an array "properties.abcArray[1]" = "c"
+['at', 2, ['get', 'abcArray']]
+
+//Get item [0][1] from a 2D array "properties.array2d[0][1]" = "b"
+['at', 1, ['at', 0, ['get', 'array2d']]]
+
+//Check to see if a value is in an array property "properties.abcArray.indexOf('a') !== -1" = true
+['in', 'a', ['get', 'abcArray']]
+
+//Get the length of an array "properties.abcArray.length" = 3
+['length', ['get', 'abcArray']]
+
+//Get the value of a subproperty "properties._style.fillColor" = "red"
+['get', 'fillColor', ['get', '_style']]
+
+//Check that "fillColor" exists as a subproperty of "_style".
+['has', 'fillColor', ['get', '_style']]
+```
 
 ## <a name="math-expressions"></a>数式
 
@@ -609,7 +636,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 ### <a name="heat-map-density-expression"></a>ヒート マップ密度式
 
-ヒート マップ密度式では、ヒート マップ レイヤー内の各ピクセルに対してヒート マップ密度値を取得します。この式は `['heatmap-density']` として定義されます。 この値は `0` から `1` までの数値です。 これは `interpolation` 式または `step` 式と組み合わせて使用して、ヒート マップの色分けに使用される色のグラデーションが定義されます。 この式は、ヒート マップ レイヤーの[色のオプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest#color)でのみ使用できます。
+ヒート マップ密度式では、ヒート マップ レイヤー内の各ピクセルに対してヒート マップ密度値を取得します。この式は `['heatmap-density']` として定義されます。 この値は `0` から `1` までの数値です。 これは `interpolation` 式または `step` 式と組み合わせて使用して、ヒート マップの色分けに使用される色のグラデーションが定義されます。 この式は、ヒート マップ レイヤーの[色のオプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions#color)でのみ使用できます。
 
 > [!TIP]
 > 補間式内のインデックス 0 の色、または段階色の既定の色では、データのない領域の色が定義されます。 インデックス 0 の色は背景色を定義するために使用できます。 多くの場合、この値は透明または半透明の黒に設定することが好まれます。
@@ -653,7 +680,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 ### <a name="line-progress-expression"></a>線形進行状況の式
 
-線形進行状況の式では、線レイヤー内のグラデーション線に沿って進行状況を取得します。この式は `['line-progress']` として定義されます。 この値は 0 から 1 までの数値です。 これは `interpolation` 式または `step` 式と組み合わせて使用されます。 この式は、線レイヤーの [strokeGradient オプション]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest#strokegradient)でのみ使用できます。 
+線形進行状況の式では、線レイヤー内のグラデーション線に沿って進行状況を取得します。この式は `['line-progress']` として定義されます。 この値は 0 から 1 までの数値です。 これは `interpolation` 式または `step` 式と組み合わせて使用されます。 この式は、線レイヤーの [strokeGradient オプション]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions#strokegradient)でのみ使用できます。 
 
 > [!NOTE]
 > 線レイヤーの `strokeGradient` オプションでは、データ ソースの `lineMetrics` オプションが `true` に設定される必要があります。
@@ -916,16 +943,16 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 式をサポートする次のレイヤー オプションの詳細を参照してください。
 
 > [!div class="nextstepaction"] 
-> [BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions?view=azure-iot-typescript-latest)
+> [BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions)
 
 > [!div class="nextstepaction"] 
-> [HeatMapLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest)
+> [HeatMapLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
 
 > [!div class="nextstepaction"] 
-> [LineLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest)
+> [LineLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions)
 
 > [!div class="nextstepaction"] 
-> [PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest)
+> [PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
 
 > [!div class="nextstepaction"] 
-> [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions?view=azure-iot-typescript-latest)
+> [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions)

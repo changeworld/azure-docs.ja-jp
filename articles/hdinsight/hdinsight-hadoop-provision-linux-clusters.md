@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 08/06/2020
-ms.openlocfilehash: f9c5b8ae16cb43576d788f72478e2cfba521a736
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: b7757b5204c9b3b32145667367a71a9acc42c230
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749871"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434658"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>HDInsight で Apache Hadoop、Apache Spark、Apache Kafka などを使用してクラスターを設定する
 
@@ -139,7 +139,7 @@ HDInsight を使用したストレージ オプションの詳細については
 
 ### <a name="metastore-settings"></a>メタストアの設定
 
-Hive metastore または Apache Oozie metastore を作成できます (任意)。 ただし、クラスターの種類によっては metastore がサポートされません。また Azure SQL Data Warehouse は metastore と互換性がありません。
+Hive metastore または Apache Oozie metastore を作成できます (任意)。 ただし、クラスターの種類によっては metastore がサポートされません。また Azure Synapse Analytics は metastore と互換性がありません。
 
 詳細については、[Azure HDInsight での外部メタデータ ストアの使用](./hdinsight-use-external-metadata-stores.md)に関する記事を参照してください。
 

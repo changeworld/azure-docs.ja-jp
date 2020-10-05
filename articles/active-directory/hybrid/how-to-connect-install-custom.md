@@ -14,12 +14,12 @@ ms.date: 06/10/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6aa0c1903597c8fbfd1a782d6f6f0fe52870c13b
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 39eb45f4488c0ddc63ab8e7357a122b47777feee
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279756"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662347"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect のカスタム インストール
 Azure AD Connect **カスタム設定** は、より多くのインストール オプションが必要な場合に使用します。 この設定を使用するのは、複数のフォレストがある場合や、高速インストールの対象でないオプション機能を構成する必要がある場合です。 [**高速インストール**](how-to-connect-install-express.md) オプションで対象のデプロイまたはトポロジに対応できない場合は、常にこの設定を使用します。
@@ -50,10 +50,10 @@ Azure AD Connect のインストールを始める前に、必ず [Azure AD Conn
 
 | シングル サインオン オプション | 説明 |
 | --- | --- |
-| パスワード ハッシュの同期 |ユーザーは、オンプレミス ネットワークで使用しているものと同じパスワードで、Office 365 などの Microsoft クラウド サービスにサインインできます。 ユーザーのパスワードはパスワード ハッシュとして Azure AD に同期され、クラウドで認証が行われます。 詳細については、[パスワード ハッシュの同期](how-to-connect-password-hash-synchronization.md)に関するページを参照してください。 |
-|パススルー認証|ユーザーは、オンプレミス ネットワークで使用しているものと同じパスワードで、Office 365 などの Microsoft クラウド サービスにサインインできます。  ユーザー パスワードはオンプレミスの Active Directory ドメイン コントローラーにパススルーされて検証されます。
-| AD FS とのフェデレーション |ユーザーは、オンプレミス ネットワークで使用しているものと同じパスワードで、Office 365 などの Microsoft クラウド サービスにサインインできます。  ユーザーはサインインのためにオンプレミスの AD FS インスタンスにリダイレクトされ、認証はオンプレミスで行われます。 |
-| PingFederate によるフェデレーション|ユーザーは、オンプレミス ネットワークで使用しているものと同じパスワードで、Office 365 などの Microsoft クラウド サービスにサインインできます。  ユーザーはサインインのためにオンプレミスの PingFederate インスタンスにリダイレクトされ、認証はオンプレミスで行われます。 |
+| パスワード ハッシュの同期 |ユーザーは、オンプレミス ネットワークで使用しているものと同じパスワードで、Microsoft 365 などの Microsoft クラウド サービスにサインインできます。 ユーザーのパスワードはパスワード ハッシュとして Azure AD に同期され、クラウドで認証が行われます。 詳細については、[パスワード ハッシュの同期](how-to-connect-password-hash-synchronization.md)に関するページを参照してください。 |
+|パススルー認証|ユーザーは、オンプレミス ネットワークで使用しているものと同じパスワードで、Microsoft 365 などの Microsoft クラウド サービスにサインインできます。  ユーザー パスワードはオンプレミスの Active Directory ドメイン コントローラーにパススルーされて検証されます。
+| AD FS とのフェデレーション |ユーザーは、オンプレミス ネットワークで使用しているものと同じパスワードで、Microsoft 365 などの Microsoft クラウド サービスにサインインできます。  ユーザーはサインインのためにオンプレミスの AD FS インスタンスにリダイレクトされ、認証はオンプレミスで行われます。 |
+| PingFederate によるフェデレーション|ユーザーは、オンプレミス ネットワークで使用しているものと同じパスワードで、Microsoft 365 などの Microsoft クラウド サービスにサインインできます。  ユーザーはサインインのためにオンプレミスの PingFederate インスタンスにリダイレクトされ、認証はオンプレミスで行われます。 |
 | 構成しない |ユーザー サインイン機能はインストールおよび構成されません。 サード パーティのフェデレーション サーバーまたは別の既存のソリューションが既に設置されている場合は、このオプションを選択します。 |
 |シングル サインオンを有効にする|このオプションは、パスワード ハッシュの同期とパススルー認証の両方で使用でき、企業ネットワーク上のデスクトップ ユーザーにシングル サインオン エクスペリエンスを提供します。 詳細については、[シングル サインオン](how-to-connect-sso.md)に関するページをご覧ください。 </br>AD FS ユーザーはこのオプションを使用できません。AD FS によって同レベルのシングル サインオンが既に提供されているためです。</br>
 
@@ -97,13 +97,13 @@ Azure AD Connect では、Active Directory ドメイン サービスに接続す
 ![Unverified domains](./media/how-to-connect-install-custom/aadsigninconfig2.png)  
 **[Not Added (追加されていません)]** と **[Not Verified (検証されていません)]** のマークが付いたドメインをすべて確認します。 使用するドメインを Azure AD で検証済みにしてください。 対象のドメインを検証済みにしたら、更新シンボルをクリックします。 詳細については、[ドメインの追加と検証](../fundamentals/add-custom-domain.md)に関するページを参照してください。
 
-**UserPrincipalName** - userPrincipalName 属性は、ユーザーが Azure AD と Office 365 にサインインするときに使用する属性です。 使用するドメイン (UPN サフィックス) は、ユーザーを同期する前に、Azure AD で検証する必要があります。 既定の userPrincipalName 属性のままにしておくことをお勧めします。 この属性がルーティング不可能で検証できない場合は、別の属性を選択することができます。 たとえば、サインイン ID を保持する属性として電子メールを選択することができます。 userPrincipalName 以外の属性を使用する方法は、 **代替 ID**と呼ばれます。 代替 ID の属性値は、RFC822 標準に従う必要があります。 代替 ID は、パスワード ハッシュの同期、パススルー認証、およびフェデレーションで使用できます。 Active Directory では、値が 1 つのみであってもこの属性を複数値として定義できません。 代替 ID の詳細については、[よく寄せられる質問](./how-to-connect-pta-faq.md#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname)のトピックを参照してください。
+**UserPrincipalName** - userPrincipalName 属性は、ユーザーが Azure AD と Microsoft 365 にサインインするときに使用する属性です。 使用するドメイン (UPN サフィックス) は、ユーザーを同期する前に、Azure AD で検証する必要があります。 既定の userPrincipalName 属性のままにしておくことをお勧めします。 この属性がルーティング不可能で検証できない場合は、別の属性を選択することができます。 たとえば、サインイン ID を保持する属性として電子メールを選択することができます。 userPrincipalName 以外の属性を使用する方法は、 **代替 ID**と呼ばれます。 代替 ID の属性値は、RFC822 標準に従う必要があります。 代替 ID は、パスワード ハッシュの同期、パススルー認証、およびフェデレーションで使用できます。 Active Directory では、値が 1 つのみであってもこの属性を複数値として定義できません。 代替 ID の詳細については、[よく寄せられる質問](./how-to-connect-pta-faq.md#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname)のトピックを参照してください。
 
 >[!NOTE]
 > パススルー認証を有効にする場合、ウィザードを続行するために少なくとも 1 つの検証済みドメインが必要になります。
 
 > [!WARNING]
-> 代替 ID の使用は、すべての Office 365 ワークロードと互換性があるわけではありません。 詳細については、「 [Configuring Alternate Login ID (代替ログイン ID の構成)](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)」を参照してください。
+> 代替 ID の使用は、すべての Microsoft 365 ワークロードと互換性があるわけではありません。 詳細については、「 [Configuring Alternate Login ID (代替ログイン ID の構成)](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)」を参照してください。
 >
 >
 
@@ -176,12 +176,12 @@ sourceAnchor 属性は、ユーザー オブジェクトの有効期間中に変
 
 | オプション機能 | 説明 |
 | --- | --- |
-| Exchange ハイブリッドのデプロイ |Exchange ハイブリッド展開機能を利用すると、オンプレミスと Office 365 で Exchange メールボックスが共存できるようになります。 Azure AD Connect により、Azure AD の特定の[属性](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback)セットがオンプレミスのディレクトリに同期されます。 |
+| Exchange ハイブリッドのデプロイ |Exchange ハイブリッドのデプロイ機能を利用すると、オンプレミスと Microsoft 365 の Exchange メールボックスが共存できるようになります。 Azure AD Connect により、Azure AD の特定の[属性](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback)セットがオンプレミスのディレクトリに同期されます。 |
 | Exchange メールのパブリック フォルダー | Exchange メールのパブリック フォルダー機能を使用すると、メール対応のパブリック フォルダー オブジェクトをオンプレミスの Active Directory から Azure AD に同期することができます。 |
 | Azure AD アプリと属性フィルター |Azure AD アプリと属性フィルターを有効にすると、同期される属性セットをカスタマイズできます。 このオプションにより、2 つの構成ページがウィザードに追加されます。 詳細については、「 [Azure AD アプリと属性フィルター](#azure-ad-app-and-attribute-filtering)」を参照してください。 |
 | パスワード ハッシュの同期 |サインイン ソリューションとしてフェデレーションを選択した場合は、このオプションを有効にすることができます。 バックアップ オプションとして、パスワード ハッシュ同期を使用できます。 詳細については、[パスワード ハッシュの同期](how-to-connect-password-hash-synchronization.md)に関するページを参照してください。 </br></br>パススルー認証を選択した場合、レガシ クライアントをサポートするために、このオプションをバックアップ オプションとして有効にすることもできます。 詳細については、[パスワード ハッシュの同期](how-to-connect-password-hash-synchronization.md)に関するページを参照してください。|
 | パスワードの書き戻し |パスワード ライトバックを有効にすると、Azure AD で行われたパスワードの変更が、オンプレミスのディレクトリに書き戻されます。 詳細については、「[パスワード管理の概要](../authentication/tutorial-enable-sspr.md)」を参照してください。 |
-| グループの書き戻し |**Office 365 グループ** 機能を使用すると、そのグループをオンプレミスの Active Directory 内に表示することができます。 このオプションが使用できるのは、オンプレミスの Active Directory 内に Exchange が置かれている場合に限られます。 詳細については、「[Azure AD Connect のグループの書き戻し](how-to-connect-group-writeback.md)」を参照してください|
+| グループの書き戻し |**Microsoft 365 グループ**機能を使用している場合は、そのグループをオンプレミスの Active Directory 内に表示できます。 このオプションが使用できるのは、オンプレミスの Active Directory 内に Exchange が置かれている場合に限られます。 詳細については、「[Azure AD Connect のグループの書き戻し](how-to-connect-group-writeback.md)」を参照してください|
 | デバイスの書き戻し |条件付きアクセスのシナリオの場合は、Azure AD 内のデバイス オブジェクトをオンプレミスの Active Directory に書き戻すことができます。 詳細については、[Azure AD Connect でのデバイスの書き戻しの有効化](how-to-connect-device-writeback.md)に関するページを参照してください。 |
 | ディレクトリ拡張属性の同期 |ディレクトリ拡張機能の属性の同期を有効にすると、指定した属性が Azure AD に同期されます。 詳細については、[ディレクトリ拡張機能](how-to-connect-sync-feature-directory-extensions.md)に関するページを参照してください。 |
 
@@ -314,7 +314,7 @@ AD FS サービスには、ユーザーを認証し Active Directory のユー�
 
 ## <a name="configuring-federation-with-pingfederate"></a>PingFederate とのフェデレーションの構成
 Azure AD Connect との PingFederate の構成は簡単であり、必要なのは数回のクリックのみです。 ただし、以下の前提条件を満たす必要があります。
-- PingFederate 8.4 以降。  詳細については、「[PingFederate Integration with Azure Active Directory and Office 365 (Azure Active Directory および Office 365 と PingFederate の統合)](https://docs.pingidentity.com/bundle/O365IG20_sm_integrationGuide/page/O365IG_c_integrationGuide.html)」を参照してください。
+- PingFederate 8.4 以降。  詳細については、[Azure Active Directory および Microsoft 365 と PingFederate の統合](https://docs.pingidentity.com/bundle/O365IG20_sm_integrationGuide/page/O365IG_c_integrationGuide.html)に関するページをご覧ください。
 - 使用する予定のフェデレーション サービス名の TLS/SSL 証明書 (sts.contoso.com など)
 
 ### <a name="verify-the-domain"></a>ドメインの検証

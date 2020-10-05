@@ -4,12 +4,12 @@ description: この記事では、Azure 仮想マシン バックアップ ソ�
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: 12b5b4cd35d70d8ebbd6b269e82c46984652bd07
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: fa5ab60481b431971abb1e3fcb5c85492eb5b22a
+ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961994"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89506697"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Azure 仮想マシンの選択的なディスク バックアップと復元
 
@@ -268,6 +268,10 @@ Azure portal を介した VM の選択的なディスク バックアップ エ�
 Azure portal を使用してバックアップを有効にした場合は、**OS ディスクのみバックアップ** オプションを選択できます。 そのため、OS ディスクとともに Azure VM のバックアップを構成し、それに接続されているすべてのデータ ディスクを除外することができます。
 
 ![OS ディスクのみのバックアップを構成する](./media/selective-disk-backup-restore/configure-backup-operating-system-disk.png)
+
+## <a name="using-azure-rest-api"></a>Azure REST API の使用
+
+いくつかのディスクを選択して Azure VM のバックアップを構成するか、または既存の VM の保護を変更して、[こちら](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup)で説明されているようにいくつかのディスクを含めたり除外したりすることができます。
 
 ## <a name="selective-disk-restore"></a>選択的なディスクの復元
 

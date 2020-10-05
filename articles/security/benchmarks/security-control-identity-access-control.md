@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 473fe838f53df0a874a2c793792533e01b7c069a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 2df534842c6f6a922579e1128757ee4b7f46e006
+ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81408526"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90058599"
 ---
 # <a name="security-control-identity-and-access-control"></a>セキュリティ コントロールID およびアクセス制御
 
@@ -112,9 +112,9 @@ MFA が構成されている PAW (特権アクセス ワークステーション
 |--|--|--|
 | 3.9 | 16.1、16.2、16.4、16.5、16.6 | Customer |
 
-Azure Active Directory (AAD) を中央認証と承認システムとして使用します。 AAD でデータを保護するには、保存データと転送中のデータに強力な暗号化を使用します。 また、AAD では、ユーザーの資格情報がソルト化およびハッシュされ、安全に格納されます。
+Azure Active Directory を中央認証および承認システムとして使用します。 Azure AD でデータを保護するには、保存データと転送中のデータに強力な暗号化を使用します。 また、Azure AD では、ユーザーの資格情報がソルト化およびハッシュされ、安全に格納されます。
 
-- [AAD インスタンスを作成して構成する方法](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+- [Azure AD インスタンスを作成して構成する方法](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
 ## <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: ユーザー アクセスを定期的に確認して調整する
 

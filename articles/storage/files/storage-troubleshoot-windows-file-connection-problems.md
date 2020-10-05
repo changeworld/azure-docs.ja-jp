@@ -1,22 +1,25 @@
 ---
-title: Windows での Azure Files に関する問題のトラブルシューティング | Microsoft Docs
-description: Windows での Azure Files に関する問題のトラブルシューティング。 Windows クライアントから接続する場合の Azure Files に関連する一般的な問題と、考えられる解決方法を参照してください。
+title: Windows での Azure Files に関する問題のトラブルシューティング
+description: Windows での Azure Files に関する問題のトラブルシューティング。 Windows クライアントから接続する場合の Azure Files に関連する一般的な問題と、考えられる解決方法を参照してください。 SMB 共有のみ
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 08/31/2019
+ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 3bd059e59bebe9ae1ecc8f2f00dd63f873e08944
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a899927166d7e1294ad89d48e5c646e6abb5ed76
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269371"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707613"
 ---
-# <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows での Azure Files に関する問題のトラブルシューティング
+# <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Windows での Azure Files に関する問題のトラブルシューティング (SMB)
 
 この記事では、Windows クライアントから接続するときに生じる、Microsoft Azure Files に関係する一般的な問題を示します。 これらの問題の考えられる原因と解決策についても説明します。 この記事のトラブルシューティングの手順のほかに、[AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)  を使って Windows クライアント環境が前提条件を適切に満たしているかどうかを確認することもできます。 AzFileDiagnostics は、この記事で説明しているほとんどの症状を自動的に検出し、最適なパフォーマンスが得られる環境のセットアップを支援します。 この情報は、[Azure ファイル共有のトラブルシューティング ツール](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)で入手することもできます。記載されている手順に従って、Azure ファイル共有の接続、マッピング、マウントに関する問題を解決することができます。
+
+> [!IMPORTANT]
+> この記事の内容は SMB 共有にのみ適用されます。 NFS 共有の詳細については、「[Azure NFS ファイル共有に関するトラブルシューティング](storage-troubleshooting-files-nfs.md)」を参照してください。
 
 <a id="error5"></a>
 ## <a name="error-5-when-you-mount-an-azure-file-share"></a>Azure ファイル共有をマウントするときに、エラー 5 が発生する
@@ -50,7 +53,12 @@ Windows 8 以降および Windows Server 2012 以降の OS であれば、暗号
 
 ### <a name="solution-for-cause-3"></a>原因 3 の解決策
 
-共有レベルのアクセス許可を更新する方法については、「[ID にアクセス許可を割り当てる](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable#2-assign-access-permissions-to-an-identity)」を参照してください。
+アクセス許可が正しく構成されていることを確認します。
+
+- **Active Directory (AD)** : 「[ID に共有レベルのアクセス許可を割り当てる](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions)」を参照してください。
+
+    共有レベルのアクセス許可の割り当ては、Azure AD Connect を使用して Active Directory (AD) から Azure Active Directory (Azure AD) に同期されたグループおよびユーザーに対してサポートされています。  共有レベルのアクセス許可が割り当てられているグループとユーザーが、サポートされていない "クラウド専用" グループではないことを確認します。
+- **Azure Active Directory Domain Services (Azure AD DS)** : 「[ID にアクセス許可を割り当てる](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable?tabs=azure-portal#assign-access-permissions-to-an-identity)」を参照してください。
 
 <a id="error53-67-87"></a>
 ## <a name="error-53-error-67-or-error-87-when-you-mount-or-unmount-an-azure-file-share"></a>Azure ファイル共有をマウントまたはマウント解除するときに、エラー 53、エラー 67、またはエラー 87 が発生する
@@ -317,18 +325,6 @@ net use コマンドは、スラッシュ (/) をコマンド ライン オプ�
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
 
-## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-azure-ad-ds-authentication-enabled"></a>エラー "システム エラー 1359 が発生しました。 内部エラー" が、Azure Active Directory Domain Service (Azure AD DS) 認証が有効なときにファイル共有への SMB アクセスで発生した
-
-### <a name="cause"></a>原因
-
-エラー "システム エラー 1359 が発生しました。 内部エラー" は、数字で始まるドメイン DNS 名を使用する Azure AD DS に対して Azure AD DS 認証を有効にしてファイル共有に接続しようとしたときに発生します。 たとえば、Azure AD DS のドメイン DNS 名が "1domain" の場合、Azure AD の資格情報を使用してファイル共有をマウントしようとすると、このエラーが発生します。 
-
-### <a name="solution"></a>解決策
-
-現時点では、次の規則に適合する新しいドメイン DNS 名を使用して、Azure AD DS を再デプロイすることを検討してください。
-- 名前の先頭を数字にすることはできない。
-- 名前の長さを 3 から 63 文字にする必要がある。
-
 ## <a name="unable-to-mount-azure-files-with-ad-credentials"></a>AD 資格情報を使用して Azure Files をマウントできない 
 
 ### <a name="self-diagnostics-steps"></a>自己診断の手順
@@ -373,6 +369,18 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 ### <a name="error-cannot-bind-positional-parameters-because-no-names-were-given"></a>エラー: "名前が指定されていないため、位置指定パラメーターをバインドできません"
 
 このエラーは、通常、Join-AzStorageAccountforAuth コマンドの構文エラーによってトリガーされます。  コマンドでスペルミスや構文エラーを確認し、最新バージョンの AzFilesHybrid モジュール (https://github.com/Azure-Samples/azure-files-samples/releases) ) がインストールされていることを確認します。  
+
+## <a name="azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption"></a>Azure Files オンプレミス AD DS 認証による AES 256 Kerberos 暗号化のサポート
+
+[AzFilesHybrid module v0.2.2](https://github.com/Azure-Samples/azure-files-samples/releases) を使用した Azure Files オンプレミス AD DS 認証に対する AES 256 Kerberos 暗号化のサポートを導入しました。 v0.2.2 より前のモジュール バージョンで AD DS 認証を有効にしている場合は、最新の AzFilesHybrid モジュール (v0.2.2+) をダウンロードし、以下の PowerShell を実行する必要があります。 ストレージ アカウントで AD DS 認証をまだ有効にしていない場合は、この有効化の[ガイダンス](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-enable#option-one-recommended-use-azfileshybrid-powershell-module)に従って有効にすることができます。 
+
+```PowerShell
+$ResourceGroupName = "<resource-group-name-here>"
+$StorageAccountName = "<storage-account-name-here>"
+
+Update-AzStorageAccountAuthForAES256 -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName
+```
+
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 まだ支援が必要な場合は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。

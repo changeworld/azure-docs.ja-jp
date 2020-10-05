@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/13/2020
+ms.date: 09/09/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 51d7cb32ef2d1d7750a0bb53cfa3ccc111bd1302
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 836e01d3cd8fb25dda1616803d8b6f3e9ff4e06f
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89143735"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645741"
 ---
 # <a name="data-encryption-models"></a>データ暗号化モデル
 
@@ -157,7 +157,7 @@ Azure Key Vault のユーザー管理キーを使用するサーバー側暗号�
 | QnA Maker                        | はい                | はい                | -                  |
 | Speech Services                  | はい                | はい                | -                  |
 | Translator Text                  | はい                | はい                | -                  |
-| Power BI                         | はい                | プレビュー、RSA 2048 ビット | -                  |
+| Power BI                         | はい                | はい、RSA 4096 ビット  | -                  |
 | **Analytics**                    |                    |                    |                    |
 | Azure Stream Analytics           | はい                | 該当なし\*              | -                  |
 | Event Hubs                       | はい                | はい                | -                  |

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.openlocfilehash: ea5a7a0cd89b9aad78ce789517aa8f75767955d8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ae13e062f50e1e8eefeaa886c67c636cf6230c18
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88526400"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973870"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>チュートリアル:Workplace by Facebook を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -89,7 +89,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 5. **[管理者資格情報]** セクション下にある **[承認する]** をクリックします。 Workplace by Facebook の承認ページにリダイレクトされます。 Workplace by Facebook のユーザー名を入力して、 **[続行]** ボタンをクリックします。 **[テスト接続]** をクリックして、Azure AD から Workplace by Facebook に接続できることを確認します。 接続が失敗した場合、お使いの Workplace by Facebook アカウントに Admin アクセス許可があることを確認して、再試行してください。
 
-    ![プロビジョニング](./media/workplacebyfacebook-provisioning-tutorial/provisioning.png)
+    ![スクリーンショットには、[承認] オプションを伴った [管理者資格情報] ダイアログ ボックスが示されています。](./media/workplacebyfacebook-provisioning-tutorial/provisioning.png)
 
     ![承認](./media/workplacebyfacebook-provisioning-tutorial/workplacelogin.png)
 
@@ -125,8 +125,16 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
    |phoneNumbers[type eq "fax"].value|String|
    |externalId|String|
    |preferredLanguage|String|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|String|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|String|
+   |urn:scim:schemas:extension:enterprise:1.0.manager|String|
+   |urn:scim:schemas:extension:enterprise:1.0.department|String|
+   |urn:scim:schemas:extension:enterprise:1.0.division|String|
+   |urn:scim:schemas:extension:enterprise:1.0.organization|String|
+   |urn:scim:schemas:extension:enterprise:1.0.costCenter|String|
+   |urn:scim:schemas:extension:enterprise:1.0.employeeNumber|String|
+   |urn:scim:schemas:extension:facebook:auth_method:1.0:auth_method|String|
+   |urn:scim:schemas:extension:facebook:frontline:1.0.is_frontline|Boolean|
+   |urn:scim:schemas:extension:facebook:starttermdates:1.0.startDate|Integer|
+
 
 10. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
@@ -153,6 +161,10 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 ## <a name="troubleshooting-tips"></a>トラブルシューティングのヒント
 *  ユーザーが作成に失敗し、コード "1789003" の監査ログイ ベントがあることが確認された場合は、ユーザーが未検証のドメインに由来していることを意味します。
+
+## <a name="change-log"></a>ログの変更
+
+* 2020 年 9 月 10日 - "division"、"organization"、"costCenter"、"employeeNumber" のエンタープライズ属性のサポートを追加しました。 "startDate"、"auth_method"、"frontline" のカスタム属性のサポートを追加しました
 
 ## <a name="additional-resources"></a>その他のリソース
 

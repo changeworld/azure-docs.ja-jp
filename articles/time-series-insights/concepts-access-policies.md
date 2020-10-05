@@ -9,14 +9,14 @@ manager: dviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 08/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 35a2be5c9f418bc423ae56c456db0062677a33c2
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 5e8cb5e062db5c66fc093bf67c97caba15f407a3
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88856124"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89489121"
 ---
 # <a name="grant-data-access-to-an-environment"></a>環境へのデータ アクセスの許可
 
@@ -124,4 +124,4 @@ ms.locfileid: "88856124"
 
 * Azure Active Directory アプリの登録手順については、[認証と承認](time-series-insights-authentication-and-authorization.md)に関する記事を参照してください。
 
-* [Azure Time Series Insights TSI Explorer で自分の環境](./time-series-insights-update-explorer.md)を表示します。
+* [Azure Time Series Insights Explorer で自分の環境](./time-series-insights-update-explorer.md)を表示します。

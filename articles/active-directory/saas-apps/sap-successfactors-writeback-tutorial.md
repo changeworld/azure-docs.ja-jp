@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: 4b048053a553176f73b5bd199bcb6e28bc74cc6c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b185f29cea61b9c366714a1af72648aeee35b61c
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88533998"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017933"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>チュートリアル:Azure AD から SAP SuccessFactors への属性の書き戻しを構成する
 このチュートリアルの目的は、Azure AD から SAP SuccessFactors Employee Central に属性を書き戻すための手順を説明することです。 
@@ -40,7 +40,7 @@ Azure Active Directory から SAP SuccessFactors Employee Central に特定の�
 
 この SuccessFactors Writeback ユーザー プロビジョニング ソリューションは、次の場合に最適です：
 
-* IT によって管理される信頼できる属性（メール アドレス、電話番号、ユーザー名など）を SuccessFactors Employee Central に書き戻す必要のある、Office 365 を使用している組織。
+* IT によって管理される信頼できる属性 (メール アドレス、電話番号、ユーザー名など) を SuccessFactors Employee Central に書き戻す必要のある、Microsoft 365 を使用している組織。
 
 ## <a name="configuring-successfactors-for-the-integration"></a>統合のための SuccessFactors の構成
 
@@ -181,7 +181,7 @@ SuccessFactors Writeback プロビジョニング アプリでは、Employee Cen
 
 1. [Authorization]\(承認\) タブでは、コレクションに対して構成されている認証が継承されます。 
 1. [Send]\(送信\) をクリックして、API 呼び出しを呼び出します。 
-1. 応答本文で、JSON の結果セットを表示し、`externalCode = B` と `externalCode = C` に対応する *id* を探します。 
+1. 応答本文で、JSON の結果セットを表示し、`externalCode = B` と `externalCode = C` に対応する *ID* を探します。 
 
    > [!div class="mx-imgBorder"]
    > ![Postman-Phone](./media/sap-successfactors-inbound-provisioning/postman-phone-type-response.png)

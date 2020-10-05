@@ -3,12 +3,12 @@ title: Azure App Service リソースの移動
 description: Azure Resource Manager を使用して、App Service リソースを新しいリソース グループまたはサブスクリプションに移動します。
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 45f04cad27e175b471f4d6e07426787ca678e369
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 27555a4616befca41c7e970e947afa1cd1ff7248
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042060"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531374"
 ---
 # <a name="move-guidance-for-app-service-resources"></a>App Service リソースの移動に関するガイダンス
 
@@ -42,7 +42,7 @@ Web アプリの移動に推奨される手順のオプションを選択しま�
 
 リソースを移動する前に推奨されるアクションをご確認ください。 これには、Web アプリの元のリソース グループに関する情報が含まれています。
 
-![Recommendations](./media/app-service-move-limitations/recommendations.png)
+![スクリーン キャプチャには、Microsoft ドット Web リソースを移動するための推奨される手順が示されています。](./media/app-service-move-limitations/recommendations.png)
 
 ## <a name="move-support"></a>移動のサポート
 

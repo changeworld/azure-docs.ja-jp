@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efd98cab50c3239d3202e6feabe18f45a4240293
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: cccabaf069a3027e615892e36e218f865a6c983a
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641179"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706668"
 ---
 # <a name="compare-remote-access-solutions"></a>リモート アクセス ソリューションを比較します
 
@@ -59,7 +59,7 @@ Azure Active Directory アプリケーション プロキシは、Microsoft が�
    - 簡単に有効にできる条件付きアクセスや Multi-Factor Authentication などの機能
 - 非武装地帯 (DMZ) にコンポーネントが存在しない
 - 受信接続は不要
-- ユーザーがすべてのアプリケーション (O365、Azure AD に統合された SaaS アプリ、オンプレミスの Web アプリなど) に移動できる 1 つの [マイ アプリ] ページ。 
+- ユーザーがすべてのアプリケーション (Microsoft 365、Azure AD に統合された SaaS アプリ、オンプレミスの Web アプリなど) に移動できる 1 つの [マイ アプリ] ページ。 
 
 
 ## <a name="next-steps"></a>次のステップ

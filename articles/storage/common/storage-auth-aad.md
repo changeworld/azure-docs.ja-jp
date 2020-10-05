@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: a098d4bab4ea8cb083658b205dcb73da619fdbde
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 2fd0269744c7ee49c72806e3cb0e1227035de4f0
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035707"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019174"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Azure Active Directory を使用して BLOB とキューへのアクセスを承認する
 
@@ -79,7 +79,7 @@ BLOB またはキューのデータにアクセスしようとすると、Azure 
 
 Azure AD アカウントを使用して Azure Portal から BLOB またはキュー データにアクセスするには、その BLOB やキュー データにアクセスするためのアクセス許可が必要です。また、Azure Portal でストレージ アカウント リソース内を移動するためのアクセス許可も必要です。 Azure Storage によって提供される組み込みロールでは BLOB やキュー リソースへのアクセス権が付与されますが、ストレージ アカウント リソースへのアクセス許可は付与されません。 このため、ポータルへのアクセスには、スコープがストレージ アカウント以上のレベルに設定された、[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロールなどの Azure Resource Manager ロールの割り当ても必要です。 **リーダー**役割は最も制限の厳しいアクセス許可を付与しますが、ストレージ アカウントの管理リソースへのアクセス権を付与する別の Azure Resource Manager ロールも受け入れることができます。 Azure AD アカウントを使用した Azure portal 内のデータ アクセスのためにユーザーにアクセス許可を割り当てる方法の詳細については、「[Azure portal で RBAC を使用して Azure BLOB とキューのデータへのアクセスを付与する](storage-auth-aad-rbac-portal.md)」を参照してください。
 
-Azure Portal では、コンテナーまたはキューに移動すると、どの承認スキームが使用されているかが示されます。 ポータル内でのデータ アクセスの詳細については、「[Azure portal を使用した BLOB またはキュー データへのアクセス](storage-access-blobs-queues-portal.md)」を参照してください。
+Azure Portal では、コンテナーまたはキューに移動すると、どの承認スキームが使用されているかが示されます。 ポータルでのデータ アクセスの詳細については、「[Azure portal で BLOB データへのアクセスの承認方法を選択する](../blobs/authorize-blob-access-portal.md)」と「[Azure portal でキュー データへのアクセスの承認方法を選択する](../queues/authorize-queue-access-portal.md)」を参照してください。
 
 ### <a name="data-access-from-powershell-or-azure-cli"></a>PowerShell または Azure CLI からのデータ アクセス
 

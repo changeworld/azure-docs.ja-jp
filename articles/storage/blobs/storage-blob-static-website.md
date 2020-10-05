@@ -6,25 +6,28 @@ ms.service: storage
 ms.topic: how-to
 ms.author: normesta
 ms.reviewer: dineshm
-ms.date: 05/14/2020
+ms.date: 09/04/2020
 ms.subservice: blobs
 ms.custom: devx-track-javascript
-ms.openlocfilehash: b8864201fc5bf86a5451c790a51141cee46bffeb
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 72ffad3724ba9c981984ef8410fc9dd9556d8b8e
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432505"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89486860"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure Storage での静的 Web サイト ホスティング
 
-*$web* という名前のストレージ コンテナーから直接に、静的コンテンツ (HTML、CSS、JavaScript、画像ファイル) を提供できます。 Azure Storage でコンテンツをホスティングすることで、[Azure Functions](/azure/azure-functions/functions-overview) やその他のサービスとしてのプラットフォーム (PaaS) サービスなど、サーバーレス アーキテクチャを使用できます。
+*$web* という名前のストレージ コンテナーから直接に、静的コンテンツ (HTML、CSS、JavaScript、画像ファイル) を提供できます。 Azure Storage でコンテンツをホスティングすることで、[Azure Functions](/azure/azure-functions/functions-overview) やその他のサービスとしてのプラットフォーム (PaaS) サービスなど、サーバーレス アーキテクチャを使用できます。 Web サーバーでコンテンツをレンダリングする必要がない場合、Azure Storage の静的 Web サイト ホスティングは優れた選択肢です。
+
+[App Service Static Web Apps](https://azure.microsoft.com/services/app-service/static/) は、Azure Storage の静的 Web サイト ホスティングに代わる優れた選択肢であり、Web サイトでコンテンツのレンダリングが必要ない場合にも適してします。 App Service Static Web Apps では、GitHub ソースからグローバル デプロイまでのフル マネージドの継続的インテグレーションと継続的デリバリー (CI/CD) ワークフローが提供されます。
+
+Web サーバーでコンテンツのレンダリングが必要な場合は、[Azure App Service](https://azure.microsoft.com/services/app-service/) を使用できます。
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 > [!NOTE]
-> サイトでサーバー側コードに依存している場合は、代わりに [Azure App Service](/azure/app-service/overview) を使用します。
-必ず汎用 v2 Standard ストレージ アカウントを作成してください。 静的 Web サイトは、他の種類のストレージ アカウントでは使用できません。
+> 必ず汎用 v2 Standard ストレージ アカウントを作成してください。 静的 Web サイトは、他の種類のストレージ アカウントでは使用できません。
 
 ## <a name="setting-up-a-static-website"></a>静的 Web サイトの設定
 
@@ -46,7 +49,7 @@ ms.locfileid: "87432505"
 > * [Azure CLI](storage-blob-static-website-how-to.md?tabs=azure-cli)
 > * [Azure PowerShell モジュール](storage-blob-static-website-how-to.md?tabs=azure-powershell)
 > * [AzCopy](../common/storage-use-azcopy-v10.md)
-> * [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
+> * [Azure 記憶域エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)
 > * [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
 > * [Visual Studio Code 拡張機能](/azure/developer/javascript/tutorial-vscode-static-website-node-01)
 
@@ -103,6 +106,11 @@ ms.locfileid: "87432505"
 静的 Web サイト機能の一部としてヘッダーを構成する方法はありません。 ただし、Azure CDN を使用してヘッダーを追加したり、ヘッダー値を追加 (または上書き) したりすることができます。 「[Azure CDN の Standard ルール エンジン リファレンス](https://docs.microsoft.com/azure/cdn/cdn-standard-rules-engine-reference)」を参照してください。
 
 ヘッダーを使用してキャッシュを制御する場合は、「[キャッシュ規則で Azure CDN キャッシュの動作を制御する](https://docs.microsoft.com/azure/cdn/cdn-caching-rules)」を参照してください。
+
+## <a name="multi-region-website-hosting"></a>複数リージョンでの Web サイトのホスティング
+
+複数の地域で Web サイトをホストすることを計画している場合は、リージョンのキャッシュに [Content Delivery Network](https://docs.microsoft.com/azure/cdn/) を使用することをお勧めします。 各リージョンで異なるコンテンツを提供する場合は、[Azure Front Door](https://docs.microsoft.com/azure/frontdoor/) を使用します。 これにより、フェールオーバー機能も提供されます。 カスタム ドメインを使用する予定の場合、[Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/) はお勧めしません。 Azure Storage でのカスタム ドメイン名の確認方法が原因で問題が発生する可能性があります。
+
 
 ## <a name="pricing"></a>価格
 

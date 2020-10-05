@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ec1aa165b8fa5d3a249cb525887acf2990136bd3
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 21498f9117ac25356c9381d632644bbaa4d5a74b
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049870"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706688"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C の ISV パートナー
 
@@ -37,6 +37,7 @@ ISV パートナー ネットワークは、Microsoft のソリューション�
 | ![ロゴ](./media/partner-gallery/jumio-logo.png) | [Jumio](./partner-jumio.md) は ID 検証サービスです。リアルタイムの自動 ID 検証が可能になり、顧客データが保護されます。 |
 | ![ロゴ](./media/partner-gallery/lexisnexis-logo.png) | [LexisNexis](./partner-lexisnexis.md) は、ユーザー ID を検証し、ユーザーのデバイスに基づいて包括的なリスク評価を提供する、プロファイルと ID 検証のプロバイダーです。 |
 | ![ロゴ](./media/partner-gallery/onfido-logo.png) | [Onfido](./partner-onfido.md) は、ドキュメント ID および顔の生体認証検証ソリューションであり、企業は *Know Your Customer* (顧客確認) と ID 要件をリアルタイムで満たすことができます。  |
+| ![ロゴ](./media/partner-gallery/saviynt-logo.png) | [Saviynt](./partner-saviynt.md) クラウドネイティブ プラットフォームは、インテリジェント分析を使用し、アプリケーション間の統合機能を提供することで、IT 最新化の効率を高め、セキュリティ、ガバナンス、コンプライアンスを向上させます。 ビジネスの最新化により、企業がアクセス要求を確認し、アクセス レビューとレポート分析を行い、認定キャンペーンを効率化する方法が変革されます。  |
 | ![ロゴ](./media/partner-gallery/trusona-logo.png) | [Trusona](./partner-trusona.md) 統合を使用すると、安全にサインインし、パスワードレス認証、多要素認証、およびデジタル ライセンス スキャンを有効にすることができます。|
 | ![ロゴ](./media/partner-gallery/twilio-logo.png) | [Twilio Verify App](./partner-twilio.md) は、SMS ワンタイム パスワード (OTP)、時間ベースのワンタイム パスワード (TOTP)、およびプッシュ通知を使用して多要素認証 (MFA) を有効にし、PSD2 (Payment Services Directive 2) の SCA 要件に準拠するための複数のソリューションを提供しています。|
 | ![ロゴ](./media/partner-gallery/typingdna-logo.png) | [TypingDNA](./partner-typingdna.md) は、ユーザー入力パターンに基づく ID 検証および証明プロバイダーであり、多要素認証を強制する ID 検証ソリューションを提供し、PSD2 (Payment Services Directive 2) の SCA 要件に準拠するのに役立ちます。 |

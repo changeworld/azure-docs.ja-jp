@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 65d7845763b60a66f396d9081f3c9c6e1d04c1bc
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 04f2b0e989edcb182c6c52ff0479902035137810
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447248"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561825"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>SMB アクセスの Azure Files ID ベース認証オプションの概要
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -78,6 +78,7 @@ ID ベースの認証と Azure Files での Windows ACL のサポートは、次
 - Azure AD DS とオンプレミス AD DS の認証では、コンピューター アカウントに対する認証はサポートされていません。 代わりに、サービス ログオン アカウントを使用することを検討してください。
 - Azure AD 参加済みデバイスまたは Azure AD 登録済みデバイスに対しては、Azure AD DS 認証もオンプレミス AD DS 認証もサポートされていません。
 - Azure ファイル共有では、[Azure Active Directory Domain Services (Azure AD DS)](#azure-ad-ds) または[オンプレミスの Active Directory Domain Services (AD DS)](#ad-ds) のいずれか 1 つのドメイン サービスに対する ID ベースの認証のみがサポートされます。
+- Network File System (NFS) はプレビュー段階なので、どちらの ID ベースの認証方法もサポートしていません。
 
 ## <a name="advantages-of-identity-based-authentication"></a>ID ベースの認証の利点
 Azure Files に対する ID ベースの認証には、共有キー認証と比較して、以下のようなさまざまな利点があります。

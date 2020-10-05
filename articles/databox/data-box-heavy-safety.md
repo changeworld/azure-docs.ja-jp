@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: alkohli
-ms.openlocfilehash: b7562ab6c7ec9c6234ed3fbb867361307b80a638
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2c7f729f4accf7c9ca212c6e4b4b5d565c3114c
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67673065"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563779"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box-heavy"></a>Azure Data Box Heavy を安全にインストールして操作する
 
@@ -156,7 +156,7 @@ Microsoft から明示的な承認を受けずにデバイスを変更すると�
 - このデバイスは有害な干渉の原因にならない。
 - このデバイスは、デバイスの望ましくない動作を引き起こす可能性のある干渉を含む、受信した任意の干渉を受け入れる必要がある。
 
-![Canada](./media/data-box-heavy-safety/canada.png)
+![カナダについて必要な通知を示すスクリーンショット。](./media/data-box-heavy-safety/canada.png)
 
 CAN ICES-3(A)/NMB-3(A) Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, USA.
 米国:(800) 426-9400 カナダ:(800) 933-4750

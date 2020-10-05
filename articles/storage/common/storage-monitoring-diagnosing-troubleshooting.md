@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 93015427dddfe2b311783c20587792e34c098ce8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 79e108303575d5a9969e04f01bdeb126bf078762
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011040"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031485"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage の監視、診断、およびトラブルシューティング
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -134,7 +134,7 @@ Azure Portal では、ストレージ アカウントの可用性、要求の総
 >
 >
 
-BLOB などのさまざまなストレージ オブジェクトのサイズを推定する方法については、ブログ記事「 [Understanding Azure Storage Billing – Bandwidth, Transactions, and Capacity (Azure Storage の課金について - 帯域幅、トランザクション、および容量)](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)」を参照してください。
+BLOB などのさまざまなストレージ オブジェクトのサイズを推定する方法については、ブログ記事「 [Understanding Azure Storage Billing – Bandwidth, Transactions, and Capacity (Azure Storage の課金について - 帯域幅、トランザクション、および容量)](https://docs.microsoft.com/archive/blogs/patrick_butler_monterde/azure-storage-understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity)」を参照してください。
 
 ### <a name="monitoring-availability"></a><a name="monitoring-availability"></a>可用性監視
 時間単位メトリックまたは分単位メトリックのテーブルの **Availability** 列の値を監視して、ストレージ アカウントの Storage サービスの可用性を監視する必要があります。これらのテーブルは、 **$MetricsHourPrimaryTransactionsBlob**、 **$MetricsHourPrimaryTransactionsTable**、 **$MetricsHourPrimaryTransactionsQueue**、 **$MetricsMinutePrimaryTransactionsBlob**、 **$MetricsMinutePrimaryTransactionsTable**、 **$MetricsMinutePrimaryTransactionsQueue**、 **$MetricsCapacityBlob** です。 **Availability** 列には、その行が表しているサービスまたは API 操作の可用性を示すパーセント値が入っています (**RowKey** から、行に含まれているのがサービス全体のメトリックなのか、それとも特定の API 操作のメトリックなのかがわかります)。
@@ -220,7 +220,7 @@ Storage Client Library for .NET では、アプリケーションで実行され
 クライアントとサーバーの間のトラフィックをキャプチャして、クライアントとサーバーの間で交換されたデータおよび基礎ネットワークの状態に関する詳細な情報を取得できます。 便利なネットワーク ログ ツールには次のようなものがあります。
 
 * [Fiddler](https://www.telerik.com/fiddler) は、無料の Web デバッグ プロキシです。HTTP および HTTPS の要求および応答メッセージのヘッダーおよびペイロード データを調べることができます。 詳細については、「[付録 1: Fiddler を使用した HTTP および HTTPS トラフィックのキャプチャ](#appendix-1)」を参照してください。
-* [Microsoft Network Monitor (Netmon)](https://www.microsoft.com/download/details.aspx?id=4865) および [Wireshark](https://www.wireshark.org/) は、無料のネットワーク プロトコル アナライザーです。さまざまな種類のネットワーク プロトコルの詳細なパケット情報を表示できます。 Wireshark の詳細については、「[付録 2: Wireshark を使用したネットワーク トラフィックのキャプチャ](#appendix-2)」を参照してください。
+* [Microsoft Network Monitor (Netmon)](https://cnet-downloads.com/network-monitor) および [Wireshark](https://www.wireshark.org/) は、無料のネットワーク プロトコル アナライザーです。さまざまな種類のネットワーク プロトコルの詳細なパケット情報を表示できます。 Wireshark の詳細については、「[付録 2: Wireshark を使用したネットワーク トラフィックのキャプチャ](#appendix-2)」を参照してください。
 * Microsoft Message Analyzer は、Netmon の後継となる Microsoft のツールです。ネットワーク パケット データをキャプチャできるほか、他のツールでキャプチャされたログ データを表示および分析できます。 詳細については、「[付録 3: Microsoft Message Analyzer を使用したネットワーク トラフィックのキャプチャ](#appendix-3)」を参照してください。
 * クライアント マシンが Azure Storage サービスにネットワーク経由で接続できることを確認するための基本的な接続テストを実行する目的で、クライアント側で標準的な **ping** ツールを使用することはできません。 ただし、[**tcping** ツール](https://www.elifulkerson.com/projects/tcping.php)を使って接続を確認することはできます。
 
@@ -346,7 +346,7 @@ catch (StorageException storageException)
 
 ![AverageE2ELatency が AverageServerLatency よりもかなり高くなっている例を示す Azure portal からの図。][4]
 
-Storage サービスが正常な要求に関して算出するのはメトリック **AverageE2ELatency** だけで、**AverageServerLatency** の場合とは異なり、このメトリックにはククライアントがデータを送信し、Storage サービスから確認応答を受け取るまでの時間が含まれます。 そのため、**AverageE2ELatency** と **AverageServerLatency** の差は、クライアント アプリケーションの応答速度が遅いこと、あるいはネットワークの状態に起因している可能性があります。
+Storage サービスは、正常な要求に対するメトリック **AverageE2ELatency** のみを計算します。**AverageServerLatency** と違い、クライアントでデータを送信し、Storage サービスから確認応答を受け取るまでにかかる時間が含まれます。 そのため、**AverageE2ELatency** と **AverageServerLatency** の差は、クライアント アプリケーションの応答速度が遅いこと、あるいはネットワークの状態に起因している可能性があります。
 
 > [!NOTE]
 > Storage Logging ログ データの個々のストレージ操作に関して、**E2ELatency** と **ServerLatency** を表示することもできます。
@@ -409,7 +409,7 @@ BLOB ダウンロード要求の **AverageServerLatency** が高い場合、Stor
 
 * アプリケーションにより、メッセージがキューに正常に追加されていることを確認します。 正常に完了する前にアプリケーションが **AddMessage** メソッドを再試行していないことを確かめてください。 ストレージ クライアント ライブラリ ログには、ストレージ操作の再試行の反復が表示されます。
 * キューにメッセージを追加した worker ロールと、処理に遅延があるかどうかを表示するキューからのメッセージを読み取る worker ロール間でクロック スキューがないことを検証します。
-* キューからのメッセージを読み取る worker ロールに障害がないことを確かめます。 キュー クライアントが **GetMessage** メソッドを呼び出すものの、確認応答を伴って応答しない場合、そのメッセージは、**invisibilityTimeout** 期間の有効期限が切れるまではキュー上で参照できなくなります。 有効期限が切れた時点で、メッセージは再び処理可能になります。
+* キューからのメッセージを読み取る worker ロールに障害がないことを確かめます。 キュー クライアントが **GetMessage** メソッドを呼び出した後、受信確認で応答できないと、メッセージは、**invisibilityTimeout** 期間の有効期限が切れるまで、キューで非表示のままになります。 有効期限が切れた時点で、メッセージは再び処理可能になります。
 * キューの長さが時間の経過とともに大きくなっているかどうかを確認してください。 他のワーカーがキューに配置したすべてのメッセージを処理するのに十分な数のワーカーを使用できない場合に、大きくなる可能性があります。 また、要求の削除が失敗したかどうかを示すメトリック、およびメッセージのデキュー カウントを示すメトリックを調べてください。こうしたメトリックは、メッセージを削除する試行が何度も繰り返して失敗したことを示す場合があります。
 * 通常よりも長期間に渡り、予想された **E2ELatency** 値および **ServerLatency** 値よりも高くなっているキュー操作がないかどうか、Storage Logging ログを調べます。
 
@@ -617,9 +617,9 @@ client.SetServiceProperties(sp);
 
 また、サーバー側のログには、同じエンティティに対する同じクライアントの成功した削除操作を示す、同じ **client-request-id** 値 (813ea74f…) のエントリがもう 1 つ含まれています。 この成功した削除操作は、失敗した削除要求の直前に発生しています。
 
-このシナリオの最も可能性の高い原因としては、クライアントがエンティティに対する削除要求を Table サービスに送信し、要求が成功したのに、(おそらく一時的なネットワーク上の問題で) サーバーからの確認を受信しなかったことが考えらます。 そのため、クライアントが自動的に操作を再試行しますが (同じ **client-request-id**を使用)、エンティティは既に削除されているので、この再試行は失敗します。
+このシナリオの原因として最も可能性が高いのは、クライアントがエンティティの削除要求を Table サービスに送信してこれに成功したが、(おそらく、一時的なネットワークの問題が原因で) サーバーから受信確認を受け取らなかったというものです。 そのため、クライアントが自動的に操作を再試行しますが (同じ **client-request-id**を使用)、エンティティは既に削除されているので、この再試行は失敗します。
 
-このような問題が頻繁に発生する場合は、クライアントが Table サービスからの確認を受信できない理由を調べる必要があります。 問題が断続的に発生する場合は、クライアントで "HTTP (404) 未検出" エラーをトラップしてログに記録する一方でクライアントの実行を継続できるようにする必要があります。
+この問題が頻繁に発生する場合は、クライアントが Table サービスからの受信確認の受け取りに失敗している原因を調べてください。 問題が断続的に発生する場合は、クライアントで "HTTP (404) 未検出" エラーをトラップしてログに記録する一方でクライアントの実行を継続できるようにする必要があります。
 
 ### <a name="the-client-is-receiving-http-409-conflict-messages"></a><a name="the-client-is-receiving-409-messages"></a>クライアントが HTTP 409 (競合) のメッセージを受け取る
 以下の表に、**DeleteIfExists** と、その直後の同じ BLOB コンテナー名を使用する **CreateIfNotExists** の 2 つのクライアント操作に関する、サーバー側のログから抜粋した内容を示します。 どちらのクライアント操作でも、2 つの要求がサーバーに送信されます (1 つ目がコンテナーの存在をチェックする **GetContainerProperties** 要求で、その次が **DeleteContainer** 要求または **CreateContainer** 要求です)。
@@ -777,7 +777,7 @@ Microsoft Message Analyzer の組み込みの **Web Proxy** トレースは、Fi
 #### <a name="diagnosing-network-issues-using-microsoft-message-analyzer"></a>Microsoft Message Analyzer を使用したネットワーク問題の診断
 Microsoft Message Analyzer の **Web Proxy** トレースを使用してクライアント アプリケーションとストレージ サービスの間の HTTP/HTTPS トラフィックの詳細をキャプチャすることに加え、組み込みの **Local Link Layer** トレースを使用してネットワークのパケット情報をキャプチャすることもできます。 これにより、Wireshark を使用してキャプチャできるデータと同様のデータをキャプチャし、ドロップされたパケットなどのネットワーク問題を診断することができます。
 
-以下のスクリーンショットは、 **[DiagnosisTypes]** 列に**情報**メッセージが表示された **Local Link Layer** トレースの例を示しています。 **[DiagnosisTypes]** 列のアイコンをクリックすると、メッセージの詳細が表示されます。 この例では、サーバーが、クライアントからの確認を受信しなかったためにメッセージ #305 を再転送しました。
+以下のスクリーンショットは、 **[DiagnosisTypes]** 列に**情報**メッセージが表示された **Local Link Layer** トレースの例を示しています。 **[DiagnosisTypes]** 列のアイコンをクリックすると、メッセージの詳細が表示されます。 この例では、サーバーは、クライアントからの受信確認を受け取らなかったため、メッセージ #305 を再送しました。
 
 ![[DiagnosisTypes] 列に情報メッセージが表示された Local Link Layer トレースの例を示すスクリーンショット][9]
 
