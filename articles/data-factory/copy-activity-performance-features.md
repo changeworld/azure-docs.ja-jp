@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/05/2020
-ms.openlocfilehash: 45cecccd88b0b84b478bc6fc7346cb9ef9c2f454
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: d93ff81bacbb537cc5891e0b869f164e0d6824c6
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846345"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440543"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>コピー アクティビティ パフォーマンス最適化機能
 
@@ -126,7 +126,7 @@ ms.locfileid: "87846345"
 
 ソース データ ストアからシンク データ ストアにデータをコピーする場合、中間のステージング ストアとして Blob Storage を使用できます。 ステージングは、特に次のような場合に役立ちます。
 
-- **PolyBase を使用して、さまざまなデータ ストアから Azure Synapse Analytics (旧称 SQL Data Warehouse) にデータを取り込む。** Azure Synapse Analytics では、大量のデータを Azure Synapse Analytics に読み込むための高スループットのメカニズムとして、PolyBase が使用されます。 ソース データが Blob Storage または Azure Data Lake Store にあることと追加の条件を満たすことが必要です。 Blob Storage または Azure Data Lake Store 以外のデータ ストアからデータを読み込む際は、中間ステージング Blob Storage 経由のデータ コピーを有効にすることができます。 その場合、Azure Data Factory は、PolyBase の要件を満たすために必要なデータ変換を実行します。 その後、PolyBase を使用して、データが Azure Synapse Analytics に効率的に読み込まれます。 詳細については、「[PolyBase を使用して Azure SQL Data Warehouse にデータを読み込む](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)」を参照してください。
+- **PolyBase を使用して、さまざまなデータ ストアから Azure Synapse Analytics (旧称 SQL Data Warehouse) にデータを取り込む。** Azure Synapse Analytics では、大量のデータを Azure Synapse Analytics に読み込むための高スループットのメカニズムとして、PolyBase が使用されます。 ソース データが Blob Storage または Azure Data Lake Store にあることと追加の条件を満たすことが必要です。 Blob Storage または Azure Data Lake Store 以外のデータ ストアからデータを読み込む際は、中間ステージング Blob Storage 経由のデータ コピーを有効にすることができます。 その場合、Azure Data Factory は、PolyBase の要件を満たすために必要なデータ変換を実行します。 その後、PolyBase を使用して、データが Azure Synapse Analytics に効率的に読み込まれます。 詳細については、[PolyBase を使用した Azure Synapse Analytics へのデータの読み込み](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics)に関する記事を参照してください。
 - **ネットワーク接続が遅い場合、ハイブリッド データ移動 (オンプレミス データ ストアからクラウド データ ストアへのコピー) の実行に少し時間がかかる場合がある。** パフォーマンスを向上させるため、ステージング コピーを使用してオンプレミスのデータを圧縮することで、クラウド内のステージング データ ストアにデータを移動する時間を短縮できます。 その後、データは、ターゲット データ ストアに読み込む前に、ステージング ストアで圧縮を解除できます。
 - **企業の IT ポリシーが理由で、ファイアウォールでポート 80 とポート 443 以外のポートを開きたくない。** たとえば、オンプレミスのデータ ストアから Azure SQL Database シンクまたは Azure Synapse Analytics シンクにデータをコピーする場合、Windows ファイアウォールと会社のファイアウォールの両方で、ポート 1433 の送信 TCP 通信を有効にする必要があります。 このシナリオでは、ステージング コピーは、セルフホステッド統合ランタイムを利用して、まずポート 443 で HTTP または HTTPS 経由で Blob Storage ステージング インスタンスにデータをコピーします。 次に、Blob Storage ステージングから SQL Database または Azure Synapse Analytics にデータを読み込みます。 このフローでは、ポート 1433 を有効にする必要はありません。
 

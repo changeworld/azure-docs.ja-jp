@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fc18ff248ce7f522539a92ef1b2226a29689be8
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: f80808f917036dfba122a97bbd255d466f40e476
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89275982"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018494"
 ---
 # <a name="azure-ad-connect-version-release-history-archive"></a>Azure AD Connect:バージョンのリリース履歴アーカイブ
 
@@ -1181,7 +1181,7 @@ AD FS の管理
 **新機能:**
 
 * 属性ベースのフィルターでのパスワード同期がサポートされるようになりました。 詳細については、[フィルターによるパスワード同期](how-to-connect-sync-configure-filtering.md)に関するページを参照してください。
-* ms-DS-ExternalDirectoryObjectID 属性が Active Directory に書き戻されます。 この機能により、Office 365 アプリケーションのサポートが追加されます。 OAuth2 を使用して、ハイブリッド Exchange デプロイのオンラインとオンプレミスのメールボックスへのアクセスが行われます。
+* ms-DS-ExternalDirectoryObjectID 属性が Active Directory に書き戻されます。 この機能により、Microsoft 365 アプリケーションのサポートが追加されます。 OAuth2 を使用して、ハイブリッド Exchange デプロイのオンラインとオンプレミスのメールボックスへのアクセスが行われます。
 
 **修正されたアップグレードの問題:**
 

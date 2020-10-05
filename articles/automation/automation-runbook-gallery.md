@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: f2bf058ddce81ab9f04e97787a4dc93e44036b1b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: f90d88e49675681a7f73df838ca489a7193955b3
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186114"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087862"
 ---
 # <a name="use-runbooks-and-modules-in-powershell-gallery"></a>PowerShell ギャラリーの Runbook とモジュールを使用する
 
@@ -39,7 +39,7 @@ PowerShell モジュールには Runbook で使用できるコマンドレット
    * [Update-ModulesInAutomationToLatestVersion](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/) - すべてのモジュールの最新バージョンを PowerShell ギャラリーから Automation アカウントにインポートします。
    * [Enable-AzureDiagnostics](https://www.powershellgallery.com/packages/Enable-AzureDiagnostics/) - ジョブの状態とジョブ ストリームを含む Azure Automation ログを受信するように Azure Diagnostics と Log Analytics を構成します。
    * [Copy-ItemFromAzureVM](https://www.powershellgallery.com/packages/Copy-ItemFromAzureVM/) - Windows Azure 仮想マシンからリモート ファイルをコピーします。
-   * [Copy-ItemFromAzureVM](https://www.powershellgallery.com/packages/Copy-ItemToAzureVM/) - ローカル ファイルを Azure 仮想マシンにコピーします。
+   * [Copy-ItemToAzureVM](https://www.powershellgallery.com/packages/Copy-ItemToAzureVM/) - ローカル ファイルを Azure 仮想マシンにコピーします。
 
 ## <a name="import-a-powershell-runbook-from-the-runbook-gallery-with-the-azure-portal"></a>Azure portal で Runbook ギャラリーから PowerShell Runbook をインポートする
 

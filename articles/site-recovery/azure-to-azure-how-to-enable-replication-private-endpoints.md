@@ -1,25 +1,22 @@
 ---
 title: Azure Site Recovery でプライベート エンドポイントのレプリケーションを有効にする
 description: この記事では、Site Recovery を使用して、1 つの Azure リージョンから別のリージョンへの、プライベート エンドポイントを使用する VM のレプリケーションを構成する方法について説明します。
-author: mayurigupta13
-ms.author: mayg
+author: Harsha-CS
+ms.author: harshacs
 ms.service: site-recovery
 ms.topic: article
 ms.date: 07/14/2020
 ms.custom: references_regions
-ms.openlocfilehash: 16cde1cf43c6463cbbe640d9e0a80a9ea88f1f1f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 37784c4a294ccf296818f2afb1a8a345cb9d813e
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094641"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658257"
 ---
 # <a name="replicate-machines-with-private-endpoints"></a>プライベート エンドポイントを使用してマシンをレプリケートする
 
-Azure Site Recovery では、分離された仮想ネットワーク内部からマシンをレプリケートするために [Azure Private Link](../private-link/private-endpoint-overview.md) プライベート エンドポイントを使用できます。 次のリージョンでは、回復コンテナーへのプライベート エンドポイントのアクセスをサポートしています。
-
-- Azure 商用:米国中南部、米国西部 2、米国東部
-- Azure Government:US Gov バージニア、US Gov アリゾナ、US Gov テキサス、US DoD 東部、US DoD 中部
+Azure Site Recovery では、分離された仮想ネットワーク内部からマシンをレプリケートするために [Azure Private Link](../private-link/private-endpoint-overview.md) プライベート エンドポイントを使用できます。 Azure Commercial リージョンおよび Azure Government リージョンでは、回復コンテナーへのプライベート エンドポイントのアクセスがサポートされています。
 
 この記事では、次のステップを実行する手順について説明します。
 
@@ -60,7 +57,7 @@ Recovery Services コンテナーは、マシンのレプリケーション情�
 
 1. Recovery Services コンテナーに移動します。 _[設定]_ にある **[ID]** を選択します。
 
-   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/enable-managed-identity-in-vault.png" alt-text="Azure portal と [Recovery Services] ページが表示されています。":::
+   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/enable-managed-identity-in-vault.png" alt-text="プライベート エンドポイントを使用した Site Recovery の参照アーキテクチャ。":::
 
 1. **[状態]** を _[On]_ に変更し、 **[保存]** を選択します。
 
@@ -76,21 +73,19 @@ Azure 仮想マシンでフェールオーバーとフェールバックの両�
 
 1. Azure portal の検索バーで、「Private Link」を検索して選択します。 このアクションにより、プライベート リンク センターに移動します。
 
-   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/search-private-links.png" alt-text="Azure portal でのプライベート リンク センターの検索が表示されています。":::
+   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/search-private-links.png" alt-text="プライベート エンドポイントを使用した Site Recovery の参照アーキテクチャ。":::
 
 1. 左側のナビゲーション バーで、 **[プライベート エンドポイント]** を選択します。 [プライベート エンドポイント] ページに移動したら、 **[\+追加]** を選択して、コンテナーのプライベート エンドポイントの作成を開始します。
 
-   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints.png" alt-text="プライベート リンク センターでプライベート エンドポイントを作成する方法が表示されています。":::
-
-1. "プライベート エンドポイントの作成" エクスペリエンスでは、プライベート エンドポイント接続を作成するための詳細情報を指定する必要があります。
+   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints.png" alt-text="プライベート エンドポイントを使用した Site Recovery の参照アーキテクチャ。" エクスペリエンスでは、プライベート エンドポイント接続を作成するための詳細情報を指定する必要があります。
 
    1. **[基本]** :プライベート エンドポイントの基本的な詳細を入力します。 リージョンは、ソース マシンと同じである必要があります。
 
-      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints-basic-tab.png" alt-text="Azure portal での [基本] タブ、プロジェクトの詳細、サブスクリプション、およびプライベート エンドポイントの作成に関連するその他のフィールドが表示されています。":::
+      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints-basic-tab.png" alt-text="プライベート エンドポイントを使用した Site Recovery の参照アーキテクチャ。":::
 
    1. **リソース**:このタブでは、接続を作成する対象となるサービスとしてのプラットフォームのリソースについて指定する必要があります。 選択したサブスクリプションの **[リソースの種類]** から、 _[Microsoft.RecoveryServices/vaults]_ を選択します。 次に、 **[リソース]** で Recovery Services コンテナーの名前を選択し、 **[対象サブリソース]** として _[Azure Site Recovery]_ を設定します。
 
-      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints-resource-tab.png" alt-text="Azure portal でプライベート エンドポイントにリンクするための [リソース] タブ、リソースの種類、リソース、および対象サブリソース フィールドが表示されています。":::
+      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints-resource-tab.png" alt-text="プライベート エンドポイントを使用した Site Recovery の参照アーキテクチャ。":::
 
    1. **構成**:[構成] では、プライベート エンドポイントを作成する仮想ネットワークとサブネットを指定します。 この仮想ネットワークは、仮想マシンが存在するネットワークです。 プライベート DNS ゾーンとの統合を有効にするために、 **[はい]** を選択します。 既に作成されている DNS ゾーンを選択するか、新しいゾーンを作成します。 **[はい]** を選択すると、ゾーンがソース仮想ネットワークに自動的にリンクされ、プライベート エンドポイント用に作成された新しい IP と完全修飾ドメイン名の DNS 解決に必要な DNS レコードが追加されます。
 
@@ -100,7 +95,7 @@ Azure 仮想マシンでフェールオーバーとフェールバックの両�
 
       プライベート DNS ゾーンを手動で作成するには、[「プライベート DNS ゾーンを作成し、DNS レコードを手動で追加する](#create-private-dns-zones-and-add-dns-records-manually)」の手順に従います。
 
-      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints-configuration-tab.png" alt-text="Azure portal でプライベート エンドポイントを構成するためのネットワークと DNS の統合フィールドを含む [構成] タブが表示されています。":::
+      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints-configuration-tab.png" alt-text="プライベート エンドポイントを使用した Site Recovery の参照アーキテクチャ。":::
 
    1. **タグ**:必要に応じて、プライベート エンドポイントにタグを追加できます。
 
@@ -118,7 +113,7 @@ Azure 仮想マシンでフェールオーバーとフェールバックの両�
 
 続行する前に、プライベート エンドポイント リソースにアクセスして、接続の状態を確認することができます。
 
-:::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/vault-private-endpoint-connections.png" alt-text="Azure portal でのコンテナーの [プライベート エンドポイント接続] ページと接続の一覧が表示されています。":::
+:::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/vault-private-endpoint-connections.png" alt-text="プライベート エンドポイントを使用した Site Recovery の参照アーキテクチャ。":::
 
 ## <a name="optional-create-private-endpoints-for-the-cache-storage-account"></a><a name="create-private-endpoints-for-the-cache-storage-account"></a>(省略可能) キャッシュ ストレージ アカウントのプライベート エンドポイントを作成する
 
@@ -154,11 +149,11 @@ Azure Storage へのプライベート エンドポイントが使用できま�
 
 1. **[アクセス制御 (IAM)]** に移動したら、[ロールの割り当てを追加する] ボックスで、 **[追加]** を選択します。
 
-   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/storage-role-assignment.png" alt-text="Azure portal でのストレージ アカウントの [アクセス制御 (IAM)] ページと、[ロールの割り当てを追加する] ボタンが表示されています。":::
+   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/storage-role-assignment.png" alt-text="プライベート エンドポイントを使用した Site Recovery の参照アーキテクチャ。":::
 
 1. [ロールの割り当てを追加する] サイド ページで、 **[ロール]** ドロップダウンの一覧からロールを選択します。 コンテナーの**名前**を入力し、 **[保存]** を選択します。
 
-   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/storage-role-assignment-select-role.png" alt-text="Azure portal でのストレージ アカウントの [アクセス制御 (IAM)] ページと、ロールを選択するオプションと、そのロールを付与するプリンシパルが表示されています。":::
+   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/storage-role-assignment-select-role.png" alt-text="プライベート エンドポイントを使用した Site Recovery の参照アーキテクチャ。":::
 
 これらのアクセス許可に加えて、MS の信頼済みサービスのアクセス許可も付与する必要があります。 [ファイアウォールと仮想ネットワーク] にアクセスし、 **[例外]** で [信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します] チェックボックスをオンにします。
 
@@ -176,13 +171,13 @@ Azure Storage へのプライベート エンドポイントが使用できま�
 
    1. **[すべてのサービス]** 検索バーで「プライベート DNS ゾーン」を検索し、ドロップダウンから [プライベート DNS ゾーン] を選択します。
 
-      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/search-private-dns-zone.png" alt-text="Azure portal の [新しいリソース] ページでの「プライベート DNS ゾーン」の検索が表示されています。":::
+      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/search-private-dns-zone.png" alt-text="プライベート エンドポイントを使用した Site Recovery の参照アーキテクチャ。":::
 
    1. [プライベート DNS ゾーン] ページに移動したら、 **[\+追加]** ボタンを選択して新しいゾーンの作成を開始します。
 
    1. [プライベート DNS ゾーンの作成] ページで、必要な詳細情報を入力します。 プライベート DNS ゾーンの名前を `privatelink.siterecovery.windowsazure.com` として入力します。 任意のリソース グループと任意のサブスクリプションを選択して作成できます。
 
-      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-dns-zone.png" alt-text="Azure portal での [プライベート DNS ゾーンの作成] ページの [基本] タブと、関連するプロジェクトの詳細が表示されています。":::
+      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-dns-zone.png" alt-text="プライベート エンドポイントを使用した Site Recovery の参照アーキテクチャ。":::
 
    1. **[確認と作成]** タブに進み、DNS ゾーンを確認して作成します。
 
@@ -194,7 +189,7 @@ Azure Storage へのプライベート エンドポイントが使用できま�
 
    1. 必須の詳細を入力します。 **[サブスクリプション]** フィールドと **[仮想ネットワーク]** フィールドには、ご自身のサーバーが存在する仮想ネットワークの対応する詳細を入力する必要があります。 その他のフィールドはそのままにしておく必要があります。
 
-      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/add-virtual-network-link.png" alt-text="Azure portal でリンク名、サブスクリプション、および関連する仮想ネットワークとともに仮想ネットワーク リンクを追加するためのページが表示されています。":::
+      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/add-virtual-network-link.png" alt-text="プライベート エンドポイントを使用した Site Recovery の参照アーキテクチャ。":::
 
 1. DNS レコードを追加する
 
@@ -211,7 +206,7 @@ Azure Storage へのプライベート エンドポイントが使用できま�
 
       これらの完全修飾ドメイン名は、次のパターンに一致します: `{Vault-ID}-asr-pod01-{type}-.{target-geo-code}.siterecovery.windowsazure.com`
 
-      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/add-record-set.png" alt-text="Azure portal での、プライベート エンドポイントに完全修飾ドメイン名の DNS A タイプのレコードを追加するためのページが表示されています。":::
+      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/add-record-set.png" alt-text="プライベート エンドポイントを使用した Site Recovery の参照アーキテクチャ。":::
 
    > [!NOTE]
    > レプリケーションを有効にすると、両方のリージョンのプライベート エンドポイントに 2 つ以上の完全修飾ドメイン名が作成されます。 このように新しく作成された完全修飾ドメイン名の DNS レコードも必ず追加してください。

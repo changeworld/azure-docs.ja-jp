@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: d2d3c94985f099c7a0ab92efab564415f5cd81bb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3ede38edd9d24114eb4d0939ff9d4586a2d31daa
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87095415"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978141"
 ---
 # <a name="azure-time-series-insights-gen2-use-cases"></a>Azure Time Series Insights Gen2 のユース ケース
 
@@ -66,7 +66,7 @@ Azure Time Series Insights Gen2 に格納されたデータを操作する方法
 
 Azure Time Series Insights Gen2 を使用すると、大規模に機器の正常性、使用状況、パフォーマンスを監視したり、運用効率を測定したりすることができます。 Azure Time Series Insights Gen2 を使用すると、取り込みやクエリのパフォーマンスを損なうことなく予測不能な各種 IoT ワークロードを管理するのに役立ちます。
 
-[![概要](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
+[![IoT デバイス、アプリケーション データ、ストリーム処理、操作効率性、インテリジェンス、Azure Time Series Insights Gen2 の分析情報と高度な分析のスクリーンショット。](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
 
 運用プロセスからのデータのストリーミングと継続的処理により、適切なテクノロジやソリューションと組み合わせた場合に、あらゆるビジネスを適切に変換できます。 多くの場合、これらのソリューションは、複数のシステムの組み合わせになります。 これらにより、特に IoT 領域内の、絶えず変更され、共通のパターンを共有するデータの探索と分析が可能になります。
 

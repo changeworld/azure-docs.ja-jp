@@ -1,25 +1,22 @@
 ---
-title: マネージド ID を使用して、データ ソースへの接続を設定する (プレビュー)
+title: マネージド ID を使用してデータ ソースへの接続を設定する
 titleSuffix: Azure Cognitive Search
-description: マネージド ID を使用してデータ ソースへのインデクサー接続を設定する方法を学ぶ (プレビュー)
+description: マネージド ID を使用してデータ ソースへのインデクサー接続を設定する方法を説明します
 manager: luisca
 author: markheff
 ms.author: maheff
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: d303de23a04d183d0ca280c3b3591299d883adf7
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/22/2020
+ms.openlocfilehash: a057c0d35a465447cc0be99b574ffeebb671115a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936590"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971546"
 ---
-# <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity-preview"></a>マネージド ID を使用して、データ ソースへのインデクサー接続を設定する (プレビュー)
-
-> [!IMPORTANT] 
-> マネージド ID を使用したデータ ソースへの接続の設定のサポートは、現在パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。
+# <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity"></a>マネージド ID を使用してデータ ソースへのインデクサー接続を設定する
 
 Azure Cognitive Search の[インデクサー](search-indexer-overview.md)は、データ ソースから Azure Cognitive Search にデータをプルするためのクローラーです。 インデクサーは、ユーザーが作成したデータ ソース オブジェクトからデータ ソース接続を取得します。 データ ソース オブジェクトには、通常、対象のデータ ソースの資格情報が含まれています。 たとえば、BLOB ストレージ コンテナーのデータに対してインデックスを作成する場合は、データ ソース オブジェクトに Azure Storage アカウント キーを含めることができます。
 

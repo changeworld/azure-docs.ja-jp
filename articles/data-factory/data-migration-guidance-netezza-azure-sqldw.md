@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 9/03/2019
-ms.openlocfilehash: a0263880262da95f4d26ee8388da464e9a59efca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2197136b86d0bfbb2de79af6712c953339d46371
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416448"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442839"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>Azure Data Factory を使用してオンプレミスの Netezza サーバーから Azure にデータを移行する 
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Azure Data Factory には、オンプレミスの Netezza サーバーから Azure のストレージ アカウントまたは Azure SQL Data Warehouse データベースに大量のデータを移行することができる、パフォーマンスと信頼性が高くコスト効率に優れたメカニズムが用意されています。 
+Azure Data Factory には、オンプレミスの Netezza サーバーから Azure ストレージ アカウントまたは Azure Synapse Analytics (旧称 SQL Data Warehouse) データベースに大量のデータを移行することができる、パフォーマンスと信頼性が高くコスト効率に優れたメカニズムが用意されています。 
 
 この記事では、データ エンジニアと開発者向けに次の情報を提供します。
 
@@ -57,7 +57,7 @@ Azure Data Factory のコピー アクティビティでは、ソースとシン
 
 ## <a name="network-security"></a>ネットワークのセキュリティ 
 
-既定では、Azure Data Factory は、ハイパーテキスト転送プロトコル セキュア (HTTPS) プロトコル経由の暗号化された接続を使用して、オンプレミスの Netezza サーバーから Azure のストレージ アカウントまたは Azure SQL Data Warehouse データベースにデータを転送します。 HTTPS によって転送中のデータが暗号化され、盗聴や中間者攻撃が防止されます。
+既定では、Azure Data Factory は、ハイパーテキスト転送プロトコル セキュア (HTTPS) プロトコル経由の暗号化された接続を使用して、オンプレミスの Netezza サーバーから Azure ストレージ アカウントまたは Azure Synapse Analytics データベースにデータを転送します。 HTTPS によって転送中のデータが暗号化され、盗聴や中間者攻撃が防止されます。
 
 また、パブリック インターネット経由でデータを転送しない場合は、Azure ExpressRoute を介してプライベート ピアリング リンク経由でデータを転送することで、より高いセキュリティを実現できます。 
 
@@ -109,7 +109,7 @@ Azure Data Factory のコピー アクティビティでは、ソースとシン
    
    - また、[サービス プリンシパル](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication)または[ストレージ アカウント キー](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication)を使用することもできます。 
 
-- Azure SQL Data Warehouse に対して認証するには:
+- Azure Synapse Analytics に対して認証するには:
 
    - [Azure リソースのマネージド ID](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#managed-identity) を使用することを強くお勧めします。
    
@@ -131,7 +131,7 @@ Azure Data Factory のコピー アクティビティでは、ソースとシン
 
 ネットワークまたはデータ ストアの一時的な問題によってコピー ジョブが失敗した場合は、失敗したコピー ジョブを再実行して、そのテーブルから特定のパーティションを再度読み込むことができます。 読み込むパーティションが異なるその他のコピー ジョブは影響を受けません。
 
-Azure SQL Data Warehouse データベースにデータを読み込む際は、Azure BLOB ストレージをステージングとし、コピー ジョブ内で PolyBase を有効にすることをお勧めします。
+Azure Synapse Analytics データベースにデータを読み込む際は、Azure BLOB ストレージをステージングとして、コピー ジョブ内で PolyBase を有効にすることをお勧めします。
 
 ### <a name="migrate-delta-data"></a>差分データの移行 
 
@@ -162,7 +162,7 @@ Azure Data Factory のコピー アクティビティによって報告された
 
 ### <a name="estimate-your-pricing"></a>価格のお見積り 
 
-オンプレミスの Netezza サーバーから Azure SQL Data Warehouse データベースにデータを移行するために構築されている、次のパイプラインあるとします。
+オンプレミスの Netezza サーバーから Azure Synapse Analytics データベースにデータを移行するために構築されている、次のパイプラインについて検討します。
 
 ![価格パイプライン](media/data-migration-guidance-netezza-azure-sqldw/pricing-pipeline.png)
 
@@ -196,7 +196,7 @@ Azure Data Factory のコピー アクティビティによって報告された
 - [ODBC コネクタ](https://docs.microsoft.com/azure/data-factory/connector-odbc)
 - [Azure BLOB ストレージ コネクタ](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
 - [Azure Data Lake Storage Gen2 コネクタ](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-- [Azure SQL Data Warehouse コネクタ](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse)
+- [Azure Synapse Analytics コネクタ](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse)
 - [コピー アクティビティのパフォーマンスとチューニングに関するガイド](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
 - [セルフホステッド統合ランタイムを作成して構成する](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
 - [セルフホステッド統合ランタイム HA とスケーラビリティ](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)

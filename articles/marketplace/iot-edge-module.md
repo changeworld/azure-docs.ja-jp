@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 08/18/2020
-ms.openlocfilehash: c475e548cc8e29a83f2d440df43fb8ac31dc1c1e
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 6eeb27f6382585e883fbebc40a9f70feb33adb4f
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816254"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420610"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge のモジュール
 
@@ -30,7 +30,7 @@ ms.locfileid: "88816254"
 
 ## <a name="what-is-an-iot-edge-module"></a>IoT Edge モジュールとは何ですか。
 
-Azure IoT Edge では、ビジネス ロジックをモジュール形式でエッジに展開および管理できます。 Azure IoT Edge モジュールは、IoT Edge によって管理される計算の最小単位であり、Azure Stream Analytics などの Microsoft サービス、サードパーティー サービスまたは、独自ソリューション固有のコードを含めることができます。 IoT Edge モジュールの詳細については、[Azure IoT Edge モジュールを理解する](../iot-edge/iot-edge-modules.md)を参照してください。
+Azure IoT Edge では、ビジネス ロジックをモジュール形式でエッジに展開および管理できます。 Azure IoT Edge モジュールは、IoT Edge によって管理される計算の最小単位であり、Azure Stream Analytics などの Microsoft サービス、サードパーティ サービス、独自ソリューション固有のコードのいずれかを含めることができます。 IoT Edge モジュールの詳細については、[Azure IoT Edge モジュールを理解する](../iot-edge/iot-edge-modules.md)を参照してください。
 
 **コンテナー プランの種類と、IoT Edge モジュール プランの種類の違いは何ですか。**
 
@@ -40,7 +40,7 @@ IoT Edge モジュール プランの種類は、IoT Edge デバイスで実行�
 
 **正しいオンライン ストアの選択**
 
-IoT Edge モジュールが Azure Marketplace でのみ発行され、AppSource は適用されません。 オンライン ストア間の相違点と対象ユーザーの詳細については、「[公開オプションを選定する](determine-your-listing-type.md)」を参照してください。
+IoT Edge モジュールが Azure Marketplace でのみ発行され、AppSource は適用されません。 オンライン ストア間の相違点の詳細については、「[公開オプションを選定する](determine-your-listing-type.md)」を参照してください。
 
 **課金オプション**
 
@@ -75,6 +75,5 @@ Azure Marketplace で認定および発行されるためには、IoT Edge モ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- コマーシャル マーケットプレースについて[学習](https://azuremarketplace.microsoft.com/sell)します。
 - [パートナー センターにサインイン](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)し、オファーを作成するか完成させます。
 - パートナー センターで [IoT Edge モジュール オファーを作成](./partner-center-portal/azure-iot-edge-module-creation.md)します。

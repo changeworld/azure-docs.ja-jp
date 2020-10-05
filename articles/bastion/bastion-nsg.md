@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: charwen
-ms.openlocfilehash: 563c12f91e9553f802d4cf26519da0550880dfcd
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: a69aa8d8a6dc324d6fe28219316c36ac2ec816a5
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88270531"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987698"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>NSG アクセスと Azure Bastion を使用する
 
@@ -42,7 +42,7 @@ Azure Bastion は、***AzureBastionSubnet*** に対して明示的にデプロ�
    * **Azure Bastion からのイグレス トラフィックのコントロール プレーン:** コントロール プレーン接続の場合は、**GatewayManager** サービス タグからのポート 443 受信を有効にします。 これにより、コントロール プレーン、つまりゲートウェイ マネージャーから Azure Bastion への通信が可能になります。
 
 
-   :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="受信":::
+   :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="NSG":::
 
 * **エグレス トラフィック:**
 
@@ -50,7 +50,7 @@ Azure Bastion は、***AzureBastionSubnet*** に対して明示的にデプロ�
    * **Azure の他のパブリックエンド ポイントへのエグレス トラフィック:** Azure Bastion から Azure 内のさまざまなパブリック エンドポイントに接続できる必要があります (たとえば、診断ログや測定ログを格納するため)。 このため、Azure Bastion には **AzureCloud** サービス タグに対する 443 への送信が必要です。
 
 
-   :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="Outbound":::
+   :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="NSG":::
 
 ### <a name="target-vm-subnet"></a>ターゲット VM サブネット
 これは、RDP/SSH で接続するターゲット仮想マシンを含むサブネットです。

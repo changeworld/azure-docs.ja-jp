@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 09/08/2020
+ms.date: 09/30/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: 2ce5f0c9b340e1b81fcf002ee70e7ec1cc74d38c
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: f8bf2a1bb4892637ac504d5920754fc412691a4a
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594324"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597383"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理とは
 
@@ -77,8 +77,9 @@ Azure AD のエンタイトルメント管理は、これらの課題への対�
 
 Azure AD セキュリティ グループまたは Microsoft 365 グループに依存するその他のリソースへのアクセスを制御することもできます。  次に例を示します。
 
-- Microsoft 365 のライセンスをユーザーに付与するには、アクセス パッケージで Azure AD セキュリティ グループを使用し、そのグループの[グループ ベース ライセンス](../users-groups-roles/licensing-groups-assign.md)を構成します
-- Azure リソースを管理するアクセス権をユーザーに付与するには、アクセス パッケージで Azure AD セキュリティ グループを使用し、そのグループの [Azure ロール割り当て](../../role-based-access-control/role-assignments-portal.md)を作成します
+- Microsoft 365 のライセンスをユーザーに付与するには、アクセス パッケージで Azure AD セキュリティ グループを使用し、そのグループの[グループベース ライセンス](../users-groups-roles/licensing-groups-assign.md)を構成します。
+- Azure リソースを管理するためのアクセス権をユーザーに付与するには、アクセス パッケージで Azure AD セキュリティ グループを使用し、そのグループの [Azure ロール割り当て](../../role-based-access-control/role-assignments-portal.md)を作成します。
+- Azure AD ロールを管理するためのアクセス権をユーザーに付与するには、アクセス パッケージで Azure AD ロールに割り当て可能なグループを使用し、そのグループの [Azure ロール割り当て](../users-groups-roles/roles-groups-assign-role.md)を作成します。
 
 ## <a name="how-do-i-control-who-gets-access"></a>誰にアクセス権が付与されるかを制御するにはどうすればよいですか?
 

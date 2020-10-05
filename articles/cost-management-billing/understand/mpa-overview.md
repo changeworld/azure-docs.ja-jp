@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 98941530ba0483e82f43af222e12df7439b6625e
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 4d6208360bd876a2a1ae0a9ff154604a33584db9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688752"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447932"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Microsoft Partner Agreement の課金アカウントの概要
 
@@ -55,7 +55,7 @@ Microsoft 顧客契約に同意し、Azure プランを持っている顧客を�
 
 1. **[コストの管理と請求]** で検索します。
 
-   ![Azure portal の検索を表示するスクリーンショット](./media/mpa-overview/search-cmb.png)
+   ![Azure portal での [コストの管理と請求] の検索を示すスクリーンショット。](./media/mpa-overview/search-cmb.png)
 
 1. 左側で **[顧客]** を選択し、一覧から顧客を選択します。
 

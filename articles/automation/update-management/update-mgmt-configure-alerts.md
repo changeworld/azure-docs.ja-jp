@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2c39a07ceac4d36bf3ef7394927589b53da7d789
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 1a46b5bf6c4be4953e6cde9972aa143be71406a4
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449722"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976997"
 ---
 # <a name="how-to-create-alerts-for-update-management"></a>Update Management のアラートを作成する方法
 
@@ -56,7 +56,7 @@ Azure Automation では、Update Management に関連する 2 つの異なるプ
 
 9. **[重大度]** フィールドを、成功した実行には **[Informational(Sev 2)]\(情報 (重大度 2)\)** に設定し、失敗した実行には **[Informational(Sev 1)]\(情報 (重大度 1)\)** に設定します。
 
-    ![シグナル ロジックの構成](./media/update-mgmt-manage-updates-for-vm/define-alert-details.png)
+    ![アラートの詳細定義セクションのスクリーンショット。アラート ルール名、説明、重大度フィールドが強調表示されています。](./media/update-mgmt-manage-updates-for-vm/define-alert-details.png)
 
 10. **[はい]** を選択してアラート ルールを有効にします。
 

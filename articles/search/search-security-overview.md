@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/01/2020
 ms.custom: references_regions
-ms.openlocfilehash: c9f0f496bfdb31e0c7cb45a07c87ea238d031e34
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 24e631b3ddb25cc8bed20b432ff2ba31fd331f37
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88928770"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979608"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Azure Cognitive Search のセキュリティ - 概要
 
@@ -94,7 +94,7 @@ Azure Cognitive Search における二重暗号化は、CMK の拡張機能で�
 
 [受信アクセスを構成](service-configure-firewall.md)するには、ポータルを使用します。
 
-または、管理 REST API を使用します。 [IpRule](/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule) パラメーターを指定した API バージョン 2020-03-13 では、検索サービスへのアクセスを付与する IP アドレスを個別に、あるいは範囲で特定することで、サービスへのアクセスを制限できます。
+または、管理 REST API を使用します。 API バージョン 2020-03-13 以降では、[IpRule](/rest/api/searchmanagement/services/createorupdate#iprule) パラメーターを指定することで、検索サービスへのアクセスを付与する IP アドレスを個別に、あるいは範囲で特定することで、サービスへのアクセスを制限できます。
 
 ### <a name="private-endpoint-no-internet-traffic"></a>プライベート エンドポイント (インターネット トラフィックなし)
 
@@ -123,7 +123,7 @@ Azure Cognitive Search では、個別のインデックスはセキュリティ
 | アプローチ | 説明 |
 |----------|-------------|
 |[ID フィルターに基づいたセキュリティによるトリミング](search-security-trimming-for-azure-search.md)  | ユーザー ID アクセス制御を実装する基本的なワークフローについて記載しています。 また、インデックスへのセキュリティ ID の追加について取り上げているほか、そのフィールドに対してフィルター処理を行い、禁止されているコンテンツの結果をトリミングする方法について説明しています。 |
-|[Azure Active Directory ID に基づいたセキュリティによるトリミング](search-security-trimming-for-azure-search-with-aad.md)  | この記事は前の記事を拡張したものであり、Azure クラウド プラットフォームの[無料サービス](https://azure.microsoft.com/free/)の 1 つである Azure Active Directory (AAD) から ID を取得する手順について説明しています。 |
+|[Azure Active Directory ID に基づいたセキュリティによるトリミング](search-security-trimming-for-azure-search-with-aad.md)  | この記事は前の記事を拡張したものであり、Azure クラウド プラットフォームの[無料サービス](https://azure.microsoft.com/free/)の 1 つである Azure Active Directory (Azure AD) から ID を取得する手順について説明しています。 |
 
 ## <a name="administrative-rights"></a>管理者権限
 

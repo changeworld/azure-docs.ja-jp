@@ -1,21 +1,21 @@
 ---
-title: Azure CDN エンドポイントの複数配信元
+title: Azure CDN エンドポイントの複数配信元 (プレビュー)
 description: Azure CDN エンドポイントで複数の配信元を使用します。
 services: cdn
 author: asudbring
 manager: KumudD
 ms.service: azure-cdn
 ms.topic: how-to
-ms.date: 8/20/2020
+ms.date: 9/06/2020
 ms.author: allensu
-ms.openlocfilehash: c7e6733079dbd867255e604f6f8d4459f647cc93
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: f9293206526778f8c3de8a368a1916a2cb3f88c2
+ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870462"
+ms.lasthandoff: 09/07/2020
+ms.locfileid: "89504675"
 ---
-# <a name="azure-cdn-endpoint-multi-origin"></a>Azure CDN エンドポイントの複数配信元
+# <a name="azure-cdn-endpoint-multi-origin-preview"></a>Azure CDN エンドポイントの複数配信元 (プレビュー)
 
 複数の配信元のサポートによって、ダウンタイムが解消し、グローバルな冗長性が確立されます。 
 
@@ -25,6 +25,10 @@ Azure CDN エンドポイント内で複数の配信元を選択すると、提�
 
 > [!NOTE]
 > 現在、この機能は Microsoft の Azure CDN からのみ使用できます。 
+
+> [!IMPORTANT]
+> Azure CDN エンドポイントの複数配信元は現在、パブリック プレビュー段階にあります。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="create-the-origin-group"></a>配信元グループを作成する
 
@@ -38,7 +42,7 @@ Azure CDN エンドポイント内で複数の配信元を選択すると、提�
 
 4. 複数配信元を有効にするには、少なくとも 1 つの配信元グループが必要です。 **[Create Origin Group]\(配信元グループの作成\)** を選択 ます。
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-2.png" alt-text="配信元の設定" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-2.png" alt-text="CDN エンドポイント" border="true":::
 
 5. **[Add Origin Group]\(配信元グループの追加\)** の構成で、次の情報を入力または選択します。
 
@@ -52,7 +56,7 @@ Azure CDN エンドポイント内で複数の配信元を選択すると、提�
    | プローブ メソッド      | **[Head]** または **[Get]** を選択します。                                           |
    | 既定の配信元グループ | 既定の配信元グループとして設定するボックスを選択します。
     
-   :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-3.png" alt-text="配信元グループを追加する" border="true":::
+   :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-3.png" alt-text="CDN エンドポイント" border="true":::
 
 6. **[追加]** を選択します。
 
@@ -60,7 +64,7 @@ Azure CDN エンドポイント内で複数の配信元を選択すると、提�
 
 1. エンドポイントの配信元の設定で、 **[+ Create Origin]\(+ 配信元の作成\)** を選択します。
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-5.png" alt-text="配信元を作成する" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-5.png" alt-text="CDN エンドポイント" border="true":::
 
 2. **[Add Origin]\(配信元の追加\)** の構成で、次の情報を入力または選択します。
 
@@ -78,13 +82,13 @@ Azure CDN エンドポイント内で複数の配信元を選択すると、提�
     > [!NOTE]
     > 配信元を配信元グループに作成する場合は、優先順位と重みを一致させる必要があります。 配信元グループに配信元が 1 つしかない場合、既定の優先順位と重みは 1 に設定されます。 トラフィックは最も優先順位の高い配信元にルーティングされます (配信元が正常な場合)。 配信元が異常であると判断された場合、接続は優先順位の順に別の配信元に転送されます。 同じ優先順位の配信元が複数ある場合、トラフィックは配信元に対して指定された重みに従って分散されます 
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-6.png" alt-text="追加の配信元を追加する" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-6.png" alt-text="CDN エンドポイント" border="true":::
 
 3. **[追加]** を選択します。
 
 4. すべての配信元に配信元パスを設定するには、 **[Configure origin]\(配信元の構成\)** を選択します。
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-7.png" alt-text="配信元のパスを構成する" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-7.png" alt-text="CDN エンドポイント" border="true":::
 
 5. **[OK]** を選択します。
 
@@ -94,27 +98,27 @@ Azure CDN エンドポイント内で複数の配信元を選択すると、提�
 
 1. Azure CDN エンドポイントの配信元の設定で、構成する配信元グループの名前を選択します。
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-8.png" alt-text="配信元と配信元グループの設定を構成する" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-8.png" alt-text="CDN エンドポイント" border="true":::
 
 2. **[Update origin group]\(配信元グループの更新\)** で、 **[+ Select Origin]\(配信元の選択\)** を選択します。
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-9.png" alt-text="配信元グループを更新する" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-9.png" alt-text="CDN エンドポイント" border="true":::
 
 4. プルダウン ボックスでグループに追加する配信元を選択し、 **[OK]** を選択します。
 
 5. 配信元がグループに追加されたことを確認し、 **[保存]** を選択します。
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-10.png" alt-text="グループに追加された追加の配信元を確認する" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-10.png" alt-text="CDN エンドポイント" border="true":::
 
 ## <a name="remove-origin-from-origin-group"></a>配信元グループから配信元を削除する
 
 1. Azure CDN エンドポイントの配信元の設定で、配信元グループの名前を選択します。
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-8.png" alt-text="グループから配信元を削除する" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-8.png" alt-text="CDN エンドポイント" border="true":::
 
 2. 配信元グループから配信元を削除するには、配信元の横にあるごみ箱アイコンを選択し、 **[保存]** を選択します。
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-11.png" alt-text="配信元グループの更新と配信元の削除" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-11.png" alt-text="CDN エンドポイント" border="true":::
 
 ## <a name="override-origin-group-with-rules-engine"></a>ルール エンジンを使用した配信元グループのオーバーライド
 
@@ -124,7 +128,7 @@ Azure CDN エンドポイント内で複数の配信元を選択すると、提�
 
 1. CDN エンドポイントの **[設定]** で **[ルール エンジン]** を選択します。
 
-:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-12.png" alt-text="ルール エンジン" border="true":::
+:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-12.png" alt-text="CDN エンドポイント" border="true":::
 
 2. **[+ ルールの追加]** を選択します。
 
@@ -140,7 +144,7 @@ Azure CDN エンドポイント内で複数の配信元を選択すると、提�
 
 8. **[配信元グループ]** のプルダウン ボックスで配信元グループを選択します。
 
-:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-13.png" alt-text="ルール エンジンの条件" border="true":::
+:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-13.png" alt-text="CDN エンドポイント" border="true":::
 
 いずれの受信要求についても、URL パスに「 **/images**」が含まれる場合、要求はアクション セクション **(myorigingroup)** の配信元グループに割り当てられます。 
 

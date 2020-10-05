@@ -6,15 +6,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 08/04/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2fdc1cd36c037f163b6b04907248e08ef20e961d
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: d44964b5aed55e2ee70d18e6be5d632b652956e1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400026"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976250"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>シナリオ:NVA を経由するトラフィックのルーティング
 
@@ -99,7 +99,7 @@ NVA VNet、NVA 以外の VNet、およびブランチで、すべての NVA ス�
 
 **図 2**
 
-:::image type="content" source="./media/routing-scenarios/nva/nva.png" alt-text="図 2" lightbox="./media/routing-scenarios/nva/nva.png":::
+:::image type="content" source="./media/routing-scenarios/nva/nva.png" alt-text="図 1" lightbox="./media/routing-scenarios/nva/nva.png":::
 
 ## <a name="scenario-workflow"></a><a name="workflow"></a>シナリオのワークフロー
 
@@ -113,9 +113,11 @@ NVA 経由のルーティングを設定するには、次のような手順を�
    
    VNet 5、6、7、8 を仮想ハブに直接接続する必要はありません。 VNet 5、6、7、8 の NSG で、ブランチ (VPN/ER/P2S) またはリモート VNet に接続されている VNet に対するトラフィックが許可されていることを確認します。 たとえば、VNet 5、6 の NSG では、リモート Hub 2 に接続されているオンプレミスのアドレス プレフィックスと VNet 7、8 に対するトラフィックが許可される必要があります。
 
+Vnet 5、6 が仮想ハブに接続され、VNet 2 NVA IP 経由で通信することから、同様に Vnet 5、6 を VNet2、および VNet 7、8 を VNet 4 に接続する必要があるというシナリオを、Virtual WAN ではサポートしていません。
+
 2. VNet 2、5、6 に対する集約静的ルート エントリを、Hub 1 の既定のルート テーブルに追加します。
 
-   :::image type="content" source="./media/routing-scenarios/nva/nva-static-expand.png" alt-text="例":::
+   :::image type="content" source="./media/routing-scenarios/nva/nva-static-expand.png" alt-text="図 1":::
 
 3. VNet 2 の仮想ネットワーク接続で、VNet 5、6 に対する静的ルートを構成します。 仮想ネットワーク接続に対するルーティング構成の設定については、[仮想ハブルーティング](how-to-virtual-hub-routing.md#routing-configuration)に関する記事を参照してください。
 
@@ -127,9 +129,9 @@ NVA 経由のルーティングを設定するには、次のような手順を�
 
 **図 3**
 
-   :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="図 3" lightbox="./media/routing-scenarios/nva/nva-result.png":::
+   :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="図 1" lightbox="./media/routing-scenarios/nva/nva-result.png":::
 
 ## <a name="next-steps"></a>次のステップ
 
 * Virtual WAN の詳細については、[FAQ](virtual-wan-faq.md) を参照してください。
-* 仮想ハブのルーティングの詳細については、「[仮想ハブのルーティングについて](about-virtual-hub-routing.md)」を参照してください。
+* 仮想ハブ ルーティングの詳細については、「[仮想ハブのルーティングについて](about-virtual-hub-routing.md)」を参照してください。

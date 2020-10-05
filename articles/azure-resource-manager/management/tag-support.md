@@ -2,13 +2,13 @@
 title: リソースでのタグのサポート
 description: タグをサポートしている Azure リソースの種類を示します。 すべての Azure サービスの詳細を提供します。
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: 1f74ecff7c5db7a851ad2795fdfdb8e552a309c0
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.date: 09/08/2020
+ms.openlocfilehash: ea46e263d934c327cf6dfa343a5e0b5a170f545e
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231522"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89513916"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure リソースでのタグのサポート
 この記事では、リソースの種類が[タグ](tag-resources.md)をサポートしているかどうかについて説明します。 「**タグのサポート**」というラベルが付けられた列は、リソースの種類にタグのプロパティがあるかどうかを示します。 「**コスト レポートのタグ**」というラベルが付けられた列は、リソースの種類がタグをコスト レポートに渡すかどうかを示します。 [Cost Management のコスト分析](../../cost-management-billing/costs/group-filter.md)および [Azure の請求書と毎日の使用データ](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)で、タグ別にコストを表示できます。
@@ -965,6 +965,9 @@ ms.locfileid: "89231522"
 > | factories | はい | はい |
 > | factories / integrationRuntimes | いいえ | いいえ |
 
+> [!NOTE]
+> データ ファクトリに Azure SSIS 統合ランタイムがある場合、その実行コストはデータ ファクトリ タグでタグ付けされます。  新しいデータ ファクトリ タグが実行コストに適用される場合は、Azure SSIS 統合ランタイムの実行の停止と再起動が必要です。
+
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
 
 > [!div class="mx-tableFixed"]
@@ -1621,8 +1624,8 @@ ms.locfileid: "89231522"
 > | mediaservices / streamingEndpoints | はい | はい |
 > | mediaservices / streamingLocators | いいえ | いいえ |
 > | mediaservices / streamingPolicies | いいえ | いいえ |
-> | mediaservices / transforms | いいえ | いいえ |
-> | mediaservices / transforms / jobs | × | いいえ |
+> | mediaservices / transforms | いいえ | × |
+> | mediaservices / transforms / jobs | いいえ | いいえ |
 
 ## <a name="microsoftmicroservices4spring"></a>Microsoft.Microservices4Spring
 
@@ -1726,9 +1729,9 @@ ms.locfileid: "89231522"
 > | privateDnsZones / SOA | いいえ | いいえ |
 > | privateDnsZones / SRV | いいえ | いいえ |
 > | privateDnsZones / TXT | いいえ | いいえ |
-> | privateDnsZones / virtualNetworkLinks | ○ | はい |
-> | privateEndpoints | ○ | はい |
-> | privateLinkServices | ○ | はい |
+> | privateDnsZones / virtualNetworkLinks | はい | ○ |
+> | privateEndpoints | はい | ○ |
+> | privateLinkServices | はい | はい |
 > | publicIPAddresses | はい | はい |
 > | publicIPPrefixes | はい | はい |
 > | routeFilters | はい | はい |
@@ -1887,7 +1890,7 @@ ms.locfileid: "89231522"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | Workspaces | ○ | はい |
+> | Workspaces | はい | はい |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
@@ -2228,7 +2231,7 @@ ms.locfileid: "89231522"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
-> | storageSyncServices | ○ | はい |
+> | storageSyncServices | はい | はい |
 > | storageSyncServices / registeredServers | いいえ | いいえ |
 > | storageSyncServices / syncGroups | いいえ | いいえ |
 > | storageSyncServices / syncGroups / cloudEndpoints | いいえ | いいえ |

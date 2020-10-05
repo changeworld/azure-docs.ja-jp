@@ -11,19 +11,19 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf50a8f58978a010fe3d8228ace8579fcf52eb38
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: a7e4772ba2b3d8adf163d6f2932461e1e939ed84
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309897"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90052445"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Azure Multi-Factor Authentication プロバイダーをいつ使用するか
 
 > [!IMPORTANT]
 > 2018 年 9 月 1 日以降、新しい認証プロバイダーを作成できなくなります。 既存の認証プロバイダーは引き続き使用および更新できますが、移行はもうできません。 多要素認証は、今後も Azure AD Premium ライセンスの一機能としてご利用いただけます。
 
-Azure Active Directory を持つグローバル管理者と Office 365 ユーザーは、既定で 2 段階認証を使用できます。 ただし、[高度な機能](howto-mfa-mfasettings.md)が必要な場合は、通常版の Multi-Factor Authentication (MFA) をご購入ください。
+Azure Active Directory を持つグローバル管理者と Microsoft 365 ユーザーは、既定では 2 段階認証をお使いいただけます。 ただし、[高度な機能](howto-mfa-mfasettings.md)が必要な場合は、通常版の Multi-Factor Authentication (MFA) をご購入ください。
 
 Azure Multi-Factor Authentication プロバイダーは、Azure Multi-Factor Authentication が提供する機能を、**ライセンスを持っていない**ユーザーが利用できるようにするために使用されます。
 

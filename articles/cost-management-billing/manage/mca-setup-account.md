@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: afa95609e0bcb879b6ad4b3b50b5dff5feb9a9f7
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5498fd83efa0fa52f5f0861588eaa8cdeb0953ac
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682792"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371798"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Microsoft 顧客契約の請求先アカウントの設定
 
@@ -132,7 +132,7 @@ Enterprise Agreement 加入契約で Azure サブスクリプションに設定�
 
 ### <a name="user-access-to-azure-resources"></a>Azure リソースに対するユーザー アクセス
 
-Azure RBAC (ロールベースのアクセス制御) を使用して設定された Azure リソースへのアクセスは、切り替え中に影響を受けません。
+Azure ロールベースのアクセス制御 (Azure RBAC) を使用して設定された Azure リソースへのアクセスは、切り替え中に影響を受けることはありません。
 
 ### <a name="azure-reservations"></a>Azure の予約
 
@@ -225,7 +225,7 @@ Enterprise Agreement 加入契約での Azure の予約は、特典や条件の�
 
 4. 左側から **[アクセス制御 (IAM)]** を選択します。
 
-   ![切り替え後のエンタープライズ管理者のアクセス権を示すスクリーンショット](./media/mca-setup-account/mca-ea-admins-ba-access-post-transition.png)
+   ![切り替え後の課金アカウント所有者として表示されるエンタープライズ管理者のアクセス権を示すスクリーンショット。](./media/mca-setup-account/mca-ea-admins-ba-access-post-transition.png)
 
 エンタープライズ管理者は課金アカウント所有者として表示されますが、読み取り専用アクセス許可を持つエンタープライズ管理者は課金アカウント閲覧者として表示されます。 エンタープライズ管理者のアクセス権が不足していると思われる場合は、Azure portal 上でアクセス権を付与できます。 詳しくは、「[Azure portal での組み込みロールを管理する](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)」をご覧ください。
 
@@ -241,7 +241,7 @@ Enterprise Agreement 加入契約での Azure の予約は、特典や条件の�
 
 4. 左側から **[アクセス制御 (IAM)]** を選択します。
 
-   ![切り替え後のエンタープライズ管理者のアクセス権を示すスクリーンショット](./media/mca-setup-account/mca-ea-admins-bp-access-post-transition.png)
+   ![切り替え後の課金プロファイル所有者として表示されるエンタープライズ管理者のアクセス権を示すスクリーンショット。](./media/mca-setup-account/mca-ea-admins-bp-access-post-transition.png)
 
 エンタープライズ管理者は課金プロファイル所有者として表示されますが、読み取り専用アクセス許可を持つエンタープライズ管理者は課金プロファイル閲覧者として表示されます。 エンタープライズ管理者のアクセス権が不足していると思われる場合は、Azure portal 上でアクセス権を付与できます。 詳しくは、「[Azure portal での組み込みロールを管理する](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)」をご覧ください。
 

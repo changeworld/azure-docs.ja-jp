@@ -1,48 +1,29 @@
 ---
-title: ブロック BLOB でポイントインタイム リストアを有効にして管理する (プレビュー)
+title: ブロック BLOB データに対してポイントインタイム リストアを実行する
 titleSuffix: Azure Storage
-description: ポイントインタイム リストア (プレビュー) を使用して、ブロック BLOB を以前の時点の状態に復元する方法について説明します。
+description: ポイントインタイム リストアを使用して、ブロック BLOB セットを特定の時点で以前の状態に復元する方法について学習します。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/11/2020
+ms.date: 09/18/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 9a4c68454807cb26ac62799b598f146680e37c42
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 226e35452e4b266c3c0a698505d47ab9a53b9761
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230179"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984390"
 ---
-# <a name="enable-and-manage-point-in-time-restore-for-block-blobs-preview"></a>ブロック BLOB でポイントインタイム リストアを有効にして管理する (プレビュー)
+# <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>ブロック BLOB データに対してポイントインタイム リストアを実行する
 
-ポイントインタイム リストア (プレビュー) を使用して、ブロック BLOB を以前の時点の状態に復元することができます。 この記事では、PowerShell を使用してストレージ アカウントでポイントインタイム リストアを有効にする方法について説明します。 また、PowerShell を使用して復元操作を実行する方法についても説明します。
+ポイントインタイム リストアを使用して、ブロック BLOB の 1 つまたは複数のセットを以前の状態に復元することができます。 この記事では、ストレージ アカウントでポイントインタイム リストアを有効にする方法と、復元操作を実行する方法について説明します。
 
-このプレビューの詳細情報および登録方法については、「[ブロック BLOB のポイントインタイム リストア (プレビュー)](point-in-time-restore-overview.md)」を参照してください。
+ポイントインタイム リストアの詳細については、「[ブロック BLOB のポイントインタイム リストア](point-in-time-restore-overview.md)」を参照してください。
 
 > [!CAUTION]
-> ポイントインタイム リストアでは、ブロック BLOB に対する復元操作のみがサポートされます。 コンテナーに対する操作は復元できません。 ポイントインタイム リストアのプレビュー中に [Delete Container](/rest/api/storageservices/delete-container) 操作を呼び出してストレージ アカウントからコンテナーを削除した場合、そのコンテナーは復元操作を使って復元できません。 プレビュー中は、コンテナーを削除するのではなく、復元する可能性がある場合は個々の BLOB を削除してください。
-
-> [!IMPORTANT]
-> ポイントインタイム リストアのプレビューは、非運用環境での使用のみを意図しています。 運用環境のサービス レベル契約(SLA) は現在使用できません。
-
-## <a name="install-the-preview-module"></a>プレビュー モジュールをインストールする
-
-PowerShell を使用して Azure のポイントインタイム リストアを構成するには、まず、Az.Storage プレビュー モジュールのバージョン 1.14.1-preview 以降をインストールします。 最新のプレビュー バージョンを使用することをお勧めしますが、ポイントインタイム リストアはバージョン 1.14.1-preview 以降でサポートされています。 Az. Storage モジュールの他のバージョンをすべて削除します。
-
-次に示すのは、Az.Storage の [2.0.1-preview](https://www.powershellgallery.com/packages/Az.Storage/2.0.1-preview) モジュールをインストールするコマンドです。
-
-```powershell
-Install-Module -Name Az.Storage -RequiredVersion 2.0.1-preview -AllowPrerelease
-```
-
-上記のコマンドでは、バージョン 2.2.4.1 以上の PowerShellGet をインストールする必要があります。 現在読み込まれているバージョンを確認するには、次を実行します。
-```powershell
-Get-Module PowerShellGet
-```
-Azure PowerShell のインストールの詳細については、[PowerShellGet を使用した Azure PowerShell のインストール](/powershell/azure/install-az-ps)に関するページを参照してください。
+> ポイントインタイム リストアでは、ブロック BLOB に対する復元操作のみがサポートされます。 コンテナーに対する操作は復元できません。 [Delete Container](/rest/api/storageservices/delete-container) 操作を呼び出してストレージ アカウントからコンテナーを削除した場合、そのコンテナーは復元操作を使って復元できません。 復元が必要になる可能性がある場合は、コンテナーを削除するのではなく、個々の BLOB を削除してください。
 
 ## <a name="enable-and-configure-point-in-time-restore"></a>ポイントインタイム リストアを有効にして構成する
 
@@ -52,7 +33,28 @@ Azure PowerShell のインストールの詳細については、[PowerShellGet 
 - [変更フィードを有効または無効にする](storage-blob-change-feed.md#enable-and-disable-the-change-feed)
 - [BLOB のバージョン管理を有効にして管理する](versioning-enable.md)
 
-PowerShell で Azure のポイントインタイム リストアを構成するには、Enable-AzStorageBlobRestorePolicy コマンドを呼び出します。 次の例では、論理的な削除を有効にし、論理的な削除の保持期間を設定し、変更フィードを有効にした後、ポイントインタイム リストアを有効にします。 この例を実行する前に、Azure portal または Azure Resource Manager テンプレートを使用して、BLOB のバージョン管理も有効にします。
+> [!IMPORTANT]
+> 論理的な削除、変更フィード、および BLOB のバージョン管理を有効にすると、追加料金が発生する可能性があります。 詳細については、「[BLOB の論理的な削除](soft-delete-blob-overview.md)」、「[Azure Blob Storage の変更フィードのサポート](storage-blob-change-feed.md)」、および「[BLOB のバージョン管理](versioning-overview.md)」を参照してください。
+
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+Azure portal を使用してポイントインタイム リストアを構成するには、次の手順に従います。
+
+1. Azure Portal のストレージ アカウントに移動します。
+1. **[設定]** で、 **[データ保護]** を選択します。
+1. **[ポイントインタイム リストアを有効にする]** をオンにします。 このオプションを選択すると、BLOB の論理的な削除、バージョン管理、および変更フィードも有効になります。
+1. ポイントインタイム リストアの最大復元ポイントを日単位で設定します。 この数は、BLOB の論理的な削除に指定された保有期間よりも 1 日以上短くする必要があります。
+1. 変更を保存します。
+
+次の画像は、復元ポイントが 7 日前で、BLOB の論理的な削除の保有期間が 14 日間のポイントインタイム リストア用に構成されたストレージ アカウントを示しています。
+
+:::image type="content" source="media/point-in-time-restore-manage/configure-point-in-time-restore-portal.png" alt-text="Azure portal でポイントインタイム リストアを構成する方法を示すスクリーンショット":::
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell を使用してポイントインタイム リストアを構成するには、まず、[Az.Storage](https://www.powershellgallery.com/packages/Az.Storage) モジュールのバージョン 2.6.0 以降をインストールします。 その後、Enable-AzStorageBlobRestorePolicy コマンドを呼び出して、ストレージ アカウントのポイントインタイム リストアを有効にします。
+
+次の例では、論理的な削除を有効にし、論理的な削除の保持期間を設定し、変更フィードを有効にした後、ポイントインタイム リストアを有効にします。 この例を実行する前に、Azure portal または Azure Resource Manager テンプレートを使用して、BLOB のバージョン管理も有効にします。
 
 例を実行するときは、必ず山かっこ内の値を実際の値に置き換えてください。
 
@@ -64,37 +66,43 @@ Connect-AzAccount
 $rgName = "<resource-group>"
 $accountName = "<storage-account>"
 
-# Enable soft delete with a retention of 6 days.
+# Enable soft delete with a retention of 14 days.
 Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
-    -RetentionDays 6
+    -RetentionDays 14
 
 # Enable change feed.
 Update-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
     -EnableChangeFeed $true
 
-# Enable point-in-time restore with a retention period of 5 days.
-# The retention period for point-in-time restore must be at least one day less than that set for soft delete.
+# Enable point-in-time restore with a retention period of 7 days.
+# The retention period for point-in-time restore must be at least
+# one day less than that set for soft delete.
 Enable-AzStorageBlobRestorePolicy -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
-    -RestoreDays 5
+    -RestoreDays 7
 
 # View the service settings.
 Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
     -StorageAccountName $accountName
 ```
 
+---
+
 ## <a name="perform-a-restore-operation"></a>復元操作を実行する
 
-復元操作を開始するには、UTC **DateTime** 値として復元ポイントを指定して、**Restore-AzStorageBlobRange** コマンドを呼び出します。 復元する辞書式範囲を指定することも、範囲を省略して、ストレージ アカウントにあるすべてのコンテナー内のすべての BLOB を復元することもできます。 復元操作ごとに最大 10 個の辞書式範囲がサポートされます。 ページ BLOB と追加 BLOB は復元に含まれません。 復元操作が完了するまでに数分かかる場合があります。
+復元操作を実行するときは、復元ポイントを UTC **DateTime** 値として指定する必要があります。 コンテナーと BLOB は、その日付と時刻にそれぞれの状態に復元されます。 復元操作が完了するまでに数分かかる場合があります。
 
-復元する BLOB の範囲を指定するときは、次の規則に注意してください。
+ストレージ アカウント内のすべてのコンテナーを復元することも、1 つまたは複数のコンテナー内の BLOB の範囲を復元することもできます。 BLOB の範囲は、辞書式 (つまり、辞書の順) で定義されます。 復元操作ごとに最大 10 個の辞書式範囲がサポートされます。 範囲の開始は含まれ、範囲の終了は含まれません。
 
-- 開始範囲と終了範囲に指定するコンテナー パターンには、3 文字以上を含める必要があります。 コンテナー名と BLOB 名を区切るために使用されるスラッシュ (/) は、この最小数にはカウントされません。
-- 1 回の復元操作につき最大 10 個の範囲を指定できます。
-- ワイルドカード文字はサポートされていません。 それらは、標準文字として扱われます。
-- 復元操作に渡される範囲に明示的に指定することで、`$root` および `$web` コンテナー内の BLOB を復元できます。 `$root` および `$web` コンテナーは、明示的に指定されている場合にのみ復元されます。 他のシステム コンテナーは復元できません。
+開始範囲と終了範囲に指定するコンテナー パターンには、3 文字以上を含める必要があります。 コンテナー名と BLOB 名を区切るために使用されるスラッシュ (/) は、この最小数にはカウントされません。
+
+ワイルドカード文字は、辞書式の範囲ではサポートされていません。 ワイルドカード文字はすべて、標準文字として扱われます。
+
+復元操作に渡される範囲に明示的に指定することで、`$root` および `$web` コンテナー内の BLOB を復元できます。 `$root` および `$web` コンテナーは、明示的に指定されている場合にのみ復元されます。 他のシステム コンテナーは復元できません。
+
+ブロック BLOB のみが復元されます。 ページ BLOB と追加 BLOB は復元操作に含まれません。 追加 BLOB に関する制限の詳細については、「[ブロック BLOB のポイントインタイム リストア](point-in-time-restore-overview.md)」を参照してください。
 
 > [!IMPORTANT]
 > 復元操作を実行すると、Azure Storage では操作中、復元される範囲内の BLOB に対するデータ操作がブロックされます。 読み取り、書き込み、および削除の各操作がプライマリ ロケーションでブロックされます。 このため、Azure portal でのコンテナーの一覧表示などの操作は、復元操作の実行中に予期したとおりに実行されない場合があります。
@@ -103,29 +111,94 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 
 ### <a name="restore-all-containers-in-the-account"></a>アカウント内のすべてのコンテナーを復元する
 
-ストレージ アカウント内のすべてのコンテナーと BLOB を復元するには、`-BlobRestoreRange` パラメーターを省略して、**Restore-AzStorageBlobRange** コマンドを呼び出します。 次の例は、ストレージ アカウント内のコンテナーを、現時点から 12 時間前の状態に復元します。
+ストレージ アカウント内のすべてのコンテナーを復元して、特定の時点でそれらを以前の状態に戻すことができます。
+
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+Azure portal を使用してストレージ アカウント内のすべてのコンテナーと BLOB を復元するには、これらの手順に従います。
+
+1. ストレージ アカウントのコンテナーの一覧に移動します。
+1. ツールバーで、 **[コンテナーを復元する]** 、 **[すべてを復元する]** の順に選択します。
+1. **[すべてのコンテナーを復元する]** ペインで、日付と時刻を指定して復元ポイントを設定します。
+1. チェックボックスをオンにして続行することを確認します。
+1. **[復元]** を選択して復元操作を開始します。
+
+    :::image type="content" source="media/point-in-time-restore-manage/restore-all-containers-portal.png" alt-text="Azure portal でポイントインタイム リストアを構成する方法を示すスクリーンショット":::
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell を使用してストレージ アカウント内のすべてのコンテナーと BLOB を復元するには、**Restore-AzStorageBlobRange** コマンドを呼び出します。 既定では、**Restore-AzStorageBlobRange** コマンドは非同期的に実行され、**PSBlobRestoreStatus** 型のオブジェクトが返されます。これを使用して、復元操作の状態を確認できます。
+
+次の例では、ストレージ アカウント内のコンテナーを、現時点から 12 時間前の状態に非同期的に復元し、復元操作の一部のプロパティを確認します。
 
 ```powershell
 # Specify -TimeToRestore as a UTC value
-Restore-AzStorageBlobRange -ResourceGroupName $rgName `
+$restoreOperation = Restore-AzStorageBlobRange -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
     -TimeToRestore (Get-Date).AddHours(-12)
+
+# Get the status of the restore operation.
+$restoreOperation.Status
+# Get the ID for the restore operation.
+$restoreOperation.RestoreId
+# Get the restore point in UTC time.
+$restoreOperation.Parameters.TimeToRestore
 ```
 
-### <a name="restore-a-single-range-of-block-blobs"></a>1 つの範囲のブロック BLOB を復元する
-
-1 つの範囲の BLOB を復元するには、**Restore-AzStorageBlobRange** コマンドを呼び出し、`-BlobRestoreRange` パラメーターに対してコンテナーの辞書式範囲と BLOB 名を指定します。 範囲の開始は含まれ、範囲の終了は含まれません。
-
-たとえば、*sample-container* という名前の 1 つのコンテナー内の BLOB を復元するには、*sample-container* で始まり、*sample-container1* で終わる範囲を指定できます。 開始と終了の範囲に指定されたコンテナーが存在している必要はありません。 範囲の終了は除外されるため、ストレージ アカウントに *sample-container1* という名前のコンテナーが含まれていたとしても、*sample-container* という名前のコンテナーだけが復元されます。
+復元操作を同期的に実行するには、コマンドに **-WaitForComplete** パラメーターを含めます。 **-WaitForComplete** パラメーターが存在する場合、PowerShell により、操作の復元 ID を含むメッセージが示され、復元操作が完了するまで実行時にブロックされます。 復元操作に必要な時間の長さは、復元するデータの量によって異なり、大規模な復元操作が完了するまでに最大 1 時間かかる場合があることに注意してください。
 
 ```powershell
-$range = New-AzStorageBlobRangeToRestore -StartRange sample-container -EndRange sample-container1
+Restore-AzStorageBlobRange -ResourceGroupName $rgName `
+    -StorageAccountName $accountName `
+    -TimeToRestore (Get-Date).AddHours(-12) -WaitForComplete
 ```
 
-復元するコンテナー内の BLOB のサブセットを指定するには、スラッシュ (/) を使用して、コンテナー名を BLOB パターンから分離します。 たとえば、次の範囲では、名前が *d* から *f* までの文字で始まる 1 つのコンテナー内の BLOB が選択されます。
+---
+
+### <a name="restore-ranges-of-block-blobs"></a>ブロック BLOB の範囲を復元する
+
+単一のコンテナー内または複数のコンテナー全体の BLOB の 1 つまたは複数の辞書式範囲を復元して、特定の時点でそれらの BLOB を以前の状態に戻すことができます。
+
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+Azure portal を使用して 1 つまたは複数のコンテナー内の BLOB の範囲を復元するには、これらの手順に従います。
+
+1. ストレージ アカウントのコンテナーの一覧に移動します。
+1. 復元するコンテナーを選択します。
+1. ツールバーで、 **[コンテナーを復元する]** 、 **[選択範囲を復元する]** の順に選択します。
+1. **[選択したコンテナーを復元する]** ペインで、日付と時刻を指定して復元ポイントを設定します。
+1. 復元する範囲を指定します。 コンテナー名と BLOB プレフィックスを区切るには、スラッシュ (/) を使用します。
+1. 既定では、 **[選択したコンテナーを復元する]** ペインにより、コンテナー内のすべての BLOB を含む範囲が指定されます。 コンテナー全体を復元しない場合は、この範囲を削除します。 次の画像に既定の範囲が示されています。
+
+    :::image type="content" source="media/point-in-time-restore-manage/delete-default-blob-range.png" alt-text="Azure portal でポイントインタイム リストアを構成する方法を示すスクリーンショット":::
+
+1. チェックボックスをオンにして続行することを確認します。
+1. **[復元]** を選択して復元操作を開始します。
+
+次の画像は、一連の範囲に対する復元操作を示しています。
+
+:::image type="content" source="media/point-in-time-restore-manage/restore-multiple-container-ranges-portal.png" alt-text="Azure portal でポイントインタイム リストアを構成する方法を示すスクリーンショット":::
+
+画像に示されている復元操作では、次の操作を実行します。
+
+- *container1* の完全な内容を復元します。
+- *container2* の *blob1* から *blob5* までの辞書式範囲の BLOB を復元します。 この範囲の場合、*blob1.txt*、*blob11*、*blob100*、*blob2* などの名前を持つ BLOB が復元されます。 範囲の終了は含まれないため、名前が *blob4* で始まる BLOB は復元されますが、名前が *blob5* で始まる BLOB は復元されません。
+- *container3* と *container4* 内のすべての BLOB を復元します。 範囲の最後は含まれないため、この範囲の場合、*container5* は復元されません。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+単一の範囲の BLOB を復元するには、**Restore-AzStorageBlobRange** コマンドを呼び出し、`-BlobRestoreRange` パラメーターに対してコンテナーの辞書式範囲と BLOB 名を指定します。 たとえば、*container1* という名前の単一のコンテナー内の BLOB を復元する場合は、*container1* で始まり、*container2* で終わる範囲を指定できます。 開始と終了の範囲に指定されたコンテナーが存在している必要はありません。 範囲の終了は含まれないため、ストレージ アカウントに *container2* という名前のコンテナーが含まれていたとしても、*container1* という名前のコンテナーのみが復元されます。
 
 ```powershell
-$range = New-AzStorageBlobRangeToRestore -StartRange sample-container/d -EndRange sample-container/g
+$range = New-AzStorageBlobRangeToRestore -StartRange container1 `
+    -EndRange container2
+```
+
+復元するコンテナー内の BLOB のサブセットを指定するには、スラッシュ (/) を使用して、コンテナー名と BLOB プレフィックス パターンを区切ります。 たとえば、次の範囲では、名前が *d* から *f* までの文字で始まる 1 つのコンテナー内の BLOB が選択されます。
+
+```powershell
+$range = New-AzStorageBlobRangeToRestore -StartRange container1/d `
+    -EndRange container1/g
 ```
 
 次に、**Restore-AzStorageBlobRange** コマンドに範囲を指定します。 `-TimeToRestore` パラメーターに UTC **DateTime** 値を指定して、復元ポイントを指定します。 次の例は、指定された範囲の BLOB を、現時点から 3 日前の状態に復元します。
@@ -138,50 +211,44 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
     -TimeToRestore (Get-Date).AddDays(-3)
 ```
 
-### <a name="restore-multiple-ranges-of-block-blobs"></a>複数の範囲のブロック BLOB を復元する
+既定では、**Restore-AzStorageBlobRange** コマンドは非同期的に実行されます。 復元操作を非同期的に開始すると、PowerShell に操作のプロパティのテーブルがすぐに表示されます。  
 
-複数の範囲のブロック BLOB を復元するには、`-BlobRestoreRange` パラメーターに範囲の配列を指定します。 復元操作ごとに最大 10 個の範囲がサポートされます。 次の例では、*container1* と *container4* の完全な内容を復元する 2 つの範囲を指定しています。
+```powershell
+Status     RestoreId                            FailureReason Parameters.TimeToRestore     Parameters.BlobRanges
+------     ---------                            ------------- ------------------------     ---------------------
+InProgress 459c2305-d14a-4394-b02c-48300b368c63               2020-09-15T23:23:07.1490859Z ["container1/d" -> "container1/g"]
+```
+
+複数の範囲のブロック BLOB を復元するには、`-BlobRestoreRange` パラメーターに範囲の配列を指定します。 次の例では、*container1* と *container4* の完全な内容を、24 時間前の状態に復元する 2 つの範囲を指定し、その結果を変数に保存します。
 
 ```powershell
 # Specify a range that includes the complete contents of container1.
-$range1 = New-AzStorageBlobRangeToRestore -StartRange container1 -EndRange container2
+$range1 = New-AzStorageBlobRangeToRestore -StartRange container1 `
+    -EndRange container2
 # Specify a range that includes the complete contents of container4.
-$range2 = New-AzStorageBlobRangeToRestore -StartRange container4 -EndRange container5
+$range2 = New-AzStorageBlobRangeToRestore -StartRange container4 `
+    -EndRange container5
 
-Restore-AzStorageBlobRange -ResourceGroupName $rgName `
+$restoreOperation = Restore-AzStorageBlobRange -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
-    -TimeToRestore (Get-Date).AddMinutes(-30) `
+    -TimeToRestore (Get-Date).AddHours(-24) `
     -BlobRestoreRange @($range1, $range2)
+
+# Get the status of the restore operation.
+$restoreOperation.Status
+# Get the ID for the restore operation.
+$restoreOperation.RestoreId
+# Get the blob ranges specified for the operation.
+$restoreOperation.Parameters.BlobRanges
 ```
 
-### <a name="restore-block-blobs-asynchronously"></a>ブロック BLOB を非同期に復元する
+復元操作を同期的に実行し、完了するまで実行時にブロックするには、コマンドに **-WaitForComplete** パラメーターを含めます。
 
-復元操作を非同期に実行するには、`-AsJob` パラメーターを **AzStorageBlobRange** への呼び出しに追加し、呼び出しの結果を変数に格納します。 **Restore-AzStorageBlobRange** コマンドは、**AzureLongRunningJob** 型のオブジェクトを返します。 このオブジェクトの **State** プロパティをチェックして、復元操作が完了したかどうかを判断できます。 **State** プロパティの値は、**Running** または **Completed** である可能性があります。
+---
 
-次の例は、復元操作を非同期に呼び出す方法を示しています。
+## <a name="next-steps"></a>次の手順
 
-```powershell
-$job = Restore-AzStorageBlobRange -ResourceGroupName $rgName `
-    -StorageAccountName $accountName `
-    -TimeToRestore (Get-Date).AddMinutes(-5) `
-    -AsJob
-
-# Check the state of the job.
-$job.State
-```
-
-実行後に復元操作が完了するまで待機するには、次の例に示すように、[Wait-Job](/powershell/module/microsoft.powershell.core/wait-job) コマンドを呼び出します。
-
-```powershell
-$job | Wait-Job
-```
-
-## <a name="known-issues"></a>既知の問題
-- 追加 BLOB が存在する復元のサブセットの場合、復元は失敗します。 ここでは、アカウントに追加 BLOB が存在する場合は、復元を実行しないようにしてください。
-
-## <a name="next-steps"></a>次のステップ
-
-- [ブロック BLOB のポイントインタイム リストア (プレビュー)](point-in-time-restore-overview.md)
+- [ブロック BLOB のポイントインタイム リストア](point-in-time-restore-overview.md)
 - [論理的な削除](soft-delete-overview.md)
-- [変更フィード (プレビュー)](storage-blob-change-feed.md)
-- [BLOB バージョン管理](versioning-overview.md)
+- [変更フィード](storage-blob-change-feed.md)
+- [BLOB のバージョン管理](versioning-overview.md)

@@ -3,14 +3,14 @@ title: BLOB ストレージ イベントを Web エンドポイントに送信�
 description: Azure Event Grid と Azure Resource Manager テンプレートを使用して BLOB ストレージ アカウントを作成し、そのイベントをサブスクライブします。 Webhook にイベントを送信します。
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 32fc17d1af552afa5a81fbc4a5973d69006742b9
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: fc6216142c6bec99cb12bf4e0bdae920f27f1bf2
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661267"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598356"
 ---
-# <a name="route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>ARM テンプレートを使用して BLOB ストレージ イベントを Web エンドポイントにルーティングする
+# <a name="quickstart-route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>クイック スタート: ARM テンプレートを使用して BLOB ストレージ イベントを Web エンドポイントにルーティングする
 
 Azure Event Grid は、クラウドのイベント処理サービスです。 この記事では、Azure Resource Manager テンプレート (ARM テンプレート) を使用して BLOB ストレージ アカウントを作成し、その BLOB ストレージのイベントをサブスクライブします。次に、イベントをトリガーして結果を表示します。 通常は、イベント データを処理し、アクションを実行するエンドポイントにイベントを送信します。 ただし、この記事では、単純化するために、メッセージを収集して表示する Web アプリにイベントを送信します。
 

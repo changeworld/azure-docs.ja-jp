@@ -1,14 +1,14 @@
 ---
 title: Azure Migrate アプライアンス
-description: サーバーの評価と移行に使用される Azure Migrate アプライアンスの概要について説明します。
+description: Azure Migrate アプライアンスに対するサポートの概要について説明します。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: a313d7b964e6ea849acb5b034ed55975b8c5b524
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: e2bd3f2fa40bbf31713393f18a04624d70cbd244
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927513"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084772"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate アプライアンス
 
@@ -71,7 +71,7 @@ Azure Migrate アプライアンスは、次のシナリオで使用します。
 **PowerShell スクリプト** | この[記事](./deploy-appliance-script.md#set-up-the-appliance-for-hyper-v)を参照してください。<br/><br/> 
 **ソフトウェア/ハードウェア***   |  アプライアンスは、Windows Server 2016、16 GB の RAM、8 つの vCPU、約 80 GB のディスク記憶域、外部仮想スイッチを搭載したコンピューターで実行する必要があります。<br/> アプライアンスには、静的または動的 IP アドレスが必要であり、直接またはプロキシを介したインターネット アクセスが必要です。<br/><br/> アプライアンスを Hyper-V VM として実行する場合、Hyper-V ホスト上に、アプライアンス VM 用の 16 GB の RAM、8 つの vCPU、約 80 GB の記憶域スペース、外部スイッチを割り当てるための十分なリソースが必要です。<br/><br/> 物理マシンでアプライアンスを実行する場合は、Windows Server 2016 を実行しており、ハードウェアの要件を満たしていることを確認します。 
 **Hyper-V の要件** | VHD テンプレートを使用してアプライアンスをデプロイする場合、Azure Migrate によって提供されるアプライアンス VM は、Hyper-V VM バージョン 5.0 です。<br/><br/> Hyper-V ホストで Windows Server 2012 R2 以降が実行されている必要があります。 
-**ハッシュ値 - VHD** | VHD テンプレートのハッシュ値を[確認](tutorial-assess-hyper-v.md#verify-security)します。
+**ハッシュ値 - VHD** | VHD テンプレートのハッシュ値。
 **ハッシュ値 - PowerShell スクリプト** | PowerShell スクリプトのハッシュ値を[確認](deploy-appliance-script.md#verify-file-security)します。
 
 
@@ -84,7 +84,7 @@ Azure Migrate アプライアンスは、次のシナリオで使用します。
 **サポートされるデプロイ** | PowerShell インストール スクリプトを使用して、専用物理マシンまたは VM としてデプロイする。 スクリプトはポータルからダウンロードできます。
 **プロジェクトのサポート** |  単一のプロジェクトにアプライアンスを関連付けることができます。 <br/> 任意の数のアプライアンスを 1 つのプロジェクトに関連付けることができます。<br/> 
 **検出の制限** | 1 つのアプライアンスで最大 1000 台の物理サーバーを検出できます。
-**PowerShell スクリプト** | ポータルから、または[こちら](https://go.microsoft.com/fwlink/?linkid=2140334)から zip 形式のフォルダーでスクリプト (AzureMigrateInstaller.ps1) をダウンロードします。 [詳細については、こちらを参照してください](tutorial-assess-physical.md#set-up-the-azure-migrate-appliance)。<br/><br/> ダウンロード サイズは 85 MB です。
+**PowerShell スクリプト** | ポータルから、または[こちら](https://go.microsoft.com/fwlink/?linkid=2140334)から zip 形式のフォルダーでスクリプト (AzureMigrateInstaller.ps1) をダウンロードします。 [詳細については、こちらを参照してください](tutorial-discover-physical.md)。<br/><br/> ダウンロード サイズは 85 MB です。
 **ソフトウェア/ハードウェア** |  アプライアンスは、Windows Server 2016、16 GB の RAM、8 つの vCPU、約 80 GB のディスク記憶域、外部仮想スイッチを搭載したコンピューターで実行する必要があります。<br/> アプライアンスには、静的または動的 IP アドレスが必要であり、直接またはプロキシを介したインターネット アクセスが必要です。<br/><br/> 物理マシンでアプライアンスを実行する場合は、Windows Server 2016 を実行しており、ハードウェアの要件を満たしていることを確認します。<br/> Windows Server 2019 を搭載したコンピューターでのアプライアンスの実行はサポートされていません。
 **ハッシュ値** | PowerShell スクリプトのハッシュ値を[確認](deploy-appliance-script.md#verify-file-security)します。
 
@@ -101,7 +101,7 @@ Azure Migrate アプライアンスには、インターネットへの接続が
 **URL** | **詳細**  
 --- | --- |
 *.portal.azure.com  | Azure Portal に移動します。
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | Azure サブスクリプションにサインインします。
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com <br/> *.office.com | Azure サブスクリプションにサインインします。
 *.microsoftonline.com <br/> *.microsoftonline-p.com | アプライアンスで Azure Migrate と通信するための Azure Active Directory (AD) アプリを作成します。
 management.azure.com | アプライアンスで Azure Migrate サービスと通信するための Azure AD アプリを作成します。
 *.services.visualstudio.com | 内部監視に使用するアプリ ログをアップロードします。
@@ -121,7 +121,7 @@ download.microsoft.com/download | Microsoft ダウンロードからのダウン
 graph.windows.net | Azure サブスクリプションにサインインします。
 login.microsoftonline.us  | アプライアンスで Azure Migrate と通信するための Azure Active Directory (AD) アプリを作成します。
 management.usgovcloudapi.net | アプライアンスで Azure Migrate サービスと通信するための Azure AD アプリを作成します。
-dc.services.visualstudio.com | 内部監視に使用するアプリ ログをアップロードします。
+*.services.visualstudio.com | 内部監視に使用するアプリ ログをアップロードします。
 *.vault.usgovcloudapi.net | Azure Key Vault でシークレットを管理します。
 aka.ms/* | aka リンクへのアクセスを許可します。 Azure Migrate アプライアンスの更新に使用されます。
 download.microsoft.com/download | Microsoft ダウンロードからのダウンロードを許可します。

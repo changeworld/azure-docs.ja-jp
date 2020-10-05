@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: ramamill
-ms.openlocfilehash: 19d6933497b469148687dc9c5012513ab7d0314b
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 14f0eaee1ede4da3b80ddd94d5c915438e97f8f4
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047209"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530065"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>VMware VM と物理サーバーのためのモビリティ サービスについて
 
@@ -37,7 +37,7 @@ ms.locfileid: "89047209"
 
 - プッシュ インストールのすべての[前提条件](vmware-azure-install-mobility-service.md)を満たしていることを確認します。
 - すべてのサーバー構成が、[VMware VM と物理サーバーの Azure へのディザスター リカバリーに関するサポート マトリックス](vmware-physical-azure-support-matrix.md)にある条件を満たしていることを確認します。
-- [9.36 バージョン](https://support.microsoft.com/help/4578241/)以降の SUSE Linux Enterprise Server 11 SP4 については、最新のインストーラーが[構成サーバーとスケールアウト プロセス サーバーで使用できる](#download-latest-mobility-agent-installer-for-suse-11-sp3-server)ことを確認してください
+- 9\.36 バージョン以降の SUSE Linux Enterprise Server 11 SP3、RHEL 5、CentOS 5、Debian 7 については、最新のインストーラーが[構成サーバーとスケールアウト プロセス サーバーで確実に使用できる](#download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server)ようにしてください。
 
 プッシュ インストールのワークフローは、以降のセクションで説明されています。
 
@@ -85,15 +85,15 @@ ms.locfileid: "89047209"
 
 1. **[インストールの進行状況]** でインストールを監視します。 インストールが完了したら、 **[Proceed to Configuration]\(構成に進む\)** を選択して、構成サーバーにサービスを登録します。
 
-    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility3.png" alt-text="モビリティ サービスの登録ページ。":::
+    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility3.png" alt-text="モビリティ サービスのインストール オプションのページ。":::
 
 1. **[構成サーバーの詳細]** で、構成した IP アドレスとパスフレーズを指定します。
 
-    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility4.png" alt-text="モビリティ サービスの登録ページ。":::
+    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility4.png" alt-text="モビリティ サービスのインストール オプションのページ。":::
 
 1. **[登録]** を選択して登録を完了します。
 
-    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility5.png" alt-text="モビリティ サービスの登録の最後のページ。":::
+    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility5.png" alt-text="モビリティ サービスのインストール オプションのページ。":::
 
 ## <a name="install-the-mobility-service-using-command-prompt"></a>コマンド プロンプトを使用してモビリティ サービスをインストールする
 
@@ -202,30 +202,62 @@ ms.locfileid: "89047209"
 インストーラー ファイル | オペレーティング システム (64 ビットのみ)
 --- | ---
 `Microsoft-ASR_UA_version_Windows_GA_date_release.exe` | Windows Server 2016 </br> Windows Server 2012 R2 </br> Windows Server 2012 </br> Windows Server 2008 R2 SP1
+[このフォルダーに手動でダウンロードして配置します](#rhel-5-or-centos-5-server) | Red Hat Enterprise Linux (RHEL) 5 </br> CentOS 5
 `Microsoft-ASR_UA_version_RHEL6-64_GA_date_release.tar.gz` | Red Hat Enterprise Linux (RHEL) 6 </br> CentOS 6
 `Microsoft-ASR_UA_version_RHEL7-64_GA_date_release.tar.gz` | Red Hat Enterprise Linux (RHEL) 7 </br> CentOS 7
+`Microsoft-ASR_UA_version_RHEL8-64_GA_date_release.tar.gz` | Red Hat Enterprise Linux (RHEL) 8 </br> CentOS 8
 `Microsoft-ASR_UA_version_SLES12-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 12 SP1 </br> SP2 と SP3 が含まれます。
-[このフォルダーに手動でダウンロードして配置します。](#download-latest-mobility-agent-installer-for-suse-11-sp3-server) | SUSE Linux Enterprise Server 11 SP3
+[このフォルダーに手動でダウンロードして配置します](#suse-11-sp3-server) | SUSE Linux Enterprise Server 11 SP3
 `Microsoft-ASR_UA_version_SLES11-SP4-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 11 SP4
+`Microsoft-ASR_UA_version_SLES15-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 15 
 `Microsoft-ASR_UA_version_OL6-64_GA_date_release.tar.gz` | Oracle Enterprise Linux 6.4 </br> Oracle Enterprise Linux 6.5
+`Microsoft-ASR_UA_version_OL7-64_GA_date_release.tar.gz` | Oracle Enterprise Linux 7 
+`Microsoft-ASR_UA_version_OL8-64_GA_date_release.tar.gz` | Oracle Enterprise Linux 8
 `Microsoft-ASR_UA_version_UBUNTU-14.04-64_GA_date_release.tar.gz` | Ubuntu Linux 14.04
 `Microsoft-ASR_UA_version_UBUNTU-16.04-64_GA_date_release.tar.gz` | Ubuntu Linux 16.04 LTS サーバー
-`Microsoft-ASR_UA_version_DEBIAN7-64_GA_date_release.tar.gz` | Debian 7
+`Microsoft-ASR_UA_version_UBUNTU-18.04-64_GA_date_release.tar.gz` | Ubuntu Linux 18.04 LTS サーバー
+`Microsoft-ASR_UA_version_UBUNTU-20.04-64_GA_date_release.tar.gz` | Ubuntu Linux 20.04 LTS サーバー
+[このフォルダーに手動でダウンロードして配置します](#debian-7-server) | Debian 7
 `Microsoft-ASR_UA_version_DEBIAN8-64_GA_date_release.tar.gz` | Debian 8
+`Microsoft-ASR_UA_version_DEBIAN9-64_GA_date_release.tar.gz` | Debian 9
 
-### <a name="download-latest-mobility-agent-installer-for-suse-11-sp3-server"></a>SUSE 11 SP3 サーバー用の最新のモビリティ エージェント インストーラーをダウンロードする
+## <a name="download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server"></a>SUSE 11 SP3、RHEL 5、Debian 7 サーバー用の最新のモビリティ エージェント インストーラーをダウンロードします
 
-[9.36 バージョン](https://support.microsoft.com/help/4578241/)以降の **SUSE Linux Enterprise Server 11 SP3 マシンをアップデートまたは保護するための前提条件**には、以下があります。
+### <a name="suse-11-sp3-server"></a>SUSE 11 SP3 サーバー
+
+9.36 バージョン以降の **SUSE Linux Enterprise Server 11 SP3 マシンをアップデートまたは保護するための前提条件**には、以下があります。
 
 1. 最新のモビリティ エージェント インストーラーが Microsoft ダウンロード センターからダウンロードされ、構成サーバーおよびすべてのスケールアウト プロセス サーバーのプッシュ インストーラー リポジトリに配置されていることを確認します
-2. SUSE Linux Enterprise Server 11 SP3 エージェント インストーラーを[ダウンロード](https://download.microsoft.com/download/0/3/4/0341b388-1ff5-4ead-b197-7cf6d2bb3e40/Microsoft-ASR_UA_9.36.0.0_SLES11-SP3-64_GA_06Aug2020_release.tar.gz)します。
-3. 構成サーバーに移動し、次のパスに SUSE Linux Enterprise Server 11 SP3 エージェント インストーラーをコピーします
-    1. INSTALL_DIR\home\svsystems\pushinstallsvc\repository
-    1.  INSTALL_DIR\home\svsystems\admin\web\sw folders
-4. 次に、関連付けられているスケールアウト プロセス サーバーに移動し、3 番目の手順に記載されている両方のパスにインストーラーをコピーします。
-5. **たとえば**、インストール パスが C:\Program Files (x86)\Microsoft Azure Site Recovery の場合、前述のディレクトリは次のようになります。
+2. 最新の SUSE Linux Enterprise Server 11 SP3 エージェント インストーラーを[ダウンロード](site-recovery-whats-new.md)します。 最新のモビリティ エージェント バージョンは [9.37](https://support.microsoft.com/help/4582666/) です
+3. 構成サーバーに移動し、次のパスに SUSE Linux Enterprise Server 11 SP3 エージェント インストーラーをコピーします: INSTALL_DIR\home\svsystems\pushinstallsvc\repository
+1. 最新のインストーラーをコピーしたら、InMage PushInstall サービスを再起動します。 
+1. 次に、関連するスケールアウト プロセス サーバーに移動し、手順 3 と手順 4 を繰り返します。
+1. **たとえば**、インストール パスが C:\Program Files (x86)\Microsoft Azure Site Recovery の場合、前述のディレクトリは次のようになります。
     1. C:\Program Files (x86)\Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository
-    1. C:\Program Files (x86)\Microsoft Azure Site Recovery\home\svsystems\admin\web\sw path
+
+### <a name="rhel-5-or-centos-5-server"></a>RHEL 5 または CentOS 5 サーバー
+
+バージョン 9.36 以降の **RHEL 5 マシンを更新または保護するための前提条件**には、以下があります。
+
+1. 最新のモビリティ エージェント インストーラーが Microsoft ダウンロード センターからダウンロードされ、構成サーバーおよびすべてのスケールアウト プロセス サーバーのプッシュ インストーラー リポジトリに配置されていることを確認します
+2. 最新の RHEL 5 または CentOS 5 エージェント インストーラーを[ダウンロード](site-recovery-whats-new.md)します。 最新のモビリティ エージェント バージョンは [9.37](https://support.microsoft.com/help/4582666/) です
+3. 構成サーバーに移動し、次のパスに RHEL 5 または CentOS 5 エージェント インストーラーをコピーします: INSTALL_DIR\home\svsystems\pushinstallsvc\repository
+1. 最新のインストーラーをコピーしたら、InMage PushInstall サービスを再起動します。 
+1. 次に、関連するスケールアウト プロセス サーバーに移動し、手順 3 と手順 4 を繰り返します。
+1. **たとえば**、インストール パスが C:\Program Files (x86)\Microsoft Azure Site Recovery の場合、前述のディレクトリは次のようになります。
+    1. C:\Program Files (x86)\Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository
+
+## <a name="debian-7-server"></a>Debian 7 サーバー
+
+バージョン 9.36 以降の **Debian 7 マシンを更新または保護するための前提条件**には、以下があります。
+
+1. 最新のモビリティ エージェント インストーラーが Microsoft ダウンロード センターからダウンロードされ、構成サーバーおよびすべてのスケールアウト プロセス サーバーのプッシュ インストーラー リポジトリに配置されていることを確認します
+2. 最新の Debian 7 エージェント インストーラーを[ダウンロード](site-recovery-whats-new.md)します。 最新のモビリティ エージェント バージョンは [9.37](https://support.microsoft.com/help/4582666/) です
+3. 構成サーバーに移動し、次のパスに Debian 7 エージェント インストーラーをコピーします: INSTALL_DIR\home\svsystems\pushinstallsvc\repository
+1. 最新のインストーラーをコピーしたら、InMage PushInstall サービスを再起動します。 
+1. 次に、関連するスケールアウト プロセス サーバーに移動し、手順 3 と手順 4 を繰り返します。
+1. **たとえば**、インストール パスが C:\Program Files (x86)\Microsoft Azure Site Recovery の場合、前述のディレクトリは次のようになります。
+    1. C:\Program Files (x86)\Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository
 
 ## <a name="next-steps"></a>次のステップ
 

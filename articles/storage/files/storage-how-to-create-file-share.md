@@ -9,12 +9,12 @@ ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 236134887728ebc3dd4d03fa4c9d9d450b39eac2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 728db85e7b5afab676612d908e2ba420c7582194
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930674"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645571"
 ---
 # <a name="create-an-azure-file-share"></a>Azure ファイル共有を作成する
 Azure ファイル共有を作成するには、その使用方法について 3 つの質問に答える必要があります。
@@ -231,7 +231,7 @@ az storage share create \
 > ファイル共有の名前はすべて小文字にする必要があります。 ファイル共有およびファイルへの名前付けの詳細については、「 [Naming and Referencing Shares, Directories, Files, and Metadata (共有、ディレクトリ、ファイル、およびメタデータの名前付けおよび参照)](https://msdn.microsoft.com/library/azure/dn167011.aspx)」を参照してください。
 
 ### <a name="create-a-hot-or-cool-file-share"></a>ホット ファイル共有またはクールファイル共有を作成する
-**General Purpose v2 (GPv2) ストレージ アカウント**のファイル共有には、トランザクション最適化ホット ファイル共有またはクール ファイル共有 (またはそれらの混合) が含まれます。 トランザクション最適化共有は、すべての Azure リージョンで利用できますが、ホット ファイル共有とクール ファイル共有は、[リージョンのサブセット](storage-files-planning.md#storage-tiers)でのみ利用できます。 Azure PowerShell プレビュー モジュールまたは Azure CLI を使用して、ホット ファイル共有またはクール ファイル共有を作成できます。 
+**General Purpose v2 (GPv2) ストレージ アカウント**には、トランザクション最適化ホット ファイル共有またはクール ファイル共有 (またはそれらの混合) が含まれます。 トランザクション最適化共有は、すべての Azure リージョンで利用できますが、ホット ファイル共有とクール ファイル共有は、[リージョンのサブセット](storage-files-planning.md#storage-tiers)でのみ利用できます。 Azure PowerShell プレビュー モジュールまたは Azure CLI を使用して、ホット ファイル共有またはクール ファイル共有を作成できます。 
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 Azure portal では、ホット ファイル共有とクール ファイル共有の作成、または既存のトランザクション最適化ファイル共有のホットやクールへの移動は、まだサポートされていません。 PowerShell または Azure CLI でファイル共有を作成するための手順を確認してください。

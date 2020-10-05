@@ -65,7 +65,7 @@
       href: load-balancer-multivip-overview.md
     - name: 送信接続
       href: load-balancer-outbound-connections.md
-    - name: アイドル タイムアウトの TCP リセット
+    - name: TCP リセットと TCP アイドル タイムアウト
       href: load-balancer-tcp-reset.md
     - name: Standard Load Balancer と可用性ゾーン
       href: load-balancer-standard-availability-zones.md

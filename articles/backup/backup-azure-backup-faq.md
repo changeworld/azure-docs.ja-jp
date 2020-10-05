@@ -3,12 +3,12 @@ title: よく寄せられる質問に対する回答
 description: '一般的な質問への回答:Recovery Services コンテナーを含む Azure Backup の機能、バックアップの対象、しくみ、暗号化、制限。 '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 16ee9fa94f8c6d5ee97c35833b4cee908750bc0a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 26d833dfea214c5f29b77c2ac34a5f8863c7fbc0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017738"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986416"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - よく寄せられる質問
 
@@ -45,7 +45,7 @@ ms.locfileid: "89017738"
 
 いいえ。 コンテナーに保存されているバックアップ データを別のコンテナーに移行することはできません。
 
-### <a name="can-i-change-from-grs-to-lrs-after-a-backup"></a>バックアップ後に GRS から LRS へ変更することはできますか?
+### <a name="can-i-change-the-storage-redundancy-setting-after-a-backup"></a>バックアップ後、ストレージの冗長設定を変更できますか。
 
 既定では、ストレージ レプリケーションの種類は geo 冗長ストレージ (GRS) に設定されています。 バックアップを構成すると、変更オプションは無効になり、変更できなくなります。
 

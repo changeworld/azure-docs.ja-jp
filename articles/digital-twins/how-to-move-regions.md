@@ -8,16 +8,16 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: c8f78af8753de0eadc26585adacf04f54c2eb750
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: e2cb8ee282666d7a9a567ca04762b26de3b3b9bd
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300743"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89443043"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Azure Digital Twins インスタンスを別の Azure リージョンに移動する
 
-Azure Digital Twins インスタンスをリージョン間で移動する必要がある場合、現在のプロセスでは、**新しいリージョンでリソースを再作成**してから、(必要に応じて) 元のリソースを削除します。 このプロセスの終わりには、更新された場所を除いて最初のものと同じである新しい Azure Digital Twins インスタンスを操作することになります。
+Azure Digital Twins インスタンスをリージョン間で移動する必要がある場合、現在のプロセスでは、**新しいリージョンでリソースを再作成**してから、元のリソースを削除します。 このプロセスの終わりには、更新された場所を除いて最初のものと同じである新しい Azure Digital Twins インスタンスを操作することになります。
 
 この記事では、新しいインスタンスを元のインスタンスと一致させるために必要なすべてをコピーして、完全な移動を実行する方法についてのガイダンスを提供します。
 
@@ -28,7 +28,7 @@ Azure Digital Twins インスタンスをリージョン間で移動する必要
     - 元のモデル、ツイン、グラフをアップロードします。
     - エンドポイントとルートを再作成します。
     - 接続されたリソースを再リンクします。
-4. ソース リソースのクリーンアップ (省略可能): 元のインスタンスを削除します。
+4. ソース リソースのクリーンアップ: 元のインスタンスを削除します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -53,14 +53,28 @@ Azure Digital Twins インスタンスを再作成する前に、元のインス
 
 ## <a name="prepare"></a>準備
 
-このセクションでは、元のインスタンスから**元のモデル、ツイン、グラフをダウンロード**することによってインスタンスを再作成するための準備をします。 これは、[Azure Digital Twins (ADT) エクスプローラー](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) サンプルを使用して行います。
+このセクションでは、元のインスタンスから**元のモデル、ツイン、グラフをダウンロード**することによってインスタンスを再作成するための準備をします。 これを行うために、この記事では、[Azure Digital Twins (ADT) Explorer](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) サンプルを使用しています。
 
 >[!NOTE]
 >モデルやグラフを含むファイルがインスタンスに既に存在している場合があります。 その場合、すべてを再度ダウンロードする必要はありません。不足しているものや、これらのファイルを最初にアップロードした後に変更された可能性があるもの (新しいデータで更新された可能性があるツインなど) のみをダウンロードしてください。
 
+### <a name="limitations-of-adt-explorer"></a>ADT Explorer の制限事項
+
+[Azure Digital Twins (ADT) Explorer サンプル](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)は、グラフの視覚的な表現をサポートするクライアント アプリのサンプルであり、インスタンスとの視覚的な対話機能を備えています。 この記事では、これを使用して、モデル、ツイン、グラフをダウンロードして、後で再アップロードする方法について説明します。
+
+ただし、これは**サンプル**であって、完全なツールではないことにご注意ください。 ストレス テストが行われておらず、大きなサイズのグラフを処理するように構築されていませんでした。 そのため、次のようなすぐに使えるサンプルの制限事項に留意してください。
+* このサンプルは現在、最大 1,000 ノードと 2,000 のリレーションシップのグラフ サイズでのみテストされています
+* このサンプルは、断続的なエラーが発生した場合の再試行はサポートしません
+* このサンプルでは、アップロードされたデータが不完全かどうかについて、ユーザーに通知を行いません
+* このサンプルでは、メモリなどの使用可能なリソースを超える非常に大きなグラフによって発生したエラーは処理されません
+
+お使いのグラフのサイズをこのサンプルで処理できない場合は、他の Azure Digital Twins 開発者ツールを使用してグラフをエクスポートおよびインポートできます。
+* [Azure Digital Twins CLI コマンド](how-to-use-cli.md)
+* [Azure Digital Twins API および SDK](how-to-use-apis-sdks.md)
+
 ### <a name="set-up-adt-explorer-application"></a>ADT エクスプローラー アプリケーションの設定
 
-まず、サンプル アプリケーション コードをダウンロードし、コンピューター上で実行するために設定します。 
+ADT Explorer の設定を進めるには、まず、サンプル アプリケーション コードをダウンロードして設定し、コンピューター上で実行します。 
 
 サンプルにはこちらからアクセスします: [Azure Digital Twins (ADT) エクスプローラー](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)。 *[Download ZIP]\(ZIP のダウンロード\)* ボタンをクリックして、このサンプル コードの *.ZIP* ファイルを _**ADT_Explorer.zip**_ としてご自分のマシンにダウンロードしてください。 ファイルを解凍します。
 
@@ -74,7 +88,7 @@ Azure Digital Twins インスタンスを再作成する前に、元のインス
 
 接続を確認するには、 *[クエリの実行]* ボタンをクリックして既定のクエリを実行します。このクエリにより、 *[グラフ エクスプローラー]* ボックスのグラフにすべてのツインとリレーションシップが表示されます。
 
-:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="ウィンドウ上部付近にある [クエリの実行] ボタンが強調表示されている" lightbox="media/how-to-move-regions/run-query.png":::
+:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="localhost:3000 で実行中のアプリがブラウザー ウィンドウに表示されている。このアプリは ADT エクスプローラーと呼ばれ、クエリ エクスプローラー、モデル ビュー、グラフ ビュー、プロパティ エクスプローラーのボックスが存在する。画面上にはまだデータが入力されていない。" lightbox="media/how-to-move-regions/run-query.png":::
 
 この記事の後半で、ADT エクスプローラーを再び使用して、これらのアイテムをターゲット リージョンの新しいインスタンスに再アップロードします。そのため、ADT エクスプローラーは実行したままでかまいません。
 
@@ -86,7 +100,7 @@ Azure Digital Twins インスタンスを再作成する前に、元のインス
  
 次に、 *[グラフ ビュー]* ボックス内の *[グラフのエクスポート]* アイコンをクリックします。
 
-:::image type="content" source="media/how-to-move-regions/export-graph.png" alt-text="[グラフ ビュー] ボックスで強調表示されているアイコン。クラウドから外に向かう矢印を示している。" lightbox="media/how-to-move-regions/export-graph.png":::
+:::image type="content" source="media/how-to-move-regions/export-graph.png" alt-text="localhost:3000 で実行中のアプリがブラウザー ウィンドウに表示されている。このアプリは ADT エクスプローラーと呼ばれ、クエリ エクスプローラー、モデル ビュー、グラフ ビュー、プロパティ エクスプローラーのボックスが存在する。画面上にはまだデータが入力されていない。" lightbox="media/how-to-move-regions/export-graph.png":::
 
 これにより、 *[グラフ ビュー]* で *[ダウンロード]* リンクが有効になります。 これを選択して、モデル、ツイン、リレーションシップなど、クエリ結果の JSON ベースの表現をダウンロードします。 これにより、 *.json* ファイルがコンピューターにダウンロードされます。
 
@@ -122,7 +136,7 @@ Azure Digital Twins インスタンスを再作成する前に、元のインス
 
 ADT エクスプローラーは現在、元の Azure Digital Twins インスタンスに接続しています。 ウィンドウの上部にある *[サインイン]* ボタンをクリックして、新しいインスタンスを指すように接続を切り替えます。 
 
-:::image type="content" source="media/how-to-move-regions/sign-in.png" alt-text="ADT エクスプローラーのウィンドウ上部付近にあるサインイン アイコンが強調表示されている。このアイコンには、人のシンプルなシルエットに鍵のシルエットが重なるように表示されている。" lightbox="media/how-to-move-regions/sign-in.png":::
+:::image type="content" source="media/how-to-move-regions/sign-in.png" alt-text="localhost:3000 で実行中のアプリがブラウザー ウィンドウに表示されている。このアプリは ADT エクスプローラーと呼ばれ、クエリ エクスプローラー、モデル ビュー、グラフ ビュー、プロパティ エクスプローラーのボックスが存在する。画面上にはまだデータが入力されていない。" lightbox="media/how-to-move-regions/sign-in.png":::
 
 アプリの登録を再利用しているので、必要なのは *ADT URL* を置き換えることだけです。 この値を *https://{新しいインスタンスのホスト名}* に変更します。
 
@@ -134,7 +148,7 @@ ADT エクスプローラーは現在、元の Azure Digital Twins インスタ�
 
 **モデル、ツイン、グラフ**をアップロードするには、 *[グラフ ビュー]* ボックスにある *[グラフのインポート]* アイコンをクリックします。 このオプションは、(グラフで現在使用されていないモデルも含めて) これら 3 つのコンポーネントすべてを一度にアップロードします。
 
-:::image type="content" source="media/how-to-move-regions/import-graph.png" alt-text="[グラフ ビュー] ボックスで強調表示されているアイコン。クラウドに向かう矢印を示している。" lightbox="media/how-to-move-regions/import-graph.png":::
+:::image type="content" source="media/how-to-move-regions/import-graph.png" alt-text="localhost:3000 で実行中のアプリがブラウザー ウィンドウに表示されている。このアプリは ADT エクスプローラーと呼ばれ、クエリ エクスプローラー、モデル ビュー、グラフ ビュー、プロパティ エクスプローラーのボックスが存在する。画面上にはまだデータが入力されていない。" lightbox="media/how-to-move-regions/import-graph.png":::
 
 ファイル選択ボックスで、ダウンロードしたグラフに移動します。 グラフの *.json* ファイルを選択して *[開く]* をクリックします。
 
@@ -144,7 +158,7 @@ ADT エクスプローラーは現在、元の Azure Digital Twins インスタ�
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-move-regions/graph-preview-save.png" alt-text="[Graph Preview]\(グラフのプレビュー\) ペインで強調表示されている [保存] アイコン" lightbox="media/how-to-move-regions/graph-preview-save.png":::
+        :::image type="content" source="media/how-to-move-regions/graph-preview-save.png" alt-text="localhost:3000 で実行中のアプリがブラウザー ウィンドウに表示されている。このアプリは ADT エクスプローラーと呼ばれ、クエリ エクスプローラー、モデル ビュー、グラフ ビュー、プロパティ エクスプローラーのボックスが存在する。画面上にはまだデータが入力されていない。" lightbox="media/how-to-move-regions/graph-preview-save.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -154,7 +168,7 @@ ADT エクスプローラーにより、(ツインとリレーションシップ
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-move-regions/import-success.png" alt-text="グラフのインポート成功を示すダイアログ ボックス。インポートに成功し、2 つのモデル、4 つのツイン、2 つのリレーションシップがインポートされたことを示している。" lightbox="media/how-to-move-regions/import-success.png":::
+        :::image type="content" source="media/how-to-move-regions/import-success.png" alt-text="localhost:3000 で実行中のアプリがブラウザー ウィンドウに表示されている。このアプリは ADT エクスプローラーと呼ばれ、クエリ エクスプローラー、モデル ビュー、グラフ ビュー、プロパティ エクスプローラーのボックスが存在する。画面上にはまだデータが入力されていない。" lightbox="media/how-to-move-regions/import-success.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -164,11 +178,11 @@ ADT エクスプローラーにより、(ツインとリレーションシップ
 
 すべてが正常にアップロードされたことを確認するには、 *[グラフ エクスプローラー]* ボックスにある *[クエリの実行]* ボタンをクリックして、すべてのツインとリレーションシップをグラフに表示する既定のクエリを実行します。 これにより、 *[モデル ビュー]* のモデルの一覧も更新されます。
 
-:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="ウィンドウ上部付近にある、以前と同じ [クエリの実行] ボタンが強調表示されている" lightbox="media/how-to-move-regions/run-query.png":::
+:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="localhost:3000 で実行中のアプリがブラウザー ウィンドウに表示されている。このアプリは ADT エクスプローラーと呼ばれ、クエリ エクスプローラー、モデル ビュー、グラフ ビュー、プロパティ エクスプローラーのボックスが存在する。画面上にはまだデータが入力されていない。" lightbox="media/how-to-move-regions/run-query.png":::
 
 すべてのツインとリレーションシップを表示したグラフが *[グラフ エクスプローラー]* ボックスに表示されます。 *[モデル ビュー]* ボックスにもモデルの一覧が表示されます。
 
-:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="[モデル ビュー] ボックス内で強調表示された 2 つのモデルと、[グラフ エクスプローラー] ボックス内で強調表示されたグラフを表示する ADT エクスプローラーのビュー" lightbox="media/how-to-move-regions/post-upload.png":::
+:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="localhost:3000 で実行中のアプリがブラウザー ウィンドウに表示されている。このアプリは ADT エクスプローラーと呼ばれ、クエリ エクスプローラー、モデル ビュー、グラフ ビュー、プロパティ エクスプローラーのボックスが存在する。画面上にはまだデータが入力されていない。" lightbox="media/how-to-move-regions/post-upload.png":::
 
 これにより、モデル、ツイン、グラフがターゲット リージョンの新しいインスタンスに再アップロードされたことが確認できます。
 
@@ -210,9 +224,9 @@ ADT エクスプローラーにより、(ツインとリレーションシップ
 
 元のインスタンスで実行していたカスタム アプリやエンドツーエンド フローを実行してみることもでき、これは、それらが新しいインスタンスで正しく動作していることの確認に役立ちます。
 
-## <a name="clean-up-source-resources-optional"></a>ソース リソースのクリーンアップ (省略可能)
+## <a name="clean-up-source-resources"></a>ソース リソースをクリーンアップする
 
-これで、元のインスタンスのデータと接続のコピーを使用して新しいインスタンスがターゲット リージョンに設定されたので、必要に応じて**元のインスタンスを削除**することができます。
+これで、元のインスタンスのデータと接続のコピーを使用して新しいインスタンスがターゲット リージョンに設定されたので、**元のインスタンスを削除**することができます。
 
 これは [Azure portal](https://portal.azure.com)、[CLI](how-to-use-cli.md)、または[コントロール プレーン API](how-to-use-apis-sdks.md#overview-control-plane-apis) を使用して実行できます。
 
@@ -220,4 +234,4 @@ Azure portal を使用してインスタンスを削除するには、ブラウ�
 
 *[削除]* ボタンをクリックし、画面の指示に従って削除を完了します。
 
-:::image type="content" source="media/how-to-move-regions/delete-instance.png" alt-text="Azure portal の [概要] タブでの Azure Digital Twins インスタンスの詳細のビュー。[削除] ボタンが強調表示されている":::
+:::image type="content" source="media/how-to-move-regions/delete-instance.png" alt-text="localhost:3000 で実行中のアプリがブラウザー ウィンドウに表示されている。このアプリは ADT エクスプローラーと呼ばれ、クエリ エクスプローラー、モデル ビュー、グラフ ビュー、プロパティ エクスプローラーのボックスが存在する。画面上にはまだデータが入力されていない。":::

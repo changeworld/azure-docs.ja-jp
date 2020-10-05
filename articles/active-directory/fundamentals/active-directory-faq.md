@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0847329bc1bc1a2d6242a9485453a3daf315c3fe
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: afb6adc38fd44366b837119518622dd8931f9096
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318320"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565567"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Azure Active Directory についてよくあるご質問
 Azure Active Directory (Azure AD) は、包括的なサービスとしての ID (IDaaS) ソリューションです。その範囲は ID、アクセス管理、セキュリティのあらゆる面に及びます。
@@ -29,7 +29,7 @@ Azure Active Directory (Azure AD) は、包括的なサービスとしての ID 
 ## <a name="access-azure-and-azure-active-directory"></a>Azure と Azure Active Directory へのアクセス
 **Q:Azure portal で Azure AD にアクセスしようとすると、"サブスクリプションが見つかりません" と表示されるのはなぜですか。**
 
-**A:** Azure portal にアクセスするには、各ユーザーは Azure サブスクリプションを使用したアクセス許可が必要です。 有料の Office 365 または Azure AD サブスクリプションをお持ちでない場合は、無料の [Azure アカウント](https://azure.microsoft.com/free/
+**A:** Azure portal にアクセスするには、各ユーザーは Azure サブスクリプションを使用したアクセス許可が必要です。 有料の Microsoft 365 または Azure AD サブスクリプションをお持ちでない場合は、無料の [Azure アカウント](https://azure.microsoft.com/free/
 )または有料サブスクリプションをアクティブ化する必要があります。
 
 詳細については、次を参照してください。
@@ -37,13 +37,13 @@ Azure Active Directory (Azure AD) は、包括的なサービスとしての ID 
 * [Azure サブスクリプションを Azure Active Directory に関連付ける方法](active-directory-how-subscriptions-associated-directory.md)
 
 ---
-**Q:Azure AD、Office 365、Azure の関係はどうなっていますか。**
+**Q:Azure AD、Microsoft 365、Azure の関係はどうなっていますか。**
 
-**A:** Azure AD を使用すると、すべての Web サービスに共通の ID とアクセス機能が提供されます。 Office 365、Microsoft Azure、Intune などのサービスをご利用の場合は、Azure AD を既に使用しているため、これらのサービスすべてでサインオンとアクセス管理が有効になります。
+**A:** Azure AD を使用すると、すべての Web サービスに共通の ID とアクセス機能が提供されます。 Microsoft 365、Microsoft Azure、Intune などのサービスをご利用の場合は、Azure AD を既に使用しているため、これらのサービスすべてでサインオンとアクセス管理が有効になります。
 
 Web サービスを使用するように設定されていないユーザーはすべて、1 つ以上の Azure AD インスタンス内のユーザー アカウントとして定義されます。 これらのアカウントは、クラウド アプリケーション アクセスなど、無料の Azure AD 機能に対して設定できます。
 
-Azure AD 有料サービス (Enterprise Mobility + Security など) は、エンタープライズ規模の包括的な管理ソリューションとセキュリティ ソリューションによって、Office 365 や Microsoft Azure などの他の Web サービスを補完します。
+Azure AD 有料サービス (Enterprise Mobility + Security など) は、エンタープライズ規模の包括的な管理ソリューションとセキュリティ ソリューションによって、Microsoft 365 や Microsoft Azure などの他の Web サービスを補完します。
 
 ---
 
@@ -55,7 +55,7 @@ Azure AD 有料サービス (Enterprise Mobility + Security など) は、エン
 
 既定では、Azure サブスクリプションにサインアップしたユーザーには、ディレクトリの全体管理者ロールが割り当てられます。 全体管理者は、すべての Azure AD ディレクトリ機能にアクセスできます。 Azure AD には、ディレクトリおよび ID 関連の機能を管理するために異なる管理者ロールのセットがあります。 これらの管理者は、Azure portal のさまざまな機能にアクセスできるようになります。 管理者のロールによって、ユーザーの作成または編集、他のユーザーへの管理者ロールの割り当て、ユーザー パスワードのリセット、ユーザー ライセンスの管理、ドメインの管理など、管理者が実行できる操作が決まります。  Azure AD ディレクトリ管理者とそのロールの詳細については、「[Azure Active Directory でユーザーを管理者ロールに割り当てる](active-directory-users-assign-role-azure-portal.md)」と「[Azure Active Directory での管理者ロールのアクセス許可](../users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
 
-さらに、Azure AD 有料サービス (Enterprise Mobility + Security など) は、エンタープライズ規模の包括的な管理ソリューションとセキュリティ ソリューションによって、Office 365 や Microsoft Azure などの他の Web サービスを補完します。
+さらに、Azure AD 有料サービス (Enterprise Mobility + Security など) は、エンタープライズ規模の包括的な管理ソリューションとセキュリティ ソリューションによって、Microsoft 365 や Microsoft Azure などの他の Web サービスを補完します。
 
 ---
 **Q:Azure AD ユーザー ライセンスの有効期限がいつ切れるかを示すレポートはありますか?**
@@ -90,7 +90,7 @@ Azure AD 有料サービス (Enterprise Mobility + Security など) は、エン
 ---
 **Q:Azure AD には、所属する組織のユーザーのためのセルフサービス ポータルが用意されていますか?**
 
-**A:** はい。Azure AD には、ユーザーによるアプリケーションのセルフ サービス アクセス用に [Azure AD アクセス パネル](https://myapps.microsoft.com)が用意されています。 Office 365 を利用している方は、これと同じ機能の多くを [Office 365 ポータル](https://portal.office.com)で使用できます。
+**A:** はい。Azure AD には、ユーザーによるアプリケーションのセルフ サービス アクセス用に [Azure AD アクセス パネル](https://myapps.microsoft.com)が用意されています。 Microsoft 365 を利用している方は、これと同じ機能の多くを [Office 365 ポータル](https://portal.office.com)で使用できます。
 
 詳細については、「[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
 
@@ -121,11 +121,11 @@ Azure AD 有料サービス (Enterprise Mobility + Security など) は、エン
 
 <a name="for-more-answers-to-password-related-questions-see-password-management-frequently-asked-questions"></a>パスワード関連の質問に対する回答については、「[パスワード管理に関するよく寄せられる質問 (FAQ)](../authentication/active-directory-passwords-faq.md)」を参照してください。
 ---
-**Q:パスワードを変更しようとしているときに既存の Office 365/Azure AD パスワードを忘れた場合は、どうすればよいですか?**
+**Q:パスワードを変更しようとしているときに既存の Microsoft 365/Azure AD パスワードを忘れた場合は、どうすればよいですか?**
 
 **A:** このような状況では、いくつかの選択肢があります。  セルフサービス パスワード リセット (SSPR) が使用可能な場合は、それを使用してください。  SSPR が動作するかどうかは、その構成方法によって決まります。  詳細については、「[パスワード リセット ポータルのしくみ](../authentication/howto-sspr-deployment.md)」を参照してください。
 
-Office 365 ユーザーの場合は、「[ユーザー パスワードの再設定](https://support.office.com/article/Admins-Reset-user-passwords-7A5D073B-7FAE-4AA5-8F96-9ECD041ABA9C?ui=en-US&rs=en-US&ad=US)」で説明されている手順を使用して、パスワードをリセットできます。
+Microsoft 365 ユーザーの場合は、「[ユーザー パスワードの再設定](https://support.office.com/article/Admins-Reset-user-passwords-7A5D073B-7FAE-4AA5-8F96-9ECD041ABA9C?ui=en-US&rs=en-US&ad=US)」で説明されている手順を使用して、パスワードをリセットできます。
 
 Azure AD アカウントの場合、管理者は、次のいずれかの方法を使用してパスワードをリセットできます。
 
@@ -171,7 +171,7 @@ Azure AD アカウントの場合、管理者は、次のいずれかの方法�
 **A:** Azure AD では、ユーザーがアプリケーションを表示してアクセスする方法が複数あります。たとえば、次の方法があります。
 
 * Azure AD アクセス パネル
-* Office 365 アプリケーション起動プログラム
+* Microsoft 365 アプリケーション起動プログラム
 * フェデレーション アプリへの直接サインイン
 * フェデレーション アプリ、パスワードベースのアプリ、または既存のアプリへのディープ リンク
 
@@ -200,7 +200,7 @@ Azure AD アカウントの場合、管理者は、次のいずれかの方法�
 
 **A:** Azure AD 条件付きアクセスを使用して、各アプリケーションに一意のアクセス ポリシーを割り当てることができます。 ポリシーでは、多要素認証を常に要求することも、ユーザーがローカル ネットワークに接続されていない場合に要求することもできます。  
 
-詳細については、[Azure Active Directory に接続されている Office 365 やその他のアプリへのアクセスのセキュリティ保護](../conditional-access/overview.md)に関する記事を参照してください。
+詳細については、[Azure Active Directory に接続されている Microsoft 365 やその他のアプリへのアクセスのセキュリティ保護](../conditional-access/overview.md)に関する記事を参照してください。
 
 ---
 **Q:SaaS アプリの自動化されたユーザー プロビジョニングについて教えてください。**

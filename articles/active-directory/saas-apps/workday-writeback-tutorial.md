@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 324d3a21e1694d243f03beca28ac8376bedffa4d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8c76bddc0fae024b0dd2bdd27d6b1e10d71dec71
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88526832"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017474"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>チュートリアル:Azure AD から Workday への属性の書き戻しを構成する
 このチュートリアルの目的は Azure AD から Workday に属性を書き戻すために必要な手順を説明することです。 Workday Writeback プロビジョニング アプリは、次の Workday 属性に対する値の割り当てをサポートします。
@@ -34,7 +34,7 @@ ms.locfileid: "88526832"
 
 この Workday Writeback ユーザー プロビジョニング ソリューションは、次のお客様に最適です。
 
-* IT が管理する正式な属性 (メールアドレス、ユーザー名、電話番号など) を Workday に書き戻したいと考える、Office 365 を使用している組織
+* IT が管理する正式な属性 (メールアドレス、ユーザー名、電話番号など) を Workday に書き戻したいと考える、Microsoft 365 を使用している組織
 
 ## <a name="configure-integration-system-user-in-workday"></a>Workday の統合システム ユーザーの構成
 

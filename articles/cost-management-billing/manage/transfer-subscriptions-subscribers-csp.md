@@ -5,19 +5,19 @@ author: bandersmsft
 ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.subservice: billing
-ms.topic: conceptual
-ms.date: 08/20/2020
+ms.topic: how-to
+ms.date: 09/24/2020
 ms.author: banders
-ms.openlocfilehash: 52dd9d2f6299f8d574934e7baec54333d2ffc0c8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d2d098c3a80bbbdb8c9fb64b25cc5967ee693046
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997576"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371407"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>サブスクライバーと CSP の間で Azure サブスクリプションを譲渡する
 
-この記事では、クラウド ソリューション プロバイダー (CSP) パートナーと CSP の顧客との間で、Azure サブスクリプションを譲渡するために使用される手順の概要について説明します。
+この記事では、クラウド ソリューション プロバイダー (CSP) パートナーと CSP の顧客との間で、Azure サブスクリプションを譲渡するために使用される手順の概要について説明します。 ここに記載されている情報は、パートナーとの連携に役立つ Azure サブスクライバーを対象としています。 Microsoft パートナーが転送プロセスに使用する情報については、「[顧客の Azure サブスクリプションを別のパートナーに転送する方法について学習する](/partner-center/switch-azure-subscriptions-to-a-different-partner)」に記載されています。
 
 ## <a name="transfer-ea-subscriptions-to-a-csp-partner"></a>EA サブスクリプションを CSP パートナーに譲渡する
 
@@ -38,7 +38,7 @@ ms.locfileid: "88997576"
     > [!IMPORTANT]
     > - サブスクリプションを別の Azure AD ディレクトリに関連付けると、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) を使用してロールが割り当てられているユーザーはアクセスできなくなります。 サービス管理者や共同管理者などの従来のサブスクリプション管理者もアクセスできなくなります。
     > - そのサブスクリプションが別のディレクトリに関連付けられている場合は、ポリシー割り当てもサブスクリプションから削除されます。
-1. 譲渡を実行するために使用するユーザー アカウントには、両方のサブスクリプションで [RBAC](add-change-subscription-administrator.md) 所有者アクセス権が必要です。
+1. 譲渡を実行するために使用するユーザー アカウントには、両方のサブスクリプションで [Azure RBAC](add-change-subscription-administrator.md) 所有者アクセス権が必要です。
 1. 開始する前に、すべての Azure リソースをソース サブスクリプションから宛先サブスクリプションに移動できることを[検証](/rest/api/resources/resources/validatemoveresources)します。  
     サブスクリプション間で移動することができない Azure リソースもあります。 移動できる Azure リソースの完全な一覧については、「[リソースの移動操作のサポート](../../azure-resource-manager/management/move-support-resources.md)」を参照してください。
     > [!IMPORTANT]
@@ -57,10 +57,10 @@ ms.locfileid: "88997576"
     変更ディレクトリは CSP サブスクリプションではないことに注意してください。 たとえば、CSP から従量課金制のサブスクリプションに譲渡するとします。 従量課金制のサブスクリプションのディレクトリを変更して、そのディレクトリに一致させる必要があります。
 
     > [!IMPORTANT]
-    >  - サブスクリプションを別のディレクトリに関連付けると、[RBAC](../../role-based-access-control/role-assignments-portal.md) を使用してロールが割り当てられているユーザーはアクセスできなくなります。 サービス管理者や共同管理者などの従来のサブスクリプション管理者もアクセスできなくなります。
+    >  - サブスクリプションを別のディレクトリに関連付けると、[Azure RBAC](../../role-based-access-control/role-assignments-portal.md) を使用してロールが割り当てられているユーザーはアクセスできなくなります。 サービス管理者や共同管理者などの従来のサブスクリプション管理者もアクセスできなくなります。
     >  - そのサブスクリプションが別のディレクトリに関連付けられている場合は、ポリシー割り当てもサブスクリプションから削除されます。
 
-1. 譲渡を実行するために使用するユーザー アカウントには、両方のサブスクリプションで [RBAC](add-change-subscription-administrator.md) 所有者アクセス権が必要です。
+1. 譲渡を実行するために使用するユーザー アカウントには、両方のサブスクリプションで [Azure RBAC](add-change-subscription-administrator.md) 所有者アクセス権が必要です。
 1. 開始する前に、すべての Azure リソースをソース サブスクリプションから宛先サブスクリプションに移動できることを[検証](/rest/api/resources/resources/validatemoveresources)します。
     > [!IMPORTANT]
     >  - サブスクリプション間で移動することができない Azure リソースもあります。 移動できる Azure リソースの完全な一覧については、「[リソースの移動操作のサポート](../../azure-resource-manager/management/move-support-resources.md)」を参照してください。

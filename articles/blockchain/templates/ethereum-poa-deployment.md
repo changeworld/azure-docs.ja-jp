@@ -5,12 +5,12 @@ ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.custom: devx-track-javascript
-ms.openlocfilehash: f0b7d056d37ffb11945a5c50e2705b5d74402007
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 8ce343045f7ff124f5faf86b13210bfb5b3b5519
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386114"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527158"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Azure 上に Ethereum Proof-of-Authority Consortium ソリューションをデプロイする
 
@@ -325,7 +325,7 @@ ParityLog_CL
 
 1. **[allow-ssh]** ルールを選択します。
 
-    ![ssh-allow](./media/ethereum-poa-deployment/ssh-allow.png)
+    ![概要ウィンドウのスクリーンショット。ssh 許可が選択されています。](./media/ethereum-poa-deployment/ssh-allow.png)
 
 1. **[アクション]** を **[許可]** に変更します。
 

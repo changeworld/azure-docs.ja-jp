@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33b1f76dd1489e00115d0f805add8d754038df84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1811d5b9ae4d3e34b48e1cdc156438f2bad98d1
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77185908"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601658"
 ---
 # <a name="conditional-access-classic-policy-migration"></a>条件付きアクセスのクラシック ポリシーの移行
 
@@ -73,9 +73,9 @@ ms.locfileid: "77185908"
    - シナリオで必要な場合に、複数の条件を結合します。 
    - 複数の許可要件をアクセス制御として選び、それらを論理 *OR* (選択したコントロールのいずれかが必要) または論理 *AND* (すべての選択したコントロールが必要) で結合します。
 
-### <a name="office-365-exchange-online"></a>Office 365 Exchange Online
+### <a name="exchange-online"></a>Exchange Online
 
-**Exchange Active Sync** をクライアント アプリの条件として含む **Office 365 Exchange online** のクラシック ポリシーを移行する場合は、1 つの新しいポリシーに統合できないことがあります。 
+**Exchange Active Sync** をクライアント アプリの条件として含む **Exchange Online** のクラシック ポリシーを移行する場合は、1 つの新しいポリシーに統合できないことがあります。 
 
 たとえば、すべてのクライアント アプリの種類をサポートしない場合などです。 **Exchange Active Sync** をクライアント アプリの条件として持つ新しいポリシーでは、他のクライアント アプリを選択できません。
 
@@ -89,7 +89,7 @@ ms.locfileid: "77185908"
 
 ![条件付きアクセスでの条件](./media/policy-migration/16.png)
  
-**Exchange Active Sync** をクライアント アプリの条件として含む Office 365 Exchange Online のアプリ ベースのクラシック ポリシーは、**サポートされている**デバイス プラットフォームと**サポートされていない**デバイス プラットフォームに対応できます。 関連する新しいポリシーで個々のデバイス プラットフォームを構成することはできませんが、サポートを[サポートされているデバイス プラットフォーム](concept-conditional-access-conditions.md#device-platforms)のみに制限できます。 
+**Exchange Active Sync** をクライアント アプリの条件として含む Exchange Online のアプリ ベースのクラシック ポリシーは、**サポートされている**デバイス プラットフォームにも、**サポートされていない**デバイス プラットフォームにも対応します。 関連する新しいポリシーで個々のデバイス プラットフォームを構成することはできませんが、サポートを[サポートされているデバイス プラットフォーム](concept-conditional-access-conditions.md#device-platforms)のみに制限できます。 
 
 ![条件付きアクセスでの Exchange ActiveSync の選択](./media/policy-migration/65.png)
 

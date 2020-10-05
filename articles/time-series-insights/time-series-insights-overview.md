@@ -8,16 +8,19 @@ ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.topic: overview
-ms.date: 07/07/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1ab17e2c24d106e1aec0b546a6efd05ac4c3e32f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f395f96dfa48567f95a1c50cf5403d3cbb427cb7
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020527"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597832"
 ---
 # <a name="what-is-azure-time-series-insights-gen1"></a>Azure Time Series Insights Gen1 とは
+
+> [!CAUTION]
+> これは Gen1 の記事です。
 
 Azure Time Series Insights は、IoT デバイスによって生成されたデータなどの大量の時系列データの格納、視覚化、クエリ実行のために構築されています。 クラウドの時系列データを保存、管理、照会、または視覚化する場合は、Azure Time Series Insights が適しています。
 

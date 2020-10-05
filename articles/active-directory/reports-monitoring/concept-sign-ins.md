@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e84fb04d967311fede3be7f20b45f01fb442e69e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 99e15c6d1ca33623151b7a2d75e3e28878f673ef
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228768"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603596"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのサインイン アクティビティ レポート
 
@@ -147,13 +147,13 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 |認証済み SMTP| |電子メール メッセージを送信するために POP および IMAP のクライアントで使用されます。|
 |自動検出| |Exchange Online でメールボックスを検索して接続するために Outlook および EAS のクライアントで使用されます。|
 |Exchange ActiveSync| |このフィルターは、EAS プロトコルが試行されたすべてのサインイン試行を表示します。|
-|Browser|![○](./media/concept-sign-ins/check.png)|Web ブラウザーを使用したユーザーのすべてのサインイン試行を表示します|
-|Exchange ActiveSync| | Exchange ActiceSync を使用して Exchange Online に接続するクライアント アプリでのユーザーのすべてのサインイン試行を表示します|
+|Browser|![チェックマーク](./media/concept-sign-ins/check.png)|Web ブラウザーを使用したユーザーのすべてのサインイン試行を表示します|
+|Exchange ActiveSync| | Exchange ActiveSync を使用して Exchange Online に接続するクライアント アプリでのユーザーのすべてのサインイン試行を表示します|
 |Exchange Online PowerShell| |リモート PowerShell を使用して Exchange Online に接続するために使用されます。 Exchange Online PowerShell の基本認証をブロックする場合は、Exchange Online PowerShell モジュールを使用して接続する必要があります。 手順については、「[多要素認証を使用して Exchange Online PowerShell に接続する](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)」を参照してください。|
 |Exchange Web サービス| |Outlook、Outlook for Mac、およびサードパーティ製アプリによって使用されるプログラミング インターフェイスです。|
 |IMAP4| |IMAP を使用して電子メールを取得する従来のメール クライアント。|
 |MAPI over HTTP| |Outlook 2010 以降で使用されます。|
-|モバイル アプリとデスクトップ クライアント|![○](./media/concept-sign-ins/check.png)|モバイル アプリとデスクトップ クライアントを使用したユーザーのすべてのサインイン試行を表示します。|
+|モバイル アプリとデスクトップ クライアント|![青色のチェックマーク](./media/concept-sign-ins/check.png)|モバイル アプリとデスクトップ クライアントを使用したユーザーのすべてのサインイン試行を表示します。|
 |オフライン アドレス帳| |Outlook によってダウンロードおよび使用されるアドレス一覧コレクションのコピーです。|
 |Outlook Anywhere (RPC over HTTP)| |Outlook 2016 以降で使用されます。|
 |Outlook サービス| |Windows 10 用のメール/カレンダー アプリで使用されます。|
@@ -269,11 +269,11 @@ Azure AD と Azure portal には両方とも、サインイン データへの�
 
 **[サインイン]** オプションを使用すると、アプリケーションへのすべてのサインイン イベントの完全な概要を表示できます。
 
-## <a name="office-365-activity-logs"></a>Office 365 のアクティビティ ログ
+## <a name="microsoft-365-activity-logs"></a>Microsoft 365 のアクティビティ ログ
 
-Office 365 のアクティビティ ログは、[Microsoft 365 管理センター](/office365/admin/admin-overview/about-the-admin-center)から確認できます。 Office 365 アクティビティ ログと Azure AD アクティビティ ログでは、多くのディレクトリ リソースが共有される点について考えてみましょう。 Office 365 のアクティビティ ログを完全に表示できるのは、Microsoft 365 管理センターだけです。 
+Microsoft 365 のアクティビティ ログは、[Microsoft 365 管理センター](/office365/admin/admin-overview/about-the-admin-center)から確認できます。 Microsoft 365 アクティビティ ログと Azure AD アクティビティ ログで多くのディレクトリ リソースが共有される点について考えてみましょう。 Microsoft 365 のアクティビティ ログがすべて表示されるのは、Microsoft 365 管理センターだけです。 
 
-[Office 365 Management API](/office/office-365-management-api/office-365-management-apis-overview) を使用すると、Office 365 のアクティビティ ログにプログラムでアクセスすることもできます。
+また、[Office 365 Management API](/office/office-365-management-api/office-365-management-apis-overview) を使用すると、Microsoft 365 のアクティビティ ログにプログラムでアクセスすることもできます。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,12 +3,12 @@ title: Azure Migrate での VMware 評価サポート
 description: Azure Migrate Server Assessment を使用した VMware VM の評価のサポートについて説明します。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 3d975b35ff5db9bf77ed33e040eb49b6b15f3cf9
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 6716bea08347783d8c5728a4e346ffab8ea60a07
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277784"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660274"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware 評価のサポートマトリックス 
 
@@ -89,7 +89,7 @@ Azure Migrate では、[Azure Migrate アプライアンス](migrate-appliance.m
 **vCenter サーバーの資格情報** | 依存関係の可視化には、読み取り専用アクセス権を持ち、[仮想マシン] > [ゲスト操作] の権限が有効な vCenter Server アカウントが必要です。
 **Windows VM のアクセス許可** |  依存関係の分析の場合、Windows VM にアクセスするには、Azure Migrate アプライアンスで使用できるドメイン管理者アカウントまたはローカル管理者アカウントが必要です。
 **Linux VM** | Red Hat Enterprise Linux 7、6、5<br/> Ubuntu Linux 14.04、16.04<br/> Debian 7、8<br/> Oracle Linux 6、7<br/> CentOS 5、6、7。
-**Linux アカウント** | 依存関係の分析の場合、Linux マシンの Azure Migrate アプライアンスには Root 特権を持つユーザー アカウントが必要です。<br/><br/> また、ユーザー アカウントには /bin/netstat および /bin/ls ファイルに対する次の権限が必要です。CAP_DAC_READ_SEARCH と CAP_SYS_PTRACE。
+**Linux アカウント** | 依存関係の分析の場合、Linux マシンの Azure Migrate アプライアンスには Root 特権を持つユーザー アカウントが必要です。<br/><br/> また、ユーザー アカウントには /bin/netstat および /bin/ls ファイルに対する次の権限が必要です。CAP_DAC_READ_SEARCH と CAP_SYS_PTRACE。 これらの機能は次のコマンドで設定します。 <br/> sudo setcap CAP_DAC_READ_SEARCH,CAP_SYS_PTRACE=ep /bin/ls <br/> sudo setcap CAP_DAC_READ_SEARCH,CAP_SYS_PTRACE=ep /bin/netstat
 **必要なエージェント** | 分析するマシンにエージェントは必要ありません。
 **VMware ツール** | 分析する各 VM に VMware ツール (10.2 以降) がインストールされ、実行されている必要があります。
 

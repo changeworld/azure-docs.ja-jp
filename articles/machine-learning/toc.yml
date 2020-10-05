@@ -235,17 +235,23 @@
         - name: Resource Manager テンプレートの使用
           displayName: arm
           href: how-to-create-workspace-template.md
-    - name: コンピューティング リソースの作成
+    - name: コンピューティング リソースを作成して管理する
       items:
-        - name: Studio の使用
-          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight, low priority'
-          href: how-to-create-attach-compute-studio.md
-        - name: Python SDK の使用
-          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight, low priority'
-          href: how-to-create-attach-compute-sdk.md
+        - name: コンピューティング インスタンス
+          displayName: compute target
+          href: how-to-create-manage-compute-instance.md
+        - name: コンピューティング クラスター
+          displayName: 'compute target, low priority, managed identity'
+          href: how-to-create-attach-compute-cluster.md
         - name: Azure Kubernetes Service
           displayName: 'AKS, inference'
           href: how-to-create-attach-kubernetes.md
+        - name: 独自のものを添付する
+          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+          href: how-to-attach-compute-targets.md
+        - name: Studio の使用
+          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight, low priority, managed identity'
+          href: how-to-create-attach-compute-studio.md
     - name: 環境の設定方法
       items:
         - name: 開発環境をセットアップする

@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 725b3b712313c199382cebe32bed98f2115fc262
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 08305b6aec7dcd5906f4316767c4c512d3a0535e
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231165"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600502"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルでリスクのフラグ付きユーザーを修復する
 
@@ -42,9 +42,9 @@ Microsoft は、お客様の環境のセキュリティの保持に努めてい�
 
 詳細については、[リスクのフラグ付きユーザー セキュリティ レポート](../identity-protection/overview-identity-protection.md)に関するページを参照してください。
 
-### <a name="azure-ad-subscription-for-office-365-customers"></a>Office 365 のお客様の Azure AD サブスクリプション
+### <a name="azure-ad-subscription-for-microsoft-365-customers"></a>Microsoft 365 のお客様の Azure AD サブスクリプション
 
-Office 365 の資格情報を使用して **Azure 管理センター**にアクセスすることもできます。 Azure AD へのアクセスをアクティブにすると、Azure AD ポータルにリダイレクトされます。 Basic サブスクリプション レベルでは、レポートで提供される詳細情報の量が限定されます。 追加のデータと分析を使用できるのは、Azure Premium サブスクライバーのみです。
+Microsoft 365 の資格情報を使用して **Azure 管理センター**にアクセスすることもできます。 Azure AD へのアクセスをアクティブにすると、Azure AD ポータルにリダイレクトされます。 Basic サブスクリプション レベルでは、レポートで提供される詳細情報の量が限定されます。 追加のデータと分析を使用できるのは、Azure Premium サブスクライバーのみです。
 
 Microsoft 365 管理センターで**リスクのフラグ付きユーザー**のレポートにアクセスするには:
 
@@ -79,7 +79,7 @@ Microsoft 365 管理センターで**リスクのフラグ付きユーザー**�
 
     h. 管理者が確認するための監査ログを生成します。
 
-4. Office 365 のテナントおよびその他の IT インフラストラクチャを調査します。たとえば、すべてのテナント設定、ユーザー アカウント、ユーザーごとの構成設定で、変更の可能性を確認します。 持続的な侵害手段の兆候や、侵入者が VPN 資格情報を取得したり他の組織リソースにアクセスしたりするための最初の足掛かりを利用した兆候を調べます。 
+4. Microsoft 365 のテナントおよびその他の IT インフラストラクチャを調査します。たとえば、すべてのテナント設定、ユーザー アカウント、ユーザーごとの構成設定で、変更の可能性を確認します。 持続的な侵害手段の兆候や、侵入者が VPN 資格情報を取得したり他の組織リソースにアクセスしたりするための最初の足掛かりを利用した兆候を調べます。 
 
 5.  調査の一環として、法執行機関などの官公庁に通知する必要があるかどうかを検討してください。
 

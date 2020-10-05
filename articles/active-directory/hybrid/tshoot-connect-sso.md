@@ -13,12 +13,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6afba520db399cc4eb99c8716540886cc88f6ae7
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: bdaa84d54bbd5558c995014aa4621b0051a36e97
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89275880"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016267"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオンのトラブルシューティングを行う
 
@@ -29,7 +29,7 @@ ms.locfileid: "89275880"
 - 場合によっては、シームレス SSO の有効化に最大 30 分かかることがあります。
 - テナントでシームレス SSO を無効にして再度有効にすると、キャッシュされた Kerberos チケットが期限切れになるまで (通常は 10 時間有効)、シングル サインオン機能は利用できません。
 - シームレス SSO が成功すると、ユーザーは **[サインインしたままにする]** を選択できません。 この動作が原因で、[SharePoint および OneDrive のマッピングのシナリオ](https://support.microsoft.com/help/2616712/how-to-configure-and-to-troubleshoot-mapped-network-drives-that-connec)は機能しません。
-- バージョン 16.0.8730.xxxx 以降の Office 365 Win32 クライアント (Outlook、Word、Excel など) は、非対話型フローを使用してサポートされています。 その他のバージョンはサポートされていません。それらのバージョンでは、ユーザーはパスワードではなく、ユーザー名を入力してサインインします。 OneDrive の場合、サイレント サインオン エクスペリエンス用の [OneDrive サイレント構成機能](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894)をアクティブにする必要があります。
+- バージョン 16.0.8730.xxxx 以降の Microsoft 365 Win32 クライアント (Outlook、Word、Excel など) は、非対話型フローを使用してサポートされています。 その他のバージョンはサポートされていません。それらのバージョンでは、ユーザーはパスワードではなく、ユーザー名を入力してサインインします。 OneDrive の場合、サイレント サインオン エクスペリエンス用の [OneDrive サイレント構成機能](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894)をアクティブにする必要があります。
 - シームレス SSO は、Firefox のプライベート ブラウズ モードでは動作しません。
 - シームレス SSO は、拡張保護モードがオンの場合は Internet Explorer で動作しません。
 - シームレス SSO は、iOS および Android 上のモバイル ブラウザーでは動作しません。

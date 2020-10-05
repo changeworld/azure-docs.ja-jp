@@ -4,14 +4,13 @@ description: Azure コンテナー レジストリからコンテナー イメ�
 services: container-instances
 ms.topic: article
 ms.date: 07/02/2020
-ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 0a997733e015a9f65b59ffc99cc137dae3d2d62a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: eeafc58a1f61ed0439fb29fb08e4ce8c5dd4350c
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927438"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89656991"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Azure Container Registry から Azure Container Instances へのデプロイ
 
@@ -31,6 +30,9 @@ Azure Container Registry は、追加の[認証オプション](../container-reg
 
 > [!NOTE]
 > コンテナー グループのデプロイ時に、イメージをプルするために、同じコンテナー グループに構成されている[マネージド ID](container-instances-managed-identity.md) を使用して Azure Container Registry に対して認証を行うことはできません。
+
+> [!NOTE]
+> 現時点では、Azure Virtual Network にデプロイされた [Azure Container Registry](../container-registry/container-registry-vnet.md) からイメージをプルすることはできません。
 
 次のセクションでは、Azure キー コンテナーとサービス プリンシパルを作成し、サービス プリンシパルの資格情報をコンテナーに格納します。 
 

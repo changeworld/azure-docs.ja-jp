@@ -9,16 +9,16 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 5fef68c9de4dae8063799255fcc7d68ff6b1e6b8
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: eb266680cc514b1e2d70e510ed65e9a7790c0260
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684849"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370336"
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-microsoft-365-account"></a>Microsoft 365 アカウントを使用して Azure のサブスクリプションにサインアップする
 
-Microsoft 365 サブスクリプションがある場合は、Microsoft 365 アカウントを使用して Azure サブスクリプションを作成できます。 Microsoft 365 のユーザー名とパスワードを使用して [Azure portal](https://portal.azure.com/) にサインインします。 仮想マシンを設定するか、他の Azure サービスを使用する場合は、Azure サブスクリプションにサインアップする必要があります。 他のユーザーと Azure サブスクリプションを共有し、[ロールベースのアクセス制御を使用して、Azure サブスクリプションとリソースへのアクセスを管理できます](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
+Microsoft 365 サブスクリプションがある場合は、Microsoft 365 アカウントを使用して Azure サブスクリプションを作成できます。 Microsoft 365 のユーザー名とパスワードを使用して [Azure portal](https://portal.azure.com/) にサインインします。 仮想マシンを設定するか、他の Azure サービスを使用する場合は、Azure サブスクリプションにサインアップする必要があります。 他のユーザーと Azure サブスクリプションを共有し、[Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure サブスクリプションとリソースへのアクセスを管理できます](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
 
 既に Microsoft 365 アカウントと Azure サブスクリプションの両方がある場合は、[Microsoft 365 テナントを Azure サブスクリプションに関連付ける](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)方法に関するページを参照してください。
 
@@ -57,4 +57,4 @@ Microsoft 365 と Azure では、ユーザーとサブスクリプションの�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 他のユーザーと Azure サブスクリプションを共有し、[ロールベースのアクセス制御を使用して、Azure サブスクリプションとリソースへのアクセスを管理します](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
+- 他のユーザーと Azure サブスクリプションを共有し、[Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure サブスクリプションとリソースへのアクセスを管理する](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。

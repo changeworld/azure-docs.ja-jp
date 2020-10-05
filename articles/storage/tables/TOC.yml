@@ -79,6 +79,8 @@
       href: table-storage-design-modeling.md
     - name: テーブルの設計パターン
       href: table-storage-design-patterns.md
+    - name: テーブル ストレージの監視
+      href: monitor-table-storage.md
 - name: 操作方法
   items:
     - name: ストレージ アカウントの作成
@@ -172,6 +174,8 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
 - name: リファレンス
   items:
+    - name: Azure Table Storage のリファレンスの監視
+      href: monitor-table-storage-reference.md
     - name: スケーラビリティとパフォーマンスのターゲット
       items:
         - name: テーブル ストレージ

@@ -3,14 +3,14 @@ title: Azure Automation Update Management の概要
 description: この記事では、Windows および Linux マシンの更新プログラムを実装する Update Management 機能について概要を説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0fd416c844ac93ffb77eded98448b2e93e9acd30
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 4a753cd139db9dec23c82346704382979aeaa0de
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660910"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976990"
 ---
 # <a name="update-management-overview"></a>Update Management の概要
 
@@ -18,8 +18,8 @@ Azure Automation の Update Management を使用すると、Azure、オンプレ
 
 VM の Update Management は、次の方法で有効にできます。
 
-* 1 台以上の Azure マシンに対しては、お使いの [Azure Automation アカウント](update-mgmt-enable-automation-account.md) から。
-* Azure 以外のマシンに対しては手動で。
+* 1 台以上の Azure マシンと Azure 以外のマシンに対しては、お使いの [Azure Automation アカウント](update-mgmt-enable-automation-account.md) から。
+* [Azure Arc 対応サーバー](../../azure-arc/servers/overview.md) (プレビュー) に登録されているマシンまたはサーバーを含む、Azure 以外のマシンの場合は手動で。
 * 単一の Azure VM に対しては、Azure portal の [仮想マシン] ページから。 このシナリオは、[Linux](../../virtual-machines/linux/tutorial-config-management.md#enable-update-management) VM 用と [Windows](../../virtual-machines/windows/tutorial-config-management.md#enable-update-management) VM 用があります。
 * [複数の Azure VM](update-mgmt-enable-portal.md) に対しては、Azure portal の [仮想マシン] ページからそれらを選択することで。
 
@@ -31,6 +31,8 @@ VM の Update Management は、次の方法で有効にできます。
 > [!NOTE]
 > Update Management で構成されたコンピューターを使用して Azure Automation からカスタム スクリプトを実行することはできません。 このコンピューターで実行できるのは、Microsoft が署名した更新プログラム スクリプトのみです。
 
+入手できる "*クリティカル*" パッチまたは "*セキュリティ*" パッチを Azure VM に自動でダウンロードし、インストールする方法については、Windows VM 向け [VM ゲストの自動パッチ適用](../../virtual-machines/windows/automatic-vm-guest-patching.md)に関するページを参照してください。
+
 ## <a name="about-update-management"></a>Update Management について
 
 Update Management で管理されるマシンでは、評価の実行とデプロイの更新に次の構成が使用されます。
@@ -40,21 +42,17 @@ Update Management で管理されるマシンでは、評価の実行とデプ�
 * Automation Hybrid Runbook Worker
 * Microsoft Update または Windows Server Update Services (WSUS) (Windows マシンの場合)
 
-次の図に、ワークスペース内の接続されたすべての Windows Server および Linux マシンに対する、Update Management による評価の実行方法とセキュリティ更新プログラムの適用方法を示します。
+次の図に、ワークスペース内の接続されたすべての Windows Server および Linux サーバーに対する、Update Management による評価の実行方法とセキュリティ更新プログラムの適用方法を示します。
 
 ![Update Management ワークフロー](./media/update-mgmt-overview/update-mgmt-updateworkflow.png)
 
 Update Management を使用して、同じテナント内の複数のサブスクリプションにマシンをネイティブにデプロイできます。
 
-パッケージがリリースされた後、Linux マシンの評価用に修正プログラムが表示されるまで 2 時間から 3 時間かかります。 Windows マシンの場合、リリースされてから評価用に修正プログラムが表示されるまで 12 時間から 15 時間かかります。
-
-マシンで更新プログラムのコンプライアンスを確認するためのスキャンが完了すると、エージェントによって情報が Azure Monitor ログに一括転送されます。 Windows マシンでは、コンプライアンス スキャンは既定で 12 時間ごとに実行されます。
+パッケージがリリースされた後、Linux マシンの評価用に修正プログラムが表示されるまで 2 時間から 3 時間かかります。 Windows マシンの場合、リリースされてから評価用に修正プログラムが表示されるまで 12 時間から 15 時間かかります。 マシンで更新プログラムのコンプライアンスを確認するためのスキャンが完了すると、エージェントによって情報が Azure Monitor ログに一括転送されます。 Windows マシンでは、コンプライアンス スキャンは既定で 12 時間ごとに実行されます。 Linux マシンでは、コンプライアンス スキャンは既定で 1 時間ごとに実行されます。 Log Analytics エージェントを再起動した場合、コンプライアンス スキャンは 15 分以内に開始されます。
 
 このスキャン スケジュールに加えて、Log Analytics エージェントの再起動後 15 分以内、更新プログラムのインストール前、および更新プログラムのインストール後に、更新プログラムのコンプライアンスを確認するためのスキャンが開始されます。
 
-Linux マシンでは、コンプライアンス スキャンは既定で 1 時間ごとに実行されます。 Log Analytics エージェントを再起動した場合、コンプライアンス スキャンは 15 分以内に開始されます。
-
-Update Management では、同期先として構成されたソースに基づいて、マシンがどの程度最新の状態であるかがレポートされます。 WSUS にレポートするように Windows マシンが構成されている場合、WSUS の Microsoft Update との最後の同期のタイミングによっては、Microsoft Updates で示されるものと結果が一致しないことがあります。 この動作は、パブリック リポジトリではなくローカル リポジトリにレポートするように構成されている Linux マシンでも同様です。
+Update Management では、同期先として構成されたソースに基づいて、マシンがどの程度最新の状態であるかがレポートされます。 WSUS にレポートするように Windows マシンが構成されている場合、[Windows Server Update Services](/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus) (WSUS) の Microsoft Update との最後の同期のタイミングによっては、Microsoft Updates で示されるものと結果が一致しないことがあります。 この動作は、パブリック リポジトリではなくローカル リポジトリにレポートするように構成されている Linux マシンでも同様です。
 
 > [!NOTE]
 > サービスに正しく報告するためには、Update Management で、特定の URL とポートを有効にする必要があります。 これらの要件の詳細については、[ネットワーク構成](../automation-hybrid-runbook-worker.md#network-planning)に関する記事を参照してください。
@@ -86,7 +84,7 @@ Update Management では、同期先として構成されたソースに基づ�
 |Windows Server 2008 R2 (RTM および SP1 Standard)| Update Management では、このオペレーティング システムの評価および修正プログラムの適用がサポートされます。 Windows Server 2008 R2 では、[Hybrid Runbook Worker](../automation-windows-hrw-install.md) がサポートされています。 |
 |CentOS 6 (x86/x64) および 7 (x64)      | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。 分類に基づく修正プログラムでは、CentOS の RTM リリースには含まれていないセキュリティ データを返すための `yum` が必須です。 分類に基づく CentOS への修正プログラムの適用の詳細については、[Linux の更新プログラムの分類](update-mgmt-view-update-assessments.md#linux)に関する記事を参照してください。          |
 |Red Hat Enterprise 6 (x86/x64) および 7 (x64)     | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。        |
-|SUSE Linux Enterprise Server 11 (x86/x64) および 12 (x64)     | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。        |
+|SUSE Linux Enterprise Server 12 (x64)     | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。        |
 |Ubuntu 14.04 LTS、16.04 LTS、18.04 (x86/x64)      |Linux エージェントでは、更新リポジトリへのアクセス権が必要です。         |
 
 > [!NOTE]
@@ -140,7 +138,7 @@ Update Management では、このセクションで説明されているリソ�
 
 Update Management を有効にすると、Update Management に含まれている Runbook をサポートするために、Log Analytics ワークスペースに直接接続された Windows マシンが自動的に Hybrid Runbook Worker として構成されます。
 
-Update Management で管理されている各 Windows マシンは、Automation アカウントの [システム ハイブリッド worker グループ] として、[ハイブリッド worker グループ] ペインに表示されます。 グループでは、`Hostname FQDN_GUID` の名前付け規則が使用されます。 アカウントの Runbook でこれらのグループを対象として指定することはできません。 指定しようとすると、失敗します。 これらのグループは、Update Management のみをサポートすることを目的としています。
+Update Management で管理されている各 Windows マシンは、Automation アカウントの [システム ハイブリッド worker グループ] として、[ハイブリッド worker グループ] ペインに表示されます。 グループでは、`Hostname FQDN_GUID` の名前付け規則が使用されます。 アカウントの Runbook でこれらのグループを対象として指定することはできません。 指定しようとすると、失敗します。 これらのグループは、Update Management のみをサポートすることを目的としています。 Hybrid Runbook Worker として構成されている Windows マシンの一覧を表示する方法の詳細については、「[Hybrid Runbook Workers の表示](../automation-hybrid-runbook-worker.md#view-hybrid-runbook-workers)」を参照してください。
 
 Update Management と Hybrid Runbook Worker グループ メンバーシップの両方に同じアカウントを使用すると、Windows マシンを Automation アカウントの Hybrid Runbook Worker グループに追加して Automation Runbook をサポートすることができます。 この機能は、Hybrid Runbook Worker のバージョン 7.2.12024.0 で追加されました。
 
@@ -176,7 +174,7 @@ Operations Manager 管理グループが [Log Analytics ワークスペースに
 
 Update Management では、次のルールを使用して、管理対象のマシンのデータのスキャンが行われます。 管理対象のマシンの更新されたデータがダッシュボードに表示されるまでに、30 分から 6 時間かかる可能性があります。
 
-* 各 Windows マシン - Update Management では、各マシンで 1 日に 2 回スキャンが行われます。 15 分ごとに Windows API が呼び出され、最後の更新時間を照会することで、状態が変化したかどうかが確認されます。 状態が変更された場合、Update Management で対応スキャンが開始されます。
+* 各 Windows マシン - Update Management では、各マシンで 1 日に 2 回スキャンが行われます。
 
 * 各 Linux マシン - Update Management では 1 時間ごとにスキャンが行われます。
 
@@ -238,7 +236,7 @@ Linux の場合、クラウドでのデータ エンリッチメントにより�
 sudo yum -q --security check-update
 ```
 
-CentOS 上でネイティブ分類データを使用できるようにするためのサポートされている方法は現在ありません。 現時点では、お客様がこの機能をご自身で使用可能にした場合には、できる範囲内のサポートのみを提供しています。
+CentOS 上でネイティブ分類データを使用できるようにするためのサポートされている方法は現在ありません。 現時点では、お客様がこの機能をご自身で使用可能にした場合、与えられるサポートに限度があります。
 
 Red Hat Enterprise バージョン 6 の更新プログラムを分類するには、yum-security プラグインをインストールする必要があります。 Red Hat Enterprise Linux 7 では、プラグインは既に yum 自体の一部であるため、何もインストールする必要はありません。 詳細については、次の Red Hat の[ナレッジ記事](https://access.redhat.com/solutions/10021)を参照してください。
 
@@ -256,9 +254,10 @@ Azure [Resource Manager テンプレート](update-mgmt-enable-template.md)を�
 
 Update Management を有効にし、管理するマシンを選択するには、次の方法を使用します。
 
-* [仮想マシンから](update-mgmt-enable-vm.md)
-* [複数のマシンを参照することから](update-mgmt-enable-portal.md)
+* [Azure 仮想マシンから](update-mgmt-enable-vm.md)
+* [複数の Azure 仮想マシンを参照して](update-mgmt-enable-portal.md)
 * [Azure Automation アカウントから行う方法](update-mgmt-enable-automation-account.md)
+* Arc 対応サーバー (プレビュー) または Azure 以外のマシンの場合、[Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)をインストールし、Update Management で[ワークスペース内のマシンを有効にします](update-mgmt-enable-automation-account.md#enable-machines-in-the-workspace)。
 
 ## <a name="next-steps"></a>次のステップ
 

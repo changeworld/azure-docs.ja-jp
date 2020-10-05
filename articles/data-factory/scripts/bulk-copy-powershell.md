@@ -10,16 +10,16 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
-ms.openlocfilehash: e0fedd2a304c73347b7ec72818b5289c1df2e561
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ecfc9930c3387e19fd74d7cc52d11864ef25259a
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85248621"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439029"
 ---
 # <a name="powershell-script---copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>PowerShell スクリプト - Azure Data Factory を使って複数のテーブルを一括コピーする
 
-このサンプルの PowerShell スクリプトは、Azure SQL データベースの複数のテーブルから Azure SQL Data Warehouse にデータをコピーします。
+このサンプルの PowerShell スクリプトでは、Azure SQL Database の複数のテーブルから Azure Synapse Analytics (旧称 SQL Data Warehouse) にデータをコピーします。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -32,7 +32,7 @@ ms.locfileid: "85248621"
 > [!IMPORTANT]
 > このスクリプトは、Data Factory エンティティ (リンクされたサービス、データセット、およびパイプライン) を定義する JSON ファイルをハード ドライブ上の c:\ フォルダー内に作成します。
 
-[!code-powershell[main](../../../powershell_scripts/data-factory/bulk-copy-from-sql-databse-to-sql-data-warehouse/bulk-copy-from-sql-database-to-sql-data-warehouse.ps1 "Bulk copy from Azure SQL Database => Azure SQL Data Warehouse")]
+[!code-powershell[main](../../../powershell_scripts/data-factory/bulk-copy-from-sql-databse-to-sql-data-warehouse/bulk-copy-from-sql-database-to-sql-data-warehouse.ps1 "Bulk copy from Azure SQL Database => Azure Synapse Analytics")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 

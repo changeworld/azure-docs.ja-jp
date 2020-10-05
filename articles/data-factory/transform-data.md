@@ -1,6 +1,6 @@
 ---
 title: データを変換する
-description: Azure Data Factory で Hadoop、Machine Learning、または Azure Data Lake Analytics を使用してデータを変換または処理する方法について説明します。
+description: Azure Data Factory で、Hadoop、Machine Learning、または Azure Data Lake Analytics を使用してデータを変換または処理します。
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -10,12 +10,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
-ms.openlocfilehash: fdb10894ab9d1c6b805b8b43c90e54126d67b8dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19b4ee621a3918a49b524c5e4515bddd5962e0f4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81606625"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442787"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Azure Data Factory でデータを変換する
 
@@ -78,7 +78,7 @@ Azure Data Factory を使用すると、公開された Azure Machine Learning W
 これらの Machine Learning アクティビティの詳細については、 [Azure Machine Learning アクティビティの使用](transform-data-using-machine-learning.md) に関する記事を参照してください。 
 
 ### <a name="stored-procedure-activity"></a>ストアド プロシージャ アクティビティ
-SQL Server ストアド プロシージャ アクティビティを Data Factory のパイプラインで使用して、次のデータ ストアのいずれかでストアド プロシージャを呼び出すことができます: 社内または Azure VM 内のAzure SQL Database、Azure SQL Data Warehouse、SQL Server Database。 詳細については、[ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md)に関する記事をご覧ください。  
+SQL Server ストアド プロシージャ アクティビティを Data Factory のパイプライン内で使用して、次のいずれかのデータ ストア内のストアド プロシージャを呼び出すことができます。企業または Azure VM 内の Azure SQL Database、Azure Synapse Analytics (旧称 SQL Data Warehouse)、SQL Server データベース。 詳細については、[ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md)に関する記事をご覧ください。  
 
 ### <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL アクティビティ
 Data Lake Analytics U-SQL アクティビティは、Azure Data Lake Analytics クラスターで U-SQL スクリプトを実行します。 詳細については、[Data Analytics U-SQL アクティビティ](transform-data-using-data-lake-analytics.md)に関する記事をご覧ください。 

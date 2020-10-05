@@ -3,14 +3,14 @@ title: Azure Automation への Linux Hybrid Runbook Worker のデプロイ
 description: この記事では、Azure Automation Hybrid Runbook Worker をインストールして、ローカル データ センターやクラウド環境にある Linux ベースのマシン上で Runbook を実行する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 06/24/2020
+ms.date: 09/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7f19aec65ed2616d757718116ac948473dd4b0ed
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: fb975305e18315fa8d0a39e4fe0ab6902c98b7e7
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448021"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987232"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker を展開する
 
@@ -56,7 +56,7 @@ Hybrid Runbook Worker 機能は、次のディストリビューションをサ�
 * Red Hat Enterprise Linux Server 5、6、および 7 (x86/x64)
 * Debian GNU/Linux 6、7、および 8 (x86/x64)
 * Ubuntu 12.04 LTS、14.04 LTS、16.04 LTS、および 18.04 (x86/x64)
-* SUSE Linux Enterprise Server 11 および 12 (x86/x64)
+* SUSE Linux Enterprise Server 12 (x86 と x64)
 
 ### <a name="minimum-requirements"></a>最小要件
 
@@ -75,6 +75,12 @@ Linux Hybrid Runbook Worker の最小要件は次のようになります。
 |PAM | Pluggable Authentication Module (プラグ可能な認証モジュール)|
 | **オプション パッケージ** | **説明** | **最小バージョン**|
 | PowerShell Core | PowerShell Runbook を実行するには、PowerShell Core をインストールする必要があります。 インストール方法については、「[Linux への PowerShell Core のインストール](/powershell/scripting/install/installing-powershell-core-on-linux)」をご覧ください。 | 6.0.0 |
+
+## <a name="supported-linux-hardening"></a>Linux のセキュリティ強化のサポート
+
+次はまだサポートされていません。
+
+* CIS
 
 ## <a name="supported-runbook-types"></a>サポートされている Runbook の種類
 

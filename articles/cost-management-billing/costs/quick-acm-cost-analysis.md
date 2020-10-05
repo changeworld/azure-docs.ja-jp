@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 8ca9eaeeb8d484c9aeae6646e6f4814afbaed577
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 89a12be047a3571c1d85febc246a1ed8a3c8b720
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718528"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297863"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>クイック スタート:コスト分析を使用してコストを調査および分析する
 
@@ -150,7 +150,7 @@ Azure タグ ポリシーを使用してコスト データの可視性を向上
 
 >[!VIDEO https://www.youtube.com/embed/kQkXXj-SmvQ]
 
-コスト分析をピン留めするには、右上隅にあるピン アイコンを選択します。 コスト分析をピン留めすると、メイン グラフまたはテーブル ビューだけが保存されます。 他のユーザーがタイルにアクセスできるようにするには、ダッシュボードを共有します。 ダッシュボードの構成だけが共有され、基になるデータには他のユーザーはアクセスできないことに注意してください。 コストへのアクセス権がないのに、共有ダッシュボードにアクセスすると、"アクセス拒否" メッセージが表示されます。
+コスト分析をピン留めするには、右上隅または "<Subscription Name> | コスト分析" のすぐ後ろにあるピン アイコンを選択します。 コスト分析をピン留めすると、メイン グラフまたはテーブル ビューだけが保存されます。 他のユーザーがタイルにアクセスできるようにするには、ダッシュボードを共有します。 ダッシュボードの構成だけが共有され、基になるデータには他のユーザーはアクセスできないことに注意してください。 コストへのアクセス権がないのに、共有ダッシュボードにアクセスすると、"アクセス拒否" メッセージが表示されます。
 
 コスト分析へのリンクを共有するには、ブレードの上部にある **[共有]** を選択します。 カスタム URL が表示され、この特定のスコープに対するこの特定のビューが開かれます。 コストへのアクセス権がない場合にこの URL を受け取ると、"アクセス拒否" メッセージが表示されます。
 

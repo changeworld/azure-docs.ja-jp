@@ -3,15 +3,15 @@ title: Windows Virtual Desktop のパートナー統合 - Azure
 description: Windows Virtual Desktop のパートナーについて説明します。また、それらのパートナーとの統合方法に関するドキュメントにアクセスできます。
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 07/17/2020
+ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 94da428862e1af66ee58e739b3ad3b5b95be3310
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 9e5b9017854465724724638bfe5d32783a031030
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612369"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056461"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows Virtual Desktop のパートナー統合
 
@@ -46,7 +46,8 @@ VMware は Windows Virtual Desktop 認定プロバイダーであり、Windows V
 
 シン クライアントおよびゼロ クライアントのエンドポイント デバイス、および仮想デスクトップ用の管理ソフトウェアにおける 10ZiG の世界市場のリーダーシップは、これらのデバイスとソフトウェアがお客様のお役に立てていることから実証されています。 このシン クライアントハードウェアには慎重に考案された特典が付属しており、顧客のニーズに基づいてお客様が適切なクライアント デバイスを確実に入手できるように設計されています。 10ZiG は、Windows ベースおよび Linux ベースのクライアントを使用して、お客様環境に合わせてデバイスをカスタマイズします。これにより、クラウドの内外の両方で仮想デスクトップで最高のパフォーマンスが得られます。
 
-- [パートナーの Web サイトにアクセスする。](https://www.10zig.com/about/microsoft-wvd)
+- [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FaeR)
+- [パートナーの Web サイトにアクセスする。](https://www.10zig.com/about/microsoft-windows-virtual-desktop)
 
 ## <a name="automai"></a>Automai
 
@@ -101,7 +102,7 @@ ControlUp を Windows Virtual Desktop で使用すると、Windows Virtual Deskt
 
 Dell Technologies のシン クライアントは、Microsoft Azure および Windows Virtual Desktop サービスにアクセスするために最適化されています。 Wyse シン クライアントは、協調的なナレッジ ワーカーからグラフィックを多用するパワー ユーザーまで、さまざまなニーズを満たすことができます。高品質なコンピューティング エクスペリエンスにより、増え続けるアプリやコンテンツを最大限に活用できます。 Wyse シン クライアントはスペースに余裕のない環境に最適で、汎用性の高いフォーム ファクターと多様なマウント オプションにより、ユーザーの作業方法に適応します。
 
-Wyse シン クライアントはセキュリティを念頭に置いて設計されており、攻撃対象領域の限定、セキュリティ コンプライアンス標準のサポート、高度な多要素認証ソリューションを実現しています。 セキュリティで高度に保護されたシン クライアントを Dell 独自の Wyse ThinOS と共にデプロイするか、商用として実証済みの設計により強化された Wyse ThinLinux、および Dell が追加したセキュリティ機能を実装する Windows 10 IoT Enterprise のクラウド アプリケーションと仮想ワークスペースに安全にアクセスします。 Wyse Management Suite では、HTTPS ベースの安全な通信とロール ベース管理のための Active Directory 認証により、Wyse エンドポイントが常に最新の状態に保たれます。また、WMS Pro のモバイル アプリにより、IT 担当者は重要なアラートを確認し、1 回のタップでリアルタイム コマンドをいつでも送信できます。
+Wyse シン クライアントはセキュリティを念頭に置いて設計されており、攻撃対象領域の制限、セキュリティ コンプライアンス標準のサポート、高度な多要素認証ソリューションを実現しています。 セキュリティで高度に保護されたシン クライアントを Dell により追加されたセキュリティ機能を実装する Windows 10 IoT Enterprise とともに展開します。 安全な HTTPS ベースの通信とロール ベース管理のための Active Directory 認証により、Wyse Management Suite で Wyse エンドポイントが常に最新の状態に保たれます。また、WMS Pro のモバイル アプリにより、IT 担当者は重要なアラートを確認し、1 回のタップでリアルタイム コマンドをいつでも送信できます。
 
 - [パートナーの Web サイトにアクセスする。](https://www.delltechnologies.com/en-us/wyse/index.htm#scroll=off&overlay=//www.dellemc.com/en-us/collaterals/unauth/brochures/products/thin-clients/Wyse_Windows_Embedded_Standard_thin_clients_brochure.pdf)
 
@@ -190,6 +191,15 @@ Lakeside Software のデジタル エクスペリエンス監視ソリューシ�
 - [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8Q)
 - [パートナーの Web サイトにアクセスする。](https://www.lakesidesoftware.com/assessments/wvd)
 
+## <a name="lenovo"></a>Lenovo
+
+![Lenovo ロゴ](./media/partners/lenovo.png)
+
+Lenovo Thin Client は、サーバーから実行されるクライアント コンピューターの柔軟性をネットワークに提供しつつ、ネイティブ PC の機能と能力も備えています。 Lenovo Thin Client により、Windows Virtual Desktop の展開に驚異的なパフォーマンスと直感的な管理性がもたらされ、企業のネットワークが次の信頼性レベルに高まります。 各 Thin Client には、追加費用なしで Lenovo Terminal Manager ライセンスが付属しており、組織にシームレスでコスト効率の高いハードウェア管理と展開オプションが提供されます。 また、これらは小規模で汎用性があるため、既存の Lenovo の展開に簡単に追加できます。
+
+- [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FnaB)
+- [パートナーの Web サイトにアクセスする。](https://www.lenovo.com/us/en/desktops-and-all-in-ones/thinkcentre/m-series-thin-clients/c/M-Series-Thin-Clients)
+
 ## <a name="liquidware"></a>Liquidware
 
 ![Liquidware ロゴ](./media/partners/liquidware.png)
@@ -220,6 +230,17 @@ Login VSI は、Windows Virtual Desktop 環境でアプリケーション パフ
 
 - [パートナーの Web サイトにアクセスする。](https://www.loginvsi.com/use-cases-initiatives/windows-virtual-desktop)
 
+## <a name="nasuni"></a>Nasuni
+
+![Nasuni ロゴ](./media/partners/nasuni.png)
+
+クラウド ファイル サービスの大手プロバイダーであり、Azure グローバル ISV のトップ パートナーである Nasuni Corp. によって、最新の仮想デスクトップ向けの最新のファイル ストレージ ソリューションとして、Nasuni のサービスとしてのソフトウェア プラットフォームが提供されています。 Nasuni を Azure Blob Storage と組み合わせることで、プライマリ ファイル ストレージ (NAS)、ファイル バックアップ、ディザスター リカバリー、リージョン間のファイル同期が 1 つの統合ソリューションに統合されます。 Nasuni を使用すると、企業は Windows Virtual Desktop をより多くの Azure リージョンでより多くのユース ケースに展開し、管理を簡素化し、ビジネス継続性を確保することができます。 
+
+Windows Virtual Desktop は最新のクラウド VDI ソリューションであるため、最新のクラウド ファイル ストレージが必要です。 従来、VDI ファイル ストレージは、ネットワーク接続ストレージ (NAS) と、オンプレミスに配置されたファイル サーバー ハードウェアに基づいており、ファイルのバックアップ、復元、ディザスター リカバリーを提供するために必要なテクノロジが備わっています。 これらの従来のアプローチはコストが高く、保守と管理が複雑であり、簡単にはスケーリングできません。 また、物理的な距離と、Azure ベースのデスクトップとオンプレミス ベースのファイル ストレージ間の低速な WAN 接続が原因で、Windows Virtual Desktop などの最新のクラウド VDI ソリューションで使用すると遅延が発生します。 Azure 専用に構築されたファイル サービス プラットフォームである Nasuni により、無制限のファイルス トレージの容量と高パフォーマンスのファイル アクセスが提供されます。 Nasuni を同じ Azure リージョン内の Windows Virtual Desktop と併置して、単一のグローバル名前空間に対して経済的で高パフォーマンスのファイル アクセスを実現できます。 Nasuni を使用すると、従来の NAS および Windows ファイル サーバーの数分の 1 のコストで Windows Virtual Desktop ファイル ストレージを提供することができます。また、コストをさらに削減して IT リソースを解放するための組み込みのバックアップとディザスター リカバリー機能も備わっています。
+
+- [パートナーの Web サイトにアクセスする。](https://www.nasuni.com/partner/microsoft/#wvd)
+- [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FaeS)
+
 ## <a name="nerdio"></a>Nerdio
 
 ![Nerdio ロゴ](./media/partners/nerdio.png)
@@ -230,6 +251,17 @@ Nerdio により、Azure リソースのプロビジョニングが簡素化さ�
 
 - [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh)
 - [パートナーの Web サイトにアクセスする。](https://getnerdio.com/windows-virtual-desktop/)
+
+## <a name="nexthink"></a>Nexthink
+
+![Nexthink ロゴ](./media/partners/nexthink.png)
+
+Nexthink は、組織が従業員のデジタル エクスペリエンスと生産性を自信を持って測定、管理、および改善するのを支援する、Windows Virtual Desktop の付加価値プロバイダーです。 IT は、従業員のデジタル エクスペリエンスの実情を絶えず読み取ることで、従業員がどこで働いているかに関わらず、彼らを引き付け、力を与え、喜ばせることができるテクノロジを継続的に向上させることができます。 
+
+Nexthink により、目に見える職場のリソースを使用したソリューションが提供され、コンテキストとユーザー ベースに関する分析情報が提供されます。 Nexthink の強力なエクスペリエンス管理プラットフォームは、IT チームが Windows Virtual Desktop への移行を計画し、タイムリーかつ適切な方法で実行できるようにするのに役立ちます。
+
+- [パートナーの Web サイトにアクセスする。](https://www.nexthink.com/initiative/desktop-virtualization/)
+- [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4FaeT)
 
 ## <a name="numecent"></a>Numecent
 
@@ -287,12 +319,16 @@ RDPSoft の Remote Desktop Commander ソリューションにより、Windows Vi
 
 ![Rimo3 のロゴ](./media/partners/rimo3.png)
 
-Rimo3 では、デプロイを促進し、進行中の変更管理を向上させることにより、Windows Virtual Desktop エクスペリエンスを強化しています。 IT チームが Rimo3 を利用すると、アプリケーション ワークロードを Azure に移行できるようにアプリケーション ポートフォリオを支援する上で必要な知識が得られます。 ユーザーはアプリケーションをオンボードして、ターゲットの Windows Virtual Desktop ワークスペースですばやく簡単にテストできます。 また、ユーザーは、組織が新しいアプリケーションや更新プログラムをロールアウトするときに、変更の影響を事前に把握することもできます。 最後に、IT 管理者は、Rimo3 の Intelligent Smoke Testing 機能を利用して、ユーザー セッションを中断することなく機能テストを自動化することができます。
+Rimo3 は、その使いやすくスケーラブルなクラウドベースの Application Modernization Platform を使用して、Windows Virtual Desktop エクスペリエンスを強化します。
 
-Rimo3 には、使いやすくスケーラブルな自動アプリケーション テスト プラットフォームが用意されています。 このプラットフォームには、互換性、機能、パフォーマンスという 3 つのアプリケーション テストの基本すべてに対応する機能があります。 これにより、組織、リーダー、およびチームは、ビジネス継続性を向上させ、変更により迅速に対応し、ユーザー エクスペリエンスを最適化することができます。
+IT チームにとって、Rimo3 は Windows Virtual Desktop に移行するためのアプリケーション ワークロードの検出、最新化、および管理に役立ちます。 ユーザーは、自分のアプリケーション ポートフォリオを自動的にスキャンして、Windows Virtual Desktop へのオンボードまたは MSIX への最新化に適した候補を見つけることができます。  
+
+アプリが適切に変換されない場合、ユーザーは自動修復を適用しながら、アプリケーションの事前テスト、アプリの MSIX への変換、および変換後のテストを自動化できます。 その結果、最新化された展開可能な MSIX パッケージが生成されます。 Windows Virtual Desktop 機能がリリースおよび更新されるたびに、ユーザーは展開前にアプリの完全なテストを自動的に実行できるため、完全な信頼性と継続的な管理を実現できます。
+
+マネージド サービス プロバイダーの場合、Rimo3 は、自社のマネージド サービスの可能性を広げて利益を向上させ、プロジェクトベースの収益をサブスクリプションベースの経常収益に橋渡しし、Windows Virtual Desktop に最新化および移行して、自身の Desktop ワークスペースで定期更新プログラムを管理する必要がある顧客に付加価値を提供するのに役立ちます。
 
 - [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj7B)
-- [パートナーの Web サイトにアクセスする。](https://rimo3.com/outcomes/)
+- [パートナーの Web サイトにアクセスする。](https://rimo3.com/windows-virtual-desktop/)
 
 ## <a name="sepago"></a>sepago
 
@@ -304,6 +340,17 @@ sepago のイノベーションおよび開発ラボでは、ビッグ データ
 
 - [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4qMsm)
 - [パートナーの Web サイトにアクセスする。](https://www.sepago.de/en/)
+
+## <a name="ssh2"></a>SSH2
+
+![SSH2 ロゴ](./media/partners/ssh2.png)
+
+SSH2 は、Windows Virtual Desktop の付加価値サービス プロバイダーで、IT チームにソフトウェアを提供して、現在のプラットフォームから Azure 上の Windows Virtual Desktop へのアプリケーション配信を高速化します。 SSH2 を使用すると、IT はアプリケーションのキャプチャを高速化して、移行プロセスを効率化できます。 SSH2 の appCURE を使用すると、エンドポイントで実行中のアプリケーションをキャプチャし、更新と修復を可能にして、エンドユーザー環境で実行が可能な速度で包括的な段階的変化をもたらします。 
+
+appCURE により、エンドユーザーのアプリケーションに影響を与える可能性があるすべてのポイントを確実に認識するために、実行中のアプリケーションからアプリケーションの詳細がキャプチャされます。 その後、appCURE によってそれらが更新され、新しい Windows Virtual Desktop に配信されます。 appCURE により、現在の環境内のすべてのアプリケーション統合ポイントをキャプチャして、IT リソースを最適化し、これまでよりも迅速かつより良い移行を計画するための速度を提供することで、組織がより迅速に運用に至ることができるようにします。
+
+- [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4Fs38)
+- [パートナー ページに移動する](https://www.ssh2.xyz/windows-virtual-desktop/)。
 
 ## <a name="thinprint"></a>ThinPrint
 
@@ -334,6 +381,7 @@ uberAgent を開発した vast limits 社は、Windows Virtual Desktop のデプ
 
 uberAgent は、エンド ユーザー コンピューティング向けに設計された監視および分析製品であり、データを収集するだけでなく、重要な情報を顧客に提供します。 uberAgent には独自のメトリックがあり、ユーザー エクスペリエンス、アプリケーションのパフォーマンス、エンドポイントのセキュリティの主要な側面がカバーされており、システムのユーザー密度に影響を与えることなく、Windows Virtual Desktop VM について知る必要があるすべてのことを教えてくれます。 uberAgent を使用すると、トラブルシューティングが簡単になり、サイズ変更に役立ち、情報セキュリティに不可欠な豊富な情報が提供されます。
 
+- [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4Fs39)
 - [パートナーの Web サイトにアクセスする。](https://uberagent.com/docs/uberagent/latest/about-uberagent/system-requirements/#windows-virtual-desktop)
 
 ## <a name="workspace-365"></a>Workspace 365

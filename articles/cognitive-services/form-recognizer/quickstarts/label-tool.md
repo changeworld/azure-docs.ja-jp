@@ -1,24 +1,26 @@
 ---
-title: クイック スタート:サンプル ラベル付けツールを使用したフォームのラベル付け、モデルのトレーニング、フォームの分析 - Form Recognizer
+title: 'クイック スタート: サンプル ラベル付けツールを使用したフォームのラベル付け、モデルのトレーニング、フォームの分析 - Form Recognizer'
 titleSuffix: Azure Cognitive Services
-description: このクイックスタートでは、Form Recognizer のサンプル ラベル付けツールを使用して、フォーム ドキュメントに手動でラベルを付けます。 次に、ラベル付けされたドキュメントを使用してカスタム モデルをトレーニングし、そのモデルを使用してキーと値のペアを抽出します。
+description: このクイックスタートでは、Form Recognizer のサンプル ラベル付けツールを使用して、フォーム ドキュメントに手動でラベルを付けます。 次に、ラベル付けされたドキュメントを使用してカスタム ドキュメント処理モデルをトレーニングし、そのモデルを使用してキーと値のペアを抽出します。
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 08/25/2020
+ms.date: 09/30/2020
 ms.author: pafarley
-ms.openlocfilehash: e231bb7919f25210d7e5a2adff49dede6f0349a9
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.custom: cog-serv-seo-aug-2020
+keywords: ドキュメントの処理
+ms.openlocfilehash: 6b641df00d4b4981aa47f314f8e575a9cbcccbba
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89418961"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597740"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>サンプル ラベル付けツールを使用したラベルによる Form Recognizer モデルのトレーニング
 
-このクイックスタートでは、Form Recognizer REST API とサンプル ラベル付けツールを使用して、手動でラベル付けされたデータを使ってカスタム モデルをトレーニングします。 この機能の詳細については、概要に関するページの「[ラベルを使用したトレーニング](../overview.md#train-with-labels)」を参照してください。
+このクイックスタートでは、Form Recognizer REST API とサンプル ラベル付けツールを使用して、手動でラベル付けされたデータを使ってカスタム ドキュメント処理モデルをトレーニングします。 Form Recognizer を使用した教師あり学習の詳細については、概要に関するページの「[ラベルを使用したトレーニング](../overview.md#train-with-labels)」を参照してください。
 
 > [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Azure-Form-Recognizer/player]
 
@@ -137,7 +139,7 @@ ms.locfileid: "89418961"
 * **[API キー]** - Form Recognizer のサブスクリプション キー。
 * **[説明]** (省略可能) - プロジェクトの説明
 
-:::image type="content" source="../media/label-tool/new-project.png" alt-text="サンプル ラベル付けツールの新規プロジェクト ページ。":::
+:::image type="content" source="../media/label-tool/new-project.png" alt-text="サンプル ラベル付けツールの接続設定。":::
 
 ## <a name="label-your-forms"></a>フォームにラベルを付ける
 
@@ -153,7 +155,7 @@ ms.locfileid: "89418961"
 
 どのテーブルが自動的に抽出されたかも示されます。 ドキュメントの左側にあるテーブル (グリッド) アイコンをクリックすると、抽出されたテーブルが表示されます。 テーブルの内容は自動的に抽出されるため、このクイックスタートではテーブルの内容に対するラベル付けは行わず、自動化された抽出を信頼することにします。
 
-:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="サンプル ラベル付けツールでのテーブルの視覚化。":::
+:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="サンプル ラベル付けツールの接続設定。":::
 
 ### <a name="apply-labels-to-text"></a>ラベルをテキストに適用する
 
@@ -199,7 +201,7 @@ ms.locfileid: "89418961"
 
 ---
 
-:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="サンプル ラベル付けツールのメインのエディター ウィンドウ。":::
+:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="サンプル ラベル付けツールの接続設定。":::
 
 
 上記の手順に従って、少なくとも 5 つのフォームにラベルを付けてください。
@@ -254,7 +256,7 @@ ms.locfileid: "89418961"
 * タグの一覧と、タグごとの予測精度。
 
 
-:::image type="content" source="../media/label-tool/train-screen.png" alt-text="トレーニング ビュー。":::
+:::image type="content" source="../media/label-tool/train-screen.png" alt-text="サンプル ラベル付けツールの接続設定。":::
 
 トレーニングが完了したら、 **[Average Accuracy]\(平均精度\)** の値を確認します。 低い場合は、入力ドキュメントをさらに追加して、上記の手順を繰り返す必要があります。 既にラベルを付けたドキュメントは、プロジェクトのインデックスに残ります。
 
@@ -273,7 +275,7 @@ ms.locfileid: "89418961"
 
 サンプル ラベル付けツールでモデルを作成するには、左側にある [Model Compose]\(モデルの作成\) (マージされる矢印) アイコンをクリックします。 左側で、一緒に作成したいモデルを選択します。 矢印アイコンの付いたモデルは、既に作成済みのモデルです。 [作成] ボタンをクリックします。 ポップアップで、新しく作成するモデルに名前を付け、[作成] をクリックします。 操作が完了すると、新しく作成されたモデルが一覧に表示されます。 
 
-:::image type="content" source="../media/label-tool/model-compose.png" alt-text="モデルの作成の UX ビュー。":::
+:::image type="content" source="../media/label-tool/model-compose.png" alt-text="サンプル ラベル付けツールの接続設定。":::
 
 ---
 
@@ -306,7 +308,10 @@ ms.locfileid: "89418961"
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、Form Recognizer のサンプル ラベル付けツールを使用し、手動でラベル付けされたデータを使ってモデルをトレーニングする方法について説明しました。 ラベル付けツールを独自のアプリケーションに統合する場合は、ラベル付けされたデータのトレーニングを処理する REST API を使用します。
+このクイックスタートでは、Form Recognizer のサンプル ラベル付けツールを使用し、手動でラベル付けされたデータを使ってモデルをトレーニングする方法について説明しました。 トレーニング データにラベルを付ける独自のユーティリティを作成したい場合は、ラベル付けされたデータのトレーニングを扱う REST API を使用してください。
 
 > [!div class="nextstepaction"]
 > [Python でラベルを使用してトレーニングする](./python-labeled-data.md)
+
+* [Form Recognizer とは](../overview.md)
+* [Form Recognizer クライアント ライブラリのクイックスタート](client-library.md)

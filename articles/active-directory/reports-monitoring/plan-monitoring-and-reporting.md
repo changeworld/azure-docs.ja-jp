@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20b83291dc37c6248761214654f99d3ce214b551
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a75cc77b45d41d7fd63eadce34265ca54b663e14
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229754"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030992"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Azure Active Directory のレポートと監視のデプロイを計画する
 
@@ -133,7 +133,7 @@ Azure AD のアクティビティ ログ用の既製のビューをインスト�
 
 Azure イベント ハブにログをルーティングすると、サードパーティ製の SIEM ツールとの統合が可能になります。 この統合によって、Azure AD のアクティビティ ログ データと、SIEM によって管理されている他のデータを組み合わせ、より豊富な環境分析情報を提供することができます。 
 
-ログをイベント ハブにストリーム配信する方法については、[こちら](//azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub)を参照してください。
+ログをイベント ハブにストリーム配信する方法については、[こちら](/azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub)を参照してください。
 
 ## <a name="plan-operations-and-security-for-azure-ad-reporting-and-monitoring"></a>Azure AD のレポートと監視の運用とセキュリティを計画する
 

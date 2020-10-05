@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: charwen
-ms.openlocfilehash: 4e818617b70e874153e026bcf40b6dfee8a8e04e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad1476847874f7cea53c6e9c0c3d9f142c949dac
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744240"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987713"
 ---
 # <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>仮想マシンとの間のコピーと貼り付け:Azure Bastion
 
@@ -37,7 +37,7 @@ ms.locfileid: "84744240"
 
    ![ツール パレット](./media/bastion-vm-manage/left.png)
 
-   ![クリップボード](./media/bastion-vm-manage/clipboard.png)
+   ![Bastion にコピーされたテキストのクリップボードのスクリーンショット。](./media/bastion-vm-manage/clipboard.png)
 1. 通常、コピーしたテキストは、Azure Bastion コピー貼り付けパレットに自動的に表示されます。 テキストが表示されていない場合は、パレットのテキスト領域にテキストを貼り付けます。
 1. テキスト領域にテキストが表示されたら、それをリモート セッションに貼り付けることができます。
 

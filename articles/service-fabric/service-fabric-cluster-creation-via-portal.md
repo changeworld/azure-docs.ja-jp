@@ -3,12 +3,12 @@ title: Azure portal で Service Fabric クラスターを作成する
 description: Azure portal と Azure Key Vault を使用して Azure でセキュリティ保護された Service Fabric クラスターを設定する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: b47f3b756ef4d012b41fd15686ffc08ab54fc187
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c679a804db09b1034f31e9d8da1f7d2ad206f684
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259318"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563728"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Azure ポータルを使用して Azure で Service Fabric クラスターを作成する
 > [!div class="op_single_selector"]
@@ -128,42 +128,42 @@ Service Fabric を操作するために、クライアント認証証明書を K
 
 この処理が完了するまで、画面から移動しないでください。
 
-![CreateKeyVault]
+![セキュリティ ページのスクリーンショット。[キー コンテナー] ウィンドウと [キー コンテナーの作成] ウィンドウで [Basic] が選択されています。][CreateKeyVault]
 
 キー コンテナーが作成されたので、お使いのキー コンテナーのアクセス ポリシーを編集します。 
 
-![CreateKeyVault2]
+![[Service Fabric クラスターの作成] ウィンドウのスクリーンショット。オプション 3 の [セキュリティ] が選択されています。キー コンテナーが有効になっていないという説明があります。][CreateKeyVault2]
 
 **[Edit access policies]\(アクセス ポリシーの編集\)** をクリックし、**高度なアクセス ポリシーを表示して**、デプロイのための Azure Virtual Machines へのアクセスを有効にします。 テンプレートのデプロイも有効にすることをお勧めします。 選択を行ったら、忘れずに **[保存]** ボタンをクリックし、 **[アクセス ポリシー]** ウィンドウを終了します。
 
-![CreateKeyVault3]
+![[Service Fabric クラスターの作成] ウィンドウのスクリーンショット。[セキュリティ] ウィンドウと [アクセス ポリシー] ウィンドウが開いています。][CreateKeyVault3]
 
 証明書の名前を入力して **[OK]** をクリックします。
 
-![CreateKeyVault4]
+![[Service Fabric クラスターの作成] ウィンドウのスクリーンショット。前と同じで [セキュリティ] が選択されていますが、キー コンテナーが有効になっていないという説明がありません。][CreateKeyVault4]
 
 #### <a name="custom-option"></a>カスタム オプション
 **[Basic]** オプションの手順を既に実行している場合は、このセクションをスキップします。
 
-![SecurityCustomOption]
+![[セキュリティ] のスクリーンショット。クラスターのセキュリティ設定を構成するダイアログ ボックスを確認できます。][SecurityCustomOption]
 
 [セキュリティ] ページを完了するには、[ソース キー コンテナー]、[証明書 URL]、および [証明書の拇印] の情報が必要です。 これらが手元にない場合は、別のブラウザー ウィンドウを開き、Azure portal で次を実行します。
 
 1. キー コンテナー サービスに移動します。
 2. [プロパティ] タブを選択し、[リソース ID] を他のブラウザー ウィンドウの [ソース キー コンテナー] にコピーします。 
 
-    ![CertInfo0]
+    ![キー コンテナーの [プロパティ] ウィンドウのスクリーンショット。][CertInfo0]
 
 3. [証明書] タブを選択します。
 4. 証明書の拇印をクリックすると、[バージョン] ページに移動します。
 5. 現在のバージョンの下に表示されている GUID をクリックします。
 
-    ![CertInfo1]
+    ![キー コンテナーの [証明書] ウィンドウのスクリーンショット][CertInfo1]
 
 6. 以下のような画面が表示されます。 16 進の SHA-1 拇印を他のブラウザー ウィンドウの [証明書の拇印] にコピーします。
 7. [シークレット識別子] を他のブラウザー ウィンドウの [証明書 URL] にコピーします。
 
-    ![CertInfo2]
+    ![[証明書バージョン] ダイアログ ボックスのスクリーンショット。証明書 ID をコピーするためのオプションがあります。][CertInfo2]
 
 **[詳細設定の構成]** ボックスをオンにして、**管理用クライアント**と**読み取り専用クライアント**のクライアント証明書を入植します。 該当する場合は、これらのフィールドに管理用クライアント証明書の拇印と、読み取り専用ユーザー クライアント証明書の拇印を入力します。 管理者がクラスターに接続しようとした場合、ここに入力した拇印値に一致する拇印を持つ証明書がある場合にのみアクセスが許可されます。  
 
@@ -173,7 +173,7 @@ Service Fabric を操作するために、クライアント認証証明書を K
 
 クラスターの作成を完了するには、 **[作成]** をクリックします。 必要に応じて、テンプレートをダウンロードすることもできます。
 
-![まとめ]
+![[Service Fabric クラスターの作成] の [概要] ページのスクリーンショット。証明書を表示し、ダウンロードするためのリンクがあります。][Summary]
 
 通知には作成の進行状況が表示されます (画面の右上にあるステータス バーの近くの "ベル" アイコンをクリックします)。クラスターの作成中に **[スタート画面にピン留めする]** をクリックした場合、 **[Deploying Service Fabric Cluster (Service Fabric クラスターのデプロイ)]** が **[スタート]** 画面にピン留めされます。 このプロセスには少し時間がかかります。 
 
@@ -230,7 +230,7 @@ PowerShell または CLI を使用してクラスターで管理操作を実行�
 [CertInfo2]: ./media/service-fabric-cluster-creation-via-portal/CertInfo2.PNG
 [SecurityCustomOption]: ./media/service-fabric-cluster-creation-via-portal/SecurityCustomOption.PNG
 [DownloadCert]: ./media/service-fabric-cluster-creation-via-portal/DownloadCert.PNG
-[まとめ]: ./media/service-fabric-cluster-creation-via-portal/Summary.PNG
+[Summary]: ./media/service-fabric-cluster-creation-via-portal/Summary.PNG
 [SecurityConfigs]: ./media/service-fabric-cluster-creation-via-portal/SecurityConfigs.png
 [Notifications]: ./media/service-fabric-cluster-creation-via-portal/notifications.png
 [ClusterDashboard]: ./media/service-fabric-cluster-creation-via-portal/ClusterDashboard.png

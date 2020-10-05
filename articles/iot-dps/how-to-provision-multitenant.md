@@ -7,16 +7,16 @@ ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: e0dec0a67ed33186797ccec8066aaad89ceb8dcb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bcdda8d1bd08a26dcdbec294be88fd4540670596
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75434750"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531425"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>マルチテナント用にプロビジョニングする方法 
 
-プロビジョニング サービスによって定義されている割り当てポリシーでは、さまざまな割り当てシナリオがサポートされています。 よく使用されるシナリオは次の 2 つです。
+この記事では、[割り当てポリシー](concepts-service.md#allocation-policy)を利用し、IoT Hub のグループに複数の対称キーを安全にプロビジョニングする方法を実演します。 プロビジョニング サービスによって定義されている割り当てポリシーでは、さまざまな割り当てシナリオがサポートされています。 よく使用されるシナリオは次の 2 つです。
 
 * **位置情報/geo 待機時間**: デバイスが異なる場所の間を移動するときは、各場所に最も近い IoT ハブに対してデバイスをプロビジョニングすることにより、ネットワーク待機時間が改善されます。 このシナリオでは、異なるリージョンに広がる IoT ハブのグループを、登録対象に選択します。 これらの登録に対して、**最短待機時間**割り当てポリシーを選択します。 このポリシーを指定すると、Device Provisioning Service はデバイスの待機時間を評価して、IoT ハブのグループから最も近い IoT ハブを決定します。 
 
@@ -83,42 +83,42 @@ ms.locfileid: "75434750"
 
 このセクションでは、テナント デバイス用の新しい登録グループを作成します。  
 
-わかりやすくするため、この記事では[対称キーの構成証明](concepts-symmetric-key-attestation.md)を登録で使用します。 ソリューションをさらに安全にするには、信頼チェーンで [X.509 証明書構成証明](concepts-security.md#x509-certificates)を使用することを検討してください。
+わかりやすくするため、この記事では[対称キーの構成証明](concepts-symmetric-key-attestation.md)を登録で使用します。 ソリューションをさらに安全にするには、信頼チェーンで [X.509 証明書構成証明](concepts-x509-attestation.md)を使用することを検討してください。
 
 1. [Azure portal](https://portal.azure.com) にサインインし、Device Provisioning Services のインスタンスを開きます。
 
 2. **[登録を管理します]** タブを選択し、ページの上部にある **[登録グループの追加]** ボタンをクリックします。 
 
-3. **[登録グループの追加]** で、次の情報を入力して、 **[保存]** ボタンをクリックします。
+3. **[登録グループの追加]** で、次の情報を入力して、**[保存]** ボタンをクリックします。
 
-    **[グループ名]** : 「**contoso-us-devices**」と入力します。
+    **[グループ名]**: 「**contoso-us-devices**」と入力します。
 
-    **[Attestation Type]\(構成証明の種類\)** : **[対称キー]** を選択します。
+    **[Attestation Type]\(構成証明の種類\)**: **[対称キー]** を選択します。
 
-    **[キーの自動生成]** : このチェック ボックスは既にオンになっているはずです。
+    **[キーの自動生成]**: このチェック ボックスは既にオンになっているはずです。
 
-    **[デバイスをハブに割り当てる方法を選択してください]** : **[最短待機時間]** を選択します。
+    **[デバイスをハブに割り当てる方法を選択してください]**: **[最短待機時間]** を選択します。
 
     ![対称キー構成証明にマルチテナントの登録グループを追加する](./media/how-to-provision-multitenant/create-multitenant-enrollment.png)
 
 
-4. **[登録グループの追加]** で、 **[Link a new IoT hub]\(新しい IoT ハブにリンクする\)** をクリックして両方のリージョンのハブをリンクします。
+4. **[登録グループの追加]** で、**[Link a new IoT hub]\(新しい IoT ハブにリンクする\)** をクリックして両方のリージョンのハブをリンクします。
 
-    **[サブスクリプション]** : 複数のサブスクリプションがある場合は、リージョンの IoT ハブを作成したサブスクリプションを選択します。
+    **[サブスクリプション]**: 複数のサブスクリプションがある場合は、リージョンの IoT ハブを作成したサブスクリプションを選択します。
 
-    **[IoT ハブ]** : 作成したリージョン ハブのいずれかを選択します。
+    **[IoT ハブ]**: 作成したリージョン ハブのいずれかを選択します。
 
-    **[アクセス ポリシー]** : **[iothubowner]** を選択します。
+    **[アクセス ポリシー]**: **[iothubowner]** を選択します。
 
     ![リージョンの IoT ハブをプロビジョニング サービスとリンクする](./media/how-to-provision-multitenant/link-regional-hubs.png)
 
 
-5. 両方のリージョンの IoT ハブをリンクした後、それらを登録グループに対して選択し、 **[保存]** をクリックして、登録用のリージョン IoT ハブ グループを作成する必要があります。
+5. 両方のリージョンの IoT ハブをリンクした後、それらを登録グループに対して選択し、**[保存]** をクリックして、登録用のリージョン IoT ハブ グループを作成する必要があります。
 
     ![登録用のリージョン ハブ グループを作成する](./media/how-to-provision-multitenant/enrollment-regional-hub-group.png)
 
 
-6. 登録を保存した後、もう一度開き、 **[主キー]** を書き留めておきます。 キーを生成するには、まず登録を保存する必要があります。 このキーは、後で両方のシミュレートされたデバイスに対する一意のデバイス キーを生成するために使用されます。
+6. 登録を保存した後、もう一度開き、**[主キー]** を書き留めておきます。 キーを生成するには、まず登録を保存する必要があります。 このキーは、後で両方のシミュレートされたデバイスに対する一意のデバイス キーを生成するために使用されます。
 
 
 ## <a name="create-regional-linux-vms"></a>リージョンの Linux VM を作成する
@@ -191,7 +191,7 @@ ms.locfileid: "75434750"
 
 このセクションでは、各 VM で Azure IoT C SDK を複製します。 SDK には、各リージョンからのテナントのデバイスのプロビジョニングをシミュレートするサンプルが含まれています。
 
-1. VM ごとに、次のコマンドを使用して **CMake**、**g++** 、**gcc**、[Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) をインストールします。
+1. VM ごとに、次のコマンドを使用して **CMake**、**g++**、**gcc**、[Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) をインストールします。
 
     ```bash
     sudo apt-get update
@@ -336,13 +336,13 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
 
     関数呼び出しのコメントを解除し、各デバイスについて、プレースホルダーの値 (山かっこを含む) を一意の登録 ID とデバイス派生キーに置き換えます。 以下に示したキーはあくまでも例です。 先ほど生成したキーを使用してください。
 
-    米国東部:
+    米国東部: 
     ```c
     // Set the symmetric key if using they auth type
     prov_dev_set_symmetric_key_info("contoso-simdevice-east", "p3w2DQr9WqEGBLUSlFi1jPQ7UWQL4siAGy75HFTFbf8=");
     ```
 
-    米国西部:
+    米国西部: 
     ```c
     // Set the symmetric key if using they auth type
     prov_dev_set_symmetric_key_info("contoso-simdevice-west", "J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=");
@@ -359,7 +359,7 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
 
 1. ビルドが成功したら、両方の VM で **prov\_dev\_client\_sample.exe** を実行して、各リージョンからテナント デバイスをシミュレートします。 シミュレートされたデバイスのリージョンに最も近いテナント IoT ハブに、各デバイスが割り当てられることに注意してください。
 
-    シミュレーションを実行する:
+    シミュレーションを実行する: 
     ```bash
     ~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample
     ```
@@ -414,9 +414,9 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
 
 2. **[名前でフィルター]** テキスト ボックスに、リソースが含まれているリソース グループの名前 **contoso-us-resource-group** を入力します。 
 
-3. 結果一覧のでリソース グループの **[...]** をクリックし、 **[リソース グループの削除]** をクリックします。
+3. 結果一覧のでリソース グループの **[...]** をクリックし、**[リソース グループの削除]** をクリックします。
 
-4. リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を再度入力し、 **[削除]** をクリックします。 しばらくすると、リソース グループとそこに含まれているすべてのリソースが削除されます。
+4. リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を再度入力し、**[削除]** をクリックします。 しばらくすると、リソース グループとそこに含まれているすべてのリソースが削除されます。
 
 ## <a name="next-steps"></a>次のステップ
 

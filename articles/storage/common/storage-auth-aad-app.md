@@ -6,20 +6,20 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/22/2020
+ms.date: 09/14/2020
 ms.author: tamram
 ms.subservice: common
-ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: d842974b0b53e0b0ce199334a07f11e5c998b18d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b5a39b08f34bec5ee1db42cde1fb171452d0efd3
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018809"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069817"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>クライアント アプリケーションからの要求を承認するために Azure AD からトークンを取得する
 
-Azure Blob Storage または Queue Storage で Azure Active Directory (Azure AD) を使用する主な利点は、資格情報をコード内に格納する必要がなくなることです。 その代わりに、Microsoft ID プラットフォーム (以前の Azure AD) から OAuth 2.0 アクセス トークンを要求することができます。 Azure AD によって、アプリケーションを実行しているセキュリティ プリンシパル (ユーザー、グループ、またはサービス プリンシパル) が認証されます。 認証が成功すると、Azure AD からアプリケーションにアクセス トークンが返されます。アプリケーションでは、このアクセス トークンを使用して Azure Blob Storage および Queue Storage への要求を承認できます。
+Azure Blob Storage または Queue Storage で Azure Active Directory (Azure AD) を使用する主な利点は、資格情報をコード内に格納する必要がなくなることです。 代わりに、Microsoft ID プラットフォームから OAuth 2.0 アクセス トークンを要求することができます。 Azure AD によって、アプリケーションを実行しているセキュリティ プリンシパル (ユーザー、グループ、またはサービス プリンシパル) が認証されます。 認証が成功すると、Azure AD からアプリケーションにアクセス トークンが返されます。アプリケーションでは、このアクセス トークンを使用して Azure Blob Storage および Queue Storage への要求を承認できます。
 
 この記事では、Microsoft ID プラットフォーム 2.0 による認証を行うためにネイティブ アプリケーションまたは Web アプリケーションを構成する方法について説明します。 コード例で取り上げられているのは .NET ですが、他の言語でも同様の方法が使用されます。 Microsoft ID プラットフォーム 2.0 の詳細については、「[Microsoft ID プラットフォーム (v2.0) の概要](../../active-directory/develop/v2-overview.md)」を参照してください。
 
@@ -27,7 +27,7 @@ OAuth 2.0 コード付与フローの概要については、「[OAuth 2.0 コ�
 
 ## <a name="assign-a-role-to-an-azure-ad-security-principal"></a>Azure AD のセキュリティ プリンシパルにロールを割り当てる
 
-Azure Storage アプリケーションからセキュリティ プリンシパルの認証を行うには、最初に、そのセキュリティ プリンシパルのロールベースのアクセス制御 (RBAC) 設定を構成します。 コンテナーとキューのアクセス許可を含む Azure 組み込みロールは、Azure Storage によって定義されます。 Azure ロールがセキュリティ プリンシパルに割り当てられると、そのセキュリティ プリンシパルはそのリソースへのアクセス権を付与されます。 詳細については、[RBAC を使用した Azure BLOB とキューのデータへのアクセス権の管理](storage-auth-aad-rbac.md)に関するページをご覧ください。
+Azure Storage アプリケーションからセキュリティ プリンシパルの認証を行うには、最初に、そのセキュリティ プリンシパルのロールベースのアクセス制御 (RBAC) 設定を構成します。 コンテナーとキューのアクセス許可を含む組み込みのロールは、Azure Storage によって定義されます。 RBAC ロールがセキュリティ プリンシパルに割り当てられると、そのセキュリティ プリンシパルはそのリソースへのアクセス権を付与されます。 詳細については、[RBAC を使用した Azure BLOB とキューのデータへのアクセス権の管理](storage-auth-aad-rbac.md)に関するページをご覧ください。
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>アプリケーションを Azure AD テナントに登録する
 
@@ -127,39 +127,78 @@ Microsoft パブリック クラウドの場合、基本 Azure AD 機関は次�
 
 Visual Studio から Azure Storage クライアント ライブラリをインストールします。 **[ツール]** メニューで、 **[NuGet パッケージ マネージャー]** 、 **[パッケージ マネージャー コンソール]** の順に選択します。 コンソール ウィンドウに次のコマンドを入力して、.NET 用 Azure Storage クライアント ライブラリから必要なパッケージをインストールします。
 
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+
+```console
+Install-Package Azure.Storage.Blobs
+Install-Package Microsoft.Identity.Web -Version 0.4.0-preview
+```
+
+次に、以下の using ステートメントを HomeController.cs ファイルに追加します。
+
+```csharp
+using Microsoft.Identity.Web; //MSAL library for getting the access token
+using Azure.Storage.Blobs;
+```
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+
 ```console
 Install-Package Microsoft.Azure.Storage.Blob
-Install-Package Microsoft.Azure.Storage.Common
+Install-Package Microsoft.Identity.Web -Version 0.4.0-preview
 ```
 
 次に、以下の using ステートメントを HomeController.cs ファイルに追加します。
 
 ```csharp
 using Microsoft.Identity.Client; //MSAL library for getting the access token
-using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.Azure.Storage.Auth;
+using Microsoft.Azure.Storage.Blob;
 ```
+
+---
 
 #### <a name="create-a-block-blob"></a>ブロック BLOB を作成する
 
 次のコード スニペットを追加してブロック BLOB を作成します。
 
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+
+```csharp
+private static async Task<string> CreateBlob(TokenAcquisitionTokenCredential tokenCredential)
+{
+    Uri blobUri = new Uri("https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt");
+    BlobClient blobClient = new BlobClient(blobUri, tokenCredential);
+
+    string blobContents = "Blob created by Azure AD authenticated user.";
+    byte[] byteArray = Encoding.ASCII.GetBytes(blobContents);
+
+    using (MemoryStream stream = new MemoryStream(byteArray))
+    {
+        await blobClient.UploadAsync(stream);
+    }
+    return "Blob successfully created";
+}
+```
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+
 ```csharp
 private static async Task<string> CreateBlob(string accessToken)
 {
-    // Create a blob on behalf of the user
+    // Create a blob on behalf of the user.
     TokenCredential tokenCredential = new TokenCredential(accessToken);
     StorageCredentials storageCredentials = new StorageCredentials(tokenCredential);
 
-    // Replace the URL below with your storage account URL
-    CloudBlockBlob blob =
-        new CloudBlockBlob(
-            new Uri("https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt"),
-            storageCredentials);
+    // Replace the URL below with the URL to your blob.
+    Uri blobUri = new Uri("https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt");
+    CloudBlockBlob blob = new CloudBlockBlob(blobUri, storageCredentials);
     await blob.UploadTextAsync("Blob created by Azure AD authenticated user.");
     return "Blob successfully created";
 }
 ```
+
+---
 
 > [!NOTE]
 > OAuth 2.0 トークンを使用して BLOB とキューの操作を承認するには、HTTPS を使用する必要があります。
@@ -175,69 +214,25 @@ x-ms-version: 2017-11-09
 Authorization: Bearer eyJ0eXAiOnJKV1...Xd6j
 ```
 
-#### <a name="get-an-oauth-token-from-azure-ad"></a>Azure AD から OAuth トークンを取得する
+#### <a name="get-an-access-token-from-azure-ad"></a>Azure AD からアクセス トークンを取得する
 
 次に、ユーザーの代わりに Azure AD からトークンを要求するメソッドを追加します。 このメソッドは、アクセス許可が付与されるスコープを定義します。 アクセス許可とスコープの詳細については、「[Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意](../../active-directory/develop/v2-permissions-and-consent.md)」を参照してください。
 
 リソース ID を使用して、トークンを取得するスコープを構築します。 この例では、(ユーザーの代わりにトークンが要求されることを示す) 組み込みの `user_impersonation` スコープと共にリソース ID を使用してスコープを構築します。
 
-注意点としては、自分の代わりにトークンを要求することにユーザーが同意するためのインターフェイスをユーザーに提示することが必要な場合があります。 同意が必要な場合、例では **MsalUiRequiredException** をキャッチし、別のメソッドを呼び出して同意の要求を促進します。
+注意点としては、自分の代わりにトークンを要求することにユーザーが同意するためのインターフェイスをユーザーに提示することが必要な場合があります。
 
 ```csharp
+[AuthorizeForScopes(Scopes = new string[] { "https://storage.azure.com/user_impersonation" })]
 public async Task<IActionResult> Blob()
 {
-    var scopes = new string[] { "https://storage.azure.com/user_impersonation" };
-    try
-    {
-        var accessToken =
-            await _tokenAcquisition.GetAccessTokenOnBehalfOfUser(HttpContext, scopes);
-        ViewData["Message"] = await CreateBlob(accessToken);
-        return View();
-    }
-    catch (MsalUiRequiredException ex)
-    {
-        AuthenticationProperties properties =
-            BuildAuthenticationPropertiesForIncrementalConsent(scopes, ex);
-        return Challenge(properties);
-    }
+    string message = await CreateBlob(new TokenAcquisitionTokenCredential(_tokenAcquisition));
+    ViewData["Message"] = message;
+    return View();
 }
 ```
 
-同意は、保護されたリソースにアプリケーションが代理でアクセスする認証を、ユーザーが許可するプロセスです。 Microsoft ID プラットフォーム 2.0 では増分同意がサポートされています。これは、セキュリティ プリンシパルで最初は最小限のアクセス許可のセットを要求し、必要に応じて時間の経過と共にアクセス許可を追加できることを意味します。 コードがアクセス トークンを要求する場合、特定の時点でアプリが必要とするアクセス許可のスコープを、`scope` パラメーターに指定します。 増分同意の詳細については、「[Microsoft ID プラットフォーム (v2.0) に更新する理由](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)」の「**増分および動的な同意**」セクションをご覧ください。
-
-次のメソッドは、増分同意を要求する認証プロパティを作成します。
-
-```csharp
-private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalConsent(string[] scopes,
-                                                                                    MsalUiRequiredException ex)
-{
-    AuthenticationProperties properties = new AuthenticationProperties();
-
-    // Set the scopes, including the scopes that MSAL.NET needs for the token cache.
-    string[] additionalBuildInScopes = new string[] { "openid", "offline_access", "profile" };
-    properties.SetParameter<ICollection<string>>(OpenIdConnectParameterNames.Scope,
-                                                 scopes.Union(additionalBuildInScopes).ToList());
-
-    // Attempt to set the login_hint so that the logged-in user is not presented
-    // with an account selection dialog.
-    string loginHint = HttpContext.User.GetLoginHint();
-    if (!string.IsNullOrWhiteSpace(loginHint))
-    {
-        properties.SetParameter<string>(OpenIdConnectParameterNames.LoginHint, loginHint);
-
-        string domainHint = HttpContext.User.GetDomainHint();
-        properties.SetParameter<string>(OpenIdConnectParameterNames.DomainHint, domainHint);
-    }
-
-    // Specify any additional claims that are required (for instance, MFA).
-    if (!string.IsNullOrEmpty(ex.Claims))
-    {
-        properties.Items.Add("claims", ex.Claims);
-    }
-
-    return properties;
-}
-```
+同意は、保護されたリソースにアプリケーションが代理でアクセスする認証を、ユーザーが許可するプロセスです。 Microsoft ID プラットフォーム 2.0 では増分同意がサポートされています。これは、セキュリティ プリンシパルで最初は最小限のアクセス許可のセットを要求し、必要に応じて時間の経過と共にアクセス許可を追加できることを意味します。 コードがアクセス トークンを要求する場合、特定の時点でアプリが必要とするアクセス許可のスコープを、`scope` パラメーターに指定します。 増分同意の詳細については、「[増分および動的な同意](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)」を参照してください。
 
 ## <a name="view-and-run-the-completed-sample"></a>完全なサンプルを表示して実行する
 
@@ -271,12 +266,10 @@ private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalCons
 
 ### <a name="update-the-storage-account-and-container-name"></a>ストレージ アカウントとコンテナー名を更新する
 
-*HomeController.cs* ファイルで、自分のストレージ アカウントとコンテナーの名前を使うように、ブロック BLOB を参照する URI を更新します。
+*HomeController.cs* ファイルで、自分のストレージ アカウントとコンテナーの名前を使うように、ブロック BLOB を参照する URI を更新します。山かっこ内の値を実際の値に置き換えてください。
 
-```csharp
-CloudBlockBlob blob = new CloudBlockBlob(
-                      new Uri("https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt"),
-                      storageCredentials);
+```html
+https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt
 ```
 
 ### <a name="enable-implicit-grant-flow"></a>暗黙的な許可のフローを有効にする

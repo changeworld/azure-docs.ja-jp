@@ -1,14 +1,14 @@
 ---
 title: Recovery Services コンテナーの概要
-description: Recovery Services コンテナーの概要と Azure Backup コンテナーとの比較。
+description: Recovery Services コンテナーの概要です。
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 6b6550bc8c5221547d55ad1e81a985b8ecd303e0
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: cc09c1ffa84bc66e8fe2c48c80b8aea0977762ba
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88889619"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975155"
 ---
 # <a name="recovery-services-vaults-overview"></a>Recovery Services コンテナーの概要
 
@@ -30,7 +30,7 @@ Recovery Services コンテナーは、経時的に作成されたバックア�
 
 - Azure Backup では、コンテナーのストレージが自動的に処理されます。 [ストレージ設定の変更](./backup-create-rs-vault.md#set-storage-redundancy)方法を確認してください。
 
-- ストレージの冗長性の詳細については、[geo](../storage/common/storage-redundancy.md) と[ローカル](../storage/common/storage-redundancy.md)の冗長性に関する記事を参照してください。
+- ストレージ冗長性の詳細については、[geo](../storage/common/storage-redundancy.md#geo-zone-redundant-storage)、[ローカル](../storage/common/storage-redundancy.md#locally-redundant-storage)、[ゾーン](../storage/common/storage-redundancy.md#zone-redundant-storage)の冗長性に関するこれらの記事を参照してください。
 
 ## <a name="encryption-settings-in-the-recovery-services-vault"></a>Recovery Services コンテナーの暗号化設定
 

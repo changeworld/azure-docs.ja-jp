@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: 300da87ecff13fc160ec08684cf1d032f9a19f71
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/08/2020
+ms.openlocfilehash: d980764b7151183b61657434afa6c472e5058d18
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88924488"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662269"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Azure Cognitive Search での類似性とスコアリング
 
@@ -40,7 +40,7 @@ ms.locfileid: "88924488"
 
 ## <a name="scoring-statistics-and-sticky-sessions"></a>スコアリング統計とスティッキー セッション
 
-スケーラビリティのために、Azure Cognitive Search ではシャーディング プロセスを介して各インデックスが水平方向に分散されます。つまり、インデックスの各部が物理的に分離されます。
+スケーラビリティのために、Azure Cognitive Search ではシャーディング プロセスを介して各インデックスが水平方向に分散されます。つまり、[インデックスの各部が物理的に分離されます](search-capacity-planning.md#concepts-search-units-replicas-partitions-shards)。
 
 既定では、ドキュメントのスコアは、"*シャード内*" のデータの統計プロパティに基づいて計算されます。 このアプローチは、一般に、データの大規模なコーパスでは問題にならず、すべてのシャードの情報に基づいてスコアを計算する必要がある場合よりもパフォーマンスが向上します。 ただし、このパフォーマンスの最適化を使用すると、2 つの非常に類似したドキュメント (またはまったく同一のドキュメント) は、それぞれが異なるシャードになる場合、関連性スコアが異なる可能性があります。
 

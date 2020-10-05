@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: duau
-ms.openlocfilehash: aa3465940088d3a66f23dfd5d58a6ec3fd3053de
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: ee96abb51e03fb1dc567b66d180cb520de299d95
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89397714"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566536"
 ---
 # <a name="asymmetric-routing-with-multiple-network-paths"></a>複数のネットワーク パスを使用した非対称ルーティング
 この記事では、ネットワークの送信元と送信先の間で利用できるパスが複数存在する場合に、ネットワーク トラフィックが行きと戻りで異なるルートを取る場合がある理由について説明します。
@@ -64,5 +64,5 @@ ExpressRoute を認証に使用したい場合は、NAT を使用せずに Expre
 ![Source-based NAT network configuration](./media/expressroute-asymmetric-routing/AsymmetricRouting2.png)
 
 ## <a name="asymmetric-routing-detection"></a>非対称ルーティングの検出
-traceroute は、ネットワーク トラフィックが予想されるパスを経由していることを確認するうえで、最善の手段です。 オンプレミスの SMTP サーバーから Microsoft に送信されるトラフィックがインターネット パスを経由することが予想される場合、予想される traceroute は SMTP サーバーから Office 365 までです。 その結果から、トラフィックが実際にユーザーのネットワークから (ExpressRoute ではなく) インターネットに向かって送信されていることが確認できます。
+traceroute は、ネットワーク トラフィックが予想されるパスを経由していることを確認するうえで、最善の手段です。 オンプレミスの SMTP サーバーから Microsoft に送信されるトラフィックがインターネット パスを経由することが予想される場合、予想される traceroute は SMTP サーバーから Microsoft 365 までです。 その結果から、トラフィックが実際にユーザーのネットワークから (ExpressRoute ではなく) インターネットに向かって送信されていることが確認できます。
 

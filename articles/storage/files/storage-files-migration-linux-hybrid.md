@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: fd2e4f5c81427413e3f3f3eceaa0cc41a3b9e318
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 202f7fd065641f9921df5237fb83e7900819c8f7
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510371"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563507"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Azure File Sync を使用して Linux からハイブリッド クラウド デプロイに移行する
 
-Azure File Sync は、Windows Server インスタンスでは直接接続記憶域 (DAS) を使用して機能します。 Linux またはリモート Server Message Block (SMB) 共有との間の同期はサポートされていません。
+Azure File Sync は、Windows Server インスタンスでは直接接続記憶域 (DAS) を使用して機能します。 Linux クライアント、リモート Server Message Block (SMB) 共有、Network File System (NFS) 共有との間の同期はサポートされていません。
 
 そのため、ファイル サービスをハイブリッド デプロイに変換するには、Windows Server に移行する必要があります。 この記事では、そのような移行の計画と実行について説明します。
 

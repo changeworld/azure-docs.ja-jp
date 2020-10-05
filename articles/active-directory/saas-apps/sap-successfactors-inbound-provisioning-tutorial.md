@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: c03459a86f521cafd792b9bf86b2b6b46bf3da9c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e305795f4f45a0ea858eb8d74880aedca8ec538d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88534107"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979850"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>チュートリアル:SAP SuccessFactors から Active Directory へのユーザー プロビジョニングを構成する 
 このチュートリアルでは、SuccessFactors Employee Central から Active Directory (AD) と Azure AD にユーザーをプロビジョニングするために必要な手順と、SuccessFactors にメール アドレスを書き戻すオプションについて説明します。 
@@ -30,13 +30,13 @@ ms.locfileid: "88534107"
 
 Azure AD のユーザー プロビジョニング サービスでサポートされている SuccessFactors ユーザー プロビジョニング ワークフローは、次の人事管理および ID ライフサイクル管理シナリオを自動化します。
 
-* **新しい従業員の雇用** - SuccessFactors に新しい従業員が追加されると、Active Directory、Azure Active Directory、および必要に応じて Office 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](../app-provisioning/user-provisioning.md)でユーザー アカウントが自動的に作成され、メール アドレスが SuccessFactors に書き戻されます。
+* **新しい従業員の雇用** - SuccessFactors に新しい従業員が追加されると、Active Directory、Azure Active Directory、および必要に応じて Microsoft 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](../app-provisioning/user-provisioning.md)でユーザー アカウントが自動的に作成され、メール アドレスが SuccessFactors に書き戻されます。
 
-* **従業員の属性とプロファイルの更新** - SuccessFactors で従業員レコード (名前、職名、マネージャーなど) が更新されると、Active Directory、Azure Active Directory、必要に応じて Office 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](../app-provisioning/user-provisioning.md)でユーザー アカウントが自動的に更新されます。
+* **従業員の属性とプロファイルの更新** - SuccessFactors で従業員レコード (名前、職名、マネージャーなど) が更新されると、Active Directory、Azure Active Directory、必要に応じて Microsoft 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](../app-provisioning/user-provisioning.md)でユーザー アカウントが自動的に更新されます。
 
-* **従業員の退職** - SuccessFactors で従業員が退職状態になると、Active Directory、Azure Active Directory、必要に応じて Office 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](../app-provisioning/user-provisioning.md)でユーザー アカウントが自動的に無効になります。
+* **従業員の退職** - SuccessFactors で従業員が退職状態になると、Active Directory、Azure Active Directory、必要に応じて Microsoft 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](../app-provisioning/user-provisioning.md)でユーザー アカウントが自動的に無効になります。
 
-* **従業員の再雇用** - SuccessFactors で従業員が再雇用されると、Active Directory、Azure Active Directory、必要に応じて Office 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](../app-provisioning/user-provisioning.md)に以前のアカウントが (設定に応じて) 自動的に再アクティブ化または再プロビジョニングされます。
+* **従業員の再雇用** - SuccessFactors で従業員が再雇用されると、Active Directory、Azure Active Directory、必要に応じて Microsoft 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](../app-provisioning/user-provisioning.md)に以前のアカウントが (設定に応じて) 自動的に再アクティブ化または再プロビジョニングされます。
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>このユーザー プロビジョニング ソリューションが最適な場合
 
@@ -50,7 +50,7 @@ Azure AD のユーザー プロビジョニング サービスでサポートさ
 
 * 1 つ以上の Active Directory フォレスト、ドメイン、および OU と同期するために、[SuccessFactors Employee Central (EC)](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html) で検出された変更情報のみに基づいてユーザーの登録、移動、削除を行う必要がある組織
 
-* 電子メールに Office 365 を使用している組織
+* 電子メールに Microsoft 365 を使用している組織
 
 ## <a name="solution-architecture"></a>ソリューションのアーキテクチャ
 
@@ -234,7 +234,7 @@ SuccessFactors 管理チームまたは実装パートナーと協力して、OD
    
 1. [サービス] スナップインを開き、"Microsoft Azure AD Connect Provisioning Agent" という名前のサービスを探して、エージェントのインストールを確認し、実行中であることを確認します
   
-   ![サービス](./media/workday-inbound-tutorial/services.png)
+   ![Services で実行されている Microsoft Azure AD Connect プロビジョニング エージェントのスクリーンショット。](./media/workday-inbound-tutorial/services.png)
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-successfactors-and-active-directory"></a>パート 3: プロビジョニング アプリで、SuccessFactors と Active Directory の接続を構成します。
 この手順では、Azure portal で SuccessFactors と Active Directory の接続を確立します。 

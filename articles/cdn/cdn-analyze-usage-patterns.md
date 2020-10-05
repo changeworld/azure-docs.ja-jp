@@ -1,6 +1,6 @@
 ---
 title: Verizon からのコア レポート | Microsoft Docs
-description: '次のレポートを使用して、CDN の使用パターンを表示できます: 帯域幅、転送されたデータ、ヒット数、キャッシュの状態、キャッシュ ヒット率、転送された IPV4/IPV6 データ。'
+description: Verizon プロファイルの管理ポータルから Verizon コア レポートにアクセスし、表示する方法について説明します。
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 3dc7547dbcf2bde7dd7db0d3f0db3f163a5910ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5353fa70be4705b28dab9350fcdf7819b22faf54
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888431"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985537"
 ---
 # <a name="core-reports-from-verizon"></a>Verizon からのコア レポート
 

@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: b18e08f93df143f9844fe774eee59452978d7437
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 42d9c2b4b1edac62449fa4120463a384400d6d27
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686396"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360696"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Azure portal での課金アカウントとスコープ
 
@@ -80,11 +80,11 @@ Azure portal では、次の種類の課金アカウントがサポートされ�
 
 2. "**コスト管理 + 請求**" を検索します。
 
-   ![Azure portal の検索を表示するスクリーンショット](./media/view-all-accounts/billing-search-cost-management-billing.png)
+   ![Azure portal での [コストの管理と請求] の検索を示すスクリーンショット。](./media/view-all-accounts/billing-search-cost-management-billing.png)
 
 3. 概要ページで **[Switch scope]\(スコープの切り替え\)** を選択します。
 
-   ![課金スコープを示すスクリーンショット](./media/view-all-accounts/overview-select-scopes.png)
+   ![課金スコープを示すスクリーンショット。](./media/view-all-accounts/overview-select-scopes.png)
 
    > [!Note]
     >
@@ -92,7 +92,7 @@ Azure portal では、次の種類の課金アカウントがサポートされ�
 
 4. 詳細を表示するスコープを選択します。
 
-   ![課金スコープを示すスクリーンショット](./media/view-all-accounts/list-of-scopes.png)
+   ![選択すると詳細を表示できる課金スコープを示すスクリーンショット。](./media/view-all-accounts/list-of-scopes.png)
 
 ## <a name="check-the-type-of-your-account"></a>アカウントの種類を確認する
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-account-type.md)]

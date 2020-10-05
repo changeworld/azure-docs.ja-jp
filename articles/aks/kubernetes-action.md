@@ -6,12 +6,12 @@ author: azooinmyluggage
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: atulmal
-ms.openlocfilehash: d4f8a41df64c3bcbbd85438e4d340d44d5f16351
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7743a3a8d6e77affd6229b648ab79b5b2f07a0af
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255219"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564102"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>Kubernetes Service にデプロイするための GitHub アクション
 
@@ -31,7 +31,7 @@ AKS をターゲットとするワークフローでは、ファイルに次の 
 
 ## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
 
-[Azure CLI](/cli/azure/) の [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) コマンドを使用すると、[サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)を作成できます。 このコマンドは、Azure portal の [Azure Cloud Shell](https://shell.azure.com/) を使用するか、 **[使ってみる]** ボタンを選択して実行できます。
+[Azure CLI](/cli/azure/) の [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) コマンドを使用すると、[サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)を作成できます。 このコマンドは、Azure portal の [Azure Cloud Shell](https://shell.azure.com/) を使用するか、 **[試してみる]** ボタンを選択して実行できます。
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP> --sdk-auth
@@ -56,7 +56,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 1. [GitHub](https://github.com/) でご自分のリポジトリを参照し、 **[設定]、[シークレット]、[Add a new secret]\(新しいシークレットの追加\)** を選択します。
 
-    ![secrets](media/kubernetes-action/secrets.png)
+    ![リポジトリの [Add a new secret]\(新しいシークレットの追加\) リンクのスクリーンショット。](media/kubernetes-action/secrets.png)
 
 2. 上記の `az cli` コマンドの内容を、シークレット変数の値として貼り付けます。 たとえば、「 `AZURE_CREDENTIALS` 」のように入力します。
 
@@ -67,7 +67,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 4. 定義されたシークレットは以下のように表示されます。
 
-    ![kubernetes-secrets](media/kubernetes-action/kubernetes-secrets.png)
+    ![リポジトリの既存のシークレットのスクリーンショット。](media/kubernetes-action/kubernetes-secrets.png)
 
 ##  <a name="build-a-container-image-and-deploy-to-azure-kubernetes-service-cluster"></a>コンテナー イメージをビルドして Azure Kubernetes Service クラスターにデプロイする
 

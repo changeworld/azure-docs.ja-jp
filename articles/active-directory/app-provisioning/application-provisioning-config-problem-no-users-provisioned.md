@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: d07450b61558814a99bf85668c55899c8cf9d389
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 21f16a0b9c8b3b603735520d5dcdbf61601e1480
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88234790"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706484"
 ---
 # <a name="no-users-are-being-provisioned"></a>ユーザーがプロビジョニングされていない 
 >[!NOTE]
@@ -24,7 +24,7 @@ ms.locfileid: "88234790"
 >
 アプリケーションで自動プロビジョニングが構成された後 (アプリに接続するために Azure AD に提供されたアプリの資格情報が有効であることの確認を含む)、そのアプリに対してユーザーまたはグループ、あるいはその両方がプロビジョニングされます。 プロビジョニングは、次のものによって決定されます。
 
--   どのユーザーとグループがアプリケーションに**割り当てられている**か。 入れ子になったグループまたは Office 365 グループのプロビジョニングはサポートされていません。 割り当ての詳細については、「[Azure Active Directory プレビューでエンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)」を参照してください。
+-   どのユーザーとグループがアプリケーションに**割り当てられている**か。 入れ子になったグループまたは Microsoft 365 グループのプロビジョニングはサポートされていません。 割り当ての詳細については、「[Azure Active Directory プレビューでエンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)」を参照してください。
 -   **属性マッピング**が有効になっているかどうか、および有効な属性を Azure AD からアプリに同期するように構成されているかどうか。 属性マッピングの詳細については、「[Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ](customize-application-attributes.md)」を参照してください。
 -   特定の属性値に基づいてユーザーをフィルター処理する**スコープ フィルター**が存在するかどうか。 スコープ フィルターの詳細については、「[スコープ フィルターを使用した属性ベースのアプリケーション プロビジョニング](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)」を参照してください。
   

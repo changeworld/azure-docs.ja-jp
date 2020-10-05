@@ -6,15 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/02/2020
+ms.date: 09/08/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 3a45f185a20345dac00bd459789afc9d53bd48f7
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.subservice: blobs
+ms.openlocfilehash: 3a585bc2bf3872a21bde9be036628922ee5743fa
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534313"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087356"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>コンテナーと BLOB の匿名パブリック読み取りアクセスを構成する
 
@@ -52,7 +53,10 @@ Azure Storage では、コンテナーと BLOB へのオプションの匿名パ
 
 ストレージ アカウントのパブリック アクセスを許可または禁止するには、アカウントの **AllowBlobPublicAccess** プロパティを構成します。 このプロパティは、Azure Resource Manager デプロイ モデルで作成されたすべてのストレージ アカウントで使用できます。 詳細については、「[ストレージ アカウントの概要](../common/storage-account-overview.md)」を参照してください。
 
-**AllowBlobPublicAccess** プロパティは既定では未設定で、明示的に設定されるまで値を返しません。 プロパティ値が **null** か **true** の場合、ストレージ アカウントではパブリック アクセスが許可されます。
+> [!NOTE]
+> **AllowBlobPublicAccess** プロパティは既定では未設定で、明示的に設定されるまで値を返しません。 プロパティ値が **null** か **true** の場合、ストレージ アカウントではパブリック アクセスが許可されます。
+>
+> **AllowBlobPublicAccess** プロパティは現在、Azure パブリック クラウド内のストレージ アカウントでのみ使用できます。
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
@@ -203,7 +207,7 @@ Azure portal で 1 つ以上の既存のコンテナーのパブリック アク
 
 ストレージ アカウントのパブリック アクセスが禁止されている場合、コンテナーのパブリック アクセス レベルは設定できません。 コンテナーのパブリック アクセス レベルを設定しようとすると、アカウントでパブリック アクセスが禁止されているため、設定が無効になります。
 
-:::image type="content" source="media/anonymous-read-access-configure/container-public-access-blocked.png" alt-text="パブリック アクセスが禁止されているときはコンテナーのパブリック アクセス レベルの設定がブロックされることを示すスクリーンショット":::
+:::image type="content" source="media/anonymous-read-access-configure/container-public-access-blocked.png" alt-text="アカウントの BLOB パブリック アクセスを許可または禁止する方法を示すスクリーンショット":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

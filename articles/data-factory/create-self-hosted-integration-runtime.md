@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 06/09/2020
-ms.openlocfilehash: 23563074bc8bbf02b36e86ff6c78acf3034670a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cac7b4f376300722762b1cedbf52a5c2e0ecb6e4
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84655877"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89596119"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムを作成して構成する
 
@@ -320,6 +320,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 [!INCLUDE [domain-and-outbound-port-requirements](../../includes/domain-and-outbound-port-requirements.md)]
 
+
 Windows ファイアウォール レベル (コンピューター レベル) では、通常、これらの送信ポートが有効になっています。 有効になっていない場合は、セルフホステッド統合ランタイム コンピューターで、ドメインとポートを構成することができます。
 
 > [!NOTE]
@@ -331,13 +332,13 @@ Windows ファイアウォール レベル (コンピューター レベル) で
 
 ファイアウォール ルールを、企業ファイアウォール、セルフホステッド統合ランタイム コンピューター上の Windows ファイアウォール、およびデータ ストア自体に対して確実に正しく有効にします。 このルールを有効にすると、セルフホステッド統合ランタイムは、ソースとシンクの両方に正常に接続されます。 コピー操作に関連するデータ ストアごとにルールを有効にしてください。
 
-たとえば、オンプレミス データ ストアから SQL Database シンクまたは Azure SQL Data Warehouse シンクにコピーするには、次の手順を行います。
+たとえば、SQL Database シンクまたは Azure Synapse Analytics (旧称 SQL Data Warehouse) シンクにオンプレミスのデータ ストアからコピーするには、次の手順を行います。
 
 1. 送信 TCP 通信を、Windows ファイアウォールと企業ファイアウォールの両方に対して、ポート 1433 上で許可します。
 1. SQL Database のファイアウォール設定を、セルフホステッド統合ランタイム コンピューターの IP アドレスを許可された IP アドレスのリストに追加するように構成します。
 
 > [!NOTE]
-> ファイアウォールで送信ポート 1433 が許可されていない場合、セルフホステッド統合ランタイムで SQL データベースに直接アクセスすることはできません。 この場合、SQL Database と SQL Data Warehouse に[ステージング コピー](copy-activity-performance.md)を使用できます。 このシナリオでは、データ移動に HTTPS (ポート 443) のみが必要になります。
+> ファイアウォールで送信ポート 1433 が許可されていない場合、セルフホステッド統合ランタイムで SQL データベースに直接アクセスすることはできません。 この場合、SQL Database と Azure Synapse Analytics に向けた[ステージング コピー](copy-activity-performance.md)を使用できます。 このシナリオでは、データ移動に HTTPS (ポート 443) のみが必要になります。
 
 ## <a name="proxy-server-considerations"></a>プロキシ サーバーに関する考慮事項
 

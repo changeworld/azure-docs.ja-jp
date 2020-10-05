@@ -9,12 +9,12 @@ ms.subservice: cost-management
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 7bed8cc55e0880d88df22ca32bc5886e22022cbc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 50451acdbd1c88b6ae703ed25de9cee1f3e48216
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690189"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446459"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Azure Budgets でのコストの管理
 
@@ -152,7 +152,7 @@ Logic Apps は、プロセスをワークフローとして構築、スケジュ
 1. **[OK]** を選択して式を設定します。
 1. **[条件]** のドロップダウン ボックスで **[次の値より大きいか等しい]** を選択します。
 1. 条件の **[値の選択]** ボックスに「`.8`」と入力します。  
-    ![Azure - ロジック アプリ - 浮動小数点式と値](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-12.png)
+    ![値が選択されている [条件] ダイアログ ボックスを示すスクリーンショット。](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-12.png)
 1. [条件] ボックスの **[追加]**  >  **[行の追加]** を選択し、別の条件を追加します。
 1. **[条件]** ボックスで、"`Choose a value`" が含まれるテキスト ボックスを選択します。
 1. 一覧の最上部にある **[式]** を選択し、式エディターに `float()` という式を入力します。
@@ -160,7 +160,7 @@ Logic Apps は、プロセスをワークフローとして構築、スケジュ
 1. **[OK]** を選択して式を設定します。
 1. **[条件]** のドロップダウン ボックスで **[次の値より小さい]** を選択します。
 1. 条件の **[値の選択]** ボックスに「`1`」と入力します。  
-    ![Azure - ロジック アプリ - 浮動小数点式と値](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-13.png)
+    ![2 つの条件が含まれている [条件] ダイアログ ボックスを示すスクリーンショット。](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-13.png)
 1. **[true の場合]** ボックスで、 **[アクションの追加]** を選択します。 ここで追加するのは、必須ではない VM をシャットダウンする HTTP POST アクションです。  
     ![Azure - ロジック アプリ - アクションを追加する](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-14.png)
 1. HTTP アクションを検索するために「**HTTP**」と入力し、 **[HTTP - HTTP]** アクションを選択します。  
@@ -183,7 +183,7 @@ Logic Apps は、プロセスをワークフローとして構築、スケジュ
 条件付きステートメントを使用して、しきい値と比較する値が予算値の 100% 以上に達しているかどうかを調べます。 このしきい値に達している場合は、**Complete** という名前の Webhook を使用して HTTP POST を送信します。 このアクションは残りのすべての VM をシャットダウンします。
 
 1. **[新しいステップ]**  >  **[条件の追加]** の順に選択します。  
-    ![Azure - ロジック アプリ - アクションを追加する](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-20.png)
+    ![[アクションの追加] が呼び出されている [true の場合] ダイアログ ボックスを示すスクリーンショット。](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-20.png)
 1. **[条件]** ボックスの中の、"`Choose a value`" と表示されているテキスト ボックスを選択します。選択できる値の一覧が表示されます。
 1. 一覧の最上部にある **[式]** を選択し、式エディターに `float()` という式を入力します。
 1. **[動的なコンテンツ]** を選択し、カーソルをかっこ () 内に置いて、一覧から **[NotificationThresholdAmount]** を選択して式全体を入力します。
@@ -194,11 +194,11 @@ Logic Apps は、プロセスをワークフローとして構築、スケジュ
 1. 条件の **[値の選択] ボックス**に「`1`」と入力します。  
     ![Azure - ロジック アプリ - 条件の値の設定](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-21.png)
 1. **[true の場合]** ボックスで、 **[アクションの追加]** を選択します。 ここで追加するのは、残りのすべての VM をシャットダウンする HTTP POST アクションです。  
-    ![Azure - ロジック アプリ - アクションを追加する](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-22.png)
+    ![HTTP POST アクションを追加できる [true の場合] ダイアログ ボックスを示すスクリーンショット。](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-22.png)
 1. HTTP アクションを検索するために「**HTTP**」と入力し、 **[HTTP - HTTP]** アクションを選択します。
 1. **[メソッド]** の値として **[Post]** を選択します。
 1. このチュートリアルで作成した **Complete** という名前の Webhook の URL を **[URI]** の値として入力します。  
-    ![Azure - ロジック アプリ - アクションを追加する](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-23.png)
+    ![URL 値を入力できる [HTTP] ダイアログ ボックスを示すスクリーンショット。](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-23.png)
 1. **[true の場合]** ボックスで、 **[アクションの追加]** を選択します。 ここで追加するのは、残りの VM がシャットダウンされたことを通知する電子メールを送信する電子メール アクションです。
 1. 「メールの送信」と入力して検索し、使用している電子メール サービスに基づいて *[電子メールの送信]* アクションを選択します。
 1. 必須ではない VM がシャットダウンされたことを通知する電子メールの **[宛先]** 、 **[件名]** 、および **[本文]** を追加します。 動的コンテンツ **BudgetName** と **NotificationThresholdAmount** を使用して件名と本文のフィールドの内容を入力します。  

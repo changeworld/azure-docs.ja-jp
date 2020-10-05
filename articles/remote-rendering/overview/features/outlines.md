@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a3b4ba62072e26f16a0e39416c9ae346d1acefd9
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5dd6d682c9db044763cad64eec420c1974d4ac03
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997525"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613702"
 ---
 # <a name="outline-rendering"></a>アウトライン レンダリング
 
@@ -29,7 +29,7 @@ ms.locfileid: "88997525"
 | `PulseRateHz`    | float   | アウトラインが 1 秒あたりに振動する速度|
 | `PulseIntensity` | float   | アウトラインのパルス効果の強度。 パルスを止める場合は 0.0、最大限に強める場合は 1.0 の間である必要があります。 強度では、アウトラインの最小不透明度を `MinOpacity = 1.0 - PulseIntensity` として暗黙的に設定します。 |
 
-![アウトライン](./media/outlines.png) `color` パラメーターを黄色 (左) からマゼンタ (中央) に、`pulseIntensity` を 0 から 0.8 (右) に変更した場合の効果。
+![さまざまなアウトライン パラメーターを使用して 3 回レンダリングされたオブジェクト](./media/outlines.png) `color` パラメーターを黄色 (左) からマゼンタ (中央) に、`pulseIntensity` を 0 から 0.8 (右) に変更した場合の効果。
 
 ## <a name="example"></a>例
 
@@ -60,6 +60,11 @@ void SetOutlineParameters(ApiHandle<AzureSession> session)
 ## <a name="performance"></a>パフォーマンス
 
 アウトライン レンダリングは、レンダリングのパフォーマンスに大きな影響を与える可能性があります。 この影響は、特定のフレームに対する、選択されたオブジェクトと選択されていないオブジェクトの間の画面領域の空間的な比率によって異なります。
+
+## <a name="api-documentation"></a>API のドキュメント
+
+* [C# RemoteManager.OutlineSettings プロパティ](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.outlinesettings)
+* [C++ RemoteManager::OutlineSettings()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#outlinesettings)
 
 ## <a name="next-steps"></a>次のステップ
 

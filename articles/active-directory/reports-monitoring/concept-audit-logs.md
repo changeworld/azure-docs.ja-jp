@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01c9449a996929eb20acf35897a100dfbb722e82
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 86eec0cf7108e2d3b47f7b98dbdaffe76be8afd8
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229924"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603512"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルの監査アクティビティ レポート 
 
@@ -208,11 +208,11 @@ Graph API を使用して、すべての監査アクティビティの一覧を�
 
 ![監査ログ](./media/concept-audit-logs/enterpriseapplications.png "監査ログ")
 
-## <a name="office-365-activity-logs"></a>Office 365 のアクティビティ ログ
+## <a name="microsoft-365-activity-logs"></a>Microsoft 365 のアクティビティ ログ
 
-Office 365 のアクティビティ ログは、[Microsoft 365 管理センター](/office365/admin/admin-overview/about-the-admin-center)から確認できます。 Office 365 のアクティビティ ログと Azure AD のアクティビティ ログでは多くのディレクトリ リソースが共有されていますが、Office 365 のアクティビティ ログがすべて表示されるのは、Microsoft 365 管理センターのみです。 
+Microsoft 365 のアクティビティ ログは、[Microsoft 365 管理センター](/office365/admin/admin-overview/about-the-admin-center)から確認できます。 Microsoft 365 のアクティビティ ログと Azure AD のアクティビティ ログでは多くのディレクトリ リソースが共有されていますが、Microsoft 365 のアクティビティ ログがすべて表示されるのは、Microsoft 365 管理センターのみです。 
 
-[Office 365 Management API](/office/office-365-management-api/office-365-management-apis-overview) を使用すると、Office 365 のアクティビティ ログにプログラムでアクセスすることもできます。
+また、[Office 365 Management API](/office/office-365-management-api/office-365-management-apis-overview) を使用すると、Microsoft 365 のアクティビティ ログにプログラムでアクセスすることもできます。
 
 ## <a name="next-steps"></a>次のステップ
 

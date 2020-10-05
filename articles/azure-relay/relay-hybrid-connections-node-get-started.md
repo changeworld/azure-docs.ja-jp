@@ -4,12 +4,12 @@ description: Azure Relay ハイブリッド接続 Websocket 用の Node.js コ�
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 8dc52c93d4b5cd6d50b66338350a41cf0e24daa0
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: cf660d7a776c0dfa48b6c023fa0fa3516a3a0ea5
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386301"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527413"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-nodejs"></a>Node.js での Relay ハイブリッド接続 WebSocket の概要
 
@@ -52,7 +52,7 @@ Relay にメッセージを送信するために、Node.js コンソール ア�
 2. Node.js コマンド プロンプトで「`node sender.js`」と入力してサーバー アプリケーションを実行し、何かテキストを入力します。
 3. サーバー アプリケーション コンソールに、クライアント アプリケーションで入力したテキストが出力されることを確認します。
 
-    ![アプリケーションの実行](./media/relay-hybrid-connections-node-get-started/running-applications.png)
+    ![サーバー アプリケーションとクライアント アプリケーションの両方をテストするコンソール ウィンドウ。](./media/relay-hybrid-connections-node-get-started/running-applications.png)
 
 これで、Node.js を使用してエンドツーエンドのハイブリッド接続アプリケーションを作成できました。
 

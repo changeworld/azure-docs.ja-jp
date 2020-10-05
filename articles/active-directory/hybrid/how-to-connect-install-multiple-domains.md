@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect の複数のドメイン
-description: このドキュメントでは、O365 と Azure AD で複数の最上位レベル ドメインを構成する方法について説明します。
+description: このドキュメントでは、Microsoft 365 と Azure AD で複数の最上位レベル ドメインを構成する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,15 +16,15 @@ ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1607bf1cd6f25f56c6819a2ea3194244e10df8dd
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: f913199e0c0ed438d4b95b879d4defc072c615aa
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277539"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662429"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Azure AD とのフェデレーションに使用する複数ドメインのサポート
-ここでは、Office 365 または Azure AD のドメインとのフェデレーション時に、複数のトップレベル ドメインとサブドメインを使用する方法について説明します。
+ここでは、Microsoft 365 または Azure AD のドメインとのフェデレーション時に、複数のトップレベル ドメインとサブドメインを使用する方法について説明します。
 
 ## <a name="multiple-top-level-domain-support"></a>複数のトップレベル ドメインのサポート
 複数のトップレベル ドメインと Azure AD のフェデレーションを行うには、単一のトップレベル ドメインを使用するフェデレーションでは行う必要のない構成を、いくつか実施する必要があります。
@@ -42,7 +42,7 @@ IssuerUri を表示するには、PowerShell コマンド `Get-MsolDomainFederat
 
 複数のトップレベル ドメインを追加しようとすると、問題が生じます。  たとえば、Azure AD とオンプレミス環境の間でフェデレーションを設定しているとします。  このドキュメントでは、ドメインとして bmcontoso.com が使用されています。  ここでは、2 番目のトップレベル ドメインとして bmfabrikam.com が追加されています。
 
-![ドメイン](./media/how-to-connect-install-multiple-domains/domains.png)
+![複数のトップレベル ドメインのスクリーンショット。](./media/how-to-connect-install-multiple-domains/domains.png)
 
 bmfabrikam.com ドメインを変換してフェデレーションしようとすると、エラーが発生します。  その原因は、IssuerUri プロパティで複数のドメインに同じ値を設定できないという Azure AD の制約にあります。  
 
@@ -67,7 +67,7 @@ bmfabrikam.com ドメインの設定は、以下のようになっています�
 
 また、 `-SupportMultipleDomain` を使用すると、AD FS システムが Azure AD 用に発行するトークンに、適切な Issuer (発行者) の値を確実に含めることができます。 この値は、ユーザーの UPN のドメイン部分を取得し、その値を IssuerUri でドメインとして設定することで設定されます (つまり、 https://{upn suffix}/adfs/services/trust)。
 
-そのため、Azure AD または Office 365 に対する認証中に、ユーザーのトークンに含まれる IssuerUri 要素を使用して、Azure AD 内のドメインが特定されます。  一致するものが見つからなければ、認証は失敗します。
+そのため、Azure AD または Microsoft 365 に対する認証中に、ユーザーのトークンに含まれる IssuerUri 要素を使用して、Azure AD 内のドメインが特定されます。 一致するものが見つからなければ、認証は失敗します。
 
 たとえば、ユーザーの UPN が bsimon@bmcontoso.com である場合、AD FS が発行するトークンの IssuerUri 要素は `http://bmcontoso.com/adfs/services/trust` に設定されます。 この要素は Azure AD の構成と一致し、認証は成功します。
 

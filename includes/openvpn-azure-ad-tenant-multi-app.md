@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/21/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 2eb2dbc43c59f4f6301c7f5073a73462639d35b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8172e0e208d9a780c7676d7cb0e77dbc1c16f493
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797121"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606762"
 ---
 ## <a name="1-create-the-azure-ad-tenant"></a><a name="tenant"></a>1.Azure AD テナントを作成する
 
@@ -77,7 +77,7 @@ Azure AD テナントで VPN クライアントを登録します。
 
 6. メッセージが表示されたら、 **[同意する]** を選択します。
 
-    ![Accept](./media/openvpn-azure-ad-tenant-multi-app/accept.jpg)
+    ![[Permissions requested Accept for your organization] (アクセス許可は組織の同意を要求しています) というメッセージと、要求についての情報を示すスクリーンショット。](./media/openvpn-azure-ad-tenant-multi-app/accept.jpg)
 
 7. Azure AD の **[エンタープライズ アプリケーション]** に、**Azure VPN** が表示されます。
 

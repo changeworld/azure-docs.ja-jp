@@ -1,30 +1,30 @@
 ---
-title: Azure サブスクリプションを 1 つのパートナーから別のパートナーに譲渡する (プレビュー)
+title: Azure プランの下で、あるパートナーから別のパートナーにサブスクリプションを譲渡する (プレビュー)
 description: この記事は、Azure サブスクリプションの課金所有権を譲渡する前と後に知っておくべきことを理解するのに役立ちます。
 author: bandersmsft
 ms.reviewer: mcville
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 09/07/2020
+ms.date: 09/22/2020
 ms.author: banders
-ms.openlocfilehash: 246128ec3d26e4bf3f2a5a8f0660aab7d9daca3d
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: cb9a035217734028df325555cb0954dedd29ac30
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89554204"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372291"
 ---
-# <a name="transfer-azure-subscriptions-from-one-partner-to-another-preview"></a>Azure サブスクリプションを 1 つのパートナーから別のパートナーに譲渡する (プレビュー)
+# <a name="transfer-subscriptions-under-an-azure-plan-from-one-partner-to-another-preview"></a>Azure プランの下で、あるパートナーから別のパートナーにサブスクリプションを譲渡する (プレビュー)
 
 この記事は、Azure サブスクリプションの課金所有権を譲渡する前と後に知っておくべきことを理解するのに役立ちます。 Azure プランの下にある、1 つの Microsoft パートナーから別の Microsoft パートナーへの Azure サブスクリプションの譲渡を開始するには、パートナーに連絡する必要があります。 パートナーは、開始方法に関する指示を送信します。 譲渡処理が完了すると、サブスクリプションの課金所有権が変更されます。
 
 ## <a name="user-access"></a>ユーザー アクセス
 
-移転中、Azure ロールベースのアクセス制御 (RBAC) を使用して割り当てられた既存のユーザー、グループ、またはサービス プリンシパルへのアクセスは影響を受けません。 [Azure RBAC](../../role-based-access-control/overview.md) は、Azure のリソースにアクセスできるユーザー、そのユーザーがそれらのリソースに対して実行できること、そのユーザーがアクセスできる領域を管理するのに役立ちます。 サブスクリプションの譲渡によって、新しいパートナーにはリソースへの RBAC アクセス権は付与されません。 以前のパートナーは RBAC へのアクセスを維持しています。
+移転中、Azure ロールベースのアクセス制御 (Azure RBAC) を使用して割り当てられた既存のユーザー、グループ、またはサービス プリンシパルへのアクセスは影響を受けません。 [Azure RBAC](../../role-based-access-control/overview.md) は、Azure のリソースにアクセスできるユーザー、そのユーザーがそれらのリソースに対して実行できること、そのユーザーがアクセスできる領域を管理するのに役立ちます。 サブスクリプションの譲渡によって、新しいパートナーにはリソースへの Azure RBAC アクセス権は付与されません。 以前のパートナーは Azure RBAC へのアクセスを維持しています。
 
-そのため、以前のパートナーの Azure RBAC アクセスを削除し、新しいパートナーのアクセス権を追加することが重要です。 新しいパートナーにアクセス権を付与する方法の詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。 以前のパートナーの RBAC アクセス権を削除する方法の詳細については、「[ロールの割り当てを削除する](../../role-based-access-control/role-assignments-portal.md#remove-a-role-assignment)」を参照してください。
+そのため、以前のパートナーの Azure RBAC アクセスを削除し、新しいパートナーのアクセス権を追加することが重要です。 新しいパートナーにアクセス権を付与する方法の詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。 以前のパートナーの Azure RBAC アクセス権を削除する方法の詳細については、「[ロールの割り当てを削除する](../../role-based-access-control/role-assignments-portal.md#remove-a-role-assignment)」を参照してください。
 
-また、新しいパートナーは、サブスクリプションへの[代理管理者 (AOBO)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) アクセス権を自動的に取得することはありません。 パートナーがお客様に代わって Azure サブスクリプションを管理するには、AOBO が必要です。 新しいパートナーに AOBO アクセス権を付与する方法の詳細については、「[Azure サブスクリプション アカウントの課金所有権を別のアカウントに譲渡する](billing-subscription-transfer.md)」を参照してください。
+また、新しいパートナーは、サブスクリプションへの[代理管理者 (AOBO)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) アクセス権を自動的に取得することはありません。 パートナーがお客様に代わって Azure サブスクリプションを管理するには、AOBO が必要です。 Azure の特権の詳細については、「[顧客のサービスまたはサブスクリプションを管理するためのアクセス許可を取得する](/partner-center/customers-revoke-admin-privileges)」を参照してください。
 
 ## <a name="stop-a-transfer"></a>譲渡を停止する
 
@@ -38,5 +38,5 @@ ms.locfileid: "89554204"
 
 ## <a name="next-steps"></a>次のステップ
 
-- 新しいパートナーに RBAC アクセス権を付与するには、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。
-- 新しいパートナーに AOBO アクセス権を付与するには、「[Azure サブスクリプション アカウントの課金所有権を別のアカウントに譲渡する](billing-subscription-transfer.md)」を参照してください。
+- 新しいパートナーに Azure RBAC アクセス権を付与するには、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。
+- [顧客のサービスまたはサブスクリプションを管理するためのアクセス許可を取得する](/partner-center/customers-revoke-admin-privileges)

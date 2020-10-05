@@ -7,19 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 04/15/2020
-ms.openlocfilehash: 81069b0340202a0a481522ef1920806026ebcbe1
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/04/2020
+ms.openlocfilehash: c52fabcfc2ff22df2de6dd93f2543d625310baef
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119397"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484343"
 ---
 # <a name="publishing-guide-for-container-offers"></a>コンテナー オファーの発行ガイド
 
 コンテナー オファーは、Azure Marketplace にコンテナー イメージを発行するのに役立ちます。 このガイドでは、このオファーの要件について説明します。 
 
-コンテナー オファーは、Azure Marketplace を通じてデプロイおよび課金されるトランザクション オファーです。 ユーザーに表示される行動喚起は、"今すぐ入手する" です。
+コンテナー オファーは、Azure Marketplace を通じてデプロイおよび課金されるトランザクション オファーです。 ユーザーに表示されるリスト オプションは、"今すぐ入手する" です。
 
 対象となるソリューションが、Kubernetes ベースの Azure コンテナー サービス インスタンスとして設定される Docker コンテナー イメージであるときは、オファーの種類として "*コンテナー*" を使用します。 
 

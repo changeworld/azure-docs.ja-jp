@@ -3,12 +3,12 @@ title: ストリーミング イベントをキャプチャする - Azure Event 
 description: この記事では、Azure Event Hubs でイベントのストリーミングをキャプチャするキャプチャ機能の概要を示します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 201fde24e50fc9403d5e9faf314550520fb7b865
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2302f31130b6179b187c17e2f44c5fa7cc50648b
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522127"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667454"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Azure Event Hubs で Azure Blob Storage または Azure Data Lake Storage にイベントをキャプチャする
 Azure Event Hubs を利用すると、Event Hubs のストリーミング データをご自分で選択した Gen 1 または Gen 2 の [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) アカウントまたは [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) アカウントに自動的に配信できます。その際、時間やサイズの間隔を柔軟に指定できます。 Capture の設定は手軽で、実行に伴う管理コストは生じません。また、Event Hubs の[スループット単位](event-hubs-scalability.md#throughput-units)に応じて自動的にスケールします。 Event Hubs Capture はストリーミング データを Azure に読み込む最も簡単な方法であり、これを利用すれば、データのキャプチャではなくデータの処理に注力できるようになります。
@@ -59,7 +59,7 @@ Event Hubs のトラフィックは [スループット単位](event-hubs-scalab
 
 ## <a name="exploring-the-captured-files-and-working-with-avro"></a>キャプチャしたファイルの確認と Avro の操作
 
-Event Hubs Capture では、構成された時間枠で指定された Avro 形式のファイルが作成されます。 これらのファイルは、 [Azure Storage Explorer][Azure Storage Explorer]などの任意のツールを使用して確認できます。 また、ローカルにダウンロードして操作することができます。
+Event Hubs Capture では、構成された時間枠で指定された Avro 形式のファイルが作成されます。 これらのファイルは、 [Azure ストレージ エクスプローラー][Azure Storage Explorer]などの任意のツールを使用して確認できます。 また、ローカルにダウンロードして操作することができます。
 
 Event Hubs Capture によって生成されたファイルには、次の Avro スキーマがあります。
 
@@ -132,7 +132,7 @@ Event Hubs Capture の料金は、スループット単位と同様に時間単�
 
 ## <a name="integration-with-event-grid"></a>Event Grid との統合 
 
-Event Hubs 名前空間をソースとして Azure Event Grid サブスクリプションを作成できます。 以下のチュートリアルでは、イベント ハブをソースとして、また Azure Functions アプリをシンクとして使用して、Event Grid サブスクリプションを作成する方法を示します。[Event Grid と Azure Functions を使用してキャプチャされた Event Hubs データを SQL Data Warehouse に移行する](store-captured-data-data-warehouse.md)
+Event Hubs 名前空間をソースとして Azure Event Grid サブスクリプションを作成できます。 以下のチュートリアルでは、イベント ハブをソースとして、また Azure Functions アプリをシンクとして使用して、Event Grid サブスクリプションを作成する方法を示します。[Event Grid と Azure Functions を使用して、キャプチャされた Event Hubs データを処理し、Azure Synapse Analytics に移行します](store-captured-data-data-warehouse.md)。
 
 ## <a name="next-steps"></a>次のステップ
 Event Hubs Capture は Azure にデータを取得する最も簡単な方法です。 Azure Data Lake、Azure Data Factory、Azure HDInsight を利用することで、使い慣れたツールとプラットフォームを使用して、必要なスケールでバッチ処理やその他の分析を実行できます。
@@ -147,7 +147,7 @@ Azure portal および Azure Resource Manager テンプレートを使用して�
 [Apache Drill]: https://drill.apache.org/
 [Apache Spark]: https://spark.apache.org/
 [support request]: https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade
-[Azure Storage Explorer]: https://azurestorageexplorer.codeplex.com/
+[Azure Storage Explorer]: https://github.com/microsoft/AzureStorageExplorer/releases
 [3]: ./media/event-hubs-capture-overview/event-hubs-capture3.png
 [Avro Tools]: https://downloads.apache.org/avro/stable/java/
 [Java]: https://avro.apache.org/docs/current/gettingstartedjava.html

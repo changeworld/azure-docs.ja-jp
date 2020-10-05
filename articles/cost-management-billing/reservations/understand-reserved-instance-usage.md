@@ -9,12 +9,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: b1b5a344da20bff31f85a2d3cb20a0a35e4c4bde
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2b00c90abce915ae6fd645cbcce3536870609558
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681925"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447882"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>従量課金制料金のサブスクリプションの個別サブスクリプションの Azure 予約の使用状況について
 
@@ -74,7 +74,7 @@ SQL Database Gen 4 を米国東部リージョンで実行していて、その�
 
 **[Reserved Instance 使用量]** という測定名でフィルターを適用し、必要な**メーター カテゴリ** (Azure SQL Database または Azure Cosmos DB) を選択します。 次のスクリーンショットのように表示されます。
 
-![SQL Database の予約容量の CSV ファイル](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
+![[メーター カテゴリ] の入力内容を示すスクリーンショット。](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
 
 **Reserved Instance Usage** 行には、予約によって充当される合計コア時間が表示されます。 予約によってコストが充当されるため、この行の料金は $0 です。
 
@@ -82,7 +82,7 @@ SQL Database Gen 4 を米国東部リージョンで実行していて、その�
 
 **Additional Info** にフィルターを適用し、自分の**予約 ID** を入力します。 次のスクリーンショットは、SQL Database 予約容量の予約に関連したフィールドを示しています。
 
-![SQL Database の予約容量の CSV ファイル](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-details.png)
+![予約容量の CSV ファイルの詳細を示すスクリーンショット。](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-details.png)
 
 1. **Additional Info** フィールドの **ReservationId** は、SQL Database リソースに適用された SQL Database 予約容量の予約です。
 2. **ConsumptionMeter** は、SQL データベース リソースの測定 ID です。

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/26/2020
+ms.date: 09/16/2020
 ms.author: b-juche
-ms.openlocfilehash: e85a78582c0f7aac188198ad91f9ac91ddf62961
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 6a90a4ad44bff392b5fe6cd0af13313bd98ce2a6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950376"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988290"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files の SMB ボリュームを作成する
 
@@ -74,15 +74,17 @@ Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMBv3、またはデュア
 
     AD サイトとサービスに関する「[サイト トポロジの設計](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology)」を参照してください。 
     
-<!--
-* Azure NetApp Files supports DES, Kerberos AES 128, and Kerberos AES 256 encryption types (from the least secure to the most secure). The user credentials used to join Active Directory must have the highest corresponding account option enabled that matches the capabilities enabled for your Active Directory.   
+* SMB ボリュームの AES 暗号化を有効にするには、[[Active Directory に参加する]](#create-an-active-directory-connection) ウィンドウの **[AES の暗号化]** ボックスをオンにします。 Azure NetApp Files では、暗号化の種類として DES、Kerberos AES 128、および Kerberos AES 256 がサポートされています (安全性の最も低いものから安全性の最も高いものまで)。 AES の暗号化を有効にする場合、Active Directory に参加するのに使用するユーザー資格情報では、ご利用の Active Directory で有効になっている機能と一致するアカウント オプションの中で最上位のものが有効になっている必要があります。    
 
-    For example, if your Active Directory has only the AES-128 capability, you must enable the AES-128 account option for the user credentials. If your Active Directory has the AES-256 capability, you must enable the AES-256 account option (which also supports AES-128). If your Active Directory does not have any Kerberos encryption capability, Azure NetApp Files uses DES by default.  
+    たとえば、ご利用の Active Directory に AES-128 機能のみが含まれている場合は、ユーザー資格情報に対して AES-128 アカウント オプションを有効にする必要があります。 ご利用の Active Directory に AES-256 機能が含まれている場合は、AES-256 アカウント オプション (AES-128 もサポートしている) を有効にする必要があります。 Active Directory に Kerberos 暗号化機能が含まれていない場合、Azure NetApp Files では既定で DES が使用されます。  
 
-    You can enable the account options in the properties of the Active Directory Users and Computers Microsoft Management Console (MMC):   
+    アカウント オプションは、[Active Directory ユーザーとコンピューター] Microsoft 管理コンソール (MMC) のプロパティで有効にすることができます。   
 
-    ![Active Directory Users and Computers MMC](../media/azure-netapp-files/ad-users-computers-mmc.png)
--->
+    ![Active Directory ユーザーとコンピューター MMC](../media/azure-netapp-files/ad-users-computers-mmc.png)
+
+* Azure NetApp Files では [LDAP 署名](https://docs.microsoft.com/troubleshoot/windows-server/identity/enable-ldap-signing-in-windows-server)がサポートされているため、Azure NetApp Files サービスと、ターゲットとなる [Active Directory ドメイン コントローラー](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)との間で LDAP トラフィックを安全に転送することができます。 LDAP 署名に関する Microsoft アドバイザリ [ADV190023](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023) のガイダンスに従っている場合は、Azure NetApp Files の LDAP 署名機能を有効にする必要があります。そのためには [[Active Directory に参加する]](#create-an-active-directory-connection) ウィンドウで **[LDAP 署名]** ボックスをオンにします。 
+
+    [LDAP チャネル バインド](https://support.microsoft.com/help/4034879/how-to-add-the-ldapenforcechannelbinding-registry-entry) 構成が Azure NetApp Files サービスに影響することはありません。 
 
 その他の AD 情報については、Azure NetApp Files の「[SMB に関する FAQ](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs)」を参照してください。 
 
@@ -160,8 +162,56 @@ DNS サーバーでは、Active Directory 接続を構成する際に 2 つの I
 
         Azure Active Directory Domain Services と組み合わせて Azure NetApp Files を使用している場合、NetApp アカウント用に Active Directory を構成する際の組織単位のパスは `OU=AADDC Computers` になります。
 
+    ![Active Directory に参加する](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
+
+    * **AES の暗号化**   
+        このチェックボックスをオンにすると、SMB ボリュームに対して AES の暗号化が有効になります。 要件については、「[Active Directory 接続の要件](#requirements-for-active-directory-connections)」を参照してください。 
+
+        ![Active Directory の AES の暗号化](../media/azure-netapp-files/active-directory-aes-encryption.png)
+
+        **AES の暗号化**機能は、現在プレビューの段階です。 この機能を初めて使用する場合は、使用する前に機能を登録してください。 
+
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFAesEncryption
+        ```
+
+        機能の登録の状態を確認します。 
+
+        > [!NOTE]
+        > **RegistrationState** が `Registering` 状態から `Registered` に変化するまでに最大 60 分間かかる場合があります。 この状態が **Registered** になってから続行してください。
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFAesEncryption
+        ```
+        
+        また、[Azure CLI のコマンド](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) `az feature register` と `az feature show` を使用して、機能を登録し、登録状態を表示することもできます。 
+
+    * **LDAP 署名**   
+        このチェックボックスをオンにすると、LDAP 署名が有効になります。 この機能により、Azure NetApp Files サービスと、ユーザー指定の [Active Directory Domain Services ドメイン コントローラー](https://docs.microsoft.com/windows/win32/ad/active-directory-domain-services)との間で、セキュリティで保護された LDAP 参照が可能になります。 詳細については、「[ADV190023 | LDAP チャネル バインディングと LDAP 署名を有効にするためのマイクロソフト ガイダンス](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023)」を参照してください。  
+
+        ![Active Directory の LDAP 署名](../media/azure-netapp-files/active-directory-ldap-signing.png) 
+
+        **LDAP 署名**機能は、現在プレビューの段階です。 この機能を初めて使用する場合は、使用する前に機能を登録してください。 
+
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFLdapSigning
+        ```
+
+        機能の登録の状態を確認します。 
+
+        > [!NOTE]
+        > **RegistrationState** が `Registering` 状態から `Registered` に変化するまでに最大 60 分間かかる場合があります。 この状態が **Registered** になってから続行してください。
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFLdapSigning
+        ```
+        
+        また、[Azure CLI のコマンド](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) `az feature register` と `az feature show` を使用して、機能を登録し、登録状態を表示することもできます。 
+
      * **バックアップ ポリシー ユーザー**  
         Azure NetApp Files で使用するために作成されたコンピューター アカウントに対して昇格された特権を必要とする追加のアカウントを含めることができます。 指定したアカウントは、ファイルまたはフォルダー レベルで NTFS アクセス許可を変更できます。 たとえば、Azure NetApp Files の SMB ファイル共有にデータを移行するために使用される非特権サービス アカウントを指定できます。  
+
+        ![Active Directory バックアップ ポリシーユーザー](../media/azure-netapp-files/active-directory-backup-policy-users.png)
 
         **バックアップ ポリシー ユーザー**機能は、現在プレビューの段階です。 この機能を初めて使用する場合は、使用する前に機能を登録してください。 
 
@@ -178,17 +228,17 @@ DNS サーバーでは、Active Directory 接続を構成する際に 2 つの I
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
         ```
         
-        また、Azure CLI のコマンド [`az feature register`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-register) と [`az feature show`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-show) を使用して、機能を登録し、登録状態を表示することもできます。 
+        また、[Azure CLI のコマンド](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) `az feature register` と `az feature show` を使用して、機能を登録し、登録状態を表示することもできます。 
 
     * **ユーザー名**や**パスワード**などの資格情報
 
-    ![Active Directory に参加する](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
+        ![Active Directory の資格情報](../media/azure-netapp-files/active-directory-credentials.png)
 
 3. **[結合]** をクリックします。  
 
     作成した Active Directory の接続が表示されます。
 
-    ![Active Directory 接続](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
+    ![作成された Active Directory 接続](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
 
 ## <a name="add-an-smb-volume"></a>SMB ボリュームを追加する
 
@@ -230,7 +280,7 @@ DNS サーバーでは、Active Directory 接続を構成する際に 2 つの I
     
         ![サブネットの作成](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-    * 既存のスナップショット ポリシーをボリュームに適用する場合は、 **[詳細セクションの表示]** をクリックして展開し、プルダウン メニューでスナップショット ポリシーを選択します。 
+    * 既存のスナップショット ポリシーをボリュームに適用する場合は、 **[詳細セクションの表示]** をクリックして展開し、スナップショットのパスを非表示にするかどうかを指定して、プルダウン メニューでスナップショット ポリシーを選択します。 
 
         スナップショット ポリシーの作成については、「[スナップショット ポリシーを管理する](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)」を参照してください。
 

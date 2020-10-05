@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4e09637a7d990e1555b5443b9931cf8ff8c271b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 57325363909664bb527c2e2101505641858c4285
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718868"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706270"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication についてよく寄せられる質問
 
@@ -102,7 +102,7 @@ Microsoft は、米国とカナダ以外の国または地域ではショート 
 
 ユーザーごとまたは認証ごとの MFA プロバイダーを作成すると、組織の Azure サブスクリプションは毎月使用量に基づいて課金されます。 この課金モデルは、仮想マシンと Web Apps の使用量に対する Azure の課金方法に似ています。
 
-Azure Multi-factor Authentication のサブスクリプションを購入すると、組織はユーザーごとに年間ライセンス費用のみを支払います。 MFA ライセンスと Office 365、Azure AD Premium または Microsoft Enterprise Mobility + Security バンドルは、この方法で課金されます。
+Azure Multi-factor Authentication のサブスクリプションを購入すると、組織はユーザーごとに年間ライセンス費用のみを支払います。 MFA ライセンスと Microsoft 365、Azure AD Premium または Enterprise Mobility + Security バンドルは、この方法で課金されます。
 
 詳細については、「[Azure Multi-Factor Authentication の入手方法](concept-mfa-licensing.md)」をご覧ください。
 

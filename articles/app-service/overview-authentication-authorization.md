@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 19d6a646df22e2f8c9bdfc03f15453a520e527a4
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: e984332e6e93fc9a42123d06f320a66073585bff
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962827"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89596041"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure App Service および Azure Functions での認証と承認
 
@@ -149,11 +149,11 @@ App Service が使用する[フェデレーション ID](https://en.wikipedia.or
 
 ## <a name="more-resources"></a>その他のリソース
 
-[チュートリアル:Azure App Service (Windows) でユーザーをエンド ツー エンドで認証および認可する](tutorial-auth-aad.md)  
-[チュートリアル:Linux 用 Azure App Service でユーザーをエンド ツー エンドで認証および認可する](./tutorial-auth-aad.md?pivots=platform-linux%3fpivots%3dplatform-linux)  
-[App Service での認証と認可のカスタマイズ ](app-service-authentication-how-to.md)
-[Azure AppService EasyAuth の .NET Core 統合 (サード パーティ) ](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)
-[.NET Core で Azure App Service 認証を使用する (サード パーティ)](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
+* [チュートリアル:Azure App Service (Windows) でユーザーをエンド ツー エンドで認証および認可する](tutorial-auth-aad.md)  
+* [チュートリアル:Linux 用 Azure App Service でユーザーをエンド ツー エンドで認証および認可する](./tutorial-auth-aad.md?pivots=platform-linux%3fpivots%3dplatform-linux)  
+* [App Service での認証と認可のカスタマイズ](app-service-authentication-how-to.md)
+* [Azure AppService EasyAuth の .NET Core 統合 (サードパーティ)](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)
+* [.NET Core を使用した Azure App Service 認証の取得 (サードパーティ)](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
 
 プロバイダー固有の手順ガイド:
 

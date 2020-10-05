@@ -8,21 +8,21 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d16412e4e35714c840516670f520f77daed1676d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3031ec6ba17c61c780351169c4e8c2e5e94ab257
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80059951"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606929"
 ---
 クライアント証明書を生成すると、このクライアント証明書は、生成に使用したコンピューターに自動的にインストールされます。 別のクライアント コンピューターにクライアント証明書をインストールする場合は、生成したクライアント証明書をエクスポートする必要があります。
 
 1. クライアント証明書をエクスポートするには、 **[ユーザー証明書の管理]** を開きます。 生成したクライアント証明書は、既定では "Certificates - Current User\Personal\Certificates" にあります。 エクスポートするクライアント証明書を右クリックして、 **[すべてのタスク]** 、 **[エクスポート]** の順にクリックし、**証明書のエクスポート ウィザード**を開きます。
 
-   ![[エクスポート]](./media/vpn-gateway-certificates-export-client-cert-include/export.png)
+   ![証明書が選択されている現在のユーザーの [証明書] ウィンドウと、[すべてのタスク]、[エクスポート] が選択されているコンテキスト メニューを示すスクリーンショット。](./media/vpn-gateway-certificates-export-client-cert-include/export.png)
 2. 証明書のエクスポート ウィザードで **[次へ]** をクリックして続行します。
 
-   ![Next](./media/vpn-gateway-certificates-export-client-cert-include/next.png)
+   ![証明書のエクスポート ウィザードのウェルカム メッセージを示すスクリーンショット。](./media/vpn-gateway-certificates-export-client-cert-include/next.png)
 3. **[はい、秘密キーをエクスポートします]** を選び、 **[次へ]** をクリックします。
 
    ![秘密キーをエクスポートする](./media/vpn-gateway-certificates-export-client-cert-include/privatekeyexport.png)
@@ -31,10 +31,10 @@ ms.locfileid: "80059951"
    ![ファイルの形式をエクスポートする](./media/vpn-gateway-certificates-export-client-cert-include/includeallcerts.png)
 5. **[セキュリティ]** ページでは、秘密キーを保護する必要があります。 パスワードを使用する場合は、この証明書に設定したパスワードを必ず記録しておくか、覚えておいてください。 次に、 **[次へ]** をクリックします。
 
-   ![security](./media/vpn-gateway-certificates-export-client-cert-include/security.png)
+   ![パスワードが入力および確定され、[次へ] が強調表示されている証明書のエクスポート ウィザードのセキュリティ ページを示すスクリーンショット。](./media/vpn-gateway-certificates-export-client-cert-include/security.png)
 6. **[エクスポートするファイル]** で、 **[参照]** をクリックして証明書をエクスポートする場所を選択します。 **[ファイル名]** に証明書ファイルの名前を指定します。 次に、 **[次へ]** をクリックします。
 
    ![エクスポートするファイル](./media/vpn-gateway-certificates-export-client-cert-include/filetoexport.png)
 7. **[完了]** をクリックして、証明書をエクスポートします。
 
-   ![完了](./media/vpn-gateway-certificates-export-client-cert-include/finish.png)
+   ![選択された設定が表示されている証明書のエクスポート ウィザードの最終ページを示すスクリーンショット。](./media/vpn-gateway-certificates-export-client-cert-include/finish.png)

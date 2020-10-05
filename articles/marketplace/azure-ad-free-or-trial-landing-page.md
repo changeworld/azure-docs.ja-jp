@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 08/03/2020
-ms.openlocfilehash: 655caa05eff16bcf3e598dccd3c9845928b2fcff
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.date: 09/04/2020
+ms.openlocfilehash: b01b482b967ba6db90aa80ba537457597fb91046
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378833"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488611"
 ---
 # <a name="build-the-landing-page-for-your-free-or-trial-saas-offer-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースで無料または試用版 SaaS オファーのランディング ページを構築する
 
@@ -27,7 +27,7 @@ ms.locfileid: "89378833"
 
 サブスクリプションをアクティブ化するために必要な情報は限られており、Azure AD と Microsoft Graph によって提供されるため、基本的な同意を超える内容を必要とする情報を要求する必要はありません。 アプリケーションに関する追加の同意を必要とするユーザーの詳細が必要な場合、これらの情報は、サブスクリプションのアクティブ化が完了した後に要求する必要があります。 これにより、ユーザーによる円滑なサブスクリプションのアクティブ化が可能になり、破棄されるリスクが軽減されます。
 
-ランディング ページには通常、次の情報と行動喚起が含まれています。
+ランディング ページには通常、次の情報とリスト オプションが含まれています。
 
 - 無料試用版または無料サブスクリプションの名前と詳細を指定します。 たとえば、試用版の使用制限または期間を指定します。
 - ユーザーのアカウントの詳細 (姓名、組織、電子メールを含む) を指定します。

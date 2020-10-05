@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
-ms.openlocfilehash: eb6ed73305d55b4f76464a4567c6b53715b10c3a
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 2bf28384ae672440a18331cad8ac95f6ea051b85
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526648"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372189"
 ---
 # <a name="manage-costs-with-automation"></a>自動化を使用したコストの管理
 
@@ -234,7 +234,7 @@ Azure 環境で予算を構成する方法は多数あります。 まず、実�
 - **期間** - 予算の有効期間を表します。 予算は、有効な間だけアクティブに監視され、アラートが通知されます。
 - **通知**
   - 連絡先のメール - 予算でコストが計上され、予算が定義済みのしきい値を超えると、このメール アドレスにアラートが送信されます。
-  - 連絡先のロール - このオプションでは、特定のスコープで一致する Azure RBAC ロールが割り当てられているすべてのユーザーに、メール アラートが送信されます。 たとえば、サブスクリプション所有者は、サブスクリプション スコープで作成された予算のアラートを受け取ることができます。
+  - 連絡先のロール - このオプションでは、特定のスコープで一致する Azure ロールが割り当てられているすべてのユーザーに、メール アラートが送信されます。 たとえば、サブスクリプション所有者は、サブスクリプション スコープで作成された予算のアラートを受け取ることができます。
   - 連絡先グループ - アラートのしきい値を超えると、構成済みのアクション グループが予算によって呼び出されます。
 - **コスト ディメンション フィルター** - コスト分析または Query API で実行できるのと同じフィルター処理を予算に対しても実行できます。 このフィルターを使用して、予算で監視しているコストの範囲を縮小します。
 

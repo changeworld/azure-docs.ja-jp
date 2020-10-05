@@ -2,13 +2,13 @@
 title: Azure CLI とテンプレートを使用してリソースをデプロイする
 description: Azure Resource Manager と Azure CLI を使用してリソースを Azure にデプロイします。 リソースは Resource Manager テンプレートで定義されます。
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: da865d3b425da6b5969e540a424b513d9a58bd9a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/08/2020
+ms.openlocfilehash: 7e8ae7e8c568f5f0ebb85f434e33f142b5fe94e8
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040801"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566162"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>ARM テンプレートと Azure CLI でリソースをデプロイする
 
@@ -26,13 +26,13 @@ Azure CLI がインストールされていない場合は、[Cloud Shell](#depl
 
 使用するコマンドは、デプロイのスコープに応じて異なります。
 
-* **リソース グループ**にデプロイするには、[az deployment group create](/cli/azure/deployment/group?view=azure-cli-latest#az-deployment-group-create) を使用します。
+* **リソース グループ**にデプロイするには、[az deployment group create](/cli/azure/deployment/group#az-deployment-group-create) を使用します。
 
   ```azurecli-interactive
   az deployment group create --resource-group <resource-group-name> --template-file <path-to-template>
   ```
 
-* **サブスクリプション**にデプロイするには、[az deployment sub create](/cli/azure/deployment/sub?view=azure-cli-latest#az-deployment-sub-create) を使用します。
+* **サブスクリプション**にデプロイするには、[az deployment sub create](/cli/azure/deployment/sub#az-deployment-sub-create) を使用します。
 
   ```azurecli-interactive
   az deployment sub create --location <location> --template-file <path-to-template>
@@ -40,7 +40,7 @@ Azure CLI がインストールされていない場合は、[Cloud Shell](#depl
 
   サブスクリプション レベルでのデプロイの詳細については、「[サブスクリプション レベルでリソース グループとリソースを作成する](deploy-to-subscription.md)」を参照してください。
 
-* **管理グループ**にデプロイするには、[az deployment mg create](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-create) を使用します。
+* **管理グループ**にデプロイするには、[az deployment mg create](/cli/azure/deployment/mg#az-deployment-mg-create) を使用します。
 
   ```azurecli-interactive
   az deployment mg create --location <location> --template-file <path-to-template>
@@ -48,7 +48,7 @@ Azure CLI がインストールされていない場合は、[Cloud Shell](#depl
 
   管理グループ レベルでのデプロイの詳細については、「[管理グループ レベルでリソースを作成する](deploy-to-management-group.md)」を参照してください。
 
-* **テナント**にデプロイするには、[az deployment tenant create](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-create) を使用します。
+* **テナント**にデプロイするには、[az deployment tenant create](/cli/azure/deployment/tenant#az-deployment-tenant-create) を使用します。
 
   ```azurecli-interactive
   az deployment tenant create --location <location> --template-file <path-to-template>
@@ -128,6 +128,35 @@ az deployment group create \
 
 前の例では、テンプレートにはパブリックにアクセスできる URI が必要になります。テンプレートに機密データを含めてはいけないため、この方法は多くの場合に利用できます。 機密データ (管理者パスワードなど) を指定する必要がある場合は、セキュリティで保護されたパラメーターとしてその値を渡します。 ただし、テンプレートを一般からアクセス可能にしない場合は、プライベートなストレージ コンテナーに格納することで保護できます。 Shared Access Signature (SAS) トークンを必要とするテンプレートをデプロイする方法については、[SAS トークンを使用したプライベート テンプレートのデプロイ](secure-template-with-sas-token.md)に関するページをご覧ください。
 
+## <a name="deploy-template-spec"></a>テンプレート スペックのデプロイ
+
+ローカルまたはリモートのテンプレートをデプロイする代わりに、[テンプレート スペック](template-specs.md)を作成できます。テンプレート スペックは、ARM テンプレートが含まれる Azure サブスクリプションのリソースです。 これにより、組織内のユーザーとテンプレートを安全に共有することが容易になります。 テンプレート スペックへのアクセス権を付与するには、ロールベースのアクセス制御 (RBAC) を使用します。現在、この機能はプレビュー段階にあります。
+
+次の例では、テンプレート スペックの作成とデプロイの方法を示します。これらのコマンドは、[プレビューにサインアップ](https://aka.ms/templateSpecOnboarding)した場合にのみ使用できます。
+
+まず、ARM テンプレートを指定して、テンプレート スペックを作成します。
+
+```azurecli
+az ts create \
+  --name storageSpec \
+  --version "1.0" \
+  --resource-group templateSpecRG \
+  --location "westus2" \
+  --template-file "./mainTemplate.json"
+```
+
+次に、テンプレート スペックの ID を取得して、デプロイします。
+
+```azurecli
+id = $(az ts show --name storageSpec --resource-group templateSpecRG --version "1.0" --query "id")
+
+az deployment group create \
+  --resource-group demoRG \
+  --template-spec $id
+```
+
+詳細については、「[Azure Resource Manager テンプレート スペック (プレビュー)](template-specs.md)」を参照してください。
+
 ## <a name="preview-changes"></a>変更のプレビュー
 
 テンプレートをデプロイする前に、テンプレートが環境に与える変更をプレビューすることができます。 [what-if 操作](template-deploy-what-if.md)を使用して、テンプレートによって必要な変更が行われるかどうかを確認します。 What-if はまた、テンプレートのエラーも検証します。
@@ -179,6 +208,28 @@ arrayContent.json 形式は次のようになります。
     "value2"
 ]
 ```
+
+タグの設定などを目的にオブジェクトを渡すには、JSON を使用します。 たとえば、テンプレートには、次のようなパラメーターを含めることができます。
+
+```json
+    "resourceTags": {
+      "type": "object",
+      "defaultValue": {
+        "Cost Center": "IT Department"
+      }
+    }
+```
+
+この場合は、次の Bash スクリプトに示すように、JSON 文字列を渡してパラメーターを設定できます。
+
+```bash
+tags='{"Owner":"Contoso","Cost Center":"2345-324"}'
+az deployment group create --name addstorage  --resource-group myResourceGroup \
+--template-file $templateFile \
+--parameters resourceName=abcdef4556 resourceTags="$tags"
+```
+
+オブジェクトに渡す JSON を二重引用符で囲みます。
 
 ### <a name="parameter-files"></a>パラメーター ファイル
 

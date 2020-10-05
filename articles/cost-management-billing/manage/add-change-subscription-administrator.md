@@ -1,6 +1,6 @@
 ---
 title: Azure サブスクリプション管理者を追加または変更する
-description: ロールベースのアクセス制御 (RBAC) を使用して Azure サブスクリプション管理者を追加または変更する方法について説明します。
+description: Azure ロールベースのアクセス制御 (Azure RBAC) を使用して Azure サブスクリプション管理者を追加または変更する方法について説明します。
 author: genlin
 ms.reviewer: dcscontentpm
 tags: billing
@@ -9,21 +9,21 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 2ccdb16af788f6f8d106628742b2a83e25b26263
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 273f12765f60eb1a0d65037e30e33e58b16463bf
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683098"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372308"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Azure サブスクリプション管理者を追加または変更する
 
 
 Azure リソースへのアクセスを管理するには、適切な管理者ロールが必要です。 Azure には、組み込みロールを選択できる [Azure ロールベースのアクセス制御](../../role-based-access-control/overview.md) (Azure RBAC) と呼ばれる承認システムがあります。 管理グループ、サブスクリプション、リソース グループなどのさまざまなスコープでこれらのロールを割り当てることができます。 既定では、新しい Azure サブスクリプションを作成するユーザーは、サブスクリプションへの管理アクセス権を他のユーザーに割り当てることができます。
 
-この記事では、サブスクリプション スコープで RBAC を使用してユーザーの管理者ロールを追加または変更する方法について説明します。
+この記事では、サブスクリプション スコープで Azure RBAC を使用してユーザーの管理者ロールを追加または変更する方法について説明します。
 
-RBAC を使用してリソースへのアクセスを管理することをお勧めします。 ただし、まだクラシック デプロイ モデルを使用し、[Azure サービス管理 PowerShell モジュール](/powershell/module/servicemanagement/azure.service)を使用してクラシック リソースを管理している場合は、従来の管理者を使用する必要があります。
+Microsoft では、Azure RBAC を使用してリソースへのアクセスを管理することをお勧めしています。 ただし、まだクラシック デプロイ モデルを使用し、[Azure サービス管理 PowerShell モジュール](/powershell/module/servicemanagement/azure.service)を使用してクラシック リソースを管理している場合は、従来の管理者を使用する必要があります。
 
 > [!TIP]
 > クラシック リソースの管理に Azure portal だけを使用している場合は、従来の管理者を使用する必要はありません。

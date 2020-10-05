@@ -11,12 +11,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efcf2df4e472d022fcdec0c9b7c69c73192c503f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 622d38e09f65d05d7cba7a34f30a070c27d3fd37
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518472"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658374"
 ---
 # <a name="azure-active-directory-connect-cloud-provisioning-faq"></a>Azure Active Directory Connect クラウド プロビジョニングに関する FAQ
 
@@ -74,7 +74,7 @@ Azure AD Connect 同期では、プロビジョニングがオンプレミスの
 
 **Q:Exchange ハイブリッドがサポートされないことには、どのような意味があるのですか?**
 
-Exchange ハイブリッド展開機能を利用すると、オンプレミスと Office 365 で Exchange メールボックスが共存できるようになります。 Azure AD Connect により、Azure AD の特定の属性セットがオンプレミスのディレクトリに同期されます。  現在クラウド プロビジョニング エージェントでは、これらの属性がオンプレミス ディレクトリに同期されません。したがって、クラウド プロビジョニング エージェントは、Azure AD Connect を置き換える機能としてはサポートされません。
+Exchange ハイブリッド展開機能を利用すると、オンプレミスと Microsoft 365 の Exchange メールボックスが共存できるようになります。 Azure AD Connect により、Azure AD の特定の属性セットがオンプレミスのディレクトリに同期されます。  現在クラウド プロビジョニング エージェントでは、これらの属性がオンプレミス ディレクトリに同期されません。したがって、クラウド プロビジョニング エージェントは、Azure AD Connect を置き換える機能としてはサポートされません。
 
 **Q:クラウド プロビジョニング エージェントを Windows Server Core にインストールすることはできますか?**
 

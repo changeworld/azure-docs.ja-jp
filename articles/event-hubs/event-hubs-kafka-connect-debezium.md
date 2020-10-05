@@ -1,16 +1,16 @@
 ---
 title: 変更データ キャプチャ用に Azure Event Hubs の Apache Kafka Connect (プレビュー) を Debezium と統合する
-description: この記事では、Kafka 用 Azure Event Hubs で Apache Spark を使用する方法について取り上げます。
+description: この記事では、Kafka 用 Azure Event Hubs で Debezium を使用する方法について取り上げます。
 ms.topic: how-to
 author: abhirockzz
 ms.author: abhishgu
 ms.date: 08/11/2020
-ms.openlocfilehash: a11ec882a50d051a34758562ac84dcef5b799f5f
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: cac04bed797bb9956125bc1a38fdfa5c8285050e
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136673"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061684"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview-with-debezium-for-change-data-capture"></a>変更データ キャプチャ用に Azure Event Hubs の Apache Kafka Connect のサポート (プレビュー) を Debezium と統合する
 

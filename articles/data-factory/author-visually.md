@@ -9,13 +9,13 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: anandsub
-ms.date: 05/15/2020
-ms.openlocfilehash: ac51fd63adcc0328ff67f5fbe13dbfdb768f4bfe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/08/2020
+ms.openlocfilehash: 6f8d74ade382db9bfa28c3ab6f03b95b5ac7947c
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343117"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89567123"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure Data Factory でのビジュアルの作成
 
@@ -39,9 +39,17 @@ Azure Data Factory ユーザー インターフェイス エクスペリエン�
 
 パイプライン、データセット、データ フローなどの最上位レベルのリソースの場合、上位のプロパティは、キャンバスの右側のプロパティ ペインで編集できます。 プロパティ ペインには、名前、説明、注釈、その他の上位プロパティなどのプロパティが含まれています。 パイプライン アクティビティやデータ フロー変換などのサブリソースは、キャンバスの下部にあるパネルを使用して編集されます。 
 
-![作成キャンバス](media/author-visually/properties-pane.png)
+![プロパティ ペイン](media/author-visually/properties-pane.png)
 
 プロパティ ペインは、既定ではリソースの作成時にのみ表示されます。 編集するには、キャンバスの右上隅にあるプロパティ ペイン アイコンをクリックします。
+
+### <a name="related-resources"></a>関連資料
+
+プロパティ ペインで、 **[関連項目]** タブを選択すると、選択したリソースに依存しているリソースを確認できます。現在のリソースを参照しているすべてのリソースが、ここに表示されます。
+
+![関連資料](media/author-visually/related-resources.png)
+
+たとえば、上の図では、現在選択されているデータセットが 1 つのパイプラインと 2 つのデータ フローによって使用されています。
 
 ## <a name="management-hub"></a>管理ハブ
 

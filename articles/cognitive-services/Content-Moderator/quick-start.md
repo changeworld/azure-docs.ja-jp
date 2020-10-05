@@ -1,31 +1,34 @@
 ---
-title: クイック スタート:Web 上で Content Moderator を試す - Content Moderator
+title: クイック スタート:Web 上で Content Moderator を試す
 titleSuffix: Azure Cognitive Services
-description: このクイック スタートでは、オンライン Content Moderator レビュー ツールを使用して、コードを記述せずに Content Moderator の基本的な機能をテストします。
+description: オンライン Content Moderator レビュー ツールを使用して、コードを記述せずに Content Moderator の基本的な機能をテストします。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 06/29/2020
+ms.date: 09/29/2020
 ms.author: pafarley
-ms.openlocfilehash: 7be14c07a08d58f02890a48d39dd0a8010101374
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: cog-serv-seo-aug-2020
+keywords: Content Moderator, コンテンツ モデレーション
+ms.openlocfilehash: 025c8fcf98a31d7b3380ee2530428d08428493fb
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332629"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596804"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>クイック スタート:Web 上で Content Moderator を試す
 
-このクイックスタートでは、オンライン Content Moderator レビュー ツールを使用して、コードを記述せずに Content Moderator の基本的な機能をテストします。 このサービスをより迅速にアプリに統合する場合、[次のステップ](#next-steps)のセクションのその他のクイック スタートを参照してください。
+このクイックスタートでは、オンライン Content Moderator レビュー ツールを使用して、コードを記述せずに Content Moderator の基本的な機能をテストします。 このサービスをより迅速にご利用のコンテンツ モデレーション アプリに統合する場合は、[次のステップ](#next-steps)のセクションのその他のクイック スタートを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 - Web ブラウザー
 
-## <a name="set-up-the-review-tool"></a>レビュー ツールのセットアップ
+## <a name="set-up-the-review-tool"></a>レビュー ツールの設定
+
 Content Moderator レビュー ツールは、レビューア担当者が意思決定における Cognitive Service を支援できる Web ベースのツールです。 このガイドでは、レビュー ツール セットアップの簡単なプロセスを説明し、Content Moderator サービスの動作方法を確認します。 [Content Moderator レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)のサイトに移動し、サインアップします。
 
 ![Content Moderator ホーム ページ](images/homepage.PNG)
@@ -82,6 +85,6 @@ Content Moderator レビュー ツールを使用する方法についてさら�
 ## <a name="next-steps"></a>次のステップ
 
 アプリで Moderation API 自体を使用する方法を学習します。
-- 画像のモデレートを実装します。 [API コンソール](try-image-api.md)を使用するか、または [.NET SDK クイックスタート](dotnet-sdk-quickstart.md)に従って、画像をスキャンして、タグ、信頼度スコア、および他の抽出された情報を使用することによって、成人向けまたはわいせつな可能性のあるコンテンツを検出します。
-- テキストのモデレートを実装します。 [API コンソール](try-text-api.md)または [.NET SDK クイック スタート](dotnet-sdk-quickstart.md)を使用して、潜在的な不適切な表現、マシン支援の不要なテキスト分類 (プレビュー)、個人データに関してテキスト コンテンツをスキャンします。
+- 画像のモデレートを実装します。 [API コンソール](try-image-api.md)を使用するか、または [クライアント ライブラリ クイックスタート](client-libraries.md)に従って、画像をスキャンして、タグ、信頼度スコア、および他の抽出された情報を使用することによって、成人向けまたはわいせつな可能性のあるコンテンツを検出します。
+- テキストのモデレートを実装します。 [API コンソール](try-text-api.md)または[クライアント ライブラリ クイック スタート](client-libraries.md)を使用して、潜在的な不適切表現、マシン支援の不要なテキスト分類 (プレビュー)、および個人データに関してテキスト コンテンツをスキャンします。
 - ビデオのモデレートを実装します。 [C# 用のビデオのモデレートに関するハウツー ガイド](video-moderation-api.md)に関するページ従ってビデオをスキャンし、成人向けやきわどいコンテンツの可能性があるものを検出します。 

@@ -3,12 +3,12 @@ title: Azure Migrate アプライアンスのアーキテクチャ
 description: サーバーの評価と移行に使用される Azure Migrate アプライアンスの概要について説明します。
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: a83e044acc329572a5f3bfd4856f90379319ba1d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 623790568fb8d86d8065711439f148211fc7fd6b
+ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919745"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89514571"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Azure Migrate アプライアンスのアーキテクチャ
 
@@ -62,15 +62,15 @@ Azure Migrate アプライアンスは、次のシナリオで使用します。
 
 ## <a name="discovery-and-collection-process"></a>検出と収集のプロセス
 
-![Architecture](./media/migrate-appliance-architecture/architecture.png)
+![Architecture](./media/migrate-appliance-architecture/architecture1.png)
 
 アプライアンスは、次のプロセスを使用して、vCenter サーバーおよび Hyper-V ホスト/クラスターと通信します。
 
 1. **検出を開始する**:
-    - Hyper-V アプライアンスで検出を開始すると、WinRM ポート 5985 (HTTP) および 5986 (HTTPS) で Hyper-V ホストとの通信が行われます。
+    - Hyper-V アプライアンスで検出を開始すると、WinRM ポート 5985 (HTTP) で Hyper-V ホストとの通信が行われます。
     - VMware アプライアンスで検出を開始すると、既定では TCP ポート 443 で vCenter サーバーとの通信が行われます。 vCenter サーバーが別のポートでリッスンしている場合は、それをアプライアンス Web アプリで構成できます。
 2. **メタデータとパフォーマンス データを収集する**:
-    - アプライアンスは、Common Information Model (CIM) セッションを使用して、ポート 5985 および 5986 で Hyper-V ホストから Hyper-V VM のデータを収集します。
+    - アプライアンスは、Common Information Model (CIM) セッションを使用して、ポート 5985 で Hyper-V ホストから Hyper-V VM のデータを収集します。
     - アプライアンスは、既定ではポート 443 を使用して通信を行い、vCenter サーバーから VMware VM のデータを収集します。
 3. **データを送信する**:アプライアンスは、SSL ポート 443 を介して、収集したデータを Azure Migrate Server Assessment と Azure Migrate Server Migration に送信します。 アプライアンスはインターネット経由で Azure に接続できます。または、ExpressRoute をパブリックまたは Microsoft ピアリングで使用できます。
     - パフォーマンス データの場合、アプライアンスはリアルタイムの使用状況データを収集します。
@@ -81,17 +81,12 @@ Azure Migrate アプライアンスは、次のシナリオで使用します。
     - Server Migration の場合、アプライアンスは VM データの収集を開始し、それを Azure にレプリケートします。
 4. **評価および移行する**:これで、Azure Migrate Server Assessment を使用して、アプライアンスによって収集されたメタデータから評価を作成できます。 また、Azure Migrate Server Migration を使用して VMware VM の移行を開始し、エージェントレスの VM レプリケーションを調整することもできます。
 
-
-
-
-
 ## <a name="appliance-upgrades"></a>アプライアンスのアップグレード
 
 アプライアンスで実行されている Azure Migrate エージェントが更新されると、アプライアンスがアップグレードされます。 アプライアンスでは既定で自動更新が有効になっているため、これは自動的に行われます。 エージェントを手動で更新するために、この既定の設定を変更できます。
 
 レジストリで自動更新をオフにするには、HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance の "AutoUpdate" キーを 0 (ダブルワード) に設定します。
 
- 
 
 ## <a name="next-steps"></a>次のステップ
 

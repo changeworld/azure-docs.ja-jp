@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 02/24/2020
 ms.author: cherylmc
-ms.openlocfilehash: 98f1f3d02d8433dd88fed844a587a961ea9f8c82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9bc06e58fcbd93fba0c92e91b51503239b5a951
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744291"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980778"
 ---
 # <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion"></a>Azure Bastion を使用して Linux 仮想マシンに SSH 接続する
 
@@ -49,10 +49,10 @@ SSH 経由で Linux VM に接続するには、お使いの VM で次のポー�
 
 1. [Azure Portal](https://portal.azure.com)を開きます。 接続先の仮想マシンに移動し、 **[接続]** をクリックし、ドロップダウンから **[Bastion]** を選択します。
 
-   ![接続する](./media/bastion-connect-vm-ssh/connect.png)
+   ![Azure portal の仮想マシンの概要のスクリーンショット。[接続] が選択されています。](./media/bastion-connect-vm-ssh/connect.png)
 1. [Bastion] をクリックすると、RDP、SSH、Bastion の 3 つのタブがあるサイド バーが表示されます。 Bastion が仮想ネットワーク用にプロビジョニングされている場合、[Bastion] タブが既定でアクティブになっています。 Bastion を仮想ネットワーク用にプロビジョニングしていない場合は、[Bastion の構成](bastion-create-host-portal.md)に関する記事をご覧ください。
 
-   ![Bastion](./media/bastion-connect-vm-ssh/bastion.png)
+   ![[仮想マシンへの接続] ダイアログ ボックスのスクリーンショット。[BASTION] が選択されています。](./media/bastion-connect-vm-ssh/bastion.png)
 1. 仮想マシンに SSH 接続するためのユーザー名とパスワードを入力します。
 1. キーを入力したら、 **[接続]** をクリックします。
 
@@ -60,10 +60,10 @@ SSH 経由で Linux VM に接続するには、お使いの VM で次のポー�
 
 1. [Azure Portal](https://portal.azure.com)を開きます。 接続先の仮想マシンに移動し、 **[接続]** をクリックし、ドロップダウンから **[Bastion]** を選択します。
 
-   ![接続する](./media/bastion-connect-vm-ssh/connect.png)
+   ![Azure portal の仮想マシンの概要のスクリーンショット。[接続] が選択されています。](./media/bastion-connect-vm-ssh/connect.png)
 1. [Bastion] をクリックすると、RDP、SSH、Bastion の 3 つのタブがあるサイド バーが表示されます。 Bastion が仮想ネットワーク用にプロビジョニングされている場合、[Bastion] タブが既定でアクティブになっています。 Bastion を仮想ネットワーク用にプロビジョニングしていない場合は、[Bastion の構成](bastion-create-host-portal.md)に関する記事をご覧ください。
 
-   ![Bastion](./media/bastion-connect-vm-ssh/bastion.png)
+   ![[仮想マシンへの接続] ダイアログ ボックスのスクリーンショット。[BASTION] が選択されています。](./media/bastion-connect-vm-ssh/bastion.png)
 1. ユーザー名を入力し、 **[SSH 秘密キー]** を選択します。
 1. **[SSH 秘密キー]** のテキスト領域に秘密キーを入力します (または直接貼り付けます)。
 1. キーを入力したら、 **[接続]** をクリックします。
@@ -72,10 +72,10 @@ SSH 経由で Linux VM に接続するには、お使いの VM で次のポー�
 
 1. [Azure Portal](https://portal.azure.com)を開きます。 接続先の仮想マシンに移動し、 **[接続]** をクリックし、ドロップダウンから **[Bastion]** を選択します。
 
-   ![接続する](./media/bastion-connect-vm-ssh/connect.png)
+   ![Azure portal の仮想マシンの概要のスクリーンショット。[接続] が選択されています。](./media/bastion-connect-vm-ssh/connect.png)
 1. [Bastion] をクリックすると、RDP、SSH、Bastion の 3 つのタブがあるサイド バーが表示されます。 Bastion が仮想ネットワーク用にプロビジョニングされている場合、[Bastion] タブが既定でアクティブになっています。 Bastion を仮想ネットワーク用にプロビジョニングしていない場合は、[Bastion の構成](bastion-create-host-portal.md)に関する記事をご覧ください。
 
-   ![Bastion](./media/bastion-connect-vm-ssh/bastion.png)
+   ![[仮想マシンへの接続] ダイアログ ボックスのスクリーンショット。[BASTION] が選択されています。](./media/bastion-connect-vm-ssh/bastion.png)
 1. ユーザー名を入力し、 **[SSH Private Key from Local File]\(ローカル ファイルの SSH 秘密キー\)** を選択します。
 1. **[参照]** (ローカル ファイルのフォルダー アイコン) をクリックします。
 1. ファイルを参照し、 **[開く]** をクリックします。

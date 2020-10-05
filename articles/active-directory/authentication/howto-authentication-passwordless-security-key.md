@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 02/12/2020
+ms.date: 09/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f17a634a9bc3b410eec8ed6e868d454dc9ecee6
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: e523f8cc3aa9ab2f42d2d28909c9dec2dad30b43
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116599"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526954"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>パスワードなしのセキュリティ キー サインインを有効にする (プレビュー)
 
@@ -32,15 +32,15 @@ ms.locfileid: "88116599"
 - [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
 - [統合されたセキュリティ情報の登録](concept-registration-mfa-sspr-combined.md)の有効化 (プレビュー)
 - 互換性のある [FIDO2 セキュリティ キー](concept-authentication-passwordless.md#fido2-security-keys)
-- WebAuthN には、Windows 10 バージョン 1809 以降が必要です**
+- WebAuthN requires Windows 10 バージョン 1903 以降**
 
 Web アプリやサービスへのログインにセキュリティ キーを使用するには、WebAuthN プロトコルをサポートするブラウザーが必要です。 これには、Microsoft Edge、Chrome、Firefox、Safari などが含まれます。
 
 ## <a name="prepare-devices-for-preview"></a>プレビュー用にデバイスを準備する
 
-使用する Azure AD 参加済みデバイスでは、Windows 10 バージョン 1809 以降が動作している必要があります。 Windows 10 バージョン 1903 以降で操作することをお勧めします。
+使用する Azure AD 参加済みデバイスでは、Windows 10 バージョン 1909 以降が動作している必要があります。 Windows 10 バージョン 1903 以降で操作することをお勧めします。
 
-Hybrid Azure AD 参加済みデバイスでは、Windows 10 Insider Build 18945 以降が動作している必要があります。
+Hybrid Azure AD 参加済みデバイスでは、Windows 10 バージョン 2004 以降が実行されている必要があります。
 
 ## <a name="enable-passwordless-authentication-method"></a>パスワードなしの認証方法を有効にする
 
@@ -73,7 +73,7 @@ Hybrid Azure AD 参加済みデバイスでは、Windows 10 Insider Build 18945 
 
 ## <a name="sign-in-with-passwordless-credential"></a>パスワードなしの資格情報でサインインする
 
-以下の例では、ユーザーは既に自分の FIDO2 セキュリティ キーをプロビジョニングしています。 ユーザーは、Windows 10 バージョン 1809 以降のサポートされているブラウザーで FIDO2 セキュリティ キーを使用して、Web 上でサインインすることを選択できます。
+以下の例では、ユーザーは既に自分の FIDO2 セキュリティ キーをプロビジョニングしています。 ユーザーは、Windows 10 バージョン 1903 以降のサポートされているブラウザーで FIDO2 セキュリティ キーを使用して、Web 上でサインインすることを選択できます。
 
 ![Microsoft Edge でのセキュリティ キーによるサインイン](./media/howto-authentication-passwordless-security-key/fido2-windows-10-1903-edge-sign-in.png)
 

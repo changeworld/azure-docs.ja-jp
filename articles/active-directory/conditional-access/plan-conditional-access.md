@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14612247d241aed420a76ff40e19d04164cbe150
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: a26a7320cab20c769ddf8dd1f24cd6fda0cc7d64
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049929"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561535"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>条件付きアクセスのデプロイを計画する
 
@@ -448,7 +448,7 @@ CA ポリシーを作成する方法について詳しくは、次の例を参�
 
 次の管理オプションを使用して、CA ポリシーを制御および管理します。
 
-![アクセスの管理](media/plan-conditional-access/manage-access.png)
+![CA ポリシーの管理オプションのスクリーンショット。ネームド ロケーション、カスタム コントロール、使用条件、VPN 接続、クラシック ポリシー (選択されています) などがあります。](media/plan-conditional-access/manage-access.png)
 
 
 ### <a name="named-locations"></a>ネームド ロケーション

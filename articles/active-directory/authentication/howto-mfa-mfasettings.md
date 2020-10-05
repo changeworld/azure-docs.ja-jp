@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 1bc3f7887c9d257f5971b867ff9b7b1dd970fa87
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 50f7af3bb1ad543dea0263304b82287225500a21
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179405"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526886"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication の設定を構成する
 
@@ -31,7 +31,7 @@ Azure portal では、次の Azure Multi-Factor Authentication 設定を使用�
 | [ユーザーのブロック/ブロック解除](#block-and-unblock-users) | 特定のユーザーが Azure Multi-Factor Authentication 要求を受信できないようにブロックします。 ブロックされているユーザーを認証しようとすると、自動的に拒否されます。 ユーザーはブロックされた時間から 90 日間ブロックされたままか、手動でブロック解除されます。 |
 | [不正アクセスのアラート](#fraud-alert) | ユーザーが不正な確認要求を通報できるようにする設定を構成します。 |
 | [通知](#notifications) | MFA サーバーからのイベントの通知を有効にします。 |
-| [OATH トークン](concept-authentication-methods.md#oath-tokens) | クラウドベースの Azure MFA 環境で、ユーザーの OATH トークンを管理するために使用されます。 |
+| [OATH トークン](concept-authentication-oath-tokens.md) | クラウドベースの Azure MFA 環境で、ユーザーの OATH トークンを管理するために使用されます。 |
 | [電話の設定](#phone-call-settings) | クラウド環境とオンプレミス環境の電話と案内メッセージに関連する設定を構成します。 |
 | プロバイダー | アカウントに関連付けた可能性がある既存の認証プロバイダーを表示します。 2018 年 9 月 1 日時点では、新しい認証プロバイダーは作成できません |
 
@@ -156,7 +156,7 @@ CSV ファイルのサイズによって異なりますが、この処理には�
 * *+1 (877) 668 6536*
 
 > [!NOTE]
-> 公衆電話網経由で Azure Multi-Factor Authentication の電話がかけられた場合、発信者番号をサポートしていない通信事業者を通じてルーティングされることがあります。 このため、発信者番号は、Azure Multi-Factor Authentication が常にそれを送信しているにもかかわらず保証されません。
+> 公衆電話網経由で Azure Multi-Factor Authentication の電話がかけられた場合、発信者番号をサポートしていない通信事業者を通じてルーティングされることがあります。 このため、発信者番号は、Azure Multi-Factor Authentication が常にそれを送信しているにもかかわらず保証されません。 このことは、Azure Multi-Factor Authentication から提供される電話とテキスト メッセージの両方に当てはまります。 テキスト メッセージが Azure Multi-Factor Authentication からのものかどうかを確認する必要がある場合、[SMS メッセージを送る際に使用される SMS ショート コード](multi-factor-authentication-faq.md#what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users)に関するページを参照してください。
 
 独自の発信者番号を構成するには、次の手順を実行します。
 
@@ -242,7 +242,10 @@ Azure Multi-Factor Authentication の "_信頼できる IP_" 機能を使用す�
 
 組織がオンプレミスのアプリケーションに MFA を提供するために NPS 拡張機能をデプロイしている場合は、認証が試行されるとき、常にソース IP アドレスが NPS サーバーとして表示されます。
 
-| Azure AD テナントの種類 | 信頼できる IP 機能のオプション | |:--- |:--- |2 段階 | マネージド |**特定の範囲の IP アドレス**: 管理者は、会社のイントラネットからサインインするユーザーの多要素認証をバイパスできる IP アドレスの範囲を指定します。 最大 50 件の信頼できる IP 範囲を構成できます。| | フェデレーション |**フェデレーション ユーザー全員**: 組織の内部からサインインするフェデレーション ユーザーは全員、多要素認証をバイパスできます。 ユーザーは、Active Directory フェデレーション サービス (AD FS) によって発行される要求を使用して認証をバイパスします。<br/>**Specific range of IP addresses\(特定範囲の IP アドレス\)** : 管理者は、会社のイントラネットからサインインするユーザーの多要素認証をバイパスできる IP アドレスの範囲を指定します。 |
+| Azure AD テナントの種類 | 信頼できる IP 機能のオプション |
+|:--- |:--- |
+| マネージド |**Specific range of IP addresses\(特定範囲の IP アドレス\)** : 管理者は、会社のイントラネットからサインインするユーザーの多要素認証をバイパスできる IP アドレスの範囲を指定します。 最大 50 件の信頼できる IP 範囲を構成できます。|
+| フェデレーション |**すべてのフェデレーション ユーザー**: 組織の内部からサインインするフェデレーション ユーザーは全員、多要素認証をバイパスできます。 ユーザーは、Active Directory フェデレーション サービス (AD FS) によって発行される要求を使用して認証をバイパスします。<br/>**Specific range of IP addresses\(特定範囲の IP アドレス\)** : 管理者は、会社のイントラネットからサインインするユーザーの多要素認証をバイパスできる IP アドレスの範囲を指定します。 |
 
 信頼できる IP のバイパスは、会社のイントラネット内からのみ機能します。 **[すべてのフェデレーション ユーザー]** オプションを選択した場合、ユーザーが会社のイントラネットの外部からサインインするときは、多要素認証を使用してそのユーザーを認証する必要があります。 ユーザーが AD FS 要求を提示している場合でもプロセスは同じです。
 

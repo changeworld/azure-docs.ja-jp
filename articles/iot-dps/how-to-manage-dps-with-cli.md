@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-dps
 ms.custom: devx-track-azurecli
 services: iot-dps
-ms.openlocfilehash: 72978636b878aac9120b356e7be5fe5c978d1738
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 237ca1f0041283bb86b24ad456ab781dc13eeb86
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499791"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980528"
 ---
 # <a name="how-to-use-azure-cli-and-the-iot-extension-to-manage-the-iot-hub-device-provisioning-service"></a>Azure CLI と IoT 拡張機能を使用して IoT Hub Device Provisioning Service を管理する方法
 
-[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) は、IoT Edge などの Azure リソースを管理するための、オープン ソースのクロス プラットフォーム コマンド ライン ツールです。 Azure CLI は、Windows、Linux、および MacOS で使用できます。 Azure CLI を使用すると、Azure IoT Hub リソース、デバイス プロビジョニング サービス インスタンス、およびリンク済みのハブを簡単に管理することができます。
+[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) は、IoT Edge などの Azure リソースを管理するための、オープン ソースのクロス プラットフォーム コマンド ライン ツールです。 Azure CLI は Windows、Linux、macOS で使用できます。 Azure CLI を使用すると、Azure IoT Hub リソース、デバイス プロビジョニング サービス インスタンス、およびリンク済みのハブを簡単に管理することができます。
 
 IoT 拡張機能によって、Azure CLI には、デバイス管理、完全な IoT Edge 対応などの機能が追加されました。
 
@@ -53,7 +53,7 @@ IoT 拡張機能によって、Azure CLI には、デバイス管理、完全な
 az login
 ```
 
-![ログイン (login)](./media/how-to-manage-dps-with-cli/login.jpg)
+![コマンド az login を実行するコマンド プロンプト ウィンドウのスクリーンショット。](./media/how-to-manage-dps-with-cli/login.jpg)
 
 ### <a name="2-create-a-resource-group-iothubblogdemo-in-eastus"></a>2.eastus で IoTHubBlogDemo リソース グループを作成する
 

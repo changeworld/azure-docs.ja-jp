@@ -9,16 +9,16 @@ ms.service: key-vault
 ms.topic: reference
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e7cfc707aa4bccdcd72e45efa3693ebd8f88a211
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 9b320c765b258473acd6fa553831b4f075cca9ba
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88189919"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983237"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault の顧客データ機能
 
-Azure Key Vault は、資格情報コンテナー、キー、シークレット、証明書、および管理されたストレージ アカウントの作成および更新中に顧客データを受信します。 この顧客データは、Azure Portal および REST API を使用して直接表示できます。 顧客データは、データを含むオブジェクトを更新または削除することにより編集または削除できます。
+Azure Key Vault は、資格情報コンテナー、Managed HSM プール、キー、シークレット、証明書、管理されたストレージ アカウントの作成および更新中に顧客データを受信します。 この顧客データは、Azure Portal および REST API を使用して直接表示できます。 顧客データは、データを含むオブジェクトを更新または削除することにより編集または削除できます。
 
 ユーザーまたはアプリケーションが Azure Key Vault にアクセスするとシステム のアクセス ログが生成されます。 詳細なアクセス ログは、Azure Insights から確認できます。
 

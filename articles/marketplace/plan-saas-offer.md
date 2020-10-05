@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 60ca3723831b1d47e5c20f292394386df08ebdd1
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 382a6056076179be0d25e0fee0d55b978a3b7169
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89380512"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420440"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>コマーシャル マーケットプレースの SaaS オファーを計画する方法
 
@@ -104,7 +104,7 @@ CRM の接続は、オファーの作成時または作成後にいつでも追�
 
 ## <a name="selecting-an-online-store"></a>オンライン ストアの選択
 
-SaaS オファーを公開すると、Microsoft AppSource、Azure Marketplace、またはその両方にリスト登録されます。 各オンライン ストアには、固有の顧客要件があります。 AppSource はビジネス ソリューション向けで、Azure Marketplace は IT ソリューション向けです。 オファーの種類、取引機能、カテゴリによって、オファーの公開先が決まります。 カテゴリとサブカテゴリは、対象ユーザーに基づいて各オンライン ストアにマップされます。 オンライン ストアの選択の詳細については、「[オンライン ストアの選択](determine-your-listing-type.md#selecting-an-online-store)」を参照してください。
+SaaS オファーを公開すると、Microsoft AppSource、Azure Marketplace、またはその両方にリスト登録されます。 各オンライン ストアには、固有の顧客要件があります。 AppSource はビジネス ソリューション向けで、Azure Marketplace は IT ソリューション向けです。 オファーの種類、取引機能、カテゴリによって、オファーの公開先が決まります。 カテゴリとサブカテゴリは、ソリューションの種類に基づいて各オンライン ストアにマップされます。 オンライン ストアの選択の詳細については、「[オンライン ストアの選択](determine-your-listing-type.md#selecting-an-online-store)」を参照してください。
 
 ## <a name="legal-contracts"></a>法的契約
 

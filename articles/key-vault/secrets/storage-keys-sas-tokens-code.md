@@ -9,12 +9,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0f81ffb5279e10c71f7d7cccfb6b738bc12e5cf4
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 6072c71fa675bd203e94f3f42814a1183b12ae8e
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086778"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597982"
 ---
 # <a name="create-sas-definition-and-fetch-shared-access-signature-tokens-in-code"></a>コードでの SAS 定義の作成と Shared Access Signature トークンの取得
 
@@ -42,6 +42,9 @@ SAS 定義を作成したら、`SecretClient` を使用してシークレット�
 Shared Access Signature トークンの有効期限が間もなく切れる場合は、同じシークレットを再度フェッチして、新しいものを生成することができます。
 
 取得した Key Vault SAS トークンを使用して Azure Storage サービスにアクセスする方法のガイドについては、[アカウント SAS を使用した Blob service へのアクセス](https://docs.microsoft.com/azure/storage/common/storage-account-sas-create-dotnet#use-an-account-sas-from-a-client)に関する記事をご覧ください
+
+> [!NOTE]
+> アプリでは、ストレージから 403 を取得した場合、SAS の更新に向けた準備が行われる必要があります。これにより、キーが侵害され、通常のローテーション期間よりも速くローテンションを行う必要があるケースを処理することができます。 
 
 ## <a name="next-steps"></a>次のステップ
 - [SAS を使用して Azure Storage リソースへの制限付きアクセスを許可する](../../storage/common/storage-sas-overview.md)方法について学習します。
