@@ -146,6 +146,10 @@
           href: move-subscription.md
         - name: キー コンテナーを別のリージョンに移動する
           href: move-region.md
+    - name: ネットワーク
+      items:
+        - name: プライベート リンクの構成の問題を診断する
+          href: private-link-diagnostics.md
 - name: リファレンス
   items:
     - name: 新機能

@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: a6a185c61c32636dd0189bc5835f850348b196cd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: afc7e6c1ed41661c835a811a7cbcaa6f7771328e
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020356"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89645649"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>評価と依存関係の視覚化のトラブルシューティング
 
@@ -147,7 +147,8 @@ Hyper-V の仮想化が有効になっている物理サーバーの場合、準
 
 ## <a name="dependency-visualization-in-azure-government"></a>Azure Government での依存関係の視覚化
 
-Azure Migrate の依存関係視覚化機能は Service Map に依存しています。 現在、Azure Government では Service Map を使用できないため、Azure Government ではこの機能を使用できません。
+エージェントベースの依存関係の分析は、Azure Government ではサポートされません。 エージェントレスの依存関係の分析を使用してください。
+
 
 ## <a name="dependencies-dont-show-after-agent-install"></a>エージェントのインストール後に依存関係が表示されない
 
@@ -160,7 +161,7 @@ Windows VM の場合:
 
     ![MMA のステータス](./media/troubleshoot-assessment/mma-properties.png)
 
-Linux VM の場合、MMA と依存関係エージェントのインストールに関するすべてのコマンドが正常に実行されたことを確認します。
+Linux VM の場合、MMA と依存関係エージェントのインストールに関するすべてのコマンドが正常に実行されたことを確認します。 詳細については、[こちら](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#post-installation-issues)のトラブルシューティング ガイドを参照してください。
 
 ## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
@@ -181,7 +182,6 @@ Azure Migrate Server Assessment では、エージェント ベースの依存�
 ## <a name="machines-show-install-agent"></a>マシンに "エージェントのインストール" が表示される
 
 依存関係の視覚化が有効になっているマシンを Azure に移行した後、マシンでは、次の動作により、"依存関係の表示" ではなく "エージェントのインストール" アクションが表示される場合があります。
-
 
 - Azure に移行した後、オンプレミスのマシンはオフになり、同等の VM が Azure で起動されます。 これらのマシンは、別々の MAC アドレスを取得します。
 - ユーザーがオンプレミスの IP アドレスを保持するかどうかにより、マシンは異なる IP アドレスも取得する場合があります。

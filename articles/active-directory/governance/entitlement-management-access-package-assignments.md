@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 355f0127829b709d82127fb340381830793c93ff
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 18bc7ca9e108a35fd27f7b3155f186221a8caae3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783554"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980061"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージの割り当てを表示、追加、および削除する
 
@@ -36,7 +36,7 @@ Azure AD エンタイトルメント管理を使用し、ユーザーをアク�
 
 ## <a name="view-who-has-an-assignment"></a>割り当てられているユーザーを表示する
 
-**事前に必要なロール:** グローバル管理者、ユーザー管理者、カタログ所有者、またはアクセス パッケージ マネージャー
+**事前に必要なロール:** グローバル管理者、ユーザー管理者、カタログ所有者、アクセス パッケージ マネージャーまたはアクセス パッケージ割り当てマネージャー
 
 1. Azure portal で **[Azure Active Directory]** をクリックし、 **[Identity Governance]** をクリックします。
 
@@ -64,7 +64,7 @@ Microsoft Graph を使用して、アクセス パッケージの割り当てを
 
 場合によっては、ユーザーがアクセス パッケージを要求するプロセスをたどらなくて済むように、アクセス パッケージに特定のユーザーを直接割り当てることもできます。 ユーザーを直接割り当てるには、アクセス パッケージに、管理者に直接割り当てを許可するポリシーが必要です。
 
-**事前に必要なロール:** グローバル管理者、ユーザー管理者、カタログ所有者、またはアクセス パッケージ マネージャー
+**事前に必要なロール:** グローバル管理者、ユーザー管理者、カタログ所有者、アクセス パッケージ マネージャーまたはアクセス パッケージ割り当てマネージャー
 
 1. Azure portal で **[Azure Active Directory]** をクリックし、 **[Identity Governance]** をクリックします。
 
@@ -94,7 +94,7 @@ Microsoft Graph を使用して、アクセス パッケージにユーザーを
 
 ## <a name="remove-an-assignment"></a>割り当ての削除
 
-**事前に必要なロール:** グローバル管理者、ユーザー管理者、カタログ所有者、またはアクセス パッケージ マネージャー
+**事前に必要なロール:** グローバル管理者、ユーザー管理者、カタログ所有者、アクセス パッケージ マネージャーまたはアクセス パッケージ割り当てマネージャー
 
 1. Azure portal で **[Azure Active Directory]** をクリックし、 **[Identity Governance]** をクリックします。
 

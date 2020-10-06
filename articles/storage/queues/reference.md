@@ -1,19 +1,19 @@
 ---
 title: Azure Queue storage リファレンス
-description: Azure Storage API リファレンス、readme ファイル、クライアント ライブラリ パッケージが見つかります。
+description: Azure Queue storage API リファレンス、readme ファイル、クライアント ライブラリ パッケージが見つかります。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 06/02/2020
+ms.date: 09/10/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: fbf20b92edf5d8dce8438731c2812a78e457a402
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5544a6985ca357688b2585fa29c6dc63546c3e8c
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84976661"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90014958"
 ---
 # <a name="azure-queue-storage-reference"></a>Azure Queue storage リファレンス
 
@@ -50,7 +50,7 @@ Azure Queue storage API リファレンス、ライブラリ パッケージ、r
 
 |  Version  | リファレンス ドキュメント | Package | クイック スタート |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12.x | [Java 用 Azure Storage Queue クライアント ライブラリ](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html) | [パッケージ (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue) | [クイック スタート: Java 用 Azure Queue storage クライアント ライブラリ v12](/azure/storage/queues/storage-quickstart-queues-java) |
+| 12.x | [Java 用 Azure Storage Queue クライアント ライブラリ](/java/api/overview/azure/storage-queue-readme) | [パッケージ (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue) | [クイック スタート: Java 用 Azure Queue storage クライアント ライブラリ v12](/azure/storage/queues/storage-quickstart-queues-java) |
 | 8.x | [com.microsoft.azure.storage.queue](/java/api/com.microsoft.azure.storage.queue) | [パッケージ (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [クイック スタート: Java v8 SDK で BLOB を管理する](/azure/storage/blobs/storage-quickstart-blobs-java-legacy) |
 
 ### <a name="storage-management"></a>記憶域の管理
@@ -67,8 +67,8 @@ Azure Queue storage API リファレンス、ライブラリ パッケージ、r
 
 |  Version  | リファレンス ドキュメント | Package | クイック スタート |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12.x | [Python 用 Azure Storage クライアント ライブラリ v12](/azure/developer/python/sdk/storage/overview?view=storage-py-v12) | [パッケージ (PyPI)](https://pypi.org/project/azure-storage-queue/) | [クイック スタート: Python 用 Azure Queue storage クライアント ライブラリ v12](/azure/storage/queues/storage-quickstart-queues-python) |
-| 2.x | [Python 用 Azure Storage クライアント ライブラリ v2](/azure/developer/python/sdk/storage/overview?view=storage-py-v2) | [パッケージ (PyPI)](https://pypi.org/project/azure-storage-queue/2.1.0/) | [Python から Azure Queue storage v2.1 を使用する方法](/azure/storage/queues/storage-python-how-to-use-queue-storage) |
+| 12.x | [Python 用 Azure Storage クライアント ライブラリ v12](/azure/developer/python/sdk/storage/overview) | [パッケージ (PyPI)](https://pypi.org/project/azure-storage-queue/) | [クイック スタート: Python 用 Azure Queue storage クライアント ライブラリ v12](/azure/storage/queues/storage-quickstart-queues-python) |
+| 2.x | [Python 用 Azure Storage クライアント ライブラリ v2](/azure/developer/python/sdk/storage/overview?view=storage-py-v2&preserve-view=true) | [パッケージ (PyPI)](https://pypi.org/project/azure-storage-queue/2.1.0/) | [Python から Azure Queue storage v2.1 を使用する方法](/azure/storage/queues/storage-python-how-to-use-queue-storage) |
 
 ## <a name="javascript-client-libraries"></a>JavaScript クライアント ライブラリ
 
@@ -77,7 +77,7 @@ Azure Queue storage API リファレンス、ライブラリ パッケージ、r
 |  Version  | リファレンス ドキュメント | Package | クイック スタート |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12.x | [JavaScript 用 Azure Storage Queue クライアント ライブラリ](/javascript/api/overview/azure/storage-queue-readme) | [パッケージ (npm)](https://www.npmjs.com/package/@azure/storage-queue) | [クイック スタート: JavaScript 用 Azure Queue storage クライアント ライブラリ v12](/azure/storage/queues/storage-quickstart-queues-nodejs) |
-| 10.x | [@azure/storage-queue](/javascript/api/@azure/storage-queue/?view=azure-node-legacy) | [パッケージ (npm)](https://www.npmjs.com/package/@azure/storage-queue/v/10.3.0) | [Azure Queue サービスを使用して Node.js でキューを作成および削除する](/azure/storage/queues/storage-nodejs-how-to-use-queues) |
+| 10.x | [@azure/storage-queue](/javascript/api/@azure/storage-queue/?view=azure-node-legacy&preserve-view=true) | [パッケージ (npm)](https://www.npmjs.com/package/@azure/storage-queue/v/10.3.0) | [Azure Queue サービスを使用して Node.js でキューを作成および削除する](/azure/storage/queues/storage-nodejs-how-to-use-queues) |
 
 ## <a name="rest-apis"></a>REST API
 
@@ -107,8 +107,9 @@ Azure Queue storage API リファレンス、ライブラリ パッケージ、r
 
 | Version | プラットフォーム |
 | ------- | -------- |
-|  3.x  | [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/?view=azps-3.8.0) |
-|  2.x  | [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/?view=azps-2.8.0) |
+|  4.x  | [PowerShell](/powershell/module/az.storage/?view=azps-4.6.1&preserve-view=true) |
+|  3.x  | [PowerShell](/powershell/module/az.storage/?view=azps-3.8.0&preserve-view=true) |
+|  2.x  | [PowerShell](/powershell/module/az.storage/?view=azps-2.8.0&preserve-view=true) |
 
 ## <a name="azure-cli"></a>Azure CLI
 

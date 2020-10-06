@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: a5825cf5461213e3440893597059c84dcdc9ad33
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: b55ba6ab73758ed562aaabeef91cf08acf659758
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236099"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89646554"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -105,7 +105,7 @@ Application Gateway V1 SKU では、アプリケーション ゲートウェイ�
 
 ### <a name="does-application-gateway-v2-support-user-defined-routes-udr"></a>Application Gateway v2 はユーザー定義ルート (UDR) をサポートしていますか?
 
-はい。ただし、特定のシナリオのみです。 詳細については、「[アプリケーション ゲートウェイ構成の概要](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)」を参照してください。
+はい。ただし、特定のシナリオのみです。 詳細については、「[Application Gateway インフラストラクチャの構成](configuration-infrastructure.md#supported-user-defined-routes)」を参照してください。
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>Application Gateway は x-forwarded-for ヘッダーをサポートしますか?
 
@@ -136,7 +136,7 @@ v2 SKU を使用するデプロイのほとんどは、プロビジョニング�
 ### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>Application Gateway アフィニティ Cookie は SameSite 属性をサポートしていますか?
 はい。[Chromium ブラウザー](https://www.chromium.org/Home) [v80 の更新](https://chromiumdash.appspot.com/schedule) で、SameSite 属性のない HTTP Cookie を SameSite=Lax として扱うことが必須になりました。 これは、サードパーティのコンテキストでは、Application Gateway アフィニティ Cookie がブラウザーによって送信されないことを意味します。 
 
-このシナリオをサポートするために、Application Gateway では、既存の *ApplicationGatewayAffinity* Cookie に加えて、*ApplicationGatewayAffinityCORS* という別の同一の Cookie が挿入されます。  これらの Cookie は似ていますが、*ApplicationGatewayAffinityCORS* Cookie には、次の 2 つの属性が追加されています。*SameSite=None; Secure* です。 これらの属性は、クロスオリジン要求でも固定セッションを維持します。 詳細については、「[Cookie ベースのアフィニティ](configuration-overview.md#cookie-based-affinity)」セクションを参照してください。
+このシナリオをサポートするために、Application Gateway では、既存の *ApplicationGatewayAffinity* Cookie に加えて、*ApplicationGatewayAffinityCORS* という別の同一の Cookie が挿入されます。  これらの Cookie は似ていますが、*ApplicationGatewayAffinityCORS* Cookie には、次の 2 つの属性が追加されています。*SameSite=None; Secure* です。 これらの属性は、クロスオリジン要求でも固定セッションを維持します。 詳細については、「[Cookie ベースのアフィニティ](configuration-http-settings.md#cookie-based-affinity)」セクションを参照してください。
 
 ## <a name="performance"></a>パフォーマンス
 
@@ -186,7 +186,7 @@ Application Gateway は、IP 接続がある限り、所属している仮想ネ
 
 ### <a name="does-the-application-gateway-subnet-support-user-defined-routes"></a>アプリケーション ゲートウェイ サブネットはユーザー定義ルートをサポートしていますか?
 
-「[アプリケーション ゲートウェイ サブネットでサポートされるユーザー定義ルート](https://docs.microsoft.com/azure/application-gateway/configuration-overview#user-defined-routes-supported-on-the-application-gateway-subnet)」を参照してください。
+「[アプリケーション ゲートウェイ サブネットでサポートされるユーザー定義ルート](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#supported-user-defined-routes)」を参照してください。
 
 ### <a name="what-are-the-limits-on-application-gateway-can-i-increase-these-limits"></a>Application Gateway にはどのような制限がありますか? これらの制限値を引き上げることはできますか?
 
@@ -404,7 +404,7 @@ Application Gateway イングレス コントローラー (AGIC) を使用する
 
 ### <a name="why-is-my-aks-cluster-with-kubenet-not-working-with-agic"></a>AKS クラスターと kubenet が AGIC で機能しないのはなぜですか?
 
-AGIC はルート テーブル リソースを Application Gateway サブネットに自動的に関連付けようとしますが、AGIC からのアクセス許可がないため、関連付けに失敗する場合があります。 AGIC がルート テーブルを Application Gateway サブネットに関連付けることができない場合、そのことを示すエラーが AGIC ログに記録されます。その場合、AKS クラスターによって作成されたルート テーブルを Application Gateway のサブネットに手動で関連付ける必要があります。 詳細については、[こちら](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)の手順を参照してください。
+AGIC はルート テーブル リソースを Application Gateway サブネットに自動的に関連付けようとしますが、AGIC からのアクセス許可がないため、関連付けに失敗する場合があります。 AGIC がルート テーブルを Application Gateway サブネットに関連付けることができない場合、そのことを示すエラーが AGIC ログに記録されます。その場合、AKS クラスターによって作成されたルート テーブルを Application Gateway のサブネットに手動で関連付ける必要があります。 詳細については、「[サポートされているユーザー定義のルート](configuration-infrastructure.md#supported-user-defined-routes)」を参照してください。
 
 ### <a name="can-i-connect-my-aks-cluster-and-application-gateway-in-separate-virtual-networks"></a>AKS クラスターと Application Gateway を別々の仮想ネットワークに接続できますか? 
 

@@ -7,19 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 04/15/2020
-ms.openlocfilehash: 9f408174b9a8dff925a9c834ea75bf725ec6f913
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 09/04/2020
+ms.openlocfilehash: cc6b040731cbeb7271d7a7c0de1c32fa2d007013
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837346"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484190"
 ---
 # <a name="publishing-guide-for-virtual-machine-offers"></a>仮想マシンのオファー発行ガイド
 
 仮想マシン (VM) のイメージの発行は、Azure Marketplace にソリューションを発行するための主な手段の 1 つです。 このガイドでは、この種のオファーの要件について説明します。 
 
-仮想マシンのオファーは、Azure Marketplace を通じてデプロイおよび課金されるトランザクション オファーです。 ユーザーに表示される行動喚起は、*今すぐ入手する* です。
+仮想マシンのオファーは、Azure Marketplace を通じてデプロイおよび課金されるトランザクション オファーです。 ユーザーに表示される掲載オプションは、 *[今すぐ入手する]* です。
 
 ## <a name="free-trial"></a>無料試用版 
 

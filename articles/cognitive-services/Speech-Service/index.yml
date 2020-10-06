@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: trbye
-  ms.openlocfilehash: 7b64ef2739b8e6531f7531f9a135b7fb5ffe3467
-  ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+  ms.openlocfilehash: 2d1d1057d522d082b3a5a3c757d1fe988bc24ba1
+  ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/09/2020
-  ms.locfileid: "89568020"
+  ms.lasthandoff: 10/02/2020
+  ms.locfileid: "91667454"
 highlightedContent:
   items:
   - title: 音声サービスとは
@@ -118,15 +118,23 @@ conceptualContent:
       url: index-voice-assistants.yml
   - title: Speaker Recognition
     links:
-    - itemType: how-to-guide
+    - itemType: overview
       text: Speaker Recognition について
       url: speaker-recognition-overview.md
-    - itemType: how-to-guide
-      text: Speaker Recognition の基礎
+    - itemType: quickstart
+      text: Speaker Recognition の使用を開始する
       url: speaker-recognition-basics.md
     - itemType: how-to-guide
       text: Speaker Recognition API リファレンス
       url: https://docs.microsoft.com/rest/api/speakerrecognition/
+  - title: カスタム キーワード
+    links:
+    - itemType: overview
+      text: Custom Keyword について
+      url: custom-keyword-overview.md
+    - itemType: quickstart
+      text: Custom Keyword の概要
+      url: custom-keyword-basics.md
   - title: ツール
     links:
     - itemType: overview

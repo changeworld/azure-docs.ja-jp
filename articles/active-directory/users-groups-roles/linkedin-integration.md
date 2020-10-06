@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08d6b12f897b8b7efb150b11ae4b3f5e2440f7c8
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d27cd30d6543d967cca2648597854a06f8ea4eb7
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797991"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053975"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>Azure Active Directory で LinkedIn アカウント接続を統合します。
 
@@ -29,7 +29,7 @@ ms.locfileid: "88797991"
 >
 > 例外:
 >
-> * 設定は、米国政府機関用 Microsoft Cloud、Microsoft Cloud Germany、または中国の 21 vianet によって運用される Azure および Office 365 を使用しているお客様はご利用いただけません。
+> * 本設定は、米国政府機関用 Microsoft Cloud、Microsoft Cloud Germany、または中国の 21Vianet によって運用されている Azure および Microsoft 365 を使用しているお客様はご利用いただけません。
 > * ドイツにプロビジョニングされた Azure AD 組織の場合、この設定は既定でオフです。 Microsoft Cloud Germany を使用しているお客様は設定を使用できませんのでご注意ください。
 > * フランスにプロビジョニングされた組織の場合、この設定は既定でオフです。
 >
@@ -99,7 +99,7 @@ ms.locfileid: "88797991"
    **有効** | Office 2016 オプションで **Office アプリケーションでの LinkedIn の表示機能** 設定が有効になります。 組織内のユーザーは、各自の Office 2016 アプリケーションで LinkedIn の機能を使用できます。
    **Disabled** | Office 2016 オプションで **Office アプリケーションでの LinkedIn の表示機能** 設定が無効になり、エンドユーザーはこの設定を変更できません。 組織内のユーザーがその Office 2016 アプリケーションで LinkedIn の機能を使用することはできません。
 
-このグループ ポリシーが適用されるのは、ローカル コンピューターの Office 2016 アプリだけです。 ユーザーが各自の Office 2016 アプリで LinkedIn を無効にした場合でも、Office 365 で LinkedIn の機能が表示されます。
+このグループ ポリシーが適用されるのは、ローカル コンピューターの Office 2016 アプリだけです。 ユーザーが各自の Office 2016 アプリで LinkedIn を無効にした場合でも、Microsoft 365 で LinkedIn の機能が表示されます。
 
 ## <a name="next-steps"></a>次のステップ
 

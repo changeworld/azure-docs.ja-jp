@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c2e2394bbcee5294bfb752a0af2969457ffff0ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 290990e312a7f591539686ecce1eec1ac742dd60
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710152"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89443026"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Redshift からデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -101,13 +101,13 @@ ms.locfileid: "84710152"
 
 Amazon Redshift の [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) コマンドでは、クエリの結果が Amazon S3 上の 1 つ以上のファイルにアンロードされます。 このコマンドは、Redshift から大きなデータセットをコピーするための方法として Amazon から推奨されています。
 
-**例:Amazon Redshift から Azure SQL Data Warehouse へのデータのコピー**
+**例:Amazon Redshift から Azure Synapse Analytics (旧称: SQL Data Warehouse) へのデータのコピー**
 
-この例では、Amazon Redshift から Azure SQL Data Warehouse にデータをコピーします。 この例では、Redshift の **UNLOAD** コマンド、ステージングされたコピー データ、Microsoft PolyBase を使用しています。
+この例では、Amazon Redshift から Azure Synapse Analytics にデータをコピーします。 この例では、Redshift の **UNLOAD** コマンド、ステージングされたコピー データ、Microsoft PolyBase を使用しています。
 
-このサンプル ユース ケースでは、コピー アクティビティを使用して、**redshiftUnloadSettings** オプションで構成されているように、最初に Amazon Redshift から Amazon S3 にデータをアンロードします。 次に、**stagingSettings** オプションの指定に従って、Amazon S3 から Azure Blob Storage にデータをコピーします。 最後に、PolyBase によってデータが SQL Data Warehouse に読み込まれます。 すべての中間形式は、コピー アクティビティによって処理されます。
+このサンプル ユース ケースでは、コピー アクティビティを使用して、**redshiftUnloadSettings** オプションで構成されているように、最初に Amazon Redshift から Amazon S3 にデータをアンロードします。 次に、**stagingSettings** オプションの指定に従って、Amazon S3 から Azure Blob Storage にデータをコピーします。 最後に、PolyBase によってデータが Azure Synapse Analytics に読み込まれます。 すべての中間形式は、コピー アクティビティによって処理されます。
 
-![Amazon Redshift から SQL Data Warehouse へのコピーのワークフロー](media/data-factory-amazon-redshift-connector/redshift-to-sql-dw-copy-workflow.png)
+![Amazon Redshift から Azure Synapse Analytics へのコピーのワークフロー](media/data-factory-amazon-redshift-connector/redshift-to-sql-dw-copy-workflow.png)
 
 ```json
 {

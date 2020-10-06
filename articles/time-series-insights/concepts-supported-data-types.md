@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.openlocfilehash: 4e6586453469797458bc60fc7499a45a9aad9b9b
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 9dbc66e3331325e9b79d0434fb452d01d69d550a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226745"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482591"
 ---
 # <a name="supported-data-types"></a>サポートされるデータ型
 
@@ -27,10 +27,10 @@ ms.locfileid: "89226745"
 | **double** | 倍精度 64 ビット数  | `"value": 31.0482941` | `$event.value.Double` または `$event['value'].Double` |  `value_double`
 | **long** | 符号付き 64 ビット整数  | `"value" : 31` | `$event.value.Long` または `$event['value'].Long` |  `value_long`
 | **string** | テキスト値。有効な UTF-8 で構成されている必要があります。 null 値と空の文字列は同様に扱われます。 |  `"site": "DIM_MLGGG"`| `$event.site.String` または `$event['site'].String`| `site_string`
-| **dynamic** | 配列またはプロパティ バッグ (ディクショナリ) で構成される複合 (非プリミティブ) 型。 現時点で dynamic として格納されるのは、プリミティブの文字列化された JSON 配列、または TS ID やタイムスタンプ プロパティが含まれないオブジェクトの配列のみです。 どのようにオブジェクトがフラット化され、配列がアンロールされるかについては、この[記事](./concepts-json-flattening-escaping-rules.md)を参照してください。 この型で保存されたペイロード プロパティには、TSI Explorer で `Explore Events` を選択して未加工のイベントを表示するか、クライアント側での解析のための [`GetEvents`](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents)  クエリ API を使用する方法でのみアクセスできます。 |  `"values": "[197, 194, 189, 188]"` | 時系列式での動的な型の参照はまだサポートされていません | `values_dynamic`
+| **dynamic** | 配列またはプロパティ バッグ (ディクショナリ) で構成される複合 (非プリミティブ) 型。 現時点で dynamic として格納されるのは、プリミティブの文字列化された JSON 配列、または TS ID やタイムスタンプ プロパティが含まれないオブジェクトの配列のみです。 どのようにオブジェクトがフラット化され、配列がアンロールされるかについては、この[記事](./concepts-json-flattening-escaping-rules.md)を参照してください。 この型で保存されたペイロード プロパティには、Time Series Insights Explorer で `Explore Events` を選択して未加工のイベントを表示するか、クライアント側での解析のための [`GetEvents`](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents)  クエリ API を使用する方法でのみアクセスできます。 |  `"values": "[197, 194, 189, 188]"` | 時系列式での動的な型の参照はまだサポートされていません | `values_dynamic`
 
 > [!NOTE]
-> 64 ビット整数値がサポートされていますが、JavaScript の制限により、Azure Time Series Insights Explorer で安全に表現できる最大の数値は 9,007,199,254,740,991 (2^53-1) です。 これよりも大きい数値をデータ モデルで扱う場合、[時系列モデル変数](/concepts-variables#numeric-variables)を作成して値を[変換](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#conversion-functions)することによってサイズを縮小できます。
+> 64 ビット整数値がサポートされていますが、JavaScript の制限により、Azure Time Series Insights Explorer で安全に表現できる最大の数値は 9,007,199,254,740,991 (2^53-1) です。 これよりも大きい数値をデータ モデルで扱う場合、[時系列モデル変数](/azure/time-series-insights/concepts-variables#numeric-variables)を作成して値を[変換](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#conversion-functions)することによってサイズを縮小できます。
 
 > [!NOTE]
 > **String** 型で NULL 値は許可されません。

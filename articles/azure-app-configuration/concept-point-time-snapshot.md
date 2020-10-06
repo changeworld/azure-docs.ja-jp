@@ -8,12 +8,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: b1d559d82cb22d8a787785c6d8c6a5101d89793a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: cbcfedc091fd111bceffe775cb337c118a87c767
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586615"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601080"
 ---
 # <a name="point-in-time-snapshot"></a>ポイントインタイム スナップショット
 
@@ -23,31 +23,29 @@ Azure App Configuration では、キー値に対する変更のレコードが�
 
 Azure portal または CLI を使用して、過去のキー値を取得できます。 Azure CLI では `az appconfig revision list` を使用して、適切なパラメーターを追加して必要な値を取得します。  ストア名 (`--name <app-config-store-name>`) を指定するか、接続文字列 (`--connection-string <your-connection-string>`) を使用するかして、Azure App Configuration インスタンスを指定します。 特定のポイントインタイム (`--datetime`) を指定し、返される項目の最大数 (`--top`) を指定して、出力を制限します。
 
-Azure CLI がローカルにインストールされていない場合は、必要に応じて、Azure Cloud Shell を使用することもできます。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+Azure CLI がローカルにインストールされていない場合は、必要に応じて、[Azure Cloud Shell](/azure/cloud-shell/overview) を使用することもできます。
 
 キーと値に対する変更のレコードをすべて取得します。
 
-```azurecli-interactive
+```azurecli
 az appconfig revision list --name <your-app-config-store-name>.
 ```
 
 キーが `environment` でラベルが `test` と `prod` の変更のレコードをすべて取得します。
 
-```azurecli-interactive
+```azurecli
 az appconfig revision list --name <your-app-config-store-name> --key environment --label test,prod
 ```
 
 階層的キー スペース `environment:prod` 内の変更のレコードをすべて取得します。
 
-```azurecli-interactive
+```azurecli
 az appconfig revision list --name <your-app-config-store-name> --key environment:prod:* 
 ```
 
 特定のポイントインタイムのキー `color` に対する変更のレコードをすべて取得します。
 
-```azurecli-interactive
+```azurecli
 az appconfig revision list --connection-string <your-app-config-connection-string> --key color --datetime "2019-05-01T11:24:12Z" 
 ```
 

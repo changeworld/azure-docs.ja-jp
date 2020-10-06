@@ -3,15 +3,15 @@ title: Windows Virtual Desktop のホスト プールの負荷分散 - Azure
 description: Windows Virtual Desktop 環境でのホスト プールの負荷分散方法について説明します。
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 09/04/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ee8cb5f2297851d2c2b2f34be3d90573fdcf2530
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 2b977d64dea1cef3b8142758e57d91e92e5bcc02
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007439"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461121"
 ---
 # <a name="host-pool-load-balancing-methods"></a>ホスト プールの負荷分散方法
 
@@ -34,7 +34,7 @@ Windows Virtual Desktop では以下の負荷分散方法を使用できます�
 
 幅優先の負荷分散方法では、このシナリオに対して最適化するためにユーザー接続を分散できます。 この方法は、プールされた仮想デスクトップ環境に接続しているユーザーに最適なエクスペリエンスを提供することを望む組織に最適です。
 
-幅優先の方法では、まず、新しい接続を許可するセッション ホストのクエリが実行されます。 次に、セッションの数が最も少ないセッション ホストが選択されます。 同数のものがある場合は、クエリ内の最初のセッション ホストが選択されます。
+幅優先の方法では、まず、新しい接続を許可するセッション ホストのクエリが実行されます。 次に、セッションの数が最も少ない半数のセッション ホストから、セッション ホストをランダムに選択します。 たとえば、11、12、13、14、15、16、17、18、19 のセッションを持つ 9 台のマシンがある場合、新しく作成したセッションは自動的に最初のマシンでホストされるわけではありません。 代わりに、セッションの数が最も少ない最初の 5 台のマシン (11、12、13、14、15) のいずれかでホストされます。
 
 ## <a name="depth-first-load-balancing-method"></a>深さ優先の負荷分散方法
 

@@ -3,12 +3,12 @@ title: PowerShell を使用して Azure VM をバックアップおよび復元�
 description: PowerShell を使用して Azure Backup によって Azure VM をバックアップおよび復旧する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: e4564ba2b6109296a7383fb4b056c2f4b1890fda
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 87d655652d0207a50f8980f18d18e76fea0b1e21
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178133"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90975099"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>PowerShell を使用して Azure VM をバックアップおよび復元する
 
@@ -96,7 +96,7 @@ Azure ライブラリの **Az.RecoveryServices** [コマンドレット リフ�
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
 
-3. 使用するストレージ冗長性の種類を指定します。 [ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy.md) または [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy.md) を使用できます。 次に示す例では、testvault の -BackupStorageRedundancy オプションが GeoRedundant に設定されています。
+3. 使用するストレージ冗長性の種類を指定します。 [ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage)、[geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage)、または[ゾーン冗長ストレージ (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) を使用できます。 次に示す例では、*testvault* の **-BackupStorageRedundancy** オプションが **GeoRedundant** に設定されています。
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault -Name "testvault"

@@ -4,23 +4,23 @@ description: Azure Active Directory を使用してオンプレミスのアプ�
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 08/01/2019
+ms.date: 09/02/2020
 ms.author: curtand
-ms.reviewer: jeffsta
+ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba22720901cf4b7505d8d5b5295ca4e0c271953f
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 019327436eaf2186e23068a5b0a1ac4b21b9fbe7
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798399"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055165"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Azure AD とのアカウントの共有
 
@@ -29,7 +29,7 @@ ms.locfileid: "88798399"
 組織では、1 組のユーザー名とパスワードを複数のユーザーに使うことが必要な場合があります。一般に次の 2 つのケースです。
 
 * オンプレミスのアプリケーションであろうと、コンシューマー クラウド サービス (企業のソーシャル メディア アカウントなど) であろうと、ユーザーごとに一意のサインインおよびパスワードを必要とするアプリケーションにアクセスする場合。
-* マルチユーザー環境を作成する場合。 昇格された特権を持ち、中心となるセットアップ、管理、および回復アクティビティに使われる、単一のローカルなアカウントが用意されている場合があります。 たとえば、Office 365 のローカル "グローバル管理者" アカウントや、Salesforce のルート アカウントなどです。
+* マルチユーザー環境を作成する場合。 昇格された特権を持ち、中心となるセットアップ、管理、および回復アクティビティに使われる、単一のローカルなアカウントが用意されている場合があります。 たとえば、Microsoft 365 のローカル "グローバル管理者" アカウントや、Salesforce のルート アカウントなどです。
 
 これまで、このようなアカウントを共有するには、権限のあるユーザーに資格情報 (ユーザー名とパスワード) を配布するか、または信頼済みの複数のエージェントがアクセスできる共有の場所に当該アカウントを格納するということを行ってきました。
 

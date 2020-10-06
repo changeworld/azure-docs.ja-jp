@@ -1,23 +1,23 @@
 ---
 title: Azure IoT Hub Device Provisioning Service の自動プロビジョニングを使用して MXChip IoT DevKit を IoT Hub に登録する方法 | Microsoft Docs
 description: Azure IoT Hub Device Provisioning Service (DPS) の自動プロビジョニングを使用して MXChip IoT DevKit を IoT Hub に登録する方法。
-author: liydu
-ms.author: liydu
+author: wesmc7777
+ms.author: wesmc
 ms.date: 06/25/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: jeffya
-ms.openlocfilehash: f05e92f0452b1cfff23e2094354203fd7eaea48b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+manager: eliotgra
+ms.openlocfilehash: 2a030d9ca5422e12856dcb81b29f8327e684c97e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74975654"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90528655"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Azure IoT Hub Device Provisioning Service の自動プロビジョニングを使用して MXChip IoT DevKit を IoT Hub に登録します
 
-この記事では、Azure IoT Hub Device Provisioning Service の[自動プロビジョニング](concepts-auto-provisioning.md)を使用して MXChip IoT DevKit を Azure IoT Hub に登録する方法について説明します。 このチュートリアルでは、以下の内容を学習します。
+この記事では、Azure IoT Hub Device Provisioning Service を使用して MXChip IoT DevKit を Azure IoT Hub に[プロビジョニング](about-iot-dps.md#provisioning-process)する方法について説明します。 このチュートリアルでは、以下の内容を学習します。
 
 * デバイスに Device Provisioning Service のグローバル エンドポイントを構成する。
 * 一意デバイス シークレット (UDS) を使って X.509 証明書を生成する。
@@ -45,7 +45,7 @@ ms.locfileid: "74975654"
 
 ## <a name="save-a-unique-device-secret-on-device-security-storage"></a>デバイスのセキュリティ ストレージに一意のデバイス シークレットを保存する
 
-自動プロビジョニングは、デバイスの[構成証明メカニズム](concepts-security.md#attestation-mechanism)に基づいてデバイスで構成できます。 MXChip IoT DevKit では、[Trusted Computing Group](https://trustedcomputinggroup.org) の [Device Identity Composition Engine](https://trustedcomputinggroup.org/wp-content/uploads/Foundational-Trust-for-IOT-and-Resource-Constrained-Devices.pdf) を使います。 DevKit の STSAFE セキュリティ チップ ([STSAFE-A100](https://microsoft.github.io/azure-iot-developer-kit/docs/understand-security-chip/)) に保存された "**一意のデバイス シークレット**" (UDS) は、デバイス固有の [X.509](concepts-security.md#x509-certificates) 証明書の生成に使われます。 この証明書は後で Device Provisioning Service での登録プロセスで使用され、また、実行時の登録中に使用されます。
+自動プロビジョニングは、デバイスの[構成証明メカニズム](concepts-service.md#attestation-mechanism)に基づいてデバイスで構成できます。 MXChip IoT DevKit では、[Trusted Computing Group](https://trustedcomputinggroup.org) の [Device Identity Composition Engine](https://trustedcomputinggroup.org/wp-content/uploads/Foundational-Trust-for-IOT-and-Resource-Constrained-Devices.pdf) を使います。 DevKit の STSAFE セキュリティ チップ ([STSAFE-A100](https://microsoft.github.io/azure-iot-developer-kit/docs/understand-security-chip/)) に保存された "**一意のデバイス シークレット**" (UDS) は、デバイス固有の [X.509](concepts-x509-attestation.md) 証明書の生成に使われます。 この証明書は後で Device Provisioning Service での登録プロセスで使用され、また、実行時の登録中に使用されます。
 
 一般的な UDS は、次の例のような 64 文字の文字列です。
 

@@ -544,6 +544,8 @@
           href: data-flow-new-branch.md
         - name: ピボット
           href: data-flow-pivot.md
+        - name: 順位
+          href: data-flow-rank.md
         - name: Select
           href: data-flow-select.md
         - name: シンク

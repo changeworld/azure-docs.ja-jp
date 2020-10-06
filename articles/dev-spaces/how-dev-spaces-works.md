@@ -5,12 +5,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 description: Azure Dev Spaces を動作させるプロセスについて説明します
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 48bde5f3cc6f397d51a31f80f41ab299ba8866ee
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 81408ed4bbe5322538d893b29c7397104c5b0844
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212538"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981273"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Azure Dev Spaces のしくみ
 
@@ -22,9 +22,9 @@ Azure Dev Spaces には、Kubernetes アプリケーションを迅速に反復�
 
 Azure Dev Spaces を使用すると、AKS クラスターのコンテキストで Kubernetes アプリケーションを開発、テスト、反復する手間が軽減されます。 この作業の削減により、開発者は、Kubernetes で実行するようにサービスを構成することではなく、アプリケーションのビジネス ロジックに集中することができます。
 
-### <a name="local-process-with-kubernetes"></a>Local Process with Kubernetes
+### <a name="bridge-to-kubernetes"></a>Bridge to Kubernetes
 
-Local Process with Kubernetes を使用すると、開発用コンピューターを Kubernetes クラスターに接続し、クラスター上で実行されているかのように開発用コンピューター上でコードを実行したりデバッグしたりすることができます。 Azure Dev Spaces は、開発用コンピューターとクラスターとの間でリモート エージェントとしてトラフィックをリダイレクトするポッドをクラスター上で実行することにより、接続されたクラスターとの間でトラフィックをリダイレクトします。 このようにトラフィックをリダイレクトすることで、開発用コンピューター上のコードと、クラスターで実行されているサービスとが、同じクラスター内にあるかのように通信できます。 開発用コンピューターを Kubernetes クラスターに接続する方法の詳細については、「[Local Process with Kubernetes のしくみ][how-it-works-local-process-kubernetes]」を参照してください。
+Bridge to Kubernetes を使用すると、開発用コンピューターを Kubernetes クラスターに接続し、クラスター上で実行されているかのように開発用コンピューター上でコードを実行したりデバッグしたりすることができます。 Bridge to Kubernetes は、開発用コンピューターとクラスターとの間でリモート エージェントとしてトラフィックをリダイレクトするポッドをクラスター上で実行することにより、接続されたクラスターとの間でトラフィックをリダイレクトします。 このようにトラフィックをリダイレクトすることで、開発用コンピューター上のコードと、クラスターで実行されているサービスとが、同じクラスター内にあるかのように通信できます。 開発用コンピューターを Kubernetes クラスターに接続する方法の詳細については、「[Bridge to Kubernetes のしくみ][how-it-works-bridge-to-kubernetes]」を参照してください。
 
 ### <a name="run-your-code-in-aks"></a>AKS でコードを実行する
 
@@ -47,8 +47,8 @@ Azure Dev Spaces を使用すると、チームは、クラウド ネイティ�
 実際にローカル開発用コンピューターを AKS クラスターに接続する方法については、「[開発用マシンを AKS クラスターに接続する][connect]」を参照してください。
 
 
-[connect]: https://code.visualstudio.com/docs/containers/local-process-kubernetes
-[how-it-works-local-process-kubernetes]: /visualstudio/containers/overview-local-process-kubernetes
+[connect]: https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
+[how-it-works-bridge-to-kubernetes]: /visualstudio/containers/overview-bridge-to-kubernetes
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md

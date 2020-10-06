@@ -1,5 +1,5 @@
 ---
-title: TSI Explorer でデータを視覚化する - Azure Time Series Insights Gen2 | Microsoft Docs
+title: Time Series Insights Explorer でデータを視覚化する - Azure Time Series Insights Gen2 | Microsoft Docs
 description: Azure Time Series Insights Explorer で使用できる機能とオプションについて説明します。
 author: deepakpalled
 ms.author: dpalled
@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 08/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 31ed5f93fc7d1b44ae8a4afb1f4368d0b52eb2fd
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 0933e34e5bdd8469b827ed03c0eff51a4ecba0d5
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227051"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89488169"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights Explorer
 
@@ -47,7 +47,7 @@ Azure Time Series Insights Explorer は次の 7 つの要素で構成されま�
 
 ## <a name="1-environment-panel"></a>1.環境パネル
 
-環境パネルには、アクセスできるすべての Azure Time Series Insights Gen2 環境が表示されます。 このリストには、Gen2 環境と Gen 1 環境が含まれています。 使用する環境を選択するだけですぐにそこに移動します。
+環境パネルには、アクセスできるすべての Azure Time Series Insights Gen2 環境が表示されます。 このリストには、Gen2 環境と Gen1 環境が含まれています。 使用する環境を選択するだけですぐにそこに移動します。
 
 1. 表示された環境の横にあるドロップダウン矢印を選択します。
 
@@ -200,11 +200,11 @@ Azure Time Series Insights Explorer では 2 つのテーマがサポートさ�
 
   [![選択されたダーク テーマ](media/v2-update-explorer/tsi-preview-dark-theme-selected.png)](media/v2-update-explorer/tsi-preview-dark-theme-selected.png#lightbox)
 
-## <a name="gen-1-environment-controls"></a>Gen 1 環境コントロール
+## <a name="gen1-environment-controls"></a>Gen1 環境コントロール
 
 ### <a name="gen2-terms-panel"></a>Gen2 の条件パネル
 
-このセクションは、更新された UI での Explorer の使用を試みる既存の Gen 1 環境のみに適用されます。 Gen 1 製品と Gen2 製品を組み合わせて使用できます。 更新された Explorer には、既存の UI からいくつかの機能が追加されていますが、新しい Azure Time Series Insights Explorer で Gen 1 環境向けの完全な UI エクスペリエンスを利用できます。
+このセクションは、更新された UI での Explorer の使用を試みる既存の Gen1 環境のみに適用されます。 Gen1 製品と Gen2 製品を組み合わせて使用できます。 更新された Explorer には、既存の UI からいくつかの機能が追加されていますが、新しい Azure Time Series Insights Explorer で Gen1 環境向けの完全な UI エクスペリエンスを利用できます。
 
 階層の代わりに、Azure Time Series Insights Gen2 条件パネルが表示されます。 条件パネルでは、環境内でのクエリを定義できます。 これは、述語に基づいてデータをフィルター処理するために使用することもできます。
 

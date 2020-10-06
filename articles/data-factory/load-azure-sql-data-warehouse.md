@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/08/2020
-ms.openlocfilehash: 8891c65707822abeb2bcca52280d9b56dc725e4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c90590ac4c47f6ac8d51273fecfb653dfe056b1d
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252000"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485772"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Synapse Analytics へのデータの読み込み
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-[Azure Synapse Analytics (旧称 SQL DW)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) は、クラウドベースのスケールアウト データベースであり、リレーショナルか非リレーショナルかを問わず、大量のデータを処理できます。 Azure Synapse Analytics は、企業のデータ ウェアハウスのワークロード向けに最適化された超並列処理 (MPP) アーキテクチャを基盤としています。 ストレージとコンピューティングを別々にスケールできる柔軟性によって、クラウドの弾力性を提供します。
+[Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) は、クラウドベースのスケールアウト データベースであり、リレーショナルか非リレーショナルかを問わず、大量のデータを処理できます。 Azure Synapse Analytics は、企業のデータ ウェアハウスのワークロード向けに最適化された超並列処理 (MPP) アーキテクチャを基盤としています。 ストレージとコンピューティングを別々にスケールできる柔軟性によって、クラウドの弾力性を提供します。
 
 Azure Synapse Analytics は、Azure Data Factory を使用する場合にさらに使いやすくなっています。 Azure Data Factory は、フル マネージドのクラウドベースのデータ統合サービスです。 このサービスを使用して、既存のシステムのデータで Azure Synapse Analytics を設定し、分析ソリューションを構築する際の時間を節約できます。
 
@@ -102,13 +102,13 @@ Azure Data Factory には、Azure Synapse Analytics にデータを読み込む�
 
     a. **[+ 新しい接続の作成]** をクリックして、接続を追加します
 
-    b. ギャラリーから **[Azure Synapse Analytics (旧称 SQL DW)]** を選択し、 **[続行]** を選択します。 検索ボックスに「SQL」と入力して、コネクタをフィルター処理できます。
+    b. ギャラリーから **[Azure Synapse Analytics (旧称 SQL Data Warehouse)]** を選択し、 **[続行]** を選択します。 検索ボックスに「SQL」と入力して、コネクタをフィルター処理できます。
 
-    ![Azure SQL DW の選択](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
+    ![Azure Synapse Analytics を選択](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
 
     c. **[New Linked Service]\(新しいリンクされたサービス\)** ページで、ドロップダウン リストからご自身のサーバー名と DB を選択し、ユーザー名とパスワードを指定します。 **[テスト接続]** をクリックして設定を検証し、 **[作成]** を選択します。
 
-    ![Azure SQL DW の構成](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
+    ![Azure Synapse Analytics を構成](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
 
     d. 新しく作成したリンクされたサービスをシンクとして選択し、 **[次へ]** をクリックします。
 

@@ -2,13 +2,13 @@
 title: サブスクリプションにリソースをデプロイする
 description: Azure Resource Manager テンプレートでリソース グループを作成する方法について説明します。 Azure サブスクリプション スコープでリソースをデプロイする方法も示します。
 ms.topic: conceptual
-ms.date: 07/27/2020
-ms.openlocfilehash: aca1aaf9d7d0c8a97bf2dad437953ccadc02a924
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 09/15/2020
+ms.openlocfilehash: 3889f5a06f138114dfe4511d0957558d6d803c8e
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002784"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605177"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>サブスクリプション レベルでリソース グループとリソースを作成する
 
@@ -82,7 +82,7 @@ https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json
 
 サブスクリプション レベルのデプロイ用のコマンドは、リソース グループのデプロイ用のコマンドと異なります。
 
-Azure CLI の場合は、[az deployment sub create](/cli/azure/deployment/sub?view=azure-cli-latest#az-deployment-sub-create) を使用します。 次の例では、リソース グループを作成するテンプレートがデプロイされます。
+Azure CLI の場合は、[az deployment sub create](/cli/azure/deployment/sub#az-deployment-sub-create) を使用します。 次の例では、リソース グループを作成するテンプレートがデプロイされます。
 
 ```azurecli-interactive
 az deployment sub create \
@@ -115,7 +115,7 @@ REST API の場合は、[デプロイ - サブスクリプション スコープ
 
 ## <a name="deployment-scopes"></a>デプロイのスコープ
 
-サブスクリプションにデプロイする場合は、サブスクリプションまたはサブスクリプション内の任意のリソース グループを対象にすることができます。 テンプレートをデプロイするユーザーは、特定のスコープにアクセスできる必要があります。
+サブスクリプションにデプロイする場合、1 つのサブスクリプション、およびそのサブスクリプション内の任意のリソース グループを対象にすることができます。 ターゲット サブスクリプションとは異なるサブスクリプションにデプロイすることはできません。 テンプレートをデプロイするユーザーは、特定のスコープにアクセスできる必要があります。
 
 テンプレートのリソース セクション内で定義されたリソースは、サブスクリプションに適用されます。
 
@@ -145,7 +145,7 @@ REST API の場合は、[デプロイ - サブスクリプション スコープ
             "properties": {
                 "mode": "Incremental",
                 "template": {
-                    nested-template
+                    nested-template-with-resource-group-resources
                 }
             }
         }
@@ -154,15 +154,17 @@ REST API の場合は、[デプロイ - サブスクリプション スコープ
 }
 ```
 
+この記事では、さまざまなスコープにリソースをデプロイする方法を示すテンプレートを用意しています。 リソース グループを作成し、そこにストレージ アカウントをデプロイするテンプレートについては、「[リソース グループとリソースを作成する](#create-resource-group-and-resources)」を参照してください。 リソース グループを作成してロックを適用し、そのリソース グループにロールを割り当てるテンプレートについては、「[アクセス制御](#access-control)」を参照してください。
+
 ## <a name="use-template-functions"></a>テンプレート関数を使用する
 
 サブスクリプション レベルのデプロイでは、テンプレート関数を使用する場合に、次のようないくつかの重要な考慮事項があります。
 
 * [resourceGroup ()](template-functions-resource.md#resourcegroup) 関数は、サポートされて**いません**。
 * [reference()](template-functions-resource.md#reference) および [list()](template-functions-resource.md#list) 関数がサポートされています。
-* [subscriptionResourceId()](template-functions-resource.md#subscriptionresourceid) 関数を使用して、サブスクリプション レベルでデプロイされるリソースのリソース ID を取得します。
+* サブスクリプション レベルでデプロイされているリソースのリソース ID を取得するために、[resourceId()](template-functions-resource.md#resourceid) を使用しないでください。 代わりに、[subscriptionResourceId()](template-functions-resource.md#subscriptionresourceid) 関数を使用してください。
 
-  たとえば、ポリシー定義のリソース ID を取得するには、次を使用します。
+  たとえば、サブスクリプションにデプロイされているポリシー定義のリソース ID を取得するには、次のように使用します。
 
   ```json
   subscriptionResourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
@@ -420,7 +422,7 @@ New-AzSubscriptionDeployment `
       ],
       "properties": {
         "scope": "[subscription().id]",
-        "policyDefinitionId": "[resourceId('Microsoft.Authorization/policyDefinitions', 'locationpolicy')]"
+        "policyDefinitionId": "[subscriptionResourceId('Microsoft.Authorization/policyDefinitions', 'locationpolicy')]"
       }
     }
   ]

@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 11/16/2017
 ms.author: alkohli
-ms.openlocfilehash: a2f04d6faa7770eef7768437ae0e624b76713f98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5efb87ad674474b2e21b86b5cdc48785753a51dc
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76275109"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564153"
 ---
 # <a name="available-regions-for-your-storsimple"></a>StorSimple に使用できるリージョン
 
@@ -39,7 +39,7 @@ StorSimple ソリューションのリージョンの選択は、具体的には
 
 次の図は、Azure パブリック クラウドで StorSimple デバイス マネージャー サービスを使用可能でデプロイすることができるリージョンの一覧です。
 
-![storsimple-device-manager-service-regions](./media/storsimple-region/storsimple-device-manager-service-regions.png)
+![[場所] リストが強調表示された StorSimple デバイス マネージャーが表示されているスクリーンショット。](./media/storsimple-region/storsimple-device-manager-service-regions.png)
 
 Azure Government クラウドの場合、StorSimple デバイス マネージャー サービスは US Gov アイオワおよび米国政府バージニアのデータセンターで使用できます。
 
@@ -68,7 +68,7 @@ StorSimple 8100 または 8600 物理デバイスを使用している場合、�
 | 3  | バーレーン               | 18 | アイスランド            | 33 | ノルウェー              | 48 | スペイン                      |
 | 4  | ベルギー               | 19 | インド              | 34 | ペルー                | 49 | スリランカ                  |
 | 5  | ブラジル                | 20 | インドネシア          | 35 | フィリピン         | 50 | スウェーデン                     |
-| 6  | カナダ                | 21 | アイルランド            | 36 | ポーランド              | 51 | スイス                |
+| 6  | Canada                | 21 | アイルランド            | 36 | ポーランド              | 51 | スイス                |
 | 7  | チリ                 | 22 | イスラエル             | 37 | ポルトガル            | 52 | 台湾                     |
 | 8  | コロンビア              | 23 | イタリア              | 38 | プエルトリコ         | 53 | タイ                   |
 | 9  | チェコ共和国        | 24 | 日本              | 39 | カタール               | 54 | トルコ                     |

@@ -6,14 +6,14 @@ services: site-recovery
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/06/2019
+ms.date: 09/15/2020
 ms.author: mayg
-ms.openlocfilehash: 281743268364b0e9d39c7bea28afc17d753db2f6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 1790ac666d77f14ccadfde56f7b86e05b2c563dd
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130140"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604684"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>フェールバック用の Linux マスター ターゲット サーバーをインストールする
 仮想マシンを Azure にフェールオーバー後、仮想マシンをオンプレミス サイトにフェールバックできます。 フェールバックするには、Azure からオンプレミス サイトへの仮想マシンを再保護する必要があります。 このプロセスには、トラフィックを受信するオンプレミス マスター ターゲット サーバーが必要です。 
@@ -48,16 +48,7 @@ ms.locfileid: "86130140"
 - **OS ディスク サイズ**: 100 GB 以上 (OS をインストールする場合)
 - **リテンション ドライブの追加ディスク サイズ**: 1 TB (テラバイト)
 - **CPU コア数**: 4 コア以上
-
-次の Ubuntu カーネルがサポートされています。
-
-
-|カーネル シリーズ  |サポートされる最新バージョン  |
-|---------|---------|
-|4.4.      |4.4.0-81-generic         |
-|4.8      |4.8.0-56-generic         |
-|4.10     |4.10.0-24-generic        |
-
+- **カーネル**: 4.16.*
 
 ## <a name="deploy-the-master-target-server"></a>マスター ターゲット サーバーをデプロイする
 

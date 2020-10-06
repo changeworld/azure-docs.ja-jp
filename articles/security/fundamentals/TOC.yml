@@ -80,6 +80,8 @@
       href: encryption-overview.md
     - name: 二重暗号化
       href: double-encryption.md
+    - name: TLS 証明書の変更
+      href: tls-certificate-changes.md
     - name: ディスクの暗号化
       items:
         - name: ベスト プラクティス

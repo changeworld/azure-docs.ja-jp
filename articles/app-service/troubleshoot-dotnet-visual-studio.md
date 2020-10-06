@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: de39789a45856211421e3ec5638a2df94d49976c
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 72df946ed35dfdfd2811089a51ab9403d2e0567c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958713"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983008"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Visual Studio を使用した Azure App Service のアプリのトラブルシューティング
 ## <a name="overview"></a>概要
@@ -70,15 +70,15 @@ Visual Studio は、[Azure portal](https://go.microsoft.com/fwlink/?LinkId=52971
 
 **'/' アプリケーションのサーバー エラー:**
 
-![あまり役に立たないエラー ページ](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror.png)
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror.png" alt-text="Web ブラウザー上の &quot;/&quot; アプリケーション エラーのサーバー エラーを示すスクリーンショット。":::
 
 **エラーが発生しました:**
 
-![あまり役に立たないエラー ページ](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror1.png)
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror1.png" alt-text="Web ブラウザー上の &quot;/&quot; アプリケーション エラーのサーバー エラーを示すスクリーンショット。":::
 
 **Web サイト側でページを表示できません**
 
-![あまり役に立たないエラー ページ](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png)
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png" alt-text="Web ブラウザー上の &quot;/&quot; アプリケーション エラーのサーバー エラーを示すスクリーンショット。":::
 
 多くの場合、エラーの原因を最も簡単に見つける方法は、詳細なエラー メッセージを有効にすることです。その結果、既に示した最初のスクリーンショットのように、対応方法が表示されます。 ここでは、デプロイした Web.config ファイルの変更が必要です。 プロジェクト内の *Web.config* ファイルを編集し、プロジェクトを再デプロイすること、または [Web.config の変換](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations)を作成し、デバッグ ビルドをデプロイすることもできますが、より簡単な方法があります。**ソリューション エクスプローラー**で、*リモート ビュー*機能を使用して、リモート アプリからファイルを直接表示し、編集することができます。
 
@@ -139,25 +139,7 @@ Web.config ファイルの編集は、App Service アプリにあるファイル
 
 1. **サーバー エクスプローラー**で、アプリを右クリックしてから **[デバッガーの接続]** をクリックします。
 
-    ![[デバッガーの接続]](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png)
-
-    ブラウザーが自動的に起動し、Azure で実行されているホーム ページが表示されます。 デバッグに必要な設定を Azure がサーバーに対して行う間、20 秒ほどの待ち時間が生じることがあります。 この待ち時間が生じるのは、48 時間以内にアプリでのデバッグ モードを実行する初回に限られます。 同じ期間に再度デバッグを開始しても、遅延はありません。
-
-    > [!NOTE] 
-    > デバッガーの起動時に問題がある場合、**サーバー エクスプローラー**ではなく**クラウド エクスプローラー**を使用して起動してみてください。
-    >
-
-1. メニューの **[About]** をクリックします。
-
-    Visual Studio がブレークポイントで停止します。コードが実行されている場所は、ローカル コンピューターではなく Azure 上です。
-
-1. `currentTime` 変数にマウスを合わせて、時刻値を表示します。
-
-    ![Azure で実行されているコード内の変数をデバッグ モードで表示](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugviewinwa.png)
-
-    表示される時刻は、Azure サーバーの時刻です。ローカル コンピューターとはタイム ゾーンが異なります。
-
-1. `currentTime` 変数に新しい値 ("Now running in Azure" など) を入力します。
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png" alt-text="Web ブラウザー上の &quot;/&quot; アプリケーション エラーのサーバー エラーを示すスクリーンショット。" など) を入力します。
 
 1. F5 キーを押して実行を継続します。
 
@@ -192,7 +174,7 @@ Web.config ファイルの編集は、App Service アプリにあるファイル
 
 8. **[デバッガーの接続]** をクリックします。
 
-    ![[デバッガーの接続]](./media/web-sites-dotnet-troubleshoot-visual-studio/wjattach.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/wjattach.png" alt-text="Web ブラウザー上の &quot;/&quot; アプリケーション エラーのサーバー エラーを示すスクリーンショット。":::
 
     ブラウザーが自動的に起動し、Azure で実行されているホーム ページが表示されます。 デバッグに必要な設定を Azure がサーバーに対して行う間、20 秒ほどの待ち時間が生じることがあります。 この待ち時間が生じるのは、48 時間以内にアプリでのデバッグ モードを実行する初回に限られます。 同じ期間に再度デバッグを開始しても、遅延はありません。
 
@@ -340,11 +322,11 @@ Web ジョブでアプリケーション ログを作成する方法について
 1. ブラウザー ウィンドウのアドレス バーで、URL に続けて「*trace.axd*」と入力し、Enter キーを押します (例: `http://localhost:53370/trace.axd`)。
 1. **[アプリケーション トレース]** ページの最初の行 (BrowserLink の行とは異なる) で、 **[詳細の表示]** をクリックします。
 
-    ![trace.axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png" alt-text="Web ブラウザー上の &quot;/&quot; アプリケーション エラーのサーバー エラーを示すスクリーンショット。":::
 
     **[要求の詳細]** ページが表示され、`Index` メソッドに追加したトレース ステートメントからの出力が **[トレース情報]** セクションに表示されます。
 
-    ![trace.axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png" alt-text="Web ブラウザー上の &quot;/&quot; アプリケーション エラーのサーバー エラーを示すスクリーンショット。":::
 
     既定では、`trace.axd` の使用はローカルに限られます。 *Web.config* ファイルで `trace` 要素に `localOnly="false"` を追加すると、リモート アプリからも利用できるようになります。その例を次に示します。
 
@@ -361,39 +343,16 @@ Web ジョブでアプリケーション ログを作成する方法について
     更新したプロジェクトを発行すると、ブラウザー ウィンドウが起動して自分のホーム ページが表示されます (ただし、 **[接続]** タブの **[宛先 URL]** をクリアした場合を除く)。
 3. **サーバー エクスプローラー**でアプリを右クリックし、 **[ストリーミング ログの表示]** を選択します。
 
-    ![コンテキスト メニューからストリーミング ログを表示](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewlogsmenu.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewlogsmenu.png" alt-text="Web ブラウザー上の &quot;/&quot; アプリケーション エラーのサーバー エラーを示すスクリーンショット。":::
 
     ログ ストリーミング サービスに接続されたことを示すメッセージが**出力**ウィンドウに表示されます。ログが出力されないまま 1 分が経過すると、その都度、1 行の通知が追加されます。
 
-    ![コンテキスト メニューからストリーミング ログを表示](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png)
-4. アプリケーションのホーム ページが表示されているブラウザー ウィンドウで、 **[Contact]** をクリックします。
-
-    数秒すると、`Contact` メソッドに追加したエラー レベルのトレースが**出力**ウィンドウに表示されます。
-
-    ![出力ウィンドウのエラー トレース](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-errortrace.png)
-
-    Visual Studio にエラー レベルのトレースしか表示されていないのは、それが、ログ監視サービスを有効にしたときの既定の設定であるためです。 先ほどの設定ページを開いたときに見たように、新しい App Service アプリを作成したときは、すべてのログが既定で無効となります。
-
-    ![アプリケーション ログ記録がオフ](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-apploggingoff.png)
-
-    ただし、 **[ストリーミング ログを表示]** を選択すると、 **[アプリケーション ログ記録 (ファイル システム)]** が自動的に **[エラー]** に変更されます。これは、エラー レベルのログが報告されることを意味します。 すべてのトレース ログを表示するためには、この設定を **[詳細]** に変更する必要があります。 "エラー" よりも低い重大度レベルを選択すると、その重大度を超えるログがすべて報告されます。 つまり [詳細] を選択した場合は、"情報"、"警告"、"エラー" に該当するログが表示されます。  
-
-5. 先ほどと同じように、**サーバー エクスプローラー**でアプリを右クリックし、 **[表示の設定]** をクリックします。
-6. **[アプリケーション ログ記録 (ファイル システム)]** を **[詳細]** に変更し、 **[保存]** をクリックします。
-
-    ![トレース レベルを [詳細] に設定](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-applogverbose.png)
-7. **[連絡先]** ページが表示されているブラウザー ウィンドウで、 **[ホーム]** 、 **[バージョン情報]** 、 **[連絡先]** を順にクリックします。
-
-    数秒すると、 **出力** ウィンドウにすべてのトレース出力が表示されます。
-
-    ![詳細レベルのトレース出力](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-verbosetraces.png)
-
-    このセクションでは、ログの有効と無効の切り替えをアプリの設定で行いました。 トレース リスナーの有効と無効は、Web.config ファイルで設定することもできます。 ただし、Web.config ファイルに変更を加えると、アプリケーション ドメインの再利用処理が実行されます。一方、アプリの構成を介してログを有効にした場合は、そのようにはなりません。 問題の再現に時間がかかる場合や、発生のタイミングが散発的である場合、アプリケーション ドメインの再利用処理で問題が "解消" し、再発までしばらく待たなければならなくなります。 Azure で診断を有効にすると、アプリケーション ドメインの再利用処理は行われず、すぐにエラー情報を収集することができます。
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png" alt-text="Web ブラウザー上の &quot;/&quot; アプリケーション エラーのサーバー エラーを示すスクリーンショット。" し、再発までしばらく待たなければならなくなります。 Azure で診断を有効にすると、アプリケーション ドメインの再利用処理は行われず、すぐにエラー情報を収集することができます。
 
 ### <a name="output-window-features"></a>出力ウィンドウの機能
 **出力**ウィンドウの **[Microsoft Azure ログ]** タブには、いくつかのボタンと 1 つのテキスト ボックスが表示されます。
 
-![[ログ] タブのボタン](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-icons.png)
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-icons.png" alt-text="Web ブラウザー上の &quot;/&quot; アプリケーション エラーのサーバー エラーを示すスクリーンショット。":::
 
 それぞれの機能を次に示します。
 
@@ -457,14 +416,15 @@ Azure ポータルを使用して、Azure ストレージ アカウントへの 
 
 1. **出力**ウィンドウの **[ストリーミング ログのダウンロード]** をクリックします。
 
-    ![[ログ] タブのボタン](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadicon.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadicon.png" alt-text="Web ブラウザー上の &quot;/&quot; アプリケーション エラーのサーバー エラーを示すスクリーンショット。"::: ボタンが強調表示されている [出力] ウィンドウのスクリーンショット。
 
     エクスプローラーが起動して *[ダウンロード]* フォルダーが開き、ダウンロード済みのファイルが選択状態で表示されます。
 
-    ![ダウンロードされたファイル](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadedfile.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadedfile.png" alt-text="Web ブラウザー上の &quot;/&quot; アプリケーション エラーのサーバー エラーを示すスクリーンショット。":::
+
 2. この *.zip* ファイルを展開すると、次のフォルダー構造が確認できます。
 
-    ![ダウンロードされたファイル](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilefolders.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilefolders.png" alt-text="Web ブラウザー上の &quot;/&quot; アプリケーション エラーのサーバー エラーを示すスクリーンショット。":::
 
    * アプリケーション トレース ログは、*LogFiles\Application* フォルダーの *.txt* ファイルに記録されます。
    * Web サーバーのログは、*LogFiles\http\RawLogs* フォルダーの *.log* ファイルに記録されます。 これらのファイルの閲覧と操作は、 [Log Parser](https://www.microsoft.com/download/details.aspx?displaylang=en&id=24659) などのツールを使って行うことができます。

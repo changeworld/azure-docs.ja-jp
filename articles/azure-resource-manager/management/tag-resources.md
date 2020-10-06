@@ -4,12 +4,12 @@ description: タグを適用して、課金や管理のために Azure リソー
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: daedb5dcd660ec2637557fe5af75db2939318495
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 3ffcb4a0f2f5dc64b165fcdec03f7c3ced258cc1
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499995"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086761"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>タグを使用して Azure リソースと整理階層を整理する
 
@@ -307,7 +307,27 @@ az group list --tag Dept=IT
 
 ### <a name="handling-spaces"></a>スペースを処理する
 
-タグの名前または値にスペースが含まれている場合は、いくつかの追加手順を実行する必要があります。 次の例では、タグにスペースが含まれている場合に、リソース グループのすべてのタグをそのリソースに適用します。
+タグの名前または値にスペースが含まれている場合は、いくつかの追加手順を実行する必要があります。 
+
+Azure CLI の `--tags` パラメーターでは、文字列の配列で構成される文字列を指定することができます。 次の例では、タグにスペースとハイフンが含まれるリソース グループのタグを上書きします。 
+
+```azurecli-interactive
+TAGS=("Cost Center=Finance-1222" "Location=West US")
+az group update --name examplegroup --tags "${TAGS[@]}"
+```
+
+`--tags` パラメーターを使用して、リソース グループまたはリソースを作成または更新するときに、同じ構文を使用できます。
+
+`--set` パラメーターを使用してタグを更新するには、キーと値を文字列として渡す必要があります。 次の例では、1 つのタグをリソース グループに追加します。
+
+```azurecli-interactive
+TAG="Cost Center='Account-56'"
+az group update --name examplegroup --set tags."$TAG"
+```
+
+ここでは、値にはハイフンが含まれているので、タグ値は単一引用符でマークされます。
+
+また、多くのリソースにタグを適用することが必要になる場合もあります。 次の例では、タグにスペースが含まれている場合に、リソース グループのすべてのタグをそのリソースに適用します。
 
 ```azurecli-interactive
 jsontags=$(az group show --name examplegroup --query tags -o json)
@@ -579,7 +599,7 @@ Azure REST API でタグを操作するには、次のように使用します�
 
 タグを使用して課金データをグループ化できます。 たとえば、異なる組織向けに複数の VM を実行している場合は、タグを使用して、コスト センターごとに使用状況をグループ化します。 また、タグを使用すると、運用環境で実行されている VM の課金データなどの、ランタイム環境ごとにコストを分類することもできます。
 
-タグに関する情報は、[Azure Resource Usage API や Rate Card API](../../cost-management-billing/manage/usage-rate-card-overview.md)、またはコンマ区切り値 (CSV) ファイルから取得できます。 使用状況ファイルは [Azure アカウント センター](https://account.azure.com/Subscriptions)または Azure portal からダウンロードします。 詳細については、「[Azure の請求書と毎日の使用状況データをダウンロードまたは表示する](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)」を参照してください。 Azure アカウント センターから使用状況ファイルをダウンロードする場合は、 **[バージョン 2]** を選択します。 課金のタグがサポートされているサービスの場合、タグは **[Tags]** 列に表示されます。
+タグに関する情報は、[Azure Resource Usage API や Rate Card API](../../cost-management-billing/manage/usage-rate-card-overview.md)、またはコンマ区切り値 (CSV) ファイルから取得できます。 Azure portal から使用状況ファイルをダウンロードします。 詳細については、「[Azure の請求書と毎日の使用状況データをダウンロードまたは表示する](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)」を参照してください。 Azure アカウント センターから使用状況ファイルをダウンロードする場合は、 **[バージョン 2]** を選択します。 課金のタグがサポートされているサービスの場合、タグは **[Tags]** 列に表示されます。
 
 REST API の操作については、「 [Azure Billing REST API Reference (Azure Billing REST API リファレンス)](/rest/api/billing/)」を参照してください。
 

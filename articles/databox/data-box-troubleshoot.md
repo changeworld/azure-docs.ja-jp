@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: troubleshooting
-ms.date: 07/08/2020
+ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: a632e753426def52bb260d7bf01875ec24e2ea9e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 2a40e908677a173862ad715f7024865ff728d0b9
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200142"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053455"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box と Azure Data Box Heavy に関連する問題のトラブルシューティング
 
@@ -112,13 +112,17 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
 
 ### <a name="error_container_or_share_capacity_exceeded"></a>ERROR_CONTAINER_OR_SHARE_CAPACITY_EXCEEDED
 
-**エラーの説明:** Azure ファイル共有では、1 つの共有につき 5 TB のデータに制限されています。 一部の共有でこの制限を超えています。
+**エラーの説明:** Azure ファイル共有でデータの共有が 5 TiB に制限されており、ストレージ アカウントで大きなファイル共有が有効になっていません。 一部の共有で、この制限を超えました。
 
 **推奨される解決方法:** ローカル Web UI の **[接続とコピー]** ページで、エラー ファイルをダウンロードして確認します。
 
-エラー ログから、この問題があるフォルダーを特定し、そのフォルダー内のファイルが 5 TB 未満であることを確認します。
-
-
+- エラー ログから、この問題があるフォルダーを特定し、そのフォルダー内のファイルが 5 TiB 未満であることを確認します。
+- 5 TiB の制限は、大きなファイル共有を許可しているストレージ アカウントには適用されません。 ただし、注文時に大きなファイル共有が構成されている必要があります。 
+  - [Microsoft サポート](data-box-disk-contact-microsoft-support.md)に連絡して、新しい配送先住所ラベルを要求してください。
+  - [ストレージ アカウントで大きなファイル共有を有効にします。](../storage/files/storage-files-how-to-create-large-file-share.md#enable-large-files-shares-on-an-existing-account)
+  - [ストレージ アカウントのファイル共有を拡張](../storage/files/storage-files-how-to-create-large-file-share.md#expand-existing-file-shares)し、クォータを 100 TiB に設定します。
+  
+  
 ## <a name="object-or-file-size-limit-errors"></a>オブジェクトまたはファイルのサイズ制限のエラー
 
 これらは、Azure で許可されているオブジェクトまたはファイルの最大サイズを超過したデータに関連するエラーです。 

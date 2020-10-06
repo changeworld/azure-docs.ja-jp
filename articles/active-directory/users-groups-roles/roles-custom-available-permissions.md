@@ -1,6 +1,6 @@
 ---
-title: カスタム管理者ロールの使用可能なアクセス許可 - Azure AD |Microsoft Docs
-description: ID 管理を委任するためのカスタム管理者ロールのアクセス許可。
+title: アプリの登録のためのカスタム ロールのアクセス許可 - Azure AD | Microsoft Docs
+description: アプリの登録を管理するためのカスタム管理者ロールのアクセス許可を委任します。
 services: active-directory
 author: curtand
 manager: daveba
@@ -8,27 +8,27 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c11723efe3fac236fce49c1f92fa338d4e58b59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 624489033097c0da4d85488b7ae376c5e0f3a56b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732108"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967692"
 ---
-# <a name="application-registration-subtypes-and-permissions-in-azure-active-directory"></a>Azure Active Directory でのアプリケーション登録のサブタイプとアクセス許可
+# <a name="application-registration-permissions-for-custom-roles-in-azure-active-directory"></a>Azure Active Directory のカスタム ロールに対するアプリケーションの登録のアクセス許可
 
 この記事では、Azure Active Directory (Azure AD) のカスタム ロール定義に対して現在利用可能なアプリ登録アクセス許可について説明します。
 
-## <a name="permissions-for-managing-single-directory-applications"></a>シングルディレクトリ アプリケーションを管理するためのアクセス許可
+## <a name="permissions-for-managing-single-tenant-applications"></a>シングルテナント アプリケーションを管理するためのアクセス許可
 
-カスタム ロールのアクセス許可を選択する場合は、シングルディレクトリ アプリケーションのみを管理するためのアクセス権を付与するオプションがあります。 シングルディレクトリ アプリケーションは、アプリケーションが登録されている Azure AD 組織内のユーザーのみが利用できます。 シングルディレクトリ アプリケーションは、 **[サポートされているアカウントの種類]** が "Accounts in this organizational directory only" (この組織のディレクトリ内のアカウントのみ) に設定されているものとして定義されます。 Graph API では、シングルディレクトリ アプリケーションの signInAudience プロパティが "AzureADMyOrg" に設定されています。
+カスタム ロールのアクセス許可を選択する場合は、シングルテナント アプリケーションのみを管理するためのアクセス権を付与するオプションがあります。 シングルテナント アプリケーションは、アプリケーションが登録されている Azure AD 組織内のユーザーのみが利用できます。 シングルテナント アプリケーションは、 **[Supported account types]\(サポートされているアカウントの種類\)** が "Accounts in this organizational directory only" (この組織のディレクトリ内のアカウントのみ) に設定されているものとして定義されます。 Graph API では、シングルテナント アプリケーションは signInAudience プロパティが "AzureADMyOrg" に設定されています。
 
-シングルディレクトリ アプリケーションのみを管理するためのアクセス権を付与するには、サブタイプ **applications.myOrganization** で次のアクセス許可を使用します。 たとえば、microsoft.directory/applications.myOrganization/basic/update です。
+シングルテナント アプリケーションのみを管理するためのアクセス権を付与するには、サブタイプ **applications.myOrganization** とともに、以下のアクセス許可を使用します。 たとえば、microsoft.directory/applications.myOrganization/basic/update です。
 
 サブタイプ、アクセス許可、プロパティ セットという一般的な用語の意味については、[カスタム ロールの概要](roles-custom-overview.md)に関するページの説明を参照してください。 次の情報は、アプリケーションの登録に固有のものです。
 
@@ -95,7 +95,7 @@ microsoft.directory/applications/standard/read と同じアクセス許可を付
 
 #### <a name="microsoftdirectoryapplicationsallpropertiesupdate"></a>microsoft.directory/applications/allProperties/update
 
-シングルディレクトリとマルチディレクトリのアプリケーションのすべてのプロパティを更新する権限。
+シングルテナントとマルチテナントのアプリケーションのすべてのプロパティを更新する権限。
 
 #### <a name="microsoftdirectoryapplicationsmyorganizationallpropertiesupdate"></a>microsoft.directory/applications.myOrganization/allProperties/update
 
@@ -103,7 +103,7 @@ microsoft.directory/applications/allProperties/update と同じアクセス許�
 
 #### <a name="microsoftdirectoryapplicationsaudienceupdate"></a>microsoft.directory/applications/audience/update
 
-シングルディレクトリとマルチディレクトリ上でサポートされているアカウントの種類 (signInAudience) のプロパティを更新する権限。
+シングルテナントとマルチテナント上でサポートされているアカウントの種類 (signInAudience) のプロパティを更新する権限。
 
 ![このアクセス許可では、認証ページでアプリ登録がサポートされているアカウントの種類のプロパティへのアクセスが許可されます。](./media/roles-custom-available-permissions/supported-account-types.png)
 
@@ -139,7 +139,7 @@ microsoft.directory/applications/basic/update と同じアクセス許可を付�
 
 #### <a name="microsoftdirectoryapplicationsmyorganizationcredentialsupdate"></a>microsoft.directory/applications.myOrganization/credentials/update
 
-microsoft.directory/applications/credentials/update と同じアクセス許可を付与しますが、シングルディレクトリ アプリケーションのみが対象となります。
+microsoft.directory/applications/credentials/update と同じアクセス許可を付与しますが、シングルテナント アプリケーションのみが対象となります。
 
 #### <a name="microsoftdirectoryapplicationsownersupdate"></a>microsoft.directory/applications/owners/update
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dac17c8592530c06dd761914e7f556b35c3674b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: bf57bea87fcb5e1d1f1bde4eada5a79d2fef52c8
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202991"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706321"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Azure Multi-Factor Authentication および AD FS を使用したクラウド リソースのセキュリティ保護
 
@@ -50,7 +50,7 @@ ms.locfileid: "86202991"
 
 管理者は、信頼できる IP を使用すると、特定の IP アドレスまたはイントラネット内から要求が送信されているフェデレーション ユーザーの 2 段階認証をバイパスできます。 次のセクションで、要求がフェデレーション ユーザーのイントラネット内から送信されている場合に、信頼できる IP とフェデレーション ユーザーを Azure Multi-Factor Authentication にどのように構成し、2 段階認証をどのようにバイパスするかについて説明します。 これは、要求の種類 [企業ネットワーク内] で [入力方向の要求をパス スルーまたはフィルター処理] テンプレートを使用するように AD FS を構成することによって実現されます。
 
-ここで示す例では、証明書利用者信頼で Office 365 を使用します。
+ここで示す例では、証明書利用者信頼で Microsoft 365 を使用します。
 
 ### <a name="configure-the-ad-fs-claims-rules"></a>AD FS 要求規則を構成する
 
@@ -97,4 +97,4 @@ ms.locfileid: "86202991"
 4. [サービス設定] ページの **[信頼できる IP]** で、 **[イントラネット内のフェデレーション ユーザーからのリクエストの場合、多要素認証をスキップする]** を選択します。  
 5. **[Save]** をクリックします。
 
-これで完了です。 この時点で、Office 365 のフェデレーション ユーザーは、企業のイントラネットの外部から要求を送信するときに、MFA のみを使用するだけですみます。
+これで完了です。 この時点で、Microsoft 365 のフェデレーション ユーザーは、企業のイントラネットの外部から要求を送信するときに、MFA のみを使用するだけですみます。

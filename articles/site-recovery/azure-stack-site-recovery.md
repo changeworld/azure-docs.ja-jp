@@ -3,12 +3,12 @@ title: Azure Site Recovery を使用して Azure Stack VM を Azure にレプリ
 description: Azure Site Recovery サービスを使用して Azure Stack VM の Azure へのディザスター リカバリーを設定する方法について説明します。
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 873b9c5efc2a89d3cda1bfe14a7518e6786a6870
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 61154e58582a3dcbab0f7ed9542d094be192ae74
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131603"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564311"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Azure Stack VM を Azure にレプリケートする
 
@@ -36,7 +36,7 @@ Site Recovery は、事業継続とディザスター リカバリー (BCDR) 戦
 
 ## <a name="architecture"></a>Architecture
 
-![Architecture](./media/azure-stack-site-recovery/architecture.png)
+![図は、どちらも共通の Azure Stack インフラストラクチャ上にあるテナント サブスクリプションに関連付けられている、クラウド上にある 2 つのテナントの Recovery Services コンテナーを示しています。](./media/azure-stack-site-recovery/architecture.png)
 
 **場所** | **コンポーネント** |**詳細**
 --- | --- | ---

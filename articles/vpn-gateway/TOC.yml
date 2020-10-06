@@ -170,7 +170,7 @@
               href: vpn-gateway-howto-openvpn-clients.md
             - name: SSTP から OpenVPN プロトコルまたは IKEv2 に移行する
               href: ikev2-openvpn-from-sstp.md
-        - name: P2S セッション管理の構成
+        - name: P2S セッション管理
           href: p2s-session-management.md
         - name: P2S 用公開 CA ゲートウェイ証明書への移行
           href: vpn-gateway-point-to-site-gateway-public-ca.md

@@ -62,6 +62,8 @@
       href: disaster-recovery-for-virtual-machines.md
     - name: コンテンツ ライブラリを介して VM をデプロイする
       href: tutorial-deploy-vm-content-library.md
+    - name: GitHub Enterprise Server を設定する
+      href: github-enterprise-server.md
     - name: Azure のネイティブ統合
       items:
         - name: API Management
@@ -84,6 +86,8 @@
       items:
         - name: vRealize Operations の設定
           href: vrealize-operations-for-azure-vmware-solution.md
+        - name: VMware Horizon をデプロイする
+          href: azure-vmware-solution-horizon.md
 - name: リソース
   items:
     - name: トラブルシューティング

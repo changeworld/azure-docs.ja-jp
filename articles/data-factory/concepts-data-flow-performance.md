@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 08/12/2020
-ms.openlocfilehash: cf91dd0b7f16bf0dcd3d84da1b942b2353ec5bd0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 51d9880c654a6ecabbbab294016293113bffb655
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212034"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89434233"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Mapping Data Flow のパフォーマンスとチューニング ガイド
 
@@ -126,7 +126,7 @@ Integration Runtime の作成方法の詳細については、「[Azure Data Fac
 
 ### <a name="time-to-live"></a>Time to Live
 
-既定では、すべてのデータ フロー アクティビティで、IR 構成に基づいて新しいクラスターがスピンアップされます。 クラスターの起動にかかる時間は数分で、それが完了するまではデータ処理を開始できません。 パイプラインに複数の**シーケンシャル** データ フローが含まれている場合は、Time to Live (TTL) 値を有効にすることができます。 Time to Live 値を指定すると、クラスターは実行が完了してから一定の期間、有効な状態に維持されます。 TTL 時間内に IR を使用する新しいジョブを開始すると、既存のクラスターが再利用され、開始時間は数分ではなく数秒になります。 2 番目のジョブが完了すると、クラスターは TTL 時間の間、再び有効な状態で維持されます。
+既定では、すべてのデータ フロー アクティビティで、IR 構成に基づいて新しいクラスターがスピンアップされます。 クラスターの起動にかかる時間は数分で、それが完了するまではデータ処理を開始できません。 パイプラインに複数の**シーケンシャル** データ フローが含まれている場合は、Time to Live (TTL) 値を有効にすることができます。 Time to Live 値を指定すると、クラスターは実行が完了してから一定の期間、有効な状態に維持されます。 TTL 時間内に IR を使用する新しいジョブを開始すると、既存のクラスターが再利用され、開始時間は大幅に減少します。 2 番目のジョブが完了すると、クラスターは TTL 時間の間、再び有効な状態で維持されます。
 
 1 つのクラスターで一度に実行できるジョブは 1 つだけです。 使用可能なクラスターがあり、2 つのデータ フローが開始されている場合は、その 1 つだけにライブ クラスターが使用されます。 2 番目のジョブで、それ専用の分離クラスターがスピンアップされます。
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 8a72dff055f2733a07b6da705b66da939ad29bae
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5bd637f4e4a786cd4cba0f70c4b2349e354469fd
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495609"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657474"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Azure Logic Apps 内のワークフロー アクションを繰り返す、または配列を処理するループを作成する
 
@@ -45,7 +45,7 @@ ms.locfileid: "87495609"
 
 このロジック アプリの例では、Web サイトの RSS フィードの日次サマリーを送信します。 アプリは、新しい項目ごとに電子メールを送信する "Foreach" ループを使用します。
 
-1. Outlook.com や Office 365 の Outlook アカウントを使用して、[このサンプルのロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。
+1. Outlook.com アカウントや職場または学校アカウントを使用して、[このサンプルのロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。
 
 2. RSS トリガーと電子メール送信アクションの間に、"Foreach" ループを追加します。 
 

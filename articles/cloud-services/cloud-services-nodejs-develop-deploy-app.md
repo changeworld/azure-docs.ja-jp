@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: tagore
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 489025d9cfdd6f1bdbc950e2bd1e7e4d835a4fff
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c2d76ccd0c2e81147c39f81568fd1394cc1868b6
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079211"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032879"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ
 
@@ -36,8 +36,8 @@ Cloud Services の詳細と Azure の Web サイトおよび仮想マシンと�
 > [!NOTE]
 > このチュートリアルは、Windows 上の Azure PowerShell を使用します。
 
-* [Azure Powershell]のインストールおよび構成。
-* [Azure SDK for .NET 2.7]のダウンロードとインストール。 インストールのセットアップ時に、次のいずれかを選択します。
+* [Azure PowerShell] をインストールして構成します。
+* [Azure SDK for .NET 2.7] をダウンロードしてインストールします。 インストールのセットアップ時に、次のいずれかを選択します。
   * MicrosoftAzureAuthoringTools
   * MicrosoftAzureComputeEmulator
 
@@ -179,8 +179,8 @@ Publish-AzureServiceProject -ServiceName $ServiceName  -Location "East US" -Laun
 
 [Azure Websites、Cloud Services、および Virtual Machines の比較]: /azure/architecture/guide/technology-choices/compute-decision-tree
 [軽量の Web アプリを使用]: ../app-service/quickstart-nodejs.md
-[Azure Powershell]: /powershell/azure/
-[Azure SDK for .NET 2.7]: https://www.microsoft.com/en-us/download/details.aspx?id=48178
+[Azure PowerShell]: /powershell/azure/
+[Azure SDK for .NET 3.0]: https://www.microsoft.com/download/details.aspx?id=54917
 [PowerShell を接続します]: /powershell/azure/
 [nodejs.org]: https://nodejs.org/
 [Overview of Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成の概要)]: https://azure.microsoft.com/documentation/services/cloud-services/

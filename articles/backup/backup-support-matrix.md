@@ -4,12 +4,12 @@ description: Azure Backup サービスのサポート設定と制限事項の概
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 9b0698b16d3432c1bfefd3cf909cdfdf5529200e
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 94a795ad91be1d648ad025287f5c5bc6f1d8d07e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892186"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985012"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup のサポート マトリックス
 
@@ -149,9 +149,9 @@ Azure Backup に、データの可用性と回復性の機能を強化するた�
 
 | バックアップの管理の種類 | サポートされています                                                    | サポートされているリージョン |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | はい。   暗号化された VM と 4 TB 未満のディスクがある VM でのサポート | すべての Azure パブリック リージョン。  |
-| MARS エージェント/オンプレミス | いいえ                                                           | 該当なし               |
-| SQL/SAP HANA          | いいえ                                                           | 該当なし               |
+| Azure VM               | はい。   暗号化された VM と 4 TB 未満のディスクがある VM でのサポート | すべての Azure パブリック リージョンとソブリン クラウド。  |
+| SQL/SAP HANA | はい                                                          | すべての Azure パブリック リージョンとソブリン クラウド。             |
+| MARS エージェント/オンプレミス  | いいえ                                                           | 該当なし               |
 | AFS                    | いいえ                                                           | 該当なし               |
 
 ## <a name="next-steps"></a>次のステップ

@@ -103,7 +103,7 @@
       href: elevate-access-global-admin.md
     - name: 従来の管理者
       href: classic-administrators.md
-    - name: サブスクリプションを別のディレクトリに譲渡する (プレビュー)
+    - name: サブスクリプションを別のディレクトリに譲渡する
       href: transfer-subscription.md
     - name: トラブルシューティング
       href: troubleshooting.md

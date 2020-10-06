@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/06/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ae2da130f61d31db4904ed2dd5ac18444929950
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: b66567275bf2c7454a2d4bb87dcd4c14bb1fb9b4
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177501"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969294"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-using-powershell"></a>PowerShell を使用して、リソースにマネージド ID アクセスを割り当てる
 
@@ -34,20 +34,17 @@ ms.locfileid: "89177501"
 
 - Azure リソースのマネージド ID の基本点な事柄については、[概要](overview.md)に関するセクションを参照してください。 **[システム割り当てマネージド ID とユーザー割り当てマネージド ID の違い](overview.md#managed-identity-types)を必ず確認してください**。
 - まだ Azure アカウントを持っていない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
-- [最新バージョンの Azure PowerShell](/powershell/azure/install-az-ps) をインストールします (まだインストールしていない場合)。
+- サンプル スクリプトを実行するには、次の 2 つのオプションがあります。
+    - [Azure Cloud Shell](../../cloud-shell/overview.md) を使用します。これは、コード ブロックの右上隅にある **[Try It]\(使ってみる\)** ボタンを使用して開くことができます。
+    - 最新バージョンの [Azure PowerShell](/powershell/azure/install-az-ps) をインストールしてスクリプトをローカルで実行した後、`Connect-AzAccount` を使用して Azure にサインインします。 
 
 ## <a name="use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>Azure RBAC を使用して他のリソースにマネージド ID アクセスを割り当てる
 
-[Azure VM などの](qs-configure-powershell-windows-vm.md) Azure リソースでマネージド ID を有効にした後、次のようにします。
+1. [Azure VM などの](qs-configure-powershell-windows-vm.md) Azure リソースでマネージド ID を有効にします。
 
-1. `Connect-AzAccount` コマンドレットを使用して Azure にサインインします。 次のように、マネージド ID を構成した Azure サブスクリプションに関連付けられているアカウントを使用します。
+1. この例では、ストレージ アカウントに Azure VM アクセスを許可しています。 まず、[Get-AzVM](/powershell/module/az.compute/get-azvm) を使用して `myVM` という VM のサービス プリンシパルを取得します。これは、マネージド ID が有効になっているときに作成されたものです。 次に、[New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) を使用して、VM の**閲覧者**アクセスを `myStorageAcct` というストレージ アカウントに付与します。
 
-   ```powershell
-   Connect-AzAccount
-   ```
-2. この例では、ストレージ アカウントに Azure VM アクセスを許可しています。 まず、[Get-AzVM](/powershell/module/az.compute/get-azvm) を使用して `myVM` という VM のサービス プリンシパルを取得します。これは、マネージド ID が有効になっているときに作成されたものです。 次に、[New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) を使用して、VM の**閲覧者**アクセスを `myStorageAcct` というストレージ アカウントに付与します。
-
-    ```powershell
+    ```azurepowershell-interactive
     $spID = (Get-AzVM -ResourceGroupName myRG -Name myVM).identity.principalid
     New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Reader" -Scope "/subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.Storage/storageAccounts/<myStorageAcct>"
     ```

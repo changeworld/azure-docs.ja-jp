@@ -1064,6 +1064,8 @@
       items:
         - name: Java V4 SDK への移行
           href: migrate-java-v4-sdk.md
+        - name: .NET V3 SDK への移行
+          href: migrate-dotnet-v3.md
     - name: トラブルシューティング
       items:
         - name: 一般的なエラー

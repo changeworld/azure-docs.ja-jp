@@ -2,19 +2,18 @@
 title: Azure Service Bus のよく寄せられる質問 (FAQ) | Microsoft Docs
 description: この記事では、Azure Service Bus に関連する、よく寄せられる質問 (FAQ) の一部の回答を示します。
 ms.topic: article
-ms.date: 07/15/2020
-ms.openlocfilehash: e098b05dba25a51d5d6ef7c50a1b73730828357a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.date: 09/16/2020
+ms.openlocfilehash: addd629f137c5f638cd32a639f79cdbbafc4a94d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080815"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90894522"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus - よく寄せられる質問 (FAQ)
 
 この記事では、Microsoft Azure Service Bus についてよく寄せられる質問 (FAQ) とその回答について説明します。 Azure の価格およびサポートに関する一般的な情報については、「[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」も参照してください。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="general-questions-about-azure-service-bus"></a>Azure Service Bus に関する一般的な質問
 ### <a name="what-is-azure-service-bus"></a>Azure Service Bus とは
@@ -36,6 +35,9 @@ ms.locfileid: "88080815"
 
  パーティション分割されたエンティティは [Premium SKU](service-bus-premium-messaging.md) ではサポートされなくなりました。 
 
+### <a name="where-does-azure-service-bus-store-customer-data"></a><a name="in-region-data-residency"></a>Azure Service Bus では、顧客データはどこに格納されますか?
+Azure Service Bus は顧客データを格納します。 このデータは、Azure Service Bus によって 1 つのリージョンに自動的に格納されるため、このサービスは、[セキュリティ センター](https://azuredatacentermap.azurewebsites.net/)に指定されているものも含めて、リージョンのデータ所在地の要件を自動的に満たします。
+
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>ファイアウォールで開く必要があるのはどのポートですか。 
 Azure Service Bus でメッセージを送受信する場合、次のプロトコルを使用できます。
 
@@ -48,7 +50,7 @@ Azure Service Bus でメッセージを送受信する場合、次のプロト�
 | Protocol | Port | 詳細 | 
 | -------- | ----- | ------- | 
 | AMQP | 5671 と 5672 | [AMQP プロトコル ガイド](service-bus-amqp-protocol-guide.md)に関するページを参照してください | 
-| SBMP | 9350 から 9354 | 「[Connectivity mode](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet)」 (接続モード) を参照してください。 |
+| SBMP | 9350 から 9354 | 「[Connectivity mode](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet&preserve-view=true)」 (接続モード) を参照してください。 |
 | HTTP、HTTPS | 80、443 | 
 
 ### <a name="what-ip-addresses-do-i-need-to-add-to-allow-list"></a>どのような IP アドレスを許可リストに追加する必要がありますか。
@@ -59,9 +61,9 @@ Azure Service Bus でメッセージを送受信する場合、次のプロト�
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. `Non-authoritative answer` で返された IP アドレスをメモします。 この IP アドレスは静的です。 これが変更されるのは、名前空間を別のクラスターに復元する場合のみです。
+2. `Non-authoritative answer` で返された IP アドレスをメモします。 
 
-名前空間にゾーン冗長性を使用している場合は、次の追加手順を実行する必要があります。 
+名前空間に**ゾーン冗長性**を使用している場合は、次の追加手順を実行する必要があります。 
 
 1. まず、名前空間に対して nslookup を実行します。
 
@@ -76,6 +78,9 @@ Azure Service Bus でメッセージを送受信する場合、次のプロト�
     <name>-s3.cloudapp.net
     ```
 3. s1、s2、s3 のサフィックスが付いているそれぞれについて nslookup を実行し、3 つの可用性ゾーンで実行されている 3 つのインスタンスすべての IP アドレスを取得します。 
+
+    > [!NOTE]
+    > `nslookup` コマンドによって返された IP アドレスは、静的 IP アドレスではありません。 ただし、基になるデプロイが削除されるか別のクラスターに移動されるまでは変わりません。
 
 ### <a name="where-can-i-find-the-ip-address-of-the-client-sendingreceiving-messages-tofrom-a-namespace"></a>名前空間との間でメッセージを送受信するクライアントの IP アドレスはどこで確認できますか。 
 名前空間との間でメッセージを送受信しているクライアントの IP アドレスはログに記録されません。 すべての既存クライアントの認証が失敗するようにキーを再生成し、ロールベースのアクセス制御 ([RBAC](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)) の設定を確認して、許可されているユーザーまたはアプリケーションのみが名前空間にアクセスできることを確認します。 

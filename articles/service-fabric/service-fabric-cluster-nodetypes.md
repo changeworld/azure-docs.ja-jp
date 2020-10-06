@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 4efa8626e80cbd64cd6216faa1869d7210f32cf2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 870467760a2baaa887b06fb8e01335f225f04d6e
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261104"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561892"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric のノードの種類と仮想マシン スケール セット
 
@@ -32,7 +32,7 @@ Service Fabric ランタイムは、*Microsoft.Azure.ServiceFabric* 仮想マシ
 
 Azure Portal でクラスターをデプロイした場合、またはサンプル Azure Resource Manager テンプレートを使用した場合、リソース グループのすべてのリソースが一覧に表示されます。 また、各スケール セットまたはノードの種類のロード バランサーを確認できます。 ロード バランサー名には、次の形式が使用されます: **LB-&lt;ノードの種類の名前&gt;** 。 たとえば、次の図で示すように、LB-sfcluster4doc-0 などです。
 
-![リソース][Resources]
+![2 つのロード バランサーが強調表示されているリソース グループを表示するスクリーンショット。][Resources]
 
 ## <a name="service-fabric-virtual-machine-extension"></a>Service Fabric 仮想マシン拡張機能
 

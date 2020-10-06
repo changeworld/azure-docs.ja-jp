@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: ae2d91233df25885bdfd765481f4bb6a1a36da37
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 0111da00962f267387e66978952e8a7c9f5d7308
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958730"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970046"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Azure App Service のカスタム ドメイン名を購入する
 
@@ -51,7 +51,7 @@ App Service アプリの管理ページが表示されます。
 
 アプリの現在のレベルが青色の枠線で強調表示されます。 アプリが **F1** レベルに含まれていないことを確認します。 カスタム DNS は、**F1** レベルではサポートされていません。 
 
-![価格レベルの確認](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
+:::image type="content" source="./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png" alt-text="スケールアップ (App Service プラン) が選択されているアプリ ページの左側のナビゲーション メニューのスクリーンショット。":::
 
 App Service プランが **F1** レベルではない場合は、 **[スケール アップ]** ページを閉じて、「[ドメインを購入する](#buy-the-domain)」に進みます。
 
@@ -61,7 +61,7 @@ App Service プランが **F1** レベルではない場合は、 **[スケー�
 
 **[Apply]** をクリックします。
 
-![価格レベルの確認](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
+:::image type="content" source="./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png" alt-text="スケールアップ (App Service プラン) が選択されているアプリ ページの左側のナビゲーション メニューのスクリーンショット。":::
 
 次の通知が表示されたら、スケール操作は完了です。
 
