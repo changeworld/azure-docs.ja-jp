@@ -2,15 +2,18 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 08/17/2020
-ms.openlocfilehash: 918ac54836adf6ad12934d7e30cf88f2786e1fba
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.date: 09/15/2020
+ms.openlocfilehash: 481c0d85420ab2cc57f5636ed1862a525ace553b
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508558"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604982"
 ---
-この記事では、Custom Vision クライアント ライブラリと Go を使用して画像分類モデルを構築する際の足がかりとして役立つ情報とサンプル コードを紹介します。 作成後は、タグの追加、画像のアップロード、プロジェクトのトレーニング、プロジェクトの公開された予測エンドポイント URL の取得、エンドポイントを使用したプログラミングによる画像のテストを行うことができます。 この例は、独自の Go アプリケーションを構築するためのテンプレートとしてご利用ください。 分類モデルの構築と使用のプロセスをコード "_なし_" で行う場合は、[ブラウザー ベースのガイダンス](../../getting-started-build-a-classifier.md)を参照してください。
+このガイドでは、Go 用の Custom Vision クライアント ライブラリを使用して画像分類モデルを構築する際の足がかりとして役立つ手順とサンプル コードを紹介します。 プロジェクトを作成し、タグを追加し、プロジェクトをトレーニングして、プロジェクトの予測エンドポイント URL を使用してプログラムでテストします。 この例は、独自の画像認識アプリを構築するためのテンプレートとしてご利用ください。
+
+> [!NOTE]
+> 分類モデルの構築と使用をコードを記述 "_することなく_" 行う場合は、[ブラウザーベースのガイダンス](../../getting-started-build-a-classifier.md)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -19,7 +22,7 @@ ms.locfileid: "88508558"
 
 ## <a name="install-the-custom-vision-client-library"></a>Custom Vision クライアント ライブラリをインストールする
 
-Go 用 Custom Vision Service クライアント ライブラリをインストールするには、PowerShell で次のコマンドを実行します。
+Go 用の Custom Vision で画像分析アプリを作成するには、Custom Vision のサービス クライアント ライブラリが必要です。 PowerShell で次のコマンドを実行します。
 
 ```shell
 go get -u github.com/Azure/azure-sdk-for-go/...
@@ -38,7 +41,7 @@ dep ensure -add github.com/Azure/azure-sdk-for-go
 
 目的のプロジェクト ディレクトリに、*sample.go* という新しいファイルを作成します。
 
-### <a name="create-the-custom-vision-service-project"></a>Custom Vision Service プロジェクトを作成する
+## <a name="create-the-custom-vision-project"></a>Custom Vision プロジェクトを作成する
 
 新しい Custom Vision Service プロジェクトを作成するための次のコードをスクリプトに追加します。 該当する各定義にサブスクリプション キーを挿入します。 また、Custom Vision Web サイトの [設定] ページからエンドポイント URL を取得します。
 
@@ -80,7 +83,7 @@ func main() {
     }
 ```
 
-### <a name="create-tags-in-the-project"></a>プロジェクトにタグを作成する
+## <a name="create-tags-in-the-project"></a>プロジェクトにタグを作成する
 
 プロジェクトに分類タグを作成するため、*sample.go* の最後に次のコードを追加します。
 
@@ -90,7 +93,7 @@ hemlockTag, _ := trainer.CreateTag(ctx, *project.ID, "Hemlock", "Hemlock tree ta
 cherryTag, _ := trainer.CreateTag(ctx, *project.ID, "Japanese Cherry", "Japanese cherry tree tag", string(training.Regular))
 ```
 
-### <a name="upload-and-tag-images"></a>画像をアップロードし、タグ付けする
+## <a name="upload-and-tag-images"></a>画像をアップロードし、タグ付けする
 
 サンプルの画像をプロジェクトに追加するには、タグ作成後、次のコードを挿入します。 このコードでは、それぞれの画像を対応するタグと共にアップロードします。 1 回のバッチで最大 64 個の画像をアップロードできます。
 
@@ -123,7 +126,7 @@ for _, file := range japaneseCherryImages {
 }
 ```
 
-### <a name="train-the-classifier-and-publish"></a>分類器をトレーニングしてする公開する
+## <a name="train-and-publish-the-project"></a>プロジェクトをトレーニングして公開する
 
 このコードにより、予測モデルの最初のイテレーションが作成され、そのイテレーションが予測エンドポイントに公開されます。 公開されたイテレーションに付けられた名前は、予測要求を送信するために使用できます。 イテレーションは、公開されるまで予測エンドポイントで利用できません。
 
@@ -143,7 +146,7 @@ fmt.Println("Training status: " + *iteration.Status)
 trainer.PublishIteration(ctx, *project.ID, *iteration.ID, iteration_publish_name, prediction_resource_id))
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>予測エンドポイントで公開されたイテレーションを取得して使用する
+## <a name="use-the-prediction-endpoint"></a>予測エンドポイントを使用する
 
 画像を予測エンドポイントに送信し、予測を取得するには、ファイルの末尾に以下のコードを追加します。
 
@@ -194,3 +197,7 @@ Done!
 
 > [!div class="nextstepaction"]
 > [モデルのテストと再トレーニング](../../test-your-model.md)
+
+* Custom Vision とは
+* [SDK のリファレンス ドキュメント (トレーニング)](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training)
+* [SDK のリファレンス ドキュメント (予測)](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction)

@@ -2,22 +2,40 @@
 title: 認証、要求、応答
 description: Azure Key Vault で JSON 形式の要求と応答が使用されるしくみとキー コンテナーを使用するために必要な認証について説明します。
 services: key-vault
-author: msmbaldwin
-manager: rkarlin
+author: amitbapat
+manager: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.date: 01/07/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 2b4c8ad666efa32d98e78a0bc2544d0f8851be5e
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.date: 09/15/2020
+ms.author: ambapat
+ms.openlocfilehash: 2100572c0bcf5bf65fe5a70ab9e552c2d7f72934
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191796"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983259"
 ---
 # <a name="authentication-requests-and-responses"></a>認証、要求、応答
+
+Azure Key Vault には、クラウド アプリケーションのシークレットを格納および管理するための 2 種類のコンテナーが用意されています。
+
+|コンテナーの種類|サポートされているオブジェクトの種類|データ プレーン エンドポイント|
+|--|--|--|
+| **資格情報コンテナー**|<ul><li>ソフトウェアで保護されたキー</li><li>HSM で保護されたキー (Premium SKU を使用)</li><li>証明書</li><li>ストレージ アカウント キー</li></ul> | https://{vault-name}.vault.azure.net
+|**Managed HSM** |<ul><li>HSM で保護されたキー</li></ul> | https://{hsm-name}.managedhsm.azure.net
+
+各種類のオブジェクトにアクセスするために使用される URL サフィックスは次のとおりです。
+
+|オブジェクトの種類|[URL suffix]\(URL サフィックス\)|
+|--|--|
+|ソフトウェアで保護されたキー| /keys |
+|HSM で保護されたキー| /keys |
+|シークレット|/secrets|
+|証明書| /certificates|
+|ストレージ アカウント キー|/storageaccounts
+||
 
 Azure Key Vault は、JSON 形式の要求と応答をサポートします。 Azure Key Vault に対する要求は、HTTPS を使用し、いくつかの URL パラメーターと JSON でエンコードされた要求および応答の本文を含んで、有効な Azure Key Vault の URL に送られます。
 
@@ -36,7 +54,9 @@ Azure Key Vault は、JSON 形式の要求と応答をサポートします。 A
 
 - Key Vault の TESTKEY という名前のキーを使用するダイジェストに署名する (SIGN) ときに使う URL - `POST /keys/TESTKEY/sign?api-version=<api_version> HTTP/1.1`  
 
-  Key Vault への要求に対する権限は常に、`https://{keyvault-name}.vault.azure.net/` です  
+- Key Vault への要求に対する権限は常に、 です
+  - コンテナーの場合: `https://{keyvault-name}.vault.azure.net/`
+  - マネージド HSM の場合: `https://{HSM-name}.managedhsm.azure.net/`
 
   キーは常に /keys パスの下に格納され、シークレットは常に /secrets パスの下に格納されます。  
 

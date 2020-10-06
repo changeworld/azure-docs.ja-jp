@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 468bd838237e076aacb9dee0ccacfdcc1ea940af
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: c7f4cba10117efef4099b3524b49cae313593a9a
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629118"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442716"
 ---
 # <a name="bulk-copy-from-files-to-database"></a>ファイルからデータベースへの一括コピー
 
@@ -55,7 +55,7 @@ ms.locfileid: "82629118"
     ![パイプラインのレビュー](media/solution-template-bulk-copy-from-files-to-database/new-pipeline.png)
 
     > [!NOTE]
-    > 前述の **手順 2** のデータのコピー先として **Azure Synapse Analytics (旧称 SQL DW)** を選択した場合、SQL Data Warehouse Polybase で必要とされる、ステージングのための Azure BLOB ストレージへの接続を入力する必要があります。 次のスクリーンショットに示すように、このテンプレートは BLOB ストレージの "*ストレージ パス*" を自動的に生成します。 パイプラインの実行後、コンテナーが作成されているかどうかを確認してください。
+    > 前述の **手順 2** のデータのコピー先として **Azure Synapse Analytics (旧称 SQL DW)** を選択した場合、Azure Synapse Analytics (旧称 SQL Data Warehouse) Polybase で必要とされる、ステージングのための Azure Blob Storage への接続を入力する必要があります。 次のスクリーンショットに示すように、このテンプレートは BLOB ストレージの "*ストレージ パス*" を自動的に生成します。 パイプラインの実行後、コンテナーが作成されているかどうかを確認してください。
         
     ![Polybase 設定](media/solution-template-bulk-copy-from-files-to-database/staging-account.png)
 

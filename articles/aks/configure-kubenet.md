@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: f9bc0cd229888d952821509ced6cc5410000ee52
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 6f773f57bea40ba87f35ca2bbefe424d084afb2e
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078726"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462141"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の独自の IP アドレス範囲で kubenet ネットワークを使用する
 
@@ -24,7 +24,7 @@ ms.locfileid: "89078726"
 
 * AKS クラスターの仮想ネットワークでは、送信インターネット接続を許可する必要があります。
 * 同じサブネット内に複数の AKS クラスターを作成しないでください。
-* AKS クラスターでは、Kubernetes サービスのアドレス範囲に `169.254.0.0/16`、`172.30.0.0/16`、`172.31.0.0/16`、`192.0.2.0/24` は使用できません。
+* AKS クラスターでは、Kubernetes サービスのアドレス範囲、ポッド アドレス範囲、またはクラスターの仮想ネットワーク アドレス範囲に `169.254.0.0/16`、`172.30.0.0/16`、`172.31.0.0/16`、`192.0.2.0/24` を使用することはできません。
 * AKS クラスターで使用されるサービス プリンシパルには、少なくとも、ご利用の仮想ネットワーク内のサブネットに対する[ネットワーク共同作成者](../role-based-access-control/built-in-roles.md#network-contributor)ロールが必要です。 また、サービス プリンシパルを作成してアクセス許可を割り当てるには、サブスクリプション所有者などの適切なアクセス許可が必要です。 組み込みのネットワークの共同作成者ロールを使用する代わりに、[カスタム ロール](../role-based-access-control/custom-roles.md)を定義する場合は、次のアクセス許可が必要です。
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`

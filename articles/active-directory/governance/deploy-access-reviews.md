@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7eb39f1053abeb201c413db7c6bbd3e9f261bd95
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7154bc1f033806d359726cff8ed227f2219559ec
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011346"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89461036"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Azure Active Directory アクセス レビューのデプロイの計画
 
@@ -93,7 +93,7 @@ ms.locfileid: "89011346"
 
 * **IT 管理**は、IT インフラストラクチャ、クラウドへの投資、サービスとしてのソフトウェア (SaaS) アプリを管理します。 このチームは次のことを行います。
 
-   * Office 365 や Azure AD などのインフラストラクチャとアプリへの特権アクセスをレビューします。
+   * Microsoft 365 や Azure AD などのインフラストラクチャとアプリへの特権アクセスをレビューします。
 
    * 例外リストまたは IT パイロット プロジェクトの管理に使用するアクセス レビューをグループに対してスケジュールおよび実行し、最新のアクセス リストを管理します。
 
@@ -180,7 +180,7 @@ ms.locfileid: "89011346"
 
 * [シングル サインオンのために Azure AD と統合されたアプリケーション](../manage-apps/what-is-application-management.md) (SaaS、基幹業務など)。
 
-* グループ [メンバーシップ](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) (Azure AD と同期されるか、Azure AD または Office 365 (Microsoft Teams を含む) で作成されるもの)。
+* グループ [メンバーシップ](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) (Azure AD と同期されるか、Azure AD または Microsoft 365 (Microsoft Teams を含む) で作成されるもの)。
 
 * リソース (グループ、アプリ、サイト) を 1 つのパッケージにグループ化してアクセスを管理する[アクセス パッケージ](/azure/active-directory/governance/entitlement-management-overview)。
 
@@ -304,7 +304,7 @@ ms.locfileid: "89011346"
 
 ## <a name="plan-access-reviews-for-groups"></a>グループのアクセス レビューを計画する
 
-アクセス パッケージに加えて、グループ メンバーシップのレビューは、アクセスを管理する最も効果的な方法です。 リソースへのアクセスは[セキュリティ グループまたは Office 365 グループ](../fundamentals/active-directory-manage-groups.md)を介して割り当てること、および、ユーザーをそれらのグループに追加してアクセス権を付与することを推奨します。
+アクセス パッケージに加えて、グループ メンバーシップのレビューは、アクセスを管理する最も効果的な方法です。 リソースへのアクセスは[セキュリティ グループまたは Microsoft 365 グループ](../fundamentals/active-directory-manage-groups.md)を介して割り当てること、およびユーザーをそれらのグループに追加してアクセス権を付与することを推奨します。
 
 1 つのグループに、すべての適切なリソースへのアクセスを許可できます。 グループ アクセスは、個々のリソースに、またはアプリケーションと他のリソースをグループ化するアクセス パッケージに割り当てることができます。 この方法では、各アプリケーションへの個人のアクセスではなくグループへのアクセスをレビューできます。 
 
@@ -322,9 +322,9 @@ ms.locfileid: "89011346"
 
 メンバーシップのレビューは、アクセスが必要なユーザーを最もよく知る立場にあるグループの所有者が行うことを推奨します。 グループの所有権は、グループの種類によって異なります。
 
-Office 365 および Azure AD で作成されたグループには、明確に定義された 1 人以上の所有者がいます。 ほとんどの場合、これらの所有者は、どのユーザーにアクセス権を付与するのが適切であるかを知っているため、グループのレビュー担当者として最適です。 
+Microsoft 365 と Azure AD で作成されたグループには、明確に定義された 1 人以上の所有者がいます。 ほとんどの場合、これらの所有者は、どのユーザーにアクセス権を付与するのが適切であるかを知っているため、グループのレビュー担当者として最適です。 
 
-たとえば、Microsoft Teams では、基になる承認モデルとして Office 365 グループを使用して、SharePoint、Exchange、OneNote、またはその他の Office 365 サービスにあるリソースへのアクセスをユーザーに許可します。 チームの作成者は自動的に所有者になり、そのグループのメンバーシップを証明する責任を負います。 
+たとえば、Microsoft Teams では、基になる承認モデルとして Microsoft 365 グループを使用して、SharePoint、Exchange、OneNote、またはその他の Microsoft 365 サービスにあるリソースへのアクセスがユーザーに許可されます。 チームの作成者は自動的に所有者になり、そのグループのメンバーシップを証明する責任を負います。 
 
 Azure AD ポータルで手動で、または Microsoft Graph 経由でスクリプトによって作成されたグループには、所有者が定義されていない場合があります。 Azure AD ポータルでグループの [所有者] セクションから、または Graph から所有者を定義することを推奨します。
 
@@ -403,7 +403,7 @@ Azure AD ポータルで手動で、または Microsoft Graph 経由でスクリ
 
 * セキュリティ管理者
 
-* すべての Office 365 および Dynamics のサービス管理ロール
+* すべての Microsoft 365 と Dynamics のサービス管理ロール
 
 ここで選択するロールには、永続的なロールと資格のあるロールが含まれます。 
 

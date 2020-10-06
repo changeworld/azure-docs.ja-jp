@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: b45a0608d78330eafd6afc3656f8a4addbdffd3b
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 178c54b9726f21775603d67cb0911237aa4caf01
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321720"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601366"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory の認証管理の運用リファレンス ガイド
 
@@ -95,7 +95,7 @@ Azure Active Directory を管理するには、ロールアウト プロジェ�
 
 ### <a name="on-premises-outage-authentication-resiliency"></a>オンプレミスの停止に対する認証の回復性
 
-Azure AD のパスワード ハッシュ同期 (PHS) と Azure MFA を使用すると、よりシンプルで、漏洩した資格情報の検出が可能になるだけでなく、[NotPetya](https://www.microsoft.com/security/blog/2018/02/05/overview-of-petya-a-rapid-cyberattack/) などのサイバー攻撃によってオンプレミスの停止が発生しても、ユーザーが SaaS アプリケーションや Office 365 にアクセスできるようになります。 また、フェデレーションと組み合わせると、PHS を有効にすることもできます。 PHS を有効にすると、フェデレーション サービスが使用できない場合に認証のフォールバックが可能になります。
+Azure AD のパスワード ハッシュ同期 (PHS) と Azure MFA を使用すると、よりシンプルで、漏洩した資格情報の検出が可能になるだけでなく、[NotPetya](https://www.microsoft.com/security/blog/2018/02/05/overview-of-petya-a-rapid-cyberattack/) などのサイバー攻撃によってオンプレミスの停止が発生しても、ユーザーが SaaS アプリケーションや Microsoft 365 にアクセスできるようになります。 また、フェデレーションと組み合わせると、PHS を有効にすることもできます。 PHS を有効にすると、フェデレーション サービスが使用できない場合に認証のフォールバックが可能になります。
 
 オンプレミスの組織に障害回復戦略がない場合や、Azure AD と統合されていない場合は、Azure AD PHS をデプロイし、PHS を含むディザスター リカバリー計画を定義する必要があります。 Azure AD PHS を有効にすると、オンプレミスの Active Directory が使用できない場合に、ユーザーが Azure AD に対して認証を行うことができるようになります。
 
@@ -119,7 +119,7 @@ PowerShell を使用する Azure AD スクリプトや Microsoft Graph API を�
 
 ### <a name="device-trust-access-policies"></a>デバイスの信頼のアクセス ポリシー
 
-組織内のユーザーと同様、デバイスは保護対象となる主要なアイデンティティです。 デバイスの ID を使用して、いつでもどこからでもリソースを保護できます。 デバイスを認証し、その信頼の種類を考慮することで、次のようなセキュリティ体制と使用可能性が向上します。
+組織内のユーザーと同様、デバイスは保護対象となる主要なアイデンティティです。 デバイスの ID を使用して、いつでもどこからでもリソースを保護できます。 デバイスを認証し、その信頼の種類を考慮することで、次のようなセキュリティ体制と使用可能性が向上します。
 
 - デバイスが信頼されている場合に、MFA などを使用して障害を回避する
 - 信頼されていないデバイスからのアクセスをブロックする
@@ -249,7 +249,7 @@ Microsoft Intune アプリケーション管理 (MAM) を使用すると、ス�
 - 複数のアプリケーションに適用できる重要なポリシーの小さいセットを用意します
 - 空の例外グループを定義し、それらをポリシーに追加して例外戦略を設定します
 - MFA 制御を使用しない[緊急用](../users-groups-roles/directory-admin-roles-secure.md#break-glass-what-to-do-in-an-emergency)アカウントを計画します
-- Exchange Online や Sharepoint Online などのサービスに対して同じ一連の制御を実装することで、Office 365 クライアント アプリケーション (たとえば、Teams、OneDrive for Business、Outlook など) で一貫したエクスペリエンスを確保します
+- Exchange Online や Sharepoint Online などのサービスに対して同じ一連の制御を実装することで、Microsoft 365 クライアント アプリケーション (たとえば、Teams、OneDrive、Outlook など) で一貫したエクスペリエンスを確保します
 - ポリシーへの割り当ては、個人ではなくグループを使用して実装する必要があります
 - ポリシーで使用されている例外グループを定期的にレビューして、ユーザーがセキュリティ体制外にある時間を制限します。 Azure AD P2 を所有している場合は、アクセス レビューを使用してプロセスを自動化できます
 
@@ -302,7 +302,7 @@ MFA などの強力な資格情報は、レガシ認証プロトコルを使用�
 
 | リソース | 権限 |
 | :- | :- |
-| Office 365 Exchange Online | EAS.AccessAsUser.All |
+| Exchange Online | EAS.AccessAsUser.All |
 | | EWS.AccessAsUser.All |
 | | Mail.Read |
 | Microsoft Graph API | Mail.Read |
@@ -339,7 +339,7 @@ MFA などの強力な資格情報は、レガシ認証プロトコルを使用�
 
 #### <a name="group-settings"></a>グループ設定
 
-**[セルフサービス グループ管理] / [ユーザーはセキュリティ グループを作成できます] / [O365 グループ]。** クラウドにグループの最新のセルフサービス イニシアチブがない場合は、この機能を使用する準備が整うまで、顧客はこのイニシアチブを無効にすることができます。
+**[セルフサービス グループ管理] / [ユーザーはセキュリティ グループを作成できます] / [Microsoft 365 グループ]。** クラウドにグループの最新のセルフサービス イニシアチブがない場合は、この機能を使用する準備が整うまで、顧客はこのイニシアチブを無効にすることができます。
 
 #### <a name="groups-recommended-reading"></a>グループに関する推奨資料
 

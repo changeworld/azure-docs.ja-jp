@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
-ms.openlocfilehash: a8509797e78b70a60ffad4ba01d5a936f8b76f97
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: f49377743521e27c2312e95491762ca48d8448c4
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322298"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604327"
 ---
 # <a name="manage-user-assignment-for-an-app-in-azure-active-directory"></a>Azure Active Directory のアプリに対するユーザー割り当ての管理
 
@@ -28,7 +28,7 @@ ms.locfileid: "89322298"
 > グループをアプリケーションに割り当てると、そのグループ内のユーザーのみがアクセスできるようになります。 割り当ては、入れ子になったグループにはカスケードされません。
 
 > [!NOTE]
-> グループベースの割り当てには、Azure Active Directory Premium P1 または P2 エディションが必要です。 グループ ベースの割り当てがサポートされるのはセキュリティ グループのみです。 入れ子になったグループ メンバーシップと Office 365 グループは、現在サポートされていません。 この記事で説明されている機能に必要なライセンスの詳細については、[Azure Active Directory の価格のページ](https://azure.microsoft.com/pricing/details/active-directory)を参照してください。 
+> グループベースの割り当てには、Azure Active Directory Premium P1 または P2 エディションが必要です。 グループ ベースの割り当てがサポートされるのはセキュリティ グループのみです。 入れ子になったグループ メンバーシップと Microsoft 365 グループは、現在サポートされていません。 この記事で説明されている機能に必要なライセンスの詳細については、[Azure Active Directory の価格のページ](https://azure.microsoft.com/pricing/details/active-directory)を参照してください。 
 
 ## <a name="configure-an-application-to-require-user-assignment"></a>ユーザー割り当てを要求するようにアプリケーションを構成する
 
@@ -55,7 +55,10 @@ ms.locfileid: "89322298"
 6. 画面上部にある **[保存]** ボタンを選択します。
 
 ## <a name="assign-or-unassign-users-and-groups-for-an-app-using-the-azure-portal"></a>Azure portal を使用して、アプリに対してユーザーとグループの割り当ておよび割り当て解除を行う
-Azure portal を使用してユーザーまたはグループの割り当てまたは割り当て解除を行う方法については、[アプリケーション管理に関するクイック スタート シリーズ](add-application-portal-assign-users.md)を参照してください。 
+Azure portal を使用してユーザーまたはグループの割り当てまたは割り当て解除を行う方法については、[アプリケーション管理に関するクイック スタート シリーズ](add-application-portal-assign-users.md)を参照してください。
+
+## <a name="assign-or-unassign-users-and-groups-for-an-app-using-the-graph-api"></a>Graph API を使用して、アプリに対してユーザーとグループの割り当ておよび割り当て解除を行う
+Graph API を使用して、アプリのユーザーとグループを割り当てたり、割り当てを解除したりすることができます。 詳細については、「[アプリの役割の割り当て](https://docs.microsoft.com/graph/api/resources/approleassignment)」を参照してください。
 
 ## <a name="assign-users-and-groups-to-an-app-using-powershell"></a>PowerShell を使用してアプリに対してユーザーとグループを割り当てる
 1. 管理者特権での Windows PowerShell コマンド プロンプトを開きます。

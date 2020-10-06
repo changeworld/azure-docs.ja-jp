@@ -3,12 +3,12 @@ title: Azure Resource Health でサポートされるリソースの種類 |Micr
 description: Azure Resource Health でサポートされるリソースの種類
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: d797b9fb9b843f114e01820fa666e56749c7983f
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 9aedc115a29f11d4d54715d51bb6231ea1ea9e03
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230162"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660658"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure Resource Health で利用できるリソースの種類と正常性チェック
 Resource Health で実行されるすべてのチェックをリソースの種類別にまとめた完全な一覧を次に示します。
@@ -51,7 +51,7 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 ## <a name="microsoftclassiccomputedomainnames"></a>Microsoft.classiccompute/domainnames
 |実行されるチェック|
 |---|
-|<ul><li>運用スロットのデプロイがすべてのロール インスタンスで正常に実行されているかどうか</li><li>すべての VM インスタンスでロールが正常であるかどうか</li><li>クラウド サービスのロール内の各 VM の正常性状態はどうなっているか</li><li>プラットフォームまたは顧客が開始した操作により、VM の状態が変化したかどうか</li><li>ゲスト OS の起動が完了しているか</li><li>進行中の定期的なメンテナンスはあるか</li><li>ホストのハードウェアの機能が低下し、すぐに障害が起きると予測されるか</li></ul>|
+|<ul><li>運用スロットのデプロイがすべてのロール インスタンスで正常に実行されているかどうか</li><li>すべての VM インスタンスでロールが正常であるかどうか</li><li>クラウド サービスのロール内の各 VM の正常性状態はどうなっているか</li><li>プラットフォームまたは顧客が開始した操作により、VM の状態が変化したかどうか</li><li>ゲスト OS の起動が完了しているか</li><li>進行中の定期的なメンテナンスはあるか</li><li>ホストのハードウェアの機能が低下し、すぐに障害が起きると予測されるか</li><li>実行されるチェックの[詳細](https://docs.microsoft.com/azure/cloud-services/resource-health-for-cloud-services)</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.cognitiveservices/accounts
 |実行されるチェック|

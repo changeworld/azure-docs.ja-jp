@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: msjogarrig
 ms.author: jogarrig
 ms.date: 04/22/2020
-ms.openlocfilehash: c66682a7f457612b0ea77b90cc98ec1e6b4a85e9
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: c4be1c7eec9572d284d70823d270dafe5569ab14
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322264"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484223"
 ---
 # <a name="publishing-guide-for-azure-applications-solution-template-offers"></a>Azure アプリケーション ソリューション テンプレート プランの発行ガイド
 
@@ -23,7 +23,7 @@ ms.locfileid: "89322264"
 - ソリューションで、仮想マシン (VM)、ネットワーク、およびストレージ リソースの組み合わせなど、単一の VM を超える追加のデプロイと構成の自動化が必要となる。
 - 顧客がソリューションを自分で管理する。
 
-このプラン タイプについてユーザーに表示される行動喚起は、"*今すぐ入手する*" です。
+このプランの種類についてユーザーに表示される掲載オプションは、 *[今すぐ入手する]* です。
 
 ## <a name="requirements-for-solution-template-offers"></a>ソリューション テンプレート プランの要件
 

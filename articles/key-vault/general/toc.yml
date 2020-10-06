@@ -100,6 +100,8 @@
           href: rbac-migration.md
         - name: アクセスに関する問題のトラブルシューティング
           href: troubleshooting-access-issues.md
+    - name: ログ記録を有効にする方法
+      href: howto-logging.md
     - name: 開発
       items:
         - name: Azure Key Vault 開発者ガイド

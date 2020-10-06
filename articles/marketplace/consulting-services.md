@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.openlocfilehash: afcca913b8a9c8fb31fa6e18d0570aebd68b8ef3
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 9745dce03d87b447dfd606f021891794cb343593
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814724"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89419756"
 ---
 # <a name="consulting-service-offers"></a>コンサルティング サービス オファー
 
@@ -22,16 +22,16 @@ ms.locfileid: "88814724"
 
 ## <a name="compare-consulting-services"></a>コンサルティング サービスの比較
 
-コマーシャル マーケットプレースのオンライン ストア (Microsoft AppSource および Azure Marketplace) は、対象ユーザーやクラウド製品に合わせたものであり、顧客が必要なものを見つけるのに役立ちます。 各オンライン ストアには、公開による投資を最大限に活かすための特別な公開オプションが用意されています。 2 つのオンライン ストアの違いの詳細については、「[Microsoft AppSource と Azure Marketplace の比較](comparing-appsource-azure-marketplace.md)」を参照してください。
+コマーシャル マーケットプレースのオンライン ストア (Microsoft AppSource および Azure Marketplace) は、ソリューションの種類やクラウド製品に合わせたものであり、顧客が必要なものを見つけるのに役立ちます。 各オンライン ストアには、公開による投資を最大限に活かすための特別な公開オプションが用意されています。 2 つのオンライン ストアの違いの詳細については、「[Microsoft AppSource と Azure Marketplace の比較](comparing-appsource-azure-marketplace.md)」を参照してください。
 
 Dynamics 365、Power Apps、Power BI に基づくコンサルティング サービス オファーは、AppSource に掲載される資格があります。 詳細については、[Microsoft AppSource のコンサルティング サービスの掲載に関するガイドライン](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409) PDF ファイルをダウンロードしてください。
 
 Microsoft Azure に基づくコンサルティング サービスおよび管理サービスのオファーは、Azure Marketplace に掲載される資格があります。 詳細については、[Azure コンサルティング サービス オファーの公開](./partner-center-portal/create-consulting-service-offer.md)に関する記事と「[Azure Marketplace にマネージド サービス オファーを発行する](../lighthouse/how-to/publish-managed-services-offers.md)」を参照してください。
 
 > [!Note]
-> Azure Marketplace のコンサルティング サービスは、技術者向けのオファーに焦点を当て、Azure の技術的なソリューションとサービスに重点を置く必要があります。
+> Azure Marketplace のコンサルティング サービスでは、Azure の技術的なソリューションとサービスに重点を置く必要があります。
 >
-> AppSource のコンサルティング サービスは、Dynamics 365、Power BI、または Power Apps 用の高品質なソリューションの提供に関する専門知識を持つユーザーを対象とするオファーに焦点を当てる必要があります。
+> AppSource のコンサルティング サービスでは、Dynamics 365、Power BI、または Power Apps 用のビジネス ソリューションに焦点を当てる必要があります。
  
 > [!TIP]
 > Azure Marketplace に公開するには、パートナー センターの **[主要な製品]** ドロップダウン リストから **[Azure]** を選択します。
@@ -131,7 +131,7 @@ Microsoft AppSource および Azure Marketplace へのコンサルティング �
 > * **直接会う** – 顧客の場所またはパートナーの施設でのオンサイト。
 > * **仮想** – テレビ会議、Web 会議、またはリモート実装の使用。
 
-前述の必須要素を構成したら、コンテンツのレビュー チームが、オファーの説明が対象ユーザーに対して完全で必要な情報を提供するものであるかを検証します。 
+前述の必須要素を構成したら、コンテンツのレビュー チームが、オファーの説明が完全で必要な情報を提供するものであることを検証します。 
 
 ### <a name="the-listing-title"></a>掲載のタイトル
 
@@ -171,9 +171,5 @@ Markdown のヒントを次に示します。
 
 ## <a name="next-steps"></a>次のステップ
 
-まだ行っていない場合は、[Azure Marketplace を使用してクラウド ビジネスを拡大する](https://azuremarketplace.microsoft.com/sell)方法について学習します。
-
-パートナー センターで登録して作業を開始するには、次のようにします。
-
-* [パートナー センターにサインイン](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)し、オファーを作成するか完成させます。
-* 詳細については、「[コンサルティング サービス オファーを作成する](./partner-center-portal/create-consulting-service-offer.md)」を参照してください。
+- [Azure Marketplace でのビジネスの拡大](https://azuremarketplace.microsoft.com/sell)
+- [コンサルティング サービス オファーの作成](./partner-center-portal/create-consulting-service-offer.md)

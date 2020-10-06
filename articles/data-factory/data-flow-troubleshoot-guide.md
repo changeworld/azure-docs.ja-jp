@@ -1,25 +1,25 @@
 ---
-title: データ フローのトラブルシューティング
+title: マッピング データ フローのトラブルシューティング
 description: Azure Data Factory でのデータ フローに関する問題のトラブルシューティングを行う方法について説明します。
 services: data-factory
 ms.author: makromer
 author: kromerm
-manager: anandsub
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 08/16/2020
-ms.openlocfilehash: 0a691b562ebf030712eb0c13a688ea9a52fdb164
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.date: 09/11/2020
+ms.openlocfilehash: e52432c01e649754116fcd0420fa52ae6c4e3733
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263471"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031859"
 ---
-# <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Azure Data Factory でのデータ フローのトラブルシューティング
+# <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory でマッピング データ フローをトラブルシューティングする
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-この記事では、Azure Data Factory のデータ フローの一般的なトラブルシューティング方法について説明します。
+この記事では、Azure Data Factory でマッピング データ フローのための一般的なトラブルシューティング方法について説明します。
 
 ## <a name="common-errors-and-messages"></a>一般的なエラーとメッセージ
 
@@ -31,7 +31,7 @@ ms.locfileid: "88263471"
 ### <a name="error-code-df-executor-systemimplicitcartesian"></a>エラー コード:DF-Executor-SystemImplicitCartesian
 
 - **メッセージ**:INNER join では暗黙的なデカルト積はサポートされていません。代わりに CROSS JOIN を使用してください。 結合で使用される列は、行に対して一意のキーを作成する必要があります。
-- **原因**:論理プラン間の INNER join では暗黙的なデカルト積はサポートされていません。 結合で使用される列が一意のキーを作成する場合は、リレーションシップの両側から少なくとも 1 つの列が必要です。
+- **原因**:論理プラン間の INNER join では暗黙的なデカルト積はサポートされていません。 結合で使用される列によって一意のキーが作成される場合は、リレーションシップの両側から少なくとも 1 つの列が必要になります。
 - **推奨事項**:非等値ベースの結合では、CUSTOM CROSS JOIN を選択する必要があります。
 
 ### <a name="error-code-df-executor-systeminvalidjson"></a>エラー コード:DF-Executor-SystemInvalidJson
@@ -43,8 +43,10 @@ ms.locfileid: "88263471"
 ### <a name="error-code-df-executor-broadcasttimeout"></a>エラー コード:DF-Executor-BroadcastTimeout
 
 - **メッセージ**:ブロードキャスト結合のタイムアウトエラーが発生しました。ブロードキャスト ストリームが、デバッグ実行では 60 秒以内に、ジョブ実行では 300 秒以内にデータを生成することを確認してください
-- **原因**:ブロードキャストの既定のタイムアウトは、デバッグ実行では 60 秒、ジョブ実行では 300 秒です。 ブロードキャスト用に選択されたストリームは、この制限内にデータを生成するには大きすぎると思われます。
-- **推奨事項**:データ フロー変換の [最適化] タブで、結合、存在、および参照を確認します。 [Broadcast]\(ブロードキャスト\) の既定のオプションは "Auto" (自動) です。 これが設定されている場合、または "Fixed" (固定) で右側または左側でブロードキャストするよう手動で設定している場合は、より大きな Azure Integration Runtime 構成を設定するか、ブロードキャストをオフにすることができます。 データ フローで最適なパフォーマンスを得るための推奨されるアプローチは、"Auto" (自動) を使用して Spark がブロードキャストできるよう許可し、メモリ最適化 Azure IR を使用できるようにすることです。
+- **原因**:ブロードキャストの既定のタイムアウトは、デバッグ実行では 60 秒、ジョブ実行では 300 秒です。 ブロードキャスト用に選択されたストリームは、この制限内にデータを生成するには大きすぎると考えられます。
+- **推奨事項**:データ フロー変換の [最適化] タブで、結合、存在、および参照を確認します。 [Broadcast]\(ブロードキャスト\) の既定のオプションは "Auto" (自動) です。 "Auto" (自動) が設定されている場合、または "Fixed" (固定) 下の左側または右側でブロードキャストするように手動で設定している場合は、より大きな Azure Integration Runtime 構成を設定するか、ブロードキャストをオフにすることができます。 データ フローで最適なパフォーマンスを得るための推奨されるアプローチは、"Auto" (自動) を使用して Spark がブロードキャストできるよう許可し、メモリ最適化 Azure IR を使用できるようにすることです。
+
+デバッグ パイプライン実行からのデバッグ テスト実行でデータ フローを実行している場合、この条件がより頻繁に実行されることがあります。 これは、より高速のデバッグ エクスペリエンスを維持するために、ADF によってブロードキャスト タイムアウトが 60 秒に調整されるためです。 トリガーされた実行から 300 秒のタイムアウトまで拡張する場合は、[デバッグ] > [Use Activity Runtime]\(アクティビティ ランタイムを使用する\) オプションを使用して、データ フローの実行パイプライン アクティビティで定義された Azure IR を活用できます。
 
 ### <a name="error-code-df-executor-conversion"></a>エラー コード:DF-Executor-Conversion
 
@@ -57,6 +59,46 @@ ms.locfileid: "88263471"
 - **メッセージ**:クエリに列名を指定する必要があります。SQL 関数を使用している場合は別名を設定してください
 - **原因**:列名が指定されていませんでした
 - **推奨事項**:min()/max() などの SQL 関数を使用している場合は、別名を設定してください。
+
+ ### <a name="error-code-df-executor-drivererror"></a>エラー コード:DF-Executor-DriverError
+- **メッセージ**:INT96 は、ADF データフローではサポートされていない従来のタイムスタンプ型です。 列の型を最新の型にアップグレードすることを検討してください。
+- **原因**:ドライバー エラー
+- **推奨事項**:INT96 は、ADF データフローではサポートされていない従来のタイムスタンプ型です。 列の型を最新の型にアップグレードすることを検討してください。
+
+ ### <a name="error-code-df-executor-blockcountexceedslimiterror"></a>エラー コード:DF-Executor-BlockCountExceedsLimitError
+- **メッセージ**:コミット前のブロック数は、ブロックの上限である 100,000 個を超えることはできません。 BLOB 構成を確認してください。
+- **原因**:1 つの BLOB でのコミット前のブロックが、上限の 100,000 個になっている可能性があります。
+- **推奨事項**:Microsoft 製品チームに、この問題についての詳細をお問い合わせください
+
+ ### <a name="error-code-df-executor-partitiondirectoryerror"></a>エラー コード:DF-Executor-PartitionDirectoryError
+- **メッセージ**:指定されたソース パスに、複数のパーティション ディレクトリ (たとえば、<Source Path>/<パーティション ルート ディレクトリ 1>/a=10/b=20、<Source Path>/<パーティション ルート ディレクトリ 2>/c=10/d=30)、他のファイルを含むパーティション ディレクトリ、またはパーティション分割されていないディレクトリ (たとえば、<Source Path>/<パーティション ルート ディレクトリ 1>/a=10/b=20、<Source Path>/Directory 2/file1) のいずれかが含まれています。ソース パスからパーティション ルート ディレクトリを削除して、別個のソース変換を利用して読み取ってください。
+- **原因**:ソース パスに複数のパーティション ディレクトリ、他のファイルを含むパーティション ディレクトリ、またはパーティション分割されていないディレクトリのいずれかが含まれています。
+- **推奨事項**:パーティション ルート ディレクトリをソース パスから削除し、別個のソース変換を使用して読み取ってください。
+
+ ### <a name="error-code-df-executor-outofmemoryerror"></a>エラー コード:DF-Executor-OutOfMemoryError
+- **メッセージ**:実行中に、クラスターにメモリ不足の問題が発生しました。コア数がより大きく、メモリが最適化されたコンピューティングの種類で統合ランタイムを使用して、もう一度お試しください
+- **原因**:クラスターのメモリがメモリ不足しています
+- **推奨事項**:デバッグ クラスターは、開発を目的とするものではありません。 データ サンプリング、適切なコンピューティングの種類、およびサイズを利用して、ペイロードを実行します。 最適なパフォーマンスを実現するための調整については、[マッピング データ フローのパフォーマンス ガイド](concepts-data-flow-performance.md)を参照してください。
+
+ ### <a name="error-code-df-executor-illegalargument"></a>エラー コード:DF-Executor-illegalArgument
+- **メッセージ**:リンクされたサービスのアクセス キーが正しいことを確認してください
+- **原因**:アカウント名またはアクセス キーが正しくありません
+- **推奨事項**:リンクされたサービスで指定されたアカウント名またはアクセス キーが正しいことを確認してください。 
+
+ ### <a name="error-code-df-executor-invalidtype"></a>エラー コード:DF-Executor-InvalidType
+- **メッセージ**:パラメーターの型が、渡された値の型と一致していることを確認してください。 パイプラインからの float パラメーターの引き渡しは現在、サポートされていません。
+- **原因**:宣言された型と実際のパラメーター値の間のデータ型に、互換性がありません
+- **推奨事項**:データ フローに渡されたパラメーター値が、宣言された型と一致することを確認してください。
+
+ ### <a name="error-code-df-executor-columnunavailable"></a>エラー コード:DF-Executor-ColumnUnavailable
+- **メッセージ**:式に使用されている列名が利用できないか、または無効です
+- **原因**:式に使用されている列名が無効か、または利用できません
+- **推奨事項**:式に使用されている列名を確認してください
+
+ ### <a name="error-code-df-executor-parseerror"></a>エラー コード:DF-Executor-ParseError
+- **メッセージ**:式を解析できません
+- **原因**:書式設定が原因で、式の解析エラーが発生しています
+- **推奨事項**:式の形式を確認してください
 
 ### <a name="error-code-getcommand-outputasync-failed"></a>エラー コード:GetCommand OutputAsync に失敗しました
 

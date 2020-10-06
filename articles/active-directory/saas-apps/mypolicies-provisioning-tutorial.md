@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: ea9a0e52ce424459b6c402eb136d06dd370bab7d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fe85dfb39a9787376221cb9beeea11bec35293f4
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548046"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604463"
 ---
 # <a name="tutorial-configure-mypolicies-for-automatic-user-provisioning"></a>チュートリアル:myPolicies を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -101,7 +101,7 @@ Azure AD で自動ユーザー プロビジョニング用に myPolicies を構�
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[プロビジョニング] タブの [自動]](common/provisioning-automatic.png)
 
 5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://<myPoliciesCustomDomain>.mypolicies.com/scim`」と入力します。`<myPoliciesCustomDomain>` は自分の myPolicies のカスタム ドメインです。 myPolicies のカスタム ドメインは URL から取得できます
 (例: `<demo0-qa>`.mypolicies.com)。
@@ -122,11 +122,22 @@ Azure AD で自動ユーザー プロビジョニング用に myPolicies を構�
 
 10. **[属性マッピング]** セクションで、Azure AD から myPolicies に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で myPolicies のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![myPolicies のユーザー マッピング](media/mypolicies-provisioning-tutorial/userattribute.png)
+   |属性|Type|
+   |---|---|
+   |userName|String|
+   |active|Boolean|
+   |emails[type eq "work"].value|String|
+   |name.givenName|String|
+   |name.familyName|String|
+   |name.formatted|String|
+   |externalId|String|
+   |addresses[type eq "work"].country|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|リファレンス|
+
 
 11. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
-12. myPolicies に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+12. myPolicies に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
     ![プロビジョニングの状態を [オン] に切り替える](common/provisioning-toggle-on.png)
 
@@ -146,6 +157,10 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 
 * myPolicies では常に **userName**、**email**、**externalId** が必須です。
 * myPolicies では、ユーザー属性の物理的な削除はサポートされていません。
+
+## <a name="change-log"></a>ログの変更
+
+* 2020 年 9 月 15 日 - Users に "country" 属性のサポートを追加しました。
 
 ## <a name="additional-resources"></a>その他のリソース
 

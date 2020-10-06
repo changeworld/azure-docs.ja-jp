@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) を使用するときに発生する
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: a65e5e2b507f45fe51a8f6406edae4d96affe227
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 855e5e5e23371f600a7e73139f2e6da1eebc91d0
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056512"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90068831"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 
@@ -98,6 +98,10 @@ AKS には、サービス レベル目標 (SLO) とサービス レベル アグ
 
 API サーバーに接続するために、ポート 22、9000、および 1194 が開いていることを確認します。 `kubectl get pods --namespace kube-system` コマンドを使用して、`tunnelfront` または `aks-link` ポッドが *kube-system* 名前空間で実行されているかどうかを確認します。 そうでない場合は、ポッドを強制的に削除すると、再起動されます。
 
+## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>AKS API に接続するときに、クライアントから `"tls: client offered only unsupported versions"` を取得しています。   どうすればいいですか。
+
+AKS でサポートされる TLS の最小バージョンは TLS 1.2 です。
+
 ## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>アップグレードまたはスケーリングを行おうとすると、`"Changing property 'imageReference' is not allowed"` エラーが発生します。 この問題を解決するにはどうすればよいですか。
 
 AKS クラスター内のエージェント ノードのタグを変更したことが原因で、このエラーが発生している可能性があります。 MC_* リソース グループのリソースのタグやその他のプロパティを変更または削除すると、予期しない結果につながる可能性があります。 AKS クラスターの MC_* グループでリソースを変更すると、サービス レベル目標 (SLO) が中断されます。
@@ -176,9 +180,9 @@ AKS クラスターの作成時には、ユーザーに代わってリソース�
 * 自動化スクリプトを使用する場合は、サービス プリンシパルの作成と AKS クラスターの作成の間に遅延時間を追加します。
 * Azure portal を使用する場合は、作成中にクラスター設定に戻り、数分後に検証ページを再試行します。
 
+## <a name="im-getting-aadsts7000215-invalid-client-secret-is-provided-when-using-aks-api-what-should-i-do"></a>AKS API を使用するときに、`"AADSTS7000215: Invalid client secret is provided."` を取得しています。   どうすればいいですか。
 
-
-
+これは、通常、サービス プリンシパルの資格情報の有効期限が切れているためです。 [AKS クラスターの資格情報を更新してください。](update-credentials.md)
 
 ## <a name="im-receiving-errors-after-restricting-egress-traffic"></a>エグレス トラフィックを制限した後、エラーが表示されました
 
@@ -378,15 +382,15 @@ fixing permissions on existing directory /var/lib/postgresql/data
 
 多数の小さなファイルを処理する場合など、Azure ディスクと比較して Azure Files を使用すると待機時間が長くなることがあります。
 
-### <a name="error-when-enabling-allow-access-allow-access-from-selected-network-setting-on-storage-account"></a>ストレージアカウントの [Allow access from selected network]\(選択したネットワークからのアクセスを許可する\) 設定を有効にすると、エラーが発生する
+### <a name="error-when-enabling-allow-access-allow-access-from-selected-network-setting-on-storage-account"></a>ストレージアカウントの [Allow access from selected network]/(選択したネットワークからのアクセスを許可する/) 設定を有効にすると、エラーが発生する
 
-AKS で動的プロビジョニングに使用されるストレージ アカウントの *[Allow access from selected network]\(選択したネットワークからのアクセスを許可する\)* 設定を有効にすると、AKS がファイル共有を作成するときに次のエラーが表示されます。
+AKS で動的プロビジョニングに使用されるストレージ アカウントの *[Allow access from selected network]/(選択したネットワークからのアクセスを許可する/)* 設定を有効にすると、AKS がファイル共有を作成するときに次のエラーが表示されます。
 
 ```console
 persistentvolume-controller (combined from similar events): Failed to provision volume with StorageClass "azurefile": failed to create share kubernetes-dynamic-pvc-xxx in account xxx: failed to create file share, err: storage: service returned error: StatusCode=403, ErrorCode=AuthorizationFailure, ErrorMessage=This request is not authorized to perform this operation.
 ```
 
-このエラーは、 *[Allow access from selected network]\(選択したネットワークからのアクセスを許可する\)* の設定時に *Kubernetes persistentvolume-controller* が選択したネットワーク上に存在しないことが原因で発生します。
+このエラーは、 *[Allow access from selected network]/(選択したネットワークからのアクセスを許可する/)* の設定時に *Kubernetes persistentvolume-controller* が選択したネットワーク上に存在しないことが原因で発生します。
 
 [Azure Files で静的プロビジョニング](azure-files-volume.md)を使用することによって、この問題を軽減できます。
 
@@ -446,3 +450,15 @@ Kubernetes の **1.15.0 より古いバージョン**では、**WaitForAttach �
 <!-- LINKS - internal -->
 [view-master-logs]: view-master-logs.md
 [cluster-autoscaler]: cluster-autoscaler.md
+
+### <a name="why-do-upgrades-to-kubernetes-116-fail-when-using-node-labels-with-a-kubernetesio-prefix"></a>kubernetes.io プレフィックスでノード ラベルを使用すると、Kubernetes 1.16 へのアップグレードが失敗するのはなぜですか
+
+Kubernetes [1.16](https://v1-16.docs.kubernetes.io/docs/setup/release/notes/) では、kubelet でノードに適用できるのは、[kubernetes.io プレフィックスで定義されているラベルのサブセットのみ](https://github.com/kubernetes/enhancements/blob/master/keps/sig-auth/0000-20170814-bounding-self-labeling-kubelets.md#proposal)です。 AKS では、影響を受けるワークロードにダウンタイムが発生する可能性があるため、ユーザーの同意なしにアクティブなラベルを自動的に削除することはできません。
+
+そのため、次のようにしてこれを回避できます。
+
+1. クラスター コントロール プレーンを 1.16 以降にアップグレードします
+2. サポートされていない kubernetes.io ラベルを使用せずに、1.16 以降に新しい nodepoool を追加します
+3. 古い nodepool を削除します
+
+AKS により、この軽減策を改善するために、nodepool でアクティブなラベルを変化させる機能が調査されています。

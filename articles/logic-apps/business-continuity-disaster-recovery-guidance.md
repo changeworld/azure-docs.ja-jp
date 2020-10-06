@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: cc55b24c4852028eb1244e97b48415ba08420e20
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0a36cb468ebcb77c0614bffd0afc392df3655c20
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066536"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658210"
 ---
 # <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Azure Logic Apps の事業継続とディザスター リカバリー
 
@@ -69,7 +69,7 @@ ms.locfileid: "87066536"
 
 ## <a name="connections-to-resources"></a>リソースへの接続
 
-Azure Logic Apps には、[組み込みのトリガーとアクションに加えて、数百のマネージド コネクタ](../connectors/apis-list.md)が用意されています。ロジックアプリはこれらを使用して、他のアプリ、サービス、システムなどのリソース (Azure Storage アカウント、SQL Server データベース、Office 365 Outlook 電子メール アカウントなど) を利用することができ ます。 ロジック アプリがこれらのリソースへのアクセスを必要とする場合は、これらのリソースへのアクセスを認証する接続を作成します。 各接続は、特定の場所に存在する個別の Azure リソースのため、他の場所のリソースが使用することはできません。
+Azure Logic Apps には、[組み込みのトリガーとアクションに加えて、数百のマネージド コネクタ](../connectors/apis-list.md)が用意されています。ロジック アプリはこれらを使用して、他のアプリ、サービス、システムなどのリソース (Azure Storage アカウント、SQL Server データベース、職場または学校の電子メール アカウントなど) を利用することができ ます。 ロジック アプリがこれらのリソースへのアクセスを必要とする場合は、これらのリソースへのアクセスを認証する接続を作成します。 各接続は、特定の場所に存在する個別の Azure リソースのため、他の場所のリソースが使用することはできません。
 
 ディザスター リカバリー戦略では、ロジック アプリのインスタンスに関連する依存リソースが存在する場所について検討してください。
 

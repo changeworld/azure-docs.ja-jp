@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d957da572bfdd3119dda506ac8f5bb42064d7758
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a488e2499b92b290ad2b55120c3c70a18d45d426
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020305"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613932"
 ---
 # <a name="components"></a>コンポーネント
 
@@ -53,7 +53,6 @@ lightComponent->Destroy();
 lightComponent = nullptr;
 ```
 
-
 コンポーネントは、作成時にエンティティに関連付けられます。 後で別のエンティティに移動することはできません。 コンポーネントは `Component.Destroy()` を使用して明示的に削除されるか、またはコンポーネントの所有者エンティティが破棄されたときに自動的に削除されます。
 
 各コンポーネントの種類のインスタンスは、一度に 1 つのみエンティティに追加できます。
@@ -61,6 +60,15 @@ lightComponent = nullptr;
 ## <a name="unity-specific"></a>Unity 固有
 
 Unity 統合には、コンポーネントと対話するための拡張機能が追加されています。 「[Unity のゲーム オブジェクトとコンポーネント](../how-tos/unity/objects-components.md)」を参照してください。
+
+## <a name="api-documentation"></a>API のドキュメント
+
+* [C# ComponentBase](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.componentbase)
+* [C# RemoteManager.CreateComponent()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.createcomponent)
+* [C# Entity.FindComponentOfType()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.entity.findcomponentoftype)
+* [C++ ComponentBase](https://docs.microsoft.com/cpp/api/remote-rendering/componentbase)
+* [C++ RemoteManager::CreateComponent()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#createcomponent)
+* [C++ Entity::FindComponentOfType()](https://docs.microsoft.com/cpp/api/remote-rendering/entity#findcomponentoftype)
 
 ## <a name="next-steps"></a>次のステップ
 

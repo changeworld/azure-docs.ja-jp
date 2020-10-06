@@ -1,8 +1,8 @@
 ---
 title: Azure IoT Hub Device Provisioning Service クライアント SDK で各種の構成証明メカニズムを使用する
 description: Azure - Azure の Device Provisioning Service (DPS) クライアント SDK で各種構成証明メカニズムを使用する方法
-author: robinsh
-ms.author: robinsh
+author: wesmc7777
+ms.author: wesmc
 ms.date: 03/30/2018
 ms.topic: conceptual
 ms.service: iot-dps
@@ -10,16 +10,16 @@ services: iot-dps
 ms.custom:
 - mvc
 - amqp
-ms.openlocfilehash: c110e90f26f595bcbf181b72e13f12a6de2fa8ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a32e2f055b2914fa0008e043e80092ac2da0814
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81687205"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531510"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>C 言語用 Device Provisioning Service クライアント SDK で各種構成証明メカニズムを使用する方法
 
-この記事では、C 言語用 Device Provisioning Service クライアント SDK で各種の[構成証明メカニズム](concepts-security.md#attestation-mechanism)を使用する方法について説明します。物理デバイスとシミュレーターのどちらを使用してもかまいません。 このプロビジョニング サービスは、次の 2 種類の構成証明メカニズムでの認証をサポートします: X.509 とトラステッド プラットフォーム モジュール (TPM)。
+この記事では、C 言語用 Device Provisioning Service クライアント SDK で各種の[構成証明メカニズム](concepts-service.md#attestation-mechanism)を使用する方法について説明します。物理デバイスとシミュレーターのどちらを使用してもかまいません。 このプロビジョニング サービスは、次の 2 種類の構成証明メカニズムでの認証をサポートします: X.509 とトラステッド プラットフォーム モジュール (TPM)。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -29,11 +29,11 @@ ms.locfileid: "81687205"
 
 デバイスの製造元は、サポートされるいずれかの種類に基づく構成証明メカニズムを最初に選択する必要があります。 現在、[C 言語用 Device Provisioning Service クライアント SDK](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client) では、次の構成証明メカニズムがサポートされています。 
 
-- [トラステッド プラットフォーム モジュール (TPM)](https://en.wikipedia.org/wiki/Trusted_Platform_Module): TPM は、ほとんどの Windows ベースのデバイス プラットフォームと一部の Linux/Ubuntu ベースのデバイス向けの代表的な標準です。 デバイスの製造元は、製造するデバイスでこれらの OS のいずれかが稼働している場合や、代表的な標準を求めている場合に、この構成証明メカニズムを選択できます。 TPM チップを使用すると、各デバイスの Device Provisioning Service への個別登録のみが可能です。 開発向けの場合、Windows または Linux の開発マシンで TPM シミュレーターを使用できます。
+- [トラステッド プラットフォーム モジュール (TPM)](https://en.wikipedia.org/wiki/Trusted_Platform_Module): TPM は、ほとんどの Windows ベースのデバイス プラットフォームと一部の Linux/Ubuntu ベースのデバイス向けの代表的な標準です。 デバイスの製造元は、製造するデバイスでこれらのオペレーティング システムのいずれかが稼働している場合や、代表的な標準を求めている場合に、この構成証明メカニズムを選択できます。 TPM チップを使用すると、各デバイスの Device Provisioning Service への個別登録のみが可能です。 開発向けの場合、Windows または Linux の開発マシンで TPM シミュレーターを使用できます。
 
-- [X.509](https://cryptography.io/en/latest/x509/):X.509 証明書は、[ハードウェア セキュリティ モジュール (HSM)](concepts-security.md#hardware-security-module) と呼ばれる比較的新しいチップに格納することができます。 また、X.509 証明書を実装する RIoT チップまたは DICE チップ上での作業が Microsoft 内で現在進められています。 X.509 チップを使用すると、ポータルでデバイスの一括登録を実行できます。 また、X.509 チップは、embedOS などの Windows 以外の特定の OS もサポートしています。 開発のために、Device Provisioning Service クライアント SDK は、X.509 デバイス シミュレーターをサポートしています。 
+- [X.509](https://cryptography.io/en/latest/x509/):X.509 証明書は、[ハードウェア セキュリティ モジュール (HSM)](concepts-service.md#hardware-security-module) と呼ばれる比較的新しいチップに格納することができます。 また、X.509 証明書を実装する RIoT チップまたは DICE チップ上での作業が Microsoft 内で現在進められています。 X.509 チップを使用すると、ポータルでデバイスの一括登録を実行できます。 また、X.509 チップは、embedOS などの Windows 以外の特定の OS もサポートしています。 開発のために、Device Provisioning Service クライアント SDK は、X.509 デバイス シミュレーターをサポートしています。 
 
-詳細については、IoT Hub Device Provisioning Service の[セキュリティの概念](concepts-security.md)と[自動プロビジョニングの概念](/azure/iot-dps/concepts-auto-provisioning)を参照してください。
+詳細については、IoT Hub Device Provisioning Service の「[構成証明メカニズム](concepts-service.md#attestation-mechanism)」を参照してください。
 
 ## <a name="enable-authentication-for-supported-attestation-mechanisms"></a>サポートされている構成証明メカニズムでの認証を有効にする
 

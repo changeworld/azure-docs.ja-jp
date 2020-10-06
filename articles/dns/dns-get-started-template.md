@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Azure DNS ゾーンとレコードを作成する - Azure Resource Manager テンプレート (ARM テンプレート)
+title: Azure DNS ゾーンとレコードを作成する - Azure Resource Manager テンプレート (ARM テンプレート)
 titleSuffix: Azure DNS
 description: Azure DNS で、DNS ゾーンとレコードを作成する方法について説明します。 これは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して最初の DNS ゾーンとレコードを作成して管理するための詳細なクイックスタートです。
 services: dns
@@ -8,20 +8,20 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 09/8/2020
 ms.author: duau
-ms.openlocfilehash: 4fd87cb17fc222f5014585e8f1e87e3f58a58574
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 8e53e8ad26ddac1006a28fea2ddee9990533e8c9
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89596410"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647892"
 ---
-# <a name="quickstart-create-an-azure-dns-zone-and-record-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure DNS ゾーンとレコードを作成する
+# <a name="quickstart-create-an-azure-dns-zone-and-record-using-an-arm-template"></a>ARM テンプレートを使用して Azure DNS ゾーンとレコードを作成する
 
 このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、DNS ゾーンとその中の A レコードを作成する方法を説明します。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、**[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
 [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-dns-new-zone%2Fazuredeploy.json)
 
@@ -39,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 テンプレートでは、2 つの Azure リソースが定義されています。
 
-* [**Microsoft.Network/dnsZones**](/azure/templates/microsoft.network/dnsZones)
+* [Microsoft.Network**/dnsZones/*
 * [**Microsoft.Network/dnsZones/A**](/azure/templates/microsoft.network/dnsZones/A) (ゾーンに A レコードを作成するために使用されます)
 
 Azure Traffic Manager に関連するテンプレートをさらに探すには、「[Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular)」を参照してください。
@@ -65,7 +65,7 @@ Azure Traffic Manager に関連するテンプレートをさらに探すには�
 
 1. 前のコード ブロックから **[コピー]** を選択して、PowerShell スクリプトをコピーします。
 
-1. シェル コンソール ウィンドウを右クリックし、 **[貼り付け]** を選択します。
+1. シェル コンソール ウィンドウを右クリックし、**[貼り付け]** を選択します。
 
 1. 値を入力します。
 
@@ -87,11 +87,11 @@ Azure Traffic Manager に関連するテンプレートをさらに探すには�
 
 1. リソース グループには、次の画面に示したリソースが含まれている必要があります。
 
-    :::image type="content" source="./media/dns-getstarted-template/resource-group-dns-zone.png" alt-text="DNS ゾーンのデプロイ リソース グループ":::
+    :::image type="content" source="./media/dns-getstarted-template/resource-group-dns-zone.png" alt-text="Azure DNS ゾーンの Resource Manager テンプレートの PowerShell デプロイ出力":::
 
 1. **<span>azurequickstart.</span>org** というサフィックスが付いた DNS ゾーンを選択し、値 **1.2.3.4** と **1.2.3.5** を参照する **A** レコードが含まれるゾーンが正しく作成されていることを確認します。
 
-    :::image type="content" source="./media/dns-getstarted-template/dns-zone-overview.png" alt-text="DNS ゾーンのデプロイ":::
+    :::image type="content" source="./media/dns-getstarted-template/dns-zone-overview.png" alt-text="Azure DNS ゾーンの Resource Manager テンプレートの PowerShell デプロイ出力":::
 
 1. 前のステップから、ネーム サーバーの名前の 1 つをコピーします。
 
@@ -109,13 +109,13 @@ Azure Traffic Manager に関連するテンプレートをさらに探すには�
 
    次のような画面が表示されます。
 
-    :::image type="content" source="./media/dns-getstarted-template/dns-zone-validation.png" alt-text="DNS ゾーンの nslookup":::
+    :::image type="content" source="./media/dns-getstarted-template/dns-zone-validation.png" alt-text="Azure DNS ゾーンの Resource Manager テンプレートの PowerShell デプロイ出力":::
 
 ホスト名 **www<span>.2lwynbseszpam.azurequickstart.</span>org** は、構成したとおりに、**1.2.3.4** と **1.2.3.5** に解決されます。 この結果で、名前解決が正常に機能していることを確認できます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-ExpressRoute 回線と共に作成したリソースが不要になった場合は、リソース グループを削除します。 これにより、ExpressRoute 回線とすべての関連リソースが削除されます。
+DNS ゾーンと共に作成したリソースが不要になった場合は、リソース グループを削除します。 これにより、DNS ゾーンとすべての関連リソースが削除されます。
 
 リソース グループを削除するには、`Remove-AzResourceGroup` コマンドレットを呼び出します。
 

@@ -1,7 +1,7 @@
 ---
-title: クイック スタート:PHP を使用して Text Analytics API を呼び出す
+title: 'クイック スタート: PHP を使用して Text Analytics API を呼び出す'
 titleSuffix: Azure Cognitive Services
-description: このクイックスタートでは、Azure Cognitive Services の Text Analytics API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
+description: このクイックスタートでは、Azure Cognitive Services の Text Analytics API の使用をすぐに開始するために役立つ情報とコード サンプルを PHP を使用して取得する方法を説明します。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 07/10/2020
 ms.author: aahi
-ms.openlocfilehash: 4627cc83de70f596ae4917d0449f785a33bf720f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 09901c514a1f2b94edc3e4108ec46051a284a6db
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261368"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527260"
 ---
-# <a name="quickstart-using-php-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:PHP を使用して Text Analytics Cognitive Service を呼び出す
+# <a name="quickstart-using-php-to-call-the-text-analytics-cognitive-service"></a>クイック スタート: PHP を使用して Text Analytics Cognitive Service を呼び出す
 <a name="HOLTop"></a>
 
 この記事では、 [Text Analytics API シリーズ](//go.microsoft.com/fwlink/?LinkID=759711) を PHP で使用して、[言語の検出](#Detect)、[センチメントの分析](#SentimentAnalysis)、[キー フレーズの抽出](#KeyPhraseExtraction)、および[リンクされているエンティティの識別](#Entities)を行う方法について説明します。

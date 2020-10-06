@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 0d0f3a45842638915947f5df04e06e2c81a7f5f1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b27ff631ce13d70d15a6fd2b6dd5ad5bccaf5450
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081187"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89442073"
 ---
 # <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でデータ ソースをデータ プロファイリングする方法
 
@@ -29,7 +29,7 @@ ms.locfileid: "87081187"
 
 データのプロファイリングは、次のデータ ソースでサポートされます。
 
-* SQL Server (Azure SQL DB、Azure SQL Data Warehouse を含む) のテーブルとビュー
+* SQL Server (Azure SQL DB と Azure Synapse Analytics 含む) のテーブルとビュー
 * Oracle のテーブルとビュー
 * Teradata のテーブルとビュー
 * Hive のテーブル

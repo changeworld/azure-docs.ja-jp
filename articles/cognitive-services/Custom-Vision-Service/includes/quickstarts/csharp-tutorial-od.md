@@ -2,24 +2,27 @@
 author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
-ms.date: 08/17/2020
-ms.openlocfilehash: 3e4206d00d33020098770600e151f9075d160caa
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.date: 09/15/2020
+ms.openlocfilehash: c9f5b5e84955c1974c19d0ccff1a89560fd3e78a
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511330"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604892"
 ---
-この記事では、Custom Vision クライアント ライブラリと C# を使用して物体検出モデルを構築する基本的な方法について説明します。 作成後、タグ付きのリージョンを追加し、画像をアップロードし、プロジェクトをトレーニングし、プロジェクトの既定の予測エンドポイント URL を取得し、エンドポイントを使用して画像をプログラミングでテストできます。 この例は、独自の .NET アプリケーションを構築するためのテンプレートとしてご利用ください。 
+このガイドでは、C# 用の Custom Vision クライアント ライブラリを使用して物体検出モデルを構築する際の足がかりとして役立つ手順とサンプル コードを紹介します。 プロジェクトを作成し、タグを追加し、プロジェクトをトレーニングして、プロジェクトの予測エンドポイント URL を使用してプログラムでテストします。 この例は、独自の画像認識アプリを構築するためのテンプレートとしてご利用ください。
+
+> [!NOTE]
+> コードを記述 "_せずに_" 物体検出モデルの構築とトレーニングを行いたい場合は、代わりに[ブラウザーベースのガイダンス](../../get-started-build-detector.md)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 - [Visual Studio 2015 または 2017](https://www.visualstudio.com/downloads/) の任意のエディション
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="get-the-custom-vision-client-library-and-sample-code"></a>Custom Vision クライアント ライブラリとサンプル コードを入手する
+## <a name="install-the-custom-vision-client-library"></a>Custom Vision クライアント ライブラリをインストールする
 
-Custom Vision を使用する .NET アプリを作成するには、Custom Vision NuGet パッケージが必要となります。 これらのパッケージは、これからダウンロードするサンプル プロジェクトに含まれていますが、ここから個別にアクセスすることもできます。
+.NET 用の Custom Vision で画像分析アプリを作成するには、Custom Vision の NuGet パッケージが必要です。 これらのパッケージは、これからダウンロードするサンプル プロジェクトに含まれていますが、ここから個別にアクセスすることもできます。
 
 - [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/)
 - [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)
@@ -30,7 +33,7 @@ Custom Vision を使用する .NET アプリを作成するには、Custom Visio
 
 [!INCLUDE [get-keys](../../includes/get-keys.md)]
 
-## <a name="understand-the-code"></a>コードの理解
+## <a name="examine-the-code"></a>コードを確認する
 
 _Program.cs_ ファイルを開いて、コードを詳しく調べます。 トレーニング キーと予測キーの[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)し、それぞれ `CUSTOM_VISION_TRAINING_KEY`、`CUSTOM_VISION_PREDICTION_KEY` という名前を付けます。 スクリプトによってこれらの変数が検索されます。
 
@@ -40,18 +43,18 @@ _Program.cs_ ファイルを開いて、コードを詳しく調べます。 ト
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_endpoint)]
 
-### <a name="create-a-new-custom-vision-service-project"></a>新しい Custom Vision Service プロジェクトを作成する
+## <a name="create-a-new-custom-vision-service-project"></a>新しい Custom Vision Service プロジェクトを作成する
 
-次の数行のコードは、物体検出プロジェクトを作成します。 作成したプロジェクトは、先ほどアクセスした [Custom Vision Web サイト](https://customvision.ai/)に表示されます。 プロジェクトを作成するときに他のオプションを指定するには、[CreateProject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.createproject?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_CreateProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_String_System_String_System_Nullable_System_Guid__System_String_System_Collections_Generic_IList_System_String__) メソッドを参照してください ([検出機能の構築](../../get-started-build-detector.md)に関する Web ポータル ガイドで説明されています)。  
+次の数行のコードは、物体検出プロジェクトを作成します。 作成したプロジェクトは、先ほどアクセスした [Custom Vision Web サイト](https://customvision.ai/)に表示されます。 プロジェクトを作成するときに他のオプションを指定するには、[CreateProject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.createproject?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_CreateProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_String_System_String_System_Nullable_System_Guid__System_String_System_Collections_Generic_IList_System_String__&preserve-view=true) メソッドを参照してください ([検出機能の構築](../../get-started-build-detector.md)に関する Web ポータル ガイドで説明されています)。  
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_create)]
 
 
-### <a name="add-tags-to-the-project"></a>プロジェクトにタグを追加する
+## <a name="add-tags-to-the-project"></a>プロジェクトにタグを追加する
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_tags)]
 
-### <a name="upload-and-tag-images"></a>画像をアップロードし、タグ付けする
+## <a name="upload-and-tag-images"></a>画像をアップロードし、タグ付けする
 
 物体検出プロジェクトで画像にタグを付ける際は、タグ付けする各物体の領域を正規化座標を使用して指定する必要があります。 次のコードは、それぞれのサンプル画像とそのタグ付け領域とを関連付けるものです。
 
@@ -66,23 +69,28 @@ _Program.cs_ ファイルを開いて、コードを詳しく調べます。 ト
 
 この時点で、すべてのサンプル画像はアップロード済みです。それぞれの画像には、関連するピクセル四角形と共にタグ (**fork** または **scissors**) が付けられています。
 
-### <a name="train-the-project"></a>プロジェクトをトレーニングする
+## <a name="train-the-project"></a>プロジェクトをトレーニングする
 
 このコードは、プロジェクトにおけるトレーニングの初回イテレーションを作成するものです。
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_train)]
 
-### <a name="publish-the-current-iteration"></a>現在のイテレーションを公開する
+> [!TIP]
+> 選択したタグでトレーニングする
+>
+> 必要に応じて、適用したタグのサブセットのみでトレーニングできます。 ある特定のタグが十分に適用されていないが、他のタグが十分に適用されている場合に、これを行うことができます。 [TrainProject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.trainproject?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_TrainProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_Guid_System_String_System_Nullable_System_Int32__System_Nullable_System_Boolean__System_String_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_Models_TrainingParameters_&preserve-view=true) 呼び出しで、*trainingParameters* パラメーターを使用します。 [TrainingParameters](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.models.trainingparameters?view=azure-dotnet&preserve-view=true) を構築し、その **SelectedTags** プロパティを、使用するタグの ID の一覧に設定します。 モデルは、そのリストのタグのみを認識するようにトレーニングします。
+
+## <a name="publish-the-current-iteration"></a>現在のイテレーションを公開する
 
 公開されたイテレーションに付けられた名前は、予測要求を送信するために使用できます。 イテレーションは、公開されるまで予測エンドポイントで利用できません。
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_publish)]
 
-### <a name="create-a-prediction-endpoint"></a>予測エンドポイントを作成する
+## <a name="create-a-prediction-endpoint"></a>予測エンドポイントを作成する
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_prediction_endpoint)]
 
-### <a name="use-the-prediction-endpoint"></a>予測エンドポイントを使用する
+## <a name="test-the-prediction-endpoint"></a>予測エンドポイントをテストする
 
 この部分のスクリプトでは、テスト画像を読み込み、モデル エンドポイントを照会して、予測データをコンソールに出力します。
 
@@ -108,7 +116,10 @@ Making a prediction:
 
 ## <a name="next-steps"></a>次のステップ
 
-以上、物体検出処理の各ステップをコードでどのように実装するかを見てきました。 このサンプルで実行したトレーニングのイテレーションは 1 回だけですが、多くの場合、精度を高めるために、モデルのトレーニングとテストは複数回行う必要があります。 次のガイドでは、画像の分類について取り上げていますが、その原理は物体の検出と似ています。
+これで、コードでの物体検出処理の各ステップが完了しました。 このサンプルで実行したトレーニングのイテレーションは 1 回だけですが、多くの場合、精度を高めるために、モデルのトレーニングとテストは複数回行う必要があります。 次のガイドでは、画像の分類について取り上げていますが、その原理は物体の検出と似ています。
 
 > [!div class="nextstepaction"]
 > [モデルのテストと再トレーニング](../../test-your-model.md)
+
+* Custom Vision とは
+* [SDK のリファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet)

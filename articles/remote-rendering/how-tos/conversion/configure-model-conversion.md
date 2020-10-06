@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: b4881ee52b39539bfc29f62d7c6773da371a3ea5
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: dda2676f258705ed833068c966bcc57115434b0d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067173"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967211"
 ---
 # <a name="configure-the-model-conversion"></a>モデルの変換を構成する
 
@@ -93,6 +93,12 @@ ms.locfileid: "88067173"
 ### <a name="material-de-duplication"></a>素材の重複除去
 
 * `deduplicateMaterials` - このパラメーターは、同じプロパティとテクスチャを共有する素材の自動重複除去を有効または無効にします。 重複除去は、素材のオーバーライドが処理された後に実行されます。 既定で有効です。
+
+* 重複除去後でも、モデルのマテリアルが 65,535 個を超える場合、サービスによって、同様のプロパティを持つマテリアルのマージが試行されます。 最後の手段として、制限を超えるマテリアルはすべて赤色のエラー マテリアルに置き換えられます。
+
+![画像は 68,921 色の三角形の 2 つの立方体を示しています。](media/mat-dedup.png?raw=true)
+
+68,921 色の三角形の 2 つの立方体。 左:68,921 色のマテリアルを使用して重複除去を行う前。 右:64,000 色のマテリアルを使用して重複除去を行った後。 上限は 65,535 個のマテリアルです ([制限](../../reference/limits.md)に関するページを参照してください)。
 
 ### <a name="color-space-parameters"></a>色空間のパラメーター
 

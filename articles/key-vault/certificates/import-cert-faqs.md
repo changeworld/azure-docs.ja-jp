@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: b7a2c78238de58ee8851462aa7193121b35f72a9
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 3b87d68fb9b5fa5f5f8dec43c39ea8b7dbf08b93
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588823"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651856"
 ---
 # <a name="importing-azure-key-vault-certificates-faq"></a>Azure Key Vault 証明書のインポートに関する FAQ
 
@@ -54,7 +54,7 @@ ms.locfileid: "88588823"
 
 ### <a name="how-can-i-resolve-error-type-conflict-when-creating-a-certificate"></a>次のエラーはどうすれば解決できますか: "エラーの種類: 証明書の作成時に競合が発生する" ?
     
-各証明書の名前は、一意でなければなりません。 別の証明書と同じ名前の証明書が、論理的に削除された状態になっている可能性があります。 また、Azure Key Vault 内の[証明書の構成](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#composition-of-a-certificate)に従うと、証明書に指定しようとしているのと同じ名前を持つ別のキーまたはシークレットがキー コンテナーに存在する場合は、証明書の作成が失敗し、そのキーまたはシークレットを削除するか、証明書に別の名前を使用する必要があります。 
+各証明書の名前は、一意でなければなりません。 同じ名前の証明書が、論理的に削除された状態になっている可能性があります。 また、[証明書の構成](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#composition-of-a-certificate)に従うと、新しい証明書の作成時に、同じ名前を持つアドレス指定可能なシークレットが作成されます。このため、証明書に指定しようとしているのと同じ名前を持つ別のキーまたはシークレットがキー コンテナーに存在する場合は、証明書の作成が失敗し、そのキーまたはシークレットを削除するか、証明書に別の名前を使用する必要があります。 
 
 詳細については、[削除された証明書の取得操作](https://docs.microsoft.com/rest/api/keyvault/getdeletedcertificate/getdeletedcertificate)に関する記事を参照してください。
 

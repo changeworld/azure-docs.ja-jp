@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 01/04/2019
+ms.date: 08/31/2020
 ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: b59ebe0bdab66a5ce6bdb1eefe6d9ae4b47bba0c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 0435b99525c34eb72d7cc5315ccb4359859cd528
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799402"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90033049"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>個人デバイスを組織のネットワークに登録する
 個人デバイス (通常は電話またはタブレット) を組織のネットワークに登録します。 デバイスが登録されたら、そのデバイスは組織の制限されたリソースにアクセスできるようになります。
@@ -31,7 +31,7 @@ ms.locfileid: "88799402"
 
 - Windows がデバイスを組織のネットワークに登録します。
 
-- オプションで、組織の選択に基づいて、[Multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) または[セキュリティ情報](./security-info-setup-signin.md)のどちらかを使用して 2 段階認証を設定するよう求められることがあります。
+- オプションで、組織の選択に基づいて、[2 要素認証](multi-factor-authentication-end-user-first-time.md)または[セキュリティ情報](./security-info-setup-signin.md)のどちらかを使用して 2 段階認証を設定するよう求められることがあります。
 
 - オプションで、組織の選択に基づいて、Microsoft Intune などのモバイル デバイス管理で自動的に登録されることがあります。 Microsoft Intune での登録の詳細については、[Intune でのデバイスの登録](/intune-user-help/enroll-your-device-in-intune-all)に関するページを参照してください。
 

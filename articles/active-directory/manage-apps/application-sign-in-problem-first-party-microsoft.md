@@ -1,6 +1,6 @@
 ---
 title: Microsoft アプリケーションへのサインインに関する問題 | Microsoft Docs
-description: Azure AD を使用したファースト パーティの Microsoft アプリケーション (Office 365 など) にサインインする際に直面する一般的な問題をトラブルシューティングする
+description: Azure AD を使用したファースト パーティの Microsoft アプリケーション (Microsoft 365 など) にサインインする際に直面する一般的な問題をトラブルシューティングする
 services: active-directory
 documentationcenter: ''
 author: kenwith
@@ -16,20 +16,20 @@ ms.date: 09/10/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69edf8e8dc51f8a8841ceed94221ed44786e280d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8942a55d880132313e1cdac6bfc025e0b153b410
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84759285"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707953"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Microsoft アプリケーションへのサインインに関する問題
 
-Microsoft アプリケーション (Office 365 Exchange、SharePoint、Yammer など) の割り当てと管理は、サード パーティの SaaS アプリケーションや、シングル サインオンで Azure AD と統合する他のアプリケーションとは少し異なる方法で行います。
+Microsoft アプリケーション (Exchange、SharePoint、Yammer など) の割り当てと管理は、サード パーティの SaaS アプリケーションや、シングル サインオンで Azure AD と統合する他のアプリケーションとは少し異なる方法で行います。
 
 Microsoft が公開したアプリケーションにユーザーがアクセスする方法は、主に 3 つあります。
 
--   Office 365 またはその他の有料のスイートのアプリケーションでは、**ライセンスの割り当て**によってユーザーにアクセス権が付与されます。ライセンスの割り当ては、ユーザー アカウントに直接、またはグループ ベースのライセンス割り当て機能を使用してグループを通じて行われます。
+-   Microsoft 365 またはその他の有料のスイートのアプリケーションでは、**ライセンスの割り当て**によってユーザーにアクセス権が付与されます。ライセンスの割り当ては、ユーザー アカウントに直接、またはグループ ベースのライセンス割り当て機能を使用してグループを通じて行われます。
 
 -   Microsoft またはサード パーティが誰でも使用できるように無料で公開するアプリケーションでは、**ユーザーの同意**によってユーザーにアクセス権が付与されます。 つまり、ユーザーは自分の Azure AD 職場または学校アカウントでアプリケーションにサインインし、そのアカウントの限定されたデータ セットにアクセスすることが許可されます。
 

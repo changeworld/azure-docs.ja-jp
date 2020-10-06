@@ -8,15 +8,15 @@ ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 149481f9cae535fa53f94a876e1f52e813b3838b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 9c569e65546853c4e9c8c460d29041e4bb829c09
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034585"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90564204"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>クイック スタート: Azure CLI を使用した Azure ファイル共有の作成および管理
-このガイドでは、Azure CLI を使用して [Azure ファイル共有](storage-files-introduction.md)を操作する方法の基本について説明します。 Azure ファイル共有は他のファイル共有と似ていますが、クラウドに格納され、Azure プラットフォームによって支えられています。 Azure ファイル共有は、業界標準の SMB プロトコルをサポートし、複数のマシン、アプリケーション、およびインスタンス間にわたってファイル共有を可能にします。 
+このガイドでは、Azure CLI を使用して [Azure ファイル共有](storage-files-introduction.md)を操作する方法の基本について説明します。 Azure ファイル共有は他のファイル共有と似ていますが、クラウドに格納され、Azure プラットフォームによって支えられています。 Azure ファイル共有は、業界標準の サーバー メッセージ ブロック (SMB) プロトコル、ネットワーク ファイル システム (NFS) プロトコル (プレビュー) をサポートし、複数のマシン、アプリケーション、およびインスタンス間にわたってファイル共有を可能にします。 
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -41,7 +41,7 @@ az group create \
     --output none
 ```
 
-## <a name="create-a-storage-account"></a>ストレージ アカウントを作成する
+## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 ストレージ アカウントは、Azure ファイル共有またはその他のストレージ リソース (BLOB やキューなど) をデプロイできるストレージの共有プールです。 1 つのストレージ アカウントに格納できるファイル共有の数に制限はありません。 1 つの共有に格納できるファイルの数に制限はなく、ストレージ アカウントの容量の上限までファイルを格納できます。
 
 次の例では、[az storage account create](/cli/azure/storage/account) コマンドを使用してストレージ アカウントを作成します。 ストレージ アカウント名は一意である必要があります。そのため、`$RANDOM` を使用し、名前に数を追加して一意にします。
@@ -83,6 +83,7 @@ az storage share create \
     --account-key $storageAccountKey \
     --name $shareName \
     --quota 1024 \
+    --enabled-protocols SMB \
     --output none
 ```
 
@@ -174,6 +175,7 @@ az storage share create \
     --account-key $storageAccountKey \
     --name $otherShareName \
     --quota 1024 \
+    --enabled-protocols SMB \
     --output none
 
 az storage directory create \

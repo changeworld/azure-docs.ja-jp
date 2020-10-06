@@ -1,7 +1,7 @@
 ---
-title: クイック スタート:Python を使用して Text Analytics API を呼び出す
+title: 'クイック スタート: Python を使用して Text Analytics API を呼び出す'
 titleSuffix: Azure Cognitive Services
-description: このクイックスタートでは、Azure Cognitive Services の Text Analytics API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
+description: このクイックスタートでは、Azure Cognitive Services の Text Analytics API の使用をすぐに開始するために役立つ情報とコード サンプルを Python を使用して取得する方法を説明します。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 07/20/2020
 ms.author: aahi
 ms.custom: devx-track-python
-ms.openlocfilehash: 34d1b62ed97b966c000ff81e8f7676c30338b6a1
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 0ef870b6b2d3b88b13c16c8c2acbfcee7ed551c1
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876769"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527243"
 ---
-# <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:Python REST API を使用して Text Analytics Cognitive Service を呼び出す 
+# <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Python REST API を使用して Text Analytics Cognitive Service を呼び出す 
 <a name="HOLTop"></a>
 
 このクイックスタートを使用して、Text Analytics REST API および Python を使用した言語の分析を開始します。 この記事では、[言語の検出](#Detect)、[感情分析](#SentimentAnalysis)、[キー フレーズの抽出](#KeyPhraseExtraction)、および[リンクされているエンティティの識別](#Entities)を行う方法について説明します。

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: ad164f8af3e5506ae5ac9121010b99303286dd1f
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: a84308ba06a38cea475fcb1bae022da16424a731
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320598"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90032998"
 ---
 # <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure Attestation (プレビュー)
 

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 62da43879b581d6737eee1310cf642e9692051de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d7701e215011165ffef33353de7f9372b1142cf
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85248447"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440747"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory のパイプラインとアクティビティ
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -34,7 +34,7 @@ ms.locfileid: "85248447"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>概要
-データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 パイプラインは、1 つのタスクを連携して実行するアクティビティの論理的なグループです。 パイプライン内の複数のアクティビティは、データに対して実行するアクションを定義します。 たとえば、コピー アクティビティを使用して、SQL Server データベースから Azure Blob Storage にデータをコピーすることができます。 次に、Azure HDInsight クラスターで Hive スクリプトを実行する Hive アクティビティを使用し、Blob ストレージのデータを処理/変換して出力データを生成します。 最後に、2 番目のコピー アクティビティを使用して、ビジネス インテリジェンス (BI) レポート ソリューションが構築されている Azure SQL Data Warehouse に出力データをコピーします。
+データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 パイプラインは、1 つのタスクを連携して実行するアクティビティの論理的なグループです。 パイプライン内の複数のアクティビティは、データに対して実行するアクションを定義します。 たとえば、コピー アクティビティを使用して、SQL Server データベースから Azure Blob Storage にデータをコピーすることができます。 次に、Azure HDInsight クラスターで Hive スクリプトを実行する Hive アクティビティを使用し、Blob ストレージのデータを処理/変換して出力データを生成します。 最後に、別のコピー アクティビティを使用して、ビジネス インテリジェンス (BI) レポート ソリューションが構築されている Azure Synapse Analytics (旧称 SQL Data Warehouse) に出力データをコピーします。
 
 アクティビティは 0 個以上の入力[データセット](data-factory-create-datasets.md)を受け取り、1 個以上の出力[データセット](data-factory-create-datasets.md)を生成できます。 次の図は、Data Factory でのパイプライン、アクティビティ、データセットの関係を示しています。
 

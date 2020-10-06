@@ -4,17 +4,17 @@ description: Azure Storage では、クラウドに永続化される前にデ�
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 08/24/2020
+ms.date: 09/17/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: e949c3db6d8c0cafab8556dbfde367e6e49273e9
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 19f0027b506b78ef81f9acc25a94ef9ab74643e2
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078199"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985757"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>保存データに対する Azure Storage 暗号化
 
@@ -38,8 +38,8 @@ Azure マネージド ディスクの暗号化とキー管理に関する詳細�
 
 既定では、新しいストレージ アカウント内のデータは Microsoft マネージド キーで暗号化されます。 引き続き Microsoft マネージド キーを利用してデータを暗号化することも、独自のキーで暗号化を管理することもできます。 独自のキーで暗号化を管理する場合は、次の 2 つのオプションがあります。 どちらかの種類のキー管理またはその両方を使用できます。
 
-- Azure Key Vault では、BLOB ストレージと Azure Files でのデータの暗号化と暗号化解除に使用する "*カスタマー マネージド キー*" を指定できます。<sup>1、2</sup> カスタマー マネージド キーの詳細については、「[Azure Key Vault でカスタマー マネージド キーを使用して Azure Storage の暗号化を管理する](encryption-customer-managed-keys.md)」を参照してください。
-- BLOB ストレージの操作では、"*カスタマー指定のキー*" を指定できます。 BLOB ストレージ に対して読み取りまたは書き込み要求を行うクライアントは、BLOB データの暗号化と暗号化解除の方法を細かく制御するために、要求に暗号化キーを含めることができます。 カスタマー指定のキーの詳細については、「[BLOB ストレージに対する要求で暗号化キーを指定する](encryption-customer-provided-keys.md)」を参照してください。
+- BLOB ストレージと Azure Files のデータの暗号化と復号化に使用する "*カスタマーマネージド キー*" を指定できます。<sup>1、2</sup> カスタマーマネージド キーは、Azure Key Vault または Azure Key Vault Managed Hardware Security Model (HSM) (プレビュー) に格納する必要があります。 カスタマーマネージド キーの詳細については、[Azure Storage 暗号化へのカスタマーマネージド キーの使用](encryption-customer-managed-keys.md)に関するページを参照してください。
+- BLOB ストレージの操作では、"*カスタマー指定のキー*" を指定できます。 BLOB ストレージ に対して読み取りまたは書き込み要求を行うクライアントは、BLOB データの暗号化と暗号化解除の方法を細かく制御するために、要求に暗号化キーを含めることができます。 カスタマー指定のキーの詳細については、「[BLOB ストレージに対する要求で暗号化キーを指定する](../blobs/encryption-customer-provided-keys.md)」を参照してください。
 
 次の表では、Azure Storage 暗号化のキー管理オプションを比較しています。
 
@@ -47,7 +47,7 @@ Azure マネージド ディスクの暗号化とキー管理に関する詳細�
 |--|--|--|--|
 | 暗号化/暗号化解除の操作 | Azure | Azure | Azure |
 | サポートされている Azure Storage サービス | All | BLOB ストレージ、Azure Files<sup>1、2</sup> | BLOB ストレージ |
-| キー記憶域 | Microsoft キー ストア | Azure Key Vault | お客様独自のキー ストア |
+| キー記憶域 | Microsoft キー ストア | Azure Key Vault または Key Vault HSM | お客様独自のキー ストア |
 | キーのローテーションの責任 | Microsoft | Customer | Customer |
 | キー コントロール | Microsoft | Customer | Customer |
 
@@ -56,6 +56,14 @@ Azure マネージド ディスクの暗号化とキー管理に関する詳細�
 
 > [!NOTE]
 > Microsoft マネージド キーは、コンプライアンス要件に応じて適切に交換されます。 特定のキー交換の要件がある場合は、ユーザーが自分で交換を管理および監査できるように、カスタマー マネージド キーに移行することをお勧めします。
+
+## <a name="doubly-encrypt-data-with-infrastructure-encryption"></a>インフラストラクチャの暗号化を使用してデータを二重に暗号化する
+
+データのセキュリティ保護について高いレベルの保証が必要な顧客は、Azure Storage インフラストラクチャ レベルで 256 ビットの AES 暗号化を有効にすることもできます。 インフラストラクチャ暗号化が有効な場合、ストレージ アカウントのデータは、2 つの異なる暗号化アルゴリズムと 2 つの異なるキーを使用して、2 回 &mdash; サービス レベルで 1 回、インフラストラクチャ レベルで 1 回 &mdash; 暗号化されます。 Azure Storage データの二重暗号化を使用すると、暗号化アルゴリズムまたはキーのいずれかが侵害される可能性があるシナリオから保護されます。 このシナリオでは、追加の暗号化レイヤーによって引き続きデータが保護されます。
+
+サービスレベルの暗号化では、Azure Key Vault での Microsoft マネージド キーまたはカスタマー マネージド キーの使用をサポートしています。 インフラストラクチャレベルの暗号化は Microsoft マネージド キーに依存し、常に別のキーが使用されます。
+
+インフラストラクチャの暗号化を有効にするストレージ アカウントを作成する方法の詳細については、「[データの二重暗号化のためにインフラストラクチャ暗号化を有効にしてストレージ アカウントを作成する](infrastructure-encryption-enable.md)」を参照してください。
 
 ## <a name="encryption-scopes-for-blob-storage-preview"></a>BLOB ストレージの暗号化スコープ (プレビュー)
 
@@ -102,6 +110,5 @@ Azure Storage リソース プロバイダーを使用して、ストレージ �
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Key Vault とは](../../key-vault/general/overview.md)
-- [Azure portal から Azure Storage 暗号化用にカスタマー マネージド キーを構成する](storage-encryption-keys-portal.md)
-- [PowerShell から Azure Storage 暗号化用にカスタマー マネージド キーを構成する](storage-encryption-keys-powershell.md)
-- [Azure CLI から Azure Storage 暗号化用にカスタマー マネージド キーを構成する](storage-encryption-keys-cli.md)
+- [Azure Storage の暗号化のためのカスタマー マネージド キー](customer-managed-keys-overview.md)
+- [BLOB ストレージの暗号化スコープ (プレビュー)](../blobs/encryption-scope-overview.md)

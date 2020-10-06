@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: e6236d9ed5ed75b6b5e10914e668de545c48fc2c
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 8d71cccfe0ebd049607d5b51e7211739c3a7209b
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055636"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89468710"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Azure Digital Twins ツイン グラフに対してクエリを実行する
 
@@ -174,6 +174,42 @@ AND Room.$dtId IN ['room1', 'room2']
 | *Room 123* に与えられているデバイスの中から、Operator の役割を担う MxChip デバイスが返されます | `SELECT device`<br>`FROM DigitalTwins space`<br>`JOIN device RELATED space.has`<br>`WHERE space.$dtid = 'Room 123'`<br>`AND device.$metadata.model = 'dtmi:contosocom:DigitalTwins:MxChip:3'`<br>`AND has.role = 'Operator'` |
 | ID が *id1* の別のツインとの間に *Contains* という名前のリレーションシップがあるツインを取得します | `SELECT Room`<br>`FROM DIGITIALTWINS Room`<br>`JOIN Thermostat ON Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |
 | *floor11* によって包含されるこの部屋モデルのすべての部屋を取得します | `SELECT Room`<br>`FROM DIGITALTWINS Floor`<br>`JOIN Room RELATED Floor.Contains`<br>`WHERE Floor.$dtId = 'floor11'`<br>`AND IS_OF_MODEL(Room, 'dtmi:contosocom:DigitalTwins:Room;1')` |
+
+## <a name="reference-expressions-and-conditions"></a>リファレンス: 式と条件
+
+このセクションには、Azure Digital Twins のクエリを記述するときに使用できる演算子と関数のリファレンスが含まれています。
+
+### <a name="operators"></a>オペレーター
+
+次の演算子がサポートされています。
+
+| ファミリ | オペレーター |
+| --- | --- |
+| 論理 |AND、OR、NOT |
+| 比較 |=、!=、<、>、<=、>= |
+| 内容 | IN、NIN |
+
+### <a name="functions"></a>関数
+
+次の型チェックとキャスト関数がサポートされます。
+
+| 機能 | 説明 |
+| -------- | ----------- |
+| IS_DEFINED | プロパティに値が代入されているかどうかを示すブール値を返します。 これは、値がプリミティブ型である場合にのみサポートされます。 プリミティブ型には、文字列、ブール値、数値、または `null` が含まれます。 DateTime、オブジェクト型、配列はサポートされていません。 |
+| IS_OF_MODEL | 指定したツインが指定したモデルの種類と一致するかどうかを示すブール値を返します。 |
+| IS_BOOL | 指定した式の型がブール値であるかどうかを示すブール値を返します。 |
+| IS_NUMBER | 指定した式の型が数値であるかどうかを示すブール値を返します。 |
+| IS_STRING | 指定した式の型が文字列であるかどうかを示すブール値を返します。 |
+| IS_NULL | 指定した式の型が null であるかどうかを示すブール値を返します。 |
+| IS_PRIMITIVE | 指定した式の型がプリミティブ (文字列、ブール値、数値、または `null`) であるかどうかを示すブール値を返します。 |
+| IS_OBJECT | 指定した式の型が JSON オブジェクトであるかどうかを示すブール値を返します。 |
+
+次の文字列関数がサポートされます。
+
+| 機能 | 説明 |
+| -------- | ----------- |
+| STARTS_WITH(x, y) | 1 つ目の文字列式が 2 つ目の文字列で始まっているかどうかを示すブール値を返します。 |
+| ENDS_WITH(x, y) | 1 つ目の文字列式が 2 つ目の文字列で終了しているかどうかを示すブール値を返します。 |
 
 ## <a name="run-queries-with-an-api-call"></a>API 呼び出しを使用してクエリを実行する
 

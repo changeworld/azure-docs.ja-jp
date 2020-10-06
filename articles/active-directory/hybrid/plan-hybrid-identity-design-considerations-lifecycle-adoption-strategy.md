@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6d2638ff86d110cb79cc72519dfabb2c68b3794
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: abec780deb7834e67618c74e556a1bc20154b0b4
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89278430"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658540"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>ハイブリッド ID ライフサイクルの導入戦略の決定
 このタスクでは、「 [ハイブリッド ID 管理タスクの決定](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)」で定義したビジネス要件を満たすために、ハイブリッド ID ソリューションの ID 管理戦略を定義します。
@@ -81,7 +81,7 @@ Azure Active Directory では、何千もの SaaS アプリケーションやオ
 
 * 組織は、Windows Server Active Directory を利用した後に Azure Active Directory に接続して、オンプレミスとクラウドベースのサービス全体で共通するハイブリッド ID をユーザーに提供できます。
 * 管理者は、アプリケーション リソース、デバイスおよびユーザーの ID、ネットワークの場所、多要素認証に基づき、条件付きアクセスを提供できます。
-* ユーザーは、共通 ID を Azure AD、Office 365、Intune、SaaS アプリ、サードパーティ アプリケーションのアカウントで利用できます。
+* ユーザーは、共通 ID を Azure AD、Microsoft 365、Intune、SaaS アプリ、およびサードパーティ アプリケーションのアカウントで利用できます。
 * 開発者は、共通 ID モデルを利用したアプリケーションを構築し、アプリケーションをオンプレミスの Active Directory またはクラウドベース アプリケーション向け Azure に統合できます。
 
 次の図に、ID 同期プロセスの概要の例を示します。

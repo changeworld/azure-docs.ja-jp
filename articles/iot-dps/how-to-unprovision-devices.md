@@ -7,12 +7,12 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: efd19d9dc1fdc857a51d7af34c54bbe2d6077767
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 5683d40e9565068c6cd79eedb08b036eab2c54cd
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294392"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531391"
 ---
 # <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>自動プロビジョニングされた以前のデバイスのプロビジョニングを解除する方法 
 
@@ -43,7 +43,7 @@ TPM 構成証明またはリーフ証明書による X.509 構成証明を使用
 
 
 ## <a name="enrollment-groups"></a>登録グループ
-X.509 構成証明では、登録グループを使用してデバイスをプロビジョニングすることもできます。 登録グループは署名証明書 (中間 CA 証明書またはルート CA 証明書) を使用して構成され、証明書チェーン内のその証明書を使用して、プロビジョニング サービスへのデバイスのアクセスを制御します。 プロビジョニング サービスの登録グループと X.509 証明書の詳細については、「[X.509 証明書](concepts-security.md#x509-certificates)」をご覧ください。 
+X.509 構成証明では、登録グループを使用してデバイスをプロビジョニングすることもできます。 登録グループは署名証明書 (中間 CA 証明書またはルート CA 証明書) を使用して構成され、証明書チェーン内のその証明書を使用して、プロビジョニング サービスへのデバイスのアクセスを制御します。 プロビジョニング サービスの登録グループと X.509 証明書の詳細については、「[X.509 証明書の構成証明](concepts-x509-attestation.md)」を参照してください。 
 
 登録グループを使用してプロビジョニングされているデバイスの一覧を表示するには、登録グループの詳細を表示します。 これは、各デバイスがどの IoT Hub に対してプロビジョニングされているかを把握するための簡単な方法です。 デバイスの一覧を表示するには、次のようにします。 
 

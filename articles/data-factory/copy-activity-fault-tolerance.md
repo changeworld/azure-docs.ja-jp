@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: yexu
-ms.openlocfilehash: 6b172a6e15cbb22c3a0a16cb1e238ddfe45048bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a0529248c58f7fa7f962d9d1432411c351c7bdd
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85130774"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440645"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティのフォールト トレランス
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -159,7 +159,7 @@ Timestamp,Level,OperationName,OperationItem,Message
     次に例を示します。データを SQL サーバーから SQL データベースにコピーします。 シンクの SQL データベースでは主キーが定義されていますが、ソースの SQL サーバーではそのような主キーは定義されていません。 ソースに存在する重複している行は、シンクにはコピーできません。 コピー アクティビティでは、ソース データの最初の行のみがシンクにコピーされます。 それ以降のソース行に重複している主キーの値が含まれている場合、互換性のないものとして検出され、スキップされます。
 
 >[!NOTE]
->- PolyBase を使用して SQL Data Warehouse にデータを読み込むには、コピー アクティビティの拒否ポリシーで "[polyBaseSettings](connector-azure-sql-data-warehouse.md#azure-sql-data-warehouse-as-sink)" を指定して PolyBase のネイティブ フォールト トレランス設定を構成します。 PolyBase 互換性のない行は、次に示すように、通常どおり Blob または ADLS へのリダイレクトを有効にできます。
+>- PolyBase を使用して Azure Synapse Analytics (旧称 SQL Data Warehouse) にデータを読み込むには、コピー アクティビティの拒否ポリシーで "[polyBaseSettings](connector-azure-sql-data-warehouse.md#azure-sql-data-warehouse-as-sink)" を指定して PolyBase のネイティブ フォールト トレランス設定を構成します。 PolyBase 互換性のない行は、次に示すように、通常どおり Blob または ADLS へのリダイレクトを有効にできます。
 >- コピー アクティビティが [Amazon Redshift Unload](connector-amazon-redshift.md#use-unload-to-copy-data-from-amazon-redshift) を呼び出すように構成されている場合、この機能は適用されません。
 >- コピー アクティビティが [SQL シンクからストアド プロシージャ](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#invoke-a-stored-procedure-from-a-sql-sink)を呼び出すように構成されている場合、この機能は適用されません。
 

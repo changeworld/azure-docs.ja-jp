@@ -5,32 +5,31 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 09/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee4b15311dfefecd9a533add9c5a028a9b7b22fd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0e5d8dc60ee0a1f4742382b1cec8ef3ed60e8fb3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051161"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970657"
 ---
 # <a name="data-residency-and-customer-data-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication のデータの保存場所と顧客データ
 
-Office 365 や Azure などの Microsoft オンライン サービスにサブスクライブするとき、ご自身の組織によって提供されるアドレスに基づいて、Azure AD により顧客データが地理的な場所に保存されます。 ご自身の顧客のデータがどこに保存されるかについては、Microsoft セキュリティ センターの「[お客様のデータの場所](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)」を参照してください。
+Microsoft 365 や Azure などの Microsoft Online サービスをサブスクライブしている場合、顧客データは Azure AD により、組織によって提供されたアドレスに基づく地理的な場所に格納されます。 ご自身の顧客のデータがどこに保存されるかについては、Microsoft セキュリティ センターの「[お客様のデータの場所](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)」を参照してください。
 
 クラウドベースの Azure Multi-Factor Authentication と Azure Multi-Factor Authentication Server では、一定量の個人データと組織データが処理され、保存されます。 この記事では、どのようなデータがどこに保存されるのかについて、概要を説明します。
 
-現在、次の Multi-Factor Authentication アクティビティは、明記されている場合を除き、米国のデータセンターから発信されます。
+Azure Multi-Factor Authentication サービスには、米国、ヨーロッパ、アジア太平洋にデータセンターがあります。 次のアクティビティは、特に明記されている場合を除き、リージョンのデータセンターから生じたものです。
 
-* 電話または SMS を使用する 2 要素認証は、通常、米国のデータセンターから発信され、グローバル プロバイダーによってルーティングされます。
-    * ヨーロッパやオーストラリアなどの他のリージョンからの汎用ユーザー認証要求は、現在そのリージョン内のデータセンターによって処理されています。 セルフサービスによるパスワードのリセット、Azure B2C イベントのほか、NPS 拡張機能または AD FS アダプターを使用したハイブリッド シナリオなどのその他のイベントは、現在すべて米国のデータセンターによって処理されています。
-* Microsoft Authenticator アプリを使用するプッシュ通知は、米国内データセンターから発信されます。 さらに、デバイス ベンダー固有のサービスが機能している場合があり、それらのサービスはさまざまなリージョンから提供される場合があります。
-* OATH コードは現在、通常は米国内で検証されています。
-    * ここでも、ヨーロッパやオーストラリアなどの他のリージョンで発生した汎用ユーザー認証イベントは、そのリージョン内のデータセンターによって処理されます。 現在、米国のデータセンターでは、追加のイベントが処理されています。
+* 電話を使用する多要素認証は、米国のデータセンターから発信され、グローバル プロバイダーによってルーティングされます。
+* ヨーロッパやオーストラリアなどの他のリージョンからの汎用ユーザー認証要求は、現在ユーザーの場所に基づいて処理されています。
+* Microsoft Authenticator アプリを使用したプッシュ通知は、ユーザーの場所に基づいて、リージョンのデータセンターから送信されます。
+    * Apple プッシュ通知などのデバイス ベンダー固有のサービスは、ヨーロッパの外部にある可能性があります。
 
 ## <a name="personal-data-stored-by-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication によって保存される個人データ
 

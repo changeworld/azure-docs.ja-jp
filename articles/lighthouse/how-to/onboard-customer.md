@@ -3,12 +3,12 @@ title: Azure Lighthouse への顧客のオンボード
 description: Azure Lighthouse に顧客をオンボードする方法について説明します。これにより、Azure の委任されたリソース管理を使用して自分のテナントからそれらのリソースにアクセスして管理できるようになります。
 ms.date: 08/20/2020
 ms.topic: how-to
-ms.openlocfilehash: db6a819c72f1ef46f542ed47cad6caae23c0d191
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 4de31a0ad2cdc3134cd61654a71ebe803982b52e
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719055"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89483798"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Azure Lighthouse への顧客のオンボード
 
@@ -19,7 +19,7 @@ ms.locfileid: "88719055"
 
 複数の顧客に対して、オンボード プロセスを繰り返すことができます。 適切なアクセス許可を持つユーザーが、管理しているテナントにサインインすると、そのユーザーは、個々の顧客テナントにサインインしなくても管理操作を実行することが顧客のテナント スコープ全体で承認されます。
 
-顧客エンゲージメント全体におけるご自身の影響を追跡して評価を受けるには、オンボードされた各サブスクリプションにアクセスできる少なくとも 1 つのユーザー アカウントに Microsoft Partner Network (MPN) ID を関連付けます。 サービス プロバイダー テナントでこの関連付けを実行する必要があります。 簡略化するために、MPN ID に関連付けられているテナントでサービス プリンシパル アカウントを作成し、オンボードするすべての顧客に対する閲覧者アクセス権をこのアカウントに付与することをお勧めします。 詳しくは、「[Azure アカウントにパートナー ID をリンクする](../../cost-management-billing/manage/link-partner-id.md)」をご覧ください。
+顧客エンゲージメント全体におけるご自身の影響を追跡して評価を受けるには、オンボードされた各サブスクリプションにアクセスできる少なくとも 1 つのユーザー アカウントに Microsoft Partner Network (MPN) ID を関連付けます。 サービス プロバイダー テナントでこの関連付けを実行する必要があります。 MPN ID に関連付けられているテナントにサービス プリンシパル アカウントを作成し、顧客をオンボードするときに毎回そのサービス プリンシパルを含めることをお勧めします。 詳細については、[パートナー ID をリンクして、委任されたリソースでパートナー獲得クレジットを有効にする](partner-earned-credit.md)に関する記事をご覧ください。
 
 > [!NOTE]
 > また、[Azure Marketplace に公開](publish-managed-services-offers.md)したマネージド サービス オファー (パブリックまたはプライベート) を顧客が購入したときに、顧客を Azure Lighthouse にオンボードすることもできます。 また、ここで説明されているオンボード プロセスは、Azure Marketplace に公開されているオファーと共に使用できます。

@@ -1,5 +1,5 @@
 ---
-title: Power BI を使用してリモート監視データを視覚化する - Azure | Microsoft Docs
+title: Power BI を使用してリモート監視データを視覚化する - Azure | Microsoft Docs
 description: このチュートリアルでは、Power BI Desktop と Cosmos DB を使って、リモート監視ソリューションからのデータを、カスタマイズされた視覚エフェクトに統合しています。 これにより、ユーザーは独自のカスタム ダッシュボードを作成し、ソリューションを使っていないユーザーと共有することができます。
 author: dominicbetts
 manager: hegate
@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8b0f395936c8628ff7b8dab601168538f97ccdb7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1a7d29583636879698abc598e1935358796b6062
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74184240"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976008"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Power BI を使用してリモート監視データを視覚化する
 
@@ -45,7 +45,7 @@ ms.locfileid: "74184240"
    - URI
    - 主キー
 
-     ![キー](./media/iot-accelerators-integrate-data-powerbi/keys.png)
+     ![スクリーンショットには、[キー] 項目が選択された Azure Cosmos DB アカウントが示されています。](./media/iot-accelerators-integrate-data-powerbi/keys.png)
 
 ## <a name="setting-up-the-stream-in-power-bi"></a>Power BI でのストリームの設定
   

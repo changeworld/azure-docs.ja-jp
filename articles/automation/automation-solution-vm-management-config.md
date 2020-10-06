@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3fbd6292f654071f74b4dfccc5e4de393ccfff02
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: b0bc23d515bebdd0d943bbad33c5ebba35a35605
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266717"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987208"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>Start/Stop VMs during off-hours を構成する
 
@@ -139,17 +139,17 @@ Start/Stop VMs during off-hours のデプロイ後に電子メール通知を変
 
 1. Azure portal で、 **[監視]** 、 **[アクション グループ]** の順に移動します。 **StartStop_VM_Notication** というアクション グループを選択します。
 
-    ![Automation Update Management ページ](media/automation-solution-vm-management/azure-monitor.png)
+    :::image type="content" source="media/automation-solution-vm-management/azure-monitor.png" alt-text="[モニター - アクション グループ] ページのスクリーンショット。":::
 
 2. [StartStop_VM_Notification] ページで、 **[詳細]** の **[詳細の編集]** をクリックします。 これで、[電子メール/SMS/プッシュ/音声] ページが開きます。 メール アドレスを更新し、 **[OK]** をクリックして変更を保存します。
 
-    ![Automation Update Management ページ](media/automation-solution-vm-management/change-email.png)
+    :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="[モニター - アクション グループ] ページのスクリーンショット。":::
 
     アクション グループにさらにアクションを追加することもできます。アクション グループの詳細については、「[アクション グループ](../azure-monitor/platform/action-groups.md)」を参照してください。
 
 この機能によって仮想マシンがシャットダウンされたときに送信されるメールの例を以下に示します。
 
-![Automation Update Management ページ](media/automation-solution-vm-management/email.png)
+:::image type="content" source="media/automation-solution-vm-management/email.png" alt-text="[モニター - アクション グループ] ページのスクリーンショット。":::
 
 ## <a name="add-or-exclude-vms"></a><a name="add-exclude-vms"></a>VM を追加または除外する
 

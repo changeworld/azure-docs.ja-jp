@@ -1,47 +1,53 @@
 ---
-title: Text Analytics API とは - 機能 -
+title: Text Analytics API を使用したテキスト マイニングと分析 - Azure Cognitive Services
 titleSuffix: Azure Cognitive Services
-description: Azure Cognitive Services の Text Analytics API を使用して、感情分析、キー フレーズ抽出、言語検出、およびエンティティ認識を行います。
+description: Text Analytics API を使用したテキスト マイニングについて説明します。 感情分析、言語検出、およびその他の形式の自然言語処理に使用します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 08/27/2020
+ms.date: 09/09/2020
 ms.author: aahi
-ms.openlocfilehash: a3c538f3a9e7a2d8d71fff38fb927dbcdf725732
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+keywords: テキスト マイニング、感情分析、テキスト分析
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: 544de4adb1891c3d558a524466a076daefb42aa4
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000959"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647459"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Text Analytics API とは
 
-Text Analytics API は、未加工のテキストに対して高度な自然言語処理を実行できるクラウドベースのサービスであり、主要な機能として感情分析、キー フレーズ抽出、言語検出、名前付きエンティティの認識の 4 つを備えています。
+Text Analytics API は、テキスト マイニングとテキスト分析のための自然言語処理 (NLP) 機能を提供するクラウドベースのサービスであり、感情分析、オピニオン マイニング、キー フレーズ抽出、言語検出、名前付きエンティティの認識などを備えています。
 
-この API は、機械学習と AI のアルゴリズムを開発プロジェクトで利用できるようクラウドに集めた [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/) に含まれます。
+この API は、機械学習と AI のアルゴリズムを開発プロジェクトで利用できるようクラウドに集めた [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/) に含まれます。 これらの機能は [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/) または[クライアント ライブラリ](quickstarts/text-analytics-sdk.md)で使用できます。
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player]
 
-テキスト分析にはさまざまな意味がありますが、Cognitive Services の場合、Text Analytics API には次のように 4 種類の分析が用意されています。 これらの機能は [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/) または[クライアント ライブラリ](quickstarts/text-analytics-sdk.md)で使用できます。
+## <a name="sentiment-analysis"></a>センチメント分析
 
-## <a name="sentiment-analysis"></a>感情分析
-[感情分析](how-tos/text-analytics-how-to-sentiment-analysis.md)を使用すると、肯定的または否定的な感情の手がかりを探して未加工のテキストを分析することで、ブランドまたはトピックに対して顧客がどう思っているのかを突き止めることができます。 この API はドキュメントごとに 0 から 1 までの感情スコアを返します。1 が最も肯定的となります。<br /> 分析モデルは、広範囲にわたるテキスト本文と Microsoft の自然言語技術を利用して事前トレーニングされています。 [一部の言語](text-analytics-supported-languages.md)については、この API はユーザーが指定したあらゆる未加工テキストを分析し、評価し、呼び出し元のアプリケーションに結果を直接返すことができます。
+[感情分析](how-tos/text-analytics-how-to-sentiment-analysis.md)を使用して、テキストのマイニングにより肯定的または否定的な感情の手がかりを探すことで、ブランドまたはトピックに対して人々がどのように考えているかを突き止めます。 この API 機能は、ドキュメントごとに 0 から 1 までの感情スコアを返します。1 が最も肯定的となります。
 
-## <a name="key-phrase-extraction"></a>キー フレーズ抽出
-[キー フレーズを自動的に抽出](how-tos/text-analytics-how-to-keyword-extraction.md)し、重要な点を迅速に特定します。 たとえば、「食べ物はおいしくて、すばらしいスタッフがいた」というテキストを入力すると、この API は話題の中心として "食べ物" と "すばらしいスタッフ" を返します。
+バージョン 3.1 プレビュー以降では、オピニオン マイニングは感情分析の 1 つの機能となっています。 この機能は、自然言語処理 (NLP) ではアスペクトベースの感情分析とも呼ばれます。テキストに含まれるアスペクト (製品やサービスの属性など) に関連した意見について、より粒度の細かい情報が得られます。
+
+## <a name="key-phrase-extraction"></a>キー フレーズの抽出
+
+[キー フレーズ抽出](how-tos/text-analytics-how-to-keyword-extraction.md)を使用して、テキスト内の主要な概念をすばやく特定します。 たとえば、「食べ物はおいしくて、すばらしいスタッフがいた」というテキストでは、キー フレーズ抽出は話題の中心として "食べ物" と "すばらしいスタッフ" を返します。
 
 ## <a name="language-detection"></a>言語検出
-さまざまな言語、異形、方言、一部の地方言語や文化言語で、[入力テキストの記述言語を検出する](how-tos/text-analytics-how-to-language-detection.md)ほか、要求で送信されたドキュメントごとに 1 つの言語コードを報告することができます。 言語コードは、評価値の強度を示すスコアと組みになります。
+
+言語検出を使用すると、さまざまな言語、異形、方言、一部の地方言語や文化言語で、[入力テキストの記述言語を検出する](how-tos/text-analytics-how-to-language-detection.md)ほか、要求で送信されたドキュメントごとに 1 つの言語コードを報告することができます。 言語コードは信頼度スコアとペアになっています。
 
 ## <a name="named-entity-recognition"></a>名前付きエンティティの認識
-[テキスト内のエンティティを識別して分類します](how-tos/text-analytics-how-to-entity-linking.md) (人、場所、組織、日付/時刻、数量、パーセンテージ、通貨など)。 既知のエンティティも識別され、Web 上の詳細ページにリンクされます。
+
+名前付きエンティティの認識 (NER) は、テキスト内のエンティティを、人、場所、組織、数量として[識別して分類](how-tos/text-analytics-how-to-entity-linking.md)できます。既知のエンティティも認識され、Web 上の詳細情報にリンクされます。
 
 ## <a name="use-containers"></a>コンテナーの使用
 
-キー フレーズの抽出、言語の検出、および感情の分析をローカルに行うには、標準化された Docker コンテナーをデータの近くにインストールして、[Text Analytics コンテナーを使用](how-tos/text-analytics-how-to-install-containers.md)します。
+テキストのマイニングと API の使用のためのオンプレミス ソリューションとして [Text Analytics コンテナーを使用](how-tos/text-analytics-how-to-install-containers.md)します。 これらの Docker コンテナーを使用すると、キーフレーズの抽出、言語の検出、感情の分析をデータに近い形で行うことができます。
 
 ## <a name="typical-workflow"></a>一般的なワークフロー
 

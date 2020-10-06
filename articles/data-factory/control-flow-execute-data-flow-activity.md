@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 04/30/2020
-ms.openlocfilehash: 1004f7fcc8ff93a170b724a6d8b1c2216b9c39b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5593b0d633b133c8a8295634b674218d5e6c6daf
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84726975"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485039"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure Data Factory でのデータ フロー アクティビティ
 
@@ -60,8 +60,8 @@ dataflow | 実行されているデータ フローへの参照 | DataFlowRefere
 integrationRuntime | データ フローが実行されているコンピューティング環境です。 指定されていない場合は、自動解決 Azure 統合ランタイムが使用されます。 | IntegrationRuntimeReference | いいえ
 compute.coreCount | Spark クラスター内で使用されるコアの数です。 自動解決 Azure 統合ランタイムが使用されている場合にのみ指定できます。 | 8、16、32、48、80、144、272 | いいえ
 compute.computeType | Spark クラスター内で使用されるコンピューティングの種類です。 自動解決 Azure 統合ランタイムが使用されている場合にのみ指定できます。 | "General"、"ComputeOptimized"、"MemoryOptimized" | いいえ
-staging.linkedService | SQL DW ソースまたはシンクを使用している場合は、PolyBase ステージングに使用するストレージ アカウント | LinkedServiceReference | データ フローが SQL DW に対して読み取りまたは書き込みを行う場合のみ
-staging.folderPath | SQL DW ソースまたはシンクを使用している場合は、PolyBase ステージングに使用する BLOB ストレージ アカウント内のフォルダー パス | String | データ フローが SQL DW に対して読み取りまたは書き込みを行う場合のみ
+staging.linkedService | Azure Synapse Analytics ソースまたはシンクを使用している場合は、PolyBase ステージングに使用するストレージ アカウント | LinkedServiceReference | データ フローが Azure Synapse Analytics に対して読み取りまたは書き込みを行う場合のみ
+staging.folderPath | Azure Synapse Analytics ソースまたはシンクを使用している場合は、PolyBase ステージングに使用する BLOB ストレージ アカウント内のフォルダー パス | String | データ フローが Azure Synapse Analytics に対して読み取りまたは書き込みを行う場合のみ
 
 ![データ フローの実行](media/data-flow/activity-data-flow.png "データ フローの実行")
 
@@ -86,7 +86,7 @@ Core Count プロパティと Compute Type プロパティは、実行時に入�
 
 ### <a name="polybase"></a>PolyBase
 
-Azure SQL Data Warehouse をシンクまたはソースとして使用する場合は、PolyBase バッチ読み込み用のステージングの場所を選択する必要があります。 PolyBase を使用すると、データを行ごとに読み込む代わりに一括してバッチ読み込みを行うことができます。 PolyBase を実行すると、SQL DW への読み込み時間が大幅に短縮されます。
+Azure Synapse Analytics (旧称 SQL Data Warehouse) をシンクまたはソースとして使用する場合は、PolyBase バッチ読み込み用のステージングの場所を選択する必要があります。 PolyBase を使用すると、データを行ごとに読み込む代わりに一括してバッチ読み込みを行うことができます。 PolyBase を実行すると、Azure Synapse Analytics への読み込み時間が大幅に短縮されます。
 
 ## <a name="parameterizing-data-flows"></a>データ フローをパラメーター化する
 

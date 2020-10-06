@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: 9e50cdb16ee6acbdb903681984dcfbd7bfe170fa
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: f646af4cad6101e019e58f4f50a40b07aff19461
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386131"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660487"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps 用のオンプレミス データ ゲートウェイのインストール
 
@@ -33,7 +33,7 @@ ms.locfileid: "87386131"
   * Azure アカウントは、`username@contoso.com` のような職場アカウントまたは学校アカウントのいずれかである必要があります。 Azure B2B (ゲスト) アカウントや個人の Microsoft アカウント (@hotmail.com や @outlook.com など) は使用できません。
 
     > [!NOTE]
-    > Office 365 オファリングにサインアップして、仕事用メール アドレスを指定しなかった場合、アドレスは `username@domain.onmicrosoft.com` のようになります。 アカウントは Azure AD テナントに格納されます。 ほとんどの場合、Azure アカウントのユーザー プリンシパル名 (UPN) は、メール アドレスと同じです。
+    > Microsoft 365 オファリングにサインアップして、仕事用メール アドレスを指定しなかった場合、アドレスは `username@domain.onmicrosoft.com` のようになります。 アカウントは Azure AD テナントに格納されます。 ほとんどの場合、Azure アカウントのユーザー プリンシパル名 (UPN) は、メール アドレスと同じです。
 
     Microsoft アカウントに関連付けられている [Visual Studio Standard サブスクリプション](https://visualstudio.microsoft.com/vs/pricing/)を使用するには、まず [Azure AD テナントを作成する](../active-directory/develop/quickstart-create-new-tenant.md)か、既定のディレクトリを使用します。 ディレクトリにパスワードを持つユーザーを追加した後、そのユーザーに Azure サブスクリプションへのアクセス権を付与します。 その後、ゲートウェイのインストール中に、このユーザー名とパスワードでサインインできます。
 

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ff525eab42d69ded33381fefc83076f9aa94f05
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 7fe5072042553d676c798a32e0ca6fc28e92332d
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213743"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054468"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>Azure Active Directory での Microsoft 365 グループに対する名前付けポリシーの適用
 
@@ -229,9 +229,9 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
    Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
    ```
 
-## <a name="experience-across-office-365-apps"></a>Office 365 アプリのエクスペリエンス
+## <a name="experience-across-microsoft-365-apps"></a>Microsoft 365 アプリ全体のエクスペリエンス
 
-Azure AD でグループ名前付けポリシーを設定した後、ユーザーが Office 365 アプリでグループを作成すると、次のようになります。
+Azure AD でグループ名前付けポリシーを設定した後、ユーザーが Microsoft 365 アプリでグループを作成すると、次のようになります。
 
 - ユーザーがグループ名を入力するとすぐに、名前付けポリシー (プレフィックス/サフィックス) に従って名前のプレビューが表示されます。
 - ユーザーが禁止単語を入力すると、禁止単語を削除できるようにエラー メッセージが表示されます。
@@ -252,7 +252,7 @@ School Data Sync (SDS) | SDS を使用して作成されたグループは名前
 Outlook Customer Manager (OCM) | Outlook Customer Manager は名前付けポリシーに準拠しています。Outlook Customer Manager で作成されたグループには名前付けポリシーが自動的に適用されます。 カスタム禁止単語が検出された場合、OCM でのグループの作成がブロックされ、ユーザーは OCM アプリを使用できなくなります。
 Classroom アプリ | Classroom アプリで作成されたグループは名前付けポリシーに準拠していますが、名前付けポリシーが自動的に適用されるわけではありません。教室グループ名を入力したときに、名前付けポリシーのプレビューはユーザーに表示されません。 ユーザーは、プレフィックスとサフィックスを付けたポリシー強制後の教室グループ名を入力する必要があります。 そうしないと、教室グループの作成または編集操作はエラーで失敗します。
 Power BI | Power BI ワークスペースは、名前付けポリシーに準拠しています。    
-Yammer | Azure Active Directory アカウントで Yammer にサインインしたユーザーが グループを作成する、またはグループ名を編集する場合、グループ名は名前付けポリシーに準拠します。 これは、 Office 365 接続 グループ及び他のすべての Yammer グループどちらにも適用されます。<br>名前付けポリシーが実施される前に Office 365 接続グループを作成した場合、グループ名は名前付けポリシーに自動的には従いません。 ユーザーは、グループ名を編集するときに、プレフィックスとサフィックスを追加するよう求められます。
+Yammer | Azure Active Directory アカウントで Yammer にサインインしたユーザーが グループを作成する、またはグループ名を編集する場合、グループ名は名前付けポリシーに準拠します。 これは、Microsoft 365 接続グループおよび他のすべての Yammer グループのどちらにも適用されます。<br>名前付けポリシーが実施される前に Microsoft 365 接続グループが作成された場合、グループ名は名前付けポリシーに自動的には従いません。 ユーザーは、グループ名を編集するときに、プレフィックスとサフィックスを追加するよう求められます。
 StaffHub  | StaffHub チームは名前付けポリシーに従いませんが、基になる Microsoft 365 グループは従います。 StaffHub チーム名にはプレフィックスとサフィックスは適用されず、カスタム禁止単語もチェックされません。 しかし、StaffHub ではプレフィックスとサフィックスが適用され、基になる Microsoft 365 グループから禁止された単語が削除されます。
 Exchange PowerShell | Exchange PowerShell コマンドレットは名前付けポリシーに準拠しています。 ユーザーがグループ名やグループ エイリアス (mailNickname) で名前付けポリシーに従っていない場合、推奨されるプレフィックスとサフィックスやカスタム禁止単語を示す適切なエラー メッセージが表示されます。
 Azure Active Directory PowerShell コマンドレット | Azure Active Directory PowerShell コマンドレットは名前付けポリシーに準拠しています。 ユーザーがグループ名やグループ エイリアスで名前付け規則に従っていない場合、推奨されるプレフィックスとサフィックスやカスタム禁止単語を示す適切なエラー メッセージが表示されます。

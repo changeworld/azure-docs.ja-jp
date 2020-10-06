@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/31/2020
-ms.openlocfilehash: 34ddea1445ef8a8eb8554add3ee8920078a6e573
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.date: 09/10/2020
+ms.openlocfilehash: 883c88386e4796f8d0cd2631b7754c06ce13d141
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182566"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657268"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure BLOB ストレージのデータをコピーおよび変換する
 
@@ -67,7 +67,7 @@ ms.locfileid: "89182566"
 - [Azure リソース認証用のマネージド ID](#managed-identity)
 
 >[!NOTE]
->PolyBase を使用して Azure SQL Data Warehouse にデータを読み込むときに、ソース またはステージング BLOB ストレージが Azure Virtual Network エンドポイントで構成されている場合、PolyBase で要求されるマネージド ID 認証を使用する必要があります。 セルフホステッド統合ランタイム バージョン 3.18 以降を使用する必要もあります。 構成の前提条件の詳細については、「[マネージド ID の認証](#managed-identity)」を参照してください。
+>PolyBase を使用して Azure Synapse Analytics (旧称 SQL Data Warehouse) にデータを読み込むときに、ソースまたはステージング BLOB ストレージが Azure Virtual Network エンドポイントで構成されている場合、PolyBase で要求されるマネージド ID 認証を使用する必要があります。 セルフホステッド統合ランタイム バージョン 3.18 以降を使用する必要もあります。 構成の前提条件の詳細については、「[マネージド ID の認証](#managed-identity)」を参照してください。
 
 >[!NOTE]
 >Azure HDInsight および Azure Machine Learning のアクティビティは、Azure BLOB ストレージ アカウント キーを使用する認証のみをサポートします。
@@ -234,6 +234,7 @@ Azure BLOB ストレージのリンクされたサービスでは、次のプロ
 |:--- |:--- |:--- |
 | type | **type** プロパティは、**AzureBlobStorage** に設定する必要があります。 |はい |
 | serviceEndpoint | `https://<accountName>.blob.core.windows.net/` のパターンで、Azure BLOB ストレージ サービス エンドポイントを指定します。 |はい |
+| accountKind | ストレージ アカウントの種類を指定します。 使用できる値は、以下のとおりです。**Storage** (汎用 v1)、**StorageV2** (汎用 v2)、**BlobStorage**、または **BlockBlobStorage**。 <br/> データ フローで Azure Blob のリンクされたサービスを使用する場合、アカウントの種類が空または "Storage" の場合、マネージド ID またはサービス プリンシパルの認証はサポートされません。 適切なアカウントの種類を指定するか、別の認証を選択するか、ストレージ アカウントを汎用 v2 にアップグレードします。 |いいえ |
 | servicePrincipalId | アプリケーションのクライアント ID を取得します。 | はい |
 | servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 これは、Azure portal の右上隅にマウス ポインターを合わせると取得できます。 | はい |
@@ -252,6 +253,7 @@ Azure BLOB ストレージのリンクされたサービスでは、次のプロ
         "type": "AzureBlobStorage",
         "typeProperties": {            
             "serviceEndpoint": "https://<accountName>.blob.core.windows.net/",
+            "accountKind": "StorageV2",
             "servicePrincipalId": "<service principal id>",
             "servicePrincipalKey": {
                 "type": "SecureString",
@@ -281,7 +283,7 @@ Azure Storage 認証の全般的な情報については、「[Azure Active Dire
     - **シンクとして**、**アクセス制御 (IAM)** で、少なくとも**ストレージ BLOB データ共同作成者**のロールを付与します。
 
 >[!IMPORTANT]
->PolyBase を使用して (ソースまたはステージングの) BLOB ストレージから SQL Data Warehouse にデータを読み込む場合、BLOB ストレージにマネージド ID 認証を使用しているときは必ず、[このガイダンス](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)の手順 1 と 2 にも従ってください。 これらの手順により、サーバーが Azure AD に登録され、ストレージ BLOB データ共同作成者のロールがサーバーに割り当てられます。 残りの処理は Data Factory によって行われます。 Azure Virtual Network エンドポイントで BLOB ストレージを構成した場合、PolyBase を使用してそこからデータを読み込むには、PolyBase で要求されるマネージド ID 認証を使用する必要があります。
+>PolyBase を使用して (ソースまたはステージングとしての) BLOB ストレージから Azure Synapse Analytics (旧称 SQL Data Warehouse) にデータを読み込む場合、BLOB ストレージにマネージド ID 認証を使用するときは、必ず[こちらのガイダンス](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)の手順 1 と 2 にも従ってください。 これらの手順により、サーバーが Azure AD に登録され、ストレージ BLOB データ共同作成者のロールがサーバーに割り当てられます。 残りの処理は Data Factory によって行われます。 Azure Virtual Network エンドポイントで BLOB ストレージを構成した場合、PolyBase を使用してそこからデータを読み込むには、PolyBase で要求されるマネージド ID 認証を使用する必要があります。
 
 Azure BLOB ストレージのリンクされたサービスでは、次のプロパティがサポートされます。
 
@@ -289,6 +291,7 @@ Azure BLOB ストレージのリンクされたサービスでは、次のプロ
 |:--- |:--- |:--- |
 | type | **type** プロパティは、**AzureBlobStorage** に設定する必要があります。 |はい |
 | serviceEndpoint | `https://<accountName>.blob.core.windows.net/` のパターンで、Azure BLOB ストレージ サービス エンドポイントを指定します。 |はい |
+| accountKind | ストレージ アカウントの種類を指定します。 使用できる値は、以下のとおりです。**Storage** (汎用 v1)、**StorageV2** (汎用 v2)、**BlobStorage**、または **BlockBlobStorage**。 <br/> データ フローで Azure Blob のリンクされたサービスを使用する場合、アカウントの種類が空または "Storage" の場合、マネージド ID またはサービス プリンシパルの認証はサポートされません。 適切なアカウントの種類を指定するか、別の認証を選択するか、ストレージ アカウントを汎用 v2 にアップグレードします。 |いいえ |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 データ ストアがプライベート ネットワーク内にある場合、Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます。 このプロパティが指定されていない場合は、サービスでは、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
 > [!NOTE]
@@ -302,7 +305,8 @@ Azure BLOB ストレージのリンクされたサービスでは、次のプロ
     "properties": {
         "type": "AzureBlobStorage",
         "typeProperties": {            
-            "serviceEndpoint": "https://<accountName>.blob.core.windows.net/"
+            "serviceEndpoint": "https://<accountName>.blob.core.windows.net/",
+            "accountKind": "StorageV2" 
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -378,8 +382,8 @@ Azure BLOB ストレージでは、形式ベースのコピー ソースの `sto
 | deleteFilesAfterCompletion | 宛先ストアに正常に移動した後、バイナリ ファイルをソース ストアから削除するかどうかを示します。 ファイルの削除はファイルごとに行われるので、コピー操作が失敗した場合、一部のファイルが既に宛先にコピーされソースからは削除されているが、他のファイルはまだソース ストアに残っていることがわかります。 <br/>このプロパティは、データ ソース ストアが Blob、ADLS Gen1、ADLS Gen2、S3、Google Cloud Storage、ファイル、Azure ファイル、SFTP、または FTP であるバイナリ コピー シナリオでのみ有効です。 既定値: false。 |いいえ |
 | modifiedDatetimeStart    | ファイルは、属性 (最終変更日時) に基づいてフィルター処理されます。 <br>最終変更時刻が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の間に含まれる場合は、ファイルが選択されます。 時刻は "2018-12-01T05:00:00Z" の形式で UTC タイム ゾーンに適用されます。 <br> プロパティは、ファイル属性フィルターをデータセットに適用しないことを意味する **NULL** にすることができます。  `modifiedDatetimeStart` に datetime 値が設定されており、`modifiedDatetimeEnd` が **NULL** の場合は、最終変更日時属性が datetime 値以上であるファイルが選択されます。  `modifiedDatetimeEnd` に datetime 値が設定されており、`modifiedDatetimeStart` が **NULL** の場合は、最終変更日時属性が datetime 値未満であるファイルが選択されます。<br/>`fileListPath` を構成する場合、このプロパティは適用されません。 | いいえ                                            |
 | modifiedDatetimeEnd      | 上記と同じです。                                               | いいえ                                            |
-| enablePartitionDiscovery | パーティション分割されているファイルの場合は、ファイル パスのパーティションを解析し、それを追加のソース列として追加するかどうかを指定します。<br/>指定できる値は **false** (既定値) と **true** です。 | いいえ                                            |
-| partitionRootPath | パーティション検出が有効になっている場合は、パーティション分割されたフォルダーをデータ列として読み取るための絶対ルート パスを指定します。<br/><br/>これが指定されていない場合は、既定で次のようになります。<br/>- ソース上のデータセットまたはファイルの一覧内のファイル パスを使用する場合、パーティションのルート パスはそのデータセットで構成されているパスです。<br/>- ワイルドカード フォルダー フィルターを使用する場合、パーティションのルート パスは最初のワイルドカードの前のサブパスです。<br/>- プレフィックスを使用する場合、パーティションのルート パスは最後の "/" の前のサブパスです。 <br/><br/>たとえば、データセット内のパスを "root/folder/year=2020/month=08/day=27" として構成するとします。<br/>- パーティションのルート パスを "root/folder/year=2020" として指定した場合は、コピー アクティビティによって、ファイル内の列とは別に、それぞれ "08" と "27" の値を持つ `month` と `day` という 2 つの追加の列が生成されます。<br/>- パーティションのルート パスが指定されない場合、追加の列は生成されません。 | いいえ                                            |
+| enablePartitionDiscovery | パーティション分割されているファイルの場合、ファイル パスからのパーティションを解析し、追加のソース列として追加するかどうかを指定します。<br/>指定できる値は **false** (既定値) と **true** です。 | いいえ                                            |
+| partitionRootPath | パーティション検出が有効になっている場合、パーティション分割されているフォルダーをデータ列として読み取る目的で絶対ルート パスを指定します。<br/><br/>指定されない場合、既定では、<br/>- ソースでファイルのデータセットまたはリストにあるファイル パスを使用するとき、パーティション ルート パスはデータセットに構成されているパスになります。<br/>- ワイルドカード フォルダー フィルターを使用する場合、パーティションのルート パスは最初のワイルドカードの前のサブパスです。<br/>- プレフィックスを使用する場合、パーティションのルート パスは最後の "/" の前のサブパスです。 <br/><br/>たとえば、データセット内のパスを "root/folder/year=2020/month=08/day=27" として構成するとします。<br/>- パーティション ルート パスを "root/folder/year=2020" として指定する場合、コピー アクティビティによって、ファイル内の列に加え、さらに 2 つの列、`month` と `day` がそれぞれ値 "08" と "27" で生成されます。<br/>- パーティション ルート パスが指定されない場合、追加の列は生成されません。 | いいえ                                            |
 | maxConcurrentConnections | ストレージへのコンカレント接続数。 データ ストアへのコンカレント接続を制限する場合にのみ指定します。 | いいえ                                            |
 
 > [!NOTE]

@@ -5,12 +5,12 @@ ms.assetid: 0b609bc0-c264-4092-8e3e-0784dcc23b5d
 ms.topic: how-to
 ms.date: 04/24/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 6c16aad9bb04ffb4cb4df52799d63f7ec2e19725
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 9c635b01bcd04bd03191fca2590b0189bad0f544
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210854"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982015"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Functions を使用して Azure Storage キューにメッセージを追加する
 
@@ -38,7 +38,7 @@ Azure Functions では、入力および出力バインディングによって�
 
 1. **[Azure Queue Storage]** というバインディングの種類を選択して、このスクリーンショットの次の表で指定されている設定を追加します。 
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-create-output-binding-details.png" alt-text="Azure portal 内の関数に Queue Storage の出力バインディングを追加します。" border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-create-output-binding-details.png" alt-text="関数の出力バインディングを作成します。" border="true":::
     
     | 設定      |  推奨値   | 説明                              |
     | ------------ |  ------- | -------------------------------------------------- |
@@ -94,7 +94,7 @@ Azure Functions では、入力および出力バインディングによって�
 1. コードの変更が保存されたら、 **[テスト]** を選択します。
 1. テストが下の画像と一致することを確認し、 **[実行]** を選択します。 
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png" alt-text="Azure portal でキュー ストレージのバインディングをテストします。" border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png" alt-text="関数の出力バインディングを作成します。" border="true":::
 
     **要求本文**に `name` 値 *Azure* が含まれていることに注意してください。 この値は、関数が呼び出されたときに作成されるキュー メッセージに表示されます。
     
@@ -111,11 +111,11 @@ Azure Functions では、入力および出力バインディングによって�
 
 1. **[アプリケーション設定]** で、 **[AzureWebJobsStorage]** を選択します。
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-find-storage-account.png" alt-text="AzureWebJobsStorage に接続されているストレージ アカウントを検索します。" border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-find-storage-account.png" alt-text="関数の出力バインディングを作成します。" border="true":::
 
 1. アカウント名を検索してメモします。
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-storage-account-name.png" alt-text="AzureWebJobsStorage に接続されているストレージ アカウントを検索します。" border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-storage-account-name.png" alt-text="関数の出力バインディングを作成します。" border="true":::
 
 ### <a name="examine-the-output-queue"></a>出力キューを確認する
 

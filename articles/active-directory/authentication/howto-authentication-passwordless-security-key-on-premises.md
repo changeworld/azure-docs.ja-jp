@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f20da2d2ecb4426c0deb1c01591ead5933090f6
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 23ce2f02ef96a88b6bf4471377ce97a529dbd1a9
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716998"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90706338"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Azure Active Directory を使用してオンプレミスのリソースへのパスワードなしのセキュリティ キー サインイン (プレビュー) を有効にする
 
@@ -46,7 +46,7 @@ Azure AD Kerberos サーバー オブジェクトがオンプレミスの Active
 
 また、組織では、以下のソフトウェア要件を満たしている必要があります。
 
-- デバイスで Windows 10 Insider Build 18945 以降を実行している必要があります。
+- デバイスでは Windows 10 バージョン 2004 以降を実行している必要があります。
 - [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) のバージョンは 1.4.32.0 以降である必要があります。
   - 使用可能な Azure AD ハイブリッド認証オプションの詳細については、「[Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する](../hybrid/choose-ad-authn.md)」および「[Azure AD Connect で使用するインストールの種類の選択](../hybrid/how-to-connect-install-select-installation.md)」を参照します。
 - Windows Server ドメイン コントローラーには、次の修正プログラムがインストールされている必要があります。
@@ -57,7 +57,7 @@ Azure AD Kerberos サーバー オブジェクトがオンプレミスの Active
 
 次の両方のシナリオで、シングル サインオン (SSO) がサポートされています。
 
-- Office 365 などのクラウド リソースとその他の SAML 対応アプリケーション。
+- Microsoft 365 およびその他の SAML 対応アプリケーションなどのクラウド リソース。
 - オンプレミスのリソースと、Web サイトに対する Windows 統合認証。 リソースには、IIS 認証を必要とする Web サイトおよび SharePoint サイトや、NTLM 認証を使用するリソースを含めることができます。
 
 ### <a name="unsupported-scenarios"></a>サポートされていないシナリオ

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/20/2020
+ms.date: 09/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 16fdc38d6235ddd0f72c7a35a3d71973ce01a4be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7417e2d39371066a5c5e8576040cbe22e7632043
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203216"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90562878"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C カスタム ポリシーでの技術プロファイルについて
 
@@ -32,6 +32,7 @@ ms.locfileid: "85203216"
 - [Azure Active Directory](active-directory-technical-profile.md) - Azure Active Directory B2C ユーザー管理をサポートします。
 - [Azure Multi-Factor Authentication](multi-factor-auth-technical-profile.md) - Azure Multi-Factor Authentication (MFA) を使用して電話番号を確認するためのサポートを提供します。 
 - [要求変換](claims-transformation-technical-profile.md) - 出力要求変換を呼び出して、要求の値を操作したり、要求を検証したり、一連の出力要求の既定値を設定したりすることができます。
+- [ID トークン ヒント](id-token-hint.md) - `id_token_hint` JWT トークンの署名、発行者名、トークン対象ユーザーを検証し、受信トークンから要求を抽出します。
 - [JWT トークン発行者](jwt-issuer-technical-profile.md) - 証明書利用者アプリケーションに戻された JWT トークンを発行します。
 - [OAuth1](oauth1-technical-profile.md) - 任意の OAuth 1.0 プロトコル ID プロバイダーとのフェデレーション。
 - [OAuth2](oauth2-technical-profile.md) - 任意の OAuth 2.0 プロトコル ID プロバイダーとのフェデレーション。

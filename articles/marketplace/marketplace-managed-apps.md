@@ -6,17 +6,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: msjogarrig
 ms.author: jogarrig
-ms.date: 04/22/2020
-ms.openlocfilehash: 70922b80139015226445ca62026ec6f5a59b751c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/04/2020
+ms.openlocfilehash: 10ca7602dd3cf5a80e371ceda845977bcd8f218a
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119822"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89484241"
 ---
 # <a name="publishing-guide-for-azure-managed-applications"></a>Azure マネージド アプリケーションの発行ガイド
 
-Azure "*マネージド アプリケーション*" プランは、Azure Marketplace で Azure アプリケーションを発行する 1 つの方法です。 マネージド アプリケーションは、Azure Marketplace を通じてデプロイおよび課金されるトランザクション プランです。 ユーザーに表示される行動喚起は、"*今すぐ入手する*" です。
+Azure "*マネージド アプリケーション*" プランは、Azure Marketplace で Azure アプリケーションを発行する 1 つの方法です。 マネージド アプリケーションは、Azure Marketplace を通じてデプロイおよび課金されるトランザクション プランです。 ユーザーに表示される掲載オプションは、 *[今すぐ入手する]* です。
 
 この記事では、マネージド アプリケーション プラン タイプの要件について説明します。
 

@@ -1,30 +1,28 @@
 ---
-title: リリース ノート:Azure Synapse Analytics (ワークスペース)
-description: Azure Synapse Analytics のリリース ノート (ワークスペース)
+title: リリース ノート:Azure Synapse Analytics (ワークスペース プレビュー)
+description: Azure Synapse Analytics のリリース ノート (ワークスペース プレビュー)
 services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: add5c89e83f33980803bf571239023859653c4f1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f2050bf671af35df4faec8b0b1d53f4c10a9075e
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87059605"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031672"
 ---
-# <a name="azure-synapse-analytics-preview-release-notes"></a>Azure Synapse Analytics (プレビュー) のリリース ノート
+# <a name="azure-synapse-analytics-workspaces-preview-release-notes"></a>Azure Synapse Analytics (ワークスペース プレビュー) のリリース ノート
 
 この記事では、Azure Synapse Analytics (ワークスペース) の制限と問題について説明します。 関連情報については、[Azure Synapse Analytics (ワークスペース)](overview-what-is.md) に関するページを参照してください。
 
 [!INCLUDE [preview](includes/note-preview.md)]
 
-## <a name="azure-synapse-workspaces"></a>Azure Synapse (ワークスペース) 
-
-### <a name="azure-synapse-cli"></a>Azure Synapse CLI
+## <a name="azure-cli"></a>Azure CLI
 
 - 問題およびユーザーへの影響:SDK によって作成されたワークスペースから、Synapse Studio を起動できません。
 
@@ -36,8 +34,6 @@ ms.locfileid: "87059605"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [ワークスペースを作成する](quickstart-create-workspace.md)
-* [Synapse Studio を使用する](quickstart-synapse-studio.md)
-* [SQL プールを作成する](quickstart-create-sql-pool-portal.md)
-* [SQL オンデマンドを使用する](quickstart-sql-on-demand.md)
-* [Apache Spark プールを作成する](quickstart-create-apache-spark-pool-portal.md)
+* [Azure Synapse とは](overview-what-is.md)
+* [開始するには](get-started.md)
+* [FAQ](overview-faq.md)

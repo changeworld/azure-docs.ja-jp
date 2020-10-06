@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 3422176ed89b7f575c11cc40e5be8420da0018b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 170716804a5bc3133e070ee67f2aac71acad7b0b
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81415813"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89435561"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Azure Data Factory を使用して Office 365 からデータを読み込む
 
@@ -147,7 +147,7 @@ _データを抽出しているときの状態:_
 
 ## <a name="next-steps"></a>次のステップ
 
-次の資料に進んで、Azure SQL Data Warehouse のサポートを確認します。 
+次の資料に進んで、Azure Synapse Analytics (旧称 SQL Data Warehouse) のサポートを確認します。 
 
 > [!div class="nextstepaction"]
 >[Office 365 コネクタ](connector-office-365.md)

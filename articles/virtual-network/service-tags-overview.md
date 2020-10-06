@@ -13,19 +13,19 @@ ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: fd44c07ea44e7487a22b0de67737dcc135c813b6
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: fd6894ea90dc6cb3cc721438ba73a94b43c36a5b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038040"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983703"
 ---
 # <a name="virtual-network-service-tags"></a>仮想ネットワーク サービス タグ
 <a name="network-service-tags"></a>
 
 サービス タグは、指定された Azure サービスからの IP アドレス プレフィックスのグループを表します。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。これにより、ネットワーク セキュリティ規則に対する頻繁な更新の複雑さを最小限に抑えられます。
 
-サービス タグを使用して、[ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) または  [Azure Firewall](https://docs.microsoft.com/azure/firewall/service-tags) でのネットワーク アクセス制御を定義できます。 セキュリティ規則を作成するときに、特定の IP アドレスの代わりにサービス タグを使用します。 規則の適切な "*ソース* " または " *宛先* " フィールドにサービス タグ名 (たとえば **ApiManagement**) を指定することにより、対応するサービスのトラフィックを許可または拒否できます。
+サービス タグを使用して、[ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) または  [Azure Firewall](https://docs.microsoft.com/azure/firewall/service-tags) でのネットワーク アクセス制御を定義できます。 セキュリティ規則を作成するときに、特定の IP アドレスの代わりにサービス タグを使用します。 規則の適切な "*ソース*"  または " *宛先*"  フィールドにサービス タグ名 (**ApiManagement** など) を指定することにより、対応するサービスのトラフィックを許可または拒否できます。
 
 サービス タグを使用すると、ネットワーク分離を実現し、パブリック エンドポイントを持つ Azure サービスへのアクセス時に一般のインターネットから Azure リソースを保護できます。 受信/送信ネットワーク セキュリティ グループ規則を作成して、**インターネット**との間のトラフィックを拒否し、**AzureCloud** または他の特定の Azure サービスの[利用可能なサービス タグ](#available-service-tags)との間のトラフィックを許可します。
 
@@ -67,7 +67,7 @@ ms.locfileid: "86038040"
 | **AzureInformationProtection** | Azure Information Protection。<br/><br/>*注:* このタグは、**AzureActiveDirectory**、**AzureFrontDoor.Frontend**、および **AzureFrontDoor.FirstParty** タグに依存します。 | 送信 | いいえ | いいえ |
 | **AzureIoTHub** | Azure IoT Hub。 | 送信 | いいえ | いいえ |
 | **AzureKeyVault** | Azure Key Vault。<br/><br/>*注:* このタグは、**AzureActiveDirectory** タグに依存します。 | 送信 | はい | はい |
-| **AzureLoadBalancer** | Azure インフラストラクチャのロード バランサー。 このタグは、Azure の正常性プローブの送信元となる[ホストの仮想 IP アドレス](security-overview.md#azure-platform-considerations) (168.63.129.16) に変換されます。 これには、Azure Load Balancer リソースへのトラフィックは含まれません。 Azure Load Balancer を使っていない場合は、この規則をオーバーライドできます。 | 両方 | いいえ | いいえ |
+| **AzureLoadBalancer** | Azure インフラストラクチャのロード バランサー。 このタグは、Azure の正常性プローブの送信元となる[ホストの仮想 IP アドレス](security-overview.md#azure-platform-considerations) (168.63.129.16) に変換されます。 これにはプローブ トラフィックのみが含まれ、バックエンド リソースへの実際のトラフィックは含まれません。 Azure Load Balancer を使っていない場合は、この規則をオーバーライドできます。 | 両方 | いいえ | いいえ |
 | **AzureMachineLearning** | Azure Machine Learning | 両方 | いいえ | はい |
 | **AzureMonitor** | Log Analytics、Application Insights、AzMon、およびカスタム メトリック (GiG エンドポイント)。<br/><br/>*注:* Log Analytics では、このタグは **Storage** タグに依存します。 | 送信 | いいえ | はい |
 | **AzureOpenDatasets** | Azure Open Datasets。<br/><br/>*注:* このタグは、**AzureFrontDoor.Frontend** および **Storage** タグに依存します。 | 送信 | いいえ | いいえ |
@@ -96,7 +96,7 @@ ms.locfileid: "86038040"
 | **PowerQueryOnline** | Power Query Online。 | 両方 | いいえ | いいえ |
 | **ServiceBus** | Premium サービス レベルを使用する Azure Service Bus トラフィック。 | 送信 | はい | はい |
 | **ServiceFabric** | Azure Service Fabric。<br/><br/>*注:* このタグは、リージョンごとのコントロール プレーンの Service Fabric サービス エンドポイントを表します。 これにより、顧客は VNET から Service Fabric クラスターに対する管理操作を実行できるようになります (エンドポイントの例: https://westus.servicefabric.azure.com) | 両方 | いいえ | いいえ |
-| **Sql** | Azure SQL Database、Azure Database for MySQL、Azure Database for PostgreSQL、および Azure SQL Data Warehouse。<br/><br/>*注:* このタグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure SQL Database サービスを表しますが、特定の SQL データベースや SQL サーバーは表しません。 このタグは、SQL Managed Instance には適用されません。 | 送信 | はい | はい |
+| **Sql** | Azure SQL Database、Azure Database for MySQL、Azure Database for PostgreSQL、および Azure Synapse Analytics。<br/><br/>*注:* このタグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure SQL Database サービスを表しますが、特定の SQL データベースや SQL サーバーは表しません。 このタグは、SQL マネージド インスタンスには適用されません。 | 送信 | はい | はい |
 | **SqlManagement** | SQL 専用デプロイのための管理トラフィック。 | 両方 | いいえ | はい |
 | **Storage** | Azure Storage です。 <br/><br/>*注:* このタグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure Storage サービスを表しますが、特定の Azure Storage アカウントは表しません。 | 送信 | はい | はい |
 | **StorageSyncService** | ストレージ同期サービス。 | 両方 | いいえ | いいえ |

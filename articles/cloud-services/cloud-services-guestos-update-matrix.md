@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 8/17/2020
 ms.author: yohaddad
-ms.openlocfilehash: 7ac7fd67032c49ca07a2a050b72dce199cfebf54
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d79fd60f4fe3786cfe3106329904d9d262078411
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548499"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024215"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure ゲスト OS リリースと SDK の互換性対応表
 Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報を提供します。 この情報は、ゲスト OS が無効になる前にアップグレード パスを計画する際に役立ちます。 ロールを構成して、「 *Azure ゲスト OS の更新設定* 」に説明されているゲスト OS の [自動][Azure Guest OS Update Settings]更新を使用する場合、このページを読むことは必須ではありません。
@@ -41,6 +41,9 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 ゲスト OS の更新方法については、 [こちら][cloud updates]を確認してください。
 
 ## <a name="news-updates"></a>最新情報
+
+###### <a name="september-5-2020"></a>**2020 年 9 月 5 日**
+8 月のゲスト OS がリリースされました。 
 
 ###### <a name="august-17-2020"></a>**2020 年 8 月 17 日**
 7 月のゲスト OS がリリースされました。 
@@ -137,8 +140,9 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 
 | 構成文字列 | リリース日 | 無効になる日 |
 | --- | --- | --- |
+|  WA-GUEST-OS-6.22_202008-02  |  2020 年 9 月 5 日  |  Post 6.24  |  
 |  WA-GUEST-OS-6.21_202007-01  |  2020 年 8 月 17 日  |  Post 6.23  |  
-|  WA-GUEST-OS-6.20_202006-02  |  2020 年 8 月 10 日  |  Post 6.22  |  
+|~~WA-GUEST-OS-6.20_202006-02~~|  2020 年 8 月 10 日  |  2020 年 9 月 5 日  |  
 |~~WA-GUEST-OS-6.19_202005-02~~|  2020 年 6 月 2 日  |  2020 年 8 月 17 日  |  
 |~~WA-GUEST-OS-6.18_202004-01~~|  2020 年 5 月 4 日  |  2020 年 8 月 10 日  |  
 |~~WA-GUEST-OS-6.17_202003-01~~|  2020 年 4 月 2 日  |  2020 年 6 月 2 日  |  
@@ -171,8 +175,9 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 
 | 構成文字列 | リリース日 | 無効になる日 |
 | --- | --- | --- |
+|  WA-GUEST-OS-5.46_202008-02  |  2020 年 9 月 5 日  |  Post 5.48  |  
 |  WA-GUEST-OS-5.45_202007-01  |  2020 年 8 月 17 日  |  Post 5.47  |  
-|  WA-GUEST-OS-5.44_202006-02  |  2020 年 8 月 10 日  |  Post 5.46  |  
+|~~WA-GUEST-OS-5.44_202006-02~~|  2020 年 8 月 10 日  |  2020 年 9 月 5 日  |  
 |~~WA-GUEST-OS-5.43_202005-02~~|  2020 年 6 月 2 日  |  2020 年 8 月 17 日  |  
 |~~WA-GUEST-OS-5.42_202004-01~~|  2020 年 5 月 4 日  |  2020 年 8 月 10 日  |  
 |~~WA-GUEST-OS-5.41_202003-01~~|  2020 年 4 月 2 日  |  2020 年 6 月 2 日  |  
@@ -202,8 +207,9 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 
 | 構成文字列 | リリース日 | 無効になる日 |
 | --- | --- | --- |
+|  WA-GUEST-OS-4.81_202008-02  |  2020 年 9 月 5 日  |  Post 4.83  | 
 |  WA-GUEST-OS-4.80_202007-01  |  2020 年 8 月 17 日  |  Post 4.82  | 
-|  WA-GUEST-OS-4.79_202006-02  |  2020 年 8 月 10 日  |  Post 4.81  | 
+|~~WA-GUEST-OS-4.79_202006-02~~|  2020 年 8 月 10 日  |  2020 年 9 月 5 日  | 
 |~~WA-GUEST-OS-4.78_202005-02~~|  2020 年 6 月 2 日  |  2020 年 8 月 17 日  |  
 |~~WA-GUEST-OS-4.77_202004-01~~|  2020 年 5 月 4 日  |  2020 年 8 月 10 日  |  
 |~~WA-GUEST-OS-4.76_202003-01~~|  2020 年 4 月 2 日  |  2020 年 6 月 2 日  |  
@@ -233,8 +239,9 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 
 | 構成文字列 | リリース日 | 無効になる日 |
 | --- | --- | --- |
+|  WA-GUEST-OS-3.88_202008-02  |  2020 年 9 月 5 日  |  Post 3.90  |  
 |  WA-GUEST-OS-3.87_202007-01  |  2020 年 8 月 17 日  |  Post 3.89  |  
-|  WA-GUEST-OS-3.86_202006-02  |  2020 年 8 月 10 日  |  Post 3.88  |  
+|~~WA-GUEST-OS-3.86_202006-02~~|  2020 年 8 月 10 日  |  2020 年 9 月 5 日  |  
 |~~WA-GUEST-OS-3.85_202005-02~~|  2020 年 6 月 2 日  |  2020 年 8 月 17 日  |  
 |~~WA-GUEST-OS-3.84_202004-01~~|  2020 年 5 月 4 日  |  2020 年 8 月 10 日  |  
 |~~WA-GUEST-OS-3.83_202003-01~~|  2020 年 4 月 2 日  |  2020 年 6 月 2 日  |  
@@ -264,8 +271,9 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 
 | 構成文字列 | リリース日 | 無効になる日 |
 | --- | --- | --- |
+|  WA-GUEST-OS-2.101_202008-02  |  2020 年 9 月 5 日  |  Post 2.103  |  
 |  WA-GUEST-OS-2.100_202007-01  |  2020 年 8 月 17 日  |  Post 2.102  |  
-|  WA-GUEST-OS-2.99_202006-02  |  2020 年 8 月 10 日  |  Post 2.101  |  
+|~~WA-GUEST-OS-2.99_202006-02~~|  2020 年 8 月 10 日  | 2020 年 9 月 5 日  |  
 |~~WA-GUEST-OS-2.98_202005-02~~|  2020 年 6 月 2 日  |  2020 年 8 月 17 日  |  
 |~~WA-GUEST-OS-2.97_202004-01~~|  2020 年 5 月 4 日  |  2020 年 8 月 10 日  |  
 |~~WA-GUEST-OS-2.96_202003-01~~|  2020 年 4 月 2 日  |  2020 年 6 月 2 日  |  
@@ -360,7 +368,7 @@ Microsoft Azure では、常に更新プログラムがリリースされてい�
 [msrc]: https://technet.microsoft.com/security/dn440717.aspx
 [update guest os portal]: https://msdn.microsoft.com/library/gg433101.aspx
 [update guest os svc]: https://msdn.microsoft.com/library/gg456324.aspx
-[restarts]: https://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx
+[restarts]: https://docs.microsoft.com/archive/blogs/kwill/role-instance-restarts-due-to-os-upgrades
 [patches]: cloud-services-guestos-msrc-releases.md
 [retirepolicy]: cloud-services-guestos-retirement-policy.md
 [fam1retire]: cloud-services-guestos-family1-retirement.md

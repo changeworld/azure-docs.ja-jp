@@ -1,6 +1,6 @@
 ---
-title: アプリケーションの同意の管理と同意要求の評価 - Azure AD
-description: ユーザーの同意が無効または制限されている場合に同意要求を管理する方法、およびアプリケーションに対するテナント全体の管理者の同意要求を評価する方法について説明します。
+title: アプリケーションの同意の管理と Azure Active Directory の同意要求の評価
+description: ユーザーの同意が無効または制限されている場合に同意要求を管理する方法、および Azure Active Directory でアプリケーションに対するテナント全体の管理者の同意要求を評価する方法について説明します。
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -11,13 +11,12 @@ ms.topic: how-to
 ms.date: 12/27/2019
 ms.author: kenwith
 ms.reviewer: phsignor
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f7dc1d4b0f6678f02c4f5d152edf2ae9af063d1
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 3d95d2551f8e078f4252a19dc850345793c040d8
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89392444"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420457"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>アプリケーションの同意の管理と同意要求の評価
 
@@ -76,7 +75,7 @@ Microsoft は、エンドユーザーによるアプリケーションの同意�
 
 * **要求されているアクセス許可を理解します。**
 
-   アプリケーションによって要求されたアクセス許可は、[同意プロンプト](../develop/application-consent-experience.md)に一覧表示されます。 アクセス許可のタイトルを展開すると、アクセス許可の説明が表示されます。 アプリケーションのアクセス許可の説明は、通常 "サインインしたユーザーなし" で終わります。 委任されたアクセス許可の説明は、通常 "サインインしたユーザーの代わりに" で終わります。 Microsoft Graph API のアクセス許可については、[Microsoft Graph のアクセス許可のリファレンス] で説明されています。他の API が公開するアクセス許可については、ドキュメントを参照してください。
+   アプリケーションによって要求されたアクセス許可は、[同意プロンプト](../develop/application-consent-experience.md)に一覧表示されます。 アクセス許可のタイトルを展開すると、アクセス許可の説明が表示されます。 アプリケーションのアクセス許可の説明は、通常 "サインインしたユーザーなし" で終わります。 委任されたアクセス許可の説明は、通常 "サインインしたユーザーの代わりに" で終わります。 Microsoft Graph API のアクセス許可については、「[Microsoft Graph のアクセス許可のリファレンス](https://docs.microsoft.com/graph/permissions-reference)」で説明されています。他の API で公開されるアクセス許可については、ドキュメントを参照してください。
 
    要求されているアクセス許可を把握していない場合は、*同意を許可しないでください*。
 
@@ -95,39 +94,29 @@ Microsoft は、エンドユーザーによるアプリケーションの同意�
 ## <a name="granting-consent-as-an-administrator"></a>管理者として同意を許可する
 
 ### <a name="granting-tenant-wide-admin-consent"></a>テナント全体の管理者の同意を許可する
-
 テナント全体の管理者の同意を Azure portal、Azure AD PowerShell、または同意プロンプト自体から許可する手順については、「[アプリケーションに対してテナント全体の管理者の同意を許可する](grant-admin-consent.md)」を参照してください。
 
 ### <a name="granting-consent-on-behalf-of-a-specific-user"></a>特定のユーザーに代わって同意を許可する
-
 管理者は、組織全体に同意を許可するのではなく、[Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api) を使用して、1 人のユーザーに代わって委任されたアクセス許可に同意を許可することもできます。 詳細については、「[ユーザーの代わりにアクセスを取得](https://docs.microsoft.com/graph/auth-v2-user)」を参照してください。
 
 ## <a name="limiting-user-access-to-applications"></a>アプリケーションへのユーザー アクセスを制限する
-
 テナント全体の管理者の同意が許可されている場合でも、ユーザーのアプリケーションへのアクセスは制限される可能性があります。 アプリケーションへのユーザー割り当てを要求する方法の詳細については、[ユーザーとグループを割り当てる方法](methods-for-assigning-users-and-groups.md)に関する記事を参照してください。
 
 その他の複雑なシナリオの処理方法などについての詳細な概要については、[Azure AD を使用したアプリケーション アクセス管理](what-is-access-management.md)に関する記事を参照してください。
 
 ## <a name="disable-all-future-user-consent-operations-to-any-application"></a>すべてのアプリケーションに対して今後のユーザーの同意操作をすべて無効にする
-
 ディレクトリ全体でユーザーの同意を無効にすると、エンドユーザーはすべてのアプリケーションに同意できなくなります。 管理者は、依然としてユーザーに代わって同意できます。 アプリケーションの同意と、同意する理由または同意しない理由の詳細については、「[ユーザーおよび管理者の同意について](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)」をご覧ください。
 
-**ディレクトリ全体で今後のユーザーの同意動作をすべて無効にする**には、次の手順に従います。
+ディレクトリ全体で今後のユーザーの同意動作をすべて無効にするには、次の手順に従います。
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
 2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
-4.  ナビゲーション メニューで **[ユーザーとグループ]** をクリックします。
-5.  **[ユーザー設定]** をクリックします。
+4.  ナビゲーション メニューで **[ユーザーとグループ]** を選択します。
+5.  **[ユーザー設定]** を選択します。
 6.  **[ユーザーはアプリが自分のデータにアクセスすることを許可できる]** トグルを **[いいえ]** に設定し、 **[保存]** をクリックして、今後のすべてのユーザーの同意操作を無効にします。
 
 ## <a name="next-steps"></a>次のステップ
-
-[ID インフラストラクチャをセキュリティ保護する 5 つのステップ](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#before-you-begin-protect-privileged-accounts-with-mfa)
-
-[管理者の同意ワークフローの構成](configure-admin-consent-workflow.md)
-
-[Azure Active Directory でエンド ユーザーがアプリケーションに同意する方法を構成する](configure-user-consent.md)
-
-[Microsoft ID プラットフォームでのアクセス許可と同意](../develop/active-directory-v2-scopes.md)
-
-[StackOverflow での Azure AD](https://stackoverflow.com/questions/tagged/azure-active-directory)
+* [ID インフラストラクチャをセキュリティ保護する 5 つのステップ](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#before-you-begin-protect-privileged-accounts-with-mfa)
+* [管理者の同意ワークフローの構成](configure-admin-consent-workflow.md)
+* [Azure Active Directory でエンド ユーザーがアプリケーションに同意する方法を構成する](configure-user-consent.md)
+* [Microsoft ID プラットフォームでのアクセス許可と同意](../develop/active-directory-v2-scopes.md)

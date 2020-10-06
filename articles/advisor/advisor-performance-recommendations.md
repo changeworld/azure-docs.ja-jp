@@ -3,12 +3,12 @@ title: Advisor を使用して Azure アプリのパフォーマンスを向上�
 description: Azure Advisor のパフォーマンスに関する推奨事項を使用すると、ビジネスに不可欠なアプリケーションのスピードと応答性を向上させることができます。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 0112e94e7652026e020e99ca82ad757c236a0c53
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 9a8499e85a264488c756a3d497565398f2e1c229
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653309"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651582"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Azure Advisor を使用して Azure アプリケーションのパフォーマンスを向上させる
 
@@ -63,6 +63,8 @@ Advisor によって最新の[テーブル統計](../synapse-analytics/sql-data-
 
 Advisor の分析には、MySQL サーバーに接続するアプリケーションで接続が効率的に管理されていない可能性が示されることがあります。 このような状態は、不必要なリソース消費とアプリケーション待機時間の全体的な増加につながる可能性があります。 接続管理を向上させるには、有効期間の短い接続の数を減らし、不要なアイドル状態の接続を排除することをお勧めします。 こうした機能強化は、ProxySQL のようなサーバー側の接続プーラーを構成することで実現できます。
 
+## <a name="update-your-current-compute-management-sdk-version-to-the-most-recent-version"></a>Compute Management SDK の現在のバージョンを最新バージョンに更新します
+Advisor で、古いバージョンの Compute Management SDK を使用する操作を含むサブスクリプションが識別されています。 これはワークロードのセキュリティとパフォーマンスに影響を与える可能性があるため、Advisor によって、最新バージョンの Compute Management SDK に切り替えることが推奨されています。 
 
 ## <a name="scale-up-to-optimize-cache-utilization-on-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>スケールアップして Azure Synapse Analytics テーブルでのキャッシュ使用率を最適化し、クエリのパフォーマンスを向上させる
 

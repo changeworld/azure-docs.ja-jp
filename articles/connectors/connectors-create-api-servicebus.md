@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 09/14/2020
 tags: connectors
-ms.openlocfilehash: 13732c6d31f19dfb2548154feb8336a1dff3a529
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 2993fc718462d1ac2a9cfd02be5642fb21f86702
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853301"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526529"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Azure Logic Apps と Azure Service Bus を使用してクラウド内でメッセージを交換する
 
@@ -79,7 +79,7 @@ Service Bus から応答を取得し、その出力をロジック アプリ内�
    **[1 つ以上のメッセージがキューに届いたとき (オート コンプリート)]** トリガーのように、1 つ以上のメッセージを返すトリガーもあります。 これらのトリガーが起動すると、1 からトリガーの **[最大メッセージ数]** プロパティで指定された数までのメッセージが返されます。
 
     > [!NOTE]
-    > オートコンプリートのトリガーでメッセージが自動的に完成しますが、これは次回のトリガー実行時にのみ発生します。 このビヘイビアーはロジック アプリの設計に影響を与える可能性があります。 たとえば、1 分おきにメッセージを確認するようにオートコンプリートのトリガーを設定したが、Service Bus 側でロック期間が 30 秒に設定されている場合、結果的に、メッセージの自動入力時、"ロック期限切れ" エラーが発生します。 ポーリング間隔より長い値にロック期間を設定する必要があります。
+    > オートコンプリートのトリガーでメッセージが自動的に完成しますが、これは次回のトリガー実行時にのみ発生します。 このビヘイビアーはロジック アプリの設計に影響を与える可能性があります。 たとえば、オートコンプリート トリガーの同時実行を変更しないようにします。変更すると、ロジック アプリが調整状態になったときに、メッセージが重複する可能性があります。 同時実行制御を変更すると、次のような状況になります。調整されたトリガーは `WorkflowRunInProgress` コードでスキップされ、完了操作は行われず、ポーリング間隔の後で次のトリガー実行が発生します。 ポーリング間隔より長い値にサービス バス ロック期間を設定する必要があります。 ただし、このように設定しても、次のポーリング間隔でもロジック アプリが調整状態のままである場合、メッセージはまだ完了していない可能性があります。
 
 1. トリガーを Service Bus 名前空間に初めて接続する場合、接続情報の入力を求めるメッセージがロジック アプリ デザイナーによって表示された際は次の手順に従います。
 
@@ -167,7 +167,7 @@ Service Bus から応答を取得し、その出力をロジック アプリ内�
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-Service Bus コネクタを使用すると、Service Bus からコネクタ キャッシュまで最大 1500 個の一意のセッションを同時に保存できます。 セッション数がこの制限を超えると、古いセッションはキャッシュから削除されます。 詳細については、[メッセージ セッション](../service-bus-messaging/message-sessions.md)に関するページを参照してください。
+サービス バスでは、Service Bus コネクタにより、[サブスクリプションやトピックなどの Service Bus メッセージング エンティティ](../service-bus-messaging/service-bus-queues-topics-subscriptions.md)ごとに、コネクタ キャッシュに最大 1,500 の一意のセッションを一度に保存できます。 セッション数がこの制限を超えると、古いセッションはキャッシュから削除されます。 詳細については、[メッセージ セッション](../service-bus-messaging/message-sessions.md)に関するページを参照してください。
 
 コネクタの Swagger の説明に記載されているトリガー、アクション、制限に関するその他の技術的な詳細については、[コネクタのリファレンス ページ](/connectors/servicebus/)を確認してください。 Azure Service Bus メッセージングの詳細については、「[Azure Service Bus とは](../service-bus-messaging/service-bus-messaging-overview.md)」を参照してください。
 

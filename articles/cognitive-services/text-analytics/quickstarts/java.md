@@ -1,7 +1,7 @@
 ---
-title: クイック スタート:Java を使用して Text Analytics REST API を呼び出す
+title: Java を使用して Text Analytics REST API を呼び出す
 titleSuffix: Azure Cognitive Services
-description: このクイックスタートでは、Azure Cognitive Services の Text Analytics API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
+description: このクイックスタートでは、Azure Cognitive Services の Text Analytics API の使用をすぐに開始するために役立つ情報とコード サンプルを Java を使用して取得する方法を説明します。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: aahi
 ms.custom: seo-java-july2019, seo-java-august2019, devx-track-java
-ms.openlocfilehash: f8f9d76e5f1584ce54897950d7e35e2b22ba958e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6c3c613f8733c8f786d121ab33b09afab244b09e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319781"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532275"
 ---
-# <a name="quickstart-use-java-to-call-the-azure-text-analytics-cognitive-service"></a>クイック スタート:Java を使用して Azure Text Analytics Cognitive Service を呼び出す
+# <a name="quickstart-use-java-to-call-the-azure-text-analytics-cognitive-service"></a>Java を使用して Azure Text Analytics Cognitive Service を呼び出す
 <a name="HOLTop"></a>
 
 この記事では、 [Text Analytics API シリーズ](//go.microsoft.com/fwlink/?LinkID=759711) を Java で使用して、[言語の検出](#Detect)、[センチメントの分析](#SentimentAnalysis)、[キー フレーズの抽出](#KeyPhraseExtraction)、および[リンクされているエンティティの識別](#Entities)を行う方法について説明します。

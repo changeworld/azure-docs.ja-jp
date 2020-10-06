@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: 19e3e356765099b83f7248a024b55c491a61b110
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: c3ffcea27fa16fd4f5449b42407a7e4779ca27f9
+ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816271"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89420933"
 ---
 # <a name="offer-listing-best-practices"></a>オファーの掲載のベスト プラクティス
 
@@ -48,11 +48,11 @@ ms.locfileid: "88816271"
 
 ### <a name="categories"></a>Categories
 
-Microsoft AppSource と Azure Marketplace は、顧客の固有の要件に対応する、2 つの異なるオンライン ストアです。 Azure Marketplace は、Azure 上でソリューションを構築する IT プロフェッショナルと開発者を対象としています。  Microsoft AppSource は、ビジネスや業界の SaaS アプリケーション、Dynamics 365 アドイン、Microsoft 365 アドイン、および Power Platform アプリを探しているビジネス ユーザーを対象としています。
+Microsoft AppSource と Azure Marketplace は、さまざまな種類のソリューションを提供するオンライン ストアです。 Azure Marketplace では、Azure 上または Azure 向けに構築された IT ソリューションが提供されます。  Microsoft AppSource では、産業用 SaaS アプリケーション、Dynamics 365 アドイン、Microsoft 365 アドイン、Power Platform アプリなどのビジネス ソリューションが提供されます。
 
-カテゴリとサブカテゴリは、対象ユーザーに基づいて各オンライン ストアにマップされます。 プランは、プランの種類、プランのトランザクション機能、カテゴリ/サブカテゴリの選択に応じて、Microsoft AppSource または Azure Marketplace に公開されます。 
+カテゴリとサブカテゴリは、ソリューションの種類に基づいて各オンライン ストアにマップされています。 プランは、プランの種類、プランのトランザクション機能、カテゴリ/サブカテゴリの選択に応じて、Microsoft AppSource または Azure Marketplace に公開されます。 
 
-プランと対象ユーザーに最適なカテゴリとサブカテゴリを選択します。 選択できるオプションは次のとおりです。
+ソリューションの種類に最も合ったカテゴリとサブカテゴリを選択します。 選択できるオプションは次のとおりです。
 
 * プライマリ カテゴリとセカンダリ カテゴリを含む、最大 2 つのカテゴリ (省略可能)。
 * プライマリ カテゴリ、セカンダリ カテゴリ、またはその両方についてそれぞれ最大 2 つのサブカテゴリ。 サブカテゴリを選択しない場合でも、選択したカテゴリのみで検出できます。

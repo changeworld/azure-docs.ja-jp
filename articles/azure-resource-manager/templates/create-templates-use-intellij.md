@@ -5,12 +5,12 @@ ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: conceptual
 ms.custom: devx-track-java
-ms.openlocfilehash: 4039a70bf90bc8f4b7932dbf40d8369e9773abf3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6a596eff70bfc20b5a6752ef47398bd14d527c97
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321821"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973326"
 ---
 # <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>IntelliJ IDEA を使用して ARM テンプレートを作成およびデプロイする
 
@@ -66,7 +66,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. このページで 2 つのファイルを編集し、変更を Azure にデプロイすることができます。 ここでは、パラメーター ファイルの **storageAccountType** の値を `Standard_LRS` から `Standard_GRS` に変更します。 次に、下部にある **[更新プログラムの展開]** をクリックし、更新プログラムを確認します。
 
-    ![Resource Manager テンプレートのデプロイの編集](./media/create-templates-use-intellij/resource-manager-edit-deployment-update.png)
+    ![スクリーンショットには、[更新プログラムの展開] プロンプトが表示された Resource Manager テンプレートが示されています。](./media/create-templates-use-intellij/resource-manager-edit-deployment-update.png)
 
 1. 更新プログラムのデプロイが完了したら、作成されたストレージ アカウントが `Standard_GRS` に変更されたことをポータルで確認できます。
 

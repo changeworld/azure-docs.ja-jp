@@ -14,12 +14,12 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9d2f295394d89432f3c6dd99585cc4363d4ff74
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 3b8a40449d7a2b17adddd55120ab232a5cd3f459
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641366"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90600947"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>アプリケーション認証を Active Directory フェデレーション サービス (AD FS) から Azure Active Directory に移動する
 
@@ -35,7 +35,7 @@ ms.locfileid: "88641366"
 
 ユーザーは、オンプレミスの Active Directory で直接認証を行うこともあります。 Active Directory フェデレーション サービス (AD FS) は、標準に基づくオンプレミスの ID サービスです。 AD FS では、信頼されたビジネス パートナー間でシングル サインオン (SSO) 機能を使用する機能が拡張され、ユーザーが各アプリケーションに個別にサインインする必要がなくなります。 これはフェデレーションと呼ばれます。
 
-多くの組織には、Office 365 や Azure AD ベースのアプリの他に、AD FS に直接フェデレーションされたサービスとしてのソフトウェア (SaaS) アプリやカスタム基幹業務 (LOB) アプリがあります。 
+多くの組織には、Microsoft 365 や Azure AD ベースのアプリの他に、AD FS に直接フェデレーションされたサービスとしてのソフトウェア (SaaS) アプリやカスタム基幹業務 (LOB) アプリがあります。 
 
 ![オンプレミスに直接接続されているアプリケーション](media/migrate-adfs-apps-to-azure/app-integration-before-migration1.png)
 

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 13ee8c5166e3b31ec186ca9aa2702d15de36e09f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ddb99fd7a7ce8265a6e9c63555cd6a226caacc4c
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522399"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89440730"
 ---
 # <a name="datasets-in-azure-data-factory-version-1"></a>Azure Data Factory (バージョン 1) のデータセット
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -32,7 +32,7 @@ ms.locfileid: "86522399"
 > Azure Data Factory を初めて使用する場合は、[Azure Data Factory の概要](data-factory-introduction.md)に関するページを参照してください。 データ ファクトリを実際に作成したことがない場合は、[データ変換のチュートリアル](data-factory-build-your-first-pipeline.md)や[データ移動のチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照すると、理解を深めることができます。
 
 ## <a name="overview"></a>概要
-データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 **パイプライン**は、1 つのタスクを連携して実行する**アクティビティ**の論理的なグループです。 パイプライン内の複数のアクティビティは、データに対して実行するアクションを定義します。 たとえば、コピー アクティビティを使用して、SQL Server データベースから Azure Blob Storage にデータをコピーすることができます。 その後、Azure HDInsight クラスターで Hive スクリプトを実行する Hive アクティビティを使用して、Blob Storage のデータを処理し、出力データを生成できます。 最後に、別のコピー アクティビティを使用して、ビジネス インテリジェンス (BI) レポート ソリューションが構築されている Azure SQL Data Warehouse に出力データをコピーできます。 パイプラインとアクティビティの詳細については、「[Azure Data Factory のパイプラインとアクティビティ](data-factory-create-pipelines.md)」を参照してください。
+データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 **パイプライン**は、1 つのタスクを連携して実行する**アクティビティ**の論理的なグループです。 パイプライン内の複数のアクティビティは、データに対して実行するアクションを定義します。 たとえば、コピー アクティビティを使用して、SQL Server データベースから Azure Blob Storage にデータをコピーすることができます。 その後、Azure HDInsight クラスターで Hive スクリプトを実行する Hive アクティビティを使用して、Blob Storage のデータを処理し、出力データを生成できます。 最後に、別のコピー アクティビティを使用して、ビジネス インテリジェンス (BI) レポート ソリューションが構築されている Azure Synapse Analytics (旧称 SQL Data Warehouse) に出力データをコピーできます。 パイプラインとアクティビティの詳細については、「[Azure Data Factory のパイプラインとアクティビティ](data-factory-create-pipelines.md)」を参照してください。
 
 アクティビティは 0 個以上の入力**データセット**を受け取り、1 個以上の出力データセットを生成できます。 入力データセットはパイプライン内のアクティビティに対する入力を表し、出力データセットはアクティビティの出力を表します。 データセットは、テーブル、ファイル、フォルダー、ドキュメントなど、さまざまなデータ ストア内のデータを示します。 たとえば、Azure Blob データセットは、パイプラインによってデータが読み取られる、Blob Storage 内の BLOB コンテナーと BLOB フォルダーを示しています。
 

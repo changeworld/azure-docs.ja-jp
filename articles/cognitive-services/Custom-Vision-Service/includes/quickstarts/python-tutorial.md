@@ -2,15 +2,18 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 08/17/2020
-ms.openlocfilehash: 1bf0ecbc996fe853a6ca1d0ed5a749c798383146
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.date: 09/15/2020
+ms.openlocfilehash: a091222b01669c6b83c599787c61dcd6b62b05d0
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508592"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605017"
 ---
-この記事では、Custom Vision クライアント ライブラリと Python を使用して画像分類モデルを構築する基本的な方法について説明します。 作成後は、タグの追加、画像のアップロード、プロジェクトのトレーニング、プロジェクトの公開された予測エンドポイント URL の取得、エンドポイントを使用したプログラミングによる画像のテストを行うことができます。 この例は、独自の Python アプリケーションを構築するためのテンプレートとしてご利用ください。 分類モデルの構築と使用のプロセスをコード "_なし_" で行う場合は、[ブラウザー ベースのガイダンス](../../getting-started-build-a-classifier.md)を参照してください。
+このガイドでは、Python 用の Custom Vision クライアント ライブラリを使用して画像分類モデルを構築する際の足がかりとして役立つ手順とサンプル コードを紹介します。 プロジェクトを作成し、タグを追加し、プロジェクトをトレーニングして、プロジェクトの予測エンドポイント URL を使用してプログラムでテストします。 この例は、独自の画像認識アプリを構築するためのテンプレートとしてご利用ください。
+
+> [!NOTE]
+> コードを記述 "_せずに_" 分類モデルの構築とトレーニングを行いたい場合は、代わりに[ブラウザーベースのガイダンス](../../getting-started-build-a-classifier.md)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -20,7 +23,7 @@ ms.locfileid: "88508592"
 
 ## <a name="install-the-custom-vision-client-library"></a>Custom Vision クライアント ライブラリをインストールする
 
-Python 用 Custom Vision Service クライアント ライブラリをインストールするには、PowerShell で次のコマンドを実行します。
+Python 用の Custom Vision で画像分析アプリを作成するには、Custom Vision のクライアント ライブラリが必要です。 PowerShell で次のコマンドを実行します。
 
 ```powershell
 pip install azure-cognitiveservices-vision-customvision
@@ -34,7 +37,7 @@ pip install azure-cognitiveservices-vision-customvision
 
 目的のプロジェクト ディレクトリに、*sample.py* という新しいファイルを作成します。
 
-### <a name="create-the-custom-vision-service-project"></a>Custom Vision Service プロジェクトを作成する
+## <a name="create-the-custom-vision-project"></a>Custom Vision プロジェクトを作成する
 
 新しい Custom Vision Service プロジェクトを作成するための次のコードをスクリプトに追加します。 該当する各定義にサブスクリプション キーを挿入します。 また、Custom Vision Web サイトの [設定] ページからエンドポイント URL を取得します。
 
@@ -62,7 +65,7 @@ print ("Creating project...")
 project = trainer.create_project("My New Project")
 ```
 
-### <a name="create-tags-in-the-project"></a>プロジェクトにタグを作成する
+## <a name="create-tags-in-the-project"></a>プロジェクトにタグを作成する
 
 プロジェクトに分類タグを作成するため、*sample.py* の最後に次のコードを追加します。
 
@@ -72,7 +75,7 @@ hemlock_tag = trainer.create_tag(project.id, "Hemlock")
 cherry_tag = trainer.create_tag(project.id, "Japanese Cherry")
 ```
 
-### <a name="upload-and-tag-images"></a>画像をアップロードし、タグ付けする
+## <a name="upload-and-tag-images"></a>画像をアップロードし、タグ付けする
 
 サンプルの画像をプロジェクトに追加するには、タグ作成後、次のコードを挿入します。 このコードでは、それぞれの画像を対応するタグと共にアップロードします。 1 回のバッチで最大 64 個の画像をアップロードできます。
 
@@ -104,7 +107,7 @@ if not upload_result.is_batch_successful:
     exit(-1)
 ```
 
-### <a name="train-the-classifier-and-publish"></a>分類器をトレーニングしてする公開する
+## <a name="train-and-publish-the-project"></a>プロジェクトをトレーニングして公開する
 
 このコードにより、予測モデルの最初のイテレーションが作成され、そのイテレーションが予測エンドポイントに公開されます。 公開されたイテレーションに付けられた名前は、予測要求を送信するために使用できます。 イテレーションは、公開されるまで予測エンドポイントで利用できません。
 
@@ -123,7 +126,7 @@ trainer.publish_iteration(project.id, iteration.id, publish_iteration_name, pred
 print ("Done!")
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>予測エンドポイントで公開されたイテレーションを取得して使用する
+## <a name="use-the-prediction-endpoint"></a>予測エンドポイントを使用する
 
 画像を予測エンドポイントに送信し、予測を取得するには、ファイルの末尾に以下のコードを追加します。
 
@@ -176,3 +179,6 @@ Done!
 
 > [!div class="nextstepaction"]
 > [モデルのテストと再トレーニング](../../test-your-model.md)
+
+* Custom Vision とは
+* [SDK のリファレンス ドキュメント](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customvision?view=azure-python)

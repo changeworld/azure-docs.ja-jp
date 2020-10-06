@@ -9,14 +9,17 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: ada966cb3c2a08a8a1ed81c3ba18ab9859774b44
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: b80b3cf1712fab17b8f626bae5fef97849e44e20
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394435"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972253"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>Azure のロールベースのアクセス制御を使用して Key Vault のキー、証明書、シークレットへのアクセス権を付与する (プレビュー)
+
+> [!NOTE]
+> Key Vault リソース プロバイダーでは、**コンテナー**と**マネージド HSM** という 2 種類のリソースがサポートされています。 この記事で説明するアクセス制御は、**コンテナー**にのみ適用されます。 マネージド HSM のアクセス制御の詳細については、「[マネージド HSM アクセス制御](../managed-hsm/access-control.md)」を参照してください。
 
 Azure ロールベースのアクセス制御 (Azure RBAC) は [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) 上に構築された承認システムであり、Azure リソースに対するアクセスをきめ細かく管理できます。
 

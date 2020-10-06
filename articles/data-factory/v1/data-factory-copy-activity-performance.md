@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 12deb51cb2c0efc1bef77a3ff2c8d5150ba13cde
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 785b42ab963c3784e63cd00eb0baa62b20952a8a
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196104"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89441087"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>コピー アクティビティのパフォーマンスとチューニングに関するガイド
 
@@ -32,7 +32,7 @@ Azure Data Factory コピー アクティビティは、優れたセキュリテ
 
 Azure によりエンタープライズ クラスのデータ ストレージおよびデータ ウェアハウスのソリューション セットが提供されます。また、コピー アクティビティにより、構成とセットアップが簡単な、大幅に最適化されたデータ読み込み環境がもたらされます。 1 つのコピー アクティビティで次のことを実現できます。
 
-* **Azure SQL Data Warehouse** へのデータの読み込み (**1.2 GBps**)。 ユース ケースを使用したチュートリアルについては、[1 TB のデータを Azure Data Factory を使用して 15 分以内に Azure SQL Data Warehouse に読み込む方法](data-factory-load-sql-data-warehouse.md)に関するページを参照してください。
+* **Azure Synapse Analytics** にデータを **1.2 Gbps** で読み込みます。 ユース ケースを使用したチュートリアルについては、[1 TB のデータを Azure Data Factory を使用して 15 分以内に Azure Synapse Analytics (旧称 SQL Data Warehouse) に読み込む方法](data-factory-load-sql-data-warehouse.md)に関するページを参照してください。
 * **Azure Blob Storage** へのデータの読み込み (**1.0 GBps**)
 * **Azure Data Lake Store** へのデータの読み込み (**1.0 GBps**)
 
@@ -183,9 +183,9 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 ## <a name="staged-copy"></a>ステージング コピー
 ソース データ ストアからシンク データ ストアにデータをコピーする場合、中間のステージング ストアとして Blob Storage を使用できます。 ステージングは、特に次のような場合に役立ちます。
 
-1. **PolyBase を使ってさまざまなデータ ストアから SQL Data Warehouse にデータを取り込む**。 SQL Data Warehouse は、大量のデータを読み込むための高スループットのメカニズムとして PolyBase を使用します。 ただし、ソース データが Blob Storage にあることと追加の条件を満たすことが必要です。 Blob Storage 以外のデータ ストアからデータを読み込む際は、中間ステージング Blob Storage 経由のデータ コピーを有効にすることができます。 その場合、Data Factory は、PolyBase の要件を満たすために必要なデータ変換を実行します。 その後、PolyBase を使用してデータを SQL Data Warehouse に読み込みます。 詳細については、「 [PolyBase を使用して Azure SQL Data Warehouse にデータを読み込む](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)」を参照してください。 ユース ケースを使用したチュートリアルについては、[1 TB のデータを Azure Data Factory を使用して 15 分以内に Azure SQL Data Warehouse に読み込む方法](data-factory-load-sql-data-warehouse.md)に関するページを参照してください。
+1. **PolyBase を使用して、さまざまなデータ ストアから Azure Synapse Analytic にデータを取り込む。** Azure Synapse Analytics では、大量のデータを Azure Synapse Analytics に読み込むための高スループットのメカニズムとして、PolyBase が使用されます。 ただし、ソース データが Blob Storage にあることと追加の条件を満たすことが必要です。 Blob Storage 以外のデータ ストアからデータを読み込む際は、中間ステージング Blob Storage 経由のデータ コピーを有効にすることができます。 その場合、Data Factory は、PolyBase の要件を満たすために必要なデータ変換を実行します。 その後、PolyBase を使用して、データが Azure Synapse Analytics に読み込まれます。 詳細については、[PolyBase を使用した Azure Synapse Analytics へのデータの読み込み](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics)に関する記事を参照してください。 ユース ケースを使用したチュートリアルについては、[Azure Data Factory を使用して 1 TB のデータを 15 分以内に Azure Synapse Analytics に読み込む方法](data-factory-load-sql-data-warehouse.md)に関する記事をご覧ください。
 2. **ネットワーク接続が遅い場合、ハイブリッド データ移動 (オンプレミス データ ストアとクラウド データ ストアの間でのコピー) の実行に少し時間がかかる場合がある**。 パフォーマンスを向上させるために、オンプレミスのデータを圧縮することで、クラウド内のステージング データ ストアにデータを移動する時間を短縮できます。 その後、データは、ターゲット データ ストアに読み込む前に、ステージング ストアで圧縮を解除できます。
-3. **企業の IT ポリシーが理由で、ファイアウォールでポート 80 とポート 443 以外のポートを開きたくない**。 たとえば、オンプレミス データ ストアから Azure SQL Database シンクまたは SQL Data Warehouse シンクにデータをコピーする場合、Windows ファイアウォールと会社のファイアウォールの両方で、ポート 1433 の送信 TCP 通信を有効にする必要があります。 このシナリオでは、ゲートウェイを利用して、まず、データをポート 443 の HTTP または HTTPS 経由で Blob Storage のステージング インスタンスにコピーします。 次に、Blob Storage のステージングから SQL Database または SQL Data Warehouse にデータを読み込みます。 このフローでは、ポート 1433 を有効にする必要はありません。
+3. **企業の IT ポリシーが理由で、ファイアウォールでポート 80 とポート 443 以外のポートを開きたくない**。 たとえば、オンプレミスのデータ ストアから Azure SQL Database シンクまたは Azure Synapse Analytics シンクにデータをコピーする場合、Windows ファイアウォールと会社のファイアウォールの両方で、ポート 1433 の送信 TCP 通信を有効にする必要があります。 このシナリオでは、ゲートウェイを利用して、まず、データをポート 443 の HTTP または HTTPS 経由で Blob Storage のステージング インスタンスにコピーします。 次に、Blob Storage ステージングから SQL Database または Azure Synapse Analytics にデータを読み込みます。 このフローでは、ポート 1433 を有効にする必要はありません。
 
 ### <a name="how-staged-copy-works"></a>ステージング コピーのしくみ
 ステージング機能を有効にすると、最初にデータがソース データ ストアからステージング データ ストア (独自に用意) にコピーされます。 次に、データは、ステージング データ ストアからシンク データ ストアにコピーされます。 Data Factory では、2 段階のフローが自動的に管理されます。 また、データ移動の完了後、ステージング ストレージから一時データをクリーンアップします。
@@ -208,7 +208,7 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 | プロパティ | 説明 | 既定値 | 必須 |
 | --- | --- | --- | --- |
 | **enableStaging** |中間ステージング ストアを経由してデータをコピーするかどうかを指定します。 |False |いいえ |
-| **linkedServiceName** |[AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) または [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) のリンクされたサービスの名前を指定します。これは、中間ステージング ストアとして使用する Storage のインスタンスです。 <br/><br/> PolyBase を使用してデータを SQL Data Warehouse に読み込むために、Shared Access Signature を持つ Storage を使用することはできません。 それ以外のすべてのシナリオでは使用できます。 |該当なし |はい ( **enableStaging** が TRUE に設定されている場合) |
+| **linkedServiceName** |[AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) または [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) のリンクされたサービスの名前を指定します。これは、中間ステージング ストアとして使用する Storage のインスタンスです。 <br/><br/> PolyBase を使用してデータを Azure Synapse Analytics に読み込むために、共有アクセス署名を持つストレージを使用することはできません。 それ以外のすべてのシナリオでは使用できます。 |該当なし |はい ( **enableStaging** が TRUE に設定されている場合) |
 | **path** |ステージング データを格納する Blob Storage のパスを指定します。 パスを指定しないと、一時データを格納するコンテナーがサービスによって作成されます。 <br/><br/> パスを指定するのは、Shared Access Signature を持つ Storage を使用する場合、または一時データを特定の場所に保存する必要がある場合のみです。 |該当なし |いいえ |
 | **enableCompression** |データをコピーする前に圧縮するかどうかを指定します。 この設定により、転送するデータの量が減ります。 |False |いいえ |
 
@@ -282,7 +282,7 @@ Data Factory サービスとコピー アクティビティのパフォーマン
 
 Microsoft のデータ ストアの場合は、データ ストアに特化した[監視とチューニングに関するトピック](#performance-reference)を参照してください。このトピックには、データ ストアのパフォーマンス特性に関する説明と、応答時間を短縮しスループットを最大限に高める方法が記載されています。
 
-Blob Storage から SQL Data Warehouse にデータをコピーする場合は、 **PolyBase** を使用してパフォーマンスを向上させることを検討してください。 詳細については、「 [PolyBase を使用して Azure SQL Data Warehouse にデータを読み込む](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) 」を参照してください。 ユース ケースを使用したチュートリアルについては、[1 TB のデータを Azure Data Factory を使用して 15 分以内に Azure SQL Data Warehouse に読み込む方法](data-factory-load-sql-data-warehouse.md)に関するページを参照してください。
+Blob Storage から Azure Synapse Analytics にデータをコピーする場合は、**PolyBase** を使用してパフォーマンスを向上させることを検討してください。 [PolyBase を使用した Azure Synapse Analytics へのデータの読み込み](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics)に関する記事を参照してください。 ユース ケースを使用したチュートリアルについては、[Azure Data Factory を使用して 1 TB のデータを 15 分以内に Azure Synapse Analytics に読み込む方法](data-factory-load-sql-data-warehouse.md)に関する記事をご覧ください。
 
 ### <a name="file-based-data-stores"></a>ファイル ベースのデータ ストア
 *"(Blob Storage、Data Lake Store、Amazon S3、オンプレミスのファイル システム、オンプレミスの HDFS など)"*
@@ -292,7 +292,7 @@ Blob Storage から SQL Data Warehouse にデータをコピーする場合は�
 * **Data Management Gateway** が必要な**オンプレミスのファイル システム**のシナリオについては、「[Data Management Gateway に関する考慮事項](#considerations-for-data-management-gateway)」を参照してください。
 
 ### <a name="relational-data-stores"></a>リレーショナル データ ストア
-*"(SQL Database、SQL Data Warehouse、Amazon Redshift、SQL Server データベースのほか、Oracle、MySQL、DB2、Teradata、Sybase、PostgreSQL データベースなど)"*
+" *(SQL Database、Azure Synapse Analytics、Amazon Redshift、SQL Server データベースのほか、Oracle、MySQL、DB2、Teradata、Sybase、PostgreSQL データベースなど)* "
 
 * **テーブル スキーマ**: テーブル スキーマは、コピーのスループットに影響を与えます。 同じ量のデータをコピーする場合は、行のサイズが小さいよりも大きい方がパフォーマンスは高くなります。 これは、データベースは、データのバッチが少ないほど、また含まれている行が少ないほど、そのデータを効率的に取得できるためです。
 * **クエリまたはストアド プロシージャ**: データをより効率的にフェッチできるように、コピー アクティビティ ソースで指定するクエリまたはストアド プロシージャのロジックを最適化します。
@@ -304,7 +304,7 @@ Blob Storage から SQL Data Warehouse にデータをコピーする場合は�
 
 Microsoft のデータ ストアについては、データ ストアに特化した [監視とチューニングに関するトピック](#performance-reference) を参照してください。 これらのトピックでは、データ ストアのパフォーマンス特性に関する説明と、応答時間を短縮しスループットを最大限に高める方法が記載されています。
 
-**Blob Storage** から **SQL Data Warehouse** にデータをコピーする場合は、**PolyBase** を使用してパフォーマンスを向上させることを検討してください。 詳細については、「 [PolyBase を使用して Azure SQL Data Warehouse にデータを読み込む](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) 」を参照してください。 ユース ケースを使用したチュートリアルについては、[1 TB のデータを Azure Data Factory を使用して 15 分以内に Azure SQL Data Warehouse に読み込む方法](data-factory-load-sql-data-warehouse.md)に関するページを参照してください。
+**Blob Storage** から **Azure Synapse Analytics** にデータをコピーする場合は、**PolyBase** を使用してパフォーマンスを向上させることを検討してください。 [PolyBase を使用した Azure Synapse Analytics へのデータの読み込み](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics)に関する記事を参照してください。 ユース ケースを使用したチュートリアルについては、[Azure Data Factory を使用して 1 TB のデータを 15 分以内に Azure Synapse Analytics に読み込む方法](data-factory-load-sql-data-warehouse.md)に関する記事をご覧ください。
 
 ### <a name="file-based-data-stores"></a>ファイル ベースのデータ ストア
 *"(Blob Storage、Data Lake Store、Amazon S3、オンプレミスのファイル システム、オンプレミスの HDFS など)"*
@@ -315,7 +315,7 @@ Microsoft のデータ ストアについては、データ ストアに特化�
 * **Data Management Gateway** を使用する必要がある**オンプレミスのファイル システム**のシナリオについては、「[Data Management Gateway に関する考慮事項](#considerations-for-data-management-gateway)」を参照してください。
 
 ### <a name="relational-data-stores"></a>リレーショナル データ ストア
-*"(SQL Database、SQL Data Warehouse、SQL Server データベース、Oracle データベースなど)"*
+" *(SQL Database、Azure Synapse Analytics、SQL Server データベース、Oracle データベースなど)* "
 
 * **コピー動作**:コピー アクティビティは、**sqlSink** 用に設定されたプロパティに応じて、さまざまな方法でデータを同期先データベースに書き込みます。
   * 既定では、データ移動サービスは、一括コピー API を使用して、データを追加モードで挿入します。これにより、最高のパフォーマンスが得られます。
@@ -419,7 +419,7 @@ Data Factory が同じデータ ストアに同時に接続することを必要
 * Azure Blob ストレージ:[BLOB ストレージのスケーラビリティとパフォーマンスのターゲット](../../storage/blobs/scalability-targets.md)および [BLOB ストレージのパフォーマンスとスケーラビリティのチェックリスト](../../storage/blobs/storage-performance-checklist.md)。
 * Azure Table ストレージ:[Table ストレージのスケーラビリティとパフォーマンスのターゲット](../../storage/tables/scalability-targets.md)および [Table ストレージのパフォーマンスとスケーラビリティのチェックリスト](../../storage/tables/storage-performance-checklist.md)。
 * Azure SQL Database:[パフォーマンスを監視](../../sql-database/sql-database-single-database-monitor.md)し、データベース トランザクション ユニット (DTU) の割合を確認できます。
-* Azure SQL Data Warehouse: 処理能力は Data Warehouse ユニット (DWU) で測定されます。[Azure SQL Data Warehouse でのコンピューティングの管理 (概要)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md) に関するページを参照してください。
+* Azure Synapse Analytics:処理能力は Data Warehouse ユニット (DWU) で測定されます。[Azure Synapse Analytics でのコンピューティングの管理 (概要)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md) に関するページを参照してください。
 * Azure Cosmos DB:[Azure Cosmos DB のパフォーマンス レベル](../../cosmos-db/performance-levels.md)
 * オンプレミスの SQL Server: [パフォーマンスの監視とチューニング](https://msdn.microsoft.com/library/ms189081.aspx)
 * オンプレミスのファイル サーバー: [ファイル サーバーのパフォーマンス チューニング](https://msdn.microsoft.com/library/dn567661.aspx)

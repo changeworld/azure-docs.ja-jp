@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d3fbb06355772794fbe3fab5cdf3c8622c2baf4
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 7cb62d3b7ebe3ba6f4551602c7867575e74dca70
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948829"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90601522"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>方法:条件付きアクセスを使用してクラウド アプリへのアクセスにマネージド デバイスを要求する
 
@@ -98,7 +98,7 @@ Azure AD に登録されているデバイスを取得するには、次の 3 �
 
 ### <a name="scenario-require-device-enrollment-for-ios-and-android-devices"></a>シナリオ:iOS および Android デバイスのデバイス登録が必要
 
-このシナリオでは、Office 365 リソースへのすべてのモバイル アクセスで、登録されたデバイスを使用する必要があると判断されました。 すべてのユーザーは既に Azure AD 資格情報でサインインしていて、Azure AD Premium P1 または P2、および Microsoft Intune を含むライセンスが割り当てられています。
+このシナリオでは、Microsoft 365 リソースへのすべてのモバイル アクセスで、登録されたデバイスを使用する必要があると判断されました。 すべてのユーザーは既に Azure AD 資格情報でサインインしていて、Azure AD Premium P1 または P2、および Microsoft Intune を含むライセンスが割り当てられています。
 
 組織は、登録済みモバイル デバイスの使用を必須とするために、以下の手順を完了する必要があります。
 

@@ -10,12 +10,12 @@ ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f769036ac9e5a6945e7ecad30e021d377cabd358
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3d0628777fbd6250fff4bb8347461d206d13782d
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020271"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561875"
 ---
 # <a name="graphics-binding"></a>グラフィックスのバインド
 
@@ -116,7 +116,6 @@ if (*wmrBinding->UpdateUserCoordinateSystem(ptr) == Result::Success)
 }
 ```
 
-
 ここで、上記の `ptr` は、API の座標が表されるワールド空間座標系を定義するネイティブな `ABI::Windows::Perception::Spatial::ISpatialCoordinateSystem` オブジェクトへのポインターである必要があります。
 
 #### <a name="render-remote-image"></a>リモート画像をレンダリングする
@@ -138,11 +137,23 @@ wmrBinding->BlitRemoteFrame();
 ### <a name="simulation"></a>シミュレーション
 
 `GraphicsApiType.SimD3D11` はシミュレーションのバインドであり、選択した場合は `GraphicsBindingSimD3d11` グラフィックスのバインドを作成します。 このインターフェイスは、デスクトップ アプリケーションなどで頭部の移動をシミュレートするために使用され、モノスコピック画像をレンダリングします。
+
+シミュレーションのバインドを実装するには、[カメラ](../overview/features/camera.md)のページで説明されているように、ローカル カメラとリモート フレームの違いを理解することが重要です。
+
+2 つのカメラが必要です。
+
+* **ローカル カメラ**:このカメラは、アプリケーション ロジックによって駆動する現在のカメラ位置を表します。
+* **プロキシ カメラ**:このカメラは、サーバーから送信された現在の "*リモート フレーム*" と一致します。 クライアントがフレームを要求してからその到着までに待機時間があるため、"*リモート フレーム*" は常にローカル カメラの動きより少し遅れます。
+
+ここでの基本的なアプローチは、プロキシ カメラを使用してリモート画像とローカル コンテンツの両方をオフスクリーン ターゲットにレンダリングすることです。 次に、プロキシ画像がローカル カメラ領域に再投影されます。これについては、「[Late Stage Reprojection](../overview/features/late-stage-reprojection.md)」で詳しく説明します。
+
 設定は少し複雑で、次のように機能します。
 
 #### <a name="create-proxy-render-target"></a>プロキシ レンダー ターゲットを作成する
 
-リモート コンテンツとローカル コンテンツは、`GraphicsBindingSimD3d11.Update` 関数によって提供されるプロキシ カメラ データを使用して、'プロキシ' という画面外の色/深度のレンダー ターゲットにレンダリングする必要があります。 プロキシは、バック バッファーの解像度と一致している必要があります。 セッションの準備ができたら、接続する前に `GraphicsBindingSimD3d11.InitSimulation` を呼び出す必要があります。
+リモート コンテンツとローカル コンテンツは、`GraphicsBindingSimD3d11.Update` 関数によって提供されるプロキシ カメラ データを使用して、'プロキシ' という画面外の色/深度のレンダー ターゲットにレンダリングする必要があります。
+
+プロキシはバック バッファーの解像度と一致する必要があります。また、*DXGI_FORMAT_R8G8B8A8_UNORM* または *DXGI_FORMAT_B8G8R8A8_UNORM* 形式である必要があります。 セッションの準備ができたら、接続する前に `GraphicsBindingSimD3d11.InitSimulation` を呼び出す必要があります。
 
 ```cs
 AzureSession currentSession = ...;
@@ -232,6 +243,19 @@ else
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="api-documentation"></a>API のドキュメント
 
+* [C# RemoteManagerStatic.StartupRemoteRendering()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanagerstatic.startupremoterendering)
+* [C# GraphicsBinding クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.graphicsbinding)
+* [C# GraphicsBindingWmrD3d11 クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.graphicsbindingwmrd3d11)
+* [C# GraphicsBindingSimD3d11 クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.graphicsbindingsimd3d11)
+* [C++ RemoteRenderingInitialization 構造体](https://docs.microsoft.com/cpp/api/remote-rendering/remoterenderinginitialization)
+* [C++ GraphicsBinding クラス](https://docs.microsoft.com/cpp/api/remote-rendering/graphicsbinding)
+* [C++ GraphicsBindingWmrD3d11 クラス](https://docs.microsoft.com/cpp/api/remote-rendering/graphicsbindingwmrd3d11)
+* [C++ GraphicsBindingSimD3d11 クラス](https://docs.microsoft.com/cpp/api/remote-rendering/graphicsbindingsimd3d11)
+
+## <a name="next-steps"></a>次の手順
+
+* [カメラ](../overview/features/camera.md)
+* [Late Stage Reprojection](../overview/features/late-stage-reprojection.md)
 * [チュートリアル:リモートでレンダリングされたモデルの表示](../tutorials/unity/view-remote-models/view-remote-models.md)

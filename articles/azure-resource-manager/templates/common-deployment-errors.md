@@ -3,13 +3,13 @@ title: 一般的なデプロイ エラーのトラブルシューティング
 description: Azure Resource Manager を使用した Azure へのリソースのデプロイ時に発生する一般的なエラーの解決方法について説明します。
 tags: top-support-issue
 ms.topic: troubleshooting
-ms.date: 08/07/2020
-ms.openlocfilehash: 1ab493b0ba2199d8e6778252cf50d963fbd2f387
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 09/09/2020
+ms.openlocfilehash: a24a95bbf3b3a338102d42fcee06b5e4bd59dd83
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008170"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650950"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング
 
@@ -75,7 +75,7 @@ ms.locfileid: "88008170"
 | StorageAccountNotFound | サブスクリプション、リソース グループ、および使用するストレージ アカウントの名前を確認してください。 | |
 | SubnetsNotInSameVnet | 仮想マシンでは、仮想ネットワークを 1 つのみを持つことができます。 複数の NIC をデプロイするときは、それらが同じ仮想ネットワークに属していることを確認してください。 | [複数の NIC](../../virtual-machines/windows/multiple-nics.md) |
 | SubscriptionNotFound | デプロイ用に指定されたサブスクリプションにアクセスできません。 サブスクリプション ID が間違っている、テンプレートをデプロイしているユーザーにサブスクリプションにデプロイするための適切なアクセス許可がない、またはサブスクリプション ID の形式が間違っている可能性があります。 入れ子になったデプロイを使用して[スコープにまたがってデプロイ](cross-scope-deployment.md)する場合は、サブスクリプションの GUID を指定してください。 | |
-| SubscriptionNotRegistered | ネットワーク リソースをデプロイすると、Microsoft.Network リソース プロバイダーがサブスクリプションに自動的に登録されます。 自動登録が時間内に完了しないことがあります。 この断続的なエラーを回避するには、デプロイの前に、Microsoft.Network リソース プロバイダーを登録します。 | [登録を解決する](error-register-resource-provider.md) |
+| SubscriptionNotRegistered | リソースをデプロイするときは、リソース プロバイダーをサブスクリプションに登録する必要があります。 デプロイに Azure Resource Manager テンプレートを使用すると、リソース プロバイダーがサブスクリプションに自動的に登録されます。 自動登録が時間内に完了しないことがあります。 この断続的なエラーを回避するには、デプロイの前にリソース プロバイダーを登録します。 | [登録を解決する](error-register-resource-provider.md) |
 | TemplateResourceCircularDependency | 不要な依存関係を削除します。 | [循環依存関係を解決する](error-invalid-template.md#circular-dependency) |
 | TooManyTargetResourceGroups | 1 回のデプロイのリソース グループ数を減らします。 | [スコープをまたいだデプロイ](cross-scope-deployment.md) |
 

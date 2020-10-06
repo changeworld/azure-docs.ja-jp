@@ -6,31 +6,23 @@ author: saveenr
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: overview
-ms.date: 04/15/2020
+ms.date: 09/12/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: f9277842339d7c4fa74e2e0f1febcf5916d86f4a
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: c4338152579170bf809577262992f0db9a1a95ff
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180781"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90524948"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Azure Synapse Analytics (ワークスペース プレビュー) とは
 
 [!INCLUDE [preview](includes/note-preview.md)]
 
-今日のエンタープライズ分析では、生データ、洗練化されたデータ、高度にキュレーションされたデータなど、あらゆる種類のデータを大規模に操作する必要があります。 従来、エンタープライズでこの種の分析ソリューションを構築する場合、ビッグ データと、Spark や SQL などのデータ ウェアハウジング テクノロジーを組み合わせる必要がありました。 さらに、リレーショナル ストアやデータ レイク内のデータ全体に対して機能する多機能なデータ パイプラインにこれらを統合する必要がありました。  
+エンタープライズ分析では、生データ、洗練化されたデータ、高度にキュレーションされたデータなど、あらゆる種類のデータを大規模に処理する必要があります。 そのためには、企業は、ビッグ データとデータ ウェアハウジング テクノロジ (Spark や SQL など) を、リレーショナル ストアとデータ レイク内のデータ間で機能する豊富なデータ パイプラインに結合する必要があります。 このようなソリューションは、構築、セキュリティ保護、および保守が困難です。 この複雑さにより、企業が必要とする分析情報の提供が遅くなります。
 
-このようなソリューションは、構築、構成、セキュリティ保護、および保守が難しいため、インテリジェントな分析情報を迅速に抽出するうえで妨げになります。
-
-**Azure Synapse** は、データ ウェアハウスやビッグ データ分析システム全体にわたってあらゆる規模のすべてのデータから分析情報を取得する時間を早める統合分析サービスです。 これは、エンタープライズ データ ウェアハウジングで使用される **SQL** テクノロジー、ビッグ データ分析で使用される **Spark** テクノロジー、そしてデータ統合と ETL/ELT のための**パイプライン**の長所を組み合わせたものです。
-
-Azure Synapse には、管理、監視、コーディング、およびセキュリティのための単一のエクスペリエンスとモデルを提供する、Web ネイティブの **Studio** ユーザー エクスペリエンスが用意されています。
-
-Azure Synapse は、あらゆるサイズのデータについて、エンタープライズが最も使い慣れた分析論で最も簡単かつ迅速に分析情報を収集できる手段を提供します。 **Power BI** と密に統合されるため、データ エンジニアは、エンドツーエンドで動作する分析ソリューションを構築してビジネス インテリジェンスを提供できます。
-
-さらに、Azure Synapse は、**AzureML** の組み込みサポートを通じて、機械学習による予測モデルの構築と高度な分析を容易にします。
+**Azure Synapse** は、データ ウェアハウスやビッグ データ分析システム全体にわたって分析情報を取得する時間を早める統合分析サービスです。 その中核をなす Azure Synapse は、エンタープライズ データ ウェアハウジングで使用される **SQL** テクノロジー、ビッグ データ用に使用される **Spark** テクノロジー、そしてデータ統合と ETL/ELT のための**パイプライン**の長所を組み合わせたものです。 Synapse には、管理、監視、コーディング、およびセキュリティのための 1 つの場所を提供する Web ベースの **Studio** が用意されています。 Synapse は、**PowerBI**、**CosmosDB**、**AzureML** などの他の Azure サービスとの緊密な統合機能を備えています。
 
 ## <a name="key-features--benefits"></a>主な機能と利点
 
@@ -38,7 +30,7 @@ Azure Synapse は、あらゆるサイズのデータについて、エンター
 
 * **Synapse SQL** は、データ エンジニアにとって使い慣れた標準の T-SQL エクスペリエンスを使用して、エンタープライズがデータ ウェアハウジングおよびデータ仮想化シナリオを実装できるようにする分散クエリ システムです。 また、SQL の機能を拡張して、ストリーミングや機械学習のシナリオに対応します。
 
-* Synapse SQL には、**サーバーレス**と**プロビジョニング済み**の両方のリソース モデルが用意されており、ユーザーのニーズに合った使用量および課金のオプションが提供されます。 予測可能なパフォーマンスとコストに対しては、プールをプロビジョニングして、SQL テーブルに格納されているデータの処理能力を確保します。 計画外または突発性のワークロードに対しては、サーバーレスの常に使用可能な SQL エンドポイントを使用します。
+* Synapse SQL には、**サーバーレス**と**専用**の両方のリソース モデルが用意されており、ユーザーのニーズに合った使用量および課金のオプションが提供されます。 予測可能なパフォーマンスとコストに対しては、専用 SQL プールを作成して、SQL テーブルに格納されているデータの処理能力を確保します。 計画外または突発性のワークロードに対しては、常に使用可能なサーバーレスの SQL エンドポイントを使用します。
 * 組み込みの**ストリーミング**機能を使用して、クラウド データ ソースから SQL テーブルにデータを取り込みます
 * **機械学習**モデルを使用し、[T-SQL PREDICT 関数](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)を使用してデータをスコア付けすることにより、AI を SQL と統合します
 
@@ -85,8 +77,6 @@ Azure Synapse は、エンタープライズが分析リソースを管理し、
 
 ## <a name="next-steps"></a>次のステップ
 
+* [Azure Synapse Analytics の使用を開始する](get-started.md)
 * [ワークスペースを作成する](quickstart-create-workspace.md)
-* [Synapse Studio を使用する](quickstart-synapse-studio.md)
-* [SQL プールを作成する](quickstart-create-sql-pool-portal.md)
 * [SQL オンデマンドを使用する](quickstart-sql-on-demand.md)
-* [Apache Spark プールを作成する](quickstart-create-apache-spark-pool-portal.md)

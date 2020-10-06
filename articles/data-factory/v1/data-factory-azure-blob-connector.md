@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c7f91285b393734bce83785dde62fd573e94ac0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a77a4808390f816bc3a6646520f4b542bee89d4c
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254516"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438519"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -31,7 +31,7 @@ ms.locfileid: "85254516"
 この記事では、Azure Data Factory のコピー アクティビティを使って、Azure Blob Storage との間でデータをコピーする方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
 
 ## <a name="overview"></a>概要
-サポートされる任意のソース データ ストアのデータを、Azure Blob Storage にコピーしたり、Azure Blob Storage のデータを、サポートされる任意のシンク データ ストアにコピーしたりできます。 次の表は、コピー アクティビティによってコピー元またはシンクとしてサポートされているデータ ストアの一覧です。 たとえば、SQL Server データベースまたは Azure SQL Database のデータベース**から** Azure Blob Storage **に**データを移動できます。 また、Azure Blob Storage **から** Azure SQL Data Warehouse または Azure Cosmos DB コレクション**に**データをコピーできます。
+サポートされる任意のソース データ ストアのデータを、Azure Blob Storage にコピーしたり、Azure Blob Storage のデータを、サポートされる任意のシンク データ ストアにコピーしたりできます。 次の表は、コピー アクティビティによってコピー元またはシンクとしてサポートされているデータ ストアの一覧です。 たとえば、SQL Server データベースまたは Azure SQL Database のデータベース**から** Azure Blob Storage **に**データを移動できます。 また、Azure Blob Storage **から** Azure Synapse Analytics (旧称 SQL Data Warehouse) または Azure Cosmos DB コレクション**に**データをコピーできます。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -221,14 +221,14 @@ Azure Blob Storage との間でデータをすばやくコピーする方法を�
 5. **[Choose the input file or folder (入力ファイルまたはフォルダーの選択)]** ページで次の操作を実行します。
     1. **[adfblobcontainer]** をダブルクリックします。
     2. **[input]** を選択し、 **[選択]** をクリックします。 このチュートリアルでは、input フォルダーを選択します。 フォルダーではなく、emp.txt ファイルも選択することもできます。
-        ![コピー ツール - 入力ファイルまたはフォルダーの選択](./media/data-factory-azure-blob-connector/copy-tool-choose-input-file-or-folder.png)
+        ![コピー ツール - 入力ファイルまたはフォルダーの選択 1](./media/data-factory-azure-blob-connector/copy-tool-choose-input-file-or-folder.png)
 6. **[Choose the input file or folder (入力ファイルまたはフォルダーの選択)]** ページで次の操作を実行します。
     1. **[ファイルまたはフォルダー]** が **adfblobconnector/input** に設定されていることを確認します。 ファイルがサブフォルダー内にある場合は、ファイルまたはフォルダーの名前として、adfblobconnector/input/{年}/{月}/{日} (例: 2017/04/01、2017/04/02、...) と入力します。 テキスト ボックスの外で Tab キーを押すと、3 つのドロップダウン リストが表示され、年 (yyyy)、月 (MM)、および日 (dd) の形式を選択できます。
     2. **[Copy file recursively (再帰的にファイルをコピーする)]** は設定しないでください。 このオプションは、フォルダーを再帰的にスキャンして、ファイルをコピーするときに選択します。
     3. **[バイナリ コピー]** オプションは選択しないでください。 このオプションは、コピー元ファイルをバイナリ コピーするときに選択します。 次のページで他のオプションが表示されるように、このチュートリアルでは選択しません。
     4. **[圧縮の種類]** が **[なし]** に設定されていることを確認します。 サポートされている形式のいずれかでコピー元ファイルが圧縮されている場合は、このオプションで値を選択します。
     5. **[次へ]** をクリックします。
-    ![コピー ツール - 入力ファイルまたはフォルダーの選択](./media/data-factory-azure-blob-connector/chose-input-file-folder.png)
+    ![コピー ツール - 入力ファイルまたはフォルダーの選択 2](./media/data-factory-azure-blob-connector/chose-input-file-folder.png)
 7. **[File format settings (ファイル形式の設定)]** ページに、ウィザードがファイルを解析することによって自動的に検出した区切り記号とスキーマが表示されます。
     1. 次のオプションを選択します。  
         a. **[ファイル形式]** を **[テキスト形式]** に設定します。 ドロップダウン リストには、サポートされているすべての形式が表示されます。 次に例を示します。JSON、Avro、ORC、Parquet。

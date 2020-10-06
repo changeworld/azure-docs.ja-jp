@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: damendo
-ms.openlocfilehash: 7a4aa4cc545d6941f144ce0657ede7199d4f8f57
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 62f4a06ec729d896dc11a290bc7a5ccc7c321683
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497116"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984067"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Network Watcher と Graylog を使用した Azure のネットワーク セキュリティ グループ フロー ログの管理と分析
 
@@ -186,7 +186,7 @@ Logstash を使用してフロー ログへの接続を確立し、Graylog サ�
 
    Graylog サーバーが構成されている IP に入力をバインドする必要があります。 IP アドレスは、Logstash 構成ファイルの UDP 出力の **host** フィールドと一致する必要があります。 既定のポートは *12201* です。 ポートが、Logstash 構成ファイルで指定されている UDP 出力の **port** フィールドと一致することを確認します。
 
-   ![入力](./media/network-watcher-analyze-nsg-flow-logs-graylog/inputs.png)
+   ![スクリーンショットには、Graylog の入力と、入力を起動して検索するオプションが示されています。](./media/network-watcher-analyze-nsg-flow-logs-graylog/inputs.png)
 
    入力を開始すると、次の図に示すように、 **[Local inputs]\(ローカル入力\)** セクションに表示されます。
 
@@ -200,11 +200,11 @@ Logstash を使用してフロー ログへの接続を確立し、Graylog サ�
 
 Graylog サーバーがメッセージを収集するまでしばらく待ってからメッセージを検索できます。 Graylog サーバーに送信されるメッセージを確認するには、 **[Inputs]\(入力\)** 構成ページで、作成済みの GELF UDP 入力の **[Show received messages]\(受信メッセージの表示\)** ボタンをクリックします。 次の図のような画面が表示されます。 
 
-![ヒストグラム](./media/network-watcher-analyze-nsg-flow-logs-graylog/histogram.png)
+![スクリーンショットには、検索結果、ヒストグラム、およびメッセージが表示された Graylog サーバーが示されています。](./media/network-watcher-analyze-nsg-flow-logs-graylog/histogram.png)
 
 青色の "%{Message}" リンクをクリックすると、各メッセージが展開され、次の図に示すように、各フロー タプルのパラメーターが表示されます。
 
-![メッセージ](./media/network-watcher-analyze-nsg-flow-logs-graylog/messages.png)
+![スクリーンショットには、Graylog サーバーからのメッセージの詳細が示されています。](./media/network-watcher-analyze-nsg-flow-logs-graylog/messages.png)
 
 検索対象となる特定のメッセージ フィールドを選択していない場合、既定ではすべてのメッセージ フィールドが検索に含まれます。 特定のメッセージ ( 特定のソース IP のフロー タプル) を検索する場合は、[こちら](https://docs.graylog.org/en/2.2/pages/queries.html)に記載されている Graylog の検索クエリ言語をご利用いただけます。
 
@@ -218,7 +218,7 @@ Graylog の設定が完了したので、その機能を使用してフロー �
 
 2. そこから、緑色の **[Create dashboard]\(ダッシュボードの作成\)** ボタンをクリックし、簡単なフォームにダッシュボードのタイトルと説明を入力します。 **[Save]\(保存\)** をクリックして、新しいダッシュボードを作成します。 次の図のようなダッシュボードが表示されます。
 
-    ![ダッシュボード](./media/network-watcher-analyze-nsg-flow-logs-graylog/dashboards.png)
+    ![スクリーンショットには、ダッシュボードを作成および編集するオプションと共に、Graylog サーバーのダッシュボードが示されています。](./media/network-watcher-analyze-nsg-flow-logs-graylog/dashboards.png)
 
 ### <a name="add-widgets"></a>ウィジェットを追加する
 

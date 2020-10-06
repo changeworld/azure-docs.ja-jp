@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 7b74c40ab504c08f5a19a1382c303530116c0fdf
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 132c072ad4cbee5cc3ac49695aa34480dc827400
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87483831"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89565763"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box のセキュリティとデータ保護
 
@@ -30,9 +30,13 @@ Microsoft Azure Data Box ソリューションは、互いに連携し合う 4 �
 - **デバイスに接続されるクライアント/ホスト** – お客様のインフラストラクチャにおいて保護の対象となるデータを格納しているクライアント。Data Box デバイスに接続されます。
 - **クラウド ストレージ** – Azure クラウド内のデータの保存先となる場所。 通常は、お客様が作成した Azure Data Box リソースにリンクされたストレージ アカウントです。
 
-次の図は、Azure Data Box ソリューションを通じてオンプレミスから Azure に向かうデータのフローを示します。 このフローは Data Box のインポート注文に関するものです。
+次の図は、オンプレミスから Azure への Azure Data Box ソリューション経由のデータの流れと、ソリューション経由でデータが流れるときのさまざまなセキュリティ機能を示しています。 このフローは Data Box のインポート注文に関するものです。
 
-![Data Box のセキュリティ](media/data-box-security/data-box-security-2.png)
+![Data Box のインポートのセキュリティ](media/data-box-security/data-box-security-2.png)
+
+次の図は、Data Box のエクスポート注文に関するものです。
+
+![Data Box のエクスポートのセキュリティ](media/data-box-security/data-box-security-3.png)
 
 データがこのソリューションを通過すると、イベントがログに記録され、ログが生成されます。 詳細については、次を参照してください。
 
@@ -67,7 +71,7 @@ Data Box に対する入出力データは、次の機能によって保護さ�
 Data Box サービスは、次の機能によって保護されます。
 
 - Data Box サービスにアクセスするには、Data Box を含む Azure サブスクリプションを会社が保有している必要があります。 Azure ポータルから利用できる機能は、保有するサブスクリプションによって決まります。
-- Data Box サービスは Azure でホストされるため、Azure のセキュリティ機能によって保護されます。 Microsoft Azure のセキュリティ機能の詳細については、「 [Microsoft Azure トラスト センター](https://www.microsoft.com/TrustCenter/Security/default.aspx)」をご覧ください。
+- Data Box サービスは Azure でホストされるため、Azure のセキュリティ機能によって保護されます。 Microsoft Azure のセキュリティ機能の詳細については、「 [Microsoft Azure セキュリティ センター](https://www.microsoft.com/TrustCenter/Security/default.aspx)」をご覧ください。
 - Data Box の注文へのアクセスは、Azure ロールを使用して制御できます。 詳細については、[Data Box の注文のアクセス制御の設定](data-box-logs.md#set-up-access-control-on-the-order)に関する記事を参照してください
 - Data Box サービスでは、サービスでデバイスのロックを解除するために使用されるロック解除パスワードを保存します。
 - Data Box サービスは、その注文の詳細と状態を格納します。 この情報は、注文が削除されると削除されます。

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: duau
-ms.openlocfilehash: 6566d70413ec287a58f5d02764d6ec34f9cdce15
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 471895f1a615770521584a627e6bca850b87d0ac
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400672"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462634"
 ---
 # <a name="how-traffic-manager-works"></a>Traffic Manager のしくみ
 
@@ -63,7 +63,7 @@ Contoso Corp が、新しいパートナー ポータルを開発しました。
     - 選択されているトラフィック ルーティング方法。 詳細については、「[Traffic Manager のルーティング方法](traffic-manager-routing-methods.md)」を参照してください。
 
 5. 選択されたエンドポイントは、別の DNS の CNAME レコードとして返されます。 この場合は、"contoso-us.cloudapp.net" が返されるものとします。
-6. 次に、再帰 DNS サービスが、"cloudapp.net" ドメインのネーム サーバーを見つけます。 そして、そのネーム サーバーに接続して、"contoso-us.cloudapp.net" DNS レコードを要求します。 米国を拠点とするサービス エンドポイントの IP アドレスが含まれる DNS "A" のレコードが返されます。
+6. 次に、再帰 DNS サービスが、"cloudapp.net" ドメインのネーム サーバーを見つけます。 これらのネーム サーバーに接続して、"contoso-eu.cloudapp.net" DNS レコードを要求します。 EU を拠点とするサービス エンドポイントの IP アドレスが含まれる DNS の "A" レコードが返されます。
 7. 再帰 DNS サービスは、結果を統合し、クライアントに単一の DNS 応答を返します。
 8. クライアントは、DNS 結果を受け取り、指定された IP アドレスに接続します。 クライアントは、アプリケーション サービス エンドポイントに Traffic Manager 経由ではなく直接接続します。 これは HTTPS エンドポイントであるため、クライアントは必要な SSL/TLS ハンドシェイクを実行し、"/login.aspx" ページに対して HTTP GET 要求を実行します。
 

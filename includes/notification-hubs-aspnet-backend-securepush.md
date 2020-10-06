@@ -1,21 +1,21 @@
 ---
 author: sethmanheim
-ms.service: service-bus
+ms.service: notification-hubs
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 09/14/2020
 ms.author: sethm
-ms.openlocfilehash: 7fd161c90234d45a6751f173ba3685ee8c392c87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb3c95b74128f1da7b29a290e17fefe21987dd76
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74260794"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089949"
 ---
 ## <a name="webapi-project"></a>Web API プロジェクト
 
 1. Visual Studio で、 **ユーザーへの通知** チュートリアルで作成した **AppBackend** プロジェクトを開きます。
 2. Notifications.cs の **Notifications** クラス全体を次のコードで置き換えます。 必ず、プレースホルダーを通知ハブの (フル アクセスを持つ) 接続文字列とハブの名前に置き換えます。 これらの値は [Azure ポータル](https://portal.azure.com)から取得できます。 ここで、このモジュールは、送信される、セキュリティで保護された別の通知を表します。 完全な実装では、通知はデータベースに格納されますが、ここでは、操作を簡単にするために、メモリに格納します。
-   
+
    ```csharp
     public class Notification
     {
@@ -56,8 +56,8 @@ ms.locfileid: "74260794"
     }
     ```
 
-1. NotificationsController.cs の **NotificationsController** クラス定義内のコードを次のコードで置き換えます。 このコンポーネントは、デバイスが安全に通知を取得する方法を実装します。また、(このチュートリアルでは) 自分のデバイスへの安全なプッシュをトリガーする方法も提供します。 通知ハブに通知を送信するときに、通知の ID のみを含む (実際のメッセージは含まない) 直接通知を送信することに注意してください。
-   
+3. NotificationsController.cs の **NotificationsController** クラス定義内のコードを次のコードで置き換えます。 このコンポーネントは、デバイスが安全に通知を取得する方法を実装します。また、(このチュートリアルでは) 自分のデバイスへの安全なプッシュをトリガーする方法も提供します。 通知ハブに通知を送信するときに、通知の ID のみを含む (実際のメッセージは含まない) 直接通知を送信することに注意してください。
+
    ```csharp
     public NotificationsController()
     {

@@ -3,12 +3,12 @@ title: コンテナー インスタンスの監視
 description: Azure Container Instances のコンテナーによる CPU やメモリなどのコンピューティング リソースの使用状況を監視する方法の詳細。
 ms.topic: article
 ms.date: 04/24/2019
-ms.openlocfilehash: e8d41e419abe43530186e256ac6253e2d4783f9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b10c370b599233d00b2b4a65268f6c61a11cbd5c
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116369"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526699"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>Azure Container Instances のコンテナー リソースを監視する
 
@@ -44,7 +44,7 @@ Azure Monitor では、次の [Azure Container Instances 用のメトリック][
 1. **[概要]** ページで、**CPU** などのメトリック チャートを 1 つ選択します。 
 1. **[Apply splitting]\(分割の適用\)** を選択し、 **[コンテナー名]** を選択します。
 
-![ディメンション][dimension]
+![画面キャプチャでは、[Apply splitting]\(分割の適用\) と [コンテナー名] が選択されたコンテナー インスタンスのメトリックが示されている。][dimension]
 
 ## <a name="get-metrics---azure-cli"></a>メトリックを取得する - Azure CLI
 

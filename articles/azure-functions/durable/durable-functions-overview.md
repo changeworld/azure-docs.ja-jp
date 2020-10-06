@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 03/12/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: d1c4f62f19a36867ebc85a98b0cd38bbbf8ce757
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 28c494bf2867ec5d2d3ee99ef7ee45f8181cfd90
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660684"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669250"
 ---
 # <a name="what-are-durable-functions"></a>Durable Functions とは
 
@@ -21,10 +21,10 @@ ms.locfileid: "88660684"
 
 Durable Functions では、現在次の言語をサポートしています。
 
-* **C#** : [プリコンパイル済みクラス ライブラリ](../functions-dotnet-class-library.md)と [C# スクリプト](../functions-reference-csharp.md)の両方。
+* **C#**: [プリコンパイル済みクラス ライブラリ](../functions-dotnet-class-library.md)と [C# スクリプト](../functions-reference-csharp.md)の両方。
 * **JavaScript**: Azure Functions ランタイムのバージョン 2.x でのみサポートされています。 Durable Functions 拡張機能のバージョン 1.7.0 以降が必要です。 
-* **Python**: Durable Functions 拡張機能のバージョン 1.8.5 以降が必要です。 
-* **F#** : プリコンパイル済みクラス ライブラリと F# スクリプト。 F# スクリプトは、Azure Functions ランタイムのバージョン 1.x でのみサポートされています。
+* **Python**: Durable Functions 拡張機能のバージョン 1.8.5 以降が必要です。 Durable Functions のサポートは、現在パブリック プレビューの段階です。
+* **F#**: プリコンパイル済みクラス ライブラリと F# スクリプト。 F# スクリプトは、Azure Functions ランタイムのバージョン 1.x でのみサポートされています。
 * **PowerShell**: Durable Functions のサポートは、現在パブリック プレビューの段階です。 Azure Functions ランタイムのバージョン 3.x と PowerShell 7 でのみサポートされています。 Durable Functions 拡張機能のバージョン 2.2.2 以降が必要です。 現在サポートされているパターンは次のとおりです。[関数チェーン](#chaining)、[ファンアウトおよびファンイン](#fan-in-out)、[非同期 HTTP API](#async-http)。
 
 Durable Functions では、すべての [Azure Functions 言語](../supported-languages.md)をサポートすることを目標としています。 追加言語をサポートするための最新の作業状況については、[Durable Functions の問題の一覧](https://github.com/Azure/azure-functions-durable-extension/issues)を参照してください。
@@ -42,7 +42,7 @@ Durable Functions の主なユース ケースは、サーバーレス アプリ
 * [人による操作](#human)
 * [アグリゲーター (ステートフル エンティティ)](#aggregator)
 
-### <a name="pattern-1-function-chaining"></a><a name="chaining"></a>パターン #1: 関数チェーン
+### <a name="pattern-1-function-chaining"></a>パターン #1: 関数チェーン
 
 関数チェーン パターンでは、一連の関数が特定の順序で実行されます。 このパターンでは、ある関数の出力が、別の関数の入力に適用されます。
 
@@ -135,7 +135,7 @@ Invoke-ActivityFunction -FunctionName 'F4' -Input $Z
 
 ---
 
-### <a name="pattern-2-fan-outfan-in"></a><a name="fan-in-out"></a>パターン #2: ファンアウト/ファンイン
+### <a name="pattern-2-fan-outfan-in"></a>パターン #2: ファンアウト/ファンイン
 
 ファンアウト/ファンイン パターンでは、複数の関数を並列で実行し、すべての関数が完了するまで待機します。 複数の関数から返される結果に基づいて集計作業が行われることは、よくあることです。
 
@@ -255,7 +255,7 @@ Invoke-ActivityFunction -FunctionName 'F3' -Input $Total
 > [!NOTE]
 > まれな状況ですが、アクティビティ関数の完了後、完了がオーケストレーション履歴に保存される前の時間帯にクラッシュが発生する可能性があります。 この場合、アクティビティ関数は、プロセス復旧後に最初から再実行されます。
 
-### <a name="pattern-3-async-http-apis"></a><a name="async-http"></a>パターン #3: 非同期 HTTP API
+### <a name="pattern-3-async-http-apis"></a>パターン #3: 非同期 HTTP API
 
 非同期 HTTP API パターンでは、外部クライアントとの間の実行時間の長い操作の状態を調整するという問題に対処します。 このパターンを実装する一般的な方法は、HTTP エンドポイントによって実行時間の長いアクションをトリガーすることです。 その後、ポーリングによって操作が完了したことを認識できる状態エンドポイントにクライアントをリダイレクトします。
 
@@ -403,7 +403,7 @@ main = df.Orchestrator.create(orchestrator_function)
 
 要求が受信されると、そのジョブ ID 用の新しいオーケストレーション インスタンスが作成されます。 インスタンスは、条件が満たされてループが終了するまで、状態をポーリングします。 ポーリング間隔は、永続タイマーによって制御されます。 その後、さらに作業を実行するか、オーケストレーションを終了できます。 `nextCheck` が `expiryTime` を超えると、モニターが終了します。
 
-### <a name="pattern-5-human-interaction"></a><a name="human"></a>パターン #5: 人による操作
+### <a name="pattern-5-human-interaction"></a>パターン #5: 人による操作
 
 多くの自動化されたプロセスには、何らかの人による操作が含まれます。 自動化されたプロセスに人による操作が含まれる場合に問題になるのが、人は必ずしもクラウド サービスのように可用性と応答性が高くないということです。 自動化されたプロセスでは、タイムアウトと補正ロジックを使用して、この操作を許容する必要があります。
 

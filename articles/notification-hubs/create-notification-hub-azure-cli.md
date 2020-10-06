@@ -14,14 +14,14 @@ ms.author: dbradish
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f1829b6d8ab7b2cab0734ffd3cbab295e6c39678
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 5361931328ed107c7cc130b633a40b1582828aa1
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761095"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024130"
 ---
-# <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure 通知ハブを作成する
+# <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>Azure CLI を使用して Azure 通知ハブを作成する
 
 Azure Notification Hubs は、任意のバックエンド (クラウドまたはオンプレミス) から任意のプラットフォーム (iOS、Android、Windows、Kindle、Baidu など) に通知を送信できる、使いやすく、かつスケールアウトされたプッシュ エンジンを提供します。 このサービスの詳細については、「[Azure Notification Hubs とは](notification-hubs-push-notification-overview.md)」を参照してください。
 
@@ -29,37 +29,30 @@ Azure Notification Hubs は、任意のバックエンド (クラウドまたは
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Notification Hubs には、バージョン 2.0.67 以降の Azure CLI が必要です。 `az --version` を実行し、インストールされているバージョンおよび依存ライブラリを検索します。 インストールまたはアップグレードする必要には、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」をご覧ください。
+> [!IMPORTANT]
+> Notification Hubs には、バージョン 2.0.67 以降の Azure CLI が必要です。 `az --version` を実行し、インストールされているバージョンおよび依存ライブラリを検索します。 インストールまたはアップグレードする必要には、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」をご覧ください。
 
-## <a name="prepare-your-environment"></a>環境を準備する
+## <a name="install-the-azure-cli-extension"></a>Azure CLI 拡張機能をインストールする
 
-1. CLI のローカル インストールを使用する場合は、[az login](/cli/azure/reference-index#az-login) コマンドを使用してサインインします。
+Azure CLI の拡張機能の参照を操作する場合は、最初に拡張機能をインストールする必要があります。 Azure CLI 拡張機能を使用すると、コア CLI の一部として出荷されていない実験用とプレリリースのコマンドにアクセスできます。 更新とアンインストールを含む拡張機能の詳細については、「[Azure CLI で拡張機能を使用する](/cli/azure/azure-cli-extensions-overview)」を参照してください。
 
-    ```azurecli
-    az login
-    ```
+Notification Hubs 用の Azure CLI 拡張機能をインストールします。
 
-    ターミナルに表示される手順に従って、認証プロセスを完了します。
+```azurecli
+az extension add --name notification-hub
+```
 
-2. Azure CLI の拡張機能の参照を操作する場合は、最初に拡張機能をインストールする必要があります。 Azure CLI 拡張機能を使用すると、コア CLI の一部としてまだ出荷されていない実験用コマンドおよびプレリリース コマンドにアクセスできます。 更新とアンインストールを含む拡張機能の詳細については、「[Azure CLI で拡張機能を使用する](/cli/azure/azure-cli-extensions-overview)」を参照してください。
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-   次のコマンドを実行して、[Notification Hubs の拡張機能](/cli/azure/ext/notification-hub/notification-hub)をインストールします。
+Azure Notification Hubs は、すべての Azure リソースと同様に、リソース グループにデプロイする必要があります。  リソース グループを使用すると、関連する Azure リソースを整理して管理できます。  リソース グループの詳細については、「[Azure Resource Manager とは](/azure/azure-resource-manager/management/overview)」を参照してください。
 
-    ```azurecli
-    az extension add --name notification-hub
-   ```
+このクイックスタートでは、次の [az group create](/cli/azure/group#az-group-create) コマンドを使用して、**spnhubrg** という名前のリソース グループを **eastus** の場所に作成します。
 
-3. リソース グループを作成します。
-
-   Azure Notification Hubs は、すべての Azure リソースと同様に、リソース グループにデプロイする必要があります。 リソース グループを使用すると、関連する Azure リソースを整理して管理できます。
-
-   このクイック スタートでは、次の [az group create](/cli/azure/group#az-group-create) コマンドを使用して、_spnhubrg_ という名前のリソース グループを _eastus_ の場所に作成します。
-
-   ```azurecli
-   az group create --name spnhubrg --location eastus
-   ```
+```azurecli
+az group create --name spnhubrg --location eastus
+```
 
 ## <a name="create-a-notification-hubs-namespace"></a>Notification Hubs の名前空間を作成する
 
@@ -109,7 +102,7 @@ Notification Hubs には、バージョン 2.0.67 以降の Azure CLI が必要�
 
 2. 名前空間の一覧を取得します。
 
-   新しい名前空間の詳細を表示するには、[az notification-hub namespace list](/cli/azure/ext/notification-hub/notification-hub/namespace?view=azure-cli-latest#ext-notification-hub-az-notification-hub-namespace-list) コマンドを使用します。 サブスクリプションのすべての名前空間を表示する場合は、`--resource-group` パラメーターを省略できます。
+   新しい名前空間の詳細を表示するには、[az notification-hub namespace list](/cli/azure/ext/notification-hub/notification-hub/namespace#ext-notification-hub-az-notification-hub-namespace-list) コマンドを使用します。 サブスクリプションのすべての名前空間を表示する場合は、`--resource-group` パラメーターを省略できます。
 
    ```azurecli
    az notification-hub namespace list --resource-group spnhubrg
@@ -135,7 +128,7 @@ Notification Hubs には、バージョン 2.0.67 以降の Azure CLI が必要�
 
 3. 通知ハブの一覧を取得します。
 
-   Azure CLI で実行されたコマンドごとに成功またはエラー メッセージが返されますが、通知ハブの一覧を照会できると安心です。 [az notification-hub list](/cli/azure/ext/notification-hub/notification-hub?view=azure-cli-latest#ext-notification-hub-az-notification-hub-list) コマンドは、この目的のために設計されています。
+   Azure CLI で実行されたコマンドごとに成功またはエラー メッセージが返されますが、通知ハブの一覧を照会できると安心です。 [az notification-hub list](/cli/azure/ext/notification-hub/notification-hub#ext-notification-hub-az-notification-hub-list) コマンドは、この目的のために設計されています。
 
    ```azurecli
    az notification-hub list --resource-group spnhubrg --namespace-name spnhubns --output table

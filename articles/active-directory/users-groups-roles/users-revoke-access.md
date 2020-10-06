@@ -13,12 +13,12 @@ ms.reviewer: krbain
 ms.date: 07/15/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76a2e4cb170ca5bee41c0ae8f3e0557eab19562e
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: a8d1b6d912cadb073251d72ee327f4b19950ab1b
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89147135"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055187"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Azure Active Directory でユーザー アクセスを取り消す
 
@@ -38,7 +38,7 @@ ms.locfileid: "89147135"
 
 その後、Azure AD によってその承認ポリシーが再評価されます。 ユーザーがまだ承認されている場合、Azure AD によって新しいアクセス トークンと更新トークンが発行されます。
 
-アクセス トークンは、トークンの有効期間 (通常は約 1 時間) より短い時間内にアクセスを取り消す必要がある場合に、セキュリティ上の問題になることがあります。 このため、Microsoft は、Office 365 アプリケーションに[継続的アクセス評価](../conditional-access/concept-continuous-access-evaluation.md)を行うために積極的に取り組んでいます。これにより、アクセス トークンをほぼリアルタイムで確実に無効化できます。  
+アクセス トークンは、トークンの有効期間 (通常は約 1 時間) より短い時間内にアクセスを取り消す必要がある場合に、セキュリティ上の問題になることがあります。 このため、Microsoft では、Microsoft 365 アプリケーションへの[継続的アクセス評価](../conditional-access/concept-continuous-access-evaluation.md)を行うために積極的に取り組んでいます。これにより、アクセス トークンをほぼリアルタイムで確実に無効化できます。  
 
 ## <a name="session-tokens-cookies"></a>セッション トークン (Cookie)
 

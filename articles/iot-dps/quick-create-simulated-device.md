@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:シミュレートされた TPM デバイスを C を使用して Azure IoT Hub にプロビジョニングする
+title: クイックスタート - シミュレートされた TPM デバイスを C# を使用して Azure IoT Hub にプロビジョニングする
 description: このクイック スタートでは、個別登録を使用します。 このクイックスタートでは、Azure IoT Hub Device Provisioning Service (DPS) 対応の C デバイス SDK を使用して、シミュレートされた TPM デバイスを作成してプロビジョニングします。
 author: wesmc7777
 ms.author: wesmc
@@ -12,24 +12,24 @@ ms.custom:
 - mvc
 - amqp
 - mqtt
-ms.openlocfilehash: 5d52cd134c8c0f1702f57bff1f60bffa12ef6f4d
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 5d594aeaee7b80bcac28f060a1d86e6c08d2cf05
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81687225"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90524727"
 ---
-# <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>クイック スタート:Azure IoT C SDK を使用してシミュレートされた TPM デバイスをプロビジョニングする
+# <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>クイック スタート: Azure IoT C SDK を使用してシミュレートされた TPM デバイスをプロビジョニングする
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-tpm](../../includes/iot-dps-selector-quick-create-simulated-device-tpm.md)]
 
 このクイック スタートでは、Windows 開発マシン上でトラステッド プラットフォーム モジュール (TPM) デバイス シミュレーターを作成して実行する方法について説明します。 このシミュレートされたデバイスを、Device Provisioning Service を使用して IoT ハブに接続します。 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) のサンプル コードは、デバイスを Device Provisioning Service インスタンスに登録し、そのデバイスのブート シーケンスをシミュレートするのに役立ちます。
 
-自動プロビジョニングの処理に慣れていない場合は、「[自動プロビジョニングの概念](concepts-auto-provisioning.md)」を確認してください。 また、このクイック スタートを続行する前に、[Azure portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)に関するページの手順も済ませておいてください。 
+自動プロビジョニングの処理に慣れていない場合は、[プロビジョニング](about-iot-dps.md#provisioning-process)の概要を確認してください。 また、このクイック スタートを続行する前に、[Azure portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)に関するページの手順も済ませておいてください。 
 
 Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポートされています。
-- [登録グループ](concepts-service.md#enrollment-group)：複数の関連するデバイスを登録するために使用します。
-- [個々の登録](concepts-service.md#individual-enrollment):単一デバイスを登録するために使用します。
+- [登録グループ](concepts-service.md#enrollment-group): 複数の関連するデバイスを登録するために使用します。
+- [個別登録](concepts-service.md#individual-enrollment): 1 台のデバイスを登録するために使用します。
 
 この記事では、個別登録の使用方法を示します。
 
@@ -39,7 +39,7 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 
 Windows 開発環境の前提条件は次のとおりです。 Linux または macOS については、SDK ドキュメントの「[開発環境を準備する](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)」の該当するセクションを参照してください。
 
-* [C++ によるデスクトップ開発](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads)ワークロードを有効にした [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019。 Visual Studio 2015 と Visual Studio 2017 もサポートされています。
+* [C++ によるデスクトップ開発](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)ワークロードを有効にした [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019。 Visual Studio 2015 と Visual Studio 2017 もサポートされています。
 
 * [Git](https://git-scm.com/download/) の最新バージョンがインストールされている。
 
@@ -74,7 +74,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
 ## <a name="build-the-sdk-and-run-the-tpm-device-simulator"></a>SDK をビルドし、TPM デバイス シミュレーターを実行する
 
-このセクションでは、TPM デバイス シミュレーターのサンプル コードを含む Azure IoT C SDK をビルドします。 このサンプルは、Shared Access Signature (SAS) トークン認証を使用して、TPM [構成証明メカニズム](concepts-security.md#attestation-mechanism)を提供します。
+このセクションでは、TPM デバイス シミュレーターのサンプル コードを含む Azure IoT C SDK をビルドします。 このサンプルは、Shared Access Signature (SAS) トークン認証を使用して、TPM [構成証明メカニズム](concepts-service.md#attestation-mechanism)を提供します。
 
 1. azure-iot-sdk-c git リポジトリに作成した `cmake` サブディレクトリから、次のコマンドを実行してサンプルをビルドします。 このビルド コマンドにより、シミュレートされたデバイスの Visual Studio ソリューションも生成されます。
 
@@ -119,11 +119,11 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
 1. Visual Studio を起動し、`azure_iot_sdks.sln` という名前の新しいソリューション ファイルを開きます。 このソリューション ファイルは、以前に azure-iot-sdk-c git リポジトリのルートに作成した `cmake` フォルダーにあります。
 
-2. Visual Studio のメニューで **[ビルド]**  >  **[ソリューションのビルド]** の順に選択して、ソリューション内のすべてのプロジェクトをビルドします。
+2. Visual Studio のメニューで **[ビルド]** > **[ソリューションのビルド]** の順に選択して、ソリューション内のすべてのプロジェクトをビルドします。
 
-3. Visual Studio の "*ソリューション エクスプローラー*" ウィンドウで、**Provision\_Tools** フォルダーに移動します。 **tpm_device_provision** プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** を選択します。 
+3. Visual Studio の "*ソリューション エクスプローラー*" ウィンドウで、**Provision\_Tools** フォルダーに移動します。 **tpm_device_provision** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** を選択します。 
 
-4. Visual Studio のメニューで **[デバッグ]**  >  **[デバッグなしで開始]** の順に選択して、ソリューションを実行します。 アプリが **_登録 ID_** と **_保証キー_** を読み取って表示します。 この値をメモに書くかコピーします。 これらは次のセクションでデバイスを登録する際に使用します。 
+4. Visual Studio のメニューで **[デバッグ]** > **[デバッグなしで開始]** の順に選択して、ソリューションを実行します。 アプリが**_登録 ID_** と**_保証キー_** を読み取って表示します。 この値をメモに書くかコピーします。 これらは次のセクションでデバイスを登録する際に使用します。 
 
 
 <a id="portalenrollment"></a>
@@ -141,11 +141,11 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
    - 必要に応じて、次の情報を入力することができます。
        - 一意の*デバイス ID* を入力します (推奨される **test-docs-device** を使用するか、独自のものを指定できます)。 デバイスに名前を付ける際に機密データを含めないようにしてください。 指定しない場合には、デバイスを識別するために登録 ID が代わりに使用されます。
        - **[Initial device twin state]\(初期のデバイス ツインの状態\)** をデバイスの目的の初期構成で更新します。
-   - 作業が完了したら、 **[保存]** を押します。 
+   - 作業が完了したら、**[保存]** を押します。 
 
       ![ポータルでデバイス登録情報を入力](./media/quick-create-simulated-device/enter-device-enrollment.png)  
 
-      登録に成功すると、 *[Individual Enrollments]\(個々の登録\)* タブの一覧に、対象デバイスの "*登録 ID*" が表示されます。 
+      登録に成功すると、*[Individual Enrollments]\(個々の登録\)* タブの一覧に、対象デバイスの "*登録 ID*" が表示されます。 
 
 
 <a id="firstbootsequence"></a>
@@ -189,9 +189,9 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
     //hsm_type = SECURE_DEVICE_TYPE_X509;
     ```
 
-6. **prov\_dev\_client\_sample** プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** を選択します。 
+6. **prov\_dev\_client\_sample** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** を選択します。 
 
-7. Visual Studio のメニューで **[デバッグ]**  >  **[デバッグなしで開始]** の順に選択して、ソリューションを実行します。 プロジェクトをリビルドするよう求められたら、 **[はい]** を選択して、プロジェクトをリビルドしてから実行します。
+7. Visual Studio のメニューで **[デバッグ]** > **[デバッグなしで開始]** の順に選択して、ソリューションを実行します。 プロジェクトをリビルドするよう求められたら、**[はい]** を選択して、プロジェクトをリビルドしてから実行します。
 
     次の出力は、プロビジョニング デバイス クライアントのサンプルが正常に起動し、Device Provisioning Service インスタンスに接続して、IoT ハブの情報を取得し、登録した場合の例です。
 

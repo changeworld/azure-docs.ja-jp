@@ -1,18 +1,18 @@
 ---
 title: 'Virtual WAN: さまざまなユーザー グループの Azure AD テナント: Azure AD 認証'
-description: P2S VPN を使用して VNet に接続する場合には、Azure AD 認証を使用できます
+description: P2S OpenVPN 認証用の Azure AD テナントを設定し、さまざまなユーザーとグループに異なるアクセスを許可するように、複数のアプリを作成して Azure AD に登録します。
 services: virtual-wan
-author: kumudD
+author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/19/2020
+ms.date: 09/22/2020
 ms.author: alzam
-ms.openlocfilehash: 5ca57ccc40669a607cd0541dc738e3a3eacf3e88
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 57fd36366eef284e2975633fbb34549f4316cde6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507694"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988271"
 ---
 # <a name="create-an-azure-active-directory-ad-tenant-for-p2s-openvpn-protocol-connections"></a>P2S OpenVPN プロトコル接続用の Azure Active Directory (AD) テナントを作成する
 

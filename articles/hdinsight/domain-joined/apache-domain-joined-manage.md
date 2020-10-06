@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: 17dcaee4f9cd4d889e585394362695ab31f0d012
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: a4db09c81efcd342d149cb95286aa6ee9cac93a6
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079736"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595786"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用して HDInsight クラスターを管理する
 
@@ -47,7 +47,7 @@ Ambari 管理対象ユーザー名を使用することで、ノーマル クラ
 
 Enterprise セキュリティ パッケージ (旧称 HDInsight Premium) は、クラスターに対する複数ユーザーのアクセスを提供します。アクセスの際の認証は Active Directory によって行なわれ、承認は Apache Ranger と Storage ACL (ADLS ACL) によって行なわれます。 承認は、複数ユーザー間のセキュリティで保護された境界を提供し、承認ポリシーに基づく特権を持つユーザーのみがデータにアクセスすることを許可します。
 
-セキュリティとユーザーの分離は、Enterprise セキュリティ パッケージがある HDInsight クラスターでは重要です。 これらの要件を満たすために、Enterprise セキュリティ パッケージがあるクラスターへの SSH アクセスはブロックされます。 次の表は、各クラスターの種類に対して推奨されるアクセス方法を示しています。
+セキュリティとユーザーの分離は、Enterprise セキュリティ パッケージがある HDInsight クラスターでは重要です。 これらの要件を満たすために、クラスターの作成時に選択されたローカル ユーザーとAAD DS (つまり Kerberos) で使用可能なユーザーに対しては、Enterprise セキュリティ パッケージがあるクラスターへの SSH アクセスがサポートされます。 次の表は、各クラスターの種類に対して推奨されるアクセス方法を示しています。
 
 |ワークロード|シナリオ|アクセス方法|
 |--------|--------|-------------|

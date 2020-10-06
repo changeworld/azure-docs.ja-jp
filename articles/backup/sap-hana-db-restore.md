@@ -1,14 +1,14 @@
 ---
 title: Azure VM 上の SAP HANA データベースの復元
-description: この記事では、Azure Virtual Machines 上で実行されている SAP HANA データベースを復元する方法について説明します。
+description: この記事では、Azure Virtual Machines 上で実行されている SAP HANA データベースを復元する方法について説明します。 [リージョンをまたがる復元] を使用して、データベースをセカンダリ リージョンに復元することもできます。
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 68858db6f89221e1a3a8f0955d5e009d56e2d365
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: c502b7741acd343baefe5e2bf8b95cfc02e46688
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89375314"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986149"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>Azure VM 上の SAP HANA データベースの復元
 
@@ -249,6 +249,51 @@ Azure Backup は、Azure VM 上で実行されている SAP HANA データベー
 
     > [!NOTE]
     > Multiple Database Container (MDC) の復元では、システム DB がターゲット インスタンスに復元された後で、事前登録スクリプトを再実行する必要があります。 その後でのみ、後続のテナント DB の復元が成功します。 詳細については、[トラブルシューティング – MDC 復元](backup-azure-sap-hana-database-troubleshoot.md#multiple-container-database-mdc-restore)に関するページを参照してください。
+
+## <a name="cross-region-restore"></a>リージョンをまたがる復元
+
+復元オプションの 1 つである、リージョンをまたがる復元 (CRR) を使用すると、セカンダリ リージョン (Azure のペアになっているリージョン) で Azure VM 上でホストされている SAP HANA データベースを復元できます。
+
+プレビュー期間中にこの機能にオンボードするには、「[作業を開始する前に](./backup-create-rs-vault.md#set-cross-region-restore)」セクションをお読みください。
+
+CRR が有効になっているかどうかを確認するには、「[リージョンをまたがる復元の構成](backup-create-rs-vault.md#configure-cross-region-restore)」の手順に従ってください。
+
+### <a name="view-backup-items-in-secondary-region"></a>セカンダリ リージョンのバックアップ項目を表示する
+
+CRR が有効になっている場合は、セカンダリ リージョンのバックアップ項目を表示できます。
+
+1. ポータルから **[Recovery Services コンテナー]**  >  **[バックアップ項目]** に移動します。
+1. セカンダリ リージョンの項目を表示するには、 **[セカンダリ リージョン]** を選択します。
+
+>[!NOTE]
+>CRR 機能をサポートする種類のバックアップ管理のみが一覧に表示されます。 現時点では、セカンダリ リージョン データをセカンダリ リージョンに復元することのみが許可されています。
+
+![セカンダリ リージョンのバックアップ項目](./media/sap-hana-db-restore/backup-items-secondary-region.png)
+
+![セカンダリ リージョンのデータベース](./media/sap-hana-db-restore/databases-secondary-region.png)
+
+### <a name="restore-in-secondary-region"></a>セカンダリ リージョンに復元する
+
+セカンダリ リージョンに復元するユーザー エクスペリエンスは、プライマリ リージョンに復元するユーザー エクスペリエンスに似ています。 [復元の構成] ペインで復元の詳細を構成するときに、セカンダリ リージョンのパラメーターのみを指定するように求められます。
+
+![復元する場所と方法](./media/sap-hana-db-restore/restore-secondary-region.png)
+
+>[!NOTE]
+>セカンダリ リージョンの仮想ネットワークは一意に割り当てる必要があり、そのリソース グループの他の VM には使用できません。
+
+![復元進行中通知をトリガーする](./media/backup-azure-arm-restore-vms/restorenotifications.png)
+
+>[!NOTE]
+>
+>* 復元がトリガーされた後、データ転送フェーズでは、復元ジョブを取り消すことができません。
+>* セカンダリ リージョンに復元するために必要な Azure ロールは、プライマリ リージョンにおけるものと同じです。
+
+### <a name="monitoring-secondary-region-restore-jobs"></a>セカンダリ リージョンの復元ジョブの監視
+
+1. ポータルから **[Recovery Services コンテナー]**  >  **[バックアップ ジョブ]** に移動します。
+1. セカンダリ リージョンの項目を表示するには、 **[セカンダリ リージョン]** を選択します。
+
+    ![フィルター処理されたバックアップ ジョブ](./media/sap-hana-db-restore/backup-jobs-secondary-region.png)
 
 ## <a name="next-steps"></a>次のステップ
 

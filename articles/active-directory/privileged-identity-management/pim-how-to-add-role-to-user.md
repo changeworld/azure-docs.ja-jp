@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 07/01/2020
+ms.date: 09/16/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3370ea52c5bd189f929c0f81a0aa9b59cc77b97
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 919585d557a668e44f229451ab202fb8bcab9079
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421384"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985178"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールを割り当てる
 
@@ -75,6 +75,30 @@ ms.locfileid: "87421384"
 
     ![新しい割り当て - 通知](./media/pim-how-to-add-role-to-user/assignment-notification.png)
 
+## <a name="assign-a-role-with-restricted-scope"></a>制限スコープがあるロールを割り当てる
+
+特定のロールでは、付与されるアクセス許可の範囲を 1 つの管理単位、サービス プリンシパル、またはアプリケーションに制限することができます。 この手順は、管理単位のスコープを持つロールを割り当てる場合の例です。 管理単位を介してスコープをサポートするロールの一覧については、「[スコープ付きロールを管理単位に割り当てる](../users-groups-roles/roles-admin-units-assign-roles.md)」を参照してください。 この機能は、現在 Azure AD 組織に展開されています。
+
+1. 特権ロール管理者アクセス許可を使用して、[Azure Active Directory 管理センター](https://aad.portal.azure.com)にサインインします。
+
+1. **[Azure Active Directory]**  >  **[ロールと管理者]** を選択します。
+
+1. **[ユーザー管理者]** を選択します。
+
+    ![ポータルでロールを開くと、[割り当ての追加] コマンドを使用できます](./media/pim-how-to-add-role-to-user/add-assignment.png)
+
+1. **[割り当ての追加]** を選択します。
+
+    ![ロールがスコープをサポートしている場合は、スコープを選択できます](./media/pim-how-to-add-role-to-user/add-scope.png)
+
+1. **[割り当ての追加]** ページでは、次のことができます。
+
+   - ロールに割り当てるユーザーまたはグループを選択する
+   - ロールのスコープ (この場合は管理単位) を選択する
+   - スコープの管理単位を選択する
+
+管理単位の作成の詳細については、[管理単位の追加と削除](../users-groups-roles/roles-admin-units-manage.md)に関するページを参照してください。
+
 ## <a name="update-or-remove-an-existing-role-assignment"></a>既存のロールの割り当てを更新または削除する
 
 既存のロールの割り当てを更新または削除するには、次の手順を実行します。
@@ -101,7 +125,7 @@ ms.locfileid: "87421384"
 
 1. **[ロール]** または **[メンバー]** をクリックします。
 
-    ![Azure AD ロール](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
+    ![Azure AD ロールを開く](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
 
 1. **[メンバーの追加]** を選択して **[管理されるメンバーの追加]** を開きます。
 
@@ -111,7 +135,7 @@ ms.locfileid: "87421384"
 
 1. **[メンバーの選択]** を選択してロールに割り当てるユーザーを選択し、 **[選択]** を選択します。
 
-    ![ロールを選択する](./media/pim-how-to-add-role-to-user/pim-select-members.png)
+    ![割り当てるユーザーまたはグループを選択します](./media/pim-how-to-add-role-to-user/pim-select-members.png)
 
 1. **[管理されるメンバーの追加]** で **[OK]** を選択し、ロールにユーザーを追加します。
 
@@ -169,7 +193,7 @@ ms.locfileid: "87421384"
 
 1. 確認を求めるメッセージで **[はい]** を選択します。
 
-    ![ロールの削除](./media/pim-how-to-add-role-to-user/pim-remove-role-confirm.png)
+    ![削除を確認します](./media/pim-how-to-add-role-to-user/pim-remove-role-confirm.png)
 
     ロールの割り当てが削除されました。
 

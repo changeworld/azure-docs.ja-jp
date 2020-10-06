@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: af33a777d2d6ef53965c2168ac0abee00f59bc50
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: cda4aa9a811bac0ccf20caec32ee38da9b46b6c7
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021383"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89613764"
 ---
 # <a name="color-materials"></a>色素材
 
@@ -50,6 +50,13 @@ ms.locfileid: "84021383"
   1. **AlphaBlended:** このモードは、PBR 素材の透明度モードに似ています。 ガラスなどの透明な素材の表示に使用されます。
 
   1. **Additive:** このモードは、最もシンプルかつ効率的な透明度モードです。 素材の影響は、レンダリングされるイメージに追加されます。 このモードを使用すると、重要なオブジェクトを強調表示するために使用されるマーカーなど、光彩 (ただし透明) のオブジェクトをシミュレートできます。
+
+## <a name="api-documentation"></a>API のドキュメント
+
+* [C# ColorMaterial クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.colormaterial)
+* [C# RemoteManager.CreateMaterial()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.creatematerial)
+* [C++ ColorMaterial クラス](https://docs.microsoft.com/cpp/api/remote-rendering/colormaterial)
+* [C++ RemoteManager::CreateMaterial()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#creatematerial)
 
 ## <a name="next-steps"></a>次のステップ
 

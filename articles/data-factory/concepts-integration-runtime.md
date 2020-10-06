@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: e8e900e410f1a41c8c98f5cec00631cfb5f275de
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 03b8deaa700d15a20571a8ec5f389c252c32eed2
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407695"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485721"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory の統合ランタイム 
 
@@ -143,7 +143,7 @@ Azure IR の特定の場所を設定することができます。その場合�
   - リージョンを検出できない Salesforce にデータをコピーする場合、コピー アクティビティは米国東部にある IR で実行されます。
 
   >[!TIP] 
-  >データ コンプライアンスの要件が厳しく、データが地理的な特定の場所を離れないようにする必要がある場合は、Azure IR を明示的に特定のリージョンに作成し、リンクされたサービスが ConnectVia プロパティを使用してこの IR を指すようにすることができます。 たとえば、データを英国内に留めたまま、英国南部の BLOB から英国南部の SQL DW にデータをコピーしたい場合は、英国南部に Azure IR を作成して、両方のリンクされたサービスをこの IR にリンクします。
+  >データ コンプライアンスの要件が厳しく、データが地理的な特定の場所を離れないようにする必要がある場合は、Azure IR を明示的に特定のリージョンに作成し、リンクされたサービスが ConnectVia プロパティを使用してこの IR を指すようにすることができます。 たとえば、データを英国内に留めたまま、英国南部の BLOB から英国南部の Azure Synapse Analytics にデータをコピーしたい場合は、英国南部に Azure IR を作成して、両方のリンクされたサービスをこの IR にリンクします。
 
 - Lookup/GetMetadata/Delete アクティビティの実行 (パイプライン アクティビティとも呼ばれます)、変換アクティビティのディスパッチ (外部アクティビティとも呼ばれます)、およびオーサリング操作 (接続のテスト、フォルダー一覧とテーブル一覧の参照、データのプレビュー) の場合、ADF はデータ ファクトリのリージョンで IR を使用します。
 

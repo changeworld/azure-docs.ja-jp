@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
-ms.openlocfilehash: b27fe2abc50396b527e61487acf9797db59c1cce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b95162d34b706b0bbb3e2940ea214e5a662655d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82627587"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984915"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>SSMS を使用して SQL Server エージェント ジョブを ADF に移行する
 
@@ -46,7 +46,7 @@ ms.locfileid: "82627587"
 ## <a name="migrate-ssis-jobs-to-adf"></a>SSIS ジョブを ADF に移行する
 
 1. SSMS のオブジェクト エクスプローラーで、[SQL Server エージェント] を選択し、[ジョブ] を選択します。次に、右クリックして **[SSIS ジョブを ADF に移行する]** を選択します。
-![メニュー](media/how-to-migrate-ssis-job-ssms/menu.png)
+![スクリーンショットには、SQL Server Management Studio オブジェクト エクスプローラーが示されています。ここでは、ジョブを選択し、SSIS ジョブを ADF に移行できます。](media/how-to-migrate-ssis-job-ssms/menu.png)
 
 1. Azure にサインインし、[Azure サブスクリプション]、[Data Factory]、[Integration Runtime] の順に選択します。 Azure Storage は省略可能です。これは、移行する SSIS ジョブに SSIS ファイル システム パッケージがある場合、パッケージの場所のマッピング ステップで使用されます。
 ![メニュー](media/how-to-migrate-ssis-job-ssms/step1.png)
@@ -57,28 +57,28 @@ ms.locfileid: "82627587"
     1. ソース フォルダーのパスを更新します。 有効なパスは、パッケージのフォルダー パスまたは親フォルダー パスです。
     1. 移行先のフォルダー パスを更新します。 既定値は、ステップ 1 で選択した既定のストレージ アカウントに対する相対パスです。
     1. **[マッピングの削除]** を使用して、選択したマッピングを削除します。
-![step2](media/how-to-migrate-ssis-job-ssms/step2.png)
-![step2-1](media/how-to-migrate-ssis-job-ssms/step2-1.png)
+![スクリーンショットには、[Map SSIS Package and Configuration Paths]\(SSIS パッケージと構成パスのマップ\) ページが示されています。ここではマッピングを追加できます。](media/how-to-migrate-ssis-job-ssms/step2.png)
+![スクリーンショットには、[Map SSIS Package and Configuration Paths]\(SSIS パッケージと構成パスのマップ\) ページが示されています。ここでは、ソースと宛先のフォルダー パスを更新できます。](media/how-to-migrate-ssis-job-ssms/step2-1.png)
 
 1. 移行する適切なジョブを選択し、対応する "*SSIS パッケージの実行アクティビティ*" の設定を構成します。
 
     - *[既定の設定]* は、既定で選択されるすべてのステップに適用されます。 各プロパティの詳細については、パッケージの場所が "*ファイル システム (パッケージ)* " のときの [SSIS パッケージの実行アクティビティ](how-to-invoke-ssis-package-ssis-activity.md)の *[設定] タブ*を参照してください。
-    ![step3-1](media/how-to-migrate-ssis-job-ssms/step3-1.png)
+    ![スクリーンショットには、[Select SSIS Jobs]\(SSIS ジョブの選択\) ページが示されています。ここでは、対応する実行済み SSIS パッケージ アクティビティの設定を構成できます。](media/how-to-migrate-ssis-job-ssms/step3-1.png)
     - *[Step Setting]\(ステップの設定\)* では、選択したステップの設定を構成します。
         
         **[Apply Default Setting]\(既定の設定を適用\)** : 既定で選択されています。 選択したステップのみの設定を構成するには、オフにします。  
         他のプロパティの詳細については、パッケージの場所が "*ファイル システム (パッケージ)* " のときの [SSIS パッケージの実行アクティビティ](how-to-invoke-ssis-package-ssis-activity.md)の *[設定] タブ*を参照してください。
-    ![step3-2](media/how-to-migrate-ssis-job-ssms/step3-2.png)
+    ![スクリーンショットには、[Select SSIS Jobs]\(SSIS ジョブの選択\) ページが示されています。ここでは、既定の設定を適用できます。](media/how-to-migrate-ssis-job-ssms/step3-2.png)
 
 1. ARM テンプレートを生成してデプロイします。
     1. 移行された ADF パイプラインの ARM テンプレートの出力パスを選択または入力します。 フォルダーが存在しない場合は自動的に作成されます。
     2. **[ARM テンプレートをデータ ファクトリに配置する]** オプションを選択します。
         - 既定では選択されていません。 生成された ARM テンプレートは、後ほど手動でデプロイできます。
         - 生成された ARM テンプレートをデータ ファクトリに直接デプロイする場合は選択します。
-    ![step4](media/how-to-migrate-ssis-job-ssms/step4.png)
+    ![スクリーンショットには、[Configure Migration]\(移行の構成\) ページが示されています。ここでは、移行された ADF パイプラインの ARM テンプレートの出力パスを選択または入力し、ARM テンプレートをデータ ファクトリにデプロイするオプションを選択できます。](media/how-to-migrate-ssis-job-ssms/step4.png)
 
 1. 移行し、結果を確認します。
-![step5](media/how-to-migrate-ssis-job-ssms/step5.png)
+![スクリーンショットには、[Migration Result]\(移行結果\) ページが示されています。ここには移行の進行状況が表示されます。](media/how-to-migrate-ssis-job-ssms/step5.png)
 
 ## <a name="next-steps"></a>次のステップ
 

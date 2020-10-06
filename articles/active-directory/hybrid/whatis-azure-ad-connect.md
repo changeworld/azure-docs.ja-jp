@@ -11,12 +11,12 @@ ms.date: 01/08/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02a30aa4d553910c52a7dde89719450baf9037ce
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 338f957d3e881a76b39b0b7c00288ae2ebf2be59
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89278838"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018613"
 ---
 # <a name="what-is-azure-ad-connect"></a>Azure AD Connect とは
 
@@ -35,7 +35,7 @@ Azure AD Connect は、ハイブリッド ID の目標に適合し、それを�
 
 ## <a name="what-is-azure-ad-connect-health"></a>Azure AD Connect Health とは
 
-Azure Active Directory (Azure AD) Connect Health では、オンプレミス ID インフラストラクチャの堅牢な監視が提供されます。 Office 365 や Microsoft Online Services への信頼性の高い接続を維持することができます。  この信頼性は、主要な ID コンポーネントの監視機能を提供することで実現されます。 また、これらのコンポーネントに関する主要なデータ ポイントにアクセスしやすくなります。
+Azure Active Directory (Azure AD) Connect Health では、オンプレミス ID インフラストラクチャの堅牢な監視が提供されます。 Microsoft 365 や Microsoft Online Services への信頼性の高い接続を維持することができます。  この信頼性は、主要な ID コンポーネントの監視機能を提供することで実現されます。 また、これらのコンポーネントに関する主要なデータ ポイントにアクセスしやすくなります。
 
 この情報は、[Azure AD Connect Health ポータル](https://aka.ms/aadconnecthealth)に表示されます。 Azure AD Connect Health ポータルを使用してアラート、パフォーマンスの監視、使用状況の分析、その他の情報を表示します。 Azure AD Connect Health では、1 つのレンズで主要な ID コンポーネントの正常性をまとめて確認できます。
 
@@ -44,7 +44,7 @@ Azure Active Directory (Azure AD) Connect Health では、オンプレミス ID 
 ## <a name="why-use-azure-ad-connect"></a>Azure AD Connect を使用する理由
 オンプレミスのディレクトリと Azure AD を統合すると、クラウドとオンプレミス両方のリソースにアクセスするための共通の ID が提供されるため、ユーザーの生産性が向上します。 ユーザーや組織にとっては次の利点があります。
 
-* ユーザーは、単一の ID を使ってオンプレミスのアプリケーションとクラウド サービス (Office 365 など) にアクセスできます。
+* ユーザーは、単一の ID を使ってオンプレミスのアプリケーションとクラウド サービス (Microsoft 365 など) にアクセスできます。
 * 単一のツールにより、同期とサインインのための容易なデプロイメントを実現できます。
 * それぞれのシナリオに適した最新の機能が手に入ります。 Azure AD Connect は、DirSync や Azure AD Sync など、旧バージョンの ID 統合ツールの後継ツールです。詳細については、「 [ハイブリッド ID ディレクトリ統合ツールの比較](plan-hybrid-identity-design-considerations-tools-comparison.md)」を参照してください。
 

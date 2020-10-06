@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
-ms.openlocfilehash: 3b8467a5983ae9d8928d14987bcee9d2aef094aa
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 6ddb2ecef3a70ed6a56b404e64cef5b78b7abd13
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87539902"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980480"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Threat Modeling Tool の概要
 
@@ -97,7 +97,7 @@ Threat Modeling Tool チームはツールの機能と操作性を改善する�
 
 まず、2 つのステンシル間の相互作用が強調表示されます
 
-![相互作用](./media/threat-modeling-tool-getting-started/interaction.png)
+![スクリーンショットには、2 つのステンシルと、線の太さが太い線の矢印が示されています。](./media/threat-modeling-tool-getting-started/interaction.png)
 
 次に、脅威に関する詳細情報が [Threat Properties]\(脅威のプロパティ\) ウィンドウに表示されます
 

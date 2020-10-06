@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/21/2020
+ms.date: 09/14/2020
 ms.author: jingwang
-ms.openlocfilehash: dd5e116f0c6844abeffc27820da03462c6e1cbbc
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 368b8d614ca77692e08a3cbe38132f5aff4eab91
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718205"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061157"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Azure Data Factory での Excel 形式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -36,7 +36,7 @@ Excel 形式は、以下のコネクタでサポートされています。[Amaz
 | firstRowAsHeader | 指定したワークシート (または範囲) 内の先頭行を、列名を含んだヘッダー行として扱うかどうかを指定します。<br>使用できる値は **true** と **false** (既定値) です。 | いいえ       |
 | nullValue        | null 値の文字列表現を指定します。 <br>既定値は**空の文字列**です。 | いいえ       |
 | compression | ファイル圧縮を構成するためのプロパティのグループ。 アクティビティの実行中に圧縮/圧縮解除を行う場合は、このセクションを構成します。 | いいえ |
-| type<br/>( *`compression` の下にあります*) | JSON ファイルの読み取り/書き込みに使用される圧縮コーデックです。 <br>使用できる値は、**bzip2**、**gzip**、**deflate**、**ZipDeflate**、**snappy**、**lz4** です。 ファイルを保存するときに使用します。 既定では圧縮されません。<br>現在、コピー アクティビティでは "snappy" と "lz4" はサポートされておらず、マッピング データ フローでは "ZipDeflate" はサポートされていないことに**注意**してください。<br>コピー アクティビティを使用して **ZipDeflate** ファイルを展開し、ファイルベースのシンク データ ストアに書き込むと、`<path specified in dataset>/<folder named as source zip file>/` フォルダーにファイルが抽出されることに**注意**してください。 | いいえ。  |
+| type<br/>( *`compression` の下にあります*) | JSON ファイルの読み取り/書き込みに使用される圧縮コーデックです。 <br>使用できる値は、**bzip2**、**gzip**、**deflate**、**ZipDeflate**、**TarGzip**、**snappy**、または **lz4** です。 既定では圧縮されません。<br>現在、コピー アクティビティでは "snappy" と "lz4" はサポートされておらず、マッピング データ フローでは "ZipDeflate" はサポートされていないことに**注意**してください。<br>コピー アクティビティを使用して **ZipDeflate** ファイルを展開し、ファイルベースのシンク データ ストアに書き込むと、`<path specified in dataset>/<folder named as source zip file>/` フォルダーにファイルが抽出されることに**注意**してください。 | いいえ。  |
 | level<br/>( *`compression` の下にあります*) | 圧縮率です。 <br>使用できる値は、**Optimal** または **Fastest** です。<br>- **Fastest:** 圧縮操作は可能な限り短時間で完了しますが、圧縮後のファイルが最適に圧縮されていない場合があります。<br>- **Optimal**: 圧縮操作で最適に圧縮されますが、操作が完了するまでに時間がかかる場合があります。 詳細については、 [圧縮レベル](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) に関するトピックをご覧ください。 | いいえ       |
 
 Azure Blob Storage 上の Excel データセットの例を次に示します。

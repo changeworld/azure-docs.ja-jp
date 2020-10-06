@@ -2,13 +2,13 @@
 title: Azure Site Recovery の最新情報
 description: Azure Site Recovery サービスの新機能と最新の更新プログラムの概要について説明します。
 ms.topic: conceptual
-ms.date: 08/20/2020
-ms.openlocfilehash: 837344d10e21d20488760f6d5aa4749c039f9b07
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 09/15/2020
+ms.openlocfilehash: 1bf051afaeb61c80e3708a72a4a0605b68533977
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816951"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527345"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery の最新情報
 
@@ -22,14 +22,23 @@ Site Recovery コンポーネントでは、N-4 バージョン (N は最新リ�
 
 **アップデート** |  **統合セットアップ** | **構成サーバー ova** | **モビリティ サービス エージェント** | **Site Recovery プロバイダー** | **Recovery Services エージェント**
 --- | --- | --- | --- | --- | ---
+[ロールアップ 50](https://support.microsoft.com/help/4582666/) | 9.37.5724.1 | 5.1.6347.0 | 9.37.5724.1 | 5.1.6347.0  | 2.0.9192.0
 [ロールアップ 49](https://support.microsoft.com/help/4578241/) | 9.36.5696.1 | 5.1.6315.0 | 9.36.5696.1 | 5.1.6315.0 | 2.0.9188.0
 [ロールアップ 48](https://support.microsoft.com/help/4573888/) | 9.35.5659.1 | 5.1.6200.0 | 9.35.5659.1 | 5.1.6200.0 | 2.0.9186.0
 [ロールアップ 47](https://support.microsoft.com/help/4570609/) | 9.34.5634.1 | 5.1.6100.0 | 9.34.5634.1 | 5.1.6100.0 | HyperV マシン - 2.0.9183.0 <br> VMware マシン - 2.0.9177.0
 [ロールアップ 46](https://support.microsoft.com/help/4564347/) | 9.33.5598.1 | 5.1.5900.0 | 9.33.5598.1 | 5.1.5900.0 | 2.0.9175.0
-[ロールアップ 45](https://support.microsoft.com/help/4550047/) | 9.32.5487.1 | 5.1.5400.0 | 9.32.5487.1 | 5.1.5400.0 | 2.0.9165.0
+
 
 更新プログラムのインストールとサポートの詳細については、[こちら](service-updates-how-to.md)を参照してください。
 
+## <a name="update-september-2020"></a>更新 (2020 年 9 月)
+
+[更新プログラム ロールアップ 50](https://support.microsoft.com/help/4582666/update-rollup-50-for-azure-site-recovery) では、以下の更新が提供されます。
+
+**アップデート** | **詳細**
+--- | ---
+**プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)
+**問題の修正/改善点** | さまざまな修正プログラムと機能強化 (詳細はロールアップを参照)
 
 ## <a name="updates-august-2020"></a>更新プログラム (2020 年 8 月)
 
@@ -40,7 +49,7 @@ Site Recovery コンポーネントでは、N-4 バージョン (N は最新リ�
 **アップデート** | **詳細**
 --- | ---
 **プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)
-**問題の修正/改善点** | さまざまな修正プログラムと機能強化 (詳細はロールアップを参照)
+**問題の修正/改善点** | Mobility Service に対する新しい Linux のサポートを含む、ロールアップで詳細に説明されているいくつかの修正と改善。
 
 ## <a name="updates-july-2020"></a>更新 (2020 年 7 月)
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: cf630f6028248d799a3953d25db27a2150602586
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 46b3a782d93a55ed7f6eee6c76886f27c2652572
+ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087013"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89469645"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内のリソースの名前解決
 
@@ -86,7 +86,7 @@ Azure で提供される名前解決を使用する場合の考慮事項を次�
 逆引き DNS は、ARM ベースのすべての仮想ネットワークでサポートされています。 逆引き DNS クエリ (PTR クエリ) は、仮想マシンの IP アドレスを仮想マシンの FQDN にマップするために発行できます。
 * 仮想マシンの IP アドレスに対するすべての PTR クエリは、\[vmname\].internal.cloudapp.net という形式の FQDN を返します
 * \[vmname\].internal.cloudapp.net 形式の FQDN に対する前方参照は、仮想マシンに割り当てられた IP アドレスへと解決されます。
-* 仮想ネットワークが、[Azure DNS プライベート ゾーン](../dns/private-dns-overview.md)に登録仮想ネットワークとしてリンクされている場合、逆引き DNS クエリでは 2 つのレコードが返されます。 1 つのレコードは、\[vmname\].[privatednszonename] という形式になり、もう 1 つは、\[vmname\].internal.cloudapp.net という形式になります
+* 仮想ネットワークが、[Azure DNS プライベート ゾーン](../dns/private-dns-overview.md)に登録仮想ネットワークとしてリンクされている場合、逆引き DNS クエリでは 2 つのレコードが返されます。 片方のレコードは \[vmname\].[privatednszonename] という形式になり、他方は \[vmname\].internal.cloudapp.net という形式になります。
 * 逆引き DNS 参照は、他の仮想ネットワークとピアリングされている場合でも、特定の仮想ネットワークにスコープ設定されます。 ピアリングされた仮想ネットワークにある仮想マシンの IP アドレスに対する逆引き DNS クエリ (PTR クエリ) は、NXDOMAIN を返します。
 * 仮想ネットワークで逆引き DNS 機能を無効にする場合は、[Azure DNS プライベート ゾーン](../dns/private-dns-overview.md)を使用して逆引き参照ゾーンを作成し、このゾーンを仮想ネットワークにリンクします。 たとえば、仮想ネットワークの IP アドレス空間が 10.20.0.0/16 の場合、空のプライベート DNS ゾーン 20.10.in-addr.arpa を作成し、これを仮想ネットワークにリンクすることができます。 ゾーンを仮想ネットワークにリンクするときに、リンクの自動登録を無効にする必要があります。 このゾーンは仮想ネットワークの既定の逆引き参照ゾーンを上書きします。このゾーンは空であるため、逆引き DNS クエリに対して NXDOMAIN を受け取ります。 プライベート DNS ゾーンを作成して仮想ネットワークにリンクする方法の詳細については、[クイックスタート ガイド](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal)を参照してください。
 

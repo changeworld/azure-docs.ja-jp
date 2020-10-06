@@ -9,14 +9,14 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 53590344a45990187b5ca8aba4eca18da526f308
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 6e778541023befc756e61be9b9646bf37c82c47c
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87872618"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530609"
 ---
-# <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>クイック スタート:IoT Hub Device Provisioning Service 対応の Python デバイス SDK を使用して、シミュレートされた TPM デバイスを作成してプロビジョニングする
+# <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>クイックスタート - IoT Hub Device Provisioning Service 対応の Python デバイス SDK を使用して、シミュレートされた X.509 デバイスを作成してプロビジョニングします。
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-tpm](../../includes/iot-dps-selector-quick-create-simulated-device-tpm.md)]
 
@@ -24,7 +24,7 @@ ms.locfileid: "87872618"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [自動プロビジョニングの概念](concepts-auto-provisioning.md)の確認。
+- [プロビジョニング](about-iot-dps.md#provisioning-process)の概念を理解していること。
 - [Azure portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)が完了していること。
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - [Visual Studio 2015 以上](https://visualstudio.microsoft.com/vs/) (C++ によるデスクトップ開発が有効であること)。
@@ -77,20 +77,20 @@ ms.locfileid: "87872618"
 
 Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポートされています。
 
-- [登録グループ](concepts-service.md#enrollment-group)：複数の関連するデバイスを登録するために使用します。
-- [個別登録](concepts-service.md#individual-enrollment): 単一デバイスを登録するために使用します。
+- [登録グループ](concepts-service.md#enrollment-group): 複数の関連するデバイスを登録するために使用します。
+- [個別登録](concepts-service.md#individual-enrollment): 1 台のデバイスを登録するために使用します。
 
 この記事では、個別登録の使用方法を示します。
 
 1. *cmake* フォルダーに生成されたソリューション (`azure_iot_sdks.sln`) を開き、Visual Studio でビルドします。
 
-1. **tpm_device_provision** プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** を選択します。 ソリューションを実行する デバイス登録に必要な **_保証キー_** と **_登録 ID_** が出力ウィンドウに表示されます。 これらの値を書き留めておいてください。 
+1. **tpm_device_provision** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** を選択します。 ソリューションを実行する デバイス登録に必要な**_保証キー_** と**_登録 ID_** が出力ウィンドウに表示されます。 これらの値を書き留めておいてください。 
 
     ![TPM のセットアップ](./media/python-quick-create-simulated-device/tpm-setup.png)
 
 1. Azure portal にサインインし、左側のメニューの **[すべてのリソース]** を選択して、Device Provisioning Service を開きます。
 
-1. Device Provisioning Service のメニューで、 **[登録を管理します]** を選択します。 **[個々の登録]** タブを選択したうえで、上部にある **[個別登録の追加]** を選択します。 
+1. Device Provisioning Service のメニューで、**[登録を管理します]** を選択します。 **[個々の登録]** タブを選択したうえで、上部にある **[個別登録の追加]** を選択します。 
 
 1. **[登録の追加]** パネルで、次の情報を入力します。
    - ID 構成証明の "*メカニズム*" として **[TPM]** を選択します。
@@ -99,11 +99,11 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
    - 必要に応じて、次の情報を入力することができます。
        - 一意の "*デバイス ID*" を入力します。 デバイスに名前を付ける際に機密データを含めないようにしてください。 指定しない場合には、デバイスを識別するために登録 ID が代わりに使用されます。
        - **[Initial device twin state]\(初期のデバイス ツインの状態\)** をデバイスの目的の初期構成で更新します。
-   - 作業が完了したら、 **[保存]** を押します。 
+   - 作業が完了したら、**[保存]** を押します。 
 
      ![ポータルのブレードにデバイス登録情報を入力します。](./media/python-quick-create-simulated-device/enterdevice-enrollment.png)  
 
-   登録に成功すると、 *[Individual Enrollments]\(個々の登録\)* タブの一覧に、対象デバイスの "*登録 ID*" が表示されます。 
+   登録に成功すると、*[Individual Enrollments]\(個々の登録\)* タブの一覧に、対象デバイスの "*登録 ID*" が表示されます。 
 
 
 ## <a name="simulate-the-device"></a>デバイスをシミュレートする

@@ -8,16 +8,16 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: bb821d00a168e3b8f0636b93696376dc8b5d492e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 519b5b669cfc8140b837743d694184a5cb859f20
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83772900"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987986"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Azure Confidential Computing についてよく寄せられる質問
 
-この記事では、[Azure で Confidential Computing ワークロード](overview.md)を実行することに関して特に多く寄せられる質問への回答を示します。
+この記事では、[Azure 仮想マシンで Confidential Computing ワークロード](overview.md)を実行することに関して特に多く寄せられる質問への回答を示します。
 
 この記事で Azure の問題に対処できない場合は、[MSDN および Stack Overflow の Azure 関連フォーラム](https://azure.microsoft.com/support/forums/)を参照してください。 問題をこれらのフォーラムまたは [Twitter の @AzureSupport](https://twitter.com/AzureSupport) に投稿できます。 Azure サポート要求を送信することもできます。 サポート要求を送信するには、[[Azure サポート]](https://azure.microsoft.com/support/options/) ページで [サポートを受ける] を選択します。
 

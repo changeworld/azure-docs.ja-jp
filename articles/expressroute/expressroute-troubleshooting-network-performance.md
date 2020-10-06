@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 12/20/2017
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 4d6dac98125827a303b8370b5a0a959ea425fb57
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 6b9a951787df6775b5159433c7172e767ff955b2
+ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401454"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89566077"
 ---
 # <a name="troubleshooting-network-performance"></a>ネットワーク パフォーマンスのトラブルシューティング
 ## <a name="overview"></a>概要
@@ -121,7 +121,7 @@ AzureCT の PowerShell モジュールには、[可用性テスト][Availability
 ![2][2]
 
 >[!NOTE]
-> MSEE は Azure クラウド内にないことに注意してください。 ExpressRoute は実際には Microsoft ネットワークの端に位置し、Azure 内にはありません。 ExpressRoute を使用して MSEE に接続すると、Microsoft のネットワークに接続します。そこから Office 365 (Microsoft ピアリング経由) や Azure (プライベート ピアリングや Microsoft ピアリング経由) などのクラウド サービスのどれにでも移動できます。
+> MSEE は Azure クラウド内にないことに注意してください。 ExpressRoute は実際には Microsoft ネットワークの端に位置し、Azure 内にはありません。 ExpressRoute を使用して MSEE に接続すると、Microsoft のネットワークに接続されます。そこから Microsoft 365 (Microsoft ピアリング経由) や Azure (プライベート ピアリングや Microsoft ピアリング経由) などのクラウド サービスのどれにでも移動できます。
 >
 >
 

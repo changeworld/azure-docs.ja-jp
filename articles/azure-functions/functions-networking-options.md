@@ -3,12 +3,13 @@ title: Azure Functions のネットワーク オプション
 description: Azure Functions で利用可能なすべてのネットワーク オプションの概要。
 ms.topic: conceptual
 ms.date: 4/11/2019
-ms.openlocfilehash: 60258ef4aa3bbbbab69acd4f5106c774caa6f46f
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 271730e57a2d7ef8324420744b4bcd088b9809cc
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385944"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530092"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions のネットワーク オプション
 
@@ -86,7 +87,7 @@ Azure Key Vault 参照を使用すると、コードの変更を必要とせず�
 
 ### <a name="premium-plan-with-virtual-network-triggers"></a>仮想ネットワーク トリガーを使用した Premium プラン
 
-Premium プランを実行する場合は、仮想ネットワーク内で実行されているサービスに非 HTTP トリガー関数を接続できます。 これを行うには、関数アプリの仮想ネットワーク トリガーのサポートを有効にする必要があります。 **[仮想ネットワーク トリガーのサポート]** 設定は、[Azure portal](https://portal.azure.com) の **[構成]**  >  **[関数のランタイム設定]** にあります。
+Premium プランを実行する場合は、仮想ネットワーク内で実行されているサービスに非 HTTP トリガー関数を接続できます。 これを行うには、関数アプリの仮想ネットワーク トリガーのサポートを有効にする必要があります。 **[Runtime Scale Monitoring]\(ランタイム スケールの監視\)** の設定は、[Azure portal](https://portal.azure.com) の **[構成]**  >  **[関数のランタイム設定]** にあります。
 
 :::image type="content" source="media/functions-networking-options/virtual-network-trigger-toggle.png" alt-text="VNETToggle":::
 

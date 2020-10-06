@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4ce5bc3b4e5ccd26ec3f6b35c995ebe2274042c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0ff647581447ad4436daf6c8b1d2ecbf817f7f8
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749716"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983634"
 ---
 # <a name="azure-virtual-wan-logs-and-metrics"></a>Azure Virtual WAN のログとメトリック
 
@@ -62,11 +62,11 @@ Azure ExpressRoute ゲートウェイでは、次のメトリックを利用で�
 
 3. **[メトリック]** を選びます。
 
-   :::image type="content" source="./media/logs-metrics/metrics.png" alt-text="メトリック":::
+   :::image type="content" source="./media/logs-metrics/metrics.png" alt-text="スクリーンショットには、Azure Monitor で [表示] が選択されたサイト間 VPN ペインが示されています。":::
 
 4. **[メトリック]** ページ上で、関心のあるメトリックを閲覧できます。
 
-   :::image type="content" source="./media/logs-metrics/metrics-page.png" alt-text="メトリック ページ":::
+   :::image type="content" source="./media/logs-metrics/metrics-page.png" alt-text="スクリーンショットには、Azure Monitor で [表示] が選択されたサイト間 VPN ペインが示されています。":::
 
 ## <a name="diagnostic-logs"></a><a name="diagnostic"></a>診断ログ
 
@@ -93,15 +93,15 @@ Azure ポイント対サイト VPN ゲートウェイでは、次の診断を利
 
 1. ポータル上で、Virtual WAN リソースに移動します。 ポータル上の [Virtual WAN] ページの **[概要]** セクションで、 **[Essentials]** を選択してビューを展開し、リソース グループ情報を取得します。 リソース グループ情報をコピーします。
 
-   :::image type="content" source="./media/logs-metrics/3.png" alt-text="メトリック ページ":::
+   :::image type="content" source="./media/logs-metrics/3.png" alt-text="スクリーンショットには、Azure Monitor で [表示] が選択されたサイト間 VPN ペインが示されています。":::
 
 2. [監視] セクションで、リソース グループに移動します。 **[診断設定]** を選択して、リソース情報を入力します。 これは、この記事で前述した「[ゲートウェイ メトリックを表示する](#metrics-steps)」の手順 2 でコピーしたリソース情報です。
 
-   :::image type="content" source="./media/logs-metrics/4.png" alt-text="メトリック ページ":::
+   :::image type="content" source="./media/logs-metrics/4.png" alt-text="スクリーンショットには、Azure Monitor で [表示] が選択されたサイト間 VPN ペインが示されています。":::
 
 3. [結果] ページで、 **[+ 診断設定を追加する]** を選択してから、オプションを選択します。 Log Analytics への送信、イベント ハブへのストリーム、またはストレージ アカウントへの単純なアーカイブから選ぶことができます。
 
-   :::image type="content" source="./media/logs-metrics/5.png" alt-text="メトリック ページ":::
+   :::image type="content" source="./media/logs-metrics/5.png" alt-text="スクリーンショットには、Azure Monitor で [表示] が選択されたサイト間 VPN ペインが示されています。":::
 
 ### <a name="log-analytics-sample-query"></a><a name="sample-query"></a>Log Analytics サンプル クエリ
 

@@ -11,12 +11,12 @@ ms.date: 04/27/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a0131e461f2664fa06fc0e24237aec1579bd253c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf70d4381a7d128f7a2716540b1318b39cd729b8
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203845"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602134"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での OpenID Connect による Web サインイン
 
@@ -219,7 +219,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 | {policy} | はい | 元の更新トークンの取得に使用されたユーザー フロー。 この要求に別のユーザー フローを使用することはできません。 このパラメーターを POST 本文ではなく、クエリ文字列に追加します。 |
 | client_id | はい | [Azure portal](https://portal.azure.com/) によってアプリケーションに割り当てられたアプリケーション ID。 |
 | client_secret | はい (Web アプリの場合) | [Azure portal](https://portal.azure.com/) で生成されたアプリケーション シークレット。 クライアントが安全にクライアント シークレットを格納できる Web アプリのシナリオでは、このフローでクライアント シークレットが使用されます。 ネイティブ アプリ (パブリック クライアント) のシナリオでは、クライアント シークレットを安全に保存できないため、この呼び出しでは使用されません。 クライアント シークレットを使用する場合は、定期的に変更してください。 |
-| grant_type | はい | 付与の種類。承認コード フローのこのパートでは、更新トークンである必要があります。 |
+| grant_type | はい | 許可の種類。承認コード フローのこの部分の `refresh_token` を指定する必要があります。 |
 | refresh_token | はい | フローの第 2 のパートで取得された元の更新トークン。 更新トークンを受信するには、承認要求とトークン要求の両方でスコープ `offline_access` を使用する必要があります。 |
 | redirect_uri | いいえ | 承認コードを受信したアプリケーションの `redirect_uri` パラメーター。 |
 | scope | いいえ | スコープのスペース区切りリスト。 `openid` スコープは、ユーザーをサインインさせ、ID トークンの形式でユーザーに関するデータを取得するためのアクセス許可を示します。 これを使用すると、クライアントと同じアプリケーション ID で表される、アプリケーションの独自のバックエンド Web API にトークンを送信できます。 `offline_access` スコープは、リソースへのアクセス期間を延長するには、アプリケーションで更新トークンが必要であることを示します。 |

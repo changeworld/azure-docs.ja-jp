@@ -14,18 +14,18 @@ ms.date: 07/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb1041cb5fc4aa7503f5ae9de6ffc74ba72052b8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 0306ae3193dc53f25a1e82eae1eb09c7d26ba9b6
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421401"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055454"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>PIM で Azure AD ロールをアクティブ化する
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用すると、企業における Azure AD や他の Microsoft オンライン サービス (Office 365 や Microsoft Intune など) のリソースへの特権アクセスの管理が簡略化されます。  
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用すると、企業における Azure AD や他の Microsoft オンライン サービス (Microsoft 365 や Microsoft Intune など) のリソースへの特権アクセスの管理が簡略化されます。  
 
-管理ロールの候補者となっている場合は、特権が必要な操作を実行する必要があるときに、ロールの割り当てをアクティブにできます。 たとえば、Office 365 の機能をときどきしか管理しないユーザーは、組織の特権ロール管理者によって永続的なグローバル管理者には設定されない可能性があります。このロールは他のサービスにも影響を与えるからです。 その代わりに、Exchange Online 管理者などの Azure AD ロールが割り当てられます。 このような権限が必要な場合には、ロールをアクティブ化することを要求できます。それにより、事前に定義された期間だけ管理者権限が付与されます。
+管理ロールの候補者となっている場合は、特権が必要な操作を実行する必要があるときに、ロールの割り当てをアクティブにできます。 たとえば、Microsoft 365 の機能をときどきしか管理しないユーザーは、組織の特権ロール管理者によって永続的なグローバル管理者には設定されない可能性があります。このロールは他のサービスにも影響を与えるからです。 その代わりに、Exchange Online 管理者などの Azure AD ロールが割り当てられます。 このような権限が必要な場合には、ロールをアクティブ化することを要求できます。それにより、事前に定義された期間だけ管理者権限が付与されます。
 
 この記事は、Privileged Identity Management で自分の Azure AD ロールをアクティブ化する必要のある管理者を対象としています。
 
@@ -118,7 +118,7 @@ Privileged Identity Management でロールをアクティブ化しても、ア�
 
 # <a name="previous-version"></a>[以前のバージョン](#tab/previous)
 
-## <a name="activate-a-role"></a>ロールのアクティブ化
+## <a name="activate-a-role-previous-version"></a>ロールをアクティブ化する (以前のバージョン)
 
 Azure AD ロールを引き受ける必要がある場合は、Privileged Identity Management の **[自分のロール]** ナビゲーション オプションを使用してアクティブ化を要求できます。
 
@@ -168,7 +168,7 @@ Azure AD ロールを引き受ける必要がある場合は、Privileged Identi
 
     アクティブ化するために[ロールで承認が必要](./azure-ad-pim-approval-workflow.md)な場合は、ブラウザーの右上隅に Azure の通知が表示され、要求が承認待ちになっていることが示されます。
 
-## <a name="view-the-status-of-your-requests"></a>要求の状態を表示する
+## <a name="view-the-status-of-your-requests-previous-version"></a>要求の状態を表示する (以前のバージョン)
 
 保留中のアクティブ化要求の状態を表示することができます。
 
@@ -180,7 +180,7 @@ Azure AD ロールを引き受ける必要がある場合は、Privileged Identi
 
     ![[Azure AD ロール - 個人の要求]](./media/pim-how-to-activate-role/directory-roles-my-requests.png)
 
-## <a name="deactivate-a-role"></a>ロールの非アクティブ化
+## <a name="deactivate-a-role-previous-version"></a>ロールを非アクティブ化する (以前のバージョン)
 
 ロールは、アクティブになった後、期限 (資格のある期間) に達すると自動的に非アクティブになります。
 
@@ -196,7 +196,7 @@ Azure AD ロールを引き受ける必要がある場合は、Privileged Identi
 
 1. 使用が終了したロールを探し、 **[非アクティブ化]** をクリックします。
 
-## <a name="cancel-a-pending-request"></a>保留中の要求をキャンセルする
+## <a name="cancel-a-pending-request-previous-version"></a>保留中の要求を取り消す (以前のバージョン)
 
 承認が要求されるロールのアクティブ化を必要としない場合、保留中の要求をいつでもキャンセルできます。
 
@@ -212,7 +212,7 @@ Azure AD ロールを引き受ける必要がある場合は、Privileged Identi
 
    ![[キャンセル] ボタンが強調表示された個人の要求の一覧](./media/pim-how-to-activate-role/directory-role-cancel.png)
 
-## <a name="troubleshoot"></a>トラブルシューティング
+## <a name="troubleshoot-previous-version"></a>トラブルシューティングする (以前のバージョン)
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>ロールをアクティブにした後、アクセス許可が付与されない
 

@@ -6,15 +6,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f29a7e48fc1872f83b5a6ce127f38c1a559b2691
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 51480a49aab2c1277eeb846c593fcb2bc858d1f0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762319"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983721"
 ---
 # <a name="about-virtual-hub-routing"></a>仮想ハブのルーティングについて
 
@@ -55,7 +55,7 @@ ms.locfileid: "88762319"
 
 各仮想ハブでは、**None ルート テーブル**も使用できます。 None ルート テーブルに伝達するということは、接続から伝達する必要があるルートがないことを意味します。 VPN、ExpressRoute、およびユーザー VPN 接続は、ルートを同じルート テーブルのセットに伝達します。
 
-:::image type="content" source="./media/about-virtual-hub-routing/concepts-propagation.png" alt-text="伝達":::
+:::image type="content" source="./media/about-virtual-hub-routing/concepts-propagation.png" alt-text="関連付け":::
 
 ### <a name="labels"></a><a name="static"></a>ラベル
 ラベルは、ルート テーブルを論理的にグループ化するためのメカニズムを提供します。 接続から複数のルート テーブルにルートを伝達するときに特に役立ちます。 たとえば、既定のルート テーブルには、'Default' という組み込みのラベルがあります。 ユーザーが接続ルートを 'Default' ラベルに伝達すると、Virtual WAN 内のすべてのハブのすべての既定のルート テーブルに自動的に反映されます。 
@@ -87,6 +87,7 @@ Virtual WAN ルーティングを構成するときは、次の点を考慮し�
 * 複数のリージョンで Azure Firewall を使用する場合は、すべてのスポーク仮想ネットワークが同じルート テーブルに関連付けられている必要があります。 たとえば、VNet のサブセットが Azure Firewall を通過し、他の VNet が同じ仮想ハブ内の Azure Firewall をバイパスすることはできません。
 * VNet 接続ごとに次ホップ IP を 1 つ構成できます。
 * 仮想ハブでは、0.0.0.0/0 と次ホップ仮想ネットワーク接続 (または VNet 接続のアプライアンスの IP) に対して静的ルートがサポートされません。
+* 0\.0.0.0/0 ルートに関連するすべての情報は、ローカル ハブのルート テーブルに限定されます。 このルートは、ハブ間で伝達されません。
 
 ## <a name="next-steps"></a>次のステップ
 

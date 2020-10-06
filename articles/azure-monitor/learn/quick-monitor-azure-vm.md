@@ -7,14 +7,14 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 03/10/2020
-ms.openlocfilehash: 40c7b9e5a8b7c38c9468d54e69ca7a73c5f2d46b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 11475de159cf3d59923d6f2129aa46ddf0ef8f2c
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516398"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084432"
 ---
-# <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>クイック スタート:Azure Monitor を使用して Azure 仮想マシンを監視する
+# <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>Azure Monitor を使用して Azure 仮想マシンを監視する」を参照してください。
 [Azure Monitor](../overview.md) では、作成された時点から、Azure 仮想マシンからのデータ収集が開始されます。 このクイック スタートでは、Azure VM に対して自動的に収集されるデータと、そのデータを Azure portal で表示する方法について簡単に説明します。 次に、VM に対して [Azure Monitor for VMs](../insights/vminsights-overview.md) を有効にします。これにより、VM 上のエージェントでは、プロセスとその依存関係を含むゲスト オペレーティング システムからデータを収集して分析できるようになります。
 
 このクイック スタートでは、既存の Azure Virtual Machines があることを前提とします。 ない場合は、VM のクイック スタートに従って、[Windows VM](../../virtual-machines/windows/quick-create-portal.md) を作成するか、[Linux VM](../../virtual-machines/linux/quick-create-cli.md) を作成することができます。
@@ -30,11 +30,11 @@ Azure リソースから収集される監視データの詳細な説明につ�
 メトリックとアクティビティ ログはホスト VM について収集されますが、ゲスト オペレーティング システムとそのワークロードから監視データを収集して分析するには、エージェントといくらかの構成が必要です。 Azure Monitor for VMs によってこれらのエージェントがインストールされ、仮想マシンを監視するための強力な機能が追加されます。
 
 1. 仮想マシンのメニューに移動します。
-2. **[概要]** ページのタイルで **[分析情報に移動]** をクリックするか、 **[監視]** メニューで **[分析情報]** をクリックします。
+2. **[概要]** ページのタイルで **[分析情報に移動]** をクリックするか、**[監視]** メニューで **[分析情報]** をクリックします。
 
     ![[概要] ページ](media/quick-monitor-azure-vm/overview-insights.png)
 
-3. 仮想マシンに対して Azure Monitor for VMs がまだ有効になっていない場合は、 **[有効にする]** をクリックします。 
+3. 仮想マシンに対して Azure Monitor for VMs がまだ有効になっていない場合は、**[有効にする]** をクリックします。 
 
     ![分析情報を有効にする](media/quick-monitor-azure-vm/enable-insights.png)
 
@@ -46,7 +46,7 @@ Azure リソースから収集される監視データの詳細な説明につ�
 
     ![Azure Monitor を開く](media/quick-monitor-azure-vm/azure-monitor.png)
 
-6. VM と、サブスクリプション内のオンボードされている他の VM が表示されます。 サブスクリプション内のオンボードされていない仮想マシンを表示するには、 **[監視されない]** タブを選択します。
+6. VM と、サブスクリプション内のオンボードされている他の VM が表示されます。 サブスクリプション内のオンボードされていない仮想マシンを表示するには、**[監視されない]** タブを選択します。
 
     ![はじめに](media/quick-monitor-azure-vm/get-started.png)
 
@@ -63,9 +63,9 @@ Azure リソースから収集される監視データの詳細な説明につ�
 ### <a name="data-collection-from-windows-vm"></a>Windows VM からのデータ収集
 
 
-2. **[データ]** を選択してから、 **[Windows イベント ログ]** を選択します。
+2. **[データ]** を選択してから、**[Windows イベント ログ]** を選択します。
 
-3. イベント ログを追加するには、ログの名前を入力します。  「**System**」と入力し、プラス記号 ( **+** ) を選択します。
+3. イベント ログを追加するには、ログの名前を入力します。  「**System**」と入力し、プラス記号 (**+**) を選択します。
 
 4. テーブルで、重大度の **[エラー]** と **[警告]** のチェック ボックスをオンにします。
 
@@ -77,25 +77,25 @@ Azure リソースから収集される監視データの詳細な説明につ�
 
 2. イベント ログを追加するには、ログの名前を入力します。  「**Syslog**」と入力し、プラス記号 **+** を選択します。  
 
-3. テーブルで、重大度の **[情報]** 、 **[通知]** 、および **[デバッグ]** の各チェック ボックスをオフにします。 
+3. テーブルで、重大度の **[情報]**、**[通知]**、および **[デバッグ]** の各チェック ボックスをオフにします。 
 
 4. ページの上部にある **[保存]** を選択して構成を保存します。
 
 ## <a name="view-data-collected"></a>収集されたデータを表示する
 
-7. 仮想マシンをクリックし、 **[Monitoring]\(監視\)** メニューの **[Insights]** タイルにある **[パフォーマンス]** タブを選択します。 これは、VM のゲスト オペレーティング システムから収集されたパフォーマンス カウンターの選択グループを示しています。 下にスクロールすると、さらにカウンターを表示できます。グラフ上にマウスを移動すると、平均とパーセンタイルを異なるタイミングで表示できます。
+7. 仮想マシンをクリックし、**[Monitoring]\(監視\)** メニューの **[Insights]** タイルにある **[パフォーマンス]** タブを選択します。 これは、VM のゲスト オペレーティング システムから収集されたパフォーマンス カウンターの選択グループを示しています。 下にスクロールすると、さらにカウンターを表示できます。グラフ上にマウスを移動すると、平均とパーセンタイルを異なるタイミングで表示できます。
 
-    ![パフォーマンス](media/quick-monitor-azure-vm/performance.png)
+    ![パフォーマンス ペインを表示するスクリーンショット。](media/quick-monitor-azure-vm/performance.png)
 
-9. **[マップ]** を選択して、仮想マシンで実行されているプロセスとその依存関係を示すマップ機能を開きます。 プロパティ ウィンドウがまだ開いていない場合は、 **[プロパティ]** を選択して開きます。
+9. **[マップ]** を選択して、仮想マシンで実行されているプロセスとその依存関係を示すマップ機能を開きます。 プロパティ ウィンドウがまだ開いていない場合は、**[プロパティ]** を選択して開きます。
 
-    ![マップ](media/quick-monitor-azure-vm/map.png)
+    ![マップ ペインを表示するスクリーンショット。](media/quick-monitor-azure-vm/map.png)
 
 11. 仮想マシンのプロセスを展開します。 プロセスの 1 つを選択すると、詳細を表示したり、その依存関係を強調表示したりできます。
 
-    ![処理](media/quick-monitor-azure-vm/processes.png)
+    ![展開された仮想マシンのプロセスを示すマップ ペインを表示するスクリーンショット。](media/quick-monitor-azure-vm/processes.png)
 
-12. 仮想マシンをもう一度選択し、 **[ログイベント]** を選択します。 
+12. 仮想マシンをもう一度選択し、**[ログイベント]** を選択します。 
 
     ![ログ イベント](media/quick-monitor-azure-vm/log-events.png)
 

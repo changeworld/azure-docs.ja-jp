@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/21/2020
-ms.openlocfilehash: ddc70ccbbb5c964f16b078470517ce667bc878f1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: bf22e20a6c6187677f000e0c50ac64582233c3cd
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082643"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90019667"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Linux ベースの HDInsight クラスターの OS 修正プログラム適用スケジュールを構成する
 
@@ -32,11 +32,16 @@ HDInsight では、OS パッチのインストール、セキュリティ更新�
 
 運用環境にデプロイする前に、代表的な非運用環境に修正プログラムを適用します。 実際に修正プログラムを適用する前に、システムを適切にテストする計画を立てます。
 
-クラスターとの ssh セッションで、アップグレードが使用可能であることを示すメッセージが表示される場合があります。 メッセージは次のようになります。
+クラスターとの ssh セッションから、セキュリティ更新プログラムが使用可能であることを示すメッセージを受け取る場合があります。 メッセージは次のようになります。
 
 ```
-New release '18.04.3 LTS' available.
-Run 'do-release-upgrade' to upgrade it
+89 packages can be updated.
+82 updates are security updates.
+
+*** System restart required ***
+
+Welcome to Spark on HDInsight.
+
 ```
 
 修正プログラムの適用は任意であり、ユーザーの判断に委ねられています。
@@ -65,7 +70,10 @@ Run 'do-release-upgrade' to upgrade it
 > [!NOTE]
 > スクリプトを既存のクラスターに適用した後は、保存済みとしてマークする必要があります。 そうしない場合、スケーリング操作で作成された新しいノードでは、既定の修正プログラム適用スケジュールが使用されます。 クラスター作成プロセスの一部としてスクリプトを適用した場合、スクリプトは自動的に保存されます。
 
-## <a name="next-steps"></a>次のステップ
+> [!NOTE]
+> [Scheduled Restart]\(スケジュールされた再起動\) オプションでは、12 から 24 時間の期間でパッチが適用されたクラスター ノードのローリング再起動が自動的に行われ、高可用性、更新ドメイン、および障害ドメインに関して考慮されます。 [Scheduled Restart]\(スケジュールされた再起動\) では実行中のワークロードは終了されませんが、ノードが使用不可能な期間にクラスターの容量が消費される可能性があり、その場合は処理時間が長くなります。 
+
+## <a name="next-steps"></a>次の手順
 
 スクリプト アクションの使用法に関する具体的な手順については、「[スクリプト アクションを使用して Azure HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」の以下のセクションをご覧ください。
 

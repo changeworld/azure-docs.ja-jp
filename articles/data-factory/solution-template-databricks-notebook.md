@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/27/2020
-ms.openlocfilehash: 2503c26ac0348739bbf117c3538af797833ce8b8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: f9dc11bd046bdc3a8913b4b05f1b68b84c9736c4
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857645"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89438451"
 ---
 # <a name="transformation-with-azure-databricks"></a>Azure Databricks による変換
 
@@ -28,7 +28,7 @@ ms.locfileid: "82857645"
 
 - **データ コピー**は、ソース データセットを Azure Databricks ノートブックに DBFS としてマウントされているシンク ストレージにコピーします。 このようにして、データセットを Spark で直接使用することができます。
 
-- **ノートブック**によって、データセットを変換する Databricks ノートブックがトリガーされます。 また、処理されたフォルダーまたは Azure SQL Data Warehouse にデータセットを追加します。
+- **ノートブック**によって、データセットを変換する Databricks ノートブックがトリガーされます。 また、処理されたフォルダーまたは Azure Synapse Analytics (旧称 SQL Data Warehouse) にデータセットを追加します。
 
 わかりやすくするために、このチュートリアルのテンプレートではスケジュールされたトリガーを作成しません。 必要に応じて、1 つを追加できます。
 
@@ -132,7 +132,7 @@ ms.locfileid: "82857645"
 
 1. **データ コピー** アクティビティの **[file-to-blob]** で、 **[ソース]** タブと **[シンク]** タブを確認します。 必要に応じて設定を変更します。
 
-   - **[ソース]** タブ ![ソース タブ](media/solution-template-Databricks-notebook/copy-source-settings.png)
+   - **[ソース]![ タブ** ソース タブ](media/solution-template-Databricks-notebook/copy-source-settings.png)
 
    - **[シンク]** タブ ![シンク タブ](media/solution-template-Databricks-notebook/copy-sink-settings.png)
 

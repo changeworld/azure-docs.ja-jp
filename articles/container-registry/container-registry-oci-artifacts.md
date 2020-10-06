@@ -4,14 +4,14 @@ description: Azure のプライベート コンテナー レジストリを使�
 author: SteveLasker
 manager: gwallace
 ms.topic: article
-ms.date: 03/11/2020
+ms.date: 08/12/2020
 ms.author: stevelas
-ms.openlocfilehash: 2c6b66b635a2513ccc19e0352414d18d8389fef1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c95766cc12b281521fa52ab113fadd4321d0815
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79371054"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485005"
 ---
 # <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>Azure コンテナー レジストリを使用して OCI 成果物をプッシュおよびプルする
 
@@ -150,7 +150,37 @@ az acr repository delete \
     --image samples/artifact:1.0
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="example-build-docker-image-from-oci-artifact"></a>例:OCI 成果物から Docker イメージを構築する
+
+コンテナー イメージを構築するためのソース コードとバイナリを、OCI 成果物として Azure コンテナー レジストリに格納できます。 [ACR タスク](container-registry-tasks-overview.md)のビルド コンテキストとして、ソース成果物を参照できます。 この例では、Dockerfile を OCI 成果物として格納し、その成果物を参照してコンテナー イメージをビルドする方法を示します。
+
+たとえば、1 行の Dockerfile を作成します。
+
+```bash
+echo "FROM hello-world" > hello-world.dockerfile
+```
+
+ターゲットのコンテナー レジストリにログインします。
+
+```azurecli
+az login
+az acr login --name myregistry
+```
+
+新しい OCI 成果物を作成し、`oras push` コマンドを使用してターゲット レジストリにプッシュします。 この例では、成果物の既定のメディアの種類を設定します。
+
+```bash
+oras push myregistry.azurecr.io/hello-world:1.0 hello-world.dockerfile
+```
+
+[az acr build](/cli/azure/acr#az-acr-build) コマンドを実行して、新しい成果物をビルド コンテキストとして使用する hello-world イメージをビルドします。
+
+```azurecli
+az acr build --registry myregistry --file hello-world.dockerfile \
+  oci://myregistry.azurecr.io/hello-world:1.0
+```
+
+## <a name="next-steps"></a>次の手順
 
 * 成果物のマニフェストを構成する方法など、[ORAS ライブラリ](https://github.com/deislabs/oras/tree/master/docs)の詳細について確認する
 * [OCI 成果物](https://github.com/opencontainers/artifacts)リポジトリを参照して、新しい成果物の型に関するリファレンス情報を確認する

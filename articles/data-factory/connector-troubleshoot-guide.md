@@ -5,16 +5,16 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 07/20/2020
+ms.date: 09/10/2020
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: c8edb36345de4516077b3c857cff33389062cc7f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 62a5f3b18d4b8329c4a15086bc23d09805b786ab
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044544"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89668892"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory コネクタのトラブルシューティング
 
@@ -22,7 +22,6 @@ ms.locfileid: "87044544"
 
 この記事では、Azure Data Factory のコネクタの一般的なトラブルシューティング方法について説明します。
   
-
 ## <a name="azure-blob-storage"></a>Azure Blob Storage
 
 ### <a name="error-code--azurebloboperationfailed"></a>エラー コード:AzureBlobOperationFailed
@@ -174,8 +173,7 @@ ms.locfileid: "87044544"
 
 - **原因**:TLS ハンドシェイク中に証明書の検証に失敗しました。
 
-- **解決方法**:対処法:ADLS Gen1 の TLS 検証をスキップするには、段階的なコピーを使用します。 この問題を再現し、netmon トレースを収集してから、ネットワーク チームに連絡し、[この記事](self-hosted-integration-runtime-troubleshoot-guide.md#how-to-collect-netmon-trace)に従ってローカル ネットワーク構成を確認する必要があります。
-
+- **解決方法**:対処法:ADLS Gen1 の TLS 検証をスキップするには、段階的なコピーを使用します。 この問題を再現し、netmon トレースを収集してから、ネットワーク チームに連絡し、ローカル ネットワーク構成を確認する必要があります。
 
     ![ADLS Gen1 のトラブルシューティング](./media/connector-troubleshoot-guide/adls-troubleshoot.png)
 
@@ -207,7 +205,7 @@ ms.locfileid: "87044544"
 - **解決方法**: 数分後にコピー アクティビティを再実行します。
                   
 
-## <a name="azure-sql-data-warehouseazure-sql-databasesql-server"></a>Azure SQL Data Warehouse/Azure SQL Database/SQL Server
+## <a name="azure-synapse-analytics-formerly-sql-data-warehouseazure-sql-databasesql-server"></a>Azure Synapse Analytics (以前の SQL Data Warehouse)/Azure SQL Database/SQL Server
 
 ### <a name="error-code--sqlfailedtoconnect"></a>エラー コード:SqlFailedToConnect
 
@@ -228,8 +226,9 @@ ms.locfileid: "87044544"
 
 - **原因**:エラー メッセージに "SqlException" が含まれている場合、SQL Database は、何らかの特定の操作が失敗したことを示すエラーをスローします。
 
-- **推奨事項**:SQL エラーが明確でない場合は、データベースを最新の互換性レベル '150' に変更してみてください。 最新バージョンの SQL エラーをスローすることができます。 詳細なドキュメントを参照してください: https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15#backwardCompat 。
-        SQL の問題のトラブルシューティングの場合、詳細については、次の参照ドキュメントで SQL エラー コードを検索してください: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors 。 さらに支援が必要な場合は、Azure SQL サポートにお問い合わせください。
+- **推奨事項**:SQL エラーが明確でない場合は、データベースを最新の互換性レベル '150' に変更してみてください。 最新バージョンの SQL エラーをスローすることができます。 [詳細なドキュメント](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#backwardCompat)を参照してください。
+
+    SQL の問題のトラブルシューティングの場合、詳細については、次の参照ドキュメントで SQL エラー コードを検索してください: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors 。 さらに支援が必要な場合は、Azure SQL サポートにお問い合わせください。
 
 - **原因**:エラー メッセージに "PdwManagedToNativeInteropException" が含まれている場合、通常、ソースとシンクで列のサイズが一致しないことが原因です。
 
@@ -319,7 +318,7 @@ ms.locfileid: "87044544"
 
 - **原因**:SQL Database の一時的な障害の可能性があります。
 
-- **推奨事項**:もう一度試してください。 問題が解決しない場合は、Azure SQL サポートにお問い合わせください。
+- **推奨事項**:再試行してください。 問題が解決しない場合は、Azure SQL サポートにお問い合わせください。
 
 
 ### <a name="error-code--sqlbatchwritetransactionfailed"></a>エラー コード:SqlBatchWriteTransactionFailed
@@ -350,7 +349,7 @@ ms.locfileid: "87044544"
 
 - **原因**:同時実行数が多いときに SQL 接続が SQL Database によって閉じられ、サーバーが接続を終了します。
 
-- **推奨事項**:リモート サーバーで SQL 接続を閉じます。 もう一度試してください。 問題が解決しない場合は、Azure SQL サポートにお問い合わせください。
+- **推奨事項**:リモート サーバーで SQL 接続を閉じます。 再試行してください。 問題が解決しない場合は、Azure SQL サポートにお問い合わせください。
 
 
 ### <a name="error-code--sqlcreatetablefailedunsupportedtype"></a>エラー コード:SqlCreateTableFailedUnsupportedType
@@ -360,38 +359,38 @@ ms.locfileid: "87044544"
 
 ### <a name="error-message-conversion-failed-when-converting-from-a-character-string-to-uniqueidentifier"></a>エラー メッセージ: 文字列から uniqueidentifier に変換中、変換が失敗しました。
 
-- **現象**:ステージング コピーおよび PolyBase を使用して、SQL Server などの表形式のデータ ソースから Azure SQL Data Warehouse にデータをコピーすると、次のエラーが発生します。
+- **現象**:ステージング コピーおよび PolyBase を使用して、(SQL Server などの) 表形式のデータ ソースから Azure Synapse Analytics にデータをコピーすると、次のエラーが発生します。
 
     ```
     ErrorCode=FailedDbOperation,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,
-    Message=Error happened when loading data into SQL Data Warehouse.,
+    Message=Error happened when loading data into Azure Synapse Analytics.,
     Source=Microsoft.DataTransfer.ClientLibrary,Type=System.Data.SqlClient.SqlException,
     Message=Conversion failed when converting from a character string to uniqueidentifier...
     ```
 
-- **原因**: Azure SQL Data Warehouse の PolyBase によって空の文字列を GUID に変換できません。
+- **原因**:Azure Synapse Analytics の PolyBase によって、空の文字列を GUID に変換できません。
 
 - **解決方法**:コピー アクティビティ シンクの PolyBase の設定で、"**使用型の既定の**" オプションを false に設定します。
 
 ### <a name="error-message-expected-data-type-decimalxx-offending-value"></a>エラー メッセージ:予期されたデータ型: DECIMAL(x,x)、問題のある値
 
-- **現象**: ステージング コピーおよび PolyBase を使用して、SQL Server などの表形式のデータ ソースから SQL DW にデータをコピーすると、次のエラーが発生します。
+- **現象**:ステージング コピーおよび PolyBase を使用して、(SQL Server などの) 表形式のデータ ソースから Azure Synapse Analytics にデータをコピーすると、次のエラーが発生します。
 
     ```
     ErrorCode=FailedDbOperation,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,
-    Message=Error happened when loading data into SQL Data Warehouse.,
+    Message=Error happened when loading data into Azure Synapse Analytics.,
     Source=Microsoft.DataTransfer.ClientLibrary,Type=System.Data.SqlClient.SqlException,
     Message=Query aborted-- the maximum reject threshold (0 rows) was reached while reading from an external source: 1 rows rejected out of total 415 rows processed. (/file_name.txt) 
     Column ordinal: 18, Expected data type: DECIMAL(x,x), Offending value:..
     ```
 
-- **原因**: Azure SQL Data Warehouse の PolyBase では、空の文字列 (null 値) を decimal 型の列に挿入することはできません。
+- **原因**:Azure Synapse Analytics の PolyBase では、空の文字列 (null 値) を decimal 型の列に挿入することはできません。
 
 - **解決方法**:コピー アクティビティ シンクの PolyBase の設定で、"**使用型の既定の**" オプションを false に設定します。
 
 ### <a name="error-message-java-exception-message-hdfsbridgecreaterecordreader"></a>エラー メッセージ:Java の例外メッセージ:HdfsBridge::CreateRecordReader
 
-- **現象**: PolyBase を使用して Azure SQL Data Warehouse にデータをコピーすると、次のエラーが発生します。
+- **現象**:PolyBase を使用して Azure Synapse Analytics にデータをコピーすると、次のエラーが発生します。
 
     ```
     Message=110802;An internal DMS error occurred that caused this operation to fail. 
@@ -400,7 +399,7 @@ ms.locfileid: "87044544"
     Java exception message:HdfsBridge::CreateRecordReader - Unexpected error encountered creating the record reader.: Error [HdfsBridge::CreateRecordReader - Unexpected error encountered creating the record reader.] occurred while accessing external file.....
     ```
 
-- **原因**: 原因として、スキーマ (列の合計幅) が大きすぎる (1 MB を超えている) ことが考えられます。 次のすべての列のサイズを追加して、ターゲットの SQL DW テーブルのスキーマを確認します。
+- **原因**: 原因として、スキーマ (列の合計幅) が大きすぎる (1 MB を超えている) ことが考えられます。 すべての列のサイズを追加して、ターゲットの Azure Synapse Analytics テーブルのスキーマを確認します。
 
     - Int -> 4 バイト
     - Bigint-> 8 バイト
@@ -424,15 +423,15 @@ ms.locfileid: "87044544"
 
 ### <a name="error-message-the-condition-specified-using-http-conditional-headers-is-not-met"></a>エラー メッセージ:HTTP 条件ヘッダーを使用して指定した条件が満たされません。
 
-- **現象**:SQL クエリを使用して Azure SQL Data Warehouse からデータをプルすると、次のエラーが発生します。
+- **現象**:SQL クエリを使用して Azure Synapse Analytics からデータをプルすると、次のエラーが発生します。
 
     ```
     ...StorageException: The condition specified using HTTP conditional header(s) is not met...
     ```
 
-- **原因**:Azure SQL Data Warehouse では、Azure Storage 内の外部テーブルに対するクエリに関する問題が発生しています。
+- **原因**:Azure Synapse Analytics では、Azure Storage 内の外部テーブルに対するクエリに関する問題が発生しています。
 
-- **解決方法**:SSMS で同じクエリを実行し、同じ結果が表示されるかどうかを確認します。 表示される場合は、Azure SQL Data Warehouse に対するサポート チケットを作成し、ご利用の SQL DW サーバーとデータベース名を入力してさらにトラブルシューティングを行います。
+- **解決方法**:SSMS で同じクエリを実行し、同じ結果が表示されるかどうかを確認します。 表示される場合は、Azure Synapse Analytics に対するサポート チケットを作成し、ご利用の Azure Synapse Analytics サーバーとデータベース名を入力してさらにトラブルシューティングを行います。
             
 
 ## <a name="delimited-text-format"></a>区切りテキスト形式
@@ -545,7 +544,7 @@ ms.locfileid: "87044544"
 
 - **原因**:エラー メッセージに 'NullPointerReference' が含まれている場合は、一時的なエラーである可能性があります。
 
-- **推奨事項**:もう一度試してください。 問題が解決しない場合は、サポートにお問い合わせください。
+- **推奨事項**:再試行してください。 問題が解決しない場合は、サポートにお問い合わせください。
 
 
 ### <a name="error-code--parquetinvalidfile"></a>エラー コード:ParquetInvalidFile
@@ -626,7 +625,7 @@ ms.locfileid: "87044544"
 
 - **原因**:制限を超えるデータ値
 
-- **推奨事項**:もう一度試してください。 問題が解決しない場合は、Microsoft にお問い合わせください。
+- **推奨事項**:再試行してください。 問題が解決しない場合は、Microsoft にお問い合わせください。
 
 
 ### <a name="error-code--parquetunsupportedinterpretation"></a>エラー コード:ParquetUnsupportedInterpretation

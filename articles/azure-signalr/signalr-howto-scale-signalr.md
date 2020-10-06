@@ -4,21 +4,21 @@ description: Azure portal または Azure CLI を使用して Azure SignalR Serv
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 12/11/2019
+ms.date: 9/9/2020
 ms.author: zhshang
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: bd112526c7b36d5636d5d85c66b25b6310d35d1e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bb01f2f96e5db4c94e759b114818360e6084255f
+ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500489"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89595769"
 ---
 # <a name="how-to-scale-an-azure-signalr-service-instance"></a>Azure SignalR Service のインスタンスをスケーリングする方法
 この記事では、Azure SignalR Service のインスタンスをスケーリングする方法を示します。 スケーリングには、スケールアップとスケールアウトの 2 つのシナリオがあります。
 
 * [スケールアップ](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling):ユニット、接続、メッセージなどの数を増やします。 価格レベルを Free から Standard に変更してスケールアップします。
-* [スケールアウト](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling):SignalR ユニットの数を増やします。 最大 100 ユニットまでスケールアウトできます。
+* [スケールアウト](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling):SignalR ユニットの数を増やします。 最大 100 ユニットまでスケールアウトできます。 スケーリングのために選択できる単位オプションは限られています。単一の SignalR サービス インスタンスに対して 1、2、5、10、20、50、および 100 ユニットです。
 
 スケール設定が適用されるまでに数分かかります。 まれに、適用されるまでに 30 分程度かかる場合があります。 コードの変更やサーバー アプリケーションの再デプロイは必要ありません。
 
@@ -84,7 +84,7 @@ az signalr update \
 
 サービスの制限、クォータ、各レベルでの制約の表は、[SignalR Service の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-signalr-service-limits)に関するページを参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このガイドでは、1 つの SignalR Service インスタンスをスケーリングする方法について説明しました。
 

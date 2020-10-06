@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 06/29/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0f5481531d23eeb579dcabe80e028ed7b482b09f
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: ad487aa7492abcf02988c78ccfa2ba7cd4798249
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762268"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983658"
 ---
 # <a name="view-virtual-hub-effective-routes"></a>仮想ハブの有効なルートを表示する
 
@@ -50,6 +50,8 @@ AS パスを表示するには、テーブルの下部にあるスクロール�
 * 仮想ネットワーク接続、VPN 接続、または ExpressRoute 接続の編集時に、Azure Virtual WAN ポータルに **[Propagate Default Route]\(既定のルートを伝達する\)** フィールドが表示されます。 このフィールドは **enableInternetSecurity** フラグを示します。このフラグは、ExpressRoute 接続と VPN 接続の場合は常に既定で "false" になりますが、仮想ネットワーク接続の場合は "true" になります。
 
 * VM NIC 上で有効なルートを表示しているとき、次のホップが "仮想ネットワーク ゲートウェイ" であれば、それは、仮想 WAN ハブに接続されているスポークに VM があるとき、仮想ハブ ルーターを意味します。
+
+* 仮想ハブ ルート テーブルの有効なルートのビューは、仮想ハブに少なくとも 1 つの種類の接続 (VPN、ER、または VNET) が接続されている場合にのみ入力されます。
 
 ## <a name="next-steps"></a>次のステップ
 

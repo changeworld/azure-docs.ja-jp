@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/26/2020
+ms.date: 09/04/2020
 ms.author: b-juche
-ms.openlocfilehash: d70558efb1ea54f069981062e5379d995dbeddd2
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 405d872c178a3172454943b7d40ea276ea5c017e
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950342"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89459107"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Azure NetApp Files を使用して、スナップショットを管理する
 
-Azure NetApp Files では、オンデマンドのスナップショットの作成と、スナップショット ポリシーを使用した自動スナップショット作成のスケジュール設定がサポートされています。  スナップショットから新しいボリュームを復元することもできます。  
+Azure NetApp Files では、オンデマンドのスナップショットの作成と、スナップショット ポリシーを使用した自動スナップショット作成のスケジュール設定がサポートされています。  新しいボリュームにスナップショットを復元したり、クライアントを使用して 1 つのファイルを復元したりすることもできます。  
 
 ## <a name="create-an-on-demand-snapshot-for-a-volume"></a>ボリュームのオンデマンド スナップショットを作成する
 
@@ -165,7 +165,62 @@ Azure NetApp Files では、オンデマンドのスナップショットの作�
     新しいボリュームでは、スナップショットで使用されていたものと同じプロトコルが使用されます。   
     スナップショットから復元された新しいボリュームが [ボリューム] ブレードに表示されます。
 
+## <a name="restore-a-file-from-a-snapshot-using-a-client"></a>クライアントを使用してスナップショットからファイルを復元する
+
+[スナップショット全体をボリュームに復元する](#restore-a-snapshot-to-a-new-volume)ことを望まない場合は、ボリュームがマウントされているクライアントを使用してスナップショットからファイルを復元できます。  
+
+マウントされたボリュームには、クライアントからアクセス可能な `.snapshot` (NFS クライアントの場合) または`~snapshot` (SMB クライアントの場合) という名前のスナップショットディレクトリが含まれています。 スナップショット ディレクトリには、ボリュームのスナップショットに対応するサブディレクトリが含まれています。 各サブディレクトリには、スナップショットのファイルが含まれます。 ファイルを誤って削除または上書きした場合、ファイルをスナップショットのサブディレクトリから読み取り/書き込みディレクトリにコピーすることで、ファイルを親の読み取り/書き込みディレクトリに復元できます。 
+
+ボリュームの作成時に [スナップショット パスを非表示にする] チェックボックスをオンにした場合、スナップショット ディレクトリは非表示になります。 ボリュームを選択することで、ボリュームの [スナップショット パスの非表示] 状態を表できます。 ボリュームのページで **[編集]** をクリックすることで、[スナップショット パスを非表示にする] オプションを編集できます。  
+
+![ボリュームのスナップショット オプションを編集する](../media/azure-netapp-files/volume-edit-snapshot-options.png) 
+
+### <a name="restore-a-file-by-using-a-linux-nfs-client"></a>Linux NFS クライアントを使用してファイルを復元する 
+
+1. `ls` Linux コマンドを使用して、`.snapshot` ディレクトリから復元するファイルを一覧表示します。 
+
+    次に例を示します。
+
+    `$ ls my.txt`   
+    `ls: my.txt: No such file or directory`   
+
+    `$ ls .snapshot`   
+    `daily.2020-05-14_0013/              hourly.2020-05-15_1106/`   
+    `daily.2020-05-15_0012/              hourly.2020-05-15_1206/`   
+    `hourly.2020-05-15_1006/             hourly.2020-05-15_1306/`   
+
+    `$ ls .snapshot/hourly.2020-05-15_1306/my.txt`   
+    `my.txt`
+
+2. `cp` コマンドを使用して、ファイルを親ディレクトリにコピーします。  
+
+    次に例を示します。 
+
+    `$ cp .snapshot/hourly.2020-05-15_1306/my.txt .`   
+
+    `$ ls my.txt`   
+    `my.txt`   
+
+### <a name="restore-a-file-by-using-a-windows-client"></a>Windows クライアントを使用してファイルを復元する 
+
+1. ボリュームの `~snapshot` ディレクトリが非表示になっている場合は、親ディレクトリの[非表示の項目を表示](https://support.microsoft.com/help/4028316/windows-view-hidden-files-and-folders-in-windows-10)して、`~snapshot` を表示します。
+
+    ![非表示の項目を表示](../media/azure-netapp-files/snapshot-show-hidden.png) 
+
+2. `~snapshot` 内のサブディレクトリに移動して、復元するファイルを見つけます。  ファイルを右クリックします。 **[コピー]** を選択します。  
+
+    ![ファイルをコピーして復元する](../media/azure-netapp-files/snapshot-copy-file-restore.png) 
+
+3. 親ディレクトリに戻ります。 親ディレクトリを右クリックし、[`Paste`] を選択して、ファイルをディレクトリに貼り付けます。
+
+    ![ファイルを貼り付けて復元する](../media/azure-netapp-files/snapshot-paste-file-restore.png) 
+
+4. 親ディレクトリを右クリックし、 **[プロパティ]** を選択します。 **[以前のバージョン]** タブをクリックしてスナップショットの一覧を表示し、 **[復元]** を選択してファイルを復元することもできます。  
+
+    ![[プロパティ] の [以前のバージョン]](../media/azure-netapp-files/snapshot-properties-previous-version.png) 
+
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure NetApp Files のストレージ階層を理解する](azure-netapp-files-understand-storage-hierarchy.md)
 * [Azure NetApp Files のリソース制限](azure-netapp-files-resource-limits.md)
+* [Azure NetApp Files のスナップショット 101 ビデオ](https://www.youtube.com/watch?v=uxbTXhtXCkw&feature=youtu.be)

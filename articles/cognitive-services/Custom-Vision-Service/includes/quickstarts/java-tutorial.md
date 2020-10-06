@@ -3,15 +3,18 @@ author: areddish
 ms.custom: devx-track-java
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 08/17/2020
-ms.openlocfilehash: cd6388e6c6313ba84978d43d388855b114a4875d
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.date: 09/15/2020
+ms.openlocfilehash: f4b64c25bff93683c79aa1aa3eb556988c798cb0
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508543"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604998"
 ---
-この記事では、Custom Vision Java クライアント ライブラリを使用して画像分類モデルを構築する基本的な方法について説明します。 作成後、タグを追加し、イメージをアップロードし、プロジェクトをトレーニングし、プロジェクトの既定の予測エンドポイント URL を取得し、エンドポイントを使用してイメージをプログラミングでテストできます。 この例は、独自の Java アプリケーションを構築するためのテンプレートとしてご利用ください。 分類モデルの構築と使用のプロセスをコード "_なし_" で行う場合は、[ブラウザー ベースのガイダンス](../../getting-started-build-a-classifier.md)を参照してください。
+このガイドでは、Java 用の Custom Vision クライアント ライブラリを使用して画像分類モデルを構築する際の足がかりとして役立つ手順とサンプル コードを紹介します。 プロジェクトを作成し、タグを追加し、プロジェクトをトレーニングして、プロジェクトの予測エンドポイント URL を使用してプログラムでテストします。 この例は、独自の画像認識アプリを構築するためのテンプレートとしてご利用ください。
+
+> [!NOTE]
+> コードを記述 "_せずに_" 分類モデルの構築とトレーニングを行いたい場合は、代わりに[ブラウザーベースのガイダンス](../../getting-started-build-a-classifier.md)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -20,9 +23,9 @@ ms.locfileid: "88508543"
 - [Maven](https://maven.apache.org/) がインストールされていること
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="get-the-custom-vision-client-library-and-sample-code"></a>Custom Vision クライアント ライブラリとサンプル コードを入手する
+## <a name="get-the-custom-vision-client-library"></a>Custom Vision クライアント ライブラリを取得する
 
-Custom Vision を使用する Java アプリを作成するには、Custom Vision maven パッケージが必要となります。 これらのパッケージは、これからダウンロードするサンプル プロジェクトに含まれていますが、ここから個別にアクセスすることもできます。
+Java 用の Custom Vision で画像分析アプリを作成するには、Custom Vision の Maven パッケージが必要です。 これらのパッケージは、これからダウンロードするサンプル プロジェクトに含まれていますが、ここから個別にアクセスすることもできます。
 
 Custom Vision クライアント ライブラリは、Maven Central Repository にあります。
 
@@ -45,21 +48,21 @@ $env:AZURE_CUSTOMVISION_TRAINING_API_KEY ="<your training api key>"
 $env:AZURE_CUSTOMVISION_PREDICTION_API_KEY ="<your prediction api key>"
 ```
 
-## <a name="understand-the-code"></a>コードの理解
+## <a name="examine-the-code"></a>コードを確認する
 
 Java IDE で `Vision/CustomVision` プロジェクトを読み込み、_CustomVisionSamples.java_ ファイルを開きます。 **runSample** メソッドを探して、**ObjectDetection_Sample** メソッド呼び出しをコメント アウトしてください&mdash;このメソッドで物体検出のシナリオが実行されますが、このガイドの対象外となります。 この例の主な機能は、**ImageClassification_Sample** メソッドに実装されます。このメソッドの定義に移動し、コードを詳しく調べてみましょう。
 
-### <a name="create-a-custom-vision-service-project"></a>Custom Vision Service プロジェクトを作成する
+## <a name="create-a-custom-vision-project"></a>Custom Vision プロジェクトを作成する
 
 画像分類プロジェクトは、この最初の数行のコードで作成されます。 作成したプロジェクトは、先ほどアクセスした [Custom Vision Web サイト](https://customvision.ai/)に表示されます。 プロジェクトを作成するときに他のオプションを指定するには、[CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) メソッドのオーバーロードを参照してください ([分類子の構築](../../getting-started-build-a-classifier.md)に関する Web ポータル ガイドで説明されています)。
 
 [!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_create)]
 
-### <a name="create-tags-in-the-project"></a>プロジェクトにタグを作成する
+## <a name="create-tags-in-the-project"></a>プロジェクトにタグを作成する
 
 [!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_tags)]
 
-### <a name="upload-and-tag-images"></a>画像をアップロードし、タグ付けする
+## <a name="upload-and-tag-images"></a>画像をアップロードし、タグ付けする
 
 サンプル画像は、プロジェクトの **src/main/resources** フォルダーに格納されています。 そこから読み取られて、それぞれの適切なタグと共にサービスにアップロードされます。
 
@@ -69,13 +72,13 @@ Java IDE で `Vision/CustomVision` プロジェクトを読み込み、_CustomVi
 
 [!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_helpers)]
 
-### <a name="train-the-classifier-and-publish"></a>分類器をトレーニングしてする公開する
+## <a name="train-and-publish-the-project"></a>プロジェクトをトレーニングして公開する
 
 このコードにより、予測モデルの最初のイテレーションが作成され、そのイテレーションが予測エンドポイントに公開されます。 公開されたイテレーションに付けられた名前は、予測要求を送信するために使用できます。 イテレーションは、公開されるまで予測エンドポイントで利用できません。
 
 [!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_train)]
 
-### <a name="use-the-prediction-endpoint"></a>予測エンドポイントを使用する
+## <a name="use-the-prediction-endpoint"></a>予測エンドポイントを使用する
 
 予測エンドポイントは、現在のモデルに画像を送信して分類予測を取得する際に使用できる参照で、ここでは `predictor` で表されます。 このサンプルでは、どこか他の場所で、予測キーの環境変数を使用して `predictor` が定義されています。
 
@@ -133,3 +136,6 @@ Done!
 
 > [!div class="nextstepaction"]
 > [モデルのテストと再トレーニング](../../test-your-model.md)
+
+* Custom Vision とは
+* * [SDK のリファレンス ドキュメント](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable)

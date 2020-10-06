@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/15/2019
-ms.openlocfilehash: 38ec2d4619f47bf9fc4d1815cb6e9990cef72dcf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 09/14/2020
+ms.openlocfilehash: 2e90a8779322cf8967ca9a194c6cc760f7c8b8f5
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606501"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532028"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>マッピング データ フローの派生列変換
 
@@ -20,25 +20,49 @@ ms.locfileid: "81606501"
 
 データ フロー内に新しい列を生成したり、既存のフィールドを変更したりするには、派生列変換を使用します。
 
-## <a name="derived-column-settings"></a>派生列変換の設定
+## <a name="create-and-update-columns"></a>列を作成および更新する
 
-既存の列を上書きするには、列のドロップダウンからそれを選択します。 それ以外の場合は、列選択フィールドをテキスト ボックスとして使用して、新しい列の名前を入力します。 派生列の式を作成するには、[式の入力] ボックスをクリックして [Data Flow 式ビルダー](concepts-data-flow-expression-builder.md)を開きます。
+派生列を作成するときは、新しい列を生成するか、既存の列を更新することができます。 **[列]** ボックスに、作成する列を入力します。 スキーマ内の既存の列を上書きするには、列ドロップダウンを使用できます。 派生列の式を作成するには、 **[式の入力]** ボックスをクリックします。 式の入力を開始するか、式ビルダーを開いてロジックを作成することができます。
 
-![派生列変換の設定](media/data-flow/dc1.png "派生列変換の設定")
+![派生列変換の設定](media/data-flow/create-derive-column.png "派生列変換の設定")
 
-派生列を追加するには、既存の派生列にカーソルを合わせ、プラス アイコンをクリックします。 **[列の追加]** または **[列パターンの追加]** のいずれかを選択します。 列名がソースからの変数の場合は、列パターンが役に立つ可能性があります。 詳細については、「[列パターン](concepts-data-flow-column-pattern.md)」を参照してください。
+派生列をさらに追加するには、列リストの上にある **[追加]** をクリックするか、既存の派生列の横にあるプラス記号のアイコンをクリックします。 **[列の追加]** または **[列パターンの追加]** のいずれかを選択します。
 
-![新しい派生列の選択](media/data-flow/columnpattern.png "新しい派生列の選択")
+![新しい派生列の選択](media/data-flow/add-derived-column.png "新しい派生列の選択")
 
-## <a name="build-schemas-in-output-schema-pane"></a>[Output Schema]\(出力スキーマ\) ウィンドウにスキーマを作成する
+### <a name="column-patterns"></a>列パターン
 
-変更している列と自分のスキーマに追加している列は、[出力スキーマ] ペインに一覧表示されます。 ここでは、単純なデータ構造と複雑なデータ構造を対話形式で作成できます。 フィールドを追加するには、 **[列の追加]** を選択します。 階層を構築するには、 **[Add subcolumn]\(サブ列の追加\)** を選択します。
+スキーマが明示的に定義されていない場合、または列のセットを一括して更新する場合は、列パターンを作成する必要があります。 列パターンを使用すると、列のメタデータに基づくルールを使用して列を照合し、一致した各列に対して派生列を作成できます。 詳細については、派生列の変換で[列パターンの作成方法](concepts-data-flow-column-pattern.md#column-patterns-in-derived-column-and-aggregate)に関する説明を参照してください。
 
-![サブ列の追加](media/data-flow/addsubcolumn.png "サブ列の追加")
+![列パターン](media/data-flow/column-pattern-derive.png "列パターン")
+
+## <a name="building-schemas-using-the-expression-builder"></a>式ビルダーを使用してスキーマを作成する
+
+マッピング データ フローの[式ビルダー](concepts-data-flow-expression-builder.md)を使用すると、 **[Derived Columns]\(派生列\)** セクションで派生列を作成、編集、管理できます。 変換で作成または変更されたすべての列の一覧が表示されます。 列の名前をクリックして、編集している列またはパターンを対話形式で選択します。 列を追加するには、 **[新規作成]** を選択し、1 つの列またはパターンのどちらを追加するかを選択します。
+
+![新しい列を作成する](media/data-flow/derive-add-column.png "新しい列を作成する")
+
+複合列を使用する場合は、サブ列を作成できます。 これを行うには、任意の列の横にあるプラス アイコンをクリックし、 **[Add subcolumn]\(サブ列の追加\)** を選択します。 データ フローでの複合型の処理の詳細については、[マッピング データ フローでの JSON の処理](format-json.md#mapping-data-flow-properties)に関する記事を参照してください。
+
+![サブ列の追加](media/data-flow/derive-add-subcolumn.png "サブ列の追加")
 
 データ フローでの複合型の処理の詳細については、[マッピング データ フローでの JSON の処理](format-json.md#mapping-data-flow-properties)に関する記事を参照してください。
 
-![複合列の追加](media/data-flow/complexcolumn.png "列の追加")
+![複合列の追加](media/data-flow/derive-complex-column.png "列の追加")
+
+### <a name="locals"></a>ローカル
+
+複数の列でロジックを共有する場合、またはロジックをコンパートメント化する場合は、派生列変換の内部にローカルを作成できます。 ローカルは、次の変換へとダウンストリームに伝達されないロジックのセットです。 式ビルダーでローカルを作成するには、 **[Expression elements]\(式の要素\)** に移動して、 **[Locals]\(ローカル\)** を選択します。 **[新規作成]** を選択して、新しく作成します。
+
+![ローカルを作成する](media/data-flow/create-local.png "ローカルを作成する")
+
+ローカルでは、関数、入力スキーマ、パラメーター、他のローカルなど、派生列の任意の式要素を参照できます。 他のローカルを参照する場合は順序が重要であり、参照されるローカルが現在のローカルより "上" にある必要があります。
+
+![ローカルを作成する 2](media/data-flow/create-local-2.png "ローカルを作成する 2")
+
+派生列内でローカルを参照するには、 **[Expression elements]\(式の要素\)** ビューでローカルをクリックするか、名前の前にコロンを付けて参照します。 たとえば、local1 という名前のローカルは、`:local1` によって参照されます。 ローカル定義を編集するには、式要素ビューでそれをポイントし、鉛筆アイコンをクリックします。
+
+![ローカルの使用](media/data-flow/using-locals.png "ローカルの使用")
 
 ## <a name="data-flow-script"></a>データ フローのスクリプト
 
@@ -63,7 +87,7 @@ ms.locfileid: "81606501"
 
 Data Factory UX では、この変換は次の図のようになります。
 
-![派生の例](media/data-flow/derive-script1.png "派生の例")
+![派生の例](media/data-flow/derive-script.png "派生の例")
 
 この変換のデータ フロー スクリプトは、次のスニペットに含まれています。
 

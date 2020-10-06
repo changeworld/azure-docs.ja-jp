@@ -9,20 +9,20 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 6047051a36459d61bb5f02907dde9e73a70e86ec
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5b28cfcf064e8e876d239ab13507279934dba500
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75945213"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90528595"
 ---
-# <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>クイック スタート:対称キーを使用してシミュレートされたデバイスをプロビジョニングする
+# <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>クイック スタート: 対称キーを使用してシミュレートされたデバイスをプロビジョニングする
 
 このクイック スタートでは、Windows 開発マシン上でデバイス シミュレーターを作成して実行する方法について説明します。 ここでは、Device Provisioning Service インスタンスとの認証と IoT ハブへの割り当てに対称キーを使用するように、このシミュレートされたデバイスを構成します。 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) のサンプル コードを使用して、プロビジョニングを開始するデバイスのブート シーケンスをシミュレートします。 デバイスは、プロビジョニング サービス インスタンスへの個々の登録に基づいて認識され、IoT ハブに割り当てられます。
 
 この記事では、個々の登録を使用したプロビジョニングについて説明しますが、登録グループも使用できます。 登録グループを使用する場合は、いくつかの違いがあります。 たとえば、デバイスの一意の登録 ID を持つ派生デバイス キーを使用する必要があります。 対称キー登録グループはレガシ デバイスのみには限定されませんが、[対称キーの構成証明を使用してレガシ デバイスをプロビジョニングする方法](how-to-legacy-device-symm-key.md)に関する記事に登録グループの例が記載されています。 詳細については、[対称キーの構成証明のグループ登録](concepts-symmetric-key-attestation.md#group-enrollments)に関する記事を参照してください。
 
-自動プロビジョニングの処理に慣れていない場合は、「[自動プロビジョニングの概念](concepts-auto-provisioning.md)」を確認してください。 
+自動プロビジョニングの処理に慣れていない場合は、[プロビジョニング](about-iot-dps.md#provisioning-process)の概要を確認してください。 
 
 また、このクイック スタートを続行する前に、[Azure portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)に関するページの手順も済ませておいてください。 このクイック スタートでは、Device Provisioning Service インスタンスを既に作成している必要があります。
 
@@ -36,7 +36,7 @@ ms.locfileid: "75945213"
 
 Windows 開発環境の前提条件は次のとおりです。 Linux または macOS については、SDK ドキュメントの「[開発環境を準備する](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)」の該当するセクションを参照してください。
 
-* [C++ によるデスクトップ開発](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads)ワークロードを有効にした [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019。 Visual Studio 2015 と Visual Studio 2017 もサポートされています。
+* [C++ によるデスクトップ開発](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)ワークロードを有効にした [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019。 Visual Studio 2015 と Visual Studio 2017 もサポートされています。
 
 * [Git](https://git-scm.com/download/) の最新バージョンがインストールされている。
 
@@ -103,19 +103,19 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
 2. **[登録を管理します]** タブを選択し、上部にある **[個別登録の追加]** を選択します。 
 
-3. **[登録の追加]** パネルで次の情報を入力して、 **[保存]** を押します。
+3. **[登録の追加]** パネルで次の情報を入力して、**[保存]** を押します。
 
-   - **メカニズム**:ID 構成証明の*メカニズム*として **[対称キー]** を選択します。
+   - **メカニズム:** ID 構成証明の*メカニズム*として **[対称キー]** を選択します。
 
-   - **自動生成キー**:このボックスをオンにします。
+   - **[キーの自動生成]**: このボックスをオンにします。
 
-   - **登録 ID**:登録を識別する登録 ID を入力します。 小文字の英字、数字、ダッシュ ('-') 文字のみを使用します。 たとえば、**symm-key-device-007** のようにします。
+   - **登録 ID**: 登録を識別する登録 ID を入力します。 小文字の英字、数字、ダッシュ ('-') 文字のみを使用します。 たとえば、**symm-key-device-007** のようにします。
 
-   - **IoT Hub のデバイス ID**:デバイス識別子を入力します。 たとえば、「**device-007**」と入力します。
+   - **IoT Hub のデバイス ID:** デバイス識別子を入力します。 たとえば、「**device-007**」と入力します。
 
      ![ポータルで対称キーの構成証明に対する個々の登録を追加する](./media/quick-create-simulated-device-symm-key/create-individual-enrollment.png)
 
-4. 登録を保存したら、**主キー**と**セカンダリ キー**が生成され、登録エントリに追加されます。 対称キーのデバイス登録は、 *[個々の登録]* タブの *[登録 ID]* 列に **symm-key-device-007** と表示されます。 
+4. 登録を保存したら、**主キー**と**セカンダリ キー**が生成され、登録エントリに追加されます。 対称キーのデバイス登録は、*[個々の登録]* タブの *[登録 ID]* 列に **symm-key-device-007** と表示されます。 
 
     登録を開き、生成された**主キー**の値をコピーします。
 
@@ -174,9 +174,9 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
    
     ファイルを保存します。
 
-7. **prov\_dev\_client\_sample** プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** を選択します。 
+7. **prov\_dev\_client\_sample** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** を選択します。 
 
-8. Visual Studio のメニューで **[デバッグ]**  >  **[デバッグなしで開始]** の順に選択して、ソリューションを実行します。 プロジェクトをリビルドするよう求められたら、 **[はい]** を選択して、プロジェクトをリビルドしてから実行します。
+8. Visual Studio のメニューで **[デバッグ]** > **[デバッグなしで開始]** の順に選択して、ソリューションを実行します。 プロジェクトをリビルドするよう求められたら、**[はい]** を選択して、プロジェクトをリビルドしてから実行します。
 
     次の出力は、シミュレートされたデバイスが正常に起動し、IoT ハブに割り当てられるプロビジョニング サービス インスタンスに接続する例です。
 

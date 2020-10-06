@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: f60fba6a0b3a4d891fe19b7d75ab9c9fde278629
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: cc697cd78e929b62f951014f760d644552fa082c
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89393804"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89650990"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>コマーシャル マーケットプレースで利用可能な地域と通貨のサポート
 
@@ -185,6 +185,8 @@ Microsoft では、顧客からは顧客の現地通貨で支払いを受け取�
 
 > [!NOTE]
 > Microsoft では、Microsoft Treasury 為替レートを使用してオファー価格を換算します。
+
+[![通貨換算の流れ。](media/marketplace-geo-availability-currencies/currency-exchange-flow.png)](media/marketplace-geo-availability-currencies/currency-exchange-flow.png#lightbox)
 
 ## <a name="retrieving-currency-information-by-api"></a>API による通貨情報の取得
 

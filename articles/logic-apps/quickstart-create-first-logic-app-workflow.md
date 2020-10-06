@@ -7,20 +7,20 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/23/2020
-ms.openlocfilehash: 980e3e036257bbf5aa9743025bbfb55065176a39
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: c40bec80d9f61cf46221cbfe7dde80f3a7b46f6f
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133301"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658312"
 ---
-# <a name="quickstart-create-your-first-automated-integration-workflow-by-using-azure-logic-apps---azure-portal"></a>クイック スタート:Azure Logic Apps を使用して初めての自動化された統合ワークフローを作成する - Azure portal
+# <a name="quickstart-create-your-first-automated-integration-workflow-by-using-azure-logic-apps---azure-portal"></a>Azure Logic Apps を使用して初めての自動化された統合ワークフローを作成する - Azure portal
 
 このクイックスタートでは、空のロジック アプリの作成、トリガーとアクションの追加、ロジック アプリのテストなど、[Azure Logic Apps](logic-apps-overview.md) を使用して、初めてのワークフローを構築する方法を裏付ける基本的な一般概念を紹介します。 このクイックスタートでは、新しい項目のために Web サイトの RSS フィードを定期的にチェックするロジック アプリを構築します。 新しい項目が存在する場合、ロジック アプリから項目ごとにメールが送信されます。 完成したロジック アプリの大まかなワークフローは、次のようになります。
 
 ![サンプル ロジック アプリの大まかなワークフローを示す概念図。](./media/quickstart-create-first-logic-app-workflow/quickstart-workflow-overview.png)
 
-このシナリオでは、Azure サブスクリプションまたは[無料 Azure アカウントへのサインアップ](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)、Office 365 Outlook、Outlook.com、Gmail など、Azure Logic Apps によってサポートされているサービスの電子メール アカウントが必要です。 サポートされているその他の電子メール サービスについては、[こちらでコネクタの一覧を確認](/connectors/)してください。 この例のロジック アプリでは、Office 365 Outlook アカウントを使用します。 別の電子メール サービスを使用する場合、一般的な手順全体は同じですが、ユーザー インターフェイスはやや異なる可能性があります。
+このシナリオでは、Azure サブスクリプションまたは[無料 Azure アカウントへのサインアップ](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)、Office 365 Outlook、Outlook.com、Gmail など、Azure Logic Apps によってサポートされているサービスの電子メール アカウントが必要です。 サポートされているその他の電子メール サービスについては、[こちらでコネクタの一覧を確認](/connectors/)してください。 この例では、ロジック アプリで職場または学校アカウントを使用します。 別の電子メール サービスを使用する場合、一般的な手順全体は同じですが、ユーザー インターフェイスはやや異なる可能性があります。
 
 > [!IMPORTANT]
 > Gmail コネクタの使用を希望する場合、ロジック アプリで制限なしにこのコネクタを使用できるのは、G-Suite ビジネス アカウントだけです。 Gmail コンシューマー アカウントを持っている場合は、Google によって承認された特定のサービスのみでこのコネクタを使用できるほか、[認証に使用する Google クライアント アプリを Gmail コネクタで作成する](/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 詳細については、「[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)」を参照してください。
@@ -29,7 +29,7 @@ ms.locfileid: "87133301"
 
 1. Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com) にサインインします。
 
-1. Azure portal の検索ボックスに「`logic apps`」と入力し、 **[Logic Apps]** を選択します。
+1. Azure portal の検索ボックスに「`logic apps`」と入力し、**[Logic Apps]** を選択します。
 
    ![検索語句として "logic apps"、選択した検索結果として "Logic Apps" が表示された Azure portal の検索ボックスを示すスクリーンショット。](./media/quickstart-create-first-logic-app-workflow/find-select-logic-apps.png)
 
@@ -46,13 +46,13 @@ ms.locfileid: "87133301"
    | **名前** | <*ロジック アプリ名*> | ロジック アプリの名前。リージョン間で一意である必要があり、文字、数字、ハイフン (`-`)、アンダースコア (`_`)、かっこ (`(`、`)`)、およびピリオド (`.`) のみを含めることができます。 この例では、"My-First-Logic-App" を使用します。 |
    | **サブスクリプション** | <*Azure サブスクリプション名*> | お使いの Azure サブスクリプション名 |
    | **リソース グループ** | <*Azure-resource-group-name*> | [Azure リソース グループ](../azure-resource-manager/management/overview.md)の名前。リージョン間で一意である必要があり、関連するリソースを整理するために使用されます。 この例では、"My-First-LA-RG" を使用します。 |
-   | **場所** | <*Azure-region*> | ロジック アプリの情報の保存先となるリージョン。 この例では "米国西部" を使用します。 |
+   | **地域** | <*Azure-region*> | ロジック アプリの情報の保存先となるリージョン。 この例では "米国西部" を使用します。 |
    | **Log Analytics** | Off | 診断ログの場合は、この設定を**オフ**のままにしてください。 |
    ||||
 
-1. 準備ができたら、 **[確認および作成]** を選択します。 入力した詳細を確認し、 **[作成]** を選択します。
+1. 準備ができたら、**[確認および作成]** を選択します。 入力した詳細を確認し、**[作成]** を選択します。
 
-1. Azure によってアプリが正常にデプロイされたら、 **[リソースに移動]** を選択します。
+1. Azure によってアプリが正常にデプロイされたら、**[リソースに移動]** を選択します。
 
    ![リソースのデプロイ ページと選択された [リソースに移動] ボタンを示すスクリーンショット。](./media/quickstart-create-first-logic-app-workflow/go-to-new-logic-app-resource.png)
 
@@ -68,7 +68,7 @@ ms.locfileid: "87133301"
 
 ## <a name="add-the-rss-trigger"></a>RSS トリガーを追加する
 
-1. **ロジック アプリ デザイナー**の検索ボックスの下で、 **[すべて]** を選択します。
+1. **ロジック アプリ デザイナー**の検索ボックスの下で、**[すべて]** を選択します。
 
 1. RSS コネクタを見つけるために、検索ボックスに「`rss`」と入力します。 トリガーの一覧から、RSS トリガー **[フィード項目が発行される場合]** を選択します。
 
@@ -91,7 +91,7 @@ ms.locfileid: "87133301"
 
    ![ロジック アプリの図形が折りたたまれた状態の Logic Apps デザイナーを示すスクリーンショット。](./media/quickstart-create-first-logic-app-workflow/collapse-trigger-shape.png)
 
-1. ロジック アプリを保存します。 デザイナーのツール バーで、 **[保存]** を選択します。
+1. ロジック アプリを保存します。 デザイナーのツール バーで、**[保存]** を選択します。
 
 ロジック アプリは現在稼働していますが、RSS フィードをチェックすること以外は何もしていません。 そこで、トリガーが起動したときに反応するアクションを追加します。
 
@@ -107,7 +107,7 @@ ms.locfileid: "87133301"
 
 1. 検索ボックスに「`send an email`」と入力すると、このアクションを提供するコネクタが見つかります。 アクションの一覧にフィルターをかけて特定のアプリまたはサービスに絞り込むには、最初にそのアプリまたはサービスを選択できます。
 
-   たとえば、Microsoft の職場または学校アカウントを使用していて、Office 365 Outlook を使用する場合は、 **[Office 365 Outlook]** を選択します。 また、個人用の Microsoft アカウントを使用している場合は、Outlook.com を選択することもできます。 この例では、Office 365 Outlook が引き続き使用されます。
+   たとえば、Microsoft の職場または学校アカウントを使用していて、Office 365 Outlook を使用する場合は、**[Office 365 Outlook]** を選択します。 また、個人用の Microsoft アカウントを使用している場合は、Outlook.com を選択することもできます。 この例では、Office 365 Outlook が引き続き使用されます。
 
    ![Logic Apps デザイナーと選択された Office 365 Outlook コネクタを示すスクリーンショット。](./media/quickstart-create-first-logic-app-workflow/select-connector.png)
 
@@ -148,7 +148,7 @@ ms.locfileid: "87133301"
 
       ![[メールの送信] アクションと、[フィード タイトル] プロパティが含まれるサンプルのメールの件名が表示されている Logic Apps デザイナーを示すスクリーンショット。](./media/quickstart-create-first-logic-app-workflow/send-email-feed-title.png)
 
-      デザイナーに "For each" ループが表示される場合、 **[categories-item]\(カテゴリ-項目\)** トークンなど、配列のトークンを選択したことが原因です。 この種のトークンを参照するアクションの前後には、デザイナーによってこのループが自動的に追加されます。 そうすることで個々の配列項目に同じアクションが実行されます。 ループを削除するには、ループのタイトル バーの**省略記号** ( **...** ) を選択し、 **[削除]** を選択します。
+      デザイナーに "For each" ループが表示される場合、**[categories-item]\(カテゴリ-項目\)** トークンなど、配列のトークンを選択したことが原因です。 この種のトークンを参照するアクションの前後には、デザイナーによってこのループが自動的に追加されます。 そうすることで個々の配列項目に同じアクションが実行されます。 ループを削除するには、ループのタイトル バーの**省略記号** (**...**) を選択し、**[削除]** を選択します。
 
    1. **[本文]** ボックスには、メール本文に使用するテキストを次のように入力し、対応するトークンを選択します。 編集ボックスで空白行を追加するには、Shift + Enter キーを押します。
 
@@ -185,15 +185,15 @@ RSS フィードに新しい項目がある場合、ロジック アプリは新
 
 このサンプルの必要がなくなったら、ロジック アプリと関連リソースが含まれるリソース グループを削除しましょう。
 
-1. Azure の検索ボックスに「`resource groups`」と入力し、 **[リソース グループ]** を選択します。
+1. Azure の検索ボックスに「`resource groups`」と入力し、**[リソース グループ]** を選択します。
 
    ![検索語句 "resource groups" が入力されている Azure portal の検索ボックスを示すスクリーンショット。](./media/quickstart-create-first-logic-app-workflow/find-resource-groups.png)
 
-1. 目的のロジック アプリのリソース グループを見つけて選択します。 **[概要]** ウィンドウで、 **[リソース グループの削除]** を選択します。
+1. 目的のロジック アプリのリソース グループを見つけて選択します。 **[概要]** ウィンドウで、**[リソース グループの削除]** を選択します。
 
    ![選択したリソース グループと [リソース グループの削除] ボタンが表示されている Azure portal を示すスクリーンショット。](./media/quickstart-create-first-logic-app-workflow/delete-resource-group.png)
 
-1. 確認ウィンドウが表示されたら、リソース グループ名を入力して、 **[削除]** を選択します。
+1. 確認ウィンドウが表示されたら、リソース グループ名を入力して、**[削除]** を選択します。
 
    ![確認ペインと削除対象として入力したリソース グループ名が表示されている Azure portal を示すスクリーンショット。](./media/quickstart-create-first-logic-app-workflow/delete-resource-group-2.png)
 

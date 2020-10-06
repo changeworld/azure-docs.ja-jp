@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: 675038189fdc9c9626fee409a90e17341cf9b6cd
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 95edcee32c1917d23e4808e805f947d18d2fa7f4
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207357"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986228"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Azure Network Watcher のリソース トラブルシューティングの概要
 
 仮想ネットワーク ゲートウェイにより、オンプレミスのリソースと Azure 内の別の仮想ネットワークを接続できます。 ゲートウェイやその接続の監視は、通信が切断されていないことを確認するために重要です。 Network Watcher には、ゲートウェイや接続をトラブルシューティングする機能が用意されています。 この機能は、ポータル、PowerShell、Azure CLI、または REST API から呼び出すことができます。 呼び出されると、Network Watcher はゲートウェイまたは接続の正常性を診断し、該当する結果を返します。 この要求は、実行時間の長いトランザクションです。 診断が完了すると、結果が返されます。
 
-![ポータル][2]
+![スクリーンショットには、Network Watcher の [VPN 診断] が示されています。][2]
 
 ## <a name="results"></a>結果
 
@@ -105,7 +105,7 @@ ms.locfileid: "86207357"
 > [!NOTE]
 > 場合によっては、一部のログ ファイルのみがストレージに書き込まれることがあります。
 
-Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure BLOB ストレージを使用する](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」を参照してください。 使用できるツールとして他に Storage Explorer があります。 ストレージ エクスプローラーの詳細については、次のリンクを参照してください。[Storage Explorer](https://storageexplorer.com/)
+Azure Storage アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure BLOB ストレージを使用する](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」を参照してください。 使用できるツールとして他に Storage Explorer があります。 ストレージ エクスプローラーの詳細については、次のリンクを参照してください。[Storage Explorer](https://storageexplorer.com/)
 
 ### <a name="connectionstatstxt"></a>ConnectionStats.txt
 

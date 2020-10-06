@@ -9,14 +9,14 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: a51799334749963a4771108857f448c5d081e7ea
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 31832c13ddee848864dcfe0d796deb7fcdcd8359
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323096"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526546"
 ---
-# <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-java-device-sdk-for-azure-iot-hub-device-provisioning-service"></a>クイック スタート:Azure IoT Hub Device Provisioning Service 対応の Java デバイス SDK を使い、シミュレートされた TPM デバイスを作成してプロビジョニングする
+# <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-java-device-sdk-for-azure-iot-hub-device-provisioning-service"></a>クイックスタート - Azure IoT Hub Device Provisioning Service 対応の Java デバイス SDK を使い、シミュレートされた TPM デバイスを作成してプロビジョニングします。
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-tpm](../../includes/iot-dps-selector-quick-create-simulated-device-tpm.md)]
 
@@ -24,7 +24,7 @@ ms.locfileid: "87323096"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [自動プロビジョニングの概念](concepts-auto-provisioning.md)の確認。
+- [プロビジョニング](about-iot-dps.md#provisioning-process)の概念を理解していること。
 - [Azure portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)が完了していること。
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - [Java SE Development Kit 8](https://aka.ms/azure-jdks)。
@@ -47,7 +47,7 @@ ms.locfileid: "87323096"
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
     ```
 
-1. シミュレートされたデバイスの [HSM](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) として [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview) シミュレーターを実行します。 **[アクセスを許可]** をクリックし、 _[Windows ファイアウォール]_ 設定への変更を許可します。 これは、ソケットでポート 2321 とポート 2322 をリッスンします。 このウィンドウを閉じないでください。このクイックスタート ガイドの終了まで、このシミュレーターを実行状態にしておく必要があります。 
+1. シミュレートされたデバイスの [HSM](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) として [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview) シミュレーターを実行します。 **[アクセスを許可]** をクリックし、_[Windows ファイアウォール]_ 設定への変更を許可します。 これは、ソケットでポート 2321 とポート 2322 をリッスンします。 このウィンドウを閉じないでください。このクイックスタート ガイドの終了まで、このシミュレーターを実行状態にしておく必要があります。 
 
     ```cmd/sh
     .\azure-iot-sdk-java\provisioning\provisioning-tools\tpm-simulator\Simulator.exe
@@ -98,14 +98,14 @@ ms.locfileid: "87323096"
 
 Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポートされています。
 
-- [登録グループ](concepts-service.md#enrollment-group)：複数の関連するデバイスを登録するために使用します。
-- [個別登録](concepts-service.md#individual-enrollment): 単一デバイスを登録するために使用します。
+- [登録グループ](concepts-service.md#enrollment-group): 複数の関連するデバイスを登録するために使用します。
+- [個別登録](concepts-service.md#individual-enrollment): 1 台のデバイスを登録するために使用します。
 
 この記事では、個別登録の使用方法を示します。
 
 1. Azure portal にサインインし、左側のメニューの **[すべてのリソース]** を選択して、Device Provisioning Service を開きます。
 
-1. Device Provisioning Service のメニューで、 **[登録を管理します]** を選択します。 **[個々の登録]** タブを選択したうえで、上部にある **[個別登録の追加]** を選択します。 
+1. Device Provisioning Service のメニューで、**[登録を管理します]** を選択します。 **[個々の登録]** タブを選択したうえで、上部にある **[個別登録の追加]** を選択します。 
 
 1. **[登録の追加]** パネルで、次の情報を入力します。
    - ID 構成証明の "*メカニズム*" として **[TPM]** を選択します。
@@ -114,11 +114,11 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
    - 必要に応じて、次の情報を入力することができます。
        - 一意の "*デバイス ID*" を入力します。 デバイスに名前を付ける際に機密データを含めないようにしてください。 指定しない場合には、デバイスを識別するために登録 ID が代わりに使用されます。
        - **[Initial device twin state]\(初期のデバイス ツインの状態\)** をデバイスの目的の初期構成で更新します。
-   - 作業が完了したら、 **[保存]** を押します。 
+   - 作業が完了したら、**[保存]** を押します。 
 
      ![ポータルのブレードにデバイス登録情報を入力します。](./media/java-quick-create-simulated-device/enterdevice-enrollment.png)  
 
-   登録に成功すると、 *[個々の登録]* タブの一覧に、対象デバイスの "*登録 ID*" が表示されます。 
+   登録に成功すると、*[個々の登録]* タブの一覧に、対象デバイスの "*登録 ID*" が表示されます。 
 
 
 ## <a name="simulate-the-device"></a>デバイスをシミュレートする

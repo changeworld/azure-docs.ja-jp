@@ -1,25 +1,22 @@
 ---
-title: マネージド ID を使用してストレージ アカウントへの接続を設定する (プレビュー)
+title: マネージド ID を使用してストレージ アカウントへの接続を設定する
 titleSuffix: Azure Cognitive Search
-description: マネージド ID を使用して、Azure ストレージ アカウントへのインデクサー接続を設定する方法を学ぶ (プレビュー)
+description: マネージド ID を使用して、Azure Storage アカウントへのインデクサー接続を設定する方法を学ぶ
 manager: luisca
 author: markheff
 ms.author: maheff
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: 30305607ea291587f7751b7e8048924f995251e9
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/22/2020
+ms.openlocfilehash: c1168602ccb527d8ffb3b64d5437a26490b44a21
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88917977"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971506"
 ---
-# <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity-preview"></a>マネージド ID を使用して、Azure ストレージ アカウントへの接続を設定する (プレビュー)
-
-> [!IMPORTANT] 
-> マネージド ID を使用したデータ ソースへの接続の設定のサポートは、現在パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。
+# <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>マネージド ID を使用して、Azure Storage アカウントへの接続を設定する
 
 このページでは、データ ソースのオブジェクト接続文字列で資格情報を指定する代わりに、マネージド ID を使用して Azure ストレージ アカウントへのインデクサー接続を設定する方法を説明します。
 
@@ -68,7 +65,7 @@ ms.locfileid: "88917977"
 
 ### <a name="3---create-the-data-source"></a>3 - データ ソースを作成する
 
-マネージド ID 接続文字列は、[REST API](/rest/api/searchservice/create-data-source)、Azure portal、および [.NET SDK](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) でサポートされています。 次に、[REST API](/rest/api/searchservice/create-data-source) とマネージド ID 接続文字列を使用し、ストレージ アカウントのデータにインデックスを付けてデータ ソースを作成する方法例を示します。 マネージド ID 接続文字列の形式は、REST API、.NET SDK、および Azure portal において同じです。
+マネージド ID 接続文字列は、[REST API](/rest/api/searchservice/create-data-source)、Azure portal、および [.NET SDK](/dotnet/api/microsoft.azure.search.models.datasource) でサポートされています。 次に、[REST API](/rest/api/searchservice/create-data-source) とマネージド ID 接続文字列を使用し、ストレージ アカウントのデータにインデックスを付けてデータ ソースを作成する方法例を示します。 マネージド ID 接続文字列の形式は、REST API、.NET SDK、および Azure portal において同じです。
 
 ストレージ アカウントからインデックスを作成する場合は、データ ソースに次の必須プロパティが必要です。
 
@@ -150,6 +147,7 @@ BLOB インデクサーのインデクサー定義の例:
 ## <a name="see-also"></a>関連項目
 
 Azure Storage インデクサーの詳細については、以下を参照してください。
+
 * [Azure BLOB インデクサー](search-howto-indexing-azure-blob-storage.md)
 * [Azure Data Lake Storage Gen2 インデクサー](search-howto-index-azure-data-lake-storage.md)
 * [Azure テーブル インデクサー](search-howto-indexing-azure-tables.md)

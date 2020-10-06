@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.openlocfilehash: 582a9eb4c98e89602e35e2ee424a00adc54a88e3
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 8749b64b664571abab6f354018dcbd2bd797531e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229550"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531221"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションとデリバリー
 
@@ -638,6 +638,8 @@ Git が構成されていない場合は、 **[ARM テンプレート]** 一覧�
 -   **統合ランタイムと共有**。 統合ランタイムは頻繁には変更されず、CI/CD のすべてのステージで類似しています。 そのため、Data Factory では、CI/CD のすべてのステージで統合ランタイムの名前と種類を同じにすることが求められます。 すべてのステージで統合ランタイムを共有する場合は、共有の統合ランタイムを含めるためだけに三項ファクトリを使用することを検討してください。 この共有ファクトリは、すべての環境で、リンクされた統合ランタイムの種類として使用できます。
 
 -   **Key Vault**。 リンクされているサービスを使用するとき、その接続情報が Azure Key Vault に格納されている場合、キー コンテナーを環境別に保持することが推奨されます。 キー コンテナーごとに個別のアクセス許可レベルを構成することもできます。 たとえば、運用環境のシークレットへのアクセス許可をチーム メンバーに持たせたくない場合があります。 このアプローチに従う場合は、すべてのステージで同じシークレット名を保持することをお勧めします。 同じシークレット名を保持する場合、CI/CD 環境全体で各接続文字列をパラメーター化する必要はありません。変わるのは別個のパラメーターであるキー コンテナーの名前だけだからです。
+
+-  **リソースの名前付け** ARM テンプレートの制約により、リソースの名前にスペースが含まれていると、デプロイで問題が発生する可能性があります。 Azure Data Factory チームは、リソースではスペースの代わりに "_" または "-" 文字を使用することをお勧めします。 たとえば、"Pipeline 1" ではなく "Pipeline_1" という名前を使用します。
 
 ## <a name="unsupported-features"></a>サポートされていない機能
 

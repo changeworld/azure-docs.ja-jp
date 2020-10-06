@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 09/10/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 629173612f091319f6dec57b1cdfcfea41033bfc
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: e3dd4d5f413238e0d0da79ff43deeee6245681f4
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047107"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016403"
 ---
 # <a name="what-is-risk"></a>リスクとは
 
@@ -29,6 +29,8 @@ Identity Protection を使用すると、組織は、強力なリソースにア
 ## <a name="risk-types-and-detection"></a>リスクの種類と検出
 
 2 種類のリスク (**ユーザー**と**サインイン**) と、2 種類の検出または計算 (**リアルタイム**と**オフライン**) があります。
+
+リアルタイム検出は、5 から 10 分間レポートに表示されない場合があります。 オフライン検出は、2 から 4 時間レポートに表示されない場合があります。
 
 ### <a name="user-risk"></a>ユーザー リスク
 

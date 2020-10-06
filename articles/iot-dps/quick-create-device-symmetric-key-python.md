@@ -9,20 +9,20 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.custom: mvc
-ms.openlocfilehash: 7c8254609b8db9c2796d431485507de7083509aa
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 0fe9d59e97ebbc9aba17fea14aed43756300d56e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85569483"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90528596"
 ---
-# <a name="quickstart-provision-a-python-device-with-symmetric-keys"></a>クイック スタート:対称キーを使用して Python デバイスをプロビジョニングする
+# <a name="quickstart-provision-a-python-device-with-symmetric-keys"></a>対称キーを使用して Python デバイスをプロビジョニングする
 
 このクイック スタートでは、Python を使用して、Windows 開発マシンをデバイスとして IoT ハブにプロビジョニングする方法を学習します。 このデバイスでは、IoT ハブに割り当てるために、Device Provisioning Service (DPS) インスタンスでの認証に対称キーを使用します。 認証されたデバイスは、個々の登録に基づいて DPS によって認識され、IoT ハブに割り当てられます。 [Azure IoT Python SDK](https://github.com/Azure/azure-iot-sdk-python) のサンプル コードは、デバイスのプロビジョニングに使用されます。 
 
 この記事では、個々の登録を使用したプロビジョニングについて説明しますが、登録グループを使用することもできます。 登録グループを使用する場合は、いくつかの違いがあります。 たとえば、デバイスの一意の登録 ID を持つ派生デバイス キーを使用する必要があります。 対称キー登録グループはレガシ デバイスのみには限定されませんが、[対称キーの構成証明を使用してレガシ デバイスをプロビジョニングする方法](how-to-legacy-device-symm-key.md)に関する記事に登録グループの例が記載されています。 詳細については、[対称キーの構成証明のグループ登録](concepts-symmetric-key-attestation.md#group-enrollments)に関する記事を参照してください。
 
-自動プロビジョニングの処理に慣れていない場合は、「[自動プロビジョニングの概念](concepts-auto-provisioning.md)」を確認してください。 
+自動プロビジョニングの処理に慣れていない場合は、[プロビジョニング](about-iot-dps.md#provisioning-process)の概要を確認してください。 
 
 また、このクイック スタートを続行する前に、[Azure portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)に関するページの手順も済ませておいてください。 このクイック スタートでは、Device Provisioning Service インスタンスを既に作成している必要があります。
 
@@ -67,19 +67,19 @@ ms.locfileid: "85569483"
 
 2. **[登録を管理します]** タブを選択し、上部にある **[個別登録の追加]** を選択します。 
 
-3. **[登録の追加]** パネルで次の情報を入力して、 **[保存]** を押します。
+3. **[登録の追加]** パネルで次の情報を入力して、**[保存]** を押します。
 
-   - **メカニズム**:ID 構成証明の*メカニズム*として **[対称キー]** を選択します。
+   - **メカニズム:** ID 構成証明の*メカニズム*として **[対称キー]** を選択します。
 
-   - **自動生成キー**:このボックスをオンにします。
+   - **[キーの自動生成]**: このボックスをオンにします。
 
-   - **登録 ID**:登録を識別する登録 ID を入力します。 小文字の英字、数字、ダッシュ ('-') 文字のみを使用します。 たとえば、**symm-key-python-device-008** です。
+   - **登録 ID**: 登録を識別する登録 ID を入力します。 小文字の英字、数字、ダッシュ ('-') 文字のみを使用します。 たとえば、**symm-key-python-device-008** です。
 
-   - **IoT Hub のデバイス ID**:デバイス識別子を入力します。 たとえば、**python-device-008** です。
+   - **IoT Hub のデバイス ID:** デバイス識別子を入力します。 たとえば、**python-device-008** です。
 
      ![ポータルで対称キーの構成証明に対する個々の登録を追加する](./media/quick-create-device-symm-key-python/create-individual-enrollment-python.png)
 
-4. 登録を保存したら、**主キー**と**セカンダリ キー**が生成され、登録エントリに追加されます。 対称キーのデバイス登録は、 *[個々の登録]* タブの *[登録 ID]* 列に **symm-key-python-device-008** と表示されます。 
+4. 登録を保存したら、**主キー**と**セカンダリ キー**が生成され、登録エントリに追加されます。 対称キーのデバイス登録は、*[個々の登録]* タブの *[登録 ID]* 列に **symm-key-python-device-008** と表示されます。 
 
 5. 登録を開き、生成された**主キー**の値をコピーします。 このキーの値と**登録 ID** は、後でデバイス プロビジョニングのサンプル コードで使用する環境変数を追加するときに使用します。
 
@@ -98,7 +98,7 @@ ms.locfileid: "85569483"
 
 プロビジョニング コードでは、デバイスを認証するために、これらの変数に基づいて DPS インスタンスを接続します。 その後、デバイスは、個々の登録構成に基づいて、DPS インスタンスに既にリンクされている IoT ハブに割り当てられます。 プロビジョニングが完了すると、サンプル コードでは何らかのテスト テレメトリを IoT ハブに送信します。
 
-1. [Azure portal](https://portal.azure.com) の Device Provisioning Service メニューで、 **[概要]** を選択し、"_サービス エンドポイント_" と "_ID スコープ_" をコピーします。 これらの値は、`PROVISIONING_HOST` および `PROVISIONING_IDSCOPE` 環境変数に使用します。
+1. [Azure portal](https://portal.azure.com) の Device Provisioning Service メニューで、**[概要]** を選択し、"_サービス エンドポイント_" と "_ID スコープ_" をコピーします。 これらの値は、`PROVISIONING_HOST` および `PROVISIONING_IDSCOPE` 環境変数に使用します。
 
     ![サービス情報](./media/quick-create-device-symm-key-python/extract-dps-endpoints.png)
 
@@ -165,7 +165,7 @@ ms.locfileid: "85569483"
     done sending message #5
     ```
     
-6. Azure portal で、ご利用のプロビジョニング サービスにリンクされている IoT ハブに移動し、 **[IoT デバイス]** ブレードを開きます。 対称キー デバイスがハブに正常にプロビジョニングされた後、デバイス ID が表示され、 *[状態]* は **[有効]** となります。 デバイスのサンプル コードを実行する前に既にブレードを開いている場合は、上部にある **[最新の情報に更新]** ボタンを押す必要がある場合があります。 
+6. Azure portal で、ご利用のプロビジョニング サービスにリンクされている IoT ハブに移動し、**[IoT デバイス]** ブレードを開きます。 対称キー デバイスがハブに正常にプロビジョニングされた後、デバイス ID が表示され、*[状態]* は **[有効]** となります。 デバイスのサンプル コードを実行する前に既にブレードを開いている場合は、上部にある **[最新の情報に更新]** ボタンを押す必要がある場合があります。 
 
     ![IoT ハブに登録されたデバイス](./media/quick-create-device-symm-key-python/hub-registration-python.png) 
 

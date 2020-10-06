@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fa9786f31e1cf9ee15afdc03d289a04198836133
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 2dfb5876922fd53c372afe82ecdfa843179fb135
+ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086842"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89439012"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Azure Data Factory コピー ウィザード
 > [!NOTE]
@@ -49,7 +49,7 @@ Azure Data Factory コピー ウィザードを使用すると、通常はエン
 入力データのスキーマは、場合によっては出力データのスキーマと一致しない可能性があります。 このシナリオでは、ソース スキーマの列を宛先スキーマの列にマップする必要があります。
 
 > [!TIP]
-> SQL Server または Azure SQL Database から Azure SQL Data Warehouse にデータをコピーするとき、コピー先ストアにテーブルが存在しない場合、Data Factory はコピー元のスキーマを使ったテーブルの自動作成をサポートします。 詳しくは、「[Azure Data Factory を使用した Azure SQL Data Warehouse との間でのデータの移動](./data-factory-azure-sql-data-warehouse-connector.md)」をご覧ください。
+> SQL Server または Azure SQL Database から Azure Synapse Analytics (旧称 SQL Data Warehouse) にデータをコピーするとき、コピー先ストアにテーブルが存在しない場合は、Data Factory でコピー元のスキーマを使ったテーブルの自動作成がサポートされます。 詳しくは、[Azure Data Factory を使用した Azure Synapse Analytics 間でのデータの移動](./data-factory-azure-sql-data-warehouse-connector.md)に関する記事をご覧ください。
 >
 
 ドロップダウン リストを使用して、宛先スキーマの列にマップするソース スキーマの列を選択します。 コピー ウィザードは、列のマッピングに関するユーザーのパターンを理解しようとします。 ユーザーがそれぞれの列を個別に選択しなくてもスキーマのマッピングが完了するように、同じパターンを残りの列にも適用します。 適用されたマッピングは、ドロップダウン リストを使用して 1 列ずつマップすることにより、必要に応じてオーバーライドできます。 マップする列が増えるにつれ、パターンはさらに正確になります。 このパターンはコピー ウィザードによって常に更新され、最終的にはユーザーが望む正しい列マッピングのパターンになります。     

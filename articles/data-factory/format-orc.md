@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 09/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 9b68d3724c6390fc5d30745924451e27ef9855b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3aa42d6060ecdd93dd97438a025c4f5e4f05ac52
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81417727"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531731"
 ---
 # <a name="orc-format-in-azure-data-factory"></a>Azure Data Factory での ORC 形式
 
@@ -82,7 +82,16 @@ Azure Blob Storage 上の ORC データセットの例を次に示します。
 | プロパティ      | 説明                                                  | 必須 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | コピー アクティビティのソースの type プロパティは **OrcSink** に設定する必要があります。 | はい      |
+| formatSettings | プロパティのグループ。 後の **ORC の書き込み設定**に関する表を参照してください。 |    いいえ      |
 | storeSettings | データ ストアにデータを書き込む方法を指定するプロパティのグループ。 ファイル ベースの各コネクタには、`storeSettings` に、固有のサポートされる書き込み設定があります。 **詳細については、コネクタの記事でコピー アクティビティのプロパティに関するセクションを参照してください**。 | いいえ       |
+
+`formatSettings` でサポートされている **ORC の書き込み設定**:
+
+| プロパティ      | 説明                                                  | 必須                                              |
+| ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
+| type          | formatSettings の種類は **OrcWriteSettings** に設定する必要があります。 | Yes                                                   |
+| maxRowsPerFile | データをフォルダーに書き込むとき、複数のファイルに書き込み、ファイルあたりの最大行を指定することを選択できます。  | No |
+| fileNamePrefix | `maxRowsPerFile` が構成されている場合に使用されます。<br> データを複数のファイルに書き込むとき、ファイル名のプレフィックスを指定します。結果的に `<fileNamePrefix>_00000.<fileExtension>` のパターンになります。 指定されていない場合、ファイル名プレフィックスは自動生成されます。 このプロパティは、ソースがファイルベース ストアか[パーティション オプション対応データ ストア](copy-activity-performance-features.md)の場合、適用されません。  | いいえ |
 
 ## <a name="using-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムの使用
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 92abfa9937c1ac3f7d4ba68e9228b29e0211e1af
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9d5859886dbd1211f929be1031237f7e7d9b1fc1
+ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007793"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89611713"
 ---
 # <a name="reliable-actors-state-management"></a>Reliable Actors の状態管理
 Reliable Actors は、ロジックと状態の両方をカプセル化できるシングル スレッド オブジェクトです。 アクターは Reliable Services 上で実行されるため、同じ永続化およびレプリケーション メカニズムを使用して、状態を確実に保持することができます。 このため、エラー後やガベージ コレクションに続く再アクティベーション時、リソース分散またはアップグレードのためにクラスター内のノード間を移動されたときでも、アクターは状態を失いません。
@@ -115,7 +115,7 @@ class MyActorImpl extends FabricActor implements MyActor
 ### <a name="correctly-manage-the-actors-life-cycle"></a>アクターのライフ サイクルを正しく管理する
 アクター サービスの各パーティションでの状態のサイズ管理については、明確なポリシーを定めるようにしてください。 アクター サービスでは、固定数のアクターを使用し、それらをできるだけ再利用するようにしてください。 新しいアクターを継続的に作成する場合は、それらを使い終わった後に、それらを削除する必要があります。 アクター フレームワークでは、存在する各アクターについてのメタデータが格納されます。 アクターのすべての状態を削除しても、そのアクターに関するメタデータが削除されることはありません。 アクターを削除 (「[アクターとその状態を削除する](service-fabric-reliable-actors-lifecycle.md#manually-deleting-actors-and-their-state)」を参照) し、そのアクターに関するすべての情報をシステムから削除する必要があります。 追加のチェックとして、アクター サービスを定期的に照会 (「[アクターの列挙](service-fabric-reliable-actors-enumerate.md)」を参照) し、アクターの数が想定の範囲内であることを確認するようにしてください。
  
-アクター サービスのデータベース ファイルのサイズが必要以上に大きくなっている場合は、前述のガイドラインに従っていることを確認してください。 これらのガイドラインに従ってもデータベース ファイルのサイズ問題が解消されない場合は、[サポート チケットを開いて](service-fabric-support.md)製品チームに支援を要請してください。
+アクター サービスのデータベース ファイルのサイズが必要以上に大きくなっている場合は、前述のガイドラインに従っていることを確認してください。 これらのガイドラインに従ってもデータベース ファイル サイズの問題が解消されない場合は、[サポート チケットを開いて](service-fabric-support.md)製品チームに支援を要請してください。
 
 ## <a name="next-steps"></a>次のステップ
 
