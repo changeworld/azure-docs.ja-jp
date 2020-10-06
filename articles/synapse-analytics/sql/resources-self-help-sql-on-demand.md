@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7a6b145e9a1efb29bbb6c233f2a09498b4a4ea7f
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 8bd955e844c9569438c5d35f152ba1bcdfccc306
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213127"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288003"
 ---
 # <a name="self-help-for-sql-on-demand-preview"></a>SQL オンデマンド (プレビュー) のセルフヘルプ
 
@@ -61,7 +61,7 @@ Synapse Studio が SQL オンデマンドへの接続を確立できない場合
 CREATE DATABASE <DATABASE_NAME>
 ```
 
-  2. マスター データベースについて前に失敗した <DATABASE_NAME> で CREATE ステートメントを実行します。 
+  2. マスター データベースについて前に失敗した <DATABASE_NAME> のコンテキストで CREATE ステートメントを実行します。 
   
   外部ファイル形式の作成例:
     

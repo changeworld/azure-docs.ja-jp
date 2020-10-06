@@ -1,14 +1,14 @@
 ---
 title: PCI-DSS v3.2.1 ブループリント サンプルのコントロール
-description: Payment Card Industry Data Security Standard v3.2.1 ブループリント サンプルの Azure Policy と RBAC へのコントロール マッピング。
+description: Payment Card Industry Data Security Standard v3.2.1 ブループリント サンプルの Azure Policy と Azure RBAC へのコントロール マッピング。
 ms.date: 08/19/2020
 ms.topic: sample
-ms.openlocfilehash: e6133c4a847a6df8aa6a27bbca63e0fc2d047783
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 3d7bdd62dcc5b65b0978444e74013d289f03ed6a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649229"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541647"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>PCI-DSS v3.2.1 ブループリント サンプルのコントロール マッピング
 
@@ -63,7 +63,7 @@ Azure サブスクリプションの所有者を 1 人しか設定しなかっ�
 
 ## <a name="32-721-831a-and-831b-management-of-privileged-access-rights"></a>3.2、7.2.1、8.3.1.a、および 8.3.1.b アクセス特権の管理
 
-このブループリントでは、所有者アクセス許可、書き込みアクセス許可、または読み取りアクセス許可を持つ外部アカウントと、所有者アクセス許可や書き込みアクセス許可を持つ、多要素認証が有効になっていない従業員アカウントを監査するための [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、アクセス特権を制限および制御することができます。 Azure では、Azure リソースにアクセスするユーザーを管理するために、ロールベースのアクセス制御 (RBAC) が実装されています。 カスタム RBAC ルールの実装状況を把握することで、それらの実装ニーズや実装の適切性を確認することができます (カスタム RBAC ルールはエラーを起こしやすいので、これは非常に重要です)。 このブループリントでは、SQL Server に対する Azure Active Directory 認証の使用を監査する [Azure Policy](../../../policy/overview.md) 定義も割り当てられます。 Azure Active Directory 認証を使用すると、アクセス許可の管理を簡単にし、データベース ユーザーとその他の Microsoft サービスの ID を一元管理できます  
+このブループリントでは、所有者アクセス許可、書き込みアクセス許可、または読み取りアクセス許可を持つ外部アカウントと、所有者アクセス許可や書き込みアクセス許可を持つ、多要素認証が有効になっていない従業員アカウントを監査するための [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、アクセス特権を制限および制御することができます。 Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure リソースにアクセスするユーザーを管理できます。 カスタム Azure RBAC 規則ではエラーが発生しやすいため、カスタム Azure RBAC 規則の実装状況を把握しておくと、実装の必要性や適切性の確認に役立ちます。 このブループリントでは、SQL Server に対する Azure Active Directory 認証の使用を監査する [Azure Policy](../../../policy/overview.md) 定義も割り当てられます。 Azure Active Directory 認証を使用すると、アクセス許可の管理を簡単にし、データベース ユーザーとその他の Microsoft サービスの ID を一元管理できます  
 。
  
 - 所有者アクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある
@@ -77,7 +77,7 @@ Azure サブスクリプションの所有者を 1 人しか設定しなかっ�
 
 ## <a name="812-and-815-least-privilege-and-review-of-user-access-rights"></a>8.1.2 および 8.1.5 最小特権とユーザー アクセス権の確認
 
-Azure では、Azure のリソースにアクセスするユーザーを効果的に管理できるように、ロールベースのアクセス制御 (RBAC) が実装されています。 Azure リソースにできるユーザーとそのアクセス許可は、Azure portal を使用して確認できます。 このブループリントでは、優先的にレビューする必要があるアカウント (非推奨のアカウントや、管理者特権のアクセス許可を持つ外部アカウントなど) を監査するための [Azure Policy](../../../policy/overview.md) 定義が割り当てられます。
+Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure のリソースにアクセスするユーザーを管理できます。 Azure リソースにできるユーザーとそのアクセス許可は、Azure portal を使用して確認できます。 このブループリントでは、優先的にレビューする必要があるアカウント (非推奨のアカウントや、管理者特権のアクセス許可を持つ外部アカウントなど) を監査するための [Azure Policy](../../../policy/overview.md) 定義が割り当てられます。
 
 - 非推奨のアカウントをサブスクリプションから削除する必要がある
 - 所有者としてのアクセス許可を持つ非推奨のアカウントをサブスクリプションから削除する必要がある
@@ -87,7 +87,7 @@ Azure では、Azure のリソースにアクセスするユーザーを効果�
 
 ## <a name="813-removal-or-adjustment-of-access-rights"></a>8.1.3 アクセス権の削除または調整
 
-Azure では、Azure のリソースにアクセスするユーザーを効果的に管理できるように、ロールベースのアクセス制御 (RBAC) が実装されています。 Azure Active Directory と RBAC を使用すれば、ユーザー ロールを更新して組織の変更を反映することができます。 必要な場合は、サインインしようとしているアカウントをブロック (または削除) して、Azure リソースへのアクセス権を直ちに削除することもできます。 このブループリントでは、削除を検討する必要がある非推奨アカウントを監査するための [Azure Policy](../../../policy/overview.md) 定義が割り当てられます。
+Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure のリソースにアクセスするユーザーを管理できます。 Azure Active Directory と Azure RBAC を使用すると、ユーザー ロールを更新して組織の変更を反映できます。 必要な場合は、サインインしようとしているアカウントをブロック (または削除) して、Azure リソースへのアクセス権を直ちに削除することもできます。 このブループリントでは、削除を検討する必要がある非推奨アカウントを監査するための [Azure Policy](../../../policy/overview.md) 定義が割り当てられます。
 
 - 非推奨のアカウントをサブスクリプションから削除する必要がある
 - 所有者としてのアクセス許可を持つ非推奨のアカウントをサブスクリプションから削除する必要がある

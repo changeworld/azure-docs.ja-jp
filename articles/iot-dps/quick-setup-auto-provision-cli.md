@@ -1,5 +1,5 @@
 ---
-title: Azure CLI を使用して Azure IoT Hub Device Provisioning Service をセットアップする
+title: クイックスタート - Azure CLI を使用して Azure IoT Hub Device Provisioning Service をセットアップする
 description: クイックスタート - Azure CLI を使用して Azure IoT Hub Device Provisioning Service (DPS) をセットアップする
 author: wesmc7777
 ms.author: wesmc
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 313dfe930dec5233f96b89fdebf978a41fdcdf80
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 157bd0a0a40ce6a935d13bb10a84c814ba1018bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497666"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330249"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>クイック スタート:Azure CLI で IoT Hub Device Provisioning Service をセットアップする
 
@@ -84,7 +84,11 @@ echo $hubConnectionString
 ```
 
 > [!NOTE]
-> この 2 つのコマンドは、Bash で実行されているホストに対して有効です。 ローカルの Windows/CMD シェルまたは PowerShell ホストを使用している場合は、その環境での正しい構文を使用するようにコマンドを変更する必要があります。
+> この 2 つのコマンドは、Bash で実行されているホストに対して有効です。
+> 
+> ローカルの Windows (CMD) シェルまたは PowerShell ホストを使用している場合は、その環境での正しい構文を使用するようにコマンドを変更してください。
+>
+> Azure Cloud Shell を使用している場合は、シェル ウィンドウの左側にある環境ドロップダウンで **[Bash]** が選択されていることを確認します。
 >
 
 ## <a name="link-the-iot-hub-and-the-provisioning-service"></a>IoT ハブとプロビジョニング サービスのリンク
@@ -133,7 +137,7 @@ az iot hub delete --name my-sample-hub --resource-group my-sample-resource-group
 az group delete --name my-sample-resource-group
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このクイックスタートでは、IoT ハブと Device Provisioning Service インスタンスをデプロイし、この 2 つのリソースをリンクしました。 ここで行った設定を使用して、シミュレートされたデバイスをプロビジョニングする方法については、シミュレートされたデバイスの作成に関するクイックスタートを参照してください。
 

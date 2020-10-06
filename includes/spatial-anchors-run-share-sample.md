@@ -4,17 +4,19 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 8/27/2020
 ms.author: rgarcia
-ms.openlocfilehash: 8e3f58a5a88495263396c4e915a6363ad065c202
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: efd5ff494620d4fab3fb904d9bcf054b57a3290b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89570174"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358787"
 ---
 ## <a name="android"></a>[Android](#tab/Android)
 
 Java Android サンプルでは、デバイス間での共有がサポートされています。
 Android Studio の samples フォルダーから `SharedActivity.java` ファイルを開きます。 `SharedActivity.java` ファイルの `SharingAnchorsServiceUrl` の値として、前の手順で (ASP.NET Web アプリの Azure デプロイから) 取得した URL を入力します。 URL の `index.html` を `api/anchors` に置き換えます。 `https://<app_name>.azurewebsites.net/api/anchors` のようになります。
+
+[!INCLUDE [Run shared sample](spatial-anchors-deploy-sample.md)]
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
@@ -23,12 +25,16 @@ Android Studio の samples フォルダーから `SharedActivity.java` ファイ
 Objective-C iOS サンプルでは、デバイス間での共有がサポートされています。
 samples フォルダー内の `SharedDemoViewController.m` ファイルを開きます。 `SharedDemoViewController.m` ファイルの `SharingAnchorsServiceUrl` の値として、前の手順で (ASP.NET Web アプリの Azure デプロイから) 取得した URL を入力します。 URL の `index.html` を `api/anchors` に置き換えます。 `https://<app_name>.azurewebsites.net/api/anchors` のようになります。
 
+アプリをデバイスにデプロイします。 アプリが起動したら、 **[Tap to start Shared Demo]\(タップして共有されたデモを開始する\)** オプションを選択します。 アプリ内の手順に従います。 **[Tap to locate Anchor by its anchor number]\(タップしてアンカーをその番号で検索する\)** または **[Tap to create Anchor and save it to the service]\(タップしてアンカーを作成し、サービスに保存する\)** を選択できます。
+
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
 ## <a name="xamarin"></a>[Xamarin](#tab/Xamarin)
 
 Xamarin Android および iOS の両方のサンプルで、デバイス間での共有がサポートされています。
 samples フォルダー内の `AccountDetails.cs` ファイルを開きます。 `AccountDetails.cs` ファイルの `AnchorSharingServiceUrl` の値として、前の手順で (ASP.NET Web アプリの Azure デプロイから) 取得した URL を入力します。 URL の `index.html` を `api/anchors` に置き換えます。 `https://<app_name>.azurewebsites.net/api/anchors` のようになります。
+
+[!INCLUDE [Run shared sample](spatial-anchors-deploy-sample.md)]
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 

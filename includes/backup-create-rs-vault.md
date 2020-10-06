@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 10/18/2018
 ms.author: dacurwin
 ms.custom: include file
-ms.openlocfilehash: 8586d90631e8d38fa020ff9dab3f626aaedb2760
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c111752dcca03781dfb2a11fb100dafc4bad90f7
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003831"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91401086"
 ---
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 
@@ -54,7 +54,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
 1. 値を指定したら、 **[確認と作成]** を選択します。
 
-    ![[Recovery Services コンテナー] を作成する](./media/backup-create-rs-vault/review-and-create.png)
+    ![Recovery Services コンテナーを作成するプロセスにおける [確認と作成] ボタンのスクリーンショット。](./media/backup-create-rs-vault/review-and-create.png)
 
 1. Recovery Services コンテナーを作成する準備ができたら、 **[作成]** を選択します。
 

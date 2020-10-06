@@ -4,12 +4,12 @@ description: Azure Resource Manager を使用して、Azure のリソースを�
 ms.topic: overview
 ms.date: 09/01/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 2dc33093df0d9bc0bd75410bac8d200fe6555257
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: f78b6015846253d79020752522c10af96839a854
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89293950"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372274"
 ---
 # <a name="what-is-azure-resource-manager"></a>Azure Resource Manager とは
 
@@ -49,7 +49,7 @@ Resource Manager を使用すると、以下のことができます。
 
 * 正しい順序でデプロイされるように、リソース間の依存関係を定義します。
 
-* ロールベースのアクセス制御 (RBAC) が管理プラットフォームにネイティブ統合されるため、すべてのサービスにアクセス制御を適用できます。
+* Azure ロールベースのアクセス制御 (Azure RBAC) が管理プラットフォームにネイティブ統合されるため、すべてのサービスにアクセス制御を適用できます。
 
 * タグをリソースに適用し、サブスクリプションのすべてのリソースを論理的に整理します。
 
@@ -83,7 +83,7 @@ Azure には、[管理グループ](../../governance/management-groups/overview.
 
    リソース グループのリージョンが一時的に使用できない場合は、メタデータが使用できないため、リソース グループ内のリソースを更新できません。 他のリージョン内のリソースは通常どおり機能しますが、それらを更新することはできません。 信頼性の高いアプリケーションの設計の詳細については、「[信頼性の高い Azure アプリケーションの設計](/azure/architecture/checklist/resiliency-per-service)」を参照してください。
 
-* リソース グループを使用すると、管理操作のアクセス制御のスコープを設定できる。 リソース グループを管理するために、[Azure ポリシー](../../governance/policy/overview.md)、[RBAC のロール](../../role-based-access-control/role-assignments-portal.md)、または[リソース ロック](lock-resources.md)を割り当てることができます。
+* リソース グループを使用すると、管理操作のアクセス制御のスコープを設定できる。 リソース グループを管理するために、[Azure ポリシー](../../governance/policy/overview.md)、[Azure のロール](../../role-based-access-control/role-assignments-portal.md)、または[リソース ロック](lock-resources.md)を割り当てることができます。
 
 * リソース グループに[タグを適用](tag-resources.md)できます。 リソース グループ内のリソースは、これらのタグを継承しません。
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: d9f16b612b508a6237c748bd135ff32618015b0b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 4deab6fcadda36ad729096ff2f38e40ce81c7ae9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057009"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446101"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>チュートリアル:Azure Portal と Standard Load Balancer を使用して、可用性ゾーン間で VM の負荷を分散します
 
@@ -93,7 +93,7 @@ Standard Load Balancer では、Standard パブリック IP アドレスだけ�
     - *myNetworkSecurityGroup* - ネットワーク セキュリティ グループの名前。
     - *myResourceGroupLBAZ* - 既存のリソース グループの名前。
    
-![仮想ネットワークの作成](./media/load-balancer-standard-public-availability-zones-portal/create-nsg.png)
+![[ネットワーク セキュリティ グループの作成] ペインを示すスクリーンショット。](./media/load-balancer-standard-public-availability-zones-portal/create-nsg.png)
 
 ### <a name="create-network-security-group-rules"></a>ネットワーク セキュリティ グループ規則を作成する
 
@@ -112,7 +112,7 @@ Standard Load Balancer では、Standard パブリック IP アドレスだけ�
     - *HTTP を許可する* - ロード バランサー規則の説明。
 4. **[OK]** をクリックします。
  
-   ![仮想ネットワークの作成](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
+   ![[受信セキュリティ規則の追加] ペインを示すスクリーンショット。](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
 5. 手順 2. から 4. を繰り返して、*myRDPRule* という名前で規則をもう 1 つ作成し、ポート 3389 を使用する受信 RDP 接続を許可します。設定には以下の値を使用します。
     - "*サービス タグ*" - **ソース**。
     - "*インターネット*" - **ソース サービス タグ**

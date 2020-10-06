@@ -1,5 +1,5 @@
 ---
-title: Azure VMSS でマネージド ID を構成する - Azure AD
+title: VMSS でマネージド ID を構成する - Azure AD
 description: Azure portal を使用して仮想マシン スケール セットで Azure リソースのマネージド ID を構成するための詳細な手順。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 02/20/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9ab1adeac5f8c67e06682f49fdded88e6a350e7
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 43b986b6bb25dff1227247b1d249ce565553877a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262675"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329135"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>Azure portal を使用して仮想マシン スケール セットで Azure リソースのマネージド ID を構成する
 
@@ -59,7 +59,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 3. **[システム割り当て済み]** にある **[状態]** で **[オン]** を選択して、 **[保存]** をクリックします。
 
-   ![[構成] ページのスクリーンショット](./media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png) 
+   ![[ID (プレビュー)] ページのスクリーンショット。[システム割り当て済み] が選択され、[状態] が [オン] になっており、[保存] ボタンが強調表示されている。](./media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png) 
 
 ### <a name="remove-system-assigned-managed-identity-from-a-virtual-machine-scale-set"></a>仮想マシン スケール セットからシステム割り当てマネージド ID を削除する
 
@@ -88,7 +88,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 1. 仮想マシン スケール セットが含まれる Azure サブスクリプションに関連付けられているアカウントを使用して、[Azure Portal](https://portal.azure.com) にサインインします。
 2. 目的の仮想マシン スケール セットに移動して、 **[ID]** 、 **[ユーザー割り当て済み]** 、 **\+[追加]** の順にクリックします。
 
-   ![VMSS へのユーザー割り当て ID の追加](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vmss-screenshot1.png)
+   ![[ID] ページのスクリーンショット。[ユーザー割り当て済み] が選択され、[追加] ボタンが強調表示されている。](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vmss-screenshot1.png)
 
 3. 仮想マシン スケール セットに追加したいユーザー割り当て ID をクリックして、 **[追加]** をクリックします。
    

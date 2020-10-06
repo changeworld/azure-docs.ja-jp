@@ -3,12 +3,12 @@ title: クイック スタート:カスタム イベントを Azure 関数に送
 description: クイック スタート:Azure Event Grid と Azure CLI (または Azure portal) を使用して、トピックを発行したり、そのイベントをサブスクライブしたりします。 エンドポイントに Azure 関数を使用します。
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 26ddfd1aeb61d3786edcdfca1acf5e293e4145ae
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: aea52bcaa94d6f288e86e44e1a0f294796d8e4a3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115096"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324418"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>クイック スタート:Event Grid を使用して Azure 関数にカスタム イベントをルーティングする
 
@@ -17,14 +17,17 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 Az
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-azure-function"></a>Azure 関数の作成
+カスタム トピックをサブスクライブする前に、イベントを処理する関数を作成します。 
 
-カスタム トピックをサブスクライブする前に、イベントを処理する関数を作成しましょう。 Azure portal で [リソースの作成] をクリックし、「function」と入力して [関数アプリ] を選択し、[作成] をクリックします。 [リソース グループ] の [新規作成] を選択して名前を付けてください。 これは、このチュートリアルの残りの部分で使用します。 この関数アプリに名前を付け、[コード] の [発行] トグルはそのままにして、実行時間とリージョンを選択し、[作成] をクリックします。
+1. 「[関数アプリを作成する](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)」の手順に従って関数アプリを作成します。
+2. **Event Grid トリガー**を使用して関数を作成します。 このトリガーを初めて使用する場合は、[インストール] をクリックして拡張機能をインストールする必要があります。
+    1. **[関数アプリ]** ページで、左側のメニューの **[関数]** を選択し、[テンプレート] で **[Event Grid]** を検索して、 **[Azure Event Grid trigger]\(Azure Event Grid トリガー\)** を選択します。 
 
-関数アプリの準備ができたら、それに移動して [+ 新しい関数] をクリックします。 開発環境に [ポータル内] を選択して、[続行] をクリックします。 [関数の作成] で [その他のテンプレート] を選択して他のテンプレートを表示し、[Azure Event Grid Trigger]\(Azure Event Grid トリガー\) を探して選択します。 このトリガーを初めて使用する場合は、[インストール] をクリックして拡張機能をインストールする必要があります。
+        :::image type="content" source="./media/custom-event-to-function/function-event-grid-trigger.png" alt-text="Event Grid トリガーを選択する":::
+3. **[新しい関数]** ページで、関数の名前を入力し、 **[関数の作成]** を選択します。
 
-![関数の Event Grid トリガー](./media/custom-event-to-function/grid-trigger.png)
-
-拡張機能をインストールしたら、[続行] をクリックして関数に名前を付け、[作成] をクリックします。
+    :::image type="content" source="./media/custom-event-to-function/new-function-page.png" alt-text="Event Grid トリガーを選択する":::
+4. **[Code + Test]\(コードとテスト\)** ページを使用して、関数の既存のコードを確認し、更新します。 
 
 [!INCLUDE [event-grid-register-provider-portal.md](../../includes/event-grid-register-provider-portal.md)]
 
@@ -81,8 +84,12 @@ Event Grid のトピックは、イベントの送信先となるユーザー定
     5. 関数エンドポイントに対し、関数アプリが存在する Azure サブスクリプションとリソース グループを選択して、先ほど作成した関数アプリと関数を選択します。 **[選択の確認]** を選択します。
 
        ![エンドポイントの URL の指定](./media/custom-event-to-function/provide-endpoint.png)
-
-    6. 再び **[イベント サブスクリプションの作成]** ページで、 **[作成]** を選択します。
+    6. この手順は省略可能ですが、運用環境のシナリオについては推奨されます。 **[イベント サブスクリプションの作成]** ページで、 **[高度な機能]** タブに切り替え、 **[バッチごとの最大イベント数]** および **[優先バッチ サイズ (KB 単位)]** の値を設定します。 
+    
+        バッチ処理を使用すると、高スループットが得られます。 **[バッチごとの最大イベント数]** には、サブスクリプションでバッチに含めるイベントの最大数を設定します。 優先バッチ サイズでは、バッチ サイズとして優先される上限をキロバイト単位で設定しますが、1 つのイベントがこのしきい値を超えると、その上限を超えてしまう可能性があります。
+    
+        :::image type="content" source="./media/custom-event-to-function/enable-batching.png" alt-text="Event Grid トリガーを選択する":::
+    6. **[イベント サブスクリプションの作成]** ページで、 **[作成]** を選択します。
 
 ## <a name="send-an-event-to-your-topic"></a>トピックへのイベントの送信
 

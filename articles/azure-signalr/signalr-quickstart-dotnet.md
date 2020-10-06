@@ -6,25 +6,26 @@ ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.date: 04/20/2019
+ms.date: 09/28/2020
 ms.author: zhshang
-ms.openlocfilehash: 8797d17ac439882415a9f5360fded28cb55484d5
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 8c7d7f84e02cdd2cd4f53bc9eb42c78f936146ae
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050541"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408371"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>クイック スタート:ASP.NET と SignalR Service を使ってチャット ルームを作成する
 
-Azure SignalR Service は [SignalR for ASP.NET Core 2.0](https://docs.microsoft.com/aspnet/core/signalr/introduction) に基づいており、ASP.NET SignalR との互換性は 100% では**ありません**。 Azure SignalR Service は、最新の ASP.NET Core テクノロジに基づいて ASP.NET SignalR データ プロトコルを再実装しています。 ASP.NET SignalR に対して Azure SignalR Service を使用する場合、ASP.NET SignalR の一部の機能はサポートされません。たとえば、Azure SignalR はクライアントが再接続したときにメッセージを再生しません。 また、Forever Frame の転送や JSONP はサポートされていません。 ASP.NET SignalR アプリケーションを SignalR Service と共に使用するには、いくらかのコード変更や適切なバージョンの依存ライブラリが必要になります。 
+Azure SignalR Service は [SignalR for ASP.NET Core 2.1](https://docs.microsoft.com/aspnet/core/signalr/introduction?preserve-view=true&view=aspnetcore-2.1) に基づいており、ASP.NET SignalR との互換性は 100% では**ありません**。 Azure SignalR Service は、最新の ASP.NET Core テクノロジに基づいて ASP.NET SignalR データ プロトコルを再実装しています。 ASP.NET SignalR に対して Azure SignalR Service を使用する場合、ASP.NET SignalR の一部の機能はサポートされません。たとえば、Azure SignalR はクライアントが再接続したときにメッセージを再生しません。 また、Forever Frame の転送や JSONP はサポートされていません。 ASP.NET SignalR アプリケーションを SignalR Service と共に使用するには、いくらかのコード変更や適切なバージョンの依存ライブラリが必要になります。
 
-ASP.NET SignalR と ASP.NET Core SignalR の機能の比較の完全なリストについては、[バージョンの違いに関するドキュメント](https://docs.microsoft.com/aspnet/core/signalr/version-differences?view=aspnetcore-2.2)を参照してください。
+ASP.NET SignalR と ASP.NET Core SignalR の機能の比較の完全なリストについては、[バージョンの違いに関するドキュメント](https://docs.microsoft.com/aspnet/core/signalr/version-differences?preserve-view=true&view=aspnetcore-3.1)を参照してください。
 
 このクイック スタートでは、ASP.NET と Azure SignalR Service を使用して同じような[チャット ルーム アプリケーション](./signalr-quickstart-dotnet-core.md)を作成する方法を学びます。
 
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note-dotnet.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
@@ -71,7 +72,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
 
 1. プライマリ接続文字列を選択してコピーします。
 
-1. web.config ファイルで接続文字列を設定します。
+1. *web.config* ファイルで接続文字列を設定します。
 
     ```xml
     <configuration>
@@ -82,7 +83,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
     </configuration>
     ```
 
-1. *Startup.cs* で、`MapSignalR()` を呼び出す代わりに `MapAzureSignalR({your_applicationName})` を呼び出して接続文字列に渡し、アプリケーション自身が SignalR をホストするのではなく、サービスに接続するようにします。 `{YourApplicationName}` を自分のアプリケーションの名前と置き換えます。 この名前は、このアプリケーションを他のアプリケーションから区別するための一意の名前です。 値として `this.GetType().FullName` を使用することができます。
+1. *Startup.cs* で、`MapSignalR()` を呼び出す代わりに `MapAzureSignalR({YourApplicationName})` を呼び出して接続文字列に渡し、アプリケーション自身が SignalR をホストするのではなく、サービスに接続するようにします。 `{YourApplicationName}` を自分のアプリケーションの名前と置き換えます。 この名前は、このアプリケーションを他のアプリケーションから区別するための一意の名前です。 値として `this.GetType().FullName` を使用することができます。
 
     ```cs
     public void Configuration(IAppBuilder app)
@@ -103,24 +104,19 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
     > [!NOTE]
     > この実装では、エンドポイント `/signalr/negotiate` が Azure SignalR Service SDK によるネゴシエーションに対して公開されます。 クライアントが接続を試行すると特別なネゴシエーション応答が返され、クライアントは接続文字列で定義されたサービス エンドポイントにリダイレクトされます。
 
-1. **F5** を押し、プロジェクトをデバッグ モードで実行します。 アプリケーションがローカルで実行されます。 アプリケーションそのものが SignalR ランタイムをホストする代わりに、Azure SignalR Service に接続するようになります。
+1. <kbd>F5</kbd> を押し、プロジェクトをデバッグ モードで実行します。 アプリケーションがローカルで実行されます。 アプリケーションそのものが SignalR ランタイムをホストする代わりに、Azure SignalR Service に接続するようになります。
 
 [問題がある場合は、お知らせください。](https://aka.ms/asrs/qsnet)
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-
-
 > [!IMPORTANT]
 > いったん削除したリソース グループを元に戻すことはできません。リソース グループとそこに存在するすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 このサンプルのホストとなるリソースを、保持するリソースが含まれている既存のリソース グループ内に作成した場合は、リソース グループを削除するのではなく、個々のブレードから各リソースを個別に削除することができます。
-> 
-> 
 
 [Azure ポータル](https://portal.azure.com) にサインインし、 **[リソース グループ]** をクリックします。
 
 **[名前でフィルター]** ボックスにリソース グループの名前を入力します。 このクイックスタートの手順では、*SignalRTestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** をクリックし、 **[リソース グループの削除]** をクリックします。
 
-   
 ![削除](./media/signalr-quickstart-dotnet-core/signalr-delete-resource-group.png)
 
 しばらくすると、リソース グループとそこに含まれているすべてのリソースが削除されます。
@@ -135,4 +131,3 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
 > [Azure SignalR Service を ASP.NET Core と共に使用する](./signalr-quickstart-dotnet-core.md)
 
 [問題がある場合は、お知らせください。](https://aka.ms/asrs/qsnet)
-

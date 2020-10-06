@@ -5,15 +5,15 @@ services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: 132e21c861f50caca37fb6fc5df660ff413d07a5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 92c73fed84910e525378aa18e02456960acf9911
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905495"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447257"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure Security Center でのデータ収集
 Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure 仮想マシン (VM)、仮想マシン スケール セット、IaaS コンテナー、非 Azure (オンプレミスを含む) コンピューターからデータを収集します。 データは、Log Analytics エージェントを使用して収集されます。このエージェントは、セキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータをワークスペースにコピーします。 このようなデータの例として、オペレーティング システムの種類とバージョン、オペレーティング システム ログ (Windows イベント ログ)、実行中のプロセス、マシン名、IP アドレス、ログイン ユーザーなどがあります。
@@ -71,7 +71,7 @@ Security Center によって収集されたデータは、Log Analytics ワー�
 Security Center によって作成されたワークスペースを選択するには、次の手順に従います。
 
 1. **[既定のワークスペース構成]** で、[Security Center によって作成されたワークスペースを使用] を選択します。
-   ![価格レベルの選択][10] 
+    :::image type="content" source="./media/security-center-enable-data-collection/workspace-selection.png" alt-text="Log Analytics エージェントの自動プロビジョニングの有効化"::: 
 
 1. **[保存]** をクリックします。<br>
     Security Center で新しいリソース グループとその位置情報の既定のワークスペースが作成され、エージェントがそのワークスペースに接続されます。 ワークスペースとリソース グループの名前付け規則は次のとおりです。<br>
@@ -99,8 +99,7 @@ Security Center によって作成されたワークスペースを選択する�
 既存の Log Analytics ワークスペースを選択するには、次の手順に従います。
 
 1. **[Default workspace configuration] (既定のワークスペース構成)** で **[Use another workspace]\(別のワークスペースを使用する\)** を選択します。
-
-   ![別のワークスペースを使用する][2]
+    :::image type="content" source="./media/security-center-enable-data-collection/use-another-workspace.png" alt-text="Log Analytics エージェントの自動プロビジョニングの有効化"::: 
 
 2. プルダウン メニューから、収集したデータを保存するワークスペースを選択します。
 
@@ -191,10 +190,10 @@ Microsoft では、**共通**イベント セットと**最小**イベント セ
 >
 
 フィルタリグ ポリシーを選択するには、次の手順に従います。
-1. **[データ収集]** ページの **[セキュリティ イベント]** で、フィルタリング ポリシーを選択します。
-2. **[保存]** を選択します。
-
-   ![フィルタリング ポリシーを選択する][5]
+1. **[データ収集]** ページの **[追加の生データの保存 - Windows セキュリティ イベント]** で、フィルタリング ポリシーを選択します。
+ 
+1. **[保存]** を選択します。
+    :::image type="content" source="./media/security-center-enable-data-collection/data-collection-tiers.png" alt-text="Log Analytics エージェントの自動プロビジョニングの有効化":::
 
 ### <a name="automatic-provisioning-in-cases-of-a-pre-existing-agent-installation"></a>既にインストールされているエージェントが存在する場合の自動プロビジョニング <a name="preexisting"></a> 
 
@@ -224,7 +223,7 @@ Log Analytics エージェントの自動プロビジョニングをオフにす
 1. ポータルの Security Center のメニューで、 **[価格と設定]** を選択します。
 2. 関連するサブスクリプションを選択します。
 
-   ![サブスクリプションの選択][7]
+    :::image type="content" source="./media/security-center-enable-data-collection/select-subscription.png" alt-text="Log Analytics エージェントの自動プロビジョニングの有効化":::
 
 3. **[データ収集]** を選択します。
 4. **[Auto Provisioning]\(自動プロビジョニング\)** で **[オフ]** を選択して、自動プロビジョニングを無効にします。
@@ -309,13 +308,7 @@ Log Analytics エージェントを手動でインストールして、Security 
 
 
 <!--Image references-->
-[1]: ./media/security-center-enable-data-collection/enable-automatic-provisioning.png
-[2]: ./media/security-center-enable-data-collection/use-another-workspace.png
 [3]: ./media/security-center-enable-data-collection/reconfigure-monitored-vm.png
-[5]: ./media/security-center-enable-data-collection/data-collection-tiers.png
-[7]: ./media/security-center-enable-data-collection/select-subscription.png
-[8]: ./media/security-center-enable-data-collection/manual-provision.png
 [9]: ./media/security-center-enable-data-collection/pricing-tier.png
-[10]: ./media/security-center-enable-data-collection/workspace-selection.png
 [11]: ./media/security-center-enable-data-collection/log-analytics.png
 [12]: ./media/security-center-enable-data-collection/log-analytics2.png

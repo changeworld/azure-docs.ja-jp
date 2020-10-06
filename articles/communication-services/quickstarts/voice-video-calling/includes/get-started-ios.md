@@ -6,14 +6,14 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: c67440453e5ca8395464369d75bfac418a564764
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: bb0af58c9abc4fad701b1d0927f4c13e1fdcca49
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90945966"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377303"
 ---
-このクイック スタートでは、iOS 用の Azure Communication Services 通話クライアント ライブラリを使用して、通話を開始する方法について説明します。
+このクイックスタートでは、iOS 用の Azure Communication Services 通話クライアント ライブラリを使用して、通話を開始する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -28,30 +28,30 @@ ms.locfileid: "90945966"
 
 ### <a name="creating-the-xcode-project"></a>Xcode プロジェクトを作成する
 
-Xcode で、新しい iOS プロジェクトを作成し、 **[単一ビュー アプリ]** テンプレートを選択します。 このチュートリアルでは [SwiftUI フレームワーク](https://developer.apple.com/xcode/swiftui/)を使用します。そのため、 **[言語]** を **[Swift]** に設定し、 **[ユーザー インターフェイス]** を **[SwiftUI]** に設定する必要があります。 このクイック スタートでは、単体テストと UI テストは作成しません。 **[Include Unit Tests]\(単体テストを含める\)** をオフにし、また、 **[Include UI Tests]\(UI テストを含める\)** もオフにしてかまいません。
+Xcode で、新しい iOS プロジェクトを作成し、 **[単一ビュー アプリ]** テンプレートを選択します。 このチュートリアルでは [SwiftUI フレームワーク](https://developer.apple.com/xcode/swiftui/)を使用します。そのため、 **[言語]** を **[Swift]** に設定し、 **[ユーザー インターフェイス]** を **[SwiftUI]** に設定する必要があります。 このクイック スタートでは、テストは作成しません。 **[Include Tests]\(テストを含める\)** チェック ボックスはオフにしてかまいません。
 
-:::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="Xcode 内での新たな [新しいプロジェクト] ウィンドウの作成を示すスクリーンショット。":::
+:::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="Xcode 内で新しいプロジェクトを作成するウィンドウのスクリーンショット。":::
 
 ### <a name="install-the-package"></a>パッケージをインストールする
 
 Azure Communication Services 通話クライアント ライブラリとその依存関係 (AzureCore.framework と AzureCommunication.framework) をプロジェクトに追加します。
 
 > [!NOTE]
-> AzureCommunicationCalling SDK のリリースにより、bash スクリプト `BuildAzurePackages.sh` が見つかるようになります。 `sh ./BuildAzurePackages.sh` の実行時、このスクリプトによって、生成されたフレームワーク パッケージへのパスが示されます。これを、次のステップのサンプル アプリにインポートする必要があります。 スクリプトを実行する前に、Xcode コマンド ライン ツールを設定しておく必要があるので注意してください。Xcode を起動し、[設定] -> [場所] を選択します。 コマンド ライン ツールの Xcode バージョンを選択します。
+> AzureCommunicationCalling SDK のリリースにより、bash スクリプト `BuildAzurePackages.sh` が見つかるようになります。 `sh ./BuildAzurePackages.sh` の実行時、このスクリプトによって、生成されたフレームワーク パッケージへのパスが示されます。これを、次のステップのサンプル アプリにインポートする必要があります。 スクリプトを実行する前に、Xcode コマンド ライン ツールを設定しておく必要があるので注意してください。Xcode を起動し、[設定] -> [場所] を選択します。 コマンド ライン ツールの Xcode バージョンを選択します。 **BuildAzurePackages.sh スクリプトは、Xcode 11.5 以降でのみ機能します**
 
-1. iOS 用の Azure Communication Services 通話クライアント ライブラリをダウンロードします。
+1. iOS 用の Azure Communication Services 通話クライアント ライブラリを[ダウンロード](https://github.com/Azure/Communication/releases)します。
 2. Xcode で、プロジェクト ファイルをクリックし、ビルド ターゲットを選択してプロジェクト設定エディターを開きます。
 3. **[全般]** タブで **[Frameworks, Libraries, and Embedded Content]\(フレームワーク、ライブラリ、埋め込みコンテンツ\)** セクションまでスクロールし、 **[+]** アイコンをクリックします。
-4. ダイアログの左下にある **[ファイルを追加]** を選択し、解凍されたクライアント ライブラリ パッケージの **AzureCommunicationCalling.framework** ディレクトリに移動します。
+4. ダイアログの左下にあるドロップダウンを使用して **[ファイルを追加]** を選択し、解凍されたクライアント ライブラリ パッケージの **AzureCommunicationCalling.framework** ディレクトリに移動します。
     1. **AzureCore.framework** と **AzureCommunication.framework** を追加するための最後の手順を繰り返します。
 5. プロジェクト設定エディターの **[ビルド設定]** タブを開き **[検索パス]** セクションまでスクロールします。 **AzureCommunicationCalling.framework** を含むディレクトリに、新しい**フレームワーク検索パス** エントリを追加します。
     1. 依存関係を含むフォルダーを指す別のフレームワーク検索パス エントリを追加します。
 
-:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="XCode 内のフレームワーク検索パスの更新を示すスクリーンショット。":::
+:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="Xcode 内で新しいプロジェクトを作成するウィンドウのスクリーンショット。":::
 
 ### <a name="request-access-to-the-microphone"></a>マイクへのアクセスを要求する
 
-デバイスのマイクにアクセスするには、アプリの情報プロパティ リストを `NSMicrophoneUsageDescription` によって更新する必要があります。 関連付けられた値は `string` に設定します。これは、ユーザーからのアクセスの要求を求めるためにシステムが使用するダイアログに含まれます。
+デバイスのマイクにアクセスするには、アプリの情報プロパティ リストを `NSMicrophoneUsageDescription` によって更新する必要があります。 関連付けられた値を `string` に設定します。これは、ユーザーからのアクセスの要求を求めるためにシステムによって使用されるダイアログに含められます。
 
 プロジェクト ツリーの `Info.plist` のエントリを右クリックし、 **[Open As]\(形式を指定して開く\)**  >  **[Source Code]\(ソース コード\)** の順に選択します。 最上位の `<dict>` セクションに以下の行を追加してから、ファイルを保存します。
 
@@ -121,7 +121,7 @@ Azure Communication Services 通話クライアント ライブラリが備え�
 | ACSCallClient | CallClient は、通話クライアント ライブラリへのメイン エントリ ポイントです。|
 | ACSCallAgent | CallAgent は、通話を開始および管理するために使用します。 |
 | CommunicationUserCredential | CommunicationUserCredential は、CallAgent をインスタンス化するためのトークン資格情報として使用されます。| 
-| CommunicationIndentifier | CommunicationIndentifier はユーザーの ID を表すために使用され、以下のいずれかになります。CommunicationUser/PhoneNumber/CallingApplication。 |
+| CommunicationIdentifier | CommunicationIdentifier はユーザーの ID を表すために使用され、次のいずれかになります: CommunicationUser/PhoneNumber/CallingApplication。 |
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
@@ -192,13 +192,13 @@ func endCall()
 
 iOS シミュレーターでアプリをビルドして実行するには、 **[製品]**  >  **[実行]** の順に選択するか、(&#8984;-R) キーボード ショートカットを使用します。
 
-:::image type="content" source="../media/ios/quick-start-make-call.png" alt-text="クイック スタート アプリの最終的な外観":::
+:::image type="content" source="../media/ios/quick-start-make-call.png" alt-text="Xcode 内で新しいプロジェクトを作成するウィンドウのスクリーンショット。":::
 
 発信 VOIP 通話を行うには、テキスト フィールドにユーザー ID を指定し、 **[Start Call]\(通話の開始\)** ボタンをタップします。 `8:echo123` を呼び出すとエコー ボットに接続されます。これは、オーディオ デバイスを起動し、デバイスが機能していることを確認する場合に役立ちます。 
 
 > [!NOTE]
 > 初めて通話を行うときに、マイクへのアクセスを求めるメッセージが表示されます。 実稼働アプリケーションでは、`AVAudioSession` API を使用して[アクセス許可の状態を確認し](https://developer.apple.com/documentation/uikit/protecting_the_user_s_privacy/requesting_access_to_protected_resources)、アクセス許可が付与されていない場合はアプリケーションの動作を適切に更新する必要があります。
 
-## <a name="sample"></a>サンプル
+## <a name="sample-code"></a>サンプル コード
 
-サンプル アプリは [GitHub](https://github.com/Azure/Communication/tree/master/samples/AzureCommunicationCalling/iOS/Swift) からダウンロードできます
+サンプル アプリは [GitHub](https://github.com/Azure/Communication/tree/master/samples/Add%20Voice%20Calling/iOS/Swift) からダウンロードできます

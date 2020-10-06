@@ -1,5 +1,5 @@
 ---
-title: 管理単位の管理 (プレビュー) - Azure AD | Microsoft Docs
+title: Azure Active Directory の管理単位 | Microsoft Docs
 description: 管理単位を使用した Azure Active Directory での細かいレベルの権限の委任
 services: active-directory
 documentationcenter: ''
@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.topic: overview
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 07/27/2020
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5854ef57a08218fee4479eb9e075824f4a1ff781
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 7aa356c806b6b96fa6a22f8642b005b2002f7c2a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376385"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447917"
 ---
-# <a name="administrative-units-management-in-azure-active-directory-preview"></a>Azure Active Directory での管理単位の管理 (プレビュー)
+# <a name="administrative-units-in-azure-active-directory"></a>Azure Active Directory の管理単位
 
-この記事では、Azure Active Directory (Azure AD) での管理単位について説明します。 管理単位は 1 つのAzure AD リソースであり、他の Azure AD リソースのコンテナーにすることができます。 このプレビュー リリースでは、管理単位にはユーザーとグループのみを含めることができます。
+この記事では、Azure Active Directory (Azure AD) での管理単位について説明します。 管理単位は 1 つのAzure AD リソースであり、他の Azure AD リソースのコンテナーにすることができます。 管理単位には、ユーザーとグループのみを含めることができます。
 
 管理単位を使用すると、定義した組織の部門、リージョン、またはその他のセグメントに制限されている管理者アクセス許可を付与できます。 管理単位を使用して、各地域の管理者に権限を委任したり、ポリシーを細かく設定したりできます。 たとえば、ユーザー アカウント管理者は、管理単位内のユーザーに対してのみ、プロファイル情報の更新、パスワードのリセット、およびライセンスの割り当てを実行できます。
 
@@ -44,11 +44,11 @@ ms.locfileid: "89376385"
 
 ## <a name="manage-administrative-units"></a>管理単位の管理
 
-このプレビュー リリースでは、Azure portal、PowerShell コマンドレットおよびスクリプト、または Microsoft Graph を使用して管理単位を管理できます。 詳細については、Microsoft のドキュメントをご覧ください。
+管理単位は、Azure portal、PowerShell コマンドレットおよびスクリプト、または Microsoft Graph を使用して管理できます。 詳細については、Microsoft のドキュメントをご覧ください。
 
 - [ロールを作成、削除、設定し、管理単位に追加する](roles-admin-units-manage.md):詳細な操作方法に関する手順
-- [管理単位を操作する](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0):PowerShell を使用して管理単位を操作する方法
-- [管理単位グラフのサポート](/graph/api/resources/administrativeunit?view=graph-rest-beta):管理単位の Microsoft Graph に関する詳細なドキュメント。
+- [管理単位を操作する](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true):PowerShell を使用して管理単位を操作する方法
+- [管理単位グラフのサポート](/graph/api/resources/administrativeunit?view=graph-rest-1.0&preserve-view=true):管理単位の Microsoft Graph に関する詳細なドキュメント。
 
 ### <a name="planning-your-administrative-units"></a>管理単位の計画
 
@@ -95,9 +95,6 @@ ms.locfileid: "89376385"
 グループ プロパティおよびメンバーの管理単位スコープの管理     |  サポートされています   |    サポートされています    |  サポートされていません
 グループ ライセンスの管理単位スコープの管理   |    サポートされています  |    サポートされています   |   サポートされていません
 
-> [!NOTE]
->
-> 管理単位スコープを持つ管理者は、動的なグループ メンバーシップ ルールを管理できません。
 
 管理単位では、管理アクセス許可にのみスコープが適用されます。 メンバーまたは管理者が[既定のユーザー アクセス許可](../fundamentals/users-default-permissions.md)を使用して管理単位外の他のユーザー、グループ、またはリソースを参照するのを防ぐことはありません。 Microsoft 365 管理センターでは、スコープの管理者の管理単位外のユーザーはフィルターで除外されますが、Azure AD ポータル、PowerShell、およびその他の Microsoft サービス内で他のユーザーを参照することができます。
 

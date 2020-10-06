@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:Azure Active Directory と GoToMeeting の統合 | Microsoft Docs
-description: Azure Active Directory と GoToMeeting の間でシングル サインオンを構成する方法について説明します。
+description: GoToMeeting と Azure Active Directory (Azure AD) を統合するために必要な手順について説明します。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.openlocfilehash: b410c4a106f65c8913dc41f5957cdaf10cad3c89
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 50ef8cac944304ef51d2caeb0ddfeed3eb457876
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551236"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331154"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-gotomeeting"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と GoToMeeting の統合
 

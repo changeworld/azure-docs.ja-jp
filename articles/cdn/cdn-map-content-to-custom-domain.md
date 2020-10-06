@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/11/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 4ca601a3f149d8287137265665379d407d10b988
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 08bbe1000d457cc4f4d6b655051ec640d4dcecf4
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192700"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362097"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>チュートリアル:カスタム ドメインを Azure CDN エンドポイントに追加する
 このチュートリアルでは、カスタム ドメインを Azure Content Delivery Network (CDN) エンドポイントに追加する方法について説明します。 CDN エンドポイントを使用してコンテンツを配信するときに独自のドメイン名を CDN URL に表示するには、カスタム ドメインが必要です。 見てわかるドメイン名を使用することは、顧客にとって便利であり、ブランド化の目的にも役立ちます。 
@@ -90,7 +90,7 @@ cdnverify サブドメインを含む CNAME レコードを作成するには:
 
 5. CNAME エントリの次のフィールドに入力します。
 
-    ![CNAME エントリ](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-cname-entry.png)
+    ![一時的な cdnverify サブドメインの CNAME エントリのスクリーンショット。[Type]\(タイプ\)、[Host]\(ホスト\)、[Points to]\(参照先\)、[TTL] の値が入力されている。](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-cname-entry.png)
 
     - 型: *[CNAME]* を選択したままにします。
 
@@ -104,7 +104,7 @@ cdnverify サブドメインを含む CNAME レコードを作成するには:
  
     CNAME エントリが DNS レコード テーブルに追加されます。
 
-    ![DNS レコード テーブル](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-dns-table.png)
+    ![一時的な cdnverify サブドメインの CNAME エントリが DNS レコード テーブルに追加されていることを示すスクリーンショット。](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-dns-table.png)
 
 
 ## <a name="associate-the-custom-domain-with-your-cdn-endpoint"></a>カスタム ドメインを CDN エンドポイントに関連付ける
@@ -188,7 +188,7 @@ cdnverify サブドメインがエンドポイントに正常にマップされ�
 
 5. CNAME エントリのフィールドに入力します。
 
-    ![CNAME エントリ](./media/cdn-map-content-to-custom-domain/cdn-cname-entry.png)
+    ![永続的なカスタム ドメインの CNAME エントリのスクリーンショット。[Type]\(タイプ\)、[Host]\(ホスト\)、[Points to]\(参照先\)、[TTL] の値が入力されている。](./media/cdn-map-content-to-custom-domain/cdn-cname-entry.png)
 
     - 型: *[CNAME]* を選択したままにします。
 
@@ -202,7 +202,7 @@ cdnverify サブドメインがエンドポイントに正常にマップされ�
  
     CNAME エントリが DNS レコード テーブルに追加されます。
 
-    ![DNS レコード テーブル](./media/cdn-map-content-to-custom-domain/cdn-dns-table.png)
+    ![永続的なカスタム ドメインの CNAME エントリが DNS レコード テーブルに追加されていることを示すスクリーンショット。](./media/cdn-map-content-to-custom-domain/cdn-dns-table.png)
 
 7. cdnverify CNAME レコードがある場合は、その横の鉛筆アイコンを選択し、ごみ箱アイコンを選択します。
 

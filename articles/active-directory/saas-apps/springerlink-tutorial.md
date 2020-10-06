@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 41713554273ed5d6548a35d0ac956d8ff5c74191
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2e3b2ee35352c2af4ae8196ba7c9699da761f83e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542528"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372512"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>チュートリアル: Azure Active Directory と Springer Link の統合
 
@@ -39,7 +39,7 @@ Azure AD と Springer Link の統合を構成するには、次のものが必�
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
+このチュートリアルでは、Azure AD シングル サインオンを構成してテストします。
 
 * Springer Link では、**SP** Initiated SSO と **IDP** Initiated SSO がサポートされます
 
@@ -68,7 +68,6 @@ Azure AD への Springer Link の統合を構成するには、ギャラリー�
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
 このセクションでは、"**Britta Simon**" というテスト ユーザーに基づいて、Springer Link で Azure AD のシングル サインオンを構成し、テストします。
-シングル サインオンを機能させるには、Azure AD ユーザーと Springer Link 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Springer Link で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
@@ -76,8 +75,7 @@ Springer Link で Azure AD のシングル サインオンを構成してテス�
 2. **[Springer Link シングル サインオンの構成](#configure-springer-link-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
 3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[Springer Link テスト ユーザーの作成](#create-springer-link-test-user)** - Springer Link で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -85,7 +83,7 @@ Springer Link で Azure AD のシングル サインオンを構成してテス�
 
 Springer Link で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Springer Link** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Springer Link** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -120,21 +118,11 @@ Springer Link で Azure AD シングル サインオンを構成するには、�
 
 6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、コピー アイコンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーし、コンピューターに保存します。
 
-    ![証明書のダウンロードのリンク](common/metadataxml.png)
-
-7. **[Springer Link のセットアップ]** セクションで、要件に従って適切な URL をコピーします。
-
-    ![構成 URL のコピー](common/copy-configuration-urls.png)
-
-    a. ログイン URL
-
-    b. Azure AD 識別子
-
-    c. ログアウト URL
+    ![メタデータのダウンロード リンク](common/copy_metadataurl.png)
 
 ### <a name="configure-springer-link-single-sign-on"></a>Springer Link シングル サインオンの構成
 
-**Springer Link** 側でシングル サインオンを構成するには、コピーした**アプリのフェデレーション メタデータの URL** と Azure portal からコピーした適切な URL を [Springer Link サポート チーム](mailto:identity@springernature.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Springer Link** 側でシングル サインオンを構成するには、コピーした**アプリのフェデレーション メタデータ URL** を [Springer Link サポート チーム](mailto:onlineservice@springernature.com)に送る必要があります。 Springer Link サポート チームは、この URL を使用して、両側で適切に SAML SSO 接続を設定します。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -165,7 +153,7 @@ Springer Link で Azure AD シングル サインオンを構成するには、�
 
 このセクションでは、Britta Simon に Springer Link へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Springer Link]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Springer Link]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -186,10 +174,6 @@ Springer Link で Azure AD シングル サインオンを構成するには、�
 6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
 7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
-
-### <a name="create-springer-link-test-user"></a>Springer Link テスト ユーザーの作成
-
-このセクションでは、Springer Link で Britta Simon というユーザーを作成します。  [Springer Link サポート チーム](mailto:identity@springernature.com)と協力して、Springer Link プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

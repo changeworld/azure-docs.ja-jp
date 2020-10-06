@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 08/10/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 88962d63519cfeb78be694c4f702b05ed4e7d3df
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 409f1ecee5ccf42a0168d500b40337366e07bfc0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658345"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287852"
 ---
 # <a name="copy-data-from-azure-cosmos-db-into-a-sql-pool-using-apache-spark"></a>Apache Spark を使用して Azure Cosmos DB から SQL プールにデータをコピーする
 
@@ -29,12 +29,12 @@ Azure Synapse Link for Azure Cosmos DB を使用すると、ユーザーは Azur
 * [Spark から SQL プールにデータをインポートするための適切なセットアップを行う](../spark/synapse-spark-sql-pool-import-export.md)
 
 ## <a name="steps"></a>手順
-このチュートリアルでは、トランザクション ストアに影響を与えないように分析ストアに接続します (要求ユニットを消費しません)。 次のステップを実行します。
+このチュートリアルでは、トランザクション ストアに影響を与えないように分析ストアに接続します (要求ユニットを消費しません)。 ここでは、次の手順について説明します。
 1. Cosmos DB HTAP コンテナーを Spark データフレームに読み取る
 2. 新しいデータフレームで結果を集計する
 3. SQL プールにデータを取り込む
 
-[![Spark から SQL への手順](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png)](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png#lightbox)
+[![Spark から SQL への手順 1](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png)](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png#lightbox)
 
 ## <a name="data"></a>Data
 この例では、**RetailSales** という HTAP コンテナーを使用します。 これは、**ConnectedData** というリンクされたサービスの一部です。スキーマは次のとおりです。
@@ -97,7 +97,7 @@ SELECT  [productCode]
  FROM [dbo].[productsales]
 ```
 
-クエリでは、グラフ モードで次の結果を表示します。[![Spark から SQL への手順](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png)](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png#lightbox)
+クエリでは、グラフ モードで次の結果を表示します。[![Spark から SQL への手順 2](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png)](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png#lightbox)
 
 ## <a name="next-steps"></a>次のステップ
 * [Apache Spark を使用して Azure Cosmos DB 分析ストアのクエリを実行する](./how-to-query-analytical-store-spark.md)

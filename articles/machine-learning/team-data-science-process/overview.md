@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 1/10/2020
 ms.author: tdsp
 ms.custom: previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 711c4ce8af613181d35d2850393c6c24d795c280
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: fc9a5e604e6ac52eb0e853725123272ca924fa36
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799266"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362233"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Team Data Science Process とは
 
@@ -51,7 +51,7 @@ Team Data Science Process (TDSP) には、データ サイエンス プロジェ
 
 次の図は、**Team Data Science Process ライフサイクル**を視覚的に表したものです。 
 
-![TDSP-Lifecycle2](./media/overview/tdsp-lifecycle2.png) 
+![データ サイエンスのライフサイクルを示す図。ビジネスの把握、データの取得と理解、モデリング、デプロイを含む。](./media/overview/tdsp-lifecycle2.png) 
 
 TDSP におけるライフサイクルの各ステージの目標、タスク、ドキュメント アーティファクトについては、「[Team Data Science Process ライフサイクル](lifecycle.md)」のトピックで説明しています。 これらのタスクとアーティファクトは、プロジェクトの各種役割に関連付けられます。
 

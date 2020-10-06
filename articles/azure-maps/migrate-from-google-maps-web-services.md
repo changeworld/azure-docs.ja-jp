@@ -1,20 +1,20 @@
 ---
-title: チュートリアル:Google マップから Web サービスを移行する | Microsoft Azure Maps
-description: Google マップから Microsoft Azure Maps に Web サービスを移行する方法。
+title: Google マップから Web サービスを移行する | Microsoft Azure Maps
+description: Google マップから Microsoft Azure Maps に Web サービスを移行する方法
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/17/2019
-ms.topic: tutorial
+ms.date: 08/19/2020
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 8cc16e611002748dad2716a1c8dc914f297da9f1
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 57d71d517cb953a2a2c84b7e003fd08541416539
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090552"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319573"
 ---
 # <a name="migrate-web-service-from-google-maps"></a>Google マップから Web サービスを移行する
 
@@ -293,9 +293,8 @@ Google マップのカスタム アイコンには、次のスタイル オプ�
 &markers=color:red|size:mid|45,-110
 ```
 
-<center>
 
-![Google Maps のマーカー](media/migrate-google-maps-web-services/google-maps-marker.png)</center>
+![Google Maps のマーカー](media/migrate-google-maps-web-services/google-maps-marker.png)
 
 **後: Azure Maps**
 
@@ -335,9 +334,8 @@ Azure Maps では、ピンの位置を "経度 緯度" 形式で指定する必�
 &pins=default|coFF0000|la15 50||'Space Needle' -122.349300 47.620180
 ```
 
-<center>
 
-![Azure Maps のマーカー](media/migrate-google-maps-web-services/azure-maps-marker.png)</center>
+![Azure Maps のマーカー](media/migrate-google-maps-web-services/azure-maps-marker.png)
 
 ラベル値が "1"、"2"、"3" の 3 つのピンを追加します。
 
@@ -345,9 +343,9 @@ Azure Maps では、ピンの位置を "経度 緯度" 形式で指定する必�
 &pins=default||'1'-122 45|'2'-119.5 43.2|'3'-121.67 47.12
 ```
 
-<center>
 
-![Azure Maps の複数のマーカー](media/migrate-google-maps-web-services/azure-maps-multiple-markers.png)</center>
+
+![Azure Maps の複数のマーカー](media/migrate-google-maps-web-services/azure-maps-multiple-markers.png)
 
 ### <a name="path-url-parameter-format-comparison"></a>経路 URL パラメーターの形式の比較
 
@@ -376,9 +374,7 @@ Azure Maps では、ピンの位置を "経度 緯度" 形式で指定する必�
 &path=color:0xFF000088|weight:4|45,-110|50,-100
 ```
 
-<center>
-
-![Google Maps のポリライン](media/migrate-google-maps-web-services/google-maps-polyline.png)</center>
+![Google Maps のポリライン](media/migrate-google-maps-web-services/google-maps-polyline.png)
 
 **後: Azure Maps**
 
@@ -405,9 +401,7 @@ Azure Maps では、ピンの位置を "経度 緯度" 形式で指定する必�
 &path=lcFF0000|la.5|lw4||-110 45|-100 50
 ```
 
-<center>
-
-![Azure Maps のポリライン](media/migrate-google-maps-web-services/azure-maps-polyline.png)</center>
+![Azure Maps のポリライン](media/migrate-google-maps-web-services/azure-maps-polyline.png)
 
 ## <a name="calculate-a-distance-matrix"></a>距離行列を計算する
 
@@ -482,22 +476,5 @@ Azure Maps REST サービスに関するその他のドキュメントとリソ�
 - [住所の検索](how-to-search-for-address.md)
 - [ルート指定のベスト プラクティス](how-to-use-best-practices-for-routing.md)
 - [Azure Maps REST サービス API のリファレンス ドキュメント](https://docs.microsoft.com/rest/api/maps/)
-
-## <a name="next-steps"></a>次のステップ
-
-Azure Maps REST サービスの詳細について学習します。
-
-> [!div class="nextstepaction"]
-> [検索サービスを使用するためのベスト プラクティス](how-to-use-best-practices-for-search.md)
-
-> [!div class="nextstepaction"]
-> [ルート指定サービスを使用するためのベスト プラクティス](how-to-use-best-practices-for-search.md)
-
-> [!div class="nextstepaction"]
-> [サービス モジュール (Web SDK) の使用方法](how-to-use-best-practices-for-routing.md)
-
-> [!div class="nextstepaction"]
-> [Azure Maps REST サービス API のリファレンス ドキュメント](https://docs.microsoft.com/rest/api/maps/)
-
-> [!div class="nextstepaction"]
-> [コード サンプル](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+- [コード サンプル](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+- [サービス モジュール (Web SDK) の使用方法](how-to-use-best-practices-for-routing.md)

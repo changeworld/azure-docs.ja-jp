@@ -11,12 +11,12 @@ manager: eliotgra
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 1b12886ee55741f62a1156269423ffadd34cd433
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: e3fce15cdeb1792749224299167b52fc2311d04e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81683308"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318280"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service を使用したデバイスのプロビジョニング
 Microsoft Azure には、すべての IoT ソリューションのニーズに合う豊富な統合されたパブリック クラウド サービス セットがあります。 IoT Hub Device Provisioning Service (DPS) は、IoT Hub のヘルパー サービスです。適切な IoT Hub へのゼロタッチの Just-In-Time プロビジョニングを人間の介入を必要とせずに行うことができます。 DPS を使用すると、膨大な数のデバイスを、安全かつスケーラブルな方法でプロビジョニングすることができます。
@@ -88,7 +88,7 @@ DPS は多くの機能を備えているため、デバイスのプロビジョ�
 * **保存データの暗号化**。DPS 内のデータは、利用可能な最強のブロック暗号の 1 つである 256 ビット AES 暗号化を使って透過的に暗号化および暗号化解除され、FIPS 140-2 に準拠しています。
 
 
-デバイスのプロビジョニングに関係する概念と機能の詳細については、[デバイスの概念](concepts-device.md)、[サービスの概念](concepts-service.md)、[セキュリティの概念](concepts-security.md)に関する記事を参照してください。
+デバイス プロビジョニングに関連する概念と機能の詳細については、[DPS の用語](concepts-service.md)に関するトピック、および同じセクション内の他の概念に関するトピックをご確認ください。
 
 ## <a name="cross-platform-support"></a>クロスプラットフォームのサポート
 DPS は、他のあらゆる Azure IoT サービスとまったく同じように、多様なオペレーティング システムとクロスプラットフォームで動作します。 Azure ではさまざまな[言語](https://github.com/Azure/azure-iot-sdks)でオープン ソース SDK が提供されており、容易にデバイスを接続して、サービスを管理できます。 DPS は、次のプロトコルを使ったデバイスの接続をサポートしています。
@@ -123,7 +123,9 @@ DPS は Azure IoT Hub を使用してデバイス プロビジョニングを自
 
 ## <a name="next-steps"></a>次のステップ
 ここでは、Azure で IoT デバイスをプロビジョニングする方法の概要について説明しました。 次の手順では、エンドツーエンドの IoT シナリオを試します。
-> [!div class="nextstepaction"]
-> [Azure Portal を使用した IoT Hub Device Provisioning Service のセットアップ](quick-setup-auto-provision.md)
-> [シミュレートしたデバイスの作成とプロビジョニング](quick-create-simulated-device.md)
-> [プロビジョニングに備えたデバイスのセットアップ](tutorial-set-up-device.md)
+
+[Azure portal で IoT Hub Device Provisioning Service を設定する](quick-setup-auto-provision.md)
+
+[シミュレートされたデバイスの作成とプロビジョニング](quick-create-simulated-device.md)
+
+[プロビジョニングするデバイスを設定する](tutorial-set-up-device.md)

@@ -4,15 +4,15 @@ description: コンテナー レジストリ用 Azure Defender の利点と機�
 author: memildin
 ms.author: memildin
 ms.date: 9/22/2020
-ms.topic: conceptual
+ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 742d230d6ed1535bada9c35219d2ddf68fd64ae1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 12264a79ee5428e98d6cf7d37bef6706295e68dc
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977158"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448374"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Azure Defender for container registries の概要
 
@@ -64,14 +64,11 @@ Security Center では、スキャナーによる検出結果がフィルター�
 
 Security Center では、スキャナーによる検出結果がフィルター処理および分類されます。 イメージが正常な場合、Security Center ではそのように示されます。 Security Center では、解決の必要な問題があるイメージに対してのみ、セキュリティに関する推奨事項が生成されます。 問題があるときにだけ通知することにより、Security Center では不要な情報アラートの可能性が減ります。
 
-### <a name="how-often-does-security-center-scan-my-images"></a>Security Center ではどのくらいの頻度でイメージがスキャンされますか。
-イメージ スキャンは、プッシュまたはインポートが行われるたびに、およびイメージが過去 30 日以内にプルされている場合にトリガーされます。 
-
 ### <a name="can-i-get-the-scan-results-via-rest-api"></a>REST API 経由でスキャン結果を取得できますか。
 はい。 結果は [Sub-Assessments Rest API](/rest/api/securitycenter/subassessments/list/) の下にあります。 また、Azure Resource Graph (ARG) を利用できます。これはすべてのリソースを対象とする Kusto のような API であり、1 つのクエリで特定のスキャンをフェッチできます。
  
 ### <a name="what-registry-types-are-scanned-what-types-are-billed"></a>どのようなレジストリの種類がスキャンされますか。 どのような種類が課金されますか。
-可用性セクションには、コンテナー レジストリ用 Azure Defender によってサポートされているコンテナー レジストリの種類が一覧表示されています。 
+コンテナー レジストリ用 Azure Defender によってサポートされているコンテナー レジストリの種類の一覧については、「[可用性](defender-for-container-registries-usage.md#availability)」をご覧ください。
 
 サポートされていないレジストリを Azure サブスクリプションに接続している場合、これらはスキャンされず、課金対象にもなりません。
 

@@ -9,12 +9,12 @@ ms.author: mlearned
 description: この記事では、Azure Arc 対応 Kubernetes の概要を示します。
 keywords: Kubernetes, Arc, Azure, コンテナー
 ms.custom: references_regions
-ms.openlocfilehash: fb8a7b7c2e1e5b3de7d1ccdb4054e44825231458
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 61317f7f5f2bf17c88fc019294574993c1854e59
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604803"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540644"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Azure Arc 対応 Kubernetes プレビューとは
 
@@ -60,6 +60,21 @@ Azure Arc 対応 Kubernetes は、現在、以下のリージョンでサポー�
 * 米国東部 
 * 西ヨーロッパ
 
+## <a name="frequently-asked-questions"></a>よく寄せられる質問
+
+* Azure Arc 対応 Kubernetes と Azure Kubernetes Service (AKS) の違いは何ですか?
+
+    Azure Kubernetes Service (AKS) は、Azure によるマネージド Kubernetes オファリングです。 AKS を使用すると、マネージド Kubernetes クラスターを Azure に簡単にデプロイできます。 AKS では、責任の多くを Azure にオフロードすることで、Kubernetes の管理の複雑さと運用上のオーバーヘッドを軽減します。 Kubernetes マスターは、Azure によって管理されます。 ユーザーは、エージェント ノードの管理と保守のみを行います。
+
+    Azure Arc 対応 Kubernetes を使用すると、Kubernetes クラスターを Azure に接続して、Azure Monitor や Azure Policy などの Azure の管理機能を拡張できます。 基になる Kubernetes クラスター自体のメンテナンスはユーザーが行います。
+
+* Azure で実行されている Azure Kubernetes Service クラスターを Azure Arc に接続する必要はありますか?
+
+    いいえ。 Azure Monitor、Azure Policy (Gatekeeper) など、Azure Arc 対応 Kubernetes のすべての機能は、Azure に既にリソース表現がある AKS でネイティブに使用できます。 クラスター構成 (GitOps) も AKS でネイティブに使用でき、現在はプライベート プレビュー段階にあります。 この機能にアクセスするには、こちらの[サインアップ フォーム](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR5acO18Lmx5Bk_qao2CrOcFUQ0UyRllDR1BEV1BPNENYRERYN1pFWTQ4WC4u)を使用してください。
+    
+* Azure Stack HCI 上の AKS クラスターは Azure Arc に接続した方がよいですか? Azure Stack Hub または Azure Stack Engine で実行されている Kubernetes クラスターはどうですか?
+
+    はい。これらのクラスターを Azure Arc に接続すると、利点が得られます。 Azure Resource Manager で、これらの Kubernetes クラスターのリソース表現が提供されます。 このリソース表現を使用して、クラスター構成、Azure Monitor、Azure Policy (Gatekeeper) などの機能を、これらの Kubernetes クラスターに拡張できます。
 
 ## <a name="next-steps"></a>次のステップ
 

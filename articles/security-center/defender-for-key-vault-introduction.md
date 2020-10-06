@@ -3,17 +3,17 @@ title: Azure Defender for Key Vault - 利点と機能
 description: Azure Defender for Key Vault の利点と機能について学習します。
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
-ms.topic: conceptual
+ms.date: 9/22/2020
+ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 06818e443568918e2ee87bbfbec81836ea85648b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6649a8d470a75922aac423bf0b411163bdd79f71
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931579"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449092"
 ---
 # <a name="introduction-to-azure-defender-for-key-vault"></a>Azure Defender for Key Vault の概要
 
@@ -42,6 +42,11 @@ Azure Defender for Key Vault からアラートを受け取った場合は、[Az
 アラートは Key Vault の **[セキュリティ]** ページ、Azure Defender ダッシュボード、Security Center のアラート ページに表示されます。
 
 :::image type="content" source="./media/defender-for-key-vault-intro/key-vault-security-page.png" alt-text="Azure Key Vault のセキュリティ ページ":::
+
+
+> [!TIP]
+> 「[Azure Security Center での Azure Key Vault 脅威検出の検証](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336)」の手順に従って、Azure Defender for Key Vault のアラートをシミュレートできます。
+
 
 ## <a name="next-steps"></a>次の手順
 

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: af07894fcbfae386849d32492be9d2718a3adcc3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1dd3781b18f82a96f388b0e619ce62b45752a870
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90945486"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292474"
 ---
 # <a name="chat-concepts"></a>チャットに関する概念
 
@@ -28,7 +28,7 @@ Azure Communication Services の Chat クライアント ライブラリを使�
 
 チャット会話は、チャット スレッド内で行われます。 チャット スレッドには、多くのメッセージと多くのユーザーを含めることができます。 各メッセージは 1 つのスレッドに属しており、1 人のユーザーは 1 つまたは複数のスレッドに参加できます。 
 
-チャット スレッド内の各ユーザーは、メンバーと呼ばれます。 チャット スレッドには最大 250 名のメンバーを含めることができます。 スレッド メンバーだけが、チャット スレッドでメッセージを送受信したり、メンバーを追加/削除したりできます。 許可されている最大メッセージ サイズは約 28 KB です。 チャットの履歴は、チャット スレッドで削除操作を実行するまで保存されます。 1 つのチャット スレッド内のすべてのメッセージを取得するには、`List/Get Messages` 操作を使用します。
+チャット スレッド内の各ユーザーは、メンバーと呼ばれます。 チャット スレッドには最大 250 名のメンバーを含めることができます。 スレッド メンバーだけが、チャット スレッドでメッセージを送受信したり、メンバーを追加/削除したりできます。 許可されている最大メッセージ サイズは約 28 KB です。 1 つのチャット スレッド内のすべてのメッセージを取得するには、`List/Get Messages` 操作を使用します。 Communication Services では、チャット スレッドまたはメッセージに対して削除操作を実行するまで、またはチャット スレッドにメンバーがいなくなった時点で孤立し、削除対象として処理されるまで、チャット履歴を保存します。   
 
 20 名を超えるメンバーを持つチャット スレッドの場合は、開封確認メッセージと入力インジケーター機能が無効になっています。 
 
@@ -130,7 +130,7 @@ Chat JavaScript クライアント ライブラリには、リアルタイムの
 
 これにより、メッセージ履歴には元のメッセージと翻訳されたメッセージの両方が含まれます。 クライアント アプリケーションに、元のメッセージまたは翻訳されたメッセージを表示するロジックを追加できます。 Cognitive API を使用してテキストを別の言語に翻訳する方法については、[こちらのクイックスタート](https://docs.microsoft.com/azure/cognitive-services/translator/quickstart-translate)をご覧ください。 
 
-:::image type="content" source="../media/chat/cognitive-services.png" alt-text="Communication Services と対話する Cognitive Services を示す図。":::
+:::image type="content" source="../media/chat/cognitive-services.png" alt-text="Communication Services のチャットのアーキテクチャを示す図。":::
 
 ## <a name="next-steps"></a>次の手順
 

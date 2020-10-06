@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019, devx-track-azurepowershell
 ms.date: 01/22/2018
-ms.openlocfilehash: 6fab092b0467228fd4fcdbcf95f99fd0981fb1e4
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 3bd18f697c25f7e81f227e7e1456ba0b3d2150c6
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079225"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541749"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-powershell"></a>PowerShell を使用して、変更追跡情報を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする
 
@@ -453,10 +453,10 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $
     ![Monitor & Manage tile](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-monitor-manage-tile-3.png)    
 5. 独立したタブで**データ統合アプリケーション**が起動します。すべての**パイプラインの実行**とその状態を確認できます。 次の例では、パイプラインの実行が、**成功**状態であることに注目してください。 **[パラメーター]** 列のリンクをクリックすると、パイプラインに渡されたパラメーターを確認できます。 エラーが発生した場合は、 **[エラー]** 列にリンクが表示されます。 **[アクション]** 列のリンクをクリックします。
 
-    ![パイプライン実行](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-4.png)    
+    ![データ ファクトリのパイプライン実行を示すスクリーンショット。](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-4.png)    
 6. **[アクション]** 列のリンクをクリックすると、以下のページが開いて、そのパイプラインに関するすべての**アクティビティの実行**が表示されます。
 
-    ![アクティビティの実行](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-5.png)
+    ![[パイプライン] リンクが呼び出された、データ ファクトリのアクティビティの実行を示すスクリーンショット。](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-5.png)
 7. 再度**パイプラインの実行**ビューに切り替えるには、この画像に示した **[パイプライン]** をクリックします。
 
 
@@ -632,10 +632,10 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -Resource
 ### <a name="monitor-the-incremental-copy-pipeline"></a>増分コピー パイプラインを監視する
 1. **データ統合アプリケーション**で、**パイプラインの実行**ビューを最新の情報に更新します。 その一覧に IncrementalCopyPipeline があることを確認してください。 **[アクション]** 列のリンクをクリックします。  
 
-    ![パイプライン実行](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-6.png)    
+    ![パイプラインを含むデータ ファクトリのパイプライン実行を示すスクリーンショット。](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-6.png)    
 2. **[アクション]** 列のリンクをクリックすると、以下のページが開いて、そのパイプラインに関するすべての**アクティビティの実行**が表示されます。
 
-    ![アクティビティの実行](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-7.png)
+    ![いくつかが成功としてマークされている、データ ファクトリのパイプライン実行を示すスクリーンショット。](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-7.png)
 3. 再度**パイプラインの実行**ビューに切り替えるには、この画像に示した **[パイプライン]** をクリックします。
 
 ### <a name="review-the-results"></a>結果の確認

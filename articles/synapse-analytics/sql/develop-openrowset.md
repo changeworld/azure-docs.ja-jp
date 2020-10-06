@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: b7b8a0d98db1411a08afdb33fa272bb7e6d6313e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e541a5620d4f263e5e1379b364d7c7dd9a97a331
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280479"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289023"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>SQL オンデマンド (プレビュー) で OPENROWSET を使用する方法
 
@@ -119,7 +119,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 | Azure Blob Storage         | wasb[s]  | \<container>@\<storage_account>.blob.core.windows.net/path/file |
 | Azure Data Lake Store Gen1 | http[s]  | \<storage_account>.azuredatalakestore.net/webhdfs/v1 |
 | Azure Data Lake Store Gen2 | http[s]  | \<storage_account>.dfs.core.windows.net /path/file   |
-| Azure Data Lake Store Gen2 | abfs[s]  | [\<file_system>@\<account_name>.dfs.core.windows.net/path/file](../../storage/blobs/data-lake-storage-introduction-abfs-uri.md#uri-syntax)              |
+| Azure Data Lake Store Gen2 | aufs[s]  | [\<file_system>@\<account_name>.dfs.core.windows.net/path/file](../../storage/blobs/data-lake-storage-introduction-abfs-uri.md#uri-syntax)              |
 ||||
 
 '\<storage_path>'
@@ -184,7 +184,7 @@ ESCAPE_CHAR パラメーターは、FIELDQUOTE が有効かどうかに関係な
 
 FIRSTROW = 'first_row' 
 
-読み込み開始行の行番号を指定します。 既定値は 1 です。 指定したデータ ファイルの最初の行を示します。 行番号は行ターミネータの数をカウントして決定されます。 FIRSTROW は 1 から始まります。
+読み込み開始行の行番号を指定します。 既定値は 1 で、指定のデータ ファイルの先頭行を表します。 行番号は行ターミネータの数をカウントして決定されます。 FIRSTROW は 1 から始まります。
 
 FIELDQUOTE = 'field_quote' 
 
@@ -203,7 +203,7 @@ PARSER_VERSION = 'parser_version'
 - PARSER_VERSION = '1.0'
 - PARSER_VERSION = '2.0'
 
-CSV パーサー バージョン 1.0 は既定で機能が豊富ですが、2.0 はパフォーマンスのために構築されており、すべてのオプションとエンコードがサポートされているわけではありません。 
+CSV パーサー バージョン 1.0 が既定であり、機能が豊富です。 バージョン 2.0 はパフォーマンス重視で構築されており、すべてのオプションとエンコードがサポートされているわけではありません。 
 
 CSV パーサー バージョン 2.0 の詳細:
 
@@ -229,7 +229,7 @@ WITH (
 ) AS [r]
 ```
 
-次の例では、列名とデータ型を指定せずに、census データ セットから最初の行のすべての列が Parquet 形式で返されます。 
+次の例では、列名とデータ型を指定せずに、census データ セットの最初の行のすべての列が Parquet 形式で返されます。 
 
 ```sql
 SELECT 

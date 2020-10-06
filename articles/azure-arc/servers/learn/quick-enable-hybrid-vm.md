@@ -1,24 +1,24 @@
 ---
-title: Azure Arc 対応サーバー (プレビュー) にハイブリッド マシンを接続する
-description: Azure Arc 対応サーバー (プレビュー) にハイブリッド マシンを接続して登録する方法について説明します。
+title: Azure Arc 対応サーバーにハイブリッド マシンを接続する
+description: Azure Arc 対応サーバーにハイブリッド マシンを接続して登録する方法について説明します。
 ms.topic: quickstart
-ms.date: 08/12/2020
-ms.openlocfilehash: eacf75871b1f7cc7fc3b703d8859338578e43456
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 09/23/2020
+ms.openlocfilehash: b57f30821a105a99041d8187716b75096116ea8e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213614"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327886"
 ---
-# <a name="quickstart-connect-hybrid-machine-with-azure-arc-enabled-servers-preview"></a>クイック スタート:Azure Arc 対応サーバー (プレビュー) にハイブリッド マシンを接続する
+# <a name="quickstart-connect-hybrid-machine-with-azure-arc-enabled-servers"></a>クイックスタート: Azure Arc 対応サーバーにハイブリッド マシンを接続する
 
-[Azure Arc 対応サーバー](../overview.md) (プレビュー) を使用すると、オンプレミス、エッジ、マルチクラウドの垣根を越え、それらの環境でホストされている Windows マシンや Linux マシンを管理することができます。 このクイックスタートでは、Azure の外部でホストされた Windows マシンまたは Linux マシンを Arc 対応サーバー (プレビュー) で管理できるよう、それらのマシンに Connected Machine エージェントをデプロイして構成します。
+[Azure Arc 対応サーバー](../overview.md)を使用すると、オンプレミス、エッジ、マルチクラウドの垣根を越え、それらの環境でホストされている Windows マシンや Linux マシンを管理することができます。 このクイックスタートでは、Azure の外部でホストされた Windows マシンまたは Linux マシンを Arc 対応サーバーで管理できるよう、それらのマシンに Connected Machine エージェントをデプロイして構成します。
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-* Arc 対応サーバー (プレビュー) の Hybrid Connected Machine エージェントをデプロイするには、マシンにエージェントをインストールして構成するための管理者アクセス許可が必要です。 Linux では root アカウントを使用し、Windows ではローカルの Administrators グループのメンバー アカウントを使用します。
+* Arc 対応サーバーの Hybrid Connected Machine エージェントをデプロイするには、マシンにエージェントをインストールして構成するための管理者アクセス許可が必要です。 Linux では root アカウントを使用し、Windows ではローカルの Administrators グループのメンバー アカウントを使用します。
 
 * 開始する前に、必ずエージェントの[前提条件](../agent-overview.md#prerequisites)を確認し、次の点を確認してください。
 
@@ -28,13 +28,13 @@ ms.locfileid: "88213614"
 
     * インターネット経由で通信するためにマシンがファイアウォールやプロキシ サーバーを介して接続する場合、[一覧](../agent-overview.md#networking-configuration)に記載されている URL がブロックされていないこと。
 
-    * Azure Arc 対応サーバー (プレビュー) でサポートされるのは、[こちら](../overview.md#supported-regions)に記載されたリージョンのみです。
+    * Azure Arc 対応サーバーがサポートされるのは、[こちら](../overview.md#supported-regions)に記載されたリージョンのみです。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="register-azure-resource-providers"></a>Azure リソースプロバイダーを登録する
 
-Azure Arc 対応サーバー (プレビュー) は、このサービスを使用するために、サブスクリプション内の次の Azure リソースプロバイダーに依存します。
+Azure Arc 対応サーバーは、このサービスを使用するために、サブスクリプション内の次の Azure リソース プロバイダーに依存しています。
 
 * Microsoft.HybridCompute
 * Microsoft.GuestConfiguration
@@ -97,15 +97,15 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 
 ## <a name="verify-the-connection-with-azure-arc"></a>Azure Arc との接続を検証する
 
-エージェントをインストールし、Azure Arc 対応サーバー (プレビュー) に接続するように構成したら、Azure portal に移動して、サーバーが正常に接続されていることを確認します。 対象のマシンが [Azure portal](https://aka.ms/hybridmachineportal) に表示されます。
+エージェントをインストールし、それを Azure Arc 対応サーバーに接続するように構成したら、Azure portal に移動して、サーバーが正常に接続されたことを確認します。 対象のマシンが [Azure portal](https://aka.ms/hybridmachineportal) に表示されます。
 
-:::image type="content" source="./media/quick-enable-hybrid-vm/enabled-machine.png" alt-text="マシンの接続に成功" border="false":::
+:::image type="content" source="./media/quick-enable-hybrid-vm/enabled-machine.png" alt-text="[すべてのサービス] で Arc 対応サーバーを検索する" border="false":::
 
 ## <a name="next-steps"></a>次の手順
 
 Linux または Windows のハイブリッド マシンを有効にし、サービスへの接続に成功しました。いつでも Azure Policy を有効にして Azure でのコンプライアンスを把握することができます。
 
-Azure Arc 対応サーバー (プレビュー) に対応したマシンの中から、Log Analytics エージェントがインストールされていないマシンを特定する方法については、次のチュートリアルにお進みください。
+Azure Arc 対応サーバーに対応したマシンの中から、Log Analytics エージェントがインストールされていないマシンを特定する方法については、次のチュートリアルにお進みください。
 
 > [!div class="nextstepaction"]
 > [準拠していないリソースを識別するためのポリシー割り当てを作成する](tutorial-assign-policy-portal.md)

@@ -3,16 +3,16 @@ title: Azure Defender for servers - 利点と機能
 description: Azure Defender for servers の利点と機能について説明します。
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
-ms.topic: conceptual
+ms.date: 9/23/2020
+ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 29f15aa7d1cbcd260ce44f6083138681ceb9fd79
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8757399329f3a9bd9f4d7b914b12b2a0f7e85603
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90932446"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448298"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>Azure Defender for servers の概要
 
@@ -41,7 +41,7 @@ Azure Defender for servers には、次のような脅威検出および保護�
 
 - **適応型アプリケーション制御 (AAC)** - 適応型アプリケーション制御は、マシンの既知の安全なアプリケーションの許可リストを定義するためのインテリジェントで自動化されたソリューションです。
 
-    適応型アプリケーション制御を有効にして構成した場合、安全なものとして定義したもの以外のアプリケーションが実行されると、セキュリティ アラートが表示されます。 [詳細については、こちらを参照してください](security-center-adaptive-network-hardening.md)。
+    適応型アプリケーション制御を有効にして構成した場合、安全なものとして定義したもの以外のアプリケーションが実行されると、セキュリティ アラートが表示されます。 [詳細については、こちらを参照してください](security-center-adaptive-application.md)。
 
 - **アダプティブ ネットワークのセキュリティ強化機能 (ANH)** - ネットワーク セキュリティ グループ (NSG) を適用してリソースとの間でやり取りされるトラフィックをフィルター処理することにより、ネットワーク セキュリティ ポスチャを向上させることができます。 ただし、NSG を通過する実際のトラフィックが、定義される NSG ルールのサブセットとなる場合もあります。 このような場合は、実際のトラフィック パターンに基づいて NSG ルールを強化することによって、セキュリティ ポスチャをさらに向上させることができます。
 
@@ -58,7 +58,7 @@ Azure Defender for servers には、次のような脅威検出および保護�
 
 - **ファイルレス攻撃の検出 (Windows のみ)** - ファイルレス攻撃は、ディスクベースのスキャン手法による検出を避けるために、悪意のあるペイロードをメモリに挿入します。 侵害されたプロセスのメモリ内に存続する攻撃者のペイロードにより、さまざまな悪意のあるアクティビティが実行されます。
 
-  自動メモリ フォレンジック手法は、ファイルレス攻撃の検出を使用して、ファイルレス攻撃のツールキット、手法、および動作を識別します。 このソリューションでは、実行時にマシンが定期的にスキャンされて、プロセスのメモリから分析情報が直接抽出されます。 Linux の特定の分析情報には、次のものの識別が含まれます。 
+  自動メモリ フォレンジック手法は、ファイルレス攻撃の検出を使用して、ファイルレス攻撃のツールキット、手法、および動作を識別します。 このソリューションでは、実行時にマシンが定期的にスキャンされて、プロセスのメモリから分析情報が直接抽出されます。 特定の分析情報には、次のものの識別が含まれます。 
 
   - よく知られているツールキットと暗号化マイニング ソフトウェア 
 
@@ -81,9 +81,9 @@ Azure Defender for servers には、次のような脅威検出および保護�
 
 アラートをシミュレートするには、次のいずれかのプレイブックをダウンロードします。
 
-- Windows の場合:[Azure Security Center プレイブック:セキュリティのアラート](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
+- Windows の場合:[Azure Security Center プレイブック:セキュリティのアラート](https://github.com/Azure/Azure-Security-Center/blob/master/Simulations/Azure%20Security%20Center%20Security%20Alerts%20Playbook_v2.pdf)
 
-- Linux の場合:[Azure Security Center プレイブック:Linux の検出](https://gallery.technet.microsoft.com/Azure-Security-Center-0ac8a5ef)」をダウンロードします。
+- Linux の場合:[Azure Security Center プレイブック:Linux の検出](https://github.com/Azure/Azure-Security-Center/blob/master/Simulations/Azure%20Security%20Center%20Linux%20Detections_v2.pdf)」をダウンロードします。
 
 
 

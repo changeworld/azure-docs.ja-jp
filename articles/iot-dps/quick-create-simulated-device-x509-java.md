@@ -1,5 +1,5 @@
 ---
-title: シミュレートされた X.509 デバイスを Java を使用して Azure IoT Hub にプロビジョニングする
+title: クイックスタート - シミュレートされた X.509 デバイスを Java を使用して Azure IoT Hub にプロビジョニングする
 description: Azure クイックスタート - IoT Hub Device Provisioning Service (DPS) 対応の Java デバイス SDK を使用して、シミュレートされた X.509 デバイスを作成してプロビジョニングします。このクイックスタートでは、個別登録を使用します。
 author: wesmc7777
 ms.author: wesmc
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: f16ace3e54db4d30f89da7335f00153191a7e226
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0198a32800f364f921a2b9f64048166c48a14f7e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326751"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323891"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>クイック スタート:IoT Hub Device Provisioning Service 対応の Java デバイス SDK を使用して、シミュレートされた X.509 デバイスを作成してプロビジョニングする
 
@@ -24,7 +24,7 @@ ms.locfileid: "87326751"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [自動プロビジョニングの概念](concepts-auto-provisioning.md)の確認。
+- [プロビジョニング](about-iot-dps.md#provisioning-process)の概念を理解していること。
 - [Azure portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)が完了していること。
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - [Java SE Development Kit 8](https://aka.ms/azure-jdks)。

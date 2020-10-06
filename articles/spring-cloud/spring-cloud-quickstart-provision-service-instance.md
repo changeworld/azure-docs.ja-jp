@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 16d40c334d51a66df4a4d2d56e2fa2379dda3726
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f44ebc3885fe57d68756d908c4b392cd43b0366f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905402"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326203"
 ---
 # <a name="quickstart-provision-azure-spring-cloud-service"></a>クイック スタート:Azure Spring Cloud サービスのプロビジョニング
 
@@ -158,23 +158,9 @@ Azure Spring Cloud のインスタンス化は、Azure portal または Azure CL
 ---
 ::: zone-end
 
-## <a name="clean-up-resources"></a>リソースをクリーンアップする
-
-このシリーズの次のクイックスタートに進む場合は、この手順をスキップしてください。
-
-このクイックスタートでは、サブスクリプションに残っていると課金が継続される Azure リソースを作成しました。 次のクイックスタートに進む予定がなく、今後これらのリソースが必要になることが予想されない場合は、ポータルを使用してリソース グループを削除するか、Cloud Shell で次のコマンドを実行します。
-
-```azurecli
-az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes
-```
-
-このクイックスタートでは、既定のリソース グループ名も設定しました。 次のクイックスタートに進まない場合は、次の CLI コマンドを実行して、既定値をクリアします。
-
-```azurecli
-az configure --defaults group=
-```
-
 ## <a name="next-steps"></a>次のステップ
+
+このクイックスタートでは、サブスクリプションに残っていると課金が継続される Azure リソースを作成しました。 次のクイックスタートに進まない場合は、[リソースのクリーンアップ](spring-cloud-quickstart-logs-metrics-tracing.md#clean-up-resources)に関する記事を参照してください。 それ以外の場合は、次のクイックスタートに進んでください。
 
 > [!div class="nextstepaction"]
 > [構成サーバーを設定する](spring-cloud-quickstart-setup-config-server.md)

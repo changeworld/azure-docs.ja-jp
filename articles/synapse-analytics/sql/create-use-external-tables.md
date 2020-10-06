@@ -1,6 +1,6 @@
 ---
 title: SQL オンデマンド (プレビュー) で外部テーブルを作成および使用する
-description: このセクションでは、SQL オンデマンド (プレビュー) で外部テーブルを作成および使用する方法を学習します。 外部テーブルは、SQL オンデマンドで外部データへのアクセスを制御する場合や、Power BI などのツールを SQL オンデマンドと組み合わせて使用する場合に便利です。
+description: このセクションでは、SQL オンデマンド (プレビュー) で外部テーブルを作成および使用する方法を学習します。
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -8,13 +8,13 @@ ms.topic: overview
 ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: d830ee28eb1f5befc3ad778a6b82c291d1e49d02
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.reviewer: jrasnick
+ms.openlocfilehash: 182deba959144f6a3992bb41243f29023bad5e5c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206514"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289329"
 ---
 # <a name="create-and-use-external-tables-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Azure Synapse Analytics を使用して SQL オンデマンド (プレビュー) で外部テーブルを作成および使用する
 
@@ -132,4 +132,4 @@ ORDER BY
 
 ## <a name="next-steps"></a>次のステップ
 
-クエリの結果をストレージに格納する方法については、[クエリ結果をストレージに格納する方法](../sql/create-external-table-as-select.md)に関するページを参照してください。
+クエリの結果をストレージに格納する方法については、[クエリ結果をストレージに格納する方法](../sql/create-external-table-as-select.md)に関する記事を参照してください。

@@ -6,25 +6,23 @@ ms.author: marobert
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 658aaf018dd4c231b9bc9fc8c6dda78b2a6f05c0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 93037d1e1c56e280458a91ae5723502bff27995b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90945983"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377139"
 ---
-このクイック スタートでは、Android 用の Azure Communication Services 通話クライアント ライブラリを使用して、通話を開始する方法について説明します。
+このクイックスタートでは、Android 用の Azure Communication Services 通話クライアント ライブラリを使用して、通話を開始する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - Android アプリケーションを作成するための [Android Studio](https://developer.android.com/studio)。
+- デプロイ済みの Communication Services リソース。 [Communication Services のリソースを作成する](../../create-communication-resource.md)。
 - Azure Communication Service の[ユーザー アクセス トークン](../../access-tokens.md)。
-- デプロイ済みの Communication Services リソース。 [Communication Services リソースを作成する](../../create-communication-resource.md)。
-
 
 ## <a name="setting-up"></a>設定
-
 
 ### <a name="create-an-android-app-with-an-empty-activity"></a>空のアクティビティで Android アプリを作成する
 
@@ -34,11 +32,9 @@ Android Studio で、[Start a new Android Studio project]\(新しい Android Stu
 
 [Phone and Tablet]\(電話およびタブレット\) で、[Empty Activity]\(空のアクティビティ\) プロジェクト テンプレートを選択します。
 
-:::image type="content" source="../media/android/studio-blank-activity.png" alt-text="プロジェクト テンプレート画面で [Empty Activity]\(空のアクティビティ\) オプションが選択された状態を示すスクリーンショット。":::
+:::image type="content" source="../media/android/studio-blank-activity.png" alt-text="Android Studio で [Start a new Android Studio project]\(新しい Android Studio プロジェクトを開始する\) ボタンが選択された状態を示すスクリーンショット。" 以上を選択します。
 
-最小クライアント ライブラリである"API 26:Android 8.0 (Oreo)" 以上を選択します。
-
-:::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="プロジェクト テンプレート画面 2 で [Empty Activity]\(空のアクティビティ\) オプションが選択された状態を示すスクリーンショット。":::
+:::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="Android Studio で [Start a new Android Studio project]\(新しい Android Studio プロジェクトを開始する\) ボタンが選択された状態を示すスクリーンショット。":::
 
 
 ### <a name="install-the-package"></a>パッケージをインストールする
@@ -126,9 +122,9 @@ See https://developer.android.com/about/versions/pie/android-9.0-changes-28#apac
     
 ```
 
-### <a name="setup-the-layout-for-the-app"></a>アプリのレイアウトを設定する
+### <a name="set-up-the-layout-for-the-app"></a>アプリのレイアウトを設定する
 
-必要な入力は、通話先 ID のテキスト入力と電話をかけるためのボタンの 2 つです。 これらは、デザイナーを使用するかレイアウトの xml を編集して追加できます。 ID に `call_button`、テキスト入力に `callee_id` を使用してボタンを作成します。 (`app/src/main/res/layout/activity_main.xml`) に移動して、ファイルの内容を以下に置き換えます。
+必要な入力は、通話先 ID のテキスト入力と電話を掛けるためのボタンの 2 つです。 これらは、デザイナーを使用するかレイアウトの xml を編集して追加できます。 ID に `call_button`、テキスト入力に `callee_id` を使用してボタンを作成します。 (`app/src/main/res/layout/activity_main.xml`) に移動して、ファイルの内容を以下に置き換えます。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -291,7 +287,7 @@ private void createAgent() {
 
 ## <a name="start-a-call-using-the-call-agent"></a>通話エージェントを使用して通話を開始する
 
-電話の発信は通話エージェントを使用して行うことができ、必要となるのは、通話先 ID の一覧と通話オプションを指定することだけです。 クイック スタートでは、動画を含まない既定の通話オプションと、テキスト入力による 1 つの通話先 ID が使用されます。
+電話の発信は通話エージェントを使用して行うことができ、必要となるのは、通話先 ID の一覧と通話オプションを指定することだけです。 クイックスタートでは、動画を含まない既定の通話オプションと、テキスト入力による 1 つの通話先 ID が使用されます。
 
 ```java
 /**
@@ -315,4 +311,8 @@ private void startCall() {
 
 ツール バーの [Run App]\(アプリの実行\) ボタン (Shift + F10) を使用してアプリを起動できるようになりました。 `8:echo123` を呼び出して電話を発信できることを確認してください。 事前に録音したメッセージが再生された後、そのメッセージがもう一度繰り返されます。
 
-:::image type="content" source="../media/android/quickstart-android-call-echobot.png" alt-text="完成したアプリケーションを示すスクリーンショット。":::
+:::image type="content" source="../media/android/quickstart-android-call-echobot.png" alt-text="Android Studio で [Start a new Android Studio project]\(新しい Android Studio プロジェクトを開始する\) ボタンが選択された状態を示すスクリーンショット。":::
+
+## <a name="sample-code"></a>サンプル コード
+
+サンプル アプリは [GitHub](https://github.com/Azure/Communication/tree/master/samples/Add%20Voice%20Calling/Android/Java) からダウンロードできます

@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 663c07795926b17eb42ff185ca248454c5bc459c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 07342cb31f1c44273f98a97b018620538f86c17f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90881845"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287731"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link-preview"></a>Azure Synapse Link (プレビュー) で Apache Spark を使用して Azure Cosmos DB と対話する
 
@@ -120,6 +120,8 @@ df.write.format("cosmos.oltp").
     save()
 ```
 
+## <a name="load-streaming-dataframe-from-container"></a>コンテナーからストリーミング データフレームを読み込む
+このジェスチャでは、Spark Streaming 機能を使用して、コンテナーからデータフレームにデータを読み込みます。 データは、ワークスペースに接続したプライマリ データ レイク アカウント (およびファイル システム) に格納されます。 
 > [!NOTE]
 > Synapse Apache Spark で外部ライブラリを参照する場合は、[こちら](#external-library-management)で詳細を確認してください。 たとえば、Spark DataFrame を Mongo DB 用 Cosmos DB API のコンテナーに取り込む場合は、[こちら](https://docs.mongodb.com/spark-connector/master/)にある Spark 用の Mongo DB コネクターを利用できます。
 

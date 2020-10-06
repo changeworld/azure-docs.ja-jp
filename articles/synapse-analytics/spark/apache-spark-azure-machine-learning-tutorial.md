@@ -1,22 +1,22 @@
 ---
-title: Azure Automated ML を使用した実験の実行
-description: Apache Spark と Azure Automated ML を使用した機械学習実験の実行
+title: チュートリアル:Azure Automated ML を使用した実験の実行
+description: Apache Spark と Azure Automated ML を使用して機械学習実験を実行する方法に関するチュートリアル
 services: synapse-analytics
 author: midesa
 ms.service: synapse-analytics
-ms.topic: conceptual
+ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick,
-ms.openlocfilehash: d4df4ea96f8dafa2f0eb26e27fcc08ab4ec89003
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: da4cef50610b219689e2271e9f70fd1adb1a235f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033576"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540508"
 ---
-# <a name="run-experiments-using-azure-automated-ml-and-apache-spark"></a>Azure Automated ML と Apache Spark を使用した実験の実行
+# <a name="tutorial-run-experiments-using-azure-automated-ml-and-apache-spark"></a>チュートリアル:Azure Automated ML と Apache Spark を使用した実験の実行
 
 Azure Machine Learning は、機械学習モデルのトレーニング、デプロイ、自動化、管理、追跡を可能にするクラウドベースの環境です。 
 

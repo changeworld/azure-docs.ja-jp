@@ -8,13 +8,13 @@ ms.topic: overview
 ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: fd4cc4cfa7b7be9085ac404cab7fc7447b6d66a7
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.reviewer: jrasnick
+ms.openlocfilehash: 182ab55f8e86d972293222f8a3bcf32dada89328
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987139"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449465"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>SQL オンデマンド (プレビュー) のストレージ アカウント アクセスを制御する
 
@@ -26,7 +26,7 @@ SQL オンデマンドのクエリは、Azure Storage から直接ファイル�
 
 ## <a name="supported-storage-authorization-types"></a>サポートされているストレージ承認の種類
 
-SQL オンデマンド リソースにログインしたユーザーは、Azure Storage 内のファイルにアクセスしてクエリを実行する権限を持っている必要があります (ファイルが一般公開されていない場合)。 3 種類の承認 ([ユーザー ID](?tabs=user-identity)、[Shared access signature](?tabs=shared-access-signature)、[マネージド ID](?tabs=managed-identity)) を使用して、非パブリック ストレージにアクセスできます。
+SQL オンデマンド リソースにログインしたユーザーには、Azure Storage 内のファイルにアクセスしてクエリを実行する権限が必要です (ファイルが一般公開されていない場合)。 3 種類の承認 ([ユーザー ID](?tabs=user-identity)、[Shared access signature](?tabs=shared-access-signature)、[マネージド ID](?tabs=managed-identity)) を使用して、非パブリック ストレージにアクセスできます。
 
 > [!NOTE]
 > **Azure AD パススルー**は、ワークスペースを作成するときの既定の動作です。
@@ -53,7 +53,7 @@ SAS トークンを取得するには、**Azure portal -> [ストレージ ア�
 >
 > SAS トークン: ?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D
 
-SAS トークンを使用したアクセスを有効にするには、データベーススコープまたはサーバースコープの資格情報を作成する必要があります。
+SAS トークンを使用したアクセスを有効にするには、データベーススコープまたはサーバースコープの資格情報を作成する必要があります。 
 
 ### <a name="managed-identity"></a>[Managed Identity](#tab/managed-identity)
 
@@ -119,7 +119,7 @@ GRANT REFERENCES ON CREDENTIAL::[storage_credential] TO [specific_user];
 
 ## <a name="server-scoped-credential"></a>サーバースコープ資格情報
 
-サーバースコープ資格情報が使用されるのは、`DATA_SOURCE` が指定されない `OPENROWSET` 関数を SQL ログインが呼び出して、ストレージ アカウント上のファイルを読み取るときです。 サーバースコープ資格情報の名前は、Azure Storage の URL と一致する**必要があります**。 資格情報を追加するには、[CREATE CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) を実行します。 CREDENTIAL NAME 引数の指定が必要になります。 それは、ストレージ内のデータへのパスの一部またはパス全体に一致している必要があります (下記参照)。
+サーバースコープ資格情報が使用されるのは、`DATA_SOURCE` が指定されない `OPENROWSET` 関数を SQL ログインが呼び出して、ストレージ アカウント上のファイルを読み取るときです。 サーバースコープ資格情報の名前は、Azure Storage の URL と一致する**必要があります**。 資格情報を追加するには、[CREATE CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を実行します。 CREDENTIAL NAME 引数の指定が必要になります。 それは、ストレージ内のデータへのパスの一部またはパス全体に一致している必要があります (下記参照)。
 
 > [!NOTE]
 > 引数 `FOR CRYPTOGRAPHIC PROVIDER` はサポートされていません。
@@ -138,7 +138,7 @@ GRANT REFERENCES ON CREDENTIAL::[storage_credential] TO [specific_user];
 
 Azure AD ユーザーは、`Storage Blob Data Owner`、`Storage Blob Data Contributor`、`Storage Blob Data Reader` のいずれかのロールがあれば、Azure Storage 上のあらゆるファイルにアクセスできます。 ストレージにアクセスするために、Azure AD ユーザーの資格情報は必要ありません。 
 
-SQL ユーザーが Azure AD Authentication を使用してストレージにアクセスすることはできません。
+SQL ユーザーが Azure AD 認証を使用してストレージにアクセスすることはできません。
 
 ### <a name="shared-access-signature"></a>[共有アクセス署名](#tab/shared-access-signature)
 
@@ -155,7 +155,7 @@ GO
 
 ### <a name="managed-identity"></a>[Managed Identity](#tab/managed-identity)
 
-次のスクリプトによって作成されるサーバーレベル資格情報は、`OPENROWSET` 関数がワークスペース マネージド ID トークンを使用して Azure Storage 上の任意のファイルにアクセスするために使用できます。
+次のスクリプトによって作成されるサーバーレベル資格情報は、`OPENROWSET` 関数がワークスペース マネージド ID を使用して Azure Storage 上の任意のファイルにアクセスするために使用できます。
 
 ```sql
 CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
@@ -164,13 +164,13 @@ WITH IDENTITY='Managed Identity'
 
 ### <a name="public-access"></a>[パブリック アクセス](#tab/public-access)
 
-データベーススコープ資格情報は、一般公開されているファイルへのアクセスを許可する場合には必要がありません。 [データベーススコープ資格情報なしでデータソース](develop-tables-external-tables.md?tabs=sql-ondemand#example-for-create-external-data-source)を作成して、Azure Storage 上の一般公開されているファイルにアクセスします。
+データベーススコープ資格情報は、一般公開されているファイルへのアクセスを許可する場合には不要です。 [データベーススコープ資格情報なしでデータソース](develop-tables-external-tables.md?tabs=sql-ondemand#example-for-create-external-data-source)を作成して、Azure Storage 上の一般公開されているファイルにアクセスします。
 
 ---
 
 ## <a name="database-scoped-credential"></a>データベーススコープ資格情報
 
-データベーススコープ資格情報が使用されるのは、任意のプリンシパルが `DATA_SOURCE` を指定した `OPENROWSET` 関数を呼び出すとき、または公開ファイルにアクセスしない[外部テーブル](develop-tables-external-tables.md)のデータを選択するときです。 データベーススコープ資格情報は、ストレージ アカウントの名前と一致する必要はありません。それがストレージの場所を定義するデータ ソースで明示的に使用されるためです。
+データベーススコープ資格情報が使用されるのは、任意のプリンシパルが `DATA_SOURCE` を指定した `OPENROWSET` 関数を呼び出すとき、または公開ファイルにアクセスしない[外部テーブル](develop-tables-external-tables.md)のデータを選択するときです。 データベーススコープ資格情報は、ストレージ アカウントの名前と一致する必要はありません。 これは、ストレージの場所を定義する DATA SOURCE で明示的に使用されます。
 
 データベーススコープ資格情報は、次の認証の種類を使用して Azure Storage にアクセスできるようにします。
 
@@ -184,7 +184,7 @@ WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<containe
 )
 ```
 
-SQL ユーザーが Azure AD Authentication を使用してストレージにアクセスすることはできません。
+SQL ユーザーが Azure AD 認証を使用してストレージにアクセスすることはできません。
 
 ### <a name="shared-access-signature"></a>[共有アクセス署名](#tab/shared-access-signature)
 
@@ -224,7 +224,7 @@ WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<containe
 
 ### <a name="public-access"></a>[パブリック アクセス](#tab/public-access)
 
-データベーススコープ資格情報は、一般公開されているファイルへのアクセスを許可する場合には必要がありません。 [データベーススコープ資格情報なしでデータソース](develop-tables-external-tables.md?tabs=sql-ondemand#example-for-create-external-data-source)を作成して、Azure Storage 上の一般公開されているファイルにアクセスします。
+データベーススコープ資格情報は、一般公開されているファイルへのアクセスを許可する場合には不要です。 [データベーススコープ資格情報なしでデータソース](develop-tables-external-tables.md?tabs=sql-ondemand#example-for-create-external-data-source)を作成して、Azure Storage 上の一般公開されているファイルにアクセスします。
 
 ```sql
 CREATE EXTERNAL DATA SOURCE mysample
@@ -268,7 +268,7 @@ WITH ( LOCATION = 'parquet/user-data/*.parquet',
 SELECT TOP 10 * FROM dbo.userPublicData;
 GO
 SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet',
-                                DATA_SOURCE = [mysample],
+                                DATA_SOURCE = 'mysample',
                                 FORMAT='PARQUET') as rows;
 GO
 ```
@@ -314,7 +314,7 @@ WITH ( LOCATION = 'parquet/user-data/*.parquet',
 ```sql
 SELECT TOP 10 * FROM dbo.userdata;
 GO
-SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE = [mysample], FORMAT='PARQUET') as rows;
+SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE = 'mysample', FORMAT='PARQUET') as rows;
 GO
 ```
 

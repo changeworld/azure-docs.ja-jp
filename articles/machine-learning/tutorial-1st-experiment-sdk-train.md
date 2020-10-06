@@ -11,28 +11,28 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: a267231dd447b114c69e6ead20c8ab5252f85d0e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f5c2690ea97136c2b7887a8450c2788e3902d4e3
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90896725"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369962"
 ---
-# <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>チュートリアル:初めての機械学習モデルをトレーニングする (4 部構成中の第 3 部)
+# <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>チュートリアル:初めての機械学習モデルをトレーニングする (パート 3/4)
 
 このチュートリアルでは、Azure Machine Learning で機械学習モデルをトレーニングする方法について説明します。
 
-このチュートリアルは、**4 部構成のチュートリアル シリーズの第 3 部**であり、Azure Machine Learning の基礎を学習し、Azure でジョブベースの機械学習タスクを完了させます。 このチュートリアルは次のパートで完了した作業を基にしています。このシリーズの[第 1 部: 設定](tutorial-1st-experiment-sdk-setup-local.md)と[第 2 部: "Hello World" の実行](tutorial-1st-experiment-hello-world.md)です。
+このチュートリアルは、"*4 部構成のチュートリアル シリーズのパート 3* " であり、Azure Machine Learning の基礎を学習し、Azure でジョブベースの機械学習タスクを実行します。 このチュートリアルは次のパートで完了した作業を基にしています。このシリーズの[第 1 部: 設定](tutorial-1st-experiment-sdk-setup-local.md)と[第 2 部:"Hello world!" の実行](tutorial-1st-experiment-hello-world.md) です。
 
 このチュートリアルでは、機械学習モデルをトレーニングするスクリプトを送信して、次のステップに進みます。 この例は、Azure Machine Learning を使用することで、ローカル デバッグとリモート実行との間で一貫した動作がどのように容易になるかを理解するのに役立ちます。
 
-このチュートリアルでは、次のことを行います。
+このチュートリアルでは、次の作業を行いました。
 
 > [!div class="checklist"]
-> * トレーニング スクリプトを作成する。
+> * トレーニング スクリプトを作成します。
 > * Conda を使用して Azure Machine Learning 環境を定義する。
 > * コントロール スクリプトを作成する。
-> * Azure Machine Learning クラス (環境、実行、メトリック) について理解する。
+> * Azure Machine Learning クラス (`Environment`、`Run`、`Metrics`) について理解する。
 > * トレーニング スクリプトを送信して実行する。
 > * クラウドでのコード出力を表示する。
 > * メトリックを Azure Machine Learning にログする。
@@ -40,10 +40,10 @@ ms.locfileid: "90896725"
 
 ## <a name="prerequisites"></a>前提条件
 
-* まだ Azure Machine Learning ワークスペースがない場合は、[第 1 部](tutorial-1st-experiment-sdk-setup-local.md)を完了してください。
-* Python 言語と機械学習のワークフローに関する基礎知識。
-* ローカル開発環境。 Visual Studio Code、Jupyter、PyCharm などが該当しますが、これに限定するものではありません。
-* Python (バージョン 3.5 - 3.7)。
+* このシリーズの[第 2 部](tutorial-1st-experiment-hello-world.md)を完了している。
+* Python 言語と機械学習ワークフローの基礎知識。
+* Visual Studio Code、Jupyter、PyCharm などのローカル開発環境。
+* Python (バージョン 3.5 から 3.7)。
 
 ## <a name="create-training-scripts"></a>トレーニング スクリプトを作成する
 
@@ -90,7 +90,7 @@ import torchvision.transforms as transforms
 
 from model import Net
 
-# download CIFAR 10 data
+# download CIFAR10 data
 trainset = torchvision.datasets.CIFAR10(
     root="./data",
     train=True,
@@ -138,7 +138,7 @@ if __name__ == "__main__":
 
 ```
 
-これで、以下に示すディレクトリ構造ができました。
+これで、次のディレクトリ構造ができました。
 
 ```txt
 tutorial
@@ -153,9 +153,9 @@ tutorial
 └──03-run-hello.py
 ```
 
-## <a name="define-a-python-environment"></a>Python 環境を定義する
+## <a name="create-a-python-environment"></a>Python 環境の作成
 
-デモンストレーション目的で、Conda 環境を使用します (pip 仮想環境のステップはほぼ同じです)。
+デモンストレーション目的で、Conda 環境を使用します。 (pip 仮想環境のステップはほぼ同じです。)
 
 隠しディレクトリ `.azureml` に `pytorch-env.yml` という名前のファイルを作成します。
 
@@ -171,23 +171,23 @@ dependencies:
     - torchvision
 ```
 
-この環境には、モデルとトレーニング スクリプトに必要なすべての依存関係があります。 Azure Machine Learning Python SDK には依存関係がないことに注意してください。
+この環境には、モデルとトレーニング スクリプトに必要なすべての依存関係があります。 Azure Machine Learning SDK for Python には依存関係がないことに注意してください。
 
 ## <a name="test-locally"></a>ローカルでテストする
 
-次のようにして、この環境を使用してスクリプトの実行をローカルでテストします。
+この環境で次のコードを使用し、スクリプトの実行をローカルでテストします。
 
 ```bash
 conda env create -f .azureml/pytorch-env.yml    # create conda environment
-conda activate pytorch-env             # activate conda environment
-python src/train.py                    # train model
+conda activate pytorch-env                      # activate conda environment
+python src/train.py                             # train model
 ```
 
 このスクリプトを実行すると、`tutorial/data` という名前のディレクトリにダウンロードされたデータが表示されます。
 
 ## <a name="create-the-control-script"></a>コントロール スクリプトを作成する
 
-下のコントロール スクリプトと "Hello World" の送信に使用されるコントロール スクリプトとの違いは、環境を設定するための行をいくつか追加することです。
+下のコントロール スクリプトと "Hello World" の送信に使用したコントロール スクリプトとの違いは、環境を設定するための行をいくつか追加することです。 is that you add a couple of extra lines to set the environment.
 
 `tutorial` ディレクトリに `04-run-pytorch.py` という名前の新しい Python ファイルを作成します。
 
@@ -217,7 +217,7 @@ if __name__ == "__main__":
 
 :::row:::
    :::column span="":::
-      `env = Environment.from_conda_specification( ... )`
+      `env = ...`
    :::column-end:::
    :::column span="2":::
       Azure Machine Learning では、実験を実行するための、再現可能でバージョン管理された Python 環境を表す[環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true)の概念が提供されます。 ローカルの Conda 環境または pip 環境から環境を簡単に作成できます。
@@ -232,17 +232,22 @@ if __name__ == "__main__":
    :::column-end:::
 :::row-end:::
 
-## <a name="submit-run-to-azure-machine-learning"></a>Azure Machine Learning に実行を送信する
+## <a name="submit-the-run-to-azure-machine-learning"></a>Azure Machine Learning に実行を送信する
 
-ローカル環境を切り替えた場合は、必ず Azure Machine Learning Python SDK がインストールされている環境に再び切り替えて、次を実行します。
+ローカル環境を切り替えた場合は、必ず Azure Machine Learning SDK for Python がインストールされている環境に再び切り替えてください。 
+
+次に、次のコマンドを実行します。
 
 ```bash
 python 04-run-pytorch.py
 ```
 
 >[!NOTE] 
-> このスクリプトを初めて実行すると、Azure Machine Learning によって PyTorch 環境から新しい docker イメージが構築されます。 実行全体が完了するまでに 5 - 10 分かかることがあります。 docker ビルド ログは、Azure Machine Learning Studio で確認できます。リンクに従って Machine Learning Studio にアクセスし、[出力とログ] タブを選択し、`20_image_build_log.txt` を選択します。
-このイメージは、今後の実行で再利用され、実行がさらに高速化されます。
+> このスクリプトを初めて実行すると、Azure Machine Learning によって PyTorch 環境から新しい Docker イメージが構築されます。 実行全体が完了するまでに 5 分から 10 分かかることがあります。 
+>
+> Docker ビルド ログは、Azure Machine Learning スタジオで確認できます。 リンクをたどってスタジオにアクセスし、 **[出力 + ログ]** タブを選択して、`20_image_build_log.txt` を選択します。
+>
+> このイメージは、今後の実行で再利用され、実行がさらに高速化されます。
 
 イメージがビルドされたら、`70_driver_log.txt` を選択してトレーニング スクリプトの出力を表示します。
 
@@ -266,23 +271,25 @@ Finished Training
 ```
 
 > [!WARNING]
-> エラー `Your total snapshot size exceeds the limit` が表示された場合は、`data` ディレクトリが `ScriptRunConfig` で使用されている `source_directory` にあることを示しています。
-> `data` を `src` の外側に移動するようにしてください。
+> "`Your total snapshot size exceeds the limit`" というエラーが表示された場合、`ScriptRunConfig` で使用されている値 `source_directory` に `data` ディレクトリが存在します。
+>
+> `data` を `src` の外に移動してください。
 
-環境は `env.register(ws)` を使用してワークスペースに登録できるため、共有、再利用、バージョン管理が簡単にできます。 環境を使用すると、以前の結果の再現や、チームとの共同作業が容易に行えます。
+環境は `env.register(ws)` を使用してワークスペースに登録できます。 そのため、共有、再利用、バージョン管理が簡単にできます。 環境を使用すると、以前の結果の再現や、チームとの共同作業が容易に行えます。
 
 Azure Machine Learning では、キュレーションされた環境のコレクションも保持されます。 これらの環境は、一般的な機械学習のシナリオを対象とし、キャッシュされた Docker イメージによってサポートされています。 キャッシュされた Docker イメージによって、最初のリモート実行が高速になります。
 
-つまり、登録済み環境を使用すると時間を節約できます。 詳細については、[環境のドキュメント](./how-to-use-environments.md)を参照してください。
+つまり、登録済み環境を使用すると時間を節約できます。 詳細については、[環境の使用方法](./how-to-use-environments.md)に関するページを参照してください。
 
 ## <a name="log-training-metrics"></a>トレーニング メトリックをログする
 
 これで Azure Machine Learning でのモデル トレーニングが完了したので、いくつかのパフォーマンス メトリックの追跡を開始します。
+
 現在のトレーニング スクリプトは、メトリックをターミナルに出力します。 Azure Machine Learning には、より多くの機能を備えたメトリックをログするためのメカニズムが用意されています。 数行のコードを追加することで、スタジオでメトリックを視覚化したり、複数の実行間でメトリックを比較したりできるようになります。
 
 ### <a name="modify-trainpy-to-include-logging"></a>ログを含めるように `train.py` を変更する
 
-`train.py` スクリプトを変更して、次の 2 行のコードを追加します。
+`train.py` スクリプトを変更して、2 行のコードを追加します。
 
 ```python
 # train.py
@@ -298,9 +305,16 @@ from azureml.core import Run
 # ADDITIONAL CODE: get Azure Machine Learning run from the current context
 run = Run.get_context()
 
-# download CIFAR 10 data
-trainset = torchvision.datasets.CIFAR10(root='./data', train=True, download=True, transform=torchvision.transforms.ToTensor())
-trainloader = torch.utils.data.DataLoader(trainset, batch_size=4, shuffle=True, num_workers=2)
+# download CIFAR10 data
+trainset = torchvision.datasets.CIFAR10(
+    root="./data",
+    train=True,
+    download=True,
+    transform=torchvision.transforms.ToTensor(),
+)
+trainloader = torch.utils.data.DataLoader(
+    trainset, batch_size=4, shuffle=True, num_workers=2
+)
 
 if __name__ == "__main__":
 
@@ -377,14 +391,14 @@ dependencies:
         - azureml-sdk
 ```
 
-### <a name="submit-run-to-azure-machine-learning"></a>Azure Machine Learning に実行を送信する
+### <a name="submit-the-run-to-azure-machine-learning"></a>Azure Machine Learning に実行を送信する
 このスクリプトをもう一度送信します。
 
 ```bash
 python 04-run-pytorch.py
 ```
 
-今回は、スタジオにアクセスしたら、[メトリック] タブに移動します。このタブで、モデル トレーニングの損失に関するライブ更新を確認できます。
+今回は、スタジオにアクセスしたら、 **[メトリック]** タブに移動します。このタブで、モデル トレーニングの損失に関するライブ更新を確認できます。
 
 :::image type="content" source="media/tutorial-1st-experiment-sdk-train/logging-metrics.png" alt-text="[メトリック] タブのトレーニング損失グラフ":::
 
@@ -392,7 +406,7 @@ python 04-run-pytorch.py
 
 このセッションでは、基本的な "Hello world!" スクリプトから、 特定の Python 環境を実行する必要がある、より現実的なトレーニング スクリプトにアップグレードしました。 Azure Machine Learning 環境を使用してローカルの Conda 環境をクラウドに移動する方法を確認しました。 最後に、数行のコードでメトリックを Azure Machine Learning にログする方法を確認しました。
 
-Azure Machine Learning 環境を作成する方法は他にもあります。たとえば、[pip requirements.txt から](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#from-pip-requirements-name--file-path-)、または[既存のローカル Conda 環境から](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#from-existing-conda-environment-name--conda-environment-name-)作成することもできます。
+Azure Machine Learning 環境を作成する方法は他にもあります。たとえば、[pip requirements.txt ファイルから](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#from-pip-requirements-name--file-path-)、または[既存のローカル Conda 環境から](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#from-existing-conda-environment-name--conda-environment-name-)作成することができます。
 
 次のセッションでは、CIFAR10 データセットを Azure にアップロードして Azure Machine Learning のデータを操作する方法について説明します。
 
@@ -400,4 +414,4 @@ Azure Machine Learning 環境を作成する方法は他にもあります。た
 > [チュートリアル:データ持ち込み](tutorial-1st-experiment-bring-data.md)
 
 >[!NOTE] 
-> 次のステップに進まずに、ここでこのチュートリアル シリーズを終了する場合は、忘れずに[リソースをクリーンアップ](tutorial-1st-experiment-bring-data.md#clean-up-resources)してください。
+> チュートリアル シリーズをここで終了し、次の手順に進まない場合は、必ず[リソースをクリーンアップ](tutorial-1st-experiment-bring-data.md#clean-up-resources)してください。

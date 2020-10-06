@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: fa33f2d9e0c4606587ca5ef65a3f4a021319431f
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: f453c074126e448eb54d432532b9064b3eb3cb35
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85195047"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287894"
 ---
 # <a name="connect-to-azure-synapse-link-preview-for-azure-cosmos-db"></a>Azure Cosmos DB 用の Azure Synapse Link (プレビュー) に接続する
 
@@ -22,7 +22,7 @@ ms.locfileid: "85195047"
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Cosmos DB データベースをワークスペースに接続する前に、以下が必要です。
+Azure Cosmos DB データベースをワークスペースに接続する前に、次が必要です。
 
 > [!IMPORTANT]
 > 現時点では、Azure Synapse Link for Azure Cosmos DB は、マネージド仮想ネットワークが有効になっていないワークスペースでサポートされています。 

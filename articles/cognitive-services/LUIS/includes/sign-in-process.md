@@ -2,20 +2,18 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.date: 05/05/2020
 ms.topic: include
-ms.author: diberry
-ms.openlocfilehash: da9388a3bd5f4d46ec34ed226e3ee23a96b2f494
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: fda9df6c7e9651bbd3b0b70ad9d47f23c0c19d01
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87375453"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541435"
 ---
 ## <a name="sign-in-to-luis-portal"></a>LUIS ポータルにサインインする
 
@@ -29,7 +27,7 @@ LUIS の新しいユーザーは、次の手順に従う必要があります。
 
 1. リソースの詳細を入力します。
 
-    ![オーサリング リソースを作成する](../media/migrate-authoring-key/choose-authoring-resource-form.png)
+    ![[Create a new resource for authoring]\(オーサリング用の新しいリソースの作成\) ペインを示すスクリーンショット。](../media/migrate-authoring-key/choose-authoring-resource-form.png)
 
     **新しい作成リソースを作成する**ときは、次の情報を指定します。
 
@@ -42,8 +40,8 @@ LUIS の新しいユーザーは、次の手順に従う必要があります。
 
 1. 作成するリソースの概要が表示されます。 **[次へ]** を選択します。
 
-    ![オーサリング リソースを作成する](../media/sign-in/sign-in-confirm-key-selection.png)
+    ![Azure アカウントにリンクするためのオプションが含まれたウェルカム ページを示すスクリーンショット。](../media/sign-in/sign-in-confirm-key-selection.png)
 
 1. **[続行]** を選択して確認します。
 
-    ![オーサリング リソースを作成する](../media/sign-in/sign-in-confirm-continue.png)
+    ![Azure アカウントにリンクした後のウェルカム ページを示すスクリーンショット。](../media/sign-in/sign-in-confirm-continue.png)

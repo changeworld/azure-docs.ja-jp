@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
-ms.openlocfilehash: 0334b13fa73eb2fd648184f44bf0856c0d2a9ed9
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: bcd06ce879282ab9897d7e22006bac19a5c22b8e
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89076801"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565090"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用した仮想マシン スケール セットのディスクの作成および使用
 
@@ -87,6 +87,8 @@ Premium ディスクは、SSD ベースの高パフォーマンスで待機時�
 
 ## <a name="create-and-attach-disks"></a>ディスクを作成して接続する
 ディスクは、スケール セットの作成時に作成および接続できます。また、既存のスケール セットに対してディスクを作成および接続することもできます。
+
+API バージョン `2019-07-01` 以降では、[storageProfile.osDisk.diskSizeGb](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosdisk) プロパティを使用して、仮想マシン スケール セットの OS ディスクのサイズを設定できます。 プロビジョニング後、ディスク領域全体を活用するために、ディスクの拡張またはパーティション再分割を行うことが必要な場合があります。 ディスクの拡張の詳細については、[こちら](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk#expand-the-volume-within-the-os)をご覧ください。
 
 ### <a name="attach-disks-at-scale-set-creation"></a>スケール セットの作成時にディスクを接続する
 [New-AzVmss](/powershell/module/az.compute/new-azvmss) を使用して仮想マシン スケール セットを作成します。 メッセージが表示されたら、VM インスタンスのユーザー名とパスワードを入力します。 個々の VM インスタンスにトラフィックを分散するために、ロード バランサーも作成されます。 ロード バランサーには、TCP ポート 80 上のトラフィックを分散するルールだけでなく、TCP ポート 3389 上のリモート デスクトップ トラフィックと TCP ポート 5985 上の PowerShell リモート処理を許可するルールも含まれています。

@@ -4,18 +4,18 @@ description: Azure Blockchain Service の Blockchain Data Manager を使用し�
 ms.date: 03/08/2020
 ms.topic: tutorial
 ms.reviewer: chroyal
-ms.openlocfilehash: 483a5246274f63549dfb2914361ede6aa001e02e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 69790787bc888448f2f40178bd12ee7058cc5892
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79533183"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283457"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>チュートリアル:Blockchain Data Manager を使用して Azure Cosmos DB にデータを送信する
 
 このチュートリアルでは、Azure Blockchain Service 用の Blockchain Data Manager を使用して、Azure Cosmos DB にブロックチェーン トランザクション データを記録します。 Blockchain Data Manager を使うと、ブロックチェーン台帳データをキャプチャし、変換して、Azure Event Grid トピックに配信できます。 Azure Event Grid からは、Azure Logic App コネクタを使用して、Azure Cosmos DB データベースにドキュメントを作成します。 チュートリアルを完了すると、Azure Cosmos DB Data Explorer でブロックチェーン トランザクション データを探索できます。
 
-[![Blockchain トランザクションの詳細](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
+[![ブロックチェーン トランザクションの詳細を示すスクリーンショット。](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
 
 このチュートリアルでは、次のことを行いました。
 
@@ -23,7 +23,7 @@ ms.locfileid: "79533183"
 > * Blockchain Data Manager インスタンスを作成する
 > * トランザクションのプロパティとイベントをデコードするブロックチェーン アプリケーションを追加する
 > * トランザクション データを保存する Azure Cosmos DB アカウントとデータベースを作成する
-> * Azure Event Grid トピックを Azure Cosmos DB に接続する Azure Logic Apps を作成する
+> * Azure Event Grid トピックを Azure Cosmos DB に接続する Azure ロジック アプリを作成する
 > * ブロックチェーン台帳にトランザクションを送信する
 > * Azure Cosmos DB でデコードされたトランザクション データを表示する
 
@@ -271,7 +271,7 @@ Blockchain Data Manager を Azure Cosmos DB に接続したので、Cosmos DB Da
 
 1. 項目 ID を選択してメッセージを参照し、一致するトランザクション ハッシュを持つメッセージを見つけます。
 
-    [![Blockchain トランザクションの詳細](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
+    [![選択した項目のブロックチェーン トランザクションの詳細を示すスクリーンショット。](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
 
     生のトランザクション メッセージには、トランザクションに関する詳細が含まれています。 ただし、プロパティ情報は暗号化されます。
 

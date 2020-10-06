@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: jeedes
-ms.openlocfilehash: 29778d872541ea251a46affcccd0e2befbd9003d
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 989e3f4a285d44128bba1c9811aebcb76b8c0220
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500581"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327971"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-grammarly"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Grammarly の統合
 
@@ -81,16 +81,13 @@ Grammarly に対する Azure AD SSO を構成してテストするには、次�
 1. **[基本的な SAML 構成]** セクションでは、アプリケーションは事前に構成されており、必要な URL は既に Azure で事前に設定されています。 構成を保存するには、 **[保存]** ボタンをクリックします。
 
 
-1. Grammarly アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
-
-    ![image](common/default-attributes.png)
-
-1. その他に、Grammarly アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
+1. Grammarly アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
     
     | 名前 |  ソース属性|
     | -------------- | --------- |
     | FirstName | User.givenname |
     | LastName | User.surname |
+    | EmailAddress | user.principalname|
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -126,7 +123,7 @@ Grammarly に対する Azure AD SSO を構成してテストするには、次�
 
 ## <a name="configure-grammarly-sso"></a>Grammarly SSO の構成
 
-**Grammarly** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [Grammarly サポート チーム](mailto:support@grammarly.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Grammarly** でシングル サインオンを構成するには、**ログイン URL**、**Azure AD 識別子**、ダウンロードした**証明書 (Base64)** を Grammarly の管理パネルにコピーする必要があります。 方法については、[こちら](https://support.grammarly.com/hc/en-us/articles/360048683092-How-do-I-set-up-SAML-single-sign-on-for-my-Grammarly-Business-account-)をご覧ください。
 
 ### <a name="create-grammarly-test-user"></a>Grammarly テスト ユーザーの作成
 

@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: a50f09dd52ccf4d35fd3803967898a4a25e3299f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d0754ea2d7e8f8f59ec475be8e27fcffd058c11f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90945630"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376868"
 ---
 ## <a name="prerequisites"></a>前提条件
 開始する前に、必ず次のことを行ってください。
@@ -90,6 +90,8 @@ npm install webpack webpack-cli webpack-dev-server --save-dev
 ### <a name="create-a-chat-client"></a>チャット クライアントを作成する
 
 Web アプリにチャット クライアントを作成するには、Communications Service エンドポイントと、前提条件の手順で生成されたアクセス トークンを使用します。 ユーザーのアクセス トークンを使用することで、Azure Communication Services に対して直接認証を行うクライアント アプリケーションを作成できます。 自分のサーバーでこれらのトークンを生成した後、それらをクライアント デバイスに渡します。 チャット クライアントにトークンを渡すには、`Common client library` の `AzureCommunicationUserCredential` クラスを使用する必要があります。
+
+自分のプロジェクトのルート ディレクトリに、**client.js** ファイルを作成します。 このファイルで、JavaScript 用 Azure Communication チャット クライアント ライブラリを使用してチャット機能を追加します。
 
 ```JavaScript
 

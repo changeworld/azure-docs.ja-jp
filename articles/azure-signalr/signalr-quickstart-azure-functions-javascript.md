@@ -1,19 +1,19 @@
 ---
 title: JavaScript を使って Azure Functions と SignalR Service を使用するチャット ルームを作成する
-description: Azure SignalR Service と Azure Functions を使ってチャット ルームを作成する方法について説明します。
+description: JavaScript で Azure SignalR Service と Azure Functions を使ってチャット ルームを作成する方法について説明します。
 author: sffamily
 ms.service: signalr
 ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: zhshang
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 74f0a1c163380b88986b6866e346a5f044772a0e
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.custom: devx-track-js
+ms.openlocfilehash: c210096c1765015378f12f8c5e01fc9f8f97e10b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050558"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327682"
 ---
 # <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>クイック スタート:JavaScript を使って Azure Functions と SignalR Service を使用するチャット ルームを作成する
 

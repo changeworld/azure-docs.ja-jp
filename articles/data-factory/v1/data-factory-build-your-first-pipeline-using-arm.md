@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 5024b1091e84c0d1583ce3e455f29e0d9b9c2fc4
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 414271c269e72b942195d541a6192911e1ea0217
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543267"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566450"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>チュートリアル:Azure Resource Manager テンプレートを使用した初めての Azure Data Factory の作成
 > [!div class="op_single_selector"]
@@ -343,7 +343,7 @@ Azure Resource Manager テンプレートのパラメーターを含む **ADFTut
    ![Diagram view](./media/data-factory-build-your-first-pipeline-using-arm/DiagramView.png) 
 5. ダイアグラム ビューで、 **AzureBlobOutput**データセットをダブルクリックします。 現在処理中のスライスが表示されます。
    
-    ![データセット](./media/data-factory-build-your-first-pipeline-using-arm/AzureBlobOutput.png)
+    ![AzureBlobOutput データセットを示すスクリーンショット。](./media/data-factory-build-your-first-pipeline-using-arm/AzureBlobOutput.png)
 6. 処理が完了すると、スライスの状態に **[準備完了]** が表示されます。 オンデマンド HDInsight クラスターの作成には通常しばらく時間がかかります (約 20 分)。 そのため、パイプラインによるスライスの処理に **約 30 分** かかると想定してください。
    
     ![データセット](./media/data-factory-build-your-first-pipeline-using-arm/SliceReady.png)    

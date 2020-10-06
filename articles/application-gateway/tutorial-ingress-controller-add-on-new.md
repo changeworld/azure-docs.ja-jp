@@ -1,18 +1,18 @@
 ---
-title: 新しい Azure Application Gateway インスタンスを使用して新しい AKS クラスターのイングレス コントローラー アドオンを有効にする
-description: Azure CLI を使用して、新しい Application Gateway インスタンスで新しい AKS クラスターのイングレス コントローラー アドオンを有効にする方法を学習します。
+title: チュートリアル:新しい Azure Application Gateway インスタンスを使用して新しい AKS クラスターのイングレス コントローラー アドオンを有効にする
+description: このチュートリアルでは、Azure CLI を使用して、新しい Application Gateway インスタンスで新しい AKS クラスターのイングレス コントローラー アドオンを有効にする方法を学習します。
 services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 06/10/2020
+ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 620fe5851f9dbde01b2206595fa79b61f62deb66
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: ab917fe476a40eb8ea559bc08e52d4bbf16a8436
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595922"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285589"
 ---
 # <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>チュートリアル:新しい Application Gateway インスタンスを使用して新しい AKS クラスターのイングレス コントローラー アドオン (プレビュー) を有効にする
 
@@ -30,11 +30,12 @@ Azure CLI を使用して、[Azure Kubernetes Services (AKS)](https://azure.micr
 > * AKS クラスターで AGIC をイングレスに使用してサンプル アプリケーションをデプロイする。
 > * アプリケーションが Application Gateway を介して到達可能であることを確認する。
 
+## <a name="prerequisites"></a>前提条件
+
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>前提条件
 
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
@@ -134,7 +135,7 @@ az group delete --name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>次のステップ
-* [AGIC アドオンの無効化の詳細を確認する](./ingress-controller-disable-addon.md)
-* [AGIC でサポートされている注釈の詳細を確認する](./ingress-controller-annotations.md)
-* [AGIC に関する問題のトラブルシューティングを行う](./ingress-controller-troubleshoot.md)
+
+> [!div class="nextstepaction"]
+> [AGIC アドオンの無効化の詳細を確認する](./ingress-controller-disable-addon.md)
 

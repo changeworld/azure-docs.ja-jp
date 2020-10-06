@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 115f01bffc4664798682923cb83a99a23a8ce274
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 3f64086ed97594416b5964cf648c857c2f271480
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958339"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331099"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用した Azure Application Gateway による Web トラフィックの転送
 
@@ -53,6 +53,8 @@ New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 1. `New-AzVirtualNetworkSubnetConfig` を使用して、サブネット構成を作成します。
 2. `New-AzVirtualNetwork` を使用して、サブネット構成を使用して仮想ネットワークを作成します。 
 3. `New-AzPublicIpAddress` を使用して、パブリック IP アドレスを作成します。 
+> [!NOTE]
+> [仮想ネットワーク サービス エンドポイント ポリシー](../virtual-network/virtual-network-service-endpoint-policies-overview.md)は現在、Application Gateway のサブネットではサポートされません。
 
 ```azurepowershell-interactive
 $agSubnetConfig = New-AzVirtualNetworkSubnetConfig `

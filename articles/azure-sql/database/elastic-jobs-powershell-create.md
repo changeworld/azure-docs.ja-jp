@@ -1,5 +1,5 @@
 ---
-title: PowerShell を使用したエラスティック ジョブ エージェントの作成
+title: PowerShell を使用してエラスティック ジョブ エージェントを作成する (プレビュー)
 description: PowerShell を使用したエラスティック ジョブ エージェントの作成方法について学習します。
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 03/13/2019
-ms.openlocfilehash: 0fe6a3b1d0e5216d923cfe3997826e7a727f1a2b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: aaf749708b49c57d08a63581f3d911b04aba2103
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89077349"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408669"
 ---
-# <a name="create-an-elastic-job-agent-using-powershell"></a>PowerShell を使用したエラスティック ジョブ エージェントの作成
+# <a name="create-an-elastic-job-agent-using-powershell-preview"></a>PowerShell を使用してエラスティック ジョブ エージェントを作成する (プレビュー)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 [エラスティック ジョブ (プレビュー)](job-automation-overview.md#elastic-database-jobs-preview) を使用すると、多数のデータベースにわたって 1 つまたは複数の Transact-SQL (T-SQL) スクリプトを同時に実行できます。

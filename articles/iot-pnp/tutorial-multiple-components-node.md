@@ -1,29 +1,29 @@
 ---
-title: IoT プラグ アンド プレイ プレビューのサンプル Node.js コンポーネント デバイス コードを IoT Hub に接続する | Microsoft Docs
-description: 複数のコンポーネントを使用し、IoT ハブに接続する、IoT プラグ アンド プレイ プレビューのサンプル Node.js デバイス コードをビルドして実行します。 Azure IoT Explorer ツールを使用して、デバイスからハブに送信された情報を表示します。
+title: IoT プラグ アンド プレイのサンプル Node.js コンポーネント デバイス コードを IoT Hub に接続する | Microsoft Docs
+description: 複数のコンポーネントを使用し、IoT ハブに接続する、IoT プラグ アンド プレイのサンプル Node.js デバイス コードをビルドして実行します。 Azure IoT Explorer ツールを使用して、デバイスからハブに送信された情報を表示します。
 author: olivakar
 ms.author: olkar
 ms.date: 07/10/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: devx-track-javascript
-ms.openlocfilehash: d26179ab82f29ce8f937f5b444463c1308d92047
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.custom: devx-track-js
+ms.openlocfilehash: ea7b1ba159aa5d11a20ff565390ce0b24e38c1d2
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904056"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577188"
 ---
-# <a name="tutorial-connect-a-sample-iot-plug-and-play-preview-multiple-component-device-application-to-iot-hub-nodejs"></a>チュートリアル:IoT プラグ アンド プレイ プレビューの複数コンポーネントのデバイス アプリケーションのサンプルを IoT Hub に接続する (Node.js)
+# <a name="tutorial-connect-a-sample-iot-plug-and-play-multiple-component-device-application-to-iot-hub-nodejs"></a>チュートリアル:IoT プラグ アンド プレイの複数コンポーネント デバイス アプリケーションのサンプルを IoT Hub に接続する (Node.js)
 
 [!INCLUDE [iot-pnp-tutorials-device-selector.md](../../includes/iot-pnp-tutorials-device-selector.md)]
 
-このチュートリアルでは、コンポーネントとルート インターフェイスを使用する IoT プラグ アンド プレイ デバイス アプリケーションのサンプルをビルドし、それをご利用の IoT ハブに接続し、ハブに送信される情報を Azure IoT エクスプローラー ツールを使用して表示する方法を示します。 このサンプル アプリケーションは Node.js 用に記述されており、Node.js 用 Azure IoT Hub デバイス SDK に含まれています。 ソリューション ビルダーは Azure IoT エクスプローラー ツールを使用して、デバイス コードを表示しなくても IoT プラグ アンド プレイ デバイスの機能を理解することができます。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+このチュートリアルでは、複数のコンポーネントを使用する IoT プラグ アンド プレイのサンプル デバイス アプリケーションをビルドし、それを IoT ハブに接続して、ハブに送信される情報を Azure IoT エクスプローラー ツールを使用して表示する方法について説明します。 このサンプル アプリケーションは Node.js 用に記述されており、Node.js 用 Azure IoT Hub デバイス SDK に含まれています。 ソリューション ビルダーは Azure IoT エクスプローラー ツールを使用して、デバイス コードを表示しなくても IoT プラグ アンド プレイ デバイスの機能を理解することができます。
 
 ## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
 このチュートリアルを完了するには、開発用コンピューターに Node.js が必要です。 [nodejs.org](https://nodejs.org) から、複数のプラットフォームに対応した最新の推奨バージョンをダウンロードできます。
 
@@ -33,32 +33,9 @@ ms.locfileid: "87904056"
 node --version
 ```
 
-### <a name="azure-iot-explorer"></a>Azure IoT エクスプローラー
-
-このチュートリアルのパート 2 でサンプル デバイスとやり取りするには、**Azure IoT エクスプローラー** ツールを使用します。 ご利用のオペレーティング システム用の [Azure IoT エクスプローラーの最新リリースをダウンロードしてインストール](./howto-use-iot-explorer.md)します。
-
-[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
-
-次のコマンドを実行して、ご利用のハブに対する "_IoT ハブ接続文字列_" を取得します。 この接続文字列はメモしておいてください。これは、このチュートリアルの後半で使用します。
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
-
-> [!TIP]
-> また、Azure IoT エクスプローラー ツールを使用して、IoT ハブ接続文字列を見つけることもできます。
-
-次のコマンドを実行して、ハブに追加したデバイスの "_デバイス接続文字列_" を取得します。 この接続文字列はメモしておいてください。これは、このチュートリアルの後半で使用します。
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output table
-```
-
-[!INCLUDE [iot-pnp-download-models.md](../../includes/iot-pnp-download-models.md)]
-
 ## <a name="download-the-code"></a>コードのダウンロード
 
-このチュートリアルでは、Node.js 用 Azure IoT Hub Device SDK をクローンしてビルドするために使用できる開発環境を準備します。
+「[クイックスタート: Windows 上で実行されている IoT プラグ アンド プレイのサンプル デバイス アプリケーションを IoT Hub に接続する (Node)](quickstart-connect-device-node.md)」を完了している場合は、リポジトリを既にクローンしています。
 
 任意のディレクトリでコマンド プロンプトを開きます。 次のコマンドを実行して、[Node.js 用 Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdk-node) GitHub リポジトリをこの場所にクローンします。
 
@@ -66,11 +43,9 @@ az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --
 git clone https://github.com/Azure/azure-iot-sdk-node
 ```
 
-この操作が完了するまでに数分かかる場合があります。
-
 ## <a name="install-required-libraries"></a>必要なライブラリをインストールする
 
-デバイス SDK を使用して、含まれているサンプル コードをビルドします。 ビルドするアプリケーションにより、IoT ハブに接続する複数のコンポーネントとルート インターフェイスを使用するプラグ アンド プレイ デバイスがシミュレートされます。 アプリケーションによりテレメトリとプロパティが送信され、コマンドが受け取られます。
+デバイス SDK を使用して、含まれているサンプル コードをビルドします。 ビルドするアプリケーションにより、IoT ハブに接続する、複数のコンポーネントを使用するプラグ アンド プレイ デバイスがシミュレートされます。 アプリケーションによりテレメトリとプロパティが送信され、コマンドが受け取られます。
 
 1. ローカル ターミナル ウィンドウで、クローンしたリポジトリのフォルダーに移動し、 */azure-iot-sdk-node/device/samples/pnp* フォルダーに移動します。 次に、次のコマンドを実行して、必要なライブラリをインストールします。
 
@@ -79,12 +54,6 @@ npm install
 ```
 
 これにより、フォルダー内のサンプルを実行するために必要な関連する npm ファイルがインストールされます。
-
-1. 先ほどメモしたデバイス接続文字列で、環境変数を構成します。
-
-```cmd/sh
-set DEVICE_CONNECTION_STRING=<YourDeviceConnectionString>
-```
 
 ## <a name="review-the-code"></a>コードの確認
 
@@ -96,45 +65,51 @@ set DEVICE_CONNECTION_STRING=<YourDeviceConnectionString>
 
 任意のコード エディターで *pnpTemperatureController.js* ファイルを開きます。 このサンプル コードは、次の方法を示しています。
 
-1. 実装されているデバイスの DTMI である、`modelId` を定義します。 この DTMI はユーザー定義であり、[温度コントローラー DTDL モデル](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)の DTMI と一致している必要があります。
+- 実装されているデバイスの DTMI である、`modelId` を定義します。 この DTMI はユーザー定義であり、[温度コントローラー DTDL モデル](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)の DTMI と一致している必要があります。
 
-2. 温度コントローラー DTDL モデルで定義されているコンポーネントを実装します。 実際の温度コントローラー内のコンポーネントによって、これら 2 つのインターフェイスが実装される必要があります。 これら 2 つのインターフェイスは、中央リポジトリで既に公開されています。 このサンプルには、次の 2 つのインターフェイスがあります。
+- 温度コントローラー DTDL モデルで定義されているコンポーネントを実装します。 実際の温度コントローラー内のコンポーネントによって、これら 2 つのインターフェイスが実装される必要があります。 これら 2 つのインターフェイスは、中央リポジトリで既に公開されています。 このサンプルには、次の 2 つのインターフェイスがあります。
+
   - Thermostat
   - Azure によって開発されたデバイスの情報
 
-3. コンポーネント名を定義します。 このサンプルには、2 つのサーモスタットと 1 つのデバイス情報コンポーネントが含まれています。
+- コンポーネント名を定義します。 このサンプルには、2 つのサーモスタットと 1 つのデバイス情報コンポーネントが含まれています。
 
-4. コマンド名を定義します。 これらは、デバイスによって応答されるコマンドです。
+- コマンド名を定義します。 これらは、デバイスによって応答されるコマンドです。
 
-5. `serialNumber` 定数を定義します。 `serialNumber` は、特定のデバイスに固定されています。
+- `serialNumber` 定数を定義します。 `serialNumber` は、特定のデバイスに固定されています。
 
-6. コマンド ハンドラーを定義します。
+- コマンド ハンドラーを定義します。
 
-7. コマンド応答を送信するための関数を定義します。
+- コマンド応答を送信するための関数を定義します。
 
-8. コマンド要求をログに記録するためのヘルパー関数を定義します。
+- コマンド要求をログに記録するためのヘルパー関数を定義します。
 
-9. プロパティを作成するためのヘルパー関数を定義します。
+- プロパティを作成するためのヘルパー関数を定義します。
 
-10. プロパティ更新のリスナーを定義します。
+- プロパティ更新のリスナーを定義します。
 
-11. このデバイスからテレメトリを送信するための関数を定義します。 サーモスタットとルート コンポーネントの両方によってテレメトリが送信されます。 この関数により、パラメーターとしてコンポーネント名が受信されます。
+- このデバイスからテレメトリを送信するための関数を定義します。 サーモスタットと既定のコンポーネントの両方によってテレメトリが送信されます。 この関数により、パラメーターとしてコンポーネント名が受信されます。
 
-12. 次のような `main` 関数を定義します。
+- 次のような `main` 関数を定義します。
 
-    1. デバイス SDK を使用してデバイス クライアントを作成し、IoT ハブに接続します。 IoT Hub によりデバイスが IoT プラグ アンド プレイ デバイスとして識別できるように、デバイスによって `modelId` が提供されます。
+  - デバイス SDK を使用してデバイス クライアントを作成し、IoT ハブに接続します。 IoT Hub によりデバイスが IoT プラグ アンド プレイ デバイスとして識別できるように、デバイスによって `modelId` が提供されます。
 
-    1. `onDeviceMethod` 関数を使用するコマンド要求のリッスンを開始します。 関数によって、サービスからのコマンド要求のリスナーが設定されます。
-        - デバイス DTDL によって、`reboot` および `getMaxMinReport` コマンドが定義されます。
-        - `commandHandler` 関数によって、コマンドに対するデバイスの応答方法が定義されます。
+  - `onDeviceMethod` 関数を使用するコマンド要求のリッスンを開始します。 関数によって、サービスからのコマンド要求のリスナーが設定されます。
 
-    1. `setInterval` と `sendTelemetry` を使用するテレメトリの送信を開始します。
+    - デバイス DTDL によって、`reboot` および `getMaxMinReport` コマンドが定義されます。
+    - `commandHandler` 関数によって、コマンドに対するデバイスの応答方法が定義されます。
 
-    1. `helperCreateReportedPropertiesPatch` 関数を使用してプロパティを作成し、`updateComponentReportedProperties` を使用してプロパティを更新します。
+  - `setInterval` と `sendTelemetry` を使用するテレメトリの送信を開始します。
 
-    1. `desiredPropertyPatchListener` を使用して、プロパティの更新をリッスンします。
+  - `helperCreateReportedPropertiesPatch` 関数を使用してプロパティを作成し、`updateComponentReportedProperties` を使用してプロパティを更新します。
 
-    1. すべてのリスナーとタスクを無効にし、**Q** または **q** キーが押されたときにループを終了します。
+  - `desiredPropertyPatchListener` を使用して、プロパティの更新をリッスンします。
+
+  - すべてのリスナーとタスクを無効にし、**Q** または **q** キーが押されたときにループを終了します。
+
+[!INCLUDE [iot-pnp-environment](../../includes/iot-pnp-environment.md)]
+
+サンプル構成の詳細については、[サンプルの readme](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/pnp/readme.md) を参照してください。
 
 コードを確認したので、次のコマンドを使用してサンプルを実行します。
 
@@ -161,4 +136,4 @@ node pnpTemperatureController.js
 このチュートリアルでは、コンポーネントを使用する IoT プラグ アンド プレイ デバイスを IoT ハブに接続する方法を学習しました。 IoT プラグ アンド プレイ デバイス モデルの詳細については、以下を参照してください。
 
 > [!div class="nextstepaction"]
-> [IoT プラグ アンド プレイ プレビュー モデリング開発者ガイド](concepts-developer-guide.md)
+> [IoT プラグ アンド プレイ モデリング開発者ガイド](concepts-developer-guide-device-csharp.md)

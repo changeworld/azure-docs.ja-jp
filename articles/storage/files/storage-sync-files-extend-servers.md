@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 80fcebec76788ca9ec754b35c57f9965f38c2c0e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1d2a0d79a5cdd53f8376c088fc986c20908575eb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037101"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329460"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>チュートリアル:Azure File Sync を使用して Windows ファイル サーバーを拡張する
 
@@ -315,9 +315,11 @@ Azure ファイル共有と Windows Server でファイルが同期されるよ�
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
+このチュートリアルで作成したリソースをクリーンアップする場合は、まず、ストレージ同期サービスからエンドポイントを削除します。 次に、ストレージ同期サービスからサーバーの登録を解除し、同期グループを削除してから、同期サービスを削除します。
+
 [!INCLUDE [storage-files-clean-up-portal](../../../includes/storage-files-clean-up-portal.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Azure File Sync を使用して Windows サーバーのストレージ容量を拡張するための基本的な手順を説明しました。Azure File Sync のデプロイ計画の全体像については、次を参照してください。
 

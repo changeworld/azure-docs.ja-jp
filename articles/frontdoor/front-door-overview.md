@@ -1,6 +1,6 @@
 ---
 title: Azure Front Door | Microsoft Docs
-description: この記事では、Azure Front Door の概要を示します。 実際のアプリケーションのユーザー トラフィックを負荷分散するための選択肢として適切かどうかを見極めましょう。
+description: この記事では、Azure Front Door の概要を示します。
 services: frontdoor
 documentationcenter: ''
 author: duongau
@@ -10,77 +10,63 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/02/2020
+ms.date: 09/27/2020
 ms.author: duau
-ms.openlocfilehash: 5741e41e3c1474cef5cf49270fd40bbdf4fcaffb
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 039e5b94bbd9d3b6c3edcb92eff88e7a9931205d
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399414"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448741"
 ---
 # <a name="what-is-azure-front-door"></a>Azure Front Door とは
-Azure Front Door では、高可用性のために最大限のパフォーマンスと即時グローバル フェールオーバーを最適化することで、Web トラフィックのグローバル ルーティングを定義、管理、監視することができます。 Front Door を使用すると、グローバル (複数リージョン) のコンシューマーや企業のアプリケーションを、Azure を使用して世界中のユーザーに発信する、堅牢で高性能なパーソナライズされた最新のアプリケーション、API、およびコンテンツに変換することができます。
 
-Front Door は、レイヤー 7 または HTTP/HTTPS 層で動作し、スプリット TCP と Microsoft のグローバル ネットワークでエニーキャスト プロトコルを使用してグローバル接続を向上させます。 そのため、構成でルーティング方法を選択することで、Front Door がクライアント要求を最も高速で最も使用可能なアプリケーション バックエンドにルーティングすることを保証できます。 アプリケーション バックエンドは、Azure の内部または外部でホストされている、インターネットに公開されたサービスです。 Front Door には、さまざまなアプリケーション ニーズと自動フェールオーバー モデルに対応する、さまざまな[トラフィック ルーティング方法](front-door-routing-methods.md)と[バックエンドの正常性監視オプション](front-door-health-probes.md)が用意されています。 [Traffic Manager](../traffic-manager/traffic-manager-overview.md) と同様、Front Door は Azure リージョン全体の障害などの障害に対応します。
+Azure Front Door は、Microsoft グローバル エッジ ネットワークを使用して、セキュリティで保護された高速でスケーラビリティの高い Web アプリを作成するためのスケーラブルなグローバル エントリ ポイントです。 Front Door を使用すると、グローバルなコンシューマー アプリケーションやエンタープライズ アプリケーションを、Azure を介して世界中のユーザーに発信するコンテンツを備えた、堅牢で高パフォーマンスのパーソナライズされた最新のアプリケーションに変えることができます。
+
+:::image type="content" source="media/front-door-overview/front-door-visual-diagram.png#center" alt-text="Front Door のアーキテクチャ":::
+
+Front Door は、レイヤー 7 (HTTP/HTTPS 層) で動作し、スプリット TCP と Microsoft のグローバル ネットワークでエニーキャスト プロトコルを使用してグローバル接続を向上させます。 Front Door では、使用するルーティング方法に基づいて、最も高速で最も可用性が高いアプリケーション バックエンドにクライアント要求を確実にルーティングできます。 アプリケーション バックエンドは、Azure の内部または外部でホストされている、インターネットに公開されたサービスです。 Front Door には、さまざまなアプリケーション ニーズと自動フェールオーバーのシナリオに対応する、さまざまな[トラフィック ルーティング方法](front-door-routing-methods.md)と[バックエンドの正常性監視オプション](front-door-health-probes.md)が用意されています。 [Traffic Manager](../traffic-manager/traffic-manager-overview.md) と同様に、Front Door には、Azure リージョン全体の障害を含め、障害に対する回復性があります。
 
 >[!NOTE]
-> Azure では、ユーザーのシナリオのためにフル マネージドの負荷分散ソリューションのスイートが提供されます。 DNS ベースのグローバルなルーティングが必要で、トランスポート層セキュリティ (TLS) プロトコル終端 ("SSL オフロード") または HTTP/HTTPS 要求によるアプリケーション層の処理に対する要件が**ない**場合は、「[Traffic Manager](../traffic-manager/traffic-manager-overview.md)」をご覧ください。 リージョン内のサーバー間で負荷分散が必要な場合は、アプリケーション層については [Application Gateway](../application-gateway/application-gateway-introduction.md) に関するページ、ネットワーク層については [Load Balancer](../load-balancer/load-balancer-overview.md) を確認してください。 実際のエンド ツー エンドのシナリオでは、必要に応じてこれらのソリューションを組み合わせると役に立つことがあります。
->
+> Azure では、ユーザーのシナリオのためにフル マネージドの負荷分散ソリューションのスイートが提供されます。 
+> * DNS ベースのグローバルなルーティングを検討中であり、トランスポート層セキュリティ (TLS) プロトコル終端 ("SSL オフロード") の要件や、HTTP/HTTPS 要求ごとまたはアプリケーション層の処理の要件が**ない**場合は、[Traffic Manager](../traffic-manager/traffic-manager-overview.md) を検討してください。 
+> * アプリケーション層でリージョン内のサーバー間の負荷分散が必要な場合は、[Application Gateway](../application-gateway/application-gateway-introduction.md) を検討してください。
+> * ネットワーク層の負荷分散を行う場合は、[Load Balancer](../load-balancer/load-balancer-overview.md) を検討してください。 
+> 
+> 実際のエンド ツー エンドのシナリオでは、必要に応じてこれらのソリューションを組み合わせると役に立つことがあります。
 > Azure の負荷分散オプションの比較については、「[Azure の負荷分散オプションの概要](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)」を参照してください。
 
-Front Door には、次の機能が含まれています。
+## <a name="why-use-azure-front-door"></a>Azure Front Door を使用する理由
 
-## <a name="accelerate-application-performance"></a>アプリケーションのパフォーマンスの高速化
-Front Door は、スプリット TCP ベースのエニーキャスト プロトコルを使用して、エンド ユーザーが最も近い Front Door POP (point of presence) にすぐに接続されるようにします。 Front Door POP からアプリケーション バックエンドに接続するために Microsoft のグローバル ネットワークを使用すると、パフォーマンスを維持しながら高可用性と信頼性を確保できます。 バックエンドへのこの接続は、最も短いネットワーク待機時間にも基づいています。 [スプリット TCP](front-door-routing-architecture.md#splittcp) や[エニーキャスト プロトコル](front-door-routing-architecture.md#anycast)のような Front Door ルーティング手法についての詳細を確認してください。
+Front Door を使用して、動的 Web アプリと静的コンテンツを構築、運用、スケールアウトできます。 Front Door では、迅速なグローバル フェールオーバーによって、トップレベルのエンド ユーザー パフォーマンスと信頼性に最適化することで、Web トラフィックのグローバル ルーティングを定義、管理、監視できます。
 
-## <a name="increase-application-availability-with-smart-health-probes"></a>スマート正常性プローブによるアプリケーションの可用性の向上
+Front Door に含まれる主な機能は次のとおりです。
 
-Front Door は、そのスマート正常性プローブを使用し、バックエンドの待機時間と可用性の両方を監視し、バックエンドがダウンしたときに即時自動フェールオーバーを実現して、重要なアプリケーションの高可用性を実現します。 そのため、ダウンタイムを発生させることなく、アプリケーションで定期的なメンテナンスを実行することができます。 メンテナンス中は、Front Door がトラフィックを別のバックエンドに送信します。
+* **[スプリット TCP](front-door-routing-architecture.md#splittcp)** ベースの **[エニーキャスト プロトコル](front-door-routing-architecture.md#anycast)** を使用したアプリケーションのパフォーマンスの高速化。
 
-## <a name="url-based-routing"></a>URL ベースのルーティング
-URL パス ベースのルーティングを使用すると、要求の URL パスに基づいてバックエンド プールにトラフィックをルーティングできます。 1 つのシナリオとして、異なる種類のコンテンツの要求を、異なるバックエンド プールにルーティングします。
+* インテリジェントな **[正常性プローブ](front-door-health-probes.md)** によるバックエンド リソースの監視。
 
-たとえば、`http://www.contoso.com/users/*` の要求は UserProfilePool にルーティングされ、`http://www.contoso.com/products/*` は ProductInventoryPool にルーティングされます。  Front Door では、最も一致するアルゴリズムを使用してさらに複雑なルート照合のシナリオも可能なため、一致するパスのパターンがない場合は `http://www.contoso.com/*` の既定のルーティング規則が選択され、トラフィックは既定の包括的なルーティング規則に送信されます。 詳細は、[ルートの照合](front-door-route-matching.md)に関するページを参照してください。
+*  要求の **[URL パス ベース](front-door-route-matching.md)** のルーティング。
 
-## <a name="multiple-site-hosting"></a>複数サイトのホスティング
-複数サイトのホストにより、同じ Front Door 構成に複数の Web サイトを構成することができます。 この機能を使用すると、さまざまな Web サイトを 1 つの Front Door 構成に追加することによって、デプロイのための効率的なトポロジを構成できます。 Azure Front Door は、アプリケーションのアーキテクチャに基づいて、各 web サイトをその独自のバックエンド プールに送信するか、さまざまな Web サイトが同じバックエンド プールに送信されるように構成することができます。 たとえば、Front Door では、ImagePool と VideoPool という 2 つのバックエンド プールから、`images.contoso.com` と `videos.contoso.com` のトラフィックを処理することができます。 あるいは、両方のフロント エンド ホストを、MediaPool と呼ばれる 1 つのバックエンド プールにトラフィックを送信するように構成できます。
+* 効率的なアプリケーション インフラストラクチャを実現する、複数の Web サイトのホスティング。 
 
-同様に、`www.contoso.com` と `www.fabrikam.com` という 2 つの異なるドメインを、同じ Front Door 上に構成することができます。
+* Cookie ベースの **[セッション アフィニティ](front-door-routing-methods.md#affinity)** 。
 
-## <a name="session-affinity"></a>セッション アフィニティ
-Cookie ベースのセッション アフィニティ機能は、同じアプリケーション バックエンド上にユーザー セッションを保持する場合に便利です。 Front Door で管理される Cookie を使用することで、ユーザー セッションからの後続のトラフィックは、処理のために同じアプリケーション バックエンドに送信されます。 この機能は、ユーザー セッションのためにセッションの状態をバックエンド上でローカルに保存する場合に重要です。
+* **[SSL オフロード](front-door-custom-domain-https.md)** と証明書管理。
 
-## <a name="tls-termination"></a>TLS 終了
-Front Door は、エッジでの TLS 終了をサポートしています。つまり、個々のユーザーは、アプリケーション バックエンドとの長距離接続を介して確立するのではなく、Front Door 環境との TLS 接続を設定することができます。 さらに、Front Door は、Front Door 環境とバックエンドの間の HTTP 接続と HTTPS 接続の両方をサポートしています。 そのため、エンド ツー エンドの TLS 暗号化を設定することもできます。 たとえば、アプリケーションのワークロードのための Front Door が、ウォーム接続の再利用が原因で、アクティブなサービスに対する要求を 1 分間で 5000 以上受信する場合は、アプリケーション バックエンドとの接続は約 500 しか確立されないため、バックエンドからの大きな負荷が削減されます。
+* 独自の **[カスタム ドメイン](front-door-custom-domain.md)** の定義。 
 
-## <a name="custom-domains-and-certificate-management"></a>カスタム ドメインと証明書の管理
-Front Door を使用してコンテンツを配信するときに独自のドメイン名を Front Door URL に表示するには、カスタム ドメインが必要です。 見てわかるドメイン名を使用することは、顧客にとって便利であり、ブランド化の目的にも役立ちます。
-Front Door はカスタム ドメイン名でも HTTPS をサポートしています。 この機能を使用するには、トラフィックに対して Front Door で管理されている証明書を選択するか、独自のカスタム TLS/SSL 証明書をアップロードします。
+* カスタムの **[Web Application Firewall (WAF)](../web-application-firewall/overview.md)** 規則と **[Azure DDoS Protection](../virtual-network/ddos-protection-overview.md)** によるアプリケーションのセキュリティ。
 
-## <a name="application-layer-security"></a>アプリケーション層のセキュリティ
-Azure Front Door を使用すると、アクセス制御のためのカスタムの Web アプリケーション ファイアウォール (WAF) 規則を作成して、クライアント IP アドレス、国番号、http パラメーターに基づいて HTTP/HTTPS ワークロードを不正使用から保護することができます。 さらに、Front Door では、悪意のあるボット トラフィックと戦うためにレート制限ルールを作成することもできます。 Web アプリケーション ファイアウォールの詳細については、「[Azure Web アプリケーション ファイアウォールとは](../web-application-firewall/overview.md)」を参照してください。
+* **[URL リダイレクト](front-door-url-redirect.md)** による、HTTPS への HTTP トラフィックのリダイレクト｡
 
-Front Door プラットフォーム自体は、[Azure DDoS Protection](../virtual-network/ddos-protection-overview.md) Basic によって保護されます。 さらに保護するために、Azure DDoS Protection Standard を VNET で有効にし、自動チューニングとリスク軽減によってネットワーク層 (TCP または UDP) 攻撃からリソースを保護することもできます。 Front Door はレイヤー 7 のリバース プロキシであり、既定では Web トラフィックにバックエンドへのパススルーと他のタイプのトラフィックのブロックしか許可しません。
+* **[URL 書き換え](front-door-url-rewrite.md)** によるカスタム転送パス。
 
-## <a name="url-redirection"></a>URL リダイレクト
-セキュリティで保護された通信のみをサポートすることが業界で強力に推進されているため、Web アプリケーションは HTTP トラフィックを自動的に HTTPS にリダイレクトすることが求められています。 これにより、ユーザーとアプリケーション間のすべての通信が、暗号化されたパスを経由して行われるようになります。 
-
-これまでは、アプリケーションの所有者は、HTTP で受信した要求を HTTPS にリダイレクトすることが唯一の目的である専用のサービスを作成することによって、この要件に対処してきました。 Azure Front Door では、トラフィックを HTTP から HTTPS にリダイレクトする機能がサポートされています。 これにより、アプリケーションの構成が簡単になり、リソースの使用が最適化され、グローバルなリダイレクトやパスに基づくリダイレクトなどの新しいリダイレクト シナリオがサポートされるようになります。 Azure Front Door からの URL リダイレクトは、HTTP から HTTPS へのリダイレクトだけでなく、別のホスト名へのリダイレクト、別のパスへのリダイレクト、または URL 内の新しいクエリ文字列へのリダイレクトにも対応しています。
-
-詳細については、Azure Front Door による[トラフィックのリダイレクト](front-door-url-redirect.md)に関するページを参照してください。
-
-## <a name="url-rewrite"></a>URL 書き換え
-Front Door では、バックエンドに転送する要求の作成時に使用する、省略可能なカスタム転送パスの構成を許可することで、[URL 書き換え](front-door-url-rewrite.md)がサポートされています。 さらに、Front Door では、バックエンドに要求を転送するときに送信されるようにホスト ヘッダーを構成することができます。
-
-## <a name="protocol-support---ipv6-and-http2-traffic"></a>プロトコルのサポート - IPv6 および HTTP/2 トラフィック
-Azure Front Door は、エンド ツー エンドの IPv6 接続と、HTTP/2 プロトコルも、ネイティブでサポートします。 
-
-HTTP/2 プロトコルによって、長時間実行されている TCP 接続上でアプリケーション バックエンドとクライアント間の全二重通信が可能になります。 HTTP/2 により、HTTP ベースの実装では必須だったポーリングを使用することなく、バックエンドとクライアントの間により対話的な双方向通信が可能になります。 HTTP/2 プロトコルは、HTTP とは異なってオーバーヘッドが少なく、複数の要求や応答で同じ TCP 接続を再利用できるため、リソースをより効率的に使用できます。 詳細については、[Azure Front Door の HTTP/2 サポート](front-door-http2.md)に関するページを参照してください。
+* エンド ツー エンドの IPv6 接続と **[HTTP/2 プロトコル](front-door-http2.md)** のネイティブ サポート。
 
 ## <a name="pricing"></a>価格
 
-料金情報については、[Front Door の価格](https://azure.microsoft.com/pricing/details/frontdoor/)に関するページを参照してください。
+料金情報については、[Front Door の価格](https://azure.microsoft.com/pricing/details/frontdoor/)に関するページを参照してください。 「[Azure Front Door の SLA](https://azure.microsoft.com/en-us/support/legal/sla/frontdoor/v1_0/)」を参照してください。
 
 ## <a name="whats-new"></a>新機能
 

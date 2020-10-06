@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: 1cc7d7755d22568b9b66216709dc0c3765d58657
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: d2a538cac1e8bcf9c67c88b206cacd928bfb73c8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300155"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448229"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>クイック スタート:Azure Active Directory (Azure AD) テナントのアプリケーションのプロパティを構成する
 
@@ -47,7 +47,7 @@ Azure AD テナントへのアプリケーションの追加が完了すると�
 3. ここで、構成で使用できるオプションについて理解しておきましょう。
     - **[ユーザーのサインインが有効になっていますか?]** は、アプリケーションに割り当てられているユーザーがサインインできるかどうかを決定します。
     - **[ユーザーの割り当てが必要ですか?]** は、アプリケーションに割り当てられていないユーザーがサインインできるかどうかを決定します。
-    - **[ユーザーに表示しますか?]** は、アプリに割り当てられているユーザーが、[マイ アプリ](https://myapps.microsoft.com)と Office 365 アプリ ランチャーにアプリを表示できるかどうかを決定します (Office 365 または Microsoft 365 Web サイトの左上隅にあるワッフル メニューを参照してください)。
+    - **[ユーザーに表示しますか?]** は、アプリに割り当てられているユーザーが、[マイ アプリ](https://myapps.microsoft.com)と Microsoft 365 アプリ起動ツールにアプリを表示できるかどうかを決定します (Microsoft 365 Web サイトの左上隅にあるワッフル メニューを参照してください)。
     
     > [!TIP]
     > ユーザーの割り当ては、ナビゲーションの **[ユーザーとグループ]** セクションで行われます。
@@ -86,7 +86,17 @@ Azure AD テナントへのアプリケーションの追加が完了すると�
 > [!TIP]
 > Graph API を使用してアプリの管理を自動化できます。[Microsoft Graph API によるアプリ管理の自動化](https://docs.microsoft.com/graph/application-saml-sso-configure-api)に関するページを参照してください。
 
+## <a name="add-notes"></a>メモの追加
 
+[メモ] フィールドを使用して、Azure AD でのアプリケーションの管理に関連する情報を追加できます。 メモは、最大サイズが 1024 文字のフリー テキスト フィールドです。
+
+1. Azure AD portal で、 **[エンタープライズ アプリケーション]** を選択します。 次に、構成するアプリケーションを探して選択します。
+2. **[管理]** セクションで、 **[プロパティ]** を選択して編集用の **[プロパティ]** ペインを開きます。
+3. [メモ] フィールドを更新し、 **[保存]** を選択します。
+
+    ![メモの変更方法を示す [プロパティ] 画面のスクリーンショット](media/add-application-portal/notes-application.png)
+
+    
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 クイックスタート シリーズを続行しない場合は、アプリを削除してテスト テナントをクリーンアップすることを検討してください。 アプリの削除については、このシリーズの最後のクイックスタートである[アプリの削除](delete-application-portal.md)に関する記事で説明されています。

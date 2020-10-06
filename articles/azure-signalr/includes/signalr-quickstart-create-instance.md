@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 09/14/2018
 ms.author: antchu
 ms.custom: include file
-ms.openlocfilehash: 0a228f6d8b4f72acd3783f27bf192fe6bd13f988
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f738daab7ddcf0403f546e7c9ffeaeccb66bc6b7
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75392136"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355647"
 ---
 ## <a name="create-an-azure-signalr-service-instance"></a>Azure SignalR Service のインスタンスを作成する
 
@@ -20,7 +20,7 @@ ms.locfileid: "75392136"
 
 1. Azure portal の左上にある [新規] ボタンを選択します。 [新規] 画面で、検索ボックスに「*SignalR Service*」と入力して Enter キーを押します。
 
-    ![SignalR Service の検索](../media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-new.png)
+    ![Azure portal で SignalR Service を検索する画面のスクリーンショット。](../media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-new.png)
 
 1. 検索結果から **[SignalR Service]** を選択し、 **[Create]** を選択します。
 
@@ -36,7 +36,7 @@ ms.locfileid: "75392136"
     | **[ユニット数]** |  適用なし | ユニット数は、SignalR Service インスタンスで受け付けることができる接続の数を指定します。 Standard レベルでのみ構成可能です。 |
     | **サービス モード** |  サーバーレス | Azure Functions または REST API で使用するため。 |
 
-    ![SignalR Service の作成](../media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-create.png)
+    ![SignalR の [基本] タブに値が入力された画面のスクリーンショット。](../media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-create.png)
 
 1. **[作成]** を選択して SignalR Service インスタンスのデプロイを開始します。
 

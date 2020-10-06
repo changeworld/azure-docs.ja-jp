@@ -4,12 +4,12 @@ description: コンテナー イメージを使用し、Geo レプリケート�
 ms.topic: tutorial
 ms.date: 08/20/2018
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 5b075e1065ef8c30837000f490cc93525b4b61cc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bcbce3c60aa0b4613b1dd1840c335c800193e549
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74456112"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328691"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>チュートリアル:Geo レプリケートされている Azure コンテナー レジストリから Web アプリをデプロイする
 
@@ -58,7 +58,7 @@ Azure Container Registry では、コンテナー化されたアプリケーシ�
 
 **[作成]** を選択して、 *[米国西部]* リージョンに Web アプリをプロビジョニングします。
 
-![Azure Portal での Web app on Linux の構成][deploy-app-portal-02]
+![[作成] ボタンが強調表示されている Web App for Containers を示すスクリーンショット。][deploy-app-portal-02]
 
 ## <a name="view-the-deployed-web-app"></a>デプロイされた Web アプリの表示
 
@@ -68,11 +68,11 @@ Azure Container Registry では、コンテナー化されたアプリケーシ�
 
 **App Service** の [概要] の右上で Web アプリのハイパーリンク URL を選択して、実行中のアプリケーションをブラウザーで表示します。
 
-![Azure Portal での Web app on Linux の構成][deploy-app-portal-04]
+![Web アプリの URL が強調表示された App Service の [概要] を示すスクリーンショット。][deploy-app-portal-04]
 
 geo レプリケーション コンテナー レジストリから Docker イメージがデプロイされると、コンテナー レジストリをホストしている Azure リージョンを表すイメージがサイトに表示されます。
 
-![ブラウザーに表示された、デプロイされた Web アプリケーション][deployed-app-westus]
+![ブラウザーに表示された、デプロイされた Web アプリケーションを示すスクリーンショット。][deployed-app-westus]
 
 ## <a name="deploy-second-web-app-for-containers-instance"></a>2 つめの Web App for Containers インスタンスのデプロイ
 
@@ -88,9 +88,9 @@ geo レプリケーション コンテナー レジストリから Docker イメ
 
 **[作成]** を選択して、 *[米国東部]* リージョンに Web アプリをプロビジョニングします。
 
-![Azure Portal での Web app on Linux の構成][deploy-app-portal-06]
+![[作成] ボタンが強調表示された Web App for Containers の [作成] ウィンドウを示すスクリーンショット。][deploy-app-portal-06]
 
-## <a name="view-the-deployed-web-app"></a>デプロイされた Web アプリの表示
+## <a name="view-the-second-deployed-web-app"></a>2 番目にデプロイされた Web アプリの表示
 
 前と同様に、ブラウザーでアプリケーションの URL に移動して、実行中のアプリケーションを表示できます。
 

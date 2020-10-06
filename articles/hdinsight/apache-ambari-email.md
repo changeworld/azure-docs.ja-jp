@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 03/10/2020
-ms.openlocfilehash: 21376eb40fb40abe67f7e03d15aabd7d89ea62f8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 40f8c36b197b0c68b9f04a02dc7731877b27ddd2
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80081901"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541664"
 ---
 # <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で Apache Ambari のメール通知を構成する
 
@@ -54,7 +54,7 @@ ms.locfileid: "80081901"
 
 1. **[Manage Alert Notifications]\(アラート通知の管理\)** ウィンドウから **+** アイコンを選択します。
 
-    ![Ambari のアラート通知の作成](./media/apache-ambari-email/azure-portal-create-notification.png)
+    ![[Manage Alert Notifications]\(アラート通知の管理\) ダイアログ ボックスを示すスクリーンショット。](./media/apache-ambari-email/azure-portal-create-notification.png)
 
 1. **[Create Alert Notification]\(アラート通知の作成\)** ダイアログから次の情報を入力します。
 
@@ -75,7 +75,7 @@ ms.locfileid: "80081901"
     |Password Confirmation (パスワードの確認入力)|パスワードを再入力します。|
     |Start TLS (TLS の開始)|このチェック ボックスをオンにします。|
 
-    ![Ambari のアラート通知の作成](./media/apache-ambari-email/ambari-create-alert-notification.png)
+    ![[Create Alert Notification]\(アラート通知の作成\) ダイアログ ボックスを示すスクリーンショット。](./media/apache-ambari-email/ambari-create-alert-notification.png)
 
     **[保存]** を選択します。 **[Manage Alert Notifications]\(アラート通知の管理\)** ウィンドウに戻ります。
 

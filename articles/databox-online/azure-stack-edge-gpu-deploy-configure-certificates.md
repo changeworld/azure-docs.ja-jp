@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure certificates for Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 5be484c613c4a18e86df7b5a83f95ca75aec6077
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7854aff0b4194efae7c4df653dee18e2676fdd41
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903400"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446324"
 ---
 # <a name="tutorial-configure-certificates-for-your-azure-stack-edge-pro-with-gpu"></a>チュートリアル:GPU 搭載の Azure Stack Edge Pro 用の証明書を構成する
 
@@ -51,11 +51,11 @@ GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に
 
     - デバイス名または DNS ドメインを変更した場合は、証明書の状態として **[無効]** が表示されます。 
 
-        ![ローカル Web UI の [証明書] ページ](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1.png)    
+        ![ローカル Web UI の [証明書] ページ 2](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1.png)    
 
         証明書を選択して、状態の詳細を表示します。
 
-        ![ローカル Web UI の [証明書] ページ](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1a.png)  
+        ![ローカル Web UI の [証明書] ページ 3](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1a.png)  
 
         更新されたデバイス名と DNS ドメインが証明書に反映されないのはこのためです (それらはサブジェクト名とサブジェクトの別名に使用されます)。 デバイスを正常にアクティブ化するには、次のいずれかのオプションを選択します。 
     
@@ -108,11 +108,11 @@ GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に
 
 4. 証明書のダウンロード リンクを選択し、メッセージが表示されたら、証明書を保存します。 
 
-    ![証明書の生成とダウンロード 6](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-7.png)
+    ![証明書の生成とダウンロード 8](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-7.png)
 
 5. ダウンロードするすべての証明書に対してこのプロセスを繰り返します。 
     
-    ![証明書の生成とダウンロード 7](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-8.png)
+    ![証明書の生成とダウンロード 9](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-8.png)
 
     デバイスで生成された証明書は、次の名前形式で DER 証明書として保存されます。 
 
@@ -135,31 +135,31 @@ Azure Storage Explorer を使用する場合、クライアントに PEM 形式�
 
 1. 証明書をアップロードするには、 **[証明書]** ページで **[+ 証明書の追加]** を選択します。
 
-    ![ローカル Web UI の [証明書] ページ](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-1.png)
+    ![ローカル Web UI の [証明書] ページ 4](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-1.png)
 
 2. まず署名チェーンをアップロードし、 **[Validate & add]\(検証して追加\)** を選択します。
 
-    ![ローカル Web UI の [証明書] ページ](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-2.png)
+    ![ローカル Web UI の [証明書] ページ 5](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-2.png)
 
 3. これで、他の証明書をアップロードできるようになります。 たとえば、Azure Resource Manager と BLOB ストレージ エンドポイントの証明書をアップロードできます。
 
-    ![ローカル Web UI の [証明書] ページ](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-3.png)
+    ![ローカル Web UI の [証明書] ページ 6](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-3.png)
 
     ローカル Web UI 証明書をアップロードすることもできます。 この証明書をアップロードした後、ブラウザーを起動してキャッシュをクリアする必要があります。 次に、デバイスのローカル Web UI に接続する必要があります。  
 
-    ![ローカル Web UI の [証明書] ページ](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-5.png)
+    ![ローカル Web UI の [証明書] ページ 7](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-5.png)
 
     ノード証明書をアップロードすることもできます。
 
-    ![ローカル Web UI の [証明書] ページ](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-4.png)
+    ![ローカル Web UI の [証明書] ページ 8](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-4.png)
 
     いつでも、証明書を選択して詳細を表示し、アップロードした証明書と一致していることを確認できます。
 
-    ![ローカル Web UI の [証明書] ページ](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-6.png)
+    ![ローカル Web UI の [証明書] ページ 9](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-6.png)
 
     証明書ページが更新され、新しく追加された証明書が反映されます。
 
-    ![ローカル Web UI の [証明書] ページ](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-7.png)  
+    ![ローカル Web UI の [証明書] ページ 10](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-7.png)  
 
     > [!NOTE]
     > Azure パブリック クラウドを除き、すべてのクラウド構成 (Azure Government または Azure Stack) をアクティブにする前に、署名チェーン証明書を組み込む必要があります。

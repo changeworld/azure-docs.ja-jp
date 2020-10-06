@@ -6,12 +6,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 0e29b25f5d846cae1563ea90271cf007d02e248c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a17546f11db881ecacd39986bcd80d9d63b24644
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324269"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448208"
 ---
 # <a name="quickstart-monitor-an-azure-resource-with-azure-monitor"></a>クイック スタート:Azure Monitor を使用して Azure リソースを監視する
 [Azure Monitor](../overview.md) は、作成された時点から Azure リソースからのデータ収集を開始します。 このクイックスタートでは、リソースについて自動的に収集されるデータを簡単に説明し、特定のリソースの Azure portal でそのデータを表示する方法について説明します。 後で、追加のデータを収集するための構成を追加して Azure Monitor メニューに移動すると、同じツールを使用して、ご利用のサブスクリプション内のすべてのリソースについて収集されたデータにアクセスできます。
@@ -40,11 +40,11 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 1. ご利用のリソースのメニューの上部にある **[アクティビティ ログ]** を選択します。
 2. 現在のフィルターは、ご利用のリソースに関連するイベントに設定されています。 イベントが表示されない場合は、**期間**を変更して時間範囲を長くしてみてください。
 
-    ![アクティビティ ログ](media/quick-monitor-azure-resource/activity-log-resource.png)
+    ![既定のフィルター条件を使用して生成されたリソースの操作の一覧を示す、Azure portal のリソースのアクティビティ ログのスクリーンショット。](media/quick-monitor-azure-resource/activity-log-resource.png)
 
 4. ご利用のサブスクリプション内の他のリソースのイベントを表示する場合は、フィルターの条件を変更するか、フィルターのプロパティを削除します。
 
-    ![アクティビティ ログ](media/quick-monitor-azure-resource/activity-log-all.png)
+    ![変更されたフィルター条件を使用して生成されたリソースの操作の一覧を示す、Azure portal のリソースのアクティビティ ログのスクリーンショット。](media/quick-monitor-azure-resource/activity-log-all.png)
 
 
 
@@ -54,15 +54,15 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 1. ご利用のリソースのメニューの **[監視]** セクションで、 **[メトリックス]** を選択します。 これにより、スコープがご利用のリソースに設定されたメトリックス エクスプローラーが開きます。
 2. **[メトリックの追加]** をクリックして、グラフにメトリックを追加します。
    
-   ![メトリックス エクスプローラー](media/quick-monitor-azure-resource/metrics-explorer-01.png)
+   ![リソースのメトリックを示す、Azure portal のメトリックス エクスプローラーのスクリーンショット。 新しいメトリックを追加するために、[メトリック] ドロップダウンが開いています。](media/quick-monitor-azure-resource/metrics-explorer-01.png)
    
 4. ドロップダウン リストから**メトリック**を選択し、次に**集計方法**を選択します。 これにより、収集された値を各時間間隔でどのようにサンプリングするかを定義します。
 
-    ![メトリックス エクスプローラー](media/quick-monitor-azure-resource/metrics-explorer-02.png)
+    ![リソースのメトリックを示す、Azure portal のメトリックス エクスプローラーのスクリーンショット。 [集計] ドロップダウンが開き、[平均] が選択されています。](media/quick-monitor-azure-resource/metrics-explorer-02.png)
 
 5. **[メトリックの追加]** をクリックして、メトリックと集計の組み合わせをグラフに追加します。
 
-    ![メトリックス エクスプローラー](media/quick-monitor-azure-resource/metrics-explorer-03.png)
+    ![リソースのメトリックを示す、Azure portal のメトリックス エクスプローラーのスクリーンショット。](media/quick-monitor-azure-resource/metrics-explorer-03.png)
 
 
 

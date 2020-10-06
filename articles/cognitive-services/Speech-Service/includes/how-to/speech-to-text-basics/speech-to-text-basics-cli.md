@@ -4,13 +4,15 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/08/2020
 ms.author: trbye
-ms.openlocfilehash: 9c2c46040dd741253e9a68855c4dca89c1dc9a9a
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 905eacc3751b3d5d6c66a2fdb0e1391a747ab895
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89570581"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327130"
 ---
+Speech Service の中核となる機能の 1 つは、人間の音声を認識して文字起こしをする機能です (多くの場合、音声テキスト変換と呼ばれます)。 このクイックスタートでは、アプリや製品で Speech CLI を使用して、高品質の音声テキスト変換を実行する方法について説明します。
+
 [!INCLUDE [SPX Setup](../../spx-setup.md)]
 
 ## <a name="speech-to-text-from-microphone"></a>マイクからの音声テキスト変換

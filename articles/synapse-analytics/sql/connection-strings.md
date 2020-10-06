@@ -10,18 +10,18 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 42a1110b089d5edf9793bf2bb2c699a717a4b1a4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: aa940b00e9c23ab08244ea55c0cd22a8d5f1897f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004971"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289380"
 ---
 # <a name="connection-strings-for-synapse-sql-preview"></a>Synapse SQL (プレビュー) の接続文字列
 
 [ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx)、[ODBC](https://msdn.microsoft.com/library/jj730314.aspx)、[PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)、[JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx) などの各種アプリケーション プロトコルを使用して、Synapse SQL (プレビュー) に接続できます。 各プロトコルの接続文字列の例を以下に示します。 
 
-接続文字列は、Azure ポータルを使用してビルドすることもできます。  Azure Portal を使用して接続文字列をビルドするには、データベースのブレードに移動して、 *[要点]* の下にある *[データベース接続文字列の表示]* をクリックします。
+接続文字列は、Azure ポータルを使用してビルドすることもできます。  Azure portal を使用して接続文字列を作成するには、データベースのブレードに移動して、 *[要点]* の下にある *[データベース接続文字列の表示]* を選択します。
 
 ## <a name="sample-adonet-connection-string"></a>ADO.NET 接続文字列の例
 

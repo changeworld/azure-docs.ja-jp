@@ -8,13 +8,13 @@ ms.topic: overview
 ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2a0751f12f33a36d9e0003977bcf40b66d715615
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.reviewer: jrasnick
+ms.openlocfilehash: 8884f62ba015cc4b33b75a133f21264dac6430e5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986952"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288989"
 ---
 # <a name="access-external-storage-in-synapse-sql-on-demand"></a>Synapse SQL (オンデマンド) で外部ストレージにアクセスする
 
@@ -52,12 +52,12 @@ CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
 GRANT REFERENCES CREDENTIAL::[https://<storage_account>.dfs.core.windows.net/<container>] TO sqluser
 ```
 
-URL に一致するサーバーレベルの資格情報がない場合、または SQL ユーザーがこの資格情報に対する参照権限を持っていない場合は、エラーが返されます。 SQL プリンシパルでは、何らかの Azure AD ID を使用して偽装することはできません。
+URL に一致するサーバーレベルの資格情報がない場合、または SQL ユーザーがこの資格情報に対する参照権限を持っていない場合は、エラーが返されます。 SQL プリンシパルでは、何かの Azure AD ID を使用して偽装することはできません。
 
 ### <a name="direct-access"></a>[直接アクセス](#tab/direct-access)
 
 特別な設定を行わなくても、Azure AD ユーザーはその ID を使用してファイルにアクセスすることができます。
-匿名アクセスを許可する Azure Storage には、すべてのユーザーがアクセスできます (特別な設定は必要ありません)。
+匿名アクセスを許可する Azure ストレージには、すべてのユーザーがアクセスできます (特別な設定は必要ありません)。
 
 ---
 
@@ -116,7 +116,7 @@ CREATE EXTERNAL DATA SOURCE MyAzureInvoices
 
 テーブルを読み取る権限を持つユーザーは、Azure Storage のフォルダーとファイルのセット上に作成された EXTERNAL TABLE を使用して外部ファイルにアクセスできます。
 
-[外部テーブルを作成するための権限](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=sql-server-ver15#permissions) (CREATE TABLE、ALTER ANY CREDENTIAL、REFERENCES DATABASE SCOPED CREDENTIAL など) を持つユーザーは、次のスクリプトを使用して、Azure Storage データソース上にテーブルを作成できます。
+[外部テーブルを作成するための権限](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=sql-server-ver15#permissions&preserve-view=true) (CREATE TABLE、ALTER ANY CREDENTIAL、REFERENCES DATABASE SCOPED CREDENTIAL など) を持つユーザーは、次のスクリプトを使用して、Azure Storage データソース上にテーブルを作成できます。
 
 ```sql
 CREATE EXTERNAL TABLE [dbo].[DimProductexternal]

@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/24/2020
-ms.openlocfilehash: 37bf610d1ecc6a05e8dd142ff3d72dd9ed72e51f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 407183837f7be01f5182ff0890426170da223161
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087766"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363173"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>チュートリアル:DMS を使用して Oracle を Azure Database for PostgreSQL にオンラインで移行する (プレビュー)
 
@@ -214,11 +214,11 @@ Azure Database Migration Service を使用したデータ移動を開始する�
 
 1. Oracle から Azure Database for PostgreSQL への新しい移行プロジェクトを作成するとき、[スキーマの選択] ステップでターゲット データベースとターゲット スキーマを選択するように求められます。 ターゲット データベースとターゲット スキーマを入力します。
 
-   ![ポータルのサブスクリプションの表示](media/tutorial-oracle-azure-postgresql-online/dms-map-to-target-databases.png)
+   ![[ターゲット データベースへマッピング] のスクリーンショット。](media/tutorial-oracle-azure-postgresql-online/dms-map-to-target-databases.png)
 
 2. **[移行の設定]** 画面に Oracle ソース内のテーブルが一覧表示されます。 Azure Database Migration Service は、テーブル名に基づいてソース テーブルとターゲット テーブルの照合を試みます。 一致するものの大文字と小文字が異なるターゲット テーブルが複数存在した場合は、マップ先となるターゲット テーブルを選択することができます。
 
-    ![ポータルのサブスクリプションの表示](media/tutorial-oracle-azure-postgresql-online/dms-migration-settings.png)
+    ![[移行の設定] のスクリーンショット](media/tutorial-oracle-azure-postgresql-online/dms-migration-settings.png)
 
 > [!NOTE]
 > ソース テーブルの名前を別の名前のテーブルにマップする必要がある場合は、メール [dmsfeedback@microsoft.com](mailto:dmsfeedbac@microsoft.com) でご連絡ください。そのプロセスを自動化するスクリプトを Microsoft が提供いたします。

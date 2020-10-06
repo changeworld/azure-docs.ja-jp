@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: 0269d870f55f7246529b9d98608e5a325b6cf468
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: d82e9244152f1ecb78b062b4b1dbf02c45c505a1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569528"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325659"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor のドキュメントの最新情報
 
@@ -19,9 +19,67 @@ ms.locfileid: "89569528"
 
 ## <a name="august-2020"></a>2020 年 8 月
 
-### <a name="containers"></a>Containers
+### <a name="general"></a>全般
 
+- [Azure Monitor によって監視される内容](monitor-reference.md) - Azure Monitor エージェントを含むように更新されました。
+
+
+### <a name="agents"></a>エージェント
+- [Azure Monitor エージェントの概要](platform/azure-monitor-agent-overview.md) - 新しい記事。
+- [ハイブリッド環境向けに Azure Monitor を有効にする](insights/vminsights-enable-hybrid.md) - 依存関係エージェントのバージョンが更新されました。
+- [Azure 監視エージェントの概要](platform/agents-overview.md) - Azure Monitor エージェントを追加し、サポートされている OS の表をまとめました。
+
+
+#### <a name="new-and-updated-articles-from-restructure-of-agent-content"></a>エージェントに関するコンテンツの再構成による新規および更新された記事
+- [Azure Monitor for VMs の有効化の概要](insights/vminsights-enable-overview.md)
+- [Linux コンピューターに Log Analytics エージェントをインストールする](platform/agent-linux.md)
+- [Windows コンピューターに Log Analytics エージェントをインストールする](platform/agent-windows.md)
+- [Log Analytics エージェントの概要](platform/log-analytics-agent.md)
+
+### <a name="application-insights"></a>Application Insights
+- [JavaScript Web アプリのための Azure Application Insights](app/javascript.md) - 追加したセクションでは、クライアントとサーバーの相関関係と、CORS の相関関係の構成を明確にしました。
+- [Azure Monitor Application Insights の新しいワークスペースベースのリソースを作成する](app/create-workspace-resource.md) - ワークスペースベースのアプリケーションによって提供される機能を追加しました。
+- [Application Insights および Log Analytics によって使用される IP アドレス](app/ip-addresses.md) - ライブ メトリックス ストリームの IP アドレスを更新しました。
+- [Java アプリケーションを任意の環境で監視する - Azure Monitor Application Insights](app/java-in-process-agent.md) - サポートされるカスタム テレメトリの表を追加しました。
+- [Application Insights JavaScript SDK の Native React プラグイン](app/javascript-react-native-plugin.md) - 新しい記事。
+- [Application Insights JavaScript SDK の React プラグイン](app/javascript-react-plugin.md) - 新しい記事。
+- [Application Insights の監視機能を備えた Azure Functions アプリを作成するための Resource Manager テンプレートのサンプル](samples/resource-manager-function-app.md) - 新しい記事。
+- [Application Insights 監視機能を備えた Azure App Service Web アプリを作成するための Resource Manager テンプレート サンプル](samples/resource-manager-web-app.md) - 新しい記事。
+- [Azure Application Insights による利用状況分析](app/usage-overview.md) - ビデオを追加しました。
+
+### <a name="autoscale"></a>自動スケール
+- [Azure での自動スケーリングの使用](platform/autoscale-get-started.md) - App Service の正常なインスタンスへのルーティングに関するセクションを追加しました。
+
+### <a name="data-collection"></a>データ コレクション
+- [Azure Monitor エージェント用のデータ収集の構成 (プレビュー)](platform/data-collection-rule-azure-monitor-agent.md) - 新しい記事。
+- [Azure Monitor のデータ収集ルール (プレビュー)](platform/data-collection-rule-overview.md) - 新しい記事。
+
+
+### <a name="containers"></a>Containers
 - [Azure Monitor for containers によるデプロイと HPA メトリック](insights/container-insights-deployment-hpa-metrics.md) - 新しい記事。
+
+### <a name="insights"></a>洞察
+- [Azure Monitor の監視ソリューション](insights/solutions.md) - 新しい UI について更新しました。
+- [Azure の Network Performance Monitor ソリューション](insights/network-performance-monitor.md) - サポートされるワークスペース リージョンを追加しました。
+
+
+### <a name="logs"></a>ログ
+- [Azure Monitor に関する FAQ](faq.md) - ワークスペースからデータを削除するためのエントリが追加されました。 502 および 503 応答に関するエントリを追加しました。
+  - [Azure Monitor ログのデプロイの設計](platform/design-logs-deployment.md) - インジェスト ボリューム レートの制限に関するセクションを更新しました。
+- [Azure Monitor ログの使用状況とコストの管理](platform/manage-cost-storage.md) - 使用状況クエリをより効率的なクエリ形式に更新しました。
+- [Azure Monitor でログ クエリを最適化する](log-query/query-optimization.md) - パフォーマンス指標に固有の値を追加しました。
+- [診断設定用の Resource Manager テンプレートのサンプル](samples/resource-manager-diagnostic-settings.md) - ログ クエリの監査ログのサンプルを追加しました。
+
+
+### <a name="platform-logs"></a>プラットフォーム ログ
+- [プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する](platform/diagnostic-settings.md) - 診断設定のリージョン要件を追加しました。
+
+### <a name="visualizations"></a>視覚化
+- [Azure Monitor ブックの概要](platform/workbooks-overview.md) - ビデオを追加しました。
+- [Azure ブック テンプレートを別のリージョンに移動する](platform/workbook-templates-move-region.md) - 新しい記事。
+- [Azure ブックを別のリージョンに移動する](platform/workbooks-move-region.md) - 新しい記事。
+
+
 
 ## <a name="july-2020"></a>2020 年 7 月
 
@@ -500,7 +558,6 @@ Azure Monitor for VMs の一般提供に関する全般的な更新
 - [ワーカー サービス アプリ (非 HTTP アプリ) 向け Application Insights](app/worker-service.md) - C# コードに既定のログ レベルを追加しました。 パッケージの参照バージョンを更新しました。
 - [ApplicationInsights.config リファレンス - Azure](app/configuration-with-applicationinsights-config.md) - サンプル コードを更新しました。
 - [PowerShell での Azure Application Insights の自動化](app/powershell.md) - Resource Manager テンプレートへの更新。
-- [Azure Monitor Application Insights NuGet パッケージ](app/nuget.md) - パッケージのバージョンを更新しました。
 - [新しい Azure Application Insights リソースの作成](app/create-new-resource.md) - グローバルに一意の名前についての注意を追加しました。
 - [Live Metrics Stream による診断 - Azure Application Insights](app/live-stream.md) - ASP.NET Core SDK バージョンの要件を更新しました。
 - [Application Insights のイベント カウンター](app/eventcounters.md) - customMetrics のカテゴリとテーブルを更新しました。

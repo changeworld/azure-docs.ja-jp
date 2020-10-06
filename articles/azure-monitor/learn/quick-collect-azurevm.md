@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 08/19/2019
 ms.custom: mvc, sec-javascript-october2019
-ms.openlocfilehash: 91a4e2f6a770282e9d031c31fdf1af15f0cd00bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fb7a32199117be76e411155910d558ef187398ab
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067549"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448264"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Azure Monitor を使用して Azure 仮想マシンからデータを収集する
 
@@ -87,7 +87,7 @@ Azure Monitor は、Windows イベント ログまたは Linux Syslog からイ�
 
 7. 新しい Log Analytics ワークスペースの Windows パフォーマンス カウンターを初めて構成する場合は、いくつかの一般的なカウンターをすばやく作成するためのオプションが表示されます。 それぞれのオプションの横には、チェック ボックスが表示されます。
 
-    ![既定の Windows パフォーマンス カウンターが選択されている状態](media/quick-collect-azurevm/windows-perfcounters-default.png)
+    ![選択したカウンターの一覧が表示され、[選択したパフォーマンス カウンターを追加する] ボタンが選択されている [Windows パフォーマンス カウンター] ペインのスクリーンショット。](media/quick-collect-azurevm/windows-perfcounters-default.png)
 
     **[選択したパフォーマンス カウンターを追加する]** を選択します。  カウンターが追加され、10 秒間の収集サンプル間隔でプリセットされます。
   
@@ -107,7 +107,7 @@ Azure Monitor は、Windows イベント ログまたは Linux Syslog からイ�
 
 6. 新しい Log Analytics ワークスペースの Linux パフォーマンス カウンターを初めて構成する場合は、いくつかの一般的なカウンターをすばやく作成するためのオプションが表示されます。 それぞれのオプションの横には、チェック ボックスが表示されます。
 
-    ![既定の Windows パフォーマンス カウンターが選択されている状態](media/quick-collect-azurevm/linux-perfcounters-azure-monitor.png)
+    ![選択したカウンターの一覧が表示され、[選択したパフォーマンス カウンターを追加する] ボタンが選択されている [Linux パフォーマンス カウンター] ペインのスクリーンショット。](media/quick-collect-azurevm/linux-perfcounters-azure-monitor.png)
 
     **[下の構成をコンピューターに適用する]** を選択し、 **[選択したパフォーマンス カウンターを追加する]** を選択します。  カウンターが追加され、10 秒間の収集サンプル間隔でプリセットされます。  
 

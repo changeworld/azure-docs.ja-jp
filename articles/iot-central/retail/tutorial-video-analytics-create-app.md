@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 07/31/2020
-ms.openlocfilehash: b98406984f2c9f2adfca030369a6ea3d47a786f3
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: c7ddff70d24fe87380c4bf1439811042418ac76a
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762779"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369571"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central"></a>チュートリアル:Azure IoT Central でビデオ分析 (物体とモーションの検出) アプリケーションを作成する
 
@@ -111,7 +111,7 @@ Media Services アカウントを作成する際:
 
 1. **［作成］** を選択します
 
-    :::image type="content" source="./media/tutorial-video-analytics-create-app/new-application.png" alt-text="Azure IoT Central の [Create Application]\(アプリケーションの作成\) ページ":::
+    :::image type="content" source="./media/tutorial-video-analytics-create-app/new-application.png" alt-text="AMS 用の AAD アプリを構成する":::
 
 ### <a name="retrieve-the-configuration-data"></a>構成データを取得する
 
@@ -119,17 +119,11 @@ Media Services アカウントを作成する際:
 
 **[管理]** セクションで **[お客様のアプリケーション]** を選択し、 **[アプリケーション URL]** と **[アプリケーション ID]** を *scratchpad.txt* ファイルに書き留めます。
 
-:::image type="content" source="./media/tutorial-video-analytics-create-app/administration.png" alt-text="管理":::
+:::image type="content" source="./media/tutorial-video-analytics-create-app/administration.png" alt-text="AMS 用の AAD アプリを構成する":::
 
 **[API トークン]** を選択し、**オペレーター** ロール用に **LVAEdgeToken** という新しいトークンを生成します。
 
-:::image type="content" source="./media/tutorial-video-analytics-create-app/token.png" alt-text="トークンの生成":::
-
-このトークンを後で使用できるよう、*scratchpad.txt* ファイルに書き留めます。 ダイアログを閉じた後に、再びトークンを確認することはできません。
-
-**[管理]** セクションで **[デバイス接続]** を選択し、 **[SAS-IoT-Devices]** を選択します。
-
-*scratchpad.txt* ファイルにデバイスの**プライマリ キー**を書き留めます。 この "*プライマリ グループ Shared Access Signature トークン*" は、後で IoT Edge デバイスを構成する際に使用します。
+:::image type="content" source="./media/tutorial-video-analytics-create-app/token.png" alt-text="AMS 用の AAD アプリを構成する" は、後で IoT Edge デバイスを構成する際に使用します。
 
 ## <a name="edit-the-deployment-manifest"></a>配置マニフェストを編集する
 
@@ -221,7 +215,7 @@ Yolov3 モジュールは、ハードウェアによって最適化された Int
 
     まだ配置マニフェストを参照しないでください。 そのようにした場合、デプロイ ウィザードによって各モジュールのインターフェイスが要求されますが、インターフェイスを公開する必要があるのは **LvaEdgeGatewayModule** だけです。 マニフェストは、後続の手順でアップロードします。
 
-    :::image type="content" source="./media/tutorial-video-analytics-create-app/upload-deployment-manifest.png" alt-text="配置マニフェストをアップロードしない":::
+    :::image type="content" source="./media/tutorial-video-analytics-create-app/upload-deployment-manifest.png" alt-text="AMS 用の AAD アプリを構成する":::
 
     **確認\)** をクリックします。
 
@@ -237,7 +231,7 @@ Yolov3 モジュールは、ハードウェアによって最適化された Int
 
 **[LVA Edge Gateway]** ページで、 **[+ Replace manifest]\(+ マニフェストを置き換える\)** を選択します。
 
-:::image type="content" source="./media/tutorial-video-analytics-create-app/replace-manifest.png" alt-text="マニフェストを置き換える":::
+:::image type="content" source="./media/tutorial-video-analytics-create-app/replace-manifest.png" alt-text="AMS 用の AAD アプリを構成する":::
 
 *lva-configuration* フォルダーに移動し、先ほど編集した *deployment.amd64.json* マニフェスト ファイルを選択します。 **[アップロード]** を選択します。 検証が完了したら、 **[Replace]\(置き換え\)** を選択します。
 
@@ -252,7 +246,7 @@ Yolov3 モジュールは、ハードウェアによって最適化された Int
 
 次に、 **[保存]** を選択します。
 
-:::image type="content" source="media/tutorial-video-analytics-create-app/relationships.png" alt-text="リレーションシップの追加":::
+:::image type="content" source="media/tutorial-video-analytics-create-app/relationships.png" alt-text="AMS 用の AAD アプリを構成する":::
 
 ### <a name="add-views"></a>ビューを追加する
 
@@ -274,7 +268,7 @@ Yolov3 モジュールは、ハードウェアによって最適化された Int
     * **[System Heartbeat]\(システム ハートビート\)** のテレメトリを表示する最後の既知の値タイル (1x1)。
     * **[Connected Cameras]\(接続されているカメラ\)** のテレメトリを表示する最後の既知の値タイル (1x1)。
 
-    :::image type="content" source="media/tutorial-video-analytics-create-app/gateway-dashboard.png" alt-text="ダッシュボード":::
+    :::image type="content" source="media/tutorial-video-analytics-create-app/gateway-dashboard.png" alt-text="AMS 用の AAD アプリを構成する":::
 
 1. **[保存]** を選択します。
 

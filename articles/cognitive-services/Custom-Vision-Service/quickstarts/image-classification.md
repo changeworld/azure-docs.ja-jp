@@ -1,20 +1,22 @@
 ---
-title: クイック スタート:Custom Vision クライアント ライブラリを使用して画像の分類を作成する
-description: クイック スタート:Custom Vision SDK を使用して、プロジェクトの作成、タグの追加、画像のアップロード、プロジェクトのトレーニング、予測を行います。
+title: 'クイックスタート: Custom Vision クライアント ライブラリを使用した画像分類'
+titleSuffix: Azure Cognitive Services
+description: 'クイックスタート: Custom Vision クライアント ライブラリを使用して、プロジェクトの作成、タグの追加、画像のアップロード、プロジェクトのトレーニング、予測を行う'
 author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/17/2020
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.date: 09/14/2020
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
+keywords: カスタムビジョン, 画像認識, 画像認識アプリ, 画像分析, 画像認識ソフトウェア
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 805a88824d0fdf3102fb56ebcb02eb0d6dfa36bc
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6583086c4b64c50f0cbef1fc12b7f4dc9e36be1f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919380"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321062"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-client-library"></a>クイック スタート:Custom Vision クライアント ライブラリを使って画像分類プロジェクトを作成する
 

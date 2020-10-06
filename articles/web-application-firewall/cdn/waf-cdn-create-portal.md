@@ -5,14 +5,14 @@ author: vhorne
 ms.service: web-application-firewall
 services: web-application-firewall
 ms.topic: tutorial
-ms.date: 03/18/2020
+ms.date: 09/16/2020
 ms.author: victorh
-ms.openlocfilehash: 7a9e0cc3977892fd899b4a25e17ad72f13481506
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: c5505b9437a4bd8dced6a090817b17d5e29374f2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608815"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327940"
 ---
 # <a name="tutorial-create-a-waf-policy-on-azure-cdn-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure CDN の WAF ポリシーを作成する
 
@@ -72,17 +72,22 @@ WAF の動作を確認するには、モードの設定を *[検出]* から *[�
 
 次のスクリーンショットは、クエリ文字列に **blockme** という値が含まれている場合に要求をブロックするカスタム一致ルールを示しています。
 
-![WAF ポリシー モードを変更する](../media/waf-cdn-create-portal/custommatch.png)
+![カスタム一致ルールの追加](../media/waf-cdn-create-portal/custommatch.png)
 
 レート制限ルールには、次の例に示すように、 **[レート制限の期間]** と **[レート制限のしきい値 (要求数)]** という 2 つの追加フィールドが必要です。
 
-![WAF ポリシー モードを変更する](../media/waf-cdn-create-portal/customrate.png)
+![レート制限ルールの追加](../media/waf-cdn-create-portal/customrate.png)
 
 ### <a name="default-rule-set-drs"></a>既定の規則セット (DRS)
 
 Azure で管理される既定の規則セットは既定で有効になります。 ルール グループ内の個々のルールを無効にするには、そのルール グループ内のルールを展開し、ルール番号の前のチェック ボックスをオンにして、上のタブの **[無効]** を選択します。 規則セット内の個々の規則のアクションの種類を変更するには、規則番号の前にあるチェック ボックスをオンにして、上のタブの **[Change action]\(アクションの変更\)** を選択します。
 
  ![WAF 規則セットを変更する](../media/waf-cdn-create-portal/managed2.png)
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+リソース グループおよび関連するすべてのリソースは、不要になったら削除します。
+
 
 ## <a name="next-steps"></a>次のステップ
 

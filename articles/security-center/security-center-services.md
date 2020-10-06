@@ -8,17 +8,17 @@ manager: rkarlin
 ms.assetid: 870ebc8d-1fad-435b-9bf9-c477f472ab17
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: db0c5890add303d85bdec76e00b8377567226a38
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 61e5c60317bf872b8e27a7bd2edea7247e01a3b8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904709"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439410"
 ---
 # <a name="feature-coverage-for-machines"></a>マシンを対象とする機能
 
@@ -42,12 +42,12 @@ ms.locfileid: "90904709"
 |[アダプティブ ネットワークのセキュリティ強化機能](security-center-adaptive-network-hardening.md)|✔|-|-|はい|
 |[規制へのコンプライアンス ダッシュボードおよびレポート](security-center-compliance-dashboard.md)|✔|✔|✔|はい|
 |Docker でホストされている IaaS コンテナーに対する推奨事項と脅威の防止|-|-|-|はい|
-|足りない OS パッチの評価|✔|✔|✔|Azure: Free<br><br>Azure 以外: はい|
+|足りない OS パッチの評価|✔|✔|✔|Azure: いいえ<br><br>Azure 以外: はい|
 |セキュリティの誤った構成の評価|✔|✔|✔|Azure: いいえ<br><br>Azure 以外: はい|
 |[エンドポイント保護の評価](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: いいえ<br><br>Azure 以外: はい|
-|ディスク暗号化の評価|✔|✔|-|Free|
-|サードパーティの脆弱性評価|✔|-|-|Free|
-|[ネットワーク セキュリティ評価](security-center-network-recommendations.md)|✔|✔|-|Free|
+|ディスク暗号化の評価|✔</br>([サポートされるシナリオ](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)の場合)|✔|-|いいえ|
+|サードパーティの脆弱性評価|✔|-|-|いいえ|
+|[ネットワーク セキュリティ評価](security-center-network-recommendations.md)|✔|✔|-|いいえ|
 
 
 ### <a name="linux-machines"></a>[**Linux マシン**](#tab/features-linux)
@@ -66,12 +66,12 @@ ms.locfileid: "90904709"
 |[アダプティブ ネットワークのセキュリティ強化機能](security-center-adaptive-network-hardening.md)|✔|-|-|はい|
 |[規制へのコンプライアンス ダッシュボードおよびレポート](security-center-compliance-dashboard.md)|✔|✔|✔|はい|
 |Docker でホストされている IaaS コンテナーに対する推奨事項と脅威の防止|✔|✔|✔|はい|
-|足りない OS パッチの評価|✔|✔|✔|Azure: Free<br><br>Azure 以外: はい|
-|セキュリティの誤った構成の評価|✔|✔|✔|Azure: Free<br><br>Azure 以外: はい|
-|[エンドポイント保護の評価](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Free|
-|ディスク暗号化の評価|✔|✔|-|Free|
-|サードパーティの脆弱性評価|✔|-|-|Free|
-|[ネットワーク セキュリティ評価](security-center-network-recommendations.md)|✔|✔|-|Free|
+|足りない OS パッチの評価|✔|✔|✔|Azure: いいえ<br><br>Azure 以外: はい|
+|セキュリティの誤った構成の評価|✔|✔|✔|Azure: いいえ<br><br>Azure 以外: はい|
+|[エンドポイント保護の評価](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|いいえ|
+|ディスク暗号化の評価|✔</br>([サポートされるシナリオ](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)の場合)|✔|-|いいえ|
+|サードパーティの脆弱性評価|✔|-|-|いいえ|
+|[ネットワーク セキュリティ評価](security-center-network-recommendations.md)|✔|✔|-|いいえ|
 
 --- 
 
@@ -93,9 +93,9 @@ ms.locfileid: "90904709"
 |------|------|-----|-----|
 | Microsoft Defender ウイルス対策| Windows Server 2016 以降| いいえ、OS に組み込まれている| はい |
 | System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2、2012、2008 R2 (下記の注を参照) | 拡張機能を介して | はい |
-| Trend Micro – Deep Security | Windows Server ファミリ  | × | はい |
-| Symantec v12.1.1100 以降| Windows Server ファミリ  | × | ○ |
-| McAfee v10 以降 | Windows Server ファミリ  | × | ○ |
+| Trend Micro – Deep Security | Windows Server ファミリ  | いいえ | はい |
+| Symantec v12.1.1100 以降| Windows Server ファミリ  | いいえ | はい |
+| McAfee v10 以降 | Windows Server ファミリ  | いいえ | はい |
 | McAfee v10 以降 | Linux Server ファミリ  | いいえ | はい **\*** |
 | Sophos V9+| Linux Server ファミリ  | いいえ | はい  **\***  |
 

@@ -1,0 +1,61 @@
+---
+ms.openlocfilehash: c3c5b8ef94b507cad433e587c9ebfc2ec16c0ff9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440397"
+---
+## <a name="add-secret-manager"></a>シークレット マネージャーを追加する
+
+シークレット マネージャーというツールは、開発作業の機密データをプロジェクト ツリーの外部に格納します。 これにより、ソース コード内のアプリ シークレットが偶発的に共有されるのを防止できます。 ASP.NET Core プロジェクトでシークレット マネージャーを使用できるようにするには、次の手順を実行します。
+
+#### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
+
+プロジェクトのルート ディレクトリに移動し、次のコマンドを実行して、プロジェクトのシークレット ストレージを有効にします。
+
+```dotnetcli
+dotnet user-secrets init
+```
+
+GUID を含んだ `UserSecretsId` 要素が *.csproj* ファイルに追加されます。
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk.Web">
+    
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <UserSecretsId>79a3edd0-2092-40a2-a04d-dcb46d5ca9ed</UserSecretsId>
+    </PropertyGroup>
+
+</Project>
+```
+
+#### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
+
+1. *.csproj* ファイルを開きます。
+
+1. 次のように `UserSecretsId` 要素を *.csproj* ファイルに追加します。 同じ GUID を使用することも、この値を独自の値に置き換えることもできます。
+
+    ```xml
+    <Project Sdk="Microsoft.NET.Sdk.Web">
+    
+        <PropertyGroup>
+            <TargetFramework>netcoreapp2.1</TargetFramework>
+            <UserSecretsId>79a3edd0-2092-40a2-a04d-dcb46d5ca9ed</UserSecretsId>
+        </PropertyGroup>
+    
+        <ItemGroup>
+            <PackageReference Include="Microsoft.AspNetCore.App" />
+            <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+        </ItemGroup>
+    
+    </Project>
+    ```
+    
+1. *.csproj* ファイルを保存します。
+
+---
+
+> [!TIP]
+> シークレット マネージャーの詳細については、「[ASP.NET Core での開発におけるアプリ シークレットの安全な保存](/aspnet/core/security/app-secrets)」を参照してください。

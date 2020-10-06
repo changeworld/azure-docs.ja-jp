@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: philmea
-ms.openlocfilehash: eaca93ac8a4e8c660be9618aefb27921a4e0a2eb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8309b625a590131c5f521335e180967ab2c2667c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77565580"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363156"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>チュートリアル:接続されたデバイスを一括管理する
 
@@ -147,7 +147,7 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 1. アップロードが完了したら、IoT DevKit デバイスを再起動します。 再起動が完了すると、IoT DevKit の画面に、**FW version: 1.0.0** と、新しいファームウェアをチェックしていることが表示されます。
 
-    ![ota-1](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-1.jpg)
+    ![IoT DevKit デバイスの写真。スクリーンにファームウェア バージョンが表示され、新しいファームウェアをチェックしている。](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-1.jpg)
 
 ## <a name="create-a-device-configuration"></a>デバイス構成を作成する
 
@@ -248,30 +248,30 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 数分経つと、IoT DevKit で新しいファームウェア情報が取得されて、デバイスへのダウンロードが開始されます。
 
-![ota-2](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-2.jpg)
+![IoT DevKit デバイスの写真。スクリーンには、新しいファームウェア バージョンのダウンロード中と表示されている。](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-2.jpg)
 
 ネットワークの速度によっては、ダウンロードに数分かかる場合があります。 ファームウェアのダウンロード後、デバイスでファイルのサイズと CRC 値が検証されます。 検証が成功した場合、MXChip の画面に **[passed]** と表示されます。
 
-![ota-3](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-3.jpg)
+![IoT DevKit デバイスの写真。スクリーンにファームウェア バージョンと検証に成功したことを示すメッセージが表示されている。](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-3.jpg)
 
 確認が成功した場合、デバイスは再起動します。 再起動が行われる前に、**5** から **0** までカウントダウンされます。
 
-![ota-4](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-4.jpg)
+![IoT DevKit デバイスの写真。再起動の準備中。](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-4.jpg)
 
 再起動の後、IoT DevKit のブートローダーによってファームウェアが新しいバージョンにアップグレードされます。 アップグレードには数秒かかる場合があります。 このステージの間、デバイスの RGB LED は赤に、画面は空白になります。
 
-![ota-5](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-5.jpg)
+![IoT DevKit デバイスの写真。アップグレードの実行中。 ディスプレイには何も表示されていないが、RGB LED が赤く点灯している。](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-5.jpg)
 
 再起動が完了すると、IoT DevKit デバイスではファームウェアのバージョン 1.0.1 が実行されています。
 
-![ota-6](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-6.jpg)
+![IoT DevKit デバイスの写真。スクリーンには、新しいファームウェア バージョンが表示されている。](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-6.jpg)
 
 **[Deployments]\(デプロイ\)** ページで、デプロイをクリックして、更新されたデバイスの状態を確認します。 デバイス グループ内の各デバイスの状態と、定義したカスタム メトリックを確認できます。
 
-![デプロイ詳細](media/iot-accelerators-remote-monitoring-bulk-configuration-update/deploymentstatus.png)
+![展開の詳細](media/iot-accelerators-remote-monitoring-bulk-configuration-update/deploymentstatus.png)
 
 [!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、ソリューションに接続されているデバイスのグループのファームウェアを更新する方法を示しました。 デバイスを更新するため、ソリューションではデバイスの自動管理が使用されます。 ソリューションの基になっている IoT ハブでの自動デバイス管理機能について詳しくは、「[Azure portal を使って多数の IoT デバイスを構成および監視する](../iot-hub/iot-hub-auto-device-config.md)」をご覧ください。

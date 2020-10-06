@@ -10,12 +10,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
-ms.openlocfilehash: 05103052308b6dbf1314348f7d45abc9cba79827
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 552b3f55632e817cc4669ce5da41b1e127c7d808
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84706442"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283872"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>チュートリアル:Azure AD サーバー プリンシパル (ログイン) を使用した Azure SQL Managed Instance のセキュリティ
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -104,7 +104,7 @@ SQL Managed Instance に接続する例については、以下の記事を参�
     GO
     ```
 
-    ![native-login.png](./media/aad-security-configure-tutorial/native-login.png)
+    ![SSMS オブジェクト エクスプローラーの [結果] タブのスクリーンショット。新しく追加されたログインの name、principal_id、sid、type、および type_desc が表示されています。](./media/aad-security-configure-tutorial/native-login.png)
 
 詳細については、「[CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)」を参照してください。
 
@@ -153,13 +153,13 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
    - Active Directory - パスワード
    - Active Directory - 統合 </br>
 
-     ![ssms-login-prompt.png](./media/aad-security-configure-tutorial/ssms-login-prompt.png)
+     ![SSMS の [サーバーへの接続] ダイアログのスクリーンショット。[認証] ドロップダウンで [Active Directory - MFA サポートで汎用] が選択されています。](./media/aad-security-configure-tutorial/ssms-login-prompt.png)
 
      詳細については、[ユニバーサル認証 (Multi-Factor Authentication 対応の SSMS サポート)](../database/authentication-mfa-ssms-overview.md) に関するページを参照してください。
 
 1. **[Active Directory - MFA サポートで汎用]** を選択します。 これで、Multi-Factor Authentication のログイン ウィンドウが表示されます。 Azure AD のパスワードを使ってサインインします。
 
-    ![mfa-login-prompt.png](./media/aad-security-configure-tutorial/mfa-login-prompt.png)
+    ![Multi-Factor Authentication のログイン ウィンドウのスクリーンショット。[パスワードの入力] フィールドにカーソルがあります。](./media/aad-security-configure-tutorial/mfa-login-prompt.png)
 
 1. SSMS の**オブジェクト エクスプローラー**で、サーバーを右クリックし、 **[新しいクエリ]** を選択します。
 1. クエリ ウィンドウで、次の構文を使用して、別の Azure AD アカウント用のログインを作成します。
@@ -222,7 +222,7 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
 
 **MyMITestDB** という名前のデータベースと、既定のアクセス許可のみを持つログインを作成したので、次の手順では、そのログインからユーザーを作成します。 この時点では、ログインはマネージド インスタンスに接続し、すべてのデータベースを表示できますが、そのデータベースを操作することはできません。 既定のアクセス許可を持つ Azure AD アカウントでサインインし、新しく作成したデータベースを展開しようとすると、次のエラーが表示されます。
 
-![ssms-db-not-accessible.png](./media/aad-security-configure-tutorial/ssms-db-not-accessible.png)
+![SSMS オブジェクト エクスプローラー ウィンドウのエラー メッセージのスクリーンショット。"The database MyMITestDB is not accessible. (ObjectExplorer) (データベース MyMITestDB にアクセスできません。(ObjectExplorer))" と表示されています。](./media/aad-security-configure-tutorial/ssms-db-not-accessible.png)
 
 データベースのアクセス許可の付与の詳細については、「[データベース エンジンの権限の概要](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions)」を参照してください。
 
@@ -326,7 +326,7 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
 1. `db_datareader` ロールに追加されたユーザーを使用して、マネージド インスタンスへの新しい接続を作成します。
 1. **オブジェクト エクスプローラー**でデータベースを展開してテーブルを表示します。
 
-    ![ssms-test-table.png](./media/aad-security-configure-tutorial/ssms-test-table.png)
+    ![MyMITestDB の [テーブル] のフォルダー構造を示す SSMS のオブジェクト エクスプローラーのスクリーンショット。 dbo.TestTable folder フォルダーが強調表示されています。](./media/aad-security-configure-tutorial/ssms-test-table.png)
 
 1. 新しいクエリ ウィンドウを開き、次の SELECT ステートメントを実行します。
 
@@ -337,7 +337,7 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
 
     テーブルのデータを確認できますか。 列が返されていることがわかるはずです。
 
-    ![ssms-test-table-query.png](./media/aad-security-configure-tutorial/ssms-test-table-query.png)
+    ![SSMS のオブジェクト エクスプローラーのスクリーンショット。テーブルの列ヘッダー、AccountNum、City、Name、State が表示されています。](./media/aad-security-configure-tutorial/ssms-test-table-query.png)
 
 ## <a name="impersonate-azure-ad-server-level-principals-logins"></a>Azure AD サーバーレベル プリンシパル (ログイン) を偽装する
 
