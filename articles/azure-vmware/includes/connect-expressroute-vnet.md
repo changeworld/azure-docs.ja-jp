@@ -3,12 +3,12 @@ title: ExpressRoute を仮想ネットワーク ゲートウェイに接続す�
 description: ExpressRoute を仮想ネットワーク ゲートウェイに接続する手順。
 ms.topic: include
 ms.date: 09/28/2020
-ms.openlocfilehash: 241919e3a69b8d1c3c24e6c894bcbf20aea62d5f
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 214ef9c01193b238c8e456ef2809f7a2edbdb6c7
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578353"
+ms.locfileid: "91598162"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-configure-networking.md -->
 
@@ -16,7 +16,7 @@ ms.locfileid: "91578353"
 
 1. 承認キーをコピーします。 承認キーがない場合は作成する必要があります。 **[+ Request an authorization key]\(+ 承認キーの要求\)** を選択します。
 
-   :::image type="content" source="../media/expressroute-global-reach/start-request-auth-key.png" alt-text="認可キーをコピーします。承認キーがない場合は作成する必要があります。[+ Request an authorization key]\(+ 承認キーの要求\) を選択します。" border="true":::
+   :::image type="content" source="../media/expressroute-global-reach/start-request-auth-key.png" alt-text="認可キーをコピーします。承認キーがない場合は作成する必要があります。[+ Request an authorization key]\(+ 承認キーの要求\) を選択します。" border="true" lightbox="../media/expressroute-global-reach/start-request-auth-key.png":::
 
 1. 前の手順で作成した仮想ネットワーク ゲートウェイに移動し、 **[設定]** の下の **[接続]** を選択します。 **[接続]** ページで、 **[+ 追加]** を選択します。
 
@@ -31,6 +31,6 @@ ms.locfileid: "91578353"
    | **承認キー**  | リソース グループの [ExpressRoute] タブで承認キーをコピーし、貼り付けます。 |
    | **ピア回線の URI**  | リソース グループの [ExpressRoute] タブで ExpressRoute ID をコピーし、貼り付けます。  |
 
-   :::image type="content" source="../media/expressroute-global-reach/open-cloud-shell.png" alt-text="認可キーをコピーします。承認キーがない場合は作成する必要があります。[+ Request an authorization key]\(+ 承認キーの要求\) を選択します。" border="true":::
+   :::image type="content" source="../media/expressroute-global-reach/open-cloud-shell.png" alt-text="認可キーをコピーします。承認キーがない場合は作成する必要があります。[+ Request an authorization key]\(+ 承認キーの要求\) を選択します。" border="true" lightbox="../media/expressroute-global-reach/open-cloud-shell.png":::
 
 ExpressRoute 回線と仮想ネットワークの間の接続が作成されます。
