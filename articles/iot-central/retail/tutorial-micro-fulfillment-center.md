@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: 880d8ee0e6e2b3984f6bea4b994642724085d512
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 28afa98313ef1c9577e90ed161a1d20cbf5faf75
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90980543"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440192"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>チュートリアル:マイクロフルフィルメント センター アプリケーション テンプレートを展開して調べる
 
@@ -62,11 +62,11 @@ ms.locfileid: "90980543"
    * フルフィルメント建造物内の見取り図や搬送ロボットの場所を表示する。
    * 制御システムのリセット、搬送機のファームウェアの更新、ネットワークの再構成などのコマンドをトリガーする。
 
-     ![Northwind Traders マイクロフルフィルメント センター ダッシュボード (上半分) のスクリーンショット](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
+     ![Northwind Traders マイクロフルフィルメント センター ダッシュボード (上半分) のスクリーンショット。](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
    * オペレーターがフルフィルメント センター内の状態を監視するために使用できるダッシュボードの例を確認する。 
    * フルフィルメント センター内のゲートウェイ デバイスで実行されているペイロードの正常性を監視する。    
 
-     ![Northwind Traders マイクロフルフィルメント センター ダッシュボード (下半分) のスクリーンショット](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
+     ![Northwind Traders マイクロフルフィルメント センター ダッシュボード (下半分) のスクリーンショット。](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
 
 ## <a name="device-template"></a>デバイス テンプレート
 [デバイス テンプレート] タブを選択すると、このテンプレートには 2 種類のデバイスが含まれていることがわかります。 

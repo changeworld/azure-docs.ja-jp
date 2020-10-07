@@ -4,18 +4,18 @@ description: Azure Migrate Server Assessment ツールを使用して、オン�
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: eb17ba9fc1b68f09f60e857cd20a3f0885bfdb05
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: e62effc31ab5dbc687e0509617b89561c5f2a3b6
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603953"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442329"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>チュートリアル:Server Assessment を使用して Hyper-V VM を検出する
 
 Azure への移行の一環として、オンプレミスのインベントリとワークロードを検出します。 
 
-このチュートリアルでは、軽量の Azure Migrate アプライアンスを使用して、Azure Migrate: Server Assessment ツールでオンプレミスの Hyper-V 仮想マシン (VM) を検出する方法について説明します。 アプライアンスを Hyper-V VM としてデプロイし、マシンとパフォーマンスのメタデータを継続的に検出します。
+このチュートリアルでは、オンプレミスの Hyper-V 仮想マシン (VM) を軽量の Azure Migrate アプライアンスを使用して、Azure Migrate: Server Assessment ツールで検出する方法について説明します。 アプライアンスを Hyper-V VM としてデプロイし、マシンとパフォーマンスのメタデータを継続的に検出します。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -39,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 **要件** | **詳細**
 --- | ---
 **Hyper-V ホスト** | VM が配置されている Hyper-V ホストは、スタンドアロンでも、クラスターに含まれていてもかまいません。<br/><br/> ホストでは、Windows Server 2019、Windows Server 2016、または Windows Server 2012 R2 が実行されている必要があります。<br/><br/> Common Information Model (CIM) セッションを使用して、アプライアンスが VM メタデータとパフォーマンス データをプルするために接続できるように、WinRM ポート 5985 (HTTP) で受信接続が許可されていることを確認します。
-**アプライアンスのデプロイ** | vCenter Server には、アプライアンスに VM を割り当てるためのリソースが必要です。<br/><br/> - Windows Server 2016<br/><br/> \- 32 GB の RAM<br/><br/> - 8 つの vCPU<br/><br/> - 約 80 GB のディスク記憶域<br/><br/> - 外部仮想スイッチ<br/><br/> - VM のインターネット アクセス (直接またはプロキシ経由)
+**アプライアンスのデプロイ** | Hyper-v には、アプライアンスに VM を割り当てるためのリソースが必要です。<br/><br/> - Windows Server 2016<br/><br/> \- 16 GB の RAM<br/><br/> - 8 つの vCPU<br/><br/> - 約 80 GB のディスク記憶域<br/><br/> - 外部仮想スイッチ<br/><br/> - VM のインターネット アクセス (直接またはプロキシ経由)
 **VM** | VM では、任意の Windows または Linux オペレーティング システムを実行できます。 
 
 開始する前に、検出中にアプライアンスによって収集される[データを確認](migrate-appliance.md#collected-data---hyper-v)できます。
@@ -72,6 +72,8 @@ Azure Migrate プロジェクトを作成し、Azure Migrate アプライアン�
 8. **[ユーザー設定]** で、Azure AD ユーザーがアプリケーションを登録できることを確認します (既定で **[はい]** に設定されています)。
 
     ![[ユーザー設定] で、ユーザーが Active Directory アプリを登録できることを確認する](./media/tutorial-discover-hyper-v/register-apps.png)
+
+9. テナントおよびグローバル管理者は、AAD アプリの登録を許可する目的で**アプリケーション開発者**ロールをアカウントに割り当てることもできます。 [詳細については、こちらを参照してください](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
 
 ## <a name="prepare-hyper-v-hosts"></a>Hyper-V ホストを準備する
 
@@ -135,7 +137,7 @@ Hyper-V ホストに対する管理者アクセス権があるアカウントを
 
 2. 次の PowerShell コマンドを実行して、ZIP ファイルのハッシュを生成します
     - ```C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm]```
-    - 使用例: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v1.19.06.27.zip -Algorithm SHA256```
+    - 使用例: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v3.20.09.25.zip -Algorithm SHA256```
 
 3.  最新のアプライアンス バージョンとハッシュ値を確認します。
 
@@ -143,13 +145,13 @@ Hyper-V ホストに対する管理者アクセス権があるアカウントを
 
         **シナリオ** | **ダウンロード** | **SHA256**
         --- | --- | ---
-        Hyper-V (10.4 GB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140422) |  79c151588de049cc102f61b910d6136e02324dc8d8a14f47772da351b46d9127
+        Hyper-V (8.91 GB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140422) |  40aa037987771794428b1c6ebee2614b092e6d69ac56d48a2bbc75eeef86c99a
 
     - Azure Government の場合:
 
         **シナリオ*** | **ダウンロード** | **SHA256**
         --- | --- | ---
-        Hyper-V (85 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140424) |  0769c5f8df1e8c1ce4f685296f9ee18e1ca63e4a111d9aa4e6982e069df430d7
+        Hyper-V (85.8 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140424) |  cfed44bb52c9ab3024a628dc7a5d0df8c624f156ec1ecc3507116bae330b257f
 
 ### <a name="create-the-appliance-vm"></a>アプライアンス VM を作成する
 
@@ -214,7 +216,7 @@ SMB 上で VHD を実行している場合は、アプライアンスから Hype
 1. アプライアンス VM 上で、このコマンドを実行します。 HyperVHost1/HyperVHost2 は、ホスト名の例です。
 
     ```
-    Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force
+    Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com, HyperVHost2.contoso.com, HyperVHost1, HyperVHost2 -Force
     ```
 
 2. または、アプライアンス上のローカル グループ ポリシー エディターでこれを行います。
