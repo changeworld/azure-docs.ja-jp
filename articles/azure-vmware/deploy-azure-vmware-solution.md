@@ -3,12 +3,12 @@ title: Azure VMware Solution をデプロイして構成する
 description: 計画ステージで収集した情報を使用して、Azure VMware Solution プライベート クラウドをデプロイする方法について説明します。
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 08d2d48820505dad9bba74fe3ac84f45525f4525
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: af2a9e4fcb4125683342ad739e3890671f64b0bf
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578925"
+ms.locfileid: "91598173"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Azure VMware Solution をデプロイして構成する
 
@@ -40,7 +40,7 @@ ms.locfileid: "91578925"
 Azure VMware Solution のデプロイ後に、vCenter および NSX に接続する仮想ネットワークのジャンプ ボックスを作成します。 いったん ExpressRoute 回線と ExpressRoute Global Reach を構成したら、ジャンプ ボックスは必要ありません。  しかし、Azure VMware Solution 内の vCenter や NSX に接続するのに便利です。  
 
 
-:::image type="content" source="media/pre-deployment/jump-box-diagram.png" alt-text="Azure VMware Solution のジャンプ ボックスを作成する":::
+:::image type="content" source="media/pre-deployment/jump-box-diagram.png" alt-text="Azure VMware Solution のジャンプ ボックスを作成する" border="false" lightbox="media/pre-deployment/jump-box-diagram.png":::
 
 [デプロイ プロセスの一部として識別または作成した](production-ready-deployment-steps.md#azure-virtual-network-to-attach-azure-vmware-solution)仮想ネットワーク内に仮想マシン (VM) を作成するには、以下の手順に従います。 
 
@@ -60,7 +60,7 @@ Azure のデプロイ画面で既に仮想ネットワークを定義した場�
 
 有効なルートの一覧には、Azure VMware Solution のデプロイの一部として作成されたネットワークが表示されるはずです。 この記事の、以前の[デプロイ手順](#deploy-azure-vmware-solution)の間に[定義した `/22` ネットワーク](production-ready-deployment-steps.md#ip-address-segment)から派生した複数のネットワークが表示されます。
 
-:::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="Azure VMware Solution のジャンプ ボックスを作成する":::
+:::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="Azure VMware Solution のジャンプ ボックスを作成する" lightbox="media/pre-deployment/azure-vmware-solution-effective-routes.png":::
 
 この例では、デプロイ時にネットワークとして 10.74.72.0/22 が入力され、/24 ネットワークが派生しています。  同様の内容が表示される場合は、Azure VMware Solution 内の vCenter に接続できます。
 

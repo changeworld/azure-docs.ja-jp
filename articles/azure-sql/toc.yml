@@ -992,6 +992,8 @@
                 - name: SQL VM RP への登録
                   displayName: 'resource provider, registration'
                   items:
+                    - name: 自動登録
+                      href: virtual-machines/windows/sql-vm-resource-provider-automatic-registration.md
                     - name: 単一の VM
                       href: virtual-machines/windows/sql-vm-resource-provider-register.md
                     - name: 複数の VM の一括登録

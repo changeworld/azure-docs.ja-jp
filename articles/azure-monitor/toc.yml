@@ -301,8 +301,6 @@
               href: platform/move-workspace.md
             - name: サービス プロバイダー向けの設計
               href: platform/service-providers.md
-            - name: アクセスを管理する
-              href: platform/manage-access.md
             - name: Dedicated クラスター
               href: log-query/logs-dedicated-clusters.md
     - name: メトリックス エクスプローラー
@@ -751,8 +749,6 @@
             - name: 可用性のアラート
               displayname: 'alerts, global, alerting'
               href: app/availability-alerts.md
-            - name: パフォーマンス テスト
-              href: app/performance-testing.md
             - name: トラブルシューティング
               displayname: 'availability, troubleshoot, troubleshoot availability'
               href: app/troubleshoot-availability.md
