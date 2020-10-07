@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 5b06120437555ec71bc431cb1429120cb5e1987f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: be6040b8b84a4b86746d62bd2f1c07f0ffea0a3b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931218"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336294"
 ---
 # <a name="manage-scheduled-maintenance-settings-for-azure-database-for-postgresql--flexible-server"></a>Azure Database for PostgreSQL の予定メンテナンス設定の管理 - フレキシブル サーバー
  
@@ -31,9 +31,9 @@ Azure サブスクリプションのフレキシブル サーバーごとにメ�
  
 ## <a name="notifications-about-scheduled-maintenance-events"></a>スケジュールされたメンテナンス イベントに関する通知
  
-Azure Service Health を使用して、フレキシブル サーバーでこれから実行される予定メンテナンスと、実行済みの予定メンテナンスに関する[通知を確認](/azure/service-health/service-notifications.md)できます。 また、Azure Service Health でアラートを[設定](/azure/service-health/resource-health-alert-monitor-guide.md)して、メンテナンス イベントに関する通知を受け取ることもできます。
+Azure Service Health を使用して、フレキシブル サーバーでこれから実行される予定メンテナンスと、実行済みの予定メンテナンスに関する[通知を確認](../../service-health/service-notifications.md)できます。 また、Azure Service Health でアラートを[設定](../../service-health/resource-health-alert-monitor-guide.md)して、メンテナンス イベントに関する通知を受け取ることもできます。
  
 ## <a name="next-steps"></a>次のステップ  
  
 * [Azure Database for PostgreSQL での予定メンテナンス - フレキシブル サーバー](concepts-maintenance.md)について学習する
-* [Azure Service Health](/azure/service-health/overview.md) について確認する
+* [Azure Service Health](../../service-health/overview.md) について確認する

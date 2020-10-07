@@ -5,13 +5,13 @@ ms.topic: conceptual
 author: markwolff
 ms.author: marwolff
 ms.date: 06/23/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: de475cbd7cbb0d8dbcda026109b0387da14bedff
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: devx-track-js
+ms.openlocfilehash: 5b15492a36032a53ac81929eb55bce0bc70e040c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386794"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335133"
 ---
 # <a name="source-map-support-for-javascript-applications"></a>JavaScript アプリケーションに対するソース マップのサポート
 

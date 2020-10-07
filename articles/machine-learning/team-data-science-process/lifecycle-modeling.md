@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 1d3cd61ea3da88c4c5231f22c0e127508591fb8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c3406b28c44644053fa984f2cf7739bb53ccf6c8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76720471"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336447"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process ライフサイクルのモデリング ステージ
 
@@ -53,7 +53,7 @@ TDSP ライフサイクルを視覚化すると、次のようになります。
 各種 Azure データ テクノロジを利用して特徴エンジニアリングを行う場合の技術的なガイダンスについては、「[データ サイエンスにおける特徴エンジニアリング](create-features.md)」を参照してください。 
 
 ### <a name="model-training"></a>モデル トレーニング
-回答しようとしている質問の種類に応じて、数多くのモデリング アルゴリズムが利用できます。 アルゴリズムの選択に関するガイダンスについては、「[Microsoft Azure Machine Learning のアルゴリズムの選択方法](../studio/algorithm-choice.md)」を参照してください。 この記事では Azure Machine Learning を使用していますが、記載されているガイダンスはすべての機械学習プロジェクトで活用できます。 
+回答しようとしている質問の種類に応じて、数多くのモデリング アルゴリズムが利用できます。 アルゴリズムの選択に関するガイダンスについては、「[Microsoft Azure Machine Learning のアルゴリズムの選択方法](../how-to-select-algorithms.md)」を参照してください。 この記事では Azure Machine Learning を使用していますが、記載されているガイダンスはすべての機械学習プロジェクトで活用できます。 
 
 モデル トレーニングのプロセスには、以下のステップが含まれます。 
 

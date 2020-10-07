@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: dc05722ee79f72b2931cb1fa6106f742c5bc0e15
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 99595e27b17db716b09325d5dd80633bf44ffb02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274205"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336651"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Team Data Science Process の活用 - 1 TB データセットでの Azure HDInsight Hadoop クラスターの使用
 
@@ -67,7 +67,7 @@ HDInsight クラスターを使用して予測分析ソリューションを構�
 
    * 作成時に、手順 1 で作成したストレージ アカウントを HDInsight クラスターにリンクします。 このストレージ アカウントは、クラスター内で処理可能なデータにアクセスするために使用されます。
    * 作成したら、クラスターのヘッド ノードへのリモート アクセスを有効にします。 ここで指定するリモート アクセス資格情報を覚えておいてください (クラスターの作成時に指定した資格情報とは異なります)。次の手順を完了します。
-3. [Azure Machine Learning Studio (クラシック) ワークスペースを作成する](../studio/create-workspace.md)この Azure Machine Learning ワークスペースは、HDInsight クラスターでの初期データの探索とダウンサンプリング後に、機械学習モデルを構築するために使用します。
+3. [Azure Machine Learning Studio (クラシック) ワークスペースを作成する](../classic/create-workspace.md)この Azure Machine Learning ワークスペースは、HDInsight クラスターでの初期データの探索とダウンサンプリング後に、機械学習モデルを構築するために使用します。
 
 ## <a name="get-and-consume-data-from-a-public-source"></a><a name="getdata"></a>公開されているソースからデータを取得して使用する
 [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) データセットにアクセスするには、リンクをクリックし、使用条件に同意して名前を入力します。 次にスナップショットを示します。
@@ -695,4 +695,3 @@ Web サービスが公開されると、次のようなページにリダイレ�
 Python スクリプトの JSON フレームワークで質問された 2 つのテスト サンプルに対して、"スコア付けラベル, スコア付け確率" の形式で回答が返されました。 この場合は、事前に定義されたコードによって提供された既定値が選択されています (すべての数値列が 0、すべてのカテゴリ列が文字列 "value" です)。
 
 以上で、Azure Machine Learning を使用して大規模なデータセットを処理する方法を示すチュートリアルは終了です。 ここでは、テラバイト単位のデータから始めて、予測モデルを構築し、クラウドに Web サービスとしてデプロイしました。
-

@@ -11,12 +11,12 @@ author: lostmygithubaccount
 ms.date: 06/25/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: d60a963f8ad4b29d3c282d30e6aca9973208860b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8f54ece9a932ed4cc0adc29747e1c58ee22646c8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905156"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333870"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>データセットでデータ ドリフトを検出する (プレビュー)
 
@@ -102,7 +102,7 @@ Machine Learning データセットを使用して、データ ドリフトを�
 
 ### <a name="python-sdk"></a><a name="sdk-dataset"></a>Python SDK
 
-[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) クラスの [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) メソッドによって、データセットのタイムスタンプ列が定義されます。
+[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) クラスの [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) メソッドによって、データセットのタイムスタンプ列が定義されます。
 
 ```python 
 from azureml.core import Workspace, Dataset, Datastore
@@ -129,7 +129,7 @@ dset = dset.with_timestamp_columns('date')
 dset = dset.register(ws, 'target')
 ```
 
-データセットの `timeseries` 特性を使用する完全な例については、[ノートブックの例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb)または [Datasets SDK のドキュメント](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)を参照してください。
+データセットの `timeseries` 特性を使用する完全な例については、[ノートブックの例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb)または [Datasets SDK のドキュメント](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)を参照してください。
 
 ### <a name="azure-machine-learning-studio"></a><a name="studio-dataset"></a>Azure Machine Learning Studio
 
@@ -145,7 +145,7 @@ Azure Machine Learning Studio を使用してデータセットを作成する�
 
 この場合のように、データが日付でパーティション分割されている場合は、partition_timestamp も指定できます。  こうすることで、より効率的に日付を処理できます。
 
-:::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="パーティションのタイムスタンプ":::
+:::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="タイムスタンプを設定する":::
 
 
 ## <a name="create-dataset-monitors"></a>データセット モニターを作成する
@@ -213,7 +213,7 @@ monitor = monitor.enable_schedule()
 
 1. **[+ モニターの作成]** をクリックし、 **[次へ]** をクリックしてウィザードの手順を続行します。  
 
-:::image type="content" source="media/how-to-monitor-datasets/wizard.png" alt-text="[モニターの作成] ウィザード":::
+:::image type="content" source="media/how-to-monitor-datasets/wizard.png" alt-text="タイムスタンプを設定する":::
 
 * **ターゲット データセットを選択します**。  ターゲット データセットは、データ ドリフトの分析対象となる、タイムライン列が指定された表形式のデータセットです。 ターゲット データセットは、ベースライン データセットと共通の特徴を備え、かつ、新しいデータが追加される `timeseries` データセットである必要があります。 ターゲット データセット内の履歴データを分析することも、新しいデータを監視することもできます。
 
@@ -240,7 +240,7 @@ monitor = monitor.enable_schedule()
 
 データ ドリフトの規模に関する最上位レベルの分析情報と、さらに調査すべき特徴の見所から始めます。
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-overview.png" alt-text="ドリフトの概要":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-overview.png" alt-text="タイムスタンプを設定する":::
 
 
 | メトリック | 説明 | 
@@ -253,7 +253,7 @@ monitor = monitor.enable_schedule()
 
 指定した期間内のデータセットとターゲット データセットの違いを確認します。  100% に近いほど、2 つのデータセットの違いは大きくなります。
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-magnitude.png" alt-text="ドリフトの規模の傾向":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-magnitude.png" alt-text="タイムスタンプを設定する":::
 
 ### <a name="drift-magnitude-by-features"></a>特徴ごとのドリフトの規模
 
@@ -263,7 +263,7 @@ monitor = monitor.enable_schedule()
 
 Azure Machine Learning Studio で、グラフ内のバーをクリックすると、その日付の特徴レベルの詳細が表示されます。 既定では、同じ特徴について、ベースライン データセットの分布と最近の実行時の分布が表示されます。
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-by-feature.gif" alt-text="特徴ごとのドリフトの規模":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-by-feature.gif" alt-text="タイムスタンプを設定する":::
 
 これらのメトリックは、Python SDK で、`DataDriftDetector` オブジェクトに `get_metrics()` メソッドを実行して取得することもできます。
 
@@ -271,7 +271,7 @@ Azure Machine Learning Studio で、グラフ内のバーをクリックする�
 
 最後に、下にスクロールして、個々の特徴の詳細を確認します。  グラフの上にあるプルダウンを使用して特徴を選択し、詳細を確認するメトリックを選択します。
 
-:::image type="content" source="media/how-to-monitor-datasets/numeric-feature.gif" alt-text="数値の特徴グラフと比較":::
+:::image type="content" source="media/how-to-monitor-datasets/numeric-feature.gif" alt-text="タイムスタンプを設定する":::
 
 グラフのメトリックは、特徴の種類によって異なります。
 
@@ -293,7 +293,7 @@ Azure Machine Learning Studio で、グラフ内のバーをクリックする�
 
 このグラフで、1 つの日付を選択して、表示された特徴のターゲットとこの日付の間の特徴の分布を比較します。 数値の特徴の場合、これは 2 つの確率分布を示します。  特徴が数値の場合、横棒グラフが表示されます。
 
-:::image type="content" source="media/how-to-monitor-datasets/select-date-to-compare.gif" alt-text="ターゲットと比較する日付を選択する":::
+:::image type="content" source="media/how-to-monitor-datasets/select-date-to-compare.gif" alt-text="タイムスタンプを設定する":::
 
 ## <a name="metrics-alerts-and-events"></a>メトリック、アラート、イベント
 

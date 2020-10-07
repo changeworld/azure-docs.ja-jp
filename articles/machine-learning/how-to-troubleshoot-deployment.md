@@ -11,12 +11,12 @@ ms.reviewer: jmartens
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4, devx-track-python
-ms.openlocfilehash: 22f9c709ced1069caa39ba2145981efa353caadf
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 82b9db2f3575e50367ed154246f9fb69b74c60cf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602635"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333774"
 ---
 # <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>Azure Kubernetes Service と Azure Container Instances を使用したモデルの Docker デプロイのトラブルシューティング 
 
@@ -26,7 +26,7 @@ Azure Machine Learning を使用する Azure Container Instances (ACI) と Azure
 
 * **Azure サブスクリプション**。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
 * [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
 * [Azure Machine Learning 用 CLI 拡張機能](reference-azure-machine-learning-cli.md)。
 * ローカルでデバッグするには、ローカル システム上に機能する Docker のインストールが必要です。
 
@@ -34,7 +34,7 @@ Azure Machine Learning を使用する Azure Container Instances (ACI) と Azure
 
 ## <a name="steps-for-docker-deployment-of-machine-learning-models"></a>機械学習モデルの Docker デプロイの手順
 
-Azure Machine Learning でモデルをデプロイするときに、[Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API と[環境](how-to-use-environments.md)オブジェクトを使用します。 サービスによってデプロイ段階で基本的な Docker イメージが作成され、必要なモデルがすべて 1 回の呼び出しでマウントされます。 基本的なデプロイ タスクは次のとおりです。
+Azure Machine Learning でモデルをデプロイするときに、[Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API と[環境](how-to-use-environments.md)オブジェクトを使用します。 サービスによってデプロイ段階で基本的な Docker イメージが作成され、必要なモデルがすべて 1 回の呼び出しでマウントされます。 基本的なデプロイ タスクは次のとおりです。
 
 1. ワークスペース モデル レジストリにモデルを登録します。
 
@@ -50,7 +50,7 @@ Azure Machine Learning でモデルをデプロイするときに、[Model.deplo
 
 問題に直面したら、最初に行うべきことは、(前述の) デプロイ タスクを個々の手順に分割し、問題を隔離することです。
 
-[環境](how-to-use-environments.md)オブジェクトを入力パラメーターとして指定して [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) を使用する場合、コードは次の 3 つの主な手順に分けることができます。
+[環境](how-to-use-environments.md)オブジェクトを入力パラメーターとして指定して [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) を使用する場合、コードは次の 3 つの主な手順に分けることができます。
 
 1. モデルを登録します。 サンプル コードをいくつか以下に示します。
 
@@ -161,7 +161,7 @@ print(service.run(input_data=test_sample))
 > [!NOTE]
 > スクリプトは、サービスによって使用される `InferenceConfig` オブジェクトによって指定された場所から再度読み込まれます。
 
-モデル、Conda の依存関係、またはデプロイ構成を変更するには、[update()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#&preserve-view=trueupdate--args-) を使用します。 次の例では、サービスで使用されるモデルを更新します。
+モデル、Conda の依存関係、またはデプロイ構成を変更するには、[update()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=trueupdate--args-) を使用します。 次の例では、サービスで使用されるモデルを更新します。
 
 ```python
 service.update([different_model], inference_config, deployment_config)
@@ -169,7 +169,7 @@ service.update([different_model], inference_config, deployment_config)
 
 ### <a name="delete-the-service"></a>サービスの削除
 
-サービスを削除するには、[delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#&preserve-view=truedelete--) を使用します。
+サービスを削除するには、[delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedelete--) を使用します。
 
 ### <a name="inspect-the-docker-log"></a><a id="dockerlog"></a> Docker ログの確認
 
@@ -199,7 +199,7 @@ Azure Kubernetes Service コンピューティング ターゲットにサービ
 
 ## <a name="function-fails-get_model_path"></a>get_model_path() 関数が失敗する
 
-多くの場合、スコアリング スクリプトの `init()` 関数では、コンテナー内のモデル ファイルまたはモデル ファイルのフォルダーを見つける目的で [Model.get_model_path()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) 関数が呼び出されます。 モデル ファイルまたはフォルダーが見つからない場合、この関数は失敗します。 このエラーをデバッグする最も簡単な方法は、Container シェルで以下の Python コードを実行することです。
+多くの場合、スコアリング スクリプトの `init()` 関数では、コンテナー内のモデル ファイルまたはモデル ファイルのフォルダーを見つける目的で [Model.get_model_path()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) 関数が呼び出されます。 モデル ファイルまたはフォルダーが見つからない場合、この関数は失敗します。 このエラーをデバッグする最も簡単な方法は、Container シェルで以下の Python コードを実行することです。
 
 ```python
 from azureml.core.model import Model

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: cb144aa7b6c717ada3a51fe3286f349bc3d8b325
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 991e81c46a0cd6c587ac3366b63ba4da6a07f7e7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86273916"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336515"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Team Data Science Process の実行:Azure HDInsight Hadoop クラスターの使用
 このチュートリアルでは、[Team Data Science Process (TDSP)](overview.md) をエンド ツー エンドのシナリオで使用します。 [Azure HDInsight Hadoop クラスター](https://azure.microsoft.com/services/hdinsight/)を使用して、公開されている [NYC タクシー乗車](https://www.andresmh.com/nyctaxitrips/)データセットのデータの保存、探索、特徴エンジニアリングを行い、データのダウンサンプリングを実行します。 二項分類、多クラス分類、回帰予測タスクを処理するために、ここでは Azure Machine Learning を使用してデータのモデルを構築します。 
@@ -89,7 +89,7 @@ HDInsight クラスターを使用する高度な分析用の Azure 環境は、
    
    * 作成時に、手順 1. で作成したストレージ アカウントを HDInsight クラスターにリンクする必要があります。 このストレージ アカウントは、クラスター内で処理されるデータにアクセスします。
    * クラスターを作成したら、クラスターのヘッド ノードへのリモート アクセスを有効にします。 **[構成]** タブに移動して、 **[リモートを有効にする]** を選択します。 この手順で、リモート ログインに使用するユーザーの資格情報を指定します。
-3. [Azure Machine Learning ワークスペースを作成する](../studio/create-workspace.md):このワークスペースを使用して、機械学習モデルを構築します。 このタスクは、HDInsight クラスターを使用した初期データの探索とダウンサンプリングの完了後に対処されます。
+3. [Azure Machine Learning ワークスペースを作成する](../classic/create-workspace.md):このワークスペースを使用して、機械学習モデルを構築します。 このタスクは、HDInsight クラスターを使用した初期データの探索とダウンサンプリングの完了後に対処されます。
 
 ## <a name="get-the-data-from-a-public-source"></a><a name="getdata"></a>公開されているソースからデータを取得する
 > [!NOTE]
@@ -915,7 +915,7 @@ Hive クエリと[データのインポート][import-data] モジュールの�
   決定係数は約 0.709 であり、これは分散の約 71% がモデル係数によって説明されることを意味します。
 
 > [!IMPORTANT]
-> Machine Learning の詳細と Machine Learning にアクセスして使用する方法の詳細については、「[Machine Learning とは](../studio/what-is-machine-learning.md)」を参照してください。 また、[Azure AI ギャラリー](https://gallery.cortanaintelligence.com/)では、すべての実験についての説明があり、Machine Learning の機能範囲が詳しく説明されています。
+> Machine Learning の詳細と Machine Learning にアクセスして使用する方法の詳細については、「[Machine Learning とは](../classic/index.yml)」を参照してください。 また、[Azure AI ギャラリー](https://gallery.cortanaintelligence.com/)では、すべての実験についての説明があり、Machine Learning の機能範囲が詳しく説明されています。
 > 
 > 
 
@@ -937,6 +937,3 @@ Hive クエリと[データのインポート][import-data] モジュールの�
 <!-- Module References -->
 [select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-
-
-

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 6f557ac8476224cdb8414b2a45952d8f7d34513d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: aa4b55cb0700a47d9235a1d526ef1b1678d6db8b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905010"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333819"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>ML 実行のログとメトリックを監視および表示する
 
@@ -93,7 +93,7 @@ RunDetails(run).show()
 
 ## <a name="show-output-upon-completion"></a>完了時に出力を表示する
 
-**ScriptRunConfig** を使用するときは、```run.wait_for_completion(show_output = True)``` を使用してモデルのトレーニングの完了を表示できます。 ```show_output``` フラグを指定すると、詳細な出力が提供されます。 詳細については、[ログ記録を有効にする方法](how-to-track-experiments.md#scriptrunconfig-logs)の ScriptRunConfig セクションを参照してください。
+**ScriptRunConfig** を使用するときは、```run.wait_for_completion(show_output = True)``` を使用してモデルのトレーニングの完了を表示できます。 ```show_output``` フラグを指定すると、詳細な出力が提供されます。 詳細については、[ログ記録を有効にする方法](how-to-track-experiments.md#scriptrun-logs)の ScriptRunConfig セクションを参照してください。
 
 <a id="queryrunmetrics"></a>
 ## <a name="query-run-metrics"></a>実行のメトリックのクエリを行う

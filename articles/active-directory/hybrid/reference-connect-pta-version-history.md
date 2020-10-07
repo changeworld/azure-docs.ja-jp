@@ -12,12 +12,12 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e5e6afef70ee3d4f4d84cb6b867a916ae57da5a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 854931273ffebd653615a44dbfa9ce1b846655c2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356306"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333428"
 ---
 # <a name="azure-ad-pass-through-authentication-agent-version-release-history"></a>Azure AD パススルー認証エージェント: バージョンのリリース履歴 
  
@@ -56,15 +56,10 @@ ms.locfileid: "85356306"
 ### <a name="release-status"></a>リリースの状態 
 2018 年 1 月 31 日: ダウンロード対象としてリリース済み  
 ### <a name="fixed-issues"></a>修正された問題 
-
 - エージェントでメモリ リークの原因となっていたバグを修正しました。 
 - Azure Service Bus のバージョンを更新しました。このバージョンでは、コネクタ タイムアウトの問題に関するバグが修正されています。 
- 
-## <a name="154050"></a>1.5.405.0 
-### <a name="release-status"></a>リリースの状態 
-2017 年 11 月 26 日: ダウンロード対象としてリリース済み  
 ### <a name="new-features-and-improvements"></a>新機能と機能強化 
-- 接続の回復性を向上させるために、エージェントと Azure AD サービス間の Web ソケット ベースの接続のサポートを追加しました 
+- 接続の回復性を向上させるために、エージェントと Azure AD サービス間の Web ソケット ベースの接続のサポートを追加しました
 
 ## <a name="154020"></a>1.5.402.0 
 ### <a name="release-status"></a>リリースの状態 

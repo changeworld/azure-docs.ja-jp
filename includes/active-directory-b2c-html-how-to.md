@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 03/19/2020
 ms.author: mimart
-ms.openlocfilehash: af11283f9e9dbd925ec994dcb1d96393332b90fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b660bf20c90a84780175e70573c96a0ce1b0b7d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80116952"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376992"
 ---
 ## <a name="use-custom-page-content"></a>カスタム ページ コンテンツを使用する
 
@@ -167,7 +167,7 @@ Blob ストレージ内にパブリック コンテナーを作成するには�
 
 1. CORS の構成手順を繰り返します。 **[許可されたオリジン]** には、「`https://www.test-cors.org`」を入力します。
 1. [www.test-cors.org](https://www.test-cors.org/) に移動します。 
-1. **[リモート URL]** ボックスに HTML ファイルの URL を貼り付けます。 たとえば、`https://your-account.blob.core.windows.net/azure-ad-b2c/unified.html` のように指定します。
+1. **[リモート URL]** ボックスに HTML ファイルの URL を貼り付けます。 たとえば、`https://your-account.blob.core.windows.net/root/azure-ad-b2c/unified.html` のように指定します。
 1. **[要求の送信]** を選択します。
     結果は `XHR status: 200` となるはずです。 
     エラーが発生した場合は、CORS の設定が正しいことを確認します。 場合によっては、ブラウザーのキャッシュをクリアするか、Ctrl + Shift + P キーを押してプライベート ブラウズ セッションを開く必要もあります。

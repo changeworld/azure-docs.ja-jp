@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 7c1a2cf4b9b476a8f31f38fea45b2e1ef3fe4307
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 0b80c2f125e7eddaa427b75e3e0fe2aff6c679be
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531783"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334329"
 ---
 # <a name="json-format-in-azure-data-factory"></a>Azure Data Factory での JSON 形式
 
@@ -217,6 +217,7 @@ JSON ファイルからデータをコピーする場合、コピー アクテ�
 | コメントあり | JSON データに C または C++ スタイルのコメントが含まれている場合は、 **[コメントあり]** を選択します | no | `true` または `false` | asComments |
 | 一重引用符付き | 引用符で囲まれていない JSON 列が読み取られます | no | `true` または `false` | singleQuoted |
 | 円記号によるエスケープ | JSON データ内の文字をエスケープするためにバックスラッシュを使用している場合は、 **[円記号によるエスケープ]** を選択します | no | `true` または `false` | backslashEscape |
+| [Allow no files found]\(ファイルの未検出を許可\) | true の場合、ファイルが見つからない場合でもエラーはスローされない | no | `true` または `false` | ignoreNoFilesFound |
 
 ### <a name="source-format-options"></a>ソース形式のオプション
 
