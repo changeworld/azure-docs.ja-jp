@@ -1,16 +1,14 @@
 ---
 title: Windows で Azure Service Fabric Linux クラスターを設定する
 description: この記事では、Windows 開発用マシンで実行される Service Fabric Linux クラスターを設定する方法について説明します。 これは、クロス プラットフォーム開発で特に便利です。
-author: suhuruli
 ms.topic: conceptual
 ms.date: 11/20/2017
-ms.author: suhuruli
-ms.openlocfilehash: 91d055a480748ef012120aac4d329d474491e2c5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 83d494d777a4a1e1586707c8848056ca8fe9780a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258583"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537074"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Windows 開発用マシンで Linux Service Fabric クラスターを設定する
 
@@ -110,7 +108,7 @@ Linux ベースの Service Fabric クラスターは、Windows ではネイテ�
  
  Mac 用のコンテナーで実行されているローカル クラスターの既知の制限は、次のとおりです。 
  
- * DNS サービスが実行されず、サポートされていない [Issue #132](https://github.com/Microsoft/service-fabric/issues/132)
+ * DNS サービスが実行されず、サポートされていない [問題 #132](https://github.com/Microsoft/service-fabric/issues/132)
 
 ## <a name="next-steps"></a>次のステップ
 * [Eclipse](./service-fabric-get-started-eclipse.md) の概要

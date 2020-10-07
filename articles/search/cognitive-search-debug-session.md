@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: b428ff4a9a4f4b9110e88dba57cfad20f2221cf1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 10/05/2020
+ms.openlocfilehash: 941d7f54bcb44653280abe264ff1cffbeae33679
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936165"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743184"
 ---
 # <a name="debug-sessions-in-azure-cognitive-search"></a>Azure Cognitive Search でのデバッグ セッション
 
@@ -35,8 +35,7 @@ ms.locfileid: "88936165"
 
 デバッグ セッションを開始するには、データ ソース、スキルセット、インデクサー、およびインデックスを含む既存の AI エンリッチメント パイプラインが必要です。 デバッグ セッションを構成するには、セッションに名前を付け、インデクサーの実行中にスキルの実行をキャッシュするために使用される汎用ストレージ アカウントを指定する必要があります。 また、実行するインデクサーを選択する必要があります。 インデクサーには、データ ソース、スキルセット、およびインデックスへの参照が格納されています。 デバッグ セッションは、データ ソース内の最初のドキュメントに既定で設定されます。または、データ ソース内のドキュメントを指定してステップスルーすることもできます。
 
-> [!div class="mx-imgBorder"]
-> ![デバッグ セッションの作成](media/cognitive-search-debug/debug-session-new.png)
+> :::image type="content" source="media/cognitive-search-debug/debug-session-new.png" alt-text="デバッグ セッションの作成":::
 
 ## <a name="debug-session-features"></a>デバッグ セッションの機能
 
@@ -52,8 +51,7 @@ ms.locfileid: "88936165"
 
 グラフでスキルを選択すると、それに接続されているスキル、その入力を作成するノード、およびその出力を受け入れるノードが強調表示されます。 各スキル ノードでは、その種類、エラーまたは警告、および実行回数が表示されます。 **[スキル グラフ]** では、デバッグまたは強化するスキルを選択します。 スキルを選択すると、その詳細がグラフの右側のスキルの詳細ペインに表示されます。
 
-> [!div class="mx-imgBorder"]
-> ![スキル グラフ](media/cognitive-search-debug/skills-graph.png)
+> :::image type="content" source="media/cognitive-search-debug/skills-graph.png" alt-text="デバッグ セッションの作成":::
 
 ## <a name="skill-details"></a>スキルの詳細
 
@@ -75,8 +73,7 @@ ms.locfileid: "88936165"
 
 **[エンリッチ処理されたデータ構造]** ペインには、スキルセットを介してドキュメントのエンリッチメントが表示され、各エンリッチメントのコンテキストと元のスキルの詳細が示されます。 **[式エバリュエーター]** を使用して、各エンリッチメントの内容を表示することもできます。
 
-> [!div class="mx-imgBorder"]
-> ![エンリッチ処理されたデータ構造](media/cognitive-search-debug/enriched-data-structure-display.png)
+> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-display.png" alt-text="デバッグ セッションの作成":::
 
 ## <a name="expression-evaluator"></a>式エバリュエーター
 

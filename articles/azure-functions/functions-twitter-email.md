@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47
-ms.openlocfilehash: 29b35493342b92813aa808069ebdd7ca8a7bbc56
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: feb6b36f8e5e7bbec83d8882552484f68abfd56d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208551"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537754"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Azure Logic Apps と統合される関数を作成する
 
@@ -182,7 +182,7 @@ Azure Functions は、ロジック アプリ ワークフローの処理タス�
 
 2. **[アクションを選択してください]** で「**テキスト分析**」と入力し、 **[感情の検出]** アクションをクリックします。
     
-    ![[新しいステップ]、[アクションの追加]](media/functions-twitter-email/11-detect-sentiment.png)
+    ![検索ボックスに「Text Analytics」と入力され、[感情の検出] アクションが選択されている [アクションを選択してください] セクションを示すスクリーンショット。 ](media/functions-twitter-email/11-detect-sentiment.png)
 
 3. `MyCognitiveServicesConnection` などの接続名を入力し、テキスト エディターにメモしておいた Cognitive Services API と Cognitive Services エンドポイントのキーを貼り付けて、 **[作成]** をクリックします。
 
@@ -202,7 +202,7 @@ Azure Functions は、ロジック アプリ ワークフローの処理タス�
   
 4. 先ほど作成した関数アプリを選択します。
 
-    ![関数の選択](media/functions-twitter-email/15-select-function.png)
+    ![関数アプリが選択されている [アクションを選択してください] セクションを示すスクリーンショット。](media/functions-twitter-email/15-select-function.png)
 
 5. このチュートリアルで作成した関数を選択します。
 
@@ -228,7 +228,7 @@ Azure Functions は、ロジック アプリ ワークフローの処理タス�
 
 3. **[true の場合]** で **[アクションの追加]** をクリックします。`outlook.com` を検索して、 **[電子メールの送信]** をクリックし、Outlook.com アカウントにサインインします。
 
-    ![[電子メールの送信] アクション用に電子メールを構成する](media/functions-twitter-email/20-add-outlook.png)
+    ![検索ボックスに「outlook.com」と入力され、[電子メールの送信] アクションが選択された "IF TRUE" セクションを示すスクリーンショット。](media/functions-twitter-email/20-add-outlook.png)
 
     > [!NOTE]
     > Outlook.com アカウントを取得していない場合は、Gmail や Office 365 Outlook など、別のコネクタを選択できます。

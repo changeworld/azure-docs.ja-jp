@@ -1,17 +1,17 @@
 ---
 title: ログ - Azure Database for PostgreSQL - Single Server
 description: Azure Database for PostgreSQL - Single Server でのログの構成、保存、分析について説明します。
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: c5515c21d89b01576bb6aae8c9d480b439dc1507
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8d249cdabcbfd82fc555c486f29bbdba200e1da1
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902708"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710500"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server 内のログ
 

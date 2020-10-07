@@ -1,6 +1,6 @@
 ---
 title: Azure Notification Hubs と Firebase SDK バージョン 0.6 を使用して Android にプッシュ通知を送信する | Microsoft Docs
-description: このチュートリアルでは、Azure Notification Hubs と Google Firebase Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する方法について学習します。
+description: このチュートリアルでは、Azure Notification Hubs と Google Firebase Cloud Messaging を使用して Android デバイス (バージョン 0.6) にプッシュ通知を送信する方法について学習します。
 services: notification-hubs
 documentationcenter: android
 keywords: プッシュ通知,プッシュ通知,android プッシュ通知,fcm,firebase cloud messaging
@@ -16,12 +16,12 @@ ms.date: 06/22/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: 3b32a61dcf8dfe403a44af236afad830472d1b8d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7e68e93e8a103ccf92c949df779d929ac4095d92
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321464"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268827"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-06"></a>チュートリアル:Firebase SDK バージョン 0.6 を使用して Android デバイスにプッシュ通知を送信する
 

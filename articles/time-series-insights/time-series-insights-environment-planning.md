@@ -9,16 +9,19 @@ manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: ea243ffd125a527949c4a264177e78de04a22aae
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 546c53334b7700ab73c22edb2d82b324bfad61a9
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046405"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569449"
 ---
 # <a name="plan-your-azure-time-series-insights-gen1-environment"></a>Azure Time Series Insights Gen1 環境の計画
+
+> [!CAUTION]
+> これは Gen1 の記事です。
 
 この記事では、予想されるイングレス レートとデータ リテンション期間の要件に基づいて、Azure Time Series Insights Gen1 環境を計画する方法について説明します。
 
@@ -48,12 +51,12 @@ Azure Time Series Insights の 2 つの SKU の容量とリテンション期間
 
 ## <a name="data-retention"></a>データの保持
 
-お使いの Azure Time Series Insights 環境内で **[データ リテンション期間]** 設定を変更できます。 リテンション期間は最大 400 日まで有効にできます。 
+お使いの Azure Time Series Insights 環境内で **[データ リテンション期間]** 設定を変更できます。 リテンション期間は最大 400 日まで有効にできます。
 
 Azure Time Series Insights には 2 つのモードがあります。
 
-* 1 つのモードでは、最新のデータに対して最適化されます。 **古いデータを消去する**ポリシーが強制され、最近のデータをインスタンスで利用できるように残します。 このモードは、既定でオンになっています。 
-* もう 1 つのモードでは、構成されているリテンション制限を下回るようにデータが最適化されます。 **[Pause ingress]\(イングレスを一時停止\)** が**ストレージ上限の超過動作**として選択されているとき、新しいデータのイングレスが防止されます。
+- 1 つのモードでは、最新のデータに対して最適化されます。 **古いデータを消去する**ポリシーが強制され、最近のデータをインスタンスで利用できるように残します。 このモードは、既定でオンになっています。
+- もう 1 つのモードでは、構成されているリテンション制限を下回るようにデータが最適化されます。 **[Pause ingress]\(イングレスを一時停止\)** が**ストレージ上限の超過動作**として選択されているとき、新しいデータのイングレスが防止されます。
 
 Azure portal 内の環境の構成ページ上で、リテンション期間を調整し、2 つのモードを切り替えることができます。
 
@@ -83,7 +86,7 @@ Azure Time Series Insights 環境を計画する場合に注目すべき 2 つ�
 
 1 つの環境で、S1 SKU または S2 SKU の容量を 10 ユニットまで増やすことができます。 S1 環境から S2 に移行することはできません。 S2 環境から S1 に移行することはできません。
 
-イングレス容量については、最初に、1 か月単位を基にして必要な合計イングレスを決定します。 次に、分単位でのニーズを決定します。 
+イングレス容量については、最初に、1 か月単位を基にして必要な合計イングレスを決定します。 次に、分単位でのニーズを決定します。
 
 分単位の容量においては、調整と待機時間を考慮します。 データ イングレスのスパイクの持続時間が 24 時間未満の場合、Azure Time Series Insights では、上の表に示したレートの 2 倍のイングレス レートまで "キャッチアップ" することが可能です。
 

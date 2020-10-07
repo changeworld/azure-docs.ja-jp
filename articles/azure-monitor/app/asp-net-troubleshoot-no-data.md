@@ -4,12 +4,12 @@ description: Auzre Application Insights にデータが表示されない場合�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: 7cf3371dc60f97b8bba61012e87b7b4bd4899aa6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 2bf9b50c9b378d8624c311af5935b8cd0a28a31a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936471"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757981"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>データが存在しない場合のトラブルシューティング - Application Insights for .NET、Application Insights for .NET Core
 
@@ -246,7 +246,7 @@ PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-Applica
 
 詳細については、以下を参照してください。
 - [PerfView でのパフォーマンス トレースの記録](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView)
-- [Application Insights のイベント ソース](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
+- [Application Insights のイベント ソース](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/ETW)
 
 ## <a name="collect-logs-with-dotnet-trace"></a>dotnet-trace を使用してログを収集する
 

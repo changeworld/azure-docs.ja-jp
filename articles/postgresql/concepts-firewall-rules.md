@@ -1,17 +1,17 @@
 ---
 title: ファイアウォール規則 - Azure Database for PostgreSQL - Single Server
 description: この記事では、ファイアウォール規則を使用して Azure Database for PostgreSQL - Single Server に接続する方法について説明します。
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 7048fac4804e16ae70145c8fadc1cd6e0859fcfc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e677aef7a90e7372c5af4bfa48c6160c439b3ee8
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903914"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707967"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server でのファイアウォール規則
 Azure Database for PostgreSQL サーバーのファイアウォールは、どのコンピューターに権限を持たせるかを指定するまで、データベース サーバーへのすべてのアクセスを遮断します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてサーバーへのアクセス権を付与します。
@@ -40,7 +40,7 @@ Azure Database for PostgreSQL サーバーのファイアウォールは、ど�
 > **[Azure サービスへのアクセス許可]** オプションでは、他のお客様のサブスクリプションからの接続を含む、Azure からのすべての接続を許可するようにファイアウォールが構成されます。 このオプションを選択する場合は、ログインおよびユーザーのアクセス許可が、承認されたユーザーのみにアクセスを制限していることを確認してください。
 > 
 
-:::image type="content" source="media/concepts-firewall-rules/allow-azure-services.png" alt-text="ポータルで [Azure サービスへのアクセスを許可] を構成する":::
+:::image type="content" source="media/concepts-firewall-rules/allow-azure-services.png" alt-text="ファイアウォールのしくみを示すサンプル フロー":::
 
 ### <a name="connecting-from-a-vnet"></a>VNet からの接続
 VNet から Azure Database for PostgreSQL サーバーに安全に接続するには、[VNet サービス エンドポイント](./concepts-data-access-and-security-vnet.md)の使用を検討してください。 

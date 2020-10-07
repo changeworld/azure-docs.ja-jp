@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell を使用して Synapse SQL プールのコンピューティングを一時停止、再開する
+title: クイックスタート:Azure PowerShell を使用して Synapse SQL プールのコンピューティングを一時停止、再開する
 description: Azure PowerShell を使用して、Synapse SQL プール (データ ウェアハウス) を一時停止および再開できます。 コンピューティング リソース。
 services: synapse-analytics
 author: kevinvngo
@@ -11,12 +11,12 @@ ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse, devx-track-azurepowershell
-ms.openlocfilehash: 9adc994ef9ac3f43f593da010b35ada4a83e424e
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 08ddb6077887043d798af9790a7b66f1b8ebb95c
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078962"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570703"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-with-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Synapse SQL プールのコンピューティングを一時停止、再開する
 

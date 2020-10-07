@@ -1,5 +1,5 @@
 ---
-title: Azure portal を使用して Synapse SQL プールのコンピューティングを一時停止、再開する
+title: クイックスタート:Azure portal を使用して Synapse SQL プールのコンピューティングを一時停止、再開する
 description: Azure portal を使用して、SQL プールのコンピューティングを一時停止してコストを節約します。 データ ウェアハウスを使用する準備ができたら、コンピューティングを再開します。
 services: synapse-analytics
 author: kevinvngo
@@ -11,12 +11,12 @@ ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 25f12d038b2a83688c12d95adefef3d4fb39be43
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: bf9d8234be754bd6ed325713f3c9ad27bd283b79
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85214470"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567640"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-via-the-azure-portal"></a>クイック スタート:Azure portal を使用して Synapse SQL プールのコンピューティングを一時停止、再開する
 
@@ -49,7 +49,7 @@ SQL プールを一時停止するには、次の手順を実行します。
 5. 続行してよいかどうかを確認するメッセージが表示されます。 **[はい]** をクリックします。
 6. 少し待つと、 **[状態]** が **[一時停止中]** になります。
 
-    ![一時停止中](./media/pause-and-resume-compute-portal/pausing.png)
+    ![スクリーンショットは、ステータス値が [一時停止中] になっているサンプル データ ウェアハウスの Azure portal を示しています。](./media/pause-and-resume-compute-portal/pausing.png)
 
 7. 一時停止操作が完了すると、状態が **[一時停止]** になり、オプション ボタンが **[再開]** になります。
 8. これで SQL プールのコンピューティング リソースがオフラインになりました。 サービスを再開するまで、コンピューティングの料金は発生しません。
@@ -71,7 +71,7 @@ SQL プールを再開するには、次の手順を実行します。
 5. 開始してよいかどうかを確認するメッセージが表示されます。 **[はい]** をクリックします。
 6. **[状態]** が **[再開中]** になっていることがわかります。
 
-    ![再開中](./media/pause-and-resume-compute-portal/resuming.png)
+    ![スクリーンショットは、[開始] ボタンが選択され、ステータス値が [再開中] になっているサンプル データ ウェアハウスの Azure portal を示しています。](./media/pause-and-resume-compute-portal/resuming.png)
 
 7. SQL プールがオンライン状態に戻ると、状態が **[オンライン]** になり、オプション ボタンが **[一時停止]** になります。
 8. これで SQL プールのコンピューティング リソースがオンラインになりました。サービスを使用することができます。 コンピューティングの課金が再開されます。

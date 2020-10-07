@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3b9a491f7546fbaa8722498b164bfa56353dfcfc
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: fe864212eaccb67335586ef8b25049529ab36b81
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050184"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360754"
 ---
 # <a name="how-to-use-batch-transcription"></a>バッチ文字起こしの使用方法
 
@@ -43,7 +43,7 @@ ms.locfileid: "89050184"
 
 ## <a name="prerequisites"></a>前提条件
 
-Speech Service の他の機能と同様に、[使用開始ガイド](get-started.md)に従って [Azure portal](https://portal.azure.com) でサブスクリプション キーを作成します。
+Speech Service の他の機能と同様に、[使用開始ガイド](overview.md#try-the-speech-service-for-free)に従って [Azure portal](https://portal.azure.com) でサブスクリプション キーを作成します。
 
 >[!NOTE]
 > バッチ文字起こしを使用するには、音声サービスの Standard サブスクリプション (S0) が必要です。 Free サブスクリプション キー (F0) は機能しません。 詳細については、[価格と制限](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)に関するページを参照してください。

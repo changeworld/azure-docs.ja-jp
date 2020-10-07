@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: yegu
-ms.openlocfilehash: 2a95aa9e9fccdb7047c2c0901f4349fecfbab672
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 4b196818ade1e703e24ed1ced6ebac1b44d0b083
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009581"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372070"
 ---
 # <a name="migrate-to-azure-cache-for-redis"></a>Azure Cache for Redis への移行
 この記事では、オンプレミスまたは別のクラウド サービスで実行されている既存の Redis キャッシュを Azure Cache for Redis に移行するためのさまざまな方法について説明します。
@@ -34,7 +34,7 @@ ms.locfileid: "88009581"
    | ------------ | ---------- | ------------- |
    | 新しいキャッシュを作成する | 実装が非常に簡単です。 | 新しいキャッシュにデータを再入力する必要があります。多くのアプリケーションで動作しない可能性があります。 |
    | RDB ファイルを使用してデータをエクスポートおよびインポートする | 一般に、Redis キャッシュとの互換性があります。 | RDB ファイルの生成後に既存のキャッシュに書き込まれると、一部のデータが失われる可能性があります。 | 
-   | 2 つのキャッシュにデータを二重に書き込む | データの損失やダウンタイムはありません。 既存のキャッシュが中断されない操作です。 新しいキャッシュのテストが簡単になります。 | 長期間にわたって 2 つのキャッシュが必要です。 | 
+   | 2 つのキャッシュにデータを二重に書き込む | データの損失やダウンタイムはありません 既存のキャッシュが中断されない操作です。 新しいキャッシュのテストが簡単になります。 | 長期間にわたって 2 つのキャッシュが必要です。 | 
    | プログラムでデータを移行する | データの移動方法を完全に制御できます。 | カスタム コードが必要です。 | 
 
 ### <a name="create-a-new-azure-cache-for-redis"></a>新しい Azure Cache for Redis を作成する

@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fe4d42fd74b4efd67a01f32611bd170862ec84d0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a20b6509973c7dc7e54d2e4f702175ad61e88da8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007130"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532502"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Azure Cognitive Search インデクサーを使用したフィールドのマッピングと変換
 
@@ -201,7 +201,7 @@ Azure Cognitive Search では、2 つの異なる Base64 エンコードがサ�
 
 Azure Cognitive Search では、URL セーフな base64 エンコードと通常の base64 エンコードがサポートされています。 インデックス作成中に base64 でエンコードされた文字列は、後で同じエンコード オプションでデコードする必要があります。そうしないと、結果が元の文字列と一致しなくなります。
 
-それぞれがエンコードとデコードに対応する `useHttpServerUtilityUrlTokenEncode` パラメーターまたは `useHttpServerUtilityUrlTokenDecode` パラメーターが `true` に設定されると、`base64Encode` は [HttpServerUtility.UrlTokenEncode](/dotnet/api/system.web.httpserverutility.urltokenencode?view=netframework-4.8) のように、`base64Decode` は [HttpServerUtility.UrlTokenDecode](/dotnet/api/system.web.httpserverutility.urltokendecode?view=netframework-4.8) のように動作します。
+それぞれがエンコードとデコードに対応する `useHttpServerUtilityUrlTokenEncode` パラメーターまたは `useHttpServerUtilityUrlTokenDecode` パラメーターが `true` に設定されると、`base64Encode` は [HttpServerUtility.UrlTokenEncode](/dotnet/api/system.web.httpserverutility.urltokenencode) のように、`base64Decode` は [HttpServerUtility.UrlTokenDecode](/dotnet/api/system.web.httpserverutility.urltokendecode) のように動作します。
 
 > [!WARNING]
 > キー値を生成するために `base64Encode` を使用する場合は、`useHttpServerUtilityUrlTokenEncode` を true に設定する必要があります。 キー値に使用できるのは、URL セーフな base64 エンコードのみです。 キー値の文字に関するすべての制限事項については、「[名前付け規則 &#40;Azure Cognitive Search&#41;](/rest/api/searchservice/naming-rules)」を参照してください。

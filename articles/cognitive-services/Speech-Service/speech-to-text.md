@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: 音声テキスト変換、音声テキスト変換ソフトウェア
-ms.openlocfilehash: 804acd17f3df91cc3df949d6d9ccac0450bb225f
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: f4392881c2f572b1e53d7c283ef5c1debc1d20ea
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569222"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359938"
 ---
 # <a name="what-is-speech-to-text"></a>音声変換の概要
 
@@ -58,5 +58,5 @@ Speech SDK のサンプル コードは、GitHub 上で入手できます。 こ
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Speech サービスのサブスクリプション キーを無料で取得する](get-started.md)
+- [Speech サービスのサブスクリプション キーを無料で取得する](overview.md#try-the-speech-service-for-free)
 - [Speech SDK を取得する](speech-sdk.md)

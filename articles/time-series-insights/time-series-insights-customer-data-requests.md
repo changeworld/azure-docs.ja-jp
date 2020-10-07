@@ -4,17 +4,17 @@ description: Azure Time Series Insights の顧客データ要求機能につい�
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.date: 04/17/2020
 ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
+ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 30b3832dfe3e1c4564d1d89b5c318421e48f554f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5565dd43689d0420fbb9b73f088f24a38a2d54db
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501697"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665907"
 ---
 # <a name="summary-of-customer-data-request-features"></a>顧客データ要求機能の概要
 
@@ -54,13 +54,13 @@ Time Series Insights は、Azure Portal のポリシー ブレードと統合さ
 
 個人データは、ユーザーおよび管理者データとは異なり、Time Series Insights ストレージに格納される場合があります。 Time Series Insights に格納されているデータが個人データである場合、次の手順を使用して、そのデータをエクスポートして削除できます。
 
-**データの表示とエクスポート**
+### <a name="view-and-export-data"></a>データの表示とエクスポート
 
 Time Series Insights 内に格納されているデータを表示およびエクスポートするには、そのデータを検索する必要があります。 Time Series Insights エクスプローラーまたは Time Series Insights クエリ API を使用して、データを表示およびエクスポートできます。 Time Series Insights エクスプローラーを使用してデータを表示およびエクスポートするには、まず、対象のユーザー データを検索して見つけます。 検索後に、グラフを右クリックし、 **[イベントの探索]** を選択します。 イベント グリッドが表示され、CSV および JSON としてデータをエクスポートするオプションが示されます。
 
 詳細については、「[Azure Time Series Insights エクスプローラー](time-series-insights-explorer.md)」をお読みください。
 
-**データの削除**
+### <a name="delete-data"></a>データの削除
 
 現時点では、Time Series Insights でデータの細かい削除はサポートされていません。 ただし、Time Series Insights では、リテンション ポリシーを構成することで、Time Series Insights 内に格納されている顧客データを削除することができます。 削除要件をサポートするために、Time Series Insights 環境全体のリテンション期間を任意の日数に調整することができます。
 

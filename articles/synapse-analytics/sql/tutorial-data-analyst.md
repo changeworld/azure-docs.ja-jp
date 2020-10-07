@@ -1,5 +1,5 @@
 ---
-title: SQL オンデマンド (プレビュー) を使用して Azure Synapse Studio (プレビュー) で Azure Open Datasets を分析する
+title: チュートリアル:SQL オンデマンド (プレビュー) を使用して Azure Synapse Studio (プレビュー) で Azure Open Datasets を分析する
 description: このチュートリアルでは、SQL オンデマンド (プレビュー) を使用してさまざまな Azure Open Datasets を組み合わせた探索的データ分析を簡単に実行し、Azure Synapse Studio で結果を視覚化する方法について説明します。
 services: synapse-analytics
 author: azaricstefan
@@ -8,15 +8,15 @@ ms.topic: tutorial
 ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2fc98e927fcf9686f0f39dae600f944b485c5a06
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: jrasnick
+ms.openlocfilehash: 0471bd594dcf1b0654d6b4c496e5d39ade2739fd
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089143"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539522"
 ---
-# <a name="use-sql-on-demand-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>SQL オンデマンドを使用した Azure Open Datasets の分析と Azure Synapse Studio での結果の視覚化
+# <a name="tutorial-use-sql-on-demand-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>チュートリアル:SQL オンデマンドを使用した Azure Open Datasets の分析と Azure Synapse Studio での結果の視覚化
 
 このチュートリアルでは、SQL オンデマンドを使用してさまざまな Azure Open Datasets を組み合わせることで探索的データ分析を実行し、Azure Synapse Studio で結果を視覚化する方法について説明します。
 
@@ -135,7 +135,7 @@ ORDER BY 1 ASC
 
 ![2016 年の毎日の乗車数を示す縦棒グラフ](./media/tutorial-data-analyst/7.png)
 
-プロット グラフから、土曜日をピーク日とする週単位のパターンがあることが確認できます。 夏期は休暇のため、毎月のタクシー乗車数が減少します。 時期および理由の観点から明確なパターンがないのにタクシー乗車数が大幅に減少することもあります。
+プロット グラフから、土曜日をピーク日とする週単位のパターンがあることが確認できます。 夏期は休暇のため、毎月のタクシー乗車数が減少します。 また、時期および理由の観点から明確なパターンがないのにタクシー乗車数が大幅に減少していることも見て取れます。
 
 次に、NYC タクシー乗車数のデータセットを休日のデータセットと組み合わせることによって、これらの減少が休日と関連しているかどうかを見てみましょう。
 

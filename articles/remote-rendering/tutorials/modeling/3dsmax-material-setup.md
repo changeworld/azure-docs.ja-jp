@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: e77379be863f4527081eeec6a0ee1f426d526527
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 12407d6344c69c747230e9db6fa4d53b4520dc82
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084466"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331813"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-3ds-max"></a>チュートリアル:3ds Max で物理ベース レンダリング マテリアルを設定する
 
@@ -22,6 +22,10 @@ ms.locfileid: "90084466"
 > * 高度なライティングが施されたマテリアル (素材) をシーン内のオブジェクトに割り当てる。
 > * オブジェクトと素材のインスタンス化を処理する。
 > * シーンを FBX 形式でエクスポートし、重要なオプションを選択する。
+
+> [!Note]
+> このチュートリアルで説明する手順は、3ds Max 2019 および 3ds Max 2020 で動作します。
+> 3ds Max 2021 でのバンプ マップのエクスポート方法が変わったということは、そのバージョンが使用されている場合、変換サービスでは通常のマップが見つからないことを意味します。
 
 3ds Max で[物理ベース レンダリング (PBR) マテリアル](../../overview/features/pbr-materials.md)を作成するのは簡単な作業です。 Maya のような他のコンテンツ作成アプリでの PBR 設定と多くの点で似ています。 このチュートリアルは、Azure Remote Rendering プロジェクトの基本的な PBR シェーダー設定と FBX エクスポートに関するガイドです。
 

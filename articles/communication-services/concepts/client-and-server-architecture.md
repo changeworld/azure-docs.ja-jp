@@ -6,15 +6,15 @@ author: mikben
 manager: mikben
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 38d6b131c972b4fd890af53624fdd6a36b3ecb6c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b844f61963081bf355837fd26254915112cbce11
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931015"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666944"
 ---
 # <a name="client-and-server-architecture"></a>クライアントとサーバーのアーキテクチャ
 
@@ -43,13 +43,13 @@ Azure Communication Services クライアント ライブラリが Communication
 
 Azure Communication JavaScript クライアント ライブラリにより、Web アプリケーションでリッチ テキスト、音声、ビデオのやり取りが可能になります。 アプリケーションはクライアント ライブラリを介して Azure Communication Services と直接やり取りしてデータ プレーンにアクセスし、リアルタイムのテキスト、音声、ビデオの通信を提供します。 アーキテクチャのフローの例を以下に示します。
 
-:::image type="content" source="../media/scenarios/archdiagram-browser.png" alt-text="Communication Services のブラウザー対ブラウザーのアーキテクチャを示す図。":::
+:::image type="content" source="../media/scenarios/archdiagram-browser.png" alt-text="ユーザー アクセス トークンのアーキテクチャを示す図。":::
 
 ## <a name="native-app-communication"></a>ネイティブ アプリの通信
 
 ネイティブ アプリケーションは多くのシナリオに最適です。 Azure Communication Services では、ブラウザー対アプリとアプリ対アプリの両方の通信がサポートされます。  ネイティブ アプリケーションのエクスペリエンスを構築するときは、プッシュ通知を使用すると、アプリケーションが実行されていないときでもユーザーが呼び出しを受信できるようになります。 Azure Communication Services では、Google Firebase、Apple Push Notification Service、Windows Push Notifications に統合されたプッシュ通知によって、これを簡単に実行できます。 アーキテクチャのフローの例を以下に示します。
 
-:::image type="content" source="../media/scenarios/archdiagram-app.png" alt-text="Communication Services のネイティブ アプリの通信のアーキテクチャを示す図。":::
+:::image type="content" source="../media/scenarios/archdiagram-app.png" alt-text="ユーザー アクセス トークンのアーキテクチャを示す図。":::
 
 ## <a name="voice-and-sms-over-the-public-switched-telephony-network-pstn"></a>公衆交換電話網 (PSTN) を介した音声と SMS
 
@@ -58,7 +58,7 @@ Azure Communication JavaScript クライアント ライブラリにより、Web
 > [!Note]
 > パブリック プレビュー期間中は、米国およびカナダ内にある請求先住所を持つお客様が、米国の電話番号のプロビジョニングを利用できます。 
 
-:::image type="content" source="../media/scenarios/archdiagram-pstn.png" alt-text="Communication Services の PSTN のアーキテクチャを示す図。":::
+:::image type="content" source="../media/scenarios/archdiagram-pstn.png" alt-text="ユーザー アクセス トークンのアーキテクチャを示す図。":::
 
 PSTN および SMS ソリューションの詳細については、[PSTN および SMS ソリューションの計画に関する記事](../concepts/telephony-sms/plan-solution.md)を参照してください。
 
@@ -66,7 +66,7 @@ PSTN および SMS ソリューションの詳細については、[PSTN およ�
 
 Azure Communication Services では、Azure Communication Services データ プレーンに直接アクセスするサービスを使用した、テキストおよび音声チャネル経由での人対システムの通信がサポートされます。 たとえば、ボットを着信通話に応答させたり、Web チャットに参加させたりできます。 Azure Communication Services には、通話とチャットでこれらのシナリオを実現するクライアント ライブラリが用意されています。 アーキテクチャのフローの例を以下に示します。
 
-:::image type="content" source="../media/scenarios/archdiagram-bot.png" alt-text="Communication Services のボットのアーキテクチャを示す図。":::
+:::image type="content" source="../media/scenarios/archdiagram-bot.png" alt-text="ユーザー アクセス トークンのアーキテクチャを示す図。":::
 
 ## <a name="networking"></a>ネットワーキング
 

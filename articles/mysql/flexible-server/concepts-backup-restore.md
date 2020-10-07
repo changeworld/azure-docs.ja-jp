@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: a5f11a6054358584a8511cb967860c89f6491beb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a72552d8654a45d1ff4c1890c8086d43d7bd801d
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931374"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756536"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql-flexible-server-preview"></a>Azure Database for MySQL フレキシブル サーバー (プレビュー) でのバックアップと復元
 
@@ -24,7 +24,7 @@ Azure Database for MySQL フレキシブル サーバーを使用すると、サ
 
 フレキシブル サーバーを使用すると、データ ファイルのスナップショット バックアップが取得されて、ローカル冗長ストレージに格納されます。 また、サーバーによりトランザクション ログのバックアップも実行され、それもローカル冗長ストレージに格納されます。 これらのバックアップを使用すると、サーバーを、バックアップの構成済みリテンション期間内の任意の時点に復元できます。 バックアップの既定のリテンション期間は 7 日です。 必要に応じて、1 から 35 日の範囲でデータベース バックアップを構成できます。 すべてのバックアップの保存データは、AES 256 ビット暗号化を使用して暗号化されます。
 
-これらのバックアップ ファイルをエクスポートすることはできません。 バックアップは、フレキシブル サーバーでの復元操作にのみ使用できます。 MySQL クライアントから  [mysqldump](https://docs.microsoft.com/azure/MySQL/howto-migrate-using-dump-and-restore) を使用してデータベースをコピーすることもできます。
+これらのバックアップ ファイルをエクスポートすることはできません。 バックアップは、フレキシブル サーバーでの復元操作にのみ使用できます。 MySQL クライアントから  [mysqldump](https://docs.microsoft.com/azure/postgresql/howto-migrate-using-dump-and-restore) を使用してデータベースをコピーすることもできます。
 
 ## <a name="backup-frequency"></a>バックアップ頻度
 

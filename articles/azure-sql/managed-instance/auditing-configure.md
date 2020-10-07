@@ -6,19 +6,19 @@ ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
 - mi.azure.sqlaudit.general.f1
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 05/26/2020
-ms.openlocfilehash: 213a4fdb0e064e1c36a04f7190f14fab80cb4daa
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: d8a6ead23e080b5e1e17403873e2dbaedc0ce177
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117352"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620360"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Azure SQL Database Managed Instance の監査の概要
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB Gremlin API でのデータのパーティション分割
 description: Azure Cosmos DB でパーティション分割されたグラフを使用する方法について説明します。 この記事では、パーティション分割されたグラフの要件とベスト プラクティスについても説明します。
-author: luisbosquez
-ms.author: lbosq
+author: SnehaGunda
+ms.author: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 78c15da1ea9fe5f6307ce388e4d64d372e9eb8c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a993779bc47f1a9b2be8851fafe628ae4286f4a
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261768"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400504"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Azure Cosmos DB でのパーティション分割されたグラフの使用
 
@@ -33,39 +33,39 @@ Azure Cosmos DB の Gremlin API の主な特長の 1 つとして、水平スケ
 
 - **エッジはソースの頂点と共に格納されます**。 つまり、頂点ごとに、そのパーティション キーによって、頂点がその送信エッジと共に格納される場所が定義されます。 この最適化は、グラフ クエリで `out()` カーディナリティを使用する際にクロス パーティション クエリを回避するために行われます。
 
-- **エッジには、それらが指す頂点への参照が含まれます**。 すべてのエッジは、それらが指している頂点のパーティション キーおよび ID と共に格納されます。 この計算により、`out()` 方向のすべてのクエリは、ブラインド クロスパーティション クエリではなく、常にスコープが設定されたパーティション分割されたクエリになります。 
+- **エッジには、それらが指す頂点への参照が含まれます**。 すべてのエッジは、それらが指している頂点のパーティション キーおよび ID と共に格納されます。 この計算により、`out()` 方向のすべてのクエリは、ブラインド クロスパーティション クエリではなく、常にスコープが設定されたパーティション分割されたクエリになります。
 
 - **グラフ クエリではパーティション キーを指定する必要があります**。 Azure Cosmos DB で行方向のパーティション分割を最大限に活用するには、単一の頂点を選択するときに、可能な限り、パーティション キーを指定します。 パーティション分割されたグラフにおいて 1 つまたは複数の頂点を選択するためのクエリを次に示します。
 
     - `/id` および `/label` は、Gremlin API でのコンテナーに対するパーティション キーとしてサポートされていません。
 
 
-    - ID によって頂点を選択してから、 **`.has()` ステップを使用してパーティション キー プロパティを指定する**: 
-    
+    - ID によって頂点を選択してから、 **`.has()` ステップを使用してパーティション キー プロパティを指定する**:
+
         ```java
         g.V('vertex_id').has('partitionKey', 'partitionKey_value')
         ```
-    
-    - **パーティション キー値と ID が含まれている組を指定**して頂点を選択する: 
-    
+
+    - **パーティション キー値と ID が含まれている組を指定**して頂点を選択する:
+
         ```java
         g.V(['partitionKey_value', 'vertex_id'])
         ```
-        
+
     - **パーティション キー値と ID の組の配列**を指定する:
-    
+
         ```java
         g.V(['partitionKey_value0', 'verted_id0'], ['partitionKey_value1', 'vertex_id1'], ...)
         ```
-        
-    - 一連の頂点とその ID を選択し、**パーティション キー値のリストを指定する**: 
-    
+
+    - 一連の頂点とその ID を選択し、**パーティション キー値のリストを指定する**:
+
         ```java
         g.V('vertex_id0', 'vertex_id1', 'vertex_id2', …).has('partitionKey', within('partitionKey_value0', 'partitionKey_value01', 'partitionKey_value02', …)
         ```
 
-    - クエリの先頭で**パーティション戦略**を使用し、Gremlin クエリの残りの部分のスコープにパーティションを指定する: 
-    
+    - クエリの先頭で**パーティション戦略**を使用し、Gremlin クエリの残りの部分のスコープにパーティションを指定する:
+
         ```java
         g.withStrategies(PartitionStrategy.build().partitionKey('partitionKey').readPartitions('partitionKey_value').create()).V()
         ```

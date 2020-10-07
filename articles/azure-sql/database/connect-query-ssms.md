@@ -12,13 +12,13 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/29/2020
-ms.openlocfilehash: f1fad6554a347acb1de72bfe1e5c3413e6f74d9f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/28/2020
+ms.openlocfilehash: 35a637df85984bcfd20836bcd87aa5ecf1583170
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004157"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461140"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>クイック スタート:SSMS を使用して Azure SQL データベースまたは Azure SQL マネージド インスタンスに接続してクエリを実行する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -83,6 +83,9 @@ SSMS で、目的のサーバーに接続します。
    ||||
 
    ![[サーバーに接続]](./media/connect-query-ssms/connect.png)  
+
+> [!NOTE]
+> このチュートリアルでは SQL Server 認証を利用します。  ただし、MFA を使用して Azure Active Directory 経由で接続する場合は、[SSMS 18.6 以降](https://aka.ms/ssms)を利用していることを確認してください。 
 
 3. **[サーバーに接続]** ダイアログ ボックスの **[オプション]** を選択します。 **[データベースへの接続]** ドロップダウン メニューで、**mySampleDatabase** を選択します。 「[前提条件](#prerequisites)」セクションのクイックスタートを完了すると、mySampleDatabase という名前の AdventureWorksLT データベースが作成されます。 AdventureWorks データベースの作業コピーの名前が mySampleDatabase と異なっている場合は、代わりにそれを選択します。
 
@@ -155,7 +158,7 @@ SSMS で、目的のサーバーに接続します。
 
 ### <a name="update-data"></a>データの更新
 
-次の [UPDATE](/sql/t-sql/queries/update-transact-sql?view=sql-server-ver15) Transact-SQL コードを実行して、新しい製品を変更します。
+次の [UPDATE](/sql/t-sql/queries/update-transact-sql) Transact-SQL コードを実行して、新しい製品を変更します。
 
 1. 上記のクエリを、前に作成した新しいレコードを返す次のクエリに置き換えます。
 

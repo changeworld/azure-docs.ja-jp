@@ -4,12 +4,12 @@ ms.service: site-recovery
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
-ms.openlocfilehash: 9d9790c9b3dbe3b130be999dd76092ae64f7b52c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8076a6af2382ccec1ac832cd83c3946d8c7c6f57
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67180881"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400979"
 ---
 |パラメーター名| 種類 | 説明| 指定できる値|
 |-|-|-|-|
@@ -21,7 +21,7 @@ ms.locfileid: "67180881"
 |/PSIP|Mandatory|レプリケーション データの転送に使用する NIC の IP アドレス。| 任意の有効な IP アドレス|
 |/CSIP|Mandatory|構成サーバーがリッスンする NIC の IP アドレス。| 任意の有効な IP アドレス|
 |/PassphraseFilePath|Mandatory|パスフレーズ ファイルの場所の完全パス。|有効なファイル パス|
-|/BypassProxy|省略可能|構成サーバーがプロキシを介さずに Azure に接続することを指定します。|この値は Venu から取得します。|
+|/BypassProxy|省略可能|構成サーバーがプロキシを介さずに Azure に接続することを指定します。||
 |/ProxySettingsFilePath|省略可能|プロキシ設定 (認証を必要とする既定のプロキシ、またはカスタム プロキシ)。|ファイルは下記の形式である必要があります。|
 |DataTransferSecurePort|省略可能|レプリケーション データに使用する PSIP のポート番号。| 有効なポート番号 (既定値は 9433)|
 |/SkipSpaceCheck|省略可能|キャッシュ ディスクの領域チェックをスキップします。| |

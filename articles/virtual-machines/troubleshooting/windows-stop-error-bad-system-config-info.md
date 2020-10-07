@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: 071b5786127af31a2ad3266c128dbfb7cacad656
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 4f2b338b8629209363acb7bbe0533831a089fe6f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88942016"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447324"
 ---
 # <a name="windows-stop-error---0x00000074-bad-system-config-info"></a>Windows STOP エラー - 0x00000074 Bad System Config Info
 
@@ -61,10 +61,10 @@ ms.locfileid: "88942016"
 1. [仮想マシンの修復コマンド](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands)に関する説明の手順 1 から 3 に従い、修復 VM を準備します。
 1. ハイブが壊れていないかを確認します。
 1. リモート デスクトップ接続を使用して、修復 VM に接続します。
-1. `\windows\system32\config` フォルダーをコピーし、正常なディスク パーティションまたは別の安全な場所に保存します。 重要なレジストリ ファイルを編集するため、このフォルダーは予防措置としてバックアップします。
+1. `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` フォルダーをコピーし、正常なディスク パーティションまたは別の安全な場所に保存します。 重要なレジストリ ファイルを編集するため、このフォルダーは予防措置としてバックアップします。 
 
 > [!NOTE]
-> レジストリに加えた変更をロールバックする必要がある場合に備えて、`\windows\system32\config` フォルダーのコピーをバックアップとして作成します。
+> レジストリに加えた変更をロールバックする必要がある場合に備えて、`<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` フォルダーのコピーをバックアップとして作成します。
 
 ### <a name="check-for-hive-corruption"></a>ハイブが壊れていないかを確認する
 
@@ -72,7 +72,7 @@ ms.locfileid: "88942016"
 
 1. 修復 VM で、**レジストリ エディター** アプリケーションを開きます。 Windows の検索バーに「REGEDIT」と入力して検索します。
 1. レジストリ エディターで、 **[HKEY_LOCAL_MACHINE]** を選択して強調表示し、メニューから **[ファイル]、[ハイブの読み込み...]** を選択します。
-1. `\windows\system32\config\SYSTEM` を参照し、 **[開く]** を選択します。
+1. `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM` を参照し、 **[開く]** を選択します。
 1. 名前の入力を求められたら、「**BROKENSYSTEM**」と入力します。
 
    1. ハイブが開けなかった場合、または空の場合は、ハイブが破損しています。 ハイブが破損している場合は、[サポート チケットを開きます](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。

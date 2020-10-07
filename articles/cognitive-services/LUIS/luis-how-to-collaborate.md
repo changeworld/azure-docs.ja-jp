@@ -3,20 +3,18 @@ title: 他の人と共同作業を行う - LUIS
 titleSuffix: Azure Cognitive Services
 description: アプリの所有者は、オーサリング リソースに共同作成者を追加できます。 これらの共同作業者は、アプリのモデル変更、トレーニング、および発行が可能です。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/19/2019
-ms.author: diberry
-ms.openlocfilehash: d1f534b801ec3a71e891bf654628f9e49fc04b0d
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 30b4256b37dc3329801a730192e25f7c24a45594
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055632"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540909"
 ---
 # <a name="add-contributors-to-your-app"></a>アプリに共同作成者を追加する
 

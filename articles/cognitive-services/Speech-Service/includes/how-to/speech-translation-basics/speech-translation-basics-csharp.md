@@ -5,16 +5,26 @@ ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1042383e285780f5ee9297b1c87615bbdd2fe1b6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 27beefc16987361d63aa7b26f6f666cbb6c3ab23
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88925261"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377410"
 ---
+Speech Service の中核となる機能の 1 つは、人間の音声を認識して他の言語に翻訳する機能です。 このクイックスタートでは、アプリと製品で Speech SDK を使用して、高品質の音声翻訳を実行する方法について説明します。 このクイックスタートでは、次のトピックについて説明します。
+
+* 音声テキスト変換の翻訳
+* 音声を複数のターゲット言語に翻訳する
+* 音声間翻訳を直接実行する
+
+## <a name="skip-to-samples-on-github"></a>記事をスキップして GitHub 上のサンプルにアクセスする
+
+この記事をスキップしてサンプル コードをご覧になりたい方は、GitHub 上の [C# クイックスタート サンプル](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet/translate-speech-to-text)を参照してください。
+
 ## <a name="prerequisites"></a>前提条件
 
-この記事は、Azure アカウントと Speech Service サブスクリプションをお持ちであることを前提としています。 アカウントとサブスクリプションをお持ちでない場合は、[Speech Service を無料でお試しください](../../../get-started.md)。
+この記事は、Azure アカウントと Speech Service サブスクリプションをお持ちであることを前提としています。 アカウントとサブスクリプションをお持ちでない場合は、[Speech Service を無料でお試しください](../../../overview.md#try-the-speech-service-for-free)。
 
 ## <a name="install-the-speech-sdk"></a>Speech SDK のインストール
 

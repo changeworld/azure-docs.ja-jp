@@ -8,12 +8,12 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
 ms.author: rohink
-ms.openlocfilehash: 3b34b45cba805d748dcc8a0c31340cd8116e1c80
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 93d9ce50a451221c86f5336107dba30695af159f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82160768"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355365"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure DNS ゾーンおよびレコードを作成する
 
@@ -97,7 +97,7 @@ DNS ゾーン内にドメインの DNS エントリまたはレコードを作�
 
    次のような画面が表示されます。
 
-   ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
+   ![スクリーンショットは、n s lookup コマンドと、Server、Address、Name、Address の値を示すコマンド プロンプト ウィンドウを示しています。](media/dns-getstarted-portal/nslookup.PNG)
 
 ホスト名 **www\.contoso.xyz** は、構成したとおり、**10.10.10.10** に名前解決されています。 この結果で、名前解決が正常に機能していることを確認できます。 
 

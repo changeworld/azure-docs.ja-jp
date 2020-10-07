@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 1c041d594b29c6e93b73eb1b0c623b3e566ceef5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 2195ac4e5753addaee9e13c368b6e6a1b94354ff
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935502"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363139"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search における AI エンリッチメント
 
@@ -69,7 +69,7 @@ Azure Cognitive Search の組み込みのスキルは、Cognitive Services APIs 
 
 ![ドキュメント解析フェーズ](./media/cognitive-search-intro/document-cracking-phase-blowup.png "ドキュメント解析")
 
- サポートされているソースには、Azure Table Storage、Azure Table Storage、Microsoft Azure SQL Database、および Microsoft Azure Cosmos DB などがあります。 テキスト ベースのコンテンツは、次のファイル タイプから抽出できます:PDF、Word、PowerPoint、CSV ファイル。 詳細な一覧については、[サポートされている形式](search-howto-indexing-azure-blob-storage.md#supported-document-formats)に関するページをご覧ください。 インデックスの作成には時間がかかるため、代表的な少量のデータ セットから始め、ソリューションの成熟度に応じて段階的に構築します。
+ サポートされているソースには、Azure Table Storage、Azure Table Storage、Microsoft Azure SQL Database、および Microsoft Azure Cosmos DB などがあります。 テキスト ベースのコンテンツは、次のファイル タイプから抽出できます:PDF、Word、PowerPoint、CSV ファイル。 詳細な一覧については、[サポートされている形式](search-howto-indexing-azure-blob-storage.md#SupportedFormats)に関するページをご覧ください。 インデックスの作成には時間がかかるため、代表的な少量のデータ セットから始め、ソリューションの成熟度に応じて段階的に構築します。
 
 ### <a name="step-2-cognitive-skills-and-enrichment-phase"></a>手順 2:認知スキルとエンリッチメント フェーズ
 

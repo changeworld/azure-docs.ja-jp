@@ -8,12 +8,12 @@ ms.date: 12/11/2017
 ms.author: ancav
 ms.custom: mvc
 ms.subservice: autoscale
-ms.openlocfilehash: 8a55ab9b6b87a379fbdebcead4467ec47507d67a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8853a153450a07105ed4bac13de0da6cea95ce2a
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327516"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356351"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>パフォーマンス データまたはスケジュールに基づいて自動スケール設定を作成する
 
@@ -46,7 +46,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. 左側のナビゲーション ウィンドウで **[監視]** オプションを選択します。 ページを読み込んだ後、 **[自動スケール]** タブを選択します。
 2. 自動スケールをサポートする、サブスクリプション内のリソースのリストが、ここに表示されます。 チュートリアルの前半で作成した App Service プランを特定し、クリックします。
 
-    ![自動スケール設定に移動する](./media/tutorial-autoscale-performance-schedule/monitor-blade-autoscale.png)
+    ![スクリーンショットは、[モニター]、[自動スケーリング] が選択されている Azure portal を示しています。](./media/tutorial-autoscale-performance-schedule/monitor-blade-autoscale.png)
 
 3. 自動スケール設定で、 **[自動スケールの有効化]** をクリックします。
 
@@ -59,7 +59,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 2. 既定のプロファイルで **[スケール モード]** が [特定のインスタンス数にスケーリングする] に設定されていることを確認します。
 3. インスタンス数を **1** に設定します。 このように設定すると、他のプロファイルがアクティブでない場合、または有効でない場合、既定のプロファイルのインスタンス数が 1 に戻ります。
 
-   ![自動スケール設定に移動する](./media/tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
+   ![スクリーンショットは、設定に名前が入力されている [自動スケーリング設定] ページを示しています。](./media/tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
 
 
 ## <a name="create-recurrence-profile"></a>定期プロファイルを作成する

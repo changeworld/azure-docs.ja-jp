@@ -9,12 +9,12 @@ ms.date: 08/03/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, amqp, devx-track-csharp
-ms.openlocfilehash: b904fcd03247f6e6ae01f51c5048c29826bb8e5a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 24a63a167f640646b9e07126a038663f4da3e23b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018469"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449606"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>チュートリアル:Windows デバイス用の C# IoT Edge モジュールを開発する
 
@@ -323,7 +323,7 @@ IoT Edge デバイスにモジュール プロジェクトをデプロイする�
 
 4. ファイル エクスプローラーで、ソリューションの config フォルダー内にある **deployment.windows-amd64.json** ファイルを選択します。
 
-5. クラウド エクスプローラーを更新して、デプロイされたモジュールがデバイスの下に一覧表示されていることを確認します。
+5. Cloud Explorer を更新して、デプロイされたモジュールがデバイスの下に一覧表示されていることを確認します。
 
 ## <a name="view-generated-data"></a>生成されたデータを表示する
 

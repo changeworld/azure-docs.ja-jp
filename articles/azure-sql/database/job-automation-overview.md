@@ -6,17 +6,17 @@ ms.service: sql-db-mi
 ms.subservice: features
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: overview
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: carlr
+ms.topic: conceptual
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 03/10/2020
-ms.openlocfilehash: 8c9bdb059008a3d9e33631c3101cb7b459660119
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 6b4b31ab4bc0cb1fe5bd9140870df86db6841ff3
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89436784"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450340"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>データベース ジョブを使用して管理タスクを自動化する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -249,7 +249,7 @@ SQL Server エージェントについては、「[SQL Server エージェント
 **例 4** は、エラスティック プールをターゲットとして含むターゲット グループを示しています。 "*例 2*" と同様に、プールはジョブ実行時に動的に列挙され、プール内のデータベースの一覧が判定されます。
 <br><br>
 
-![ターゲット グループの例](./media/job-automation-overview/targetgroup-examples2.png)
+![その他のターゲット グループの例](./media/job-automation-overview/targetgroup-examples2.png)
 
 **例 5** と**例 6** は、包含ルールと除外ルールを使用してサーバー、エラスティック プール、およびデータベースを結合できる高度なシナリオを示しています。<br>
 **例 7** は、シャード マップ内のシャードをジョブ実行時にも評価できることを示しています。

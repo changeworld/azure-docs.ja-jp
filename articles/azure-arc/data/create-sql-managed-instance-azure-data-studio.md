@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 989496885445a8a0a8d3bbc1a789975a2875c6e0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2aed3ea48935a62d68f739594a265649a2e1292d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931591"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311531"
 ---
 # <a name="create-sql-managed-instance---azure-arc-using-azure-data-studio"></a>Azure Data Studio を使用して SQL Managed Instance - Azure Arc を作成する
 
@@ -48,7 +48,8 @@ Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting a
 - Azure Data Studio を起動する
 - [接続] タブで、左上にある 3 つのドットをクリックし、[新しい展開] を選択します
 - デプロイ オプションで、 **[Azure SQL managed instance - Azure Arc]\(Azure SQL Managed Instance - Azure Arc\)** を選択します 
-  > **注:** azdata CLI が現在インストールされていない場合は、ここでインストールするように求められることがあります。
+  > [!NOTE]
+  > azdata CLI が現在インストールされていない場合は、ここでインストールするように求められることがあります。
 - プライバシーとライセンス条項に同意し、下部にある **[選択]** をクリックします
 
 

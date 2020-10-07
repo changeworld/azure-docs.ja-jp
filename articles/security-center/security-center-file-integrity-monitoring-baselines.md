@@ -8,17 +8,17 @@ manager: rkarlin
 ms.assetid: c8a2a589-b737-46c1-b508-7ea52e301e8f
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/29/2019
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: d336c58971b16875d9861f85dde9529de8c734e2
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 89230b6aca9e225c28a1efd0b99476b35f4d8db0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89278087"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439550"
 ---
 # <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>ファイルの整合性の監視 (FIM) を使用してベースラインを比較する
 

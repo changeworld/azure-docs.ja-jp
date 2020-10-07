@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: b899069a03b39d068f2b4059cf26d3baf1f3beae
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 502b93b4459fba4da04207d9186f8c7ce6b298c2
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905422"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578480"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>ワークスペースおよびテナント全体での Azure Sentinel の拡張
 
@@ -131,7 +131,7 @@ Azure Sentinel には事前に読み込まれたクエリ例が用意されて�
 
 ## <a name="managing-workspaces-across-tenants-using-azure-lighthouse"></a>Azure Lighthouse を使用したテナント間でのワークスペースの管理
 
-前述のように、多くのシナリオでは、異なる Azure Sentinel ワークスペースを異なる Azure AD テナントに配置できます。 [Azure Lighthouse](../lighthouse/overview.md) を使用すると、テナントの境界を越えてすべてのクロスワークスペース アクティビティを拡張することができ、管理するテナントのユーザーは、すべてのテナントで Azure Sentinel ワークスペースを使用できるようになります。 Azure Lighthouse を[オンボード](../lighthouse/how-to/onboard-customer.md)した後、Azure portal で[ディレクトリとサブスクリプション セレクター](./multiple-tenants-service-providers.md#how-to-access-azure-sentinel-from-other-tenants)を使用して、管理するワークスペースが含まれるすべてのサブスクリプションを選択します。これにより、ポータルの異なるワークスペース セレクターですべてのサブスクリプションを使用できるようになります。
+前述のように、多くのシナリオでは、異なる Azure Sentinel ワークスペースを異なる Azure AD テナントに配置できます。 [Azure Lighthouse](../lighthouse/overview.md) を使用すると、テナントの境界を越えてすべてのクロスワークスペース アクティビティを拡張することができ、管理するテナントのユーザーは、すべてのテナントで Azure Sentinel ワークスペースを使用できるようになります。 Azure Lighthouse を[オンボード](../lighthouse/how-to/onboard-customer.md)した後、Azure portal で[ディレクトリとサブスクリプション セレクター](./multiple-tenants-service-providers.md#how-to-access-azure-sentinel-in-managed-tenants)を使用して、管理するワークスペースが含まれるすべてのサブスクリプションを選択します。これにより、ポータルの異なるワークスペース セレクターですべてのサブスクリプションを使用できるようになります。
 
 Azure Lighthouse を使用するときは、Azure Sentinel ロールごとにグループを作成し、各テナントからそれらのグループにアクセス許可を委任することをお勧めします。
 

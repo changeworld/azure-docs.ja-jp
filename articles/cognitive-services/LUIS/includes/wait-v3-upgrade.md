@@ -2,18 +2,17 @@
 title: LUIS ポータルのユーザー インターフェイスのアップグレード
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: include
 ms.date: 10/14/2019
-ms.author: diberry
-ms.openlocfilehash: b518a9a268ed7dd364840beb54ded2962dcc839d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cf2b5e38d7825cdebb63aaeb3fec24474542c24c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73465174"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541044"
 ---
 > [!Caution]
 > このドキュメントは、最新の LUIS ポータルのテキストとスクリーンショットで更新されていません。 

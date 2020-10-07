@@ -1,17 +1,17 @@
 ---
 title: 高可用性 - Azure Database for PostgreSQL - Single Server
 description: この記事では、Azure Database for PostgreSQL - Single Server での高可用性について情報を提供します
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
-ms.openlocfilehash: 0d723e1613e96f0aea243eace8ece3f0473e3742
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 075f5fde272d4ee2e932e5f6c1f0e34324c38837
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90884448"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707933"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>Azure Database for PostgreSQL - Single Server での高可用性
 Azure Database for PostgreSQL – Single Server サービスでは、[99.99 %](https://azure.microsoft.com/support/legal/sla/postgresql) のアップタイムという財務的な裏付けのあるサービス レベル アグリーメント (SLA) で、高レベルの可用性が保証されます。 Azure Database for PostgreSQL は、ユーザーが開始したコンピューティングのスケーリング操作などの計画的なイベント中や、基になるハードウェア、ソフトウェア、ネットワークの障害などの計画外のイベントが発生したときに高可用性を提供します。 Azure Database for PostgreSQL は、ほとんどの重大な状況から迅速に復旧でき、このサービスを使用するとアプリケーションのダウンタイムが事実上なくなります。
@@ -49,7 +49,7 @@ Azure Database for PostgreSQL は、計画的なダウンタイム操作中に�
 計画外のダウンタイムは、基になるハードウェアの障害、ネットワークの問題、ソフトウェアのバグなど、予期しない障害の結果として発生する可能性があります。 データベース サーバーが予期せず停止した場合は、新しいデータベース サーバーが数秒で自動的にプロビジョニングされます。 リモート ストレージは、新しいデータベース サーバーに自動的に接続されます。 PostgreSQL エンジンは、WAL およびデータベース ファイルを使用して復旧操作を実行し、データベース サーバーを開いてクライアントが接続できるようにします。 コミットされていないトランザクションは失われ、アプリケーションが再試行する必要があります。 計画外のダウンタイムは回避できませんが、Azure Database for PostgreSQL では、データベース サーバーとストレージ レイヤーの両方で、ユーザーの介入を必要とすることなく自動的に復旧操作を実行することでダウンタイムを軽減します。 
 
 
-:::image type="content" source="./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png" alt-text="Azure PostgreSQL での高可用性のビュー":::
+:::image type="content" source="./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png" alt-text="Azure PostgreSQL でのエラスティック スケーリングのビュー":::
 
 1. 高速スケーリング機能を備えた Azure PostgreSQL サーバー。
 2. プロキシとして機能し、クライアント接続を適切なデータベース サーバーにルーティングするゲートウェイ

@@ -3,14 +3,14 @@ title: Python と Jupyter Notebooks を使用してデータ サイエンスを�
 description: Python と Jupyter Notebooks を使用してデータサイエンスを教えるためのラボを設定する方法について説明します。
 author: emaher
 ms.topic: article
-ms.date: 06/26/2020
+ms.date: 09/29/2020
 ms.author: enewman
-ms.openlocfilehash: 25fd090f76c0aa11617b34503ea18d1b45a0e1ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4bbf4c9d4bc83b48b8ecc62946fa9bffa8af50bc
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445017"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533522"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Python と Jupyter Notebook を使用してデータ サイエンスを教えるためのラボを設定する
 この記事では、[Jupyter Notebook](http://jupyter-notebook.readthedocs.io/) の使用方法を学生に教えるために必要なツールを使用して Lab Services 内にテンプレート仮想マシン (VM) を設定する方法と、学生が各自の仮想マシン (VM) 上で各自のノートブックに接続する方法について概説します。

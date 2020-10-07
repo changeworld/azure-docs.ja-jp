@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 982aa4bdb37af53999e75b7e33db990adb057938
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 842d43c82875a1a8e5e45ba14f47ceb6eac26727
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019761"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538808"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>例:C# で Azure Cognitive Search にシノニムを追加する
 
@@ -23,8 +23,8 @@ ms.locfileid: "89019761"
 Azure Cognitive Search では、シノニムは同等の用語を関連付ける "*マッピング規則*" を通じて "*シノニム マップ*" で定義されています。 この例では、既にインデックスがある状態で同意語を追加して使用する最も重要な手順について取り上げます。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
-> * [SynonymMap](/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) クラスを使用して、シノニム マップを作成する。 
-> * シノニムを介してクエリ拡張をサポートする必要があるフィールドに対して [SynonymMaps](/dotnet/api/microsoft.azure.search.models.field.synonymmaps?view=azure-dotnet) プロパティを設定する。
+> * [SynonymMap](/dotnet/api/microsoft.azure.search.models.synonymmap) クラスを使用して、シノニム マップを作成する。 
+> * シノニムを介してクエリ拡張をサポートする必要があるフィールドに対して [SynonymMaps](/dotnet/api/microsoft.azure.search.models.field.synonymmaps) プロパティを設定する。
 
 シノニム対応フィールドに対するクエリは、通常と同じ方法で実行できます。 クエリ構文を追加しなくてもシノニムにアクセスできます。
 
@@ -97,7 +97,7 @@ results = indexClient.Documents.Search<Hotel>("economy AND hotel", parameters);
 WriteDocuments(results);
 ```
 これらの用語は 2 つのインデックス付きドキュメントのどちらにも含まれていないため、最初の `RunQueriesWithNonExistentTermsInIndex` からは次の出力が返されます。
-~~~
+```
 Search the entire index for the phrase "five star":
 
 no document matched
@@ -109,7 +109,7 @@ no document matched
 Search the entire index for the terms 'economy' AND 'hotel':
 
 no document matched
-~~~
+```
 
 ## <a name="enable-synonyms"></a>シノニムの有効化
 
@@ -148,7 +148,7 @@ no document matched
 
 シノニム マップがアップロードされ、インデックスがシノニム マップを使用するように更新された後、2 回目の `RunQueriesWithNonExistentTermsInIndex` 呼び出しは次の出力を返します。
 
-~~~
+```
 Search the entire index for the phrase "five star":
 
 Name: Fancy Stay        Category: Luxury        Tags: [pool, view, wifi, concierge]
@@ -160,7 +160,7 @@ Name: Fancy Stay        Category: Luxury        Tags: [pool, view, wifi, concier
 Search the entire index for the terms 'economy' AND 'hotel':
 
 Name: Roach Motel       Category: Budget        Tags: [motel, budget]
-~~~
+```
 最初のクエリは、規則 `five star=>luxury` からドキュメントを見つけます。 2 番目のクエリは `internet,wifi` を使用して検索を拡張し、3 番目のクエリは `hotel, motel` と `economy,inexpensive=>budget` の両方を使用してそれらと一致するドキュメントを見つけます。
 
 シノニムを追加することで、検索エクスペリエンスがまったく違うものになります。 この例で元のクエリは、インデックス内のドキュメントが関連性を持っているにもかかわらず、意味のある結果を返すことができませんでした。 シノニムを有効にすると、インデックス内の基になるデータは変更せずに、よく使用される用語が含まれるようにインデックスを拡張できます。

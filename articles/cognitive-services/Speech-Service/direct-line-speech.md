@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 6dc125b68af8f9a07731aaae9d858c19c51f934f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2b0bb997ecea55d25748152bab7bb6963d67657f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402388"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357643"
 ---
 # <a name="what-is-direct-line-speech"></a>Direct Line Speech とは
 
@@ -27,7 +27,7 @@ Direct Line Speech は、音声アシスタントのための最高レベルの�
 
 ## <a name="getting-started-with-direct-line-speech"></a>Direct Line Speech の使用を開始する
 
-Direct Line Speech を使用して音声アシスタントを作成する最初の手順では、[Speech のサブスクリプション キーを取得](get-started.md)し、そのサブスクリプションに関連付けられた新しいボットを作成し、そのボットを Direct Line Speech チャネルに接続します。
+Direct Line Speech を使用して音声アシスタントを作成する最初の手順では、[Speech のサブスクリプション キーを取得](overview.md#try-the-speech-service-for-free)し、そのサブスクリプションに関連付けられた新しいボットを作成し、そのボットを Direct Line Speech チャネルに接続します。
 
    ![Direct Line Speech のオーケストレーション サービス フローの概念図](media/voice-assistants/overview-directlinespeech.png "Speech チャネルのフロー")
 
@@ -64,7 +64,7 @@ Direct Line Speech と音声アシスタントのための関連する機能は�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Speech サービスのサブスクリプション キーを無料で取得する](get-started.md)
+* [Speech サービスのサブスクリプション キーを無料で取得する](overview.md#try-the-speech-service-for-free)
 * [Speech SDK を取得する](speech-sdk.md)
 * [基本ボットの作成とデプロイ](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 * [仮想アシスタント ソリューションとエンタープライズ テンプレートの入手](https://github.com/Microsoft/AI)

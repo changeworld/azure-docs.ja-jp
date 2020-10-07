@@ -15,12 +15,12 @@ ms.date: 07/07/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 8809b5fdce382b7c8f913823ca8e176226d5837b
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: b85f1d8bd7249ad26ff957a72a9cc7285158caba
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536176"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397727"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>従来のサブスクリプション管理者ロール、Azure ロール、および Azure AD ロール
 
@@ -122,7 +122,7 @@ Azure portal では、Azure AD ロールの一覧が **[ロールと管理者]**
 
 既定では、Azure ロールと Azure AD ロールは、Azure と Azure AD にまたがっていません。 ただし、全体管理者が Azure portal で **[Azure リソースのアクセス管理]** スイッチを選択して自分のアクセスを昇格させた場合、全体管理者は特定のテナントのすべてのサブスクリプションに対する[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)ロール (Azure ロール) を許可されます。 ユーザー アクセス管理者ロールを使用すると、ユーザーは他のユーザーに Azure リソースに対するアクセス権を付与できます。 このスイッチは、サブスクリプションへのアクセス権を回復する場合に便利です。 詳細については、「[Azure のすべてのサブスクリプションと管理グループを管理する目的でアクセス権限を昇格させる](elevate-access-global-admin.md)」を参照してください。
 
-いくつかの Azure AD ロール (全体管理者ロールやユーザー管理者ロールなど) は、Azure AD と Microsoft Office 365 にまたがっています。 たとえば、全体管理者ロールのメンバーであれば、Azure AD および Office 365 で全体管理者機能を持っています。たとえば、Microsoft Exchange や Microsoft SharePoint を変更する機能などです。 ただし、既定では、全体管理者は Azure リソースにアクセスできません。
+いくつかの Azure AD ロール (全体管理者ロールやユーザー管理者ロールなど) は、Azure AD と Microsoft 365 にまたがっています。 たとえば、全体管理者ロールのメンバーであれば、Azure AD および Microsoft 365 における全体管理者機能を持つことになります。たとえば、Microsoft Exchange や Microsoft SharePoint を変更する機能などです。 ただし、既定では、全体管理者は Azure リソースにアクセスできません。
 
 ![Azure RBAC ロールと Azure AD ロール](./media/rbac-and-directory-admin-roles/azure-office-roles.png)
 

@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 56198392f3c769837d8d672b861baa9b341d284e
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 760a3a194e181576acb3601aabc07c6900cb664e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419352"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276766"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>.NET SDK を使用した Azure Cosmos DB Table API と Azure Table Storage の概要
 
@@ -120,7 +120,7 @@ tableClient.TableClientConfiguration.UseRestExecutorForCosmosEndpoint = true;
 
 ## <a name="insert-or-merge-an-entity"></a>エンティティを挿入またはマージする
 
-次のコード例では、エンティティ オブジェクトを作成して、それをテーブルに追加します。 エンティティの挿入とマージには、[TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) クラス内の InsertOrMerge メソッドが使用されます。 その操作は、[CloudTable.ExecuteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync?view=azure-dotnet) メソッドを呼び出すことによって実行されます。 
+次のコード例では、エンティティ オブジェクトを作成して、それをテーブルに追加します。 エンティティの挿入とマージには、[TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) クラス内の InsertOrMerge メソッドが使用されます。 その操作は、[CloudTable.ExecuteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync?view=azure-dotnet&preserve-view=true) メソッドを呼び出すことによって実行されます。 
 
 対象のプロジェクトである **[CosmosTableSamples]** を右クリックします。 **[追加]** 、 **[新しい項目]** の順に選択し、**SamplesUtils.cs** という名前のクラスを追加します。 エンティティに対する CRUD 操作を実行するために必要なすべてのコードが、このクラスに格納されます。 
 
@@ -158,7 +158,7 @@ tableClient.TableClientConfiguration.UseRestExecutorForCosmosEndpoint = true;
 
 ここでソリューションをビルドし、F5 キーを押してプロジェクトを実行します。 プロジェクトを実行すると、コマンド プロンプトに次の出力内容が表示されます。
 
-:::image type="content" source="./media/tutorial-develop-table-standard/output-from-sample.png" alt-text="コマンド プロンプトからの出力":::
+:::image type="content" source="./media/tutorial-develop-table-standard/output-from-sample.png" alt-text="[接続文字列] ウィンドウでプライマリ接続文字列を確認してコピーする":::
 
 プロジェクトを実行するときに Settings.json ファイルが見つからないというエラーが発生した場合は、次の XML エントリをプロジェクトの設定に追加することで解決できます。 CosmosTableSamples を右クリックし、[CosmosTableSamples.csproj の編集] を選択して、次の itemGroup を追加します。 
 
@@ -171,11 +171,11 @@ tableClient.TableClientConfiguration.UseRestExecutorForCosmosEndpoint = true;
 ```
 これで Azure portal にサインインして、テーブルにデータが存在することを確認できます。 
 
-:::image type="content" source="./media/tutorial-develop-table-standard/results-in-portal.png" alt-text="ポータルでの結果":::
+:::image type="content" source="./media/tutorial-develop-table-standard/results-in-portal.png" alt-text="[接続文字列] ウィンドウでプライマリ接続文字列を確認してコピーする":::
 
 ## <a name="next-steps"></a>次のステップ
 
 次のチュートリアルに進んで、Azure Cosmos DB Table API アカウントにデータを移行する方法を学びましょう。 
 
 > [!div class="nextstepaction"]
->[データを照会する方法](../cosmos-db/table-import.md)
+>[Azure Cosmos DB Table API へのデータの移行](../cosmos-db/table-import.md)

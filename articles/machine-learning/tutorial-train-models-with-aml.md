@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 03/18/2020
+ms.date: 09/28/2020
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 1af5ab33497ad8694752db17e874b883e60c942c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 40ee7ad74d1a1daaf6df5e76b5e51db52feea304
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906663"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535071"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>チュートリアル:MNIST データと scikit-learn を使用して画像の分類モデルをトレーニングする 
 
@@ -37,7 +37,7 @@ ms.locfileid: "90906663"
 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
 
 >[!NOTE]
-> この記事のコードは、[Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) バージョン 1.0.83 を使用してテストされています。
+> この記事のコードは、[Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) バージョン 1.13.0 を使用してテストされています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -117,7 +117,7 @@ from azureml.core.compute import ComputeTarget
 import os
 
 # choose a name for your cluster
-compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "cpucluster")
+compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "cpu-cluster")
 compute_min_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MIN_NODES", 0)
 compute_max_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MAX_NODES", 4)
 
@@ -223,7 +223,7 @@ plt.show()
 このタスクでは、あらかじめ設定しておいたリモート トレーニング クラスターで実行するジョブを送信します。  ジョブを送信するには、次のようにします。
 * ディレクトリを作成する
 * トレーニング スクリプトを作成する
-* エスティメータ オブジェクトを作成する
+* スクリプト実行構成を作成する
 * ジョブを送信する
 
 ### <a name="create-a-directory"></a>ディレクトリを作成する
@@ -307,19 +307,19 @@ joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')
   shutil.copy('utils.py', script_folder)
   ```
 
-### <a name="create-an-estimator"></a>推定を作成する
+### <a name="configure-the-training-job"></a>トレーニング ジョブを構成する
 
-実行の送信には、推定オブジェクトが使用されます。 Azure Machine Learning には、一般的な機械学習フレームワーク用に事前に構成された推定器と、汎用的な推定器があります。 推定器は、次の情報を指定して作成します。
+[ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) オブジェクトを作成して、トレーニング スクリプト、使用する環境、実行するコンピューティング先など、トレーニング ジョブの構成の詳細を指定します。 次のように指定して、ScriptRunConfig を構成します。
 
-
-* 推定オブジェクトの名前 `est`。
 * スクリプトが含まれるディレクトリ。 このディレクトリ内のすべてのファイルは、実行のためにクラスター ノード内にアップロードされます。
 * コンピューティング ターゲット。 ここでは、作成した Azure Machine Learning コンピューティング クラスターを使用します。
 * トレーニング スクリプトの名前 **train.py**。
 * スクリプトの実行に必要なライブラリを含んだ環境。
-* トレーニング スクリプトからの必須パラメーター。
+* トレーニング スクリプトに必要な引数。
 
-このチュートリアルでは、このターゲットは AmlCompute です。 スクリプト フォルダー内のすべてのファイルは、実行のためにクラスター ノード内にアップロードされます。 データセットを使用するために **data_folder** が設定されます。 まず、scikit-learn ライブラリ、azureml-dataprep (データセットにアクセスするために必要)、azureml-defaults (メトリックをログするための依存関係が含まれる) を含んだ環境を作成します。 azureml-defaults には、この後チュートリアルのパート 2 でモデルを Web サービスとしてデプロイするために必要な依存関係も含まれています。
+このチュートリアルでは、このターゲットは AmlCompute です。 スクリプト フォルダー内のすべてのファイルは、実行のためにクラスター ノード内にアップロードされます。 データセットを使用するために **--data_folder** が設定されます。
+
+まず、scikit-learn ライブラリ、azureml-dataset-runtime (データセットにアクセスするために必要)、azureml-defaults (メトリックをログするための依存関係が含まれる) を含む環境を作成します。 azureml-defaults には、この後チュートリアルのパート 2 でモデルを Web サービスとしてデプロイするために必要な依存関係も含まれています。
 
 環境が定義されたら、それをチュートリアルのパート 2 で再利用するためにワークスペースに登録します。
 
@@ -329,38 +329,34 @@ from azureml.core.conda_dependencies import CondaDependencies
 
 # to install required packages
 env = Environment('tutorial-env')
-cd = CondaDependencies.create(pip_packages=['azureml-dataprep[pandas,fuse]>=1.1.14', 'azureml-defaults'], conda_packages = ['scikit-learn==0.22.1'])
+cd = CondaDependencies.create(pip_packages=['azureml-dataset-runtime[pandas,fuse]', 'azureml-defaults'], conda_packages=['scikit-learn==0.22.1'])
 
 env.python.conda_dependencies = cd
 
 # Register environment to re-use later
-env.register(workspace = ws)
+env.register(workspace=ws)
 ```
 
-さらに、次のコードで推定を作成します。
+次に、トレーニング スクリプト、コンピューティング先、および環境を指定して、ScriptRunConfig を作成します。
 
 ```python
-from azureml.train.estimator import Estimator
+from azureml.core import ScriptRunConfig
 
-script_params = {
-    # to mount files referenced by mnist dataset
-    '--data-folder': mnist_file_dataset.as_named_input('mnist_opendataset').as_mount(),
-    '--regularization': 0.5
-}
+args = ['--data-folder', mnist_file_dataset.as_mount(), '--regularization', 0.5]
 
-est = Estimator(source_directory=script_folder,
-              script_params=script_params,
-              compute_target=compute_target,
-              environment_definition=env,
-              entry_script='train.py')
+src = ScriptRunConfig(source_directory=script_folder,
+                      script='train.py', 
+                      arguments=args,
+                      compute_target=compute_target,
+                      environment=env)
 ```
 
 ### <a name="submit-the-job-to-the-cluster"></a>ジョブをクラスターに送信する
 
-推定オブジェクトを送信して、実験を実行します。
+ScriptRunConfig オブジェクトを送信して実験を実行します。
 
 ```python
-run = exp.submit(config=est)
+run = exp.submit(config=src)
 run
 ```
 
@@ -372,7 +368,7 @@ run
 
 待っている間に次のことが行われます。
 
-- **イメージの作成**:推定で指定されている Python 環境と一致する Docker イメージが作成されます。 このイメージがワークスペースにアップロードされます。 イメージの作成とアップロードには**約 5 分**かかります。
+- **イメージの作成**:Azure ML 環境で指定されている Python 環境と一致する Docker イメージが作成されます。 このイメージがワークスペースにアップロードされます。 イメージの作成とアップロードには**約 5 分**かかります。
 
   その後の実行のためにコンテナーがキャッシュに入れられるので、この段階は Python 環境ごとに 1 回行われます。 イメージの作成中に、ログが実行履歴にストリーミングされます。 これらのログを使用して、イメージの作成の進行状況を監視できます。
 

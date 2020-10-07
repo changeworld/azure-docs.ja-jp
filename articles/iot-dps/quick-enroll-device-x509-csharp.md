@@ -1,20 +1,20 @@
 ---
-title: C# を使用して X.509 デバイスを Azure Device Provisioning Service に登録する
+title: クイックスタート - C# を使用して X.509 デバイスを Azure Device Provisioning Service に登録する
 description: このクイック スタートでは、グループ登録を使用します。 このクイックスタートでは、C# を使用して X.509 デバイスを Azure IoT Hub Device Provisioning Service (DPS) に登録します。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 11/08/2019
+ms.date: 09/28/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 89d98cdf6f635cab3b85462adf5c6695f7c4482e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 618b2c6acb8792382adb4c067aa8f33003227091
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020934"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532586"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>クイック スタート: C# を使用して X.509 デバイスを Device Provisioning Service に登録する
 
@@ -159,12 +159,15 @@ C SDK のツールに加えて、*Microsoft Azure IoT SDK for .NET* に含まれ
    }
    ```
 
-1. 最後に、`Main` メソッドの本体を次の行に置き換えます。
+1. 最後に、`Main` メソッドを次の行に置き換えます。
 
    ```csharp
-   RunSample().GetAwaiter().GetResult();
-   Console.WriteLine("\nHit <Enter> to exit ...");
-   Console.ReadLine();
+    static async Task Main(string[] args)
+    {
+        await RunSample();
+        Console.WriteLine("\nHit <Enter> to exit ...");
+        Console.ReadLine();
+    }
    ```
 
 1. ソリューションをビルドします。

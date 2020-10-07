@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: c0f4e02a76044268946a4a482eaeccf5d622b8a7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 678bad67b454ec0930d2cf30df45ba7b2c822e35
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036266"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371458"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Azure Linux VM に対する SSH 接続の失敗、エラー、拒否のトラブルシューティング
 この記事は、Linux 仮想マシン (VM) に接続しようとしたときに、Secure Shell (SSH) エラー、SSH 接続エラー、または SSH の拒否により発生する問題を見つけて修正するために役立ちます。 Azure Portal、Azure CLI、または Linux 用の VM アクセス拡張機能を使用して、接続の問題を解決できます。
@@ -29,16 +29,16 @@ ms.locfileid: "87036266"
 ## <a name="quick-troubleshooting-steps"></a>簡単なトラブルシューティング手順
 トラブルシューティングの各手順を実行した後、VM に再接続してみてください。
 
-1. [SSH 構成をリセットします](#reset-config)。
-2. ユーザーの[資格情報をリセットします](#reset-credentials)。
-3. [ネットワーク セキュリティ グループ](../../virtual-network/security-overview.md) ルールで SSH トラフィックが許可されていることを確認します。
-   * SSH トラフィックを許可する[ネットワーク セキュリティ グループ規則](#security-rules)が存在することを確認します (既定では TCP ポート 22)。
+1. [SSH 構成をリセットします](#reset-the-ssh-configuration)。
+2. ユーザーの[資格情報をリセットします](#reset-ssh-credentials-for-a-user)。
+3. [ネットワーク セキュリティ グループ](../../virtual-network/network-security-groups-overview.md) ルールで SSH トラフィックが許可されていることを確認します。
+   * SSH トラフィックを許可する[ネットワーク セキュリティ グループ規則](#check-security-rules)が存在することを確認します (既定では TCP ポート 22)。
    * ポートのリダイレクト/マッピングは、Azure Load Balancer なしでは使用できません。
 4. [VM リソースの正常性](../../service-health/resource-health-overview.md)を確認します。
    * VM が正常であると報告されていることを確認します。
    * [ブート診断を有効にしている](boot-diagnostics.md)場合は、VM のブート エラーがログに報告されていないことを確認します。
-5. [VM を再起動します](#restart-vm)。
-6. [VM を再デプロイします](#redeploy-vm)。
+5. [VM を再起動します](#restart-a-vm)。
+6. [VM を再デプロイします](#redeploy-a-vm)。
 
 詳しいトラブルシューティング手順と説明を引き続きお読みください。
 
@@ -59,15 +59,15 @@ Azure Portal では、ローカル コンピューターへのツールのイン
 
 ![Azure Portal で SSH 構成または資格情報をリセットする](./media/troubleshoot-ssh-connection/reset-credentials-using-portal.png)
 
-### <a name="reset-the-ssh-configuration"></a><a id="reset-config" />SSH 構成をリセットする
+### <a name="reset-the-ssh-configuration"></a>SSH 構成をリセットする
 SSH 構成をリセットするには、上のスクリーンショットのように **[モード]** セクションで `Reset configuration only` を選択してから **[更新]** を選択します。 この操作を完了したら、VM にもう一度アクセスしてみます。
 
-### <a name="reset-ssh-credentials-for-a-user"></a><a id="reset-credentials" />ユーザーの SSH 資格情報をリセットする
+### <a name="reset-ssh-credentials-for-a-user"></a>ユーザーの SSH 資格情報をリセットする
 既存のユーザーの資格情報をリセットするには、上のスクリーンショットのように **[モード]** セクションで `Reset SSH public key` または `Reset password` を選択します。 ユーザー名と、SSH キーまたは新しいパスワードを指定し、 **[更新]** を選択します。
 
 このメニューから、VM に対して sudo 特権を持つユーザーを作成することもできます。 新しいユーザー名と、関連付けられているパスワードまたは SSH キーを入力し、 **[更新]** を選択します。
 
-### <a name="check-security-rules"></a><a id="security-rules" />セキュリティ規則を確認する
+### <a name="check-security-rules"></a>セキュリティ規則を確認する
 
 [IP フロー検証](../../network-watcher/diagnose-vm-network-traffic-filtering-problem.md)を使用して、ネットワーク セキュリティ グループ規則によって、仮想マシンから送受信されるトラフィックがブロックされていないかどうかを確認します。 有効なセキュリティ グループ規則を確認して、SSH ポート (既定では 22) に対して受信 "許可" NSG 規則が存在し、優先されていることを確認することもできます。 詳細については、「[有効なセキュリティ規則を使用した VM トラフィック フローのトラブルシューティング](../../virtual-network/diagnose-network-traffic-filter-problem.md)」を参照してください。
 
@@ -206,7 +206,7 @@ azure vm reset-access --resource-group myResourceGroup --name myVM \
     --user-name myUsername --ssh-key-file ~/.ssh/id_rsa.pub
 ```
 
-## <a name="restart-a-vm"></a><a id="restart-vm" />VM を再起動する
+## <a name="restart-a-vm"></a>VM の再起動
 SSH 構成とユーザーの資格情報をリセットした場合、またはその際にエラーが発生した場合は、根本的なコンピューティングの問題に対処するために VM の再起動を試すことができます。
 
 ### <a name="azure-portal"></a>Azure portal
@@ -231,7 +231,7 @@ az vm restart --resource-group myResourceGroup --name myVM
 azure vm restart --resource-group myResourceGroup --name myVM
 ```
 
-## <a name="redeploy-a-vm"></a><a id="redeploy-vm" />VM を再デプロイする
+## <a name="redeploy-a-vm"></a>VM を再デプロイする
 Azure 内で VM を別のノードに再デプロイすると、基になるネットワーク問題を修正する場合があります。 VM の再デプロイについては、「[新しい Azure ノードへの仮想マシンの再デプロイ](./redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json)」を参照してください。
 
 > [!NOTE]

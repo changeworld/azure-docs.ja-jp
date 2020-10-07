@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 997064ad030d22531277f1c412add6916eb7733f
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 4414dc86ff318cfff5d224ce7aa064c31f3df460
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230468"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294531"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Linux コンピューターに Log Analytics エージェントをインストールする
 この記事では、次の方法を使用して Linux コンピューターに Log Analytics エージェントをインストールする方法の詳細を説明します。
@@ -102,10 +102,10 @@ Linux 用 Log Analytics エージェントは、複数のパッケージで構�
 
 **Package** | **Version** | **説明**
 ----------- | ----------- | --------------
-omsagent | 1.12.15 | Linux 用 Log Analytics エージェント
+omsagent | 1.13.9 | Linux 用 Log Analytics エージェント
 omsconfig | 1.1.1 | Log Analytics エージェントの構成エージェント
-omi | 1.6.3 | Open Management Infrastructure (OMI) -- 軽量の CIM サーバー。 *OMI では、サービスの機能に必要な cron ジョブを実行するためにルート アクセスが必要となることに注意してください。*
-scx | 1.6.3 | オペレーティング システムのパフォーマンス メトリックの OMI CIM プロバイダー
+omi | 1.6.4 | Open Management Infrastructure (OMI) -- 軽量の CIM サーバー。 *OMI では、サービスの機能に必要な cron ジョブを実行するためにルート アクセスが必要となることに注意してください。*
+scx | 1.6.4 | オペレーティング システムのパフォーマンス メトリックの OMI CIM プロバイダー
 apache-cimprov | 1.0.1 | OMI の Apache HTTP Server パフォーマンス監視プロバイダー。 Apache HTTP Server が検出された場合にのみインストールされます。
 mysql-cimprov | 1.0.1 | OMI の MySQL Server パフォーマンス監視プロバイダー。 MySQL/MariaDB サーバーが検出された場合にのみインストールされます。
 docker-cimprov | 1.0.0 | OMI の Docker プロバイダー。 Docker が検出された場合にのみインストールされます。

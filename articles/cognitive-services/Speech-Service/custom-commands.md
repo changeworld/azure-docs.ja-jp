@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 0800a287b747a8a421958d20f0b1ce56247d6d01
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: c9f7168bc0524b483413ade9792af18ff9cfebfa
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362161"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358544"
 ---
 # <a name="what-is-custom-commands"></a>カスタム コマンドとは
 
@@ -52,7 +52,7 @@ ms.locfileid: "85362161"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Speech サービスのサブスクリプション キーを無料で取得する](get-started.md)
+* [Speech サービスのサブスクリプション キーを無料で取得する](overview.md#try-the-speech-service-for-free)
 * [GitHub で Microsoft の音声アシスタント リポジトリのサンプルを確認する](https://aka.ms/speech/cc-samples)
 * [カスタム コマンドを試行するために Speech Studio にアクセスする](https://speech.microsoft.com/customcommands)
 * [Speech SDK を取得する](speech-sdk.md)

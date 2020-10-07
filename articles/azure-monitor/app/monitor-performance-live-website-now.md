@@ -4,12 +4,12 @@ description: Web サイトを再デプロイせずにそのパフォーマンス
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 603cbde20ae6e8d19e4ad3ae290bbfc925483595
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6c27c78bf8e3f3b8af342a14a38c9be3821d781a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923825"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758665"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Application Insights コードなしアタッチを使用した実行時の Web アプリのインストルメント化
 
@@ -130,7 +130,7 @@ Application Insights を有効にした後にこのエラーが発生する場�
 </dependentAssembly>
 ```
 
-[こちら](https://github.com/Microsoft/ApplicationInsights-Home/issues/301)でこの問題を追跡しています。
+[こちら](https://github.com/MohanGsk/ApplicationInsights-Home)でこの問題を追跡しています。
 
 
 ### <a name="application-diagnostic-messages"></a>アプリケーションの診断メッセージ

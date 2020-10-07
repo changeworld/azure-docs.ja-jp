@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 583179c4678b43bef25174835ec2701d571b37b6
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 3ceaa357150fe0c4d26eeedc6821761d2eb00106
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905652"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357966"
 ---
 # <a name="import-soap-api"></a>SOAP API のインポート
 
@@ -45,7 +45,7 @@ ms.locfileid: "87905652"
 3. **[WSDL 仕様]** で、SOAP API が存在する場所の URL を入力します。
 4. **[SOAP パススルー]** が既定で選択されています。 この場合、API は SOAP として公開されます。 コンシューマーは SOAP 規則を使用する必要があります。 API を "復元・改良" する場合は、[SOAP API のインポートと REST への変換](restify-soap-api.md)に関する記事の手順に従います。
 
-    ![パススルー](./media/import-soap-api/pass-through.png)
+    ![スクリーンショットは、WSDL 仕様を入力できる [Create from WSDL]\(WSDL から作成\) ダイアログ ボックスを示しています。](./media/import-soap-api/pass-through.png)
 5. Tab キーを押します。
 
     SOAP API からの情報が次のフィールドに入力されます: [表示名]、[名前]、[説明]。

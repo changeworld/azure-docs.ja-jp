@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: tutorial
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7474cfbd0182797bd62e97979e83e2aeb5244cbc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 23684dbbc5cb8c2d5fc4880ae8fe1999450928e0
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008796"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400572"
 ---
 # <a name="tutorial-work-with-azure-storage-queues-in-net"></a>チュートリアル:.NET での Azure ストレージ キューの操作
 
@@ -227,6 +227,8 @@ Azure API を呼び出す前に、Azure portal から資格情報を取得する
    # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
    このメソッドは、[ReceiveMessagesAsync](/dotnet/api/azure.storage.queues.queueclient.receivemessagesasync) を呼び出してキューからメッセージを受け取ります。第 1 パラメーターに 1 を渡すと、キューにおける次のメッセージだけが取得されます。 メッセージが受け取られたら、[DeleteMessageAsync](/dotnet/api/azure.storage.queues.queueclient.deletemessageasync) を呼び出し、キューからそれを削除します。
+
+   v12 より前のバージョンの SDK でメッセージがキューに送信されると、自動的に Base64 でエンコードされます。 v12 以降では、この機能は削除されています。 v12 SDK を使用してメッセージを取得しても、自動的に Base64 デコードされることはありません。 コンテンツは、明示的に [Base64 デコード](/dotnet/api/system.convert.frombase64string)する必要があります。
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Initial.cs" id="snippet_InitialRetrieveMessage":::
 

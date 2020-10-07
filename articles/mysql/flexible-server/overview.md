@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 4b79ee0999db0a19794cc167ae79ed6e58193b30
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4b629ddeb1db8dd94c1c96ecb62fafb9ca7bfc60
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90946215"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569667"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL - フレキシブル サーバー (プレビュー)
 
@@ -20,7 +20,7 @@ MySQL コミュニティ エディションを搭載した Azure Database for My
 - シングル サーバー 
 - フレキシブル サーバー (プレビュー)
 
-この記事では、フレキシブル サーバー デプロイ モデルの概要を示し、主要概念について概説します。 
+この記事では、フレキシブル サーバー デプロイ モデルの概要を示し、主要概念について概説します。 ワークロードに適したデプロイ オプションを決定する方法については、[Azure で適切な MySQL サーバー オプションを選択する](./../select-right-deployment-type.md)方法に関するページを参照してください。
 
 ## <a name="overview"></a>概要
 
@@ -50,7 +50,7 @@ Azure Database for MySQL フレキシブル サーバーは、データベース
 
 詳細については、[高可用性の概念](concepts-high-availability.md)に関する記事を参照してください。
 
-:::image type="content" source="media/overview/3-flexible-server-overview-zone-redundant-ha.png" alt-text="ゾーン冗長の高可用性の概念の図"::: 
+:::image type="content" source="media/overview/3-flexible-server-overview-zone-redundant-ha.png" alt-text="単一ゾーンの高可用性の概念の図"::: 
 
 ## <a name="automated-patching-with-managed-maintenance-window"></a>マネージド メンテナンス期間によるパッチの自動適用
 
@@ -112,6 +112,15 @@ Azure Database for MySQL フレキシブル サーバーに接続するには、
 
 - **ダンプと復元** – ユーザーがダウンタイムを許容できるオフライン移行では、mysqldump や mydumper などのコミュニティ ツールを使用してダンプと復元を行うことで、最も迅速に移行することができます。 詳細については、ダンプと復元を使用した移行に関する記事を参照してください。 
 - **Azure Database Migration Service** – 最小限のダウンタイムで単一サーバーへのシームレスで簡素化された移行を行うには、[Azure Database Migration Service](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online) を利用できます。 
+
+## <a name="contacts"></a>連絡先
+Azure Database for MySQL についての質問や提案は、Azure Database for MySQL チームにメール ([@Ask Azure DB for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)) でお送りください。 このメール アドレスはテクニカル サポートのエイリアスではありません。
+
+さらに、適切な連絡先について次の点を考慮してください。
+
+- Azure サポートに問い合わせる場合は、[Azure portal からチケットを申請します](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+- アカウントを使用して問題を修正するには、Azure Portal で[サポート要求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を提出します。
+- フィードバックを提供したり、新しい機能を要求したりするには、[UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql) でエントリを作成します。
 
 ## <a name="next-steps"></a>次のステップ
 Azure Database for MySQL 単一サーバー デプロイ モードの概要を確認したので、以下のことを行う準備ができました。

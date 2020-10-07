@@ -3,20 +3,20 @@ title: 認証の設定
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning で、さまざまなリソースとワークフローの認証を設定して構成する方法について説明します。 サービス内で認証を構成して使用するには、開発またはテストの目的で単純な UI ベースの認証を使用する方法から、完全な Azure Active Directory サービス プリンシパル認証を使用する方法まで、幅広い複数の方法があります。
 services: machine-learning
-author: larryfr
-ms.author: larryfr
+author: cjgronlund
+ms.author: cgronlun
 ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.custom: how-to, has-adal-ref, devx-track-javascript
-ms.openlocfilehash: 878b3d4a522fd2b7567ed6005283d041064d9fe5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: how-to, has-adal-ref, devx-track-js
+ms.openlocfilehash: 486f026f0d9b325f8e17a040c69f9d3e1da9b359
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885990"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91729034"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning のリソースとワークフローの認証を設定する
 
@@ -77,7 +77,7 @@ Azure Machine Learning ワークスペース、および Web サービスとし�
 >
 > 最小限のアクセス権を付与する理由は、サービス プリンシパルがパスワードを使用して認証を行うためであり、パスワードがオートメーション スクリプトの一部として格納される可能性があるからです。 パスワードが漏洩した場合、特定のタスクに必要な最小限のアクセス権のみを保持しているため、SP が悪意を持って使用される可能性が最小限に抑えられます。
 
-SP を作成し、ワークスペースへのアクセス権を付与する最も簡単な方法は、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)を使用することです。 サービス プリンシパルを作成して、ワークスペースへのアクセス権を付与するには、次の手順に従います。
+SP を作成し、ワークスペースへのアクセス権を付与する最も簡単な方法は、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)を使用することです。 サービス プリンシパルを作成して、ワークスペースへのアクセス権を付与するには、次の手順に従います。
 
 > [!NOTE]
 > これらのすべての手順を実行するには、サブスクリプションの管理者である必要があります。
@@ -92,7 +92,7 @@ SP を作成し、ワークスペースへのアクセス権を付与する最�
 
     [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
-    その他の認証方法については、「[Azure CLI を使用してサインインする](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)」を参照してください。
+    その他の認証方法については、「[Azure CLI を使用してサインインする](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true)」を参照してください。
 
 1. Azure Machine Learning 拡張機能をインストールします。
 
@@ -190,7 +190,7 @@ ws.get_details()
 
 ### <a name="use-a-service-principal-from-the-azure-cli"></a>Azure CLI からのサービス プリンシパルの使用
 
-サービス プリンシパルは Azure CLI コマンドに使用できます。 詳細については、「[サービス プリンシパルを使用したサインイン](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#sign-in-using-a-service-principal)」を参照してください。
+サービス プリンシパルは Azure CLI コマンドに使用できます。 詳細については、「[サービス プリンシパルを使用したサインイン](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest&preserve-view=true#sign-in-using-a-service-principal)」を参照してください。
 
 ### <a name="use-a-service-principal-with-the-rest-api-preview"></a>REST API でのサービス プリンシパルの使用 (プレビュー)
 

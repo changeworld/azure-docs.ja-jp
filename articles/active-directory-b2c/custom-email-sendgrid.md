@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 952659746bbb99108c6177166ad60ad2272cbce6
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: e2040f52efae1955cf5a7b530358f2cec07b5fbf
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88584941"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396520"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>SendGrid を使用するカスタム メール確認
 
@@ -62,7 +62,6 @@ SendGrid アカウントを作成し、SendGrid API キーを Azure AD B2C ポ�
 
     <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en"><head id="Head1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Contoso demo account email verification code</title><meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
-       <!-- Template B O365 -->
        <style>
            table td {border-collapse:collapse;margin:0;padding:0;}
        </style>

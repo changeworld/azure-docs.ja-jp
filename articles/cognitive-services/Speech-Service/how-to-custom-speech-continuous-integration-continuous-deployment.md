@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: kaprochi
-ms.openlocfilehash: 463f5d5360e19fdd7f49139aea4c6dc65baf903c
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 46bdc314e7aa0002937e808d7982f43c8e725d6f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85081177"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357473"
 ---
 # <a name="cicd-for-custom-speech"></a>Custom Speech の CI/CD
 
@@ -74,7 +74,7 @@ CI/CD ワークフローの主な目的は、トレーニング データを使�
 Custom Speech の CI/CD 自動化ワークフローには、次のツールを使用します。
 
 - [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)。Azure サービス プリンシパルの認証を作成し、Azure サブスクリプションのクエリを実行し、Azure BLOB にテスト結果を格納するために使用します。
-- [Azure Speech CLI](https://github.com/msimecek/Azure-Speech-CLI)。コマンド ラインまたは自動ワークフローから音声サービスを操作するために使用します。
+- [Azure Speech CLI](spx-overview.md)。コマンド ラインまたは自動ワークフローから音声サービスを操作するために使用します。
 
 ## <a name="devops-solution-for-custom-speech-using-github-actions"></a>GitHub Actions を使用する Custom Speech 用の DevOps ソリューション
 

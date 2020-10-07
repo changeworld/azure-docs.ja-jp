@@ -1,6 +1,7 @@
 ---
-title: Microsoft ID プラットフォーム UWP の概要 | Azure
-description: ユニバーサル Windows プラットフォーム (UWP) アプリケーションで、Microsoft ID プラットフォーム エンドポイントによるアクセス トークンを必要とする API を呼び出す方法。
+title: チュートリアル:認証に Microsoft ID プラットフォームを使用するユニバーサル Windows プラットフォーム (UWP) アプリを作成する | Azure
+titleSuffix: Microsoft identity platform
+description: このチュートリアルでは、ユーザーのサインインに Microsoft ID プラットフォームを使用し、そのユーザーに代わって Microsoft Graph API を呼び出すためのアクセス トークンを取得する UWP アプリケーションをビルドします。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,26 +12,31 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: acdc23c664f84882916b91b8f8698ee36b1e6cd3
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: bee6f832476537a6d7dba3db98d9aada6c61a476
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165551"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574247"
 ---
-# <a name="call-the-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>ユニバーサル Windows プラットフォーム アプリケーション (XAML) から Microsoft Graph API を呼び出す
-
-> [!div renderon="docs"]
+# <a name="call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>ユニバーサル Windows プラットフォーム (UWP) アプリケーションから Microsoft Graph API を呼び出す
 
 このガイドでは、ネイティブのユニバーサル Windows プラットフォーム (UWP) アプリケーションがアクセス トークンを要求する方法について説明します。 その後、アプリケーションは Microsoft Graph API を呼び出します。 このガイドは、Microsoft ID プラットフォーム エンドポイントのアクセス トークンを必要とする他の API にも適用されます。
 
 このガイドの最後に、アプリケーションは個人のアカウントを使用して、保護されている API を呼び出します。 例としては、outlook.com、live.com などがあります。 アプリケーションは、Azure Active Directory (Azure AD) を持つ会社または組織の職場または学校アカウントも呼び出します。
 
->[!NOTE]
-> このガイドでは、ユニバーサル Windows プラットフォーム開発がインストールされた Visual Studio が必要です。 ユニバーサル Windows プラットフォーム アプリを開発するために Visual Studio をダウンロードして構成する手順については、「[準備](/windows/uwp/get-started/get-set-up)」を参照してください。
+このチュートリアルの内容:
 
->[!NOTE]
-> Microsoft ID プラットフォームを初めて使用する場合は、「[クイックスタート: ユニバーサル Windows プラットフォーム (UWP) アプリケーションから Microsoft Graph API を呼び出す](quickstart-v2-uwp.md)」から始めてください。
+> [!div class="checklist"]
+> * Visual Studio で "*ユニバーサル Windows プラットフォーム (UWP)* " プロジェクトを作成する
+> * Azure portal でアプリケーションを登録する
+> * ユーザーのサインインとサインアウトをサポートするコードを追加する
+> * Microsoft Graph API を呼び出すコードを追加する
+> * アプリケーションをテストする
+
+## <a name="prerequisites"></a>前提条件
+
+* [ユニバーサル Windows プラットフォーム開発](https://visualstudio.microsoft.com/vs/)ワークロードがインストールされた [Visual Studio 2019](/windows/uwp/get-started/get-set-up)
 
 ## <a name="how-this-guide-works"></a>このガイドの利用法
 
@@ -115,7 +121,7 @@ Visual Studio では、プロジェクト テンプレートの一部として *
     ```csharp
     public sealed partial class MainPage : Page
     {
-       
+
         //Set the scope for API call to user.read
         private string[] scopes = new string[] { "user.read" };
 
@@ -427,16 +433,15 @@ private async Task DisplayMessageAsync(string message)
             }
            ...
     }
-  
+
     ```
 
-    アプリを実行し、ブレークポイントに到達したら `redirectUri` の値をコピーします。 この値は次のようになります。  
-    `ms-app://s-1-15-2-1352796503-54529114-405753024-3540103335-3203256200-511895534-1429095407/`
+    アプリを実行し、ブレークポイントに到達したら `redirectUri` の値をコピーします。 この値は `ms-app://s-1-15-2-1352796503-54529114-405753024-3540103335-3203256200-511895534-1429095407/` のようになります。
 
-    このコード行は、値を取得するために 1 回だけ実行すればよく、その後は削除してかまいません。 
+    このコード行は、値を取得するために 1 回だけ実行すればよく、その後は削除してかまいません。
 
 3. 返された値を、アプリの登録ポータルの **[認証]** ペインの **[RedirectUri]** に追加します。
-   
+
 ## <a name="test-your-code"></a>コードのテスト
 
 アプリケーションをテストするには、Visual Studio で **F5** キーを押してプロジェクトを実行します。 メイン ウィンドウが表示されます。
@@ -496,3 +501,10 @@ Microsoft Graph API は、ユーザーのプロファイルを読み込むため
 **対処法:** **[Sign in with other options]\(他のオプションでサインイン\)** を選択します。 次に、 **[Sign in with a username and password]\(ユーザー名とパスワードでサインイン\)** を選択します。 **[Provide your password]\(パスワードを指定\)** を選択します。 電話認証プロセスに進みます。
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
+## <a name="next-steps"></a>次の手順
+
+.NET アプリケーションでの認可と認証に Microsoft Authentication Library (MSAL) を使用する方法を参照してください:
+
+> [!div class="nextstepaction"]
+> [Microsoft Authentication Library (MSAL) の概要](msal-overview.md)

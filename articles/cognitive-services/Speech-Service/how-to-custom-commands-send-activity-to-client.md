@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 520b38f4c733e7bf28a2a06429ad14d016c5bd28
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 6e8e6feb064a5d26eb6cb72b521d3f9df0380086
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027615"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360108"
 ---
 # <a name="send-custom-commands-activity-to-client-application"></a>クライアント アプリケーションへのカスタム コマンド アクティビティの送信
 
@@ -29,7 +29,7 @@ ms.locfileid: "86027615"
 ## <a name="prerequisites"></a>前提条件
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) またはそれ以降。 このガイドでは Visual Studio 2019 を使用します
-> * 音声サービス用の Azure サブスクリプション キー: [無料で入手する](get-started.md)か、[Azure portal](https://portal.azure.com) で作成します
+> * 音声サービス用の Azure サブスクリプション キー: [無料で入手する](overview.md#try-the-speech-service-for-free)か、[Azure portal](https://portal.azure.com) で作成します
 > * 以前に[作成したカスタム コマンド アプリ](quickstart-custom-commands-application.md)
 > * Speech SDK が有効なクライアント アプリ: [Speech SDK を使用してクライアント アプリケーションと統合する](./how-to-custom-commands-setup-speech-sdk.md)
 

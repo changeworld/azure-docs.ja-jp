@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 935e1832629827b0286a79ab8ea6d1dfbb143e1c
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: bb2ac221169cea84205d087cbe0aadfd035d22db
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707834"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760514"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Application Insights Snapshot Debugger の有効化やスナップショットの表示に関する問題のトラブルシューティング
 アプリケーションに対して Application Insights Snapshot Debugger を有効にしたにもかかわらず、例外のスナップショットが表示されない場合は、次の手順を使用してトラブルシューティングを行うことができます。 スナップショットが生成されない理由としては、さまざまなことが考えられます。 スナップショットの正常性チェックを実行すると、いくつかの一般的な原因を特定できます。
@@ -62,7 +62,7 @@ ASP.NET アプリケーションが、Azure App Service または仮想マシン
 
 ## <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>最新バージョンの NuGet にアップグレードする
 
-[ポータルの [Application Insights] ウィンドウ](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)を通じて Snapshot Debugger を有効にした場合、アプリケーションでは既に最新の NuGet パッケージが実行されています。 [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet パッケージを含めることで Snapshot Debugger を有効にした場合は、Visual Studio の NuGet パッケージ マネージャーを使用して、Microsoft.ApplicationInsights.SnapshotCollector の最新バージョンが使用されているかどうかを確認してください。 リリース ノートについては https://github.com/Microsoft/ApplicationInsights-Home/issues/167 を参照してください。
+[ポータルの [Application Insights] ウィンドウ](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)を通じて Snapshot Debugger を有効にした場合、アプリケーションでは既に最新の NuGet パッケージが実行されています。 [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet パッケージを含めることで Snapshot Debugger を有効にした場合は、Visual Studio の NuGet パッケージ マネージャーを使用して、Microsoft.ApplicationInsights.SnapshotCollector の最新バージョンが使用されているかどうかを確認してください。
 
 ## <a name="check-the-uploader-logs"></a>アップローダー ログの確認
 

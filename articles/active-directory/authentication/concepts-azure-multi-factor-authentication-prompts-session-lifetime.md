@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d5ffaf996f51348334f4adeeae150db9eb0defa
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: ab36eb9d5c66f61fbb320c91087659cc811eca85
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052666"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91595554"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>再認証プロンプトを最適化し、Azure Multi-Factor Authentication のセッションの有効期間を理解する
 
@@ -121,7 +121,7 @@ Multi-Factor Authentication の設定を記憶するには、次の手順を実�
 1. **[セキュリティ]** を選択してから、 **[条件付きアクセス]** を選択します。
 1. この記事で詳しく説明している推奨のセッション管理オプションを使用して、ポリシーを構成します。
 
-トークンの有効期間を確認するには、[Azure AD PowerShell を使用して Azure AD ポリシーに対してクエリを実行します](../develop/active-directory-configurable-token-lifetimes.md#prerequisites)。 使用しているすべてのポリシーを無効にします。
+トークンの有効期間を確認するには、[Azure AD PowerShell を使用して Azure AD ポリシーに対してクエリを実行します](../develop/configure-token-lifetimes.md#prerequisites)。 使用しているすべてのポリシーを無効にします。
 
 テナントで複数の設定が有効になっている場合は、使用可能なライセンスに基づいて設定を更新することをお勧めします。 たとえば、Azure AD Premium ライセンスをお持ちの場合は、 *[サインインの頻度]* と *[永続的ブラウザー セッション]* の条件付きアクセス ポリシーのみを使用する必要があります。 Microsoft 365 アプリまたは Azure AD 無料ライセンスをお持ちの場合は、 *[Remain signed-in?] (サインインしたままの状態を続ける)* を使用する必要があります。
 

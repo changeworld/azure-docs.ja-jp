@@ -4,12 +4,12 @@ description: Azure Blockchain Service の概要です
 ms.date: 05/22/2020
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: 2a28baeb6de3c8ca1e8ad89e11d45b492f33588c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e82916d7366ad82746d2d3ddfc979264e113619b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076955"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334822"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Azure Blockchain Service とは
 
@@ -45,7 +45,7 @@ Azure Blockchain Service には、次の 2 つのサービス レベルが用意
 
 さらに、Azure Blockchain Service では、ノードの CPU、メモリ、ストレージの使用状況に関する分析情報を提供する Azure Monitor サービスにより、豊富なメトリックが表示されます。  Azure Monitor ではほかにも、マイニングしたトランザクションとブロック、トランザクションのキューの深さ、アクティブな接続など、ブロックチェーン ネットワークのアクティビティに関する有益な分析情報も確認できます。  メトリックは、ブロックチェーン アプリケーションにとって重要な分析情報のビューを提供するようにカスタマイズできます。  さらに、しきい値を定義し、アラートによってユーザーがメールやテキスト メッセージの送信、ロジック アプリや Azure 関数の実行、カスタム定義 webhook の送信などのアクションをトリガーできるようにすることができます。
 
-![メトリック](./media/overview/metrics.png)
+![ブロック、トランザクション、保留中のトランザクション、および処理された要求の値の監視画面を示す画面キャプチャ。](./media/overview/metrics.png)
 
 Azure Log Analytics により、ユーザーは、Quorum 台帳に関するログや、トランザクション ノードへの接続の試行などの他の重要な情報を表示できます。
 
@@ -77,7 +77,7 @@ Microsoft のエンジニアや Azure Blockchain コミュニティのエキス�
 
 * [Azure Blockchain Service に関する Microsoft Q&A 質問ページ](/answers/topics/azure-blockchain-service.html)
 * [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
-* [Stack Overflow](https://stackoverflow.com/questions/tagged/AzureBlockchainService)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-service)
 
 ## <a name="next-steps"></a>次のステップ
 

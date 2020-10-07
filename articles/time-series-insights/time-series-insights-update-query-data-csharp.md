@@ -9,14 +9,14 @@ manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/14/2020
+ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: fcb38f761a72bf2c6e5dee8bb993cec9143e7241
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 99cde78f0944544941224927e84e117bd0e660d8
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998953"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667845"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen2-environment-using-c-sharp"></a>C# を使用して Azure Time Series Insights Gen2 環境からデータを照会する
 
@@ -71,7 +71,7 @@ ms.locfileid: "88998953"
 
 ## <a name="c-sample-code"></a>C# サンプル コード
 
-[Azure Time Series Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen2-sample/csharp-tsi-gen2-sample) リポジトリを参照し、C# サンプル コードにアクセスします。 
+[Azure Time Series Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen2-sample/csharp-tsi-gen2-sample) リポジトリを参照し、C# サンプル コードにアクセスします。
 
 > [!NOTE]
 >

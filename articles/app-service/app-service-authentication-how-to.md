@@ -4,12 +4,12 @@ description: App Service でさまざまなシナリオに合わせて認証お�
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2fa2e3463e057062ba743c2f6989aa571c85c983
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: a01ca051f676f6a62face2c8ef0c9055c0c98c31
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962470"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757522"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure App Service 上での認証と承認の高度な使用方法
 
@@ -323,6 +323,17 @@ ID プロバイダーによって特定のターンキー承認が提供され�
             "/path2"
         ]
     },
+    "httpSettings": {
+        "requireHttps": <true|false>,
+        "routes": {
+            "apiPrefix": "<api prefix>"
+        },
+        "forwardProxy": {
+            "convention": "NoProxy|Standard|Custom",
+            "customHostHeaderName": "<host header value>",
+            "customProtoHeaderName": "<proto header value>"
+        }
+    },
     "identityProviders": {
         "azureActiveDirectory": {
             "enabled": <true|false>,
@@ -398,7 +409,7 @@ ID プロバイダーによって特定のターンキー承認が提供され�
             }
         },
         "openIdConnectProviders": {
-            "provider name": {
+            "<providerName>": {
                 "enabled": <true|false>,
                 "registration": {
                     "clientId": "<client id>",
@@ -427,45 +438,35 @@ ID プロバイダーによって特定のターンキー承認が提供され�
                 }
             },
             //...
+        }
+    },
+    "login": {
+        "routes": {
+            "logoutEndpoint": "<logout endpoint>"
         },
-        "login": {
-            "routes": {
-                "logoutEndpoint": "<logout endpoint>"
+        "tokenStore": {
+            "enabled": <true|false>,
+            "tokenRefreshExtensionHours": "<double>",
+            "fileSystem": {
+                "directory": "<directory to store the tokens in if using a file system token store (default)>"
             },
-            "tokenStore": {
-                "enabled": <true|false>,
-                "tokenRefreshExtensionHours": "<double>",
-                "fileSystem": {
-                    "directory": "<directory to store the tokens in if using a file system token store (default)>"
-                },
-                "azureBlobStorage": {
-                    "sasUrlSettingName": "<app setting name containing the sas url for the Azure Blob Storage if opting to use that for a token store>"
-                }
-            },
-            "preserveUrlFragmentsForLogins": <true|false>,
-            "allowedExternalRedirectUrls": [
-                "https://uri1.azurewebsites.net/",
-                "https://uri2.azurewebsites.net/"
-            ],
-            "cookieExpiration": {
-                "convention": "FixedTime|IdentityProviderDerived",
-                "timeToExpiration": "<timespan>"
-            },
-            "nonce": {
-                "validateNonce": <true|false>,
-                "nonceExpirationInterval": "<timespan>"
+            "azureBlobStorage": {
+                "sasUrlSettingName": "<app setting name containing the sas url for the Azure Blob Storage if opting to use that for a token store>"
             }
         },
-        "httpSettings": {
-            "requireHttps": <true|false>,
-            "routes": {
-                "apiPrefix": "<api prefix>"
-            },
-            "forwardProxy": {
-                "convention": "NoProxy|Standard|Custom",
-                "customHostHeaderName": "<host header value>",
-                "customProtoHeaderName": "<proto header value>"
-            }
+        "preserveUrlFragmentsForLogins": <true|false>,
+        "allowedExternalRedirectUri": [
+            "https://uri1.azurewebsites.net/",
+            "https://uri2.azurewebsites.net/",
+            "url_scheme_of_your_app://easyauth.callback"
+        ],
+        "cookieExpiration": {
+            "convention": "FixedTime|IdentityProviderDerived",
+            "timeToExpiration": "<timespan>"
+        },
+        "nonce": {
+            "validateNonce": <true|false>,
+            "nonceExpirationInterval": "<timespan>"
         }
     }
 }
@@ -489,7 +490,7 @@ ID プロバイダーによって特定のターンキー承認が提供され�
 
 ##### <a name="from-the-azure-cli"></a>Azure CLI から
 
-Azure CLI を使用して、[az webapp auth show](/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-show) コマンドで現在のミドルウェア バージョンを表示します。
+Azure CLI を使用して、[az webapp auth show](/cli/azure/webapp/auth?view=azure-cli-latest&preserve-view=true#az-webapp-auth-show) コマンドで現在のミドルウェア バージョンを表示します。
 
 ```azurecli-interactive
 az webapp auth show --name <my_app_name> \
@@ -520,7 +521,7 @@ CLI 出力に `runtimeVersion` フィールドが表示されます。 次の出
 
 #### <a name="update-the-current-runtime-version"></a>現在のランタイム バージョンの更新
 
-Azure CLI を使用すると、[az webapp auth update](/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-update) コマンドでアプリの `runtimeVersion` 設定を更新できます。
+Azure CLI を使用すると、[az webapp auth update](/cli/azure/webapp/auth?view=azure-cli-latest&preserve-view=true#az-webapp-auth-update) コマンドでアプリの `runtimeVersion` 設定を更新できます。
 
 ```azurecli-interactive
 az webapp auth update --name <my_app_name> \

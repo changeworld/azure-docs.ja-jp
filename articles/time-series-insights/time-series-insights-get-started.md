@@ -9,16 +9,19 @@ manager: diviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 02997b421a57363e04a0d988685b76f59954439e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 401d22ee68ba0652eb684b03b06fddf0b0fe3d72
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495144"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569460"
 ---
 # <a name="create-a-new-azure-time-series-insights-gen1-environment-in-the-azure-portal"></a>Azure Portal で新しい Azure Time Series Insights Gen1 環境を作成する
+
+> [!CAUTION]
+> これは Gen1 の記事です。
 
 この記事では、Azure Portal を使用して新しい Azure Time Series Insights 環境を作成する方法について説明します。
 

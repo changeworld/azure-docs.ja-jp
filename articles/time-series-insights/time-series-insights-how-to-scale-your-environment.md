@@ -9,16 +9,19 @@ manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: a552f03c8a8fa05ed7d2c6eb87374d4e7e17838d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0dadf523c5d17ffb91f4fefa71b52d1d1855c978
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070088"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570225"
 ---
 # <a name="how-to-scale-your-azure-time-series-insights-gen1-environment"></a>Azure Time Series Insights Gen1 環境をスケーリングする方法
+
+> [!CAUTION]
+> これは Gen1 の記事です。
 
 この記事では、[Azure portal](https://portal.azure.com) を使用して Azure Time Series Insights 環境の容量を変更する方法について説明します。 容量は、受信レート、ストレージの容量、および選択された SKU に関連するコストに適用される乗数です。
 

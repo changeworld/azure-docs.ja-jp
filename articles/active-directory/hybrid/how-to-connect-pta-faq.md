@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7046ab3c30e120aaaf285c32e25fce03524a0cf4
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 6db477a288ef41c2946cd550af6ff87999eff2f0
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89280164"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461276"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory パススルー認証:よく寄せられる質問
 
@@ -34,10 +34,6 @@ Azure AD の各種サインイン方法の比較および組織に合った適�
 ## <a name="is-pass-through-authentication-a-free-feature"></a>パススルー認証は無料の機能ですか。
 
 パススルー認証は、無料の機能です。 この機能を使用するために Azure AD の有料エディションは不要です。
-
-## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloud-and-the-microsoft-azure-government-cloud"></a>パススルー認証は [Microsoft Azure Germany クラウド](https://www.microsoft.de/cloud-deutschland)および [Microsoft Azure Government クラウド](https://azure.microsoft.com/features/gov/)で使用できますか。
-
-いいえ。 パススルー認証は、世界中の Azure AD のインスタンスでのみ使用できます。
 
 ## <a name="does-conditional-access-work-with-pass-through-authentication"></a>[条件付きアクセス](../conditional-access/overview.md)は、パススルー認証と連携しますか。
 

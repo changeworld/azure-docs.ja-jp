@@ -7,18 +7,15 @@ ms.topic: conceptual
 ms.author: brbell
 ms.reviewer: mimckitt
 ms.date: 06/15/2020
-ms.openlocfilehash: 15b9495b95ec4efb4f8e9f315595ea6bfca6cd5a
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 30587fac7d7be37d7595a78502b7999adee9a30f
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191151"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665312"
 ---
 # <a name="azure-vm-sizes-with-no-local-temporary-disk"></a>ローカル一時ディスクを持たない Azure VM のサイズ 
 この記事では、ローカル一時ディスクを持たない Azure VM のサイズについてよく寄せられる質問 (FAQ) に対する回答を示します。 これらの VM サイズの詳細については、[Dv4 および Dsv4 シリーズの仕様 (汎用ワークロード)](dv4-dsv4-series.md) または [Ev4 および Esv4 シリーズの仕様 (メモリ最適化ワークロード)](ev4-esv4-series.md) に関する記事を参照してください。
-
-> [!IMPORTANT]
-> Dv4、Dsv4、Ev4、Esv4 シリーズの VM サイズはパブリック プレビューになりました。 パブリック プレビューにサインアップするには、この[フォーム](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u)に記入してください。 
 
 ## <a name="what-does-no-local-temp-disk-mean"></a>ローカル一時ディスクがないとは何を意味しますか。 
 従来は、小規模なローカル ディスクを含む VM サイズ (Standard_D2s_v3、Standard_E48_v3 など) がありました (D: ドライブなど)。 これらの新しい VM サイズでは、小規模なローカル ディスクは存在しなくなりました。ただし、依然として Standard HDD、Premium SSD または Ultra SSD を接続することもできます。

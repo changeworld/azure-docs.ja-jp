@@ -5,15 +5,15 @@ description: この記事では、Application Gateway 上の Web アプリケー
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/31/2020
+ms.date: 09/16/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: e3b7e3ae10afd45105358743ef1fc0f4c6d14e78
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 659e7fcdbd2284110282d14fc89bd4d8d5ac2472
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227000"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91267025"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Azure Application Gateway 上の Azure Web アプリケーション ファイアウォールとは
 
@@ -75,9 +75,21 @@ Application Gateway によるセキュリティの強化には、TLS ポリシ�
 - トラフィックを geo フィルタリングすることで、特定の国/地域を対象に、アプリケーションへのアクセスを許可したりブロックしたりできます。 (プレビュー)
 - ボット軽減策ルールセットを使用してアプリケーションをボットから保護できます。 (プレビュー)
 
-## <a name="waf-policy"></a>WAF ポリシー
+## <a name="waf-policy-and-rules"></a>WAF のポリシーと規則
 
-Application Gateway 上で Web アプリケーション ファイアウォールを有効にするには、WAF ポリシーを作成する必要があります。 このポリシーには、すべてのマネージド ルール、カスタム ルール、除外、ファイル アップロード制限などのその他のカスタマイズが含まれます。 
+Application Gateway 上で Web アプリケーション ファイアウォールを有効にするには、WAF ポリシーを作成する必要があります。 このポリシーには、すべてのマネージド規則、カスタム規則、除外、そしてファイル アップロード制限などのその他のカスタマイズが含まれます。
+
+保護のために、WAF ポリシーを構成して、そのポリシーを 1 つまたは複数のアプリケーション ゲートウェイに関連付けることができます。 WAF ポリシーは、2 種類のセキュリティ規則で構成されます。
+
+- 作成したカスタム規則
+
+- Azure で管理される事前に構成された一連の規則のコレクションであるマネージド規則セット
+
+両方ともある場合、マネージド規則セットの規則が処理される前に、カスタム規則が処理されます。 規則は、一致条件、優先順位、およびアクションで構成されます。 サポートされているアクションの種類は次のとおりです: ALLOW、BLOCK、および LOG。 マネージド規則とカスタム規則を組み合わせることで、特定のアプリケーション保護要件を満たす完全にカスタマイズされたポリシーを作成することができます。
+
+ポリシー内の規則は、優先順位に従って処理されます。 優先順位は、規則の処理順序を定義する一意の整数です。 整数値が小さいほど高い優先順位を表し、大きい整数値の規則より前に評価されます。 規則が一致すると、規則で定義されている対応するアクションが要求に対して適用されます。 このような一致が処理された後、優先順位の低い規則はそれ以上処理されません。
+
+Application Gateway を使用して配信する Web アプリケーションには、グローバル レベル、サイトごとのレベル、または URI ごとのレベルで、WAF ポリシーを関連付けることができます。
 
 ### <a name="core-rule-sets"></a>コア ルール セット
 
@@ -159,6 +171,11 @@ Microsoft Azure Sentinel は、スケーラブルでクラウドネイティブ�
 
 
 ![Azure WAF ファイアウォール イベント ブック](../media/ag-overview/sentinel.png)
+
+
+#### <a name="azure-monitor-workbook-for-waf"></a>WAF の Azure Monitor ブック
+
+このブックを使用すると、複数のフィルター可能なパネルでセキュリティ関連の WAF イベントをカスタムで可視化することができます。 Application Gateway、Front Door、CDN などのすべての WAF の種類と連携でき、WAF の種類や特定の WAF インスタンスに基づいてフィルター処理できます。 ARM テンプレートまたはギャラリー テンプレートを使用してインポートします。 このブックをデプロイするには、[WAF ブック](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20WAF/Azure%20Monitor%20Workbook)に関するページを参照してください。
 
 #### <a name="logging"></a>ログ記録
 

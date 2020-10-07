@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 21153d3c914864966106bf66edccb3c549398bc7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 031ec44cec473d9f2b2f05669aa3fc18084985f2
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898225"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704730"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Azure Machine Learning のコストを計画して管理する
 
@@ -69,7 +69,7 @@ Machine Learning の個別のサービス領域については表示されませ
 
 Azure Machine Learning のユーザーは、マネージド Azure Machine Learning コンピューティング クラスター (AmlCompute とも呼ばれます) を使用できます。 AmlCompute では、GPU と CPU のさまざまなオプションがサポートされています。 AmlCompute は、Azure Machine Learning によってサブスクリプションの代わりに内部でホストされます。 Azure IaaS クラウド スケールで、同じエンタープライズ レベルのセキュリティ、コンプライアンス、ガバナンスが提供されます。
 
-これらのコンピューティング プールは Azure の IaaS インフラストラクチャ内にあるため、インフラストラクチャの他の部分と同じセキュリティ要件とコンプライアンス要件で、トレーニングをデプロイ、スケーリング、管理できます。  これらのデプロイは、お客様のサブスクリプションで実行され、ガバナンス ルールに従います。 詳しくは、「[Azure Machine Learning コンピューティング](how-to-create-attach-compute-sdk.md#amlcompute)」をご覧ください。
+これらのコンピューティング プールは Azure の IaaS インフラストラクチャ内にあるため、インフラストラクチャの他の部分と同じセキュリティ要件とコンプライアンス要件で、トレーニングをデプロイ、スケーリング、管理できます。  これらのデプロイは、お客様のサブスクリプションで実行され、ガバナンス ルールに従います。 詳しくは、「[Azure Machine Learning コンピューティング](how-to-create-attach-compute-cluster.md)」をご覧ください。
 
 ## <a name="configure-training-clusters-for-autoscaling"></a>自動スケーリングされるようにトレーニング クラスターを構成する
 
@@ -84,7 +84,7 @@ AmlCompute クラスターは、ワークロードに基づいて動的にスケ
 + 反復の少ない実験を実行する場合は、この時間を短くしてコストを節約します。
 + 反復の多い開発またはテストの実験を実行する場合は、トレーニング スクリプトまたは環境を変更するたびに、常にスケールアップとスケールダウンの料金が発生しないように、時間を長くする必要がある場合があります。
 
-AmlCompute クラスターは、[AmlCompute SDK クラス](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py&preserve-view=true)、[AmlCompute CLI](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)、[REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable) を使用して、Azure portal の変化するワークロード要件に合わせて構成できます。
+AmlCompute クラスターは、[AmlCompute SDK クラス](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py&preserve-view=true)、[AmlCompute CLI](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)、[REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable) を使用して、Azure portal の変化するワークロード要件に合わせて構成できます。
 
 ```azurecli
 az ml computetarget create amlcompute --name testcluster --vm-size Standard_NC6 --min-nodes 0 --max-nodes 5 --idle-seconds-before-scaledown 300
@@ -127,4 +127,4 @@ Azure Machine Learning コンピューティングでは、予約インスタン
 各項目の詳細情報
 * [リソース クォータの管理と増加](how-to-manage-quotas.md)
 * [コスト分析を使用したコストの管理](../cost-management-billing/costs/quick-acm-cost-analysis.md)。
-* [SDK](how-to-create-attach-compute-sdk.md#amlcompute) を使用して、または [Studio](how-to-create-attach-compute-studio.md#amlcompute) で Azure Machine Learning コンピューティングを作成します。
+* [SDK](how-to-create-attach-compute-cluster.md) を使用して、または [Studio](how-to-create-attach-compute-studio.md#amlcompute) で Azure Machine Learning コンピューティングを作成します。

@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/06/2019
 ms.author: trbye
-ms.openlocfilehash: 1b837797bf0baf025d350cec1918cf4a5b639416
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9074b10b9bf7f8147f70d77bcfbe02749e39154b
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650623"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91644152"
 ---
 ## <a name="reference-docs"></a>リファレンス ドキュメント
 
@@ -45,4 +45,4 @@ Speech サービスからは 2 つの SDK が提供されます。 最初の SDK
 - [REST API: 音声テキスト変換](../rest-speech-to-text.md)
 - [REST API: 発音評価](../rest-speech-to-text.md#pronunciation-assessment-parameters)
 - [REST API: テキスト読み上げ](../rest-text-to-speech.md)
-- <a href="https://cris.ai/swagger/ui/index" target="_blank" rel="noopener">REST API: バッチ文字起こしとカスタマイズ <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0" target="_blank" rel="noopener">REST API: バッチ文字起こしとカスタマイズ <span class="docon docon-navigate-external x-hidden-focus"></span></a>

@@ -70,7 +70,7 @@
         - name: Visual Studio Code でステートフルまたはステートレスなワークフローを作成する
           href: create-stateful-stateless-workflows-visual-studio-code.md
         - name: Power Automate と Power Apps からロジック アプリを呼び出す
-          href: call-logic-apps-from-power-automate-power-apps.md
+          href: call-from-power-automate-power-apps.md
         - name: ワークフローの実行のコントロール
           items:
             - name: 条件付きステートメント

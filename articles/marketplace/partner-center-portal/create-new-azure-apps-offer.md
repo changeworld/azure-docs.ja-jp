@@ -7,12 +7,12 @@ ms.topic: how-to
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: e7e7845b458d6d1a37b65fb79e0e7e9c13b0d07d
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: fb3a3ab5339186d8fa4e347d9d13e66940457f8a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646934"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710721"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure アプリケーション オファーを作成する
 
@@ -193,7 +193,7 @@ Azure Marketplace でのオファー情報の表示例を次に示します (表
 
 <br>Azure portal でのオファー情報の表示例を次に示します。
 
-:::image type="content" source="media/example-virtual-machine-container-iot-edge-saas.png" alt-text="Azure portal でこのオファーがどのように表示されるかを示しています。":::
+:::image type="content" source="media/example-virtual-machine-container-iot-edge-saas.png" alt-text="Azure Marketplace でこのオファーがどのように表示されるかを示しています。":::
 
 #### <a name="call-out-descriptions"></a>コールアウトの説明
 
@@ -242,7 +242,7 @@ Azure Marketplace でのオファー情報の表示例を次に示します (表
 
 オファーで使用するロゴと画像を提供します。 画像はすべて PNG 形式である必要があります。 画像がぼやけていると、送信が拒否されます。
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
 >ファイルのアップロードで問題が発生した場合は、確実に、パートナー センターで使用されている https://upload.xboxlive.com サービスがローカル ネットワークでブロックされないようにしてください。
@@ -559,7 +559,7 @@ USD (USD = 米国ドル) で設定された価格は、保存時の最新の為�
 * **Azure AD テナント ID** (必須) – ご利用の Azure Active Directory (AD) [テナント ID](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) を入力します。 この ID を見つけるには、[Azure portal](https://portal.azure.com/) にサインインして左側のメニューで [Active Directory] タブを選択し、 **[プロパティ]** を選んでから、一覧表示される**ディレクトリ ID** 番号 (50c464d3-4930-494c-963c-1e951d15360e など) を探します。 また、[https://www.whatismytenantid.com](https://www.whatismytenantid.com) で URL のドメイン名を使用して、組織のテナント ID を検索することもできます。
 * **Azure AD テナント名** (Dynamic 365 では必須) – 自分の Azure Active Directory (AD) 名を入力します。 この名前を見つけるには、[Azure portal](https://portal.azure.com/) にサインインします。右上隅にある自分のアカウント名の下に、テナント名が表示されます。
 * **Azure AD アプリ ID** (必須) – ご利用の Azure Active Directory (AD) [アプリケーション ID](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) を入力します。 この ID を見つけるには、[Azure portal](https://portal.azure.com/) にサインインして左側のナビゲーション メニューで [Active Directory] タブを選択し、 **[アプリの登録]** を選択してから、表示される**アプリケーション ID** 番号 (50c464d3-4930-494c-963c-1e951d15360e など) を探します。
-* **Azure Active Directory アプリケーションのクライアント シークレット** (必須) – ご自分の Azure AD アプリケーションの[クライアント シークレット](../../active-directory/develop/howto-create-service-principal-portal.md#create-a-new-application-secret)) を入力します。 この値を探すには、[Azure portal](https://portal.azure.com/) にサインインします。 左側のナビゲーション メニューにある **[Azure Active Directory]** タブを選択し、 **[アプリの登録]** を選んでから、体験版アプリを選択します。 次に、 **[Certificates and secrets]\(証明書とシークレット\)** 、 **[New client secret]\(新しいクライアント シークレット\)** の順に選択し、説明を入力し、 **[Expires]\(有効期限\)** で **[Never]\(なし\)** を選択してから、 **[追加]** を選択します。 このページから離れる前に、必ず値をコピーしておいてください。
+* **Azure Active Directory アプリケーションのクライアント シークレット** (必須) – ご自分の Azure AD アプリケーションの[クライアント シークレット](../../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)) を入力します。 この値を探すには、[Azure portal](https://portal.azure.com/) にサインインします。 左側のナビゲーション メニューにある **[Azure Active Directory]** タブを選択し、 **[アプリの登録]** を選んでから、体験版アプリを選択します。 次に、 **[Certificates and secrets]\(証明書とシークレット\)** 、 **[New client secret]\(新しいクライアント シークレット\)** の順に選択し、説明を入力し、 **[Expires]\(有効期限\)** で **[Never]\(なし\)** を選択してから、 **[追加]** を選択します。 このページから離れる前に、必ず値をコピーしておいてください。
 
 続行する前に、 **[下書きの保存]** を選択します。
 

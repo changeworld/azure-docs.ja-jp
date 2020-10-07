@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: jmartens
 author: j-martens
 ms.date: 09/03/2020
-ms.openlocfilehash: 2c7ff633705d3db327c563b41ce199a5342dda82
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 6ac116b315d4a11b51b37c5b51edf35aa0676713
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461563"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708375"
 ---
 # <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>Visual Studio Code で Azure Machine Learning コンピューティング インスタンスに接続する (プレビュー)
 
@@ -68,7 +68,7 @@ Visual Studio Code からコンピューティング インスタンスに接続
 完全な機能を備えたリモート開発エクスペリエンスを実現するには、いくつかの前提条件が必要です。
 
 * [Visual Studio Code リモート SSH 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh)。
-* SSH 対応のコンピューティング インスタンス。 詳細については、[コンピューティング インスタンスの作成に関するガイド](concept-compute-instance.md#create)を参照してください。
+* SSH 対応のコンピューティング インスタンス。 詳細については、[コンピューティング インスタンスの作成に関するガイド](how-to-create-manage-compute-instance.md)を参照してください。
 
 > [!NOTE]
 > Windows プラットフォーム上で、まだ存在していない場合に [OpenSSH と互換性のある SSH クライアントをインストール](https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client)する必要があります。 PuTTY は Windows ではサポートされていません。パスに ssh コマンドを含める必要があるからです。

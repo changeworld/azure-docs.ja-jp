@@ -4,17 +4,17 @@ description: データを一括読み込みする認証メカニズムについ�
 services: synapse-analytics
 author: kevinvngo
 ms.service: synapse-analytics
-ms.topic: overview
+ms.topic: quickstart
 ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6f54a8993b602110e35c410338b6f0a51109738f
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: e3b22b831deca47eece70d337a99346ae472c7ee
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88603882"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569481"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Synapse SQL を使用してデータを安全に読み込む
 
@@ -76,7 +76,7 @@ WITH (
 3. Azure ストレージ アカウントの **[Firewalls and Virtual networks]\(ファイアウォールと仮想ネットワーク\)** 設定メニューで、 **[Allow trusted Microsoft services to access this storage account]\(信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します\)** をオンにする必要があります。 詳しくは、この[ガイド](../../storage/common/storage-network-security.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#exceptions)をご覧ください。
 #### <a name="steps"></a>手順
 
-1. PowerShell で、Azure Active Directory (AAD) に**お使いの SQL サーバーを登録します**。
+1. PowerShell で、Azure Active Directory に**お使いの SQL サーバーを登録します**。
 
    ```powershell
    Connect-AzAccount
@@ -110,10 +110,10 @@ WITH (
     )
     ```
 
-## <a name="d-azure-active-directory-authentication-aad"></a>D. Azure Active Directory 認証 (AAD)
+## <a name="d-azure-active-directory-authentication"></a>D. Azure Active Directory 認証
 #### <a name="steps"></a>手順
 
-1. お使いのストレージ アカウントで、 **[アクセス制御 (IAM)]** に移動し、 **[ロール割り当ての追加]** を選択します。 **ストレージ BLOB データ所有者、共同作成者、または閲覧者**の Azure ロールを AAD ユーザーに割り当てます。 
+1. お使いのストレージ アカウントで、 **[アクセス制御 (IAM)]** に移動し、 **[ロール割り当ての追加]** を選択します。 **ストレージ BLOB データ所有者、共同作成者、または閲覧者**の Azure ロールを Azure AD ユーザーに割り当てます。 
 
     > [!IMPORTANT]
     > **ストレージ** **BLOB データ**所有者、共同作成者、または閲覧者の Azure ロールを指定します。 これらのロールは、所有者、共同作成者、閲覧者の Azure 組み込みロールとは異なります。
@@ -136,11 +136,11 @@ WITH (
 ## <a name="e-service-principal-authentication"></a>E. サービス プリンシパル認証
 #### <a name="steps"></a>手順
 
-1. [Azure Active Directory (AAD) アプリケーションを作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)
+1. [Azure Active Directory アプリケーションを作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)
 2. [アプリケーション ID を取得する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)
 3. [認証キーを取得する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret)
 4. [V1 OAuth 2.0 トークン エンドポイントを取得する](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#step-4-get-the-oauth-20-token-endpoint-only-for-java-based-applications)
-5. ストレージ アカウントで [AAD アプリケーションに読み取り、書き込み、実行のアクセス許可を割り当てる](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder)
+5. ストレージ アカウントで [Azure AD アプリケーションに読み取り、書き込み、実行のアクセス許可を割り当てる](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder)
 6. これで COPY ステートメントを実行できます。
 
     ```sql

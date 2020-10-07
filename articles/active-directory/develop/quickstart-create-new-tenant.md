@@ -1,6 +1,7 @@
 ---
-title: Azure Active Directory テナントを作成する
-description: アプリケーションを登録および構築するために使用する Azure AD テナントを作成する方法について説明します。
+title: クイックスタート:Azure Active Directory テナントを作成する
+titleSuffix: Microsoft identity platform
+description: このクイックスタートでは、認証と認可に Microsoft ID プラットフォームを使用するアプリケーションの開発に使用する Azure Active Directory テナントを作成する方法について説明します。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,12 +13,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: df873e49e1bc581a32bcb4e4b40b2b24db98cee5
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 60d789c4297c400b812cd6c5c19c8c6148cb347d
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120815"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575981"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>クイック スタート:テナントを設定する
 
@@ -26,6 +27,10 @@ Microsoft ID プラットフォームでは、開発者がさまざまなカス�
 テナントは、組織を表したものです。 これは、組織やアプリの開発者が、Azure、Microsoft Intune、または Microsoft 365 へのサインアップのような Microsoft とのリレーションシップを作成するときに受信する Azure AD の専用インスタンスです。
 
 Azure AD テナントはそれぞれ異なり、その他の Azure AD とは分離されていて、職場や学校の ID、コンシューマー ID (Azure AD B2C テナントの場合)、およびアプリの登録の独自の表現があります。 テナント内部のアプリの登録では、自分のテナント内のみ、またはすべてのテナント内のアカウントからの認証を許可できます。
+
+## <a name="prerequisites"></a>前提条件
+
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="determining-environment-type"></a>環境の種類の決定
 
@@ -71,6 +76,5 @@ Azure AD テナントがない場合、または開発用の新しいテナン�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [アプリを登録](quickstart-register-app.md)し、Microsoft ID プラットフォームと統合します。 
-* [認証の基本](./authentication-vs-authorization.md)について説明します。
-* サブスクリプションと Azure AD テナントの関係について詳しくは、「[Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する](../fundamentals/active-directory-how-subscriptions-associated-directory.md)」を参照してください。
+> [!div class="nextstepaction"]
+> Microsoft ID プラットフォームと統合する[アプリを登録](quickstart-register-app.md)します。

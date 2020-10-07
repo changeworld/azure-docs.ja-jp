@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 649611b2e378cd43286b193c6d40b03b743905cd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 06a31e61583ac28218b34195dd6e5b7f92776dce
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000075"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541239"
 ---
 # <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>Azure Cognitive Search インデクサーの状態と結果を監視する方法
 
@@ -189,4 +189,4 @@ Latest run
 
 ドキュメント固有のエラーまたは警告に関する詳細は、`IndexerExecutionResult.Errors` 一覧と `IndexerExecutionResult.Warnings` 一覧を列挙することで取得できます。
 
-インデクサーの監視に使用する .NET SDK クラスの詳細については、「[IndexerExecutionInfo](/dotnet/api/microsoft.azure.search.models.indexerexecutioninfo?view=azure-dotnet)」と「[IndexerExecutionResult](/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet)」を参照してください。
+インデクサーの監視に使用する .NET SDK クラスの詳細については、「[IndexerExecutionInfo](/dotnet/api/microsoft.azure.search.models.indexerexecutioninfo)」と「[IndexerExecutionResult](/dotnet/api/microsoft.azure.search.models.indexerexecutionresult)」を参照してください。

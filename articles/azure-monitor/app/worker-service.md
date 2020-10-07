@@ -4,12 +4,12 @@ description: Azure Monitor Application Insights を使用した .NET Core/.NET F
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/11/2020
-ms.openlocfilehash: 2ca5fc2d8f5e9e399fd7dfd3238d0ec16056d537
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 12be39e36c003531b815e137cbd1d360ca7f0fd6
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007215"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760480"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>ワーカー サービス アプリケーション (非 HTTP アプリケーション) 向け Application Insights
 
@@ -44,7 +44,7 @@ Application Insights では、`Microsoft.ApplicationInsights.WorkerService` と�
 
 ## <a name="net-core-30-worker-service-application"></a>.NET Core 3.0 ワーカー サービス アプリケーション
 
-完全な例は、[こちら](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights)で共有されています
+完全な例は、[こちら](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights)で共有されています
 
 1. [.NET Core 3.0](https://dotnet.microsoft.com/download/dotnet-core/3.0) をダウンロードしてインストールします
 2. Visual Studio の新しいプロジェクト テンプレートまたはコマンド ライン `dotnet new worker` を使用して、新しいワーカー サービス プロジェクトを作成します
@@ -136,7 +136,7 @@ Application Insights では、`Microsoft.ApplicationInsights.WorkerService` と�
 
 ASP.NET Core 2.1/2.2 アプリケーションでのバックグラウンド タスクの作成方法については、[こちら](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-2.2&preserve-view=true)のドキュメントで説明されています。
 
-完全な例は、[こちら](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService)で共有されています
+完全な例は、[こちら](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService)で共有されています
 
 1. アプリケーションに Microsoft.ApplicationInsights.WorkerService(https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) パッケージをインストールします。
 2. この例のように、`ConfigureServices()` メソッドに `services.AddApplicationInsightsTelemetryWorkerService();` を追加します。
@@ -223,7 +223,7 @@ ASP.NET Core 2.1/2.2 アプリケーションでのバックグラウンド タ�
 
 この記事の冒頭で説明したように、新しいパッケージを使用して、通常のコンソール アプリケーションからでも Application Insights Telemetry を有効にすることができます。 このパッケージは [`NetStandard2.0`](/dotnet/standard/net-standard) を対象としているため、.NET Core 2.0 以上と、.NET Framework 4.7.2 以上のコンソール アプリで使用できます。
 
-完全な例は、[こちら](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/ConsoleAppWithApplicationInsights)で共有されています
+完全な例は、[こちら](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/ConsoleAppWithApplicationInsights)で共有されています
 
 1. アプリケーションに Microsoft.ApplicationInsights.WorkerService(https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) パッケージをインストールします。
 
@@ -532,11 +532,11 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 ## <a name="sample-applications"></a>サンプル アプリケーション
 
-[.NET Core コンソール アプリケーション](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) .NET Core (2.0 以上) または .NET Framework (4.7.2 以上) で記述されたコンソール アプリケーションを使用している場合は、このサンプルを使用します
+[.NET Core コンソール アプリケーション](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) .NET Core (2.0 以上) または .NET Framework (4.7.2 以上) で記述されたコンソール アプリケーションを使用している場合は、このサンプルを使用します
 
-[HostedService を使用した ASP .NET Core バックグラウンド タスク](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService) Asp.Net Core 2.1/2.2 を使用していて、[こちら](/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&preserve-view=true)の公式のガイダンスに従ってバックグラウンド タスクを作成する場合は、このサンプルを使用します
+[HostedService を使用した ASP .NET Core バックグラウンド タスク](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService) Asp.Net Core 2.1/2.2 を使用していて、[こちら](/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&preserve-view=true)の公式のガイダンスに従ってバックグラウンド タスクを作成する場合は、このサンプルを使用します
 
-[.NET Core 3.0 ワーカー サービス](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights)[こちら](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-3.0&preserve-view=true#worker-service-template)の公式のガイダンスに従って .NET Core 3.0 ワーカー サービス アプリケーションを作成した場合は、このサンプルを使用します
+[.NET Core 3.0 ワーカー サービス](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights)[こちら](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-3.0&preserve-view=true#worker-service-template)の公式のガイダンスに従って .NET Core 3.0 ワーカー サービス アプリケーションを作成した場合は、このサンプルを使用します
 
 ## <a name="open-source-sdk"></a>オープンソース SDK
 

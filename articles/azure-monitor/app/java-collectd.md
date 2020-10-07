@@ -3,12 +3,12 @@ title: Linux での Java Web アプリ パフォーマンスの監視 | Microsof
 description: Application Insights の CollectD プラグインを使用した Java Web サイトのアプリケーション パフォーマンスの拡張
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 648d0e5adc289dfeb83a54c3dcb9ab7d25fc1cc4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: fd061d6dd1f87456b92a61c9a62caaf3ef3189b2
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322603"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761024"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd:Application Insights での Linux パフォーマンス メトリック
 
@@ -28,7 +28,7 @@ ms.locfileid: "87322603"
 Linux サーバー コンピューターで、次の操作を行います。
 
 1. [collectd](https://collectd.org/) のバージョン 5.4.0 またはそれ以降をインストールします。
-2. [Application Insights collectd ライター プラグイン](https://github.com/microsoft/ApplicationInsights-Java/tree/master/collectd/src/main/java/com/microsoft/applicationinsights/collectd/internal)をダウンロードします。 バージョン番号をメモしておきます。
+2. [Application Insights collectd ライター プラグイン](https://github.com/microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal)をダウンロードします。 バージョン番号をメモしておきます。
 3. プラグイン JAR を `/usr/share/collectd/java`にコピーします。
 4. `/etc/collectd/collectd.conf`を編集します:
    * [Java プラグイン](https://collectd.org/wiki/index.php/Plugin:Java) が有効になっていることを確認します。

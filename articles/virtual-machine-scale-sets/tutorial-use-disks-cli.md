@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: a4be498b25aee7c5a50b2f35fe06be3763eb4732
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 5dedee5e9ef4d036305a545201afc03d90750189
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825856"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568320"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用した仮想マシン スケール セットのディスクの作成および使用
 仮想マシン スケール セットでは、VM インスタンスのオペレーティング システム、アプリケーション、およびデータを格納するためにディスクを使用します。 スケール セットを作成および管理するときは、予測されるワークロードに適したディスクのサイズと構成を選択する必要があります。 このチュートリアルでは、VM ディスクの作成方法と管理方法について説明します。 このチュートリアルで学習する内容は次のとおりです。
@@ -75,6 +75,8 @@ Premium ディスクは、SSD ベースの高性能で待機時間の短いデ�
 
 ## <a name="create-and-attach-disks"></a>ディスクを作成して接続する
 ディスクは、スケール セットの作成時に作成および接続できます。また、既存のスケール セットに対してディスクを作成および接続することもできます。
+
+API バージョン `2019-07-01` 時点では、[storageProfile.osDisk.diskSizeGb](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosdisk) プロパティを使用して、仮想マシン スケール セットの OS ディスクのサイズを設定できます。 プロビジョニング後、領域全体を活用するために、ディスクの拡張またはパーティション再分割を行う必要がある場合があります。 ディスクの拡張の詳細については、[こちら](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk#expand-the-volume-within-the-os)を参照してください。
 
 ### <a name="attach-disks-at-scale-set-creation"></a>スケール セットの作成時にディスクを接続する
 まず、[az group create](/cli/azure/group) コマンドでリソース グループを作成します。 この例では、*myResourceGroup* という名前のリソース グループが *eastus* リージョンに作成されます。

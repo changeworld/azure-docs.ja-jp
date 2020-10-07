@@ -8,12 +8,12 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: c90d11ba630dbb1e37054715855ae5547a8a034b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a80559761c8a3eba6045db5cd99a7719dd041fa8
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902726"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704397"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>Azure Open Datasets から Azure Machine Learning データセットを作成する
 
@@ -45,20 +45,20 @@ Open Datasets はクラウドにある Microsoft Azure 上にあり、[Azure Mac
 
 * [Azure Machine Learning ワークスペース](../machine-learning/how-to-manage-workspace.md)。
 
-* [Azure Machine Learning SDK for Python がインストール済み](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) (これには `azureml-datasets` パッケージが含まれています)。
+* [Azure Machine Learning SDK for Python がインストール済み](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true ) (これには `azureml-datasets` パッケージが含まれています)。
 
-    * [Azure Machine Learning コンピューティング インスタンス](../machine-learning/concept-compute-instance.md#managing-a-compute-instance)を作成します (これは、統合ノートブックと SDK が既にインストールされている、完全に構成および管理された開発環境です)。
+    * [Azure Machine Learning コンピューティング インスタンス](../machine-learning/how-to-create-manage-compute-instance.md)を作成します (これは、統合ノートブックと SDK が既にインストールされている、完全に構成および管理された開発環境です)。
 
     **OR**
 
-    * ご自分の Python 環境で作業し、[こちらの手順](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)に従って SDK をインストールします。
+    * ご自分の Python 環境で作業し、[こちらの手順](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true )に従って SDK をインストールします。
 
 > [!NOTE]
 > 一部の Dataset クラスは、[azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) パッケージに依存しています。これは、64 ビットの Python とのみ互換性があります。 Linux ユーザーの場合、これらのクラスは次のディストリビューションでのみサポートされています。Red Hat Enterprise Linux (7、8)、Ubuntu (14.04、16.04、18.04)、Fedora (27、28)、Debian (8、9)、および CentOS (7)
 
 ## <a name="create-datasets-with-the-sdk"></a>SDK を使用してデータセットを作成する
 
-Python SDK の Azure Open Datasets クラスを使用して Azure Machine Learning データセットを作成するには、`pip install azureml-opendatasets` でパッケージがインストールされていることを確認します。 個々のデータセットは、SDK で独自のクラスによって表され、特定のクラスは Azure Machine Learning [`TabularDataset`、`FileDataset`](../machine-learning/how-to-create-register-datasets.md#dataset-types)、またはその両方として使用できます。 `opendatasets` クラスの完全な一覧については、[リファレンス ドキュメント](https://docs.microsoft.com/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py)を参照してください。
+Python SDK の Azure Open Datasets クラスを使用して Azure Machine Learning データセットを作成するには、`pip install azureml-opendatasets` でパッケージがインストールされていることを確認します。 個々のデータセットは、SDK で独自のクラスによって表され、特定のクラスは Azure Machine Learning [`TabularDataset`、`FileDataset`](../machine-learning/how-to-create-register-datasets.md#dataset-types)、またはその両方として使用できます。 `opendatasets` クラスの完全な一覧については、[リファレンス ドキュメント](https://docs.microsoft.com/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py&preserve-view=true )を参照してください。
 
 特定の `opendatasets` クラスは、ファイルを直接操作したり、ダウンロードしたりできる、`TabularDataset` または `FileDataset` として取得できます。 他のクラスは、Python SDK の `Dataset` クラスの `get_tabular_dataset()` または `get_file_dataset()` 関数を使用して**のみ**、データセットを取得できます。
 
@@ -88,7 +88,7 @@ diabetes_tabular = Diabetes.get_tabular_dataset()
 
 Azure Machine Learning データセットをワークスペースに登録すると、他のユーザーと共有したり、ワークスペース内の実験間で再利用したりすることができます。 Open Datasets から作成された Azure Machine Learning データセットを登録すると、データはすぐにはダウンロードされませんが、中央の保存場所から要求したとき (たとえばトレーニング中に) にデータにアクセスできます。
 
-データセットをワークスペースに登録するには、[`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--create-new-version-false-) メソッドを使用します。 
+データセットをワークスペースに登録するには、[`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--create-new-version-false-&preserve-view=true ) メソッドを使用します。 
 ```Python
 titanic_ds = titanic_ds.register(workspace=workspace,
                                  name='titanic_ds',

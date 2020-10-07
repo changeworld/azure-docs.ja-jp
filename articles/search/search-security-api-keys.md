@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 1fa464eca69f50fba7fa125212b85e0f7f63bcc9
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 10/05/2020
+ms.openlocfilehash: 60c5051b403d3072292a03c60d7cba95bd0cf1d7
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294783"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740634"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>Azure Cognitive Search サービスの管理者 API キーを作成する
 
@@ -21,7 +21,7 @@ Search サービスへのすべての HTTP 要求には、対象のサービス�
 
 キーは、サービスのプロビジョニング中に検索サービスで作成されます。 [Azure portal](https://portal.azure.com) でキーの値を表示および取得することができます。
 
-![ポータル ページ、設定の取得、キー セクション](media/search-manage/azure-search-view-keys.png)
+:::image type="content" source="media/search-manage/azure-search-view-keys.png" alt-text="ポータル ページ、設定の取得、キー セクション" border="false":::
 
 ## <a name="what-is-an-api-key"></a>API キーとは
 
@@ -47,7 +47,7 @@ API キーは、ランダムに生成された数字と文字から成る文字�
 2. サブスクリプションの[検索サービス](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)を一覧表示します。
 3. サービスを選択し、[概要] ページで **[設定]**  > **[キー]** の順に移動して管理者キーとクエリ キーを表示します。
 
-   ![ポータル ページ、設定の表示、キー セクション](media/search-security-overview/settings-keys.png)
+   :::image type="content" source="media/search-security-overview/settings-keys.png" alt-text="ポータル ページ、設定の取得、キー セクション" border="false":::
 
 ## <a name="create-query-keys"></a>クエリ キーを作成する
 
@@ -61,7 +61,7 @@ API キーは、ランダムに生成された数字と文字から成る文字�
 4. **[クエリ キーの管理]** をクリックします。
 5. サービス用に既に生成されているクエリ キーを使用するか、最大 50 個の新しいクエリ キーを作成します。 既定のクエリ キーには名前はありませんが、追加のクエリ キーには、管理を容易にするために名前を付けることができます。
 
-   ![クエリ キーを作成または使用する](media/search-security-overview/create-query-key.png) 
+   :::image type="content" source="media/search-security-overview/create-query-key.png" alt-text="ポータル ページ、設定の取得、キー セクション" border="false":::
 
 > [!Note]
 > [C# で Azure Cognitive Search インデックスに対するクエリを実行する](./search-get-started-dotnet.md)方法に関する記事に、クエリ キーの使用法を示すコード例があります。

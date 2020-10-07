@@ -1,17 +1,17 @@
 ---
 title: ダンプと復元 - Azure Database for PostgreSQL - Single Server
 description: PostgreSQL データベースをダンプ ファイルに抽出し、Azure Database for PostgreSQL - Single Server で pg_dump によって作成されたファイルから復元する方法について説明します。
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 529573bd18dbdbd16a795619d488beedfb532b11
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4fe15d1bd23f36b7289c54bedf575ae4760600e0
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902668"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710806"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>ダンプと復元を使用した PostgreSQL データベースの移行
 [!INCLUDE[applies-to-postgres-single-flexible-server](includes/applies-to-postgres-single-flexible-server.md)]

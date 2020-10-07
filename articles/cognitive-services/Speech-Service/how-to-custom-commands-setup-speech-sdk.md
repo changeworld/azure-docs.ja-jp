@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f3a8cafa907cb66832faf033f7b62e68bf859097
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 49922599adb30e6c631f29b4831fda60cc000a40
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918827"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360125"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>Speech SDK を使用してクライアント アプリケーションと統合する
 
@@ -34,7 +34,7 @@ ms.locfileid: "88918827"
 次のものも必要です。
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) またはそれ以降。 このガイドは、Visual Studio 2019 に基づいています。
-> * Speech Services 用の Azure サブスクリプション キー。 [無料で入手する](get-started.md)か、[Azure portal](https://portal.azure.com) で作成します
+> * Speech Services 用の Azure サブスクリプション キー。 [無料で入手する](overview.md#try-the-speech-service-for-free)か、[Azure portal](https://portal.azure.com) で作成します
 > * [デバイスを開発用に有効にする](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)
 
 ## <a name="step-1-publish-custom-commands-application"></a>手順 1:カスタム コマンド アプリケーションを発行する

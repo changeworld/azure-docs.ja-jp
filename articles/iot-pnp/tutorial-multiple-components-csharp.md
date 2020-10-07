@@ -1,81 +1,64 @@
 ---
 title: IoT プラグ アンド プレイ プレビューのサンプル C# コンポーネント デバイス コードを IoT Hub に接続する | Microsoft Docs
-description: 複数のコンポーネントを使用し、IoT ハブに接続する、IoT プラグ アンド プレイ プレビューのサンプル C# デバイス コードをビルドして実行します。 Azure IoT Explorer ツールを使用して、デバイスからハブに送信された情報を表示します。
+description: 複数のコンポーネントを使用し、IoT ハブに接続する、IoT プラグ アンド プレイのサンプル C# デバイス コードをビルドして実行します。 Azure IoT Explorer ツールを使用して、デバイスからハブに送信された情報を表示します。
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 67b71399332fb29a277381a8c2806dbe7fb31d85
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: f6f87ed4ba74c3f7750e56d4bb8473cf4b1a4341
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552129"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575386"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-multiple-component-device-application-running-on-windows-to-iot-hub-c"></a>チュートリアル:Windows 上で実行されている IoT プラグ アンド プレイ プレビューの複数コンポーネントのデバイス アプリケーションを IoT Hub に接続する (C#)
 
 [!INCLUDE [iot-pnp-tutorials-device-selector.md](../../includes/iot-pnp-tutorials-device-selector.md)]
 
-このチュートリアルでは、コンポーネントとルート インターフェイスを使用する IoT プラグ アンド プレイ デバイス アプリケーションのサンプルをビルドし、それをご利用の IoT ハブに接続し、ハブに送信される情報を Azure IoT エクスプローラー ツールを使用して表示する方法を示します。 このサンプル アプリケーションは C# で記述されており、C# 用 Azure IoT device SDK に含まれています。 ソリューション ビルダーは Azure IoT エクスプローラー ツールを使用して、デバイス コードを表示しなくても IoT プラグ アンド プレイ デバイスの機能を理解することができます。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+このチュートリアルでは、複数のコンポーネントを使用する IoT プラグ アンド プレイのサンプル デバイス アプリケーションをビルドし、それを IoT ハブに接続して、ハブに送信される情報を Azure IoT エクスプローラー ツールを使用して表示する方法について説明します。 このサンプル アプリケーションは C# で記述されており、C# 用 Azure IoT device SDK に含まれています。 ソリューション ビルダーは Azure IoT エクスプローラー ツールを使用して、デバイス コードを表示しなくても IoT プラグ アンド プレイ デバイスの機能を理解することができます。
 
 ## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
 Windows でこのチュートリアルを完了するには、ご利用のローカル Windows 環境に次のソフトウェアをインストールします。
 
 * [Visual Studio (Community、Professional、または Enterprise)](https://visualstudio.microsoft.com/downloads/)。
 * [Git](https://git-scm.com/download/).
-* [CMake](https://cmake.org/download/)。
 
-### <a name="azure-iot-explorer"></a>Azure IoT エクスプローラー
+### <a name="clone-the-sdk-repository-with-the-sample-code"></a>サンプル コードを使用して SDK リポジトリをクローンする
 
-このチュートリアルのパート 2 でサンプル デバイスとやり取りするには、**Azure IoT エクスプローラー** ツールを使用します。 ご利用のオペレーティング システム用の [Azure IoT エクスプローラーの最新リリースをダウンロードしてインストール](./howto-use-iot-explorer.md)します。
+「[クイックスタート: Windows 上で実行されている IoT プラグ アンド プレイのサンプル デバイス アプリケーションを IoT Hub に接続する (C#)](quickstart-connect-device-csharp.md)」を完了している場合は、リポジトリを既にクローンしています。
 
-[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
-
-次のコマンドを実行して、ご利用のハブに対する "_IoT ハブ接続文字列_" を取得します。 この接続文字列はメモしておいてください。これは、このチュートリアルの後半で使用します。
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
-
-> [!TIP]
-> また、Azure IoT エクスプローラー ツールを使用して、IoT ハブ接続文字列を見つけることもできます。
-
-次のコマンドを実行して、ハブに追加したデバイスの "_デバイス接続文字列_" を取得します。 この接続文字列はメモしておいてください。これは、このチュートリアルの後半で使用します。
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output table
-```
-
-[!INCLUDE [iot-pnp-download-models.md](../../includes/iot-pnp-download-models.md)]
-
-## <a name="download-the-code"></a>コードのダウンロード
-
-このチュートリアルでは、Azure IoT Hub Device C# SDK をクローンしてビルドするために使用できる開発環境を準備します。
-
-任意のディレクトリでコマンド プロンプトを開きます。 次のコマンドを実行して、[Azure IoT C# SDK およびライブラリ](https://github.com/Azure/azure-iot-sdk-csharp)の GitHub リポジトリをこの場所にクローンします。
+Microsoft Azure IoT SDK for .NET GitHub リポジトリからサンプルをクローンします。 任意のフォルダーでコマンド プロンプトを開きます。 次のコマンドを実行して、[Microsoft Azure IoT samples for .NET](https://github.com/Azure-Samples/azure-iot-samples-csharp) GitHub リポジトリをクローンします。
 
 ```cmd
-git clone https://github.com/Azure/azure-iot-sdk-csharp.git
+git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 ```
 
-## <a name="build-the-code"></a>コードのビルド
+## <a name="run-the-sample-device"></a>サンプル デバイスを実行する
 
-Visual Studio 2019 で **azureiot.sln** ソリューション ファイルを開き、**TemperatureController** プロジェクトをスタートアップ プロジェクトとして設定します。 **ソリューション エクスプローラー**では、このプロジェクト ファイルを **iothub > device > samples** で見つけることができます。
+このクイックスタートでは、C# で記述されたサンプルの温度コントローラー デバイスを IoT プラグ アンド プレイ デバイスとして使用します。 サンプル デバイスを実行するには、次のようにします。
 
-これで、Visual Studio でサンプルをビルドし、デバッグ モードで実行できるようになりました。
+1. Visual Studio 2019 で、*azure-iot-samples-csharp\iot-hub\Samples\device\PnpDeviceSamples\TemperatureController\TemperatureController.csproj* プロジェクト ファイルを開きます。
 
-## <a name="run-the-device-sample"></a>デバイス サンプルを実行する
+1. Visual Studio で、 **[プロジェクト] > [TemperatureController Properties]\(TemperatureController のプロパティ\) > [デバッグ]** の順に移動します。 次に、プロジェクトに次の環境変数を追加します。
 
-先ほどメモしたデバイス接続文字列を格納するために、**IOTHUB_DEVICE_CONNECTION_STRING** という環境変数を作成します。
+    | 名前 | 値 |
+    | ---- | ----- |
+    | IOTHUB_DEVICE_SECURITY_TYPE | DPS |
+    | IOTHUB_DEVICE_DPS_ENDPOINT | global.azure-devices-provisioning.net |
+    | IOTHUB_DEVICE_DPS_ID_SCOPE | [環境の設定](set-up-environment.md)の完了時に書き留めておいた値 |
+    | IOTHUB_DEVICE_DPS_DEVICE_ID | my-pnp-device |
+    | IOTHUB_DEVICE_DPS_DEVICE_KEY | [環境の設定](set-up-environment.md)の完了時に書き留めておいた値 |
 
-Windows 上の Visual Studio でコードの実行をトレースするには、program.cs ファイルの `main` 関数にブレーク ポイントを追加します。
 
-これで、デバイスはコマンドとプロパティの更新情報を受信する準備ができ、ハブへのテレメトリ データの送信が開始されました。 次の手順を完了するまで、サンプルを実行したままにしておきます。
+1. これで、Visual Studio でサンプルをビルドし、デバッグ モードで実行できるようになりました。
+
+1. デバイスが情報を送信し、自身がオンラインであると報告したことを示すメッセージが表示されます。 これらのメッセージは、デバイスによってハブへのテレメトリ データの送信が開始され、コマンドとプロパティの更新情報を受信する準備ができたことを示します。 Visual Studio のこのインスタンスは閉じないでください。これは、サービスのサンプルが動作していることを確認するために必要になります。
 
 ## <a name="use-azure-iot-explorer-to-validate-the-code"></a>Azure IoT エクスプローラーを使用してコードを確認する
 
@@ -90,52 +73,57 @@ Windows 上の Visual Studio でコードの実行をトレースするには、
 デバイス コードにより、標準の `CreateFromConnectionString` メソッドが使用され、IoT ハブに接続されます。 デバイスにより、接続要求で実装される DTDL モデルのモデル ID が送信されます。 モデル ID を送信するデバイスは、IoT プラグ アンド プレイ デバイスです。
 
 ```csharp
-private static void InitializeDeviceClientAsync()
+private static DeviceClient InitializeDeviceClient(string hostname, IAuthenticationMethod authenticationMethod)
 {
-  var options = new ClientOptions
-  {
-      ModelId = ModelId,
-  };
-  s_deviceClient = DeviceClient.CreateFromConnectionString(s_deviceConnectionString, TransportType.Mqtt, options);
-  s_deviceClient.SetConnectionStatusChangesHandler((status, reason) =>
-  {
-      s_logger.LogDebug($"Connection status change registered - status={status}, reason={reason}.");
-  });
+    var options = new ClientOptions
+    {
+        ModelId = ModelId,
+    };
+
+    var deviceClient = DeviceClient.Create(hostname, authenticationMethod, TransportType.Mqtt, options);
+    deviceClient.SetConnectionStatusChangesHandler((status, reason) =>
+    {
+        s_logger.LogDebug($"Connection status change registered - status={status}, reason={reason}.");
+    });
+
+    return deviceClient;
 }
 ```
 
 モデル ID は、次のスニペットに示すように、コードに格納されます。
 
 ```csharp
-private const string ModelId = "dtmi:com:example:Thermostat;1";
+private const string ModelId = "dtmi:com:example:TemperatureController;1";
 ```
 
-デバイスが IoT ハブに接続された後、コードによってコマンド ハンドラーが登録されます。 `reboot` コマンドは、ルート インターフェイスで定義されています。 `getMaxMinReport` コマンドは、次の 2 つのサーモスタット コンポーネントのそれぞれに定義されています。
+デバイスが IoT ハブに接続された後、コードによってコマンド ハンドラーが登録されます。 `reboot` コマンドは、既定のコンポーネントで定義されています。 `getMaxMinReport` コマンドは、次の 2 つのサーモスタット コンポーネントのそれぞれに定義されています。
 
 ```csharp
-await s_deviceClient.SetMethodHandlerAsync("reboot", HandleRebootCommandAsync, s_deviceClient);
-await s_deviceClient.SetMethodHandlerAsync("thermostat1*getMaxMinReport", HandleMaxMinReportCommandAsync, Thermostat1);
-await s_deviceClient.SetMethodHandlerAsync("thermostat2*getMaxMinReport", HandleMaxMinReportCommandAsync, Thermostat2);
+await _deviceClient.SetMethodHandlerAsync("reboot", HandleRebootCommandAsync, _deviceClient, cancellationToken);
+await _deviceClient.SetMethodHandlerAsync("thermostat1*getMaxMinReport", HandleMaxMinReportCommandAsync, Thermostat1, cancellationToken);
+await _deviceClient.SetMethodHandlerAsync("thermostat2*getMaxMinReport", HandleMaxMinReportCommandAsync, Thermostat2, cancellationToken);
+
 ```
 
 2 つのサーモスタット コンポーネントには、必要なプロパティの更新用の個別のハンドラーがあります。
 
 ```csharp
-s_desiredPropertyUpdateCallbacks.Add(Thermostat1, TargetTemperatureUpdateCallbackAsync);
-s_desiredPropertyUpdateCallbacks.Add(Thermostat2, TargetTemperatureUpdateCallbackAsync);
+_desiredPropertyUpdateCallbacks.Add(Thermostat1, TargetTemperatureUpdateCallbackAsync);
+_desiredPropertyUpdateCallbacks.Add(Thermostat2, TargetTemperatureUpdateCallbackAsync);
+
 ```
 
 このサンプル コードによって、各サーモスタット コンポーネントからテレメトリが送信されます。
 
 ```csharp
-await SendTemperatureAsync(Thermostat1);
-await SendTemperatureAsync(Thermostat2);
+await SendTemperatureAsync(Thermostat1, cancellationToken);
+await SendTemperatureAsync(Thermostat2, cancellationToken);
 ```
 
-`SendTemperature` メソッドによって、各コンポーネントのメッセージを作成するために `PnpHhelper` クラスが使用されます。
+`SendTemperatureTelemetryAsync` メソッドによって、各コンポーネントのメッセージを作成するために `PnpHhelper` クラスが使用されます。
 
 ```csharp
-Message msg = PnpHelper.CreateIothubMessageUtf8(telemetryName, JsonConvert.SerializeObject(currentTemperature), componentName);
+using Message msg = PnpHelper.CreateIothubMessageUtf8(telemetryName, JsonConvert.SerializeObject(currentTemperature), componentName);
 ```
 
 `PnpHelper` クラスには、複数コンポーネントのモデルで使用できるその他のサンプル メソッドが含まれています。
@@ -144,13 +132,11 @@ Message msg = PnpHelper.CreateIothubMessageUtf8(telemetryName, JsonConvert.Seria
 
 :::image type="content" source="media/tutorial-multiple-components-csharp/multiple-component.png" alt-text="Azure IoT エクスプローラーの複数コンポーネントのデバイス":::
 
-また、Azure IoT エクスプローラー ツールを使用して、2 つのサーモスタット コンポーネントのいずれか、またはルート インターフェイスでコマンドを呼び出すこともできます。
-
-[!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
+また、Azure IoT エクスプローラー ツールを使用して、2 つのサーモスタット コンポーネントのいずれか、または既定のコンポーネントでコマンドを呼び出すこともできます。
 
 ## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、コンポーネントを使用する IoT プラグ アンド プレイ デバイスを IoT ハブに接続する方法を学習しました。 IoT プラグ アンド プレイ デバイス モデルの詳細については、以下を参照してください。
 
 > [!div class="nextstepaction"]
-> [IoT プラグ アンド プレイ プレビュー モデリング開発者ガイド](concepts-developer-guide.md)
+> [IoT プラグ アンド プレイ モデリング開発者ガイド](concepts-developer-guide-device-csharp.md)

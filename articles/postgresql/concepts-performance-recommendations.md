@@ -1,17 +1,17 @@
 ---
 title: パフォーマンスに関する推奨事項 - Azure Database for PostgreSQL - Single Server
 description: この記事では、Azure Database for PostgreSQL (単一サーバー) のパフォーマンスに関する推奨機能について説明します。
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: f0ce3843752ebd6ed56281f6699783181b52fdc6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d547844671e6485e71be7dd8c355de08f3dec5e6
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903882"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710568"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) のパフォーマンスに関する推奨事項
 
@@ -33,7 +33,7 @@ Azure portal の PostgreSQL サーバーに関するページで、メニュー 
 
 **[推奨事項]** ウィンドウでは、推奨事項が見つかった場合に、その一覧が表示されます。
 
-:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="パフォーマンスに関する推奨事項の新しいページ":::
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="パフォーマンスに関する推奨事項ランディング ページ":::
 
 推奨事項は自動的には適用されません。 推奨事項を適用するには、クエリ テキストをコピーし、任意のクライアントから実行します。 推奨事項を評価するため、監視とテストを忘れずに行ってください。 
 

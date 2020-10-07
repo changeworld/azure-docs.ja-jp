@@ -9,12 +9,12 @@ ms.author: umajay
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 782a046b92c9d6cf755bfea0551d7f8153faa859
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c1560325f21fd60e6bdb2a64eb987359a7246ff2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931327"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317329"
 ---
 # <a name="storage-configuration"></a>ストレージの構成
 
@@ -151,10 +151,11 @@ sqldemo11-logs-claim   Bound    pvc-41b33bbd-debb-4153-9a41-02ce2bf9c665   10Gi 
 
 - データの持続性を確保するために、リモートの共有ストレージ クラスを使用する**必要があります**。これにより、ポッドが復旧したときにポッドまたはノードが停止した場合、永続ボリュームに再び接続できるようになります。
 - コントローラー SQL インスタンス、メトリック DB、ログ DB に書き込まれるデータは、通常、非常に少ないボリュームであり、待機時間の影響を受けないため、超高速パフォーマンス ストレージは重要ではありません。 ユーザーが Grafana インターフェイスと Kibana インターフェイスを頻繁に使用していて、データベース インスタンスが多数ある場合、ユーザーはより高速なストレージの恩恵を受ける可能性があります。
-- データベース インスタンスごとにログとメトリックが収集されるので、必要なストレージ容量は、配置したデータベース インスタンスの数による変数になります。 データは、消去される前に、ログ DB とメトリック DB に 2 週間保持されます。 TODO: DB インスタンスごとにどのくらいのストレージが必要ですか?
+- データベース インスタンスごとにログとメトリックが収集されるので、必要なストレージ容量は、配置したデータベース インスタンスの数による変数になります。 データは、消去される前に、ログ DB とメトリック DB に 2 週間保持されます。 
 - デプロイ後にストレージ クラスを変更することは非常に困難であり、ドキュメント化されておらず、サポートもされていません。 デプロイ時には、ストレージ クラスを正しく選択してください。
 
-> **注:** ストレージ クラスが指定されていない場合は、既定のストレージ クラスが使用されます。 既定のストレージ クラスは、Kubernetes クラスターごとに 1 つしか存在できません。 [既定のストレージ クラスを変更する](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/)ことができます。
+> [!NOTE]
+> ストレージ クラスが指定されていない場合は、既定のストレージ クラスが使用されます。 既定のストレージ クラスは、Kubernetes クラスターごとに 1 つしか存在できません。 [既定のストレージ クラスを変更する](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/)ことができます。
 
 ### <a name="database-instance-storage-configuration"></a>データベース インスタンスのストレージ構成
 
@@ -162,7 +163,8 @@ sqldemo11-logs-claim   Bound    pvc-41b33bbd-debb-4153-9a41-02ce2bf9c665   10Gi 
 
 `azdata arc sql mi create` または `azdata arc postgres server create` コマンドを使用してインスタンスを作成する場合は、次の 2 つのパラメーターを使用してストレージ クラスを設定できます。
 
-> **注:** これらのパラメーターの一部は開発中であり、今後のリリースでは `azdata arc sql mi create` および `azdata arc postgres server create` で使用できるようになります。
+> [!NOTE]
+> これらのパラメーターの一部は開発中であり、今後のリリースでは `azdata arc sql mi create` および `azdata arc postgres server create` で使用できるようになります。
 
 |パラメーター名、短い名前|使用目的|
 |---|---|

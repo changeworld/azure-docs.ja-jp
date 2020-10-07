@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: hasshah
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8c19650a8f36181e3e003414ff15add071e9a8ac
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: b2763372cc63637f73610e1936e3ea54a4524e7d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918895"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356606"
 ---
 # <a name="what-is-a-keyword"></a>キーワードとは
 
@@ -61,6 +61,6 @@ ms.locfileid: "88918895"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Speech サービスのサブスクリプション キーを無料で取得する](get-started.md)
+* [Speech サービスのサブスクリプション キーを無料で取得する](overview.md#try-the-speech-service-for-free)
 * [Speech SDK を取得する](speech-sdk.md)
 * [音声アシスタントの詳細情報を確認する](voice-assistants.md)

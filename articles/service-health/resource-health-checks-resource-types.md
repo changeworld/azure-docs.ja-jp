@@ -3,12 +3,12 @@ title: Azure Resource Health でサポートされるリソースの種類 |Micr
 description: Azure Resource Health でサポートされるリソースの種類
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 9aedc115a29f11d4d54715d51bb6231ea1ea9e03
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: e299e45f08b9e39af02208a0e74734475528b3ae
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660658"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447046"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure Resource Health で利用できるリソースの種類と正常性チェック
 Resource Health で実行されるすべてのチェックをリソースの種類別にまとめた完全な一覧を次に示します。
@@ -207,7 +207,7 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/Capacities
 |実行されるチェック|
 |---|
-|<ul><li>キャパシティ リソースが稼働しているか</li><li>すべてのワークロードが稼働しているか</li></ul>|
+|<ul><li>キャパシティ リソースが稼働しているか</li><li>すべてのワークロードが稼働しているか</li></ul>
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.search/searchServices
 |実行されるチェック|

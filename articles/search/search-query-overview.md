@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: 018c3fb08c7fa0ad35fa567bffbeae48b6fbbce9
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: bae4cb72201bbc1653db5bb549d67531bda71d50
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88928838"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537720"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Azure Cognitive Search でのクエリの種類と構成
 
@@ -92,7 +92,7 @@ Azure Cognitive Search では、インデックスの設計とクエリの設計
 |-------------|-------------|
 | [Search エクスプローラー (ポータル)](search-explorer.md) | 検索バーのほか、インデックスと API バージョンの選択に関するオプションが用意されています。 結果は JSON ドキュメントとして返されます。 探索、テスト、検証用に推奨されます。 <br/>[詳細情報。](search-get-started-portal.md#query-index) | 
 | [Postman またはその他の REST ツール](search-get-started-postman.md) | Web テスト ツールは、REST 呼び出しを作成するための優れた選択肢です。 REST API では、Azure Cognitive Search で利用可能なすべての操作をサポートします。 この記事では、Azure Cognitive Search に要求を送信するために HTTP 要求のヘッダーと本文を設定する方法について学習します。  |
-| [SearchIndexClient (.NET)](/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Azure Cognitive Search のインデックスに対してクエリを実行するために使用できるクライアント。  <br/>[詳細情報。](search-howto-dotnet-sdk.md#core-scenarios)  |
+| [SearchIndexClient (.NET)](/dotnet/api/microsoft.azure.search.searchindexclient) | Azure Cognitive Search のインデックスに対してクエリを実行するために使用できるクライアント。  <br/>[詳細情報。](search-howto-dotnet-sdk.md#core-scenarios)  |
 | [Search Documents (REST API)](/rest/api/searchservice/search-documents) | インデックスに対する GET メソッドまたは POST メソッド。追加の入力には、クエリ パラメーターを使用します。  |
 
 ## <a name="choose-a-parser-simple--full"></a>パーサーの選択: simple | full

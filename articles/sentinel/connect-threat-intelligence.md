@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
-ms.openlocfilehash: 8036203e33fd63a25ecfa7c4ea720e01259be04a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d794b0a33eabedd3e6e309f291543ba23bc40f79
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84769875"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362748"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>脅威インテリジェンス プロバイダーからデータを接続する
 
@@ -59,13 +59,13 @@ Azure Sentinel を使用すると、組織で使用されている脅威イン�
 
 ## <a name="connect-azure-sentinel-to-your-threat-intelligence-platform"></a>Azure Sentinel を脅威インテリジェンス プラットフォームに接続する
 
-## <a name="prerequisites"></a>前提条件  
+### <a name="prerequisites"></a>前提条件  
 
 - Microsoft Graph Security tiIndicators API との直接統合を使用する TIP 製品またはカスタム アプリケーションにアクセス許可を付与するための、グローバル管理者またはセキュリティ管理者の Azure AD ロール。
 
 - 脅威インジケーターを格納するための、Azure Sentinel ワークスペースに対する読み取りおよび書き込みアクセス許可。
 
-## <a name="instructions"></a>Instructions
+### <a name="instructions"></a>Instructions
 
 1. Azure Active Directory に[アプリケーションを登録](/graph/auth-v2-service#1-register-your-app)して、アプリケーション ID、アプリケーションシークレット、Azure Active Directory テナント ID を取得します。 Microsoft Graph Security tiIndicators API との直接統合を使用する統合された TIP 製品またはアプリケーションを構成するときに、これらの値が必要になります。
 
@@ -89,13 +89,13 @@ Azure Sentinel を使用すると、組織で使用されている脅威イン�
 
 ## <a name="connect-azure-sentinel-to-taxii-servers"></a>Azure Sentinel を TAXII サーバーに接続する
 
-## <a name="prerequisites"></a>前提条件  
+### <a name="prerequisites"></a>前提条件
 
 - 脅威インジケーターを格納するための、Azure Sentinel ワークスペースに対する読み取りおよび書き込みアクセス許可。
 
 - TAXII 2.0 サーバー URI とコレクション ID。
 
-## <a name="instructions"></a>Instructions
+### <a name="instructions"></a>Instructions
 
 1. Azure portal で、 **[Azure Sentinel]**  >  **[データ コネクタ]** に移動し、 **[脅威インテリジェンス - TAXII (プレビュー)]** コネクタを選択します。
 

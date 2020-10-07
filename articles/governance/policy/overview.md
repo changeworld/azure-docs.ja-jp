@@ -3,12 +3,12 @@ title: Azure Policy の概要
 description: Azure Policy は Azure のサービスであり、Azure 環境でのポリシー定義の作成、割り当て、管理に使うことができます。
 ms.date: 09/22/2020
 ms.topic: overview
-ms.openlocfilehash: 662a7510013e2008d8c16cf21376b11c247e0bc0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 596e52cca2be2a347c26502434048053a8b4684c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905975"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538958"
 ---
 # <a name="what-is-azure-policy"></a>Azure Policy とは
 
@@ -57,15 +57,15 @@ Azure Policy では、[効果](./concepts/effects.md)を適用して、これら
 
 ## <a name="getting-started"></a>作業の開始
 
-### <a name="azure-policy-and-rbac"></a>Azure Policy と RBAC
+### <a name="azure-policy-and-azure-rbac"></a>Azure Policy と Azure RBAC
 
-Azure Policy とロールベースのアクセス制御 (RBAC) には、いくつかの主要な違いがあります。 Azure Policy では、Resource Manager で表されるリソースのプロパティと一部のリソースプロバイダーのプロパティを調査することによって状態を評価します。 Azure Policy によってアクション ("_操作_" とも呼ばれる) が制限されることはありません。 Azure Policy では、だれが変更を行ったかや、だれが変更を行うアクセス許可を持っているかに関係なく、リソースがお客様のビジネス ルールに準拠した状態になります。
+Azure Policy と Azure ロールベースのアクセス制御 (Azure RBAC) には、いくつかの主要な違いがあります。 Azure Policy では、Resource Manager で表されるリソースのプロパティと一部のリソースプロバイダーのプロパティを調査することによって状態を評価します。 Azure Policy によってアクション ("_操作_" とも呼ばれる) が制限されることはありません。 Azure Policy では、だれが変更を行ったかや、だれが変更を行うアクセス許可を持っているかに関係なく、リソースがお客様のビジネス ルールに準拠した状態になります。
 
-RBAC の焦点は、さまざまなスコープでのユーザー[操作](../../role-based-access-control/resource-provider-operations.md)の管理にあります。 アクションの制御が必要な場合は、RBAC が使用に適したツールになります。 あるユーザーがアクションを実行するためのアクセス権を持っていても、結果としてリソースが準拠していない場合、その作成や更新は Azure Policy によってブロックされます。
+Azure RBAC の焦点は、さまざまなスコープでのユーザー[操作](../../role-based-access-control/resource-provider-operations.md)の管理にあります。 アクションの制御が必要な場合は、Azure RBAC が使用に適したツールになります。 あるユーザーがアクションを実行するためのアクセス権を持っていても、結果としてリソースが準拠していない場合、その作成や更新は Azure Policy によってブロックされます。
 
-RBAC と Azure Policy を組み合わせることによって、Azure で完全なスコープの制御を実現できます。
+Azure RBAC と Azure Policy を組み合わせることによって、Azure で完全なスコープの制御を実現できます。
 
-### <a name="rbac-permissions-in-azure-policy"></a>Azure Policy における RBAC アクセス許可
+### <a name="azure-rbac-permissions-in-azure-policy"></a>Azure Policy における Azure RBAC アクセス許可
 
 Azure Policy は、次の 2 つのリソース プロバイダーにおいて、いくつかのアクセス許可 (操作) を有しています。
 

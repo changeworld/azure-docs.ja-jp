@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.date: 05/18/2020
 ms.author: derekol
 Customer intent: Customer wants to measure their connection telemetry per prefix to Microsoft services with Azure Peering Service .
-ms.openlocfilehash: 163f93ab93890f27eb2a9b18cc23804595fcb822
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: a12bfa042c8741814cedc70f1dcb67dedbfd331e
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84870620"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400436"
 ---
 # <a name="tutorial-register-a-peering-service-connection-using-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Peering Service 接続を登録する
 
 このチュートリアルでは、Azure PowerShell を使用して Peering Service 接続を登録する方法について説明します。
 
-Azure Peering Service は、Office 365、Dynamics 365、サービスとしてのソフトウェア (SaaS) サービス、Azure、パブリック インターネット経由でアクセス可能な Microsoft サービスなど、Microsoft クラウド サービスへのお客様の接続を強化するネットワーク サービスです。 この記事では、Azure PowerShell を使用して Peering Service 接続を登録する方法について説明します。
+Azure Peering Service は、Microsoft 365、Dynamics 365、サービスとしてのソフトウェア (SaaS) サービス、Azure、パブリック インターネット経由でアクセス可能な Microsoft サービスなど、Microsoft クラウド サービスへのお客様の接続を強化するネットワーク サービスです。 この記事では、Azure PowerShell を使用して Peering Service 接続を登録する方法について説明します。
 
 Azure サブスクリプションをお持ちでない場合は、すぐに[アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 

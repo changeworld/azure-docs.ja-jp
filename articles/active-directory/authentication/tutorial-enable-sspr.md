@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30a51f4b07f62b6e3491f74de78ea0d04bbb1775
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 0797ff744dbbf9fb139503d73be7d60118762ac2
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399975"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530733"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>チュートリアル:Azure Active Directory のセルフサービス パスワード リセットを使用して、ユーザーが自分のアカウントのロック解除またはパスワードのリセットを実行できるようにする
 
@@ -116,7 +116,7 @@ Azure AD では、SSPR を有効にするユーザーを *[なし]* 、 *[選択
 SSPR を有効にして構成したら、前のセクションで選択したグループ (*Test-SSPR-Group* など) に属しているユーザーを使用して SSPR プロセスをテストします。 次の例では、*testuser* アカウントを使用します。 このチュートリアルの最初のセクションで SSPR を有効にしたグループに属している独自のユーザー アカウントを指定します。
 
 > [!NOTE]
-> セルフサービス パスワード リセットをテストする場合は、管理者以外のアカウントを使用します。 管理者はセルフサービス パスワード リセットが常に有効になっており、自分のパスワードをリセットするには 2 つの認証方法を使用する必要があります。
+> セルフサービス パスワード リセットをテストする場合は、管理者以外のアカウントを使用します。 既定では、管理者に対してセルフサービス パスワード リセットが有効になっており、自分のパスワードをリセットするには 2 つの認証方法を使用する必要があります。 詳細については、「[管理者リセット ポリシーの相違点](concept-sspr-policy.md#administrator-reset-policy-differences)」を参照してください。
 
 1. 手動の登録プロセスを確認するには、InPrivate またはシークレット モードで新しいブラウザー ウィンドウを開き、[https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) を参照します。 ユーザーは次回サインインしたときにこの登録ポータルにリダイレクトされます。
 1. 管理者以外のテスト ユーザー (*testuser* など) としてサインインし、認証方法の連絡先情報を登録します。

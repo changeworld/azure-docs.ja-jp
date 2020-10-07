@@ -4,12 +4,12 @@ description: Azure Resource Manager テンプレートを継続的にビルド�
 ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c793c8bcbc01cbef99de13ef6dd2f6ce61a50773
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 433811cb632aae0d7370fc8e401c01fe36621a5b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892679"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333239"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>チュートリアル:Azure Pipelines を使用した Azure Resource Manager テンプレートの継続的インテグレーション
 
@@ -180,7 +180,7 @@ GitHub アカウントをお持ちでない場合は、[前提条件](#prerequis
     * **デプロイ モード**: **[増分]** を選択します。
     * **デプロイ名**: 「**DeployPipelineTemplate**」と入力します。 **[デプロイ名]** は、 **[Advanced]\(詳細\)** を選択すると表示されます。
 
-    ![Azure Resource Manager Azure DevOps Azure Pipelines ステップ](./media/deployment-tutorial-pipeline/resource-manager-template-pipeline-configure.png)
+    ![スクリーンショットは、必要な値が入力された [ARM template deployment]\(ARM テンプレートのデプロイ\) ページを示しています。](./media/deployment-tutorial-pipeline/resource-manager-template-pipeline-configure.png)
 
 1. **[追加]** を選択します。
 
@@ -188,7 +188,7 @@ GitHub アカウントをお持ちでない場合は、[前提条件](#prerequis
 
     yml ファイルの例を次に示します。
 
-    ![Azure Resource Manager Azure DevOps Azure Pipelines yaml](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-yml.png)
+    ![スクリーンショットは、「パイプライン YAML をレビューする」というタイトルの新しいパイプラインが表示された [レビュー] ページを示しています。](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-yml.png)
 
 1. **[保存および実行]** を選択します。
 1. **[保存および実行]** ペインから、もう一度 **[保存および実行]** を選択します。 YAML ファイルのコピーが接続されているリポジトリに保存されます。 リポジトリを参照すると、YAML ファイルを確認できます。

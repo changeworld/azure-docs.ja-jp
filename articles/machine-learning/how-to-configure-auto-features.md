@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: d8779a25b7c6036f3b09badab67733fa55acfee7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0138715e4c9df8ae05c9a3eade64d539eb7cdeda
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907588"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756553"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>自動機械学習での特徴量化
 
@@ -316,7 +316,7 @@ BERT を呼び出すには、automl_settings に `enable_dnn: True` を設定し
 
 BERT の場合は、AutoML で次の手順が行われます。 
 
-1. **すべてのテキスト列の前処理とトークン化**。 たとえば、"StringCast" トランスフォーマーは、最終的なモデルの特徴量化の概要内にあります。 モデルの特徴量化の概要を生成する方法の例については、[こちらのノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)を参照してください。
+1. **すべてのテキスト列の前処理とトークン化**。 たとえば、"StringCast" トランスフォーマーは、最終的なモデルの特徴量化の概要内にあります。 モデルの特徴量化の概要を生成する方法の例については、[こちらのノートブック](https://towardsdatascience.com/automated-text-classification-using-machine-learning-3df4f4f9570b)を参照してください。
 
 2. **すべてのテキスト列を 1 つのテキスト列に連結**します。そのため、最終的なモデル内では `StringConcatTransformer` になります。 
 

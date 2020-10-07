@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 01/30/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 627086bdb13acdd29821af399f90fee8deaae432
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f0d62ae3909bc886fa6a56ba7ed32d55d27302dd
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76900189"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568658"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-table-api"></a>Table API を使用して Azure Cosmos DB グローバル分散を設定する
 
@@ -34,7 +34,7 @@ Azure Cosmos DB Table API SDK は、アカウント構成と現在のリージ�
 
 * **読み取り要求:** 読み取り要求はすべて、構成済みの `CurrentRegion` に送信されます。 高可用性を目的に geo レプリケーションされるフォールバック リージョンは、SDK が近接関係に基づいて自動的に選択します。
 
-* **書き込み要求:** SDK は自動的に、すべての書き込み要求を現在の書き込みリージョンに送信します。 マルチ マスター アカウントの場合も、現在のリージョンが書き込み要求を処理します。 高可用性を目的に geo レプリケーションされるフォールバック リージョンは、SDK が近接関係に基づいて自動的に選択します。
+* **書き込み要求:** SDK は自動的に、すべての書き込み要求を現在の書き込みリージョンに送信します。 複数リージョンの書き込みが有効なアカウントでも、現在のリージョンが書き込み要求を処理します。 高可用性を目的に geo レプリケーションされるフォールバック リージョンは、SDK が近接関係に基づいて自動的に選択します。
 
 `CurrentRegion` プロパティを指定しなかった場合、現在の書き込みリージョンがすべての操作に使用されます。
 

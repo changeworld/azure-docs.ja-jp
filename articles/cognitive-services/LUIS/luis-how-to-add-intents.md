@@ -3,20 +3,18 @@ title: 意図の追加 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 意図を LUIS アプリに追加して、同じ意図を持つ質問またはコマンドのグループを特定します。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: fe1c157d6847366a59739cd5128987127d01da94
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: c2802f1b41ed2842e12c808a8c380ebd646ffa03
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344426"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540933"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>ユーザーの発話意図を判断する意図を追加する
 

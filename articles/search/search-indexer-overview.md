@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 09/25/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3f3c53d412105489a814f082bbc0fd209476ecf9
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 7f6be959bf09cbe20bb37dfa3d17d64467758bd6
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971393"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397897"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサー
 
@@ -60,7 +60,7 @@ Azure Cognitive Search の *インデクサー* は、検索可能なデータ�
 
 インデクサーは、それによって取り込まれたドキュメントのそれぞれについて、ドキュメントの検索からインデックス作成のための最終的な検索エンジンの "ハンドオフ" にいたるまでの複数のステップを実装または調整します。 必要に応じて、インデクサーは、スキルセットが定義されていると想定して、スキルセットの実行と出力を促進するのにも役立ちます。
 
-![インデクサーのステージ](./media/search-indexer-overview/indexer-stages.png "インデクサーのステージ")
+:::image type="content" source="media/search-indexer-overview/indexer-stages.png" alt-text="インデクサーのステージ" border="false":::
 
 ### <a name="stage-1-document-cracking"></a>ステージ 1:ドキュメントの解読
 
@@ -88,7 +88,7 @@ Azure Cognitive Search の *インデクサー* は、検索可能なデータ�
 
 次の図は、インデクサーのステージ (ドキュメント解析、フィールド マッピング、スキルセットの実行、出力フィールド マッピング) のサンプル インデクサーの[デバッグ セッション](cognitive-search-debug-session.md)表現を示しています。
 
-:::image type="content" source="media/search-indexer-overview/sample-debug-session.png" alt-text="デバッグ セッションのサンプル" lightbox="media/search-indexer-overview/sample-debug-session.png":::
+:::image type="content" source="media/search-indexer-overview/sample-debug-session.png" alt-text="インデクサーのステージ" lightbox="media/search-indexer-overview/sample-debug-session.png":::
 
 ## <a name="basic-configuration-steps"></a>基本的な構成手順
 

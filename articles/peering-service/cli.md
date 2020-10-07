@@ -10,16 +10,16 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/2/2020
 ms.author: derekol
-ms.openlocfilehash: fbb9a6237aafe1c1b7c94d9dd23ad4c3665c0c73
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef573817927cf732da3426d802f8f26e2e9cd4ec
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871462"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399025"
 ---
 # <a name="register-a-peering-service-connection-by-using-the-azure-cli"></a>Azure CLI を使用して Peering Service 接続を登録する
 
-Azure Peering Service は、Office 365、Dynamics 365、サービスとしてのソフトウェア (SaaS) サービス、Azure、パブリック インターネット経由でアクセス可能な Microsoft サービスなど、Microsoft クラウド サービスへのお客様の接続を強化するネットワーク サービスです。 この記事では、Azure CLI を使用して Peering Service 接続を登録する方法について説明します。
+Azure Peering Service は、Microsoft 365、Dynamics 365、サービスとしてのソフトウェア (SaaS) サービス、Azure、パブリック インターネット経由でアクセス可能な Microsoft サービスなど、Microsoft クラウド サービスへのお客様の接続を強化するネットワーク サービスです。 この記事では、Azure CLI を使用して Peering Service 接続を登録する方法について説明します。
 
 Azure サブスクリプションをお持ちでない場合は、すぐに[アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
@@ -43,7 +43,7 @@ CLI をローカルにインストールして使用する場合、この記事�
 
 ### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1.Azure アカウントにサインインしてサブスクリプションを選択する
 
-構成を始めるには、Azure アカウントにサインインします。 Cloud Shell の **[使ってみる]** オプションを使用している場合は、自動的にサインインします。 接続するには、次の例を参照してください。
+構成を始めるには、Azure アカウントにサインインします。 Cloud Shell の **[試してみる]** オプションを使用している場合は、自動的にサインインします。 接続するには、次の例を参照してください。
 
 ```azurecli-interactive
 az login

@@ -6,17 +6,17 @@ ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: seoapril2019
 ms.devlang: sqldbrb=2
-ms.topic: conceptual
+ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 04/06/2020
-ms.openlocfilehash: 51d86e51d89bdaf83be4a722d0350b35d2146cff
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1442ca7957a458e1458c4815033bf5e79c67c32a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90973042"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448923"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>Azure SQL Database および SQL Managed Instance 診断テレメトリのストリーミング エクスポートを構成する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -610,7 +610,7 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 |query_hash_s|使用可能な場合は、失敗したクエリのクエリ ハッシュ |
 |query_plan_hash_s|使用可能な場合は、失敗したクエリのクエリ プラン ハッシュ |
 
-詳しくは、[SQL エラー メッセージ](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors?view=sql-server-ver15)に関するページをご覧ください。
+詳しくは、[SQL エラー メッセージ](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors)に関するページをご覧ください。
 
 #### <a name="database-wait-statistics-dataset"></a>データベースの待機統計データセット
 

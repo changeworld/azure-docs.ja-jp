@@ -3,12 +3,12 @@ title: Azure Lab Services を使用してクラスルーム ラボを設定す�
 description: このチュートリアルでは、Azure Lab Services を使用し、クラスの学生が使用する仮想マシンでクラスルーム ラボを設定します。
 ms.topic: tutorial
 ms.date: 06/26/2020
-ms.openlocfilehash: bc1b23b92c6af902797a9be354fe6514b4e225af
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 1155646d31ddb8a0a3abce025acde5c4cb645f54
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85445136"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336736"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>チュートリアル:クラスルーム ラボを設定する 
 このチュートリアルでは、クラスルームで学生が使用する仮想マシンで、クラスルーム ラボを設定します。  
@@ -37,7 +37,7 @@ Azure Lab Services を使用する際の一般的なワークフローは次の�
 2. **[サインイン]** を選択して、資格情報を入力します。 Azure Lab Services では、組織アカウントと Microsoft アカウントがサポートされています。 
 3. **[New lab]\(新しいラボ\)** を選択します。 
     
-    ![クラスルーム ラボを作成する](./media/tutorial-setup-classroom-lab/new-lab-button.png)
+    ![[New lab]\(新しいラボ\) ボタンが選択されている "Azure Lab Services" を示すスクリーンショット。](./media/tutorial-setup-classroom-lab/new-lab-button.png)
 4. **[New Lab]\(新しいラボ\)** ウィンドウで、次のようにします。 
     1. ラボの**名前**を指定し、 **[次へ]** を選択します。  
 
@@ -90,7 +90,7 @@ Azure Lab Services を使用する際の一般的なワークフローは次の�
 
 1. **[スケジュール]** ページに切り替えて、ツール バーの **[Add scheduled event]\(スケジュール化されたイベントの追加\)** を選択します。 
 
-    ![[スケジュール] ページの [スケジュールの追加] ボタン](./media/how-to-create-schedules/add-schedule-button.png)
+    ![[スケジュール] ページの [Add scheduled event]\(スケジュール化されたイベントの追加\) ボタンを示すスクリーンショット。](./media/how-to-create-schedules/add-schedule-button.png)
 2. **[Add scheduled event]\(スケジュール化されたイベントの追加\)** ページで、次の手順を実行します。
     1. **[Event type]\(イベントの種類\)** で **[Standard]\(標準\)** が選択されていることを確認します。  
     2. クラスの**開始日**を選択します。 

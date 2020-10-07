@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0f4552d6488ecd083b6ee5d4cae2ef2bd660efc7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c4af0e8eda818fcb57ea9e050b760c3754c46e2c
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906373"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613647"
 ---
 # <a name="faq-for-customers-already-using-azure-monitor-logs"></a>Azure Monitor ログを既に使用しているお客様向けの FAQ<a name="existingloganalyticscust"></a>
 
@@ -35,7 +35,6 @@ VM に Azure 拡張機能としてインストールされている Log Analytic
 その VM が、作成したワークスペースに既に接続されていることを Security Center が特定すると、Security Center はご利用の価格構成に従ってそのワークスペースでソリューションを有効にします。 ソリューションは、[ソリューションのターゲット設定](../operations-management-suite/operations-management-suite-solution-targeting.md)に従って関連する Azure VM にのみ適用されるため、課金額は同じままです。
 
 - **Azure Defender オフ** - Security Center によってワークスペースに "SecurityCenterFree" ソリューションがインストールされます。 課金されることはありません。
-- 
 - **Azure Defender オン** - Security Center によってワークスペースに "Security" ソリューションがインストールされます。
 
    ![既定のワークスペースのソリューション](./media/security-center-platform-migration-faq/solutions.png)

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffe7f58f27d028dd114f548521feeeb74bb12cf1
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 4a6911f736e466277ba023f97189e1bb6619b8da
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437702"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265275"
 ---
 # <a name="what-is-identity-protection"></a>Identity Protection とは
 
@@ -53,7 +53,7 @@ Identity Protection は、次の分類のリスクを識別します。
 | 匿名 IP アドレス | 匿名の IP アドレスからのサインイン (例:Tor Browser、Anonymizer VPN)。 |
 | 通常とは異なるサインイン プロパティ | 指定されたユーザーで最近観察されていないプロパティを使用したサインイン。 |
 | マルウェアにリンクした IP アドレス | マルウェアにリンクした IP アドレスからのサインイン |
-| 資格情報の漏洩 | このリスク検出は、ユーザーの有効な資格情報が漏洩したことを示します。 |
+| 資格情報の漏洩 | ユーザーの有効な資格情報が漏洩したことを示します。 |
 | パスワード スプレー | ブルート フォースを束ねた手法で、複数のユーザー名が共通のパスワードを使用して攻撃されていることを示します。 |
 | Azure AD 脅威インテリジェンス | Microsoft の内部および外部の脅威インテリジェンス ソースが既知の攻撃パターンを特定しました。 |
 
@@ -96,13 +96,13 @@ Identity Protection にユーザーがにアクセスするためには、セキ
 
 現在のところ、セキュリティ オペレーター ロールでは危険なサインイン レポートにアクセスできません。
 
-条件付きアクセス管理者は、条件としてサインイン リスクを考慮に入れるポリシーを作成することもできます。詳細については、「[条件付きアクセス: 条件](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk)」を参照してください。
+条件付きアクセス管理者は、条件としてサインイン リスクを考慮に入れるポリシーを作成することもできます。 詳細については、「[条件付きアクセス:条件](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk)」を参照してください。
 
 ## <a name="license-requirements"></a>ライセンスの要件
 
 [!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
-| 機能 | 詳細  | Azure AD Free / Office 365 アプリ | Azure AD Premium P1|Azure AD Premium P2 |
+| 機能 | 詳細  | Azure AD Free / Microsoft 365 Apps | Azure AD Premium P1|Azure AD Premium P2 |
 | --- | --- | --- | --- | --- |
 | リスク ポリシー | ユーザー リスク ポリシー (Identity Protection 経由)  | いいえ | いいえ |はい | 
 | リスク ポリシー | サインイン リスク ポリシー (Identity Protection または条件付きアクセス経由)  | いいえ |  いいえ |はい |

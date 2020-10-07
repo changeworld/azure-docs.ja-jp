@@ -1,20 +1,20 @@
 ---
 title: Azure Cosmos DB Gremlin API を使って Graph Bulk Executor .NET ライブラリを使用する
 description: Bulk Executor ライブラリを使って、Azure Cosmos DB Gremlin API コンテナーにグラフ データを大量にインポートする方法を説明します。
-author: luisbosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 05/28/2019
-ms.author: lbosq
+ms.author: jasonh
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6fd81a844832fbe6ad7410ec786baa431ca9930c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 53c770bb8cc9d7a80ae7d11b6b1c089fcc9355da
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004104"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565634"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Graph Bulk Executor .NET ライブラリを使って Azure Cosmos DB Gremlin API の一括操作を実行する
 
@@ -24,12 +24,12 @@ Gremlin クエリをデータベースに送信した場合は、コマンドが
 
 ## <a name="bulk-operations-with-graph-data"></a>グラフ データの一括操作
 
-[Bulk Executor ライブラリ](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet)には、グラフ オブジェクトを作成したりインポートしたりする機能を備えた `Microsoft.Azure.CosmosDB.BulkExecutor.Graph` 名前空間が存在します。 
+[Bulk Executor ライブラリ](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet&preserve-view=true)には、グラフ オブジェクトを作成したりインポートしたりする機能を備えた `Microsoft.Azure.CosmosDB.BulkExecutor.Graph` 名前空間が存在します。 
 
 Gremlin API コンテナーに対してデータ移行を使用する大まかな手順は次のとおりです。
 1. データ ソースからレコードを取得します。
 2. 取得したレコードから `GremlinVertex` オブジェクトと `GremlinEdge` オブジェクトを構築し、それらを `IEnumerable` データ構造に追加します。 この部分に関しては、データ ソースがグラフ データベースではなかった場合を想定し、関係を検出して追加するためのロジックをアプリケーションに実装することをお勧めします。
-3. [Graph BulkImportAsync メソッド](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph.graphbulkexecutor.bulkimportasync?view=azure-dotnet)を使ってグラフ オブジェクトをコレクションに挿入します。
+3. [Graph BulkImportAsync メソッド](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph.graphbulkexecutor.bulkimportasync?view=azure-dotnet&preserve-view=true)を使ってグラフ オブジェクトをコレクションに挿入します。
 
 このメカニズムは、Gremlin クライアントを使用した場合よりも、データ移行の効率が高くなります。 このように効率が改善される理由は、Gremlin を使ってデータを挿入した場合、アプリケーションは、クエリを一度に 1 つずつ送信する必要があるためです。データを作成するためには、クエリを 1 つずつ検証、評価、実行する必要があるのです。 Bulk Executor ライブラリは、アプリケーションで検証を処理し、1 回のネットワーク要求で一度に複数のグラフ オブジェクトを送信します。
 
@@ -140,7 +140,7 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 設定|説明
 ---|---
 `EndPointUrl`|Azure Cosmos DB Gremlin API データベース アカウントの [概要] ブレードに表示される **.NET SDK エンドポイント**です。 `https://your-graph-database-account.documents.azure.com:443/` という形式が使用されます。
-`AuthorizationKey`|Azure Cosmos DB アカウントに表示されるプライマリ キーまたはセカンダリ キーです。 詳細については、[Azure Cosmos DB データへのアクセスのセキュリティ保護](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#master-keys)に関するページを参照してください。
+`AuthorizationKey`|Azure Cosmos DB アカウントに表示されるプライマリ キーまたはセカンダリ キーです。 詳細については、[Azure Cosmos DB データへのアクセスのセキュリティ保護](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#primary-keys)に関するページを参照してください。
 `DatabaseName`, `CollectionName`|**ターゲットとなるデータベースとコレクションの名前**です。 `ShouldCleanupOnStart` が `true` に設定されている場合、これらの値と `CollectionThroughput` を使用してデータベースとコレクションがドロップされ、新たに作成されます。 同様に、`ShouldCleanupOnFinish` が `true` に設定されている場合は、インジェストが完了するとすぐに、これらを使用してデータベースが削除されます。 ターゲット コレクションは、**無制限のコレクション**であることが必要です。
 `CollectionThroughput`|`ShouldCleanupOnStart` オプションが `true` に設定されている場合に、新しいコレクションを作成する目的で使用されます。
 `ShouldCleanupOnStart`|プログラムの実行前にデータベース アカウントとコレクションをドロップした後、`DatabaseName`、`CollectionName`、`CollectionThroughput` の各値を使って新たに作成します。
@@ -159,4 +159,4 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 
 * NuGet パッケージの詳細と Bulk Executor .NET ライブラリのリリース ノートについては、[Bulk Executor SDK の詳細](sql-api-sdk-bulk-executor-dot-net.md)に関するページを参照してください。 
 * Bulk Executor の使用をさらに最適化するためには、「[パフォーマンスに関するヒント](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-dot-net#performance-tips)」を参照してください。
-* この名前空間に定義されているクラスとメソッドの詳細については、[BulkExecutor.Graph のリファレンス記事](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet)を参照してください。
+* この名前空間に定義されているクラスとメソッドの詳細については、[BulkExecutor.Graph のリファレンス記事](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet&preserve-view=true)を参照してください。

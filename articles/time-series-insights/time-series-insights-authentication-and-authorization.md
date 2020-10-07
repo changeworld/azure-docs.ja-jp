@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 10/02/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: bbec605f25c2e74178bdb5c28d0a7995e4e265f1
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 7408e3fb279536f61dd2e5cf1858476da57219d4
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690393"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665814"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API の認証と承認
 
@@ -85,7 +85,7 @@ Azure Active Directory のアプリ登録フローには、主に 3 つの手順
 
    1. C# では、次のコードでアプリケーションに代わってトークンを取得できます。 Gen1 環境からデータを照会する方法の完全なサンプルについては、[C# を使用したデータ照会](time-series-insights-query-data-csharp.md)に関するページを参照してください。
 
-        C# サンプル コードにアクセスするには、[Azure Time Series Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen1-sample/csharp-tsi-gen1-sample/Program.cs) リポジトリを参照します。 
+        C# サンプル コードにアクセスするには、[Azure Time Series Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen1-sample/csharp-tsi-gen1-sample/Program.cs) リポジトリを参照します。
 
    1. トークンは、アプリケーションが Azure Time Series Insights API を呼び出すときに、`Authorization` ヘッダーで渡すことができます。
 
@@ -117,7 +117,7 @@ Azure Active Directory のアプリ登録フローには、主に 3 つの手順
 > [!IMPORTANT]
 > そのトークンは、まさしくその `https://api.timeseries.azure.com/` リソース (トークンの "audience" とも呼ばれます) に向けて発行される必要があります。
 
-> * したがって、[Postman](https://www.getpostman.com/) **AuthURL** は`https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?scope=https://api.timeseries.azure.com/.default` のようになります
+> * したがって、[Postman](https://www.getpostman.com/) **AuthURL** は`https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?scope=https://api.timeseries.azure.com//.default` のようになります
 > * `https://api.timeseries.azure.com/` は有効ですが、`https://api.timeseries.azure.com` は有効ではありません。
 
 省略可能な要求ヘッダーを以下に示します。

@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 11/25/2019
 ms.author: guybo
-ms.openlocfilehash: 9097fb4aefe168ce36793d13f892fbbeab10ad56
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 90b29944315b8a72a4ef95adbfc681a0ab276b00
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372741"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533060"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Azure 用の CentOS ベースの仮想マシンの準備
 
@@ -163,7 +163,7 @@ CentOS ベースの Linux オペレーティング システムを格納した A
     sudo yum install microsoft-hyper-v
     ```
 
-    または、[LIS ダウンロード ページ](https://www.microsoft.com/download/details.aspx?id=51612)の手動インストール手順に従って、RPM を VM にインストールします。
+    または、[LIS ダウンロード ページ](https://www.microsoft.com/download/details.aspx?id=55106)の手動インストール手順に従って、RPM を VM にインストールします。
 
 12. Azure Linux エージェントと依存関係をインストールします。 waagent サービスを開始して有効にします。
 

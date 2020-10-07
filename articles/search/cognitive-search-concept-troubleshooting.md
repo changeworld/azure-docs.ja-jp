@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 8347ca5a33790d0b35176be47a0fa4811a19e3f1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 1ab366cddbabf7e6d574189892e779ab49f6fad8
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935468"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403383"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search における AI エンリッチメントに関するヒント
 
@@ -110,12 +110,11 @@ https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage
 ## <a name="tip-8-increase-indexing-throughput"></a>ヒント 8: インデックス作成のスループットを向上させる
 
 [並列インデックス作成](search-howto-large-index.md)の場合は、データを複数のコンテナーまたは同じコンテナー内の複数の仮想フォルダーに配置します。 次に、複数のデータソースとインデクサーのペアを作成します。 すべてのインデクサーは、同じスキルセットを使用して同じターゲット検索インデックスに書き込むことができるため、検索アプリはこのパーティション分割を意識する必要はありません。
-詳細については、「[大規模なデータセットのインデックス作成](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)」を参照してください。
 
 ## <a name="see-also"></a>関連項目
+
 + [クイック スタート: ポータルで AI エンリッチメント パイプラインを作成する](cognitive-search-quickstart-blob.md)
 + [チュートリアル:AI エンリッチメント REST API について学習する](cognitive-search-tutorial-blob.md)
 + [データ ソースの資格情報の指定](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)
-+ [大規模なデータセットのインデックス作成](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
 + [エンリッチされたフィールドをインデックスにマップする方法](cognitive-search-output-field-mapping.md)

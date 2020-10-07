@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 09/24/2020
 ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
-ms.openlocfilehash: dfb9cb80bdcd2854a3ddd5b273806fbcdda916b0
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 0868d87d977b15a552b04d5dbd6d19de6931f0ae
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705641"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91395908"
 ---
 # <a name="tenancy-in-azure-active-directory"></a>Azure Active Directory のテナント
 
@@ -43,7 +43,7 @@ Azure portal で次のように対象ユーザーを設定することで、ア�
 IT 管理者がテナントで設定できる各種ポリシーの数が多いため、優れたマルチテナント アプリの作成が難しい場合があります。 マルチテナント アプリを作成する場合は、次のベスト プラクティスに従ってください。
 
 * [条件付きアクセス ポリシー](../azuread-dev/conditional-access-dev-guide.md)が構成されているテナントでアプリをテストします。
-* 最小限のユーザー アクセスの原則に従って、アプリでは実際に必要なアクセス許可だけを要求するようにします。 管理者の同意が必要なアクセス許可を要求することは避けます。組織によっては、ユーザーがアプリをまったく取得できなくなる可能性があるためです。 
+* 最小限のユーザー アクセスの原則に従って、アプリでは実際に必要なアクセス許可だけを要求するようにします。 
 * アプリの一部として公開するアクセス許可の適切な名前と説明を提供します。 これにより、ユーザーと管理者は、アプリの API を使用しようとしたときに同意する内容を把握しやすくなります。 詳細については、[アクセス許可ガイド](v2-permissions-and-consent.md)のベスト プラクティスのセクションをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ

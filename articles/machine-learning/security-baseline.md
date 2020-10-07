@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ffd374f650140b5b65988578756b25f5d0fb21cc
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: d29bef20bef6de576b9b531952c48173819a5fa1
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657357"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461021"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure Machine Learning の Azure セキュリティ ベースライン
 
@@ -718,7 +718,7 @@ Azure Machine Learning では、さまざまなコンピューティング リ�
 
 不要になったら Azure リソースを削除します。
 
-- [ファイルの整合性の監視を使用する方法](../security-center/security-center-file-integrity-monitoring.md#using-file-integrity-monitoring)
+- [ファイルの整合性の監視を使用する方法](../security-center/security-center-file-integrity-monitoring.md)
 
 - [Azure Automation Change Tracking と Inventory の概要](../automation/change-tracking.md)
 

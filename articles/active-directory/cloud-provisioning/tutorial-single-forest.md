@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a63bd6be9b21a506054ab5a02fa7f5d6751f303a
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 1b91763c275e4fd091b7c1554699e5d6f35a6f55
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228377"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266328"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>チュートリアル:単一のフォレストを単一の Azure AD テナントに統合する
 
@@ -61,16 +61,16 @@ ms.locfileid: "89228377"
 5. Azure AD Connect プロビジョニング エージェントを実行します。
 6. スプラッシュ スクリーンでライセンス条項に**同意**し、 **[インストール]** をクリックします。
 
-   ![[ようこそ] 画面](media/how-to-install/install1.png)
+   !["Microsoft Azure A D Connect Provisioning Agent Package" のスプラッシュ スクリーンを示すスクリーンショット。](media/how-to-install/install1.png)
 
 7. この操作が完了すると、構成ウィザードが起動します。  Azure AD 全体管理者アカウントでサインインします。  IE セキュリティ強化を有効にしている場合はサインインがブロックされることに注意してください。  その場合はインストールを終了して、サーバー マネージャーで IE セキュリティ強化を無効にし、 **[AAD Connect Provisioning Agent Wizard]\(AAD Connect プロビジョニング エージェント ウィザード\)** をクリックしてインストールを再開します。
 8. **[Connect Active Directory]\(Active Directory の接続\)** 画面で **[ディレクトリの追加]** をクリックし、Active Directory ドメイン管理者アカウントを使用してサインインします。  注:ドメイン管理者アカウントに、パスワード変更要件は設定しないでください。 パスワードが期限切れになった場合や変更された場合は、新しい資格情報でエージェントを再構成する必要があります。 この操作によってオンプレミス ディレクトリが追加されます。  **[次へ]** をクリックします。
 
-   ![[ようこそ] 画面](media/how-to-install/install3.png)
+   ![[Active Directory の接続] 画面のスクリーンショット。](media/how-to-install/install3.png)
 
 9. **[構成が完了しました]** 画面で、 **[Confirm]\(確認\)** をクリックします。  この操作によって、エージェントが登録されて再起動されます。
 
-   ![[ようこそ] 画面](media/how-to-install/install4.png)
+   ![[構成が完了しました] という画面を示すスクリーンショット。](media/how-to-install/install4.png)
 
 10. この操作が完了すると、次の通知が表示されます。 **"Your agent configuration was successfully verified. (エージェントの構成が正常に検証されました。)"**  **[終了]** をクリックします。</br>
 ![[ようこそ] 画面](media/how-to-install/install5.png)</br>

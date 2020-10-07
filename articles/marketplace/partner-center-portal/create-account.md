@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/01/2020
 author: parthpandyaMSFT
 ms.author: parthp
-ms.openlocfilehash: 64788544971eaa7738013ab1a0475771c13bab88
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 96a11caa93a925731ad2f24ac860b21301a29cdf
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647645"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708188"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>パートナー センターでコマーシャル マーケットプレース アカウントを作成する
 
@@ -80,7 +80,7 @@ ms.locfileid: "89647645"
     
 1. コマーシャル マーケットプレース アカウントが登録済みとして表示されることを確認するには、 **[設定]**  >  **[パートナーの設定]**  >  **[プログラム]** を選択します。
 
-これで、パートナー センターでコマーシャル マーケットプレース アカウントが作成されました。 詳細については、[コマーシャル マーケットプレースの概要](./commercial-marketplace-overview.md)に関するページを参照してください。 発行元の追加について詳しくは、「[商業マーケットプレース プログラムに新しい発行元を追加する](#add-new-publishers-to-the-commercial-marketplace-program)」を参照してください。
+これで、パートナー センターでコマーシャル マーケットプレース アカウントが作成されました。 発行元の追加について詳しくは、「[商業マーケットプレース プログラムに新しい発行元を追加する](#add-new-publishers-to-the-commercial-marketplace-program)」を参照してください。
 
 ## <a name="create-an-account-by-using-existing-microsoft-partner-center-enrollments"></a>Microsoft パートナー センターの既存の登録を使用してアカウントを作成する
 
@@ -129,7 +129,7 @@ Microsoft Partner Network アカウントを使用して[パートナー セン�
     
 1. コマーシャル マーケットプレース アカウントが登録済みとして表示されることを確認するには、 **[設定]**  >  **[パートナーの設定]**  >  **[プログラム]** を選択します。
 
-これで、パートナー センターでコマーシャル マーケットプレース アカウントが作成されました。 詳細については、[コマーシャル マーケットプレースの概要](./commercial-marketplace-overview.md)に関するページを参照してください。 発行元の追加について詳しくは、「[商業マーケットプレース プログラムに新しい発行元を追加する](#add-new-publishers-to-the-commercial-marketplace-program)」を参照してください。
+これで、パートナー センターでコマーシャル マーケットプレース アカウントが作成されました。 発行元の追加について詳しくは、「[商業マーケットプレース プログラムに新しい発行元を追加する](#add-new-publishers-to-the-commercial-marketplace-program)」を参照してください。
 
 ### <a name="what-if-im-already-enrolled-in-a-developer-program"></a>開発者プログラムに既に登録されている場合
 
@@ -157,7 +157,7 @@ Microsoft パートナー センター アカウントを使用して[パート�
     
 1. コマーシャル マーケットプレース アカウントが登録済みとして表示されることを確認するには、 **[設定]**  >  **[パートナーの設定]**  >  **[プログラム]** を選択します。
 
-これで、パートナー センターでコマーシャル マーケットプレース アカウントが作成されました。 詳細については、[コマーシャル マーケットプレースの概要](./commercial-marketplace-overview.md)に関するページを参照してください。 発行元の追加について詳しくは、「[商業マーケットプレース プログラムに新しい発行元を追加する](#add-new-publishers-to-the-commercial-marketplace-program)」を参照してください。
+これで、パートナー センターでコマーシャル マーケットプレース アカウントが作成されました。 発行元の追加について詳しくは、「[商業マーケットプレース プログラムに新しい発行元を追加する](#add-new-publishers-to-the-commercial-marketplace-program)」を参照してください。
 
 ## <a name="for-publishers-who-moved-from-the-cloud-partner-portal"></a>Cloud パートナー ポータルから移行した発行元の場合
 
@@ -190,4 +190,5 @@ Cloud パートナー ポータルのアカウントをお持ちだった場合�
 
 ## <a name="next-steps"></a>次のステップ
 
+- [Microsoft コマーシャル マーケットプレースとは何ですか?](../overview.md)
 - [パートナー センターでコマーシャル マーケットプレース アカウントを管理する](./manage-account.md)

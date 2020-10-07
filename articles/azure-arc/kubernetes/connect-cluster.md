@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Azure Arc 対応の Kubernetes クラスターを Azure Arc と接続する
 keywords: Kubernetes, Arc, Azure, K8s, コンテナー
 ms.custom: references_regions
-ms.openlocfilehash: eb3921d3ab2090b6bac54c9b68e9def3949ed4b5
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 8f1d95db9c30e78e1ca697d5d7e5638988bc9965
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723743"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540627"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Azure Arc 対応の Kubernetes クラスターを接続する (プレビュー)
 
@@ -30,7 +30,7 @@ ms.locfileid: "88723743"
 * Arc 対応の Kubernetes エージェントをデプロイするには、クラスターとクラスター上のクラスター管理者ロールにアクセスするための kubeconfig ファイルが必要です。
 * `az login` および `az connectedk8s connect` コマンドで使用されるユーザーまたはサービス プリンシパルには、"Microsoft.Kubernetes/connectedclusters" リソースの種類に対する "読み取り" と "書き込み" のアクセス許可が必要です。 ユーザーまたはサービス プリンシパルに対するロールの割り当てには、これらのアクセス許可を持つ "Kubernetes クラスター - Azure Arc のオンボード" ロールを使用できます。
 * connectedk8s 拡張機能を使用してクラスターをオンボードするには、Helm 3 が必要です。 この要件を満たすには、[最新リリースの Helm 3 をインストール](https://helm.sh/docs/intro/install)してください。
-* Azure Arc 対応 Kubernetes CLI 拡張機能をインストールするには、Azure CLI バージョン2.3 以降が必要です。 [Azure CLI をインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)するか、最新バージョンに更新して、Azure CLI バージョン 2.3 以降があるようにしてください。
+* Azure Arc 対応 Kubernetes CLI 拡張機能をインストールするには、Azure CLI バージョン2.3 以降が必要です。 [Azure CLI をインストール](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)するか、最新バージョンに更新して、Azure CLI バージョン 2.3 以降があるようにしてください。
 * Arc 対応 Kubernetes CLI 拡張機能をインストールします。
   
   Kubernetes クラスターを Azure に接続するために必要な `connectedk8s` 拡張機能をインストールします。
@@ -179,27 +179,16 @@ AzureArcTest1  eastus      AzureArcTest
 
 1. 次のコマンドを実行して、お使いのコンピューターにインストールされている `connectedk8s` 拡張機能のバージョンを確認します。
 
-    ```bash
+    ```console
     az -v
     ```
 
     送信プロキシを使用してエージェントを設定するには、`connectedk8s` 拡張機能のバージョン 0.2.3 以降が必要です。 お使いのコンピューターに 0.2.3 より前のバージョンがある場合は、[更新手順](#before-you-begin)に従って、そのコンピューター上に最新バージョンの拡張機能を取得してください。
 
-2. Azure CLI に必要な環境変数を設定します。
+2. プロキシ パラメーターを指定して connect コマンドを実行します。
 
-    ```bash
-    export HTTP_PROXY=<proxy-server-ip-address>:<port>
-    export HTTPS_PROXY=<proxy-server-ip-address>:<port>
-    export NO_PROXY=<cluster-apiserver-ip-address>:<port>
-    ```
-
-3. プロキシ パラメーターを指定して connect コマンドを実行します。
-
-    ```bash
-    az connectedk8s connect -n <cluster-name> -g <resource-group> \
-    --proxy-https https://<proxy-server-ip-address>:<port> \
-    --proxy-http http://<proxy-server-ip-address>:<port> \
-    --proxy-skip-range <excludedIP>,<excludedCIDR>
+    ```console
+    az connectedk8s connect -n <cluster-name> -g <resource-group> --proxy-https https://<proxy-server-ip-address>:<port> --proxy-http http://<proxy-server-ip-address>:<port> --proxy-skip-range <excludedIP>,<excludedCIDR>
     ```
 
 > [!NOTE]

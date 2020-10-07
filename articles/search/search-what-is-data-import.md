@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 50c95dc9d045711cb6968b98957d255b4ca73d2c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 148310419ad4f760219003514dbc078b7c675be6
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88932765"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538789"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>データ インポートの概要 - Azure Cognitive Search
 
@@ -35,7 +35,7 @@ Azure Cognitive Search では、[検索インデックス](search-what-is-an-ind
 次の API を使用して、1 つまたは複数のドキュメントをインデックスに読み込むことができます。
 
 + [ドキュメントの追加、更新、削除 (REST API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)
-+ [indexAction クラス](/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet)または [indexBatch クラス](/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) 
++ [indexAction クラス](/dotnet/api/microsoft.azure.search.models.indexaction)または [indexBatch クラス](/dotnet/api/microsoft.azure.search.models.indexbatch) 
 
 現在では、ポータルを使用してデータをプッシュするためのツール サポートはありません。
 

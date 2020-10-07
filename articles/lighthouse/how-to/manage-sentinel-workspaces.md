@@ -1,14 +1,14 @@
 ---
 title: Azure Sentinel ワークスペースの大規模な管理を行う
 description: 委任された顧客リソースで Azure Sentinel を効果的に管理する方法を学習します。
-ms.date: 08/27/2020
+ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: 78896d6458f6b1c40655bc36d2bf63e05ddb0a59
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: d1ab392ee946e09a5f9e32ddf01ec2cd1e8bd41f
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019735"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596940"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Azure Sentinel ワークスペースの大規模な管理を行う
 
@@ -35,6 +35,9 @@ Azure Sentinel を使用してサービスとしてのセキュリティ オフ�
 - Azure Sentinel と統合されているすべてのデータ ソースとデータ コネクタからのデータ (Azure AD のアクティビティ ログ、Office 365 のログ、Microsoft Threat Protection のアラートなど) は、各顧客のテナント内に残ります。
 - ネットワーク待機時間が短縮されます。
 - 新しい子会社または顧客を簡単に追加または削除できます。
+
+> [!NOTE]
+> 別の[リージョン](../../availability-zones/az-overview.md#regions)にある委任されたリソースを管理することができます。 ただし、[各国のクラウド](../../active-directory/develop/authentication-national-cloud.md)と Azure パブリック クラウドにわたって行われる、または 2 つの独立した国内クラウドにわたって行われるサブスクリプションの委任はサポートされていません。
 
 ## <a name="granular-role-based-access-control-rbac"></a>詳細なロールベースのアクセス制御 (RBAC)
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e168deea1ba442d48f483264c1e97ce618040f18
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 361b27ce84417b30fe58ac7651f70f8c72f8a16a
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74379115"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627374"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>ハイブリッド Azure Active Directory 参加済みダウンレベル デバイスのトラブルシューティング 
 
@@ -40,7 +40,6 @@ Windows 10 または Windows Server 2016 については、「[Windows 10 と Wi
 
 - ダウンレベルの Windows デバイス用のハイブリッド Azure AD 参加の動作は、Windows 10 での動作とは若干異なります。 多くのお客様は、AD FS (フェデレーション ドメインの場合) または構成済みのシームレス SSO (マネージド ドメインの場合) が必要であることを認識していません。
 - フェデレーション ドメインのあるお客様では、サービス接続ポイント (SCP) がマネージド ドメインをポイントするように構成されている場合 (たとえば、contoso.com ではなく contoso.onmicrosoft.com)、ダウンレベルの Windows デバイス用のハイブリッド Azure AD 参加は機能しません。
-- ユーザーごとのデバイスの最大数は、現時点ではダウンレベルのハイブリッド Azure AD 参加済みデバイスにも適用されます。 
 - 複数のドメイン ユーザーがダウンレベルのハイブリッド Azure AD 参加済みデバイスにサインインすると、同じ物理デバイスが Azure AD に複数回表示されます。  たとえば 1 台のデバイスに *jdoe* と *jharnett* がサインインする場合、それぞれについて別個の登録 (DeviceID) が **[ユーザー]** 情報タブに作成されます。 
 - オペレーティング システムの再インストールまたは手動の再登録なので、ユーザー情報タブでデバイスの複数のエントリを取得することもできます。
 - デバイスの初回登録/参加は、サインインまたはロック/ロック解除のいずれかのタイミングで試行するように構成されています。 タスク スケジューラのタスクによってトリガーされる 5 分間の待ち時間が生じる場合があります。 
@@ -103,6 +102,6 @@ Windows 10 または Windows Server 2016 については、「[Windows 10 と Wi
    - または、ドメインが管理されている場合は、シームレス SSO が構成されていないか機能していない。
    - ユーザーがデバイスの上限に達している。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ご不明な点がある場合は、[デバイス管理の FAQ](faq.md) をご覧ください。  

@@ -6,17 +6,14 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: d54bef277d80a178c45ce918290d46c11387b7d1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 241c404eff1242c52520f94d5d955db7e260148c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918096"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537907"
 ---
 # <a name="azure-database-for-postgresql-infrastructure-double-encryption"></a>Azure Database for PostgreSQL インフラストラクチャの二重暗号化
-
-> [!NOTE]
-> 現時点では、この機能を使用するにはアクセス権をリクエストする必要があります。 それを行うには、AskAzureDBforPostgreSQL@service.microsoft.com にお問い合わせください。
 
 Azure Database for PostgreSQL は、Microsoft のマネージド キーを使用してデータに対して[保存データのストレージ暗号化](concepts-security.md#at-rest)を使用します。 バックアップを含むデータはディスク上で暗号化され、この暗号化は常に有効であり、無効にすることはできません。 暗号化について、Azure のストレージ暗号化に FIPS 140-2 検証済み暗号化モジュールと AES 256 ビット暗号化が使用されます。
 

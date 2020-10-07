@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 08/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bfb2598fb3a207bbdfaade9086efd07827b077dd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cb012fcc701e9dd18dbe1db5304807b4d96c2a86
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998426"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757794"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>チュートリアル:プッシュ API を使用してインデックス作成を最適化する
 
@@ -325,7 +325,7 @@ do
 
 ここでは、エクスポネンシャル バックオフのコードを呼び出しやすいよう関数にラップしています。
 
-さらに、アクティブなスレッドを管理するための関数も別途作成します。 その関数は、簡潔にするためにここでは省略していますが、[ExponentialBackoff.cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/OptimizeDataIndexing/ExponentialBackoff.cs) でご覧いただけます。 その関数は、次のコマンドで呼び出すことができます。`hotels` はアップロードするデータで、`1000` はバッチ サイズ、また `8` は、コンカレント スレッド数です。
+さらに、アクティブなスレッドを管理するための関数も別途作成します。 その関数は、簡潔にするためにここでは省略していますが、[ExponentialBackoff.cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/v10/OptimizeDataIndexing/ExponentialBackoff.cs) でご覧いただけます。 その関数は、次のコマンドで呼び出すことができます。`hotels` はアップロードするデータで、`1000` はバッチ サイズ、また `8` は、コンカレント スレッド数です。
 
 ```csharp
 ExponentialBackoff.IndexData(indexClient, hotels, 1000, 8).Wait();

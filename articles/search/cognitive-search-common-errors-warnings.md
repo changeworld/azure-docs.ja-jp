@@ -7,13 +7,13 @@ author: amotley
 ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 142c6b4315eb1862dd116647f4396835c7286591
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.date: 09/23/2020
+ms.openlocfilehash: 8ceb6d4dddb76148be1e82ebc8c1994886a11da3
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378357"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362816"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサーの一般的なエラーと警告のトラブルシューティング
 
@@ -59,9 +59,9 @@ BLOB データ ソースを使用するインデクサーで、ドキュメン�
 
 | 理由 | 詳細/例 | 解像度 |
 | --- | --- | --- |
-| BLOB がサイズ制限を超えています | ドキュメントは `'150441598'` バイトです。これは、現在のサービス レベルのドキュメント抽出の最大サイズである `'134217728'` バイトを超えています。 | [BLOB インデックス作成エラー](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
-| BLOB にサポートされていないコンテンツ タイプがあります | ドキュメントにサポートされていないコンテンツ タイプ `'image/png'` があります | [BLOB インデックス作成エラー](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
-| BLOB は暗号化されています | ドキュメントを処理できませんでした。暗号化されているか、パスワードで保護されている可能性があります。 | [BLOB の設定](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed)で BLOB をスキップできます。 |
+| BLOB がサイズ制限を超えています | ドキュメントは `'150441598'` バイトです。これは、現在のサービス レベルのドキュメント抽出の最大サイズである `'134217728'` バイトを超えています。 | [BLOB インデックス作成エラー](search-howto-indexing-azure-blob-storage.md#DealingWithErrors) |
+| BLOB にサポートされていないコンテンツ タイプがあります | ドキュメントにサポートされていないコンテンツ タイプ `'image/png'` があります | [BLOB インデックス作成エラー](search-howto-indexing-azure-blob-storage.md#DealingWithErrors) |
+| BLOB は暗号化されています | ドキュメントを処理できませんでした。暗号化されているか、パスワードで保護されている可能性があります。 | [BLOB の設定](search-howto-indexing-azure-blob-storage.md#PartsOfBlobToIndex)で BLOB をスキップできます。 |
 | 一時的な問題 | "BLOB の処理エラー:要求が中止されました:要求は取り消されました。" "処理中にドキュメントがタイムアウトしました。" | 予期しない接続の問題が発生することがあります。 後でインデクサーを使用してドキュメントをもう一度実行してください。 |
 
 <a name="could-not-parse-document"></a>
@@ -175,7 +175,7 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 
 ## <a name="error-integrated-change-tracking-policy-cannot-be-used-because-table-has-a-composite-primary-key"></a>エラー:テーブルに複合主キーが含まれているため、統合された変更追跡ポリシーを使用できません
 
-これは、SQL テーブルに適用されます。通常、これは、キーが複合キーとして定義されている場合、またはテーブルで一意のクラスター化インデックスが定義されている場合 (Azure Search インデックスではなく SQL インデックスの場合と同様) に発生します。 主な理由は、[一意のクラスター化インデックス](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15)の場合、キー属性が複合主キーになるように変更されるためです。 この場合、SQL テーブルに一意のクラスター化インデックスが含まれていないこと、またはキー フィールドが、重複したキーが含まれていないことが保証されているフィールドにマップされていることを確認してください。
+これは、SQL テーブルに適用されます。通常、これは、キーが複合キーとして定義されている場合、またはテーブルで一意のクラスター化インデックスが定義されている場合 (Azure Search インデックスではなく SQL インデックスの場合と同様) に発生します。 主な理由は、[一意のクラスター化インデックス](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described)の場合、キー属性が複合主キーになるように変更されるためです。 この場合、SQL テーブルに一意のクラスター化インデックスが含まれていないこと、またはキー フィールドが、重複したキーが含まれていないことが保証されているフィールドにマップされていることを確認してください。
 
 <a name="could-not-process-document-within-indexer-max-run-time"></a>
 

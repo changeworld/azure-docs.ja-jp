@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d4846a69f548c99de735cc9d9e06bd6bb263b4bd
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: a0bc934d32a2d09fcd6b52ec1f186855bf0da92c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439702"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449611"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>チュートリアル:Windows デバイス用の IoT Edge モジュールを開発する
 
@@ -295,7 +295,7 @@ IoT Edge ランタイムでは、コンテナー イメージを IoT Edge デバ
 
 IotEdgeModule1 コードは、入力キューを介してメッセージを受け取り、出力キューを介してそれらを渡します。 配置マニフェストは、メッセージを SimulatedTemperatureSensor から IotEdgeModule1 に渡し、次に IotEdgeModule1 から IoT Hub にメッセージを転送したルートを宣言しました。 Visual Studio 用の Azure IoT Edge ツールを使用すると、個々のデバイスから IoT Hub に到着したメッセージを表示できます。
 
-1. Visual Studio の Cloud Explorer で、デプロイ先の IoT Edge デバイスの名前を選択します。
+1. Visual Studio Cloud Explorer で、デプロイ先の IoT Edge デバイスの名前を選択します。
 
 2. **[アクション]** メニューの **[Start Monitoring Built-in Event Endpoint]\(組み込みイベント エンドポイントの監視を開始する\)** を選択します。
 

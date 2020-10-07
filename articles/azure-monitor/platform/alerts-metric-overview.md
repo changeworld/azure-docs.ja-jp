@@ -1,15 +1,15 @@
 ---
 title: Azure Monitor でのメトリック アラートの機能
 description: メトリック アラートの用途と、Azure Monitor での機能の概要を理解します。
-ms.date: 08/16/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 8e57ec698f96826f493d048490ac053672e45895
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 78ec5ff3fc87ef29d25e439b7d4c69bb3a10f3a7
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595565"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578072"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure Monitor でのメトリック アラートの機能
 
@@ -143,7 +143,8 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 | NetApp ファイル容量プール | **はい** | **あり** | **あり** |
 | NetApp ファイル ボリューム | **あり** | **あり** | **あり** |
 | キー コンテナー | **あり** | **あり** | **あり** |
-| Data Box Edge のデバイス | **はい** | **あり** | **あり** |
+| Azure Cache for Redis | **はい** | **あり** | **あり** |
+| Data Box Edge のデバイス | **はい** | **はい** | **あり** |
 
 <sup>1</sup> 仮想マシンのネットワーク メトリック (受信ネットワーク合計、送信ネットワーク合計、受信フロー数、送信フロー数、受信フローの最大作成速度、送信フローの最大作成速度) に対してはサポートされていません。
 

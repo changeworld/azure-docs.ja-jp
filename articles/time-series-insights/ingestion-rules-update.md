@@ -8,14 +8,14 @@ ms.author: lyhughes
 manager: dpalled
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 10/02/2020
 ms.custom: lyhughes
-ms.openlocfilehash: 9a345661a50b18d53411d073ccf12375fe17cdb9
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 320d92ef0ad6d02dbe7c31b883eb7f73472378ce
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088597"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667811"
 ---
 # <a name="upcoming-changes-to-json-flattening-and-escaping-rules-for-new-environments"></a>新しい環境での JSON フラット化とエスケープ規則に関する今後の変更
 
@@ -47,8 +47,9 @@ Azure Time Series Insights Gen2 環境では、特定の一連の名前付け規
 ### <a name="if-your-payload-contains-nested-json-or-special-characters-and-you-automate-authoring-time-series-model-variable-expressions"></a>ペイロードに入れ子になった JSON または特殊文字が含まれており、[時系列モデル](.\time-series-insights-update-tsm.md)変数式の作成が自動化されている場合:
 
 新しい取り込み規則が使用されるよう、[TypesBatchPut](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput) を実行するお使いのクライアント コードを更新します。 たとえば、前の `"value": {"tsx": "$event.series_value.Double"}` の[タイム シリーズ式](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)を、次のいずれかのオプションに更新します。
-  * `"value": {"tsx": "$event.series.value.Double"}`
-  * `"value": {"tsx": "$event['series']['value'].Double"}`
+
+* `"value": {"tsx": "$event.series.value.Double"}`
+* `"value": {"tsx": "$event['series']['value'].Double"}`
 
 ## <a name="next-steps"></a>次の手順
 

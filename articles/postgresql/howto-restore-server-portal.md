@@ -1,17 +1,17 @@
 ---
 title: バックアップと復元 - Azure portal - Azure Database for PostgreSQL - Single Server
 description: この記事では、Azure portal を使用して Azure Database for PostgreSQL - Single Server のサーバーを復元する方法について説明します。
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: 9ff62a568af4f60318ba0e5bdf2144bb43c9d2b1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: debdbf6e08af7b9005336231abd6c998a871c525
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90884309"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708086"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Azure portal を使用して Azure Database for PostgreSQL - Single Server のサーバーをバックアップおよび復元する方法
 
@@ -37,7 +37,7 @@ Azure Portal でサーバーを作成するときに、 **[価格レベル]** �
 2. Azure Database for PostgreSQL サーバーを選択します。 この操作で、 **[概要]** ページが開きます。
 3. **[設定]** で、メニューから **[価格レベル]** を選択します。 スライダーを使用して、**バックアップの保有期間**を 7 ～ 35 日の間で希望の値に変更します。
 次のスクリーンショットでは 34 日に変更されています。
-:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="長くしたバックアップのリテンション期間":::
+:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="価格レベル - バックアップ冗長の選択":::
 
 4. **[OK]** をクリックして変更を確定します。
 
@@ -53,11 +53,11 @@ Azure Database for PostgreSQL では、サーバーの過去の特定時点ま�
 
 2. サーバーの **[概要]** ページのツール バーで **[復元]** を選択します。
 
-   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="Azure Database for PostgreSQL - 概要 - 復元ボタン":::
+   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="価格レベル - バックアップ冗長の選択":::
 
 3. [復元] フォームに必要な情報を入力します。
 
-   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="Azure Database for PostgreSQL - 情報の復元":::
+   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="価格レベル - バックアップ冗長の選択":::
    - **復元ポイント**:復元先の特定の時点を選択します。
    - **対象サーバー**:新しいサーバーの名前を指定します。
    - **[場所]** :リージョンを選択することはできません。 既定では、ソース サーバーと同じになります。
@@ -77,17 +77,17 @@ Azure Database for PostgreSQL では、サーバーの過去の特定時点ま�
 
 1. ポータルの左上隅にある **[リソースの作成]** ボタン (+) を選択します。 **[データベース]**  >  **[Azure Database for PostgreSQL]** の順に選択します。
 
-   :::image type="content" source="./media/howto-restore-server-portal/1-navigate-to-postgres.png" alt-text="Azure Database for PostgreSQL に移動します。":::
+   :::image type="content" source="./media/howto-restore-server-portal/1-navigate-to-postgres.png" alt-text="価格レベル - バックアップ冗長の選択":::
 
 2. **[単一サーバー]** デプロイ オプションを選択します。
 
-   :::image type="content" source="./media/howto-restore-server-portal/2-select-deployment-option.png" alt-text="Azure Database for PostgreSQL - 単一サーバー デプロイ オプションを選択します。":::
+   :::image type="content" source="./media/howto-restore-server-portal/2-select-deployment-option.png" alt-text="価格レベル - バックアップ冗長の選択":::
  
 3. 新しいサーバーのサブスクリプション、リソース グループ、および名前を指定します。 
 
 4. **[データ ソース]** として **[バックアップ]** を選択します。 この操作により、geo 冗長バックアップが有効になっているサーバーの一覧を示すドロップダウンが表示されます。
    
-   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore.png" alt-text="データ ソースを選択する。":::
+   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore.png" alt-text="価格レベル - バックアップ冗長の選択":::
     
    > [!NOTE]
    > サーバーが最初に作成された時点では、すぐには geo リストアで使用できない可能性があります。 必要なメタデータが設定されるまで数時間かかる場合があります。
@@ -95,21 +95,21 @@ Azure Database for PostgreSQL では、サーバーの過去の特定時点ま�
 
 5. **[バックアップ]** ドロップダウンを選択します。
    
-   :::image type="content" source="./media/howto-restore-server-portal/5-geo-restore-backup.png" alt-text="[バックアップ] ドロップダウンを選択する。":::
+   :::image type="content" source="./media/howto-restore-server-portal/5-geo-restore-backup.png" alt-text="価格レベル - バックアップ冗長の選択":::
 
 6. 復元元のソース サーバーを選択します。
    
-   :::image type="content" source="./media/howto-restore-server-portal/6-select-backup.png" alt-text="バックアップを選択する。":::
+   :::image type="content" source="./media/howto-restore-server-portal/6-select-backup.png" alt-text="価格レベル - バックアップ冗長の選択":::
 
 7. サーバーでは、**仮想コア**の数、**バックアップ保有期間**、**バックアップ冗長オプション**、**エンジン バージョン**、および**管理者資格情報**が規定値に設定されます。 **[続行]** をクリックします。 
    
-   :::image type="content" source="./media/howto-restore-server-portal/7-accept-backup.png" alt-text="バックアップを続行する。":::
+   :::image type="content" source="./media/howto-restore-server-portal/7-accept-backup.png" alt-text="価格レベル - バックアップ冗長の選択":::
 
 8. 必要に応じて、フォームの残りの部分を入力します。 任意の**場所**を選択できます。
 
     場所を選択したら、 **[サーバーの構成]** を選択して、**コンピューティング世代** (選択したリージョンで利用可能な場合)、**仮想コア**の数、**バックアップ保有期間**、および**バックアップ冗長オプション**を更新できます。 復元中に、**価格レベル** (Basic、汎用、またはメモリ最適化) と**ストレージ**のサイズはいずれも変更できません。
 
-   :::image type="content" source="./media/howto-restore-server-portal/8-create.png" alt-text="フォームに入力する。"::: 
+   :::image type="content" source="./media/howto-restore-server-portal/8-create.png" alt-text="価格レベル - バックアップ冗長の選択"::: 
 
 9. **[確認および作成]** を選択して、選択内容を確認します。 
 

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/20/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f9db8a50e670e3c6af7adce0a8efcf3ce569ac89
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 01b57526b15a806271d58b250f06a4372fe56b72
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009629"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532263"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Azure Cognitive Search でのテキスト処理のためのアナライザー
 
@@ -147,7 +147,7 @@ Azure Cognitive Search では、追加の **indexAnalyzer** および **searchAn
 * この例で、カスタム アナライザーは "my_analyzer" です。このアナライザーはカスタマイズされた標準トークナイザー "my_standard_tokenizer" と、小文字とカスタマイズされた asciifolding フィルターである "my_asciifolding" という 2 つのトークン フィルターを使用しています。
 * 2 つのカスタム文字フィルター "map_dash" および "remove_whitespace" も定義します。 1 つ目はすべてのダッシュをアンダースコアに置き換え、2 つ目はすべてのスペースを削除します。 マッピング規則でスペースを UTF-8 エンコードする必要があります。 文字フィルターはトークン化よりも先に適用され、結果のトークンに影響を及ぼします (標準トークナイザーはダッシュとスペースで区切りますが、アンダースコアでは区切りません)。
 
-~~~~
+```json
   {
      "name":"myindex",
      "fields":[
@@ -206,7 +206,7 @@ Azure Cognitive Search では、追加の **indexAnalyzer** および **searchAn
         }
      ]
   }
-~~~~
+```
 
 <a name="Per-field-analyzer-assignment-example"></a>
 
@@ -216,7 +216,7 @@ Azure Cognitive Search では、追加の **indexAnalyzer** および **searchAn
 
 "analyzer" 要素は、フィールドごとに標準アナライザーをオーバーライドします。 グローバルなオーバーライドはありません。 この例で、`text1` はパターン アナライザーと `text2` を使用します。これはアナライザーを指定せず、既定値を使用します。
 
-~~~~
+```json
   {
      "name":"myindex",
      "fields":[
@@ -239,7 +239,7 @@ Azure Cognitive Search では、追加の **indexAnalyzer** および **searchAn
         }
      ]
   }
-~~~~
+```
 
 <a name="Mixing-analyzers-for-indexing-and-search-operations"></a>
 
@@ -248,7 +248,7 @@ Azure Cognitive Search では、追加の **indexAnalyzer** および **searchAn
 API には、インデックス作成と検索に別のアナライザーを指定するための追加のインデックス属性が含まれています。 **searchAnalyzer** 属性と **indexAnalyzer** 属性をペアで指定し、1 つの **analyzer** 属性を置き換える必要があります。
 
 
-~~~~
+```json
   {
      "name":"myindex",
      "fields":[
@@ -267,7 +267,7 @@ API には、インデックス作成と検索に別のアナライザーを指�
         },
      ],
   }
-~~~~
+```
 
 <a name="Language-analyzer-example"></a>
 
@@ -275,7 +275,7 @@ API には、インデックス作成と検索に別のアナライザーを指�
 
 複数言語の文字列を含むフィールドでは、言語アナライザーを使用できますが、他のフィールドは既定値のままです (または、他の定義済みまたはカスタム アナライザーを使用します)。 言語アナライザーを使用する場合、インデックス作成と検索操作の両方に使用する必要があります。 言語アナライザーを使用するフィールドでは、インデックス作成と検索に別のアナライザーを使用することはできません。
 
-~~~~
+```json
   {
      "name":"myindex",
      "fields":[
@@ -300,7 +300,7 @@ API には、インデックス作成と検索に別のアナライザーを指�
         }
      ],
   }
-~~~~
+```
 
 ## <a name="c-examples"></a>C# の例
 
@@ -317,7 +317,7 @@ API には、インデックス作成と検索に別のアナライザーを指�
 
 この例では、Microsoft の英語およびフランス語のアナライザーを説明フィールドに割り当てます。 これは、[DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) サンプルの hotels.cs ファイルの Hotel クラスを使用して作成した、hotels インデックスのより大きな定義から抜粋されたスニペットです。
 
-Azure Cognitive Search でサポートされているテキスト アナライザーを提供する [AnalyzerName](/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) 型を指定して、[Analyzer](/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet) を呼び出します。
+Azure Cognitive Search でサポートされているテキスト アナライザーを提供する [AnalyzerName](/dotnet/api/microsoft.azure.search.models.analyzername) 型を指定して、[Analyzer](/dotnet/api/microsoft.azure.search.models.analyzer) を呼び出します。
 
 ```csharp
     public partial class Hotel
@@ -343,7 +343,7 @@ Azure Cognitive Search でサポートされているテキスト アナライ�
 
 カスタマイズまたは構成が必要な場合は、アナライザーのコンストラクトをインデックスに追加する必要があります。 定義したら、前の例で示したようにそれをフィールド定義に追加できます。
 
-[CustomAnalyzer](/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet) オブジェクトを作成します。 その他の例については、[CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs) に関するページを参照してください。
+[CustomAnalyzer](/dotnet/api/microsoft.azure.search.models.customanalyzer) オブジェクトを作成します。 その他の例については、[CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs) に関するページを参照してください。
 
 ```csharp
 {

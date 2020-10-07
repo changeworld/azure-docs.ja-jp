@@ -13,12 +13,12 @@ ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 7ff1e6e3b422f55da332e206aea184ca1b5902a6
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 3578562839069eb4b9c99b16d938efe48821fcec
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705896"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631309"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>方法:すべての Azure Active Directory ユーザーがマルチテナント アプリケーション パターンを使用してサインインする
 
@@ -97,7 +97,7 @@ Web アプリケーションと Web API は、Microsoft ID プラットフォー
     https://sts.windows.net/{tenantid}/
 ```
 
-このため、マルチテナント アプリケーションでは、メタデータの issuer 値をトークンの `issuer` 値と照合するだけでは、トークンの検証を行うことができません。 マルチテナント アプリケーションには、issuer 値のテナント ID の部分に基づいて issuer 値が有効であるかどうかを判定するロジックが必要になります。 
+このため、マルチテナント アプリケーションでは、メタデータの issuer 値をトークンの `issuer` 値と照合するだけでは、トークンの検証を行うことができません。 マルチテナント アプリケーションには、issuer 値のテナント ID の部分に基づいて issuer 値が有効であるかどうかを判定するロジックが必要になります。
 
 たとえば、マルチテナント アプリケーションで、アプリケーションのサービスにサインアップしている特定のテナントからのサインインのみを許可するには、トークンの issuer 値または `tid` 要求値のいずれかを調べて、サブスクライバーのリストにテナントが含まれていることを確認する必要があります。 マルチテナント アプリケーションではユーザーのみを処理して、テナントに基づくアクセスの判定を行わない場合は、issuer 値を完全に無視することができます。
 
@@ -116,7 +116,7 @@ Azure AD のアプリケーションにユーザーがサインインするに�
 * 委任アクセス許可を付与されると、アプリケーションは、サインイン済みのユーザーとして、そのユーザーが実行可能な操作の一部を行うことができます。 たとえば、アプリケーションに対し、サインイン済みユーザーのカレンダーを読み取る委任アクセス許可を付与できます。
 * アプリケーション専用アクセス許可は、アプリケーションの ID に直接付与されます。 たとえば、アプリケーションに、アプリケーションにサインインしているユーザーに関係なく、テナントのユーザーの一覧を読み取るアプリケーション専用アクセス許可を付与できます。
 
-アクセス許可には、通常のユーザーが同意できるものと、テナント管理者の同意が必要なものがあります。 
+アクセス許可には、通常のユーザーが同意できるものと、テナント管理者の同意が必要なものがあります。
 
 ### <a name="admin-consent"></a>管理者の同意
 
@@ -179,10 +179,6 @@ API が Microsoft 以外の組織によって作成されている場合、こ�
 
 マルチテナント アプリケーションでは、Azure AD で保護されている API を呼び出すアクセス トークンを取得することもできます。 マルチテナント アプリケーションで Active Directory Authentication Library (ADAL) を使用する際によくあるエラーは、最初は /common を使用してユーザーのトークンを要求し、応答を受信してから、その後も /common を使用して同じユーザーのトークンを要求することです。 Azure AD からの応答は /common ではなくテナントから送信されるため、ADAL ではトークンがテナントから送信されたものとしてキャッシュされます。 ユーザーのアクセス トークンを取得するためのその後の /common への呼び出しでは、キャッシュ エントリが見つからないため、ユーザーはもう一度サインインするように求められます。 キャッシュが見つからない問題を回避するために、サインイン済みのユーザーに対する以降の呼び出しは、テナントのエンドポイントに向けて行われるようにしてください。
 
-## <a name="next-steps"></a>次のステップ
-
-この記事では、任意の Azure AD テナントからユーザーをサインインさせることのできるアプリケーションを構築する方法を説明しました。 アプリと Azure AD の間でのシングル サインオン (SSO) を有効にした後、Microsoft 365 のように、アプリケーションを更新して Microsoft リソースによって公開される API にアクセスすることもできます。 そのため、パーソナライズされたエクスペリエンスをアプリケーションに提供できます。たとえば、プロファイル画像や次の予定などのコンテキスト情報をユーザーに表示できます。 Azure AD や、Exchange、SharePoint、OneDrive、OneNote などの Microsoft 365 サービスへの API 呼び出しを行う方法の詳細については、[Microsoft Graph API][MSFT-Graph-overview] に関するページを参照してください。
-
 ## <a name="related-content"></a>関連コンテンツ
 
 * [マルチテナント アプリケーションのサンプル](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/2-WebApp-graph-user/2-3-Multi-Tenant/README.md)
@@ -191,6 +187,10 @@ API が Microsoft 以外の組織によって作成されている場合、こ�
 * [Azure Active Directory とアプリケーションの統合][AAD-Integrating-Apps]
 * [同意フレームワークの概要][AAD-Consent-Overview]
 * [Microsoft Graph API のアクセス許可のスコープ][MSFT-Graph-permission-scopes]
+
+## <a name="next-steps"></a>次のステップ
+
+この記事では、任意の Azure AD テナントからユーザーをサインインさせることのできるアプリケーションを構築する方法を説明しました。 アプリと Azure AD の間でのシングル サインオン (SSO) を有効にした後、Microsoft 365 のように、アプリケーションを更新して Microsoft リソースによって公開される API にアクセスすることもできます。 そのため、パーソナライズされたエクスペリエンスをアプリケーションに提供できます。たとえば、プロファイル画像や次の予定などのコンテキスト情報をユーザーに表示できます。 Azure AD や、Exchange、SharePoint、OneDrive、OneNote などの Microsoft 365 サービスへの API 呼び出しを行う方法の詳細については、[Microsoft Graph API][MSFT-Graph-overview] に関するページを参照してください。
 
 <!--Reference style links IN USE -->
 [AAD-Access-Panel]:  https://myapps.microsoft.com
@@ -228,8 +228,7 @@ API が Microsoft 以外の組織によって作成されている場合、こ�
 [JWT]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32
 [O365-Perm-Ref]: /graph/permissions-reference
 [OAuth2-Access-Token-Scopes]: https://tools.ietf.org/html/rfc6749#section-3.3
-[OAuth2-AuthZ-Code-Grant-Flow]: /previous-versions/azure/dn645542(v=azure.100)
-[OAuth2-AuthZ-Grant-Types]: https://tools.ietf.org/html/rfc6749#section-1.3 
+[OAuth2-AuthZ-Grant-Types]: https://tools.ietf.org/html/rfc6749#section-1.3
 [OAuth2-Client-Types]: https://tools.ietf.org/html/rfc6749#section-2.1
 [OAuth2-Role-Def]: https://tools.ietf.org/html/rfc6749#page-6
 [OpenIDConnect]: https://openid.net/specs/openid-connect-core-1_0.html

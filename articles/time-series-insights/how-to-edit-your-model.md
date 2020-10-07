@@ -8,26 +8,27 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: ac5322b93fc5f804292cfbff2c2e7eeb79b5989f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cac4234d5bd93de8b059ea53a4697dae1bf5c64c
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094765"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667881"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 でのデータ モデリング
 
 この記事では、Azure Time Series Insights Gen2 でタイム シリーズ モデルを操作する方法について説明します。 いくつかの一般的なデータ シナリオについて詳しく説明します。
 
 > [!TIP]
+>
 > * [タイム シリーズ モデル](concepts-model-overview.md)の詳細を確認してください。
 > * [Azure Time Series Insights Gen2 エクスプローラー](./time-series-insights-update-explorer.md)での移動について参照してください。
 
 ## <a name="instances"></a>Instances
 
-Azure Time Series Insights エクスプローラーでは、ブラウザー内でのインスタンスの**作成**、**読み取り**、**更新**、および**削除**操作がサポートされています。 
+Azure Time Series Insights エクスプローラーでは、ブラウザー内でのインスタンスの**作成**、**読み取り**、**更新**、および**削除**操作がサポートされています。
 
 開始するには、Azure Time Series Insights エクスプローラーの **[分析]** ビューから **[モデル]** ビューを選択します。
 
@@ -57,7 +58,7 @@ Azure Time Series Insights エクスプローラーでは、ブラウザー内�
 
 ### <a name="edit-a-single-instance"></a>1 つのインスタンスを編集する
 
-1. インスタンスを選択し、 **[編集]** または**鉛筆アイコン**を選択します。 
+1. インスタンスを選択し、 **[編集]** または**鉛筆アイコン**を選択します。
 1. 必要な変更を行い、 **[保存]** を選択します。
 
     [![1 つのインスタンスを編集します。](media/v2-update-how-to-tsm/how-to-tsm-edit-instance.png)](media/v2-update-how-to-tsm/how-to-tsm-edit-instance.png#lightbox)
@@ -75,7 +76,7 @@ Azure Time Series Insights エクスプローラーでは、ブラウザー内�
 
 ## <a name="hierarchies"></a>階層
 
-Azure Time Series Insights エクスプローラーでは、ブラウザー内での階層の**作成**、**読み取り**、**更新**、および**削除**操作がサポートされています。 
+Azure Time Series Insights エクスプローラーでは、ブラウザー内での階層の**作成**、**読み取り**、**更新**、および**削除**操作がサポートされています。
 
 開始するには、Azure Time Series Insights エクスプローラーの **[分析]** ビューから **[モデル]** ビューを選択します。
 
@@ -117,7 +118,7 @@ Azure Time Series Insights エクスプローラーでは、ブラウザー内�
 
 ### <a name="delete-a-hierarchy"></a>階層を削除する
 
-1. 階層を選択し、 **[削除]** または**ごみ箱アイコン**を選択します。 
+1. 階層を選択し、 **[削除]** または**ごみ箱アイコン**を選択します。
 
     [![[削除] ボタンを選択して、階層を削除します。](media/v2-update-how-to-tsm/how-to-tsm-delete-hierarchy.png)](media/v2-update-how-to-tsm/how-to-tsm-delete-hierarchy.png#lightbox)
 
@@ -125,7 +126,7 @@ Azure Time Series Insights エクスプローラーでは、ブラウザー内�
 
 ## <a name="types"></a>型
 
-Azure Time Series Insights エクスプローラーでは、ブラウザー内での型の**作成**、**読み取り**、**更新**、および**削除**操作がサポートされています。 
+Azure Time Series Insights エクスプローラーでは、ブラウザー内での型の**作成**、**読み取り**、**更新**、および**削除**操作がサポートされています。
 
 開始するには、Azure Time Series Insights エクスプローラーの **[分析]** ビューから **[モデル]** ビューを選択します。
 
@@ -136,7 +137,7 @@ Azure Time Series Insights エクスプローラーでは、ブラウザー内�
     [![タイム シリーズ モデルの型ウィンドウ。](media/v2-update-how-to-tsm/how-to-tsm-type-panel.png)](media/v2-update-how-to-tsm/how-to-tsm-type-panel.png#lightbox)
 
 1. **[+ 追加]** を選択して **[新しい型の追加]** ポップアップ モーダルを表示します。
-1. 型のプロパティと変数を入力します。 入力したら、 **[保存]** を選択します。 
+1. 型のプロパティと変数を入力します。 入力したら、 **[保存]** を選択します。
 
     [![型を追加するための構成設定。](media/v2-update-how-to-tsm/how-to-tsm-add-new-type.png)](media/v2-update-how-to-tsm/how-to-tsm-add-new-type.png#lightbox)
 
@@ -168,8 +169,8 @@ Azure Time Series Insights エクスプローラーでは、ブラウザー内�
 
 ## <a name="next-steps"></a>次のステップ
 
-- タイム シリーズ モデルの詳細については、[データ モデリング](./concepts-model-overview.md)に関する記事を参照してください。
+* タイム シリーズ モデルの詳細については、[データ モデリング](./concepts-model-overview.md)に関する記事を参照してください。
 
-- Gen2 の詳細については、[Azure Time Series Insights Gen2 エクスプローラーでデータを視覚化する](./time-series-insights-update-explorer.md)方法に関する記事を参照してください。
+* Gen2 の詳細については、[Azure Time Series Insights Gen2 エクスプローラーでデータを視覚化する](./time-series-insights-update-explorer.md)方法に関する記事を参照してください。
 
-- サポートされている JSON の構造については、[サポートされている JSON 構造](./time-series-insights-send-events.md#supported-json-shapes)に関する記事を参照してください。
+* サポートされている JSON の構造については、[サポートされている JSON 構造](./time-series-insights-send-events.md#supported-json-shapes)に関する記事を参照してください。

@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB Gremlin API のグラフ データのモデリング
 description: Azure Cosmos DB Gremlin API を使用してグラフ データベースをモデル化する方法について説明します。 この記事では、グラフ データベースを使用する状況と、エンティティとリレーションシップをモデル化するにあたってのベスト プラクティスについて説明します。
-author: LuisBosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 12/02/2019
-ms.author: lbosq
-ms.openlocfilehash: ea3aab76c8d7eaad46ae1c20f6ddb4547b25b5b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: jasonh
+ms.openlocfilehash: 6526119a8b20a7c60879fe690aefe96159b062a7
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261819"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409767"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API のグラフ データのモデリング
 
@@ -105,7 +105,7 @@ Edge オブジェクトには、`out()` または `outE()` 関数を使用した
 * 一般的でない用語を使用して、リレーションシップにラベルを付ける。
 * リレーションシップ名を使用して、ソースの頂点のラベルとターゲットの頂点のラベルを関連付ける。
 
-:::image type="content" source="./media/graph-modeling/graph-modeling-3.png" alt-text="リレーションシップのラベル付けの例。" border="false":::
+:::image type="content" source="./media/graph-modeling/graph-modeling-3.png" alt-text="プロパティに頂点を使用するエンティティ モデル。" border="false":::
 
 トラバーサーがエッジのフィルター処理に使用するラベルを具体的にするほど良くなります。 この決定は、クエリのコストにも大きな影響を与える可能性があります。 クエリのコストは、[executionProfile ステップを使用](graph-execution-profile.md)していつでも評価できます。
 

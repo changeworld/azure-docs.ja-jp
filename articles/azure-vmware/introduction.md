@@ -3,14 +3,14 @@ title: はじめに
 description: Azure で VMware ベースのワークロードをデプロイして管理するための、Azure VMware Solution の機能とメリットについて学習します。
 ms.topic: overview
 ms.date: 05/04/2020
-ms.openlocfilehash: 3d6801a6cdec7600cc6003711a08e6af8c86483e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b71427402e08167e5868128ed1e553c69bef425d
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005056"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574461"
 ---
-# <a name="what-is-azure-vmware-solution-preview"></a>Azure VMware Solution プレビューとは
+# <a name="what-is-azure-vmware-solution"></a>Azure VMware Solution とは
 
 Azure VMware Solution は、Azure でプライベート クラウドを提供します。 プライベート クラウドには、専用のベアメタル Azure インフラストラクチャから構築された vSphere クラスターが含まれます。 プライベート クラウド クラスターは、3 台から 16 台のホストに拡張できます。また、1 つのプライベート クラウドに複数のクラスターを含めることができます。 すべてのプライベート クラウドには、vCenter Server、vSAN、vSphere、NSX-T がプロビジョニングされます。 オンプレミス環境からワークロードを移行し、新しい仮想マシンを作成またはデプロイし、プライベート クラウドから Azure サービスを利用できます。
 
@@ -28,9 +28,7 @@ Azure VMware Solution プライベート クラウドとクラスターは、ベ
 
 ## <a name="networking"></a>ネットワーク
 
-プライベート クラウドがデプロイされると、管理、プロビジョニング、および vMotion 用のプライベート ネットワークが作成されます。 これらのプライベート ネットワークは、vCenter および NSX-T Manager へのアクセス、および仮想マシンの vMotion またはデプロイに使用されます。 すべてのプライベート ネットワークには、Azure の VNet またはオンプレミス環境からアクセスできます。 ExpressRoute Global Reach は、プライベート クラウドをオンプレミス環境に接続するために使用されます。この接続には、お使いのサブスクリプションに ExpressRoute 回路を備えた VNet が必要です。
-
-インターネットおよび Azure サービスへのアクセスは、プライベート クラウドのデプロイにプロビジョニングされます。 アクセスが提供されると、運用ワークロード ネットワーク上の VM が Azure またはインターネットベースのサービスを利用できるようになります。 インターネット アクセスは、新しいプライベート クラウドでは既定で無効になっています。これはいつでも有効または無効にできます。
+[!INCLUDE [avs-networking-description](includes/azure-vmware-solution-networking-description.md)]
 
 ネットワークと相互接続の詳細については、[ネットワークの概念](concepts-networking.md)に関する記事を参照してください。
 
@@ -46,7 +44,7 @@ Azure VMware Solution プライベート クラウドと VMware ソフトウェ�
 
 ## <a name="monitoring-your-private-cloud"></a>プライベート クラウドの監視
 
-[Azure Monitor のログ](../azure-monitor/overview.md)を使用して、対象の Azure VMware Solution プライベート クラウドで実行されている仮想マシンのログを収集できます。 オンプレミス VM で実行するのと同じクエリを使用して、Azure VMware Solution プライベート クラウドで実行されている Linux および Windows 仮想マシンに [MMA エージェントをダウンロードしてインストール](../azure-monitor/platform/log-analytics-agent.md#installation-options)できます。 仮想マシンで通常実行するのと同じクエリをまったく同じように実行できます。 クエリの作成の詳細については、[クエリの作成方法](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries)に関する記事を参照してください。
+Azure VMware Solution をサブスクリプションにデプロイすると、[Azure Monitor ログ](../azure-monitor/overview.md)が自動的に生成されます。 また、プライベート クラウド内の各仮想マシンでログを収集することもできます。 Azure VMware Solution プライベート クラウドで実行されている Linux および Windows 仮想マシンに [MMA エージェントをダウンロードしてインストール](../azure-monitor/platform/log-analytics-agent.md#installation-options)したり、[Azure Diagnostics 拡張機能](../azure-monitor/platform/diagnostics-extension-overview.md)を有効にしたりすることができます。 通常は仮想マシンで実行するクエリと同じものを実行することもできます。 クエリの作成の詳細については、[クエリの作成方法](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries)に関する記事を参照してください。 Azure VMware Solution における監視のパターンは、IaaS プラットフォーム内の Azure Virtual Machines に似ています。 追加情報と操作方法については、「[Azure Monitor を使用して Azure 仮想マシンを監視する](../azure-monitor/insights/monitor-vm-azure.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

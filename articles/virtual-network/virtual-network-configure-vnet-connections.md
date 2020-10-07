@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: dddf402455292e19bf0fcda3c50d9ce10d5888d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f25e42b1785f83e0b93c346e260055247a4ab29d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71099067"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400708"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>仮想ネットワークまたは VPN 接続の構成および検証
 
@@ -182,7 +182,7 @@ VNetA と VNetB の間にサイト間 VPN 接続を構成したい、という�
 
 ### <a name="configure-transit-routing-in-an-expressroute-connection"></a>ExpressRoute 接続でのトランジット ルーティングの構成
 
-Azure ExpressRoute を利用すれば、接続プロバイダーが提供する専用プライベート接続で、オンプレミスのネットワークを Microsoft Cloud に拡張できます。 ExpressRoute では、Microsoft Azure、Office 365、Dynamics 365 などの Microsoft クラウド サービスへの接続を確立できます。 詳細については、「[ExpressRoute の概要](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)」を参照してください。
+Azure ExpressRoute を利用すれば、接続プロバイダーが提供する専用プライベート接続で、オンプレミスのネットワークを Microsoft Cloud に拡張できます。 ExpressRoute では、Microsoft Azure、Microsoft 365、Dynamics 365 などの Microsoft クラウド サービスへの接続を確立できます。 詳細については、「[ExpressRoute の概要](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)」を参照してください。
 
 ![Azure 仮想ネットワークへの ExpressRoute プライベート ピアリング接続](./media/virtual-network-configure-vnet-connections/4034395_en_1.png)
 

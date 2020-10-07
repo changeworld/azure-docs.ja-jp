@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 103315b61592cc711f61ec5e95468e50314b9fa6
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 291a5850540ea7d7d24a4a544c1eb65183df8ffb
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440832"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667743"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 の使用に関するベスト プラクティス
 
@@ -33,7 +33,7 @@ Azure Data Lake Storage Gen1 には、POSIX アクセス制御と Azure Active D
 
 Data Lake Storage Gen1 でビッグデータを取り扱うときは、ほとんどの場合、サービス プリンシパルを使用して、Azure HDInsight などのサービスによるデータの操作を許可します。 ただし、個々のユーザーがデータにアクセスする必要がある場合もあります。 このようなケースでは、個々のユーザーをフォルダーやファイルに割り当てる代わりに、Azure Active Directory の[セキュリティ グループ](data-lake-store-secure-data.md#create-security-groups-in-azure-active-directory)を使用する必要があります。
 
-一度セキュリティ グループにアクセス許可が割り当てられると、Data Lake Storage Gen1 を更新することなくグループへのユーザーの追加と削除を行うことができます。 また、これによって [32 のアクセスとデフォルトの ACL](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-store-limits) の制限を超えることがありません。この ACL には、あらゆるファイルとフォルダーに常に関連付けられる 4 つの POSIX スタイル ACL ([所有ユーザー](data-lake-store-access-control.md#the-owning-user)、[所有グループ](data-lake-store-access-control.md#the-owning-group)、[マスク](data-lake-store-access-control.md#the-mask)、その他) が含まれます。
+一度セキュリティ グループにアクセス許可が割り当てられると、Data Lake Storage Gen1 を更新することなくグループへのユーザーの追加と削除を行うことができます。 また、これによって [32 のアクセスとデフォルトの ACL](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-storage-limits) の制限を超えることがありません。この ACL には、あらゆるファイルとフォルダーに常に関連付けられる 4 つの POSIX スタイル ACL ([所有ユーザー](data-lake-store-access-control.md#the-owning-user)、[所有グループ](data-lake-store-access-control.md#the-owning-group)、[マスク](data-lake-store-access-control.md#the-mask)、その他) が含まれます。
 
 ### <a name="security-for-groups"></a>グループのセキュリティ
 

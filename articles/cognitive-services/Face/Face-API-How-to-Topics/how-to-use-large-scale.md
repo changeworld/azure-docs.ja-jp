@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c4667b810e4d3d5f13e13572e2420880da5a8a0b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 5341c2613624c6a52f1649dcd8a64b6746b84f67
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931626"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332391"
 ---
 # <a name="example-use-the-large-scale-feature"></a>例:大規模なフィーチャーを使用する
 
@@ -260,7 +260,7 @@ private static void TrainTimerOnElapsed(string largePersonGroupId, int timeInter
 }
 ```
 
-データ管理と識別に関連する実装の詳細については、「[顔を追加する方法](how-to-add-faces.md)」と「[画像内の顔を識別する方法](HowtoIdentifyFacesinImage.md)」を参照してください。
+データ管理と識別に関連する実装の詳細については、[顔を追加する](how-to-add-faces.md)方法に関するページを参照してください。
 
 ## <a name="summary"></a>まとめ
 
@@ -271,7 +271,7 @@ private static void TrainTimerOnElapsed(string largePersonGroupId, int timeInter
 
 ## <a name="next-steps"></a>次のステップ
 
-ハウツー ガイドに従って、PersonGroup に顔を追加する方法、または PersonGroup で識別操作を実行する方法を学習します。
+ハウツー ガイドに従って、PersonGroup に顔を追加する方法、または PersonGroup で識別操作を実行するスクリプトを作成する方法を学習します。
 
 - [顔を追加する](how-to-add-faces.md)
-- [画像内の顔を識別する](HowtoIdentifyFacesinImage.md)
+- [Face クライアント ライブラリのクイックスタート](../Quickstarts/client-libraries.md)

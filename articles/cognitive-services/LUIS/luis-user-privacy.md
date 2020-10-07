@@ -3,20 +3,18 @@ title: データのエクスポートと削除 - LUIS
 titleSuffix: Azure Cognitive Services
 description: お客様は、データの表示、エクスポート、削除を完全に制御できます。 プライバシーとコンプライアンスを確保するために顧客データを削除します。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/02/2019
-ms.author: diberry
-ms.openlocfilehash: 4e3e0d04b0086905b80e26fb4f838c36b5b5545e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 868443e52b7159e6ee9478f64b7b2f376a10f604
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78273355"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541008"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Cognitive Services で Language Understanding (LUIS) 内の顧客データをエクスポートおよび削除する
 
@@ -78,7 +76,7 @@ LUIS ユーザーは、ポータルでデータの表示を完全に制御でき
 
 これらの Azure 地域にデプロイすると、アプリのエンド ユーザーからエンドポイントが受信した発話は、アクティブ ラーニングのために Azure のオーストラリア地域に格納されます。 アクティブ ラーニングを無効にすることができます。「[Disable active learning](luis-how-to-review-endpoint-utterances.md#disable-active-learning)」 (アクティブ ラーニングを無効にする) を参照してください。 格納されている発言を管理するには、「[Delete utterance](luis-how-to-review-endpoint-utterances.md#delete-utterance)」 (発話を削除する) を参照してください。
 
-### <a name="united-states"></a>米国
+### <a name="united-states"></a>United States
 
 [luis.ai](https://www.luis.ai) ポータルおよび United States Authoring (Programmatic API とも呼ばれる) は、Azure の米国地域でホストされています。 luis.ai ポータルおよび United States Authoring (Programmatic API とも呼ばれる) は、次の Azure 地域へのエンドポイントのデプロイをサポートしています。
 

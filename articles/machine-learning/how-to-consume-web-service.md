@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 5427d62f93eb6284ecda9a0762e3d8c4e99c06e2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6aacc2778e02b96f31c633671da014ced30778fd
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90890102"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756672"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web サービスとしてデプロイされた Azure Machine Learning モデルを使用する
 
@@ -39,7 +39,7 @@ Web サービスは、ローカル環境、Azure Container Instances、Azure Kub
 > [!NOTE]
 > Azure Machine Learning SDK を使用して、Web サービス情報を取得します。 これは Python SDK です。 任意の言語を使用して、サービスに対してクライアントを作成できます。
 
-[azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py&preserve-view=true) クラスでは、クライアントを作成するために必要な情報が提供されます。 クライアント アプリケーションを作成するときに役立つ `Webservice` プロパティを以下に示します。
+[azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true) クラスでは、クライアントを作成するために必要な情報が提供されます。 クライアント アプリケーションを作成するときに役立つ `Webservice` プロパティを以下に示します。
 
 * `auth_enabled` - キー認証が有効になっている場合は `True`、それ以外の場合は `False` です。
 * `token_auth_enabled` - トークン認証が有効になっている場合は `True`、それ以外の場合は `False` です。
@@ -113,7 +113,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> キーを再生成する必要がある場合は、[`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py&preserve-view=true) を使用します。
+> キーを再生成する必要がある場合は、[`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true) を使用します。
 
 #### <a name="authentication-with-tokens"></a>トークンによる認証
 
@@ -179,7 +179,7 @@ REST API では、要求の本文が次の構造の JSON ドキュメントで�
 
 ## <a name="call-the-service-c"></a>サービスを呼び出す (C#)
 
-この例では、C# を使用して、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb)例から作成された Web サービスを呼び出す方法を示します。
+この例では、C# を使用して、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/notebook_runner/training_notebook.ipynb)例から作成された Web サービスを呼び出す方法を示します。
 
 ```csharp
 using System;
@@ -501,7 +501,7 @@ print(resp.text)
 
 ## <a name="web-service-schema-openapi-specification"></a>Web サービスのスキーマ (OpenAPI 仕様)
 
-デプロイで自動スキーマ生成を使用した場合は、[swagger_uri プロパティ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#&preserve-view=trueswagger-uri)を使用して、サービスに対する OpenAPI 仕様のアドレスを取得できます。 (例: `print(service.swagger_uri)`)。仕様を取得するには、GET 要求を使用するか、ブラウザーで URI を開きます。
+デプロイで自動スキーマ生成を使用した場合は、[swagger_uri プロパティ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=trueswagger-uri)を使用して、サービスに対する OpenAPI 仕様のアドレスを取得できます。 (例: `print(service.swagger_uri)`)。仕様を取得するには、GET 要求を使用するか、ブラウザーで URI を開きます。
 
 次の JSON ドキュメントは、デプロイに対して生成されるスキーマ (OpenAPI 仕様) の例です。
 
@@ -643,7 +643,7 @@ print(resp.text)
 
 
 > [!TIP]
-> サービスをデプロイした後、スキーマ JSON ドキュメントを取得できます。 ローカル Web サービスの Swagger ファイルへの URI を取得するには、デプロイされた Web サービスの [swagger_uri プロパティ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#&preserve-view=trueswagger-uri)を使用します (例: `service.swagger_uri`)。
+> サービスをデプロイした後、スキーマ JSON ドキュメントを取得できます。 ローカル Web サービスの Swagger ファイルへの URI を取得するには、デプロイされた Web サービスの [swagger_uri プロパティ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=trueswagger-uri)を使用します (例: `service.swagger_uri`)。
 
 ## <a name="consume-the-service-from-power-bi"></a>Power BI からサービスを使用する
 

@@ -3,12 +3,12 @@ title: Azure Service Bus の geo ディザスター リカバリー | Microsoft 
 description: フェールオーバーに地理上の地域を使用して、Azure Service Bus のディザスター リカバリーを実行する方法
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: fcdeb499b8ebecc4ecddbfcbe32b812ce7e3efe5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c203ed197c1e5bfb15cfb503a04df79b85c630e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341478"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372525"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus の geo ディザスター リカバリー
 
@@ -149,7 +149,7 @@ Azure Portal を使用して、新しい名前空間でのみ Availability Zones
 > [!NOTE]
 > プライベート エンドポイントがあるプライマリ名前空間と任意のセカンダリ名前空間を組み合わせようとすると、検証プロセスで、セカンダリ名前空間にプライベート エンドポイントが存在するかどうかのみが確認されます。 エンドポイントが機能するかどうか、またはフェールオーバー後に機能するかどうかは確認されません。 フェールオーバー後に、プライベート エンドポイントがあるセカンダリ名前空間が予期したとおりに機能することをご自身で確認する必要があります。
 >
-> プライベート エンドポイント構成が同じであることをテストするには、仮想ネットワークの外部からセカンダリ名前空間に[キューの取得](/rest/api/servicebus/queues/get)要求を送信し、サービスからエラー メッセージを受信したことを確認します。
+> プライベート エンドポイント構成が同じであることをテストするには、仮想ネットワークの外部からセカンダリ名前空間に[キューの取得](/rest/api/servicebus/stable/queues/get)要求を送信し、サービスからエラー メッセージを受信したことを確認します。
 
 ### <a name="existing-pairings"></a>既存のペアリング
 プライマリ名前空間とセカンダリ名前空間のペアリングが既に存在する場合、プライマリ名前空間でのプライベート エンドポイントの作成は失敗します。 解決するには、まずセカンダリ名前空間にプライベート エンドポイントを作成し、次にプライマリ名前空間用に作成します。
@@ -179,7 +179,7 @@ Azure Portal を使用して、新しい名前空間でのみ Availability Zones
 
 ## <a name="next-steps"></a>次のステップ
 
-- geo ディザスター リカバリーの [REST API リファレンス](/rest/api/servicebus/disasterrecoveryconfigs)を確認する
+- geo ディザスター リカバリーの [REST API リファレンス](/rest/api/servicebus/stable/disasterrecoveryconfigs)を確認する
 - geo ディザスター リカバリーの[ GitHub のサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR2)を実行する
 - geo ディザスター リカバリーの[別名にメッセージを送信するサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/TestGeoDR/ConsoleApp1)を確認する
 

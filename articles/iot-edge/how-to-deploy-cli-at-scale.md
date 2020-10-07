@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: ebc4f25496588eeaffbfe89e110bad57dbbc848e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 8b9c8107c102409b717da0a277b7cdd360e9c8ee
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501561"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439667"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Azure CLI を使用した大規模な IoT Edge モジュールの展開と監視
 
@@ -29,7 +29,7 @@ Azure コマンドライン インターフェイスを使用して **IoT Edge �
 
 * Azure サブスクリプション内の [IoT ハブ](../iot-hub/iot-hub-create-using-cli.md)。
 * IoT Edge ランタイムがインストールされた [IoT Edge デバイス](how-to-register-device.md#prerequisites-for-the-azure-cli)。
-* ご使用の環境内の [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI のバージョンは、少なくとも 2.0.70 以降である必要があります。 検証するには、`az --version` を使用します。 このバージョンでは、az 拡張機能のコマンドがサポートされ、Knack コマンド フレームワークが導入されています。
+* ご使用の環境内の [Azure CLI](/cli/azure/install-azure-cli)。 Azure CLI のバージョンは、少なくとも 2.0.70 以降である必要があります。 検証するには、`az --version` を使用します。 このバージョンでは、az 拡張機能のコマンドがサポートされ、Knack コマンド フレームワークが導入されています。
 * [Azure CLI 向け IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)。
 
 ## <a name="configure-a-deployment-manifest"></a>配置マニフェストを構成する
@@ -183,7 +183,7 @@ Azure CLI を使用してモジュールをデプロイするには、配置マ�
 
 モジュールをターゲット デバイスに展開するには、配置マニフェストとその他のパラメーターで構成されるデプロイを作成します。
 
-デプロイを作成するには、[az iot edge deployment create](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment?view=azure-cli-latest#ext-azure-iot-az-iot-edge-deployment-create) コマンドを使用します。
+デプロイを作成するには、[az iot edge deployment create](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-create) コマンドを使用します。
 
 ```cli
 az iot edge deployment create --deployment-id [deployment id] --hub-name [hub name] --content [file path] --labels "[labels]" --target-condition "[target query]" --priority [int]
@@ -216,7 +216,7 @@ Azure CLI を使用してデプロイを監視するには、「[IoT Edge デプ
 
 デプロイ マニフェストで定義されたモジュールとルートを含むデプロイの内容は更新できません。 デプロイの内容を更新する場合は、同じデバイスをターゲットにした、より優先順位が高い新しいデプロイを作成することによって更新します。 ターゲット条件、ラベル、メトリック、優先順位など、既存のモジュールの特定のプロパティを変更できます。
 
-デプロイを更新するには、[az iot edge deployment update](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment?view=azure-cli-latest#ext-azure-iot-az-iot-edge-deployment-update) コマンドを使用します。
+デプロイを更新するには、[az iot edge deployment update](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-update) コマンドを使用します。
 
 ```cli
 az iot edge deployment update --deployment-id [deployment id] --hub-name [hub name] --set [property1.property2='value']
@@ -237,7 +237,7 @@ deployment update コマンドは、次のパラメーターを受け取りま�
 
 デプロイを削除すると、デバイスには、次に高い優先順位のデプロイが適用されます。 デバイスが他のいずれのデプロイの対象条件も満たさない場合、デプロイが削除されても、モジュールは削除されません。
 
-デプロイを削除するには、[az iot edge deployment delete](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment?view=azure-cli-latest#ext-azure-iot-az-iot-edge-deployment-delete) コマンドを使用します。
+デプロイを削除するには、[az iot edge deployment delete](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-delete) コマンドを使用します。
 
 ```cli
 az iot edge deployment delete --deployment-id [deployment id] --hub-name [hub name]

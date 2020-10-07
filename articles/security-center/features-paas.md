@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/01/2020
 ms.author: memildin
-ms.openlocfilehash: 7087fb7b1de0b16480d0bb02043b40e0e97204f6
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 4c56f8cba232220844a8a8f9c408a60c89c581cd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449950"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91613630"
 ---
 # <a name="feature-coverage-for-azure-paas-services"></a><a name="paas-services">Azure PaaS サービスを対象とする機能</a>
 
@@ -36,9 +36,9 @@ ms.locfileid: "91449950"
 |Azure Container Registry|-|-|✔|
 |Azure Cosmos DB*|-|✔|-|
 |Azure Data Lake Analytics|✔|-|-|
-|Azure Data Lake Storage|✔|-|-|
-|Azure Database for MySQL*|✔|✔|-|
-|Azure Database for PostgreSQL*|✔|✔|-|
+|Azure Data Lake Storage|✔|✔|-|
+|Azure Database for MySQL*|-|✔|-|
+|Azure Database for PostgreSQL*|-|✔|-|
 |Azure Event Hubs 名前空間|✔|-|-|
 |Azure Functions アプリ|✔|-|-|
 |Azure Key Vault|✔|✔|-|
@@ -49,7 +49,7 @@ ms.locfileid: "91449950"
 |Azure SQL Managed Instance|✔|✔|✔|
 |Azure Service Bus 名前空間|✔|-|-|
 |Azure Service Fabric アカウント|✔|-|-|
-|Azure Storage アカウント|✔|-|-|
+|Azure Storage アカウント|✔|✔|-|
 |Azure Stream Analytics|✔|-|-|
 |Azure サブスクリプション|✔ **|✔|-|
 |Azure Virtual Network</br> (サブネット、NIC、ネットワーク セキュリティ グループを含む)|✔|-|-|

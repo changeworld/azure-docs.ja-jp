@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: quickstart
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, carlrab, bonova
+ms.reviewer: sstein, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 0d10105648f434eb1d02a821e972e789bd39d66f
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 18f717ca05e93c9a8f06ac8868e9a6e5ff80eadb
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84708445"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355535"
 ---
 # <a name="quickstart-restore-a-database-to-azure-sql-managed-instance-with-ssms"></a>クイック スタート:SSMS を使用して Azure SQL Managed Instance にデータベースを復元する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -76,7 +76,7 @@ SQL Server Management Studio で、次の手順に従って、Wide World Importe
      'https://mitutorials.blob.core.windows.net/databases/WideWorldImporters-Standard.bak'
    ```
 
-    ![復元](./media/restore-sample-database-quickstart/restore.png)
+    ![オブジェクト エクスプローラーで実行され、成功メッセージが表示されたスクリプトを示すスクリーンショット。](./media/restore-sample-database-quickstart/restore.png)
 
 6. 次のスクリプトを実行して、復元の状態を追跡します。
 

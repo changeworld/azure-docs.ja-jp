@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 375191bbe6f45189fba50ea927454c0ec4f64678
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 55269b45159210eec2ec7a6dd8eaea661ff13ebd
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931286"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760308"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>課金データを Azure にアップロードして Azure portal に表示する
 
@@ -30,7 +30,7 @@ ms.locfileid: "90931286"
 - **間接接続** - Azure に直接接続することはできません。 データは、エクスポートとアップロードのプロセスを通してのみ Azure に送信されます。 現在のプレビューでは、Azure Arc データ サービスのすべてのデプロイはこのモードで動作します。
 - **直接接続** - このモードでは、Azure Arc 対応 Kubernetes サービスに存在する依存関係により、Azure と、Azure Arc 対応データ サービスが実行されている Kubernetes クラスターとの間に、直接接続が提供されます。 これにより、より多くの機能が有効になり、Azure PaaS でデータ サービスを管理するのと同じように、Azure portal と Azure CLI を使用して Azure Arc 対応データ サービスを管理することもできます。  この接続モードはプレビューではまだ使用できませんが、近日中に公開される予定です。
 
-[接続モード](/docs/connectivity.md)に関するページで、両者の違いの詳細を確認できます。
+[接続モード](https://docs.microsoft.com/azure/azure-arc/data/connectivity)に関するページで、両者の違いの詳細を確認できます。
 
 間接接続モードでの課金データは、Azure Arc データ コントローラーからセキュリティで保護されたファイルに定期的にエクスポートされた後、Azure にアップロードされて処理されます。  将来の直接接続モードでの課金データは、だいたい 1 時間に 1 回 Azure に自動的に送信され、サービスのコストをほぼリアルタイムで見ることができます。 間接接続モードでのデータのエクスポートとアップロードのプロセスは、スクリプトを使用して自動化でき、それを自動的に行うサービスが作成される可能性もあります。
 
