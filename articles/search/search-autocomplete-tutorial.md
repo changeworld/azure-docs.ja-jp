@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 8be53838f6262eaafc643bc78fd08b6f02d9bac6
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: dac1a09b7984cdc8deca22ced1e8018a761979e2
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660269"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531617"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>クライアント アプリにオートコンプリートと検索候補を追加する
 
@@ -56,8 +56,8 @@ REST および .NET SDK のリファレンス ページについては、以下�
 
 + [検索候補 REST API](/rest/api/searchservice/suggestions) 
 + [オートコンプリート REST API](/rest/api/searchservice/autocomplete) 
-+ [SuggestWithHttpMessagesAsync メソッド](/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet)
-+ [AutocompleteWithHttpMessagesAsync メソッド](/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
++ [SuggestWithHttpMessagesAsync メソッド](/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync)
++ [AutocompleteWithHttpMessagesAsync メソッド](/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync)
 
 ## <a name="structure-a-response"></a>応答の構造化
 
@@ -139,7 +139,7 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 ### <a name="suggest-function"></a>Suggest 関数
 
-C# と MVC アプリケーションを使用している場合は、Controllers ディレクトリにある **HomeController.cs** ファイルで、候補の結果用のクラスを作成できます。 .NET の場合、Suggest 関数は [DocumentsOperationsExtensions.Suggest メソッド](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet)に基づいています。 .NET SDK の詳細については、「[.NET アプリケーションから Azure Cognitive Search を使用する方法](./search-howto-dotnet-sdk.md)」を参照してください。
+C# と MVC アプリケーションを使用している場合は、Controllers ディレクトリにある **HomeController.cs** ファイルで、候補の結果用のクラスを作成できます。 .NET の場合、Suggest 関数は [DocumentsOperationsExtensions.Suggest メソッド](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest)に基づいています。 .NET SDK の詳細については、「[.NET アプリケーションから Azure Cognitive Search を使用する方法](./search-howto-dotnet-sdk.md)」を参照してください。
 
 `InitSearch` メソッドにより、Azure Cognitive Search サービスに対して認証済みの HTTP インデックス クライアントが作成されます。 [SuggestParameters](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggestparameters) クラスのプロパティによって、結果で検索され返されるフィールド、一致の数、およびあいまい一致を使用するかどうかが決まります。 
 
@@ -177,7 +177,7 @@ public ActionResult Suggest(bool highlights, bool fuzzy, string term)
 }
 ```
 
-Suggest 関数は、ヒットの強調表示が返されるかどうか、および入力された検索用語に加えてあいまい一致も使用するかどうかを決定する 2 つのパラメーターを使用します。 このメソッドは、検索候補 API に渡される [SuggestParameters](/dotnet/api/microsoft.azure.search.models.suggestparameters?view=azure-dotnet) オブジェクトを作成します。 結果は、クライアントに表示できるように JSON に変換されます。
+Suggest 関数は、ヒットの強調表示が返されるかどうか、および入力された検索用語に加えてあいまい一致も使用するかどうかを決定する 2 つのパラメーターを使用します。 このメソッドは、検索候補 API に渡される [SuggestParameters](/dotnet/api/microsoft.azure.search.models.suggestparameters) オブジェクトを作成します。 結果は、クライアントに表示できるように JSON に変換されます。
 
 ## <a name="autocomplete"></a>オートコンプリート
 
@@ -220,7 +220,7 @@ $(function () {
 
 ### <a name="autocomplete-function"></a>Autocomplete 関数
 
-オートコンプリートは、[DocumentsOperationsExtensions.Autocomplete メソッド](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete?view=azure-dotnet)に基づいています。 検索候補と同様に、このコード ブロックは **HomeController.cs** ファイル内にあります。
+オートコンプリートは、[DocumentsOperationsExtensions.Autocomplete メソッド](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete)に基づいています。 検索候補と同様に、このコード ブロックは **HomeController.cs** ファイル内にあります。
 
 ```csharp
 public ActionResult AutoComplete(string term)

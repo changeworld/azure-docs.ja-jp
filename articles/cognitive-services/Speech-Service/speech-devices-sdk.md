@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: 4ec153a9c770b0001888c972dc44414470e3ddbf
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 560c156c8e2c3d69c099b2ad573fa0d214f3f80b
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84730307"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355076"
 ---
 # <a name="what-is-the-speech-devices-sdk"></a>Speech Devices SDK とは
 
@@ -60,4 +60,4 @@ Linux の場合、サンプル アプリケーションは、クロスプラッ�
 > [!div class="nextstepaction"]
 > [Speech Device を選択する](get-speech-devices-sdk.md)
 > [!div class="nextstepaction"]
-> [Speech サービスのサブスクリプション キーを無料で取得する](get-started.md)
+> [Speech サービスのサブスクリプション キーを無料で取得する](overview.md#try-the-speech-service-for-free)

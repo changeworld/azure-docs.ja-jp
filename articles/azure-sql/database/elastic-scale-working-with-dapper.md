@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: b1bba5c4ff71806ac054b4d16585881570cf589a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 617ecc6b2eccab3a123f4d3cbc2fb96a40d15f11
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829365"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442668"
 ---
 # <a name="using-the-elastic-database-client-library-with-dapper"></a>Dapper でのエラスティック データベース クライアント ライブラリの使用
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: d453bb4071c4a6972e01b8f7e90375181caf6d01
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9d8bd72b6a03164a41e0b7c0ff00ac728cecf7f5
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74806526"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355385"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>トランザクションとオプティミスティック同時実行制御
 
@@ -55,7 +55,7 @@ JavaScript ベースのストアド プロシージャ、トリガー、UDF、�
 
 Azure Cosmos コンテナーに格納されている項目はすべて、システム定義の `_etag` プロパティを備えています。 `_etag` の値は、項目が更新されるたびに、サーバーによって自動的に作成および更新されます。 `_etag` をクライアントによって指定される `if-match` 要求ヘッダーと共に使用して、サーバーで項目を条件付きで更新できるどうかを判別できます。 `if-match` ヘッダーの値がサーバーでの `_etag` の値と一致すると、項目が更新されます。 `if-match` 要求ヘッダーの値が最新ではなくなると、操作はサーバーによって拒否され、"HTTP 412 前提条件エラー" という応答メッセージが返されます。 その後、クライアントでは項目の再フェッチを行って、サーバー上の項目の現在のバージョンを取得したり、サーバーにある項目のバージョンを、その項目に対する独自の `_etag` 値でオーバーライドしたりできます。 また、`_etag` を `if-none-match` ヘッダーと共に使用して、リソースの再フェッチが必要かどうかを判断できます。
 
-項目の `_etag` 値は、項目が更新されるたびに変更されます。 項目の置換操作の場合、`if-match` が要求オプションの一部として明示されている必要があります。 例については、[GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L578-L674) 内のサンプル コードを参照してください。 ストアド プロシージャによって影響を受けたすべての書き込み項目について、`_etag` 値が暗黙的にチェックされます。 競合が検出されると、ストアド プロシージャによってトランザクションがロールバックされ、例外がスローされます。 この方法では、ストアド プロシージャ内のすべての書き込みまたは書き込みなしがアトミックに適用されます。 これは、更新を再び適用し、元のクライアント要求を再試行することをアプリケーションに求めるシグナルです。
+項目の `_etag` 値は、項目が更新されるたびに変更されます。 項目の置換操作の場合、`if-match` が要求オプションの一部として明示されている必要があります。 例については、[GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L676-L772) 内のサンプル コードを参照してください。 ストアド プロシージャによって影響を受けたすべての書き込み項目について、`_etag` 値が暗黙的にチェックされます。 競合が検出されると、ストアド プロシージャによってトランザクションがロールバックされ、例外がスローされます。 この方法では、ストアド プロシージャ内のすべての書き込みまたは書き込みなしがアトミックに適用されます。 これは、更新を再び適用し、元のクライアント要求を再試行することをアプリケーションに求めるシグナルです。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -4,17 +4,17 @@ description: このドキュメントでは、Transport Layer Security (TLS) バ
 services: sql-database
 ms.service: sql-database
 titleSuffix: Azure SQL Database and Azure Synapse Analytics (formerly SQL Data Warehouse)
-ms.topic: conceptual
+ms.topic: how-to
 author: rohitnayakmsft
 ms.author: rohitna
-ms.reviewer: carlrab, vanto
+ms.reviewer: sstein, vanto
 ms.date: 07/06/2020
-ms.openlocfilehash: f664ffbfc9aa38dcf8eb7736b28613efb95bde63
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: eab9004b37da83b5d571ff700c32215354286c94
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89438179"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443854"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL の接続の設定
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -76,7 +76,7 @@ To manage server or database level firewall rules, please enable the public netw
 # Update Public Network Access to Disabled
 $SecureString = ConvertTo-SecureString "password" -AsPlainText -Force
 
-Set-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group -SqlAdministratorPassword $SecureString -PublicNetworkAccess "Enabled"
+Set-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group -SqlAdministratorPassword $SecureString -PublicNetworkAccess "Disabled"
 ```
 
 ## <a name="change-public-network-access-via-cli"></a>CLI を使用してパブリック ネットワーク アクセスを変更する

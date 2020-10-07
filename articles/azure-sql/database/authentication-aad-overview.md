@@ -6,17 +6,17 @@ ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: azure-synapse, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: GithubMirek
 ms.author: mireks
-ms.reviewer: vanto, carlrab
+ms.reviewer: vanto, sstein
 ms.date: 04/23/2020
-ms.openlocfilehash: 943569a16101ac170d01d08250b31ba67c0e590e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: d90cc76da20861ae9eca7aaf59a49e5f3e866c92
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434284"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91444424"
 ---
 # <a name="use-azure-active-directory-authentication"></a>Azure Active Directory 認証を使用する
 
@@ -168,7 +168,7 @@ Azure AD サーバー プリンシパル (ログイン) では、次の認証方
 - SQL Database のログイン、ユーザー、データベース ロール、アクセス許可の概要については、[ログイン、ユーザー、データベース ロール、およびアクセス許可](logins-create-manage.md)に関するページを参照してください。
 - データベース プリンシパルの詳細については、「[プリンシパル](https://msdn.microsoft.com/library/ms181127.aspx)」を参照してください。
 - データベース ロールの詳細については、[データベース ロール](https://msdn.microsoft.com/library/ms189121.aspx)に関するページを参照してください。
-- SQL Managed Instance 用の Azure AD サーバー プリンシパル (ログイン) の作成の構文については、「[CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)」を参照してください。
+- SQL Managed Instance 用の Azure AD サーバー プリンシパル (ログイン) の作成の構文については、「[CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true)」を参照してください。
 - SQL Database のファイアウォール規則の詳細については、[SQL Database のファイアウォール規則](firewall-configure.md)に関するページを参照してください。
 
 <!--Image references-->

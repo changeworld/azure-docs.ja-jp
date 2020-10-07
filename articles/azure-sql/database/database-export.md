@@ -8,15 +8,15 @@ ms.subservice: data-movement
 author: stevestein
 ms.custom: sqldbrb=2
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 07/16/2019
-ms.topic: conceptual
-ms.openlocfilehash: 10d10ccfbd04a52f6d522700d66d2c959fed24ee
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.topic: how-to
+ms.openlocfilehash: b91b7175fa4c7b91fec63a817206fa540813bdb7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982418"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443809"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>BACPAC ファイルへのエクスポート - Azure SQL Database および Azure SQL Managed Instance
 

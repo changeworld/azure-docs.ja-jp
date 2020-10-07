@@ -6,17 +6,17 @@ ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 12/03/2019
-ms.openlocfilehash: e7a3dd1c58f2bddb767dcac4ac2b5e354be77f65
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 35fc4b18ee5a98270f715a969354df2be5000150
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90981450"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91444094"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>クエリの監視とワークロード パフォーマンスの向上のために Azure portal で自動チューニングを有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -28,7 +28,7 @@ Azure SQL Database では、データ サービスが自動的に管理されま
 
 - [Azure Portal](automatic-tuning-enable.md#azure-portal)
 - [REST API](automatic-tuning-enable.md#rest-api) 呼び出し
-- [T-SQL](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) コマンド
+- [T-SQL](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current&preserve-view=true) コマンド
 
 > [!NOTE]
 > Azure SQL Managed Instance でサポートされているオプション FORCE_LAST_GOOD_PLAN は、[T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management) を使用してのみ構成できます。 この記事で説明している Azure portal ベースの構成とインデックスの自動チューニング オプションは、Azure SQL Managed Instance には適用されません。
@@ -109,7 +109,7 @@ ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_I
 > [アクティブ geo レプリケーション](auto-failover-group-overview.md)の場合、プライマリ データベースのみで自動チューニングを構成する必要があります。 インデックスの作成や削除など、自動的に適用されるチューニング アクションは、読み取り専用のセカンダリに自動的にレプリケートされます。 読み取り専用のセカンダリで T-SQL を使用して自動チューニングを有効にしようとすると、その読み取り専用のセカンダリで別のチューニング構成を使用することはサポートされていないため、失敗します。
 >
 
-自動チューニングを構成する T-SQL のオプションの詳細については、[ALTER DATABASE SET オプション (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) に関するページを参照してください。
+自動チューニングを構成する T-SQL のオプションの詳細については、[ALTER DATABASE SET オプション (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current&preserve-view=true) に関するページを参照してください。
 
 ## <a name="disabled-by-the-system"></a>システムによる無効化
 
