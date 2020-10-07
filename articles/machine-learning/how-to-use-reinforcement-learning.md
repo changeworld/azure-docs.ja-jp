@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: d3a7b04e6169df21ad30017b72f70ff667429b23
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6221b36263b55f54faef18d6596f97c5b3798d3d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902379"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541715"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure Machine Learning での強化学習 (プレビュー)
 
@@ -215,7 +215,7 @@ else:
 
 このセクションでは、[ReinforcementLearningEstimator](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py&preserve-view=true) を使用して、Azure Machine Learning にトレーニング ジョブを送信する方法について説明します。
 
-Azure Machine Learning では、推定器クラスを使用して、実行の構成情報がカプセル化されます。 これにより、スクリプトの実行の構成方法を簡単に指定できます。 Azure Machine Learning の推定器のパターンの詳細については、[推定器を使用してモデルをトレーニングする方法](how-to-train-ml-models.md)に関するページを参照してください。
+Azure Machine Learning では、推定器クラスを使用して、実行の構成情報がカプセル化されます。 これにより、スクリプトの実行の構成方法を簡単に指定できます。 
 
 ### <a name="define-a-worker-configuration"></a>ワーカーの構成を定義する
 
@@ -399,7 +399,7 @@ def on_train_result(info):
 
 ## <a name="submit-a-run"></a>実行を送信する
 
-[Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py&preserve-view=true) では、進行中のジョブまたは完了したジョブの実行履歴が処理されます。 
+[Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) では、進行中のジョブまたは完了したジョブの実行履歴が処理されます。 
 
 ```python
 run = exp.submit(config=rl_estimator)

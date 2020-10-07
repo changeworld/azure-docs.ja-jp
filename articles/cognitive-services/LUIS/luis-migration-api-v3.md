@@ -1,15 +1,16 @@
 ---
 title: V3 API での予測エンドポイントの変更
 description: クエリ予測エンドポイント V3 API が変更されています。 このガイドでは、バージョン 3 のエンドポイント API に移行する方法について説明します。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.author: diberry
-ms.openlocfilehash: d3d8f4d77793390484c64b03393fb528dfa643b7
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: a5760db2d6e453d631680d6154e6d9a03ce55cd6
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85610882"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541341"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>V3 の予測エンドポイントの変更
 

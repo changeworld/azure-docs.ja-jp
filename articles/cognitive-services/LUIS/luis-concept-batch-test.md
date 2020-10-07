@@ -3,20 +3,18 @@ title: バッチ テスト - LUIS
 titleSuffix: Azure Cognitive Services
 description: バッチ テストを使用して、アプリケーションの改善とその言語解釈の向上に継続的に取り組みます。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.author: diberry
-ms.openlocfilehash: a5ebd9b05b2dea9e04d4c9745c13d692ea88fcb8
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f3a8f5ef8119d9895f67e07ea1b68c660be59f9b
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680425"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541868"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>LUIS ポータルで 1000 件の発話をバッチ テストする
 

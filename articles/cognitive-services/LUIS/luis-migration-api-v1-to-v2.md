@@ -3,20 +3,18 @@ title: v1 から v2 への API の移行
 titleSuffix: Azure Cognitive Services
 description: バージョン 1 のエンドポイントとオーサリングに関する Language Understanding API は非推奨となりました。 このガイドでは、バージョン 2 のエンドポイントとオーサリング API に移行する方法について説明します。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 04/02/2019
-ms.author: diberry
-ms.openlocfilehash: c5880aac01e0611565afb825a61b682197baf5d6
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: e1e9ac4ceef843712cc2e39f26ff0aca5341e201
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344749"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541324"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>LUIS アプリの API v1 から v2 への移行ガイド
 バージョン 1 の[エンドポイント](https://aka.ms/v1-endpoint-api-docs)と[オーサリング](https://aka.ms/v1-authoring-api-docs) API は非推奨となりました。 このガイドでは、バージョン 2 の[エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356)と[オーサリング](https://go.microsoft.com/fwlink/?linkid=2092087) API に移行する方法について説明します。
