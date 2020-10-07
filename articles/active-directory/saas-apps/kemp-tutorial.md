@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 1d974badd715d7966f552603a77d77aab95d70f7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 68869d464df01d3cc89493c64d66511b4a6f369d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549969"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300035"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-kemp-loadmaster-azure-ad-integration"></a>チュートリアル:Azure Active Directory SSO と Kemp LoadMaster Azure AD integration の統合
 
@@ -139,7 +139,7 @@ Kemp LoadMaster Azure AD integration で Azure AD SSO を構成してテスト�
 
 ### <a name="create-a-virtual-service"></a>仮想サーバーを作成する 
 
-1. Kemp LoadMaster Azure AD integration の [Load Master Web UI]\(マスター Web UI の読み込み\) > [Virtual Services]\(仮想サービス\) > [Add New]\(新規追加\) に移動します。
+1. Kemp LoadMaster Azure AD integration の LoadMaster Web UI > [Virtual Services]\(仮想サービス\) > [Add New]\(新規追加\) に移動します。
 
 1. [Add New]\(新規追加\) をクリックします。
 
@@ -197,11 +197,11 @@ Kemp LoadMaster Azure AD integration で Azure AD SSO を構成してテスト�
 
 ### <a name="ssl-acceleration"></a>SSL アクセラレーション
  
-1. Kemp Load Master Web UI > [Virtual Services]\(仮想サービス\) > [Virtual Services]\(仮想サービス\) に移動します。
+1. Kemp LoadMaster Web UI > [Virtual Services]\(仮想サービス\) > [View/Modify Services]\(サービスの表示または変更\) に移動します。
 
 1. [Operation]\(操作\) の [Modify]\(変更\) をクリックします。
 
-1. [Properties for tcp/x.x.x.:443 (ID:6) - Operating at Layer 7]\(tcp/x.x.x.:443 (ID:6) のプロパティ - レイヤー 7 での操作\) の [SSL Properties]\(SSL のプロパティ\) をクリックします。
+1. [SSL Properties]\(SSL のプロパティ\) (レイヤー7 で動作します) をクリックします。
     
     ![Kemp LoadMaster Azure AD integration Web サーバー](./media/kemp-tutorial/kemp-3.png)
     

@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:Microsoft Azure Maps を使用して IoT 空間分析を実装する
-description: IoT Hub を Azure Maps サービス API シリーズと統合します。
+title: チュートリアル:IoT 空間分析を実装する | Microsoft Azure Maps
+description: IoT Hub を Microsoft Azure Maps サービス API に統合する方法に関するチュートリアルです
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/01/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 25665e75a361fbaa5479e2717d5e6aa9290c3d3a
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 3eb405783b16d1bb7de27f6638dba394457601c8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056570"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321834"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用して IoT 空間分析を実装する
 
@@ -131,7 +131,7 @@ Azure Maps Data Upload API を使用してジオフェンスをアップロー�
 
     URL パス内の `dataFormat` パラメーターに対する `geojson` 値は、アップロードするデータの形式を表します。
 
-4. 入力形式として **[本文]**  >  **[raw]\(未加工\)** を選択し、ドロップダウンリストから **[JSON]** を選択します。 [JSON データ ファイルを開き](https://raw.githubusercontent.com/Azure-Samples/iothub-to-azure-maps-geofencing/master/src/Data/geofence.json?token=AKD25BYJYKDJBJ55PT62N4C5LRNN4)、JSON を body セクションにコピーします。 **[送信]** を選択します。
+4. 入力形式として **[本文]**  >  **[raw]\(未加工\)** を選択し、ドロップダウンリストから **[JSON]** を選択します。 [JSON データ ファイルを開き](https://raw.githubusercontent.com/Azure-Samples/iothub-to-azure-maps-geofencing/master/src/Data/geofence.json?token=AKD25BYJYKDJBJ55PT62N4C5LRNN4)、JSON を body セクションにコピーします。 **[Send]** を選択します。
 
 5. **[Send]\(送信\)** を選択し、要求が処理されるまで待ちます。 要求が完了したら、応答の **[Headers]\(ヘッダー\)** タブに移動します。 **Location** キーの値である `status URL` をコピーします。
 
@@ -253,6 +253,7 @@ Azure 関数が実行されると、テレメトリ データを IoT ハブに�
     dotnet run
     ```
 
+
   ローカル ターミナルは次のようになります。
 
 :::image type="content" source="./media/tutorial-iot-hub-maps/terminal.png" alt-text="システムの概要図。":::
@@ -276,8 +277,6 @@ Azure Maps REST API シリーズの完全な一覧については、次を参照
 
 * [Azure Maps REST API シリーズ](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence)
 
-IoT プラグ アンド プレイの詳細については、次を参照してください。
-
 * [IoT プラグ アンド プレイ](https://docs.microsoft.com/azure/iot-pnp)
 
 Azure で IoT の認定を受けたデバイスの一覧を取得するには、次のページにアクセスします。
@@ -287,6 +286,7 @@ Azure で IoT の認定を受けたデバイスの一覧を取得するには、
 ## <a name="next-steps"></a>次の手順
 
 device-to-cloud、およびその逆方向にテレメトリを送信する方法については、次を参照してください。
+
 
 > [!div class="nextstepaction"]
 > [デバイスから利用統計情報を送信する](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet)

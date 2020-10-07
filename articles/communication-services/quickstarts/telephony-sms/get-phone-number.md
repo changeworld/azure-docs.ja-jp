@@ -9,12 +9,12 @@ ms.date: 07/09/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
-ms.openlocfilehash: 2743dc0164f604c9c5e033aacc3e58fae42a1fd2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f5cf8f8ef004dacc9fe2bbdd1b815f2ae5275311
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90946054"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298118"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して電話番号を取得する
 
@@ -37,13 +37,13 @@ Azure portal を使用して電話番号を購入することで、Azure Communi
 
 リソース メニューで [Phone Numbers]\(電話番号\) ブレードに移動します。
 
-:::image type="content" source="../media/manage-phone-azure-portal-phone-page.png" alt-text="Communication Services リソースの電話のページを示すスクリーンショット。":::
+:::image type="content" source="../media/manage-phone-azure-portal-phone-page.png" alt-text="Communication Services リソースのメイン ページを示すスクリーンショット。":::
 
 [`Get`] ボタンをクリックしてウィザードを起動します。 [`Phone numbers`] ブレードのウィザードでは、自分のシナリオに最適な電話番号を選択するのに役立つ一連の質問が表示されます。 
 
 まず、電話番号をプロビジョニングする [`Country/region`] を選択する必要があります。 国または地域を選択したら、自分のニーズに最も適した [`phone plan`] を選択する必要があります。 
 
-:::image type="content" source="../media/manage-phone-azure-portal-get-numbers.png" alt-text="[Get phone numbers]\(電話番号の取得\) ビューを示すスクリーンショット。":::
+:::image type="content" source="../media/manage-phone-azure-portal-get-numbers.png" alt-text="Communication Services リソースのメイン ページを示すスクリーンショット。":::
 
 ### <a name="select-a-phone-plan"></a>電話プランを選択する
 
@@ -60,13 +60,13 @@ Azure portal を使用して電話番号を購入することで、Azure Communi
 
 この例では、`Toll-free`という番号の種類と共に`Outbound calling`プランを選択しました。
 
-:::image type="content" source="../media/manage-phone-azure-portal-select-plans.png" alt-text="[Select plans]\(プランの選択\) ビューを示すスクリーンショット。":::
+:::image type="content" source="../media/manage-phone-azure-portal-select-plans.png" alt-text="Communication Services リソースのメイン ページを示すスクリーンショット。":::
 
 ### <a name="declare-purpose"></a>目的を宣言する
 
 次に、このウィザードでは、番号の使用目的についてたずねられます。 この情報は、税と緊急通話の適切な規制を適用するために収集されます。
 
-:::image type="content" source="../media/quickstart-search-and-acquire-bot-or-human.png" alt-text="電話番号の取得プロセス内でのボットまたは人間の選択を示すスクリーンショット。":::
+:::image type="content" source="../media/quickstart-search-and-acquire-bot-or-human.png" alt-text="Communication Services リソースのメイン ページを示すスクリーンショット。":::
 
 ここで、ページの下部にある [`Next: Numbers`] ボタンをクリックして、プロビジョニングする電話番号をカスタマイズします。
 
@@ -74,14 +74,14 @@ Azure portal を使用して電話番号を購入することで、Azure Communi
 
 [`Numbers`] ページで、プロビジョニングする電話番号をカスタマイズします。
 
-:::image type="content" source="../media/manage-phone-azure-portal-select-numbers-start.png" alt-text="[Numbers]\(番号\) ページを示すスクリーンショット。":::
+:::image type="content" source="../media/manage-phone-azure-portal-select-numbers-start.png" alt-text="Communication Services リソースのメイン ページを示すスクリーンショット。":::
 
 > [!NOTE]
 > このクイックスタートでは、番号の種類が`Toll-free`のカスタマイズ フローを示しています。 番号の種類として [`Geographic`] を選択した場合は操作が多少異なる場合がありますが、最終的な結果は同じになります。
 
 利用可能な市外局番の一覧から`Area code`を選択し、プロビジョニングする数量を入力した後、[`Search`] をクリックして、選択した要件を満たす番号を見つけます。 自分のニーズに合った電話番号が月額料金と共に表示されます。
 
-:::image type="content" source="../media/manage-phone-azure-portal-found-numbers.png" alt-text="予約済み番号が表示された番号の選択ページを示すスクリーンショット。":::
+:::image type="content" source="../media/manage-phone-azure-portal-found-numbers.png" alt-text="Communication Services リソースのメイン ページを示すスクリーンショット。":::
 
 > [!NOTE]
 > 使用できるかどうかは、選択した番号の種類、場所、プランによって異なります。
@@ -98,7 +98,7 @@ Azure portal を使用して電話番号を購入することで、Azure Communi
 
 最後に、ページの下部にある [`Place order`] をクリックして確定します。
 
-:::image type="content" source="../media/manage-phone-azure-portal-get-numbers-summary.png" alt-text="番号の種類、機能、電話番号、総月額料金が表示された概要ページを示すスクリーンショット。":::
+:::image type="content" source="../media/manage-phone-azure-portal-get-numbers-summary.png" alt-text="Communication Services リソースのメイン ページを示すスクリーンショット。":::
 
 ## <a name="find-your-phone-numbers-on-the-azure-portal"></a>Azure portal で電話番号を検索する
 
@@ -108,7 +108,7 @@ Azure portal を使用して電話番号を購入することで、Azure Communi
 
 メニューの [Phone Numbers]\(電話番号\) タブを選択して、電話番号を管理します。
 
-:::image type="content" source="../media/manage-phone-azure-portal-phones.png" alt-text="Communication Services リソースの電話番号のページを示すスクリーンショット。":::
+:::image type="content" source="../media/manage-phone-azure-portal-phones.png" alt-text="Communication Services リソースのメイン ページを示すスクリーンショット。":::
 
 > [!NOTE]
 > プロビジョニングされた番号がこのページに表示されるまでに数分かかる場合があります。
@@ -117,7 +117,7 @@ Azure portal を使用して電話番号を購入することで、Azure Communi
 
 よくある質問と問題:
 
-- 現在、電話番号の購入がサポートされているのは、米国とカナダだけです。 これは、リソースが関連付けられているサブスクリプションの請求先住所に基づきます。 現時点では、リソースを別のサブスクリプションに移動することはできません。
+- 現在、電話番号の購入がサポートされているのは、米国だけです。 これは、リソースが関連付けられているサブスクリプションの請求先住所に基づきます。 現時点では、リソースを別のサブスクリプションに移動することはできません。
 
 - 電話番号が削除されても、その電話番号はリリースされず、請求サイクルが終了するまで再購入することはできません。
 

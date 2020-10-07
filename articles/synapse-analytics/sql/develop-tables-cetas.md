@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: d33403f49429398d9bc006187c23bb8091d9b4a1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 93f23cdcfb3fb7107e3b1838b48b3e58ccc2d028
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885340"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288768"
 ---
 # <a name="cetas-with-synapse-sql"></a>Synapse SQL での CETAS
 
@@ -29,8 +29,7 @@ SQL プールまたは SQL オンデマンド (プレビュー) の CREATE EXTER
 
 ## <a name="cetas-in-sql-pool"></a>SQL プールでの CETAS
 
-SQL プールの CETAS の使用法と構文については、「[CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」の記事をご覧ください。 また、SQL プールを使用した CTAS のガイダンスについては、[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) に関する記事を参照してください。
-SQL プールの CETAS の使用法と構文については、「[CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」の記事をご覧ください。 また、SQL プールを使用した CTAS のガイダンスについては、[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) に関する記事を参照してください。
+SQL プールの場合、CETAS の使用法と構文については、[CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) に関する記事をご覧ください。 また、SQL プールを使用した CTAS のガイダンスについては、[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) に関する記事を参照してください。
 
 ## <a name="cetas-in-sql-on-demand"></a>SQL オンデマンドでの CETAS
 
@@ -159,7 +158,7 @@ CETAS を使用して、次の SQL データ型の結果セットを格納でき
 - bit
 
 > [!NOTE]
-> LOB は CETAS では使用できません。
+> LOB を CETAS と共に使用することはできません。
 
 次のデータ型は、CETAS の SELECT 部分では使用できません。
 

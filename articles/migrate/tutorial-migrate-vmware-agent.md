@@ -4,12 +4,12 @@ description: Azure Migrate を使用して VMware VM のエージェントベー
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: bf33c61783b6d7399cd880f53009033a97625bca
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: f437c0f3b9f786863d3b58f10d1a7384b0f1e8ba
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378850"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296146"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware VM を Azure に移行する (エージェントベース)
 
@@ -251,7 +251,7 @@ OVF テンプレートのダウンロード後、それを VMware にインポ�
 
 1. Azure Migrate プロジェクトの **[サーバー]** の **[Azure Migrate: Server Migration]** で、 **[レプリケート]** をクリックします。
 
-    ![VM をレプリケートする](./media/tutorial-migrate-vmware-agent/select-replicate.png)
+    ![Azure Migrate の [サーバー] 画面のスクリーンショット。 Azure Migrate で [レプリケート] ボタンが選択されています。移行ツールでのサーバーの移行。](./media/tutorial-migrate-vmware-agent/select-replicate.png)
 
 2. **[レプリケート]** > **[ソースの設定]**  >  **[マシンは仮想化されていますか?]** で、 **[はい (VMware vSphere の場合)]** を選択します。
 3. **[オンプレミスのアプライアンス]** で、自分が設定した Azure Migrate アプライアンスの名前を選択します。
@@ -259,7 +259,7 @@ OVF テンプレートのダウンロード後、それを VMware にインポ�
 5. **[プロセス サーバー]** で、レプリケーション アプライアンスの名前を選択します。
 6. **[ゲストの資格情報]** で、モビリティ サービスのプッシュ インストールに使用される VM 管理アカウントを指定します。 その後、 **[次へ:仮想マシン]** をクリックします。
 
-    ![VM をレプリケートする](./media/tutorial-migrate-vmware-agent/source-settings.png)
+    ![[レプリケート] 画面の [ソース設定] タブのスクリーンショット。 [ゲストの資格情報] フィールドが強調表示され、値に "VM-admin-account" が設定されます。](./media/tutorial-migrate-vmware-agent/source-settings.png)
 
 7. **[仮想マシン]** で、レプリケートするマシンを選択します。
 

@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:マップ上の近くの場所を検索する | Microsoft Azure Maps
-description: マップ上で目的地を検索する方法について説明します。 Azure Maps Web SDK を使用して、検索機能と対話型のポップアップ ボックスをマップに追加する方法をご覧ください。
+description: マップ上で目的地を検索する方法に関するチュートリアルです。 Azure Maps Web SDK を使用して、検索機能と対話型のポップアップ ボックスをマップに追加する方法をご覧ください。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 1/15/2020
@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 6ed463cbda3ceb560f907529dc8de54a772932ea
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 4d6728d4fbde4b7d6cc8ed06e961642264ad31bc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085078"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321698"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>チュートリアル:Azure Maps を使用して近くの目的地を検索する
 
@@ -26,44 +26,14 @@ ms.locfileid: "90085078"
 > * マップ コントロール API を使って新しい Web ページを作成する
 > * Maps 検索サービスを使って近くの目的地を検索する
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
-
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
-
-[Azure portal](https://portal.azure.com) にサインインします。
+## <a name="prerequisites"></a>前提条件
 
 <a id="createaccount"></a>
-
-## <a name="create-an-account-with-azure-maps"></a>Azure Maps でアカウントを作成する
-
-次の手順で新しい Maps アカウントを作成します。
-
-1. [Azure Portal](https://portal.azure.com) の左上隅にある **[リソースの作成]** をクリックします。
-2. *[Marketplace を検索]* ボックスに「**Maps**」と入力します。
-3. *[結果]* から **[Maps]** を選択します。 マップの下に表示される **[作成]** ボタンをクリックします。
-4. **[Azure Maps アカウントの作成]** ページで、次の値を入力します。
-    * このアカウントで使う "*サブスクリプション*"。
-    * このアカウントの "*リソース グループ*" の名前。 *[新規作成]* を選んで新しく作成することも、 *[既存のものを使用]* を選んで既存のリソース グループを使うこともできます。
-    * 新しいアカウントの "*名前*"。
-    * このアカウントの "*価格レベル*"。
-    * *[ライセンス]* と *[プライバシーに関する声明]* の内容を読み、チェック ボックスをオンにして条件に同意します。
-    * **[作成]** ボタンをクリックします。
-
-![Azure portal で Azure Maps アカウントを作成する](./media/tutorial-search-location/create-account.png)
-
 <a id="getkey"></a>
 
-## <a name="get-the-primary-key-for-your-account"></a>アカウントの主キーを取得する
-
-Maps アカウントが正常に作成されたら、Maps API のクエリを実行できるキーを取得します。 Azure Maps サービスを呼び出す際は、ご利用のアカウントの主キーをサブスクリプション キーに使用することをお勧めします。
-
-1. ポータルで、Maps アカウントを開きます。
-2. [設定] セクションで **[認証]** を選択します。
-3. **[主キー]** をクリップボードにコピーします。 このチュートリアルで後ほど使用するためにローカルに保存します。
-
-![Azure portal で主キーを取得する](./media/tutorial-search-location/get-key.png)
-
-Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](how-to-manage-authentication.md)」を参照してください。
+1. [Azure portal](https://portal.azure.com) にサインインします。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+2. [Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [プライマリ サブスクリプション キー (主キーまたはサブスクリプション キーとも呼ばれます) を取得します](quick-demo-map-app.md#get-the-primary-key-for-your-account)。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](how-to-manage-authentication.md)」を参照してください。
 
 <a id="createmap"></a>
 
@@ -275,21 +245,9 @@ Azure Maps での認証の詳細については、「[Azure Maps での認証の
 
     ![Azure マップ コントロールと Search Service](./media/tutorial-search-location/popup-map.png)
 
-## <a name="next-steps"></a>次のステップ
+このチュートリアルの完全なコードを表示するには、[こちら](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html)をクリックしてください。 ライブ サンプルを表示するには、[こちら](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest)をクリックしてください。
 
-このチュートリアルでは、以下の内容を学習しました。
-
-> [!div class="checklist"]
-> * Azure Maps でアカウントを作成する
-> * アカウントの主キーを取得する
-> * マップ コントロール API を使って新しい Web ページを作成する
-> * Search Service を使って近くの目的地を検索する
-
-> [!div class="nextstepaction"]
-> [ソース コード全体を見る](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html)
-
-> [!div class="nextstepaction"]
-> [ライブ サンプルを見る](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest)
+## <a name="next-steps"></a>次の手順
 
 次のチュートリアルでは、2 つの場所間のルートを表示する方法を示します。
 

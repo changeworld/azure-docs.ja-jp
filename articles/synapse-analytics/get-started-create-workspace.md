@@ -9,14 +9,18 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 08/27/2020
-ms.openlocfilehash: 78ec233e618511c748ed9f51b97161eddc5e8308
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: f5851174ba223bd0ab48512b9e75449dcc927a04
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707528"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300107"
 ---
-# <a name="create-a-synapse-workspace"></a>Synapse ワークスペースを作成する
+# <a name="prerequisites"></a>前提条件
+
+このチュートリアルの手順をすべて完了するには、**所有者**ロールが割り当てられているリソース グループにアクセスできる必要があります。 このリソース グループで Synapse ワークスペースを作成します。
+
+## <a name="create-a-synapse-workspace"></a>Synapse ワークスペースを作成する
 
 このチュートリアルでは、Synapse ワークスペース、SQL プール、Apache Spark プールを作成する方法について説明します。 
 

@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: tutorial
 ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: 04c732b857c06246bdc636f01afd2689c98c2b0d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 3b2e4a1ae5ff43283893b286dafb38491a1181b4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831619"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308227"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>チュートリアル:Azure IoT Hub を通じてデバイス データを受信する
 
@@ -61,7 +61,7 @@ Azure IoT Hub は、[メッセージ ルーティング](https://docs.microsoft.
 ### <a name="add-a-message-route"></a>メッセージ ルートを追加する
 この手順では、上で作成したエンドポイントを使用してメッセージ ルートを定義します。 ルートを作成するには、好みに応じて、PowerShell の [Add-AzIotHubRoute](https://docs.microsoft.com/powershell/module/az.iothub/Add-AzIoTHubRoute) コマンドか、CLI の [az iot hub route create](https://docs.microsoft.com/cli/azure/iot/hub/route#az-iot-hub-route-create) コマンドを使用します。
 
-エンドポイントの作成コマンドで使用するパラメーターの一覧を次に示します。
+メッセージ ルートの追加コマンドで使用するパラメーターの一覧を次に示します。
 
 |PowerShell パラメーター|CLI パラメーター|説明|
 |---|---|---|

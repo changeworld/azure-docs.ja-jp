@@ -1,6 +1,6 @@
 ---
 title: チュートリアル - geo フィルタリング WAF ポリシーを構成する - Azure Front Door
-description: このチュートリアルでは、geo フィルタリング ポリシーを作成して、既存の Front Door フロントエンド ホストに関連付ける方法について学習します。
+description: このチュートリアルでは、geo フィルタリング WAF ポリシーを作成して、既存の Front Door フロントエンド ホストに関連付ける方法について学習します。
 services: frontdoor
 documentationcenter: ''
 author: duongau
@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: duau
-ms.openlocfilehash: 20aa038e15b1ae5734ad6f463c6f450368617119
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: f9b5869f7dd472c50ffb2c1c0dce765200f53882
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090034"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324028"
 ---
 # <a name="tutorial-how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>チュートリアル:Front Door に使用する geo フィルタリング WAF ポリシーを設定する方法
 このチュートリアルでは、Azure PowerShell を使用して、サンプル geo フィルタリング ポリシーを作成し、それを既存の Front Door フロントエンド ホストに関連付ける方法を説明します。 このサンプル geo フィルタリング ポリシーでは、他のすべての国/地域 (米国を除く) からの要求がブロックされます。

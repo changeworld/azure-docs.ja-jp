@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:SQL プールを使用したデータ分析の概要
+title: チュートリアル:専用 SQL プールを使用したデータ分析の概要
 description: このチュートリアルでは、NYC タクシーのサンプル データを使用して、SQL プールの分析機能を探索します。
 services: synapse-analytics
 author: saveenr
@@ -9,16 +9,16 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: b1060bcc8603cb7f7395a50056424b3d6c0ebe5a
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 3df0959003923a9a4ff2347330fd5a4f22e52245
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90015502"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300124"
 ---
-# <a name="analyze-data-with-sql-pools"></a>SQL プールを使用したデータ分析
+# <a name="analyze-data-with-sql-dedicated-pools"></a>SQL 専用プールを使用したデータ分析
 
-Azure Synapse Analytics には、SQL プールを使用してデータを分析する機能が用意されています。 このチュートリアルでは、NYC タクシーのサンプル データを使用して、SQL プールの分析機能を探索します。
+Azure Synapse Analytics には、専用 SQL プールを使用してデータを分析する機能が用意されています。 このチュートリアルでは、NYC タクシーのデータを使用して、専用 SQL プールの機能を探索します。
 
 ## <a name="load-the-nyc-taxi-data-into-sqldb1"></a>NYC タクシー データを SQLDB1 に読み込む
 
@@ -71,7 +71,7 @@ Azure Synapse Analytics には、SQL プールを使用してデータを分析�
     ```
 1. このスクリプトの実行には約 1 分かかります。 200 万行の NYC タクシー データを **dbo.Trip** というテーブルに読み込みます
 
-## <a name="explore-the-nyc-taxi-data-in-the-sql-pool"></a>SQL プール内の NYC タクシーのデータを探索する
+## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>専用 SQL プール内の NYC タクシーのデータを探索する
 
 1. Synapse Studio で、 **[データ]** ハブに移動します。
 1. **[SQLDB1]**  >  **[テーブル]** に移動します。 複数のテーブルが読み込まれていることがわかります。

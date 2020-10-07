@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0ed50b8d128386008a73eb4d1a8b412a42fdb945
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 0364495d751465f644686824758992d47f0b8bdf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89485457"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91290655"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault のログ記録
 
@@ -133,6 +133,7 @@ Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Ena
   * これらのキーまたはシークレットの作成、変更、または削除。
   * 署名、確認、暗号化、復号化、キーのラップとラップ解除、シークレットの取得、およびキーとシークレット (およびそのバージョン) の一覧表示。
 * 結果として 401 応答が発生する、認証されていない要求。 たとえば、ベアラー トークンを持たない要求、形式が正しくない要求、有効期限切れの要求、または無効なトークンを持つ要求です。  
+* 期限切れ間近、期限切れ、コンテナーのアクセス ポリシーが変更された場合の Event Grid の通知イベント (新しいバージョンのイベントはログに記録されません)。 キー コンテナーに作成されたイベント サブスクリプションがあるかどうかに関係なく、イベントはログに記録されます。 詳細については、[Key Vault 用の Event Grid イベント スキーマ](https://docs.microsoft.com/azure/event-grid/event-schema-key-vault)に関するページを参照してください。
 
 ## <a name="enable-logging-using-azure-cli"></a>Azure CLI を使用してログ記録を有効にする
 
@@ -289,6 +290,8 @@ BLOB を選択的にダウンロードするには、ワイルドカードを使
 
 次の表に、**operationName** の値と、対応する REST API コマンドを示します。
 
+### <a name="operation-names-table"></a>操作名の表
+
 | operationName | REST API コマンド |
 | --- | --- |
 | **認証** |Azure Active Directory エンドポイント経由で認証します |
@@ -318,6 +321,13 @@ BLOB を選択的にダウンロードするには、ワイルドカードを使
 | **SecretDelete** |[シークレットを削除します](https://msdn.microsoft.com/library/azure/dn903613.aspx) |
 | **SecretList** |[コンテナー内のシークレットを一覧表示します](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
 | **SecretListVersions** |[シークレットのバージョンを一覧表示します](https://msdn.microsoft.com/library/azure/dn986824.aspx) |
+| **VaultAccessPolicyChangedEventGridNotification** | コンテナーのアクセス ポリシーが変更されたイベントが公開されました |
+| **SecretNearExpiryEventGridNotification** |有効期限が近づいているシークレット イベントが公開されました |
+| **SecretExpiredEventGridNotification** |期限切れのシークレット イベントが公開されました |
+| **KeyNearExpiryEventGridNotification** |有効期限が近づいているキー イベントが公開されました |
+| **KeyExpiredEventGridNotification** |期限切れのキー イベントが公開されました |
+| **CertificateNearExpiryEventGridNotification** |有効期限が近づいている証明書イベントが公開されました |
+| **CertificateExpiredEventGridNotification** |期限切れの証明書イベントが公開されました |
 
 ## <a name="use-azure-monitor-logs"></a><a id="loganalytics"></a>Azure Monitor ログの使用
 

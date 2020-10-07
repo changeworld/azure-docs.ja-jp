@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: overview
 ms.date: 04/15/2020
-ms.author: acomet
+ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3141f8044a4a257de8022ff789b12d5d3e6e7a90
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: 98fc8b23369f961ca023832430d47c8868e42158
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807028"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260667"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Azure Synapse Analytics のチート シート
 
@@ -22,18 +22,21 @@ ms.locfileid: "85807028"
 
 Azure Synapse Analytics のチート シートでは、サービスの基本的な概念と重要なコマンドについて説明します。 この記事は、新しい学習者と、Azure Synapse の重要なトピックのハイライトを希望する学習者の両方に役立ちます。
 
-## <a name="architecture"></a>アーキテクチャ
+## <a name="basics"></a>基本
 
-> [!div class="mx-imgBorder"]
->![Synapse アーキテクチャ](media/overview-cheat-sheet/azure-synapse-architecture-cheat-sheet.png)
+**Synapse ワークスペース**は、Azure でクラウドベースのエンタープライズ分析を行うための、セキュリティ保護可能なコラボレーション境界です。 ワークスペースは、特定のリージョンにデプロイされ、関連付けられた ADLS Gen2 アカウントと (一時データを格納するための) ファイル システムを持ちます。 ワークスペースは、リソース グループに属します。
+
+ワークスペースを使用すると、SQL および Apache Spark で分析できます。 SQL および Spark の分析に利用できるリソースは SQL および Spark **プール**にまとめられます。 
+
+## <a name="synapse-sql"></a>Synapse SQL
+**Synapse SQL** は、Synapse ワークスペースで T-SQL に基づいて分析するための機能です。 Synapse SQL には、専用とサーバーレスという 2 つの消費モデルがあります。  専用モデルの場合、専用の **SQL プール**を使用します。 ワークスペースには、このようなプールをいくらでも与えることができます。 サーバーレスモデルを使用するには、"SQL オンデマンド" という名前のサーバーレス SQL プールを使用します。 ワークスペースごとにこのようなプールが 1 つ与えられます。
+
+## <a name="apache-spark-for-synapse"></a>Synapse 用の Apache Spark
+Spark 分析を使用するには、Synapse ワークスペースで **Spark プール**を作成し、使用します。
 
 ## <a name="terminology"></a>用語
 | 期間                         | 定義      |
 |:---                                 |:---                 |
-| **Synapse ワークスペース** | Azure でクラウドベースのエンタープライズ分析を行うための、セキュリティ保護可能なコラボレーション境界。 ワークスペースは、特定のリージョンにデプロイされ、関連付けられた ADLS Gen2 アカウントと (一時データを格納するための) ファイル システムを持ちます。 ワークスペースは、リソース グループに属します。 |
-| **Synapse SQL**   | プールまたはオンデマンド機能を使用して分析を実行します。  |
-| **SQL プール**   | 対応するデータベースをワークスペースにデプロイできる、0 対 N の SQL プロビジョニング済みのリソース。 各 SQL プールには、データベースが関連付けられています。 SQL プールは、手動または自動でスケーリング、一時停止、または再開できます。 SQL プールは、100 DWU から最大 30,000 DWU までスケーリングできます。       |
-| **SQL オンデマンド**   | データ レイク内のデータに対して T-SQL クエリを実行できる、大規模データ用に構築された分散データ処理システム。 サーバーレスであるため、インフラストラクチャを管理する必要はありません。       |
 |**Synapse 用の Apache Spark** | Spark プールで使用される Spark ランタイム。 現在サポートされているバージョンは、Python 3.6.1、Scala 2.11.12、Apache Spark 0.5 向け .NET サポート、および Delta Lake 0.3 を使用する Spark 2.4 です。  | 
 | **Apache Spark プール**  | 対応するデータベースをワークスペースにデプロイできる、0 対 N の Spark プロビジョニング済みのリソース。 Spark プールは、自動で一時停止、再開、およびスケーリングできます。  |
 | **Spark アプリケーション**  |   ドライバー プロセスと Executor プロセスのセットで構成されます。 Spark アプリケーションは Spark プールで実行されます。            |

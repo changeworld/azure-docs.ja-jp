@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 94caa879aa005f8f41e44b8a56400e87f6174247
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d67b0c89fbec8da9a3057164aa59d458a85c41d7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908354"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280591"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>クイック スタート:アプリをビルドして Azure Spring Cloud にデプロイする
 
@@ -353,23 +353,9 @@ Azure にデプロイするには、Azure アカウントで Azure Toolkit for I
 
 ::: zone-end
 
-## <a name="clean-up-resources"></a>リソースをクリーンアップする
+## <a name="next-steps"></a>次の手順
 
-このシリーズの次のクイックスタートに進む場合は、この手順をスキップしてください。
+このクイックスタートでは、サブスクリプションに残っていると課金が継続される Azure リソースを作成しました。 次のクイックスタートに進まない場合は、[リソースのクリーンアップ](spring-cloud-quickstart-logs-metrics-tracing.md#clean-up-resources)に関する記事を参照してください。 それ以外の場合は、次のクイックスタートに進んでください。
 
-これらのクイックスタートでは、サブスクリプションに残っていると課金が継続される Azure リソースを作成しました。 次のクイックスタートに進む予定がなく、今後これらのリソースが必要になることが予想されない場合は、ポータルを使用してリソース グループを削除するか、Cloud Shell で次のコマンドを実行します。
-
-```azurecli
-az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes
-```
-
-前のクイックスタートでは、既定のリソース グループ名も設定しました。 次のクイックスタートに進まない場合は、次の CLI コマンドを実行して、既定値をクリアします。
-
-```azurecli
-az configure --defaults group=
-```
-
-## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [ログ、メトリック、およびトレース](spring-cloud-quickstart-logs-metrics-tracing.md)
-

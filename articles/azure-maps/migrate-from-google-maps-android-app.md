@@ -1,20 +1,20 @@
 ---
-title: チュートリアル:Android アプリを移行する | Microsoft Azure Maps
-description: Google Maps から Microsoft Azure Maps に Android アプリを移行する方法。
+title: Android アプリを移行する | Microsoft Azure Maps
+description: Google Maps から Microsoft Azure Maps に Android アプリを移行する方法
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/17/2019
-ms.topic: tutorial
+ms.date: 08/19/2020
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: fe67364ef51248d04cbc6095eb691ffe255fa02c
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 96f68bdf58d9cc98815e4ae76ae01da87c38dc88
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085870"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319641"
 ---
 # <a name="migrate-an-android-app-from-google-maps"></a>Google Maps から Android アプリを移行する
 
@@ -30,35 +30,35 @@ Azure Maps による Android SDK を使用した開発の詳細については�
 
 Google マップを使用する場合も、Azure Maps を使用する場合も、Android アプリでのマップの読み込み手順は同様です。 いずれかの SDK を使うときは、次のことを行う必要があります。
 
-- いずれかのプラットフォームにアクセスするための API キーまたはサブスクリプション キーを取得します。
-- アクティビティに XML を追加して、マップのレンダリング先とレイアウト方法を指定します。
-- マップ ビューを含むアクティビティから、マップ クラスの対応するメソッドに、すべてのライフサイクル メソッドをオーバーライドします。 特に、次のメソッドをオーバーライドする必要があります。
-    - `onCreate(Bundle)`
-    - `onStart()`
-    - `onResume()`
-    - `onPause()`
-    - `onStop()`
-    - `onDestroy()`
-    - `onSaveInstanceState(Bundle)`
-    - `onLowMemory()`
-- マップの準備ができるまで待ってから、アクセスとプログラムを試みます。
+* いずれかのプラットフォームにアクセスするための API キーまたはサブスクリプション キーを取得します。
+* アクティビティに XML を追加して、マップのレンダリング先とレイアウト方法を指定します。
+* マップ ビューを含むアクティビティから、マップ クラスの対応するメソッドに、すべてのライフサイクル メソッドをオーバーライドします。 特に、次のメソッドをオーバーライドする必要があります。
+    * `onCreate(Bundle)`
+    * `onStart()`
+    * `onResume()`
+    * `onPause()`
+    * `onStop()`
+    * `onDestroy()`
+    * `onSaveInstanceState(Bundle)`
+    * `onLowMemory()`
+* マップの準備ができるまで待ってから、アクセスとプログラムを試みます。
 
-**前: Google Maps**
+### <a name="before-google-maps"></a>前: Google Maps
 
 Google Maps SDK for Android を使用してマップを表示するには、次の手順のようにします。
 
-1.  Google Play サービスがインストールされていることを確認します。
-2.  Google Maps サービスの依存関係を、モジュールの **gradle.build** ファイルに追加します。 
+1. Google Play サービスがインストールされていることを確認します。
+2. Google Maps サービスの依存関係を、モジュールの **gradle.build** ファイルに追加します。
 
     `implementation 'com.google.android.gms:play-services-maps:17.0.0'`
 
-1.  **google\_maps\_api.xml** ファイルのアプリケーション セクションに、Google Maps API キーを追加します。
-    
+3. **google\_maps\_api.xml** ファイルのアプリケーション セクションに、Google Maps API キーを追加します。
+
     ```xml
     <meta-data android:name="com.google.android.geo.API_KEY" android:value="YOUR_GOOGLE_MAPS_KEY"/>
     ```
 
-1.  メイン アクティビティにマップ フラグメントを追加します。
+4. メイン アクティビティにマップ フラグメントを追加します。
 
     ```xml
     <com.google.android.gms.maps.MapView
@@ -67,13 +67,13 @@ Google Maps SDK for Android を使用してマップを表示するには、次�
             android:layout_height="match_parent"/>
     ```
 
-1.  **MainActivity.java** ファイルには、Google マップ SDK をインポートする必要があります。 マップ ビューを含むアクティビティから、マップ クラスの対応するものに、すべてのライフサイクル メソッドを転送します。 `getMapAsync(OnMapReadyCallback)` メソッドを使用して、マップ フラグメントから `MapView` インスタンスを取得します。 `MapView` によって、Maps システムとビューが自動的に初期化されます。 **MainActivity.java** ファイルを次のように編集します。
+5. **MainActivity.java** ファイルには、Google マップ SDK をインポートする必要があります。 マップ ビューを含むアクティビティから、マップ クラスの対応するものに、すべてのライフサイクル メソッドを転送します。 `getMapAsync(OnMapReadyCallback)` メソッドを使用して、マップ フラグメントから `MapView` インスタンスを取得します。 `MapView` によって、Maps システムとビューが自動的に初期化されます。 **MainActivity.java** ファイルを次のように編集します。
 
     ```java
     import com.google.android.gms.maps.GoogleMap;
     import com.google.android.gms.maps.MapView;
     import com.google.android.gms.maps.OnMapReadyCallback;
-    
+ 
     import android.support.v7.app.AppCompatActivity;
     import android.os.Bundle;
     
@@ -144,11 +144,9 @@ Google Maps SDK for Android を使用してマップを表示するには、次�
 
 アプリケーションを実行すると、マップ コントロールが次の画像のように読み込まれます。
 
-<center>
+![シンプルな Google Maps](media/migrate-google-maps-android-app/simple-google-maps.png)
 
-![シンプルな Google Maps](media/migrate-google-maps-android-app/simple-google-maps.png)</center>
-
-**後: Azure Maps**
+### <a name="after-azure-maps"></a>後: Azure Maps
 
 Azure Maps SDK for Android を使用してマップを表示するには、次の手順のようにします。
 
@@ -161,7 +159,7 @@ Azure Maps SDK for Android を使用してマップを表示するには、次�
     ```
 
 2. **app/build.gradle** を更新し、以下のコードを追加します。
-    
+
     1. プロジェクトの **minSdkVersion** が API 21 以降であることを確認します。
 
     2. Android セクションに、次のコードを追加します。
@@ -172,6 +170,7 @@ Azure Maps SDK for Android を使用してマップを表示するには、次�
             targetCompatibility JavaVersion.VERSION_1_8
         }
         ```
+
     3. 依存関係ブロックを更新します。 最新の Azure Maps Android SDK の新しい実装の依存関係の行を追加します。
 
         ```java
@@ -180,10 +179,11 @@ Azure Maps SDK for Android を使用してマップを表示するには、次�
 
         > [!Note]
         > Azure Maps Android SDK は定期的にアップグレードされ、強化されています。 最新の Azure Maps のバージョン番号は、「[Android マップ コントロールの概要](how-to-use-android-map-control-library.md)」で確認できます。 また、バージョン番号を "0.2" から "0+" に設定して、コードが常に最新バージョンを指すようにすることができます。
-    
+
     4. ツール バーの **[ファイル]** に移動し、 **[Sync Project with Gradle Files]\(プロジェクトを Gradle ファイルと同期\)** をクリックします。
-3. メイン アクティビティにマップ フラグメントを追加します (resources \> layout \> activity\_main.xml)。
-    
+
+3. メイン アクティビティにマップ フラグメントを追加します (resources pwd\> layout \> activity\_main.xml)。
+
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
     <FrameLayout
@@ -202,7 +202,7 @@ Azure Maps SDK for Android を使用してマップを表示するには、次�
     ```
 
 4. **MainActivity.java** ファイルで、以下の操作を行う必要があります。
-    
+
     * Azure Maps SDK をインポートする
     * Azure Maps の認証情報を設定する
     * **onCreate** メソッドでマップ コントロールのインスタンスを取得する
@@ -221,7 +221,7 @@ Azure Maps SDK for Android を使用してマップを表示するには、次�
     * `onLowMemory()`
 
     **MainActivity.java** ファイルを次のように編集します。
-    
+
     ```java
     package com.example.myapplication;
 
@@ -234,7 +234,7 @@ Azure Maps SDK for Android を使用してマップを表示するには、次�
     import com.microsoft.azure.maps.mapcontrol.source.DataSource;
 
     public class MainActivity extends AppCompatActivity {
-        
+     
         static {
             AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
         }
@@ -303,9 +303,8 @@ Azure Maps SDK for Android を使用してマップを表示するには、次�
 
 アプリケーションを実行すると、マップ コントロールが次の画像のように読み込まれます。
 
-<center>
 
-![シンプルな Azure Maps](media/migrate-google-maps-android-app/simple-azure-maps.png)</center>
+![シンプルな Azure Maps](media/migrate-google-maps-android-app/simple-azure-maps.png)
 
 Azure Maps コントロールではさらに縮小がサポートされていて、より多くのワールド ビューが提供されることに注意してください。
 
@@ -316,7 +315,7 @@ Azure Maps コントロールではさらに縮小がサポートされていて
 
 対象ユーザーが複数の国または地域に分散している場合や、使用されている言語が異なる場合は、ローカライズが重要になります。
 
-**前: Google Maps**
+### <a name="before-google-maps"></a>前: Google Maps
 
 マップの言語を設定するには、`onCreate` メソッドに次のコードを追加します。 このコードは、マップのコンテキスト ビューを設定する前に追加する必要があります。 "fr" 言語コードによって、言語はフランス語に限定されています。
 
@@ -332,11 +331,9 @@ getBaseContext().getResources().updateConfiguration(config,
 
 言語が "fr" に設定されている Google Maps の例を以下に示します。
 
-<center>
+![Google Maps のローカライズ](media/migrate-google-maps-android-app/google-maps-localization.png)
 
-![Google Maps のローカライズ](media/migrate-google-maps-android-app/google-maps-localization.png)</center>
-
-**後: Azure Maps**
+### <a name="after-azure-maps"></a>後: Azure Maps
 
 Azure Maps には、マップの言語と地域ビューを設定するための 3 つの異なる方法が用意されています。 1 つ目は、言語と地域ビューの情報を `AzureMaps` クラスに渡す方法です。 この方法では、静的な `setLanguage` メソッドと `setView` メソッドをグローバルに使用します。 つまり、アプリに読み込まれたすべての Azure Maps コントロールに対して、既定の言語と地域のビューが設定されます。 この例では、"fr-FR" 言語コードを使用してフランス語を設定しています。
 
@@ -376,9 +373,7 @@ mapControl.onReady(map -> {
 
 以下に、言語が "fr-FR" に設定されている Azure Maps の例を示します。
 
-<center>
-
-![Azure Maps のローカライズ](media/migrate-google-maps-android-app/azure-maps-localization.png)</center>
+![Azure Maps のローカライズ](media/migrate-google-maps-android-app/azure-maps-localization.png)
 
 [サポートされている言語](supported-languages.md)の完全な一覧を確認してください。
 
@@ -386,7 +381,7 @@ mapControl.onReady(map -> {
 
 Azure Maps および Google Maps の両方の動的マップは、適切なメソッドを呼び出すことによって、プログラムで新しい地理的な場所に移動できます。 マップに衛星航空映像を表示し、特定の座標位置をマップの中心に設定して、ズーム レベルを変更してみましょう。 この例では、緯度は 35.0272、経度は -111.0225、ズーム レベルは 15 です。
 
-**前: Google Maps**
+### <a name="before-google-maps"></a>前: Google Maps
 
 Google マップのマップ コントロールのカメラは、`moveCamera` メソッドを使用してプログラムで移動できます。 `moveCamera` メソッドを使用すると、マップの中心とズーム レベルを指定できます。 表示するマップの種類は、`setMapType` メソッドで変更します。
 
@@ -400,14 +395,12 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
-
-![Google Maps の設定ビュー](media/migrate-google-maps-android-app/google-maps-set-view.png)</center>
+![Google Maps の設定ビュー](media/migrate-google-maps-android-app/google-maps-set-view.png)
 
 > [!NOTE]
-> Google Maps では、ディメンションが 256 ピクセルのタイルが使用されますが、Azure Maps では、より大きな 512 ピクセルのタイルが使用されます。 これにより、Azure Maps で Google Maps と同じマップ領域を読み込むために必要なネットワーク要求の数が減ります。 Google マップのマップと同じ可視領域を得るためには、Azure Maps の使用時に Google マップで利用されるズーム レベルを 1 ずつ減算する必要があります。 
+> Google Maps では、ディメンションが 256 ピクセルのタイルが使用されますが、Azure Maps では、より大きな 512 ピクセルのタイルが使用されます。 これにより、Azure Maps で Google Maps と同じマップ領域を読み込むために必要なネットワーク要求の数が減ります。 Google マップのマップと同じ可視領域を得るためには、Azure Maps の使用時に Google マップで利用されるズーム レベルを 1 ずつ減算する必要があります。
 
-**後: Azure Maps**
+### <a name="after-azure-maps"></a>後: Azure Maps
 
 前に説明したように、Azure Maps で同じ表示可能領域を実現するには、Google マップで使用されているズーム レベルを 1 だけ小さくします。 このケースでは、ズーム レベル 14 を使用します。
 
@@ -437,19 +430,17 @@ mapControl.onReady(map -> {
 });
 ```
 
-<center>
-
-![Azure Maps の設定ビュー](media/migrate-google-maps-android-app/azure-maps-set-view.png)</center>
+![Azure Maps の設定ビュー](media/migrate-google-maps-android-app/azure-maps-set-view.png)
 
 **その他のリソース:**
 
-- [サポートされているマップ スタイル](supported-map-styles.md)
+* [サポートされているマップ スタイル](supported-map-styles.md)
 
 ## <a name="adding-a-marker"></a>マーカーの追加
 
 マップ上の画像を使用してポイント データをレンダリングすることがよくあります。 これらの画像は、マーカー、画鋲、ピン、またはシンボルと呼ばれます。 次の例では、ポイント データをマップ上のマーカーとして表示します (緯度: 51.5、経度: -0.2)。
 
-**前: Google Maps**
+### <a name="before-google-maps"></a>前: Google Maps
 
 Google Maps では、マップの `addMarker` メソッドを使用してマーカーを追加します。
 
@@ -462,11 +453,9 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
+![Google Maps のマーカー](media/migrate-google-maps-android-app/google-maps-marker.png)
 
-![Google Maps のマーカー](media/migrate-google-maps-android-app/google-maps-marker.png)</center>
-
-**後: Azure Maps**
+### <a name="after-azure-maps"></a>後: Azure Maps
 
 Azure Maps で、ポイント データをマップにレンダリングします。それには、まずデータ ソースにデータを追加します。 その後、そのデータ ソースをシンボル レイヤーに接続します。 データ ソースにより、マップ コントロールでの空間データの管理が最適化されます。 シンボル レイヤーにより、画像やテキストを使用してポイント データをレンダリングする方法が指定されます。
 
@@ -484,9 +473,7 @@ mapControl.onReady(map -> {
 });
 ```
 
-<center>
-
-![Azure Maps のマーカー](media/migrate-google-maps-android-app/azure-maps-marker.png)</center>
+![Azure Maps のマーカー](media/migrate-google-maps-android-app/azure-maps-marker.png)
 
 ## <a name="adding-a-custom-marker"></a>カスタム マーカーの追加
 
@@ -499,7 +486,7 @@ yellow-pushpin.png</center>
 
 どちらの例でも、上のイメージはアプリ リソースの drawable フォルダーに追加されます。
 
-**前: Google Maps**
+### <a name="before-google-maps"></a>前: Google Maps
 
 Google Maps では、カスタム イメージをマーカーに使用できます。 マーカーの `icon` オプションを使用して、カスタム イメージを読み込みます。 イメージのポイントを座標に合わせるには、`anchor` オプションを使用します。 アンカーは、画像の大きさに対する相対値です。 このケースでは、幅が 0.2 単位で、高さが 1 単位です。
 
@@ -514,11 +501,9 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
+![Google Maps のカスタム マーカー](media/migrate-google-maps-android-app/google-maps-custom-marker.png)
 
-![Google Maps のカスタム マーカー](media/migrate-google-maps-android-app/google-maps-custom-marker.png)</center>
-
-**後: Azure Maps**
+### <a name="after-azure-maps"></a>後: Azure Maps
 
 Azure Maps のシンボル レイヤーでもカスタム画像がサポートされますが、最初に画像をマップ リソースに読み込んで、一意の ID を割り当てる必要があります。 その後、シンボル レイヤーでこの ID を参照する必要があります。 `iconOffset` オプションを使用して、イメージ上の正しいポイントに合わせるために、シンボルをオフセットします。 アイコンのオフセットは、ピクセル単位です。 既定では、オフセットの基準はイメージの下端中央になりますが、このオフセット値は `iconAnchor` オプションを使用して調整できます。 この例では、`iconAnchor` オプションを `"center"` に設定しています。 アイコン オフセットを使用して、画像を右に 5 ピクセル、上に 15 ピクセルだけ移動して、画鋲の画像の位置に合わせています。
 
@@ -542,15 +527,13 @@ mapControl.onReady(map -> {
 });
 ```
 
-<center>
-
-![Azure Maps のカスタム マーカー](media/migrate-google-maps-android-app/azure-maps-custom-marker.png)</center>
+![Azure Maps のカスタム マーカー](media/migrate-google-maps-android-app/azure-maps-custom-marker.png)
 
 ## <a name="adding-a-polyline"></a>ポリラインの追加
 
 ポリラインは、マップ上の線またはパスを表すために使用されます。 次の例では、マップ上に破線のポリラインを作成する方法を示します。
 
-**前: Google Maps**
+### <a name="before-google-maps"></a>前: Google Maps
 
 Google マップでは、`PolylineOptions` クラスを使用してポリラインをレンダリングします。 ポリラインをマップに追加するには、`addPolyline` メソッドを使用します。 ストロークの色は、`color` オプションを使用して設定します。 ストロークの幅は、`width` オプションを使用して設定します。 ストロークの破線の配列は、`pattern` オプションを使用して追加します。
 
@@ -574,11 +557,9 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
+![Google Maps のポリライン](media/migrate-google-maps-android-app/google-maps-polyline.png)
 
-![Google Maps のポリライン](media/migrate-google-maps-android-app/google-maps-polyline.png)</center>
-
-**後: Azure Maps**
+### <a name="after-azure-maps"></a>後: Azure Maps
 
 Azure Maps では、ポリラインが `LineString` または `MultiLineString` オブジェクトと呼ばれます。 これらのオブジェクトをデータ ソースに追加し、線レイヤーを使用してレンダリングします。 ストロークの幅は、`strokeWidth` オプションを使用して設定します。 ストロークの破線の配列は、`strokeDashArray` オプションを使用して追加します。
 
@@ -607,15 +588,13 @@ mapControl.onReady(map -> {
 });
 ```
 
-<center>
-
-![Azure Maps のポリライン](media/migrate-google-maps-android-app/azure-maps-polyline.png)</center>
+![Azure Maps のポリライン](media/migrate-google-maps-android-app/azure-maps-polyline.png)
 
 ## <a name="adding-a-polygon"></a>多角形の追加
 
 多角形は、マップ上の領域を表すために使用されます。 次の例では、多角形の作成方法を紹介します。 この多角形は、マップの中心座標に基づいて三角形を形成します。
 
-**前: Google Maps**
+### <a name="before-google-maps"></a>前: Google Maps
 
 Google マップでは、`PolygonOptions` クラスを使用して多角形をレンダリングします。 多角形をマップに追加するには、`addPolygon` メソッドを使用します。 塗りつぶしとストロークの色は、それぞれ `fillColor` オプションと `strokeColor` オプションを使用して設定します。 ストロークの幅は、`strokeWidth` オプションを使用して設定します。
 
@@ -639,11 +618,9 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
+![Google Maps の多角形](media/migrate-google-maps-android-app/google-maps-polygon.png)
 
-![Google Maps の多角形](media/migrate-google-maps-android-app/google-maps-polygon.png)</center>
-
-**後: Azure Maps**
+### <a name="after-azure-maps"></a>後: Azure Maps
 
 Azure Maps では、`Polygon` および `MultiPolygon` オブジェクトをデータ ソースに追加し、レイヤーを使用してマップ上にレンダリングします。 多角形の領域は、多角形レイヤーを使用してレンダリングします。 多角形の枠線は、線レイヤーを使用してレンダリングします。 ストロークの色と幅は、`strokeColor` オプションと `strokeWidth` オプションを使用して設定します。
 
@@ -676,10 +653,7 @@ mapControl.onReady(map -> {
         strokeWidth(2f)));
 });
 ```
-
-<center>
-
-![Azure Maps の多角形](media/migrate-google-maps-android-app/azure-maps-polygon.png)</center>
+![Azure Maps の多角形](media/migrate-google-maps-android-app/azure-maps-polygon.png)
 
 ## <a name="overlay-a-tile-layer"></a>タイル レイヤーをオーバーレイする
 
@@ -687,7 +661,7 @@ mapControl.onReady(map -> {
 
 次の例では、アイオワ州立大学の Iowa Environmental Mesonet の気象レーダー タイル レイヤーをオーバーレイします。 タイルのサイズは 256 ピクセルです。
 
-**前: Google Maps**
+### <a name="before-google-maps"></a>前: Google Maps
 
 Google マップでは、タイル レイヤーをマップの上にオーバーレイできます。 `TileOverlayOptions` クラスを使用します。 タイル レイヤーをマップに追加するには、`addTileLauer` メソッドを使用します。 タイルを半透明にするには、`transparency` オプションを 0.2 つまり 20% の透明度に設定します。
 
@@ -716,11 +690,9 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
+![Google Maps のタイル レイヤー](media/migrate-google-maps-android-app/google-maps-tile-layer.png)
 
-![Google Maps のタイル レイヤー](media/migrate-google-maps-android-app/google-maps-tile-layer.png)</center>
-
-**後: Azure Maps**
+### <a name="after-azure-maps"></a>後: Azure Maps
 
 他のレイヤーと同じような方法で、タイル レイヤーをマップに追加できます。 x、y、ズーム プレースホルダー(`{x}`、`{y}`、`{z}`) の書式設定された URL はそれぞれ、タイルにアクセスする場所をレイヤーに指示するために使用されます。 また、Azure Maps のタイル レイヤーでは、`{quadkey}`、`{bbox-epsg-3857}`、`{subdomain}` のプレースホルダーがサポートされます。 タイル レイヤーを半透明にするには、不透明度の値 0.8 を使用します。 不透明度と透明度は似ていますが、逆の値を使用します。 2 つのオプション間で変換するには、その値を 1 から減算します。
 
@@ -738,15 +710,13 @@ mapControl.onReady(map -> {
 });
 ```
 
-<center>
-
-![Azure Maps のタイル レイヤー](media/migrate-google-maps-android-app/azure-maps-tile-layer.png)</center>
+![Azure Maps のタイル レイヤー](media/migrate-google-maps-android-app/azure-maps-tile-layer.png)
 
 ## <a name="show-traffic"></a>交通情報を表示する
 
 Azure Maps も Google マップも、交通情報データをオーバーレイするためのオプションがあります。
 
-**前: Google Maps**
+### <a name="before-google-maps"></a>前: Google Maps
 
 Google マップでは、マップの `setTrafficEnabled` メソッドに true を渡すことで、交通量データをマップの上にオーバーレイできます。
 
@@ -759,11 +729,9 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
+![Google Maps の交通情報](media/migrate-google-maps-android-app/google-maps-traffic.png)
 
-![Google Maps の交通情報](media/migrate-google-maps-android-app/google-maps-traffic.png)</center>
-
-**後: Azure Maps**
+### <a name="after-azure-maps"></a>後: Azure Maps
 
 Azure Maps では、交通情報を表示するためのさまざまなオプションが提供されます。 道路の閉鎖や事故などの交通事故は、マップ上にアイコンとして表示できます。 交通量と色分けされた道路を、マップにオーバーレイできます。 掲示された速度制限、通常の予想される遅延、または絶対遅延を基準として、色を変更することができます。 Azure Maps の事故データは 1 分ごとに更新され、流量データは 2 分ごとに更新されます。
 
@@ -775,13 +743,8 @@ mapControl.onReady(map -> {
 });
 ```
 
-<center>
-
-![Azure Maps の交通情報](media/migrate-google-maps-android-app/azure-maps-traffic.png)</center>
-
-## <a name="next-steps"></a>次のステップ
+![Azure Maps の交通情報](media/migrate-google-maps-android-app/azure-maps-traffic.png)
 
 Azure Maps Android SDK の詳細について学習します。
 
-> [!div class="nextstepaction"]
-> [Android マップ コントロールの使用方法](how-to-use-android-map-control-library.md)
+[Android マップ コントロールの使用方法](how-to-use-android-map-control-library.md)

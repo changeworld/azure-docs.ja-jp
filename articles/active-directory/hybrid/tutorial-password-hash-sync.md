@@ -14,12 +14,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04ea92e18fc6efb8b375a22cc34baf1d33b78802
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: b82dcc633f0f2bb13cb84f80873117f9eb94a24f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279025"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313164"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>チュートリアル:パスワード ハッシュの同期 (PHS) を使用して単一 AD フォレストを統合する
 
@@ -184,7 +184,7 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 2. **プラス (+) アイコン**を選択し、**Azure Active Directory** を検索します。
 3. 検索結果で **[Azure Active Directory]** を選択します。
 4. **［作成］** を選択します</br>
-![作成](media/tutorial-password-hash-sync/create1.png)</br>
+![Azure AD テナントの作成方法を示すスクリーンショット。](media/tutorial-password-hash-sync/create1.png)</br>
 5. **組織の名前**と**初期ドメイン名**を入力します。 **[作成]** を選択します。 これにより、ディレクトリが作成されます。
 6. これが完了したら、**こちら**のリンクをクリックし、ディレクトリを管理します。
 
@@ -192,10 +192,10 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 Azure AD テナントを作成したので、次は全体管理者アカウントを作成します。  このアカウントは、Azure AD Connect のインストール時に Azure AD コネクタ アカウントを作成するために使用されます。  Azure AD コネクタ アカウントは、Azure AD に情報を書き込むために使用されます。   全体管理者アカウントを作成するには、以下を実行します。
 
 1.  **[管理]** にある **[ユーザー]** を選択します。</br>
-![作成](media/tutorial-password-hash-sync/gadmin1.png)</br>
+![[管理] セクションの [ユーザー] オプションが選択されているスクリーンショット。ここで、Azure AD の全体管理者を作成します。](media/tutorial-password-hash-sync/gadmin1.png)</br>
 2.  **[すべてのユーザー]** を選択し、 **+ [新しいユーザー]** を選択します。
 3.  このユーザーの名前およびユーザー名を入力します。 これがテナントのグローバル管理者になります。 また、 **[ディレクトリ ロール]** を **[全体管理者]** に変更してください。 一時パスワードを表示することもできます。 完了したら、 **[作成]** を選択します。</br>
-![作成](media/tutorial-password-hash-sync/gadmin2.png)</br>
+![スクリーンショットには、Azure AD の全体管理者を作成するときに選択する [作成] ボタンが表示されています。](media/tutorial-password-hash-sync/gadmin2.png)</br>
 4. これが完了したら、新しい Web ブラウザーを開き、新しい全体管理者アカウントと一時パスワードを使用して myapps.microsoft.com にサインインします。
 5. 全体管理者のパスワードを覚えやすいものに変更します。
 
@@ -206,7 +206,7 @@ Azure AD テナントを作成したので、次は全体管理者アカウン�
 2. **AzureADConnect.msi**を検索し、ダブルクリックします。
 3. [ようこそ] 画面で、ライセンス条項に同意するチェック ボックスをオンにし、 **[続行]** をクリックします。  
 4. [簡単設定] 画面で、 **[簡単設定を使う]** をクリックします。</br>  
-![作成](media/tutorial-password-hash-sync/express1.png)</br>
+![[簡単設定] 画面と [簡単設定を使う] ボタンのスクリーンショット。](media/tutorial-password-hash-sync/express1.png)</br>
 5. [Azure AD に接続] 画面で、Azure AD のグローバル管理者のユーザー名とパスワードを入力します。 **[次へ]** をクリックします。  
 6. [AD DS に接続] 画面で、エンタープライズ管理者アカウントのユーザー名とパスワードを入力します。 **[次へ]** をクリックします。  
 7. [構成の準備完了] 画面で、 **[インストール]** をクリックします。

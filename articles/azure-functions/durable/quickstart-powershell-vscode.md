@@ -1,16 +1,16 @@
 ---
 title: PowerShell を使用して Azure Functions で最初の持続的関数を作成する
-description: Visual Studio Code を使用して Azure Durable Functions を作成して発行します。
+description: Visual Studio Code を使用して PowerShell で Azure Durable Functions を作成して発行します。
 author: anthonychu
 ms.topic: quickstart
 ms.date: 08/10/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 11ae695a898e011fd287730d894394eff013a0ca
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: edd02085abe63b124082255247362f096248ba82
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272967"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317261"
 ---
 # <a name="create-your-first-durable-function-in-powershell"></a>PowerShell で最初の持続的関数を作成する
 

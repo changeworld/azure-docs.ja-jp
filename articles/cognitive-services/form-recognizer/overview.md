@@ -1,43 +1,47 @@
 ---
 title: Form Recognizer とは
 titleSuffix: Azure Cognitive Services
-description: Azure Cognitive Services Form Recognizer を使用すると、フォーム ドキュメントからキーと値のペアやテーブル データを識別して抽出できます。
+description: Azure Form Recognizer サービスを使用すると、フォーム ドキュメントからキーと値のペアとテーブル データを識別して抽出することや、領収書や名刺から主要な情報を抽出することができます。
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: overview
-ms.date: 08/05/2020
+ms.date: 09/21/2020
 ms.author: pafarley
-ms.openlocfilehash: 070796cd260e56bb51115a7ef33ced8455bfb6a9
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.custom: cog-serv-seo-aug-2020
+keywords: 自動データ処理、ドキュメント処理、自動データ入力、フォーム処理
+ms.openlocfilehash: 5243c170e1f6b5f647057b8cfafbcac9b2fb4db3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394399"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318961"
 ---
 # <a name="what-is-form-recognizer"></a>Form Recognizer とは
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Azure Form Recognizer は、機械学習テクノロジを使用して、フォーム ドキュメントからテキストや、キーと値のペア、テーブル データを識別して抽出する Cognitive Services です。 フォームからテキストを取り込んで、元のファイル内の関係を含む構造化データを出力します。 手作業による操作やデータ サイエンスに関する専門知識があまりなくても、特定のコンテンツに合わせた正確な結果がすばやく得られます。 Form Recognizer は、カスタム モデル、あらかじめ構築されたレシート モデル、Layout API から成ります。 REST API を使用して Form Recognizer モデルを呼び出すことにより、複雑さを軽減し、自分のワークフローやアプリケーションに統合することができます。
+Azure Form Recognizer は、機械学習テクノロジを利用して自動データ処理ソフトウェアを構築ことを可能にするコグニティブ サービスです。 テキスト、キーと値のペア、テーブル データを特定し、form ドキュメントから抽出します。&mdash;元のファイルにおける関係を含む構造化データがこのサービスにより出力されます。 手作業による操作やデータ サイエンスに関する専門知識があまりなくても、特定のコンテンツに合わせた正確な結果がすばやく得られます。 Form Recognizer を使用して、アプリケーションへのデータ入力を自動化します。
+
+Form Recognizer は、カスタム ドキュメント処理モデル、事前構築済みのレシートと名刺のモデル、およびレイアウト API で構成されています。 REST API またはクライアント ライブラリ SDK を使用して Form Recognizer モデルを呼び出すことにより、複雑さを軽減し、自分のワークフローやアプリケーションに統合することができます。
 
 Form Recognizer は、次のサービスで構成されています。
-* **カスタム モデル** - フォームからキーと値のペアおよびテーブル データを抽出します。 これらのモデルは自分が用意した独自のデータでトレーニングされるため、実際のフォームに合わせて調整されます。
-* **事前構築済みモデル** - 事前構築済みモデルを使用して、一意のフォームの種類からデータを抽出します。 現在利用可能なのは、英語のレシートと名刺用の事前構築済みモデルです。
-* **Layout API** - テキストおよびテーブルの構造を、対応する境界ボックスの座標と共にドキュメントから抽出します。
-
-<!-- add diagram -->
+* **[カスタム モデル](#custom-models)** - フォームからキーと値のペアおよびテーブル データを抽出します。 これらのモデルは自分が用意した独自のデータでトレーニングされるため、実際のフォームに合わせて調整されます。
+* **[事前構築済みモデル](#prebuilt-models)** - 事前構築済みモデルを使用して、一意のフォームの種類からデータを抽出します。 現在利用可能なのは、英語のレシートと名刺用の事前構築済みモデルです。
+* **[Layout API](#layout-api)** - テキストおよびテーブルの構造を、対応する境界ボックスの座標と共にドキュメントから抽出します。
 
 ## <a name="custom-models"></a>カスタム モデル
 
-Form Recognizer のカスタム モデルでは、独自のデータでトレーニングを行います。また、5 つのサンプル入力フォームだけで開始できます。 トレーニング済みのモデルは、元のフォーム ドキュメント内の関係を含む構造化データを出力できます。 モデルをトレーニングした後、モデルをテストおよび再トレーニングでき、最終的にはモデルを使用して、ニーズに従ってより多くのフォームから正確にデータを抽出できます。
+Form Recognizer のカスタム モデルでは、独自のデータでトレーニングを行います。また、5 つのサンプル入力フォームだけで開始できます。 トレーニング済みのドキュメント処理モデルは、元の form ドキュメント内の関係を含む構造化データを出力できます。 モデルをトレーニングした後、モデルをテストおよび再トレーニングでき、最終的にはモデルを使用して、ニーズに従ってより多くのフォームから正確にデータを抽出できます。
 
 カスタム モデルをトレーニングする際は、ラベル付けされたデータを使用したトレーニングとラベル付けされたデータを使用しないトレーニングのどちらかを選択できます。
 
 ### <a name="train-without-labels"></a>ラベルを使用しないトレーニング
 
 Form Recognizer は、既定では教師なし学習を使用して、フォーム内のレイアウトを解釈し、フィールドとエントリ間の関係を解釈します。 入力フォームを送信すると、アルゴリズムによって種類別にフォームが分類されて、存在するキーとテーブルが検出されます。また、値がキーに、エントリがテーブルに関連付けられます。 手動によるデータのラベル付けは不要であり、大量のコーディングやメンテナンスも必要ありません。最初は、この方法を試すようお勧めします。
+
+トレーニング ドキュメントを収集する方法のヒントについては、「[トレーニング データ セットの作成](./build-training-data-set.md)」を参照してください。
 
 ### <a name="train-with-labels"></a>ラベルを使用したトレーニング
 
@@ -47,15 +51,17 @@ Form Recognizer は、印刷されたテキストや手書きのテキストの�
 
 ## <a name="prebuilt-models"></a>事前構築済みのモデル
 
-Form Recognizer には、一意のフォームの種類に対する事前構築済みモデルも含まれています。
+Form Recognizer には、固有のフォームの種類を持つ自動データ処理用の事前構築済みモデルも含まれています。
 
 ### <a name="prebuilt-receipt-model"></a>事前構築済みのレシート モデル
-事前構築済みのレシート モデルは、オーストラリア、カナダ、英国、インド、および米国のレストランやガソリン スタンド、小売店などで使用されている種類の英語のレシートを読み取るために使用されます。 このモデルでは、取引日時、販売店情報、税額、明細項目、合計金額などの主要な情報が抽出されます。 さらに、あらかじめ構築されたレシート モデルは、レシート内のすべてのテキストを認識して返すようにトレーニングされています。 
+
+事前構築済みのレシート モデルは、オーストラリア、カナダ、英国、インド、および米国のレストランやガソリン スタンド、小売店などで使用されている種類の英語のレシートを読み取るために使用されます。 このモデルでは、取引日時、販売店情報、税額、明細項目、合計金額などの主要な情報が抽出されます。 さらに、あらかじめ構築されたレシート モデルは、レシート内のすべてのテキストを認識して返すようにトレーニングされています。 詳細については、[レシート](./concept-receipts.md)の概念ガイドを参照してください。
 
 ![サンプルのレシート](./media/contoso-receipt-small.png)
 
 ### <a name="prebuilt-business-cards-model"></a>事前構築済みの名刺モデル
-名刺モデルを使用すると、個人の名前、役職、住所、電子メール、会社、電話番号などの情報を英語の名刺から抽出できます。 
+
+名刺モデルを使用すると、個人の名前、役職、住所、電子メール、会社、電話番号などの情報を英語の名刺から抽出できます。 詳細については、[名刺](./concept-business-cards.md)の概念ガイドを参照してください。
 
 ![サンプルの名刺](./media/business-card-english.jpg)
 
@@ -99,24 +105,13 @@ Form Recognizer は、高精細の光学式文字認識 (OCR) を使用して、
 詳しくは、[REST API のリファレンス ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)をご覧ください。 以前のバージョンの API をご利用の方は、「[新機能](./whats-new.md)」の記事で、レシートに関する最新の変更点をご確認ください。
 
 ## <a name="input-requirements"></a>入力の要件
-### <a name="custom-model"></a>カスタム モデル
 
 [!INCLUDE [input requirements](./includes/input-requirements.md)]
-
-### <a name="prebuilt"></a>事前構築済み
-
-レシート モデルの入力要件は少し異なります。
-
-* 形式は、JPEG、PNG、PDF (テキストまたはスキャン済み)、TIFF のいずれかである必要があります。
-* ファイル サイズは 20 MB 未満である必要があります。
-* 画像の寸法は、50 x 50 ピクセルから 10,000 x 10,000 ピクセルの間である必要があります。
-* PDF の寸法は、最大で 17 x 17 インチにする必要があります (リーガル サイズまたは A3 サイズ以下の用紙に対応します)。
-* PDF および TIFF の場合、最初の 200 ページのみが処理されます (Free レベルのサブスクリプションでは、最初の 2 ページのみが処理されます)。
 
 ## <a name="data-privacy-and-security"></a>データのプライバシーとセキュリティ
 
 Cognitive Services 全般に言えることですが、Form Recognizer サービスを使用する開発者は、顧客データに関する Microsoft のポリシーに留意する必要があります。 詳細については、Microsoft セキュリティ センターの [Cognitive Services のページ](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices)を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-[クイック スタート](quickstarts/curl-train-extract.md)をすべて終え、[Form Recognizer API シリーズ](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)の使用を開始します。
+選択した言語で Form Recognizer を使用してフォーム処理アプリの作成を開始するには、[クライアント ライブラリ クイックスタート](quickstarts/client-library.md)を完了します。

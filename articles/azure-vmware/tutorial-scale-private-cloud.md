@@ -1,22 +1,20 @@
 ---
-title: チュートリアル:プライベート クラウドをスケーリングする
-description: このチュートリアルでは、Azure portal を使用して Azure VMware Solution プレビューのプライベート クラウドをスケーリングします。
+title: チュートリアル - プライベート クラウドをスケーリングする
+description: このチュートリアルでは、Azure portal を使用して、Azure VMware Solution のプライベート クラウドをスケーリングします。
 ms.topic: tutorial
-ms.date: 08/21/2020
-ms.openlocfilehash: dddfbddd57f3ad6b541d11c360aeadea4383044a
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 09/21/2020
+ms.openlocfilehash: e1226eb98607a34869bda1f998c7cecea2e50919
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750437"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254416"
 ---
-# <a name="tutorial-scale-an-azure-vmware-solution-preview-private-cloud"></a>チュートリアル:Azure VMware Solution プレビューのプライベート クラウドをスケーリングする
+# <a name="tutorial-scale-an-azure-vmware-solution-private-cloud"></a>チュートリアル:Azure VMware Solution のプライベート クラウドをスケーリングする
 
-Azure VMware Solution プレビューのプライベート クラウド エクスペリエンスを最大限に活かすには、予定されたワークロードの要件を反映するようにクラスターとホストをスケーリングします。 プレビュー段階の Azure VMware Solution では、オンプレミスの vCenter がサポートされないため、Azure portal から、既に作成されているものを使用する必要があります。
+Azure VMware Solution のプライベート クラウド エクスペリエンスを最大限に活かすには、予定されたワークロードの要件を反映するようにクラスターとホストをスケーリングします。 実際のアプリケーション ワークロードに応じて、プライベート クラウドにあるクラスターの数とホストの数をスケーリングすることができます。 特定のサービスに対するパフォーマンスと可用性の制限に対しては、そのつど Azure VMware Solution のプライベート クラウド環境内で対処する必要があります。 クラスターとホストの制限については、[プライベート クラウドの概念](concepts-private-clouds-clusters.md)に関する記事を参照してください。
 
-実際のアプリケーション ワークロードに応じて、プライベート クラウドにあるクラスターの数とホストの数をスケーリングすることができます。 特定のサービスに対するパフォーマンスと可用性の制限には、その都度 Azure VMware Solution プレビュー クラウド環境内で対処する必要があります。 プライベート クラウドにおけるクラスターとホストの制限については、[プライベート クラウドの概念に関する記事](concepts-private-clouds-clusters.md)を参照してください。
-
-このチュートリアルでは、Azure portal を使用して次の作業を行います。
+このチュートリアルでは、次を行うために Azure portal を使用します。
 
 > [!div class="checklist"]
 > * 既存のプライベート クラウドにクラスターを追加する
@@ -24,7 +22,7 @@ Azure VMware Solution プレビューのプライベート クラウド エク�
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルで行う作業には、プライベート クラウドが必要です。 まだプライベート クラウドの作成が済んでいない場合は、[プライベート クラウドの作成に関するチュートリアル](tutorial-create-private-cloud.md)を使用して、Azure にプライベート クラウドを作成し、VMware プライベート クラウドのネットワークを構成して、必要な仮想ネットワークをセットアップしてください。
+このチュートリアルで行う作業には、プライベート クラウドが必要です。 まだプライベート クラウドの作成が済んでいない場合は、[プライベート クラウドの作成に関するチュートリアル](tutorial-create-private-cloud.md)を参照して作成し、Azure で VMware のプライベート クラウドのネットワークを構成して、必要な仮想ネットワークをセットアップしてください。
 
 ## <a name="add-a-new-cluster"></a>新しいクラスターを追加する
 
@@ -34,7 +32,7 @@ Azure VMware Solution プレビューのプライベート クラウド エク�
 
 1. **[クラスターの追加]** ページで、スライダーを使用してホストの数を選択します。 **[保存]** を選択します。
 
-   :::image type="content" source="./media/tutorial-scale-private-cloud/ss3-configure-new-cluster.png" alt-text="[クラスターの追加] ページで、スライダーを使用してホストの数を選択します。[保存] を選択します。" border="true":::
+   :::image type="content" source="./media/tutorial-scale-private-cloud/ss3-configure-new-cluster.png" alt-text="[Add cluster]\(クラスターの追加\) を選択する" border="true":::
 
    新しいクラスターのデプロイが開始されます。
 
@@ -42,11 +40,11 @@ Azure VMware Solution プレビューのプライベート クラウド エク�
 
 1. 既存のプライベート クラウドの概要ページで、 **[Scale private cloud]\(プライベート クラウドのスケーリング\)** を選択し、鉛筆アイコンを選択してクラスターを編集します。
 
-   :::image type="content" source="./media/tutorial-scale-private-cloud/ss4-select-scale-private-cloud-2.png" alt-text="[概要] で [Scale private cloud]\(プライベート クラウドのスケーリング\) を選択する" border="true":::
+   :::image type="content" source="./media/tutorial-scale-private-cloud/ss4-select-scale-private-cloud-2.png" alt-text="[Add cluster]\(クラスターの追加\) を選択する" border="true":::
 
 1. **[クラスターの編集]** ページで、スライダーを使用してホストの数を選択します。 **[保存]** を選択します。
 
-   :::image type="content" source="./media/tutorial-scale-private-cloud/ss5-scale-cluster.png" alt-text="[クラスターの編集] ページで、スライダーを使用してホストの数を選択します。[保存] を選択します。" border="true":::
+   :::image type="content" source="./media/tutorial-scale-private-cloud/ss5-scale-cluster.png" alt-text="[Add cluster]\(クラスターの追加\) を選択する" border="true":::
 
    クラスターのホストの追加が開始されます。
 

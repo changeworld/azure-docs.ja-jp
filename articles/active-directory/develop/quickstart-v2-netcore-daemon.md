@@ -1,7 +1,7 @@
 ---
-title: コンソール アプリの ID を使用したトークンの取得と Microsoft Graph の呼び出し | Azure
+title: 'クイックスタート: コンソール アプリを使用したトークンの取得と Microsoft Graph の呼び出し | Azure'
 titleSuffix: Microsoft identity platform
-description: トークンを取得し、それを .NET Core アプリから使用して、保護された Microsoft Graph API を呼び出す方法について説明します。
+description: このクイックスタートでは、.NET Core サンプル アプリでクライアント資格情報フローを使用してトークンを取得し、Microsoft Graph を呼び出す方法について説明します。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: e33b912ab65a3565e42c294388949a5c55b4ee8a
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6f4f4c2de3b1030c4d14cb74e562954a3d3d1144
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683761"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257827"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>クイック スタート:トークンを取得し、コンソール アプリの ID を使用して Microsoft Graph API を呼び出す
 
@@ -170,12 +170,7 @@ MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Ident
 
  MSAL.NET は、Visual Studio の**パッケージ マネージャー コンソール**で次のコマンドを実行することでインストールできます。
 
-```powershell
-Install-Package Microsoft.Identity.Client
-```
-
-または、Visual Studio を使用していない場合は、次のコマンドを実行して MSAL をプロジェクトに追加できます。
-
+```powershell twhitney
 ```console
 dotnet add package Microsoft.Identity.Client
 ```
@@ -204,7 +199,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 > | `config.ClientId` | Azure portal に登録されているアプリケーションの "**アプリケーション (クライアント) ID**"。 この値は、Azure portal のアプリの **[概要]** ページで確認できます。 |
 > | `config.Authority`    | (省略可能) ユーザーを認証するための STS エンドポイント。 通常、パブリック クラウド上では `https://login.microsoftonline.com/{tenant}` です。{tenant} はご自分のテナントの名前またはテナント ID です。|
 
-詳細については、[`ConfidentialClientApplication` 用の参照ドキュメント](/dotnet/api/microsoft.identity.client.iconfidentialclientapplication?view=azure-dotnet)をご覧ください。
+詳細については、[`ConfidentialClientApplication` 用の参照ドキュメント](/dotnet/api/microsoft.identity.client.iconfidentialclientapplication)をご覧ください。
 
 ### <a name="requesting-tokens"></a>トークンの要求
 
@@ -219,28 +214,13 @@ result = await app.AcquireTokenForClient(scopes)
 > |---------|---------|
 > | `scopes` | 要求されるスコープが含まれています。 Confidential クライアントの場合は、`{Application ID URI}/.default` のような形式を使用して、要求されるスコープが Azure Portal 上で設定されるアプリ オブジェクト内に静的に定義されたものであることを示す必要があります (Microsoft Graph では、`{Application ID URI}` は `https://graph.microsoft.com` を指します)。 カスタム Web API の場合、`{Application ID URI}` は、Azure portal 上で [アプリケーションの登録 (プレビュー)] の **[API の公開]** セクションに定義されます。 |
 
-詳細については、[`AcquireTokenForClient` 用の参照ドキュメント](/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclient?view=azure-dotnet)をご覧ください。
+詳細については、[`AcquireTokenForClient` 用の参照ドキュメント](/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclient)をご覧ください。
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
 ## <a name="next-steps"></a>次のステップ
 
-デーモン アプリケーションの詳細については、シナリオのランディング ページを参照してください。
+デーモン アプリケーションの詳細については、シナリオの概要を参照してください。
 
 > [!div class="nextstepaction"]
 > [Web API を呼び出すデーモン アプリケーション](scenario-daemon-overview.md)
-
-デーモン アプリケーションのチュートリアルについては、次のページを参照してください。
-
-> [!div class="nextstepaction"]
-> [デーモン .NET Core コンソールのチュートリアル](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)
-
-アクセス許可と同意について学習します。
-
-> [!div class="nextstepaction"]
-> [アクセス許可と同意](v2-permissions-and-consent.md)
-
-このシナリオ用の認証フローの詳細については、OAuth 2.0 クライアント資格情報フローを参照してください。
-
-> [!div class="nextstepaction"]
-> [クライアント資格情報 OAuth フロー](v2-oauth2-client-creds-grant-flow.md)

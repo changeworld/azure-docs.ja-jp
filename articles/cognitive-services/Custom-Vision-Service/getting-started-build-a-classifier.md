@@ -8,18 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 09/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 67632301b534f91c36de837bbfa12f9ec16ed58f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: c8b5d3f58f11e85c6e77ce0cbf0c6d435f570ade
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551354"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277344"
 ---
 # <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>クイック スタート:Custom Vision で分類子を構築する方法
 
-このクイックスタートでは、Custom Vision Web サイトをとおして分類器を構築する方法について説明します。 分類器モデルを構築すると、画像分類のために Custom Vision Service を使用できます。
+このクイックスタートでは、Custom Vision Web サイトを通じて画像分類器を構築する方法について説明します。 モデルを作成したら、新しい画像でテストを行い、最終的に、独自の画像認識ソフトウェアに統合することができます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 
@@ -27,7 +28,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 - 分類子のトレーニングに使用する画像のセット。 画像の選択に関するヒントについては、以下を参照してください。
 
-## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Azure portal で Custom Vision リソースを作成する
+## <a name="create-custom-vision-resources"></a>Custom Vision リソースを作成する
 
 [!INCLUDE [create-resources](includes/create-resources.md)]
 
@@ -45,7 +46,7 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
 1. プロジェクトの名前と説明を入力します。 次に、リソース グループを選択します。 サインインしたアカウントが Azure アカウントと関連付けられている場合は、[リソース グループ] ドロップダウンに、Custom Vision Service リソースを含むすべての Azure リソース グループが表示されます。 
 
    > [!NOTE]
-   > リソース グループを使用できない場合は、[Azure portal](https://portal.azure.com/) へのログインに使用したのと同じアカウントで [customvision.ai](https://customvision.ai) にログインしていることを確認してください。 また、Custom Vision リソースを配置した Azure portal のディレクトリと同じ "ディレクトリ" を Custom Vision ポータルで選択していることを確認してください。 どちらのサイトでも、画面の右上隅にあるドロップダウン アカウント メニューから、ディレクトリを選択できます。 
+   > リソース グループを使用できない場合は、[Azure portal](https://portal.azure.com/) へのログインに使用したのと同じアカウントで [customvision.ai](https://customvision.ai) にログインしていることを確認してください。 また、Custom Vision リソースを配置した Azure portal のディレクトリと同じ "ディレクトリ" を Custom Vision Web サイトで選択していることを確認してください。 どちらのサイトでも、画面の右上隅にあるドロップダウン アカウント メニューから、ディレクトリを選択できます。 
 
 1. __プロジェクトの種類__ で __分類__ を選択します。 次に、__分類の種類__ で、実際のユース ケースに応じて **マルチラベル** または **マルチクラス** のいずれかを選択します。 マルチラベル分類では、ある画像 (0 個以上) に任意の数のタグを適用します。一方、マルチクラス分類では、画像は 1 つのカテゴリへと分類されます (送信するすべての画像が、最も可能性の高いタグに分類されます)。 希望する場合は、後で分類の種類を変更できます。
 
@@ -120,3 +121,4 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
 > [!div class="nextstepaction"]
 > [モデルのテストと再トレーニング](test-your-model.md)
 
+* [Custom Vision とは](./overview.md)

@@ -1,6 +1,7 @@
 ---
-title: Microsoft ID プラットフォーム Python デーモン | Azure
-description: Python プロセスでアクセス トークンを取得し、Microsoft ID プラットフォーム エンドポイントによって保護されている API をアプリ自体の ID を使用して呼び出す方法について説明します
+title: 'クイックスタート: Python daemon からの Microsoft Graph の呼び出し | Azure'
+titleSuffix: Microsoft identity platform
+description: このクイックスタートでは、Python プロセスでアクセス トークンを取得し、Microsoft ID プラットフォーム エンドポイントによって保護されている API を、アプリ自体の ID を使用して呼び出す方法について説明します
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 0969afa95009255981381d41268f416a615dd9f3
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2c280b8241819155f32942a399caa7f916db3827
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683744"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257743"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>クイック スタート:トークンを取得し、Python コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す
 
@@ -224,18 +225,3 @@ if not result:
 
 > [!div class="nextstepaction"]
 > [Web API を呼び出すデーモン アプリケーション](scenario-daemon-overview.md)
-
-デーモン アプリケーションのチュートリアルについては、次のページを参照してください。
-
-> [!div class="nextstepaction"]
-> [デーモン Python コンソールのチュートリアル](https://github.com/Azure-Samples/ms-identity-python-daemon)
-
-アクセス許可と同意について学習します。
-
-> [!div class="nextstepaction"]
-> [アクセス許可と同意](v2-permissions-and-consent.md)
-
-このシナリオ用の認証フローの詳細については、OAuth 2.0 クライアント資格情報フローを参照してください。
-
-> [!div class="nextstepaction"]
-> [クライアント資格情報 OAuth フロー](v2-oauth2-client-creds-grant-flow.md)

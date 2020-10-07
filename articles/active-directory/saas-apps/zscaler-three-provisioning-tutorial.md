@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: b7cb55b5d14208128c894a007d13f4e73fc54b3b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d217f21b0a2dbdad56f2147c8800bbb50b0fa45e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545808"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265529"
 ---
 # <a name="tutorial-configure-zscaler-three-for-automatic-user-provisioning"></a>チュートリアル:Zscaler Three を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -119,7 +119,7 @@ Azure AD ユーザーが特定のアプリを使用するためには、その�
 
 11. **[属性マッピング]** セクションで、Azure AD から Zscaler Three に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Zscaler Three のユーザー アカウントとの照合に使用されます。 すべての変更をコミットするには、 **[保存]** を選択します。
 
-    ![属性マッピング](./media/zscaler-three-provisioning-tutorial/user-attribute-mappings.png)
+    ![7 つのマッピングが表示されている [属性マッピング] セクションのスクリーンショット。](./media/zscaler-three-provisioning-tutorial/user-attribute-mappings.png)
 
 12. **[マッピング]** セクションの **[Synchronize Azure Active Directory Groups to ZscalerThree]\(Azure Active Directory グループを ZscalerThree に同期する\)** を選びます。
 
@@ -127,7 +127,7 @@ Azure AD ユーザーが特定のアプリを使用するためには、その�
 
 13. **[属性マッピング]** セクションで、Azure AD から Zscaler Three に同期されるグループ属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Zscaler Three のグループとの照合に使用されます。 すべての変更をコミットするには、 **[保存]** を選択します。
 
-    ![属性マッピング](./media/zscaler-three-provisioning-tutorial/group-attribute-mappings.png)
+    ![3 つのマッピングが表示されている [属性マッピング] セクションのスクリーンショット。](./media/zscaler-three-provisioning-tutorial/group-attribute-mappings.png)
 
 14. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](./../active-directory-saas-scoping-filters.md)の手順を参照してください。
 

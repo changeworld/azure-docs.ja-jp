@@ -1,95 +1,60 @@
 ---
-title: Azure の Service Fabric の概要
-description: 拡張性と復元性を提供する多くのマイクロサービスでアプリケーションが構成されている Service Fabric の概要です。 Service Fabric とは、スケーラブルで信頼性が高く管理しやすいクラウド向けアプリケーションの構築に使用される分散型システム プラットフォームです。
+title: Azure Service Fabric の概要
+description: Service Fabric は、スケーラブルで信頼性が高く管理しやすいマイクロサービスを構築するための分散システム プラットフォームです。
 ms.topic: overview
-ms.date: 01/07/2020
-ms.custom: sfrev
-ms.openlocfilehash: 3c8eb7ead7851c311c79c2f9e9bdc7e703c3af71
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 09/22/2020
+ms.custom: contentperfq1
+ms.openlocfilehash: 3c282178decc1a07b2c0acc102b279688c42d52e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75747486"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300651"
 ---
 # <a name="overview-of-azure-service-fabric"></a>Azure Service Fabric の概要
 
-Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。 Service Fabric は、クラウド ネイティブ アプリケーションの開発と管理における重要な課題にも対処します。 開発者と管理者は複雑なインフラストラクチャの問題を避けることができ、スケーラブルで信頼性が高く、管理しやすい、ミッション クリティカルで要求の厳しいワークロードの実装に重点を置くことができます。 Service Fabric は、コンテナーで実行するこれらのエンタープライズ クラスの Tier-1 クラウド スケール アプリケーションを構築して管理するための次世代プラットフォームの代表例です。
+Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのパッケージ化とデプロイ、管理を簡単に行うことができる[分散システム プラットフォーム](#container-orchestration)です。 Service Fabric は、クラウド ネイティブ アプリケーションの[開発と管理](#application-lifecycle-management)における重要な課題にも対処します。
 
-こちらの短いビデオでは、Service Fabric とマイクロサービスを紹介しています。
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Service-Fabric/player]
+Service Fabric の主な差別化要因は、ステートフル サービスの構築に大きな重点を置いていることです。 Service Fabric [プログラミング モデル](#stateless-and-stateful-microservices)を使用することも、任意の言語またはコードで記述されたコンテナー化されたステートフル サービスを実行することもできます。 Azure 以外にも、[Service Fabric クラスターは任意の場所](#any-os-any-cloud)に作成できます。これには、Windows Server、Linux のオンプレミスや他のパブリック クラウドが含まれます。
 
-## <a name="compliance"></a>コンプライアンス
-
-Azure Service Fabric リソース プロバイダーは、すべての Azure リージョンで利用でき、Azure が持っているすべてのコンプライアンス証明書に準拠しています。これには、SOC、ISO、PCI DSS、HIPAA、および GDPR が含まれます。 コンプライアンス証明書の完全な一覧については、「[コンプライアンス認証](https://www.microsoft.com/trustcenter/compliance/complianceofferings)」を参照してください。
-
-## <a name="applications-composed-of-microservices"></a>マイクロサービスで構成されたアプリケーション
-
-Service Fabric を使用すると、マイクロサービスで構成されるスケーラブルで信頼性の高いアプリケーションを構築して管理できます。 これらの分散マイクロサービスは、クラスターと呼ばれるマシンの共有プールで、高密度で実行します。 Service Fabric は、ステートレス マイクロサービスとステートフル マイクロサービスをサポートする高度な軽量ランタイムを提供します。 また、デプロイ済みのアプリケーションをプロビジョニング、デプロイ、監視、アップグレード/修正、削除するための包括的なアプリケーション管理機能も提供します。
-
-Service Fabric は、クラウド ネイティブのサービスの作成用に調整されています。これらのサービスは、必要に応じて小規模で開始し、数百または数千ものコンピューターを含むとても大きなスケールまで拡張することができます。 現在のインターネット規模のサービスは、マイクロサービスで構築されています。 マイクロサービスの例としては、プロトコル ゲートウェイ、ユーザー プロファイル、ショッピング カート、インベントリ処理、キュー、キャッシュなどが挙げられます。
+![Service Fabric プラットフォームにより、Azure、オンプレミス、他のクラウド、開発マシンに、ライフサイクル管理、可用性、オーケストレーション、プログラミング モデル、正常性と監視、開発と運用のツール、および自動スケールが提供されます。][Image1]
 
 現在、Service Fabric は、Azure SQL Database、Azure Cosmos DB、Cortana、Microsoft Power BI、Microsoft Intune、Azure Event Hubs、Azure IoT Hub、Dynamics 365、Skype for Business、などの Azure の核となる多くのサービスを含む、さまざまな Microsoft サービスで使用されています。
 
-Service Fabric クラスター間にわたってデプロイされアクティブ化されるマイクロサービスを、コンテナー内にホストします。 仮想マシンからコンテナーへの移行によって密度を 1 桁増やすことができます。 同様に、コンテナーからコンテナー内のマイクロサービスへの移行によっても、密度を 1 桁増やすことができます。 たとえば、単一の Azure SQL Database クラスターは、合計数十万のデータベースをホストする数万のコンテナーを実行する数百のマシンで構成されます。 各データベースは Service Fabric ステートフル マイクロサービスです。
+## <a name="container-orchestration"></a>コンテナーのオーケストレーション
 
-マイクロサービスの手法について詳しくは、「 [マイクロサービスの手法でアプリケーションを構築する理由は何ですか。](service-fabric-overview-microservices.md)
+Service Fabric は、マシンのクラスター全体にマイクロサービスをデプロイして管理するための Microsoft の[コンテナー オーケストレーター](service-fabric-cluster-resource-manager-introduction.md)であり、Microsoft サービスを大規模に実行することで学んだ教訓を活用しています。 Service Fabric により、マシンあたり数百から数千のアプリケーションまたはコンテナーという高密度で、アプリケーションを短時間でデプロイできます。 Service Fabric を使用すると、プロセスとしてのサービスとコンテナー内のサービスの両方を同じアプリケーション内で混在させることができます。
 
-## <a name="container-deployment-and-orchestration"></a>コンテナーのデプロイとオーケストレーション
+Service Fabric の主要な概念、プログラミング モデル、アプリケーション ライフサイクル、テスト、クラスター、および正常性の監視についての詳細は、[こちら](service-fabric-content-roadmap.md)をご覧ください。
 
-Service Fabric は、マシン クラスター全体にマイクロサービスをデプロイする Microsoft の[コンテナー オーケストレーター](service-fabric-cluster-resource-manager-introduction.md)です。 [Service Fabric プログラミング モデル](service-fabric-choose-framework.md)や [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) の使用から[任意のコード](service-fabric-guest-executables-introduction.md)のデプロイまで、多くの方法でマイクロサービスを開発することができます。 重要なこととして、プロセスとしてのサービスとコンテナー内のサービスの両方を同じアプリケーション内で混在させることができます。 [コンテナーのデプロイと管理](service-fabric-containers-overview.md)だけを行う場合は、Service Fabric がコンテナー オーケストレーターとして最適な選択肢です。
+## <a name="stateless-and-stateful-microservices"></a>ステートレスとステートフル マイクロサービス
 
-## <a name="any-os-any-cloud"></a>すべての OS、すべてのクラウド
+Service Fabric は、ステートレス マイクロサービスとステートフル マイクロサービスをサポートする高度な軽量ランタイムを提供します。 Service Fabric の主な差別化要因は、Service Fabric の[組み込みプログラミング モデル](service-fabric-choose-framework.md)またはコンテナー化されたステートフル サービスを使用して、ステートフル サービスを構築するためのその堅牢なサポートにあります。
 
-Service Fabric はどこでも動きます。 Azure、オンプレミス、Windows Server、Linux を含むさまざまな環境で Service Fabric クラスターを作成できます。 他のパブリック クラウド上にクラスターを作成することさえできます。 さらに、SDK の開発環境は、エミュレーターが含まれない運用環境と**同一**です。 つまり、ローカルの開発クラスターで実行した場合、他の環境内のクラスターにデプロイされます。
-
-![Service Fabric platform][Image1]
-
-Windows 開発の場合、Service Fabric .NET SDK は、Visual Studio と PowerShell に統合されています。 「[開発環境を準備する](service-fabric-get-started.md)」を参照してください。 Linux 開発の場合、Service Fabric Java SDK が Eclipse に統合されており、Java、.NET Core、およびコンテナー アプリケーション用のテンプレートを生成する必要はありません 「[Linux で開発環境を準備する](service-fabric-get-started-linux.md)」を参照してください。
-
-クラスター作成の詳細については、[Windows Server または Linux でのクラスターの作成](service-fabric-deploy-anywhere.md)に関する記事を参照してください。また、Azure でのクラスター作成の詳細については、[Azure Portal を使用したクラスターの作成](service-fabric-cluster-creation-via-portal.md)に関する記事を参照してください。
-
-## <a name="stateless-and-stateful-microservices-for-service-fabric"></a>Service Fabric 用のステートレス マイクロサービスとステートフル マイクロサービス
-
-Service Fabric では、マイクロサービスまたはコンテナーで構成されるアプリケーションを構築することができます。 ステートレス マイクロサービス (プロトコル ゲートウェイや Web プロキシなど) では、要求およびそのサービスからの応答以外では変更可能な状態が維持されません。 Azure Cloud Services worker ロールは、ステートレス サービスの一例です。 ステートフル マイクロサービス (ユーザー アカウント、データベース、デバイス、ショッピング カート、キューなど) では、要求およびその応答以外でも変更可能な認証状態が維持されます。 今日のインターネット規模のアプリケーションは、ステートレス マイクロサービスとステートフル マイクロサービスの組み合わせで構成されています。 
-
-Service Fabric との重要な違いは、[組み込みプログラミング モデル](service-fabric-choose-framework.md)またはコンテナー化されたステートフル サービスで、ステートフル サービスの構築に大きな重点が置かれていることです。 [アプリケーション シナリオ](service-fabric-application-scenarios.md)では、ステートフル サービスが使われるシナリオについて説明されています。
+Service Fabric ステートフル サービスの恩恵を受けるアプリケーション シナリオの詳細については、[こちら](service-fabric-application-scenarios.md)をご覧ください。
 
 ## <a name="application-lifecycle-management"></a>アプリケーション ライフサイクル管理
 
-Service Fabric では、コンテナーを含むクラウド アプリケーションの完全なアプリケーション ライフ サイクルと CI/CD のサポートが提供されます。 このライフ サイクルには、開発、展開、日常的な管理、保守、最終的な廃棄が含まれています。
+Service Fabric により、開発からデプロイ、日常的な管理、保守、最終的な使用停止に至るまでのアプリケーション ライフサイクルとコンテナーを含むクラウド アプリケーションの完全な CI/CD のサポートが提供されます。 Service Fabric は、[Azure Pipelines](https://www.visualstudio.com/team-services/)、[Jenkins](https://jenkins.io/index.html)、[Octopus Deploy](https://octopus.com/) などの CI/CD ツールと統合し、他のすべての一般的な CI/CD ツールで使うことができます。
 
-Service Fabric ライフサイクル管理機能を使用すると、アプリケーション管理者および IT オペレーターは単純なロータッチ ワークフローを使用して、アプリケーションをプロビジョニング、デプロイ、修正、および監視することができます。 これらの組み込みワークフローにより、アプリケーションを継続的に使用可能に保つために IT オペレーターにかかる負担が大幅に軽減されます。
+アプリケーション ライフサイクル管理の詳細については、[アプリケーションのライフサイクル](service-fabric-application-lifecycle.md)に関するページを参照してください。 既存のアプリケーションを Service Fabric にデプロイする方法については、[ゲスト実行可能ファイルのデプロイ](service-fabric-deploy-existing-app.md)に関するページを参照してください。
 
-ほとんどのアプリケーションは、ステートレスとステートフルのマイクロサービス、コンテナー、および一緒にデプロイされる他の実行可能ファイルの組み合わせで構成されます。 Service Fabric は、アプリケーションの厳密な型を備えており、複数のアプリケーション インスタンスのデプロイが可能です。 インスタンスは個別に管理およびアップグレードできます。 重要なのは、Service Fabric はコンテナーまたは任意の実行可能ファイルをデプロイし、それらを信頼性の高いものにすることができる点です。 たとえば、Service Fabric は、.NET、ASP.NET Core、Python、Node.js、Windows コンテナー、Linux コンテナー、Java 仮想マシン、スクリプト、Angular、またはアプリケーションを構成する文字通りすべてのものをデプロイできます。
+## <a name="any-os-any-cloud"></a>すべての OS、すべてのクラウド
 
-Service Fabric は、[Azure Pipelines](https://www.visualstudio.com/team-services/)、[Jenkins](https://jenkins.io/index.html)、[Octopus Deploy](https://octopus.com/) などの CI/CD ツールと統合し、他のすべての一般的な CI/CD ツールで使うことができます。
+[Windows Server または Linux](service-fabric-linux-windows-differences.md) 上のさまざまな環境 ([Azure またはオンプレミス](service-fabric-deploy-anywhere.md)を含む) で、Service Fabric のクラスターを作成できます。 他のパブリック クラウド上にクラスターを作成することさえできます。 Service Fabric SDK の開発環境は、エミュレーターが関係していない運用環境と同じです。 つまり、ローカルの開発クラスターで実行されるものが、他の環境内のクラスターにデプロイされます。
 
-アプリケーション ライフサイクル管理の詳細については、[アプリケーションのライフサイクル](service-fabric-application-lifecycle.md)に関するページを参照してください。 任意のコードをデプロイする方法について詳しくは、「[Service Fabric へのゲスト実行可能ファイルのデプロイ](service-fabric-deploy-existing-app.md)」をご覧ください。
+[Windows 開発](service-fabric-get-started.md)の場合、Service Fabric .NET SDK は、Visual Studio と PowerShell に統合されています。 [Linux 開発](service-fabric-get-started-linux.md)の場合、Service Fabric Java SDK が Eclipse に統合されており、Java、.NET Core、およびコンテナー アプリケーション用のテンプレートを生成するために Yeoman が使用されています。
 
-## <a name="key-capabilities"></a>主な機能
+## <a name="compliance"></a>コンプライアンス
 
-Service Fabric を使用すると、次の操作を実行できます。
+Azure Service Fabric リソース プロバイダーは、すべての Azure リージョンで利用でき、すべての Azure コンプライアンス認定に準拠しています。これには、SOC、ISO、PCI DSS、HIPAA、および GDPR が含まれます。 完全な一覧については、[Microsoft コンプライアンス認証](https://www.microsoft.com/trustcenter/compliance/complianceofferings)に関するページを参照してください。
 
-* コードを変更せずに、Azure にデプロイするか、Windows または Linux を実行しているオンプレミスのクラウドにデプロイします。 一度記述してから、任意の Service Fabric クラスターにデプロイします。
-* Service Fabric プログラミング モデル、コンテナー、任意のコードを使って、マイクロサービスで構成されたスケーラブルなアプリケーションを開発します。
-* 信頼性の高いステートレスおよびステートフルなマイクロサービスを開発します。 ステートフル マイクロサービスを使って、アプリケーションの設計を簡略化します。 
-* 新しい Reliable Actors プログラミング モデルを使って、自己完結型のコードと状態を備えたクラウド オブジェクトを作成します。
-* Windows コンテナーと Linux コンテナーを含むコンテナーをデプロイし、調整します。 Service Fabric は、データ対応でステートフルなコンテナー オーケストレーターです。
-* マシンあたり数百から数千のアプリケーションまたはコンテナーという高密度で、アプリケーションを短時間でデプロイします。
-* それぞれ個別にアップグレード可能な、同じアプリケーションの異なるバージョンを並行してデプロイします。
-* 重大なアップグレードと重大でないアップグレードを含め、アプリケーションのライフ サイクルをダウンタイムなく管理します。
-* クラスター内のノード数をスケールアウトまたはスケールインします。 ノードをスケーリングすると、アプリケーションが自動的にスケーリングします。
-* アプリケーションの状態を監視および診断し、自動修復を実行するようにポリシーを設定します。
-* クラスター内でアプリケーションの再配布を調整するリソース バランサーを監視します。 Service Fabric は障害から回復し、利用可能なリソースに基づいて負荷分散を最適化します。
+## <a name="next-steps"></a>次の手順
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>次のステップ
+Azure Service Fabric で最初のアプリケーションを作成してデプロイする:
 
-* 詳細:
-  * [マイクロサービスの手法でアプリケーションを構築する理由は何ですか。](service-fabric-overview-microservices.md)
-  * [用語の概要](service-fabric-technical-overview.md)
-* [Windows 開発環境](service-fabric-get-started.md)をセットアップする  
-* [Linux 開発環境](service-fabric-get-started-linux.md)をセットアップする
-* [Service Fabric のサポート オプション](service-fabric-support.md)について学びます。
+> [!div class="nextstepaction"]
+> [Service Fabric クイックスタート][sf-quickstart]
 
 [Image1]: media/service-fabric-overview/Service-Fabric-Overview.png
+[sf-quickstart]: ./service-fabric-quickstart-dotnet.md

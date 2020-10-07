@@ -3,12 +3,12 @@ title: チュートリアル - Azure VM での SAP HANA データベースのバ
 description: このチュートリアルでは、Azure VM 上で稼働している SAP HANA データベースを Azure Backup Recovery Services コンテナーにバックアップする方法について学習します。
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: b43fd5c432b06902de0a898fc4bb0f114143b3ba
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 0e0f6ff89f59b862ea15148124f44abc3ed196bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89375280"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254349"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>チュートリアル:Azure VM での SAP HANA データベースのバックアップ
 
@@ -65,7 +65,7 @@ ms.locfileid: "89375280"
 
 ### <a name="nsg-tags"></a>NSG タグ
 
-ネットワーク セキュリティ グループ (NSG) を使用する場合は、*AzureBackup* サービス タグを使用して、Azure Backup への発信アクセスを許可します。 Azure Backup タグに加えて、*Azure AD* および *Azure Storage* に対して同様の [NSG 規則](../virtual-network/security-overview.md#service-tags)を作成することによって、認証とデータ転送のための接続を許可する必要もあります。  次の手順では、Azure Backup タグの規則を作成するプロセスについて説明します。
+ネットワーク セキュリティ グループ (NSG) を使用する場合は、*AzureBackup* サービス タグを使用して、Azure Backup への発信アクセスを許可します。 Azure Backup タグに加えて、Azure AD (*AzureActiveDirectory*) および Azure Storage (*Storage*) に対して同様の [NSG 規則](../virtual-network/security-overview.md#service-tags)を作成することによって、認証とデータ転送のための接続を許可する必要もあります。 次の手順では、Azure Backup タグの規則を作成するプロセスについて説明します。
 
 1. **[すべてのサービス]** で、 **[ネットワーク セキュリティ グループ]** に移動して、ネットワーク セキュリティ グループを選択します。
 
@@ -75,7 +75,7 @@ ms.locfileid: "89375280"
 
 1. **[追加]** を選択して、新しく作成した送信セキュリティ規則を保存します。
 
-Azure Storage と Azure AD に対する NSG 送信セキュリティ規則も、同様に作成できます。 サービス タグの詳細については、[こちらの記事](../virtual-network/service-tags-overview.md)を参照してください。
+Azure Storage と Azure AD に対する [NSG 送信セキュリティ規則](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview#service-tags)も、同様に作成できます。 サービス タグの詳細については、[こちらの記事](../virtual-network/service-tags-overview.md)を参照してください。
 
 ### <a name="azure-firewall-tags"></a>Azure Firewall タグ
 

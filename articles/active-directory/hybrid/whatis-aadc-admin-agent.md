@@ -11,12 +11,12 @@ ms.date: 09/04/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43b69deb242fd1ad80d9cdc4667070d2dbfefcd5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: da4e1cfc68dff4ad2bc0552c6d35fe1230779306
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255610"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312959"
 ---
 # <a name="what-is-the-azure-ad-connect-admin-agent"></a>Azure AD Connect 管理エージェントとは 
 Azure AD Connect 管理エージェントは Azure Active Directory Connect の新しいコンポーネントであり、Azure Active Directory Connect サーバーにインストールできます。 サポート ケースを開いたとき、Microsoft のサポート エンジニアの問題解決に役立つ特定のデータを Active Directory 環境から収集するために使用されます。 
@@ -46,7 +46,7 @@ Azure AD Connect 管理エージェントのバイナリは、AAD Connect サー
 
 エージェントがインストールされると、サーバーのコントロール パネルの [プログラムの追加と削除] に次の新しいプログラムが 2 つ表示されます。 
 
-![管理エージェント](media/whatis-aadc-admin-agent/adminagent1.png)
+![追加した新しいプログラムが含まれる [プログラムの追加と削除] リストのスクリーンショット。](media/whatis-aadc-admin-agent/adminagent1.png)
 
 ## <a name="what-data-in-my-sync-service-is-shown-to-the-microsoft-service-engineer"></a>Microsoft サービス エンジニアには自分の同期サービスのどのデータが表示されますか。 
 サポート ケースを開くと、Microsoft サポート エンジニアは、特定のユーザーに関して、Active Directory の関連データ、Azure Active Directory Connect サーバーの Active Directory コネクター スペース、Azure Active Directory Connect サーバーのメタバースを見ることができます。 
@@ -69,7 +69,7 @@ Microsoft サポート エンジニアはシステム内のいかなるデータ
 3. 構成ファイルを保存します。
 4. 下の画像のように Azure AD Connect 管理エージェント サービスを再起動します。
 
-![管理エージェント](media/whatis-aadc-admin-agent/adminagent2.png)
+![Azure AD Administrator Agent サービスを再起動する場所を示すスクリーンショット。](media/whatis-aadc-admin-agent/adminagent2.png)
 
 ## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

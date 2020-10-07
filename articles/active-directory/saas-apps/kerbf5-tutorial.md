@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:Azure AD シングル サインオンと F5 の統合 | Microsoft Docs
-description: Azure Active Directory と F5 の間でシングル サインオンを構成する方法について説明します。
+description: Azure Active Directory と F5 の間でシングル サインオン (SSO) を構成する方法について説明します。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: b48b8c1282f90788846b9dc3b64a5ea1ee018a3c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9db53e36dee318d39d34d26a548d1d32cbbec3b2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535987"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266073"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と F5 の統合
 

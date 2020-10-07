@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperfq1
-ms.date: 08/25/2020
+ms.date: 09/24/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 0572613fe33d525ed1a5a42c627de3ce1049a290
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 24b30842bea51394a375cf48e09b7547e057405c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434046"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261738"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Firewall とは
 
@@ -55,7 +55,8 @@ TCP/UDP 以外のプロトコル (ICMP など) に関するネットワーク �
 |64000 から 65535 の範囲のポートを使用した NAT ルールはサポートされません。|Azure Firewall では、ネットワーク ルールとアプリケーション ルールで 1 から 65535 の範囲の任意のポートを使用できますが、NAT ルールでサポートされるのは、1 から 63999 の範囲のポートのみです。|これは現在の制限です。
 |構成の更新に平均 5 分かかる|Azure Firewall 構成の更新は平均で 3 から 5 分かかる場合があり、並列更新はサポートされていません。|解決策を調査中です。|
 |Azure Firewall では、HTTPS トラフィックと MSSQL トラフィックのフィルター処理に SNI TLS ヘッダーが使用される|ブラウザーまたはサーバー ソフトウェアが Server Name Indicator (SNI) 拡張機能をサポートしていない場合は、Azure Firewall 経由で接続することがはできません。|ブラウザーまたはサーバー ソフトウェアが SNI をサポートしていない場合は、アプリケーション ルールではなくネットワーク ルールを使用して接続を制御できます。 SNI をサポートするソフトウェアについては、「[Server Name Indication](https://wikipedia.org/wiki/Server_Name_Indication)」を参照してください。|
-|カスタム DNS (プレビュー) が強制トンネリングで正しく機能しない|強制トンネリングが有効になっている場合、カスタム DNS (プレビュー) は正しく機能しません。|解決策を調査中です。
+|カスタム DNS (プレビュー) が強制トンネリングで正しく機能しない|強制トンネリングが有効になっている場合、カスタム DNS (プレビュー) は正しく機能しません。|解決策を調査中です。|
+|複数の Availability Zones に対する新しいパブリック IP アドレス サポート|2 つの可用性ゾーン (1 と 2、2 と 3、1 と 3 のいずれか) があるファイアウォールをデプロイするときは新しいパブリック IP アドレスを追加できません。|これはパブリック IP アドレス リソースの制限です。
 
 ## <a name="next-steps"></a>次のステップ
 

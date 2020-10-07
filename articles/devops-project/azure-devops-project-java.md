@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:Java 用の CI/CD パイプラインを作成する - Azure DevOps Starter
-description: DevOps Starter を利用すると、Azure を使い始めるのが簡単になります。 いくつかの簡単な手順により、選択した Azure サービス上でアプリを稼働させることができます。
+description: Azure DevOps Starter の簡素化されたエクスペリエンスを使用した、Azure Pipelines 内での Java アプリ用の継続的インテグレーション (CI) および継続的デリバリー (CD) のパイプラインの設定について説明します。
 ms.prod: devops
 ms.technology: devops-cicd
 services: vsts
@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 738822d2dd4a67ea0b5c83c6c5f6c289e93766c3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 29b05feab0a44629c3d450709a3bc05481be6e84
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327788"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330368"
 ---
 # <a name="set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-starter"></a>Azure DevOps Starter を使用して Java アプリ用の CI/CD パイプラインを設定する
 
@@ -43,9 +43,9 @@ DevOps Starter によって、Azure Pipelines に CI/CD パイプラインが作
 
 1. Java サンプル アプリケーションを選択します。 Java のサンプルでは、複数のアプリケーション フレームワークから選択できます。
 
-1. 既定のサンプル フレームワークは Spring です。 既定の設定のままにして、 **[次へ]** を選択します。  Web App for Containers が既定のデプロイ ターゲットです。 前に選択したアプリケーション フレームワークによって、ここで使用可能な Azure サービスのデプロイ ターゲットの種類が決まります。 
+1. 既定のサンプル フレームワークは Spring です。 既定の設定のままにして、**[次へ]** を選択します。  Web App for Containers が既定のデプロイ ターゲットです。 前に選択したアプリケーション フレームワークによって、ここで使用可能な Azure サービスのデプロイ ターゲットの種類が決まります。 
 
-2. 既定のサービスのままにして、 **[次へ]** を選択します。
+2. 既定のサービスのままにして、**[次へ]** を選択します。
  
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Azure DevOps と Azure サブスクリプションを構成する 
 
@@ -53,7 +53,7 @@ DevOps Starter によって、Azure Pipelines に CI/CD パイプラインが作
    
    1. プロジェクトの名前を選択します。 
    
-   1. Azure サブスクリプションと場所を選択し、アプリケーションの名前を選択して、 **[完了]** を選択します。  
+   1. Azure サブスクリプションと場所を選択し、アプリケーションの名前を選択して、**[完了]** を選択します。  
    数分後、DevOps Starter ダッシュボードが Azure portal に表示されます。 サンプル アプリケーションが Azure DevOps 組織内のリポジトリに設定され、ビルドが実行され、アプリケーションが Azure にデプロイされます。 このダッシュボードでは、コード リポジトリ、CI/CD パイプライン、および Azure のアプリケーションが可視化されます。
    
 2. **[参照]** を選択すると、実行中のアプリケーションが表示されます。
@@ -106,7 +106,7 @@ DevOps Starter によって、Azure Repos または GitHub に Git リポジト�
 1. **[ビルドとリリース]** を選択し、 **[リリース]** を選択します。  
  DevOps Starter により、Azure へのデプロイを管理するリリース パイプラインが作成されます。
 
-1. 左側で、リリース パイプラインの横にある省略記号 (...) を選択し、 **[編集]** を選択します。 リリース パイプラインには、リリース プロセスを定義するパイプラインが含まれています。  
+1. 左側で、リリース パイプラインの横にある省略記号 (...) を選択し、**[編集]** を選択します。 リリース パイプラインには、リリース プロセスを定義するパイプラインが含まれています。  
     
 12. **[成果物]** で、 **[ドロップ]** を選択します。 前の手順で調べたビルド パイプラインでは、成果物に使用される出力が生成されます。 
 
@@ -116,7 +116,7 @@ DevOps Starter によって、Azure Repos または GitHub に Git リポジト�
 
 1. 右側の **[リリースの表示]** を選択します。 このビューには、リリースの履歴が表示されます。
 
-1. いずれかのリリースの横にある省略記号 (...) を選択し、 **[開く]** を選択します。 リリース概要、関連付けられた作業項目、テストなど、調べる必要があるいくつかのメニューがあります。
+1. いずれかのリリースの横にある省略記号 (...) を選択し、**[開く]** を選択します。 リリース概要、関連付けられた作業項目、テストなど、調べる必要があるいくつかのメニューがあります。
 
 1. **[コミット]** を選択します。 このビューには、特定のデプロイに関連付けられているコードのコミットが表示されます。 
 

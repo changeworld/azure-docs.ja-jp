@@ -10,18 +10,18 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8a6fc1291615760320deb488511fdd9d964d25d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ceffc928a0cf8313723ff6193d9a6a63f8465f90
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227867"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266311"
 ---
 # <a name="tutorial-basic-active-directory-environment"></a>チュートリアル:Active Directory の基本的な環境
 
 このチュートリアルでは、Active Directory の基本的な環境を作成する手順について説明します。 
 
-![作成](media/tutorial-single-forest/diagram1.png)
+![基本的 Azure AD 環境の図。](media/tutorial-single-forest/diagram1.png)
 
 チュートリアルで作成した環境を使用して、ハイブリッド ID シナリオのさまざまな側面をテストし、いくつかのチュートリアルの前提条件となります。  既存の Active Directory 環境がある場合は、代替として使用できます。  この情報は、新規に作成するユーザーのために提供されています。
 
@@ -200,7 +200,7 @@ Active Directory 環境を作成したところで、テスト アカウント�
 2. **プラス (+) アイコン**を選択し、**Azure Active Directory** を検索します。
 3. 検索結果で **[Azure Active Directory]** を選択します。
 4. **［作成］** を選択します</br>
-![作成](media/tutorial-single-forest/create1.png)</br>
+![Azure portal の Azure Active Directory ページのスクリーンショット。](media/tutorial-single-forest/create1.png)</br>
 5. **組織の名前**と**初期ドメイン名**を入力します。 **[作成]** を選択します。 これにより、ディレクトリが作成されます。
 6. これが完了したら、**こちら**のリンクをクリックし、ディレクトリを管理します。
 
@@ -208,7 +208,7 @@ Active Directory 環境を作成したところで、テスト アカウント�
 Azure AD テナントを作成したので、次は全体管理者アカウントを作成します。  全体管理者アカウントを作成するには、以下を実行します。
 
 1.  **[管理]** にある **[ユーザー]** を選択します。</br>
-![作成](media/tutorial-single-forest/administrator1.png)</br>
+![[概要] メニューのスクリーンショット。[ユーザー] が選択されています。](media/tutorial-single-forest/administrator1.png)</br>
 2.  **[すべてのユーザー]** を選択し、 **+ [新しいユーザー]** を選択します。
 3.  このユーザーの名前およびユーザー名を入力します。 これがテナントのグローバル管理者になります。 また、 **[ディレクトリ ロール]** を **[全体管理者]** に変更してください。 一時パスワードを表示することもできます。 完了したら、 **[作成]** を選択します。</br>
 ![作成](media/tutorial-single-forest/administrator2.png)</br>

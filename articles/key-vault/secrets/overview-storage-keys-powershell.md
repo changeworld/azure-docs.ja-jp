@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 8e8479179aa74f2fb2ead41dec28d247de9657c3
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: dd54dd17e5a9a828935ad0d6ac3d713aaedd9535
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585102"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251594"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Key Vault と Azure PowerShell を使用してストレージ アカウント キーを管理する
 
@@ -75,7 +75,7 @@ Set-AzContext -SubscriptionId <subscriptionId>
 
 ### <a name="set-variables"></a>変数の設定
 
-まず、次の手順で、PowerShell コマンドレットによって使用される変数を設定します。 プレースホルダー <YourResourceGroupName>、<YourStorageAccountName>、および <YourKeyVaultName> を更新し、`cfa8b339-82a2-471a-a3c9-0fc0be7a4093` に $keyVaultSpAppId を設定します (上記の「[サービス プリンシパルのアプリケーション ID](#service-principal-application-id)」で指定)。
+まず、次の手順で、PowerShell コマンドレットによって使用される変数を設定します。 プレースホルダー "YourResourceGroupName"、"YourStorageAccountName"、"YourKeyVaultName" を更新し、`cfa8b339-82a2-471a-a3c9-0fc0be7a4093` に $keyVaultSpAppId を設定します (上記の「[サービス プリンシパルのアプリケーション ID](#service-principal-application-id)」で指定)。
 
 Azure ストレージ アカウントのユーザー ID とコンテキストを取得するために、Azure PowerShell の [Get-AzContext](/powershell/module/az.accounts/get-azcontext?view=azps-2.6.0) および [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount?view=azps-2.6.0) コマンドレットも使用します。
 

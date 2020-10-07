@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 08/17/2020
-ms.openlocfilehash: 1a16283f3d04c9ad331a04c3a36b49055635d76e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e43e20ceb5e84d652fee9ca4db6d5dc871ed1e4f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906490"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268454"
 ---
 # <a name="quickstart-create-a-hyperscale-citus-server-group-in-the-azure-portal"></a>クイックスタート: Azure portal で Hyperscale (Citus) サーバー グループを作成する
 
@@ -25,7 +25,7 @@ Azure Database for PostgreSQL は、高可用性の PostgreSQL データベー�
 
 psql を使用し、ハイパースケール コーディネーター ノードに接続したら、基本的なタスクの一部を完了できます。
 
-ハイパースケール サーバー内には、3 種類のテーブルがあります。
+ハイパースケール (Citus) サーバー内には、3 種類のテーブルがあります。
 
 - 分散またはシャード化されたテーブル (パフォーマンスと並列処理のための拡張を支援する目的で分散されます)
 - 参照テーブル (複数のコピーを保持)
@@ -71,7 +71,7 @@ CREATE INDEX event_type_index ON github_events (event_type);
 CREATE INDEX payload_index ON github_events USING GIN (payload jsonb_path_ops);
 ```
 
-次に、コーディネーター ノードの Postgres テーブルを選択し、worker 間でシャード化するように Hyperscale に指示します。 その際、シャード化するためのキーを指定し、各テーブルにクエリを実行します。 現在の例では、`user_id` でイベントとユーザーのテーブルをシャード化します。
+次に、コーディネーター ノードの Postgres テーブルを選択し、worker 間でシャード化するように Hyperscale (Citus) に指示します。 その際、シャード化するためのキーを指定し、各テーブルにクエリを実行します。 現在の例では、`user_id` でイベントとユーザーのテーブルをシャード化します。
 
 ```sql
 SELECT create_distributed_table('github_events', 'user_id');
@@ -117,7 +117,7 @@ ORDER BY hour;
 
 これまでのところ、クエリには github\_events だけが関係していましたが、この情報を github\_users と組み合わせることができます。 ユーザーとイベントを両方、同じ ID (`user_id`) でシャード化したため、ユーザー ID が一致する両テーブルの行は同じデータベース ノードと[同じ場所に配置](concepts-hyperscale-colocation.md)され、簡単に結合できます。
 
-`user_id` で結合した場合、Hyperscale は、worker ノードで並列実行するため、結合実行をシャードにプッシュできます。 たとえば、リポジトリを最も多く作成したユーザーを見つけましょう。
+`user_id` で結合した場合、Hyperscale (Citus) は、worker ノードで並列実行するため、結合実行をシャードにプッシュできます。 たとえば、リポジトリを最も多く作成したユーザーを見つけましょう。
 
 ```sql
 SELECT gu.login, count(*)

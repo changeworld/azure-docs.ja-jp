@@ -9,28 +9,22 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 7affc5aad89fd79e6ba6480f7bf10d37f90dc5e3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f5cb8119e5429c4684030aaee2e6ffa99c92e2d5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075873"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260939"
 ---
 # <a name="get-started-with-azure-synapse-analytics"></a>Azure Synapse Analytics の使用を開始する
 
 このチュートリアルは、Azure Synapse Analytics の主な機能領域に関するステップバイステップ ガイドです。 このチュートリアルは、Azure Synapse Analytics の主要なシナリオに関するガイド ツアーを希望する方にとって理想的な出発点となります。 このチュートリアルの各ステップを実行すると、完全に機能する Synapse ワークスペースが作成されます。このワークスペースでは、SQL、SQL オンデマンド、および Apache Spark を使用してデータの分析を開始できます。
 
-次のことについて学習します。
-* Azure サブスクリプションで Synapse ワークスペースをプロビジョニングする
-* ADLSGEN2 アカウントでアクセス制御を構成し、Synapse ワークスペースとシームレスに連携させる
-* NYCTaxi サンプル データを Synapse ワークスペースに読み込み、SQL、SQL オンデマンド、および Spark で使用できるようにする
-* Synapse Studio を使用して SQL スクリプトと Synapse ノートブックを編集して実行する
-* SQL テーブルと Spark テーブルにクエリを実行する
-* SQL テーブルから Spark Dataframes にデータを読み込む
-* Spark Dataframes から SQL テーブルにデータを読み込む
-* ADLSGEN2 アカウントの内容を調べる
-* Spark と SQL オンデマンドを使用して ADLSGEN2 アカウントで parquet データ ファイルを分析する 
-* Synapse ノートブックを 1 時間ごとに自動的に実行するデータ パイプラインを作成する
+
+
+
+
+
 
 次に示す "*順番に*" 各ステップを実行すると、さまざまな機能を確認して、コア機能を実行する方法を学ぶことができます。
 
@@ -41,3 +35,5 @@ ms.locfileid: "87075873"
 * [ステップ 5 - ストレージ アカウント内のデータを分析する](get-started-analyze-storage.md)
 * [ステップ 6 - パイプラインを使用してオーケストレーションする](get-started-pipelines.md)
 * [ステップ 7 - Power BI を使用してデータを視覚化する](get-started-visualize-power-bi.md)
+* [手順 8 - 活動を監視する](get-started-monitor.md)
+* [手順 9 - Knowledge Center を探索する](get-started-knowledge-center.md)

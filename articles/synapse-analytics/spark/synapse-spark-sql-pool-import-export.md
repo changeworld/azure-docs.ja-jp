@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: 58c52649750ae03f19188a025fa4baa16a55ae05
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 11f73d2becb40b800c49afe0cd58f56953f8d42d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590083"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259920"
 ---
 # <a name="introduction"></a>はじめに
 
@@ -30,7 +30,7 @@ Synapse SQL コネクタへの Azure Synapse の Apache Spark プールは、Apa
 
 ## <a name="authentication-in-azure-synapse-analytics"></a>Azure Synapse Analytics での認証
 
-システム間の認証は、Azure Synapse Analytics でシームレスに行われます。 Azure Active Directory に接続して、ストレージ アカウントまたはデータ ウェアハウス サーバーにアクセスするときに使用するセキュリティ トークンを取得するトークン サービスがあります。
+システム間の認証は、Azure Synapse Analytics でシームレスに行われます。 トークン サービスは Azure Active Directory に接続し、ストレージ アカウントまたはデータ ウェアハウス サーバーにアクセスするときに使用するセキュリティ トークンを取得します。
 
 このため、ストレージ アカウントとデータ ウェアハウス サーバーで AAD 認証が構成されている限り、資格情報を作成したり、コネクタ API でそれらを指定したりする必要はありません。 そうでない場合は、SQL 認証を指定できます。 詳細については、「[使用法](#usage)」セクションを参照してください。
 
@@ -65,7 +65,7 @@ EXEC sp_addrolemember 'db_exporter',[mike@contoso.com]
 
 ## <a name="usage"></a>使用法
 
-import ステートメントは必要はありません。ノートブック エクスペリエンスのために事前にインポートされています。
+import ステートメントは必要ありません。ノートブック エクスペリエンスのために事前にインポートされています。
 
 ### <a name="transfer-data-to-or-from-a-sql-pool-attached-with-the-workspace"></a>ワークスペースに接続されている SQL プールとの間でのデータを転送する
 
@@ -91,7 +91,7 @@ val df = spark.read.sqlanalytics("<DBName>.<Schema>.<TableName>")
 df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-Write API では、SQL プールにテーブルを作成してから、Polybase を呼び出してデータを読み込みます。  テーブルは SQL プールに存在することはできません。存在する場合、"... という名前のオブジェクトが既に存在します" を示すエラーが返されます。
+Write API では、SQL プールにテーブルを作成してから、Polybase を呼び出してデータを読み込みます。  テーブルは SQL プールに存在することはできません。存在する場合、"... という名前のオブジェクトが既に存在します" という内容のエラーが返されます。
 
 TableType の値
 
@@ -106,7 +106,7 @@ df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
 
 SQL プールの外部テーブル
 
-SQL プールの外部テーブルに書き込むには、EXTERNAL DATA SOURCE と EXTERNAL FILE FORMAT が SQL プールに存在している必要があります。  詳細については、SQL プールでの[外部データ ソース](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)および[外部ファイル形式](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)の作成に関するページを参照してください。  SQL プールに外部データ ソースと外部ファイル形式を作成する例を以下に示します。
+SQL プールの外部テーブルに書き込むには、EXTERNAL DATA SOURCE と EXTERNAL FILE FORMAT が SQL プールに存在している必要があります。  詳細については、SQL プールでの[外部データ ソース](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)および[外部ファイル形式](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)の作成に関するページを参照してください。  SQL プールに外部データ ソースと外部ファイル形式を作成する例を以下に示します。
 
 ```sql
 --For an external table, you need to pre-create the data source and file format in SQL pool using SQL queries:

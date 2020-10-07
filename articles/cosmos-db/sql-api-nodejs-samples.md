@@ -7,13 +7,13 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 08/23/2019
 ms.author: dech
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 2c0e2b7a63f02559f95b647bc1b4ef46b8a157cd
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: e6e28de27e6142b713c2f00ef982d30d04816b86
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421826"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326696"
 ---
 # <a name="nodejs-examples-to-manage-data-in-azure-cosmos-db"></a>Azure Cosmos DB のデータを管理する例 (Node.js)
 
@@ -21,6 +21,7 @@ ms.locfileid: "87421826"
 > * [.NET V2 SDK のサンプル](sql-api-dotnet-samples.md)
 > * [.NET V3 SDK のサンプル](sql-api-dotnet-v3sdk-samples.md)
 > * [Java V4 SDK のサンプル](sql-api-java-sdk-samples.md)
+> * [Spring Data V3 SDK のサンプル](sql-api-spring-data-sdk-samples.md)
 > * [Node.js のサンプル](sql-api-nodejs-samples.md)
 > * [Python のサンプル](sql-api-python-samples.md)
 > * [Azure のコード サンプル ギャラリー](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)

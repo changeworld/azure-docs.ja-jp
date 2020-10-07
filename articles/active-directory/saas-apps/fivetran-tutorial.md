@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: jeedes
-ms.openlocfilehash: 9cf8a76f74e6dda6ade98ea348f5401eab15c53e
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 9d6951456593c57f9def80990e582a5ff54cc5d9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500527"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312619"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fivetran"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Fivetran の統合
 
@@ -31,7 +31,7 @@ ms.locfileid: "89500527"
 開始するには、次が必要です。
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
-* Fivetran でのシングル サインオン (SSO) が有効なサブスクリプション。
+* Fivetran アカウント。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -96,7 +96,7 @@ Fivetran に対して Azure AD SSO を構成してテストするには、次の
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
-1. **[Set up Fivetran]\(Fivetran の設定\)** セクションで、要件に基づいて適切な URL をコピーします。
+1. **[Set up Fivetran] (Fivetran の設定)** セクションで、 **[ログイン URL]** と **[Azure AD 識別子]** の値をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
@@ -126,7 +126,22 @@ Fivetran に対して Azure AD SSO を構成してテストするには、次の
 
 ## <a name="configure-fivetran-sso"></a>Fivetran の SSO を構成する
 
-**Fivetran** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [Fivetran サポート チーム](mailto:support@fivetran.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+このセクションでは、**Fivetran** 側でシングル サインオンを構成します。
+
+1. 別の Web ブラウザーのウィンドウで、アカウント所有者として Fivetran アカウントにサインインします。
+1. ウィンドウの左上隅にある矢印を選択し、ドロップダウン リストから **[Manage Account]\(アカウントを管理する\)** を選択します。
+
+   ![[Manage Account]\(アカウントを管理する\) メニュー オプションが選択されている画面のスクリーンショット。](media/fivetran-tutorial/fivetran-1.png)
+
+1. **[設定]** ページの **[SAML Config]\(SAML 構成\)** セクションに移動します。
+
+   ![[SAML Config]\(SAML 構成\) ウィンドウのスクリーンショット。構成オプションが強調表示されています。](media/fivetran-tutorial/fivetran-2.png)
+
+   1. **[SAML 認証を有効にする]** には **[オン]** を選択します。
+   1. **[サインオン URL]** に、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+   1. **[Issuer]\(発行者\)** に、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
+   1. ダウンロードした証明書ファイルをテキスト エディターで開き、証明書をクリップボードにコピーし、 **[公開証明書]** ボックスに貼り付けます。
+   1. **[SAVE CONFIG]\(構成の保存\)** を選択します。
 
 ### <a name="create-fivetran-test-user"></a>Fivetran のテスト ユーザーを作成する
 

@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 409311594cc26680217948e2394420fdaea29024
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 58c1aea944d89872a79d0672a925b1696791c1a8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015375"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260854"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Azure Synapse Analytics の共有データベース
 
@@ -23,7 +23,7 @@ Azure Synapse Analytics では、さまざまな計算ワークスペース エ�
 
 [!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
 
-Spark ジョブを使用して作成されたデータベースは、その同じ名前で、ワークスペース内の現在および将来のすべての Spark プール (プレビュー) と、SQL オンデマンド エンジンから参照できるようになります。
+Spark ジョブを使用して作成されたデータベースは、その同じ名前で、SQL オンデマンド エンジンも含め、ワークスペース内の現在および将来のすべての Spark プール (プレビュー) から参照できるようになります。
 
 Spark の既定のデータベース (`default` と呼ばれる) は、`default` と呼ばれるデータベースとして SQL オンデマンド コンテキストにも表示されます。
 

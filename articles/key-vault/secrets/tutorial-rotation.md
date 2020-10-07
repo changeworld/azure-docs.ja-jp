@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c2d1a46a35ef38791b6a3b47c300aa1b47f70324
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: e34349f9f52c61d27e57e6ac7f4b3515ee746b22
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086921"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331847"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>1 セットの認証資格情報を使用したリソースを対象にシークレットのローテーションを自動化する
 
@@ -68,6 +68,8 @@ akvrotation-sql/master  akvrotation      eastus      Microsoft.Sql/servers/datab
 ```
 
 ## <a name="create-and-deploy-sql-server-password-rotation-function"></a>SQL Server のパスワード ローテーション関数を作成してデプロイする
+> [!IMPORTANT]
+> 次のテンプレートでは、Key Vault、SQL サーバー、Azure 関数が同じリソース グループに含まれている必要があります。
 
 次に、システムマネージド ID を使用して関数アプリとその他の必須コンポーネントを作成し、SQL Server のパスワード ローテーション関数をデプロイします。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Resource Manager テンプレートを使用した Azure IoT Hub Device Provisioning の設定
+title: クイックスタート - Azure Resource Manager テンプレートを使用した Azure IoT Hub Device Provisioning の設定
 description: Azure クイックスタート - テンプレートを使用して Azure IoT Hub Device Provisioning Service (DPS) を設定する
 author: wesmc7777
 ms.author: wesmc
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 482401b75cadf44e2cef03cced8dd216d0980524
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e1ca3d7270fb0858bb2512e5b9e285eb8d4555c6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74969583"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297149"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用して IoT Hub Device Provisioning Service を設定する
 
@@ -300,7 +300,7 @@ JSON テンプレートを使用し、リソース グループにプロビジ�
 
 次の Azure CLI コメンドを使用してテンプレートをデプロイし、デプロイを確認します。
 
-1. テンプレートをデプロイするには、テンプレートとパラメーター ファイルが格納されているフォルダーに移動し、次に示す[デプロイを開始するコマンド](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)を実行します。
+1. テンプレートをデプロイするには、テンプレートとパラメーター ファイルが格納されているフォルダーに移動し、次に示す[デプロイを開始するコマンド](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create&preserve-view=true)を実行します。
     
     ```azurecli
      az group deployment create -g {your resource group name} --template-file template.json --parameters @parameters.json
@@ -311,7 +311,7 @@ JSON テンプレートを使用し、リソース グループにプロビジ�
    ![プロビジョニングの出力](./media/quick-setup-auto-provision-rm/output.png) 
 
 
-2. デプロイを確認するには、次に示す[リソースを列挙するコマンド](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-list)を実行し、出力で新しいプロビジョニング サービスと IoT ハブを探します。
+2. デプロイを確認するには、次に示す[リソースを列挙するコマンド](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-list&preserve-view=true)を実行し、出力で新しいプロビジョニング サービスと IoT ハブを探します。
 
     ```azurecli
      az resource list -g {your resource group name}

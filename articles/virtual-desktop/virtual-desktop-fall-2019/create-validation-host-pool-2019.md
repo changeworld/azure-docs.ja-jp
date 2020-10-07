@@ -1,17 +1,17 @@
 ---
 title: Windows Virtual Desktop (クラシック) ホスト プール サービスの更新プログラム - Azure
-description: 運用環境に更新プログラムを展開する前にサービスの更新プログラムを監視する検証ホスト プールを作成する方法。
+description: 運用環境に更新プログラムを展開する前に、サービスの更新プログラムを監視するための、Windows Virtual Desktop (クラシック) 内にある検証ホスト プールを作成する方法について学習します。
 author: Heidilohr
 ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 572b74347194070615efadca4ed6b1329b3f89c2
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 291f1e8b8870257c233dc32894ff49b26c0a3501
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526801"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323531"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates-in-windows-virtual-desktop-classic"></a>チュートリアル:サービスの更新プログラムを検証する Windows Virtual Desktop (クラシック) のホスト プールを作成する
 

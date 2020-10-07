@@ -9,15 +9,19 @@ ms.subservice: spark
 ms.date: 08/26/2020
 ms.author: martinle
 ms.reviewer: euang
-ms.openlocfilehash: 21b571c859ec8ecc66c1c9a222e0648dc7f28f4f
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 90e7297236994650e0820e883c94a98b29c49fb7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89422128"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249418"
 ---
 # <a name="securing-your-credentials-through-linked-services-with-the-tokenlibrary"></a>リンクされたサービスと TokenLibrary を使用して資格情報をセキュリティで保護する
-外部ソースからデータにアクセスすることは、よくあるパターンです。 外部データソースで匿名アクセスが許可されていない限り、資格情報、シークレット、または接続文字列を使用して接続をセキュリティで保護することがおそらく必要になります。  Azure Synapse Analytics には、リンクされたサービスまたは Azure Key Vault に接続の詳細を保存することによって統合プロセスを簡略化する、リンクされたサービスが用意されています。 リンクされたサービスを作成すると、Apache Spark からリンクされたサービスを参照して、コード内に接続情報を適用できるようになります。 詳細については、[リンクされたサービス](../../data-factory/concepts-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページを参照してください。
+外部ソースからデータにアクセスすることは、よくあるパターンです。 外部データソースで匿名アクセスが許可されていない限り、資格情報、シークレット、または接続文字列を使用して接続をセキュリティで保護することがおそらく必要になります。  
+
+Azure Synapse Analytics には、リンクされたサービスまたは Azure Key Vault に接続の詳細を保存することによって統合プロセスを簡略化する、リンクされたサービスが用意されています。 リンクされたサービスを作成すると、Apache Spark では、リンクされたサービスを参照して、コード内に接続情報を適用できるようになります。 
+
+詳細については、[リンクされたサービス](../../data-factory/concepts-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページを参照してください。
 > [!NOTE]
 > ワークスペース内の Azure Data Lake Storage からファイルにアクセスするには、認証に AAD パススルーを使用します。そのため、TokenLibrary を使用する必要はありません。 
 
@@ -26,7 +30,7 @@ ms.locfileid: "89422128"
 * リンクされたサービス - 外部データ ソースへのリンクされたサービスを作成し、トークン ライブラリからリンクされたサービスを参照する必要があります。 リンクされたサービスの詳細については、[こちら](../../data-factory/concepts-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)を参照してください。
 
 
-## <a name="connecting-to-adls-gen2-outside-of-synapse-workspace"></a>Synapse ワークスペース外の ADLS Gen2 への接続
+## <a name="connect-to-adls-gen2-outside-of-synapse-workspace"></a>Synapse ワークスペース外の ADLS Gen2 に接続する
 
 Synapse によって、Azure Data Lake Storage Gen2 のリンクされたサービスが統合されたエクスペリエンスが提供されます。
 
@@ -52,7 +56,7 @@ df = spark.read.csv("abfss://<CONTAINER>@<ACCOUNT>.dfs.core.windows.net/<DIRECTO
 
 df.show()
 ```
-## <a name="using-the-token-library"></a>トークン ライブラリの使用
+## <a name="use-the-token-library"></a>トークン ライブラリを使用する
 
 他のリンクされたサービスに接続するには、TokenLibrary を直接呼び出すことができます。
 

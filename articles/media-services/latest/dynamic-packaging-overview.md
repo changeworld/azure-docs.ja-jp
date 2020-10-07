@@ -2,7 +2,7 @@
 title: Azure Media Services v3 のダイナミック パッケージ
 titleSuffix: Azure Media Services
 description: この記事では、Azure Media Services でのダイナミック パッケージの概要について説明します。
-author: IngridAtMicrosoft
+author: myoungerman
 manager: femila
 editor: ''
 services: media-services
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: dfa87921bc6a5a6c34b4dec33f4aae1907507730
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.author: v-myoung
+ms.openlocfilehash: 3607ecb7d1ef01b968b67c704e12136cc1888b69
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89291621"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296231"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Media Services v3 のダイナミック パッケージ
 
@@ -27,7 +27,7 @@ ms.locfileid: "89291621"
 
 Microsoft Azure Media Services は、多くのメディア ソース ファイル形式をエンコードするために使用できます。 これは、コンテンツ保護の有無に関係なく、さまざまなストリーミング プロトコルを介して配信され、すべての主要なデバイス (iOS デバイスや Android デバイスなど) に到達します。 これらのクライアントは、さまざまなプロトコルを認識します。 たとえば、iOS では、HTTP ライブ ストリーミング (HLS) 形式でストリームを配信する必要があります。また、Android デバイスでは、HLS と MPEG DASH がサポートされます。
 
-Media Services では、[ストリーミング エンドポイント](streaming-endpoint-concept.md) (配信元) は、ダイナミック (Just-In-Time) パッケージおよび配信元サービスを表します。これは、ライブのオンデマンド コンテンツをクライアント プレーヤー アプリに直接配信できます。 次のセクションで説明する一般的なストリーミング メディア プロトコルのいずれかを使用します。 *ダイナミック パッケージ*は、すべてのストリーミング エンドポイント (Standard または Premium) に標準で付属する機能です。
+Media Services では、[ストリーミング エンドポイント](streaming-endpoint-concept.md) (配信元) は、ダイナミック (Just-In-Time) パッケージおよび配信元サービスを表します。これは、ライブのオンデマンド コンテンツをクライアント プレーヤー アプリに直接配信できます。 次のセクションで説明する一般的なストリーミング メディア プロトコルのいずれかを使用します。 "*ダイナミック パッケージ*" は、すべてのストリーミング エンドポイントに標準で付属する機能です。
 
 > [!NOTE]
 > [Azure portal](https://portal.azure.com/) を使用し、v3 の[ライブ イベント](live-events-outputs-concept.md)の管理、v3 の[資産](assets-concept.md)の表示、API へのアクセスに関する情報の取得を行うことができます。 他のすべての管理タスク (変換とジョブなど) については、[REST API](/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
@@ -132,7 +132,7 @@ Media Services v3 のライブ ストリームの詳細については、[ライ
 ダイナミック パッケージでは、MP4 コンテナー ファイル形式になっていて、[H.264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC または AVC1) または [H.265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC、hev1、または hvc1) でエンコードされたビデオが格納されている、ビデオ ファイルがサポートされています。
 
 > [!NOTE]
-> "*ダイナミック パッケージ*" では、最大 4K の解像度および最大 60 フレーム/秒のフレーム レートをテスト済みです。 [Premium エンコーダー](../previous/media-services-encode-asset.md#media-encoder-premium-workflow)では、従来の v2 API を使用した H.265 へのエンコードがサポートされます。
+> "*ダイナミック パッケージ*" では、最大 4K の解像度および最大 60 フレーム/秒のフレーム レートをテスト済みです。
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>ダイナミック パッケージによってサポートされているオーディオ コーデック
 

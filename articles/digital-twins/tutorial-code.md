@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 30a782c7d7c13eb9c92e4a4bf64e268416a2b382
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: bd8eee2fd6134bb36c0b0ab45492567f4fdbec26
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561552"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297506"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>チュートリアル:Azure Digital Twins API を使用したコーディング
 
@@ -234,8 +234,7 @@ await foreach (ModelData md in modelDataList)
     Console.WriteLine($"Type name: {md.DisplayName}: {md.Id}");
 }
 ```
-
-この新しいコードをテストするためにプログラムをもう一度実行する前に、前回のプログラム実行時にモデルを既にアップロードしたことを思い出してください。 Azure Digital Twins では、同じモデルを 2 回アップロードすることはできません。そのため、プログラムを再実行すると、例外が表示されることを予想しておいてください。
+この新しいコードをテストするためにプログラムをもう一度実行する前に、前回のプログラム実行時にモデルを既にアップロードしたことを思い出してください。 Azure Digital Twins によって、同じモデルを 2 回アップロードすることはできません。そのため、同じモデルを再度アップロードしようとすると、プログラムから例外がスローされます。
 
 ここで、コマンド ウィンドウで次のコマンドを使用してプログラムを再度実行します。
 
@@ -258,7 +257,6 @@ try {
     Console.WriteLine($"Load model: {rex.Status}:{rex.Message}");
 }
 ```
-
 この時点で、コマンド ウィンドウで `dotnet run` を使用してプログラムを実行すると、エラー コードが返されることがわかります。 次のような画面が出力されます。
 
 ```cmd/sh
@@ -270,11 +268,11 @@ Load model: 409:Service request failed.
 Status: 409 (Conflict)
 
 Content:
-{"error":{"code":"DocumentAlreadyExists","message":"A document with same identifier already exists.","details":[]}}
+{"error":{"code":"ModelAlreadyExists","message":"Model with same ID already exists dtmi:com:contoso:SampleModel;1. Use Model_List API to view models that already exist. See the Swagger example. (http://aka.ms/ModelListSwSmpl):}}
 
 Headers:
 api-supported-versions: REDACTED
-Date: Tue, 05 May 2020 01:57:51 GMT
+Date: Thu, 10 Sep 2020 01:57:51 GMT
 Content-Length: 115
 Content-Type: application/json; charset=utf-8
 
@@ -392,6 +390,25 @@ await ListRelationships(client, "sampleTwin-0");
 ```
 
 コマンド ウィンドウで、`dotnet run` を使用してプログラムを実行します。 作成したすべてのリレーションシップの一覧が表示されます。
+
+出力例を次に示します。
+
+```cmd/sh
+Hello World!
+Service client created - ready to go
+
+Upload a model
+Type name: System.Collections.Generic.Dictionary'2[System.String,System.String]: dtmi:contosocom:DigitalTwins:SampleModel;1
+Create twin: sampleTwin-0
+Create twin: sampleTwin-1
+Create twin: sampleTwin-2
+Created relationship successfully
+Created relationship successfully
+Twin sampleTwin-0 is connected to:
+-contains->sampleTwin-1
+-contains->sampleTwin-2
+
+```
 
 ### <a name="query-digital-twins"></a>デジタル ツインのクエリ
 

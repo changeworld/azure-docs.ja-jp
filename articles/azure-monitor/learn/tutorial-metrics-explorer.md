@@ -1,17 +1,17 @@
 ---
 title: チュートリアル - Azure Monitor でのメトリック グラフの作成
-description: Azure メトリックス エクスプローラーを使用して、ご自分の最初のメトリック グラフを作成する方法について説明します。
+description: Azure メトリックス エクスプローラーを使用し、メトリック グラフを作成する方法について説明します。
 author: bwren
 ms.author: bwren
 ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 03/09/2020
-ms.openlocfilehash: 72f90918afa275e56528016539ecb2eec93d5db0
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 26b155484dafac4a63fe2a6c7ff292ee8bbacbc0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090093"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317210"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>チュートリアル:Azure Monitor でのメトリック グラフの作成
 メトリックス エクスプローラーは、Azure portal 内の Azure Monitor の 1 機能であり、メトリック値からグラフを作成したり、傾向を視覚的に関連付けたり、メトリック値の急上昇または急降下を調査したりすることができます。 メトリックス エクスプローラーを使用して、ご利用の Azure リソースの正常性と使用率を調べ、カスタム メトリックに基づいてグラフをプロットします。 

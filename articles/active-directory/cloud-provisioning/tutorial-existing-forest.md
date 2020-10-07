@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25e70809becd59ceeb3c45867b9e35119df497a3
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 4b247009669d6008644c9beb54fb687138b81716
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526920"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266413"
 ---
 # <a name="integrate-an-existing-forest-and-a-new-forest-with-a-single-azure-ad-tenant"></a>既存のフォレストと新しいフォレストを単一の Azure AD テナントに統合する
 
@@ -60,14 +60,14 @@ ms.locfileid: "90526920"
 4. [エージェントのダウンロード] をクリックします
 5. Azure AD Connect プロビジョニング エージェントを実行します
 6. スプラッシュ スクリーンでライセンス条項に**同意**し、 **[インストール]** をクリックします。</br>
-![[ようこそ] 画面](media/how-to-install/install1.png)</br>
+!["Microsoft Azure AD Connect Provisioning Agent Package" のスプラッシュ スクリーンを示すスクリーンショット。](media/how-to-install/install1.png)</br>
 
 7. この操作が完了すると、構成ウィザードが起動します。  Azure AD 全体管理者アカウントでサインインします。  IE セキュリティ強化を有効にしている場合はサインインがブロックされることに注意してください。  その場合はインストールを終了して、サーバー マネージャーで IE セキュリティ強化を無効にし、 **[AAD Connect Provisioning Agent Wizard]\(AAD Connect プロビジョニング エージェント ウィザード\)** をクリックしてインストールを再開します。
 8. **[Connect Active Directory]\(Active Directory の接続\)** 画面で **[ディレクトリの追加]** をクリックし、Active Directory ドメイン管理者アカウントを使用してサインインします。  注:ドメイン管理者アカウントに、パスワード変更要件は設定しないでください。 パスワードが期限切れになった場合や変更された場合は、新しい資格情報でエージェントを再構成する必要があります。 この操作によってオンプレミス ディレクトリが追加されます。  **[次へ]** をクリックします。</br>
-![[ようこそ] 画面](media/how-to-install/install3.png)</br>
+![[Active Directory の接続] 画面のスクリーンショット。](media/how-to-install/install3.png)</br>
 
 9. **[構成が完了しました]** 画面で、 **[Confirm]\(確認\)** をクリックします。  この操作によって、エージェントが登録されて再起動されます。</br>
-![[ようこそ] 画面](media/how-to-install/install4.png)</br>
+![[構成が完了しました] 画面を示すスクリーンショット。](media/how-to-install/install4.png)</br>
 
 10. この操作が完了すると、次の通知が表示されます。 **"Your agent configuration was successfully verified. (エージェントの構成が正常に検証されました。)"**  **[終了]** をクリックします。</br>
 ![[ようこそ] 画面](media/how-to-install/install5.png)</br>

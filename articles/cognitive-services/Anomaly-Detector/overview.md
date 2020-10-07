@@ -1,27 +1,29 @@
 ---
 title: Anomaly Detector API とは
 titleSuffix: Azure Cognitive Services
-description: Anomaly Detector API の高度なアルゴリズムを利用し、時系列データ内の異常を特定します。
+description: Anomaly Detector API のアルゴリズムを利用し、時系列データに異常検出を適用します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 09/10/2020
+ms.date: 09/22/2020
 ms.author: aahi
-ms.openlocfilehash: ba094709d78d92b678e3aa5ad9995923888caf00
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+keywords: 異常検出, 機械学習, アルゴリズム
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: 2e48c189df23ed94cd54e1bc9097b7d9709c9ed3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887509"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319318"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Anomaly Detector API とは
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Anomaly Detector API では、機械学習を利用することで、時系列データを監視し、その中の異常を検出できます。 Anomaly Detector API では、産業、シナリオ、データ量に関係なく、データに最適なモデルが自動的に特定され、適用されます。 この API では、時系列データを使用し、異常検出の境界、予想される値、異常となるデータ ポイントが判断されます。
+Anomaly Detector API では、時系列データを監視し、その中の異常を検出できます。機械学習の知識は必要ありません。 Anomaly Detector API のアルゴリズムでは、産業、シナリオ、データ量に関係なく、データに最適なモデルが自動的に特定され、適用されます。 この API では、時系列データを使用し、異常検出の境界、予想される値、異常となるデータ ポイントが判断されます。
 
 ![サービス要求のパターンの変化を検出する](./media/anomaly_detection2.png)
 
@@ -33,7 +35,7 @@ Anomaly Detector を利用すると、時系列データ全体で異常を自動
 
 |特徴量  |説明  |
 |---------|---------|
-|リアルタイムで発生した異常を検出します。 | 前に確認されたデータ ポイントを利用し、最新のデータ ポイントが異常であるかどうかを判断することでストリーミング データ内の異常を検出します。 この操作では、送信したデータ ポイントを利用してモデルが生成され、ターゲットのポイントが異常であるかどうかが判断されます。 生成する新しいデータ ポイントで API を呼び出すことで、作成時にデータを監視できます。 |
+|リアルタイムの異常検出。 | 前に確認されたデータ ポイントを利用し、最新のデータ ポイントが異常であるかどうかを判断することでストリーミング データ内の異常を検出します。 この操作では、送信したデータ ポイントを利用してモデルが生成され、ターゲットのポイントが異常であるかどうかが判断されます。 生成する新しいデータ ポイントで API を呼び出すことで、作成時にデータを監視できます。 |
 |バッチとして設定されたデータ全体で異常を検出します。 | 時系列データを使用し、データ全体に存在する可能性がある異常を検出します。 この操作により、時系列データ全体を使用してモデルが生成されます。各ポイントが同じモデルで分析されます。         |
 |バッチとして設定されたデータ全体で変化点を検出します。 | 時系列データを使用し、データに存在する傾向の変化点を検出します。 この操作により、時系列データ全体を使用してモデルが生成されます。各ポイントが同じモデルで分析されます。    |
 | データに関する追加情報を取得します。 | 予想される値、異常の境界、位置など、データに関する役に立つ詳細と観察された異常を取得します。 |

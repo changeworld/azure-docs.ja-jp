@@ -4,18 +4,19 @@ description: Azure Migrate サービスの最新の情報や最近行われた�
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 019c04c5820a82b7910b6755ff69e5dfbe7eb66c
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: a46519d434061ebfdedbabe70a3e044cb69ca552
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421613"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322225"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate の新着情報
 
 [Azure Migrate](migrate-services-overview.md) を使用すると、オンプレミスのサーバー、アプリ、データを検出して評価し、Microsoft Azure クラウドに移行するのに役立ちます。 この記事では、Azure Migrate の新しいリリースと機能について概要を説明します。
 ## <a name="update-september-2020"></a>更新 (2020 年 9 月)
-- Azure Migrate では、Availability Zones にサーバーを移行できます
+- Azure Migrate では、Availability Zones にサーバーを移行できるようになりました。
+- Azure Migrate では、UEFI ベースの VM と物理サーバーを Azure 第 2 世代 VM に移行できるようになりました。 
 
 ## <a name="update-august-2020"></a>更新 (2020 年 8 月)
 

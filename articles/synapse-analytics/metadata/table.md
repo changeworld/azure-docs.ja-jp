@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d00232d602ce7b2de0db4e06ef3c7456f552833e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6b9835cf5de28fbd515a214554f723d99e8e8fe4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018741"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260733"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure Synapse Analytics の共有メタデータ テーブル
 
@@ -49,7 +49,7 @@ Spark には、Azure Synapse によって自動的に SQL で公開されるテ�
 
   Spark では、`LOCATION` オプションを指定するか、Hive 形式を使用することにより、既存のデータに対して外部テーブルを作成することもできます。 このような外部テーブルは、Parquet などのさまざまなデータ形式にできます。
 
-Azure Synapse では現在、SQL エンジンを使用して Parquet 形式でデータを格納する、「マネージドおよび外部 Spark テーブル」のみが共有されます。 他の形式に基づくテーブルは自動的に同期されません。 SQL エンジンがテーブルの基になる形式をサポートしている場合は、自分の SQL データベースの外部テーブルとして、このようなテーブルを明示的に同期することができます。
+Azure Synapse では現在、SQL エンジンを使用して Parquet 形式でデータを格納するマネージドおよび外部 Spark テーブルのみが共有されます。 他の形式に基づくテーブルは自動的に同期されません。 SQL エンジンがテーブルの基になる形式をサポートしている場合は、自分の SQL データベースの外部テーブルとして、このようなテーブルを明示的に同期することができます。
 
 ### <a name="share-spark-tables"></a>Spark テーブルを共有する
 
@@ -105,7 +105,7 @@ Spark データベースおよびテーブルは、SQL エンジン内のそれ�
     CREATE TABLE mytestdb.myParquetTable(id int, name string, birthdate date) USING Parquet
 ```
 
-これにより、データベース `mytestdb` にテーブル `myParquetTable` が作成されます。 少し時間が経過すると、SQL オンデマンドでテーブルを確認できるようになります。 たとえば、SQL オンデマンドで次のステートメントを実行します。
+このコマンドにより、データベース `mytestdb` にテーブル `myParquetTable` が作成されます。 少し時間が経過すると、SQL オンデマンドでテーブルを確認できるようになります。 たとえば、SQL オンデマンドで次のステートメントを実行します。
 
 ```sql
     USE mytestdb;

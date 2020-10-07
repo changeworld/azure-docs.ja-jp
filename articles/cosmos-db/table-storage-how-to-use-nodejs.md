@@ -1,6 +1,6 @@
 ---
 title: Node.js から Azure Table Storage または Azure Cosmos DB Table API を使用する
-description: Azure Table Storage または Azure Cosmos DB Table API を使用して、構造化データをクラウドに格納します。
+description: Node.js から Azure Table Storage または Azure Cosmos DB Table API を使用して、構造化データをクラウドに格納します。
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: nodejs
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
-ms.custom: devx-track-javascript
-ms.openlocfilehash: cfcb5645a6284214e233758705537486f32967c6
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-js
+ms.openlocfilehash: 6ce4354faec73f8fe42a936e677bee473796701d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079299"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318774"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Node.js から Azure Table Storage または Azure Cosmos DB Table API を使用する方法
 
@@ -481,7 +481,7 @@ tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
 
 詳細については、次のリソースを参照してください。
 
-* [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
+* [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
 * GitHub の [Azure Storage SDK for Node.js](https://github.com/Azure/azure-storage-node) リポジトリ
 * [Node.js 開発者向けの Azure](https://docs.microsoft.com/azure/developer/javascript/)
 * [Azure で Node.js Web アプリを作成する](../app-service/quickstart-nodejs.md)

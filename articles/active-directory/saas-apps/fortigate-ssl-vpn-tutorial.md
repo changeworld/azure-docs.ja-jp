@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:Azure AD SSO と FortiGate SSL VPN の統合
-description: このチュートリアルでは、Azure Active Directory と FortiGate SSL VPN の間でシングル サインオンを構成する方法について説明します。
+title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と FortiGate SSL VPN の統合 | Microsoft Docs
+description: FortiGate SSL VPN と Azure Active Directory (Azure AD) を統合するために必要な手順について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/11/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abe92218d6bb20274e916089c15df8c1f44c4fd6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 187903bfbf75ada45b9a539acd1157dfe730747a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986440"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331116"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortigate-ssl-vpn"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と FortiGate SSL VPN の統合
 
@@ -94,16 +94,29 @@ FortiGate SSL VPN で Azure AD SSO を構成してテストするには、これ
     > [!NOTE]
     > これらの値は、ただのパターンです。 実際の**サインオン URL**、**識別子**、**応答 URL**、および**ログアウト URL** を使用する必要があります。 実際の値を取得するには、[FortiGate SSL VPN クライアント サポート チーム](mailto:tac_amer@fortinet.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. FortiGate SSL VPN は、特定の形式の SAML アサーションを受け入れます。 そのため、カスタム属性マッピングを SAML トークン属性構成に追加する必要があります。 次のスクリーンショットは、既定の属性を示しています。
+1. FortiGate SSL VPN アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
     ![既定の属性を示しているスクリーンショット。](common/default-attributes.png)
 
-1. FortiGate SSL VPN では、いくつかの追加の属性が SAML 応答で返されることも想定されています。 これらの属性を次の表に示します。 それらも値が事前に設定されますが、要件を考慮してそれらを確認することができます。
-    
-    | 名前 |  ソース属性|
-    | ------------ | --------- |
-    | username | user.userprincipalname |
-    | group | user.groups |
+1. 次の表に、FortiGate SSL VPN に追加で必要な要求を 2 つ示します。 これらの要求の名前は、このチュートリアルの **FortiGate コマンドライン構成の実行**に関するセクションで使用されている名前と一致する必要があります。 
+
+   | 名前 |  ソース属性|
+   | ------------ | --------- |
+   | username | user.userprincipalname |
+   | group | user.groups |
+   
+   これらの追加の要求を作成するには、次の操作を実行します。
+   
+   1. **[ユーザー属性と要求]** の横にある **[編集]** を選択します。
+   1. **[新しい要求の追加]** を選択します。
+   1. **[名前]** で、**ユーザー名**を入力します。
+   1. **[ソース属性]** で、**user.userprincipalname**を選択します。
+   1. **[保存]** を選択します。
+   1. **[グループ要求を追加する]** を選択します。
+   1. **[すべてのグループ]** を選択します。
+   1. **[グループ要求の名前をカスタマイズする]** チェック ボックスをオンにします。
+   1. **[名前]** で、**グループ**を入力します。
+   1. **[保存]** を選択します。   
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** の横にある **[ダウンロード]** リンクを選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 

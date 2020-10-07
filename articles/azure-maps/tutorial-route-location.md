@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:Microsoft Azure Maps Route Service とマップ コントロールを使用してルートの道順を表示する方法
-description: Microsoft Azure Maps Route Service とマップ コントロールを使用してルートの道順を表示する方法について説明します。
+title: チュートリアル:場所へのルートを検索する |Microsoft Azure Maps
+description: 目的地へのルートを検索する方法に関するチュートリアルです。 住所の座標を設定し、Azure Maps Route Service に目的地への道順を照会する方法をご覧ください。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/01/2020
@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 35a3f6d1e7894eec9baa4ea5432a8e3fec138a21
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 3cb9bee65ab7fa2c29185c40ecb48fd531192187
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085044"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321715"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>チュートリアル:Azure Maps Route Service とマップ コントロールを使用してルートの道順を表示する方法
 
@@ -218,7 +218,7 @@ ms.locfileid: "90085044"
 
      :::image type="content" source="./media/tutorial-route-location/map-route.png" alt-text="マップ コントロールの基本的なマップ レンダリング":::
 
-    サンプルの完全なソース コードは、[こちら](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)から取得できます。 ライブ サンプルは、[こちら](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)でご覧いただけます。
+サンプルの完全なソース コードは、[こちら](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)から取得できます。 ライブ サンプルは、[こちら](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)でご覧いただけます。
 
 ## <a name="next-steps"></a>次のステップ
 

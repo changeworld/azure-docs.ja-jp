@@ -1,6 +1,6 @@
 ---
 title: パフォーマンスのための Spark ジョブの最適化
-description: この記事では、Azure Synapse Analytics の Apache Spark の概要と、さまざまな概念について説明します。
+description: この記事では、Azure Synapse Analytics の Apache Spark の概要について説明します。
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 89040057798ec4c909cac584ed96c187e79b5581
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f8eb87909ffdf9ce15108d78bed425bf6c142262
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089262"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249469"
 ---
 # <a name="optimize-apache-spark-jobs-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Apache Spark ジョブ (プレビュー) を最適化する
 
-[Apache Spark](https://spark.apache.org/) クラスター構成を特定のワークロード用に最適化する方法を説明します。  最もよくある課題は、不適切な構成 (特に不適切なサイズの実行プログラム)、実行時間の長い操作、およびデカルト演算を生じるタスクが原因の、メモリ不足です。 ジョブは、適切なキャッシュを使用し、[データ スキュー](#optimize-joins-and-shuffles)を可能にすることで、高速化することができます。 最適なパフォーマンスを得るためには、実行時間が長くリソースを多く消費する Spark ジョブの実行を監視し、確認します。
+[Apache Spark](https://spark.apache.org/) クラスター構成を特定のワークロード用に最適化する方法について説明します。  最もよくある課題は、不適切な構成 (特に不適切なサイズの実行プログラム)、実行時間の長い操作、およびデカルト演算を生じるタスクが原因の、メモリ不足です。 ジョブは、適切なキャッシュを使用し、[データ スキュー](#optimize-joins-and-shuffles)を可能にすることで、高速化することができます。 最適なパフォーマンスを得るためには、実行時間が長くリソースを多く消費する Spark ジョブの実行を監視し、確認します。
 
 次のセクションでは、一般的な Spark ジョブの最適化と推奨事項について説明します。
 
@@ -52,7 +52,7 @@ ms.locfileid: "87089262"
 
 Spark では、csv、json、xml、parquet、orc、avro など、多くの形式がサポートされています。 Spark は、外部データ ソースを使用して他の多くの形式をサポートするように拡張できます。詳細については、[Apache Spark パッケージ](https://spark-packages.org)を参照してください。
 
-パフォーマンスのために最適な形式は *Snappy で圧縮*した Parquet であり、これが Spark 2.x の既定値です。 Parquet はデータを列形式で格納し、Spark で高度に最適化されています。 また、"*snappy 圧縮*" では、gzip 圧縮よりもファイルが大きくなる場合があります。 これらのファイルは分割可能な性質を備えるため、より速く圧縮解除されます。
+パフォーマンスのために最適な形式は *Snappy で圧縮*した Parquet であり、これが Spark 2.x の既定値です。 Parquet はデータを列形式で格納し、Spark で高度に最適化されています。 また、"*snappy 圧縮*" では、gzip 圧縮よりもファイルが大きくなる場合があります。 これらのファイルは性質上、分割可能であるため、より速く圧縮解除されます。
 
 ## <a name="use-the-cache"></a>キャッシュの使用
 

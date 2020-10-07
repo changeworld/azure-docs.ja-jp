@@ -1,6 +1,6 @@
 ---
 title: Azure Notification Hubs と iOS SDK バージョン 2.0.4 を使用して iOS アプリにプッシュ通知を送信する
-description: このチュートリアルでは、Azure Notification Hubs と Apple Push Notification Service を使用して iOS デバイスにプッシュ通知を送信する方法について学習します。
+description: このチュートリアルでは、Azure Notification Hubs と Apple Push Notification Service を使用して iOS デバイス (バージョン 2.0.4) にプッシュ通知を送信する方法について学習します。
 author: sethmanheim
 ms.author: sethm
 ms.date: 06/19/2020
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: d89d46e3365a97d9deea8a89de2d9a1d5799cb72
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ffa562a734e0e6f898aaff89622362080bf1a053
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836056"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318196"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs-version-204"></a>チュートリアル:Azure Notification Hubs (バージョン 2.0.4) を使用して iOS アプリにプッシュ通知を送信する
 
@@ -53,30 +53,11 @@ ms.locfileid: "87836056"
 
    Xcode で作成した新しいプロビジョニング プロファイルが表示されない場合は、署名 ID のプロファイルを更新してみてください。 メニュー バーの **[Xcode]**   をクリックし、 **[Preference] (ユーザー設定)** 、 **[アカウント]**   タブ、 **[View Details] (詳細の表示)**   ボタンの順にクリックします。署名 ID をクリックし、右下隅にある更新ボタンをクリックします。
 
-   :::image type="content" source="media/ios-sdk/image2.png" alt-text="詳細の表示":::
+   :::image type="content" source="media/ios-sdk/image2.png" alt-text="テンプレートを選択する":::
 
 4.  **[Signing & Capabilities] (署名と機能)**   タブで、 **[+ Capability] (+ 機能)** を選択します。  **[プッシュ通知]**   をダブルクリックして有効にします。
 
-   :::image type="content" source="media/ios-sdk/image3.png" alt-text="機能":::
-
-5. Azure Notification Hubs SDK モジュールを追加します。
-
-    [Cocoapods](https://cocoapods.org/) を使用するか、手動でプロジェクトにバイナリを追加することで、アプリに Azure Notification Hubs SDK を統合できます。
-
-   - Cocoapods による統合:次の依存関係をポッドファイルに追加して、アプリに Azure Notification Hubs SDK を含めます。
-
-      ```ruby
-      pod 'AzureNotificationHubs-iOS'
-      ```
-
-      - pod install を実行して新しく定義したポッドをインストールし、.xcworkspace を開きます。
-
-         pod install の実行中に "**Unable to find a specification for AzureNotificationHubs-iOS (AzureNotificationHubs-iOS の仕様を見つけられません)** " などのエラーが表示された場合は、`pod repo update` を実行して Cocoapods リポジトリから最新のポッドを取得してから、pod install を実行します。
-
-   - Carthage による統合:次の依存関係を Cartfile に追加して、アプリに Azure Notification Hubs SDK を含めます。
-
-      ```ruby
-      github "Azure/azure-notificationhubs-ios"
+   :::image type="content" source="media/ios-sdk/image3.png" alt-text="テンプレートを選択する"
       ```
 
       - 次に、ビルドの依存関係を更新します。
@@ -93,7 +74,7 @@ ms.locfileid: "87836056"
 
         - Xcode でプロジェクトを右クリックし、 **[Add Files to] (ファイルの追加先)**   オプションをクリックして Xcode プロジェクトに  **WindowsAzureMessaging.framework**  フォルダーを追加します。  **[オプション]**   を選択し、 **[Copy items if needed] (必要に応じてアイテムをコピーする)**   がオンになっていることを確認してから、 **[Add] (追加)** をクリックします。
 
-          :::image type="content" source="media/ios-sdk/image4.png" alt-text="フレームワークを追加する":::
+          :::image type="content" source="media/ios-sdk/image4.png" alt-text="テンプレートを選択する":::
 
 6.  **Constants.h**という名前の新しいヘッダー ファイルをプロジェクトに追加します。 そのためには、プロジェクト名を右クリックし、 **[New File...] (新しいファイル)** を選択します。次に、 **[ヘッダー ファイル]** を選択します。 このファイルは、通知ハブの定数を保持します。  **[次へ]** を選択します。 ファイルに **Constants.h**という名前を付けます。
 
@@ -110,13 +91,7 @@ ms.locfileid: "87836056"
 
 8. Constants.h の実装ファイルを追加します。 そのためには、プロジェクト名を右クリックし、 **[New File...] (新しいファイル)** を選択します。 **[Objective-C ファイル]** を選択し、 **[Next] (次へ)** を選択します。 ファイルに **Constants.m**という名前を付けます。
 
-   :::image type="content" source="media/ios-sdk/image5.png" alt-text="実装ファイルを追加する":::
-
-9.  **Constants.m** ファイルを開き、その内容を次のコードに置き換えます。 文字列リテラルのプレースホルダー `NotificationHubConnectionString` および `NotificationHubConnectionString` を、それぞれ、以前にポータルから取得したハブ名と **DefaultListenSharedAccessSignature**に置き換えます。
-
-   ```objc
-   #import <Foundation/Foundation.h>
-   #import "Constants.h"
+   :::image type="content" source="media/ios-sdk/image5.png" alt-text="テンプレートを選択する"
 
    NSString* const NHInfoConnectionString = @"NotificationHubConnectionString";
    NSString* const NHInfoHubName = @"NotificationHubName";NSString* const NHUserDefaultTags = @"notification_tags";
@@ -450,7 +425,7 @@ ms.locfileid: "87836056"
 
  [Azure portal](https://portal.azure.com/) で  **[テスト送信]**   オプションを使用すると、アプリでの通知の受信をテストできます。 これは、デバイスにテスト プッシュ通知を送信します。
 
-:::image type="content" source="media/ios-sdk/image6.png" alt-text="テスト送信":::
+:::image type="content" source="media/ios-sdk/image6.png" alt-text="テンプレートを選択する":::
 
 プッシュ通知は通常、互換性のあるライブラリを使用して Mobile Apps などのバックエンド サービスや ASP.NET に送信されます。 ライブラリがバックエンドに使用できない場合は、REST API を直接使用して通知メッセージを送信することもできます。
 
@@ -467,13 +442,13 @@ iOS でプッシュ通知をテストするには、物理 iOS デバイスに�
 
 1. アプリケーションを実行して登録が成功したことを確認したら、 **[OK]** を押します。
 
-   :::image type="content" source="media/ios-sdk/image7.png" alt-text="[登録]":::
+   :::image type="content" source="media/ios-sdk/image7.png" alt-text="テンプレートを選択する":::
 
 2. 次に、前のセクションで説明されているように、 [Azure portal](https://portal.azure.com/)からテスト プッシュ通知を送信します。
 
 3. プッシュ通知は、特定の通知ハブから通知を受信するように登録されているすべてのデバイスに送信されます。
 
-   :::image type="content" source="media/ios-sdk/image8.png" alt-text="送信のテスト":::
+   :::image type="content" source="media/ios-sdk/image8.png" alt-text="テンプレートを選択する":::
 
 ## <a name="next-steps"></a>次のステップ
 

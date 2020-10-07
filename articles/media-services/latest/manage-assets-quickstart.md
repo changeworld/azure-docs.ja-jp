@@ -6,12 +6,12 @@ ms.date: 08/31/2020
 author: IngridAtMicrosoft
 ms.author: inhenkel
 manager: femila
-ms.openlocfilehash: 16a5793f9848a6e16856728877727dbefc3e0805
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 6b4373efc4979900e676257cc0b2748145165499
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89264931"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261415"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>クイック スタート:ポータルでコンテンツをアップロード、エンコード、およびストリーム配信する
 
@@ -66,7 +66,7 @@ ms.locfileid: "89264931"
 
 対象の資産ウィンドウに移動すると、新しい資産が一覧に追加されていることがわかります。
 
-![アップロード](./media/manage-assets-quickstart/upload.png)
+![Azure portal のスクリーンショット。[資産 (新規)] を選択して開いた [資産] ウィンドウと、[アップロード] ボタンを選択して追加した新しい資産が表示されています。](./media/manage-assets-quickstart/upload.png)
 
 ## <a name="encode"></a>エンコード
 
@@ -78,7 +78,7 @@ ms.locfileid: "89264931"
 
 対象の資産ウィンドウに移動すると、出力資産が一覧に追加されていることがわかります。
 
-![エンコード](./media/manage-assets-quickstart/encode.png)
+![Azure portal の [資産] ウィンドウのスクリーンショット。ignite.mp4 Media Encoded Standard encoded という資産が資産一覧に追加されています。](./media/manage-assets-quickstart/encode.png)
 
 ## <a name="monitor-the-job-progress"></a>ジョブの進行状況を監視する
 

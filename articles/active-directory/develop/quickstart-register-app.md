@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperfq1
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 5f34215d57bd5dae8c9a5e6e8f4630b7ed0c827e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 9cd59d6bf5b9bf6e17cba0786bfac27ed12d7638
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89436758"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258134"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>クイック スタート:Microsoft ID プラットフォームにアプリケーションを登録する
 
@@ -53,19 +53,21 @@ Microsoft ID プラットフォームでアプリケーションの ID および
 1. **[リダイレクト URI (省略可能)]** には何も入力しないでください。これは、次のセクションで構成します。
 1. **[登録]** を選択して、初期のアプリ登録を完了します。
 
-    :::image type="content" source="media/quickstart-register-app/portal-02-app-reg-01.png" alt-text="[アプリケーションの登録] ウィンドウを示す、Web ブラウザー内の Azure portal のスクリーンショット。":::
+    :::image type="content" source="media/quickstart-register-app/portal-02-app-reg-01.png" alt-text="[アプリケーションの登録] ウィンドウを示す、Web ブラウザー内の Azure portal のスクリーンショット。&quot;:::
 
-登録を完了すると、Azure portal に、アプリ登録の **[概要]** ウィンドウが表示され、これには **[アプリケーション (クライアント) ID]** が含まれます。 この値は、"*クライアント ID*" とも呼ばれ、Microsoft ID プラットフォームでアプリケーションが一意に識別されます。
+登録を完了すると、Azure portal に、アプリ登録の **[概要]** ウィンドウが表示され、これには **[アプリケーション (クライアント) ID]** が含まれます。 この値は、&quot;*クライアント ID*" とも呼ばれ、Microsoft ID プラットフォームでアプリケーションが一意に識別されます。
 
 アプリケーションのコード、またはより一般的にはアプリケーションで使用される認証ライブラリでも、ID プラットフォームから受信するセキュリティ トークンを検証する 1 つの側面としてクライアント ID を使用します。
 
-:::image type="content" source="media/quickstart-register-app/portal-03-app-reg-02.png" alt-text="アプリ登録の [概要] ウィンドウを示す、Web ブラウザー内の Azure portal のスクリーンショット。":::
+:::image type="content" source="media/quickstart-register-app/portal-03-app-reg-02.png" alt-text="[アプリケーションの登録] ウィンドウを示す、Web ブラウザー内の Azure portal のスクリーンショット。&quot;:::
+
+登録を完了すると、Azure portal に、アプリ登録の **[概要]** ウィンドウが表示され、これには **[アプリケーション (クライアント) ID]** が含まれます。 この値は、&quot;*クライアント ID*":::
 
 ## <a name="add-a-redirect-uri"></a>リダイレクト URI を追加する
 
 リダイレクト URI は、認証後に Microsoft ID プラットフォームによってユーザーのクライアントがリダイレクトされ、セキュリティ トークンが送信される場所です。
 
-たとえば、運用 Web アプリケーションでは、多くの場合、リダイレクト URI は、アプリが実行されているパブリック エンドポイント (例: `https://contoso.com/auth-response`) です。 開発時には、アプリをローカルで実行するエンドポイント (例: `https://127.0.0.1/auth-response`) も追加するのが一般的です。
+たとえば、運用 Web アプリケーションでは、多くの場合、リダイレクト URI は、アプリが実行されているパブリック エンドポイント (例: `https://contoso.com/auth-response`) です。 開発時には、アプリをローカルで実行するエンドポイント (例: `https://127.0.0.1/auth-response` または `http://localhost/auth-response`) も追加するのが一般的です。
 
 登録済みのアプリケーションのリダイレクト URI を追加および変更するには、その[プラットフォーム設定](#configure-platform-settings)を構成します。
 
@@ -80,7 +82,9 @@ Microsoft ID プラットフォームでアプリケーションの ID および
 1. **[プラットフォーム構成]** で **[プラットフォームを追加]** を選択します。
 1. **[プラットフォームの構成]** で、アプリケーションの種類 (プラットフォーム) のタイルを選択して、その設定を構成します。
 
-    :::image type="content" source="media/quickstart-register-app/portal-04-app-reg-03-platform-config.png" alt-text="Azure portal の [プラットフォームの構成] ウィンドウのスクリーンショット。" border="false":::
+    :::image type="content" source="media/quickstart-register-app/portal-04-app-reg-03-platform-config.png" alt-text="[アプリケーションの登録] ウィンドウを示す、Web ブラウザー内の Azure portal のスクリーンショット。&quot;:::
+
+登録を完了すると、Azure portal に、アプリ登録の **[概要]** ウィンドウが表示され、これには **[アプリケーション (クライアント) ID]** が含まれます。 この値は、&quot;*クライアント ID*" border="false":::
 
     | プラットフォーム | 構成設定 |
     | -------- | ---------------------- |
@@ -101,7 +105,9 @@ Microsoft ID プラットフォームでアプリケーションの ID および
 
 証明書とクライアント シークレット (文字列) の両方を資格情報として Confidential クライアント アプリの登録に追加できます。
 
-:::image type="content" source="media/quickstart-register-app/portal-05-app-reg-04-credentials.png" alt-text="[アプリの登録] の [証明書およびシークレット] ウィンドウを示す Azure portal のスクリーンショット":::
+:::image type="content" source="media/quickstart-register-app/portal-05-app-reg-04-credentials.png" alt-text="[アプリケーションの登録] ウィンドウを示す、Web ブラウザー内の Azure portal のスクリーンショット。&quot;:::
+
+登録を完了すると、Azure portal に、アプリ登録の **[概要]** ウィンドウが表示され、これには **[アプリケーション (クライアント) ID]** が含まれます。 この値は、&quot;*クライアント ID*":::
 
 ### <a name="add-a-certificate"></a>証明書を追加する
 

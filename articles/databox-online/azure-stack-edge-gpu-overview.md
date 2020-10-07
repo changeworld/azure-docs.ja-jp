@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/07/2020
+ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: c17cd17dfc3462d5a55753e6a4a364c14f9e2b62
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 34dc0717b13cb38c4477cc93f23d57d0a8023dae
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899075"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320746"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>GPU 搭載の Azure Stack Edge Pro とは
 
@@ -44,11 +44,10 @@ Azure Stack Edge Pro には、次の機能があります。
 |---------|---------|
 |高速 AI 推論| 組み込みの GPU によって実現されます (モデルにより 1 つまたは 2 つ搭載)。|
 |エッジ コンピューティング      |VM とコンテナー化されたワークロードをサポートすることで、データの分析、処理、フィルター処理を可能にします。 |
-|高性能 | ハイ パフォーマンス コンピューティングおよびデータ転送。|
 |データ アクセス     | クラウドでデータをさらに処理するために、クラウド API を使用して、Azure Storage Blob と Azure ファイルからデータを直接アクセスします。 デバイス上のローカル キャッシュは、最近使用されたファイルの高速アクセスに使用されます。|
 |クラウドでの管理     |デバイスとサービスは Azure portal を介して管理されます。  |
 |オフライン アップロード     | 切断モードでは、オフライン アップロードのシナリオに対応します。|
-|サポートされるストレージ プロトコル     | データ インジェストのために、標準の SMB、NFS、REST プロトコルをサポートします。 <br> サポート対象のバージョンについては、「[Azure Stack Edge Pro のシステム要件](azure-stack-edge-system-requirements.md)」を参照してください。|
+|サポートされているファイル転送プロトコル      | データ インジェストのために、標準の SMB、NFS、REST プロトコルをサポートします。 <br> サポート対象のバージョンについては、「[Azure Stack Edge Pro のシステム要件](azure-stack-edge-system-requirements.md)」を参照してください。|
 |データ更新     | ローカル ファイルをクラウドから最新の情報に更新する機能。|
 |暗号化    | ローカルでデータを暗号化し、クラウドへのデータ転送を *https* 経由で保護する BitLocker のサポート。|
 |帯域幅調整| ピーク時の帯域幅の使用量を制限するように調整します。|
@@ -73,6 +72,8 @@ Azure Stack Edge Pro ソリューションは、Azure Stack Edge リソース、
 Azure Stack Edge Pro 物理デバイス、Azure リソース、データ転送先のターゲット ストレージ アカウントは、すべて同じリージョンにある必要はありません。
 
 - **リソースの提供** - このプレビュー リリースでは、米国東部、西ヨーロッパ、東南アジアの各リージョンでリソースが提供されます。
+
+- **デバイスの可用性** - Azure Stack Edge Pro デバイスが使用可能なすべての国の一覧については、[Azure Stack Edge Pro の価格](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgePro)に関するページの **[Azure Stack Edge Pro]** タブにある **[可用性]** セクションにアクセスしてください。
     
 - **転送先ストレージ アカウント** - データを格納するストレージ アカウントは、すべての Azure 地域で利用できます。 パフォーマンスを最適にするには、ストレージ アカウントによって Azure Stack Edge Pro のデータが格納されるリージョンと、デバイスが配置されている場所を、近くにする必要があります。 デバイスから離れた場所にあるストレージ アカウントは、待ち時間が長くなり、パフォーマンスが低下します。
 
@@ -81,4 +82,4 @@ Azure Stack Edge Pro 物理デバイス、Azure リソース、データ転送�
 - [Azure Stack Edge Pro のシステム要件](azure-stack-edge-gpu-system-requirements.md)を確認します。
 
 - [Azure Stack Edge Pro の制限](azure-stack-edge-limits.md)を理解します。
-- Azure portal で [Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-prep.md) をデプロイします。
+- Azure portal で [Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-prep.md) を配置します。

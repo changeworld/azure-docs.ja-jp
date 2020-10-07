@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell サンプル スクリプト - 完全に構成された Windows VM の作成
-description: Azure PowerShell のサンプル スクリプト - Windows VM の作成
+description: Azure PowerShell サンプル スクリプト - 完全に構成された Windows VM の作成。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 03/02/2017
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 4f7e638a307a4b76e0bf448160356971cc0e608b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 03d2c7ad65e2c19828c809732efbf684b47de8fd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078798"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307026"
 ---
 # <a name="create-a-fully-configured-virtual-machine-with-powershell"></a>PowerShell を使用して、完全に構成された仮想マシンを作成する
 

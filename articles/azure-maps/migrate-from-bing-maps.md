@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 643e49bdba76051c873ed549d5f6c21487f34056
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: b0c23955248a3468ee6bd624ebf7281bc6c3c961
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90108135"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319607"
 ---
 # <a name="migrate-from-bing-maps-to-azure-maps"></a>Bing 地図から Azure Maps に移行する
 
@@ -49,10 +49,10 @@ Azure Maps は、Web アプリケーションやモバイル アプリケーシ�
 | 位置情報 (フォワード ジオコーディングと逆ジオコーディング) | ✓                  |
 | 最適化旅程ルート            | 対応予定            |
 | Snap to Road                         | ✓                  |
-| Spatial Data Services (SDS)           | Partial            |
+| Spatial Data Services (SDS)           | 一部サポート            |
 | タイム ゾーン                             | ✓                  |
 | トラフィック インシデント                     | ✓                  |
-| 構成ドリブン マップ             | N/A                |
+| 構成ドリブン マップ             | 該当なし                |
 
 Bing 地図では、基本的なキーベースの認証が提供されます。 Azure Maps には、基本的なキーベースの認証と、高度なセキュリティで保護された Azure Active Directory 認証の両方が用意されています。
 
@@ -81,6 +81,15 @@ Azure Maps のいくつかのライセンス関連リソースを次に示しま
 4.  アプリケーション コードを移行します。
 5.  移行したアプリケーションをテストします。
 6.  移行したアプリケーションを運用環境にデプロイします。
+
+## <a name="create-an-azure-maps-account"></a>Azure Maps アカウントを作成する
+
+Azure Maps アカウントを作成し、Azure Maps プラットフォームにアクセスできるようにするには、次の手順を行います。
+
+1. Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+2. [Azure portal](https://portal.azure.com/) にサインインします。
+3. [Azure Maps アカウント](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys)を作成します。 
+4. [Azure Maps サブスクリプション キー](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication#view-authentication-details)を取得するか、Azure Active Directory 認証を設定し、セキュリティを強化します。
 
 ## <a name="azure-maps-technical-resources"></a>Azure Maps の技術リソース
 

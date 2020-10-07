@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: c01d1bcb682a5f711dcba3cc7b32ef69b2642ef6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 47b8c45e22569cc758d00fb8534f409ecebf58ca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900758"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299933"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>Synapse Knowledge Center を探索する
 
@@ -46,7 +46,6 @@ Synapse Studio で Knowledge Center を検索するには、次の 2 つの方�
 1. [実行] をクリックします。 選択したテキストが実行されます。
 
 ## <a name="loading-more-nyc-taxi-data"></a>ニューヨーク市のタクシー データの追加の読み込み
-
 1. **[Knowledge Center]** で、 **[Browse available sample]\(使用可能なサンプルを参照する\)** をクリックします。 
 1. 上部にある **[SQL スクリプト]** タブを選択します。
 1. **[ニューヨークのタクシー データを読み込む]** を選択します。
@@ -58,5 +57,6 @@ Synapse Studio で Knowledge Center を検索するには、次の 2 つの方�
 
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
-> [SQL プールを使用して分析する](get-started-analyze-sql-pool.md)
+* [Azure Synapse Analytics の使用を開始する](get-started.md)
+* [ワークスペースを作成する](quickstart-create-workspace.md)
+* [SQL オンデマンドを使用する](quickstart-sql-on-demand.md)

@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:Azure Active Directory シングル サインオンと F5 の統合 | Microsoft Docs
-description: Azure Active Directory と F5 の間でシングル サインオンを構成する方法について説明します。
+description: この記事では、F5 と Azure Active Directory (Azure AD) を統合するために必要な手順について説明します。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 2e0e727e73fa1eff21a4b2e481738be49306676a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: cbcbcb6a649969c5348c3ad445ff43f10372faeb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542983"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306177"
 ---
 # <a name="tutorial-azure-active-directory-ad-single-sign-on-sso-integration-with-f5"></a>チュートリアル:Azure Active Directory (AD) シングル サインオン (SSO) と F5 の統合
 
@@ -39,8 +39,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* F5 では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* F5 SSO は、次の 3 つの異なる方法で構成できます。
+F5 では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
+
+F5 SSO は、次の 3 つの異なる方法で構成できます。
 
 - [Advanced Kerberos アプリケーション用に F5 シングル サインオンを構成する](#configure-f5-single-sign-on-for-advanced-kerberos-application)
 

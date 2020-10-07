@@ -5,12 +5,12 @@ ms.devlang: r
 ms.topic: tutorial
 ms.date: 01/23/2018
 ms.custom: mvc
-ms.openlocfilehash: dc5c022b4722f844e0b3c117bb5961843865bd55
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: 2c988075031be326f01e02bceff1c948295d5845
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84418179"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292865"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>チュートリアル:Azure Batch で並列 R シミュレーションを実行する 
 
@@ -193,7 +193,7 @@ hist(closingPrices_s)
 
 次のような出力になります。
 
-![終値の分布](media/tutorial-r-doazureparallel/closing-prices-local.png)
+![終値のヒストグラムを示すスクリーンショット](media/tutorial-r-doazureparallel/closing-prices-local.png)
   
 ローカルのシミュレーションは数秒以内に完了します。
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Table Storage の概要
-description: NoSQL データ ストアである Azure Table Storage を使用して構造化データをクラウドに格納します。
+description: Table Storage を使用すると、Web アプリケーションのユーザー データ、アドレス帳、デバイス情報、その他の種類のメタデータなど、柔軟なデータセットを格納できます。
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
@@ -9,12 +9,12 @@ ms.date: 05/20/2019
 author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
-ms.openlocfilehash: 20c799f89394dd8978f120097b054a9adf9f1280
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: abd88c3cdb54747c21ad8772860a3ed6929dbd15
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76770736"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318723"
 ---
 # <a name="azure-table-storage-overview"></a>Azure Table Storage の概要
 
@@ -28,7 +28,7 @@ Table Storage を使用すると、Web アプリケーションのユーザー �
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
+* [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
 
 * [.NET SDK を使用した Azure Cosmos DB Table API と Azure Table Storage の概要](table-storage-how-to-use-dotnet.md)
 

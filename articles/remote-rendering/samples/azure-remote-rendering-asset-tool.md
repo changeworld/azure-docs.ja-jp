@@ -1,16 +1,16 @@
 ---
 title: Azure Remote Rendering Asset Tool
-description: ショーケース アプリケーションが格納されている GitHub リポジトリへのリンク
+description: C++ または Qt で開発されたオープンソースのデスクトップ アプリケーションである Azure Remote Rendering Asset Tool (ARRT) について説明します。
 author: mafranc
 ms.author: mafranc
 ms.date: 06/09/2020
 ms.topic: sample
-ms.openlocfilehash: c02bb46cfdfa37fed7f9c9cc2ad3c2a426547ce8
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: e20d21f1f8b58b69ee760fd4e95d6f194e13105a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636903"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322174"
 ---
 # <a name="azure-remote-rendering-asset-tool-arrt"></a>Azure Remote Rendering Asset Tool (ARRT)
 

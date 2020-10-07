@@ -9,28 +9,23 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/25/2018
+ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 1dad0ecc80302ae6b48d420664723a3a03fc9ea5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1096437fc1d77042a9db4dc359d51cd6d9d22960
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554022"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91304391"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>チュートリアル:Azure Active Directory と Palo Alto Networks Captive Portal の統合
 
 このチュートリアルでは、Palo Alto Networks Captive Portal と Azure Active Directory (Azure AD) を統合する方法について説明します。
+Palo Alto Networks Captive Portal と Azure AD の統合には、次のメリットがあります。
 
-Palo Alto Networks Captive Portal と Azure AD を統合すると、次のメリットが得られます。
-
-* Palo Alto Networks Captive Portal にアクセスできるユーザーを Azure AD で管理できます。
-* Palo Alto Networks Captive Portal 内で各ユーザーに自身の Azure AD アカウントを使って自動的にサインイン (シングル サインオン) させることができます。
+* Palo Alto Networks Captive Portal にアクセスするユーザーを Azure AD で制御できます。
+* ユーザーが自分の Azure AD アカウントで Palo Alto Networks Captive Portal に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
-
-サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
-
-Azure サブスクリプションをお持ちでない場合は、[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -43,63 +38,45 @@ Azure AD と Palo Alto Networks Captive Portal を統合するには、次のも
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-Palo Alto Networks Captive Portal では、次のシナリオがサポートされます。
+* Palo Alto Networks Captive Portal では、**IDP** によって開始される SSO がサポートされます
+* Palo Alto Networks Captive Portal では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
-* **IDP が起点となるシングル サインオン**
-* **Just-in-time のユーザー プロビジョニング**
+## <a name="adding-palo-alto-networks-captive-portal-from-the-gallery"></a>ギャラリーからの Palo Alto Networks Captive Portal の追加
 
-## <a name="add-palo-alto-networks-captive-portal-from-the-gallery"></a>ギャラリーからの Palo Alto Networks Captive Portal の追加
+Azure AD への Palo Alto Networks Captive Portal の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Palo Alto Networks Captive Portal を追加する必要があります。
 
-まずは、ギャラリー内でマネージド SaaS アプリの一覧に Palo Alto Networks Captive Portal を追加します。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
+1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
+1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Palo Alto Networks Captive Portal**」と入力します。
+1. 結果パネルで **[Palo Alto Networks Captive Portal]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-1. [Azure Portal](https://portal.azure.com) の左側のメニューで、 **[Azure Active Directory]** を選択します。
+## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
 
-    ![Azure Active Directory のボタン](common/select-azuread.png)
+このセクションでは、**B.Simon** というテスト ユーザーに基づいて、Palo Alto Networks Captive Portal で Azure AD のシングル サインオンを構成し、テストします。
+シングル サインオンを機能させるには、Azure AD ユーザーと Palo Alto Networks Captive Portal 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
-2. **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]** の順に選択します。
+Palo Alto Networks Captive Portal で Azure AD シングル サインオンを構成してテストするには、次の手順を実行します。
 
-    ![メニューの [エンタープライズ アプリケーション] オプション](common/enterprise-applications.png)
+1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
+    * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - ユーザー B.Simon で Azure AD のシングル サインオンをテストします。
+    * **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるように設定します。
+2. **[Palo Alto Networks Captive Portal SSO の構成](#configure-palo-alto-networks-captive-portal-sso)** - アプリケーションでシングル サインオン設定を構成します。
+    * **[Palo Alto Networks Captive Portal テスト ユーザーの作成](#create-a-palo-alto-networks-captive-portal-test-user)** - Palo Alto Networks Captive Portal で B.Simon に対応するユーザーを作成し、Azure AD の対応するユーザーにリンクします。
+3. **[SSO のテスト](#test-sso)** - 構成が機能することを確認します。
 
-3. **[新しいアプリケーション]** を選択します。
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
+これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-4. 検索ボックスに「**Palo Alto Networks Captive Portal**」と入力します。 検索結果に表示される "**Palo Alto Networks - Captive Portal**" を選択し、 **[追加]** を選択します。
+1. Azure portal の **Palo Alto Networks Captive Portal** アプリケーション統合ページで、 **[管理]** セクションを探し、 **[シングル サインオン]** を選択します。
+1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
+1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
-     ![結果一覧の Palo Alto Networks - Captive Portal](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-
-*Britta Simon* というテスト ユーザーをベースに、Palo Alto Networks Captive Portal を使った Azure AD のシングル サインオンを構成し、テストします。 シングル サインオンを機能させるには、Azure AD ユーザーと Palo Alto Networks Captive Portal 内の同一ユーザーとの間に一定の関係を確立する必要があります。 
-
-Palo Alto Networks Captive Portal を使った Azure AD のシングル サインオンを構成してテストするには、次の作業を完了してください。
-
-1. **[Azure AD のシングル サインオンの構成](#configure-azure-ad-single-sign-on)** : ユーザーがこの機能を利用できるようにします。
-2. **[Palo Alto Networks Captive Portal のシングル サインオンの構成](#configure-palo-alto-networks-captive-portal-single-sign-on)** : アプリケーションでシングル サインオン設定を構成します。
-3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** : ユーザー *Britta Simon* を使用して Azure AD のシングル サインオンをテストします。
-4. **[Azure AD のテスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** : Azure AD のシングル サインオンを使用するよう Britta Simon を設定します。
-5. **Palo Alto Networks Captive Portal のテスト ユーザーの作成**: Palo Alto Networks Captive Portal 内で *Britta Simon* に対応するユーザーを作成し、Azure AD の Britta Simon にリンクします。
-6. **[シングル サインオンのテスト](#test-single-sign-on)** : 構成が機能することを確認します。
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
-
-まずは、Azure portal 内で Azure AD のシングル サインオンを有効にします。
-
-1. [Azure portal](https://portal.azure.com/) の **Palo Alto Networks - Captive Portal** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
-
-    ![シングル サインオン構成のリンク](common/select-sso.png)
-
-2. **[シングル サインオン方式の選択]** ウィンドウで、 **[SAML]** を選択します。
-
-    ![シングル サインオン選択モード](common/select-saml-option.png)
-
-3. **[SAML でシングル サインオンをセットアップします]** ウィンドウで、鉛筆マークの **[編集]** アイコンを選択します。
-
-    ![鉛筆マークの [編集] アイコン](common/edit-urls.png)
+   ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 4. **[基本的な SAML 構成]** ウィンドウで、次の手順を実行します。
-
-    ![Palo Alto Networks Captive Portal の [基本的な SAML 構成] ウィンドウ](common/idp-intiated.png)
 
    1. **[識別子]** に、`https://<customer_firewall_host_name>/SAML20/SP` の形式で URL を入力します。
 
@@ -112,7 +89,31 @@ Palo Alto Networks Captive Portal を使った Azure AD のシングル サイ�
 
     ![フェデレーション メタデータ XML のダウンロード リンク](common/metadataxml.png)
 
-### <a name="configure-palo-alto-networks-captive-portal-single-sign-on"></a>Palo Alto Networks Captive Portal のシングル サインオンの構成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+
+このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
+
+1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. 画面の上部にある **[新しいユーザー]** を選択します。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
+   1. **Create** をクリックしてください。
+
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+
+このセクションでは、B.Simon に Palo Alto Networks Captive Portal へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. アプリケーションの一覧で **[Palo Alto Networks Captive Portal]** を選択します。
+1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
+1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
+
+## <a name="configure-palo-alto-networks-captive-portal-sso"></a>Palo Alto Networks Captive Portal の SSO の構成
 
 次に、Palo Alto Networks Captive Portal 内でシングル サインオンを設定していきます。
 
@@ -136,56 +137,6 @@ Palo Alto Networks Captive Portal を使った Azure AD のシングル サイ�
     
     3. **[OK]** を選択します。
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
-
-次は、Azure portal 内で *Britta Simon* というテスト ユーザーを作成します。
-
-1. Azure portal 内で、 **[Azure Active Directory]**  >  **[ユーザー]**  >  **[すべてのユーザー]** の順に選択します。
-
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
-
-2. **[ 新規ユーザー]** を選択します。
-
-    ![[新規ユーザー] ボタン](common/new-user.png)
-
-3. **[ユーザー]** ウィンドウで、次の手順を実行します。
-
-    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
-
-    1. **[名前]** に、「**BrittaSimon**」と入力します。
-  
-    2. **[ユーザー名]** に「**BrittaSimon\@\<your_company_domain\>** 」と入力します。 たとえば、「**BrittaSimon\@contoso.com**」です。
-
-    3. **[パスワード]** に、パスワードを入力します。 入力するパスワードはどこかに記録しておくことをお勧めします。 **[パスワードを表示]** チェック ボックスをオンにして、パスワードを表示することもできます。
-
-    4. **［作成］** を選択します
-
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-
-次は、Britta Simon が Azure のシングル サインオンを利用できるようにするために、Palo Alto Networks Captive Portal へのアクセスを許可します。
-
-1. Azure portal 内で、 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]** の順に選択します。
-
-    ![[エンタープライズ アプリケーション] ウィンドウ](common/enterprise-applications.png)
-
-2. アプリケーションの一覧で「**Palo Alto Networks - Captive Portal**」と入力し、そのアプリケーションを選択します。
-
-    ![アプリケーションの一覧の Palo Alto Networks - Captive Portal のリンク](common/all-applications.png)
-
-3. メニューで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
-4. **[ユーザーの追加]** を選択します。 **[割り当ての追加]** ウィンドウで **[ユーザーとグループ]** を選択します。
-
-    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
-
-5. **[ユーザーとグループ]** ウィンドウの **[ユーザー]** 一覧で、**Britta Simon** を選択します。 **[選択]** を選択します。
-
-6. SAML アサーションにロールの値を追加するために、 **[ロールの選択]** ウィンドウでユーザーに関連するロールを選択します。 **[選択]** を選択します。
-
-7. **[割り当ての追加]** ウィンドウで **[割り当て]** を選択します。
-
 ### <a name="create-a-palo-alto-networks-captive-portal-test-user"></a>Palo Alto Networks Captive Portal のテスト ユーザーの作成
 
 次は、Palo Alto Networks Captive Portal で *Britta Simon* というユーザーを作成します。 Palo Alto Networks Captive Portal では、Just-In-Time のユーザー プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、何も行う必要はありません。 Palo Alto Networks Captive Portal にユーザーがまだ存在していない場合は、認証後に新しいユーザーが作成されます。
@@ -193,15 +144,14 @@ Palo Alto Networks Captive Portal を使った Azure AD のシングル サイ�
 > [!NOTE]
 > ユーザーを手動で作成する必要がある場合は、[Palo Alto Networks Captive Portal のクライアント サポート チーム](https://support.paloaltonetworks.com/support)にお問い合わせください。
 
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
+## <a name="test-sso"></a>SSO のテスト 
 
-Palo Alto Networks Captive Portal は、Windows VM 上のファイアウォールの内側にインストールされます。 Palo Alto Networks Captive Portal 内でシングル サインオンをテストするには、リモート デスクトップ プロトコル (RDP) を使って Windows VM にサインインします。 RDP セッションで、ブラウザーを開いて任意の Web サイトに移動します。 SSO のための URL が開き、認証を求めるメッセージが表示されます。 認証が完了すると、Web サイトにアクセスできるようになります。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 
-## <a name="additional-resources"></a>その他のリソース
+Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Palo Alto Networks Captive Portal に自動的にサインインされます
 
-詳細については、次の記事を参照してください。
+Microsoft アクセス パネルを使用することができます。 アクセス パネルで [Palo Alto Networks Captive Portal] タイルをクリックすると、SSO を設定した Palo Alto Networks Captive Portal に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
-- [SaaS アプリと Azure Active Directory の統合に関するチュートリアル](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [Azure Active Directory の条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+## <a name="next-steps"></a>次の手順
 
+Palo Alto Networks Captive Portal を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。

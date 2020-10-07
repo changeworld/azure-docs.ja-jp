@@ -1,7 +1,7 @@
 ---
 title: クイック スタート:Bing Autosuggest REST API と Java で検索クエリの候補を表示する
 titleSuffix: Azure Cognitive Services
-description: Bing Autosuggest API を使用して手軽に検索語句の候補をリアルタイムで表示する方法について説明します。
+description: Bing Autosuggest API および Java を使用して手軽に検索語句の候補をリアルタイムで表示する方法について説明します。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/06/2020
 ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 4850daf8544129e29333be6a807c91106cc11f05
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: dc20b6abaf04b3743218e35d258bc8beab33c542
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321090"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277446"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>クイック スタート:Bing Autosuggest REST API と Java で検索クエリの候補を表示する
 

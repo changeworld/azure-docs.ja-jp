@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:Microsoft Azure Maps を使用して、特定の移動モードのルートを検索して表示する
-description: Azure Maps を使用して、特定の移動モードのルートを検索して表示する方法について説明します。
+title: チュートリアル:移動モード別に複数のルートを検索する |Microsoft Azure Maps
+description: Azure Maps を使用して特定の移動手段による目的地へのルートを検索する方法に関するチュートリアルです。 マップ上に複数のルートを表示する方法をご覧ください。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/10/2020
@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: a5b8dba920db0227c400e62ef7ddaf718d27c78a
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 0d57e86088ee472c63b433bde14a0e4316cc20a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085061"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321749"
 ---
 # <a name="tutorial-find-and-display-routes-for-different-modes-of-travel-using-azure-maps"></a>チュートリアル:Azure Maps を使用してさまざまな移動モードのルートを検索して表示する
 
@@ -160,11 +160,13 @@ ms.locfileid: "90085061"
 
     ```
 
+
     マップ コントロールの `ready` イベント ハンドラーで、起点から終点までのルートを格納するためのデータ ソースが作成されます。 [式](data-driven-style-expressions-web-sdk.md)を使って、線の幅と色をルートの線のフィーチャーに関するプロパティから取得します。 ルートの線で道路のラベルが覆い隠されないようにするために、`'labels'` の値を持つ 2 番目のパラメーターを渡しました。
 
     次に、シンボル レイヤーが作成され、データ ソースにアタッチされます。 起点と終点のレンダリング方法は、このレイヤーで指定します。各ポイント オブジェクトのプロパティからアイコン画像とテキスト ラベル情報を取得するための式が追加されています。 式の詳細については、[データ ドリブンのスタイルの式](data-driven-style-expressions-web-sdk.md)に関するページをご覧ください。
 
 2. シアトルにある架空の会社 (Fabrikam) を起点とし、Microsoft のオフィスを終点に設定します。  マップ コントロールの `ready` イベント ハンドラーに次のコードを追加します。
+
 
     ```JavaScript
     //Create the GeoJSON objects which represent the start and end point of the route.
@@ -279,9 +281,13 @@ ms.locfileid: "90085061"
 
     トラックのルートは太い青の線を使用して表示されます。 自家用車のルートは細い紫の線を使用して表示されます。 自家用車のルートは、I-90 経由でワシントン湖を渡っています。この道路は住宅地の下のトンネルを通過します。 このトンネルは住宅地に近いため、危険廃棄物の積み荷が制限されています。 トラックのルートは、積み荷の種類を `USHazmatClass2` に指定したので、別の高速道路を使うようにルート指定されています。
 
-    サンプルの完全なソース コードは、[こちら](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/truckRoute.html)から取得できます。 ライブ サンプルは、[こちら](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel)でご覧いただけます。
+サンプルの完全なソース コードは、[こちら](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/truckRoute.html)から取得できます。 ライブ サンプルは、[こちら](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel)でご覧いただけます。
 
-## <a name="next-steps"></a>次のステップ
+[データドリブンのスタイルの式を使用する](data-driven-style-expressions-web-sdk.md)こともできます。
+
+
+
+## <a name="next-steps"></a>次の手順
 
 次のチュートリアルでは、Azure Maps を使用して簡単なストア ロケーターを作成する手順を紹介します。
 

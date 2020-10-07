@@ -1,6 +1,6 @@
 ---
 title: Apache Spark の主要概念
-description: この記事では、Azure Synapse Analytics の Apache Spark の概要と、さまざまな概念について説明します。
+description: Azure Synapse Analytics の Apache Spark の概要と、さまざまな概念について紹介します。
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 806f4dff49e9650dba073721109e7d54a18ecbbe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 74e85906742207d6cde0b7c4cc5c021c23ee4c7b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052327"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260140"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Azure Synapse Analytics の Apache Spark の主要な概念
 
@@ -24,7 +24,7 @@ Azure Synapse では、Spark の機能を Azure に簡単に作成して構成�
 
 ## <a name="spark-pools-preview"></a>Spark プール (プレビュー)
 
-Spark プール (プレビュー) は Azure portal で作成します。 インスタンス化時、データを処理する Spark インスタンスの作成には、Spark プールの定義が使用されます。 作成した Spark プールはメタデータとしてのみ存在します。つまり、リソースが消費されたり実行されたりすることはなく、課金されることもありません。 Spark プールには、Spark インスタンスの特性を制御する一連のプロパティがあります。たとえば、名前やサイズ、スケーリングの動作、Time to Live といった特性がその例です。
+Spark プール (プレビュー) は Azure portal で作成します。 インスタンス化時、データを処理する Spark インスタンスの作成には、Spark プールの定義が使用されます。 作成した Spark プールはメタデータとしてのみ存在します。リソースが消費されたり実行されたりすることはなく、課金されることもありません。 Spark プールには、Spark インスタンスの特性を制御する一連のプロパティがあります。 そのような特性には、名前、サイズ、拡大縮小動作、有効期限がありますがそれらに限定されません。
 
 Spark プールは、その作成に関して料金もリソース コストも発生しないので、異なる構成でいくつでも作成することができます。 Spark プールにアクセス許可を適用することで、ユーザーが利用できる Spark プールを限定することもできます。
 
@@ -36,7 +36,7 @@ Spark プールの作成方法とそのすべてのプロパティは、[Synapse
 
 Spark インスタンスは、Spark プールに接続してセッションを作成し、ジョブを実行するときに作成されます。 1 つの Spark プールを複数のユーザーが利用するときは、接続するユーザーごとに新しい Spark インスタンスが作成されます。 
 
-別のジョブを送信したとき、プールにキャパシティがあり、既存の Spark インスタンスにもキャパシティがあれば、そのジョブは既存のインスタンスで処理されます。プールにキャパシティはないものの、プール レベルでキャパシティがあれば、新しい Spark インスタンスが作成されます。
+2 つ目のジョブを送信するとき、プールに容量がある場合、既存の Spark にも容量があります。 その後、既存のインスタンスによってジョブが処理されます。 容量がない場合、プール レベルで容量が利用できるなら、新しい Spark インスタンスが作成されます。
 
 ## <a name="examples"></a>例
 

@@ -1,6 +1,6 @@
 ---
 title: .NET SDK を使用して Azure データ ファクトリを作成する
-description: Azure データ ファクトリを作成して、Azure Blob Storage 内のある場所から別の場所にデータをコピーします。
+description: .NET SDK を使用して Azure データ ファクトリおよびパイプラインを作成し、Azure BLOB ストレージ内のある場所から別の場所にデータをコピーします。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
-ms.openlocfilehash: d4652ca62a82d14c7e44466161ae9b463818a71f
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: e8da3dff39f94d6639471a2d1d96691c9cde614d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433981"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322888"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>クイック スタート:.NET SDK を使用してデータ ファクトリとパイプラインを作成する
 
@@ -49,7 +49,7 @@ ms.locfileid: "89433981"
 
 1. 「[Azure Active Directory アプリケーションを作成する](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)」で、このチュートリアルで作成している .NET アプリケーションを表すアプリケーションを作成します。 サインオン URL については、この記事に示されているようにダミーの URL (`https://contoso.org/exampleapp`) を指定できます。
 2. 「[サインインするための値を取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)」で、**アプリケーション ID** と**テナント ID** を取得し、それらの値をメモしておいてください。このチュートリアルで後ほど使用します。 
-3. 「[証明書とシークレット](../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in)」で、**認証キー**を取得し、その値をメモしておいてください。このチュートリアルで後ほど使用します。
+3. 「[証明書とシークレット](../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)」で、**認証キー**を取得し、その値をメモしておいてください。このチュートリアルで後ほど使用します。
 4. 「[アプリケーションをロールに割り当てる](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)」で、アプリケーションがサブスクリプションにデータ ファクトリを作成できるように、サブスクリプション レベルでアプリケーションを**共同作成者**ロールに割り当てます。
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio プロジェクトを作成する

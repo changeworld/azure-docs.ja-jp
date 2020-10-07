@@ -4,12 +4,12 @@ description: Personalizer ループを使用して C# .NET Web アプリをカ�
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e9ce4c433a038008b1ffd75dc6c4b2f9d0b57fde
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 59881a749676f4f5408c1ffc87b3bcf75c512e1e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935621"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316224"
 ---
 # <a name="tutorial-add-personalizer-to-a-net-web-app"></a>チュートリアル:.NET Web アプリに Personalizer を追加する
 
@@ -254,7 +254,7 @@ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/530.99 (KHTML, like Gecko)
 Web ブラウザーで Rank 要求と Reward 要求を送信し、その応答と、環境から抽出された HTTP 要求の特徴を確認することができます。
 
 > [!div class="mx-imgBorder"]
-> ![HTTPRequestFeaturesExample プロジェクトをビルドして実行します。 ブラウザー ウィンドウが開き、シングル ページ アプリケーションが表示されます。](./media/tutorial-web-app/web-app-single-page.png)
+> ![Web ブラウザーの HTTP 要求の特徴例を示すスクリーンショット。](./media/tutorial-web-app/web-app-single-page.png)
 
 ## <a name="demonstrate-the-personalizer-loop"></a>Personalizer ループのデモンストレーション
 
@@ -267,7 +267,7 @@ Web ブラウザーで Rank 要求と Reward 要求を送信し、その応答�
 1. 報酬の値を設定し、 **[報酬要求の送信]** ボタンを選択します。 報酬の値を変更しない場合、クライアント アプリケーションは常に `1` の値を Personalizer に送信します。
 
     > [!div class="mx-imgBorder"]
-    > ![HTTPRequestFeaturesExample プロジェクトをビルドして実行します。 ブラウザー ウィンドウが開き、シングル ページ アプリケーションが表示されます。](./media/tutorial-web-app/reward-score-api-call.png)
+    > ![報酬要求セクションのスクリーンショット。](./media/tutorial-web-app/reward-score-api-call.png)
 
     今後のアプリケーションでは、サーバー上のビジネス ロジックと共に、クライアント上のユーザーの行動から情報を収集した後に、報酬スコアが生成される可能性があります。
 

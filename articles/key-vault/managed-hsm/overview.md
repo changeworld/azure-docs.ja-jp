@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 09/15/2020
 ms.author: mbaldwin
 author: msmbaldwin
-ms.openlocfilehash: 9eee3d5bc53ebe40ba4462f394ffe30cea6b70fa
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: e98b21d5afebdbd2654d032493b92eb5e6e7fdc6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90998381"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320559"
 ---
 # <a name="what-is-azure-key-vault-managed-hsm-preview"></a>Azure Key Vault Managed HSM (プレビュー) とは
 
@@ -33,7 +33,7 @@ Azure Key Vault Managed HSM は、フル マネージド、高可用性、シン
 
 - **キーの集中管理**: 組織のいたるところにあるきわめて重要で価値の高いキーが一元管理されます。 粒度の細かいキーごとのアクセス許可により、各キーに対するアクセスが "最低特権アクセス" の原則で管理されます。
 - **分離されたアクセスの制御**: Managed HSM の "ローカル RBAC" アクセス制御モデルにより、指定された HSM クラスタ アドミニストレーターには、HSM に対する完全な制御権が与えられます。その権限は、管理グループやサブスクリプション管理者、リソース グループ管理者でもオーバーライドできません。
-- **FIPS 140-2 レベル 3 適合の HSM**: FIPS (Federal Information Protection Standard) 140-2 レベル 3 適合の HSM によってデータを保護し、コンプライアンス要件を満たすことができます。 Managed HSM には、Marvell LiquidSecurity ファミリの HSM が使用されます。
+- **FIPS 140-2 レベル 3 適合の HSM**: FIPS (Federal Information Protection Standard) 140-2 レベル 3 適合の HSM によってデータを保護し、コンプライアンス要件を満たすことができます。 Managed HSM には、Marvell LiquidSecurity の HSM アダプターが使用されます。
 - **監視と監査**: Azure Monitor と完全に統合されます。 すべてのアクティビティの完全なログを Azure Monitor 経由で取得できます。 分析とアラートには Azure Log Analytics を使用できます。
 
 ### <a name="integrated-with-azure-and-microsoft-paassaas-services"></a>Azure と Microsoft PaaS (または SaaS) サービスとの統合 
@@ -49,6 +49,6 @@ Azure Key Vault Managed HSM は、フル マネージド、高可用性、シン
 
 - HSM で保護されたキーをオンプレミス HSM で生成し、それらを Managed HSM に対して安全にインポートすることができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - 「[クイック スタート:Azure CLI を使用してマネージド HSM をプロビジョニングしてアクティブにする](quick-create-cli.md)」を参照して、マネージド HSM を作成してアクティブにします。
 - [Azure Key Vault Managed HSM を使用しているときのベスト プラクティス](best-practices.md)に関するページを参照してください。

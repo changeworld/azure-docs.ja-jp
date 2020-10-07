@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 09/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 52f495753d055730c1ad42444c83cf3d5cd4c1d3
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: beac9f64b12a07d2fc900099ee1f107e4981f17e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461427"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320219"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>チュートリアル:Azure portal を使用してアプリ グループを管理する
 
@@ -32,7 +32,8 @@ Azure portal または PowerShell を使用してホスト プールとセッシ
 
 1.  [Azure portal](https://portal.azure.com/) にサインインします。
    
-   >![注] US Gov ポータルにサインインしている場合は、代わりに [https://portal.azure.us/](https://portal.azure.us/) にアクセスしてください。
+    >[!NOTE]
+    > US Gov ポータルにサインインする場合は、代わりに [https://portal.azure.us/](https://portal.azure.us/) にアクセスしてください。
 
 2.  **[Windows Virtual Desktop]** を検索して選択します。
 

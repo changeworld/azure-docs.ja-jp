@@ -4,18 +4,18 @@ description: Azure Migrate Server Assessment を使用して、AWS インスタ�
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: c2d91e0b2c2eaa2df8b01aca60e5a0e18e251fb8
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: e48d123a9317d35cd2bb8e38a29d23cae3b75eb8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603698"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275457"
 ---
 # <a name="tutorial-discover-aws-instances-with-server-assessment"></a>チュートリアル:Server Assessment を使用して AWS インスタンスを検出する
 
 Azure への移行の一環として、評価と移行のためにサーバーを検出します。
 
-このチュートリアルでは、軽量の Azure Migrate アプライアンスを使用して、Azure Migrate: Server Assessment ツールでアマゾン ウェブ サービス (AWS) インスタンスを検出する方法について説明します。 アプライアンスを物理サーバーとしてデプロイし、マシンとパフォーマンスのメタデータを継続的に検出します。
+このチュートリアルでは、アマゾン ウェブ サービス (AWS) を軽量の Azure Migrate アプライアンスを使用して、Azure Migrate: Server Assessment ツールで検出する方法について説明します。 アプライアンスを物理サーバーとしてデプロイし、マシンとパフォーマンスのメタデータを継続的に検出します。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -76,7 +76,18 @@ Azure Migrate プロジェクトを作成し、Azure Migrate アプライアン�
 
 - Windows サーバーの場合、検出に含めるすべての Windows サーバー上にローカル ユーザー アカウントを設定します。 そのユーザー アカウントを、Remote Management Users、Performance Monitor Users、Performance Log Users の各グループに追加します。
  - Linux サーバーの場合は、検出する Linux サーバーのルート アカウントが必要です。
-
+- Azure Migrate では、AWS インスタンスを検出するときにパスワード認証が使用されます。 AWS インスタンスは、既定ではパスワード認証をサポートしていません。 インスタンスを検出するには、パスワード認証を有効にする必要があります。
+    - Windows マシンの場合、WinRM ポート 5985 (HTTP) を許可します。 これにより、リモート WMI 呼び出しが可能になります。
+    - Linux マシンの場合:
+        1. 各 Linux マシンにサインインします。
+        2. 次のようにして sshd_config ファイルを開きます。vi /etc/ssh/sshd_config
+        3. ファイルで、**PasswordAuthentication** 行を見つけ、値を **yes** に変更します。
+        4. ファイルを保存して閉じます。 sshdサービスを再起動します。
+    - ルート ユーザーを使用して Linux VM を検出する場合、VM でルート ログインが許可されることを確認してください。
+        1. 各 Linux マシンにサインインします。
+        2. 次のようにして sshd_config ファイルを開きます。vi /etc/ssh/sshd_config
+        3. ファイルで、**PermitRootLogin** 行を見つけ、値を **yes** に変更します。
+        4. ファイルを保存して閉じます。 sshdサービスを再起動します。
 
 ## <a name="set-up-a-project"></a>プロジェクトの設定
 

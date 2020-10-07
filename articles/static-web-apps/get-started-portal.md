@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: 66335548381a6f7e3ebf93c97eb212255639644c
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: b009b34be69e48ae6205cd9ab88d1583ca9c6561
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604089"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280566"
 ---
 # <a name="quickstart-building-your-first-static-web-app-in-the-azure-portal"></a>クイック スタート:Azure portal で静的 Web アプリを初めてビルドする
 
@@ -37,23 +37,27 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
 1. **[Static Web Apps (プレビュー)]** を選択します
 1. **[作成]**
 
-_[基本]_ タブで、まず、新しいアプリを構成し、それを GitHub リポジトリにリンクします。
+_[基本]_ セクションで、新しいアプリを構成し、それを GitHub リポジトリにリンクすることから始めます。
 
-:::image type="content" source="media/getting-started-portal/basics-tab.png" alt-text="[基本] タブ":::
+:::image type="content" source="media/getting-started-portal/basics-tab.png" alt-text="[基本] セクション&quot;:::
 
-1. お使いの "_Azure サブスクリプション_" を選択します
-1. "_リソース グループ_" を選択するか、新しく作成します
+1. お使いの &quot;_Azure サブスクリプション_&quot; を選択します
+1. &quot;_リソース グループ_&quot; を選択するか、新しく作成します
 1. アプリに **my-first-static-web-app** という名前を設定します。
       1. 有効な文字は、`a-z` (大文字と小文字の区別をしない)、`0-9`、および `-`です。
-1. 最も近い "_リージョン_" を選択します
+1. 最も近い &quot;_リージョン_" を選択します
 1. **[Free]** _SKU_ を選択します
 1. **[GitHub アカウントでサインイン]** ボタンを選択し、GitHub で認証します
 
 GitHub にサインインした後、リポジトリ情報を入力します。
 
-:::image type="content" source="media/getting-started-portal/repository-details.png" alt-text="リポジトリの詳細":::
+:::image type="content" source="media/getting-started-portal/repository-details.png" alt-text="[基本] セクション&quot;:::
 
-1. 希望する "_組織_" を選択します
+1. お使いの &quot;_Azure サブスクリプション_&quot; を選択します
+1. &quot;_リソース グループ_&quot; を選択するか、新しく作成します
+1. アプリに **my-first-static-web-app** という名前を設定します。
+      1. 有効な文字は、`a-z` (大文字と小文字の区別をしない)、`0-9`、および `-`です。
+1. 最も近い &quot;_リージョン_" を選択します
 1. _[リポジトリ]_ ドロップダウンから **my-first-web-static-app** を選択します
 1. _[ブランチ]_ ドロップダウンから **[master]** を選択します
 
@@ -94,18 +98,36 @@ GitHub にサインインした後、リポジトリ情報を入力します。
 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。
 
-    :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="[確認および作成] ボタン":::
+    :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="[基本] セクション&quot;:::
+
+1. お使いの &quot;_Azure サブスクリプション_&quot; を選択します
+1. &quot;_リソース グループ_&quot; を選択するか、新しく作成します
+1. アプリに **my-first-static-web-app** という名前を設定します。
+      1. 有効な文字は、`a-z` (大文字と小文字の区別をしない)、`0-9`、および `-`です。
+1. 最も近い &quot;_リージョン_":::
 
     > [!NOTE]
     > アプリを作成した後にこれらの値を変更するには、[ワークフロー ファイル](github-actions-workflow.md)を編集します。
 
 1. **［作成］** を選択します
 
-    :::image type="content" source="media/getting-started-portal/create-button.png" alt-text="[作成] ボタン":::
+    :::image type="content" source="media/getting-started-portal/create-button.png" alt-text="[基本] セクション&quot;:::
+
+1. お使いの &quot;_Azure サブスクリプション_&quot; を選択します
+1. &quot;_リソース グループ_&quot; を選択するか、新しく作成します
+1. アプリに **my-first-static-web-app** という名前を設定します。
+      1. 有効な文字は、`a-z` (大文字と小文字の区別をしない)、`0-9`、および `-`です。
+1. 最も近い &quot;_リージョン_":::
 
 1. **[リソースに移動]** を選択します。
 
-    :::image type="content" source="media/getting-started-portal/resource-button.png" alt-text="[リソース グループ] ボタン":::
+    :::image type="content" source="media/getting-started-portal/resource-button.png" alt-text="[基本] セクション&quot;:::
+
+1. お使いの &quot;_Azure サブスクリプション_&quot; を選択します
+1. &quot;_リソース グループ_&quot; を選択するか、新しく作成します
+1. アプリに **my-first-static-web-app** という名前を設定します。
+      1. 有効な文字は、`a-z` (大文字と小文字の区別をしない)、`0-9`、および `-`です。
+1. 最も近い &quot;_リージョン_":::
 
 [!INCLUDE [view website](../../includes/static-web-apps-get-started-view-website.md)]
 

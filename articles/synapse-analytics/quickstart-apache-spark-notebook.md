@@ -4,17 +4,17 @@ description: このクイックスタートでは、Web ツールを使用して
 services: synapse-analytics
 author: euangMS
 ms.author: euang
-ms.reviewer: jrasnick, carlrab
+ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: 4ca718db8d2d2d57c73e8e492e2edbee221cb3ec
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: aca58328ada4f01072cf3779735bcd5cb518ef0a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049810"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260769"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>クイック スタート:Web ツールを使用して Azure Synapse Analytics で Apache Spark プールを作成する
 
@@ -49,7 +49,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 4. **[プロパティ]** ウィンドウで、ノートブックの名前を指定します。
 5. ツール バーの **[Publish]\(発行\)** をクリックします。
 6. ワークスペースに Apache Spark プールが 1 つしかない場合は、これが既定で選択されます。 何も選択されていない場合は、ドロップダウン リストを使用して、適切な Apache Spark プールを選択します。
-7. **[コードの追加]** をクリックします。 既定の言語は `Pyspark` です。 Pyspark と Spark SQL を組み合わせて使用するため、既定の選択でかまいません。
+7. **[コードの追加]** をクリックします。 既定の言語は `Pyspark` です。 Pyspark と Spark SQL を組み合わせて使用するため、既定の選択でかまいません。 サポートされている言語には他に Scala と .NET for Spark があります。
 8. 次に、操作する単純な Spark データフレーム オブジェクトを作成します。 この場合は、コードから作成します。 3 つの行と 3 つの列があります。
 
    ```python

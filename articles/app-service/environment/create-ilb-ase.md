@@ -4,15 +4,15 @@ description: Azure Resource Manager テンプレートを使用して、内部�
 author: ccompy
 ms.assetid: 0f4c1fa4-e344-46e7-8d24-a25e247ae138
 ms.topic: quickstart
-ms.date: 08/05/2019
+ms.date: 09/16/2020
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: f2124dd77e3e5d9828ea457a6bccdf7d1bc05405
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 1bda52227737b082927dd1449fa6469cf849ff15
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961773"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273264"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>App Service Environment で内部ロード バランサーを作成して使用する 
 
@@ -100,15 +100,26 @@ ILB ASE を作成する方法は次のとおりです。
 
 ## <a name="dns-configuration"></a>DNS の構成 
 
-外部 VIP を使用する場合、DNS は Azure によって管理されます。 ASE に作成されるすべてのアプリは、Azure DNS (パブリック DNS) に自動的に追加されます。 ILB ASE では、独自の DNS を管理する必要があります。 ILB ASE で使用されるドメイン サフィックスは、ASE の名前に依存します。 ドメイン サフィックスは " *&lt;ASE 名&gt;.appserviceenvironment.net*" です。 ご使用の ILB の IP アドレスはポータル内の **[IP アドレス]** の下に表示されます。 
+外部 ASE を使用する場合、ASE で作成されたアプリは Azure DNS で登録されます。 外部 ASE には、アプリを公開するための追加の手順はその後ありません。 ILB ASE を使う場合は、独自の DNS を管理する必要があります。 これは、独自の DNS サーバーで、または Azure DNS プライベート ゾーンを使用して行うことができます。
 
-DNS を構成するには、次の手順に従います。
+ILB ASE を使用して独自の DNS サーバーで DNS を構成するには、次の操作を行ってください。
 
-- " *&lt;ASE 名&gt;.appserviceenvironment.net*" 用のゾーンを作成する
-- そのゾーンに、ILB の IP アドレスに * を指定する A レコードを作成する
-- そのゾーンに、ILB の IP アドレスに @ を指定する A レコードを作成する
-- " *&lt;ASE 名&gt;.appserviceenvironment.net*" に scm という名前のゾーンを作成する
-- scm ゾーンに、ILB の IP アドレスに * を指定する A レコードを作成する
+1. <ASE name>.appserviceenvironment.net のゾーンを作成する
+2. そのゾーンに、ILB の IP アドレスに * を指定する A レコードを作成する
+3. そのゾーンに、ILB の IP アドレスに @ を指定する A レコードを作成する
+4. <ASE name>.appserviceenvironment.net に scm という名前のゾーンを作成する
+5. scm ゾーンに、ILB の IP アドレスに * を指定する A レコードを作成する
+
+Azure DNS プライベート ゾーンで DNS を構成するには、次の操作を行ってください。
+
+1. <ASE name>.appserviceenvironment.net という名前の Azure DNS プライベート ゾーンを作成する
+2. そのゾーンに、ILB の IP アドレスに * を指定する A レコードを作成する
+3. そのゾーンに、ILB の IP アドレスに @ を指定する A レコードを作成する
+4. そのゾーンに、ILB の IP アドレスに *.scm を指定する A レコードを作成する
+
+ASE の既定のドメイン サフィックスの DNS 設定では、アプリがこれらの名前によってのみアクセスできるように制限されていません。 ILB ASE では、アプリの検証なしでカスタム ドメイン名を設定できます。 その後、contoso.net という名前のゾーンを作成する場合は、ILB IP アドレスを指すようにすることができます。 カスタム ドメイン名はアプリ要求に対して機能しますが、scm サイトでは使用できません。 scm サイトは <appname>.scm.<asename>.appserviceenvironment.net でのみ使用できます。
+
+.<asename>.appserviceenvironment.net という名前のゾーンはグローバルに一意です。 2019 年 5 月より前のユーザーは、ILB ASE のドメイン サフィックスを指定できました。 ドメイン サフィックスで .contoso.com を使用した場合は、scm サイトが含まれていることになります。 このモデルには、既定の SSL 証明書の管理、scm サイトでのシングル サインオンの欠如、ワイルドカード証明書の使用要件といった課題がありました。 ILB ASE の既定の証明書アップグレード プロセスも中断され、アプリケーションが再起動されました。 これらの問題を解決するため、ILB ASE の動作が、ASE の名前と Microsoft の所有するサフィックスに基づくドメイン サフィックスを使用するように変更されました。 ILB ASE の動作の変更は、2019 年 5 月以降に作成された ILB ASE にのみ影響します。 既存の ILB ASE では、引き続き ASE の既定の証明書とその DNS 構成を管理する必要があります。
 
 ## <a name="publish-with-an-ilb-ase"></a>ILB ASE で発行する
 

@@ -11,12 +11,12 @@ ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43edb9ba6cdd73ce195a8b4eb60071b6831b7223
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: e771a988faca98d009b97b1e705ddac7110a255f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526937"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266498"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>既存の同期済み AD フォレストに対してクラウド プロビジョニングのパイロットを実施する 
 
@@ -40,7 +40,7 @@ ms.locfileid: "90526937"
 - Azure AD Connect 同期バージョン 1.4.32.0 以降がインストールされたテスト環境
 - 同期のスコープに含まれ、かつパイロットを使用できる OU またはグループ。 少数のオブジェクトから始めることをお勧めします。
 - プロビジョニング エージェントのホストとなる Windows Server 2012 R2 以降を実行するサーバー。  Azure AD Connect サーバーと同じサーバーは使用できません。
-- AAD Connect 同期のソース アンカーが *objectGuid* または *ms-ds-consistencyGUID* であること。
+- Azure AD Connect 同期のソース アンカーが *objectGuid* または *ms-ds-consistencyGUID* であること。
 
 ## <a name="update-azure-ad-connect"></a>Azure AD Connect を更新する
 
@@ -54,7 +54,7 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
 3.  `Set-ADSyncScheduler -SyncCycleEnabled $false` を実行します。
 
 >[!NOTE] 
->AAD Connect 同期用に独自のカスタム スケジューラを実行している場合は、スケジューラを無効にしてください。 
+>Azure AD Connect 同期用に独自のカスタム スケジューラを実行している場合は、スケジューラを無効にしてください。 
 
 ## <a name="create-custom-user-inbound-rule"></a>カスタム ユーザーの受信規則を作成する
 
@@ -62,7 +62,7 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
  ![同期規則エディター メニュー](media/how-to-cloud-custom-user-rule/user8.png)</br>
  
  2. [方向] のドロップダウン リストから **[受信]** を選択し、 **[新しいルールの追加]** をクリックします。
- ![カスタム規則](media/how-to-cloud-custom-user-rule/user1.png)</br>
+ ![[同期ルールの表示と管理] ウィンドウのスクリーンショット。[受信] と [新しいルールの追加] ボタンが選択されています。](media/how-to-cloud-custom-user-rule/user1.png)</br>
  
  3. **[説明]** ページで次のように入力し、 **[次へ]** をクリックします。
 
@@ -74,7 +74,7 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
     **[リンクの種類]:** Join<br>
     **[優先順位]:** システム内で一意になる値を指定します<br>
     **[タグ]:** 空のままにします<br>
-    ![カスタム規則](media/how-to-cloud-custom-user-rule/user2.png)</br>
+    ![[受信方向の同期規則の作成] の [説明] ページのスクリーンショット。値が選択されています。](media/how-to-cloud-custom-user-rule/user2.png)</br>
  
  4. **[Scoping filter]\(スコープ フィルター\)** ページで、パイロットのベースとなる OU またはセキュリティ グループを入力します。  OU でフィルター処理するには、識別名の OU 部分を追加します。 この規則は、その OU に属しているすべてのユーザーに適用されます。  したがって、DN の末尾が "OU=CPUsers,DC=contoso,DC=com" である場合は、次のフィルターを追加することになります。  続けて、 **[次へ]** をクリックします。 
 
@@ -83,31 +83,31 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
     |スコープ OU|DN|ENDSWITH|OU の識別名。|
     |スコープ グループ||ISMEMBEROF|セキュリティ グループの識別名。|
 
-    ![カスタム規則](media/how-to-cloud-custom-user-rule/user3.png)</br>
+    ![[受信方向の同期規則の作成] の [Scoping filter]\(スコープ フィルター\) のスクリーンショット。スコープ フィルターの値が入力されています。](media/how-to-cloud-custom-user-rule/user3.png)</br>
  
  5. **[Join rules]\(結合規則\)** ページで、 **[次へ]** をクリックします。
  6. **[変換]** ページで、cloudNoFlow 属性に Constant transformation: flow True を追加します。 **[追加]** をクリックします。
- ![カスタム規則](media/how-to-cloud-custom-user-rule/user4.png)</br>
+ ![[受信方向の同期規則の作成] の [変換] のスクリーンショット。"Constant transformation" フローが追加されています。](media/how-to-cloud-custom-user-rule/user4.png)</br>
 
 オブジェクトの種類すべて (ユーザー、グループ、連絡先) に対して同じ手順を実行する必要があります。 構成済みの AD コネクタごと、または AD フォレストごとに手順を繰り返します。 
 
 ## <a name="create-custom-user-outbound-rule"></a>カスタム ユーザーの送信規則を作成する
 
  1. [方向] のドロップダウン リストから **[送信]** を選択し、 **[ルールの追加]** をクリックします。
- ![カスタム規則](media/how-to-cloud-custom-user-rule/user5.png)</br>
+ ![[送信] 方向を選択している画面のスクリーンショット。[新しいルールの追加] ボタンが強調表示されています。](media/how-to-cloud-custom-user-rule/user5.png)</br>
  
  2. **[説明]** ページで次のように入力し、 **[次へ]** をクリックします。
 
     **[名前]:** 規則にわかりやすい名前を付けます<br>
     **説明:** わかりやすい説明を追加します<br>
-    **[Connected System]\(接続先システム\):** カスタム同期規則の作成対象となる AAD コネクタを選択します<br>
+    **[Connected System]\(接続先システム\):** カスタム同期規則の作成対象となる Azure AD コネクタを選択します<br>
     **[Connected System Object Type]\(接続先システム オブジェクトの種類\):** User<br>
     **[Metaverse Object Type]\(メタバース オブジェクトの種類\):** Person<br>
     **[リンクの種類]:** JoinNoFlow<br>
     **[優先順位]:** システム内で一意になる値を指定します<br>
     **[タグ]:** 空のままにします<br>
     
-    ![カスタム規則](media/how-to-cloud-custom-user-rule/user6.png)</br>
+    ![[説明] ページのスクリーンショット。プロパティが入力されています。](media/how-to-cloud-custom-user-rule/user6.png)</br>
  
  3. **[Scoping filter]\(スコープ フィルター\)** ページで、**cloudNoFlow** = **True** を選択します。 続けて、 **[次へ]** をクリックします。
  ![カスタム規則](media/how-to-cloud-custom-user-rule/user7.png)</br>
@@ -122,14 +122,14 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
 2. [こちら](how-to-install.md#install-the-agent)に記載されている手順を使用して、Azure AD Connect クラウド プロビジョニング エージェントをダウンロードします。
 3. Azure AD Connect クラウドプロビジョニング (AADConnectProvisioningAgent.Installer) を実行します。
 3. スプラッシュ スクリーンでライセンス条項に**同意**し、 **[インストール]** をクリックします。</br>
-![[ようこそ] 画面](media/how-to-install/install1.png)</br>
+![[Microsoft Azure A D Connect Provisioning Agent] スプラッシュ スクリーンのスクリーンショット。](media/how-to-install/install1.png)</br>
 
 4. この操作が完了すると、構成ウィザードが起動します。  Azure AD 全体管理者アカウントでサインインします。
 5. **[Connect Active Directory]\(Active Directory の接続\)** 画面で **[ディレクトリの追加]** をクリックし、Active Directory 管理者アカウントを使用してサインインします。  この操作によってオンプレミス ディレクトリが追加されます。  **[次へ]** をクリックします。</br>
-![[ようこそ] 画面](media/how-to-install/install3.png)</br>
+![[Active Directory の接続] 画面のスクリーンショット。ディレクトリの値が入力されています。](media/how-to-install/install3.png)</br>
 
 6. **[構成が完了しました]** 画面で、 **[Confirm]\(確認\)** をクリックします。  この操作によって、エージェントが登録されて再起動されます。</br>
-![[ようこそ] 画面](media/how-to-install/install4.png)</br>
+![[構成が完了しました] 画面のスクリーンショット。[確認] ボタンが選択されています。](media/how-to-install/install4.png)</br>
 
 7. この操作が完了すると、"**Your agent configuration was successfully verified. (エージェントの構成が正常に検証されました。)** " という通知が表示されます。  **[終了]** をクリックします。</br>
 ![[ようこそ] 画面](media/how-to-install/install5.png)</br>

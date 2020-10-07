@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: 10ae1c76d48c1cedbb915fec66177ac3612feea0
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: d1b79d60bba89ef01b261c403fe3b25939669d0b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115222"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258100"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>クイック スタート:Java Web アプリに "Microsoft でサインイン" を追加する
 
@@ -193,15 +193,16 @@ Web サンプルを Tomcat にデプロイする場合は、ソース コード�
 3.   Tomcat の既定の HTTP ポートは 8080 ですが、ポート 8443 経由の HTTPS 接続が必要です。 これを構成するには、次のようにします。
         - tomcat/conf/system.xml にアクセスします
         - `<connector>` タグを検索し、既存のコネクタを次のように置き換えます。
-        ```
+
+        ```xml
         <Connector
                    protocol="org.apache.coyote.http11.Http11NioProtocol"
                    port="8443" maxThreads="200"
                    scheme="https" secure="true" SSLEnabled="true"
                    keystoreFile="C:/Path/To/Keystore/File/keystore.p12" keystorePass="KeystorePassword"
                    clientAuth="false" sslProtocol="TLS"/>
-        ``` 
-       
+        ```
+
 4. コマンド プロンプトを開き、このサンプルのルート フォルダー (pom ファイルが配置されている場所) に移動して、`mvn package` を実行してプロジェクトをビルドします。
     - これにより、/targets ディレクトリに `msal-web-sample-0.1.0.war` ファイルが生成されます。
     - このファイルの名前を `msal4jsample.war` に変更します
@@ -249,16 +250,11 @@ MSAL for Java を使用するファイルの先頭に次のコードを追加し
 import com.microsoft.aad.msal4j.*;
 ```
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>次の手順
 
-アクセス許可と同意について学習します。
+Microsoft ID プラットフォームでユーザーをサインインさせる Web アプリの構築に関する詳しい解説が必要であれば、複数のパートから構成されるシナリオ シリーズにお進みください。
 
 > [!div class="nextstepaction"]
-> [アクセス許可と同意](./v2-permissions-and-consent.md)
-
-このシナリオ用の認証フローの詳細については、OAuth 2.0 承認コード フローを参照してください。
-
-> [!div class="nextstepaction"]
-> [承認コードの Oauth フロー](./v2-oauth2-auth-code-flow.md)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+[シナリオ: ユーザーをサインインさせる Web アプリ](scenario-web-app-sign-user-overview.md?tabs=java)

@@ -4,12 +4,12 @@ description: チュートリアル:Azure Event Grid と Event Hubs を使用し�
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d45fcedb570e384b851a7ac815ca175c67cc00a0
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 64d4b9769e1a228294bd7d8741f6f4b1260fb0dd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89435033"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270561"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>チュートリアル:ビッグ データをデータ ウェアハウスにストリーミングする
 Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (イベント) への対応を可能にするインテリジェントなイベント ルーティング サービスです。 たとえば、Azure BLOB ストレージや Azure Data Lake Storage にキャプチャされた Event Hubs データを処理する Azure 関数をトリガーして、データを別のデータ リポジトリに移行できます。 この [Event Hubs と Event Grid の統合のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)では、Event Hubs と Event Grid を使用して、キャプチャされた Event Hubs データを BLOB ストレージから Azure Synapse Analytics (旧称、SQL Data Warehouse) にシームレスに移行する方法を説明しています。
@@ -66,7 +66,7 @@ Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (�
 4. Cloud Shell で、 **[Bash]** と **[PowerShell]** のどちらかを選択するオプションが表示されたら、 **[Bash]** を選択します。 
 5. Cloud Shell を初めて使用する場合は、 **[ストレージの作成]** を選択してストレージ アカウントを作成します。 Azure Cloud Shell では、一部のファイルを格納するために Azure ストレージ アカウントが必要です。 
 
-    ![Cloud Shell 用のストレージを作成する](media/event-grid-event-hubs-integration/create-storage-cloud-shell.png)
+    ![[ストレージがマウントされていません] ダイアログのスクリーンショット。[ストレージの作成] ボタンが選択されています。](media/event-grid-event-hubs-integration/create-storage-cloud-shell.png)
 6. Cloud Shell が初期化されるまで待ちます。 
 
     ![Cloud Shell 用のストレージを作成する](media/event-grid-event-hubs-integration/cloud-shell-initialized.png)
@@ -209,7 +209,7 @@ Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (�
    ![関数アプリの発行](media/event-grid-event-hubs-integration/publish-function-app.png)
 4. 次の画面が表示されたら、 **[開始]** を選択します。 
 
-   ![発行の開始ボタン](media/event-grid-event-hubs-integration/start-publish-button.png) 
+   ![Visual Studios のスクリーンショット。[発行] セクションの [開始] ボタンを確認できます。](media/event-grid-event-hubs-integration/start-publish-button.png) 
 5. **[発行]** ダイアログ ボックスの **[対象]** で **[Azure]** を選択し、 **[次へ]** を選択します。 
 
    ![発行の開始ボタン](media/event-grid-event-hubs-integration/publish-select-azure.png)

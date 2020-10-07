@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/22/2020
+ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 265bc1bb86c7fe8424656aa9adb30ddbe847e6fc
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 11ed87f8cf5aabb86f709d938acc4c31b737ca91
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985649"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318596"
 ---
 # <a name="what-is-the-azure-stack-edge-pro-r"></a>Azure Stack Edge Pro R とは
 
-Azure Stack Edge Pro R は、サービスとしてのハードウェア ソリューションです。 Microsoft からお客様に、Azure へのネットワーク経由のデータ転送を行うための、耐久性があり、ラグドな、サーバー クラスのエッジ デバイスが発送されます。 これらのデバイスにはグラフィカル処理ユニット (GPU) が搭載され、AI、分析、およびサーバーレス コンピューティング用に最適化されています。 ラグド デバイスは過酷な環境での使用に適しています。
+Azure Stack Edge Pro R は、過酷な環境で使用するために設計された頑丈なエッジ コンピューティング デバイスです。 Azure Stack Edge Pro R は、サービスとしてのハードウェア ソリューションとして提供されます。 ネットワーク ストレージ ゲートウェイとして機能し、かつ、高速な AI 推論を実現する GPU (グラフィカル処理ユニット) 搭載のクラウドマネージド デバイスをお届けします。
 
 この記事では、Azure Stack Edge Pro R ソリューションの概要、主要な機能、このデバイスを配置できるシナリオについて説明します。
 
@@ -28,14 +28,13 @@ Azure Stack Edge Pro R には、次の機能があります。
 
 |機能 |説明  |
 |---------|---------|
-|ラグド ハードウェア| 過酷な環境向けに設計された、ラグドなサーバー クラス ハードウェア。 二人用キャリー ケースで持ち運びできるデバイス。 |
+|ラグド ハードウェア| 過酷な環境向けに設計された、ラグドなサーバー クラス ハードウェア。 携帯性に優れた輸送用ケースに収まるデバイス。 |
 |クラウドでの管理     |デバイスとサービスは Azure portal を介して管理されます。|
 |Edge コンピューティング ワークロード   |データの分析、処理、フィルター処理が可能です。 VM とコンテナー化されたワークロードがサポートされています。|
 |高速 AI 推論| Nvidia T4 GPU によって実現されます。|
-|高性能 | ハイ パフォーマンス コンピューティングおよびデータ転送。|
 |データ アクセス     | クラウドでデータをさらに処理するために、クラウド API を使用して、Azure Storage Blob と Azure ファイルからデータを直接アクセスします。 デバイス上のローカル キャッシュは、最近使用されたファイルの高速アクセスに使用されます。|
 |切断モード| デバイスとサービスは、必要に応じて Azure Stack Hub を介して管理できます。 アプリケーションをオフライン モードで展開、実行、管理します。 <br> 切断モードでは、オフライン アップロードのシナリオに対応します。|
-|サポートされるプロトコル     |データ インジェストのために、標準の SMB、NFS、REST プロトコルをサポートします。 <br> サポート対象のバージョンについては、[Azure Stack Edge Pro R のシステム必要条件](azure-stack-edge-gpu-system-requirements.md)に関する記事をご覧ください。|
+|サポートされているファイル転送プロトコル     |データ インジェストのために、標準の SMB、NFS、REST プロトコルをサポートします。 <br> サポート対象のバージョンについては、[Azure Stack Edge Pro R のシステム必要条件](azure-stack-edge-gpu-system-requirements.md)に関する記事をご覧ください。|
 |データ更新     | ローカル ファイルをクラウドから最新の情報に更新する機能。|
 |二重暗号化    | 自己暗号化ドライブの使用によって暗号化の最初のレイヤーが提供されます。 VPN によって暗号化の第 2 レイヤーが提供されます。 ローカルでデータを暗号化し、クラウドへのデータ転送を *https* 経由で保護する BitLocker のサポート。|
 |帯域幅調整| ピーク時の帯域幅の使用量を制限するように調整します。|
@@ -61,13 +60,13 @@ Azure Stack Edge Pro R には、次の機能があります。
 
 Azure Stack Edge Pro R ソリューションは、Azure Stack Edge リソース、Azure Stack Edge Pro R のラグドな物理デバイス、およびローカル Web UI で構成されています。
 
-- **Azure Stack Edge Pro R 物理デバイス** - Azure Stack Edge Pro R は、Azure へのデータ転送用に構成できる 1 ノードのデバイスです。 デバイスはラグドな外装を備えた 1U サーバーであり、Microsoft によって提供されます。 必要に応じて、サーバーは UPS でも使用できます (これも 1U です)。
+- **Azure Stack Edge Pro R 物理デバイス** - 頑丈な輸送用ケースに収まる、1 ノードのコンピューティングおよびストレージ デバイス。 オプションで無停電電源装置 (UPS) もご利用いただけます。
 
     ![Azure Stack Edge Pro R の 1 ノード デバイス](media/azure-stack-edge-j-series-overview/device-image-1.png)
 
 - **Azure Stack Edge リソース** - さまざまな地理的な場所からアクセス可能な Web インターフェイスから、ラグドな Azure Stack Edge Pro R デバイスを管理できる、Azure portal でのリソース。 Azure Stack Edge リソースを使用して、リソースの作成と管理、デバイスとアラートの表示と管理、および共有の管理を行います。  
 
-- **Azure Stack Edge Pro R ローカル Web UI** - デバイスの初期構成にローカル Web UI を使用して、診断の実行、Azure Stack Edge Pro R デバイスのシャットダウンと再起動、コピー ログの表示、Microsoft サポートへの連絡とサービス要求の提出を行います。
+- **Azure Stack Edge Pro R のローカル Web UI** - Azure Stack Edge Pro R デバイス上のブラウザー ベースのローカル ユーザー インターフェイス。主にデバイスの初期構成を想定しています。 他にも、ローカル Web UI を使用して、診断の実行、Azure Stack Edge Pro デバイスのシャットダウンと再起動し、コピー ログの表示、Microsoft サポートへの連絡とサービス要求の提出を行います。
 
 
 ## <a name="region-availability"></a>利用可能なリージョン
@@ -75,6 +74,8 @@ Azure Stack Edge Pro R ソリューションは、Azure Stack Edge リソース�
 Azure Stack Edge Pro R 物理デバイス、Azure リソース、データ転送先のターゲット ストレージ アカウントは、すべて同じリージョン内にある必要はありません。
 
 - **リソースの使用可能性** - Azure Stack Edge リソースを使用できるすべてのリージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)」を参照してください。 
+
+- **デバイスの可用性** - Azure Stack Edge Pro R デバイスが使用可能なすべての国の一覧については、[Azure Stack Edge Pro R の価格](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgeProR)に関するページの **[Azure Stack Edge Pro R]** タブにある **[可用性]** セクションにアクセスしてください。
 
 - **転送先ストレージ アカウント** - データを格納するストレージ アカウントは、すべての Azure 地域で利用できます。 最適なパフォーマンスを得るには、ストレージ アカウントによって Azure Stack Edge Pro R のデータが格納されるリージョンと、デバイスが配置される場所を近くにする必要があります。 デバイスから離れた場所にあるストレージ アカウントは、待ち時間が長くなり、パフォーマンスが低下します。
 

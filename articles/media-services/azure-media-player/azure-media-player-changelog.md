@@ -5,15 +5,29 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
-ms.date: 07/27/2020
-ms.openlocfilehash: 9642f6d1090ef358cf86241640255c647dea52eb
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.date: 09/23/2020
+ms.openlocfilehash: c63a8efc4bbcf6e5a124d439e6f9f91397e2fa53
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432664"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315084"
 ---
-# <a name="changelog"></a>変更ログ #
+# <a name="changelog"></a>変更ログ
+
+## <a name="236-official-update-september-21-2020"></a>2.3.6 (公式更新プログラム 2020 年 9 月 21 日)
+
+### <a name="features-236"></a>機能 2.3.6
+
+azureHtml5JS tech (DASH) にオーディオのみのサポートを追加。ライブ トランスクリプトの遅延開始をサポート。ライブ トランスクリプトの言語変更をサポート
+
+### <a name="bug-fixes-236"></a>バグ修正 2.3.6
+
+Apple デバイスの HLS 再生で "playsinline" を使用中、"LIVE" ボタンをクリックすると、ビデオがリスタートする。AMP ポスター画像が例外を引き起こすことがある。HLS FairPlay の再生時、音量ボタンが表示されない [アクセシビリティ]。キーボードの使用時、ボタンにヒントが定義されていない [アクセシビリティ]。進捗バーの光輝比が 1.3:1 未満である [アクセシビリティ]。キーボードのフォーカスがビデオ品質ボタンに戻らないことがある [アクセシビリティ]。ビデオ画面にコントロールが表示されず、ナレーターがコントロールを見つけられない
+
+### <a name="changes-236"></a>変更 2.3.6
+
+呼び出し元のアプリケーションに意味のある KeyDelivery エラーを返す
 
 ## <a name="235-official-update-june-1-2020"></a>2.3.5 (公式更新プログラム 2020 年 6 月 1 日)
 

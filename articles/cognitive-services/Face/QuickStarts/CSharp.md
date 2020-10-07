@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: fe6def8a935fcc6f093c4489409a3bcde829ac10
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 8c1e47db4f5f5bb64c31d16c26f6c3860b5bcb29
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294936"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323058"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>クイック スタート:Face REST API と C# を使用して画像から顔を検出する
 
@@ -75,7 +75,7 @@ namespace DetectFace
 
 ### <a name="receive-image-input"></a>画像の入力を受け取る
 
-**Program** クラスの **Main** メソッドに次のコードを追加します。 このコードによって、画像の URL を入力するようユーザーに要求するプロンプトがコンソールに出力されます。 さらに、もう 1 つのメソッド **MakeAnalysisRequest** を呼び出して、指定された場所にある画像を処理します。
+**Program** クラスの **Main** メソッドに次のコードを追加します。 このコードによって、ローカル画像ファイルのパスを入力するようユーザーに要求するプロンプトがコンソールに書き込まれます。 さらに、もう 1 つのメソッド **MakeAnalysisRequest** を呼び出して、指定された場所にある画像を処理します。
 
 ```csharp
         static void Main(string[] args)
@@ -159,7 +159,7 @@ namespace DetectFace
 
 ### <a name="process-the-input-image-data"></a>入力画像データを処理する
 
-**Program** クラスに次のメソッドを追加します。 このメソッドでは、指定された URL にある画像をバイト配列に変換します。
+**Program** クラスに次のメソッドを追加します。 このメソッドでは、指定されたファイル パスにある画像をバイト配列に変換します。
 
 ```csharp
         // Returns the contents of the specified file as a byte array.

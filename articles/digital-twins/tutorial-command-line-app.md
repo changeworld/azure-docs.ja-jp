@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: a1dc42815167da308fd87b541c0f21d02b47329b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b6f2e8ff6689a3817ecf9eb43c7cea4a0632fc25
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022515"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297668"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>チュートリアル:サンプル クライアント アプリを使用して Azure Digital Twins を試す
 
@@ -85,18 +85,18 @@ _**AdtE2ESample**_ プロジェクトを開いた Visual Studio ウィンドウ�
 
 モデルを定義したら、残りの手順として、サンプル アプリを使って Azure Digital Twins インスタンスとやり取りしてみましょう。 ツール バーにある次のボタンでプロジェクトを実行します。
 
-:::image type="content" source="media/tutorial-command-line-app/start-button-sample.png" alt-text="Visual Studio のスタート ボタン (SampleClientApp プロジェクト)":::
+:::image type="content" source="media/tutorial-command-line-app/start-button-sample.png" alt-text="編集後の Room.json (バージョン番号、HumidityLevel プロパティと RoomName プロパティ、contains リレーションシップが更新されている)":::
 
 コンソール ウィンドウが表示されて認証が行われ、コマンドを待つ状態となります。 
 * 認証はブラウザーを通じて処理されます。つまり既定の Web ブラウザーが開いて、認証プロンプトが表示されます。 このプロンプトから Azure の資格情報を使用してサインインしてください。 その後は、ブラウザーのタブまたはウィンドウを閉じてかまいません。
 
 次に示したのは、プロジェクト コンソールの画面例を示すスクリーンショットです。
 
-:::image type="content" source="media/tutorial-command-line-app/command-line-app.png" alt-text="コマンド ライン アプリからのウェルカム メッセージ":::
+:::image type="content" source="media/tutorial-command-line-app/command-line-app.png" alt-text="編集後の Room.json (バージョン番号、HumidityLevel プロパティと RoomName プロパティ、contains リレーションシップが更新されている)":::
 
 > [!TIP]
 > このプロジェクトで使用できる全コマンドの一覧を確認するには、プロジェクト コンソールで「`help`」と入力し、Return キーを押します。
-> :::image type="content" source="media/tutorial-command-line-app/command-line-app-help.png" alt-text="help コマンドの出力":::
+> :::image type="content" source="media/tutorial-command-line-app/command-line-app-help.png" alt-text="編集後の Room.json (バージョン番号、HumidityLevel プロパティと RoomName プロパティ、contains リレーションシップが更新されている)":::
 
 以降このチュートリアルの手順に取り組む間、プロジェクト コンソールは実行したままにしてください。
 
@@ -117,7 +117,7 @@ CreateModels Room Floor
 
 `GetModels true` コマンドを実行して、モデルが作成されたことを確認します。 アップロード済みのすべてのモデルが Azure Digital Twins インスタンスに対して照会され、そのすべての情報が出力されます。 この結果から、編集済みの *Room* モデルを探してみましょう。
 
-:::image type="content" source="media/tutorial-command-line-app/output-get-models.png" alt-text="GetModels の結果 (更新済みの Room モデルが表示されている)":::
+:::image type="content" source="media/tutorial-command-line-app/output-get-models.png" alt-text="編集後の Room.json (バージョン番号、HumidityLevel プロパティと RoomName プロパティ、contains リレーションシップが更新されている)":::
 
 #### <a name="errors"></a>エラー
 
@@ -165,7 +165,7 @@ CreateDigitalTwin dtmi:example:Floor;1 floor1
 
 コマンドから返される出力を見ると、ツインが正常に作成されたことがわかります。 
 
-:::image type="content" source="media/tutorial-command-line-app/output-create-digital-twin.png" alt-text="CreateDigitalTwin コマンドから返された結果の抜粋 (floor0、floor1、room0、room1)":::
+:::image type="content" source="media/tutorial-command-line-app/output-create-digital-twin.png" alt-text="編集後の Room.json (バージョン番号、HumidityLevel プロパティと RoomName プロパティ、contains リレーションシップが更新されている)":::
 
 ツインが作成されたことは、`Query` コマンドを実行することによって確認することもできます。 Azure Digital Twins インスタンスに対し、そこに含まれるすべてのデジタル ツインがこのコマンドによって照会されます。 その結果から、*floor0*、*floor1*、*room0*、*room1* の各ツインを探してみましょう。
 
@@ -205,27 +205,19 @@ CreateRelationship floor1 contains room1 relationship1
 
 リレーションシップが正常に作成されたことが、コマンドから返される出力で確認できます。
 
-:::image type="content" source="media/tutorial-command-line-app/output-create-relationship.png" alt-text="CreateRelationship コマンドの結果の抜粋 (relationship0 および relationship1)":::
-
-次のいずれかのコマンドを使用し、Azure Digital Twins インスタンスにリレーションシップを照会することで、リレーションシップを確認することもできます。
-* 各フロアを接続元とするすべてのリレーションシップを確認する (一方の側からリレーションシップを表示)
-    ```cmd/sh
-    GetRelationships floor0
-    GetRelationships floor1
-    ```
-* 各部屋を接続先とするすべてのリレーションシップを表示する ("もう一方の" 側からリレーションシップを表示)
+:::image type="content" source="media/tutorial-command-line-app/output-create-relationship.png" alt-text="編集後の Room.json (バージョン番号、HumidityLevel プロパティと RoomName プロパティ、contains リレーションシップが更新されている)" 側からリレーションシップを表示)
     ```cmd/sh
     GetIncomingRelationships room0
     ```
 * リレーションシップを個別に照会する 
     ```cmd/sh
-    GetRelationship floor0 contains relationship0
-    GetRelationship floor1 contains relationship1
+    GetRelationship floor0 relationship0
+    GetRelationship floor1 relationship1
     ```
 
 このチュートリアルで設定したツインとリレーションシップによって、次の概念グラフが形成されます。
 
-:::image type="content" source="media/tutorial-command-line-app/sample-graph.png" alt-text="グラフ (floor0 は relationship0 によって room0 に接続され、floor1 は relationship1 によって room1 に接続されている)" border="false":::
+:::image type="content" source="media/tutorial-command-line-app/sample-graph.png" alt-text="編集後の Room.json (バージョン番号、HumidityLevel プロパティと RoomName プロパティ、contains リレーションシップが更新されている)" border="false":::
 
 ### <a name="query-the-twin-graph-to-answer-environment-questions"></a>環境についての質問をツイン グラフに照会する
 
@@ -239,10 +231,10 @@ Azure Digital Twins の主な機能は、環境についての質問に答える
 
     これで環境の概要を調べ、必要な事柄がすべて Azure Digital Twins 内で表現されていることを確認できます。 このコマンドを実行すると、個々のデジタル ツインとその詳細を含んだ出力が返されます。 その抜粋を次に示します。
 
-    :::image type="content" source="media/tutorial-command-line-app/output-query-all.png" alt-text="ツイン クエリの実行結果の抜粋 (room0 および floor1 が表示されている)":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-all.png" alt-text="編集後の Room.json (バージョン番号、HumidityLevel プロパティと RoomName プロパティ、contains リレーションシップが更新されている)":::
 
     >[!NOTE]
-    >引数が追加されていない `Query` コマンドは、`Query SELECT * FROM DIGITALTWINS` に相当します。
+    >サンプル プロジェクトでは、引数が追加されていない `Query` コマンドは、`Query SELECT * FROM DIGITALTWINS` に相当します。 [クエリ API](how-to-use-apis-sdks.md) または [CLI コマンド](how-to-use-cli.md)を使用して、インスタンス内のすべてのツインに対してクエリを実行するには、より長い (完全な) クエリを使用します。
 
 * **環境内に存在する部屋をすべて知りたい** (モデルで照会)
 
@@ -252,7 +244,7 @@ Azure Digital Twins の主な機能は、環境についての質問に答える
 
     クエリを特定のタイプのツインに制限することで、表現されている内容についての、より具体的な情報を取得することができます。 このコマンドを実行すると、*room0* と *room1* は表示されますが、*floor0* と *floor1* は (room ではなく floor であるため) **表示されません**。
     
-    :::image type="content" source="media/tutorial-command-line-app/output-query-model.png" alt-text="モデル クエリの結果 (room0 と room1 のみが表示されている)":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-model.png" alt-text="編集後の Room.json (バージョン番号、HumidityLevel プロパティと RoomName プロパティ、contains リレーションシップが更新されている)":::
 
 * ***floor0* に存在するすべての部屋を知りたい** (リレーションシップで照会)
 
@@ -262,7 +254,7 @@ Azure Digital Twins の主な機能は、環境についての質問に答える
 
     グラフ内のリレーションシップに基づいてクエリを実行すると、ツインの関係性についての情報を入手したり、クエリを特定のエリアに制限したりすることができます。 *floor0* に存在するのは *room0* のみです。したがって、結果に含まれる部屋は room0 のみとなります。
 
-    :::image type="content" source="media/tutorial-command-line-app/output-query-relationship.png" alt-text="リレーションシップ クエリの結果 (room0 が表示されている)":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-relationship.png" alt-text="編集後の Room.json (バージョン番号、HumidityLevel プロパティと RoomName プロパティ、contains リレーションシップが更新されている)":::
 
 * **自分の環境に存在するツインのうち、温度が 75 度を超えるツインをすべて知りたい** (プロパティで照会)
 
@@ -272,7 +264,7 @@ Azure Digital Twins の主な機能は、環境についての質問に答える
 
     プロパティに基づいてグラフを照会することにより、さまざまな質問への答えを得ることができます。たとえば、環境内で注意すべき外れ値を見つけることもできます。 その他の比較演算子 ( *<* , *>* 、 *=* 、 *!=* ) もサポートされます。 ここでは、温度が 80 である *room1* が結果として表示されます。
 
-    :::image type="content" source="media/tutorial-command-line-app/output-query-property.png" alt-text="プロパティ クエリの結果 (room1 のみが表示されている)":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-property.png" alt-text="編集後の Room.json (バージョン番号、HumidityLevel プロパティと RoomName プロパティ、contains リレーションシップが更新されている)":::
 
 * ***floor0* 上で温度が 75 度を超えるすべての部屋を知りたい** (複合クエリ)
 
@@ -282,7 +274,7 @@ Azure Digital Twins の主な機能は、環境についての質問に答える
 
     SQL と同様、結合演算子 (`AND`、`OR`、`NOT` など) を使用して、先行するクエリを結合することもできます。 このクエリは、`AND` を使用して、ツインの温度に関する先行するクエリを絞り込んでいます。 結果には、*floor0* 上の部屋のうち、温度が 75 度を超える部屋のみが表示されます。このケースでは、該当する部屋はありません。 結果セットは空になります。
 
-    :::image type="content" source="media/tutorial-command-line-app/output-query-compound.png" alt-text="複合クエリの結果 (結果なし)":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-compound.png" alt-text="編集後の Room.json (バージョン番号、HumidityLevel プロパティと RoomName プロパティ、contains リレーションシップが更新されている)":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

@@ -12,12 +12,12 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9cd70d534cebf35938285208dc76bd4a6d94533
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 3d9f59906c566d80344891c0796a85b0a4972e68
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279008"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313095"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>チュートリアル:Azure AD Connect で AD FS のバックアップとして PHS を設定する
 
@@ -74,7 +74,7 @@ ms.locfileid: "89279008"
 
 1. [https://myapps.microsoft.com](https://myapps.microsoft.com) に移動します。
 2. 新しいテナントで作成されたユーザー アカウントを使用してサインインします。  user@domain.onmicrosoft.com の形式を使用してサインインする必要があります。 ユーザーがオンプレミスでのサインインに使用するのと同じパスワードを使用します。</br>
-   ![確認](media/tutorial-password-hash-sync/verify1.png)</br>
+   ![サインイン テスト時の成功メッセージを示すスクリーンショット。 ](media/tutorial-password-hash-sync/verify1.png)</br>
 
 ## <a name="switch-back-to-federation"></a>フェデレーションに切り替える
 次に、フェデレーションに切り替えて戻す方法について説明します。  これを行うには、次を実行します。
@@ -91,7 +91,7 @@ ms.locfileid: "89279008"
 10. 構成が完了したら、 **[次へ]** をクリックします。
 ![構成](media/tutorial-phs-backup/backup4.png)</br>
 11. **[フェデレーションの接続性の検証]** 画面で **[検証]** をクリックします。  これが正常に完了するには、DNS レコードを構成 (A レコードと AAAA レコードを追加) する必要がある場合があります。
-![確認](media/tutorial-phs-backup/backup5.png)</br>
+![[フェデレーションの接続性の検証] 画面と [検証] ボタンのスクリーンショット。](media/tutorial-phs-backup/backup5.png)</br>
 12. **[終了]** をクリックします。
 
 ## <a name="reset-the-ad-fs-and-azure-trust"></a>AD FS と Azure の信頼をリセットする
@@ -106,7 +106,7 @@ ms.locfileid: "89279008"
 6.  **[AD FS に接続]** 画面で、Contoso\Administrator のユーザー名とパスワードを入力し、 **[次へ]** をクリックします。
 7.  **[証明書]** 画面で **[次へ]** をクリックします。
 
-## <a name="test-signing-in-with-one-of-our-users"></a>いずれかのユーザーでサインインをテストする
+## <a name="test-signing-in-with-a-user"></a>ユーザーでサインインをテストする
 
 1.  [https://myapps.microsoft.com](https://myapps.microsoft.com) に移動します。
 2. 新しいテナントで作成されたユーザー アカウントを使用してサインインします。  user@domain.onmicrosoft.com の形式を使用してサインインする必要があります。 ユーザーがオンプレミスでのサインインに使用するのと同じパスワードを使用します。

@@ -1,6 +1,6 @@
 ---
 title: Azure Notification Hubs と Firebase SDK バージョン 1.0.0-preview1 を使用して Android にプッシュ通知を送信する
-description: このチュートリアルでは、Azure Notification Hubs と Google Firebase Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する方法について学習します。
+description: このチュートリアルでは、Azure Notification Hubs と Google Firebase Cloud Messaging を使用して Android デバイス (バージョン 1.0.0-preview1) にプッシュ通知を送信する方法について学習します。
 author: sethmanheim
 ms.author: sethm
 ms.date: 5/28/2020
@@ -9,12 +9,12 @@ ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 05/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ae1d2dfaf7d83d3b2323812f637bddd91b9a2ea2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 63841bd603373d0fb325bcf82511ce3fb07b4136
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018231"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315197"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-100-preview1"></a>チュートリアル:Firebase SDK バージョン 1.0.0-preview1 を使用して Android デバイスにプッシュ通知を送信する
 
@@ -62,23 +62,23 @@ ms.locfileid: "89018231"
 
 2. プロジェクトを作成した後、 **[Add Firebase to your Android app]\(Android アプリに Firebase を追加する\)** を選択します。
 
-   :::image type="content" source="media/android-sdk/get-started.png" alt-text="Firebase を追加する":::
+   :::image type="content" source="media/android-sdk/get-started.png" alt-text="プロジェクトを構成する":::
 
 3.  **[Add Firebase to your Android app]\(Android アプリへの Firebase の追加\)**  ページで、次の手順を実行します。
 
    1.  **[Android package name]\(Android パッケージ名\)** については、お使いのアプリケーションの **build.gradle** ファイル内にある **applicationId** の値をコピーします。 この例では  `com.fabrikam.fcmtutorial1app` です。
 
-      :::image type="content" source="media/android-sdk/specify-package-name-fcm-settings.png" alt-text="パッケージ名を指定する":::
+      :::image type="content" source="media/android-sdk/specify-package-name-fcm-settings.png" alt-text="プロジェクトを構成する":::
 
    2.  **[Register app]\(アプリの登録\)** を選択します。
 
 4.  **[google-services.json をダウンロード]** を選択し、プロジェクトの  **app** フォルダーにファイルを保存して、 **[次へ]** をクリックします。
 
-   :::image type="content" source="media/android-sdk/download-google-service-button.png" alt-text="Google サービスをダウンロードする":::
+   :::image type="content" source="media/android-sdk/download-google-service-button.png" alt-text="プロジェクトを構成する":::
 
 5. Firebase コンソールで、プロジェクトの歯車アイコンを選択します。 次に、 **[Project Settings]\(プロジェクト設定\)** を選択します。
 
-   :::image type="content" source="media/android-sdk/notification-hubs-firebase-console-project-settings.png" alt-text="プロジェクト設定":::
+   :::image type="content" source="media/android-sdk/notification-hubs-firebase-console-project-settings.png" alt-text="プロジェクトを構成する":::
 
 6. **google-services.json** ファイルをお使いの Android Studio プロジェクトの  **app**  フォルダーにダウンロードしていない場合は、このページでダウンロードできます。
 
@@ -94,7 +94,7 @@ ms.locfileid: "89018231"
 
 3.  **[Notification Hubs]**  ページで、ツール バーの  **[追加]**  を選択します。
 
-   :::image type="content" source="media/android-sdk/add-hub.png" alt-text="ハブを追加する":::
+   :::image type="content" source="media/android-sdk/add-hub.png" alt-text="プロジェクトを構成する":::
 
 4.  **[Notification Hubs]**  ページで、次の手順を実行します。
 
@@ -108,15 +108,15 @@ ms.locfileid: "89018231"
 
    5.  **[作成]** を選択します。
 
-      :::image type="content" source="media/android-sdk/create-hub.png" alt-text="ハブを作成する":::
+      :::image type="content" source="media/android-sdk/create-hub.png" alt-text="プロジェクトを構成する":::
 
 5.  **[通知]**  (ベルのアイコン) を選択し、 **[リソースに移動]** を選択します。  **[Notification Hubs]**  ページの一覧を最新の情報に更新して、お使いの通知ハブを選択することもできます。
 
-   :::image type="content" source="media/android-sdk/notification-hubs.png" alt-text="ハブを選択する":::
+   :::image type="content" source="media/android-sdk/notification-hubs.png" alt-text="プロジェクトを構成する":::
 
 6.  **[アクセス ポリシー]**  を一覧から選択します。 使用可能な接続文字列が 2 つあることに注意してください。 これらは、後でプッシュ通知を処理するために必要になります。
 
-   :::image type="content" source="media/android-sdk/access-policies.png" alt-text="アクセス ポリシー":::
+   :::image type="content" source="media/android-sdk/access-policies.png" alt-text="プロジェクトを構成する":::
 
    > [!IMPORTANT]
    > アプリケーションで  **DefaultFullSharedAccessSignature** ポリシーを使用しないでください。 このポリシーは、アプリのバックエンドでのみ使用されます。
@@ -129,7 +129,7 @@ ms.locfileid: "89018231"
 
 3. ツールバーの  **[保存]** を選択します。
 
-   :::image type="content" source="media/android-sdk/fcm-server-key.png" alt-text="サーバー キー":::
+   :::image type="content" source="media/android-sdk/fcm-server-key.png" alt-text="プロジェクトを構成する":::
 
 4. Azure portal に、ハブが正常に更新されたことを示すメッセージが表示されます。  **[保存]**  ボタンは無効になっています。
 
@@ -143,15 +143,15 @@ ms.locfileid: "89018231"
 
 2. 自分のプロジェクトで使用される Android SDK のターゲット バージョンを選択します。 次に、 **[パッケージの詳細ページの表示]** を選択します。
 
-   :::image type="content" source="media/android-sdk/notification-hubs-android-studio-sdk-manager.png" alt-text="SDK マネージャー":::
+   :::image type="content" source="media/android-sdk/notification-hubs-android-studio-sdk-manager.png" alt-text="プロジェクトを構成する":::
 
 3. まだインストールされていない場合は、 **[Google API]** を選択します。
 
-   :::image type="content" source="media/android-sdk/google-apis-selected.png" alt-text="API":::
+   :::image type="content" source="media/android-sdk/google-apis-selected.png" alt-text="プロジェクトを構成する":::
 
 4.  **[SDK Tools]\(SDK ツール\)**  タブに切り替えます。 Google Play 開発者サービスをまだインストールしていない場合は、次の図に示すように  **[Google Play 開発者サービス]**  を選択します。 次に、 **[適用]**  をクリックしてインストールします。 SDK のパスは後の手順で使用するので、メモしておいてください。
 
-   :::image type="content" source="media/android-sdk/google-play-services-selected.png" alt-text="Play サービス":::
+   :::image type="content" source="media/android-sdk/google-play-services-selected.png" alt-text="プロジェクトを構成する":::
 
 5.  **[Confirm Change]\(変更の確認\)**  ダイアログ ボックスが表示される場合は、 **[OK]** を選択します。 コンポーネント インストーラーによって、要求したコンポーネントがインストールされます。 コンポーネントがインストールされた後、 **[Finish]\(完了\)**  を選択します。
 
@@ -237,11 +237,11 @@ ms.locfileid: "89018231"
 
 4. アプリを実行するための仮想デバイスがあることを確認します。 ない場合は、次の手順に従って追加してください。
 
-   1. :::image type="content" source="media/android-sdk/open-device-manager.png" alt-text="デバイス マネージャー":::
-   2. :::image type="content" source="media/android-sdk/your-virtual-devices.png" alt-text="仮想デバイス":::
+   1. :::image type="content" source="media/android-sdk/open-device-manager.png" alt-text="プロジェクトを構成する":::
+   2. :::image type="content" source="media/android-sdk/your-virtual-devices.png" alt-text="プロジェクトを構成する":::
    3. 選択したデバイスでアプリを実行し、そのアプリがハブに正常に登録されることを確認します。
 
-      :::image type="content" source="media/android-sdk/device-registration.png" alt-text="デバイスの登録":::
+      :::image type="content" source="media/android-sdk/device-registration.png" alt-text="プロジェクトを構成する":::
 
       > [!NOTE]
       > インスタンス ID サービスの `onTokenRefresh()` メソッドが呼び出されるまでは、初期起動時に登録が失敗する場合があります。 更新すると、通知ハブに正常に登録されるようになります。
@@ -258,7 +258,7 @@ ms.locfileid: "89018231"
 
 4. ポータル ページの一番下の一覧にある操作の結果を確認します。
 
-   :::image type="content" source="media/android-sdk/notification-hubs-test-send.png" alt-text="テスト通知の送信":::
+   :::image type="content" source="media/android-sdk/notification-hubs-test-send.png" alt-text="プロジェクトを構成する":::
 
 5. デバイスに通知メッセージが表示されます。
 

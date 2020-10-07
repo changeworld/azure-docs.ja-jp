@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault REST API の概要
+title: Azure Key Vault のキー、シークレット、証明書の概要
 description: キー、シークレット、証明書に関する Azure Key Vault の REST インターフェイスと開発者の詳細の概要です。
 services: key-vault
 author: msmbaldwin
@@ -9,14 +9,14 @@ ms.service: key-vault
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b2d3753cd31b54c500b2757520f2634eb1b2794a
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c02a2658325fdd88ef1052937edc3b84c4545872
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983278"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296839"
 ---
-# <a name="azure-key-vault-rest-api-overview"></a>Azure Key Vault REST API の概要
+# <a name="azure-key-vault-keys-secrets-and-certificates-overview"></a>Azure Key Vault のキー、シークレット、証明書の概要
 
 Azure Key Vault を使用すると、Microsoft Azure アプリケーションとユーザーは、いくつかの種類のシークレットおよびキーのデータを保存して使用できます。 Key Vault リソース プロバイダーでは、コンテナーとマネージド HSM という 2 種類のリソースがサポートされています。
 

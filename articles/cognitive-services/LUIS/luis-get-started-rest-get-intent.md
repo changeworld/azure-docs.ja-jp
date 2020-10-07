@@ -1,7 +1,7 @@
 ---
 title: クイック スタート:cURL と REST を使用して意図を取得する - LUIS
 titleSuffix: Azure Cognitive Services
-description: この REST API のクイックスタートでは、利用可能なパブリック LUIS アプリを使用して、会話形式のテキストからユーザーの意図を判断します。
+description: この REST API クイック スタートでは、cURL と REST を使用し、会話形式テキストからユーザーの意図を判断します。
 services: cognitive-services
 author: nitinme
 manager: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 06/19/2020
 ms.author: nitinme
-ms.openlocfilehash: 8ab76bcdfc62ed0af52e6c99ef6c7b14ebeef25f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7a8cbfa307f14a6660dcace3315384bc523ad888
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497864"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316258"
 ---
 # <a name="quickstart-use-curl-and-rest-to-get-intent"></a>クイック スタート:cURL と REST を使用して意図を取得する
 

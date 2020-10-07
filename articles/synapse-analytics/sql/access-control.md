@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 52cf3af4b4ab84c12b2e1b5d7f076c43e652157d
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: a2e6111f2df5a8d7334a85ec5b6a9e514368ad6c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031315"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289482"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>ワークスペース、データ、およびパイプラインへのアクセスを管理する
 
@@ -50,7 +50,7 @@ Azure Synapse ワークスペースへの運用環境のデプロイでは、お
 1. [Azure portal](https://portal.azure.com) を開きます。
 2. Azure Data Lake Storage Gen2 アカウントに移動します
 3. Azure Synapse ワークスペース用に選択したコンテナー (ファイルシステム) に移動します
-4. **[アクセス制御 (IAM)]** をクリックします
+4. **[アクセス制御 (IAM)]** を選択します
 5. 次のロールを割り当てます。
    1. **閲覧者**ロール: `Synapse_WORKSPACENAME_Users`
    2. **ストレージ BLOB データ所有者**ロール: `Synapse_WORKSPACENAME_Admins`
@@ -64,17 +64,17 @@ Azure Synapse ワークスペースへの運用環境のデプロイでは、お
 
 1. [**Azure Synapse Web UI**](https://web.azuresynapse.net) に移動します
 2. **[管理]**   >  **[セキュリティ]**  >  **[アクセス制御]** に移動します
-3. **[管理者の追加]** をクリックし、[`Synapse_WORKSPACENAME_Admins`] を選択します
+3. **[管理者の追加]** を選択し、[`Synapse_WORKSPACENAME_Admins`] を選択します
 
 ### <a name="step-4-configure-sql-admin-access-for-the-workspace"></a>手順 4:ワークスペースの SQL 管理者アクセスを構成する
 
 1. [Azure portal](https://portal.azure.com) に移動します
 2. ワークスペースに移動します
 3. **[設定]**  >  **[Active Directory 管理者]** に移動します
-4. **[管理者の設定]** をクリックします
+4. **[管理者の設定]** を選択します
 5. `Synapse_WORKSPACENAME_Admins` を選択
-6. **[選択]** をクリックします
-7. **[保存]** をクリックします
+6. **[選択]** を選択します
+7. **[保存]** を選びます。
 
 > [!NOTE]
 > WORKSPACENAME - この部分は、実際のワークスペース名に置き換えてください。

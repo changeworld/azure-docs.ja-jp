@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: ca330357e88ff6f4824c74a6048769638542cc29
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d6c447deedbdcc4f2439fc069f368db88b3560b9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88556106"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278041"
 ---
 # <a name="tutorial-assign-directory-readers-role-to-an-azure-ad-group-and-manage-role-assignments"></a>チュートリアル:Azure AD グループにディレクトリ閲覧者ロールを割り当てて、ロールの割り当てを管理する
 
@@ -55,7 +55,7 @@ ms.locfileid: "88556106"
 
 作成されたグループを確認および管理するには、Azure portal の **[グループ]** ペインに戻り、対象のグループ名を検索します。 グループを選択したら、 **[管理]** 設定の **[所有者]** および **[メンバー]** メニューで追加の所有者とメンバーを追加できます。 また、グループの**割り当てられたロール**を確認することもできます。
 
-:::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-group-created.png" alt-text="azure-ad-group-created":::
+:::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-group-created.png" alt-text="aad-new-group":::
 
 ### <a name="add-azure-sql-managed-identity-to-the-group"></a>Azure SQL マネージド ID をグループに追加する
 
@@ -68,17 +68,17 @@ ms.locfileid: "88556106"
 
 1. Azure portal で、対象の **SQL マネージド インスタンス** リソースの名前を見つけます。
 
-   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance.png" alt-text="azure-ad-managed-instance":::
+   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance.png" alt-text="aad-new-group":::
 
    SQL マネージド インスタンスの作成中に、そのインスタンスの Azure ID が作成されています。 作成された ID は、対象の SQL マネージド インスタンス名のプレフィックスと同じ名前になります。 次の手順に従って、Azure AD アプリケーションとして作成された SQL Managed Instance ID のサービス プリンシパルを見つけることができます。
 
     - **Azure Active Directory** リソースに移動します。 **[管理]** 設定で、 **[エンタープライズ アプリケーション]** を選択します。 **オブジェクト ID** が、インスタンスの ID です。
     
-    :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance-service-principal.png" alt-text="azure-ad-managed-instance-service-principal":::
+    :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance-service-principal.png" alt-text="aad-new-group":::
 
 1. **Azure Active Directory** リソースに移動します。 **[マネージド]** で、 **[グループ]** に移動します。 自分が作成したグループを選択します。 対象のグループの **[管理]** 設定で、 **[メンバー]** を選択します。 **[メンバーを追加]** を選択し、上記で見つかった名前を検索して、対象の SQL Managed Instance のサービス プリンシパルをグループのメンバーとして追加します。
 
-   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-add-managed-instance-service-principal.png" alt-text="azure-ad-add-managed-instance-service-principal":::
+   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-add-managed-instance-service-principal.png" alt-text="aad-new-group":::
 
 > [!NOTE]
 > Azure システムによってサービス プリンシパルのアクセス許可が伝達され、Azure AD Graph API へのアクセスが許可されるまで、数分かかる場合があります。 SQL Managed Instance に対して Azure AD 管理者をプロビジョニングする前に、数分間待つ必要がある場合があります。

@@ -1,16 +1,16 @@
 ---
 title: Python を使用して Azure で最初の永続関数を作成する
-description: Visual Studio Code を使用して Azure Durable Functions を作成して発行します。
+description: Visual Studio Code を使用して Python で Azure Durable Functions を作成して発行します。
 author: anthonychu
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: c9ca6d52bd71683344115004ec17a981b03f0a24
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 5d624027259212d804ced26a6daaffb853984a98
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85198902"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294869"
 ---
 # <a name="create-your-first-durable-function-in-python"></a>Python で最初の永続関数を作成する
 

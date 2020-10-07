@@ -1,7 +1,7 @@
 ---
 title: クイック スタート:REST API と C# を使用してスペルをチェックする - Bing Spell Check
 titleSuffix: Azure Cognitive Services
-description: Bing Spell Check REST API を使用してスペルと文法をチェックしてみましょう。
+description: Bing Spell Check REST API と C# を使用して、スペルと文法のチェックを開始します。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: df77ea73338f37925c0b59a8838c31617ff22ad8
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: d11430ab02b37d066fb74dcc1b67833577471fd3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919405"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323043"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>クイック スタート:Bing Spell Check REST API と C# を使用してスペルをチェックする
 

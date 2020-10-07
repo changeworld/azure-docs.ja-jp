@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/04/2020
+ms.date: 09/17/2020
 ms.author: jeedes
-ms.openlocfilehash: 319f3a116d52c482dde009a218ba4d2cf93d80e5
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 4e7d8c4917f7860ba07ef9eb749337afd83f723a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89663061"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255555"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-teamzskill"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と TeamzSkill の統合
 
@@ -103,6 +103,10 @@ TeamzSkill に対して Azure AD SSO を構成してテストするには、次�
     | employeeid | user.employeeid |
     | postalcode | user.postalcode |
     | country | user.country |
+    | role | user.assignedroles |
+
+    > [!NOTE]
+    > TeamzSkill では、アプリケーションに対してユーザーのロールが割り当てられていることを想定しています。 ユーザーに適切なロールを割り当てることができるように、Azure AD でこれらのロールを設定してください。 Azure AD でロールを構成する方法については、[こちら](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)を参照してください。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -134,7 +138,6 @@ TeamzSkill に対して Azure AD SSO を構成してテストするには、次�
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
-
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ## <a name="configure-teamzskill-sso"></a>TeamzSkill の SSO の構成
@@ -149,7 +152,7 @@ TeamzSkill に対して Azure AD SSO を構成してテストするには、次�
 
     ![Teamzskill の設定](./media/teamzskill-tutorial/metadata.png)
 
-    a. **[Company]\(会社\) > [Single Sign-On]\(シングル サインオン\)** の順に移動し、 **[Metadata Upload]\(メタデータのアップロード\)** タブを選択します。
+    a。 **[Company]\(会社\) > [Single Sign-On]\(シングル サインオン\)** の順に移動し、 **[Metadata Upload]\(メタデータのアップロード\)** タブを選択します。
 
     b. **[XML Metadata]\(XML メタデータ\)** フィールドに、Azure portal からコピーした **[フェデレーション メタデータ XML]** の値を貼り付けます。
      

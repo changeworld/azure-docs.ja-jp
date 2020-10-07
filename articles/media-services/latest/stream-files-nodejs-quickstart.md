@@ -10,15 +10,15 @@ keywords: Azure Media Services, ストリーム配信
 ms.service: media-services
 ms.workload: media
 ms.topic: tutorial
-ms.custom: mvc, devx-track-javascript
+ms.custom: mvc, devx-track-js
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 901287a82ece873a572d7773dd53f80e1e8af716
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 38207ac47d2e58c689f1933a6ade6d5c86cd44ad
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267396"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268674"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---nodejs"></a>チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - Node.js
 
@@ -74,7 +74,7 @@ ms.locfileid: "89267396"
 
 実行の完了後、次のような出力が表示されます。
 
-![ラン](./media/stream-files-nodejs-quickstart/run.png)
+![StreamFileSample サンプル アプリからの出力を含む、コマンド ウィンドウのスクリーンショット。ローカル ディレクトリにダウンロードされた 3 つのファイルの URL が表示されています。](./media/stream-files-nodejs-quickstart/run.png)
 
 ## <a name="test-with-azure-media-player"></a>Azure Media Player でテストする
 
