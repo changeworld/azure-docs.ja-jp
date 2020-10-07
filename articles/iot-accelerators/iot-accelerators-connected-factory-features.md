@@ -8,14 +8,17 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: dobett
-ms.openlocfilehash: c868aa0f1c2449ccf163523c9ded25a31d1d84c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3a294368e82bcd00f98c26504b3141e8f39fe0c4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73820107"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261602"
 ---
 # <a name="what-is-connected-factory-iot-solution-accelerator"></a>コネクテッド ファクトリ IoT ソリューション アクセラレータとは
+
+> [!IMPORTANT]
+> この記事は更新を行いますが、最新の内容については、「[Azure Industrial IoT](https://azure.github.io/Industrial-IoT/)」 (Azure 産業用 IoT) を参照してください。
 
 コネクテッド ファクトリは Microsoft の Azure Industrial IoT 参照アーキテクチャの実装で、オープンソース ソリューションとしてパッケージ化されています。 商用製品の開始点として使用できます。 コネクテッド ファクトリ ソリューションの事前構築済みバージョンを [Azure IoT ソリューション アクセラレータ](https://www.azureiotsolutions.com/#solutions/types/CF)から Azure サブスクリプションにデプロイできます。
 
@@ -63,6 +66,6 @@ ms.locfileid: "73820107"
 - ソリューションをカスタマイズして、独自のビジネス要件を満たします。
 - 完全なソリューション ソース コードは GitHub にあります。 [コネクテッド ファクトリ事前構成済みソリューション](https://github.com/Azure/azure-iot-connected-factory)のリポジトリをご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 コネクテッド ファクトリ ソリューション アクセラレータについて詳しくは、クイック スタート「[工業用 IoT デバイスを管理するクラウドベースのソリューションを試す](quickstart-connected-factory-deploy.md)」をご覧ください。

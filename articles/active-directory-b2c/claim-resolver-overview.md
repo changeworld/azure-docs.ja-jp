@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8e575cf9bba02a59179cc70870fb680a27648963
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 466e590ba22efe1c2fbb457c15bc7f979f8a172e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85201177"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259638"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C カスタム ポリシーでの要求リゾルバーについて
 
@@ -113,6 +113,7 @@ OIDC 要求または OAuth2 要求の一部に含まれているすべてのパ�
 | 要求 | 説明 | 例 |
 | ----- | ----------------------- | --------|
 | {oauth2:access_token} | アクセス トークン。 | 該当なし |
+| {oauth2:refresh_token} | 更新トークン。 | 該当なし |
 
 
 ### <a name="saml"></a>SAML
@@ -131,7 +132,7 @@ OIDC 要求または OAuth2 要求の一部に含まれているすべてのパ�
 
 次の要素を使用して、要求リゾルバーを使用できます。
 
-| Item | 要素 | 設定 |
+| アイテム | 要素 | 設定 |
 | ----- | ----------------------- | --------|
 |Application Insights の技術プロファイル |`InputClaim` | |
 |[Azure Active Directory](active-directory-technical-profile.md) の技術プロファイル| `InputClaim`, `OutputClaim`| 1、2|
@@ -145,7 +146,7 @@ OIDC 要求または OAuth2 要求の一部に含まれているすべてのパ�
 |[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |
 |[RelyingParty](relyingparty.md#technicalprofile) の技術プロファイル| `OutputClaim`| 2 |
 
-以下のように設定します。
+設定:
 1. `IncludeClaimResolvingInClaimsHandling` メタデータを `true` に設定する必要があります。
 1. 入力要求または出力要求の属性 `AlwaysUseDefaultValue` は、`true`に設定する必要があります。
 

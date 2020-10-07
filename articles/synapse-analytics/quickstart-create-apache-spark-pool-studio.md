@@ -10,10 +10,10 @@ ms.date: 3/19/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
 ms.openlocfilehash: cdf9a1f211e889146c9a6986eeea7502d3177057
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91260837"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-preview-using-synapse-studio"></a>クイック スタート:Synapse Studio を使用して Apache Spark プール (プレビュー) を作成する

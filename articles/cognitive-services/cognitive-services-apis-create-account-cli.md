@@ -6,20 +6,24 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+keywords: Cognitive Services, コグニティブ インテリジェンス, コグニティブ ソリューション, AI サービス
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 09/14/2020
 ms.author: aahi
-ms.openlocfilehash: 36e21a131181831c2a87c0c6d2c24c9aa6e0acf7
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 41dc99c206fb66aa87ccca6e40d6e9488f801a22
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245011"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262435"
 ---
-# <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Azure コマンド ライン インターフェイス (CLI) を使用して Cognitive Services リソースを作成する
+# <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>クイックスタート: Azure コマンド ライン インターフェイス (CLI) を使用して Cognitive Services リソースを作成する
 
-このクイックスタートでは、[Azure コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を使用した Azure Cognitive Services の基本操作について説明します。 Cognitive Services は、ご利用の Azure サブスクリプションに作成した Azure [リソース](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)によって表されます。 リソースの作成後、自動的に生成されたキーとエンドポイントを使用して、自分のアプリケーションの認証を行います。
+このクイックスタートでは、[Azure コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を使用した Azure Cognitive Services の基本操作について説明します。
 
+Azure Cognitive Services は、開発者が直接的な人工知能 (AI) またはデータ サイエンスのスキルや知識がなくてもコグニティブかつインテリジェントなアプリケーションを構築できる、REST API シリーズとクライアント ライブラリ SDK を含むクラウドベースのサービスです。 開発者は Azure Cognitive Services を使用して、見たり、聞いたり、話したり、理解したり、推論し始めたりできるコグニティブ ソリューションを使用したコグニティブ機能をそのアプリケーションに容易に追加することができます。
+
+Cognitive Services は、ご利用の Azure サブスクリプションに作成した Azure [リソース](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)によって表されます。 リソースの作成後、自動的に生成されたキーとエンドポイントを使用して、自分のアプリケーションの認証を行います。
 
 このクイックスタートでは、[Azure コマンドライン インターフェイス (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を使用して、Azure Cognitive Services にサインアップし、単一サービスまたはマルチサービスを持つアカウントを作成する方法を学習します。 これらのサービスは Azure [リソース](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)によって表され、Azure Cognitive Services APIs の中の 1 つ以上の API に接続できます。
 
@@ -50,7 +54,7 @@ Cognitive Services リソースを作成する前に、リソースを格納す�
 
 > [!IMPORTANT]
 > * Azure Cognitive Services を呼び出すときに必要になるので、Azure の場所は記憶しておいてください。
-> * 一部の Cognitive Services を使用できるかどうかは、リージョンによって異なります。 詳細については、「[リージョン別の Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)」を参照してください。  
+> * 一部の Cognitive Services を使用できるかどうかは、リージョンによって異なります。 詳細については、「[リージョン別の Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)」を参照してください。
 
 ```azurecli-interactive
 az account list-locations \

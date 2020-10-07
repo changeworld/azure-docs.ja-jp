@@ -8,14 +8,17 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: dobett
-ms.openlocfilehash: b53177d578768428665891704269e63bd8edb09e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 797bd97940aa49db87b4ca4dd96f140208cd69b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73820173"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261874"
 ---
 # <a name="use-features-in-the-connected-factory-solution-accelerator-dashboard"></a>接続済みファクトリ ソリューション アクセラレータ ダッシュボードの機能を使用する
+
+> [!IMPORTANT]
+> この記事は更新を行いますが、最新の内容については、「[Azure Industrial IoT](https://azure.github.io/Industrial-IoT/)」 (Azure 産業用 IoT) を参照してください。
 
 [工業用 IoT デバイスを管理するクラウドベースのソリューションをデプロイする](quickstart-connected-factory-deploy.md)クイック スタートでは、ダッシュボードを操作してアラームに対応する方法を示しました。 このハウツー ガイドでは、工業用 IoT デバイスの監視と管理に使用できるその他のダッシュボード機能について説明します。
 
@@ -29,7 +32,7 @@ ms.locfileid: "73820173"
 
     [![接続済みファクトリ ソリューション アクセラレータのフィルター](./media/iot-accelerators-connected-factory-dashboard/filterpanel-inline.png)](./media/iot-accelerators-connected-factory-dashboard/filterpanel-expanded.png#lightbox)
 
-1. 必要なフィルターを選択し、 **[適用]** をクリックします。 フィルター フィールドにフリー テキストを入力することもできます。
+1. 必要なフィルターを選択し、**[適用]** をクリックします。 フィルター フィールドにフリー テキストを入力することもできます。
 
 1. フィルターが適用されます。 追加のじょうごアイコンは、フィルターが適用されたことを示します。
 
@@ -107,7 +110,7 @@ ms.locfileid: "73820173"
 > [!NOTE]
 > ソリューション アクセラレータに関連するすべての要素を確実に削除するには、[azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators#dashboard) サイトで削除してください。 ポータルでリソース グループを削除しないようにしてください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 これで、実際のソリューション アクセラレータをデプロイできました。引き続き IoT ソリューション アクセラレータの概要について学習するには、次の記事を参照してください。
 
