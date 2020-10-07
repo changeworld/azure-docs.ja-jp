@@ -8,10 +8,10 @@ ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/19/2020
 ms.openlocfilehash: 97a16bd81fd79646fb3693ec2dc4b8a40b9a6a3b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90896164"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql-server"></a>クイック スタート:ARM テンプレートを使用して Azure Database for MySQL サーバーを作成する
@@ -76,19 +76,7 @@ Azure portal で Azure Database for MySQL サーバーのテンプレートを�
 
 3. **サーバー名**、**管理者のログイン**、**管理者のログイン パスワード**を入力します。
 
-    :::image type="content" source="./media/quickstart-create-mysql-server-database-using-arm-template/deploy-azure-database-for-mysql-with-vnet.png" alt-text="[Deploy Azure Database for MySQL with VNet]\(Azure Database for MySQL と VNet のデプロイ\) ウィンドウ、Azure クイックスタート テンプレート、Azure portal":::
-
-4. 必要に応じて、他の既定の設定を変更します。
-
-    * **[サブスクリプション]** : サーバーに使用する Azure サブスクリプション。
-    * **[SKU 容量]** : 仮想コア容量。*2* (既定)、*4*、*8*、*16*、*32*、*64* のいずれかを指定できます。
-    * **[SKU 名]** : SKU レベル プレフィックス、SKU ファミリー、SKU 容量をアンダースコアで結合したもの (例: *B_Gen5_1*、*GP_Gen5_2* (既定)、*MO_Gen5_32*)。
-    * **[Sku Size MB]\(SKU サイズ (MB)\)** : Azure Database for MySQL サーバーのメガバイト単位のストレージ サイズ (既定値: *5120*)。
-    * **[SKU レベル]** : デプロイ レベル (例: *Basic*、*GeneralPurpose* (既定)、*MemoryOptimized*)。
-    * **[SKU ファミリ]** : *Gen4* または *Gen5* (既定)。サーバーのデプロイに使用するハードウェアの世代を指定します。
-    * **[MySQL バージョン]** : デプロイする MySQL サーバーのバージョン (例: *5.6* または *5.7* (既定))。
-    * **[Backup Retention Days]\(バックアップ保持期間の日数\)** : geo 冗長バックアップの保持期間の日数を指定します (既定値: *7*)。
-    * **[Geo Redundant Backup]\(geo 冗長バックアップ\)** : geo ディザスター リカバリー (Geo-DR) の要件に応じて "*有効*" または "*無効*" (既定) を選択します。
+    :::image type="content" source="./media/quickstart-create-mysql-server-database-using-arm-template/deploy-azure-database-for-mysql-with-vnet.png" alt-text="Azure へのデプロイ" (既定) を選択します。
     * **[仮想ネットワーク名]** : 仮想ネットワークの名前 (既定値: *azure_mysql_vnet*)。
     * **[サブネット名]** : サブネットの名前 (既定値: *azure_mysql_subnet*)。
     * **[Virtual Network Rule Name]\(仮想ネットワーク規則名\)** : サブネットを許可する仮想ネットワーク規則の名前 (既定値: *AllowSubnet*)。

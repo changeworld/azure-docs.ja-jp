@@ -4,10 +4,10 @@ description: サービス プロバイダーは Azure Lighthouse を通じて、
 ms.date: 08/19/2020
 ms.topic: overview
 ms.openlocfilehash: 22bec7ec8944a11ce0cfdf51776f1f193a1aedaa
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89488815"
 ---
 # <a name="what-is-azure-lighthouse"></a>Azure Lighthouse とは

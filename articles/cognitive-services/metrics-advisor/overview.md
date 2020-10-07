@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 09/14/2020
 ms.author: aahi
 ms.openlocfilehash: 408bdd948977218d9b39a39bf97391a4141e545c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90945382"
 ---
 # <a name="what-is-metrics-advisor-preview"></a>Metrics Advisor (プレビュー) とは 

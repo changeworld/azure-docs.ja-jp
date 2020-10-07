@@ -14,10 +14,10 @@ ms.author: marsma
 ms.custom: aaddev, contperfq1
 ms.reviewer: aragra, lenalepa, sureshja
 ms.openlocfilehash: 72d66bd4c738ed60bbaefc123daae90ecc0db163
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89442151"
 ---
 # <a name="quickstart-configure-an-application-to-expose-a-web-api"></a>クイック スタート:Web API を公開するようにアプリケーションを構成する
@@ -50,7 +50,7 @@ Web API を登録すると、スコープを追加する準備は完了です。
 1. **[Azure Active Directory]**  >  **[アプリの登録]** を選択し、API のアプリの登録を選択します。
 1. **[API の公開]**  >  **[スコープの追加]** を選択します。
 
-    :::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-02-expose-api.png" alt-text="Azure portal のアプリ登録の [API の公開] ペイン":::
+    :::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-02-expose-api.png" alt-text="Azure portal のアプリ登録の [API の公開] ペイン&quot;:::
 
 1. まだ構成していない場合は、 **[アプリケーション ID URI]** を設定するように求められます。
 
@@ -69,7 +69,7 @@ Web API を登録すると、スコープを追加する準備は完了です。
 
 1. **[状態]** を **[有効]** に設定し、 **[スコープの追加]** を選択します。
 
-1. (省略可能) 定義されているスコープに対してアプリのユーザーによる同意を求めるメッセージを表示しないようにするには、クライアント アプリケーションによる Web API へのアクセスを "*事前承認*" することができます。 ユーザーには同意を拒否する機会がないため、信頼できるクライアント アプリケーション "*だけ*" を事前承認します。
+1. (省略可能) 定義されているスコープに対してアプリのユーザーによる同意を求めるメッセージを表示しないようにするには、クライアント アプリケーションによる Web API へのアクセスを &quot;*事前承認*&quot; することができます。 ユーザーには同意を拒否する機会がないため、信頼できるクライアント アプリケーション &quot;*だけ*" を事前承認します。
     1. **[承認済みのクライアント アプリケーション]** で、 **[クライアント アプリケーションの追加]** を選択します
     1. 事前承認するクライアント アプリケーションの **[アプリケーション (クライアント) ID]** を入力します。 たとえば、以前に登録した Web アプリケーションのそれです。
     1. **[承認済みのスコープ]** で、同意を求めるメッセージを表示しないスコープを選択し、 **[アプリケーションの追加]** を選択します。
@@ -95,7 +95,26 @@ Web API を登録すると、スコープを追加する準備は完了です。
 
 前のセクションで説明した両方のスコープの例を追加すると、次の画像のように、Web API のアプリ登録の **[API の公開]** ペインに表示されます。
 
-:::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-03-scopes-list.png" alt-text="2 つの公開されたスコープを示す [API の公開] ペインのスクリーンショット。":::
+:::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-03-scopes-list.png" alt-text="Azure portal のアプリ登録の [API の公開] ペイン&quot;:::
+
+1. まだ構成していない場合は、 **[アプリケーション ID URI]** を設定するように求められます。
+
+   アプリ ID URI は、API のコードで参照するスコープのプレフィックスとして機能し、グローバルに一意である必要があります。 指定されている既定値 (`api://<application-client-id>` 形式) を使用するか、`https://contoso.com/api` のようにより読みやすい URI を指定できます。
+
+1. 次に、 **[スコープの追加]** ペインでスコープの属性を指定します。 このチュートリアルでは、例の値を使用するか、独自の値を指定できます。
+
+    | フィールド | 説明 | 例 |
+    |-------|-------------|---------|
+    | **スコープ名** | スコープの名前。 一般的なスコープの名前付け規則は `resource.operation.constraint` です。 | `Employees.Read.All` |
+    | **同意できるユーザー** | このスコープにユーザーが同意できるかどうかと、管理者の同意が必要かどうか。 より高い特権のアクセス許可にするには、 **[管理者のみ]** を選択します。 | **管理者とユーザー** |
+    | **管理者の同意の表示名** | 管理者のみに表示される、スコープの目的についての簡単な説明。 | `Read-only access to Employee records` |
+    | **管理者の同意の説明** | 管理者のみに表示される、スコープによって付与されるアクセス許可の詳細な説明。 | `Allow the application to have read-only access to all Employee data.` |
+    | **ユーザーの同意の表示名** | スコープの目的に関する簡単な説明。 **[同意できるユーザー]** を **[管理者とユーザー]** に設定した場合にのみユーザーに表示されます。 | `Read-only access to your Employee records` |
+    | **ユーザーの同意の説明** | スコープによって付与されるアクセス許可の詳細な説明。 **[同意できるユーザー]** を **[管理者とユーザー]** に設定した場合にのみユーザーに表示されます。 | `Allow the application to have read-only access to your Employee data.` |
+
+1. **[状態]** を **[有効]** に設定し、 **[スコープの追加]** を選択します。
+
+1. (省略可能) 定義されているスコープに対してアプリのユーザーによる同意を求めるメッセージを表示しないようにするには、クライアント アプリケーションによる Web API へのアクセスを &quot;*事前承認*&quot; することができます。 ユーザーには同意を拒否する機会がないため、信頼できるクライアント アプリケーション &quot;*だけ*":::
 
 この画像に示すように、スコープの完全な文字列は、Web API の **[アプリケーション ID URI]** とスコープの **[スコープ名]** を連結したものです。
 

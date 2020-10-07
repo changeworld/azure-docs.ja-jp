@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
 ms.openlocfilehash: fbc73e20b8cc2baa1cc5c5a5b2f674fb1b2dde84
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90945783"
 ---
 # <a name="quickstart-explore-the-metrics-advisor-demo-with-example-data"></a>クイック スタート:サンプル データを利用して Metrics Advisor のデモを体験する
@@ -44,14 +44,14 @@ ms.locfileid: "90945783"
 * データ フィードがいつ更新されたかを示すログ。   
 * データ フィードの情報と設定。
 
-:::image type="content" source="../media/data-feed-view.png" alt-text="データ フィード ビュー" lightbox="../media/data-feed-view.png":::
+:::image type="content" source="../media/data-feed-view.png" alt-text="サンプル データ一覧" lightbox="../media/data-feed-view.png":::
 
 
 ## <a name="view-time-series-visualizations-and-configurations"></a>時系列の視覚エフェクトと構成を表示する
 
 *Sample - Cost/Revenue - City/Category* データ フィードの *cost* メトリックをクリックします。 ディメンションでスライスされた関連する時系列が、履歴のメトリック データに従い、視覚エフェクトと共に表示されます。 メトリック データの周りに表示される青色のバンドは、Metrics Advisor の機械学習モデルから予想される値の範囲を表します。 このバンドの範囲外にあるポイントは、赤色のドットとしてマークされます。これらは検出された異常です。 
 
-:::image type="content" source="../media/series-visualization.png" alt-text="系列の視覚エフェクト" lightbox="../media/series-visualization.png":::
+:::image type="content" source="../media/series-visualization.png" alt-text="サンプル データ一覧" lightbox="../media/series-visualization.png":::
 
 異常検出は、メトリック詳細ページの左側にある**検出構成**を調整することで構成できます。 複数の異常検出手法が用意されており、それらを組み合わせることができます。 加えて、さまざまな感度や検出方向などの構成を試すこともできます。 **検出構成**の下部にある **[Advanced configuration]\(詳細構成\)** リンクから、より複雑な、カスタマイズされた検出設定を作成可能です。それらは、グループや個々の系列で使用できます。 
 
@@ -59,7 +59,7 @@ ms.locfileid: "90945783"
 
 **[Add feedback]\(フィードバックの追加\)** パネルの一番下には、 **[To incident hub]\(インシデント ハブに移動\)** リンクがあります。このリンクからインシデント分析ページに誘導され、インシデントの根本原因が分析されます。  
 
-:::image type="content" source="../media/incident-link.png" alt-text="インシデント リンク" lightbox="../media/incident-link.png":::
+:::image type="content" source="../media/incident-link.png" alt-text="サンプル データ一覧" lightbox="../media/incident-link.png":::
 
 ## <a name="explore-anomaly-detection-results-and-perform-root-cause-analysis"></a>異常検出の結果を考察して根本原因分析を実行する
 
@@ -67,7 +67,7 @@ ms.locfileid: "90945783"
 
 **[診断]** セクションには、インシデントのツリーが、インシデントを診断するためのいくつかのタブと共に表示されます。
 
-:::image type="content" source="../media/incident-diagnostic.png" alt-text="インシデントの診断" lightbox="../media/incident-diagnostic.png":::
+:::image type="content" source="../media/incident-diagnostic.png" alt-text="サンプル データ一覧" lightbox="../media/incident-diagnostic.png":::
 
 インシデントの根本原因を特定することで、状況が悪化する前に対策を講じて問題を軽減できます。 用意されている他の診断機能をクリックして、その他の分析情報を考察することもできます。 
 

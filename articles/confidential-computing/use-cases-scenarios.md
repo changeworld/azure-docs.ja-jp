@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 9/22/2020
 ms.author: jencook
 ms.openlocfilehash: e1280ac90032869616830ccb931b367ff22f8bfb
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90998418"
 ---
 # <a name="common-scenarios-for-azure-confidential-computing"></a>Azure のコンフィデンシャル コンピューティングの一般的なシナリオ

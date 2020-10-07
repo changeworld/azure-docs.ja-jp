@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 09/09/2020
 ms.author: alkohli
 ms.openlocfilehash: 7030030699668b3d316743955dabfb2cc175f6e1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90893885"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-fpga"></a>FPGA 搭載の Azure Stack Edge Pro とは

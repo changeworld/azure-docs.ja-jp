@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: memildin
 ms.date: 08/20/2020
 ms.openlocfilehash: 6c8a3d6c291435a379a637707a42f9ad7fe8dc00
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90906362"
 ---
 # <a name="quickstart-create-an-automatic-response-to-a-specific-security-alert-using-an-azure-resource-manager-template-arm-template"></a>クイック スタート:Azure Resource Manager テンプレート (ARM テンプレート) を使用して特定のセキュリティ アラートへの自動応答を作成する
@@ -84,7 +84,7 @@ Azure portal を使用して、ワークフローの自動化がデプロイさ�
 1. [Azure portal](https://portal.azure.com) から **Security Center** を開きます。
 1. 上部のメニュー バーからフィルター アイコンを選択し、新しいワークフロー自動化をデプロイした特定のサブスクリプションを選択します。
 1. Security Center のサイドバーから **[ワークフローの自動化]** を開き、削除する自動化を見つけます。
-    :::image type="content" source="./media/quickstart-automation-alert/deleting-workflow-automation.png" alt-text="ワークフローの自動化を削除する手順" lightbox="./media/quickstart-automation-alert/deleting-workflow-automation.png":::
+    :::image type="content" source="./media/quickstart-automation-alert/deleting-workflow-automation.png" alt-text="構成済みの自動化の一覧" lightbox="./media/quickstart-automation-alert/deleting-workflow-automation.png":::
 1. 削除する項目のチェック ボックスをオンにします。
 1. ツール バーから **[削除]** を選択します。
 

@@ -14,10 +14,10 @@ ms.author: marsma
 ms.custom: aaddev, contperfq1
 ms.reviewer: lenalepa, aragra, sureshja
 ms.openlocfilehash: fc2f3202ac88e3ee6c24db21dd9072a13a8deef9
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89442319"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>クイック スタート:Web API にアクセスするようにクライアント アプリケーションを構成する
@@ -59,7 +59,7 @@ ms.locfileid: "89442319"
 
 ご自身の API にアクセス許可を追加した後、選択したアクセス許可が **[構成されたアクセス許可]** に表示されます。 次の図では、*Employees.Read.All* の委任されたアクセス許可の例をクライアント アプリの登録に追加しています。
 
-:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-02-configured-permissions-pane.png" alt-text="新しく追加されたアクセス許可を示す Azure portal の [構成されたアクセス許可] ウィンドウ":::
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-02-configured-permissions-pane.png" alt-text="右側に Web API と公開されたスコープ、左側にそれらのスコープをアクセス許可として選択したクライアント アプリが示されている直線図":::
 
 Microsoft Graph API に対する *User.Read* アクセス許可も表示されています。 このアクセス許可は、Azure portal にアプリを登録すると自動的に追加されます。
 
@@ -136,13 +136,11 @@ Microsoft Graph の *Files.Read.All* アクセス許可など、一部のアク�
 
 管理者は、 **[{お使いのテナント} に管理者の同意を与えます]** ボタンを使用して、アプリケーションに対して構成されたアクセス許可に管理者の同意を付与できます。 このボタンを選択すると、同意アクションの確認を求めるダイアログが表示されます。
 
-:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-03-grant-admin-consent-button.png" alt-text="Azure portal の [構成されたアクセス許可] ウィンドウで強調表示された、管理者の同意の付与ボタン":::
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-03-grant-admin-consent-button.png" alt-text="右側に Web API と公開されたスコープ、左側にそれらのスコープをアクセス許可として選択したクライアント アプリが示されている直線図":::
 
 同意を付与すると、管理者の同意が必要なアクセス許可が、同意付与済みとして表示されます。
 
-:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-04-admin-consent-granted.png" alt-text="Files.Read.All のアクセス許可に対して管理者の同意が付与されていることを示す、Azure portal の [アクセス許可の構成] テーブル":::
-
-**管理者の同意を付与**するボタンは、管理者でない場合、またはアプリケーションにアクセス許可が構成されていない場合は "*無効*" になります。 アクセス許可が付与されていてもまだ構成されていない場合、管理者の同意ボタンをクリックすると、これらのアクセス許可を処理するように求められます。 構成されたアクセス許可にそれらを追加するか、それらを削除することができます。
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-04-admin-consent-granted.png" alt-text="右側に Web API と公開されたスコープ、左側にそれらのスコープをアクセス許可として選択したクライアント アプリが示されている直線図" になります。 アクセス許可が付与されていてもまだ構成されていない場合、管理者の同意ボタンをクリックすると、これらのアクセス許可を処理するように求められます。 構成されたアクセス許可にそれらを追加するか、それらを削除することができます。
 
 ## <a name="next-steps"></a>次のステップ
 

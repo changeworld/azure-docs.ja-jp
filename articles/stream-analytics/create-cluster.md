@@ -9,10 +9,10 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
 ms.openlocfilehash: a7be204c30d242be991fb9a57d239b69342ace97
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90945439"
 ---
 # <a name="quickstart-create-a-dedicated-azure-stream-analytics-cluster-using-azure-portal"></a>クイック スタート:Azure portal を使用して専用の Azure Stream Analytics クラスターを作成する
@@ -32,7 +32,7 @@ Azure portal を使用して Azure Stream Analytics クラスターを作成し�
 
 1. **[リソースの作成]** を選択します。 *[Marketplace を検索]* 検索ボックスで、「**Stream Analytics クラスター**」と入力して選択します。 その後、 **[追加]** を選択します。
 
-   :::image type="content" source="./media/create-cluster/search-result.png" alt-text="Stream Analytics クラスターの検索結果。":::
+   :::image type="content" source="./media/create-cluster/search-result.png" alt-text="Stream Analytics クラスターの検索結果。&quot;:::
 
 1. **[Create Stream Analytics cluster]\(Stream Analytics クラスターの作成\)** ページで、新しいクラスターの基本設定を入力します。
 
@@ -48,7 +48,7 @@ Azure portal を使用して Azure Stream Analytics クラスターを作成し�
 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。 **[タグ]** セクションはスキップできます。
 
-1. クラスターの設定を確認し、 **[作成]** を選択します。 クラスターの作成は実行時間の長い操作であり、完了するまでに約 60 分かかることがあります。 ポータル ページに "**デプロイが完了しました**" と表示されるまで待ちます。 その間、このクラスター上で実行する [Stream Analytics ジョブ](stream-analytics-quick-create-portal.md#create-a-stream-analytics-job)を作成し、開発することができます (まだインストールしていない場合)。
+1. クラスターの設定を確認し、 **[作成]** を選択します。 クラスターの作成は実行時間の長い操作であり、完了するまでに約 60 分かかることがあります。 ポータル ページに &quot;**デプロイが完了しました**" と表示されるまで待ちます。 その間、このクラスター上で実行する [Stream Analytics ジョブ](stream-analytics-quick-create-portal.md#create-a-stream-analytics-job)を作成し、開発することができます (まだインストールしていない場合)。
 
 1. **[リソースに移動]** を選択し、[Stream Analytics クラスター] ページにアクセスします。
 
