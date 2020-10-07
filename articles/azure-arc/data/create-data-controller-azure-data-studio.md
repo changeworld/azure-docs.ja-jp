@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 71678977f899b910a97dbb552233f36ca5a51f26
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f6fd8169c587e928da9946d74335ddc758889144
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931619"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273145"
 ---
 # <a name="create-data-controller-in-azure-data-studio"></a>Azure Data Studio でデータ コントローラーを作成する
 
@@ -42,7 +42,7 @@ ms.locfileid: "90931619"
 9. データ コントローラーの名前と、データ コントローラーが作成される名前空間の名前を入力します。  
 
 > [!NOTE]
-> 既に名前空間が存在する場合は、名前空間に他の Kubernetes オブジェクト (ポッドなど) がまだ含まれていなければ使用されます。名前空間が存在しない場合は、名前空間の作成が試みられます。  Kubernetes クラスターで名前空間を作成するには、Kubernetes クラスター管理者特権が必要です。  Kubernetes クラスター管理者特権を持っていない場合は、[Kubernetes ネイティブのツールを使用したデータ コントローラーの作成](./create-data-controller-using-k8s-native-tools.md)に関する記事の最初のいくつかの手順を実行するように、Kubernetes クラスター管理者に依頼してください。これらの手順は、このウィザードを完了する前に、Kubernetes 管理者が実行する必要があります。
+> 既に名前空間が存在する場合は、名前空間に他の Kubernetes オブジェクト (ポッドなど) がまだ含まれていなければ使用されます。名前空間が存在しない場合は、名前空間の作成が試みられます。  Kubernetes クラスターで名前空間を作成するには、Kubernetes クラスター管理者特権が必要です。  Kubernetes クラスター管理者特権を持っていない場合は、[Kubernetes ネイティブのツールを使用したデータ コントローラーの作成](./create-data-controller-using-kubernetes-native-tools.md)に関する記事の最初のいくつかの手順を実行するように、Kubernetes クラスター管理者に依頼してください。これらの手順は、このウィザードを完了する前に、Kubernetes 管理者が実行する必要があります。
 
 > [!NOTE]
 > 注: データ コントローラーと名前空間の名前は、Kubernetes クラスターでカスタム リソースを作成する際に使用されるため、[Kubernetes の名前付け規則](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names)に準拠している必要があります。

@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 81c4558bde3ffdbec72a756562b972c2eed4a1ee
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ba2d0acec37d0f59240381cdea04f4d53ded0b1c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931598"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273043"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Azure Arc データ コントローラーを作成する
 
@@ -45,7 +45,7 @@ Azure Arc 対応データ サービスは、複数の異なる種類の Kubernet
 > [!NOTE]
 > Azure で Red Hat OpenShift Container Platform を使用している場合は、利用できる中で最新のバージョンを使用することをお勧めします。
 
-選択するオプションによっては、特定のツールが "_必要_" になりますが、Azure Arc データ コントローラーの作成を開始する前に、[すべてのクライアント ツール](install-client-tools.md)をインストールしておくことをお勧めします。
+選択するオプションによっては、特定のツールが "_必要_" になりますが、Azure Arc データ コントローラーの作成を開始する前に、[すべてのクライアント ツール](./install-client-tools.md)をインストールしておくことをお勧めします。
 
 選択するオプションに関わりなく、作成プロセス中に次の情報を指定する必要があります。
 
@@ -53,7 +53,7 @@ Azure Arc 対応データ サービスは、複数の異なる種類の Kubernet
 - **データ コントローラーのユーザー名** - データ コントローラー管理者ユーザーの任意のユーザー名。
 - **データ コントローラーのパスワード** - データ コントローラー管理者ユーザーのパスワード。
 - **Kubernetes 名前空間の名前** - データ コントローラーを作成する Kubernetes 名前空間の名前。
-- **接続モード** - クラスターの[接続モード](connectivity.md)。 現時点では、"間接" のみサポートされています。
+- **接続モード** - クラスターの[接続モード](./connectivity.md)。 現時点では、"間接" のみサポートされています。
 - **Azure サブスクリプション ID** - Azure 内のデータ コントローラー リソースを作成する場所の Azure サブスクリプション GUID。
 - **Azure リソース グループ名** - Azure 内のデータ コントローラー リソースを作成するリソース グループの名前。
 - **Azure の場所** - Azure でデータ コントローラー リソース メタデータが格納される Azure の場所。 利用可能なリージョンの一覧については、「[Azure グローバル インフラストラクチャ/リージョン別の製品](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)」を参照してください。
@@ -68,5 +68,5 @@ Azure Arc 対応データ サービスは、複数の異なる種類の Kubernet
 - [Azure Data CLI (azdata) を使用してデータ コントローラーを作成する](create-data-controller-using-azdata.md)
 - [Azure Data Studio を使用してデータ コントローラーを作成する](create-data-controller-azure-data-studio.md)
 - [Azure Data Studio で Jupyter ノートブックを使用して Azure portal からデータ コントローラーを作成する](create-data-controller-resource-in-azure-portal.md)
-- [kubectl や oc などの Kubernetes ツールを使用してデータ コントローラーを作成する](create-data-controller-using-k8s-native-tools.md)
+- [kubectl や oc などの Kubernetes ツールを使用してデータ コントローラーを作成する](create-data-controller-using-kubernetes-native-tools.md)
 - [テスト デプロイのエクスペリエンスを向上させるために Azure Arc Jumpstart でデータ コントローラーを作成する](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services)

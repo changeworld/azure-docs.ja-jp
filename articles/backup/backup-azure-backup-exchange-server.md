@@ -4,12 +4,12 @@ description: System Center 2012 R2 DPM を使用して Exchange サーバーを 
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 02d1cde7ab48aa951c47cfbfea29c90c3f53f768
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: ee89af311619922fa6ca585381d70ca66955f36a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378391"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271649"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>System Center 2012 R2 DPM を使用して Exchange サーバーを Azure Backup にバックアップする
 
@@ -38,8 +38,8 @@ Azure Backup に DPM サーバーを正常に登録するには、System Center 
 
 Exchange サーバーに DPM 保護エージェントをインストールするには、次の手順に従います。
 
-1. ファイアウォールが正しく構成されていることを確認します。 「 [エージェントに対するファイアウォール例外の構成](/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019)」を参照してください。
-2. DPM 管理者コンソールで **[管理]、[エージェント]、[インストール]** の順に選択し、Exchange サーバーにエージェントをインストールします。 詳細な手順については、「 [DPM 保護エージェントのインストール](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) 」を参照してください。
+1. ファイアウォールが正しく構成されていることを確認します。 「 [エージェントに対するファイアウォール例外の構成](/system-center/dpm/configure-firewall-settings-for-dpm)」を参照してください。
+2. DPM 管理者コンソールで **[管理]、[エージェント]、[インストール]** の順に選択し、Exchange サーバーにエージェントをインストールします。 詳細な手順については、「 [DPM 保護エージェントのインストール](/system-center/dpm/deploy-dpm-protection-agent) 」を参照してください。
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Exchange サーバーの保護グループを作成する
 

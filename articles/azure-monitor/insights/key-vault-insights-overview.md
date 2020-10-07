@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/10/2020
-ms.openlocfilehash: 4aeb97f112f0c95329b1449fe9c1423fdd5bd0d6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4b91a9a73035b3add309e72ce544375520cf279e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894510"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278619"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>Azure Monitor for Key Vault によるキー コンテナー サービスの監視
 Azure Monitor for Key Vault では、Key Vault の要求、パフォーマンス、エラー、および待ち時間の統合ビューが用意され、キー コンテナーを包括的に監視できます。
@@ -25,21 +25,6 @@ Azure Monitor for Key Vault では、Key Vault の要求、パフォーマンス
 -    **カスタマイズ可能**: 表示するメトリックの変更したり、制限に合わせたしきい値の変更または設定、独自のブックとして保存することができます。 ブック内のグラフは、Azure ダッシュボードにピン留めできます。
 
 Azure Monitor for Key Vault では、ログとメトリックの組み合わせによる、グローバルな監視ソリューションが用意されています。 すべてのユーザーがメトリックベースの監視データにアクセスできますが、ログベースの視覚化を含めた場合、ユーザーは [Azure Key Vault のログ記録を有効](../../key-vault/general/logging.md)にする必要があります。
-
-## <a name="configuring-your-key-vaults-for-monitoring"></a>監視用のキー コンテナーの構成
-
-> [!NOTE]
-> ログの有効化は、追加監視機能を提供する有料サービスです。
-
-1. [操作と待機時間] タブでは、有効になっているキーコンテナーとその数を確認できます。 収集を開始するには、 **[有効にする]** ボタンを選択します。これにより、診断ログを有効にする必要があるキー コンテナーを一覧表示した別のブックが表示されます。
-
-    ![青色の [有効にする] ボタンが表示された [操作と待機時間] タブのスクリーンショット](./media/key-vaults-insights-overview/enable-logging.png)
-
-2. 診断ログを有効にするには、[アクション] 列の下にある **[有効にする]** リンクをクリックし、Log Analytics ワークスペースにログを送信する新しい診断設定を作成します。 すべてのログを同じワークスペースに送信することをお勧めします。
-
-3. 診断設定が保存されると、Key Vault 分析情報の下ですべてのログベースのグラフと視覚化を表示できるようになります。 ログの作成が開始されるまでに数分から数時間かかる場合があることに注意してください。
-
-4. Key Vault サービスの診断ログを有効にする方法の詳細については、[完全なガイド](../../key-vault/general/logging.md)をご覧ください。
 
 ## <a name="view-from-azure-monitor"></a>Azure Monitor から表示する
 
@@ -165,10 +150,6 @@ Azure Monitor for Key Vault で特定されたキー コンテナー関連の問
 選択したサブスクリプション フィルターから選択されたキー コンテナーを含むサブスクリプションのみが表示されます。このフィルターは、Azure portal ヘッダーの [ディレクトリ + サブスクリプション] で選択されています。
 
 ![サブスクリプション フィルターのスクリーンショット](./media/key-vaults-insights-overview/Subscriptions.png)
-
-### <a name="i-am-getting-an-error-message-that-the-query-exceeds-the-maximum-number-of-workspacesregions-allowed-what-to-do-now"></a>"query exceeds the maximum number of workspaces/regions allowed"\(クエリは、許可されているワークスペース/リージョンの最大数を超えています\) というエラー メッセージが表示されます。どうしたらいいですか
-
-現時点では、25 のリージョンと 200 のワークスペースに制限されており、データを表示するには、サブスクリプションやリソース グループの数を減らす必要があります。
 
 ### <a name="i-want-to-make-changes-or-add-additional-visualizations-to-key-vault-insights-how-do-i-do-so"></a>Key Vault 分析情報に変更を加えたり、視覚化を追加したりするには、どうすればよいですか
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15f4f5d9eea8f53a894289160df00a1c1d8d8048
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 0f1bde255355e7a4f47df6a3969837410692cef5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601760"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266061"
 ---
 # <a name="continuous-access-evaluation"></a>継続的アクセス評価
 
@@ -66,8 +66,8 @@ Exchange と SharePoint は、重要な条件付きアクセス ポリシーを�
 
 | | Office Web アプリ | Office Win32 アプリ | Office for iOS | Office for Android | Office for Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **SharePoint Online** | サポートされています | サポートされています | サポートされていません | サポートされています | サポートされています |
-| **Exchange Online** | サポートされています | サポートされています | サポートされていません | サポートされています | サポートされています |
+| **SharePoint Online** | サポートされていません | サポートされています | サポートされています | サポートされています | サポートされています |
+| **Exchange Online** | サポートされていません | サポートされています | サポートされています | サポートされています | サポートされています |
 
 ### <a name="client-side-claim-challenge"></a>クライアント側の要求チャレンジ
 

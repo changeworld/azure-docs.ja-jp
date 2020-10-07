@@ -3,12 +3,12 @@ title: DPM および MABS の Azure Data Box を使用したオフライン バ�
 description: Azure Data Box を使用して、DPM および MABS からオフラインで初期バックアップ データをシード処理することができます。
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 3755a4cc77455b37ae1545247992a3c8c4f25653
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 2fd8a137abf8b76d1587894bfa3fe8447e0d646b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177688"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271496"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>DPM および MABS の Azure Data Box を使用したオフライン シード処理 (プレビュー)
 
@@ -110,7 +110,7 @@ DPM または MABS サーバーはシステム コンテキストで動作する
 
 ## <a name="transfer-initial-backup-data-to-azure-data-box-devices"></a>Azure Data Box デバイスに初期バックアップ データを転送する
 
-1. DPM または MABS サーバーで、[新しい保護グループを作成する](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019)手順に従います。 既存の保護グループにオンライン保護を追加する場合は、既存の保護グループを右クリックし、 **[オンライン保護の追加]** を選択して、**手順 8** から開始します。
+1. DPM または MABS サーバーで、[新しい保護グループを作成する](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups)手順に従います。 既存の保護グループにオンライン保護を追加する場合は、既存の保護グループを右クリックし、 **[オンライン保護の追加]** を選択して、**手順 8** から開始します。
 2. **[グループ メンバーの選択]** ページで、バックアップするコンピューターとソースを指定します。
 3. **[データ保護方法の選択]** ページで、短期および長期バックアップを処理する方法を指定します。 必ず、 **[オンライン保護を利用する]** を選択してください。
 

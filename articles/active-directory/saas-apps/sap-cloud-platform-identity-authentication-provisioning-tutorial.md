@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: c330d8000825b2e0ccbdab8c5c1cdefa4d3d45c8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b3fa2996edf5882cc02eeee92bcc3114bcd33348
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543374"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273417"
 ---
 # <a name="tutorial-configure-sap-cloud-platform-identity-authentication-for-automatic-user-provisioning"></a>チュートリアル:SAP Cloud Platform Identity Authentication を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -108,11 +108,11 @@ Azure AD で自動ユーザー プロビジョニング用に SAP Cloud Platform
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://<tenantID>.accounts.ondemand.com/service/scim `」と入力します。 以前に取得した **[ユーザー ID]** および **[パスワード]** の値を、 **[管理ユーザー名]** および **[管理パスワード]** にそれぞれ入力します。 **[テスト接続]** をクリックして、Azure AD が SAP Cloud Platform Identity Authentication に接続できることを確認します。 接続できない場合は、使用中の SAP Cloud Platform Identity Authentication アカウントに管理者アクセス許可があることを確認してから、もう一度お試しください。
 
