@@ -6,13 +6,13 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: ce42c0ec75ebed52311fe6aa026f794d6c2f7584
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: ca7d28e3f964d486d9f860c355e88132ebb897a2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89513944"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327648"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure SignalR Service を使用した Azure Functions の開発と構成
 

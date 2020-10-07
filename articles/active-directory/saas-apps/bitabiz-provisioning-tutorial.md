@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 4f3e01147e44b495a666d11a3927eabbbe0dec0e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1274679bdd9892e2dc39f3c5e94d8d8d486928b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547282"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329195"
 ---
 # <a name="tutorial-configure-bitabiz-for-automatic-user-provisioning"></a>チュートリアル:BitaBIZ を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -106,11 +106,11 @@ Azure AD で自動ユーザー プロビジョニング用に BitaBIZ を構成�
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. [管理者資格情報] セクションの [テナント URL] および [シークレット トークン] に、先ほど取得した **[SCIM Provisioning endpoint URL]\(SCIM プロビジョニング エンドポイント URL\)** および **[Bearer Token]\(ベアラー トークン\)** の値をそれぞれ入力します。 **[接続テスト]** をクリックして、Azure AD から BitaBIZ に接続できることを確認します。 接続できない場合は、使用中の BitaBIZ アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 

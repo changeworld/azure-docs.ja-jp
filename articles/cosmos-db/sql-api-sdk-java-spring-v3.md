@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 9e5b92918d93109183740be555bb805877862407
-ms.sourcegitcommit: 0fd1f3fe7817ad44d878d580ec167e1508051795
+ms.openlocfilehash: f0cb3d5f9184bacef42a0258add6dd2461a71dd7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2020
-ms.locfileid: "90817872"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326662"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>コア (SQL) API 用 Spring Data Azure Cosmos DB v3:リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -96,17 +96,6 @@ cosmos.queryMetricsEnabled=true
 
 ### <a name="document-operations"></a>ドキュメントの操作
 
-作成: 
-:::code language="java" source="~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java" ID="Create":::
-
-削除:
-:::code language="java" source="~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java" ID="Delete":::
-
-# <a name="query"></a>[クエリ](#tab/queries)
-
-クエリ:
-:::code language="java" source="~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java" ID="Query":::
-
 ---
 
 ## <a name="resources"></a>リソース
@@ -115,58 +104,7 @@ cosmos.queryMetricsEnabled=true
 
 * **チュートリアル**:[GitHub の Spring Data Azure Cosmos DB チュートリアル](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started) 
 
-## <a name="release-history"></a>リリース履歴
-
-### <a name="300-beta2-september-17-2020"></a>3.0.0-beta.2 (2020 年 9 月 17 日)
-
-#### <a name="new-features"></a>新機能
-
-* 成果物 ID が `azure-spring-data-cosmos` に更新されました。
-* azure-cosmos の依存関係が `4.5.0` に更新されました。
-* ネイティブ クエリでの `Query Annotation` のサポート。
-* Java 11 のサポート。
-* `@Container` 注釈の `partitionKeyPath` フィールドを公開することによって、入れ子になったパーティション キーのサポートを追加しました。
-* リポジトリ API を定義するときに `top` と `first` を使用できるようにするクエリの種類 `limit` のサポートが追加されました。
-
-#### <a name="key-bug-fixes"></a>主要なバグ修正
-
-* `@GeneratedValue` 注釈と共に使用した場合の入れ子になったパーティション キーのバグが修正されました。
-
-### <a name="300-beta1-august-17-2020"></a>3.0.0-beta.1 (2020 年 8 月 17 日)
-
-#### <a name="new-features"></a>新機能
-
-* グループ ID が `com.azure` に更新されました。
-* 成果物 ID が `azure-spring-data-2-3-cosmos` に更新されました。
-* azure-cosmos SDK の依存関係が `4.3.2-beta.2` に更新されました。
-* エンティティの監査のサポートが追加されました: `createdBy`、`createdDate`、`lastModifiedBy`、および `lastModifiedDate` の注釈付きフィールドの自動管理。
-* `String` 型の ID フィールドの自動 ID 生成に対する `@GeneratedValue` 注釈のサポートが追加されました。
-* 複数のデータベースで使用する単一の Azure Cosmos DB アカウントおよび複数のデータベースで使用する複数の Azure Cosmos DB アカウントのための複数データベース構成のサポートが追加されました。
-* 任意の文字列フィールドでの `@Version` 注釈のサポートが追加されました。
-* 同期 API の戻り値の型が、`List` ではなく `Iterable` に更新されました。
-* Azure Cosmos DB SDK から `@Configuration` クラスに Spring Bean として `CosmosClientBuilder` を公開しました。
-* クエリ メトリックと応答診断プロセッサの実装を含むように、`CosmosConfig` が更新されました。
-* 単一結果クエリに対して `Optional` データ型を返す機能のサポートが追加されました。
-
-#### <a name="renames"></a>名前の変更
-
-* `CosmosDbFactory` から `CosmosFactory`。
-* `CosmosDBConfig` から `CosmosConfig`。
-* `CosmosDBAccessException` から `CosmosAccessException`。
-* `Document` 注釈から `Container` 注釈。
-* `DocumentIndexingPolicy` 注釈から `CosmosIndexingPolicy` 注釈。
-* `DocumentQuery` から `CosmosQuery`。
-* application.properties フラグ `populateQueryMetrics` から `queryMetricsEnabled`。
-
-#### <a name="key-bug-fixes"></a>主要なバグ修正
-
-* Netty I/O スレッドがブロックされないようにするための、`Parallel` スレッドへの診断ログ タスクのスケジュール。
-* 削除操作でのオプティミスティック ロックを修正しました。
-* `IN` 句に対するクエリのエスケープに関する問題を修正しました。
-* `@Id` に対して `long` データ型を許可することで、問題を修正しました。
-* `@PartitionKey` 注釈のデータ型として `boolean`、`long`、`int`、`double` を許可することで、問題を修正しました。
-* 大文字と小文字が区別されないクエリに対する `IgnoreCase` および `AllIgnoreCase` キーワードを修正しました。
-* コンテナーを自動的に作成するときの、既定の要求ユニットの値 4,000 を削除しました。
+[!INCLUDE[Release notes](~/azure-sdk-for-java-cosmos-db/sdk/cosmos/azure-spring-data-cosmos/CHANGELOG.md)]
 
 ## <a name="faq"></a>よく寄せられる質問
 

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.date: 02/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4
-ms.openlocfilehash: 6d54945ce026f91b27ce31ba82ada1b0cc49a260
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2e3544bee5158a855467f8cb142f176df2187ef5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324252"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318298"
 ---
-# <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>Logic Apps から Machine Learning パイプラインの実行をトリガーする
+# <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>ロジック アプリから Machine Learning パイプラインの実行をトリガーする
 
 新しいデータが出現したときに、Azure Machine Learning パイプラインの実行をトリガーします。 たとえば、BLOB ストレージ アカウントに新しいデータが出現したときに、新しいモデルをトレーニングするパイプラインをトリガーすることができます。 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) を使用してトリガーを設定します。
 
@@ -37,19 +37,19 @@ ms.locfileid: "87324252"
 * データを格納する [Azure BLOB ストレージ](../storage/blobs/storage-blobs-overview.md)。
 * BLOB ストレージ アカウントの詳細を格納する、ワークスペース内の[データストア](how-to-access-data.md)。
 
-## <a name="create-a-logic-app"></a>Logic Apps の作成
+## <a name="create-a-logic-app"></a>ロジック アプリの作成
 
-ここで [Azure Logic Apps](../logic-apps/logic-apps-overview.md) インスタンスを作成します。 必要に応じて、[統合サービス環境 (ISE) を使用](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)して、Logic Apps で使用するための[カスタマー マネージド キーを設定](../logic-apps/customer-managed-keys-integration-service-environment.md)します。
+ここで [Azure ロジック アプリ](../logic-apps/logic-apps-overview.md) インスタンスを作成します。 必要に応じて、[統合サービス環境 (ISE) を使用](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)して、ロジック アプリで使用するための[カスタマー マネージド キーを設定](../logic-apps/customer-managed-keys-integration-service-environment.md)します。
 
-Logic Apps がプロビジョニングされたら、次の手順に従って、パイプラインのトリガーを構成します。
+ロジック アプリがプロビジョニングされたら、次の手順に従って、パイプラインのトリガーを構成します。
 
 1. [システム割り当てマネージド ID](../logic-apps/create-managed-service-identity.md) を作成し、アプリに Azure Machine Learning ワークスペースへのアクセス権を付与します。
 
-1. Logic Apps デザイナー ビューに移動し、[空のロジックアプリ] テンプレートを選択します。 
+1. ロジック アプリ デザイナー ビューに移動し、[空のロジックアプリ] テンプレートを選択します。 
     > [!div class="mx-imgBorder"]
     > ![空のテンプレート](media/how-to-trigger-published-pipeline/blank-template.png)
 
-1. デザイナーで **BLOB** を検索します。 **[BLOB が追加または変更されたとき (プロパティのみ)]** トリガーを選択して、このトリガーを Logic Apps に追加します。
+1. デザイナーで **BLOB** を検索します。 **[BLOB が追加または変更されたとき (プロパティのみ)]** トリガーを選択して、このトリガーをロジック アプリに追加します。
     > [!div class="mx-imgBorder"]
     > ![トリガーの追加](media/how-to-trigger-published-pipeline/add-trigger.png)
 
@@ -94,3 +94,14 @@ Logic Apps がプロビジョニングされたら、次の手順に従って、
     > ![HTTP 設定](media/how-to-trigger-published-pipeline/http-settings.png)
 
 1. **[保存]** を選択するとスケジュールの準備ができます。
+
+## <a name="next-steps"></a>次のステップ
+
+詳細については、次を参照してください。
+
+> [!div class="nextstepaction"]
+> [バッチ スコアリングに Azure Machine Learning パイプラインを使用する](tutorial-pipeline-batch-scoring-classification.md)
+
+* [パイプライン](concept-ml-pipelines.md)に関する詳細情報
+* [Jupyter を使用した Azure Machine Learning の探索](samples-notebooks.md)に関する詳細情報
+

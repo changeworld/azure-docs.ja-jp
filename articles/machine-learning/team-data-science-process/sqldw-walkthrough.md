@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 59935d2659d27059617059c021fef9b6a2b552e0
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: e48261c4c6aeb75556663e1bf77c675557bcd1b1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440203"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315492"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Team Data Science Process の活用: Azure Synapse Analytics の使用
 このチュートリアルでは、公開されている使用可能なデータセット ([NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) データセット) で Azure Synapse Analytics を使用して、機械学習モデルを構築し、デプロイする方法を説明します。 構築される二項分類モデルでは、乗車でチップが支払われるかどうかを予測します。  モデルには、多クラス分類 (チップがあるかどうかを問わない) と回帰 (支払われたチップ金額の分布) が含まれます。
@@ -117,7 +117,7 @@ BEGIN CATCH
 END CATCH;
 ```
 
-**Azure サブスクリプションで Azure Machine Learning ワークスペースを作成します。** 手順については、 [Azure Machine Learning のワークスペースの作成](../studio/create-workspace.md)に関するページをご覧ください。
+**Azure サブスクリプションで Azure Machine Learning ワークスペースを作成します。** 手順については、 [Azure Machine Learning のワークスペースの作成](../classic/create-workspace.md)に関するページをご覧ください。
 
 ## <a name="load-the-data-into-azure-synapse-analytics"></a><a name="getdata"></a>Azure Synapse Analytics にデータを読み込む
 Windows PowerShell コマンド コンソールを開きます。 以下の PowerShell コマンドを実行して、サンプルの SQL スクリプト ファイルを *-DestDir* パラメーターで指定したローカル ディレクトリにダウンロードします。このファイルは GitHub で共有されています。 *-DestDir* パラメーターの値は任意のローカル ディレクトリに変更できます。 *-DestDir* が存在しない場合は、PowerShell スクリプトによって作成されます。
@@ -941,9 +941,9 @@ pd.read_sql(query,conn)
 2. **多クラス分類**:あらかじめ定義したクラスに従って、支払われたチップの範囲を予測します。
 3. **回帰タスク**:乗車で支払われたチップの金額を予測します。
 
-モデリングの演習を開始するには、**Azure Machine Learning (クラシック)** ワークスペースにログインします。 Machine Learning ワークスペースをまだ作成していない場合は、[Azure Machine Learning Studio (クラシック) ワークスペースの作成](../studio/create-workspace.md)に関するページを参照してください。
+モデリングの演習を開始するには、**Azure Machine Learning (クラシック)** ワークスペースにログインします。 Machine Learning ワークスペースをまだ作成していない場合は、[Azure Machine Learning Studio (クラシック) ワークスペースの作成](../classic/create-workspace.md)に関するページを参照してください。
 
-1. Azure Machine Learning の使用を開始するには、「[Machine Learning Studio (クラシック) とは](../studio/what-is-ml-studio.md)」を参照してください。
+1. Azure Machine Learning の使用を開始するには、「[Machine Learning Studio (クラシック) とは](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)」を参照してください。
 2. [Azure Machine Learning Studio (クラシック)](https://studio.azureml.net) にログインします。
 3. Machine Learning Studio (クラシック) のホーム ページには、豊富な情報、ビデオ、チュートリアル、モジュール リファレンスへのリンク、その他のリソースが用意されています。 Azure Machine Learning の詳細については、[Azure Machine Learning ドキュメント センター](https://azure.microsoft.com/documentation/services/machine-learning/)をご覧ください。
 
@@ -983,7 +983,7 @@ Azure Synapse Analytics データベースから直接データを読み取る�
 >
 
 ## <a name="deploy-models-in-azure-machine-learning"></a><a name="mldeploy"></a>Azure Machine Learning にモデルをデプロイする
-モデルの準備ができたら、実験から直接 Web サービスとして簡単にデプロイできます。 Azure ML Web サービスのデプロイの詳細については、「 [Azure Machine Learning Web サービスをデプロイする](../studio/deploy-a-machine-learning-web-service.md)」を参照してください。
+モデルの準備ができたら、実験から直接 Web サービスとして簡単にデプロイできます。 Azure ML Web サービスのデプロイの詳細については、「 [Azure Machine Learning Web サービスをデプロイする](../classic/deploy-a-machine-learning-web-service.md)」を参照してください。
 
 新しい Web サービスをデプロイするには以下のことを実行する必要があります。
 

@@ -1,7 +1,7 @@
 ---
 title: 信頼度スコア - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: ナレッジ ベースは公開する必要があります。 公開されると、ナレッジ ベースに対するクエリは、generateAnswer API を使用してランタイム予測エンドポイントで実行されます。
+description: ユーザー クエリがナレッジ ベースに対して一致すると、QnA Maker は、信頼度スコアと共に該当する回答を返します。
 services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: faf24f11763ca2bcd9bb872b09b5d1b69e78bd06
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: abae83cee106feb553e8ced404d23ba5619ba416
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131159"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327155"
 ---
 # <a name="the-confidence-score-of-an-answer"></a>回答の信頼度スコア
 ユーザー クエリがナレッジ ベースに対して一致すると、QnA Maker は、信頼度スコアと共に該当する回答を返します。 このスコアは、回答が特定のユーザー クエリに最適である信頼度を示します。
@@ -76,7 +76,7 @@ ms.locfileid: "87131159"
 * 次のいずれかを使用してナレッジ ベースを整理します。
     * 1 つのリソースを 1 つの KB に制限する: 単一の QnA リソース (および結果の Azure Cognitive Search テスト インデックス) を 1 つのナレッジ ベースに制限します。
     * 2 つのリソース (テストに 1 つ、実稼働に 1 つ): 2 つの QnA Maker リソースを、1 つはテストに使用し (独自のテスト インデックスと実稼働インデックスを含みます)、もう 1 つは製品用に使用します (こちらも独自のテスト インデックスと実稼働インデックスを含みます)。
-* また、テストと実稼働の両方のナレッジ ベースに対してクエリを実行する場合は、 **[top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)** などの同じパラメーターを常に使用します。
+* また、テストと実稼働の両方のナレッジ ベースに対してクエリを実行する場合は、**[top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)** などの同じパラメーターを常に使用します。
 
 ナレッジ ベースを公開すると、ナレッジ ベースの質問と回答コンテンツが、Azure Search のテスト インデックスから実稼働インデックスへ移動されます。 [公開](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)のしくみを確認してください。
 
@@ -86,7 +86,7 @@ ms.locfileid: "87131159"
 ## <a name="no-match-found"></a>一致が見つからない
 ランク付けによって適切な一致が見つからない場合は、0.0 または "None" の信頼度スコアが返され、既定の応答は [No good match found in the KB]\(KB で適切な一致が見つかりませんでした\) になります。 エンドポイントを呼び出すボットまたはアプリケーションのコードで、この[既定の応答](../How-To/metadata-generateanswer-usage.md)を上書きできます。 別の方法として、Azure に上書き応答を設定することもできます。この場合は、特定の QnA Maker サービスにデプロイされたすべてのナレッジ ベースの既定値が変更されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]
 > [ベスト プラクティス](./best-practices.md)
 

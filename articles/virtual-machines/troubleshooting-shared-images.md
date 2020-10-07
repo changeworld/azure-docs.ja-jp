@@ -1,25 +1,106 @@
 ---
 title: Azure での共有イメージに関する問題のトラブルシューティング
 description: 共有イメージ ギャラリーに関する問題のトラブルシューティングを行う方法について説明します。
-author: axayjo
+author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: troubleshooting
 ms.workload: infrastructure
-ms.date: 04/17/2020
-ms.author: akjosh
+ms.date: 06/15/2020
+ms.author: cynthn
 ms.reviewer: cynthn
-ms.openlocfilehash: 6478438be34ed19897dcde1affbff557093e01fc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3a206a7aabee9f75524ab4715afa30ec05c612bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87009834"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328065"
 ---
 # <a name="troubleshooting-shared-image-galleries-in-azure"></a>Azure の共有イメージ ギャラリーのトラブルシューティング
 
+共有イメージ ギャラリー、イメージ定義、およびイメージ バージョンで任意の操作を実行しているときに問題が発生した場合は、デバッグ モードでエラー コマンドを再実行します。 CLI では `--debug` スイッチ、PowerShell では `-Debug` スイッチを渡すことで、デバッグ モードがアクティブ化されます。 エラーの場所を特定したら、このドキュメントに従ってエラーをトラブルシューティングします。
 
-[!INCLUDE [virtual-machines-common-shared-image-troubleshooting](../../includes/virtual-machines-common-shared-image-troubleshooting.md)]
+
+## <a name="unable-to-create-a-shared-image-gallery"></a>共有イメージ ギャラリーを作成できない
+
+考えられる原因:
+
+"*ギャラリー名が無効である。* "
+
+ギャラリー名で許可されている文字は、英字 (大文字または小文字)、数字、ドット、およびピリオドです。 ギャラリー名にダッシュを含めることはできません。 ギャラリー名を変更して、再試行してください。 
+
+"*ギャラリー名がサブスクリプション内で一意ではない。* "
+
+他のギャラリー名を選択して、再試行してください。
+
+
+## <a name="unable-to-create-an-image-definition"></a>イメージ定義を作成できない 
+
+考えられる原因:
+
+"*イメージの定義名が無効である。* "
+
+イメージ定義で許可されている文字は、英字 (大文字または小文字)、数字、ドット、ダッシュ、およびピリオドです。 イメージ定義名を変更して、再試行してください。
+
+"*イメージ定義を作成するための必須パラメーターが入力されていない。* "
+
+名前、発行元、オファー、SKU、および OS の種類などのプロパティは必須です。 すべてのプロパティが渡されているかを確認してください。
+
+イメージ定義の **OSType** (Linux または Windows) が、イメージ バージョンの作成に使用しているソースと同じであることを確かめてください。 
+
+
+## <a name="unable-to-create-an-image-version"></a>イメージ バージョンを作成できない 
+
+考えられる原因:
+
+"*イメージ バージョン名が無効である。* "
+
+イメージ バージョンで許可されている文字は、数字とピリオドです。 数字は、32 ビット整数の範囲内になっている必要があります。 形式:*MajorVersion.MinorVersion.Patch*。 イメージ バージョン名を変更して、再試行してください。
+
+"*イメージ バージョンの作成元であるソース マネージド イメージが見つからない。* " 
+
+ソース イメージが存在し、イメージ バージョンと同じリージョン内にあることを確認します。
+
+"*マネージド イメージがプロビジョニングされていない。* "
+
+ソース マネージド イメージのプロビジョニングの状態が **[成功]** になっていることを確認します。
+
+*ターゲット リージョンの一覧にソース リージョンが含まれていない。*
+
+ターゲット リージョンの一覧には、イメージ バージョンのソース リージョンが含まれている必要があります。 Azure でイメージ バージョンのレプリケート先とするターゲット リージョンの一覧に、ソース リージョンが含まれていることを確認してください。
+
+"*すべてのターゲット リージョンへのレプリケートが完了していない。* "
+
+**-expand ReplicationStatus** フラグを使用して、指定されたすべてのターゲット リージョンへのレプリケートが完了済みかどうかを確認します。 完了していない場合、ジョブが完了するまで最大 6 時間待機します。 レプリケートがエラーになった場合、コマンドを再実行し、イメージ バージョンを作成してレプリケートします。 イメージ バージョンのレプリケート先となるターゲット リージョンが多数ある場合、段階的にレプリケーションを行うことを検討します。
+
+## <a name="unable-to-create-a-vm-or-a-scale-set"></a>VM またはスケール セットを作成できない 
+
+考えられる原因:
+
+"*VM または仮想マシン スケール セットの作成を試行しているユーザーが、イメージ バージョンへの読み取りアクセス権を保持していない。* "
+
+サブスクリプションの所有者に連絡して、[Azure ロールベース アクセス制御](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (Azure RBAC) 経由でイメージ バージョンまたは親リソース (共有イメージ ギャラリーまたはイメージ定義など) への読み取りアクセス権の付与を依頼します。 
+
+"*イメージ バージョンが見つからない。* "
+
+VM または仮想マシン スケール セットの作成を試行しているリージョンが、イメージ バージョンのターゲット リージョンの一覧に含まれていることを確認します。 リージョンが既にターゲット リージョンの一覧に含まれている場合は、レプリケーション ジョブが完了済みになっているかを確認してください。 **-expand ReplicationStatus** フラグを使用して、指定されたすべてのターゲット リージョンへのレプリケートが完了済みかどうかを確認できます。 
+
+"*VM または仮想マシン スケール セットの作成に長い時間がかかる。* "
+
+VM または仮想マシン スケール セットの作成を試行している元のイメージ バージョンの **OSType** が、イメージ バージョンの作成に使用したソースの **OSType** と同じであることを確認します。 
+
+## <a name="unable-to-share-resources"></a>リソースを共有できない
+
+サブスクリプション全体での共有イメージ ギャラリー、イメージ定義、およびイメージ バージョンのリソースの共有が、[Azure ロールベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (Azure RBAC) を使用して有効化されています。 
+
+## <a name="replication-is-slow"></a>レプリケーションが遅い
+
+**-expand ReplicationStatus** フラグを使用して、指定されたすべてのターゲット リージョンへのレプリケートが完了済みかどうかを確認します。 完了していない場合、ジョブが完了するまで最大 6 時間待機します。 レプリケートがエラーになった場合、コマンドをもう一度トリガーし、イメージ バージョンを作成してレプリケートします。 イメージ バージョンのレプリケート先となるターゲット リージョンが多数ある場合、段階的にレプリケーションを行うことを検討します。
+
+## <a name="azure-limits-and-quotas"></a>Azure の制限とクォータ 
+
+[Azure の制限とクォータ](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)は、すべての共有イメージ ギャラリー、イメージ定義、およびイメージ バージョンのリソースに適用されます。 お使いのサブスクリプションの制限内であることを確認してください。 
+
 
 ## <a name="next-steps"></a>次のステップ
 

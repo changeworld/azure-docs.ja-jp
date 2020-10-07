@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d528ff41d8b7098e313e070dfe734960cdc89eaa
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 4dc768b92a9ffbeafc31ef81d065237f47fb645e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827530"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331881"
 ---
 # <a name="secure-azure-digital-twins"></a>Azure Digital Twins をセキュリティで保護する
 
@@ -83,7 +83,7 @@ Azure Digital Twins によって、データ センターに書き込まれる�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [*インスタンスと認証の設定方法*](how-to-set-up-instance-scripted.md)に関するページで取り上げられている、動作中の概念について確認します。
+* [*インスタンスと認証の設定方法*](how-to-set-up-instance-portal.md)に関するページで取り上げられている、動作中の概念について確認します。
 
 * クライアント アプリケーション コードからこれらの概念を操作する方法を、[*アプリ認証コードを作成する方法*](how-to-authenticate-client.md)に関するページで確認します。
 

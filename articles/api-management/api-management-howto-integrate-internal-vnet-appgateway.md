@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: eb2ce196687b2ca6a762a879570e4f8ebac788df
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 778c65b9ec42c27ea0ae1530c1ba7fa9739fbc3c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025117"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321885"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>内部 VNET 内の API Management と Application Gateway の統合
 
@@ -91,7 +91,7 @@ API Management サービスは、内部モードで仮想ネットワーク内�
 > 
 > 以下の Application Gateway WAF ルールは、ポータルの機能を破損する可能性があります。
 > 
-> - 管理モード用: `920330`、`931130`、`942100`、`942110`、`942180`、`942200`、`942260`、`942370`、`949110`、および `980130`
+> - 管理モード用: `920300`、`920330`、`931130`、`942100`、`942110`、`942180`、`942200`、`942260`、`942340`、および `942370`
 > - 発行されたポータル用: `942200`、`942260`、`942370`、`942430`、および `942440`
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>リソース マネージャーのリソース グループの作成

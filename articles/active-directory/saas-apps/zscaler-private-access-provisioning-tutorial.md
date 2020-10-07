@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/07/2019
 ms.author: Zhchia
-ms.openlocfilehash: c605efe60e279ca3f5f14055e39bf95dc677542b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 19767503769fe1a1e64d6ab137b811899adb29c3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545842"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312336"
 ---
 # <a name="tutorial-configure-zscaler-private-access-zpa-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Zscaler Private Access (ZPA) を構成する
 
@@ -131,11 +131,11 @@ Azure AD での自動ユーザー プロビジョニング用に Zscaler Private
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[管理者の資格情報]** セクションで、 **[テナント URL]** に、前に取得した **[SCIM Service Provider Endpoint] (SCIM サービス プロバイダーのエンドポイント)** の値を入力します。 **[シークレット トークン]** に、前に取得した **[Bearer Token] (ベアラー トークン)** の値を入力します。 **[接続テスト]** をクリックして、Azure AD が Zscaler Private Access (ZPA) に接続できることを確認します。 接続に失敗する場合は、Zscaler Private Access (ZPA) アカウントに管理者アクセス許可があることを確認し、再試行します。
 

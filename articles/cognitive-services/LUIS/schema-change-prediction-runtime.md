@@ -1,14 +1,16 @@
 ---
 title: ランタイムのアプリの拡張 - LUIS
 description: ''
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: c0f9d71f5d89d73d9cdce2a2f646859d8eba3adc
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 69e2608fb01ece81f555aae2f3d4a2e4a05cfc90
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538397"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322803"
 ---
 # <a name="extend-app-at-prediction-runtime"></a>予測ランタイムにアプリを拡張する
 

@@ -1,14 +1,16 @@
 ---
 title: ソース管理と開発のブランチ - LUIS
 description: Language Understanding (LUIS) アプリをソース管理下で維持する方法。 開発ブランチで作業中の LUIS アプリに更新プログラムを適用する方法。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 2d060fefbd32ecea1f91e6b062da7606699a63c4
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: 25f2c4f4698785326f80c24d3749e7585e85d5bb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84783630"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309508"
 ---
 # <a name="devops-practices-for-luis"></a>LUIS の DevOps プラクティス
 

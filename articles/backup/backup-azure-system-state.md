@@ -3,12 +3,12 @@ title: Windows のシステム状態を Azure にバックアップする
 description: Windows Server コンピューターのシステム状態を Azure にバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: ebe527ef7ddb32d46c2f39970f74b64c2594bf60
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1b3573d757d2f7b1ffec9ae718aa791488960f3b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90975491"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332893"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>Windows のシステム状態を Azure にバックアップする
 
@@ -38,7 +38,7 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
     ![新しいコンテナーのストレージ構成を設定する](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration.png)
 4. コンテナーの適切なストレージ レプリケーション オプションを選択します。
 
-    ![ストレージ構成の選択](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
+    ![ストレージ構成の選択](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration-for-vault.png)
 
     既定では、コンテナーには geo 冗長ストレージがあります。 プライマリ バックアップ ストレージ エンドポイントとして Azure を使用する場合は、引き続き **[geo 冗長]** を使用します。 プライマリ バックアップ ストレージ エンドポイントとして Azure を使用しない場合、 **[ローカル冗長]** を選択します。これにより、Azure Storage のコストを削減できます。 [geo 冗長](../storage/common/storage-redundancy.md#geo-redundant-storage)ストレージ、[ローカル冗長](../storage/common/storage-redundancy.md#locally-redundant-storage)ストレージ、[ゾーン冗長](../storage/common/storage-redundancy.md#zone-redundant-storage)ストレージの各オプションの詳細については、[ストレージ冗長性の概要](../storage/common/storage-redundancy.md)に関するこちらの記事を参照してください。
 

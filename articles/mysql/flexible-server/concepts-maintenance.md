@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 67529ce3546046eaba75bd3beacd7bb9b96445fe
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a2e99440a7c8f33eee9d3c9fe2276ac3868ff4b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931370"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331762"
 ---
 # <a name="scheduled-maintenance-in-azure-database-for-mysql--flexible-server"></a>Azure Database for MySQL での予定メンテナンス - フレキシブル サーバー
 
@@ -46,5 +46,5 @@ Azure Database for MySQL - フレキシブル サーバーでは、管理対象�
 ## <a name="next-steps"></a>次のステップ
 
 * [メンテナンス スケジュールを変更する](how-to-maintenance-portal.md)方法を確認する
-* Azure Service Health を使用して[今後のメンテナンスに関する通知を受け取る](/azure/service-health/service-notifications.md)方法を確認する
-* [今後の予定メンテナンス イベントに関する通知を設定する](/azure/service-health/resource-health-alert-monitor-guide.md)方法を確認する
+* Azure Service Health を使用して[今後のメンテナンスに関する通知を受け取る](../../service-health/service-notifications.md)方法を確認する
+* [今後の予定メンテナンス イベントに関する通知を設定する](../../service-health/resource-health-alert-monitor-guide.md)方法を確認する

@@ -4,16 +4,16 @@ description: Azure Maps Search Service について説明します。 この一�
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/21/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 48dd0168f878a16e2eabe47151d0b09993d9f5f9
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 2a322de383194f131395629d33456d7561397eb9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037781"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91310987"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Azure Maps Search Service を使用して場所を検索する
 
@@ -95,7 +95,7 @@ Azure Maps [Fuzzy Search API](https://docs.microsoft.com/rest/api/maps/search/ge
 
 4. 既定の動作では全世界が検索されるので、必要のない結果が返される可能性があります。 次に、米国のみで pizza を検索します。 **[パラメーター]** セクションに `countrySet` キーを追加し、その値を `US` に設定します。 `countrySet` キーを `US` に設定すると、結果が米国に制限されます。
 
-    :::image type="content" source="./media/how-to-search-for-address/search-fuzzy-country.png" alt-text="米国で pizza を検索する":::
+    :::image type="content" source="./media/how-to-search-for-address/search-fuzzy-country.png" alt-text="住所の検索":::
 
     これで、結果が国コードによってバインドされ、クエリでは米国のピザ レストランが返されます。
 
@@ -143,13 +143,13 @@ Azure Maps [Get Search Address Reverse API]( https://docs.microsoft.com/rest/api
     | returnRoadUse | true | その住所での道路用途の種類が返されます。 使用できるすべての道路用途の種類については、[道路用途の種類](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#uri-parameters)に関するセクションをご覧ください。|
     | returnMatchType | true| 一致の種類を返します。 使用できるすべての値については、[住所の逆引き検索の結果](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#searchaddressreverseresult)に関するセクションをご覧ください
 
-   :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="逆引き検索":::
+   :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="住所の検索":::
 
 5. **[送信]** をクリックして、応答の本体を確認します。
 
 6. 次に、`entityType` キーを追加し、その値を `Municipality` に設定します。 `entityType` キーを使用すると、前の手順の `returnMatchType` キーがオーバーライドされます。 地方自治体に関する情報を要求しているので、`returnSpeedLimit` と `returnRoadUse` も削除する必要があります。  使用できるすべてのエンティティ型については、[エンティティ型](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#entitytype)に関するセクションをご覧ください。
 
-    :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="エンティティ型の逆引き検索":::
+    :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="住所の検索":::
 
 7. **[送信]** をクリックします。 この結果を手順 5 で返された結果と比較します。  要求されたエンティティ型が `municipality` であるため、応答に番地の情報は含まれていません。 また、返された `geometryId` は、Azure Maps Get [Search Polygon API](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon) で境界多角形を要求するときに使用できます。
 
@@ -168,7 +168,7 @@ Azure Maps [Get Search Address Reverse API]( https://docs.microsoft.com/rest/api
    https://atlas.microsoft.com/search/address/reverse/crossstreet/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=47.591180,-122.332700
     ```
 
-    :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="交差道路の検索":::
+    :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="住所の検索":::
   
 3. **[送信]** をクリックして、応答の本体を確認します。 応答に `Occidental Avenue South` という `crossStreet` の値が含まれていることがわかります。
 

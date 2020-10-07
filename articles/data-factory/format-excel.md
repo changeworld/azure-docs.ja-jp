@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 368b8d614ca77692e08a3cbe38132f5aff4eab91
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: dad1f9f232cb9d713af81f6aea57a4ffe651da19
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90061157"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331966"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Azure Data Factory での Excel 形式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -114,6 +114,7 @@ Azure Blob Storage 上の Excel データセットの例を次に示します。
 | ファイル名を格納する列 | ソース ファイル名とパスを使用して新しい列を作成します       | no       | String                                                    | rowUrlColumn                      |
 | 完了後          | 処理後にファイルを削除または移動します。 ファイル パスはコンテナー ルートから始まります | no       | 削除: `true` または `false` <br> 移動: `['<from>', '<to>']` | purgeFiles <br> moveFiles         |
 | 最終更新日時でフィルター処理   | 最後に変更された日時に基づいてファイルをフィルター処理する場合に選択 | no       | Timestamp                                                 | modifiedAfter <br> modifiedBefore |
+| [Allow no files found]\(ファイルの未検出を許可\) | true の場合、ファイルが見つからない場合でもエラーはスローされない | no | `true` または `false` | ignoreNoFilesFound |
 
 ### <a name="source-example"></a>ソースの例
 

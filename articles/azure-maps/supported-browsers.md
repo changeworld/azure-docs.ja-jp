@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 73d875e32f4fcf22551cf6b0946e49c2f826e523
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 5b186901551e421ba365b97a6de6a55ff791e5e9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085027"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91310188"
 ---
 # <a name="web-sdk-supported-browsers"></a>Web SDK でサポートされているブラウザー
 
@@ -76,8 +76,6 @@ WebGL をサポートしていない、または制限付きでのみサポー�
 
 Azure Maps Web SDK の詳細について学習します。
 
-> [!div class="nextstepaction"]
-> [マップ コントロール](how-to-use-map-control.md)
+[マップ コントロール](how-to-use-map-control.md)
 
-> [!div class="nextstepaction"]
-> [サービス モジュール](how-to-use-services-module.md)
+[サービス モジュール](how-to-use-services-module.md)

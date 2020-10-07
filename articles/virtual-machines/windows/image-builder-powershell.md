@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e25b2b53acdfb05af8572a01109961bf3002e429
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a221ba8fe14db37729183774197bfc2db8bf2baa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499434"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328107"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder-using-powershell"></a>プレビュー:PowerShell から Azure Image Builder を使用して Windows VM を作成する
 
@@ -271,7 +271,7 @@ Get-AzImageBuilderTemplate -ImageTemplateName $imageTemplateName -ResourceGroupN
 
 イメージ構成テンプレートの送信中にサービスによって障害が報告された場合、次を実行します。
 
-- 「[Azure VM Image Builder (AIB) 障害のトラブルシューティング](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting)」を参照します。
+- 「[Azure VM Image Builder (AIB) 障害のトラブルシューティング](../linux/image-builder-troubleshoot.md)」を参照します。
 - 再試行する前に、次の例に従ってテンプレートを削除します。
 
 ```azurepowershell-interactive
@@ -288,7 +288,7 @@ Start-AzImageBuilderTemplate -ResourceGroupName $imageResourceGroup -Name $image
 
 イメージ ビルド プロセスが完了するまで待ちます。 このステップには最大 1 時間かかることがあります。
 
-エラーが発生した場合は、「[Azure VM Image Builder (AIB) 障害のトラブルシューティング](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting)」を参照してください。
+エラーが発生した場合は、「[Azure VM Image Builder (AIB) 障害のトラブルシューティング](../linux/image-builder-troubleshoot.md)」を参照してください。
 
 ## <a name="create-a-vm"></a>VM の作成
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: ce0e03407349505d54aeb22b164fa8593446967d
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: cd1dc953c35233010250bf7f959c94d1de50fe4a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89652664"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319794"
 ---
 # <a name="application-gateway-infrastructure-configuration"></a>Application Gateway インフラストラクチャの構成
 
@@ -20,10 +20,10 @@ ms.locfileid: "89652664"
 
 ## <a name="virtual-network-and-dedicated-subnet"></a>仮想ネットワークと専用サブネット
 
-アプリケーション ゲートウェイは、お客様の仮想ネットワーク内の専用デプロイメントです。 仮想ネットワーク内では、ご使用のアプリケーション ゲートウェイのために専用サブネットが必要です。 1 つのサブネットに特定のアプリケーション ゲートウェイ デプロイの複数インスタンスを配置できます。 また、サブネット内に他のアプリケーション ゲートウェイをデプロイすることもできます。 ただし、アプリケーション ゲートウェイ サブネットに他のリソースをデプロイすることはできません。
+アプリケーション ゲートウェイは、お客様の仮想ネットワーク内の専用デプロイメントです。 仮想ネットワーク内では、ご使用のアプリケーション ゲートウェイのために専用サブネットが必要です。 1 つのサブネットに特定のアプリケーション ゲートウェイ デプロイの複数インスタンスを配置できます。 また、サブネット内に他のアプリケーション ゲートウェイをデプロイすることもできます。 ただし、アプリケーション ゲートウェイ サブネットに他のリソースをデプロイすることはできません。 同じサブネット上に Standard_v2 と Standard Azure Application Gateway を混在することはできません。
 
 > [!NOTE]
-> 同じサブネット上に Standard_v2 と Standard Azure Application Gateway を混在することはできません。
+> [仮想ネットワーク サービス エンドポイント ポリシー](../virtual-network/virtual-network-service-endpoint-policies-overview.md)は現在、Application Gateway のサブネットではサポートされません。
 
 ### <a name="size-of-the-subnet"></a>サブネットのサイズ
 

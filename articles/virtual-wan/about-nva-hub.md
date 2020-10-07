@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 07/06/2020
+ms.date: 09/22/2020
 ms.author: scottnap
 Customer intent: As someone with a networking background, I want to learn about Network Virtual Appliances in the Virtual WAN hub.
-ms.openlocfilehash: ad7c7fb5111ce700a5725336b7c9db788e178c4c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1e4b8a2d801d7d7eccfaf558c3926ead1ab0a953
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094833"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313775"
 ---
 # <a name="about-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Azure Virtual WAN ハブのネットワーク仮想アプライアンスについて (プレビュー)
 
@@ -50,7 +50,7 @@ NVA パートナーは、アプライアンスのデプロイ、構成のライ�
 * **カスタマー リソース グループ** - これには、マネージド アプリケーションのアプリケーション プレースホルダーが含まれます。 パートナーはこれを使用して、ここで選択したカスタマー プロパティを公開できます。
 * **管理対象リソース グループ** - このリソース グループ内のリソースは、マネージド アプリケーションの公開元によって制御されるため、ユーザーが構成したり変更したりすることはできません。 このリソース グループには、**NetworkVirtualAppliances** リソースが含まれます。
 
-:::image type="content" source="./media/about-nva-hub/managed-app.png" alt-text="マネージド アプリケーション リソース グループ":::
+:::image type="content" source="./media/about-nva-hub/managed-app.png" alt-text="プロセスの概要":::
 
 ### <a name="nva-infrastructure-units"></a><a name="units"></a>NVA インフラストラクチャ ユニット
 

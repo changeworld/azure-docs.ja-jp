@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: f0f0d61788d7ac9b242dbc176a125b45753d2578
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d88b8f2a6cc66e239706677bd1ebfe01bccd49af
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555125"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322038"
 ---
 # <a name="tutorial-configure-figma-for-automatic-user-provisioning"></a>チュートリアル:Figma を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -110,11 +110,11 @@ Azure AD で自動ユーザー プロビジョニング用に Figma を構成す
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[管理者の資格情報]** セクションで、`https://www.figma.com/scim/v2/<TenantID>` を **[テナント URL]** に入力します。**TenantID** は先ほど Figma から取得した値です。 **[API Token]\(API トークン\)** 値を **[シークレット トークン]** に入力します。 **[Test Connection]\(テスト接続\)** をクリックして、Azure AD から Figma に接続できることを確認します。 接続できない場合は、使用中の Figma アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 

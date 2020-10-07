@@ -3,12 +3,12 @@ title: Azure Functions 2.x の host.json のリファレンス
 description: Azure Functions の v2 ランタイムの host.json ファイルのリファレンス ドキュメント。
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 629f579642185c5600586473d1280d9b26f4cba3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 400ff6f9db421552b2b2736ea48265deefe676ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055288"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321851"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 以降の host.json のリファレンス 
 
@@ -162,11 +162,11 @@ ms.locfileid: "87055288"
 | isEnabled | true | サンプリングを有効または無効にします。 | 
 | maxTelemetryItemsPerSecond | 20 | 各サーバー ホストで 1 秒あたりにログに記録されるテレメトリ項目の目標数。 アプリを多数のホストで実行する場合、トラフィックの全体的なターゲット レート内に収まるように、この値を削減します。 | 
 | evaluationInterval | 01:00:00 | テレメトリの現在のレートを再評価する間隔。 評価は移動平均として実行されます。 急変しやすいテレメトリの場合は、この間隔を短くすることもできます。 |
-| initialSamplingPercentage| 1.0 | サンプリング率が動的に変化するサンプリング プロセスの開始時に適用される初期サンプリング率。 デバッグ中はこの値を減らさないでください。 |
+| initialSamplingPercentage| 100.0 | サンプリング率が動的に変化するサンプリング プロセスの開始時に適用される初期サンプリング率。 デバッグ中はこの値を減らさないでください。 |
 | samplingPercentageIncreaseTimeout | 00:00:01 | サンプリング率が変化する場合、このプロパティにより、変化してからどのくらいの時間が経過すると、Application Insights でサンプリング率を上げてキャプチャ データ量を増やすことができるようになるかが決まります。 |
 | samplingPercentageDecreaseTimeout | 00:00:01 | サンプリング率が変化する場合、このプロパティにより、変化してからどのくらいの時間が経過すると、Application Insights でサンプリング率を下げてキャプチャ データ量を減らすことができるようになるかが決まります。 |
 | minSamplingPercentage | 0.1 | サンプリング率がさまざまであるため、このプロパティにより、許容される最小サンプリング率が決定されます。 |
-| maxSamplingPercentage | 0.1 | サンプリング率がさまざまであるため、このプロパティにより、許容される最大サンプリング率が決定されます。 |
+| maxSamplingPercentage | 100.0 | サンプリング率がさまざまであるため、このプロパティにより、許容される最大サンプリング率が決定されます。 |
 | movingAverageRatio | 1.0 | 移動平均の計算で最新値に割り当てられる重み。 1 以下の値を使用します。 小さい値にすると、急変に対する反応が低いアルゴリズムになります。 |
 | excludedTypes | null | サンプリングしない型をセミコロンで区切ったリスト。 認識される種類は、`Dependency`、`Event`、`Exception`、`PageView`、`Request`、`Trace` です。 指定された型のすべてのインスタンスが転送されます。指定されていない型はサンプリングされます。 |
 | includedTypes | null | サンプリングする型をセミコロンで区切ったリスト。空のリストはすべての型を意味します。 `excludedTypes` にリストされた型は、ここにリストされた型をオーバーライドします。 認識される種類は、`Dependency`、`Event`、`Exception`、`PageView`、`Request`、`Trace` です。 指定された型のインスタンスがサンプリングされます。明示的にも暗黙的にも指定されていない型はサンプリングなしで転送されます。 |

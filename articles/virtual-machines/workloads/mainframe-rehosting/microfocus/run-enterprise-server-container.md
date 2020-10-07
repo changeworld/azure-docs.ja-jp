@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 3c4afc6c0adb8d499e38abf3d709a951774dda4e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: bfd40d39907c4e69ded0fa257305d346ca261836
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974064"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319998"
 ---
 # <a name="run-micro-focus-enterprise-server-50-in-a-docker-container-on-azure"></a>Azure 上の Docker コンテナーで Micro Focus Enterprise Server 5.0 を実行する
 
@@ -121,9 +121,9 @@ Docker により、移植性と分離性がアプリケーションに追加さ�
 
 1.  Enterprise Server 5.0 と acctdemo アプリケーションを起動するには、コマンド プロンプトで次のように入力します。
 
-    ~~~
+    ```
     **docker run -p 16002:86/tcp -p 16002:86/udp -p 9040-9050:9040-9050 -p 9000-9010:9000-9010 -ti --network="nat" --rm microfocus/es-acctdemo:win\_5.0\_x64
-    ~~~
+    ```
 
 1.  [x3270](http://x3270.bgp.nu/) などの 3270 端末エミュレーターをインストールし、それを使用してポート 9040 経由で実行しているイメージにアタッチします。
 
@@ -133,15 +133,15 @@ Docker により、移植性と分離性がアプリケーションに追加さ�
 
     2.  acctdemo コンテナーの IP アドレスを取得するには、前のステップのコンテナー ID を使用して次のようにします。
 
-    ~~~
+    ```
     docker inspect \<containerID\> --format="{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
-    ~~~
+    ```
 
     次に例を示します。
 
-    ~~~
+    ```
     docker inspect 22a0fe3159d0 --format="{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
-    ~~~
+    ```
 
 4. acctdemo イメージの IP アドレスを書き留めます。 たとえば、次の出力ではアドレスは 172.19.202.52 です。
 

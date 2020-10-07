@@ -8,12 +8,12 @@ ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c2d5b4758f80d07516500c663762d7c8607e2a30
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 50a1656fcb92d9777d4a9476ef2a4c1fd2f2efc6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88917960"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329484"
 ---
 # <a name="full-text-search-in-azure-cognitive-search"></a>Azure Cognitive Search でのフルテキスト検索
 
@@ -51,7 +51,7 @@ ms.locfileid: "88917960"
 
 次の例は、[REST API](/rest/api/searchservice/search-documents) を使用して Azure Cognitive Search に送信できる検索要求です。  
 
-~~~~
+```
 POST /indexes/hotels/docs/search?api-version=2020-06-30
 {
     "search": "Spacious, air-condition* +\"Ocean view\"",
@@ -61,7 +61,7 @@ POST /indexes/hotels/docs/search?api-version=2020-06-30
     "orderby": "geo.distance(location, geography'POINT(-159.476235 22.227659)')", 
     "queryType": "full" 
 }
-~~~~
+```
 
 この要求に対して、検索エンジンは次のことを実行します。
 
@@ -76,9 +76,9 @@ POST /indexes/hotels/docs/search?api-version=2020-06-30
 
 前出のとおり、検索要求の最初の行がクエリ文字列です。 
 
-~~~~
+```
  "search": "Spacious, air-condition* +\"Ocean view\"", 
-~~~~
+```
 
 クエリ パーサーは、検索語から演算子 (この例の `*` や `+`) を切り離し、検索クエリを "*サブクエリ*" に分解します。次の種類のサブクエリがサポートされています。 
 
@@ -104,9 +104,9 @@ POST /indexes/hotels/docs/search?api-version=2020-06-30
 
 `searchMode=any` とした場合 (既定)、spacious と air-condition との間に区切り記号として置かれた空白は OR (`||`) の働きをするため、前出のサンプル クエリ テキストは次のクエリ テキストに相当します。 
 
-~~~~
+```
 Spacious,||air-condition*+"Ocean view" 
-~~~~
+```
 
 ブール クエリの構造において、明示的な演算子 (`+"Ocean view"` の `+` など) の意味ははっきりしています。つまり検索条件との一致は "*必須 (must)* " です。 それに比べて、残りの語句 (spacious と air-condition) の解釈はあいまいです。 検索エンジンが探すべきなのは、ocean view *と* spacious *と* air-condition の "すべて" との一致でしょうか。 それとも、ocean view に加えて、残りの 2 つの語句のうち、"*どちらか一方*" のみが含まれていればよいのでしょうか。 
 
@@ -114,9 +114,9 @@ Spacious,||air-condition*+"Ocean view"
 
 では、`searchMode=all` と設定したらどうなるでしょうか。 この場合は、空白文字が "and" 演算と解釈されます。 残りの 2 つの語句が両方とも文書に存在したときに初めて一致と見なされます。 最終的にサンプル クエリは次のように解釈されます。 
 
-~~~~
+```
 +Spacious,+air-condition*+"Ocean view"
-~~~~
+```
 
 変更後のクエリ ツリーは次のようになり、一致する文書は 3 つすべてのサブクエリの積集合となります。 
 
@@ -152,16 +152,16 @@ Spacious,||air-condition*+"Ocean view"
 
 アナライザーの動作は、[Analyze API](/rest/api/searchservice/test-analyzer) を使ってテストすることができます。 解析したいテキストを入力すると、指定したアナライザーからどのような語句が生成されるかを確認できます。 たとえば、標準アナライザーで "air-condition" というテキストがどのように加工されるかを確認するには、次のように要求します。
 
-~~~~
+```json
 {
     "text": "air-condition",
     "analyzer": "standard"
 }
-~~~~
+```
 
 標準アナライザーは、入力テキストを次の 2 つのトークンに分解します。その際、開始オフセットと終了オフセット (一致部分の強調表示に使用される) やその位置 (フレーズの照合に使用される) など、各種の属性を使ってそれらに注釈を付けます。
 
-~~~~
+```json
 {
   "tokens": [
     {
@@ -178,7 +178,7 @@ Spacious,||air-condition*+"Ocean view"
     }
   ]
 }
-~~~~
+```
 
 <a name="exceptions"></a>
 
@@ -192,7 +192,7 @@ Spacious,||air-condition*+"Ocean view"
 
 ここでいう文書検索とは、一致する語句がインデックスに存在する文書を見つけることです。 この段階は、例を使用するとよくわかります。 まず、次のような単純なスキーマを使用した hotels というインデックスを考えてみましょう。 
 
-~~~~
+```json
 {
     "name": "hotels",
     "fields": [
@@ -201,11 +201,11 @@ Spacious,||air-condition*+"Ocean view"
         { "name": "description", "type": "Edm.String", "searchable": true }
     ] 
 } 
-~~~~
+```
 
 さらに、このインデックスには、以下の 4 つの文書が追加されているとします。 
 
-~~~~
+```json
 {
     "value": [
         {
@@ -230,7 +230,7 @@ Spacious,||air-condition*+"Ocean view"
         }
     ]
 }
-~~~~
+```
 
 **語句のインデックス作成方法**
 
@@ -321,10 +321,12 @@ title フィールドの場合、*hotel* だけが 2 つの文書 (1 と 3) に�
 ### <a name="scoring-example"></a>スコア付けの例
 
 冒頭のサンプル クエリで見つかった 3 つの文書を思い出してください。
-~~~~
+
+```
 search=Spacious, air-condition* +"Ocean view"  
-~~~~
-~~~~
+```
+
+```json
 {
   "value": [
     {
@@ -347,7 +349,7 @@ search=Spacious, air-condition* +"Ocean view"
     }
   ]
 }
-~~~~
+```
 
 文書 1 は、クエリに対して最も高い関連度で一致しています。なぜなら、*spacious* という単語と *ocean view* という必須のフレーズの両方が description フィールドに出現するためです。 その他の 2 つの文書は、*ocean view* しか一致していません。 しかし文書 2 と文書 3 は、クエリに対して同じように一致しているにもかかわらず、関連度スコアが異なるのはなぜでしょうか。 これは、スコア付けの式の構成要素が TF/IDF だけではないためです。 この場合、文書 3 の方が、description が短いために、少しだけ高いスコアが割り当てられています。 フィールドの長さやその他の要因が関連度スコアに与える影響については、[Lucene の実際に役立つスコア付けの式](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html)に関するページを参照してください。
 

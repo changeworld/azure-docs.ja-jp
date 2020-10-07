@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: b-juche
-ms.openlocfilehash: 405d872c178a3172454943b7d40ea276ea5c017e
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: e1be0879af02fac0f7ae926a02ea23fd6be84de4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459107"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325691"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Azure NetApp Files を使用して、スナップショットを管理する
 
@@ -65,7 +65,7 @@ Azure NetApp Files では、オンデマンドのスナップショットの作�
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
     ```
-また、Azure CLI のコマンド [`az feature register`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-register) と [`az feature show`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-show) を使用して、機能を登録し、登録状態を表示することもできます。 
+また、[Azure CLI のコマンド](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) `az feature register` と `az feature show` を使用して、機能を登録し、登録状態を表示することもできます。 
 
 ### <a name="create-a-snapshot-policy"></a>スナップショット ポリシーを作成する 
 
@@ -221,6 +221,6 @@ Azure NetApp Files では、オンデマンドのスナップショットの作�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure NetApp Files のストレージ階層を理解する](azure-netapp-files-understand-storage-hierarchy.md)
+* [スナップショット ポリシーのトラブルシューティング](troubleshoot-snapshot-policies.md)
 * [Azure NetApp Files のリソース制限](azure-netapp-files-resource-limits.md)
 * [Azure NetApp Files のスナップショット 101 ビデオ](https://www.youtube.com/watch?v=uxbTXhtXCkw&feature=youtu.be)

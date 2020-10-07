@@ -3,12 +3,12 @@ title: MABS と System Center DPM のサポート マトリックス
 description: この記事では、Microsoft Azure Backup Server (MABS) または System Center DPM を使用してオンプレミスおよび Azure VM のリソースをバックアップする場合の、Azure Backup のサポートについてまとめます。
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: e3ca83b8a2874304521d84f6901fcb9627ce80db
-ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
+ms.openlocfilehash: 011e115c7f3cc94b03ffd9ad2467406c60738033
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89506612"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332697"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Microsoft Azure Backup Server または System Center DPM を使用したバックアップのサポート マトリックス
 
@@ -24,7 +24,7 @@ MABS は System Center DPM に基づいており、同様の機能を提供し�
 
 - MABS を実行するために System Center ライセンスは必要ありません。
 - MABS と DPM の両方に対して、Azure は長期的なバックアップ ストレージを提供します。 さらに、DPM では、テープで長期保存するためのデータのバックアップが可能になります。 MABS では、この機能は提供されません。
-- [セカンダリ DPM サーバーを使用してプライマリ DPM サーバーをバックアップすることができます。](/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019) セカンダリ サーバーは、プライマリ サーバー データベースと、プライマリ サーバーに格納されているデータ ソース レプリカを保護します。 プライマリ サーバーに障害が発生した場合、セカンダリ サーバーは、プライマリ サーバーが再び使用可能になるまで、プライマリ サーバーによって保護されているワークロードを引き続き保護することができます。  MABS では、この機能は提供されません。
+- [セカンダリ DPM サーバーを使用してプライマリ DPM サーバーをバックアップすることができます。](/system-center/dpm/back-up-the-dpm-server) セカンダリ サーバーは、プライマリ サーバー データベースと、プライマリ サーバーに格納されているデータ ソース レプリカを保護します。 プライマリ サーバーに障害が発生した場合、セカンダリ サーバーは、プライマリ サーバーが再び使用可能になるまで、プライマリ サーバーによって保護されているワークロードを引き続き保護することができます。  MABS では、この機能は提供されません。
 
 MABS は、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=57520)からダウンロードします。 これは、オンプレミスまたは Azure VM で実行できます。
 
@@ -158,7 +158,7 @@ Microsoft ピアリングの使用時には、サービス、リージョン、�
 |要件 |詳細 |
 |---------|---------|
 |Domain    | DPM/MABS サーバーは、Windows Server 2019、Windows Server 2016、Windows Server 2012 R2、Windows Server 2012 ドメインに存在する必要があります。        |
-|ドメインの信頼   |  DPM/MABS では、異なるフォレスト間にフォレスト レベルの双方向信頼関係が確立されていれば、フォレストをまたがるデータ保護がサポートされます。   <BR><BR>   DPM/MABS サーバー ドメインとの双方向の信頼関係を持つフォレスト内において、DPM/MABS ではドメインをまたいでサーバーとワークステーションを保護できます。 ワークグループまたは信頼されていないドメイン内のコンピューターを保護するには、[ワークグループと信頼されていないドメイン内のワークロードのバックアップと復元](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019)に関する記事を参照してください。  |
+|ドメインの信頼   |  DPM/MABS では、異なるフォレスト間にフォレスト レベルの双方向信頼関係が確立されていれば、フォレストをまたがるデータ保護がサポートされます。   <BR><BR>   DPM/MABS サーバー ドメインとの双方向の信頼関係を持つフォレスト内において、DPM/MABS ではドメインをまたいでサーバーとワークステーションを保護できます。 ワークグループまたは信頼されていないドメイン内のコンピューターを保護するには、[ワークグループと信頼されていないドメイン内のワークロードのバックアップと復元](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains)に関する記事を参照してください。  |
 
 ## <a name="dpmmabs-storage-support"></a>DPM/MABS ストレージのサポート
 
@@ -185,7 +185,7 @@ Azure Backup Server で保護できるさまざまなサーバーとワークロ
 
 ## <a name="supported-backups-to-dpm"></a>サポートされる DPM へのバックアップ
 
-Data Protection Manager で保護できる各種サーバーとワークロードの詳細については、[「DPM でバックアップできるものは何か」を参照してください。](/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2019)
+Data Protection Manager で保護できる各種サーバーとワークロードの詳細については、[「DPM でバックアップできるものは何か」を参照してください。](/system-center/dpm/dpm-protection-matrix)
 
 - DPM/MABS によってバックアップされるクラスター化されたワークロードは DPM/MABS と同じドメインか、または子/信頼できるドメインに存在する必要があります。
 - NTLM/証明書認証を使用して、信頼されていないドメインまたはワークグループのデータをバックアップできます。

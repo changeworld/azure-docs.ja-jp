@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: 62f30d8a0fe1b2f2397fc16161929279a148aaa2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 741bea5129e5fa9660e198a74e23f0ef6c67dc23
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037509"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329756"
 ---
 # <a name="support-for-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースのサポート
 
@@ -38,8 +38,7 @@ Microsoft コマーシャル マーケットプレースの発行元としての
 ## <a name="marketing-resources"></a>マーケティング リソース  
 
 | サポート窓口 | 説明 | 可用性 |  
-|:--- |:--- |:--- |  
-| 電子メール： [cosell@microsoft.com](mailto:cosell@microsoft.com) | オンボーディング プロセスと、共同販売プログラムに関する質問に対するサポート。 | 太平洋標準時ゾーンに基づきます。 |  
+|:--- |:--- |:--- |
 | 電子メール： [gtm@microsoft.com](mailto:gtm@microsoft.com) | GTM の特典とプログラムに関する質問へのサポート。 | 営業時間は、太平洋標準時ゾーンで示されています。 |  
 | 電子メール： [cebrand@microsoft.com](mailto:cebrand@microsoft.com) | Azure ロゴの使用とブランド化に関する質問にお答えします。 |  |  
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/08/2019
 ms.author: Zhchia
-ms.openlocfilehash: bca751c55182df99e87ff1651de534985d9b5e76
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 43f5b96c7029da6b49bc9df40d92fbd250145715
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548992"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326016"
 ---
 # <a name="tutorial-configure-priority-matrix-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Priority Matrix を構成する
 
@@ -114,11 +114,11 @@ Azure AD で自動ユーザー プロビジョニング用に Priority Matrix �
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://sync.appfluence.com/scim/v2/`」と入力します。 前の手順で Priority Matrix から取得して保存した値を **[シークレット トークン]** に入力します。 **[接続テスト]** をクリックして、Azure AD から Priority Matrix に接続できることを確認します。 接続できない場合は、使用中の Priority Matrix アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 

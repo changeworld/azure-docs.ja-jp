@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 08fe2cd87200e1a22f36ab01b58c6cf82fd1f007
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3c6288cd071e7c94026a0eb58c6b60ecd91d9137
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550824"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312670"
 ---
 # <a name="tutorial-configure-fuze-for-automatic-user-provisioning"></a>チュートリアル:Fuze を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -90,11 +90,11 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[管理者資格情報]** セクションの **[テナント URL]** と **[シークレット トークン]** に、前に Fuze 担当者から取得した **SCIM 2.0 ベースの URL と SCIM 認証トークン**の値を入力します。 **[テスト接続]** をクリックして、Azure AD から Fuze への接続を確保します。 接続できない場合は、使用中の Fuze アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 

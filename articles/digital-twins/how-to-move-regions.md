@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: e2cb8ee282666d7a9a567ca04762b26de3b3b9bd
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 1725c3ff162e4f6b7ac3a5ea1ede6976c827b510
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89443043"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328498"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Azure Digital Twins インスタンスを別の Azure リージョンに移動する
 
@@ -113,7 +113,7 @@ ADT Explorer の設定を進めるには、まず、サンプル アプリケー
 
 ### <a name="create-a-new-instance"></a>新しいインスタンスの作成
 
-まず、**Azure Digital Twins の新しいインスタンスをターゲット リージョンに作成**します。 これを行うには、「[*方法: インスタンスと認証を設定する*](how-to-set-up-instance-scripted.md)」の手順に従いますが、次のことに注意してください。
+まず、**Azure Digital Twins の新しいインスタンスをターゲット リージョンに作成**します。 これを行うには、「[*方法: インスタンスと認証を設定する*](how-to-set-up-instance-portal.md)」の手順に従いますが、次のことに注意してください。
 * 別のリソース グループにある**場合**は、新しいインスタンスは同じ名前のままにすることができます。 元のインスタンスを含む同じリソース グループを使用する必要がある場合、新しいインスタンスには別個の名前が必要になります。
 * 場所の入力を求められたら、ターゲットの新しいリージョンを入力します。
 * アプリの登録を再作成する**必要はありません**。 新しいインスタンスでは、既存のものと同じアプリ登録を再利用できます。

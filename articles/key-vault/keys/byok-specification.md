@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: 80796d852c07952b7100c6dd7802bc9279f3218c
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: feef35ef86a933f32949468366fea85eb87d4866
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84198789"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315781"
 ---
 # <a name="bring-your-own-key-specification"></a>Bring Your Own Key の仕様
 
@@ -159,19 +159,7 @@ PUT https://contosokeyvaulthsm.vault.azure.net/keys/ContosoFirstHSMKey?api-versi
 "key_hsm" 値は、Base64 形式でエンコードされた KeyTransferPackage-ContosoFirstHSMkey.byok の内容全体です。
 
 ## <a name="references"></a>References
-
-### <a name="azure-key-vault-rest-api"></a>Azure Key Vault REST API
-
-* [キーの作成](https://docs.microsoft.com/rest/api/keyvault/createkey/createkey)
-* [キーの取得 (キー属性と公開キーのみ)](https://docs.microsoft.com/rest/api/keyvault/getkey/getkey)
-* [キーのインポート](https://docs.microsoft.com/rest/api/keyvault/importkey/importkey)
-
-
-### <a name="azure-cli-commands"></a>Azure CLI コマンド
-* [az keyvault key create](https://docs.microsoft.com/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create)
-* [az keyvault key download](https://docs.microsoft.com/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-download)
-* [az keyvault key import](https://docs.microsoft.com/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import)
-
+- [Key Vault 開発者ガイド](../general/developers-guide.md)
 
 ## <a name="next-steps"></a>次のステップ
 * 詳細な BYOK の手順:[HSM で保護されたキーを Key Vault にインポートする (BYOK)](hsm-protected-keys-byok.md)

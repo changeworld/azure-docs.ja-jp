@@ -6,15 +6,15 @@ services: virtual-wan
 author: erjosito
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 08/18/2020
+ms.date: 09/22/2020
 ms.author: jomore
 ms.custom: fasttrack-new
-ms.openlocfilehash: 98142e3a8904bcbb0352fa768fc72966412dae0b
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: fa4828d8b2752168d5f66a4f80c00611f80f0176
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590499"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306635"
 ---
 # <a name="use-private-link-in-virtual-wan"></a>Virtual WAN で Private Link を使用する
 
@@ -38,11 +38,11 @@ ms.locfileid: "88590499"
 
 Azure SQL Database を作成した後、プライベート エンドポイントを参照してプライベート エンドポイントの IP アドレスを確認することができます。
 
-:::image type="content" source="./media/howto-private-link/endpoints.png" alt-text="プライベート エンドポイント" lightbox="./media/howto-private-link/endpoints.png":::
+:::image type="content" source="./media/howto-private-link/endpoints.png" alt-text="プライベート リンクの作成" lightbox="./media/howto-private-link/endpoints.png":::
 
 作成したプライベート エンドポイントをクリックすると、そのプライベート IP アドレスだけでなく、その完全修飾ドメイン名 (FQDN) も表示されます。 プライベート エンドポイントの IP アドレスが、デプロイされている VNet の範囲内 (10.1.3.0/24) にあることに注意してください。
 
-:::image type="content" source="./media/howto-private-link/sql-endpoint.png" alt-text="SQL エンドポイント" lightbox="./media/howto-private-link/sql-endpoint.png":::
+:::image type="content" source="./media/howto-private-link/sql-endpoint.png" alt-text="プライベート リンクの作成" lightbox="./media/howto-private-link/sql-endpoint.png":::
 
 ## <a name="verify-connectivity-from-the-same-vnet"></a><a name="connectivity"></a>同じ VNet からの接続を確認する
 
@@ -61,7 +61,7 @@ Address: 10.1.3.228
 
 前の出力でわかるように、FQDN `wantest.database.windows.net` は `wantest.privatelink.database.windows.net` にマップされ、プライベート エンドポイントと共に作成されたプライベート DNS ゾーンは、プライベート IP アドレス `10.1.3.228` に解決されます。 プライベート DNS ゾーンを見ていくと、プライベート IP アドレスにマップされたプライベート エンドポイントに A レコードがあることが確認できます。
 
-:::image type="content" source="./media/howto-private-link/dns-zone.png" alt-text="DNS ゾーン" lightbox="./media/howto-private-link/dns-zone.png":::
+:::image type="content" source="./media/howto-private-link/dns-zone.png" alt-text="プライベート リンクの作成" lightbox="./media/howto-private-link/dns-zone.png":::
 
 正しい DNS 解決を確認した後、データベースへの接続を試みることができます。
 
@@ -87,7 +87,7 @@ VNet またはブランチからプライベート エンドポイントがデ�
 
 この例では、別の VNet から接続します。そのため、まず、プライベート DNS ゾーンを新しい VNet に接続して、そのワークロードが Azure SQL Database の完全修飾ドメイン名をプライベート IP アドレスに解決できるようにします。 これを行うには、次のようにプライベート DNS ゾーンを新しい VNet にリンクします。
 
-:::image type="content" source="./media/howto-private-link/dns-link.png" alt-text="DNS リンク" lightbox="./media/howto-private-link/dns-link.png":::
+:::image type="content" source="./media/howto-private-link/dns-link.png" alt-text="プライベート リンクの作成" lightbox="./media/howto-private-link/dns-link.png":::
 
 これで、接続された VNet 内の仮想マシンは、Azure SQL Database の FQDN をプライベート リンクのプライベート IP アドレスに正しく解決されるはずです。
 
@@ -104,7 +104,7 @@ Address: 10.1.3.228
 
 この VNet (10.1.1.0/24) が、プライベート エンドポイントが構成されている元の VNet (10.1.3.0/24) に接続していることを再確認するには、VNet 内の任意の仮想マシンで有効なルート テーブルを確認します。
 
-:::image type="content" source="./media/howto-private-link/effective-routes.png" alt-text="有効なルート" lightbox="./media/howto-private-link/effective-routes.png":::
+:::image type="content" source="./media/howto-private-link/effective-routes.png" alt-text="プライベート リンクの作成" lightbox="./media/howto-private-link/effective-routes.png":::
 
 ご覧のように、Azure Virtual WAN の Virtual Network ゲートウェイによって挿入された VNet 10.1.3.0/24 をポイントするルートがあります。 これで、ようやくデータベースへの接続をテストできるようになりました。
 

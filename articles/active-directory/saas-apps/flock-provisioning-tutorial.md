@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 5090741b6e7c50e7a3179fb2fdd84fa19ddf657c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bb6ad9aae5f92f03ea5bfacc028973e4c4a6dbea
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554905"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312594"
 ---
 # <a name="tutorial-configure-flock-for-automatic-user-provisioning"></a>チュートリアル:Flock を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -106,11 +106,11 @@ Azure AD で自動ユーザー プロビジョニング用に Flock を構成す
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. [管理者資格情報] セクションの **[テナント URL]** および **[シークレット トークン]** に、先ほど取得した `https://api.flock-staging.com/v2/scim` と **API トークン**の値をそれぞれ入力します。 **[テスト接続]** をクリックして、Azure AD から Flock への接続を確保します。 接続できない場合は、使用中の Flock アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 

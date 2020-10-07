@@ -3,12 +3,12 @@ title: Azure への SQL Server データベースのバックアップ
 description: この記事では、SQL Server を Azure に バックアップする方法について説明します。 また、SQL Server の復旧についても説明します。
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: 3627162ef2f4330a4b6a78625b5e07bdcf56419b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 510d9637031928e31abaa5f82a5bf58c6ef44719
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376538"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316845"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Azure VM での SQL Server Backup について
 
@@ -33,7 +33,7 @@ ms.locfileid: "89376538"
 * プラグインは Recovery Services コンテナーに直接データを送信するため、ステージングの場所が必要ありません。 データは Azure Backup サービスによって暗号化され、ストレージ アカウント内に格納されます。
 * データ転送が完了すると、コーディネーターはバックアップ サービスを使用してコミットを確認します。
 
-  ![SQL のバックアップ アーキテクチャ](./media/backup-azure-sql-database/backup-sql-overview.png)
+  ![SQL のバックアップ アーキテクチャ](./media/backup-azure-sql-database/azure-backup-sql-overview.png)
 
 ## <a name="before-you-start"></a>開始する前に
 
