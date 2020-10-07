@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: ae15fc59137e9bf6fb7bfd9fedfb410aa4e0931c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2e0b9f10a321fce0b8ccc31bf914fe4f2995c49a
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91337046"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651906"
 ---
 # <a name="analyze-unexpected-charges"></a>想定外の料金を分析する
 
@@ -26,7 +26,7 @@ ms.locfileid: "91337046"
 
 該当する顧客タイプに基づいて請求書を確認する方法を示した詳細な手順が、以下の各記事で提供されています。 それぞれの記事には、特定の請求期間における使用状況とコスト明細を含んだ CSV ファイルのダウンロード手順が記載されています。
 
-- [従量課金制請求書の確認プロセス](review-individual-bill.md#compare-invoiced-charges-with-usage-file)
+- [従量課金制請求書の確認プロセス](review-individual-bill.md#charges)
 - [マイクロソフト エンタープライズ契約の請求書の確認プロセス](review-enterprise-agreement-bill.md)
 - [Microsoft 顧客契約の確認プロセス](review-customer-agreement-bill.md#analyze-your-azure-usage-charges)
 - [Microsoft Partner Agreement の確認プロセス](review-partner-agreement-bill.md#analyze-your-azure-usage-charges)

@@ -1,16 +1,18 @@
 ---
 title: クイック スタート:cURL と REST を使用してナレッジ ベースを管理する - QnA Maker
 description: このクイックスタートでは、REST API を使用してナレッジ ベースを作成、公開し、クエリを実行する方法について説明します。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.date: 04/13/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: quickstart
-ms.openlocfilehash: facc45ab8f916181f7eeceb65c5102a60ae7d7e9
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 11a7bd8655d1b5606c3b53ed78e796bc42f85b2e
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261705"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777437"
 ---
 # <a name="quickstart-use-curl-and-rest-to-manage-knowledge-base"></a>クイック スタート:cURL と REST を使用してナレッジ ベースを管理する
 

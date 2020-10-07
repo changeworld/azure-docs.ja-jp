@@ -1,14 +1,16 @@
 ---
 title: クイック スタート:ナレッジ ベースの作成、トレーニング、発行 - QnA Maker
 description: QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マニュアルなど、独自のコンテンツから作成できます。 この記事には、単純な FAQ Web ページから QnA Maker ナレッジ ベースを作成して、QnA Maker に関する質問に答える例が含まれています。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: 3cc38ca49820b1a97ec11c890bfd0ef1670f6eef
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 1646666244eb2247d6e7127c4d4e8d39cb0af5ff
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89535851"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777680"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>クイック スタート:QnA Maker ナレッジ ベースの作成、トレーニング、発行
 
@@ -64,7 +66,7 @@ QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マ
 
     ` * Azure QnA Maker service\n* Azure Cognitive Search\n* Azure web app\n* Azure app plan`
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png" alt-text="質問をテキストとして追加し、回答をマークダウンで書式設定して追加します。":::
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png" alt-text="QnA Maker サービス ナレッジ ベースの選択のスクリーンショット":::
 
     マークダウン記号 `*` は、箇条書きに使用されます。 `\n` は、改行に使用されます。
 
@@ -81,7 +83,7 @@ QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マ
 
     `How many Azure services are used by a knowledge base?`
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png" alt-text="テキスト ボックスにユーザー クエリの例を入力します。":::
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png" alt-text="QnA Maker サービス ナレッジ ベースの選択のスクリーンショット":::
 
 1. **[検査]** を選択し、詳細に応答を確認します。 テスト ウィンドウは、ナレッジ ベースへの変更を、発行前にテストする際に使用します。
 
@@ -131,7 +133,7 @@ QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マ
 
     チャット ボットが、ナレッジ ベースからの回答で応答します。
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-web-chat.png" alt-text="テスト Web チャットにユーザー クエリを入力します。":::
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-web-chat.png" alt-text="QnA Maker サービス ナレッジ ベースの選択のスクリーンショット":::
 
 ## <a name="what-did-you-accomplish"></a>ここで行ったこと
 
