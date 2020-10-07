@@ -1,5 +1,5 @@
 ---
-title: Azure Resource Manager テンプレートを使用して Azure Synapse ワークスペースを作成する
+title: クイック スタート:Azure Resource Manager テンプレートを使用して Azure Synapse ワークスペースを作成する
 description: Azure Resource Manager テンプレートを使用して Synapse ワークスペースを作成する方法を学習します。
 services: azure-resource-manager
 author: julieMSFT
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 08/07/2020
-ms.openlocfilehash: c64f3d835eeede79f937bbaadb0a54992176438d
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: dc6d36f2316e0ae19ce8b813fa9eb127b1a9cf1f
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500679"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569000"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-using-a-deployment-template"></a>クイック スタート:配置テンプレートを使用して Azure Synapse ワークスペースを作成する
 
@@ -33,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 テンプレートを確認するには、次のように「**視覚化する**」のリンクを選択します。
 
-[![視覚化する](../media/template-deployments/template-visualize-button.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FSynapse%2Fmaster%2FManage%2FDeployWorkspace%2Fazuredeploy.json)
+[![視覚化する](../media/template-deployments/template-visualize-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FSynapse%2Fmaster%2FManage%2FDeployWorkspace%2Fazuredeploy.json)
 
 このテンプレートでは、次の 2 つのリソースが定義されます。
 

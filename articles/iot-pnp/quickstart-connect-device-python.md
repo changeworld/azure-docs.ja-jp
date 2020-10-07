@@ -1,6 +1,6 @@
 ---
-title: IoT プラグ アンド プレイ プレビューのサンプル Python デバイス コードを Azure IoT Hub に接続する | Microsoft Docs
-description: Python を使用して、IoT ハブと接続する IoT プラグ アンド プレイ プレビューのサンプル デバイス コードをビルドして実行します。 Azure IoT Explorer ツールを使用して、デバイスからハブに送信された情報を表示します。
+title: IoT プラグ アンド プレイのサンプル Python デバイス コードを Azure IoT Hub に接続する | Microsoft Docs
+description: Python を使用して、IoT ハブと接続する IoT プラグ アンド プレイのサンプル デバイス コードをビルドして実行します。 Azure IoT Explorer ツールを使用して、デバイスからハブに送信された情報を表示します。
 author: ericmitt
 ms.author: ericmitt
 ms.date: 7/14/2020
@@ -8,22 +8,22 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 84ef7ff18c294097da20640c1de237b41900cb40
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 187a0598dfc26394d1fd48e67d83ef7e98ef6226
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352698"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574029"
 ---
-# <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub-python"></a>クイック スタート:サンプルの IoT プラグ アンド プレイ プレビュー デバイス アプリケーションを IoT Hub に接続する (Python)
+# <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-to-iot-hub-python"></a>クイック スタート:サンプルの IoT プラグ アンド プレイ デバイス アプリケーションを IoT Hub に接続する (Python)
 
 [!INCLUDE [iot-pnp-quickstarts-device-selector.md](../../includes/iot-pnp-quickstarts-device-selector.md)]
 
 このクイックスタートでは、IoT プラグ アンド プレイ デバイス アプリケーションのサンプルをビルドし、それをご利用の IoT ハブに接続し、送信されるテレメトリを Azure IoT エクスプローラー ツールを使用して表示する方法を示します。 このサンプル アプリケーションは Python 用に記述されており、Python 用 Azure IoT Hub デバイス SDK に含まれています。 ソリューション ビルダーは Azure IoT エクスプローラー ツールを使用して、デバイス コードを表示しなくても IoT プラグ アンド プレイ デバイスの機能を理解することができます。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 ## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
 このクイックスタートを完了するには、お使いの開発用マシン上に Python 3.7 が必要です。 [python.org](https://www.python.org/) から、複数のプラットフォームに対応した最新の推奨バージョンをダウンロードできます。次のコマンドを使用して、ご利用の Python のバージョンを確認できます。  
 
@@ -31,34 +31,7 @@ ms.locfileid: "87352698"
 python --version
 ```
 
-### <a name="azure-iot-explorer"></a>Azure IoT エクスプローラー
-
-このクイックスタートのパート 2 でサンプル デバイスとやり取りするには、**Azure IoT エクスプローラー** ツールを使用します。 ご利用のオペレーティング システム用の [Azure IoT エクスプローラーの最新リリースをダウンロードしてインストール](./howto-use-iot-explorer.md)します。
-
-[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
-
-次のコマンドを実行して、ご利用のハブに対する "_IoT ハブ接続文字列_" を取得します。 この接続文字列はメモしておいてください。このクイックスタートで後ほど使用します。
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
-
-> [!TIP]
-> また、Azure IoT エクスプローラー ツールを使用して、IoT ハブ接続文字列を見つけることもできます。
-
-次のコマンドを実行して、ハブに追加したデバイスの "_デバイス接続文字列_" を取得します。 この接続文字列はメモしておいてください。このクイックスタートで後ほど使用します。
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output table
-```
-
-[!INCLUDE [iot-pnp-download-models.md](../../includes/iot-pnp-download-models.md)]
-
-## <a name="set-up-your-environment"></a>環境の設定方法
-
-このパッケージは、パブリック プレビューの更新用の PIP として公開されます。 パッケージのバージョンは、最新であるか `2.1.4` である必要があります
-
-ローカルの Python 環境で、次のようにファイルをインストールします。
+ローカルの Python 環境で、次のようにパッケージをインストールします。
 
 ```cmd/sh
 pip install azure-iot-device
@@ -72,11 +45,9 @@ git clone https://github.com/Azure/azure-iot-sdk-python
 
 ## <a name="run-the-sample-device"></a>サンプル デバイスを実行する
 
-*azure-iot-sdk-python\azure-iot-device\samples\pnp* フォルダーには、IoT プラグ アンド プレイ デバイスのサンプル コードが含まれています。 このクイックスタートでは、*pnp_thermostat.py* ファイルを使用します。 このサンプル コードでは、IoT プラグ アンド プレイ互換デバイスを実装し、Azure IoT Python デバイス クライアント ライブラリを使用します。
+*azure-iot-sdk-python\azure-iot-device\samples\pnp* フォルダーには、IoT プラグ アンド プレイ デバイスのサンプル コードが含まれています。 このクイックスタートでは、*simple_thermostat.py* ファイルを使用します。 このサンプル コードでは、IoT プラグ アンド プレイ互換デバイスを実装し、Azure IoT Python デバイス クライアント ライブラリを使用します。
 
-先ほどメモしたデバイス接続文字列を格納するために、**IOTHUB_DEVICE_CONNECTION_STRING** という環境変数を作成します。
-
-テキスト エディターで **pnp_thermostat.py** ファイルを開きます。 次の点に注意してください。
+テキスト エディターで **simple_thermostat.py** ファイルを開きます。 次の点に注意してください。
 
 1. [サーモスタット](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json)を一意に表す単一のデバイス ツイン モデル識別子 (DTMI) を定義しています。 DTMI は、ユーザーに認識されている必要があり、デバイス実装のシナリオによって異なります。 現在のサンプルでは、モデルは、温度の監視に関連付けられたテレメトリ、プロパティ、およびコマンドを持つサーモスタットを表します。
 
@@ -92,7 +63,7 @@ git clone https://github.com/Azure/azure-iot-sdk-python
 
     1. プロパティを更新します。 使用している**サーモスタット** モデルでは、サーモスタット用の 2 つのプロパティとして `targetTemperature` と `maxTempSinceLastReboot` が定義されているため、これを使用することになります。 プロパティは、`device_client` で定義されている `patch_twin_reported_properties` メソッドを使用して更新されます。
 
-    1. **execute_command_listener** 関数を使用して、コマンド要求のリッスンが開始されます。 この関数により、サービスからのコマンドをリッスンするように "リスナー" が設定されます。 リスナーを設定するときに、`method_name`、`user_command_handler`、および `create_user_response_handler` を指定します。 
+    1. **execute_command_listener** 関数を使用して、コマンド要求のリッスンが開始されます。 この関数により、サービスからのコマンドをリッスンするように "リスナー" が設定されます。 リスナーを設定するときに、`method_name`、`user_command_handler`、および `create_user_response_handler` を指定します。
         - `user_command_handler` 関数では、コマンドを受信したときにデバイスによって行われる必要がある内容を定義します。 たとえば、アラームが鳴る場合、このコマンドを受信することの効果は、目を覚ますことです。 これは、呼び出されるコマンドの "効果" と考えてください。
         - `create_user_response_handler` 関数により、コマンドが正常に実行されたときに IoT ハブに送信される応答が作成されます。 たとえば、アラームが鳴る場合、スヌーズを押して応答します。これは、サービスに対するフィードバックです。 これは、サービスに与える返信と考えてください。 この応答はポータルで確認できます。
 
@@ -100,16 +71,19 @@ git clone https://github.com/Azure/azure-iot-sdk-python
 
     1. ユーザーが **Q** または **q** キーを押したら、すべてのリスナーとタスクを無効にし、ループを終了します。
 
+[!INCLUDE [iot-pnp-environment](../../includes/iot-pnp-environment.md)]
+
+サンプル構成の詳細については、[サンプルの readme](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/pnp/README.md) を参照してください。
+
 これでコードを見終えたので、次のコマンドを使用してサンプルを実行します。
 
 ```cmd/sh
-python pnp_thermostat.py
+python simple_thermostat.py
 ```
 
 次の出力が表示されます。これは、デバイスによってハブにテレメトリ データが送信され、コマンドとプロパティの更新情報を受信する準備ができたことを示します。
 
 ```cmd/sh
-Connecting using Connection String HostName=<your hub name>.azure-devices.net;DeviceId=<your device id>;SharedAccessKey=<your device shared access key>
 Listening for command requests and property updates
 Press Q to quit
 Sending telemetry for temperature
@@ -124,11 +98,9 @@ Sent message
 
 [!INCLUDE [iot-pnp-iot-explorer.md](../../includes/iot-pnp-iot-explorer.md)]
 
-[!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
-
 ## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、IoT プラグ アンド プレイ デバイスを IoT ハブに接続する方法を学習しました。 ご利用の IoT プラグ アンド プレイ デバイスとやりとりするソリューションを構築する方法の詳細については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [ご利用のソリューションに接続されている IoT プラグ アンド プレイ プレビュー デバイスとやり取りする](quickstart-service-python.md)
+> [ご利用のソリューションに接続されている IoT プラグ アンド プレイ デバイスとやり取りする](quickstart-service-python.md)

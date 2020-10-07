@@ -3,22 +3,47 @@ title: Azure 以外のマシンを Azure Security Center に接続する
 description: Azure 以外のマシンを Azure Security Center に接続する方法について説明します
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
-ms.topic: how-to
+ms.date: 9/30/2020
+ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 2602df2e8a2699914ee32138a8aeba31d7f58cdb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3cdff2b844aa68de7f07faf69710aeabb5513093
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931040"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576067"
 ---
 #  <a name="connect-your-non-azure-machines-to-security-center"></a>Azure 以外のマシンを Security Center に接続する
 
-Security Center では、Azure 以外のコンピューターのセキュリティの状況を監視できますが、これらのリソースをオンボードしておく必要があります。 Azure 以外のコンピューターは、以下の説明に従って、 **[作業の開始]** ページまたは **[インベントリ]** から追加できます。
+Security Center では、Azure 以外のコンピューターのセキュリティの状況を監視できますが、これらのリソースをオンボードしておく必要があります。 
 
-## <a name="add-non-azure-computers"></a>Azure 以外のコンピューターを追加する 
+Azure 以外のコンピューターを追加は、次のいずれかの方法で追加できます。
+
+- Azure Arc の使用 (**推奨**)
+- Azure portal の Security Center のページから ( **[作業の開始]** と **[インベントリ]** )
+
+以下で、これらのそれぞれについて説明します。
+
+## <a name="add-non-azure-machines-with-azure-arc"></a>Azure Arc を使用して Azure 以外のマシンを追加する
+
+Azure 以外のマシンを Azure Security Center に追加する方法として推奨されるのは、Azure Arc を使用することです。
+
+Azure Arc が有効になっているマシンは Azure リソースになり、他の Azure リソースのような推奨事項と共に、Security Center に表示されます。 
+
+さらに、Azure Arc には、マシンでポリシーを有効するオプション、Log Analytics エージェントを拡張機能としてデプロイするオプション、他の Azure サービスを使用してデプロイを簡素化するオプションなど、強化された機能が用意されています。 利点の概要については、「[サポートされるシナリオ](../azure-arc/servers/overview.md#supported-scenarios)」を参照してください。
+
+**Azure Arc をデプロイするには:**
+
+- マシン 1 台の場合は、「[クイック スタート:Azure Arc 対応サーバーにハイブリッド マシンを接続する」](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)の手順に従います。
+- Azure Arc を大規模にデプロイするには、「[ハイブリッド マシンを大規模に Azure に接続する](../azure-arc/servers/onboard-service-principal.md)」を参照してください
+
+[Azure Arc](../azure-arc/servers/overview.md) の詳細情報を参照してください。
+
+> [!TIP]
+> AWS マシンをオンボードしようとしている場合、Security Center の AWS 用コネクタにより、Azure Arc のデプロイは自動的かつ透過的に処理されます。 詳細については、「[Azure Security Center への AWS アカウントの接続](quickstart-onboard-aws.md)」を参照してください。
+
+## <a name="add-non-azure-machines-from-security-centers-portal-pages"></a>Security Center のポータル ページから Azure 以外のマシンを追加する
 
 1. Security Center メニューから、 **[作業の開始]** ページを開きます。
 1. **[作業の開始]** タブを選択します。
@@ -29,6 +54,8 @@ Security Center では、Azure 以外のコンピューターのセキュリテ�
 
     > [!TIP]
     > **[インベントリ]** ページの **[非 Azure サーバーの追加]** から、マシンを追加するページを開くこともできます。
+    > 
+    > :::image type="content" source="./media/security-center-onboarding/onboard-inventory.png" alt-text="[作業の開始] ページの [作業の開始] タブ":::
 
     Log Analytics ワークスペースの一覧が表示されます。 該当する場合、一覧には、自動プロビジョニングが有効になっているときに Security Center によって作成された既定のワークスペースが含まれます。 このワークスペースまたは使用する別のワークスペースを選択します。
 
@@ -89,12 +116,13 @@ Windows マシンを追加するには、 **[エージェント管理]** ペー�
 
 
 ## <a name="verifying"></a>確認中
-おめでとうございます。 これで Azure と Azure 以外のマシンを 1 か所で確認できるようになりました。 [資産インベントリ](asset-inventory.md) ページを開いて、関連するリソースの種類にフィルターを適用します。 次の 2 つのアイコンは種類を示します。
+おめでとうございます。 これで Azure と Azure 以外のマシンを 1 か所で確認できるようになりました。 [資産インベントリ](asset-inventory.md) ページを開いて、関連するリソースの種類にフィルターを適用します。 以下のアイコンで種類が区別されます。
 
-  ![アイコン 1](./media/quick-onboard-linux-computer/security-center-monitoring-icon1.png) Azure 以外のマシン
+  ![Azure 以外のマシンを表す ASC アイコン](./media/quick-onboard-linux-computer/security-center-monitoring-icon1.png) Azure 以外のマシン
 
-  ![アイコン 2](./media/quick-onboard-linux-computer/security-center-monitoring-icon2.png) Azure VM
+  ![Azure のマシンを表す ASC アイコン](./media/quick-onboard-linux-computer/security-center-monitoring-icon2.png) Azure VM
 
+  ![Azure Arc のマシンを表す ASC アイコン](./media/quick-onboard-linux-computer/arc-enabled-machine-icon.png) Azure Arc 対応マシン
 
 ## <a name="next-steps"></a>次の手順
 

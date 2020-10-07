@@ -1,7 +1,7 @@
 ---
 title: テナント モデルを作成する (プレビュー) - Speech サービス
 titleSuffix: Azure Cognitive Services
-description: Office 365 データを使用する、セキュリティとコンプライアンスが確保されたテナント モデル (Custom Speech with Office 365 data) を自動的に生成し、組織固有の用語に最適な音声認識を提供します。
+description: Microsoft 365 データを使用する、セキュリティとコンプライアンスが確保されたテナント モデル (Custom Speech with Microsoft 365 data) を自動的に生成し、組織固有の用語に最適な音声認識を提供します。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: tutorial
 ms.date: 06/25/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 52e4271fca02dc9b0eab45ca98581ecd85119b59
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 5e861182ee57a0b49d3e62a858fc97dbf0890ea3
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934482"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399705"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>チュートリアル:テナント モデルを作成する (プレビュー)
 
-テナント モデル (Custom Speech with Office 365 data) は、組織の Office 365 データからカスタム音声認識モデルを自動的に生成する Office365 企業ユーザー向けのオプトイン サービスです。 このモデルは、専門用語と業界用語、人名に関して、すべてセキュリティとコンプライアンスに配慮した方法で最適化されます。
+テナント モデル (Custom Speech with Microsoft 365 data) は、組織の Microsoft 365 データからカスタム音声認識モデルを自動的に生成する Microsoft365 企業ユーザー向けのオプトイン サービスです。 このモデルは、専門用語と業界用語、人名に関して、すべてセキュリティとコンプライアンスに配慮した方法で最適化されます。
 
 > [!IMPORTANT]
-> テナント モデル サービスを使用して登録した場合、Speech Service は、貴社の言語モデルにアクセスすることができます。 このモデルは、組織内のだれでも見ることができる Office 365 パブリック グループのメールやドキュメントから生成されます。 組織の Office 365 管理者は、Office 365 管理ポータルから組織全体の言語モデルの使用をオンにしたりオフにしたりすることができます。
+> テナント モデル サービスを使用して登録した場合、Speech Service は、貴社の言語モデルにアクセスすることができます。 このモデルは、組織内のだれでも見ることができる Microsoft 365 パブリック グループのメールとドキュメントから生成されます。 組織の管理者は、管理ポータルから組織全体の言語モデルの使用をオンにしたりオフにしたりすることができます。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -36,7 +36,7 @@ ms.locfileid: "88934482"
 
 ## <a name="enroll-in-the-tenant-model-service"></a>テナント モデル サービスに登録する
 
-テナント モデルをデプロイする前に、まずテナント モデル サービスに登録する必要があります。 登録作業は Microsoft 365 管理センターで行います。この作業を実行できるのは Microsoft 365 管理者だけです。
+テナント モデルをデプロイする前に、まずテナント モデル サービスに登録する必要があります。 登録は Microsoft 365 管理センターで行われ、これを行えるのは管理者だけです。
 
 1. [Microsoft 365 管理センター](https://admin.microsoft.com)にサインインします。
 
@@ -69,7 +69,7 @@ Speech SDK でテナント モデルを使用するには、音声リソース�
 
 ## <a name="create-a-language-model"></a>言語モデルを作成する
 
-管理者が組織のテナント モデルを有効にした後は、Office 365 データに基づいて言語モデルを作成できます。
+管理者が組織のテナント モデルを有効にした後は、Microsoft 365 データに基づいて言語モデルを作成できます。
 
 1. [Speech Studio](https://speech.microsoft.com/) にサインインします。
 1. 右上の **[設定]** (歯車アイコン) を選択し、 **[Tenant Model settings]\(テナント モデルの設定\)** を選択します。
@@ -79,7 +79,7 @@ Speech SDK でテナント モデルを使用するには、音声リソース�
    テナント モデルを作成する資格があるかどうかを伝えるメッセージが Speech Studio に表示されます。
 
    > [!NOTE]
-   > 北米の Office 365 企業ユーザーのお客様は、テナント モデル (英語) を作成することができます。 カスタマー ロックボックス、カスタマー キー、Office 365 Government のお客様は、この機能をご利用いただけません。 お客様がカスタマー ロックボックスまたはカスタマー キーのユーザーかどうかを判断するには、次のページを参照してください。
+   > 北米の企業ユーザーのお客様は、テナント モデル (英語) を作成することができます。 カスタマー ロックボックス、カスタマー キー、Office 365 Government のお客様は、この機能をご利用いただけません。 お客様がカスタマー ロックボックスまたはカスタマー キーのユーザーかどうかを判断するには、次のページを参照してください。
    > * [カスタマー ロックボックス](/microsoft-365/compliance/customer-lockbox-requests)
    > * [カスタマー キー](/microsoft-365/compliance/customer-key-overview)
    > * [Office 365 Government](https://www.microsoft.com/microsoft-365/government)
@@ -302,7 +302,7 @@ namespace PrincetonSROnly.FrontEnd.Samples
    dotnet TenantLMSample.dll --Username=<Username> --Password=<Password> --SubscriptionKey=<Subscription-Key> --EndpointUri=<Endpoint-Uri>
    ```
 
-このチュートリアルでは、Office 365 データを使用してカスタム音声認識モデルを作成し、それをデプロイして、Speech SDK で使用する方法を説明しました。
+このチュートリアルでは、Microsoft 365 データを使用してカスタム音声認識モデルを作成し、それをデプロイして、Speech SDK で使用する方法を説明しました。
 
 ## <a name="next-steps"></a>次のステップ
 

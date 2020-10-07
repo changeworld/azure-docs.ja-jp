@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: 7f86d0a090409385497715b70e8199bdf48c6995
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 6b4b4b8bcf5a69fdae9f29284fe965a30d634788
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640329"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539726"
 ---
 # <a name="quickstart-create-ml-services-cluster-in-azure-hdinsight-using-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure HDInsight に ML Services クラスターを作成する
 
@@ -73,7 +73,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure portal からお使いのクラスターに移動し、 **[削除]** を選択します。
 
-![Resource Manager テンプレート HBase](./media/quickstart-resource-manager-template/azure-portal-delete-rserver.png)
+![スクリーンショットは、削除するリソース グループがある HDInsight クラスターを示しています。](./media/quickstart-resource-manager-template/azure-portal-delete-rserver.png)
 
 リソース グループ名を選び、リソース グループ ページを開いて、 **[リソース グループの削除]** を選ぶこともできます。 リソース グループを削除すると、HDInsight クラスターと既定のストレージ アカウントの両方が削除されます。
 

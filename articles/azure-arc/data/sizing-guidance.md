@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 7afe00746b133e8376cf32ba874831c7962e85b1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3bd54d8a23aca7e493cd3c0ddb7f057a6e1f5362
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90932598"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761483"
 ---
 # <a name="sizing-guidance"></a>サイズ設定のガイダンス
 
@@ -27,7 +27,7 @@ Azure Arc データ サービスのデプロイを計画する場合は、Azure 
 ## <a name="general-sizing-requirements"></a>サイズ設定の一般的な要件
 
 > [!NOTE]
-> この記事で説明する概念になじみがない場合は、[Kubernetes リソースのガバナンス](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/)および [Kubernetes のサイズ表記](https://kubernetes.io/docs/concepts/configuration/.manage-resources-containers/#resource-units-in-kubernetes)の詳細を参照できます。
+> この記事で説明する概念になじみがない場合は、[Kubernetes リソースのガバナンス](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/)および [Kubernetes のサイズ表記](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes)の詳細を参照できます。
 
 コア数の値は 1 以上の整数値である必要があります。
 

@@ -3,12 +3,12 @@ title: FedRAMP High ブループリント サンプルのコントロール
 description: FedRAMP High ブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy にマップされています。
 ms.date: 07/31/2020
 ms.topic: sample
-ms.openlocfilehash: 9d13b77736c8e58b304b8ae99582ad288f18c433
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 437e0a6dc2edca77bc0e68e4972e6570460b38ab
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299067"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530240"
 ---
 # <a name="control-mapping-of-the-fedramp-high-blueprint-sample"></a>FedRAMP High ブループリント サンプルのコントロール マッピング。
 
@@ -32,7 +32,7 @@ ms.locfileid: "89299067"
 
 ## <a name="ac-2-7-account-management--role-based-schemes"></a>AC-2 (7) アカウント管理 | ロールベースのスキーム
 
-Azure では、Azure のリソースにアクセスするユーザーを効果的に管理できるように、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../../../role-based-access-control/overview.md) が実装されています。 Azure リソースにできるユーザーとそのアクセス許可は、Azure portal を使用して確認できます。 また、このブループリントでは、SQL Server と Service Fabric に対する Azure Active Directory 認証の使用状況を監査するための [Azure Policy](../../../policy/overview.md) 定義も割り当てられます。 Azure Active Directory 認証を使用すると、アクセス許可の管理を簡単にし、データベース ユーザーとその他の Microsoft サービスの ID を一元管理できます。 さらに、このブルー プリントでは、カスタム RBAC ルールの使用状況を監査するための Azure Policy 定義が割り当てられます。 カスタム RBAC ルールの実装状況を把握することで、それらの実装ニーズや実装の適切性を確認することができます (カスタム RBAC ルールはエラーを起こしやすいので、これは非常に重要です)。
+Azure では、Azure のリソースにアクセスするユーザーを効果的に管理できるように、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../../../role-based-access-control/overview.md) が実装されています。 Azure リソースにできるユーザーとそのアクセス許可は、Azure portal を使用して確認できます。 また、このブループリントでは、SQL Server と Service Fabric に対する Azure Active Directory 認証の使用状況を監査するための [Azure Policy](../../../policy/overview.md) 定義も割り当てられます。 Azure Active Directory 認証を使用すると、アクセス許可の管理を簡単にし、データベース ユーザーとその他の Microsoft サービスの ID を一元管理できます。 さらに、このブループリントでは、Azure RBAC のカスタム規則の使用状況を監査する Azure Policy 定義が割り当てられます。 Azure RBAC のカスタム規則ではエラーが発生しやすいため、Azure RBAC のカスタム規則の実装状況を把握しておくと、実装の必要性や適切さを確認するのに役立ちます。
 
 - SQL Server に対して Azure Active Directory 管理者をプロビジョニングする必要がある
 - カスタム RBAC 規則の使用監査

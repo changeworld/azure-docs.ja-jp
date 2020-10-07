@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: e4236952bd41c4955e337813ff6d706263b8ef47
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 432386809596fb2ef040a05d1fe0d12294a1abef
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73890900"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534524"
 ---
 # <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>チュートリアル: 監視ソリューションに接続されているデバイスを構成する
 
@@ -66,7 +66,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 エンジンの場所を更新するために、ジョブ名を **UpdateEngineLocation**、経度を **-122.15**、場所を **Factory 2**、緯度を **47.62** に設定し、 **[適用]** をクリックします。
 
-[![デバイスのプロパティ値の更新](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-expanded.png#lightbox)
+[![[ジョブ] ウィンドウが強調表示された [デバイス エクスプローラー] ページを示すスクリーンショット。](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-expanded.png#lightbox)
 
 ジョブの状態を追跡するには、 **[View job status]\(ジョブの状態の表示\)** をクリックします。
 
@@ -113,7 +113,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 条件にタグ名 **FieldService** と値 **ConnectedVehicle** を使用してテキスト フィルターを作成します。 フィルターに **[Connected Vehicle]\(接続された車両\)** という名前を付けて保存します。
 
-[![[Connected Vehicle]\(接続された車両\) フィルターを作成する](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-inline.png)](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-expanded.png#lightbox)
+[![[Manage device groups]\(デバイス グループの管理\) が強調表示された [デバイス エクスプローラー] ページを示すスクリーンショット。](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-inline.png)](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-expanded.png#lightbox)
 
 これで、Contoso のオペレーターは、運用チームに基づいてデバイスを照会することができます。
 

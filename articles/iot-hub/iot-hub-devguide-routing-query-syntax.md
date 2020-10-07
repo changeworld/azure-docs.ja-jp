@@ -10,12 +10,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 4ff61687f2fa045b51dfcb69488d1fbd87b65f75
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 9b5463ba789a1bcfb707fb03c70f1a8464cb6b59
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87336499"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767342"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT Hub メッセージ ルーティングのクエリ構文
 
@@ -59,8 +59,8 @@ IoT ハブでは、各種プロトコルにおける相互運用性を確保す�
 | contentEncoding | string | ユーザーはメッセージのエンコードの種類を指定します。 contentType が application/json に設定されている場合に使用できる値は、UTF-8、UTF-16、UTF-32 です。 |
 | iothub-connection-device-id | string | この値は IoT Hub によって設定され、デバイスの ID を示します。 クエリを実行するには、`$connectionDeviceId` を使用します。 |
 | iothub-enqueuedtime | string | この値は IoT Hub によって設定されます。この値によって、メッセージがエンキューされた実際の時刻が UTC で表されます。 クエリを実行するには、`enqueuedTime` を使用します。 |
-| dt-dataschema | string |  この値は、IoT Hub で、device-to-cloud メッセージに対して設定されます。 デバイス接続で設定されたデバイス モデル ID が含まれます。 この機能は、[IoT プラグ アンド プレイ パブリック プレビュー](../iot-pnp/overview-iot-plug-and-play.md)の一部として提供されています。 クエリを実行するには、`$dt-dataschema` を使用します。 |
-| dt-subject | string | device-to-cloud メッセージを送信しているコンポーネントの名前。 この機能は、[IoT プラグ アンド プレイ パブリック プレビュー](../iot-pnp/overview-iot-plug-and-play.md)の一部として提供されています。 クエリを実行するには、`$dt-subject` を使用します。 |
+| dt-dataschema | string |  この値は、IoT Hub で、device-to-cloud メッセージに対して設定されます。 デバイス接続で設定されたデバイス モデル ID が含まれます。 クエリを実行するには、`$dt-dataschema` を使用します。 |
+| dt-subject | string | device-to-cloud メッセージを送信しているコンポーネントの名前。 クエリを実行するには、`$dt-subject` を使用します。 |
 
 [IoT Hub のメッセージ](iot-hub-devguide-messages-construct.md)に関するページで説明されているように、メッセージには他にもシステム プロパティがあります。 前の表の上記のプロパティに加えて、**connectionDeviceId**、**connectionModuleId** のクエリを実行することもできます。
 

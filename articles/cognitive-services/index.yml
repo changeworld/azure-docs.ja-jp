@@ -12,12 +12,12 @@ metadata:
   manager: nitinme
   ms.custom: custom-portals-hub
   ms.date: 08/28/2020
-  ms.openlocfilehash: 1500ac7ac362048751be3f91e6c52d4fe446bdc2
-  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.openlocfilehash: 36e5543f09971d8456e79a59fc2e5457171f710b
+  ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/22/2020
-  ms.locfileid: "90906977"
+  ms.lasthandoff: 10/05/2020
+  ms.locfileid: "91744000"
 highlightedContent:
   items:
   - title: Cognitive Services とは
@@ -38,9 +38,9 @@ highlightedContent:
   - title: コンテナーでの使用
     itemType: concept
     url: ./cognitive-services-container-support.md
-  - title: 仮想ネットワーク
-    itemType: architecture
-    url: cognitive-services-virtual-networks.md
+  - title: データベースでの使用
+    itemType: concept
+    url: ./big-data/cognitive-services-for-big-data.md
   - title: セキュリティ
     itemType: concept
     url: cognitive-services-security.md
@@ -84,7 +84,7 @@ conceptualContent:
       text: Text Analytics
     - url: ./translator/index.yml
       itemType: overview
-      text: '[変換者]'
+      text: Translator
   - title: 音声
     summary: 音声をテキストに変換し、テキストを自然な音声に変換します。 ある言語を別の言語に翻訳し、話者の認証と認識を可能にします。
     links:
@@ -136,6 +136,18 @@ conceptualContent:
     - url: ./containers/container-faq.md
       itemType: reference
       text: Cognitive Services コンテナーに関する FAQ
+  - title: ビッグ データの Cognitive Services
+    summary: ビッグ データ向けの Cognitive Services により、開発者は、データベース内でコグニティブ サービスを使用して、大規模なデータセットにインテリジェントなアルゴリズムを適用できます。
+    links:
+    - url: ./big-data/cognitive-services-for-big-data.md
+      itemType: overview
+      text: ビッグ データの Cognitive Services
+    - url: ./big-data/getting-started.md
+      itemType: get-started
+      text: Azure Databricks と Synapse Analytics 内で Cognitive Services を使用する
+    - url: ./big-data/samples-python.md
+      itemType: reference
+      text: Python サンプル
 additionalContent:
   sections:
   - title: その他のリソース
@@ -166,6 +178,8 @@ additionalContent:
         url: https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python
       - text: R
         url: https://github.com/Azure/AzureCognitive
+      - text: Apache Spark とデータベース
+        url: ./big-data/cognitive-services-for-big-data.md
       - text: Cognitive Services Management REST API
         url: https://docs.microsoft.com/rest/api/cognitiveservices/
     - title: ツール

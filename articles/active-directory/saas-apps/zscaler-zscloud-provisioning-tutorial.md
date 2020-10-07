@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 5e8571da46ca188e975119c387fa4ee0695c4fde
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0454ffc1ed68056b2aedc10a6e904a9a934ab223
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545711"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333496"
 ---
 # <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>チュートリアル:Zscaler ZSCloud を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -120,7 +120,7 @@ Azure AD ユーザーが特定のアプリを使用するためには、その�
 
 11. **[属性マッピング]** セクションで、Azure AD から Zscaler ZSCloud に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Zscaler ZSCloud のユーザー アカウントとの照合に使用されます。 すべての変更をコミットするには、 **[保存]** を選択します。
 
-    ![属性マッピング](./media/zscaler-zscloud-provisioning-tutorial/userattributemappings.png)
+    ![7 つのマッピングが表示されている [属性マッピング] セクションのスクリーンショット。](./media/zscaler-zscloud-provisioning-tutorial/userattributemappings.png)
 
 12. **[マッピング]** セクションの **[Synchronize Azure Active Directory Groups to ZscalerZSCloud]\(Azure Active Directory グループを ZscalerZSCloud に同期する\)** を選びます。
 
@@ -128,7 +128,7 @@ Azure AD ユーザーが特定のアプリを使用するためには、その�
 
 13. **[属性マッピング]** セクションで、Azure AD から Zscaler ZSCloud に同期されるグループ属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Zscaler ZSCloud のグループとの照合に使用されます。 すべての変更をコミットするには、 **[保存]** を選択します。
 
-    ![属性マッピング](./media/zscaler-zscloud-provisioning-tutorial/groupattributemappings.png)
+    ![3 つのマッピングが表示されている [属性マッピング] セクションのスクリーンショット。](./media/zscaler-zscloud-provisioning-tutorial/groupattributemappings.png)
 
 14. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](./../active-directory-saas-scoping-filters.md)の手順を参照してください。
 

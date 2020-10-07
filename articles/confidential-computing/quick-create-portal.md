@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 04/23/2020
 ms.author: JenCook
-ms.openlocfilehash: 476b93400b69063590c12ed38037c0bf6c6d1714
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4723bce8f3721833ae80b233f7b346fe69363b0b
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281074"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409546"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Confidential Computing VM をデプロイする
 
@@ -199,9 +199,7 @@ sudo apt -y install clang-7 libssl-dev gdb libsgx-enclave-common libsgx-enclave-
 
 このクイックスタートでは、コンフィデンシャル コンピューティング仮想マシンをデプロイし、Open Enclave SDK をインストールしました。 Azure におけるコンフィデンシャル コンピューティング仮想マシンの詳細については、「[仮想マシン上のソリューション](virtual-machine-solutions.md)」を参照してください。 
 
-Windows VM をデプロイした場合は、GitHub の [Windows 用 OE SDK サンプル](https://github.com/openenclave/openenclave/blob/master/samples/README_Windows.md)で、アプリケーションの作成方法をご覧ください。 
-
-Linux 上のコンフィデンシャル コンピューティング アプリケーションを作成する方法については、引き続き GitHub の Open Enclave SDK Linux サンプルをご覧ください。 
+コンフィデンシャル コンピューティング アプリケーションを作成する方法については、引き続き GitHub の Open Enclave SDK サンプルをご覧ください。 
 
 > [!div class="nextstepaction"]
-> [Linux で Open Enclave SDK サンプルを作成する](https://github.com/openenclave/openenclave/blob/master/samples/README_Linux.md)
+> [Open Enclave SDK サンプルを作成する](https://github.com/openenclave/openenclave/blob/master/samples/README.md)

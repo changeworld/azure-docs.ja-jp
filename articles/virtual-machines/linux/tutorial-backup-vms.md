@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1865d307e7b79e7e40b0e98f2dcfa2535b0313fd
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 08e6491e1d8d94e8e6e9112e5a19682018103325
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551709"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400351"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>チュートリアル:Azure 内の Linux 仮想マシンのファイルをバックアップおよび復元する
 
@@ -70,7 +70,7 @@ Recovery Services コンテナーに対するバックアップを 1 日 1 回�
  
 1. ローカル コンピューターでブラウザーを開き、VM のパブリック IP アドレスを入力して nginx の既定の Web ページを表示します。
 
-    ![nginx の既定の Web ページ](./media/tutorial-backup-vms/nginx-working.png)
+    ![nginx の既定の Web ページを示しているスクリーンショット。](./media/tutorial-backup-vms/nginx-working.png)
 
 1. VM に SSH で接続します。
 
@@ -86,7 +86,7 @@ Recovery Services コンテナーに対するバックアップを 1 日 1 回�
     
 4. ローカル コンピューターで、Ctrl キーを押しながら F5 キーを押してブラウザーを最新の情報に更新すると、nginx の既定のページが消えます。
 
-    ![nginx の既定の Web ページ](./media/tutorial-backup-vms/nginx-broken.png)
+    ![nginx の既定のページが消えたことを示しているスクリーンショット。](./media/tutorial-backup-vms/nginx-broken.png)
     
 1. ローカル コンピューターから [Azure Portal](https://portal.azure.com/) にサインインします。
 6. 左側のメニューから **[仮想マシン]** を選択します。 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: vs-azure
 ms.date: 01/22/2018
-ms.openlocfilehash: f3c6364226288ffb6796664e89d0b7c2cc4dadf6
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 65309bbd70a6fda2bf725ce96cc5595cd9b55083
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543148"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569066"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>チュートリアル: データ ファクトリを Visual Studio で作成する
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -91,7 +91,7 @@ Azure Storage のリンクされたサービスは、接続情報を提供する
 #### <a name="create-azure-storage-linked-service"></a>Azure Storage のリンクされたサービスを作成する
 1. ソリューション エクスプローラーの **[リンクされたサービス]** を右クリックして **[追加]** をポイントし、 **[新しい項目]** をクリックします。      
 2. **[新しい項目の追加]** ダイアログ ボックスで、一覧から **[Azure Storage Linked Service (Azure Storage のリンクされたサービス)]** を選択し、 **[追加]** をクリックします。
-    ![Azure Storage のリンクされたサービス](./media/data-factory-build-your-first-pipeline-using-vs/new-azure-storage-linked-service.png)
+    ![リストで Azure Storage Linked Service が強調表示されたスクリーンショット。](./media/data-factory-build-your-first-pipeline-using-vs/new-azure-storage-linked-service.png)
 3. `<accountname>` と `<accountkey>` を Azure ストレージ アカウントの名前とキーで置き換えます。 ストレージ アクセス キーを取得する方法については、「[Manage storage account access keys (ストレージ アカウントのアクセス キーの管理)](../../storage/common/storage-account-keys-manage.md)」をご覧ください。
     ![Azure Storage のリンクされたサービス](./media/data-factory-build-your-first-pipeline-using-vs/azure-storage-linked-service.png)
 4. **AzureStorageLinkedService1.json** ファイルを保存します。
@@ -368,7 +368,7 @@ Azure Storage のリンクされたサービスは、接続情報を提供する
 7. **[X]** をクリックして、 **[AzureBlobInput]** ブレードを閉じます。
 8. **ダイアグラム ビュー**で、**AzureBlobOutput** データセットをダブルクリックします。 現在処理中のスライスが表示されます。
 
-   ![データセット](./media/data-factory-build-your-first-pipeline-using-vs/dataset-blade.png)
+   ![AzureBlobOutput データセットが強調表示されたスクリーンショット。](./media/data-factory-build-your-first-pipeline-using-vs/dataset-blade.png)
 9. 処理が完了すると、スライスの状態に **[準備完了]** が表示されます。
 
    > [!IMPORTANT]

@@ -3,12 +3,12 @@ title: Azure Service Bus のネットワーク セキュリティ
 description: この記事では、サービス タグ、IP ファイアウォール規則、サービス エンドポイント、プライベート エンドポイントなどのネットワークセキュリティ機能について説明します。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 731300179ce9a0ff72169cdad5c7c039749b20f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb21c8beb6d48ecab04917525011cc4762c46ff3
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341129"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766395"
 ---
 # <a name="network-security-for-azure-service-bus"></a>Azure Service Bus のネットワーク セキュリティ 
 この記事では、Azure Service Bus で次のセキュリティ機能を使用する方法について説明します。 
@@ -16,7 +16,7 @@ ms.locfileid: "85341129"
 - サービス タグ
 - IP ファイアウォール規則
 - ネットワーク サービス エンドポイント
-- プライベート エンドポイント (プレビュー)
+- プライベート エンドポイント
 
 
 ## <a name="service-tags"></a>サービス タグ
@@ -81,8 +81,6 @@ Azure Private Link サービスを使用すると、自分の仮想ネットワ�
 
 > [!NOTE]
 > この機能は、Azure Service Bus の **Premium** レベルでサポートされています。 Premium レベルの詳細については、「[Service Bus の Premium および Standard メッセージング レベル](service-bus-premium-messaging.md)」の記事を参照してください。
->
-> 現在、この機能は**プレビュー段階**にあります。 
 
 
 詳細については、[Service Bus の名前空間のプライベート エンドポイントを構成する方法](private-link-service.md)に関する記事を参照してください。

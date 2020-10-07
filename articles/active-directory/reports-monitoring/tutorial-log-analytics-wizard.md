@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93caf52d8b4a11f9843ad5f18ebf968d1d0730cd
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 643010ef1f6e941a57673a711e1871aafd1e341d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226209"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361910"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>チュートリアル:ログ分析ウィザードを構成する
 
@@ -72,7 +72,7 @@ Log Analytics ワークスペースの構成は、主に 2 つの手順で構成
 
 3. Log Analytics ワークスペース ページで、 **[追加]** をクリックします。
 
-    ![追加](./media/tutorial-log-analytics-wizard/add.png)
+    ![スクリーンショットは、Log Analytics ワークスペース ページの [追加] ボタンを示しています。](./media/tutorial-log-analytics-wizard/add.png)
 
 4.  **[Log Analytics ワークスペースの作成]** ページで、次の手順を実行します。
 
@@ -305,7 +305,7 @@ Log Analytics ワークスペースの構成は、主に 2 つの手順で構成
 
 3. **[監視]** セクションで、 **[ブック]** をクリックします。
 
-    ![Workbooks](./media/tutorial-log-analytics-wizard/workbooks.png)
+    ![スクリーンショットは、Azure portal メニューの、[Workbooks] が選択されている [監視] を示しています。](./media/tutorial-log-analytics-wizard/workbooks.png)
 
 4. **[クイックスタート]** セクションで、 **[Empty]\(空\)** をクリックします。
 
@@ -357,7 +357,7 @@ Log Analytics ワークスペースの構成は、主に 2 つの手順で構成
 
 3. **[監視]** セクションで、 **[ブック]** をクリックします。
 
-    ![Workbooks](./media/tutorial-log-analytics-wizard/workbooks.png)
+    ![スクリーンショットは、[Workbooks] が選択されている、メニュー [監視] を示しています。ブックが選択されているメニューの監視を示しています。](./media/tutorial-log-analytics-wizard/workbooks.png)
 
 4. **[条件付きアクセス]** セクションで、 **[Conditional Access Insights and Reporting]\(条件付きアクセスに関する分析情報とレポート\)** をクリックします。
 

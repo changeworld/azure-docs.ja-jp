@@ -1,5 +1,5 @@
 ---
-title: Azure portal でクエリ エディターを使用して SQL Database に照会する
+title: Azure portal でクエリ エディターを使用して SQL Database のクエリを実行する (プレビュー)
 description: クエリ エディターを使用して、Azure SQL Database 内のデータベースに対して Transact-SQL (T-SQL) クエリを実行する方法について説明します。
 titleSuffix: Azure SQL Database
 keywords: sql データベースへの接続, sql データベースの照会, Azure portal, ポータル, クエリ エディター
@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: quickstart
 author: Ninarn
 ms.author: ninarn
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 05/29/2020
-ms.openlocfilehash: ec43ad0c83ea56af935b326a2b13aa3b3dc4fa13
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 4eb02c65a8ce486ea152863d8b6c6d0600280893
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441781"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409590"
 ---
-# <a name="quickstart-use-the-azure-portals-query-editor-to-query-an-azure-sql-database"></a>クイック スタート:Azure portal のクエリ エディターを使用して、Azure SQL Database に対してクエリを実行します
+# <a name="quickstart-use-the-azure-portals-query-editor-preview-to-query-an-azure-sql-database"></a>クイック スタート:Azure portal のクエリ エディター (プレビュー) を使用して、Azure SQL Database のクエリを実行します
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 クエリ エディターは、Azure SQL Database のデータベース、または Azure Synapse Analytics のデータ ウェアハウスに対して SQL クエリを実行するための Azure portal のツールです。 

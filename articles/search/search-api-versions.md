@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: ca4dccb82ae6a907a2f7e944174b8ecc05a443b6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 71862bedc009d560adc8131eacc37c0afba25d81
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986900"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761721"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Azure Cognitive Search の API のバージョン
 
@@ -79,7 +79,7 @@ Azure Cognitive Search サービスのインスタンスでは、最新のバー
 | 管理 2020-03-13  | Stable | プライベート リンクを使用する[プライベート エンドポイント](service-create-private-endpoint.md)、および[ネットワーク IP 規則](service-configure-firewall.md)が新しいサービスに追加されています。 詳細については、この [Swagger 仕様](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2020-08-01)を参照してください。 |
 | 管理 2019-10-01-Preview | [プレビュー]  | この一覧には、導入されたプレビュー機能はありませんでした。 このプレビューは機能的には 2020-03-13 と同等です。 詳細については、この [Swagger 仕様](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/preview/2019-10-01-preview)を参照してください。 |
 | Management 2015-08-19  | Stable | Management REST API の最初の一般公開バージョン。 サービスのプロビジョニング、スケールアップ、および API キーの管理が可能です。 詳細については、この [Swagger 仕様](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2015-08-19)を参照してください。 |
-| Management 2015-08-19-Preview  | プレビュー | Management REST API の最初のプレビュー バージョン。 詳細については、この [Swagger 仕様](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2015-08-19-preview)を参照してください。 |
+| Management 2015-08-19-Preview  | プレビュー | Management REST API の最初のプレビュー バージョン。 詳細については、この [Swagger 仕様](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2015-08-19)を参照してください。 |
 
 ## <a name="azure-sdk-for-net"></a>Azure SDK for .NET
 
@@ -96,7 +96,7 @@ Azure Cognitive Search サービスのインスタンスでは、最新のバー
 
 | SDK バージョン | Status | 説明  |
 |-------------|--------|------------------------------|
-| [Java azure-search-documents 11](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-search-documents) | Stable | 2020 年 7 月にリリースされた、Azure .NET SDK の新しいクライアント ライブラリです。 Search REST api-version=2019-05-06 を対象としています。 |
+| [Java azure-search-documents 11](https://newreleases.io/project/github/Azure/azure-sdk-for-java/release/azure-search-documents_11.1.0) | Stable | 2020 年 7 月にリリースされた、Azure .NET SDK の新しいクライアント ライブラリです。 Search REST api-version=2019-05-06 を対象としています。 |
 | [Java Management Client 1.35.0](/java/api/overview/azure/search/management) | Stable | Management REST api-version=2015-08-19 を対象としています。 |
 
 ## <a name="azure-sdk-for-javascript"></a>Azure SDK for JavaScript
@@ -110,5 +110,5 @@ Azure Cognitive Search サービスのインスタンスでは、最新のバー
 
 | SDK バージョン | Status | 説明  |
 |-------------|--------|------------------------------|
-| [Python azure-search-documents 11.0](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-search-documents) | Stable | 2020 年 7 月にリリースされた、Azure .NET SDK の新しいクライアント ライブラリです。 Search REST api-version=2019-05-06 を対象としています。 |
+| [Python azure-search-documents 11.0](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-search-documents/11.0.0/index.html) | Stable | 2020 年 7 月にリリースされた、Azure .NET SDK の新しいクライアント ライブラリです。 Search REST api-version=2019-05-06 を対象としています。 |
 | [Python azure-mgmt-search 1.0](/python/api/overview/azure/search) | Stable | Management REST api-version=2015-08-19 を対象としています。 |

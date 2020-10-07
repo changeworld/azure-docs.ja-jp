@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 09/08/2020
+ms.date: 09/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: cf7719487d4f03b8d9524234e1a58cf792a4843b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e1cb4555b1eab930286e7a27988b3b372b109070
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899837"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570903"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>チュートリアル:GPU 搭載の Azure Stack Edge Pro の配置を準備する 
 
@@ -66,14 +66,16 @@ Azure Stack Edge Pro の配置では、最初に環境を準備する必要が�
 
 開始する前に次の点を確認します。
 
-- ご利用の Microsoft Azure サブスクリプションで Azure Stack Edge リソースが有効になっていること。 [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/overview/sales-number/)、[クラウド ソリューション プロバイダー (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp)、[Microsoft Azure スポンサープラン](https://azure.microsoft.com/offers/ms-azr-0036p/)など、サポートされているサブスクリプションを使用していることを確認してください。 従量課金制のサブスクリプションには対応していません。
+- ご利用の Microsoft Azure サブスクリプションで Azure Stack Edge リソースが有効になっていること。 [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/overview/sales-number/)、[クラウド ソリューション プロバイダー (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp)、[Microsoft Azure スポンサープラン](https://azure.microsoft.com/offers/ms-azr-0036p/)など、サポートされているサブスクリプションを使用していることを確認してください。 従量課金制のサブスクリプションには対応していません。 所有している Azure サブスクリプションの種類を特定するには、「[Azure プランとは](../cost-management-billing/manage/switch-azure-offer.md#what-is-an-azure-offer)」を参照してください。
 - Azure Stack Edge Pro/Data Box Gateway、IoT Hub、および Azure Storage の各リソースに対して、リソース グループ レベルで所有者または共同作成者のアクセス許可を持っていること。
 
-    - Azure Stack Edge/Data Box Gateway のリソースを作成するには、リソース グループ レベルにスコープ指定された共同作成者 (以上) のアクセス許可を持っている必要があります。 また、`Microsoft.DataBoxEdge` プロバイダーが登録されていることも確認する必要があります。 登録方法の詳細については、「[リソース プロバイダーの登録](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)」をお読みください。
-    - IoT Hub リソースを作成するには、Microsoft.Devices プロバイダーが登録されていることを確認します。 登録方法の詳細については、「[リソース プロバイダーの登録](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)」をお読みください。
+    - Azure Stack Edge/Data Box Gateway のリソースを作成するには、リソース グループ レベルにスコープ指定された共同作成者 (以上) のアクセス許可を持っている必要があります。 
+    - また、`Microsoft.DataBoxEdge` プロバイダーが登録されていることも確認する必要があります。 どのような IoT Hub リソースを作成する場合でも、`Microsoft.Devices` プロバイダーを登録する必要があります。 
+        - リソース プロバイダーを登録するには、Azure portal で、 **[ホーム] > [サブスクリプション] > お使いのサブスクリプション > [リソース プロバイダー]** と移動します。 
+        - `Microsoft.DataBoxEdge` を検索し、リソース プロバイダーを登録します。 
     - Storage アカウントのリソースを作成するには、ここでも、リソース グループ レベルにスコープ指定された共同作成者以上のアクセス許可が必要になります。 Azure Storage は、既定で、登録されたリソース プロバイターになっています。
-- Azure Active Directory Graph API に対して管理者またはユーザーのアクセス権を持っていること。 詳細については、[Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-) に関するページをご覧ください。
-- アクセスの資格情報を持つ Microsoft Azure のストレージ アカウントがあること。
+- アクティブ化キーの生成や、ストレージ アカウントを使用する共有の作成などの資格情報の操作のために、Azure Active Directory Graph API に対する管理者またはユーザーのアクセス権を持っていること。 詳細については、[Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-) に関するページをご覧ください。
+
 
 ### <a name="for-the-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイスの前提条件
 

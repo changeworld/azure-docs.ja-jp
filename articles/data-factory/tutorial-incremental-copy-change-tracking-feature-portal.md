@@ -1,6 +1,6 @@
 ---
 title: Azure portal を使用して Change Tracking を使用してデータを増分コピーする
-description: このチュートリアルでは、SQL Server データベースにある複数のテーブルから Azure SQL Database のデータベースに差分データを増分コピーする Azure Data Factory パイプラインを作成します。
+description: このチュートリアルでは、Azure SQL Database のソース データベースから変更追跡情報に基づく差分データを Azure Blob Storage に読み込むパイプラインを使用して Azure Data Factory を作成します。
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: c28489c2fa502f0ba1283abdea19219ed7438a99
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 78b9d3f30ebc8f74433f04c4474121682c4a3f36
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085788"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542021"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-the-azure-portal"></a>Azure portal を使用して、変更追跡情報を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする
 
@@ -285,10 +285,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. 左ウィンドウで **[+]\(プラス記号\)** をクリックし、 **[パイプライン]** をクリックします。
 
-    ![新しいパイプライン メニュー](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu.png)
+    ![データ ファクトリの [パイプライン] オプションを示すスクリーンショット。](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu.png)
 2. パイプラインを構成するための新しいタブが表示されます。 ツリー ビューにもパイプラインが表示されます。 **[プロパティ]** ウィンドウで、パイプラインの名前を「**FullCopyPipeline**」に変更します。
 
-    ![新しいパイプライン メニュー](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-pipeline-name.png)
+    ![名前が入力されたパイプラインを示すスクリーンショット。](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-pipeline-name.png)
 3. **[アクティビティ]** ツールボックスで **[データ フロー]** を展開し、パイプライン デザイナー画面に **[コピー]** アクティビティをドラッグ アンド ドロップして、名前を「**FullCopyActivity**」に設定します。
 
     ![完全コピー アクティビティ名](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-activity-name.png)
@@ -303,7 +303,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ![パイプラインを検証する](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-pipeline-validate.png)
 7. エンティティ (リンクされたサービス、データセット、およびパイプライン) を発行するには、 **[発行]** をクリックします。 発行が成功するまで待機します。
 
-    ![[発行] ボタン](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button.png)
+    ![[Publish All]\(すべて発行\) ボタンが呼び出された、データ ファクトリを示すスクリーンショット。](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button.png)
 8. **[正常に発行されました]** というメッセージが表示されるまで待機します。
 
     ![発行は成功しました](./media/tutorial-incremental-copy-change-tracking-feature-portal/publishing-succeeded.png)
@@ -315,16 +315,16 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ### <a name="run-the-full-copy-pipeline"></a>フル コピー パイプラインを実行する
 パイプラインのツール バーの **[トリガー]** をクリックし、 **[Trigger Now]\(今すぐトリガー\)** をクリックします。
 
-![[Trigger Now]\(今すぐトリガー\) メニュー](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu.png)
+![[トリガー] メニューから選択された [Trigger Now]\(今すぐトリガー\) オプションを示すスクリーンショット。](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu.png)
 
 ### <a name="monitor-the-full-copy-pipeline"></a>フル コピー パイプラインを監視する
 
 1. 左側の **[監視]** タブをクリックします。 一覧にパイプラインの実行とその状態が表示されます。 一覧を更新するには、 **[最新の情報に更新]** をクリックします。 [アクション] 列のリンクを使用すると、パイプラインの実行に関連付けられているアクティビティの実行を表示し、パイプラインを再実行することができます。
 
-    ![パイプライン実行](./media/tutorial-incremental-copy-change-tracking-feature-portal/monitor-full-copy-pipeline-run.png)
+    ![データ ファクトリのパイプライン実行を示すスクリーンショット。](./media/tutorial-incremental-copy-change-tracking-feature-portal/monitor-full-copy-pipeline-run.png)
 2. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、 **[アクション]** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** リンクをクリックします。 パイプライン内のアクティビティは 1 つだけであるため、一覧に表示されるエントリは 1 つのみです。 [Pipeline Runs]\(パイプラインの実行\) ビューに戻るには、上部の **[パイプライン]** リンクをクリックします。
 
-    ![アクティビティの実行](./media/tutorial-incremental-copy-change-tracking-feature-portal/activity-runs-full-copy.png)
+    ![[パイプライン] リンクが呼び出された、データ ファクトリのアクティビティの実行を示すスクリーンショット。](./media/tutorial-incremental-copy-change-tracking-feature-portal/activity-runs-full-copy.png)
 
 ### <a name="review-the-results"></a>結果の確認
 `adftutorial` コンテナーの `incchgtracking` フォルダーに、`incremental-<GUID>.txt` という名前のファイルが確認できます。
@@ -362,19 +362,19 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 
 1. Data Factory の UI で、 **[編集]** タブに切り替えます。左ウィンドウで **[+]\(プラス記号\)** をクリックし、 **[パイプライン]** をクリックします。
 
-    ![新しいパイプライン メニュー](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu-2.png)
+    ![データ ファクトリでパイプラインを作成する方法を示すスクリーンショット。](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu-2.png)
 2. パイプラインを構成するための新しいタブが表示されます。 ツリー ビューにもパイプラインが表示されます。 **[プロパティ]** ウィンドウで、パイプラインの名前を「**IncrementalCopyPipeline**」に変更します。
 
     ![パイプライン名](./media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-pipeline-name.png)
 3. **[アクティビティ]** ツール ボックスの **[General]\(一般\)** を展開し、 **[検索]** アクティビティをパイプライン デザイナー画面にドラッグ アンド ドロップします。 アクティビティの名前を「**LookupLastChangeTrackingVersionActivity**」に設定します。 このアクティビティは、直前のコピー操作で使用された変更追跡バージョンを取得します。この値は、テーブル **table_store_ChangeTracking_version** に格納されています。
 
-    ![検索アクティビティ - 名前](./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-name.png)
+    ![パイプラインと検索アクティビティを示すスクリーンショット。](./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-name.png)
 4. **[プロパティ]** ウィンドウで **[設定]** に切り替えて、 **[Source Dataset]\(ソース データセット\)** フィールドで **[ChangeTrackingDataset]** を選択します。
 
-    ![検索アクティビティ - 設定](./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-settings.png)
+    ![[プロパティ] ウィンドウの [設定] タブを示すスクリーンショット。](./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-settings.png)
 5. **[アクティビティ]** ツールボックスからパイプライン デザイナー画面に **[検索]** アクティビティをドラッグ アンド ドロップします。 アクティビティの名前を「**LookupCurrentChangeTrackingVersionActivity**」に設定します。 このアクティビティは、現在の変更追跡バージョンを取得します。
 
-    ![検索アクティビティ - 名前](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-name.png)
+    ![パイプラインと 2 つの検索アクティビティを示すスクリーンショット。](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-name.png)
 6. **[プロパティ]** ウィンドウで **[設定]** に切り替え、以下の手順を実行します。
 
    1. **[Source Dataset]\(ソース データセット\)** フィールドで **[SourceDataset]** を選択します。
@@ -385,7 +385,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
        SELECT CHANGE_TRACKING_CURRENT_VERSION() as CurrentChangeTrackingVersion
        ```
 
-      ![検索アクティビティ - 設定](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-settings.png)
+      ![[プロパティ] ウィンドウの [設定] タブに追加されたクエリを示すスクリーンショット。](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-settings.png)
 7. **[アクティビティ]** ツールボックスで **[データ フロー]** を展開し、パイプライン デザイナー画面に **[コピー]** アクティビティをドラッグ アンド ドロップします。 アクティビティの名前を「**IncrementalCopyActivity**」に設定します。 このアクティビティは、直前の変更追跡バージョンと現在の変更追跡バージョンとの間のデータをターゲット データ ストアにコピーします。
 
     ![コピー アクティビティ - 名前](./media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-activity-name.png)
@@ -432,21 +432,21 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
     ![検証ボタン](./media/tutorial-incremental-copy-change-tracking-feature-portal/validate-button.png)
 16. **[すべて公開]** ボタンをクリックして、エンティティ (リンクされたサービス、データセット、およびパイプライン) を Data Factory サービスに発行します。 **[発行は成功しました]** というメッセージが表示されるまで待機します。
 
-       ![[発行] ボタン](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button-2.png)    
+       ![データ ファクトリの [Publish All]\(すべて発行\) ボタンを示すスクリーンショット。](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button-2.png)    
 
 ### <a name="run-the-incremental-copy-pipeline"></a>増分コピー パイプラインを実行する
 1. パイプラインのツール バーの **[トリガー]** をクリックし、 **[Trigger Now]\(今すぐトリガー\)** をクリックします。
 
-    ![[Trigger Now]\(今すぐトリガー\) メニュー](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu-2.png)
+    ![パイプラインとアクティビティ、[トリガー] メニューから選択された [Trigger Now]\(今すぐトリガー\) オプションを示すスクリーンショット。](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu-2.png)
 2. **[Pipeline Run]\(パイプラインの実行\)** ウィンドウで **[完了]** を選択します。
 
 ### <a name="monitor-the-incremental-copy-pipeline"></a>増分コピー パイプラインを監視する
 1. 左側の **[監視]** タブをクリックします。 一覧にパイプラインの実行とその状態が表示されます。 一覧を更新するには、 **[最新の情報に更新]** をクリックします。 **[アクション]** 列のリンクを使用すると、パイプラインの実行に関連付けられているアクティビティの実行を表示し、パイプラインを再実行することができます。
 
-    ![パイプライン実行](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-pipeline-runs.png)
+    ![パイプラインを含むデータ ファクトリのパイプライン実行を示すスクリーンショット。](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-pipeline-runs.png)
 2. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、 **[アクション]** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** リンクをクリックします。 パイプライン内のアクティビティは 1 つだけであるため、一覧に表示されるエントリは 1 つのみです。 [Pipeline Runs]\(パイプラインの実行\) ビューに戻るには、上部の **[パイプライン]** リンクをクリックします。
 
-    ![アクティビティの実行](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-activity-runs.png)
+    ![いくつかが成功としてマークされている、データ ファクトリのパイプライン実行を示すスクリーンショット。](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-activity-runs.png)
 
 
 ### <a name="review-the-results"></a>結果の確認

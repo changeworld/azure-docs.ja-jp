@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: 0a383e8e2c38dbd00e0a55f9debb9b4daf40fa9c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0f67939358a4395416ea28c1c459d4890ab0351d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832758"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397812"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure IT オペレーター向けのファースト ステップ
 
@@ -68,7 +68,7 @@ Azure で提供される PaaS コンピューティング サービスには、A
 
 SaaS は、1 か所でまとめてホストし、管理するソフトウェアです。 通常、マルチテナント アーキテクチャを基盤とします。すべての顧客に対して 1 つのバージョンのアプリケーションが利用されます。 複数のインスタンスに拡張することで、すべての場所で最良のパフォーマンスが得られます。 SaaS ソフトウェアは通常、月間または年間サブスクリプションでライセンス供与されます。 SaaS ソフトウェア ベンダーは、ソフトウェア スタックのすべてのコンポーネントに対して責任を担うため、利用者が管理するのは提供されているサービスだけです。
 
-SaaS サービスの最もわかりやすい例が Microsoft Office 365 です。 サブスクライバーは月間または年間サブスクリプションの利用料を支払い、Microsoft Exchange、Microsoft OneDrive、Microsoft Office スイートの残りのアプリケーションをサービスとして利用します。 サブスクライバーには常に最新版が与えられます。Exchange サーバーは自分で管理する必要がありません。 Office を毎年インストールしたり、アップグレードしたりする場合と比較し、安価で簡単です。
+SaaS サービスの最もわかりやすい例が Microsoft 365 です。 サブスクライバーは月間または年間サブスクリプションの利用料を支払い、Microsoft Exchange、Microsoft OneDrive、Microsoft Office スイートの残りのアプリケーションをサービスとして利用します。 サブスクライバーには常に最新版が与えられます。Exchange サーバーは自分で管理する必要がありません。 Office を毎年インストールしたり、アップグレードしたりする場合と比較し、安価で簡単です。
 
 ## <a name="azure-services"></a>Azure サービス
 

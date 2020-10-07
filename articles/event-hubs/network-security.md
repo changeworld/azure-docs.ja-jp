@@ -3,12 +3,12 @@ title: Azure Event Hubs のネットワーク セキュリティ
 description: この記事では、プライベート エンドポイントからのアクセスを構成する方法について説明します
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: ddb816e872625da06e370a7e130b4dd444de8de7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ae6cbdc8258cde9bb2da961cb452f996f0797cfe
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521855"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767797"
 ---
 # <a name="network-security-for-azure-event-hubs"></a>Azure Event Hubs のネットワーク セキュリティ 
 この記事では、Azure Event Hubs で次のセキュリティ機能を使用する方法について説明します。 
@@ -16,7 +16,7 @@ ms.locfileid: "86521855"
 - サービス タグ
 - IP ファイアウォール規則
 - ネットワーク サービス エンドポイント
-- プライベート エンドポイント (プレビュー)
+- プライベート エンドポイント
 
 
 ## <a name="service-tags"></a>サービス タグ
@@ -74,9 +74,6 @@ TCP/IP 上で HTTPS を搬送するものを含め、コンパートメント間
 
 > [!NOTE]
 > この機能は、**Dedicated** レベルでのみサポートされています。 Dedicated レベルの詳細については、「[Event Hubs Dedicated の概要](event-hubs-dedicated-overview.md)」を参照してください。 
->
-> 現在、この機能は**プレビュー**段階にあります。 
-
 
 詳細については、[イベント ハブのプライベート エンドポイントを構成する方法](private-link-service.md)に関する記事を参照してください。
 

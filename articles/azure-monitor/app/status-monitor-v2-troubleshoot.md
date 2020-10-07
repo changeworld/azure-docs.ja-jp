@@ -5,18 +5,17 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 07b5ae99b98c6c6bbf4dc903cd1b583eb655a825
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: df8ebd97ed9e34e0fce85a50297c595732057115
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041408"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761466"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Application Insights Agent (旧称 Status Monitor v2) のトラブルシューティング
 
 監視を有効にしたとき、データ収集を妨げる問題が発生する可能性があります。
 この記事では、既知の問題をすべて一覧にまとめ、トラブルシューティングの例を示します。
-この一覧にない問題が発生した場合は、[GitHub](https://github.com/Microsoft/ApplicationInsights-Home/issues) でお問い合わせください。
 
 ## <a name="known-issues"></a>既知の問題
 
@@ -72,12 +71,10 @@ Enable コマンドを実行した後、次の手順を実行します。
 ### <a name="iis-nested-applications"></a>IIS の入れ子になったアプリケーション
 
 バージョン 1.0 では、IIS の入れ子になったアプリケーションをインストルメント化しません。
-[こちら](https://github.com/microsoft/ApplicationInsights-Home/issues/369)でこの問題を追跡しています。
 
 ### <a name="advanced-sdk-configuration-isnt-available"></a>高度な SDK 構成を使用できません。
 
 バージョン 1.0 では SDK 構成はエンド ユーザーに公開されていません。
-[こちら](https://github.com/microsoft/ApplicationInsights-Home/issues/375)でこの問題を追跡しています。
 
     
     
@@ -139,21 +136,20 @@ Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az
 4. 次のチェック ボックスをオフにします。
     - **[Zip]**
     - **[マージ]**
-    - **[.NET Symbol Collection]**
+    - **.NET Symbol Collection (.NET シンボル収集)**
 5. 次の **[追加プロバイダー]** を設定します。`61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
 
 
 #### <a name="collecting-logs"></a>ログの収集
 
 1. 管理者特権のコマンド コンソールで、`iisreset /stop` コマンドを実行して、IIS とすべての Web アプリを無効にします。
-2. PerfView で、 **[Start Collection]\(収集の開始\)** を選択します。
+2. PerfView で、**[Start Collection]\(収集の開始\)** を選択します。
 3. 管理者特権のコマンド コンソールで、`iisreset /start` コマンドを実行して IIS を起動します。
 4. アプリの参照を試みます。
-5. アプリが読み込まれたら、PerfView に戻り、 **[Stop Collection]\(収集の停止\)** を選択します。
+5. アプリが読み込まれたら、PerfView に戻り、**[Stop Collection]\(収集の停止\)** を選択します。
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - その他のパラメーターについては、[API リファレンス](status-monitor-v2-overview.md#powershell-api-reference)に関する記事を参照してください。
-- この一覧にない問題が発生した場合は、[GitHub](https://github.com/Microsoft/ApplicationInsights-Home/issues) でお問い合わせください。

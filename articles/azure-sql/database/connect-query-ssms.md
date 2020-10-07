@@ -13,12 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/28/2020
-ms.openlocfilehash: 35a637df85984bcfd20836bcd87aa5ecf1583170
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 60977b9388af3a93d0ebbbc6aad50628b79e0e44
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461140"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598259"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>クイック スタート:SSMS を使用して Azure SQL データベースまたは Azure SQL マネージド インスタンスに接続してクエリを実行する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -64,6 +64,8 @@ SSMS をインストールせずにいくつかのアドホック クエリを�
 
 ## <a name="connect-to-your-database"></a>データベースに接続する
 
+[!INCLUDE[ssms-connect-azure-ad](../includes/ssms-connect-azure-ad.md)]
+
 SSMS で、目的のサーバーに接続します。
 
 > [!IMPORTANT]
@@ -85,7 +87,7 @@ SSMS で、目的のサーバーに接続します。
    ![[サーバーに接続]](./media/connect-query-ssms/connect.png)  
 
 > [!NOTE]
-> このチュートリアルでは SQL Server 認証を利用します。  ただし、MFA を使用して Azure Active Directory 経由で接続する場合は、[SSMS 18.6 以降](https://aka.ms/ssms)を利用していることを確認してください。 
+> このチュートリアルでは SQL Server 認証を利用します。
 
 3. **[サーバーに接続]** ダイアログ ボックスの **[オプション]** を選択します。 **[データベースへの接続]** ドロップダウン メニューで、**mySampleDatabase** を選択します。 「[前提条件](#prerequisites)」セクションのクイックスタートを完了すると、mySampleDatabase という名前の AdventureWorksLT データベースが作成されます。 AdventureWorks データベースの作業コピーの名前が mySampleDatabase と異なっている場合は、代わりにそれを選択します。
 

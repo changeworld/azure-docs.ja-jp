@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/25/2020
-ms.openlocfilehash: 1d816a84dc8062890633661716cf78aa5ba58527
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: a04657463808a3df3634102c0295f4b79a7b4579
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82888858"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537856"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-portal"></a>クイック スタート:Azure portal を使用して Azure HDInsight 内に Apache Spark クラスターを作成する
 
@@ -56,7 +56,7 @@ Azure portal を使用して、クラスター ストレージとして Azure St
     |クラスター ログイン パスワード| クラスターのログイン パスワードを入力します。 |
     |Secure Shell (SSH) ユーザー名| SSH ユーザー名を入力します。 このクイック スタートで使う SSH ユーザー名は **sshuser** です。 既定では、このアカウントは "*クラスター ログイン ユーザー名*" アカウントと同じパスワードを共有します。 |
 
-    ![HDInsight クラスターの作成の基本構成](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-basics-spark.png "HDInsight での Spark クラスターの作成の基本構成")
+    ![[基本] タブが選択された [HDInsight クラスターの作成] を示すスクリーンショット。](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-basics-spark.png "HDInsight での Spark クラスターの作成の基本構成")
 
     **ストレージ >>** を選択して **ストレージ** ページに進みます。
 
@@ -69,7 +69,7 @@ Azure portal を使用して、クラスター ストレージとして Azure St
     |プライマリ ストレージ アカウント|自動入力されている値を使用します。|
     |コンテナー|自動入力されている値を使用します。|
 
-    ![HDInsight クラスターの作成の基本構成](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-storage.png "HDInsight での Spark クラスターの作成の基本構成")
+    ![[ストレージ] タブが選択された [HDInsight クラスターの作成] を示すスクリーンショット。](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-storage.png "HDInsight での Spark クラスターの作成の基本構成")
 
     **[Review + create]\(確認と作成\)** を選択して続行します。
 
@@ -95,7 +95,7 @@ SQL (構造化照会言語) は、データ照会とデータ定義のための�
 
 1. カーネルの準備ができていることを確認します。 Notebook のカーネル名の横に白丸が表示されたら、カーネルの準備ができています。 黒丸は、カーネルがビジー状態であることを示します。
 
-    ![HDInsight での Apache Hive クエリ](./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png "HDInsight での Hive クエリ")
+    ![PySpark インジケーターのある Jupyter ウィンドウを示すスクリーンショット。](./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png "HDInsight での Hive クエリ")
 
     Notebook を初めて起動すると、カーネルがバックグラウンドでいくつかのタスクを実行します。 カーネルの準備ができるまで待ちます。
 
@@ -108,7 +108,7 @@ SQL (構造化照会言語) は、データ照会とデータ定義のための�
 
     HDInsight クラスターで Jupyter Notebook を使用すると、Spark SQL を使用して Hive クエリを実行するために使用できるプリセット `sqlContext` が手に入ります。 `%%sql` により、プリセット `sqlContext` を使用して Hive クエリを実行するよう Jupyter Notebook に指示します。 クエリは、すべての HDInsight クラスターに既定で付属する Hive テーブル (**hivesampletable**) から先頭の 10 行を取得します。 結果が得られるまで約 30 秒かかります。 出力は次のようになります。
 
-    ![HDInsight での Apache Hive クエリ](./media/apache-spark-jupyter-spark-sql-use-portal/hdinsight-spark-get-started-hive-query.png "HDInsight での Hive クエリ")
+    ![このクイックスタートで作成したノートブックの Jupyter ウィンドウを示すスクリーンショット。](./media/apache-spark-jupyter-spark-sql-use-portal/hdinsight-spark-get-started-hive-query.png "HDInsight での Hive クエリ")
 
     Jupyter でクエリを実行するたびに、Web ブラウザー ウィンドウのタイトルに **[(ビジー)]** ステータスと Notebook のタイトルが表示されます。 また、右上隅にある **PySpark** というテキストの横に塗りつぶされた円も表示されます。
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/2/2020
 ms.author: derekol
 Customer intent: With Azure Peering service enhancing the customer connectivity to Microsoft cloud services .
-ms.openlocfilehash: f04ae0d2e541be0a7984e944298fa8d7b47fd126
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: f8f0ee71a8dd00498d868bb6dc11b3fa083df766
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "84870576"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530220"
 ---
 # <a name="tutorial-create-a-peering-service-connection"></a>チュートリアル:Peering Service 接続を作成する
 
@@ -43,13 +43,13 @@ ms.locfileid: "84870576"
 
 1. **[Prefix key]\(プレフィックス キー\)** を選択し、プロバイダー (ISP または IXP) から付与されているプレフィックス キーを追加します。 MS は、このキーを使用して、IP プレフィックスとこのプレフィックスを割り当てたプロバイダーを検証できます。
 
-    ![Peering Service の構成、構成タブ](./media/peering-service-portal/peering-serviceconfiguration.png)
+    ![スクリーンショットは、[ピアリング サービス接続の作成] ページの [構成] タブを示しています。ここでプレフィック スキーを入力できます。](./media/peering-service-portal/peering-serviceconfiguration.png)
 
 1. ページの左下にある **[Review + create]\(確認と作成\)** ボタンを選択します。 **[Review + create]\(確認と作成\)** ページが表示され、Azure によって構成が検証されます。
 
  1. 示されているように、 **[検証に成功しました]** というメッセージが表示されたら、 **[作成]** を選択します。
 
-> ![Peering Service の構成、構成タブ](./media/peering-service-portal/peering-service-prefix.png)
+> ![スクリーンショットは、[ピアリング サービス接続の作成] ページの [確認と作成] タブを示しています。](./media/peering-service-portal/peering-service-prefix.png)
 
 1. Peering Service 接続を登録すると、含まれているプレフィックスに対して追加の検証が実行されます。 検証の状態は、リソース名の **[プレフィックス]** セクションで確認できます。 検証が失敗した場合は、次のいずれかのエラー メッセージが表示されます。
 

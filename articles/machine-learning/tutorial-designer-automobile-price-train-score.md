@@ -8,14 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 06/28/2020
+ms.date: 09/28/2020
 ms.custom: designer
-ms.openlocfilehash: 55d950435522a18eafda69d152619426fe54d87f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d9422cfb9bd8e5539f1a9b43d6fb7b137778f3d4
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90896706"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91404920"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer"></a>チュートリアル:デザイナーを使用して自動車の価格を予測する
 
@@ -75,7 +75,7 @@ Azure Machine Learning パイプラインを作成するには、Azure Machine L
     使用できるコンピューティング先が既にある場合は、それを選択してこのパイプラインを実行できます。
 
     > [!NOTE]
-    > デザイナーは、Azure Machine Learning コンピューティングおよび Azure Machine Learning コンピューティング インスタンスでのみトレーニング実験を実行できます。その他のコンピューティング先は表示されません。
+    > デザイナーは、Azure Machine Learning コンピューティングでのみトレーニング実験を実行できます。その他のコンピューティング先は表示されません。
 
 1. コンピューティング リソースの名前を入力します。
 
@@ -221,7 +221,7 @@ Azure Machine Learning パイプラインを作成するには、Azure Machine L
     > [!IMPORTANT]
     > **[Train Model]\(モデルのトレーニング\)** には必ず、 **[Split Data]\(データの分割\)** の左側の出力ポートを接続してください。 トレーニング セットは、左側のポートに格納されます。 右側のポートには、テスト セットが格納されます。
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png"alt-text="Train Model (モデルのトレーニング) モジュールの正しい構成を示すスクリーンショット。Linear Regression (線形回帰) モジュールが、Train Model (モデルのトレーニング) モジュールの左側のポートに接続され、Split Data (データの分割) モジュールが、Train Model (モデルのトレーニング) モジュールの右側のポートに接続されています。":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png"alt-text="Select-column":::
 
 1. **Train Model** (モデルのトレーニング) モジュールを選択します。
 
@@ -236,7 +236,7 @@ Azure Machine Learning パイプラインを作成するには、Azure Machine L
 
     パイプラインは次のようになっているはずです。
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png"alt-text="[Train Model]\(モデルのトレーニング\) モジュールを追加した後のパイプラインの正しい構成を示すスクリーンショット。":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png"alt-text="Select-column":::
 
 ### <a name="add-the-score-model-module"></a>[Score Model]\(モデルのスコア付け\) モジュールを追加する
 
@@ -256,7 +256,7 @@ Azure Machine Learning パイプラインを作成するには、Azure Machine L
 
     最終的なパイプラインは次のようになっているはずです。
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png"alt-text="パイプラインの正しい構成を示すスクリーンショット。":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png"alt-text="Select-column":::
 
 ## <a name="submit-the-pipeline"></a>パイプラインを送信する
 
@@ -285,7 +285,7 @@ Azure Machine Learning パイプラインを作成するには、Azure Machine L
 
     ここでは、予測された価格と、データのテストによる実際の価格を確認できます。
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png"alt-text="Scored Label (スコア付けラベル) 列が強調表示された状態の出力の視覚化のスクリーンショット":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png"alt-text="Select-column":::
 
 ### <a name="evaluate-models"></a>モデルを評価する
 

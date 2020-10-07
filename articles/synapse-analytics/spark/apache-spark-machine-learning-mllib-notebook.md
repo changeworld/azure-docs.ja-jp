@@ -1,24 +1,24 @@
 ---
-title: Apache Spark MLlib で機械学習アプリをビルドする
-description: Apache Spark MLlib を使用して、ロジスティック回帰による分類を使用してデータセットを分析する Machine Learning アプリを作成する方法について説明します。
+title: チュートリアル:Apache Spark MLlib で機械学習アプリをビルドする
+description: Apache Spark MLlib を使用して、ロジスティック回帰による分類を使ってデータセットを分析する機械学習アプリを作成する方法に関するチュートリアル。
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
-ms.reviewer: jrasnick, carlrab
-ms.topic: conceptual
+ms.reviewer: jrasnick
+ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: e1ece0add7b0749cfd808b0a3ec7962dd43a302d
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 667ce8ede9469063e5714470a8e18c218f3c2c90
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719344"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540321"
 ---
-# <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Apache Spark MLlib と Azure Synapse Analytics を使用して機械学習アプリを構築する
+# <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>チュートリアル:Apache Spark MLlib と Azure Synapse Analytics を使用して機械学習アプリを構築する
 
-この記事では、Apache Spark [MLlib](https://spark.apache.org/mllib/) を使用して、Azure のオープン データセットに対するシンプルな予測分析を実行する機械学習アプリケーションを作成する方法について説明します。 Spark には、組み込みの機械学習ライブラリが用意されています。 この例では、ロジスティック回帰による*分類*を使用しています。
+この記事では、Apache Spark [MLlib](https://spark.apache.org/mllib/) を使用し、Azure のオープン データセットに対してシンプルな予測分析を実行する機械学習アプリケーションの作成方法について説明します。 Spark には、組み込みの機械学習ライブラリが用意されています。 この例では、ロジスティック回帰による*分類*を使用しています。
 
 MLlib は、機械学習タスクに役立つ多数のユーティリティを提供するコア Spark ライブラリです。これには、次のことに適したユーティリティが含まれます。
 
@@ -96,7 +96,7 @@ MLlib は、機械学習タスクに役立つ多数のユーティリティを�
     display(sampled_taxi_df)
     ```
 
-4. 生成されるデータセットのサイズとノートブックを何回も実験または実行する必要に応じて、データセットをワークスペースにローカルにキャッシュすることをお勧めします。 明示的なキャッシュを実行するには、次の 3 つの方法があります。
+4. 生成されるデータセットのサイズと、多くの回数ノートブックを実験または実行する必要性に応じて、データセットをワークスペースにローカルにキャッシュすることが推奨される場合があります。 明示的なキャッシュを実行するには、次の 3 つの方法があります。
 
    - データフレームをファイルとしてローカルに保存する
    - データフレームを一時テーブルまたはビューとして保存する
@@ -193,7 +193,7 @@ taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'p
 
 ## <a name="create-a-logistic-regression-model"></a>ロジスティック回帰モデルを作成する
 
-最後のタスクは、ラベル付けされたデータをロジスティック回帰で分析できる形式に変換することです。 ロジスティック回帰アルゴリズムへの入力は、*ラベルと特徴ベクトルのペア*のセットである必要があります。ここで*特徴ベクトル*とは、入力ポイントを表す数のベクトルです。 そのため、カテゴリ列を数値に変換する必要があります。 `trafficTimeBins` 列と `weekdayString` 列を整数表現に変換する必要があります。 変換を実行する方法は多数ありますが、この例で採用されている方法は、一般的な方法である *OneHotEncoding* です。
+最後のタスクは、ラベル付けされたデータをロジスティック回帰で分析できる形式に変換することです。 ロジスティック回帰アルゴリズムへの入力は、*ラベルと特徴ベクトルのペア*のセットである必要があります。ここで*特徴ベクトル*とは、入力ポイントを表す数のベクトルです。 そのため、カテゴリ列を数値に変換する必要があります。 `trafficTimeBins` 列と `weekdayString` 列については、整数表現への変換が必要です。 変換を実行する方法は多数ありますが、この例で採用されている方法は、一般的な方法である *OneHotEncoding* です。
 
 ```python
 # Since the sample uses an algorithm that only works with numeric features, convert them so they can be consumed
@@ -206,7 +206,7 @@ en2 = OneHotEncoder(dropLast=False, inputCol="weekdayIndex", outputCol="weekdayV
 encoded_final_df = Pipeline(stages=[sI1, en1, sI2, en2]).fit(taxi_featurised_df).transform(taxi_featurised_df)
 ```
 
-これにより、すべての列がモデルをトレーニングするために適した形式である新しいデータフレームが得られます。
+このアクションにより、すべての列がモデルをトレーニングするのに適切な形式になっている新しいデータフレームが得られます。
 
 ## <a name="train-a-logistic-regression-model"></a>ロジスティック回帰モデルのトレーニング
 

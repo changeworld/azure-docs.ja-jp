@@ -1,5 +1,5 @@
 ---
-title: SQL オンデマンドを Power BI Desktop に接続してレポートを作成する
+title: チュートリアル:SQL オンデマンドを Power BI Desktop に接続してレポートを作成する
 description: このチュートリアルでは、Azure Synapse Analytics の SQL オンデマンドを Power BI Desktop に接続し、ビューに基づいてデモ レポートを作成する方法について説明します。
 services: synapse analytics
 author: azaricstefan
@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 325a2015e4107a20dfaec22e904cf3cc6ce3085d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: jrasnick
+ms.openlocfilehash: 5c86825d6dce8681e114ec930add751b6beae085
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089177"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539556"
 ---
 # <a name="tutorial-use-sql-on-demand-with-power-bi-desktop--create-a-report"></a>チュートリアル:SQL オンデマンドを Power BI Desktop で使用してレポートを作成する
 
-このチュートリアルでは、以下の内容を学習します。
+このチュートリアルでは、次の作業を行う方法について説明します。
 
 > [!div class="checklist"]
 >

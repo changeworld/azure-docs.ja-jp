@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/07/2020
 ms.author: mlottner
-ms.openlocfilehash: 0cfd1e0ce16008c6f7fd128d561ad361bcc53b87
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 22bd12bbdcccef2fd0e9010f926cd18e95d42967
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931438"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761857"
 ---
 # <a name="overview-defender-for-iot-security-module-for-azure-rtos-preview"></a>概要:Azure RTOS 用の Defender for IoT セキュリティ モジュール (プレビュー)
 
@@ -46,7 +46,7 @@ Defender for IoT によって提供される推奨インフラストラクチャ
 
 ## <a name="get-started-protecting-azure-rtos-devices"></a>Azure RTOS デバイスの保護を開始する
 
-Azure RTOS 用のセキュリティ モジュールは、デバイス向けの無料ダウンロードとして提供されています。 Defender for IoT クラウド サービスは、Azure サブスクリプションごとに 30 日間の試用版で利用できます。 開始するには、[Azure RTOS 用のセキュリティ モジュール](https://github.com/azure-rtos/iot-security-module-preview)をダウンロードしてください。 
+Azure RTOS 用のセキュリティ モジュールは、デバイス向けの無料ダウンロードとして提供されています。 Defender for IoT クラウド サービスは、Azure サブスクリプションごとに 30 日間の試用版で利用できます。 開始するには、[Azure RTOS 用のセキュリティ モジュール](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/defender-for-iot/iot-security-azure-rtos.md)をダウンロードしてください。 
 
 
 ## <a name="next-steps"></a>次のステップ

@@ -1,14 +1,16 @@
 ---
 title: トラブルシューティング - QnA Maker
 description: QnA Maker サービスについてきわめて多く寄せられる質問を精選した一覧です。サービスの採用にかかる期間を短縮し、成果を上げるためにお役立てください。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: troubleshooting
 ms.date: 03/25/2020
-ms.openlocfilehash: 50823e29eb5c276c00a1c8f0e3227ec67999a703
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 06747e2d053171749bfc5c9c394dab3d48674d67
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502581"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776240"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker のトラブルシューティング
 

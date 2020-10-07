@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: 43c11575be084354e4c9287b44b5847d4d086aff
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 56aa0d91372ac2d21a20f28b1044f0811c716b0c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084398"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358034"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-maya"></a>チュートリアル:Maya で物理ベース レンダリング素材を設定する
 
@@ -79,7 +79,7 @@ Maya でのインスタンス化のプロセスは単純です。
 1. **[Duplicate Special Options]\(特殊な複製オプション\)** ダイアログ ボックスの **[Geometry type]\(ジオメトリ タイプ\)** で、 **[Instance]\(インスタンス\)** オプションを選択します。 
 1. **[Duplicate Special]\(特殊な複製\)** を選択します。
 
-   ![インスタンス化](media/instancing.jpg)
+   ![スクリーンショットは、[特殊な複製オプション] ダイアログ ボックスが開き、[特殊な複製] が選択された Maya ウィンドウを示しています。](media/instancing.jpg)
 
 このアクションにより、対象のオブジェクトのインスタンスが作成されます。 これを、その親や、その親の他のインスタンスとは無関係に回転またはスケーリングすることができます。 
 

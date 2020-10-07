@@ -5,15 +5,15 @@ author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
-ms.date: 07/31/2020
+ms.date: 09/29/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3d5a5d7ec07587b20a8a6285deafa6215db990a5
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 0557ef45f1a18d3e51be5df3f28d35f421c3981d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810379"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540459"
 ---
 # <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用する Unity HoloLens アプリを作成する
 
@@ -80,7 +80,12 @@ HoloLens デバイスの電源をオンにしてサインインし、USB ケー�
 
 **[デバッグ]**  >  **[デバッグの開始]** を選択して、アプリのデプロイとデバッグを開始します。
 
-アプリの指示に従って、アンカーを配置し、呼び戻します。
+アプリで矢印を使用して **[BasicDemo]** を選択し、 **[実行]**  ボタンを 押してデモを実行します。 指示に従って、アンカーを配置し、呼び戻します。
+
+![スクリーンショット 1](./media/get-started-unity-hololens/screenshot-1.jpg)
+![スクリーンショット 2](./media/get-started-unity-hololens/screenshot-2.jpg)
+![スクリーンショット 3](./media/get-started-unity-hololens/screenshot-3.jpg)
+![スクリーンショット 4](./media/get-started-unity-hololens/screenshot-4.jpg)
 
 Visual Studio で、 **[デバッグの停止]** を選択するか、Shift + F5 キーを押して、アプリを停止します。
 

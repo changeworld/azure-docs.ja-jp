@@ -1,20 +1,21 @@
 ---
-title: クイックスタート - コンテナー イメージをビルドして実行する
-description: Azure Container Registry を使用して、クラウド内で Docker コンテナー イメージをオンデマンドでビルドして実行するタスクを迅速に実行します。
+title: クイックスタート - Azure でコンテナー イメージをオンデマンドでビルドする
+description: Azure Container Registry コマンドを使用して、Azure クラウド内で Docker コンテナー イメージをオンデマンドでビルド、プッシュ、実行します。
 ms.topic: quickstart
-ms.date: 01/31/2020
-ms.openlocfilehash: 610d82a0761f06338d04f0794d4141165d67d36c
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.date: 09/25/2020
+ms.custom: contperfq1
+ms.openlocfilehash: 36921900f64d458f1f2591897e32c98f6d22a550
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84753702"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538214"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>クイック スタート:Azure Container Registry タスクを使用したコンテナー イメージのビルドと実行
 
-このクイック スタートでは、Azure Container Registry タスク コマンドを使用して、Docker コンテナー イメージの迅速なビルド、プッシュ、実行を Azure 内でネイティブに行い、「社内ループ」開発サイクルをクラウドにオフロードする方法を示します。 [ACR タスク][container-registry-tasks-overview]は、コンテナー ライフサイクル全体でコンテナー イメージを管理および変更するのに役立つ Azure Container Registry 内の機能のスイートです。 
+このクイックスタートでは、[Azure Container Registry タスク][container-registry-tasks-overview]のコマンドを使用して、Docker コンテナー イメージの迅速なビルド、プッシュ、実行を、Docker のローカル インストールなしで、Azure 内でネイティブに行います。 ACR タスクは、コンテナー ライフサイクル全体でコンテナー イメージを管理および変更するのに役立つ Azure Container Registry 内の機能のスイートです。 この例では、ローカルの Dockerfile を使用して、オンデマンドのビルドで "内部ループ" コンテナー イメージ開発サイクルをクラウドに任せる方法について説明します。 
 
-このクイック スタートの後に、ACR タスクのより高度な機能について説明します。 ACR タスクでは、コードのコミットに基づくイメージのビルドまたは基本イメージの更新を自動化したり、他のシナリオ間で複数のコンテナーを並列にテストしたりすることができます。 
+このクイック スタートの後に、[チュートリアル](container-registry-tutorial-quick-task.md)を使用して ACR タスクのより高度な機能について説明します。 ACR タスクでは、コードのコミットに基づくイメージのビルドまたは基本イメージの更新を自動化したり、他のシナリオ間で複数のコンテナーを並列にテストしたりすることができます。 
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント][azure-account] を作成してください。
 
@@ -45,7 +46,7 @@ az acr create --resource-group myResourceGroup \
 
 ## <a name="build-and-push-image-from-a-dockerfile"></a>Dockerfile からのイメージのビルドとプッシュ
 
-ここでは、Azure Container Registry を使用してイメージをビルドし、プッシュします。 まず、作業ディレクトリを作成してから、`FROM hello-world` の 1 行だけが記述された *Dockerfile* という名前の Dockerfile を作成します。 これは、Docker Hub の `hello-world` イメージから Linux コンテナー イメージをビルドする単純な例です。 独自の標準的な Dockerfile を作成して他のプラットフォーム用のイメージをビルドすることができます。 Bash シェルで作業している場合は、次のコマンドで Dockerfile を作成してください。
+ここでは、Azure Container Registry を使用してイメージをビルドし、プッシュします。 まず、ローカル作業ディレクトリを作成してから、`FROM hello-world` の 1 行だけが記述された *Dockerfile* という名前の Dockerfile を作成します。 これは、Docker Hub の `hello-world` イメージから Linux コンテナー イメージをビルドする単純な例です。 独自の標準的な Dockerfile を作成して他のプラットフォーム用のイメージをビルドすることができます。 Bash シェルで作業している場合は、次のコマンドで Dockerfile を作成してください。
 
 ```bash
 echo FROM hello-world > Dockerfile

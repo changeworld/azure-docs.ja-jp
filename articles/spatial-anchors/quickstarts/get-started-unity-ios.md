@@ -5,15 +5,15 @@ author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
-ms.date: 08/14/2020
+ms.date: 09/29/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 4d5ec2411b7b1a65da9a1f4262822cb85a3b386e
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 630e90069cd1b9735dbaec4c0d825be71df7e69c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536266"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539332"
 ---
 # <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用して Unity iOS アプリを作成する
 
@@ -56,7 +56,11 @@ ms.locfileid: "89536266"
 
 [!INCLUDE [Configure Xcode](../../../includes/spatial-anchors-unity-ios-xcode.md)]
 
-アプリの指示に従って、アンカーを配置し、呼び戻します。
+アプリで矢印を使用して **[BasicDemo]** を選択し、 **[実行]**  ボタンを 押してデモを実行します。 指示に従って、アンカーを配置し、呼び戻します。
+
+![スクリーンショット 1](./media/get-started-unity-ios/screenshot-1.jpg)
+![スクリーンショット 2](./media/get-started-unity-ios/screenshot-2.jpg)
+![スクリーンショット 3](./media/get-started-unity-ios/screenshot-3.jpg)
 
 完了したら、Xcode で **[Stop]\(停止\)** を押してアプリを停止します。
 

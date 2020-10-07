@@ -1,17 +1,15 @@
 ---
 title: Azure で Service Fabric 上の Java アプリ用に Jenkins を構成する
 description: このチュートリアルでは、Jenkins を使用して Java Service Fabric アプリケーションをデプロイするための継続的インテグレーションをセットアップする方法について説明します。
-author: suhuruli
 ms.topic: tutorial
 ms.date: 08/27/2018
-ms.author: suhuruli
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 42efc13d37ccfdaf60896f338b1a38384ef06568
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4e29104f0586a8e18afb7a640903c57ce988b692
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320716"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531974"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>チュートリアル:Service Fabric 上の Java アプリケーションに対して CI/CD を有効にするように Jenkins 環境を構成する
 
@@ -109,7 +107,7 @@ Jenkins は、Service Fabric クラスター内外でセットアップできま
 
     アプリケーションのデプロイに使用される追加の詳細を指定することもできます。 次のスクリーンショットで、アプリケーションの詳細の例を確認してください。
 
-    ![Service Fabric Jenkins のビルド アクション](./media/service-fabric-tutorial-java-jenkins/sfjenkins.png)
+    ![その他の Service Fabric プロジェクト デプロイ オプションを含んだ [Post-build Actions (ビルド後のアクション)] ダイアログ](./media/service-fabric-tutorial-java-jenkins/sfjenkins.png)
 
     > [!NOTE]
     > このクラスターは、Service Fabric を使用して Jenkins コンテナー イメージをデプロイする場合に、Jenkins コンテナー アプリケーションをホストするクラスターと同じにすることもできます。

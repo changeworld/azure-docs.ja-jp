@@ -4,12 +4,12 @@ description: App Service アプリからビジネス プロセスを呼び出す
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: ddd57bfe653766d133824f42098d9ad9adb1e56b
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 5aa563e55c64893d57522dd1154a64c7e90a1690
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962198"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397438"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>チュートリアル:App Service からメールを送信したり他のビジネス プロセスを呼び出したりする
 
@@ -84,7 +84,8 @@ ms.locfileid: "88962198"
 1. デザイナーの下部にある **[新しいステップ]** をクリックし、アクション検索ボックスに「**Gmail**」と入力して、 **[メールの送信 (V2)]** を見つけて選択します。
     
     > [!TIP]
-    > SendGrid、MailChimp、Office 365、SalesForce など、他の種類の統合を検索することができます。 詳細については、[Logic Apps のドキュメント](../logic-apps/index.yml)を参照してください。
+    > SendGrid、MailChimp、Microsoft 365、SalesForce など、他の種類の統合を検索することができます。 詳細については、[Logic Apps のドキュメント](../logic-apps/index.yml)を参照してください。
+
 1. **[Gmail]** ダイアログで、 **[サインイン]** を選択し、メールの送信に使用する Gmail アカウントにサインインします。
 
     ![電子メールの送信元にする Gmail アカウントにサインインするための [Gmail] ダイアログ ボックスのスクリーンショット。](./media/tutorial-send-email/gmail-sign-in.png)

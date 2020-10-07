@@ -349,7 +349,7 @@
               href: database/sql-data-sync-best-practices.md
             - name: データ同期のトラブルシューティング
               href: database/sql-data-sync-troubleshoot.md
-        - name: Security
+        - name: セキュリティ
           items:
             - name: Azure SQL 監査
               href: database/auditing-overview.md
@@ -497,12 +497,8 @@
               href: database/database-copy.md
             - name: SQL Database へのレプリケート
               href: database/replication-to-sql-database.md
-            - name: SQL データ同期
-              items:
-                - name: スキーマ変更のレプリケート
-                  href: database/sql-data-sync-update-sync-schema.md
-                - name: OMS で監視する
-                  href: database/sql-data-sync-monitor-sync.md
+            - name: スキーマの変更のレプリケート (データ同期)
+              href: database/sql-data-sync-update-sync-schema.md
         - name: データベース シャーディング
           items:
             - name: クライアント ライブラリをアップグレードする

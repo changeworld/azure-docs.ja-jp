@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB Gremlin API の概要
 description: Azure Cosmos DB を使用し、Apache TinkerPop の Gremlin グラフ クエリ言語を使って待ち時間の短い大規模なグラフの格納、クエリの実行、トラバースを行う方法について説明します。
-author: LuisBosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 07/10/2020
-ms.author: lbosq
-ms.openlocfilehash: 3dc534d1cbb195cd93ede091503222b297b17059
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: jasonh
+ms.openlocfilehash: 67a2c9537851343e8e5dad4a3654b31082e83d11
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523742"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409614"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Azure Cosmos DB での Gremlin API の概要
 
@@ -106,7 +106,7 @@ Azure Cosmos DB のグラフ サポートが役立つ場合があるいくつか
 
 サンプル グラフを使用して、Gremlin でクエリを表現する方法を理解しましょう。 次の図は、ユーザー、関心事、デバイスに関するデータを管理するビジネス アプリケーションをグラフの形で示しています。  
 
-:::image type="content" source="./media/gremlin-support/sample-graph.png" alt-text="ユーザー、デバイス、関心事を示すサンプル データベース" border="false"::: 
+:::image type="content" source="./media/gremlin-support/sample-graph.png" alt-text="Azure Cosmos DB グラフ アーキテクチャ" border="false"::: 
 
 このグラフには、次の "*頂点*" の種類 (Gremlin では "ラベル" とも呼ばれます) が含まれています。
 

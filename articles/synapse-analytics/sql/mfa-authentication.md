@@ -9,12 +9,12 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
 ms.custom: has-adal-ref
-ms.openlocfilehash: c578958616e4b4d2d7d3aef1de1650566e0bd40e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 52964c906df7a96685c8eb80c1d23ef9a9efc6e1
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496408"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361842"
 ---
 # <a name="use-multi-factor-aad-authentication-with-synapse-sql-ssms-support-for-mfa"></a>Synapse SQL で多要素 AAD 認証を使用する (MFA の SSMS サポート)
 
@@ -22,13 +22,11 @@ Synapse SQL では、"*Active Directory ユニバーサル認証*" を使用し�
 
 この記事ではさまざまな認証オプションの違いについて説明し、また、ユニバーサル認証の使用に関連する制限事項について説明します。 
 
-**最新の SSMS のダウンロード** - クライアント コンピューターで、「[SQL Server Management Studio (SSMS) のダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)」から SSMS の最新版をダウンロードします。 
-
-**最新の SSMS のダウンロード** - クライアント コンピューターで、「[SQL Server Management Studio (SSMS) のダウンロード](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)」から SSMS の最新版をダウンロードします。
+**最新の SSMS のダウンロード** - クライアント コンピューターで、「[SQL Server Management Studio (SSMS) のダウンロード](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」から SSMS の最新版をダウンロードします。
 
 この記事で説明されているすべての機能を使用するには、2017 年 7 月以降のバージョン 17.2 を使用してください。  一番新しい接続ダイアログ ボックスは次の画像のようになっているはずです。
 
-![1mfa-universal-connect](./media/mfa-authentication/1mfa-universal-connect.png "[ユーザー名] ボックスへの入力を完了します。")  
+![サーバー名と認証オプションを選択できる [サーバーへの接続] ダイアログ ボックスを表示しているスクリーンショット。](./media/mfa-authentication/1mfa-universal-connect.png "[ユーザー名] ボックスへの入力を完了します。")  
 
 ## <a name="the-five-authentication-options"></a>5 つの認証オプション  
 
@@ -51,7 +49,7 @@ Multi-Factor Authentication の説明については、 [Multi-Factor Authentica
 
 ### <a name="azure-ad-domain-name-or-tenant-id-parameter"></a>Azure AD ドメイン名またはテナント ID パラメーター
 
-[SSMS バージョン 17](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 以降では、別の Azure Active ディレクトリから現在の Active Directory にゲスト ユーザーとしてインポートされたユーザーは、接続時に Azure AD のドメイン名またはテナント ID を指定できます。 
+[SSMS バージョン 17](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 以降では、別の Azure Active ディレクトリから現在の Active Directory にゲスト ユーザーとしてインポートされたユーザーは、接続時に Azure AD のドメイン名またはテナント ID を指定できます。 
 
 ゲスト ユーザーには、他の Azure AD や、outlook.com、hotmail.com、live.com などの Microsoft アカウントまたは gmail.com などのその他のアカウントから招待されたユーザーが含まれます。 この情報により、**Active Directory MFA ユニバーサル認証**の際に、正しい認証機関を識別できます。 また、このオプションでは、outlook.com、hotmail.com、live.com などの Microsoft のアカウント (MSA) および MSA 以外のアカウントのサポートが必要です。 
 
@@ -61,13 +59,13 @@ Multi-Factor Authentication の説明については、 [Multi-Factor Authentica
 
 ユーザーが Azure サーバーにリンクされている Azure AD のネイティブ ユーザーであるが、MSA アカウントではない場合、ドメイン名またはテナント ID は必要ありません。 
 
-**[データベースへの接続]** ダイアログ ボックスにパラメーターを入力するには (SSMS バージョン 17.2 以降)、ダイアログ ボックスに入力し、 **[Active Directory] で [Universal with MFA]\(MFA ユニバーサル認証\)** を選択し、 **[オプション]** をクリックして、 **[ユーザー名]** ボックスに入力し、 **[接続のプロパティ]** タブをクリックします。 
+**[データベースへの接続]** ダイアログ ボックスにパラメーターを入力するには (SSMS バージョン 17.2 以降)、ダイアログ ボックスに入力します。 **[Active Directory - MFA サポートで汎用]** 認証を選択し、 **[オプション]** を選択して、 **[ユーザー名]** ボックスに入力したら、 **[接続のプロパティ]** タブを選択します。 
 
 **[AD ドメインの名前またはテナントの ID]** ボックスをオンにし、ドメイン名 (**contosotest.onmicrosoft.com**) またはテナント ID の GUID などの認証機関を入力します。  
 
-   ![mfa-tenant-ssms](./media/mfa-authentication/mfa-tenant-ssms.png)
+   ![スクリーンショットは、[接続のプロパティ] タブに値が入力されている [サーバーへの接続] を示しています。](./media/mfa-authentication/mfa-tenant-ssms.png)
 
-SSMS 18.x 以降を実行している場合、ゲスト ユーザーの AD ドメイン名またはテナント ID は不要です。18.x 以降では自動的に認識されます。
+SSMS 18.x 以降を実行している場合、18.x 以降では自動的に認識されるため、ゲスト ユーザーの AD ドメイン名やテナント ID は不要です。
 
    ![mfa-tenant-ssms](./media/mfa-authentication/mfa-no-tenant-ssms.png)
 
@@ -80,7 +78,7 @@ SSMS 18.x 以降を実行している場合、ゲスト ユーザーの AD ド�
 
 ユーザー グループには、既定では接続権限のみが付与されており、追加のデータ アクセス権限は通常の方法で付与する必要があります。 
 
-ゲスト ユーザーとしてのユーザー `steve@gmail.com` は、SSMS の **[接続プロパティ]** ダイアログ ボックスをオンにして、AD ドメイン名 `contosotest.onmicrosoft.com` を追加する必要があることに注意してください。 **[AD ドメインの名前またはテナントの ID]** オプションは MFA ユニバーサル接続オプションでのみサポートされており、それ以外の場合はグレーで表示されます。
+ゲスト ユーザーとしてのユーザー `steve@gmail.com` は、SSMS の **[接続プロパティ]** ダイアログ ボックスで、チェック ボックスをオンにして、AD ドメイン名 `contosotest.onmicrosoft.com` を追加する必要があります。 **[AD ドメインの名前またはテナントの ID]** オプションは MFA ユニバーサル接続オプションでのみサポートされており、それ以外の場合はグレーで表示されます。
 
 ## <a name="universal-authentication-limitations-for-synapse-sql"></a>Synapse SQL のユニバーサル認証の制限事項
 

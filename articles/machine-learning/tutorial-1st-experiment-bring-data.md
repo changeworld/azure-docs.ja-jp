@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:独自のデータを使用する
 titleSuffix: Azure Machine Learning
-description: Azure ML 入門シリーズの第 4 部では、リモート トレーニングの実行で独自のデータを使用する方法について説明します。
+description: Azure Machine Learning 入門シリーズの第 4 部では、リモート トレーニングの実行で独自のデータを使用する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,46 +11,46 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 876ba76655572979a1d831a1ca07e5f3871a3283
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 13d43eb788c750a2f24033a6138ebf00ac57fffe
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90929501"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372573"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>チュートリアル:独自のデータを使用する (4 部構成中の第 4 部)
 
 このチュートリアルでは、独自のデータをアップロードし、それを使用することで、Azure Machine Learning で機械学習モデルをトレーニングする方法について説明します。
 
-このチュートリアルは、**4 部構成のチュートリアル シリーズの第 4 部**であり、Azure Machine Learning の基礎を学習し、Azure でジョブベースの機械学習タスクを完了させます。 このチュートリアルは次のパートで完了した作業を基にしています。このシリーズの[第 1 部: 設定](tutorial-1st-experiment-sdk-setup-local.md)、[第 2 部: "Hello World" の実行](tutorial-1st-experiment-hello-world.md)、[第 3 部: モデルのトレーニング](tutorial-1st-experiment-sdk-train.md)に関するページを参照してください。
+このチュートリアルは、"*4 部構成のチュートリアル シリーズのパート 4*" であり、Azure Machine Learning の基礎を学習し、Azure でジョブベースの機械学習タスクを実行します。 このチュートリアルは次のパートで完了した作業を基にしています。このシリーズの[第 1 部: 設定](tutorial-1st-experiment-sdk-setup-local.md)、[第 2 部:"Hello World" の実行](tutorial-1st-experiment-hello-world.md)、[第 3 部: モデルのトレーニング](tutorial-1st-experiment-sdk-train.md)に関するページを参照してください。
 
 [第 3 部: モデルのトレーニング](tutorial-1st-experiment-sdk-train.md)では、PyTorch API 内の組み込みの `torchvision.datasets.CIFAR10` メソッドを使用してデータをダウンロードしました。 ただし、多くの場合、リモート トレーニングの実行では独自のデータを使用することになります。 この記事では、Azure Machine Learning で独自のデータを操作するのに使用できるワークフローについて説明します。
 
 このチュートリアルでは、次のことを行いました。
 
 > [!div class="checklist"]
-> * ローカル ディレクトリ内のデータを使用するようにトレーニング スクリプトを構成する
-> * トレーニング スクリプトをローカルでテストする
-> * Azure にデータをアップロードする
-> * コントロール スクリプトを作成する
-> * 新しい Azure Machine Learning の概念を理解する (パラメーター、データセット、データストアの受け渡し)
-> * トレーニング スクリプトを送信して実行する
-> * クラウドでのコード出力を表示する
+> * ローカル ディレクトリ内のデータを使用するようにトレーニング スクリプトを構成する。
+> * トレーニング スクリプトをローカルでテストする。
+> * Azure にデータをアップロードする。
+> * コントロール スクリプトを作成する。
+> * 新しい Azure Machine Learning の概念を理解する (パラメーター、データセット、データストアの受け渡し)。
+> * トレーニング スクリプトを送信して実行する。
+> * クラウドでのコード出力を表示する。
 
 ## <a name="prerequisites"></a>前提条件
 
-* このシリーズの[第 3 部](tutorial-1st-experiment-sdk-train.md)を完了している
+* このシリーズの[第 3 部](tutorial-1st-experiment-sdk-train.md)を完了している。
 * Python 言語と機械学習のワークフローに関する基礎知識。
-* ローカル開発環境。 Visual Studio Code、Jupyter、PyCharm などが該当しますが、これに限定するものではありません。
-* Python (バージョン 3.5 - 3.7)。
+* Visual Studio Code、Jupyter、PyCharm などのローカル開発環境。
+* Python (バージョン 3.5 から 3.7)。
 
 ## <a name="adjust-the-training-script"></a>トレーニング スクリプトを調整する
 既に、Azure Machine Learning で実行するトレーニング スクリプト (tutorial/src/train.py) が用意され、モデルのパフォーマンスを監視できるようになっています。 引数を導入してトレーニング スクリプトをパラメーター化しましょう。 引数を使用すると、さまざまなハイパーパラメーターを簡単に比較できます。
 
-現在のトレーニング スクリプトは、実行のたびに CIFAR10 データセットをダウンロードするように設定されています。 次の Python コードは、ディレクトリからデータを読み取るように調整されています。
+現在、トレーニング スクリプトは実行のたびに CIFAR10 データセットをダウンロードするように設定されています。 次の Python コードは、ディレクトリからデータを読み取るように調整されています。
 
 >[!NOTE] 
-> スクリプトをパラメーター化するための `argparse` の使用。
+> `argparse` を使用すると、スクリプトがパラメーター化されます。
 
 ```python
 # tutorial/src/train.py
@@ -130,7 +130,7 @@ if __name__ == "__main__":
 
 ### <a name="understanding-the-code-changes"></a>コードの変更について
 
-`train.py` 内で使用されているコードは、`argparse` ライブラリを利用して、`data_path`、`learning_rate`、および `momentum` を設定しています。
+`train.py` のコードでは、`argparse` ライブラリを使用して `data_path`、`learning_rate`、および `momentum` を設定しています。
 
 ```python
 # .... other code
@@ -184,7 +184,7 @@ python src/train.py --data_path ./data --learning_rate 0.003 --momentum 0.92
 
 ## <a name="upload-the-data-to-azure"></a>データを Azure にアップロードする
 
-このスクリプトを Azure Machine Learning で実行するために、トレーニング データを Azure で使用できるようにする必要があります。 Azure Machine Learning ワークスペースには、トレーニング データを格納するために使用する_既定_の**データストア** (Azure Blob Storage アカウント) が用意されています。
+このスクリプトを Azure Machine Learning で実行するために、トレーニング データを Azure で使用できるようにする必要があります。 Azure Machine Learning ワークスペースには、 _既定_のデータストアが用意されています。 これは、トレーニング データを格納できる Azure Blob Storage アカウントです。
 
 >[!NOTE] 
 > Azure Machine Learning を使用すると、自分のデータが格納される他のクラウドベースのデータストアに接続できます。 詳細については、[データストアに関するドキュメント](./concept-data.md)を参照してください。  
@@ -199,12 +199,12 @@ datastore = ws.get_default_datastore()
 datastore.upload(src_dir='./data', target_path='datasets/cifar10', overwrite=True)
 ```
 
-`target_path` では、CIFAR10 データがアップロードされるデータストア上のパスを指定します。
+`target_path` の値には、CIFAR10 データがアップロードされるデータストア上のパスを指定します。
 
 >[!TIP] 
 > Azure Machine Learning を使用してデータをアップロードしながら、[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用してアドホック ファイルをアップロードできます。 ETL ツールが必要な場合は、[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) を使用して、データを Azure に取り込むことができます。
 
-Python ファイルを実行してデータをアップロードします (注: アップロードは 60 秒未満で迅速に行われます)。
+Python ファイルを実行してデータをアップロードします (アップロードは 60 秒未満で迅速に行われます)。
 
 ```bash
 python 05-upload-data.py
@@ -271,7 +271,7 @@ if __name__ == "__main__":
       `dataset = Dataset.File.from_files( ... )`
    :::column-end:::
    :::column span="2":::
-      [データセット](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true)は、Azure BLOB ストアにアップロードしたデータを参照するために使用します。 データセットは、ご利用のデータの上にある抽象化レイヤーであり、信頼性および信頼度の向上を目的に設計されています。
+      [データセット](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true)は、Azure Blob Storage にアップロードしたデータを参照するために使用します。 データセットは、ご利用のデータの上にある抽象化レイヤーであり、信頼性および信頼度の向上を目的に設計されています。
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -283,7 +283,7 @@ if __name__ == "__main__":
    :::column-end:::
 :::row-end:::
 
-## <a name="submit-run-to-azure-machine-learning"></a>Azure Machine Learning に実行を送信する
+## <a name="submit-the-run-to-azure-machine-learning"></a>Azure Machine Learning に実行を送信する
 
 ここで、新しい構成を使用するために実行を再送信します。
 
@@ -291,11 +291,11 @@ if __name__ == "__main__":
 python 06-run-pytorch-data.py
 ```
 
-これにより Azure Machine Learning Studio の実験に URL が出力されます。 そのリンクに移動すると、実行中の自分のコードを確認できます。
+このコードにより Azure Machine Learning スタジオの実験に URL が出力されます。 そのリンクに移動すると、実行中の自分のコードを確認できます。
 
-### <a name="inspect-the-70_driver_log-log-file"></a>70_driver_log ログ ファイルを検査する
+### <a name="inspect-the-log-file"></a>ログ ファイルの確認
 
-Azure Machine Learning Studio で、実験の実行に移動し (上のセルからの URL 出力をクリックすることにより)、続いて **[出力とログ]** に移動します。 70_driver_log.txt ファイルをクリックします。すると、次の出力が表示されます。
+スタジオで、前の URL 出力を選択することによって実験の実行に移動し、 **[出力 + ログ]** を選択します。 `70_driver_log.txt` ファイルを選択します。 次の出力が表示されます。
 
 ```txt
 Processing 'input'.
@@ -331,8 +331,8 @@ LIST FILES IN DATA PATH...
 
 注意:
 
-1. Azure Machine Learning によって BLOB ストアが自動的にコンピューティング クラスターにマウントされました。
-2. コントロール スクリプトで使用されている ``dataset.as_named_input('input').as_mount()`` は、マウント ポイントに解決されます。
+- Azure Machine Learning によって Blob Storage が自動的にコンピューティング クラスターにマウントされました。
+- コントロール スクリプトで使用されている ``dataset.as_named_input('input').as_mount()`` は、マウント ポイントに解決されます。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -348,4 +348,4 @@ LIST FILES IN DATA PATH...
 
 モデルを用意できましたので、今度は次のことを学習します。
 
-* [Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)方法
+* [Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)方法。

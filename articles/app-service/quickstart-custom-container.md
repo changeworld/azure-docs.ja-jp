@@ -7,12 +7,12 @@ ms.date: 08/28/2019
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 33eaf6274f2da09ab98a21e6028b0103df817744
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 4c95e345255b28ba43e474087cdb80fcab493394
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961365"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356419"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Azure でカスタム コンテナーを実行する
 
@@ -57,7 +57,7 @@ ms.locfileid: "88961365"
 
 1. _Dockerfile_ ファイルが自動的に開かない場合は、**ソリューション エクスプローラー**から開きます。
 
-1. [サポートされている親イメージ](#use-a-different-parent-image)が必要です。 `FROM` 行を次のコードに置き換えることで親イメージを変更し、ファイルを保存します。
+1. [サポートされている親イメージ](configure-custom-container.md#supported-parent-images)が必要です。 `FROM` 行を次のコードに置き換えることで親イメージを変更し、ファイルを保存します。
 
    ```dockerfile
    FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
@@ -169,22 +169,16 @@ https://<app_name>.scm.azurewebsites.net/api/logstream
 
 ![Azure での更新された Web アプリ](./media/quickstart-custom-container/azure-web-app-updated.png)
 
-## <a name="use-a-different-parent-image"></a>別の親イメージを使用する
-
-別のカスタム Docker イメージを使用してアプリを実行することもできます。 ただし、必要なフレームワークに合った適切な[親イメージ (基本イメージ)](https://docs.docker.com/develop/develop-images/baseimages/) を選ぶ必要があります。
-
-- .NET Framework のアプリをデプロイするには、Windows Server Core 2019 [Long-Term Servicing Channel (LTSC: 長期的なサービス チャネル)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) リリースに基づく親イメージを使用します。 
-- .NET Core のアプリをデプロイするには、Windows Server Nano 1809 [Semi-Annual Servicing Channel (SAC: 半期サービス チャネル)](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) リリースに基づく親イメージを使用します。 
-
-アプリの起動中は、親イメージのダウンロードに多少の時間がかかります。 ただし、Azure App Service にあらかじめキャッシュされている次のいずれかの親イメージを使用することで、起動時間を短縮することができます。
-
-- [mcr.microsoft.com/dotnet/framework/aspnet](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/):4.7.2-windowsservercore-ltsc2019
-- [mcr.microsoft.com/windows/nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver/):1809 - このイメージは、Microsoft [ASP.NET Core](https://hub.docker.com/_/microsoft-dotnet-core-aspnet/) の Microsoft Windows Nano Server イメージ全体で使用されるベース コンテナーです。
-
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure で Windows コンテナーに移行する](tutorial-custom-container.md)
+
+または、他のリソースを参照してください。
+
+> [!div class="nextstepaction"]
+> [カスタム コンテナーの構成](configure-custom-container.md)
+
 ::: zone-end  
 
 ::: zone pivot="container-linux"
@@ -225,7 +219,7 @@ docker --version
 
 最後に、Azure Container Registry が接続されていることを確認します。 そのためには、アクティビティ バーで Docker ロゴを選択し、**[レジストリ]** に移動します。
 
-![レジストリ](./media/quickstart-docker/registries.png)
+![スクリーンショットは、[Azure] が展開された [レジストリ] の値として、ファイル名拡張子 .io を持つファイルを示しています。](./media/quickstart-docker/registries.png)
 
 ## <a name="deploy-the-image-to-azure-app-service"></a>Azure App Service にイメージをデプロイする
 
@@ -257,8 +251,13 @@ Web サイトをホストするために使用される物理リソースは、*
 * [Cosmos DB](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb)
 * [Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
 * [Azure CLI Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azurecli)
-* [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+* [Azure リソース マネージャー ツール](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
 
 または、[Azure Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) 拡張機能パックをインストールして、これらすべてを入手しましょう。
+
+他のリソースを確認してください。
+
+> [!div class="nextstepaction"]
+> [カスタム コンテナーの構成](configure-custom-container.md)
 
 ::: zone-end

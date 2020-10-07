@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/04/2020
-ms.openlocfilehash: ce63d86c3256646782775c84636c4d248e0a6735
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 745ea7dd8b3ee74c46d4c50a872dc4995d298142
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984338"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91291165"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>チュートリアル:DMS を使用してオンラインで SQL Server を Azure SQL Managed Instance に移行する
 
@@ -72,7 +72,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
     > * ストレージ アカウントへのアクセスをすべてのネットワークに許可します。
     > * MI サブネットで[サブネットの委任](https://docs.microsoft.com/azure/virtual-network/manage-subnet-delegation)をオンにし、このサブネットを許可するようにストレージ アカウントのファイアウォール規則を更新します。
 
-* 仮想ネットワークのネットワーク セキュリティ グループの規則によって、Azure Database Migration Service への以下のインバウンド通信ポートが確実にブロックされないようにします。443、53、9354、445、12000。 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)に関する記事を参照してください。
+* 仮想ネットワークのネットワーク セキュリティ グループの規則によって、Azure Database Migration Service への次のアウトバウンド通信ポートが確実にブロックされないようにします: 443、53、9354、445、12000。 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)に関する記事を参照してください。
 * [ソース データベース エンジンへのアクセスのために Windows ファイアウォール](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)を構成します。
 * Azure Database Migration Service でソース SQL Server にアクセスできるように Windows ファイアウォールを開放します。既定では TCP ポート 1433 が使用されます。
 * 動的ポートを使用して複数の名前付き SQL Server インスタンスを実行している場合は、SQL Browser サービスを有効にし、ファイアウォール経由の UDP ポート 1434 へのアクセスを許可することをお勧めします。これにより、Azure Database Migration Service はソース サーバー上の名前付きインスタンスに接続できるようになります。

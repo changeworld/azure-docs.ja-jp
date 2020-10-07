@@ -91,7 +91,7 @@
       href: operating-system-functionality.md
     - name: デプロイのベスト プラクティス
       href: deploy-best-practices.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: Recommendations
           href: security-recommendations.md
@@ -226,7 +226,7 @@
       items:
         - name: サーバー容量のスケールアップ
           href: manage-scale-up.md
-        - name: PremiumV2 レベルの構成
+        - name: PremiumV3 レベルの構成
           href: app-service-configure-premium-tier.md
         - name: 複数のインスタンスへのスケールアウト
           href: ../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json

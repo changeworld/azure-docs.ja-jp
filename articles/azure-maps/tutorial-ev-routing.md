@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:Azure Notebooks を使用して電気自動車のルートを案内する (Python) | Microsoft Azure Maps
-description: Microsoft Azure Maps のルート指定 API シリーズと Azure Notebooks を使用して、電気自動車のルートを案内します。
+description: Microsoft Azure Maps のルート指定 API シリーズと Azure Notebooks を使用して、電気自動車のルートを案内する方法に関するチュートリアル
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 506429f51ac442b73adea98058a833f52a728c72
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 28fcdc992f98ff380467718314148984559a7fee
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88639751"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335230"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>チュートリアル:Azure Notebooks を使用して電気自動車のルートを案内する (Python)
 
@@ -387,8 +387,6 @@ display(Image(staticMapImage))
 
 ![ルートを示すマップ](./media/tutorial-ev-routing/route.png)
 
-## <a name="next-steps"></a>次のステップ
-
 このチュートリアルでは、Python を使用して Azure Maps REST API シリーズを直接呼び出し、Azure Maps のデータを視覚化する方法について説明しました。
 
 このチュートリアルで使用した Azure Maps API シリーズの詳細については、以下を参照してください。
@@ -399,7 +397,11 @@ display(Image(staticMapImage))
 * [レンダリング - Get Map Image](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
 * [Post Route Matrix](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)
 * [Get Route Directions](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)
+* [Azure Maps REST API シリーズ](https://docs.microsoft.com/azure/azure-maps/consumption-model)
 
-Azure Maps REST API シリーズの完全な一覧については、[Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/consumption-model) に関する記事を参照してください。
+## <a name="next-steps"></a>次の手順
 
-Azure Notebooks の詳細については、[Azure Notebooks](https://docs.microsoft.com/azure/notebooks) に関する記事を参照してください。
+Azure Notebooks の詳細については、次を参照してください。
+
+> [!div class="nextstepaction"]
+> [Azure Notebooks](https://docs.microsoft.com/azure/notebooks)

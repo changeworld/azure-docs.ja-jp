@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
 ms.author: iainfou
-ms.openlocfilehash: 1ed1305939f4f8a9de62de85a2f09c323a2636b1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: af4ebcac38d4714b8a133087fe328b4d2f6c4872
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489590"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396367"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>自己管理型の Active Directory Domain Services、Azure Active Directory、およびマネージド Azure Active Directory Domain Services の比較
 
@@ -26,7 +26,7 @@ Active Directory ベースのこの 3 つの ID ソリューションは、共�
 * **Active Directory Domain Services (AD DS)** - ID と認証、コンピューター オブジェクトの管理、グループ ポリシー、信頼などの主要な機能が提供されるエンタープライズ対応のライトウェイト ディレクトリ アクセス プロトコル (LDAP) サーバー。
     * AD DS は、オンプレミスの IT 環境を使用する多くの組織で中心的なコンポーネントであり、主要なユーザー アカウント認証機能とコンピューター管理機能が提供されます。
     * 詳細については、[Windows Server ドキュメントの Active Directory Domain Services の概要][overview-adds]に関するページを参照してください。
-* **Azure Active Directory (Azure AD)** - Office 365、Azure portal、SaaS アプリケーションなどのリソースに対して、ユーザー アカウント サービスと認証サービスが提供されるクラウドベースの ID およびモバイル デバイス管理。
+* **Azure Active Directory (Azure AD)** - Microsoft 365、Azure portal、SaaS アプリケーションなどのリソースに対して、ユーザー アカウント サービスと認証サービスが提供されるクラウドベースの ID およびモバイル デバイス管理。
     * Azure AD をオンプレミスの AD DS 環境と同期させて、クラウドでネイティブに機能する単一の ID をユーザーに提供できます。
     * Azure AD の詳細については、「[Azure Active Directory とは][whatis-azuread]」を参照してください。
 * **Azure Active Directory Domain Services (Azure AD DS)** - 完全に互換性のある従来の AD DS 機能のサブセット (ドメイン参加、グループ ポリシー、LDAP、Kerberos 認証、NTLM 認証など) を使用してマネージド ドメイン サービスが提供されます。

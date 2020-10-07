@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/26/2020
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: 897e5b58aed9c47e0b94ee47d1883e2b7a28bacb
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a168b9f721cd9c3d4ab0e8b6a56b764fec3b1fe3
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930803"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779733"
 ---
 ## <a name="assign-access-permissions-to-an-identity"></a>ID にアクセス許可を割り当てる
 
@@ -108,7 +108,7 @@ else
 
 ```
 
-Azure Files への接続で問題が発生した場合は、[Windows での Azure Files マウント エラーに対して発行したトラブルシューティング ツール](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)を参照してください。 また、ポート 445 がブロックされている場合のシナリオを回避するための[ガイダンス](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access)も提供されています。 
+Azure Files への接続で問題が発生した場合は、[Windows での Azure Files マウント エラーに対して発行したトラブルシューティング ツール](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/)を参照してください。 また、ポート 445 がブロックされている場合のシナリオを回避するための[ガイダンス](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access)も提供されています。 
 
 
 ### <a name="configure-ntfs-permissions-with-windows-file-explorer"></a>Windows エクスプローラーを使用して NTFS アクセス許可を構成する

@@ -8,18 +8,18 @@ ms.author: rgarcia
 ms.date: 07/31/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 12a15a2d0cd45207b4adefc7315e48c6d642c0f7
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 8b6c3608165ed592cc2f0daf475226c9d35de012
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810177"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358812"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>チュートリアル:セッションやデバイス間での Azure Spatial Anchors の共有
 
 このチュートリアルでは、[Azure Spatial Anchors](../overview.md) を使用してあるセッション中にアンカーを作成した後、同じデバイスまたは異なるデバイス上でそれらを探知する方法について学習します。 これらの同じアンカーは、同じ場所にある複数のデバイスが同時に探知することもできます。
 
-![永続化](./media/persistence.gif)
+![モバイル デバイスで作成され、数日にわたって別のデバイスで使用される Azure Spatial Anchors を示すアニメーション。](./media/persistence.gif)
 
 Azure Spatial Anchors は、クロスプラットフォーム対応の開発者向けサービスです。このサービスを使用すると、時間が経過した後でも複数のデバイス間で位置情報を保持するオブジェクトを使用して複合現実エクスペリエンスを作成できます。 完了すると、2 つ以上のデバイスにデプロイ可能なアプリが完成します。 1 つのインスタンスによって作成された Azure 空間アンカーは、他のインスタンスに共有できます。
 

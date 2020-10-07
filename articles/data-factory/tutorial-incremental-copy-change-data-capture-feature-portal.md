@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: ''
 ms.date: 05/04/2020
-ms.openlocfilehash: e15ac501a0598ae81a295d5a04074beb33c860f6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6e41109c65a047990577d1f2c77bdcd5219b6ed3
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085720"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537458"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>変更データ キャプチャ (CDC) を使用して Azure SQL Managed Instance から Azure Storage へのデータの増分読み込みを行う
 
@@ -127,10 +127,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 7. **Create** をクリックしてください。
 8. デプロイが完了したら、 **[リソースに移動]** をクリックします
 
-   ![データ ファクトリのホーム ページ](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png)
+   ![スクリーンショットは、デプロイが完了したというメッセージと、リソースに移動するオプションを示しています。](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png)
 9. 作成が完了すると、図に示されているような **[Data Factory]** ページが表示されます。
 
-   ![データ ファクトリのホーム ページ](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-home-page.png)
+   ![スクリーンショットは、デプロイしたデータ ファクトリを示しています。](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-home-page.png)
 10. **[Author & Monitor]\(作成と監視\)** タイルをクリックして、別のタブで Azure Data Factory ユーザー インターフェイス (UI) を起動します。
 11. **開始**ページで、次の図に示すように、左パネルの **[編集]** タブに切り替えます。
 
@@ -289,10 +289,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 11. プレビューをクリックし、クエリから変更された行数が正しく返されることを確認します。
 
-    ![コピー アクティビティ - シンクの設定](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-preview.png)
+    ![スクリーンショットは、クエリを確認するためのプレビューを示しています。](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-preview.png)
 12. **[Sink]\(コピー先\)** タブに切り替えて、 **[Sink Dataset]\(コピー先データセット\)** フィールドで Azure Storage データセットを指定します。
 
-    ![コピー アクティビティ - シンクの設定](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-sink-settings.png)
+    ![スクリーンショットは [シンク] タブを示しています。](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-sink-settings.png)
 13. クリックしてメイン パイプライン キャンバスに戻り、**検索**アクティビティを **If 条件**アクティビティに 1 つずつ接続します。 **[検索]** アクティビティに付いている**緑**のボタンを **[If Condition]\(If 条件\)** アクティビティにドラッグします。
 
     ![検索アクティビティとコピー アクティビティを接続する](./media/tutorial-incremental-copy-change-data-capture-feature-portal/connect-lookup-if.png)
@@ -333,7 +333,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```
 4. **コピー** アクティビティの **[Sink]\(コピー先\)** タブをクリックし、 **[開く]** をクリックして、データセットのプロパティを編集します。 **[パラメーター]** タブをクリックし、**triggerStart** という名前の新しいパラメーターを追加します    
 
-    ![コピー先データセットの構成 - 3](./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-2.png)
+    ![スクリーンショットは、[パラメーター] タブへの新しいパラメーターの追加を示しています。](./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-2.png)
 5. 次に、日付ベースのパーティションで **customers/incremental** サブディレクトリにデータを格納するように、データセットのプロパティを構成します。
    1. データセットのプロパティの **[接続]** タブをクリックし、 **[ディレクトリ]** と **[ファイル]** の両方のセクションに動的なコンテンツを追加します。 
    2. テキスト ボックスの下にある動的コンテンツ リンクをクリックして、 **[ディレクトリ]** セクションに次の式を入力します。

@@ -6,14 +6,14 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: quickstart
-ms.date: 06/09/2020
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 92d92072fbc8ceebdd4fd9253620e5fba89bfb54
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.date: 09/22/2020
+ms.custom: devx-track-azurecli, subject-armqs
+ms.openlocfilehash: d118bef4a7ccc263010fe176432a5301c4104118
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987513"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533896"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>クイック スタート:Azure NetApp Files を設定し、NFS ボリュームを作成する 
 
@@ -53,7 +53,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このハウツー記事には、Azure PowerShell モジュール Az バージョン 2.6.0 以降が必要です。 現在のバージョンを調べるには、`Get-Module -ListAvailable Az` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。 必要に応じて、PowerShell セッションで Cloud Shell コンソールを使用することもできます。
 
-1. PowerShell コマンド プロンプト (または PowerShell Cloud Shell セッション) で、Azure NetApp Files に対してホワイトリストに登録されているサブスクリプションを指定します。
+1. PowerShell コマンド プロンプト (または PowerShell Cloud Shell セッション) で、Azure NetApp Files に対して承認されているサブスクリプションを指定します。
     ```powershell-interactive
     Select-AzSubscription -Subscription <subscriptionId>
     ```
@@ -66,6 +66,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 [!INCLUDE [azure-netapp-files-cloudshell-include](../../includes/azure-netapp-files-azure-cloud-shell-window.md)]
+
+# <a name="template"></a>[テンプレート](#tab/template)
+
+[なし] :  
+
+Azure portal、PowerShell、または Azure CLI を使用して Azure NetApp Files と NetApp リソース プロバイダーに登録します。  
+
+詳細については、「[Azure NetApp Files に登録する](azure-netapp-files-register.md)」を参照してください。 
 
 ---
 
@@ -151,6 +159,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         --location $LOCATION \
         --account-name $ANF_ACCOUNT_NAME
     ```
+
+# <a name="template"></a>[テンプレート](#tab/template)
+
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+次のコード スニペットでは、[Microsoft.NetApp/netAppAccounts](https://docs.microsoft.com/azure/templates/microsoft.netapp/netappaccounts) リソースを使用して Azure Resource Manager テンプレート (ARM テンプレート) で NetApp アカウントを作成する方法を示しています。 コードを実行するには、GitHub のリポジトリから[完全な ARM テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json)をダウンロードしてください。
+
+:::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="177-183":::
+
+<!-- Block begins with "type": "Microsoft.NetApp/netAppAccounts", -->
+
 ---
 
 ## <a name="set-up-a-capacity-pool"></a>容量プールを設定する
@@ -167,14 +186,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 3. **[+ プールの追加]** をクリックします。 
 
-    ![[プールの追加] をクリックする](../media/azure-netapp-files/azure-netapp-files-click-add-pools.png)  
+    ![[プールの追加] をクリックする](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)  
 
 4. 容量プールの情報を指定します。 
-    1. プール名として「**mypool1**」と入力します。
-    2. サービス レベルに **[Premium]** を選択します。 
-    3. プール サイズとして **4 (TiB)** を選択します。 
+    * プール名として「**mypool1**」と入力します。
+    * サービス レベルに **[Premium]** を選択します。 
+    * プール サイズとして **4 (TiB)** を選択します。 
+    * **[自動]** QoS タイプを使用します。
 
-5. **[OK]** をクリックします。
+5. **Create** をクリックしてください。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -213,6 +233,16 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         --size $POOL_SIZE_TiB \
         --service-level $SERVICE_LEVEL
     ```
+
+# <a name="template"></a>[テンプレート](#tab/template)
+
+<!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] -->
+
+次のコード スニペットでは、[Microsoft.NetApp/netAppAccounts/capacityPools](https://docs.microsoft.com/azure/templates/microsoft.netapp/netappaccounts/capacitypools) リソースを使用して Azure Resource Manager テンプレート (ARM テンプレート) で容量プールを作成する方法を示しています。 コードを実行するには、GitHub のリポジトリから[完全な ARM テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json)をダウンロードしてください。
+
+:::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="184-196":::
+
+<!-- LN 185, block begins with  "type": "Microsoft.NetApp/netAppAccounts/capacityPools", -->
 
 ---
 
@@ -353,6 +383,20 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         --protocol-types "NFSv3"
     ```
 
+# <a name="template"></a>[テンプレート](#tab/template)
+
+<!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] --> 
+
+次のコード スニペットでは、Azure Resource Manager テンプレート (ARM テンプレート) で VNet を設定し、Azure NetApp Files ボリュームを作成する方法を示しています。 VNet の設定では、[Microsoft.Network/virtualNetworks](https://docs.microsoft.com/azure/templates/Microsoft.Network/virtualNetworks) リソースを使用します。 ボリュームの作成では、[Microsoft.NetApp/netAppAccounts/capacityPools/volumes](https://docs.microsoft.com/azure/templates/microsoft.netapp/netappaccounts/capacitypools/volumes) リソースを使用します。 コードを実行するには、GitHub のリポジトリから[完全な ARM テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json)をダウンロードしてください。
+
+:::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="148-176":::
+
+<!-- Block begins with  "type": "Microsoft.Network/virtualNetworks", -->
+
+:::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="197-229":::
+
+<!-- Block begins with  "type": "Microsoft.NetApp/netAppAccounts/capacityPools/volumes", -->
+
 ---
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
@@ -373,13 +417,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 3. [リソース グループ] ページで、 **[リソース グループの削除]** をクリックします。
 
-    ![リソース グループの削除](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png) 
+    ![[リソース グループの削除] ボタンが強調表示されているスクリーンショット。](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png) 
 
     ウィンドウが開き、リソース グループと共に削除されるリソースに関する警告が表示されます。
 
 4. リソース グループの名前 (myRG1) を入力して、リソース グループとその中のすべてのリソースを完全に削除することを確認してから、 **[削除]** をクリックします。
 
-    ![リソース グループの削除](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
+    ![リソース グループの削除の確認](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -407,6 +451,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     az group delete \
         --name $RESOURCE_GROUP
     ```
+
+# <a name="template"></a>[テンプレート](#tab/template)
+
+[なし] :
+
+Azure portal、PowerShell、または Azure CLI を使用してリソース グループを削除します。   
+
 ---
 
 ## <a name="next-steps"></a>次のステップ  

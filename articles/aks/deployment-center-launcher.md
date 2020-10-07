@@ -5,12 +5,12 @@ ms.author: puagarw
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
-ms.openlocfilehash: 42bdde45b3a289a35c5bf4c4651e5a50a639f049
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 36b2e829e56cf4d3b5ace64af989fa7f71725c44
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251775"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360839"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>Azure Kubernetes のデプロイ センター
 
@@ -54,7 +54,7 @@ Azure DevOps のデプロイ センターを利用すると、アプリケーシ
 
 1. AKS クラスターを選択し、左側のブレードの **[デプロイ センター (プレビュー)]** を選択します。 **[Get started]\(作業を開始する\)** を選択します。
 
-   ![settings](media/deployment-center-launcher/settings.png)
+   ![デプロイ センターを指す矢印が記載された Azure portal を示すスクリーンショット。](media/deployment-center-launcher/settings.png)
 
 1. コードの場所を選択し、 **[次へ]** を選択します。 次に、現在サポートされているリポジトリのいずれかを選択します: **[Azure Repos](/azure/devops/repos/index?view=azure-devops)** または **GitHub**。
 
@@ -66,7 +66,7 @@ Azure DevOps のデプロイ センターを利用すると、アプリケーシ
 
     - **GitHub**: GitHub アカウントのリポジトリを承認して選択します。
 
-        ![GitHub](media/deployment-center-launcher/github.gif)
+        ![GitHub をソースとして選択し、リポジトリを選択する GitHub のプロセスを示すアニメーション。](media/deployment-center-launcher/github.gif)
 
 
 1. デプロイ センターによってリポジトリが分析され、対象の Dockerfile が検出されます。 Dockerfile を更新する場合は、識別されたポート番号を編集します。
@@ -75,7 +75,7 @@ Azure DevOps のデプロイ センターを利用すると、アプリケーシ
 
     リポジトリに Dockerfile が含まれていない場合は、コミットするようにメッセージが表示されます。
 
-    ![Dockerfile](media/deployment-center-launcher/dockerfile.png)
+    ![リポジトリで Dockerfile が見つからなかったというメッセージが表示されたデプロイ センターを示すスクリーンショット。](media/deployment-center-launcher/dockerfile.png)
 
 1. 既存のコンテナー レジストリを選択するか作成し、 **[完了]** を選択します。 パイプラインが自動的に作成され、[Azure Pipelines](/azure/devops/pipelines/index?view=azure-devops) のキューにビルドが配置されます。
 
@@ -87,7 +87,7 @@ Azure DevOps のデプロイ センターを利用すると、アプリケーシ
 
 1. デプロイが完了すると、成功ログが表示されます。
 
-    ![ログ](media/deployment-center-launcher/logs.png)
+    ![緑色のチェック マーク アイコンが付いたリリース 1 のデプロイ センターを示すスクリーンショット。](media/deployment-center-launcher/logs.png)
 
 ## <a name="examine-the-ci-pipeline"></a>CI パイプライン を確認する
 

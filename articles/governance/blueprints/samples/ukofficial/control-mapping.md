@@ -3,12 +3,12 @@ title: UK OFFICIAL および UK NHS ブループリント サンプルのコン�
 description: UK OFFICIAL および UK NHS のブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy にマップされています。
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 360c6bc2e1f207ca2d4470ffe62a81f524ce2a73
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dd16e6e62e5df3bae083cc4df05207f1f518d560
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079001"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540389"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK OFFICIAL および UK NHS のブループリント サンプルのコントロール マッピング
 
@@ -76,7 +76,7 @@ ms.locfileid: "87079001"
 
 ## <a name="9-secure-user-management"></a>9 ユーザー管理のセキュリティ保護 
 
-Azure では、Azure のリソースにアクセスするユーザーを効果的に管理できるように、ロールベースのアクセス制御 (RBAC) が実装されています。 Azure リソースにできるユーザーとそのアクセス許可は、Azure portal を使用して確認できます。 このブループリントでは、所有者アクセス許可や読み取り/書き込みアクセス許可を持つ外部アカウントと、所有者アクセス許可や読み取り/書き込みアクセス許可を持ち、多要素認証が有効になっていないアカウントを監査する [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、アクセス権の制限と制御を支援します。
+Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure のリソースにアクセスするユーザーを管理できます。 Azure リソースにできるユーザーとそのアクセス許可は、Azure portal を使用して確認できます。 このブループリントでは、所有者アクセス許可や読み取り/書き込みアクセス許可を持つ外部アカウントと、所有者アクセス許可や読み取り/書き込みアクセス許可を持ち、多要素認証が有効になっていないアカウントを監査する [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、アクセス権の制限と制御を支援します。
 
 - サブスクリプションで所有者アクセス許可を持つアカウントに対して MFA を有効にする必要がある
 - サブスクリプションに対する書き込みアクセス許可を持つアカウントに対して MFA を有効にする必要がある

@@ -1,15 +1,15 @@
 ---
 title: 独自の HTTP モデルを使用してライブ ビデオを分析する - Azure
-description: このクイックスタートでは、コンピューター ビジョンを適用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードを分析します。
+description: このクイックスタートでは、独自の HTTP モデルを使用して、コンピューター ビジョンを適用し、(シミュレートされた) IP カメラからのライブ ビデオ フィードを分析します。
 ms.topic: quickstart
 ms.date: 04/27/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 5fd7f1a7db323e3aa7971c1ced6fc588d6e60e37
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 07661fb1e9496aacff6f108a840e0c357f068d41
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684183"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336464"
 ---
 # <a name="quickstart-analyze-live-video-by-using-your-own-http-model"></a>クイック スタート:独自の HTTP モデルを使用してライブ ビデオを分析する
 

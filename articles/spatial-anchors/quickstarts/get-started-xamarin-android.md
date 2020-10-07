@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8a7bb300bb634b342b1141d175b0046c7d2d7e2b
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: b7f9a83a3972ed0a5a635826b40e15c437da16b8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810311"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540372"
 ---
 # <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用して Xamarin Android アプリを作成する
 
@@ -73,7 +73,7 @@ Android デバイスの電源をオンにしてサインインし、USB ケー�
 
 # <a name="windows"></a>[Windows](#tab/deploy-windows)
 
-![Visual Studio の構成](./media/get-started-xamarin-android/visual-studio-windows-configuration.png)
+![Windows のプロジェクトとデバイスを選択するメニューを示すスクリーンショット。](./media/get-started-xamarin-android/visual-studio-windows-configuration.png)
 
 **[デバッグ]**  >  **[デバッグの開始]** の順に選択して、アプリをデプロイし、起動します。
 

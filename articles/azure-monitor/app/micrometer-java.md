@@ -6,12 +6,12 @@ author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 11/01/2018
-ms.openlocfilehash: b4042e65fb9f7dbff6566bd497f782c3e6d591cb
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: e6d464b415c956a0a8486f7c0d41c6e6a32b7c03
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707851"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761602"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Azure Application Insights Java SDK で Micrometer を使用する方法
 
@@ -24,7 +24,7 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
 
 ## <a name="using-spring-boot-15x"></a>Spring Boot 1.5x の使用
 次の依存関係を pom.xml ファイルまたは build.gradle ファイルに追加します。 
-* [Application Insights spring-boot-starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter) 2.5.0 以降
+* [Application Insights spring-boot-starter](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-starter) 2.5.0 以降
 * Micrometer Azure Registry 1.1.0 以降
 * [Micrometer Spring Legacy](https://micrometer.io/docs/ref/spring/1.5) 1.1.0 以降 (これは、Spring フレームワーク内の自動構成コードをバックポートします)。
 * [Application Insights リソース](./create-new-resource.md)
@@ -57,7 +57,7 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
 
      `azure.application-insights.instrumentation-key=<your-instrumentation-key-here>`
 1. アプリケーションをビルドして実行します
-2. 集計前のメトリックが Azure Monitor に自動収集されます。 Application Insights Spring Boot スターターを微調整する方法の詳細については、[GitHub の readme](https://github.com/Microsoft/ApplicationInsights-Java/blob/master/azure-application-insights-spring-boot-starter/README.md) をご覧ください。
+2. 集計前のメトリックが Azure Monitor に自動収集されます。 Application Insights Spring Boot スターターを微調整する方法の詳細については、[GitHub の readme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/spring/azure-spring-boot-starter/README.md) をご覧ください。
 
 ## <a name="using-spring-2x"></a>Spring 2.x の使用
 

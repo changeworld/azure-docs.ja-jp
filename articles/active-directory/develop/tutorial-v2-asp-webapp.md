@@ -1,7 +1,7 @@
 ---
-title: Microsoft ID プラットフォームへのサインインを ASP.NET Web アプリに追加する
+title: チュートリアル:認証に Microsoft ID プラットフォームを使用する ASP.NET Web アプリを作成する | Azure
 titleSuffix: Microsoft identity platform
-description: 従来の Web ブラウザーベースのアプリケーションと OpenID Connect 標準を使用して、ASP.NET ソリューション上で Microsoft のサインインを実装します
+description: このチュートリアルでは、Microsoft ID プラットフォームと OWIN ミドルウェアを使用してユーザーがログインできるようにする ASP.NET Web アプリケーションを構築します。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 740d62136393cf0c9cf31d367735bffed1c05276
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 6a5fb517b3ea6626a929da10954bd58cc8e39ef0
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165585"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574230"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>ASP.NET Web アプリに Microsoft へのサインインを追加する
 
@@ -25,10 +25,18 @@ ms.locfileid: "88165585"
 
 このガイドを完了すると、ご自分のアプリケーションが outlook.com や live.com などの個人用アカウントのサインインを受け入れることができるようになります。 また、Microsoft ID プラットフォームと統合されている会社や組織の職場または学校アカウントでも、アプリにサインインできるようになります。
 
-> このガイドでは、Microsoft Visual Studio 2019 が必要です。  お持ちでない場合は、  [Visual Studio 2019 を無料でダウンロードできます](https://www.visualstudio.com/downloads/)。
+このチュートリアルの内容:
 
->[!NOTE]
-> Microsoft ID プラットフォームを初めて使用する場合は、「[ASP.NET Web アプリに Microsoft ID プラットフォーム サインインを追加する](quickstart-v2-aspnet-webapp.md)」から始めることをお勧めします。
+> [!div class="checklist"]
+> * Visual Studio で *ASP.NET Web アプリケーション* プロジェクトを作成する
+> * Open Web Interface for .NET (OWIN) ミドルウェア コンポーネントを追加する
+> * ユーザーのサインインとサインアウトをサポートするコードを追加する
+> * Azure portal でアプリを登録する
+> * アプリケーションをテストする
+
+## <a name="prerequisites"></a>前提条件
+
+* **ASP.NET および Web 開発**ワークロードがインストールされている [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>このガイドで生成されたサンプル アプリの動作
 
@@ -264,7 +272,7 @@ Visual Studio で、サインイン ボタンを追加し、認証後にユー�
     ```
 
 ### <a name="more-information"></a>詳細情報
-このページは、SVG 形式で黒の背景の [サインイン] ボタンを追加します。<br/>![Microsoft アカウントでのサインイン](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> その他のサインイン ボタンについては、[ブランド化ガイドライン](./howto-add-branding-in-azure-ad-apps.md "ブランド化ガイドライン")をご覧ください。
+このページは、SVG 形式で黒の背景の [サインイン] ボタンを追加します。<br/>![[Microsoft アカウントでサインイン] ボタン](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> その他のサインイン ボタンについては、[ブランド化ガイドライン](./howto-add-branding-in-azure-ad-apps.md "ブランド化ガイドライン")をご覧ください。
 
 ## <a name="add-a-controller-to-display-users-claims"></a>ユーザー要求を表示するコントローラーを追加する
 このコントローラーでは、コントローラーを保護する `[Authorize]` 属性の使用例を示します。 この属性は、認証されたユーザーのみを許可することで、コントローラーへのアクセスを制限します。 次のコードではこの属性を利用して、サインインの一部として取得されたユーザー要求を表示します。
@@ -392,7 +400,7 @@ Visual Studio でアプリケーションをテストするには、F5 キーを
 
 テストを実行する準備が整ったら、Azure AD アカウント (職場または学校のアカウント) または個人用の Microsoft アカウント (<span>live.</span>com または <span>outlook.</span>com) を使用してサインインします。
 
-![Microsoft アカウントでのサインイン](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin.png)
+![ブラウザーのブラウザー ログオン ページに表示された [Microsoft アカウントでサインイン] ボタン](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin.png)
 <br/><br/>
 ![Microsoft アカウントへのサインイン](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
@@ -470,20 +478,11 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 
 **IssuerValidator** パラメーターを使用して、カスタム メソッドを実装して発行者を検証できます。 このパラメーターの使用方法の詳細については、[TokenValidationParameters](/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters) クラスに関するページを参照してください。
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>次のステップ
 
-Web アプリが Web API を呼び出す方法について学習します。
-
-### <a name="learn-how-to-create-the-application-used-in-this-quickstart"></a>このクイック スタートで使用されているアプリケーションの作成方法を確認する
-
-Microsoft ID プラットフォームで Web API を呼び出す Web アプリについてさらに学習します。
+Microsoft ID プラットフォームで Web アプリから保護された Web API を呼び出す方法について学習します。
 
 > [!div class="nextstepaction"]
 > [Web API を呼び出す Web アプリ](scenario-web-app-sign-user-overview.md)
-
-Microsoft Graph を呼び出す Web アプリを構築する方法について学習します。
-
-> [!div class="nextstepaction"]
-> [Microsoft Graph ASP.NET チュートリアル](/graph/tutorials/aspnet)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

@@ -1,29 +1,29 @@
 ---
-title: IoT プラグ アンド プレイ プレビューのサンプル Node.js デバイス コードを Azure IoT Hub に接続する | Microsoft Docs
-description: Node.js を使用して、IoT ハブと接続する IoT プラグ アンド プレイ プレビューのサンプル デバイス コードをビルドして実行します。 Azure IoT Explorer ツールを使用して、デバイスからハブに送信された情報を表示します。
+title: IoT プラグ アンド プレイのサンプル Node.js デバイス コードを Azure IoT Hub に接続する | Microsoft Docs
+description: Node.js を使用して、IoT ハブと接続する IoT プラグ アンド プレイのサンプル デバイス コードをビルドして実行します。 Azure IoT Explorer ツールを使用して、デバイスからハブに送信された情報を表示します。
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/10/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 00a748c3c372f1980042cff201edec720587a511
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: e9ab4f2639569537b7c5967235a926c567aca0d5
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422557"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576134"
 ---
-# <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub-nodejs"></a>クイック スタート:サンプルの IoT プラグ アンド プレイ プレビュー デバイス アプリケーションを IoT Hub に接続する (Node.js)
+# <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-to-iot-hub-nodejs"></a>クイック スタート:サンプルの IoT プラグ アンド プレイ デバイス アプリケーションを IoT Hub に接続する (Node.js)
 
 [!INCLUDE [iot-pnp-quickstarts-device-selector.md](../../includes/iot-pnp-quickstarts-device-selector.md)]
 
 このクイックスタートでは、IoT プラグ アンド プレイ デバイス アプリケーションのサンプルをビルドし、それをご利用の IoT ハブに接続し、送信されるテレメトリを Azure IoT エクスプローラー ツールを使用して表示する方法を示します。 このサンプル アプリケーションは Node.js で記述されており、Node.js 用 Azure IoT device SDK に含まれています。 ソリューション ビルダーは Azure IoT エクスプローラー ツールを使用して、デバイス コードを表示しなくても IoT プラグ アンド プレイ デバイスの機能を理解することができます。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 ## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
 このクイックスタートを完了するには、開発用マシンに Node.js が必要です。 [nodejs.org](https://nodejs.org) から、複数のプラットフォームに対応した最新の推奨バージョンをダウンロードできます。
 
@@ -32,29 +32,6 @@ ms.locfileid: "87422557"
 ```cmd/sh
 node --version
 ```
-
-### <a name="azure-iot-explorer"></a>Azure IoT エクスプローラー
-
-このクイックスタートのパート 2 でサンプル デバイスとやり取りするには、**Azure IoT エクスプローラー** ツールを使用します。 ご利用のオペレーティング システム用の [Azure IoT エクスプローラーの最新リリースをダウンロードしてインストール](./howto-use-iot-explorer.md)します。
-
-[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
-
-次のコマンドを実行して、ご利用のハブに対する "_IoT ハブ接続文字列_" を取得します。 この接続文字列はメモしておいてください。このクイックスタートで後ほど使用します。
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
-
-> [!TIP]
-> また、Azure IoT エクスプローラー ツールを使用して、IoT ハブ接続文字列を見つけることもできます。
-
-次のコマンドを実行して、ハブに追加したデバイスの "_デバイス接続文字列_" を取得します。 この接続文字列はメモしておいてください。このクイックスタートで後ほど使用します。
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output table
-```
-
-[!INCLUDE [iot-pnp-download-models.md](../../includes/iot-pnp-download-models.md)]
 
 ## <a name="download-the-code"></a>コードのダウンロード
 
@@ -84,6 +61,8 @@ git clone https://github.com/Azure/azure-iot-sdk-node
 
 ## <a name="run-the-sample-device"></a>サンプル デバイスを実行する
 
+このサンプルにより、単純な IoT プラグ アンド プレイのサーモスタット デバイスが実装されます。 このサンプルにより実装されるモデルによって、IoT プラグ アンド プレイ [コンポーネント](concepts-components.md)は使用されません。 [サーモスタット デバイスの DTDL モデル ファイル](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json)により、デバイスによって実装されるテレメトリ、プロパティ、およびコマンドが定義されます。
+
 _simple_thermostat.js_ ファイルを開きます。 このファイルでは、以下の方法を確認できます。
 
 1. 必要なインターフェイスをインポートする。
@@ -99,6 +78,10 @@ main 関数では、すべてがどのようにまとめられているかを確
 1. デバイスからハブにテレメトリを送信します。
 1. デバイス ツインを取得し、レポートされたプロパティを更新します。
 1. 必要なプロパティ更新ハンドラーを有効にします。
+
+[!INCLUDE [iot-pnp-environment](../../includes/iot-pnp-environment.md)]
+
+サンプル構成の詳細については、[サンプルの readme](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/pnp/readme.md) を参照してください。
 
 サンプル アプリケーションを実行して、IoT ハブにテレメトリを送信する IoT プラグ アンド プレイ デバイスをシミュレートします。 サンプル アプリケーションを実行するには、次のコマンドを使用します。
 
@@ -118,11 +101,9 @@ node simple_thermostat.js
 
 [!INCLUDE [iot-pnp-iot-explorer.md](../../includes/iot-pnp-iot-explorer.md)]
 
-[!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
-
 ## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、IoT プラグ アンド プレイ デバイスを IoT ハブに接続する方法を学習しました。 ご利用の IoT プラグ アンド プレイ デバイスとやりとりするソリューションを構築する方法の詳細については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [ご利用のソリューションに接続されている IoT プラグ アンド プレイ プレビュー デバイスとやり取りする](quickstart-service-node.md)
+> [ご利用のソリューションに接続されている IoT プラグ アンド プレイ デバイスとやり取りする](quickstart-service-node.md)

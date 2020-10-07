@@ -1,14 +1,16 @@
 ---
 title: 制限と境界 - QnA Maker
 description: QnA Maker には、ナレッジ ベースとサービスの一部について、メタデータの制限があります。 テストして発行するためには、これらの制限内にナレッジ ベースを維持することが重要です。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 02/14/2020
-ms.openlocfilehash: cce95574c8ffc245818b61e9843c5f7984de972f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 773c9caa2fb25b3abe4fb451bc59598c485a6110
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524439"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776257"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker ナレッジ ベースの制限と境界
 

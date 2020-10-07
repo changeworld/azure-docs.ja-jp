@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 02/28/2020
+ms.date: 09/25/2020
 ms.author: victorh
-ms.openlocfilehash: 008274c86944b06b168bf52ca501c655bbe78434
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3bde4c11e9dc34be13efb25864fe75054d22bddb
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610627"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363105"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Azure Firewall と Azure Standard Load Balancer を統合する
 
@@ -64,6 +64,10 @@ TCP 正常性プローブをポート 80 に使用する場合、または HTTP/
 このシナリオでは、非対称ルーティングの問題はありません。 受信パケットはファイアウォールのパブリック IP アドレスに到着し、ロード バランサーのプライベート IP アドレスに変換された後、同じ復路のパスを使用してファイアウォールのプライベート IP アドレスに戻ります。
 
 そのため、このシナリオはパブリック ロード バランサーのシナリオと同じようにデプロイできますが、ファイアウォールのパブリック IP アドレスのホスト ルートは必要ありません。
+
+>[!NOTE]
+>バックエンド プール内の仮想マシンは、この構成ではアウトバウンド インターネット接続を持ちません。 </br> アウトバウンド接続の提供の詳細については、以下を参照してください。 </br> **[Azure の送信接続](../load-balancer/load-balancer-outbound-connections.md)**</br> 接続を提供するためのオプション: </br> **[送信専用のロード バランサーの構成](../load-balancer/egress-only.md)** </br> [**Virtual Network NAT とは**](../virtual-network/nat-overview.md)
+
 
 ## <a name="additional-security"></a>追加のセキュリティ
 

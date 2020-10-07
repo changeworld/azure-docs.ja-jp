@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   ms.date: 01/28/2020
-  ms.openlocfilehash: 34cb40d385b007f8a41a6700448a1591b714c096
-  ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+  ms.openlocfilehash: 3b1361646bb90677bf97d9666be361d3c439c8a7
+  ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/15/2020
-  ms.locfileid: "90562759"
+  ms.lasthandoff: 10/05/2020
+  ms.locfileid: "91728405"
 landingContent:
 - title: Azure AD B2C
   linkLists:
@@ -94,7 +94,7 @@ landingContent:
     - text: ユーザー データの格納場所について
       url: data-residency.md
     - text: 規制
-      url: overview.md
+      url: https://docs.microsoft.com/azure/compliance/
     - text: ユーザー アクセスと使用条件
       url: manage-user-access.md
 - title: 操作
@@ -105,8 +105,8 @@ landingContent:
       url: deploy-custom-policies-devops.md
     - text: 監視
       url: azure-monitor.md
-    - text: 管理者のロールベースのアクセス
-      url: overview.md
+    - text: 管理者のロールベースのアクセス制御
+      url: https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles
     - text: '[ユーザー管理]'
       url: manage-user-accounts-graph-api.md
     - text: トラブルシューティング

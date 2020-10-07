@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/12/2020
-ms.openlocfilehash: b47ab44c5a5f8faad85b60032a6781475235a170
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 12623dccdc298aaad23ad6779caf33d895c5634a
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402262"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766125"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>クエリ ストアを使用した Azure Database for MySQL のパフォーマンスの監視
 
@@ -108,7 +108,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 ## <a name="views-and-functions"></a>ビューと関数
 
-次のビューと関数を使用してクエリ ストアを表示および管理します。 [select privilege public ロール](howto-create-users.md#how-to-create-additional-admin-users-in-azure-database-for-mysql)に属するユーザーは、これらのビューを使用してクエリ ストア内のデータを表示できます。 これらのビューは、**mysql** データベース内でのみ使用できます。
+次のビューと関数を使用してクエリ ストアを表示および管理します。 [select privilege public ロール](howto-create-users.md#to-create-additional-admin-users-in-azure-database-for-mysql)に属するユーザーは、これらのビューを使用してクエリ ストア内のデータを表示できます。 これらのビューは、**mysql** データベース内でのみ使用できます。
 
 クエリは、リテラルと定数を削除した後、その構造を調べることで正規化されます。 2 つのクエリがリテラル値を除いて同一の場合、それらは同じハッシュを持ちます。
 

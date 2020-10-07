@@ -34,6 +34,8 @@
           href: connect-macos.md
         - name: iOS クライアントに接続する
           href: connect-ios.md
+        - name: Microsoft Store クライアントを使用した接続
+          href: connect-microsoft-store.md
     - name: PowerShell モジュールを設定する
       href: powershell-module.md
     - name: ホスト プールとセッション ホストを作成する

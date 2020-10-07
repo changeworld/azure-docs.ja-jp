@@ -3,12 +3,12 @@ title: Azure Blueprint の概要
 description: Azure Blueprints サービスによって Azure 環境でのアーティファクトの作成、定義、デプロイがどのように実現されるかについて理解します。
 ms.date: 08/27/2020
 ms.topic: overview
-ms.openlocfilehash: e5c08f4211f03ddc6d2f48eee4fc84a824732e43
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 499f2c4afa55913b6af714d20ec1d52e2ecbbc47
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050779"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541766"
 ---
 # <a name="what-is-azure-blueprints"></a>Azure Blueprint とは
 
@@ -78,7 +78,9 @@ ARM テンプレートとブループリントのどちらかを選ぶ必要は�
 
 ## <a name="permissions-in-azure-blueprints"></a>Azure Blueprints におけるアクセス許可
 
-ブループリントを使用するには、[ロールベースのアクセス制御](../../role-based-access-control/overview.md) (RBAC) を通じてアクセス許可を得る必要があります。 ブループリントを作成するには、お使いのアカウントに次のアクセス許可が必要です。
+ブループリントを使用するには、[Azure ロールベースのアクセス制御](../../role-based-access-control/overview.md) (Azure RBAC) を通じてアクセス許可を得る必要があります。 Azure portal でブループリントを読み取るまたは表示するには、ブループリント定義が配置されているスコープへの読み取りアクセス権がアカウントに必要です。
+
+ブループリントを作成するには、お使いのアカウントに次のアクセス許可が必要です。
 
 - `Microsoft.Blueprint/blueprints/write` - ブループリント定義の作成
 - `Microsoft.Blueprint/blueprints/artifacts/write` - ブループリント定義でのアーティファクトの作成

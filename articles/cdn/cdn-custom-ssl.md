@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/1/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 5cf1181c41af1edc752205f4477f18b78680f484
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 66e0ac622479d38d2e2a3cbf499bb7900251571d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81254004"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359393"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>チュートリアル:Azure CDN カスタム ドメインで HTTPS を構成する
 
@@ -80,7 +80,7 @@ CDN で管理された証明書を使用する場合、HTTPS 機能は、数回�
 
 4. カスタム ドメインの一覧で、HTTPS を有効にするカスタム ドメインを選択します。
 
-    ![カスタム ドメイン リスト](./media/cdn-custom-ssl/cdn-custom-domain.png)
+    ![自分の証明書を使用するオプションを含んだ [カスタム ドメイン] ページを示すスクリーンショット。](./media/cdn-custom-ssl/cdn-custom-domain.png)
 
     **[カスタム ドメイン]** ページが表示されます。
 

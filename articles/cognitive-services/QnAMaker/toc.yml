@@ -10,11 +10,9 @@
   items:
     - name: QnA Maker ポータルの使用
       items:
-        - name: 1. ナレッジ ベースを作成する
+        - name: ナレッジ ベースを作成する
           href: Quickstarts/create-publish-knowledge-base.md
-        - name: 2. メタデータによる質問の追加
-          href: Quickstarts/add-question-metadata-portal.md
-        - name: 3. Postman または cURL を使用して回答を取得する
+        - name: ナレッジ ベースにクエリを実行する
           href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
     - name: REST の使用
       href: Quickstarts/quickstart-rest-curl.md
@@ -32,10 +30,8 @@
   items:
     - name: ナレッジ ベースの計画
       href: Concepts/plan.md
-    - name: Azure リソース
+    - name: QnA Maker のリソースの計画
       href: Concepts/azure-resources.md
-    - name: 他の人と共同作業を行う
-      href: Concepts/role-based-access-control.md
     - name: ナレッジ ベースの設計
       items:
         - name: 言語向け
@@ -48,22 +44,12 @@
           href: Concepts/knowledge-base.md
         - name: インポートされるコンテンツの種類
           href: Concepts/content-types.md
-        - name: 質問と回答のペア
-          href: Concepts/question-answer-set.md
-    - name: ナレッジ ベースのライフサイクル
-      items:
-        - name: 開発ライフサイクル
-          href: Concepts/development-lifecycle-knowledge-base.md
-          displayName: 'version control, test, index, publish, monitor usage, create'
-        - name: アクティブ ラーニングの提案による改善
-          href: Concepts/active-learning-suggestions.md
-    - name: ナレッジ ベースの照会
-      items:
-        - name: 回答の取得
-          displayName: 'DefaultAnswer, Default answer'
-          href: Concepts/query-knowledge-base.md
-        - name: 信頼度スコア
-          href: Concepts/confidence-score.md
+    - name: ランカー プロセス
+      displayName: 'DefaultAnswer, Default answer'
+      href: Concepts/query-knowledge-base.md
+    - name: 開発ライフサイクル
+      href: Concepts/development-lifecycle-knowledge-base.md
+      displayName: 'version control, test, index, publish, monitor usage, create'
     - name: ベスト プラクティス
       href: Concepts/best-practices.md
       displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
@@ -93,7 +79,7 @@
         - name: 新しいナレッジ ベースへの移行
           href: Tutorials/migrate-knowledge-base.md
           displayName: 'metadata, pair'
-        - name: テスト ナレッジ ベース
+        - name: テスト
           href: How-To/test-knowledge-base.md
     - name: QnA ペアの管理
       items:
@@ -105,50 +91,11 @@
         - name: 推奨される代わりの質問の取得
           href: How-to/improve-knowledge-base.md
           displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
-        - name: セキュリティで保護された SharePoint ファイルの追加
-          href: How-To/add-sharepoint-datasources.md
-          displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
     - name: ナレッジ ベースの照会
       href: How-To/metadata-generateanswer-usage.md
       displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
     - name: 分析とテレメトリ
       href: How-To/get-analytics-knowledge-base.md
-    - name: REST API の使用
-      items:
-        - name: 新しいナレッジ ベースの作成
-          items:
-            - name: C#
-              href: Quickstarts/create-new-kb-csharp.md
-            - name: Go
-              href: Quickstarts/create-new-kb-go.md
-            - name: Java
-              href: Quickstarts/create-new-kb-java.md
-            - name: Python
-              href: Quickstarts/create-new-kb-python.md
-        - name: ナレッジ ベースの公開
-          items:
-            - name: C#
-              href: Quickstarts/publish-kb-csharp.md
-            - name: Go
-              href: Quickstarts/publish-kb-go.md
-            - name: Java
-              href: Quickstarts/publish-kb-java.md
-            - name: Node.js
-              href: Quickstarts/publish-kb-nodejs.md#publish-a-knowledge-base
-            - name: Python
-              href: Quickstarts/publish-kb-python.md
-        - name: 回答の取得
-          items:
-            - name: C#
-              href: Quickstarts/get-answer-from-knowledge-base-csharp.md
-            - name: Go
-              href: Quickstarts/get-answer-from-knowledge-base-go.md
-            - name: Java
-              href: Quickstarts/get-answer-from-knowledge-base-java.md
-            - name: Node.js
-              href: Quickstarts/get-answer-from-knowledge-base-nodejs.md
-            - name: Python
-              href: Quickstarts/get-answer-from-knowledge-base-python.md
 - name: リファレンス
   items:
     - name: 言語のサポート
@@ -156,9 +103,18 @@
     - name: 制限
       href: limits.md
     - name: ロール ベースのアクセス制御 (RBAC)
-      href: reference-role-based-access-control.md
+      href: Concepts/role-based-access-control.md
+    - name: アクティブ ラーニング
+      href: Concepts/active-learning-suggestions.md
+    - name: 信頼度スコア
+      href: Concepts/confidence-score.md
     - name: トラブルシューティング
       href: troubleshooting.md
+    - name: 質問と回答のペア
+      href: Concepts/question-answer-set.md
+    - name: セキュリティで保護された SharePoint ファイルの追加
+      href: How-To/add-sharepoint-datasources.md
+      displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
     - name: サービス構成
       href: reference-app-service.md
     - name: コンテンツとデータの形式
@@ -173,6 +129,8 @@
       href: reference-markdown-format.md
     - name: Batch のテスト形式
       href: reference-tsv-format-batch-testing.md
+    - name: 暗号化
+      href: qna-maker-encryption-of-data-at-rest.md
     - name: REST API リファレンス
       items:
         - name: API の作成
@@ -181,10 +139,6 @@
           href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer'
         - name: Train API
           href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train'
-    - name: サンプル
-      items:
-        - name: QnA Maker のヘルプ ボット
-          href: 'https://aka.ms/qnamakerhelpbotsample'
     - name: SDK
       items:
         - name: C#
@@ -231,8 +185,6 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: コンプライアンス
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: 暗号化
-      href: qna-maker-encryption-of-data-at-rest.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 料金と制限

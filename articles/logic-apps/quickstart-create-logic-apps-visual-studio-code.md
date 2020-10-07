@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 10/25/2019
-ms.openlocfilehash: a2239d5ee70e90b9ee7c07b4dca78a45d2ce7ef9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.date: 09/25/2020
+ms.openlocfilehash: fa103c39b540c41536e4f231692b4602afe01a3e
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131482"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361213"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>クイック スタート:Visual Studio Code を使用してロジック アプリ ワークフローの定義を作成、管理する
 
@@ -130,7 +130,7 @@ ms.locfileid: "87131482"
    たとえば、次に示すのは、RSS トリガーと Office 365 Outlook アクションから始まるサンプル ロジック アプリ ワークフロー定義です。 通常、JSON 要素は各セクション内でアルファベット順に表示されます。 ただし、このサンプルでは、ロジック アプリのステップがデザイナーに表示される順序でこれらの要素を大まかに示しています。
 
    > [!IMPORTANT]
-   > このサンプル ロジック アプリの定義を再利用する場合は、@fabrikam.com などの Office 365 組織アカウントが必要です。 架空の電子メール アドレスを実際の電子メール アドレスに置き換えてください。 Outlook.com や Gmail など、別の電子メール コネクタを使用するには、`Send_an_email_action` アクションを、[Azure Logic Apps がサポートしている電子メール コネクタ](../connectors/apis-list.md)から入手できる同様のアクションに置き換えます。
+   > このサンプル ロジック アプリの定義を再利用する場合は、@fabrikam.com などの組織アカウントが必要です。 架空の電子メール アドレスを実際の電子メール アドレスに置き換えてください。 Outlook.com や Gmail など、別の電子メール コネクタを使用するには、`Send_an_email_action` アクションを、[Azure Logic Apps がサポートしている電子メール コネクタ](../connectors/apis-list.md)から入手できる同様のアクションに置き換えます。
    >
    > Gmail コネクタの使用を希望する場合、ロジック アプリで制限なしにこのコネクタを使用できるのは、G-Suite ビジネス アカウントだけです。 
    > Gmail コンシューマー アカウントを持っている場合は、Google によって承認された特定のサービスのみでこのコネクタを使用できるほか、[認証に使用する Google クライアント アプリを Gmail コネクタで作成する](/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 
@@ -307,4 +307,4 @@ Visual Studio Code では、以前のバージョンのロジック アプリを
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Visual Studio でロジック アプリを作成する](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
+> [Visual Studio Code でステートフルまたはステートレスなロジック アプリを作成する (プレビュー)](../logic-apps/create-stateful-stateless-workflows-visual-studio-code.md)

@@ -1,20 +1,20 @@
 ---
-title: C# を使用して TPM デバイスを Azure Device Provisioning Service に登録する
+title: クイックスタート - C# を使用して TPM デバイスを Azure Device Provisioning Service に登録する
 description: クイックスタート - C# Service SDK を使用して TPM デバイスを Azure IoT Hub Device Provisioning Service (DPS) に登録します。 このクイック スタートでは、個別登録を使用します。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 11/08/2019
+ms.date: 09/28/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 6176ff91029817e6891f0ee1e043cc3a827c2d6c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 872d1f43f1e9dc180e41a2bf625ca18b74522b40
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999055"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409512"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>クイック スタート:C# サービス SDK を使用して TPM デバイスを IoT Hub Device Provisioning Service に登録する
 
@@ -128,12 +128,15 @@ ms.locfileid: "88999055"
    }
    ```
 
-1. 最後に、`Main` メソッドの本体を次の行に置き換えます。
+1. 最後に、`Main` メソッドを次の行に置き換えます。
 
    ```csharp
-   RunSample().GetAwaiter().GetResult();
-   Console.WriteLine("\nHit <Enter> to exit ...");
-   Console.ReadLine();
+    static async Task Main(string[] args)
+    {
+        await RunSample();
+        Console.WriteLine("\nHit <Enter> to exit ...");
+        Console.ReadLine();
+    }
    ```
 
 1. ソリューションをビルドします。

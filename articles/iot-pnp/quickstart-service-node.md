@@ -1,29 +1,29 @@
 ---
-title: Azure IoT ソリューションに接続されている IoT プラグ アンド プレイ プレビュー デバイスとやり取りする (Node.js) | Microsoft Docs
-description: Node.js を使用して、ご利用の Azure IoT ソリューションに接続されている IoT プラグ アンド プレイ プレビュー デバイスと接続してやりとりします。
+title: Azure IoT ソリューションに接続されている IoT プラグ アンド プレイ デバイスとやり取りする (Node.js) | Microsoft Docs
+description: Node.js を使用して、ご利用の Azure IoT ソリューションに接続されている IoT プラグ アンド プレイ デバイスと接続してやり取りします。
 author: elhorton
 ms.author: elhorton
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: fd65dcc9ce0be07daa5848a0ac583cf795150e47
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 6ad6e48642e7b7df4b93b37b5ef66381833d8bbc
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184756"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574995"
 ---
-# <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-nodejs"></a>クイック スタート:ご利用のソリューションに接続されている IoT プラグ アンド プレイ プレビュー デバイスとやりとりする (Node.js)
+# <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-nodejs"></a>クイック スタート:ご利用のソリューションに接続されている IoT プラグ アンド プレイ デバイスとやり取りする (Node.js)
 
 [!INCLUDE [iot-pnp-quickstarts-service-selector.md](../../includes/iot-pnp-quickstarts-service-selector.md)]
 
-IoT プラグ アンド プレイ プレビューを使用すると、基礎となるデバイスの実装に関する知識がなくてもデバイスの機能とやりとりできるので、IoT が簡略化されます。 このクイックスタートでは、Node.js を使用して、ご利用のソリューションに接続されている IoT プラグ アンド プレイ デバイスに接続して制御する方法について説明します。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+IoT プラグ アンド プレイを使用すると、基盤となるデバイスの実装に関する知識がなくてもデバイスの機能とやり取りできるので、IoT が簡略化されます。 このクイックスタートでは、Node.js を使用して、ご利用のソリューションに接続されている IoT プラグ アンド プレイ デバイスに接続して制御する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
 このクイックスタートを完了するには、開発用マシンに Node.js が必要です。 [nodejs.org](https://nodejs.org) から、複数のプラットフォームに対応した最新の推奨バージョンをダウンロードできます。
 
@@ -33,29 +33,19 @@ IoT プラグ アンド プレイ プレビューを使用すると、基礎と�
 node --version
 ```
 
-[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
-
-次のコマンドを実行して、ご利用のハブに対する "_IoT ハブ接続文字列_" を取得します。 この接続文字列はメモしておいてください。これはこのクイックスタートの後半で使用します。
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
-
-次のコマンドを実行して、ハブに追加したデバイスの "_デバイス接続文字列_" を取得します。 この接続文字列はメモしておいてください。これはこのクイックスタートの後半で使用します。
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output
-```
-
 ### <a name="clone-the-sdk-repository-with-the-sample-code"></a>サンプル コードを使用して SDK リポジトリをクローンする
 
-このサービスの SDK はプレビュー段階であるため、[Node SDK のプレビュー ブランチ](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh)からサンプルをクローンする必要があります。 任意のフォルダーでターミナル ウィンドウを開きます。 次のコマンドを実行して、[Microsoft Azure IoT SDK for Node.js](https://github.com/Azure/azure-iot-sdk-node) GitHub リポジトリの **pnp-preview-refresh** ブランチをクローンします。
+[Node SDK リポジトリ](https://github.com/Azure/azure-iot-sdk-node)にあるサンプルをクローンします。 任意のフォルダーでターミナル ウィンドウを開きます。 次のコマンドを実行して、[Node.js 用 Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdk-node) の GitHub リポジトリをクローンします。
 
 ```cmd/sh
-git clone https://github.com/Azure/azure-iot-sdk-node -b pnp-preview-refresh
+git clone https://github.com/Azure/azure-iot-sdk-node
 ```
 
 ## <a name="run-the-sample-device"></a>サンプル デバイスを実行する
+
+[!INCLUDE [iot-pnp-environment](../../includes/iot-pnp-environment.md)]
+
+サンプル構成の詳細については、[サンプルの readme](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/pnp/readme.md) を参照してください。
 
 このクイックスタートでは、Node.js に IoT プラグ アンド プレイ デバイスとして記述されたサンプルのサーモスタット デバイスを使用できます。 サンプル デバイスを実行するには、次のようにします。
 
@@ -65,12 +55,6 @@ git clone https://github.com/Azure/azure-iot-sdk-node -b pnp-preview-refresh
 
     ```cmd/sh
     npm install
-    ```
-
-1. _デバイス接続文字列_ を構成します。
-
-    ```cmd/sh
-    set IOTHUB_DEVICE_CONNECTION_STRING=<YourDeviceConnectionString>
     ```
 
 1. 次のコマンドを使用して、サンプルのサーモスタット デバイスを実行します。
@@ -83,25 +67,19 @@ git clone https://github.com/Azure/azure-iot-sdk-node -b pnp-preview-refresh
 
 ## <a name="run-the-sample-solution"></a>サンプル ソリューションを実行する
 
+「[IoT プラグ アンド プレイのクイックスタートとチュートリアル用の環境の設定](set-up-environment.md)」では、IoT ハブとデバイスに接続するようにサンプルを構成するための 2 つの環境変数を作成しました。
+
+* **IOTHUB_CONNECTION_STRING**: 先ほどメモした IoT ハブ接続文字列。
+* **IOTHUB_DEVICE_ID**: `"my-pnp-device"`。
+
 このクイックスタートでは、Node.js 内の IoT ソリューションのサンプルを使用して、先ほど設定したサンプル デバイスとやり取りします。
 
-1. **サービス** ターミナルとして使用する別のターミナル ウィンドウを開きます。 service SDK はプレビュー段階であるため、[Node SDK のプレビュー ブランチ](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh)からサンプルをクローンする必要があります。
+1. **サービス** ターミナルとして使用する別のターミナル ウィンドウを開きます。
 
-    ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-node -b pnp-preview-refresh
-    ```
-
-1. クローンしたリポジトリ ブランチのフォルダーに移動し、 */azure-iot-sdk-node/digitaltwins/samples/service/javascript* フォルダーに移動します。 次のコマンドを実行して、すべての依存関係をインストールします。
+1. クローンした Node SDK リポジトリで、 */azure-iot-sdk-node/service/samples/javascript* フォルダーに移動します。 次のコマンドを実行して、すべての依存関係をインストールします。
 
     ```cmd/sh
     npm install
-    ```
-
-1. デバイス ID と "_IoT Hub 接続文字列_" 用に環境変数を構成します。
-
-    ```cmd/sh
-    set IOTHUB_CONNECTION_STRING=<YourIOTHubConnectionString>
-    set IOTHUB_DEVICE_ID=<Your device ID>
     ```
 
 ### <a name="read-a-property"></a>プロパティを読み取る
@@ -163,7 +141,7 @@ git clone https://github.com/Azure/azure-iot-sdk-node -b pnp-preview-refresh
 1. **デバイス** ターミナルで、デバイスによって更新情報が受信されていることを確認します。
 
     ```cmd/sh
-    The following properties will be updated for root interface:
+    The following properties will be updated for the default component:
     {
       targetTemperature: {
         value: 42,
@@ -221,11 +199,9 @@ git clone https://github.com/Azure/azure-iot-sdk-node -b pnp-preview-refresh
     Response to method 'getMaxMinReport' sent successfully.
     ```
 
-[!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
-
 ## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、IoT プラグ アンド プレイ デバイスを IoT ソリューションに接続する方法を学習しました。 IoT プラグ アンド プレイ デバイス モデルの詳細については、以下を参照してください。
 
 > [!div class="nextstepaction"]
-> [IoT プラグ アンド プレイ プレビュー モデリング開発者ガイド](concepts-developer-guide.md)
+> [IoT プラグ アンド プレイ モデリング開発者ガイド](concepts-developer-guide-device-csharp.md)

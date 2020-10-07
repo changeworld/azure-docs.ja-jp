@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: fb86b25fc24ea505ae258cc44d5554a019723af6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ddba41acfcfe497059a661b701906cda0d4d77c6
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019175"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398360"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>チュートリアル:パート 2 - ルーティングされたメッセージを表示する
 
@@ -82,7 +82,7 @@ Service Bus キューは、critical と指定されているメッセージを�
 
    ![Office365 のオプション](./media/tutorial-routing-view-message-routing-results/logic-app-select-outlook.png)
 
-8. Office 365 アカウントにサインインして接続を設定します。 タイムアウトになった場合は、もう一度やり直してください。 メールの受信者のメール アドレスを指定します。 また、件名を指定し、受信者が見るメッセージ本文を入力します。 テストでは、受信者として自分のメール アドレスを入力します。
+8. ご自分の職場または学校アカウントにサインインし、接続を設定します。 タイムアウトになった場合は、もう一度やり直してください。 メールの受信者のメール アドレスを指定します。 また、件名を指定し、受信者が見るメッセージ本文を入力します。 テストでは、受信者として自分のメール アドレスを入力します。
 
    **[動的なコンテンツの追加]** を選択して、含めることができるメッセージの内容を表示します。 **[コンテンツ]** を選びます。メッセージがメールに追加されます。
 

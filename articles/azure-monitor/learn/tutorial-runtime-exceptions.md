@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: b656774762f5930c5665166a701bda7333940307
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: af8479f6460a6cc555d7ea67dcfe65c779878624
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322433"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357864"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Azure Application Insights でランタイムの例外を見つけて診断する
 
@@ -97,7 +97,7 @@ Application Insights によって収集されたすべてのデータはAzure Lo
 
     ![コード](media/tutorial-runtime-exceptions/codelens.png)
 
-1. **[影響の分析]** をクリックして、Application Insights Analytics を開きます。  影響を受けたユーザー、ブラウザー、リージョンなどの失敗した要求に関する詳細情報を提供するいくつかのクエリが表示されます。<br><br>![Analytics](media/tutorial-runtime-exceptions/analytics.png)<br>
+1. **[影響の分析]** をクリックして、Application Insights Analytics を開きます。  影響を受けたユーザー、ブラウザー、リージョンなどの失敗した要求に関する詳細情報を提供するいくつかのクエリが表示されます。<br><br>![複数のクエリを含んだ [Application Insights] ウィンドウを示すスクリーンショット。](media/tutorial-runtime-exceptions/analytics.png)<br>
 
 ## <a name="add-work-item"></a>作業項目を追加する
 Application Insights を Azure DevOps や GitHub などの追跡システムに接続する場合は、Application Insights から直接、作業項目を作成できます。

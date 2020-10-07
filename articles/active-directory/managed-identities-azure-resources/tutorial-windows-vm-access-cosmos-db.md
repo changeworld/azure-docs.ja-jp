@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/14/2020
+ms.date: 09/29/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17cdebb1291f78706178e129a62b932d45f38537
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 6b571b2b8e0d334a02631e3f443ec54398117ee9
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89263073"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532671"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure Cosmos DB にアクセスする
 
@@ -80,6 +80,10 @@ Azure Resource Manager で PowerShell を使用して Windows VM のシステム
 $spID = (Get-AzVM -ResourceGroupName myRG -Name myVM).identity.principalid
 New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Reader Role" -Scope "/subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.DocumentDb/databaseAccounts/<COSMOS DB ACCOUNT NAME>"
 ```
+
+>[!NOTE]
+> 操作を実行できない場合は、適切なアクセス許可が付与されていない可能性があります。 キーへの書き込みアクセス権が必要な場合は、DocumentDB Account Contributor などの RBAC ロールを使用するか、カスタム役割を作成する必要があります。 詳細については、「[Azure Cosmos DB のロールベースのアクセス制御](../../cosmos-db/role-based-access-control.md)」をご覧ください。
+
 ## <a name="access-data"></a>データにアクセスする
 
 このセクションでは、Windows VM のシステム割り当てマネージド ID のアクセス トークンを使用して、Azure Resource Manager を呼び出す方法を説明します。 チュートリアルの残りの部分では、以前に作成した VM から作業を行います。 
@@ -90,7 +94,7 @@ New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Read
 
 ### <a name="get-an-access-token"></a>アクセス トークンを取得する
 
-1. Azure Portal で **[Virtual Machines]** にナビゲートして Windows 仮想マシンに移動し、 **[概要]** ページの上部にある **[接続]** をクリックします。 
+1. Azure Portal で **[Virtual Machines]** にナビゲートして Windows 仮想マシンに移動し、**[概要]** ページの上部にある **[接続]** をクリックします。 
 2. Windows VM を作成したときに追加した**ユーザー名**と**パスワード**を入力します。 
 3. これで、仮想マシンを使用する**リモート デスクトップ接続**が作成されました。リモート セッションで PowerShell を開きます。
 4. PowerShell の Invoke-WebRequest を使用して、Azure リソース エンドポイントのローカル マネージド ID に、Azure Resource Manager のアクセス トークンを取得するよう要求します。

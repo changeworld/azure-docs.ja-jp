@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 8fba7245475c9873a3e2d3abeda4806d1376e7ca
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 09/25/2020
+ms.openlocfilehash: be45292552a7ac62c7131c637b044edc477328e2
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300036"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396792"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>クイック スタート:Azure Cognitive Search コグニティブ スキルセットを Azure portal で作成する
 
@@ -50,7 +50,7 @@ ms.locfileid: "89300036"
 
 1. コンテナーの **[アップロード]** をクリックして、最初の手順でダウンロードしたサンプル ファイルをアップロードします。 ネイティブ形式ではフルテキスト検索ができない画像やアプリケーション ファイルなど、さまざまな種類のコンテンツがあることがわかります。
 
-   ![Azure Blob Storage 内のソース ファイル](./media/cognitive-search-quickstart-blob/sample-data.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/sample-data.png" alt-text="Azure Blob Storage 内のソース ファイル" border="false":::
 
 これでデータ インポート ウィザードに進む準備が整いました。
 
@@ -60,13 +60,13 @@ ms.locfileid: "89300036"
 
 1. [使用する検索サービスを探し](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)、[概要] ページにあるコマンド バーの **[データのインポート]** をクリックして、4 つの手順でコグニティブ エンリッチメントを設定します。
 
-   ![[データのインポート] コマンド](media/cognitive-search-quickstart-blob/import-data-cmd2.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/import-data-cmd2.png" alt-text="Azure Blob Storage 内のソース ファイル" border="false":::
 
 ### <a name="step-1---create-a-data-source"></a>手順 1 - データ ソースを作成する
 
 1. **[データへの接続]** で、 **[Azure Blob Storage]** を選択し、作成したストレージ アカウントとコンテナーを選択します。 データ ソースの名前を指定し、残りの部分には既定値を使用します。 
 
-   ![Azure BLOB の構成](./media/cognitive-search-quickstart-blob/blob-datasource.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/blob-datasource.png" alt-text="Azure Blob Storage 内のソース ファイル" border="false":::
 
     次のページに進みます。
 
@@ -76,7 +76,7 @@ ms.locfileid: "89300036"
 
 1. このクイックスタートでは、**無料**の Cognitive Services リソースを使用します。 サンプル データは 14 個のファイルで構成されているため、このクイックスタートでは、Cognitive Services の無料枠である 20 トランザクションで十分間に合います。 
 
-   ![[Cognitive Services をアタッチする] でのベース サービスのアタッチ](media/cognitive-search-quickstart-blob/cog-search-attach.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/cog-search-attach.png" alt-text="Azure Blob Storage 内のソース ファイル" border="false":::
 
 1. **[エンリッチメントの追加]** を展開して、選択項目 4 か所について設定を行います。 
 
@@ -86,7 +86,7 @@ ms.locfileid: "89300036"
 
    エンティティの認識 (人物、組織、場所) と画像分析スキルを選択します。
 
-   ![[Cognitive Services をアタッチする] でのスキルセットのサービスの選択](media/cognitive-search-quickstart-blob/skillset.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/skillset.png" alt-text="Azure Blob Storage 内のソース ファイル" border="false":::
 
    次のページに進みます。
 
@@ -102,7 +102,7 @@ ms.locfileid: "89300036"
 
 + これらのフィールドの既定の属性は **[取得可能]** と **[検索可能]** です。 **[検索可能]** は、フィールドのフルテキスト検索を許可します。 **[取得可能]** は、フィールド値を結果で取得できることを意味します。 これらのフィールドはスキルセットを介して作成されていることから、取得可能かつ検索可能にするのがユーザーの意図であると見なされます。
 
-  ![インデックスのフィールド](media/cognitive-search-quickstart-blob/index-fields.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/index-fields.png" alt-text="Azure Blob Storage 内のソース ファイル" border="false":::
 
 `content` フィールドの近くにある **[取得可能]** 属性の取り消し線と疑問符に注目してください。 テキスト量の多い BLOB ドキュメントでは、`content` フィールドにファイルの大部分が格納され、それは数千行にも及ぶ可能性があります。 このようなフィールドは、検索結果では扱いにくく、このデモでは除外する必要があります。 
 
@@ -118,7 +118,7 @@ ms.locfileid: "89300036"
 
 1. **[インデクサー]** ページで、既定の名前を受け入れ、**一度だけ**実行するスケジュール オプションをクリックすれば、即時にこれを実行できます。 
 
-   ![インデクサーの定義](media/cognitive-search-quickstart-blob/indexer-def.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-def.png" alt-text="Azure Blob Storage 内のソース ファイル" border="false":::
 
 1. **[送信]** をクリックして、インデクサーを作成し、同時に実行します。
 
@@ -126,7 +126,7 @@ ms.locfileid: "89300036"
 
 コグニティブ スキル、特に OCR と画像分析のインデックス作成は、一般的なテキストベースのインデックス作成よりも完了までに時間がかかります。 進行状況を監視するには、概要ページに移動して、ページの中央にある **[インデクサー]** をクリックします。
 
-  ![Azure Cognitive Search による通知](./media/cognitive-search-quickstart-blob/indexer-notification.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-notification.png" alt-text="Azure Blob Storage 内のソース ファイル" border="false":::
 
 多様なコンテンツ タイプを考えると、警告は正常です。 一部のコンテンツ タイプは特定のスキルでは無効であり、低いレベルでは[インデクサーの制限](search-limits-quotas-capacity.md#indexer-limits)に遭遇することがよくあります。 たとえば、Free レベルでは、インデクサーの制限として 32,000 文字の切り捨てが通知されます。 それよりも高いレベルでこのデモを実行した場合、切り捨てに関する警告の多くは消えます。
 
@@ -134,11 +134,11 @@ ms.locfileid: "89300036"
 
 そのページで警告状態をもう一度クリックすると、以下に示したような警告が一覧表示されます。 
 
-  ![インデクサーの警告一覧](./media/cognitive-search-quickstart-blob/indexer-warnings.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-warnings.png" alt-text="Azure Blob Storage 内のソース ファイル" border="false":::
 
 特定の状態の行をクリックすると、詳細が表示されます。 PDF が大きいために、最大しきい値に達してマージが停止したことがこの警告からわかります。
 
-  ![警告の詳細](./media/cognitive-search-quickstart-blob/warning-detail.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/warning-detail.png" alt-text="Azure Blob Storage 内のソース ファイル" border="false":::
 
 ## <a name="query-in-search-explorer"></a>Search エクスプローラーでクエリを実行する
 
@@ -157,7 +157,7 @@ ms.locfileid: "89300036"
 
 クエリ文字列は大文字と小文字が区別されます。"不明なフィールド" というメッセージが返された場合は、 **[フィールド]** または **[インデックス定義 (JSON)]** をチェックして名前と大文字と小文字の区別を確認してください。 
 
-  ![Search エクスプローラーの例](./media/cognitive-search-quickstart-blob/search-explorer.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/search-explorer.png" alt-text="Azure Blob Storage 内のソース ファイル" border="false":::
 
 ## <a name="takeaways"></a>重要なポイント
 

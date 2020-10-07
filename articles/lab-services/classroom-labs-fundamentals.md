@@ -3,20 +3,20 @@ title: Azure Lab Services のアーキテクチャの基礎 | Microsoft Docs
 description: この記事では、Lab Services で使用される基本的なリソースと、ラボの基本的なアーキテクチャについて説明します。
 author: emaher
 ms.topic: overview
-ms.date: 06/26/2020
+ms.date: 09/16/2020
 ms.author: enewman
-ms.openlocfilehash: 93e95e1b03cd942e513a6d643f8a9e96399c231b
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: ac390fb6624ffc762f77b676c778165e7382f73f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85445646"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334040"
 ---
 # <a name="architecture-fundamentals-in-azure-lab-services"></a>Azure Lab Services のアーキテクチャの基礎
 
 Azure Lab Services は SaaS (サービスとしてのソフトウェア) ソリューションです。これは、Lab Services に必要なリソースがユーザーに代わって処理されることを意味します。 この記事では、Lab Services で使用される基本的なリソースと、ラボの基本的なアーキテクチャについて説明します。  
 
-Azure Lab Services には、Lab Services と組み合わせて自分独自のリソースを使用できるようにするためのいくつかの領域が用意されています。  独自のネットワーク上で VM を使用する方法について詳しくは、[仮想ネットワークをピアリングする](how-to-connect-peer-virtual-network.md)方法を確認してください。  Shared Image Gallery のイメージを再利用するには、[Shared Image Gallery をアタッチする](how-to-attach-detach-shared-image-gallery.md)方法を確認してください。
+Azure Lab Services には、Lab Services と組み合わせて独自のリソースを使用できるようにする領域がいくつか用意されています。  独自のネットワーク上で VM を使用する方法について詳しくは、[仮想ネットワークをピアリングする](how-to-connect-peer-virtual-network.md)方法を確認してください。  Shared Image Gallery のイメージを再利用するには、[Shared Image Gallery をアタッチする](how-to-attach-detach-shared-image-gallery.md)方法を確認してください。
 
 次に示すのは、クラスルーム ラボの基本的なアーキテクチャです。  ラボ アカウントはお使いのサブスクリプションでホストされます。 学生用 VM は、VM をサポートするために必要なリソースと共に、Lab Services が所有するサブスクリプションでホストされます。 次に、Lab Services のサブスクリプションの内容について詳しく説明していきます。
 

@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
-ms.openlocfilehash: af1df529ae0f6bb03a8d3f36e51619f273780dfe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4411bd490ab72aa27fbf16a8598a9ff0dae7a5b5
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086797"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358935"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>チュートリアル:Azure の RHEL 仮想マシンで SQL Server の可用性グループを構成する 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -908,7 +908,7 @@ GO
 
 1. セカンダリ レプリカを参加させたら、 **[Always On 高可用性]** ノードを展開して、SSMS オブジェクト エクスプローラーでそれらを確認できます。
 
-    ![availability-group-joined.png](./media/rhel-high-availability-stonith-tutorial/availability-group-joined.png)
+    ![スクリーンショットは、プライマリとセカンダリの可用性レプリカを示しています。](./media/rhel-high-availability-stonith-tutorial/availability-group-joined.png)
 
 ### <a name="add-a-database-to-the-availability-group"></a>可用性グループにデータベースを追加する
 

@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 676f1133a516174478a456a97bc467e7770fe6e7
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 695d1b1124c042b61837f0a1257ac2a201ae4860
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84712515"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539403"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>チュートリアル: 監視ソリューションに接続されているデバイスの問題の検出
 
@@ -122,7 +122,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ルールを完全に削除するには、ルールの一覧から削除します。 削除するルールを選択し、 **[削除]** を選択します。
 
-[![ルールの削除](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-expanded.png#lightbox)
+[![[ルールの削除] ウィンドウが強調表示された [ルール] ページを示すスクリーンショット。](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-expanded.png#lightbox)
 
 ルールの削除ことを確認した後に、ルールに関連付けられているアラートを **[メンテナンス]** ページから削除する機会が与えられます。
 

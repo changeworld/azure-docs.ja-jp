@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/1/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 8fb9f422f2d2c4ed035b04b4abe4141bbb8ebfc7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 81fceb210981e5755bcdd8e241b381d161d4f637
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299849"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570203"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API
 
@@ -36,7 +36,7 @@ Azure Cosmos DB には MongoDB 用のワイヤ プロトコルが実装されて
 * アプリケーションの移植性を保持して、クラウド ベンダーに非依存な状態を維持できます。
 * Cosmos DB を利用した一般的な NoSQL API 向けに、業界最高レベルの、ご利用料金に基づく SLA が手に入ります。
 * Cosmos データベースのプロビジョニング済みのスループットと容量を、ニーズに応じてエラスティックにスケーリングでき、お支払いは必要なスループットとストレージの分のみとなります。 これにより、大幅にコストを削減できます。
-* マルチマスター レプリケーションによるターンキーのグローバル分散が可能になります。
+* マルチリージョン書き込みレプリケーションによるターンキーのグローバル分散が可能になります。
 
 ## <a name="cosmos-dbs-api-for-mongodb"></a>Cosmos DB の MongoDB 用 API
 

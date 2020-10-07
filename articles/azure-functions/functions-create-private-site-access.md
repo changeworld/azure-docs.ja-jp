@@ -6,18 +6,18 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: eb3096cadc8197aeda9258bd3123c2eb760a44af
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 948e4f74763efd641bc0f089c679cdaf7c2f784e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540283"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530070"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>チュートリアル:Azure Functions のプライベート サイト アクセスを設定する
 
 このチュートリアルでは、Azure Functions の[プライベート サイト アクセス](./functions-networking-options.md#private-site-access)を有効にする方法について説明します。 プライベート サイト アクセスを使用すると、自分の関数コードを特定の仮想ネットワークからしかトリガーできないように設定できます。
 
-プライベート サイト アクセスは、関数アプリへのアクセスを特定の仮想ネットワークに限定する必要があるような状況で役立ちます。 たとえば、関数アプリの対象を特定の組織の従業員や、特定の仮想ネットワーク内のサービス (別の Azure Functions、Azure 仮想マシン、AKS クラスターなど) に限定することができます。
+プライベート サイト アクセスは、関数アプリへのアクセスを特定の仮想ネットワークに限定する必要があるような状況で役立ちます。 たとえば、関数アプリの対象を特定の組織の従業員や、特定の仮想ネットワーク内のサービス (別の Azure 関数、Azure 仮想マシン、AKS クラスターなど) に限定することができます。
 
 関数アプリが仮想ネットワーク内の Azure リソースにアクセスする必要がある (つまり[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)経由で接続されている) 場合、[仮想ネットワークの統合](./functions-create-vnet.md)が必要となります。
 
@@ -28,7 +28,7 @@ ms.locfileid: "86540283"
 > * Azure Bastion サービスを作成する
 > * Azure Functions アプリを作成する
 > * 仮想ネットワーク サービス エンドポイントを構成する
-> * Azure Functions を作成してデプロイする
+> * Azure 関数を作成してデプロイする
 > * 仮想ネットワークの内外から関数を呼び出す
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
@@ -73,7 +73,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 1. _[ネットワーク]_ タブを選択し、 **[新規作成]** を選択して新しい仮想ネットワークを構成します。
 
     >[!div class="mx-imgBorder"]
-    >![新しい VM 用の仮想ネットワークを新規作成する](./media/functions-create-private-site-access/create-vm-networking.png)
+    >![[仮想ネットワーク] セクションの [新規作成] アクションが強調表示されている [ネットワーク] タブを示すスクリーンショット。](./media/functions-create-private-site-access/create-vm-networking.png)
 
 1. _[仮想ネットワークの作成]_ で、画像の下にある表の設定を使用します。
 
@@ -159,7 +159,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 次の手順では、仮想ネットワーク上のリソースだけが関数を呼び出せるように[アクセス制限](../app-service/app-service-ip-restrictions.md)を構成します。
 
-[プライベート サイト](functions-networking-options.md#private-site-access) アクセスは、関数アプリと特定の仮想ネットワークとの間に Azure 仮想ネットワークの[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を作成することによって実現します。 アクセス制限は、サービス エンドポイントを用いて導入されます。 特定の仮想ネットワーク内から発信されたトラフィックしか、指定されたリソースにアクセスできないようサービス エンドポイントによって制限されます。 指定されたリソースとは、このケースで言えば Azure Functions が該当します。
+[プライベート サイト](functions-networking-options.md#private-site-access) アクセスは、関数アプリと特定の仮想ネットワークとの間に Azure 仮想ネットワークの[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を作成することによって実現します。 アクセス制限は、サービス エンドポイントを用いて導入されます。 特定の仮想ネットワーク内から発信されたトラフィックしか、指定されたリソースにアクセスできないようサービス エンドポイントによって制限されます。 指定されたリソースとは、このケースで言えば Azure 関数が該当します。
 
 1. 関数アプリ内で、 _[設定]_ セクションのヘッダーの下にある **[ネットワーク]** リンクを選択します。
 1. _[ネットワーク]_ ページは、Azure Front Door、Azure CDN、アクセス制限を構成するための出発点となります。
@@ -190,7 +190,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="create-a-function"></a>関数を作成する
 
-このチュートリアルの次の手順では、HTTP によってトリガーされる Azure Functions を作成します。 HTTP GET または POST 経由で関数を呼び出したときに、"Hello, {name}" という応答が返されるようにします。  
+このチュートリアルの次の手順では、HTTP によってトリガーされる Azure 関数を作成します。 HTTP GET または POST 経由で関数を呼び出したときに、"Hello, {name}" という応答が返されるようにします。  
 
 1. 次のいずれかのクイックスタートに従って、Azure Functions アプリを作成、デプロイします。
 
@@ -219,7 +219,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 仮想ネットワーク上に構成されている VM の Web ブラウザーからは、(Azure Bastion サービスを使用して) 関数にアクセスすることができます。
 
 >[!div class="mx-imgBorder"]
->![Azure Bastion 経由で Azure Functions にアクセスする](./media/functions-create-private-site-access/access-function-via-bastion-final.png)
+>![Azure Bastion 経由で Azure 関数にアクセスする](./media/functions-create-private-site-access/access-function-via-bastion-final.png)
 
 [!INCLUDE [clean-up-section-portal](../../includes/clean-up-section-portal.md)]
 

@@ -5,15 +5,15 @@ author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
-ms.date: 07/31/2020
+ms.date: 09/29/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 608b488a04eafd01e6702850445801705f6dac81
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: c84ebfe9752b8594e97c7c72d706ee25c4852f6e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810357"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538141"
 ---
 # <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用して Unity Android アプリを作成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "87810357"
 
 このクイック スタートを実行するには、以下が必要です。
 
-- Android Build Support、Android SDK と NDK ツール モジュールを含む <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.4 (LTS)</a> がインストールされている Windows または macOS マシン。
+- **Android Build Support**、**Android SDK と NDK ツール モジュール**、**OpenJDK** モジュールを含む <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.4 (LTS)</a> がインストールされている Windows または macOS マシン。
   - Windows で実行する場合は、<a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> および <a href="https://git-lfs.github.com/">Git LFS</a> も必要になります。
   - MacOS で実行する場合は、HomeBrew から Git をインストールします。 `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` コマンドをターミナルに 1 行で入力します。 続けて、`brew install git` および `brew install git-lfs` を実行します。
 - <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">開発者向け</a>の <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore 対応</a> Android デバイス。
@@ -57,6 +57,12 @@ ms.locfileid: "87810357"
 [!INCLUDE [Export Unity Project](../../../includes/spatial-anchors-unity-export-project-snip.md)]
 
 **[Run Device]\(実行デバイス\)** でデバイスを選択し、 **[ビルドして実行]** を選択します。 `.apk` ファイルを保存するよう求められたら、任意の名前を選択できます。
+
+アプリで矢印を使用して **[BasicDemo]** を選択し、 **[実行]**  ボタンを 押してデモを実行します。 指示に従って、アンカーを配置し、呼び戻します。
+
+![スクリーンショット 1](./media/get-started-unity-android/screenshot-1.jpg)
+![スクリーンショット 2](./media/get-started-unity-android/screenshot-2.jpg)
+![スクリーンショット 3](./media/get-started-unity-android/screenshot-3.jpg)
 
 アプリの指示に従って、アンカーを配置し、呼び戻します。
 
