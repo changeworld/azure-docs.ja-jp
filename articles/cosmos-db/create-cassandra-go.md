@@ -9,10 +9,10 @@ ms.devlang: go
 ms.topic: quickstart
 ms.date: 07/14/2020
 ms.openlocfilehash: ba53fb786b1d1f61535168cda2152049a12dfb99
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86535651"
 ---
 # <a name="quickstart-build-a-go-app-with-the-gocql-client-to-manage-azure-cosmos-db-cassandra-api-data"></a>クイック スタート:`gocql` クライアントを使用して Azure Cosmos DB Cassandra API データを管理する Go アプリを構築する
@@ -254,7 +254,7 @@ go run main.go
 
 4. Azure portal で **Data Explorer** を開き、この新しいデータのクエリ、変更、操作を行います。 
 
-    :::image type="content" source="./media/create-cassandra-go/view-data-explorer-go-app.png" alt-text="データ エクスプローラーでデータを表示する - Azure Cosmos DB":::
+    :::image type="content" source="./media/create-cassandra-go/view-data-explorer-go-app.png" alt-text="Azure portal の [接続文字列] ページから詳細を表示してコピーする":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 

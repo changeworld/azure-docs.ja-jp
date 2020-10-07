@@ -11,17 +11,17 @@ ms.topic: overview
 ms.date: 03/24/2020
 ms.author: aahi
 ms.openlocfilehash: 685ee0c616234563981e55f14213e424daae32f5
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85611273"
 ---
 # <a name="what-is-bing-local-business-search"></a>Bing Local Business Search とは
 RESTful サービスである Bing Local Business Search API を使用すると、アプリケーションで検索クエリに基づいて地元企業に関する情報を検索できます。 たとえば、`q=<business-name> in Redmond, Washington`、または `q=Italian restaurants near me` です。 
 
 ## <a name="features"></a>特徴
-| 特徴量 | 説明 |  
+| 機能 | 説明 |  
 | -- | -- | 
 | [地元の企業と場所を検索する](quickstarts/local-quickstart.md) | Bing Local Business Search API では、クエリからローカライズされた結果が得られます。 結果には、企業の Web サイトの URL と表示テキスト、電話番号、地理的な場所(GPS 座標、市区町村、番地など) が含まれます |  
 | [地理的境界を使用してローカル結果をフィルター処理する](specify-geographic-search.md) | 検索パラメーターとして座標を追加し、円領域または正方形の境界ボックスで指定された、特定の地域に結果を制限します。 | 

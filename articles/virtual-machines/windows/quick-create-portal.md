@@ -1,6 +1,6 @@
 ---
-title: クイック スタート - Azure Portal で Windows VM を作成する
-description: このクイック スタートでは、Azure Portal を使用して Windows 仮想マシンを作成する方法について説明します
+title: クイック スタート - Azure portal で Windows VM を作成する
+description: このクイック スタートでは、Azure portal を使用して Windows 仮想マシンを作成する方法について説明します
 author: cynthn
 ms.service: virtual-machines-windows
 ms.topic: quickstart
@@ -9,15 +9,15 @@ ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 46119b9f7cdac47920d4bba8e00c3fc56b0edc78
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87494521"
 ---
-# <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>クイック スタート:Azure Portal で Windows 仮想マシンを作成する
+# <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>クイック スタート:Azure ポータルで Windows 仮想マシンを作成する
 
-Azure 仮想マシン (VM) は、Azure Portal で作成できます。 この方法では、ブラウザー ベースのユーザー インターフェイスを使用して、VM とその関連リソースを作成できます。 このクイック スタートでは、Azure Portal を使用して、Windows Server 2019 を実行する仮想マシン (VM) を Azure にデプロイする方法を示します。 次に、VM の動作を確認するために、VM に RDP 接続し、IIS Web サーバーをインストールします。
+Azure 仮想マシン (VM) は、Azure portal で作成できます。 この方法では、ブラウザー ベースのユーザー インターフェイスを使用して、VM とその関連リソースを作成できます。 このクイック スタートでは、Azure portal を使用して、Windows Server 2019 を実行する仮想マシン (VM) を Azure にデプロイする方法を示します。 次に、VM の動作を確認するために、VM に RDP 接続し、IIS Web サーバーをインストールします。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 

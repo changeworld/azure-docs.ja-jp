@@ -8,10 +8,10 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
 ms.openlocfilehash: 83ae2fdea2ffe586a626f8a45cba74a22c07ae7b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87101124"
 ---
 # <a name="setting-up-access-for-azure-dev-tools"></a>Azure Dev tools のアクセスを設定する

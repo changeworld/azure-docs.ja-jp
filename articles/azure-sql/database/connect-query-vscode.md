@@ -14,10 +14,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
 ms.openlocfilehash: 7a096e355e140b18bd7df010c379e31d21f90634
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86515055"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query"></a>クイック スタート:Visual Studio Code を使って接続し、クエリを実行する 

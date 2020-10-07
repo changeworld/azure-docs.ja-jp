@@ -9,10 +9,10 @@ ms.devlang: go
 ms.topic: quickstart
 ms.date: 04/24/2020
 ms.openlocfilehash: 0c03c4f163ef36335dacdc3c28340164dcd23fba
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85299196"
 ---
 # <a name="quickstart-connect-a-go-application-to-azure-cosmos-dbs-api-for-mongodb"></a>クイック スタート:Azure Cosmos DB の MongoDB 用 API に Go アプリケーションを接続する
@@ -422,7 +422,7 @@ Azure Cosmos DB に格納されているデータは、Azure portal で表示し
 
 上部の検索ボックスに、「**Azure Cosmos DB**」と入力します。 Cosmos アカウントのブレードが開いたら、自分の Cosmos アカウントを選択します。 左側のナビゲーションで、 **[データ エクスプローラー]** を選択します。 [コレクション] ウィンドウでコレクションを展開します。これで、コレクション内のドキュメントの表示とデータのクエリを実行でき、ストアド プロシージャ、トリガー、および UDF の作成と実行も行うことができます。 
 
-:::image type="content" source="./media/create-mongodb-go/go-cosmos-db-data-explorer.png" alt-text="新しく作成したドキュメントが表示されているデータ エクスプローラー":::
+:::image type="content" source="./media/create-mongodb-go/go-cosmos-db-data-explorer.png" alt-text="新しく作成したドキュメントが表示されているデータ エクスプローラー&quot;:::
 
 
 ID を利用して `todo` を削除します
@@ -443,7 +443,7 @@ ID を利用して `todo` を削除します
 +----------------------------+--------------------------------+-----------+
 |             ID             |          DESCRIPTION           |  STATUS   |
 +----------------------------+--------------------------------+-----------+
-| "5e9fd6befd2f076d1f03bd8a" | Get the MongoDB connection     | pending   |
+| &quot;5e9fd6befd2f076d1f03bd8a" | Get the MongoDB connection     | pending   |
 |                            | string using the Azure CLI     |           |
 +----------------------------+--------------------------------+-----------+
 ```

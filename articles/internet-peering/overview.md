@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 576bc3e37711851acd7d6c7ac811a10e40080710
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "75908914"
 ---
 # <a name="internet-peering-overview"></a>インターネット ピアリングの概要
@@ -49,7 +49,7 @@ Microsoft は、選択的ではあるものの一般的にオープンなピア�
 ## <a name="faq"></a>よく寄せられる質問
 ピアリングについてよく寄せられる質問については、「[インターネット ピアリング - FAQ](faqs.md)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * Microsoft との Direct ピアリングを設定する手順の詳細については、「[Direct ピアリングのチュートリアル](walkthrough-direct-all.md)」を参照してください
 * Microsoft との Exchange ピアリングを設定する手順の詳細については、「[Exchange ピアリングのチュートリアル](walkthrough-exchange-all.md)」を参照してください。

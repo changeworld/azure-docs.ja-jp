@@ -4,10 +4,10 @@ description: Jupyter ノートブックをローカル コンピューターま�
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.openlocfilehash: 9c961ad67260cee2809e0bba1e79f2c709183dea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85832119"
 ---
 # <a name="quickstart-migrate-a-local-jupyter-notebook-in-azure-notebooks-preview"></a>クイック スタート:ローカルの Jupyter ノートブックを Azure Notebooks プレビューに移行する

@@ -7,10 +7,10 @@ ms.date: 06/26/2019
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
 ms.openlocfilehash: b88dfedd5454d708386afa6912a26dac41c6d6b4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86258574"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>クイック スタート: Service Fabric に .NET Reliable Services アプリケーションをデプロイする

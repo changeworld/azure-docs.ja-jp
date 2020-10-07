@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: ba6f79fffe5287be7574d422f026489d4da2795e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87287500"
 ---
 # <a name="azure-synapse-analytics-workspaces-preview-frequently-asked-questions"></a>Azure Synapse Analytics (ワークスペース プレビュー) のよく寄せられる質問

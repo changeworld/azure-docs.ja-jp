@@ -16,10 +16,10 @@ ms.custom:
 - devx-track-java
 ms.date: 05/26/2020
 ms.openlocfilehash: 757e0892469e52b1f2716d837d8423c5940322e2
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87317928"
 ---
 # <a name="quickstart-send-telemetry-to-an-azure-iot-hub-and-read-it-with-a-java-application"></a>クイック スタート:Azure IoT Hub にテレメトリを送信して Java アプリケーションで読み取る

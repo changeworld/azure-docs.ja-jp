@@ -9,10 +9,10 @@ ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.date: 02/27/2020
 ms.openlocfilehash: 5e5f02b1684e56496778ab677aa9dc46e7dcd9aa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87086525"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Azure HDInsight の Apache Hadoop の概要

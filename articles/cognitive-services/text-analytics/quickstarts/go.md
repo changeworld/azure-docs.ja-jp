@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: aahi
 ms.openlocfilehash: 3b922dca46b575abc428aa6e76fb920ffc13d6b0
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86028012"
 ---
 # <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:Go を使用して Text Analytics Cognitive Service を呼び出す 

@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 10/11/2019
 ms.author: rohink
 ms.openlocfilehash: 52bf9e061eb57c7ce6ea698b7468b5ba5e11b4e8
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "78244961"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure プライベート DNS ゾーンを作成する
@@ -76,12 +76,12 @@ DNS ゾーンにはドメインの DNS エントリが含まれています。 A
 
 ## <a name="link-the-virtual-network"></a>仮想ネットワークのリンク
 
-プライベート DNS ゾーンを仮想ネットワークにリンクさせるには、仮想ネットワーク リンクを作成します。
+プライベート DNS ゾーンを仮想ネットワークにリンクするには、仮想ネットワーク リンクを作成します。
 
 ![仮想ネットワークリンクの追加](media/private-dns-portal/dns-add-virtual-network-link.png)
 
 1. **MyAzureResourceGroup** リソース グループを開き、**private.contoso.com** プライベート ゾーンを選択します。
-2. 左側のウィンドウで、 **[Virtual network links]\(仮想ネットワーク リンク\)** を選択します。
+2. 左側のウィンドウで、**[Virtual network links]\(仮想ネットワーク リンク\)** を選択します。
 3. **[追加]** を選択します。
 4. **[リンク名]** に「**myLink**」と入力します。
 5. **[仮想ネットワーク]** で **[myAzureVNet]** を選択します。
@@ -92,18 +92,18 @@ DNS ゾーンにはドメインの DNS エントリが含まれています。 A
 
 次に、プライベート DNS ゾーンをテストできるように 2 つの仮想マシンを作成します。
 
-1. ポータル ページの左上で **[リソースの作成]** を選択し、 **[Windows Server 2016 Datacenter]** を選択します。
+1. ポータル ページの左上で **[リソースの作成]** を選択し、**[Windows Server 2016 Datacenter]** を選択します。
 1. リソース グループに **[MyAzureResourceGroup]** を選択します。
 1. 仮想マシンの名前には「**myVM01**」と入力します。
 1. **[リージョン]** に **[米国中西部]** を選択します。
 1. 管理者ユーザーの名前を入力します。
 2. パスワードの入力と確認入力を行います。
-5. **[パブリック受信ポート]** で **[選択したポートを許可する]** を選択し、 **[受信ポートを選択]** で **[RDP (3389)]** を選択します。
+5. **[パブリック受信ポート]** で **[選択したポートを許可する]** を選択し、**[受信ポートを選択]** で **[RDP (3389)]** を選択します。
 10. そのページの他の値は既定のままとし、 **[Next: Disks >]\(次へ: ディスク >\)** をクリックします。
 11. **[ディスク]** ページは既定値のままとし、 **[Next: Networking >]\(次へ: ネットワーク >\)** をクリックします。
 1. 仮想ネットワークに **[myAzureVNet]** が選択されていることを確認します。
 1. そのページの他の値は既定のままとし、 **[Next: Management >]\(次へ: 管理 >\)** をクリックします。
-2. **[ブート診断]** に **[オフ]** を選択します。その他は既定値のままとし、 **[Review + create]\(確認と作成\)** を選択します。
+2. **[ブート診断]** に **[オフ]** を選択します。その他は既定値のままとし、**[Review + create]\(確認と作成\)** を選択します。
 1. 設定を確認し、 **[作成]** をクリックします。
 
 これらの手順を繰り返して、**myVM02** という名前の別の仮想マシンを作成します。
@@ -115,7 +115,7 @@ DNS ゾーンにはドメインの DNS エントリが含まれています。 A
  次の例では、リソース グループ **MyAzureResourceGroup** の DNS ゾーン **private.contoso.com** に、相対名が **db** のレコードを作成します。 レコード セットの完全修飾名は、**db.private.contoso.com** になります。 レコードの種類は "A" で、IP アドレスは **myVM01** です。
 
 1. **MyAzureResourceGroup** リソース グループを開き、**private.contoso.com** プライベート ゾーンを選択します。
-2. **+ [レコード セット]** を選択します。
+2. **[+ レコード セット]** を選択します。
 3. **[名前]** に「**db**」と入力します。
 4. 表示されている **myVM01** の IP アドレスを **[IP アドレス]** に入力します。 仮想マシンが起動されたときに、これが自動的に登録されることが必要です。
 5. **[OK]** を選択します。
@@ -143,7 +143,7 @@ MyVM02 についても同じ手順を繰り返します。
    ```
    ping myVM01.private.contoso.com
    ```
-   次のような出力が表示されます。
+   次のような出力が表示されるはずです。
    ```
    PS C:\> ping myvm01.private.contoso.com
 
@@ -163,7 +163,7 @@ MyVM02 についても同じ手順を繰り返します。
    ```
    ping db.private.contoso.com
    ```
-   次のような出力が表示されます。
+   次のような出力が表示されるはずです。
    ```
    PS C:\> ping db.private.contoso.com
 

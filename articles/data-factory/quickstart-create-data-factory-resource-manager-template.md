@@ -12,10 +12,10 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 07/16/2020
 ms.openlocfilehash: eb423ebd354adeb8273755d34323b283d53eb8b5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87283896"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure Data Factory を作成する
@@ -94,23 +94,23 @@ Jane, Doe
 
 1. **[リソース グループに移動]** を選択します。
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-go-to-resource-group.png" alt-text="リソース グループ":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-go-to-resource-group.png" alt-text="ADF ARM テンプレートをデプロイする":::
 
 2.  ご自分の Azure Data Factory が作成されていることを確認します。
     1. その Azure Data Factory 名の形式は、datafactory\<uniqueid\> です。
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-sample.png" alt-text="データ ファクトリのサンプル":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-sample.png" alt-text="ADF ARM テンプレートをデプロイする":::
 
 2. ご自分のストレージ アカウントが作成されていることを確認します。
     1. そのストレージ アカウント名の形式は、storage\<uniqueid\> です。
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-storage-account.png" alt-text="ストレージ アカウント":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-storage-account.png" alt-text="ADF ARM テンプレートをデプロイする":::
 
 3. 作成されたストレージ アカウントの名前を選択して、 **[コンテナー]** を選択します。
     1. **[コンテナー]** ページで、作成した BLOB コンテナーを選択します。
         1. その BLOB コンテナー名の形式は、blob\<uniqueid\> です。
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-blob-container.png" alt-text="BLOB コンテナー":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-blob-container.png" alt-text="ADF ARM テンプレートをデプロイする":::
 
 ### <a name="upload-a-file"></a>ファイルをアップロードする
 
@@ -126,7 +126,7 @@ Jane, Doe
 
 6. **[閉じる]** アイコン (**X**) を選択して、 **[BLOB のアップロード]** ページを閉じます。
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-upload-blob-file.png" alt-text="ファイルを入力フォルダーにアップロードする":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-upload-blob-file.png" alt-text="ADF ARM テンプレートをデプロイする":::
 
 コンテナー ページは開いたままにしておいてください。そうすることで、このクイックスタートの最後に出力を確認できるからです。
 
@@ -136,17 +136,17 @@ Jane, Doe
 
 2. **[作成と監視]** タイルを選択します。 
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-author-monitor-tile.png" alt-text="作成と監視":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-author-monitor-tile.png" alt-text="ADF ARM テンプレートをデプロイする":::
 
 2. **[作成]** タブ:::image type="icon" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-author.png" border="false":::を選択します。
 
 3. 作成したパイプライン (ArmtemplateSampleCopyPipeline) を選択します。
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-pipelines.png" alt-text="ARM テンプレート パイプライン":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-pipelines.png" alt-text="ADF ARM テンプレートをデプロイする":::
 
 4. **[トリガーの追加]**  >  **[Trigger Now]\(今すぐトリガー\)** の順に選択します。
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-trigger-now.png" alt-text="トリガー":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-trigger-now.png" alt-text="ADF ARM テンプレートをデプロイする":::
 
 5. **[パイプラインの実行]** の下の右側のウィンドウで、 **[OK]** を選択します。
 
@@ -156,7 +156,7 @@ Jane, Doe
 
 2. パイプラインの実行に関連付けられたアクティビティの実行が表示されます。 このクイック スタートでは、パイプラインに、コピーという種類のアクティビティが 1 つのみ含まれます。 そのため、そのアクティビティの実行が表示されます。
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-successful-run.png" alt-text="正常に実行":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-successful-run.png" alt-text="ADF ARM テンプレートをデプロイする":::
 
 ### <a name="verify-the-output-file"></a>出力ファイルを検証する
 
@@ -168,7 +168,7 @@ Jane, Doe
 
 3. **emp.txt** が output フォルダーにコピーされていることを確認します。 
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-output.png" alt-text="出力":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-output.png" alt-text="ADF ARM テンプレートをデプロイする":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

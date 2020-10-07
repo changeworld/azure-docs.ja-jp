@@ -8,10 +8,10 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
 ms.openlocfilehash: edb0de9f235565d09c81ce4466de59698a321f56
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87101187"
 ---
 # <a name="enroll-or-renew-an-azure-dev-tools-for-teaching-subscription"></a>Azure Dev Tools for Teaching サブスクリプションの登録または更新
@@ -33,19 +33,19 @@ ms.locfileid: "87101187"
 
 1. 初めて登録する場合は、 **[Institution Information]\(機関情報\)** を入力します。 更新する場合、この情報はオートフィルされます。
 
-    :::image type="content" source="media/enroll-renew-subscription/application-institution-information.png" alt-text="機関情報を入力します。" border="false":::
+    :::image type="content" source="media/enroll-renew-subscription/application-institution-information.png" alt-text="サインインのエラー メッセージ。" border="false":::
     
 1. **[Billing Information]\(課金情報\)** を入力します。 お客様の機関がボリューム ライセンス契約の一部である場合は、ボリューム ライセンス契約番号を入力できます。 新しいサブスクリプションにサインアップし、クレジットカード以外の方法で支払いを行う場合、支払い処理の間、サブスクリプションへのアクセス権の取得が遅延する可能性があります。 支払いの進捗状況の更新を示す電子メールを受信します。
 
-    :::image type="content" source="media/enroll-renew-subscription/application-billing-information.png" alt-text="課金情報を入力します。" border="false":::
+    :::image type="content" source="media/enroll-renew-subscription/application-billing-information.png" alt-text="サインインのエラー メッセージ。" border="false":::
     
 1. **[Subscription Plan]\(サブスクリプション プラン\)** を選択し、サブスクリプションの **[Subscription Administrator]\(サブスクリプション管理者\)** を確認します。 サブスクリプション管理者の電子メール ドメインにより、同じドメインの学生が、ソフトウェア特典をダウンロードするためのアクセス権を簡単に取得できます。
 
-    :::image type="content" source="media/enroll-renew-subscription/application-select-subscription-plan.png" alt-text="サブスクリプション プランを選択します。" border="false":::
+    :::image type="content" source="media/enroll-renew-subscription/application-select-subscription-plan.png" alt-text="サインインのエラー メッセージ。" border="false":::
     
 1. すべての購入情報を確認し、 **[注文する]** をクリックします。 確認の電子メールが受信トレイに送信され、支払い状況の更新と使用可能な次の手順が示されます。
 
-    :::image type="content" source="media/enroll-renew-subscription/application-confirm-place-order.png" alt-text="注文を確認します。" border="false":::
+    :::image type="content" source="media/enroll-renew-subscription/application-confirm-place-order.png" alt-text="サインインのエラー メッセージ。" border="false":::
 
 ## <a name="renew-an-existing-subscription"></a>既存のサブスクリプションを更新する
 

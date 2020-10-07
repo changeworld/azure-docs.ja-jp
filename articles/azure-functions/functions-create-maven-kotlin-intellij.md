@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
 ms.openlocfilehash: fa834e3ac4946c4f617e857342f850445eebfd30
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87055445"
 ---
 # <a name="quickstart-create-your-first-http-triggered-function-with-kotlin-and-intellij"></a>クイック スタート:Kotlin と IntelliJ を使用して、HTTP によってトリガーされる最初の関数を作成する

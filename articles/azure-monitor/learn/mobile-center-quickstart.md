@@ -9,10 +9,10 @@ ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
 ms.openlocfilehash: 0539dcecbbbfe28817122e0f47e813182a9abd9d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87322144"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>App Center と Application Insights によるモバイル アプリの分析の開始

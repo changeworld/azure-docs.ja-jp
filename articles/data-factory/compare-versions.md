@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
 ms.openlocfilehash: 6c43906468ee0124187dc5ce6d6f1405e3b96b2e
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86231235"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Azure Data Factory と Data Factory バージョン 1 の比較

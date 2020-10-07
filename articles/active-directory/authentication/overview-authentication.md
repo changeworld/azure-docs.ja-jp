@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5e65149b2524d2785039be78caad4ce84924e7e3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87035113"
 ---
 # <a name="what-is-azure-active-directory-authentication"></a>Azure Active Directory 認証とは

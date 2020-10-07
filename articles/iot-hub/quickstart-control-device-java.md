@@ -16,10 +16,10 @@ ms.custom:
 - devx-track-java
 ms.date: 06/21/2019
 ms.openlocfilehash: 3c6a8285c672e6683a259b2a65be4e6ecbd4aafa
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87322280"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-azure-iot-hub-with-java"></a>クイック スタート:Azure IoT ハブに接続されたデバイスを Java で制御する

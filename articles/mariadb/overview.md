@@ -8,22 +8,22 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 3/18/2020
 ms.openlocfilehash: 84fd24890495e7278c69c2f83c7182fd65f86791
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "79535563"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Azure Database for MariaDB とは
 
 Azure Database for MariaDB は、Microsoft Cloud のリレーショナル データベース サービスです。 Azure Database for MariaDB は、[MariaDB コミュニティ エディション](https://mariadb.org/download/) (GPLv2 ライセンスで入手可能) のデータベース エンジン バージョン 10.2 および 10.3 を基にしています。
 
-Azure Database for MariaDB では次のものが提供されます。
+Azure Database for MariaDB では、次のことを実現できます。
 
 - 追加コストなしの組み込みの高可用性。
 - 包括的な従量課金制の料金を使用した、予測可能なパフォーマンス。
-- 必要に応じて数秒以内にスケーリング。
-- 保存中や移動中の機密データのキュリティ保護。
+- 必要に応じて、数秒以内でスケーリング。
+- 保存中および転送中の機密データのセキュリティ保護。
 - 自動バックアップと最大 35 日間のポイントインタイム リストア。
 - エンタープライズグレードのセキュリティとコンプライアンス。
 
@@ -53,7 +53,7 @@ Azure の業界をリードする可用性 99.99% の SLA は、Microsoft が管
 
 ## <a name="secure-your-data"></a>データのセキュリティ保護
 
-Azure データベース サービスは、Azure Database for MariaDB によって、データ セキュリティを維持してきました。 アクセスの制限、保存データと移動中のデータの保護、監視アクティビティの支援を行う機能が Azure Database for MariaDB には備わっています。 Azure のプラットフォーム セキュリティについては、[Azure Trust Center](https://www.microsoft.com/trustcenter/security)をご覧ください。 Azure Database for MariaDB のセキュリティ機能の詳細については、[セキュリティの概要](concepts-security.md)に関するページを参照してください。
+Azure データベース サービスは、Azure Database for MariaDB によって、データ セキュリティを維持してきました。 アクセスの制限、保存データと移動中のデータの保護、監視アクティビティの支援を行う機能が Azure Database for MariaDB には備わっています。 Azure のプラットフォーム セキュリティについては、[Azure セキュリティ センター](https://www.microsoft.com/trustcenter/security)をご覧ください。 Azure Database for MariaDB のセキュリティ機能の詳細については、[セキュリティの概要](concepts-security.md)に関するページを参照してください。
 
 ## <a name="contacts"></a>連絡先
 
@@ -64,7 +64,7 @@ Azure Database for MariaDB についての質問や提案は、(テクニカル 
 - ご利用のアカウントに関する問題を解決するには、Azure portal で[サポート要求をオープン](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)します。
 - フィードバックを提供したり、新しい機能を要求したりするには、[Azure フィードバック フォーラム](https://feedback.azure.com/forums/915439-azure-database-for-mariadb)でエントリを作成します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure Database for MariaDB の概要を読み終えたら、次の作業に進むことができます。
 - コストの比較と計算については、[価格](https://azure.microsoft.com/pricing/details/mariadb/)のページを参照してください。 

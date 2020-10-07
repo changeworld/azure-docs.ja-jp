@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 12/19/2019
 ms.author: aahi
 ms.openlocfilehash: 205d7991551ca48c3ea2e61baef53f5d06bdcbd2
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86200492"
 ---
 # <a name="what-is-the-bing-spell-check-api"></a>Bing Spell Check API とは
@@ -23,7 +23,7 @@ Bing Spell Check API を使用すると、コンテキストに応じた文法�
 
 ## <a name="features"></a>特徴
 
-| 特徴量 | 説明 |
+| 機能 | 説明 |
 |---------|---------|
 |複数のスペル チェック モード     | 複数のスペル チェック モードを使用して、文法やスペルに重点を置いた修正を行うことができます。 |
 |スラングやくだけた言葉遣いの認識     | テキスト内で使用されている日常的な表現やくだけた用語を認識します。         |

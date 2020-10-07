@@ -14,10 +14,10 @@ ms.custom:
 ms.date: 06/21/2019
 ms.author: wesmc
 ms.openlocfilehash: 2a12c916b6f81f21574c4b9dc748a279c22f199f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87315616"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>クイック スタート:IoT ハブに接続されたデバイスを制御する (Android)

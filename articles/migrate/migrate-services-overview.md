@@ -5,10 +5,10 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
 ms.openlocfilehash: 72f2dfb3e5e05466892d838af4e1c84c855b94a9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86122083"
 ---
 # <a name="about-azure-migrate"></a>Azure Migrate について

@@ -4,10 +4,10 @@ description: Azure Event Grid、Event Hubs、および Service Bus の 3 つの 
 ms.topic: overview
 ms.date: 07/07/2020
 ms.openlocfilehash: 7a3a0cd7f63a67206053ae55f33bd71aee2c19c6
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87460407"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Azure メッセージング サービスの中から選択する - Azure Event Grid、Event Hubs、および Service Bus
@@ -24,7 +24,7 @@ Azure には、ソリューション全体にわたるイベント メッセー�
 
 イベント配信サービスとメッセージ配信サービスの間には、注意が必要な重要な相違点があります。
 
-### <a name="event"></a>イベント
+### <a name="event"></a>Event
 
 イベントは、状態または状態変更の軽量の通知です。 イベントの発行元は、イベントの処理方法に関して何も予測していません。 通知の処理方法はイベントの処理者が決定します。 イベントは、個別の単位またはシリーズの一部になることができます。
 
@@ -32,7 +32,7 @@ Azure には、ソリューション全体にわたるイベント メッセー�
 
 一連のイベントは、状態を報告し、分析可能です。 イベントは、時間順に並べられ、相互に関連付けられています。 処理者は、一連のイベントを分析して、何が起こったかを知る必要があります。
 
-### <a name="message"></a>メッセージ
+### <a name="message"></a>Message
 
 メッセージは、サービスによって生成される生データで、別の場所で使用または格納されます。 メッセージには、メッセージ パイプラインをトリガーしたデータが含まれています。 メッセージの発行元は、処理者によるメッセージの処理方法を予測しています。 両者の間には協定が存在します。 たとえば、発行元は、メッセージを生データで送信し、処理者がそのデータからファイルを作成し、作業が終わったときに応答を送信すると予測しています。
 
@@ -42,7 +42,7 @@ Azure には、ソリューション全体にわたるイベント メッセー�
 | ------- | ------- | ---- | ----------- |
 | Event Grid | リアクティブ プログラミング | イベントの配信 (個別) | 状態の変更に反応する |
 | Event Hubs | ビッグ データのパイプライン | イベントのストリーミング (シリーズ) | テレメトリと分散データ ストリーミング |
-| Service Bus | 高価値のエンタープライズ メッセージング | メッセージ | 注文処理や金融取引 |
+| Service Bus | 高価値のエンタープライズ メッセージング | Message | 注文処理や金融取引 |
 
 ### <a name="event-grid"></a>Event Grid
 

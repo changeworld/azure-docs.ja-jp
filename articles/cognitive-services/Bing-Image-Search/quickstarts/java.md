@@ -13,10 +13,10 @@ ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
 ms.openlocfilehash: 79e5b5e0562c86668c276a94ab28835c13433eb8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87327244"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-api-and-java"></a>クイック スタート:Bing Image Search API と Java を使用してイメージを検索する 

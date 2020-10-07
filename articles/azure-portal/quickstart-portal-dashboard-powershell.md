@@ -8,10 +8,10 @@ ms.custom: devx-track-azurepowershell
 ms.author: mblythe
 ms.date: 07/24/2020
 ms.openlocfilehash: 6b7a4f6d4ad7f5e94d19b9d531992f54ff13fec0
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87440725"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-powershell"></a>クイック スタート:PowerShell を使用して Azure portal ダッシュボードを作成する

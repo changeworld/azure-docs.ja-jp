@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 06/30/2020
 ms.author: aahi
 ms.openlocfilehash: 4a44df3f2108421c73c161d8f2df37330b9c2d14
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85980219"
 ---
 ### <a name="create-an-environment-variable"></a>環境変数を作成する

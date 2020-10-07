@@ -5,10 +5,10 @@ ms.date: 07/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 46341a9cd4f7880333cb2653691328f4969f1fb4
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87497377"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>クイック スタート:Azure CLI と Event Grid を使ったカスタム イベントの Web エンドポイントへのルーティング
