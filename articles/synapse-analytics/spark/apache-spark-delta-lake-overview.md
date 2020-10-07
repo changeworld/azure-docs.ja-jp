@@ -12,10 +12,10 @@ ms.author: euang
 ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-spark-all-minus-sql
 ms.openlocfilehash: 655daeb0149228d78d5288b0e5d0d705a5743d28
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89008643"
 ---
 # <a name="linux-foundation-delta-lake-overview"></a>Linux Foundation Delta Lake の概要

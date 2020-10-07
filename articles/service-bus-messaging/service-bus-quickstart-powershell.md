@@ -8,10 +8,10 @@ ms.date: 08/12/2020
 ms.author: spelluru
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 178f990e46801cd51e9feb88bbd20181842e4400
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89077689"
 ---
 # <a name="use-azure-powershell-to-create-a-service-bus-namespace-and-a-queue"></a>Azure PowerShell を使用して Service Bus 名前空間とキューを作成する
@@ -34,7 +34,7 @@ ms.locfileid: "89077689"
     :::image type="content" source="./media/service-bus-quickstart-powershell/launch-cloud-shell.png" alt-text="Cloud Shell の起動":::
 3. 下部の Cloud Shell ウィンドウで、**Bash** から **PowerShell** に切り替えます。 
 
-    :::image type="content" source="./media/service-bus-quickstart-powershell/cloud-power-shell.png" alt-text="PowerShell モードに切り替える":::    
+    :::image type="content" source="./media/service-bus-quickstart-powershell/cloud-power-shell.png" alt-text="Cloud Shell の起動":::    
 4. 次のコマンドを実行して、Azure リソース グループを作成します。 必要に応じて、リソース グループの名前と場所を更新します。 
 
     ```azurepowershell-interactive

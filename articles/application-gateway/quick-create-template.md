@@ -10,10 +10,10 @@ ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: f492521469281615d4182294feaefffff688bd21
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88961688"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---arm-template"></a>クイック スタート:Azure Application Gateway を使用して Web トラフィックを転送する - ARM テンプレート
@@ -54,7 +54,7 @@ ms.locfileid: "88961688"
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-Resource Manager テンプレートを Azure にデプロイします。
+ARM テンプレートを Azure にデプロイします。
 
 1. **[Azure に配置する]** を選択して Azure にサインインし、テンプレートを開きます。 このテンプレートにより、アプリケーション ゲートウェイ、ネットワーク インフラストラクチャ、IIS を実行しているバックエンドプールに 2 つの仮想マシンが作成されます。
 

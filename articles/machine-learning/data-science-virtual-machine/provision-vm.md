@@ -9,10 +9,10 @@ ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
 ms.openlocfilehash: a955f035933955b88200e49e343f7dd0c257c89b
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88816356"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>クイック スタート:Windows 用データ サイエンス仮想マシンを設定する

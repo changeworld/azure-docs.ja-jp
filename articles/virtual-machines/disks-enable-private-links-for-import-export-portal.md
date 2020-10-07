@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
 ms.openlocfilehash: ab861b3ed265da9060e2367bdfdeeeee7047c584
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88815863"
 ---
 # <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure portal からプライベート リンクを使用してマネージド ディスクに対するインポートおよびエクスポート アクセスを制限する
@@ -52,7 +52,7 @@ NetworkAccessPolicy プロパティを `DenyAll` に設定すれば、ディス�
 
 リソースが作成されたら、直接そのリソースに移動します。
 
-:::image type="content" source="media/disks-enable-private-links-for-import-export-portal/screenshot-resource-button.png" alt-text="ポータルの [リソースに移動] ボタンのスクリーンショット":::
+:::image type="content" source="media/disks-enable-private-links-for-import-export-portal/screenshot-resource-button.png" alt-text="ディスク アクセスの作成ブレードのスクリーンショット。目的の名前を入力し、リージョンを選択してから、リソース グループを選択して続行します":::
 
 ## <a name="create-a-private-endpoint"></a>プライベート エンドポイントの作成
 
@@ -61,13 +61,13 @@ NetworkAccessPolicy プロパティを `DenyAll` に設定すれば、ディス�
 1. ディスク アクセス リソースから、 **[プライベート エンドポイント接続]** を選択します。
 1. **[+ プライベート エンドポイント]** を選択します。
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-main-private-blade.png" alt-text="ディスク アクセス リソースの [概要] ブレードのスクリーンショット。[プライベート エンドポイント接続] が強調表示されています。":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-main-private-blade.png" alt-text="ディスク アクセスの作成ブレードのスクリーンショット。目的の名前を入力し、リージョンを選択してから、リソース グループを選択して続行します":::
 
 1. リソース グループの選択
 1. 名前を入力し、ディスク アクセス リソースが作成されたリージョンと同じリージョンを選択します。
 1. **[Next:リソース >]** を選択します
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-first-blade.png" alt-text="プライベート エンドポイント作成ワークフローの最初のブレードのスクリーンショット。適切なリージョンを選択しないと、後で問題が発生する可能性があります。":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-first-blade.png" alt-text="ディスク アクセスの作成ブレードのスクリーンショット。目的の名前を入力し、リージョンを選択してから、リソース グループを選択して続行します":::
 
 1. **[リソース]** ブレードで、 **[マイ ディレクトリ内の Azure リソースに接続します]** を選択します。
 1. **[リソースの種類]** で、 **[Microsoft.Compute/diskAccesses]** を選択します
@@ -75,7 +75,7 @@ NetworkAccessPolicy プロパティを `DenyAll` に設定すれば、ディス�
 1. **[対象サブリソース]** は **[ディスク]** のままにします
 1. **次へ :構成 >** をクリックします。
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-second-blade.png" alt-text="プライベート エンドポイント作成ワークフローの 2 番目のブレードのスクリーンショット。すべての値が強調表示されています ([リソースの種類]、[リソース]、[対象サブリソース])":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-second-blade.png" alt-text="ディスク アクセスの作成ブレードのスクリーンショット。目的の名前を入力し、リージョンを選択してから、リソース グループを選択して続行します":::
 
 1. ディスクのエクスポートを制限する仮想ネットワークを選択します。他の仮想ネットワークではディスクをエクスポートできなくなります。
 
@@ -85,7 +85,7 @@ NetworkAccessPolicy プロパティを `DenyAll` に設定すれば、ディス�
 1. 適切なサブネットを選択します
 1. **[Review + create]\(レビュー + 作成\)** を選択します。
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-third-blade.png" alt-text="プライベート エンドポイント作成ワークフローの 3 番目のブレードのスクリーンショット。仮想ネットワークとサブネットが強調されています。":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-third-blade.png" alt-text="ディスク アクセスの作成ブレードのスクリーンショット。目的の名前を入力し、リージョンを選択してから、リソース グループを選択して続行します":::
 
 ## <a name="enable-private-endpoint-on-your-disk"></a>ディスク上でプライベート エンドポイントを有効にする
 
@@ -94,7 +94,7 @@ NetworkAccessPolicy プロパティを `DenyAll` に設定すれば、ディス�
 1. **[Private endpoint (through disk access)]\(プライベート エンドポイント (ディスク アクセス経由)\)** を選択し、前の手順で作成したディスク アクセスを選択します。
 1. **[保存]** を選択します。
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-managed-disk-networking-blade.png" alt-text="マネージド ディスクの [ネットワーク] ブレードのスクリーンショット。プライベート エンドポイントの選択と、選択したディスク アクセスが強調表示されています。これを保存すると、このアクセス用にディスクが構成されます。":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-managed-disk-networking-blade.png" alt-text="ディスク アクセスの作成ブレードのスクリーンショット。目的の名前を入力し、リージョンを選択してから、リソース グループを選択して続行します":::
 
 これで、マネージド ディスクをインポートまたはエクスポートするときに使用できるプライベート リンクの構成が完了しました。
 

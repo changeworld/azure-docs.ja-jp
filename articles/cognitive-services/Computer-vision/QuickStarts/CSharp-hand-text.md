@@ -12,10 +12,10 @@ ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 2f7678e2dd9f04f7aa930271c69c2d4ccf1e692b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88928243"
 ---
 # <a name="quickstart-extract-text-using-the-computer-vision-30-rest-api-read-operation-and-c"></a>クイック スタート:Computer Vision 3.0 REST API の Read 操作と C# を使用してテキストを抽出する

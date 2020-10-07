@@ -8,10 +8,10 @@ ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
 ms.openlocfilehash: ea08843dc73ed7603181eee1cf36495fda82b8d4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89003849"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure Digital Twins とは
@@ -88,7 +88,7 @@ Azure Digital Twins を使用した完全なソリューションには、次の
 
 次の図は、大規模な Azure IoT ソリューションのコンテキスト内で Azure Digital Twins が存在する場所を示しています。
 
-:::image type="content" source="media/overview/solution-context.png" alt-text="入力ソース、出力サービス、およびクライアント アプリと外部コンピューティング リソースとの双方向の通信を示す図。" border="false" lightbox="media/overview/solution-context.png":::
+:::image type="content" source="media/overview/solution-context.png" alt-text="デジタル ツインを表すノードのグラフが表示された Azure Digital Twins explorer サンプル アプリケーションのスクリーンショット" border="false" lightbox="media/overview/solution-context.png":::
 
 ## <a name="service-limits-in-public-preview"></a>パブリック プレビューのサービスの制限
 

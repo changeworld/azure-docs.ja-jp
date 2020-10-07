@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: danlep
 ms.date: 05/26/2020
 ms.openlocfilehash: 2cfce37ff63a8321f40843ced2a7b786bcfc013e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88649603"
 ---
 # <a name="quickstart-create-a-geo-replicated-container-registry-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して geo レプリケーション コンテナー レジストリを作成する
@@ -62,7 +62,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
  3. 使用条件に同意する場合は、 **[購入]** を選択します。 レジストリが正常に作成されると、次の通知が表示されます。
 
-     :::image type="content" source="media/container-registry-get-started-geo-replication-template/deployment-notification.png" alt-text="ポータル通知":::
+     :::image type="content" source="media/container-registry-get-started-geo-replication-template/deployment-notification.png" alt-text="テンプレートのプロパティ":::
 
  テンプレートをデプロイするには Azure portal を使用します。 Azure portal だけでなく、Azure PowerShell、Azure CLI、REST API を使用することもできます。 他のデプロイ方法については、「[テンプレートのデプロイ](../azure-resource-manager/templates/deploy-cli.md)」を参照してください。
 
@@ -74,11 +74,11 @@ Azure portal またはツール (Azure CLI など) を使用して、コンテ�
 
 1. **[概要]** ページで、レジストリの**ログイン サーバー**を書き留めます。 Docker を使用してイメージにタグを付けてレジストリにプッシュするときに、この URI を使用します。 情報については、[Docker CLI を使用した最初のイメージのプッシュ](container-registry-get-started-docker-cli.md)に関するページを参照してください。
 
-    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-overview.png" alt-text="レジストリの概要":::
+    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-overview.png" alt-text="テンプレートのプロパティ":::
 
 1. **[レプリケーション]** ページで、ホーム レプリカの場所と、テンプレートを通じて追加されたレプリカの場所を確認します。 必要に応じて、このページでさらにレプリカを追加します。
 
-    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-replications.png" alt-text="レジストリ レプリケーション":::
+    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-replications.png" alt-text="テンプレートのプロパティ":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/29/2020
 ms.openlocfilehash: 62bfe71c397367282c696eecdf55ab9c900c69a1
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88684118"
 ---
 # <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Recovery Services コンテナーを作成する
@@ -63,7 +63,7 @@ ms.locfileid: "88684118"
 
 1. コンテナーのデプロイを開始するには、 **[購入]** ボタンを選択します。 デプロイの成功後、通知が表示されます。
 
-   :::image type="content" source="media/quickstart-create-vault-template/deployment-success.png" alt-text="コンテナーのデプロイに成功。":::
+   :::image type="content" source="media/quickstart-create-vault-template/deployment-success.png" alt-text="Recovery Services コンテナーを作成するためのテンプレート。":::
 
 ## <a name="validate-the-deployment"></a>デプロイの検証
 
