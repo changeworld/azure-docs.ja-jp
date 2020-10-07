@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 295c4bde64ad21a19d21fd48f2556114b26b202d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b97b80927739d9a8658213a00b415c0bf321528b
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90945279"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460562"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>グループ チャットのヒーロー サンプルを使ってみる
 
@@ -30,7 +30,7 @@ Azure Communication Services の**グループ チャットのヒーロー サ�
 このサンプルのクイックスタートでは、サンプルをローカル コンピューターで実行する前に、サンプルがどのように動作するかを学習します。 次に、独自の Azure Communication Services リソースを使用して、サンプルを Azure にデプロイします。
 
 > [!IMPORTANT]
-> [GitHub からサンプルをダウンロードする](https://github.com/Azure/Communication/tree/master/samples)
+> [GitHub からサンプルをダウンロードする](https://github.com/Azure/Communication/tree/master/samples/Group%20Chat%20Hero%20Sample/Web/Chat)
 
 ## <a name="overview"></a>概要
 
@@ -42,11 +42,11 @@ Azure Communication Services の**グループ チャットのヒーロー サ�
 
 [Start a Chat]\(チャットを開始\) ボタンを押すと、Web アプリケーションは、サーバー側アプリケーションからユーザー アクセス トークンをフェッチします。 このトークンは、クライアント アプリを Azure Communication Services に接続するために使用されます。 トークンが取得されると、チャットで自分を表す名前と絵文字を指定するように求められます。 
 
-:::image type="content" source="./media/chat/pre-chat.png" alt-text="アプリケーションのチャット前の画面を示すスクリーンショット。":::
+:::image type="content" source="./media/chat/pre-chat.png" alt-text="サンプル アプリケーションのランディング ページを示すスクリーンショット。":::
 
 表示名と絵文字を構成すると、チャット セッションに参加できるようになります。 これで、コア チャット エクスペリエンスを提供するメインのチャット キャンバスが表示されます。
 
-:::image type="content" source="./media/chat/main-app.png" alt-text="サンプル アプリケーションのメイン画面を示すスクリーンショット。":::
+:::image type="content" source="./media/chat/main-app.png" alt-text="サンプル アプリケーションのランディング ページを示すスクリーンショット。":::
 
 メイン チャット画面のコンポーネント:
 
@@ -61,7 +61,7 @@ Azure Communication Services の**グループ チャットのヒーロー サ�
 - アクティブなサブスクリプションが含まれる Azure アカウントを作成します。 詳細については、[無料アカウントの作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)に関するページを参照してください。
 - [Node.js (8.11.2 以上)](https://nodejs.org/en/download/)
 - [Visual Studio (2017 以上)](https://visualstudio.microsoft.com/vs/)
-- [.NET Core 2.2](https://dotnet.microsoft.com/download/dotnet-core/2.2) (使用する Visual Studio インスタンス、32 または 64 ビットに対応するバージョンを必ずインストールしてください)
+- [.NET Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1) (使用する Visual Studio インスタンス (32 または 64 ビット) に対応するバージョンを必ずインストールしてください)
 - Azure Communication Services リソースを作成します。 詳細については、[Azure Communication リソースの作成](../quickstarts/create-communication-resource.md)に関するページを参照してください。 このクイックスタートで使用するリソースの**接続文字列**を記録する必要があります。
 
 ## <a name="locally-deploying-the-service--client-app"></a>サービスおよびクライアント アプリをローカルにデプロイする
@@ -72,29 +72,24 @@ chat.csproj で Visual Studio を開き、デバッグ モードで実行しま�
 
 このサンプルをローカルでテストするには、チャットの URL を使用して複数のブラウザー セッションを開き、マルチユーザー チャットをシミュレートします。
 
-### <a name="before-running-the-sample-for-the-first-time"></a>サンプルを初めて実行する前
+## <a name="before-running-the-sample-for-the-first-time"></a>サンプルを初めて実行する前
 
 1. PowerShell、Windows ターミナル、コマンド プロンプト、またはそれと同等のインスタンスを開き、サンプルの複製先のディレクトリに移動します。
-2. `git clone`
-3. **Chat/ClientApp** フォルダーにアクセスし、`npm run setup` を実行します。
-   1. エラー 1 が表示された場合は、上記の出力で、クライアントを承認するためにアクセスする必要がある URL を確認します (URL は次のようになります: `app.vssps.visualstudio.com/oauth2/authorize?clientid=...`)。ブラウザーで URL にアクセスしたら、ブラウザー ウィンドウからコマンドをコピーして実行します。
-   2. 前の手順を完了したら、コマンド `npm run setup` をもう一度実行します。
-4. Azure portal から `Connection String` を取得します。 接続文字列の詳細については、[Azure Communication リソースの作成](../quickstarts/create-communication-resource.md)に関するページを参照してください。
-5. `Connection String` を取得したら、Chat フォルダーにある **Chat/appsettings.json** ファイルに接続文字列を追加します。 変数 `ResourceConnectionString` に接続文字列を入力します。
+2. `git clone https://github.com/Azure/Communication.git`
+3. Azure portal から `Connection String` を取得します。 接続文字列の詳細については、[Azure Communication リソースの作成](../quickstarts/create-communication-resource.md)に関するページを参照してください。
+4. `Connection String` を取得したら、Chat フォルダーにある **Chat/appsettings.json** ファイルに接続文字列を追加します。 変数 `ResourceConnectionString` に接続文字列を入力します。
+5. `./Chat/ClientApp/src/constants.tsx` の ENVIRONMENT_URL をリソースの場所で更新します。 (例: https://<RESOURCE_NAME>.communication.azure.com)
 
 ### <a name="local-run"></a>ローカルの実行
 
-1. Chat フォルダーに移動します。
-2. Visual Studio で `Chat.csproj` ソリューションを開きます。
-3. `Chat` プロジェクトを実行します。*
-
-\* ブラウザーは、localhost: 5000 (ノードがクライアント アプリをデプロイしている場所) で開きます。 アプリは Internet Explorer ではサポートされていません。
+1. Chat フォルダーに移動し、Visual Studio で `Chat.csproj` ソリューションを開きます。
+2. プロジェクトを実行します。 ブラウザーを localhost:5000 で開きます。
 
 #### <a name="troubleshooting"></a>トラブルシューティング
 
 - ソリューションがビルドされない。NPM のインストール/ビルド中にエラーがスローされる
 
-C# ソリューションをクリーン/リビルドする
+   C# ソリューションをクリーン/リビルドする
 
 ## <a name="publish-the-sample-to-azure"></a>サンプルを Azure に発行する
 
@@ -104,9 +99,12 @@ C# ソリューションをクリーン/リビルドする
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-Communication Services サブスクリプションをクリーンアップして削除する場合は、リソースまたはリソース グループを削除できます。 リソース グループを削除すると、それに関連付けられている他のリソースも削除されます。 詳細については、[リソースのクリーンアップ](../quickstarts/create-communication-resource.md#clean-up-resources)に関する記事を参照してください。
+Communication Services サブスクリプションをクリーンアップして解除する場合は、リソースまたはリソース グループを削除できます。 リソース グループを削除すると、それに関連付けられている他のリソースも削除されます。 詳細については、[リソースのクリーンアップ](../quickstarts/create-communication-resource.md#clean-up-resources)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
+
+>[!div class="nextstepaction"] 
+>[GitHub からサンプルをダウンロードする](https://github.com/Azure/Communication/tree/master/samples/Group%20Chat%20Hero%20Sample/Web/Chat)
 
 詳細については、次の記事を参照してください。
 
@@ -115,7 +113,7 @@ Communication Services サブスクリプションをクリーンアップして
 
 ## <a name="additional-reading"></a>その他の情報
 
-- [Azure Communication のプレビュー](https://github.com/Azure/communication-preview) - チャット Web SDK の詳細
+- [Azure Communication GitHub](https://github.com/Azure/communication) - 他の例や情報は公式 GitHub ページで見つかります
 - [Redux](https://redux.js.org/) - クライアント側の状態管理
 - [FluentUI](https://developer.microsoft.com/fluentui#/) - Microsoft が提供する UI ライブラリ
 - [React](https://reactjs.org/) - ユーザー インターフェイスを構築するためのライブラリ

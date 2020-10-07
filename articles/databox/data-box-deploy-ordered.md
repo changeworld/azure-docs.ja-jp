@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: alkohli
-ms.openlocfilehash: c2d971c2c9375f58fd5f41a46716fac4bff29f88
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 3181b88b0cf49516eb5230585460d0cc91bb4042
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604310"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575301"
 ---
 # <a name="tutorial-order-azure-data-box"></a>チュートリアル:Azure Data Box を注文する
 
@@ -215,11 +215,11 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
 1. Microsoft Azure 資格情報を使用して、次の URL にサインインします。[https://portal.azure.com](https://portal.azure.com)
 2. **[+ リソースの作成]** を選択し、*Azure Data Box* を検索します。 **[Azure Data Box]** を選択します。
 
-   ![Azure Data Box を選択する](media/data-box-deploy-ordered/select-data-box-import-02.png)
+   ![[新規] セクションのスクリーンショット。検索フィールドに [Azure Data Box] と入っています。](media/data-box-deploy-ordered/select-data-box-import-02.png)
 
 3. **［作成］** を選択します
 
-   ![Azure Data Box を選択する](media/data-box-deploy-ordered/select-data-box-import-03.png)
+   ![[Azure Data Box] のスクリーンショット。[作成] オプションが呼び出されています。](media/data-box-deploy-ordered/select-data-box-import-03.png)
 
 4. ご利用のリージョンで Data Box サービスが利用可能かどうかを確認します。 次の情報を入力または選択し、 **[適用]** を選択します。
 
@@ -235,7 +235,7 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
 
 5. **[Data Box]** を選択します。 1 つの注文での使用可能な最大容量は 80 TB です。 データ サイズがこれより大きい場合は、複数の注文を作成できます。
 
-    ![Data Box オプション 1 を選択する](media/data-box-deploy-ordered/select-data-box-import-05.png)
+    ![さまざまなデータ サイズのスクリーンショット。Data Box Disk 40 テラバイト、Data Box 100 テラバイト、Data Box Heavy、1000 テラバイト、自己所有ディスクの発送 1 テラバイトから選択できます。](media/data-box-deploy-ordered/select-data-box-import-05.png)
 
 6. **[注文]** で、 **[基本]** タブに移動します。次の情報を入力または選択し、 **[次へ: データの格納先 >]** を選択します。
 
@@ -245,7 +245,7 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
     |Resource group    | 前に選択したリソース グループ。 |
     |Import order name (インポート注文名) | 注文を追跡するためのフレンドリ名を指定します。 <br> 名前の長さは 3 ～ 24 文字で、文字、数字、ハイフンを使うことができます。 <br> 名前の最初と最後は、文字か数字とする必要があります。    |
 
-    ![Data Box オプション 1 を選択する](media/data-box-deploy-ordered/select-data-box-import-06.png)
+    ![[注文] ウィザードのスクリーンショット。ウィザードの [基本] 手順が表示されています。正しい情報が入力されています。](media/data-box-deploy-ordered/select-data-box-import-06.png)
 
     既定では、デバイスのロック解除パスワードは、Microsoft マネージド キーを使用して暗号化されます。 注文が完了したら、カスタマー マネージド キーを追加できます。 カスタマー マネージド キーを使用すると、独自の Azure Key Vault キーを使用して、デバイスのロック解除パスワードを保護できます。 詳細については、「[Azure Key Vault のカスタマー マネージド キーを Azure Data Box に使用する](data-box-customer-managed-encryption-key-portal.md)」を参照してください。
 
@@ -265,7 +265,7 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
     |---------|---------|
     |リソース グループ     | オンプレミスの VHD からマネージド ディスクを作成する場合は、新しい リソース グループを作成します。 既存のリソース グループを使用できるのは、Data Box サービスでマネージド ディスクの Data Box 注文を作成するときに、そのリソース グループがすでに作成されていた場合に限られます。 <br> 複数のリソース グループを指定するときは、各リソース グループをセミコロンで区切ります。 サポートされるリソース グループは、最大 10 個です。|
 
-    ![マネージド ディスクの Data Box 注文](media/data-box-deploy-ordered/select-data-box-import-07b.png)
+    ![[注文] ウィザードのスクリーンショット。ウィザードの [データの格納先] 手順が表示されています。正しい情報が入力されています。](media/data-box-deploy-ordered/select-data-box-import-07b.png)
 
     マネージド ディスクに指定されたストレージ アカウントは、ステージング ストレージ アカウントとして使用されます。 VHD は、Data Box サービスにより、ページ BLOB としてステージング ストレージ アカウントにアップロードされた後、マネージド ディスクに変換され、リソース グループに移動されます。 詳細については、「[Azure へのデータのアップロードを確認する](data-box-deploy-picked-up.md#verify-data-upload-to-azure)」を参照してください。
    > [!NOTE]
@@ -286,11 +286,11 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
 
 8. **[連絡先の詳細]** で、 **[+ 配送先住所の追加]** を選択します。
 
-    ![マネージド ディスクの Data Box 注文](media/data-box-deploy-ordered/select-data-box-import-08a.png)
+    ![[注文] ウィザードのスクリーンショット。ウィザードの [連絡先の詳細] 手順が表示されています。[配送先住所の追加] オプションが強調表示されています。](media/data-box-deploy-ordered/select-data-box-import-08a.png)
 
 9. **[配送先住所]** に、お客様の氏名、会社の名前と郵送先住所、および有効な電話番号を入力します。 **[住所の確認]** を選択します。 配送先住所でサービスが利用可能かどうかが確認されます。 指定した配送先住所でサービスを利用できる場合は、その旨が通知されます。
 
-   ![マネージド ディスクの Data Box 注文](media/data-box-deploy-ordered/select-data-box-import-10.png)
+   ![[配送先住所の追加] ダイアログ ボックスのスクリーンショット。[出荷方法] オプションと [配送先住所の追加] オプションが強調表示されています。](media/data-box-deploy-ordered/select-data-box-import-10.png)
 
    [自己管理の出荷] を選択した場合、注文が正常に処理されると電子メール通知が届きます。 自己管理の出荷の詳細については、[自己管理の出荷の使用](data-box-portal-customer-managed-shipping.md)に関するページをご覧ください。
 
@@ -300,13 +300,13 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
 
     グループの管理者が辞めた場合も引き続き通知を受け取ることができるように、グループ メールを使用することをお勧めします。
 
-    ![マネージド ディスクの Data Box 注文](media/data-box-deploy-ordered/select-data-box-import-08c.png)
+    ![[注文] ウィザードの [連絡先の詳細] 手順の [電子メール] セクションのスクリーンショット。[電子メール] テキスト ボックスと [次へ: 確認と注文] オプションが選択されています。](media/data-box-deploy-ordered/select-data-box-import-08c.png)
 
 12. **[確認と注文]** で、注文、連絡先、通知、プライバシー条項に関する情報を確認します。 プライバシー条項への同意に対応するボックスをオンにします。
 
 13. **[注文]** を選択します。 注文が作成されるまで数分かかります。
 
-    ![マネージド ディスクの Data Box 注文](media/data-box-deploy-ordered/select-data-box-import-11.png)
+    ![[注文] ウィザードのスクリーンショット。[確認と注文] 手順が表示されています。[注文] オプションが強調表示されています。](media/data-box-deploy-ordered/select-data-box-import-11.png)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

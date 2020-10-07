@@ -8,12 +8,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 9353750fdbbb52aff60fc41b7fd028ec4c5f0ec8
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 846153dd482130bbb3b35c38a3dbb791e0d0d32e
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90992302"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448269"
 ---
 # <a name="manage-a-managed-hsm-using-the-azure-cli"></a>Azure CLI を使用してマネージド HSM を管理する
 
@@ -53,7 +53,7 @@ CLI を使用したログイン オプションの詳細については、「[Az
 
 ### <a name="create-an-rsa-key"></a>RSA キーを作成する
 
-次の例は、**wrapKey、unwrapKey** 操作 (--ops) にのみ使用される 3,070 ビット **RSA** キーを作成する方法を示しています。 
+次の例は、**wrapKey、unwrapKey** 操作 (--ops) にのみ使用される 3072 ビット **RSA** キーを作成する方法を示しています。 
 
 
 ```azurecli-interactive
@@ -82,7 +82,7 @@ az keyvault key create --id https://ContosoMHSM.managedhsm.azure.net/keys/myec25
 
 ### <a name="create-a-256-bit-symmetric-key"></a>256 ビット対称キーを作成する
 
-次の例は、**encrypt と decrypt** 操作 (--ops) にのみ使用される 3,070 ビット**対称**キーを作成する方法を示しています。
+次の例は、**encrypt と decrypt** 操作 (--ops) にのみ使用される 256 ビット**対称**キーを作成する方法を示しています。
 
 ```azurecli-interactive
 az keyvault key create --hsm-name ContosoMHSM --name myaeskey --ops encrypt decrypt  --tags --kty oct-HSM --size 256

@@ -1,5 +1,6 @@
 ---
 title: Microsoft ID プラットフォームの概要 - Azure
+titleSuffix: Microsoft identity platform
 description: Microsoft ID プラットフォームのコンポーネントの概要と、それらを使用してアプリケーションに ID およびアクセス管理 (IAM) のサポートを組み込む方法について説明します。
 services: active-directory
 author: rwike77
@@ -12,14 +13,14 @@ ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: identityplatformtop40
-ms.openlocfilehash: e34eeeca3b17087fb5bd43ae353e43b5ab355831
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 831af87159b909ca744839d2997aa2b70cbc72e3
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119557"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91627127"
 ---
-# <a name="microsoft-identity-platform-overview"></a>Microsoft ID プラットフォームの概要
+# <a name="what-is-the-microsoft-identity-platform"></a>Microsoft ID プラットフォームとは
 
 Microsoft ID プラットフォームにより、開発者は、ユーザーや顧客が各自の Microsoft ID やソーシャル アカウントを使用してサインインできるアプリケーションを構築できます。また、独自の API または Microsoft Graph などの Microsoft API への承認されたアクセスを提供できます。
 

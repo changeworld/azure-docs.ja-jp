@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: da17cd1ea6dac52797162e3ac2d733ad1fd50ea1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ec034ac3cf6f4cbec2d373d9dade45a00f70ddbe
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90988183"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566690"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos Emulator - リリース ノートとダウンロード情報
 
@@ -31,7 +31,7 @@ ms.locfileid: "90988183"
 このリリースでは、次の 2 つの新しい Cosmos Emulator スタートアップ オプションが追加されています。 
 
 * "/EnablePreview" - エミュレーターのプレビュー機能を有効にします。 プレビュー機能はまだ開発中であり、CI とサンプル記述を通じてアクセスできます。
-* "/EnableAadAuthentication" - エミュレーターが、Azure Cosmos マスター キーの代わりに、カスタムの Azure Active Directory トークンを受け入れることができるようにします。 この機能は、まだ開発中です。特定のロールの割り当てとその他のアクセス許可に関連する設定は、現在、サポートされていません。
+* "/EnableAadAuthentication" - エミュレーターが、Azure Cosmos 主キーの代わりに、カスタムの Azure Active Directory トークンを受け入れることができるようにします。 この機能は、まだ開発中です。特定のロールの割り当てとその他のアクセス許可に関連する設定は、現在、サポートされていません。
 
 ### <a name="2112-07-july-2020"></a>2.11.2 (2020 年 7 月 07 日)
 

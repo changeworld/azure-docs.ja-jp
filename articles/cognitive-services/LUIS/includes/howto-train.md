@@ -9,10 +9,10 @@ ms.date: 02/14/2020
 ms.subservice: language-understanding
 ms.topic: include
 ms.openlocfilehash: 17cf32fe50d9b607e0ec8388bf1c70821f2e28aa
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91534589"
 ---
 1. LUIS Web サイトの右上にある **[Train]\(トレーニング\)** ボタンを選択します。

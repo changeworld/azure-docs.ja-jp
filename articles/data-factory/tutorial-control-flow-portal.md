@@ -1,6 +1,6 @@
 ---
 title: Azure portal を使用してパイプラインのアクティビティを分岐または連結する
-description: アクティビティの分岐と連鎖によって Azure Data Factory 内のデータのフローを制御する方法を説明します。
+description: Azure portal を使用して Azure Data Factory パイプラインのデータの流れを制御する方法について説明します。
 services: data-factory
 author: djpmsft
 ms.author: daperlov
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: c046d2e437004146b5ee4c53dd98942ca1781ad4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b1b766e3cb337151c5ca9b35e2040a2a47124151
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983728"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568547"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>Azure portal を使用して Azure Data Factory パイプラインのアクティビティを分岐または連結する
 
@@ -184,7 +184,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
    ![コピー アクティビティのドラッグ アンド ドロップ](./media/tutorial-control-flow-portal/drag-drop-copy-activity.png)
 5. 下部にある **[コピー]** アクティビティの**プロパティ** ウィンドウで、 **[ソース]** タブに切り替えて **[+ 新規]** をクリックします。 この手順でコピー アクティビティのソース データセットを作成します。
 
-   ![ソース データセット](./media/tutorial-control-flow-portal/new-source-dataset-button.png)
+   ![コピー アクティビティのソース データセットを作成する方法を示すスクリーンショット。](./media/tutorial-control-flow-portal/new-source-dataset-button.png)
 6. **[新しいデータセット]** ウィンドウで **[Azure BLOB ストレージ]** を選択し、 **[完了]** をクリックします。
 
    ![[Azure Blob Storage] の選択](./media/tutorial-control-flow-portal/select-azure-blob-storage.png)
@@ -273,7 +273,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
         ![2 番目の Web アクティビティの設定](./media/tutorial-control-flow-portal/web-activity2-settings.png)         
 22. パイプライン デザイナーの **[コピー]** アクティビティを選択して **+->** ボタンをクリックし、 **[エラー]** を選択します。  
 
-    ![2 番目の Web アクティビティの設定](./media/tutorial-control-flow-portal/select-copy-failure-link.png)
+    ![パイプライン デザイナーの [コピー] アクティビティで [エラー] を選択する方法を示すスクリーンショット。](./media/tutorial-control-flow-portal/select-copy-failure-link.png)
 23. コピー アクティビティの横にある**赤い**ボタンを 2 番目の Web アクティビティ **SendFailureEmailActivity** にドラッグします。 パイプラインが次の図のように表示されるよう、アクティビティを移動できます。
 
     ![すべてのアクティビティが含まれた完全なパイプライン](./media/tutorial-control-flow-portal/full-pipeline.png)
@@ -304,7 +304,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
     ![成功したパイプラインの実行](./media/tutorial-control-flow-portal/monitor-success-pipeline-run.png)
 2. このパイプラインの実行に関連付けられている**アクティビティの実行を表示**するには、 **[アクション]** 列にある最初のリンクをクリックします。 上部の **[パイプライン]** をクリックすると、前のビューに戻ることができます。 **[最新の情報に更新]** ボタンを使用して、一覧を更新します。
 
-    ![アクティビティの実行](./media/tutorial-control-flow-portal/activity-runs-success.png)
+    ![アクティビティ実行の一覧を表示する方法を示すスクリーンショット。](./media/tutorial-control-flow-portal/activity-runs-success.png)
 
 ## <a name="trigger-a-pipeline-run-that-fails"></a>失敗するパイプラインの実行をトリガーする
 1. 左側で **[編集]** タブに切り替えます。
