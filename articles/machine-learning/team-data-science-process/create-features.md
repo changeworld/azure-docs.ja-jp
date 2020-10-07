@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: c31cf0e5c655f53e8838c92f5463d3a85c2f6f65
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 5e84a3930d350ec45cef7119342e3e4d2d5daaee
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836823"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250659"
 ---
 # <a name="feature-engineering-in-data-science"></a>データ サイエンスにおける特徴エンジニアリング
 
-この記事では、特徴エンジニアリングと、機械学習のデータ強化におけるその役割について説明します。 [Azure Machine Learning Studio (classic)](../studio/what-is-ml-studio.md) の実験から引用された、わかりやす例から学びます。 
+この記事では、特徴エンジニアリングと、機械学習のデータ強化におけるその役割について説明します。 [Azure Machine Learning Studio (classic)](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) の実験から引用された、わかりやす例から学びます。 
 
 * **特徴エンジニアリング**:生データから新しい特徴を作成して、学習アルゴリズムの予測能力を向上させるプロセス。 エンジニアリングされた特徴は、元の特徴セットでは簡単にはわからない追加情報を取得する必要があります。
 * **特徴選択**: トレーニング問題の次元を削減するために、特徴の主要なサブセットを選択するプロセス。

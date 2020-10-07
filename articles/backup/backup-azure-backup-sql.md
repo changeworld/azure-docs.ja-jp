@@ -3,12 +3,12 @@ title: SQL Server を Azure に DPM ワークロードとしてバックアッ�
 description: Azure Backup サービスを使用した SQL Server データベースのバックアップの概要
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: e7877d9104fe1263368083eaabd99eae3bdc657b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 85cb84ac376abbf0ead13e64c4dff7c8b916aac5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017313"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254586"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>SQL Server を Azure に DPM ワークロードとしてバックアップする
 
@@ -29,10 +29,10 @@ SQL Server データベースを Azure にバックアップし、Azure から�
 
 * データベースのファイルがリモート ファイル共有にある場合、保護はエラー ID 104 で失敗します。 DPM では、リモート ファイル共有上の SQL Server データの保護はサポートされていません。
 * リモート SMB 共有に保存されているデータベースを DPM で保護することはできません。
-* [可用性グループのレプリカが読み取り専用として構成されている](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server?view=sql-server-ver15)ことを確認します。
+* [可用性グループのレプリカが読み取り専用として構成されている](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server)ことを確認します。
 * システム アカウント **NTAuthority\System** を SQL Server の Sysadmin グループに明示的に追加する必要があります。
-* 部分的な包含データベースに対して別の場所への回復を実行する場合は、ターゲット SQL インスタンスで[包含データベース](/sql/relational-databases/databases/migrate-to-a-partially-contained-database?view=sql-server-ver15#enable)機能が有効になっていることを確認する必要があります。
-* ファイル ストリーム データベースに対して別の場所への回復を実行する場合、ターゲット SQL インスタンスで[ファイル ストリーム データベース](/sql/relational-databases/blob/enable-and-configure-filestream?view=sql-server-ver15)機能が有効になっていることを確認する必要があります。
+* 部分的な包含データベースに対して別の場所への回復を実行する場合は、ターゲット SQL インスタンスで[包含データベース](/sql/relational-databases/databases/migrate-to-a-partially-contained-database#enable)機能が有効になっていることを確認する必要があります。
+* ファイル ストリーム データベースに対して別の場所への回復を実行する場合、ターゲット SQL インスタンスで[ファイル ストリーム データベース](/sql/relational-databases/blob/enable-and-configure-filestream)機能が有効になっていることを確認する必要があります。
 * SQL Server AlwaysOn の保護:
   * 保護グループの作成で照会を実行中に、DPM は可用性グループを検出します。
   * DPM はフェールオーバーを検出し、データベース保護を続行します。
@@ -50,7 +50,7 @@ SQL Server データベースを Azure にバックアップし、Azure から�
     * 選択されたノード上でバックアップに失敗した場合、バックアップ操作は失敗します。
     * 元の場所への回復はサポートされていません。
 * SQL Server 2014 以降のバックアップに関する問題:
-  * [Windows Azure Blob Storage にオンプレミスの SQL Server 用のデータベース](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-ver15)を作成するための新機能が SQL Server 2014 に追加されました。 この構成を保護するために DPM を使用することはできません。
+  * [Windows Azure Blob Storage にオンプレミスの SQL Server 用のデータベース](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure)を作成するための新機能が SQL Server 2014 に追加されました。 この構成を保護するために DPM を使用することはできません。
   * SQL AlwaysOn オプションの [セカンダリを優先] バックアップ設定には、いくつかの既知の問題があります。 DPM では、常にセカンダリからバックアップが作成されます。 セカンダリが見つからない場合、バックアップは失敗します。
 
 ## <a name="before-you-start"></a>開始する前に

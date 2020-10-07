@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: Zhchia
-ms.openlocfilehash: ad6b24c4bbfc2e117c010b99247cb8eb9925ff3e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3f835c021e20edba21583e71c6c1a480eca7fd89
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543824"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255842"
 ---
 # <a name="tutorial-configure-oracle-fusion-erp-for-automatic-user-provisioning"></a>チュートリアル:Oracle Fusion ERP を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -108,11 +108,11 @@ Azure AD を使用した自動ユーザー プロビジョニング用に Oracle
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://ejlv.fa.em2.oraclecloud.com/hcmRestApi/scim/`」と入力します。 前の手順で取得した管理者ユーザー名とパスワードを **[管理者ユーザー名]** フィールドと **[パスワード]** フィールドに入力します。 Azure AD と Oracle Fusion ERP 間の **[テスト接続]** をクリックします。 
 

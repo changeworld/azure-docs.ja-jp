@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/16/2019
 ms.author: erhopf
 ms.openlocfilehash: 85e72f4f93267611902c40ae5547b6732beec261
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "70392943"
 ---
 > [!NOTE]

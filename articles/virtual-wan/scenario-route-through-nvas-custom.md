@@ -6,15 +6,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f233aedf8b51967264994f5a4081f8f4cd99df01
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e1cf9faeab60264d491539256828151e496ade8f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400009"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267501"
 ---
 # <a name="scenario-route-traffic-through-nvas---custom-preview"></a>シナリオ:NVA 経由でトラフィックをルーティングする - カスタム (プレビュー)
 
@@ -129,7 +129,7 @@ NVA 経由のルーティングを設定するには、次のような手順を�
 
 **図 2**
 
-:::image type="content" source="./media/routing-scenarios/nva-custom/figure-2.png" alt-text="図 2" lightbox="./media/routing-scenarios/nva-custom/figure-2.png":::
+:::image type="content" source="./media/routing-scenarios/nva-custom/figure-2.png" alt-text="図 1" lightbox="./media/routing-scenarios/nva-custom/figure-2.png":::
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,59 +3,18 @@ title: Azure VM での SQL Server の論理的な削除、および Azure VM ワ
 description: Azure VM での SQL Server の論理的な削除、および Azure VM ワークロードでの SAP HANA の論理的な削除について説明します。これにより、バックアップのセキュリティが強化されます。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 26525ec758b3a27d6e0e1b9754b11041bd1fa0d2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2a442997d426ff0bf4c74b0b45f7657cc0593b82
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022294"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254297"
 ---
 # <a name="soft-delete-for-sql-server-in-azure-vm-and-sap-hana-in-azure-vm-workloads"></a>Azure VM での SQL Server の論理的な削除、および Azure VM ワークロードの SAP HANA の論理的な削除
 
 Azure Backup では、Azure VM での SQL Server と、Azure VM ワークロードでの SAP HANA で論理的な削除がサポートされるようになりました。 これは、既にサポートされている [Azure 仮想マシンの論理的な削除のシナリオ](soft-delete-virtual-machines.md)に加えてサポートされます。
 
 [論理的な削除](backup-azure-security-feature-cloud.md)は、削除後もバックアップ データを保護するのに役立つセキュリティ機能です。 論理的な削除では、悪意のあるアクターによってデータベースのバックアップが削除 (またはバックアップ データが誤って削除) された場合でも、バックアップ データは追加で 14 日間保持されます。 これにより、データを失うことなくバックアップ項目を回復できます。 バックアップ データが "論理的な削除" 状態にあるこの追加の 14 日間の保持期間中は、お客様にコストは発生しません。
-
->[!NOTE]
->サブスクリプションに対してプレビューを有効にすると、同じコンテナー内の仮想マシンに対して有効にしたまま、SQL Server または SAP HANA DB に対してのみ論理的な削除を無効にすることはできません。 詳細に制御するには、個別のコンテナーを作成します。
-
-## <a name="steps-to-enroll-in-preview"></a>プレビューに登録する手順
-
-1. Azure アカウントにサインインします。
-
-   ```powershell
-   Login-AzureRmAccount
-   ```
-
-2. プレビューに登録するサブスクリプションを選択します。
-
-   ```powershell
-   Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
-   ```
-
-3. このサブスクリプションをプレビュー プログラムに登録します。
-
-   ```powershell
-   Register-AzureRMProviderFeature -FeatureName WorkloadBackupSoftDelete -ProviderNamespace Microsoft.RecoveryServices
-   ```
-
-4. サブスクリプションがプレビューに登録されるまで 30 分待ちます。
-
-5. 状態を確認するには、次のコマンドレットを実行します
-
-   ```powershell
-   Get-AzureRmProviderFeature -FeatureName WorkloadBackupSoftDelete -ProviderNamespace Microsoft.RecoveryServices
-   ```
-
-6. サブスクリプションが登録済みと表示されたら、次のコマンドを実行します。
-
-   ```powershell
-   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
-   ```
-
->[!NOTE]
->論理的な削除が有効になっているサブスクリプションで新しいコンテナーが作成されるたびに、次のコマンドを再実行して、新しく作成したコンテナーに対して機能を有効にする必要があります。<BR>
-> `Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices`
 
 ## <a name="soft-delete-for-sql-server-in-azure-vm-using-azure-portal"></a>Azure portal を使用した Azure VM 内の SQL Server の論理的な削除
 

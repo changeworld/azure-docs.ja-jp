@@ -9,10 +9,10 @@ ms.date: 03/06/2020
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: db6f5927e1cbdb3527014ccbb277c7ec20b02600
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84231554"
 ---
 1. **ソリューション エクスプローラー**で、プロジェクトを右クリックし、 **[発行]** を選択します。
@@ -51,6 +51,6 @@ ms.locfileid: "84231554"
     
 1.  [発行] タブで、 **[Cloud Explorer で管理する]** を選択します。 これにより、Cloud Explorer で新しい関数アプリ Azure リソースが開かれます。 
     
-    :::image type="content" source="media/functions-vstools-publish/functions-visual-studio-publish-complete.png" alt-text="発行成功のメッセージ":::
+    :::image type="content" source="media/functions-vstools-publish/functions-visual-studio-publish-complete.png" alt-text="発行プロファイルを作成する":::
     
     Cloud Explorer を使用すると、Visual Studio でサイトのコンテンツを表示し、関数アプリを開始および停止し、Azure の関数アプリ リソースを直接および Azure portal で参照できます。 

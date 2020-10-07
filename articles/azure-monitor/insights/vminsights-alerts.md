@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/23/2020
-ms.openlocfilehash: 987537d8497b3d8f2728941334d8328320ec6997
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be469ab3b05c54ebc5afa6bd6d129efd8d4ba692
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289396"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254807"
 ---
 # <a name="how-to-create-alerts-from-azure-monitor-for-vms"></a>Azure Monitor for VMs からのアラートを作成する方法
 [Azure Monitor のアラート](../platform/alerts-overview.md)では、監視データの興味深いデータやパターンを事前に通知します。 Azure Monitor for VMs には事前に構成されたアラート ルールは含まれませんが、収集されるデータに基づいて独自のものを作成することができます。 この記事では、サンプル クエリのセットを含む、アラート ルールの作成に関するガイダンスを提供します。
@@ -22,8 +22,8 @@ Azure Monitor には、アラートの作成に使用されるデータに基づ
 
 Azure Monitor には、次の 2 種類のログ アラートがあります。
 
-- [結果の数アラート](../platform/alerts-unified-log.md#number-of-results-alert-rules)。少なくとも指定された数のレコードがクエリから返された場合に、単一のアラートが作成されます。 これらは、[Log Analytics エージェント](../platform/log-analytics-agent.md)によって収集される Windows および Syslog イベントなどの数値以外のデータの場合、あるいは複数のコンピューター間のパフォーマンスの傾向を分析する場合に適しています。
-- [メトリック測定アラート](../platform/alerts-unified-log.md#metric-measurement-alert-rules)。値がアラート ルールで定義されているしきい値を超える、クエリ内のレコードごとに個別のアラートが作成されます。 これらのアラート ルールは、Azure Monitor for VMs によって収集されるパフォーマンス データに適しています。これは、コンピューターごとに個別のアラートを作成できるためです。
+- [結果の数アラート](../platform/alerts-unified-log.md#count-of-the-results-table-rows)。少なくとも指定された数のレコードがクエリから返された場合に、単一のアラートが作成されます。 これらは、[Log Analytics エージェント](../platform/log-analytics-agent.md)によって収集される Windows および Syslog イベントなどの数値以外のデータの場合、あるいは複数のコンピューター間のパフォーマンスの傾向を分析する場合に適しています。
+- [メトリック測定アラート](../platform/alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value)。値がアラート ルールで定義されているしきい値を超える、クエリ内のレコードごとに個別のアラートが作成されます。 これらのアラート ルールは、Azure Monitor for VMs によって収集されるパフォーマンス データに適しています。これは、コンピューターごとに個別のアラートを作成できるためです。
 
 
 ## <a name="alert-rule-walkthrough"></a>アラート ルールのチュートリアル

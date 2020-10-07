@@ -12,13 +12,13 @@ ms.custom:
 - mvc
 - amqp
 - mqtt
-- devx-track-javascript
-ms.openlocfilehash: b424ea01d8283963c49d899a97120c9132d862f8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+- devx-track-js
+ms.openlocfilehash: 101bd9ce351ea830688fc18affdf21ce527ba43a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422540"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261432"
 ---
 # <a name="create-an-advanced-device-model"></a>高度なデバイス モデルを作成する
 

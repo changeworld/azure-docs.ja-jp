@@ -4,12 +4,12 @@ description: この記事では、Microsoft Azure Backup Server (MABS) v3 の既
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: 884e850255856b39ccbe52544a47a7453e975960
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 87bc415c125a387d98ac88255d77fb1867564acf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017942"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254263"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Microsoft Azure Backup Server のリリース ノート
 
@@ -60,7 +60,7 @@ ms.locfileid: "89017942"
 4. SQL Server Management Studio (SSMS) を[インストール](/sql/ssms/download-sql-server-management-studio-ssms)。
 5. [SQL 2017 を使用した SSRS 構成](./backup-azure-microsoft-azure-backup.md#upgrade-mabs)に記載されているパラメーターを使用してレポートを構成します。
 6. MABS V3を [インストール](backup-azure-microsoft-azure-backup.md)。
-7. [ここ](/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019#using-dpmsync)に記されている通り、SSMS と実行 DPM 同期ツールを使用して SQL を[復元](/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms)します。
+7. [ここ](/system-center/dpm/back-up-the-dpm-server#using-dpmsync)に記されている通り、SSMS と実行 DPM 同期ツールを使用して SQL を[復元](/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms)します。
 8. 次のコマンドを使用して dbo.tbl_DLS_GlobalSetting テーブルの 'DataBaseVersion' プロパティを更新します：
 
     ```sql

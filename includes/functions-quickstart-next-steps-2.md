@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 01/23/2019
 ms.author: glenga
 ms.openlocfilehash: a02eadcacddc91ae9d17c50efd5e573718c41a21
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "67181847"
 ---
 * [Azure Functions でのトリガーとバインドの概念](../articles/azure-functions/functions-triggers-bindings.md)  

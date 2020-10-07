@@ -7,13 +7,13 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: e9496dc70d847d0e9e830a216e8f435b1c48d878
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: devx-track-js
+ms.openlocfilehash: a24d1716448363a199151a50a260bbdbd1e8e634
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900969"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249486"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics と Azure Machine Learning の統合 (プレビュー)
 
@@ -51,13 +51,13 @@ Azure portal または Visual Studio Code から直接、Azure Machine Learning 
 
    :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function.png" alt-text="VS Code で UDF を追加する":::
 
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function-2.png" alt-text="VS Code で Azure Machine Learning UDF を追加する":::
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function-2.png" alt-text="VS Code で UDF を追加する":::
 
 2. 関数名を入力し、CodeLens の **[Select from your subscriptions]\(サブスクリプションから選択する\)** を使用して、構成ファイルの設定を指定します。
 
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-function-name.png" alt-text="VS Code で Azure Machine Learning UDF を選択する":::
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-function-name.png" alt-text="VS Code で UDF を追加する":::
 
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-configure-settings.png" alt-text="VS Code で Azure Machine Learning UDF を構成する":::
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-configure-settings.png" alt-text="VS Code で UDF を追加する":::
 
 次の表は、Stream Analytics の Azure Machine Learning Service 関数の各プロパティの説明です。
 
@@ -137,7 +137,7 @@ FROM input
 
 SELECT udf.score(Dataframe)
 INTO output
-FROM input
+FROM Dataframe
 ```
 
 次の JSON は、前のクエリからの要求の例です。

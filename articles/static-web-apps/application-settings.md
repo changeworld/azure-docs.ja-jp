@@ -7,13 +7,13 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 33a40e7a0e7e3be4433b3cbd4ba7a8e09a84e689
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: c89ccee430d374d9aee58326627ff800f737324b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428065"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250030"
 ---
 # <a name="configure-application-settings-for-azure-static-web-apps-preview"></a>Azure Static Web Apps (プレビュー) のアプリケーション設定を構成する
 
@@ -144,7 +144,7 @@ Azure CLI コマンドには、アップロードを実行するために、ア�
 2. リソース グループ名
 3. サブスクリプション ID
 
-:::image type="content" source="media/application-settings/overview.png" alt-text="Azure Static Web Apps の概要":::
+:::image type="content" source="media/application-settings/overview.png" alt-text="Azure Static Web Apps の構成ビュー":::
 
 4. ターミナルまたはコマンド ラインから、次のコマンドを実行します。 `<YOUR_STATIC_SITE_NAME>`、`<YOUR_RESOURCE_GROUP_NAME>`、および `<YOUR_SUBSCRIPTION_ID>` のプレースホルダーは、必ず _[Overview]\(概要\)_ ウィンドウの値に置き換えてください。
 

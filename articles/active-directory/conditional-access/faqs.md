@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: ed6beec63114f1f157bb24354d77e50ecdaa8255
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 9694dd06b67219e0f02c3fe1c7c53d1fc103a0c2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601639"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258627"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory の条件付きアクセスに関する FAQ
 
@@ -31,11 +31,11 @@ ms.locfileid: "90601639"
 
 ## <a name="does-a-sharepoint-online-policy-also-apply-to-onedrive-for-business"></a>SharePoint Online ポリシーは、OneDrive for Business にも適用されますか?
 
-はい。 SharePoint Online ポリシーは OneDrive for Business にも適用されます。 詳細については、[条件付きアクセスのサービス依存関係](service-dependencies.md)に関する記事をご覧ください。また、代わりに [Office 365 アプリ](concept-conditional-access-cloud-apps.md#office-365-preview)をポリシーの対象にすることを検討してください。
+はい。 SharePoint Online ポリシーは OneDrive for Business にも適用されます。 詳細については、[条件付きアクセスのサービス依存関係](service-dependencies.md)に関する記事をご覧ください。また、代わりに [Office 365 アプリ](concept-conditional-access-cloud-apps.md#office-365)をポリシーの対象にすることを検討してください。
 
 ## <a name="why-cant-i-set-a-policy-directly-on-client-apps-like-word-or-outlook"></a>Word や Outlook などのクライアント アプリに直接ポリシーを設定できないのはなぜですか?
 
-条件付きアクセス ポリシーでは、サービスにアクセスするための要件を設定します。 このポリシーは、そのサービスに対する認証が行われる際に適用されます。 ポリシーは、クライアント アプリケーションでは直接には設定されません。 代わりに、クライアントがサービスを呼び出す際に適用されます。 たとえば、SharePoint で設定したポリシーは SharePoint を呼び出すクライアントに適用されます。 Exchange で設定したポリシーは Outlook に適用されます。 詳細については、[条件付きアクセスのサービス依存関係](service-dependencies.md)に関する記事をご覧ください。また、代わりに [Office 365 アプリ](concept-conditional-access-cloud-apps.md#office-365-preview)をポリシーの対象にすることを検討してください。
+条件付きアクセス ポリシーでは、サービスにアクセスするための要件を設定します。 このポリシーは、そのサービスに対する認証が行われる際に適用されます。 ポリシーは、クライアント アプリケーションでは直接には設定されません。 代わりに、クライアントがサービスを呼び出す際に適用されます。 たとえば、SharePoint で設定したポリシーは SharePoint を呼び出すクライアントに適用されます。 Exchange で設定したポリシーは Outlook に適用されます。 詳細については、[条件付きアクセスのサービス依存関係](service-dependencies.md)に関する記事をご覧ください。また、代わりに [Office 365 アプリ](concept-conditional-access-cloud-apps.md#office-365)をポリシーの対象にすることを検討してください。
 
 ## <a name="does-a-conditional-access-policy-apply-to-service-accounts"></a>条件付きアクセス ポリシーはサービス アカウントに適用されますか?
 
@@ -53,7 +53,7 @@ Microsoft Teams はまた、条件付きアクセス ポリシーでクラウド
 
 Windows 版および Mac 版の Microsoft Teams デスクトップ クライアントでは、先進認証がサポートされています。 先進認証では、Azure Active Directory Authentication Library (ADAL) に基づいて、プラットフォームでの Microsoft Office クライアント アプリケーションへのサインインが行われます。
 
-詳細については、[条件付きアクセスのサービス依存関係](service-dependencies.md)に関する記事をご覧ください。また、代わりに [Office 365 アプリ](concept-conditional-access-cloud-apps.md#office-365-preview)をポリシーの対象にすることを検討してください。
+詳細については、[条件付きアクセスのサービス依存関係](service-dependencies.md)に関する記事をご覧ください。また、代わりに [Office 365 アプリ](concept-conditional-access-cloud-apps.md#office-365)をポリシーの対象にすることを検討してください。
 
 ## <a name="why-are-some-tabs-not-working-in-microsoft-teams-after-enabling-conditional-access-policies"></a>条件付きアクセス ポリシーを有効にした後、Microsoft Teams で一部のタブが機能しないのはなぜですか?
 

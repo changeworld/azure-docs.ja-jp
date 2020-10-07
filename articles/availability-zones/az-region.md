@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/18/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: d7a158d91295aedc14f1f913ae152c496066fab5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b2143e4a9e4c24291ca2840f51e1b63c12017b04
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891684"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264239"
 ---
 # <a name="regions-that-support-availability-zones-in-azure"></a>Azure での Availability Zones をサポートしているリージョン
 
@@ -44,7 +44,7 @@ Availability Zones は高可用性を備えたサービスで、アプリケー�
 | Azure Firewall                     | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **データベース** |  |  |  |  |
 | Azure Data Explorer                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| SQL Database                       | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:(プレビュー) | :heavy_check_mark: |
+| SQL Database                       | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Cache for Redis              | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Cosmos DB                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Analytics** |  |  |  |  |
@@ -77,7 +77,7 @@ Availability Zones は高可用性を備えたサービスで、アプリケー�
 | Azure Firewall                     | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **データベース** |  |  |  |  |
 | Azure Data Explorer                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| SQL Database                       | :heavy_check_mark: | :heavy_check_mark:(プレビュー) | :heavy_check_mark: | :heavy_check_mark: |
+| SQL Database                       | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Cache for Redis              | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Cosmos DB                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Analytics** |  |  |  |  |

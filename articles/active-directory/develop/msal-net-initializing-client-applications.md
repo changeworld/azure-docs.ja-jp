@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/12/2019
+ms.date: 09/18/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 30f9f1998ee133c2546c9f4de7a99c51feb8740f
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 5ec419be5c7549553788d009f09fa3e0fb8655e4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166197"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258287"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>MSAL.NET を使用してクライアント アプリケーションを初期化する
 この記事では、.NET 用 Microsoft Authentication Library (MSAL.NET) を使用したパブリック クライアント アプリケーションと機密性の高いクライアント アプリケーションの初期化について説明します。  クライアント アプリケーションの種類とアプリケーションの構成オプションの詳細については、[概要](msal-client-applications.md)に関するページを参照してください。
@@ -137,7 +137,7 @@ Xamarin.iOS でパブリック クライアント アプリケーション ビ�
 ```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
-        .WithAadAuthority(AzureCloudInstance.AzurePublic, tenantId)
+        .WithAuthority(AzureCloudInstance.AzurePublic, tenantId)
         .Build();
 ```
 
@@ -146,7 +146,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
 ```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
-        .WithAadAuthority(AzureCloudInstance.AzureUsGovernment, AadAuthorityAudience.AzureAdMultipleOrgs)
+        .WithAuthority(AzureCloudInstance.AzureUsGovernment, AadAuthorityAudience.AzureAdMultipleOrgs)
         .Build();
 ```
 

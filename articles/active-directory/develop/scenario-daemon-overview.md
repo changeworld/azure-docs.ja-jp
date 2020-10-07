@@ -11,20 +11,16 @@ ms.workload: identity
 ms.date: 01/31/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: df5755c585d99333bf0c64ca08705309b4d4fc58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c01724340df7e0efffe9847b49e1fe9d444ee01
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253122"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257624"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>シナリオ:Web API を呼び出すデーモン アプリケーション
 
 Web API を呼び出すデーモン アプリをビルドするために必要なすべてのことについて学習します。
-
-## <a name="prerequisites"></a>前提条件
-
-[!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="overview"></a>概要
 
@@ -58,6 +54,10 @@ Web API を呼び出すデーモン アプリをビルドするために必要�
 - [アプリケーションの登録](./scenario-daemon-app-registration.md)時に、応答 URI は必要ありません。 Azure AD でシークレット、証明書、または署名付きアサーションを共有する必要があります。 また、アプリケーションのアクセス許可を要求し、それらのアプリのアクセス許可を使用できるように管理者の同意を与える必要があります。
 - [アプリケーションの構成](./scenario-daemon-app-configuration.md)で、アプリケーションの登録時に Azure AD と共有されるようにクライアントの資格情報を提供する必要があります。
 - クライアント資格情報フローでトークンを取得するために使用される[スコープ](scenario-daemon-acquire-token.md#scopes-to-request)は、静的スコープである必要があります。
+
+## <a name="recommended-reading"></a>推奨資料
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

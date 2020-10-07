@@ -12,22 +12,18 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4e530f76c8301dc74f73b675befa6f0710aedab7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c9ff9ae811a29685937b922f04a277e663e26f1f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026630"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257366"
 ---
 # <a name="scenario-protected-web-api"></a>シナリオ:保護された Web API
 
 このシナリオでは、Web API を公開する方法について説明します。 また、認証されたユーザーのみがアクセスできるように Web API を保護する方法についても説明します。
 
 Web API を使用するには、職場または学校アカウントの両方で認証されたユーザーを有効にするか、Microsoft の個人アカウントを有効にする必要があります。
-
-## <a name="prerequisites"></a>前提条件
-
-[!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="specifics"></a>詳細
 
@@ -39,6 +35,10 @@ Web API を使用するには、職場または学校アカウントの両方で
 - 新しい Web API アプリの登録を作成する場合は、Web API で受け入れられる[アクセス トークンのバージョン](reference-app-manifest.md#accesstokenacceptedversion-attribute)を `2` に設定します。 レガシ Web API の場合、受け入れられるトークンのバージョンを `null` にできますが、この値により、サインイン対象ユーザーは組織のみに制限されます。個人の Microsoft アカウント (MSA) はサポートされなくなります。
 - Web API のコード構成では、Web API が呼び出されたときに使用されるトークンを検証する必要があります。
 - コントローラー アクション内のコードでは、トークン内のロールまたはスコープを検証する必要があります。
+
+## <a name="recommended-reading"></a>推奨資料
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

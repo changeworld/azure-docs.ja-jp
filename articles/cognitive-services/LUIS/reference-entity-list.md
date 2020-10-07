@@ -1,14 +1,16 @@
 ---
 title: リスト エンティティ型 - LUIS
 description: リスト エンティティは、固定かつ限定された関連単語セットとそのシノニムを表します。 LUIS では、リスト エンティティの追加の値は検出されません。 現在のリストに基づいて新しい単語の候補を表示するには、[Recommend] (推奨) 機能を使用します。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
-ms.openlocfilehash: 339fb832ef4af069b6f040c5264426002189f93f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 29f0f0c3fd48920990519aecfe5ae58c32b43db9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588889"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253838"
 ---
 # <a name="list-entity"></a>リスト エンティティ
 

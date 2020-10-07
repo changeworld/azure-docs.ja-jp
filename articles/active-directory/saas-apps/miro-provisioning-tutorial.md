@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: Zhchia
-ms.openlocfilehash: 99ddbd7a197a6f9a4cb8c50b0643b159dd2d1a1e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 164b2915d3085ff765635b10e97f7552df1bf4c8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518546"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256360"
 ---
 # <a name="tutorial-configure-miro-for-automatic-user-provisioning"></a>チュートリアル:Miro を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -96,11 +96,11 @@ Azure AD での自動ユーザー プロビジョニング用に Miro を構成�
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://miro.com/api/v1/scim`」と入力します。 **[シークレット トークン]** に先ほど取得した**SCIM 認証トークン**の値を入力します。 **[テスト接続]** をクリックして、Azure AD から Miro への接続を確認します。 接続できない場合は、使用中の Miro アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 

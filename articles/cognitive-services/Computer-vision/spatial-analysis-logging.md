@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
-ms.openlocfilehash: 2d19c061ad1e5cf033d2801df64a0ae37736c418
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f85a7e2acf911772ecc6562217918352e909fcbb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983025"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254076"
 ---
 # <a name="telemetry-and-troubleshooting"></a>テレメトリとトラブルシューティング
 
@@ -229,7 +229,7 @@ IoT Edge ポータルから、デバイスを選択し、 **diagnostics** モジ
 >[!NOTE]
 > 空のペイロードで `getRTCVLogs` メソッドを呼び出すと、デバイスにデプロイされているすべてのコンテナーの一覧が返されます。 メソッド名では、大文字と小文字が区別されます。 不正なメソッド名を指定すると、501 エラーが発生します。
 
-:::image type="content" source="./media/spatial-analysis/direct-log-collection.png" alt-text=" getRTCVLogs メソッドの呼び出し":::
+:::image type="content" source="./media/spatial-analysis/direct-log-collection.png" alt-text="Azure Monitor テレメトリ レポート":::
 ![getRTCVLogs ダイレクト メソッド ページ](./media/spatial-analysis/direct-log-collection.png)
 
  
@@ -313,8 +313,7 @@ IoT Edge ポータルから、デバイスを選択し、 **diagnostics** モジ
 
 "Container is not in a valid state. Subscription validation failed with status 'Mismatch'. Api Key is not intended for the given container type." (コンテナーは有効な状態ではありません。サブスクリプションの検証は、状態 '不一致' で失敗しました。API キーは、指定されたコンテナーの種類を対象としていません。)
 
-詳細については、「[コンテナーを実行するための承認を要求する](spatial-analysis-container.md#request-approval-to-run-the-container)」を参照してください。 
-
+詳細については、「[コンテナーを実行するための承認を要求する](spatial-analysis-container.md#request-approval-to-run-the-container)」を参照してください。
 
 ## <a name="troubleshooting-the-azure-stack-edge-device"></a>Azure Stack Edge デバイスの問題解決
 

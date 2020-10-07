@@ -6,15 +6,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b8a0a8093ab5f4d6c5e528bce592d5c029de30a7
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: f725932b30fad062123d6c752f2d563b84f98b2f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400043"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267637"
 ---
 # <a name="scenario-isolating-vnets"></a>シナリオ:VNet の分離
 

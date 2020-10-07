@@ -9,10 +9,10 @@ ms.date: 05/04/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: efb32631c5ee1eedece6d2a06b94702b602ed418
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86276118"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>利用可能なリージョン

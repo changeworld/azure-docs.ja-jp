@@ -9,10 +9,10 @@ ms.date: 05/29/2018
 ms.author: daveba
 ms.custom: include file
 ms.openlocfilehash: a013c52d900f4882752d878d26c45069ba0879a4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "67181341"
 ---
 > [!IMPORTANT]
