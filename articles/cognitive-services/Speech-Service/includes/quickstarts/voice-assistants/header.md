@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 03/20/2020
 ms.author: travisw
 ms.openlocfilehash: bb88ef7f048b2454f05ef33286e59277070c3ea0
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "80241764"
 ---
 このクイックスタートでは、[Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) を使用して、既に作成および構成したボットに接続するカスタム音声アシスタント アプリケーションを作成する方法を説明します。 ボットを作成する必要がある場合は、より総合的な手順を[関連するチュートリアル](~/articles/cognitive-services/speech-service/tutorial-voice-enable-your-bot-speech-sdk.md)で参照してください。

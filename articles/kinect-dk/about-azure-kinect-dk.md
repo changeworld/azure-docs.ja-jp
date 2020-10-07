@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 06/26/2019
 keywords: Azure, Kinect, 概要, 開発キット, DK, デバイス, 深度, 体のトラッキング, 音声, Cognitive Services, SDK, SDK, ファームウェア
 ms.openlocfilehash: 6b3215ba6761521214ebffa2a100c5a1a030ab4c
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85277862"
 ---
 # <a name="about-azure-kinect-dk"></a>Azure Kinect DK について
