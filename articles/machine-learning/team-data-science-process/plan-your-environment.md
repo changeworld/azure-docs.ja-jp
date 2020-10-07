@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 29190cee748db17caee32497de5512bee736bae0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 603628e24d7ccdffeafea392ab56aa7e47781a37
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047710"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296486"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>高度な分析データ処理のためのシナリオとプランを特定する方法
 
@@ -66,7 +66,7 @@ ms.locfileid: "87047710"
 データをさまざまなストレージや処理環境に取り込んだり読み込んだりするために使用する手順とリソースについては、以下をご覧ください。
 
 * [分析用のストレージ環境にデータを読み込む](ingest-data.md)
-* [さまざまなデータ ソースから Azure Machine Learning Studio (クラシック) にトレーニング データをインポートする](../studio/import-data.md)
+* [さまざまなデータ ソースから Azure Machine Learning Studio (クラシック) にトレーニング データをインポートする](../classic/import-data.md)
 
 ### <a name="does-the-data-need-to-be-moved-on-a-regular-schedule-or-modified-during-migration"></a>データを定期的なスケジュールで移動したり移行中に変更したりする必要がありますか。
 
@@ -108,7 +108,7 @@ ms.locfileid: "87047710"
 
 たとえば Azure Machine Learning Studio (クラシック) 環境を使用します。
 
-* Azure Machine Learning Studio でサポートされているデータ形式および型の一覧については、「 [サポートされるデータ形式とデータ型](../studio/import-data.md#supported-data-formats-and-data-types) 」セクションを参照してください。
+* Azure Machine Learning Studio でサポートされているデータ形式および型の一覧については、「 [サポートされるデータ形式とデータ型](../classic/import-data.md#supported-data-formats-and-data-types) 」セクションを参照してください。
 * 分析プロセスで使用されるその他の Azure サービスの制限事項については、「 [Azure サブスクリプションとサービスの制限、クォータ、制約](../../azure-resource-manager/management/azure-subscription-service-limits.md)」を参照してください。
 
 ## <a name="data-quality-questions-exploration-and-pre-processing"></a>データ品質の確認事項: 探索と前処理
@@ -146,7 +146,7 @@ ms.locfileid: "87047710"
 ### <a name="what-tools-should-you-use-for-data-analysis"></a>データ分析にはどのツールを使用する必要がありますか。
 
 * [Microsoft Azure PowerShell](/powershell/azure/) - スクリプト言語で Azure リソースを管理するために使用されるスクリプト言語
-* [Azure Machine Learning Studio](../studio/what-is-ml-studio.md)
+* [Azure Machine Learning Studio](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 * [Revolution Analytics](https://www.microsoft.com/sql-server/machinelearningserver)
 * [RStudio](https://www.rstudio.com)
 * [Python Tools for Visual Studio](https://aka.ms/ptvsdocs)

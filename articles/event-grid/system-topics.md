@@ -2,13 +2,13 @@
 title: Azure Event Grid でのシステム トピック
 description: Azure Event Grid でのシステム トピックについて説明します。
 ms.topic: conceptual
-ms.date: 08/27/2020
-ms.openlocfilehash: f5ca472ab5141207222987d476284813c2aacf56
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.date: 09/24/2020
+ms.openlocfilehash: b3a6e7528da2a11c2f91007425ab8beecaf920c3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019098"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297285"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Azure Event Grid でのシステム トピック
 Event Grid でのシステム トピックは、Azure Storage や Azure Event Hubs などの Azure サービスによって発行された 1 つ以上のイベントを表します。 たとえば、システム トピックは**すべての BLOB イベント**、または**特定のストレージ アカウント**に対して発行された **BLOB 作成**および **BLOB 削除**イベントのみを表す可能性があります。 この例では、BLOB がストレージ アカウントにアップロードされると、Azure Storage サービスは Event Grid でのシステム トピックに **BLOB 作成**イベントを発行します。その後、そのイベントはそこから、イベントを受信して処理するトピックの[サブスクライバー](event-handlers.md)に転送されます。 
@@ -22,6 +22,7 @@ Event Grid でのシステム トピックは、Azure Storage や Azure Event Hu
 - [Azure App Configuration](event-schema-app-configuration.md)
 - [Azure App Service](event-schema-app-service.md)
 - [Azure Blob Storage](event-schema-blob-storage.md)
+- [Azure Communication Services](event-schema-communication-services.md) 
 - [Azure Container Registry](event-schema-container-registry.md)
 - [Azure Event Hubs](event-schema-event-hubs.md)
 - [Azure IoT Hub](event-schema-iot-hub.md)

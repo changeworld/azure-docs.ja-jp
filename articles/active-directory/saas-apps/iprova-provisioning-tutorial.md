@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: 1d0f5c974b19b83cdd2fdab832ae0cac0dab9d9a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1dd89198fd1c494ef3002fdc222683f56f2d7e3a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552866"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91304735"
 ---
 # <a name="tutorial-configure-iprova-for-automatic-user-provisioning"></a>チュートリアル:iProva を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -96,11 +96,11 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[管理者資格情報]** セクションの **[テナント URL]** フィールドと **[シークレット トークン]** フィールドに、先ほど取得した **SCIM 2.0 ベース URL と [Permanent Token]\(永続的なトークン\)** の値をそれぞれ入力します。 **[テスト接続]** をクリックして、Azure AD から iProva への接続を確保します。 接続できない場合は、使用中の iProva アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 

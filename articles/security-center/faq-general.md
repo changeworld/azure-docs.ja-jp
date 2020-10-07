@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 782884f53f0ec17c47b79cf66504d0e3ad3fc29d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5695f9fa090419d803f4f3603b45b771321e5ce9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783216"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301450"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>FAQ - Azure Security Center に関する一般的な質問
 
@@ -70,7 +70,6 @@ Azure Security Center は、Azure リソースのセキュリティの状態を�
 ここにはセキュリティ ポリシーで有効な推奨事項のみが表示されています。
 
 
-
 ## <a name="what-triggers-a-security-alert"></a>セキュリティの警告をトリガーするものは何ですか。
 Azure Security Center は、Azure のリソース、ネットワーク、パートナー ソリューション (マルウェア対策やファイアウォールなど) から、自動的にログ データを収集して分析し、結合します。 脅威が検出されると、セキュリティの警告が作成されます。 例には次の検出が含まれます。
 
@@ -78,10 +77,6 @@ Azure Security Center は、Azure のリソース、ネットワーク、パー�
 * Windows エラー報告を使用して検出された高度なマルウェア
 * 仮想マシンに対するブルート フォース攻撃
 * マルウェア対策や Web アプリケーション ファイアウォールなどのセキュリティ ソリューションの統合パートナーからのセキュリティの警告
-
-
-## <a name="why-did-secure-score-values-change"></a>セキュリティ スコア値が変わったのはなぜですか? <a name="secure-score-faq"></a>
-2019 年 2 月の時点で、Security Center では、推奨事項の重大度に合わせて一部の推奨事項のスコアを調整しました。 この調整により、全体的なセキュリティ スコア値が変わる可能性があります。  セキュリティ スコアに関する詳細については、[Azure Security Center の強化されたセキュリティ スコア](secure-score-security-controls.md)に関するページを参照してください。
 
 
 ## <a name="whats-the-difference-between-threats-detected-and-alerted-on-by-microsoft-security-response-center-versus-azure-security-center"></a>Microsoft Security Response Center と Azure Security Center によって検出され、警告される脅威の違いは何ですか。

@@ -10,21 +10,21 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9db7f2016de01edbedfa9e7d7254561fea957d2a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 33e1ebc2269ef1db6bb0646f845b09be1a01c724
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495303"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289057"
 ---
 # <a name="use-t-sql-loops-in-synapse-sql"></a>Synapse SQL で T-SQL ループを使用する
 この記事では、Synapse SQL の SQL プールによる T-SQL ループの使用、カーソルの置換、関連ソリューションの開発に関する重要なヒントを提供します。
 
 ## <a name="purpose-of-while-loops"></a>WHILE ループの目的
 
-Synapse SQL では、ステートメント ブロックを繰り返し実行するための [WHILE](https://docs.microsoft.com/sql/t-sql/language-elements/while-transact-sql?view=sql-server-ver15) ループがサポートされています。 この WHILE ループは、指定された条件が true の場合に限り、またはコードが BREAK キーワードを使用してループを終了するまで実行されます。 
+Synapse SQL では、ステートメント ブロックを繰り返し実行するための [WHILE](https://docs.microsoft.com/sql/t-sql/language-elements/while-transact-sql?view=sql-server-ver15&preserve-view=true) ループがサポートされています。 この WHILE ループは、指定された条件が true の場合に限り、またはコードが BREAK キーワードを使用してループを終了するまで実行されます。 
 
-SQL プールのループは、SQL コードで定義されているカーソルを置き換えるために便利です。 また、SQL コードで記述されているほとんどすべてのカーソルは、高速順方向、読み取り専用など豊富です。 そのため、[WHILE] ループはカーソルの置換の優れた代替手段です。
+SQL プールのループは、SQL コードで定義されているカーソルを置き換えるために便利です。 また、SQL コードで記述されているほとんどすべてのカーソルは、高速順方向、読み取り専用など豊富です。 そのため、WHILE ループはカーソルの置換の優れた代替手段です。
 
 ## <a name="replace-cursors-in-sql-pool"></a>SQL プール内のカーソルを置換する
 

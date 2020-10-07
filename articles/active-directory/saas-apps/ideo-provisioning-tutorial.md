@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/24/2019
 ms.author: Zhchia
-ms.openlocfilehash: f1b42619a80610a1732fb763dd4994241bf584fd
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 32010263829f57dc00781811eaa2535cff57b10e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547445"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91304867"
 ---
 # <a name="tutorial-configure-ideo-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に IDEO を構成する
 
@@ -84,11 +84,11 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[管理者資格情報]** セクションの **[テナント URL]** フィールドと **[シークレット トークン]** フィールドに、先ほど IDEO サポート チームから取得した **SCIM 2.0 ベース URL およびアクセス トークン**の値をそれぞれ入力します。 **[テスト接続]** をクリックして、Azure AD から IDEO への接続を確保します。 接続できない場合は、使用中の IDEO アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 

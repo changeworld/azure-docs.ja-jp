@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: d511520e274af9c6dea3f443693249ede368fd99
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dbc00d37b912ce7efb250aade0ea6790a1a227eb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893266"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296758"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>ストレージ アカウント キーの再生成
 
@@ -141,4 +141,4 @@ for name, ds in datastores.items():
 
 ## <a name="next-steps"></a>次のステップ
 
-データストアの登録について詳しくは、[`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py&preserve-view=true) クラスのリファレンスを参照してください。
+データストアの登録について詳しくは、[`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py&preserve-view=true) クラスのリファレンスを参照してください。

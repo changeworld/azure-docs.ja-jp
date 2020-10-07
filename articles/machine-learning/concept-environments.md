@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: larryfr
 author: BlackMist
 ms.date: 07/08/2020
-ms.openlocfilehash: a37a09d971ee80d05f9e028ece1adc7962c0c1a0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e1b92563acd6983b1680cacc06a8f2d0789dddf1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905709"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302504"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Azure Machine Learning 環境とは?
 
@@ -85,7 +85,7 @@ Azure Machine Learning service では、Docker イメージと Conda 環境に�
 
 別の実行に同じ環境定義を使用する場合、Azure Machine Learning service では、ワークスペースの ACR にキャッシュされているイメージが再利用されます。 
 
-キャッシュされているイメージの詳細を表示するには、[Environment.get_image_details](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#&preserve-view=trueget-image-details-workspace-) メソッドを使用します。
+キャッシュされているイメージの詳細を表示するには、[Environment.get_image_details](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-image-details-workspace-) メソッドを使用します。
 
 キャッシュされたイメージを再利用するか、新しいイメージを作成するかを決定するため、サービスでは、環境定義から[ハッシュ値](https://en.wikipedia.org/wiki/Hash_table)が計算されて、それが既存の環境のハッシュと比較されます。 ハッシュは以下のものが基になっています。
  
@@ -108,10 +108,10 @@ Azure Machine Learning service では、Docker イメージと Conda 環境に�
 パッケージを更新するには、バージョン番号を指定してイメージのリビルドを強制します (```numpy==1.18.1``` など)。 以前の動作シナリオが破壊される可能性がある、新しい依存関係 (入れ子になった依存関係など) がインストールされます。 
 
 > [!WARNING]
->  [Environment.build](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#&preserve-view=truebuild-workspace--image-build-compute-none-) メソッドでは、キャッシュされたイメージがリビルドされます。それによる副作用として、固定されていないパッケージが更新され、そのキャッシュされたイメージに対応するすべての環境定義の再現性が損なわれる可能性があります。
+>  [Environment.build](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#&preserve-view=truebuild-workspace--image-build-compute-none-) メソッドでは、キャッシュされたイメージがリビルドされます。それによる副作用として、固定されていないパッケージが更新され、そのキャッシュされたイメージに対応するすべての環境定義の再現性が損なわれる可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
 
 * Azure Machine Learning で[環境を作成および使用する](how-to-use-environments.md)方法を確認します。
-* [環境クラス](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py&preserve-view=true)については、Python SDK 参照ドキュメントを参照してください。
+* [環境クラス](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py&preserve-view=true)については、Python SDK 参照ドキュメントを参照してください。
 * [環境](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-environments)については、R SDK 参照ドキュメントを参照してください。

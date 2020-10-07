@@ -7,19 +7,19 @@ author: ramakoni1
 manager: ramakoni1
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/08/2020
 ms.author: RamaKoni
 ms.reviewer: sqlblt, daleche
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 63c4c7b596a32901d127642118d224c2b318510f
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: a57a432a5f0f8e5a6bd802ec08b18350da3a77b3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963021"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293375"
 ---
 # <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>Azure VM 上の SQL Server バージョンのインプレース変更
 
@@ -69,11 +69,11 @@ SQL Server のバージョンをアップグレードするには、SQL Server �
 1. **[プロダクト キー]** ページで、SQL Server の無償のエディションにアップグレードするか、製品の運用バージョンの PID キーを持っているかを示すオプションを選択します。 詳細については、「[SQL Server 2019 (15.x) のエディションとサポートされる機能](https://docs.microsoft.com/sql/sql-server/editions-and-components-of-sql-server-version-15?view=sql-server-ver15)」と「[サポートされているバージョンとエディションのアップグレード (SQL Server 2016)](https://docs.microsoft.com/sql/database-engine/install-windows/supported-version-and-edition-upgrades?view=sql-server-ver15)」を参照してください。
 1. **[アップグレードの準備完了]** ページが表示されるまで **[次へ]** を選択し、 **[アップグレード]** を選択します。 変更が有効になるまで数分間、セットアップ ウィンドウの応答が停止することがあります。 **[完了]** ページで、アップグレードが完了したことが確認されます。 アップグレード手順の詳細については、[完全な手順](https://docs.microsoft.com/sql/database-engine/install-windows/upgrade-sql-server-using-the-installation-wizard-setup?view=sql-server-ver15#procedure)を参照してください。
 
-   :::image type="content" source="./media/change-sql-server-version/complete-page.png" alt-text="[完了] ページ":::
+   :::image type="content" source="./media/change-sql-server-version/complete-page.png" alt-text="SQL Server のバージョンをアップグレードするための選択":::
 
 バージョンを変更するだけでなく SQL Server エディションを変更した場合は、エディションも更新します。SQL VM インスタンスを変更するには、「**ポータルでバージョンとエディションを確認する**」セクションを参照してください。
 
-   :::image type="content" source="./media/change-sql-server-version/change-portal.png" alt-text="バージョン メタデータの変更":::
+   :::image type="content" source="./media/change-sql-server-version/change-portal.png" alt-text="SQL Server のバージョンをアップグレードするための選択":::
 
 ## <a name="downgrade-the-version-of-sql-server"></a>SQL Server バージョンのダウングレード
 
@@ -91,7 +91,7 @@ SQL Server のバージョンをダウングレードするには、SQL Server �
 
    ターゲット バージョン、依存オブジェクト、詳細オプションなどの項目をスクリプト化する場合は、適切なオプションを選択していることを確認してください。
 
-   :::image type="content" source="./media/change-sql-server-version/scripting-options.png" alt-text="スクリプト作成オプション":::
+   :::image type="content" source="./media/change-sql-server-version/scripting-options.png" alt-text="SQL Server のバージョンをアップグレードするための選択":::
 
 1. SQL Server および関連付けられているすべてのサービスを、完全にアンインストールします。
 1. VM を再起動します。
@@ -104,7 +104,7 @@ SQL Server のバージョンをダウングレードするには、SQL Server �
 
 SQL Server のバージョンを変更したら、Azure portal を使用して SQL Server のバージョンを表示できるように、SQL Server VM を [SQL VM リソース プロバイダー](sql-vm-resource-provider-register.md)に再び登録します。 一覧表示されたバージョン番号には、SQL Server インストールの新しくアップグレードされたバージョンとエディションが反映されます。
 
-:::image type="content" source="./media/change-sql-server-version/verify-portal.png" alt-text="バージョンの確認":::
+:::image type="content" source="./media/change-sql-server-version/verify-portal.png" alt-text="SQL Server のバージョンをアップグレードするための選択":::
 
 > [!NOTE]
 > SQL VM リソース プロバイダーに既に登録している場合は、[RP から登録を解除](sql-vm-resource-provider-register.md#unregister-from-rp)してから、[SQL VM リソースを再度登録](sql-vm-resource-provider-register.md#register-with-rp)して、VM にインストールされている SQL Server の正しいバージョンとエディションを検出できるようにします。 これにより、この VM に関連付けられているメタデータと請求先情報が更新されます。

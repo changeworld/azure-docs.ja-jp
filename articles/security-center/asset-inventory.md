@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/22/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: e62973c83db90df2857186fe6a556278a3c41a7d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 68ddbe73bcf4c0e934a5a8be0246214086a7618c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977466"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302045"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>資産インベントリ ツールと資産管理ツールを使用してリソースの調査と管理を行う
 
@@ -54,7 +54,7 @@ Security Center では、Azure リソースのセキュリティの状態が定�
 - **概要** - フィルターを定義する前に、インベントリ ビューの上部に以下の値が横並びで目立つように表示されます。
 
     - **リソースの合計**:Security Center に接続されているリソースの合計数。
-    - **異常なリソース**:アクティブなセキュリティのレコメンデーションがあるリソース。 セキュリティのレコメンデーションの詳細については、[こちら](https://docs.microsoft.com/azure/security-center/security-center-recommendations)をご覧ください。
+    - **異常なリソース**:アクティブなセキュリティのレコメンデーションがあるリソース。 セキュリティのレコメンデーションの詳細については、[こちら](security-center-recommendations.md)をご覧ください。
     - **監視されていないリソース**:エージェントの監視に関して問題があるリソースです。Log Analytics エージェントがデプロイされていますが、エージェントがデータを送信していないか、正常性に関する他の問題が発生しています。
 
 - **フィルター** - ページの上部にある複数のフィルターを使用すると、回答しようとしている質問に従ってリソースの一覧をすばやく絞り込むことができます。 たとえば、「 *「Production」というタグが付いているマシンのうち、Log Analytics エージェントがないものはどれか*」という質問に回答する場合は、次のクリップに示すように、 **[エージェント監視]** フィルターと **[タグ]** フィルターを組み合わせることができます。
@@ -94,7 +94,7 @@ ARG は、大規模なクエリの実行機能によってリソースを効率�
 
 1. フィルターの関連するオプションを選択して、実行する特定のクエリを作成します。
 
-    :::image type="content" source="./media/asset-inventory/inventory-filters.png" alt-text="インベントリのフィルター処理オプション" lightbox="./media/asset-inventory/inventory-filters.png":::
+    :::image type="content" source="./media/asset-inventory/inventory-filters.png" alt-text="監視されていない運用リソースへのフィルター処理" lightbox="./media/asset-inventory/inventory-filters.png":::
 
     既定では、リソースはアクティブなセキュリティのレコメンデーションの数によって並べ替えられます。
 
@@ -114,12 +114,12 @@ ARG は、大規模なクエリの実行機能によってリソースを効率�
 
     - **[オフ]** - Azure Defender プランによって保護されていないリソース。 これらのいずれかを右クリックしてアップグレードできます。
 
-        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="右クリックでリソースを Azure Defender にアップグレードする" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
+        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="監視されていない運用リソースへのフィルター処理" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
 
     - **[オン]** - Azure Defender プランによって保護されているリソース。
     - **[一部]** - これは、Azure Defender プランのすべてではなく一部が無効になっている**サブスクリプション**に適用されます。 たとえば、次のサブスクリプションでは、5 つの Azure Defender プランが無効になっています。 
 
-        :::image type="content" source="./media/asset-inventory/pricing-tier-partial.png" alt-text="Azure Defender が部分的に有効なサブスクリプション":::
+        :::image type="content" source="./media/asset-inventory/pricing-tier-partial.png" alt-text="監視されていない運用リソースへのフィルター処理":::
 
 1. クエリの結果をさらに調べるには、該当するリソースを選択します。
 
@@ -140,7 +140,7 @@ ARG は、大規模なクエリの実行機能によってリソースを効率�
 
 たとえば、次のスクリーンショットは、38 個のサブスクリプションにアクセスできるユーザーを示しています。現在、10 個にのみ推奨事項があります。 そのため、**リソースの種類 = サブスクリプション**でフィルター処理すると、アクティブな推奨事項がある 10 個のサブスクリプションだけがインベントリに表示されます。
 
-:::image type="content" source="./media/asset-inventory/filtered-subscriptions-some.png" alt-text="アクティブなレコメンデーションがない場合、一部のサブスクリプションは返されません。":::
+:::image type="content" source="./media/asset-inventory/filtered-subscriptions-some.png" alt-text="監視されていない運用リソースへのフィルター処理":::
 
 ### <a name="why-do-some-of-my-resources-show-blank-values-in-the-azure-defender-or-agent-monitoring-columns"></a>一部のリソースで、Azure Defender 列またはエージェントの監視列に空白の値が表示されるのはなぜですか。
 
@@ -148,7 +148,7 @@ Security Center で監視されているすべてのリソースにエージェ�
 
 価格やエージェントの監視がリソースに関係しない場合、インベントリのこれらの列には何も表示されません。
 
-:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="一部のリソースでエージェントの監視列または Azure Defender 列に空白の情報が表示される":::
+:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="監視されていない運用リソースへのフィルター処理":::
 
 ## <a name="next-steps"></a>次のステップ
 

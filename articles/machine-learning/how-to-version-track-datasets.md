@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 21969f52223a4e0c7de6ee26c0a6f9e2f96366b1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 27cf60f09a8c0f149aec16dd81da0e7ce0707a15
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902344"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302096"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>実験でデータセットをバージョン管理して追跡する
 
@@ -63,7 +63,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ### <a name="retrieve-a-dataset-by-name"></a>名前でデータセットを取得する
 
-既定では、`Dataset` クラスの [get_by_name()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) メソッドでは、ワークスペースに登録されているデータセットの最新バージョンが返されます。 
+既定では、`Dataset` クラスの [get_by_name()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-by-name-workspace--name--version--latest--) メソッドでは、ワークスペースに登録されているデータセットの最新バージョンが返されます。 
 
 次のコードでは、`titanic_ds` データセットのバージョン 1 を取得します。
 
@@ -158,7 +158,7 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 各機械学習の実験ごとに、実験 `Run` オブジェクトを介して、入力として使用されるデータセットを簡単に追跡できます。
 
-次のコードでは、[`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=trueget-details--) メソッドを使用して、実験の実行でどの入力データセットが使用されたかを追跡します。
+次のコードでは、[`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-details--) メソッドを使用して、実験の実行でどの入力データセットが使用されたかを追跡します。
 
 ```Python
 # get input datasets

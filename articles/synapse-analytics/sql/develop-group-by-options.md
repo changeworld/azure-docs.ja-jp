@@ -11,19 +11,19 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: ad2b13fbfbd9871a55efb1826fa1e978d4eeb453
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 0d9d28bacac02326ee781ca56309b7a72e921960
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032301"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289171"
 ---
 # <a name="group-by-options-in-synapse-sql"></a>Synapse SQL の GROUP BY オプション
 Synapse SQL によって、さまざまな GROUP BY オプションを実装してソリューションを開発できます。 
 
 ## <a name="what-does-group-by-do"></a>GROUP BY で行われる操作
 
-[GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 句は、行のサマリー セットにデータを集計します。
+[GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL 句は、行のサマリー セットにデータを集計します。
 
 SQL オンデマンドでは、あらゆる種類の GROUP BY オプションがサポートされています。 SQL プールでは、限られた数の GROUP BY オプションがサポートされています。
 
@@ -124,7 +124,7 @@ SELECT Cols
 FROM GrpCube;
 ```
 
-次の図に、[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) の結果を示しています。
+次の図に、[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) の結果を示しています。
 
 ![Cube によるグループ化](./media/develop-group-by-options/develop-group-by-cube.png)
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 8/24/2020
-ms.openlocfilehash: 122da78206ef2055b4867727b174293e74133c05
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 166b87159b5ac2434c3ce7a7c66529a4b61ee565
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817124"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91290502"
 ---
 # <a name="graph-search-query-syntax"></a>グラフ検索のクエリ構文
 
@@ -49,7 +49,7 @@ Lucene クエリとフィルター クエリのどちらも使用できます。
  
 - ワイルドカードでの照合: 
     - `machi?e learning`
-    -   `mach*ing`
+    - `mach*ing`
  
 >[!NOTE]
 > Lucene クエリを "*" 文字で開始することはできません。
@@ -59,7 +59,7 @@ Lucene クエリとフィルター クエリのどちらも使用できます。
  
 フィルター クエリでは次のパターンを使用します。
  
-    **[key1] [operator1] [value1]; [key2] [operator1] [value2];**
+`**[key1] [operator1] [value1]; [key2] [operator1] [value2];**`
 
  
 次のノード プロパティをキーとして使用できます。

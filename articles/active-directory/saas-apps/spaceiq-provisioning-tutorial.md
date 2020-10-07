@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/07/2019
 ms.author: Zhchia
-ms.openlocfilehash: 1e63dec14db795b2511f4069bb62a7ce1504a1ec
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: cd1e9431d7125b405f31cb1ed329e6e264cd247e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545048"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285927"
 ---
 # <a name="tutorial-configure-spaceiq-for-automatic-user-provisioning"></a>チュートリアル:SpaceIQ を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -109,11 +109,11 @@ Azure AD での自動ユーザー プロビジョニング用に SpaceIQ を構�
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://api.spaceiq.com/scim`」と入力します。 **[シークレット トークン]** に先ほど取得した**SCIM 認証トークン**の値を入力します。 **[接続テスト]** をクリックして、Azure AD から SpaceIQ に接続できることを確認します。 接続できない場合は、使用中の SpaceIQ アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 

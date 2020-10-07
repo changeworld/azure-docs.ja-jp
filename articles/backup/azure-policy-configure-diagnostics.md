@@ -3,12 +3,12 @@ title: 大規模なコンテナーの診断設定を構成する
 description: Azure Policy を使用して、特定のスコープ内のすべてのコンテナーに対してログ分析診断設定を構成します
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 25946bb742c7666e7d394477318f647009b2f50e
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 33956fe7ce2e162d58ef3aa09feaea2882dccb36
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378051"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293086"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>大規模なコンテナーの診断設定を構成する
 
@@ -34,7 +34,7 @@ Azure Backup によって提供されるレポート作成ソリューション�
 
 1. Azure Portal にサインインし、 **[ポリシー]** ダッシュボードに移動します。
 2. 左側のメニューの **[定義]** を選択して、Azure リソース全体にわたるすべての組み込みポリシーの一覧を取得します。
-3. **[カテゴリ] = [監視]** のリストをフィルター処理します。 **[プレビュー] という名前のポリシーを検索します。リソース固有のカテゴリの Log Analytics ワークスペースに Recovery Services コンテナーの診断設定をデプロイします**。
+3. **[カテゴリ] = [バックアップ]** の一覧をフィルター処理します。 **[プレビュー] という名前のポリシーを検索します。リソース固有のカテゴリの Log Analytics ワークスペースに Recovery Services コンテナーの診断設定をデプロイします**。
 
     ![[ポリシー定義] ペイン](./media/backup-azure-policy-configure-diagnostics/policy-definition-blade.png)
 

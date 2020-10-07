@@ -8,17 +8,17 @@ editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.custom: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: cbc6b2af98905a09324a58c92cafca0075d8a01d
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 1b10489ef74e681eab59694d24c4babc3ce69163
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055143"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298713"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Premium ファイル共有を使用して FCI を作成する (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -96,17 +96,7 @@ UI を使用してクラスターを検証するには、いずれかの仮想�
 1. **[次へ]** を選択します。
 1. 次に示すように、 **[テストの選択]** で、 **[ストレージ]** と **[記憶域スペース ダイレクト]** を除くすべてのテストを選択します。
 
-   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="クラスター検証テストを選択する":::
-
-1. **[次へ]** を選択します。
-1. **[確認]** で、 **[次へ]** を選択します。
-
-**構成の検証**ウィザードにより、検証テストが実行されます。
-
-PowerShell を使用してクラスターを検証するには、いずれかの仮想マシンの管理者 PowerShell セッションから次のスクリプトを実行します。
-
-   ```powershell
-   Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
+   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="ファイル共有接続ポータルから両方の PowerShell コマンドをコピーする"
    ```
 
 クラスターの検証後、フェールオーバー クラスターを作成します。
@@ -151,7 +141,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 クラスターのフェールオーバーをテストします。 **[フェールオーバー クラスター マネージャー]** で、クラスターを右クリックし、 **[その他の操作]**  >  **[コア クラスター リソースの移動]**  >  **[ノードの選択]** の順に選択した後、クラスターの他のノードを選択します。 コア クラスター リソースをクラスターのすべてのノードに移動してから、プライマリ ノードに戻します。 クラスターを各ノードに正常に移動できる場合は、SQL Server をインストールする準備ができています。  
 
-:::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="コア リソースを他のノードに移動して、クラスター フェールオーバーをテストする":::
+:::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="ファイル共有接続ポータルから両方の PowerShell コマンドをコピーする":::
 
 
 ## <a name="create-sql-server-fci"></a>SQL Server FCI を作成する
@@ -172,7 +162,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
    FCI データ ディレクトリは、Premium ファイル共有上に存在する必要があります。 共有の完全パスを `\\storageaccountname.file.core.windows.net\filesharename\foldername` の形式で入力します。 ファイル サーバーをデータ ディレクトリとして指定したことを通知する警告が表示されます。 この警告は想定されています。 ファイル共有を永続化したときに RDP 経由で VM にアクセスするために使用したユーザー アカウントが、潜在的なエラーを回避するために SQL Server サービスで使用されているのと確実に同じアカウントであるようにします。
 
-   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/use-file-share-as-data-directories.png" alt-text="ファイル共有を SQL データ ディレクトリとして使用する":::
+   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/use-file-share-as-data-directories.png" alt-text="ファイル共有接続ポータルから両方の PowerShell コマンドをコピーする":::
 
 1. ウィザードの手順を完了すると、セットアップにより、SQL Server FCI が最初のノードにインストールされます。
 

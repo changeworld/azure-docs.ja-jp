@@ -3,12 +3,12 @@ title: Azure Backup Server で Modern Backup Storage を使用する
 description: Azure Backup Server の新機能について説明します。 この記事では、Backup Server インストールをアップグレードする方法について説明します。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 997b2052751473d095b6534ef0bcbe3ed6a099ad
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: b077296e58e1193e454a686a392d802e905500a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378238"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292899"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Azure Backup Server へのストレージの追加
 
@@ -18,7 +18,7 @@ Azure Backup Server V2 以降では、ストレージを 50% 削減でき、バ�
 > Modern Backup Storage を使用するには、Backup Server V2 または V3 を Windows Server 2016 上で実行するか、または V3 を Windows Server 2019 上で実行する必要があります。
 > Backup Server V2 を以前のバージョンの Windows Server で実行した場合は、Azure Backup Server は Modern Backup Storage を利用できません。 代わりに、Backup Server V1 の場合と同様に、ワークロードを保護します。 詳細については、Backup Server のバージョンの[保護マトリックス](backup-mabs-protection-matrix.md)をご覧ください。
 >
-> 強化されたバックアップ パフォーマンスを実現するため、Windows Server 2019 上で階層化ストレージを使用して MABS v3 をデプロイすることをお勧めします。 階層化ストレージを構成するステップについては、DPM の記事「[階層化ストレージを使用した MBS のセットアップ](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)」を参照してください。
+> 強化されたバックアップ パフォーマンスを実現するため、Windows Server 2019 上で階層化ストレージを使用して MABS v3 をデプロイすることをお勧めします。 階層化ストレージを構成するステップについては、DPM の記事「[階層化ストレージを使用した MBS のセットアップ](/system-center/dpm/add-storage#set-up-mbs-with-tiered-storage)」を参照してください。
 
 ## <a name="volumes-in-backup-server"></a>Backup Server のボリューム
 

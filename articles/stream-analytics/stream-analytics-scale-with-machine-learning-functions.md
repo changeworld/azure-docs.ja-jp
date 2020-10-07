@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/16/2020
-ms.openlocfilehash: 1493a15a97ca88d0ed914f78b1906088c03dff10
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: a0cc70f5bf994e03088511a0d10796746a434bd7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037411"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300311"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Azure Machine Learning Studio (クラシック) 関数を使用した Stream Analytics ジョブのスケーリング
 
@@ -25,7 +25,7 @@ ms.locfileid: "86037411"
 
 Stream Analytics の Machine Learning 関数は、Stream Analytics クエリ言語の通常の関数呼び出しのように使用できます。 ただし、この関数呼び出しは、バックグラウンドでは実際には Azure Machine Learning Web サービス要求です。
 
-複数の行を同じ Web サービス API 呼び出しで "バッチ処理" することで、Machine Learning Web サービス要求のスループットを上げることができます。 このグループ化は、ミニバッチと呼ばれます。 詳しくは、[Azure Machine Learning Studio (クラシック) Web サービス](../machine-learning/studio/consume-web-services.md)に関する記事をご覧ください。 Stream Analytics での Azure Machine Learning Studio (クラシック) のサポートはプレビュー段階です。
+複数の行を同じ Web サービス API 呼び出しで "バッチ処理" することで、Machine Learning Web サービス要求のスループットを上げることができます。 このグループ化は、ミニバッチと呼ばれます。 詳しくは、[Azure Machine Learning Studio (クラシック) Web サービス](../machine-learning/classic/consume-web-services.md)に関する記事をご覧ください。 Stream Analytics での Azure Machine Learning Studio (クラシック) のサポートはプレビュー段階です。
 
 ## <a name="configure-a-stream-analytics-job-with-machine-learning-functions"></a>Machine Learning 関数を使用した Stream Analytics ジョブの構成
 
@@ -58,7 +58,7 @@ Stream Analytics ジョブの待機時間の "*許容範囲*" を決定します
 
 Machine Learning Web サービスで、"最大同時呼び出し数" を構成することもできます。 このパラメーターを最大値 (現在は 200) に設定することをお勧めします。
 
-この設定の詳細については、[Machine Learning Web サービスのスケーリング](../machine-learning/studio/create-endpoint.md)に関する記事を参照してください。
+この設定の詳細については、[Machine Learning Web サービスのスケーリング](../machine-learning/classic/create-endpoint.md)に関する記事を参照してください。
 
 ## <a name="example--sentiment-analysis"></a>例 – センチメント分析
 次の例には、「 [チュートリアル: Stream Analytics と Machine Learning を使用したセンチメント分析の実行](stream-analytics-machine-learning-integration-tutorial.md)」で説明しているセンチメント分析 Machine Learning 関数を使用した Stream Analytics ジョブが含まれています。

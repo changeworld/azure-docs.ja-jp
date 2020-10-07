@@ -1,5 +1,6 @@
 ---
 title: ONNX を使用してデプロイと予測を行う
+titleSuffix: SQL machine learning
 description: モデルをトレーニングし、ONNX に変換して、Azure SQL Edge または Azure SQL Managed Instance (プレビュー) にデプロイした後で、アップロードされた ONNX モデルを使用してネイティブ PREDICT をデータに対して実行する方法について説明します。
 keywords: SQL Edge をデプロイする
 ms.prod: sql
@@ -8,12 +9,12 @@ ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 07/14/2020
-ms.openlocfilehash: 1e70b48e4c28cdc74c5079e492b0266ea60900ad
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5a1e0b12179070dc11e838004c4b27cf04b5396b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886816"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298907"
 ---
 # <a name="deploy-and-make-predictions-with-an-onnx-model"></a>ONNX モデルを使用してデプロイと予測を行う
 

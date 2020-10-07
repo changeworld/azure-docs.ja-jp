@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services コンテナーを削除する
 description: この記事では、依存関係を削除してから Azure Backup Recovery Services コンテナーを削除する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: c0b75d147abba45a745f811de5e4b8ac45088bd8
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: fd941db933d243b83c1c19c7ae0fdfc2d7869b8a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826737"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293069"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services コンテナーを削除する
 
@@ -331,7 +331,7 @@ Recovery Services コンテナーの削除について、[詳細を学習](/powe
                        [--yes]
     ```
 
-    詳細については、こちらの [記事](/cli/azure/backup/vault?view=azure-cli-latest)を参照してください
+    詳細については、こちらの [記事](/cli/azure/backup/vault)を参照してください
 
 ## <a name="delete-the-recovery-services-vault-by-using-azure-resource-manager"></a>Azure Resource Manager を使用して Recovery Services コンテナーを削除する
 

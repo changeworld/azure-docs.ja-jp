@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: devx-track-javascript
-ms.openlocfilehash: fe07d6d54296a3c55cb0b2cadb4d4ae0a311873b
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: devx-track-js
+ms.openlocfilehash: e993e3086ac63a6e9d5b8372327e35016b36239f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089566"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285164"
 ---
 # <a name="change-the-style-of-the-map"></a>マップのスタイルを変更する
 
@@ -101,7 +101,7 @@ map.setStyle({ style: 'satellite' });
 
 次の画像は、`list` レイアウトで表示されるスタイル ピッカー コントロールを示しています。
 
-:::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="スタイル選択機能の一覧のレイアウト":::
+:::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="スタイル選択機能アイコンのレイアウト":::
 
 > [!IMPORTANT]
 > 既定では、スタイル ピッカー コントロールには Azure Maps の S0 価格レベルで利用できるすべてのスタイルが一覧表示されます。 この一覧に表示されるスタイルの数を減らすには、一覧に表示するスタイルの配列をスタイルの選択ツールの `mapStyle` オプションに渡します。 S1 を使用していて、使用できるすべてのスタイルを表示する場合は、スタイル選択ツールの `mapStyles` オプションを `"all"` に設定します。

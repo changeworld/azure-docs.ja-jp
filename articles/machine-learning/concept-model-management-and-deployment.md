@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 394d048ce5978c2789e47b984abebaf30dec5f93
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6f03a1e44fdb62570b693753f5e01c7ab0f53e78
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893574"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302419"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps:Azure Machine Learning を使用したモデル管理、デプロイ、および監視
 
@@ -158,7 +158,7 @@ Azure ML では、メタデータを使用して、すべての ML 資産のエ�
 > [!TIP]
 > モデルやデータセットに関する一部の情報は自動的にキャプチャされますが、__タグ__を使用して追加情報を付加できます。 ワークスペースで登録済みのモデルやデータセットを検索する場合は、タグをフィルターとして使用できます。
 >
-> データセットの登録済みのモデルとの関連付けは省略可能な手順です。 モデルを登録するときのデータセットの参照については、[Model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py&preserve-view=true) クラスのリファレンスを参照してください。
+> データセットの登録済みのモデルとの関連付けは省略可能な手順です。 モデルを登録するときのデータセットの参照については、[Model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true) クラスのリファレンスを参照してください。
 
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>ML ライフサイクルでのイベントに関する通知、自動化、アラートを行う

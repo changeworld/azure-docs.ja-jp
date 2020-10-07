@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 11/07/2019
 ms.author: Zhchia
-ms.openlocfilehash: cef356619d437d53d94c8f5d3be67cf6ac95501c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b4ac2308eae3466dbb9d68895bca4a4de30fcebc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554555"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91304954"
 ---
 # <a name="tutorial-configure-netskope-administrator-console-for-automatic-user-provisioning"></a>チュートリアル: Netskope Administrator Console を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -114,11 +114,11 @@ Azure AD での自動ユーザー プロビジョニング用に Netskope Admini
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[管理者資格情報]** セクションで、以前に取得した **SCIM Server URL** の値を **[テナント URL]** に入力します。 先ほど取得した**トークン**の値を **[シークレット トークン]** に、入力します。 **[テスト接続]** をクリックして、Azure AD から Netskope Administrator Console への接続を確保します。 接続できない場合は、使用中の Netskope Administrator Console アカウントに管理者アクセス許可があることを確認してから、再試行します。
 

@@ -7,19 +7,22 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: bac476cfbe78ad6fcf73b6a2319581cc60524a57
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: 052a28dc69bf5c758133ca98366efc63105f4a56
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432570"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289873"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Azure Storage で静的 Web サイトをホストする
 
 Azure Storage GPv2 アカウントのコンテナーから静的コンテンツ (HTML、CSS、JavaScript、および画像ファイル) を直接提供できます。 詳細については、「[Static website hosting in Azure Storage (Azure Storage での静的 Web サイト ホスティング)](storage-blob-static-website.md)」を参照してください。
 
 この記事では、Azure portal、Azure CLI、または PowerShell を使用して、静的 Web サイトのホスティングを有効にする方法を示します。
+
+> [!NOTE]
+> 必ず汎用 v2 Standard ストレージ アカウントを作成してください。 静的 Web サイトは、他の種類のストレージ アカウントでは使用できません。
 
 ## <a name="enable-static-website-hosting"></a>静的な Web サイトのホスティングを有効にします
 

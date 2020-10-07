@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: jeedes
-ms.openlocfilehash: f0d240819f3690292c572a350f387cd025c24737
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e08c748dec6d21e1ff5d848257c65aa3f8f5aa63
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88519293"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300005"
 ---
 # <a name="tutorial-configure-leapsome-for-automatic-user-provisioning"></a>チュートリアル:Leapsome を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -105,11 +105,11 @@ Azure AD で自動ユーザー プロビジョニング用に Leapsome を構成
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://www.leapsome.com/api/scim`」と入力します。 **[シークレット トークン]** に先ほど取得した**SCIM 認証トークン**の値を入力します。 **[接続テスト]** をクリックして、Azure AD から Leapsome に接続できることを確認します。 接続できない場合は、使用中の Leapsome アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
