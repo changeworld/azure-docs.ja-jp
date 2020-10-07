@@ -1,21 +1,21 @@
 ---
-title: Creator を使用して屋内マップを作成する
-description: 屋内マップを作成するには、Azure Maps Creator を使用します。
+title: チュートリアル:Creator を使用して屋内マップを作成する
+description: Azure Maps Creator を使用して屋内マップを作成する方法に関するチュートリアル
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 08/29/2020
-ms.topic: conceptual
+ms.date: 09/22/2020
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9ed6690348816229d369bcff5d92c9703a4b3702
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 731ffe02b16fe832bb5feba34973ca81bf941646
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469917"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371424"
 ---
-# <a name="use-creator-to-create-indoor-maps"></a>Creator を使用して屋内マップを作成する
+# <a name="tutorial-use-creator-to-create-indoor-maps"></a>チュートリアル:Creator を使用して屋内マップを作成する
 
 このチュートリアルでは、屋内マップを作成する方法を示します。 このチュートリアルでは、API を使用して以下を行う方法を学習します。
 
@@ -35,7 +35,7 @@ ms.locfileid: "89469917"
 1. [Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [プライマリ サブスクリプション キー (主キーまたはサブスクリプション キーとも呼ばれます) を取得します](quick-demo-map-app.md#get-the-primary-key-for-your-account)。
 3. [Creator リソースを作成します](how-to-manage-creator.md)
-4. [サンプル Drawing パッケージ](https://github.com/Azure-Samples/am-creator-indoor-data-examples)をダウンロードします。
+4. [サンプル Drawing パッケージ](https://github.com/Azure-Samples/am-creator-indoor-data-examples/blob/master/Sample%20-%20Contoso%20Drawing%20Package.zip)をダウンロードします。
 
 このチュートリアルでは [Postman](https://www.postman.com/) アプリケーションを使用していますが、別の API 開発環境を選択することもできます。
 
@@ -404,43 +404,11 @@ Data Upload API は、ここで定義されたパターンを実装する長時�
 
 [Feature Get States API](https://docs.microsoft.com/rest/api/maps/featurestate/getstatespreview) を使用すると、地物 `ID` を使用して地物状態を取得できます。 [Feature State Delete API](https://docs.microsoft.com/rest/api/maps/featurestate/deletestatesetpreview) を使用して、状態セットとそのリソースを削除することもできます。
 
-## <a name="next-steps"></a>次のステップ
+この記事で説明するさまざまな Azure Maps Creator サービスの詳細については、[屋内マップ用の Creator](creator-indoor-maps.md) に関するページを参照してください。
 
-このチュートリアルでは、以下の内容を学習しました。
+## <a name="next-steps"></a>次の手順
 
-> [!div class="checklist"]
-> * 屋内マップの Drawing パッケージをアップロードする
-> * Drawing パッケージをマップ データに変換する
-> * マップ データからデータセットを作成する
-> * データセット内のデータからのタイルセットを作成する
-> * Azure Maps WFS サービスにクエリを実行し、マップ地物について学習する
-> * マップ地物とデータセット内のデータを使用して地物状態セットを作成する
-> * 地物状態セットを更新する
-
-これで、次のガイドに進むために必要なスキルが身に付きました。
+屋内マップ モジュールの使用方法については、次を参照してください。
 
 > [!div class="nextstepaction"]
 > [Indoor Maps モジュールを使用する](how-to-use-indoor-module.md)
-
-> [!div class="nextstepaction"]
-> [屋内マップの動的スタイルを実装する](indoor-map-dynamic-styling.md)
-
-この記事で説明する Azure Maps サービスの詳細については、以下を参照してください。
-
-> [!div class="nextstepaction"]
-> [Data Upload](creator-indoor-maps.md#upload-a-drawing-package)
-
-> [!div class="nextstepaction"]
-> [データ変換](creator-indoor-maps.md#convert-a-drawing-package)
-
-> [!div class="nextstepaction"]
-> [データセット](creator-indoor-maps.md#datasets)
-
-> [!div class="nextstepaction"]
-> [タイルセット](creator-indoor-maps.md#tilesets)
-
-> [!div class="nextstepaction"]
-> [地物状態セット](creator-indoor-maps.md#feature-statesets)
-
-> [!div class="nextstepaction"]
-> [WFS サービス](creator-indoor-maps.md#web-feature-service-api)

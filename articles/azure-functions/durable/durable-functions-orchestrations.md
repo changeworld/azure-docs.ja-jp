@@ -6,10 +6,10 @@ ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 5eec15871279f3ca38c726fcd1ef1b21d0d38699
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88750188"
 ---
 # <a name="durable-orchestrations"></a>持続的オーケストレーション
@@ -25,7 +25,7 @@ Durable Functions は [Azure Functions](../functions-overview.md) の拡張機�
 
 ## <a name="orchestration-identity"></a>オーケストレーション ID
 
-オーケストレーションの各 "*インスタンス*" にはインスタンスの識別子があります ("*インスタンス ID*" とも呼ばれます)。 既定では、各インスタンス ID は自動生成される GUID です。 ただし、ユーザーが生成した文字列値をインスタンス ID にすることもできます。 各オーケストレーション インスタンス ID は、[タスク ハブ](durable-functions-task-hubs.md)内で一意である必要があります。
+オーケストレーションの各 "*インスタンス*" にはインスタンス ID あります ("*インスタンス ID*" とも呼ばれます)。 既定では、各インスタンス ID は自動生成される GUID です。 ただし、ユーザーが生成した文字列値をインスタンス ID にすることもできます。 各オーケストレーション インスタンス ID は、[タスク ハブ](durable-functions-task-hubs.md)内で一意である必要があります。
 
 インスタンス ID に関するいくつかのルールを次に示します。
 

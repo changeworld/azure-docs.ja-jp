@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 31055a3245eb13ec53c922a03db47612b6edacd8
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: bcfd9e1b132ef47c83d028acf5e2bcb3fc637ef5
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90057076"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369384"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zeroheight"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と zeroheight の統合
 
@@ -76,14 +76,14 @@ zeroheight で Azure AD の SSO を構成してテストするには、次の構
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.zeroheight.com/sso`
+    a. **[サインオン URL]** ボックスに、URL として「`https://zeroheight.com/sso`」と入力します。
 
     b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`zeroheight:<CUSTOM_ID>`
 
-    c. **[応答 URL]** ボックスに、`https://<SUBDOMAIN>.zeroheight.com/sso/acs/<CUSTOM_ID>` のパターンを使用して URL を入力します
+    c. **[応答 URL]** ボックスに、`https://zeroheight.com/sso/acs/<CUSTOM_ID>` のパターンを使用して URL を入力します
 
     > [!NOTE]
-    > これらは実際の値ではありません。 これらの値を実際のサインオン URL、応答 URL、識別子で更新してください。 これらの値を取得するには、[zeroheight クライアント サポート チーム](mailto:support@zeroheight.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[zeroheight クライアント サポート チーム](mailto:support@zeroheight.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. zeroheight アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
