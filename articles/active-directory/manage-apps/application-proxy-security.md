@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13b020f633adc2e2286cc14b01c6d248fc2c1e3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7f34355f790b56c43c2e9fae7ce23b6344b4739d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84759890"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362148"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したアプリへのリモート アクセス時のセキュリティに関する注意事項
 
@@ -83,7 +83,7 @@ Azure AD アプリケーション プロキシによって発行されたアプ�
 
 #### <a name="azure-ddos-protection-service"></a>Azure DDoS Protection サービス
 
-アプリケーション プロキシを使用して公開されたアプリケーションは、分散型サービス拒否 (DDoS) 攻撃から保護されます。 **Azure DDoS Protection** は、Azure リソースをサービス拒否攻撃から保護するために、Azure プラットフォームで提供されるサービスです。 **Basic** サービス レベルは自動的に有効になります。このサービス レベルでは、一般的なネットワーク レベルの攻撃に対する監視と、リアルタイムな軽減措置が提供されます。 **Standard** レベルでは、Azure Virtual Network リソースに特化してチューニングされた追加の軽減機能が提供されます。 詳細については、「[Azure DDoS Protection Standard の概要](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)」を参照してください。
+アプリケーション プロキシを使用して公開されたアプリケーションは、分散型サービス拒否 (DDoS) 攻撃から保護されます。 **Azure DDoS Protection** は、Azure リソースをサービス拒否攻撃から保護するために、Azure プラットフォームで提供されるサービスです。 **Basic** サービス レベルは自動的に有効になります。このサービス レベルでは、一般的なネットワーク レベルの攻撃に対する監視と、リアルタイムな軽減措置が提供されます。 詳細については、「[Azure DDoS Protection Standard の概要](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)」を参照してください。
 
 ## <a name="under-the-hood"></a>しくみ
 

@@ -1,18 +1,18 @@
 ---
 title: サーバーを再起動する - Azure PowerShell - Azure Database for PostgreSQL
 description: この記事では、PowerShell を使用して Azure Database for PostgreSQL サーバーを再起動する方法について説明します。
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3fd4bcdd2f80bfd5f79488e7e4c93219be97927c
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5037975bcfbf9b19de5cc203d26e1caf0f85893f
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503550"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710143"
 ---
 # <a name="restart-azure-database-for-postgresql-server-using-powershell"></a>PowerShell を使用して Azure Database for PostgreSQL サーバーを再起動する
 

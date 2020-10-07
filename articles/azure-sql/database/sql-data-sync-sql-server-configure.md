@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: data-movement
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: bd1362db2e70d4f9f46d80b00805856e08aedac4
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 90f1e068bf816ecf72bcc8a3ba9439883e69a069
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987343"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616672"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>チュートリアル:Azure SQL Database と SQL Server のデータベース間の SQL データ同期を設定する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

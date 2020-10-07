@@ -5,15 +5,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 42789753683d798e8842ee96a1cc0db340875952
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 5f53c3ebe4bd15bc6afa8a62758309e9f40a71f0
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84143252"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779743"
 ---
 Text Analytics v3 クライアント ライブラリの最新バージョンを使用するには、`Azure.AI.TextAnalytics` 名前空間で最新のソフトウェア パッケージをダウンロードする必要があります。 [クイックスタートの記事](../quickstarts/text-analytics-sdk.md)の「**設定**」セクションには、目的の言語に使用できるコマンドと共に、コード例が記載されています。
 

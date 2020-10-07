@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 93b47d2147a7438ebd38a5ae36363950639ba414
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 2679d24a9e8c821dae73114f32adbeb3d22a1458
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89380524"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708902"
 ---
 # <a name="how-to-create-a-saas-offer-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースでの SaaS オファーの作成方法
 
@@ -69,7 +69,7 @@ ms.locfileid: "89380524"
 カスタマー リレーションシップ マネジメント (CRM) システムをコマーシャル マーケットプレースのオファーに接続して、顧客が興味を示したり製品をデプロイしたりしたときに顧客の連絡先情報を受け取ることができるようにします。 この接続は、オファーの作成中または作成後にいつでも変更できます。
 
 > [!NOTE]
-> Microsoft を通じてオファーを販売している場合、または **[問い合わせ]** リスト オプションを選択した場合は、リード管理を構成する必要があります。 詳細なガイダンスについては、「[コマーシャル マーケットプレースのリード管理](lead-management-for-cloud-marketplace.md)」を参照してください。
+> Microsoft を通じてオファーを販売している場合、または **[問い合わせ]** リスト オプションを選択した場合は、リード管理を構成する必要があります。 詳細なガイダンスについては、「[コマーシャル マーケットプレース オファーからの潜在顧客](partner-center-portal/commercial-marketplace-get-customer-leads.md)」を参照してください。
 
 #### <a name="to-configure-the-connection-details-in-partner-center"></a>パートナー センターで接続の詳細を構成するには
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 0197bb81fdba8bab20742d95aebaa2028bb90c18
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 1b7b5e209329bd5dc4c95f81f61fecf48fb74e40
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027683"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362112"
 ---
 # <a name="set-up-web-endpoints"></a>Web エンドポイントを設定する
 
@@ -29,7 +29,7 @@ ms.locfileid: "86027683"
 ## <a name="prerequisites"></a>前提条件
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-> * 音声サービス用の Azure サブスクリプション キー: [無料で入手する](get-started.md)か、[Azure portal](https://portal.azure.com) で作成します
+> * 音声サービス用の Azure サブスクリプション キー: [無料で入手する](overview.md#try-the-speech-service-for-free)か、[Azure portal](https://portal.azure.com) で作成します
 > * 以前に[作成したカスタム コマンド アプリ](quickstart-custom-commands-application.md)
 > * Speech SDK が有効なクライアント アプリ: [クライアント アプリケーションへのアクティビティの送信方法](./how-to-custom-commands-setup-speech-sdk.md)
 

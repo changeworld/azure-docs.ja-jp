@@ -3,12 +3,12 @@ title: Azure VMware Solution VM のライフサイクル管理
 description: Microsoft Azure ネイティブ ツールを使用して、Azure VMware Solution VM のライフサイクルのあらゆる側面を管理する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: 20948ec088d11468b5750ca89979050965246b58
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 10e721996b2e3186417a702d2d7473b36b11237f
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89663402"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575480"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Azure VMware Solution VM のライフサイクル管理
 
@@ -38,7 +38,7 @@ Microsoft Azure ネイティブ ツールを使用すると、Azure 環境の仮
 
 次の図は、Azure VMware Solution VM の統合監視アーキテクチャを示しています。
 
-![Azure の統合監視アーキテクチャ](media/lifecycle-mgmt-avs-vms/integrated-azure-monitoring-architecture.png)
+![Azure の統合監視アーキテクチャ](media/lifecycle-management-azure-vmware-solutions-virtual-machines/integrated-azure-monitoring-architecture.png)
 
 ## <a name="integrating-and-deploying-azure-native-services"></a>Azure ネイティブ サービスの統合とデプロイ
 

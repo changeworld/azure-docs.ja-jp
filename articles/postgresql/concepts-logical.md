@@ -1,17 +1,17 @@
 ---
 title: 論理デコード - Azure Database for PostgreSQL - Single Server
 description: Azure Database for PostgreSQL - Single Server での変更データ キャプチャの論理デコードと wal2json について説明します
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: bd886bea90c1092e38fac191a60a118aab0bef1f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4ab4a64fa395c105ced8e47cdcec019373f7f835
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903884"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708613"
 ---
 # <a name="logical-decoding"></a>論理デコード
  
@@ -56,7 +56,7 @@ Postgres の論理デコードのしくみの概要については、[弊社の�
 
 2. サーバーを再起動して変更を適用するには、 **[はい]** を選択します。
 
-   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="[Azure Database for PostgreSQL] - [レプリケーション] - 再起動の確認":::
+   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="[Azure Database for PostgreSQL] - [レプリケーション] - [Azure レプリケーションのサポート]":::
 
 
 ## <a name="start-logical-decoding"></a>論理デコードを開始する
