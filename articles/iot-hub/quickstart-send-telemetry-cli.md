@@ -12,10 +12,10 @@ ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
 ms.openlocfilehash: e2b8eecc629e9da75ea15815ee38844c48abb019
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87499910"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>クイック スタート:デバイスから IoT ハブに利用統計情報を送信して Azure CLI で監視する

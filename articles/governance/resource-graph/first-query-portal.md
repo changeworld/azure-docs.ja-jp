@@ -4,10 +4,10 @@ description: このクイックスタートでは、手順に従って、Azure R
 ms.date: 08/10/2020
 ms.topic: quickstart
 ms.openlocfilehash: 4d68366005ad6379669d29fb8264f78d1b8f4972
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88056382"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>クイック スタート:Azure Resource Graph エクスプローラーを使用して初めての Resource Graph クエリを実行する
@@ -94,7 +94,7 @@ Resource Graph クエリの例および Resource Graph エクスプローラー�
 
 - [Resource Graph エクスプローラー - サンプル ダッシュボード 2](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-2/resourcegraphexplorer-sample-2.json)
 
-  :::image type="content" source="./media/arge-sample2-small.png" alt-text="サンプル ダッシュボード 2 の画像の例" lightbox="./media/arge-sample2-large.png":::
+  :::image type="content" source="./media/arge-sample2-small.png" alt-text="サンプル ダッシュボード 1 の画像の例" lightbox="./media/arge-sample2-large.png":::
 
 > [!NOTE]
 > 上の例に示したダッシュボードのスクリーンショットにあるカウントとグラフは、ご利用の Azure 環境によって異なります。

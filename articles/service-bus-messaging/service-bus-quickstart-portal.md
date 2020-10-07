@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 08/12/2020
 ms.author: spelluru
 ms.openlocfilehash: 0e5a8698da03ee4d9c7d8b0d4d59eda1be3b1883
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88185504"
 ---
 # <a name="use-azure-portal-to-create-a-service-bus-namespace-and-a-queue"></a>Azure portal を使用して Service Bus 名前空間とキューを作成する

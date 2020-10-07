@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
 ms.openlocfilehash: d2160a5cd38fcd24c3af5d32ccbbbee8ac723b2f
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88226517"
 ---
 このクイックスタートでは、Speech Devices SDK for Windows を使用して音声対応製品を構築するか、またはそれを[会話の文字起こし](../conversation-transcription-service.md)デバイスとして使用する方法について説明します。 会話の文字起こしには [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) のみがサポートされています。 その他の音声の用途には、マイク配列ジオメトリを提供する直線的なマイク配列がサポートされています。

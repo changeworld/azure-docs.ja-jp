@@ -8,10 +8,10 @@ ms.date: 08/07/2020
 author: sivethe
 ms.author: sivethe
 ms.openlocfilehash: 50414d48c3368ddf409630422d3316cdc45a63fe
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88587397"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB の MongoDB (3.6 バージョン) 用 API: サポートされる機能と構文
@@ -137,7 +137,7 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 |$lookup    |    はい|
 |$out        |はい|
 |$indexStats|        いいえ|
-|$facet    |はい|
+|$facet    |Yes|
 |$bucket|    いいえ|
 |$bucketAuto|    いいえ|
 |$sortByCount|    はい|

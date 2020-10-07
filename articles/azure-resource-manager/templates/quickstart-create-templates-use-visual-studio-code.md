@@ -6,10 +6,10 @@ ms.date: 08/09/2020
 ms.topic: quickstart
 ms.author: nepeters
 ms.openlocfilehash: 5375fedcd05aefa5d23ee872325373ce631d43bb
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88034985"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>クイック スタート:Visual Studio Code を使って Azure Resource Manager テンプレートを作成する

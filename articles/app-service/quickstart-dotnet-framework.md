@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 08/06/2020
 ms.custom: devx-track-csharp, mvc, devcenter, seodec18
 ms.openlocfilehash: 5bf774f2b5cf4a6275dc04248aadfd9a94f5122d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88212557"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Azure に ASP.NET Framework Web アプリを作成する

@@ -5,10 +5,10 @@ ms.date: 08/10/2020
 ms.topic: quickstart
 ms.custom: devx-track-python
 ms.openlocfilehash: a160b9bc389bc0c902f9644887aa478f80822e60
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88134622"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-python"></a>クイック スタート:Python を使用して準拠していないリソースを特定するためのポリシー割り当てを作成する

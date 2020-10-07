@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
 ms.openlocfilehash: 3a2ba65fcef2b6481835cb45243449870361c062
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87498924"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics での Apache Spark
@@ -32,7 +32,7 @@ Apache Spark には、クラスターの計算処理をインメモリで行う�
 
 Azure Synapse の Spark プールでは、フル マネージドの Spark サービスを利用できます。 以下の一覧は、Synapse Analytics で Spark プールを作成する利点をまとめたものです。
 
-| 特徴量 | 説明 |
+| 機能 | 説明 |
 | --- | --- |
 | スピードと効率 |Spark インスタンスの起動時間は、60 ノード未満の場合で約 2 分、それより多いの場合には約 5 分となります。 インスタンスの既定のシャットダウン時間は、ノートブック接続によって生存状態になっている場合を除き、最後のジョブが実行されてから 5 分です。 |
 | 作成のしやすさ |Azure Synapse には、Azure portal、Azure PowerShell、Synapse Analytics .NET SDK のいずれかを使用して新しい Spark プールを数分で作成できます。 [Synapse Analytics の Spark プールの概要](../quickstart-create-apache-spark-pool-studio.md)に関するページを参照してください。 |

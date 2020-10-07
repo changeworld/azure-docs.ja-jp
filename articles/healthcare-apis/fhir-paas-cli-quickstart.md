@@ -10,10 +10,10 @@ ms.date: 10/15/2019
 ms.author: matjazl
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: e1aa3362217a4edcfcf547c69b9effde00459f7e
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87850561"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure API for FHIR をデプロイする

@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: seodec18, mvc
 ms.openlocfilehash: ace1030923ea226376369941badafafa662d25ce
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88031810"
 ---
 # <a name="quickstart-create-an-azure-container-registry-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure コンテナー レジストリを作成する
@@ -31,7 +31,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 **[基本]** タブで **[リソース グループ]** と **[レジストリ名]** の値を入力します。 レジストリの名前は Azure 内で一意にする必要があります。また、5 ～ 50 文字の英数字を含める必要があります。 このクイック スタートでは、`myResourceGroup` という名前の新しいリソース グループを `West US` に作成し、 **[SKU]** には [Basic] を選択します。
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-03.png" alt-text="ポータルでコンテナー レジストリを作成する":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-03.png" alt-text="ポータルでコンテナー レジストリに移動する":::
 
 残りの設定は既定値のままにします。 次に、 **[Review + create]\(確認と作成\)** を選択します。 設定を確認したら **[作成]** を選択します。
 
@@ -39,7 +39,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 **"デプロイメントに成功しました"** というメッセージが表示されたら、ポータルでコンテナー レジストリを選択します。 
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-05.png" alt-text="ポータルでのコンテナー レジストリの概要":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-05.png" alt-text="ポータルでコンテナー レジストリに移動する":::
 
 レジストリ名と **[ログイン サーバー]** の値を書き留めておいてください。 後続の手順で Docker でイメージをプッシュし、プルするとき、これらの値を使用します。
 
@@ -65,7 +65,7 @@ az acr login --name mycontainerregistry
 
 レジストリ内のイメージを一覧表示するには、ポータルでレジストリに移動し、 **[リポジトリ]** を選択してから、`docker push` で作成した **hello-world** リポジトリを選択します。
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-09.png" alt-text="ポータルでコンテナー イメージを一覧表示する":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-09.png" alt-text="ポータルでコンテナー レジストリに移動する":::
 
 **hello-world** リポジトリを選択することによって、 **[タグ]** に `v1` タグが付いたイメージが表示されます。
 
@@ -75,7 +75,7 @@ az acr login --name mycontainerregistry
 
 リソースをクリーンアップするには、ポータルで **myResourceGroup** リソース グループに移動します。 リソース グループが読み込まれたら、 **[リソース グループの削除]** をクリックして、リソース グループ、コンテナー レジストリ、およびそこに格納されているコンテナー イメージを削除します。
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-08.png" alt-text="ポータルでリソース グループを削除する":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-08.png" alt-text="ポータルでコンテナー レジストリに移動する":::
 
 
 ## <a name="next-steps"></a>次のステップ

@@ -12,10 +12,10 @@ ms.date: 08/14/2020
 ms.author: aahi
 ms.reviewer: chtufts
 ms.openlocfilehash: 068c2dc698e9f0b6d6f2f6486dff863c1343b178
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88258280"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Text Analytics API のデータとレートの制限

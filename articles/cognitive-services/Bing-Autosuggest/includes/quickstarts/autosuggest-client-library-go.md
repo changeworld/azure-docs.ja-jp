@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 05/06/2020
 ms.author: aahi
 ms.openlocfilehash: c0129ff25f1df492ab6eba9f49add18d5321a3e8
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88246566"
 ---
 Go 用 Bing Autosuggest クライアント ライブラリの使用を開始します。 以下の手順に従って、ライブラリをインストールし、基本タスクの例を試してみましょう。

@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 03/06/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, 23113853-34f2-4f
 ms.openlocfilehash: d7cfcd02c5e6c9ff57241288bd79efb45d4ac7ab
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88213988"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>クイック スタート:Visual Studio を使用して Azure で初めての関数を作成する
@@ -74,7 +74,7 @@ Visual Studio によってプロジェクトとクラスが作成されます。
 
 2. この URL に移動し、関数によって返されたリモート GET 要求に対する応答がブラウザーに表示されます。次の例のような内容です。
 
-    :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png" alt-text="ブラウザーでの関数の応答":::
+    :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png" alt-text="実行されている関数アプリ":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -88,7 +88,7 @@ Azure の "*リソース*" とは、関数アプリ、関数、ストレージ �
 
 1. 関数アプリのページで、 **[概要]** タブを選択してから、 **[リソース グループ]** の下にあるリンクを選択します。
 
-   :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-app-delete-resource-group.png" alt-text="関数アプリのページで削除するリソース グループを選択する":::
+   :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-app-delete-resource-group.png" alt-text="実行されている関数アプリ":::
 
 2. **[リソース グループ]** ページで、含まれているリソースの一覧を確認し、削除するものであることを確認します。
  

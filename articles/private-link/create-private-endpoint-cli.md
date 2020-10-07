@@ -9,10 +9,10 @@ ms.date: 09/16/2019
 ms.author: allensu
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: e7c098ba06086781306960f76978aac9e4fa06bc
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87502666"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-cli"></a>クイック スタート:Azure CLI を使用してプライベート エンドポイントを作成する

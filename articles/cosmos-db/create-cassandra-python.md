@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 08/13/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: f376a1f3601c976ff1efdaee1da6181510a9cf64
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88234943"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-sdk-and-azure-cosmos-db"></a>クイック スタート:Python SDK と Azure Cosmos DB を使用して Cassandra アプリを構築する
@@ -157,11 +157,11 @@ GitHub から Cassandra API アプリを複製し、接続文字列を設定し�
 
     Ctrl + C キーを押してプログラムの実行を停止し、コンソール ウィンドウを閉じます。 
 
-    :::image type="content" source="./media/create-cassandra-python/output.png" alt-text="出力を表示して検証する":::
+    :::image type="content" source="./media/create-cassandra-python/output.png" alt-text="Azure portal の接続文字列ブレードに表示されるアクセス ユーザー名、パスワード、コンタクト ポイントをコピーする":::
     
 4. Azure portal で **Data Explorer** を開き、この新しいデータのクエリ、変更、操作を行います。 
 
-    :::image type="content" source="./media/create-cassandra-python/data-explorer.png" alt-text="データ エクスプローラーでのデータの表示":::
+    :::image type="content" source="./media/create-cassandra-python/data-explorer.png" alt-text="Azure portal の接続文字列ブレードに表示されるアクセス ユーザー名、パスワード、コンタクト ポイントをコピーする":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 

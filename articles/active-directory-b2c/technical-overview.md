@@ -11,10 +11,10 @@ ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 9d4e709b2a844db9d0be55de2630ce799edb01ff
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87921675"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C の技術と機能の概要
@@ -197,7 +197,7 @@ Azure AD B2C で RESTful API 統合に対してカスタム ポリシーを使�
 
 ## <a name="protect-customer-identities"></a>顧客の ID を保護する
 
-Azure AD B2C は、[Microsoft Azure トラスト センター](https://www.microsoft.com/trustcenter/cloudservices/azure)で説明されているセキュリティ、プライバシー、その他のコミットメントに準拠しています。
+Azure AD B2C は、[Microsoft Azure セキュリティ センター](https://www.microsoft.com/trustcenter/cloudservices/azure)で説明されているセキュリティ、プライバシー、その他のコミットメントに準拠しています。
 
 セッションは暗号化されたデータとしてモデル化され、解読キーは Azure AD B2C のセキュリティ トークン サービスのみが認識しています。 強力な暗号化アルゴリズムである AES-192 が使用されます。 すべての通信パスは、機密性と整合性のために TLS で保護されます。 セキュリティ トークン サービスでは、TLS に拡張検証 (EV) 証明書が使用されます。 一般に、セキュリティ トークン サービスにより、信頼されていない入力を提供しないことでクロスサイト スクリプティング (XSS) 攻撃が軽減されます。
 

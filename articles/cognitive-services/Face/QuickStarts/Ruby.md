@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.openlocfilehash: c44be63e4d69f6603df76147329981bd82e6e50d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87833846"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>クイック スタート:REST API と Ruby を使用して画像内の顔を検出する

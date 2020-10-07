@@ -8,10 +8,10 @@ ms.custom: mvc, devx-track-azurepowershell
 ms.topic: quickstart
 ms.date: 8/5/2020
 ms.openlocfilehash: 37a257e2ca7f354659c032833480dd207cc1bed9
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87839938"
 ---
 # <a name="how-to-generate-an-azure-database-for-mysql-connection-string-with-powershell"></a>PowerShell を使用して Azure Database for MySQL 接続文字列を生成する方法

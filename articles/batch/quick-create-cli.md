@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 08/13/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 8824d4485167955dd1b928bc57381b2e6b672c5d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88213098"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>クイック スタート:Azure CLI で最初の Batch ジョブを実行する

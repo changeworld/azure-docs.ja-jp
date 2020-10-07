@@ -9,10 +9,10 @@ ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 07/16/2020
 ms.openlocfilehash: 73044f35b90fd3e5996899fd7c3b0a925056f8ed
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87836877"
 ---
 # <a name="whats-new-in-qna-maker"></a>QnA Maker の新機能

@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 03/15/2020
 ms.author: matjazl
 ms.openlocfilehash: 8c0448d31cd89e2ca969b81361b30bac3f9610e9
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87851938"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-azure-portal"></a>クイック スタート:Azure portal を使用して Azure API for FHIR をデプロイする
@@ -37,13 +37,13 @@ Azure API for FHIR は、検索ボックスに「FHIR」と入力すると見つ
 
 新しい Azure API for FHIR アカウントを作成するには、 **[作成]** を選択します。
 
-:::image type="content" source="media/quickstart-paas-portal/portal-create-healthcare-apis.png" alt-text="Azure API for FHIR アカウントを作成する":::
+:::image type="content" source="media/quickstart-paas-portal/portal-create-healthcare-apis.png" alt-text="医療 API を検索する":::
 
 ## <a name="enter-account-details"></a>アカウントの詳細を入力する
 
 既存のリソース グループを選択するか、リソース グループを新たに作成し、アカウントの名前を選択して、最後に **[確認と作成]** をクリックします。
 
-:::image type="content" source="media/quickstart-paas-portal/portal-new-healthcareapi-details.png" alt-text="新しい医療 API の詳細":::
+:::image type="content" source="media/quickstart-paas-portal/portal-new-healthcareapi-details.png" alt-text="医療 API を検索する":::
 
 作成の確認を行い、FHIR API のデプロイを待ちます。
 
@@ -51,7 +51,7 @@ Azure API for FHIR は、検索ボックスに「FHIR」と入力すると見つ
 
 **[次へ: 追加設定]** をクリックして認証設定を表示することもできます。 Azure API for FHIR の既定の構成では、[データ プレーン ロールの割り当てに Azure RBAC が使用されます](configure-azure-rbac.md)。 このモードに構成されている場合、FHIR サービスの "オーソリティ" は、サブスクリプションの Azure Active Directory テナントに設定されます。
 
-:::image type="content" source="media/rbac/confirm-azure-rbac-mode-create.png" alt-text="既定の認証設定":::
+:::image type="content" source="media/rbac/confirm-azure-rbac-mode-create.png" alt-text="医療 API を検索する":::
 
 この場合、ロール割り当ての構成に Azure RBAC を使用するため、許可されたオブジェクト ID を入力するためのボックスが淡色表示されていることに注意してください。
 

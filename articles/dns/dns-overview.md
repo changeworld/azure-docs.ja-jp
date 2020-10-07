@@ -7,10 +7,10 @@ ms.topic: overview
 ms.date: 3/21/2019
 ms.author: rohink
 ms.openlocfilehash: d59f166897674e9dcff8086b8f5c906605155ee3
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87924276"
 ---
 # <a name="what-is-azure-dns"></a>Azure DNS とは

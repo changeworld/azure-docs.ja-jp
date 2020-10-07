@@ -7,10 +7,10 @@ ms.author: karler
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.openlocfilehash: 42200fe61b0ac73a63b9f8a3317687fac60c5c02
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88078582"
 ---
 # <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>クイック スタート:Java コンテナー イメージを作成して Azure Container Registry にプッシュする

@@ -9,10 +9,10 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/19/2020
 ms.openlocfilehash: 821b2a36a40f828edf37ff1c2f3eab58b10b4162
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88607581"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Cosmos のアカウント、データベース、コンテナー、および項目を作成する
@@ -70,17 +70,13 @@ Azure サブスクリプションまたは Azure Cosmos DB の無料試用版ア
 > - geo 冗長
 > - マルチリージョン ライター
    
-   :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail.png" alt-text="Azure Cosmos DB の新しいアカウント ページ":::
+   :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail.png" alt-text="Azure portal の [データベース] ウィンドウ" と表示されるまで待ちます。 
 
-1. **[Review + create]\(レビュー + 作成\)** を選択します。 **[ネットワーク]** セクションと **[タグ]** セクションはスキップできます。
-
-1. アカウントの設定を確認し、 **[作成]** を選択します。 アカウントの作成には数分かかります。 ポータル ページに "**デプロイが完了しました**" と表示されるまで待ちます。 
-
-    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-deployment-successful.png" alt-text="Azure portal の [通知] ペイン":::
+    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-deployment-successful.png" alt-text="Azure portal の [データベース] ウィンドウ":::
 
 1. **[リソースに移動]** を選択し、Azure Cosmos DB アカウント ページに移動します。 
 
-    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-quickstart-pane.png" alt-text="Azure Cosmos DB アカウント ページ":::
+    :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-quickstart-pane.png" alt-text="Azure portal の [データベース] ウィンドウ":::
 
 <a id="create-container-database"></a>
 ## <a name="add-a-database-and-a-container"></a>データベースとコンテナーを追加する 
@@ -91,7 +87,7 @@ Azure portal のデータ エクスプローラーを使用してデータベー
     
     **[コンテナーの追加]** ウィンドウを表示するために、右へスクロールする必要がある場合があります。
     
-    :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png" alt-text="Azure portal の [データ エクスプローラー] の [コンテナーの追加] ウィンドウ":::
+    :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png" alt-text="Azure portal の [データベース] ウィンドウ":::
     
 1.  **[コンテナーの追加]** ウィンドウで、新しいコンテナーの設定を入力します。
     
@@ -113,7 +109,7 @@ Azure portal のデータ エクスプローラーを使用してデータベー
 
 1. **[データ エクスプローラー]** で、 **[ToDoList]** データベースを展開し、 **[アイテム]** コンテナーを展開します。 次に、 **[項目]** を選択し、 **[新しい項目]** を選択します。 
    
-   :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png" alt-text="Azure portal のデータ エクスプローラーで新しいドキュメントを作成する":::
+   :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png" alt-text="Azure portal の [データベース] ウィンドウ":::
    
 1. **[ドキュメント]** ウィンドウの右側でドキュメントに次の構造を追加します。
 
@@ -129,7 +125,7 @@ Azure portal のデータ エクスプローラーを使用してデータベー
 
 1. **[保存]** を選択します。
    
-   :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png" alt-text="json データをコピーし、Azure portal のデータ エクスプローラーで [保存] を選択する":::
+   :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png" alt-text="Azure portal の [データベース] ウィンドウ":::
    
 1. **[新しいドキュメント]** をもう一度選択し、一意の `id` に加え、必要なその他のプロパティと値を指定したもう 1 つのドキュメントを作成して保存します。 Azure Cosmos DB では、データにスキーマが課されないため、ご自分のドキュメントは任意の構造にすることができます。
 

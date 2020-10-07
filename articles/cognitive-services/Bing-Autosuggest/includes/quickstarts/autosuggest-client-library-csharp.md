@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 05/06/2020
 ms.author: aahi
 ms.openlocfilehash: a6ae9d8975c36e7ffa8e3eadf880b4685390c5fc
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88246121"
 ---
 .NET 用 Bing Autosuggest クライアント ライブラリの使用を開始します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。

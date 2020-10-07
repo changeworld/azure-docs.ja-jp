@@ -9,10 +9,10 @@ ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-python
 ms.openlocfilehash: f6d1b25cb502b8cb208ba5b59c91667e03c77778
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88064385"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>クイック スタート:Python で Service Bus のトピックとサブスクリプションを使用する

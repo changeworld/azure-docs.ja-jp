@@ -7,10 +7,10 @@ ms.date: 03/18/2020
 ms.author: azfuncdf
 zone_pivot_groups: code-editors-set-one
 ms.openlocfilehash: f5eb5f5ce6c6ded3fffc95b73d3ac86ae9e94ba2
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88055464"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>C\# で最初の Durable Functions を作成する
@@ -196,7 +196,7 @@ Azure Functions テンプレートでは、Azure の関数アプリに発行で�
     | 設定      | 推奨値  | 説明                      |
     | ------------ |  ------- |----------------------------------------- |
     | **Version** | Azure Functions 3.0 <br />(.NET Core) | .NET Core 3.1 をサポートする Azure Functions のバージョン 3.0 ランタイムを使用する関数プロジェクトを作成します。 詳細については、「[Azure Functions ランタイム バージョンをターゲットにする方法](../functions-versions.md)」をご覧ください。   |
-    | **テンプレート** | なし | 空の関数アプリを作成します。 |
+    | **テンプレート** | Empty | 空の関数アプリを作成します。 |
     | **ストレージ アカウント**  | ストレージ エミュレーター | Durable Functions の状態管理にはストレージ アカウントが必要です。 |
 
 4. **[作成]** を選択して、空の関数プロジェクトを作成します。 このプロジェクトには、関数を実行するために必要な基本的な構成ファイルがあります。

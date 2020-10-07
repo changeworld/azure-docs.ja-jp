@@ -6,10 +6,10 @@ ms.date: 06/18/2020
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18
 ms.openlocfilehash: c822dbdf9940db7b38d354fa32906c16977df0c0
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88083768"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>Azure App Service 向けの Linux Ruby アプリを構成する

@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 10/15/2019
 ms.author: matjazl
 ms.openlocfilehash: 4b2772b449b3c398c8c8932db58b7078b7501824
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87851995"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-powershell"></a>クイック スタート:PowerShell を使用して Azure API for FHIR をデプロイする

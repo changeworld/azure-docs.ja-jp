@@ -12,10 +12,10 @@ ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: devx-track-python
 ms.openlocfilehash: b29d9921de0226cb8660b3f7e3c6d3e0d4a22754
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87852516"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-python"></a>クイック スタート:Python を使用して Bing Custom Search エンドポイントを呼び出す

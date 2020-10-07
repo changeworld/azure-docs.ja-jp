@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 02/03/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 9827c50d034b1c49700869c3274800c194c631a8
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87499451"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure HDInsight 内に Apache Spark クラスターを作成する
@@ -30,7 +30,7 @@ ms.locfileid: "87499451"
 
 ## <a name="create-an-apache-spark-cluster"></a>Apache Spark クラスターの作成
 
-1. Azure サブスクリプションにサインインします。 Azure Cloud Shell を使用する予定の場合は、次のコード ブロックの右上隅で **[使ってみる]** を選択します。 それ以外の場合、次のコマンドを入力します。
+1. Azure サブスクリプションにサインインします。 Azure Cloud Shell を使用する予定の場合は、次のコード ブロックの右上隅で **[試してみる]** を選択します。 それ以外の場合、次のコマンドを入力します。
 
     ```azurecli-interactive
     az login

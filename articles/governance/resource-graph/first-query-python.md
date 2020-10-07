@@ -5,10 +5,10 @@ ms.date: 07/15/2020
 ms.topic: quickstart
 ms.custom: devx-track-python
 ms.openlocfilehash: a92eda343e8c0c38b9c9ebebb16d5c102d1b3f19
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87873672"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-python"></a>クイック スタート:Python を使用して初めての Resource Graph クエリを実行する

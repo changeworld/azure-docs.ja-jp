@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.custom: mvc
 ms.openlocfilehash: cf65a681764a848f8132ec44b8ba313ef1a83235
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88511373"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>クイック スタート: Azure Portal で最初の Batch ジョブを実行する
@@ -25,7 +25,7 @@ Azure portal を使用して Batch アカウント、コンピューティング
 
 1. [Azure portal](https://portal.azure.com) で、 **[リソースの作成]**  >  **[Compute]**  >  **[Batch サービス]** の順に選択します。 
 
-   :::image type="content" source="media/quick-create-portal/marketplace-batch.png" alt-text="Azure Marketplace の Batch サービスのスクリーンショット。":::
+   :::image type="content" source="media/quick-create-portal/marketplace-batch.png" alt-text="Azure Marketplace の Batch サービスのスクリーンショット。&quot;:::
 
 1. **[リソース グループ]** フィールドで、 **[新規作成]** を選択し、リソース グループの名前を入力します。
 
@@ -35,7 +35,7 @@ Azure portal を使用して Batch アカウント、コンピューティング
 
 1. 他の設定は変更しないでください。 **[確認および作成]** 、 **[作成]** の順に選択して Batch アカウントを作成します。
 
-"**展開が成功しました**" というメッセージが表示されたら、作成した Batch アカウントに移動します。
+&quot;**展開が成功しました**" というメッセージが表示されたら、作成した Batch アカウントに移動します。
 
 ## <a name="create-a-pool-of-compute-nodes"></a>コンピューティング ノードのプールの作成
 
@@ -97,7 +97,17 @@ Batch を使用する場合、コマンド ラインは、アプリまたはス�
 
 作成したタスクの例は、数分で完了します。 完了したタスクの出力を表示するには、タスクを選択してから **[ノード上のファイル]** を選択します。 `stdout.txt` ファイルを選択して、タスクの標準出力を表示します。 内容は次のようになります。
 
-:::image type="content" source="media/quick-create-portal/task-output.png" alt-text="完了したタスクの出力のスクリーンショット。":::
+:::image type="content" source="media/quick-create-portal/task-output.png" alt-text="Azure Marketplace の Batch サービスのスクリーンショット。&quot;:::
+
+1. **[リソース グループ]** フィールドで、 **[新規作成]** を選択し、リソース グループの名前を入力します。
+
+1. **[アカウント名]** に値を入力します。 選択した Azure の **[場所]** 内で一意となる名前を使用してください。 使用できるのは小文字と数字のみです。文字数は 3 から 24 文字にする必要があります。
+
+1. **[ストレージ アカウント]** で、既存のストレージ アカウントを選択するか、新しいストレージ アカウントを作成します。
+
+1. 他の設定は変更しないでください。 **[確認および作成]** 、 **[作成]** の順に選択して Batch アカウントを作成します。
+
+&quot;**展開が成功しました**":::
 
 内容は、ノードで設定されている Azure Batch 環境変数を示します。 独自の Batch ジョブとタスクを作成すると、これらの環境変数は、タスクのコマンド ラインのほか、コマンド ラインにより実行されるプログラムとスクリプトで参照できます。
 
