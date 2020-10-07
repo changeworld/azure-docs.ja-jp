@@ -9,14 +9,17 @@ ms.service: industrial-iot
 ms.custom: devx-track-azurecli
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: a0c5c601b0d3bc0d862ea4984ee2c6d4b76d13ed
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9ae3e9b4bb69bf0c85054b5d6144633923cac947
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502462"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282070"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>OPC Twin モジュールおよび依存関係をゼロからデプロイする
+
+> [!IMPORTANT]
+> この記事は更新を行いますが、最新の内容については、「[Azure Industrial IoT](https://azure.github.io/Industrial-IoT/)」 (Azure 産業用 IoT) を参照してください。
 
 OPC Twin モジュールは IoT Edge 上で動作し、OPC デバイス ツインおよびレジストリ サービスにいくつかのエッジ サービスを提供します。 
 
@@ -126,7 +129,7 @@ OPC Twin モジュールは IoT Edge 上で動作し、OPC デバイス ツイ�
 
 4. **[Set Modules] \(モジュールの設定)** を選択します。
 
-5. このページの **[Deployment modules]\(デプロイ モジュール\)** セクションで、 **[追加]** と **[IoT Edge モジュール]** を選択します。
+5. このページの **[Deployment modules]\(デプロイ モジュール\)** セクションで、**[追加]** と **[IoT Edge モジュール]** を選択します。
 
 6. **[IoT Edge のカスタム モジュール]** ダイアログで、モジュールの名前として `opctwin` を使用し、次にコンテナーの*画像 URI* を次のように指定します
 
@@ -156,7 +159,7 @@ OPC Twin モジュールは IoT Edge 上で動作し、OPC デバイス ツイ�
    {"Hostname":"publisher","Cmd":["publisher","--pf=./pn.json","--di=60","--to","--aa","--si=0","--ms=0"],"ExposedPorts":{"62222/tcp":{}},"HostConfig":{"PortBindings":{"62222/tcp":[{"HostPort":"62222"}] }}}
    ```
 
-9. **[保存]** を選択し、 **[次へ]** を選択して、ルートのセクションに進みます。
+9. **[保存]** を選択し、**[次へ]** を選択して、ルートのセクションに進みます。
 
 10. ルート タブに以下を貼り付けます 
 

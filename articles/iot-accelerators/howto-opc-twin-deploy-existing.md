@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: b971ec13c71ccfd7d28ae6987593d09201b9b764
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a4d005b3a4712cfff0321e7a16f49c0e882cc9e0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73824111"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282121"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>既存のプロジェクトに OPC Twin をデプロイする
+
+> [!IMPORTANT]
+> この記事は更新を行いますが、最新の内容については、「[Azure Industrial IoT](https://azure.github.io/Industrial-IoT/)」 (Azure 産業用 IoT) を参照してください。
 
 OPC Twin モジュールは IoT Edge 上で動作し、OPC Twin およびレジストリ サービスにいくつかのエッジ サービスを提供します。
 
@@ -137,7 +140,7 @@ Web サイトの名前が既に使用されている可能性があります。 
 -credentials
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ここでは、OPC Twin を既存のプロジェクトにデプロイする方法を学習しました。次に以下の記事を読むことをお勧めします。
 

@@ -8,14 +8,17 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 5fa3d4d4fdfa0dd81cd8ab8772ffb3903dda289f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e015c6761b920ef37af2bbfd67ced5fc3218d532
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73820131"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91290689"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>コネクテッド ファクトリ ソリューション アクセラレータの構成
+
+> [!IMPORTANT]
+> この記事は更新を行いますが、最新の内容については、「[Azure Industrial IoT](https://azure.github.io/Industrial-IoT/)」 (Azure 産業用 IoT) を参照してください。
 
 コネクテッド ファクトリ ソリューション アクセラレータは、Contoso という架空の会社向けにシミュレートされたダッシュボードを示しています。 この会社は、世界中のさまざまな場所に工場を持っています。
 
@@ -54,7 +57,7 @@ Contoso の各工場には、それぞれ 3 つのステーションで構成さ
 
 * そのトポロジ ノードの一意識別子。
 * 名前。
-* 説明。
+* 説明です。
 * 画像。
 * そのトポロジ ノードの子。
 * OEE および KPI の数値と実行するアラート アクションの最小値、目標値、最大値。
@@ -309,7 +312,7 @@ WebApp は、すべてのトポロジ ノードの情報を含む内部データ
 
 テレメトリ データをコネクテッド ファクトリに取り込む方法の詳細については、「[OPC Publisher とは](overview-opc-publisher.md)」を参照してください。
 
-## <a name="example-how-kpi1-is-calculated"></a>例:KPI1 の計算方法
+## <a name="example-how-kpi1-is-calculated"></a>例: KPI1 の計算方法
 
 `ContosoTopologyDescription.json` ファイル内の構成により、OEE/KPI の数値の計算方法を制御します。 次の例では、このファイル内のプロパティが KPI1 の計算を制御する方法を示します。
 
@@ -334,10 +337,10 @@ WebApp は、すべてのトポロジ ノードの情報を含む内部データ
 * すべての値の平均。
 * 指定された期間における、すべての一意の **OpcUri** (**ApplicationUri**)、**NodeId** ペアの、すべての値の合計。
 
-**NumberOfManufactureredProducts** ノードの値の 1 つの特徴は、それが増加するのみであるということです。 その期間に製造された製品の数を計算するために、接続済みファクトリで **OpCode** **SubMaxMin** が使用されます。 この計算では、その期間の開始時に最小値を、その期間の終了時に最大値を取得します。
+**NumberOfManufactureredProducts** ノードの値の 1 つの特徴は、それが増加するのみであるということです。 その期間に製造された製品の数を計算するために、コネクテッド ファクトリは **OpCode** **SubMaxMin** を使用します。 この計算では、その期間の開始時に最小値を、その期間の終了時に最大値を取得します。
 
 構成内の **OpCode** によって計算ロジックが構成され、最大値と最小値の差の結果が計算されます。 これらの結果は、ボトムアップでルート (グローバル) レベルまで蓄積され、ダッシュボードに表示されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 次は、[コネクテッド ファクトリ ソリューションをカスタマイズする](iot-accelerators-connected-factory-customize.md)方法について学習することをお勧めします。

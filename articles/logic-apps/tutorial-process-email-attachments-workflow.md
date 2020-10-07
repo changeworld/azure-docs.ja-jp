@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 02/27/2020
-ms.openlocfilehash: 4adec4579cf1a413aeac54782b4f9a833d557ad9
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 38b4713383368f0c64983738f2ed65f60edb9e67
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029972"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334091"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>チュートリアル:Azure Logic Apps、Azure Functions、Azure Storage を使用してメール処理のタスクを自動化する
 
@@ -323,7 +323,7 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
 
    1. 最初の行の **[And]** の下にある左側のボックス内をクリックします。 表示される動的コンテンツ リストから、 **[Has Attachment]** プロパティを選択します。
 
-      ![条件をビルドする](./media/tutorial-process-email-attachments-workflow/build-condition.png)
+      !["And" プロパティが条件に対して選択され、"Has Attachment" プロパティが選択されていることを示すスクリーンショット。](./media/tutorial-process-email-attachments-workflow/build-condition.png)
 
    1. 中央のボックスでは、演算子を **[is equal to]** のままにしておきます。
 
@@ -389,7 +389,7 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
 
    ![[true の場合] 内でアクションを追加する](./media/tutorial-process-email-attachments-workflow/if-true-add-action.png)
 
-1. 検索ボックスで、「azure functions」を検索して、 **[Azure 関数を選択する - Azure Functions]** アクションを選択します。
+1. 検索ボックスで、「Azure functions」を検索して、次のアクションを選択します。 **[Azure 関数を選択する - Azure Functions]** アクションを選択します。
 
    ![アクションとして [Azure 関数を選択する] を選択する](./media/tutorial-process-email-attachments-workflow/add-action-azure-function.png)
 
@@ -458,7 +458,7 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
 
    作業が完了すると、アクションは次の例のようになります。
 
-   ![完成した "BLOB の作成" アクション](./media/tutorial-process-email-attachments-workflow/create-blob-for-email-body-done.png)
+   ![完了した [BLOB の作成] アクションの例を示すスクリーンショット。](./media/tutorial-process-email-attachments-workflow/create-blob-for-email-body-done.png)
 
 1. ロジック アプリを保存します。
 

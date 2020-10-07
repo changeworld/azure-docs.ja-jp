@@ -13,10 +13,10 @@ ms.date: 03/04/2020
 ms.author: aahi
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
 ms.openlocfilehash: d139706ff0e5d04d15dee237fc25ad73f92da4db
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91327420"
 ---
 # <a name="quickstart-use-the-bing-image-search-client-library"></a>クイック スタート:Bing Image Search クライアント ライブラリを使用する

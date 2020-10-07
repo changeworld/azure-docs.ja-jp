@@ -1,20 +1,20 @@
 ---
-title: チュートリアル:Azure Maps でジオフェンスを作成してデバイスを追跡する
-description: ジオフェンスを設定する方法について説明します。 Azure Maps 空間サービスを使用して、ジオフェンスを基準にデバイスを追跡する方法をご確認ください。
+title: チュートリアル:Microsoft Azure Maps でジオフェンスを作成してデバイスを追跡する
+description: ジオフェンスを設定する方法に関するチュートリアルです。 Azure Maps 空間サービスを使用して、ジオフェンスを基準にデバイスを追跡する方法を確認します
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 8/11/2020
+ms.date: 8/20/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b374bbe086281c7f7914334be6ca275f0fd05b7f
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 7a0c39b6d2369a1279fee3905083f0660a4aabb8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056511"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335196"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用してジオフェンスを設定する
 
@@ -22,7 +22,7 @@ ms.locfileid: "90056511"
 
 "*建設現場の管理者が、建設区域の境界を出入りする機材を追跡する必要があります。それらの境界を機材が出入りするたびに、メール通知が作業管理者に送信されます。* "
 
-建設区域を出入りする機材の追跡をサポートするさまざまなサービスが Azure Maps には用意されています。 このチュートリアルでは、次のことを行いました。
+建設区域を出入りする機材の追跡をサポートするさまざまなサービスが Azure Maps には用意されています。 このチュートリアルでは、次の作業を行いました。
 
 > [!div class="checklist"]
 > * 監視対象の建設現場区域を定義する[ジオフェンシング GeoJSON データ](geofence-geojson.md)をアップロードする。 [Data Upload API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) を使用して、ジオフェンスをポリゴン座標として自分の Azure Maps アカウントにアップロードします。
@@ -54,7 +54,7 @@ ms.locfileid: "90056511"
     https://atlas.microsoft.com/mapData/upload?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&dataFormat=geojson
     ```
 
-    URL パス内の `geojson` パラメーターは、アップロードするデータのデータ形式を表します。
+    URL パス内の `geojson` パラメーターは、アップロードするデータの形式を表します。
 
 4. **[本文]** タブを選択します。 **[raw]\(未加工\)** を選択し、入力形式として **[JSON]** を選択します。 次の GeoJSON データをコピーして **[本文]** テキスト領域に貼り付けます。
 
@@ -282,7 +282,7 @@ Azure Maps では、[3 種類のイベント](https://docs.microsoft.com/azure/e
    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.638237&lon=-122.1324831&searchBuffer=5&isAsync=True&mode=EnterAndExit
    ```
 
-3. **[送信]** を選択します。 応答ウィンドウに次の GeoJSON が表示されます。
+3. **[Send]** を選択します。 応答ウィンドウに次の GeoJSON が表示されます。
 
     ```json
     {
@@ -322,7 +322,7 @@ Azure Maps では、[3 種類のイベント](https://docs.microsoft.com/azure/e
    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63800&lon=-122.132531&searchBuffer=5&isAsync=True&mode=EnterAndExit
    ```
 
-3. **[送信]** を選択します。 応答ウィンドウに次の GeoJSON が表示されます。
+3. **[Send]** を選択します。 応答ウィンドウに次の GeoJSON が表示されます。
 
     ```json
     {
@@ -362,7 +362,7 @@ Azure Maps では、[3 種類のイベント](https://docs.microsoft.com/azure/e
       https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.63810783315048&lon=-122.13336020708084&searchBuffer=5&isAsync=True&mode=EnterAndExit
       ```
 
-3. **[送信]** を選択します。 応答ウィンドウに次の GeoJSON が表示されます。
+3. **[Send]** を選択します。 応答ウィンドウに次の GeoJSON が表示されます。
 
     ```json
     {
@@ -405,7 +405,7 @@ Azure Maps では、[3 種類のイベント](https://docs.microsoft.com/azure/e
     https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.637988&userTime=2023-01-16&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
     ```
 
-3. **[送信]** を選択します。 応答ウィンドウに次の GeoJSON が表示されます。
+3. **[Send]** を選択します。 応答ウィンドウに次の GeoJSON が表示されます。
 
     ```json
     {
@@ -429,17 +429,17 @@ Azure Maps では、[3 種類のイベント](https://docs.microsoft.com/azure/e
 
 上の GeoJSON 応答では、機材はメイン サイト ジオフェンス内には留まっていますが、サブサイト ジオフェンスからは出ています。 ただし、`userTime` 値は、ジオフェンス データに定義されている `expiredTime` を過ぎていることに注意してください。 その結果、`isEventPublished` パラメーターが `false` に設定され、作業管理者にメール通知は送信されません。
 
-### <a name="location-547637988-1221338344"></a>位置 5(47.637988,-122.1338344)
+### <a name="location-5-4763799--122134505"></a>位置 5 (47.63799、-122.134505)
 
 1. Postman アプリの上部付近で **[新規]** を選択します。 **[新規作成]** ウィンドウで **[要求]** を選択します。 要求の **[要求名]** を入力します。 これを *Location 5* とします。 「[ジオフェンシング GeoJSON データをアップロードする](#upload-geofencing-geojson-data)」セクションで作成したコレクションを選択し、 **[保存]** を選択します。
 
 2. ビルダー タブで **GET** HTTP メソッドを選択し、次の URL を入力します。 `{Azure-Maps-Primary-Subscription-key}` は実際のプライマリ サブスクリプション キーに置き換え、`{udid}` は「[ジオフェンシング GeoJSON データをアップロードする](#upload-geofencing-geojson-data)」セクションで保存した `udid` に置き換えます。
 
     ```HTTP
-    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.637988&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
+    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.63799&lon=-122.134505&searchBuffer=5&isAsync=True&mode=EnterAndExit
     ```
 
-3. **[送信]** を選択します。 応答ウィンドウに次の GeoJSON が表示されます。
+3. **[Send]** を選択します。 応答ウィンドウに次の GeoJSON が表示されます。
 
     ```json
     {
@@ -469,13 +469,10 @@ Azure Maps では、[3 種類のイベント](https://docs.microsoft.com/azure/e
 
 前の GeoJSON 応答では、機材はメイン サイト ジオフェンスから出ています。 その結果、`isEventPublished` パラメーターが `true` に設定され、作業管理者には、機材がジオフェンスから出たことを示すメール通知が送信されます。
 
+
+また、[Event Grid と Logic Apps を使用して電子メール通知を送信](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps)して、[Event Grid でサポートされているイベント ハンドラー](https://docs.microsoft.com/azure/event-grid/event-handlers)を確認することもできます。
+
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Logic Apps における各種コンテンツの扱い](https://docs.microsoft.com/azure/logic-apps/logic-apps-content-type)
-
-> [!div class="nextstepaction"]
-> [Event Grid と Logic Apps を使用してメール通知を送信する](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps)
-
-> [!div class="nextstepaction"]
-> [Event Grid でサポートされるイベント ハンドラー](https://docs.microsoft.com/azure/event-grid/event-handlers)
