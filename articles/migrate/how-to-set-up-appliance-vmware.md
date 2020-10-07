@@ -3,12 +3,12 @@ title: VMware 向け Azure Migrate アプライアンスを設定する
 description: Azure Migrate アプライアンスを設定して VMware VM を評価し移行する方法について説明します。
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: c9a9f1567f984fc5770b47d3998610cb69643360
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 9a4e652180b236262ea57ae49d35410ebfbdc927
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923622"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448655"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>VMware VM のアプライアンスを設定する
 
@@ -57,7 +57,7 @@ OVA ファイルをデプロイする前に、それが安全であることを�
 1. ファイルをダウンロードしたマシンで、管理者用のコマンド ウィンドウを開きます。
 2. 次のコマンドを実行して、OVA のハッシュを生成します。
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 使用例: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+    - 使用例: ```C:\>C:\>CertUtil -HashFile C:\Users\Administrator\Desktop\MicrosoftAzureMigration.ova SHA256```
 3. アプライアンスの最新のバージョンでは、生成されたハッシュがこれらの[設定](./tutorial-assess-vmware.md#verify-security)と一致する必要があります。
 
 

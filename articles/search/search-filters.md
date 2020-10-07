@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4d1e120073e5bf4306c89628fc4e2e9c9f7ed2cf
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6c46dfb3f36c3ef7f67ce2f3b52c2ffe4c805a61
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002421"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534796"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Azure Cognitive Search のフィルター 
 
@@ -138,7 +138,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 REST API では、フィルター可能の設定は単純型フィールドの場合は既定で "*オン*" です。 フィルター可能なフィールドはインデックス サイズが大きくなります。実際にフィルターで使用する予定がないフィールドの場合は、`"filterable": false` を設定してください。 フィールド定義の設定の詳細については、「[Create Index](/rest/api/searchservice/create-index)」(インデックスの作成) を参照してください。
 
-.NET SDK では、フィルター可能の設定は既定で*オフ*です。 対応する [Field](/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet) オブジェクトの [IsFilterable プロパティ](/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) を `true` に設定することで、フィールドをフィルター可能にすることができます。 また、これは、[IsFilterable 属性](/dotnet/api/microsoft.azure.search.isfilterableattribute)を使用して宣言によって行うこともできます。 次の例では、属性は、インデックス定義にマップされるモデル クラスの `BaseRate` プロパティで設定されています。
+.NET SDK では、フィルター可能の設定は既定で*オフ*です。 対応する [Field](/dotnet/api/microsoft.azure.search.models.field) オブジェクトの [IsFilterable プロパティ](/dotnet/api/microsoft.azure.search.models.field.isfilterable) を `true` に設定することで、フィールドをフィルター可能にすることができます。 また、これは、[IsFilterable 属性](/dotnet/api/microsoft.azure.search.isfilterableattribute)を使用して宣言によって行うこともできます。 次の例では、属性は、インデックス定義にマップされるモデル クラスの `BaseRate` プロパティで設定されています。
 
 ```csharp
     [IsFilterable, IsSortable, IsFacetable]

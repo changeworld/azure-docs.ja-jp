@@ -1,14 +1,16 @@
 ---
 title: ナレッジ ベースの共同利用 - QnA Maker
 description: QnA Maker では、複数のユーザーがナレッジ ベースを共同利用できます。 この機能は、Azure ロール ベースのアクセス制御 (Azure RBAC) で提供されています。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 0d59ca83e6067c083e4bfebdb7afaaf6669dda8a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 8adc02d4b397c2b0bdaf5d3998cfbe229c896d41
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926849"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776852"
 ---
 # <a name="collaboration-with-authors-and-editors"></a>作成者や編集者との共同作業
 
@@ -62,7 +64,7 @@ QnA Maker サービスを共有する相手が [QnA Maker ポータル](https://
 
 ナレッジ ベースを選択すると、その QnA Maker リソースでの現在のロールがナレッジベース名の横に表示されます。
 
-:::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-knowledge-base-role-name.png" alt-text="編集モードのナレッジ ベースのスクリーンショット。Web ページの左上隅にあるナレッジ ベース名の横に、かっこで囲まれたロール名が表示されています。":::
+:::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-knowledge-base-role-name.png" alt-text="QnA Maker IAM のロールの追加。":::
 
 ## <a name="next-steps"></a>次のステップ
 

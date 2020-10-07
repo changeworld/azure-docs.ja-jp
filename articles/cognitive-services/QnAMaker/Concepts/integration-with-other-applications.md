@@ -1,14 +1,16 @@
 ---
 title: 他のアプリケーションとの統合 - QnA Maker
 description: QnA Maker は、チャット ボットなどのクライアント アプリケーションや、Language Understanding (LUIS) などの他の自然言語処理サービスに統合されます。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: c1edbfb6badfb73ce08a99709da0f8bfb61b7dc3
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: ff5e64dd31542b1e31df6d9ca709567b322995ce
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804190"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776529"
 ---
 # <a name="design-knowledge-base-for-client-applications"></a>クライアント アプリケーション用にナレッジ ベースを設計する
 

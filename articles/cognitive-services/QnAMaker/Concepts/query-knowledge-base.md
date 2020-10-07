@@ -1,14 +1,16 @@
 ---
 title: ナレッジ ベースに対してクエリを実行する - QnA Maker
 description: ナレッジ ベースは公開する必要があります。 公開されると、ナレッジ ベースに対するクエリは、generateAnswer API を使用してランタイム予測エンドポイントで実行されます。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: cb777aa16fada50811cce1bbf49f28662c62b49b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e903714aab35de40c1179045505e1520c65b3ebc
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219069"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776920"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>回答を求めてナレッジ ベースに対してクエリを実行する
 

@@ -1,14 +1,16 @@
 ---
 title: ナレッジ ベースを管理する - QnA Maker
 description: QnA Maker を使うと、ナレッジ ベースの設定とコンテンツにアクセスできるようになり、ナレッジ ベースを管理できます。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 08736ce61e6768cfd9ac3d3ded7092a4ab93fca9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 890b555703f922168a820a0535296b9f55218752
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551780"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777731"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>ナレッジ ベースを作成して設定を管理する
 

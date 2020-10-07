@@ -2,14 +2,16 @@
 title: コンテンツの種類 - QnA Maker
 description: コンテンツの種類には、PDF、DOCX、TXT など、多くの標準的な構造化ドキュメントが含まれています。
 services: cognitive-services
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 04d7c46a7aa347718cf6bc593a92a2f0430eb6fd
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 50924ce035d9a7dc7778cf45668dc993ee5486e4
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263165"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776988"
 ---
 # <a name="content-types-of-documents-you-can-add-to-a-knowledge-base"></a>ナレッジ ベースに追加できるドキュメントのコンテンツの種類
 コンテンツの種類には、PDF、DOC、TXT など、多くの標準的な構造化ドキュメントが含まれています。

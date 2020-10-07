@@ -1,17 +1,17 @@
 ---
 title: Azure Database for PostgreSQL - Single Serverでのクエリ ストアのベスト プラクティス
 description: この記事では、Azure Database for PostgreSQL - Single Server でのクエリ ストア関連のベスト プラクティスについて説明します。
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 51239f4cf49784dd47470e1272b90508eaf25e6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd39b7ecd51902f5035b4cd17d59dea964d0c962
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70764230"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708834"
 ---
 # <a name="best-practices-for-query-store"></a>クエリ ストア関連のベスト プラクティス
 

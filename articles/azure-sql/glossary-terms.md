@@ -7,17 +7,17 @@ ms.service: sql-database
 ms.subservice: service
 ms.custom: sqldbrb=4
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/22/2020
-ms.openlocfilehash: f05871c41e2deec3f6a52446844c0b8fd2c9038d
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 18ff2c9690de1708cd8382d83a0c01662a8e6fb0
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220806"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619782"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Azure SQL Database 用語集
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]

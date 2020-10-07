@@ -4,15 +4,15 @@ description: Azure Defender ダッシュボードの機能について説明し�
 author: memildin
 ms.author: memildin
 ms.date: 9/22/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 268781f7f14ad93ca63cbbcbef1fb697d46b33a3
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 35469c7a11d47e586187b55bde1e8ad8a0c94f5f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977340"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448415"
 ---
 # <a name="the-azure-defender-dashboard"></a>Azure Defender ダッシュボード
 

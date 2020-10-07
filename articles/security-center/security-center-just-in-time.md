@@ -5,15 +5,15 @@ services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 5b2446aa62b16dcf9773c367d87faac65d79fa0b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4a709527c0de2e092bcca2bbd9bc596aa0eb4cc0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904861"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440718"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>Just-In-Time アクセスを使用して管理ポートをセキュリティで保護する
 
@@ -53,7 +53,7 @@ Security Center またはプログラムを使用して、独自のカスタム 
 
 ### <a name="enable-jit-on-your-vms-from-azure-security-center"></a>Azure Security Center から VM で JIT を有効にする <a name="jit-asc"></a>
 
-:::image type="content" source="./media/security-center-just-in-time/jit-config-security-center.gif" alt-text="Azure Security Center での JIT VM アクセスの構成":::
+:::image type="content" source="./media/security-center-just-in-time/jit-config-security-center.gif" alt-text="Azure Security Center での JIT VM アクセスの構成&quot;:::
 
 Security Center から、JIT VM アクセスを有効にして構成することができます。
 
@@ -69,7 +69,7 @@ Security Center から、JIT VM アクセスを有効にして構成すること
     - **[未構成]** - JIT は有効になっていないが、JIT をサポートできる VM。 これらの VM では JIT を有効にすることをお勧めします。
     - **[サポート外]** - JIT が有効になっておらず、機能をサポートしていない VM。 VM は次の理由によりこのタブに表示される場合があります。
       - ネットワーク セキュリティ グループ (NSG) がない - JIT には NSG を構成する必要があります
-      - クラシック VM - Azure Resource Manager を使用してデプロイされた VM は JIT でサポートされますが、"クラシック デプロイ" はサポートされません。 [クラシックと Azure Resource Manager のデプロイ モデルの詳細](../azure-resource-manager/management/deployment-models.md)。
+      - クラシック VM - Azure Resource Manager を使用してデプロイされた VM は JIT でサポートされますが、&quot;クラシック デプロイ" はサポートされません。 [クラシックと Azure Resource Manager のデプロイ モデルの詳細](../azure-resource-manager/management/deployment-models.md)。
       - その他 - サブスクリプションまたはリソース グループのセキュリティ ポリシーで JIT ソリューションが無効になっている場合は、VM がこのタブに表示されることがあります。
 
 1. **[未構成]** タブで、JIT で保護する VM をマークし、 **[VM で JIT を有効にする]** を選択します。 
@@ -241,7 +241,23 @@ Azure portal (Security Center または Azure 仮想マシン) またはプロ�
 
 VM で JIT が有効になっている場合は、それに接続するためのアクセス権を要求する必要があります。 JIT を有効にした方法に関係なく、サポートされているいずれかの方法でアクセス権を要求できます。
 
-:::image type="content" source="./media/security-center-just-in-time/jit-request-security-center.gif" alt-text="Security Center からの JIT アクセス権の要求":::
+:::image type="content" source="./media/security-center-just-in-time/jit-request-security-center.gif" alt-text="Azure Security Center での JIT VM アクセスの構成&quot;:::
+
+Security Center から、JIT VM アクセスを有効にして構成することができます。
+
+1. Azure Defender ダッシュボードを開き、高度な保護領域から **[Just In Time VM アクセス]** を選択します。
+
+    **[Just-In-Time VM アクセス]** ページが開き、VM が次のタブにグループ化されます。
+
+    - **[構成済み]** - Just-In-Time VM アクセスをサポートするように既に構成されている VM。 [構成済み] タブには VM ごとに以下が表示されます。
+        - 過去 7 日間に承認された JIT 要求の数
+        - 最終アクセス日時
+        - 構成されている接続の詳細
+        - 最後のユーザー
+    - **[未構成]** - JIT は有効になっていないが、JIT をサポートできる VM。 これらの VM では JIT を有効にすることをお勧めします。
+    - **[サポート外]** - JIT が有効になっておらず、機能をサポートしていない VM。 VM は次の理由によりこのタブに表示される場合があります。
+      - ネットワーク セキュリティ グループ (NSG) がない - JIT には NSG を構成する必要があります
+      - クラシック VM - Azure Resource Manager を使用してデプロイされた VM は JIT でサポートされますが、&quot;クラシック デプロイ":::
 
 1. **[Just In Time VM アクセス]** ページで、 **[構成済み]** タブを選択します。
 

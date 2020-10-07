@@ -1,14 +1,16 @@
 ---
 title: サービス構成 - QnA Maker
 description: リソースを構成する方法と場所について理解します。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 02/21/2020
-ms.openlocfilehash: 3be32d1778604121c2acac88415cbfbc4bdbca3d
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 1d54b912d2177a3ccd0cf34d57fc0358af653199
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804262"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776716"
 ---
 # <a name="service-configuration"></a>サービス構成
 

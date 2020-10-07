@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 67c924c350fa2bc69f724d44a1b43c7e878e493a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8a1b30803494facf6eaabcc3695770d694b4e221
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90932518"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708681"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL のコンピューティングとストレージのオプション - フレキシブル サーバー (プレビュー)
 
@@ -23,7 +23,7 @@ Azure Database for MySQL フレキシブル サーバーは、次の 3 つのコ
 | リソース/レベル | **バースト可能** | **汎用** | **メモリ最適化** |
 |:---|:----------|:--------------------|:---------------------|
 | VM シリーズ| B シリーズ | Ddsv4 シリーズ | Edsv4 シリーズ|
-| 仮想コア | 1、2 | 2、4、8、16、32、64 | 2、4、8、16、32、48、64 |
+| 仮想コア | 1、2 | 2、4、8、16、32、48、64 | 2、4、8、16、32、48、64 |
 | 仮想コアあたりのメモリ | 変数 | 4 GiB | 8 GiB* |
 | ストレージ サイズ | 5 GiB ～ 16 TiB | 5 GiB ～ 16 TiB | 5 GiB ～ 16 TiB |
 | データベース バックアップのリテンション期間 | 1 ～ 35 日間 | 1 ～ 35 日間 | 1 ～ 35 日間 |

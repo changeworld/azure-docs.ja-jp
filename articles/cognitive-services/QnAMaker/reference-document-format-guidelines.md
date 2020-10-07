@@ -1,14 +1,16 @@
 ---
 title: インポート ドキュメント形式のガイドライン - QnA Maker
 description: コンテンツに対して最善の結果が得られるように、ドキュメントをインポートするときはこれらのガイドラインを使用してください。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 04/06/2020
-ms.openlocfilehash: b94c8b3fd4d4c082e0bc49c6bd42d3b37e963988
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: d35ea57a68e500deffa99033b83114ec518dd5e3
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530779"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776733"
 ---
 # <a name="format-guidelines-for-imported-documents-and-urls"></a>インポートされたドキュメントおよび URL の形式のガイドライン
 

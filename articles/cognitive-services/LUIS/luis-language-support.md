@@ -3,20 +3,18 @@ title: 言語サポート - LUIS
 titleSuffix: Azure Cognitive Services
 description: LUIS はサービス内にさまざまな機能を備えています。 すべての機能の言語パリティが同じであるわけではありません。 関心のある機能が、自分の対象とする言語カルチャでサポートされていることをご確認ください。 LUIS アプリはカルチャ固有で、一度設定したら変更できません。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
-ms.author: diberry
-ms.openlocfilehash: b60a777960f3c6f8a2415ca551217d35b7f3497d
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: e377f910e1c1ddda864ea312b40fe3608c166376
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588024"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541392"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS の言語と地域のサポート
 

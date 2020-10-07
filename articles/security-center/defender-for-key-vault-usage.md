@@ -3,16 +3,16 @@ title: Azure Defender for Key Vault アラートに対応する方法
 description: Azure Defender for Key Vault のアラートに対応するために必要な手順について説明します。
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
-ms.topic: conceptual
+ms.date: 9/22/2020
+ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: a3f47f00b171601e73ea4668286adf944f48459f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e3eb6b750c805951a67a2e869c862f1285a342a8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90932575"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448318"
 ---
 # <a name="respond-to-azure-defender-for-key-vault-alerts"></a>Azure Defender の Key Vault アラートに対応する
 Azure Defender for Key Vault からアラートを受け取った場合は、以下の説明に従って調査し、アラートに対応することをお勧めします。 Azure Defender for Key Vault によってアプリケーションと資格情報が保護されているため、アラートをトリガーしたアプリケーションまたはユーザーを熟知している場合でも、すべてのアラートを取り巻く状況を確認することが重要です。  

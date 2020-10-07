@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 09/30/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: f84298c2c43afbb9e0379516be1e83002a7e3926
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a0cba1c3a7a3b713fa5f0603ad9e116068d8df66
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228683"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91618473"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 で使用できる BLOB ストレージ機能
 
@@ -50,6 +50,7 @@ Azure Data Lake Storage Gen2 で使用できる BLOB ストレージ機能を次
 |blobfuse|プレビュー|まだサポートされていません|[blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法](storage-how-to-mount-container-linux.md)|
 |アカウントのフェールオーバー|まだサポートされていません|まだサポートされていません|[ディザスター リカバリーとアカウントのフェールオーバー](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |BLOB コンテナーの ACL|まだサポートされていません<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|まだサポートされていません<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|[コンテナー ACL の設定](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)|
+|カスタマー指定のキー|まだサポートされていません|まだサポートされていません|[BLOB ストレージに対する要求で暗号化キーを指定する](encryption-customer-provided-keys.md)|
 |カスタム ドメイン|まだサポートされていません|まだサポートされていません|[カスタム ドメインを Azure Blob ストレージ エンドポイントにマップする](storage-custom-domain-name.md)|
 |暗号化スコープ|まだサポートされていません|まだサポートされていません|[暗号化スコープの作成と管理 (プレビュー)](encryption-scope-manage.md)|
 |Change Feed|まだサポートされていません|まだサポートされていません|[Azure Blob Storage の変更フィードのサポート](storage-blob-change-feed.md)|

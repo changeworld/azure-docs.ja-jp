@@ -8,17 +8,17 @@ manager: rkarlin
 ms.assetid: 9268b8dd-a327-4e36-918e-0c0b711e99d2
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: bbabceeea2fd009efe1098e37a0b1c9dcb8a48aa
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 12140b71f8ef720a9e48b486a43e683b5766d102
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894725"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439010"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>適応型アプリケーション制御を使用して、マシンの攻撃対象領域を減らす
 
@@ -229,4 +229,4 @@ REST API から使用できる関数をいくつか以下に示します。
 このドキュメントでは、Azure と Azure 以外のマシンで実行されるアプリケーションの許可リストを定義するために、Azure Security Center で適応型アプリケーション制御を使用する方法を学習しました。 Security Center の他のいくつかのクラウド ワークロード保護機能の詳細については、次のページを参照してください。
 
 * [Just-In-Time (JIT) VM アクセスについて](just-in-time-explained.md)
-* [Azure Kubernetes クラスターのセキュリティ保護](azure-kubernetes-service-integration.md)
+* [Azure Kubernetes クラスターのセキュリティ保護](defender-for-kubernetes-introduction.md)

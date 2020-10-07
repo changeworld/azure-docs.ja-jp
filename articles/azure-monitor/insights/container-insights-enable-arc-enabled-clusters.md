@@ -2,13 +2,13 @@
 title: Azure Arc 対応 Kubernetes クラスターに Azure Monitor for containers を構成する | Microsoft Docs
 description: この記事では、Azure Monitor for containers を使用して Azure Arc 対応 Kubernetes クラスターの監視を構成する方法を説明します。
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 44512acbd09df449dbba2177bb10f22f480b82d6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/23/2020
+ms.openlocfilehash: 79a534e4f37fb0154115e43402f031752a603ccb
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977524"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620292"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Azure Arc 対応 Kubernetes クラスターの監視を有効にする
 
@@ -21,8 +21,6 @@ PowerShell または Bash スクリプトを使用して、1 つ以上の既存�
 Azure Monitor for containers では、次の機能を除き、[概要](container-insights-overview.md)記事で説明されているとおり Azure Arc 対応 Kubernetes (プレビュー) の監視をサポートしています。
 
 - ライブ データ (プレビュー)
-
-- クラスターノードとポッドから[メトリックを収集](container-insights-update-metrics.md)し、Azure Monitor メトリック データベースに格納する
 
 Azure Monitor for containers では、以下が公式にサポートされています。
 
@@ -106,7 +104,7 @@ Azure Monitor for containers では、以下が公式にサポートされてい
 1. 次のコマンドを使用し、監視アドオンを使用してクラスターを構成するスクリプトをローカル フォルダーにダウンロードし、保存します。
 
     ```powershell
-    wget https://aka.ms/enable-monitoring-powershell-script -outfile enable-monitoring.ps1
+    Invoke-WebRequest https://aka.ms/enable-monitoring-powershell-script -OutFile enable-monitoring.ps1
     ```
 
 2. Azure Arc 対応 Kubernetes クラスター リソースのリソース ID を表す `subscriptionId`、`resourceGroupName`、`clusterName` の対応する値を設定することによって、`$azureArcClusterResourceId` 変数を構成します。

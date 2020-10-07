@@ -7,13 +7,13 @@ services: security-center
 ms.author: memildin
 ms.date: 09/10/2020
 ms.service: security-center
-ms.topic: conceptual
-ms.openlocfilehash: 0d4c2ddc6b18d2f6767fb3a2761bc6a247e101a1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.topic: how-to
+ms.openlocfilehash: c4eb30df74e2a8d6748ede987df0b1c41cff0ca3
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904893"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448482"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>Azure Defender のアラートの抑制
 

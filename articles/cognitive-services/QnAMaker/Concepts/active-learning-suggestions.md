@@ -1,14 +1,16 @@
 ---
 title: アクティブ ラーニングの提案 - QnA Maker
 description: アクティブ ラーニングの提案を使用すると、質問と回答のペアに対して、ユーザーの送信内容に基づく代わりの質問を提案することで、ナレッジ ベースの品質を改善できます。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: edbe06b12fbb97473b28ccca968fd3e7d8366152
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: e8cdb1d471ceef2aef790c426424b9224faac5ec
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804220"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777039"
 ---
 # <a name="active-learning-suggestions"></a>アクティブ ラーニングの提案
 

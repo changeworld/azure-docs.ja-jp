@@ -2,7 +2,7 @@
 title: Azure ExpressRoute を Oracle Cloud Infrastructure と接続する | Microsoft Docs
 description: Azure ExpressRoute を Oracle Cloud Infrastructure (OCI) FastConnect と接続して、クロスクラウド Oracle アプリケーション ソリューションを使用できるようにします
 documentationcenter: virtual-machines
-author: rgardler
+author: dbakevlar
 manager: ''
 editor: ''
 tags: azure-resource-manager
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/16/2020
 ms.author: rogardle
-ms.openlocfilehash: 95f1f7b42b88baaab6d89192f226ca67962544fb
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 5bb26a21317401ddbd0d9b8f8a9a501c78153842
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220475"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776580"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Azure と Oracle Cloud Infrastructure 間の直接相互接続をセットアップする  
 
@@ -96,7 +96,7 @@ Microsoft では、ネットワーク相互接続の自動デプロイを有効�
 
 相互接続を削除するには、指定された特定の順序で以下の手順を実行する必要があります。 そうしないと、ExpressRoute 回線が "失敗した状態" になります。
 
-1. ExpressRoute 接続を削除します。 接続のページで **[削除]** アイコンをクリックして接続を削除します。 詳細については、[ExpressRoute のドキュメント](../../../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#delete-a-connection-to-unlink-a-vnet)を参照してください。
+1. ExpressRoute 接続を削除します。 接続のページで **[削除]** アイコンをクリックして接続を削除します。 詳細については、[ExpressRoute のドキュメント](../../../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#clean-up-resources)を参照してください。
 1. Oracle Cloud Console から Oracle FastConnect を削除します。
 1. Oracle FastConnect 回線が削除されたら、Azure ExpressRoute 回線を削除できます。
 

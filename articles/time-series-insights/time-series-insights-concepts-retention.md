@@ -9,16 +9,19 @@ manager: diviso
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 005725acf7270ff87ac9418f27941bdb205ae986
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4f236679d0662df852581a6a8408ed6bc0d4e3fe
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87059432"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535691"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights-gen1"></a>Azure Time Series Insights Gen1 のデータ保有の概要
+
+> [!CAUTION]
+> これは Gen1 の記事です。
 
 この記事では、Azure Time Series Insights 環境のデータ保有に影響する 2 つの主要な設定について説明します。
 
@@ -37,7 +40,8 @@ ms.locfileid: "87059432"
 
 > [!NOTE]
 > 既定では、新しい環境を作成するとき、**古いデータを消去する**ようにリテンション期間が設定されます。 Azure portal で、必要に応じて、作成後にこの設定を切り替えることができます。Azure Time Series Insights 環境の **[構成]** ページを利用してください。
-> * リテンション期間ポリシーを構成する方法については、「[Azure Time Series Insights のリテンション期間の構成](time-series-insights-how-to-configure-retention.md)」を参照してください。
+>
+> - リテンション期間ポリシーを構成する方法については、「[Azure Time Series Insights のリテンション期間の構成](time-series-insights-how-to-configure-retention.md)」を参照してください。
 
 両方のデータ保有ポリシーの詳細について、以下で詳しく説明します。
 
@@ -69,8 +73,8 @@ ms.locfileid: "87059432"
 - これはデータ損失防止に役立ちますが、イングレスの一時停止がイベント ソースのリテンション期間より長引いた場合、最も新しいデータが失われる可能性があります。
 - ただし、環境の最大容量に到達すると、次のような追加のアクションが行われるまでデータ イングレスが一時停止となります。
 
-   - 「[Azure Time Series Insights 環境をスケーリングする方法](time-series-insights-how-to-scale-your-environment.md)」に説明されているように環境の最大容量を増やしてスケール ユニットを追加する。
-   - データ保有期間に到達し、データが消去され、環境が最大容量より下に引き下げられる。
+  - 「[Azure Time Series Insights 環境をスケーリングする方法](time-series-insights-how-to-scale-your-environment.md)」に説明されているように環境の最大容量を増やしてスケール ユニットを追加する。
+  - データ保有期間に到達し、データが消去され、環境が最大容量より下に引き下げられる。
 
 ### <a name="example-three"></a>例 3
 
