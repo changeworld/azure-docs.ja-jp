@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5be2ff48ea5510c54c79e76e8bae082bd5085794
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: abc2367c309f46ee1b29a51145c67e8d71919774
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90945351"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91665397"
 ---
 # <a name="communication-services-notifications"></a>Communication Services の通知
 
@@ -36,7 +36,7 @@ Azure Communication Services は [Azure Event Grid](https://azure.microsoft.com/
 
 電話の着信を受け取ったときにユーザーのモバイル デバイスに自動的にプッシュ通知を送信するために、Azure Notification Hub をCommunication Services リソースに接続することができます。 これらのプッシュ通知を使用して、アプリケーションをバックグラウンドからウェイク アップし、ユーザーが通話を受け入れたり拒否したりできるようにする UI を表示してください。 
 
-:::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="Communication Services が Azure Notifications Hub とどのように統合されるかを示す図。":::
+:::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="Communication Services が Event Grid とどのように統合されるかを示す図。":::
 
 Communication Services はパススルー サービスとして Azure Notification Hub を使用することで、[直接送信](https://docs.microsoft.com/rest/api/notificationhubs/direct-send) API を使用してプラットフォーム固有のさまざまなプッシュ通知サービスと通信します。 これにより、既存の Azure Notification Hub のリソースと構成を再利用して、待ち時間が短く、信頼性の高い通話通知をアプリケーションに配信できます。
 
@@ -66,7 +66,7 @@ armclient POST /subscriptions/<sub_id>/resourceGroups/<resource_group>/providers
 
 ポータルで、Azure Communication Services リソースに移動します。 Communication Services リソース内で Communication Services ページの左側のメニューから [プッシュ通知] を選択し、前にプロビジョニングした通知ハブを接続します。 ここでは、接続文字列とリソース ID を指定する必要があります。
 
-:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Azure Portal 内のプッシュ通知の設定を示すスクリーンショット。":::
+:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Communication Services が Event Grid とどのように統合されるかを示す図。":::
 
 #### <a name="device-registration"></a>デバイス登録 
 

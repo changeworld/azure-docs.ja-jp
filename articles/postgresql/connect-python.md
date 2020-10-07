@@ -1,19 +1,19 @@
 ---
 title: クイック スタート:Python を使用して接続する - Azure Database for PostgreSQL - Single Server
 description: このクイックスタートでは、Azure Database for PostgreSQL - Single Server に接続してデータを照会するために使用できる、Python コード サンプルを紹介します。
-author: rachel-msft
-ms.author: raagyema
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.custom: mvc, devcenter, devx-track-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: 9fb0c02bcf040b1d27831e72d31ff07a7c38ad0a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6452934828c4e74563daf001271b3ce018ab58e3
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90901817"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91707899"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>クイック スタート:Python を使用して Azure Database for PostgreSQL - Single Server に接続し、データにクエリを実行する
 
@@ -105,7 +105,7 @@ conn.close()
 
 コードが正常に実行されると、次の出力が生成されます。
 
-:::image type="content" source="media/connect-python/2-example-python-output.png" alt-text="コマンドライン 出力":::
+:::image type="content" source="media/connect-python/2-example-python-output.png" alt-text="Azure Database for PostgreSQL サーバーの名前":::
 
 ## <a name="read-data"></a>データの読み取り
 次のコード例では、Azure Database for PostgreSQL データベースに接続し、[cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) と SQL **SELECT** ステートメントを使用してデータを読み取ります。 この関数はクエリを受け取り、[cursor.fetchall()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall) を使用して反復処理する結果セットを返します。 

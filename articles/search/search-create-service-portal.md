@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/16/2020
-ms.openlocfilehash: 246cdb458b4529c60f61c3ddcb26280c1e3223af
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/05/2020
+ms.openlocfilehash: 713199dc6b1eb1330b49c320022af137d0d1402e
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91268368"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741008"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>クイック スタート:ポータルで Azure Cognitive Search サービスを作成する
 
@@ -47,7 +47,7 @@ PowerShell をお好みですか? Azure Resource Manager [サービス テンプ
 
 1. 検索バーを使用して "Azure Cognitive Search" を検索するか、 **[Web]**  >  **[Azure Cognitive Search]** を選択してリソースに移動します。
 
-![ポータルでリソースを作成する](./media/search-create-service-portal/find-search3.png "ポータルでリソースを作成する")
+:::image type="content" source="media/search-create-service-portal/find-search3.png" alt-text="ポータルでリソースを作成する" border="false":::
 
 ## <a name="choose-a-subscription"></a>サブスクリプションを選択します。
 
@@ -59,11 +59,11 @@ PowerShell をお好みですか? Azure Resource Manager [サービス テンプ
 
 リソースを単一グループに結合していない場合、または関連のないソリューションで使用されるリソースが既存のリソース グループに格納されている場合は、Azure Cognitive Search リソース用の新しいリソース グループを作成します。 
 
-![新しいリソース グループを作成する](./media/search-create-service-portal/new-resource-group.png "新しいリソース グループを作成する")
+:::image type="content" source="media/search-create-service-portal/new-resource-group.png" alt-text="ポータルでリソースを作成する" border="false":::
 
 時間が経つと共に、現在のコストと予想されるコストをまとめて追跡したり、個々のリソースの料金を確認したりできるようになります。 次のスクリーンショットは、複数のリソースを 1 つのグループにまとめたときに表示されるコスト情報の種類を示しています。
 
-![リソース グループ レベルでコストを管理する](./media/search-create-service-portal/resource-group-cost-management.png "リソース グループ レベルでコストを管理する")
+:::image type="content" source="media/search-create-service-portal/resource-group-cost-management.png" alt-text="ポータルでリソースを作成する" border="false":::
 
 > [!TIP]
 > グループを削除するとその中のすべてのサービスが削除されるため、リソース グループによってクリーンアップが簡略化されます。 複数のサービスを利用するプロトタイプ プロジェクトの場合は、すべてのサービスを同じリソース グループに配置することで、プロジェクト終了後のクリーンアップが容易になります。
@@ -114,11 +114,11 @@ Azure Cognitive Search はほとんどのリージョンで利用できます。
 
 必要な入力作業を終えたら、サービスの作成に進みます。 
 
-![サービスの確認と作成](./media/search-create-service-portal/new-service3.png "サービスの確認と作成")
+:::image type="content" source="media/search-create-service-portal/new-service3.png" alt-text="ポータルでリソースを作成する" border="false":::
 
 サービスは数分以内にデプロイされます。 Azure 通知を使用して進行状況を監視できます。 今後アクセスしやすくするために、サービスをご自分のダッシュ ボードにピン留めすることを検討してください。
 
-![サービスの監視とピン留め](./media/search-create-service-portal/monitor-notifications.png "サービスの監視とピン留め")
+:::image type="content" source="media/search-create-service-portal/monitor-notifications.png" alt-text="ポータルでリソースを作成する" border="false":::
 
 ## <a name="get-a-key-and-url-endpoint"></a>キーと URL エンドポイントを取得する
 
@@ -128,7 +128,7 @@ Azure Cognitive Search はほとんどのリージョンで利用できます。
 
 2. **[キー]** のページで、いずれかの管理者キー (同等) をコピーします。 ご利用のサービスのオブジェクトを作成、更新、削除するためには、管理者の API キーが必要です。 これに対し、クエリ キーはインデックス コンテンツへの読み取りアクセスを提供します。
 
-   ![URL エンドポイントを含むサービスの概要ページ](./media/search-create-service-portal/get-url-key.png "URL エンドポイントとその他のサービスの詳細")
+   :::image type="content" source="media/search-create-service-portal/get-url-key.png" alt-text="ポータルでリソースを作成する" border="false":::
 
 ポータル ベースのタスクにエンドポイントとキーは必要ありません。 ポータルは、ご利用の Azure Cognitive Search リソースにあらかじめ管理者権限付きでリンクされています。 ポータルのチュートリアルについては、[クイック スタート: ポータルで Azure Cognitive Search インデックスを作成する](search-get-started-portal.md)方法のページから始めてください。
 
@@ -149,7 +149,7 @@ Azure Cognitive Search はほとんどのリージョンで利用できます。
 2. 左のナビゲーション ウィンドウで、 **[設定]**  >  **[スケール]** を選択します。
 3. スライダーを使って、いずれかの種類のリソースを追加します。
 
-![容量を追加する](./media/search-create-service-portal/settings-scale.png "レプリカとパーティションを使用して容量を追加する")
+:::image type="content" source="media/search-create-service-portal/settings-scale.png" alt-text="ポータルでリソースを作成する" border="false":::
 
 > [!Note]
 > パーティションごとのストレージと速度がより高いレベルで向上します。 詳細については、[容量と制限](search-limits-quotas-capacity.md)に関するページをご覧ください。

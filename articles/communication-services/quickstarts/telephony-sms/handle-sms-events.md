@@ -6,19 +6,19 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 02a0a5dd5cfe3a1ecaa264f1e81c848a8da6c58d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 072e885ec1c618229141dea477cd598d8db34ce7
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90945839"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756758"
 ---
 # <a name="quickstart-handle-sms-events"></a>クイック スタート:SMS イベントの処理
 
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 Azure Event Grid を使用して Communication Services の SMS イベントを処理することにより、Azure Communication Services を開始します。 
 
@@ -65,11 +65,11 @@ Azure Portal で次の操作を行います。
 
 [Azure Communication Services でサポートされているイベント](../../concepts/event-handling.md)の完全な一覧を確認してください。
 
-:::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="SMS Received および SMS Delivery Report Received のイベントの種類が選択されていることを示すスクリーンショット。":::
+:::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="リソースのイベント ページ内のイベント サブスクリプション ボタンの選択を示すスクリーンショット。":::
 
 **[エンドポイントのタイプ]** には **[Webhook]** を選択します。 
 
-:::image type="content" source="./media/handle-sms-events/select-events-create-linkwebhook.png" alt-text="[エンドポイントのタイプ] フィールドが [Webhook] に設定されていることを示すスクリーンショット。":::
+:::image type="content" source="./media/handle-sms-events/select-events-create-linkwebhook.png" alt-text="リソースのイベント ページ内のイベント サブスクリプション ボタンの選択を示すスクリーンショット。":::
 
 **[エンドポイント]** については、 **[エンドポイントの選択]** をクリックして、お使いの Web アプリの URL を入力します。
 
@@ -77,7 +77,7 @@ Azure Portal で次の操作を行います。
 
 次に、 **[選択の確認]** を選択します。
 
-:::image type="content" source="./media/handle-sms-events/select-events-create-selectwebhook-epadd.png" alt-text="Webhook エンドポイントの確認を示すスクリーンショット。":::
+:::image type="content" source="./media/handle-sms-events/select-events-create-selectwebhook-epadd.png" alt-text="リソースのイベント ページ内のイベント サブスクリプション ボタンの選択を示すスクリーンショット。":::
 
 ## <a name="viewing-sms-events"></a>SMS イベントの表示
 
@@ -94,9 +94,9 @@ Azure Portal で次の操作を行います。
 
 上記のいずれかのアクションを完了すると、`SMS Received` と `SMS Delivery Report Received` のイベントがお使いのエンドポイントに送信されることがわかります。 これらのイベントは、最初に設定した [Azure Event Grid ビューアーのサンプル](https://docs.microsoft.com/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/)に表示されます。 イベントの横にある目のアイコンを押すと、ペイロード全体を表示できます。 イベントは次のようになります。
 
-:::image type="content" source="./media/handle-sms-events/sms-received.png" alt-text="SMS 受信イベントの Event Grid スキーマを示すスクリーンショット。":::
+:::image type="content" source="./media/handle-sms-events/sms-received.png" alt-text="リソースのイベント ページ内のイベント サブスクリプション ボタンの選択を示すスクリーンショット。":::
 
-:::image type="content" source="./media/handle-sms-events/SMS-Delivery-Report-Received.png" alt-text="SMS Delivery Report Event の Event Grid スキーマを示すスクリーンショット。":::
+:::image type="content" source="./media/handle-sms-events/sms-delivery-report-received.png" alt-text="リソースのイベント ページ内のイベント サブスクリプション ボタンの選択を示すスクリーンショット。":::
 
 詳細については、[イベント スキーマとその他のイベントの概念](../../concepts/event-handling.md)に関する記事を参照してください
 

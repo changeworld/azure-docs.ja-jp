@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: marobert
-ms.openlocfilehash: 1235cb299fe887f20dd3f7e47c22eed2b9df6dc9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a9c8d604e5564526936f37edcc9eec5891443a47
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90945735"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779344"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,7 +44,7 @@ mvn archetype:generate -DgroupId=com.communication.quickstart -DartifactId=commu
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-administration</artifactId>
-    <version>1.0.0-beta.1</version> 
+    <version>1.0.0-beta.2</version> 
 </dependency>
 ```
 

@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 1dd3781b18f82a96f388b0e619ce62b45752a870
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f33d7efd1c136619767c3eadd93740442ae7239a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91292474"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91762044"
 ---
 # <a name="chat-concepts"></a>チャットに関する概念
 
@@ -128,7 +128,7 @@ Chat JavaScript クライアント ライブラリには、リアルタイムの
 
 これを実現する 1 つの方法として、信頼されたサービスをチャット スレッドのメンバーとして機能させることができます。 たとえば、言語の翻訳を有効にするとします。 このサービスは、他のメンバーが交換するメッセージをリッスンし [1]、Cognitive API を呼び出してその内容を目的の言語に翻訳し [2、3]、翻訳結果をチャット スレッドのメッセージとして送信する [4] という役割を担います。 
 
-これにより、メッセージ履歴には元のメッセージと翻訳されたメッセージの両方が含まれます。 クライアント アプリケーションに、元のメッセージまたは翻訳されたメッセージを表示するロジックを追加できます。 Cognitive API を使用してテキストを別の言語に翻訳する方法については、[こちらのクイックスタート](https://docs.microsoft.com/azure/cognitive-services/translator/quickstart-translate)をご覧ください。 
+これにより、メッセージ履歴には元のメッセージと翻訳されたメッセージの両方が含まれます。 クライアント アプリケーションに、元のメッセージまたは翻訳されたメッセージを表示するロジックを追加できます。 Cognitive API を使用してテキストを別の言語に翻訳する方法については、[こちらのクイックスタート](https://docs.microsoft.com/azure/cognitive-services/translator/quickstart-translator)をご覧ください。 
 
 :::image type="content" source="../media/chat/cognitive-services.png" alt-text="Communication Services のチャットのアーキテクチャを示す図。":::
 

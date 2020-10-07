@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: cd618cf5f2f82b9c87981e961ed401f3409ec9d4
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 0f43b667b94e39548d81e6c6258d987f47074cb1
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91580803"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761330"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-java"></a>クイック スタート:ご利用のソリューションに接続されている IoT プラグ アンド プレイ デバイスとやり取りする (Java)
 
@@ -71,12 +71,12 @@ git clone https://github.com/Azure/azure-iot-sdk-java.git
 「[IoT プラグ アンド プレイのクイックスタートとチュートリアル用の環境の設定](set-up-environment.md)」では、IoT ハブとデバイスに接続するようにサンプルを構成するための 2 つの環境変数を作成しました。
 
 * **IOTHUB_CONNECTION_STRING**: 先ほどメモした IoT ハブ接続文字列。
-* **DEVICE_ID**: `"my-pnp-device"`。
+* **IOTHUB_DEVICE_ID**: `"my-pnp-device"`。
 
 このクイックスタートでは、Java で記述されたサンプルの IoT ソリューションを使用して、先ほど設定したサンプル デバイスとやり取りします。
 
 > [!NOTE]
-> このサンプルでは、**IoT Hub サービス クライアント**の **com.microsoft.azure.sdk.iot.service.*;** 名前空間を使用します。 モデル ID を取得する方法の詳細については、[開発者ガイド](concepts-developer-guide-device-csharp.md)を参照してください。
+> このサンプルでは、**IoT Hub サービス クライアント**の **com.microsoft.azure.sdk.iot.service.*;** 名前空間を使用します。 モデル ID を取得する方法の詳細については、[開発者ガイド](concepts-developer-guide-service.md)を参照してください。
 
 1. **サービス** ターミナルとして使用する別のターミナル ウィンドウを開きます。
 

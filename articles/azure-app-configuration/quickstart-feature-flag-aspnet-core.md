@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: 4643e18088fe32f6b02f684b7a71307798b12c12
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 7d146004fb4fa120e08b4d67c1d68d51cc6f3c8f
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91441589"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767732"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>クイック スタート:ASP.NET Core アプリに機能フラグを追加する
 
@@ -29,7 +29,7 @@ ms.locfileid: "91441589"
 
 [!INCLUDE[Azure App Configuration resource creation steps](../../includes/azure-app-configuration-create.md)]
 
-7. **[操作]**  >  **[機能マネージャー]**  >  **[追加]** の順に選択して、*Beta* という機能フラグを追加します。
+8. **[操作]**  >  **[機能マネージャー]**  >  **[追加]** の順に選択して、*Beta* という機能フラグを追加します。
 
     > [!div class="mx-imgBorder"]
     > ![Beta という名前の機能フラグを有効にする](media/add-beta-feature-flag.png)

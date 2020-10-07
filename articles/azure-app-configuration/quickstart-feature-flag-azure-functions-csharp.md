@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 8/26/2020
 ms.author: alkemper
-ms.openlocfilehash: 5542dca6d9b1ab18cf1b9b93e20fa64da0eb1dd4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f57163b3d17877f7f8c66fa57fc8a0736c6affb7
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90998402"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767705"
 ---
 # <a name="quickstart-add-feature-flags-to-an-azure-functions-app"></a>クイック スタート:Azure Functions アプリに機能フラグを追加する
 
@@ -31,14 +31,14 @@ ms.locfileid: "90998402"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. **[機能マネージャー]**  >  **[+追加]** を選択して、`Beta` という機能フラグを追加します。
+7. **[機能マネージャー]**  >  **[+追加]** を選択して、`Beta` という機能フラグを追加します。
 
     > [!div class="mx-imgBorder"]
     > ![Beta という名前の機能フラグを有効にする](media/add-beta-feature-flag.png)
 
     現時点では `label` と `Description` を空欄にしておいてください。
 
-7. **[適用]** を選択して新しい機能フラグを保存します。
+8. **[適用]** を選択して新しい機能フラグを保存します。
 
 ## <a name="create-a-functions-app"></a>関数アプリを作成する
 

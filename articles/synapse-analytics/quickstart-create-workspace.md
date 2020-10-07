@@ -2,19 +2,19 @@
 title: 'クイックスタート: Synapse ワークスペースを作成する'
 description: このガイドの手順に従って、Synapse ワークスペースを作成します。
 services: synapse-analytics
-author: pimorano
+author: saveenr
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: ''
 ms.date: 09/03/2020
-ms.author: pimorano
+ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: cbf7fb8deba86dd966ccb8087823c76b20413db8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 04bbab477f20ec25ccb0e975dad2b30a511346d2
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91260361"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91667760"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>クイック スタート:Synapse ワークスペースを作成する
 このクイックスタートでは、Azure portal を使用して Azure Synapse ワークスペースを作成する手順について説明します。

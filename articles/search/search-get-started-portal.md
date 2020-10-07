@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 09/16/2020
-ms.openlocfilehash: 0a28bd0d4101fc9d49413adaaccc0a6d38ec64ed
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 460c37107ac2dbd8bc3377d3716e708331db9904
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91307723"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740931"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Cognitive Search インデックスを作成する
 
@@ -35,7 +35,7 @@ ms.locfileid: "91307723"
 
 サービス ダッシュボードのセクションには、既に存在するインデックス、インデクサー、データ ソースの数が表示されます。 
 
-![インデックス、インデクサー、およびデータソースの一覧](media/search-get-started-portal/tiles-indexers-datasources.png)
+:::image type="content" source="media/search-get-started-portal/tiles-indexers-datasources.png" alt-text="インデックス、インデクサー、およびデータソースの一覧":::
 
 ## <a name="create-an-index-and-load-data"></a><a name="create-index"></a>インデックスの作成とデータの読み込み
 
@@ -49,11 +49,9 @@ ms.locfileid: "91307723"
 
 1. [使用する検索サービスを探し](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)、[概要] ページ上で、コマンド バーの **[データのインポート]** をクリックして検索インデックスを作成し、設定します。
 
-   ![[データのインポート] コマンド](media/search-get-started-portal/import-data-cmd.png)
+   :::image type="content" source="media/search-get-started-portal/import-data-cmd.png" alt-text="インデックス、インデクサー、およびデータソースの一覧" になります。
 
-1. ウィザードで **[データに接続します]**  >  **[サンプル]**  >  **[hotels-sample]** の順にクリックします。 このデータ ソースは組み込まれています。 独自のデータ ソースを作成する場合は、名前、型、接続情報を指定する必要があります。 作成すると、他のインポート操作で再度使用できる "既存のデータ ソース" になります。
-
-   ![サンプル データセットの選択](media/search-get-started-portal/import-datasource-sample.png)
+   :::image type="content" source="media/search-get-started-portal/import-datasource-sample.png" alt-text="インデックス、インデクサー、およびデータソースの一覧":::
 
 1. 次のページに進みます。
 
@@ -63,7 +61,7 @@ ms.locfileid: "91307723"
 
 今回はこの手順をスキップして、 **[対象インデックスをカスタマイズします]** に直接進みましょう。
 
-   ![コグニティブ スキル手順のスキップ](media/search-get-started-portal/skip-cog-skill-step.png)
+   :::image type="content" source="media/search-get-started-portal/skip-cog-skill-step.png" alt-text="インデックス、インデクサー、およびデータソースの一覧":::
 
 > [!TIP]
 > AI インデックス作成の例は、[クイックスタート](cognitive-search-quickstart-blob.md)または[チュートリアル](cognitive-search-tutorial-blob.md)内でステップ実行できます。
@@ -87,7 +85,7 @@ ms.locfileid: "91307723"
 
    既存の hotels データ ソースを使用してウィザードを 2 回目に再実行した場合は、インデックスが既定の属性で構成されることはありません。 以降のインポートでは、属性を手動で選択する必要があります。 
 
-   ![生成された hotels のインデックス](media/search-get-started-portal/hotelsindex.png)
+   :::image type="content" source="media/search-get-started-portal/hotelsindex.png" alt-text="インデックス、インデクサー、およびデータソースの一覧":::
 
 2. 次のページに進みます。
 
@@ -100,7 +98,7 @@ ms.locfileid: "91307723"
 
 **[送信]** をクリックして、インデクサーを作成し、同時に実行します。
 
-  ![hotels のインデクサー](media/search-get-started-portal/hotels-indexer.png)
+  :::image type="content" source="media/search-get-started-portal/hotels-indexer.png" alt-text="インデックス、インデクサー、およびデータソースの一覧":::
 
 ## <a name="monitor-progress"></a>進行状況の監視
 
@@ -108,7 +106,7 @@ ms.locfileid: "91307723"
 
 ポータルによってページが更新されるまで数分かかることがありますが、新規に作成したインデクサーが一覧に表示されます。"進行中" または "成功" を示すステータスと、インデックスが作成されたドキュメントの数も表示されます。
 
-   ![インデクサーの進行状況のメッセージ](media/search-get-started-portal/indexers-inprogress.png)
+   :::image type="content" source="media/search-get-started-portal/indexers-inprogress.png" alt-text="インデックス、インデクサー、およびデータソースの一覧":::
 
 ## <a name="view-the-index"></a>インデックスの表示
 
@@ -116,13 +114,13 @@ ms.locfileid: "91307723"
 
 ポータル ページが更新されるまで待ちます。 数分後に、ドキュメント数とストレージ サイズのインデックスが表示されます。
 
-   ![サービスのダッシュボードのインデックスの一覧](media/search-get-started-portal/indexes-list.png)
+   :::image type="content" source="media/search-get-started-portal/indexes-list.png" alt-text="インデックス、インデクサー、およびデータソースの一覧":::
 
 この一覧で、作成した *hotels-sample* インデックスをクリックすると、インデックスのスキーマが表示されます。 また、必要に応じて新しいフィールドを追加できます。 
 
 **[フィールド]** タブには、インデックス スキーマが表示されます。 一覧を下までスクロールし、新しいフィールドを入力します。 ほとんどの場合、既存のフィールドを変更することはできません。 既存のフィールドは、Azure Cognitive Search における物理的表現を含んでいるため、コード内でも編集することはできません。 既存のフィールドを根本的に変えるには、インデックスを新たに作成して、元のインデックスは削除します。
 
-   ![サンプル インデックスの定義](media/search-get-started-portal/sample-index-def.png)
+   :::image type="content" source="media/search-get-started-portal/sample-index-def.png" alt-text="インデックス、インデクサー、およびデータソースの一覧":::
 
 その他のコンストラクト (スコアリング プロファイル、CORS オプションなど) はいつでも追加することができます。
 
@@ -140,15 +138,15 @@ ms.locfileid: "91307723"
 
 1. コマンド バーの **[Search エクスプローラー]** をクリックします。
 
-   ![[Search エクスプローラー] コマンド](media/search-get-started-portal/search-explorer-cmd.png)
+   :::image type="content" source="media/search-get-started-portal/search-explorer-cmd.png" alt-text="インデックス、インデクサー、およびデータソースの一覧":::
 
 2. **[インデックス]** ドロップダウンで *hotels-sample-index* を選択します。 **[API バージョン]** ドロップダウンをクリックして、REST API が使用可能であることを確認します。 以下のクエリでは、一般公開バージョン (2020-06-30) を使用します。
 
-   ![インデックスと API のコマンド](media/search-get-started-portal/search-explorer-changeindex.png)
+   :::image type="content" source="media/search-get-started-portal/search-explorer-changeindex.png" alt-text="インデックス、インデクサー、およびデータソースの一覧":::
 
 3. 検索バーで次のクエリ文字列を貼り付けて、 **[検索]** をクリックします。
 
-   ![クエリ文字列と検索ボタン](media/search-get-started-portal/search-explorer-query-string-example.png)
+   :::image type="content" source="media/search-get-started-portal/search-explorer-query-string-example.png" alt-text="インデックス、インデクサー、およびデータソースの一覧":::
 
 ## <a name="example-queries"></a>クエリの例
 
@@ -256,7 +254,7 @@ Azure portal の **Search エクスプローラー**を使って、フィルタ�
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-独自のサブスクリプションを使用している場合は、プロジェクトの最後に、作成したリソースがまだ必要かどうかを確認してください。 リソースを実行状態のままにしておくと、料金が発生する場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
+独自のサブスクリプションを使用している場合は、プロジェクトの最後に、作成したリソースがまだ必要かどうかを確認してください。 リソースを実行したままにすると、お金がかかる場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
 
 ポータルの左側のナビゲーション ウィンドウにある **[すべてのリソース]** または **[リソース グループ]** リンクを使って、リソースを検索および管理できます。
 

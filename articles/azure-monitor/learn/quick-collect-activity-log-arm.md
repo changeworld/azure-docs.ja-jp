@@ -7,12 +7,12 @@ ms.custom: subject-armqs
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 26e8c40c35b130510f1bf8ae1456cb15907b345c
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 552df72901b9fde7acedd554b429f3a2ce0f671b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851928"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91631853"
 ---
 # <a name="quickstart-send-azure-activity-log-to-log-analytics-workspace-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure アクティビティ ログを Log Analytics ワークスペースに送信する
 
@@ -38,12 +38,13 @@ ms.locfileid: "85851928"
   "parameters": {
     "workspaceName": {
       "type": "string",
-        "metadata": {
-          "description": "Name of the workspace."
-        }
+      "metadata": {
+        "description": "Name of the workspace."
+      }
     },
     "sku": {
       "type": "string",
+      "defaultValue": "pergb2018",
       "allowedValues": [
         "pergb2018",
         "Free",
@@ -52,7 +53,6 @@ ms.locfileid: "85851928"
         "Standard",
         "Premium"
       ],
-      "defaultValue": "pergb2018",
       "metadata": {
         "description": "Pricing tier: PerGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
       }
@@ -109,7 +109,7 @@ ms.locfileid: "85851928"
   "resources": [
     {
       "type": "Microsoft.OperationalInsights/workspaces",
-      "apiVersion": "2020-03-01-preview",
+      "apiVersion": "2020-08-01",
       "name": "[parameters('workspaceName')]",
       "location": "[parameters('location')]",
       "properties": {

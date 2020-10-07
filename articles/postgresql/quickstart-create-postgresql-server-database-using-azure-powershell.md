@@ -1,19 +1,19 @@
 ---
 title: クイック スタート:サーバーを作成する - Azure PowerShell - Azure Database for PostgreSQL - Single Server
 description: Azure PowerShell を使用して Azure Database for PostgreSQL - Single Server を作成するためのクイックスタート ガイド。
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 06/08/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 082adc0753cb8e41bc61f5703445e6b8507202b5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7f04c4c52b2c1e2b347699168b3255d2f809278b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902677"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91705315"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-powershell"></a>クイック スタート:PowerShell を使用して Azure Database for PostgreSQL - 単一サーバーを作成する
 
@@ -169,17 +169,7 @@ pgAdmin は PostgreSQL で使用されるオープンソース ツールです�
 
 1. **[作成 - サーバー]** ダイアログ ボックスの **[接続]** タブで、設定テーブルに入力します。
 
-   :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-azure-powershell/10-pgadmin-create-server.png" alt-text="[接続] タブ":::
-
-    pgAdmin パラメーター |値|説明
-    ---|---|---
-    ホスト名/アドレス | サーバー名 | 前の手順で Azure Database for PostgreSQL サーバーを作成したときに使用したサーバー名の値。 例に示したサーバーは、**mydemoserver.postgres.database.azure.com** です。 Use the fully qualified domain name ( **\*.postgres.database.azure.com**) as shown in the example. サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。
-    Port | 5432 | Azure Database for PostgreSQL サーバーに接続するときに使用するポート。
-    メンテナンス データベース | *postgres* | システムによって生成される既定のデータベース名。
-    ユーザー名 | サーバー管理者ログイン名 | 前の手順で Azure Database for PostgreSQL サーバーを作成したときに指定したサーバー管理者ログイン ユーザー名。 ユーザー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 形式は *username\@servername* です。
-    Password | 管理者パスワード | このクイック スタートでサーバーを作成したときに選択したパスワードです。
-    Role | 空白 | この時点でロール名を指定する必要はありません。 このフィールドは空白にしてください。
-    SSL モード | "*必須*" | pgAdmin の [SSL] タブで、TLS/SSL モードを設定できます。既定では、すべての Azure Database for PostgreSQL サーバーは TLS の適用がオンの状態で作成されます。 TLS の適用をオフにする方法については、「[TLS 適用の構成](./concepts-ssl-connection-security.md#configure-enforcement-of-tls)」を参照してください。
+   :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-azure-powershell/10-pgadmin-create-server.png" alt-text="[全般] タブ" | pgAdmin の [SSL] タブで、TLS/SSL モードを設定できます。既定では、すべての Azure Database for PostgreSQL サーバーは TLS の適用がオンの状態で作成されます。 TLS の適用をオフにする方法については、「[TLS 適用の構成](./concepts-ssl-connection-security.md#configure-enforcement-of-tls)」を参照してください。
 
 1. **[保存]** を選択します。
 
@@ -193,7 +183,7 @@ pgAdmin は PostgreSQL で使用されるオープンソース ツールです�
 
 1. データベースの**所有者**をリスト ボックスから選択します。 サーバー管理者ログイン名 (例に示した **my admin** など) を選択します。
 
-   :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-azure-powershell/11-pgadmin-database.png" alt-text="pgAdmin でデータベースを作成する":::
+   :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-azure-powershell/11-pgadmin-database.png" alt-text="[全般] タブ":::
 
 1. **[保存]** を選択して、新しい空のデータベースを作成します。
 

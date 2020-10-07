@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: fd62a7fed0c6dec818bf4e2558945fb24c9d5261
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3b66c962758afc28da3c6be938c13d768c4f2572
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90945479"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91666145"
 ---
 # <a name="chat-client-library-overview"></a>Chat クライアント ライブラリの概要
 

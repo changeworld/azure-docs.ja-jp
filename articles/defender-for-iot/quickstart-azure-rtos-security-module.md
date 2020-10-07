@@ -4,21 +4,21 @@ description: Azure IoT Hub で Azure RTOS サービス用のセキュリティ �
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: rkarlin
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/06/2020
-ms.author: mlottner
-ms.openlocfilehash: 6f438bd7dd0b3e45fd292947a3b08db80401b825
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/24/2020
+ms.author: rkarlin
+ms.openlocfilehash: 38e78b80fd14aec7557b563b2b33faf7d51bd114
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90945535"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759734"
 ---
 # <a name="quickstart-security-module-for-azure-rtos-preview"></a>クイック スタート:Azure RTOS 用のセキュリティ モジュール (プレビュー)
 
@@ -35,7 +35,7 @@ ms.locfileid: "90945535"
 - NXP i.MX RT1060 EVK
 - Microchip SAM E54 Xplained Pro EVK
 
-[Azure RTOS 用のセキュリティ モジュール GitHub リソース](hhtps://github.com/azure-rtos/azure-iot-preview/releases)で選択した特定のボードとツール (IAR、セミの IDE、または PC) の .zip ファイルの 1 つをダウンロードしてコンパイルし、実行します。
+[Azure RTOS 用のセキュリティ モジュール GitHub リソース](https://github.com/azure-rtos/azure-iot-preview/releases)で選択した特定のボードとツール (IAR、セミの IDE、または PC) の .zip ファイルの 1 つをダウンロードしてコンパイルし、実行します。
 
 ### <a name="azure-resources"></a>Azure リソース
 
@@ -63,10 +63,10 @@ IoT Hub での Log Analytics インジェストは、既定の Defender for IoT 
 1. **[データ収集]** を選択します。 
 1. **[ワークスペースの構成]** オプションで、 **[オン]** に切り替えます。 
 1. 新しい Log Analytics ワークスペースを作成するか、既存のものをアタッチします。 **[Access to raw security data]\(生セキュリティ データにアクセスする\)** オプションが選択されていることを確認します。 
- :::image type="content" source="media/quickstart/azure-rtos-data-collection-on.png" alt-text="データ収集オプションと生セキュリティ データ オプションの両方が選択されている Azure RTOS の構成":::
+ :::image type="content" source="media/quickstart/azure-rtos-data-collection-on.png" alt-text="Azure RTOS のデータ収集オプションにアクセスする":::
 1. **[保存]** を選びます。
 1. Azure リソースの一覧に戻り、作成またはアタッチした Log Analytics ワークスペースが IoT Hub に対して有効になっていることを確認します。
-    :::image type="content" source="media/quickstart/verify-azure-resource-list.png" alt-text="Azure リソースの一覧で、IoT Hub に正しい Log Analytics ワークスペースが追加されていることを確認する"::: 
+    :::image type="content" source="media/quickstart/verify-azure-resource-list.png" alt-text="Azure RTOS のデータ収集オプションにアクセスする"::: 
 
 ## <a name="next-steps"></a>次のステップ
 
