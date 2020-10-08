@@ -535,10 +535,6 @@
     - name: アプリケーションの構成
       displayName: App configuration
       items:
-        - name: Azure portal のアプリ登録に関するトレーニング ガイド
-          href: app-registrations-training-guide-for-app-registrations-legacy-users.md
-        - name: Azure portal のアプリ登録エクスペリエンス
-          href: app-registration-portal-training-guide.md
         - name: シングルテナント アプリをマルチテナント アプリに変換する
           href: howto-convert-app-to-be-multi-tenant.md
         - name: サービス プリンシパルの作成

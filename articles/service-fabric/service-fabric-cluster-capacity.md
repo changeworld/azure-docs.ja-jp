@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 28a01bbc54f752ffc1f25b57dcf2eca566aa635a
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: d2b303c22eea9fb46a68bb3c8e36991d47d61554
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718103"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817737"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric クラスターの容量計画に関する考慮事項
 
@@ -34,7 +34,7 @@ ms.locfileid: "88718103"
 
 **非プライマリ ノード タイプ**を使用すると、アプリケーション ロール (*フロントエンド* サービスや*バックエンド* サービスなど) を定義し、クラスター内でサービスを物理的に分離することができます。 Service Fabric クラスターには、0 個以上の非プライマリ ノードタイプを作成できます。
 
-プライマリ ノード タイプは、Azure Resource Manager のデプロイ テンプレートで、ノード タイプの定義の下にある `isPrimary` 属性を使用して構成されます。 ノード タイプのプロパティの完全な一覧については、「[NodeTypeDescription オブジェクト](/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object)」を参照してください。 使用例については、[Service Fabric クラスター サンプル](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/)でいずれかの *AzureDeploy.json* ファイルを開き、 *[ページ内の検索]* で `nodetTypes` オブジェクトを検索します。
+プライマリ ノード タイプは、Azure Resource Manager のデプロイ テンプレートで、ノード タイプの定義の下にある `isPrimary` 属性を使用して構成されます。 ノード タイプのプロパティの完全な一覧については、「[NodeTypeDescription オブジェクト](/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object)」を参照してください。 使用例については、[Service Fabric クラスター サンプル](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/)でいずれかの *AzureDeploy.json* ファイルを開き、 *[ページ内の検索]* で `nodeTypes` オブジェクトを検索します。
 
 ### <a name="node-type-planning-considerations"></a>ノード タイプの計画に関する考慮事項
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Service Fabric 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure Service Fabric に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.topic: sample
 author: erikadoyle
 ms.author: edoyle
 ms.service: service-fabric
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: e9ec8fd15146151009bb0e127970ea9535318032
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1a3e0c505ce7d9c36f84edf403b6b4751bd001bc
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985789"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816288"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-service-fabric"></a>Azure Service Fabric 用の Azure Policy 規制コンプライアンス コントロール
 

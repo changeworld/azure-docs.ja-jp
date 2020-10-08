@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 92f1b722e39083463fd7fa57fdf8508c2c4084cd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 686c1e37e093a358bb5122fbfeccdfd98eb301ce
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326645"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91804233"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Core (SQL) API 用 Azure Cosmos DB Java SDK v4: リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -42,7 +42,7 @@ Core (SQL) 用 Azure Cosmos DB Java SDK v4 では、非同期 API と同期 API 
 > これらのリリース ノートは、Azure Cosmos DB Java SDK v4 のみを対象としています。 v4 より前のバージョンを現在使用している場合、v4 へのアップグレードについては、[Azure Cosmos DB Java SDK v4 への移行](migrate-java-v4-sdk.md)ガイドを参照してください。
 >
 > 次の 3 つの手順に従って作業を進めてください。
-> 1. この SDK を使用できるように、[サポートされている最小 Java ランタイムの JDK 8](/java/azure/jdk/?view=azure-java-stable) をインストールします。
+> 1. この SDK を使用できるように、[サポートされている最小 Java ランタイムの JDK 8](/java/azure/jdk/?view=azure-java-stable&preserve-view=true) をインストールします。
 > 2. [Azure Cosmos DB Java SDK v4 のクイックスタート ガイド](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java)に従って、Maven アーティファクトにアクセスし、Azure Cosmos DB の基本的な要求の詳細を確認します。
 > 3. Azure Cosmos DB Java SDK v4 の[パフォーマンスに関するヒント](performance-tips-java-sdk-v4-sql.md)と[トラブルシューティング](troubleshoot-java-sdk-v4-sql.md)のガイドを読んで、SDK をお使いのアプリケーションに最適化します。
 >
@@ -54,7 +54,7 @@ Core (SQL) 用 Azure Cosmos DB Java SDK v4 では、非同期 API と同期 API 
 | コンテンツ | Link |
 |---|---|
 |**SDK のダウンロード**| [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
-|**API ドキュメント** | [Java API リファレンス ドキュメント](https://docs.microsoft.com/java/api/overview/azure/cosmosdb/client?view=azure-java-stable) |
+|**API ドキュメント** | [Java API リファレンス ドキュメント](https://docs.microsoft.com/java/api/overview/azure/cosmosdb/client?view=azure-java-stable&preserve-view=true) |
 |**SDK への協力** | [GitHub の Azure SDK for Java 中央リポジトリ](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos) | 
 |**開始するには** | [クイック スタート:Azure Cosmos DB SQL API データを管理する Java アプリを作成する](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java) <br> [クイック スタート コードを含む GitHub リポジトリ](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) | 
 |**基本的なコード サンプル** | [Azure Cosmos DB: SQL API の Java のサンプル](sql-api-java-sdk-samples.md) <br> [サンプル コードを含む GitHub リポジトリ](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)|
@@ -63,7 +63,7 @@ Core (SQL) 用 Azure Cosmos DB Java SDK v4 では、非同期 API と同期 API 
 | **パフォーマンスに関するヒント**| [Java SDK v4 のパフォーマンスに関するヒント](performance-tips-java-sdk-v4-sql.md)| 
 | **トラブルシューティング** | [Java SDK v4 のトラブルシューティング](troubleshoot-java-sdk-v4-sql.md) |
 | **以前の SDK から v4 への移行** | [Java V4 SDK への移行](migrate-java-v4-sdk.md) |
-| **サポートされている最小ランタイム**|[JDK 8](/java/azure/jdk/?view=azure-java-stable) | 
+| **サポートされている最小ランタイム**|[JDK 8](/java/azure/jdk/?view=azure-java-stable&preserve-view=true) | 
 | **Azure Cosmos DB のワークショップとラボ** |[Cosmos DB ワークショップのホーム ページ](https://aka.ms/cosmosworkshop)
 
 [!INCLUDE[Release notes](~/azure-sdk-for-java-cosmos-db/sdk/cosmos/azure-cosmos/CHANGELOG.md)]

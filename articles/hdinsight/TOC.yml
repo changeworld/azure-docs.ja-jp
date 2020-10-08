@@ -8,6 +8,7 @@
         - name: Azure HDInsight とは
           href: ./hdinsight-overview.md
     - name: チュートリアル
+      expanded: true
       items:
         - name: HDInsight クラスターの作成
           href: ./hdinsight-hadoop-provision-linux-clusters.md

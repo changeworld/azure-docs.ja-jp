@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: eda3ee3e9e170469ffb0b9b0e1d7dede181fe3f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 681929928e6e6b28c7950c8aeeadc8b181491f46
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262006"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91804131"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>Azure Cosmos DB と Power BI を使用してリアルタイム ダッシュボードを作成する
 
@@ -57,12 +57,7 @@ Azure Analysis Services は、エンタープライズ レベルのデータ モ
 
 1. **増分更新を構成する** - [Power BI での増分更新](/power-bi/service-premium-incremental-refresh)に関する記事の手順に従って、データセットの増分更新を構成します。 次のスクリーンショットに示すように、**RangeStart** パラメーターと **RangeEnd** パラメーターを追加します。
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/configure-range-parameters.png" alt-text="範囲のパラメーターを構成する":::
-
-   データセットにはテキスト形式の日付列があるため、次のフィルターを使用するには **RangeStart** パラメーターと **RangeEnd** パラメーターを変換する必要があります。 **[詳細エディター]** ウィンドウで、クエリを変更し、次のテキストを追加して、RangeStart パラメーターと RangeEnd パラメーターに基づいて行をフィルター処理するようにします。
-
-   ```
-   #"Filtered Rows" = Table.SelectRows(#"Expanded Document", each [Document.date] > DateTime.ToText(RangeStart,"yyyy-MM-dd") and [Document.date] < DateTime.ToText(RangeEnd,"yyyy-MM-dd"))
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/configure-range-parameters.png" alt-text="Azure Cosmos DB Power BI コネクタ" = Table.SelectRows(#"Expanded Document", each [Document.date] > DateTime.ToText(RangeStart,"yyyy-MM-dd") and [Document.date] < DateTime.ToText(RangeEnd,"yyyy-MM-dd"))
    ```
    
    ソース データセットに存在する列とデータ型に応じて、RangeStart フィールドと Rangestart フィールドを適宜変更できます。
@@ -77,13 +72,13 @@ Azure Analysis Services は、エンタープライズ レベルのデータ モ
 
 1. **更新ポリシーを定義する** - テーブルの**コンテキスト** メニューの **[増分更新]** タブに移動して、更新ポリシーを定義します。 **毎日**更新され、前月のデータが格納されるように更新ポリシーを設定します。
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/define-refresh-policy.png" alt-text="更新ポリシーを定義する":::
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/define-refresh-policy.png" alt-text="Azure Cosmos DB Power BI コネクタ":::
 
    *M クエリが折りたたまれていることを確認できない*という警告は無視してください。 Azure Cosmos DB コネクタは、フィルター クエリを折りたたみます。
 
 1. **データを読み込んでレポートを生成する** - 前に読み込んだデータを使用して、気温と降水量に関するレポートを作成するためのグラフを作成します。
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/load-data-generate-report.png" alt-text="データを読み込んでレポートを生成する":::
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/load-data-generate-report.png" alt-text="Azure Cosmos DB Power BI コネクタ":::
 
 1. **Power BI Premium にレポートを発行する** - 増分更新は Premium のみの機能であるため、[発行] ダイアログでは、Premium 容量におけるワークスペースの選択のみが可能です。 最初の更新は、履歴データをインポートするために時間がかかる場合があります。 その後のデータ更新は増分更新を使用するため、はるかに高速になります。
 
@@ -98,21 +93,21 @@ Azure Analysis Services は、エンタープライズ レベルのデータ モ
 
 1. **新しい Azure Analysis Services クラスターを作成する** - Azure Cosmos アカウントおよび Databricks クラスターと同じリージョンに [Azure Analysis Services のインスタンスを作成します](../analysis-services/analysis-services-create-server.md)。
 
-1. **Visual Studio で新しい Analysis Services 表形式プロジェクトを作成する** -  [SQL Server Data Tools (SSDT) をインストール](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017)し、Visual Studio で Analysis Services 表形式プロジェクトを作成します。
+1. **Visual Studio で新しい Analysis Services 表形式プロジェクトを作成する** -  [SQL Server Data Tools (SSDT) をインストール](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017&preserve-view=true)し、Visual Studio で Analysis Services 表形式プロジェクトを作成します。
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-project.png" alt-text="Azure Analysis Services プロジェクトを作成する":::
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-project.png" alt-text="Azure Cosmos DB Power BI コネクタ":::
 
    **統合ワークスペース** インスタンスを選択し、互換性レベルを **SQL Server 2017 / Azure Analysis Services (1400)** に設定します。
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/tabular-model-designer.png" alt-text="Azure Analysis Services 表形式モデル デザイナー":::
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/tabular-model-designer.png" alt-text="Azure Cosmos DB Power BI コネクタ":::
 
 1. **Azure Cosmos DB データ ソースを追加する** - **[モデル]** >  **[データ ソース]**  >  **[新しいデータ ソース]** に移動し、次のスクリーンショットに示すように Azure Cosmos DB データ ソースを追加します。
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/add-data-source.png" alt-text="Cosmos DB データ ソースを追加する":::
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/add-data-source.png" alt-text="Azure Cosmos DB Power BI コネクタ":::
 
    **アカウント URI**、**データベース名**、および**コンテナー名**を指定して、Azure Cosmos DB に接続します。 Azure Cosmos コンテナーからのデータが Power BI にインポートされていることを確認できます。
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/preview-cosmosdb-data.png" alt-text="Azure Cosmos DB データをプレビューする":::
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/preview-cosmosdb-data.png" alt-text="Azure Cosmos DB Power BI コネクタ":::
 
 1. **Analysis Services モデルを構築する** - クエリ エディターを開いて、読み込まれたデータセットを最適化するために必要な操作を実行します。
 
@@ -142,16 +137,12 @@ Azure Analysis Services は、エンタープライズ レベルのデータ モ
 
 1. **Azure Analysis のパーティションを作成する** - Azure Analysis Services でパーティションを作成して、データセットを、個別に、異なる頻度で更新できる論理パーティションに分割します。 この例では、データセットを最新月のデータとその他すべてに分割する 2 つのパーティションを作成します。
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-partitions.png" alt-text="Analysis Services のパーティションを作成する":::
-
-   Azure Analysis Services で次の 2 つのパーティションを作成します。
-
-   * **最新月** - `#"Filtered Rows" = Table.SelectRows(#"Sorted Rows", each [Document.month] = "2019-07")`
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-partitions.png" alt-text="Azure Cosmos DB Power BI コネクタ" = Table.SelectRows(#"Sorted Rows", each [Document.month] = "2019-07")`
    * **履歴** -  `#"Filtered Rows" = Table.SelectRows(#"Sorted Rows", each [Document.month] <> "2019-07")`
 
 1. **Azure Analysis Server にモデルをデプロイする** - Azure Analysis Services プロジェクトを右クリックし、 **[デプロイ]** を選択します。 **[Deployment Server properties]\(デプロイ サーバーのプロパティ\)** ウィンドウで、サーバー名を追加します。
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/analysis-services-deploy-model.png" alt-text="Azure Analysis Services モデルをデプロイする":::
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/analysis-services-deploy-model.png" alt-text="Azure Cosmos DB Power BI コネクタ":::
 
 1. **パーティションの更新とマージを構成する** - Azure Analysis Services では、パーティションを個別に処理することができます。 **最新月**のパーティションが最新データで常に更新されるようにするため、更新間隔を 5 分に設定します。 データを更新するには、[REST API](../analysis-services/analysis-services-async-refresh.md)、[Azure Automation](../analysis-services/analysis-services-refresh-azure-automation.md)、または[ロジック アプリ](../analysis-services/analysis-services-refresh-logic-app.md)を使用します。 履歴パーティションのデータを更新する必要はありません。 さらに、最新月パーティションを履歴パーティションに統合し、新しい最新月パーティションを作成するためのコードを記述する必要があります。
 
@@ -159,11 +150,11 @@ Azure Analysis Services は、エンタープライズ レベルのデータ モ
 
 1. **Azure Analysis Services データベース コネクタを使用して Azure Analysis Server に接続する** - **ライブ モード**を選択し、次のスクリーンショットに示すように Azure Analysis Services インスタンスに接続します。
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/analysis-services-get-data.png" alt-text="Azure Analysis Services からデータを取得する":::
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/analysis-services-get-data.png" alt-text="Azure Cosmos DB Power BI コネクタ":::
 
 1. **データを読み込んでレポートを生成する** - 前に読み込んだデータを使用して、気温と降水量に関するレポートを作成するためのグラフを作成します。 ライブ接続を作成しているため、前の手順でデプロイした Azure Analysis Services モデルのデータに対してクエリを実行する必要があります。 気温グラフは、新しいデータが Azure Cosmos DB に読み込まれてから 5 分以内に更新されます。
 
-   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/load-data-generate-report.png" alt-text="データを読み込んでレポートを生成する":::
+   :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/load-data-generate-report.png" alt-text="Azure Cosmos DB Power BI コネクタ":::
 
 ## <a name="next-steps"></a>次のステップ
 

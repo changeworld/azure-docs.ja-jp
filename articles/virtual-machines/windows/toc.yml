@@ -278,7 +278,7 @@
             - name: VM インスタンス サイズの柔軟性
               href: ../reserved-vm-instance-size-flexibility.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: スポット VM
-          displayName: 'pre-empt, preempt'
+          displayName: 'pre-empt, preempt, spot'
           href: ../spot-vms.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 一時ディスクを使用しない Azure VM
           href: ../azure-vms-no-temp-disk.md
@@ -380,7 +380,7 @@
         - name: スポット VM のデプロイ
           items:
             - name: ポータル
-              href: spot-portal.md
+              href: ../spot-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
             - name: PowerShell
               href: spot-powershell.md
             - name: ARM テンプレート
