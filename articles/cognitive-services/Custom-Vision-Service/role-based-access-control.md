@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: fc536b3b0c7af113919f274fc4bdd5fad63cbd06
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 4eea87d7b5ef543551b789ddc6b045358fa98631
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90057124"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826943"
 ---
 # <a name="role-based-access-control"></a>ロールベースのアクセス制御
 
@@ -43,8 +43,8 @@ Azure RBAC は、Custom Vision リソースに割り当てることができま�
 
 |Role  |アクセス許可  |
 |---------|---------|
-|`Cognitive Service Custom Vision Contributor`     | プロジェクトの作成、編集、または削除を含む、プロジェクトへのフル アクセス。        |
-|`Cognitive Service Custom Vision Trainer`     | プロジェクトの作成または削除を除くフル アクセス。 トレーナーは、プロジェクトの表示と編集、モデルのトレーニング、公開、非公開、エクスポートを行うことができます。        |
-|`Cognitive Service Custom Vision Labeler`     | トレーニング画像のアップロード、編集、または削除、タグの作成、追加、削除、または削除を行うことができます。 ラベラーはプロジェクトを表示できますが、トレーニング画像とタグ以外は更新できません。         |
-|`Cognitive Service Custom Vision Deployment`     | モデルの公開、非公開、またはエクスポートができます。 デプロイ担当者はプロジェクトを表示できますが、プロジェクト、トレーニング画像、タグを更新することはできません。        |
-|`Cognitive Service Custom Vision Reader`     | プロジェクトを表示できます。 閲覧者は変更を加えることはできません。        |
+|`Cognitive Services Custom Vision Contributor`     | プロジェクトの作成、編集、または削除を含む、プロジェクトへのフル アクセス。        |
+|`Cognitive Services Custom Vision Trainer`     | プロジェクトの作成または削除を除くフル アクセス。 トレーナーは、プロジェクトの表示と編集、モデルのトレーニング、公開、非公開、エクスポートを行うことができます。        |
+|`Cognitive Services Custom Vision Labeler`     | トレーニング画像のアップロード、編集、または削除、タグの作成、追加、削除、または削除を行うことができます。 ラベラーはプロジェクトを表示できますが、トレーニング画像とタグ以外は更新できません。         |
+|`Cognitive Services Custom Vision Deployment`     | モデルの公開、非公開、またはエクスポートができます。 デプロイ担当者はプロジェクトを表示できますが、プロジェクト、トレーニング画像、タグを更新することはできません。        |
+|`Cognitive Services Custom Vision Reader`     | プロジェクトを表示できます。 閲覧者は変更を加えることはできません。        |

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 09/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: b6220cfb5649995e54338f245b4cb62511b89a2c
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 1c79b7c239c41e8d195230423b17fa3c5a7f51a6
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90004699"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825806"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>Azure Automation で証明書を管理する
 
@@ -85,10 +85,10 @@ New-AzAutomationCertificate -AutomationAccountName "MyAutomationAccount" -Name $
 
 ```powershell-interactive
 $AutomationAccountName = "<automation account name>"
-$PfxCertPath = '<PFX cert path'
+$PfxCertPath = '<PFX cert path and filename>'
 $CertificatePassword = '<password>'
-$certificateName = '<certificate name>'
-$AutomationAccountName = '<automation account name>'
+$certificateName = '<certificate name>' #A name of your choosing
+$ResourceGroupName = '<resource group name>' #The one that holds your automation account
 $flags = [System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::Exportable `
     -bor [System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::PersistKeySet `
     -bor [System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::MachineKeySet
@@ -119,7 +119,7 @@ $json = @"
 "@
 
 $json | out-file .\template.json
-New-AzResourceGroupDeployment -Name NewCert -ResourceGroupName TestAzureAuto -TemplateFile .\template.json
+New-AzResourceGroupDeployment -Name NewCert -ResourceGroupName $ResourceGroupName -TemplateFile .\template.json
 ```
 
 ## <a name="get-a-certificate"></a>証明書を取得する

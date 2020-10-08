@@ -3,12 +3,13 @@ title: Windows デスクトップ アプリでの使用状況とパフォーマ�
 description: Application Insights を使用して、Windows デスクトップ アプリの使用状況とパフォーマンスを分析します。
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 17613fc6cea24643c2b88182e7e56a1d216b2da8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 1aa1e8a9e7ccbbc90a961ebf47224f59f8a9e9fe
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323419"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827869"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>従来の Windows デスクトップ アプリケーションでの使用状況とパフォーマンスの監視
 
@@ -20,7 +21,7 @@ Application Insights は、オンプレミスや Azure、その他各種クラ�
 3. Visual Studio でアプリ プロジェクトの NuGet パッケージを編集し、Microsoft.ApplicationInsights.WindowsServer を追加します (または、標準テレメトリ コレクション モジュールを含まないベース API だけが必要な場合は、Microsoft.ApplicationInsights を選択します)。
 4. インストルメンテーション キーの設定はコードまたは ApplicationInsights.config で行います。コードの場合:
    
-    `TelemetryConfiguration.Active.InstrumentationKey = "` *自分のキー* `";`
+    `TelemetryConfiguration.Active.InstrumentationKey = "`*自分のキー*`";`
    
     ApplicationInsights.config の場合 (いずれかの標準テレメトリ パッケージをインストールした場合):
    
@@ -53,10 +54,8 @@ using Microsoft.ApplicationInsights;
             ...
         }
 
-        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        protected override void OnFormClosing(System.Windows.Forms.FormClosingEventArgs e)
         {
-            e.Cancel = true;
-
             if (tc != null)
             {
                 tc.Flush(); // only for desktop apps
@@ -64,9 +63,10 @@ using Microsoft.ApplicationInsights;
                 // Allow time for flushing:
                 System.Threading.Thread.Sleep(1000);
             }
-            base.OnClosing(e);
+            base.OnFormClosing(e);
         }
-
+        
+        ...
 ```
 
 ## <a name="override-storage-of-computer-name"></a>コンピューター名のストレージを上書きする
