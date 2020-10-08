@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: aa75a32abc9174579559db1cb56e35e6a527d510
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ae67cbf42a8acf9eb887c8e1cd713c752010a41b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90972824"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91820812"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -52,8 +52,8 @@ ms.locfileid: "90972824"
 |[Service Bus の診断設定を Log Analytics ワークスペースにデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F04d53d87-841c-4f23-8a5b-21564380b55e) |Service Bus の診断設定をデプロイして、この診断設定がない Service Bus が作成または更新されたときにリージョンの Log Analytics ワークスペースにストリーミングします。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ServiceBus_DeployDiagnosticLog_Deploy_LogAnalytics.json) |
 |[Stream Analytics の診断設定をイベント ハブにデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fedf3780c-3d70-40fe-b17e-ab72013dafca) |Stream Analytics の診断設定をデプロイして、この診断設定がない Stream Analytics が作成または更新されたときにリージョンのイベント ハブにストリーミングします。 |DeployIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/StreamAnalytics_DeployDiagnosticLog_Deploy_EventHub.json) |
 |[Stream Analytics の診断設定を Log Analytics ワークスペースにデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F237e0f7e-b0e8-4ec4-ad46-8c12cb66d673) |Stream Analytics の診断設定をデプロイして、この診断設定がない Stream Analytics が作成または更新されたときにリージョンの Log Analytics ワークスペースにストリーミングします。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/StreamAnalytics_DeployDiagnosticLog_Deploy_LogAnalytics.json) |
-|[Linux Virtual Machine Scale Sets 用の Log Analytics エージェントのデプロイ](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5ee9e9ed-0b42-41b7-8c9c-3cfb2fbe2069) |定義された一覧に VM イメージ (OS) があり、Log Analytics エージェントがインストールされていない場合は、Linux Virtual Machine Scale Sets 用にエージェントをデプロイします。 注: お使いのスケール セット upgradePolicy が手動に設定されている場合、セット内のすべての VM でアップグレードを呼び出して拡張機能を適用することが必要になります。 CLI では、これは az vmss update-instances になります。 |deployIfNotExists |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalyticsExtension_Linux_VMSS_Deploy.json) |
-|[Linux VM 用の Log Analytics エージェントのデプロイ](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F053d3325-282c-4e5c-b944-24faffd30d77) |定義された一覧に VM イメージ (OS) があり、エージェントがインストールされていない場合は、Linux VM に Log Analytics エージェントをデプロイします。 |deployIfNotExists |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalyticsExtension_Linux_VM_Deploy.json) |
+|[Linux Virtual Machine Scale Sets 用の Log Analytics エージェントのデプロイ](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5ee9e9ed-0b42-41b7-8c9c-3cfb2fbe2069) |定義された一覧に VM イメージ (OS) があり、Log Analytics エージェントがインストールされていない場合は、Linux Virtual Machine Scale Sets 用にエージェントをデプロイします。 注: お使いのスケール セット upgradePolicy が手動に設定されている場合、セット内のすべての VM でアップグレードを呼び出して拡張機能を適用することが必要になります。 CLI では、これは az vmss update-instances になります。 |deployIfNotExists |[1.2.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalyticsExtension_Linux_VMSS_Deploy.json) |
+|[Linux VM 用の Log Analytics エージェントのデプロイ](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F053d3325-282c-4e5c-b944-24faffd30d77) |定義された一覧に VM イメージ (OS) があり、エージェントがインストールされていない場合は、Linux VM に Log Analytics エージェントをデプロイします。 |deployIfNotExists |[1.2.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalyticsExtension_Linux_VM_Deploy.json) |
 |[Windows Virtual Machine Scale Sets 用の Log Analytics エージェントのデプロイ](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3c1b3629-c8f8-4bf6-862c-037cb9094038) |定義された一覧に VM イメージ (OS) があり、Log Analytics エージェントがインストールされていない場合は、Windows Virtual Machine Scale Sets 用にエージェントをデプロイします。 OS イメージの一覧は、サポートの更新に伴って更新されます。 注: スケール セット upgradePolicy が手動に設定されている場合、そのセット内のすべての VM でアップグレードを呼び出して拡張機能を適用する必要があります。 CLI では、これは az vmss update-instances になります。 |deployIfNotExists |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalyticsExtension_Windows_VMSS_Deploy.json) |
 |[Windows VM 用の Log Analytics エージェントのデプロイ](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0868462e-646c-4fe3-9ced-a733534b6a2c) |定義された一覧に VM イメージ (OS) があり、エージェントがインストールされていない場合は、Windows VM に Log Analytics エージェントをデプロイします。 OS イメージの一覧は、サポートの更新に伴って更新されます。 |deployIfNotExists |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalyticsExtension_Windows_VM_Deploy.json) |
 |[Linux Azure Arc マシンに Log Analytics エージェントをデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9d2b61b4-1d14-4a63-be30-d4498e7ad2cf) |このポリシーでは、Log Analytics エージェントがインストールされていない場合に、Linux Azure Arc マシンにエージェントをデプロイします。 |deployIfNotExists |[1.1.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalyticsExtension_Linux_HybridVM_Deploy.json) |

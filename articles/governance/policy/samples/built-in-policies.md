@@ -1,15 +1,15 @@
 ---
 title: 組み込みのポリシー定義の一覧
 description: Azure Policy の組み込みのポリシー定義を一覧表示します。 カテゴリには、タグ、規制コンプライアンス、Key Vault、Kubernetes、ゲスト構成などが含まれます。
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: ca8472c1ee4873977bac47a0b54925b892721a0b
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 7bbc65d2108fdc97585cb268103d5b66c6e04438
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982405"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91820532"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy の組み込みのポリシー定義
 

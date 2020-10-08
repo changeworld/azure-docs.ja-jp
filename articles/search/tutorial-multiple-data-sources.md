@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/20/2020
+ms.date: 10/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d3dd75d246c1f74253a9ce910e50b05402065464
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 06b80b5fe14a7a913d8ad8454c6568b04fe01c2f
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998460"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819796"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用して複数のデータ ソースのデータにインデックスを付ける
 
@@ -61,19 +61,19 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[データ エクスプローラー]** を選択し、 **[新しいデータベース]** を選択します。
 
-   ![新しいデータベースの作成](media/tutorial-multiple-data-sources/cosmos-newdb.png "新しいデータベースの作成")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-newdb.png" alt-text="新しいデータベースの作成" border="false":::
 
 1. 「**hotel-rooms-db**」という名前を入力します。 残りの設定は既定値のままにします。
 
-   ![データベースを構成する](media/tutorial-multiple-data-sources/cosmos-dbname.png "データベースを構成する")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-dbname.png" alt-text="新しいデータベースの作成" border="false":::
 
 1. 新しいコンテナーを作成します。 先ほど作成した既存のデータベースを使用します。 コンテナー名として「**hotels**」と入力し、[パーティション キー] に「 **/HotelId**」を使用します。
 
-   ![コンテナーを追加する](media/tutorial-multiple-data-sources/cosmos-add-container.png "コンテナーの追加")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-add-container.png" alt-text="新しいデータベースの作成" border="false":::
 
 1. **hotels** の下にある **[項目]** を選択し、コマンド バーの **[Upload Item]\(項目のアップロード\)** をクリックします。 プロジェクト フォルダー内のファイル **cosmosdb/HotelsDataSubset_CosmosDb.json** に移動して選択します。
 
-   ![Azure Cosmos DB コレクションにアップロードする](media/tutorial-multiple-data-sources/cosmos-upload.png "Cosmos DB コレクションにアップロードする")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-upload.png" alt-text="新しいデータベースの作成" border="false":::
 
 1. [最新の情報に更新] ボタンを使用して、hotels コレクション内の項目の表示を更新します。 7 つの新しいデータベース ドキュメントが表示されることがわかります。
 
@@ -83,11 +83,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. サンプルのホテルの部屋の JSON ファイルを格納するために、**hotel-rooms** という名前の [BLOB コンテナーを作成](../storage/blobs/storage-quickstart-blobs-portal.md)します。 パブリック アクセス レベルは、有効な任意の値に設定できます。
 
-   ![BLOB コンテナーを作成する](media/tutorial-multiple-data-sources/blob-add-container.png "BLOB コンテナーを作成する")
+   :::image type="content" source="media/tutorial-multiple-data-sources/blob-add-container.png" alt-text="新しいデータベースの作成" border="false":::
 
 1. コンテナーが作成されたら、コンテナーを開いてコマンド バーの **[アップロード]** を選択します。 サンプル ファイルを含むフォルダーに移動します。 すべてを選択し、 **[アップロード]** をクリックします。
 
-   ![ファイルをアップロードする](media/tutorial-multiple-data-sources/blob-upload.png "ファイルをアップロードする")
+   :::image type="content" source="media/tutorial-multiple-data-sources/blob-upload.png" alt-text="新しいデータベースの作成" border="false":::
 
 アップロードが完了すると、データ コンテナーの一覧にこのファイルが表示されます。
 
@@ -105,7 +105,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    クエリ キーも入手します。 読み取り専用アクセスを使用してクエリ要求を発行することをお勧めします。
 
-   ![サービス名、管理キー、クエリ キーの取得](media/search-get-started-nodejs/service-name-and-keys.png)
+   :::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="新しいデータベースの作成" border="false":::
 
 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
 
@@ -115,7 +115,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[Browse]\(参照\)** タブで、**Microsoft.Azure.Search** (バージョン 9.0.1 以降) を見つけてインストールします。 インストールを完了するには、クリックしてさらにダイアログを進む必要があります。
 
-    ![NuGet を使用して Azure ライブラリを追加する](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="新しいデータベースの作成" border="false":::
 
 1. 同様に、**Microsoft.Extensions.Configuration.Json** NuGet パッケージを検索してインストールします。
 
@@ -352,7 +352,7 @@ Blob Storage データ ソースとインデクサーの作成が完了したら
 
 Azure portal で、検索サービスの **[概要]** ページを開き、 **[インデックス]** 一覧内で **hotel-rooms-sample** インデックスを見つけます。
 
-  ![Azure Cognitive Search インデックスの一覧](media/tutorial-multiple-data-sources/index-list.png "Azure Cognitive Search インデックスの一覧")
+  :::image type="content" source="media/tutorial-multiple-data-sources/index-list.png" alt-text="新しいデータベースの作成" border="false":::
 
 一覧にある hotel-rooms-sample インデックスをクリックします。 そのインデックスの Search エクスプローラーのインターフェイスが表示されます。 "Luxury" のような用語のクエリを入力します。 結果には少なくとも 1 つのドキュメントが表示されます。また、このドキュメントには、その Rooms 配列内の部屋オブジェクトの一覧が示されます。
 
