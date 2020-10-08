@@ -1,15 +1,17 @@
 ---
 title: Web アプリの使用 - Personalizer
 description: Personalizer ループを使用して C# .NET Web アプリをカスタマイズし、アクション (特徴を伴う) およびコンテキストの特徴に基づいてユーザーに適切なコンテンツを提供します。
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 59881a749676f4f5408c1ffc87b3bcf75c512e1e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e06d191573219df44631f6ffaee86f895166de57
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316224"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777260"
 ---
 # <a name="tutorial-add-personalizer-to-a-net-web-app"></a>チュートリアル:.NET Web アプリに Personalizer を追加する
 

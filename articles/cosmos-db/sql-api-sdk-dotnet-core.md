@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 7592bc9badd1f27f0d24feffe916242981492209
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cf27fc44d34fad10a215526f03878e34675b3a16
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998375"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802652"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-v2-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB .NET Core SDK v2:リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ ms.locfileid: "88998375"
 | |  |
 |---|---|
 |**SDK のダウンロード**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)|
-|**API ドキュメント**|[.NET API リファレンス ドキュメント](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
+|**API ドキュメント**|[.NET API リファレンス ドキュメント](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet&preserve-view=true)|
 |**サンプル**|[.NET コード サンプル](sql-api-dotnet-samples.md)|
 |**開始するには**|[Azure Cosmos DB .NET を開始する](sql-api-sdk-dotnet.md)|
 |**Web アプリ チュートリアル**|[Azure Cosmos DB を使用した Web アプリケーションの開発](sql-api-dotnet-application.md)|

@@ -3,12 +3,12 @@ title: Azure VMware Solution のデプロイの計画
 description: この記事では、Azure VMware Solution のデプロイ ワークフローの概要について説明します。  最終的な結果として、仮想マシン (VM) の作成と移行に向けて環境の準備が整います。
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 1a9ff313243650cc3f9c44be2eb1c62da5557955
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: e279f14406d464171f0879d85cc33f9844d22ec3
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578865"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802210"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Azure VMware Solution のデプロイの計画
 
@@ -19,6 +19,40 @@ ms.locfileid: "91578865"
 >[!IMPORTANT]
 >Azure VMware Solution リソースを作成する前に、サポート チケットを提出して、ノードが割り当てられるようにする必要があります。 サポート チームがリクエストを受け取ると、リクエストが確認されてノードが割り当てられるまでに、最大 5 営業日かかります。 Azure VMware Solution の既存のプライベート クラウドがあり、さらに多くのノードを割り当てる必要がある場合は、同じプロセスを実行します。 詳細については、「[Azure VMware Solution リソースを有効にする方法](enable-azure-vmware-solution.md)」を参照してください。 
 
+## <a name="subscription"></a>サブスクリプション
+
+Azure VMware Solution のデプロイに使用する予定のサブスクリプションを特定します。  新しいサブスクリプションを作成することも、既存のものを再利用することもできます。
+
+>[!NOTE]
+>サブスクリプションは、Microsoft Enterprise Agreement に関連付けられている必要があります。
+
+## <a name="resource-group"></a>Resource group
+
+Azure VMware Solution のために使用するリソース グループを特定します。  一般に、リソース グループは Azure VMware Solution 専用に作成されますが、既存のリソース グループを使用することもできます。
+
+## <a name="region"></a>リージョン
+
+Azure VMware Solution のデプロイ先リージョンを特定します。  詳細については、[リージョン別の利用可能な製品に関する Azure のガイド](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=azure-vmware)を参照してください。
+
+## <a name="resource-name"></a>リソース名
+
+デプロイ時に使用するリソース名を定義します。  リソース名はわかりやすく説明的な名前であり、その中で Azure VMware Solution プライベート クラウドにタイトルを付けます。
+
+## <a name="size-nodes"></a>サイズ ノード
+
+Azure VMware Solution のデプロイ時に使用するサイズ ノードを特定します。  完全な一覧については、[Azure VMware Solution プライベート クラウドとクラスター](concepts-private-clouds-clusters.md#hosts)に関するドキュメントを参照してください。
+
+## <a name="number-of-hosts"></a>ホストの数
+
+Azure VMware Solution プライベート クラウドにデプロイするホストの数を定義します。  最小ノード数は 3 で、最大はクラスターあたり 16 個です。  詳細については、[Azure VMware Solution プライベート クラウドとクラスター](concepts-private-clouds-clusters.md#clusters)に関するドキュメントを参照してください。
+
+当初のデプロイ数を超える数にする必要がある場合は、後でいつでもクラスターを拡張できます。
+
+## <a name="vcenter-admin-password"></a>vCenter 管理者パスワード
+vCenter 管理者パスワードを定義します。  デプロイ時に vCenter 管理者パスワードを作成します。 パスワードは、vCenter ビルド時の cloudadmin@vsphere.local 管理者アカウントに対するものです。 これを使用して vCenter にサインインします。
+
+## <a name="nsx-t-admin-password"></a>NSX-T 管理者パスワード
+NSX-T 管理者パスワードを定義します。  デプロイ時に NSX-T 管理者パスワードを作成します。 パスワードは、NSX のビルド時に、NSX アカウントの管理者ユーザーに割り当てられます。 これを使用して NSX-T Manager にログインします。
 
 ## <a name="ip-address-segment"></a>IP アドレス セグメント
 
@@ -63,41 +97,6 @@ ExpressRoute Global Reach ピアリングのために必要な `/29` CIDR ネッ
 
 :::image type="content" source="media/pre-deployment/expressroute-global-reach-ip-diagram.png" alt-text="特定する - IP アドレス セグメント" border="false":::
 
-## <a name="subscription"></a>サブスクリプション
-
-Azure VMware Solution のデプロイに使用する予定のサブスクリプションを特定します。  新しいサブスクリプションを作成することも、既存のものを再利用することもできます。
-
->[!NOTE]
->サブスクリプションは、Microsoft Enterprise Agreement に関連付けられている必要があります。
-
-## <a name="resource-group"></a>Resource group
-
-Azure VMware Solution のために使用するリソース グループを特定します。  一般に、リソース グループは Azure VMware Solution 専用に作成されますが、既存のリソース グループを使用することもできます。
-
-## <a name="region"></a>リージョン
-
-Azure VMware Solution のデプロイ先リージョンを特定します。  詳細については、[リージョン別の利用可能な製品に関する Azure のガイド](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=azure-vmware)を参照してください。
-
-## <a name="resource-name"></a>リソース名
-
-デプロイ時に使用するリソース名を定義します。  リソース名はわかりやすく説明的な名前であり、その中で Azure VMware Solution プライベート クラウドにタイトルを付けます。
-
-## <a name="size-nodes"></a>サイズ ノード
-
-Azure VMware Solution のデプロイ時に使用するサイズ ノードを特定します。  完全な一覧については、[Azure VMware Solution プライベート クラウドとクラスター](concepts-private-clouds-clusters.md#hosts)に関するドキュメントを参照してください。
-
-## <a name="number-of-hosts"></a>ホストの数
-
-Azure VMware Solution プライベート クラウドにデプロイするホストの数を定義します。  最小ノード数は 3 で、最大はクラスターあたり 16 個です。  詳細については、[Azure VMware Solution プライベート クラウドとクラスター](concepts-private-clouds-clusters.md#clusters)に関するドキュメントを参照してください。
-
-当初のデプロイ数を超える数にする必要がある場合は、後でいつでもクラスターを拡張できます。
-
-## <a name="vcenter-admin-password"></a>vCenter 管理者パスワード
-vCenter 管理者パスワードを定義します。  デプロイ時に vCenter 管理者パスワードを作成します。 パスワードは、vCenter ビルド時の cloudadmin@vsphere.local 管理者アカウントに対するものです。 これを使用して vCenter にサインインします。
-
-## <a name="nsx-t-admin-password"></a>NSX-T 管理者パスワード
-NSX-T 管理者パスワードを定義します。  デプロイ時に NSX-T 管理者パスワードを作成します。 パスワードは、NSX のビルド時に、NSX アカウントの管理者ユーザーに割り当てられます。 これを使用して NSX-T Manager にログインします。
-
 ## <a name="azure-virtual-network-to-attach-azure-vmware-solution"></a>Azure VMware Solution を接続するための Azure Virtual Network
 
 Azure VMware Solution プライベート クラウドにアクセスするには、Azure VMware Solution に付随する ExpressRoute 回線を、Azure Virtual Network に接続する必要があります。  デプロイ時には、新しい仮想ネットワークを定義すること、または既存のものを選択することが可能です。
@@ -120,8 +119,6 @@ Azure VMware Solution からの ExpressRoute 回線を既存の ExpressRoute ゲ
 >この仮想ネットワークは、オンプレミス環境と Azure VMware Solution から認識されるため、この仮想ネットワークで使用する IP セグメントとサブネットが重複しないようにしてください。
 
 :::image type="content" source="media/pre-deployment/azure-vmware-solution-expressroute-diagram.png" alt-text="特定する - IP アドレス セグメント" border="false":::
-
-
 
 ## <a name="vmware-hcx-network-segments"></a>VMware HCX のネットワーク セグメント
 

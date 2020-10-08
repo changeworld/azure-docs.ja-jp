@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/15/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: d22b0100074a230451e5c6b3967fa5dbc8ae3f56
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 535ee447ff63aabb9af1f32252fb4e4dd2c392de
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515923"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779153"
 ---
 次の表に、Azure Service Bus メッセージングに固有のクォータ情報を示します。 Service Bus の価格と他のクォータについては、「[Service Bus の価格](https://azure.microsoft.com/pricing/details/service-bus/)」をご覧ください。
 
@@ -32,7 +32,7 @@ ms.locfileid: "86515923"
 | メッセージ [セッション ID](/dotnet/api/microsoft.azure.servicebus.message.sessionid) の最大サイズ | Entity |- | 128 |
 | キュー、トピック、またはサブスクリプション エンティティのメッセージ サイズ |Entity |これらのクォータを超える受信メッセージは拒否され、呼び出し元コードが例外を受け取ります。 |メッセージの最大サイズ:[Standard レベル](../articles/service-bus-messaging/service-bus-premium-messaging.md)では 256 KB、[Premium レベル](../articles/service-bus-messaging/service-bus-premium-messaging.md)では 1 MB。 <br /><br />システムのオーバーヘッドのため、この制限はこれらの値よりも小さくなります。<br /><br />ヘッダーの最大サイズ:64 KB。<br /><br />プロパティ バッグ内のヘッダー プロパティの最大数: **バイト/int.MaxValue**。<br /><br />プロパティ バッグ内のプロパティの最大サイズ:明示的な制限はありません。 ヘッダーの最大サイズによって制限されます。 |
 | キュー、トピック、またはサブスクリプション エンティティのメッセージ プロパティ サイズ |Entity | 例外 `SerializationException` が生成されます。 |各プロパティの最大メッセージ プロパティ サイズは 32,000 です。 すべてのプロパティの合計サイズが 64,000 を超えることはできません。 この制限は、[Brokered Message](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) のヘッダー全体に適用されます。このヘッダーには、ユーザー プロパティとシステム プロパティ ([Sequence Number](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber)、[Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.label)、[Message ID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid) など) の両方が含まれます。 |
-| トピックごとのサブスクリプション数 |Entity |以後、そのトピックに対するサブスクリプションの新規作成要求は拒否されます。 その結果、ポータルで構成されている場合は、エラー メッセージが表示されます。 管理 API から呼び出された場合は、呼び出し元のコードが例外を受け取ります。 |Standard レベルでは、トピックあたり 2,000。 |
+| トピックごとのサブスクリプション数 |Entity |以後、そのトピックに対するサブスクリプションの新規作成要求は拒否されます。 その結果、ポータルで構成されている場合は、エラー メッセージが表示されます。 管理 API から呼び出された場合は、呼び出し元のコードが例外を受け取ります。 |Standard レベルおよび Premium レベルのトピックあたり 2,000。 |
 | トピックごとの SQL フィルターの数 |Entity |そのトピックに追加のフィルターを作成するための後続の要求は拒否され、呼び出し元コードが例外を受け取ります。 |2,000 |
 | トピックごとの関連付けフィルターの数 |Entity |そのトピックに追加のフィルターを作成するための後続の要求は拒否され、呼び出し元コードが例外を受け取ります。 |100,000 |
 | SQL フィルターまたはアクションのサイズ |名前空間 |追加のフィルターを作成するための後続の要求は拒否され、呼び出し元コードが例外を受け取ります。 |フィルター条件文字列の最大長:1,024 (1 K)。<br /><br />規則アクション文字列の最大長:1,024 (1 K)。<br /><br />規則アクションごとの式の最大数:32. |

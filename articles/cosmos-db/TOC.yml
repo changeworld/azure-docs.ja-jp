@@ -975,6 +975,8 @@
           displayName: ARM
         - name: リージョン間の移動
           href: how-to-move-regions.md
+        - name: 変更または削除の防止
+          href: resource-locks.md
     - name: グローバル配信
       items:
         - name: マルチリージョンの書き込みを構成する

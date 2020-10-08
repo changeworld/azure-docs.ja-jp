@@ -20,10 +20,14 @@
       items:
         - name: 電話番号の取得
           href: quickstarts/telephony-sms/get-phone-number.md
+        - name: 電話の呼び出しのアプリへの追加
+          href: quickstarts/voice-video-calling/pstn-call.md
         - name: SMS メッセージの送信
           href: quickstarts/telephony-sms/send.md
         - name: SMS イベントの処理
           href: quickstarts/telephony-sms/handle-sms-events.md
+        - name: Azure Logic Apps での SMS の送信
+          href: quickstarts/telephony-sms/logic-app.md
     - name: 音声およびビデオによる通話
       items:
         - name: 音声通話をアプリに追加する

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 9d50ed62343a7fd0aafb1fed97c0f33f2caaec12
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f8e610531eaf3e7e5dbee9c40c88683a05029303
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019931"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802992"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB と .NET のパフォーマンスに関するヒント
 
@@ -39,7 +39,7 @@ Linux および ServiceInterop.dll を使用できない他のサポート対象
 
 ここに示す 4 種類のアプリケーションでは、既定で 32 ビットのホスト処理が使用されます。 アプリケーションの種類のホスト処理を 64 ビット処理に変更するには、次の手順に従います。
 
-- **実行可能アプリケーションの場合**: **[プロジェクトのプロパティ]** ウィンドウの **[ビルド]** ペインで、[[プラットフォーム ターゲット]](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) を **x64** に設定します。
+- **実行可能アプリケーションの場合**: **[プロジェクトのプロパティ]** ウィンドウの **[ビルド]** ペインで、[[プラットフォーム ターゲット]](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019&preserve-view=true) を **x64** に設定します。
 
 - **Vstest ベースのテスト プロジェクトの場合**:Visual Studio の **[テスト]** メニューで、 **[テスト]**  >  **[テストの設定]** の順に選択し、 **[既定のプロセッサ アーキテクチャ]** を **X64** に設定します。
 
@@ -126,7 +126,7 @@ TCP は直接モードでのみサポートされるため、ゲートウェイ 
 
 最短の待ち時間は、プロビジョニングされた Azure Cosmos DB エンドポイントと同じ Azure リージョン内に呼び出し元アプリケーションを配置することによって実現できます。 利用可能なリージョンの一覧については、「[Azure リージョン](https://azure.microsoft.com/regions/#services)」をご覧ください。
 
-:::image type="content" source="./media/performance-tips/same-region.png" alt-text="クライアントを同じリージョンに併置する" border="false":::
+:::image type="content" source="./media/performance-tips/same-region.png" alt-text="さまざまな接続モードとプロトコルを使用して、Azure Cosmos DB への接続を確立する" border="false":::
 
    <a id="increase-threads"></a>
 
@@ -199,7 +199,7 @@ SQL .NET SDK では、並列クエリがサポートされています。この�
 
 パフォーマンス テストでは、調整される要求の割合がわずかになるまで負荷を上げる必要があります。 要求がスロットル状態になった場合、クライアント アプリケーション側でバックオフ値を適用し、サーバー側によって指定された再試行間隔のスロットル時間を後退させるようにしてください。 バックオフにより、再試行までの待ち時間を最小限に抑えることができます。 
 
-詳細については、[RetryAfter](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter?view=azure-dotnet#Microsoft_Azure_Cosmos_CosmosException_RetryAfter) に関するページを参照してください。
+詳細については、[RetryAfter](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_CosmosException_RetryAfter) に関するページを参照してください。
     
 次の例のように、追加の診断情報をログに記録し、待ち時間に関する問題をトラブルシューティングするメカニズムがあります。 読み取り待ち時間の長い要求についての診断文字列をログに記録できます。 取得した診断文字列は、特定の要求に対して *429* エラーを受け取った回数を把握するのに役立ちます。
 

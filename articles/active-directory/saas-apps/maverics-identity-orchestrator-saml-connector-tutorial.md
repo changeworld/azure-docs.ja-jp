@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: jeedes
-ms.openlocfilehash: 116ee7c8db3070a667c21a052bec739fd397a2dd
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: fbab2bbaa47090ff4bd7fb99495912bd1f645b61
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825564"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758142"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-with-maverics-identity-orchestrator-saml-connector"></a>チュートリアル:Azure AD シングル サインオンと Maverics Identity Orchestrator SAML Connector を統合する
 
@@ -36,7 +36,7 @@ Strata には、オンプレミスまたはクラウドにデプロイできる�
 4. Azure Key Vault を設定し、これをシークレット管理プロバイダーとして使用するように Maverics を構成します。
 5. オンプレミスの Java Web アプリケーションへのアクセスを提供するために、Maverics を使用したユーザーの移行とセッションの抽象化を実行します。
 
-インストールと構成のその他の手順については、[Strata の Web サイト](https://strata.io/docs)を参照してください。
+インストールと構成のその他の手順については、[Strata の Web サイト](https://www.strata.io)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -45,7 +45,7 @@ Strata には、オンプレミスまたはクラウドにデプロイできる�
 
 ## <a name="install-maverics-identity-orchestrator"></a>Maverics Identity Orchestrator をインストールする
 
-Maverics Identity Orchestrator のインストールを開始するには、[インストール手順](https://strata.io/docs)を参照してください。
+Maverics Identity Orchestrator のインストールを開始するには、[インストール手順](https://www.strata.io)を参照してください。
 
 ### <a name="system-requirements"></a>システム要件
 * サポートされるオペレーティング システム

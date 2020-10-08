@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: shuawan
-ms.openlocfilehash: aac42e6f782ac1e939ff955c5811238f99e703eb
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 2b5440ad2bec94d4ef14fa29e723cc91a4fcdf10
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "83725671"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766864"
 ---
 # <a name="integrate-with-kubernetes-deployment-using-helm"></a>Helm を使用して Kubernetes デプロイと統合する
 
@@ -41,7 +41,7 @@ Helm を使用すると、Kubernetes で実行されるアプリケーション�
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. **[構成エクスプローラー]**  >  **[作成]** の順に選択して、次のキーと値のペアを追加します。
+7. **[構成エクスプローラー]**  >  **[作成]** の順に選択して、次のキーと値のペアを追加します。
 
     | Key | 値 |
     |---|---|

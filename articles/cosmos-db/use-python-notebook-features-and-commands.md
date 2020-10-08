@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: f4236b099915e737f9d489d89e5bf18b84736d75
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 5599a64e812c3006cf4379f98c5a0f0b0cd067e7
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761197"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801853"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-python-notebooks-preview"></a>Azure Cosmos DB の Python ノートブックで組み込みのノートブック コマンドと機能を使用する (プレビュー)
 
@@ -167,7 +167,7 @@ container = database.create_container_if_not_exists(id='WebsiteData', partition_
 ## <a name="create-a-custom-instance-of-cosmos_client"></a>``cosmos_client`` のカスタム インスタンスを作成する
 自由度を上げるために、次の目的で ``cosmos_client`` のカスタム インスタンスを作成できます。
 
-- [接続ポリシー](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.documents.connectionpolicy?view=azure-python-preview)をカスタマイズする
+- [接続ポリシー](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.documents.connectionpolicy?view=azure-python-preview&preserve-view=true)をカスタマイズする
 - 現在のアカウントとは異なる Azure Cosmos アカウントに対して操作を実行する
 
 [環境変数](#access-the-account-endpoint-and-primary-key-env-variables)を介して現在のアカウントの接続文字列と主キーにアクセスできます。 
@@ -200,7 +200,7 @@ primary_key = COSMOS.KEY
 ## <a name="reset-notebooks-workspace"></a>ノートブック ワークスペースをリセットする
 ノートブック ワークスペースをリセットし、既定の設定に戻すには、コマンド バーで **[Reset Workspace]\(ワークスペースのリセット\)** を選択します。 これでインストールされているカスタム パッケージがすべて削除され、Jupyter サーバーが再起動されます。 ノートブック、ファイル、Azure Cosmos リソースは影響を受けません。  
 
-:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="ノートブック ワークスペースをリセットする":::
+:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="nteract データ エクスプローラー":::
 
 ## <a name="next-steps"></a>次のステップ
 

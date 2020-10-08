@@ -8,18 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 05/27/2020
+ms.date: 10/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 9d8801037be55a262268afcd6e8f5751d158c76e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 478f7b7671a71d0d1f1f56c5d1d9889db81f7d37
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548516"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760199"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>チュートリアル:Azure Content Moderator で Facebook の投稿とコマンドをモデレートする
 
 このチュートリアルでは、Azure Content Moderator を使用して Facebook ページの投稿とコメントをモデレートする方法について説明します。 訪問者が投稿したコンテンツは Facebook から Content Moderator サービスに送信されるようになります。 その後、コンテンツのスコアとしきい値に応じて、Content Moderator のワークフローは、コンテンツを公開するか、レビュー ツール内にレビューを作成します。 このシナリオの例が動作しているところは、[Build 2017 のデモ ビデオ](https://channel9.msdn.com/Events/Build/2017/T6033)でご覧いただけます。
+
+> [!IMPORTANT]
+> 2018 年に、Facebook は Facebook アプリのより厳密な審査ポリシーを実装しました。 お客様のアプリが Facebook のレビュー チームによってレビューおよび承認されていない場合は、このチュートリアルの手順を完了できません。
 
 このチュートリアルでは、次の操作方法について説明します。
 
@@ -33,9 +36,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 この図では、このシナリオの各コンポーネントが示されています。
 
 !["FBListener" を介して Facebook から情報を受信し、"CMListener" を介して情報を送信する、Content Moderator の図](images/tutorial-facebook-moderation.png)
-
-> [!IMPORTANT]
-> 2018 年に、Facebook は Facebook アプリのより厳密な審査ポリシーを実装しました。 お客様のアプリが Facebook のレビュー チームによってレビューおよび承認されていない場合は、このチュートリアルの手順を完了できません。
 
 ## <a name="prerequisites"></a>前提条件
 

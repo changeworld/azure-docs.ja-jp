@@ -1,14 +1,16 @@
 ---
 title: チュートリアル:Power Virtual Agents との統合 - QnA Maker
 description: このチュートリアルでは、アクティブ ラーニングを使用してナレッジ ベースの質を向上させます。 既存の質問を削除したり変更したりせずに、レビュー、承諾または却下、あるいは追加を行います。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 06/08/2020
-ms.openlocfilehash: 6d00833a1331ebca9b070d90f32ee30c56bd5f96
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 42b50fcf0df27ddbc3e587a7d8e038e4979935ae
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319216"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777414"
 ---
 # <a name="tutorial-add-your-knowledge-base-to-power-virtual-agents"></a>チュートリアル:Power Virtual Agents にナレッジ ベースを追加する
 ナレッジ ベースから回答を提供するように [Power Virtual Agents](https://powervirtualagents.microsoft.com/) ボットを作成して拡張します。

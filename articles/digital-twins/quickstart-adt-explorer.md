@@ -14,7 +14,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 09/25/2020
 ms.locfileid: "91372614"
 ---
-# <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>クイック スタート - ADT エクスプローラーを使用して、Azure Digital Twins のサンプル シナリオを精査する
+# <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>クイック スタート - ADT Explorer を使用して、Azure Digital Twins のサンプル シナリオを精査する
 
 Azure Digital Twins を使用すると、現実の環境のライブ モデルを作成して対話的に操作することができます。 そのためには、個々の要素を**デジタル ツイン**としてモデル化し、それらを接続してナレッジ **グラフ**にまとめます。それにより、ライブ イベントに応答したり、照会された情報を返したりすることができます。
 

@@ -1,14 +1,16 @@
 ---
 title: チュートリアル:Azure Bot Service を使用した FAQ ボットの作成
 description: このチュートリアルでは、QnA Maker と Azure Bot Service を使用し、コードなしの FAQ ボットを作成します。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 08/31/2020
-ms.openlocfilehash: 0ec3b381c4361234b29717164b6b718aff0ae294
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: ab78ac41be2f900d84e82c21e566f5250b2afd18
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89652437"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777396"
 ---
 # <a name="tutorial-create-an-faq-bot-with-azure-bot-service"></a>チュートリアル:Azure Bot Service を使用した FAQ ボットの作成
 QnA Maker と Azure [Bot Service](https://azure.microsoft.com/en-us/services/bot-service/) を使用して FAQ ボットをコードなしで作成します。

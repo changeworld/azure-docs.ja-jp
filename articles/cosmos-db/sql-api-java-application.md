@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 9daa09209818b9e01738630911a1bb926e3c257d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 913bc4373785d9341064e505ddce84fe43f727b1
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079945"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801598"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>チュートリアル:Azure Cosmos DB および SQL API を使用した Java Web アプリケーションの作成
 
@@ -47,7 +47,7 @@ ms.locfileid: "88079945"
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* [Java Development Kit (JDK) 7 以降](/java/azure/jdk/?view=azure-java-stable)。
+* [Java Development Kit (JDK) 7 以降](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)。
 * [Eclipse IDE for Java EE Developers。](https://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
 * [Java ランタイム環境 (Tomcat、Jetty など) が有効な Azure Web サイト。](../app-service/quickstart-java.md)
 
@@ -67,7 +67,7 @@ JSP アプリケーションを作成するには:
 
 1. 最初に、Java プロジェクトを作成します。 Eclipse を起動し、 **[File]** 、 **[New]** 、 **[Dynamic Web Project]** の順にクリックします。 使用可能なプロジェクトとして **[Dynamic Web Project]\(動的 Web プロジェクト\)** が表示されない場合は、 **[File]\(ファイル\)** 、 **[New]\(新規\)** 、 **[Project]\(プロジェクト\)** の順にクリックし、 **[Web]** を展開して、 **[Dynamic Web Project]\(動的 Web プロジェクト\)** 、 **[Next]\(次へ\)** の順にクリックします。
    
-    :::image type="content" source="./media/sql-api-java-application/image10.png" alt-text="JSP Java アプリケーション開発":::
+    :::image type="content" source="./media/sql-api-java-application/image10.png" alt-text="My ToDo List Java アプリケーション":::
 
 1. **[Project name]** ボックスに、プロジェクト名を入力します。必要に応じて、 **[Target Runtime]** ボックスの一覧で値 (たとえば、Apache Tomcat v7.0) を選択し、 **[Finish]** をクリックします。 ターゲット ランタイムを選択すると、Eclipse でプロジェクトをローカルに実行できます。
 
@@ -75,7 +75,7 @@ JSP アプリケーションを作成するには:
 
 1. **[New JSP File]** ダイアログ ボックスで、ファイルに **index.jsp** という名前を付けます。 次の図に示すように、親フォルダーは **WebContent** のままにしておきます。 **[Next]** をクリックします。
    
-    :::image type="content" source="./media/sql-api-java-application/image11.png" alt-text="新しい JSP ファイルの作成 - Java Web アプリケーションのチュートリアル":::
+    :::image type="content" source="./media/sql-api-java-application/image11.png" alt-text="My ToDo List Java アプリケーション":::
 
 1. **[Select JSP Template]** ダイアログ ボックスで、このチュートリアルのために **[New JSP File (html)]** を選択し、 **[Finish]** をクリックします。
 
@@ -91,7 +91,7 @@ JSP アプリケーションを作成するには:
 
 1. 手順 2. でターゲットのランタイムを設定している場合、 **[Project]** をクリックし、次に **[Run]** をクリックして、JSP アプリケーションをローカルで実行できます。
 
-   :::image type="content" source="./media/sql-api-java-application/image12.png" alt-text="Hello World - Java アプリケーションのチュートリアル":::
+   :::image type="content" source="./media/sql-api-java-application/image12.png" alt-text="My ToDo List Java アプリケーション":::
 
 ## <a name="install-the-sql-java-sdk"></a><a id="InstallSDK"></a>SQL Java SDK をインストールする
 

@@ -462,6 +462,8 @@
               href: storage-blob-static-website-how-to.md
             - name: Azure CDN との統合
               href: static-website-content-delivery-network.md
+            - name: GitHub Actions を使用して静的サイトを Azure Storage にデプロイする
+              href: storage-blobs-static-site-github-actions.md
         - name: カスタム ドメインの使用
           href: storage-custom-domain-name.md
         - name: カスタム エンドポイントへのイベントのルーティング
@@ -672,7 +674,7 @@
           href: data-lake-storage-best-practices.md
         - name: クエリの高速化
           href: data-lake-storage-query-acceleration.md
-        - name: アーキテクチャ
+        - name: Architecture
           items:
             - name: Hadoop 用 Azure BLOB ファイル システム ドライバー
               href: data-lake-storage-abfs-driver.md

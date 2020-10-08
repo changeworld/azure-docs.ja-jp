@@ -9,12 +9,12 @@ ms.custom: devx-track-csharp
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 49ab9090dd2f1860bed84d0494cb862212840e82
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: b90334d4978c485033323b398e1409fa5731e813
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207031"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767596"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>チュートリアル:.NET Framework アプリで動的な構成を使用する
 
@@ -39,7 +39,7 @@ App Configuration .NET クライアント ライブラリでは、アプリケ�
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. **[Configuration Explorer]\(構成エクスプローラー)**  >  **[+ 作成]**  >  **[キー値]** の順に選択して、次のキーと値のペアを追加します。
+7. **[Configuration Explorer]\(構成エクスプローラー)**  >  **[+ 作成]**  >  **[キー値]** の順に選択して、次のキーと値のペアを追加します。
 
     | Key | Value |
     |---|---|
@@ -47,7 +47,7 @@ App Configuration .NET クライアント ライブラリでは、アプリケ�
 
     **[ラベル]** と **[コンテンツの種類]** は、現時点では空にしておきます。
 
-7. **[適用]** を選択します。
+8. **[適用]** を選択します。
 
 ## <a name="create-a-net-framework-console-app"></a>.NET Framework コンソール アプリを作成する
 

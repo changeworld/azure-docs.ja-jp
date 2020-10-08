@@ -1,14 +1,16 @@
 ---
 title: クイック スタート:質問のバッチを使用したナレッジ ベースのテスト
 description: QnA Maker バッチ テスト ツールを使用して、期待される回答、信頼度スコア、および複数ターンのプロンプトについて、実際の QnA Maker リソース内のナレッジ ベースをテストします。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 05/26/2020
-ms.openlocfilehash: bcee98678212a3bc233c36a831f6bcde7e6ae550
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ac406761abf922ff5f0d86eacd3e419c374ce096
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88531071"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776767"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>クイック スタート:質問のバッチと期待される回答を使用したナレッジ ベースのテスト
 
