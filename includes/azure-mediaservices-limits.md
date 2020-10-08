@@ -2,14 +2,14 @@
 author: rothja
 ms.service: media-services
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 09/16/2020
 ms.author: jroth
-ms.openlocfilehash: e24c345bfee216dd240f0c283402ad43c8f45c29
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c315c071aeb36eea0bd1af84b1344cf2fef5f703
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85838789"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329663"
 ---
 >[!NOTE]
 >固定されないリソースの場合は、サポート チケットを開いてクォータの増加を要求してください。 上限を高くするために追加の Azure Media Services アカウントを作成することはしないでください。
@@ -29,7 +29,7 @@ ms.locfileid: "85838789"
 | チャネルあたりの実行状態のプログラム数 |3|
 | Media Services アカウントあたりの、停止または実行しているストリーミング エンドポイント数|2|
 | ストリーミング エンドポイントあたりのストリーミング ユニット数 |10 |
-| ストレージ アカウント | 1,000<sup>5</sup> (固定) |
+| ストレージ アカウント | 100<sup>5</sup> (固定) |
 | ポリシー | 1,000,000<sup>6</sup> |
 | ファイル サイズ| シナリオによっては、Media Services での処理についてサポートされている最大ファイル サイズに制限があります。<sup>7</sup> |
 

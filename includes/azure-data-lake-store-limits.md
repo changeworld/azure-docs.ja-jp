@@ -5,17 +5,22 @@ services: storage
 author: twooley
 ms.service: storage
 ms.topic: include
-ms.date: 06/22/2018
+ms.date: 09/30/2020
 ms.author: twooley
 ms.custom: include file
-ms.openlocfilehash: 5e5ef3084fa4e13035fe562dd3c5ed2a37b76be2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 358de5761f3535b5f1e75d82539ee8e3ecdbd289
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334745"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665613"
 ---
-Azure Data Lake Storage Gen1 は、ビッグ データの分析ワークロードに対応するエンタープライズ レベルのハイパースケール リポジトリです。 Data Lake Storage Gen1 を使用すると、運用分析や調査分析を目的として任意のサイズ、種類、および取り込み速度のデータを 1 か所でキャプチャすることができます。 Data Lake Storage Gen1 アカウントに格納できるデータ量に制限はありません。
+**Azure Data Lake Storage Gen2** は、専用サービスまたはストレージ アカウントの種類ではありません。 これは、ビッグ データ分析専用の機能の最新リリースです。  これらの機能は、汎用 v2 または BlockBlobStorage ストレージ アカウントで利用でき、アカウントの**階層型名前空間**機能を有効にすることで取得できます。 スケール ターゲットについては、これらの記事を参照してください。 
+
+- [BLOB ストレージのスケール ターゲット](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage)。
+- [Standard ストレージ アカウントのスケール ターゲット](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account?toc=/azure/storage/blobs/toc.json#scale-targets-for-standard-storage-accounts)。
+
+**Azure Data Lake Storage Gen1** は専用サービスです。 これは、ビッグ データの分析ワークロードに対応するエンタープライズ規模のハイパースケール リポジトリです。 Data Lake Storage Gen1 を使用すると、運用分析や調査分析を目的として任意のサイズ、種類、および取り込み速度のデータを 1 か所でキャプチャすることができます。 Data Lake Storage Gen1 アカウントに格納できるデータ量に制限はありません。
 
 | **リソース** | **制限** | **コメント** |
 | --- | --- | --- |

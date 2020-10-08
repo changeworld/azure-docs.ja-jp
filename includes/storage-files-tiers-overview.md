@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e75cb7d13fb74d32191ab7f076d73ad66976503d
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 7d0286b63703c165dda6cd12bb625fc64272aac1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90606369"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376465"
 ---
 Azure Files では、Premium、トランザクション最適化、ホット、クールの 4 つの異なるストレージのサービス レベルが提供されており、お客様のシナリオのパフォーマンスと価格の要件に合わせて共有を調整できます。
 
@@ -26,4 +26,5 @@ Premium ファイル共有は、プロビジョニングされる課金モデル
 
 ホットおよびクール ファイル共有は、すべての Azure パブリック リージョンと Azure Government リージョンで利用できます。 トランザクション最適化ファイル共有は、Azure China および Azure Germany リージョンを含むすべての Azure リージョンで利用できます。
 
-ホットまたはクール ファイル共有をデプロイするには、[ホットまたはクール ファイル共有の作成](../articles/storage/files/storage-how-to-create-file-share.md#create-a-hot-or-cool-file-share)に関する記事を参照してください。 
+> [!Important]  
+> ファイル共有は、GPv2 ストレージ アカウントの種類内の層 (トランザクション最適化、ホット、クール) をまたいで移動できます。 層の間で共有を移動させると、トランザクションが発生します。ホットな層からクールな層に移動すると、共有内の各ファイルについてクールな層の書き込みトランザクション料金が発生します。一方、クールな層からホットな層に移動すると、共有内の各ファイルについて、クールな層の読み取りトランザクション料金が発生します。

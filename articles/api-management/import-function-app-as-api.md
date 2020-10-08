@@ -1,5 +1,5 @@
 ---
-title: Azure Functions アプリを API として API Management にインポートする
+title: Azure 関数アプリを API として API Management にインポートする
 titleSuffix: Azure API Management
 description: このチュートリアルでは、Azure Function App を API として Azure API Management にインポートする方法について説明します。
 services: api-management
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: c6ec2be6daee931a4066ff5ce4f64fc949d497ac
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: be8a8f35ece946d1be907b2ca13a640bebbb4ee5
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243428"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627025"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Azure API Management で Azure Function App を API としてインポートする
 
@@ -71,7 +71,7 @@ Azure API Management は、Azure Function App の新しい API としてのイ�
     > [!NOTE]
     > HTTP トリガーに基づかない Function のみをインポートして、承認レベル設定を *Anonymous* または *Function* に設定できます。
 
-7. **[完全]** ビューに切り替え、 **[製品]** を新しい API に割り当てます。 必要に応じて、作成時に他のフィールドを指定することも、後で **[設定]** タブに移動して構成することもできます。設定については、「[最初の API のインポートと発行](import-and-publish.md#-import-and-publish-a-backend-api)」のチュートリアルで説明されています。
+7. **[完全]** ビューに切り替え、 **[製品]** を新しい API に割り当てます。 必要に応じて、作成時に他のフィールドを指定することも、後で **[設定]** タブに移動して構成することもできます。設定については、「[最初の API のインポートと発行](import-and-publish.md#import-and-publish-a-backend-api)」のチュートリアルで説明されています。
 8. **Create** をクリックしてください。
 
 ## <a name="append-azure-function-app-to-an-existing-api"></a><a name="append-azure-function-app-to-api"></a> Azure Function App を既存の API に追加する

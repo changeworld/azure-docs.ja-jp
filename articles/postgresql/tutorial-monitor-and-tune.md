@@ -1,17 +1,17 @@
 ---
 title: チュートリアル:監視とチューニング - Azure Database for PostgreSQL - 単一サーバー
 description: このチュートリアルでは、Azure Database for PostgreSQL - Single Server での監視およびチューニングについて説明します。
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: tutorial
 ms.date: 5/6/2019
-ms.openlocfilehash: 05435aae727c84a5f3eb886274f9d286627e399e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f211ce7e52ccaa6793435159d0ce1c64fe8b63ed
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90895088"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91705283"
 ---
 # <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>チュートリアル:Azure Database for PostgreSQL (単一サーバー) を監視およびチューニングする
 
@@ -52,7 +52,7 @@ Azure portal の [Query Performance Insight](concepts-query-performance-insight.
 
 2. **実行時間の長いクエリ**タブは、実行ごとの平均実行時間上位 5 クエリを示し、15 分間隔で集計しています。 
    
-   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-landing-page.png" alt-text="Query Performance Insight ランディング ページ":::
+   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-landing-page.png" alt-text="クエリストア サーバー パラメータ":::
 
    **Number of Queries** ドロップダウンから選択してより多くのクエリを表示することができます。 グラフの色は、これを行うときに、特定のクエリ ID に対して変更できます。
 
@@ -64,7 +64,7 @@ Azure portal の [Query Performance Insight](concepts-query-performance-insight.
 
 6. **Wait Statistics** タブを選択し、サーバー内の待機時間に関して、対応する視覚化を表示します。
    
-   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-wait-statistics.png" alt-text="Query Performance Insight の待機の統計":::
+   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-wait-statistics.png" alt-text="クエリストア サーバー パラメータ":::
 
 ### <a name="permissions"></a>アクセス許可
 Query Performance Insight で、クエリのテキストを表示するために必要な**所有者**または**共同作成者**のアクセス許可。 **リーダー**はグラフとテーブルを表示できますが、クエリ テキストは表示できません。
@@ -75,7 +75,7 @@ Query Performance Insight で、クエリのテキストを表示するために
 
 1. PostgreSQL サーバーの Azure Portal ページで、メニュー バーの**サポート + トラブルシューティング**セクションから、**パフォーマンスに関する推奨事項**を開きます。
    
-   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-landing-page.png" alt-text="パフォーマンスに関する推奨事項ランディング ページ":::
+   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-landing-page.png" alt-text="クエリストア サーバー パラメータ":::
 
 2. **分析**を選択し、データベースを選択します。 これにより、分析が開始されます。
 
@@ -85,7 +85,7 @@ Query Performance Insight で、クエリのテキストを表示するために
 
 5. 推奨事項は、該当する**データベース**、**テーブル**、**列**、および**インデックス サイズ**に関する情報を表示します。
 
-   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-result.png" alt-text="パフォーマンスに関する推奨事項の結果":::
+   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-result.png" alt-text="クエリストア サーバー パラメータ":::
 
 6. 推奨事項を実装するには、クエリ テキストをコピーし、任意のクライアントから実行します。
 

@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 04/14/2019
 ms.author: glenga
-ms.openlocfilehash: 47e1c509e8b7b60e889e1202b49b1a145c68162c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: aae89e1c6f8db2fb657ac2a43c4bce0396ab3ddd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929494"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376869"
 ---
 ## <a name="local-settings-file"></a>ローカル設定ファイル
 
@@ -40,7 +40,7 @@ local.settings.json ファイルには、アプリの設定、接続文字列、
 
 | 設定      | 説明                            |
 | ------------ | -------------------------------------- |
-| **`IsEncrypted`** | この設定を `true` にすると、すべての値がローカル コンピューターのキーを使用して暗号化されます。 `func settings` コマンドと共に使用されます。 既定値は `false` です。 |
+| **`IsEncrypted`** | この設定を `true` にすると、すべての値がローカル コンピューターのキーを使用して暗号化されます。 `func settings` コマンドと共に使用されます。 既定値は `false` です。 サービス接続文字列など、シークレットが local.settings.json に含まれている場合、それをローカル コンピューター上で暗号化することができます。 実行時には、ホストが設定の暗号化を自動的に解除します。 ローカルで暗号化された設定の読み取りを試す前に、`func settings decrypt` コマンドを使用してください。 |
 | **`Values`** | プロジェクトをローカルで実行するときに使用されるアプリケーション設定と接続文字列の配列です。 これらのキーと値 (文字列と文字列) のペアは、[`AzureWebJobsStorage`] など、Azure 内の関数アプリでのアプリケーション設定に対応します。 多くのトリガーおよびバインドには、[BLOB ストレージ トリガー](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#configuration)の `Connection` など、接続文字列アプリ設定を参照するプロパティがあります。 これらのプロパティでは、`Values` 配列にアプリケーション設定を定義する必要があります。 よく使用される設定の一覧については、後ろの表を参照してください。 <br/>値は、JSON オブジェクトまたは配列ではなく文字列である必要があります。 設定名には、コロン (`:`)、2 つの連続する下線 (`__`) を含めることはできません。 二重下線文字はランタイムによって予約されています。また、コロンは[依存関係の挿入](../articles/azure-functions/functions-dotnet-dependency-injection.md#working-with-options-and-settings)をサポートするために予約されています。 |
 | **`Host`** | このセクションの設定により、ローカルでプロジェクトを実行するときの Functions ホスト プロセスをカスタマイズできます。 これらの設定は、Azure でプロジェクトを実行するときにも適用される、host.json 設定とは別のものです。 |
 | **`LocalHttpPort`** | ローカルの Functions ホストの実行時に使用される既定のポートを設定します (`func host start`と`func run`)。 `--port` コマンド ライン オプションは、この設定より優先されます。 |

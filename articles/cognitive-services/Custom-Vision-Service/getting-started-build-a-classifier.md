@@ -1,26 +1,27 @@
 ---
-title: 'クイックスタート: 分類器を構築する - Custom Vision Service'
+title: 'クイックスタート: Custom Vision Web サイトで分類子を構築する'
 titleSuffix: Azure Cognitive Services
-description: このクイックスタートでは、Custom Vision Web サイトを使用して画像分類モデルを作成する方法について説明します。
+description: このクイックスタートでは、Custom Vision Web サイトを使用して画像分類モデルを作成、トレーニング、テストする方法について説明します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 09/15/2020
+ms.date: 09/29/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: c8b5d3f58f11e85c6e77ce0cbf0c6d435f570ade
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+keywords: 画像認識、画像認識アプリ、Custom Vision
+ms.openlocfilehash: b57720b9d8fb05a605b9eace279b70b060c18450
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91277344"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91596864"
 ---
-# <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>クイック スタート:Custom Vision で分類子を構築する方法
+# <a name="quickstart-build-a-classifier-with-the-custom-vision-website"></a>クイックスタート: Custom Vision Web サイトで分類子を構築する
 
-このクイックスタートでは、Custom Vision Web サイトを通じて画像分類器を構築する方法について説明します。 モデルを作成したら、新しい画像でテストを行い、最終的に、独自の画像認識ソフトウェアに統合することができます。
+このクイックスタートでは、Custom Vision Web サイトを使用して画像分類モデルを作成する方法について説明します。 モデルを作成したら、新しい画像でテストを行い、最終的に、独自の画像認識アプリに統合することができます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.author: v-myoung
-ms.openlocfilehash: 3607ecb7d1ef01b968b67c704e12136cc1888b69
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.author: inhenkel
+ms.openlocfilehash: 797ba00820e7ff9d96868acdfc1dddfff3d21623
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296231"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598281"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Media Services v3 のダイナミック パッケージ
 
@@ -56,6 +56,9 @@ Media Services 動的暗号化を使用してコンテンツを保護する場�
 |HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`||
 |HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`||
 |HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`||
+
+> [!NOTE]
+> Apple の以前のガイドラインでは、低帯域幅ネットワークのフォールバックではオーディオのみのストリームを提供することを推奨していました。  現在、Media Services エンコーダーではオーディオのみのトラックが自動的に生成されます。Apple のガイドラインでは、特に Apple TV の配信では、オーディオのみのトラックを "*含めない*" ように定められています。  プレーヤーが既定でオーディオのみのトラックを含めないようにするには、HLS でオーディオのみの再生を削除する "audio-only=false" タグを URL に使用するか、または単に HLS-V3 を使用することをお勧めします。 たとえば、「 `http://host/locator/asset.ism/manifest(format=m3u8-aapl,audio-only=false)` 」のように入力します。
 
 ### <a name="mpeg-dash-protocol"></a>MPEG-DASH プロトコル
 

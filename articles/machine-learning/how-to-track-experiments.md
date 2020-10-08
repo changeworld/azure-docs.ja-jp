@@ -11,15 +11,15 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 44fe71f575a32ccc1a687bc87793cb6a8b6508a9
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: b9dfb5b2b2b9105aa62b0b6b5d9f5590073fa29e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650633"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889713"
 ---
 # <a name="enable-logging-in-azure-ml-training-runs"></a>Azure ML のトレーニングの実行でログ記録を有効にする
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Azure Machine Learning Python SDK を使用すると、既定の Python ログ パッケージと SDK 固有の機能の両方を使用してリアルタイムの情報をログに記録できます。 ユーザーは、ポータルでローカルにログを記録し、ワークスペースにログを送信することができます。
 
@@ -83,7 +83,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 Azure Machine Learning では、トレーニング中に、自動機械学習の実行や、ジョブを実行する Docker コンテナーなど、他のソースからの情報をログに記録することもできます。 これらのログは文書化されていませんが、問題が発生して Microsoft サポートに問い合わせた場合、サポートはトラブルシューティングの際にこれらのログを使用できる可能性があります。
 
-Azure Machine Learning デザイナー (プレビュー) におけるメトリックのログ記録の詳細については、[デザイナーでメトリックをログに記録する方法 (プレビュー)](how-to-track-designer-experiments.md) に関する記事を参照してください
+Azure Machine Learning デザイナーにおけるメトリックのログ記録の詳細については、[デザイナーでメトリックをログに記録する方法](how-to-track-designer-experiments.md)に関する記事を参照してください
 
 ## <a name="example-notebooks"></a>サンプルの Notebook
 
@@ -97,6 +97,6 @@ Azure Machine Learning デザイナー (プレビュー) におけるメトリ�
 
 Azure Machine Learning の使用方法の詳細については、これらの記事を参照してください。
 
-* [Azure Machine Learning デザイナー (プレビュー) でメトリックをログに記録する](how-to-track-designer-experiments.md)方法を確認します。
+* [Azure Machine Learning デザイナーでメトリックをログに記録する](how-to-track-designer-experiments.md)方法を確認します。
 
 * 最適なモデルを登録し、チュートリアルでデプロイする方法の例については、「[Azure Machine Learning で画像分類モデルをトレーニングする](tutorial-train-models-with-aml.md)」をご覧ください。
