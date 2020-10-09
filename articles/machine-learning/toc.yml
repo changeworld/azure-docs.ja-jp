@@ -15,7 +15,7 @@
 - name: チュートリアル
   expanded: true
   items:
-    - name: Python 作業を開始する (1 日目)
+    - name: Python 作業の開始 (1 日目)
       expanded: true
       items:
         - name: 1. ローカル コンピューターの設定
@@ -188,6 +188,8 @@
             - name: Private Link を使用する
               displayName: private endpoint
               href: how-to-configure-private-link.md
+            - name: カスタム DNS を使用する
+              href: how-to-custom-dns.md
             - name: セキュリティで保護された Web サービスを構成する
               displayName: 'ssl, tls'
               href: how-to-secure-web-service.md

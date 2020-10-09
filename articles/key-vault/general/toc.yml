@@ -106,6 +106,8 @@
       items:
         - name: Azure Key Vault 開発者ガイド
           href: developers-guide.md
+        - name: Azure Resource Manager を使用して Key Vault をデプロイする
+          href: vault-create-template.md
         - name: Web アプリのシークレットの保存
           href: vs-secure-secret-appsettings.md
         - name: .NET を使用したサービス間認証

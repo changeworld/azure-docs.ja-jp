@@ -115,7 +115,7 @@
               href: partner-center-portal/azure-vm-create-offer.md
             - name: Azure VM 技術資産を作成する
               items:
-                - name: 仮想マシンの認定 - 問題と解決策
+                - name: 仮想マシンの認定に関する問題
                   href: partner-center-portal/vm-certification-issues-solutions.md
                 - name: Azure VM の技術資産を作成する
                   href: partner-center-portal/create-azure-vm-technical-asset.md
@@ -328,6 +328,8 @@
       href: partner-center-portal/support.md
     - name: 利用可能な地域と通貨
       href: marketplace-geo-availability-currencies.md
+    - name: テナントとオブジェクト ID の検索
+      href: find-tenant-object-id.md
     - name: サポートされている国とリージョン
       href: sell-from-countries.md
     - name: サポートされる HTML タグ

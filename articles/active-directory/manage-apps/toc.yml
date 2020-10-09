@@ -110,18 +110,26 @@
   items:
     - name: ユーザーの割り当てとアプリへのアクセスの管理
       items:
-        - name: ユーザーの同意の構成
-          href: configure-user-consent.md
-        - name: 同意要求の管理と評価
-          href: manage-consent-requests.md
-        - name: テナント全体の管理者の同意を許可する
-          href: grant-admin-consent.md
-        - name: 管理者の同意ワークフローの構成 (プレビュー)
-          href: configure-admin-consent-workflow.md
+        - name: 同意とアクセス許可
+          items:
+            - name: ユーザーの同意の構成
+              href: configure-user-consent.md
+            - name: グループ所有者の同意を構成する
+              href: configure-user-consent-groups.md
+            - name: アクセス許可の分類を構成する
+              href: configure-permission-classifications.md
+            - name: アプリへの同意ポリシーを管理する
+              href: manage-app-consent-policies.md
+            - name: 管理者の同意ワークフローの構成 (プレビュー)
+              href: configure-admin-consent-workflow.md
+            - name: 同意要求の管理と評価
+              href: manage-consent-requests.md
+            - name: テナント全体の管理者の同意を許可する
+              href: grant-admin-consent.md
+            - name: アプリに付与されるアクセス許可の確認
+              href: manage-application-permissions.md
         - name: アプリのユーザー割り当ての管理
           href: assign-user-or-group-access-portal.md
-        - name: アプリに付与されるアクセス許可の確認
-          href: manage-application-permissions.md
         - name: マイ アプリでのコレクションの作成
           href: access-panel-collections.md
         - name: セルフサービス アプリ アクセスの使用

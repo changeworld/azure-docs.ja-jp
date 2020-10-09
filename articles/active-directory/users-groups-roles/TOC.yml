@@ -183,6 +183,8 @@
                   href: roles-custom-available-permissions.md
                 - name: エンタープライズ アプリのアクセス許可
                   href: custom-enterprise-app-permissions.md
+                - name: アプリへの同意のアクセス許可
+                  href: custom-consent-permissions.md
             - name: アプリ管理者のアクセス許可を委任する
               href: roles-delegate-app-roles.md
         - name: グループを使用してロールの割り当てを管理する

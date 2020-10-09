@@ -3,18 +3,18 @@ title: Microsoft ID プラットフォームのドキュメント
 summary: Microsoft ID プラットフォームは、認証サービス、オープンソース ライブラリ、およびアプリケーション管理ツールです。 Microsoft が提供するクイックスタート、チュートリアル、コード サンプルを使用して、標準ベースの最新の認証ソリューションを作成する方法について説明します。 ユーザーと顧客が自分の Microsoft ID またはソーシャル アカウントを使用してサインインし、API または Microsoft Graph などの Microsoft API へのアクセスを承認するアプリケーションを構築します。
 metadata:
   ms.topic: landing-page
-  ms.date: 09/26/2020
+  ms.date: 10/07/2020
   author: mmacy
   ms.author: marsma
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: d80d722594e717319bda473e2cb86551acc8d9f0
-  ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+  ms.openlocfilehash: b6dfd02b11c972ae4877e45e7424d3e35f0d0874
+  ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/28/2020
-  ms.locfileid: "91403145"
+  ms.lasthandoff: 10/07/2020
+  ms.locfileid: "91801887"
 landingContent:
 - title: Microsoft ID プラットフォームについて
   linkLists:
@@ -120,6 +120,8 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
+    - text: Microsoft Identity Web ライブラリの概要
+      url: microsoft-identity-web.md
     - text: チュートリアル:Blazor Server
       url: tutorial-blazor-server.md
     - text: クイック スタート:ASP.NET Core Web API を保護する

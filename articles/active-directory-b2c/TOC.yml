@@ -256,6 +256,12 @@
               href: configure-tokens-custom-policy.md
             - name: セッションの動作を構成する
               href: session-behavior-custom-policy.md
+        - name: API コネクタ
+          items:
+            - name: 概要
+              href: api-connectors-overview.md
+            - name: API コネクタを追加する
+              href: add-api-connector.md
         - name: 外部 IdP トークンをパススルーする
           href: idp-pass-through-custom.md
         - name: アダプティブなエクスペリエンス
