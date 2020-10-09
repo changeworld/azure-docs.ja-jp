@@ -45,7 +45,7 @@
           href: tutorial-alias-rr.md
 - name: 概念
   items:
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
