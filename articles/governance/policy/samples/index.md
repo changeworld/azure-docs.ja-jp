@@ -4,10 +4,10 @@ description: Azure Policy のビルトインのインデックス。 カテゴ�
 ms.date: 07/20/2020
 ms.topic: sample
 ms.openlocfilehash: 9fec7c7b0db554d424f8faee7e4e10e6121f1caa
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91812524"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy のサンプル

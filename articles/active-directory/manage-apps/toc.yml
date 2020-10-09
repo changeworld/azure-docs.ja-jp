@@ -270,7 +270,7 @@
               href: application-sign-in-problem-on-premises-application-proxy.md
             - name: アプリケーション プロキシでの CORS の問題
               href: application-proxy-understand-cors-issues.md
-- name: リファレンス
+- name: 関連項目
   items:
     - name: アプリケーション プロキシに関する FAQ
       href: application-proxy-faq.md
