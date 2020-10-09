@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: c5537552e35c1738e6c3cd4873b4c6444685a5fe
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: a01d4137217aa594d4636f3338d3f33dc03cc836
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448300"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713742"
 ---
 # <a name="pricing-of-azure-security-center"></a>Azure Security Center の価格
 Azure Security Center は、Azure、オンプレミス、他のクラウドで実行されているワークロードの統合セキュリティ管理と高度な脅威保護を実現します。 ハイブリッド クラウド ワークロードの可視化と制御、脅威にさらされる機会を減らす積極的防御、急速に進化するサイバー攻撃への対応に役立つインテリジェント検出などの機能が提供されます。
@@ -58,7 +58,7 @@ Azure Defender を有効にするには、次の手順に従います。
 :::image type="content" source="./media/security-center-pricing/pricing-tier-page.png" alt-text="ポータルの Security Center の価格ページ":::
 
 > [!NOTE]
-> 脅威防止機能を含め、Security Center のすべての機能を有効にするには、適用可能なワークロードを含むサブスクリプションで Azure Defender を有効にする必要があります。 ワークスペース レベルで有効にしても、Just-In-Time VM アクセス、適応型アプリケーション制御、Azure リソースのネットワーク検出は有効になりません。 
+> 脅威防止機能を含め、Security Center のすべての機能を有効にするには、適用可能なワークロードを含むサブスクリプションで Azure Defender を有効にする必要があります。 ワークスペース レベルで有効にしても、Just-In-Time VM アクセス、適応型アプリケーション制御、Azure リソースのネットワーク検出は有効になりません。 さらに、ワークスペース レベルで使用できる Azure Defender プランは、Azure Defender for servers と Azure Defender for SQL servers on machines のみです。
 >
 > **Azure Defender for Storage accounts** は、サブスクリプション レベルまたはリソース レベルで有効にすることができます。
 > **Azure Defender for SQL** は、サブスクリプション レベルまたはリソース レベルで有効にすることができます。
