@@ -4,10 +4,10 @@ description: IRS 1075 ブループリント サンプルの概要。 このブ�
 ms.date: 08/19/2020
 ms.topic: sample
 ms.openlocfilehash: 41a35eed7fee1b0c2c1e792997ec61c4035b9abd
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88653683"
 ---
 # <a name="overview-of-the-irs-1075-blueprint-sample"></a>IRS 1075 ブループリント サンプルの概要
