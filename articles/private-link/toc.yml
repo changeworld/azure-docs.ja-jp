@@ -28,6 +28,8 @@
   items:
     - name: ストレージ アカウントに接続する
       href: tutorial-private-endpoint-storage-portal.md
+    - name: Cosmos DB アカウントに接続する
+      href: tutorial-private-endpoint-cosmosdb-portal.md
 - name: 概念
   items:
     - name: プライベート エンドポイント
@@ -42,8 +44,6 @@
           href: security-baseline.md
 - name: 方法
   items:
-    - name: Cosmos DB アカウントに非公開で接続する
-      href: create-private-endpoint-cosmosdb-portal.md
     - name: Web アプリに非公開で接続する
       href: create-private-endpoint-webapp-portal.md
     - name: プライベート エンドポイントのネットワーク ポリシーを無効にする

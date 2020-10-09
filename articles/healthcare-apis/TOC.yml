@@ -76,6 +76,8 @@
           href: configure-local-rbac.md
         - name: データベース設定を構成する
           href: configure-database.md
+        - name: 顧客が管理するキーを構成する
+          href: bring-your-own-key.md
         - name: CORS を構成する
           href: configure-cross-origin-resource-sharing.md
         - name: エクスポートを構成する

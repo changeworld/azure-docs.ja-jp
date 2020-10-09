@@ -28,7 +28,7 @@
       items:
         - name: Azure Data Factory の使用
           href: ../data-factory/load-azure-data-lake-store.md
-        - name: Storage Explorer の使用
+        - name: ストレージ エクスプローラーの使用
           href: data-lake-store-in-storage-explorer.md
         - name: AdlCopy を使用
           href: data-lake-store-copy-data-azure-storage-blob.md
