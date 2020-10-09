@@ -26,7 +26,7 @@
           href: hana-operations-model.md
         - name: 互換性のあるオペレーティング システム
           href: os-compatibility-matrix-hana-large-instance.md
-    - name: アーキテクチャ
+    - name: Architecture
       items:
         - name: 全般的なアーキテクチャ
           href: hana-architecture.md
