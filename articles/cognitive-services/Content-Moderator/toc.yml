@@ -106,7 +106,7 @@
           href: 'https://github.com/Azure-Samples/cognitive-services-python-sdk-samples'
         - name: Node.js SDK のサンプル
           href: 'https://github.com/Azure-Samples/cognitive-services-node-sdk-samples'
-        - name: 'C# での REST API のサンプル'
+        - name: C# での REST API のサンプル
           href: samples-rest.md
         - name: その他の Azure のサンプル
           href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=content-moderator'

@@ -220,9 +220,9 @@
     - name: Azure IoT SDK
       items:
         - name: IoT サービスの SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT デバイス SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: リモート監視
       items:
         - name: 開発者向けリファレンス ガイド (.NET)
@@ -266,7 +266,7 @@
               href: 'https://www.azureiotsolutions.com/Accelerators#description/digital-signage-solution'
     - name: よく寄せられる質問
       href: iot-accelerators-faq.md
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-iot-suite'
     - name: リモート監視 V1
       href: 'https://docs.microsoft.com/previous-versions/azure/iot-suite/'
