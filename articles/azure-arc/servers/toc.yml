@@ -49,7 +49,7 @@
           href: troubleshoot-agent-onboard.md
         - name: VM 拡張機能の問題
           href: troubleshoot-vm-extensions.md
-- name: リファレンス
+- name: 関連項目
   items:
     - name: データの保存場所
       href: data-residency.md

@@ -138,7 +138,7 @@
       href: service-fabric-content-roadmap.md
     - name: アプリケーションのシナリオ
       href: service-fabric-application-scenarios.md
-    - name: アーキテクチャ
+    - name: Architecture
       href: service-fabric-architecture.md
     - name: セキュリティ
       items:
@@ -203,7 +203,7 @@
           items:
             - name: Reliable Actors の概要
               href: service-fabric-reliable-actors-introduction.md
-            - name: アーキテクチャ
+            - name: Architecture
               href: service-fabric-reliable-actors-platform.md
             - name: サービスレベルの機能の実装
               href: service-fabric-reliable-actors-using.md
@@ -332,7 +332,7 @@
           items:
             - name: Cluster Resource Manager の概要
               href: service-fabric-cluster-resource-manager-introduction.md
-            - name: アーキテクチャ
+            - name: Architecture
               href: service-fabric-cluster-resource-manager-architecture.md
             - name: クラスターについて説明する
               href: service-fabric-cluster-resource-manager-cluster-description.md

@@ -4,12 +4,12 @@ ms.service: site-recovery
 ms.topic: include
 ms.date: 04/28/2019
 ms.author: ramamill
-ms.openlocfilehash: 00b0c1b1a40ad16db177916c57dba6e9d5a187a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bff9457220efbb6a6b318550a5b2dd9af4ae230f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67181703"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361393"
 ---
 特定の状況に応じた手順に従います。
 
@@ -35,7 +35,7 @@ ms.locfileid: "67181703"
     - S. No: プロセス サーバーのシリアル番号。
     - IP/Name:プロセス サーバーを実行しているマシンの IP アドレスと名前。
     - Heartbeat:プロセス サーバー マシンからの最後のハートビート。
-    ![登録解除コマンド](media/site-recovery-vmware-unregister-process-server/Unregister-cmd.PNG)
+    ![プロセス サーバーに関する情報のプレーンテキストによる表示と、上のサーバーから登録解除するものを 1 つ選択してくださいというテキストを示すスクリーンショット。(media/site-recovery-vmware-unregister-process-server/Unregister-cmd.PNG)
 
 4. 登録を解除するプロセス サーバーのシリアル番号を指定します。
 5. プロセス サーバーの登録解除により、その詳細のすべてがシステムから削除され、次のメッセージが表示されます。 **<サーバー名 (サーバーの IP アドレス) の登録が正常に解除されました**
