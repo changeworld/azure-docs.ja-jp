@@ -10,11 +10,11 @@
   items:
     - name: REST API
       items:
-        - name: 'C#'
+        - name: C#
           href: quickstarts/csharp.md
         - name: Java
           href: quickstarts/java.md
-        - name: Javascript
+        - name: JavaScript
           href: quickstarts/javascript.md
 - name: 概念
   items:
@@ -22,9 +22,9 @@
       href: concepts/send-ink-data.md
 - name: サンプル
   items:
-    - name: 'C# およびユニバーサル Windows プラットフォーム (UWP)'
+    - name: C# およびユニバーサル Windows プラットフォーム (UWP)
       href: 'https://go.microsoft.com/fwlink/?linkid=2089803'
-    - name: 'C# および Windows Presentation Foundation (WPF)'
+    - name: C# および Windows Presentation Foundation (WPF)
       href: 'https://go.microsoft.com/fwlink/?linkid=2089804'
     - name: JavaScript Web ブラウザー アプリ
       href: 'https://go.microsoft.com/fwlink/?linkid=2089908'
@@ -32,7 +32,7 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2089906'
     - name: Swift および iOS モバイル アプリ
       href: 'https://go.microsoft.com/fwlink/?linkid=2089805'
-- name: リファレンス
+- name: 関連項目
   items:
     - name: REST API リファレンス
       href: 'https://go.microsoft.com/fwlink/?linkid=2089907'
