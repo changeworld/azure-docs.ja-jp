@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: dcce4485e00415f9caa706966cac1c936c1f15f6
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9a6d8843acf27a53e261d9c7180906b15d05cc33
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690410"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314812"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL の監視とチューニング - Hyperscale (Citus)
 
@@ -32,7 +32,7 @@ Hyperscale (Citus) には、サーバー グループ内の各ノード用のメ
 |---|---|---|---|
 |active_connections|アクティブな接続|Count|サーバーへのアクティブな接続の数|
 |cpu_percent|CPU 使用率|Percent|使用されている CPU の割合|
-|iops|IOPS|Count|[IOPS 定義](../virtual-machines/premium-storage-performance.md#iops)と [Hyperscale スループット](concepts-hyperscale-configuration-options.md)に関する記事を参照してください|
+|iops|IOPS|Count|[IOPS 定義](../virtual-machines/premium-storage-performance.md#iops)と [Hyperscale (Citus) スループット](concepts-hyperscale-configuration-options.md)に関する記事を参照してください|
 |memory_percent|メモリの割合|Percent|使用されているメモリの割合|
 |network_bytes_ingress|Network In|バイト|アクティブな接続全体のネットワーク受信。|
 |network_bytes_egress|Network Out|バイト|アクティブな接続全体のネットワーク送信。|

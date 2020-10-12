@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: de2579868ad72bdf4cf78c552e9553f289ecabd0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ed023f17e19c6a018f55cb95df6447c6e5474ce8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259059"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314880"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) での PostgreSQL 拡張機能
 
@@ -74,7 +74,7 @@ Azure Database for PostgreSQL で現在サポートされている標準的な P
 > | [timetravel](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.6) | タイム トラベルを実装するための関数。 |
 > | [uuid-ossp](https://www.postgresql.org/docs/current/static/uuid-ossp.html) | 汎用一意識別子 (UUID) を生成します。 |
 
-### <a name="hyperscale-extensions"></a>Hyperscale の拡張機能
+### <a name="hyperscale-citus-extensions"></a>Hyperscale (Citus) の拡張機能
 
 > [!div class="mx-tableFixed"]
 > | **拡張子** | **説明** |
