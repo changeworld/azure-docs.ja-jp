@@ -7,12 +7,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5dd1fd1209be29774d19a155b6e585fa6ebcc036
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: b695205c08f9039fbf91eaeddb7622b784d81d12
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930487"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400589"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights の使用量とコストを管理する
 
@@ -264,7 +264,7 @@ Application Insights リソースの既定の保持期間は 90 日です。 App
 
 保持期間を変更するには、ご利用の Application Insights リソースから **[使用量と推定コスト]** ページに移動し、 **[データ保持期間]** オプションを選択します。
 
-![テレメトリの日次ボリューム上限の調整](./media/pricing/pricing-005.png)
+![データ保有期間を変更する場所を示すスクリーンショット。](./media/pricing/pricing-005.png)
 
 保持期間が短縮された場合、最も古いデータが削除されるまでに数日の猶予期間があります。
 

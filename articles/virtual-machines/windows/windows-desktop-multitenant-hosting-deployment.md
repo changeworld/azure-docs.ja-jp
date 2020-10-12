@@ -1,18 +1,18 @@
 ---
 title: マルチテナント ホスティング権限を使用して Azure 上で Windows 10 をデプロイする方法
-description: Windows ソフトウェア アシュアランスの特典を最大限利用してオンプレミスのライセンスを Azure で使用する方法について説明します。
+description: Windows ソフトウェア アシュアランスの特典を最大限利用して、マルチテナント ホスティング権限でオンプレミスのライセンスを Azure で使用する方法について説明します。
 author: xujing
 ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: 40b5f4ee0c30e38c6cd5bd01c724ed783921670d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ceb8b8b31963317ccbbd1aee9f1b2606afc5a5db
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077437"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279027"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>マルチテナント ホスティング権限を使用して Azure 上で Windows 10 をデプロイする方法 
 接続ユーザーごとに Windows 10 Enterprise E3/E5 または Windows Virtual Desktop Access (ユーザー サブスクリプション ライセンスまたはアドオン ユーザー サブスクリプション ライセンス) をご利用中のお客様は、Windows 10 のマルチテナント ホスティング権限により、他のライセンスを購入することなく、Windows 10 ライセンスをクラウドに移行し、Azure 上で Windows 10 Virtual Machines を実行することができます。 詳細については、[Windows 10 のマルチテナント ホスティング](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)に関するページを参照してください。
