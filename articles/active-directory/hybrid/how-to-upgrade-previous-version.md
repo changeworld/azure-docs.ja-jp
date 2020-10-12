@@ -16,12 +16,12 @@ ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69373e039320cd733fb859bb84e03e5493e05403
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: b78d3cab17b0cc4085c824cf35d4c6037f0e2af5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277206"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319862"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect:旧バージョンから最新バージョンにアップグレードする
 このトピックでは、Azure Active Directory (Azure AD) Connect のインストールを最新リリースにアップグレードするさまざまな方法について説明します。 Azure AD Connect を常に最新リリースにしておくことをお勧めします。 構成を大幅に変更する際は、「[スウィング移行](#swing-migration)」で説明されている手順を使用することもできます。
@@ -106,7 +106,7 @@ Azure AD Connect のアップグレードで使用できる方法は複数あり
 
 1. アップグレード中、 **[構成が完了したら、同期プロセスを開始してください]** オプションを**オフ**にします。 これにより同期スケジューラが無効になり、オーバーライドが削除される前に、同期サイクルが自動的に実行されることがなくなります。
 
-   ![DisableFullSyncAfterUpgrade](./media/how-to-upgrade-previous-version/disablefullsync01.png)
+   ![オフにする必要がある [構成が完了したら、同期プロセスを開始してください] オプションが強調表示されているスクリーンショット。](./media/how-to-upgrade-previous-version/disablefullsync01.png)
 
 2. アップグレードの完了後、次のコマンドレットを実行して、追加されたオーバーライドを確認します: `Get-ADSyncSchedulerConnectorOverride | fl`
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 34dc0717b13cb38c4477cc93f23d57d0a8023dae
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8ae95518bab5ed9bc100a5902acf1fd1db631dbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320746"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91617164"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>GPU 搭載の Azure Stack Edge Pro とは
 
@@ -73,7 +73,7 @@ Azure Stack Edge Pro 物理デバイス、Azure リソース、データ転送�
 
 - **リソースの提供** - このプレビュー リリースでは、米国東部、西ヨーロッパ、東南アジアの各リージョンでリソースが提供されます。
 
-- **デバイスの可用性** - Azure Stack Edge Pro デバイスが使用可能なすべての国の一覧については、[Azure Stack Edge Pro の価格](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgePro)に関するページの **[Azure Stack Edge Pro]** タブにある **[可用性]** セクションにアクセスしてください。
+- **デバイスの可用性** - Azure Stack Edge Pro デバイスが使用可能なすべての国またはリージョンの一覧については、[Azure Stack Edge Pro の価格](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgePro)に関するページの **[Azure Stack Edge Pro]** タブにある **[可用性]** セクションにアクセスしてください。
     
 - **転送先ストレージ アカウント** - データを格納するストレージ アカウントは、すべての Azure 地域で利用できます。 パフォーマンスを最適にするには、ストレージ アカウントによって Azure Stack Edge Pro のデータが格納されるリージョンと、デバイスが配置されている場所を、近くにする必要があります。 デバイスから離れた場所にあるストレージ アカウントは、待ち時間が長くなり、パフォーマンスが低下します。
 

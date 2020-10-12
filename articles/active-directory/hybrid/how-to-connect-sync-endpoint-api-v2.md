@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f4eba1b48b651c8efe9e9d737e226727cb244fb
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 779b29c8d31dffa495926a7f2ca5e1f77870078c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662463"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319913"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect 同期 V2 エンドポイント API (パブリック プレビュー) 
 Microsoft がデプロイした Azure AD Connect 用の新しいエンドポイント (API) では、Azure Active Directory に対する同期サービス操作のパフォーマンスが向上しています。 新しい V2 エンドポイントを利用すると、Azure AD に対するエクスポートとインポートのパフォーマンスが明らかに向上していることがわかるでしょう。 この新しいエンドポイントでは、次のものがサポートされています。
@@ -116,12 +116,12 @@ V2 エンドポイントに切り替えるには、次の手順のようにし�
 1. Azure AD 同期規則エディターを開きます 
 2. エディターで、[方向] として **[送信]** を選択します 
 3. **[Out to AAD – Group Join]\(AAD への送信 – グループへの参加\)** 同期ルールをクリックします 
-4. **[編集]** ボタンをクリックします ![同期ルールを編集する](media/how-to-connect-sync-endpoint-api-v2/endpoint2.png)
+4. **[編集]** ボタンをクリックします。 ![[Out to AAD – Group Join]\(AAD への送信 – グループへの参加\) が選択されている [View and manage your synchronization rules]\(同期ルールの表示と管理\) を示すスクリーンショット。](media/how-to-connect-sync-endpoint-api-v2/endpoint2.png)
 
 6. **[はい]** ボタンをクリックして既定のルールを無効にし、編集可能なコピーを作成します。
- ![同期ルールを編集する](media/how-to-connect-sync-endpoint-api-v2/endpoint3.png)
+ ![[はい] ボタンが選択されている [Edit Reserved Rule Confirmation]\(予約済みの規則の編集の確認\) ウィンドウを示すスクリーンショット。](media/how-to-connect-sync-endpoint-api-v2/endpoint3.png)
 
-7. **[説明]** ページのポップアップ ウィンドウで、優先順位を 1 から 99 の範囲の値に設定します ![同期ルールを編集する](media/how-to-connect-sync-endpoint-api-v2/endpoint4.png)
+7. **[説明]** ページのポップアップ ウィンドウで、優先順位を 1 から 99 の範囲の使用可能な値に設定します。 ![[優先順位] が強調表示されている [Edit outbound synchronization rule]\(送信同期規則の編集\) ウィンドウを示すスクリーンショット。](media/how-to-connect-sync-endpoint-api-v2/endpoint4.png)
 
 8. **[変換]** ページで、**member** の変換に対する **[ソース]** の値を更新し、"50000" を 50001 から 250000 の範囲の値に置き換えます。 この置換により、Azure AD に同期されるグループのメンバーシップの最大サイズが増加します。 最初は 100,000 メンバーにして、大規模なグループを同期したときの同期のパフォーマンスに対する影響を確認することをお勧めします。 
  
