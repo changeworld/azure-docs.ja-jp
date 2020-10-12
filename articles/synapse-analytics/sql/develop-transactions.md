@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: c5d23770aab0bde745152d918adfe83209819899
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: de36d1eda21903480eee986df72c5274e1aa6dff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500761"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288615"
 ---
 # <a name="use-transactions-in-sql-pool"></a>SQL プールでのトランザクションの使用
 
@@ -29,10 +29,10 @@ ms.locfileid: "87500761"
 
 SQL プールは、ACID トランザクションを実装します。 トランザクションサポートの分離レベルは、既定では READ UNCOMMITTED になります。  これは READ COMMITTED SNAPSHOT ISOLATION に変更できます。それには、マスター データベースに接続する際にユーザー データベースの READ_COMMITTED_SNAPSHOT データベース オプションをオンにします。  
 
-有効になると、このデータベース内のすべてのトランザクションが READ COMMITTED SNAPSHOT ISOLATION の下で実行され、セッション レベルで READ UNCOMMITTED を設定しても受け入れられません。 詳細については、「[ALTER DATABASE の SET オプション (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)」を確認してください。
+有効になると、このデータベース内のすべてのトランザクションが READ COMMITTED SNAPSHOT ISOLATION の下で実行され、セッション レベルで READ UNCOMMITTED を設定しても受け入れられません。 詳細については、「[ALTER DATABASE の SET オプション (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest&preserve-view=true)」を確認してください。
 
 ## <a name="transaction-size"></a>トランザクション サイズ
-1 回のデータ変更トランザクションには規模の面で制限があります。 この制限は、ディストリビューションごとに適用されます。 このため、割り当ての合計を算出するには、制限とディストリビューション数を掛ける必要があります。 
+1 回のデータ変更トランザクションには規模の面で制限があります。 この制限は、ディストリビューションごとに適用されます。 そのため、割り当ての合計を算出するには、制限とディストリビューション数を掛ける必要があります。 
 
 トランザクションの最大行数の近似値を求めるには、ディストリビューション上限を各列の合計サイズで割ります。 列の長さが異なる場合、最大サイズではなく列の平均長を利用することを検討してください。
 
@@ -81,7 +81,7 @@ SQL プールは、ACID トランザクションを実装します。 トラン�
 
 トランザクション サイズ制限は、トランザクションあたりまたは操作あたりで適用されます。 すべての同時実行トランザクションにまたいで適用されることはありません。 そのため、このデータ量をログに書き込むことが各トランザクションに許可されます。
 
-ログに書き込まれるデータ量を最適化および最小化する方法については、[トランザクションのベスト プラクティス](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関する記事をご覧ください。
+ログに書き込まれるデータ量を最適化および最小化する方法については、[トランザクションのベスト プラクティス](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関する記事を参照してください。
 
 > [!WARNING]
 > 最大トランザクション サイズは、HASH または ROUND_ROBIN で分散し、データが均等に分散されたテーブルでのみ達成できます。 トランザクションによりデータが書き込まれ、分散が傾斜する場合、最大トランザクション サイズに到達する前に上限に到達する可能性があります。
@@ -134,7 +134,7 @@ SELECT @xact_state AS TransactionState;
 
 上記のコードでは、次のようなエラー メッセージが発生します。
 
-メッセージ 111233、レベル 16、状態 1、ライン 1 111233; 111233; 現在のトランザクションは中止され、保留中の変更はすべてロールバックされています。 原因: rollback-only 状態のトランザクションが、DDL、DML、または SELECT ステートメントの前に明示的にロールバックされませんでした。
+メッセージ 111233、レベル 16、状態 1、ライン 1 111233; 111233; 現在のトランザクションは中止され、保留中の変更はすべてロールバックされています。 原因:rollback-only 状態のトランザクションが、DDL、DML、または SELECT ステートメントの前に明示的にロールバックされませんでした。
 
 ERROR_* 関数の出力は得られません。
 
@@ -181,21 +181,19 @@ SELECT @xact_state AS TransactionState;
 
 ## <a name="error_line-function"></a>Error_Line() 関数
 
-SQL プールでは、ERROR_LINE() 関数を実装またはサポートしていないことにも注意してください。 この関数がコードに含まれている場合は、SQL プールに準拠するために削除する必要があります。 代わりに、コードでクエリ ラベルを使用して同等の機能を実装します。 詳しくは、[ラベル](develop-label.md)に関する記事をご覧ください。
+SQL プールでは、ERROR_LINE() 関数を実装またはサポートしていないことにも注意してください。 この関数がコードに含まれている場合、SQL プールに準拠するためにはこれを削除する必要があります。 代わりに、コードでクエリ ラベルを使用して同等の機能を実装します。 詳しくは、[LABEL](develop-label.md) に関する記事を参照してください。
 
 ## <a name="use-of-throw-and-raiserror"></a>THROW および RAISERROR の使用
 
 THROW は、SQL プールで例外を発生させるための最新の実装ですが、RAISERROR もサポートされています。 ただし、注意が必要な相違点がいくつかあります。
 
-* THROW では、ユーザー定義のエラー メッセージの番号として、100,000 ～ 150,000 の範囲の番号を指定することはできません。
+* THROW では、ユーザー定義のエラー メッセージの番号として、100,000～150,000 の範囲の番号を指定することはできません。
 * RAISERROR のエラー メッセージは 50,000 に固定されています。
 * sys.messages の使用はサポートされていません。
 
 ## <a name="limitations"></a>制限事項
 
-SQL プールには、トランザクションに関する他の制限事項がいくつかあります。
-
-制限事項は次のとおりです。
+SQL プールには、トランザクションに関する他の制限事項がいくつかあります。 制限事項は次のとおりです。
 
 * 分散トランザクションは使用できません。
 * 入れ子になったトランザクションは使用できません。

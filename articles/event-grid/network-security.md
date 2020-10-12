@@ -1,16 +1,16 @@
 ---
 title: Azure Event Grid リソースのネットワーク セキュリティ
-description: この記事では、プライベート エンドポイントからのアクセスを構成する方法について説明します
+description: この記事では、Azure Event Grid で、エグレス用のサービス タグ、イングレス用の IP ファイアウォール規則、イングレス用のプライベート エンドポイントを使用する方法について説明します。
 author: VidyaKukke
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: vkukke
-ms.openlocfilehash: 1887b6b5919a8b0f6e8f570b2471d74d9541df31
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 81544d71db5131f76dc2f9a613b6fd89ed57d076
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119244"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326458"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Azure Event Grid リソースのネットワーク セキュリティ
 この記事では、Azure Event Grid で次のセキュリティ機能を使用する方法について説明します。 

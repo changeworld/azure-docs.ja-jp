@@ -31,10 +31,6 @@
           href: azure-stack-edge-gpu-deploy-activate.md
         - name: 8 - コンピューティングの構成
           href: azure-stack-edge-gpu-deploy-configure-compute.md
-        - name: 9A - 共有の追加、接続
-          href: azure-stack-edge-j-series-deploy-add-shares.md
-        - name: 9B - ストレージ アカウントの追加、接続
-          href: azure-stack-edge-j-series-deploy-add-storage-accounts.md
     - name: 概念
       items:
         - name: 要件を確認する
@@ -87,6 +83,8 @@
               items:
                 - name: ステートレス アプリ
                   href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
+                - name: C# モジュールの開発
+                  href: azure-stack-edge-j-series-create-iot-edge-module.md
             - name: Azure Arc (プレビュー) 経由
               items:
                 - name: Kubernetes クラスターで Arc を有効にする
@@ -123,12 +121,14 @@
               href: azure-stack-edge-j-series-create-certificates-tool.md
             - name: 証明書エラーのトラブルシューティングを行う
               href: azure-stack-edge-j-series-certificate-troubleshooting.md
-        - name: C# モジュールの開発
-          href: azure-stack-edge-j-series-create-iot-edge-module.md
         - name: Edge コンピューティングを管理する
           href: azure-stack-edge-j-series-manage-compute.md
         - name: ストレージ ゲートウェイを管理する
           items:
+            - name: 共有の追加、接続
+              href: azure-stack-edge-j-series-deploy-add-shares.md
+            - name: ストレージ アカウントの追加、接続
+              href: azure-stack-edge-j-series-deploy-add-storage-accounts.md
             - name: 共有
               href: azure-stack-edge-j-series-manage-shares.md
             - name: ユーザー
@@ -149,6 +149,10 @@
               href: azure-stack-edge-return-device.md
             - name: デバイスの置換
               href: azure-stack-edge-replace-device.md
+            - name: デバイス障害への準備
+              href: azure-stack-edge-gpu-prepare-device-failure.md
+            - name: デバイス障害からの復旧
+              href: azure-stack-edge-gpu-recover-device-failure.md
         - name: モニター
           items:
             - name: メトリック グラフの使用
