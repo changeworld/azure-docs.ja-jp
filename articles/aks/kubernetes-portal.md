@@ -4,14 +4,14 @@ description: Azure portal から Azure Kubernetes Service (AKS) クラスター�
 services: container-service
 author: laurenhughes
 ms.topic: article
-ms.date: 08/11/2020
+ms.date: 09/21/2020
 ms.author: lahugh
-ms.openlocfilehash: 4a0acf284475f3c9119f3b9d012debad656b1faa
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 6a9567669445cb5aa94c1108051c961a216fabad
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661352"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335604"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>Azure portal から Kubernetes リソースにアクセスする (プレビュー)
 
@@ -48,19 +48,19 @@ Kubernetes リソースを表示するには、Azure portal で AKS クラスタ
 
 YAML ファイルが追加されると、リソース ビューアーには作成された両方の Kubernetes サービス、つまり、内部サービス (azure-vote-back) と、Azure Vote アプリケーションにアクセスするための外部サービス (azure-vote-front) が表示されます。 外部サービスにはリンクされた外部 IP アドレスが含まれているため、ブラウザーでアプリケーションを簡単に表示できます。
 
-:::image type="content" source="media/kubernetes-portal/portal-services.png" alt-text="Azure portal に表示される Azure Vote アプリケーションの情報。" lightbox="media/kubernetes-portal/portal-services.png":::
+:::image type="content" source="media/kubernetes-portal/portal-services.png" alt-text="Azure portal に表示される Kubernetes ポッドの情報。" lightbox="media/kubernetes-portal/portal-services.png":::
 
 ### <a name="monitor-deployment-insights"></a>デプロイ分析情報を監視する
 
 [Azure Monitor for containers][enable-monitor] が有効になっている AKS クラスターでは、デプロイ分析情報をすばやく表示できます。 Kubernetes リソース ビューから、ユーザーは個々のデプロイのライブ状態 (CPU やメモリの使用率を含む) を表示できるほか、Azure Monitor に切り替えてより詳細な情報を確認できます。 サンプルの AKS クラスターのデプロイ分析情報の例を次に示します。
 
-:::image type="content" source="media/kubernetes-portal/deployment-insights.png" alt-text="Azure portal に表示されるデプロイ分析情報。" lightbox="media/kubernetes-portal/deployment-insights.png":::
+:::image type="content" source="media/kubernetes-portal/deployment-insights.png" alt-text="Azure portal に表示される Kubernetes ポッドの情報。" lightbox="media/kubernetes-portal/deployment-insights.png":::
 
 ## <a name="edit-yaml"></a>YAML を編集する
 
 Kubernetes リソース ビューには YAML エディターも含まれています。 組み込みの YAML エディターを使用すると、ポータル内からサービスやデプロイを更新または作成し、直ちに変更を適用できます。
 
-:::image type="content" source="media/kubernetes-portal/service-editor.png" alt-text="Azure portal に表示される Kubernetes サービスの YAML エディター。":::
+:::image type="content" source="media/kubernetes-portal/service-editor.png" alt-text="Azure portal に表示される Kubernetes ポッドの情報。":::
 
 YAML を編集した後、 **[確認と保存]** を選択し、変更を確認して、再び保存することによって変更を適用します。
 
@@ -75,11 +75,25 @@ YAML を編集した後、 **[確認と保存]** を選択し、変更を確認�
 
 Kubernetes リソースにアクセスするには、AKS クラスター、Kubernetes API、Kubernetes オブジェクトへのアクセス権を持っている必要があります。 クラスター管理者か、または AKS クラスターにアクセスするための適切なアクセス許可を持つユーザーであることを確認してください。 クラスターのセキュリティの詳細については、[AKS でのアクセスと ID オプション][concepts-identity]に関するページを参照してください。
 
+>[!NOTE]
+> Azure Portal の kubernetes リソース ビューは、[マネージド AAD が有効なクラスター](managed-aad.md)または非 AAD が有効なクラスターでのみサポートされています。 マネージド AAD が有効なクラスターを使用している場合、AAD ユーザーまたは ID には、[ユーザーの `kubeconfig`](control-kubeconfig-access.md) をプルする権限に加えて、kubernetes API にアクセスするための、対応するロールまたはロールのバインドが存在している必要があります。
+
 ### <a name="enable-resource-view"></a>リソース ビューを有効にする
 
 既存のクラスターでは、Kubernetes リソース ビューを有効にすることが必要な場合があります。 リソース ビューを有効にするには、クラスターのポータルでプロンプトに従います。
 
-:::image type="content" source="media/kubernetes-portal/enable-resource-view.png" alt-text="Kubernetes リソース ビューを有効にするための Azure portal のメッセージ。" lightbox="media/kubernetes-portal/enable-resource-view.png":::
+:::image type="content" source="media/kubernetes-portal/enable-resource-view.png" alt-text="Azure portal に表示される Kubernetes ポッドの情報。" lightbox="media/kubernetes-portal/enable-resource-view.png":::
+
+> [!TIP]
+> [**API サーバーの許可された IP 範囲**](api-server-authorized-ip-ranges.md)に対して AKS 機能を追加し、API サーバーのアクセスをファイアウォールのパブリック エンドポイントのみに制限できます。 このようなクラスターの別のオプションとして、`--api-server-authorized-ip-ranges` を更新して、ローカル クライアント コンピューターや (ポータルが閲覧されている) IP アドレスの範囲へのアクセスを含めることができます。 このアクセスを許可するには、コンピューターのパブリック IPv4 アドレスが必要です。 このアドレスは、下のコマンドを使用するか、インターネット ブラウザーで "what is my IP address" と検索することで確認できます。
+```bash
+# Retrieve your IP address
+CURRENT_IP=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
+
+# Add to AKS approved list
+az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/32
+
+```
 
 ## <a name="next-steps"></a>次の手順
 

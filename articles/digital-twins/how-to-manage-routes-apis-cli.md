@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 27b745353521a44733c46170a5f5952c194c2343
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 7365e4904bb8e1920e7d4c57c165e489f2ff302e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89293508"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540593"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Azure Digital Twins のエンドポイントとルートを管理する (API と CLI)
 
@@ -27,7 +27,7 @@ Azure Digital Twins では、ダウンストリームのサービスや接続さ
 ## <a name="prerequisites"></a>前提条件
 
 * **Azure アカウント**が必要となります ([こちら](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)から無料で設定できます)。
-* ご利用の Azure サブスクリプションに **Azure Digital Twins インスタンス**が必要となります。 まだインスタンスをお持ちでない場合は、インスタンスを作成してください。その手順については、[*インスタンスと認証を設定する方法*](how-to-set-up-instance-scripted.md)に関するページを参照してください。 セットアップ中、次の値をメモしておいてください。後でこの記事の中で使用します。
+* ご利用の Azure サブスクリプションに **Azure Digital Twins インスタンス**が必要となります。 まだインスタンスをお持ちでない場合は、インスタンスを作成してください。その手順については、[*インスタンスと認証を設定する方法*](how-to-set-up-instance-portal.md)に関するページを参照してください。 セットアップ中、次の値をメモしておいてください。後でこの記事の中で使用します。
     - インスタンス名
     - Resource group
     
@@ -44,7 +44,7 @@ Azure Digital Twins では、ダウンストリームのサービスや接続さ
 
 ### <a name="create-an-event-grid-endpoint"></a>Event Grid のエンドポイントを作成する
 
-次の例は、Azure CLI を使用して Event Grid タイプのエンドポイントを作成する方法を示しています。 [Azure Cloud Shell](https://shell.azure.com) を使用するか、[CLI をローカルにインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)してください。
+次の例は、Azure CLI を使用して Event Grid タイプのエンドポイントを作成する方法を示しています。 [Azure Cloud Shell](https://shell.azure.com) を使用するか、[CLI をローカルにインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)してください。
 
 まず、Event Grid トピックを作成します。 次のコマンドを使用することができます。または、Event Grid の "*カスタム イベント*" に関するクイックスタートの[「*カスタム トピックの作成*」セクション](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)にアクセスして、詳しい手順を参照してください。
 
@@ -58,7 +58,7 @@ az eventgrid topic create -g <your-resource-group-name> --name <your-topic-name>
 > az account list-locations -o table
 > ```
 
-トピックを作成したら、次のコマンドを使用して Azure Digital Twins にリンクできます。
+トピックを作成したら、次の [Azure Digital Twins CLI コマンド](how-to-use-cli.md)を使用して Azure Digital Twins にリンクできます。
 
 ```azurecli
 az dt endpoint create eventgrid --endpoint-name <Event-Grid-endpoint-name> --eventgrid-resource-group <Event-Grid-resource-group-name> --eventgrid-topic <your-Event-Grid-topic-name> -n <your-Azure-Digital-Twins-instance-name>
@@ -90,7 +90,7 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 
 Azure Digital Twins からエンドポイントに実際にデータを送信するには、**イベント ルート**を定義する必要があります。 Azure Digital Twins の **EventRoutes API** を使用すると、開発者はシステム全体およびダウンストリーム サービスへのイベント フローを結び付けることができます。 イベント ルートの詳細については、[*Azure Digital Twins イベントのルーティングの概念*](concepts-route-events.md)に関する記事を参照してください。
 
-このセクションのサンプルでは C# SDK を使用しています。
+このセクションのサンプルでは、[.NET (C#) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core) を使用しています。
 
 **前提条件**:ルートの作成に進む前に、この記事の前出の説明に従ってエンドポイントを作成する必要があります。 エンドポイントの設定が完了したら、イベント ルートの作成に進むことができます。
 
@@ -101,7 +101,7 @@ Azure Digital Twins からエンドポイントに実際にデータを送信す
 
 ### <a name="create-an-event-route"></a>イベント ルートを作成する
 
-イベント ルートは、データ プレーン API を使用して定義します。 
+イベント ルートは、[データ プレーン API](how-to-use-apis-sdks.md#overview-data-plane-apis) を使用して定義します。 
 
 ルート定義にはこれらの要素を含めることができます。
 * 使用するルート名

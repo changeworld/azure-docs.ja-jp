@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: 2c5340b37d6b277c156189b1b99cb3143a5c3b15
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 9516a32e89b9ad671cf705c8f520c73e28801c19
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650752"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320593"
 ---
 # <a name="secure-access-to-a-key-vault"></a>キー コンテナーへのアクセスをセキュリティで保護する
 
@@ -35,7 +35,7 @@ Azure サブスクリプション内でキー コンテナーを作成すると�
 
 - **アプリケーションのみ**: アプリケーションは、サービスまたはバックグラウンド ジョブを表します。 この ID は、キー コンテナーの証明書、キー、またはシークレットに定期的にアクセスする必要があるアプリケーションの最も一般的なシナリオです。 このシナリオが機能するには、アプリケーションの `objectId` をアクセス ポリシーで指定する必要があり、`applicationId` を指定_しない_ようにするか、または `null` にする必要があります。
 - **ユーザーのみ**: ユーザーは、テナントに登録されている任意のアプリケーションからキー コンテナーにアクセスします。 この種類のアクセスの例として、Azure PowerShell や Azure portal があります。 このシナリオが機能するには、ユーザーの `objectId` をアクセス ポリシーで指定する必要があり、`applicationId` を指定_しない_ようにするか、または `null` にする必要があります。
-- **アプリケーションとユーザー** (_複合 ID_ とも呼ばれます): ユーザーは、特定のアプリケーションからキー コンテナーにアクセスする必要があり、_かつ_そのアプリケーションは On-Behalf-Of 認証 (OBO) フローを使用してそのユーザーを偽装する必要があります。 このシナリオが機能するには、`applicationId` と `objectId` の両方をアクセス ポリシーで指定する必要があります。 `applicationId` がその必要なアプリケーションを識別し、`objectId` がそのユーザーを識別します。 このオプションは、現時点では、データプレーンの Azure RBAC (プレビュー) では使用できません。
+- **アプリケーションとユーザー** (_複合 ID_ とも呼ばれます): ユーザーは、特定のアプリケーションからキー コンテナーにアクセスする必要があり、_かつ_そのアプリケーションは On-Behalf-Of 認証 (OBO) フローを使用してそのユーザーを偽装する必要があります。 このシナリオが機能するには、`applicationId` と `objectId` の両方をアクセス ポリシーで指定する必要があります。 `applicationId` によってその必要なアプリケーションが識別され、`objectId` によってそのユーザーが識別されます。 現時点では、このオプションはデータ プレーンの Azure RBAC (プレビュー) では使用できません。
 
 すべての種類のアクセスで、アプリケーションは Azure AD を使用して認証します。 アプリケーションでは、アプリケーションの種類に基づいて[サポートされる認証方法](../../active-directory/develop/authentication-scenarios.md)が使用されます。 アプリケーションでは、アクセス権を付与するプレーン内のリソース用のトークを取得します。 このリソースは、管理プレーンまたはデータ プレーン内にあるエンドポイントであり、Azure 環境に基づいています。 アプリケーションでは、このトークンを使用して、Key Vault に REST API 要求を送信します。 詳細については、[認証フロー全体](../../active-directory/develop/v2-oauth2-auth-code-flow.md)に関するページを確認してください。
 
