@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 27e8eaa7b8171d6ccc43f6abc8a4b3d1017d30cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 653e432ca445451fc9da7155137052b9916d0d92
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804391"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311599"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Azure Application Gateway と Web アプリケーション ファイアウォールを v1 から v2 に移行する
 
@@ -36,6 +36,8 @@ ms.locfileid: "84804391"
 
 * 新しい v2 ゲートウェイには、新しいパブリックおよびプライベート IP アドレスがあります。 既存の v1 ゲートウェイに関連付けられている IP アドレスを、v2 にシームレスに移動することはできません。 ただし、既存の (未割り当ての) パブリックまたはプライベート IP アドレスを、新しい v2 ゲートウェイに割り当てることはできます。
 * v1 ゲートウェイが配置されている仮想ネットワーク内の別のサブネットの IP アドレス空間を指定する必要があります。 スクリプトでは、v1 ゲートウェイが既に存在する既存のサブネットに v2 ゲートウェイを作成することはできません。 ただし、既存のサブネットに既に v2 ゲートウェイがあり、十分な IP アドレス空間がある場合は、引き続き動作させることができます。
+* v2 ゲートウェイ サブネットに関連付けられているネットワーク セキュリティ グループまたはユーザー定義のルートがある場合は、移行を成功させるために、それらが [NSG 要件](../application-gateway/configuration-infrastructure.md#network-security-groups)と [UDR](../application-gateway/configuration-infrastructure.md#supported-user-defined-routes)要件に準拠していることを確認します。
+* [仮想ネットワーク サービス エンドポイント ポリシー](../virtual-network/virtual-network-service-endpoint-policies-overview.md)は現在、Application Gateway のサブネットではサポートされません。
 * TLS または SSL 構成を移行するには、v1 ゲートウェイで使用されているすべての TLS または SSL 証明書を指定する必要があります。
 * v1 ゲートウェイで FIPS モードを有効にしている場合は、新しい v2 ゲートウェイに移行されません。 FIPS モードは v2 ではサポートされません。
 * v2 では IPv6 がサポートされていないため、IPv6 が有効になっている v1 ゲートウェイは移行されません。 スクリプトを実行しても、完了しない可能性があります。
