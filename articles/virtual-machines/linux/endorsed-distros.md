@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
 ms.date: 08/02/2020
 ms.author: guybo
-ms.openlocfilehash: 0b3a598213545bbad833e9b8036f65b999df1c76
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: f945c58b256c2a024a62b15a1bca1841483e1849
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607004"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279435"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Azure で動作保証済みの Linux ディストリビューション
 
@@ -37,7 +37,7 @@ Azure Linux エージェントは、Azure Marketplace イメージにプレイ�
 | Rogue Wave Software の CentOS |CentOS 6.x、7.x、8.x |CentOS 6.3:[LIS のダウンロード](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4 以降:カーネル内 |パッケージ:[リポジトリ](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/)内の "WALinuxAgent" <br/>ソース コード:[GitHub](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/)<p> CoreOS は、2020 年 5 月 26 日付けで[サポートが終了](https://coreos.com/os/eol/)します。 |利用不可 | | |
 | Credativ の Debian |8.x、9.x |カーネル内 |パッケージ:リポジトリ内の "waagent" <br/>ソース コード:[GitHub](https://github.com/Azure/WALinuxAgent) |
-|Kinvolk の Flatcar Container Linux| Stable、Edge| | |
+|Kinvolk の Flatcar Container Linux| 安定版、ベータ版| カーネル内 | wa-linux-agent は /usr/share/oem/bin/waagent に既にインストールされています |
 | Oracle の Oracle Linux |6.x、7.x、8.x |カーネル内 |パッケージ:リポジトリ内の "WALinuxAgent" <br/>ソース コード:[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | [Red Hat の Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/overview) |6.x、7.x、8.x |カーネル内 |パッケージ:リポジトリ内の "WALinuxAgent" <br/>ソース コード:[GitHub](https://github.com/Azure/WALinuxAgent) |
 | SUSE の SUSE Linux Enterprise |SLES/SLES for SAP 11.x、12.x、15.x <br/> [SUSE Public Cloud Image Lifecycle (SUSE パブリック クラウドのイメージのライフ サイクル)](https://www.suse.com/c/suse-public-cloud-image-life-cycle/) |カーネル内 |パッケージ:<p> [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) リポジトリ内の 11 の場合<br>"python-azure-agent" の下の "パブリック クラウド" モジュールに含まれる 12 の場合<br/>ソース コード:[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |

@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: d3094a8cca317e53dd3b8bc8e9b32b956c89a376
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 98b7f9b1ed5e09a1f731e45f8ca2d148a4084986
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904199"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336158"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Azure Spring Cloud に関する一般的な問題のトラブルシューティング
 
@@ -131,7 +131,7 @@ Azure portal または Resource Manager テンプレートを使用して .NET C
 
 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を使用してアプリケーション パッケージをデプロイすると、Azure CLI によってデプロイの進行状況が定期的にポーリングされ、最後にデプロイの結果が表示されます。
 
-アプリケーションが正しい *.zip* ファイル形式でパッケージ化されていることを確認してください。 正しくパッケージ化されていないと、プロセスがハングするか、エラー メッセージが表示されます。
+アプリケーションが正しい *.zip* ファイル形式でパッケージ化されていることを確認してください。 正しくパッケージ化されていないと、プロセスの応答が停止するか、エラー メッセージが表示されます。
 ::: zone-end
 
 ::: zone pivot="programming-language-java"

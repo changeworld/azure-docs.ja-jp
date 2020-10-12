@@ -1,27 +1,27 @@
 ---
 title: ストレージ アカウントの作成
 titleSuffix: Azure Storage
-description: Azure portal、Azure PowerShell、または Azure CLI を使用してストレージ アカウントを作成する方法について説明します。 Azure ストレージ アカウントには、データを格納してアクセスするための Microsoft Azure の一意の名前空間が用意されています。
+description: BLOB、ファイル、キュー、テーブルを格納するためのストレージ アカウントの作成について説明します。 Azure ストレージ アカウントには、データの読み取りと書き込みを行うための Microsoft Azure の一意の名前空間が用意されています。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/07/2020
+ms.date: 09/24/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 8b6f5f302465d075b7a0bcb0e6b12c75b1379bb5
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 9b993e5a7c5b3ee2327fe26437414d8ce74f7369
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069836"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333581"
 ---
-# <a name="create-an-azure-storage-account"></a>Azure Storage アカウントの作成
+# <a name="create-a-storage-account"></a>ストレージ アカウントを作成する
 
 Azure ストレージ アカウントには、すべての Azure Storage データ オブジェクト (BLOB、ファイル、キュー、テーブル、およびディスク) が含まれます。 ストレージ アカウントでは、世界中のどこからでも HTTP または HTTPS 経由でアクセスできる Azure Storage データ用の一意の名前空間が提供されます。 Azure ストレージ アカウント内のデータは、持続性があり、高可用性で、セキュリティ保護されており、非常にスケーラブルです。
 
-このハウツー記事では、[Azure portal](https://portal.azure.com/)、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/)、[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)、または [Azure Resource Manager テンプレート](../../azure-resource-manager/management/overview.md)を使ってストレージ アカウントを作成する方法を説明します。  
+このハウツー記事では、[Azure portal](https://portal.azure.com/)、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/)、[Azure CLI](https://docs.microsoft.com/cli/azure)、または [Azure Resource Manager テンプレート](../../azure-resource-manager/management/overview.md)を使ってストレージ アカウントを作成する方法を説明します。  
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -64,7 +64,7 @@ Azure Cloud Shell は、Azure Portal 内で直接実行できる無料の Bash �
 
 ### <a name="install-the-cli-locally"></a>CLI をローカルにインストールする
 
-Azure CLI はローカルにインストールして使用することもできます。 このハウツー記事では、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 
+Azure CLI はローカルにインストールして使用することもできます。 この記事の例には、Azure CLI バージョン 2.0.4 以降が必要です。 `az --version` を実行して、インストールされているバージョンを見つけます。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 # <a name="template"></a>[テンプレート](#tab/template)
 
@@ -104,11 +104,9 @@ az login
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-これで、ストレージ アカウントを作成する準備ができました。
-
 すべてのストレージ アカウントは、Azure リソース グループに属している必要があります。 リソース グループは、Azure サービスをグループ化するための論理コンテナーです。 ストレージ アカウントを作成するときに、新しいリソース グループを作成するか、既存のリソース グループを使用するかを選択できます。 この記事では、新しいリソース グループを作成する方法を示します。
 
-**汎用 v2** ストレージ アカウントでは、すべての Azure Storage サービス (BLOB、ファイル、キュー、テーブル、ディスク) へのアクセスが提供されます。 ここで説明する手順では汎用 v2 ストレージ アカウントを作成しますが、作成手順はどの種類のストレージ アカウントでも似ています。
+**汎用 v2** ストレージ アカウントでは、すべての Azure Storage サービス (BLOB、ファイル、キュー、テーブル、ディスク) へのアクセスが提供されます。 ここで説明する手順では汎用 v2 ストレージ アカウントを作成しますが、作成手順はどの種類のストレージ アカウントでも似ています。 ストレージ アカウントの種類およびその他のストレージ アカウントの設定について詳しくは、「[Azure ストレージ アカウントの概要](storage-account-overview.md)」をご覧ください。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
@@ -186,7 +184,7 @@ az storage account create \
 ```
 
 > [!IMPORTANT]
-> [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) を使用する予定がある場合は、このパラメーターの一覧に `--enable-hierarchical-namespace true` を含めてください。 
+> [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) を使用する予定がある場合は、このパラメーターの一覧に `--enable-hierarchical-namespace true` を含めてください。
 
 別のレプリケーション オプションで汎用 v2 ストレージ アカウントを作成するには、**sku** パラメーターを次の表の目的の値で置き換えます。
 
@@ -230,8 +228,6 @@ az group deployment create --resource-group $resourceGroupName --template-file "
 - [その他のストレージ アカウント テンプレート サンプル](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Storage)。
 
 ---
-
-利用可能なレプリケーション オプションの詳細については、[ストレージのレプリケーション オプション](storage-redundancy.md)に関するページを参照してください。
 
 ## <a name="delete-a-storage-account"></a>ストレージ アカウントを削除する
 
@@ -287,26 +283,6 @@ az storage account delete --name storageAccountName --resource-group resourceGro
 
 ## <a name="next-steps"></a>次のステップ
 
-このハウツー記事では、汎用 v2 標準ストレージ アカウントを作成しました。 ストレージ アカウントとの間で BLOB をアップロードおよびダウンロードする方法を学習するには、Blob Storage のクイックスタートのいずれかに進みます。
-
-# <a name="portal"></a>[ポータル](#tab/azure-portal)
-
-> [!div class="nextstepaction"]
-> [Azure portal を使用して BLOB を操作する](../blobs/storage-quickstart-blobs-portal.md)
-
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-
-> [!div class="nextstepaction"]
-> [PowerShell を使用して BLOB を操作する](../blobs/storage-quickstart-blobs-powershell.md)
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-> [!div class="nextstepaction"]
-> [Azure CLI を使用して BLOB を操作する](../blobs/storage-quickstart-blobs-cli.md)
-
-# <a name="template"></a>[テンプレート](#tab/template)
-
-> [!div class="nextstepaction"]
-> [Azure portal を使用して BLOB を操作する](../blobs/storage-quickstart-blobs-portal.md)
-
----
+- [ストレージ アカウントの概要](storage-account-overview.md)
+- [汎用 v2 ストレージ アカウントにアップグレードする](storage-account-upgrade.md)
+- [Azure ストレージ アカウントを別のリージョンに移動する](storage-account-move.md)
