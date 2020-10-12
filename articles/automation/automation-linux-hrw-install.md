@@ -3,14 +3,14 @@ title: Azure Automation への Linux Hybrid Runbook Worker のデプロイ
 description: この記事では、Azure Automation Hybrid Runbook Worker をインストールして、ローカル データ センターやクラウド環境にある Linux ベースのマシン上で Runbook を実行する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 09/15/2020
+ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: fb975305e18315fa8d0a39e4fe0ab6902c98b7e7
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8295b6bba9703c276bf60a0360ded6f0e195369e
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987232"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776274"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker を展開する
 
@@ -45,6 +45,10 @@ Azure Monitor Log Analytics ワークスペースがない場合は、ワーク�
 ### <a name="log-analytics-agent"></a>Log Analytics エージェント
 
 Hybrid Runbook Worker ロールには、サポートされている Linux オペレーティング システム用の [Log Analytics エージェント](../azure-monitor/platform/log-analytics-agent.md)が必要です。
+
+>[!NOTE]
+>Linux 用 Log Analytics エージェントをインストールした後は、`sudoers.d` フォルダーまたはその所有権のアクセス許可を変更しないでください。 sudo アクセス許可は **nxautomation** アカウントに必要です。これは Hybrid Runbook Worker を実行するユーザー コンテキストです。 アクセス許可は削除しないでください。 これを特定のフォルダーまたはコマンドに制限すると、破壊的変更が発生する可能性があります。
+>
 
 ### <a name="supported-linux-operating-systems"></a>サポートされている Linux オペレーティング システム
 

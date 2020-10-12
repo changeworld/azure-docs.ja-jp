@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 06/05/2020
+ms.date: 10/06/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06335798addadcd8591625e25ed2eafe8469ae48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c297e1a4f6443e584f04914712314d33df23b119
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463962"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776104"
 ---
 # <a name="remediate-risks-and-unblock-users"></a>リスクを修復してユーザーをブロック解除する
 
@@ -89,6 +89,10 @@ ms.locfileid: "84463962"
 1. **ポリシーからユーザーを除外する** - サインイン ポリシーの現在の構成が原因で特定のユーザーに問題が発生していると考えられる場合は、そのポリシーからユーザーを除外できます。 詳細については、記事「[方法: リスク ポリシーを構成して有効にする](howto-identity-protection-configure-risk-policies.md#exclusions)」を参照してください。
 1. **ポリシーを無効にする** - ポリシーの構成が原因ですべてのユーザーに問題が発生していると考えられる場合は、ポリシーを無効にすることができます。 詳細については、記事「[方法: リスク ポリシーを構成して有効にする](howto-identity-protection-configure-risk-policies.md)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="powershell-preview"></a>PowerShell プレビュー
+
+Microsoft Graph PowerShell SDK プレビュー モジュールを使用することにより、組織は PowerShell を使ってリスクを管理できます。 プレビュー モジュールとサンプル コードは、[Azure AD GitHub リポジトリ](https://github.com/AzureAD/IdentityProtectionTools)にあります。
+
+## <a name="next-steps"></a>次の手順
 
 Azure AD Identity Protection の概要を入手するには、[Azure AD Identity Protection の概要](overview-identity-protection.md)に関するページを参照してください。

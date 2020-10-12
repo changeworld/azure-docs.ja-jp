@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2020
 ms.author: duau
-ms.openlocfilehash: 039e5b94bbd9d3b6c3edcb92eff88e7a9931205d
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: bf0d802dc4ea4d18122a12b107dfb0cc0af80d63
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448741"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773452"
 ---
 # <a name="what-is-azure-front-door"></a>Azure Front Door とは
 
@@ -56,7 +56,7 @@ Front Door に含まれる主な機能は次のとおりです。
 
 * 独自の **[カスタム ドメイン](front-door-custom-domain.md)** の定義。 
 
-* カスタムの **[Web Application Firewall (WAF)](../web-application-firewall/overview.md)** 規則と **[Azure DDoS Protection](../virtual-network/ddos-protection-overview.md)** によるアプリケーションのセキュリティ。
+* **[Web Application Firewall (WAF)](../web-application-firewall/overview.md)** が統合されたアプリケーション セキュリティ。
 
 * **[URL リダイレクト](front-door-url-redirect.md)** による、HTTPS への HTTP トラフィックのリダイレクト｡
 
