@@ -4,12 +4,12 @@ description: Azure Backup サービスのサポート設定と制限事項の概
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 94a795ad91be1d648ad025287f5c5bc6f1d8d07e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: d9da2ee893244afc7150ab6249dbe51845d5d0c2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985012"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332714"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup のサポート マトリックス
 
@@ -39,6 +39,7 @@ Azure Backup では、Recovery Services コンテナーを使用して、バッ�
 **コンテナーの移動** | 異なるサブスクリプション間で、または同じサブスクリプション内のリソース グループ間で、[コンテナーを移動](./backup-azure-move-recovery-services-vault.md)できます。 ただし、リージョン間でのコンテナーの移動はサポートされていません。
 **コンテナー間のデータの移動** | コンテナー間でのバックアップ データの移動はサポートされていません。
 **コンテナー ストレージの種類の変更** | コンテナー ストレージのレプリケーションの種類 (geo 冗長ストレージまたはローカル冗長ストレージのいずれか) は、バックアップを格納する前に変更できます。 コンテナーでバックアップが開始された後は、レプリケーションの種類を変更できません。
+**ゾーン冗長ストレージ (ZRS)** | 英国南部 (UKS) リージョンと東南アジア (SEA) リージョンで利用できます。
 
 ## <a name="on-premises-backup-support"></a>オンプレミス バックアップのサポート
 
@@ -150,9 +151,9 @@ Azure Backup に、データの可用性と回復性の機能を強化するた�
 | バックアップの管理の種類 | サポートされています                                                    | サポートされているリージョン |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | はい。   暗号化された VM と 4 TB 未満のディスクがある VM でのサポート | すべての Azure パブリック リージョンとソブリン クラウド。  |
-| SQL/SAP HANA | はい                                                          | すべての Azure パブリック リージョンとソブリン クラウド。             |
+| SQL/SAP HANA | はい                                                          | 米国西部 2 (WUS2)、米国中西部 (WCUS)、カナダ中部 (CNC)、カナダ東部 (CNE)、米国東部 (EUS)、米国西部 (WUS)、東日本 (JPE)、東日本 (JPE) |
 | MARS エージェント/オンプレミス  | いいえ                                                           | 該当なし               |
-| AFS                    | いいえ                                                           | 該当なし               |
+| AFS (Azure ファイル共有)                 | いいえ                                                           | 該当なし               |
 
 ## <a name="next-steps"></a>次のステップ
 

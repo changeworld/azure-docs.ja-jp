@@ -1,28 +1,61 @@
 ---
-title: 概念 - プライベート クラウドのアップグレード
-description: Azure VMware Solution の主要なアップグレード プロセスと機能について説明します
+title: 概念 - プライベート クラウドの更新とアップグレード
+description: Azure VMware Solution の主要なアップグレード プロセスと機能について説明します。
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: f541aa4e4963cf40fad71201180ea118a1513fca
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 09/22/2020
+ms.openlocfilehash: 380e97eae559145a9ef5ed7b6e7bf14f18039eed
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752206"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316802"
 ---
-# <a name="azure-vmware-solution-upgrade-concepts"></a>Azure VMware Solution のアップグレードの概念
+# <a name="azure-vmware-solution-private-cloud-updates-and-upgrades"></a>Azure VMware Solution のプライベート クラウドの更新とアップグレード
 
-Azure VMware Solution のプライベート クラウドの主な利点の 1 つは、管理者に代わってプラットフォームのメンテナンスが行われることです。 プラットフォーム メンテナンスには、VMware 検証済みソフトウェア バンドルへの自動アップグレードが含まれます。 アップグレードは定期的に行われ、ソフトウェアの最新の検証済みバージョンが常に使用できるようになります。
+## <a name="overview"></a>概要
 
-## <a name="azure-vmware-solution-private-cloud-software-upgrades"></a>Azure VMware Solution プライベート クラウド ソフトウェアのアップグレード
+Azure VMware Solution のプライベート クラウドの主な利点の 1 つは、管理者に代わってプラットフォームのメンテナンスが行われることです。 プラットフォームのメンテナンスには、VMware によって検証されたソフトウェア バンドルに対する自動更新が含まれており、検証済みの Azure VMware Solution プライベート クラウド ソフトウェアの最新バージョンを使用していることを確認するのに役立ちます。
 
-Azure VMware Solution のプライベート クラウド プラットフォームには、VMware vSphere、ESXi、vSAN、および NSX-T ソフトウェアの特定のバージョンが含まれています。 プライベート クラウド ソフトウェア バンドルは、新しいプライベート クラウドのインストールおよび既存のプライベート クラウドのアップグレードで使用するために検証されます。
+Azure VMware Solution プライベート クラウドには、具体的に次のものが含まれます。
 
-ライフサイクル管理のアップグレード プロセスでは、ご使用のプライベート クラウドにダウンタイムが発生することはありません。 アップグレード プロセスにより、検証済みの Azure VMware Solution プライベート クラウド ソフトウェアの最新バージョンが自動的に使用されるようになります。 アップグレードは定期的に適用されるため、プライベート クラウドは、検証済みのソフトウェア バンドルの最新リリースから 1 バージョンを超えて遅れることはありません。 ご使用のプライベート クラウドへの計画的アップグレードが通知されます。 ご使用のプライベート クラウドが最新リリースの 1 バージョン以内である場合は、アップグレードを遅らせることができます。
+- VMware ESXi ハイパーバイザーを使用してプロビジョニングされた専用のベアメタル サーバー ノード 
+- ESXi と vSAN を管理するための vCenter サーバー 
+- vSphere ワークロード VM 用の VMware NSX-T のソフトウェアによるネットワーク  
+- VSphere ワークロード VM 用の VMware vSAN データストア  
+- ワークロード モビリティ用の VMware HCX  
 
-重要な修正プログラムと更新プログラムは、検証時に適用されます。 必要な重要なアップグレードは事前に通知されます。 このポリシーにより、プライベート クラウドに重要な修正プログラムと更新プログラムが直ちに適用されます。
+これらのコンポーネントに加えて、Azure VMware Solution プライベート クラウドには、Azure アンダーレイに接続やプライベート クラウドの運用に必要なリソースが含まれています。 Azure VMware Solution では、アンダーレイと VMware コンポーネントの両方の正常性が継続的に監視されます。 Azure VMware Solution でエラーが検出されると、失敗したコンポーネントを修復するアクションが実行されます。 
 
-VMware ソフトウェアのバージョンについては、[プライベート クラウドとクラスターの概念に関する記事](concepts-private-clouds-clusters.md)と [FAQ](faq.md) をご覧ください。
+## <a name="what-components-get-updated"></a>更新されるコンポーネントについて   
+
+Azure VMware Solution では、次の VMware コンポーネントが更新されます。 
+
+- ベアメタル サーバー ノードで実行されている vCenter Server と ESXi 
+- vSAN 
+- NSX-T 
+
+また、Azure VMware Solution では、ドライバー、ネットワーク スイッチ上のソフトウェア、ベアメタル ノードのファームウェアなど、アンダーレイのソフトウェアも更新されます。 
+
+## <a name="types-of-updates"></a>更新プログラムの種類
+
+Azure VMware Solution では、次の種類の更新プログラムが VMware コンポーネントに適用されます。
+
+- パッチ:VMware によってリリースされたセキュリティ パッチおよびバグ修正プログラム。 
+- 更新:1 つまたは複数の VMware コンポーネントのマイナー バージョンの更新。 
+- アップグレード:1 つまたは複数の VMware コンポーネントのメジャー バージョンの更新。
+
+パッチがプライベート クラウドに適用される前と後には、その旨が通知されます。 また、お客様のプライベート クラウドに更新やアップグレードが適用される前に、お客様と連携してメンテナンス期間をスケジュールします。 
+
+## <a name="vmware-appliance-backup"></a>VMware アプライアンスのバックアップ 
+
+Azure VMware Solution では、更新に加えて、次の VMware コンポーネントの構成バックアップが作成されます。
+
+- vCenter Server 
+- NSX-T Manager 
+
+障害が発生した際は、Azure VMware Solution を使用して構成のバックアップからこれらを復元できます。 
+
+VMware ソフトウェアのバージョンの詳細については、[プライベート クラウドとクラスターの概念に関する記事](concepts-private-clouds-clusters.md)と [FAQ](faq.md) を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
