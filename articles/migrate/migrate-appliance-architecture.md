@@ -3,12 +3,12 @@ title: Azure Migrate アプライアンスのアーキテクチャ
 description: サーバーの評価と移行に使用される Azure Migrate アプライアンスの概要について説明します。
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 623790568fb8d86d8065711439f148211fc7fd6b
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.openlocfilehash: 028e0e5b0bbf83c08b5f9cd6d24d7914513ae89a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514571"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322259"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Azure Migrate アプライアンスのアーキテクチャ
 
@@ -72,7 +72,7 @@ Azure Migrate アプライアンスは、次のシナリオで使用します。
 2. **メタデータとパフォーマンス データを収集する**:
     - アプライアンスは、Common Information Model (CIM) セッションを使用して、ポート 5985 で Hyper-V ホストから Hyper-V VM のデータを収集します。
     - アプライアンスは、既定ではポート 443 を使用して通信を行い、vCenter サーバーから VMware VM のデータを収集します。
-3. **データを送信する**:アプライアンスは、SSL ポート 443 を介して、収集したデータを Azure Migrate Server Assessment と Azure Migrate Server Migration に送信します。 アプライアンスはインターネット経由で Azure に接続できます。または、ExpressRoute をパブリックまたは Microsoft ピアリングで使用できます。
+3. **データを送信する**:アプライアンスは、SSL ポート 443 を介して、収集したデータを Azure Migrate Server Assessment と Azure Migrate Server Migration に送信します。 アプライアンスは、インターネット経由または ExpressRoute 経由で Azure に接続できます (Microsoft ピアリングが必要です)。
     - パフォーマンス データの場合、アプライアンスはリアルタイムの使用状況データを収集します。
         - パフォーマンス データは、各パフォーマンス メトリックについて、VMware では 20 秒ごとに収集され、Hyper-V では 30 秒ごとに収集されます。
         - 収集されたデータは、10 分間に 1 つのデータ ポイントを作成するためにロールアップされます。

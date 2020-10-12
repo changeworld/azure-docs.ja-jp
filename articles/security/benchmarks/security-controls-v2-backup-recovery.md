@@ -4,17 +4,17 @@ description: Azure セキュリティ ベンチマーク V2 バックアップ�
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: fe6861a3319b9d9c0e6535ee3303c90f0a0f26c8
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: b2e54545fb79120a3f9d66067da267df3b151b3f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059054"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322123"
 ---
-# <a name="security-control-backup-and-recovery"></a>セキュリティ コントロールバックアップと回復
+# <a name="security-control-v2-backup-and-recovery"></a>セキュリティ コントロール V2:バックアップと回復
 
 バックアップと回復により、データと構成のバックアップがさまざまなサービス レベルで確実に実行、検証、保護されるようにコントロールがカバーされています。
 
@@ -24,11 +24,13 @@ ms.locfileid: "90059054"
 |--|--|--|--|
 | BR-1 | 10.1 | CP-2、CP4、CP-6、CP-9 |
 
-予期しないイベントが発生した後もビジネスが継続性されるよう、システムとデータが確実にバックアップします。 これは、目標復旧時点 (RPO) と目標復旧時間 (RTO) のすべての目標から導き出されたものである必要があります。
+予期しないイベントが発生した後もビジネスが継続性されるよう、システムとデータが確実にバックアップします。 これは、目標復旧時点 (RPO) と目標復旧時間 (RTO) のすべての目標から定義する必要があります。
 
 Azure Backup を有効にし、(Azure VM、SQL Server、HANA データベースまたはファイル共有などの) バックアップ ソース、希望の頻度および保持期間を構成します。  
 
-geo 冗長ストレージ オプションを有効にして、セカンダリ リージョンにバックアップ データをレプリケートし、リージョン間での復元を使用して復旧されるように、冗長性のレベルを高くすることもできます。
+geo 冗長ストレージ オプションを有効にして、セカンダリ リージョンにバックアップ データをレプリケートし、リージョン間での復元を使用して復旧されるように、保護レベルを高くすることもできます。
+
+- [エンタープライズ規模の事業継続とディザスター リカバリー](/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery)
 
 - [Azure Backup を有効にする方法](/azure/backup/)
 
@@ -36,7 +38,7 @@ geo 冗長ストレージ オプションを有効にして、セカンダリ �
 
 **責任**: Customer
 
-**お客様のセキュリティ関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [ポリシーと標準](/azure/cloud-adoption-framework/organize/cloud-security-policy-standards)
 
@@ -62,17 +64,19 @@ Azure Backup を使用するオンプレミスのバックアップによって�
 
 - [カスタマー マネージド キーを使用したバックアップ データの暗号化](/azure/backup/encryption-at-rest-with-cmk) 
 
-- [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Azure 上でキー コンテナーのキーをバックアップする方法](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+
+- [ハイブリッド バックアップを攻撃から保護するためのセキュリティ機能](/azure/backup/backup-azure-security-feature#prevent-attacks)
 
 **責任**: Customer
 
-**お客様のセキュリティ関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
 - [インフラストラクチャとエンドポイント セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [インシデントに対する準備](/) azure/cloud-adoption-framework/organize/cloud-security-incident-preparation
+- [インシデントの準備](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
 ## <a name="br-3-validate-all-backups-including-customer-managed-keys"></a>BR-3:カスタマー マネージド キーを含むすべてのバックアップを検証する
 
@@ -84,11 +88,11 @@ Azure Backup を使用するオンプレミスのバックアップによって�
 
 - [Azure 仮想マシンのバックアップからファイルを復旧する方法](/azure/backup/backup-azure-restore-files-from-vm)
 
-- [Azure でキー コンテナーのキーを復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Azure でキー コンテナーのキーを復元する方法](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **責任**: Customer
 
-**お客様のセキュリティ関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [インシデントの準備](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -102,11 +106,11 @@ Azure Backup を使用するオンプレミスのバックアップによって�
 
 キーの紛失を回避および回復する手段を確保します。 Azure Key Vault で論理的な削除と消去保護を有効にして、キーが偶発的または悪意から削除されないようにします。  
 
-- [Key Vault で論理的な削除と消去保護を有効にする方法](/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Key Vault で論理的な削除と消去保護を有効にする方法](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
 **責任**: Customer
 
-**お客様のセキュリティ関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 

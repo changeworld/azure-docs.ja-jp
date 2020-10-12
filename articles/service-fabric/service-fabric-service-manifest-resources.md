@@ -2,22 +2,24 @@
 title: Service Fabric サービス エンドポイントの指定
 description: サービス マニフェストにエンドポイント リソースを記述する方法 (HTTPS エンドポイントの設定方法を含みます)
 ms.topic: conceptual
-ms.date: 2/23/2018
-ms.openlocfilehash: 458a10ca118bbb14f22ad9b1ae127c2036573db9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/16/2020
+ms.openlocfilehash: c0c3c45c47447390901e5e0d60e77ab6b85a6a0d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610746"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354761"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>サービス マニフェストにリソースを指定する
 ## <a name="overview"></a>概要
-サービス マニフェストを使用すると、コンパイルしたコードを変更することなく、サービスで使用するリソースを宣言または変更できます。 Service Fabric では、サービスで使用するエンドポイント リソースの構成がサポーされします。 サービス マニフェストで指定したリソースへのアクセスは、SecurityGroup を使用してアプリケーション マニフェスト内で制御できます。 リソースを宣言すると、宣言したリソースをデプロイメント時に変更できるため、サービスに新しい構成メカニズムを導入する必要がありません。 ServiceManifest.xml ファイルのスキーマ定義は、Service Fabric SDK およびツールと共に *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd* にインストールされます。
+Service Fabric のアプリケーションとサービスは、マニフェスト ファイルを使用して定義およびバージョン管理されます。 ServiceManifest.xml と ApplicationManifest.xml の概要については、「 [Service Fabric のアプリケーション マニフェストとサービス マニフェスト](service-fabric-application-and-service-manifests.md)」をご覧ください。
+
+サービス マニフェストを使用すると、コンパイルしたコードを変更することなく、サービスで使用するリソースを宣言または変更できます。 Service Fabric では、サービスで使用するエンドポイント リソースの構成がサポーされします。 サービス マニフェストで指定したリソースへのアクセスは、SecurityGroup を使用してアプリケーション マニフェスト内で制御できます。 リソースを宣言すると、宣言したリソースをデプロイメント時に変更できるため、サービスに新しい構成メカニズムを導入する必要がありません。 ServiceManifest.xml ファイルのスキーマ定義は、Service Fabric SDK およびツールと共に *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd* にインストールされ、[ServiceFabricServiceModel.xsd スキーマのドキュメント](service-fabric-service-model-schema.md)に関するページに記載されています。
 
 ## <a name="endpoints"></a>エンドポイント
 サービス マニフェストにエンドポイント リソースが定義されているが、ポートが明示的に指定されていない場合、Service Fabric は、予約済みのアプリケーション ポートの範囲からポートを割り当てます。 たとえば、この後のマニフェスト スニペットで指定されているエンドポイント *ServiceEndpoint1* をご覧ください。 さらに、サービスでリソースの特定のポートを要求することもできます。 別のクラスター ノードで実行されているサービスのレプリカには、異なるポート番号を割り当てることができます。一方、同じノードで実行されているサービスのレプリカはポートを共有します。 その後、サービス レプリカは、レプリケーションやクライアント要求のリッスンのために、必要に応じてこのポートを使用できます。
 
-https エンドポイントを指定するサービスをアクティブ化すると、Service Fabric によってポートのアクセス制御エントリが設定され、指定されたサーバー証明書がポートにバインドされます。また、サービスの実行に使用されている ID が証明書の秘密キーへのアクセス許可として付与されます。 アクティブ化フローは Service Fabric が開始されるたびに呼び出されるか、またはアプリケーションの証明書宣言がアップグレードによって変更されたときに呼び出されます。 エンドポイント証明書でも変更/更新が監視され、必要に応じてアクセス許可が定期的に再適用されます。
+https エンドポイントを指定するサービスをアクティブ化すると、Service Fabric によってポートのアクセス制御エントリが設定され、指定されたサーバー証明書がポートにバインドされます。また、サービスの実行に使用されている ID が証明書の秘密キーへのアクセス許可として付与されます。 アクティブ化フローは Service Fabric が開始されるたびに呼び出されるか、またはアプリケーションの証明書宣言がアップグレードによって変更されたときに呼び出されます。 エンドポイント証明書も変更や更新がないか監視され、必要に応じてアクセス許可が定期的に再適用されます。
 
 サービスが終了すると、Service Fabric によってエンドポイントのアクセス制御エントリがクリーンアップされ、証明書のバインドが削除されます。 ただし、証明書の秘密キーに適用されるアクセス許可はクリーンアップされません。
 
@@ -155,12 +157,14 @@ HTTPS エンドポイントに必要な構成を示す ApplicationManifest の�
 
 Linux クラスターの場合、**MY** ストアは既定で **/var/lib/sfcerts** フォルダーになります。
 
+HTTPS エンドポイントを使用する完全なアプリケーションの例については、「[Kestrel を使用して ASP.NET Core Web API フロントエンド サービスに HTTPS エンドポイントを追加する](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-dotnet-app-enable-https-endpoint#define-an-https-endpoint-in-the-service-manifest)」をご覧ください。
+
 ## <a name="port-acling-for-http-endpoints"></a>HTTP エンドポイントのポート ACL 処理
 Service Fabric では、既定で選択された HTTP エンドポイントが自動で ACL 処理されます。 エンドポイントに [SecurityAccessPolicy](service-fabric-assign-policy-to-endpoint.md) が関連付けられておらず、Service Fabric が管理者特権を持つアカウントを使用して実行するように構成されている場合は、自動で ACL 処理が実行されることは**ありません**。
 
 ## <a name="overriding-endpoints-in-servicemanifestxml"></a>ServiceManifest.xml のエンドポイントのオーバーライド
 
-ApplicationManifest に、ConfigOverrides セクションの兄弟になるようにResourceOverrides セクションを追加します。 このセクションでは、サービス マニフェストに指定されたリソース セクション内の Endpoints セクションのオーバーライドを指定できます。 エンドポイントのオーバーライドは、ランタイム 5.7.217/SDK 2.7.217 以降でサポートされています。
+ApplicationManifest に、ConfigOverrides セクションの兄弟になるように ResourceOverrides セクションを追加します。 このセクションでは、サービス マニフェストに指定されたリソース セクション内の Endpoints セクションのオーバーライドを指定できます。 エンドポイントのオーバーライドは、ランタイム 5.7.217/SDK 2.7.217 以降でサポートされています。
 
 ServiceManifest で ApplicationParameters を使用してエンドポイントをオーバーライドするには、次のように ApplicationManifest を変更します。
 
@@ -200,7 +204,7 @@ Parameters に次のように追加します。
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
 ```
 
-注:ApplicationParameters に指定する値が空の場合は、ServiceManifest で対応する EndPointName に指定された既定値に戻ります。
+注: 所定の ApplicationParameters に指定された値が空の場合は、ServiceManifest で対応する EndPointName に指定された既定値に戻ります。
 
 次に例を示します。
 
@@ -214,6 +218,18 @@ ServiceManifest に次のように指定したとします。
   </Resources>
 ```
 
-また、アプリケーション パラメーターの Port1 と Protocol1 の値は null または空です。 ポートは ServiceFabric によって決定されます。 プロトコルは tcp になります。
+アプリケーション パラメーターの Port1 と Protocol1 の値は null または空であるとします。 ポートは ServiceFabric によって決定され、プロトコルは tcp になります。
 
-無効な値を指定したとします。 たとえば、int ではなく string 値の "Foo" をポートに指定しました。New-ServiceFabricApplication コマンドはエラーで失敗します。セクション 'ResourceOverrides' のオーバーライド パラメーターの名前 'ServiceEndpoint1' と属性 'Port1' が無効であるためです。 指定された値は 'Foo' ですが、'int' が必要です。
+無効な値を指定したとします。 たとえば、ポートに int ではなく string 値の "Foo" を指定したとします。New-ServiceFabricApplication コマンドは次のエラーで失敗します。`The override parameter with name 'ServiceEndpoint1' attribute 'Port1' in section 'ResourceOverrides' is invalid. The value specified is 'Foo' and required is 'int'.`
+
+## <a name="next-steps"></a>次の手順
+
+この記事では、Service Fabric のサービス マニフェストにエンドポイントを定義する方法について説明しました。 詳細な例については、以下をご覧ください。
+
+> [!div class="nextstepaction"]
+> [アプリケーション マニフェストとサービス マニフェストの例](service-fabric-manifest-examples.md)
+
+既存のアプリケーションのパッケージ化と Service Fabric クラスターへのデプロイの手順については、以下をご覧ください。
+
+> [!div class="nextstepaction"]
+> [既存の実行可能ファイルのパッケージ化と Service Fabric へのデプロイ](service-fabric-deploy-existing-app.md)

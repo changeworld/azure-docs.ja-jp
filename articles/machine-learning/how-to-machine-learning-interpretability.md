@@ -11,12 +11,12 @@ ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
-ms.openlocfilehash: 757646a1630443f297d4b7c538721e9facdc130c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d063af3ba3b9261100af5e48a2c507a80ac76d98
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897434"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322361"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Azure Machine Learning におけるモデルの解釈可能性 (プレビュー)
 
@@ -39,20 +39,11 @@ ms.locfileid: "90897434"
 
 ## <a name="interpretability-with-azure-machine-learning"></a>Azure Machine Learning での解釈可能性
 
-解釈可能性クラスは、複数の SDK パッケージを介して利用可能になります。[Azure Machine Learning 用の SDK パッケージをインストールする](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)方法を確認してください。
+解釈可能性クラスは、次の SDK パッケージを介して利用可能になります。[Azure Machine Learning 用の SDK パッケージをインストールする](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)方法を確認してください。
 
-* `azureml.interpret`。Microsoft でサポートされている機能を含むメイン パッケージ。
+* `azureml.interpret`。Microsoft でサポートされている機能が含まれます。
 
-* `azureml.contrib.interpret`。試すことができるプレビュー機能と実験的機能。
-
-一般的な用途には `pip install azureml-interpret` と `pip install azureml-contrib-interpret` を使用します。
-
-
-> [!IMPORTANT]
-> `contrib` 名前空間のコンテンツは完全にはサポートされていません。 実験的な機能が成熟すると、メインの名前空間に徐々に移動されます。
-。
-
-
+一般的な用途には `pip install azureml-interpret` を使用します。
 
 ## <a name="how-to-interpret-your-model"></a>モデルを解釈する方法
 
