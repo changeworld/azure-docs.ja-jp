@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: caa3717fdf915e205c1a4f82f4e199346ca29fcb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e95edf21b7d6dce29b31220533269439fac120e4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082814"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281957"
 ---
 # <a name="use-the-opc-vault-certificate-management-service"></a>OPC Vault 証明書管理サービスの使用
+
+> [!IMPORTANT]
+> この記事は更新される予定ですが、最新の内容については、[Azure 産業用 IoT](https://azure.github.io/Industrial-IoT/) に関するページを参照してください。
 
 この記事では、アプリケーションを登録する方法と、OPC UA デバイスに署名済みのアプリケーション証明書を発行する方法について説明します。
 
@@ -68,7 +71,7 @@ ms.locfileid: "87082814"
    ![下部に承認メッセージが表示された証明書要求の詳細の表示のスクリーンショット](media/howto-opc-vault-secure/view-key-pair.png "キー ペアの表示")
 
 7. 生成された秘密キー (PFX または PEM) と証明書 (DER) は、選択した形式でバイナリ ファイルとしてここからダウンロードできます。 たとえば、証明書をコマンド ラインまたはテキスト エントリにコピーして貼り付けるには、base64 でエンコードされたバージョンを使用することもできます。 
-8. 秘密キーをダウンロードして安全に保存したら、 **[Delete Private Key]\(秘密キーの削除\)** を選択できます。 公開キーを持つ証明書は、後で使用できるように残します。
+8. 秘密キーをダウンロードして安全に保存したら、**[Delete Private Key]\(秘密キーの削除\)** を選択できます。 公開キーを持つ証明書は、後で使用できるように残します。
 9. CA の署名済み証明書が使用されているため、CA 証明書と証明書失効リスト (CRL) もここでダウンロードする必要があります。
 
 これで新しいキー ペアの適用方法について、OPC UA デバイスに依存するようになりました。 通常、CA 証明書と CRL は `trusted` フォルダーにコピーされますが、アプリケーション証明書の公開キーと秘密キーは証明書ストアの `own` フォルダーに適用されます。 一部のデバイスでは、証明書の更新にサーバー プッシュが既にサポートされている場合があります。 ご利用の OPC UA デバイスのドキュメントを参照してください。
@@ -80,7 +83,7 @@ ms.locfileid: "87082814"
 
    ![新しい証明書の要求のスクリーンショット](media/howto-opc-vault-secure/request-new-certificate.png "新しい証明書の要求")
 
-3. ご使用のアプリケーションの新しい署名済み証明書を要求するには、 **[Request new Certificate with Signing Request]\(署名要求で新しい証明書を要求する\)** を選択します。
+3. ご使用のアプリケーションの新しい署名済み証明書を要求するには、**[Request new Certificate with Signing Request]\(署名要求で新しい証明書を要求する\)** を選択します。
 
    ![新しい証明書の生成のスクリーンショット](media/howto-opc-vault-secure/generate-new-certificate.png "新しい証明書の生成")
 
@@ -93,7 +96,7 @@ ms.locfileid: "87082814"
    ![下部に承認メッセージが表示された証明書要求の詳細の表示のスクリーンショット](media/howto-opc-vault-secure/view-cert-csr.png "証明書の表示")
 
 6. 生成された証明書 (DER) は、ここからバイナリ ファイルとしてダウンロードできます。 たとえば、証明書をコマンド ラインまたはテキスト エントリにコピーして貼り付けるには、base64 でエンコードされたバージョンを使用することもできます。 
-10. 証明書をダウンロードして安全に保存したら、 **[Delete Certificate]\(証明書の削除\)** を選択できます。
+10. 証明書をダウンロードして安全に保存したら、**[Delete Certificate]\(証明書の削除\)** を選択できます。
 11. CA の署名済み証明書が使用されているため、CA 証明書と CRL もここでダウンロードする必要があります。
 
 これで新しい証明書の適用方法について、OPC UA デバイスに依存するようになりました。 通常、CA 証明書と CRL は `trusted` フォルダーにコピーされますが、アプリケーション証明書は証明書ストアの `own` フォルダーに適用されます。 一部のデバイスでは、証明書の更新にサーバー プッシュが既にサポートされている場合があります。 ご利用の OPC UA デバイスのドキュメントを参照してください。
@@ -102,7 +105,7 @@ ms.locfileid: "87082814"
 
 これで、OPC UA デバイスは、追加の構成なしで、CA 署名済み証明書によって保護されている他の OPC UA デバイスと通信できるようになりました。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ここでは、OPC UA デバイスをセキュリティで保護する方法を学習しました。次のことができます。
 

@@ -1,7 +1,7 @@
 ---
 title: Custom Voice を作成する - Speech サービス
 titleSuffix: Azure Cognitive Services
-description: 実際のデータをアップロードする準備ができたら、Custom Voice ポータルに移動します。 Custom Voice プロジェクトを作成するか、選択します。 このプロジェクトでは、実際の音声トレーニングに使用するデータとして適切な言語/ロケールと性別プロパティを共有する必要があります。
+description: 実際のデータをアップロードする準備ができたら、Custom Voice ポータルに移動します。 Custom Voice プロジェクトを作成するか、選択します。 このプロジェクトでは、実際の音声トレーニングに使用するデータとして適切な言語またはロケールと性別プロパティを共有する必要があります。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 5f087a2880c16218905a4410a2f591511a155ffd
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 3747033fcaf65e0c6da07e9f1bb625771958bb4f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629010"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319063"
 ---
 # <a name="create-a-custom-voice"></a>Custom Voice を作成する
 
@@ -28,7 +28,7 @@ ms.locfileid: "84629010"
 
 ## <a name="upload-your-datasets"></a>データセットをアップロードする
 
-実際のデータをアップロードする準備ができたら、[Custom Voice ポータル](https://aka.ms/custom-voice-portal)に移動します。 Custom Voice プロジェクトを作成するか、選択します。 このプロジェクトでは、実際の音声トレーニングに使用するデータとして適切な言語/ロケールと性別プロパティを共有する必要があります。 たとえば、英国アクセントの英語で音声を録音した場合は `en-GB` を選択します。
+実際のデータをアップロードする準備ができたら、[Custom Voice ポータル](https://aka.ms/custom-voice-portal)に移動します。 Custom Voice プロジェクトを作成するか、選択します。 このプロジェクトでは、実際の音声トレーニングに使用するデータとして適切な言語またはロケールと性別プロパティを共有する必要があります。 たとえば、英国アクセントの英語で音声を録音した場合は `en-GB` を選択します。
 
 **[データ]** タブに移動し、 **[データのアップロード]** をクリックします。 ウィザードで、準備したものと一致する正しいデータの種類を選択します。
 

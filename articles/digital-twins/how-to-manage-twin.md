@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b88d017110f4d7b9859f2d801c5405ecee1589c5
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 3f9064c25581523167918b84a2d0027747e32bd9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297469"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282376"
 ---
 # <a name="manage-digital-twins"></a>デジタル ツインを管理する
 
@@ -383,6 +383,17 @@ async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
 ツインは、Azure Digital Twins CLI を使用して管理することもできます。 コマンドについては、"[*Azure Digital Twins CLI を使用する方法*](how-to-use-cli.md)" に関するページを参照してください。
 
 [!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
+
+## <a name="view-all-digital-twins"></a>すべてのデジタル ツインを表示する
+
+インスタンス内のすべてのデジタル ツインを表示するには、[クエリ](how-to-query-graph.md)を使用します。 クエリは、[Query API](how-to-use-apis-sdks.md) または [CLI コマンド](how-to-use-cli.md)を使用して実行できます。
+
+次に示すのは、インスタンス内のすべてのデジタル ツインの一覧を返す基本的なクエリの本文です。
+
+```sql
+SELECT *
+FROM DIGITALTWINS
+``` 
 
 ## <a name="next-steps"></a>次のステップ
 

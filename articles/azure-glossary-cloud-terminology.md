@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 8a06435d4b5a4c11f74073e67e3f48fd2ed0779d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 63adb5d6898fd467a0557aa147e54f814c167e72
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079572"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400133"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 用語集:Azure プラットフォームにおけるクラウド用語の辞書
 
@@ -30,7 +30,7 @@ Microsoft Azure 用語集は、Azure プラットフォーム向けのクラウ�
 * [クラウド コンピューティング用語](https://azure.microsoft.com/overview/cloud-computing-dictionary/) - 業界における一般的なクラウド用語についての解説
 
 ## <a name="account"></a>account
-Azure サブスクリプションへのアクセスおよび管理に使用するアカウント。 Azure アカウントと呼ばれることが多いですが、既存の職場アカウント、学校アカウント、個人用 Microsoft アカウント、Office 365 のユーザー名とパスワードのいずれかを指定できます。 [無料試用版](https://azure.microsoft.com)にサインアップする際に、Azure サブスクリプションを管理するためのアカウントを作成することもできます。  
+Azure サブスクリプションへのアクセスおよび管理に使用するアカウント。 Azure アカウントと呼ばれることが多いですが、既存の職場アカウント、学校アカウント、個人用 Microsoft アカウントのいずれかを指定できます。 [無料試用版](https://azure.microsoft.com)にサインアップする際に、Azure サブスクリプションを管理するためのアカウントを作成することもできます。  
 「[Microsoft 365 アカウントを使用して Azure のサブスクリプションにサインアップする](cost-management-billing/manage/microsoft-365-account-for-azure-subscription.md)」と[サインインに使用できるアカウント](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)に関するページを参照してください。
 
 ## <a name="api-app"></a>API アプリ

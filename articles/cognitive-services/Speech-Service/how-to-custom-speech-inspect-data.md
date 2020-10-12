@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 09/23/2020
 ms.author: erhopf
-ms.openlocfilehash: d4da9a819d7aa96992259112c75154b1651341ac
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: c55d69e99715a0c646c4e836df06cf105f9770bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604762"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319124"
 ---
 # <a name="inspect-custom-speech-data"></a>Custom Speech データを検査する
 
@@ -79,11 +79,13 @@ Custom Speech には、オーディオ データを対応する認識結果と�
 
 ### <a name="edit-transcription-by-listening-to-audio"></a>音声をリッスンして文字起こしを編集する
 
-データのアップロードが成功した後、各項目名をクリックすると、データの詳細が表示されます。 詳細ページには、データセット内のすべてのファイルが一覧表示され、目的の発話をクリックすることができます。 発話ごとに、音声を再生して、文字起こしを確認でき、挿入、削除、または置換のエラーが見つかった場合は文字起こしを編集できます。 エラーの種類の詳細については、[データの評価方法](how-to-custom-speech-evaluate-data.md)に関するページをご覧ください。
+データのアップロードが成功した後、各項目名をクリックすると、データの詳細が表示されます。 また、 **[前へ]** と **[次へ]** を使用して各ファイル間を移動することもできます。
+
+詳細ページには、各音声ファイル内のすべてのセグメントが一覧表示され、目的の発話をクリックできます。 発話ごとに、音声を再生して、文字起こしを確認でき、挿入、削除、または置換のエラーが見つかった場合は文字起こしを編集できます。 エラーの種類の詳細については、[データの評価方法](how-to-custom-speech-evaluate-data.md)に関するページをご覧ください。
 
 ![エディター ページ](media/custom-speech/custom-speech-editor.png)
 
-音声ファイルが長い場合は、自動的に小さな部分に分割されます。 **[前へ]** と **[次へ]** を使用してページ間を移動しながら 1 ページずつ編集できます。 編集が完了したら、 **[保存]** ボタンをクリックします。
+編集が完了したら、 **[保存]** ボタンをクリックします。
 
 ### <a name="export-datasets-from-the-editor"></a>エディターからデータセットをエクスポートする
 

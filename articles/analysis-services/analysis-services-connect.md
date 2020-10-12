@@ -8,12 +8,12 @@ ms.date: 09/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 71caad8ce650b86f4350b32974bb8d980538b223
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 10e091ed58146d992d7b9c1f65b8b64f881a41b9
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489019"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400283"
 ---
 # <a name="connecting-to-servers"></a>サーバーへの接続
 
@@ -23,7 +23,7 @@ ms.locfileid: "89489019"
 
 [最新のクライアント ライブラリを入手する](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)
 
-サーバーへの接続全般に言えることですが、Analysis Services サーバーに接続してデータをやり取りするためには、最新の AMO、ADOMD.NET、OLEDB クライアント ライブラリが必要となります。 SSMS、Visual Studio、Excel 2016 以降、および Power BI では、毎月のリリースにより最新のクライアント ライブラリがインストールまたは更新されます。 ただし、場合によっては、アプリケーションの最新バージョンがないこともあります。 たとえば、ポリシーによって更新が先延ばしされたり、Office 365 の更新プログラムが段階的提供チャネルで提供されたりするケースがそれに該当します。
+サーバーへの接続全般に言えることですが、Analysis Services サーバーに接続してデータをやり取りするためには、最新の AMO、ADOMD.NET、OLEDB クライアント ライブラリが必要となります。 SSMS、Visual Studio、Excel 2016 以降、および Power BI では、毎月のリリースにより最新のクライアント ライブラリがインストールまたは更新されます。 ただし、場合によっては、アプリケーションの最新バージョンがないこともあります。 たとえば、ポリシーによって更新が先延ばしされたり、Microsoft 365 の更新プログラムが段階的提供チャネルで提供されたりするケースがそれに該当します。
 
 > [!NOTE]
 > クライアント ライブラリは、ユーザー名とパスワードを必要とするプロキシ サーバー経由で Azure Analysis Services に接続することはできません。 
