@@ -2,13 +2,13 @@
 title: リソースの複数のインスタンスをデプロイする
 description: Azure Resource Manager テンプレートで copy 操作と配列を使用して、リソースの種類を複数回デプロイします。
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.openlocfilehash: d4f40b606ffd56019b44cc8b67e5629b935bf50c
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.date: 09/21/2020
+ms.openlocfilehash: 411c92061826a6e8bc59380d0440fb69816557a4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583391"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293970"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>ARM テンプレートでのリソースの反復処理
 
@@ -156,6 +156,8 @@ count は負の数値にすることはできません。 Azure CLI、PowerShell
 
 しかし、リソースが順番にデプロイされるように指定したい場合もあります。 たとえば、運用環境を更新するとき、一度に特定の数だけ更新されるように更新時間をずらす必要がある場合があります。 リソースの複数のインスタンスを連続的にデプロイするには、`mode` を **serial** に、`batchSize` を一度にデプロイするインスタンスの数に設定します。 シリアル モードでは、Resource Manager はループ内で前のインスタンスへの依存関係を作成するので、前のバッチが完了するまで次のバッチは実行されません。
 
+`batchSize` の値は、copy 要素の `count` の値を超えることはできません。
+
 たとえば、ストレージ アカウントを一度に 2 つずつ、逐次的にデプロイするには、次のコマンドを使用します。
 
 ```json
@@ -295,6 +297,6 @@ mode プロパティでも **parallel** が既定値として使用されます�
   * [ARM テンプレートでの変数の反復処理](copy-variables.md)
   * [ARM テンプレートでの出力の反復処理](copy-outputs.md)
 * 入れ子になったテンプレートで copy を使用する方法については、「[copy の使用](linked-templates.md#using-copy)」を参照してください。
-* テンプレートのセクションについては、[ARM テンプレートの作成](template-syntax.md)に関する記事を参照してください。
+* テンプレートのセクションの詳細については、[ARM テンプレートの作成](template-syntax.md)に関する記事を参照してください。
 * テンプレートをデプロイする方法については、[ARM テンプレートを使用したアプリケーションのデプロイ](deploy-powershell.md)に関する記事を参照してください。
 
