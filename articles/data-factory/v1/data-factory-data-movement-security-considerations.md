@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 19b37472d7decb46825da4760511f1761493c246
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 9ae4970383802adad755fff4a6ce382db6ce32fe
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441937"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619918"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory - データ移動のセキュリティに関する考慮事項
 
@@ -142,7 +142,7 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 
 ![IPSec VPN とゲートウェイの使用](media/data-factory-data-movement-security-considerations/ipsec-vpn-for-gateway.png)
 
-### <a name="firewall-configurations-and-whitelisting-ip-address-of-gateway"></a>ゲートウェイのファイアウォール構成とホワイトリストに登録する IP アドレス
+### <a name="firewall-configurations-and-filtering-ip-address-of-gateway"></a>ゲートウェイのファイアウォール構成とフィルタリング IP アドレス
 
 #### <a name="firewall-requirements-for-on-premisesprivate-network"></a>オンプレミス/プライベート ネットワークのファイアウォール要件  
 企業では、組織の中央ルーターで**企業ファイアウォール**が実行されています。 また、ゲートウェイがインストールされているローカル コンピューターで **Windows ファイアウォール**がデーモンとして実行されています。 
@@ -158,7 +158,7 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 | `*.azuredatalakestore.net` | 443 | (オプション) 移動先が Azure Data Lake Store である場合に必要です。 | 
 
 > [!NOTE] 
-> 各データ ソースで必要な場合は、企業ファイアウォール レベルでポート/ホワイトリストに登録するドメインを管理する必要があります。 この表では、例として Azure SQL Database、Azure Synapse Analytics、Azure Data Lake Store のみを使用しています。   
+> 各データ ソースで必要な場合は、企業ファイアウォール レベルでポートまたはフィルタリング ドメインを管理する必要があります。 この表では、例として Azure SQL Database、Azure Synapse Analytics、Azure Data Lake Store のみを使用しています。   
 
 次の表には、**Windows ファイアウォール**の**受信ポート**の要件を示しています。
 
@@ -168,10 +168,10 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 
 ![ゲートウェイのポートの要件](media/data-factory-data-movement-security-considerations/gateway-port-requirements.png)
 
-#### <a name="ip-configurations-whitelisting-in-data-store"></a>データ ストアの IP 構成/ホワイトリスト登録
-クラウドの一部のデータ ストアでは、アクセス元のコンピューターの IP アドレスをホワイトリストに登録する必要もあります。 ゲートウェイ コンピューターの IP アドレスがファイアウォールで適切にホワイトリストに登録/構成されていることを確認します。
+#### <a name="ip-configurationsfiltering-in-data-store"></a>データ ストアの IP 構成またはフィルタリング
+クラウドのデータ ストアによっては、アクセス元のマシンの IP アドレスを承認する必要もあります。 ゲートウェイ コンピューターの IP アドレスがファイアウォールで適切に承認または構成されるようにします。
 
-以下のクラウド データ ストアでは、ゲートウェイ コンピューターの IP アドレスをホワイトリストに登録する必要があります。 これらのデータ ストアの中には、既定では、IP アドレスをホワイトリストに登録する必要がないものもあります。 
+次のクラウド データ ストアの場合、ゲートウェイ コンピューターの IP アドレスを承認する必要があります。 これらのデータ ストアの中には、既定では、IP アドレスを承認する必要がないものもあります。 
 
 - [Azure SQL Database](../../azure-sql/database/firewall-configure.md) 
 - [Azure Synapse Analytics](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
@@ -185,12 +185,10 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 **回答:** この機能はまだサポートされていません。 現在、この機能のサポートに積極的に取り組んでいます。
 
 **質問:** ゲートウェイが動作するためのポートの要件は何ですか?
-**回答:** ゲートウェイは、インターネットを開くために HTTP ベースの接続を確立します。 ゲートウェイがこの接続を確立するためには、**送信ポート 443 と 80** を開く必要があります。 資格情報マネージャー アプリケーションのコンピューター レベル (オンプレミスのファイアウォール レベルではない) でのみ**受信ポート 8050** を開きます。 Azure SQL Database または Azure Synapse Analytics をソースまたは移動先として使用する場合は、ポート **1433** も開く必要があります。 詳細については、[ファイアウォール構成とホワイトリストに登録する IP アドレス](#firewall-configurations-and-whitelisting-ip-address-of gateway)に関するセクションを参照してください。 
+**回答:** ゲートウェイは、インターネットを開くために HTTP ベースの接続を確立します。 ゲートウェイがこの接続を確立するためには、**送信ポート 443 と 80** を開く必要があります。 資格情報マネージャー アプリケーションのコンピューター レベル (オンプレミスのファイアウォール レベルではない) でのみ**受信ポート 8050** を開きます。 Azure SQL Database または Azure Synapse Analytics をソースまたは移動先として使用する場合は、ポート **1433** も開く必要があります。 詳細については、[ファイアウォール構成とフィルタリング IP アドレス](#firewall-configurations-and-filtering-ip-address-of gateway)に関するセクションを参照してください。 
 
 **質問:** ゲートウェイの証明書の要件は何ですか?
 **回答:** 現行のゲートウェイには、資格情報マネージャー アプリケーションがデータ ストアの資格情報を安全に設定するために使用する証明書が必要です。 この証明書は、ゲートウェイの設定によって作成および構成された自己署名証明書です。 代わりに独自の TLS または SSL 証明書を使用できます。 詳細については、「[ClickOnce 資格情報マネージャー アプリケーション](#click-once-credentials-manager-app)」セクションを参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 コピー アクティビティのパフォーマンスについては、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
-
- 

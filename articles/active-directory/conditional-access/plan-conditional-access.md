@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a26a7320cab20c769ddf8dd1f24cd6fda0cc7d64
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 9f1d4c5b55dd2a24c1fb41540fdc5d3ae26849a2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561535"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258678"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>条件付きアクセスのデプロイを計画する
 
@@ -262,7 +262,7 @@ MFA や 1 つのネットワークの場所などの単一のアクセス制御�
 
 * いつ適用するか (該当する場合)
 
-![名前付け基準](media/plan-conditional-access/11.png)
+![ポリシーの命名規則を示すスクリーンショット。](media/plan-conditional-access/11.png)
 
 **例**: 外部ネットワークから Dynamics CRP アプリにアクセスするマーケティング ユーザーに対して MFA を要求するポリシーは次のようになります。
 

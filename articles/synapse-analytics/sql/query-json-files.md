@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 04b2d7842222426010b76a1a7ed4c72ee74e3d87
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.reviewer: jrasnick
+ms.openlocfilehash: 0757c867d46144ac9fb9b9eca8b2a588aeeb15d6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489726"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288326"
 ---
 # <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics の SQL オンデマンド (プレビュー) を使用して JSON ファイルに対してクエリを実行する
 
@@ -24,7 +24,7 @@ ms.locfileid: "87489726"
 
 ## <a name="read-json-documents"></a>JSON ドキュメントの読み取り
 
-JSON ファイルの内容を確認する最も簡単な方法は、`OPENROWSET` 関数にファイルの URL を指定し、csv `FORMAT` を指定し、`fieldterminator` と `fieldquote` に `0x0b` 値を設定することです。 行区切りの JSON ファイルを読み取る必要がある場合は、これで十分です。 従来の JSON ファイルがある場合は、`rowterminator` に `0x0b` 値を設定する必要があります。 `OPENROWSET` 関数は JSON を解析し、次の形式ですべてのドキュメントを返します。
+JSON ファイルの内容を確認する最も簡単な方法は、`OPENROWSET` 関数にそのファイルの URL を指定し、csv `FORMAT` を指定し、`fieldterminator` と `fieldquote` に `0x0b` 値を設定することです。 行区切りの JSON ファイルを読み取る必要がある場合は、これで十分です。 従来の JSON ファイルがある場合は、`rowterminator` に `0x0b` 値を設定する必要があります。 `OPENROWSET` 関数は JSON を解析し、次の形式ですべてのドキュメントを返します。
 
 | ドキュメント |
 | --- |

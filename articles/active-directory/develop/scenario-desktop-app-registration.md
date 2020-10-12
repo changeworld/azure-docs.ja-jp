@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 6796ac42a10d3b976b23f5af1418b1789011d61b
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: b71c78f484eef0fc4d9c34a2f218a177dbffa0a8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440951"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257514"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Web API を呼び出すデスクトップ アプリ:アプリの登録
 
@@ -33,7 +33,6 @@ ms.locfileid: "89440951"
 ### <a name="audience-for-desktop-app-silent-flows"></a>デスクトップ アプリのサイレント フローの対象ユーザー
 
 - 統合 Windows 認証またはユーザー名とパスワードを使用するには、たとえば、自分が基幹業務 (LOB) 開発者である場合、アプリケーションでは自分のテナントのユーザーをサインインする必要があります。 また、Azure Active Directory 組織では、ISV のシナリオの場合、アプリケーションでは自分のテナントのユーザーをサインインする必要があります。 これらの認証フローは、Microsoft の個人用アカウントではサポートされていません。
-- デバイス コード フローを使用する場合は、ユーザーの Microsoft 個人アカウントを使用してユーザーをサインインすることはまだできません。
 - B2C (business-to-commerce) 機関とポリシーを渡すソーシャル ID を使用してユーザーをサインインする場合は、ユーザー名とパスワードの対話型認証のみを使用できます。
 
 ## <a name="redirect-uris"></a>リダイレクト URI
@@ -45,17 +44,20 @@ ms.locfileid: "89440951"
   > [!IMPORTANT]
   > 現在、MSAL.NET は、Windows で実行されるデスクトップ アプリケーションでは、既定で別のリダイレクト URI を使用しています (`urn:ietf:wg:oauth:2.0:oob`)。 今後、この既定を変更することを予定しているため、`https://login.microsoftonline.com/common/oauth2/nativeclient` を使用することをお勧めします。
 
-- macOS 用のネイティブ Objective-C または Swift アプリを構築する場合は、アプリケーションのバンドル識別子に基づいて、msauth.<your.app.bundle.id>://auth の形式でリダイレクト URI を登録します。<your.app.bundle.id> は、ご自分のアプリケーションのバンドル識別子に置き換えてください。
+- macOS 用のネイティブ Objective-C または Swift アプリを構築する場合は、アプリケーションのバンドル識別子に基づいて、`msauth.<your.app.bundle.id>://auth` の形式でリダイレクト URI を登録します。 `<your.app.bundle.id>` をご使用のアプリケーションのバンドル ID に置き換えます。
 - アプリで統合 Windows 認証またはユーザー名とパスワードのみを使用する場合は、アプリケーションのリダイレクト URI を登録する必要はありません。 これらのフローは、Microsoft ID プラットフォーム v2.0 エンドポイントへのラウンドトリップを実行します。 アプリケーションが特定の URI でコールバックされることはありません。
-- デバイス コード フロー、統合 Windows 認証、ユーザー名とパスワードを、いずれのリダイレクト URI も持たない機密性の高いクライアント アプリケーション フロー (デーモン アプリケーションで使用されるクライアント資格証明フロー) と区別するには、アプリケーションがパブリック クライアント アプリケーションであることを示す必要があります。 この構成を実現するには、アプリケーションの **[認証]** セクションにアクセスします。 **[詳細設定]** サブセクションの **[既定のクライアントの種類]** 段落で、 **[アプリケーションは、パブリック クライアントとして扱います]** に対して **[はい]** を選択します。
+- [デバイス コード フロー](scenario-desktop-acquire-token.md#device-code-flow)、[統合 Windows 認証](scenario-desktop-acquire-token.md#integrated-windows-authentication)、[ユーザー名とパスワード](scenario-desktop-acquire-token.md#username-and-password)を、リダイレクト URI を必要としない[デーモン アプリケーション](scenario-daemon-overview.md)で使用されるクライアント資格証明フローを使用する機密クライアント アプリケーションと区別するには、そのアプリケーションをパブリック クライアント アプリケーションとして構成する必要があります。 この構成を実現するには:
 
-  ![パブリック クライアントを許可する](media/scenarios/default-client-type.png)
+    1. [Azure portal](https://portal.azure.com) の **[アプリの登録]** でアプリを選択し、 **[認証]** を選択します。
+    1. **[詳細設定]**  >  **[既定のクライアントの種類]**  >  **[アプリケーションは、パブリック クライアントとして扱います]** で、 **[はい]** を選択します。
+
+        :::image type="content" source="media/scenarios/default-client-type.png" alt-text="Azure portal の [認証] ウィンドウでパブリック クライアント設定を有効にする":::
 
 ## <a name="api-permissions"></a>API のアクセス許可
 
 デスクトップ アプリケーションは、サインインしたユーザーのために API を呼び出します。 委任されたアクセス許可を要求する必要があります。 アプリケーションのアクセス許可を要求することはできません。これは、[デーモン アプリケーション](scenario-daemon-overview.md)でのみ処理されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [デスクトップ アプリ: アプリの構成](scenario-desktop-app-configuration.md)
+> [デスクトップ アプリ:アプリの構成](scenario-desktop-app-configuration.md)

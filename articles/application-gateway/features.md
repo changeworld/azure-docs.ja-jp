@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 04/07/2020
+ms.date: 09/25/2020
 ms.author: victorh
-ms.openlocfilehash: bbb78fd879bc5c6bb8c2624329a23d7137b11660
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: ba9f42bc932a37e1052f17db2ae00413e0769d59
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651982"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355739"
 ---
 # <a name="azure-application-gateway-features"></a>Azure Application Gateway の機能
 
@@ -147,9 +147,9 @@ Application Gateway と WAF v2 SKU では、要求/応答パケットがクラ�
 
 ## <a name="sizing"></a>サイズ変更
 
-Application Gateway Standard_v2 は、自動スケーリング用、または固定サイズ デプロイ用に構成できます。 この SKU では、異なるインスタンスのサイズは提供されません。 v2 のパフォーマンスと料金の詳細については、[v2 の自動スケーリング](application-gateway-autoscaling-zone-redundant.md)に関するページと[価格の理解](understanding-pricing.md)に関するページをご覧ください。
+Application Gateway Standard_v2 は、自動スケーリング用、または固定サイズ デプロイ用に構成できます。 v2 SKU には、さまざまなインスタンス サイズは用意されていません。 v2 のパフォーマンスと料金の詳細については、[v2 の自動スケーリング](application-gateway-autoscaling-zone-redundant.md)に関するページと[価格の理解](understanding-pricing.md)に関するページをご覧ください。
 
-Application Gateway Standard は、**Small**、**Medium**、**Large** の 3 つのサイズで提供されています。 Small サイズのインスタンスは、開発用およびシナリオのテスト用です。
+Application Gateway Standard (v1) は、**Small**、**Medium**、**Large** の 3 つのサイズで提供されています。 Small サイズのインスタンスは、開発用およびシナリオのテスト用です。
 
 アプリケーション ゲートウェイの制限の詳細な一覧については、[Application Gateway サービスの制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits)に関するページをご覧ください。
 

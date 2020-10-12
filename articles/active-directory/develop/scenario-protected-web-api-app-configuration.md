@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5953e5d5f6bc50c913c3e92aa92775c34c0fd170
-ms.sourcegitcommit: 8791f69d44150767807d215cafc4076f3ed43f9f
+ms.openlocfilehash: 613ba527c8f86257dd271d3cc9e43c97fc475068
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89512336"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257454"
 ---
 # <a name="protected-web-api-code-configuration"></a>保護された Web API: コード構成
 
@@ -111,6 +111,12 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 
 **[Authorize]** 属性を保持するコントローラー アクションでアプリが呼び出されると、ASP.NET と ASP.NET Core により、Authorization ヘッダーのベアラー トークンからアクセス トークンが抽出されます。 その後、アクセス トークンは JwtBearer ミドルウェアに転送され、Microsoft IdentityModel Extensions for .NET が呼び出されます。
 
+#### <a name="microsoftidentityweb"></a>Microsoft.Identity.Web
+
+ASP.NET Core で Web API を開発する場合は、[Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web) NuGet パッケージを使用することをお勧めします。
+
+_Microsoft.Identity.Web_ を使用すると、ASP.NET Core、認証ミドルウェア、および .NET 用の [Microsoft Authentication Library (MSAL)](msal-overview.md) 間を結び付けることができます。 これにより、より明確で堅牢な開発者エクスペリエンスが可能になり、Microsoft ID プラットフォームと Azure AD B2C の機能を活用できます。
+
 #### <a name="using-microsoftidentityweb-templates"></a>Microsoft.Identity.Web テンプレートを使用する
 
 Microsoft.Identity.Web プロジェクト テンプレートを使用して、Web API を最初から作成できます。 詳細については、「[Microsoft.Identity.Web - Web API プロジェクト テンプレート](https://aka.ms/ms-id-web/webapi-project-templates)」を参照してください。
@@ -134,7 +140,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
- 現在、ASP.NET Core テンプレートでは、ご自分の組織または任意の組織内のユーザーのサインインを行う、Azure Active Directory (Azure AD) Web API が作成されます。 個人アカウントを使用してユーザーをサインインさせることはありません。 ただし、NuGet パッケージとして使用可能な [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web) を使用して *Startup.cs* 内のコードを置き換えることで、Microsoft ID プラットフォーム エンドポイントを使用するようにテンプレートを変更できます。
+ 現在、ASP.NET Core テンプレートでは、ご自分の組織または任意の組織内のユーザーのサインインを行う、Azure Active Directory (Azure AD) Web API が作成されます。 個人アカウントを使用してユーザーをサインインさせることはありません。 ただし、*Startup.cs* 内のコードを置き換える [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web) を使用することで、Microsoft ID プラットフォーム エンドポイントを使用するようにテンプレートを変更できます。
 
 ```csharp
 using Microsoft.Identity.Web;

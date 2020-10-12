@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/19/2018
 ms.author: allensu
-ms.openlocfilehash: fba1f0b1f8160dece41c312b61cbc8ae9571436d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed82adcc1432bde27042d5775c454bfabcdb96ca
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887036"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358136"
 ---
 # <a name="restrict-azure-cdn-content-by-countryregion"></a>国/地域別の Azure CDN コンテンツの制限
 
@@ -38,7 +38,7 @@ ms.locfileid: "84887036"
 ### <a name="define-the-directory-path"></a>ディレクトリ パスを定義する
 geo フィルタ リング機能にアクセスするには、ポータル内で CDN エンドポイントを選択し、左側のメニューの [設定] の下の **[geo フィルタ リング]** を選択します。 
 
-![geo フィルタリングの標準](./media/cdn-filtering/cdn-geo-filtering-standard.png)
+![エンドポイントのメニューから [geo フィルタ リング] が選択されていることを示すスクリーンショット。](./media/cdn-filtering/cdn-geo-filtering-standard.png)
 
 **[パス]** ボックスに、ユーザーのアクセスを許可または拒否する場所の相対パスを指定します。 
 
@@ -67,7 +67,7 @@ geo フィルタリングは、スラッシュ (/) を指定してすべての�
 
 国/地域を選択したら、 **[保存]** を選択して、新しい Geo フィルタリング ルールを有効にします。 
 
-![geo フィルタリング ルール](./media/cdn-filtering/cdn-geo-filtering-rules.png)
+![国または地域をブロックまたは許可するために使用する国コードを示しているスクリーンショット。](./media/cdn-filtering/cdn-geo-filtering-rules.png)
 
 ### <a name="clean-up-resources"></a>リソースをクリーンアップする
 ルールを削除するには、 **[geo フィルタリング]** ページでルールを選択し、 **[削除]** を選択します。
@@ -79,7 +79,7 @@ geo フィルタリングは、スラッシュ (/) を指定してすべての�
 
 2. Verizon ポータルで、 **[HTTP ラージ]** を選択し、 **[国のフィルタ リング]** を選択します。
 
-    ![geo フィルタリングの標準](./media/cdn-filtering/cdn-geo-filtering-premium.png)
+    ![Azure CDN で [国のフィルタ リング] が選択されていることを示すスクリーンショット。](./media/cdn-filtering/cdn-geo-filtering-premium.png)
 
 3. **[国フィルターの追加]** を選択します。
 
@@ -93,7 +93,7 @@ geo フィルタリングは、スラッシュ (/) を指定してすべての�
     
     新しい規則が、 **[国のフィルタ リング]** ページの表に表示されます。
 
-    ![geo フィルタリング ルール](./media/cdn-filtering/cdn-geo-filtering-premium-rules.png)
+    ![国のフィルタリングでルールがどこに表示されるかを示すスクリーンショット。](./media/cdn-filtering/cdn-geo-filtering-premium-rules.png)
 
 ### <a name="clean-up-resources"></a>リソースをクリーンアップする
 国/地域フィルタリング ルール テーブルでは、ルールの横にある削除アイコンを選択して削除するか、または編集アイコンを選択して変更します。

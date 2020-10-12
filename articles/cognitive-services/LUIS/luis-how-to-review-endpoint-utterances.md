@@ -3,20 +3,18 @@ title: ユーザーの発話を確認する - LUIS
 titleSuffix: Azure Cognitive Services
 description: アクティブ ラーニングによってキャプチャされた発話を確認し、意図を選択して、文字にされた発話に対応するエンティティをマークします。その後、変更を承認し、トレーニングして公開することになります。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/07/2020
-ms.author: diberry
-ms.openlocfilehash: 58674bf38ec1efb970fa8e79f7d970ecefb36712
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 9777e4f9b2205d2f6cdf6158b035e2a18403d69f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055615"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541460"
 ---
 # <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>エンドポイントの発話を見直し、LUIS アプリを改善する方法
 
@@ -34,7 +32,7 @@ LUIS ポータルを使用して、正しいエンドポイント クエリを�
 1. 割り当てられた予測リソースについて、 **[Change query parameters]\(クエリ パラメーターの変更\)** を選択します。
 
     > [!div class="mx-imgBorder"]
-    > ![LUIS ポータルを使用してログを保存します。これはアクティブ ラーニングに必要です。](./media/luis-tutorial-review-endpoint-utterances/azure-portal-change-query-url-settings.png)
+    > ![[Change query parameters]\(クエリ パラメーターの変更\) リンクを示すスクリーンショット。](./media/luis-tutorial-review-endpoint-utterances/azure-portal-change-query-url-settings.png)
 
 1. **[Save logs]\(ログの保存\)** を切り替え、 **[Done]\(完了\)** を選択して保存します。
 

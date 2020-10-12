@@ -1,6 +1,6 @@
 ---
 title: SQL プールのトランザクションの最適化
-description: ロールバックに長時間かかるリスクを最小限に抑えながら、SQL プール (データ ウェアハウス) でトランザクション コードのパフォーマンスを最適化する方法について説明します。
+description: SQL プールでトランザクション コードのパフォーマンスを最適化する方法について説明します。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 0156cfb0720e78b87abc36f0811db69bc8435894
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 174ae84e66f10db4ad24ed561b228f0031492d97
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503193"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288649"
 ---
 # <a name="optimize-transactions-in-sql-pool"></a>SQL プールでのトランザクションの最適化
 
@@ -25,7 +25,7 @@ ms.locfileid: "87503193"
 
 トランザクションは、リレーショナル データベース エンジンの重要な要素です。 SQL プールでは、データに変更を加える際にトランザクションが使用されます。 これらのトランザクションは、明示的に指定することも、暗黙的に指定することもできます。 INSERT ステートメント、UPDATE ステートメント、および DELETE ステートメントはすべて、暗黙的なトランザクションの例です。 明示的なトランザクションでは、BEGIN TRAN、COMMIT TRAN、または ROLLBACK TRAN を使用します。 明示的なトランザクションは、一般的には、複数の変更ステートメントを関連付けて 1 つのアトミック単位にする必要がある場合に使用します。
 
-SQL プールでは、トランザクション ログを使用してデータベースに変更がコミットされます。 ディストリビューションには、それぞれ独自のトランザクション ログがあります。 トランザクション ログの書き込みは自動で行われるため、 手動で構成する必要はありません。 ただし、このプロセスでは書き込みが保証されず、システムにオーバーヘッドが加わります。 この影響を最小限に抑えるには、トランザクションの効率を考慮してコードを記述してください。 トランザクションの効率が良いコードは、大きく分けて 2 つのカテゴリに分類されます。
+SQL プールでは、トランザクション ログを使用してデータベースに変更がコミットされます。 ディストリビューションには、それぞれ独自のトランザクション ログがあります。 トランザクション ログの書き込みは自動で行われるため、 手動で構成する必要はありません。 ただし、このプロセスによって書き込みは保証されますが、システムにオーバーヘッドが加わります。 この影響を最小限に抑えるには、トランザクションの効率を考慮してコードを記述してください。 トランザクションの効率が良いコードは、大きく分けて 2 つのカテゴリに分類されます。
 
 * できるだけ、最小ログ記録コンストラクトを使用する
 * 単独で実行時間の長いトランザクションを避けるために、範囲を制限したバッチを使用してデータを処理する
@@ -84,7 +84,7 @@ CTAS と INSERT...SELECT は、どちらも一括読み込み操作です。 た
 
 ## <a name="optimize-deletes"></a>削除の最適化
 
-DELETE は完全ログ記録操作です。  テーブルまたはパーティションから大量のデータを削除する必要がある場合は、残しておきたいデータを `SELECT` する方が合理的です。これは、最小ログ記録操作として実行できます。  データを選択するには、[CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) を使用して新しいテーブルを作成します。  テーブルを作成したら、[RENAME](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) を使用して、古いテーブルを新しく作成したテーブルに置き換えます。
+DELETE は完全ログ記録操作です。  テーブルまたはパーティションから大量のデータを削除する必要がある場合は、残しておきたいデータを `SELECT` する方が合理的です。これは、最小ログ記録操作として実行できます。  データを選択するには、[CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) を使用して新しいテーブルを作成します。  テーブルを作成したら、[RENAME](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を使用して、古いテーブルを新しく作成したテーブルに置き換えます。
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.

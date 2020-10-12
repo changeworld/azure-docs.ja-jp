@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/10/2020
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 1690a844ff700a2975be8e972fd90ba71eeb937c
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: f83baf7a038ad8cf17421c778deccbc7dc389d97
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707783"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325557"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Azure NetApp Files のメトリック
 
@@ -37,21 +37,24 @@ Azure NetApp Files では、割り当て済みストレージ、実際のスト�
 - "*プールで消費されたサイズ*"  
     容量プールのボリューム全体で使用された論理領域の合計 (GiB) です。  
 
-- "*Total Snapshot size for the pool*" (プールのスナップショット サイズの合計)    
-    プール内のすべてのボリュームのスナップショット サイズの合計。
+- "*プールのスナップショット サイズの合計*"    
+    プール内のすべてのボリュームからのスナップショット サイズの合計。
 
 ## <a name="usage-metrics-for-volumes"></a><a name="volumes"></a>ボリュームの使用状況メトリック
 
-<!--
-- *Volume Quota Size*    
-    The quota size (GiB) the volume is provisioned with.   
-    This size is the size you selected during capacity pool creation. 
+<!-- ANF-5023: fixed version: 2020.08, 2020.09
+- *Percentage Volume Consumed Size*    
+    The percentage of the volume consumed, including snapshots.  
 -->
+- "*ボリュームの割り当てサイズ*"   
+    ボリュームのプロビジョニングされたサイズ
+- "*ボリュームのクォータ サイズ*"    
+    ボリュームのプロビジョニングに使用されているクォータ サイズ (GiB)。   
 - "*ボリュームで消費されたサイズ*"   
-    ボリュームで使用された論理領域の合計 (GiB) です。  
+    ボリュームの論理サイズ (使用されているバイト)。  
     このサイズには、アクティブなファイル システムとスナップショットで使用される論理領域が含まれます。  
 - "*ボリューム スナップショットのサイズ*"   
-   ボリューム内のスナップショットで使用される増分の論理領域です。  
+   ボリュームのすべてのスナップショットのサイズ。  
 
 ## <a name="performance-metrics-for-volumes"></a>ボリュームのパフォーマンス メトリック
 
@@ -63,11 +66,28 @@ Azure NetApp Files では、割り当て済みストレージ、実際のスト�
     ボリュームへの 1 秒あたりの読み取り数です。
 - "*書き込み IOPS*"   
     ボリュームへの 1 秒あたりの書き込み数です。
+- "*読み取り MiB/秒*"   
+    1 秒あたりの読み取りスループット (バイト単位)。
+- "*書き込み MiB/秒*"   
+    1 秒あたりの書き込みスループット (バイト単位)。
+
+<!-- ANF-4128; 2020.07
+- *Pool Provisioned Throughput*   
+    The total throughput a capacity pool can provide to its volumes based on "Pool Provisioned Size" and "Service Level".
+- *Pool Allocated to Volume Throughput*   
+    The total throughput allocated to volumes in a given capacity pool (that is, the total of the volumes' allocated throughput in the capacity pool).
+-->
+
+<!-- ANF-6443; future
+- *Pool Consumed Throughput*    
+    The total throughput being consumed by volumes in a given capacity pool.
+-->
+
 
 ## <a name="volume-replication-metrics"></a><a name="replication"></a>ボリューム レプリケーション メトリック
 
 - "*Is volume replication status healthy*" (ボリューム レプリケーションの状態は正常です)   
-    レプリケーションのリレーションシップの条件。 
+    レプリケーションのリレーションシップの条件。 正常な状態は、`1` によって示されます。 異常な状態は、`0` によって示されます。
 
 - "*Is volume replication transferring*" (ボリューム レプリケーションは転送中です)    
     ボリューム レプリケーションの状態が "転送中" かどうか。 

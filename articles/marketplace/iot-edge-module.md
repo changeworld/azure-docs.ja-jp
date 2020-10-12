@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 08/18/2020
-ms.openlocfilehash: 6eeb27f6382585e883fbebc40a9f70feb33adb4f
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 90267f2b75b7b9c1e77a45d7e3faa4b0bf6dd63a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420610"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708545"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge のモジュール
 
@@ -58,7 +58,7 @@ Microsoft Azure Marketplace の契約とポリシーのすべてのご契約条�
 
 IoT Edge モジュールを Azure Marketplace で発行するには、次の前提条件を満たす必要があります。
 
-- パートナー センターへのアクセス。 詳細については、 [Azure Marketplace と AppSource の発行ガイド](marketplace-publishers-guide.md)を参照してください。
+- パートナー センターへのアクセス。 詳細については、「[商業マーケットプレース アカウントをパートナー センターに作成する](partner-center-portal/create-account.md)」を参照してください。
 - Azure Container registry で IoT Edge モジュールをホストします。
 - IoT Edge モジュールのメタデータを (非網羅的なリストのように) 用意してください：
     - タイトル

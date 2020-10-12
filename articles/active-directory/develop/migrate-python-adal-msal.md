@@ -1,8 +1,8 @@
 ---
 title: Python ADAL から MSAL への移行ガイド | Azure
+titleSuffix: Microsoft identity platform
 description: Azure Active Directory 認証ライブラリ (ADAL) Python アプリを、Python 用の Microsoft 認証ライブラリ (MSAL) に移行する方法について説明します。
 services: active-directory
-titleSuffix: Microsoft identity platform
 author: rayluo
 manager: CelesteDG
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: Python
 ms.workload: identity
 ms.date: 11/11/2019
 ms.author: rayluo
-ms.reviewer: rayluo, nacanuma, twhitney
+ms.reviewer: rayluo, nacanuma
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 8dcd2b55d177c533336842293b2aedaef6b4222c
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 574615a6b6e4b399605ca1863c0f764f814b2bd9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119914"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258304"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>Python 用の ADAL から MSAL への移行に関するガイド
 
@@ -73,7 +73,7 @@ Python 用 Azure Active Directory 認証ライブラリ (ADAL) では、例外 `
 
 ## <a name="migrate-existing-refresh-tokens-for-msal-python"></a>MSAL Python の既存の更新トークンを移行する
 
-Microsoft 認証ライブラリ (MSAL) では、更新トークンの概念が抽象化されています。 MSAL Python では、更新トークンを保存、検索、または更新する必要がないように、既定でメモリ内トークン キャッシュが提供されます。 更新トークンは通常、ユーザーの介入なしに更新できるため、ユーザーにサインイン プロンプトが表示される回数も少なくなります。 トークン キャッシュの詳細については、[Python 用 MSAL でのカスタム トークン キャッシュのシリアル化](msal-python-token-cache-serialization.md)に関するページを参照してください。
+Microsoft Authentication Library (MSAL) では、更新トークンの概念が抽象化されています。 MSAL Python では、更新トークンを保存、検索、または更新する必要がないように、既定でメモリ内トークン キャッシュが提供されます。 更新トークンは通常、ユーザーの介入なしに更新できるため、ユーザーにサインイン プロンプトが表示される回数も少なくなります。 トークン キャッシュの詳細については、[Python 用 MSAL でのカスタム トークン キャッシュのシリアル化](msal-python-token-cache-serialization.md)に関するページを参照してください。
 
 次のコードは、別の OAuth2 ライブラリ (ADAL Python を含むがこれに限らない) によって管理されている更新トークンを、Python 用 MSAL による管理に移行するために役立ちます。 これらの更新トークンを移行する理由の 1 つは、アプリを Python 用 MSAL に移行するときに既存のユーザーがサインインし直す必要をなくすことです。
 

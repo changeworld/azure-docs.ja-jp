@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory B2C の ユーザー フローの従来のバージョン | Microsoft Docs
-description: Azure Active Directory B2C で使用できるユーザー フローのバージョンについて説明します。
+description: Azure Active Directory B2C で使用できるユーザー フローのレガシ バージョンについて説明します。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 67ce6ab611e8d32c320320976ff2eba932f761a2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 3471b9988b154ccb38dc56545e769a7179a4026f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87505555"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258729"
 ---
 # <a name="legacy-user-flow-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー フローの従来のバージョン
 

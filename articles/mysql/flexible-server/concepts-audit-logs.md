@@ -6,17 +6,20 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: e630ccec744c4edf0dc80d374ecc93526f960d44
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 00d0808e83a888a39f9268328feb209167c9b644
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931230"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295991"
 ---
 # <a name="track-database-activity-with-audit-logs-in-azure-database-for-mysql-flexible-server"></a>Azure Database for MySQL フレキシブル サーバーで監査ログを使用してデータベース アクティビティを追跡する
 
 > [!IMPORTANT] 
 > Azure Database for MySQL フレキシブル サーバーは現在、パブリック プレビュー段階にあります
+
+> [!NOTE]
+> ログにアクセスするための Azure Monitor 診断設定との統合は、展開中であり、すべての機能が間もなく利用可能になります。
 
 Azure Database for MySQL フレキシブル サーバーでは、ユーザーが監査ログを構成することができます。 監査ログは、接続、管理、DDL、DML の各イベントなど、データベースレベルのアクティビティを追跡するために使用できます。 これらの種類のログは、通常、コンプライアンスのために使用されます。
 
@@ -49,6 +52,9 @@ Azure Database for MySQL フレキシブル サーバーでは、ユーザーが
 | `TABLE_ACCESS` | - MySQL 5.7 でのみ利用可能 <br> テーブル読み取りステートメント。たとえば、SELECT、INSERT INTO ...SELECT <br> - テーブル削除ステートメント。たとえば、DELETE、TRUNCATE TABLE <br> - テーブル挿入ステートメント。たとえば、INSERT、REPLACE <br> - テーブル更新ステートメント。たとえば、UPDATE |
 
 ## <a name="access-audit-logs"></a>監査ログにアクセスする
+
+> [!NOTE]
+> ログにアクセスするための Azure Monitor 診断設定との統合は、展開中であり、すべての機能が間もなく利用可能になります。
 
 監査ログは、Azure Monitor の診断設定と統合されます。 MySQL フレキシブル サーバーで監査ログを有効にしたら、Azure Monitor ログ、Event Hubs、または Azure Storage にそれらを出力できます。 診断設定の詳細については、[診断ログのドキュメント](../../azure-monitor/platform/platform-logs-overview.md)を参照してください。 Azure portal で診断設定を有効にする方法の詳細については、[監査ログに関するポータルの記事](how-to-configure-audit-logs-portal.md#set-up-diagnostics)を参照してください。
 

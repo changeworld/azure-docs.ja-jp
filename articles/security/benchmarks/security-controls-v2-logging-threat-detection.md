@@ -4,17 +4,17 @@ description: Azure セキュリティ ベンチマーク V2 - ログと脅威検
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 24ddca37a729a459382fc96a2f6e0ef1a7832f37
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 9ada1956af2dabdb8e5deff33722af7a8691dd19
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059067"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295466"
 ---
-# <a name="security-control-logging-and-threat-detection"></a>セキュリティ コントロールログと脅威検出
+# <a name="security-control-v2-logging-and-threat-detection"></a>セキュリティ コントロール V2:ログと脅威検出
 
 「ログと脅威検出」は、Azure で脅威を検出するためのコントロール、および Azure サービスの監査ログの有効化、収集、保存のためのコントロールを対象としています。 これには、コントロールを使って検出、調査、修復プロセスを有効にすることが含まれ、これにより、Azure サービスのネイティブ脅威検出を使用して高品質のアラートを生成します。この他に、Azure Monitor によるログの収集、Azure Sentinel によるセキュリティ分析の一元化、時間の同期、ログの保持も含まれます。 
 
@@ -40,11 +40,11 @@ Azure Security Center の組み込みの脅威検出機能を使用します。�
 
 **責任**: Customer
 
-**お客様のセキュリティ関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [インフラストラクチャとエンドポイント セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [セキュリティ操作 (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [セキュリティ運用](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [体制管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
@@ -77,11 +77,11 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 
 **責任**: Customer
 
-**お客様のセキュリティ関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [インフラストラクチャとエンドポイント セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [セキュリティ操作 (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [セキュリティ運用](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [体制管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
@@ -111,11 +111,11 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 
 **責任**: Customer
 
-**お客様のセキュリティ関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [インフラストラクチャとエンドポイント セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [セキュリティ操作 (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [セキュリティ運用](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [体制管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
@@ -129,7 +129,7 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 |--|--|--|--|
 | LT-4 | 6.2、6.3、8.8 | AU-3、AU-12 |
 
-コンプライアンス、脅威の検出と調査、脅威ハンティングの要件を満たすために、Azure リソースのログ記録を有効にします。 
+コンプライアンス、脅威の検出、ハンティング、インシデント調査の要件を満たすために、Azure リソースのログを有効にします。 
 
 Azure Security Center と Azure Policy を使用すると、監査ログ、セキュリティ ログ、リソース ログにアクセスするために、Azure リソースのリソース ログとログ データの収集を有効にできます。 自動的に使用できるアクティビティ ログには、イベント ソース、日付、ユーザー、タイムスタンプ、送信元アドレス、送信先アドレス、その他の役立つ要素が含まれています。 
 
@@ -141,9 +141,9 @@ Azure Security Center と Azure Policy を使用すると、監査ログ、セ�
 
 **責任**: 共有
 
-**お客様のセキュリティ関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [セキュリティ操作 (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [セキュリティ運用](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 インフラストラクチャとエンドポイントのセキュリティ 
 
@@ -171,7 +171,7 @@ Azure アクティビティ ログを一元的なログ記録に統合してい�
 
 **責任**: Customer
 
-**お客様のセキュリティ関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -185,25 +185,25 @@ Azure アクティビティ ログを一元的なログ記録に統合してい�
 |--|--|--|--|
 | LT-6 | 6.4 | AU-3、AU-11 |
 
-コンプライアンス、規制、その他の要件に従って、ログの保持期間を構成します。 
+コンプライアンス、規制、ビジネスの要件に従って、ログの保持期間を構成します。 
 
 Azure Monitor で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定できます。 長期ストレージおよびアーカイブ ストレージには、Azure Storage、Data Lake、または Log Analytics ワークスペースのアカウントを使用します。
 
 - [Log Analytics でデータ保持期間を変更する](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-Azure Storage アカウント ログの保持ポリシーを構成する方法: https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging
+- [Azure Storage アカウント ログの保持ポリシーを構成する方法](../../storage/common/storage-monitor-storage-account.md#configure-logging)
 
 - [Azure Security Center のアラートと推奨事項のエクスポート](../../security-center/continuous-export.md)
 
 **責任**: Customer
 
-**お客様のセキュリティ関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
 - [アプリケーションのセキュリティと DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
-- [セキュリティ操作 (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center) 
+- [セキュリティ運用](/azure/cloud-adoption-framework/organize/cloud-security-operations-center) 
 
 - [セキュリティ コンプライアンス管理](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
@@ -225,7 +225,7 @@ Azure 内のリソースによって生成されるすべてのログでは、�
 
 **責任**: 共有
 
-**お客様のセキュリティ関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [ポリシーと標準](/azure/cloud-adoption-framework/organize/cloud-security-policy-standards)
 

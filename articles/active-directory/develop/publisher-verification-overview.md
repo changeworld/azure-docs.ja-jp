@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 0c30b5305fb5496db86a20be7a37f36b894ecc8b
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 53861bbff9ba328ca97063df59cfedc6e886212d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089753"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258151"
 ---
 # <a name="publisher-verification"></a>発行者の確認
 
@@ -33,9 +33,10 @@ Azure AD の同意プロンプトや他の画面に、青い "確認済み" バ�
 
 - **ブランド化の向上** - "確認済み" バッジが、Azure AD [同意プロンプト](application-consent-experience.md)、エンタープライズ アプリ ページ、およびエンド ユーザーと管理者によって使用されるその他の UX サーフェイスに表示されます。 
 
-- **よりスムーズなエンタープライズ導入** - 管理者は[ユーザー同意ポリシー](../manage-apps/configure-user-consent.md)を構成でき、発行者確認の状態は主要なポリシー条件の 1 つになります。 
+- **よりスムーズなエンタープライズ導入** - 管理者は[ユーザー同意ポリシー](../manage-apps/configure-user-consent.md)を構成でき、発行者確認の状態は主要なポリシー条件の 1 つになります。
 
-- **リスク評価の向上** - Microsoft による "リスクの高い" 同意要求の検出には、発行者確認がシグナルとして含まれます。 
+> [!NOTE]
+> 2020 年 11 月以降、エンド ユーザーは、新しく登録された、発行元が確認済みでないマルチテナント アプリのほとんどに対して、同意を付与することができなくなります。 これは、2020 年 11 月 8 日以降に登録されたアプリで、OAuth2.0 を使用して基本的なサインインやユーザー プロファイルの読み取り以上の権限を要求したり、アプリが登録されているテナントとは異なるテナントのユーザーに同意を求めたりする場合に適用されます。 同意画面には、これらのアプリにはリスクが伴い、未確認の発行元からのものであることをユーザーに通知する警告が表示されます。    
 
 ## <a name="requirements"></a>必要条件
 発行者確認にはいくつかの前提条件があり、その一部は、多くの Microsoft パートナーによって既に完了されています。 これらは次のとおりです。 
@@ -69,7 +70,7 @@ Azure AD の同意プロンプトや他の画面に、青い "確認済み" バ�
 
   Microsoft 365 とも統合している開発者は、これらのプログラムから付加的なメリットを得ることができます。 詳細については、[Microsoft 365 の発行元構成証明](/microsoft-365-app-certification/docs/attestation)および [Microsoft 365 のアプリ認定](/microsoft-365-app-certification/docs/certification)に関するページを参照してください。 
 
-- **これは Azure AD アプリケーション ギャラリーと同じものですか。** いいえ。発行者確認は補完的なものですが、[Azure Active Directory アプリケーション ギャラリー](../azuread-dev/howto-app-gallery-listing.md)とは別のプログラムです。 上記の条件を満たす開発者は、そのプログラムへの参加とは関係なく、発行者確認プロセスを完了する必要があります。 
+- **これは Azure AD アプリケーション ギャラリーと同じものですか。** いいえ。発行者確認は補完的なものですが、[Azure Active Directory アプリケーション ギャラリー](v2-howto-app-gallery-listing.md)とは別のプログラムです。 上記の条件を満たす開発者は、そのプログラムへの参加とは関係なく、発行者確認プロセスを完了する必要があります。 
 
 ## <a name="next-steps"></a>次のステップ
 * [アプリを発行者確認済み](mark-app-as-publisher-verified.md)としてマークする方法について学習します。
