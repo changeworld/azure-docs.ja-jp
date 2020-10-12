@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:Workplace by Facebook を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
-description: Azure Active Directory と Workplace by Facebook の間でシングル サインオンを構成する方法について説明します。
+description: 自動ユーザー プロビジョニングを構成するために Workplace by Facebook と Azure Active Directory (Azure AD) の両方で実行する必要がある手順について説明します。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.openlocfilehash: ae13e062f50e1e8eefeaa886c67c636cf6230c18
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c72ca7cb521c5c7e7ed33e9a0539de0df252ac92
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90973870"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321902"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>チュートリアル:Workplace by Facebook を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -81,11 +81,11 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[管理者資格情報]** セクション下にある **[承認する]** をクリックします。 Workplace by Facebook の承認ページにリダイレクトされます。 Workplace by Facebook のユーザー名を入力して、 **[続行]** ボタンをクリックします。 **[テスト接続]** をクリックして、Azure AD から Workplace by Facebook に接続できることを確認します。 接続が失敗した場合、お使いの Workplace by Facebook アカウントに Admin アクセス許可があることを確認して、再試行してください。
 
