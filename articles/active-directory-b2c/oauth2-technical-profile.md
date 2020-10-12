@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b45f5ae64a7b8fd97d5242c82fb90ee6c57286ac
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 35b1f57a2361c5a4360e2ff1944b93e767168799
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433892"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259392"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OAuth2 技術プロファイルを定義する
 
@@ -110,23 +110,8 @@ Azure Active Directory B2C (Azure AD B2C) では、OAuth2 プロトコルの ID 
 
 ## <a name="redirect-uri"></a>リダイレクト URI
 
-ID プロバイダーのリダイレクト URL を構成する場合は、`https://login.microsoftonline.com/te/tenant/policyId/oauth2/authresp` を入力します。 **tenant** をお使いのテナント名 (例: contosob2c.onmicrosoft.com) に置き換え、**policyId** をお使いのポリシーの識別子 (例: b2c_1_policy) に置き換える必要があります。 リダイレクト URI は、すべて小文字である必要があります。
-
-**login.microsoftonline.com** の代わりに **b2clogin.com** ドメインを使用している場合は、login.microsoftonline.com の代わりに b2clogin.com を使用することを確認します。
+ID プロバイダーのリダイレクト URI を構成する場合は、`https://{tenant-name}.b2clogin.com/{tenant-name}.onmicrosoft.com/oauth2/authresp` を入力します。 `{tenant-name}` は、必ず実際のテナントの名前 (たとえば、contosob2c) に置き換えてください。 リダイレクト URI は、すべて小文字である必要があります。
 
 例 :
 
 - [カスタム ポリシーを使用して Google+ を OAuth2 ID プロバイダーとして追加する](identity-provider-google-custom.md)
-
-
-
-
-
-
-
-
-
-
-
-
-

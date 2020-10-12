@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 9cb5698f95aa220208fb02a35a52ff5363a173ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d6610a2f69b6da34972510a5619c6d16a605289
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443368"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776444"
 ---
 # <a name="how-to-create-a-lab-with-a-shared-resource-in-azure-lab-services"></a>Azure Lab Services で共有リソースを使用してラボを作成する方法
 
@@ -31,6 +31,20 @@ ms.locfileid: "85443368"
 図では、学生の VM からのトラフィックを制限するために使用できるネットワーク セキュリティ グループ (NSG) も示されています。  たとえば、学生の VM の IP アドレスからのトラフィックは 1 つの共有リソースにしかアクセスできないことを示すセキュリティ規則を作成できます。  セキュリティ規則の設定方法の詳細については、[ネットワーク セキュリティ グループの管理](../virtual-network/manage-network-security-group.md#work-with-security-rules)に関する記事を参照してください。 共有リソースへのアクセスを特定のラボに制限したい場合は、[ラボ アカウントのラボ設定](manage-labs.md#view-labs-in-a-lab-account)からラボの IP アドレスを取得し、その IP アドレスからのアクセスのみを許可する受信規則を設定します。  その IP アドレスに対してポート 49152 から 65535 を許可することを忘れないでください。  必要に応じて、[[仮想マシン プール] ページ](how-to-set-virtual-machine-passwords.md)を使用して、学生の VM のプライベート IP アドレスを見つけることができます。
 
 共有リソースが、必要なソフトウェアを実行している Azure 仮想マシンである場合は、仮想マシンに対する既定のファイアウォール規則を変更することが必要になる場合があります。
+
+### <a name="tips-for-shared-resources---license-server"></a>共有リソースのヒント - ライセンス サーバー
+一般的な共有リソースの 1 つにライセンス サーバーがあります。ここでは設定に成功する方法に関するいくつかのヒントを示します。
+#### <a name="server-region"></a>サーバー リージョン
+ライセンス サーバーは、ラボとピアリングされた仮想ネットワークに接続する必要があるため、ラボ アカウントと同じリージョンに配置する必要があります。
+
+#### <a name="static-private-ip-and-mac-address"></a>静的プライベート IP および MAC アドレス
+既定では、仮想マシンは動的プライベート IP を持つため、[ソフトウェアを設定する前に、プライベート IP を静的に設定します](https://docs.microsoft.com/azure/virtual-network/virtual-networks-static-private-ip-arm-pportal)。 これにより、プライベート IP と MAC アドレスが静的に設定されます。  
+
+#### <a name="control-access"></a>アクセスを制御する
+ライセンス サーバーへのアクセスを制御することは重要です。  VM をセットアップした後も、メンテナンス、トラブルシューティング、および更新のためにアクセスが必要になります。  これを行うには、いくつかの方法があります。
+- [Azure Security Center 内で Just-In-Time (JIT) アクセスを設定する。](https://docs.microsoft.com/azure/security-center/security-center-just-in-time?tabs=jit-config-asc%2Cjit-request-asc)
+- [アクセスを制限するためのネットワーク セキュリティ グループを設定する。](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview)
+- [ライセンス サーバーへの安全なアクセスを許可する Bastion をセットアップする。](https://azure.microsoft.com/services/azure-bastion/)
 
 ## <a name="lab-account"></a>ラボ アカウント
 
