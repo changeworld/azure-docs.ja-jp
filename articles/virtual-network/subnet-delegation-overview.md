@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/20/2019
 ms.author: kumud
-ms.openlocfilehash: b33ff808b802b6848e2d5debaf515a73bf21a1bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1fbb683754aed5b2a2e6e9c022713b7e87ad9ba9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74281065"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329209"
 ---
 # <a name="what-is-subnet-delegation"></a>サブネットの委任とは
 
@@ -51,6 +51,7 @@ Azure サービスごとに独自のデプロイ モデルが定義されます�
 - 委任されたサブネットの IP アドレスの最小数を指定する。
 - 委任されたサブネットの IP アドレス空間がプライベート IP アドレス空間 (10.0.0.0/8、192.168.0.0/16、172.16.0.0/12) から構成されるように指定する。
 - カスタム DNS 構成に Azure DNS エントリが含まれるよう指定する。
+- サブネットまたは仮想ネットワークを削除する前に、委任を削除する必要がある。
 
 挿入されたサービスには、次のような独自のポリシーも追加できます。
 - **セキュリティ ポリシー**:特定のサービスを機能させるために必要な一連のセキュリティ規則。
