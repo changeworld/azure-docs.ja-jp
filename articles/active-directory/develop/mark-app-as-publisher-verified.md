@@ -12,16 +12,16 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: acb4b601118b341d14bc5e7c549d22eef23b2cc2
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 80731421b6a0d3f5bdabf117a7239bafa056e652
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085707"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258338"
 ---
 # <a name="mark-your-app-as-publisher-verified"></a>アプリを発行者確認済みとしてマークする
 
-アプリケーションが発行者確認済みとしてマークされている場合は、Microsoft Partner Network (MPN) アカウントを使用する ID を発行者が確認し、この MPN アカウントをアプリケーションの登録に関連付けていることを意味します。 この記事では、[発行者の確認](publisher-verification-overview.md)プロセスを完了する方法について説明します。
+アプリの登録に確認済み発行元が含まれている場合は、アプリの発行者が Microsoft Partner Network (MPN) アカウントを使用して自身の ID を[確認](/partner-center/verification-responses)し、この MPN アカウントと自身のアプリの登録を関連付けていることを意味します。 この記事では、[発行者の確認](publisher-verification-overview.md)プロセスを完了する方法について説明します。
 
 ## <a name="quickstart"></a>クイック スタート
 Microsoft Partner Network (MPN) に既に登録していて、[前提条件](publisher-verification-overview.md#requirements)を満たしている場合は、すぐに始めることができます。 
@@ -42,9 +42,9 @@ Microsoft Partner Network (MPN) に既に登録していて、[前提条件](pub
 
 1. [多要素認証](../fundamentals/concept-fundamentals-mfa-get-started.md)を使用して発行者確認済みとしてマークするアプリを変更することが許可されている組織 (Azure AD) アカウントでサインインし、パートナー センターに MPN アカウントでサインインしていることを確認します。
 
-    - Azure AD では、このユーザーは次のロールのいずれかに属する必要があります。アプリケーション管理者、クラウド アプリケーション管理者、全体管理者。 
+    - Azure AD では、このユーザーは次の[ロール](../users-groups-roles/directory-assign-admin-roles.md)のいずれかに属する必要があります。アプリケーション管理者、クラウド アプリケーション管理者、全体管理者。 
 
-    - パートナー センターでは、このユーザーには次のいずれかのロールが必要です: MPN 管理者、アカウント管理者、全体管理者 (これは、Azure AD で管理されている共有ロールです)。 
+    - パートナー センターでは、このユーザーには次のいずれかの[ロール](/partner-center/permissions-overview)が必要です: MPN 管理者、アカウント管理者、全体管理者 (これは、Azure AD で管理されている共有ロールです)。 
 
 1. アプリ登録ポータルに移動します。  
 

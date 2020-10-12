@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 29930a835297b0ddd3a91534dab9ccb6d74896e3
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8ac5b0976e677cc48fb3fe47c50797b07acdbc44
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90967546"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91708868"
 ---
 # <a name="about-keys"></a>キーについて
 
@@ -47,7 +47,7 @@ HSM で保護されたキー (HSM キーとも呼ばれます) は、HSM (ハー
 - コンテナーは、**FIPS 140-2 レベル 2** で検証された HSM を使用して、共有 HSM バックエンド インフラストラクチャ内の HSM キーを保護します。 
 - Managed HSM プールは、**FIPS 140-2 レベル 3** で検証された HSM モジュールを使用して、キーを保護します。 各 HSM プールは、独自の[セキュリティ ドメイン](../managed-hsm/security-domain.md)を備えた、分離されたシングルテナント インスタンスであり、同じハードウェア インフラストラクチャを共有する他のすべての HSM プールから完全に分離された暗号化を提供します。
 
-これらのキーは、シングルテナントの HSM プールで保護されます。 RSA、EC、および対称キーのインポートを、ソフト形式で、またはサポートされている HSM デバイスからのエクスポートにより、行うことができます。 HSM プールでキーを生成することもできます。 [BYOK (Bring Your Own Key) の仕様](../keys/byok-specification.md)で説明されている方法を使用して HSM キーをインポートするときに、Managed HSM プールへの安全なトランスポート キー マテリアルが有効になります。 
+これらのキーは、シングルテナントの HSM プールで保護されます。 RSA、EC、および対称キーのインポートを、ソフト形式で、またはサポートされている HSM デバイスからのエクスポートにより、行うことができます。 HSM プールでキーを生成することもできます。 [BYOK (Bring Your Own Key) の仕様](../keys/byok-specification.md)で説明されている方法を使用して HSM キーをインポートすると、Managed HSM プールへの安全なトランスポート キー マテリアルが有効になります。 
 
 地理的境界について詳しくは、[Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/privacy/)をご覧ください。
 

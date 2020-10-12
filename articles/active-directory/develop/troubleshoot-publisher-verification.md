@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: fd49e922e5952f5a7c4b7f477dd33d6518010428
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 71b6f35b107a8cb213e97d9a05bdf93b93967606
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088325"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256893"
 ---
 # <a name="troubleshoot-publisher-verification"></a>発行者の確認に関するトラブルシューティング
 [発行者の確認](publisher-verification-overview.md)で、エラーが発生してプロセスを完了できない場合、または予期しない動作が発生する場合は、次の手順を行う必要があります。 
@@ -59,7 +59,7 @@ ms.locfileid: "90088325"
 
 - **多要素認証に関連するエラーが発生します。どうすればよいですか。** 
     [多要素認証](../fundamentals/concept-fundamentals-mfa-get-started.md)が有効になっていることを確認します。サインインに使用しているユーザーと、このシナリオには必要です。 たとえば、MFA には次のような条件があります。
-    - サインインに使用しているユーザーには常に必要です。
+    - サインインに使用しているユーザーには常に必要です
     - [Azure の管理に必要です](../conditional-access/howto-conditional-access-policy-azure-management.md)。
     - サインインに使用している[この種類の管理者には必要です](../conditional-access/howto-conditional-access-policy-admin-mfa.md)。
 
@@ -150,31 +150,45 @@ Microsoft Graph でのトラブルシューティングのとき、またはア�
 
 ### <a name="mpnaccountnotfoundornoaccess"></a>MPNAccountNotFoundOrNoAccess     
 
-指定した MPN ID (<MPNID>) が存在しないか、それへのアクセス権がありません。 有効な MPN ID を指定して、やり直してください。 
+指定した MPN ID (<MPNID>) が存在しないか、それへのアクセス権がありません。 有効な MPN ID を指定して、やり直してください。
+    
+サインインしているユーザーがパートナー センターの MPN アカウントの適切なロールのメンバーになっていないことが原因で最もよく発生します。対象となるロールの一覧については、「[必要条件](publisher-verification-overview.md#requirements)」をご覧ください。詳しくは、「[一般的な問題](#common-issues)」 をご覧ください。 また、アプリが登録されているテナントが MPN アカウントに追加されていないか、MPN ID が無効であるために発生する可能性もあります。
 
 ### <a name="mpnglobalaccountnotfound"></a>MPNGlobalAccountNotFound     
 
-指定した MPN ID (<MPNID>) が無効です。 有効な MPN ID を指定して、やり直してください。 
+指定した MPN ID (<MPNID>) が無効です。 有効な MPN ID を指定して、やり直してください。
+    
+パートナーの場所アカウント (PLA) に対応する MPN ID が指定されている場合に最もよく発生します。 パートナー グローバル アカウントのみがサポートされています。 詳しくは、[パートナー センターのアカウントの構造](/partner-center/account-structure)に関する記事をご覧ください。
 
 ### <a name="mpnaccountinvalid"></a>MPNAccountInvalid    
 
-指定した MPN ID (<MPNID>) が無効です。 有効な MPN ID を指定して、やり直してください。 
+指定した MPN ID (<MPNID>) が無効です。 有効な MPN ID を指定して、やり直してください。
+    
+間違った MPN ID が指定されていることが原因で最もよく発生します。
 
 ### <a name="mpnaccountnotvetted"></a>MPNAccountNotVetted  
 
 指定した MPN ID (<MPNID>) は、審査プロセスを完了していません。 パートナー センターでこのプロセスを完了してから、操作をやり直してください。 
+    
+MPN アカウントが[検証](/partner-center/verification-responses)プロセスを完了していない場合に最もよく発生します。
 
 ### <a name="nopublisheridonassociatedmpnaccount"></a>NoPublisherIdOnAssociatedMPNAccount  
 
 指定した MPN ID (<MPNID>) が無効です。 有効な MPN ID を指定して、やり直してください。 
+   
+間違った MPN ID が指定されていることが原因で最もよく発生します。
 
 ### <a name="mpniddoesnotmatchassociatedmpnaccount"></a>MPNIdDoesNotMatchAssociatedMPNAccount    
 
-指定した MPN ID (<MPNID>) が無効です。 有効な MPN ID を指定して、やり直してください。 
+指定した MPN ID (<MPNID>) が無効です。 有効な MPN ID を指定して、やり直してください。
+    
+間違った MPN ID が指定されていることが原因で最もよく発生します。
 
 ### <a name="applicationnotfound"></a>ApplicationNotFound  
 
-ターゲット アプリケーション (<AppId>) が見つかりません。 有効なアプリケーション ID を指定して、もう一度やり直してください。 
+ターゲット アプリケーション (<AppId>) が見つかりません。 有効なアプリケーション ID を指定して、もう一度やり直してください。
+    
+Graph API 経由で検証が実行され、指定されたアプリケーションの ID が正しくない場合に最もよく発生します。 注 - アプリ ID やクライアント ID ではなく、アプリケーションの ID を指定する必要があります。
 
 ### <a name="b2ctenantnotallowed"></a>B2CTenantNotAllowed  
 
@@ -188,13 +202,19 @@ Microsoft Graph でのトラブルシューティングのとき、またはア�
 
 ターゲット アプリケーション (\<AppId\>) には、パブリッシャー ドメインが設定されている必要があります。 パブリッシャー ドメインを設定してから、やり直してください。
 
+アプリで[発行元ドメイン](howto-configure-publisher-domain.md)が構成されていない場合に発生します。
+
 ### <a name="publisherdomainmismatch"></a>PublisherDomainMismatch  
 
 ターゲット アプリケーションのパブリッシャー ドメイン (<publisherDomain>) が、パートナー センターでメール確認を実行するために使用されたドメイン (<pcDomain>) と一致しません。 これらのドメインが一致していることを確認してから、やり直してください。 
+    
+アプリの[発行元ドメイン](howto-configure-publisher-domain.md)と、Azure AD テナントに追加された[カスタム ドメイン](../fundamentals/add-custom-domain.md)のいずれもが、パートナー センターで電子メールの検証を実行するために使用されたドメインと一致しない場合に発生します。
 
 ### <a name="notauthorizedtoverifypublisher"></a>NotAuthorizedToVerifyPublisher   
 
 アプリケーション (<AppId>) の確認済み発行者プロパティを設定することを承認されていません 
+  
+サインインしているユーザーが Azure AD の MPN アカウントの適切なロールのメンバーになっていないことが原因で最もよく発生します。対象となるロールの一覧については、「[必要条件](publisher-verification-overview.md#requirements)」をご覧ください。詳しくは、「[一般的な問題](#common-issues)」 をご覧ください。
 
 ### <a name="mpnidwasnotprovided"></a>MPNIdWasNotProvided  
 
@@ -202,7 +222,11 @@ Microsoft Graph でのトラブルシューティングのとき、またはア�
 
 ### <a name="msanotsupported"></a>MSANotSupported  
 
-この機能は、Microsoft コンシューマー アカウントではサポートされていません。 Azure AD ユーザーによって Azure AD に登録されているアプリケーションのみがサポートされます。 
+この機能は、Microsoft コンシューマー アカウントではサポートされていません。 Azure AD ユーザーによって Azure AD に登録されているアプリケーションのみがサポートされます。
+
+### <a name="interactionrequired"></a>InteractionRequired
+
+検証済みの発行者をアプリに追加しようとする前に多要素認証が実行されていない場合に発生します。 詳しくは、「[一般的な問題](#common-issues)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -216,4 +240,4 @@ Microsoft Graph でのトラブルシューティングのとき、またはア�
 - アプリが登録されている TenantId
 - MPN ID
 - 行われた REST 要求 
-- 返されるエラー コードとメッセージ 
+- 返されるエラー コードとメッセージ
