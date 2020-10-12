@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
-ms.date: 03/19/2020
+ms.date: 09/23/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92c3e0d77a26db406e24d6d2fa07e96349613634
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 158caf3a6c4cc0efc2f89e18d065a0112b481ee9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87907505"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274046"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B コラボレーションの FAQ
 
@@ -116,6 +116,9 @@ B2B コラボレーションを向上させるためのフィードバックは�
 
 ### <a name="i-thought-azure-ad-b2b-didnt-accept-gmailcom-and-outlookcom-email-addresses-and-that-b2c-was-used-for-those-kinds-of-accounts"></a>Azure AD B2B は gmail.com および outlook.com の電子メール アドレスを受け付けず、このようなアカウントに対しては、B2C が使われていたと思います。
 マイクロソフトでは、サポートされる ID に関して、B2B と business-to-consumer (B2C) のコラボレーションの違いをなくしています。 使用される ID は、B2B と B2C のどちらを使うかを選択する十分な理由になりません。 コラボレーション オプションの選択については、「[Azure Active Directory での B2B コラボレーションと B2C の比較](compare-with-b2c.md)」をご覧ください。
+
+### <a name="can-an-azure-ad-b2c-local-account-be-invited-to-an-azure-ad-tenant-for-b2b-collaboration"></a>B2B コラボレーションのために Azure AD B2C ローカル アカウントを Azure AD テナントに招待することはできますか。
+いいえ。 Azure AD B2C ローカル アカウントは、Azure AD B2C テナントへのサインインにのみ使用できます。 このアカウントを使用して Azure AD テナントにサインインすることはできません。 B2B コラボレーションのために Azure AD B2C ローカル アカウントを Azure AD テナントに招待することはサポートされていません。
 
 ### <a name="what-applications-and-services-support-azure-b2b-guest-users"></a>Azure B2B ゲスト ユーザーをサポートするのはどのアプリケーションとサービスですか。
 すべての Azure AD 統合型アプリケーションでは、Azure B2B ゲスト ユーザーをサポートできますが、ゲスト ユーザーを認証するにはテナントとして設定されたエンドポイントを使用する必要があります。 また、ゲスト ユーザーがアプリに対して認証を行うと発行される SAML トークン内の[要求をカスタマイズする](claims-mapping.md)ことも必要になる場合があります。 
