@@ -3,12 +3,12 @@ title: モーションの検出、Azure Media Services へのビデオの記録
 description: このクイックスタートでは、Live Video Analytics on IoT Edge を使用して、ライブ ビデオ ストリーム内のモーションを検出し、ビデオ クリップを Azure Media Services に記録する方法を示します。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: d4301a9c0c5684be04ee2cfbace60c1bb1904876
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 861351e16120c3f46612ba35518135fbfaf4c81b
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569010"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776478"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>クイック スタート:モーションの検出、Media Services へのビデオの記録
 
@@ -39,6 +39,16 @@ Azure リソースを設定する上記の手順の一部として、駐車場�
 ## <a name="use-direct-method-calls"></a>ダイレクト メソッドの呼び出しを使用する
 
 ライブ ビデオ ストリームの分析は、モジュールを使用し、ダイレクト メソッドを呼び出すことによって行うことができます。 モジュールに用意されているすべてのダイレクト メソッドについては、[Live Video Analytics on IoT Edge のダイレクト メソッド](direct-methods.md)に関するページをご覧ください。 
+
+1. Visual Studio Code で **[拡張機能]** タブを開き (または Ctrl + Shift + X キーを押し)、Azure IoT Hub を検索します。
+1. マウスの右ボタンをクリックして、 **[拡張機能の設定]** を選択します。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="モーション イベントに基づいた資産へのイベントベースのビデオ記録":::
+1. [Show Verbose Message]\(詳細メッセージの表示\) を検索して有効にします。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="モーション イベントに基づいた資産へのイベントベースのビデオ記録":::
 
 ### <a name="invoke-graphtopologylist"></a>GraphTopologyList を呼び出す
 このステップにより、モジュール内のすべての[グラフ トポロジ](media-graph-concept.md#media-graph-topologies-and-instances)が列挙されます。
