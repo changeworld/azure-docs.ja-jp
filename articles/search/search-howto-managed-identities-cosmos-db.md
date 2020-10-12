@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: b295c4f8380d59d8824049e8050605cb66fbae65
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: fc12978e59ecc3ebcc58d4070fa057f9a53fda58
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971648"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275287"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity"></a>マネージド ID を使用して Cosmos DB データベースへのインデクサー接続を設定する
 
@@ -136,6 +136,14 @@ api-key: [admin key]
 インデクサー作成 API の詳細については、「 [インデクサーの作成](/rest/api/searchservice/create-indexer)」をご覧ください。
 
 インデクサーのスケジュールの定義の詳細については、[Azure Cognitive Search のインデクサーのスケジュールを設定する方法](search-howto-schedule-indexers.md)に関する記事を参照してください。
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+Cosmos DB からのデータにインデックスを付けることができない場合は、以下の点について検討してください。
+
+1. Cosmos DB のアカウント キーを最近ローテーションした場合は、マネージド ID の接続文字列が機能するまでに最大で 15 分間待つ必要があります。
+
+1. Cosmos DB アカウントで、特定のネットワークへのアクセスが制限されているかどうかを確認します。 されている場合は、「[Azure ネットワーク セキュリティ機能を使用したデータ ソースへのインデクサーのアクセス](search-indexer-securing-resources.md)」を参照してください。
 
 ## <a name="see-also"></a>関連項目
 

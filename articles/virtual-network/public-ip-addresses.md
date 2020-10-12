@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: 9f3d95d7ae725dba700b0a060ba74552d6b83ad5
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: fbd4c4ecfa2be9815e5d301a02460dc28171716a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84172247"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329263"
 ---
 # <a name="public-ip-addresses"></a>パブリック IP アドレス
 
@@ -165,6 +165,13 @@ Azure Load Balancer SKU の詳細については、「[Azure Load Balancer の S
 * **動的**な Basic パブリック IP アドレスは、Application Gateway の V1 フロントエンド構成に割り当てます。 
 * **静的**な Standard SKU アドレスは、V2 フロントエンド構成に割り当てます。
 
+## <a name="azure-firewall"></a>Azure Firewall
+
+[Azure Firewall](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) では、アプリケーションとネットワークの接続ポリシーを、サブスクリプションと仮想ネットワークをまたいで作成、適用、記録することができます。
+
+**静的**な標準パブリック IP アドレスは、ファイアウォールにのみ関連付けることができます。 これにより、対象の仮想ネットワークから送信されるトラフィックを外部のファイアウォールで識別できます。 
+
+
 ## <a name="at-a-glance"></a>早見表
 
 下の表は、パブリック IP を最上位リソースに関連付けることができるプロパティと、使用できる割り当て方法を示しています。
@@ -175,6 +182,7 @@ Azure Load Balancer SKU の詳細については、「[Azure Load Balancer の S
 | インターネットに接続するロード バランサー |フロント エンド構成 |はい |はい |
 | VPN Gateway |ゲートウェイ IP の構成 |はい |いいえ |
 | Application gateway |フロント エンド構成 |はい (V1 のみ) |はい (V2 のみ) |
+| Azure Firewall | フロント エンド構成 | いいえ | はい|
 
 ## <a name="limits"></a>制限
 

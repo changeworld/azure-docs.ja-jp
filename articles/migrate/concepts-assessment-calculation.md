@@ -3,12 +3,12 @@ title: Azure Migrate Server Assessment での Azure VM の評価
 description: Azure Migrate Server Assessment での評価について説明します
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 1d9c887f42089611ce7402aa32174958cd8c0b07
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 4020df3ef77e4b8ae0618108f539322092b93079
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88261856"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275525"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vms"></a>サーバー評価の概要 (Azure VM への移行)
 
@@ -80,7 +80,7 @@ CSV ファイルを使用してサーバーを評価する場合、アプライ�
     - **Hyper-V VM**:サンプル ポイントは、30 秒ごとに収集されます。
     - **物理サーバー**:サンプル ポイントは、5 分ごとに収集されます。
 
-1. アプライアンスにより、10 分ごとに、サンプル ポイントをまとめた 1 つのデータ ポイントが作成されます。 データ ポイントを作成するために、アプライアンスではすべてのサンプルからピーク値が選択されます。 その後、そのデータ ポイントが Azure に送信されます。
+1. アプライアンスにより、VMware および Hyper-V サーバーでは 10 分ごとに、物理サーバーでは 5 分ごとに、サンプル ポイントをまとめた 1 つのデータ ポイントが作成されます。 データ ポイントを作成するために、アプライアンスではすべてのサンプルからピーク値が選択されます。 その後、そのデータ ポイントが Azure に送信されます。
 1. Server Assessment では、過去 1 か月間のすべての 10 分のデータ ポイントが格納されます。
 1. 評価を作成すると、Server Assessment により、サイズ設定に使用するために適したデータ ポイントが特定されます。 この特定は、"*パフォーマンス履歴*" の百分位の値と "*百分位の使用率*" に基づきます。
 
