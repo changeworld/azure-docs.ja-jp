@@ -3,12 +3,12 @@ title: アーキテクチャの概要
 description: Azure Backup サービスによって使用される、アーキテクチャ、コンポーネント、およびプロセスの概要を示します。
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: e70fe13e895315763ae305b48a72d688f09931f0
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6f95e8f6edaef61a7c5971a46ed4bff1a34e3dbe
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986491"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614004"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup のアーキテクチャとコンポーネント
 
@@ -35,7 +35,7 @@ Azure Backup では、データ、マシンの状態、オンプレミスのマ�
 
 ## <a name="where-is-data-backed-up"></a>データはどこにバックアップされますか。
 
-Azure Backup では、バックアップされたデータはコンテナー (Recovery Services コンテナーとバックアップ コンテナー) に格納されます。 コンテナーは、バックアップ コピー、復旧ポイント、バックアップ ポリシーなどのデータを保持するために使用される、Azure 上のオンライン ストレージ エンティティです。
+Azure Backup を使用すると、バックアップされたデータはコンテナー (Recovery Services コンテナーとバックアップ コンテナー) に格納されます。 コンテナーは、バックアップ コピー、復旧ポイント、バックアップ ポリシーなどのデータを保持するために使用される、Azure 上のオンライン ストレージ エンティティです。
 
 コンテナーには次の機能があります。
 

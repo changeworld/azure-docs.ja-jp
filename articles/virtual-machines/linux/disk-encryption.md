@@ -2,18 +2,18 @@
 title: Azure Managed Disks のサーバー側暗号化 - Azure CLI
 description: Azure Storage では、保存時に暗号化してデータを保護してから、ストレージ クラスターに保存します。 カスタマー マネージド キーを使用し、独自のキーを使って暗号化を管理できます。また、マネージド ディスクの暗号化には Microsoft のマネージド キーを使用できます。
 author: roygara
-ms.date: 07/10/2020
+ms.date: 09/23/2020
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: e541fd90f0cb9c8f0e2763f16541824c5a7b3000
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: d2c1103ab58379781aa13bd9e90e01c474c3b6e4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816900"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279758"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure Disk Storage のサーバー側暗号化
 
@@ -44,6 +44,10 @@ Azure マネージド ディスク内のデータは、利用できる最も強�
 - この機能がディスクで有効になっている場合、無効にすることはできません。
     これを回避する必要がある場合は、カスタマー マネージド キーを使用していないまったく別のマネージド ディスクに[すべてのデータをコピー](disks-upload-vhd-to-managed-disk-cli.md#copy-a-managed-disk)する必要があります。
 [!INCLUDE [virtual-machines-managed-disks-customer-managed-keys-restrictions](../../../includes/virtual-machines-managed-disks-customer-managed-keys-restrictions.md)]
+
+#### <a name="supported-regions"></a>サポートされているリージョン
+
+カスタマー マネージド キーは、マネージド ディスクが使用可能なすべてのリージョンで利用できます。
 
 > [!IMPORTANT]
 > カスタマー マネージド キーは、Azure Active Directory (Azure AD) の 1 つの機能である Azure リソース用マネージド ID に依存します。 カスタマー マネージド キーを構成すると、内部でマネージド ID がリソースに自動的に割り当てられます。 その後、サブスクリプション、リソース グループ、またはマネージド ディスクを 1 つの Azure AD ディレクトリから別のディレクトリに移動した場合、そのマネージド ディスクに関連付けられているマネージド ID は新しいテナントに転送されないため、カスタマー マネージド キーが機能しなくなることがあります。 詳細については、「[Azure AD ディレクトリ間のサブスクリプションの転送](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)」を参照してください。

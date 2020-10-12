@@ -3,34 +3,35 @@ title: Azure ハイブリッド特典と Linux VM
 description: Azure ハイブリッド特典を使用すると、Azure で実行されている Linux 仮想マシンのコストを削減できます。
 services: virtual-machines
 documentationcenter: ''
-author: asinn826
+author: mathapli
 manager: westonh
-editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: vm
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: alsin
-ms.openlocfilehash: a9ea3b21908d1f461745ffe2689b36f8efcb6f89
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: d62eaf96354627e0c1e4e0a31bb16fb3265f66ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90993217"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279775"
 ---
-# <a name="azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Azure ハイブリッド特典 - Linux Virtual Machines に適用する方法
+# <a name="preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>プレビュー:Azure ハイブリッド特典 - Linux Virtual Machines に適用する方法
 
 ## <a name="overview"></a>概要
 
-Azure ハイブリッド特典を使用すると、既存の Red Hat または SUSE ソフトウェア サブスクリプションを使用して、オンプレミスの Red Hat Enterprise Linux (RHEL) サーバーと SUSE Linux Enterprise (SLES) サーバーを Azure に簡単に移行できます。 この特典により、ソフトウェア料金は RHEL または SLES サブスクリプションによってカバーされるため、お客様には VM のインフラストラクチャ コストのみが課金されます。 この特典は、すべての RHEL および SLES Marketplace の従量課金制 (PAYG) イメージに適用されます。
+Azure ハイブリッド特典を使用すると、既存の Red Hat または SUSE ソフトウェア サブスクリプションを使用して、オンプレミスの Red Hat Enterprise Linux (RHEL) サーバーと SUSE Linux Enterprise Server (SLES) 仮想マシン (VM) を Azure に簡単に移行できます。 この特典により、ソフトウェア料金は RHEL または SLES サブスクリプションによってカバーされるため、お客様には VM のインフラストラクチャ コストのみが課金されます。 この特典は、すべての RHEL および SLES Marketplace の従量課金制 (PAYG) イメージに適用されます。
+
+> [!IMPORTANT]
+> Linux VM の Azure ハイブリッド特典は、現在パブリック プレビュー段階にあります。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="benefit-description"></a>特典の説明
 
 Azure ハイブリッド特典を通じて、Azure 上の既存の RHEL および SLES の PAYG VM を、サブスクリプション持ち込み (BYOS) 課金に変換することで、オンプレミスの RHEL および SLES サーバーを Azure に簡単に移行できます。 通常、PAYG イメージからデプロイされた Azure 上の VM の場合、インフラストラクチャの料金とソフトウェアの料金の両方が請求されます。 Azure ハイブリッド特典を使用すると、PAYG VM を再デプロイせずに BYOS 課金モデルに変換できるため、ダウンタイムのリスクを回避できます。
 
-![Linux VM での Azure ハイブリッド特典コストの視覚化](./media/ahb-linux/azure-hybrid-benefit-cost.png)
+:::image type="content" source="./media/ahb-linux/azure-hybrid-benefit-cost.png" alt-text="Linux VM での Azure ハイブリッド特典コストの視覚化。":::
 
 RHEL または SLES VM で特典を有効にすると、PAYG VM で通常発生する追加のソフトウェア料金に対する課金はなくなります。 代わりに、VM は BYOS の課金を開始します。これにはコンピューティング ハードウェア料金のみが含まれ、ソフトウェア料金は含まれません。
 

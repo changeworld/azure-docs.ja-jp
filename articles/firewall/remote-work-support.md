@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: victorh
-ms.openlocfilehash: da5100fafc98ae38809c93e9b3db5ef41c58766a
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 68789d3b8a4be51a381e95d6e6f840331b46b4e9
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82863418"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400113"
 ---
 # <a name="azure-firewall-remote-work-support"></a>Azure Firewall のリモート作業のサポート
 
@@ -24,7 +24,7 @@ Azure Firewall は、Azure 仮想ネットワーク リソースを保護する�
 
 ## <a name="azure-windows-virtual-desktop-support"></a>Azure Windows Virtual Desktop のサポート
 
-Windows Virtual Desktop は、Azure 上で実行される包括的なデスクトップおよびアプリの仮想化サービスです。 これは、簡素化された管理、マルチセッションの Windows 10、Office 365 ProPlus の最適化、およびリモート デスクトップ サービス (RDS) 環境のサポートを提供する唯一の仮想デスクトップ インフラストラクチャ (VDI) です。 Windows デスクトップとアプリを Azure に数分でデプロイおよびスケーリングして、セキュリティとコンプライアンスの組み込み機能を利用することができます。 Windows Virtual Desktop では、仮想ネットワークへの受信アクセスを開く必要はありません。 しかし、仮想ネットワークで実行される Windows Virtual Desktop 仮想マシンに対して、一連の送信ネットワーク接続を許可する必要があります。 詳細については、「[Azure Firewall を使用して Windows Virtual Desktop のデプロイを保護する](protect-windows-virtual-desktop.md)」を参照してください。
+Windows Virtual Desktop は、Azure 上で実行される包括的なデスクトップおよびアプリの仮想化サービスです。 これは、簡素化された管理、マルチセッション Windows 10、Microsoft 365 Apps for enterprise 向けの最適化、リモート デスクトップ サービス (RDS) 環境のサポートを提供する、唯一の仮想デスクトップ インフラストラクチャ (VDI) です。 Windows デスクトップとアプリを Azure に数分でデプロイおよびスケーリングして、セキュリティとコンプライアンスの組み込み機能を利用することができます。 Windows Virtual Desktop では、仮想ネットワークへの受信アクセスを開く必要はありません。 しかし、仮想ネットワークで実行される Windows Virtual Desktop 仮想マシンに対して、一連の送信ネットワーク接続を許可する必要があります。 詳細については、「[Azure Firewall を使用して Windows Virtual Desktop のデプロイを保護する](protect-windows-virtual-desktop.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

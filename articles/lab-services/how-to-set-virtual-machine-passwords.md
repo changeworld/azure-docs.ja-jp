@@ -3,12 +3,12 @@ title: Azure Lab Services で VM のパスワードを設定する | Microsoft D
 description: Azure Lab Services のクラスルーム ラボで仮想マシン (VM) のパスワードを設定およびリセットする方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6012123b729bd1be6b4ff0fdb00d71aca56cfa09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49615b37875b8340f46ed900a1e7144256c7cb7d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443776"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334074"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>仮想マシン プールを設定および管理する 
 この記事では、次のタスクの手順について説明します。
@@ -24,7 +24,7 @@ ms.locfileid: "85443776"
 2. ラボに必要な新しい **VM 数**を入力します。 この数値は、ラボに登録されているユーザーの数以上である必要があります。 
 3. 次に、 **[保存]** を選択します。 
 
-    ![[Start all]\(すべて開始\) ボタン](./media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
+    ![[ラボ内の最大マシン数] と [保存] ボタンが選択された [ラボの容量] ウィンドウを示すスクリーンショット。](./media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
 4. 容量を増やした場合は、1 台以上の VM が作成されているのを確認できます。 一覧に新しい VM が表示されない場合は、ページを更新してください。 
 
     ![VM が作成されている](./media/how-to-set-virtual-machine-passwords/vm-being-created.png)

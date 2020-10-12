@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 1163531fb5a6aa7158bd81ff9095ed1ee29e73c1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f8f173291448d9da4d8967ff56b0fa027ca73409
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004903"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334550"
 ---
 # <a name="business-card-concepts"></a>名刺の概念
 
@@ -88,8 +88,8 @@ Business Card API は、名刺からキー フィールドを抽出し、それ�
                 "width": 4032,
                 "height": 3024,
                 "unit": "pixel",
-                "lines": 
-                          {
+                   "lines": 
+                             {
                         "text": "Dr. Avery Smith",
                         "boundingBox": [
                             419.3,
@@ -389,7 +389,9 @@ Business Card API で抽出されたデータは、さまざまな作業を行�
 
 ## <a name="next-steps"></a>次のステップ
 
-- クイックスタートに従って、[Python での Business Card API のクイックスタート](./quickstarts/python-business-cards.md)を開始します。
-- [Form Recognizer REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) について学習します。
-- [Form Recognizer](overview.md) の詳細を確認します。
+- [Business Card API Python のクイックスタート](./quickstarts/python-business-cards.md)に従って、名刺の認識を開始します。
 
+## <a name="see-also"></a>関連項目
+
+* [Form Recognizer とは](./overview.md)
+* [REST API リファレンス ドキュメント](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)
