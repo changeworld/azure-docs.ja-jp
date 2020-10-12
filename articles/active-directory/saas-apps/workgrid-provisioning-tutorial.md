@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/17/2019
 ms.author: Zhchia
-ms.openlocfilehash: 28efbb605221b9f613b39c2a72d47c7606afb67e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f5f7ed8a905aad873ecfc878979ac32af1e21730
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88526841"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312245"
 ---
 # <a name="tutorial-configure-workgrid--for-automatic-user-provisioning"></a>チュートリアル:Workgrid を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -54,15 +54,15 @@ Azure AD での自動ユーザー プロビジョニング用に Workgrid を構
 
 1. Workgrid にログインします。 **[Users]\(ユーザー\) > [User Provisioning]\(ユーザー プロビジョニング\)** に移動します。
 
-    ![Workgrid](media/Workgrid-provisioning-tutorial/user.png)
+    ![[Users]\(ユーザー\) および [User Provisioning]\(ユーザー プロビジョニング\) オプションが赤い四角で囲まれている Workgrid UI のスクリーンショット。](media/Workgrid-provisioning-tutorial/user.png)
 
 2. **[Account Management API]\(アカウント管理 API\)** で、 **[Create Credentials]\(資格情報の作成\)** をクリックします。
 
-    ![Workgrid](media/Workgrid-provisioning-tutorial/scim.png)
+    ![[Create Credentials]\(資格情報の作成\) オプションが赤い四角で囲まれている [Account Management API]\(アカウント管理 API\) セクションのスクリーンショット。](media/Workgrid-provisioning-tutorial/scim.png)
 
 3. **[SCIM Endpoint]\(SCIM エンドポイント\)** と **[Access Token]\(アクセス トークン\)** の値をコピーします。 これらの値を、Azure portal の Workgrid アプリケーションの [プロビジョニング] タブにある **[テナント URL]** および **[シークレット トークン]** フィールドに入力します。
 
-    ![Workgrid](media/Workgrid-provisioning-tutorial/token.png)
+    ![[SCIM Endpoint]\(SCIM エンドポイント\) と [Access Token]\(アクセス トークン\) が赤い四角で囲まれている [Account Management API]\(アカウント管理 API\) セクションのスクリーンショット。](media/Workgrid-provisioning-tutorial/token.png)
 
 
 ## <a name="add-workgrid--from-the-gallery"></a>ギャラリーからの Workgrid の追加
@@ -106,11 +106,11 @@ Azure AD で自動ユーザー プロビジョニング用に Workgrid を構成
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. [管理者資格情報] セクションの **[テナント URL]** および **[シークレット トークン]** に、先ほど取得した **SCIM エンドポイント**と**アクセス トークン**の値をそれぞれ入力します。 **[テスト接続]** をクリックして、Azure AD から Workgrid に接続できることを確認します。 接続できない場合は、使用中の Workgrid アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
@@ -124,7 +124,7 @@ Azure AD で自動ユーザー プロビジョニング用に Workgrid を構成
 
 8. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to Workgrid]\(Azure Active Directory ユーザーを Workgrid に同期する\)** を選択します。
 
-    ![Workgrid ユーザーのマッピング](media/Workgrid-provisioning-tutorial/usermapping.png)
+    ![[Synchronize Azure Active Directory Users to Workgrid]\(Azure Active Directory ユーザーを Workgrid に同期する\) オプションが赤い四角で囲まれている [マッピング] セクションのスクリーンショット。](media/Workgrid-provisioning-tutorial/usermapping.png)
 
 9. **[属性マッピング]** セクションで、Azure AD から Workgrid に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で Workgrid のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
@@ -132,11 +132,11 @@ Azure AD で自動ユーザー プロビジョニング用に Workgrid を構成
 
 10. **[マッピング]** セクションの **[Synchronize Azure Active Directory Groups to Workgrid]\(Azure Active Directory グループを Workgrid に同期する\)** を選択します。
 
-    ![Workgrid ユーザーのマッピング](media/Workgrid-provisioning-tutorial/groupmapping.png)
+    ![[Synchronize Azure Active Directory Groups to Workgrid]\(Azure Active Directory グループを Workgrid に同期する\) オプションが赤い四角で囲まれている [マッピング] セクションのスクリーンショット。](media/Workgrid-provisioning-tutorial/groupmapping.png)
 
 12. **[属性マッピング]** セクションで、Azure AD から Workgrid に同期されるグループ属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で Workgrid のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![Workgrid ユーザーのマッピング](media/Workgrid-provisioning-tutorial/groupattribute.png)
+    ![3 つのマッピングが表示されている [属性マッピング] セクションのスクリーンショット。](media/Workgrid-provisioning-tutorial/groupattribute.png)
 
 13. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 

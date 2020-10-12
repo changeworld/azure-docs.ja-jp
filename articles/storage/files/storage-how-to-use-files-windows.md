@@ -8,12 +8,12 @@ ms.date: 06/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 485a054a91bd3db9b116cf80a4e457d013c20ea1
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: c8a1d1c0f8de742bdafa130cce6927a472efd8f7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89071076"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329348"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Windows で Azure ファイル共有を使用する
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、Windows と Windows Server でシームレスに使うことができます。 この記事では、Windows と Windows Server で Azure ファイル共有を使う際の注意点について取り上げます。
@@ -34,8 +34,8 @@ Azure ファイル共有は、Azure VM とオンプレミスのどちらかで�
 | Windows 7<sup>3</sup> | SMB 2.1 | はい | いいえ |
 | Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | はい | いいえ |
 
-<sup>1</sup>Windows 10 バージョン 1507、1607、1709、1803、1809、1903、および 1909。  
-<sup>2</sup>Windows Server バージョン 1809、1903、および 1909。  
+<sup>1</sup>Windows 10、バージョン 1507、1607、1803、1809、1903、1909、および 2004。  
+<sup>2</sup>Windows Server、バージョン 1809、1903、1909、2004。  
 <sup>3</sup>Windows 7 および Windows Server 2008 R2 に対する Microsoft の通常のサポートは終了しました。 [拡張セキュリティ更新 (ESU) プログラム](https://support.microsoft.com/help/4497181/lifecycle-faq-extended-security-updates)を介してのみ、セキュリティ更新プログラムの追加サポートを購入できます。 これらのオペレーティング システムから移行することを強くお勧めします。
 
 > [!Note]  
@@ -67,12 +67,12 @@ Azure portal には、ファイル共有をホストに直接マウントする�
 
 1. **[接続]** を選択します。
 
-    :::image type="content" source="media/storage-how-to-use-files-windows/file-share-connect-icon.png" alt-text="ファイル共有の接続アイコンのスクリーンショット。":::
+    :::image type="content" source="media/storage-how-to-use-files-windows/file-share-connect-icon.png" alt-text="例":::
 
 1. 共有のマウント先のドライブ文字を選択します。
 1. 表示されたスクリプトをコピーします。
 
-    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="テキストの例":::
+    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="例":::
 
 1. ファイル共有をマウントするホスト上のシェルにスクリプトを貼り付けて実行します。
 
