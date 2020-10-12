@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
-ms.openlocfilehash: 6aaa02c2e14cfc31a11da260da38705ba064ba79
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: db50049675766d9fd8a018c8730f48ac34e23bfc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523317"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276665"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Azure-SSIS 統合ランタイムを高パフォーマンス用に構成する
 
@@ -122,8 +122,7 @@ Y 軸は、1 時間に実行が完了したパッケージの数です。 これ
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 
-既に強力な worker ノードを使ってパッケージを実行している場合、**AzureSSISMaxParallelExecutionsPerNode** の値を大きくすると、統合ランタイムの全体的なスループットが上がる可能性があります。 Standard_D1_v2 ノードでは、ノードあたり 1 ～ 4 の並列実行がサポートされています。 その他のすべての種類のノードでは、ノードあたり 1 から max(2 x コア数, 8) の並列実行がサポートされています。 サポートされている最大値を超える **AzureSSISMaxParallelExecutionsPerNode** を希望する場合は、サポート チケットを開いてください。Microsoft によって最大値が引き上げられた後、Azure PowerShell を使用して **AzureSSISMaxParallelExecutionsPerNode** を更新する必要があります。
-パッケージのコストと、worker ノードの次の構成に基づいて、適切な値を予測できます。 詳しくは、「[汎用仮想マシンのサイズ](../virtual-machines/windows/sizes-general.md)」をご覧ください。
+既に強力な worker ノードを使ってパッケージを実行している場合、**AzureSSISMaxParallelExecutionsPerNode** の値を大きくすると、統合ランタイムの全体的なスループットが上がる可能性があります。 最大値を増やす場合は、Azure PowerShell を使用して **AzureSSISMaxParallelExecutionsPerNode** を更新する必要があります。 パッケージのコストと、worker ノードの次の構成に基づいて、適切な値を予測できます。 詳しくは、「[汎用仮想マシンのサイズ](../virtual-machines/windows/sizes-general.md)」をご覧ください。
 
 | サイズ             | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数/想定ネットワーク パフォーマンス (Mbps) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|

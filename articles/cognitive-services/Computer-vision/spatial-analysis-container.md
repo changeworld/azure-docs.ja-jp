@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: b17e2618cd87c0689fa531e893149a1b2fab8d20
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 52df2ad0dc4c60c24e341a9765e31bcf9776bf5e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987189"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277293"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>空間分析コンテナー (プレビュー) をインストールして実行する
 
@@ -30,7 +30,7 @@ ms.locfileid: "90987189"
 
 ### <a name="spatial-analysis-container-requirements"></a>空間分析コンテナーの要件
 
-空間分析コンテナーを実行するには、[NVIDIA Tesla T4 GPU](https://www.nvidia.com/data-center/tesla-t4/) を搭載したコンピューティング デバイスが必要です。 GPU アクセラレーションを備えた [Azure Stack Edge](https://azure.microsoft.com/products/azure-stack/edge/) を使用することをお勧めしますが、コンテナーは最小要件を満たす他のどのデスクトップ コンピューターでも実行できます。 このデバイスをホスト コンピューターと呼びます。
+空間分析コンテナーを実行するには、[NVIDIA Tesla T4 GPU](https://www.nvidia.com/en-us/data-center/tesla-t4/) を搭載したコンピューティング デバイスが必要です。 GPU アクセラレーションを備えた [Azure Stack Edge](https://azure.microsoft.com/products/azure-stack/edge/) を使用することをお勧めしますが、コンテナーは最小要件を満たす他のどのデスクトップ コンピューターでも実行できます。 このデバイスをホスト コンピューターと呼びます。
 
 #### <a name="azure-stack-edge-device"></a>[Azure Stack Edge デバイス](#tab/azure-stack-edge)
 
@@ -71,7 +71,7 @@ Azure Stack Edge は、サービスとしてのハードウェア ソリュー�
 
 ## <a name="request-approval-to-run-the-container"></a>コンテナーを実行するための承認を要求する
 
-コンテナーを実行するための承認を要求するには、[要求フォーム](https://aka.ms/cognitivegate)に記入して送信します。 
+コンテナーを実行するための承認を要求するには、[要求フォーム](https://aka.ms/csgate)に記入して送信します。
 
 このフォームでは、ユーザー、会社、コンテナーを使用するユーザー シナリオに関する情報が要求されます。 フォームを送信すると、そのフォームは Azure Cognitive Services チームによって確認されます。その後、チームから決定事項がメールで届きます。
 
@@ -116,7 +116,8 @@ Azure Stack Edge は、サービスとしてのハードウェア ソリュー�
 Edge デバイスで Edge コンピューティング ロールが設定されると、2 つのデバイスが作成されます (IoT デバイスと IoT Edge デバイス)。 IoT Hub リソースでは、両方のデバイスを表示できます。 Azure IoT Edge ランタイムは、IoT Edge デバイス上で既に実行されています。            
 
 > [!NOTE]
-> 現時点では、IoT Edge デバイス用に使用できるのは Linux プラットフォームのみです。 Azure Stack Edge デバイスのトラブルシューティングについては、[ロギングとトラブルシューティング](spatial-analysis-logging.md)の記事を参照してください。
+> * 現時点では、IoT Edge デバイスでサポートされているのは Linux プラットフォームのみです。 Azure Stack Edge デバイスのトラブルシューティングについては、[ロギングとトラブルシューティング](spatial-analysis-logging.md)の記事を参照してください。
+> * プロキシサーバー経由で通信するように IoT Edge デバイスを構成する方法の詳細については、「[IoT Edge デバイスを構成してプロキシ サーバー経由で通信する](https://docs.microsoft.com/azure/iot-edge/how-to-configure-proxy-support#azure-portal)」を参照してください
 
 ###  <a name="enable-mps-on-azure-stack-edge"></a>Azure Stack Edge での MPS を有効にする 
 
@@ -260,13 +261,14 @@ az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-reso
 az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
 ```
 
-ホスト コンピューターが Azure Stack Edge デバイスでない場合は、[Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) バージョン 1.0.8 をインストールする必要があります。 次の手順に従って、正しいバージョンをダウンロードします。Ubuntu Server 18.04:
+ホスト コンピューターが Azure Stack Edge デバイスでない場合は、[Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) バージョン 1.0.8 をインストールする必要があります。 次の手順に従って、正しいバージョンをダウンロードします。
+
+Ubuntu Server 18.04:
 ```bash
 curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
 ```
 
 生成された一覧をコピーします。
-
 ```bash
 sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
 ```
@@ -324,8 +326,8 @@ Azure CLI を使用して、以下の手順に従ってコンテナーをデプ�
 | ARCHON_NODES_LOG_LEVEL | 情報。詳細 | ログ レベルで 2 つの値のいずれかを選択します|
 | OMP_WAIT_POLICY | PASSIVE | 変更しないでください|
 | QT_X11_NO_MITSHM | 1 | 変更しないでください|
-| API_KEY | API キー| この値は、Azure portal で Computer Vision リソースから収集します。 それは、Azure portal で、お使いのリソースの **[キーとエンドポイント]** セクションで見つけることができます。 |
-| BILLING_ENDPOINT | エンドポイント URI| この値は、Azure portal で Computer Vision リソースから収集します。 それは、Azure portal で、お使いのリソースの **[キーとエンドポイント]** セクションで見つけることができます。|
+| API_KEY | API キー| この値は、Azure portal で Computer Vision リソースから収集します。 お使いのリソースの **[キーとエンドポイント]** セクションで見つけることができます。 |
+| BILLING_ENDPOINT | エンドポイント URI| この値は、Azure portal で Computer Vision リソースから収集します。 お使いのリソースの **[キーとエンドポイント]** セクションで見つけることができます。|
 | EULA | accept | コンテナーを実行するには、この値を *accept* に設定する必要があります |
 | DISPLAY | :1 | この値は、ホスト コンピューター上の `echo $DISPLAY` の出力と同じである必要があります。 Azure Stack Edge デバイスにはディスプレイがありません。 この設定は適用されません|
 
@@ -339,7 +341,6 @@ Azure CLI を使用して、以下の手順に従ってコンテナーをデプ�
 az login
 az extension add --name azure-iot
 az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json -–subscription "<subscriptionId>"
-
 ```
 
 |パラメーター  |説明  |
