@@ -1,6 +1,6 @@
 ---
 title: クラウド グループに割り当てられているロールのトラブルシューティングに関する FAQ - Azure Active Directory | Microsoft Docs
-description: Azure portal、PowerShell、または Graph API で、ロールを割り当て可能なグループに Azure AD ロールを割り当てます。
+description: Azure Active Directory のグループにロールを割り当てる際の一般的な質問とトラブルシューティングのヒントをいくつか紹介します。
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3f2a23da5baa3a5d1955b10d18411fcedc3acd1
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 7acbb9aa443cde8df7016d3f2a38d58002b98dcd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798297"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317397"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>クラウド グループに割り当てられているロールのトラブルシューティング
 

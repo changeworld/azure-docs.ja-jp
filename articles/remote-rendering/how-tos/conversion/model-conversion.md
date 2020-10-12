@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 49d3fd953d069f4368d28e26265114e574e8100a
-ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
+ms.openlocfilehash: e899b249261ea3238695a2e2be6001cb6a9bc763
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89506663"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318060"
 ---
 # <a name="convert-models"></a>モデルの変換
 
@@ -21,9 +21,8 @@ Azure Remote Rendering を使用すると、非常に複雑なモデルをレン
 
 変換サービスでは、次の形式がサポートされています。
 
-- **FBX** (バージョン 2011 以降)
-- **GLTF** (バージョン 2.x)
-- **GLB** (バージョン 2.x)
+- **FBX**  (バージョン 2011 からバージョン 2020)
+- **GLTF**/**GLB** (バージョン 2.x)
 
 素材のプロパティの変換については、「[モデル形式の素材マッピング](../../reference/material-mapping.md)」に掲載されているように、形式ごとにわずかな違いがあります。
 

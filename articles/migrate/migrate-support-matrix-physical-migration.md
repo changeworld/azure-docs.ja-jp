@@ -4,12 +4,12 @@ description: Azure Migrate での物理サーバーの移行のサポートに�
 ms.topic: conceptual
 ms.custom: fasttrack-edit
 ms.date: 06/14/2020
-ms.openlocfilehash: 2e71ab5cd934f2fe931cd901d425061455cc9f0e
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 95456298b3275c83152115d700a4539cab2d2a67
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89535450"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318162"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>物理サーバーの移行のサポート マトリックス
 
@@ -43,10 +43,10 @@ ms.locfileid: "89535450"
 **ネットワークとストレージ** | 最新情報については、Site Recovery の[ネットワーク](../site-recovery/vmware-physical-azure-support-matrix.md#network)と[ストレージ](../site-recovery/vmware-physical-azure-support-matrix.md#storage)の前提条件を確認してください。 Azure Migrate の場合も、ネットワークとストレージの要件は同じです。
 **Azure の要件** | 最新情報については、Site Recovery に使用する [Azure ネットワーク](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover)、[ストレージ](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage)、[コンピューティング](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute)の要件を確認してください。 Azure Migrate には、物理サーバーの移行のための同じ要件があります。
 **モビリティ サービス** | 移行する各コンピューターにモビリティ サービス エージェントがインストールされている必要があります。
-**UEFI ブート** | Azure の移行されたコンピューターは、BIOS ブート Azure VM に自動的に変換されます。 Windows Server 2012 以降を実行しているサーバーのみがサポートされます。<br/><br/> OS ディスクには最大 4 つのパーティションが必要で、ボリュームは NTFS でフォーマットされている必要があります。
+**UEFI ブート** | サポートされています。 UEFI ベースのマシンは、Azure 第 2 世代 VM に移行されます。  <br/><br/> OS ディスクには最大 4 つのパーティションが必要で、ボリュームは NTFS でフォーマットされている必要があります。
 **UEFI - セキュア ブート**         | 移行はサポートされません。
 **ターゲット ディスク** | コンピューターは、Azure のマネージド ディスク (Standard HDD、Standard SSD、Premium SSD) にのみ移行できます。
-**ディスク サイズ** | 2 TB の OS ディスク。データ ディスク用に 8 TB。
+**ディスク サイズ** | 2 TB の OS ディスク (BIOS ブート); 4 TB の OS ディスク (UEFI ブート); データ ディスク用に 8 TB。
 **ディスクの制限** |  コンピューターあたり最大 63 台のディスク。
 **暗号化されたディスクまたはボリューム** |  移行では、暗号化されたディスク/ボリュームを含むコンピューターはサポートされません。
 **共有ディスク クラスター** | サポートされていません。

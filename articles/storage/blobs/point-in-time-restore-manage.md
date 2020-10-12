@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/18/2020
+ms.date: 09/23/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 226e35452e4b266c3c0a698505d47ab9a53b9761
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 828b5c34aaccf2a53aa197f921a8ef02d46821ae
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984390"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280472"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>ブロック BLOB データに対してポイントインタイム リストアを実行する
 
@@ -54,9 +54,7 @@ Azure portal を使用してポイントインタイム リストアを構成す
 
 PowerShell を使用してポイントインタイム リストアを構成するには、まず、[Az.Storage](https://www.powershellgallery.com/packages/Az.Storage) モジュールのバージョン 2.6.0 以降をインストールします。 その後、Enable-AzStorageBlobRestorePolicy コマンドを呼び出して、ストレージ アカウントのポイントインタイム リストアを有効にします。
 
-次の例では、論理的な削除を有効にし、論理的な削除の保持期間を設定し、変更フィードを有効にした後、ポイントインタイム リストアを有効にします。 この例を実行する前に、Azure portal または Azure Resource Manager テンプレートを使用して、BLOB のバージョン管理も有効にします。
-
-例を実行するときは、必ず山かっこ内の値を実際の値に置き換えてください。
+次の例では、論理的な削除を有効にし、論理的な削除の保持期間を設定し、変更フィードとバージョン管理を有効にした後、ポイントインタイム リストアを有効にします。    例を実行するときは、必ず山かっこ内の値を実際の値に置き換えてください。
 
 ```powershell
 # Sign in to your Azure account.
@@ -71,10 +69,11 @@ Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
     -RetentionDays 14
 
-# Enable change feed.
+# Enable change feed and versioning.
 Update-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
-    -EnableChangeFeed $true
+    -EnableChangeFeed $true `
+    -IsVersioningEnabled $true
 
 # Enable point-in-time restore with a retention period of 7 days.
 # The retention period for point-in-time restore must be at least
