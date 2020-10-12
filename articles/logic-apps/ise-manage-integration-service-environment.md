@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: 41e511bce3599dd341ccf8192612e3f08111245a
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 41dc4e97e847e9e7d9863631cdb20b72d3f35d9b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82598421"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269371"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Azure Logic Apps で統合サービス環境 (ISE) を管理する
 
@@ -122,7 +122,7 @@ Premium ISE ベース ユニットの容量は固定されているため、さ�
    * [ **[Manual scale]\(手動スケーリング\)** ](#manual-scale):使用する処理ユニット数に基づいてスケーリングします。
    * [ **[カスタム自動スケーリング]** ](#custom-autoscale):さまざまな条件から選択し、その条件を満たすしきい値条件を指定して、パフォーマンス メトリックに基づいてスケーリングします。
 
-   ![目的のスケーリングの種類を選択](./media/ise-manage-integration-service-environment/select-scale-out-options.png)
+   ![[Manual scale]\(手動スケーリング\) が選択されている [スケールアウト] ページを示すスクリーンショット。](./media/ise-manage-integration-service-environment/select-scale-out-options.png)
 
 <a name="manual-scale"></a>
 

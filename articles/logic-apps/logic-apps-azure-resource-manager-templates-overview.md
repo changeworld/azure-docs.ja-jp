@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 9d3c5a914fe472dd7e4f797cb633e65951bf07e7
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: a3d7386e976551d70fbbc08930b2ab5603aa5d50
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871464"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269048"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>概要:Azure Resource Manager テンプレートを使用して Azure Logic Apps のデプロイを自動化する
 
-ロジック アプリの作成とデプロイを自動化する準備ができたら、ロジック アプリの基になるワークフロー定義を [Azure Resource Manager テンプレート](../azure-resource-manager/management/overview.md)にデプロイすることができます。 このテンプレートでは、ロジック アプリをプロビジョニングおよびデプロイするためのインフラストラクチャ、リソース、パラメーター、およびその他の情報を定義します。 デプロイ時に変動する値に対してパラメーターを定義する ("*パラメーター化*" とも呼ばれます) ことにより、さまざまなデプロイ ニーズに応じてロジック アプリを繰り返し一貫した方法でデプロイすることができます。
+ロジック アプリの作成とデプロイを自動化する準備ができたら、ロジック アプリの基になるワークフロー定義を [Azure Resource Manager テンプレート](../azure-resource-manager/management/overview.md)に展開することができます。 このテンプレートでは、ロジック アプリをプロビジョニングおよびデプロイするためのインフラストラクチャ、リソース、パラメーター、およびその他の情報を定義します。 デプロイ時に変動する値に対してパラメーターを定義する ("*パラメーター化*" とも呼ばれます) ことにより、さまざまなデプロイ ニーズに応じてロジック アプリを繰り返し一貫した方法でデプロイすることができます。
 
 たとえば、開発環境、テスト環境、運用環境にデプロイする場合、環境ごとに異なる接続文字列を使用すると効果的です。 異なる接続文字列を受け取るテンプレート パラメーターを宣言した後、それらの文字列を別々の[パラメーター ファイル](../azure-resource-manager/templates/parameter-files.md)に格納することができます。 こうすることで、テンプレートを更新して再デプロイしなくても、これらの値を変更することができます。 パスワードやシークレットのような機密性の高いまたはセキュリティ保護が必要なパラメーター値を使用しているシナリオでは、これらの値を [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md) に格納し、パラメーター ファイルによってこれらの値を取得することができます。 ただし、このようなシナリオでは、再デプロイを行って現在の値を取得することをお勧めします。
 
@@ -34,12 +34,14 @@ Resource Manager テンプレートの詳細については、次のトピック
 * [Azure Resource Manager テンプレートのベスト プラクティス](../azure-resource-manager/templates/template-best-practices.md)
 * [クラウドの一貫性のための Azure Resource Manager テンプレートを開発する](../azure-resource-manager/templates/templates-cloud-consistency.md)
 
+ロジック アプリ、統合アカウント、統合アカウントの成果物に固有のテンプレート リソースの情報については、「[Microsoft.Logic resource types](/azure/templates/microsoft.logic/allversions)」(Microsoft.Logic リソースの種類) を参照してください。
+
 サンプルのロジック アプリ テンプレートについては、次の例をご覧ください。
 
 * このトピックのサンプルで使用されている[完全なテンプレート](#full-example-template)
 * GitHub にある[サンプルのクイックスタート ロジック アプリ テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create)
 
-ロジック アプリ、統合アカウント、統合アカウントの成果物に固有のテンプレート リソースの情報については、「[Microsoft.Logic resource types (Microsoft.Logic リソースの種類)](/azure/templates/microsoft.logic/allversions)」をご覧ください。
+Logic Apps REST API については、最初に [Azure Logic Apps REST API の概要](/rest/api/logic)をご覧ください。
 
 <a name="template-structure"></a>
 
@@ -280,7 +282,7 @@ Azure リソース グループ内のすべてのリソースのリソース定�
 
 ### <a name="logic-app-resource-definition"></a>ロジック アプリのリソース定義
 
-ロジック アプリのリソース定義は `properties` オブジェクトで始まり、次の情報が含まれます。
+ロジック アプリの[テンプレート内のワークフロー リソース定義](/azure/templates/microsoft.logic/workflows)は、`properties` オブジェクトで始まり、次の情報を含んでいます。
 
 * デプロイ時のロジック アプリの状態
 * ロジック アプリで使用される統合アカウントの ID
@@ -325,7 +327,7 @@ Azure リソース グループ内のすべてのリソースのリソース定�
 
 ロジック アプリのリソース定義に固有の属性は次のとおりです。
 
-| 属性 | 必須 | 種類 | 説明 |
+| 属性 | 必須 | Type | 説明 |
 |-----------|----------|------|-------------|
 | `state` | はい | String | デプロイ時のロジック アプリの状態。`Enabled` はロジック アプリがアクティブな状態であることを意味し、`Disabled` はロジック アプリが非アクティブな状態であることを意味します。 たとえば、ロジック アプリをアクティブにする準備ができておらず、ドラフト バージョンをデプロイする必要がある場合は、`Disabled` オプションを使用できます。 |
 | `integrationAccount` | いいえ | Object | 企業間 (B2B) のシナリオで成果物を格納する統合アカウントをロジック アプリで使用している場合、このオブジェクトには、統合アカウントの ID を指定する `id` 属性が含まれます。 |
@@ -334,7 +336,31 @@ Azure リソース グループ内のすべてのリソースのリソース定�
 | `accessControl` | いいえ | Object | 要求トリガーまたは実行履歴の入出力に対する IP アクセスの制限など、ロジック アプリのセキュリティ属性を指定します。 詳細については、[ロジック アプリへのアクセスのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md)に関するページをご覧ください。 |
 ||||
 
-ロジック アプリ、統合アカウント、統合アカウントの成果物に固有のテンプレート リソースの情報については、「[Microsoft.Logic resource types (Microsoft.Logic リソースの種類)](/azure/templates/microsoft.logic/allversions)」をご覧ください。
+これらの Logic Apps オブジェクトのリソース定義の詳細については、「[Microsoft.Logic resource types](/azure/templates/microsoft.logic/allversions)」(Microsoft.Logic リソースの種類) を参照してください。
+
+* [ワークフロー リソース定義](/azure/templates/microsoft.logic/workflows)
+* [統合サービス環境のリソース定義](/azure/templates/microsoft.logic/integrationserviceenvironments)
+* [統合サービス環境のマネージド API リソース定義](/azure/templates/microsoft.logic/integrationserviceenvironments/managedapis)
+
+* [統合アカウントのリソース定義](/azure/templates/microsoft.logic/integrationaccounts)
+
+* 統合アカウントのアーティファクト:
+
+  * [契約リソース定義](/azure/templates/microsoft.logic/integrationaccounts/agreements)
+
+  * [アセンブリ リソース定義](/azure/templates/microsoft.logic/integrationaccounts/assemblies)
+
+  * [バッチ構成リソース定義](/azure/templates/microsoft.logic/integrationaccounts/batchconfigurations)
+
+  * [証明書リソース定義](/azure/templates/microsoft.logic/integrationaccounts/certificates)
+
+  * [マップ リソース定義](/azure/templates/microsoft.logic/integrationaccounts/maps)
+
+  * [パートナー リソース定義](/azure/templates/microsoft.logic/integrationaccounts/partners)
+
+  * [スキーマ リソース定義](/azure/templates/microsoft.logic/integrationaccounts/schemas)
+
+  * [セッション リソース定義](/azure/templates/microsoft.logic/integrationaccounts/sessions)
 
 <a name="workflow-definition-parameters"></a>
 
