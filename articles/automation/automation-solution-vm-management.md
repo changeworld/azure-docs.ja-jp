@@ -3,14 +3,14 @@ title: Azure Automation の Start/Stop VMs during off-hours の概要
 description: この記事では、VM を日程に基づいて開始または停止し、Azure Monitor ログで VM を率先して監視する Start/Stop VMs during off-hours 機能について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 06/04/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2cbed4d6dd2a9c5e63e73d89e5327fa3759777fd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 236b4f47894db8aa8880b7535b6ee0921802a31c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064461"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317363"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Start/Stop VMs during off-hours の概要
 
@@ -37,13 +37,15 @@ Start/Stop VMs during off-hours 機能は、有効になっている Azure VM �
 
 ## <a name="prerequisites"></a>前提条件
 
-Start/Stop VMs during off hours 機能の Runbook は [Azure 実行アカウント](./manage-runas-account.md)と連動します。 認証方法としては、実行アカウントの使用をお勧めします。有効期限が切れたり頻繁に変わったりするパスワードではなく、証明書を使った認証が使用されるためです。
+- Start/Stop VMs during off hours 機能の Runbook は [Azure 実行アカウント](./manage-runas-account.md)と連動します。 認証方法としては、実行アカウントの使用をお勧めします。有効期限が切れたり頻繁に変わったりするパスワードではなく、証明書を使った認証が使用されるためです。
 
-Start/Stop VMs during off-hours 機能には、別の Automation アカウントを使用することをお勧めします。 多くの場合、Azure モジュールのバージョンがアップグレードされ、そのパラメーターが変更される可能性があります。 この機能は同じペースでアップグレードされないため、使用するコマンドレットの新しいバージョンでは動作しない可能性があります。 モジュールの更新は、運用環境の Automation アカウントにインポートする前に、テスト用の Automation アカウントでテストすることをお勧めします。
+- リンクされた Automation アカウントと Log Analytics ワークスペースは、同じリソース グループに存在する必要があります。
+
+- Start/Stop VMs during off-hours 機能には、別の Automation アカウントを使用することをお勧めします。 多くの場合、Azure モジュールのバージョンがアップグレードされ、そのパラメーターが変更される可能性があります。 この機能は同じペースでアップグレードされないため、使用するコマンドレットの新しいバージョンでは動作しない可能性があります。 モジュールの更新は、運用環境の Automation アカウントにインポートする前に、テスト用の Automation アカウントでテストすることをお勧めします。
 
 ## <a name="permissions"></a>アクセス許可
 
-VM の Start/Stop VMs during off-hours 機能を有効にするには、特定のアクセス許可が必要です。 そのアクセス許可は、事前に作成した Automation アカウントと Log Analytics ワークスペースをこの機能で使用するのか、新しいアカウントとワークスペースを作成するのかによって異なります。 
+VM の Start/Stop VMs during off-hours 機能を有効にするには、特定のアクセス許可が必要です。 そのアクセス許可は、事前に作成した Automation アカウントと Log Analytics ワークスペースをこの機能で使用するのか、新しいアカウントとワークスペースを作成するのかによって異なります。
 
 サブスクリプションの共同作成者であり、かつ Azure Active Directory (AD) テナントの全体管理者である場合は、アクセス許可を構成する必要はありません。 これらの権限がない場合、またはカスタム ロールを構成する必要がない場合は、以下で説明するアクセス許可を持っていることを確認してください。
 

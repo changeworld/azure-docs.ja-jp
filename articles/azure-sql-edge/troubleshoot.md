@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: d8da8bcf3d2bb6b2af2b5c69ce003289d83d3884
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 517fed0dd9eb1736344546bde9f79e52ee17182f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931407"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333105"
 ---
 # <a name="troubleshooting-azure-sql-edge-deployments"></a>Azure SQL Edge のデプロイのトラブルシューティング 
 
@@ -138,32 +138,12 @@ docker exec -it <Container ID> /bin/bash
 
 これで、コンテナーの内部のターミナルで実行する場合と同じようにコマンドを実行できるようになりました。 終わったら、`exit` と入力します。 これにより対話型コマンド セッションが終了しますが、コンテナーは引き続き実行されます。
 
-## <a name="troubleshooting-issues-with-data-streaming"></a>データ ストリーミングに関する問題のトラブルシューティング
-
-既定では、Azure SQL Edge ストリーミング エンジンのログは、 **/var/opt/mssql/log/services/00000001-0000-0000-0000-000000000000** ディレクトリの下の `current` という名前のファイルに書き込まれます。 ファイルには、マップされたボリュームまたはデータ ボリューム コンテナーを通して直接アクセスすることも、SQL Edge コンテナーへの対話型のコマンド プロンプト セッションを開始してアクセスすることもできます。 
-
-また、クライアント ツールを使用して SQL Edge インスタンスに接続できる場合は、次の T-SQL コマンドを使用して、現在のストリーミング エンジンのログにアクセスできます。 
-
-```sql
-
-select value as log, try_convert(DATETIME2, substring(value, 0, 26)) as timestamp 
-from 
-    STRING_SPLIT
-    (
-        (
-            select BulkColumn as logs
-            FROM OPENROWSET (BULK '/var/opt/mssql/log/services/00000001-0000-0000-0000-000000000000/current', SINGLE_CLOB) MyFile
-        ),
-        CHAR(10)
-    ) 
-where datalength(value) > 0
-
-```
-
 ### <a name="enabling-verbose-logging"></a>詳細ログ記録の有効化
 
 ストリーミング エンジンの既定のログ レベルで十分な情報が得られない場合は、SQL Edge でストリーミング エンジンのデバッグ ログを有効にすることができます。 デバッグ ログを有効にするには、SQL Edge のデプロイに `RuntimeLogLevel=debug` 環境変数を追加します。 デバッグ ログを有効にした後、問題の再現を試み、ログで関連するメッセージまたは例外を確認します。 
 
+> [!NOTE]
+> 詳細ログ記録オプションは、通常の運用ワークロードではなく、トラブルシューティングにのみ使用してください。 
 
 
 ## <a name="next-steps"></a>次のステップ

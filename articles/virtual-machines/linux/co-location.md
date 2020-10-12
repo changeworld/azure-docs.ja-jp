@@ -1,16 +1,16 @@
 ---
 title: Linux VM を併置する
-description: Azure VM リソースを併置することで待機時間を短縮する方法について説明します。
+description: Linux 用の Azure VM リソースを併置することで待機時間を短縮する方法について説明します。
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: zivr
-ms.openlocfilehash: 000c8c8955314060ae9bdedb96b086a509fb3e96
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6bf01f4da6ce96b413c87b81c14a998603cebd6b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87368644"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279725"
 ---
 # <a name="co-locate-resources-for-improved-latency"></a>リソースの併置による待機時間の短縮
 
