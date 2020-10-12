@@ -5,12 +5,12 @@ author: MalcolmTyrrell
 ms.author: matyrr
 ms.date: 09/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 8acd19408c328ef3f534ba7bc41c96e395f768be
-ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
+ms.openlocfilehash: 13c4b841fe2d0b62472628d9382b5f6ee3d1fa6c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89510892"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318077"
 ---
 # <a name="laying-out-files-for-conversion"></a>変換用のファイルのレイアウト
 
@@ -28,6 +28,10 @@ ms.locfileid: "89510892"
 
 > [!Note]
 > 資産が作成されたときとファイルの相対位置が同じになるように、入力コンテナーにファイルを配置することをお勧めします。
+
+> [!Note]
+> 相対パスが保持される資産を作成することをお勧めします。
+> [3ds Max でのマテリアルの設定](../../tutorials/modeling/3dsmax-material-setup.md)に関するチュートリアルに、資産によって相対パスが必ず使用されるようにする方法の 3ds Max の例が示されています。
 
 ## <a name="finding-textures"></a>テクスチャを見つける
 
@@ -68,4 +72,4 @@ myAsset.fbx が相対パス `..\Textures\MyAssetTextures\myTexture.png` のテ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [モデルの変換](model-conversion.md)
+- [モデル変換](model-conversion.md)
