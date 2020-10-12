@@ -7,16 +7,16 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 4b2d882e6956fa23464e620e9820b0616e13b6f6
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 69ba8d1735d16791d62b6b04e49c0d2fb7484959
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563089"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325795"
 ---
-# <a name="timer-trigger-for-azure-functions"></a>Azure Functions のタイマー トリガー 
+# <a name="timer-trigger-for-azure-functions"></a>Azure Functions のタイマー トリガー
 
-この記事では、Azure Functions でタイマー トリガーを使用する方法について説明します。 タイマー トリガーを使用すると、スケジュールに基づいて関数を実行できます。 
+この記事では、Azure Functions でタイマー トリガーを使用する方法について説明します。 タイマー トリガーを使用すると、スケジュールに基づいて関数を実行できます。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -80,6 +80,21 @@ public static void Run(TimerInfo myTimer, ILogger log)
 }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+次の例の関数は、5 分ごとにトリガーして実行します。 関数の `@TimerTrigger` 注釈では、[CRON 式](https://en.wikipedia.org/wiki/Cron#CRON_expression)と同じ文字列形式を使用してスケジュールが定義されています。
+
+```java
+@FunctionName("keepAlive")
+public void keepAlive(
+  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 */5 * * * *") String timerInfo,
+      ExecutionContext context
+ ) {
+     // timeInfo is a JSON string, you can deserialize it to an object using your favorite JSON library
+     context.getLogger().info("Timer is triggered: " + timerInfo);
+}
+```
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 次の例は、*function.json* ファイルのタイマー トリガー バインドと、そのバインドが使用される [JavaScript 関数](functions-reference-node.md)を示しています。 この関数では、この関数呼び出しがスケジュールのミスの発生によるものかどうかを示すログが書き込まれます。 [タイマー オブジェクト](#usage)が関数に渡されます。
@@ -111,9 +126,44 @@ module.exports = function (context, myTimer) {
 };
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+次の例は、[PowerShell](./functions-reference-powershell.md) でタイマー トリガーについて *function.json* および *run.ps1* ファイルを構成する方法を示しています。
+
+```json
+{
+  "bindings": [
+    {
+      "name": "Timer",
+      "type": "timerTrigger",
+      "direction": "in",
+      "schedule": "0 */5 * * * *"
+    }
+  ]
+}
+```
+
+```powershell
+# Input bindings are passed in via param block.
+param($Timer)
+
+# Get the current universal time in the default string format.
+$currentUTCtime = (Get-Date).ToUniversalTime()
+
+# The 'IsPastDue' property is 'true' when the current function invocation is later than scheduled.
+if ($Timer.IsPastDue) {
+    Write-Host "PowerShell timer is running late!"
+}
+
+# Write an information log with the current time.
+Write-Host "PowerShell timer trigger function ran! TIME: $currentUTCtime"
+```
+
+[タイマー オブジェクト](#usage)のインスタンスが、関数に対して最初の引数として渡されます。
+
 # <a name="python"></a>[Python](#tab/python)
 
-次の例では、構成が *function.json* ファイルに記述されているタイマー トリガー バインディングを使用します。 このバインディングを使用する実際の [Python 関数](functions-reference-python.md)は、*__init__.py* ファイルに記述されています。 関数に渡されるオブジェクトの型は、[azure.functions.TimerRequest オブジェクト](/python/api/azure-functions/azure.functions.timerrequest)です。 関数ロジックでは、現在の呼び出しがスケジュールのミスの発生によるものかどうかを示すログが書き込まれます。 
+次の例では、構成が *function.json* ファイルに記述されているタイマー トリガー バインディングを使用します。 このバインディングを使用する実際の [Python 関数](functions-reference-python.md)は、*__init__.py* ファイルに記述されています。 関数に渡されるオブジェクトの型は、[azure.functions.TimerRequest オブジェクト](/python/api/azure-functions/azure.functions.timerrequest)です。 関数ロジックでは、現在の呼び出しがスケジュールのミスの発生によるものかどうかを示すログが書き込まれます。
 
 *function.json* ファイルのバインディング データを次に示します。
 
@@ -145,21 +195,6 @@ def main(mytimer: func.TimerRequest) -> None:
     logging.info('Python timer trigger function ran at %s', utc_timestamp)
 ```
 
-# <a name="java"></a>[Java](#tab/java)
-
-次の例の関数は、5 分ごとにトリガーして実行します。 関数の `@TimerTrigger` 注釈では、[CRON 式](https://en.wikipedia.org/wiki/Cron#CRON_expression)と同じ文字列形式を使用してスケジュールが定義されています。
-
-```java
-@FunctionName("keepAlive")
-public void keepAlive(
-  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 */5 * * * *") String timerInfo,
-      ExecutionContext context
- ) {
-     // timeInfo is a JSON string, you can deserialize it to an object using your favorite JSON library
-     context.getLogger().info("Timer is triggered: " + timerInfo);
-}
-```
-
 ---
 
 ## <a name="attributes-and-annotations"></a>属性と注釈
@@ -188,14 +223,6 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 
 属性は、C# スクリプトではサポートされていません。
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-属性は、JavaScript ではサポートされていません。
-
-# <a name="python"></a>[Python](#tab/python)
-
-属性は、Python ではサポートされていません。
-
 # <a name="java"></a>[Java](#tab/java)
 
 関数の `@TimerTrigger` 注釈では、[CRON 式](https://en.wikipedia.org/wiki/Cron#CRON_expression)と同じ文字列形式を使用してスケジュールが定義されています。
@@ -210,6 +237,18 @@ public void keepAlive(
      context.getLogger().info("Timer is triggered: " + timerInfo);
 }
 ```
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+属性は、JavaScript ではサポートされていません。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+属性は、PowerShell ではサポートされていません。
+
+# <a name="python"></a>[Python](#tab/python)
+
+属性は、Python ではサポートされていません。
 
 ---
 
@@ -229,7 +268,7 @@ public void keepAlive(
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 > [!CAUTION]
-> 運用環境では、**runOnStartup** を `true` に設定しないことをお勧めします。 この設定を使用すると、まったく予期できないときにコードが実行されます。 特定の運用環境の設定では、これらの追加の実行によって、従量課金プランでホストされるアプリのコストが大幅に高くなる可能性があります。 たとえば、**runOnStartup** を有効にすると、ご利用の関数アプリがスケーリングされるたびに、トリガーが呼び出されます。 **runOnStartup** を運用環境で有効にする前に、ご利用の関数の運用環境での動作を完全に理解していることを確認してください。   
+> 運用環境では、**runOnStartup** を `true` に設定しないことをお勧めします。 この設定を使用すると、まったく予期できないときにコードが実行されます。 特定の運用環境の設定では、これらの追加の実行によって、従量課金プランでホストされるアプリのコストが大幅に高くなる可能性があります。 たとえば、**runOnStartup** を有効にすると、ご利用の関数アプリがスケーリングされるたびに、トリガーが呼び出されます。 **runOnStartup** を運用環境で有効にする前に、ご利用の関数の運用環境での動作を完全に理解していることを確認してください。
 
 ## <a name="usage"></a>使用法
 
@@ -250,8 +289,7 @@ public void keepAlive(
 
 現在の関数の呼び出しがスケジュールより遅い場合、`IsPastDue` プロパティは `true` になります。 たとえば、関数アプリが再起動すると、呼び出しが行われない可能性があります。
 
-
-## <a name="ncrontab-expressions"></a>NCRONTAB 式 
+## <a name="ncrontab-expressions"></a>NCRONTAB 式
 
 Azure Functions では、NCRONTAB 式を解釈するのに [NCronTab](https://github.com/atifaziz/NCrontab) ライブラリが使用されます。 NCRONTAB 式は CRON 式に似ていますが、秒単位の時間精度に使用するために、追加の 6 番目のフィールドが最初に含まれている点が異なります。
 
@@ -300,12 +338,12 @@ CRON 式とは異なり、`TimeSpan` の値は各関数呼び出しの間の時�
 
 `TimeSpan` は文字列として表され、`hh` が 24 未満のときの形式は `hh:mm:ss` です。 最初の 2 つの数字が 24 以上のときの形式は `dd:hh:mm` です。 次に例をいくつか示します。
 
-|例 |トリガーのタイミング  |
-|---------|---------|
-|"01:00:00" | 1 時間ごと        |
-|"00:01:00"|1 分ごと         |
-|"24:00:00" | 1 日ごと        |
-|"1.00:00:00" | 毎日        |
+| 例      | トリガーのタイミング |
+|--------------|----------------|
+| "01:00:00"   | 1 時間ごと     |
+| "00:01:00"   | 1 分ごと   |
+| "24:00:00"   | 1 日ごと  |
+| "1.00:00:00" | 毎日      |
 
 ## <a name="scale-out"></a>スケールアウト
 

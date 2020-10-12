@@ -9,16 +9,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 86b15b0059c2e3466ef65daeb53780798b3882d0
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: c959231826125349ecd6a62afe529248f7ac2eec
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079253"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326798"
 ---
 # <a name="form-recognizer-encryption-of-data-at-rest"></a>Form Recognizer による保存データの暗号化
 
-Azure Form Recognizer では、クラウドに永続化されるときにデータが自動的に暗号化されます。 Azure Form Recognizer の暗号化によってデータは保護され、組織のセキュリティおよびコンプライアンス コミットメントを満たすのに役立ちます。
+Azure Form Recognizer では、クラウドに永続化されるときにデータが自動的に暗号化されます。 Form Recognizer の暗号化によってデータは保護され、組織のセキュリティおよびコンプライアンス コミットメントを満たすのに役立ちます。
 
 [!INCLUDE [cognitive-services-about-encryption](../includes/cognitive-services-about-encryption.md)]
 

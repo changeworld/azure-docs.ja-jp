@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: a9d0fa9efaa07582212344e617d9a42f264b99ee
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 7937b412b1eb3f311f0212f19c4eb9fc7782459d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337797"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327733"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 アクション グループは、Azure サブスクリプションの所有者によって定義された通知設定のコレクションです。 Azure Monitor および Service Health のアラートでは、アクション グループを使用して、アラートがトリガーされたことをユーザーに通知します。 ユーザーの要件に応じて、さまざまなアラートで同じアクション グループを使用することも、異なるアクション グループを使用することもあります。 1 つのサブスクリプションで最大 2,000 のアクション グループを構成できます。
@@ -130,6 +130,8 @@ Runbook ペイロードの制限については、[Azure サブスクリプシ�
 
 ### <a name="email-azure-resource-manager-role"></a>電子メールの Azure Resource Manager のロール
 サブスクリプションのロールのメンバーに電子メールを送信します。 電子メールはこのロールの **Azure AD ユーザー** メンバーにのみ送信されます。 Azure AD グループまたはサービス プリンシパルに電子メールが送信されることはありません。
+
+通知電子メールは、*標準の電子メール* アドレスにのみ送信されます。
 
 アクション グループには、電子メールに関する限られた数のアクションを持つことができます。 [レート制限情報](./alerts-rate-limiting.md)の記事を参照してください。
 

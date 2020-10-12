@@ -1,14 +1,14 @@
 ---
 title: Azure Blueprint の概要
 description: Azure Blueprints サービスによって Azure 環境でのアーティファクトの作成、定義、デプロイがどのように実現されるかについて理解します。
-ms.date: 08/27/2020
+ms.date: 09/30/2020
 ms.topic: overview
-ms.openlocfilehash: 499f2c4afa55913b6af714d20ec1d52e2ecbbc47
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: f2e3c23c9cb83d2cb58b1e8f69a2a470a6f36f6d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541766"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91614259"
 ---
 # <a name="what-is-azure-blueprints"></a>Azure Blueprint とは
 
@@ -45,7 +45,7 @@ ARM テンプレートとブループリントのどちらかを選ぶ必要は�
 
 ## <a name="blueprint-definition"></a>ブループリント定義
 
-ブループリントは _アーティファクト_ から成ります。 Azure Blueprints は、現在、次のリソースをアーティファクトとしてサポートしています。
+ブループリントは "_アーティファクト_" で構成されます。 Azure Blueprints は、現在、次のリソースをアーティファクトとしてサポートしています。
 
 |リソース  | 階層のオプション| 説明  |
 |---------|---------|---------|
@@ -74,7 +74,10 @@ ARM テンプレートとブループリントのどちらかを選ぶ必要は�
 
 ## <a name="blueprint-assignment"></a>ブループリント割り当て
 
-ブループリントの個々の**発行済み** **バージョン**を既存のサブスクリプションに割り当てることができます (名前の最大長は 90 文字)。 ポータルにおいて、ブループリントの既定の**バージョン**は、直近の**発行済み**になったバージョンになります。 アーティファクトのパラメーター (またはブループリントのパラメーター) がある場合、パラメーターは割り当て処理時に定義されます。
+ブループリントの個々の**発行済み** **バージョン**を既存の管理グループまたはサブスクリプションに割り当てることができます (名前の最大長は 90 文字)。 ポータルにおいて、ブループリントの既定の**バージョン**は、直近の**発行済み**になったバージョンになります。 アーティファクトのパラメーターまたはブループリントのパラメーターがある場合、そのパラメーターは割り当て処理時に定義されます。
+
+> [!NOTE]
+> ブループリント定義を管理グループに割り当てると、割り当てオブジェクトが管理グループに存在することになります。 アーティファクトの配置は、現在もサブスクリプションを対象としています。 管理グループへの割り当てを実行するには、[作成または更新 REST API](/rest/api/blueprints/assignments/createorupdate) を使用する必要があり、要求本文には、ターゲット サブスクリプションを定義する `properties.scope` の値が含まれている必要があります。
 
 ## <a name="permissions-in-azure-blueprints"></a>Azure Blueprints におけるアクセス許可
 

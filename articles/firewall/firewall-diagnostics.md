@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 09/02/2020
+ms.date: 09/17/2020
 ms.author: victorh
-ms.openlocfilehash: 92fc4252dd52236e2cc4e8fdfdd2afa32059a721
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 784459282007edab599d54edff0d2b38eed07b34
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376946"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320644"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>Azure Firewall のログとメトリックを監視する
 
@@ -35,14 +35,17 @@ Azure Firewall を監視するには、ファイアウォール ログを使用�
 1. Azure portal で、ファイアウォール リソース グループを開き、ファイアウォールを選択します。
 2. **[監視]** で **[診断設定]** を選択します。
 
-   Azure Firewall の場合、サービスに固有の 2 種類のログを使用できます。
+   Azure Firewall の場合、サービスに固有の 4 種類のログを使用できます。
 
    * AzureFirewallApplicationRule
    * AzureFirewallNetworkRule
+   * AzureFirewallThreatIntelLog
+   * AzureFirewallDnsProxy
+
 
 3. **[診断設定の追加]** を選択します。 **[診断設定]** ページに、診断ログの設定が表示されます。
 5. この例では、Azure Monitor ログにログを保存するため、名前として「**Firewall log analytics**」と入力します。
-6. アプリケーション ルールとネットワーク ルールのログを収集するために、 **[ログ]** で **[AzureFirewallApplicationRule]** と **[AzureFirewallNetworkRule]** を選択します。
+6. **[ログ]** の下で、 **[AzureFirewallApplicationRule]** 、 **[AzureFirewallNetworkRule]** 、 **[AzureFirewallThreatIntelLog]** 、および **[AzureFirewallDnsProxy]** を選択してログを収集します。
 7. **[Log Analytics への送信]** を選択してワークスペースを構成します。
 8. サブスクリプションを選択します。
 9. **[保存]** を選択します。

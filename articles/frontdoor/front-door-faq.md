@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/13/2020
+ms.date: 09/18/2020
 ms.author: duau
-ms.openlocfilehash: 995b8ab77779f0d3b9e2260ea18aa13aa242db36
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 0d669d4232adca3348b51c2a48947e0dabf0a472
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399737"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324061"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure Front Door についてよく寄せられる質問
 
@@ -100,6 +100,31 @@ Front Door のルートには順序はなく、特定のルートは最適な一
 
 -    API バージョン `2020-01-01` 以降を使用して、Front Door で GET 操作を実行します。 API 呼び出しで、`frontdoorID` フィールドを探します。 Front Door からバックエンドに送信された受信ヘッダー "**X-Azure-FDID**" を、フィールド `frontdoorID` の値でフィルター処理します。 `Front Door ID` の値は、Front Door ポータル ページの [概要] セクションでも確認できます。 
 
+- バックエンド Web サーバーでルール フィルターを適用して、結果の "X-Azure-FDID" ヘッダー値に基づいてトラフィックを制限します。
+
+  [Microsoft インターネット インフォメーション サービス (IIS)](https://www.iis.net/) の例を次に示します。
+
+    ``` xml
+    <?xml version="1.0" encoding="UTF-8"?>
+    <configuration>
+        <system.webServer>
+            <rewrite>
+                <rules>
+                    <rule name="Filter_X-Azure-FDID" patternSyntax="Wildcard" stopProcessing="true">
+                        <match url="*" />
+                        <conditions>
+                            <add input="{HTTP_X_AZURE_FDID}" pattern="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" negate="true" />
+                        </conditions>
+                        <action type="AbortRequest" />
+                    </rule>
+                </rules>
+            </rewrite>
+        </system.webServer>
+    </configuration>
+    ```
+
+
+
 ### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>エニーキャスト IP は、Front Door の有効期間を通じて変更できますか?
 
 Front Door のフロントエンド エニーキャスト IP は、通常は変更すべきでなく、Front Door の有効期間を通じて静的のままにしておくことができます。 ただし、同じであることの**保証はありません**。 IP アドレスへの直接的な依存関係は存在しないようにしてください。
@@ -132,6 +157,10 @@ Azure Front Door (AFD) には、トラフィックをルーティングするた
 ### <a name="what-are-the-various-timeouts-and-limits-for-azure-front-door"></a>Azure Front Door でのさまざまなタイムアウトおよび制限とは何ですか?
 
 [Azure Front Door のさまざまなタイムアウトおよび制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-front-door-service-limits)についてのすべてのドキュメントを参照してください。
+
+### <a name="how-long-does-it-take-for-a-rule-to-take-effect-after-being-added-to-the-front-door-rules-engine"></a>Front Door ルール エンジンに追加された後、ルールが有効になるまでにどれくらいの時間がかかりますか?
+
+ルール エンジンの構成は、更新が完了するまでに約 10 分から 15 分かかります。 更新が完了するとすぐにルールが有効になります。 
 
 ## <a name="performance"></a>パフォーマンス
 

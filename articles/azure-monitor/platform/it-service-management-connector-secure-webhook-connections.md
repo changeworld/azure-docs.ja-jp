@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 39f277fffbb9a76a4be4bfa8aaedeaf3479a989f
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 9b6180f2480d8a92dc0ebdd2cad474a9eef3cbe4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068885"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328855"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>セキュア エクスポートを使用して Azure を ITSM ツールに接続する
 
@@ -112,11 +112,13 @@ BMC Helix 環境で次の手順を使用します。
 次の前提条件が満たされていることを確認します。
 
 * Azure AD が登録されている。
-* サポートされているバージョンの BMC Helix Multi-Cloud Service Management (バージョン 20.02 以降) がある。
+* サポートされているバージョンの BMC Helix Multi-Cloud Service Management (バージョン 19.08 以降) がある。
 
 ### <a name="configure-the-bmc-helix-connection"></a>BMC Helix の接続を構成する
 
-1. 「[Azure Monitor バージョン 20.02 との事前構築済み統合の有効化](https://docs.bmc.com/docs/multicloud/enabling-prebuilt-integration-with-azure-monitor-879728195.html)」の手順に従います。
+1. バージョンに応じた手順に従ってください。
+   * [Azure Monitor バージョン 20.02 との事前構築済み統合の有効化](https://docs.bmc.com/docs/multicloud/enabling-prebuilt-integration-with-azure-monitor-879728195.html)。
+   * [Azure Monitor バージョン 19.11 との事前構築済み統合の有効化](https://docs.bmc.com/docs/multicloudprevious/enabling-prebuilt-integration-with-azure-monitor-904157623.html)。
 
 1. BMC Helix での接続の構成の一部として、統合 BMC インスタンスにアクセスし、次の手順に従います。
 
@@ -138,4 +140,4 @@ BMC Helix 環境で次の手順を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure アラートから ITSM 作業項目を作成する](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts)
+* [Azure アラートから ITSM 作業項目を作成する](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview)

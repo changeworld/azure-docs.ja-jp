@@ -16,12 +16,12 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0852171544f179315535d234f5a2680d918e7d85
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 6a68d7574d16485c378f6066a652471d52fa0c30
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084840"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319981"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect 同期: フィルター処理の構成
 フィルター処理を使用することによって、オンプレミスのディレクトリからどのオブジェクトを Azure Active Directory (Azure AD) に反映するかを制御できます。 既定の構成では、構成されているフォレスト内の全ドメインの全オブジェクトが対象となります。 通常は、この構成を推奨します。 Microsoft 365 のワークロード (Exchange Online、Skype for Business など) を使っているユーザーには、完全なグローバル アドレス一覧を表示した方が、電子メールの送信先や電話の相手を探すうえで便利です。 既定では、オンプレミス環境の Exchange または Lync と同じ利便性が得られるように構成されています。
@@ -113,7 +113,7 @@ November 2015 ([1.0.9125](reference-connect-version-history.md)) より前のビ
    ![コネクタのプロパティ](./media/how-to-connect-sync-configure-filtering/connectorproperties.png)  
 4. **[ディレクトリ パーティションの構成]** をクリックします。
 5. **[ディレクトリ パーティションの選択]** の一覧で、必要に応じてドメインを選択 (または選択を解除) します。 同期するパーティションのみが選択されていることを確認します。  
-   ![パーティション](./media/how-to-connect-sync-configure-filtering/connectorpartitions.png)  
+   ![[プロパティ] ウィンドウのディレクトリ パーティションを示すスクリーンショット。](./media/how-to-connect-sync-configure-filtering/connectorpartitions.png)  
    オンプレミスの Active Directory インフラストラクチャに変更を加え、フォレストのドメインを追加または削除した場合は、 **[更新]** ボタンをクリックして一覧を最新の情報に更新します。 最新の情報に更新しようとすると資格情報を求められます。 Windows Server Active Directory に対する読み取りアクセス権を持った資格情報を指定します。 ダイアログ ボックスにあらかじめ設定されているユーザーでなくてもかまいません。  
    ![更新が必要](./media/how-to-connect-sync-configure-filtering/refreshneeded.png)  
 6. 完了したら、 **[OK]** をクリックして **[プロパティ]** ダイアログを閉じます。 フォレストからドメインを削除した場合、ドメインが削除されたことを示すメッセージが表示され、その構成がクリーンアップされます。

@@ -7,12 +7,12 @@ author: hedidin
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 1bb6e28c9dcae01f3233178706d2a24156fa509a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fdf5f25ae6f89ccc06c95ee1be021691dab0047a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76902705"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322429"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>シナリオ: ロジックアプリの例外処理とエラーのログ記録
 
@@ -103,15 +103,15 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
 
    **ログ エントリの挿入**
 
-   ![Insert Log Entry](media/logic-apps-scenario-error-and-exception-handling/lognewpatient.png)
+   ![InsertLogEntry の構成設定を示す、ロジック アプリ デザイナーのスクリーンショット。](media/logic-apps-scenario-error-and-exception-handling/lognewpatient.png)
 
    **エラー エントリの挿入**
 
-   ![Insert Log Entry](media/logic-apps-scenario-error-and-exception-handling/insertlogentry.png)
+   ![CreateErrorRecord の構成設定を示す、ロジック アプリ デザイナーのスクリーンショット。](media/logic-apps-scenario-error-and-exception-handling/insertlogentry.png)
 
    **レコード作成エラーのチェック**
 
-   ![条件](media/logic-apps-scenario-error-and-exception-handling/condition.png)
+   ![エラー エントリを作成するためのフィールドを示すロジック アプリ デザイナーの [CreateErrorRecord] 画面のスクリーンショット。](media/logic-apps-scenario-error-and-exception-handling/condition.png)
 
 ## <a name="logic-app-source-code"></a>ロジック アプリのソース コード
 

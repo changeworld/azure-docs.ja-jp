@@ -3,18 +3,20 @@ title: バックアップ センターを使用してバックアップ資産を
 description: バックアップ センターを使用して、バックアップの観点からすべてのリソースが準拠していることを確認するために Azure 環境を管理する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 009ee461b0372a3fb73ffb3b0ee5151b77bd8ef8
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8a16769be827bf34e5be82409d5b8eb014cdcf1a
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90993445"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614337"
 ---
 # <a name="govern-your-backup-estate-using-backup-center"></a>バックアップ センターを使用してバックアップ資産を管理する
 
 バックアップ センターは、バックアップの観点からすべてのリソースが準拠していることを確認するために Azure 環境を管理するのに役立ちます。 バックアップ センターのガバナンス機能のいくつかを次に示します。
 
 * バックアップ用の Azure ポリシーの表示と割り当て
+
+* バックアップ用のすべての組み込み Azure ポリシーに関するリソースのコンプライアンスを表示します。
 
 * バックアップ用に構成されていないすべてのデータソースの表示。
 
@@ -29,6 +31,12 @@ ms.locfileid: "90993445"
 いずれかの定義を選択すると、スコープに[ポリシーを割り当てる](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage#assign-a-policy)ことができます。
 
 ![Azure ポリシー定義を選択する](./media/backup-center-govern-environment/azure-policy-definitions.png)
+
+## <a name="backup-compliance"></a>バックアップ コンプライアンス
+
+[バックアップ コンプライアンス] メニュー項目をクリックすると、Azure 環境に割り当てたさまざまな組み込みのポリシーに従って、リソースの[コンプライアンス](https://docs.microsoft.com/azure/governance/policy/how-to/get-compliance-data)を表示できます。 すべてのポリシーに準拠しているリソースの割合、および 1 つ以上の非対応リソースを持つポリシーを表示できます。
+
+![バックアップ コンプライアンスの表示](./media/backup-center-govern-environment/azure-policy-compliance.png)
 
 ## <a name="protectable-datasources"></a>保護可能なデータソース
 
