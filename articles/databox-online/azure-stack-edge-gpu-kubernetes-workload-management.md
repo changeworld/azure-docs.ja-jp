@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: f64f9b612ff47fb5c0b6e6202ad87f7660959100
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d9e0da9e24a0bd32047d029879c4f0e110dc0c16
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899179"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320797"
 ---
 # <a name="kubernetes-workload-management-on-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイスでの Kubernetes ワークロード管理
 
@@ -29,7 +29,7 @@ Azure Stack Edge Pro デバイスにデプロイできる 2 つの一般的な�
 
     Kubernetes デプロイを作成して、クラスターにステートレス アプリケーションをデプロイできます。 
 
-- **ステートフル アプリケーション**では、その状態を保存する必要があります。 ステートフル アプリケーションでは、永続ボリュームなどの永続ストレージを使用して、サーバーまたは他のユーザーが使用するデータが保存されます。 ステートフル アプリケーションの例には、MongoDB などのデータベースが含まれます。
+- **ステートフル アプリケーション**では、その状態を保存する必要があります。 ステートフル アプリケーションでは、永続ボリュームなどの永続ストレージを使用して、サーバーまたは他のユーザーが使用するデータが保存されます。 ステートフル アプリケーションの例には、[Azure SQL Edge](../azure-sql-edge/overview.md) や MongoDB などのデータベースが含まれます。
 
     Kubernetes デプロイを作成して、ステートフル アプリケーションをデプロイできます。 
 
