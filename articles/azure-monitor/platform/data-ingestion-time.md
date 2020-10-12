@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 99d5594dd3ebe3750cb0a09ea803065e2aeb5ba2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ced838d05ef9d8ca9f6c724d88fabdad010ed727
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77666639"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403553"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure Monitor でのログ データ インジェスト時間
 Azure Monitor とは、毎月増加するテラバイト単位のデータを送信する何千もの顧客にサービスを提供する高スケールのデータ サービスです。 ログ データが収集されてから、そのデータが使用可能になるまでにかかる時間について、よく質問されることがあります。 この記事では、この待機時間に影響するさまざまな要因について説明します。
@@ -51,7 +51,7 @@ Azure データが Log Analytics のインジェスト ポイントで使用可�
 ### <a name="management-solutions-collection"></a>管理ソリューションのコレクション
 一部のソリューションでは、エージェントからデータを収集せず、さらに待機時間がかかるコレクション メソッドを使用する場合があります。 一部のソリューションでは、ほぼリアルタイムでの収集を試みることなく、一定の間隔でデータを収集します。 具体的な例を次に示します。
 
-- Office 365 ソリューションでは、Office 365 Management Activity API (現在はほぼリアルタイムの待機時間を保証していません) を使用して、アクティビティ ログがポーリングされます。
+- Microsoft 365 ソリューションを使用すると、Management Activity API (現在はほぼリアルタイムの待機時間を保証していません) を使用して、アクティビティ ログがポーリングされます。
 - Windows Analytics ソリューション (Update Compliance など) のデータは、毎日の頻度でソリューションによって収集されます。
 
 各ソリューションのコレクションの頻度を判断するには、そのドキュメントを参照してください。
