@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/14/2020
 tags: connectors
-ms.openlocfilehash: 5f6328144760b3c55c55fbef13917359fa9e1a62
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: f005bdfa5643ea187fb2973cac065563c4cc2ee6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526750"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292457"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Azure Logic Apps から HTTP または HTTPS でサービス エンドポイントを呼び出す
 
@@ -247,7 +247,7 @@ HTTP 要求には[タイムアウト制限](../logic-apps/logic-apps-limits-and-
 
 HTTP トリガーまたはアクションにこれらのヘッダーが含まれている場合、Logic Apps は警告やエラーを表示することなく、生成された要求メッセージからこれらのヘッダーを削除します。
 
-* `Accept-*`
+* `Accept-*` ヘッダー (`Accept-version` を除く)
 * `Allow`
 * `Content-*` (`Content-Disposition`、`Content-Encoding`、および `Content-Type` は例外です)
 * `Cookie`
