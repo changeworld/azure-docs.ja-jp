@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 09/08/2020
-ms.openlocfilehash: 75c434b5c1927251940a691a16069425b4cc88a3
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.date: 09/19/2020
+ms.openlocfilehash: 8023f3d7730a617ec502c8f181bad1fc27627694
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500404"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269167"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps におけるアクセスとデータのセキュリティ保護
 
@@ -75,6 +75,8 @@ Azure でのセキュリティの詳細については、次のトピックを�
 | `sig` | トリガーへのアクセスの認証に使用する署名を指定します。 この署名は、SHA256 アルゴリズムとシークレット アクセス キーを使用してすべての URL パスとプロパティで生成されます。 このキーは決して公開されることはなく、暗号化された状態でロジック アプリと共に格納されます。 お客様のロジック アプリでは、秘密鍵を使用して作成された有効な署名を含むそれらのトリガーのみが承認されます。 |
 |||
 
+要求エンドポイントへの受信呼び出しでは、SAS または [Azure Active Directory Open Authentication](#enable-oauth) のいずれか 1 つの承認スキームのみを使用できます。 1 つのスキームを使用しても他方のスキームは無効にされませんが、両方のスキームを同時に使用すると、どちらのスキームを選択するかサービスでは不明なため、エラーが発生します。
+
 SAS によるアクセスのセキュリティ保護の詳細については、このトピック内の次の各セクションを参照してください。
 
 * [アクセス キーを再生成する](#access-keys)
@@ -121,62 +123,62 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 ### <a name="enable-azure-active-directory-open-authentication-azure-ad-oauth"></a>Azure Active Directory Open Authentication の有効化 (Azure AD OAuth)
 
-[Request トリガー](../connectors/connectors-native-reqres.md)で開始されるロジック アプリの場合は、Request トリガーへの受信呼び出しの認可ポリシーを定義または追加することによって、[Azure Active Directory Open Authentication](../active-directory/develop/index.yml) (Azure AD OAuth) を有効にすることができます。
+要求ベースのトリガーによって作成されたエンドポイントへの受信呼び出しの場合、ロジック アプリのために承認ポリシーを定義または追加することによって、[Azure Active Directory Open Authentication (Azure AD OAuth)](../active-directory/develop/index.yml) を有効にできます。 このように、受信呼び出しでは、承認のために OAuth [アクセス トークン](../active-directory/develop/access-tokens.md)を使用します。
 
-この認証を有効にする前に、次の考慮事項を確認してください。
+ロジック アプリが OAuth アクセス トークンを含む受信要求を受信すると、Azure Logic Apps サービスによって、トークンのクレームが、各承認ポリシーによって指定されたクレームと比較されます。 トークンのクレームと、少なくとも 1 つのポリシーに含まれるすべてのクレームが一致した場合、受信要求に対して承認が成功します。 トークンは、承認ポリシーで指定された数よりも多くのクレームを持つことができます。
 
-* Request トリガーへの受信呼び出しでは、Azure AD OAuth で、Request トリガーでのみサポートされている認証トークンを使用したものか、[Shared Access Signature (SAS) URL](#sas) を使用したもののうちいずれか 1 つの認証スキームのみを使用できます。両方のスキームを使用することはできません。
+Azure AD OAuth を有効にする前に、以下の考慮事項について再検討してください。
 
-  一方のスキームを使用してももう一方は無効になりませんが、両方を同時に使用すると、どちらのスキームを選択するかサービスで判断できないため、エラーが発生します。 また、OAuth 認証トークンに対しては[ベアラー型](../active-directory/develop/active-directory-v2-protocols.md#tokens)の承認スキームのみがサポートされ、これは Request トリガーに対してのみサポートされます。 認証トークンには、Authorization ヘッダーで `Bearer-type` を指定する必要があります。
+* 要求エンドポイントへの受信呼び出しでは、Azure AD OAuth または [Shared Access Signature (SAS)](#sas) のいずれか 1 つの承認スキームのみを使用できます。 1 つのスキームを使用しても他方のスキームは無効にされませんが、両方のスキームを同時に使用すると、どちらのスキームを選択するか Logic Apps サービスでは不明なため、エラーが発生します。
+
+* Azure AD OAuth アクセス トークンでサポートされるのは、[ベアラー型](../active-directory/develop/active-directory-v2-protocols.md#tokens)の承認スキームのみです。つまり、アクセス トークンの `Authorization` ヘッダーでは、`Bearer` 型を指定する必要があります。
 
 * ロジック アプリは、承認ポリシーの最大数に制限されている必要があります。 各承認ポリシーには、[クレーム](../active-directory/develop/developer-glossary.md#claim)の最大数もあります。 詳細については、[Azure Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md#authentication-limits)に関するページを参照してください。
 
-* 承認ポリシーには、少なくとも**発行者**要求が含まれている必要があり、その Azure AD 発行者 ID の値は `https://sts.windows.net/` または `https://login.microsoftonline.com/` (OAuth V2) で始まっています。 アクセス トークンの詳細については、「[Microsoft ID プラットフォーム アクセス トークン](../active-directory/develop/access-tokens.md)」を参照してください。
+* 承認ポリシーには、少なくとも**発行者**要求が含まれている必要があり、その Azure AD 発行者 ID の値は、`https://sts.windows.net/` または `https://login.microsoftonline.com/` (OAuth V2) のいずれかで始まります。
 
-ロジック アプリが OAuth 認証トークンを含む受信要求を受信すると、Azure Logic Apps によって、トークンのクレームが各承認ポリシーのクレームと比較されます。 トークンのクレームと、少なくとも 1 つのポリシーに含まれるすべてのクレームが一致した場合、受信要求に対して承認が成功します。 トークンは、承認ポリシーで指定された数よりも多くのクレームを持つことができます。
+  たとえば、ロジック アプリに、**対象ユーザー**と**発行者**という 2 つのクレームの種類が必要な承認ポリシーがあるとします。 デコードされたアクセス トークンの、このサンプルの[ペイロード セクション](../active-directory/develop/access-tokens.md#payload-claims)には、両方のクレームの種類が含まれています。`aud` は**対象ユーザー**の値で、`iss` は**発行者**の値です。
 
-たとえば、ロジック アプリに、**発行者**と**対象ユーザー**という 2 つのクレームの種類が必要な認可ポリシーがあるとします。 このサンプルでデコードした[アクセス トークン](../active-directory/develop/access-tokens.md)には、次の両方のクレームの種類が含まれています。
-
-```json
-{
-   "aud": "https://management.core.windows.net/",
-   "iss": "https://sts.windows.net/<Azure-AD-issuer-ID>/",
-   "iat": 1582056988,
-   "nbf": 1582056988,
-   "exp": 1582060888,
-   "_claim_names": {
-      "groups": "src1"
-   },
-   "_claim_sources": {
-      "src1": {
-         "endpoint": "https://graph.windows.net/7200000-86f1-41af-91ab-2d7cd011db47/users/00000-f433-403e-b3aa-7d8406464625d7/getMemberObjects"
-    }
-   },
-   "acr": "1",
-   "aio": "AVQAq/8OAAAA7k1O1C2fRfeG604U9e6EzYcy52wb65Cx2OkaHIqDOkuyyr0IBa/YuaImaydaf/twVaeW/etbzzlKFNI4Q=",
-   "amr": [
-      "rsa",
-      "mfa"
-   ],
-   "appid": "c44b4083-3bb0-00001-b47d-97400853cbdf3c",
-   "appidacr": "2",
-   "deviceid": "bfk817a1-3d981-4dddf82-8ade-2bddd2f5f8172ab",
-   "family_name": "Sophia Owen",
-   "given_name": "Sophia Owen (Fabrikam)",
-   "ipaddr": "167.220.2.46",
-   "name": "sophiaowen",
-   "oid": "3d5053d9-f433-00000e-b3aa-7d84041625d7",
-   "onprem_sid": "S-1-5-21-2497521184-1604012920-1887927527-21913475",
-   "puid": "1003000000098FE48CE",
-   "scp": "user_impersonation",
-   "sub": "KGlhIodTx3XCVIWjJarRfJbsLX9JcdYYWDPkufGVij7_7k",
-   "tid": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-   "unique_name": "SophiaOwen@fabrikam.com",
-   "upn": "SophiaOwen@fabrikam.com",
-   "uti": "TPJ7nNNMMZkOSx6_uVczUAA",
-   "ver": "1.0"
-}
-```
+  ```json
+  {
+      "aud": "https://management.core.windows.net/",
+      "iss": "https://sts.windows.net/<Azure-AD-issuer-ID>/",
+      "iat": 1582056988,
+      "nbf": 1582056988,
+      "exp": 1582060888,
+      "_claim_names": {
+         "groups": "src1"
+      },
+      "_claim_sources": {
+         "src1": {
+            "endpoint": "https://graph.windows.net/7200000-86f1-41af-91ab-2d7cd011db47/users/00000-f433-403e-b3aa-7d8406464625d7/getMemberObjects"
+         }
+      },
+      "acr": "1",
+      "aio": "AVQAq/8OAAAA7k1O1C2fRfeG604U9e6EzYcy52wb65Cx2OkaHIqDOkuyyr0IBa/YuaImaydaf/twVaeW/etbzzlKFNI4Q=",
+      "amr": [
+         "rsa",
+         "mfa"
+      ],
+      "appid": "c44b4083-3bb0-00001-b47d-97400853cbdf3c",
+      "appidacr": "2",
+      "deviceid": "bfk817a1-3d981-4dddf82-8ade-2bddd2f5f8172ab",
+      "family_name": "Sophia Owen",
+      "given_name": "Sophia Owen (Fabrikam)",
+      "ipaddr": "167.220.2.46",
+      "name": "sophiaowen",
+      "oid": "3d5053d9-f433-00000e-b3aa-7d84041625d7",
+      "onprem_sid": "S-1-5-21-2497521184-1604012920-1887927527-21913475",
+      "puid": "1003000000098FE48CE",
+      "scp": "user_impersonation",
+      "sub": "KGlhIodTx3XCVIWjJarRfJbsLX9JcdYYWDPkufGVij7_7k",
+      "tid": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+      "unique_name": "SophiaOwen@fabrikam.com",
+      "upn": "SophiaOwen@fabrikam.com",
+      "uti": "TPJ7nNNMMZkOSx6_uVczUAA",
+      "ver": "1.0"
+   }
+   ```
 
 <a name="define-authorization-policy-portal"></a>
 
@@ -190,14 +192,14 @@ Azure portal でロジック アプリの Azure AD OAuth を有効にするに�
 
    ![[承認] > [ポリシーの追加] の順に選択します。](./media/logic-apps-securing-a-logic-app/add-azure-active-directory-authorization-policies.png)
 
-1. Request トリガーへの各受信呼び出しで示される認証トークンでロジックアプリが期待する[クレームの種類](../active-directory/develop/developer-glossary.md#claim)と値を指定して、承認ポリシーに関する情報を提供します。
+1. 承認ポリシーに関する情報は、ロジック アプリが、Request トリガーへの各受信呼び出しによって示されるアクセス トークンで必要とする[クレームの種類](../active-directory/develop/developer-glossary.md#claim)と値を指定することで提供します。
 
    ![承認ポリシーに関する情報を指定する](./media/logic-apps-securing-a-logic-app/set-up-authorization-policy.png)
 
    | プロパティ | 必須 | 説明 |
    |----------|----------|-------------|
    | **ポリシー名** | はい | 承認ポリシーに使用する名前 |
-   | **請求** | はい | ロジック アプリが受信呼び出しで指定できるクレームの種類と値。 使用可能なクレームの種類は次のとおりです。 <p><p>- **発行者** <br>- **対象ユーザー** <br>- **件名** <br>- **JWT ID** (JSON Web Token ID) <p><p>**要求**の一覧には、少なくとも**発行者**の要求が含まれている必要があります。その値は、Azure AD 発行者 ID として `https://sts.windows.net/` または `https://login.microsoftonline.com/` で始まっています。 これらのクレームの種類の詳細については、「[Azure AD のセキュリティ トークンの要求](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)」を参照してください。 独自のクレームの種類と値を指定することもできます。 |
+   | **請求** | はい | ロジック アプリが受信呼び出しで指定できるクレームの種類と値。 使用可能なクレームの種類は次のとおりです。 <p><p>- **発行者** <br>- **対象ユーザー** <br>- **件名** <br>- **JWT ID** (JSON Web Token ID) <p><p>**クレーム**の一覧には、少なくとも**発行者**のクレームが含まれている必要があります。その値は、Azure AD 発行者 ID として、`https://sts.windows.net/` または `https://login.microsoftonline.com/` で始まっています。 これらのクレームの種類の詳細については、「[Azure AD のセキュリティ トークンの要求](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)」を参照してください。 独自のクレームの種類と値を指定することもできます。 |
    |||
 
 1. 別のクレームを追加するには、次のオプションから選択します。
@@ -210,14 +212,27 @@ Azure portal でロジック アプリの Azure AD OAuth を有効にするに�
 
 1. 終了したら、 **[保存]** を選択します。
 
+1. 要求ベースのトリガー出力にアクセス トークンの `Authorization` ヘッダーを含めるには、「[要求トリガーの出力に "Authorization" ヘッダーを含める](#include-auth-header)」を参照してください。
+
 <a name="define-authorization-policy-template"></a>
 
 #### <a name="define-authorization-policy-in-azure-resource-manager-template"></a>Azure Resource Manager テンプレートで認可ポリシーを定義する
 
-ロジック アプリをデプロイするために ARM テンプレートで OAuth Azure AD を有効にするには、[ロジック アプリのリソース定義](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition)の `properties` セクションで、`triggers` オブジェクトを含む `accessControl` オブジェクトを追加します (存在しない場合)。 `triggers` オブジェクトで、次の構文に従って 1 つ以上の認可ポリシーを定義する `openAuthenticationPolicies` オブジェクトを追加します。
+ロジック アプリをデプロイするための ARM テンプレートで Azure AD OAuth を有効にするには、以下に示す手順と構文に従います。
 
-> [!NOTE]
-> `claims` 配列には、少なくとも、Azure AD 発行者 ID として `https://sts.windows.net/` または `https://login.microsoftonline.com/` で始まる値が使用された `iss` クレームが含まれている必要があります。 これらのクレームの種類の詳細については、「[Azure AD のセキュリティ トークンの要求](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)」を参照してください。 独自のクレームの種類と値を指定することもできます。
+1. [ロジック アプリのリソース定義](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition)の `properties` セクションで、`triggers` オブジェクトを含む `accessControl` オブジェクトを追加します (1 つもない場合)。
+
+   `accessControl` オブジェクトの詳細については、「[Azure Resource Manager テンプレートで受信 IP 範囲を制限する](#restrict-inbound-ip-template)」と「[Microsoft.Logic ワークフロー テンプレート リファレンス」](/azure/templates/microsoft.logic/2019-05-01/workflows)を参照してください。
+
+1. `triggers` オブジェクトで、`policies` オブジェクトを含む `openAuthenticationPolicies` オブジェクトを追加し、そこで 1 つ以上の承認ポリシーを定義します。
+
+1. 承認ポリシーの名前を指定し、ポリシーの種類を `AAD` に設定して、クレームの種類を 1 つ以上指定する `claims` 配列を含めます。
+
+   少なくとも、`claims` 配列には、発行者のクレームの種類を含める必要があります。そこで、クレームの `name` プロパティを `iss` に設定し、Azure AD 発行者 ID としての `value` が、`https://sts.windows.net/` または `https://login.microsoftonline.com/` で始まるように設定します。 これらのクレームの種類の詳細については、「[Azure AD のセキュリティ トークンの要求](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)」を参照してください。 独自のクレームの種類と値を指定することもできます。
+
+1. 要求ベースのトリガー出力にアクセス トークンの `Authorization` ヘッダーを含めるには、「[要求トリガーの出力に "Authorization" ヘッダーを含める](#include-auth-header)」を参照してください。
+
+従う構文は次のとおりです。
 
 ```json
 "resources": [
@@ -256,7 +271,30 @@ Azure portal でロジック アプリの Azure AD OAuth を有効にするに�
 ],
 ```
 
-`accessControl` セクションの詳細については、「[Azure Resource Manager テンプレートで受信 IP 範囲を制限する](#restrict-inbound-ip-template)」と [Microsoft.Logic ワークフロー テンプレートのリファレンス](/azure/templates/microsoft.logic/2019-05-01/workflows)に関する記事を参照してください。
+<a name="include-auth-header"></a>
+
+#### <a name="include-authorization-header-in-request-trigger-outputs"></a>要求トリガーの出力に "Authorization" ヘッダーを含める
+
+要求ベースのトリガーにアクセスする受信呼び出しを承認するために、[Azure Active Directory Open Authentication (Azure AD OAuth) を有効にする](#enable-oauth)ロジック アプリの場合、Request トリガーまたは HTTP Webhook トリガーの出力を有効にして、OAuth アクセス トークンの `Authorization` ヘッダーを含めることができます。 トリガーの基になる JSON 定義で、`operationOptions` プロパティを追加して `IncludeAuthorizationHeadersInOutputs` に設定します。 Request トリガーの例を次に示します。
+
+```json
+"triggers": {
+   "manual": {
+      "inputs": {
+         "schema": {}
+      },
+      "kind": "Http",
+      "type": "Request",
+      "operationOptions": "IncludeAuthorizationHeadersInOutputs"
+   }
+}
+```
+
+詳細については、以下のトピックを参照してください。
+
+* [トリガーとアクションの種類についてのスキーマ リファレンス - Request トリガー](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)
+* [トリガーとアクションの種類についてのスキーマ リファレンス - HTTP Webhook トリガー](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)
+* [トリガーとアクションの種類についてのスキーマ リファレンス - 操作オプション](../logic-apps/logic-apps-workflow-actions-triggers.md#operation-options)
 
 <a name="azure-api-management"></a>
 
@@ -896,7 +934,7 @@ Request トリガーでは、[Azure Active Directory Open Authentication](../act
 | プロパティ (デザイナー) | プロパティ (JSON) | 必須 | 値 | 説明 |
 |---------------------|-----------------|----------|-------|-------------|
 | **認証** | `type` | はい | **Active Directory OAuth** <br>or <br>`ActiveDirectoryOAuth` | 使用する認証の種類。 現在、Logic Apps では [OAuth 2.0 プロトコル](../active-directory/develop/v2-overview.md)が使用されています。 |
-| **機関** | `authority` | いいえ | <*URL-for-authority-token-issuer*> | 認証トークンを提供する機関の URL。 この値の既定値は `https://login.windows.net` です。 |
+| **機関** | `authority` | いいえ | <*URL-for-authority-token-issuer*> | アクセス トークンを提供する機関の URL。 この値の既定値は `https://login.windows.net` です。 |
 | **テナント** | `tenant` | はい | <*tenant-ID*> | Azure AD テナントのテナント ID |
 | **対象ユーザー** | `audience` | はい | <*resource-to-authorize*> | 承認で使用するリソース (`https://management.core.windows.net/` など) |
 | **クライアント ID** | `clientId` | はい | <*client-ID*> | 承認を要求しているアプリのクライアント ID |
