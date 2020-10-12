@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: akjosh
-ms.openlocfilehash: 501681a17603fb21e073b04e48d23f1b566f8128
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 4730f05adc2625ac576f5963f68d8e3ca8ede355
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89067690"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331507"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Windows 用の Log Analytics 仮想マシン拡張機能
 
@@ -36,7 +36,7 @@ Azure Monitor ログでは、クラウドとオンプレミスの資産全体に
 
 | Log Analytics Windows Agent バンドルのバージョン | Log Analytics Windows VM 拡張機能のバージョン | リリース日 | リリース ノート |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
-| 10.20.18038 | 1.0.18040.2 | 2020 年 8 月   | <ul><li>Azure Arc の問題を解決</li></ul> |
+| 10.20.18040 | 1.0.18040.2 | 2020 年 8 月   | <ul><li>Azure Arc の問題を解決</li></ul> |
 | 10.20.18038 | 1.0.18038 | 2020 年 4 月   | <ul><li>Azure Monitor Private Link スコープを使用した Private Link 経由の接続を有効化</li><li>ワークスペースへのインジェストの急増を回避するインジェスト調整の追加</li><li>追加の Azure Government クラウドおよびリージョンのサポートを追加</li><li>HealthService.exe がクラッシュするバグの解消</li></ul> |
 | 10.20.18029 | 1.0.18029 | 2020 年 3 月   | <ul><li>SHA-2 コード署名サポートを追加</li><li>VM 拡張機能のインストールと管理を改善</li><li>Azure Arc for Servers 統合のバグを解決</li><li>カスタマー サポート用の組み込みのトラブルシューティング ツールを追加</li><li>追加の Azure Government リージョンのサポートを追加</li> |
 | 10.20.18018 | 1.0.18018 | 2019 年 10 月 | <ul><li> 軽微なバグの修正と安定性の改善 </li></ul> |

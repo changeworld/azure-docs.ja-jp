@@ -16,12 +16,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 268cf61596366d451057861db1fa5ac2d35e87d0
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: d1d364089d5df24cfc4e7a75c3fd6b81248f0cd6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662410"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313316"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>ID 同期と重複属性の回復性
 重複属性の回復性は、Microsoft のいずれかの同期ツールを実行しているときに **UserPrincipalName** と SMTP **ProxyAddress** の競合によって引き起こされる不整合を避けるために Azure Active Directory に備えられている機能です。
@@ -124,7 +124,7 @@ _**\<OriginalPrefix>+\<4DigitNumber>\@\<InitialTenantDomain>.onmicrosoft.com**_ 
 ## <a name="microsoft-365-admin-center"></a>Microsoft 365 管理センター
 Microsoft 365 管理センターでは、ディレクトリ同期エラーを表示できます。 Microsoft 365 管理センターのレポートには、これらのエラーを持つ **User** オブジェクトだけが表示されます。 **Group** と **Contact** の間の競合に関する情報は表示されません。
 
-![アクティブ ユーザー](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "[アクティブ ユーザー]")
+![Microsoft 365 管理センターでディレクトリ同期エラーを示すスクリーンショット。](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "[アクティブ ユーザー]")
 
 Microsoft 365 管理センターでディレクトリ同期エラーを表示する方法については、「[Microsoft 365 でディレクトリ同期エラーを確認する](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)」を参照してください。
 
@@ -132,7 +132,7 @@ Microsoft 365 管理センターでディレクトリ同期エラーを表示す
 重複属性の競合があるオブジェクトがこの新しい動作で処理されると、テナントの技術的通知の連絡先に送信される標準の ID 同期のエラー レポート メールに、通知が含められます。 ただし、この動作には重要な変更があります。 以前は、重複属性の競合に関する情報が、競合が解決されるまで、後続のすべてのエラー レポートに含められました。 この新しい動作では、特定の競合のエラー通知は、競合する属性が検疫されたときに 1 回だけ表示されます。
 
 ProxyAddress の競合に関する電子メール通知の例を、次に示します。  
-    ![アクティブ ユーザー](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "[アクティブ ユーザー]")  
+    ![ProxyAddress の競合に関する電子メール通知の例を示すスクリーンショット。](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "[アクティブ ユーザー]")  
 
 ## <a name="resolving-conflicts"></a>競合の解決
 これらのエラーのトラブルシューティングの方針と解決の方法は、以前の重複属性エラーの処理方法と変わりはありません。 唯一の違いは、タイマー タスクがサービス側のテナント全体をスイープして、競合が解決したら問題の属性を適切なオブジェクトに自動的に追加することです。
