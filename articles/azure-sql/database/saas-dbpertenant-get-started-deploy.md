@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 8d71f6e71a7cd6033e570742a23016df0c25dd27
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 3851e6a784d244b101c2c71c67b4b2c9a8f5cbee
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542248"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91618942"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Azure SQL Database によるテナント単位データベース パターンを使用するマルチテナント SaaS アプリケーションをデプロイして操作する
 
@@ -86,10 +86,10 @@ SaaS の設計と管理のさまざまなパターンを確認するために、
 > zip ファイルを外部ソースからダウンロードして抽出すると、実行可能なコンテンツ (スクリプトと DLL) が Windows によってブロックされる場合があります。 スクリプトを展開する前に、手順に従って .zip ファイルのブロックを解除してください。 ブロック解除により、スクリプトの実行が許可されます。
 
 1. [WingtipTicketsSaaS-DbPerTenant GitHub リポジトリ][github-wingtip-dpt]を参照します。
-1. **[Clone or download]\(クローンまたはダウンロード\)** を選択します。
-1. **[Download ZIP]\(ZIP をダウンロード\)** を選択し、ファイルを保存します。
-1. **WingtipTicketsSaaS-DbPerTenant-master.zip** ファイルを右クリックし、 **[Properties]\(プロパティ\)** を選択します。
-1. **[General]\(全般\)** タブで **[Unblock]\(ブロックの解除\)**  >  **[Apply]\(適用\)** と選択します。
+1. **[複製またはダウンロード]** を選択します。
+1. **[Download ZIP]/(ZIP をダウンロード/)** を選択し、ファイルを保存します。
+1. **WingtipTicketsSaaS-DbPerTenant-master.zip** ファイルを右クリックし、 **[プロパティ]** を選択します。
+1. **[全般]** タブで **[ブロックの解除]**  >  **[適用]** と選択します。
 1. **[OK]** を選択し、ファイルを展開します。
 
 スクリプトは、...\\WingtipTicketsSaaS-DbPerTenant-master\\Learning Modules フォルダーにあります。
@@ -131,7 +131,7 @@ Wingtip アプリケーションでは、 [*Azure Traffic Manager*](../../traff
     | URL の部分        | 説明       |
     | :-------------- | :---------------- |
     | events.wingtip-dpt | Wingtip アプリのイベントの部分。<br /><br /> *-dpt* によって、Wingtip Tickets の "*テナント単位データベース*" の実装が他の実装と区別されます。 たとえば、テナントごとの "*単一*" アプリ ( *-sa*) の実装や "*マルチテナント データベース*" ( *-mt*) の実装です。 |
-    | . *&lt;user&gt;* | この例では *af1*。 |
+    | . *&lt;ユーザー&gt;* | この例では *af1*。 |
     | .trafficmanager.net/ | Traffic Manager、ベース URL。 |
     | fabrikamjazzclub | Fabrikam Jazz Club という名前のテナントを識別します。 |
     | &nbsp; | &nbsp; |
@@ -225,7 +225,7 @@ Events Hub を更新すると、新しいテナントが一覧に表示されま
 1.  [Azure portal](https://portal.azure.com) で、SQL サーバーの一覧を参照します。 次に、**catalog-dpt-&lt;User&gt;** サーバーを展開します。
     - カタログ サーバーには 2 つのデータベース **tenantcatalog** と **basetenantdb** (新しいテナントを作成するためにコピーされたテンプレート データベース) が含まれます。
 
-   ![データベース](./media/saas-dbpertenant-get-started-deploy/databases.png)
+   ![2 つのデータベースが表示されたカタログ サーバーの概要ページを示すスクリーンショット。](./media/saas-dbpertenant-get-started-deploy/databases.png)
 
 2. SQL サーバーの一覧に戻ります。
 
@@ -242,7 +242,7 @@ Events Hub を更新すると、新しいテナントが一覧に表示されま
 
 *LoadGenerator.ps1* を数分間実行したら、十分な量のデータが生成されています。このデータを使って、一部の監視機能を見てみましょう。 これらの機能は、プールとデータベースに組み込まれています。
 
-**tenants1-dpt-&lt;USER&gt;** サーバーを参照し、**Pool1** をクリックして、プールのリソース使用率を表示します。 次のグラフでは、ロード ジェネレーターを 1 時間実行しました。
+**tenants1-dpt-&lt;ユーザー&gt;** サーバーを参照し、**Pool1** をクリックして、プールのリソース使用率を表示します。 次のグラフでは、ロード ジェネレーターを 1 時間実行しました。
 
    ![プールの監視](./media/saas-dbpertenant-get-started-deploy/monitor-pool.png)
 

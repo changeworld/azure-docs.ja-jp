@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/01/2020
+ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 11184b2e9770ba6fd7c4ec9d04862c0890ac94c6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d55f52b5e99a7a617e2bec8bea4d6e6ef687730a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90930951"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336532"
 ---
 # <a name="cross-region-load-balancer-preview"></a>リージョン間ロード バランサー (プレビュー)
 
@@ -55,7 +55,7 @@ Azure Standard Load Balancer では、リージョン間の負荷分散がサポ
 
 リージョン間ロード バランサーの正常性プローブによって、20 秒ごとに可用性に関する情報が収集されます。 1 つのリージョンのロード バランサーの可用性が 0 に落ちると、リージョン間ロード バランサーによってエラーが検出されます。 その後、そのリージョン ロード バランサーはローテーションから外されます。 
 
-:::image type="content" source="./media/cross-region-overview/global-region-view.png" alt-text="グローバル リージョンのトラフィック ビューの図。" border="true":::
+:::image type="content" source="./media/cross-region-overview/global-region-view.png" alt-text="リージョン間ロード バランサーの図。" border="true":::
 
 ### <a name="ultra-low-latency"></a>超低遅延
 
