@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:Jive を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
-description: Azure Active Directory と Jive の間でシングル サインオンを構成する方法について説明します。
+description: Azure AD から Jive へのユーザー アカウントの自動的なプロビジョニングおよびプロビジョニング解除を行うために、Jive と Azure AD で実行する必要がある手順について説明します。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 351c7e21bfe59b22f451adddad8fed220c218358
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: fa45ece76499b50694d366ed2dcdd57cc1e0c7dc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983123"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312098"
 ---
 # <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>チュートリアル:Jive を構成し、自動ユーザー プロビジョニングに対応させる
 

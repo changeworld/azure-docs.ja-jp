@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 93b0547ba25f6534593a0a016ebfa5cbe4d2be2e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4087d618209ab4db46f89ef4e6db7ac87ca4cf57
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90932607"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331014"
 ---
 # <a name="get-connection-endpoints-and-form-connection-strings-for-your-arc-enabled-postgresql-hyperscale-server-group"></a>Arc 対応 PostgreSQL Hyperscale サーバー グループの接続エンドポイントを取得し、接続文字列を作成する
 
@@ -77,7 +77,7 @@ postgres=#
 ```
 > [!NOTE]
 >
-> - "_PostgreSQL インスタンス_" という名前のエンドポイントで指定された _postgresql_ ユーザーのパスワードは、サーバー グループの作成時に選択したパスワードです。
+> - "_PostgreSQL インスタンス_" という名前のエンドポイントで指定された _postgres_ ユーザーのパスワードは、サーバー グループのデプロイ時に選択したパスワードです。
 > - azdata について: 接続に関連付けられているリース時間は約 10 時間です。 その後、再接続する必要があります。 リースの有効期限が切れている場合は、azdata でコマンド (azdata login 以外) を実行しようとすると、次のエラー メッセージが表示されます。_エラー: (401)_ 
 > _理由:承認されていない_
 > _HTTP 応答ヘッダー:HTTPHeaderDict({'Date':'Sun, 06 Sep 2020 16:58:38 GMT', 'Content-Length':'0', 'WWW-Authenticate':'_ 

@@ -8,12 +8,12 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: ac747b87cf1a0f2d7c85d05975a31f953bfa5aae
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: a5c7b9fb6a3431534d743f1ebd0b21f1da9fab7b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132502"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318706"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>SQL Server Integration Services (SSIS) を使用した U-SQL ジョブのスケジュール設定
 
@@ -56,7 +56,7 @@ Azure Feature Pack の **Azure Data Lake Store ファイル システム タス�
 
 SSIS パッケージのデザイン ビューで、**Azure Data Lake Store ファイル システム タスク**、**Foreach ループ コンテナー**、およびその Foreach ループ コンテナー内の **Azure Data Lake Analytics タスク**を追加します。 Azure Data Lake Store ファイル システム タスクは、お使いの ADLS アカウントで U-SQL ファイルを一時フォルダーにダウンロードするのに役立ちます。 Foreach ループ コンテナーと Azure Data Lake Analytics タスクは、一時フォルダー配下のすべての U-SQL ファイルを U-SQL ジョブとして Azure Data Lake Analytics アカウントに送信するのに役立ちます。
 
-![Azure Data Lake Store 内の U-SQL ファイルを使用する](./media/data-lake-analytics-schedule-jobs-ssis/use-u-sql-files-in-azure-data-lake-store.png)
+![Foreach ループ コンテナーに追加される Azure Data Lake Store ファイル システム タスクを示す図。](./media/data-lake-analytics-schedule-jobs-ssis/use-u-sql-files-in-azure-data-lake-store.png)
 
 ### <a name="configure-azure-data-lake-store-file-system-task"></a>Azure Data Lake Store ファイル システム タスクを構成する
 
@@ -77,7 +77,7 @@ Azure Data Lake Store ファイル システム タスクの詳細について�
 
 3. **[列挙子の構成]** グループの下の **[ファイル]** を `*.usql` に設定して、末尾が `.usql` のファイルのみをループ コンテナーがキャッチできるようします。
 
-    ![Foreach ループ コンテナーを構成する](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-collection.png)
+    ![[コレクション] が選択され、[列挙子] および [列挙子の構成] セクションが強調表示されている Foreach ループ エディターを示すスクリーンショット。](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-collection.png)
 
 4. **[変数のマッピング]** ページで、ユーザー定義変数を追加して、各 U-SQL ファイルのファイル名を取得します。 ファイル名を取得するには、 **[インデックス]** を 0 に設定します。 この例では、`User::FileName` という名前の変数を定義します。 この変数は、U-SQL スクリプト ファイルの接続を動的に取得し、Azure Data Lake Analytics タスクの U-SQL ジョブ名を設定するために使用されます。
 
@@ -94,7 +94,7 @@ Azure Data Lake Store ファイル システム タスクの詳細について�
    1. FileConnection 設定で **\<New Connection...>** を選択します。
    2. **[使用法の種類]** を **[既存のファイル]** に設定し、 **[ファイル]** を既存の任意のファイルのファイル パスに設定します。
 
-       ![Foreach ループ コンテナーを構成する](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
+       ![[使用法の種類] に対して [既存のファイル] が選択されたファイル接続マネージャー エディターを示すスクリーンショット。](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 
    3. **接続マネージャー** ビューで、今作成したファイル接続を右クリックし、 **[プロパティ]** を選択します。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/17/2019
 ms.author: Zhchia
-ms.openlocfilehash: aa11cd9dedc2446b3952378e53b1f7248abbfa47
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3c2fba1cba2c06e07b262e37eac651afb5c102cf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88526229"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317524"
 ---
 # <a name="tutorial-configure-workteam--for-automatic-user-provisioning"></a>チュートリアル:Workteam を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -54,15 +54,15 @@ Azure AD での自動ユーザー プロビジョニング用に Workteam を構
 
 1. [Workteam](https://app.workte.am/account/signin) にログインします。 **[Organization Settings]\(組織の設定\)**  >  **[SETTINGS]\(設定\)** をクリックします。
 
-    ![Workteam](media/workteam-provisioning-tutorial/settings.png)
+    ![[Organization Settings]\(組織の設定\) オプションと [SETTINGS]\(設定\) オプションが四角で囲まれた Workteam の UI のスクリーンショット。](media/workteam-provisioning-tutorial/settings.png)
 
 2. 一番下までスクロールし、Workteam のプロビジョニング機能を有効にします。
 
-    ![Workteam](media/workteam-provisioning-tutorial/icon.png)
+    ![[設定] セクションの下部にある [SCIM User Provisioning]\(SCIM ユーザー プロビジョニング\) 歯車アイコンが四角で囲まれたスクリーンショット。](media/workteam-provisioning-tutorial/icon.png)
 
 3. **ベース URL** と**ベアラー トークン**をコピーします。 これらの値を、Azure portal の Workteam アプリケーションの [プロビジョニング] タブにある **[テナント URL]** および **[シークレット トークン]** フィールドに入力します。
 
-    ![Workteam](media/workteam-provisioning-tutorial/scim.png)
+    ![[BASE URL]\(ベース URL\) と [BEARER TOKEN]\(ベアラー トークン\) テキスト ボックスが四角で囲まれた [SCIM Settings]\(SCIM 設定\) ダイアログ ボックスのスクリーンショット。](media/workteam-provisioning-tutorial/scim.png)
 
 
 ## <a name="add-workteam--from-the-gallery"></a>ギャラリーからの Workteam の追加
@@ -106,11 +106,11 @@ Azure AD で自動ユーザー プロビジョニング用に Workteam を構成
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. [管理者資格情報] セクションの **[テナント URL]** および **[シークレット トークン]** に、先ほど取得した**ベース URL** および**ベアラー トークン**の値をそれぞれ入力します。 **[テスト接続]** をクリックして、Azure AD から Workteam に接続できることを確認します。 接続できない場合は、使用中の Workteam アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 

@@ -1,17 +1,17 @@
 ---
 title: Microsoft Threat Modeling Tool のリリース 2020 年 3 月 22 日 - Azure
-description: Threat Modeling Tool のリリース ノートです
+description: Threat Modeling Tool リリース 7.3.00316.1 のリリース ノートです。
 author: jegeib
 ms.author: jegeib
 ms.service: security
 ms.topic: article
 ms.date: 03/22/2020
-ms.openlocfilehash: 6fea4d48b62d6ea429d37924ffd15855db6294cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 39963e9dadca0ee0be7bb8ad0ebf824c287bfee0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80137643"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317907"
 ---
 # <a name="threat-modeling-tool-update-release-73003161---03222020"></a>Threat Modeling Tool 更新プログラム リリース 7.3.00316.1 - 2020 年 3 月 22 日
 
