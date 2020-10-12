@@ -1,16 +1,16 @@
 ---
 title: 概念 - ストレージ
-description: Azure VMware Solution プレビューのプライベート クラウドの主なストレージ機能について説明します。
+description: Azure VMware Solution プライベート クラウドの主なストレージ機能について説明します。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 8afd58c61f2f78eec2a92354be6d88178340912e
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: 02378040061080d3c9abbfafb26180c9d22e9073
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024317"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316819"
 ---
-# <a name="azure-vmware-solution-preview-storage-concepts"></a>Azure VMware Solution プレビューのストレージの概念
+#  <a name="azure-vmware-solution-storage-concepts"></a>Azure VMware Solution のストレージの概念
 
 Azure VMware Solution のプライベート クラウドは、ネイティブのクラスター全体のストレージに VMware vSAN を提供します。 クラスター内の各ホストのローカル ストレージはすべて、vSAN データストアで使用されます。また、保存データの暗号化は既定で使用可能で、有効になっています。 Azure Storage のリソースを使用すると、プライベート クラウドのストレージ機能を拡張できます。
 
@@ -28,7 +28,7 @@ Azure VMware Solution のプライベート クラウドは、ネイティブの
 
 ## <a name="data-at-rest-encryption"></a>保存データの暗号化
 
-vSAN データストアでは、既定で保存データの暗号化が使用されます。 この暗号化ソリューションは KMS ベースで、キーの管理のために vCenter の操作をサポートしています。 Azure Key Vault に暗号化キーが格納され、なんらかの理由でホストがクラスターから削除されると、SSD 上のデータはすぐに無効になります。
+vSAN データストアでは、既定で保存データの暗号化が使用されます。 この暗号化ソリューションは KMS ベースで、キーの管理のために vCenter の操作をサポートしています。 キーは暗号化された状態で保存され、HSM ベースの Azure Key Vault マスター キーによってラップされています。 なんらかの理由でホストがクラスターから削除されると、SSD 上のデータはすぐに無効になります。
 
 ## <a name="scaling"></a>Scaling
 

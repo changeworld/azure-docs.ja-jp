@@ -4,12 +4,12 @@ ms.service: azure-cdn
 ms.topic: include
 ms.date: 11/21/2018
 ms.author: mazha
-ms.openlocfilehash: 41f2d4540f665137d34d262546cdc1a2edfbae3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4967991b0edaa854acbf6b308596859d662311fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77608727"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316760"
 ---
 ## <a name="prerequisites"></a>前提条件
 CDN 管理コードを記述する前に、コードが Azure Resource Manager と対話できるように準備する必要があります。 この準備を行うには、次のことを実行する必要があります。
@@ -26,10 +26,10 @@ CDN 管理コードを記述する前に、コードが Azure Resource Manager �
     ![Creating a new resource group](./media/cdn-app-dev-prep/cdn-new-rg-1-include.png)
 3. リソース グループに *CdnConsoleTutorial* という名前を付けます。  サブスクリプションを選択し、近くの場所を選択します。  必要に応じて **[ダッシュボードにピン留めする]** チェック ボックスをオンにして、リソース グループをポータルのダッシュボードにピン留めできます。  ピン留めすると、後で見つけるのが容易になります。  必要な項目を選択したら、 **[作成]** をクリックします。
 
-    ![Naming the resource group](./media/cdn-app-dev-prep/cdn-new-rg-2-include.png)
+    ![[リソース グループ] ダイアログ ボックスのスクリーンショット。](./media/cdn-app-dev-prep/cdn-new-rg-2-include.png)
 4. ダッシュボードにリソース グループをピン留めしていない場合は、 **[参照]** 、 **[リソース グループ]** の順にクリックして、作成したリソース グループを見つけることができます。  開くには、そのリソース グループをクリックします。  **サブスクリプション ID**をメモしておきます。 この情報は後で必要になります。
 
-    ![Naming the resource group](./media/cdn-app-dev-prep/cdn-subscription-id-include.png)
+    ![CDN コンソール チュートリアル セクションのスクリーンショット。](./media/cdn-app-dev-prep/cdn-subscription-id-include.png)
 
 ### <a name="creating-the-azure-ad-application-and-applying-permissions"></a>Azure AD アプリケーションの作成とアクセス許可の適用
 Azure Active Directory でのアプリの認証には、2 つの手法があります。つまり個別ユーザー、またはサービス プリンシパルです。 サービス プリンシパルは、Windows のサービス アカウントと似ています。  CDN プロファイルとやり取りするアクセス許可を特定のユーザーに付与する代わりに、サービス プリンシパルにアクセス許可を付与します。  通常、サービス プリンシパルは、自動化された非対話型プロセスに使用されます。  このチュートリアルでは対話型コンソール アプリを作成していますが、サービス プリンシパルのアプローチに注目します。
