@@ -1,6 +1,6 @@
 ---
 title: .NET を使用した Media Services アカウントへのファイルのアップロード | Microsoft Docs
-description: アセットを作成し、アップロードすることによって、Media Services にメディア コンテンツを取得する方法について説明します。
+description: .NET を使用してアセットを作成し、アップロードすることによって、Media Services にメディア コンテンツを取り込む方法について説明します。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 51f6b40fc4cafad16ef6f6ca92fafa7ba1378c4a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 83e9b0278e99867cafa7e633bc382e490ec273c1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89255939"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250541"
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>.NET を使用した Media Services アカウントへのファイルのアップロード
 
