@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 336409b8b6f804b224b87d5fb11fded0654b8619
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0cdc9e242c2254cafaf0af75bcb8f8879cf3eb58
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90895522"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287830"
 ---
 # <a name="azure-synapse-link-preview-for-azure-cosmos-db-supported-features"></a>Azure Cosmos DB 用の Azure Synapse Link (プレビュー) でサポートされる機能
 
@@ -29,7 +29,7 @@ Azure Cosmos DB には、次の 2 種類のコンテナーがあります。
 > [!IMPORTANT]
 > 現在、Azure Synapse Link for Azure Cosmos DB は、マネージド仮想ネットワークが有効になっていない Synapse ワークスペースでサポートされています。 
 
-Synapse Link を有効にしなくても、Azure Cosmos DB コンテナーに接続できます。この場合、トランザクション ストアに対する読み取り/書き込みのみが可能です。 Azure Cosmos DB 用の Synapse Link 内で現時点でサポートされている機能の一覧を次に示します。 
+Synapse Link を有効にしなくても、Azure Cosmos DB コンテナーに接続できます。 このシナリオでは、トランザクション ストアに対して読み取り/書き込みのみを行うことができます。 Azure Cosmos DB 用の Synapse Link 内で現時点でサポートされている機能の一覧を次に示します。 
 
 | カテゴリ              | 説明 |[Spark](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) | [SQL サーバーレス](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- | ----------------------------------------------------------- |
@@ -39,9 +39,9 @@ Synapse Link を有効にしなくても、Azure Cosmos DB コンテナーに接
 | **読み取り**    | 読み取り可能な Azure Cosmos DB コンテナーのタイプ | OLTP / HTAP | HTAP  |
 | **書き込み**   | Azure Synapse ランタイムを使用して Azure Cosmos DB コンテナーにデータを書き込むことができる | はい | いいえ |
 
-* Spark から Azure Cosmos DB コンテナーにデータを書き込む場合、これは、Azure Cosmos DB のトランザクション ストア経由で実行され、Azure Cosmos DB のトランザクション パフォーマンスに影響を及ぼし、要求ユニットを消費します。
-* 外部テーブルを介した Synapse SQL プールの統合は現在、サポートされていません。
-
+* Spark から Azure Cosmos DB コンテナーにデータを書き込む場合、この処理は Azure Cosmos DB のトランザクション ストアを介して行われます。 これは要求ユニットを使用することによって、Azure Cosmos DB のトランザクション パフォーマンスに影響を与えます。
+* 外部テーブルを通じた SQL プールの統合は現在サポートされていません。
+ 
 ## <a name="supported-code-generated-actions-for-spark"></a>Spark に対してサポートされているコード生成アクション
 
 | ジェスチャ              | 説明 |OLTP |HTAP  |
@@ -51,7 +51,6 @@ Synapse Link を有効にしなくても、Azure Cosmos DB コンテナーに接
 | **コンテナーへのデータフレームの書き込み** |コンテナーにデータを書き込みます|✓| ✓ |
 | **コンテナーからのストリーミング データフレームの読み込み** |Azure Cosmos DB の変更フィードを使用してデータをストリーミングします|✓| ✓ |
 | **コンテナーへのストリーミング データフレームの書き込み** |Azure Cosmos DB の変更フィードを使用してデータをストリーミングします|✓| ✓ |
-
 
 
 ## <a name="supported-code-generated-actions-for-sql-serverless"></a>SQL サーバーレスに対してサポートされているコード生成アクション
