@@ -3,12 +3,12 @@ title: Azure Migrate Server Migration についてよく寄せられる質問
 description: Azure Migrate Server Migration を使用したマシンの移行についてよく寄せられる質問の回答を示します。
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.openlocfilehash: b0ae28fc387125b198bed202d857c3b9ecdd44bb
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 80334bb2f0d6c0284c9031a99c0eb469b348873d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050660"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275542"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate Server Migration:一般的な質問
 
@@ -18,6 +18,28 @@ ms.locfileid: "89050660"
 - [Azure Migrate アプライアンス](common-questions-appliance.md)に関する一般的な質問
 - [検出、評価、依存関係の視覚化](common-questions-discovery-assessment.md) に関する質問
 - [Azure Migrate フォーラム](https://aka.ms/AzureMigrateForum)で質問の回答を示します。
+
+## <a name="does-azure-migrate-convert-uefi-based-machines-to-bios-based-machines-and-migrate-them-to-azure-as-azure-generation-1-vms"></a>Azure Migrate では、UEFI ベースのマシンは BIOS ベースのマシンに変換されて Azure Generation 1 VM として Azure に移行されますか?
+Azure Migrate: Server Migration ツールでは、すべての UEFI ベースのマシンは Azure Generation 2 VM として Azure に移行されます。 UEFI ベースの VM から BIOS ベースの VM への変換はサポートされなくなりました。 すべての BIOS ベースのマシンは、Azure Generation 1 VM としてのみ Azure に移行されることに注意してください。
+
+## <a name="how-can-i-migrate-uefi-based-machines-to-azure-as-azure-generation-1-vms"></a>UEFI ベースのマシンを Azure Generation 1 VM として Azure に移行するにはどうすればよいですか?
+Azure Migrate: Server Migration ツールでは、UEFI ベースのマシンは Azure Generation 2 VM として Azure に移行されます。 それらを Azure Generation 1 VM に移行する場合は、レプリケーションを開始する前にブートの種類を BIOS に変換してから Azure Migrate: Server Migration ツールを使用して Azure に移行してください。
+ 
+## <a name="which-operating-systems-are-supported-for-migration-of-uefi-based-machines-to-azure"></a>Azure への UEFI ベースのマシンの移行がサポートされているオペレーティング システムはどれですか?
+
+| **UEFI ベースのコンピューターがサポートされているオペレーティング システム** | **エージェントレスの VMware から Azure**                                                                                                             | **エージェントレスの Hyper-V から Azure** | **エージェントベースの VMware、物理およびその他のクラウドから Azure** |
+| ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ---------------------------------------------------------- |
+| Windows Server 2019、2016、2012 R2、201                 | Y                                                                                                                                         | Y                              | Y                                                          |
+| Windows 10 Pro、Windows 10 Enterprise                   | Y                                                                                                                                         | Y                              | Y                                                          |
+| SUSE Linux Enterprise Server 15 SP1                     | Y                                                                                                                                         | Y                              | Y                                                          |
+| SUSE Linux Enterprise Server 12 SP4                     | Y                                                                                                                                         | Y                              | Y                                                          |
+| Ubuntu Server 16.04、18.04、19.04、19.10                | Y                                                                                                                                         | Y                              | Y                                                          |
+| RHEL 8.1、8.0、7.8、7.7、7.6、7.5、7.4、7.0、6.x        | Y<br>                 _RHEL 8.x には[手動による準備](https://go.microsoft.com/fwlink/?linkid=2143939)が必要_   | Y                              | Y                                                          |
+| Cent OS 8.1、8.0、7.7、7.6、7.5、7.4、6.x               | Y<br>_Cent OS 8.x には[手動による準備](https://go.microsoft.com/fwlink/?linkid=2143939)が必要_ | Y                              | Y                                                          |
+| Oracle Linux 7.7、7.7-CI                                |  Y                                                                                                                                        | Y                              | Y                                                          |
+
+## <a name="can-i-use-the-recovery-services-vault-created-by-azure-migrate-for-disaster-recovery-scenarios"></a>Azure Migrate で作成した Recovery Services コンテナーをディザスター リカバリーのシナリオに使用することはできますか?
+ディザスター リカバリーのシナリオでは、Azure Migrate で作成した Recovery Services コンテナーは使用しないことをお勧めします。 これにより、Azure Migrate でレプリケーションの開始が失敗する可能性があります。 
 
 ## <a name="where-should-i-install-the-replication-appliance-for-agent-based-migrations"></a>エージェントベースの移行用のレプリケーション アプライアンスはどこにインストールすればよいですか?
 
@@ -200,11 +222,6 @@ Azure Migrate Server Migration 機能では現在、既存のものと同じ移�
 
 エージェントレス レプリケーションでは、VMware vCenter Server と VMware ESXi ホストのパフォーマンスに一部影響が生じます。 エージェントレス レプリケーションではスナップショットが使用されるので、ストレージに対する IOP が消費され、一部の IOPS ストレージ帯域幅が必要になります。 ご利用の環境内でストレージまたは IOP に制約がある場合は、エージェントレス レプリケーションを使用しないことをお勧めします。
 
-## <a name="can-i-do-agentless-migration-of-uefi-vms-to-azure-gen-2"></a>UEFI VM を Azure Gen 2 にエージェントレスで移行できますか?
-
-いいえ。 これらの VM を Gen 2 Azure VM に移行するには、[VMware のエージェントベースの移行](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware-agent)、[Hyper-V の移行](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines)、[物理サーバーの移行](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines)の各オプションを使用できます。
-
-***注:*** Azure の第 2 世代 UEFI をサポートしている適切な VM サイズを確実に選択してください。
 
 ## <a name="next-steps"></a>次のステップ
 

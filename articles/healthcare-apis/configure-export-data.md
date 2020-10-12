@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 3/5/2020
 ms.author: matjazl
-ms.openlocfilehash: 7ed4e471764fbf8ecc9b82a7d614ae52b97360f1
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e4adceea5c2cd2a36d7a867ca9b9d2ad7c33c155
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267260"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91529985"
 ---
 # <a name="configure-export-setting-and-set-up-the-storage-account"></a>エクスポート設定を構成してストレージ アカウントを設定する
 
@@ -40,11 +40,11 @@ Azure API for FHIR のエクスポートを構成する最初の手順は、サ�
 
 ストレージ アカウントを作成したら、ストレージ アカウントの [アクセス制御 (IAM)] ブレードに移動し、[ロールの割り当ての追加] を選択します。
 
-![マネージド ID の有効化](media/export-data/fhir-export-role-assignment.png)
+![ロールの割り当てのエクスポート](media/export-data/fhir-export-role-assignment.png)
 
 ここでは、ストレージ BLOB データ共同作成者というロールをサービス名に追加します。
 
-![マネージド ID の有効化](media/export-data/fhir-export-role-add.png)
+![ロールの追加](media/export-data/fhir-export-role-add.png)
 
 これで、次の手順で、$export の既定のストレージ アカウントとして Azure API for FHIR のストレージ アカウントを選択できるようになりました。
 
@@ -52,7 +52,7 @@ Azure API for FHIR のエクスポートを構成する最初の手順は、サ�
 
 最後の手順は、Azure API for FHIR によるデータのエクスポート先として使用する Azure ストレージ アカウントを割り当てることです。 これを行うには、Azure portal で Azure API for FHIR サービスの [統合] ブレードに移動し、ストレージ アカウントを選択します。
 
-![マネージド ID の有効化](media/export-data/fhir-export-storage.png)
+![FHIR エクスポート ストレージ](media/export-data/fhir-export-storage.png)
 
 その後、$export コマンドを使用してデータをエクスポートできます。
 

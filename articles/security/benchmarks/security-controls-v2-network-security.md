@@ -4,17 +4,17 @@ description: Azure セキュリティ ベンチマーク V2 ネットワーク �
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 184416794011d259af3568c81e4648d822a2c4a5
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 9833f63d999ab7c24174853bd37f4e7a76f6dfbf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059112"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329433"
 ---
-# <a name="security-control-network-security"></a>セキュリティ コントロールネットワークのセキュリティ
+# <a name="security-control-v2-network-security"></a>セキュリティ コントロール V2:ネットワークのセキュリティ
 
 ネットワーク セキュリティの対象は、Azure ネットワークのセキュリティと保護のためのコントロールです。 これには、仮想ネットワークのセキュリティ保護、プライベート接続の確立、外部からの攻撃の防止と軽減、DNS の保護が含まれます。
 
@@ -30,15 +30,19 @@ ms.locfileid: "90059112"
 
 Azure Security Center のアダプティブ ネットワーク強化を使用して、外部ネットワーク トラフィック ルールへの参照に基づいてポートとソース IP を制限するネットワーク セキュリティ グループの構成を推奨します。
 
+Azure Sentinel を使用して、不安がある従来のプロトコルである SSL/TLSv1、SMBv1、LM/NTLMv1、wDigest、署名なしの LDAP バインド、Kerberos の弱い暗号の使用を検出します。
+
 - [セキュリティ規則を使用してネットワーク セキュリティ グループを作成する方法](../../virtual-network/tutorial-filter-network-traffic.md)
 
 - [Azure Firewall をデプロイして構成する方法](../../firewall/tutorial-firewall-deploy-portal.md)
 
 - [Azure Security Center でのアダプティブ ネットワークのセキュリティ強化機能](../../security-center/security-center-adaptive-network-hardening.md)
 
+- [Azure Sentinel の安全でないプロトコルのブック](../../sentinel/quickstart-get-visibility.md#use-built-in-workbooks)
+
 **責任**: Customer
 
-**顧客のセキュリティ上の利害関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -54,7 +58,7 @@ Azure Security Center のアダプティブ ネットワーク強化を使用し
 
 Azure ExpressRoute または Azure 仮想プライベート ネットワーク (VPN) を使用して、Azure のデータセンターとオンプレミスのインフラストラクチャ間やコロケーション環境内でプライベート接続を作成できます。 ExpressRoute 接続はパブリック インターネットを経由しないので、一般的なインターネット接続と比べて信頼性が高く、高速で、待ち時間も短くなります。 ポイント対サイト VPN とサイト間 VPN では、これらの VPN オプションと Azure ExpressRoute の任意の組み合わせを使用して、オンプレミスのデバイスやネットワークを仮想ネットワークに接続できます。
 
-Azure で 2 つ以上の仮想ネットワークを接続するには、仮想ネットワーク ピアリングを使用します。 ピアリングされた仮想ネットワーク間のネットワーク トラフィックはプライベートであり、Azure のバックボーン ネットワーク上に保持されます。 
+Azure で 2 つ以上の仮想ネットワークを接続するには、仮想ネットワーク ピアリングまたは Private Link を使用します。 ピアリングされた仮想ネットワーク間のネットワーク トラフィックはプライベートであり、Azure のバックボーン ネットワーク上に保持されます。 
 
 - [ExpressRoute 接続モデルとは](../../expressroute/expressroute-connectivity-models.md) 
 
@@ -62,9 +66,11 @@ Azure で 2 つ以上の仮想ネットワークを接続するには、仮想�
 
 - [仮想ネットワーク ピアリング](../../virtual-network/virtual-network-peering-overview.md)
 
+- [Azure Private Link](../../private-link/private-link-service-overview.md)
+
 **責任**: Customer
 
-**顧客のセキュリティ上の利害関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -88,7 +94,7 @@ Azure Private Link を使用して、インターネットを経由せずに、�
 
 **責任**: Customer
 
-**顧客のセキュリティ上の利害関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -108,6 +114,7 @@ Azure Private Link を使用して、インターネットを経由せずに、�
 -   Azure Application Gateway、Azure Front Door、Azure Content Delivery Network (CDN) の Web Application Firewall (WAF) 機能を使用して、アプリケーション層の攻撃からアプリケーション、サービス、API を保護します。 
 
 -   Azure 仮想ネットワークで DDoS 標準保護を有効にすることで、DDoS 攻撃から資産を保護します。 
+-   Azure Security Center を使用して、上記に関連する構成ミスのリスクを検出します。 
 
 - [Azure Firewall のドキュメント](/azure/firewall/)
 
@@ -117,7 +124,7 @@ Azure Private Link を使用して、インターネットを経由せずに、�
 
 **責任**: Customer
 
-**顧客のセキュリティ上の利害関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 なし
 
@@ -139,7 +146,7 @@ Azure Firewall の脅威インテリジェンス ベースのフィルター処�
 
 **責任**: Customer
 
-**顧客のセキュリティ上の利害関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -165,7 +172,7 @@ Azure Firewall の脅威インテリジェンス ベースのフィルター処�
 
 **責任**: Customer
 
-**顧客のセキュリティ上の利害関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -191,7 +198,7 @@ DNS セキュリティのベスト プラクティスに従って、未解決の
 
 **責任**: Customer
 
-**顧客のセキュリティ上の利害関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
