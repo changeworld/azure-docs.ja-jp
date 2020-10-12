@@ -31,9 +31,9 @@ Materialized View では、そのデータが事前に計算され、テーブ�
 
 標準ビューの要件のほとんどは、Materialized View にも当てはまります。 Materialized View の構文とその他の要件の詳細については、[CREATE MATERIALIZED VIEW AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) に関するページを参照してください
 
-| 比較                     | 表示                                         | Materialized View
+| 比較                     | View　                                         | Materialized View
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
-|定義の表示                 | SQL プールに格納されます。              | SQL プールに格納されます。
+|ビューの定義                 | SQL プールに格納されます。              | SQL プールに格納されます。
 |ビューの内容                    | ビューが使用されるたびに生成されます。   | ビューの作成中に前処理されて SQL プールに格納されます。 基になるテーブルにデータが追加されると更新されます。
 |データ更新                    | 常時更新                               | 常時更新
 |複雑なクエリからビューのデータを取得する速度     | 遅い                                         | 速い  
