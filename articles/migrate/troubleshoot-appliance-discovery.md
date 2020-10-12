@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 9d4f30c5946e07b9f71c007d6f3f61efcae28637
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: b2a01e816c0f0569c207aa65e5027b935210e3b9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89296517"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331779"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure Migrate アプライアンスと検出のトラブルシューティング
 
@@ -234,6 +234,7 @@ Azure Migrate は、Azure Migrate を使用してアプリケーション、ロ�
 9033: VM のユーザー名に無効な文字が含まれているため、検出できません。     |   ユーザー名で無効な文字が検出されました。   |   無効な文字がないことを確認して、VM の資格情報をもう一度指定します。
 9034: 指定されたユーザー名は UPN 形式ではありません。    |   ユーザー名が UPN 形式ではありません。  |   ユーザー名がユーザー プリンシパル名 (UPN) 形式であることを確認します。
 9035: Powershell の言語モードが "完全言語" に設定されていないため、検出できません。  |   ゲスト VM の Powershell の言語モードが完全言語に設定されていません。   |   PowerShell の言語モードが "完全言語" に設定されていることを確認します。
+9037: VM の応答時間が長すぎるため、データ収集が一時的に停止しました。    |   検出された VM の応答に時間がかかりすぎています     |   必要なアクションはありません。 アプリケーションの検出の場合は 24 時間以内に、依存関係の分析 (エージェントレス) の場合は 3 時間以内に、再試行が行われます。
 10000: オペレーティング システムの種類がサポートされていません。   |   サーバーで実行されているオペレーティング システムが Windows でも Linux でもありません。    |   サポートされているオペレーティング システムの種類は、Windows と Linux のみです。
 10001: サーバー検出用のスクリプトがアプライアンスに見つかりません。    |   検出が正常に機能していません。   |   Microsoft サポートに解決方法をお問い合わせください。
 10002: 検出タスクが時間内に完了しませんでした。     |   検出エージェントが正常に機能していません。     |   この問題は、24 時間以内に自動的に解決されます。 引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。
