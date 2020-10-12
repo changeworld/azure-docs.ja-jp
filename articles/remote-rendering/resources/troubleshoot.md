@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: a5b625ea2b5b76d0938ac62be2202127ff0af66e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f82ea8361cef76b2030e5b257b3d3351968d8050
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982978"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322191"
 ---
 # <a name="troubleshoot"></a>トラブルシューティング
 
@@ -23,11 +23,7 @@ ms.locfileid: "90982978"
 
 ## <a name="client-cant-connect-to-server"></a>クライアントがサーバーに接続できない
 
-(デバイス上やルーター内などの) ファイアウォールが次のポートをブロックしていないことを確認します。
-
-* **50051 (TCP)** - 初期接続 (HTTP ハンドシェイク) に必要です
-* **8266 (TCP+UDP)** - データ転送に必要です
-* **5000 (TCP)** 、**5433 (TCP)** 、**8443 (TCP)** - [ArrInspector](tools/arr-inspector.md) に必要です
+(デバイス上やルーター内などの) ファイアウォールが[システム要件](../overview/system-requirements.md#network-ports)で指定されているポートをブロックしていないことを確認します。
 
 ## <a name="error-disconnected-videoformatnotavailable"></a>エラー '`Disconnected: VideoFormatNotAvailable`'
 
@@ -152,7 +148,7 @@ REST API コマンドを頻繁に送信しすぎるとサーバーでスロッ�
 
 Azure Remote Rendering では、動画を使用してフレーム合成を行ったり、再投影を行ったりするために、Unity のレンダリング パイプラインにフックします。 これらのフックが存在することを確認するには、メニュー *:::no-loc text="Window > Analysis > Frame debugger":::* を開きます。 これを有効にしてから、パイプライン内に `HolographicRemotingCallbackPass` のエントリが 2 つあることを確認します。
 
-![Unity のフレーム デバッガー](./media/troubleshoot-unity-pipeline.png)
+![Unity のレンダリング パイプライン](./media/troubleshoot-unity-pipeline.png)
 
 ## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>モデルの読み込み後にチェッカーボード パターンがレンダリングされる
 
@@ -184,6 +180,12 @@ HoloLens 2 の Unity サンプル (quickstart、ShowCaseApp など) をコンパ
 ### <a name="arm64-builds-for-unity-projects-fail-because-audiopluginmshrtfdll-is-missing"></a>AudioPluginMsHRTF.dll が見つからないために Unity プロジェクトで Arm64 のビルドが失敗する
 
 Arm64 の `AudioPluginMsHRTF.dll` は、バージョン 3.0.1 の *Windows Mixed Reality* パッケージ *(com.unity.xr.windowsmr.metro)* に追加されました。 Unity パッケージ マネージャーを使用して、バージョン 3.0.1 以降がインストールされていることを確認します。 Unity のメニュー バーで、 *[Window] > [Package Manager]* に移動し、 *[Windows Mixed Reality]* パッケージを見つけます。
+
+## <a name="native-c-based-application-does-not-compile"></a>ネイティブ C++ ベースのアプリケーションがコンパイルされない
+
+### <a name="library-not-found-error-for-uwp-application-or-dll"></a>UWP アプリケーションまたは Dll の 'ライブラリが見つかりません' エラー
+
+C++ Nuget パッケージ内には、使用するバイナリ フレーバーを定義する `microsoft.azure.remoterendering.Cpp.targets` ファイルがあります。 `UWP` を識別するため、ファイル内の条件によって `ApplicationType == 'Windows Store'` が確認されます。 このため、この種類がプロジェクトで設定されていることを確認する必要があります。 これは、Visual Studio のプロジェクト ウィザードを使用して UWP アプリケーションまたは Dll を作成する場合に当てはまります。
 
 ## <a name="unstable-holograms"></a>ホログラムが不安定である
 

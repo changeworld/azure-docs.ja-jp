@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: f646af4cad6101e019e58f4f50a40b07aff19461
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a36b9d20fa20df56ec53e090976ea86e689ac74b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660487"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322514"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps 用のオンプレミス データ ゲートウェイのインストール
 
@@ -114,7 +114,7 @@ ms.locfileid: "89660487"
 
    **[既存のゲートウェイ クラスターに追加します]** オプションに注意してください。これは、[高可用性のシナリオ](#high-availability)向けに追加のゲートウェイをインストールするときに選択します。
 
-1. ゲートウェイ インストールで使用されるゲートウェイ クラウド サービスと [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) のリージョンを確認します。 既定では、このリージョンは、ご使用の Azure アカウントの Azure AD テナントと同じ場所です。
+1. ゲートウェイ インストールで使用されるゲートウェイ クラウド サービスと [Azure Service Bus メッセージング インスタンス](../service-bus-messaging/service-bus-messaging-overview.md)のリージョンを確認します。 既定では、このリージョンは、ご使用の Azure アカウントの Azure AD テナントと同じ場所です。
 
    ![ゲートウェイ サービスとサービス バスのリージョンを確認する](./media/logic-apps-gateway-install/confirm-gateway-region.png)
 
@@ -140,7 +140,7 @@ ms.locfileid: "89660487"
 
 ## <a name="check-or-adjust-communication-settings"></a>通信の設定を確認または調整する
 
-オンプレミス データ ゲートウェイでは、[Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) に依存してクラウドへの接続が行われ、ゲートウェイに関連付けられている Azure リージョンへの対応する送信接続が確立されます。 お使いの作業環境で、インターネットにアクセスするためにそのトラフィックがプロキシまたはファイアウォールを経由する必要がある場合は、この制限によって、オンプレミス データ ゲートウェイがゲートウェイ クラウド サービスおよび Azure Service Bus に接続できない場合があります。 ゲートウェイにはいくつかの通信設定があり、これを調整できます。 詳細については、以下のトピックを参照してください。
+オンプレミス データ ゲートウェイでは、[Azure Service Bus メッセージング](../service-bus-messaging/service-bus-messaging-overview.md)に依存してクラウドへの接続が行われ、ゲートウェイに関連付けられている Azure リージョンへの対応する送信接続が確立されます。 お使いの作業環境で、インターネットにアクセスするためにそのトラフィックがプロキシまたはファイアウォールを経由する必要がある場合は、この制限によって、オンプレミス データ ゲートウェイがゲートウェイ クラウド サービスおよび Azure Service Bus メッセージングに接続できない場合があります。 ゲートウェイにはいくつかの通信設定があり、これを調整できます。 詳細については、以下のトピックを参照してください。
 
 * [オンプレミス データ ゲートウェイの通信設定を調整する](/data-integration/gateway/service-gateway-communication)
 * [オンプレミス データ ゲートウェイのプロキシ設定を構成する](/data-integration/gateway/service-gateway-proxy)
@@ -206,7 +206,7 @@ Azure AD テナント内のすべてのオンプレミス データ ゲートウ
 
 ゲートウェイを使用すると、バックグラウンド通信の速度と安全性が向上します。 この通信は、クラウド内のユーザー、ゲートウェイ クラウド サービス、オンプレミス データ ソースの間を流れます。 ゲートウェイ クラウド サービスでは、データ ソースの資格情報とゲートウェイの詳細を暗号化して格納します。 サービスでは、ユーザー、ゲートウェイ、オンプレミス データ ソースの間でのクエリとその結果のルーティングも行われます。
 
-ゲートウェイはファイアウォールと共に動作し、ゲートウェイでは送信接続のみが使用されます。 すべてのトラフィックは、ゲートウェイ エージェントからのセキュリティで保護された送信トラフィックとして生成されます。 ゲートウェイでは、オンプレミス ソースからのデータが、[Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) 経由の暗号化されたチャネルで中継されます。 このサービス バスによって、ゲートウェイと呼び出しサービスとの間のチャネルが作成されます。ただし、データは格納されません。 ゲートウェイを経由するすべてのデータは暗号化されます。
+ゲートウェイはファイアウォールと共に動作し、ゲートウェイでは送信接続のみが使用されます。 すべてのトラフィックは、ゲートウェイ エージェントからのセキュリティで保護された送信トラフィックとして生成されます。 ゲートウェイは、オンプレミスのソースから、[Azure Service Bus メッセージング](../service-bus-messaging/service-bus-messaging-overview.md)経由の暗号化されたチャネルでデータを送信します。 このサービス バスによって、ゲートウェイと呼び出しサービスとの間のチャネルが作成されます。ただし、データは格納されません。 ゲートウェイを経由するすべてのデータは暗号化されます。
 
 ![オンプレミス データ ゲートウェイのアーキテクチャ](./media/logic-apps-gateway-install/how-on-premises-data-gateway-works-flow-diagram.png)
 
@@ -217,9 +217,9 @@ Azure AD テナント内のすべてのオンプレミス データ ゲートウ
 
 1. クラウド サービスで、クエリと共に、データ ソースに対する暗号化された資格情報が作成されます。 その後、サービスにより、クエリと資格情報が処理のためにゲートウェイ キューに送信されます。
 
-1. ゲートウェイ クラウド サービスで、クエリが分析されて、Azure Service Bus に要求がプッシュされます。
+1. ゲートウェイ クラウド サービスで、クエリが分析されて、Azure Service Bus メッセージングに要求がプッシュされます。
 
-1. Azure Service Bus により、保留中の要求がゲートウェイに送信されます。
+1. Azure Service Bus メッセージングにより、保留中の要求がゲートウェイに送信されます。
 
 1. ゲートウェイにより、クエリが取得されて、資格情報が復号化され、その資格情報を使用して 1 つ以上のデータ ソースへの接続が行われます。
 

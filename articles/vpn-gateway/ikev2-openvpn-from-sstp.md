@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: aec5a08bf56cd9a9ba18159ffc28a129163571b0
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: c7f71d24ab516044a0ce48ad40f78bc659268866
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89426284"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442165"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>SSTP から OpenVPN プロトコルまたは IKEv2 に移行する
 
@@ -47,7 +47,7 @@ VPN ゲートウェイへの 128 を超える同時 P2S 接続をサポートが
 
 既存のゲートウェイに IKEv2 を追加するには、portal の [Virtual Network ゲートウェイ] の下にある [ポイント対サイトの構成] タブに移動し、ドロップダウン ボックスから **[IKEv2 と SSTP (SSL)]** を選択します。
 
-![ポイント対サイト](./media/ikev2-openvpn-from-sstp/sstptoikev2.png "IKEv2")
+![[トンネルの種類] ドロップダウンが開かれ、[IKEv2 と SSTP (SSL)] が選択されている、[ポイント対サイトの構成] ページのスクリーンショット。](./media/ikev2-openvpn-from-sstp/sstptoikev2.png "IKEv2")
 
 
 ### <a name="option-2---remove-sstp-and-enable-openvpn-on-the-gateway"></a>オプション 2 - SSTP を削除し、ゲートウェイで OpenVPN を有効にする
