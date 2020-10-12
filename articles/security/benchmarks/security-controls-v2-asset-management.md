@@ -4,17 +4,17 @@ description: Azure セキュリティ ベンチマーク V2 の制御、アセ�
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ba010c0dd3384af895c68d980fcae788c2d6d45a
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 845c4f3194f35c68306e74734e5ecc6109d9c103
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059055"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318026"
 ---
-# <a name="security-control-asset-management"></a>セキュリティ コントロールアセット管理
+# <a name="security-control-v2-asset-management"></a>セキュリティ コントロール V2: アセット管理
 
 アセット管理には、Azure リソースに対するセキュリティの可視性とガバナンスを確保するためのコントロールが含まれます。 これには、セキュリティ担当者のアクセス許可、資産インベントリへのセキュリティ アクセス、およびサービスとリソース (インベントリ、追跡、および修正) の承認の管理に関する推奨事項が含まれます。
 
@@ -22,7 +22,7 @@ ms.locfileid: "90059055"
 
 | Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
 |--|--|--|--|
-| AM-1 | 1.1、1.2、1.3、1.4、9.1、12.1 | CM-7、CM-8、CM-11、PM-5 |
+| AM-1 | 1.1、1.2 | CM-8、PM-5 |
 
 セキュリティ チームに Azure テナントとサブスクリプションのセキュリティ閲覧者アクセス許可を付与して、セキュリティ チームが Azure Security Center を使用してセキュリティ上のリスクを監視できるようにします。 
 
@@ -38,7 +38,7 @@ ms.locfileid: "90059055"
 
 **責任**: Customer
 
-**お客様のセキュリティ関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [インフラストラクチャとエンドポイント セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -48,7 +48,7 @@ ms.locfileid: "90059055"
 
 | Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
 |--|--|--|--|
-| AM-2 | 1.5 | CM-8、PM-5 |
+| AM-2 | 1.1、1.2、1.4、1.5、9.1、12.1 | CM-8、PM-5 |
 
 セキュリティ チームが、Azure 上の資産の継続的に更新されるインベントリに確実にアクセスできるようにします。 セキュリティ チームは、組織が新たなリスクにさらされる可能性を評価するため、および継続的なセキュリティ改善への入力として、このインベントリを必要とすることがよくあります。 
 
@@ -64,7 +64,7 @@ Azure Security Center インベントリ機能と Azure Resource Graph を使用
 
 **責任**: Customer
 
-**お客様のセキュリティ関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [インフラストラクチャとエンドポイント セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -86,7 +86,7 @@ Azure Policy を使用して、環境内でユーザーがプロビジョニン�
 
 **責任**: Customer
 
-**お客様のセキュリティ関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティ コンプライアンス管理](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
@@ -106,7 +106,7 @@ Azure Policy を使用して、環境内でユーザーがプロビジョニン�
 
 **責任**: Customer
 
-**お客様のセキュリティ関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [インフラストラクチャとエンドポイント セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -126,7 +126,7 @@ Azure Policy を使用して、環境内でユーザーがプロビジョニン�
 
 **責任**: Customer
 
-**お客様のセキュリティ関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [体制管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
 
@@ -136,7 +136,7 @@ Azure Policy を使用して、環境内でユーザーがプロビジョニン�
 
 | Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
 |--|--|--|--|
-| AM-6 | 2.6 | AC-3、CM-7、CM-8、CM-10、CM-11 |
+| AM-6 | 2.6、2.7 | AC-3、CM-7、CM-8、CM-10、CM-11 |
 
 Azure Virtual Machines で、確実に承認済みのソフトウェアだけが実行され、承認されていないソフトウェアの実行がすべてブロックされるようにします。
 
@@ -156,7 +156,7 @@ Windows および Linux VM からのインベントリ情報の収集を自動�
 
 **責任**: Customer
 
-**お客様のセキュリティ関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [インフラストラクチャとエンドポイント セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 

@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 09/23/2020
 ms.author: jingwang
-ms.openlocfilehash: 12e6ae9dd14ebafb1da6bfbcfef64e2d65e876d8
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: e0fadf4ac8cea1c8804b17f5549a99bc360e2950
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531714"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334295"
 ---
 # <a name="xml-format-in-azure-data-factory"></a>Azure Data Factory での XML 形式
 
@@ -85,10 +85,12 @@ Azure Blob Storage 上の XML データセットの例を次に示します。
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | formatSettings の type は、**XmlReadSettings** に設定する必要があります。 | はい      |
 | validationMode | XML スキーマを検証するかどうかを指定します。<br>使用できる値は、**none** (既定値、検証なし)、**xsd** (XSD を使用して検証)、**dtd** (DTD を使用して検証) です。 | いいえ |
+| namespaces | XML ファイルの解析時に名前空間を有効にするかどうか。 使用可能な値: **true** (既定値)、**false**。 | いいえ |
 | namespacePrefixes | 名前空間 URI とプレフィックスのマッピング。XML ファイルの解析時にフィールドに名前を付けるために使用されます。<br/>XML ファイルに名前空間があり、名前空間が有効になっている場合、既定では、フィールド名は XML ドキュメント内のものと同じになります。<br>このマップの名前空間 URI に対して定義された項目がある場合、フィールド名は `prefix:fieldName` です。 | いいえ |
+| detectDataType | 整数、倍精度、およびブール値のデータ型を検出するかどうか。 使用可能な値: **true** (既定値)、**false**。| いいえ |
 | compressionProperties | 特定の圧縮コーデックのデータを圧縮解除する方法のプロパティ グループ。 | いいえ       |
 | preserveZipFileNameAsFolder<br>( *`compressionProperties`->`type` の下に `ZipDeflateReadSettings` として*)  | **ZipDeflate** で入力データセットが圧縮構成されている場合に適用されます。 コピー時にソースの ZIP ファイル名をフォルダー構造として保持するかどうかを指定します。<br>- **true (既定)** に設定した場合、Data Factory は解凍されたファイルを `<path specified in dataset>/<folder named as source zip file>/` に書き込みます。<br>- **false** に設定した場合、Data Factory は解凍されたファイルを `<path specified in dataset>` に直接書き込みます。 競合または予期しない動作を避けるために、異なるソース ZIP ファイルに重複したファイル名がないことを確認します。  | いいえ |
-| preserveCompressionFileNameAsFolder<br>( *`compressionProperties`->`type` の下に `TarGZipReadSettings` として*) | **TarGzip** で入力データセットが圧縮構成されている場合に適用されます。 コピー時にソースの圧縮ファイル名をフォルダー構造として保持するかどうかを指定します。<br>- **true (既定)** に設定した場合、Data Factory は圧縮解除されたファイルを `<path specified in dataset>/<folder named as source compressed file>/` に書き込みます。 <br>- **false** に設定した場合、Data Factory は圧縮解除されたファイルを `<path specified in dataset>` に直接書き込みます。 競合または予期しない動作を避けるために、異なるソース ファイルに重複したファイル名がないことを確認します。 | いいえ |
+| preserveCompressionFileNameAsFolder<br>(" *`compressionProperties`->`type` の下に `TarGZipReadSettings` として*") | **TarGzip** で入力データセットが圧縮構成されている場合に適用されます。 コピー時にソースの圧縮ファイル名をフォルダー構造として保持するかどうかを指定します。<br>- **true (既定)** に設定した場合、Data Factory により圧縮解除されたファイルが `<path specified in dataset>/<folder named as source compressed file>/` に書き込まれます。 <br>- **false** に設定した場合、Data Factory により圧縮解除されたファイルが `<path specified in dataset>` に直接書き込まれます。 競合または予期しない動作を避けるために、異なるソース ファイルに重複したファイル名がないことを確認します。 | いいえ |
 
 ## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
 
@@ -109,6 +111,7 @@ Azure Blob Storage 上の XML データセットの例を次に示します。
 | 検証モード | XML スキーマを検証するかどうかを指定します。 | いいえ | `None` (既定。検証なし)<br>`xsd` (XSD を使用して検証)<br>`dtd` (DTD を使用して検証) | validationMode |
 | 名前空間 | XML ファイルの解析時に名前空間を有効にするかどうか。 | いいえ | `true` (既定値) または `false` | namespaces |
 | 名前空間プレフィックスのペア | 名前空間 URI とプレフィックスのマッピング。XML ファイルの解析時にフィールドに名前を付けるために使用されます。<br/>XML ファイルに名前空間があり、名前空間が有効になっている場合、既定では、フィールド名は XML ドキュメント内のものと同じになります。<br>このマップの名前空間 URI に対して定義された項目がある場合、フィールド名は `prefix:fieldName` です。 | いいえ | パターン `['URI1'->'prefix1','URI2'->'prefix2']` を含む配列 | namespacePrefixes |
+| [Allow no files found]\(ファイルの未検出を許可\) | true の場合、ファイルが見つからない場合でもエラーはスローされない | no | `true` または `false` | ignoreNoFilesFound |
 
 ### <a name="xml-source-script-example"></a>XML ソース スクリプトの例
 

@@ -16,12 +16,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64a8cab82511a495ed2eef444b05dc534c0f1891
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 8745482ed551108044bbe5e2b2f191ad46d7a441
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422047"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538449"
 ---
 # <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD のカスタム ロールを構成する
 
@@ -44,7 +44,7 @@ ms.locfileid: "87422047"
 1. **[設定]** を選択して **[設定]** ページを開きます。 設定を構成したいロールを選択します。
 1. **[編集]** を選択して **[ロールの設定]** ページを開きます。
 
-    ![Azure AD のカスタム ロールを開いて設定を編集する](./media/azure-ad-custom-roles-configure/edit-settings.png)
+    ![[編集] 操作が選択された [ロール設定の詳細] ページを示すスクリーンショット。](./media/azure-ad-custom-roles-configure/edit-settings.png)
 
 ## <a name="role-settings"></a>ロールの設定
 
