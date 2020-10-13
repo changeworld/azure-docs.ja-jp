@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a089ffb7631ded7bd36a4eee5fb862ced3fd2ad0
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 66815dac145c8c30b770e831a002f6a0ee093675
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589064"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714581"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-or-queue-data-with-azure-cli"></a>Azure CLI で BLOB またはキュー データへのアクセスの承認方法を選択する
 
@@ -43,11 +43,11 @@ BLOB データとキュー データの読み取りと書き込みのための�
 
 Azure AD 資格情報で Azure CLI にサインインすると、OAuth 2.0 アクセス トークンが返されます。 そのトークンが Azure CLI によって自動的に使用され、BLOB または Queue storage に対するその後のデータ操作が承認されます。 サポートされている操作については、コマンドでアカウント キーや SAS トークンを渡す必要がなくなりました。
 
-BLOB とキューのデータへのアクセス許可をロールベースのアクセス制御 (RBAC) を介して Azure AD セキュリティ プリンシパルに割り当てることができます。 Azure Storage の Azure ロールの詳細については、[RBAC を使用した Azure Storage データへのアクセス権の管理](storage-auth-aad-rbac.md)に関する記事を参照してください。
+BLOB とキューのデータへのアクセス許可を Azure ロールベースのアクセス制御 (Azure RBAC) を介して Azure AD セキュリティ プリンシパルに割り当てることができます。 Azure Storage の Azure ロールの詳細については、[Azure RBAC を使用した Azure Storage データへのアクセス権の管理](storage-auth-aad-rbac.md)に関する記事を参照してください。
 
 ### <a name="permissions-for-calling-data-operations"></a>データ操作呼び出しのアクセス許可
 
-Azure Storage 拡張機能は、BLOB とキュー データの操作でサポートされています。 呼び出す操作は、Azure CLI にサインインする Azure AD セキュリティ プリンシパルに与えられているアクセス許可に依存します。 Azure Storage のコンテナーまたはキューのアクセス許可は、RBAC を介して割り当てられます。 たとえば、**BLOB データ閲覧者**ロールが割り当てられている場合、コンテナーまたはキューからデータを読み取るスクリプト コマンドを実行できます。 **BLOB データ共同作成者**ロールが割り当てられている場合、コンテナー、キュー、またはそれらに含まれているデータの読み取り、書き込み、削除を行うスクリプト コマンドを実行できます。
+Azure Storage 拡張機能は、BLOB とキュー データの操作でサポートされています。 呼び出す操作は、Azure CLI にサインインする Azure AD セキュリティ プリンシパルに与えられているアクセス許可に依存します。 Azure Storage のコンテナーまたはキューのアクセス許可は、Azure RBAC を介して割り当てられます。 たとえば、**BLOB データ閲覧者**ロールが割り当てられている場合、コンテナーまたはキューからデータを読み取るスクリプト コマンドを実行できます。 **BLOB データ共同作成者**ロールが割り当てられている場合、コンテナー、キュー、またはそれらに含まれているデータの読み取り、書き込み、削除を行うスクリプト コマンドを実行できます。
 
 コンテナーまたはキューでの各 Azure Storage 操作に必要なアクセス許可の詳細については、「[Call storage operations with OAuth tokens](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens)」 (OAuth トークンを使用してストレージ操作を呼び出す) を参照してください。  
 
@@ -55,7 +55,7 @@ Azure Storage 拡張機能は、BLOB とキュー データの操作でサポー
 
 次の例では、Azure AD の資格情報を使用して Azure CLI からコンテナーを作成する方法を示しています。 コンテナーを作成するには、Azure CLI にログインする必要があります。また、リソース グループとストレージ アカウントが必要になります。 これらのリソースの作成方法については、次をご覧ください。 [クイック スタート:Azure CLI を使用して BLOB を作成、ダウンロード、リストする ](../blobs/storage-quickstart-blobs-cli.md)。
 
-1. コンテナーを作成する前に、[ストレージ BLOB データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)ロールを自分に割り当てます。 自分がアカウント オーナーである場合でも、ストレージ アカウントに対してデータ操作を実行するための明示的なアクセス許可が必要となります。 Azure ロールの割り当ての詳細については、「[Azure portal で RBAC を使用して Azure BLOB とキューのデータへのアクセスを付与する](storage-auth-aad-rbac.md)」を参照してください。
+1. コンテナーを作成する前に、[ストレージ BLOB データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)ロールを自分に割り当てます。 自分がアカウント オーナーである場合でも、ストレージ アカウントに対してデータ操作を実行するための明示的なアクセス許可が必要となります。 Azure ロールの割り当ての詳細については、「[Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる](storage-auth-aad-rbac.md)」を参照してください。
 
     > [!IMPORTANT]
     > Azure ロールの割り当ての反映には数分かかることがあります。

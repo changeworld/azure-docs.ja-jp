@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
-ms.openlocfilehash: de75ea1bc0a1cf63c74be3f7d9e486e1fe38db6f
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 05b0ff7d4f56a61c5c91848044a30cb9bf1d0f46
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614004"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565311"
 ---
 # <a name="frequently-asked-questions-about-the-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API についてよく寄せられる質問
 
-Azure Cosmos DB の MongoDB 用 API は、コミュニティでサポートされる MongoDB 用の既存の SDK とドライバーを使用して、アプリケーションがネイティブの Azure Cosmos データベース エンジンと簡単かつ透過的に通信できるようにするワイヤプロトコル互換レイヤーです。 開発者は、既存の MongoDB ツールチェーンとスキルを使って、Azure Cosmos DB を活用するアプリケーションを構築できるようになりました。 これにより、マルチマスター レプリケーションによるグローバル配信、自動インデックス作成、バックアップ メンテナンス、利用料金に基づくサービス レベル アグリーメント (SLA) など、Azure Cosmos DB の独自の機能によるメリットが得られます。
+Azure Cosmos DB の MongoDB 用 API は、コミュニティでサポートされる MongoDB 用の既存の SDK とドライバーを使用して、アプリケーションがネイティブの Azure Cosmos データベース エンジンと簡単かつ透過的に通信できるようにするワイヤプロトコル互換レイヤーです。 開発者は、既存の MongoDB ツールチェーンとスキルを使って、Azure Cosmos DB を活用するアプリケーションを構築できるようになりました。 これにより、マルチリージョン書き込みレプリケーションによるグローバル配信、自動インデックス作成、バックアップ メンテナンス、利用料金に基づくサービス レベル アグリーメント (SLA) など、Azure Cosmos DB の独自の機能によるメリットが得られます。
 
 ## <a name="how-do-i-connect-to-my-database"></a>データベースに接続する方法は?
 
