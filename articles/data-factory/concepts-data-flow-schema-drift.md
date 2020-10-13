@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
-ms.openlocfilehash: 5b7fe9cf6c751bfb96dff8aa911172ae91a17653
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5edea4b3d3834d8f99159546c0279394ec3986f8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84886627"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324350"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>マッピング データ フローのスキーマの誤差
 
@@ -60,7 +60,7 @@ Azure Data Factory は、実行ごとに変わる柔軟なスキーマをネイ�
 データ フローに誤差の列がある場合は、次の方法を使用して変換でそれらにアクセスできます。
 
 * 名前または位置番号で列を明示的に参照するには、`byPosition` 式と `byName` 式を使用します。
-* 名前、ストリーム、位置、または型の任意の組み合わせで一致するように、派生列または集計変換に列パターンを追加します
+* 名前、ストリーム、位置、原点、または型の任意の組み合わせで一致するように、派生列または集計変換に列パターンを追加します
 * パターンを使用して誤差の列と列の別名と一致するように、選択またはシンク変換にルールベースのマッピングを追加します
 
 列パターンを実装する方法の詳細については、「[マッピング データ フローの列パターン](concepts-data-flow-column-pattern.md)」を参照してください。

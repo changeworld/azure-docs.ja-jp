@@ -3,12 +3,12 @@ title: Azure Lab Services でクラスルーム ラボのスケジュールを�
 description: ラボ内の VM が指定した時刻に起動およびシャットダウンされるように、Azure Lab Services でクラスルーム ラボのスケジュールを作成する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: d6dcdd8d09c2c71c2d41aebd358639883ccfb33d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4eb4e2459069b61990f51f8d8de76522b736723e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445782"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326441"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Azure Lab Services でクラスルーム ラボのスケジュールを作成して管理する 
 スケジュールを使用すると、ラボの VM が指定した時刻に自動的に起動およびシャットダウンされるように、クラスルーム ラボを構成できます。 1 回限りのスケジュールや定期的なスケジュールを定義することができます。 クラスルーム ラボのスケジュールを作成および管理する手順を以下に示します。 
@@ -27,7 +27,7 @@ ms.locfileid: "85445782"
 
 1. **[スケジュール]** ページに切り替えて、ツール バーの **[Add scheduled event]\(スケジュール化されたイベントの追加\)** を選択します。 
 
-    ![[スケジュール] ページの [スケジュールの追加] ボタン](./media/how-to-create-schedules/add-schedule-button.png)
+    ![Azure Lab Services の [スケジュール] ページを表示するスクリーンショット。スケジュールの追加ボタンが選択されています。](./media/how-to-create-schedules/add-schedule-button.png)
 2. **[Event type]\(イベントの種類\)** で **[Standard]\(標準\)** が選択されていることを確認します。 VM の起動時刻のみを指定するには、 **[Start only]\(開始のみ\)** を選択します。 VM の停止時刻のみを指定するには、 **[Stop only]\(停止のみ\)** を選択します。 
 7. **[Repeat]\(繰り返し\)** セクションで、現在のスケジュールを選択します。 
 

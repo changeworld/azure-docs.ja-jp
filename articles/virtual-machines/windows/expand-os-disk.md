@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: 3f1c7fb08c3dcaa078de8f1ee0b90409289cfb43
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: b739bb94911e24002b359aabfa23583ecfc9de85
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469263"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336005"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>仮想マシンの OS ドライブを展開する方法
 
@@ -30,7 +30,7 @@ ms.locfileid: "89469263"
 - オンプレミスから OS ドライブの大きい物理 PC または VM を移行する場合。
 
 > [!IMPORTANT]
-> Azure 仮想マシンの OS ディスクのサイズを変更するには、仮想マシンの割り当てを解除する必要があります。
+> Azure 仮想マシンの OS またはデータ ディスクのサイズを変更するには、仮想マシンの割り当てを解除する必要があります。
 >
 > ディスクを拡張した後、大きいディスクを活用するには、[OS 内のボリュームを拡張する](#expand-the-volume-within-the-os)必要があります。
 > 

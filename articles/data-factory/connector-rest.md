@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: jingwang
-ms.openlocfilehash: c0a64c0a9653bd274e9298401163ad7abc1af99f
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 7b6fa2395e81089e8b4523929a4a7a583b0788a2
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852295"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360771"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Azure Data Factory を使用して REST エンドポイントからデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -404,7 +404,7 @@ Facebook Graph API によって、次の構造で応答が返されます。こ�
 3. **[このテンプレートを使用]** を選択します。
     ![このテンプレートを使用](media/solution-template-copy-from-rest-or-http-using-oauth/use-this-template.png)
 
-4. 次の例に示すように、作成されたパイプラインが表示されます。![パイプライン](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
+4. 次の例に示すように、作成されたパイプラインが表示されます。![テンプレートから作成されたパイプラインを示すスクリーンショット。](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
 
 5. **[Web]** アクティビティを選択します。 **[設定]** で、対応する **[URL]** 、 **[Method]** (メソッド)、 **[Headers]** (ヘッダー)、および **[Body]** (本文) を指定して、データのコピー元となるサービスのログイン API から OAuth ベアラー トークンを取得します。 テンプレート内のプレースホルダーは、Azure Active Directory (AAD) OAuth のサンプルを示しています。 AAD 認証が REST コネクタによってネイティブにサポートされていることに注意してください。OAuth フローの一例を次に示します。 
 
