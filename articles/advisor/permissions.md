@@ -3,12 +3,12 @@ title: Azure Advisor でのアクセス許可
 description: Advisor のアクセス許可と、それを利用してサブスクリプションを構成する機能、推奨事項を延期または無視する機能をブロックする方法。
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 3c7b42372ae6de5c2f519b69aec8a154a2f35a82
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 402a21c47c4cba8f747d5d4601f9c95034c99262
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927387"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91712935"
 ---
 # <a name="permissions-in-azure-advisor"></a>Azure Advisor でのアクセス許可
 
@@ -47,7 +47,7 @@ Advisor でサブスクリプションまたはリソース グループを構�
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、Advisor が RBAC を使用してユーザー アクセス許可を制御する方法と一般的な問題を解決する方法の概要を説明しました。 Advisor の詳細については、次を参照してください。
+この記事では、Advisor で Azure RBAC を使用してユーザー アクセス許可が制御される方法と、一般的な問題を解決する方法の概要を説明しました。 Advisor の詳細については、次を参照してください。
 
 - [Azure Advisor とは](./advisor-overview.md)
 - [Azure Advisor の使用を開始する](./advisor-get-started.md)
