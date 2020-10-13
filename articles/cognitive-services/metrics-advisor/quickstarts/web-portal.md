@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: quickstart
-ms.date: 09/14/2020
+ms.date: 09/30/2020
 ms.author: aahi
-ms.openlocfilehash: 0453ec9eac2b73b5372c143b23d6db98f65e38aa
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 004685a50e2413c29528ad3aca08a0150843a8aa
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90946274"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91631376"
 ---
 # <a name="quickstart-monitor-your-first-metric-using-the-web-portal"></a>クイック スタート:Web ポータルを使用して初めてのメトリックを監視する
 
@@ -38,6 +38,13 @@ Metrics Advisor インスタンスをプロビジョニングするとき、サ�
 > * REST API を使用してサービスを対話的に操作したい場合は、作成したリソースのキーとエンドポイントが必要となります。 それらは、作成したリソースの **[キーとエンドポイント]** タブで確認できます。
 
 このドキュメントでは、初めてのモニターを作成する例として SQL Database を使用します。
+
+## <a name="sign-in-to-your-workspace"></a>ワークスペースにサインインする
+
+リソースがデプロイされたら、[Metrics Advisor ポータル](https://go.microsoft.com/fwlink/?linkid=2143774)にサインインします。 ワークスペースを選択して、メトリックの監視を開始します。 
+ 
+現在、使用可能なリージョンごとに 1 つの Metrics Advisor リソースを作成できます。 Metrics Advisor ポータルでは、いつでもワークスペースを切り替えることができます。
+
 
 ## <a name="onboard-time-series-data"></a>時系列データをオンボードする
 
@@ -75,7 +82,7 @@ Metrics Advisor には、SQL Database、Azure Data Explorer、Azure Table Storag
 接続文字列とクエリ文字列を作成した後、 **[Verify and get schema]\(確認してスキーマを取得\)** を選択して接続を確認し、クエリを実行してデータ ソースからデータ スキーマを取得します。 データ ソース接続によりますが、通常は数秒かかります。 この手順でエラーが発生した場合は、次のことを確認してください。
 
 1. 接続文字列とクエリが正しいこと。
-2. ファイアウォール設定がある場合、Metrics Advisor インスタンスがデータ ソースに接続できること。
+2. ファイアウォール設定がある場合、Metrics Advisor インスタンスがデータ ソースに接続できる。
 
 ### <a name="schema-configuration"></a>スキーマの構成
 
@@ -90,7 +97,7 @@ Metrics Advisor には、SQL Database、Azure Data Explorer、Azure Table Storag
 |**無視**     | 選択した列を無視します。        |         |
 
 
-:::image type="content" source="../media/schema-configuration.png" alt-text="スキーマの構成" lightbox="../media/schema-configuration.png":::
+:::image type="content" source="../media/schema-configuration.png" alt-text="接続の設定" lightbox="../media/schema-configuration.png":::
 
 ### <a name="automatic-roll-up-settings"></a>自動ロール アップ設定
 
@@ -110,7 +117,7 @@ Metrics Advisor は、インジェスト中に各ディメンションで集計 
 - 必要な結果が得られるように検出構成を更新する
 - 異常が検出された場合の通知を設定する
 
-:::image type="content" source="../media/metric-details.png" alt-text="メトリックの詳細" lightbox="../media/metric-details.png":::
+:::image type="content" source="../media/metric-details.png" alt-text="接続の設定" lightbox="../media/metric-details.png":::
 
 ## <a name="view-the-diagnostic-insights"></a>診断の分析情報を表示する
 
@@ -118,13 +125,13 @@ Metrics Advisor は、インジェスト中に各ディメンションで集計 
 
 診断の分析情報を表示するには、時系列の視覚エフェクトに表示される赤色のドットをクリックします。これらは、検出された異常を表しています。 ウィンドウが開いて、インシデント分析ページへのリンクが表示されます。 
 
-:::image type="content" source="../media/incident-link.png" alt-text="インシデント リンク" lightbox="../media/incident-link.png":::
+:::image type="content" source="../media/incident-link.png" alt-text="接続の設定" lightbox="../media/incident-link.png":::
 
 リンクをクリックすると、対応する異常に関するインシデント分析ページが、さまざまな診断の分析情報と共に表示されます。 一番上には、**重大度**、**関係する異常**、影響の**開始時刻**と**終業時刻**など、そのインシデントについての統計情報が表示されます。 
 
 次に、そのインシデントの先祖にあたる異常や、根本原因に関する自動化されたアドバイスが表示されます。 根本原因に関する自動化されたアドバイスは、関連するすべての異常 (偏差、分散、上位の異常への寄与度など) のインシデント ツリーを分析することによって生成されます。 
 
-:::image type="content" source="../media/incident-diagnostic.png" alt-text="インシデントの診断" lightbox="../media/incident-diagnostic.png":::
+:::image type="content" source="../media/incident-diagnostic.png" alt-text="接続の設定" lightbox="../media/incident-diagnostic.png":::
 
 これらの情報から、何が起こっていて、そのインシデントによってどのような影響があるか、最も考えられる根本原因は何かを簡単に、いち早く把握することができます。 早急な対応を行うことで、可能な限り速やかにインシデントを解決することができます。 
 
