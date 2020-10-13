@@ -658,6 +658,8 @@
                       href: app/javascript-react-plugin.md
                     - name: React Native プラグイン
                       href: app/javascript-react-native-plugin.md
+                    - name: Angular プラグイン
+                      href: app/javascript-angular-plugin.md
                 - name: トラブルシューティング
                   items:
                     - name: SDK 読み込みエラー

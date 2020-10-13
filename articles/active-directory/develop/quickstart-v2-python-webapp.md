@@ -1,6 +1,7 @@
 ---
-title: Microsoft ID プラットフォームの Python Web アプリに Microsoft サインインを追加する | Azure
-description: OAuth2 を使用して、Python Web アプリ上で Microsoft サインインを実装する方法について説明します。
+title: 'クイックスタート: Python Web アプリに "Microsoft アカウントでサインイン" を追加する | Azure'
+titleSuffix: Microsoft identity platform
+description: このクイックスタートでは、Python Web アプリでのユーザーのサインイン、Microsoft ID プラットフォームからのアクセス トークンの取得、および Microsoft Graph API の呼び出しを行う方法について説明します。
 services: active-directory
 author: abhidnya13
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 6b58e927952b2a51289c3017455cc7d66545fe86
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 63abbc739849a201275995c81a28ede9f9c84b5a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120322"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91613341"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>クイック スタート: Python Web アプリに Microsoft でサインインを追加する
 
@@ -26,8 +27,7 @@ ms.locfileid: "88120322"
 
 ## <a name="prerequisites"></a>前提条件
 
-このサンプルを実行するには、次のものが必要になります。
-
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Python 2.7 以降](https://www.python.org/downloads/release/python-2713)または [Python 3 以降](https://www.python.org/downloads/release/python-364/)
 - [Flask](http://flask.pocoo.org/)、[Flask-Session](https://pypi.org/project/Flask-Session/)、[要求](https://requests.kennethreitz.org/en/master/)
 - [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python)
@@ -97,7 +97,7 @@ ms.locfileid: "88120322"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > プロジェクトをダウンロードし、ルート フォルダーに近いローカル フォルダー (例: **C:\Azure-Samples**) に ZIP ファイルを展開します。
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [!div class="sxs-lookup" renderon="portal" id="autoupdate" class="nextstepaction"]
 > [コード サンプルをダウンロードします](https://github.com/Azure-Samples/ms-identity-python-webapp/archive/master.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -162,11 +162,11 @@ MSAL を使用するファイルの先頭に次のコードを追加すると、
 import msal
 ```
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>次のステップ
 
-ユーザーのサインインを行う Web API と、Web アプリの呼び出しの詳細を確認します。
+複数のパートで構成されるシナリオ シリーズで、ユーザーのサインインを行う Web アプリの詳細について確認します。
 
 > [!div class="nextstepaction"]
-> [シナリオ: ユーザーのサインインを行う Web アプリ](scenario-web-app-sign-user-overview.md)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+> [シナリオ: ユーザーをサインインさせる Web アプリ](scenario-web-app-sign-user-overview.md)

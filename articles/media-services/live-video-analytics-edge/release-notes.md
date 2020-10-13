@@ -3,12 +3,12 @@ title: Live Video Analytics on IoT Edge リリース ノート - Azure
 description: このトピックでは、Live Video Analytics on IoT Edge のリリース、機能強化、バグ修正、および既知の問題に関するリリース ノートを提供します。
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 0bdf11cd99d99067dc53dde7d55fd37b96a382c9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e33a62891f9503a4f2ff907585316c3737c876e6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90882732"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250472"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>Live Video Analytics on IoT Edge リリース ノート
 
@@ -36,7 +36,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.4
 
 ### <a name="module-updates"></a>モジュールの更新
 
-* Cognitive Services の[空間分析モジュール](spatial-analysis-tutorial.md) (プレビュー) と統合するために、新しいグラフ拡張機能ノード [MediaGraphCognitiveServicesVisionExtension](custom-vision-tutorial.md) を利用できます。
+* Cognitive Services の[空間分析](https://docs.microsoft.com/legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview) (プレビュー) モジュールと統合するために、新しいグラフ拡張機能ノード [MediaGraphCognitiveServicesVisionExtension](spatial-analysis-tutorial.md) を利用できます。
 * Linux ARM64 デバイスのサポートの追加 - このようなデバイスをデプロイするには、[手動の手順](deploy-iot-edge-device.md)を使用します。
 
 ### <a name="documentation-updates"></a>ドキュメントの更新

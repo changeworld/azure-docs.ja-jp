@@ -1,17 +1,17 @@
 ---
 title: クイックスタート - Azure Communication Services を使用して Web アプリに VOIP 通話を追加する
-description: このチュートリアルでは、Javascript 用の Azure Communication Services 通話クライアント ライブラリを使用する方法について説明します
+description: このチュートリアルでは、JavaScript 用 Azure Communication Services 通話クライアント ライブラリの使用方法について説明します。
 author: ddematheu
 ms.author: nimag
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: d58b4d86936c56a08f27bef59edc1d3cc4ce4617
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b66ee8117e5326a8ed8c1a1ad973fb13e942e0c7
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90945999"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761979"
 ---
 このクイックスタートでは、JavaScript 用の Azure Communication Services 通話クライアント ライブラリを使用して、通話を開始する方法について説明します。
 
@@ -124,10 +124,8 @@ const callClient = new CallClient();
 const tokenCredential = new AzureCommunicationUserCredential("<USER ACCESS TOKEN>");
 let callAgent;
 
-callClient.createCallAgent(tokenCredential).then(agent => {
-  callAgent = agent;
-  callButton.disabled = false;
-});
+callAgent = await callClient.createCallAgent(tokenCredential);
+callButton.disabled = false;
 ```
 
 ## <a name="start-a-call"></a>通話を開始する
