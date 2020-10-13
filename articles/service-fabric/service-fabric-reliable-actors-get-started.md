@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3727c41c991b83bc3869279cbb0535a6185ff04d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f775608c6c349c93a43ef4aef26ad50707cd39b7
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015732"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743762"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors の使用
 > [!div class="op_single_selector"]
@@ -108,7 +108,7 @@ internal class HelloWorld : Actor, IHelloWorld
 
     NuGet パッケージとそのすべての依存関係が、ActorClient プロジェクトにインストールされます。
 
-5. クライアント プロジェクトには、インターフェイス プロジェクトへの参照も必要です。  ActorClient プロジェクトで、 **[依存関係]** を右クリックし、 **[参照の追加]** をクリックします。 **[プロジェクト] > [ソリューション]** (まだ選択されていない場合) の順に選択し、 **[HelloWorld.Interfaces]** の横にあるチェック ボックスをオンにします。  **[OK]** をクリックします。
+5. クライアント プロジェクトには、インターフェイス プロジェクトへの参照も必要です。  ActorClient プロジェクトで、 **[依存関係]** を右クリックし、 **[プロジェクト参照の追加]** をクリックします。 **[プロジェクト] > [ソリューション]** (まだ選択されていない場合) の順に選択し、 **[HelloWorld.Interfaces]** の横にあるチェック ボックスをオンにします。  **[OK]** をクリックします。
     
     ![[参照の追加] ダイアログ][7]
 
