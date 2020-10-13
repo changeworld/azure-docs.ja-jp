@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1f096993645aca6999667af88c91d3f55f79d914
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 002aa9da465d86392aaaa5d404f67959b341ecf9
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84983055"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818980"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Azure Portal を使用してサイト間接続を作成する (クラシック)
 
@@ -104,7 +104,7 @@ S2S 構成では DNS の設定は必須の手順ではありませんが、名�
 
 通常、ローカル サイトとはオンプレミスの場所を指します。 ここには、接続の作成先となる VPN デバイスの IP アドレスのほか、VPN ゲートウェイ経由で VPN デバイスにルーティングされる IP アドレス範囲が含まれます。
 
-1. VNet のページの **[設定]** で、 **[ダイアグラム]** をクリックします。
+1. VNet のページの **[監視]** で **[ダイアグラム]** をクリックします。
 1. **[VPN 接続]** ページで、 **[既存の VPN 接続がありません。開始するにはここをクリックしてください]** をクリックします。
 1. **[接続の種類]** については、 **[サイト対サイト]** を選択したままにします。
 4. **[ローカル サイト] の [Configure required settings]\(必要な設定の構成\)** をクリックして、 **[ローカル サイト]** ページを開きます。 設定を構成してから **[OK]** をクリックし、設定を保存します。
@@ -112,7 +112,7 @@ S2S 構成では DNS の設定は必須の手順ではありませんが、名�
    - **[VPN ゲートウェイの IP アドレス]:** これは、オンプレミス ネットワークの VPN デバイスのパブリック IP アドレスです。 VPN デバイスには IPv4 パブリック IP アドレスが必要です。 接続先となる VPN デバイスに有効なパブリック IP アドレスを指定します。 これは Azure で到達可能である必要があります。 VPN デバイスの IP アドレスが不明な場合は、(有効なパブリック IP アドレスの形式で) プレースホルダーの値を入力しておき、後で変更することができます。
    - **[クライアント アドレス空間]:** このゲートウェイ経由でオンプレミスのローカル ネットワークにルーティングする IP アドレス範囲を一覧表示します。 複数のアドレス領域の範囲を追加することができます。 ここで指定する範囲は、仮想ネットワークの接続先となる他のネットワークの範囲、または仮想ネットワーク自体のアドレス範囲と重複しないようにしてください。
 
-   ![ローカル サイト](./media/vpn-gateway-howto-site-to-site-classic-portal/localnetworksite.png "ローカル サイトの構成")
+   ![[新しい VPN 接続] ウィンドウと [ローカル サイト] ウィンドウのスクリーンショット。](./media/vpn-gateway-howto-site-to-site-classic-portal/localnetworksite.png)
 
 **[OK]** をクリックして、[ローカル サイト] ページを閉じます。 **[OK] をクリックして、[新しい VPN 接続] ページを閉じないでください**。
 

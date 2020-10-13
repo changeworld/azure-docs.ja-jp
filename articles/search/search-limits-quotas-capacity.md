@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 08/21/2020
-ms.openlocfilehash: b541af5351a0dd98e782c584d869de0d98445b74
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.date: 10/07/2020
+ms.openlocfilehash: 570481eab44c64db3ec3f513281badd124a2bbdc
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462515"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825489"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure Cognitive Search におけるサービスの制限
 
@@ -50,7 +50,7 @@ ms.locfileid: "89462515"
 
 <sup>1</sup> 2017 年 12 月より前に作成された Basic サービスは、インデックスでの制限が低くなっています (15 ではなく 5)。 Basic レベルにのみ下限 (インデックスあたり 100 フィールド) があります。
 
-<sup>2</sup> ドキュメントごとの複合コレクション内に非常に多くの要素があると、現時点では、記憶域の使用率が高くなります。 これは既知の問題です。 当面は、どのサービス レベルでも、上限を 3,000 にしておくと安全です。 この制限は、複合型フィールドをサポートする最も古い一般提供 (GA) API バージョン (`2019-05-06`) 以降を使用するインデックス作成操作にのみ適用されます。 以前のプレビュー API バージョン (複合型フィールドをサポート) を使用している可能性のあるクライアントが中断されないようにするために、これらのプレビュー API バージョンを使用するインデックス作成操作には、この制限は適用されません。 プレビュー API バージョンは運用シナリオで使用するためのものではないため、最新の GA API バージョンに移行することを強くお勧めします。
+<sup>2</sup> 要素には上限があります。要素が多数あると、ストレージの使用率が高くなるためです。 複合コレクションの要素は、そのコレクションのメンバーとして定義されます。 たとえば、[部屋の複合コレクションが記載されているホテル ドキュメント](search-howto-complex-data-types.md#indexing-complex-types)があるとします。部屋コレクション内の各部屋は、1 つの要素として見なされます。 インデックス作成時は、インデックス作成エンジンによって、ドキュメント全体で最大 3,000 の要素が安全に処理されます。 [この制限](search-api-migration.md#upgrade-to-2019-05-06)は `api-version=2019-05-06` で導入され、文字列コレクションや複合フィールドではなく、複合コレクションにのみ適用されます。
 
 <a name="document-limits"></a>
 

@@ -7,24 +7,22 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 8c229a72b706333a117645095bd96e44abbdf469
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 1dfd4185f077806d6b84376e786cfe5de1a8ffc3
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89418891"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653443"
 ---
 # <a name="nd-series"></a>ND シリーズ
 
 ND シリーズは、AI やディープ ラーニングのワークロードを想定して GPU ファミリーに新たに追加された仮想マシンです。 トレーニングや推論で優れたパフォーマンスを発揮します。 ND インスタンスは、[NVIDIA Tesla P40](https://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf) GPU および Intel Xeon E5-2690 v4 (Broadwell) CPU を搭載しています。 これらのインスタンスは、Microsoft Cognitive Toolkit、TensorFlow、Caffe などのフレームワークを活用する AI ワークロードの単精度浮動小数点演算において、非常に高いパフォーマンスを発揮します。 ND シリーズでは GPU のメモリ サイズ (24 GB) も大幅に増強されているため、より大規模なニューラル ネット モデルにも対応できます。 NC シリーズと同様に、ND シリーズでは 2 番目に少ない待機時間、RDMA を利用した高スループットのネットワーク、InfiniBand との接続性などを備えた構成が利用できます。これにより、多数の GPU を利用した大規模なトレーニング ジョブを実行できます。
 
-Premium Storage: サポートされています
-
-Premium Storage キャッシュ:サポートされています
-
-ライブ マイグレーション: サポートされていません
-
-メモリ保持更新: サポートされていません
+[Premium Storage](premium-storage-performance.md): サポートされています<br>
+[Premium Storage キャッシュ](premium-storage-performance.md): サポートされています<br>
+[ライブ マイグレーション](maintenance-and-updates.md): サポートされていません<br>
+[メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
+[VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
 
 > [!IMPORTANT]
 > この VM シリーズでは、ご利用のサブスクリプションの vCPU (コア) クォータが、各リージョンで 0 に初期設定されています。 このシリーズについては、[提供リージョン](https://azure.microsoft.com/regions/services/)で [vCPU クォータの引き上げを要求](../azure-portal/supportability/resource-manager-core-quotas-request.md)してください。

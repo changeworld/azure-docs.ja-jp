@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-csharp
-ms.openlocfilehash: a451e13b39aea27b4f1e23f9faa30f4b11c1cff1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 256ede9471f3e889dcce9415a6728414b5ab5f75
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021240"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766943"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>IoT Hub メッセージ ルーティングを使用して device-to-cloud メッセージを別のエンドポイントに送信する
 
@@ -126,7 +126,7 @@ Azure portal の [メッセージ ルーティング] ブレードで、フォ�
 
 ## <a name="non-telemetry-events"></a>非テレメトリ イベント
 
-メッセージ ルーティングでは、デバイス テレメトリのほかに、デバイス ツイン変更イベント、デバイス ライフサイクル イベント、およびデバイス ツイン変更イベントの送信を有効にすることもできます (パブリック プレビューの場合)。 たとえば、データ ソースを**デバイス ツイン変更イベント**に設定してルートを作成した場合、IoT Hub は、デバイス ツインの変更が含まれているメッセージをエンドポイントに送信します。 同様に、データ ソースを**デバイス ライフサイクル イベント**に設定してルートを作成した場合、IoT Hub は、デバイスが削除または作成されたかどうかを示すメッセージを送信します。 最後に、[IoT プラグ アンド プレイ パブリック プレビュー](../iot-pnp/overview-iot-plug-and-play.md)の一部として、開発者は、データ ソースを**デジタル ツイン変更イベント**に設定したルートを作成できます。IoT Hub は、デジタル ツインの[プロパティ](../iot-pnp/iot-plug-and-play-glossary.md)が設定または変更されたとき、[デジタル ツイン](../iot-pnp/iot-plug-and-play-glossary.md)が置き換えられたとき、または基になるデバイス ツインで変更イベントが発生したときに、メッセージを送信します。
+メッセージ ルーティングでは、デバイス テレメトリのほかに、デバイス ツイン変更イベント、デバイス ライフサイクル イベント、およびデバイス ツイン変更イベントの送信を有効にすることもできます。 たとえば、データ ソースを**デバイス ツイン変更イベント**に設定してルートを作成した場合、IoT Hub は、デバイス ツインの変更が含まれているメッセージをエンドポイントに送信します。 同様に、データ ソースを**デバイス ライフサイクル イベント**に設定してルートを作成した場合、IoT Hub は、デバイスが削除または作成されたかどうかを示すメッセージを送信します。 最後に、[IoT プラグ アンド プレイ](../iot-pnp/overview-iot-plug-and-play.md)の一部として、開発者は、データ ソースを**デジタル ツイン変更イベント**に設定したルートを作成できます。IoT Hub は、デジタル ツインの[プロパティ](../iot-pnp/iot-plug-and-play-glossary.md)が設定または変更されたとき、[デジタル ツイン](../iot-pnp/iot-plug-and-play-glossary.md)が置き換えられたとき、または基になるデバイス ツインで変更イベントが発生したときに、メッセージを送信します。
 
 [IoT Hub は Azure Event Grid とも統合](iot-hub-event-grid.md)されているため、デバイス イベントを発行して、それらのイベントに基づくワークフローのリアルタイムの統合と自動化をサポートできます。 ご自分のシナリオにどれが最適かについては、[メッセージ ルーティングと Event Grid の主な違い](iot-hub-event-grid-routing-comparison.md)に関するページを参照してください。
 

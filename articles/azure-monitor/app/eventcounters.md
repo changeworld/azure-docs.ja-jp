@@ -4,16 +4,16 @@ description: Application Insights でシステムとカスタムの .NET/.NET Co
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f8ae36545eecbbad2a6695ca979fb7da8380e8cc
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a9af36f3c81ee52b41a8eed875c1a286b95bf838
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657007"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803645"
 ---
 # <a name="eventcounters-introduction"></a>EventCounter の概要
 
-`EventCounter` は、カウンターまたは統計情報を発行および使用するための .NET/.NET Core メカニズムです。 `EventCounters` の概要と、それらを発行および使用する方法の例は、[こちらの](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md)ドキュメントで説明しています。 EventCounter は、Windows、Linux、および macOS のすべての OS プラットフォームでサポートされています。 これは、Windows システムでのみサポートされている [PerformanceCounter](/dotnet/api/system.diagnostics.performancecounter) のクロスプラットフォームの同等のものと考えることができます。
+[`EventCounter`](/dotnet/core/diagnostics/event-counters) は、カウンターまたは統計情報を発行および使用するための .NET/.NET Core メカニズムです。 EventCounter は、Windows、Linux、および macOS のすべての OS プラットフォームでサポートされています。 これは、Windows システムでのみサポートされている [PerformanceCounter](/dotnet/api/system.diagnostics.performancecounter) のクロスプラットフォームの同等のものと考えることができます。
 
 ユーザーは、ニーズに合わせてカスタムの `EventCounters` を発行できますが、.NET Core 3.0 以降では、ランタイムによってこれらのカウンターのセットが既定で発行されます。 このドキュメントでは、Azure Application Insights での (システム定義またはユーザー定義の) `EventCounters` の収集および表示に必要な手順について説明します。
 
@@ -23,32 +23,9 @@ Application Insights では、その `EventCounterCollectionModule` (新しく�
 
 ## <a name="default-counters-collected"></a>収集される既定のカウンター
 
-.NET Core 3.0 以降で実行されているアプリでは、次のカウンターが SDK によって自動的に収集されます。 カウンターの名前の形式は、"カテゴリ|カウンター" になります。
+[AspNetCore SDK](asp-net-core.md) または [WorkerService SDK](worker-service.md) の 2.15.0 バージョン以降では、カウンターの収集は既定で行われません。 モジュール自体が有効になっているので、ユーザーは、目的のカウンターを単に追加して収集することができます。
 
-|カテゴリ | カウンター|
-|---------------|-------|
-|`System.Runtime` | `cpu-usage` |
-|`System.Runtime` | `working-set` |
-|`System.Runtime` | `gc-heap-size` |
-|`System.Runtime` | `gen-0-gc-count` |
-|`System.Runtime` | `gen-1-gc-count` |
-|`System.Runtime` | `gen-2-gc-count` |
-|`System.Runtime` | `time-in-gc` |
-|`System.Runtime` | `gen-0-size` |
-|`System.Runtime` | `gen-1-size` |
-|`System.Runtime` | `gen-2-size` |
-|`System.Runtime` | `loh-size` |
-|`System.Runtime` | `alloc-rate` |
-|`System.Runtime` | `assembly-count` |
-|`System.Runtime` | `exception-count` |
-|`System.Runtime` | `threadpool-thread-count` |
-|`System.Runtime` | `monitor-lock-contention-count` |
-|`System.Runtime` | `threadpool-queue-length` |
-|`System.Runtime` | `threadpool-completed-items-count` |
-|`System.Runtime` | `active-timer-count` |
-
-> [!NOTE]
-> [AspNetCore SDK](asp-net-core.md) または [WorkerService SDK](worker-service.md) の 2.15.0-beta3 バージョン以降では、カウンターの収集は既定で行われません。 モジュール自体が有効になっているので、ユーザーは、目的のカウンターを単に追加して収集することができます。
+.NET Runtime で発行されている既知のカウンターの一覧を取得するには、[利用できるカウンター](/dotnet/core/diagnostics/event-counters#available-counters)のドキュメントを参照してください。
 
 ## <a name="customizing-counters-to-be-collected"></a>収集されるカウンターのカスタマイズ
 
@@ -67,7 +44,7 @@ Application Insights では、その `EventCounterCollectionModule` (新しく�
         services.ConfigureTelemetryModule<EventCounterCollectionModule>(
             (module, o) =>
             {
-                // This removes all default counters.
+                // This removes all default counters, if any.
                 module.Counters.Clear();
 
                 // This adds a user defined counter "MyCounter" from EventSource named "MyEventSource"

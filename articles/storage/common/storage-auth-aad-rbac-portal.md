@@ -1,21 +1,21 @@
 ---
 title: Azure portal を使用してデータ アクセスのための Azure ロールを割り当てる
 titleSuffix: Azure Storage
-description: Azure portal を使用して、ロールベースのアクセス制御 (RBAC) により Azure Active Directory セキュリティ プリンシパルにアクセス許可を割り当てる方法について説明します。 Azure Storage では、Azure AD を使用した認証用の組み込みロールと Azure カスタム ロールがサポートされています。
+description: Azure portal を使用して、Azure ロールベースのアクセス制御 (Azure RBAC) により Azure Active Directory セキュリティ プリンシパルにアクセス許可を割り当てる方法について説明します。 Azure Storage では、Azure AD を使用した認証用の組み込みロールと Azure カスタム ロールがサポートされています。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 09/23/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 21120239c44dbdd812dfb3d3208990db4372ec29
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e2d577261a1cea0bad9aab549b3669f8fdef5751
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828015"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715846"
 ---
 # <a name="use-the-azure-portal-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる
 
@@ -59,16 +59,16 @@ Azure ロールが Azure AD セキュリティ プリンシパルに割り当て
 1. 割り当てるロールの対象にするコンテナーを見つけて、コンテナーの設定を表示します。
 1. **[アクセス制御 (IAM)]** を選択して、コンテナーのアクセス制御設定を表示します。 **[ロールの割り当て]** タブを選択して、ロールの割り当ての一覧を表示します。
 
-    ![コンテナーのアクセス制御設定を示すスクリーンショット](media/storage-auth-aad-rbac-portal/portal-access-control-for-storage.png)
+    :::image type="content" source="media/storage-auth-aad-rbac-portal/portal-access-control-container.png" alt-text="コンテナーのアクセス制御設定を示すスクリーンショット":::
 
 1. **[ロールの割り当ての追加]** ボタンをクリックして新しいロールを追加します。
 1. **[ロールの割り当ての追加]** ウィンドウで、割り当てる Azure Storage ロールを選択します。 次に、そのロールの割り当て先となるセキュリティ プリンシパルを検索して見つけます。
 
-    ![Azure ロールの割り当て方法を示すスクリーンショット](media/storage-auth-aad-rbac-portal/add-rbac-role.png)
+    :::image type="content" source="media/storage-auth-aad-rbac-portal/add-rbac-role.png" alt-text="コンテナーのアクセス制御設定を示すスクリーンショット":::
 
 1. **[保存]** をクリックします。 ロールの割り当て先となった ID が、そのロールに一覧表示されます。 たとえば次の図は、今追加されたユーザーに、*sample-container* という名前のコンテナーのデータに対する読み取りアクセス許可があることを示しています。
 
-    ![ロールに割り当てられたユーザーの一覧を示すスクリーンショット](media/storage-auth-aad-rbac-portal/container-scoped-role.png)
+    :::image type="content" source="media/storage-auth-aad-rbac-portal/container-scoped-role.png" alt-text="コンテナーのアクセス制御設定を示すスクリーンショット":::
 
 同じ手順を実行して、ストレージ アカウント、リソース グループ、またはサブスクリプションに対してスコープが指定されたロールを割り当てることができます。
 
@@ -98,9 +98,9 @@ Azure ロールが Azure AD セキュリティ プリンシパルに割り当て
 ## <a name="next-steps"></a>次のステップ
 
 - ストレージ リソースの Azure ロールに関する詳細については、[Azure Active Directory を利用して BLOB およびキューへのアクセスを認証する](storage-auth-aad.md)方法に関するページを参照してください。 
-- RBAC の詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。
+- Azure RBAC の詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。
 - Azure PowerShell、Azure CLI、または REST API で Azure ロールを割り当てて管理する方法については、次の記事を参照してください。
-    - [Azure PowerShell を使用してロールベースのアクセス制御 (RBAC) を管理する](../../role-based-access-control/role-assignments-powershell.md)
-    - [Azure CLI を使用してロールベースのアクセス制御 (RBAC) を管理する](../../role-based-access-control/role-assignments-cli.md)
-    - [REST API を使用してロールベースのアクセス制御 (RBAC) を管理する](../../role-based-access-control/role-assignments-rest.md)
+    - [Azure PowerShell モジュールを使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-powershell.md)
+    - [Azure CLI を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-cli.md)
+    - [REST API を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-rest.md)
 - ストレージ アプリケーション内からコンテナーおよびキューへのアクセスを承認する方法については、[Azure Storage アプリケーションでの Azure AD の使用](storage-auth-aad-app.md)に関するページを参照してください。

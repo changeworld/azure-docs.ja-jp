@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 2195ac4e5753addaee9e13c368b6e6a1b94354ff
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 09e7a39a2d97626dd01a00fdaef9bc4d711d557b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91363139"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828084"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search における AI エンリッチメント
 

@@ -1,5 +1,5 @@
 ---
-title: 管理単位スコープを使用してロールを割り当ておよび一覧表示する (プレビュー) - Azure Active Directory | Microsoft Docs
+title: 管理単位スコープを使用してロールを割り当ておよび一覧表示する - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory で管理単位を使用してロールの割り当ての範囲を制限します
 services: active-directory
 documentationcenter: ''
@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 07/10/2020
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 918675b111b7b1b85669692b63fed683ea2831f8
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 112c1c6a0fbbd7e0011890d1ce92c6e21e168137
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475636"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817984"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>スコープ付きロールを管理単位に割り当てる
 
@@ -38,6 +38,14 @@ Role  |  説明
 パスワード管理者  |  割り当てられた管理単位内でのみ、管理者以外のユーザーとパスワード管理者のパスワードをリセットできます。
 ユーザー管理者  |  割り当てられた管理単位内でのみ、ユーザーとグループのすべての側面 (制限付き管理者のパスワードのリセットを含む) を管理できます。
 
+## <a name="security-principals-that-can-be-assigned-to-a-scoped-role"></a>スコープ付きロールに割り当てることができるセキュリティ プリンシパル
+
+次のセキュリティ プリンシパルは、管理単位スコープ付きのロールに割り当てることができます。
+
+* ユーザー
+* ロール割り当て可能クラウド グループ (プレビュー)
+* サービス プリンシパル名 (SPN)
+
 ## <a name="assign-a-scoped-role"></a>スコープ付きロールを割り当てる
 
 ### <a name="azure-portal"></a>Azure portal
@@ -50,15 +58,19 @@ Role  |  説明
 
 ![スコープを設定するロールを選択してから、[割り当ての追加] を選択する](./media/roles-admin-units-assign-roles/select-add-assignment.png)
 
+> [!Note]
+>
+> PIM を使用して管理単位でロールを割り当てるには、[こちら](/active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md#assign-a-role-with-restricted-scope)の手順に従ってください。
+
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
 $AdminUser = Get-AzureADUser -ObjectId "Use the user's UPN, who would be an admin on this unit"
 $Role = Get-AzureADDirectoryRole | Where-Object -Property DisplayName -EQ -Value "User Account Administrator"
-$administrativeUnit = Get-AzureADAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
+$administrativeUnit = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
 $RoleMember = New-Object -TypeName Microsoft.Open.AzureAD.Model.RoleMemberInfo
 $RoleMember.ObjectId = $AdminUser.ObjectId
-Add-AzureADScopedRoleMembership -ObjectId $administrativeUnit.ObjectId -RoleObjectId $Role.ObjectId -RoleMemberInfo $RoleMember
+Add-AzureADMSScopedRoleMembership -ObjectId $administrativeUnit.ObjectId -RoleObjectId $Role.ObjectId -RoleMemberInfo $RoleMember
 ```
 
 強調表示されたセクションは、それぞれの環境で必要に応じて変更される場合があります。
@@ -67,7 +79,7 @@ Add-AzureADScopedRoleMembership -ObjectId $administrativeUnit.ObjectId -RoleObje
 
 ```http
 Http request
-POST /administrativeUnits/{id}/scopedRoleMembers
+POST /directory/administrativeUnits/{id}/scopedRoleMembers
     
 Request body
 {
@@ -87,8 +99,8 @@ Request body
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-$administrativeUnit = Get-AzureADAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
-Get-AzureADScopedRoleMembership -ObjectId $administrativeUnit.ObjectId | fl *
+$administrativeUnit = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
+Get-AzureADMSScopedRoleMembership -ObjectId $administrativeUnit.ObjectId | fl *
 ```
 
 強調表示されたセクションは、それぞれの環境で必要に応じて変更される場合があります。
@@ -97,7 +109,7 @@ Get-AzureADScopedRoleMembership -ObjectId $administrativeUnit.ObjectId | fl *
 
 ```http
 Http request
-GET /administrativeUnits/{id}/scopedRoleMembers
+GET /directory/administrativeUnits/{id}/scopedRoleMembers
 Request body
 {}
 ```

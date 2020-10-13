@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e172a023cc9156f435b4f40b2262ee44128c138e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4210ad382301851a41d3fbd7ee3dc20a748fb544
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732006"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802193"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Azure Active Directory でカスタム ロールを作成して割り当てる
 
@@ -58,14 +58,14 @@ ms.locfileid: "84732006"
 Azure AD PowerShell モジュールをインストールするには、次のコマンドを使用します。
 
 ``` PowerShell
-install-module azureadpreview
-import-module azureadpreview
+Install-Module AzureADPreview
+Import-Module AzureADPreview
 ```
 
 モジュールを使用する準備ができているかどうかを確認するには、次のコマンドを使用します。
 
 ``` PowerShell
-get-module azureadpreview
+Get-Module AzureADPreview
   ModuleType Version      Name                         ExportedCommands
   ---------- ---------    ----                         ----------------
   Binary     2.0.2.31     azuread                      {Add-AzureADAdministrati...}
@@ -125,7 +125,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
     Body
 
     ``` HTTP
-   {
+    {
        "description": "Can manage basic aspects of application registrations.",
        "displayName": "Application Support Administrator",
        "isEnabled": true,
@@ -138,11 +138,11 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
                ]
            }
        ]
-   }
+    }
     ```
 
-  > [!Note]
-  > The "templateId":"GUID" は、要件に応じて、本文で送信される省略可能なパラメーターです。 共通パラメーターを使用して複数の異なるカスタム ロールを作成する必要がある場合は、テンプレートを作成し、templateId を定義することをお勧めします。 Powershell コマンドレット (New-Guid).Guid を使用して、事前に templateId を生成することができます。 
+    > [!Note]
+    > `"templateId": "GUID"` は、要件に応じて本文で送信される省略可能なパラメーターです。 共通パラメーターを使用して複数の異なるカスタム ロールを作成する必要がある場合、テンプレートを作成し、`templateId` 値を定義することをお勧めします。 PowerShell コマンドレット `(New-Guid).Guid`を使用し、`templateId` 値を事前に生成できます。 
 
 1. ロールの割り当てを作成します。
 
@@ -163,7 +163,6 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
        "resourceScope":"/<GUID OF APPLICATION REGISTRATION>"
    }
     ```
-
 
 ## <a name="assign-a-custom-role-scoped-to-a-resource"></a>カスタム ロールをスコープ指定してリソースに割り当てる
 

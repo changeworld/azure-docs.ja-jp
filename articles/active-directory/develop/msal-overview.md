@@ -13,15 +13,15 @@ ms.date: 10/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 7aa7dea65df507c0bb35a30bf2a68049a7625137
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c4da177644a1cdb648c00e8309c18031a905d7f
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181785"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825943"
 ---
 # <a name="overview-of-microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL) の概要
-Microsoft Authentication Library (MSAL) を使用すると、セキュリティで保護された Web API にアクセスする目的で、開発者は Microsoft ID プラットフォーム エンドポイントから[トークン](developer-glossary.md#security-token)を取得できます。 これらの Web API には、Microsoft Graph、その他の Microsoft API、サード パーティの Web API、または、独自の Web API が含まれます。 MSAL は .NET、JavaScript、Android、iOS で利用でき、さまざまなアプリケーション アーキテクチャとアプリケーション プラットフォームをサポートします。
+Microsoft Authentication Library (MSAL) を使用すると、セキュリティで保護された Web API にアクセスする目的で、開発者は Microsoft ID プラットフォーム エンドポイントから[トークン](developer-glossary.md#security-token)を取得できます。 これらの Web API には、Microsoft Graph、その他の Microsoft API、サード パーティの Web API、または、独自の Web API が含まれます。 MSAL は、.NET、JavaScript、Java、Python、Android、iOS で利用でき、さまざまなアプリケーション アーキテクチャとアプリケーション プラットフォームをサポートします。
 
 MSAL では、多くのプラットフォームで API に一貫性があり、さまざまな方法でトークンを取得できます。 MSAL の使用には次のような利点があります。
 

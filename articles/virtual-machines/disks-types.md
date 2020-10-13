@@ -3,17 +3,17 @@ title: Azure IaaS VM 用のディスクの種類の選択 - マネージド デ�
 description: Ultra Disks、Premium SSD、Standard SSD、Standard HDD など、仮想マシンで使用できる Azure ディスクの種類について説明します。
 author: roygara
 ms.author: rogarana
-ms.date: 06/03/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: bfc1a818aeb85eca04faca713d4c7acbbce3626a
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 7f274827e646ea0a7c0fd103983cfc566d699228
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088495"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596772"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Azure で利用できるディスクの種類
 
@@ -57,7 +57,7 @@ Ultra Disk の主な機能は次のとおりです。
 |64     |19,200         |2,000         |
 |128     |38,400         |2,000         |
 |256     |76,800         |2,000         |
-|512     |80,000         |2,000         |
+|512     |153,600         |2,000         |
 |1,024 - 65,536 (この範囲内のサイズは 1 TiB ずつ増えます)     |160,000         |2,000         |
 
 ### <a name="ga-scope-and-limitations"></a>GA の範囲と制限事項

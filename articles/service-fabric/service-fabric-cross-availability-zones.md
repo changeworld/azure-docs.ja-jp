@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: d763511032ebff9116702b1f649751a4b7b52afd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 56f7224d93293a0a26d09692996d2c4a4ace344b
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518998"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803740"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Availability Zones をまたがる Azure Service Fabric クラスターのデプロイ
 Azure の Availability Zones は高可用性を備えたサービスで、アプリケーションとデータをデータセンターの障害から保護します。 可用性ゾーンは、Azure リージョン内に独立した電源、冷却手段、ネットワークを備えた一意の物理的な場所です。
@@ -150,7 +150,7 @@ Standard Load Balancer および Standard パブリック IP では、Basic SKU 
 
 * 最初の値は、**zones** プロパティで、仮想マシン スケール セットをデプロイする可用性ゾーンを指定します。
 * 2 つ目の値は、"singlePlacementGroup" プロパティで、true に設定する必要があります。
-* 3 つ目の値は、Service Fabric 仮想マシン スケール セット拡張の "faultDomainOverride" プロパティです。 このプロパティの値には、この仮想マシン スケール セットを配置するリージョンとゾーンを含める必要があります。 例: "faultDomainOverride": "eastus/az1" Azure Service Fabric クラスターにはクロス リージョンのサポートがないため、すべての仮想マシン スケール セット リソースを同じリージョンに配置する必要があります。
+* 3 つ目の値は、Service Fabric 仮想マシン スケール セット拡張の "faultDomainOverride" プロパティです。 このプロパティの値には、この仮想マシン スケール セットを配置するゾーンのみを含める必要があります。 例: "faultDomainOverride": "az1" Azure Service Fabric クラスターにはクロス リージョンのサポートがないため、すべての仮想マシン スケール セット リソースを同じリージョンに配置する必要があります。
 
 ```json
 {
@@ -183,7 +183,7 @@ Standard Load Balancer および Standard パブリック IP では、Basic SKU 
             "systemLogUploadSettings": {
                 "Enabled": true
             },
-            "faultDomainOverride": "eastus/az1"
+            "faultDomainOverride": "az1"
         },
         "typeHandlerVersion": "1.0"
     }

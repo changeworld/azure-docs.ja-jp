@@ -1,17 +1,17 @@
 ---
 title: クエリ ストア - Azure Database for PostgreSQL - Single Server
 description: この記事では、Azure Database for PostgreSQL - Single Server でのクエリ ストア機能について説明します。
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/01/2020
-ms.openlocfilehash: 49eea969f987a72872cda58ae6a7c41e50a14c10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b6c8faafac34ada664ddfadebf8d71a16c73fa7
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830283"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710534"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>クエリ ストアによるパフォーマンスの監視
 
@@ -250,7 +250,7 @@ Azure portal を使用してリソース ログを有効にするには
 ## <a name="limitations-and-known-issues"></a>制限事項と既知の問題
 - PostgreSQL サーバーのパラメーター default_transaction_read_only がオンの場合、クエリ ストアはデータをキャプチャできません。
 - 時間がかかる Unicode クエリ (> = 6000 バイト) が発生した場合は、クエリ ストア機能の実行が中断されることがあります。
-- [読み取りレプリカ](concepts-read-replicas.md)には、マスター サーバーからクエリ ストア データがレプリケートされます。 つまり、読み取りレプリカのクエリ ストアでは、読み取りレプリカで実行されるクエリに関する統計情報は提供されません。
+- [読み取りレプリカ](concepts-read-replicas.md)には、プライマリ サーバーからクエリ ストア データがレプリケートされます。 つまり、読み取りレプリカのクエリ ストアでは、読み取りレプリカで実行されるクエリに関する統計情報は提供されません。
 
 
 ## <a name="next-steps"></a>次のステップ

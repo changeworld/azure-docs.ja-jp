@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: be8e43585fca77fc891a9142066d406444b674d8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7274627ccf0aaab29f3ca569568e0085d53f1dea
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91253236"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818089"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>現実の例を使用して Azure Cosmos DB のデータをモデル化およびパーティション分割する方法
 

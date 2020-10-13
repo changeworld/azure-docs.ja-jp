@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 1dcc345260c6a0844344bb33dec94c40d1dd9a54
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 407160a5c315844003db4c5e371a03e6e25d2694
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650866"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630935"
 ---
 # <a name="configure-network-virtual-appliance-in-azure-hdinsight"></a>Azure HDInsight でネットワーク仮想アプライアンスを構成する
 
@@ -23,7 +23,7 @@ Azure Firewall は自動的に、多くの一般的な重要なシナリオの�
 
 * サービス エンドポイント対応のサービスは、サービス エンドポイントを使用して構成できます。これにより、通常はコストやパフォーマンスに関する考慮事項のために NVA がバイパスされます。
 * IP アドレスの依存関係が HTTP/S 以外のトラフィック (TCP トラフィックと UDP トラフィックの両方) に対応しています。
-* FQDN HTTP/HTTPS エンドポイントは、NVA デバイスでホワイトリストに登録できます。
+* FQDN HTTP/HTTPS エンドポイントは、NVA デバイスでの承認が可能です。
 * 作成したルート テーブルを HDInsight サブネットに割り当てます。
 
 ## <a name="service-endpoint-capable-dependencies"></a>サービス エンドポイント対応の依存関係

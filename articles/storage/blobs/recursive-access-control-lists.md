@@ -5,16 +5,16 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/26/2020
+ms.date: 10/06/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 71c470bd1bb71b55d6643ac6305a054f1c934948
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: f9f0983bdb5e8763d13eeab8ea21bef7fb9ef47f
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229041"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803332"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 のアクセス制御リスト (ACL) を再帰的に設定する
 
@@ -55,7 +55,7 @@ PowerShell、.NET SDK、および Python SDK のインストール ガイドに�
    echo $PSVersionTable.PSVersion.ToString() 
    ```
     
-   お使いの PowerShell のバージョンをアップグレードするには、「[既存の Windows PowerShell をアップグレードする](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell)」を参照してください。
+   お使いの PowerShell のバージョンをアップグレードするには、「[既存の Windows PowerShell をアップグレードする](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell)」を参照してください。
     
 3. PowerShellGet モジュールの最新バージョンをインストールします。
 
@@ -71,7 +71,7 @@ PowerShell、.NET SDK、および Python SDK のインストール ガイドに�
    Install-Module Az.Storage -Repository PsGallery -RequiredVersion 2.5.2-preview -AllowClobber -AllowPrerelease -Force  
    ```
 
-   PowerShell モジュールのインストール方法の詳細については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0)」を参照してください。
+   PowerShell モジュールのインストール方法の詳細については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)」を参照してください。
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -80,7 +80,7 @@ PowerShell、.NET SDK、および Python SDK のインストール ガイドに�
 2. プロジェクト ディレクトリから、`dotnet add package` コマンドを使用して Azure.Storage.Files.DataLake プレビュー パッケージをインストールします。
 
    ```console
-   dotnet add package Azure.Storage.Files.DataLake -v 12.3.0-dev.20200811.1 -s https://pkgs.dev.azure.com/azure-sdk/public/_packaging/azure-sdk-for-net/nuget/v3/index.json
+   dotnet add package Azure.Storage.Files.DataLake -v 12.5.0-preview.1 -s https://pkgs.dev.azure.com/azure-sdk/public/_packaging/azure-sdk-for-net/nuget/v3/index.json
    ```
 
 3. これらの using ステートメントをコード ファイルの先頭に追加します。
@@ -138,7 +138,7 @@ Select-AzSubscription -SubscriptionId <subscription-id>
 
 ### <a name="option-1-obtain-authorization-by-using-azure-active-directory-ad"></a>オプション 1: Azure Active Directory (AD) を使用して承認を取得する
 
-この方法では、システムによって、ユーザー アカウントに適切なロールベースのアクセス制御 (RBAC) の割り当てと ACL のアクセス許可が付与されます。 
+この方法を使用すると、ご利用のユーザー アカウントに、適切な Azure ロールベースのアクセス制御 (Azure RBAC) の割り当てと ACL のアクセス許可がシステムによって確実に付与されます。 
 
 ```powershell
 $ctx = New-AzStorageContext -StorageAccountName '<storage-account-name>' -UseConnectedAccount
@@ -153,7 +153,7 @@ $ctx = New-AzStorageContext -StorageAccountName '<storage-account-name>' -UseCon
 
 ### <a name="option-2-obtain-authorization-by-using-the-storage-account-key"></a>オプション 2:ストレージ アカウント キーを使用して承認を取得する
 
-この方法では、RBAC アクセス許可または ACL アクセス許可はシステムによってチェックされません。
+この方法を使用する場合、Azure RBAC アクセス許可も、ACL アクセス許可もシステムによってチェックされません。
 
 ```powershell
 $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
@@ -174,7 +174,7 @@ $ctx = $storageAccount.Context
 using Azure.Identity;
 ```
 
-クライアント ID、クライアント シークレット、およびテナント ID を取得します。 これを行うには、「[クライアント アプリケーションからの要求を承認するために Azure AD からトークンを取得する](../common/storage-auth-aad-app.md)」を参照してください。 このプロセスの一環として、次のいずれかの[ロールベースのアクセス制御 (RBAC) ロール](../../role-based-access-control/overview.md)をセキュリティ プリンシパルに割り当てる必要があります。 
+クライアント ID、クライアント シークレット、およびテナント ID を取得します。 これを行うには、「[クライアント アプリケーションからの要求を承認するために Azure AD からトークンを取得する](../common/storage-auth-aad-app.md)」を参照してください。 このプロセスの一環として、次のいずれかの[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) ロールをセキュリティ プリンシパルに割り当てる必要があります。 
 
 |Role|ACL 設定機能|
 |--|--|
@@ -229,7 +229,7 @@ public void GetDataLakeServiceClient(ref DataLakeServiceClient dataLakeServiceCl
 
 [Python 用 Azure ID クライアント ライブラリ](https://pypi.org/project/azure-identity/)を使用して、Azure AD でアプリケーションを認証できます。
 
-この例では、クライアント ID、クライアント シークレット、およびテナント ID を使用して **DataLakeServiceClient** インスタンスを作成します。  これらの値を取得するには、「[クライアント アプリケーションからの要求を承認するために Azure AD からトークンを取得する](../common/storage-auth-aad-app.md)」を参照してください。 このプロセスの一環として、次のいずれかの[ロールベースのアクセス制御 (RBAC) ロール](../../role-based-access-control/overview.md)をセキュリティ プリンシパルに割り当てる必要があります。 
+この例では、クライアント ID、クライアント シークレット、およびテナント ID を使用して **DataLakeServiceClient** インスタンスを作成します。  これらの値を取得するには、「[クライアント アプリケーションからの要求を承認するために Azure AD からトークンを取得する](../common/storage-auth-aad-app.md)」を参照してください。 このプロセスの一環として、次のいずれかの[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) ロールをセキュリティ プリンシパルに割り当てる必要があります。 
 
 |Role|ACL 設定機能|
 |--|--|
@@ -279,7 +279,9 @@ except Exception as e:
 
 ## <a name="set-an-acl-recursively"></a>ACL を再帰的に設定する
 
-ACL は再帰的に設定できます。  
+ACL を "*設定する*" 場合は、ACL 全体 (そのすべてのエントリを含む) を**置換**します。 セキュリティ プリンシパルのアクセス許可レベルの変更または ACL への新しいセキュリティ プリンシパルの追加を、他の既存のエントリに影響を与えることなく行いたい場合は、代わりに ACL を "*更新*" する必要があります。 ACL を置換するのでなく更新するには、この記事の「[ACL を再帰的に更新する](#update-an-acl-recursively)」セクションを参照してください。   
+
+このセクションには、ACL の設定方法の例が含まれています。 
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -367,13 +369,17 @@ def set_permission_recursively():
 
 ## <a name="update-an-acl-recursively"></a>ACL を再帰的に更新する
 
-既存の ACL を再帰的に更新することができます。
+ACL を "*更新する*" 場合は、ACL を置換するのでなく ACL を変更します。 たとえば、ACL にリストされている他のセキュリティ プリンシパルに影響を与えることなく、新しいセキュリティ プリンシパルを ACL に追加することができます。  ACL を更新するのでなく、置換する場合は、この記事の「[ACL を再帰的に設定する](#set-an-acl-recursively)」セクションを参照してください。 
+
+ACL を更新するには、更新したい ACL エントリを含む新しい ACL オブジェクトを作成してから、そのオブジェクトを ACL の更新操作で使用します。 既存の ACL は取得せずに、更新する ACL エントリを指定するだけです。
+
+このセクションには、ACL の更新方法の例が含まれています。
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 **Update-AzDataLakeGen2AclRecursive** コマンドレットを使用して、ACL を再帰的に更新します。 
 
-この例では、書き込みアクセス許可を持つ ACL エントリを更新します。
+この例では、書き込みアクセス許可を持つ ACL エントリを更新します。 
 
 ```powershell
 $filesystemName = "my-container"
@@ -445,7 +451,9 @@ def update_permission_recursively():
 
 ## <a name="remove-acl-entries-recursively"></a>ACL エントリを再帰的に削除する
 
-1 つ以上の ACL エントリを再帰的に削除できます。
+1 つ以上の ACL エントリを再帰的に削除できます。 ACL エントリを削除するには、削除する ACL エントリ用に新しい ACL オブジェクトを作成してから、そのオブジェクトを ACL の削除操作で使用します。 既存の ACL は取得せずに、削除する ACL エントリを指定するだけです。 
+
+このセクションには、ACL の削除方法の例が含まれています。
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -548,7 +556,7 @@ public async Task<string> ResumeAsync(DataLakeServiceClient serviceClient,
     {
         var accessControlChangeResult =
             await directoryClient.SetAccessControlRecursiveAsync(
-                accessControlList, null, continuationToken: continuationToken);
+                accessControlList, continuationToken: continuationToken, null);
 
         if (accessControlChangeResult.Value.Counters.FailedChangesCount > 0)
         {

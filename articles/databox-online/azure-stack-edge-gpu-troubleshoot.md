@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/19/2020
 ms.author: alkohli
-ms.openlocfilehash: 9deb10336d959a3f706cfc0ba970c3b83d5cd0a4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 026f476b888380b6f262a6a52c064c939e27e931
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891558"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743201"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスの問題のトラブルシューティング 
 
@@ -51,7 +51,7 @@ ms.locfileid: "90891558"
  
 2. サポート パッケージが作成されたら、 **[サポート パッケージのダウンロード]** を選択します。 圧縮されたパッケージが、お客様が選択したパスにダウンロードされます。 パッケージを解凍して、システム ログ ファイルを表示できます。
 
-    ![[ユーザーの追加] の選択](media/azure-stack-edge-gpu-troubleshoot/collect-logs-2.png)
+    ![[ユーザーの追加] の選択 2](media/azure-stack-edge-gpu-troubleshoot/collect-logs-2.png)
 
 ## <a name="gather-advanced-security-logs"></a>高度なセキュリティ ログの収集
 

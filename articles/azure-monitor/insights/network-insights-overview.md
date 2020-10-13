@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/24/2020
-ms.openlocfilehash: 2559c4f54aa19df248ddf756e376809dea516997
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5f076f477c36f96d1807ce7071720225a6df8e03
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330964"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803808"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>Azure Monitor for Networks (プレビュー)
 Azure Monitor for Network では、デプロイされたすべてのネットワーク リソースの[正常性](https://docs.microsoft.com/azure/service-health/resource-health-checks-resource-types)と[メトリック](../platform/metrics-supported.md)を構成なしで包括的に把握できます。  また、[接続モニター](../../network-watcher/connection-monitor-preview.md)、[ネットワーク セキュリティ グループ (NSG) のフロー ログ](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)、[Traffic Analytics](../../network-watcher/traffic-analytics.md)、その他のネットワークの[診断](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics)など、すべてのネットワーク監視機能にアクセスすることもできます。
@@ -108,6 +108,43 @@ Application Gateway の **[依存関係]** ビューは、フロントエンド 
 
 ![[診断ツールキット] タブ](media/network-insights-overview/azure-monitor-for-networks-diagnostic-toolkit.png)
 
+## <a name="troubleshooting"></a>トラブルシューティング 
+
+一般的なトラブルシューティングのガイダンスについては、専用のブックベースの分析情報の[トラブルシューティングに関する記事](troubleshoot-workbooks.md)を参照してください。
+
+このセクションは、Azure Monitor for Networks を使用するときに発生する可能性があるいくつかの一般的な問題を診断し、トラブルシューティングするのに役立ちます。 以下のリストを使用して、特定の問題に関連する情報を見つけてください。
+
+### <a name="resolving-performance-issues-or-failures"></a>パフォーマンスの問題またはエラーの解決
+
+Azure Monitor for Networks でネットワーク関連の問題が見つかったとき、それを解決するには、不具合のあるリソースのトラブルシューティング ドキュメントを参照してください。 以下は、よく利用されているサービスのトラブルシューティング リンクです。
+* 仮想ネットワーク (VNET)
+* Application Gateway
+* VPN Gateway
+* ExpressRoute 
+* Load Balancer 
+
+### <a name="why-dont-i-see-the-resources-from-all-the-subscriptions-i-have-selected"></a>選択したサブスクリプションの一部のリソースが表示されません
+
+ネットワーク分析情報で表示できるリソースのサブスクリプションは一度に 5 つに限られます。 
+
+### <a name="i-want-to-make-changes-or-add-additional-visualizations-to-network-insights-how-do-i-do-so"></a>ネットワーク分析情報に変更を加えたり、視覚化を追加したりするには、どうすればよいですか
+
+変更するには、[編集モード] を選択してブックを変更し、指定したサブスクリプションとリソース グループに関連付けられている新しいブックとして作業内容を保存します。
+
+### <a name="what-is-the-time-grain-once-we-pin-any-part-of-the-workbooks"></a>ブックのある部分をピン留めした後の時間グレインはどれだけですか
+
+[自動] 時間グレインを使用しているので、選択されている時間範囲によって異なります。
+
+### <a name="what-is-the-time-range-when-any-part-of-the-workbook-is-pinned"></a>ブックのある部分をピン留めしたときの時間範囲はどうなりますか
+
+時間範囲は、ダッシュボードの設定によって異なります。
+
+### <a name="what-if-i-want-to-see-other-data-or-make-my-own-visualizations-how-can-i-make-changes-to-the-network-insights"></a>他のデータを表示したり、独自の視覚化を作成したりするにはどうすればよいですか。 ネットワーク分析情報に変更を加えるにはどうすればよいですか
+
+編集モードを使用し、サイドパネルと詳細メトリック ビューに表示されるブックを編集し、新しい変更をすべて反映した新しいブックとして作業内容を保存できます。
+
+
 ## <a name="next-steps"></a>次のステップ
 
 - ネットワーク監視の詳細については、「[Azure Network Watcher とは](../../network-watcher/network-watcher-monitoring-overview.md)」を参照してください。
+- ブックがサポートするように設計されているシナリオ、新規レポートの作成方法と既存レポートのカスタマイズ方法などについては、「[Azure Monitor ブックを使用した対話型レポートの作成](../platform/workbooks-overview.md)」で学習してください。

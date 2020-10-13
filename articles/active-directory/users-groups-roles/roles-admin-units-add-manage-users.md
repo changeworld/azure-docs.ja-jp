@@ -1,5 +1,5 @@
 ---
-title: 管理単位のユーザーを追加、削除、一覧表示する (プレビュー) - Azure Active Directory | Microsoft Docs
+title: 管理単位のユーザーを追加、削除、一覧表示する - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory で管理単位のユーザーとそのロールのアクセス許可を管理します
 services: active-directory
 documentationcenter: ''
@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 04/16/2020
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9b76ac103b873026dce3d3f8f92e54dc3afc14c
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 0d29f4ef5806eb8ed9385696dea78f4ae0992b93
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850942"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818154"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Azure Active Directory で管理単位のユーザーを追加して管理する
 
@@ -31,30 +31,39 @@ Azure Active Directory (Azure AD) では、きめ細かい管理スコープで�
 
 ### <a name="azure-portal"></a>Azure portal
 
-ユーザーを管理単位に割り当てるには、次の 2 つの方法があります。
+ユーザーは管理単位に個別に割り当てるか、一括操作で割り当てることができます。
 
-1. 個別割り当て
+- ユーザー プロファイルから個別に割り当てる
 
-    1. ポータルで Azure AD にアクセスし、[ユーザー] を選択して、管理単位に割り当てるユーザーを選択できます。 その後、左側のパネルで [管理単位] を選択できます。 ユーザーを 1 つまたは複数の管理単位に割り当てるには、[管理単位に割り当てる] をクリックし、ユーザーが割り当てられる管理単位を選択します。
+   1. 特権ロール管理者のアクセス許可で [Azure AD 管理センター](https://portal.azure.com)にサインインします。
+   1. **[ユーザー]** を選択し、管理単位に割り当てるユーザーを選択し、ユーザーのプロファイルを開きます。
+   1. **[管理単位]** を選択します。 ユーザーを 1 つまたは複数の管理単位に割り当てるには、 **[管理単位に割り当てる]** を選択し、ユーザーが割り当てられる管理単位を選択します。
 
        ![[追加] を選択してから、管理単位の名前を入力する](./media/roles-admin-units-add-manage-users/assign-users-individually.png)
 
-    1. ポータルで Azure AD にアクセスし、左側のウィンドウで [管理単位] を選択してから、ユーザーが割り当てられる管理単位を選択できます。 左側のウィンドウで [すべてのユーザー] を選択し、[メンバーの追加] を選択します。 その後、管理単位に割り当てる 1 人以上のユーザーを右側のウィンドウから選択できます。
+- 管理単位からの個別に割り当てる
+
+   1. 特権ロール管理者のアクセス許可で [Azure AD 管理センター](https://portal.azure.com)にサインインします。
+   1. **[管理単位]** を選択し、ユーザーを割り当てる管理単位を選択します。
+   1. **[すべてのユーザー]** を選択し、 **[メンバーの追加]** を選択し、管理単位に割り当てる 1 つまたは複数のユーザーを **[メンバーの追加]** ウィンドウから選択します。
 
         ![管理単位を選択して、[メンバーの追加] を選択する](./media/roles-admin-units-add-manage-users/assign-to-admin-unit.png)
 
-1. 一括割り当て
+- 一括割り当て
 
-    ポータルで Azure AD にアクセスして、[管理単位] を選択します。 ユーザーが追加される管理単位を選択します。 [すべてのユーザー] > [.csv ファイルのメンバーの追加] の順にクリックします。 その後、CSV テンプレートをダウンロードして、ファイルを編集できます。 この形式は単純で、各行に UPN を 1 つ追加する必要があります。 ファイルの準備ができたら、適切な場所に保存した後、スナップショットで強調表示されているように手順 3 でアップロードします。
+   1. 特権ロール管理者のアクセス許可で [Azure AD 管理センター](https://portal.azure.com)にサインインします。
+   1. **[管理単位]** を選択します。
+   1. ユーザーが追加される管理単位を選択します。
+   1. **[すべてのユーザー]** 、 **[.csv ファイルのメンバーの追加]** の順に開きます。 その後、コンマ区切り値 (CSV) テンプレートをダウンロードしてファイルを編集できます。 この形式は単純で、各行にユーザー プリンシパル名を 1 つ追加する必要があります。 ファイルの準備ができたら、適切な場所に保存した後、この手順の一環としてアップロードします。
 
     ![管理単位にユーザーを一括割り当てする](./media/roles-admin-units-add-manage-users/bulk-assign-to-admin-unit.png)
 
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-$administrativeunitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
+$administrativeunitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
 $UserObj = Get-AzureADUser -Filter "UserPrincipalName eq 'billjohn@fabidentity.onmicrosoft.com'"
-Add-AzureADAdministrativeUnitMember -ObjectId $administrativeunitObj.ObjectId -RefObjectId $UserObj.ObjectId
+Add-AzureADMSAdministrativeUnitMember -Id $administrativeunitObj.ObjectId -RefObjectId $UserObj.ObjectId
 ```
 
 上記の例では、コマンドレット Add-AzureADAdministrativeUnitMember を使用して、ユーザーを管理単位に追加します。 ユーザーが追加される管理単位のオブジェクト ID と、追加するユーザーのオブジェクト ID が、引数として受け取られます。 強調表示されたセクションは、それぞれの環境で必要に応じて変更される場合があります。
@@ -66,7 +75,7 @@ Http request
 POST /administrativeUnits/{Admin Unit id}/members/$ref
 Request body
 {
-  "@odata.id":"https://graph.microsoft.com/beta/users/{id}"
+  "@odata.id":"https://graph.microsoft.com/v1.0/users/{id}"
 }
 ```
 
@@ -74,7 +83,7 @@ Request body
 
 ```http
 {
-  "@odata.id":"https://graph.microsoft.com/beta/users/johndoe@fabidentity.com"
+  "@odata.id":"https://graph.microsoft.com/v1.0/users/johndoe@fabidentity.com"
 }
 ```
 
@@ -82,24 +91,27 @@ Request body
 
 ### <a name="azure-portal"></a>Azure portal
 
-Azure portal で Azure AD > ユーザーの順にアクセスして、ユーザーのプロファイルを開くことができます。 ユーザーをクリックして、ユーザーのプロファイルを開きます。
+Azure portal によって、次の操作でユーザーのプロファイルを開くことができます。
 
-![Azure Active Directory でユーザー プロファイルを開く](./media/roles-admin-units-add-manage-users/user-profile-admin-units.png)
+1. **[Azure AD]** 、 **[ユーザー]** の順に開きます。
 
-左側のパネルで **[管理単位]** を選択すると、ユーザーが割り当てられている管理単位が一覧表示されます。
+1. ユーザーを選択して、ユーザーのプロファイルを開きます。
 
-![ユーザーの管理単位を一覧表示する](./media/roles-admin-units-add-manage-users/list-user-admin-units.png)
+1. **[管理単位]** を選択すると、ユーザーが割り当てられている管理単位が一覧表示されます。
+
+   ![ユーザーの管理単位を一覧表示する](./media/roles-admin-units-add-manage-users/list-user-admin-units.png)
 
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-Get-AzureADAdministrativeUnit | where { Get-AzureADAdministrativeUnitMember -ObjectId $_.ObjectId | where {$_.ObjectId -eq $userObjId} }
+Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember -Id $_.ObjectId | where {$_.RefObjectId -eq $userObjId} }
 ```
+注:既定では、Get-AzureADAdministrativeUnitMember を実行すると、返されるメンバーの数が 100 に限定されます。"-All $true" を追加することで、取得されるメンバーの数を増やすことができます。
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
 ```http
-https://graph.microsoft.com/beta/users//memberOf/$/Microsoft.Graph.AdministrativeUnit
+https://graph.microsoft.com/v1.0/users/{id}/memberOf/$/Microsoft.Graph.AdministrativeUnit
 ```
 
 ## <a name="remove-a-single-user-from-an-au"></a>AU から 1 人のユーザーを 削除する
@@ -117,12 +129,12 @@ https://graph.microsoft.com/beta/users//memberOf/$/Microsoft.Graph.Administrativ
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-Remove-AzureADAdministrativeUnitMember -ObjectId $auId -MemberId $memberUserObjId
+Remove-AzureADMSAdministrativeUnitMember -Id $auId -MemberId $memberUserObjId
 ```
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
-   https://graph.microsoft.com/beta/administrativeUnits/<adminunit-id>/members/<user-id>/ $ref
+   https://graph.microsoft.com/v1.0/directory/administrativeUnits/{adminunit-id}/members/{user-id}/ $ref
 
 ## <a name="bulk-remove-more-than-one-user"></a>複数のユーザーを一括削除する
 

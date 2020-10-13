@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: dd5a200d1c17f0417b2ee88f7f905ee6de3cfe62
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: efcf634c9f34fd2b479140af800bb650f66bd821
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555391"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826745"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Azure Active Directory と E Sales Manager Remix の統合
 
@@ -121,7 +121,7 @@ E Sales Manager Remix で Azure AD のシングル サインオンを構成し�
 
 1. **[E Sales Manager Remix の構成]** で、 **[E Sales Manager Remix の構成]** を選択します。
 
-    ![E Sales Manager Remix 構成](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_configure.png) 
+    ![[E Sales Manager Remix 構成] セクションを示すスクリーンショット。[E sales Manager Remix の構成] が選択されています。](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_configure.png) 
 
     **[サインオンの構成]** ウィンドウが開きます。
 

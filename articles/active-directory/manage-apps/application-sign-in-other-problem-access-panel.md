@@ -11,16 +11,16 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: bfb4d265a42fe1e4473af0f9bde4ebb76f0734a0
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 3b9acc3f91a91527e96f450d825d06f6b909e15d
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707970"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91729153"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Azure AD マイ アプリからのアプリケーションへのサインインに関する問題のトラブルシューティング
 
-Web ベースのポータルであるマイ アプリを使用すると、Azure Active Directory (Azure AD) の職場または学校アカウントを持つユーザーは、Azure AD 管理者によってアクセスを許可されたクラウドベースのアプリケーションを表示および起動することができます。 
+Web ベースのポータルであるマイ アプリを使用すると、Azure Active Directory (Azure AD) の職場または学校アカウントを持つユーザーは、Azure AD 管理者によってアクセスを許可されたクラウドベースのアプリケーションを表示および起動することができます。 マイ アプリは、[https://myapps.microsoft.com](https://myapps.microsoft.com) で Web ブラウザーの使用によりアクセスされます。
 
 アプリの ID プロバイダーとして Azure AD を使用する方法については、[Azure AD でのアプリケーション管理とは何か](what-is-application-management.md)に関するページを参照してください。 すばやく開始するには、[アプリケーション管理のクイックスタート シリーズ](view-applications-portal.md)に関するページをご確認ください。
 

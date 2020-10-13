@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: matd
-ms.openlocfilehash: b186fadcc99c6cc538b61eaa94d5d84d649c233f
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 23afa82ffda5341242c01cbe024fb71f482345d5
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184008"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710925"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>NetBackup を使用したバックアップ ターゲットとしての StorSimple
 
@@ -132,7 +132,7 @@ StorSimple の詳細については、「[StorSimple 8000 シリーズ: ハイ�
 
 高性能ボリュームのサイズは、保持ポリシーの容量とパフォーマンスの要件に対応できるものにする必要があります。
 
-![セカンダリ バックアップ ターゲットとしての StorSimple の論理図](./media/storsimple-configure-backup-target-using-netbackup/secondarybackuptargetlogicaldiagram.png)
+![初回のバックアップと復元のターゲットで高性能ボリュームにしているアーキテクチャの図。](./media/storsimple-configure-backup-target-using-netbackup/secondarybackuptargetlogicaldiagram.png)
 
 ### <a name="secondary-target-backup-logical-steps"></a>セカンダリ ターゲット バックアップの論理的ステップ
 

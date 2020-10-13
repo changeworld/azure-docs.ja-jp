@@ -1,18 +1,18 @@
 ---
 title: Azure SQL Database 用の組み込みポリシー定義
 description: Azure SQL Database および SQL Managed Instance 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.service: sql-database
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 26fd71d829c4d844b20d0848ac1f0cd9040d0cbf
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8f18ced3e27357d38908c12caf17a325af997a7d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90972730"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826610"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-sql-database--sql-managed-instance"></a>Azure SQL Database および SQL Managed Instance 用の Azure Policy 組み込み定義
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -24,6 +24,9 @@ ms.locfileid: "90972730"
 ## <a name="azure-sql-database--sql-managed-instance"></a>Azure SQL Database および SQL Managed Instance 
 
 [!INCLUDE [azure-policy-reference-service-sqldatabase](../../../includes/policy/reference/byrp/microsoft.sql.md)]
+
+## <a name="limitations"></a>制限事項
+- T-SQL または SSMS を使用する場合は、Azure SQL Database の作成に適用される Azure Policy は適用されません。 
 
 ## <a name="next-steps"></a>次のステップ
 

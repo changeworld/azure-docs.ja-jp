@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b327e388366fe3129695a5c1780600e5903508a
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: ea5d24fd36e668fc52a8b5c9a20472c42ef3c420
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705539"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825972"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>方法:Azure AD で古いデバイスを管理する
 
@@ -163,9 +163,9 @@ Get-AzureADDevice | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-ob
 ### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>Windows Autopilot デバイスに気を付ける必要があるのはなぜですか?
 
 Windows Autopilot オブジェクトに関連付けられていた Azure AD デバイスを削除した場合、デバイスが将来再利用される場合に、次の 3 つのシナリオが発生する可能性があります。
-- ホワイト グローブを使用しない Windows Autopilot のユーザー主導型のデプロイでは、新しい Azure AD デバイスが作成されますが、ZTDID にタグ付けされることはありません。
+- 事前プロビジョニングを使用しない Windows Autopilot のユーザー主導型のデプロイを実行すると、新しい Azure AD デバイスが作成されますが、ZTDID にタグ付けされることはありません。
 - Windows Autopilot の自己デプロイ モードのデプロイでは、Azure AD デバイスの関連付けが見つからないため、これらのデプロイは失敗します  (これは、"なりすました" デバイスが資格情報なしで Azure AD への参加を試行しないようにするためのセキュリティ メカニズムです)。このエラーでは、ZTDID の不一致が示されます。
-- Windows Autopilot のホワイト グローブ デプロイでは、Azure AD デバイスの関連付けが見つからないため、これらのデプロイは失敗します (バックグラウンドでは、ホワイト グローブ デプロイで同じ自己デプロイ モード プロセスが使用されるため、同じセキュリティ メカニズムが適用されます)。
+- Windows Autopilot の事前プロビジョニング デプロイの場合、Azure AD デバイスの関連付けが見つからないため、これらのデプロイは失敗します。 (バックグラウンドでは、事前プロビジョニング デプロイで同じ自己デプロイ モード プロセスが使用されるため、同じセキュリティ メカニズムが適用されます。)
 
 ### <a name="how-do-i-know-all-the-type-of-devices-joined"></a>すべての参加済みデバイスのタイプを知るにはどうすればよいですか?
 

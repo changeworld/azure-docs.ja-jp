@@ -1,5 +1,5 @@
 ---
-title: Azure 仮想マシンの技術資産を作成する
+title: Azure Marketplace 仮想マシン オファーの技術資産を作成する
 description: Azure Marketplace 向けの仮想マシン (VM) オファーの技術資産を作成および構成する方法について説明します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,22 +7,22 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 08/14/2020
-ms.openlocfilehash: 07c8de2a9d94b51f7183829466bd68d56e19efba
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: a83532e2dd6fc8e83206a3b4a055170b40d131fd
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646794"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803519"
 ---
-# <a name="create-azure-virtual-machine-technical-assets"></a>Azure 仮想マシンの技術資産を作成する
+# <a name="create-technical-assets-for-an-azure-marketplace-virtual-machine-offer"></a>Azure Marketplace 仮想マシン オファーの技術資産を作成する
 
 Azure Marketplace に仮想マシン (VM) イメージを発行しているとき、Azure チームはその VM イメージを検証して、その起動可能性、セキュリティ、Azure との互換性を確認します。 高品質テストのいずれかが失敗した場合は、その発行が失敗し、エラーおよび考えられる[修正手順](https://docs.microsoft.com/azure/marketplace/partner-center-portal/vm-certification-issues-solutions)を含むメッセージが表示されます。
 
 この記事では、Azure Marketplace 向けの仮想マシン (VM) オファーの技術資産を作成および構成する方法について説明します。 1 つの VM には､オペレーティング システムの仮想ハード ディスク (VHD) と、オプションの関連するデータ ディスク VHD の 2 つのコンポーネントが含まれます｡
 
-1. **オペレーティング システム VHD** - オファーでデプロイされるオペレーティング システムとソリューションが含まれています。 VHD を準備するプロセスは、それが Linux ベースの VM、Windows ベースの VM、カスタム ベースの VM のいずれであるかによって異なります。
+- **オペレーティング システム VHD**:オファーでデプロイされるオペレーティング システムとソリューションが含まれています。 VHD を準備するプロセスは、それが Linux ベースの VM、Windows ベースの VM、カスタム ベースの VM のいずれであるかによって異なります。
 
-2. **データ ディスク VHD** – VM 専用の永続的ストレージ。 永続的な情報の格納には、オペレーティング システム VHD (C: ドライブなど) を使用しないでください。
+- **データ ディスク VHD**:VM 専用の永続的ストレージ。 永続的な情報の格納には、オペレーティング システム VHD (C: ドライブなど) を使用しないでください。
 
 VM イメージには、1 個のオペレーティング システム ディスクと、最大 16 個のデータ ディスクが含まれます。 ディスクが空の場合でも、データ ディスクごとに 1 つの VHD を使用してください。
 
@@ -98,20 +98,17 @@ VM イメージのオペレーティング システム VHD は、Azure 承認�
 4. **[+ 追加]** を選択して、 **[Create a virtual machine experience]\(仮想マシン エクスペリエンスの作成\)** を開きます。
 5. ドロップダウン リストからイメージを選択するか、または **[すべてのパブリックおよびプライベート イメージを参照する]** を選択して、使用可能なすべての仮想マシン イメージを検索または参照します。 例:
 
-    :::image type="content" source="media/vm/create-resource-group-example.png" alt-text="サンプルの VM イメージを示します。":::
+    :::image type="content" source="media/vm/create-resource-group-example.png" alt-text="リソース グループの作成の開始を示します。":::
 
 6. 次の推奨事項に従ってデプロイする VM のサイズを選択します。
     1. オンプレミスで VHD を開発する場合、サイズは重要ではありません。 小さいサイズの VM を使用することを検討してください。
     2. Azure でイメージを開発する場合は、選択したイメージに推奨される VM サイズを使用することを検討してください。
 
-    :::image type="content" source="media/vm/create-virtual-machine.png" alt-text="VM サイズの選択を示します。":::
+    :::image type="content" source="media/vm/create-virtual-machine.png" alt-text="リソース グループの作成の開始を示します。":::
 
 7. **ディスク** セクションで、**詳細設定］** セクションを展開し、**マネージド ディスクの使用** オプションを **いいえ** に設定します。
 
-    :::image type="content" source="media/vm/use-managed-disks.png" alt-text="マネージド ディスクを使用するオプションを示します。":::
-
-8. VM の作成に必要なその他の詳細を指定します。
-9. **[確認と作成]** を選択して、選択内容を確認します。 "**証に成功しました**" というメッセージが表示されたら、 **[作成]** を選択します。
+    :::image type="content" source="media/vm/use-managed-disks.png" alt-text="リソース グループの作成の開始を示します。" というメッセージが表示されたら、 **[作成]** を選択します。
 
 Azure で、指定した仮想マシンのプロビジョニングが開始されます。 左側の **[Virtual Machines]** タブを選択して、進捗状況を追跡できます。 作成後に、状態は **[実行中]** に変わります。
 
@@ -129,7 +126,7 @@ Azure portal で第 2 世代 (Gen2) VM を作成します。
 8. [サポートされている Gen 2 VM](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#generation-2-vm-sizes) とサイズの推奨されるサイズを選択します。
 9. [Azure portal での作成フロー](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)を参照して、VM の作成を完了します。
 
-    :::image type="content" source="media/vm/vm-generation.png" alt-text="VM の世代を選択するオプションを示します。":::
+    :::image type="content" source="media/vm/vm-generation.png" alt-text="リソース グループの作成の開始を示します。":::
 
 ## <a name="connect-to-your-azure-vm"></a>Azure VM に接続する
 
@@ -157,7 +154,7 @@ Linux ベースの VM に接続するには、Secure Shell プロトコル (SSH)
 7. PuTTY アプリケーションを開きます。
 8. [PuTTY Configuration]\(PuTTY 構成\) ダイアログで、VM の IP アドレスまたは DNS 名を入力します。
 
-    :::image type="content" source="media/vm/putty-configuration.png" alt-text="PuTTY のターミナル設定を示し、[ホスト名] および [ポート] フィールドが強調表示されています。":::
+    :::image type="content" source="media/vm/putty-configuration.png" alt-text="リソース グループの作成の開始を示します。":::
 
 9. **[Open]\(開く\)** を選択して PuTTY ターミナルを開きます。
 10. プロンプトが表示されたら、Linux VM のアカウント名とパスワードを入力します。

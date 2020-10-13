@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - contperfq1
 - device-developer
-ms.openlocfilehash: aa70c9e5d67c759afe905e9e110d6bcd18555a8c
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: d6dd1bbf853a13948f55db4ae694b28cb7549c9b
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019242"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803791"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションで新しい IoT デバイスの種類を定義する
 
@@ -171,6 +171,21 @@ IoT Central からデバイス コマンドを呼び出すことができます�
 | 説明 | コマンド機能の説明。 |
 | Request | 有効になっている場合、名前、表示名、スキーマ、単位、および表示単位を含む要求パラメーターの定義。 |
 | Response | 有効になっている場合、名前、表示名、スキーマ、単位、および表示単位を含むコマンド応答の定義。 |
+
+#### <a name="offline-commands"></a>オフライン コマンド
+
+デバイス テンプレートでコマンドの **[Queue if offline]\(オフラインの場合にキュー\)** オプションを有効にすることで、デバイスが現在オフラインになっている場合にキュー コマンドを選択できます。
+
+このオプションによって、IoT Hub cloud-to-device メッセージが使用され、通知がデバイスに送信されます。 詳細については、[cloud-to-device メッセージの送信](../../iot-hub/iot-hub-devguide-messages-c2d.md)に関する IoT Hub 記事を参照してください。
+
+cloud-to-device メッセージ:
+
+- ご利用のソリューションからデバイスへの一方向通知です。
+- 少なくとも 1 回のメッセージ配信が保証されます。 IoT Hub によって cloud-to-device メッセージはデバイス別キューに保持されます。接続とデバイスの障害に対する回復性が保証されます。
+- cloud-to-device メッセージを処理するため、メッセージ ハンドラーを実装することがデバイスに求められます。
+
+> [!NOTE]
+> このオプションは、IoT Central Web UI でのみ使用できます。 この設定は、デバイス テンプレートからモデルまたはインターフェイスをエクスポートする場合は含まれません。
 
 ## <a name="manage-an-interface"></a>インターフェイスを管理する
 

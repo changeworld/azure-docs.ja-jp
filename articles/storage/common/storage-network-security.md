@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 10/05/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 3ec4e6ee49052657210fffa8976b661c1a9e5948
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 49285727e1c2e845ea63905d20b3343576b01612
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827462"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816757"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
 
@@ -218,7 +218,7 @@ VNet 内の Azure Storage に対する[サービス エンドポイント](/azur
 1. 仮想ネットワークとサブネットに対するネットワーク ルールを追加します。
 
     ```azurecli
-    $subnetid=(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
+    subnetid=$(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
     az storage account network-rule add --resource-group "myresourcegroup" --account-name "mystorageaccount" --subnet $subnetid
     ```
 
@@ -230,7 +230,7 @@ VNet 内の Azure Storage に対する[サービス エンドポイント](/azur
 1. 仮想ネットワークとサブネットのネットワーク ルールを削除します。
 
     ```azurecli
-    $subnetid=(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
+    subnetid=$(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
     az storage account network-rule remove --resource-group "myresourcegroup" --account-name "mystorageaccount" --subnet $subnetid
     ```
 
@@ -256,7 +256,7 @@ IP ネットワーク ルールは、**パブリック インターネット**�
 
 ストレージ ファイアウォール規則の構成では、IPv4 アドレスのみがサポートされています。
 
-各ストレージ アカウントでは、最大 100 個の IP ネットワーク規則を設定できます。
+各ストレージ アカウントでは、最大 200 個の IP ネットワーク規則を設定できます。
 
 ### <a name="configuring-access-from-on-premises-networks"></a>オンプレミスのネットワークからのアクセスの構成
 
@@ -379,7 +379,7 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 | Azure Event Hubs         | Microsoft.EventHub         | Event Hubs Capture を使用したアーカイブ データのキャプチャ [詳細については、こちらを参照してください](/azure/event-hubs/event-hubs-capture-overview)。 |
 | Azure File Sync          | Microsoft.StorageSync      | オンプレミスのファイル サーバーを Azure ファイル共有のキャッシュに変換できます。 マルチサイト同期、迅速なディザスターリカバリー、クラウド側バックアップが可能となります。 [詳細情報](../files/storage-sync-files-planning.md) |
 | Azure HDInsight          | Microsoft.HDInsight        | 新しい HDInsight クラスターのための既定のファイル システムの初期コンテンツをプロビジョニングします。 [詳細については、こちらを参照してください](/azure/hdinsight/hdinsight-hadoop-use-blob-storage)。 |
-| Azure Import Export      | Microsoft.ImportExport     | Import/Export サービスを使用して、Azure のデータのインポートと Azure からのデータのエクスポートを行えるようにします。 [詳細については、こちらを参照してください](/azure/storage/common/storage-import-export-service)。  |
+| Azure Import Export      | Microsoft.ImportExport     | Azure Storage Import/Export サービスを使用すると、Azure Storage にデータをインポートしたり、Azure Storage からデータをエクスポートしたりできます。 [詳細については、こちらを参照してください](/azure/storage/common/storage-import-export-service)。  |
 | Azure Monitor            | Microsoft.Insights         | リソース ログ、Azure Active Directory サインインと監査ログ、Microsoft Intune ログなど、セキュリティで保護されたストレージ アカウントへの監視データの書き込みを許可します。 [詳細については、こちらを参照してください](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)。 |
 | Azure のネットワーク         | Microsoft.Network          | Network Watcher および Traffic Analytics サービスを含め、ネットワーク トラフィック ログを格納し、分析します。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)。 |
 | Azure Site Recovery      | Microsoft.SiteRecovery     | ファイアウォールが有効なキャッシュ、ソース、またはターゲット ストレージ アカウントを使用している場合、Azure IaaS 仮想マシンのディザスター リカバリーのレプリケーションを有効にします。  [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)。 |

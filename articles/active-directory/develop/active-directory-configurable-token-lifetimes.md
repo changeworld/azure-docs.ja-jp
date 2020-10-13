@@ -8,29 +8,30 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: how-to
-ms.date: 04/17/2020
+ms.topic: conceptual
+ms.date: 09/29/2020
 ms.author: ryanwi
-ms.custom: aaddev, identityplatformtop40
+ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: bbe4328d797f740e124d4944aee889d471393200
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 8697676abe5af77c8c7795ae4e2ec6480cb99e91
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085605"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819438"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft ID プラットフォームでの構成可能なトークンの有効期間 (プレビュー)
 
-Microsoft ID プラットフォームによって発行されたトークンの有効期間を指定できます。 組織のすべてのアプリ、マルチテナント (複数の組織) アプリケーション、または組織の特定のサービス プリンシパルに対して、トークンの有効期間を設定できます。 
-> 現時点では、マネージド ID サービス プリンシパルのトークン有効期間の構成はサポートされていないことに注意してください。
+Microsoft ID プラットフォームによって発行されたトークンの有効期間を指定できます。 組織のすべてのアプリ、マルチテナント (複数の組織) アプリケーション、または組織の特定のサービス プリンシパルに対して、トークンの有効期間を設定できます。 ただし、現時点では、[マネージド ID サービス プリンシパル](../managed-identities-azure-resources/overview.md)のトークン有効期間の構成はサポートされていません。
 
 > [!IMPORTANT]
-> プレビュー中にお客様のご意見をお聞きした後、Azure AD の条件付きアクセスの[認証セッション管理機能](https://go.microsoft.com/fwlink/?linkid=2083106)を実装しました。 この新機能を使用し、サインインの頻度を設定して更新トークンの有効期間を構成できます。 2020 年 5 月 30 日以降、新しいテナントでは、構成可能なトークンの有効期間ポリシーを使用してセッションと更新トークンを構成できなくなります。 廃止はその数か月後に行われます。つまり、セッションと更新トークンに関する既存のポリシーは適用されなくなります。 非推奨となった後も、アクセス トークンの有効期間を構成することはできます。
+> プレビュー中にお客様のご意見をお聞きした後、Azure AD の条件付きアクセスの[認証セッション管理機能](../conditional-access/howto-conditional-access-session-lifetime.md)を実装しました。 この新機能を使用し、サインインの頻度を設定して更新トークンの有効期間を構成できます。 2020 年 5 月 30 日以降、新しいテナントでは、構成可能なトークンの有効期間ポリシーを使用してセッションと更新トークンを構成できなくなります。 廃止はその数か月後に行われます。つまり、セッションと更新トークンに関する既存のポリシーは適用されなくなります。 非推奨となった後も、アクセス トークンの有効期間を構成することはできます。
 
 Azure AD では、ポリシー オブジェクトは、組織の個々のアプリケーションまたはすべてのアプリケーションに適用される規則のセットを表します。 それぞれのポリシーの種類は、割り当てられているオブジェクトに適用されるプロパティのセットを含む一意の構造体を持ちます。
 
 組織の既定のポリシーとして、ポリシーを指定できます。 ポリシーは、優先度が高いポリシーによってオーバーライドされない限り、組織内のすべてのアプリケーションに適用されます。 ポリシーを特定のアプリケーションに割り当てることもできます。 優先順位の順序は、ポリシーの種類によって異なります。
+
+例については、[トークンの有効期間の構成方法の例](configure-token-lifetimes.md)をご覧ください。
 
 > [!NOTE]
 > 構成可能なトークン ライフタイム ポリシーは、SharePoint Online リソースと OneDrive for Business リソースにアクセスするモバイル クライアントとデスクトップ クライアントにのみ適用され、Web ブラウザー セッションには適用されません。
@@ -50,7 +51,7 @@ SAML トークンは、Web ベースの SAAS アプリケーションの多く�
 
 NotOnOrAfter の値は、`TokenLifetimePolicy` 内の `AccessTokenLifetime` パラメーターを使用して変更できます。 この値は、ポリシーで構成されている有効期間に設定され (構成されている場合)、クロック スキュー係数が 5 分になります。
 
-`<SubjectConfirmationData>` 要素で指定されているサブジェクト確認 NotOnOrAfter は、トークンの有効期間の構成には影響されないことに注意してください。 
+`<SubjectConfirmationData>` 要素で指定されているサブジェクト確認 NotOnOrAfter は、トークンの有効期間の構成には影響されません。 
 
 ### <a name="refresh-tokens"></a>更新トークン
 
@@ -63,7 +64,7 @@ Confidential クライアントは、クライアント パスワード (シー�
 
 #### <a name="token-lifetimes-with-public-client-refresh-tokens"></a>パブリック クライアントの更新トークンの有効期間
 
-パブリック クライアントは、クライアントのパスワード (シークレット) を安全に格納できません。 たとえば、iOS や Android アプリは、リソース所有者のシークレットを難読化できないため、パブリック クライアントとみなされます。 リソースにポリシーを設定して、指定した期間よりも古いパブリック クライアントの更新トークンが、新しいアクセス トークンと更新トークン ペアを取得しないようにできます (これを行うには、Refresh Token Max Inactive Time プロパティ (`MaxInactiveTime`) を使用します)。それを超えると更新トークンを受け付けなくなる期間を設定するポリシーを使用することもできます (これを行うには、Refresh Token Max Age プロパティを使用します)。更新トークンの有効期間を調整して、パブリック クライアント アプリケーションの使用時に、ユーザーが自動的に再認証されるのではなく、資格情報を再入力する必要があるタイミングと頻度を制御できます。
+パブリック クライアントは、クライアントのパスワード (シークレット) を安全に格納できません。 たとえば、iOS や Android アプリは、リソース所有者のシークレットを難読化できないため、パブリック クライアントとみなされます。 リソースにポリシーを設定して、指定した期間よりも古いパブリック クライアントの更新トークンが、新しいアクセス トークンと更新トークン ペアを取得しないようにできます これを行うには、[Refresh Token Max Inactive Time プロパティ](#refresh-token-max-inactive-time) (`MaxInactiveTime`) を使用します。 それを超えると更新トークンを受け付けなくなる期間を設定するポリシーを使用することもできます これを行うには、[Single-Factor Refresh Token Max Age](#single-factor-session-token-max-age) または [Multi-Factor Session Token Max Age](#multi-factor-refresh-token-max-age) のいずれかのプロパティを使用します。 更新トークンの有効期間を調整して、パブリック クライアント アプリケーションの使用時に、ユーザーが自動的に再認証されるのではなく、資格情報を再入力する必要があるタイミングと頻度を制御できます。
 
 > [!NOTE]
 > Max Age プロパティは、1 つのトークンを使用できる期間です。 
@@ -89,9 +90,9 @@ Microsoft ID プラットフォームでは、永続的と非永続的の 2 種�
 | アクセス トークンの有効期間 |AccessTokenLifetime<sup>2</sup> |アクセス トークン、ID トークン、SAML2 トークン |1 時間 |10 分 |1 日 |
 | 更新トークンの最大非アクティブ時間 |MaxInactiveTime |更新トークン |90 日間 |10 分 |90 日間 |
 | 単一要素更新トークンの最長有効期間 |MaxAgeSingleFactor |更新トークン (すべてのユーザー向け) |Until-revoked |10 分 |Until-revoked<sup>1</sup> |
-| 多要素更新トークンの最長有効期間 |MaxAgeMultiFactor |更新トークン (すべてのユーザー向け) |Until-revoked |10 分 |Until-revoked<sup>1</sup> |
-| 単一要素セッション トークンの最長有効期間 |MaxAgeSessionSingleFactor |セッション トークン (永続的および非永続的) |Until-revoked |10 分 |180 日<sup>1</sup> |
-| 多要素セッション トークンの最長有効期間 |MaxAgeSessionMultiFactor |セッション トークン (永続的および非永続的) |Until-revoked |10 分 |180 日<sup>1</sup> |
+| 多要素更新トークンの最長有効期間 |MaxAgeMultiFactor |更新トークン (すべてのユーザー向け) | 180 日 |10 分 |180 日<sup>1</sup> |
+| 単一要素セッション トークンの最長有効期間 |MaxAgeSessionSingleFactor |セッション トークン (永続的および非永続的) |Until-revoked |10 分 |Until-revoked<sup>1</sup> |
+| 多要素セッション トークンの最長有効期間 |MaxAgeSessionMultiFactor |セッション トークン (永続的および非永続的) | 180 日 |10 分 | 180 日<sup>1</sup> |
 
 * <sup>1</sup>これらの属性に対して明示的に設定できる最大期間は 365 日です。
 * <sup>2</sup>Microsoft Teams Web クライアントを確実に機能させるには、Microsoft Teams に対して AccessTokenLifetime が常に 15 分より大きい値に維持されるようにしておくことをお勧めします。
@@ -103,7 +104,7 @@ Microsoft ID プラットフォームでは、永続的と非永続的の 2 種�
 | Refresh Token Max Inactive Time (Confidential クライアントに発行) |更新トークン (Confidential クライアントに発行) |90 日間 |
 | Refresh token Max Age (Confidential クライアントに発行) |更新トークン (Confidential クライアントに発行) |Until-revoked |
 
-* <sup>1</sup> 失効情報が不十分なフェデレーション ユーザーには、"LastPasswordChangeTimestamp" 属性が同期されないすべてのユーザーが含まれます。 これらのユーザーにはこの短い Max Age が与えられます。その理由は、AAD は、古い資格情報 (変更済みのパスワードなど) に関連付けられたトークンを取り消すタイミングを確認できず、ユーザーおよび関連付けられているトークンがまだ良好であることをより頻繁に確認する必要があるためです。 このエクスペリエンスを向上させるには、テナント管理者は、"LastPasswordChangeTimestamp" 属性 (PowerShell または AADSync を使用してユーザー オブジェクトに設定できる) が同期されていることを確認する必要があります。
+* <sup>1</sup> 失効情報が不十分なフェデレーション ユーザーには、"LastPasswordChangeTimestamp" 属性が同期されないすべてのユーザーが含まれます。 これらのユーザーにはこの短い Max Age が与えられます。その理由は、Azure Active Directory は、古い資格情報 (変更済みのパスワードなど) に関連付けられたトークンを取り消すタイミングを確認できず、ユーザーおよび関連付けられているトークンがまだ良好であることをより頻繁に確認する必要があるためです。 このエクスペリエンスを向上させるには、テナント管理者は、"LastPasswordChangeTimestamp" 属性 (PowerShell または AADSync を使用してユーザー オブジェクトに設定できる) が同期されていることを確認する必要があります。
 
 ### <a name="policy-evaluation-and-prioritization"></a>ポリシーの評価と優先順位付け
 トークン有効期間ポリシーを作成して、特定のアプリケーション、組織、およびサービス プリンシパルに割り当てることができます。 複数のポリシーを、特定のアプリケーションに適用できます。 有効なトークン有効期間ポリシーは、次の規則に従います。
@@ -148,6 +149,8 @@ Microsoft ID プラットフォームでは、永続的と非永続的の 2 種�
 
 **概要:** このポリシーは、このリソースのアクセス トークンと ID トークンが有効とみなされる期間を制御します。 Access Token Lifetime プロパティを減らすと、悪意のあるアクターによって、長時間にわたってアクセス トークンや ID トークンが使用されるリスクが軽減します (これらのトークンは取り消しできません)。このトレードオフは、トークンを頻繁に交換する必要があるため、パフォーマンスが影響を受けることです。
 
+例については、「[Web サインインのポリシーを作成する](configure-token-lifetimes.md#create-a-policy-for-web-sign-in)」を参照してください。
+
 ### <a name="refresh-token-max-inactive-time"></a>更新トークンの最大非アクティブ時間
 **文字列:** MaxInactiveTime
 
@@ -159,6 +162,8 @@ Microsoft ID プラットフォームでは、永続的と非永続的の 2 種�
 
 Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age および Multi-Factor Refresh Token Max Age プロパティよりも小さな値に設定する必要があります。
 
+例については、「[Web API を呼び出すネイティブ アプリケーションのポリシーを作成する](configure-token-lifetimes.md#create-a-policy-for-a-native-app-that-calls-a-web-api)」を参照してください。
+
 ### <a name="single-factor-refresh-token-max-age"></a>単一要素更新トークンの最長有効期間
 **文字列:** MaxAgeSingleFactor
 
@@ -167,6 +172,8 @@ Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age �
 **概要:** このポリシーは、ユーザーが前回単一要素のみで認証に成功した後に、新しいアクセス トークンと更新トークンのペアを取得するために更新トークンを使用できる期間を制御します。 ユーザーが認証し、新しい更新トークンを受け取ると、ユーザーは、指定した期間のあいだ更新トークン フローを使用できます (これは現在の更新トークンが失効しておらず、非アクティブ時間より長く未使用のままにされていない場合にあてはまります)。その時点で、ユーザーは新しい更新トークンを受け取るために再認証するよう強制されます。
 
 最長有効期間を短くすると、ユーザーに認証を強制する回数が多くなります。 単一要素認証は多要素認証より安全性が低いと考えられるため、このプロパティは、Multi-Factor Refresh Token Max Age プロパティ以下の値に設定することをお勧めします。
+
+例については、「[Web API を呼び出すネイティブ アプリケーションのポリシーを作成する](configure-token-lifetimes.md#create-a-policy-for-a-native-app-that-calls-a-web-api)」を参照してください。
 
 ### <a name="multi-factor-refresh-token-max-age"></a>多要素更新トークンの最長有効期間
 **文字列:** MaxAgeMultiFactor
@@ -177,6 +184,8 @@ Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age �
 
 最長有効期間を短くすると、ユーザーに認証を強制する回数が多くなります。 単一要素認証は多要素認証より安全性が低いと考えられるため、このプロパティは、Single-Factor Refresh Token Max Age プロパティ以上の値に設定することをお勧めします。
 
+例については、「[Web API を呼び出すネイティブ アプリケーションのポリシーを作成する](configure-token-lifetimes.md#create-a-policy-for-a-native-app-that-calls-a-web-api)」を参照してください。
+
 ### <a name="single-factor-session-token-max-age"></a>単一要素セッション トークンの最長有効期間
 **文字列:** MaxAgeSessionSingleFactor
 
@@ -185,6 +194,8 @@ Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age �
 **概要:** このポリシーは、ユーザーが前回単一要素のみで認証に成功した後に、新しい ID とセッション トークンを取得するためにセッショントークンを使用できる期間を制御します。 ユーザーが認証し、新しいセッション トークンを受け取ると、ユーザーは、指定した期間のあいだセッション トークン フローを使用できます (これは、現在のセッション トークンが失効しておらず、有効期限が切れていない場合にあてはまります)。指定した期間の後、ユーザーは新しいセッション トークンを受け取るために再認証が強制されます。
 
 最長有効期間を短くすると、ユーザーに認証を強制する回数が多くなります。 単一要素認証は多要素認証より安全性が低いと考えられるため、このプロパティは、Multi-Factor Session Token Max Age プロパティ以下の値に設定することをお勧めします。
+
+例については、「[Web サインインのポリシーを作成する](configure-token-lifetimes.md#create-a-policy-for-web-sign-in)」を参照してください。
 
 ### <a name="multi-factor-session-token-max-age"></a>多要素セッション トークンの最長有効期間
 **文字列:** MaxAgeSessionMultiFactor
@@ -195,360 +206,46 @@ Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age �
 
 最長有効期間を短くすると、ユーザーに認証を強制する回数が多くなります。 単一要素認証は多要素認証より安全性が低いと考えられるため、このプロパティは、Single-Factor Session Token Max Age プロパティ以上の値に設定することをお勧めします。
 
-## <a name="example-token-lifetime-policies"></a>トークンの有効期間ポリシーの例
-アプリ、サービス プリンシパル、および組織全体のトークンの有効期間を作成および管理できる場合は、Azure AD で多くのシナリオを実行できます。 このセクションでは新しい規則を適用する場合に役立つ、いくつかの一般的なポリシー シナリオについて説明します。
-
-* トークンの有効期間
-* トークンの最大非アクティブ時間
-* トークンの最長有効期間
-
-例では、次の方法を説明します。
-
-* 組織の既定のポリシーを管理する
-* Web サインインのポリシーを作成する
-* Web API を呼び出すネイティブ アプリケーションのポリシーを作成する
-* 詳細なポリシーを管理する
-
-### <a name="prerequisites"></a>前提条件
-次の例では、アプリ、サービス プリンシパル、および組織全体のポリシーを作成、更新、リンク、および削除します。 Azure AD に慣れていない場合は、これらの例を続行する前に、[Azure AD テナントを取得する方法](quickstart-create-new-tenant.md)について学習することをお勧めします。  
-
-使用を開始するには、次の手順を実行します。
-
-1. 最新版の [Azure AD PowerShell モジュール パブリック プレビュー リリース](https://www.powershellgallery.com/packages/AzureADPreview)をダウンロードします。
-2. `Connect` コマンドを実行して、Azure AD 管理者アカウントにサインインします。 新しいセッションを開始するたびにこのコマンドを実行します。
-
-    ```powershell
-    Connect-AzureAD -Confirm
-    ```
-
-3. 組織に作成されているすべてのポリシーを表示するには、次のコマンドを実行します。 このコマンドは、次のシナリオでほとんどの操作の後に実行します。 コマンドの実行は、ポリシーの ** ** を取得する場合にも役立ちます。
-
-    ```powershell
-    Get-AzureADPolicy
-    ```
-
-### <a name="example-manage-an-organizations-default-policy"></a>例:組織の既定のポリシーを管理する
-この例では、組織全体でユーザーがサインインする頻度を少なくするポリシーを作成します。 そのためには、組織全体に適用される単一要素の更新トークンに対してトークンの有効期間ポリシーを作成します。 このポリシーは、組織内のすべてのアプリケーションと、ポリシーがまだ設定されていない各サービス プリンシパルに適用されます。
-
-1. トークンの有効期間ポリシーを作成します。
-
-    1. 単一要素の更新トークンを "until-revoked" に設定します。 トークンは、アクセスが取り消されるまで期限切れになりません。 次のポリシー定義を作成します。
-
-        ```powershell
-        @('{
-            "TokenLifetimePolicy":
-            {
-                "Version":1,
-                "MaxAgeSingleFactor":"until-revoked"
-            }
-        }')
-        ```
-
-    1. ポリシーを作成するには、次のコマンドを実行します。
-
-        ```powershell
-        $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1, "MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "OrganizationDefaultPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
-        ```
-
-    1. 空白を削除するには、次のコマンドを実行します。
-
-        ```powershell
-        Get-AzureADPolicy -id | set-azureadpolicy -Definition @($((Get-AzureADPolicy -id ).Replace(" ","")))
-        ```
-
-    1. 新しいポリシーを表示し、ポリシーの **ObjectId** を取得するには、次のコマンドを実行します。
-
-        ```powershell
-        Get-AzureADPolicy -Id $policy.Id
-        ```
-
-1. ポリシーを更新します。
-
-    この例で設定する最初のポリシーは、サービスに求められるほど厳密にしないようにすることもできます。 単一要素更新トークンを 2 日で期限が切れるように設定するには、次のコマンドを実行します。
-
-    ```powershell
-    Set-AzureADPolicy -Id $policy.Id -DisplayName $policy.DisplayName -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"2.00:00:00"}}')
-    ```
-
-### <a name="example-create-a-policy-for-web-sign-in"></a>例:Web サインインのポリシーを作成する
-
-この例では、ユーザーが、Web アプリで頻繁に認証を必要とするポリシーを作成します。 このポリシーは、アクセス トークンと ID トークンの有効期間と、多要素セッション トークンの最長有効期間を Web アプリのサービス プリンシパルに設定します。
-
-1. トークンの有効期間ポリシーを作成します。
-
-    この Web サインイン用のポリシーでは、アクセス トークンと ID トークンの有効期間と、単一要素セッション トークンの最長有効期間を 2 時間に設定します。
-
-    1. ポリシーを作成するには、このコマンドを実行します。
-
-        ```powershell
-        $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00","MaxAgeSessionSingleFactor":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
-        ```
-
-    1. 新しいポリシーを表示し、ポリシーの **ObjectId** を取得するには、次のコマンドを実行します。
-
-        ```powershell
-        Get-AzureADPolicy -Id $policy.Id
-        ```
-
-1. サービス プリンシパルにポリシーを割り当てます。 サービス プリンシパルの **ObjectId** も取得する必要があります。
-
-    1. [Get-azureadserviceprincipal](/powershell/module/azuread/get-azureadserviceprincipal) コマンドレットを使用して、組織のすべてのサービス プリンシパルまたは 1 つのサービス プリンシパルを表示します。
-        ```powershell
-        # Get ID of the service principal
-        $sp = Get-AzureADServicePrincipal -Filter "DisplayName eq '<service principal display name>'"
-        ```
-
-    1. サービス プリンシパルがある場合、次のコマンドを実行します。
-        ```powershell
-        # Assign policy to a service principal
-        Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
-        ```
-
-### <a name="example-create-a-policy-for-a-native-app-that-calls-a-web-api"></a>例:Web API を呼び出すネイティブ アプリケーションのポリシーを作成する
-この例では、ユーザーに必要とする認証の頻度を少なくするポリシーを作成します。 ポリシーにより、ユーザーが再認証を必要とするまでの非アクティブでいられる時間も長くなります。 ポリシーは、Web API に適用されます。 ネイティブ アプリがリソースとして Web API を要求すると、このポリシーが適用されます。
-
-1. トークンの有効期間ポリシーを作成します。
-
-    1. Web API の厳密なポリシーを作成するには、次のコマンドを実行します。
-
-        ```powershell
-        $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"30.00:00:00","MaxAgeMultiFactor":"until-revoked","MaxAgeSingleFactor":"180.00:00:00"}}') -DisplayName "WebApiDefaultPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
-        ```
-
-    1. 新しいポリシーを表示するには、次のコマンドを実行します。
-
-        ```powershell
-        Get-AzureADPolicy -Id $policy.Id
-        ```
-
-1. Web API にポリシーを割り当てます。 アプリケーションの **ObjectId** を取得する必要もあります。 [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) コマンドレットを使用して、アプリの **ObjectId** を見つけるか、[Azure portal](https://portal.azure.com/) を使用します。
-
-    アプリの **ObjectId** を取得し、ポリシーを割り当てます。
-
-    ```powershell
-    # Get the application
-    $app = Get-AzureADApplication -Filter "DisplayName eq 'Fourth Coffee Web API'"
-
-    # Assign the policy to your web API.
-    Add-AzureADApplicationPolicy -Id $app.ObjectId -RefObjectId $policy.Id
-    ```
-
-### <a name="example-manage-an-advanced-policy"></a>例:詳細なポリシーを管理する
-この例では、いくつかのポリシーを作成して、優先度システムのしくみを説明します。 複数のオブジェクトに適用される複数のポリシーを管理する方法も説明します。
-
-1. トークンの有効期間ポリシーを作成します。
-
-    1. 単一要素の更新トークンの有効期間を 30 日間に設定する組織の既定のポリシーを作成するには、次のコマンドを実行します。
-
-        ```powershell
-        $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"30.00:00:00"}}') -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
-        ```
-
-    1. 新しいポリシーを表示するには、次のコマンドを実行します。
-
-        ```powershell
-        Get-AzureADPolicy -Id $policy.Id
-        ```
-
-1. サービス プリンシパルにポリシーを割り当てます。
-
-    これで、組織全体に適用されるポリシーが得られます。 特定のサービス プリンシパルに対してはこの 30 日間のポリシーを保持しますが、組織の既定のポリシーを "until-revoked" の上限となるよう変更するとします。
-
-    1. 組織のすべてのサービス プリンシパルを表示するには、[Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal) コマンドレットを使用します。
-
-    1. サービス プリンシパルがある場合、次のコマンドを実行します。
-
-        ```powershell
-        # Get ID of the service principal
-        $sp = Get-AzureADServicePrincipal -Filter "DisplayName eq '<service principal display name>'"
-
-        # Assign policy to a service principal
-        Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
-        ```
-
-1. `IsOrganizationDefault` フラグを false に設定します。
-
-    ```powershell
-    Set-AzureADPolicy -Id $policy.Id -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $false
-    ```
-
-1. 新しい組織の既定のポリシーを作成します。
-
-    ```powershell
-    New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "ComplexPolicyScenarioTwo" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
-    ```
-
-    これで、元のポリシーがサービス プリンシパルにリンクされ、新しいポリシーが組織の既定のポリシーとして設定されます。 サービス プリンシパルに適用されるポリシーが、組織の既定のポリシーよりも優先されることに注意してください。
-
 ## <a name="cmdlet-reference"></a>コマンドレット リファレンス
+
+これらは、[Azure Active Directory PowerShell for Graph Preview モジュール](/powershell/module/azuread/?view=azureadps-2.0-preview#service-principals&preserve-view=true&preserve-view=true)のコマンドレットです。
 
 ### <a name="manage-policies"></a>ポリシーの管理
 
 次のコマンドレットを使用して、ポリシーを管理することができます。
 
-#### <a name="new-azureadpolicy"></a>New-AzureADPolicy
-
-新しいポリシーを作成します。
-
-```powershell
-New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -IsOrganizationDefault <boolean> -Type <Policy Type>
-```
-
-| パラメーター | 説明 | 例 |
-| --- | --- | --- |
-| <code>&#8209;Definition</code> |ポリシーのすべてのルールが含まれる文字列化された JSON の配列。 | `-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
-| <code>&#8209;DisplayName</code> |ポリシー名の文字列。 |`-DisplayName "MyTokenPolicy"` |
-| <code>&#8209;IsOrganizationDefault</code> |True の場合は、組織の既定のポリシーとして、ポリシーを設定します。 False の場合は、何もしません。 |`-IsOrganizationDefault $true` |
-| <code>&#8209;Type</code> |ポリシーの種類。 トークンの有効期間に対しては、常に "TokenLifetimePolicy" を使用します。 | `-Type "TokenLifetimePolicy"` |
-| <code>&#8209;AlternativeIdentifier</code> [省略可能] |ポリシーの代替 ID を設定します。 |`-AlternativeIdentifier "myAltId"` |
-
-</br></br>
-
-#### <a name="get-azureadpolicy"></a>Get-AzureADPolicy
-すべての AzureAD ポリシーまたは指定されたポリシーを取得します。
-
-```powershell
-Get-AzureADPolicy
-```
-
-| パラメーター | 説明 | 例 |
-| --- | --- | --- |
-| <code>&#8209;Id</code> [省略可能] |目的のポリシーの **ObjectId (ID)** 。 |`-Id <ObjectId of Policy>` |
-
-</br></br>
-
-#### <a name="get-azureadpolicyappliedobject"></a>Get AzureADPolicyAppliedObject
-ポリシーにリンクされたすべてのアプリとサービス プリンシパルを取得します。
-
-```powershell
-Get-AzureADPolicyAppliedObject -Id <ObjectId of Policy>
-```
-
-| パラメーター | 説明 | 例 |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |目的のポリシーの **ObjectId (ID)** 。 |`-Id <ObjectId of Policy>` |
-
-</br></br>
-
-#### <a name="set-azureadpolicy"></a>Set-AzureADPolicy
-既存のポリシーを更新します。
-
-```powershell
-Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
-```
-
-| パラメーター | 説明 | 例 |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |目的のポリシーの **ObjectId (ID)** 。 |`-Id <ObjectId of Policy>` |
-| <code>&#8209;DisplayName</code> |ポリシー名の文字列。 |`-DisplayName "MyTokenPolicy"` |
-| <code>&#8209;Definition</code> [省略可能] |ポリシーのすべてのルールが含まれる文字列化された JSON の配列。 |`-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
-| <code>&#8209;IsOrganizationDefault</code> [省略可能] |True の場合は、組織の既定のポリシーとして、ポリシーを設定します。 False の場合は、何もしません。 |`-IsOrganizationDefault $true` |
-| <code>&#8209;Type</code> [省略可能] |ポリシーの種類。 トークンの有効期間に対しては、常に "TokenLifetimePolicy" を使用します。 |`-Type "TokenLifetimePolicy"` |
-| <code>&#8209;AlternativeIdentifier</code> [省略可能] |ポリシーの代替 ID を設定します。 |`-AlternativeIdentifier "myAltId"` |
-
-</br></br>
-
-#### <a name="remove-azureadpolicy"></a>Remove-AzureADPolicy
-指定したポリシーを削除します。
-
-```powershell
- Remove-AzureADPolicy -Id <ObjectId of Policy>
-```
-
-| パラメーター | 説明 | 例 |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |目的のポリシーの **ObjectId (ID)** 。 | `-Id <ObjectId of Policy>` |
-
-</br></br>
+| コマンドレット | 説明 | 
+| --- | --- |
+| [New-AzureADPolicy](/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) | 新しいポリシーを作成します。 |
+| [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) | すべての AzureAD ポリシーまたは指定されたポリシーを取得します。 |
+| [Get AzureADPolicyAppliedObject](/powershell/module/azuread/get-azureadpolicyappliedobject?view=azureadps-2.0-preview&preserve-view=true) | ポリシーにリンクされたすべてのアプリとサービス プリンシパルを取得します。 |
+| [Set-AzureADPolicy](/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) | 既存のポリシーを更新します。 |
+| [Remove-AzureADPolicy](/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) | 指定したポリシーを削除します。 |
 
 ### <a name="application-policies"></a>アプリケーション ポリシー
 アプリケーション ポリシーには次のコマンドレットを使用できます。</br></br>
 
-#### <a name="add-azureadapplicationpolicy"></a>Add-AzureADApplicationPolicy
-指定したポリシーをアプリケーションにリンクします。
-
-```powershell
-Add-AzureADApplicationPolicy -Id <ObjectId of Application> -RefObjectId <ObjectId of Policy>
-```
-
-| パラメーター | 説明 | 例 |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |アプリケーションの **ObjectId (ID)** 。 | `-Id <ObjectId of Application>` |
-| <code>&#8209;RefObjectId</code> |ポリシーの **ObjectId**。 | `-RefObjectId <ObjectId of Policy>` |
-
-</br></br>
-
-#### <a name="get-azureadapplicationpolicy"></a>Get-AzureADApplicationPolicy
-アプリケーションに割り当てられているポリシーを取得します。
-
-```powershell
-Get-AzureADApplicationPolicy -Id <ObjectId of Application>
-```
-
-| パラメーター | 説明 | 例 |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |アプリケーションの **ObjectId (ID)** 。 | `-Id <ObjectId of Application>` |
-
-</br></br>
-
-#### <a name="remove-azureadapplicationpolicy"></a>Remove-AzureADApplicationPolicy
-アプリケーションからポリシーを削除します。
-
-```powershell
-Remove-AzureADApplicationPolicy -Id <ObjectId of Application> -PolicyId <ObjectId of Policy>
-```
-
-| パラメーター | 説明 | 例 |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |アプリケーションの **ObjectId (ID)** 。 | `-Id <ObjectId of Application>` |
-| <code>&#8209;PolicyId</code> |ポリシーの **ObjectId**。 | `-PolicyId <ObjectId of Policy>` |
-
-</br></br>
+| コマンドレット | 説明 | 
+| --- | --- |
+| [Add-AzureADApplicationPolicy](/powershell/module/azuread/add-azureadapplicationpolicy?view=azureadps-2.0-preview&preserve-view=true) | 指定したポリシーをアプリケーションにリンクします。 |
+| [Get-AzureADApplicationPolicy](/powershell/module/azuread/get-azureadapplicationpolicy?view=azureadps-2.0-preview&preserve-view=true) | アプリケーションに割り当てられているポリシーを取得します。 |
+| [Remove-AzureADApplicationPolicy](/powershell/module/azuread/remove-azureadapplicationpolicy?view=azureadps-2.0-preview&preserve-view=true) | アプリケーションからポリシーを削除します。 |
 
 ### <a name="service-principal-policies"></a>サービス プリンシパル ポリシー
 サービス プリンシパル ポリシーには次のコマンドレットを使用できます。
 
-#### <a name="add-azureadserviceprincipalpolicy"></a>Add-AzureADServicePrincipalPolicy
-指定したポリシーをサービス プリンシパルにリンクします。
-
-```powershell
-Add-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal> -RefObjectId <ObjectId of Policy>
-```
-
-| パラメーター | 説明 | 例 |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |アプリケーションの **ObjectId (ID)** 。 | `-Id <ObjectId of Application>` |
-| <code>&#8209;RefObjectId</code> |ポリシーの **ObjectId**。 | `-RefObjectId <ObjectId of Policy>` |
-
-</br></br>
-
-#### <a name="get-azureadserviceprincipalpolicy"></a>Get-AzureADServicePrincipalPolicy
-指定したサービス プリンシパルにリンクされている任意のポリシーを取得します。
-
-```powershell
-Get-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>
-```
-
-| パラメーター | 説明 | 例 |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |アプリケーションの **ObjectId (ID)** 。 | `-Id <ObjectId of Application>` |
-
-</br></br>
-
-#### <a name="remove-azureadserviceprincipalpolicy"></a>Remove-AzureADServicePrincipalPolicy
-指定したサービス プリンシパルからポリシーを削除します。
-
-```powershell
-Remove-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>  -PolicyId <ObjectId of Policy>
-```
-
-| パラメーター | 説明 | 例 |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |アプリケーションの **ObjectId (ID)** 。 | `-Id <ObjectId of Application>` |
-| <code>&#8209;PolicyId</code> |ポリシーの **ObjectId**。 | `-PolicyId <ObjectId of Policy>` |
+| コマンドレット | 説明 | 
+| --- | --- |
+| [Add-AzureADServicePrincipalPolicy](/powershell/module/azuread/add-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | 指定したポリシーをサービス プリンシパルにリンクします。 |
+| [Get-AzureADServicePrincipalPolicy](/powershell/module/azuread/get-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | 指定したサービス プリンシパルにリンクされている任意のポリシーを取得します。|
+| [Remove-AzureADServicePrincipalPolicy](/powershell/module/azuread/remove-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | 指定したサービス プリンシパルからポリシーを削除します。|
 
 ## <a name="license-requirements"></a>ライセンスの要件
 
 この機能を使用するには、Azure AD Premium P1 ライセンスが必要です。 ご自分の要件に対して適切なライセンスを探すには、[一般公開されている Free および Premium エディションの機能比較](https://azure.microsoft.com/pricing/details/active-directory/)に関するページをご覧ください。
 
 [Microsoft 365 Business ライセンス](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)をお持ちのお客様も、条件付きアクセス機能にアクセスできます。
+
+## <a name="next-steps"></a>次のステップ
+
+詳細については、[トークンの有効期間の構成方法の例](configure-token-lifetimes.md)をご覧ください。

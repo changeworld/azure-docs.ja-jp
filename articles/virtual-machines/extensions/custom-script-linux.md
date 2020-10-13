@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: 367116948034fd4bedbeec15e655a09b179865d6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2dbfc2173f6631aff2d65c770a5204bbd72d3ed1
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085726"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818816"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Linux 仮想マシンで Azure カスタム スクリプト拡張機能 v2 を使用する
 カスタム スクリプト拡張機能バージョン 2 は、スクリプトをダウンロードし、Azure 仮想マシン上で実行します。 この拡張機能は、展開後の構成、ソフトウェアのインストール、その他の構成タスクや管理タスクに役立ちます。 スクリプトは、Azure Storage や他のアクセス可能なインターネットの場所からダウンロードできます。または、実行時に拡張機能に提供することもできます。 
@@ -55,6 +55,7 @@ GitHub または Azure Storage などスクリプトを外部でダウンロー�
 * スクリプトの実行時に、ユーザー入力を必要としないように作成してください。
 * スクリプトの実行に許されているのは 90 分間で、これを超えると拡張機能へのプロビジョニングが失敗します。
 * スクリプトの中に再起動を組み込まないでください。これを守らないと、インストールされているその他の拡張で問題が発生し、再起動後にその拡張は実行されなくなります。 
+* VM エージェントの停止または更新の原因となるスクリプトを実行することはお勧めしません。 これにより、拡張機能が遷移状態になり、タイムアウトにつながることがあります。
 * 再起動が必要なスクリプトの場合は、アプリケーションをインストールしてから、スクリプトを実行するなどしてください。Cron ジョブを使用して、あるいは DSC、Chef、Puppet 拡張機能などのツールを使用して再起動をスケジュールしてください。
 * 拡張機能ではスクリプトは 1 度だけ実行するか、あるいは、起動するたびに実行できます。この場合、[cloud-init イメージ](../linux/using-cloud-init.md)と、[Scripts Per Boot](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) モジュールを使用できます。 または、SystemD サービス ユニットを作成するためにスクリプトを使用することができます。
 * VM に適用できる拡張機能のバージョンは 1 つだけです。 2 つ目のカスタム スクリプトを実行するには、カスタム スクリプト拡張機能を削除し、更新されたスクリプトを使用して拡張機能を再度適用する必要があります。 

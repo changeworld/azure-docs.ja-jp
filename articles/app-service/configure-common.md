@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 18463c4350895401c9bf73dc249ce93218a44f7c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 68ff753a0c6e21fac512792670a24bede8980e99
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264645"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816446"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Azure portal で App Service アプリを構成する
 
@@ -83,6 +83,32 @@ ASP.NET および ASP.NET Core 開発者の場合、App Service でのアプリ�
   ...
 ]
 ```
+
+### <a name="automate-app-settings-with-the-azure-cli"></a>Azure CLI を使用してアプリケーション設定を自動化する
+
+Azure CLI を使用すると、コマンドラインで設定を作成したり管理したりできます。
+
+- [az webapp config app settings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) で設定に値を割り当てます。
+
+    ```azurecli-interactive
+    az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings <setting-name>="<value>"
+    ```
+        
+    `<setting-name>` を設定の名前に、`<value>` をそれに割り当てる値に置換します。 このコマンドによって設定が作成されます (まだ存在しない場合)。
+    
+- [az webapp config appsettings list](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_list) ですべての設定とその値を割り当てます。
+    
+    ```azurecli-interactive
+    az webapp config appsettings list --name <app-name> --resource-group <resource-group-name>
+    ```
+    
+- [az webapp config app settings delete](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_delete) で 1 つまたは複数の設定を削除します。
+
+    ```azurecli-interactive
+    az webapp config appsettings delete --name <app-name> --resource-group <resource-group-name> --setting-names {<names>}
+    ```
+    
+    スペースで区切られた設定名一覧で `<names>` を置換します。
 
 ## <a name="configure-connection-strings"></a>接続文字列の構成
 
@@ -164,7 +190,12 @@ ASP.NET および ASP.NET Core 開発者の場合、App Service での接続文�
 
 ここでは、アプリのいくつかの一般的な設定を構成できます。 一部の設定では、[より高い価格レベルにスケールアップする](manage-scale-up.md)必要があります。
 
-- **[Stack settings] (スタックの設定)** : アプリを実行するためのソフトウェア スタック (言語や SDK バージョンを含む)。 Linux アプリやカスタム コンテナー アプリの場合は、オプションのスタートアップ コマンドまたはファイルを設定することもできます。
+- **[Stack settings] (スタックの設定)** : アプリを実行するためのソフトウェア スタック (言語や SDK バージョンを含む)。
+
+    Linux アプリとカスタム コンテナー アプリの場合、言語ランタイム バージョンを選択し、任意の**スタートアップ コマンド**またはスタートアップ コマンド ファイルを設定します。
+
+    ![Linux コンテナーの全般設定](./media/configure-common/open-general-linux.png)
+
 - **[プラットフォームの設定]** : ホスティング プラットフォームの設定を構成できます。次のものが含まれます。
     - **[ビット]** : 32 ビットまたは 64 ビット。
     - **[WebSocket プロトコル]** : [ASP.NET SignalR] や [socket.io](https://socket.io/) など。

@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 07/20/2020
+ms.date: 10/02/2020
 tags: connectors
-ms.openlocfilehash: f3de582ff69dbd57aa4692fd5c3901602569cf9e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: cb851734dc8f71347168e7ac16ac0752845dda7b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286616"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823623"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SSH と Azure Logic Apps を使用して SFTP ファイルの監視、作成、および管理を行う
 
@@ -253,6 +253,22 @@ SFTP サーバーにファイルを作成するには、SFTP-SSH の **[ファ�
 
 1. 後でこのファイル メタデータが必要になった場合は、 **[ファイルのメタデータの取得]** アクションを使用できます。
 
+### <a name="504-error-a-connection-attempt-failed-because-the-connected-party-did-not-properly-respond-after-a-period-of-time-or-established-connection-failed-because-connected-host-has-failed-to-respond-or-request-to-the-sftp-server-has-taken-more-than-000030-seconds"></a>504 エラー:"接続済みの呼び出し先が一定の時間を過ぎても正しく応答しなかったため、接続できませんでした。または接続済みのホストが応答しなかったため、確立された接続は失敗しました" または "SFTP サーバーへの要求に '00:00:30' 秒を超える時間がかかりました"
+
+このエラーは、ロジック アプリが SFTP サーバーとの接続を正常に確立できない場合に発生する可能性があります。 さまざまな理由が考えられるため、次の側面から問題のトラブルシューティングを行うことをお勧めします。 
+
+1. 接続のタイムアウトは 20 秒です。 SFTP サーバーのパフォーマンスが良好で、ファイアウォールなどの中間デバイスによる過剰なオーバーヘッドの増加がないことを確認してください。 
+
+2. ファイアウォールが関係している場合は、**マネージド コネクタの IP** アドレスが承認済みリストに追加されていることを確認してください。 ご使用のロジック アプリのリージョンに対するこれらの IP アドレスは、 **[こちら]** (https://docs.microsoft.com/azure/logic-apps/logic-apps-limits-and-config#multi-tenant-azure---outbound-ip-addresses) から見つけることができます。
+
+3. この問題が断続的に発生する場合は、再試行の設定をテストして、再試行回数が既定の 4 より多いかどうかを確認してください。
+
+4. 各 IP アドレスからの接続数に対して、SFTP サーバーによる制限が設けられているかどうかを確認してください。 その場合は、同時実行ロジック アプリ インスタンス数を制限することが必要になる場合があります。 
+
+5. SFTP サーバーの SSH 構成で [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) プロパティを 1 時間などに増やすと、接続の確立コストを削減することができます。
+
+6. SFTP サーバー ログで、ロジック アプリからの要求が SFTP サーバーに到達したかどうかを確認できます。 また、接続の問題をさらに掘り下げるために、ファイアウォールと SFTP サーバーで何らかのネットワーク トレースを行うこともできます。
+
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
 コネクタの Swagger ファイルに記述される、トリガー、アクション、制限などのこのコネクタの技術的詳細については、[コネクタの参照ページ](/connectors/sftpwithssh/)を参照してください。
@@ -263,4 +279,3 @@ SFTP サーバーにファイルを作成するには、SFTP-SSH の **[ファ�
 ## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。
-

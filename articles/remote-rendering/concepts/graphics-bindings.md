@@ -10,12 +10,12 @@ ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3d0628777fbd6250fff4bb8347461d206d13782d
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 332213adf64e17c0935ddf612acac5bbca413a87
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561875"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802295"
 ---
 # <a name="graphics-binding"></a>グラフィックスのバインド
 
@@ -120,7 +120,10 @@ if (*wmrBinding->UpdateUserCoordinateSystem(ptr) == Result::Success)
 
 #### <a name="render-remote-image"></a>リモート画像をレンダリングする
 
-各フレームの開始時に、リモート フレームをバック バッファー内にレンダリングする必要があります。 これを行うには `BlitRemoteFrame` を呼び出します。これにより、現在バインドされているレンダー ターゲットに色と深度の両方の情報が入力されます。 したがって、バック バッファーをレンダー ターゲットとしてバインドした後に、この操作を行うことが重要です。
+各フレームの開始時に、リモート フレームをバック バッファー内にレンダリングする必要があります。 これを行うには `BlitRemoteFrame` を呼び出します。これにより、現在バインドされているレンダー ターゲットに両眼の色と深度の情報が入力されます。 したがって、バック バッファーをレンダー ターゲットとしてバインドした後に、この操作を行うことが重要です。
+
+> [!WARNING]
+> リモート イメージがバック バッファーに転送された後、ローカル コンテンツは、たとえば **SV_RenderTargetArrayIndex** を使用するなど、シングルパス ステレオ レンダリング手法を利用してレンダリングされる必要があります。 別個のパスでそれぞれの眼をレンダリングするなど、他のステレオ レンダリング手法を使用すると、結果的にパフォーマンスが大幅に低下したり、グラフィックが乱れたりするため、使用を避けてください。
 
 ```cs
 AzureSession currentSession = ...;

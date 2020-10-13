@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: c3ffcea27fa16fd4f5449b42407a7e4779ca27f9
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 33198f95ef0309cada6f5f11c809811f23d7f826
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420933"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708647"
 ---
 # <a name="offer-listing-best-practices"></a>オファーの掲載のベスト プラクティス
 
@@ -61,7 +61,8 @@ Microsoft AppSource と Azure Marketplace は、さまざまな種類のソリ�
 
 #### <a name="important-saas-offers-and-microsoft-365-add-ins"></a>重要: SaaS プランと Microsoft 365 アドイン
 
-マーケットプレースの顧客がプランを表示および購入する方法にトランザクション機能がどのように影響するかについての詳細は、[プランの種類別のガイド](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview)を参照してください。 SaaS オファーでは、オファーのトランザクション機能だけでなく、選択するカテゴリによって、オファーが発行されるオンライン ストアが決まります。
+マーケットプレースの顧客がプランを表示および購入する方法にトランザクション機能がどのように影響するかについての詳細は、[コマーシャル マーケットプレースでの取引](marketplace-commercial-transaction-capabilities-and-considerations.md)を参照してください。 SaaS オファーでは、オファーのトランザクション機能だけでなく、選択するカテゴリによって、オファーが発行されるオンライン ストアが決まります。
+
 
 | SaaS プラン    | SaaS プラン   | SaaS プラン  | SaaS プラン   | SaaS プラン   | SaaS プラン   | SaaS プラン    | 該当するオンライン ストア| 該当するオンライン ストア |
 |:-------------:|:---:|:--------:|:---------:|:--:|:--:|:---:|:---------------------:|:-------------:|

@@ -3,12 +3,12 @@ title: よく寄せられる質問 - Apache Kafka 用 Azure Event Hubs
 description: この記事では、他の記事で説明されていない Apache Kafka クライアント向けの Azure Event Hubs のサポートについてよく寄せられる質問に回答します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 1ca54bf314d795b88b727ddb648f3e1e74133fd3
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: dc6a12b2098a1fdf33adda92b4347f91ab4e5489
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90061463"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828102"
 ---
 # <a name="frequently-asked-questions---event-hubs-for-apache-kafka"></a>よく寄せられる質問 - Apache Kafka 用 Event Hubs 
 この記事では、Apache Kafka 用 Event Hubs への移行についてよく寄せられる質問とその回答を示します。

@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: euang
-ms.reviewer: jrasnick, carlrab
+ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: b7aea6565e8301e2aeb96263b8e7b1d2ea64995d
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 02f627c9f606ced7e1b0d991e5053dab17050292
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589558"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826724"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Apache Spark 用のライブラリを管理する
 
@@ -85,7 +85,7 @@ Azure portal から Spark プール (プレビュー) にライブラリを直�
 
  4. ファイル セレクターを使用して、環境構成ファイルをアップロードします。
 
-![Python ライブラリを追加する](./media/apache-spark-azure-portal-add-libraries/apache-spark-add-library-azure.png "Python ライブラリを追加する")
+![環境構成ファイルのアップロード ボタンが強調表示されていることを示すスクリーンショット。](./media/apache-spark-azure-portal-add-libraries/apache-spark-add-library-azure.png "Python ライブラリを追加する")
 
 ### <a name="verify-installed-libraries"></a>インストールされているライブラリの検証
 
@@ -125,7 +125,7 @@ Synapse ワークスペースにリンクされている Azure Data Lake Storage
 ストレージ アカウントの既定のコンテナーの次のパスに、ファイルをアップロードする必要があります。 
 
 ```
-abfss://<file_system>@<account_name>.dfs.core.windows.net/synapse/workspaces/<workspace_name>sparkpools/<pool_name>libraries/python/
+abfss://<file_system>@<account_name>.dfs.core.windows.net/synapse/workspaces/<workspace_name>/sparkpools/<pool_name>/libraries/python/
 ```
 
 >[!IMPORTANT]

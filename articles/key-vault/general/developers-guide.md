@@ -6,107 +6,95 @@ author: msmbaldwin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.date: 03/11/2020
+ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e6ee8ce065361ac27bba0e80349eb5e1d1877526
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: a04435b1e2feb537231bb80d2777b9ea2599c241
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532292"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812405"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault 開発者ガイド
 
 Key Vault を使用すると、アプリケーション内から機密情報に安全にアクセスできるようになります。
 
-- 自分でコードを記述しなくても、キーとシークレットが保護され、アプリケーションから簡単に使用できます。
-- 顧客自身にキーを所有して管理してもらうことができるため、主要なソフトウェア機能の提供に集中できます。 この方法では、アプリケーションが顧客のテナント キーとシークレットに対して義務や潜在的責任を負うことはありません。
-- アプリケーションで署名と暗号化にキーを使用しながら、キー管理をアプリケーションの外部で行うことができます。これにより、ソリューションは地理的に分散したアプリを対象とすることができます。
-- Key Vault 証明書を管理します。 詳細については、[証明書](../certificates/about-certificates.md)に関するページをご覧ください。
+- 自分でコードを記述しなくても、キー、シークレット、証明書が保護され、自分のアプリケーションから簡単に使用できます。
+- 顧客自身にキー、シークレット、証明書を所有して管理してもらうことができるため、主要なソフトウェア機能の提供に集中できます。 このようにすると、アプリケーションが顧客のテナント キー、シークレット、証明書に対して義務や潜在的責任を負うことはありません。
+- アプリケーションで署名と暗号化にキーを使用しながら、キー管理をアプリケーションの外部で行うことができます。 キーの詳細については、「[キーについて](../keys/about-keys.md)」を参照してください。
+- パスワード、アクセス キー、SAS トークンなどの資格情報をシークレットとして Key Vault に格納することにより、管理することができます。[シークレットについて](../secrets/about-secrets.md)のページを参照してください。
+- 証明書の管理。 詳細については、[証明書について](../certificates/about-certificates.md)のページを参照してください。
 
 Azure Key Vault の全般的な情報については、「 [Azure Key Vault とは](overview.md)」を参照してください。
 
 ## <a name="public-previews"></a>パブリック プレビュー
 
-Key Vault の新機能のパブリック プレビューは定期的にリリースされます。 ぜひお試しいただき、azurekeyvault@microsoft.com (フィードバック用のメール アドレス) までご意見をお寄せください。
+Key Vault の新機能のパブリック プレビューは定期的にリリースされます。 パブリック プレビュー機能をお試しいただき、azurekeyvault@microsoft.com (フィードバック用のメール アドレス) までご意見をお寄せください。
 
 ## <a name="creating-and-managing-key-vaults"></a>Key Vaults の作成と管理
 
-Azure Key Vault は、資格情報およびその他のキーやシークレットを安全に保管する方法を提供しますが、コードは Key Vault に認証してそれらを取得する必要があります。 Azure リソースのマネージド ID は、Azure Active Directory (Azure AD) で自動的に管理されている ID を Azure サービスに付与することで、この問題を簡単に解決します。 この ID を使用して、コードに資格情報が含まれていなくても、Key Vault を含む Azure AD の認証をサポートする任意のサービスに認証することができます。 
+Key Vault の管理は、他の Azure サービスと同様に、Azure Resource Manager サービスを通じて行います。 Azure Resource Manager は、Azure のデプロイおよび管理サービスです。 お使いの Azure アカウント内のリソースを作成、更新、および削除できる管理レイヤーを提供します。 詳細については、[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) に関するページを参照してください。
 
-Azure リソースのマネージド ID の詳細については、[マネージド ID の概要](../../active-directory/managed-identities-azure-resources/overview.md)に関するページを参照してください。 Azure AD の操作の概要については、[Azure Active Directory とアプリケーションの統合](../../active-directory/develop/active-directory-integrating-applications.md)に関するページを参照してください。
+管理レイヤーへのアクセスは、[Azure ロールベースの制御](https://docs.microsoft.com/azure/role-based-access-control/overview)によって制御されます。 Key Vault においては、管理またはコントロール プレーンとも呼ばれる管理レイヤーを使用して、キー コンテナーとその属性 (アクセス ポリシーを含む) を作成および管理できますが、キー、シークレット、証明書はそれができません (これらはデータ プレーンで管理されます)。 定義済みの `Key Vault Contributor` ロールを使用して、Key Vault への管理アクセス権を付与できます。     
 
-キー コンテナーでキー、シークレット、または証明書を使用する前に、次の記事に従って、CLI、PowerShell、Resource Manager テンプレートまたは REST でキーを作成し、管理します。
+**キー コンテナー管理のための API と SDK:**
 
-- [CLI を使用した Key Vault の管理](quick-create-cli.md)
-- [PowerShell を使用した Key Vault の作成と管理](quick-create-powershell.md)
-- [Azure portal を使用した Key Vault の作成と管理](quick-create-portal.md)
-- [REST を使用した Key Vault の作成と管理](/rest/api/keyvault/vaults/createorupdate)
+| Azure CLI | PowerShell | REST API | リソース マネージャー | .NET | Python | Java | JavaScript |  
+|--|--|--|--|--|--|--|--|
+|[参照](/cli/azure/keyvault)<br>[クイックスタート](quick-create-cli.md)|[参照](/powershell/module/az.keyvault)<br>[クイックスタート](quick-create-powershell.md)|[リファレンス](/rest/api/keyvault/)|[リファレンス](/azure/templates/microsoft.keyvault/vaults)|[リファレンス](/dotnet/api/microsoft.azure.management.keyvault)|[リファレンス](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)|[リファレンス](/java/api/com.microsoft.azure.management.keyvault)|[リファレンス](/javascript/api/@azure/arm-keyvault)|
 
-### <a name="set-and-retrieve-secrets"></a>シークレットを設定および取得する
+インストール パッケージとソース コードについては、[クライアント ライブラリ](client-libraries.md)に関するページを参照してください。
 
-- [CLI を使用してシークレットを設定および取得する](../secrets/quick-create-cli.md)
-- [PowerShell を使用してシークレットを設定および取得する](../secrets/quick-create-powershell.md)
-- [Azure portal を使用してシークレットを設定および取得する](../secrets/quick-create-portal.md)
-- [REST でのシークレットの操作](/rest/api/keyvault/#secret-operations)
-- [Python を使用してシークレットを設定および取得する](../secrets/quick-create-python.md)
-- [Java を使用してシークレットを設定および取得する](../secrets/quick-create-java.md)
-- [Node.js を使用してシークレットを設定および取得する](../secrets/quick-create-node.md)
-- [.NET (v4 SDK) を使用してシークレットを設定および取得する](../secrets/quick-create-net.md)
-- [Azure Resource Manager テンプレートを使用した Key Vault の作成とシークレットの追加](../secrets/quick-create-template.md)
+Key Vault 管理プレーンの詳細については、[Key Vault 管理プレーン](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault#management-plane-and-azure-rbac)に関するページを参照してください。
 
-### <a name="set-and-retrieve-keys"></a>キーを設定および取得する
+## <a name="authenticate-to-key-vault-in-code"></a>コードでの Key Vault に対する認証
 
-- [CLI を使用してキーを設定および取得する](../keys/quick-create-cli.md)
-- [PowerShell を使用してキーを設定および取得する](../keys/quick-create-powershell.md)
-- [Azure portal を使用してキーを設定および取得する](../keys/quick-create-portal.md)
-- [REST でのキーの操作](/rest/api/keyvault/#key-operations)
-- [Python を使用してキーを設定および取得する](../secrets/quick-create-python.md)
+Key Vault には、アクセスを許可するために Azure AD セキュリティ プリンシパルを必要とする Azure AD 認証が使用されています。 Azure AD セキュリティ プリンシパルは、ユーザー、アプリケーション サービス プリンシパル、[Azure リソースのマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md)、または任意の種類のセキュリティ プリンシパルのグループである場合があります。
 
-### <a name="set-and-retrieve-certificates"></a>証明書を設定および取得する
-- [CLI を使用して証明書を設定および取得する](../certificates/quick-create-cli.md)
-- [PowerShell を使用して証明書を設定および取得する](../certificates/quick-create-powershell.md)
-- [Azure portal を使用して証明書を設定および取得する](../certificates/quick-create-portal.md)
-- [REST を使用した証明書の操作](/rest/api/keyvault/#certificate-operations)
-- [Python を使用して証明書を設定および取得する](../certificates/quick-create-python.md)
+### <a name="authentication-best-practices"></a>認証のベスト プラクティス
+Azure にデプロイされたアプリケーションにはマネージド ID を使用することをお勧めします。 マネージド ID がサポートされていない Azure サービスを使用する場合、またはアプリケーションをオンプレミスに展開している場合は、他の可能な方法として[証明書を使用したサービス プリンシパル](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)があります。 そのシナリオでは、証明書が Key Vault に格納され、頻繁にローテーションされることになります。 シークレットを使用したサービス プリンシパルは、開発およびテスト環境で使用できます。また、ユーザー プリンシパルを使用してローカルまたは Cloud Shell で使用することをお勧めします。
 
-## <a name="coding-with-key-vault"></a>Key Vault を使用したコーディング
+上記の認証シナリオは、Azure ID クライアント ライブラリでサポートされており、Key Vault SDK と統合されています。 Azure ID ライブラリは、コードを変更することなく、異なる複数の環境やプラットフォームで使用できます。 Azure ID を使用すると、Azure CLI、Visual Studio、Visual Studio Code などによって Azure にログインしたユーザーから、認証トークンを自動的に取得することもできます。 
 
-プログラマー向けの Key Vault 管理システムは、さまざまなインターフェイスで構成されています。 このセクションでは、すべての言語のリンクと、いくつかのコード例を紹介します。 
+詳細については、次をご覧ください。 
 
-### <a name="supported-programming-and-scripting-languages"></a>サポートされるプログラミング言語とスクリプト言語
+| .NET | Python | Java | JavaScript |
+|--|--|--|--|
+|[Azure Identity SDK .NET](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme)|[Azure Identity SDK Python](https://docs.microsoft.com/python/api/overview/azure/identity-readme)|[Azure Identity SDK Java](https://docs.microsoft.com/java/api/overview/azure/identity-readme)|[Azure Identity SDK JavaScript](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme)|     
 
-#### <a name="rest"></a>REST
+アプリケーションでの Key Vault に対する認証:
+- [VM にホストされているアプリケーションから Key Vault に対して .NET で認証する](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-virtual-machine)
+- [VM にホストされているアプリケーションから Key Vault に対して Python で認証する](https://docs.microsoft.com/azure/key-vault/general/tutorial-python-virtual-machine)
+- [App Service を使用して Key Vault に対して認証する](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-create-vault-azure-web-app)
 
-すべてのキー コンテナー リソースは、インターフェイス、コンテナー、キー、シークレットなどの REST インターフェイスからアクセスできます。 
+## <a name="manage-keys-certificates-and-secrets"></a>キー、証明書、シークレットの管理
 
-[Key Vault REST API リファレンス](/rest/api/keyvault/)。
+キー、シークレット、および証明書へのアクセスは、データ プレーンによって制御されます。 データ プレーンのアクセス制御は、ローカルのコンテナー アクセス ポリシーまたは RBAC (プレビュー) を使用して行うことができます。
 
-#### <a name="net"></a>.NET
+**キーの API と SDK**
 
-[Key Vault の .NET API リファレンス](/dotnet/api/overview/azure/key-vault?view=azure-dotnet)。
 
-#### <a name="java"></a>Java
+| Azure CLI | PowerShell | REST API | リソース マネージャー | .NET | Python | Java | JavaScript |  
+|--|--|--|--|--|--|--|--|
+|[参照](/cli/azure/keyvault/key)<br>[クイックスタート](../keys/quick-create-cli.md)|[参照](/powershell/module/az.keyvault/)<br>[クイックスタート](../keys/quick-create-powershell.md)|[参照](/rest/api/keyvault/#key-operations)|該当なし|[リファレンス](/dotnet/api/azure.security.keyvault.keys)|[リファレンス](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br>[クイックスタート](../keys/quick-create-python.md)|[リファレンス](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html)|[リファレンス](/javascript/api/@azure/keyvault-keys/)|
 
-[Key Vault の Java SDK](/java/api/overview/azure/keyvault)
+**証明書の API と SDK**
 
-#### <a name="nodejs"></a>Node.js
 
-Node.js では、キー コンテナー管理 API とキー コンテナー オブジェクト API は別々になっています。 次の概要の記事から、両方にアクセスすることができます。 
+| Azure CLI | PowerShell | REST API | リソース マネージャー | .NET | Python | Java | JavaScript |  
+|--|--|--|--|--|--|--|--|
+|[参照](/cli/azure/keyvault/certificate)<br>[クイックスタート](../certificates/quick-create-cli.md)|[参照](/powershell/module/az.keyvault)<br>[クイックスタート](../certificates/quick-create-powershell.md)|[参照](/rest/api/keyvault/#certificate-operations)|該当なし|[リファレンス](/dotnet/api/azure.security.keyvault.certificates)|[リファレンス](/python/api/overview/azure/keyvault-certificates-readme)<br>[クイックスタート](../certificates/quick-create-python.md)|[リファレンス](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-certificates/4.1.0/index.html)|[リファレンス](/javascript/api/@azure/keyvault-certificates/)|
 
-[Node.js 用 Azure Key Vault モジュール](https://docs.microsoft.com/javascript/api/overview/azure/key-vault-index?view=azure-node-latest)
+**シークレットの API と SDK**
 
-#### <a name="python"></a>Python
 
-[Python 用 Azure Key Vault ライブラリ](https://docs.microsoft.com/python/api/overview/azure/key-vault-index?view=azure-python)
+| Azure CLI | PowerShell | REST API | リソース マネージャー | .NET | Python | Java | JavaScript |  
+|--|--|--|--|--|--|--|--|
+|[参照](/cli/azure/keyvault/secret)<br>[クイックスタート](../secrets/quick-create-cli.md)|[参照](/powershell/module/az.keyvault/)<br>[クイックスタート](../secrets/quick-create-powershell.md)|[リファレンス](/rest/api/keyvault/#secret-operations)|[リファレンス](/azure/templates/microsoft.keyvault/vaults/secrets)<br>[クイックスタート](../secrets/quick-create-template.md)|[参照](/dotnet/api/azure.security.keyvault.secrets)<br>[クイックスタート](../secrets/quick-create-net.md)|[参照](/python/api/overview/azure/keyvault-secrets-readme)<br>[クイックスタート](../secrets/quick-create-python.md)|[参照](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-secrets/4.2.0/index.html)<br>[クイックスタート](../secrets/quick-create-java.md)|[参照](/javascript/api/@azure/keyvault-secrets/)<br>[クイックスタート](../secrets/quick-create-node.md)|
 
-#### <a name="azure-cli"></a>Azure CLI
+インストール パッケージとソース コードについては、[クライアント ライブラリ](client-libraries.md)に関するページを参照してください。
 
-[Azure CLI for Key Vault](/cli/azure/keyvault?view=azure-cli-latest)
-
-#### <a name="azure-powershell"></a>Azure PowerShell 
-
-[Azure PowerShell for Key Vault](/powershell/module/az.keyvault/?view=azps-3.6.1#key_vault)
+Key Vault データ プレーンのセキュリティの詳細については、[Key Vault データ プレーンとアクセス ポリシー](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault#data-plane-and-access-policies)および [Key Vault データ プレーンと RBAC (プレビュー)](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault#data-plane-and-azure-rbac-preview) に関するページを参照してください。
 
 ### <a name="code-examples"></a>コード例
 
@@ -118,25 +106,24 @@ Node.js では、キー コンテナー管理 API とキー コンテナー オ�
 
 次の記事とシナリオは、Azure Key Vault を操作するためのタスク固有のガイダンスを提供します。
 
-- [サブスクリプションの移行後に Key Vault のテナント ID を変更する](move-subscription.md) - テナント A からテナント B に Azure サブスクリプションを移行すると、テナント B のプリンシパル (ユーザーとアプリケーション) は既存のキー コンテナーにアクセスできなくなります。この問題を解決するには、次のガイドを使用します。
 - [ファイアウォールの背後で Key Vault にアクセスする](access-behind-firewall.md) - キー コンテナーにアクセスするには、Key Vault クライアント アプリケーションが、各種の機能のために複数のエンドポイントにアクセスできる必要があります。
-- [Azure Key Vault の HSM 保護キーを生成し、転送する方法](../keys/hsm-protected-keys.md) - この記事は Azure Key Vault と共に使用する独自の HSM 保護キーを計画、生成、転送する際に役立ちます。
-- [デプロイ時にセキュリティで保護された値 (パスワードなど) を渡す方法](../../azure-resource-manager/templates/key-vault-parameter.md) - デプロイメント時にパラメーターとしてセキュリティで保護された値 (パスワードなど) を渡す必要がある場合、Azure Key Vault にシークレットとしてその値を格納し、他のリソース マネージャー テンプレートで値を参照することができます。
-- [Key Vault を使用して SQL Server で拡張キーを管理する方法](https://msdn.microsoft.com/library/dn198405.aspx) - Azure Key Vault 用の SQL Server Connector により、SQL Server と VM 内の SQL で拡張キー管理 (EKM) プロバイダーとして Azure Key Vault サービスを利用して、Transparent Data Encryption (透過的なデータ暗号化、TDE)、バックアップ暗号化、Column Level Encryption (列レベル暗号化、CLE)など、アプリケーション リンクの暗号化キーを保護できます。
-- [Key Vault から VM に証明書をデプロイする方法](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/) - Azure の VM で実行するクラウド アプリケーションには証明書が必要です。 今すぐこの VM で証明書を取得する方法を説明します。
-- [Key Vault を使用した Azure Web App Certificate のデプロイ]( https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/): Key Vault に格納されている証明書を、[App Service 証明書](https://azure.microsoft.com/blog/internals-of-app-service-certificate/)の提供の一部としてデプロイするための手順について説明します。
-- アクセス ポリシーを割り当てます ([CLI](assign-access-policy-cli.md) | [PowerShell](assign-access-policy-powershell.md) | [ポータル](assign-access-policy-portal.md))。 Key Vault では、最大 1,024 個のアクセス ポリシー エントリがサポートされています。 ユーザーがこの制限を超えないようにするには、Azure Active Directory セキュリティ グループを作成し、関連するすべてのサービス プリンシパルをそのグループに追加してから、Key Vault へのアクセスをグループに許可します。
-- Key Vault と Azure の統合と使用に関するその他のタスク固有のガイダンスについては、[Ryan Jones による Key Vault 向け Azure Resource Manager テンプレート サンプル](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)をご覧ください。
+- Key Vault から VM に証明書をデプロイする方法 - [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows)、[Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) - Azure の VM で実行するクラウド アプリケーションには証明書が必要です。 今すぐこの VM で証明書を取得する方法を説明します。
+- [Key Vault を介して Azure Web アプリ証明書をデプロイする](https://docs.microsoft.com/azure/app-service/configure-ssl-certificate#import-a-certificate-from-key-vault)
+- アクセス ポリシーを割り当てます ([CLI](assign-access-policy-cli.md) | [PowerShell](assign-access-policy-powershell.md) | [ポータル](assign-access-policy-portal.md))。 
 - 「[CLI で Key Vault の論理的な削除を使用する方法](soft-delete-cli.md)」では、キー コンテナーの使用方法とライフサイクルおよび論理的な削除が有効な各種キー コンテナー オブジェクトを紹介します。
-- 「[How to use Key Vault soft-delete with PowerShell](soft-delete-powershell.md)」(PowerShell で Key Vault の論理的な削除を使用する方法) では、キー コンテナーの使用方法とライフサイクルおよび論理的な削除が有効な各種キー コンテナー オブジェクトを紹介します。
+- [デプロイ時にセキュリティで保護された値 (パスワードなど) を渡す方法](../../azure-resource-manager/templates/key-vault-parameter.md) - デプロイメント時にパラメーターとしてセキュリティで保護された値 (パスワードなど) を渡す必要がある場合、Azure Key Vault にシークレットとしてその値を格納し、他のリソース マネージャー テンプレートで値を参照することができます。
 
 ## <a name="integrated-with-key-vault"></a>Key Vault との統合
 
 Key Vault を使用したり、Key Vault と統合したりする他のシナリオとサービスについては、以下の記事で取り上げています。
 
-- [Azure Disk Encryption](../../security/fundamentals/encryption-overview.md) では、Windows の業界標準である [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 機能と Linux の [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 機能を利用して、OS とデータ ディスクのボリュームの暗号化を提供します。 ソリューションは Azure Key Vault と統合されています。これは、Key Vault サブスクリプションでディスク暗号化キーとシークレットを制御および管理し、Azure ストレージで保存中の仮想マシン ディスク内のすべてのデータを確実に暗号化する場合に役立ちます。
-- [Azure Data Lake Store](../../data-lake-store/data-lake-store-get-started-portal.md) では、アカウントに格納されているデータを暗号化するオプションを提供します。 キーの管理に関して、Data Lake Store には、Data Lake Store に格納されているすべてのデータを暗号化解除するのに必要なマスター暗号化キー (MEK) を管理するための 2 つのモードが用意されています。 Data Lake Store に MEK の管理を任せることも、Azure Key Vault アカウントを使用して MEK の所有権を保持することもできます。 キー管理のモードは、Data Lake Store アカウントの作成時に指定します。
+- [保存データの暗号化](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)によって、データが永続化されるときにエンコード (暗号化) することができます。 データ暗号化キーは多くの場合、さらにアクセスを制限するため、Azure Key Vault のキーの暗号化キーで暗号化されます。
 - [Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) では、独自のテナント キーを管理できます。 たとえば、テナント キーの管理をマイクロソフトに任せる (既定値) 代わりに、組織に適用される特定の規則を遵守する独自のテナント キーを管理できます。 独自のテナント キーの管理は、BYOK (Bring Your Own Key: 独自のキーを持ち込むの意) とも呼ばれます。
+- [Azure Private Link サービス](private-link-service.md)を使用すると、自分の仮想ネットワーク内のプライベート エンドポイント経由で、Azure サービス (Azure Key Vault、Azure Storage、Azure Cosmos DB など) と、Azure でホストされている顧客またはパートナー サービスにアクセスできます。
+- Key Vault と [Event Grid](https://docs.microsoft.com/azure/event-grid/event-schema-key-vault) の統合により、キー コンテナーに格納されているシークレットの状態が変更されたときにユーザーに通知できます。 アプリケーションに新しいバージョンのシークレットを配布したり、期限切れが近いシークレットをローテーションしたりして、停止を防ぐことができます。
+- [Azure Devops](https://docs.microsoft.com/azure/devops/pipelines/release/azure-key-vault) シークレットを Key Vault で不要なアクセスから保護することができます。
+- [DataBricks の Key Vault に格納されているシークレットを使用して Azure Storage に接続する](https://docs.microsoft.com/azure/key-vault/general/integrate-databricks-blob-storage)
+- Kubernetes 上の[シークレット ストア CSI ドライバー](https://docs.microsoft.com/azure/key-vault/general/key-vault-integrate-kubernetes)向けに Azure Key Vault プロバイダーを構成して実行する
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault の概要と概念
 
@@ -148,8 +135,3 @@ Key Vault を使用したり、Key Vault と統合したりする他のシナリ
 
 - [Key Vault Blog](https://aka.ms/kvblog)
 - [Key Vault Forum](https://aka.ms/kvforum)
-
-## <a name="supporting-libraries"></a>対応ライブラリ
-
-- [Microsoft Azure Key Vault Core Library](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core): 識別子からキーを検索し、キーを使用して操作を実行する、**IKey** および **IKeyResolver** インターフェイスを提供します。
-- [Microsoft Azure Key Vault Extensions](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions) : Azure Key Vault の拡張機能を提供します。

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c5ae587438e2cc3c583307c3d6b41ec986193216
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 57df05918b590cedbf4af0464690ef2524f8ba79
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134766"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650512"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-portal"></a>Azure Portal を使用して仮想マシン (クラシック) のプライベート IP アドレスを構成する
 
@@ -43,20 +43,20 @@ ms.locfileid: "86134766"
 1. ブラウザーで https://portal.azure.com に移動し、必要に応じて Azure アカウントでサインインします。
 2. **[新規]**  >  **[Compute]**  >  **[Windows Server 2012 R2 Datacenter]** の順に選択し、 **[デプロイ モデルの選択]** の一覧に既に **[クラシック]** と表示されているのを確認してから **[作成]** を選択します。
    
-    ![Azure ポータルでの VM の作成](./media/virtual-networks-static-ip-classic-pportal/figure01.png)
+    ![Azure portal を示すスクリーンショット。[新規] > [計算する] > [Windows Server 2012 R2 Datacenter] タイルの順で強調表示されています。](./media/virtual-networks-static-ip-classic-pportal/figure01.png)
 3. **[VM の作成]** で、作成する VM の名前 (ここでは*DNS01* )、ローカル管理者のアカウント、およびパスワードを入力します。
    
-    ![Azure ポータルでの VM の作成](./media/virtual-networks-static-ip-classic-pportal/figure02.png)
+    ![VM、ローカル管理者のユーザー名、パスワードを入力して VM を作成する方法を示すスクリーンショット。](./media/virtual-networks-static-ip-classic-pportal/figure02.png)
 4. **[オプションの構成]**  >  **[ネットワーク]**  >  **[Virtual Network]** の順に選択し、 **[TestVNet]** を選択します。 **[TestVNet]** を使用できない場合は、場所として *[米国中部]* を使用しており、この記事の冒頭で説明されているテスト環境が作成済みであることを確認してください。
    
-    ![Azure ポータルでの VM の作成](./media/virtual-networks-static-ip-classic-pportal/figure03.png)
+    ![[オプションの構成] > [ネットワーク] > [仮想ネットワーク] > [TestVNet] オプションの順に強調表示されているスクリーンショット。](./media/virtual-networks-static-ip-classic-pportal/figure03.png)
 5. **[ネットワーク]** で、以下のように、現在選択されているサブネットが *FrontEnd* であることを確認し、 **[IP アドレス]** を選択してから、 **[IP アドレスの割り当て]** の下にある **[静的]** を選択して、 **[IP アドレス]** に 「*192.168.1.101*」と入力します。
    
-    ![Azure ポータルでの VM の作成](./media/virtual-networks-static-ip-classic-pportal/figure04.png)    
+    ![[IP アドレス] フィールドが強調表示されているスクリーンショット。ここでは、静的 IP アドレスを入力できます。](./media/virtual-networks-static-ip-classic-pportal/figure04.png)    
 6. **[IP アドレス]** で **[OK]** を選択し、 **[ネットワーク]** で **[OK]** を選択したら、 **[オプションの構成]** で **[OK]** を選択します。
 7. **[VM の作成]** で **[作成]** を選択します。 ダッシュ ボードに以下のタイルが表示されることを確認します。
    
-    ![Azure ポータルでの VM の作成](./media/virtual-networks-static-ip-classic-pportal/figure05.png)
+    ![[Creating Windows Server 2012 R2 Datacenter]\(Windows Server 2012 R2 Datacenter の作成\) タイルを示すスクリーンショット。](./media/virtual-networks-static-ip-classic-pportal/figure05.png)
 
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>VM 用の静的プライベート IP アドレス情報を取得する方法
 上記の手順で作成された VM の静的プライベート IP アドレス情報を表示するには、次の手順を実行します。
@@ -69,7 +69,7 @@ ms.locfileid: "86134766"
 
 次の図に示すように、 **[IP アドレス]** で、 **[IP アドレスの割り当て]** の右側にある **[動的]** を選択し、 **[保存]** を選択したら、 **[はい]** を選択します。
    
-![Azure ポータルでの VM の作成](./media/virtual-networks-static-ip-classic-pportal/figure07.png)
+![IP アドレスの割り当てラベルの右側にある [動的] を選択して VM から静的プライベート IP アドレスを削除する方法を示すスクリーンショット。](./media/virtual-networks-static-ip-classic-pportal/figure07.png)
 
 ## <a name="how-to-add-a-static-private-ip-address-to-an-existing-vm"></a>既存の VM に静的プライベート IP アドレスを追加する方法
 

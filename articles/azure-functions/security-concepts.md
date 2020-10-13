@@ -3,12 +3,12 @@ title: Azure Functions のセキュリティ保護
 description: 一般的な攻撃に対して、Azure で実行される関数コードのセキュリティを強化する方法について説明します。
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9bec32c4c3d8005ef0d3c9fc5732785a5fa19a0c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 470ee517b929b7327df76963e21c88db21d363da
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850714"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761415"
 ---
 # <a name="securing-azure-functions"></a>Azure Functions のセキュリティ保護
 
@@ -24,7 +24,7 @@ ms.locfileid: "87850714"
 
 ### <a name="security-center"></a>Security Center
 
-ポータルでは、Security Center が関数アプリと統合されています。 これにより、構成に関連する潜在的なセキュリティ脆弱性を、無料ですばやく評価することができます。 専用プランで実行される関数アプリでは、追加コストを払えば Security Center のリアルタイム セキュリティ機能も利用できます。 詳細については、「[Azure App Service Web アプリと API を保護する](../security-center/security-center-app-services.md)」を参照してください。 
+ポータルでは、Security Center が関数アプリと統合されています。 これにより、構成に関連する潜在的なセキュリティ脆弱性を、無料ですばやく評価することができます。 専用プランで実行される関数アプリでは、追加コストを払えば Security Center のリアルタイム セキュリティ機能も利用できます。 詳細については、「[Azure App Service Web アプリと API を保護する](https://docs.microsoft.com/azure/security-center/defender-for-app-service-introduction)」を参照してください。 
 
 ### <a name="log-and-monitor"></a>ログ記録と監視を行う
 
@@ -128,6 +128,8 @@ HTTPS を必須にする場合は、最新の TLS バージョンも必須にす
 たとえば、すべての関数アプリには、ランタイムで使用される関連ストレージ アカウントが必要です。 既定では、このストレージ アカウントへの接続は、`AzureWebJobsStorage` という名前のアプリケーション設定に格納されます。
 
 アプリ設定と接続文字列は、Azure で暗号化されて格納されます。 これらの暗号化は、アプリの起動時にアプリのプロセス メモリに挿入される前にのみ解除されます。 暗号化キーは定期的に回転されます。 セキュリティで保護されたシークレットのストレージを自分で管理したい場合は、アプリ設定で Azure Key Vault を参照する必要があります。 
+
+ローカル コンピューターで関数を開発するとき、local.settings.json ファイルで既定で設定を暗号化することもできます。 詳細については、[ローカル設定ファイル](functions-run-local.md#local-settings-file)の `IsEncrypted` プロパティを参照してください。  
 
 #### <a name="key-vault-references"></a>Key Vault の参照
 

@@ -7,18 +7,17 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: jordane
 author: jpe316
-ms.date: 07/24/2020
+ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 7b63ef36d7df43168ed132a740bab026e6e00f3f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f0c923bcb7df930ed4b1380d487ededc6c160844
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897233"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743745"
 ---
-# <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して Scikit-learn モデルを大規模に構築する
-
+# <a name="train-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して scikit-learn モデルを大規模にトレーニングする
 
 この記事では、Azure Machine Learning を使用して scikit-learn トレーニング スクリプトを実行する方法について説明します。
 
@@ -32,16 +31,16 @@ scikit-learn の機械学習モデルを一からトレーニングする場合�
  - Azure Machine Learning コンピューティング インスタンス - ダウンロードやインストールは必要なし
 
     - 「[チュートリアル: 環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)」を完了して、SDK とサンプル リポジトリが事前に読み込まれた専用のノートブック サーバーを作成します。
-    - Notebook サーバー上の samples トレーニング用フォルダーで、**how-to-use-azureml > ml-frameworks > scikit-learn > training > train-hyperparameter-tune-deploy-with-sklearn** の順に選択してこのディレクトリに移動し、完了済みで展開済みのノートブックを見つけます。
+    - ノートブック サーバー上の samples トレーニング用フォルダーで、**how-to-use-azureml > ml-frameworks > scikit-learn > train-hyperparameter-tune-deploy-with-sklearn** フォルダーの順に選択してこのディレクトリに移動し、完了済みで展開済みのノートブックを見つけます。
 
  - 独自の Jupyter Notebook サーバー
 
-    - [Azure Machine Learning SDK をインストールします](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。
+    - [Azure Machine Learning SDK (1.13.0 以降) をインストールします](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。
     - [ワークスペース構成ファイルを作成します](how-to-configure-environment.md#workspace)。
 
 ## <a name="set-up-the-experiment"></a>実験を設定する
 
-このセクションでは、必要な Python パッケージを読み込み、ワークスペースを初期化し、実験を作成し、トレーニング データとトレーニング スクリプトをアップロードすることで、トレーニング実験を設定します。
+このセクションでは、必要な Python パッケージを読み込み、ワークスペースを初期化し、トレーニング環境を定義し、トレーニング スクリプトを準備することで、トレーニング実験を設定します。
 
 ### <a name="initialize-a-workspace"></a>ワークスペースを初期化する
 
@@ -55,24 +54,31 @@ from azureml.core import Workspace
 ws = Workspace.from_config()
 ```
 
-
 ### <a name="prepare-scripts"></a>スクリプトを準備する
 
-このチュートリアルでは既に、トレーニング スクリプトの **train_iris.py** が[ここ](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn/train_iris.py)に用意されています。 実際には、コードを変更しなくても、あらゆるカスタム トレーニング スクリプトをそのまま Azure ML で実行できるはずです。
+このチュートリアルでは既に、トレーニング スクリプトの **train_iris.py** が[ここ](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/scikit-learn/train-hyperparameter-tune-deploy-with-sklearn/train_iris.py)に用意されています。 実際には、コードを変更しなくても、あらゆるカスタム トレーニング スクリプトをそのまま Azure ML で実行できるはずです。
 
 メモ:
 - 提供されているトレーニング スクリプトは、スクリプト内の `Run` オブジェクトを使用して Azure ML 実行にいくつかのメトリックをログ記録する方法を示しています。
-- 指定されたトレーニング スクリプトでは、`iris = datasets.load_iris()` 関数のサンプル データを使用します。  独自のデータについては、[データセットやスクリプトのアップロード](how-to-train-keras.md#data-upload)などの手順を使用して、トレーニング中にデータを使用できるようにすることが必要になる場合があります。
+- 指定されたトレーニング スクリプトでは、`iris = datasets.load_iris()` 関数のサンプル データを使用します。  独自のデータを使用してデータにアクセスするには、[データセットを使用したトレーニング方法](how-to-train-with-datasets.md)を参照して、トレーニング中にデータを使用できるようにしてください。
 
 ### <a name="define-your-environment"></a>環境を定義する
 
+トレーニング スクリプトの依存関係をカプセル化する Azure ML [環境](concept-environments.md)を定義するには、カスタム環境を定義するか、Azure ML のキュレーションされた環境を使用します。
+
+#### <a name="use-a-curated-environment"></a>選別された環境を使用する
+独自のイメージを作成しない場合には、必要に応じて、事前に構築され、キュレーションされた環境が Azure ML によって提供されます。 詳細については、[ここ](resource-curated-environments.md)を参照してください。
+キュレーションが行われた環境を使用する場合は、代わりに次のコマンドを実行できます。
+
+```python
+sklearn_env = Environment.get(workspace=ws, name='AzureML-Tutorial')
+```
+
 #### <a name="create-a-custom-environment"></a>カスタム環境を作成する
 
-Conda 環境 (sklearn-env.yml) を作成します。
-ノートブックから Conda 環境を作成する場合は、セルの最上部に ```%%writefile sklearn-env.yml``` という行を追加できます。
+独自のカスタム環境を作成することもできます。 YAML ファイルで conda の依存関係を定義します。この例では、ファイルの名前は `conda_dependencies.yml` です。
 
 ```yaml
-name: sklearn-training-env
 dependencies:
   - python=3.6.2
   - scikit-learn
@@ -85,55 +91,62 @@ dependencies:
 ```python
 from azureml.core import Environment
 
-myenv = Environment.from_conda_specification(name = "myenv", file_path = "sklearn-env.yml")
-myenv.docker.enabled = True
+sklearn_env = Environment.from_conda_specification(name='sklearn-env', file_path='conda_dependencies.yml')
 ```
 
-#### <a name="use-a-curated-environment"></a>選別された環境を使用する
-独自のイメージを作成しない場合には、Azure ML に、事前に構築とキュレーションが行われたコンテナー環境が用意されています。 詳細については、[ここ](resource-curated-environments.md)を参照してください。
-キュレーションが行われた環境を使用する場合は、代わりに次のコマンドを実行できます。
+環境の作成と使用の詳細については、「[Azure Machine Learning でソフトウェア環境を作成して使用する](how-to-use-environments.md)」をご覧ください。
 
-```python
-env = Environment.get(workspace=ws, name="AzureML-Tutorial")
-```
+## <a name="configure-and-submit-your-training-run"></a>トレーニングの実行を構成して送信する
 
 ### <a name="create-a-scriptrunconfig"></a>ScriptRunConfig を作成する
+ScriptRunConfig オブジェクトを作成して、トレーニング スクリプト、使用する環境、実行するコンピューティング先など、トレーニング ジョブの構成の詳細を指定します。
+`arguments` パラメーターで指定されている場合、トレーニング スクリプトへの引数はすべてコマンド ラインを使用して渡されます。
 
-この ScriptRunConfig は、ローカルのコンピューティング ターゲットで実行するジョブを送信します。
+次のコードは、ローカル コンピューターで実行するジョブを送信するように ScriptRunConfig オブジェクトを構成します。
 
 ```python
 from azureml.core import ScriptRunConfig
 
-sklearnconfig = ScriptRunConfig(source_directory='.', script='train_iris.py')
-sklearnconfig.run_config.environment = myenv
+src = ScriptRunConfig(source_directory='.',
+                      script='train_iris.py',
+                      arguments=['--kernel', 'linear', '--penalty', 1.0],
+                      environment=sklearn_env)
 ```
 
-リモート クラスターに送信する場合は、run_config.target を目的のコンピューティング ターゲットに変更できます。
+代わりにリモート クラスターでジョブを実行する場合は、目的のコンピューティング先を ScriptRunConfig の `compute_target` パラメーターに指定できます。
+
+```python
+from azureml.core import ScriptRunConfig
+
+compute_target = ws.compute_targets['<my-cluster-name>']
+src = ScriptRunConfig(source_directory='.',
+                      script='train_iris.py',
+                      arguments=['--kernel', 'linear', '--penalty', 1.0],
+                      compute_target=compute_target,
+                      environment=sklearn_env)
+```
 
 ### <a name="submit-your-run"></a>実行を送信する
 ```python
 from azureml.core import Experiment
 
-run = Experiment(ws,'train-sklearn').submit(config=sklearnconfig)
+run = Experiment(ws,'train-iris').submit(src)
 run.wait_for_completion(show_output=True)
-
 ```
 
 > [!WARNING]
-> Azure Machine Learning では、ソース ディレクトリ全体をコピーすることで、トレーニング スクリプトが実行されます。 アップロードしたくない機密データがある場合は、[.ignore ファイル](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots)を使用するか、ソース ディレクトリに含めないようにします。 代わりに、[データストア](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py&preserve-view=true)を使用してデータにアクセスしてください。
+> Azure Machine Learning では、ソース ディレクトリ全体をコピーすることで、トレーニング スクリプトが実行されます。 アップロードしたくない機密データがある場合は、[.ignore ファイル](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots)を使用するか、ソース ディレクトリに含めないようにします。 代わりに、Azure ML [データセット](how-to-train-with-datasets.md)を使用してデータにアクセスします。
 
-Python 環境のカスタマイズの詳細については、[トレーニングとデプロイのための環境の作成と管理](how-to-use-environments.md)に関するページを参照してください。 
-
-## <a name="what-happens-during-run-execution"></a>実行実施中の動作
+### <a name="what-happens-during-run-execution"></a>実行実施中の動作
 実行は、以下の段階を経て実施されます。
 
-- **準備**:docker イメージは TensorFlow エスティメーターに従って作成されます。 イメージはワークスペースのコンテナー レジストリにアップロードされ、後で実行するためにキャッシュされます。 ログは実行履歴にもストリーミングされ、進行状況を監視するために表示することができます。
+- **準備**:docker イメージは、定義されている環境に従って作成されます。 イメージはワークスペースのコンテナー レジストリにアップロードされ、後で実行するためにキャッシュされます。 ログは実行履歴にもストリーミングされ、進行状況を監視するために表示することができます。 代わりにキュレーションされた環境が指定されている場合は、そのキュレーションされた環境をバッキングするキャッシュされたイメージが使用されます。
 
 - **拡大縮小**:Batch AI クラスターでの実行に現在使用可能な数より多くのノードが必要な場合、クラスターはスケールアップを試みます。
 
-- **[実行中]** : script フォルダー内のすべてのスクリプトがコンピューティング先にアップロードされ、データ ストアがマウントまたはコピーされ、entry_script が実行されます。 stdout および ./logs フォルダーの出力は実行履歴にストリーミングされ、実行を監視するために使用できます。
+- **[実行中]** : script フォルダー内のすべてのスクリプトがコンピューティング先にアップロードされ、データ ストアがマウントまたはコピーされ、`script` が実行されます。 stdout および **./logs** フォルダーの出力は実行履歴にストリーミングされ、実行を監視するために使用できます。
 
-- **後処理**:実行の ./outputs フォルダーが実行履歴にコピーされます。
+- **後処理**:実行の **./outputs** フォルダーが実行履歴にコピーされます。
 
 ## <a name="save-and-register-the-model"></a>モデルを保存して登録する
 
@@ -162,11 +175,11 @@ model = run.register_model(model_name='sklearn-iris',
 
 ## <a name="deployment"></a>デプロイ
 
-今登録したモデルは、どのエスティメーターをトレーニングに使用したかには関係なく、Azure Machine Learning の他のすべての登録済みのモデルとまったく同じ方法でデプロイできます。 デプロイ方法にはモデルの登録に関するセクションが含まれていますが、登録済みのモデルが既にあるため、デプロイのために[コンピューティング先の作成](how-to-deploy-and-where.md#choose-a-compute-target)に直接スキップできます。
+先ほど登録したモデルは、Azure ML に登録されている他のモデルとまったく同じ方法でデプロイできます。 デプロイ方法にはモデルの登録に関するセクションが含まれていますが、登録済みのモデルが既にあるため、デプロイのために[コンピューティング先の作成](how-to-deploy-and-where.md#choose-a-compute-target)に直接スキップできます。
 
 ### <a name="preview-no-code-model-deployment"></a>(プレビュー) コードなしのモデル デプロイ
 
-従来のデプロイ ルートの代わりに、scikit-learn でコードなしのデプロイ機能 (プレビュー) を使用することもできます。 コードなしのモデル デプロイは、すべての組み込みの scikit-learn モデルの種類に対してサポートされています。 `model_framework`、`model_framework_version`、および `resource_configuration` パラメーターを使用して前に示したようにモデルを登録することにより、単純に [`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) 静的関数を使用してモデルをデプロイできます。
+従来のデプロイ ルートの代わりに、scikit-learn でコードなしのデプロイ機能 (プレビュー) を使用することもできます。 コードなしのモデル デプロイは、すべての組み込みの scikit-learn モデルの種類に対してサポートされています。 `model_framework`、`model_framework_version`、および `resource_configuration` パラメーターを使用して前に示したようにモデルを登録することにより、単純に [`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) 静的関数を使用してモデルをデプロイできます。
 
 ```python
 web_service = Model.deploy(ws, "scikit-learn-service", [model])
@@ -190,4 +203,3 @@ web_service = Model.deploy(ws, "scikit-learn-service", [model])
 
 * [トレーニング中に実行メトリクスを追跡する](how-to-track-experiments.md)
 * [ハイパーパラメーターを調整する](how-to-tune-hyperparameters.md)
-* [Azure での分散型ディープ ラーニング トレーニングの参照アーキテクチャ](/azure/architecture/reference-architectures/ai/training-deep-learning)

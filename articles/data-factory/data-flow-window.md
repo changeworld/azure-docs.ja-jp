@@ -1,5 +1,5 @@
 ---
-title: マッピング データ フローのウィンドウ変換
+title: マッピング データ フローでのウィンドウ変換
 description: Azure Data Factory マッピング データ フローのウィンドウ変換
 author: kromerm
 ms.author: makromer
@@ -8,14 +8,14 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
-ms.openlocfilehash: 1f440a5877dcefeca8c1baa82fad4299b5ce7bce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0231fc8919444558abcbc965ad127f7372eceb66
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81606222"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823610"
 ---
-# <a name="azure-data-factory-window-transformation"></a>Azure Data Factory のウィンドウ変換
+# <a name="window-transformation-in-mapping-data-flow"></a>マッピング データ フローでのウィンドウ変換
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 

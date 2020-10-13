@@ -5,17 +5,37 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/05/2020
-ms.openlocfilehash: 637ac97d1e054599ec297344ff0c5fff600c8487
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 09/23/2020
+ms.openlocfilehash: fa37c251e61b1f920edc55ead38f745439f2de92
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045350"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812864"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Azure Stream Analytics でのデータ保護 
 
 Azure Stream Analytics は、フル マネージドなサービスとしてのプラットフォームであり、リアルタイム分析パイプラインを構築することができます。 クラスターのプロビジョニング、使用量に合わせたノードのスケーリング、内部チェックポイントの管理などの時間がかかる処理は、すべてバックグラウンドで管理されます。
+
+## <a name="private-data-assets-that-are-stored"></a>格納されるプライベート データ資産
+
+Azure Stream Analytics によって、次のメタデータとデータが実行目的で保持されます。 
+
+* クエリ定義とそれに関連する構成  
+
+* ユーザー定義の関数または集計  
+
+* Stream Analytics ランタイムで必要とされるチェックポイント
+
+* 参照データのスナップショット 
+
+* Stream Analytics ジョブによって使用されるリソースの接続詳細
+
+規制されている業界や環境におけるコンプライアンス義務を果たすために、[Microsoft のコンプライアンス認証](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)に関するページを参照してください。 
+
+## <a name="in-region-data-residency"></a>リージョン内のデータ所在地
+Azure Stream Analytics には、前に説明した顧客データとその他のメタデータが格納されます。 顧客データは、Azure Stream Analytics によって 1 つのリージョンに既定で格納されるため、このサービスは、[セキュリティ センター](https://azuredatacentermap.azurewebsites.net/)に指定されているものも含めて、リージョンのデータ所在地の要件を自動的に満たします。
+さらに、ストリーム分析ジョブに関連するすべてのデータ資産 (顧客データやその他のメタデータ) を、選択したストレージ アカウントで暗号化して単一のリージョンに保存することもできます。
 
 ## <a name="encrypt-your-data"></a>データを暗号化する
 
@@ -28,7 +48,14 @@ Stream Analytics は、データの暗号化とセキュリティ保護のため
 Stream Analytics ポータルを使用しても、ストレージ アカウントに対するキーの更新またはローテーションを行うことはできません。 REST API を使用して、キーを更新できます。
 
 
-## <a name="configure-storage-account-for-private-data"></a>プライベート データ用のストレージ アカウントを構成する 
+### <a name="configure-storage-account-for-private-data"></a>プライベート データ用のストレージ アカウントを構成する 
+
+
+ストレージ アカウントを暗号化してすべてのデータを保護し、プライベート データの場所を明示的に選択します。 
+
+規制されている業界や環境におけるコンプライアンス義務を果たすために、[Microsoft のコンプライアンス認証](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)に関するページを参照してください。 
+
+
 
 プライベート データ資産用のストレージ アカウントを構成するには、次の手順に従います。 この構成は、ストレージ アカウントからではなく、Stream Analytics ジョブから作られます。
 
@@ -46,24 +73,10 @@ Stream Analytics ポータルを使用しても、ストレージ アカウン�
 
    ![プライベート データ ストレージ アカウントの設定](./media/data-protection/storage-account-create.png)
 
-## <a name="private-data-assets-that-are-stored"></a>格納されるプライベート データ資産
 
-Stream Analytics で存続する必要があるプライベート データは、ストレージ アカウントに格納されます。 プライベート データ資産の例を次に示します。 
 
-* 作成したクエリとそれに関連する構成  
-
-* ユーザー定義関数 
-
-* Stream Analytics ランタイムで必要とされるチェックポイント
-
-* 参照データのスナップショット 
-
-Stream Analytics ジョブによって使用される、リソースの接続詳細も保存されます。 ストレージ アカウントを暗号化して、すべてのデータを保護します。 
-
-規制されている業界や環境におけるコンプライアンス義務を果たすために、[Microsoft のコンプライアンス認証](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)に関するページを参照してください。 
-
-## <a name="known-issues"></a>既知の問題
-マネージド ID を使用して入力または出力を認証するときに、カスタマー マネージド キーを使用するジョブが失敗するという既知の問題があります。 現在、この問題の修正プログラムに取り組んでおり、近日中にリリースされる予定です。 
+### <a name="known-issues"></a>既知の問題
+現在、マネージド ID を使用して入力または出力を認証するときに、カスタマー マネージド キーを使用するジョブが失敗するという既知の制限があります。
 
 ## <a name="next-steps"></a>次のステップ
 

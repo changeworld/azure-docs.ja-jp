@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/21/2017
+ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: e5aa2c1c51fccddc3fb62d7ebdbadee19a2b093e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0b009b7c44084e76194c1447fefdb2ff59f8086a
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87265179"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812286"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>帯域幅/スループットのテスト (NTTTCP)
 
@@ -26,7 +26,7 @@ ms.locfileid: "87265179"
 このツールを、同じサイズの 2 つの Azure VM にコピーします。 片方の VM は送信側として、他方は受信側として機能します。
 
 #### <a name="deploying-vms-for-testing"></a>テスト用の VM のデプロイ
-このテストの目的を達成するには、2 つの VM が同じクラウド サービス内にあるか同じ可用性セット内に含まれている必要があります。これは、内部 IP アドレスの使用と、ロード バランサーのテストからの除外を行えるようにするためです。 VIP を使用してテストすることは可能ですが、この種類のテストはこのドキュメントの範囲外です。
+このテストの目的を達成するには、2 つの VM が同じ[近接配置グループ](../virtual-machines/windows/co-location.md)内にあるか同じ可用性セット内に含まれている必要があります。これは、内部 IP アドレスの使用と、ロード バランサーのテストからの除外を行えるようにするためです。 VIP を使用してテストすることは可能ですが、この種類のテストはこのドキュメントの範囲外です。
 
 受信側の IP アドレスをメモしておきます。 その IP を "a.b.c.r" と呼びましょう。
 

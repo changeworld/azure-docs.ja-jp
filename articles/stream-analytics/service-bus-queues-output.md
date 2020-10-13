@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: ba4b8f1d3aaa9b06f3bc24e9e267f6778734152a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: bad81e8929cd0c5c66c87fd9f6cc11dc746b3e5f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903735"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317789"
 ---
 # <a name="service-bus-queues-output-from-azure-stream-analytics"></a>Azure Stream Analytics からの Service Bus キュー出力
 
@@ -51,6 +51,22 @@ ms.locfileid: "90903735"
 ## <a name="custom-metadata-properties-for-output"></a>出力用のカスタム メタデータ プロパティ
 
 ご自分の送信メッセージにクエリ列をユーザー プロパティとして添付できます。 これらの列はペイロードに入りません。 これらのプロパティは、出力メッセージにディクショナリの形式で表示されます。 "*キー*" は列名で、"*値*" はプロパティ ディクショナリの列値です。 Record と Array を除き、すべての Stream Analytics データ型がサポートされています。
+
+次の例では、`DeviceId` フィールドと `DeviceStatus` フィールドがメタデータに追加されています。
+
+1. 次のクエリを使用します。
+
+   ```sql
+   select *, DeviceId, DeviceStatus from iotHubInput
+   ```
+
+1. 出力のプロパティ列として `DeviceId,DeviceStatus` を構成します。
+
+   :::image type="content" source="media/service-bus-queues-output/property-columns.png" alt-text="プロパティ列":::
+
+次に示すのは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer) を利用して EventHub で検査される出力メッセージ プロパティの図です。
+
+:::image type="content" source="media/service-bus-queues-output/custom-properties.png" alt-text="プロパティ列":::
 
 ## <a name="system-properties"></a>システム プロパティ
 

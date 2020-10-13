@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 6dd912313176eecce1973849875234149700c5e6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 62f27a07c868cc9cc7f37a7b26ab38127946e3c2
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284780"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652875"
 ---
 # <a name="nv-series"></a>NV シリーズ
 
@@ -20,13 +20,12 @@ NV シリーズの仮想マシンは、[NVIDIA Tesla M60](https://images.nvidia.
 
 NV インスタンスの GPU ごとに GRID ライセンスが付属します。 このライセンスでは柔軟性が確保され、NV インスタンスを仮想ワークステーションとして 1 人のユーザーに対して使用したり、仮想アプリケーションのシナリオで 25 人のユーザーが同時に VM に接続したりできます。
 
-Premium Storage: サポートされていません
-
-Premium Storage キャッシュ:サポートされていません
-
-ライブ マイグレーション:サポートされていません
-
-メモリ保持更新: サポートされていません
+[Premium Storage](premium-storage-performance.md): サポートされていません<br>
+[Premium Storage キャッシュ](premium-storage-performance.md): サポートされていません<br>
+[ライブ マイグレーション](maintenance-and-updates.md): サポートされていません<br>
+[メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
+[VM 世代サポート](generation-2.md): 第 1 世代<br>
+<br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | GPU | GPU メモリ: GiB | 最大データ ディスク数 | 最大 NIC 数 | 仮想ワークステーション | 仮想アプリケーション |
 |---|---|---|---|---|---|---|---|---|---|
