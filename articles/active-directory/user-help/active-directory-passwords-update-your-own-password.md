@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 09/10/2020
 ms.author: curtand
-ms.openlocfilehash: c2bf4d5facc96a0876d4321a61ed6f414dfd78da
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: c47d573dab3e72a956f6f0b9d09a1dafadf0225c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029547"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827760"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>セキュリティ情報を使用し、職場または学校のパスワードをリセットする
 
@@ -69,7 +69,7 @@ Azure Active Directory (Azure AD) アカウントにアクセスできない場�
 
     3. 新しいパスワードを入力して確認し、 **[完了]** を選択します。
 
-- **電話番号を使用してパスワードをリセットする。** 事前にセキュリティ情報に設定した電話番号にテキスト メッセージを送信します。 管理者がセキュリティ情報のエクスペリエンスをオンにしている場合、電話番号の設定に関する詳しい情報は、「[Set up security info to use a phone call (preview)](security-info-setup-phone-number.md)」(電話呼び出しを使用するようにセキュリティ情報を設定する (プレビュー)) の記事で確認できます。 まだセキュリティ情報を使用していない場合、電話番号の設定に関する詳しい情報は、「[アカウントへの 2 段階認証の設定](multi-factor-authentication-end-user-first-time.md)」の記事で確認できます。
+- **電話番号を使用してパスワードをリセットする。** 事前にセキュリティ情報に設定した電話番号に、自動化された音声通話を行います。 管理者がセキュリティ情報のエクスペリエンスをオンにしている場合、電話番号の設定に関する詳しい情報は、「[Set up security info to use a phone call (preview)](security-info-setup-phone-number.md)」(電話呼び出しを使用するようにセキュリティ情報を設定する (プレビュー)) の記事で確認できます。 まだセキュリティ情報を使用していない場合、電話番号の設定に関する詳しい情報は、「[アカウントへの 2 段階認証の設定](multi-factor-authentication-end-user-first-time.md)」の記事で確認できます。
 
     1. **[携帯電話に発信]** を選択し、電話番号を入力して、 **[電話]** を選択します。
 

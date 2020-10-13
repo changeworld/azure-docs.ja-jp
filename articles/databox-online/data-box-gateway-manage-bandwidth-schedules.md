@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 25f74fb78979313acc068320d842d09a982d8d16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ccc9725ffe5304942b740d460a67129f9c1c5d8
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339146"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743847"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-gateway"></a>Azure portal を使用して Azure Data Box Gateway の帯域幅のスケジュールを管理する  
 
@@ -46,7 +46,7 @@ Azure portal を使用して Data Box Gateway の帯域幅スケジュールを�
    4. アップロードとダウンロードの日付を調整しない場合は、 **[無制限の帯域幅]** をオンにします。 
    5. **[追加]** をクリックします。
 
-      ![[ユーザーの追加] をクリックする](media/data-box-gateway-manage-bandwidth-schedules/add-schedule-2.png)
+      ![[ユーザーの追加] をクリックする 2](media/data-box-gateway-manage-bandwidth-schedules/add-schedule-2.png)
 
 3. 指定したパラメーターでスケジュールが作成されます。 このスケジュールは、ポータルで、帯域幅のスケジュールの一覧に表示されます。
 
@@ -61,11 +61,11 @@ Azure portal を使用して Data Box Gateway の帯域幅スケジュールを�
 
 3. 必要な変更を加えたら、変更を保存します。
 
-    ![ユーザーの変更](media/data-box-gateway-manage-bandwidth-schedules/modify-schedule-2.png)
+    ![ユーザーの変更 2](media/data-box-gateway-manage-bandwidth-schedules/modify-schedule-2.png)
 
 4. スケジュールを変更した後、スケジュールの一覧は、変更されたスケジュールを反映するように更新されます。
 
-    ![ユーザーの変更](media/data-box-gateway-manage-bandwidth-schedules/modify-schedule-3.png)
+    ![ユーザーの変更 3](media/data-box-gateway-manage-bandwidth-schedules/modify-schedule-3.png)
 
 
 ## <a name="delete-a-schedule"></a>スケジュールの削除

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 9822d7bd769ea161ddcf195d695f27024351ca4b
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 2a64e595f0ea07510f416be56a54a3c74294b95d
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662453"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653623"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files についての FAQ
 
@@ -132,6 +132,12 @@ Azure NetApp Files では、NFSv3 および NFSv4.1 がサポートされてい�
 
 ボリュームのエクスポート ポリシーを使用して、ルート アカウントがボリュームにアクセスできるかどうかを指定できます。 詳細については、「[NFS ボリュームのエクスポート ポリシーを構成する](azure-netapp-files-configure-export-policy.md)」を参照してください。
 
+### <a name="can-i-use-the-same-file-path-volume-creation-token-for-multiple-volumes"></a>複数のボリュームに対して同じファイル パス (ボリューム作成トークン) を使用することはできますか?
+
+はい、できます。 ただし、ファイル パスは、別のサブスクリプションまたは別のリージョンのいずれかで使用されているものでなくてはなりません。   
+
+たとえば、`vol1` というボリュームを作成するとします。 次に、別の容量プールで、ただし同じサブスクリプションとリージョン内で、同じく `vol1` と呼ばれる別のボリュームを作成します。 この場合は、同じボリューム名 `vol1` を使用すると、エラーが発生します。 同じファイル パスを使用するには、名前が別のリージョンまたはサブスクリプションに存在している必要があります。
+
 ## <a name="smb-faqs"></a>SMB に関する FAQ
 
 ### <a name="which-smb-versions-are-supported-by-azure-netapp-files"></a>Azure NetApp Files でサポートされている SMB のバージョンは何ですか?
@@ -163,12 +169,6 @@ Azure NetApp Files では、Windows Server 2008r2SP1-2019 バージョンの Act
 SMB クライアントで報告されるボリューム サイズは、Azure NetApp Files ボリュームを拡張できる最大サイズです。 SMB クライアントに表示される Azure NetApp Files ボリュームのサイズは、クォータやボリュームのサイズを反映するものではありません。 API Azure NetApp Files ボリュームのサイズまたはクォータは、Azure portal または API を使用して取得できます。
 
 <!--
-### Does Azure NetApp Files support Kerberos encryption?
-
-Yes, by default, Azure NetApp Files supports both AES-128 and AES-256 encryption for traffic between the service and the targeted Active Directory domain controllers. See [Create an SMB volume for Azure NetApp Files](azure-netapp-files-create-volumes-smb.md) for requirements. 
--->
-
-<!--
 ### Does Azure NetApp Files support LDAP signing? 
 
 Yes, Azure NetApp Files supports LDAP signing by default. This functionality enables secure LDAP lookups between the Azure NetApp Files service and the user-specified [Active Directory Domain Services domain controllers](https://docs.microsoft.com/windows/win32/ad/active-directory-domain-services). For more information, see [ADV190023 | Microsoft Guidance for Enabling LDAP Channel Binding and LDAP Signing](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).
@@ -178,15 +178,11 @@ Yes, Azure NetApp Files supports LDAP signing by default. This functionality ena
 
 ### <a name="i-tried-to-use-the-root-and-local-users-to-access-a-dual-protocol-volume-with-the-ntfs-security-style-on-a-unix-system-why-did-i-encounter-a-permission-denied-error"></a>‘root’ とローカル ユーザーを使用して、UNIX システムの NTFS セキュリティ スタイルでデュアルプロトコル ボリュームにアクセスしようとしました。 "アクセス許可が拒否されました" というエラーが発生するのはなぜですか?   
 
-デュアルプロトコル ボリュームでは、NFS プロトコルと SMB プロトコルの両方がサポートされます。  UNIX システムのマウントされたボリュームにアクセスしようとすると、システムは使用している UNIX ユーザーを Windows ユーザーにマップしようとします。 マッピングが見つからない場合は、"アクセス許可が拒否されました" というエラーが発生します。  この状況は、アクセスに ‘root’ ユーザーを使用する場合にも当てはまります。    
-
-"アクセス許可が拒否されました" の問題を回避するには、マウント ポイントにアクセスする前に、Windows Active Directory に `pcuser` が含まれていることを確認します。 "アクセス許可が拒否されました" の問題が発生した後に `pcuser` を追加する場合は、キャッシュ エントリがクリアされるまで 24 時間待機してからアクセスを再試行してください。
+解決方法については、「[デュアルプロトコル ボリュームのトラブルシューティング](troubleshoot-dual-protocol-volumes.md)」を参照してください。
 
 ### <a name="when-i-try-to-create-a-dual-protocol-volume-why-does-the-creation-process-fail-with-the-error-failed-to-validate-ldap-configuration-try-again-after-correcting-ldap-configuration"></a>デュアル プロトコル ボリュームを作成しようとすると、"Failed to validate LDAP configuration, try again after correcting LDAP configuration (LDAP 構成を検証できませんでした。LDAP 構成を修正した後にもう一度お試しください)" というエラーで作成プロセスが失敗するのはなぜですか?  
 
-AD ホスト マシンのポインター (PTR) レコードが DNS サーバーに存在しない可能性があります。 DNS サーバーに逆引き参照ゾーンを作成してから、その逆引き参照ゾーンに AD ホストマシンの PTR レコードを追加する必要があります。
-
-たとえば、AD マシンの IP アドレスが `1.1.1.1` であり、AD マシンのホスト名 (`hostname` コマンドを使用して確認されたもの) が `AD1` であり、ドメイン名が `myDomain.com` であるとします。  逆引き参照ゾーンに追加される PTR レコードは `1.1.1.1` -> `AD1.myDomain.com` になります。
+解決方法については、「[デュアルプロトコル ボリュームのトラブルシューティング](troubleshoot-dual-protocol-volumes.md)」を参照してください。
 
 ## <a name="capacity-management-faqs"></a>容量管理に関する FAQ
 

@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 19b2ec283619df0cc8d3c880cb2df6f53f6fb332
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 58386786266c48c6e721094f9f2837709bb684e5
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931291"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631768"
 ---
 # <a name="use-postgresql-extensions-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループで PostgreSQL 拡張機能を使用する
 
@@ -30,6 +30,7 @@ PostgreSQL は、拡張機能で使用する場合に最適です。 実際、�
 - `pg_cron`、v:1.2
 - `plpgsql`、v:1.0
 - `postgis`、v:3.0.2
+- `plv8`、v:2.3.14
 
 この一覧は時間とともに更新され、更新プログラムがこのドキュメントに掲載されていきます。 今はまだ、上記以外の拡張機能を追加することはできません。
 
@@ -240,3 +241,7 @@ SELECT * FROM the_best_coffee_shop;
 >[!NOTE]
 >`citus` 拡張機能の削除はサポートされていません。 `citus` 拡張機能は、Hyperscale エクスペリエンスを提供するために必要です。
 
+## <a name="next-steps"></a>次のステップ:
+- [plv8](https://plv8.github.io/) に関するドキュメントを読む
+- [PostGIS](https://postgis.net/) に関するドキュメントを読む
+- [`pg_cron`](https://github.com/citusdata/pg_cron) に関するドキュメントを読む

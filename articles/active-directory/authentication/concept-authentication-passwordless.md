@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdac9562ed9a83f49e074e7abd790e8e2819d6aa
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 922cea49179e63e2481a7f15b1e78bd8bf6c4848
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527022"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773928"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory のパスワードレス認証オプション
 
@@ -62,6 +62,8 @@ Windows Hello for Business の[計画ガイド](/windows/security/identity-prote
 
 Authenticator アプリは、あらゆる iOS や Android フォンを、強力なパスワードレスの資格情報に変えます。 ユーザーは、自分の電話で通知を受け取り、画面に表示される番号と電話の番号を照合してから、生体認証 (指紋または顔) あるいは PIN を使用して確認できます。 インストールの詳細については、「[Microsoft Authenticator アプリのダウンロードとインストール](../user-help/user-help-auth-app-download-install.md)」を参照してください。
 
+Microsoft Authenticator アプリを使用したパスワードなしの Azure AD へのサインインは現在プレビュー段階です。 Azure 多要素認証、セルフサービス パスワード リセット (SSPR)、または OATH ソフトウェア トークンの第 2 認証向けの Microsoft Authenticator アプリの使用は一般公開されています。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+
 Authenticator アプリを使用したパスワードレス認証では、Windows Hello for Business と同じ基本的なパターンに従います。 これは、Azure AD によって使用されている Microsoft Authenticator アプリのバージョンを見つけられるように、ユーザーを識別する必要があるため、少し複雑になります。
 
 ![Microsoft Authenticator アプリでのユーザー サインインに関連する手順の概要を示す図](./media/concept-authentication-passwordless/authenticator-app-flow.png)
@@ -82,7 +84,7 @@ Authenticator アプリを使用したパスワードレス認証では、Window
 
 ## <a name="fido2-security-keys"></a>FIDO2 セキュリティ キー
 
-FIDO (Fast IDentity Online) Alliance は、オープン認証標準を促進し、ユーザーが認証形式としてパスワードを使用することを減らすのに役立ちます。 FIDO2 は、Web 認証 (WebAuthn) 標準が組み込まれている最新の標準です。
+FIDO (Fast IDentity Online) Alliance は、オープン認証標準を促進し、認証形式としてパスワードを使用することを減らすのに役立ちます。 FIDO2 は、Web 認証 (WebAuthn) 標準が組み込まれている最新の標準です。
 
 FIDO2 セキュリティ キーは、フォーム ファクターとして提供される可能性のある、フィッシングできない標準ベースのパスワードレス認証方法です。 Fast Identity Online (FIDO) は、パスワードレス認証のオープン標準です。 FIDO は、ユーザーおよび組織が標準を利用し、外部のセキュリティ キーまたはデバイスに組み込まれているプラットフォーム キーを使用して、ユーザー名やパスワードレスでリソースにサインインできるようにします。
 
