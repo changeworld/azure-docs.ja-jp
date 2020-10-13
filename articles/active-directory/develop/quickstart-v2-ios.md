@@ -1,6 +1,7 @@
 ---
-title: Microsoft ID プラットフォームでの iOS と macOS のクイック スタート | Azure
-description: iOS または macOS アプリケーションでユーザーのサインインを行い、Microsoft Graph に対してクエリを実行する方法を説明します。
+title: 'クイックスタート: iOS または macOS アプリに "Microsoft アカウントでサインイン" を追加する | Azure'
+titleSuffix: Microsoft identity platform
+description: このクイックスタートでは、iOS または macOS アプリでのユーザーのサインイン、Microsoft ID プラットフォームからのアクセス トークンの取得、および Microsoft Graph API の呼び出しを行う方法について説明します。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -12,12 +13,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 39062396e0076af5901f2fc7d76f5c989e2ccc3a
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 6ab826b6816c8f1b71a28c6bf501b651baa2cfff
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115256"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91613460"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>クイック スタート:iOS または macOS アプリからユーザーのサインインを行い、Microsoft Graph API を呼び出す
 
@@ -25,13 +26,16 @@ ms.locfileid: "88115256"
 
 このクイック スタートは、iOS アプリと macOS アプリの両方に適用されます。 一部の手順は、iOS アプリにのみ必要です。 それらの手順では、iOS のみが対象であることが示されています。
 
-![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-ios/ios-intro.svg)
+## <a name="prerequisites"></a>前提条件
 
-> [!NOTE]
-> **前提条件**
-> * XCode 10 以降
-> * iOS 10 以降
-> * macOS 10.12 以降
+* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* XCode 10 以降
+* iOS 10 以降
+* macOS 10.12 以降
+
+## <a name="how-the-sample-works"></a>このサンプルのしくみ
+
+![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-ios/ios-intro.svg)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>クイック スタート アプリを登録してダウンロードする
@@ -70,16 +74,16 @@ ms.locfileid: "88115256"
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![構成済み](media/quickstart-v2-ios/green-check.png) アプリケーションはこれらの属性で構成されています
-> 
+>
 > #### <a name="step-2-download-the-sample-project"></a>手順 2:サンプル プロジェクトのダウンロード
 > > [!div id="autoupdate_ios" class="nextstepaction"]
 > > [iOS 用のコード サンプルをダウンロードする]()
-> 
+>
 > > [!div id="autoupdate_macos" class="nextstepaction"]
 > > [macOS 用のコード サンプルをダウンロードする]()
 > [!div renderon="docs"]
 > #### <a name="step-2-download-the-sample-project"></a>手順 2:サンプル プロジェクトのダウンロード
-> 
+>
 > - [iOS 用のコード サンプルをダウンロードする](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
 > - [macOS 用のコード サンプルをダウンロードする](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
 
@@ -262,13 +266,11 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 > | `scopes` | 要求するスコープを含む (つまり、Microsoft Graph 用の `[ "user.read" ]` またはカスタム Web API 用の `[ "<Application ID URL>/scope" ]`) (`api://<Application ID>/access_as_user`) |
 > | `account` | トークンが要求されているアカウント。 このクイックスタートでは、単一アカウントのアプリケーションを取り扱います。 複数アカウントのアプリを構築する場合は、`accountsFromDeviceForParameters:completionBlock:` を使用し、正しい `accountIdentifier` を渡して、どのアカウントをトークン要求に使用するかを識別するためのロジックを定義する必要があります |
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>次のステップ
 
-iOS および macOS のチュートリアルで、アプリケーションの構築についての完全なステップ バイ ステップ ガイドを試します。このクイック スタートの完全な説明も含まれています。
-
-### <a name="learn-how-to-create-the-application-used-in-this-quickstart"></a>このクイック スタートで使用されているアプリケーションの作成方法を確認する
+Microsoft ID プラットフォームからアクセス トークンを取得し、これを使用して Microsoft Graph API を呼び出す iOS または macOS アプリを作成するステップバイステップのチュートリアルに進みます。
 
 > [!div class="nextstepaction"]
-> [iOS と macOS での Graph API 呼び出しのチュートリアル](./tutorial-v2-ios.md)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+> [チュートリアル: iOS または macOS アプリからユーザーのサインインを行い、Microsoft Graph を呼び出す](tutorial-v2-ios.md)

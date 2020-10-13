@@ -7,12 +7,12 @@ ms.service: iot-dps
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: wesmc
-ms.openlocfilehash: 8912ef907641367bda89d7c0e98f9da811c6e577
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 43d7b3ae906909312a9e9ec4517061a788267a0c
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534602"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612780"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>仮想ネットワーク向けの Azure IoT Hub Device Provisioning Service (DPS) サポート
 
@@ -75,7 +75,7 @@ DPS が VNET で構成されているほとんどのシナリオでは、IoT Hub
 
 2. _プライベート エンドポイントの作成_の基本ページで、次の表に記載されている情報を入力します。
 
-    ![新しいプライベート エンドポイントがマップされるリソースを構成します](./media/virtual-network-support/create-private-endpoint-basics.png)
+    ![プライベート エンドポイントの作成の基本](./media/virtual-network-support/create-private-endpoint-basics.png)
 
     | フィールド | 値 |
     | :---- | :-----|
@@ -88,7 +88,7 @@ DPS が VNET で構成されているほとんどのシナリオでは、IoT Hub
 
 3. _プライベート エンドポイント リソースの作成_ページで、次の表に記載されている情報を入力します。
 
-    ![新しいプライベート エンドポイントがマップされるリソースを構成します](./media/virtual-network-support/create-private-endpoint-resource.png)
+    ![プライベート エンドポイントの作成のリソース](./media/virtual-network-support/create-private-endpoint-resource.png)
 
     | フィールド | 値 |
     | :---- | :-----|
@@ -107,7 +107,7 @@ DPS が VNET で構成されているほとんどのシナリオでは、IoT Hub
  
     ページの下部の **[次へ:タグ]** をクリックし、必要に応じて、リソースのタグを指定します。
 
-    ![新しいプライベート エンドポイントがマップされるリソースを構成します](./media/virtual-network-support/create-private-endpoint-configuration.png)
+    ![プライベート エンドポイントの構成](./media/virtual-network-support/create-private-endpoint-configuration.png)
 
 6. **[確認および作成]** 、引き続き **[作成]** をクリックして、プライベート エンドポイント リソースを作成します。
 
@@ -141,7 +141,7 @@ DPS が VNET で構成されているほとんどのシナリオでは、IoT Hub
 
 5. DPS 所有者は、[DPS ネットワーク] タブの **[プライベートエンドポイント接続]** 一覧でプライベート エンドポイント要求を確認できます。そのページで、所有者は次に示すように、プライベート エンドポイント要求の**承認**または**拒否**ができます。
 
-    ![DPS の [プロパティ] タブ](./media/virtual-network-support/approve-dps-private-endpoint.png)
+    ![DPS の承認](./media/virtual-network-support/approve-dps-private-endpoint.png)
 
 
 ## <a name="pricing-private-endpoints"></a>プライベート エンドポイントの料金

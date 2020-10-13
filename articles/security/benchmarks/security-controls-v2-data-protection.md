@@ -4,17 +4,17 @@ description: Azure セキュリティ ベンチマーク V2 データ保護
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e377c6669b1db96f549958173aded4f29bae6713
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: ab42acbc07072f48d28b3adb5bc4c65672f257bc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059052"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314319"
 ---
-# <a name="security-control-data-protection"></a>セキュリティ コントロールデータ保護
+# <a name="security-control-v2-data-protection"></a>セキュリティ コントロール V2:データ保護
 
 データ保護は、保存時、転送中、承認されたアクセス メカニズムによるデータ保護の制御を対象としています。 これには、Azure のアクセス制御、暗号化、ログ記録を使用した機密データ資産の検出、分類、保護、監視が含まれます。
 
@@ -22,7 +22,7 @@ ms.locfileid: "90059052"
 
 | Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
 |--|--|--|--|
-| DP-1 | 14.5、14.7 | SI-4、SC-28 |
+| DP-1 | 13.1、14.5、14.7 | SC-28 |
 
 お使いの機密データを検出、分類、ラベル付けすると、組織の技術システムで機密情報が安全に保存、処理、および転送されるコントロールを適切に設計できます。 
 
@@ -36,7 +36,7 @@ Azure SQL Database に格納されている情報の分類とラベル付けに�
 
 **責任**: 共有
 
-**お客様のセキュリティ関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [アプリケーション セキュリティと DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)  
 
@@ -62,7 +62,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **責任**: 共有
 
-**お客様のセキュリティ関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [アプリケーション セキュリティと DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -90,11 +90,11 @@ Azure Information Protection (AIP) には、分類およびラベル付けされ
 
 **責任**: 共有
 
-**お客様のセキュリティ関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [セキュリティ オペレーション センター (SOC)](/azure/cloud-adoption-framework/organize/cloud-security) 
+- [セキュリティ運用](/azure/cloud-adoption-framework/organize/cloud-security) 
 
-- [アプリケーション セキュリティと DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+- [アプリケーションのセキュリティと DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
 - [インフラストラクチャとエンドポイント セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -118,7 +118,7 @@ Azure Information Protection (AIP) には、分類およびラベル付けされ
 
 **責任**: 共有
 
-**お客様のセキュリティ関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -148,7 +148,7 @@ Azure Information Protection (AIP) には、分類およびラベル付けされ
 
 **責任**: 共有
 
-**お客様のセキュリティ関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
