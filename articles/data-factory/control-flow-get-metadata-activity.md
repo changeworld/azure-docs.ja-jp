@@ -10,14 +10,14 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 09/23/2020
 ms.author: jingwang
-ms.openlocfilehash: c761cf1265ad61517a9d0123b932d31b27d157dd
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: e32115c590d73f5c93f322d3bd542096f2964a4c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613503"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297608"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure Data Factory のメタデータの取得アクティビティ
 
@@ -35,7 +35,7 @@ ms.locfileid: "89613503"
 
 ## <a name="capabilities"></a>機能
 
-メタデータの取得アクティビティは、データセットを入力として受け取り、メタデータ情報を出力として返します。 現在、次のコネクタとそれに対応する取得可能なメタデータがサポートされています。 返されるメタデータの最大サイズは 2 MB です。
+メタデータの取得アクティビティは、データセットを入力として受け取り、メタデータ情報を出力として返します。 現在、次のコネクタとそれに対応する取得可能なメタデータがサポートされています。 返されるメタデータの最大サイズは約 4 MB です。
 
 >[!NOTE]
 >セルフホステッド統合ランタイム上でメタデータの取得アクティビティを実行する場合、最新の機能はバージョン 3.6 以降でサポートされます。
@@ -87,7 +87,7 @@ ms.locfileid: "89613503"
 | contentMD5 | ファイルの MD5 です。 ファイルにのみ適用されます。 |
 | structure | ファイルまたはリレーショナル データベース テーブルのデータ構造です。 戻り値は、列名と列の型の一覧です。 |
 | columnCount | ファイルまたはリレーショナル テーブル内の列の数です。 |
-| exists| ファイル、フォルダー、またはテーブルが存在するかどうかを示します。 メタデータの取得フィールドの一覧内で `exists` が指定されている場合、ファイル、フォルダー、またはテーブルが存在しない場合でもアクティビティは失敗しないことに注意してください。 代わりに、`exists: false` が出力に返されます。 |
+| exists| ファイル、フォルダー、またはテーブルが存在するかどうかを示します。 メタデータの取得フィールドの一覧内で `exists` が指定されている場合、ファイル、フォルダー、またはテーブルが存在しない場合でもアクティビティは失敗しません。 代わりに、`exists: false` が出力に返されます。 |
 
 >[!TIP]
 >ファイル、フォルダー、またはテーブルが存在することを検証する場合は、メタデータの取得フィールドの一覧内で `exists` を指定します。 その後、アクティビティ出力内の `exists: true/false` の結果を確認できます。 フィールドの一覧内で `exists` が指定されていない場合、オブジェクトが見つからないとメタデータの取得アクティビティは失敗します。

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/28/2020
-ms.openlocfilehash: 255fa9e058fdbb3b7edb73e75fd53f4a2490bfca
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: 5bb5599c6ab6e630e0f26c6d4a13e9c9af8a15a7
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90023858"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405175"
 ---
 # <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>Azure Data Factory を使用して Snowflake のデータをコピーして変換する
 
@@ -357,7 +357,7 @@ Snowflake にデータをコピーするために、コピー アクティビテ
 
 #### <a name="staged-copy-to-snowflake"></a>Snowflake へのステージング コピー
 
-シンクのデータ ストアまたは形式が、前のセクションで説明したように Snowflake COPY コマンドとネイティブの互換性がない場合は、中間の Azure Blob Storage インスタンスを使用して組み込みのステージング コピーを有効にします。 ステージング コピー機能はスループットも優れています。 Data Factory は、Snowflake のデータ形式要件を満たすようにデータを自動的に変換します。 次に、COPY コマンドを呼び出して、Snowflake にデータを読み込みます。 最後に、BLOB ストレージから一時データをクリーンアップします。 ステージングを使用したデータのコピーの詳細は、「[ステージング コピー](copy-activity-performance-features.md#staged-copy)」を参照してください。
+ソース データ ストアまたは形式が、前のセクションで説明したように、Snowflake COPY コマンドとネイティブに互換性がない場合は、中間の Azure Blob Storage インスタンスを使用して、組み込みのステージング コピーを有効にします。 ステージング コピー機能はスループットも優れています。 Data Factory は、Snowflake のデータ形式要件を満たすようにデータを自動的に変換します。 次に、COPY コマンドを呼び出して、Snowflake にデータを読み込みます。 最後に、BLOB ストレージから一時データをクリーンアップします。 ステージングを使用したデータのコピーの詳細は、「[ステージング コピー](copy-activity-performance-features.md#staged-copy)」を参照してください。
 
 この機能を使うには、中間ステージとして、Azure ストレージ アカウントを参照する [Azure Blob Storage のリンクされたサービス](connector-azure-blob-storage.md#linked-service-properties)を作成します。 次に、コピー アクティビティに `enableStaging` プロパティと `stagingSettings` プロパティを指定します。
 

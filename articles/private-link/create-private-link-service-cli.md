@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 4312c6b89a7ba3e56e39050d76c673aa532f6f92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2cfc746d883b565fe7a082a316ce314f385225df
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737344"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358176"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>Azure CLI を使用してプライベート リンク サービスを作成する
 この記事では、Azure CLI を使用して Azure 上でプライベート リンク サービスを作成する方法を示します。
@@ -88,7 +88,7 @@ az network lb create --resource-group myResourceGroup --name myILB --sku standar
 az network vnet subnet update --resource-group myResourceGroup --vnet-name myVirtualNetwork --name mySubnet --disable-private-link-service-network-policies true 
 ```
  
-## <a name="create-a-private-link-service"></a>Private Link サービスを作成する  
+## <a name="create-a-private-link-service-using-standard-load-balancer"></a>Standard Load Balancer を使用して Private Link サービスを作成する 
  
 [az network private-link-service create](/cli/azure/network/private-link-service#az-network-private-link-service-create) を使って、Standard Load Balancer フロントエンド IP 構成を使用してプライベート リンク サービスを作成します。 この例では、*myResourceGroup* という名前のリソース グループ内で *myLoadBalancer* という名前の Standard Load Balancer を使用して、*myPLS* という名前のプライベート リンク サービスを作成します。 
  

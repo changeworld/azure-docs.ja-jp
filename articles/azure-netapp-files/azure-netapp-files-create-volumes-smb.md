@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 09/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 6a90a4ad44bff392b5fe6cd0af13313bd98ce2a6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: e2c487b62813bc4480786daa08666fe6471bd18d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90988290"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325710"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files の SMB ボリュームを作成する
 
@@ -255,7 +255,7 @@ DNS サーバーでは、Active Directory 接続を構成する際に 2 つの I
 
         ボリューム名は、各容量プール内で一意である必要があります。 3 文字以上になるようにしてください。 任意の英数字を使用できます。   
 
-        ボリューム名として `default` を使用することはできません。
+        `default` または `bin` をボリューム名として使用することはできません。
 
     * **容量プール**  
         ボリュームを作成する容量プールを指定します。
@@ -264,6 +264,11 @@ DNS サーバーでは、Active Directory 接続を構成する際に 2 つの I
         ボリュームに割り当てられる論理ストレージの量を指定します。  
 
         **[使用可能なクォータ]** フィールドには、選択した容量プール内の未使用の領域のうち、新しいボリュームの作成に使用できる領域の量が示されます。 新しいボリュームのサイズが、使用可能なクォータを超えてはいけません。  
+
+    * **スループット (MiB/秒)**    
+        ボリュームが手動 QoS 容量プールで作成されている場合は、ボリュームに必要なスループットを指定します。   
+
+        ボリュームが自動 QoS 容量プールで作成されている場合は、このフィールドに表示される値は (クォータ x サービス レベルのスループット) です。   
 
     * **Virtual Network**  
         ボリュームへのアクセス元となる Azure 仮想ネットワーク (VNet) を指定します。  

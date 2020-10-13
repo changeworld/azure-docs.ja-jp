@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: ccdf5885dd1199ff8ed8000e5feaf80662aae42a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4dc5b84ff127aef173deecfd2be705004d92ee0c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318064"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449918"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure Monitor の Azure ネットワーク監視ソリューション
 
@@ -87,10 +87,10 @@ Azure Application Gateway 分析ソリューションのインストールと構
 1. Azure portal で、監視する Application Gateway リソースに移動します。
 2. *[診断ログ]* を選択して、次のページを開きます。
 
-   ![Azure Application Gateway リソースの画像](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics01.png)
+   ![[診断を有効にする] オプションが表示されている Application Gateway リソースの [診断ログ] ページのスクリーンショット。](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics01.png)
 3. *[診断を有効にする]* をクリックして、次のページを開きます。
 
-   ![Azure Application Gateway リソースの画像](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics02.png)
+   ![診断設定を構成するためのページのスクリーンショット。 [Log Analytics への送信] のオプションが、ログの種類 3 つとメトリック 1 つに対して選択されています。](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics02.png)
 4. 診断を有効にするには、 *[状態]* の下の *[オン]* をクリックします。
 5. *[Log Analytics への送信]* チェックボックスをオンにします。
 6. 既存の Log Analytics ワークスペースを選択するか、ワークスペースを作成します。
@@ -123,9 +123,9 @@ Set-AzDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $workspace
   * Application Gateway のホストの正常性
   * Application Gateway の失敗した要求数の最大と 95 パーセンタイル
 
-![Azure Application Gateway 分析ダッシュボードの画像](media/azure-networking-analytics/log-analytics-appgateway01.png)
+![ゲートウェイ エラー、要求、および失敗した要求のデータが含まれているタイルを表示している Application Gateway のアクセス ログ ダッシュボードのスクリーンショット。](media/azure-networking-analytics/log-analytics-appgateway01.png)
 
-![Azure Application Gateway 分析ダッシュボードの画像](media/azure-networking-analytics/log-analytics-appgateway02.png)
+![ユーザー エージェントごとのエラー、ホストの正常性、および失敗した要求のデータが含まれているタイルを表示している Application Gateway のアクセス ログ ダッシュボードのスクリーンショット。](media/azure-networking-analytics/log-analytics-appgateway02.png)
 
 **[Azure Application Gateway 分析]** ダッシュボードにあるいずれかのブレードで概要情報を確認し、ログの検索ページで、詳細情報の表示対象をクリックします。
 
@@ -158,10 +158,10 @@ Azure Networking Analytics ソリューションのインストールと構成�
 1. Azure Portal で、監視するネットワーク セキュリティ グループのリソースに移動します。
 2. *[診断ログ]* を選択して、次のページを開きます。
 
-   ![Azure ネットワーク セキュリティ グループのリソースの画像](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics01.png)
+   ![[診断を有効にする] オプションが表示されているネットワーク セキュリティ グループのリソースの [診断ログ] ページのスクリーンショット。](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics01.png)
 3. *[診断を有効にする]* をクリックして、次のページを開きます。
 
-   ![Azure ネットワーク セキュリティ グループのリソースの画像](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics02.png)
+   ![診断設定を構成するためのページのスクリーンショット。 [状態] が [オン] に設定され、[Log Analytics への送信] が選択され、ログの種類が 2 つ選択されています。](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics02.png)
 4. 診断を有効にするには、 *[状態]* の下の *[オン]* をクリックします。
 5. *[Send to Log Analytics]* (Log Analytics に送信) のチェックボックスをクリックします。
 6. 既存の Log Analytics ワークスペースを選択するか、ワークスペースを作成します。
@@ -189,9 +189,9 @@ Set-AzDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspaceId -
   * ネットワーク セキュリティ グループの規則と許可済みフロー数
   * MAC アドレスと許可済みフロー数
 
-![Azure ネットワーク セキュリティ グループ分析ダッシュボードの画像](media/azure-networking-analytics/log-analytics-nsg01.png)
+![ブロック済みフロー数が含まれる規則やブロック済みフロー数が含まれる MAC アドレスなど、ネットワーク セキュリティ グループのブロック済みフロー数に関するデータが含まれるタイルのスクリーンショット。](media/azure-networking-analytics/log-analytics-nsg01.png)
 
-![Azure ネットワーク セキュリティ グループ分析ダッシュボードの画像](media/azure-networking-analytics/log-analytics-nsg02.png)
+![許可済みフロー数が含まれる規則や許可済みフロー数が含まれる MAC アドレスなど、ネットワーク セキュリティ グループの許可済みフロー数に関するデータが含まれるタイルのスクリーンショット。](media/azure-networking-analytics/log-analytics-nsg02.png)
 
 **[Azure ネットワーク セキュリティ グループ分析]** ダッシュボードにあるいずれかのブレードで概要情報を確認し、ログの検索ページで、詳細情報の表示対象をクリックします。
 

@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99e15c6d1ca33623151b7a2d75e3e28878f673ef
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 2791b62d8abb1ade199ae3eb72deaf4db56f3725
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603596"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361298"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのサインイン アクティビティ レポート
 
@@ -147,13 +147,13 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 |認証済み SMTP| |電子メール メッセージを送信するために POP および IMAP のクライアントで使用されます。|
 |自動検出| |Exchange Online でメールボックスを検索して接続するために Outlook および EAS のクライアントで使用されます。|
 |Exchange ActiveSync| |このフィルターは、EAS プロトコルが試行されたすべてのサインイン試行を表示します。|
-|Browser|![チェックマーク](./media/concept-sign-ins/check.png)|Web ブラウザーを使用したユーザーのすべてのサインイン試行を表示します|
+|Browser|![青のチェックマーク。](./media/concept-sign-ins/check.png)|Web ブラウザーを使用したユーザーのすべてのサインイン試行を表示します|
 |Exchange ActiveSync| | Exchange ActiveSync を使用して Exchange Online に接続するクライアント アプリでのユーザーのすべてのサインイン試行を表示します|
 |Exchange Online PowerShell| |リモート PowerShell を使用して Exchange Online に接続するために使用されます。 Exchange Online PowerShell の基本認証をブロックする場合は、Exchange Online PowerShell モジュールを使用して接続する必要があります。 手順については、「[多要素認証を使用して Exchange Online PowerShell に接続する](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)」を参照してください。|
 |Exchange Web サービス| |Outlook、Outlook for Mac、およびサードパーティ製アプリによって使用されるプログラミング インターフェイスです。|
 |IMAP4| |IMAP を使用して電子メールを取得する従来のメール クライアント。|
 |MAPI over HTTP| |Outlook 2010 以降で使用されます。|
-|モバイル アプリとデスクトップ クライアント|![青色のチェックマーク](./media/concept-sign-ins/check.png)|モバイル アプリとデスクトップ クライアントを使用したユーザーのすべてのサインイン試行を表示します。|
+|モバイル アプリとデスクトップ クライアント|![青のチェックマーク。](./media/concept-sign-ins/check.png)|モバイル アプリとデスクトップ クライアントを使用したユーザーのすべてのサインイン試行を表示します。|
 |オフライン アドレス帳| |Outlook によってダウンロードおよび使用されるアドレス一覧コレクションのコピーです。|
 |Outlook Anywhere (RPC over HTTP)| |Outlook 2016 以降で使用されます。|
 |Outlook サービス| |Windows 10 用のメール/カレンダー アプリで使用されます。|

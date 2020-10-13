@@ -1,6 +1,6 @@
 ---
 title: B2B コラボレーションのためのセルフサービス サインアップ ポータル - Azure AD
-description: Azure Active Directory B2B コラボレーションは、会社のアプリケーションにビジネス パートナーが選択的にアクセスできるようにすることで会社間のリレーションシップをサポートします
+description: 組織のニーズに合わせて、Azure Active Directory B2B ユーザー向けのオンボード ワークフローをカスタマイズする方法について説明します。
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff18d3d9cae6e887abbd9fb1845de62386062b2b
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 62805564f716d255f38c9312da5c5c986fba944c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87907396"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265546"
 ---
 # <a name="self-service-for-azure-ad-b2b-collaboration-sign-up"></a>Azure AD B2B コラボレーションのサインアップのためのセルフサービス
 

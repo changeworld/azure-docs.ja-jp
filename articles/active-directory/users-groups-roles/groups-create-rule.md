@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5c44f72021fa46352ae6ded8fe671ea4f1a4d60
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: a94d1a4fa717bbee9974f7218e704ba06dad530d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797175"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531532"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Azure Active Directory で動的グループを作成または更新する
 
@@ -40,7 +40,7 @@ Azure AD には、重要なルールをすばやく作成したり更新した�
 > [!NOTE]
 > ルール ビルダーは、テキスト ボックスで作成された一部のルールを表示できない場合があります。 ルール ビルダーがルールを表示できない場合は、メッセージが表示されることがあります。 ルール ビルダーは、動的グループ ルールのサポートされている構文、検証、または処理をどのような方法でも変更しません。
 
-![動的グループのメンバーシップのルールを追加する](./media/groups-create-rule/update-dynamic-group-rule.png)
+![[動的メンバーシップ ルール] ページを示すスクリーンショット。[ルールの構成] タブで [式の追加] アクションが選択されています。](./media/groups-create-rule/update-dynamic-group-rule.png)
 
 構文の例、メンバーシップ ルールでサポートされているプロパティ、演算子、および値については、「[Azure Active Directory の動的グループ メンバーシップ ルール](groups-dynamic-membership.md)」を参照してください。
 
@@ -54,7 +54,7 @@ Azure AD には、重要なルールをすばやく作成したり更新した�
 
 1. **[グループ]** ページで、新しいグループの名前と説明を入力します。 ユーザーまたはデバイスのいずれかに対して **[メンバーシップの種類]** を選択し、 **[動的クエリの追加]** を選択します。 ルール ビルダーでは、最大で 5 つの式がサポートされます。 5 つを超える式を追加するには、テキスト ボックスを使用する必要があります。
 
-   ![動的グループのメンバーシップのルールを追加する](./media/groups-create-rule/add-dynamic-group-rule.png)
+   ![[すべてのグループ] ページを示すスクリーンショット。[新しいグループ] アクションが選択されています。](./media/groups-create-rule/add-dynamic-group-rule.png)
 
 1. メンバーシップのクエリで使用できるカスタム拡張機能プロパティを表示するには、次のようにします。
    1. **[カスタム拡張機能のプロパティを取得します]** を選択します。

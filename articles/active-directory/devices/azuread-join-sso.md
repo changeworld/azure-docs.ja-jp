@@ -1,6 +1,6 @@
 ---
 title: Azure AD 参加済みデバイス上でオンプレミス リソースへの SSO が機能するしくみ | Microsoft Docs
-description: ハイブリッド Azure Active Directory 参加済みデバイスの構成方法について説明します。
+description: ハイブリッド Azure Active Directory 参加済みデバイスを構成し、SSO 体験を拡張する方法について説明します。
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 149b01401cd6feb7610510efeb1ad9a3c69f3ecf
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: ba802cb86d68298cd4dfff94162069590744833c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024045"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256464"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Azure AD 参加済みデバイス上でオンプレミス リソースへの SSO が機能するしくみ
 

@@ -17,12 +17,12 @@ ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28fc05be7a5b54713aec8c4f830eeb2f7e6a251c
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a1efafd353bea20ea1ada0b5e92a9e6df00deb78
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662336"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273602"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect:アカウントとアクセス許可
 
@@ -115,7 +115,7 @@ AD DS コネクタ アカウントは、Windows Server AD の読み取りと書�
 
 次の表は、カスタム インストール ウィザードの各ページと収集される資格情報、その使用目的をまとめたものです。
 
-![高速インストール](./media/reference-connect-accounts-permissions/customize.png)
+![カスタム インストール ウィザード ページのスクリーンショット。](./media/reference-connect-accounts-permissions/customize.png)
 
 | ウィザード ページ | 収集される資格情報 | 必要なアクセス許可 | 用途 |
 | --- | --- | --- | --- |
@@ -208,7 +208,7 @@ Azure AD Connect のいずれかのバージョンから新しいリリースに
 #### <a name="virtual-service-account"></a>仮想サービス アカウント
 仮想サービス アカウントは、パスワードのない特殊な種類のアカウントで、Windows によって管理されます。
 
-![VSA](./media/reference-connect-accounts-permissions/aadsyncvsa.png)
+![仮想サービス アカウント (VSA) のスクリーンショット。](./media/reference-connect-accounts-permissions/aadsyncvsa.png)
 
 VSA は、同期エンジンと SQL が同じサーバー上にあるシナリオで使用するためのものです。 リモートの SQL を使用する場合は、代わりにグループの管理されたサービス アカウントを使用することをお勧めします。
 
@@ -241,7 +241,7 @@ VSA は、同期エンジンと SQL が同じサーバー上にあるシナリ�
 ### <a name="azure-ad-connector-account"></a>Azure AD コネクタ アカウント
 Azure AD のアカウントは、同期サービスで使用するために作成されます。 このアカウントは、その表示名で識別できます。
 
-![AD アカウント](./media/reference-connect-accounts-permissions/aadsyncserviceaccount2.png)
+![Azure AD アカウントのスクリーンショット。](./media/reference-connect-accounts-permissions/aadsyncserviceaccount2.png)
 
 アカウントが使用されるサーバーの名前は、ユーザー名の 2 番目の部分で識別できます。 図では、サーバー名は DC1 です。 ステージング サーバーがある場合、各サーバーに独自のアカウントが指定されます。
 

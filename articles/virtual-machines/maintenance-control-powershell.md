@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: 5cb504e10c9a1b10c5bad201f4f599a3c00992fe
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: efd35cfe2660f4597ec0c95dc29bcb4b839da680
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530762"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306941"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>メンテナンス コントロールと Azure PowerShell による更新をコントロールする
 
@@ -66,6 +66,33 @@ $config = New-AzMaintenanceConfiguration `
 ```azurepowershell-interactive
 Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
 ```
+
+### <a name="create-a-maintenance-configuration-with-scheduled-window-in-preview"></a>日程計画された期間でメンテナンス構成を作成する (プレビュー)
+
+
+> [!IMPORTANT]
+> 期間の日程計画機能はパブリック プレビュー段階にあります。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
+> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+Azure でお使いのリソースに更新プログラムが適用されるとき、New-AzMaintenanceConfiguration を使用し、日程計画された期間でメンテナンス構成を作成します。 この例では、毎月第 4 月曜日に 5 時間という日程計画で myConfig という名前のメンテナンス構成が作成されます。 日程計画された期間を作成すると、更新プログラムを手動で適用する必要がなくなります。
+
+```azurepowershell-interactive
+$config = New-AzMaintenanceConfiguration `
+   -ResourceGroup $RGName `
+   -Name $MaintenanceConfig `
+   -MaintenanceScope Host `
+   -Location $location `
+   -StartDateTime "2020-10-01 00:00" `
+   -TimeZone "Pacific Standard Time" `
+   -Duration "05:00" `
+   -RecurEvery "Month Fourth Monday"
+```
+> [!IMPORTANT]
+> メンテナンスの**期間**は、"*2 時間*" 以上である必要があります。 メンテナンスの**繰り返し**は少なくとも 35 日間に 1 回に行われるように設定する必要があります。
+
+メンテナンスの**繰り返し**は、日、週、月単位のスケジュールで表すことができます。 日単位のスケジュールは、たとえば、recurEvery: Day, recurEvery:3Days になります。 週単位のスケジュールは、たとえば、recurEvery: 3Weeks, recurEvery:Week Saturday,Sunday になります。 月単位のスケジュールは、たとえば、recurEvery: Month day23,day24, recurEvery:Month Last Sunday, recurEvery:Month Fourth Monday になります。
+
 
 ## <a name="assign-the-configuration"></a>構成を割り当てる
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf57bea87fcb5e1d1f1bde4eada5a79d2fef52c8
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 555673d1496ac33642e04c09233ba554ee2cca95
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706321"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531243"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Azure Multi-Factor Authentication および AD FS を使用したクラウド リソースのセキュリティ保護
 
@@ -38,12 +38,12 @@ ms.locfileid: "90706321"
 
 5. 変換要求規則追加ウィザードで、ドロップダウンから **[入力方向の要求をパス スルーまたはフィルター処理]** を選択し、 **[次へ]** をクリックします。
 
-   ![Add Transform Claim Rule Wizard](./media/howto-mfa-adfs/trustedip3.png)
+   ![変換要求規則の追加ウィザードを示すスクリーンショット。ここでは、要求規則テンプレートを選択できます。](./media/howto-mfa-adfs/trustedip3.png)
 
 6. 規則に名前を付けます。 
 7. 受信要求の種類として **[認証方法の参照]** を選択します。
 8. **[すべての要求値をパススルーする]** を選択します。
-    ![変換要求規則の追加ウィザード](./media/howto-mfa-adfs/configurewizard.png)
+    ![変換要求規則の追加ウィザードを示すスクリーンショット。ここでは、[すべての要求値をパス スルーする] を選択できます。](./media/howto-mfa-adfs/configurewizard.png)
 9. **[完了]** をクリックします。 AD FS 管理コンソールを閉じます。
 
 ## <a name="trusted-ips-for-federated-users"></a>フェデレーション ユーザー用の信頼できる IP
@@ -63,7 +63,7 @@ ms.locfileid: "90706321"
 4. [発行変換規則] で、 **[規則の追加]** をクリックします。
    ![要求規則の追加](./media/howto-mfa-adfs/trustedip2.png)
 5. 変換要求規則追加ウィザードで、ドロップダウンから **[入力方向の要求をパス スルーまたはフィルター処理]** を選択し、 **[次へ]** をクリックします。
-   ![変換要求規則の追加ウィザード](./media/howto-mfa-adfs/trustedip3.png)
+   ![変換要求規則の追加ウィザードを示すスクリーンショット。ここでは、[入力方向の要求をパス スルーまたはフィルター処理] を選択できます。](./media/howto-mfa-adfs/trustedip3.png)
 6. [要求規則名] の横にあるボックスに、規則の名前を入力します。 次に例を示します。InsideCorpNet。
 7. [入力方向の要求の種類] の横にあるドロップダウンから、 **[企業ネットワーク内]** を選択します。
    ![企業ネットワーク内要求の追加](./media/howto-mfa-adfs/trustedip4.png)

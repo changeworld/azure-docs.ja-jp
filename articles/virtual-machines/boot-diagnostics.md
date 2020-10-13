@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: 0b3e1b3bc296676c44eddf34b35a0d4e06d3b8c4
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: b51b44f3a3d0889836bb41e0bf2fa37234338cf4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007334"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287085"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure のブート診断
 
@@ -38,6 +38,7 @@ Azure portal で VM を作成するとき、ブート診断は既定で有効に
 - ブート診断は、Premium Storage アカウントをサポートしていません。ブート診断に Premium Storage アカウントを使用すると、ユーザーは VM の起動時に `StorageAccountTypeNotSupported` エラーを受け取ります。 
 - マネージド ストレージ アカウントは、Resource Manager API バージョン "2020-06-01" 以降でサポートされています。
 - Azure シリアル コンソールは現在、ブート診断用のマネージド ストレージ アカウントと互換性がありません。 [Azure シリアル コンソール](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-overview)についてさらに詳しく学習します。
+- マネージド ストレージ アカウントを利用したブート診断は現在、Azure portal からのみ適用できます。 
 
 ## <a name="next-steps"></a>次の手順
 

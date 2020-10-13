@@ -1,18 +1,18 @@
 ---
 title: Azure File Sync のネットワークに関する考慮事項 | Microsoft Docs
-description: Azure File Sync のネットワーク オプションの概要。
+description: Azure File Sync を使用してファイルをオンプレミスでキャッシュするようにネットワークを構成する方法について説明します。
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: af5561a010ca1c2d45cf10a37a3b302d5e224158
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b291bd45b4003dd2241f40c810ed9d78af9f8bc9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512568"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267790"
 ---
 # <a name="azure-file-sync-networking-considerations"></a>Azure File Sync のネットワークに関する考慮事項
 Azure ファイル共有には、次の 2 つの方法で接続できます。

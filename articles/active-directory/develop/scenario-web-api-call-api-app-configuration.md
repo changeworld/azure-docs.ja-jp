@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 08/05/2020
+ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: e9faea3462ae953e474b5053b651808b03f07c23
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 9fe4d5cfb4b0b31a257dfecdeeb191a9c7920772
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855451"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403171"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Web API を呼び出す Web API:コード構成
 
@@ -27,9 +27,18 @@ Web API を登録した後は、アプリケーションのコードを構成す
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
+## <a name="microsoftidentityweb"></a>Microsoft.Identity.Web
+
+ダウンストリーム Web API を呼び出す ASP.NET Core で保護された API を開発する場合は、[Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web) NuGet パッケージを使用することをお勧めします。 「[保護された Web API: Web API のコンテキストでそのライブラリをすばやく表示するには、コード構成の「Microsoft.Identity.Web」](scenario-protected-web-api-app-configuration.md#microsoftidentityweb)を参照してください。
+
 ## <a name="client-secrets-or-client-certificates"></a>クライアント シークレットまたはクライアント証明書
 
-Web API でダウンストリーム Web API を呼び出すことができるようになったので、クライアント シークレットまたはクライアント証明書を *appsettings.json* ファイルに指定する必要があります。
+Web API でダウンストリーム Web API を呼び出すことができるようになったので、クライアント シークレットまたはクライアント証明書を *appsettings.json* ファイルに指定する必要があります。 次を指定するセクションを追加することもできます。
+
+- ダウンストリーム Web API の URL
+- API の呼び出しに必要なスコープ
+
+次の例では、`GraphBeta` セクションでこれらの設定を指定しています。
 
 ```JSON
 {
@@ -37,12 +46,16 @@ Web API でダウンストリーム Web API を呼び出すことができるよ
     "Instance": "https://login.microsoftonline.com/",
     "ClientId": "[Client_id-of-web-api-eg-2ec40e65-ba09-4853-bcde-bcb60029e596]",
     "TenantId": "common"
-  
+
    // To call an API
    "ClientSecret": "[Copy the client secret added to the app from the Azure portal]",
    "ClientCertificates": [
   ]
- }
+ },
+ "GraphBeta": {
+    "BaseUrl": "https://graph.microsoft.com/beta",
+    "Scopes": "user.read"
+    }
 }
 ```
 
@@ -54,7 +67,7 @@ Web API でダウンストリーム Web API を呼び出すことができるよ
     "Instance": "https://login.microsoftonline.com/",
     "ClientId": "[Client_id-of-web-api-eg-2ec40e65-ba09-4853-bcde-bcb60029e596]",
     "TenantId": "common"
-  
+
    // To call an API
    "ClientCertificates": [
       {
@@ -62,8 +75,12 @@ Web API でダウンストリーム Web API を呼び出すことができるよ
         "KeyVaultUrl": "https://msidentitywebsamples.vault.azure.net",
         "KeyVaultCertificateName": "MicrosoftIdentitySamplesCert"
       }
-  ]
- }
+   ]
+  },
+  "GraphBeta": {
+    "BaseUrl": "https://graph.microsoft.com/beta",
+    "Scopes": "user.read"
+  }
 }
 ```
 
@@ -71,28 +88,88 @@ Microsoft.Identity.Web では、構成またはコードの両方で証明書を
 
 ## <a name="startupcs"></a>Startup.cs
 
-Microsoft.Identity.Web を使用して、Web API でダウンストリーム Web API を呼び出したい場合、*Startup.cs* 内で `.AddMicrosoftIdentityWebApi(Configuration)` の後に `.EnableTokenAcquisitionToCallDownstreamApi()` 行を追加して、トークン キャッシュの実装 (例: `.AddInMemoryTokenCaches()`) を選択します。
+Web API では、ダウンストリーム API のトークンを取得する必要があります。 これを指定するには、`.AddMicrosoftIdentityWebApi(Configuration)` の後に `.EnableTokenAcquisitionToCallDownstreamApi()` 行を追加します。 この行により、コントローラーまたはページのアクションで使用できる `ITokenAcquisition` サービスが公開されます。 ただし、次の 2 つの箇条書きでわかるように、さらに簡単に行うことができます。 また、*Startup.cs* で、`.AddInMemoryTokenCaches()` などのトークン キャッシュの実装を選択する必要もあります。
 
 ```csharp
 using Microsoft.Identity.Web;
 
 public class Startup
 {
-  ...
+  // ...
   public void ConfigureServices(IServiceCollection services)
   {
-   // ...
-    services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddMicrosoftIdentityWebApi(Configuration, "AzureAd")
-                .EnableTokenAcquisitionToCallDownstreamApi()
-                .AddInMemoryTokenCaches();
   // ...
+  services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+          .AddMicrosoftIdentityWebApi(Configuration, Configuration.GetSection("AzureAd"))
+            .EnableTokenAcquisitionToCallDownstreamApi()
+            .AddInMemoryTokenCaches();
+   // ...
   }
   // ...
 }
 ```
 
-Web アプリと同様に、さまざまなトークン キャッシュの実装を選択できます。 詳細については、GitHub 上の「[Microsoft identity web wiki - トークン キャッシュのシリアル化](https://aka.ms/ms-id-web/token-cache-serialization)」を参照してください。
+トークンを自分で取得しない場合は、*Microsoft.Identity.Web* には、別の API からダウンストリーム Web API を呼び出すための 2 つのメカニズムが用意されています。 選択するオプションは、Microsoft Graph または別の API のどちらを呼び出すかによって異なります。
+
+### <a name="option-1-call-microsoft-graph"></a>オプション 1: Microsoft Graph の呼び出し
+
+Microsoft Graph を呼び出す場合は、Microsoft.Identity.Web を使用すると、API アクションで (Microsoft Graph SDK によって公開されている) `GraphServiceClient` を直接使用することができます。 Microsoft Graph を公開するには、次の手順を実行します。
+
+1. プロジェクトに、[Microsoft.Identity.Web.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) NuGet パッケージを追加します。
+1. *Startup.cs* ファイルで `.EnableTokenAcquisitionToCallDownstreamApi()` の後に `.AddMicrosoftGraph()` を追加します。 `.AddMicrosoftGraph()` にはいくつかのオーバーライドがあります。 構成セクションをパラメーターとして受け取るオーバーライドを使用すると、コードは次のようになります。
+
+```csharp
+using Microsoft.Identity.Web;
+
+public class Startup
+{
+  // ...
+  public void ConfigureServices(IServiceCollection services)
+  {
+  // ...
+  services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+          .AddMicrosoftIdentityWebApi(Configuration, Configuration.GetSection("AzureAd"))
+            .EnableTokenAcquisitionToCallDownstreamApi()
+               .AddMicrosoftGraph(Configuration.GetSection("GraphBeta"))
+            .AddInMemoryTokenCaches();
+   // ...
+  }
+  // ...
+}
+```
+
+### <a name="option-2-call-a-downstream-web-api-other-than-microsoft-graph"></a>オプション 2:Microsoft Graph 以外のダウンストリーム Web API を呼び出す
+
+Microsoft Graph 以外のダウンストリーム API を呼び出すために、*Microsoft.Identity.Web* には、トークンを要求し、ダウンストリーム Web API を呼び出す `.AddDownstreamWebApi()` が用意されています。
+
+```csharp
+using Microsoft.Identity.Web;
+
+public class Startup
+{
+  // ...
+  public void ConfigureServices(IServiceCollection services)
+  {
+  // ...
+  services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+          .AddMicrosoftIdentityWebApi(Configuration, "AzureAd")
+            .EnableTokenAcquisitionToCallDownstreamApi()
+               .AddDownstreamWebApi("MyApi", Configuration.GetSection("GraphBeta"))
+            .AddInMemoryTokenCaches();
+   // ...
+  }
+  // ...
+}
+```
+
+Web アプリと同様に、さまざまなトークン キャッシュの実装を選択できます。 詳細については、GitHub の [Microsoft identity web - Token cache serialization](https://aka.ms/ms-id-web/token-cache-serialization) (トークン キャッシュのシリアル化) を参照してください。
+
+次の図は、*Microsoft.Identity.Web* のさまざまな可能性と、*Startup.cs* ファイルへの影響を示しています。
+
+:::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="Web API を呼び出し、トークン キャッシュの実装を指定するための Startup.cs のサービス構成オプションを示すブロック図":::
+
+> [!NOTE]
+> これらのコード例を完全に理解するには、[ASP.NET Core の基礎](/aspnet/core/fundamentals)、特に[依存関係の挿入](/aspnet/core/fundamentals/dependency-injection)と[オプション](/aspnet/core/fundamentals/configuration/options)について熟知している必要があります。
 
 # <a name="java"></a>[Java](#tab/java)
 

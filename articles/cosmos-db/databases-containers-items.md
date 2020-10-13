@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.reviewer: sngun
-ms.openlocfilehash: e1718ac9a7b7fcaab096595ea7341fcc90c2ddd6
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: f3906878755b7c7c2e3801da1bfa70a50d73ea16
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422336"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318791"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Azure Cosmos DB のデータベース、コンテナー、項目の操作
 
@@ -47,7 +47,7 @@ Azure Cosmos API を使用して、次の表で示しているように Azure Co
 
 ## <a name="azure-cosmos-containers"></a>Azure Cosmos コンテナー
 
-Azure Cosmos コンテナーは、プロビジョニング スループットとストレージの両方に関するスケーラビリティの単位です。 コンテナーは水平方向にパーティション分割され、その後、複数のリージョン間でレプリケートされます。 コンテナーに追加した項目と、コンテナーに対してプロビジョニングしたスループットは、パーティション キーに基づいて一連の論理パーティションにわたって自動的に分散されます。 パーティション分割とパーティション キーの詳細については、[データのパーティション分割](partition-data.md)に関するページを参照してください。 
+Azure Cosmos コンテナーは、プロビジョニング スループットとストレージの両方に関するスケーラビリティの単位です。 コンテナーは水平方向にパーティション分割され、その後、複数のリージョン間でレプリケートされます。 コンテナーに追加した項目は、パーティション キーに基づいて、論理パーティションに自動的にグループ化され、物理パーティション全体で自動的に分散されます。 コンテナー上のスループットは、物理パーティション全体で均等に分散されます。 パーティション分割とパーティション キーの詳細については、[データのパーティション分割](partition-data.md)に関するページを参照してください。 
 
 Azure Cosmos コンテナーを作成するときには、次のいずれかのモードでスループットを構成します。
 

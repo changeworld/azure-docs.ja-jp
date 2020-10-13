@@ -7,12 +7,12 @@ ms.reviewer: plarsen, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: bd85155f932d57319f5f27081b44b48e5540bfb2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6c9c54450788a89a7b1aadbb0b4682a60619c061
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284049"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334601"
 ---
 # <a name="access-and-manage-ibm-db2-resources-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して IBM DB2 リソースにアクセスして管理する
 
@@ -157,7 +157,7 @@ DB2 データベース テーブルの 1 レコードをフェッチするには
    | **[区分 ID]** | はい | 必要なレコードの ID (この例では "99999") |
    ||||
 
-   ![テーブルの選択](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
+   ![開いている [テーブル名] 一覧と "AREA" 値が選択されている [1 行を取得 (プレビュー)] アクションを示すスクリーンショット。](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
 
 1. 操作が完了したら、デザイナーのツールバーで、 **[保存]** を選択します。
 
@@ -192,7 +192,7 @@ DB2 データベース テーブルのすべてのレコードをフェッチす
 
 1. **テーブル名** 一覧を開き、必要なテーブル (この例では "AREA") を選択します。
 
-   ![テーブルの選択](./media/connectors-create-api-db2/db2-get-rows-action-select-table.png)
+   ![[テーブル名] 一覧の "AREA" 値が選択されている [1 行を取得 (プレビュー)] アクションを示すスクリーンショット。](./media/connectors-create-api-db2/db2-get-rows-action-select-table.png)
 
 1. 結果に対してフィルターまたはクエリを指定するには、 **[詳細オプションを表示する]** を選択します。
 
@@ -241,7 +241,7 @@ DB2 データベース テーブルに 1 レコードを追加するには、ロ
 
    次に例を示します。
 
-   ![テーブルの選択](./media/connectors-create-api-db2/db2-insert-row-action-select-table.png)
+   ![[行の挿入 (プレビュー)] アクションとプロパティ値の例が含まれる Logic Apps デザイナーを示すスクリーンショット。](./media/connectors-create-api-db2/db2-insert-row-action-select-table.png)
 
 1. 操作が完了したら、デザイナーのツールバーで、 **[保存]** を選択します。
 
@@ -289,7 +289,7 @@ DB2 データベース テーブルの 1 レコードを更新するには、ロ
 
    次に例を示します。
 
-   ![テーブルの選択](./media/connectors-create-api-db2/db2-update-row-action-select-table.png)
+   ![テーブルを選択する場所である [行の更新 (プレビュー)] アクションを含む Logic Apps デザイナーを示すスクリーンショット。](./media/connectors-create-api-db2/db2-update-row-action-select-table.png)
 
 1. 操作が完了したら、デザイナーのツールバーで、 **[保存]** を選択します。
 
@@ -334,7 +334,7 @@ DB2 データベース テーブルから 1 レコードを削除するには、
 
    次に例を示します。
 
-   ![テーブルの選択](./media/connectors-create-api-db2/db2-delete-row-action-select-table.png)
+   ![削除するテーブルを選択する場所である [行の削除 (プレビュー)] アクションを含む Logic Apps デザイナーを示すスクリーンショット。](./media/connectors-create-api-db2/db2-delete-row-action-select-table.png)
 
 1. 操作が完了したら、デザイナーのツールバーで、 **[保存]** を選択します。
 

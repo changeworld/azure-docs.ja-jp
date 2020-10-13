@@ -3,12 +3,12 @@ title: Azure Lab Services の Linux 向けグラフィカル リモート デス
 description: Azure Lab Services のラボで Linux 仮想マシン向けリモート デスクトップを有効にする方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 4f50510adf978aeb63b2b5337d21e6f9dec76196
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8db01ca57d90739a57cd9bbb3caf63ada5f26fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445765"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251611"
 ---
 # <a name="enable-graphical-remote-desktop-for-linux-virtual-machines-in-azure-lab-services"></a>Azure Lab Services の Linux 仮想マシンでグラフィカル リモート デスクトップを有効にする
 この記事では、次のタスクの手順について説明します。
@@ -46,7 +46,7 @@ X2Go では、SSH 用に既に有効になっているのと同じポートが�
 
 1.  ラボの作成時に、講師は必要に応じて**リモート デスクトップ接続を有効にする**ことができます。  RDP リモート デスクトップ セッションに必要な Linux VM 上のポートを開くには、講師がこのオプションを**有効**にする必要があります。  このオプションを**無効**のままにすると、SSH 用のポートのみが開かれます。
   
-    ![Linux イメージのリモート デスクトップ接続を有効にする](./media/how-to-enable-remote-desktop-linux/enable-rdp-option.png)
+    ![[New lab]\(新しいラボ\) ウィンドウと [Enable Remote Desktop Connection]\(リモート デスクトップ接続の有効化\) のスクリーンショット。](./media/how-to-enable-remote-desktop-linux/enable-rdp-option.png)
 
 2. **[Enabling Remote Desktop Connection]\(リモート デスクトップ接続の有効化\)** メッセージ ボックスで、 **[Continue with Remote Desktop]\(リモート デスクトップで続行\)** を選択します。 
 

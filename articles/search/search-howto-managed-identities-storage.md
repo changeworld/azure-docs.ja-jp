@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: c1168602ccb527d8ffb3b64d5437a26490b44a21
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 770ded494f050631cd1c373f4b3fa5846c65e01a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971506"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275134"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>マネージド ID を使用して、Azure Storage アカウントへの接続を設定する
 
@@ -143,6 +143,10 @@ BLOB インデクサーのインデクサー定義の例:
 インデクサー作成 API の詳細については、「 [インデクサーの作成](/rest/api/searchservice/create-indexer)」をご覧ください。
 
 インデクサーのスケジュールの定義の詳細については、[Azure Cognitive Search のインデクサーのスケジュールを設定する方法](search-howto-schedule-indexers.md)に関する記事を参照してください。
+
+## <a name="accessing-secure-data-in-storage-accounts"></a>ストレージ アカウントで安全なデータにアクセスする
+
+Azure ストレージ アカウントは、ファイアウォールと仮想ネットワークを利用することでさらにセキュリティを強化できます。 ファイアウォールや仮想ネットワークを利用してセキュリティを強化した BLOB ストレージ アカウントまたは Data Lake Gen2 ストレージ アカウントからコンテンツにインデックスを付ける場合、「[信頼されたサービスの例外を使用してストレージ アカウントのデータに安全にアクセスする](search-indexer-howto-access-trusted-service-exception.md)」の指示に従ってください。
 
 ## <a name="see-also"></a>関連項目
 

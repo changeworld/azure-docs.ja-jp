@@ -2,15 +2,17 @@
 title: オーサリング キーとランタイム キーの使用方法 - LUIS
 description: Language Understanding (LUIS) を初めて使用するときは、オーサリング キーを作成する必要はありません。 アプリを発行する場合は、ランタイム エンドポイントを使用し、ランタイム キーを作成してアプリに割り当てる必要があります。
 services: cognitive-services
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 99f73399c410641be352111302b1d4999d1ebc1b
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 949ad4176cc7bf65e07e40323fc72a0a144b53b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89565907"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327223"
 ---
 # <a name="create-luis-resources"></a>LUIS リソースの作成
 
@@ -27,9 +29,9 @@ LUIS では、次の 3 種類の Azure リソースと Azure 以外の 1 つの�
 
 |リソース|目的|Cognitive service `kind`|Cognitive service `type`|
 |--|--|--|--|
-|作成リソース|これにより、アプリケーションの作成、管理、トレーニング、テスト、および発行を行うことができます。 LUIS アプリの作成をプログラムによって、または LUIS ポータルから行う場合は、[LUIS オーサリング リソースを作成](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-azure-subscription#create-luis-resources-in-azure-portal)します。 まずは、Azure オーサリング リソースをアプリケーションにリンクできるようにするために、[LUIS アカウントを移行](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring#what-is-migration)する必要があります。 [共同作成者ロール](#contributions-from-other-authors)にユーザーを割り当てることで、オーサリング リソースへのアクセス許可を制御することができます。 <br><br> LUIS オーサリング リソースで利用できるサービス レベルは次の 1 つです。<br> * **F0 オーサリング リソース**。これによって、毎月 100 万件の無料オーサリング トランザクションと 1,000 件の無料予測エンドポイント要求が提供されます。 |`LUIS.Authoring`|`Cognitive Services`|
-|予測リソース| LUIS アプリケーションを発行したら、予測リソースまたはキーを使用して、予測エンドポイント要求をクエリします。 クライアント アプリで要求する予測がオーサリングまたはスターター リソースによって提供される 1,000 件の要求を超える場合は、事前に LUIS 予測リソースを作成しておきます。 <br><br> 予測リソースで利用できるサービス レベルは次の 2 つです。<br> * **F0 予測リソース**。これによって、毎月 10,000 件の無料予測エンドポイント要求が提供されます。<br> * **S0 予測リソース**。これは有料のサービス レベルです。 [価格に関する詳細情報](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
-|スターターまたは試用版のリソース|これにより、アプリケーションの作成、管理、トレーニング、テスト、および発行を行うことができます。 最初に LUIS にサインアップするときにスターター リソース オプションを選択した場合は、これが既定で作成されます。 ただし、スタート キーは最終的に非推奨となるので、すべての LUIS ユーザーは[自分のアカウントを移行](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring#what-is-migration)し、自分の LUIS アプリケーションをオーサリング リソースにリンクする必要があります。 オーサリング リソースの場合とは違い、このリソースによって、ロールベースのアクセス制御のためのアクセス許可が付与されることはありません。 <br><br> オーサリング リソースと同様に、スターター リソースでも、100 万件の無料オーサリング トランザクションと 1,000 件の無料予測エンドポイント要求が提供されます。|-|Azure リソースではありません|
+|作成リソース|これにより、アプリケーションの作成、管理、トレーニング、テスト、および発行を行うことができます。 LUIS アプリの作成をプログラムによって、または LUIS ポータルから行う場合は、[LUIS オーサリング リソースを作成](luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal)します。 まずは、Azure オーサリング リソースをアプリケーションにリンクできるようにするために、[LUIS アカウントを移行](luis-migration-authoring.md#what-is-migration)する必要があります。 [共同作成者ロール](#contributions-from-other-authors)にユーザーを割り当てることで、オーサリング リソースへのアクセス許可を制御することができます。 <br><br> LUIS オーサリング リソースで利用できるサービス レベルは次の 1 つです。<br> * **無料 F0 オーサリング リソース**。これによって、100 万件の無料オーサリング トランザクションと 1,000 件のテスト用無料予測エンドポイント要求が毎月提供されます。 |`LUIS.Authoring`|`Cognitive Services`|
+|予測リソース| LUIS アプリケーションを発行したら、予測リソースまたはキーを使用して、予測エンドポイント要求をクエリします。 クライアント アプリで要求する予測がオーサリングまたはスターター リソースによって提供される 1,000 件の要求を超える場合は、事前に LUIS 予測リソースを作成しておきます。 <br><br> 予測リソースで利用できるサービス レベルは次の 2 つです。<br> * **無料 F0 予測リソース**。これによって、毎月 10,000 件の無料予測エンドポイント要求が提供されます。<br> * **標準 S0 予測リソース**。これは有料のサービス レベルです。 [価格に関する詳細情報](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
+|スターターまたは試用版のリソース|これにより、アプリケーションの作成、管理、トレーニング、テスト、および発行を行うことができます。 最初に LUIS にサインアップするときにスターター リソース オプションを選択した場合は、これが既定で作成されます。 ただし、スタート キーは最終的に非推奨となるので、すべての LUIS ユーザーは[自分のアカウントを移行](luis-migration-authoring.md#what-is-migration)し、自分の LUIS アプリケーションをオーサリング リソースにリンクする必要があります。 オーサリング リソースの場合とは違い、このリソースによって、ロールベースのアクセス制御のためのアクセス許可が付与されることはありません。 <br><br> オーサリング リソースと同様に、スターター リソースでも、100 万件の無料オーサリング トランザクションと 1,000 件のテスト用無料予測エンドポイント要求が提供されます。|-|Azure リソースではありません|
 |[Cognitive Service マルチサービスのリソース キー](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|LUIS およびその他のサポートされている Cognitive Services と共有される予測エンドポイント要求に対するクエリを実行します。|`CognitiveServices`|`Cognitive Services`|
 
 

@@ -3,12 +3,12 @@ title: レジストリ アクションに応答するための Webhook
 description: レジストリ リポジトリでプッシュまたはプル アクションが発生したときに、Webhook を使用してイベントをトリガーする方法について説明します。
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 3d0a12b6e742b0209cbb746a70686423f2fb5627
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 1db1098da81e6cf9ecb262c99f705b77af2efd26
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685037"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253396"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Azure Container Registry webhook の使用
 
@@ -41,7 +41,7 @@ webhook 要求の詳細については、「[Azure Container Registry webhook �
 
 Webhook フォームの例 :
 
-![Azure Portal の ACR webhook の作成の UI](./media/container-registry-webhook/webhook.png)
+![Azure portal の ACR Webhook 作成 UI のスクリーンショット。](./media/container-registry-webhook/webhook.png)
 
 ## <a name="create-webhook---azure-cli"></a>Webhook の作成 - Azure CLI
 

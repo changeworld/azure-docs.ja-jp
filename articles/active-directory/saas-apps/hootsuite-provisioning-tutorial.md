@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 83b2a497cbeda188a4329e634256746f48984a89
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c4c040c6d5b8eb4041db3ffaaab58657a9f9c7da
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521936"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358051"
 ---
 # <a name="tutorial-configure-hootsuite-for-automatic-user-provisioning"></a>チュートリアル:Hootsuite を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -78,17 +78,17 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 3. **[プロビジョニング]** タブを選択します。 **[開始]** をクリックします。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
     ![[開始] ブレード](./media/hootsuite-provisioning-tutorial/get-started.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[管理者資格情報]** セクションの [テナントの URL] に「`https://platform.hootsuite.com/scim/v2`」と入力します。 前の**手順 2.** で取得した、長期間使用できるシークレット トークンの値を入力します。 **[テスト接続]** をクリックして、Azure AD から Hootsuite への接続を確保します。 接続できない場合は、使用中の Hootsuite アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
-    ![プロビジョニング](./media/hootsuite-provisioning-tutorial/provisioning.png)
+    ![テナント URL とシークレット トークンを入力できる場所である [管理者資格情報] ダイアログ ボックスを示すスクリーンショット。](./media/hootsuite-provisioning-tutorial/provisioning.png)
 
 6. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 

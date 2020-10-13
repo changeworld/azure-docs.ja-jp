@@ -1,32 +1,33 @@
 ---
-title: FPGA とは - デプロイ方法
+title: ML モデルを FPGA にデプロイする
 titleSuffix: Azure Machine Learning
-description: 待機時間が極端に短い推論のために、FPGA 上で実行されるモデルを含む Web サービスを Azure Machine Learning でデプロイする方法を説明します。
+description: フィールド プログラマブル ゲート アレイについて説明します。 Azure Machine Learning を使用して FPGA に Web サービスをデプロイし、待機時間が非常に短い推論を行うことができます。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
 ms.author: jordane
 author: jpe316
-ms.date: 06/03/2020
+ms.date: 09/24/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: 7637cc911ea2fbb950a18c2c8d91f5c3eaf02c23
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: how-to, contperfq2, devx-track-python
+ms.openlocfilehash: 5d7956b5538b272454f3f55bcda84188c946e978
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905089"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328430"
 ---
-# <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>フィールド プログラマブル ゲート アレイ (FPGA) の説明とデプロイ方法
+# <a name="deploy-ml-models-to-field-programmable-gate-arrays-fpgas-with-azure-machine-learning"></a>Azure Machine Learning を使用して ML モデルをフィールド プログラマブル ゲート アレイ (FPGA) にデプロイする 
 
-
-
-この記事では、Field Programmable Gate Array (FPGA) についてその概要を説明し、[Azure Machine Learning](overview-what-is-azure-ml.md) を使用してモデルを Azure FPGA にデプロイする方法を示します。
+この記事では、FPGA と、[Azure Machine Learning](overview-what-is-azure-ml.md) の[Hardware Accelerated Models Python パッケージ](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py&preserve-view=true)を使用して ML モデルを Azure FPGA にデプロイする方法について説明します。
 
 ## <a name="what-are-fpgas"></a>FPGA とは
-
 FPGA には、プログラミング可能なロジック ブロックの配列と、再構成可能な相互接続の階層が含まれています。 相互接続を使用して、製造後にさまざまな方法でこれらのブロックを構成できます。 他のチップと比較して、FPGA はプログラミング可能であることとパフォーマンスを兼ね備えています。 
+
+FPGA によって、リアルタイムの推論 (つまりモデルのスコアリング) 要求に対して短い待機時間を達成できるようになります。 非同期の要求 (バッチ処理) は必要ありません。 バッチ処理では、処理の必要なデータが多くなるため待機時間は長くなる場合があります。 ニューラル処理ユニットの実装にバッチ処理は必要ないので、待機時間は CPU および GPU プロセッサと比較して何倍も短くなる場合があります。
+
+さまざまな種類の機械学習モデルに向けて FPGA を再構成できます。 この柔軟性により、最適な数値精度と使用されているメモリ モデルに基づいて、容易にアプリケーションを高速化できるようになっています。 FPGA は再構成可能なため、急速に変化する AI アルゴリズムの要件に遅れることなく対応できます。
 
 ![Azure Machine Learning における FPGA の比較図](./media/how-to-deploy-fpga-web-service/azure-machine-learning-fpga-comparison.png)
 
@@ -37,91 +38,49 @@ FPGA には、プログラミング可能なロジック ブロックの配列�
 |グラフィックス処理装置|GPU|AI 計算用に人気のある選択肢です。 GPU が並列処理機能を提供し、CPU より画像のレンダリングを高速化します。|
 |中央処理装置|CPU|汎用プロセッサであり、そのパフォーマンスはグラフィックスや動画の処理に最適ではありません。|
 
+## <a name="fpga-support-in-azure"></a>Azure での FPGA のサポート
 
-FPGA によって、リアルタイムの推論 (つまりモデルのスコアリング) 要求に対して短い待機時間を達成できるようになります。 非同期の要求 (バッチ処理) は必要ありません。 バッチ処理では、処理の必要なデータが多くなるため待機時間は長くなる場合があります。 ニューラル処理ユニットの実装にバッチ処理は必要ないので、待機時間は CPU および GPU プロセッサと比較して何倍も短くなる場合があります。
-
-さまざまな種類の機械学習モデルに向けて FPGA を再構成できます。 この柔軟性により、最適な数値精度と使用されているメモリ モデルに基づいて、容易にアプリケーションを高速化できるようになっています。 FPGA は再構成可能なため、急速に変化する AI アルゴリズムの要件に遅れることなく対応できます。
-
-### <a name="fpga-support-in-azure"></a>Azure での FPGA のサポート
-
-Microsoft Azure は、世界最大規模の、FPGA 分野でのクラウド関連投資です。 Microsoft は、DNN 評価、Bing 検索ランキング、およびソフトウェア定義ネットワーク (SDN) アクセラレーション用に FPGA を使用して、待機時間を短縮しながら、他のタスク用に CPU を解放します。
+Microsoft Azure は、世界最大規模の、FPGA 分野でのクラウド関連投資です。 Microsoft は、ディープ ニューラル ネットワーク (DNN) 評価、Bing 検索ランキング、およびソフトウェア定義ネットワーク (SDN) アクセラレーション用に FPGA を使用して、待機時間を短縮しながら、他のタスク用に CPU を解放します。
 
 Azure の FPGA は、リアルタイムの AI 計算を高速化するためにデータ サイエンティストや開発者が使用する、Intel の FPGA デバイスをベースにしています。 この FPGA 対応のアーキテクチャでは、パフォーマンス、柔軟性、スケールが提供され、Azure で使用できます。
 
-Azure FPGA は Azure Machine Learning と統合されています。 Azure は、事前トレーニング済みのディープ ニューラル ネットワーク (DNN) を FPGA 間で並列化し、サービスをスケールアウトすることができます。 DNN は、転移学習用のディープ特徴抽出器として事前トレーニングすることも、または更新された重みで微調整することもできます。
+Azure FPGA は Azure Machine Learning と統合されています。 Azure では、事前にトレーニングされた DNN を FPGA 間で並列化して、サービスをスケールアウトできます。 DNN は、転移学習用のディープ特徴抽出器として事前トレーニングすることも、または更新された重みで微調整することもできます。
 
-Azure の FPGA のサポート:
-
-+ 画像の分類と認識のシナリオ
-+ TensorFlow のデプロイ (TensorFlow 1.x が必要)
-+ Intel FPGA ハードウェア
-
-現在使用できるのは、以下の DNN モデルです。
-
-  - ResNet 50
-  - ResNet 152
-  - DenseNet-121
-  - VGG-16
-  - SSD-VGG
-
-  
-FPGA は、次の Azure リージョンで使用できます。
-  - 米国東部
-  - 東南アジア
-  - 西ヨーロッパ
-  - 米国西部 2
+|Azure のシナリオと構成|サポートされている DNN モデル|地域のサポート|
+|--------------------------|--------------------|----------------|
+|+ 画像の分類と認識のシナリオ<br/>+ TensorFlow のデプロイ (TensorFlow 1.x が必要)<br/>+ Intel FPGA ハードウェア|- ResNet 50<br/>- ResNet 152<br/>- DenseNet-121<br/>- VGG-16<br/>- SSD-VGG|- 米国東部<br/>- 東南アジア<br/>- 西ヨーロッパ<br/>- 米国西部 2|
 
 待ち時間とスループットを最適化するには、FPGA モデルにデータを送信するクライアントが上記のいずれかのリージョン (モデルをデプロイするリージョン) にある必要があります。
 
-**Azure VM の PBS ファミリ**には、Intel Arria 10 FPGA が含まれています。 Azure のクォータの割り当てを確認すると、"Standard PBS Family vCPUs" と表示されます。 PB6 VM には 6 つの vCPU と 1 つの FPGA が含まれており、FPGA へのモデルのデプロイの一環として Azure ML によって自動的にプロビジョニングされます。 Azure ML でのみ使用され、任意のビットストリームは実行できません。 たとえば、暗号化、エンコードなどを行うビットストリームで FPGA をフラッシュすることはできません。
-
+**Azure VM の PBS ファミリ**には、Intel Arria 10 FPGA が含まれています。 Azure のクォータの割り当てを確認すると、"Standard PBS Family vCPUs" と表示されます。 PB6 VM には、6 つの vCPUs と 1 つの FPGA が搭載されています。 PB6 VM は、FPGA へのモデル デプロイ中に Azure Machine Learning によって自動的にプロビジョニングされます。 Azure ML でのみ使用され、任意のビットストリームは実行できません。 たとえば、暗号化、エンコードなどを行うビットストリームで FPGA をフラッシュすることはできません。
 
 ## <a name="deploy-models-on-fpgas"></a>モデルの FPGA でのデプロイ
 
-[Azure Machine Learning Hardware Accelerated Models](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py&preserve-view=true) を使用して、モデルを FPGA 上の Web サービスとしてデプロイできます。 FPGA を使用すると、単一のバッチ サイズでも、待機時間が極端に短い推論を実行できます。 推論、つまりモデル スコアリングとは、通常は運用環境のデータに基づいて、デプロイしたモデルを使用して予測を行うフェーズです。
+[Azure Machine Learning Hardware Accelerated Models](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py&preserve-view=true) を使用して、モデルを FPGA 上の Web サービスとしてデプロイできます。 FPGA を使用すると、単一のバッチ サイズでも、待機時間が極端に短い推論を実行できます。 
 
-FPGA にモデルをデプロイするには、次の手順を実行します。
-
-1. TensorFlow モデルを定義する
-1. モデルを ONNX に変換する
-1. クラウドまたはエッジ デバイスにモデルをデプロイする
-1. 配置したモデルを使用する
-
-このサンプルでは、TensorFlow グラフを作成して入力画像を前処理し、それを FPGA 上で ResNet 50 を使用する特徴抽出器にした後、ImageNet データ セットでトレーニング済みの分類子を使って機能を実行します。 次に、モデルが AKS クラスターにデプロイされます。
+この例では、TensorFlow グラフを作成して入力画像を前処理し、それを FPGA 上で ResNet 50 を使用する特徴抽出器にした後、ImageNet データ セットでトレーニング済みの分類子を使って機能を実行します。 次に、モデルが AKS クラスターにデプロイされます。
 
 ### <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプション。 お持ちでない場合は、[従量課金制](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go)アカウントを作成する必要があります (無料の Azure アカウントは、FPGA クォータの対象になりません)。
-- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-- FPGA クォータ。 クォータがあるかどうかを確認するには、Azure CLI を使用します。
+- Azure サブスクリプション。 お持ちでない場合は、[従量課金制](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go)アカウントを作成してください (無料の Azure アカウントは、FPGA クォータの対象になりません)。
+
+- [ワークスペースの作成](how-to-manage-workspace.md)に関するページで説明されているように、Azure Machine Learning ワークスペースと Azure Machine Learning SDK for Python がインストールされています。
+ 
+- Hardware Accelerated Models パッケージ: `pip install --upgrade azureml-accel-models[cpu]`    
+    
+- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)
+
+- FPGA クォータ。 [クォータの要求](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2nac9-PZhBDnNSV2ITz0LNUN0U5S0hXRkNITk85QURTWk9ZUUFUWkkyTC4u)を送信するか、次の CLI コマンドを実行してクォータを確認します。 
 
     ```azurecli-interactive
     az vm list-usage --location "eastus" -o table --query "[?localName=='Standard PBS Family vCPUs']"
     ```
 
+   返される __CurrentValue__ に少なくとも 6 つの vCPU があることを確認します。  
 
-    コマンドにより、次のようなテキストが返されます。
+### <a name="define-the-tensorflow-model"></a>TensorFlow モデルを定義する
 
-    ```text
-    CurrentValue    Limit    LocalName
-    --------------  -------  -------------------------
-    0               6        Standard PBS Family vCPUs
-    ```
-
-    __CurrentValue__ の下に少なくとも 6 つの vCPU があることを確認します。
-
-    クォータがない場合は、[https://aka.ms/accelerateAI](https://aka.ms/accelerateAI) で要求を送信してください。
-
-- Azure Machine Learning ワークスペースと、Azure Machine Learning SDK for Python がインストール済み。 詳細については、「[ワークスペースの作成](how-to-manage-workspace.md)」を参照してください。
- 
-- Hardware Accelerated Models 用の Python SDK:
-
-    ```bash
-    pip install --upgrade azureml-accel-models[cpu]
-    ```
-### <a name="1-define-the-tensorflow-model"></a>1.TensorFlow モデルを定義する
-
-[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) を使用してサービス定義を作成します。 サービス定義は、TensorFlow に基づいてグラフ (入力、特徴抽出器、分類子) のパイプラインを記述しているファイルです。 デプロイ コマンドは、定義とグラフを ZIP ファイルに自動的に圧縮し、その ZIP を Azure Blob Storage にアップロードします。 DNN は、FPGA 上で実行するように既にデプロイされています。
+まず [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) を使用してサービス定義を作成します。 サービス定義は、TensorFlow に基づいてグラフ (入力、特徴抽出器、分類子) のパイプラインを記述しているファイルです。 デプロイ コマンドは、定義とグラフを ZIP ファイルに圧縮し、その ZIP を Azure Blob Storage にアップロードします。 DNN は、FPGA 上で実行するように既にデプロイされています。
 
 1. Azure Machine Learning ワークスペースを読み込む
 
@@ -147,7 +106,7 @@ FPGA にモデルをデプロイするには、次の手順を実行します。
    print(image_tensors.shape)
    ```
 
-1. 特徴抽出器を読み込みます。 モデルを初期化して、特徴抽出器として使用される ResNet50 の量子化されたバージョンの TensorFlow チェックポイントをダウンロードします。  以下のコード スニペットの "QuantizedResnet50" は、以下に示す他のディープ ニューラル ネットワークをインポートすることで置き換えることができます。
+1. 特徴抽出器を読み込みます。 モデルを初期化して、特徴抽出器として使用される ResNet50 の量子化されたバージョンの TensorFlow チェックポイントをダウンロードします。  他のディープ ニューラル ネットワークをインポートするには、コード スニペットの "QuantizedResnet50" を置き換えます。
 
    - QuantizedResnet152
    - QuantizedVgg16
@@ -163,7 +122,7 @@ FPGA にモデルをデプロイするには、次の手順を実行します。
    print(feature_tensor.shape)
    ```
 
-1. 分類子を追加します。 この分類子は ImageNet データ セットでトレーニングされています。  転移学習およびカスタマイズされた重みのトレーニングの例は、[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks)のセットに含まれています。
+1. 分類子を追加します。 この分類子は ImageNet データ セットでトレーニングされています。
 
    ```python
    classifier_output = model_graph.get_default_classifier(feature_tensor)
@@ -184,7 +143,7 @@ FPGA にモデルをデプロイするには、次の手順を実行します。
                                   outputs={'output_alias': classifier_output})
    ```
 
-1. 入出力のテンソルを保存します。 モデルの変換と推論には、前処理中に作成された入出力のテンソルと、分類器のステップが必要になります。
+1. **モデル変換と推論の要求に使用するため**、入出力のテンソルを保存します。 
 
    ```python
    input_tensors = in_images.name
@@ -194,10 +153,7 @@ FPGA にモデルをデプロイするには、次の手順を実行します。
    print(output_tensors)
    ```
 
-   > [!IMPORTANT]
-   > 入出力のテンソルは、モデルの変換と要求の推論で必要になるため、保存します。
-
-   使用可能なモデルとそれに対応する既定の分類器の出力テンソルは以下のとおりです。これは、既定の分類器を使用した場合に推論で使用します。
+   既定の分類子を使用した場合、次のモデルが推論のために分類子の出力テンソルと共に表示され、使用できます。
 
    + Resnet50、QuantizedResnet50
      ```python
@@ -220,9 +176,9 @@ FPGA にモデルをデプロイするには、次の手順を実行します。
      output_tensors = ['ssd_300_vgg/block4_box/Reshape_1:0', 'ssd_300_vgg/block7_box/Reshape_1:0', 'ssd_300_vgg/block8_box/Reshape_1:0', 'ssd_300_vgg/block9_box/Reshape_1:0', 'ssd_300_vgg/block10_box/Reshape_1:0', 'ssd_300_vgg/block11_box/Reshape_1:0', 'ssd_300_vgg/block4_box/Reshape:0', 'ssd_300_vgg/block7_box/Reshape:0', 'ssd_300_vgg/block8_box/Reshape:0', 'ssd_300_vgg/block9_box/Reshape:0', 'ssd_300_vgg/block10_box/Reshape:0', 'ssd_300_vgg/block11_box/Reshape:0']
      ```
 
-### <a name="2-convert-the-model"></a>2.モデルを変換する
+### <a name="convert-the-model-to-the-open-neural-network-exchange-format-onnx"></a>モデルを Open Neural Network Exchange 形式 (ONNX) に変換する
 
-このモデルを FPGA にデプロイする前に、ONNX 形式に変換する必要があります。
+FPGA にデプロイする前に、モデルを [ONNX](https://onnx.ai/) 形式に変換します。
 
 1. SDK と Azure Blob Storage 内の ZIP ファイルを使用して、モデルを[登録](concept-model-management-and-deployment.md)します。 モデルに関するタグやその他のメタデータを追加すると、トレーニング済みのモデルを追跡するのに役立ちます。
 
@@ -248,7 +204,7 @@ FPGA にモデルをデプロイするには、次の手順を実行します。
          registered_model.version, sep='\t')
    ```
 
-1. TensorFlow グラフは、Open Neural Network Exchange 形式 ([ONNX](https://onnx.ai/)) に変換します。  入力テンソルと出力テンソルの名前を入力する必要があります。これらの名前は、Web サービスの使用時にクライアントによって使用されます。
+1. TensorFlow グラフを ONNX 形式に変換します。  Web サービスを使用するときにクライアントから使用できるように、入出力テンソルの名前を指定する必要があります。
 
    ```python
    from azureml.accel import AccelOnnxConverter
@@ -265,9 +221,9 @@ FPGA にモデルをデプロイするには、次の手順を実行します。
          converted_model.id, converted_model.created_time, '\n')
    ```
 
-### <a name="3-containerize-and-deploy-the-model"></a>3.モデルのコンテナー化とデプロイ
+### <a name="containerize-and-deploy-the-model"></a>モデルのコンテナー化とデプロイ
 
-変換されたモデルとすべての依存関係から Docker イメージを作成します。  この Docker イメージをデプロイし、インスタンス化できるようになります。  サポートされているデプロイ先には、クラウド内の AKS や [Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview) のようなエッジ デバイスなどがあります。  登録した Docker イメージにタグと説明を追加することもできます。
+次に、変換されたモデルとすべての依存関係から Docker イメージを作成します。  この Docker イメージをデプロイし、インスタンス化できるようになります。  サポートされているデプロイ先には、クラウド内の Azure Kubernetes Service (AKS) や [Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview) のようなエッジ デバイスなどがあります。  登録した Docker イメージにタグと説明を追加することもできます。
 
    ```python
    from azureml.core.image import Image
@@ -292,9 +248,9 @@ FPGA にモデルをデプロイするには、次の手順を実行します。
            i.name, i.version, i.creation_state, i.image_location, i.image_build_log_uri))
    ```
 
-#### <a name="deploy-to-aks-cluster"></a>AKS クラスターへのデプロイ
+#### <a name="deploy-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターにデプロイする
 
-1. お客様のモデルを高スケールの運用 Web サービスとしてデプロイするには、Azure Kubernetes Service (AKS) を使用します。 Azure Machine Learning SDK、CLI、または [Azure Machine Learning Studio](https://ml.azure.com) を使用して、新規に作成できます。
+1. 大規模な運用 Web サービスとしてモデルをデプロイするには、AKS を使用します。 Azure Machine Learning SDK、CLI、または [Azure Machine Learning Studio](https://ml.azure.com) を使用して、新規に作成できます。
 
     ```python
     from azureml.core.compute import AksCompute, ComputeTarget
@@ -344,13 +300,15 @@ FPGA にモデルをデプロイするには、次の手順を実行します。
 すべての [Azure Data Box Edge デバイス](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview
 )には、モデルを実行するための FPGA が含まれています。  FPGA 上で一度に実行できるモデルは 1 つだけです。  別のモデルを実行するには、単に新しいコンテナーをデプロイします。 手順とサンプル コードは、[この Azure サンプル](https://github.com/Azure-Samples/aml-hardware-accelerated-models)に含まれています。
 
-### <a name="4-consume-the-deployed-model"></a>4.配置したモデルを使用する
+### <a name="consume-the-deployed-model"></a>配置したモデルを使用する
 
-Docker イメージは、gRPC と TensorFlow Serving の "予測" API をサポートしています。  サンプル クライアントを使用して Docker イメージを呼び出し、モデルから予測を取得します。  次のサンプル クライアント コードが用意されています。
+最後に、サンプル クライアントを使用して Docker イメージを呼び出し、モデルから予測を取得します。  次のサンプル クライアント コードが用意されています。
 - [Python](https://github.com/Azure/aml-real-time-ai/blob/master/pythonlib/amlrealtimeai/client.py)
 - [C#](https://github.com/Azure/aml-real-time-ai/blob/master/sample-clients/csharp)
 
-TensorFlow Serving を使用する場合は、[サンプル クライアントをダウンロード](https://www.tensorflow.org/serving/setup)できます。
+Docker イメージは、gRPC と TensorFlow Serving の "予測" API をサポートしています。
+
+TensorFlow Serving のサンプル クライアントをダウンロードすることもできます。
 
 ```python
 # Using the grpc client in Azure ML Accelerated Models SDK package
@@ -389,9 +347,9 @@ for top in sorted_results[:5]:
     print(classes_entries[top[0]], 'confidence:', top[1])
 ```
 
-## <a name="clean-up-resources"></a>リソースをクリーンアップする
+### <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-Web サービス、イメージ、およびモデルを削除します (依存関係があるため、この順序で実行する必要があります)。
+不要なコストを回避するには、Web サービス、イメージ、モデルのリソースを**この順序で**クリーンアップします。
 
 ```python
 aks_service.delete()
@@ -401,14 +359,14 @@ registered_model.delete()
 converted_model.delete()
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-次のノートブック、ビデオ、およびブログをご覧ください。
++ [Web サービスをセキュリティで保護する](how-to-secure-web-service.md)方法のドキュメントを確認します。
 
-+ 各種の[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/accelerated-models)
-+ FPGA の Web サービスをセキュリティで保護するには、[Web サービスのセキュリティ保護](how-to-secure-web-service.md)に関するドキュメントを参照してください。
 + [Hyperscale hardware:ML at scale on top of Azure + FPGA (ハイパースケール ハードウェア: Azure + FPGA 基盤の大規模 ML):Build 2018 (ビデオ)](https://channel9.msdn.com/events/Build/2018/BRK3202)
-+ [Microsoft の FPGA ベースの構成可能なクラウドについて (ビデオ)](https://channel9.msdn.com/Events/Build/2017/B8063)
-+ [リアルタイム AI のための Project Brainwave: プロジェクト ホーム ページ](https://www.microsoft.com/research/project/project-brainwave/)
+
++ [Microsoft の FPGA ベースの構成可能なクラウド (ビデオ)](https://channel9.msdn.com/Events/Build/2017/B8063)
+
++ [リアルタイム AI 用の Project Brainwave](https://www.microsoft.com/research/project/project-brainwave/)
+
 + [自動化された光学的検査システム](https://blogs.microsoft.com/ai/build-2018-project-brainwave/)
-+ [土地被覆マッピング](https://blogs.technet.microsoft.com/machinelearning/2018/05/29/how-to-use-fpgas-for-deep-learning-inference-to-perform-land-cover-mapping-on-terabytes-of-aerial-images/)

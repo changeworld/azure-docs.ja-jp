@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3853d0e5754f368043414ea4eaade8c4adf179e9
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 5e55526e0a63a0c603e2b62ccb3ac0efed911cff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661863"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295228"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect 同期: 既定の構成について
 この記事では、既定の構成ルールについて説明します。 規則とそれが構成に与える影響について記載されています。 また、Azure AD Connect 同期の既定の構成についても説明します。この記事の目標は、宣言型のプロビジョニングと呼ばれる構成モデルのしくみを実例を用いて読者に理解してもらうことです。 この記事では、インストール ウィザードを使用して既に Azure AD Connect 同期をインストールし、構成していることを前提としています。
@@ -160,7 +160,7 @@ SRE は、リソース キット ツールで、Azure AD Connect 同期と共に
 #### <a name="scoping-filter"></a>スコープ フィルター
 [スコープ フィルター] セクションは、同期規則の適用が必要なタイミングを構成するために使用されます。 ここで説明している同期規則の名前は、有効なユーザーのみに同期規則が適用されることを意味しているため、AD 属性 **userAccountControl** にビット 2 を設定しないようスコープが構成されます。 **userAccountControl** が 10 進数値 512 (有効な通常のユーザー) に設定されていると、同期エンジンが AD でユーザーを発見したときに、この同期規則が適用されます。 ユーザーが **userAccountControl** を 514 (無効な通常のユーザー) に設定していた場合には、この規則が適用されることはありません。
 
-![Scoping tab in Sync rule editor](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
+![[受信同期ルールの編集] ウィンドウの [スコープ フィルター] セクションのスクリーンショット。](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
 
 スコープ フィルターには、入れ子にできるグループおよび句があります。 同期規則を適用するには、グループ内のすべての句が満たされている必要があります。 複数のグループが定義されている場合、規則を適用するには少なくとも 1 つのグループが満たされている必要があります。 つまり、グループ間では論理 OR が評価され、グループ内では論理 AND が評価されます。 この構成の例は、送信の同期規則 "**AAD への送信 - グループ結合**" で確認することができます。 たとえば、同期フィルター グループはいくつかあります。たとえば、1 つはセキュリティ グループ向け (`securityEnabled EQUAL True`)、1 つは配布グループ向け (`securityEnabled EQUAL False`) です。
 

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 21b90f423a3ba3c7fa38334c79aec9dc65a250cd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b79bf5e8ead16bbdf9c69e8d7faae43fa778ab3e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079184"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316581"
 ---
 # <a name="limits-and-quotas"></a>制限とクォータ
 
@@ -39,7 +39,7 @@ Custom Vision Service にはキーの層が 2 つあります。 Azure portal �
 |[その他の API 呼び出し](https://go.microsoft.com/fwlink/?linkid=865446) (秒あたりトランザクション)|10|10|
 |許容される画像の種類|jpg、png、bmp、gif|jpg、png、bmp、gif|
 |画像の高さ/幅 (ピクセル単位) の最小値|256 (注を参照)|256 (注を参照)|
-|画像の高さ/幅 (ピクセル単位) の最大値|無制限|無制限|
+|画像の高さ/幅 (ピクセル単位) の最大値|10,240|10,240|
 |最大画像サイズ (トレーニング画像アップロード) |6 MB|6 MB|
 |最大画像サイズ (予測)|4 MB|4 MB|
 |物体検出のトレーニング画像あたりの最大領域|300|該当なし|
@@ -47,3 +47,4 @@ Custom Vision Service にはキーの層が 2 つあります。 Azure portal �
 
 > [!NOTE]
 > 256 ピクセルより小さい画像は受け入れられますが、アップスケールされます。
+> 画像の縦横比を 25 より大きくすることはできません。

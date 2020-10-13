@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: f2dc93767457bfb96a9457a73adb83c0ed965308
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 084a823571281c91419a56b6212ddf6c44dd80bb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069749"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322633"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure Digital Twins のトラブルシューティング: メトリック
 
@@ -22,7 +22,7 @@ ms.locfileid: "90069749"
 
 ## <a name="how-to-view-azure-digital-twins-metrics"></a>Azure Digital Twins メトリックを表示する方法
 
-1. Azure Digital Twins インスタンスを作成します。 Azure Digital Twins インスタンスを設定する方法については、[*インスタンスと認証を設定する方法*](how-to-set-up-instance-scripted.md)に関するページを参照してください。
+1. Azure Digital Twins インスタンスを作成します。 Azure Digital Twins インスタンスを設定する方法については、[*インスタンスと認証を設定する方法*](how-to-set-up-instance-portal.md)に関するページを参照してください。
 
 2. [Azure portal](https://portal.azure.com) で Azure Digital Twins インスタンスを見つけます (ポータルの検索バーに名前を入力して、そのページを開くことができます)。 
 
@@ -34,12 +34,12 @@ ms.locfileid: "90069749"
     
 3. メトリック データを Event Hubs エンドポイントまたは Azure Storage のアカウントに送信するように選択するには、メニューから **[診断設定]** 、 **[診断設定の追加]** の順に選択します。
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="[診断設定] ページと追加するボタンが示されているスクリーンショット":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="Azure Digital Twins の [メトリック] ページが示されているスクリーンショット":::
 
     このプロセスの詳細については、[*トラブルシューティング: 診断の設定*](troubleshoot-diagnostics.md)に関するページを参照してください。
 
 4. メニューから **[アラート]** を選択し、 **[+ 新しいアラート ルール]** を選択することで、メトリック データのアラートを設定できます。
-    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="[アラート] ページと追加するボタンを示すスクリーンショット":::
+    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="Azure Digital Twins の [メトリック] ページが示されているスクリーンショット":::
 
     このプロセスの詳細については、[*トラブルシューティング: アラートの設定*](troubleshoot-alerts.md)に関するページを参照してください。
 
@@ -69,7 +69,7 @@ API 要求に関連するメトリック:
 | メトリック | メトリックの表示名 | ユニット | 集計の種類| 説明 | Dimensions |
 | --- | --- | --- | --- | --- | --- |
 | BillingApiOperations | Billing API Operations (課金 API 操作) (プレビュー) | Count | 合計 | Azure Digital Twins サービスに対して行われたすべての API 要求の数の課金メトリック。 | Meter Id |
-| BillingMessagesProcessed | Billing Messages Processed (処理されたメッセージの課金) (プレビュー) | Count | 合計 | Azure Digital Twins から外部エンドポイントに送信されたメッセージ数の課金メトリック。 | Meter Id |
+| BillingMessagesProcessed | Billing Messages Processed (処理されたメッセージの課金) (プレビュー) | Count | 合計 | Azure Digital Twins から外部エンドポイントに送信されたメッセージ数の課金メトリック。<br><br>課金に対する 1 つのメッセージと見なされるには、ペイロードが 1 KB を超えないようにする必要があります。 これを超えるペイロードは、1 KB ごとに追加のメッセージとしてカウントされます (そのため、1 KB から 2 KB のメッセージは 2 つのメッセージ、2 KB から 3 KB のメッセージは 3 つのメッセージとしてカウントされます)。<br>この制限は、応答にも適用されます。たとえば、応答本文内で 1.5 KB を返す呼び出しは、2 件の操作として課金されます。 | Meter Id |
 | BillingQueryUnits | Billing Query Units (課金クエリ単位) (プレビュー) | Count | 合計 | クエリを実行するために消費された、内部で計算されたサービス リソース使用量のメジャーであるクエリ単位の数。 クエリ単位の測定に使用できるヘルパー API もあります。[QueryChargeHelper クラス](https://docs.microsoft.com/dotnet/api/azure.digitaltwins.core.querychargehelper?view=azure-dotnet-preview&preserve-view=true) | Meter Id |
 
 #### <a name="ingress-metrics"></a>イングレスのメトリック

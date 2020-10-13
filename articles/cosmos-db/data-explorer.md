@@ -4,14 +4,14 @@ description: Azure Cosmos DB エクスプローラーは、スタンドアロン
 author: deborahc
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/23/2019
+ms.date: 09/23/2020
 ms.author: dech
-ms.openlocfilehash: 918f5a4a572f5518e5ae1b08db3d88d559571ed7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ebfb175de67d7bb8ea011ac340b57f5d62d9e223
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261887"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318808"
 ---
 # <a name="work-with-data-using-azure-cosmos-explorer"></a>Azure Cosmos Explorer を使ってデータを操作する 
 
@@ -39,7 +39,7 @@ Azure Cosmos DB エクスプローラーは、スタンドアロンの Web ベ�
 
    **読み取り**: 読み取り専用の URL を他のユーザーと共有すると、そのユーザーはデータベース、コレクション、クエリ、およびその特定のアカウントに関連付けられているその他のリソースを表示することができます。 たとえば、クエリの結果を Azure portal または Azure Cosmos DB アカウントへのアクセス権を持たない他のチーム メンバーと共有する場合は、この URL で提供することができます。
 
-   アカウントを開くためのアクセスの種類を選択し、 **[開く]** をクリックします。 エクスプローラーが開いた後は、Azure portal の [データ エクスプローラー] タブでのエクスペリエンスと同じです。   
+   アカウントを開くためのアクセスの種類を選択し、 **[開く]** をクリックします。 エクスプローラーが開いた後は、Azure portal の [データ エクスプローラー] タブでのエクスペリエンスと同じです。
 
    :::image type="content" source="./media/data-explorer/open-data-explorer-with-access-url.png" alt-text="Azure Cosmos DB エクスプローラーを開く":::
 
@@ -49,7 +49,10 @@ Azure Cosmos DB エクスプローラーは、スタンドアロンの Web ベ�
 
 現在、UUID を含むドキュメントの表示はデータ エクスプローラーではサポートされていません。 これは、コレクションの読み込みには影響せず、個々のドキュメントまたはこれらのドキュメントを含むクエリの表示にのみ影響します。 これらのドキュメントを表示および管理するには、これらのドキュメントを作成するために最初に使用したツールを引き続き使用する必要があります。
 
+お客様が HTTP-401 エラーを受け取る場合、特にアカウントにカスタム RBAC ロールがある場合は、必要な RBAC アクセス許可がそのお客様の Azure アカウントに付与されていないことが原因となっている可能性があります。 Azure Active Directory 資格情報を使用してサインインする場合、カスタム ロールには、データ エクスプローラーを使用するための `Microsoft.DocumentDB/databaseAccounts/listKeys/*` アクションが必要です。
+
 ## <a name="next-steps"></a>次のステップ
+
 Azure Cosmos DB エクスプローラーでのデータの管理方法を学んだので、次の段階に進みましょう。
 
 * SQL 構文を使用して[クエリ](sql-api-query-reference.md)の定義を開始し、ストアド プロシージャ、UDF、トリガーを使用して[サーバー側プログラミング](stored-procedures-triggers-udfs.md)を実行します。 

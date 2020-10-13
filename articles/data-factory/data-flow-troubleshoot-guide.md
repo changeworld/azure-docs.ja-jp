@@ -8,12 +8,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 09/11/2020
-ms.openlocfilehash: e52432c01e649754116fcd0420fa52ae6c4e3733
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 47d1f3c78a303f7a45457a435fa11f074c41d7aa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031859"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316156"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory でマッピング データ フローをトラブルシューティングする
 
@@ -116,7 +116,7 @@ ms.locfileid: "90031859"
 
 - **メッセージ**:サンプリングされた行数が少なすぎることが原因で発生した可能性がある、多数の null 値または不足値があります。 デバッグ行の制限を更新し、データを最新の情報に更新してみてください。
 - **原因**:結合条件がどの行にも一致しなかったか、データ プレビュー中に多数の NULL が発生する結果になりました。
-- **推奨事項**:[デバッグ設定] に移動し、ソース行の制限の行数を増やします。 より多くのデータを処理するのに十分なデータ フロー クラスターと共に Azure IR を選択したことを確認します。
+- **推奨事項**:[デバッグ設定] に移動し、ソース行の制限の行数を増やします。 より多くのデータを処理するのに十分なデータ フロー クラスターと併せ、Azure IR を選択したことを確認します。
 
 
 ## <a name="general-troubleshooting-guidance"></a>一般的なトラブルシューティング ガイダンス

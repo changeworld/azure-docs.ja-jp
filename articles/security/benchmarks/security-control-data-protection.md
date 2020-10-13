@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2622d7a2e54dac710ac09d61dee639ab1d104f02
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: f2162ee6df551e1bc64741229aec99d5e697fd29
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078998"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91395993"
 ---
 # <a name="security-control-data-protection"></a>セキュリティ コントロールデータ保護
 
@@ -74,7 +74,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 Azure の特定のサービスで利用できる機能がない場合は、サードパーティのアクティブ検出ツールを使用して、組織のテクノロジ システムによって格納、処理、または送信されるすべての機密情報 (オンサイトにあるもの、またはリモート サービス プロバイダーにあるものなど) を特定し、組織の機密情報を更新します。
 
-Office 365 ドキュメント内の機密情報を特定するには、Azure Information Protection を使用します。
+Microsoft 365 ドキュメント内の機密情報を特定するには、Azure Information Protection を使用します。
 
 Azure SQL Information Protection は、Azure SQL Database に格納されている情報の分類とラベル付けを支援するために使用します。
 

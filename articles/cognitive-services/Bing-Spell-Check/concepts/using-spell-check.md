@@ -1,7 +1,7 @@
 ---
 title: Bing Spell Check API の使用
 titleSuffix: Azure Cognitive Services
-description: Bing Spell Check のモードや設定など、この API に関連した情報を取り上げます。
+description: Bing Spell Check のモードや設定など、この API に関連する情報について説明します。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: c5c9ad8be8bd4cd834b01a0c67e0bbc81b8cdd4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a17ed0f13e352fb185d20d9dc2d7bfffa74ac957
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "68881881"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334771"
 ---
 # <a name="using-the-bing-spell-check-api"></a>Bing Spell Check API の使用
 

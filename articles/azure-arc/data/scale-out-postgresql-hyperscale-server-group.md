@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: e267a30d6f73b48f825c4b61b3bc1106133b8cdf
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: df0620308fab2e813fe3802dc7effb9dc1ce226c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931007"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285385"
 ---
 # <a name="scale-out-your-azure-arc-enabled-postgresql-hyperscale-server-group-by-adding-more-worker-nodes"></a>ワーカー ノードを追加して Azure Arc 対応 PostgreSQL Hyperscale サーバー グループをスケールアウトする
 このドキュメントでは、Azure Arc 対応 PostgreSQL Hyperscale サーバー グループをスケールアウトする方法について説明します。 シナリオを使用して説明します。 **シナリオを実行せずにスケールアウトする方法を確認したい場合は、「[スケール アウト](#scale-out)」の段落に進んでください**。
@@ -151,7 +151,11 @@ SELECT COUNT(*) FROM github_events;
 azdata arc postgres server edit -n <server group name> -w <target number of worker nodes>
 ```
 
-たとえば、次のコマンドを実行して、ワーカー ノードの数を 2 から 4 に増やします。
+> [!CAUTION]
+> このプレビュー リリースでは、スケール バックはサポートされていません。 たとえば、ワーカー ノードの数を減らすことはまだできません。 これを行う必要がある場合は、データを抽出/バックアップし、サーバー グループをドロップし、少ないワーカー ノードで新しいサーバー グループを作成してから、データをインポートする必要があります。
+
+この例では、次のコマンドを実行して、ワーカー ノードの数を 2 から 4 に増やします。
+
 ```console
 azdata arc postgres server edit -n postgres01 -w 4
 ```
@@ -196,7 +200,8 @@ kubectl get postgresql-12
 NAME         STATE   READY-PODS   EXTERNAL-ENDPOINT   AGE
 postgres01   Ready   4/4          10.0.0.4:31066      4d20h
 ```
-> **注:** バージョン 12 ではなく 11 の PostgreSQL のサーバー グループを作成した場合は、代わりに次のコマンドを実行します。_kubectl get postgresql-11_
+> [!NOTE]
+> バージョン 12 ではなく 11 の PostgreSQL のサーバー グループを作成した場合は、代わりに次のコマンドを実行します。_kubectl get postgresql-11_
 
 #### <a name="with-a-sql-query"></a>SQL クエリを使用する:
 任意のクライアント ツールを使用してサーバー グループに接続し、次のクエリを実行します。
@@ -230,7 +235,6 @@ SELECT COUNT(*) FROM github_events;
 >* [Azure PostgreSQL Hyperscale (Citus) を使用したハイ パフォーマンスの HTAP](https://www.youtube.com/watch?v=W_3e07nGFxY)
 >* [Python と Azure PostgreSQL Hyperscale (Citus) を使用して HTAP アプリケーションを構築する](https://www.youtube.com/watch?v=YDT8_riLLs0)
 
-> このプレビュー リリースでは、スケール バックはサポートされていません。 たとえば、ワーカー ノードの数を減らすことはまだできません。 これを行う必要がある場合は、データを抽出/バックアップし、サーバー グループをドロップし、少ないワーカー ノードで新しいサーバー グループを作成してから、データをインポートする必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

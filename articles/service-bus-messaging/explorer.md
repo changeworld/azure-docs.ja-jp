@@ -3,12 +3,12 @@ title: Azure Service Bus Explorer を使用して Service Bus に対してデー
 description: この記事では、ポータルベースの Azure Service Bus Explorer を使用して Azure Service Bus データにアクセスする方法について説明します。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 3fa619334f1918e16c487269fe3715f5338adf85
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5e97c6860c2cc01048f4f7caf9f40f9e07592d0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340541"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295602"
 ---
 # <a name="use-service-bus-explorer-to-perform-data-operations-on-service-bus-preview"></a>Service Bus Explorer を使用して Service Bus に対してデータ操作を実行する (プレビュー)
 
@@ -51,7 +51,7 @@ Azure Service Bus Explorer を使用するには、送信、ピーク、およ�
 
 左側のナビゲーション メニューから **[Service Bus Explorer (プレビュー)]** を選択します
 
-:::image type="content" source="./media/service-bus-explorer/left-navigation-menu-selected.png" alt-text="SB Explorer の左側のナビゲーション メニュー":::
+:::image type="content" source="./media/service-bus-explorer/left-navigation-menu-selected.png" alt-text="エンティティの選択":::
 
 ### <a name="sending-a-message-to-a-queue-or-topic"></a>キューまたはトピックに対するメッセージの送信
 
@@ -66,17 +66,17 @@ Azure Service Bus Explorer を使用するには、送信、ピーク、およ�
 
 メッセージの作成が完了したら、[送信] をクリックします。
 
-:::image type="content" source="./media/service-bus-explorer/send-experience.png" alt-text="メッセージを作成する":::
+:::image type="content" source="./media/service-bus-explorer/send-experience.png" alt-text="エンティティの選択":::
 
 送信操作が正常に完了したら、次のようにします。 
 
 * キューに送信すると、 **[Active Messages]\(アクティブなメッセージ\)** メトリック カウンターが増えます。
 
-    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="QueueAfterSendMetrics":::
+    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="エンティティの選択":::
 
 * トピックに送信すると、メッセージがルーティングされた先のサブスクリプションの **[Active Messages]\(アクティブなメッセージ\)** メトリック カウンターが増えます。
 
-    :::image type="content" source="./media/service-bus-explorer/topic-after-send-metrics.png" alt-text="TopicAfterSendMetrics":::
+    :::image type="content" source="./media/service-bus-explorer/topic-after-send-metrics.png" alt-text="エンティティの選択":::
 
 ### <a name="receiving-a-message-from-a-queue"></a>キューからのメッセージの受信
 
@@ -93,18 +93,18 @@ Service Bus Explorer の受信機能では、一度に 1 つのメッセージ�
 1. Service Bus Explorer の ***[受信]*** タブをクリックします。
 2. メトリックをチェックして、 **[Active Messages]\(アクティブなメッセージ\)** または **[Dead-lettered Messages]\(配信不能メッセージ\)** を受信しているかどうかを確認します。
 
-    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="QueueAfterSendMetrics":::
+    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="エンティティの選択":::
 
 3. ***[キュー]*** または ***[Deadletter]\(配信不能\)*** サブキューから選択します。
 
-    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadletter":::
+    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="エンティティの選択":::
 
 4. ***[受信]*** ボタンをクリックし、***[はい]*** をクリックして、'受信して削除する' 操作を確定します。
 
 
 受信操作が成功すると、次のようにメッセージの詳細がグリッドに表示されます。 グリッドからメッセージを選択すると、その詳細が表示されます。
 
-:::image type="content" source="./media/service-bus-explorer/receive-message-from-queue-2.png" alt-text="ReceiveMessageFromQueue":::
+:::image type="content" source="./media/service-bus-explorer/receive-message-from-queue-2.png" alt-text="エンティティの選択":::
 
 
 ### <a name="peeking-a-message-from-a-queue"></a>キューからのメッセージのピーク
@@ -113,21 +113,21 @@ Service Bus Explorer の受信機能では、一度に 1 つのメッセージ�
 
 1. キューのメッセージをピークするには、Service Bus Explorer の ***[ピーク]*** タブをクリックします。
 
-    :::image type="content" source="./media/service-bus-explorer/peek-tab-selected.png" alt-text="PeekTab":::
+    :::image type="content" source="./media/service-bus-explorer/peek-tab-selected.png" alt-text="エンティティの選択":::
 
 2. メトリックをチェックして、 **[Active Messages]\(アクティブなメッセージ\)** または **[Dead-lettered Messages]\(配信不能メッセージ\)** をピークしているかどうかを確認します。
 
-    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="QueueAfterSendMetrics":::
+    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="エンティティの選択":::
 
 3. ***[キュー]*** または ***[Deadletter]\(配信不能\)*** サブキューから選択します。
 
-    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadletter":::
+    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="エンティティの選択":::
 
 4. ***[ピーク]*** ボタンをクリックします。 
 
 ピーク操作が完了すると、次のように最大 32 個のメッセージがグリッドに表示されます。 特定のメッセージの詳細を表示するには、グリッドから選択します。 
 
-:::image type="content" source="./media/service-bus-explorer/peek-message-from-queue-2.png" alt-text="PeekMessageFromQueue":::
+:::image type="content" source="./media/service-bus-explorer/peek-message-from-queue-2.png" alt-text="エンティティの選択":::
 
 > [!NOTE]
 >
@@ -146,17 +146,17 @@ Service Bus Explorer の受信機能では、一度に 1 つのメッセージ�
 
 1. ***[受信]*** タブをクリックし、ドロップダウン セレクターから特定の ***[サブスクリプション]*** を選択します。
 
-    :::image type="content" source="./media/service-bus-explorer/receive-subscription-tab-selected.png" alt-text="ReceiveTabSelected":::
+    :::image type="content" source="./media/service-bus-explorer/receive-subscription-tab-selected.png" alt-text="エンティティの選択":::
 
 2. ***[サブスクリプション]*** または ***[Deadletter]\(配信不能\)*** サブエンティティから選択します。
 
-    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="SubscriptionOrDeadletter":::
+    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="エンティティの選択":::
 
 3. ***[受信]*** ボタンをクリックし、***[はい]*** をクリックして、'受信して削除する' 操作を確定します。
 
 受信操作が成功すると、受信したメッセージが次のようにグリッドに表示されます。 メッセージの詳細を表示するには、メッセージをクリックします。
 
-:::image type="content" source="./media/service-bus-explorer/receive-message-from-subscription.png" alt-text="ReceiveMessageFromQueue":::
+:::image type="content" source="./media/service-bus-explorer/receive-message-from-subscription.png" alt-text="エンティティの選択":::
 
 ### <a name="peeking-a-message-from-a-subscription"></a>サブスクリプションからのメッセージのピーク
 
@@ -164,17 +164,17 @@ Service Bus Explorer の受信機能では、一度に 1 つのメッセージ�
 
 1. ***[ピーク]*** タブをクリックし、ドロップダウン セレクターから特定の ***[サブスクリプション]*** を選択します。
 
-    :::image type="content" source="./media/service-bus-explorer/peek-subscription-tab-selected.png" alt-text="PeekTabSelected":::
+    :::image type="content" source="./media/service-bus-explorer/peek-subscription-tab-selected.png" alt-text="エンティティの選択":::
 
 2. ***[サブスクリプション]*** または ***[Deadletter]\(配信不能\)*** サブエンティティから選択します。
 
-    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="SubscriptionOrDeadletter":::
+    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="エンティティの選択":::
 
 3. ***[ピーク]*** ボタンをクリックします。
 
 ピーク操作が完了すると、次のように最大 32 個のメッセージがグリッドに表示されます。 特定のメッセージの詳細を表示するには、グリッドから選択します。 
 
-:::image type="content" source="./media/service-bus-explorer/peek-message-from-subscription.png" alt-text="PeekMessageFromSubscription":::
+:::image type="content" source="./media/service-bus-explorer/peek-message-from-subscription.png" alt-text="エンティティの選択":::
 
 > [!NOTE]
 >

@@ -1,6 +1,6 @@
 ---
 title: セルフサービス サインアップのユーザー フローを追加する - Azure AD
-description: Facebook とフェデレーションして、外部ユーザー (ゲスト) が自分の Facebook アカウントで Azure AD アプリにサインインできるようにします。
+description: 組織が作成したアプリのユーザー フローを作成します。 その後、そのアプリにアクセスしたユーザーは、ユーザー フローで構成されているオプションを利用し、ゲスト アカウントを取得できます。
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9fa9d9e23de9a4ec93cbef6d2696d7bec70d41d
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: ffb1d5eb756c7bc316a6d8e1de30a95eb1ac5194
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87907377"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287051"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>セルフサービス サインアップのユーザー フローをアプリに追加する (プレビュー)
 > [!NOTE]

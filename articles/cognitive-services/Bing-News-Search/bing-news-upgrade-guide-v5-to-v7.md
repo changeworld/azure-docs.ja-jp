@@ -1,7 +1,7 @@
 ---
 title: Bing News Search API v5 を v7 にアップグレードする
 titleSuffix: Azure Cognitive Services
-description: バージョン 7 を使用するために更新する必要のあるアプリケーションの部分を識別します。
+description: バージョン 7 を使用するために更新が必要な Bing News Search アプリケーションの部分を識別します。
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: bad0ef849af7c94e63f1dfbebda7f47caef9947d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7999ed5296f2ff4e64b9edc0fb355f72b7d7a04e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294376"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316649"
 ---
 # <a name="news-search-api-upgrade-guide"></a>News Search API のアップグレード ガイド
 
@@ -86,7 +86,7 @@ Blocked|InvalidRequest.Blocked
 
 - `mentions` フィールドが [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) オブジェクトに追加されました。 `mentions` フィールドには、記事で見つかったエンティティ (人物または場所) のリストが含まれています。
 
-- `video` フィールドが [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) オブジェクトに追加されました。 `video` フィールドには、ニュース記事に関連する動画が含まれています。 動画は、埋め込むことができる \<iframe\> または動画のサムネイルのいずれかです。
+- `video` フィールドが [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) オブジェクトに追加されました。 `video` フィールドには、ニュース記事に関連する動画が含まれています。 動画は、埋め込み可能な \<iframe\>、または動画のサムネイルのいずれかです。
 
 - `sort` フィールドが [News](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news) オブジェクトに追加されました。 `sort` フィールドには、記事の並べ替え順序が表示されます。 たとえば、記事は関連性 (既定) または日付順で並べ替えられます。
 

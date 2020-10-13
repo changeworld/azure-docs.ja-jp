@@ -3,28 +3,30 @@ title: Azure Kubernetes Service (AKS) でのクラスター構成
 description: Azure Kubernetes Service (AKS) でクラスターを構成する方法について説明します
 services: container-service
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 5b26054ae8dfb73dea8d064292beb73220be5e09
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 6446e138df1fe744d70be085d0aecac58e2c1c45
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433451"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255300"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS クラスターの構成
 
 AKS クラスターの作成の一環として、ニーズに合わせてクラスター構成をカスタマイズすることが必要になる場合があります。 この記事では、AKS クラスターをカスタマイズするためのいくつかのオプションについて説明します。
 
-## <a name="os-configuration-preview"></a>OS 構成 (プレビュー)
+## <a name="os-configuration"></a>OS 構成
 
-AKS では、ノード オペレーティング システム (OS) として Ubuntu 18.04 をプレビュー段階でサポートするようになりました。 プレビュー期間中は、Ubuntu 16.04 と Ubuntu 18.04 の両方を使用できます。
+AKS では現在、1.18.8 以降のバージョンの Kubernetes のクラスターについては、一般提供において、ノードのオペレーティング システム (OS) として Ubuntu 18.04 をサポートしています。 1\.18.x より前のバージョンについては、AKS Ubuntu 16.04 が引き続き既定のベース イメージになります。 Kubernetes v1.18.x 以降、既定のベースは AKS Ubuntu 18.04 です。
 
 > [!IMPORTANT]
-> Kubernetes v1.18 以降で作成されたノード プールは、必要な `AKS Ubuntu 18.04` ノード イメージに既定で設定されます。 サポートされている 1.18 より前の Kubernetes バージョンのノード プールは、ノード イメージとして `AKS Ubuntu 16.04` を受け取りますが、ノード プールの Kubernetes バージョンが v1.18 以降に更新されると、`AKS Ubuntu 18.04` に更新されます。
+> Kubernetes v1.18 以降で作成されたノード プールは、`AKS Ubuntu 18.04` ノード イメージに既定で設定されます。 サポートされている 1.18 より前の Kubernetes バージョンのノード プールは、ノード イメージとして `AKS Ubuntu 16.04` を受け取りますが、ノード プールの Kubernetes バージョンが v1.18 以降に更新されると、`AKS Ubuntu 18.04` に更新されます。
 > 
 > 1\.18 以降でクラスターを使用する前に、AKS Ubuntu 18.04 ノード プールでワークロードをテストすることを強くお勧めします。 [Ubuntu 18.04 ノード プールをテストする](#use-aks-ubuntu-1804-existing-clusters-preview)方法を参照してください。
+
+次のセクションでは、Kubernetes バージョン 1.18.x をまだ使用していない、あるいはこの機能が一般提供される前、OS の構成プレビューで作成されたクラスター上で AKS Ubuntu 18.04 を使用し、テストする方法について説明します。
 
 次のリソースがインストールされている必要があります。
 
@@ -44,13 +46,13 @@ az extension list
 az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.ContainerService
 ```
 
-状態が "**登録済み**" と表示されるまでに数分かかることがあります。 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) コマンドを使用して登録状態を確認できます。
+状態が "**登録済み**" と表示されるまでに数分かかることがあります。 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) コマンドを使用して登録状態を確認できます。
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
 ```
 
-状態が登録済みと表示されたら、[az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) コマンドを使用して、`Microsoft.ContainerService` リソース プロバイダーの登録を更新します。
+状態が登録済みと表示されたら、[az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) コマンドを使用して、`Microsoft.ContainerService` リソース プロバイダーの登録を更新します。
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -122,14 +124,14 @@ az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.Cont
 
 ```
 
-状態が "**登録済み**" と表示されるまでに数分かかることがあります。 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) コマンドを使用して登録状態を確認できます。
+状態が "**登録済み**" と表示されるまでに数分かかることがあります。 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) コマンドを使用して登録状態を確認できます。
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedContainerRuntime')].{Name:name,State:properties.state}"
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
 ```
 
-状態が登録済みと表示されたら、[az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) コマンドを使用して、`Microsoft.ContainerService` リソース プロバイダーの登録を更新します。
+状態が登録済みと表示されたら、[az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) コマンドを使用して、`Microsoft.ContainerService` リソース プロバイダーの登録を更新します。
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -179,7 +181,7 @@ Azure では、[第 2 世代 (Gen2) 仮想マシン (VM)](../virtual-machines/wi
 第 2 世代 VM では、第 1 世代 VM で使用されている BIOS ベースのアーキテクチャではなく、新しい UEFI ベースのブート アーキテクチャが使用されます。
 Gen2 VM は、特定の SKU とサイズでのみサポートされています。 ご自分の SKU で Gen2 がサポートされているかどうかや、Gen2 が必要かどうかを確認するには、[サポートされているサイズの一覧](../virtual-machines/windows/generation-2.md#generation-2-vm-sizes)をご覧ください。
 
-また、すべての VM イメージで Gen2 がサポートされているわけでありません。AKS の Gen2 VM では、新しい [AKS Ubuntu 18.04 イメージ](#os-configuration-preview)を使用します。 このイメージでは、すべての Gen2 SKU およびサイズがサポートされています。
+また、すべての VM イメージで Gen2 がサポートされているわけでありません。AKS の Gen2 VM では、新しい [AKS Ubuntu 18.04 イメージ](#os-configuration)を使用します。 このイメージでは、すべての Gen2 SKU およびサイズがサポートされています。
 
 プレビュー期間中に Gen2 VM を使用するには、次の要件があります。
 - `aks-preview` CLI 拡張機能をインストールする。
@@ -191,13 +193,13 @@ Gen2 VM は、特定の SKU とサイズでのみサポートされています�
 az feature register --name Gen2VMPreview --namespace Microsoft.ContainerService
 ```
 
-状態が "**登録済み**" と表示されるまでに数分かかることがあります。 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) コマンドを使用して登録状態を確認できます。
+状態が "**登録済み**" と表示されるまでに数分かかることがあります。 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) コマンドを使用して登録状態を確認できます。
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/Gen2VMPreview')].{Name:name,State:properties.state}"
 ```
 
-状態が登録済みと表示されたら、[az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) コマンドを使用して、`Microsoft.ContainerService` リソース プロバイダーの登録を更新します。
+状態が登録済みと表示されたら、[az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) コマンドを使用して、`Microsoft.ContainerService` リソース プロバイダーの登録を更新します。
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -248,17 +250,19 @@ az aks nodepool add --name gen2 --cluster-name myAKSCluster --resource-group myR
 az feature register --name EnableEphemeralOSDiskPreview --namespace Microsoft.ContainerService
 ```
 
-状態が "**登録済み**" と表示されるまでに数分かかることがあります。 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) コマンドを使用して登録状態を確認できます。
+状態が "**登録済み**" と表示されるまでに数分かかることがあります。 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) コマンドを使用して登録状態を確認できます。
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEphemeralOSDiskPreview')].{Name:name,State:properties.state}"
 ```
 
-状態が登録済みと表示されたら、[az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) コマンドを使用して、`Microsoft.ContainerService` リソース プロバイダーの登録を更新します。
+状態が登録済みと表示されたら、[az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) コマンドを使用して、`Microsoft.ContainerService` リソース プロバイダーの登録を更新します。
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
 ```
+
+エフェメラル OS には、バージョン 0.4.63 以上の aks-preview CLI 拡張機能が必要です。
 
 aks-preview CLI 拡張機能をインストールするには、次の Azure CLI コマンドを使用します。
 
@@ -274,25 +278,25 @@ az extension update --name aks-preview
 
 ### <a name="use-ephemeral-os-on-new-clusters-preview"></a>新しいクラスターでエフェメラル OS を使用する (プレビュー)
 
-クラスターの作成時に、エフェメラル OS ディスクを使用するようにクラスターを構成します。 `--aks-custom-headers` フラグを使用して、新しいクラスターの OS ディスクの種類としてエフェメラル OS を設定します。
+クラスターの作成時に、エフェメラル OS ディスクを使用するようにクラスターを構成します。 `--node-osdisk-type` フラグを使用して、新しいクラスターの OS ディスクの種類としてエフェメラル OS を設定します。
 
 ```azurecli
-az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
+az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --node-osdisk-type Ephemeral
 ```
 
-ネットワークに接続された OS ディスクを使用して通常のクラスターを作成する場合は、カスタムの `--aks-custom-headers` タグを省略できます。 次に示すように、エフェメラル OS のノード プールを追加することもできます。
+ネットワークに接続された OS ディスクを使用して通常のクラスターを作成する場合は、カスタムの `--node-osdisk-type` タグを省略するか、`--node-osdisk-type=Managed` を指定できます。 次に示すように、エフェメラル OS のノード プールを追加することもできます。
 
 ### <a name="use-ephemeral-os-on-existing-clusters-preview"></a>既存のクラスターでエフェメラル OS を使用する (プレビュー)
-エフェメラル OS ディスクを使用するように新しいノード プールを構成します。 `--aks-custom-headers` フラグを使用して、OS ディスクの種類として、そのノード プールの OS ディスクの種類を設定します。
+エフェメラル OS ディスクを使用するように新しいノード プールを構成します。 `--node-osdisk-type` フラグを使用して、OS ディスクの種類として、そのノード プールの OS ディスクの種類を設定します。
 
 ```azurecli
-az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
+az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --node-osdisk-type Ephemeral
 ```
 
 > [!IMPORTANT]
 > エフェメラル OS を使用する場合、VM およびインスタンス イメージは、最大で VM キャッシュのサイズまでデプロイできます。 AKS の場合、既定のノードの OS ディスク構成では 100 GiB が使用されます。つまり、100 GiB より大きいキャッシュを持つサイズの VM が必要になります。 既定の Standard_DS2_v2 のキャッシュ サイズは 86 GiB であり、十分な大きさではありません。 Standard_DS3_v2 のキャッシュ サイズは 172 GiB であり、十分な大きさです。 `--node-osdisk-size` を使用して、OS ディスクの既定のサイズを小さくすることもできます。 AKS イメージの最小サイズは 30 GiB です。 
 
-ネットワークに接続された OS ディスクを使用してノード プールを作成する場合は、カスタムの `--aks-custom-headers` タグを省略できます。
+ネットワークに接続された OS ディスクを使用してノード プールを作成する場合は、カスタムの `--node-osdisk-type` タグを省略できます。
 
 ## <a name="custom-resource-group-name"></a>カスタム リソース グループ名
 

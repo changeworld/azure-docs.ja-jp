@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: edb38b0884629ebddb646df9d12d8b2e8d07b403
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: dfbef8da1349c2b86595f520e173aee9d455e3a4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089549"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299580"
 ---
 # <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS) で Azure ディスクの Container Storage Interface (CSI) ドライバーを使用する (プレビュー)
 Azure ディスクの Container Storage Interface (CSI) ドライバーは、Azure ディスクのライフサイクルを管理するために Azure Kubernetes Service (AKS) によって使用される [CSI 仕様](https://github.com/container-storage-interface/spec/blob/master/spec.md)準拠のドライバーです。
@@ -273,13 +273,14 @@ Filesystem      Size  Used Avail Use% Mounted on
 /dev/sdc         15G   46M   15G   1% /mnt/azuredisk
 ```
 
-<!--- ## Shared disk
+## <a name="shared-disk"></a>共有ディスク
 
-[Azure shared disks](../virtual-machines/windows/disks-shared.md) is an Azure managed disks feature that enables attaching an Azure disk to agent nodes simultaneously. Attaching a managed disk to multiple agent nodes allows you, for example, to deploy new or migrate existing clustered applications to Azure.
+[Azure 共有ディスク](../virtual-machines/windows/disks-shared.md)は、Azure ディスクをエージェント ノードに同時に接続できるようにする Azure マネージド ディスク機能です。 マネージド ディスクを複数のエージェント ノードに接続すると、たとえば、新規にデプロイしたり、既存のクラスター化されたアプリケーションを Azure に移行したりできます。
 
-> [!IMPORTANT] Currently, only raw block device (`volumeMode: Block`) is supported by the Azure disk CSI driver. Applications should manage the coordination and control of writes, reads, locks, caches, mounts, and fencing on the shared disk, which is exposed as a raw block device.
+> [!IMPORTANT] 
+> 現在のところ、生のブロック デバイス (`volumeMode: Block`) のみ、Azure ディスク CSI ドライバーでサポートされています。 アプリケーションでは、生のブロック デバイスとして露出する共有ディスクでの書き込み、読み取り、ロック、キャッシュ、マウント、フェンスの調整と制御を管理する必要があります。
 
-Let's create a file called `shared-disk.yaml` by copying the following command that contains the shared disk storage class and PVC:
+共有ディスク ストレージ クラスと PVC が含まれる次のコマンドをコピーし、`shared-disk.yaml` という名前のファイルを作成してみましょう。
 
 ```yaml
 apiVersion: storage.k8s.io/v1
@@ -307,7 +308,7 @@ spec:
   storageClassName: managed-csi-shared
 ```
 
-Create the storage class with the [kubectl apply][kubectl-apply] command, and specify your `shared-disk.yaml` file:
+[kubectl apply][kubectl-apply] コマンドを使用してストレージ クラスを作成し、`shared-disk.yaml` ファイルを指定します。
 
 ```console
 $ kubectl apply -f shared-disk.yaml
@@ -316,7 +317,7 @@ storageclass.storage.k8s.io/managed-csi-shared created
 persistentvolumeclaim/pvc-azuredisk-shared created
 ``` 
 
-Now let's create a file called `deployment-shared.yml` by copying the following command:
+それでは、次のコマンドをコピーし、`deployment-shared.yml` という名前のファイルを作成しましょう。
 
 ```yaml
 apiVersion: apps/v1
@@ -348,7 +349,7 @@ spec:
             claimName: pvc-azuredisk-shared
 ```
 
-Create the deployment with the [kubectl apply][kubectl-apply] command, and specify your `deployment-shared.yml` file:
+[kubectl apply][kubectl-apply] コマンドを使用してデプロイを作成し、`deployment-shared.yml` ファイルを指定します。
 
 ```console
 $ kubectl apply -f deployment-shared.yml
@@ -356,7 +357,7 @@ $ kubectl apply -f deployment-shared.yml
 deployment/deployment-azuredisk created
 ```
 
-Finally, let's check the block device inside the pod:
+最後に、ポッド内のブロック デバイスを確認しましょう。
 
 ```console
 # kubectl exec -it deployment-sharedisk-7454978bc6-xh7jp bash
@@ -365,7 +366,6 @@ root@deployment-sharedisk-7454978bc6-xh7jp:/# dd if=/dev/zero of=/dev/sdx bs=102
 100+0 records out
 104857600 bytes (105 MB, 100 MiB) copied, 0.0502999 s, 2.1 GB/s
 ```
--->
 
 ## <a name="windows-containers"></a>Windows コンテナー
 

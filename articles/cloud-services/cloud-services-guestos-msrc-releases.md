@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/17/2020
+ms.date: 9/29/2020
 ms.author: yohaddad
-ms.openlocfilehash: bb2b9da291bf75542c942d785d995018b597f742
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: bdcf9417aca6ece24e5ef577620734eeb48d9362
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024300"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531158"
 ---
 # <a name="azure-guest-os"></a>Azure ゲスト OS
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。 この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。 更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
@@ -47,11 +47,9 @@ ms.locfileid: "90024300"
 |  Rel 20-09 |  [4569778]  |  .NET Framework 4.5.2 のセキュリティと品質のロールアップ | 2.102 | 2020 年 9 月 8 日 |
 |  Rel 20-09 |  [4578013]  |  セキュリティ更新プログラム | 2.102 | 2020 年 9 月 8 日 |
 |  Rel 20-09 |  [4576750]  |  サービス スタック更新プログラム | 5.47 | 2020 年 9 月 8 日 |
-|  Rel 20-09 |  [4576479]  |  .NET Framework 4.8 のセキュリティと品質のロールアップ | 5.47 | 2020 年 9 月 8 日 |
 |  Rel 20-09 |  [4494175]  |  マイクロコード | 5.47 | 2020 年 9 月 8 日 |
 |  Rel 20-09 |  [4570332]  |  サービス スタック更新プログラム | 6.23 | 2020 年 9 月 8 日 |
 |  Rel 20-09 |  [4570720]  |  .NET Framework 3.5 と 4.7.2 の累積的な更新プログラム | 6.23 | 2020 年 9 月 8 日 |
-|  Rel 20-09 |  [4576483]  |  .NET Framework 4.8 のセキュリティと品質のロールアップ | 6.23 | 2020 年 9 月 8 日 |
 |  Rel 20-09 |  [4494174]  |  マイクロコード | 6.23 | 2020 年 9 月 8 日 |
 
 [4577010]: https://support.microsoft.com/kb/4577010
@@ -72,11 +70,9 @@ ms.locfileid: "90024300"
 [4569778]: https://support.microsoft.com/kb/4569778
 [4578013]: https://support.microsoft.com/kb/4578013
 [4576750]: https://support.microsoft.com/kb/4576750
-[4576479]: https://support.microsoft.com/kb/4576479
 [4494175]: https://support.microsoft.com/kb/4494175
 [4570332]: https://support.microsoft.com/kb/4570332
 [4570720]: https://support.microsoft.com/kb/4570720
-[4576483]: https://support.microsoft.com/kb/4576483
 [4494174]: https://support.microsoft.com/kb/4494174
 
 ## <a name="august-2020-guest-os"></a>2020 年 8 月のゲスト OS
@@ -84,29 +80,26 @@ ms.locfileid: "90024300"
 
 | 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
 | --- | --- | --- | --- | --- |
-|  Rel 20-08 |  [4571687]  |  IE の累積的な更新プログラム | 2.101、3.88、4.81 | 2020 年 8 月 11 日 |
-|  Rel 20-08 |  [4561600]  |  フラッシュの更新プログラム | 3.88、4.81、5.46、6.22 | 2020 年 6 月 9 日 |
-|  Rel 20-08 |  [4571694]  |  最新の累積的な更新プログラム | 6.22 | 2020 年 8 月 11 日 |
-|  Rel 20-08 |  [4565349]  |  最新の累積的な更新プログラム | 5.46 | 2020 年 8 月 11 日 |
-|  Rel 20-08 |  [4570673]  |  サービス スタック更新プログラム | 2.101 | 2020 年 8 月 11 日 |
-|  Rel 20-08 |  [4571729]  |  マンスリー ロールアップ | 2.101 | 2020 年 8 月 11 日 |
-|  Rel 20-08 |  [4569767]  |  .NET Framework 3.5.1 のセキュリティと品質のロールアップ | 2.101 | 2020 年 8 月 11 日 |
-|  Rel 20-08 |  [4569780]  |  .NET Framework 4.5.2 のセキュリティと品質のロールアップ | 2.101 | 2020 年 8 月 11 日 |
-|  Rel 20-08 |  [4569765]  |  .NET Framework 3.5 のセキュリティと品質のロールアップ | 3.88 | 2020 年 8 月 11 日 |
-|  Rel 20-08 |  [4569779]  |  .NET Framework 4.5.2 のセキュリティと品質のロールアップ | 3.88 | 2020 年 8 月 11 日 |
-|  Rel 20-08 |  [4566426]  |  サービス スタック更新プログラム | 3.88 | 2020 年 7 月 14 日 |
-|  Rel 20-08 |  [4571736]  |  マンスリー ロールアップ | 3.88 | 2020 年 8 月 11 日 |
-|  Rel 20-08 |  [4566425]  |  サービス スタック更新プログラム | 4.81 | 2020 年 7 月 14 日 |
-|  Rel 20-08 |  [4571703]  |  マンスリー ロールアップ | 4.81 | 2020 年 8 月 11 日 |
-|  Rel 20-08 |  [4569768]  |  .NET Framework 3.5 のセキュリティと品質のロールアップ | 4.81 | 2020 年 8 月 11 日 |
-|  Rel 20-08 |  [4569778]  |  .NET Framework 4.5.2 のセキュリティと品質のロールアップ | 4.81 | 2020 年 8 月 11 日 |
-|  Rel 20-08 |  [4494175]  |  マイクロコード | 5.46 | 2020 年 2 月 25 日 |
-|  Rel 20-08 |  [4565912]  |  サービス スタック更新プログラム | 5.46 | 2020 年 7 月 14 日 |
-|  Rel 20-08 |  [4569746]  |  .NET Framework 4.8 のセキュリティと品質のロールアップ | 5.46 | 2020 年 8 月 11 日 |
-|  Rel 20-08 |  [4569776]  |  .NET Framework 3.5 と 4.7.2 の累積的な更新プログラム | 6.22 | 2020 年 8 月 11 日 |
-|  Rel 20-08 |  [4569750]  |  .NET Framework 3.5 と 4.8 の累積的な更新プログラム | 6.22 | 2020 年 8 月 11 日 |
-|  Rel 20-08 |  [4566424]  |  サービス スタック更新プログラム | 6.22 | 2020 年 8 月 11 日 |
-
+|  Rel 20-08 |  [4571687]  |  IE の累積的な更新プログラム | [2.101]、[3.88]、[4.81] | 2020 年 8 月 11 日 |
+|  Rel 20-08 |  [4561600]  |  フラッシュの更新プログラム | [3.88]、[4.81]、[5.46]、[6.22] | 2020 年 6 月 9 日 |
+|  Rel 20-08 |  [4571694]  |  最新の累積的な更新プログラム | [6.22] | 2020 年 8 月 11 日 |
+|  Rel 20-08 |  [4565349]  |  最新の累積的な更新プログラム | [5.46] | 2020 年 8 月 11 日 |
+|  Rel 20-08 |  [4570673]  |  サービス スタック更新プログラム | [2.101] | 2020 年 8 月 11 日 |
+|  Rel 20-08 |  [4571729]  |  マンスリー ロールアップ | [2.101] | 2020 年 8 月 11 日 |
+|  Rel 20-08 |  [4569767]  |  .NET Framework 3.5.1 のセキュリティと品質のロールアップ | [2.101] | 2020 年 8 月 11 日 |
+|  Rel 20-08 |  [4569780]  |  .NET Framework 4.5.2 のセキュリティと品質のロールアップ | [2.101] | 2020 年 8 月 11 日 |
+|  Rel 20-08 |  [4569765]  |  .NET Framework 3.5 のセキュリティと品質のロールアップ | [3.88] | 2020 年 8 月 11 日 |
+|  Rel 20-08 |  [4569779]  |  .NET Framework 4.5.2 のセキュリティと品質のロールアップ | [3.88] | 2020 年 8 月 11 日 |
+|  Rel 20-08 |  [4566426]  |  サービス スタック更新プログラム | [3.88] | 2020 年 7 月 14 日 |
+|  Rel 20-08 |  [4571736]  |  マンスリー ロールアップ | [3.88] | 2020 年 8 月 11 日 |
+|  Rel 20-08 |  [4566425]  |  サービス スタック更新プログラム | [4.81] | 2020 年 7 月 14 日 |
+|  Rel 20-08 |  [4571703]  |  マンスリー ロールアップ | [4.81] | 2020 年 8 月 11 日 |
+|  Rel 20-08 |  [4569768]  |  .NET Framework 3.5 のセキュリティと品質のロールアップ | [4.81] | 2020 年 8 月 11 日 |
+|  Rel 20-08 |  [4569778]  |  .NET Framework 4.5.2 のセキュリティと品質のロールアップ | [4.81] | 2020 年 8 月 11 日 |
+|  Rel 20-08 |  [4494175]  |  マイクロコード | [5.46] | 2020 年 2 月 25 日 |
+|  Rel 20-08 |  [4565912]  |  サービス スタック更新プログラム | [5.46] | 2020 年 7 月 14 日 |
+|  Rel 20-08 |  [4569776]  |  .NET Framework 3.5 と 4.7.2 の累積的な更新プログラム | [6.22] | 2020 年 8 月 11 日 |
+|  Rel 20-08 |  [4566424]  |  サービス スタック更新プログラム | [6.22] | 2020 年 8 月 11 日 |
 
 
 [4571687]: https://support.microsoft.com/kb/4571687
@@ -127,10 +120,13 @@ ms.locfileid: "90024300"
 [4569778]: https://support.microsoft.com/kb/4569778
 [4494175]: https://support.microsoft.com/kb/4494175
 [4565912]: https://support.microsoft.com/kb/4565912
-[4569746]: https://support.microsoft.com/kb/4569746
 [4569776]: https://support.microsoft.com/kb/4569776
-[4569750]: https://support.microsoft.com/kb/4569750
 [4566424]: https://support.microsoft.com/kb/4566424
+[2.101]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[3.88]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[4.81]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[5.46]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[6.22]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
 
 
 ## <a name="july-2020-guest-os"></a>2020 年 7 月のゲスト OS
@@ -740,8 +736,6 @@ ms.locfileid: "90024300"
 |  該当なし  |  [4499151]  |  2019 年 5 月、セキュリティ以外  |  4.67  |  2019 年 5 月 14 日  |
 |  該当なし  |  [4495608]  |  2019 年 5 月、.NET 3.5、セキュリティ以外  |  4.67  |  2019 年 5 月 14 日  |
 |  該当なし  |  [4495592]  |  2019 年 5 月、.NET 4.5.2、セキュリティ以外  |  4.67  |  2019 年 5 月 14 日  |
-|  該当なし  |  [4495610]  |  2019 年 5 月、.NET 4.8、累積的  |  6.8  |  2019 年 5 月 14 日  |
-|  該当なし  |  [4495618]  |  2019 年 5 月、.NET 4.8、累積的  |  6.8  |  2019 年 5 月 14 日  |
 |  該当なし  |  [4501226]  |  モロッコおよびパレスチナ自治政府向けの DST タイムゾーンの更新プログラム  |  2.87、3.74、4.67  |  2019 年 5 月 23 日  |
 |  該当なし  |  [4490128]  |  サントメ・プリンシペおよびクズロルダ向けの DST タイムゾーンの更新プログラム  |  2.87、3.74、4.67  |  2019 年 4 月 17 日  |
 
@@ -763,8 +757,6 @@ ms.locfileid: "90024300"
 [4499151]: https://support.microsoft.com/kb/KB4499151
 [4495608]: https://support.microsoft.com/kb/KB4495608
 [4495592]: https://support.microsoft.com/kb/KB4495592
-[4495610]: https://support.microsoft.com/kb/KB4495610
-[4495618]: https://support.microsoft.com/kb/KB4495618
 [4501226]: https://support.microsoft.com/kb/KB4501226
 [4490128]: https://support.microsoft.com/kb/KB4490128
 

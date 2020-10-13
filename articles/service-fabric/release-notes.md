@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 96a9e22d929c62be2a28b8c46657970e7a403813
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 467018e57a0783839cb9495fcc6df89aad9daa8c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050626"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280610"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric のリリース
 
@@ -75,6 +75,7 @@ Microsoft では 7.1 をリリースしていますが、現在 COVID-19 の危�
 | 2020 年 6 月 16 日 | [Microsoft Azure Service Fabric 7.1 の最初の更新](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-1-first-refresh-release/ba-p/1466517) | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-71CU1-releasenotes.md)
 | 2020 年 7 月 20 日 | [Microsoft Azure Service Fabric 7.1 の 2 回目の更新](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-1-second-refresh-release/ba-p/1534246) | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-71CU2-releasenotes.md)
 | 2020 年 8 月 12 日 | [Microsoft Azure Service Fabric 7.1 の 3 回目の更新](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-1-third-refresh-release/ba-p/1587586) | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-71CU3-releasenotes.md)
+| 2020 年 9 月 10 日 | [Microsoft Azure Service Fabric 7.1 の 4 回目の更新](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-1-fourth-refresh-release/ba-p/1653859)  | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-71CU5-releasenotes.md)|
 
 ### <a name="service-fabric-70"></a>Service Fabric 7.0
 

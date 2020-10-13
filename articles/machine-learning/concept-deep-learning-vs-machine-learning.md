@@ -1,24 +1,27 @@
 ---
 title: ディープ ラーニングと機械学習
-titleSuffix: Azure
-description: ディープ ラーニングが機械学習と人工知能にどのように関連しているかについて説明します。 ディープ ラーニングは、不正行為の検出、音声と顔の認識、感情分析、時系列予測などのシナリオに使用されます。
+titleSuffix: Azure Machine Learning
+description: ディープ ラーニングが機械学習と AI にどのように関連しているかについて説明します。 Azure Machine Learning では、不正行為の検出やオブジェクトの検出などに対してディープ ラーニング モデルを使用します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 03/05/2020
-ms.openlocfilehash: 177f1992eb0cd93ad871ef3a181460417b1ef523
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/22/2020
+ms.custom: contperfq1
+ms.openlocfilehash: d462ed4627254275703d88cadbaf5d55a106da55
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905138"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330130"
 ---
-# <a name="deep-learning-vs-machine-learning"></a>ディープ ラーニングと機械学習
+# <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Azure Machine Learning におけるディープ ラーニングと機械学習の違い
 
-この記事は、ディープ ラーニングと機械学習の比較に役立ちます。 2 つの概念の比較、および人工知能のより広範なカテゴリにどのように適合するかについて学習します。 不正行為の検出、音声と顔の認識、感情分析、時系列予測など、実際のシナリオにディープ ラーニングをどのように適用できるかについても説明します。
+この記事では、ディープ ラーニングと機械学習の違いとそれらが幅広い人工知能のカテゴリにどのように収まるかについて説明します。 不正行為の検出、音声と顔の認識、センチメント分析、タイムシリーズ予測など、Azure Machine Learning に基づいて構築できるディープ ラーニング ソリューションについて説明します。
+
+ご利用のソリューションにふさわしいアルゴリズムを選択する方法については、[機械学習アルゴリズムのチート シート](algorithm-cheat-sheet.md)に関するページを参照してください。
 
 ## <a name="deep-learning-machine-learning-and-ai"></a>ディープ ラーニング、機械学習、AI
 
@@ -37,7 +40,7 @@ ms.locfileid: "90905138"
 
 - **人工知能 (AI)** は、コンピューターが人間の知能を模倣できるようにする手法です。 機械学習が含まれています。 
  
-AI、機械学習、ディープ ラーニングの間の関係を理解することが重要です。 機械学習は、人工知能を実現するための手段です。 機械学習とディープ ラーニングの手法を使用することにより、一般に人間の知性と関連するタスクを行うコンピューター システムとアプリケーションを構築できます。 これらのタスクには、画像認識、音声認識、言語翻訳が含まれます。
+機械学習とディープ ラーニングの手法を使用することにより、一般に人間の知性と関連するタスクを行うコンピューター システムとアプリケーションを構築できます。 これらのタスクには、画像認識、音声認識、言語翻訳が含まれます。
 
 ## <a name="techniques-of-deep-learning-vs-machine-learning"></a>ディープ ラーニングと機械学習の技法 
 
@@ -58,7 +61,7 @@ AI、機械学習、ディープ ラーニングの間の関係を理解する�
 
 人工ニューラル ネットワークの構造のため、ディープ ラーニングでは、画像、音声、動画、テキストなどの非構造化データからパターンを識別することに優れています。 このため、ディープ ラーニングにより、医療、エネルギー、フィンテック、輸送などの多くの業界が急速に変革されています。 これらの業界では、従来のビジネス プロセスが再考されています。 
 
-ディープ ラーニングの最も一般的な応用の一部を次に説明します。
+ディープ ラーニングの最も一般的な応用の一部を次に説明します。 Azure Machine Learning では、オープンソースのフレームワークから構築するモデルを使用するか、与えられたツールでモデルを構築できます。
 
 ### <a name="named-entity-recognition"></a>名前付きエンティティの認識
 
@@ -69,6 +72,8 @@ AI、機械学習、ディープ ラーニングの間の関係を理解する�
 ディープ ラーニングは、多くのオブジェクト検出のユース ケースで適用されています。 オブジェクトの検出は、画像の分類と画像のローカライズの 2 つの部分で構成されます。 "_画像の分類_" では、車や人など、画像のオブジェクトが識別されます。 "_画像のローカライズ_" では、これらのオブジェクトの特定の場所が提供されます。 
 
 オブジェクト検出は、ゲーム、小売、旅行、自動運転車などの業界で既に使用されています。
+
+Azure Machine Learning でオープンソース フレームワークの画像分類モデルを使用する方法について説明します。[Pytorch モデルを使用して画像を分類する](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
 
 ### <a name="image-caption-generation"></a>画像キャプションの生成
 
@@ -87,6 +92,8 @@ AI、機械学習、ディープ ラーニングの間の関係を理解する�
 ディープ ラーニング メソッドに基づくテキスト分析では、大量のテキスト データ (医療ドキュメントや支出領収書など) が分析され、パターンが認識されて、それから整理された簡潔な情報が作成されます。
 
 企業では、インサイダー取引を検出したり、政府の規制を遵守したりするために、ディープ ラーニングを使用してテキスト分析が行われます。 もう 1 つの一般的な例である保険金詐欺では、大量のドキュメントを分析して、不正な保険請求の可能性を認識するために、テキスト分析がよく使用されています。 
+
+Azure Machine Learning で TensorFlow モデルを使用する方法について説明します。[TensorFlow モデルを使用して手書きの数字を分類する](https://docs.microsoft.com/azure/machine-learning/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
 
 ## <a name="artificial-neural-networks"></a>人工ニューラル ネットワーク
 
@@ -108,16 +115,10 @@ AI、機械学習、ディープ ラーニングの間の関係を理解する�
 
 畳み込みニューラル ネットワークは、ビデオ認識、画像認識、レコメンダー システムなどの分野で使用されています。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-次の記事では、[Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/?WT.mc_id=docs-article-lazzeri) でディープ ラーニング テクノロジを使用する方法について説明されています。
-
-- [TensorFlow モデルを使用して手書きの数字を分類する](https://docs.microsoft.com/azure/machine-learning/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
+[Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/?WT.mc_id=docs-article-lazzeri) には、オープンソース ディープ ラーニング モデルの使用に関連するオプションが他にもあります。次の記事でそれらを紹介します。
 
 - [TensorFlow エスティメーターと Keras を使用して手書きの数字を分類する](https://docs.microsoft.com/azure/machine-learning/how-to-train-keras?WT.mc_id=docs-article-lazzeri)
 
-- [Pytorch モデルを使用して画像を分類する](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
-
 - [Chainer モデルを使用して手書きの数字を分類する](https://docs.microsoft.com/azure/machine-learning/how-to-train-ml-models)
-
-また、[機械学習アルゴリズムのクイック ガイド](algorithm-cheat-sheet.md)を使用して、モデルのアルゴリズムを選択します。

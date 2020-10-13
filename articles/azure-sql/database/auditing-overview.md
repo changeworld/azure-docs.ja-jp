@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 24c3ec1ee16123cef0c4e2bd230bfdb66915fc9f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a7edbbb50777cc2d91332260c9ebe72be042874b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040585"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396248"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database および Azure Synapse Analytics の監査
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -86,7 +86,7 @@ Azure SQL Database および Azure Synapse の監査では、監査レコード�
 2. **[SQL データベース]** ウィンドウまたは **[SQL サーバー]** ウィンドウの [セキュリティ] 見出しの下にある **[監査]** に移動します。
 3. サーバーの監査ポリシーを設定する場合は、データベース監査ページの **[サーバー設定を表示]** リンクを選択できます。 そうすると、サーバー監査設定を表示または修正することができます。 サーバー監視ポリシーは、このサーバー上にある既存のデータベースと新規作成されたデータベースのすべてに適用されます。
 
-    ![ナビゲーション ウィンドウ](./media/auditing-overview/2_auditing_get_started_server_inherit.png)
+    ![[データベース監査] ページで強調表示されている [サーバー設定を表示] リンクを示すスクリーンショット。](./media/auditing-overview/2_auditing_get_started_server_inherit.png)
 
 4. データベース レベルで監査を有効にする場合は、 **[監査]** を  **[ON]\(オン\)** に切り替えます。 サーバーの監査が有効になっている場合、データベース構成監査とサーバー監査が並行して存在します。
 
@@ -119,7 +119,7 @@ Log Analytics ワークスペースへの監査ログの書き込みを構成す
 
    ![Log Analytics ワークスペース](./media/auditing-overview/auditing_select_oms.png)
 
-Azure Monitor ログ ワークスペースの詳細については、「[Azure Monitor ログのデプロイの設計](https://docs.microsoft.com/azure/azure-monitor/platform/design-logs-deployment)」を参照してください。
+Azure Log Analytics ワークスペースの詳細については、「[Azure Monitor ログのデプロイの設計](https://docs.microsoft.com/azure/azure-monitor/platform/design-logs-deployment)」を参照してください。
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>イベント ハブ保存先への監査
 
@@ -163,7 +163,7 @@ Azure Monitor ログ ワークスペースの詳細については、「[Azure M
 
 - [Azure Portal](https://portal.azure.com) を使用します。  関連するデータベースを開きます。 データベースの **[監査]** ページの上部にある **[監査ログの表示]** をクリックします。
 
-    ![ナビゲーション ウィンドウ](./media/auditing-overview/7_auditing_get_started_blob_view_audit_logs.png)
+    ![[データベース監査] ページで強調表示されている [監査ログの表示] ボタンを示すスクリーンショット。](./media/auditing-overview/7_auditing_get_started_blob_view_audit_logs.png)
 
     **[監査レコード]** が開きます。ここからログを参照できます。
 
@@ -171,14 +171,14 @@ Azure Monitor ログ ワークスペースの詳細については、「[Azure M
   - **[監査対象]** を切り替えると、"*サーバー監視ポリシー*" で作成された監査レコードと "*データベース監査ポリシー*" で作成された監査レコードを切り替えることができます。
   - **[Show only audit records for SQL injections]\(SQL インジェクションの監査レコードのみを表示する\)** チェックボックスをオンにすると、SQL インジェクション関連の監査レコードのみを表示できます。
 
-       ![ナビゲーション ウィンドウ]( ./media/auditing-overview/8_auditing_get_started_blob_audit_records.png)
+       ![監査レコードを表示するためのオプションを示すスクリーンショット。]( ./media/auditing-overview/8_auditing_get_started_blob_audit_records.png)
 
 - システム関数 **sys.fn_get_audit_file** (T-SQL) を使用して、表形式で監査ログ データを返します。 この関数の使用方法の詳細については、[sys.fn_get_audit_file](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql) に関するページをご覧ください。
 
 - SQL Server Management Studio (SSMS 17 以降) で **[監査ファイルの統合]** を使用します。
     1. SSMS のメニューから、 **[ファイル]**  >  **[開く]**  >  **[監査ファイルの統合]** を選択します。
 
-        ![ナビゲーション ウィンドウ](./media/auditing-overview/9_auditing_get_started_ssms_1.png)
+        ![[監査ファイルの統合] メニュー オプショを示すスクリーンショット。](./media/auditing-overview/9_auditing_get_started_ssms_1.png)
     2. **[監査ファイルの追加]** ダイアログ ボックスが表示されます。 **[追加]** オプションのいずれかを選択して、ローカル ディスクから監査ファイルをマージするか、Azure Storage からインポートするかを選択します。 Microsoft Azure Storage の詳細とアカウント キーを提供する必要があります。
 
     3. 統合するすべてのファイルを追加した後に、 **[OK]** をクリックして統合の操作を完了します。
@@ -218,7 +218,7 @@ Geo レプリケーション データベースでは、プライマリ デー�
 
 1. **[容量の詳細]** を開きます。 **[ストレージ アクセス キー]** ボックスで **[セカンダリ]** をクリックし、 **[OK]** をクリックします。 次に、監査構成ページの上部にある **[保存]** をクリックします。
 
-    ![ナビゲーション ウィンドウ](./media/auditing-overview/5_auditing_get_started_storage_key_regeneration.png)
+    ![セカンダリ ストレージのアクセス キーを選択するためのプロセスを示すスクリーンショット。](./media/auditing-overview/5_auditing_get_started_storage_key_regeneration.png)
 2. ストレージ構成ページに移動し、プライマリ アクセス キーを再生成します。
 
     ![ナビゲーション ウィンドウ](./media/auditing-overview/6_auditing_get_started_regenerate_key.png)

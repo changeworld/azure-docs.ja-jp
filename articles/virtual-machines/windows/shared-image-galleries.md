@@ -1,6 +1,6 @@
 ---
 title: Azure Shared Image Gallery
-description: 共有イメージ ギャラリーを使用して、組織全体で VM イメージを共有する方法について説明します。
+description: 共有イメージ ギャラリーを使用して、組織全体で Windows VM イメージを共有する方法について説明します。
 author: axayjo
 ms.service: virtual-machines
 ms.subservice: imaging
@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 73ce7091cd012fd6ccfcc53779ce0dd42be65818
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2127009e5a60ff9f0a1defc9592184a7fa52121b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077538"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331405"
 ---
 # <a name="shared-image-gallery-overview"></a>共有イメージ ギャラリーの概要
 

@@ -11,12 +11,12 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 596b18332fc490f72ad185699fc59bf4521eca69
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: e8f78d6031e57da42e1d69587aedca0763c9fec2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032182"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289074"
 ---
 # <a name="use-query-labels-in-synapse-sql"></a>Synapse SQL でクエリ ラベルを使用する
 この記事には、Synapse SQL でクエリ ラベルを使用する際の重要なヒントが含まれています。
@@ -34,7 +34,7 @@ OPTION (LABEL = 'My Query Label')
 ;
 ```
 
-この最後の行は、クエリに、 'My Query Label' という文字列をタグ付けします。 このタグは、ラベルが DMV を介してクエリできるので特に便利です。 ラベルのクエリの実行では、問題のあるクエリを検索するためのメカニズムが提供され、ELT 実行の進行状況を識別するのに役立ちます。
+この最後の行は、クエリに、 'My Query Label' という文字列をタグ付けします。 このタグが便利なのは、DMV を介してラベルをクエリできるためです。 ラベルのクエリの実行では、問題のあるクエリを検索するためのメカニズムが提供され、ELT 実行の進行状況を識別するのに役立ちます。
 
 適切な名前付け規則が最も役立ちます。 たとえば、ラベルを PROJECT、PROCEDURE、STATEMENT、または COMMENT で始めると、ソース管理内のすべてのコード間でクエリを一意に識別する上で役立ちます。
 

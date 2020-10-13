@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.openlocfilehash: 7408d7609cbceb4ac39298680b6d3854a2d71306
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: b88408480bb0822a061e97336eee5c6b3ccfc8e0
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589216"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358323"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>チュートリアル:GitHub を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -71,11 +71,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 6. 新しいウィンドウで、Admin アカウントを使用して GitHub にサインインします。 表示された承認ダイアログで、プロビジョニングを有効にしたい GitHub チームを選択して **[承認する]** を選択します。 終わったら Azure Portal に戻り、プロビジョニング構成を完了します。
 
-    ![承認ダイアログ](./media/github-provisioning-tutorial/GitHub2.png)
+    ![GitHub の [サインイン] ページを示すスクリーンショット。](./media/github-provisioning-tutorial/GitHub2.png)
 
 7. Azure Portal で、**[テナント URL]** を入力し、**[テスト接続]** をクリックして、Azure AD が GitHub アプリに接続できることを確認します。 接続できない場合は、GitHub アカウントに Admin アクセス許可があり、**[テナント URL]** が正しく入力されていることを確認した後、"承認" ステップを再度試します (**テナント URL** はルール `https://api.github.com/scim/v2/organizations/<Organization_name>` で作成でき、組織は GitHub アカウントの **[Settings]\(設定\)** > **[Organizations]\(組織\)** でわかります)。
 
-    ![承認ダイアログ](./media/github-provisioning-tutorial/GitHub3.png)
+    ![GitHub の [組織] ページを示すスクリーンショット。](./media/github-provisioning-tutorial/GitHub3.png)
 
 8. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、[エラーが発生したときにメール通知を送信します] チェック ボックスをオンにします。
 

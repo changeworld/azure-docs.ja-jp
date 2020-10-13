@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 08/04/2020
 ms.author: allensu
-ms.openlocfilehash: cae0ec1daed8277d1e7e4f3c5cbc701965ac00b8
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: b272426f865636640e0a2fafde46cbebbe6eb363
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661762"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327495"
 ---
 # <a name="standard-rules-engine-reference-for-azure-cdn"></a>Azure CDN の Standard ルール エンジン リファレンス
 
@@ -40,7 +40,7 @@ Azure Content Delivery Network (Azure CDN) の [Standard ルール エンジン]
 
 各 Azure CDN エンドポイントには、最大 25 個のルールを含めることができます。 各ルールには、最大で 10 個の一致条件と 5 つのアクションを含めることができます。 ルール エンジンの価格は、次のディメンションに従います。 
 - ルール: ルールごとに 1 か月あたり $1 
-- 処理された要求数: 100 万要求ごとに $0.60
+- 処理された要求数: 要求 100 万件あたり $0.60
 - 最初の 5 つのルールは無料のまま
 
 ## <a name="syntax"></a>構文

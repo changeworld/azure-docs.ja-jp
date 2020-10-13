@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: 1f194424a4030a2b829af6c8f5b97a3c200bd2e6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0880ae64520997fc6b41ba4a7e8508d927235a8a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899283"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320814"
 ---
 # <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスでの Kubernetes ロールベースのアクセス制御
 
@@ -91,25 +91,7 @@ Azure Stack Edge Pro デバイスでの RBAC の実装を示す図は次のと�
 
 この図では、Alice、Bob、Chuck がアクセスできるのは割り当てられたユーザー名前空間 (この場合、それぞれ `ns1`、`ns2`、`ns3`) のみです。 これらの名前空間内で、管理者アクセス権を所有しています。 その一方で、クラスター管理者は、システム名前空間とクラスター全体のリソースに対する管理者アクセス権を持っています。
 
-`kubectl` コマンドを使用して、名前空間とユーザーの作成、名前空間へのユーザーの割り当て、`kubeconfig` ファイルのダウンロードを実行できます。 大まかなワークフローを次に示します。
-
-1. 名前空間とユーザーを作成します。  
-
-    `New-HcsKubernetesNamespace -Namespace`  
-
-2. ユーザーを作成します。  
-
-    `New-HcsKubernetesUser -UserName`  
-
-3. 作成したユーザーに名前空間を関連付けます。  
-
-    `Grant-HcsKubernetesNamespaceAccess -Namespace -UserName`  
-
-4. ユーザー構成を `C:\Users\<username>\.kube` に保存します。  
-
-5. `kubectl` をインストールし、`kubectl` へのアプリケーションのデプロイを開始します。 
-
-詳細な手順については、[Azure Stack Edge Pro での kuebctl を使用した Kubernetes クラスターへのアクセス](azure-stack-edge-gpu-create-kubernetes-cluster.md)に関するページをご覧ください。
+ユーザーは、名前空間とユーザーの作成、名前空間へのユーザーの割り当て、または`kubeconfig` のダウンロードを行うことができます。 詳細な手順については、[Azure Stack Edge Pro での kuebctl を使用した Kubernetes クラスターへのアクセス](azure-stack-edge-gpu-create-kubernetes-cluster.md)に関するページをご覧ください。
 
 
 Azure Stack Edge Pro デバイス上で名前空間とユーザーを操作する場合、次の注意事項が適用されます。

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: b55ba6ab73758ed562aaabeef91cf08acf659758
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 11b41f4dcffad2c98ea5d1f70346ba150fd18c17
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646554"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278636"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -49,7 +49,9 @@ Application Gateway は、HTTP、HTTPS、HTTP/2、WebSocket をサポートし�
 
 ### <a name="in-what-regions-is-application-gateway-available"></a>Application Gateway はどのリージョンで利用できますか?
 
-Application Gateway は、グローバル Azure のすべてのリージョンで利用できます。 また、[Azure China 21Vianet](https://www.azure.cn/) と [Azure Government](https://azure.microsoft.com/overview/clouds/government/) でもご利用いただけます。
+Application Gateway v1 (Standard および WAF) は、グローバル Azure のすべてのリージョンで利用できます。 また、[Azure China 21Vianet](https://www.azure.cn/) と [Azure Government](https://azure.microsoft.com/overview/clouds/government/) でもご利用いただけます。
+
+Application Gateway v2 (Standard_v2 と WAF_v2) の可用性については、[Application Gateway v2 でサポートされているリージョン](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#supported-regions)に関するページを参照してください。
 
 ### <a name="is-this-deployment-dedicated-for-my-subscription-or-is-it-shared-across-customers"></a>このデプロイは私のサブスクリプション専用ですか? それとも、複数の顧客と共有されますか?
 
@@ -182,11 +184,15 @@ Application Gateway は、IP 接続がある限り、所属している仮想ネ
 
 ### <a name="are-network-security-groups-supported-on-the-application-gateway-subnet"></a>アプリケーション ゲートウェイ サブネットでネットワーク セキュリティ グループはサポートされていますか?
 
-[アプリケーション ゲートウェイ サブネット内のネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/application-gateway/configuration-overview#network-security-groups-on-the-application-gateway-subnet)に関するセクションを参照してください。
+[アプリケーション ゲートウェイ サブネット内のネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#network-security-groups)に関するセクションを参照してください。
 
 ### <a name="does-the-application-gateway-subnet-support-user-defined-routes"></a>アプリケーション ゲートウェイ サブネットはユーザー定義ルートをサポートしていますか?
 
 「[アプリケーション ゲートウェイ サブネットでサポートされるユーザー定義ルート](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#supported-user-defined-routes)」を参照してください。
+
+### <a name="are-service-endpoint-policies-supported-in-the-application-gateway-subnet"></a>サービス エンドポイント ポリシーは Application Gateway サブネットでサポートされていますか。
+
+いいえ。 ストレージ アカウントの[サービス エンドポイント ポリシー](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)は Application Gateway サブネットではサポートされていません。構成すると、Azure インフラストラクチャのトラフィックがブロックされます。
 
 ### <a name="what-are-the-limits-on-application-gateway-can-i-increase-these-limits"></a>Application Gateway にはどのような制限がありますか? これらの制限値を引き上げることはできますか?
 
@@ -222,7 +228,7 @@ Application Gateway 上でマルチサイトを構成した場合には、[ホ�
 
 ### <a name="can-i-allow-application-gateway-access-to-only-a-few-source-ip-addresses"></a>Application Gateway に対するアクセスを少数のソース IP アドレスだけに限定することはできますか?
 
-はい。 [アクセスを特定のソース IP だけに限定する方法](https://docs.microsoft.com/azure/application-gateway/configuration-overview#allow-application-gateway-access-to-a-few-source-ips)に関するセクションを参照してください。
+はい。 [アクセスを特定のソース IP だけに限定する方法](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#allow-access-to-a-few-source-ips)に関するセクションを参照してください。
 
 ### <a name="can-i-use-the-same-port-for-both-public-facing-and-private-facing-listeners"></a>パブリック側のリスナーとプライベート側のリスナーの両方に同じポートを使用することはできますか?
 

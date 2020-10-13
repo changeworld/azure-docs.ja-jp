@@ -2,14 +2,14 @@
 title: プールの VM サイズを選択する
 description: Azure Batch プールのコンピューティング ノード用に使用可能な VM サイズを選択する方法
 ms.topic: conceptual
-ms.date: 08/07/2020
+ms.date: 09/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9aef1fc21120401252d188b7373c6ce4139c71c4
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 2819bb5e4000f18653e47b616a551d69ec525d2c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005143"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271309"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Azure Batch プールのコンピューティング ノード用の VM サイズを選択する
 
@@ -37,11 +37,11 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 | Dv3、Dsv3 | すべてのサイズ |
 | Dav4<sup>1</sup> | すべてのサイズ |
 | Dasv4<sup>1</sup> | すべてのサイズ |
-| Ddv4、Ddsv4 |  なし - まだ使用できません |
-| Ev3、Esv3 | すべてのサイズ (E64is_v3 と E64i_v3 を除く) |
+| Ddv4、Ddsv4 |  すべてのサイズ |
+| Ev3、Esv3 | E64is_v3 を除くすべてのサイズ |
 | Eav4<sup>1</sup> | すべてのサイズ |
 | Easv4<sup>1</sup> | すべてのサイズ |
-| Edv4、Edsv4 |  なし - まだ使用できません |
+| Edv4、Edsv4 |  すべてのサイズ |
 | F、Fs | すべてのサイズ |
 | Fsv2 | すべてのサイズ |
 | G、Gs | すべてのサイズ |
@@ -52,7 +52,7 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 | Ls | すべてのサイズ |
 | Lsv2<sup>1</sup> | すべてのサイズ |
 | M<sup>1</sup> | すべてのサイズ |
-| Mv2 | なし - まだ使用できません |
+| Mv2<sup>1、2</sup> | すべてのサイズ |
 | NC | すべてのサイズ |
 | NCv2<sup>1</sup> | すべてのサイズ |
 | NCv3<sup>1</sup> | すべてのサイズ |
@@ -60,10 +60,15 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 | NDv2<sup>1</sup> | なし - まだ使用できません |
 | NV | すべてのサイズ |
 | NVv3<sup>1</sup> | すべてのサイズ |
-| NVv4 | なし |
+| NVv4 | なし - まだ使用できません |
 | SAP HANA | なし |
 
-<sup>1</sup> これらの VM サイズは仮想マシン構成の Batch プールに割り当てることができますが、新しい Batch アカウントを作成し、特定の[クォータ引き上げ](batch-quota-limit.md#increase-a-quota)を要求する必要があります。 この制限は、VM シリーズごとの vCPU クォータが Batch アカウントで完全にサポートされると削除されます。
+<sup>1</sup> これらの VM シリーズは仮想マシン構成の Batch プールに割り当てることができますが、新しい Batch アカウントを作成し、特定の[クォータ引き上げ](batch-quota-limit.md#increase-a-quota)を要求する必要があります。 この制限は、VM シリーズごとの vCPU クォータが Batch アカウントで完全にサポートされると削除されます。
+
+<sup>2</sup> これらの VM シリーズは第 2 世代の VM イメージでのみ使用できます。
+
+### <a name="using-generation-2-vm-images"></a>第 2 世代 VM イメージの使用
+[Mv2](../virtual-machines/mv2-series.md) など、一部の VM シリーズは[第 2 世代の VM イメージ](../virtual-machines/generation-2.md)でのみ使用できます。 第 2 世代 VM イメージは、あらゆる VM イメージと同様に、["imageReference"](/rest/api/batchservice/pool/add#imagereference) 構成の "sku" プロパティを利用して指定されます。"sku" 文字列には、"-g2" や "-gen2" のようなサフィックスが与えられます。 第 2 世代 VM イメージを含め、Batch でサポートされている VM イメージの一覧を取得するには、["list supported images"](/rest/api/batchservice/account/listsupportedimages) API、[PowerShell](/powershell/module/az.batch/get-azbatchsupportedimage)、[Azure CLI](/cli/azure/batch/pool/supported-images) を使用します。
 
 ### <a name="pools-in-cloud-service-configuration"></a>クラウド サービス構成のプール
 

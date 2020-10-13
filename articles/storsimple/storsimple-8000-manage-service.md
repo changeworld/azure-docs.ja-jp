@@ -1,6 +1,6 @@
 ---
 title: Azure で StorSimple デバイス マネージャー サービスをデプロイする | Microsoft Docs
-description: Azure Portal で StorSimple デバイス マネージャー サービスを作成および削除する方法と、サービス登録キーを管理する方法について説明します。
+description: サービスの作成、削除、および移行と、サービス登録キーの管理のために必要な手順について説明します。
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 1e75acc03209fdd7e613801c9152f24aaecfa6de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73373f788a4a87a36a800d69ffcdc646f4cd2084
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847113"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249554"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>StorSimple 8000 シリーズ デバイスの StorSimple デバイス マネージャー サービスをデプロイする
 

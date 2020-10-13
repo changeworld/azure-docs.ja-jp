@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.openlocfilehash: a009361267a364f04237716f3623921c892e2708
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7958ef9195c9dcef65fab70fbf48edf2021ff94b
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546425"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355824"
 ---
 # <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>チュートリアル:ThousandEyes を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -63,11 +63,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![ThousandEyes のプロビジョニング](./media/thousandeyes-provisioning-tutorial/ThousandEyes1.png)
+    ![プロビジョニング モードで自動選択された ThousandEyes の [プロビジョニング] タブを示すスクリーンショット。](./media/thousandeyes-provisioning-tutorial/ThousandEyes1.png)
 
 5. **[管理者資格情報]** セクションで、ThousandEyes のアカウントによって生成された **[OAuth ベアラー トークン]** を入力します (トークンは、ThousandEyes アカウントの **[プロファイル]** で確認できます)。
 
-    ![ThousandEyes のプロビジョニング](./media/thousandeyes-provisioning-tutorial/ThousandEyes2.png)
+    ![現在のアカウント グループの [アカウント設定] リンクが表示されている場所を示すスクリーンショット。](./media/thousandeyes-provisioning-tutorial/ThousandEyes2.png)
 
 6. Azure Portal で、 **[テスト接続]** をクリックして Azure AD が ThousandEyes アプリに接続できることを確認します。 接続できない場合は、使用中の ThousandEyes アカウントに管理者アクセス許可があることを確認してから、手順 5 をもう一度試します。
 

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42b980f809074c275a5e62098d4162e4cb4340a0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 84e692540d376c95a4a981249eba42060ed4ab80
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89259372"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287102"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure Active Directory 認証 (プレビュー) を使用して Azure 内の Windows 仮想マシンにサインインする
 
@@ -49,7 +49,7 @@ Azure AD 認証を使用して、Azure 内の Windows VM にログインする�
 - Windows 10 1809 以降
 
 > [!IMPORTANT]
-> Azure AD 参加済みの VM にリモート接続できるのは、VM として**同じ**ディレクトリに対して Azure AD 参加済みまたはハイブリッド Azure AD 参加済みの Windows 10 PC からのみです。 
+> Azure AD 参加済みの VM にリモート接続できるのは、VM として**同じ**ディレクトリに対して Azure AD 登録済み (Windows 10 20H1 より)、Azure AD 参加済み、またはハイブリッド Azure AD 参加済みの Windows 10 PC からのみです。 
 
 この機能のプレビュー期間中は、次の Azure リージョンがサポートされます。
 

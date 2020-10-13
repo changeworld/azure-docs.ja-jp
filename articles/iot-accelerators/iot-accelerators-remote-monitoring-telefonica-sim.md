@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: b07e21131d9560a49d99644525835ac5ee3bac9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 21d84bea808ba5832b81d415001a3fc25a7e1630
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61442241"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323959"
 ---
 # <a name="integrate-sim-data-in-the-remote-monitoring-solution"></a>SIM データをリモート監視ソリューションに統合する
 
@@ -61,9 +61,9 @@ Telefónica アカウントが正しく構成され、デバイスが接続さ�
 * ネットワークベースの場所
 * 消費されたデータ トラフィック
 
-![ダッシュボード](./media/iot-accelerators-remote-monitoring-telefonica-sim/dashboard.png)
+![Azure IoT リモート監視ダッシュボードの [デバイス エクスプローラー] ウィンドウのスクリーンショット。 WeatherStation デバイスの詳細を示す行が強調表示されています。](./media/iot-accelerators-remote-monitoring-telefonica-sim/dashboard.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure IoT リモート監視に SIM データを統合する方法の概要を確認できたので、ソリューション アクセラレータに推奨される次の手順を以下に示します。
 

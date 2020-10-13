@@ -4,12 +4,12 @@ description: 物理サーバー評価用 Azure Migrate アプライアンスの�
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/15/2020
-ms.openlocfilehash: bace4ab03051a9febfe14cc30143bd4a5cfa7c84
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 348c12e08a9bed98016ac825921b67836b32b9e9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085960"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448064"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>物理サーバー用にアプライアンスを設定する
 
@@ -59,7 +59,7 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 使用例 (パブリック クラウドの場合): ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256 ```
     - 使用例 (政府機関向けクラウドの場合): ```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
-3.  アプライアンスの最新バージョンとハッシュ値の設定を確認します。
+3.  アプライアンスの最新バージョンと[ハッシュ値](tutorial-discover-physical.md#verify-security)の設定を確認します。
  
 
 ## <a name="run-the-azure-migrate-installer-script"></a>Azure Migrate インストーラー スクリプトを実行する

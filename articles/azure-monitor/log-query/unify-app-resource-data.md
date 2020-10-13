@@ -7,12 +7,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/02/2020
-ms.openlocfilehash: 40ce2844e33c9a71f87e434a6a3e9f8e0f7e3cc6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 360578a36b92711c55b1fc65befa1b3df7927aad
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322110"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330895"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Azure Monitor で複数の Application Insights リソースを統合する 
 この記事では、非推奨になった Application Insights Connector を引き継ぐものとして、お使いのすべての Application Insights のログ データのクエリと表示を 1 か所で行う方法について説明します。Azure サブスクリプションは違っていてもかまいません。 1 回のクエリに含めることができる Application Insights リソースの数は 100 個に制限されています。
@@ -57,7 +57,7 @@ applicationsScoping
 ![クロスクエリの結果の例](media/unify-app-resource-data/app-insights-query-results.png)
 
 >[!NOTE]
->ログ アラートでの[リソース間のクエリ](./cross-workspace-query.md)は、新しい [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) でサポートされています。 [従来の Log Alerts API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) から切り替えていない場合、Azure Monitor では既定で、[従来の Log Analytics Alert API](../platform/api-alerts.md) を使用して Azure portal から新しいログ アラート ルールが作成されます。 切り替えた後は、Azure portal での新しいアラート ルールに対して新しい API が既定になり、リソース間のクエリのログ アラート ルールを作成できます。 切り替えを行わなくても、[scheduledQueryRules API 用の ARM テンプレート](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)を使用することで、[リソース間のクエリ](./cross-workspace-query.md)のログ アラート ルールを作成できます。ただし、このアラート ルールは、[scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) では管理できますが、Azure portal では管理できません。
+>ログ アラートの[クロスリソース クエリ](./cross-workspace-query.md)は現行の [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) でのみサポートされています。 レガシ Log Analytics Alerts API を使用している場合、[現行の API に切り替える](../platform/alerts-log-api-switch.md)必要があります。 [サンプル テンプレート](../platform/alerts-log-create-templates.md)を参照してください。
 
 ## <a name="application-insights-and-log-analytics-workspace-schema-differences"></a>Application Insights と Log Analytics ワークスペースのスキーマの相違点
 次の表に、Log Analytics と Application Insights のスキーマの違いを示します。  

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 76c0f4f021646b4cbf1a09559e085176353a4a3c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 44f2195fb68b5a17eab3980f72cbc5374e1c033a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525614"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312908"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>チュートリアル:Box を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -93,17 +93,17 @@ Azure Portal の **[Box] > [ユーザーとグループ]** タブでは、Box �
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。 
 
-    ![プロビジョニング](./media/box-userprovisioning-tutorial/provisioning.png)
+    ![Azure portal の [プロビジョニング] タブのスクリーンショット。 [プロビジョニング モード] が [自動] に設定され、[管理者資格情報] の [承認する] が強調表示されています。](./media/box-userprovisioning-tutorial/provisioning.png)
 
 5. **[管理者資格情報]** セクションの **[承認する]** をクリックして、新しいブラウザー ウィンドウで Box のログイン ダイアログを開きます。
 
 6. **[Box へのアクセスを許可するにはログインしてください]** ページで、必要な資格情報を入力し、 **[認証する]** をクリックします。 
    
-    ![自動ユーザー プロビジョニングの有効化](./media/box-userprovisioning-tutorial/IC769546.png "自動ユーザー プロビジョニングの有効化")
+    ![[Box へのアクセスを許可するにはログインしてください] 画面のスクリーンショット。[電子メール] と [パスワード] エントリ、および [承認する] ボタンが表示されています。](./media/box-userprovisioning-tutorial/IC769546.png "自動ユーザー プロビジョニングの有効化")
 
 7. **[Box のアクセス許可]** をクリックしてこの操作を承認し、Azure Portal に戻ります。 
    
-    ![自動ユーザー プロビジョニングの有効化](./media/box-userprovisioning-tutorial/IC769549.png "自動ユーザー プロビジョニングの有効化")
+    ![Box へのアクセスを承認する画面のスクリーンショット。説明メッセージと [Box のアクセス許可] ボタンが表示されています。](./media/box-userprovisioning-tutorial/IC769549.png "自動ユーザー プロビジョニングの有効化")
 
 8. Azure Portal で、 **[テスト接続]** をクリックして Azure AD が Box アプリに接続できることを確認します。 接続が失敗した場合、使用中の Box アカウントに Team Admin アクセス許可があることを確認して、 **"承認"** の手順をもう一度試してください。
 

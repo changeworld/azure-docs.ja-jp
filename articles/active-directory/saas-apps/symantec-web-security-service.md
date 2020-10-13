@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: 083bb7549bb555cbbefaf680d401696ecd64b9c9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7b4a5e76ec8dad66bf300cc3e1d55471383f83ff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544912"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285822"
 ---
 # <a name="tutorial-configure-symantec-web-security-service-wss-for-automatic-user-provisioning"></a>チュートリアル:Symantec Web Security Service (WSS) を構成して自動ユーザー プロビジョニングに対応させる
 
@@ -62,11 +62,11 @@ Azure AD を使用した自動ユーザー プロビジョニングのために 
 
 3.  **[Third-Party Users & Groups Sync]\(サードパーティのユーザーとグループの同期\)** を選択します。 
 
-    ![Symantec Web Security Service](media/symantec-web-security-service/third-party-users.png)
+    ![[Third-Party Users & Groups Sync]\(サードパーティのユーザーとグループの同期\) オプションのスクリーンショット。](media/symantec-web-security-service/third-party-users.png)
 
 4.  **[SCIM URL]** と **[トークン]** をコピーします。 これらの値を、Azure portal の Symantec Web Security Service (WSS) アプリケーションの [プロビジョニング] タブの **[テナント URL]** および **[シークレット トークン]** フィールドに入力します。
 
-    ![Symantec Web Security Service](media/symantec-web-security-service/scim.png)
+    ![[New Integration]\(新しい統合\) ダイアログ ボックスのスクリーンショット。[SCIM URL] と [トークン] のテキスト ボックスが選択されています。](media/symantec-web-security-service/scim.png)
 
 ## <a name="add-symantec-web-security-service-wss-from-the-gallery"></a>ギャラリーから Symantec Web Security Service (WSS) を追加する
 
@@ -109,11 +109,11 @@ Azure AD で自動ユーザー プロビジョニング用に Symantec Web Secur
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. [管理者資格情報] セクションの **[テナント URL]** および **[シークレット トークン]** に、先ほど取得した **[SCIM URL]** と **[トークン]** の値をそれぞれ入力します。 **[接続テスト]** をクリックして、Azure AD から Symantec Web Security Service に接続できることを確認します。 接続できない場合は、使用中の Symantec Web Security Service (WSS) アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
@@ -127,19 +127,19 @@ Azure AD で自動ユーザー プロビジョニング用に Symantec Web Secur
 
 8. **[マッピング]** セクションで、 **[Synchronize Azure Active Directory Users to Symantec Web Security Service (WSS)]\(Azure Active Directory ユーザーを Symantec Web Security Service (WSS) に同期する\)** を選択します。
 
-    ![Symantec Web Security Service (WSS) ユーザー マッピング](media/symantec-web-security-service/usermapping.png)
+    ![[マッピング] セクションのスクリーンショット。[Synchronize Azure Active Directory Users to Symantec Web Security Service (WSS)]\(Azure Active Directory ユーザーを Symantec Web Security Service (WSS) に同期する\) オプションが選択されています。](media/symantec-web-security-service/usermapping.png)
 
 9. **[属性マッピング]** セクションで、Azure AD から Symantec Web Security Service (WSS) に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で Symantec Web Security Service (WSS) のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![Symantec Web Security Service (WSS) ユーザー マッピング](media/symantec-web-security-service/userattribute.png)
+    ![[属性マッピング] セクションのスクリーンショット。16 件のプロパティが一致しています。](media/symantec-web-security-service/userattribute.png)
 
 10. **[マッピング]** セクションで、 **[Synchronize Azure Active Directory Groups to Symantec Web Security Service]\(Azure Active Directory グループを Symantec Web Security Service に同期する\)** を選択します。
 
-    ![Symantec Web Security Service (WSS) ユーザー マッピング](media/symantec-web-security-service/groupmapping.png)
+    ![[マッピング] セクションのスクリーンショット。[Synchronize Azure Active Directory Groups to Symantec Web Security Service]\(Azure Active Directory グループを Symantec Web Security Service に同期する\) オプションが選択されています。](media/symantec-web-security-service/groupmapping.png)
 
 11. **[属性マッピング]** セクションで、Azure AD から Symantec Web Security Service (WSS) に同期されるグループ属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で Symantec Web Security Service (WSS) のグループとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![Symantec Web Security Service (WSS) ユーザー マッピング](media/symantec-web-security-service/groupattribute.png)
+    ![[属性マッピング] セクションのスクリーンショット。3 件のプロパティが一致しています。](media/symantec-web-security-service/groupattribute.png)
 
 12. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 

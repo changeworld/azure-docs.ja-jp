@@ -3,12 +3,12 @@ title: Azure Monitor for containers からのログ アラート | Microsoft Doc
 description: この記事では、Azure Monitor for containers からのメモリおよび CPU の使用率に対するカスタム ログ アラートを作成する方法について説明します。
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 2d86edc5994070ba909c6e3a0da2cf76e8359773
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8c02442fef9b174075065e7852b7a25233899c48
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90973729"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294548"
 ---
 # <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>Azure Monitor for containers からログ アラートを作成する方法
 
@@ -275,7 +275,7 @@ InsightsMetrics
 
 ## <a name="create-an-alert-rule"></a>アラート ルールを作成する
 
-このセクションでは、Azure Monitor for containers からのパフォーマンス データを使用する、メトリック測定アラート ルールの作成について見ていきます。 さまざまなログ クエリでこの基本プロセスを使用して、さまざまなパフォーマンス カウンターに対してアラートを生成することができます。 最初は、前に示したログ検索クエリのいずれかを使用します。 ARM テンプレートを使用して作成するには、「[Azure リソース テンプレートを使用したサンプル ログ アラートの作成](../platform/alerts-log.md#sample-log-alert-creation-using-azure-resource-template)」のセクションを参照してください。
+このセクションでは、Azure Monitor for containers からのパフォーマンス データを使用する、メトリック測定アラート ルールの作成について見ていきます。 さまざまなログ クエリでこの基本プロセスを使用して、さまざまなパフォーマンス カウンターに対してアラートを生成することができます。 最初は、前に示したログ検索クエリのいずれかを使用します。 ARM テンプレートを使用して作成するには、[Azure リソース テンプレートを使用したサンプル ログ アラートの作成](../platform/alerts-log-create-templates.md)に関するページを参照してください。
 
 >[!NOTE]
 >コンテナー リソースの使用率に関するアラート ルールを作成する次の手順では、「[ログ アラートの API の基本設定を切り替える](../platform/alerts-log-api-switch.md)」の説明に従って、新しいログ アラート API に切り替える必要があります。

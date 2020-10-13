@@ -3,12 +3,12 @@ title: Azure Lab Services でクラスルーム ラボを管理する | Microsof
 description: クラスルーム ラボを作成して構成したり、すべてのクラスルーム ラボを表示したり、登録リンクをラボ ユーザーと共有したり、ラボを削除したりする方法について説明します。
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: ed5eb05fa586e19fdf684a4f88b56e7b0185baf4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a251f668508ee0b727c5e2ace65d1ea4eb5123e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445391"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251679"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Azure Lab Services でクラスルーム ラボを管理する 
 この記事では、クラスルーム ラボの作成および削除方法について説明します。 また、ラボ アカウントのすべてのクラスルーム ラボを表示する方法についても説明します。 
@@ -32,7 +32,7 @@ ms.locfileid: "85445391"
     1. ページに表示される **1 時間あたりの合計料金**を確認します。 
     1. **[保存]** を選択します。
 
-        ![新しいラボのウィンドウ](./media/tutorial-setup-classroom-lab/new-lab-window.png)
+        ![[New lab]\(新しいラボ\) ウィンドウのスクリーンショット。](./media/tutorial-setup-classroom-lab/new-lab-window.png)
 
         > [!NOTE]
         > ラボ アカウントが [[ラボ作成者にラボの場所の選択を許可する]](allow-lab-creator-pick-lab-location.md) オプションに構成されている場合、ラボの場所を選択するオプションが表示されます。 

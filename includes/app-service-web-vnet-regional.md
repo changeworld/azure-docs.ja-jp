@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 06/08/2020
 ms.author: ccompy
-ms.openlocfilehash: 926a1867a77b543057fa1de170cdb64ccfefe7cb
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 9259e3d3e41a5ba4986fbef48e745210f80e6093
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86218219"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255252"
 ---
 リージョン VNet 統合を使用すると、アプリは次のものにアクセスできるようになります。
 
@@ -56,7 +56,7 @@ ms.locfileid: "86218219"
 
 別のプラン内のご自身のアプリが、別のプラン内のアプリから既に接続されている VNet にアクセスできるようにしたい場合は、既存の VNet 統合によって使用されているものとは異なるサブネットを選択します。
 
-この機能は、Windows と Linux の両方の Web アプリで完全にサポートされています。 すべての動作は、Windows アプリと Linux アプリ間で同じです。
+この機能は、[カスタム コンテナー](../articles/app-service/quickstart-custom-container.md)を含め、Windows と Linux の両方のアプリで完全にサポートされています。 すべての動作は、Windows アプリと Linux アプリ間で同じです。
 
 ### <a name="service-endpoints"></a>サービス エンドポイント
 

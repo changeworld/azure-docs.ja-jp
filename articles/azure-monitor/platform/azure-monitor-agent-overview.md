@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: ea2fae483da495bce9551899b9646868251f0454
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: cc49bec71f6c591ca3036592b0949e3fc7cef48e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90030829"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263778"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure Monitor エージェントの概要 (プレビュー)
 Azure Monitor エージェント (AMA) では、仮想マシンのゲスト オペレーティング システムから監視データが収集され、それが Azure Monitor に配信されます。 この記事では、Azure Monitor エージェントのインストール方法やデータ収集の構成方法など、Azure Monitor エージェントの概要について説明します。
@@ -38,6 +38,14 @@ Azure Monitor エージェントでは、この機能が 1 つのエージェン
 - 診断拡張機能では、仮想マシンごとに構成を指定します。 これにより、異なる仮想マシンに個別の定義を簡単に定義できますが、一元的に管理することは困難です。 Azure Monitor メトリック、Azure Event Hubs、または Azure Storage にのみデータを送信できます。 Linux エージェントの場合、Azure Monitor メトリックにデータを送信するために、オープン ソースの Telegraf エージェントが必要です。
 
 Azure Monitor エージェントでは、[データ収集ルール (DCR)](data-collection-rule-overview.md) を使用して、各エージェントから収集するデータが構成されます。 データ収集ルールにより、大規模な収集設定の管理が可能になる一方、コンピューターのサブセットの一意の範囲指定された構成も可能になります。 それらはワークスペースから独立し、仮想マシンからも独立しているため、一度定義すると、コンピューターや環境間で再利用できます。 「[Azure Monitor エージェント用のデータ収集の構成 (プレビュー)](data-collection-rule-azure-monitor-agent.md)」をご覧ください。
+
+## <a name="should-i-switch-to-azure-monitor-agent"></a>Azure Monitor エージェントに切り替える必要はありますか?
+Azure Monitor エージェントは、[Azure Monitor 用の一般提供されているエージェントと共存できます](agents-overview.md)が、Azure Monitor エージェントのパブリック プレビュー段階では、VM を現在のエージェントから移行することを検討することができます。 この決定を行う際には、以下の点を考慮してください。
+
+- **環境要件。** Azure Monitor エージェントは、サポートされているオペレーティング システム、環境、およびネットワーク要件のセットが現在のエージェントよりも制限されています。 新しいオペレーティング システムのバージョンやネットワーク要件の種類など、今後の環境サポートは、Azure Monitor エージェントでのみ提供される可能性が高くなります。 お使いの環境が Azure Monitor エージェントでサポートされているかどうかを評価することをお勧めします。 そうでない場合は、現在のエージェントのままにする必要があります。 Azure Monitor エージェントが現在の環境をサポートしている場合は、その環境への移行を検討することをお勧めします。
+- **パブリック プレビューのリスク許容範囲。** Azure Monitor エージェントは、現在サポートされているシナリオで十分にテストされていますが、エージェントはまだパブリック プレビュー段階です。 バージョンの更新と機能の改善は頻繁に行われ、バグが発生する可能性があります。 VM 上でデータ収集が停止する可能性があるエージェントのバグのリスクを評価することをお勧めします。 データ収集の欠落がサービスに大きな影響を与えない場合は、Azure Monitor エージェントに移行してください。 不安定さに対する許容度が低い場合は、一般提供されているエージェントを引き続き使用し、Azure Monitor エージェントがそのレベルに達するまで待つことをお勧めします。
+- **現在と新規の機能要件。** Azure Monitor エージェントでは、フィルター処理、スコープ、マルチホームなど、いくつかの新機能を導入していますが、カスタム ログ収集やソリューションとの統合など、他の機能については、まだ現在のエージェントと同等ではありません。 Azure Monitor のほとんどの新機能は、Azure Monitor エージェントでのみ使用できるようになるため、時間の経過と共に、新しいエージェントでのみ使用できる機能が増えます。 Azure Monitor エージェントに必要な機能があるかどうか、また新しいエージェントで他の重要な機能を利用せずに一時的に実行できる機能があるかどうかを検討することをお勧めします。 必要なすべてのコア機能が Azure Monitor エージェントにある場合は、移行することを検討してください。 必須の重要な機能がある場合は、Azure Monitor エージェントが同等になるまで、現在のエージェントを引き続き使用します。
+- **やり直しの許容範囲。** デプロイ スクリプトやオンボード テンプレートなどのリソースを使用して新しい環境を設定する場合、Azure Monitor エージェントが一般提供されたときに、それらをやり直すことができるかどうかを検討することをお勧めします。 このやり直しの労力が最小限になる場合は、今のところは現在のエージェントのままにしておきます。 大量の作業が必要な場合は、新しいエージェントを使用して新しい環境を設定することを検討してください。 Azure Monitor エージェントは、2021 年に一般提供され、Log Analytics エージェントが非推奨となる日が公開される予定です。 非推奨化が始まってから数年間は、現在のエージェントはサポートされます。
 
 
 
@@ -76,24 +84,8 @@ Azure Monitor エージェントでは、Azure Monitor メトリック、また�
 
 
 ## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
-Azure Monitor エージェントでは、現在次のオペレーティング システムがサポートされています。
+Log Analytics エージェントで現在サポートされている Windows および Linux オペレーティング システムのバージョンの一覧については、「[サポートされるオペレーティング システム](agents-overview.md#supported-operating-systems)」を参照してください。
 
-### <a name="windows"></a>Windows 
-  - Windows Server 2019
-  - Windows Server 2016
-  - Windows Server 2012
-  - Windows Server 2012 R2
-
-### <a name="linux"></a>Linux
-  - CentOS 6<sup>1</sup>、7
-  - Debian 9、10
-  - Oracle Linux 6<sup>1</sup>、7
-  - RHEL 6<sup>1</sup>、7
-  - SLES 11、12、15
-  - Ubuntu 14.04 LTS、16.04 LTS、18.04 LTS
-
-> [!IMPORTANT]
-> <sup>1</sup>これらのディストリビューションで Syslog データを送信するには、エージェントのインストール後、一度 rsyslog サービスを再起動する必要があります。
 
 
 ## <a name="security"></a>セキュリティ

@@ -1,14 +1,14 @@
 ---
 title: 効果のしくみを理解する
 description: Azure Policy の定義には、コンプライアンスが管理および報告される方法を決定するさまざまな効果があります。
-ms.date: 08/27/2020
+ms.date: 09/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: d2ea27ceda36d2feebcf12cc47ac741093b0729c
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: b6622796ab0554f692a3b64e0b41d60f49c561b1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425536"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252006"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 
@@ -24,7 +24,7 @@ Azure Policy 内の各ポリシー定義には単一の効果があります。 
 - [Disabled](#disabled)
 - [Modify](#modify)
 
-次の効果は_非推奨_となっています。
+次の効果は "_非推奨_" です。
 
 - [EnforceOPAConstraint](#enforceopaconstraint)
 - [EnforceRegoPolicy](#enforceregopolicy)
@@ -374,8 +374,8 @@ DeployIfNotExists 効果の **details** プロパティは、照合する関連�
 
 この効果は、`Microsoft.Kubernetes.Data` のポリシー定義_モード_で使用されます。 これは、[OPA Constraint Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) で [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) に対して定義された Gatekeeper v3 受付制御ルールを、Azure 上の Kubernetes クラスターに渡すために使用されます。
 
-> [!NOTE]
-> [Kubernetes 用の Azure Policy](./policy-for-kubernetes.md) はプレビュー中であり、Linux ノード プールと組み込みのポリシー定義のみをサポートします。 組み込みのポリシー定義は、**Kubernetes** カテゴリ内にあります。 **EnforceOPAConstraint** 効果を持つ限定プレビュー ポリシー定義と、関連する **Kubernetes Service** カテゴリは、_非推奨_になっています。 代わりに、リソース プロバイダー モード `Microsoft.Kubernetes.Data` で _Audit_ 効果と _Deny_ 効果を使用します。
+> [!IMPORTANT]
+> **EnforceOPAConstraint** 効果を持つ限定プレビュー ポリシー定義と、関連する **Kubernetes Service** カテゴリは、"_非推奨_" になっています。 代わりに、リソース プロバイダー モード `Microsoft.Kubernetes.Data` で _Audit_ 効果と _Deny_ 効果を使用します。
 
 ### <a name="enforceopaconstraint-evaluation"></a>EnforceOPAConstraint の評価
 
@@ -430,8 +430,8 @@ EnforceOPAConstraint 効果の **details** プロパティには、Gatekeeper v3
 
 この効果は、`Microsoft.ContainerService.Data` のポリシー定義_モード_で使用されます。 これは、[Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) で定義されている Gatekeeper v2 受付制御ルールを [Azure Kubernetes Service](../../../aks/intro-kubernetes.md) 上の [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) に渡すために使用されます。
 
-> [!NOTE]
-> [Kubernetes 用の Azure Policy](./policy-for-kubernetes.md) はプレビュー中であり、Linux ノード プールと組み込みのポリシー定義のみをサポートします。 組み込みのポリシー定義は、**Kubernetes** カテゴリ内にあります。 **EnforceRegoPolicy** 効果を持つ限定プレビュー ポリシー定義と、関連する **Kubernetes Service** カテゴリは、_非推奨_になっています。 代わりに、リソース プロバイダー モード `Microsoft.Kubernetes.Data` で _Audit_ 効果と _Deny_ 効果を使用します。
+> [!IMPORTANT]
+> **EnforceRegoPolicy** 効果を持つ限定プレビュー ポリシー定義と、関連する **Kubernetes Service** カテゴリは、_非推奨_になっています。 代わりに、リソース プロバイダー モード `Microsoft.Kubernetes.Data` で _Audit_ 効果と _Deny_ 効果を使用します。
 
 ### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy の評価
 
@@ -569,7 +569,7 @@ Modify 効果の **details** プロパティには、修復に必要なアクセ
 
 **operation** プロパティには、次のオプションが用意されています。
 
-|Operation |説明 |
+|操作 |説明 |
 |-|-|
 |addOrReplace |プロパティまたはタグが別の値で既に存在する場合でも、定義されたプロパティまたはタグと値をリソースに追加します。 |
 |追加 |定義されたプロパティまたはタグと値をリソースに追加します。 |

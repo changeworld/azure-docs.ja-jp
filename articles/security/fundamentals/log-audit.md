@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: terrylan
-ms.openlocfilehash: bd0f42507e22559690e2682a391c53b9c090aa6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5ac9daeb741d400a759603c7a3e3e462cc9294f
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75750793"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398871"
 ---
 # <a name="azure-security-logging-and-auditing"></a>Azure セキュリティのログと監査
 
@@ -68,4 +68,4 @@ Azure のログは、次の種類に分類されます。
 
 - [サイト コレクションの監査設定を構成する](https://support.office.com/article/Configure-audit-settings-for-a-site-collection-A9920C97-38C0-44F2-8BCB-4CF1E2AE22D2?ui=&rs=&ad=US): サイト コレクションの管理者の場合、個々のユーザーのアクションの履歴と特定の期間内に行われたアクションの履歴を取得します。
 
-- [Office 365 セキュリティ/コンプライアンス センターで監査ログを検索する](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=&rs=&ad=US): Office 365 セキュリティ/コンプライアンス センターを使用して統合監査ログを検索し、Office 365 の組織のユーザーと管理者のアクティビティを表示できます。
+- [Microsoft 365 セキュリティ センターで監査ログを検索する](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance): Microsoft 365 セキュリティ センターを使用して統合監査ログを検索し、組織内のユーザーと管理者のアクティビティを表示します。

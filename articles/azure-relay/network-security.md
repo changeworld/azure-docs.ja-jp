@@ -1,14 +1,14 @@
 ---
 title: Azure Relay のネットワーク セキュリティ
-description: この記事では、プライベート エンドポイントからのアクセスを構成する方法について説明します
+description: この記事では、Azure Relay で IP ファイアウォール規則とプライベート エンドポイントを使用する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: bf49eff29385b5b72639420416df87b9187845e8
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 3aa3ffd119f65ec5181b0c382472cc4ef3c8bac4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532987"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263727"
 ---
 # <a name="network-security-for-azure-relay"></a>Azure Relay のネットワーク セキュリティ 
 この記事では、Azure Relay で次のセキュリティ機能を使用する方法について説明します。 

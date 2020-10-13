@@ -1,17 +1,22 @@
 ---
-title: Azure Event Hubs - 例外
+title: Azure Event Hubs - 例外 (レガシ)
 description: この記事では、Azure Event Hubs メッセージングの例外と推奨アクションの一覧を示します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: b3a7023dc44d7280284fec1eccf00a3dbe88b7ec
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5a7ca32893a106cd59df548ae3118665acaea654
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908375"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318485"
 ---
-# <a name="event-hubs-messaging-exceptions---net"></a>Event Hubs メッセージングの例外 - .NET
+# <a name="event-hubs-messaging-exceptions---net-legacy"></a>Event Hubs メッセージングの例外 - .NET (レガシ)
 このセクションでは、.NET Framework API によって生成される .NET 例外を示します。 
+
+> [!IMPORTANT]
+> この記事に記載されている一部の例外は、従来の Event Hubs .NET ライブラリにのみ適用されます。 次に例を示します。Microsoft.ServiceBus.* 例外。
+> 
+> 新しい .NET ライブラリによって発生する EventHubsException の詳細については、「[EventHubsException - .NET](exceptions-dotnet.md)」を参照してください。
 
 ## <a name="exception-categories"></a>例外のカテゴリ
 

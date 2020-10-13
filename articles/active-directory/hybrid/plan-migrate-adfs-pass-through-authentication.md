@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e5a5b06bc95d022cfad66118db4b55e9369b5bd
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a0ee8661ca985e1882cff54d2fc2cdc5e9ad0a22
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661895"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335971"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Azure Active Directory でフェデレーションからパススルー認証に移行する
 
@@ -283,9 +283,9 @@ Azure AD スマート ロックアウトでは、ブルートフォース パス
 
 4. 認証エージェントのインストールを実行します。 インストール中に、グローバル管理者アカウントの資格情報を入力する必要があります。
 
-   ![Microsoft Azure AD Connect 認証エージェント パッケージのページにある [インストール] ボタンを示すスクリーンショット](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image11.png)
+   ![Microsoft Azure AD Connect 認証エージェント パッケージを実行するために使用する [インストール] ボタンを示すスクリーンショット。](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image11.png)
 
-   ![サインイン ページを示すスクリーンショット](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image12.png)
+   ![Microsoft サインイン ページを示すスクリーンショット。](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image12.png)
 
 5. 認証エージェントがインストールされたら、パススルー認証エージェントの正常性ページに戻って、追加のエージェントの状態を確認できます。
 
@@ -327,7 +327,7 @@ Azure AD スマート ロックアウトでは、ブルートフォース パス
    * **[シームレス シングル サインオン]** が **[有効]** に設定されている。
    * **[パススルー認証]** が **[有効]** に設定されている。
    
-   ![[ユーザー サインイン] セクションの設定を示すスクリーンショット](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image19.png)
+   ![[ユーザー サインイン] セクションを確認するための設定を示すスクリーンショット。](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image19.png)
 8. **[パススルー認証]** を選択し、状態が **[アクティブ]** であることを確認します。<br />
    
    認証エージェントがアクティブでない場合は、次の手順でドメインの変換プロセスを続行する前に、いくつかの[トラブルシューティング手順](./tshoot-connect-pass-through-authentication.md)を完了します。 パススルー認証エージェントが正常にインストールされたことと、Azure portal でそれらの状態が **[アクティブ]** になっていることを確認する前にドメインを変換すると、認証が停止する危険性があります。
@@ -368,7 +368,7 @@ Azure AD PowerShell モジュールを使用して、変換を完了します。
    * **[シームレス シングル サインオン]** が **[有効]** に設定されている。
    * **[パススルー認証]** が **[有効]** に設定されている。<br />
 
-   ![[ユーザー サインイン] セクションの設定を示すスクリーンショット](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image26.png)<br />
+   ![Azure AD ポータルにある [ユーザー サインイン] セクションの設定を示すスクリーンショット。](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image26.png)<br />
 
 ## <a name="testing-and-next-steps"></a>テストと次のステップ
 

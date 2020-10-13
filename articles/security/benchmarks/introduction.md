@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 53473b6be9e91adb636c3c9528e97ec644616115
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: f3b492534bedde50d2413b88fa38cd6325ed5df7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90058616"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328260"
 ---
 # <a name="azure-security-benchmark-introduction"></a>Azure セキュリティ ベンチマークの概要
 
@@ -23,8 +23,8 @@ Microsoft では、*セキュリティ ベンチマーク*の使用がクラウ�
 
 Azure セキュリティ ベンチマークには、Azure で使用するサービスをセキュリティで保護するために使用できる、影響力の高いセキュリティに関する推奨事項のコレクションが含まれています。
 
-- セキュリティ コントロール:これらの推奨事項は、一般に Azure テナントと Azure サービス全体に適用されます。 各推奨事項では、通常、ベンチマークの計画、承認、または実装に関与している利害関係者の一覧を特定します。 
-- サービス ベースライン:これらは、個々の Azure サービスにコントロールを適用し、そのサービスのセキュリティ構成に関する推奨事項を提供します。
+- **セキュリティ制御**: これらの推奨事項は、一般に Azure テナントと Azure サービス全体に適用されます。 各推奨事項では、通常、ベンチマークの計画、承認、または実装に関与している利害関係者の一覧を特定します。 
+- **サービス ベースライン**: これらは、個々の Azure サービスにコントロールを適用し、そのサービスのセキュリティ構成に関する推奨事項を提供します。
 
 ## <a name="implement-the-azure-security-benchmark"></a>Azure セキュリティ ベンチマークを実装する
 - 企業のコントロールおよびサービス固有のベースラインに関する[ドキュメント](overview.md)を参照して、コントロール フレームワークと、それを CIS (Controls v7.1) や NIST (SP800-53) フレームワークなどのガイダンスにマップする方法を計画することにより、Azure セキュリティ ベンチマークの実装を**計画します**。

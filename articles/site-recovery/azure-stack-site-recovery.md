@@ -3,12 +3,12 @@ title: Azure Site Recovery を使用して Azure Stack VM を Azure にレプリ
 description: Azure Site Recovery サービスを使用して Azure Stack VM の Azure へのディザスター リカバリーを設定する方法について説明します。
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 61154e58582a3dcbab0f7ed9542d094be192ae74
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: a7e58f5b24786169c9d0c989b79a14c4115acca8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564311"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448965"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Azure Stack VM を Azure にレプリケートする
 
@@ -164,13 +164,13 @@ VM を実行中のオペレーティング システムが、表にまとめら�
 1. **[インフラストラクチャの準備]** 、 >  **[ソース]** の順にクリックします。
 2. **[ソースの準備]** で、 **[+ 構成サーバー]** をクリックします。
 
-    ![Set up source](./media/azure-stack-site-recovery/plus-config-srv.png)
+    ![[Click on +Configuration Server in the command bar above to setup one…] (上のコマンド バーにある [+ 構成サーバー] をクリックしてセットアップします...) というメッセージが表示されている [+ 構成サーバー] ダイアログのスクリーンショット。](./media/azure-stack-site-recovery/plus-config-srv.png)
 
 3. **[サーバーの追加]** で、 **[サーバーの種類]** に **[構成サーバー]** が表示されていることを確認します。
 5. Site Recovery 統合セットアップ インストール ファイルをダウンロードします。
 6. コンテナー登録キーをダウンロードします。 統合セットアップを実行する際には、登録キーが必要です。 キーは生成後 5 日間有効です。
 
-    ![Set up source](./media/azure-stack-site-recovery/set-source2.png)
+    ![[サーバーの種類] が [構成サーバー] に設定され、[コンテナー登録キーをダウンロードする] ボタンが強調表示されている [サーバーの追加] ダイアログのスクリーンショット。](./media/azure-stack-site-recovery/set-source2.png)
 
 
 ### <a name="run-azure-site-recovery-unified-setup"></a>Azure Site Recovery 統合セットアップを実行する
@@ -314,26 +314,7 @@ Azure へのテスト フェールオーバーを実行して、すべて想定�
 
 ### <a name="fail-back-to-azure-stack"></a>Azure Stack にフェールバックする
 
-プライマリ サイトが再稼働したら、Azure から Azure Stack にフェールバックできます。 これを行うには、Azure VM VHD をダウンロードして、Azure Stack にアップロードする必要があります。
-
-1. VHD をダウンロードできるように、Azure VM をシャットダウンします。
-2. VHD のダウンロードを開始するには、[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) をインストールします。
-3. Azure portal で VM に移動します (VM 名を使用します)。
-4. **[ディスク]** で、ディスク名をクリックして設定を収集します。
-
-    - 例として、ここで実行するテストでは、次の VHD の URI が使用されます。`https://502055westcentralus.blob.core.windows.net/wahv9b8d2ceb284fb59287/copied-3676553984.vhd` を分割して、VHD をダウンロードするために使用されるパラメーターを取得できます。
-        - ストレージ アカウント: 502055westcentralus
-        - コンテナー: wahv9b8d2ceb284fb59287
-        - VHD 名: copied-3676553984.vhd
-
-5. 次に、Azure Storage Explorer を使用して、VHD をダウンロードします。
-6. [こちらの手順](/azure-stack/user/azure-stack-manage-vm-disks#use-powershell-to-add-multiple-disks-to-a-vm)に従って、VHD を Azure Stack にアップロードします。
-7. 既存の VM または新しい VM で、アップロードした VHD をアタッチします。
-8. OS ディスクが正しいことを確認し、VM を起動します。
-
-
-この段階で、フェールバックが完了します。
-
+プライマリ サイトが再稼働したら、Azure から Azure Stack にフェールバックできます。 これを行うには、[こちら](https://docs.microsoft.com/azure-stack/operator/site-recovery-failback?view=azs-2005)に記載されている手順に従います。
 
 ## <a name="conclusion"></a>まとめ
 

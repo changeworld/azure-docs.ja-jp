@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 678b7571d54c8938c163801a584ad813c6e5963f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9e7ac5afb176e58ce47f918ddcbab742ecb90baf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551168"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317448"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>チュートリアル:Concur を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -96,11 +96,11 @@ Concur コンサルタントまたはクライアント管理者は、Web サー
 
 9. **[プロビジョニング モード]** を **[自動]** に設定します。 
  
-    ![プロビジョニング](./media/concur-provisioning-tutorial/provisioning.png)
+    ![Azure portal の Concur の [プロビジョニング] タブのスクリーンショット。 [プロビジョニング モード] が [自動] に設定され、[テスト接続] ボタンが強調表示されています。](./media/concur-provisioning-tutorial/provisioning.png)
 
 10. **[管理者の資格情報]** セクションの下に、Cincur 管理者の「**ユーザー名**」と「**パスワード**」を入力します。
 
-11. Azure Portal で、 **[テスト接続]** をクリックして Azure AD が Concur アプリに接続できることを確認します。 接続が失敗した場合、使用中の Concur アカウントに Team Admin アクセス許可があることを確認してください。
+11. Azure Portal で、**[テスト接続]** をクリックして Azure AD が Concur アプリに接続できることを確認します。 接続が失敗した場合、使用中の Concur アカウントに Team Admin アクセス許可があることを確認してください。
 
 12. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、下のチェック ボックスをオンにします。
 
@@ -110,7 +110,7 @@ Concur コンサルタントまたはクライアント管理者は、Web サー
 
 15. **[属性マッピング]** セクションで、Azure AD から Concur に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で Concur のユーザー アカウントとの照合に使用されます。 [保存] ボタンをクリックして変更をコミットします。
 
-16. Concur に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+16. Concur に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
 17. **[保存]** をクリックします。
 

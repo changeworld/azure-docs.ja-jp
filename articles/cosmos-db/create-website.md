@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: 5038d9968e37b956774d1c5f8abdb14865422e8b
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 8e6a6d1c557a765e55152685f08e80ad54bbd903
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027748"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362012"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-with-a-web-app-from-github-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して、Azure Cosmos DB と Azure App Service および GitHub の Web アプリをデプロイする
 
@@ -40,7 +40,7 @@ Resource Manager テンプレートは非常に柔軟であり、Azure の任意
 
 Azure portal で、デプロイ先のサブスクリプションを選択し、新しいリソース グループを選択または作成します。 次に、以下の値を入力します。
 
-:::image type="content" source="./media/create-website/template-deployment.png" alt-text="テンプレートのデプロイメント UI のスクリーンショット":::
+:::image type="content" source="./media/create-website/template-deployment.png" alt-text="Azure へのデプロイ":::
 
 * **[リージョン]** - Resource Manager に必要です。 リソースが配置される場所のパラメーターで使用されているものと同じリージョンを入力します。
 * **[アプリケーション名]** - この名前は、このデプロイのすべてのリソースで使用されます。 既存の Azure Cosmos DB および App Service アカウントとの競合を避けるために、必ず一意の名前を選択してください。
@@ -64,31 +64,31 @@ Azure portal で、デプロイ先のサブスクリプションを選択し、�
 
 テンプレートによってリソースがデプロイされると、リソース グループ内でそれぞれを確認できるようになります。
 
-:::image type="content" source="./media/create-website/resource-group.png" alt-text="リソース グループ":::
+:::image type="content" source="./media/create-website/resource-group.png" alt-text="Azure へのデプロイ":::
 
 ### <a name="view-cosmos-db-endpoint-and-keys"></a>Cosmos DB エンドポイントとキーを表示する
 
 次に、ポータルで Azure Cosmos アカウントを開きます。 次のスクリーンショットは、Azure Cosmos アカウントのエンドポイントとキーを示しています。
 
-:::image type="content" source="./media/create-website/cosmos-keys.png" alt-text="Cosmos キー":::
+:::image type="content" source="./media/create-website/cosmos-keys.png" alt-text="Azure へのデプロイ":::
 
 ### <a name="view-the-azure-cosmos-db-keys-in-application-settings"></a>アプリケーション設定で Azure Cosmos DB キーを表示する
 
 次に、リソース グループ内の Azure App Service に移動します。 [構成] タブをクリックして、App Service の [アプリケーション設定] を表示します。 [アプリケーション設定] には、Cosmos DB に接続するために必要な Cosmos DB アカウントと主キーの値、およびテンプレート デプロイから渡されたデータベース名とコンテナー名が含まれています。
 
-:::image type="content" source="./media/create-website/application-settings.png" alt-text="アプリケーション設定":::
+:::image type="content" source="./media/create-website/application-settings.png" alt-text="Azure へのデプロイ":::
 
 ### <a name="view-web-app-in-deployment-center"></a>[デプロイ センター] で Web アプリを表示する
 
 次に、App Service の [デプロイ センター] に移動します。 ここには、テンプレートに渡された GitHub リポジトリを指す [リポジトリ] が表示されます。 また、下の [状態] は [Success(Active)]\(成功 (アクティブ)\) を示しています。これはアプリケーションが正常にデプロイされ、開始されたことを意味します。
 
-:::image type="content" source="./media/create-website/deployment-center.png" alt-text="デプロイ センター":::
+:::image type="content" source="./media/create-website/deployment-center.png" alt-text="Azure へのデプロイ":::
 
 ### <a name="run-the-web-application"></a>Web アプリケーションの実行
 
 [デプロイ センター] の上部にある **[参照]** をクリックして、Web アプリケーションを開き ます。 Web アプリケーションのホーム画面が表示されます。 **[新規作成]** をクリックし、フィールドにデータを入力して、[保存] をクリックします。 結果の画面には Cosmos DB に保存されたデータが表示されます。
 
-:::image type="content" source="./media/create-website/app-home-screen.png" alt-text="ホーム画面":::
+:::image type="content" source="./media/create-website/app-home-screen.png" alt-text="Azure へのデプロイ":::
 
 ## <a name="step-3-how-does-it-work"></a>手順 3:動作のしくみ
 
@@ -98,19 +98,19 @@ Azure portal で、デプロイ先のサブスクリプションを選択し、�
 
 まず、アプリケーションでは、ASP.NET MVC Web アプリケーションの `Startup` クラスで、Cosmos DB エンドポイントとキーを要求する必要があります。 [Cosmos DB To Do サンプル](https://github.com/Azure-Samples/cosmos-dotnet-core-todo-app)はローカルで実行でき、お客様が appsettings.json に接続情報を入力できます。 しかし、デプロイする場合、このファイルはアプリと共にデプロイされます。 赤で囲まれた以下の行で appsettings.json の設定にアクセスできない場合は、Azure App Service のアプリケーション設定から試行されます。
 
-:::image type="content" source="./media/create-website/startup.png" alt-text="Startup":::
+:::image type="content" source="./media/create-website/startup.png" alt-text="Azure へのデプロイ":::
 
 ### <a name="using-special-azure-resource-management-functions"></a>特殊な Azure リソース管理関数の使用
 
 デプロイされたアプリケーションでこれらの値を使用できるようにするために、Azure Resource Manager テンプレートでは、[reference](../azure-resource-manager/templates/template-functions-resource.md#reference) や [listKeys](../azure-resource-manager/templates/template-functions-resource.md#listkeys) などの特殊な Azure リソース管理関数を使用して、Cosmos DB アカウントからこれらの値を要求できます。これらの関数を使うと、Cosmos DB アカウントから値を取得し、'{section:key}' 形式で、上のアプリケーションで使用されているものと一致するキー名を使用して、アプリケーション設定の値に挿入できます。 たとえば、「 `CosmosDb:Account` 」のように入力します。
 
-:::image type="content" source="./media/create-website/template-keys.png" alt-text="テンプレート キー":::
+:::image type="content" source="./media/create-website/template-keys.png" alt-text="Azure へのデプロイ":::
 
 ### <a name="deploying-web-apps-from-github"></a>GitHub からの Web アプリのデプロイ
 
 最後に、GitHub から App Service に Web アプリケーションをデプロイする必要があります。 これは、以下の JSON を使用して行います。 2 点注意しなければならないのは、このリソースの種類と名前です。 `"type": "sourcecontrols"` と `"name": "web"` の両方のプロパティ値はハードコーディングされているため、変更しないでください。
 
-:::image type="content" source="./media/create-website/deploy-from-github.png" alt-text="GitHub からのデプロイ":::
+:::image type="content" source="./media/create-website/deploy-from-github.png" alt-text="Azure へのデプロイ":::
 
 ## <a name="next-steps"></a>次のステップ
 

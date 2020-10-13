@@ -3,12 +3,12 @@ title: Java アプリケーションを任意の環境で監視する - Azure Mo
 description: アプリをインストルメント化することなく、任意の環境で実行されている Java アプリケーションのアプリケーション パフォーマンスを監視します。 分散トレースとアプリケーション マップです。
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: e1442d1b1fb1bf8fbef82354b8aa1d2354640aa9
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 08e5b68ea5e5ec63531bb4f9c6b4483e9afbb9bc
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902084"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370036"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Azure Monitor Application Insights を監視する Java のコード不要のアプリケーション - パブリックプレビュー
 
@@ -20,15 +20,17 @@ Java のコード不要のアプリケーション監視は、シンプルさが
 
 アプリケーションからカスタム テレメトリを送信することはできます。 3\.0 エージェントは、自動収集されたすべてのテレメトリと連動して、追跡と関連付けを行います。
 
+3\.0 エージェントは、Java 8 以降をサポートしています。
+
 ## <a name="quickstart"></a>クイック スタート
 
 **1.エージェントのダウンロード**
 
-[applicationinsights-agent-3.0.0-PREVIEW.5.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.5/applicationinsights-agent-3.0.0-PREVIEW.5.jar) をダウンロードします。
+[applicationinsights-agent-3.0.0-PREVIEW.7.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.7/applicationinsights-agent-3.0.0-PREVIEW.7.jar) をダウンロードします
 
 **2.JVM をエージェントにポイントする**
 
-アプリケーションの JVM 引数に `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.5.jar` を追加します
+アプリケーションの JVM 引数に `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.7.jar` を追加します
 
 一般的な JVM 引数には、`-Xmx512m` と `-XX:+UseG1GC` があります。 これらの引数の追加先がわかれば、これの追加先もわかります。
 
@@ -44,7 +46,7 @@ Application Insights リソースをまだ持っていない場合は、[リソ�
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000-000000000000
 ```
 
-または、次の内容で、`ApplicationInsights.json` という名前の構成ファイルを作成し、`applicationinsights-agent-3.0.0-PREVIEW.5.jar` と同じディレクトリに配置します。
+または、次の内容で、`ApplicationInsights.json` という名前の構成ファイルを作成し、`applicationinsights-agent-3.0.0-PREVIEW.7.jar` と同じディレクトリに配置します。
 
 ```json
 {
@@ -225,6 +227,8 @@ telemetryClient.trackEvent("WinGame");
 ## <a name="upgrading-from-application-insights-java-sdk-2x"></a>Application Insights Java SDK 2.x からのアップグレード
 
 アプリケーションで Application Insights Java SDK 2.x を既に使用している場合は、削除する必要はありません。 Java 3.0 エージェントでは、Java SDK 2.x を介して送信しているカスタム テレメトリの検出、キャプチャ、関連付けを行います。一方で、Java SDK 2.x によって実行される自動収集を抑制し、キャプチャの重複を防止します。
+
+Application Insights 2.x エージェントを使用していた場合は、2.x エージェントを指す `-javaagent:` JVM 引数を削除する必要があります。
 
 > [!NOTE]
 > 注:3.0 エージェントを使用している場合、Java SDK 2.x TelemetryInitializers と TelemetryProcessors は実行されません。

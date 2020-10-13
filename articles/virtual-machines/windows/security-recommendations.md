@@ -1,6 +1,6 @@
 ---
 title: Azure の Windows 仮想マシンについてのセキュリティに関する推奨事項
-description: これらの推奨事項を適用することにより、共同責任モデルに記載されたセキュリティに関する義務を果たすことができ、デプロイの全体的なセキュリティが向上します。
+description: Azure の Windows VM にこれらの推奨事項を適用することにより、共同責任モデルに記載されたセキュリティに関する義務を果たすことができ、デプロイの全体的なセキュリティが向上します。
 author: msmbaldwin
 manager: RKarlin
 ms.service: virtual-machines
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 94da5ebc3094e112e6f6fcbf220fb7b6738686d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6235524a4fdcb504b3fad1f1dc59036838fa717
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82100721"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331422"
 ---
 # <a name="security-recommendations-for-windows-virtual-machines-in-azure"></a>Azure の Windows 仮想マシンについてのセキュリティに関する推奨事項
 

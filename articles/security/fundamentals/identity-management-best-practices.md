@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: b354fda4d23d13b8defed4381335ab147bbece5d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 69aac7dff80b7c85212602f1c03957a117628737
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835903"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400334"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス
 
@@ -229,7 +229,7 @@ RBAC などの機能を使用したデータ アクセス制御を適用しな�
 
 特権アカウントとは、IT システムを管理するアカウントです。 サイバー攻撃では、組織のデータやシステムへのアクセス手段を得るために、このようなアカウントが標的にされます。 特権アクセスを保護するには、悪意のあるユーザーにさらされる危険からアカウントとシステムを分離する必要があります。
 
-サイバー攻撃者から特権アクセスを保護するためのロードマップを作成して従うことをお勧めします。 Azure AD、Microsoft Azure、Office 365、およびその他のクラウド サービスで管理または報告される ID とアクセスを保護するための詳細なロードマップの作成については、「[Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する](/azure/active-directory/users-groups-roles/directory-admin-roles-secure)」を参照してください。
+サイバー攻撃者から特権アクセスを保護するためのロードマップを作成して従うことをお勧めします。 Azure AD、Microsoft Azure、Microsoft 365、およびその他のクラウド サービスで管理または報告される ID とアクセスを保護するための詳細なロードマップの作成については、「[Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する](/azure/active-directory/users-groups-roles/directory-admin-roles-secure)」を確認してください。
 
 「[Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する](/azure/active-directory/users-groups-roles/directory-admin-roles-secure)」に記載されているベスト プラクティスを以下にまとめています。
 
@@ -240,7 +240,7 @@ RBAC などの機能を使用したデータ アクセス制御を適用しな�
 **詳細**: 重要な管理者ロールから、すべてのコンシューマー アカウントを削除します (hotmail.com、live.com、outlook.com といった Microsoft アカウントなど)。
 
 **ベスト プラクティス**: 管理者特権を侵害するフィッシングや他の攻撃を回避するため、すべての重要な管理者ロールが管理タスク用のアカウントを持つようにします。
-**詳細**: 管理タスクの実行に必要な特権が割り当てられている管理者アカウントを別に作成します。 Microsoft Office 365 のメールや任意の Web 閲覧などの日常の生産性向上ツールに対しては、これらの管理者アカウントを使用できないようにします。
+**詳細**: 管理タスクの実行に必要な特権が割り当てられている管理者アカウントを別に作成します。 Microsoft 365 の電子メールや任意の Web 閲覧など、日常的に使用する生産性向上ツールには、これらの管理者アカウントを使用できないようにします。
 
 **ベスト プラクティス**: 高度な特権ロールに属するアカウントを識別および分類します。   
 **詳細**: Azure AD Privileged Identity Management を有効にした後、グローバル管理者、特権ロール管理者、およびその他の高度な特権ロールに属するユーザーを表示します。 これらのロールで不要になったアカウントを削除し、管理者ロールに割り当てられている残りのアカウントを分類します。
@@ -281,7 +281,7 @@ RBAC などの機能を使用したデータ アクセス制御を適用しな�
 **詳細**: 従業員が組織を離れるときに管理者アカウントを無効化または削除するプロセスを設けます。
 
 **ベスト プラクティス**: 最新の攻撃手法を使用して、管理者アカウントを定期的にテストします。
-**詳細**: Office 365 攻撃シミュレーターやサードパーティのオファリングを使用して、組織で現実的な攻撃のシナリオを実行します。 これは、実際の攻撃が発生する前に脆弱性のあるユーザーを発見するのに役立ちます。
+**詳細**: Microsoft 365 攻撃シミュレーターまたはサードパーティのオファリングを使用して、現実的な攻撃のシナリオを組織内で実行します。 これは、実際の攻撃が発生する前に脆弱性のあるユーザーを発見するのに役立ちます。
 
 **ベスト プラクティス**: 最も頻繁に使用される攻撃手法を軽減するための対策を講じます。  
 **詳細**: [職場または学校アカウントに切り替える必要がある管理者ロールの Microsoft アカウントを特定する](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts)  
@@ -294,11 +294,11 @@ RBAC などの機能を使用したデータ アクセス制御を適用しな�
 
 [すべての特権ロールに属するユーザーおよび露出しているユーザーに多要素認証を要求する](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users)  
 
-[Office 365 セキュリティ スコアを取得する (Office 365 を使用している場合)](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#obtain-your-office-365-secure-score-if-using-office-365)  
+[Microsoft 365 のセキュリティ スコアを取得する (Microsoft 365 を使用している場合)](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#obtain-your-office-365-secure-score-if-using-office-365)  
 
-[Office 365 セキュリティおよびコンプライアンス ガイダンスを確認する (Office 365 を使用している場合)](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#review-the-office-365-security-and-compliance-guidance-if-using-office-365)  
+[Microsoft 365 のセキュリティ ガイダンスを確認する (Microsoft 365 を使用している場合)](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#review-the-office-365-security-and-compliance-guidance-if-using-office-365)  
 
-[Office 365 アクティビティの監視を構成する (Office 365 を使用している場合)](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#configure-office-365-activity-monitoring-if-using-office-365)  
+[Microsoft 365 のアクティビティ監視を構成する (Microsoft 365 を使用している場合)](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#configure-office-365-activity-monitoring-if-using-office-365)  
 
 [インシデント/緊急時対応計画の所有者を設定する](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#establish-incidentemergency-response-plan-owners)  
 

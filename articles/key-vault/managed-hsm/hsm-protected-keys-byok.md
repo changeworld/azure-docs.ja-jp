@@ -8,16 +8,16 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: ambapat
-ms.openlocfilehash: b90d868042e9fb947afdfae9acf35262912eff94
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ce275674704cd7538f25a2d3f31d0e65aecd7925
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90993381"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320627"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>HSM で保護されたキーを Managed HSM にインポートする (BYOK)
 
- Azure Key Vault Managed HSM は、オンプレミスのハードウェア セキュリティ モジュール (HSM) で生成されたキーのインポートをサポートしています。このキーが HSM による保護の境界の外に出ることは決してありません。 多くの場合、このシナリオは *Bring Your Own Key* (BYOK) と呼ばれます。 Managed HSM では、HSM の nCipher nShield ファミリ (FIPS 140-2 レベル 3 で検証済み) を使用してキーが保護されます。
+ Azure Key Vault Managed HSM は、オンプレミスのハードウェア セキュリティ モジュール (HSM) で生成されたキーのインポートをサポートしています。このキーが HSM による保護の境界の外に出ることは決してありません。 多くの場合、このシナリオは *Bring Your Own Key* (BYOK) と呼ばれます。 Managed HSM によるキーの保護は、Marvell LiquidSecurity HSM アダプター (FIPS 140-2 レベル 3 で検証済み) を使用して行われます。
 
 この記事の情報は、Managed HSM と共に使用する独自の HSM で保護されたキーを計画、生成、転送する場合に役立ちます。
 

@@ -9,14 +9,14 @@ ms.custom: sqldbrb=4
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: sashan, moslake, carlrab
+ms.reviewer: sashan, moslake
 ms.date: 11/13/2019
-ms.openlocfilehash: b4af9fce3c5ca779866055d2835ebfebe9fbb9cf
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: f43d03f722617e88e7a00e71798351c88ce10e98
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85987020"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327597"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Azure ハイブリッド特典 - Azure SQL Database と SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "85987020"
 > [!NOTE]
 > Azure ハイブリッド特典に変更してもダウンタイムは必要ありません。
 
-![価格](./media/azure-hybrid-benefit/pricing.png)
+![仮想コアの価格体系](./media/azure-hybrid-benefit/pricing.png)
 
 ## <a name="choose-a-license-model"></a>ライセンス モデルを選択する
 

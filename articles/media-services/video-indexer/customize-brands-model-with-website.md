@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: kumud
-ms.openlocfilehash: c3223bed6c8335a31b1bfb918e6d44e3b54a7787
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5bd88493324867dc957922a732506f5cfb8bbc20
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047272"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361236"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-website"></a>Video Indexer Web サイトを使用してブランド モデルをカスタマイズする
 
@@ -42,7 +42,7 @@ Bing ブランド データベースからのブランドを検出するかど�
 
 3. ブランドを編集するには、 **[ブランド]** タブを選択します。
 
-    ![Video Indexer でブランド モデルをカスタマイズする](./media/customize-brand-model/customize-brand-model.png)
+    ![[コンテンツ モデルのカスタマイズ] ダイアログ ボックスの [ブランド] タブを示すスクリーンショット。](./media/customize-brand-model/customize-brand-model.png)
 
 4. Video Indexer で、Bing によって提案されたブランドを含める場合は、 **[Bing で提案されたブランドを表示する]** オプションをオンにします。そうしない場合は、チェックボックスをオフのままにします。
 
@@ -54,7 +54,7 @@ Bing ブランド データベースからのブランドを検出するかど�
 
 1. **[+ ブランドの追加]** を選択します。
 
-    ![Video Indexer でブランド モデルをカスタマイズする](./media/customize-brand-model/add-brand.png)
+    ![ブランドを追加できる場所である [ブランドを含める] ダイアログ ボックスを示すスクリーンショット。](./media/customize-brand-model/add-brand.png)
 
     名前 (必須)、カテゴリ (省略可能)、説明 (省略可能)、参照 URL (省略可能) を指定します。
     カテゴリ フィールドは、ブランドをタグ付けするためのものです。 このフィールドは、Video Indexer API を使用している場合に、ブランドの "*タグ*" として表示されます。 たとえば、ブランドが "Azure" の場合、"クラウド" としてタグを付けたり、分類したりすることができます。

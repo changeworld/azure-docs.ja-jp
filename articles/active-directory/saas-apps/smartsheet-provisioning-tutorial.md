@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/07/2019
 ms.author: jeedes
-ms.openlocfilehash: f323b563d90de315bdbb317f88d7f9449be6c008
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 623ec6999add175e85f117e547fba61734d2b892
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546697"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91286012"
 ---
 # <a name="tutorial-configure-smartsheet-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Smartsheet を構成する
 
@@ -69,15 +69,15 @@ Azure AD での自動ユーザー プロビジョニング用に Smartsheet を�
 
 5. **[Apps and Integrations]\(アプリと統合\)** に移動して、Azure AD で自動ユーザー プロビジョニングを構成するために必要な **[Secret Token]\(シークレット トークン\)** を生成します。
 
-    ![Smartsheet のインストール](media/smartsheet-provisioning-tutorial/Smartsheet05.png)
+    ![Smartsheet の管理者ページのスクリーンショット。ユーザーのアバターと [Apps and Integrations]\(アプリと統合\) オプションが選択されています。](media/smartsheet-provisioning-tutorial/Smartsheet05.png)
 
 6. **[API Access]\(API アクセス\)** を選択します。 **[Generate new access token]\(新しいアクセス トークンの生成\)** をクリックします。
 
-    ![Smartsheet のインストール](media/smartsheet-provisioning-tutorial/Smartsheet06.png)
+    ![[個人設定] ダイアログ ボックスのスクリーンショット。[API Access]\(API アクセス\) と [Generate new access token]\(新しいアクセス トークンの生成\) オプションが選択されています。](media/smartsheet-provisioning-tutorial/Smartsheet06.png)
 
 7. API アクセス トークンの名前を定義します。 **[OK]** をクリックします。
 
-    ![Smartsheet のインストール](media/smartsheet-provisioning-tutorial/Smartsheet07.png)
+    ![ステップ 1 (全部で 2) のスクリーンショット。[OK] オプションが選択されている [Generate API Access Token]\(API アクセス トークンの生成\)。](media/smartsheet-provisioning-tutorial/Smartsheet07.png)
 
 8. これが API アクセス トークンを表示できる唯一のタイミングなので、コピーして保存します。 これは、Azure AD の **[Secret Token]\(シークレット トークン\)** フィールドに必要です。
 
@@ -117,11 +117,11 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[管理者資格情報]** セクションの **[テナント URL]** および **[シークレット トークン]** に、先ほど Smartsheet から取得した **SCIM 2.0 ベース URL およびアクセス トークン**の値をそれぞれ入力します。 **[接続テスト]** をクリックして、Azure AD から Smartsheet に接続できることを確認します。 接続できない場合は、使用中の Smartsheet アカウントに SysAdmin アクセス許可があることを確認してから、もう一度試します。
 

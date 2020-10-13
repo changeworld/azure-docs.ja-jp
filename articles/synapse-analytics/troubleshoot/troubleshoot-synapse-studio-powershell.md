@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: f4afaf536a9c65758ad030e5cdeeee5fb97074d7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7cf9f18701317482284a3f1fa4b69a2c2927f64a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046668"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287714"
 ---
 # <a name="diagnose-azure-synapse-studio-preview-connectivity-issues-with-powershell-script"></a>PowerShell スクリプトを使用した Azure Synapse Studio (プレビュー) 接続に関する問題の診断
 
@@ -27,13 +27,13 @@ Azure Synapse Studio (プレビュー) の正常な動作は、一連の Web API
 
 ## <a name="troubleshooting-steps"></a>トラブルシューティングの手順
 
-次のリンクを右クリックし、[対象をファイルに保存] をクリックします。
+次のリンクを右クリックし、[対象をファイルに保存] を選択します。
 
 - [Test-AzureSynapse.ps1](https://go.microsoft.com/fwlink/?linkid=2119734)
 
 または、リンクを直接開いて、開いたスクリプト ファイルを保存することもできます。 今後変更される可能性があるため、上記のリンクのアドレスは保存しないでください。
 
-エクスプローラーで、ダウンロードしたスクリプト ファイルを右クリックし、[PowerShell で実行] をクリックします。
+エクスプローラーで、ダウンロードしたスクリプト ファイルを右クリックし、[PowerShell で実行] を選択します。
 
 ![ダウンロードしたスクリプト ファイルを PowerShell で実行する](media/troubleshooting-synapse-studio-powershell/run-with-powershell.png)
 

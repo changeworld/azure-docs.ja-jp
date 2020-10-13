@@ -1,6 +1,6 @@
 ---
 title: 仮想ネットワークに参加するように Azure-SSIS 統合ランタイムを構成するためのチュートリアル
-description: Azure-SSIS 統合ランタイムを Azure 仮想ネットワークに参加させる方法について説明します。
+description: Azure 仮想ネットワークに参加する目的で Azure-SSIS 統合ランタイムを参加させる方法について説明します。
 services: data-factory
 documentationcenter: ''
 author: chugugrace
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 1/10/2020
-ms.openlocfilehash: 0b83049e154afc48334cc6deb576c700ed71d844
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: ef2bd2fa9badc7c299099b647e1f67c50e997024
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118155"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292305"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>仮想ネットワークに参加するように Azure-SQL Server Integration Services (SSIS) 統合ランタイム (IR) を構成する
 

@@ -3,12 +3,12 @@ title: Azure DevTest Labs で自動シャットダウン ポリシーを管理�
 description: 使用されていないときに仮想マシンが自動的にシャットダウンされるように、ラボの自動シャットダウン ポリシーを設定する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a30070470f9a75ec5c56d448cd09ca82dd0cbce7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3532e4859bd63c81cb9b9cda973064e5ef8357ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287548"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320712"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Azure DevTest Labs でラボとコンピューティング仮想マシンの自動シャットダウンを構成する
 
@@ -162,7 +162,7 @@ Azure DevTest Labs では、各ラボのポリシー (設定) を管理するこ
     }
     ```
     
-    ![要求本文の JSON スキーマ](./media/devtest-lab-auto-shutdown/request-json.png)
+    ![[要求本文の JSON スキーマ] を示すスクリーンショット。](./media/devtest-lab-auto-shutdown/request-json.png)
 7. デザイナーで **[+ 新しいステップ]** を選択し、次の手順のようにします。
     1. **[Office 365 Outlook - メールの送信]** を探します。 
     2. **[アクション]** から **[メールの送信]** を選択します。 

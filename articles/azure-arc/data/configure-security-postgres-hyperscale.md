@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: b166348031e9f72e8005e866a198855db9c01a9c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4f89ace7130e95ba109edcf6becca1e15c8d32c1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931335"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273202"
 ---
 # <a name="configure-security-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループのセキュリティを構成する
 
@@ -156,14 +156,66 @@ Postgres の標準的な方法を使用して、ユーザーまたはロール�
 Azure Arc 対応 PostgreSQL Hyperscale には、サーバー グループの作成時にパスワードを設定する _postgres_ という標準の Postgres 管理ユーザーが用意されています。
 パスワードを変更するためのコマンドの一般的な形式は、次のとおりです。
 ```console
-azdata arc postgres server edit --name <server group name> --admin-password <new password>
+azdata arc postgres server edit --name <server group name> --admin-password
 ```
-パスワードは、AZDATA_PASSWORD **セッション**の環境変数の値に設定されます (存在する場合)。 そうでない場合は、値の入力を求めるプロンプトがユーザーに表示されます。
-AZDATA_PASSWORD セッションの環境変数が存在するかどうか、または設定されている値 (あるいはその両方) を確認するには、次のように実行します。
-```console
-printenv AZDATA_PASSWORD
-```
-新しいパスワードの入力を求めるプロンプトが表示されるようにする場合は、その値を削除してください。
+
+ここで、--admin-password は、AZDATA_PASSWORD **セッション**の環境変数内の値の存在に関連するブール値です。
+AZDATA_PASSWORD **セッション**の環境変数が存在し、値を持っている場合は、上記のコマンドを実行すると、postgres ユーザーのパスワードがこの環境変数の値に設定されます。
+
+AZDATA_PASSWORD **セッション**の環境変数が存在し、値がない場合、または AZDATA_PASSWORD **セッション**の環境変数が存在しない場合は、上記のコマンドを実行すると、ユーザーは対話形式でパスワードの入力を求められます。
+
+#### <a name="changing-the-password-of-the-postgres-administrative-user-in-an-interactive-way"></a>対話形式で postgres 管理ユーザーのパスワードを変更する:
+1. AZDATA_PASSWORD **セッション**の環境変数を削除するか、その値を削除します
+2. 次のコマンドを実行します。
+   ```console
+   azdata arc postgres server edit --name <server group name> --admin-password
+   ```
+   次に例を示します。
+   ```console
+   azdata arc postgres server edit -n postgres01 --admin-password
+   ```
+   パスワードを入力してそれを確認するように求められます。
+   ```console
+   Postgres Server password:
+   Confirm Postgres Server password:
+   ```
+   パスワードが更新されると、コマンドの出力は次のようになります。
+   ```console
+   Updating password
+   Updating postgres01 in namespace `arc`
+   postgres01 is Ready
+   ```
+   
+#### <a name="changing-the-password-of-the-postgres-administrative-user-using-the-azdata_password-sessions-environment-variable"></a>AZDATA_PASSWORD **セッション**の環境変数を使用して、postgres 管理ユーザーのパスワードを変更する:
+1. AZDATA_PASSWORD **セッション**の環境変数の値を、パスワードとして使用するものに設定します。
+2. 次のコマンドを実行します。
+   ```console
+   azdata arc postgres server edit --name <server group name> --admin-password
+   ```
+   次に例を示します。
+   ```console
+   azdata arc postgres server edit -n postgres01 --admin-password
+   ```
+   
+   パスワードが更新されると、コマンドの出力は次のようになります。
+   ```console
+   Updating password
+   Updating postgres01 in namespace `arc`
+   postgres01 is Ready
+   ```
+
+> [!NOTE]
+> AZDATA_PASSWORD セッションの環境変数が存在するかどうか、およびその値が何かを確認するには、次のように実行します。
+> - Linux クライアントの場合:
+> ```console
+> printenv AZDATA_PASSWORD
+> ```
+>
+> - PowerShell を使用した Windows クライアントの場合:
+> ```console
+> echo $env:AZDATA_PASSWORD
+> ```
+
 
 
 ## <a name="next-steps"></a>次のステップ

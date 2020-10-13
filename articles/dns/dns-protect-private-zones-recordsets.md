@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 1bbb410b3aac7d1e30db075003eb30ec27b11a38
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 20e20968b6367e0a8c0131d6e7e8d15e56c06d63
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926588"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363224"
 ---
 # <a name="how-to-protect-private-dns-zones-and-records"></a>プライベート DNS ゾーンとレコードを保護する方法
 
@@ -102,9 +102,9 @@ az role assignment create \
 
 レコード セット レベルの RBAC アクセス許可は、Azure portal の [レコード セット] ページにある **[アクセス制御 (IAM)]** ボタンを使用して構成できます。
 
-![Azure Portal を使用したレコード セット レベルの RBAC](./media/dns-protect-private-zones-recordsets/rbac3.png)
+![[アクセス制御 (IAM)] ボタンを示すスクリーンショット。](./media/dns-protect-private-zones-recordsets/rbac3.png)
 
-![Azure Portal を使用したレコード セット レベルの RBAC](./media/dns-protect-private-zones-recordsets/rbac4.png)
+![[ロールの割り当ての追加] が選択されている [アクセス制御] を示すスクリーンショット。](./media/dns-protect-private-zones-recordsets/rbac4.png)
 
 レコード セット レベルの RBAC アクセス許可は、[Azure PowerShell を使用して付与する](../role-based-access-control/role-assignments-powershell.md)こともできます。
 

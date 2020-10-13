@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: ea88797a6423118cba40d117a37dc9df75b0b7a1
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: codepen, devx-track-js
+ms.openlocfilehash: 539145836849bb66bcf1f12a97ea405fe84c47bd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089447"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311378"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>データ ドリブンのスタイルの式 (Web SDK)
 
@@ -98,6 +98,8 @@ Azure Maps Web SDK では、さまざまな種類の式がサポートされて�
 | `['length', string | array]` | number | 文字列または配列の長さを取得します。 |
 | `['in', boolean | string | number, array]` | boolean | 項目が配列に存在するかどうかを判断します |
 | `['in', substring, string]` | boolean | substring が文字列に存在するかどうかを判断します |
+| `['index-of', boolean | string | number, array | string]`<br/><br/>`['index-of', boolean | string | number, array | string, number]` | number | 配列または部分文字列内で項目が見つかった最初の位置を返します。または、入力が見つからない場合は、`-1` を返します。 検索の開始位置から、オプションのインデックスを受け入れます。 |
+| `['slice', array | string, number]`<br/><br/>`['slice', array | string, number, number]` | `string` \| 配列 | 指定された開始インデックスの文字列、または設定されている場合は開始インデックスと終了インデックスの間の文字列の、配列または部分文字列から項目を返します。 戻り値には、開始インデックスが含まれますが、終了インデックスは含まれません。 |
 
 **使用例**
 
@@ -151,8 +153,11 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 //Get item [0][1] from a 2D array "properties.array2d[0][1]" = "b"
 ['at', 1, ['at', 0, ['get', 'array2d']]]
 
-//Check to see if a value is in an array property "properties.abcArray.indexOf('a') !== -1" = true
+//Check to see if a value is in an array "properties.abcArray.indexOf('a') !== -1" = true
 ['in', 'a', ['get', 'abcArray']]
+
+//Gets the index of the value 'b' in an array "properties.abcArray.indexOf('b')" = 1
+['index-of', 'b', ['get', 'abcArray']]
 
 //Get the length of an array "properties.abcArray.length" = 3
 ['length', ['get', 'abcArray']]
@@ -162,6 +167,12 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 //Check that "fillColor" exists as a subproperty of "_style".
 ['has', 'fillColor', ['get', '_style']]
+
+//Slice an array starting at index 2 "properties.abcArray.slice(2)" = ['c']
+['slice', ['get', 'abcArray'], 2]
+
+//Slice a string from index 0 to index 4 "properties.entityType.slice(0, 4)" = 'rest'
+['slice', ['get', 'entityType'], 0, 4]
 ```
 
 ## <a name="math-expressions"></a>数式
@@ -225,8 +236,8 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 | 式 | の戻り値の型 : | 説明 |
 |------------|-------------|-------------|
-| `['! ', boolean]` | boolean | 論理否定。 入力が `false` の場合は `true` が返され、入力が `true` の場合は `false` が返されます。 |
-| `['!= ', value, value]` | boolean | 入力値が等しくない場合は `true` が返され、それ以外の場合は `false` が返されます。 |
+| `['!', boolean]` | boolean | 論理否定。 入力が `false` の場合は `true` が返され、入力が `true` の場合は `false` が返されます。 |
+| `['!=', value, value]` | boolean | 入力値が等しくない場合は `true` が返され、それ以外の場合は `false` が返されます。 |
 | `['<', value, value]` | boolean | 最初の入力が厳密に 2 番目の入力未満の場合は `true` が返され、それ以外の場合は `false` が返されます。 引数は、両方とも文字列、または両方とも数値である必要があります。 |
 | `['<=', value, value]` | boolean | 最初の入力が 2 番目の入力以下の場合は `true` が返され、それ以外の場合は `false` が返されます。 引数は、両方とも文字列、または両方とも数値である必要があります。 |
 | `['==', value, value]` | boolean | 入力値が等しい場合は `true` が返され、それ以外の場合は `false` が返されます。 引数は、両方とも文字列、または両方とも数値である必要があります。 |

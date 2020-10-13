@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: c9483363dcf6b4a5c05d71daa75d680dd25b8308
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 54c14f1ef78694055c567ded0fdccede062605ba
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002688"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400317"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure ID 管理のセキュリティの概要
 
@@ -54,7 +54,7 @@ Azure Active Directory (Azure AD) のセキュリティ上の利点を活用す�
 
 SSO とは、1 つのユーザー アカウントを使って 1 回サインインするだけで作業に必要なすべてのアプリケーションとリソースにアクセスできる機能です。 いったんサインインすると、もう一度認証 (パスワードの入力など) を求められることなく、必要なすべてのアプリケーションにアクセスできます。
 
-多くの組織では、ユーザーの生産性向上のため、Office 365、Box、Salesforce などの SaaS アプリケーションに依存しています。 従来は、IT スタッフが各 SaaS アプリケーションのユーザー アカウントを個別に作成し、更新する必要がありました。さらに、ユーザーは、各 SaaS アプリケーションのパスワードを覚える必要がありました。
+多くの組織では、ユーザーの生産性向上のために、Microsoft 365、Box、Salesforce などの SaaS アプリケーションに依存しています。 従来は、IT スタッフが各 SaaS アプリケーションのユーザー アカウントを個別に作成し、更新する必要がありました。さらに、ユーザーは、各 SaaS アプリケーションのパスワードを覚える必要がありました。
 
 Azure AD はオンプレミスの Active Directory 環境をクラウドに拡張して、ユーザーがプライマリ組織アカウントを使用してドメイン参加デバイスおよび会社のリソースにサインインするだけでなく、それぞれの業務に必要なすべての Web アプリケーションおよび SaaS アプリケーションにもサインインできるようにします。
 
@@ -147,14 +147,14 @@ Intune などのモバイル デバイス管理ソリューションと組み合
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
 
-Azure AD Privileged Identity Management を使用すると、特権 ID と、Azure AD や他の Microsoft オンライン サービス (Office 365 や Microsoft Intune など) のリソースへのアクセスを管理、制御、監視できます。
+Azure AD Privileged Identity Management を使用すると、特権 ID と、Azure AD や他の Microsoft Online Services (Microsoft 365 や Microsoft Intune など) のリソースへのアクセスを管理、制御、監視できます。
 
-ユーザーは、Azure や Office 365 のリソース、または他の SaaS アプリで、特権操作を実行することが必要になる場合があります。 通常は、組織がユーザーに Azure AD で永続的な特権アクセスを付与する必要があります。 しかし、このようなアクセスでは、ユーザーが管理者特権を使用して実行している内容を組織が十分に監視できないため、クラウドでホストされているリソースのセキュリティ リスクが増大します。 また、特権アクセスを持つユーザー アカウントが侵害された場合に、その 1 つの侵害が組織のクラウド セキュリティ全体に影響を与える可能性もあります。 Azure AD Privileged Identity Management はこのリスクの軽減に役立ちます。
+ユーザーは、Azure または Microsoft 365 のリソース、または他の SaaS アプリで、特権操作の実行が必要になる場合があります。 通常は、組織がユーザーに Azure AD で永続的な特権アクセスを付与する必要があります。 しかし、このようなアクセスでは、ユーザーが管理者特権を使用して実行している内容を組織が十分に監視できないため、クラウドでホストされているリソースのセキュリティ リスクが増大します。 また、特権アクセスを持つユーザー アカウントが侵害された場合に、その 1 つの侵害が組織のクラウド セキュリティ全体に影響を与える可能性もあります。 Azure AD Privileged Identity Management はこのリスクの軽減に役立ちます。
 
 Azure AD Privileged Identity Management を使用することで、次のことが可能になります。
 
 * Azure AD の管理者であるユーザーを特定する。
-* Office 365 や Intune などの Microsoft サービスへのオンデマンドのジャスト イン タイム (JIT) な管理アクセスを可能にする。
+* Microsoft 365 や Intune などの Microsoft サービスへの、オンデマンドのジャスト イン タイム (JIT) な管理アクセスを可能にする。
 * 管理者のアクセス履歴と管理者の割り当ての変更に関するレポートを取得する。
 * 特権ロールへのアクセスに関するアラートを受け取る。
 
@@ -174,7 +174,7 @@ Azure AD Identity Protection は、リスク検出や組織の ID に影響す�
 
 ## <a name="hybrid-identity-managementazure-ad-connect"></a>ハイブリッド ID 管理/Azure AD Connect
 
-Microsoft の ID ソリューションでは、オンプレミスとクラウドを基盤とする機能を利用する際に、場所に関係なく、1 つのユーザー ID ですべてのリソースの認証と権限付与を行います。 これをハイブリッド ID と呼んでいます。 Azure AD Connect は、ハイブリッド ID の目標に適合し、それを達成するように設計された Microsoft のツールです。 Office 365、Azure、SaaS など Azure AD と連動するアプリケーションに関して、ユーザーの ID を共通化することができます。 また、以下のような特徴があります。
+Microsoft の ID ソリューションでは、オンプレミスとクラウドを基盤とする機能を利用する際に、場所に関係なく、1 つのユーザー ID ですべてのリソースの認証と権限付与を行います。 これをハイブリッド ID と呼んでいます。 Azure AD Connect は、ハイブリッド ID の目標に適合し、それを達成するように設計された Microsoft のツールです。 Microsoft 365、Azure、SaaS など Azure AD と連動するアプリケーションに関して、ユーザーの ID を共通化することができます。 また、以下のような特徴があります。
 
 * Synchronization
 * AD FS とフェデレーションの統合

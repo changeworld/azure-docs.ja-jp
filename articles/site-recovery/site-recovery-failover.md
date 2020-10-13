@@ -4,12 +4,12 @@ description: Azure Site Recovery で VM/物理サーバーを Azure にフェー
 ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
-ms.openlocfilehash: d2f7fed25955d6a34c6162b87b82bfae5e58ff41
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 481e7c692be24bbebd14584f8158740a5b7043ba
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563983"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317890"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>オンプレミスから Azure へのフェールオーバーを実行する
 
@@ -46,7 +46,7 @@ ms.locfileid: "90563983"
 1. Site Recovery コンテナーで、 **[復旧計画]**  > *recoveryplan_name* を選択します。
 2. **[フェールオーバー]** をクリックします。
 
-    ![スクリーンショットには、[フェールオーバー] が [その他] メニューで選択されている ADRP ウィンドウが示されています。](./media/site-recovery-failover/Failover.png)
+    ![Azure Site Recovery のスクリーンショット。ADRP ウィンドウの [詳細] メニューから [フェールオーバー] が選択されています。](./media/site-recovery-failover/Failover.png)
 
 3. **[フェールオーバー]**  >  **[フェールオーバーの方向]** では、Azure にレプリケートする場合は規定値のままにします。
 4. **[フェールオーバー]** で、フェールオーバーする **[復旧ポイント]** を選択します。
@@ -81,7 +81,7 @@ Hyper-V VM の計画されたフェールオーバーを実行できます。
 
 フェールオーバーに関連するジョブがいくつかあります。
 
-![[フェールオーバー]](./media/site-recovery-failover/FailoverJob.png)
+![[ジョブ] ページのスクリーンショット。グループ 1 のジョブの一覧が表示されています。名前列で [開始 (1)] が展開されています。 SQLServer ジョブの行が強調表示されています。](./media/site-recovery-failover/FailoverJob.png)
 
 - **前提条件チェック**:フェールオーバーに必要な条件がすべて満たされていることを確認します。
 - **フェールオーバー**:データを処理し、そこから Azure VM を作成できるようにします。 **最新**の復旧ポイントを選択した場合、サービスに送信済みのデータから復旧ポイントが作成されます。

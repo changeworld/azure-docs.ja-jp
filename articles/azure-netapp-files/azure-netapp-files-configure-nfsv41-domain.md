@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: b-juche
-ms.openlocfilehash: dda911add42568e76160e4233502a1f4f550520d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e749f27875612136c50938712fded6a371f8c7ab
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483722"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325625"
 ---
 # <a name="configure-nfsv41-default-domain-for-azure-netapp-files"></a>Azure NetApp Files 用に NFSv4.1 の既定のドメインを構成する
 
@@ -54,7 +54,7 @@ NFSv4 ドメインは `localdomain` に設定されているため、ルート �
 
 次の例は、結果として得られるユーザー/グループの変更を示しています。 
 
-![NFSv4.1 の結果の構成](../media/azure-netapp-files/azure-netapp-files-nfsv41-resulting-config.png)
+![結果として発生するユーザー/グループの変更の例を示すスクリーンショット。](../media/azure-netapp-files/azure-netapp-files-nfsv41-resulting-config.png)
 
 この例に示すように、ユーザー/グループは `nobody` から `root` に変更されました。
 
@@ -64,7 +64,7 @@ Azure NetApp Files は、NFSv4.1 ボリューム内のファイルまたはフ�
 
 次の例で、`Host1` には 3 つの既存のテスト ユーザー アカウント (`testuser01`、`testuser02`、`testuser03`) があります。 
 
-![NFSv4.1 の結果の構成](../media/azure-netapp-files/azure-netapp-files-nfsv41-host1-users.png)
+![Host1 に既存のテスト ユーザー アカウントが 3 つあることを示すスクリーンショット。](../media/azure-netapp-files/azure-netapp-files-nfsv41-host1-users.png)
 
 `Host2` で、テスト ユーザー アカウントは作成されていないが、同じボリュームが両方のホストにマウントされていることに注意してください。
 

@@ -3,12 +3,12 @@ title: マネージド ID による認証
 description: ユーザー割り当てまたはシステム割り当て Azure マネージド ID を使用して、プライベート コンテナー レジストリ内のイメージへのアクセス権を付与します。
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: e5fd8ead989838c0ba74b42a9766bc63936379fa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9a144f0e865cfc9bf857752eed65dbe5cda88bd9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537903"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253464"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Azure マネージド ID を使用して Azure コンテナー レジストリに対して認証する 
 
@@ -230,6 +230,8 @@ az acr login --name myContainerRegistry
 ```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 ```
+> [!NOTE]
+> システム割り当てのマネージド サービス ID は ACR とやりとりする目的で使用できます。App Service では、システム割り当てのマネージド サービス ID を使用できます。 しかし、これらを組み合わせることはできません。App Service では、ACR と通信する目的で MSI を使用できないためです。 唯一の方法は ACR で管理者を有効にし、管理者のユーザー名とパスワードを使用することです。
 
 ## <a name="next-steps"></a>次のステップ
 

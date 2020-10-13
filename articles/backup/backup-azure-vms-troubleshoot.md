@@ -4,12 +4,12 @@ description: この記事では、Azure 仮想マシンのバックアップと�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: a574c43c02c759529c5a0907682c06d4d40fb85a
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 39bc6178d0cabf6c0220d2c54e0c532a6f9a5aa2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376181"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316734"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure 仮想マシンでのバックアップ エラーのトラブルシューティング
 
@@ -105,7 +105,7 @@ Windows サービス **COM+ System** Application での問題のためにバッ�
 
 このエラーは、VSS ライターが正しくない状態にあったために発生します。 Azure Backup 拡張機能は、VSS ライターと連携してディスクのスナップショットを作成します。 この問題を解決するには、次の手順に従ってください。
 
-状態が正しくない VSS ライターを再起動します。
+手順 1:状態が正しくない VSS ライターを再起動します。
 - 管理者特権でのコマンド プロンプトから、```vssadmin list writers``` を実行します。
 - 出力には、すべての VSS ライターとそれらの状態が含まれています。 状態が **[[1] 安定]** ではない VSS ライターごとに、対応する VSS ライターのサービスを再起動します。 
 - サービスを再起動するには、管理者特権でのコマンド プロンプトから次のコマンドを実行します。
@@ -117,12 +117,20 @@ Windows サービス **COM+ System** Application での問題のためにバッ�
 > サービスによっては、再起動すると運用環境に影響を与えるものがあります。 承認プロセスが先に実行され、スケジュールされたダウンタイムにサービスが再起動されることを確認してください。
  
    
-VSS ライターを再起動しても問題が解決されず、タイムアウトのために問題が引き続き発生する場合は、次のようにします。
-- 管理者特権でのコマンド プロンプトから (管理者として) 次のコマンドを実行して、BLOB スナップショットではスレッドが作成されないようにします。
+手順 2:VSS ライターを再起動しても問題が解決しなかった場合は、管理者特権でのコマンド プロンプトから (管理者として) 次のコマンドを実行して、BLOB スナップショットではスレッドが作成されないようにします。
 
 ```console
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThreads /t REG_SZ /d True /f
 ```
+手順 3:手順 1 と 2 で問題が解決されなかった場合、IOPS が制限されているために VSS ライターがタイムアウトしたことが原因である可能性があります。<br>
+
+確認するには、"***システムおよびイベント ビューアーのアプリケーション ログ***" に移動し、次のエラー メッセージがあるかどうかを確認します。<br>
+*The shadow copy provider timed out while holding writes to the volume being shadow copied. (シャドウ コピーされるボリュームへの書き込みを保持している間に、シャドウ コピー プロバイダーがタイムアウトしました。)This is probably due to excessive activity on the volume by an application or a system service. (これは、アプリケーションまたはシステム サービスによるボリュームでの過剰なアクティビティが原因である可能性があります。)Try again later when activity on the volume is reduced. (ボリュームのアクティビティが減ったら、後でもう一度お試しください。)*<br>
+
+解決方法:
+- VM ディスク全体に負荷を分散させることができるかどうかを確認します。 これにより、1 つのディスクの負荷が軽減されます。 [ストレージ レベルで診断メトリックを有効にすることによって、IOPS 調整を確認](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics#install-and-run-performance-diagnostics-on-your-vm)できます。
+- バックアップ ポリシーを変更して、VM の負荷が最も低いオフピーク時間帯にバックアップを実行します。
+- より高い IOPS をサポートするように Azure ディスクをアップグレードします。 [詳しくはこちらをご覧ください](https://docs.microsoft.com/azure/virtual-machines/disks-types)
 
 ### <a name="extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state"></a>ExtensionFailedVssServiceInBadState - VSS (ボリューム シャドウ コピー) サービスが正しくない状態にあるため、スナップショット操作に失敗しました
 
@@ -306,6 +314,13 @@ VM 上のすべてのドライブで BitLocker をオフにして、VSS の問�
 | Backup でジョブを取り消すことができませんでした: <br>ジョブが完了するまでお待ちください。 |なし |
 
 ## <a name="restore"></a>復元
+
+#### <a name="disks-appear-offline-after-file-restore"></a>ファイル復元後にディスクがオフラインと表示される
+
+復元後、ディスクがオフラインになっている場合は、次のことを行います。 
+* スクリプトが実行されるマシンが OS の要件を満たしているかどうかを確認します。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#system-requirements)。  
+* 同じソースに復元していないことを確実にします。[詳細については、こちらを参照してください](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#original-backed-up-machine-versus-another-machine)。
+
 
 | エラーの詳細 | 回避策 |
 | --- | --- |

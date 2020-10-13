@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 775ef92a0ca486d1f8a6c44c78a4df04cd5ef467
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3542ae2e94c2fa3d3e9d6100738b2aabded94d15
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78274547"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306669"
 ---
 # <a name="application-security-groups"></a>アプリケーション セキュリティ グループ
 
@@ -26,7 +26,7 @@ ms.locfileid: "78274547"
 
 ![アプリケーション セキュリティ グループ](./media/security-groups/application-security-groups.png)
 
-前の図では、*NIC1* と *NIC2* が *AsgWeb* アプリケーション セキュリティ グループのメンバーです。 *NIC3* は、*AsgLogic* アプリケーション セキュリティ グループのメンバーです。 *NIC4* は、*AsgDb* アプリケーション セキュリティ グループのメンバーです。 この例の各ネットワーク インターフェイスは 1 つのアプリケーション セキュリティ グループだけのメンバーですが、ネットワーク インターフェイスは複数のアプリケーション セキュリティ グループのメンバーにすることができます (最大数については、[Azure の制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)を参照してください)。 ネットワーク セキュリティ グループが関連付けられているネットワーク インターフェイスはありません。 *NSG1* は両方のサブネットに関連付けられており、次の規則を含んでいます。
+前の図では、*NIC1* と *NIC2* が *AsgWeb* アプリケーション セキュリティ グループのメンバーです。 *NIC3* は、*AsgLogic* アプリケーション セキュリティ グループのメンバーです。 *NIC4* は、*AsgDb* アプリケーション セキュリティ グループのメンバーです。 この例の各ネットワーク インターフェイスは 1 つのネットワーク セキュリティ グループだけのメンバーですが、ネットワーク インターフェイスは複数のアプリケーション セキュリティ グループのメンバーにすることができます (最大数については、[Azure の制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)を参照してください)。 ネットワーク セキュリティ グループが関連付けられているネットワーク インターフェイスはありません。 *NSG1* は両方のサブネットに関連付けられており、次の規則を含んでいます。
 
 ## <a name="allow-http-inbound-internet"></a>Allow-HTTP-Inbound-Internet
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/29/2020
+ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: 1a4f22e7ae3cc60d0a16b24a1f0e5f93d3a86d8c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 137cff47d49be1405f60bc47cd16f7f027ab63a9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899201"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320831"
 ---
 # <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes ダッシュボードを使用して Azure Stack Edge Pro GPU デバイスを監視する
 
@@ -62,7 +62,7 @@ Kubernetes ダッシュボードは "*読み取り専用*" で、ポート 31000
 
 コンピューティング モジュールは、ビジネス ロジックが実装されたコンテナーです。 ダッシュボードを使用して、Azure Stack Edge Pro デバイスにコンピューティング モジュールが正常にデプロイされたかどうかを確認できます。
 
-モジュールの状態を表示するには、ダッシュボードで次の手順を実行します。
+モジュールの状態を表示するには、ダッシュボードで次の手順を行います。
 
 1. ダッシュボードの左側のペインで、 **[名前空間]** に移動します。 IoT Edge モジュールが表示されている名前空間でフィルター処理します。この場合は **iotedge** です。
 1. 左側のペインで、 **[ワークロード] > [デプロイ]** の順に移動します。
@@ -114,9 +114,9 @@ Azure Stack Edge Pro デバイスの Kubernetes ダッシュボードには、Ku
 
 ![Azure Arc デプロイの CPU とメモリの使用量の表示](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/view-cpu-memory-azure-arc-1.png)
 
-Kubernetes メトリック サーバーでは、[ポッドの水平オートスケーラー](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)と同様の自動スケール パイプラインが提供されています。
+Kubernetes メトリック サーバーには、[ポッドの水平オートスケーラー](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)などの自動スケール パイプラインが用意されています。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-Kubernetes の問題をトラブルシューティングする方法について説明します。 <!--insert link-->.
+[デバイスの問題をトラブルシューティングする](azure-stack-edge-gpu-troubleshoot.md)方法を学習する。

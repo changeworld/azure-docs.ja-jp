@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/10/2019
 ms.author: mimckitt
-ms.openlocfilehash: c48ef0321ece2e7e0ffcdfcb8c0907c5f839e738
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: aba47500400004c1d6a7044a266bad6f20d5d9c9
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831364"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360550"
 ---
 # <a name="proactively-ensuring-you-have-access-to-grub-and-sysrq-could-save-you-lots-of-down-time"></a>事前に GRUB と sysrq に確実にアクセスできるようにすることでダウンタイムを大幅に短縮する
 
@@ -210,11 +210,11 @@ Ubuntu の復旧メニューにアクセスするには、次の手順のよう�
 
 [Advanced Options for Ubuntu] を選択し、Enter キーを押します
 
-![ubunturec1](./media/virtual-machines-serial-console/ubunturec1.png)
+![[Advanced options for Ubuntu] が選択されているシリアル コンソールを示すスクリーンショット。](./media/virtual-machines-serial-console/ubunturec1.png)
 
 *[(recovery mode)]* と表示されている行を選択し、Enter キーではなく e キーを押します
 
-![ubunturec2](./media/virtual-machines-serial-console/ubunturec2.png)
+![リカバリー モード バージョンが選択されているシリアル コンソールを示すスクリーンショット。](./media/virtual-machines-serial-console/ubunturec2.png)
 
 カーネルを読み込む行を見つけて、最後のパラメーター **nomodeset** を宛先 **console=ttyS0** に置き換えます
 
@@ -226,12 +226,12 @@ change to
 linux /boot/vmlinuz-4.15.0-1023-azure root=UUID=21b294f1-25bd-4265-9c4e-d6e4aeb57e97 ro recovery console=ttyS0
 ```
 
-![ubunturec3](./media/virtual-machines-serial-console/ubunturec3.png)
+![変更された値が指定されているシリアル コンソールを示すスクリーンショット。](./media/virtual-machines-serial-console/ubunturec3.png)
 
 **Ctrl + x** キーを押して、カーネルを起動して読み込みます。
 すべてが正常に進むと、他の復旧オプションを実行できる追加オプションが表示されます
 
-![ubunturec4](./media/virtual-machines-serial-console/ubunturec4.png)
+![追加のリカバリー オプションが用意されているリカバリー メニューにあるシリアル コンソールを示すスクリーンショット。](./media/virtual-machines-serial-console/ubunturec4.png)
 
 
 ## <a name="red-hat-grub-configuration"></a>Red Hat での GRUB の構成
@@ -337,11 +337,11 @@ terminal --timeout=5 serial console
 
 最後の行 *terminal –-timeout=5 serial console* では、**Press any key to continue** プロンプトの表示時間に 5 秒追加することで、**GRUB** がタイムアウトするまでの時間をさらに長くします。
 
-![rh6-1](./media/virtual-machines-serial-console/rh6-1.png)
+![出力が表示されているコンソールを示すスクリーンショット。](./media/virtual-machines-serial-console/rh6-1.png)
 
 Esc キーを押さなくても、GRUB メニューは構成されている timeout=15 だけ画面に表示されます。メニューをアクティブにし、必要なカーネルを選択するには、必ずブラウザーでコンソールをクリックしてください
 
-![rh6-2](./media/virtual-machines-serial-console/rh6-2.png)
+![2 つの Linux オプションが表示されているコンソールを示すスクリーンショット。](./media/virtual-machines-serial-console/rh6-2.png)
 
 ## <a name="suse"></a>SuSE
 
@@ -405,18 +405,18 @@ kernel /boot/vmlinuz-3.0.101-108.74-default root=/dev/disk/by-uuid/ab6b62bb--
 GRUB にアクセスできるようにすると、初期化プロセスを中断することができ、この対話は多くの復旧手順に役立ちます。
 ルート パスワードがなく、シングル ユーザーでルート パスワードが要求されている場合は、init プログラムを bash プロンプトに置き換えてカーネルを起動できます。この割り込みは、カーネルの起動行に init=/bin/bash を追加することで実現できます
 
-![bash1](./media/virtual-machines-serial-console/bash1.png)
+![起動行が更新されているコンソールを示すスクリーンショット。](./media/virtual-machines-serial-console/bash1.png)
 
 次のコマンドを使用して、/(root) ファイル システムの RW を再マウントします
 
 `mount -o remount,rw /`
 
-![bash2](./media/virtual-machines-serial-console/bash2.png)
+![再マウント アクションが表示されているコンソールを示すスクリーンショット。](./media/virtual-machines-serial-console/bash2.png)
 
 
 ルート パスワードの変更またはその他の多くの Linux 構成の変更を実行できるようになります
 
-![bash3](./media/virtual-machines-serial-console/bash3.png)
+![ルート パスワードやその他の構成を変更できる場所であるコンソールを示すスクリーンショット。](./media/virtual-machines-serial-console/bash3.png)
 
 次のコマンドで VM を再起動します 
 

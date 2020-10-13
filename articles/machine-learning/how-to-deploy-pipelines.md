@@ -11,12 +11,12 @@ author: lobrien
 ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: ddc8186e85001a2a3ed2ed9f57b8f025133ef16a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 46a5f4036be2d670689f7e936a31dc63e0690ddc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897761"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302385"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>機械学習パイプラインを発行して追跡する
 
@@ -84,6 +84,74 @@ response = requests.post(published_pipeline1.endpoint,
                          json={"ExperimentName": "My_Pipeline",
                                "ParameterAssignments": {"pipeline_arg": 20}})
 ```
+
+POST 要求の `json` 引数には、`ParameterAssignments` キーの場合、パイプライン パラメーターとその値を含むディクショナリが含まれている必要があります。 また、`json` 引数には、次のキーを含めることができます。
+
+| Key | 説明 |
+| --- | --- | 
+| `ExperimentName` | このエンドポイントに関連付けられている実験の名前 |
+| `Description` | エンドポイントを説明する自由形式のテキスト | 
+| `Tags` | 要求のラベル付けと注釈付けに使用できる自由形式のキーと値のペア  |
+| `DataSetDefinitionValueAssignments` | 再トレーニングせずにデータセットを変更するために使用されるディクショナリ (以下の説明を参照) | 
+| `DataPathAssignments` | 再トレーニングせずにデータパスを変更するために使用されるディクショナリ (以下の説明を参照) | 
+
+### <a name="changing-datasets-and-datapaths-without-retraining"></a>再トレーニングせずにデータセットとデータパスを変更する
+
+さまざまなデータセットとデータパスでトレーニングと推論を行うことができます。 たとえば、トレーニングはより小さくて少ないデータセットで行い、推論は完全なデータセットで行うことができます。 データセットは、要求の `json` 引数で `DataSetDefinitionValueAssignments` キーを使用して切り替えることができます。 `DataPathAssignments` を使用してデータパスを切り替えます。 どちらの手法も似ています。
+
+1. パイプライン定義スクリプトで、データセットの `PipelineParameter` を作成します。 `PipelineParameter` から `DatasetConsumptionConfig` または `DataPath` を作成します。
+
+    ```python
+    tabular_dataset = Dataset.Tabular.from_delimited_files('https://dprepdata.blob.core.windows.net/demo/Titanic.csv')
+    tabular_pipeline_param = PipelineParameter(name="tabular_ds_param", default_value=tabular_dataset)
+    tabular_ds_consumption = DatasetConsumptionConfig("tabular_dataset", tabular_pipeline_param)
+    ```
+
+1. ML スクリプトで、`Run.get_context().input_datasets` を使用して、動的に指定されたデータセットにアクセスします。
+
+    ```python
+    from azureml.core import Run
+    
+    input_tabular_ds = Run.get_context().input_datasets['tabular_dataset']
+    dataframe = input_tabular_ds.to_pandas_dataframe()
+    # ... etc ...
+    ```
+
+    ML スクリプトが、`PipelineParameter` (`tabular_ds_param`) の値ではなく `DatasetConsumptionConfig` (`tabular_dataset`) に指定された値にアクセスすることにご注意ください。
+
+1. パイプライン定義スクリプトで、`PipelineScriptStep` のパラメーターとして `DatasetConsumptionConfig` を設定します。
+
+    ```python
+    train_step = PythonScriptStep(
+        name="train_step",
+        script_name="train_with_dataset.py",
+        arguments=["--param1", tabular_ds_consumption],
+        inputs=[tabular_ds_consumption],
+        compute_target=compute_target,
+        source_directory=source_directory)
+    
+    pipeline = Pipeline(workspace=ws, steps=[train_step])
+    ```
+
+1. 推論 REST 呼び出しでデータセットを動的に切り替えるには、`DataSetDefinitionValueAssignments` を使用します。
+    
+    ```python
+    tabular_ds1 = Dataset.Tabular.from_delimited_files('path_to_training_dataset')
+    tabular_ds2 = Dataset.Tabular.from_delimited_files('path_to_inference_dataset')
+    ds1_id = tabular_ds1.id
+    d22_id = tabular_ds2.id
+    
+    response = requests.post(rest_endpoint, 
+                             headers=aad_token, 
+                             json={
+                                "ExperimentName": "MyRestPipeline",
+                               "DataSetDefinitionValueAssignments": {
+                                    "tabular_ds_param": {
+                                        "SavedDataSetReference": {"Id": ds1_id #or ds2_id
+                                    }}}})
+    ```
+
+この手法の完全な例は、「[データセットと PipelineParameter の紹介](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-dataset-and-pipelineparameter.ipynb)」と「[データパスと PipelineParameter の紹介](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-datapath-and-pipelineparameter.ipynb)」のノートブックにあります。
 
 ## <a name="create-a-versioned-pipeline-endpoint"></a>バージョン管理されたパイプライン エンドポイントを作成する
 

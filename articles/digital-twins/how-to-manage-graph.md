@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7f7239e0c13478af712d8e8d9dad8fda23fe42c7
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: ad0111f9be8c0b981093618be7296d0ec7f90e30
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125534"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326543"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>リレーションシップを使ってデジタル ツインのグラフを管理する
 
 Azure Digital Twins の中核は、環境全体を表す[ツイン グラフ](concepts-twins-graph.md)です。 ツイン グラフは、**リレーションシップ**を介して接続された個々のデジタル ツインで構成されています。
 
-機能する [Azure Digital Twins インスタンス](how-to-set-up-instance-scripted.md)があり、クライアント アプリで[認証](how-to-authenticate-client.md)コードを設定すると、[**DigitalTwins API**](how-to-use-apis-sdks.md) を使用して Azure Digital Twins インスタンス内のデジタル ツインとそのリレーションシップを作成、変更、削除することができます。 [.NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)、または [Azure Digital Twins CLI](how-to-use-cli.md) を使用することもできます。
+機能する [Azure Digital Twins インスタンス](how-to-set-up-instance-portal.md)があり、クライアント アプリで[認証](how-to-authenticate-client.md)コードを設定すると、[**DigitalTwins API**](how-to-use-apis-sdks.md) を使用して Azure Digital Twins インスタンス内のデジタル ツインとそのリレーションシップを作成、変更、削除することができます。 [.NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)、または [Azure Digital Twins CLI](how-to-use-cli.md) を使用することもできます。
 
 この記事では、リレーションシップとグラフ全体の管理に焦点を当てます。個々のデジタル ツインの操作については、[ *「デジタル ツインを管理する」方法*](how-to-manage-twin.md)を参照してください。
 
@@ -63,6 +63,14 @@ public async static Task CreateRelationship(DigitalTwinsClient client, string sr
 ```
 
 ヘルパー クラス `BasicRelationship` の詳細については、[ *「Azure Digital Twins の API および SDK を使用する」方法*](how-to-use-apis-sdks.md)を参照してください。
+
+### <a name="create-multiple-relationships-between-twins"></a>ツイン間でリレーションシップの作成
+
+2 つのツイン間のリレーションシップの数には制限がありません。ツイン間には、必要な数のリレーションシップを含めることができます。 
+
+これは、2 つのツイン間に、さまざまな種類のリレーションシップを同時に複数表すことができることを意味します。 たとえば、"*ツイン A*" と "*ツイン B*" の間に、"*格納された*" リレーションシップと "*製造された*" リレーションシップを含めることができます。
+
+必要に応じて、同じ 2 つのツイン間に、同じ種類のリレーションシップのインスタンスを複数作成することもできます。 この例では、"*ツイン A*"と "*ツイン B*"の間に、"*格納された*" リレーションシップが個別に 2 つあることを意味しています。
 
 ## <a name="list-relationships"></a>リレーションシップの一覧表示
 
@@ -231,13 +239,13 @@ static async Task<bool> CreateFloorOrBuilding(string id, bool makeFloor=true)
 
 | モデル    | id | Parent | [リレーションシップ名] | その他のデータ |
 | --- | --- | --- | --- | --- |
-| floor    | Floor01 | | | ... |
-| room    | Room10 | Floor01 | contains | ... |
-| room    | Room11 | Floor01 | contains | ... |
-| room    | Room12 | Floor01 | contains | ... |
-| floor    | Floor02 | | | ... |
-| room    | Room21 | Floor02 | contains | ... |
-| room    | Room22 | Floor02 | contains | ... |
+| floor    | Floor01 | | | … |
+| room    | Room10 | Floor01 | contains | … |
+| room    | Room11 | Floor01 | contains | … |
+| room    | Room12 | Floor01 | contains | … |
+| floor    | Floor02 | | | … |
+| room    | Room21 | Floor02 | contains | … |
+| room    | Room22 | Floor02 | contains | … |
 
 次のコードでは、[Microsoft Graph API](https://docs.microsoft.com/graph/overview) を使用してスプレッドシートを読み取り、結果から Azure Digital Twins ツイン グラフを作成しています。
 

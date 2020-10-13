@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 838d2a1dd1c7b89c1f5c9fec6578312107264958
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 2512602b0c8c00c696253a708af13278bc513a1f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602066"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258746"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>条件付きアクセス:クラウド アプリまたはアクション
 
@@ -31,9 +31,9 @@ ms.locfileid: "90602066"
 
 既存の Microsoft クラウド アプリケーションの多くは、選択できるアプリケーションの一覧に含まれています。 
 
-管理者は、次の Microsoft のクラウド アプリに条件付きアクセス ポリシーを割り当てることができます。 Office 365 (プレビュー) や Microsoft Azure Management などの一部のアプリには、複数の関連する子アプリやサービスが含まれています。 次の一覧は完全なものではなく、変更される可能性があります。
+管理者は、次の Microsoft のクラウド アプリに条件付きアクセス ポリシーを割り当てることができます。 Office 365 や Microsoft Azure Management などの一部のアプリには、複数の関連する子アプリやサービスが含まれています。 次の一覧は完全なものではなく、変更される可能性があります。
 
-- [Office 365 (プレビュー)](#office-365-preview)
+- [Office 365](#office-365)
 - Azure Analysis Services
 - Azure DevOps
 - [Azure SQL Database と Data Warehouse](../../azure-sql/database/conditional-access-configure.md)
@@ -67,15 +67,15 @@ ms.locfileid: "90602066"
 - 仮想プライベート ネットワーク (VPN)
 - Windows Defender ATP
 
-### <a name="office-365-preview"></a>Office 365 (プレビュー)
+### <a name="office-365"></a>Office 365
 
 Microsoft 365 では、Exchange、SharePoint、Microsoft Teams などのクラウドベースの生産性およびコラボレーション サービスが提供されます。 Microsoft 365 クラウド サービスは、スムーズに共同作業を行うために緊密に統合されています。 Microsoft Teams などの一部のアプリは SharePoint や Exchange などの他のアプリに依存しているため、この統合により、ポリシーの作成時に混乱が生じる可能性があります。
 
-Office 365 (プレビュー) アプリを使用すると、これらのサービスを一度にすべてターゲットにすることができます。 Microsoft では、[サービスの依存関係](service-dependencies.md)の問題を回避するために、個々のクラウド アプリをターゲットにするのではなく、新しい Office 365 (プレビュー) アプリを使用することをお勧めしています。 このアプリケーション グループをターゲットにすることで、ポリシーと依存関係の不整合が原因で発生する可能性のある問題を回避できます。
+Office 365 アプリを使用すると、これらのサービスを一度にすべてターゲットにすることができます。 Microsoft では、[サービスの依存関係](service-dependencies.md)の問題を回避するために、個々のクラウド アプリをターゲットにするのではなく、新しい Office 365 アプリを使用することをお勧めしています。 このアプリケーション グループをターゲットにすることで、ポリシーと依存関係の不整合が原因で発生する可能性のある問題を回避できます。
 
-管理者は、Office 365 (プレビュー) アプリを組み込み、選択した特定のアプリをポリシーで除外することにより、必要に応じて特定のアプリをポリシーから除外することを選択できます。
+管理者は、Office 365 アプリを組み込み、選択した特定のアプリをポリシーで除外することにより、必要に応じて特定のアプリをポリシーから除外することを選択できます。
 
-Office 365 (プレビュー) クライアント アプリに含まれる主要なアプリケーション:
+Office 365 クライアント アプリに含まれる主要なアプリケーション:
 
    - Microsoft Flow
    - Microsoft フォーム

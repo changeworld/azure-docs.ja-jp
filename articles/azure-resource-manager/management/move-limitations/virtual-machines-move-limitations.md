@@ -2,13 +2,13 @@
 title: 新しいサブスクリプションまたはリソース グループへ Azure VM を移動する
 description: Azure Resource Manager を使用して、新しいリソース グループまたはサブスクリプションに仮想マシンを移動します。
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: 3878113f6874c40953bec87518a89519bdc6cb1a
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.date: 09/21/2020
+ms.openlocfilehash: 219a8b438d2715f6e97085a527b386e51759ec2c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230961"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317108"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>仮想マシンの移動に関するガイダンス
 
@@ -50,7 +50,7 @@ Azure Backup で構成された仮想マシンを移動するには、その復�
    1. 仮想マシンの場所を探します。
    2. 名前付けパターン `AzureBackupRG_<VM location>_1` を持つリソース グループを探します。 たとえば、名前は *AzureBackupRG_westus2_1* の形式になります。
    3. Azure portal で、 **[非表示の型の表示]** をオンにします。
-   4. `AzureBackup_<name of your VM that you're trying to move>_###########` という名前パターンを持つ、**Microsoft.Compute/restorePointCollections** 型のリソースを検索します。
+   4. `AzureBackup_<VM name>_###########` という名前パターンを持つ、**Microsoft.Compute/restorePointCollections** 型のリソースを検索します。
    5. このリソースを削除します。 この操作では、インスタント復旧ポイントのみが削除され、コンテナー内のバックアップされたデータは削除されません。
    6. 削除操作が完了したら、仮想マシンを移動できます。
 
@@ -63,16 +63,31 @@ Azure Backup で構成された仮想マシンを移動するには、その復�
 
 1. 名前付けパターンが `AzureBackupRG_<VM location>_1` のリソース グループを探します。 たとえば、`AzureBackupRG_westus2_1` などです。
 
-1. 次のコマンドを使用し、復元ポイント コレクションを取得します。
+1. 仮想マシンを 1 つだけ移動する場合は、その仮想マシンの復元ポイント コレクションを取得します。
 
-   ```azurepowershell
-   $RestorePointCollection = Get-AzResource -ResourceGroupName AzureBackupRG_<VM location>_1 -ResourceType Microsoft.Compute/restorePointCollections
+   ```azurepowershell-interactive
+   $restorePointCollection = Get-AzResource -ResourceGroupName AzureBackupRG_<VM location>_1 -name AzureBackup_<VM name>* -ResourceType Microsoft.Compute/restorePointCollections
    ```
 
-1. このリソースを削除します。 この操作では、インスタント復旧ポイントのみが削除され、コンテナー内のバックアップされたデータは削除されません。
+   このリソースを削除します。 この操作では、インスタント復旧ポイントのみが削除され、コンテナー内のバックアップされたデータは削除されません。
 
-   ```azurepowershell
-   Remove-AzResource -ResourceId $RestorePointCollection.ResourceId -Force
+   ```azurepowershell-interactive
+   Remove-AzResource -ResourceId $restorePointCollection.ResourceId -Force
+   ```
+
+1. この場所にある、バックアップを使用した仮想マシンをすべて移動する場合は、その仮想マシンの復元ポイント コレクションを取得します。
+
+   ```azurepowershell-interactive
+   $restorePointCollection = Get-AzResource -ResourceGroupName AzureBackupRG_<VM location>_1 -ResourceType Microsoft.Compute/restorePointCollections
+   ```
+
+   各リソースを削除します。 この操作では、インスタント復旧ポイントのみが削除され、コンテナー内のバックアップされたデータは削除されません。
+
+   ```azurepowershell-interactive
+   foreach ($restorePoint in $restorePointCollection)
+   {
+     Remove-AzResource -ResourceId $restorePoint.ResourceId -Force
+   }
    ```
 
 ### <a name="azure-cli"></a>Azure CLI
@@ -81,18 +96,28 @@ Azure Backup で構成された仮想マシンを移動するには、その復�
 
 1. 名前付けパターンが `AzureBackupRG_<VM location>_1` のリソース グループを探します。 たとえば、`AzureBackupRG_westus2_1` などです。
 
-1. 次のコマンドを使用し、復元ポイント コレクションを取得します。
+1. 仮想マシンを 1 つだけ移動する場合は、その仮想マシンの復元ポイント コレクションを取得します。
 
-   ```azurecli
-   az resource list -g AzureBackupRG_<VM location>_1 --resource-type Microsoft.Compute/restorePointCollections
+   ```azurecli-interactive
+   RESTOREPOINTCOL=$(az resource list -g AzureBackupRG_<VM location>_1 --resource-type Microsoft.Compute/restorePointCollections --query "[?starts_with(name, 'AzureBackup_<VM name>')].id" --output tsv)
    ```
 
-1. 名前付けパターン `AzureBackup_<VM name>_###########` のリソースのリソース ID を探します。
+   このリソースを削除します。 この操作では、インスタント復旧ポイントのみが削除され、コンテナー内のバックアップされたデータは削除されません。
 
-1. このリソースを削除します。 この操作では、インスタント復旧ポイントのみが削除され、コンテナー内のバックアップされたデータは削除されません。
+   ```azurecli-interactive
+   az resource delete --ids $RESTOREPOINTCOL
+   ```
 
-   ```azurecli
-   az resource delete --ids /subscriptions/<sub-id>/resourceGroups/<resource-group>/providers/Microsoft.Compute/restorePointCollections/<name>
+1. この場所にある、バックアップを使用した仮想マシンをすべて移動する場合は、その仮想マシンの復元ポイント コレクションを取得します。
+
+   ```azurecli-interactive
+   RESTOREPOINTCOL=$(az resource list -g AzureBackupRG_<VM location>_1 --resource-type Microsoft.Compute/restorePointCollections)
+   ```
+
+   各リソースを削除します。 この操作では、インスタント復旧ポイントのみが削除され、コンテナー内のバックアップされたデータは削除されません。
+
+   ```azurecli-interactive
+   az resource delete --ids $RESTOREPOINTCOL
    ```
 
 ## <a name="next-steps"></a>次のステップ

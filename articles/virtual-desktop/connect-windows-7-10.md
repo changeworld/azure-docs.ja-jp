@@ -3,52 +3,46 @@ title: Windows Virtual Desktop に接続する Windows 10 または 7 - Azure
 description: Windows デスクトップ クライアントを使用して Windows Virtual Desktop に接続する方法。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 09/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0e4f41cb23ec4a9463b983049f5f37d09d1b8c71
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: c9da2acac0957d7fe06d0249775fbed73b5f458d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226711"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287340"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Windows デスクトップ クライアントを使用して接続する
 
-> 適用対象:Windows 7、Windows 10、および Windows 10 IoT Enterprise
+> 適用先:Windows 10、Windows 10 IoT Enterprise、および Windows 7
 
 >[!IMPORTANT]
 >このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを使用しない Windows Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/connect-windows-7-10-2019.md)を参照してください。
 
-Windows デスクトップ クライアントを使用して、Windows 7 または Windows 10、および Windows 10 IoT Enterprise を使用しているデバイス上の Windows Virtual Desktop リソースにアクセスできます。 クライアントでは、Window 8 または Windows 8.1 がサポートされていません。
-
->[!NOTE]
->Windows クライアントは自動的に既定の Windows Virtual Desktop (クラシック) になります。 ただしクライアントは、ユーザーが Azure Resource Manager リソースも所有していることを検出した場合、そのリソースを自動的に追加するか、リソースが利用可能であることをユーザーに通知します。
-
-> [!IMPORTANT]
-> Windows Virtual Desktop では、RemoteApp とデスクトップ接続 (RADC) クライアントおよびリモート デスクトップ接続 (MSTSC) クライアントはサポートされていません。
-
-> [!IMPORTANT]
-> Windows Virtual Desktop では、現在、Windows Store のリモート デスクトップ クライアントはサポートされていません。
+Windows デスクトップ クライアントを使用して、Windows 10、Windows 10 IoT Enterprise、Windows 7 を使用しているデバイス上の Windows Virtual Desktop リソースにアクセスできます。 クライアントでは、Window 8 または Windows 8.1 がサポートされていません。
 
 ## <a name="install-the-windows-desktop-client"></a>Windows デスクトップ クライアントをインストールする
 
 ご自身の Windows バージョンに合ったクライアントを選択してください。
 
 - [Windows (64 ビット)](https://go.microsoft.com/fwlink/?linkid=2068602)
-- [Windows (32 ビット)](https://go.microsoft.com/fwlink/?linkid=2098960)
+- [Windows 32 ビット](https://go.microsoft.com/fwlink/?linkid=2098960)
 - [Windows ARM64](https://go.microsoft.com/fwlink/?linkid=2098961)
 
 現在のユーザー用にのクライアントをインストールできます。この場合、管理者権限は必要ありません。または、管理者がクライアントをインストールして構成し、デバイス上のすべてのユーザーがアクセスできるようにすることができます。
 
 インストールが完了すると、クライアントはスタート メニューから**リモート デスクトップ**を検索することにより起動できます。
 
-## <a name="subscribe-to-a-workspace"></a>ワークスペースのサブスクライブ
+> [!IMPORTANT]
+> Windows Virtual Desktop では、RemoteApp とデスクトップ接続 (RADC) クライアントおよびリモート デスクトップ接続 (MSTSC) クライアントはサポートされていません。
 
-ワークスペースをサブスクライブするには、2 つの方法があります。 職場または学校のアカウントから自分が利用できるリソースを検出することをクライアントで試行できます。あるいは、クライアントでリソースを検出できない場合は自分で直接、自分のリソースが置かれている URL を指定できます。 ワークスペースをサブスクライブしたら、次のいずれかの方法でリソースを起動できます。
+## <a name="subscribe-to-a-workspace"></a>ワークスペースをサブスクライブする
 
-- 接続センターに移動し、リソースをダブルクリックして起動します。
-- [スタート] メニューに移動し、ワークスペース名のあるフォルダーを探すか、検索バーにリソース名を入力することもできます。
+ワークスペースをサブスクライブするには、2 つの方法があります。 クライアントは、職場または学校のアカウントから利用可能なリソースを探索したり、クライアントがリソースを見つけられない場合にリソースの場所の URL を直接指定したりすることができます。 ワークスペースをサブスクライブした後は、次のいずれかの方法でリソースを起動できます。
+
+- 接続センターにアクセスし、リソースをダブルクリックして起動します。
+- また、スタート メニューにアクセスし、ワークスペース名を含むフォルダーを探すか、検索バーにリソース名を入力することもできます。
 
 ### <a name="subscribe-with-a-user-account"></a>ユーザー アカウントを使用してサブスクライブする
 
@@ -56,11 +50,14 @@ Windows デスクトップ クライアントを使用して、Windows 7 また�
 2. メッセージが表示されたら、自分のユーザー アカウントでサインインします。
 3. リソースが接続センターに表示され、ワークスペース別にグループ化されます。
 
+>[!NOTE]
+>Windows クライアントは自動的に既定の Windows Virtual Desktop (クラシック) になります。 ただしクライアントは、ユーザーが Azure Resource Manager リソースも所有していることを検出した場合、そのリソースを自動的に追加するか、リソースが利用可能であることをユーザーに通知します。
+
 ### <a name="subscribe-with-a-url"></a>URL を使用してサブスクライブする
 
 1. クライアントのメイン ページから、 **[Subscribe with URL]** \(URL を使用してサブスクライブする\) を選択します。
 2. ワークスペース URL または電子メール アドレスを入力します。
-   - **ワークスペース URL** を使用する場合、管理者から付与されたものを使用します。 Windows 仮想デスクトップからリソースにアクセスする場合、次の URL のいずれかを使用できます。
+   - **ワークスペースの URL** を使用する場合は、管理者から提供されたものを使用します。 Windows Virtual Desktop からリソースにアクセスする場合は、次の URL のいずれかを使用できます。
      - Windows Virtual Desktop (クラシック): `https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
      - Windows Virtual Desktop: `https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
      - Windows Virtual Desktop (US Gov): `https://rdweb.wvd.azure.us/api/arm/feeddiscovery`

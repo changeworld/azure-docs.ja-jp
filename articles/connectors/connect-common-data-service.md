@@ -7,12 +7,12 @@ ms.reviewer: jdaly, logicappspm
 ms.topic: conceptual
 ms.date: 05/08/2020
 tags: connectors
-ms.openlocfilehash: 8cce90a8a65a7f070459e220e6d92ef0be57e909
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: de85a61cbd699ec9ac2669f8abb6217254038de9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284117"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334584"
 ---
 # <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Common Data Service のレコードを作成および管理する
 
@@ -108,7 +108,7 @@ ms.locfileid: "87284117"
 
 1. トリガーで、 **[新しいパラメーターの追加]** の一覧から、 **[属性フィルター]** を選択します。
 
-   ![[属性フィルター] プロパティを追加する](./media/connect-common-data-service/when-record-updated-trigger-add-attribute-filters.png)
+   ![[レコードが更新されたとき] アクションと開いている [新しいパラメーターの追加] リストのスクリーンショット。[属性フィルター] プロパティが選択されています。](./media/connect-common-data-service/when-record-updated-trigger-add-attribute-filters.png)
 
 1. **[Attribute Filters Item]\(属性フィルター項目\)** ごとに、更新を監視する属性を選択します。次に例を示します。
 

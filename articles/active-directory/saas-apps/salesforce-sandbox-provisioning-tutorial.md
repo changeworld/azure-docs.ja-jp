@@ -1,6 +1,6 @@
 ---
 title: 'チュートリアル: Salesforce Sandbox を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
-description: Azure Active Directory と Salesforce Sandbox の間でシングル サインオンを構成する方法について説明します。
+description: Azure AD から Salesforce Sandbox にユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除するうえで Salesforce Sandbox と Azure AD で実行する必要がある手順について説明します。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 5fa40e954c84d4d2d70974bc799a198c6bf7d3e9
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ae8bc3ce5822b8d49db0fdc6e611badd75b0d27b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90979759"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273315"
 ---
 # <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>チュートリアル: Salesforce Sandbox を構成し、自動ユーザー プロビジョニングに対応させる
 

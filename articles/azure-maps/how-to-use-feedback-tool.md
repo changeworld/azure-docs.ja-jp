@@ -4,17 +4,17 @@ description: Microsoft Azure Maps のフィードバック ツールを使用し
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 08/19/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: fb806aa444ba3b8b3247559b87ddd93fecdaa1b0
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 807c8908b70065d5d82229e7750b166bfabcf53b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133352"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335366"
 ---
 # <a name="provide-data-feedback-to-azure-maps"></a>Azure Maps にデータのフィードバックを提供する
 
@@ -67,5 +67,4 @@ Azure Maps は 2018 年 5 月から使用できるようになりました。 �
 
 Azure Maps に関する技術的な質問を投稿するには、以下にアクセスしてください。
 
-* [Azure Maps Stack Overflow](https://stackoverflow.com/questions/tagged/azure-maps)
-* [Azure Maps フィードバック フォーラム](https://feedback.azure.com/forums/909172-azure-maps)
+* [Microsoft Q & A](https://docs.microsoft.com/answers/topics/azure-maps.html)

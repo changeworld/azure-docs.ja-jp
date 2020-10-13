@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 05f81e4d93244db854bf8d0ec254ee647f81d9cc
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: afee95f6a8776c3506e10c29cfd8e776734a915a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069171"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326679"
 ---
 # <a name="azure-cosmos-db-apache-spark-connector-for-core-sql-api-release-notes-and-resources"></a>コア (SQL) API 用 Azure Cosmos DB Apache Spark コネクタ:リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -56,12 +56,20 @@ ms.locfileid: "90069171"
 
 | リソース | Link |
 |---|---|
-| **SDK のダウンロード** | [Apache Spark からのダウンロード](https://aka.ms/CosmosDB_OLTP_Spark_2.4_LKG) |
+| **SDK のダウンロード** | [最新の .jar](https://aka.ms/CosmosDB_OLTP_Spark_2.4_LKG)、[Maven](https://search.maven.org/search?q=a:azure-cosmosdb-spark_2.4.0_2.11) のダウンロード |
 |**API ドキュメント** | [Spark コネクタのリファレンス]() |
 |**SDK に投稿する** | [GitHub の Apache Spark 用 Azure Cosmos DB コネクタ](https://github.com/Azure/azure-cosmosdb-spark) | 
 |**開始するには** | [Apache Spark-Azure Cosmos DB コネクタを使用したビッグ データ分析の高速化](https://docs.microsoft.com/azure/cosmos-db/spark-connector#bk_working_with_connector) <br> [Apache Kafka と Azure Cosmos DB で Apache Spark 構造化ストリーミングを使用する](https://docs.microsoft.com/azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json) | 
 
 ## <a name="release-history"></a>リリース履歴
+
+### <a name="330"></a>3.3.0
+#### <a name="new-features"></a>新機能
+- 新しい構成オプション `changefeedstartfromdatetime` を追加します。このオプションを使用すると、changefeed の処理の開始時刻を指定できます。 詳細については、[構成オプション](https://github.com/Azure/azure-cosmosdb-spark/wiki/Configuration-references)に関する記事を参照してください。
+
+### <a name="320"></a>3.2.0
+#### <a name="key-bug-fixes"></a>主要なバグ修正
+- 大規模な結果セット (行数が何百万にも及ぶ場合など) で実行プログラムのメモリ消費が過大となり、最終的にエラー `java.lang.OutOfMemoryError: GC overhead limit exceeded` が発生した原因となった回帰を修正します。
 
 ### <a name="311"></a>3.1.1
 #### <a name="key-bug-fixes"></a>主要なバグ修正

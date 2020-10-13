@@ -7,17 +7,17 @@ ms.service: sql-database
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: VanMSFT
 ms.author: vanto
 ms.reviwer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: 848a0c9817472086dbaf3973dad9c64e3ed74b10
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d234a121ee8f36389c79228d69a11d9fe999eb5f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954243"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91444764"
 ---
 # <a name="configure-always-encrypted-by-using-the-windows-certificate-store"></a>Windows 証明書ストアを使用して Always Encrypted を構成する
 
@@ -127,7 +127,7 @@ Always Encrypted ウィザードには、 **[列の選択]** 、 **[マスター
 
 設定がすべて正しいことを確認し、 **[完了]** をクリックすれば、Always Encrypted の設定は完了です。
 
-![まとめ](./media/always-encrypted-certificate-store-configure/summary.png)
+![タスクが成功としてマークされている [結果] ページを示すスクリーンショット。](./media/always-encrypted-certificate-store-configure/summary.png)
 
 ### <a name="verify-the-wizards-actions"></a>ウィザードのアクションの確認
 

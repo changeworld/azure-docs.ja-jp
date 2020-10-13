@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 337deec076a25183a4dd866362c7dc55a485834d
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: ec81a8f7f9d9f45f1d068a415a599ce30a0d4581
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224494"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397251"
 ---
 # <a name="azure-data-encryption-at-rest"></a>保存時の Azure データの暗号化
 
@@ -81,13 +81,13 @@ Azure Key Vault に保存されたキーを、その管理、または保存時�
 
 Microsoft Cloud サービスは、IaaS、PaaS、SaaS の3 つのクラウド モデルすべてで使用されます。 以下は、各モデルにこれらがどのように対応するかを示した例です。
 
-- Software as a Server (SaaS) と呼ばれるソフトウェア サービスでは、Office 365 などのクラウドで提供されるアプリケーションが利用できます。
+- Software as a Server (SaaS) と呼ばれるソフトウェア サービスでは、Microsoft 365 など、クラウドで提供されるアプリケーションが利用できます。
 - アプリケーションでお客様がクラウドを活用できるプラットフォームでは、ストレージ、分析、サービス バス機能にクラウドが使用されています。
 - インフラストラクチャ サービス、別称サービスとしてのインフラストラクチャ (IaaS) では、顧客がクラウドでホスティングされているオペレーティング システムやアプリケーションをデプロイし、他のクラウド サービスを活用することもあります。
 
 ### <a name="encryption-at-rest-for-saas-customers"></a>SaaS 顧客ためのの保存時の暗号化
 
-サービスとしてのソフトウェア (SaaS) の顧客は、通常は、保存時の暗号化を有効化しているか、各サービスで利用できます。 Office 365 には、保存時の暗号化を、お客様が確認または有効化できるオプションが用意されています。 Office 365 サービスについては、[Office 365 でのデータ暗号化](https://docs.microsoft.com/office365/securitycompliance/encryption)に関するページを参照してください。
+サービスとしてのソフトウェア (SaaS) の顧客は、通常は、保存時の暗号化を有効化しているか、各サービスで利用できます。 Microsoft 365 には、保存時の暗号化を、お客様が確認または有効化できるオプションがいくつか用意されています。 Microsoft 365 サービスの詳細については、[Microsoft 365 でのデータ暗号化](/microsoft-365/compliance/encryption)に関するページを参照してください。
 
 ### <a name="encryption-at-rest-for-paas-customers"></a>PaaS 顧客のための保存時の暗号化
 

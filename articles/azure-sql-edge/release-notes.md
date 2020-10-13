@@ -10,12 +10,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 3306e51fe2fdbb2586be9684432d8f8c310afe95
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: afd78acadf133a9f128eec402eba9d0eed51b8e3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900595"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284484"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge のリリース ノート 
 
@@ -23,17 +23,23 @@ ms.locfileid: "90900595"
 
 ## <a name="azure-sql-edge---100-rtm"></a>Azure SQL Edge - 1.0.0 (RTM)
 
-### <a name="sql-engine-build-number---15020001549"></a>SQL エンジンのビルド番号 - 15.0.2000.1549
+### <a name="sql-engine-build-number---15020001552"></a>SQL エンジンのビルド番号 - 15.0.2000.1552
 
 ### <a name="whats-new"></a>新機能
 1. Ubuntu 18.04 ベースのコンテナー イメージ。 
 2. `LAST_VALUE()` および `FIRST_VALUE()` 関数を使用した `IGNORE NULL` および `RESPECT NULL` 構文のサポート。 
 3. ONNX を使用した PREDICT の信頼性の向上。
-4. データ保持ポリシー ベースのクリーンアップのサポート。      
-   - クラスター化列ストア インデックスの最適化されたクリーンアップのサポート。
+4. データ保持ポリシー ベースのクリーンアップのサポート。
+   - トラブルシューティングの保持クリーンアップ タスクのリング バッファー サポート。
 5. 新機能のサポート 
    - 高速復旧
    - クエリの自動チューニング
+   - 並列実行を有効にするシナリオ
+6. 省電力モードの電力節約機能強化
+7. ストリーミングの新機能のサポート 
+   - [スナップショット ウィンドウ](https://docs.microsoft.com/stream-analytics-query/snapshot-window-azure-stream-analytics) : 新しい種類のウィンドウでは、イベント別のグループがまったく同時に到着するようにできます。 
+   - [TopOne](https://docs.microsoft.com/stream-analytics-query/topone-azure-stream-analytics) と [CollectTop](https://docs.microsoft.com/stream-analytics-query/collecttop-azure-stream-analytics) を分析機能として有効にします。それにより、自分で選んだ列を基準にレコードを並べて返すことができます。ウィンドウの一部にする必要がありません。 
+   - [MATCH_RECOGNIZE](https://docs.microsoft.com/stream-analytics-query/match-recognize-stream-analytics) の機能強化。 
 
 ### <a name="fixes"></a>修正
 1. TSQL ストリーミング操作のトラブルシューティングに関する追加のエラー メッセージと詳細。 
@@ -41,9 +47,13 @@ ms.locfileid: "90900595"
 3. TSQL ストリーミング エンジンの修正: 
    - 停止したストリーミング ジョブのクリーンアップ 
    - ローカライズの修正と Unicode 処理の機能強化
+   - Edge TSQL ストリーミングのデバッグ機能を強化します。ユーザーは get_streaming_job からジョブ失敗エラーにクエリを実行できます。
 4. データ保持ポリシー ベースのクリーンアップ
    - アイテム保存ポリシーの作成とクリーンアップのシナリオの修正。
 5. 低電力モードで省電力を向上させるためのバックグラウンド タイマー タスクの修正。
+
+### <a name="known-issues"></a>既知の問題 
+1. Date_Bucket T-SQL 機能では計算列で使用できません。
 
 
 ## <a name="ctp-23"></a>CTP 2.3

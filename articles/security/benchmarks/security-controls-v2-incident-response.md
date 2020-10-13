@@ -4,19 +4,19 @@ description: Azure セキュリティ ベンチマーク V2 インシデント�
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2dbdb1af139472d5c7f4537399d434e045bb05cb
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 172607a7f8f036bbfb68e8d15e77b2a3e3fb5377
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059063"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326390"
 ---
-# <a name="security-control-incident-response"></a>セキュリティ コントロールインシデント対応
+# <a name="security-control-v2-incident-response"></a>セキュリティ コントロール V2: インシデント対応
 
-インシデント対応には、インシデント対応のライフサイクルでのコントロール (準備、検出と分析、包含、インシデント後のアクティビティ) が含まれます。 これには、Azure Security Center や Sentinel などの Azure サービスを使用したインシデント対応プロセスの自動化も含まれます。
+インシデント対応には、インシデント対応のライフサイクルにおけるコントロール (準備、検出と分析、包含、インシデント後のアクティビティ) が含まれます。 これには、Azure Security Center や Sentinel などの Azure サービスを使用したインシデント対応プロセスの自動化も含まれます。
 
 ## <a name="ir-1-preparation--update-incident-response-process-for-azure"></a>IR-1: 準備 – インシデント対応プロセスを Azure 用に更新する
 
@@ -28,13 +28,13 @@ ms.locfileid: "90059063"
 
 - [企業環境全体にセキュリティを実装する](https://aka.ms/AzSec4)
 
-- [インシデント対応リファレンス ガイド](https://aka.ms/IRRG)
+- [インシデント対応のリファレンス ガイド](/microsoft-365/downloads/IR-Reference-Guide.pdf)
 
 **責任**: Customer
 
-**顧客のセキュリティ上の利害関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [セキュリティ操作 (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [セキュリティ運用](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [インシデントの準備](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -52,9 +52,9 @@ Azure Security Center でセキュリティ インシデントの連絡先情報
 
 **責任**: Customer
 
-**顧客のセキュリティ上の利害関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [セキュリティ操作 (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [セキュリティ運用](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [インシデントの準備](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -78,9 +78,9 @@ Azure Security Center では、多数の Azure 資産について高品質のア
 
 **責任**: Customer
 
-**顧客のセキュリティ上の利害関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [セキュリティ操作 (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [セキュリティ運用](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [インシデントの準備](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -92,17 +92,19 @@ Azure Security Center では、多数の Azure 資産について高品質のア
 |--|--|--|--|
 | IR-4 | 19 | IR-4 |
 
-アナリストが潜在的なインシデントを調査するときに、さまざまなデータ ソースを照会して使用し、発生した内容の完全なビューを構築できることを確認します。 他のアナリストや今後の履歴参照のために、分析情報と学習がキャプチャされていることを確認します。 
+アナリストが潜在的なインシデントを調査するときに、さまざまなデータ ソースを照会して使用し、発生した内容の完全なビューを構築できることを確認します。 キル チェーン全体で潜在的な攻撃者のアクティビティを追跡して死角を回避するには、さまざまなログを収集する必要があります。  また、他のアナリストのため、および将来において履歴が参照される場合のために、確実に分析情報と学習がキャプチャされているようにします。  
 
 調査のためのデータ ソースには、スコープ内のサービスおよび実行中のシステムから既に収集されている一元化されたログ ソースが含まれますが、次のものも含まれます。
 
-ネットワーク データ - ネットワーク セキュリティ グループのフロー ログ、Azure Network Watcher、Azure Monitor を使用して、ネットワーク フローのログやその他の分析情報をキャプチャします。 実行中のシステムのスナップショット: 
+- ネットワーク データ - ネットワーク セキュリティ グループのフロー ログ、Azure Network Watcher、Azure Monitor を使用して、ネットワーク フロー ログやその他の分析情報をキャプチャします。 
 
--   Azure 仮想マシンのスナップショット機能を使用して、実行中のシステムのディスクのスナップショットを作成します。 
+- 実行中のシステムのスナップショット: 
 
--   オペレーティング システムのネイティブ メモリ ダンプ機能を使用して、実行中のシステムのメモリのスナップショットを作成します。
+    - Azure 仮想マシンのスナップショット機能を使用して、実行中のシステムのディスクのスナップショットを作成します。 
 
--   Azure サービスのスナップショット機能またはソフトウェア独自の機能を使用して、実行中のシステムのスナップショットを作成します。
+    - オペレーティング システムのネイティブ メモリ ダンプ機能を使用して、実行中のシステムのメモリのスナップショットを作成します。
+
+    - Azure サービスのスナップショット機能またはソフトウェア独自の機能を使用して、実行中のシステムのスナップショットを作成します。
 
 Azure Sentinel により、事実上すべてのログソースに対して広範な Data Analytics と、インシデントのライフサイクル全体を管理するためのケース管理ポータルが提供されます。 調査中のインテリジェンス情報を、追跡とレポートのためにインシデントに関連付けることができます。 
 
@@ -116,9 +118,9 @@ Azure Sentinel により、事実上すべてのログソースに対して広�
 
 **責任**: Customer
 
-**顧客のセキュリティ上の利害関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [セキュリティ操作 (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [セキュリティ運用](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [インシデントの準備](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -134,7 +136,7 @@ Azure Sentinel により、事実上すべてのログソースに対して広�
 
 Azure Security Center によって各アラートに重大度が割り当てられるため、最初に調査する必要があるアラートの優先順位付けに役立ちます。 重要度は、アラートの発行に使用された Security Center の信頼度と、アラートの原因となったアクティビティの背後に悪意のある意図があったかどうかの信頼レベルに基づいて決まります。
 
-さらに、タグを使用してサブスクリプションをマークし、Azure リソース (特に、機密データを処理するもの) を識別して分類するための命名システムを作成します。  インシデントが発生した Azure リソースと環境の重要度に基づいて、アラートの修復に優先順位を付けることは、お客様の責任です。
+さらに、タグを使用してリソースをマークし、Azure リソース (特に、機密データを処理するもの) を識別して分類するための命名システムを作成します。  インシデントが発生した Azure リソースと環境の重要度に基づいて、アラートの修復に優先順位を付けることは、お客様の責任です。
 
 - [Security alerts in Azure Security Center](../../security-center/security-center-alerts-overview.md)
 
@@ -142,9 +144,9 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 **責任**: Customer
 
-**顧客のセキュリティ上の利害関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [セキュリティ操作 (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [セキュリティ運用](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [インシデントの準備](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -166,9 +168,9 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 **責任**: Customer
 
-**顧客のセキュリティ上の利害関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [セキュリティ操作 (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [セキュリティ運用](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [インシデントの準備](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 

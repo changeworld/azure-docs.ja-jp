@@ -7,12 +7,12 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/06/2020
 tags: connectors
-ms.openlocfilehash: e500f678d2066d24de12a04f28ccbdb3f76eda3a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a50a171536d7f81de42da415960398d31ec64827
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288178"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326781"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して SQL データベースのワークフローを自動化する
 
@@ -79,7 +79,7 @@ SQL データベースや Dynamics CRM Online などの他のシステム内の�
 
    この例では、**Azure AD 統合**を使用します。
 
-   ![使用する認証の種類を選択する](./media/connectors-create-api-sqlazure/select-azure-ad-authentication.png)
+   ![[SQL Server] の接続ウィンドウを示すスクリーンショット。[認証の種類] の一覧が表示され、[AZURE AD 統合] が選択されています。](./media/connectors-create-api-sqlazure/select-azure-ad-authentication.png)
 
 1. **[Azure AD 統合]** を選択した後、 **[サインイン]** を選択します。 Azure SQL Database または Azure SQL Managed Instance のどちらを使用するかに基づいて、認証用のユーザー資格情報を選択します。
 

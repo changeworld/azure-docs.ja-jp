@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
-ms.date: 09/15/2020
-ms.openlocfilehash: 41dd683bb0ff5be4a48cd05f24663dd51c66a15b
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/23/2020
+ms.openlocfilehash: f0996ba6cd914043ad31500934141ad8770a1c50
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984618"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268725"
 ---
 # <a name="co-sell-partner-engagement"></a>共同販売のパートナー エンゲージメント
 
@@ -36,7 +36,7 @@ ms.locfileid: "90984618"
 * マーケットプレース サービス料金は 20% から 10% に引き下げられます。 この割引は、商業マーケットプレースを通じて販売される IaaS または SaaS プランに適用されます。 詳しくは、[サービス料金の減額](marketplace-commercial-transaction-capabilities-and-considerations.md#reduced-service-fee)に関するセクションをご覧ください。
 * クラウド ソリューション プロバイダー (CSP) パートナーは、10% のインセンティブを受けて IaaS または SaaS プランを販売します。 CSP プログラムの詳細については、「[クラウド ソリューション プロバイダー プログラム](cloud-solution-providers.md)」を参照してください。
 * 商業マーケットプレースを介したプランの売上は、顧客の Azure 従量課金のコミットメントに寄与します。 対象となる顧客には、Azure Portal で "**Azure 特典対象**" とマークされたプランが表示されます。 詳しくは、「[Azure の消費コミットメントのベネフィット](azure-consumption-commitment-benefit.md)」をご覧ください。
-* ネットショップでは、プランに "**推奨ソリューション**" バッジが付与されます。 このバッジは、特定の業界またはソリューション分野で、オファーの品質、パフォーマンス、顧客ニーズへの対応能力の向上を促進します。 詳しくは、「[Microsoft AppSource と Azure Marketplace のお勧めするソリューション](preferred-solutions.md)」をご覧ください。
+* ステータスが**Azure IP 共同販売インセンティブ対象**または **Business Applications 共同販売インセンティブ対象**になるオファーには、ネットショップで **"推奨されるソリューション"** バッジが与えられます。 このバッジは、特定の業界またはソリューション分野で、オファーの品質、パフォーマンス、顧客ニーズへの対応能力の向上を促進します。 詳しくは、「[Microsoft AppSource と Azure Marketplace のお勧めするソリューション](preferred-solutions.md)」をご覧ください。
 
 ## <a name="co-sell-publishing-steps-and-requirements"></a>共同販売の公開手順と要件
 

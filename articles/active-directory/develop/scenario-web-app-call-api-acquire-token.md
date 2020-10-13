@@ -1,5 +1,6 @@
 ---
-title: Web API を呼び出す Web アプリでトークンを取得する - Microsoft ID プラットフォーム | Azure
+title: Web API を呼び出す Web アプリのトークンを取得する | Azure
+titleSuffix: Microsoft identity platform
 description: Web API を呼び出す Web アプリのトークンを取得する方法について説明します。
 services: active-directory
 author: jmprieur
@@ -8,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/14/2020
+ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 4904cd95dc81aad959c88c1dfdb09416923046e6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4fe3744f3f8cb39a7493ce788ee9badc1b31b75e
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518183"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396180"
 ---
 # <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>Web API を呼び出す Web アプリ:アプリのトークンを取得する
 
@@ -27,7 +28,11 @@ ms.locfileid: "86518183"
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-コントローラー メソッドは、ユーザーが Web アプリを使用するために認証されるようにする `[Authorize]` 属性によって保護されます。 以下に、Microsoft Graph を呼び出すコードを示します。
+*Microsoft.Identity.Web* では、Microsoft Graph またはダウンストリーム Web API を呼び出す便利なサービスを提供する拡張メソッドが追加されます。 これらのメソッドの詳細については、「[Web API を呼び出す Web アプリ: API を呼び出す](scenario-web-app-call-api-call-api.md)」を参照してください。 これらのヘルパー メソッドを使用すれば、トークンを手動で取得する必要はありません。
+
+ただし、トークンを手動で取得する場合は、ホーム コントローラーで取得することを目的とした *Microsoft.Identity.Web* の使用の例が、次のコードによって示されています。 これにより、REST API (Microsoft Graph SDK ではなく) を使用した、Microsoft Graph の呼び出しが行われます。 ダウンストリーム API を呼び出すためのトークンを取得するには、コントローラーのコンストラクター (Blazor を使用する場合はページ コンストラクター) に依存関係を挿入して、`ITokenAcquisition` サービスを挿入し、コントローラー アクションで使用します。これにより、ユーザーのトークン (`GetAccessTokenForUserAsync`)、またはデーモン シナリオでのアプリケーション自体 (`GetAccessTokenForAppAsync`) のトークンが取得されます。
+
+コントローラー メソッドは、認証されたユーザーのみが Web アプリを使用できるようにする `[Authorize]` 属性によって保護されます。
 
 ```csharp
 [Authorize]

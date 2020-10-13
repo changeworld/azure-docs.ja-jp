@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ad2bf071d4aa5b49541c710ef9b0793a1076ea9
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 1ec5757b41da630c4cb09ad0c096aee87572615d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662504"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319896"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-microsoft-365-resources"></a>Azure Active Directory Connect (同期): Microsoft 365 リソースの優先されるデータの場所の構成
 このトピックの目的は、Azure Active Directory (Azure AD) Connect 同期で、優先されるデータの場所の属性を構成する方法について説明することです。Microsoft 365 で Multi-Geo 機能を使用するときに、この属性を使用して、ユーザーの Microsoft 365 データの地理的な場所を指定します。 ("*リージョン*" と *geo* という用語は、同じ意味で使用されています。)
@@ -118,7 +118,7 @@ Multi-Geo で使用できる Microsoft 365 の geo を次に示します。
 4. 属性の一覧で、使用することを選択したソース属性のチェック ボックスがオンになっていることを確認します。 属性が表示されない場合は、 **[すべて表示]** チェックボックスを選択します。
 5. 保存するには、 **[OK]** を選択します。
 
-![Synchronization Service Manager とプロパティ ダイアログ ボックスのスクリーンショット](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step2.png)
+![Synchronization Service Manager と [プロパティ] ダイアログ ボックスを示すスクリーンショット。[属性] 一覧が強調表示されています。](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step2.png)
 
 ## <a name="step-4-add-preferreddatalocation-to-the-azure-ad-connector-schema"></a>手順 4:Azure AD コネクタのスキーマに **PreferredDataLocation** を追加する
 **この手順は、Connect バージョン 1.3.21 以前を実行している場合にのみ必要です。1.4.18 以降を使用している場合は、手順 5 に進みます。**  

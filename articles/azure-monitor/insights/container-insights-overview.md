@@ -2,13 +2,13 @@
 title: コンテナー用 Azure Monitor の概要 | Microsoft Docs
 description: この記事では、AKS Container Insights ソリューションを監視するコンテナーに対する Azure Monitor と、Azure の AKS クラスターと Container Instances の正常性を監視することによって提供される価値について説明します。
 ms.topic: conceptual
-ms.date: 05/21/2020
-ms.openlocfilehash: 85adae1b79609f13be6bb73eb4e57000beda6d77
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 09/08/2020
+ms.openlocfilehash: 215427adc38ebd554ca7ac650ec65a05f5a781e8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320274"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317159"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>コンテナーに対する Azure Monitor の概要
 
@@ -17,11 +17,11 @@ Azure Monitor for containers は、以下にデプロイされているコンテ
 - [Azure Kubernetes Service (AKS)](../../aks/intro-kubernetes.md) にホストされているマネージド Kubernetes クラスター
 - [AKS エンジン](https://github.com/Azure/aks-engine)を使用して、Azure でホストされた自己管理の Kubernetes クラスター
 - [Azure Container Instances](../../container-instances/container-instances-overview.md)
-- [Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910)またはオンプレミスでホストされた自己管理の Kubernetes クラスター
+- [Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910&preserve-view=true)またはオンプレミスでホストされた自己管理の Kubernetes クラスター
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md)
 - [Azure Arc 対応 Kubernetes](../../azure-arc/kubernetes/overview.md) (プレビュー)
 
-コンテナー向けの Azure Monitor は、Linux および Windows Server 2019 オペレーティングシステムを実行しているクラスターをサポートします。
+コンテナー向けの Azure Monitor は、Linux および Windows Server 2019 オペレーティングシステムを実行しているクラスターをサポートします。 サポートされているコンテナー ランタイムには、Docker、Moby、および CRI 互換性のあるランタイム (CRI-O、ContainerD など) があります。
 
 コンテナーの監視は、複数のアプリケーションを含む大規模な運用クラスターを実行するときは特に重要です。
 
@@ -40,7 +40,7 @@ Azure Monitor for containers は、以下にデプロイされているコンテ
 * 平均的な負荷、および最大の負荷がかかったときのクラスターの動作を理解します。 この知識は、容量ニーズを特定し、クラスターが維持できる最大負荷を判断するのに役立ちます。
 * ノードまたはコンテナーの CPU およびメモリの使用率がしきい値を超えた場合や、インフラストラクチャまたはノードの正常性ロールアップで正常性状態の変更がクラスターで発生した場合に、事前に通知または記録するようにアラートを構成します。
 * [Prometheus](https://prometheus.io/docs/introduction/overview/) と統合して、[クエリ](container-insights-log-search.md)を使用してノードと Kubernetes から収集したアプリケーションとワークロードのメトリックを表示し、カスタム アラート、ダッシュボード、詳細な分析を作成します。
-* オンプレミスの [AKS エンジンにデプロイされた](https://github.com/Azure/aks-engine)コンテナー ワークロードおよび [Azure Stack の AKS エンジン](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)を監視します。
+* オンプレミスの [AKS エンジンにデプロイされた](https://github.com/Azure/aks-engine)コンテナー ワークロードおよび [Azure Stack の AKS エンジン](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908&preserve-view=true)を監視します。
 * [Azure Red Hat OpenShift にデプロイされた](../../openshift/intro-openshift.md)コンテナー ワークロードを監視します。
 
     >[!NOTE]

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
-ms.openlocfilehash: ce60f360a6839d43b0cbc209242a1385a0984c9d
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: d4d25d8e79c30933546af2b823e328a652f482eb
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088546"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360533"
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights を使用する方法
 
@@ -218,8 +218,8 @@ PerfInsights ツールを実行するには、次の手順に従います。
 
 **[概要]** タブには、基本的な実行の詳細と仮想マシンの情報が表示されます。 **[Findings]\(検出結果\)** タブには、PerfInsights レポートのすべてのセクションの推奨事項の概要が表示されます。
 
-![PerfInsights レポートのスクリーンショット](media/how-to-use-perfinsights-linux/perfinsights-linux-overview.png)  
-![PerfInsights レポートのスクリーンショット](media/how-to-use-perfinsights-linux/perfinsights-linux-findings-tab.png)
+![PerfInsights レポートの [概要] タブのスクリーンショット。](media/how-to-use-perfinsights-linux/perfinsights-linux-overview.png)  
+![PerfInsights レポートの [Linux] タブのスクリーンショット。](media/how-to-use-perfinsights-linux/perfinsights-linux-findings-tab.png)
 
 > [!NOTE]
 > [高] と分類された結果は、パフォーマンスの問題の原因となる可能性のある既知の問題です。 [中] と分類された結果は、最適ではないが、必ずしもパフォーマンス問題の原因とはならない構成です。 [低] と分類された結果は、単なる情報提供のためのステートメントです。

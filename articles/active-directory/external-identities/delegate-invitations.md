@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 09/15/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae8bb66141e4cc4e67f1502b208cf519d37c0374
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: bb0147af559d9de4a8589344d61b06368086dd20
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705999"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278789"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>B2B 外部コラボレーションを有効にしてゲストを招待できるユーザーを管理する
 
@@ -24,7 +24,7 @@ ms.locfileid: "88705999"
 
 既定では、管理者ロールに割り当てられていなくても、ディレクトリ内のすべてのユーザーとゲストがゲストを招待できます。 外部コラボレーションの設定を使用することで、組織内のユーザーの種類ごとに、ゲストの招待を有効にしたり無効にしたりすることができます。 また、ゲストの招待を許可するロールを割り当てることによって、個々のユーザーに招待を委任することもできます。
 
-Azure AD を使用すると、外部のゲスト ユーザーに表示される Azure AD ディレクトリの内容を制限することができます。 既定では、ゲスト ユーザーはユーザー、グループ、またはその他のディレクトリ リソースの列挙がブロックされ、非表示グループのメンバーシップのみ閲覧可能な、制限付きのアクセス許可レベルに設定されています。 新しいプレビュー設定では、ゲストが自分のプロファイル情報のみを表示できるように、ゲスト アクセスをさらに制限することができます。 
+Azure AD を使用すると、外部のゲスト ユーザーに表示される Azure AD ディレクトリの内容を制限することができます。 既定では、ゲスト ユーザーはユーザー、グループ、またはその他のディレクトリ リソースの列挙がブロックされ、非表示グループのメンバーシップのみ閲覧可能な、制限付きのアクセス許可レベルに設定されています。 新しいプレビュー設定では、ゲストが自分のプロファイル情報のみを表示できるように、ゲスト アクセスをさらに制限することができます。 詳細については、[ゲスト ユーザーのアクセス制御 (プレビュー)](../users-groups-roles/users-restrict-guest-permissions.md) に関する記事を参照してください。
 
 ## <a name="configure-b2b-external-collaboration-settings"></a>B2B 外部コラボレーションの設定を構成する
 
@@ -44,9 +44,6 @@ Azure AD B2B コラボレーションでは、テナント管理者が次の招�
 3. **[外部 ID]**  >  **[外部コラボレーションの設定]** を選択します。
 
 4. **[ゲスト ユーザーのアクセス制限 (プレビュー)]** で、ゲスト ユーザーに付与するアクセス レベルを選択します。
-
-   > [!IMPORTANT]
-   > しばらくの間、ゲスト ユーザーのアクセス許可に対するこれらの新しいポータル コントロールは、URL [https://aka.ms/AADRestrictedGuestAccess](https://aka.ms/AADRestrictedGuestAccess) を使用してのみ表示できます。 詳細については、[ゲスト ユーザーのアクセス制御 (プレビュー)](https://aka.ms/exid-users-restrict-guest-permissions) に関する記事を参照してください。
 
    - **Guest users have the same access as members (most inclusive) (ゲスト ユーザーにメンバーと同じアクセス権を付与する (最も包括的))** :このオプションを選択すると、ゲストがメンバー ユーザーと同じように Azure AD リソースとディレクトリ データにアクセスできるようになります。
 

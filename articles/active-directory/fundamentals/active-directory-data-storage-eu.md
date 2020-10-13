@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8dc229b366a7816c861da665c73d6421e67545c6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 06900483598e1c03bd56cd8ac8c905f885012f08
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985909"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91395891"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Azure Active Directory でのヨーロッパの顧客のための ID データ ストレージ
 Microsoft 365 や Azure などの Microsoft Online サービスをサブスクライブしている場合、識別データは Azure AD により、組織によって提供されたアドレスに基づく地理的な場所に格納されます。 ID データの格納場所については、Microsoft Trust Center の「[データの保管場所](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)」のセクションを参照してください。
@@ -35,6 +35,10 @@ Microsoft 365 や Azure などの Microsoft Online サービスをサブスク�
 * ヨーロッパのデータセンターから発信される OATH コードを使用する多要素認証要求は、ヨーロッパで検証されます。
 
 Azure Multi-Factor Authentication Server (MFA Server) およびクラウドベースの Azure MFA によって収集されるユーザー情報の詳細については、「[Azure Multi-Factor Authentication によるユーザー データの収集](../authentication/howto-mfa-reporting-datacollection.md)」を参照してください。
+
+## <a name="password-based-single-sign-on-for-enterprise-applications"></a>エンタープライズ アプリケーションでのパスワードベースのシングル サインオン
+ 
+お客様が (Azure AD ギャラリーまたはギャラリー以外を使用して) 新しいエンタープライズ アプリケーションを作成する場合、およびパスワードベースの SSO を有効にする場合は、アプリケーションのサインイン URL とカスタムのキャプチャ サインイン フィールドは米国内に格納されます。 この機能の詳細については、[パスワードベースのシングル サインオンの構成](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md)に関する記事を参照してください。
 
 ## <a name="microsoft-azure-active-directory-b2c-azure-ad-b2c"></a>Microsoft Azure Active Directory B2C (Azure AD B2C)
 

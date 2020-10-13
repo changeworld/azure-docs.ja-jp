@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: b96f38d04fe3e3cb59fa75424ae588fe0e38f510
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dc77b3c8bc357b63047d20afa9493bbaaff77113
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931004"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285317"
 ---
 # <a name="scale-up-and-down-an-azure-database-for-postgresql-hyperscale-server-group-using-cli-azdata-or-kubectl"></a>CLI (azdata または kubectl) を使用した Azure Database for PostgreSQL Hyperscale サーバー グループのスケールアップとスケールダウン
 
@@ -84,7 +84,7 @@ kubectl describe postgresql-12/<server group name> [-n <namespace name>]
 
 設定を行う場合は、Kubernetes クラスターに設定した構成内で考慮する必要があります。 Kubernetes クラスターが満たすことができない値を設定していないことを確認します。 これにより、エラーや予期しない動作が発生する可能性があります。 例として、構成を変更した後にサーバー グループの状態が "_更新中_" のままになっている場合は、以下のパラメーターを Kubernetes クラスターが満たすことができない値に設定している可能性があります。 その場合は、変更を元に戻すか、_troubleshooting_section を参照してください。
 
-サーバー グループの定義を次のようにスケールアップするとします。
+例として、サーバー グループの定義を次のようにスケールアップするとします。
 
 - 最小仮想コア = 2
 - 最大仮想コア = 4
@@ -94,6 +94,13 @@ kubectl describe postgresql-12/<server group name> [-n <namespace name>]
 次のいずれかの方法を使用します。
 
 ### <a name="cli-with-azdata"></a>azdata を使用した CLI
+
+```console
+azdata arc postgres server edit -n <name of your server group> --cores-request <# core-request>  --cores-limit <# core-limit>  --memory-request <# memory-request>Mi  --memory-limit <# memory-limit>Mi
+```
+
+> [!CAUTION]
+> 以下は、このコマンドの使用方法を解説するための例です。 編集コマンドを実行する前に、Kubernetes クラスターで適用できる値にパラメーターを必ず設定してください。
 
 ```console
 azdata arc postgres server edit -n <name of your server group> --cores-request 2  --cores-limit 4  --memory-request 512Mi  --memory-limit 1024Mi
@@ -116,6 +123,10 @@ kubectl edit postgresql-12/<server group name> [-n <namespace name>]
 
 これにより、vi エディターが表示されます。ここで、構成の参照や変更を行うことができます。 次のコードを使用して、目的の設定を仕様のフィールド名にマップします。
 
+> [!CAUTION]
+> 以下は、この構成の編集方法を解説するための例です。 構成を更新する前に、Kubernetes クラスターで適用できる値にパラメーターを必ず設定してください。
+
+次に例を示します。
 - 最小仮想コア = 2 -> scheduling\default\resources\requests\cpu
 - 最大仮想コア = 4 -> scheduling\default\resources\limits\cpu
 - 最小メモリ = 512 Mb -> scheduling\default\resources\requests\cpu

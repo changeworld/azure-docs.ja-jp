@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e9a78690128c2406277ab4e8fb6e6e4625d2787f
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: bb5ff0bf7347b87fdc3a103a03f9ff58279a367d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89280096"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320773"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Azure Digital Twins インスタンスと認証を設定する (CLI)
 
@@ -78,7 +78,7 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 >
 > [Azure Active Directory ユーザーの Azure portal ページ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)を使用して、ユーザー アカウントを選択し、その詳細を開きます。 そのユーザーの "*ObjectID*" をコピーします。
 >
-> :::image type="content" source="media/includes/user-id.png" alt-text="[オブジェクト ID] フィールドで GUID が強調表示されている、Azure portal のユーザー ページの表示" lightbox="media/includes/user-id.png":::
+> :::image type="content" source="media/includes/user-id.png" alt-text="リソース グループと Azure Digital Twins インスタンスが正常に作成されたコマンド ウィンドウ" lightbox="media/includes/user-id.png":::
 >
 > 次に、前述の `assignee` パラメーターにユーザーの "*オブジェクト ID*" を使用して、ロールの割り当てリスト コマンドを繰り返します。
 
@@ -115,7 +115,7 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 
 次に、このファイルを Cloud Shell にアップロードします。 Cloud Shell ウィンドウで、[ファイルのアップロード/ダウンロード] アイコンをクリックし、[アップロード] を選択します。
 
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="[アップロード] オプションが選択されていることを示す Cloud Shell ウィンドウ":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="リソース グループと Azure Digital Twins インスタンスが正常に作成されたコマンド ウィンドウ":::
 先ほど作成した *manifest.json* に移動し、[開く] をクリックします。
 
 次に、下記のコマンドを実行してアプリ登録を作成します。このとき、`http://localhost` の*パブリック クライアント/ネイティブ (モバイルとデスクトップ)* 応答 URL を使用します。 必要に応じてプレースホルダーを置き換えます。
@@ -126,13 +126,13 @@ az ad app create --display-name <name-for-your-app-registration> --native-app --
 
 作成した登録に関する情報を示す、このコマンドからの出力の抜粋を次に示します。
 
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/new-app-registration.png" alt-text="新しい Azure AD アプリ登録の Cloud Shell 出力":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/new-app-registration.png" alt-text="リソース グループと Azure Digital Twins インスタンスが正常に作成されたコマンド ウィンドウ":::
 
 ### <a name="verify-success"></a>成功を確認する
 
 [!INCLUDE [digital-twins-setup-verify-app-registration-1.md](../../includes/digital-twins-setup-verify-app-registration-1.md)]
 
-最初に、アップロードした *manifest.json* の設定が登録時に正しく設定されたことを確認します。 これを行うには、メニュー バーから *[マニフェスト]* を選択して、アプリ登録のマニフェスト コードを表示します。 コード ウィンドウの一番下までスクロールし、*manifest.json* の `requiredResourceAccess` の下のフィールドを探します。
+次に、アップロードした *manifest.json* の設定が登録時に正しく設定されていたことを確認します。 これを行うには、メニュー バーから *[マニフェスト]* を選択して、アプリ登録のマニフェスト コードを表示します。 コード ウィンドウの一番下までスクロールし、*manifest.json* の `requiredResourceAccess` の下のフィールドを探します。
 
 [!INCLUDE [digital-twins-setup-verify-app-registration-2.md](../../includes/digital-twins-setup-verify-app-registration-2.md)]
 
@@ -140,9 +140,7 @@ az ad app create --display-name <name-for-your-app-registration> --native-app --
 
 次に、メニュー バーから *[概要]* を選択して、アプリ登録の詳細を表示します。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="アプリ登録の重要な値のポータル ビュー":::
-
-**実際の**ページに表示される、"*アプリケーション (クライアント) ID*" と "*ディレクトリ (テナント) ID*" をメモしておきます。 これらの値は、後で [Azure Digital Twins API に対してクライアント アプリを認証する](how-to-authenticate-client.md)ために必要になります。 自分がこのようなアプリケーションのコードを作成するユーザーでない場合は、これらの値をそのユーザーと共有する必要があります。
+:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="リソース グループと Azure Digital Twins インスタンスが正常に作成されたコマンド ウィンドウ" をメモしておきます。 これらの値は、後で [Azure Digital Twins API に対してクライアント アプリを認証する](how-to-authenticate-client.md)ために必要になります。 自分がこのようなアプリケーションのコードを作成するユーザーでない場合は、これらの値をそのユーザーと共有する必要があります。
 
 ### <a name="other-possible-steps-for-your-organization"></a>組織でのその他の考えられる手順
 
@@ -151,7 +149,7 @@ az ad app create --display-name <name-for-your-app-registration> --native-app --
 ## <a name="next-steps"></a>次のステップ
 
 Azure Digital Twins CLI コマンドを使用して、インスタンスでの個別の REST API 呼び出しをテストします。 
-* [az dt reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest)
+* [az dt reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true)
 * [*方法: Azure Digital Twins CLI を使用する*](how-to-use-cli.md)
 
 または、クライアント アプリの認証コードを作成してクライアント アプリケーションをインスタンスに接続する方法を確認します。

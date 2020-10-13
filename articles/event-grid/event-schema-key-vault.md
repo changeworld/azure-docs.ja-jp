@@ -3,12 +3,12 @@ title: Event Grid ソースとして Azure Key Vault
 description: Azure Event Grid で Azure Key Vault のイベント用に提供されているプロパティとスキーマについて説明します
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: f6e2bdfb2000f3a4c4a8f91eee23348d9cc9c766
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: b3d961228429c1f84e45c1df9147fa1687ab5074
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090399"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324078"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>Event Grid ソースとして Azure Key Vault
 
@@ -78,17 +78,12 @@ Azure Key Vault アカウントでは、以下の種類のイベントが生成�
 |タイトル  |説明  |
 |---------|---------|
 | [Azure Event Grid での Key Vault イベントの監視](../key-vault/general/event-grid-overview.md) | Key Vault と Event Grid の統合の概要です。 |
-| [チュートリアル:Event Grid を使用した Key Vault イベントの作成と監視](../key-vault/general/event-grid-tutorial.md) | Key Vault に関する Event Grid の通知を設定する方法について説明します。 |
+| [チュートリアル:Event Grid を使用した Key Vault イベントの作成と監視](../key-vault/general/event-grid-logicapps.md) | Key Vault に関する Event Grid の通知を設定する方法について説明します。 |
 
 
 ## <a name="next-steps"></a>次のステップ
 
 * Azure Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。
 * Azure Event Grid サブスクリプションの作成方法の詳細については、「[Event Grid サブスクリプション スキーマ](subscription-creation-schema.md)」を参照してください。
-* Key Vault の Event Grid との統合の詳細については、「[Azure Event Grid での Key Vault の監視](../key-vault/general/event-grid-overview.md)」を参照してください。
-* Key Vault の Event Grid との統合に関するチュートリアルについては、「[Azure Event Grid でキー コンテナー通知を受信して応答する](../key-vault/general/event-grid-tutorial.md)」を参照してください。
-* Key Vault と Azure Automation に関する追加のガイダンスについては、以下を参照してください。
-    - [Azure Key Vault とは](../key-vault/general/overview.md)
-    - [Azure Event Grid での Key Vault の監視](../key-vault/general/event-grid-overview.md)
-    - [Azure Event Grid でキー コンテナー通知を受信して応答する](../key-vault/general/event-grid-tutorial.md)
-    - [Azure Automation の概要](../automation/index.yml)
+* Key Vault の詳細については、[Azure Key Vault の概要](../key-vault/general/overview.md)に関する記事を参照してください。
+

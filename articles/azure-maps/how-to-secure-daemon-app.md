@@ -5,16 +5,16 @@ description: Azure portal を使用して、信頼されたデーモン アプ�
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 06/12/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 2b09163137bbfb6b8a7b0e2b8ddd6d7cccc52cc5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5af7645db662a238099e013f84b0dc0fee2af62c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006640"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355858"
 ---
 # <a name="secure-a-daemon-application"></a>デーモン アプリケーションをセキュリティで保護する
 
@@ -120,14 +120,14 @@ Azure 以外の環境で実行する場合、マネージド ID は使用でき�
     > ![Azure RBAC を使用してアクセス権を付与する](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
 2. **[ロールの割り当て]** タブで、ロールの割り当てを**追加**します。 
-    
+
     > [!div class="mx-imgBorder"]
-    > ![ロールの割り当てを追加する](./media/how-to-manage-authentication/add-role-assignment.png)
+    > ![[追加] が選択されているロールの割り当てを示すスクリーンショット。](./media/how-to-manage-authentication/add-role-assignment.png)
 
 3. **[Azure Maps データ閲覧者]** や **[Azure Maps データ共同作成者]** などの組み込みの Azure Maps ロールの定義を選択します。 **[アクセスの割り当て先]** で、 **[Azure AD のユーザー、グループ、またはサービス プリンシパル]** 、または **[ユーザー割り当てマネージド ID]**  /  **[システム割り当てマネージド ID]** のマネージド ID を選択します。 プリンシパルを選択します。 次に、 **[保存]** を選択します。
 
     > [!div class="mx-imgBorder"]
-    > ![ロールの割り当てを追加する](./media/how-to-manage-authentication/how-to-add-role-assignment.png)
+    > ![ロールの割り当てを追加する方法](./media/how-to-manage-authentication/how-to-add-role-assignment.png)
 
 4. ロールの割り当てタブで、ロールの割り当てが適用されたことを確認できます。
 

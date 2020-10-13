@@ -1,18 +1,18 @@
 ---
 title: Azure Firewall ポリシーでの IP グループ
-description: IP グループを使用すると、Azure Firewall 規則の IP アドレスをグループ化して管理できます。
+description: IP グループを使用すると、Azure Firewall ポリシー規則の IP アドレスをグループ化して管理できます。
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: conceptual
 ms.date: 07/30/2020
 ms.author: victorh
-ms.openlocfilehash: 5192ecb31c71364bdf1301b13da0b0742625d44f
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 5b3b3fb5e5440fea888654027f4fbf1a68b34141
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460135"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252427"
 ---
 # <a name="ip-groups-in-azure-firewall-policy"></a>Azure Firewall ポリシーでの IP グループ
 

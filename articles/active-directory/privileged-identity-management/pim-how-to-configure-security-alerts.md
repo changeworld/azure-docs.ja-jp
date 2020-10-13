@@ -14,12 +14,12 @@ ms.date: 03/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 258e05b135195004fec628936bb458ea8f1dc7b1
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 706770db4309d1a909bc1161ab9d6657b6c5310a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419990"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533550"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールに対するセキュリティ アラートを構成する
 
@@ -38,7 +38,7 @@ Azure AD ロールに関するセキュリティ アラートを調査するに�
 
 # <a name="new-version"></a>[新しいバージョン](#tab/new)
 
-![Azure AD ロール - アラートと重大度を一覧表示するアラート ウィンドウ](./media/pim-how-to-configure-security-alerts/view-alerts.png)
+![[アラート] ページを示すスクリーンショット。アラートとその重大度の一覧が表示されています。](./media/pim-how-to-configure-security-alerts/view-alerts.png)
 
 ## <a name="security-alerts"></a>セキュリティのアラート
 
@@ -108,8 +108,8 @@ Azure AD ロールに関するセキュリティ アラートを調査するに�
 | **修正方法** | リスト内のユーザーを確認し、必ずしもグローバル管理者ロールが必要ではないユーザーをすべて削除します。 </br>代わりに、下位の特権ロールをこれらのユーザーに割り当てます。 |
 | **防止** | ユーザーには最低限必要な特権ロールを割り当てます。 |
 | **ポータル内での軽減策のアクション** | 対象の特権ロールからアカウントを削除します。 |
-| **トリガー** | 2 つの異なる条件が満たされるとトリガーされます。これらの両方の条件を構成できます。 1 つ目に、グローバル管理者の数が特定のしきい値に達する必要があります。 2 つ目には、総ロール割り当て数のうち一定の割合がグローバル管理者である必要があります。 これらの測定値の一方のみが満たされている場合は、アラートは表示されません。 |
-| **Minimum number of Global Administrators (グローバル管理者の最低人数)** | この設定では、Azure AD 組織には少なすぎると考えられるグローバル管理者の人数を 2 から 100 で指定します。 |
+| **トリガー** | 2 つの異なる条件が満たされるとトリガーされます。これらの両方の条件を構成できます。 1 つ目に、グローバル管理者のロールの割り当て数が特定のしきい値に達する必要があります。 2 つ目には、総ロール割り当て数のうち一定の割合がグローバル管理者である必要があります。 これらの測定値の一方のみが満たされている場合は、アラートは表示されません。 |
+| **Minimum number of Global Administrators (グローバル管理者の最低人数)** | この設定では、グローバル管理者のロールの割り当て数を、Azure AD 組織には少なすぎると考えられる 2 から 100 の数で指定します。 |
 | **グローバル管理者の割合** | この設定では、グローバル管理者である管理者の最低限の割合を 0% から 100% で、Azure AD 組織で減少すべきではない割合より低く指定します。 |
 
 ### <a name="roles-are-being-activated-too-frequently"></a>ロールをアクティブ化する頻度が高すぎます
@@ -125,21 +125,21 @@ Azure AD ロールに関するセキュリティ アラートを調査するに�
 | **アクティブ化の更新の時間枠** | この設定では、不審な更新の追跡に使用する期間を日、時間、分、および秒で指定します。 |
 | **Number of activation renewals (アクティブ化の更新回数)** | この設定では、選択した期間内に通知を受け取るアクティブ化の回数を 2 から 100 で指定します。 スライダーを動かすか、テキスト ボックスに数字を入力して設定を変更できます。 |
 
-## <a name="configure-security-alert-settings"></a>セキュリティ アラート設定の構成
+## <a name="customize-security-alert-settings"></a>セキュリティ アラート設定のカスタマイズ
 
-[アラート] ページから **[設定]** に移動します。
+**[アラート]** ページで **[設定]** を選択します。
 
 ![[設定] が強調表示されている [アラート] ページ](media/pim-how-to-configure-security-alerts/alert-settings.png)
 
 環境で機能し、セキュリティの目標に合うようにさまざまなアラートの設定をカスタマイズします。
 
-![設定を有効化および構成するための、アラートの [設定] ページ](media/pim-resource-roles-configure-alerts/rbac-alert-settings.png)
+![設定を有効化および構成するための、アラートの [設定] ページ](media/pim-how-to-configure-security-alerts/security-alert-settings.png)
 
 # <a name="previous-version"></a>[以前のバージョン](#tab/previous)
 
 ![Azure AD ロール - アラートと重大度を一覧表示するアラート ウィンドウ](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
 
-## <a name="security-alerts"></a>セキュリティのアラート
+## <a name="security-alert-details"></a>Security alert details
 
 このセクションでは、Azure AD ロールのすべてのセキュリティ アラートの一覧を、修正方法および回避方法と共に示します。 重大度には、次のような意味があります。
 

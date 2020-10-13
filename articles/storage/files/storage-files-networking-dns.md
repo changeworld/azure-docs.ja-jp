@@ -1,18 +1,18 @@
 ---
 title: Azure Files の DNS 転送の構成 | Microsoft Docs
-description: Azure Files のネットワーク オプションの概要。
+description: Azure Files の DNS 転送を構成する方法について説明します。
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6404115e64ba0ac1f65ba1cfc8d26604f1ce9cfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b5ce48cf15c890fbdb3dfd90d9d0ab922a2f4b2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509967"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320270"
 ---
 # <a name="configuring-dns-forwarding-for-azure-files"></a>Azure Files の DNS 転送の構成
 Azure Files では、ファイル共有を含むストレージ アカウントのプライベート エンドポイントを作成することができます。 プライベート エンドポイントは、多くの異なるアプリケーションで役立ちますが、プライベート ピアリングを使用する VPN または ExpressRoute 接続を使って、オンプレミス ネットワークから Azure ファイル共有に接続する場合に特に便利です。 

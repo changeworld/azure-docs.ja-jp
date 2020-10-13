@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 98ef2b416c809789307f946ed90fb3138d9a20c1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c28a3b0f445ca905a882a7ede3fcfed2c1e673a4
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325374"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531192"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェントに関する問題のトラブルシューティング方法 
 
@@ -150,7 +150,7 @@ OMS 出力プラグインを使用する代わりに、データ項目を `stdou
 
 ### <a name="probable-causes"></a>考えられる原因
 * オンボード中に指定されたプロキシが正しくありません
-* Azure Monitor と Azure Automation サービスのエンドポイントがデータセンターでホワイトリストに登録されていない 
+* Azure Monitor サービスと Azure Automation サービスのエンドポイントが、データセンター内にある承認されたリストに記載されていない 
 
 ### <a name="resolution"></a>解像度
 1. オプション `-v` が有効になった次のコマンドを使用して、Linux 用 Log Analytics エージェントで Azure Monitor に再オンボードします。 これにより、プロキシ経由で Azure Monitor に接続しているエージェントの詳細出力が可能になります。 
@@ -444,4 +444,3 @@ sudo sh ./onboard_agent.sh --purge
     ```
 
 3. `sudo sh ./omsagent-*.universal.x64.sh --upgrade` を実行してパッケージをアップグレードします。
-

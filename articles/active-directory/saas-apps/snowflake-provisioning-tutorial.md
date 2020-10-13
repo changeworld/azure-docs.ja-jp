@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 7fbf7743eb1c037a364e1004fc3be30db6777bb0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f4c6eb8ad8e3d69d2b3545bc5754e1a632f5cc8c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546644"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285818"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>チュートリアル:Snowflake を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -58,11 +58,11 @@ Azure AD での自動ユーザー プロビジョニング用に Snowflake を�
 
 2.  SCIM アクセス トークンが、Snowflake テナントに対して生成されます。 それを取得するには、下の強調表示されているリンクをクリックします。
 
-    ![Snowflake での SCIM の追加](media/Snowflake-provisioning-tutorial/image01.png)
+    ![Snowflake UI のワークシートのスクリーンショット。SCIM アクセス トークンが選択されています。](media/Snowflake-provisioning-tutorial/image01.png)
 
 3. 生成されたトークンの値をコピーし、 **[完了]** をクリックします。 この値を、Azure portal の Snowflake アプリケーションの [プロビジョニング] タブの **[シークレット トークン]** フィールドに入力します。
 
-    ![Snowflake での SCIM の追加](media/Snowflake-provisioning-tutorial/image02.png)
+    ![[詳細] セクションのスクリーンショット。トークンがテキスト フィールドにコピーされ、[完了] オプションが選択されています。](media/Snowflake-provisioning-tutorial/image02.png)
 
 ## <a name="step-3-add-snowflake-from-the-azure-ad-application-gallery"></a>手順 3. Azure AD アプリケーション ギャラリーから Snowflake を追加する
 
@@ -93,11 +93,11 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. [管理者資格情報] セクションの **[テナント URL]** フィールドおよび **[シークレット トークン]** フィールドに、先ほど取得した **SCIM 2.0 ベース URL および認証トークン**の値をそれぞれ入力します。 **[接続テスト]** をクリックして、Azure AD から Snowflake に接続できることを確認します。 接続できない場合は、使用中の Snowflake アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 

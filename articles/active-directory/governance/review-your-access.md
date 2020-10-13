@@ -15,12 +15,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b52830e7cddb01c129df2344e26ac1684a88872
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 959837ff540fd95d186497858d7b9de1f8b1124d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89292726"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274012"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Azure AD アクセス レビューでグループまたはアプリケーションに対する自分のアクセスをレビューする
 
@@ -65,13 +65,13 @@ ms.locfileid: "89292726"
 
     他のユーザーのアクセスをレビューするように要求した場合は、ページの外観が異なります。 詳細については、[グループまたはアプリケーションに対するアクセスのレビュー](perform-access-review.md)に関するページを参照してください。
 
-    ![グループへのアクセスが引き続き必要かどうかを確認する、開かれたアクセス レビュー](./media/review-your-access/perform-access-review.png)
+    ![開いているアクセス レビューのスクリーンショット。グループへのアクセスが引き続き必要かどうか確認しています。](./media/review-your-access/perform-access-review.png)
 
 1. **[はい]** をクリックしてアクセスを維持するか、 **[いいえ]** をクリックしてアクセスを削除します。
 
 1. **[はい]** をクリックする場合は、 **[理由]** ボックスに正当性を指定する必要がある場合があります。
 
-    ![グループへのアクセスが引き続き必要かどうかを確認する、完了したアクセス レビュー](./media/review-your-access/perform-access-review-submit.png)
+    ![グループへのアクセスが引き続き必要かどうか確認するアクセス レビューの完了後のスクリーンショット。[はい] が選択されています。](./media/review-your-access/perform-access-review-submit.png)
 
 1. **[送信]** をクリックします。
 

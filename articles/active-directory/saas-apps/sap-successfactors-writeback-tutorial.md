@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: b185f29cea61b9c366714a1af72648aeee35b61c
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 5ec06960e695abfa4bf004633b1f171214a5d29a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017933"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91286555"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>チュートリアル:Azure AD から SAP SuccessFactors への属性の書き戻しを構成する
 このチュートリアルの目的は、Azure AD から SAP SuccessFactors Employee Central に属性を書き戻すための手順を説明することです。 
@@ -125,68 +125,97 @@ SuccessFactors 管理チームまたは実装パートナーと協力して、OD
 
 ## <a name="preparing-for-successfactors-writeback"></a>SuccessFactors Writeback の準備
 
-SuccessFactors Writeback プロビジョニング アプリでは、Employee Central でメール アドレスと電話番号を設定するために、特定の "*コード*" の値が使用されます。 これらの "*コード*" の値は、属性マッピング テーブルの定数値として設定され、SuccessFactors のインスタンスごとに異なります。 このセクションでは、[Postman](https://www.postman.com/downloads/) を使用してコードの値をフェッチします。 [cURL](https://curl.haxx.se/)、[Fiddler](https://www.telerik.com/fiddler)、または他の同様のツールを使用して、HTTP 要求を送信できます。 
+SuccessFactors Writeback プロビジョニング アプリでは、Employee Central でメール アドレスと電話番号を設定するために、特定の "*コード*" の値が使用されます。 これらの "*コード*" の値は、属性マッピング テーブルの定数値として設定され、SuccessFactors のインスタンスごとに異なります。 このセクションでは、これらの "*コード*" 値をキャプチャする手順について説明します。
 
-### <a name="download-and-configure-postman-with-your-successfactors-tenant"></a>SuccessFactors テナントで Postman をダウンロードして構成する
+   > [!NOTE]
+   > このセクションの手順を完了するには、SuccessFactors 管理者に協力を要請してください。 
 
-1. [Postman](https://www.postman.com/downloads/) をダウンロードします
-1. Postman アプリで "新しいコレクション" を作成します。 "SuccessFactors" という名前にします。 
+### <a name="identify-email-and-phone-number-picklist-names"></a>メール アドレスと電話番号の候補リストの名前を識別する 
+
+SAP SuccessFactors では、"*候補リスト*" は、ユーザーが選択できるオプションの構成可能なセットです。 さまざまな種類のメール アドレスと電話番号 (例: 勤務先、個人、その他) は、候補リストを使用して表されます。 この手順では、メール アドレスと電話番号の値を格納するために、SuccessFactors テナントで構成されている候補リストを識別します。 
+ 
+1. SuccessFactors Admin Center で、"*Manage business configuration*" (勤務先の構成の管理) を検索します。 
 
    > [!div class="mx-imgBorder"]
-   > ![新しい Postman コレクション](./media/sap-successfactors-inbound-provisioning/new-postman-collection.png)
+   > ![Manage business configuration (勤務先の構成の管理)](./media/sap-successfactors-inbound-provisioning/manage-business-config.png)
 
-1. [Authorization]\(承認\) タブで、前のセクションで構成した API ユーザーの資格情報を入力します。 種類を [Basic Auth]\(基本認証\) として構成します。 
+1. **[HRIS Elements]\(HRIS 要素\)** で **[emailInfo]** を選択し、 **[email-type]** フィールドの *[Details]\(詳細\)* をクリックします。
 
    > [!div class="mx-imgBorder"]
-   > ![Postman の承認](./media/sap-successfactors-inbound-provisioning/postman-authorization.png)
+   > ![メール アドレス情報の取得](./media/sap-successfactors-inbound-provisioning/get-email-info.png)
 
-1. 構成を保存します。 
+1. **[email-type]** の詳細ページで、このフィールドに関連付けられている候補リストの名前を書き留めます。 既定では、**ecEmailType** です。 ただし、テナントによって異なる場合があります。 
+
+   > [!div class="mx-imgBorder"]
+   > ![メール アドレスの候補リストの識別](./media/sap-successfactors-inbound-provisioning/identify-email-picklist.png)
+
+1. **[HRIS Elements]\(HRIS 要素\)** で **[phoneInfo]** を選択し、 **[phone-type]** フィールドの *[Details]\(詳細\)* をクリックします。
+
+   > [!div class="mx-imgBorder"]
+   > ![電話情報の取得](./media/sap-successfactors-inbound-provisioning/get-phone-info.png)
+
+1. **[phone-type]** の詳細ページで、このフィールドに関連付けられている候補リストの名前を書き留めます。 既定では、**ecPhoneType** です。 ただし、テナントによって異なる場合があります。 
+
+   > [!div class="mx-imgBorder"]
+   > ![電話の候補リストを識別する](./media/sap-successfactors-inbound-provisioning/identify-phone-picklist.png)
 
 ### <a name="retrieve-constant-value-for-emailtype"></a>emailType の定数値を取得する
 
-1. Postman で、SuccessFactors コレクションの省略記号ボタン [...] をクリックして、次に示すように "Get Email Type" という名前の [New Request]\(新しい要求\) を追加します。 
+1. SuccessFactors Admin Center で *Picklist Center* を検索して開きます。 
+1. 前のセクションで取得したメール アドレスの候補リストの名前 (例: ecEmailType) を使用して、メール アドレスの候補リストを見つけます。 
 
    > [!div class="mx-imgBorder"]
-   > ![Postman のメール要求 ](./media/sap-successfactors-inbound-provisioning/postman-email-request.png)
+   > ![メール アドレスの種類の候補リストの検索](./media/sap-successfactors-inbound-provisioning/find-email-type-picklist.png)
 
-1. "Get Email Type" 要求のパネルを開きます。 
-1. GET の URL に次の URL を追加し、`successFactorsAPITenantName` を SuccessFactors インスタンスの API テナントに置き換えます。 
-   `https://<successfactorsAPITenantName>/odata/v2/Picklist('ecEmailType')?$expand=picklistOptions&$select=picklistOptions/id,picklistOptions/externalCode&$format=json`
+1. アクティブなメール アドレスの候補リストを開きます。 
 
    > [!div class="mx-imgBorder"]
-   > ![Postman でのメールの種類の取得](./media/sap-successfactors-inbound-provisioning/postman-get-email-type.png)
+   > ![アクティブなメール アドレスの種類の候補リストを開く](./media/sap-successfactors-inbound-provisioning/open-active-email-type-picklist.png)
 
-1. [Authorization]\(承認\) タブでは、コレクションに対して構成されている認証が継承されます。 
-1. [Send]\(送信\) をクリックして、API 呼び出しを呼び出します。 
-1. 応答本文で、JSON の結果セットを表示し、`externalCode = B` に対応する ID を探します。 
+1. メール アドレスの種類の候補リスト ページで、メール アドレスの種類として *[Business]\(勤務先\)* を選択します。
 
    > [!div class="mx-imgBorder"]
-   > ![Postman でのメールの種類の応答](./media/sap-successfactors-inbound-provisioning/postman-email-type-response.png)
+   > ![勤務先のメール アドレスの種類の選択](./media/sap-successfactors-inbound-provisioning/select-business-email-type.png)
 
-1. 属性マッピング テーブルの *emailType* で定数として使用するので、この値を記録しておきます。
+1. *[Business]\(勤務先\)* メール アドレスに関連付けられている **[Option ID]\(オプション ID\)** をメモしておきます。 これは、属性マッピング テーブルで *emailType* と共に使用するコードです。
+
+   > [!div class="mx-imgBorder"]
+   > ![メール アドレスの種類のコードを取得する](./media/sap-successfactors-inbound-provisioning/get-email-type-code.png)
+
+   > [!NOTE]
+   > 値をコピーするときは、コンマ文字を削除してください。 たとえば、 **[Option ID]\(オプション ID\)** 値が *8,448* の場合は、Azure AD の *[emailType]* を (コンマ文字を含まない) 定数 *8448* に設定します。 
 
 ### <a name="retrieve-constant-value-for-phonetype"></a>phoneType の定数値を取得する
 
-1. Postman で、SuccessFactors コレクションの省略記号ボタン [...] をクリックして、次に示すように "Get Phone Types" という名前の [New Request]\(新しい要求\) を追加します。 
+1. SuccessFactors Admin Center で *Picklist Center* を検索して開きます。 
+1. 前のセクションで取得した電話の候補リストの名前を使用して、電話の候補リストを見つけます。 
 
    > [!div class="mx-imgBorder"]
-   > ![Postman での電話の要求](./media/sap-successfactors-inbound-provisioning/postman-phone-request.png)
+   > ![電話の種類の候補リストの検索](./media/sap-successfactors-inbound-provisioning/find-phone-type-picklist.png)
 
-1. "Get Phone Types" 要求のパネルを開きます。 
-1. GET の URL に次の URL を追加し、`successFactorsAPITenantName` を SuccessFactors インスタンスの API テナントに置き換えます。 
-   `https://<successfactorsAPITenantName>/odata/v2/Picklist('ecPhoneType')?$expand=picklistOptions&$select=picklistOptions/id,picklistOptions/externalCode&$format=json`
+1. アクティブな電話の候補リストを開きます。 
 
    > [!div class="mx-imgBorder"]
-   > ![Postman での電話の種類の取得](./media/sap-successfactors-inbound-provisioning/postman-get-phone-type.png)
+   > ![アクティブな電話の種類の候補リストを開く](./media/sap-successfactors-inbound-provisioning/open-active-phone-type-picklist.png)
 
-1. [Authorization]\(承認\) タブでは、コレクションに対して構成されている認証が継承されます。 
-1. [Send]\(送信\) をクリックして、API 呼び出しを呼び出します。 
-1. 応答本文で、JSON の結果セットを表示し、`externalCode = B` と `externalCode = C` に対応する *ID* を探します。 
+1. 電話の種類の候補リストのページで、 **[Picklist Values]\(候補リストの値\)** に表示されているさまざまな電話の種類を確認します。
 
    > [!div class="mx-imgBorder"]
-   > ![Postman-Phone](./media/sap-successfactors-inbound-provisioning/postman-phone-type-response.png)
+   > ![電話の種類を確認する](./media/sap-successfactors-inbound-provisioning/review-phone-types.png)
 
-1. 属性マッピング テーブルの *businessPhoneType* および *cellPhoneType* で定数として使用するので、これらの値を記録しておきます。
+1. *[Business]\(勤務先\)* 電話に関連付けられている **[Option ID]\(オプション ID\)** をメモしておきます。 これは、属性マッピング テーブルで *businessPhoneType* と共に使用するコードです。
+
+   > [!div class="mx-imgBorder"]
+   > ![勤務先の電話コードを取得する](./media/sap-successfactors-inbound-provisioning/get-business-phone-code.png)
+
+1. *[Cell]\(携帯\)* 電話に関連付けられている **[Option ID]\(オプション ID\)** をメモしておきます。 これは、属性マッピング テーブルで *cellPhoneType* と共に使用するコードです。
+
+   > [!div class="mx-imgBorder"]
+   > ![携帯電話コードを取得する](./media/sap-successfactors-inbound-provisioning/get-cell-phone-code.png)
+
+   > [!NOTE]
+   > 値をコピーするときは、コンマ文字を削除してください。 たとえば、 **[Option ID]\(オプション ID\)** 値が *10,606* の場合は、Azure AD の *[cellPhoneType]* を (コンマ文字を含まない) 定数 *10606* に設定します。 
+
 
 ## <a name="configuring-successfactors-writeback-app"></a>SuccessFactors Writeback アプリの構成
 

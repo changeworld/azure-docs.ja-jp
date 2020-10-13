@@ -8,18 +8,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 42738ff71432284a156d0dfbb1f6cf160cbf4032
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 4ddafd9fbeda1752a782085244597aea3ccbdd2d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653251"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271904"
 ---
 # <a name="migrate-log-disk-to-ultra-disk"></a>ログ ディスクを Ultra Disk に移行する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -58,7 +58,7 @@ Ultra Disk は、VM のサイズとリージョンのサブセットでサポー
 
 ### <a name="attach-disk"></a>ディスクをアタッチする
 
-Azure portal を使用して、Ultra Disk を仮想マシンにアタッチします。 詳細については、[Ultra Disk のアタッチ](../../../virtual-machines/disks-enable-ultra-ssd.md#attach-an-ultra-disk-using-the-azure-portal)に関するページを参照してください
+Azure portal を使用して、Ultra Disk を仮想マシンにアタッチします。 詳細については、[Ultra Disk のアタッチ](../../../virtual-machines/disks-enable-ultra-ssd.md#attach-an-ultra-disk)に関するページを参照してください。
 
 ディスクをアタッチしたら、Azure portal を使用して VM をもう一度起動します。 
 

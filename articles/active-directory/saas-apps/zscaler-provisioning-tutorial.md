@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: a3424a42e86b47d4103dd41ca143b5bc7be3796a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 52c18f8d51f18b9bc167a99fbafda2365824dfc9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545932"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312126"
 ---
 # <a name="tutorial-configure-zscaler-for-automatic-user-provisioning"></a>チュートリアル:Zscaler を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -92,63 +92,63 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![Zscaler プロビジョニング](./media/zscaler-provisioning-tutorial/provisioning-tab.png)
+    ![[Zscaler - プロビジョニング エンタープライズ アプリケーション] サイドバーのスクリーンショット。[プロビジョニング] オプションが強調表示されています。](./media/zscaler-provisioning-tutorial/provisioning-tab.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![Zscaler プロビジョニング](./media/zscaler-provisioning-tutorial/provisioning-credentials.png)
+    ![[プロビジョニング] ページのスクリーンショット。[プロビジョニング モード] が [自動] に設定されています。](./media/zscaler-provisioning-tutorial/provisioning-credentials.png)
 
 5. **[管理者資格情報]** セクションで、手順 6 で説明する Zscaler アカウントの **[テナント URL]** と **[シークレット トークン]** を入力します。
 
 6. **[テナント URL]** と **[シークレット トークン]** を取得するには、Zscaler ポータル ユーザー インターフェイスで **[管理]、[認証の設定]** の順に移動し、 **[認証の種類]** で **[SAML]** をクリックします。
 
-    ![Zscaler プロビジョニング](./media/zscaler-provisioning-tutorial/secret-token-1.png)
+    ![[認証設定] ページのスクリーンショット。](./media/zscaler-provisioning-tutorial/secret-token-1.png)
 
     **[Configure SAML]\(SAML の構成\)** をクリックし、 **[Configuration SAML]\(構成 SAML\)** オプションを開きます。
 
-    ![Zscaler プロビジョニング](./media/zscaler-provisioning-tutorial/secret-token-2.png)
+    ![[SAML の構成] ダイアログ ボックスのスクリーンショット。[ベース URL] と [ベアラー トークン] のテキスト ボックスが選択されています。](./media/zscaler-provisioning-tutorial/secret-token-2.png)
 
     **[Enable SCIM-Based Provisioning]\(SCIM ベースのプロビジョニングを有効にする\)** を選択して、**ベース URL** と**ベアラー トークン**を取得し、設定を保存します。 Azure portal で**ベース URL**を**テナント URL** にコピーし、**ベアラー トークン**を**シークレット トークン**にコピーします。
 
 7. 手順 5 の各フィールドに値を入力したら、 **[テスト接続]** をクリックして、Azure AD が Zscaler に接続できることを確認します。 接続できない場合は、使用中の Zscaler アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
-    ![Zscaler プロビジョニング](./media/zscaler-provisioning-tutorial/test-connection.png)
+    ![[管理者資格情報] セクションのスクリーンショット。[テスト接続] オプションが選択されています。](./media/zscaler-provisioning-tutorial/test-connection.png)
 
 8. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 
-    ![Zscaler プロビジョニング](./media/zscaler-provisioning-tutorial/notification.png)
+    ![[通知用メール] テキスト ボックスのスクリーンショット。](./media/zscaler-provisioning-tutorial/notification.png)
 
 9. **[保存]** をクリックします。
 
 10. **[マッピング]** セクションで **[Synchronize Azure Active Directory Users to Zscaler]\(Azure Active Directory ユーザーを Zscaler に同期する\)** を選択します。
 
-    ![Zscaler プロビジョニング](./media/zscaler-provisioning-tutorial/user-mappings.png)
+    ![[マッピング] セクションのスクリーンショット。[Synchronize Azure Active Directory Users to Zscaler]\(Azure Active Directory ユーザーを Zscaler に同期する\) オプションが強調表示されています。](./media/zscaler-provisioning-tutorial/user-mappings.png)
 
 11. **[属性マッピング]** セクションで、Azure AD から Zscaler に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Zscaler のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![Zscaler プロビジョニング](./media/zscaler-provisioning-tutorial/user-attribute-mappings.png)
+    ![7 つのマッピングが表示されている [属性マッピング] セクションのスクリーンショット。](./media/zscaler-provisioning-tutorial/user-attribute-mappings.png)
 
 12. **[マッピング]** セクションで **[Synchronize Azure Active Directory Groups to Zscaler]\(Azure Active Directory グループを Zscaler に同期する\)** を選択します。
 
-    ![Zscaler プロビジョニング](./media/zscaler-provisioning-tutorial/group-mappings.png)
+    ![[マッピング] セクションのスクリーンショット。[Synchronize Azure Active Directory Groups to Zscaler]\(Azure Active Directory グループを Zscaler に同期する\) オプションが強調表示されています。](./media/zscaler-provisioning-tutorial/group-mappings.png)
 
 13. **[属性マッピング]** セクションで、Azure AD から Zscaler に同期されるグループ属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Zscaler のグループとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![Zscaler プロビジョニング](./media/zscaler-provisioning-tutorial/group-attribute-mappings.png)
+    ![3 つのマッピングが表示されている [属性マッピング] セクションのスクリーンショット。](./media/zscaler-provisioning-tutorial/group-attribute-mappings.png)
 
 14. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](./../active-directory-saas-scoping-filters.md)の次の手順を参照してください。
 
 15. Zscaler に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
 
-    ![Zscaler プロビジョニング](./media/zscaler-provisioning-tutorial/provisioning-status.png)
+    ![[プロビジョニングの状態] オプションのスクリーンショット。[オン] に設定されています。](./media/zscaler-provisioning-tutorial/provisioning-status.png)
 
 16. **[設定]** セクションの **[スコープ]** で目的の値を選択して、Zscaler にプロビジョニングするユーザーやグループを定義します。
 
-    ![Zscaler プロビジョニング](./media/zscaler-provisioning-tutorial/scoping.png)
+    ![[スコープ] 設定のスクリーンショット。[割り当てられたユーザーとグループのみを同期する] オプションが強調表示されています。](./media/zscaler-provisioning-tutorial/scoping.png)
 
 17. プロビジョニングの準備ができたら、 **[保存]** をクリックします。
 
-    ![Zscaler プロビジョニング](./media/zscaler-provisioning-tutorial/save-provisioning.png)
+    ![[Zscaler - プロビジョニング エンタープライズ アプリケーション] サイドバーのスクリーンショット。[保存] オプションが選択されています。](./media/zscaler-provisioning-tutorial/save-provisioning.png)
 
 これにより、 **[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Zscaler に対して実行されたすべてのアクションが記載されています。
 

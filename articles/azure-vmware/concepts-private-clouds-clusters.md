@@ -3,18 +3,18 @@ title: 概念 - プライベート クラウドとクラスター
 description: VMware 提供の VMware solution on Azure の Azure VMware ソフトウェアによるデータ センターと vSphere クラスターの主な機能について説明します。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 06161d2ce95415ae3309d58ad18ad0d40b3782fb
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 715293d9951876ff0f794f8f6b580093f89571b3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752278"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316870"
 ---
-# <a name="azure-vmware-solution-preview-private-cloud-and-cluster-concepts"></a>Azure VMware Solution プレビューのプライベート クラウドとクラスターの概念
+#  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware Solution のプライベート クラウドとクラスターの概念
 
 Azure VMware Solution は、Azure で VMware ベースのプライベート クラウドを提供します。 プライベート クラウドは、専用のベアメタル ホストのクラスターで構築され、Azure portal でデプロイおよび管理されます。 プライベート クラウド内のクラスターは、VMware vSphere、vCenter、vSAN、NSX ソフトウェアを使用してプロビジョニングされます。 Azure VMware Solution のプライベート クラウドのハードウェアとソフトウェアのデプロイは、Azure に完全に統合され、自動化されています。
 
-Azure サブスクリプション、Azure VMware Solution のプライベート クラウド、vSAN クラスター、ホストの間には論理的な関係があります。 この図では、1 つの Azure サブスクリプション内の 2 つのプライベート クラウドが示されています。 プライベート クラウドは開発環境と運用環境を表しており、それぞれに独自のプライベート クラウドがあります。 これらのプライベート クラウドそれぞれには、2 つのクラスターがあります。 開発環境の潜在的なニーズの方が低いことを示すために、容量が少ないホストで構成される小さいクラスターが使用されています。 これらの概念はすべて、以降のセクションで説明します。
+Azure サブスクリプション、Azure VMware Solution のプライベート クラウド、vSAN クラスター、ホストの間には論理的な関係があります。 この図では、1 つの Azure サブスクリプション内の 2 つのプライベート クラウドが示されています。 プライベート クラウドは開発環境と運用環境を表しており、それぞれに独自のプライベート クラウドがあります。 これらのプライベート クラウドにはそれぞれ、2 つのクラスターがあります。 開発環境の潜在的なニーズの方が低いことを示すために、容量が少ないホストで構成される小さいクラスターが使用されています。 これらの概念はすべて、以降のセクションで説明します。
 
 ![顧客サブスクリプションに含まれる 2 つのプライベート クラウドの画像](./media/hosts-clusters-private-clouds-final.png)
 
@@ -61,7 +61,7 @@ Azure VMware Solution プラットフォーム ソフトウェアの一般的な
 
 ホストのメンテナンスとライフサイクル管理を実行しても、プライベート クラウド クラスターの容量またはパフォーマンスには影響しません。 ホストの自動メンテナンスの例には、ファームウェアのアップグレード、ハードウェアの修理や交換があります。
 
-Microsoft は、NSX-T Manager や NSX-T Edge などの NSX-T アプライアンスのライフサイクル管理に対して責任があります。 また、Microsoft は、Tier-0 ゲートウェイの作成や North-South ルーティングの有効化など、ネットワーク構成のブートストラップにも責任があります。 Azure VMware Solution のプライベート クラウドの管理者は、ネットワーク セグメント、分散ファイアウォール規則、Tier-1 ゲートウェイ、ロード バランサーなど、NSX-T SDN の構成を行う必要があります。
+Microsoft は、NSX-T Manager や NSX-T Edge などの NSX-T アプライアンスのライフサイクル管理に対して責任があります。 また、Microsoft は、Tier-0 ゲートウェイの作成や North-South ルーティングの有効化など、ネットワーク構成のブートストラップにも責任があります。 Azure VMware Solution のプライベート クラウドの管理者は、NSX-T SDN の構成を行う必要があります。 たとえば、ネットワーク セグメント、分散ファイアウォール規則、Tier-1 ゲートウェイ、ロード バランサーなどです。
 
 > [!IMPORTANT]
 > Azure VMware Solution の管理者は、NSX-T Edge または Tier-0 ゲートウェイの構成を変更しないでください。 これにより、サービスが失われる可能性があります。

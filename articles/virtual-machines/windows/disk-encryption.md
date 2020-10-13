@@ -2,18 +2,18 @@
 title: Azure Managed Disks のサーバー側暗号化 - PowerShell
 description: Azure Storage では、保存時に暗号化してデータを保護してから、ストレージ クラスターに保存します。 マネージド ディスクの暗号化には Microsoft のマネージド キーを使用できます。また、カスタマー マネージド キーを使用し、独自のキーを使って暗号化を管理できます。
 author: roygara
-ms.date: 07/10/2020
+ms.date: 09/23/2020
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 6174fbeb45c23c0ff04597305c6f65aef05bd26e
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 49898f2215139c4460c639dc8caa3d2764082e34
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815591"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274777"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage-for-powershell"></a>PowerShell 用 Azure Disk Storage のサーバー側暗号化
 
@@ -47,6 +47,10 @@ Azure マネージド ディスク内のデータは、利用できる最も強�
 - この機能がディスクで有効になっている場合、無効にすることはできません。
     これを回避する必要がある場合は、カスタマー マネージド キーを使用していないまったく別のマネージド ディスクに[すべてのデータをコピー](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk)する必要があります。
 [!INCLUDE [virtual-machines-managed-disks-customer-managed-keys-restrictions](../../../includes/virtual-machines-managed-disks-customer-managed-keys-restrictions.md)]
+
+#### <a name="supported-regions"></a>サポートされているリージョン
+
+カスタマー マネージド キーは、マネージド ディスクが使用可能なすべてのリージョンで利用できます。
 
 ## <a name="encryption-at-host---end-to-end-encryption-for-your-vm-data"></a>ホストでの暗号化 - ご自分の VM データのエンドツーエンド暗号化
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.service: active-directory
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e105d4909705622a931c51bcb7cf0a9db4179525
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 58b4bbcac110398ee4ff132b76ce8c4868ee17f8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279603"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317593"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Azure AD の UserPrincipalName の設定
 
@@ -54,7 +54,7 @@ Azure AD では、ユーザーにサインインを許可するために UPN が
 
 Azure AD Connect を使用している場合、Azure AD との間で代替ログイン ID を有効にするための特別な構成手順は不要です。 代替 ID は、ウィザードから直接構成することができます。 ユーザーの Azure AD サインイン構成は、[同期] セクションに表示されます。 **[ユーザー プリンシパル名]** ボックスの一覧で、代替ログイン ID の属性を選択してください。
 
-![未検証のドメイン](./media/plan-connect-userprincipalname/altloginid.png)  
+![ユーザープリンシパル名の一覧が強調表示されているスクリーンショット。ここでは、代替ログイン ID 属性を選択できます。](./media/plan-connect-userprincipalname/altloginid.png)  
 
 詳細については、[代替ログイン ID の構成](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)に関するページおよび「[Azure AD サインインの構成](how-to-connect-install-custom.md#azure-ad-sign-in-configuration)」を参照してください。
 

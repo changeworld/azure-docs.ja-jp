@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 04/02/2020
-ms.openlocfilehash: f3699892471a1535cda5fc182a4c9121fd3c250c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2f34723bec6dc2212f8897eca849e6535d737fc8
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317605"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397421"
 ---
 # <a name="power-bi-app-creation-overview"></a>Power BI アプリの作成の概要
 
@@ -23,7 +23,7 @@ ms.locfileid: "87317605"
 コマーシャル マーケットプレースに公開する利点:
 
 - Microsoft のブランドを使用して、会社の宣伝ができる。
-- AppSource 上で 1 億を超える Office 365 および Dynamics 365 ユーザーに、さらに Azure Marketplace を通じて 20 万を超える組織にリーチできる可能性がある。
+- AppSource 上では 1 億を超える Microsoft 365 および Dynamics 365 のユーザーに、さらに Azure Marketplace を通じて 20 万を超える組織に接触できる可能性がある。
 - これらのマーケットプレースから質の高いリードを得ることができる。
 - Microsoft のフィールドおよびテレセールス チームによりサービスを宣伝してもらえる。
 

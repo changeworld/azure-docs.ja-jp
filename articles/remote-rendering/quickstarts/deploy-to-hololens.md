@@ -36,13 +36,13 @@ ms.locfileid: "88796801"
 1. *[Platform]\(プラットフォーム\)* を **[Universal Windows Platform]\(ユニバーサル Windows プラットフォーム\)** に変更します
 1. *[Target Device]\(ターゲット デバイス\)* を **[HoloLens]** に設定します
 1. *[Architecture]\(アーキテクチャ\)* を **[ARM64]** に設定します
-1. *[Build Type]\(ビルドの種類\)* を **[D3D Project]\(D3D プロジェクト\)** \ に設定します。
+1. *[Build Type]\(ビルドの種類\)* を **[D3D Project]\(D3D プロジェクト\)**  に設定します。\
     ![ビルド設定](./media/unity-build-settings.png)
 1. **[Switch Platform]\(プラットフォームに切り替え\)** を選択します
 1. **[Build]\(ビルド\)** (または [Build And Run]\(ビルドして実行\)) を押すと、ソリューションを格納するフォルダーを選択するよう求められます
 1. 生成された **Quickstart.sln** を Visual Studio で開きます
 1. 構成を **[リリース]** と **[ARM64]** に変更します
-1. デバッガー モードを **[リモート マシン]** \ に切り替えます。
+1. デバッガー モードを **[リモート マシン]** に切り替えます。\
     ![ソリューションの構成](media/unity-deploy-config.png)
 1. ソリューションをビルドする
 1. プロジェクト "Quickstart" で、 *[プロパティ] > [デバッグ]* の順に移動します

@@ -11,13 +11,13 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 09/15/2020
-ms.openlocfilehash: ff56ef55066fd0f56b5b8dc7507bfb63b8b8baa0
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.date: 09/28/2020
+ms.openlocfilehash: 4ef569864b27eff7f57aa2b0a922034fa28f587c
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090603"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405243"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムのセットアップのカスタマイズ
 
@@ -154,6 +154,10 @@ ADF UI で高速カスタム セットアップを使用して Azure-SSIS IR を
    * **[Theobald Software の Xtract IS]** コンポーネントを選択した場合は、お使いの Azure-SSIS IR に Theobald Software から SAP システム (ERP、S/4HANA、BW) 用の [Xtract IS](https://theobald-software.com/en/xtract-is/) という一連のコンポーネントをインストールできます。 これを行うには、事前に購入した製品ライセンス ファイルを **[ライセンス ファイル]** 入力ボックスにドラッグ アンド ドロップするか、アップロードします。 現在の統合バージョンは **6.1.1.3** です。
 
    * **[AecorSoft の Integration Service]** コンポーネントを選択した場合は、Azure-SSIS IR に AecorSoft から SAP および Salesforce システム用の [Integration Service](https://www.aecorsoft.com/en/products/integrationservice) の一連のコネクタをインストールできます。 これを行うには、 **[ライセンス キー]** テキスト ボックスに、事前に購入した製品ライセンス キーを入力します。 現在の統合バージョンは **3.0.00** です。
+
+   * **CData の SSIS 標準パッケージ** コンポーネントを選択する場合は、Microsoft SharePoint コネクタなど、CData からの一般的なコンポーネントの [SSIS 標準パッケージ](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#standard) スイートを Azure-SSIS IR にインストールできます。 これを行うには、 **[ライセンス キー]** テキスト ボックスに、事前に購入した製品ライセンス キーを入力します。 現在の統合バージョンは **19.7354** です。
+
+   * **CData の SSIS 拡張パッケージ** コンポーネントを選択する場合は、Microsoft Dynamics 365 Business Central コネクタや、**SSIS 標準パッケージ**内の他のコンポーネントなど、CData からのすべてのコンポーネントの一連の [SSIS 拡張パッケージ](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#extended)を Azure-SSIS IR にインストールできます。 これを行うには、 **[ライセンス キー]** テキスト ボックスに、事前に購入した製品ライセンス キーを入力します。 現在の統合バージョンは **19.7354** です。 サイズが大きいため、インストールのタイムアウトを回避するには、ノード 1 つあたり 4 つの CPU コアが Azure-SSIS IR に存在することを確認してください。
 
 追加された高速カスタム セットアップは、 **[詳細設定]** ページに表示されます。 これらを削除する場合は、対応するチェック ボックスをオンにしてから **[削除]** を選択します。
 

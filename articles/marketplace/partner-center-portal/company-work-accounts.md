@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 05/30/2019
-ms.openlocfilehash: 6fca3429ab96a63b01eaa7e9d1f0ae83dc46e9c7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 246fbcd9bc72683e41489daf105f174f9380c029
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119754"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400266"
 ---
 # <a name="company-work-accounts-and-partner-center"></a>会社の職場アカウントとパートナー センター
 
@@ -20,7 +20,7 @@ ms.locfileid: "86119754"
 
 ## <a name="check-whether-your-company-already-has-a-work-account"></a>会社が既に職場アカウントを持っているかどうかを確認する
 
-会社が Azure、Microsoft Intune、Office 365 などの Microsoft クラウド サービスにサブスクライブしている場合、パートナー センターで使用できる職場の電子メール アカウント ドメイン (Azure Active Directory テナントとも呼ばれます) は既にあります。
+会社が、Azure、Microsoft Intune、または Microsoft 365 などの Microsoft クラウド サービスにサブスクライブしている場合、パートナー センターで使用できる職場の電子メール アカウント ドメイン (Azure Active Directory テナントとも呼ばれます) は既に存在しています。
 
 確認するには、次の手順に従います。
 1. [https://portal.azure.com](https://portal.azure.com ) から Azure 管理ポータルにサインインします。

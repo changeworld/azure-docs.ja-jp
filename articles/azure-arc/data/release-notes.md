@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5908083be4e6ed389b606754ffef41a4a371c3e3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d22976254cc804ca53060fb284abde8e80a684e6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931142"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319730"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>リリースノート - Azure Arc 対応データ サービス (プレビュー)
 
@@ -29,6 +29,14 @@ Azure Arc 対応データ サービスは、パブリック プレビュー用�
 
 手順については「[Azure Arc 対応データ サービスとは](overview.md)」を参照してください。
 
+### <a name="known-issues"></a>既知の問題
+
+今回のリリースには次の問題が適用されます。
+
+* **PostgreSQL Hyperscale サーバー グループを削除する**: サーバー グループまたはインスタンスの構成を変更した場合は、編集操作が完了した後に PostgreSQL Hyperscale サーバー グループを削除します。
+
+* **`azdata notebook run` が失敗する可能性がある**: この問題を回避するには、Python 仮想環境で `azdata notebook run` を実行します。 また、この問題は、Azure Data Studio 配置ウィザードを使用して SQL Managed Instance または PostgreSQL Hyperscale サーバー グループを作成できなかった場合にも発生します。 この場合は、ノートブックを開いて、そのノートブックの上部にある **[すべて実行]** ボタンをクリックします。
+
 ## <a name="next-steps"></a>次のステップ
 
 > **試してみたい場合**  
@@ -36,9 +44,9 @@ Azure Arc 対応データ サービスは、パブリック プレビュー用�
 
 [クライアント ツールをインストールする](install-client-tools.md)
 
-[Azure Arc データ コントローラーを作成する](create-data-controller.md) (先にクライアント ツールをインストールしておく必要があります)
+[Azure Arc データ コントローラーを作成する](create-data-controller.md) (先にクライアント ツールをインストールする必要があります)
 
-[Azure Arc で Azure SQL マネージド インスタンスを作成する](create-sql-managed-instance.md) (先に Azure Arc データ コントローラーを作成しておく必要があります)
+[Azure Arc で Azure SQL マネージド インスタンスを作成する](create-sql-managed-instance.md) (先に Azure Arc データ コントローラーを作成する必要があります)
 
 [Azure Arc に Azure Database for PostgreSQL Hyperscale サーバー グループを作成する](create-postgresql-hyperscale-server-group.md) (先に Azure Arc データ コントローラーを作成しておく必要があります)
 

@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: sstein, carlrab
-ms.date: 9/8/2020
-ms.openlocfilehash: 979976ba88c2acca282a7f8bef4784b9d91ce0aa
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.reviewer: sstein
+ms.date: 9/17/2020
+ms.openlocfilehash: 2d317ac2543289aca3a0741b424f71a2e903c74d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89565091"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321409"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database サーバーレス
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -97,7 +97,7 @@ SQL Database サーバーレスは、現在、仮想コア購入モデルの第 
 
 サーバーレス コンピューティング データベースとプロビジョニング済みコンピューティング データベースの両方で、使用可能なメモリがすべて使用されている場合、キャッシュ エントリを削除できます。
 
-CPU 使用率が低い場合、使用パターンによってはアクティブなキャッシュの使用率が高いままになり、メモリの再利用が妨げられる可能性があることに注意してください。  また、以前のユーザー アクティビティに定期的なバックグラウンド プロセスが応答するために、ユーザー アクティビティが停止した後、メモリが再利用される前に、遅延時間が追加で発生する可能性があります。  たとえば、削除操作では、削除対象としてマークされるゴースト レコードが生成されますが、キャッシュへのデータ ページの読み取りを伴うゴースト クリーンアップ プロセスが実行されるまで、物理的には削除されません。
+CPU 使用率が低い場合、使用パターンによってはアクティブなキャッシュの使用率が高いままになり、メモリの再利用が妨げられる可能性があることに注意してください。  また、以前のユーザー アクティビティに定期的なバックグラウンド プロセスが応答するために、ユーザー アクティビティが停止した後、メモリが再利用される前に、遅延時間が追加で発生する可能性があります。  たとえば、削除対象としてマークされるゴースト レコードは、削除操作と QDS クリーンアップ タスクによって生成されますが、キャッシュへのデータ ページの読み取りを伴うゴースト クリーンアップ プロセスが実行されるまで、物理的には削除されません。
 
 #### <a name="cache-hydration"></a>キャッシュのハイドレーション
 

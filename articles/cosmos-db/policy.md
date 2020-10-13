@@ -1,23 +1,26 @@
 ---
 title: Azure Policy を使用して Azure Cosmos DB リソースのガバナンスとコントロールを実装する
 description: Azure Policy を使用して Azure Cosmos DB リソースのガバナンスとコントロールを実装する方法について説明します。
-author: plzm
-ms.author: paelaz
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2020
-ms.openlocfilehash: a1b1c01f7cf720690decd9c7aac5fb14b92121ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/23/2020
+ms.openlocfilehash: 44519a21296fd658f12b8d7df2191797b16caf7f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84431984"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320899"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>Azure Policy を使用して Azure Cosmos DB リソースのガバナンスとコントロールを実装する
 
 [Azure Policy](../governance/policy/overview.md) は、組織のガバナンス標準の実施、リソースのコンプライアンスの評価、自動修復の実装を支援します。 一般的なユースケースには、セキュリティ、コスト管理、構成の一貫性などがあります。
 
 Azure Policy には組み込みポリシー定義が用意されています。 組み込みポリシー定義では対応できないシナリオには、カスタムのポリシー定義を作成できます。 詳細については、[Azure Policy のドキュメント](../governance/policy/overview.md)を参照してください。
+
+> [!IMPORTANT]
+> Azure Policy は、Azure サービスのリソース プロバイダー レベルで適用されます。 Cosmos DB SDK を使用すると、Cosmos DB のリソース プロバイダーをバイパスするデータベース、コンテナー、およびスループット リソースに対してほとんどの管理操作を実行できるため、Azure Policy を使用して作成されたポリシーはすべて無視されます。 ポリシーの適用を確実にするには、[Azure Cosmos DB SDK からの変更の防止](role-based-access-control.md#prevent-sdk-changes)に関する記事を参照してください。
 
 ## <a name="assign-a-built-in-policy-definition"></a>組み込みポリシー定義の割り当て
 
@@ -123,7 +126,7 @@ az provider show --namespace Microsoft.DocumentDB --expand "resourceTypes/aliase
 - 2 つのアカウントのうち、アカウントを複数の書き込み場所で構成する必要があるポリシーに準拠しているのは 0 個です。
 - 2 つのアカウントのうち、許可されている Azure リージョンにリソースがデプロイされたポリシーに準拠しているのは 0 個です。
 
-:::image type="content" source="./media/policy/compliance.png" alt-text="リストされている Azure Policy の割り当てに関するコンプライアンス結果":::
+:::image type="content" source="./media/policy/compliance.png" alt-text="Azure Cosmos DB の組み込みポリシー定義の検索":::
 
 準拠していないリソースを修復するには、[Azure Policy でのリソースの修復方法](../governance/policy/how-to/remediate-resources.md)に関する記事を参照してください。
 

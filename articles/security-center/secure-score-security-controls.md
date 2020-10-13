@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2020
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: b7cbba051dd0833a039d378cd73a59314c0221c8
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3aab1329dc7bbcc70621684b3f1ac2362f4bc458
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905571"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268266"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure Security Center 内のセキュリティ スコア
 
@@ -179,7 +179,7 @@ Secure Scores API を使用して構築されたツールの例については�
     <td class="tg-lboi"; width=55%>- SQL Server の監査を有効にする必要があります<br>- App Services の診断ログを有効にする必要があります<br>- Azure Data Lake Store の診断ログを有効にする必要があります<br>- Azure Stream Analytics の診断ログを有効にする必要があります<br>- Batch アカウントの診断ログを有効にする必要があります<br>- Data Lake Analytics の診断ログを有効にする必要があります<br>- イベント ハブの診断ログを有効にする必要があります<br>- IoT Hub の診断ログを有効にする必要があります<br>- Key Vault の診断ログを有効にする必要があります<br>- Logic Apps の診断ログを有効にする必要があります<br>- Search Service の診断ログを有効にする必要があります<br>- Service Bus の診断ログを有効にする必要があります<br>- Virtual Machine Scale Sets の診断ログを有効にする必要があります<br>- Batch アカウントでメトリック アラート ルールを構成する必要があります<br>- - SQL 監査設定では、重要なアクティビティをキャプチャするように Action-Groups を構成しておく必要があります<br>- SQL Server では、監査保持期間を 90 日以上に構成する必要があります。</td>
   </tr>
   <tr>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">Advanced Threat Protection を有効にする (最大スコア 0)</p></strong>Azure Security Center の脅威の防止によって、お使いの環境が包括的に保護されます。 Security Center は、ご自身の環境のいずれかの領域で脅威を検出すると、アラートを生成します。 これらのアラートでは、影響を受けるリソースや推奨される修復手順の詳細と、場合によっては、ロジック アプリを応答でトリガーするオプションが示されます。<br>脅威の防止バンドルは、それぞれが別個のオプション オファリングであり、このセキュリティ コントロールの関連する推奨事項を使用して有効にすることができます。<br><a href="https://docs.microsoft.com/azure/security-center/threat-protection">Security Center での脅威の防止についてさらに学習してください</a>。</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">Advanced Threat Protection を有効にする (最大スコア 0)</p></strong>Azure Security Center で選択できる Azure Defender の脅威防止プランによって、お使いの環境が包括的に保護されます。 Security Center は、ご自身の環境のいずれかの領域で脅威を検出すると、アラートを生成します。 これらのアラートでは、影響を受けるリソースや推奨される修復手順の詳細と、場合によっては、ロジック アプリを応答でトリガーするオプションが示されます。<br>Azure Defender プランは、それぞれが別個のオプション オファリングであり、このセキュリティ コントロールの関連する推奨事項を使用して有効にすることができます。<br><a href="https://docs.microsoft.com/azure/security-center/threat-protection">Security Center での脅威の防止についてさらに学習してください</a>。</td>
     <td class="tg-lboi"; width=55%>- Azure SQL Database サーバーで Advanced Data Security を有効にする必要があります<br>- マシン上の SQL サーバーで Advanced Data Security を有効にする必要があります<br>- Virtual Machines で Advanced Threat Protection を有効にする必要があります<br>- Azure App Service プランで Advanced Threat Protection を有効にする必要があります<br>- Azure Storage アカウントで Advanced Threat Protection を有効にする必要があります<br>- Azure Kubernetes Service クラスターで Advanced Threat Protection を有効にする必要があります<br>- Azure Container Registry レジストリで Advanced Threat Protection を有効にする必要があります<br>- Azure Key Vault コンテナーで Advanced Threat Protection を有効にする必要があります</td>
   </tr>
   <tr>
@@ -197,14 +197,8 @@ Secure Scores API を使用して構築されたツールの例については�
 
 ## <a name="secure-score-faq"></a>セキュリティ スコアに関する FAQ
 
-### <a name="why-has-my-secure-score-gone-down"></a>セキュリティ スコアが下がったのはなぜですか。
-Security Center は、スコアの計算方法の変更を含む、強化されたセキュリティ スコアに切り替えられました。 現在、ポイントを受け取るにはリソースのすべての推奨事項を解決する必要があります。 さらに、スコアのスケールが 0-10 に変更されました。
-
 ### <a name="if-i-address-only-three-out-of-four-recommendations-in-a-security-control-will-my-secure-score-change"></a>セキュリティ コントロールの 4 つの推奨事項のうち 3 つだけに対処した場合、セキュリティ スコアは変わりますか。
 いいえ。 1 つのリソースのすべての推奨事項を修復するまでスコアは変更されません。 コントロールの最大スコアを取得するには、すべてのリソースのすべての推奨事項を修復する必要があります。
-
-### <a name="is-the-previous-experience-of-the-secure-score-still-available"></a>以前のセキュリティ スコアのエクスペリエンスは引き続き利用できますか。 
-いいえ。 移行を容易にするため、しばらくの間は併用されました。 以前のモデルは非推奨となりました。 
 
 ### <a name="if-a-recommendation-isnt-applicable-to-me-and-i-disable-it-in-the-policy-will-my-security-control-be-fulfilled-and-my-secure-score-updated"></a>推奨事項が自分に該当しないためポリシーで無効にした場合、セキュリティ コントロールは達成され、セキュリティ スコアが更新されますか。
 はい。 お使いの環境該当しない推奨設定は、無効にすることをお勧めします。 特定の推奨事項を無効にする方法については、「[セキュリティ ポリシーの無効化](https://docs.microsoft.com/azure/security-center/tutorial-security-policy#disable-security-policies)」を参照してください。

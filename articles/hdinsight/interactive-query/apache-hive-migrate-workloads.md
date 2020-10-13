@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/13/2019
-ms.openlocfilehash: 313b6afb8bd96f8ae507118cd552110d5f07ff78
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 26dfe8d134f9f38d8272895583ba2eff614d78e4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087521"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308386"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3.6 Hive ワークロードを Hive HDInsight 4.0 に移行する
 
@@ -208,30 +208,9 @@ HDInsight 3.6 以降では、HDInsight は、HDInsight Enterprise セキュリ�
 
 ## <a name="query-execution-across-hdinsight-versions"></a>HDInsight バージョン間でのクエリの実行
 
-HDInsight 3.6 クラスター内で Hive/LLAP クエリを実行し、デバッグする方法は 2 つあります。 HiveCLI ではコマンドライン エクスペリエンスが提供され、Tez ビュー/Hive ビューでは GUI ベースのワークフローが提供されます。
+HDInsight 3.6 クラスター内で Hive/LLAP クエリを実行し、デバッグする方法は 2 つあります。 HiveCLI ではコマンドライン エクスペリエンスが提供され、[Tez ビューと Hive ビュー](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-use-hive-ambari-view)では GUI ベースのワークフローが提供されます。
 
-HDInsight 4.0 では、Hive CLI は BeeLine に置き換えられています。 HiveCLI は Hiveserver 1 用の Thrift クライアントであり、Beeline は Hiveserver 2 へのアクセスを提供する JDBC クライアントです。 Beeline は、その他の JDBC 互換のデータベース エンドポイントへの接続にも使用できます。 Beeline は、HDInsight 4.0 上ですぐに使用可能で、インストールは必要ありません。
-
-HDInsight 3.6 では、Hive サーバーと対話するための GUI クライアントは Ambari Hive ビューです。 HDInsight 4.0 には Ambari ビューは付属していません。 お客様が Data Analytics Studio (DAS) を使用する方法を提供しています。これは、中核となる HDInsight サービスではありません。 DAS には HDInsight クラスターは標準では付属せず、公式にサポートされているパッケージではありません。 ただし、次のように[スクリプト アクション](../hdinsight-hadoop-customize-cluster-linux.md)を使用して DAS をクラスターにインストールできます。
-
-|プロパティ | 値 |
-|---|---|
-|スクリプトの種類|- Custom|
-|名前|DAS|
-|Bash スクリプト URI|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
-|ノードの種類|Head|
-
-10 - 15 分待機してから、URL `https://CLUSTERNAME.azurehdinsight.net/das/` を使用して Data Analytics Studio を起動します。
-
-DAS にアクセスする前に、Ambari UI の更新やすべての Ambari コンポーネントの再起動が必要になる場合があります。
-
-DAS がインストールされた後、クエリ ビューアーで実行したクエリが表示されない場合は、次の手順を実行します。
-
-1. [DAS のインストールのトラブルシューティングに関するこのガイド](https://docs.hortonworks.com/HDPDocuments/DAS/DAS-1.2.0/troubleshooting/content/das_queries_not_appearing.html)の説明に従って、Hive、Tez、DAS の構成を設定します。
-2. 次の Azure ストレージ ディレクトリ構成がページ BLOB であり、`fs.azure.page.blob.dirs` の下に表示されることを確認します。
-    * `hive.hook.proto.base-directory`
-    * `tez.history.logging.proto-base-dir`
-3. 両方のヘッドノード上の HDFS、Hive、Tez、DAS を再起動します。
+HDInsight 4.0 では、Hive CLI は BeeLine に置き換えられています。 Tez ビューと Hive ビューには、GUI ベースのワークフローが用意されています。 HiveCLI は Hiveserver 1 用の Thrift クライアントであり、Beeline は Hiveserver 2 へのアクセスを提供する JDBC クライアントです。 Beeline は、その他の JDBC 互換のデータベース エンドポイントへの接続にも使用できます。 Beeline は、HDInsight 4.0 上ですぐに使用可能で、インストールは必要ありません。
 
 ## <a name="next-steps"></a>次のステップ
 

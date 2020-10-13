@@ -4,17 +4,17 @@ description: 暗号化スコープは、コンテナーまたは個々の BLOB �
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 09/17/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 041b0bf57f57fd8ddd74c8330888d75e31aacc83
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6fb3c9b6dbbab036ddb00edd7e1d5980bb425ebe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90993121"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326118"
 ---
 # <a name="encryption-scopes-for-blob-storage-preview"></a>BLOB ストレージの暗号化スコープ (プレビュー)
 
@@ -22,7 +22,7 @@ ms.locfileid: "90993121"
 
 既定では、ストレージ アカウントは、そのストレージ アカウント全体をスコープとするキーで暗号化されます。 暗号化スコープを使用すると、1 つ以上のコンテナーが、それらのコンテナーのみをスコープとするキーで暗号化されるように指定できます。
 
-Microsoft のマネージド キーか、あるいは Azure Key Vault または Key Vault Managed HSM (ハードウェア セキュリティ モデル) (プレビュー) に格納されたカスタマー マネージド キーのどちらかを使用することを選択して、データを暗号化するキーへのアクセスを保護および制御できます。 同じストレージ アカウントに対する異なる暗号化スコープで、Microsoft のマネージドまたはカスタマー マネージド キーのいずれかを使用できます。
+Microsoft のマネージド キーまたは Azure Key Vault に格納されているカスタマー マネージド キーのどちらを使用するかを選択し、データを暗号化するキーへのアクセスを保護および制御できます。 同じストレージ アカウントに対する異なる暗号化スコープで、Microsoft のマネージドまたはカスタマー マネージド キーのいずれかを使用できます。
 
 暗号化スコープを作成したら、コンテナーまたは BLOB を作成するための要求に対してその暗号化スコープを指定できます。 暗号化スコープの作成方法の詳細については、「[暗号化スコープの作成と管理 (プレビュー)](encryption-scope-manage.md)」を参照してください。
 
@@ -50,7 +50,7 @@ Microsoft のマネージド キーか、あるいは Azure Key Vault または 
 
 暗号化スコープが無効の場合、それに対して課金されることはなくなります。 不要な料金が発生しないように、不要な暗号化スコープを無効にします。
 
-暗号化スコープがカスタマー マネージド キーで保護されている場合は、暗号化スコープを無効にするために、キー コンテナーまたは Managed HSM 内の関連付けられているキーを削除することもできます。 カスタマー マネージド キーはキー コンテナーまたは Managed HSM 内で論理的な削除と消去保護によって保護されており、削除されたキーはそれらのプロパティによって定義されている動作に従うことに注意してください。 詳細については、Azure Key Vault のドキュメントで次のトピックのいずれかを参照してください。
+暗号化スコープがカスタマー マネージド キーで保護されている場合は、暗号化スコープを無効にするために、キー コンテナー内にある関連付けられたキーを削除することもできます。 カスタマー マネージド キーはキー コンテナー内での論理的な削除と消去保護によって保護されており、削除されたキーはそれらのプロパティによって定義されている動作に従うことにご注意ください。 詳細については、Azure Key Vault のドキュメントで次のトピックのいずれかを参照してください。
 
 - [PowerShell で論理的な削除を使用する方法](../../key-vault/general/soft-delete-powershell.md)
 - [CLI で論理的な削除を使用する方法](../../key-vault/general/soft-delete-cli.md)

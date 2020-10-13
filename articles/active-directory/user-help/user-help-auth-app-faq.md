@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/16/2020
+ms.date: 09/23/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 051d88494049662891e1891f900aa580a005ffe4
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 00771f950271cfbc86994c01b6d866c5983f1b34
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799470"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278670"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリに関してよく寄せられる質問 (FAQ)
 
@@ -29,6 +29,7 @@ Microsoft Authenticator アプリは、Azure Authenticator アプリに置き換
 
 | Question | Answer |
 | -------- | ------ |
+| watchOS 7 で Apple Watch に問題が発生します。なぜでしょうか。 | watchOS 7 で通知を承認できない問題があります。この問題を解決するために Apple と連携しています。 解決されるまで、Microsoft Authenticator watchOS アプリを必要とする通知は、代わりにお使いのスマートフォンで承認してください。  |
 | デバイスを登録することは、会社またはサービスに自分のデバイスへのアクセスを許可することに同意することになりますか? | デバイスを登録すると、ご自身のデバイスから組織のサービスにアクセスできるようになります。また、組織からご自身のデバイスへのアクセスは許可されません。 |
 | アプリ ロックとは何ですか。それをどのように利用してセキュリティを強化するのでしょうか。 | アプリ ロックを利用すると、ワンタイム パスコード、アプリの情報、アプリの設定のセキュリティが強化されます。 アプリ ロックを有効にすると、Authenticator を開くたびに、デバイス PIN または生体認証を使用した認証が求められます。 また、アプリ ロックを利用すると、サインイン通知を承認するたびにご自分の PIN または生体認証が要求されることで、本人だけが通知を承認できる唯一のユーザーであることを保証するのにも役立ちます。 アプリ ロックのオンとオフは [Authenticator 設定] ページで切り替えます。 既定では、アプリ ロックは、デバイスに PIN または生体認証を設定したときにオンになります。<br><br>残念ながら、アプリ ロックによって Authenticator へ誰かがアクセスすることを阻止できる保証はありません。 これは、デバイスの登録が、Android のアカウント設定内やポータル サイト アプリ内など、Authenticator の外部の他の場所で行われる可能性があるためです。 |
 | Windows Mobile デバイスを使用していますが、Windows Mobile の Microsoft Authenticator が非推奨とされています。 このアプリを引き続き認証に使用することはできますか? | Windows Mobile で Microsoft Authenticator を使用するすべての認証は、2020 年 7 月 15 日以降に廃止される予定です。 アカウントからロックアウトされないようにするため、代替の認証方法を使用することを強くお勧めします。<br>エンタープライズ ユーザー向けの代替オプションは次のとおりです。<br><ul><li>[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) または [iOS](https://apps.apple.com/app/microsoft-authenticator/id983156458) 用の Microsoft Authenticator の設定。</li><li>確認コードを受信するための [SMS の設定](multi-factor-authentication-setup-phone-number.md)。</li><li>[ID を確認するための電話](multi-factor-authentication-setup-office-phone.md)を受ける電話番号の設定。</li></ul><br>個人用 Microsoft アカウント ユーザー向けの代替オプションは次のとおりです。<br><ul><li>[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) または [iOS](https://apps.apple.com/app/microsoft-authenticator/id983156458) 用の Microsoft Authenticator の設定。</li><li>[Microsoft アカウント セキュリティ ページ](https://account.microsoft.com/security/)からセキュリティ情報を更新して、代替のサインイン方法 (SMS またはメール) を設定します。</li></ul> |

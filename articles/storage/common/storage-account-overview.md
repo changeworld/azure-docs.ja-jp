@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 4fe353467a11e9581db76ec495194878414f4dfb
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: c93508bebdcfce35a89b3d5e2a8abecc7ac84722
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230689"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280149"
 ---
 # <a name="storage-account-overview"></a>ストレージ アカウントの概要
 
@@ -133,6 +133,7 @@ Azure Storage では、使用パターンに基づいて、ブロック BLOB デ
 - テーブル ストレージ: `https://*mystorageaccount*.table.core.windows.net`
 - キュー ストレージ: `https://*mystorageaccount*.queue.core.windows.net`
 - Azure Files: `https://*mystorageaccount*.file.core.windows.net`
+- Azure Data Lake Storage Gen2:`https://*mystorageaccount*.dfs.core.windows.net` ([特にビッグ データのために最適化されている ABFS ドライバー](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction#key-features-of-data-lake-storage-gen2)を使用します。)
 
 > [!NOTE]
 > ブロック BLOB および BLOB ストレージ アカウントは、Blob service エンドポイントのみを公開します。

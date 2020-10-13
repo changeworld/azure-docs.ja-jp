@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
-ms.openlocfilehash: bd32bbb5957832629fa19eb756b95356c0292ef1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b8ce5b82b7d2022fd7feea1cd9efe8d524ee6a4
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887689"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358289"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Azure CDN でのファイル圧縮によるパフォーマンスの向上
 ファイル圧縮は、サーバーからファイルを送信する前にファイル サイズを減らすことができるため、ファイルの転送速度とページ読み込みのパフォーマンスを向上させることができる簡単で効率的な方法です。 ファイル圧縮により、帯域幅のコストを軽減し、ユーザーへの応答を改善することができます。
@@ -53,12 +53,12 @@ Standard および Premium CDN レベルでは同じ圧縮機能が提供され�
     CDN エンドポイントのページが開きます。
 2. **[圧縮]** を選択します。
 
-    ![CDN 圧縮の選択](./media/cdn-file-compression/cdn-compress-select-std.png)
+    ![ポータル メニューで [圧縮] が選択されているエンドポイントを示すスクリーンショット。](./media/cdn-file-compression/cdn-compress-select-std.png)
 
     圧縮のページが開きます。
 3. 圧縮を有効にするには、 **[オン]** を選択します。
 
-    ![CDN のファイル圧縮のオプション](./media/cdn-file-compression/cdn-compress-standard.png)
+    ![[圧縮] の有効化を示すスクリーンショット。](./media/cdn-file-compression/cdn-compress-standard.png)
 4. 既定の MIME の種類を使用するか、MIME の種類を追加または削除して一覧を変更します。
 
    > [!TIP]
