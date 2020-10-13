@@ -1,6 +1,6 @@
 ---
-title: Microsoft ID プラットフォーム Windows デスクトップのクイックスタート
-description: Windows デスクトップ .NET (XAML) アプリケーションでアクセス トークンを取得し、Microsoft ID プラットフォーム エンドポイントによって保護されている API を呼び出す方法について説明します
+title: 'クイックスタート: ユニバーサル Windows プラットフォーム デスクトップ アプリでユーザーのサインインと Microsoft Graph の呼び出しを行う | Azure'
+description: このクイックスタートでは、Windows デスクトップ .NET (XAML) アプリケーションでアクセス トークンを取得し、Microsoft ID プラットフォーム エンドポイントによって保護されている API を呼び出す方法について説明します
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,18 +11,22 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ad45f4c57c336b30f09684c250539bd4452a10a8
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 5af55c16ae17b30d2079b332c236c325f3bed4df
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114559"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91613273"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>クイック スタート:Windows デスクトップ アプリからトークンを取得し、Microsoft Graph API を呼び出す
 
 このクイック スタートでは、個人や仕事、学校のアカウントへのサインイン、アクセス トークンの取得、Microsoft Graph API の呼び出しを実行できる Windows デスクトップ .NET (WPF) アプリケーションの作成方法を学びます。 (図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください)。
 
 > [!div renderon="docs"]
+> ## <a name="prerequisites"></a>前提条件
+>
+> * [ユニバーサル Windows プラットフォーム開発](https://visualstudio.microsoft.com/vs/)ワークロードがインストールされた [Visual Studio 2019](/windows/uwp/get-started/get-set-up)
+>
 > ## <a name="register-and-download-your-quickstart-app"></a>クイック スタート アプリを登録してダウンロードする
 > クイック スタート アプリケーションを開始する方法としては、次の 2 つの選択肢があります。
 > * [簡易] [選択肢 1: アプリを登録して自動構成を行った後、コード サンプルをダウンロードする](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)

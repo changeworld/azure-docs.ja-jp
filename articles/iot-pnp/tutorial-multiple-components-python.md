@@ -7,12 +7,12 @@ ms.date: 7/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 084ba93baa35790da58e7765750bb79de27ed69c
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 1b329206dcc41d8f7fcb3874da037f5b57142722
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578021"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613664"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-multiple-component-device-application-to-iot-hub-python"></a>チュートリアル:IoT プラグ アンド プレイの複数コンポーネント デバイス アプリケーションのサンプルを IoT Hub に接続する (Python)
 
@@ -57,13 +57,13 @@ git clone https://github.com/Azure/azure-iot-sdk-python
 *azure-iot-sdk-python\azure-iot-device\samples\pnp* フォルダーには、IoT プラグ アンド プレイ デバイスのサンプル コードが含まれています。 温度コントローラー サンプルのファイルは次のとおりです。
 
 - temp_controller_with_thermostats.py
-- pnp_helper_preview_refresh.py
+- pnp_helper.py
 
 温度コントローラーには、温度コントローラー DTDL モデルに基づく、複数のコンポーネントと既定のコンポーネントがあります。
 
 任意のエディターで *temp_controller_with_thermostats.py* ファイルを開きます。 このファイルのコードによって、次のことが行われます。
 
-1. ヘルパー メソッドにアクセスするために `pnp_helper_preview_refresh.py` がインポートされます。
+1. ヘルパー メソッドにアクセスするために `pnp_helper.py` がインポートされます。
 
 1. DTDL モデルで定義されている、2 つの異なるインターフェイスを一意に表す 2 つの Digital Twin Model Identifier (DTMI) が定義されます。 実際の温度コントローラー内のコンポーネントによって、これら 2 つのインターフェイスが実装される必要があります。 これら 2 つのインターフェイスは、中央リポジトリで既に公開されています。 これらの DTMI は、ユーザーに認識されている必要があり、デバイス実装のシナリオによって異なります。 現在のサンプルの場合、これら 2 つのインターフェイスは以下を表します。
 

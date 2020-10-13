@@ -3,12 +3,12 @@ title: Azure Event Grid - トピックまたはドメインの診断ログを有
 description: この記事では、Azure Event Grid トピックの診断ログを有効にする手順について説明します。
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: 7811c2eef4379b7e3d5ed07dbd0df8e2a52dba85
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2d76d3ededd6d241197b26ac357c3b5406f43f02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114705"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297523"
 ---
 #  <a name="enable-diagnostic-logs-for-azure-event-grid-topics-or-domains"></a>Azure Event Grid のトピックまたはドメインの診断ログを有効にする
 Event Grid ユーザーは、診断設定を使用して、ストレージ アカウント、イベント ハブ、または Log Analytics ワークスペースのいずれかで**発行および配信エラー** ログをキャプチャして表示することができます。 この記事では、これらの設定を Event Grid トピックで有効にする手順について説明します。
@@ -37,19 +37,19 @@ Event Grid ユーザーは、診断設定を使用して、ストレージ ア�
     
     ![[診断設定を追加する] ボタン](./media/enable-diagnostic-logs-topic/diagnostic-settings-add.png)
 5. 診断設定の **[名前]** を指定します。 
-7. **[ログ]** セクションの **[DeliveryFailures]** および **[PublishFailures]** オプションを選択します。 
+6. **[ログ]** セクションの **[DeliveryFailures]** および **[PublishFailures]** オプションを選択します。 
     ![エラーを選択する](./media/enable-diagnostic-logs-topic/log-failures.png)
-6. ログの 1 つまたは複数のキャプチャ先を有効にしてから、前に作成したキャプチャ リソースを選択して構成します。 
+7. ログの 1 つまたは複数のキャプチャ先を有効にしてから、前に作成したキャプチャ リソースを選択して構成します。 
     - **[ストレージ アカウントへのアーカイブ]** を選択した場合は、 **[ストレージ アカウント - 構成]** を選択してから、Azure サブスクリプションのストレージ アカウントを選択します。 
 
-        ![Azure ストレージ アカウントにアーカイブする](./media/enable-diagnostic-logs-topic/archive-storage.png)
+        ![[Azure ストレージ アカウントにアーカイブする] チェックボックスがオンになっており、ストレージ アカウントが選択されている [診断設定] ページ示すスクリーンショット。](./media/enable-diagnostic-logs-topic/archive-storage.png)
     - **[イベント ハブへのストリーム]** を選択した場合は、 **[イベント ハブ - 構成]** を選択してから、Event Hubs 名前空間、イベント ハブ、およびアクセス ポリシーを選択します。 
-        ![イベント ハブへのストリーム](./media/enable-diagnostic-logs-topic/archive-event-hub.png)
+        ![[イベント ハブへのストリーム] チェックボックスがオンになっている [診断設定] ページを示すスクリーンショット。](./media/enable-diagnostic-logs-topic/archive-event-hub.png)
     - **[Log Analytics への送信]** を選択した場合は、Log Analytics ワークスペースを選択します。
-        ![Log Analytics への送信](./media/enable-diagnostic-logs-topic/send-log-analytics.png)
+        ![[Log Analytics への送信] チェックボックスがオンになっている [診断設定] ページを示すスクリーンショット。](./media/enable-diagnostic-logs-topic/send-log-analytics.png)
 8. **[保存]** を選択します。 次に、右上隅にある **[X]** を選択して、ページを閉じます。 
 9. 次に **[診断設定]** ページに戻り、 **[診断設定]** テーブルに新しいエントリが表示されていることを確認します。 
-    ![一覧の診断設定](./media/enable-diagnostic-logs-topic/diagnostic-setting-list.png)
+    ![[診断設定] テーブルの新しいエントリが強調表示されている [診断設定] ページを示すスクリーンショット。](./media/enable-diagnostic-logs-topic/diagnostic-setting-list.png)
 
      また、トピックのすべてのメトリックの収集を有効にすることもできます。 
 

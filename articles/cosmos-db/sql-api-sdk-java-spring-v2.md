@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 8d795624097877d20f98a6fd205fb7136cf38007
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: d5a906e12df14c6c3ffec704310bbede742ad841
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069126"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760827"
 ---
 # <a name="spring-data-azure-cosmos-db-v2-for-core-sql-api-release-notes-and-resources"></a>コア (SQL) API 用 Spring Data Azure Cosmos DB v2:リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -53,7 +53,7 @@ Spring Data Azure Cosmos DB は [Azure Spring Cloud](https://azure.microsoft.com
 > * [Azure Cosmos DB での Spring Data Gremlin](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
 >
 > 急いでいますか?
-> 1. この SDK を使用できるように、[サポートされている最小 Java ランタイムの JDK 8](/java/azure/jdk/?view=azure-java-stable) をインストールします。
+> 1. この SDK を使用できるように、[サポートされている最小 Java ランタイムの JDK 8](/java/azure/jdk/?view=azure-java-stable&preserve-view=true) をインストールします。
 > 2. [スターター](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db)を使用して Spring Data Azure Cosmos DB アプリを作成します。 これは簡単にできます。
 > 3. 基本的な Azure Cosmos DB の要求について説明している「[Spring Data Azure Cosmos DB 開発者ガイド](https://docs.microsoft.com/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb)」を参照します。
 >
@@ -67,10 +67,10 @@ Spring Data Azure Cosmos DB は [Azure Spring Cloud](https://azure.microsoft.com
 | **SDK のダウンロード** | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure/spring-data-cosmosdb) |
 |**API ドキュメント** | [Spring Data Azure Cosmos DB リファレンス ドキュメント]() |
 |**SDK に投稿する** | [GitHub の Spring Data Azure Cosmos DB リポジトリ](https://github.com/microsoft/spring-data-cosmosdb) | 
-|**Spring Boot Starter**| [Java 用 Azure Cosmos DB Spring Boot Starter クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-starter-cosmosdb) |
+|**Spring Boot Starter**| [Java 用 Azure Cosmos DB Spring Boot Starter クライアント ライブラリ](https://github.com/MicrosoftDocs/azure-dev-docs/blob/master/articles/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db.md) |
 |**Azure Cosmos DB による Spring TODO アプリ サンプル**| [App Service Linux でのエンドツーエンドの Java エクスペリエンス (パート 2)](https://github.com/Azure-Samples/e2e-java-experience-in-app-service-linux-part-2) |
 |**開発者ガイド** | [Spring Data Azure Cosmos DB 開発者ガイド](https://docs.microsoft.com/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb) | 
-|**Starter の使用** | [Azure Cosmos DB SQL API で Spring Boot Starter を使用する方法](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db) <br> [Azure Cosmos DB Spring Boot Starter の GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-starter-cosmosdb) |
+|**Starter の使用** | [Azure Cosmos DB SQL API で Spring Boot Starter を使用する方法](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db) <br> [Azure Cosmos DB Spring Boot Starter の GitHub リポジトリ](https://github.com/MicrosoftDocs/azure-dev-docs/blob/master/articles/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db.md) |
 |**Azure App Service によるサンプル** | [App Service on Linux で Spring と Cosmos DB を使用する方法](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-app-with-cosmos-db-on-app-service-linux) <br> [TODO アプリのサンプル](https://github.com/Azure-Samples/e2e-java-experience-in-app-service-linux-part-2.git) |
 
 ## <a name="release-history"></a>リリース履歴
@@ -170,7 +170,7 @@ Spring Data Azure Cosmos DB は [Azure Spring Cloud](https://azure.microsoft.com
 
 ### <a name="211-march-7-2019"></a>2.1.1 (2019 年 3 月 7 日)
 #### <a name="new-features"></a>新機能
-* マスター バージョンを 2.1.1 に更新。
+* メイン バージョンを 2.1.1 に更新。
 
 ### <a name="206-march-7-2019"></a>2.0.6 (2019 年 3 月 7 日)
 #### <a name="new-features"></a>新機能

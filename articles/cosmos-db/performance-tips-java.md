@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 8d6aad3107acbeaa76f1cf7e5d9c631a2a5aa8b6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ac7879590424fa921425dcd077503733affeb634
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327822"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361749"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-sync-java-sdk-v2"></a>Azure Cosmos DB Sync Java SDK v2 のパフォーマンスに関するヒント
 
@@ -65,14 +65,14 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
       DocumentClient client = new DocumentClient(HOST, MASTER_KEY, connectionPolicy, null);
       ```
 
-      :::image type="content" source="./media/performance-tips-java/connection-policy.png" alt-text="Azure Cosmos DB 接続ポリシーの図" border="false":::
+      :::image type="content" source="./media/performance-tips-java/connection-policy.png" alt-text="Azure Cosmos DB の接続ポリシーを示す図。" border="false":::
 
    <a id="same-region"></a>
 2. **パフォーマンスを確保するために同じ Azure リージョン内にクライアントを併置する**
 
     可能な場合は、Azure Cosmos DB を呼び出すすべてのアプリケーションを Azure Cosmos データベースと同じリージョンに配置します。 大ざっぱな比較ですが、Azure Cosmos DB の呼び出しは、同じリージョン内であれば 1 ～ 2 ミリ秒以内で完了するのに対し、米国西部と米国東部との間では待ち時間が 50 ミリ秒を超えます。 要求がクライアントから Azure データセンターの境界まで流れるときに使用されるルートに応じて、この待機時間が要求ごとに異なる可能性があります。 最短の待機時間は、プロビジョニングされた Azure Cosmos DB エンドポイントと同じ Azure リージョン内に呼び出し元アプリケーションを配置することによって実現されます。 使用可能なリージョンの一覧については、「 [Azure のリージョン](https://azure.microsoft.com/regions/#services)」を参照してください。
 
-    :::image type="content" source="./media/performance-tips/same-region.png" alt-text="Azure Cosmos DB 接続ポリシーの図" border="false":::
+    :::image type="content" source="./media/performance-tips/same-region.png" alt-text="Azure Cosmos DB の接続ポリシーを示す図。" border="false":::
    
 ## <a name="sdk-usage"></a>SDK の使用例
 1. **最新の SDK をインストールする**
