@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: JnHs
   ms.author: jenhayes
-  ms.date: 09/29/2020
-  ms.openlocfilehash: 40c268ed31cf7360d74c5eb8bebf75756fd76563
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.date: 10/09/2020
+  ms.openlocfilehash: 2b2f1a9dbf8c5621ff83dee9e600575c54e9de28
+  ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
   ms.translationtype: HT
   ms.contentlocale: ja-JP
   ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91570474"
+  ms.locfileid: "91931735"
 landingContent:
 - title: Azure Batch について
   linkLists:
@@ -40,8 +40,12 @@ landingContent:
       url: quick-run-python.md
   - linkListType: concept
     links:
-    - text: 開発者向けのワークフローと機能の概要
+    - text: ワークフローと機能の概要
       url: batch-service-workflow-features.md
+    - text: ジョブとタスク
+      url: jobs-and-tasks.md
+    - text: ノードとプール
+      url: nodes-and-pools.md
 - title: ステップバイステップ ガイド
   linkLists:
   - linkListType: tutorial
@@ -50,6 +54,8 @@ landingContent:
       url: tutorial-parallel-dotnet.md
     - text: ファイルの並列処理 - Python
       url: tutorial-parallel-python.md
+    - text: Data Factory を使用した Python スクリプト
+      url: tutorial-run-python-batch-azure-data-factory.md
     - text: Batch と Functions を使用した OCR
       url: tutorial-batch-functions.md
     - text: Arnold を使用したシーンのレンダリング
@@ -65,11 +71,13 @@ landingContent:
     - text: Batch アカウントを作成する
       url: batch-account-create-portal.md
     - text: プールの作成と管理
-      url: batch-custom-images.md
+      url: batch-sig-images.md
     - text: タスクの同時実行
       url: batch-parallel-node-tasks.md
-    - text: アプリケーション パッケージの使用
+    - text: アプリケーション パッケージを使用する
       url: batch-application-packages.md
+    - text: コンテナー アプリケーションを実行する
+      url: batch-docker-container-workloads.md
   - linkListType: concept
     links:
     - text: サポートされる VM のサイズ

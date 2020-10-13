@@ -3,12 +3,12 @@ title: ISO 27001 共有サービス ブループリント サンプルの概要
 description: ISO 27001 共有サービスのブルー プリント サンプルの概要とアーキテクチャ。 このブループリント サンプルは、お客様が特定の ISO 27001 コントロールを評価するのに役立ちます。
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 09309fe05200cf8c7a958324f3412967296a8dc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4df5e35154a6cd762dd653d9004eb635f0feb021
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "87927353"
+ms.locfileid: "91930817"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共有サービス ブループリント サンプルの概要
 
@@ -27,12 +27,12 @@ VDC は、Microsoft がその最大規模のエンタープライズのお客様
 
 - [Azure ロール](../../../../role-based-access-control/overview.md)。コントロール プレーンの観点から義務の分離のために使用します。 すべてのインフラストラクチャのデプロイの前に、3 つのロールが定義されています。
   - NetOps ロールには、ファイアウォール設定、NSG 設定、ルーティング、その他のネットワーク機能を含むネットワーク環境を管理する権限があります。
-  - SecOps ロールには、[Azure Security Center](../../../../security-center/security-center-intro.md) をデプロイ、管理し、[Azure ポリシー](../../../policy/overview.md)を定義するのに必要な権限、およびその他のセキュリティ関連の権限があります。
-  - SysOps ロールには、サブスクリプション内で [Azure ポリシー](../../../policy/overview.md)を定義し、環境全体のその他の運用権限の中で [Log Analytics](../../../../azure-monitor/overview.md) を管理するのに必要な権限があります。
+  - SecOps ロールには、[Azure Security Center](../../../../security-center/security-center-intro.md) をデプロイ、管理し、[Azure Policy](../../../policy/overview.md) 定義を定義するのに必要な権限、およびその他のセキュリティ関連の権限があります
+  - SysOps ロールには、サブスクリプション内で [Azure Policy](../../../policy/overview.md) 定義を定義し、環境全体のその他の運用権限の中で [Log Analytics](../../../../azure-monitor/overview.md) を管理するのに必要な権限があります
 - [Log Analytics](../../../../azure-monitor/overview.md) は、セキュリティで保護されたデプロイの開始以降、すべてのアクションとサービス ログを一元化する最初の Azure サービスとしてデプロイされます。
 - オンプレミス データセンター、インターネット接続用のイングレス/エグレス スタック、および以下を含むフル マイクロセグメンテーション用に NSG および ASG を使用する共有サービス サブネットへの折り返し接続用のサブネットをサポートする仮想ネットワーク。
   - 管理目的で使用されるジャンプボックスまたは踏み台ホスト。イングレス スタック サブネットにデプロイされた [Azure Firewall](../../../../firewall/overview.md) 経由でのみアクセスできます。
-  - ジャンプボックスからのみアクセスできる Active Directory Domain Services (ADDS) および DNS を実行する 2 つの仮想マシン。VPN または [ExpressRoute](../../../../expressroute/expressroute-introduction.md) 接続 (ブループリントでデプロイされていない) 経由で AD をレプリケートするためだけに構成できます。
+  - ジャンプボックスからのみアクセスできる Azure Active Directory Domain Services (Azure AD DS) および DNS を実行する 2 つの仮想マシン。VPN または [ExpressRoute](../../../../expressroute/expressroute-introduction.md) 接続 (ブループリントでデプロイされていない) 経由で AD をレプリケートするためだけに構成できます
   - [Azure Net Watcher](../../../../network-watcher/network-watcher-monitoring-overview.md) と標準 DDoS 保護の使用
 - [Azure Key Vault](../../../../key-vault/general/overview.md) インスタンス。共有サービス環境にデプロイされた VM 用に使用されるシークレットをホストします。
 

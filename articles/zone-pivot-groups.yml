@@ -202,6 +202,48 @@ groups:
     title: JavaScript
   - id: programming-language-curl
     title: REST
+- id: programming-languages-set-eighteen
+  title: プログラミング言語
+  prompt: プログラミング言語または CLI を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-languages-objectivec-swift
+    title: Objective-C/Swift
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-curl
+    title: REST
+  - id: programmer-tool-spx
+    title: CLI
+- id: programming-languages-set-nineteen
+  title: プログラミング言語
+  prompt: プログラミング言語または CLI を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-go
+    title: Go
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-languages-objectivec-swift
+    title: Objective-C/Swift
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-curl
+    title: REST
+  - id: programmer-tool-spx
+    title: CLI
 - id: cogsvcs-text-analytics-features
   title: Text Analytics の機能
   prompt: Text Analytics の機能オファリングの選択
@@ -784,10 +826,18 @@ groups:
     title: Go
   - id: platform-powershell
     title: PowerShell
+- id: non-azure-machines
+  title: Azure 以外のマシン
+  prompt: Azure 以外のマシンに接続する方法
+  pivots:
+  - id: azure-arc
+    title: Azure Arc
+  - id: azure-portal
+    title: Security Center のポータル ページ
 metadata:
-  ms.openlocfilehash: a931ef1b1a4a4c5f107c66187d44a74f2eb5bcde
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: ed855c35d70e77233bfb06fd5f40281942589129
+  ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91825122"
+  ms.lasthandoff: 10/11/2020
+  ms.locfileid: "91938782"

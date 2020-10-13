@@ -19,6 +19,9 @@
       href: powershell-create-service-instance.md
     - name: インスタンスの作成 - Visual Studio Code
       href: vscode-create-service-instance.md
+    - name: インスタンスを作成する - Resource Manager テンプレート
+      displayName: Resource Manager
+      href: quickstart-arm-template.md
 - name: チュートリアル
   items:
     - name: 1 - 最初の API のインポート

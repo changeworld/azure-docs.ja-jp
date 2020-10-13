@@ -37,6 +37,8 @@
       href: azure-netapp-files-cost-model.md
     - name: Azure NetApp Files のネットワーク計画のガイドライン
       href: azure-netapp-files-network-topologies.md
+    - name: 手動 QoS 容量プール
+      href: manual-qos-capacity-pool-introduction.md
     - name: リージョン間レプリケーション
       items:
         - name: リージョン間レプリケーションについて
@@ -126,7 +128,7 @@
 - name: リファレンス
   items:
     - name: REST
-      href: 'https://docs.microsoft.com/rest/api/netapp/'
+      href: /rest/api/netapp/
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.netapp/allversions
 - name: リソース

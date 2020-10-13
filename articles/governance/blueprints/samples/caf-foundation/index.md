@@ -3,12 +3,12 @@ title: CAF の基本ブループリント サンプルの概要
 description: Cloud Adoption Framework for Azure (CAF) 基盤ブループリント サンプルの概要とアーキテクチャ。
 ms.date: 09/14/2020
 ms.topic: sample
-ms.openlocfilehash: cce5ea001b32ae92542f38f8f11427e85075cee9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3e2a5bcbb68ef0b51cf02ebb7a7e34913e2a1e6
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531697"
+ms.locfileid: "91929610"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Microsoft Cloud Adoption Framework for Azure 基盤ブループリント サンプルの概要
 
@@ -27,17 +27,18 @@ CAF 基盤ブループリント サンプルは、クラウド資産を管理す
 - [Azure Key Vault](../../../../key-vault/general/overview.md) インスタンス。共有サービス環境にデプロイされた VM 用に使用されるシークレットをホストします。
 - [Log Analytics](../../../../azure-monitor/overview.md)。診断ログに使用する [Storage アカウント](../../../../storage/common/storage-introduction.md)への安全なデプロイを開始した時点から、すべてのアクションとサービス ログが中心的な場所に確保されるようにデプロイされます。
 - [Azure Security Center](../../../../security-center/security-center-intro.md) (標準バージョン)。移行されたワークロードを脅威から保護します。
-- また、このブループリントでは、以下に関する [Azure ポリシー](../../../policy/overview.md)の定義とデプロイも行われます。 
-  - リソース グループに適用されるタグ付け (CostCenter)
-  - リソースを CostCenter タグと共にリソース グループ内に追加する
-  - リソースとリソース グループに許可されている Azure リージョン
-  - 許可されている Storage アカウントの SKU (デプロイ時に選択)
-  - 許可されている Azure VM SKU (デプロイ時に選択)
-  - Network Watcher のデプロイを要求する 
-  - Azure Storage アカウントのセキュリティで保護された転送の暗号化を要求する
-  - リソースを種類ごとに拒否する (デプロイ時に選択)  
-- イニシアティブ
-  - Azure Security Center での監視を有効にする (100 を超えるポリシー定義)
+- また、このブループリントでは、以下に関する [Azure Policy](../../../policy/overview.md) 定義の定義とデプロイも行われます。
+  - ポリシー定義:
+    - リソース グループに適用されるタグ付け (CostCenter)
+    - リソースを CostCenter タグと共にリソース グループ内に追加する
+    - リソースとリソース グループに許可されている Azure リージョン
+    - 許可されている Storage アカウントの SKU (デプロイ時に選択)
+    - 許可されている Azure VM SKU (デプロイ時に選択)
+    - Network Watcher のデプロイを要求する 
+    - Azure Storage アカウントのセキュリティで保護された転送の暗号化を要求する
+    - リソースを種類ごとに拒否する (デプロイ時に選択)  
+  - ポリシー イニシアチブ:
+    - Azure Security Center での監視を有効にする (100 を超えるポリシー定義)
 
 これらの要素はすべて、「[Azure アーキテクチャ センター - 参照アーキテクチャ](/azure/architecture/reference-architectures/)」で公開されている実証済みのプラクティスに従っています。
 

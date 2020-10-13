@@ -165,6 +165,8 @@
               href: azure-stack-edge-gpu-troubleshoot.md
             - name: 注文の問題
               href: azure-stack-edge-troubleshoot-ordering.md
+            - name: アクティブ化の問題
+              href: azure-stack-edge-gpu-troubleshoot-activation.md
             - name: Microsoft サポートに問い合わせる
               href: azure-stack-edge-contact-microsoft-support.md
     - name: リリース ノート

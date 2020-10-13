@@ -35,7 +35,11 @@
         - name: 0 - オブジェクトとモーションの検出アプリケーションの展開
           href: tutorial-video-analytics-deploy.md
         - name: 1 - ビデオ分析アプリケーションを作成する
-          href: tutorial-video-analytics-create-app.md
+          items:
+            - name: オブジェクトとモーションの検出 (YOLO v3)
+              href: tutorial-video-analytics-create-app-yolo-v3.md
+            - name: オブジェクトとモーションの検出 (OpenVINO)
+              href: tutorial-video-analytics-create-app-openvino.md
         - name: 2 - IoT Edge デバイスの構成
           items:
             - name: エッジでのビデオ分析デバイスの作成 (Linux VM)

@@ -36,6 +36,8 @@
           href: connect-ios.md
         - name: Microsoft Store クライアントを使用した接続
           href: connect-microsoft-store.md
+    - name: デバイスのリダイレクトを構成する
+      href: configure-device-redirections.md
     - name: PowerShell モジュールを設定する
       href: powershell-module.md
     - name: ホスト プールとセッション ホストを作成する
@@ -102,6 +104,8 @@
       href: azure-advisor.md
     - name: 推奨事項を解決する
       href: azure-advisor-recommendations.md
+    - name: ディザスター リカバリー プランを設定する
+      href: disaster-recovery.md
 - name: 概念
   items:
     - name: 認証
