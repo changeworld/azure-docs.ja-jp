@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 0c4bef25a0be12c0335a82345ec998274f1faa67
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 174db339079de91a87cef9551bc79e6f03701605
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058398"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257131"
 ---
 # <a name="scenario-a-web-app-that-calls-web-apis"></a>シナリオ:Web API を呼び出す Web アプリ
 
@@ -24,12 +24,7 @@ Microsoft ID プラットフォーム上でユーザーがサインインし、�
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
-
-このシナリオでは、次のシナリオを既に実行していることを前提としています。
-
-> [!div class="nextstepaction"]
-> [ユーザーをサインインさせる Web アプリ](scenario-web-app-sign-user-overview.md)
+このシナリオでは、次を既に完了していることを前提としています。「[シナリオ:ユーザーをサインインさせる Web アプリ](scenario-web-app-sign-user-overview.md)」を参照してください。
 
 ## <a name="overview"></a>概要
 
@@ -51,6 +46,10 @@ Web API を呼び出す Web アプリは、機密クライアント アプリケ
 
 - [アプリケーションの登録](scenario-web-app-call-api-app-registration.md)中に、Azure AD と共有する応答 URI、シークレット、または証明書を指定する必要があります。 複数の場所にアプリをデプロイする場合は、場所ごとに応答 URI を入力します。
 - [アプリケーションの構成](scenario-web-app-call-api-app-configuration.md)で、アプリケーションの登録時に Azure AD と共有されたクライアント資格情報を提供する必要があります。
+
+## <a name="recommended-reading"></a>推奨資料
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

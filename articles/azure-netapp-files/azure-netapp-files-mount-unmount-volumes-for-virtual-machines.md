@@ -6,20 +6,29 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
-ms.date: 08/28/2020
-ms.openlocfilehash: f9dc54959979d00d57536e3a3fa2262d27e28f96
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.date: 09/22/2020
+ms.openlocfilehash: d5db91a8864d6090466b40197187c9386e053d12
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89072198"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325540"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Windows または Linux 仮想マシンのボリュームをマウント/マウント解除する 
 
 必要に応じて、Windows または Linux 仮想マシンのボリュームをマウント/マウント解除できます。  Linux 仮想マシンのマウント手順は、Azure NetApp Files で使用可能です。  
 
-> [!IMPORTANT] 
-> NFS ボリュームにアクセスできるようにするには、少なくとも 1 つのエクスポート ポリシーが必要です。
+## <a name="requirements"></a>必要条件 
+
+* NFS ボリュームにアクセスできるようにするには、少なくとも 1 つのエクスポート ポリシーが必要です。
+* NFS ボリュームを正常にマウントするには、クライアントと NFS ボリューム間で次の NFS ポートが開いていることを確認します。
+    * 111 = `RPCBIND/Portmapper`
+    * 635 = `mountd`
+    * 2049 = `nfs`
+    * 4045 = `nlockmgr` (NFSv3 のみ)
+    * 4046 = `status` (NFSv3 のみ)
+
+## <a name="steps"></a>手順
 
 1. **[ボリューム]** ブレードをクリックして、マウントする対象のボリュームを選択します。 
 2. 選択したボリュームから **[Mount instructions]** \(マウント手順\) をクリックして、手順に従ってボリュームをマウントします。 

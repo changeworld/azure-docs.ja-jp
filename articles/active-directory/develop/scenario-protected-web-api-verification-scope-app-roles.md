@@ -1,7 +1,7 @@
 ---
 title: 保護された Web API でスコープとアプリ ロールを検証する | Azure
 titleSuffix: Microsoft identity platform
-description: 保護された Web API をビルドして、アプリケーションのコードを構成する方法について学習します。
+description: API が、適切なスコープを持つユーザーに代わるアプリケーションによって、また適切なアプリケーション ロールを持つデーモン アプリによってのみ呼び出されることを確認します。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c3cf8bfd2810e9c26a6f65c50c1a22baeec892af
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 1e5c8b788f1abbfbd46c4dfe6c7bb9d87adcee86
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855472"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257268"
 ---
 # <a name="protected-web-api-verify-scopes-and-app-roles"></a>保護された Web API: スコープとアプリのロールを検証する
 

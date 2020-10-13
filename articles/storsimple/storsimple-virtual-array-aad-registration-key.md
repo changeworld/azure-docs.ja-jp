@@ -1,17 +1,17 @@
 ---
 title: StorSimple Virtual Array の新しい認証
-description: サービスに対して AAD ベースの認証を使用して、新しい登録キーを生成し、デバイスの手動登録を実行する方法について説明します。
+description: StorSimple デバイスに適用される AAD 認証、関連付けられた新しいサービス登録キー、およびファイアウォール規則の変更について説明します。
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 89f367e866c1a794f4359c76b8b8a8a9cfefd50d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d750b3a85741bb4761b640848f01e5917760b5aa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76273800"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261092"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>StorSimple の新しい認証を使用する
 
