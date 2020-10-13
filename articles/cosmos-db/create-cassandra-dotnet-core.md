@@ -7,14 +7,14 @@ author: TheovanKraay
 ms.author: thvankra
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/18/2020
+ms.date: 10/01/2020
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: d24116701347c7d4b60494219b56877e0b121ea3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 46826319cdd2ba55d469704a09656b61c96ce798
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017469"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743153"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-core-and-azure-cosmos-db"></a>クイック スタート:.NET Core と Azure Cosmos DB を使用して Cassandra アプリを構築する
 
@@ -156,6 +156,12 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
     `private const string Password = "2Ggkr662ifxz2Mg...==";`
 
+1. ポータルに戻り、コンタクト ポイントの値をコピーします。 16 行目の `<PROVIDE>` にポータルのコンタクト ポイントの値を貼り付けます。
+
+    Program.cs の 16 行目は次のようになります。 
+
+    `private const string CASSANDRACONTACTPOINT = "quickstart-cassandra-api.cassandra.cosmos.azure.com";`
+
 1. Program.cs ファイルを保存します。
     
 ## <a name="run-the-net-core-app"></a>.NET Core アプリを実行する
@@ -169,13 +175,13 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
     ```
 3. Ctrl + F5 キーを押してアプリケーションを実行します。 コンソール ウィンドウにアプリが表示されます。 
 
-    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="出力を表示して検証する":::
+    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="Azure portal の [接続文字列] ページでアクセス キー名を表示してコピー":::
 
     Ctrl + C キーを押してプログラムの実行を停止し、コンソール ウィンドウを閉じます。 
     
 4. Azure portal で **Data Explorer** を開き、この新しいデータのクエリ、変更、操作を行います。
 
-    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="データ エクスプローラーでのデータの表示":::
+    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="Azure portal の [接続文字列] ページでアクセス キー名を表示してコピー":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 

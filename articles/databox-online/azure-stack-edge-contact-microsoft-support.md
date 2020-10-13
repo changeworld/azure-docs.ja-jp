@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 9df729277934e074e1e8cc92126e777336708586
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dbdd4c7d23f56618c0e76649abe4faad86c5804c
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904521"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743303"
 ---
 # <a name="open-a-support-ticket-for-azure-stack-edge-pro-and-azure-data-box-gateway"></a>Azure Stack Edge Pro と Azure Data Box Gateway のサポート チケットを開く
 
@@ -59,7 +59,7 @@ ms.locfileid: "90904521"
 
 4. **[確認と作成]** タブで、サポート チケットに関連する情報を確認します。 **［作成］** を選択します 
 
-    ![問題](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-3.png)
+    ![問題 2](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-3.png)
 
     お客様がサポート チケットを作成すると、サポート エンジニアが可能な限り迅速にお客様に連絡し、リクエストを処理します。
 
