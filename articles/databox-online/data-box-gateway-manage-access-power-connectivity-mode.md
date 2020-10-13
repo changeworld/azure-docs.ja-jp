@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 1035b0afee9821020673acbc813b31cba3e2fd90
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 27b6d8ca61ed10b5c7362e089fe94d8d64164878
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893939"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743864"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>Azure Data Box Gateway のアクセス、電源、接続モードを管理する
 
@@ -53,7 +53,7 @@ Data Box Gateway デバイスへのアクセスは、デバイスのパスワー
  
 2. 新しいパスワードを入力し、それを確認します。 指定するパスワードは 8 ～ 16 文字にする必要があります。 パスワードには、大文字、小文字、数字、および特殊文字のうち 3 種類の文字を使用する必要があります。 **[リセット]** をクリックします。
 
-    ![[パスワードのリセット]](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-2.png)
+    ![パスワードのリセット 2](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-2.png)
 
 ## <a name="manage-resource-access"></a>リソース アクセスの管理
 
@@ -119,7 +119,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
  
 4. デバイスを切断モードで実行するには、 **[Azure portal management]\(Azure portal 管理\)** を無効にします。 デバイスは、ローカル Web UI からのみ管理できるようになります。
 
-    ![接続モード](media/data-box-gateway-manage-access-power-connectivity-mode/connectivity-mode-2.png)
+    ![接続モード 2](media/data-box-gateway-manage-access-power-connectivity-mode/connectivity-mode-2.png)
 
 ## <a name="manage-power"></a>電源を管理する
 
