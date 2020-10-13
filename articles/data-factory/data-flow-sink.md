@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/27/2020
-ms.openlocfilehash: b92b6930193b77d0fb50ad707001a6fca0401970
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: 06d70012756694dca1fad8fa90db0293bb106bf9
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91404767"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828139"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>マッピング データ フローでのシンク変換
 
@@ -56,7 +56,9 @@ Azure Data Factory は、[90 を超えるネイティブ コネクタ](connector
 
 ## <a name="sink-settings"></a>シンクの設定
 
-シンクを追加したら、 **[シンク]** タブから構成を行います。ここでは、シンクを書き込むデータセットを選択して作成できます 以下の動画では、テキスト区切りのファイルの種類に対応するさまざまなシンク オプションについて説明します。
+シンクを追加したら、 **[シンク]** タブから構成を行います。ここでは、シンクを書き込むデータセットを選択して作成できます データセット パラメーターの開発値は、[デバッグ設定](concepts-data-flow-debug-mode.md)で構成できます (デバッグ モードをオンにする必要があります)。
+
+以下の動画では、テキスト区切りのファイルの種類に対応するさまざまなシンク オプションについて説明します。
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4tf7T]
 

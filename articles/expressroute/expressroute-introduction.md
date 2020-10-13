@@ -5,19 +5,19 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: overview
-ms.date: 08/25/2020
+ms.date: 10/05/2020
 ms.author: duau
-ms.openlocfilehash: 40d84a4196a3cc104a29b4b9511bd627f3f8d40e
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: ee690a73907eca3bcd577cf2d983c8abc5409925
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566876"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743065"
 ---
 # <a name="what-is-azure-expressroute"></a>Azure ExpressRoute とは
 ExpressRoute を利用すると、接続プロバイダーが提供するプライベート接続を介して、オンプレミスのネットワークを Microsoft クラウドに拡張できます。 ExpressRoute では、Microsoft Azure、Microsoft 365 などの Microsoft クラウド サービスへの接続を確立できます。
 
-接続には、任意の環境間 (IP VPN) 接続、ポイントツーポイントのイーサネット接続、共有施設での接続プロバイダーによる仮想交差接続があります。 ExpressRoute 接続では、公共のインターネットを利用できません。 これにより、ExpressRoute 接続はインターネット経由の一般的な接続に比べて、安全性と信頼性が高く、待機時間も一定しており、高速です。 ExpressRoute を使用してネットワークを Microsoft に接続する方法については、「[ExpressRoute 接続モデル](expressroute-connectivity-models.md)」を参照してください。
+接続には、任意の環境間 (IP VPN) 接続、ポイントツーポイントのイーサネット接続、共有施設での接続プロバイダーによる仮想交差接続があります。 ExpressRoute 接続はパブリックなインターネットを経由しません。 これにより、ExpressRoute 接続はインターネット経由の一般的な接続に比べて、安全性と信頼性が高く、待機時間も一定しており、高速です。 ExpressRoute を使用してネットワークを Microsoft に接続する方法については、「[ExpressRoute 接続モデル](expressroute-connectivity-models.md)」を参照してください。
 
 ![ExpressRoute 接続の概要](./media/expressroute-introduction/expressroute-connection-overview.png)
 
@@ -36,7 +36,7 @@ ExpressRoute を利用すると、接続プロバイダーが提供するプラ�
 ## <a name="features"></a>機能
 
 ### <a name="layer-3-connectivity"></a>レイヤー 3 接続
-Microsoft は業界標準の動的ルーティング プロトコル (BGP) を利用し、オンプレミス ネットワーク、Azure のインスタンス、および Microsoft パブリック アドレスの間でルートを交換します。 さまざまなトラフィック プロファイルに合わせ、ネットワークとさまざまな BGP セッションを確立します。 詳しくは、 [ExpressRoute の回線とルーティング ドメイン](expressroute-circuit-peerings.md) に関する記事を参照してください。
+Microsoft では、業界標準の動的ルーティング プロトコルである BGP を使用しています。 オンプレミス ネットワーク、Azure 内のインスタンス、Microsoft パブリック アドレスの間でルートを交換できるように、 さまざまなトラフィック プロファイルに合わせ、ネットワークとさまざまな BGP セッションを確立します。 詳しくは、 [ExpressRoute の回線とルーティング ドメイン](expressroute-circuit-peerings.md) に関する記事を参照してください。
 
 ### <a name="redundancy"></a>冗長性
 各 ExpressRoute 回線は、接続プロバイダーまたはネットワーク エッジから、[ExpressRoute の場所](https://docs.microsoft.com/azure/expressroute/expressroute-locations#expressroute-locations)にある 2 つの Microsoft Enterprise エッジ ルーター (MSEE) への 2 つの接続で構成されます。 Microsoft は接続プロバイダー/ネットワーク エッジから 2 つの BGP 接続を必要とします。MSEE につき 1 つです。 あなたの側で冗長デバイス/イーサネット回線をデプロイしないことを選択できます。 ただし、接続プロバイダーは冗長デバイスを利用することで冗長性が与えられる方法で接続を Microsoft に渡します。 冗長レイヤー 3 接続構成は [SLA](https://azure.microsoft.com/support/legal/sla/) を有効にするための必須条件です。
@@ -55,16 +55,16 @@ ExpressRoute でサポートされているサービスの詳しい一覧につ�
 ### <a name="connectivity-to-all-regions-within-a-geopolitical-region"></a>地政学的な地域内のすべてのリージョンへの接続
 [ピアリングの場所](expressroute-locations.md)の 1 つで Microsoft に接続し、地政学的な領域内のリージョンにアクセスできます。
 
-たとえば、ExpressRoute を介してアムステルダムの Microsoft に接続している場合、北ヨーロッパと西ヨーロッパでホストされているすべての Microsoft クラウド サービスにアクセスできます。 地政学的領域、関連付けられている Microsoft クラウド リージョン、対応する ExpressRoute のピアリングの場所の概要については、「[ExpressRoute パートナーとピアリングの場所](expressroute-locations.md)」という記事をご覧ください。
+たとえば、ExpressRoute を介してアムステルダムの Microsoft に接続しているとします。 北ヨーロッパと西ヨーロッパでホストされているすべての Microsoft クラウド サービスにアクセスできます。 地政学的領域、関連付けられている Microsoft クラウド リージョン、対応する ExpressRoute のピアリングの場所の概要については、「[ExpressRoute パートナーとピアリングの場所](expressroute-locations.md)」という記事をご覧ください。
 
 ### <a name="global-connectivity-with-expressroute-premium"></a>ExpressRoute Premium を使用したグローバル接続
-[ExpressRoute Premium](expressroute-faqs.md) を有効にすると、地理的境界を越えて接続を拡張できます。 たとえば、ExpressRoute を介してアムステルダムの Microsoft に接続している場合、世界中のあらゆるリージョンでホストされているすべての Microsoft クラウド サービスにアクセスできます (国内クラウドは除外します)。 北ヨーロッパ リージョンと西ヨーロッパ リージョンにアクセスする場合と同じ方法で南アメリカやオーストラリアにデプロイされているサービスにアクセスできます。
+[ExpressRoute Premium](expressroute-faqs.md) を有効にすると、地理的境界を越えて接続を拡張できます。 たとえば、ExpressRoute を介してアムステルダムの Microsoft に接続している場合、世界中のすべてのリージョンでホストされているすべての Microsoft クラウド サービスにアクセスできます。 北ヨーロッパおよび西ヨーロッパ リージョンにアクセスする場合と同じ方法で南アメリカやオーストラリアにデプロイされているサービスにもアクセスできます。 国内クラウドは除外されます。
 
 ### <a name="local-connectivity-with-expressroute-local"></a>ExpressRoute Local を使用したローカル接続
-目的の Azure リージョンに近い ExpressRoute の場所にデータを運ぶことができる場合は、[Local SKU](expressroute-faqs.md) を有効にすることによって、費用対効果の高い方法でデータを転送できます。 ローカルでは、データ転送は ExpressRoute のポート料金に含まれます。 
+[Local SKU](expressroute-faqs.md) を有効にすることで、コスト効果の高い方法でデータを転送できます。 Local SKU を使用すると、必要な Azure リージョンの近くにある ExpressRoute の場所にデータを運ぶことができます。 ローカルでは、データ転送は ExpressRoute のポート料金に含まれます。 
 
 ### <a name="across-on-premises-connectivity-with-expressroute-global-reach"></a>ExpressRoute Global Reach によるオンプレミスを越えての接続
-ExpressRoute Global Reach を有効にして ExpressRoute 回線を接続することで、オンプレミス サイト間でデータを交換することができます。 たとえば、カリフォルニア州シリコン バレーの ExpressRoute に接続されているプライベート データ センターがあり、テキサス州ダラスの ExpressRoute に接続されている別のプライベート データ センターがある場合、ExpressRoute Global Reach を使用すれば、2 つの ExpressRoute 回線を通してこれらのプライベート データ センターを互いに接続できます。 データ センター間のトラフィックは、Microsoft のネットワークの中を通って行き来します。
+ExpressRoute Global Reach を有効にし、ExpressRoute 回線を接続することで、オンプレミス サイト間でデータを交換することができます。 たとえば、カリフォルニアのプライベート データ センターがシリコン バレーの ExpressRoute 回線に接続され、テキサスにある別のプライベート データ センターがダラスの ExpressRoute 回線に接続されているとします。 ExpressRoute Global Reach を使用すると、これら 2 つの ExpressRoute 回線経由でプライベート データ センターを接続できます。 データ センター間のトラフィックは、Microsoft のネットワークの中を通って行き来します。
 
 詳細については、[ExpressRoute Global Reach](expressroute-global-reach.md) に関するページを参照してください。
 ### <a name="rich-connectivity-partner-ecosystem"></a>大勢の接続パートナーが属するエコシステム
@@ -85,7 +85,7 @@ ExpressRoute Direct では、世界中に戦略的に分散されたピアリン
 詳細については、[ExpressRoute Direct](https://go.microsoft.com/fwlink/?linkid=2022973) に関するページを参照してください。
 
 ### <a name="bandwidth-options"></a>帯域幅のオプション
-さまざまな帯域幅に合った ExpressRoute 回線を購入できます。 サポートされる帯域幅は次のとおりです。 サポートされる帯域幅については接続プロバイダーに必ず確認してください。
+さまざまな帯域幅に合った ExpressRoute 回線を購入できます。 サポートされる帯域幅は以下のとおりです。 サポートされる帯域幅については接続プロバイダーに必ず確認してください。
 
 * 50 Mbps
 * 100 Mbps
@@ -100,13 +100,13 @@ ExpressRoute Direct では、世界中に戦略的に分散されたピアリン
 接続を壊さずに (ベスト エフォート基準で) ExpressRoute 回線の帯域幅を増やすことができます。 詳細については、「[ExpressRoute 回線の変更](expressroute-howto-circuit-portal-resource-manager.md#modify)」を参照してください。
 
 ### <a name="flexible-billing-models"></a>柔軟な課金モデル
-最適な請求モデルを選択できます。 次に示す請求モデルから選択します。 詳細については、「[ExpressRoute の FAQ](expressroute-faqs.md)」を参照してください。
+最適な請求モデルを選択できます。 以下に示す課金モデルから選択します。 詳細については、「[ExpressRoute の FAQ](expressroute-faqs.md)」を参照してください。
 
 * **無制限のデータ**。 課金は、月額料金に基づいて行われます。すべての受信および送信データ転送が無料で含まれます。
 * **従量制課金データ**。 課金は、月額料金に基づいて行われます。すべての受信データ転送が無料となります。 送信データ転送は 1 GB のデータ転送単位で課金されます。 データ転送料金は地域によって異なります。
 * **ExpressRoute Premium アドオン**。 ExpressRoute Premiumは ExpressRoute 回線のアドオンです。 ExpressRoute Premium アドオンには次の機能があります。 
   * Azure パブリックと Azure プライベートのピアリングのルート上限の増加 (4,000 ルートから 10,000 ルートに)。
-  * サービスのグローバル接続。 (国内のクラウドを除く) あらゆるリージョンで作成された ExpressRoute 回線に与えられる世界中の他のリージョンにあるリソースへのアクセス。 たとえば、西ヨーロッパで作成された仮想ネットワークにシリコン バレーでプロビジョニングされた ExpressRoute 回線からアクセスできます。
+  * サービスのグローバル接続。 (国内のクラウドを除く) あらゆるリージョンで作成された ExpressRoute 回線から、世界中の他のすべてのリージョンにあるリソースにアクセスできます。 たとえば、西ヨーロッパで作成された仮想ネットワークにシリコン バレーでプロビジョニングされた ExpressRoute 回線からアクセスできます。
   * ExpressRoute ごとの VNet リンクの上限数が 10 からより大きな数に増加 (回線の帯域幅によって異なる)。
 
 ## <a name="faq"></a>よく寄せられる質問
@@ -117,13 +117,6 @@ ExpressRoute に関してよく寄せられる質問については、「[Expres
 RSS フィードを購読し、[Azure 更新情報](https://azure.microsoft.com/updates/?category=networking&query=ExpressRoute)ページで、最新の ExpressRoute 機能の更新を確認します。
 
 ## <a name="next-steps"></a>次のステップ
-* [ExpressRoute 接続モデル](expressroute-connectivity-models.md)について説明します。
-* ExpressRoute 接続とルーティング ドメインについて説明します。 「 [ExpressRoute 回線とルーティング ドメイン](expressroute-circuit-peerings.md)」を参照してください。
-* サービス プロバイダーを検索します。 「 [ExpressRoute パートナーとピアリングの場所](expressroute-locations.md)」を参照してください。
 * すべての前提条件を満たしていることを確認します。 「 [Azure ExpressRoute の前提条件](expressroute-prerequisites.md)」を参照してください。
-* [ルーティング](expressroute-routing.md)、[NAT](expressroute-nat.md)、[QoS](expressroute-qos.md) の要件をご覧ください。
-* ExpressRoute 接続を構成します。
-  * [ExpressRoute 回線の作成と変更](expressroute-howto-circuit-portal-resource-manager.md)
-  * [ExpressRoute 回線のピアリングの作成と変更](expressroute-howto-routing-portal-resource-manager.md)
-  * [ExpressRoute 回線に仮想ネットワークを接続する](expressroute-howto-linkvnet-portal-resource-manager.md)
-* Azure のその他の重要な[ネットワーク機能](../networking/networking-overview.md)について参照してください。
+* [ExpressRoute 接続モデル](expressroute-connectivity-models.md)について説明します。
+* サービス プロバイダーを検索します。 「 [ExpressRoute パートナーとピアリングの場所](expressroute-locations.md)」を参照してください。

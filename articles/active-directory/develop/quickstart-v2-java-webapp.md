@@ -1,6 +1,7 @@
 ---
-title: Microsoft ID プラットフォーム Java Web アプリのクイックスタート | Azure
-description: OpenID Connect を使用して、Java Web アプリ上で Microsoft サインインを実装する方法について説明します。
+title: 'クイックスタート: Java Web アプリに "Microsoft でサインイン" を追加する | Azure'
+titleSuffix: Microsoft identity platform
+description: このクイックスタートでは、OpenID Connect を使用して、Java Web アプリケーションに Microsoft サインインを実装する方法について説明します。
 services: active-directory
 author: sangonzal
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: d1b79d60bba89ef01b261c403fe3b25939669d0b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f00a935815b64f7c2c06dd33130c1a950582e5c3
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258100"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743490"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>クイック スタート:Java Web アプリに "Microsoft でサインイン" を追加する
 
@@ -257,4 +258,4 @@ import com.microsoft.aad.msal4j.*;
 Microsoft ID プラットフォームでユーザーをサインインさせる Web アプリの構築に関する詳しい解説が必要であれば、複数のパートから構成されるシナリオ シリーズにお進みください。
 
 > [!div class="nextstepaction"]
-[シナリオ: ユーザーをサインインさせる Web アプリ](scenario-web-app-sign-user-overview.md?tabs=java)
+> [シナリオ: ユーザーをサインインさせる Web アプリ](scenario-web-app-sign-user-overview.md?tabs=java)

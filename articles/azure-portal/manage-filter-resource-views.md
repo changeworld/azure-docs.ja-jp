@@ -6,12 +6,12 @@ ms.service: azure-portal
 ms.topic: quickstart
 ms.author: mblythe
 ms.date: 09/11/2020
-ms.openlocfilehash: 21dcadaa929b90e72c7d429229fc6ac4e0a66683
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 3b9783e7f452b38292c784d44ddb60672e150961
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605430"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91650402"
 ---
 # <a name="view-and-filter-azure-resource-information"></a>Azure リソース情報の表示とフィルター処理
 
@@ -53,7 +53,11 @@ Azure portal を使用すると、Azure サブスクリプション全体でリ�
 
 ## <a name="summarize-resources-with-visuals"></a>ビジュアルを使用してリソースを集計する
 
-これまでに見たビューは_リスト ビュー_になっていますが、ビジュアルを含む_概要ビュー_もあります。 ビューを一覧表示できるのと同じように、これらのビューを保存して使用できます。 フィルターは 2 種類のビューの間で保持されます。 概要ビューを保存して使用するには、次のようにします。
+これまでに見たビューは_リスト ビュー_になっていますが、ビジュアルを含む_概要ビュー_もあります。 ビューを一覧表示できるのと同じように、これらのビューを保存して使用できます。 フィルターは 2 種類のビューの間で保持されます。 次に示す**場所**ビューなどの標準的なビューや、仮想マシンの**状態**ビューなど、特定のサービスに関連するビューがあります。
+
+:::image type="content" source="media/manage-filter-resource-views/summary-map.png" alt-text="Azure portal の [すべてのリソース] ビュー":::
+
+概要ビューを保存して使用するには、次のようにします。
 
 1. ビュー メニューで **[概要ビュー]** を選択します。
 

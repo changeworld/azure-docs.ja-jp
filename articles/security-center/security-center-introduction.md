@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 2eee46f99af247ffd0e11b262ace0a96453270d4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a6f0af188bb999acecad7fee0a90256eff05f902
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323676"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742079"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Security Center とは
 
@@ -43,7 +43,8 @@ Azure Security Center は、3 つの緊急性が高いセキュリティの課�
 
 -   **より迅速にセキュリティ保護**:Security Center では、すべてがクラウドの速度で行われます。 ネイティブに統合されているので、Security Center のデプロイは容易であり、Azure サービスを自動的にプロビジョニングしたり、保護できます。
 
-[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
+> [!NOTE]
+> このサービスは [Azure Lighthouse](../lighthouse/overview.md) をサポートしているため、サービス プロバイダーは各自のテナントにサインインして、顧客から委任されたサブスクリプションやリソース グループを管理することができます。 Azure Security Center のシナリオでは、個々のリソース グループではなく、サブスクリプションを委任する必要があります。
 
 ## <a name="architecture"></a>アーキテクチャ
 

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 718a01abacf6f2c3cbc9523cc644aca02dc5ff49
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 55df425367cc8295ef6a3899e2edb47669fe57b7
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321193"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741178"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Azure Active Directory を使用して最近削除されたユーザーを復元または削除する
 ユーザーを削除した後、アカウントは 30 日間、中断状態のままになります。 その 30 日の期間中は、ユーザー アカウントをそのすべてのプロパティと共に復元することができます。 30 日の期間が経過すると、ユーザーは自動的に完全に削除されます。
@@ -77,7 +77,7 @@ Azure portal 内で Azure Active Directory (Azure AD) を使用して、復元�
 
 2. **[完全に削除]** を選びます。
 
-    ![[ユーザー - 削除済みユーザー] ページ上で強調表示されている [ユーザーの復元] オプション](media/active-directory-users-restore/users-deleted-users-permanent-delete-user.png)
+    ![[ユーザー - 削除済みユーザー] ページ上で強調表示されている [ユーザーの削除] オプション](media/active-directory-users-restore/users-deleted-users-permanent-delete-user.png)
 
 ## <a name="next-steps"></a>次のステップ
 ユーザーを復元または削除したら、次の基本的なプロセスを実行することができます。

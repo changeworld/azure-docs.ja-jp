@@ -16,12 +16,12 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99ebac32193f764059bea2a30b6ddbce879938a6
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 1a602405065a41cb26b2ae5303d12c45ed21616f
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89275925"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741195"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Azure Active Directory パススルー認証のトラブルシューティング
 
@@ -96,6 +96,7 @@ ms.locfileid: "89275925"
 | 80007 | 認証エージェントが Active Directory に接続できません。 | 認証エージェントから Active Directory に到達可能かどうかを調べます。
 | 80010 | 認証エージェントはパスワードを復号化できません。 | 一貫して問題を再現できる場合は、新しい認証エージェントをインストールして登録します。 また、現在のものはアンインストールします。 
 | 80011 | 認証エージェントは復号化キーを取得できません。 | 一貫して問題を再現できる場合は、新しい認証エージェントをインストールして登録します。 また、現在のものはアンインストールします。
+| 80014 | 検証要求からの応答が最大経過時間を超えました。 | 認証エージェントがタイムアウトしました。このエラーの詳細を調べるには、エラー コード、相関 ID、タイムスタンプを添えて、サポート チケットを開いてください
 
 >[!IMPORTANT]
 >パススルー認証エージェントでは、[Win32 LogonUser API](/windows/win32/api/winbase/nf-winbase-logonusera) を呼び出して、Active Directory に対してユーザー名とパスワードを検証することで Azure AD ユーザーを認証します。 その結果、ワークステーションのログオン アクセスを制限するよう Active Directory の "ログオン先" を設定した場合は、"ログオン先" のサーバーの一覧に、パススルー認証エージェントをホストするサーバーも追加する必要があります。 これに失敗すると、Azure AD へのサインインからユーザーがブロックされます。
