@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: jushiman
-ms.openlocfilehash: cf8e7340ce3554bf27364335457a5b7eadcdc049
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 377677c9e5e81487059241db68baff639a3de033
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90930932"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715043"
 ---
 # <a name="create-a-custom-preference-in-azure-automanage-for-vms"></a>Azure Automanage for VMs でカスタム設定を作成する
 
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 > 無料試用版アカウントでは、このチュートリアルで使用されている仮想マシンを利用できません。 従量課金制サブスクリプションにアップグレードしてください。
 
 > [!IMPORTANT]
-> Automanage を有効にするには、次の RBAC アクセス許可が必要です。**所有者**ロール、または**共同作成者**ロールと**ユーザー アクセス管理者**ロールの併用。
+> Automanage を有効にするには、次の Azure RBAC アクセス許可が必要です。**所有者**ロール、または**共同作成者**ロールと**ユーザー アクセス管理者**ロールの併用。
 
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
@@ -57,11 +57,11 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 
 4. **[構成プロファイル]** で、 **[Browse and change profiles and preferences]\(プロファイルと基本設定を参照して変更\)** をクリックします。
 
-    :::image type="content" source="media\virtual-machine-custom-preferences\existing-vm-quick-create.png" alt-text="[Browse and change profiles and preferences]\(プロファイルと基本設定を参照して変更\)":::
+    :::image type="content" source="media\virtual-machine-custom-preferences\existing-vm-quick-create.png" alt-text="使用可能な VM のリストから既存の VM を選択します。":::
 
 5. **[Select configuration profile + preferences]\(構成プロファイルと基本設定の選択)** ブレードで、左側のプロファイルを選択します。 *[Dev/Test]* はテスト用、 *[運用]* は運用環境用です。
 
-    :::image type="content" source="media\virtual-machine-custom-preferences\browse-production-profile.png" alt-text="運用環境の構成プロファイルを参照します。":::
+    :::image type="content" source="media\virtual-machine-custom-preferences\browse-production-profile.png" alt-text="使用可能な VM のリストから既存の VM を選択します。":::
 
 6. 選択したプロファイルの **[Configuration preferences]\(構成の基本設定\)** の下に、特定のサービスに合わせて調整できるドロップダウンがあります。
     1. **[Create new preferences]\(新しい基本設定の作成\)** をクリックします。
@@ -71,7 +71,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
         1. Preference name (基本設定の名前)
         1. Region
 
-    :::image type="content" source="media\virtual-machine-custom-preferences\create-preference.png" alt-text="構成の基本設定を入力します。":::
+    :::image type="content" source="media\virtual-machine-custom-preferences\create-preference.png" alt-text="使用可能な VM のリストから既存の VM を選択します。":::
 
 7. [基本設定] タブに移動し、構成の基本設定を必要に応じて調整します。
         
@@ -88,7 +88,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 
 Automanage を無効にして、Azure Automanage for virtual machines の使用をすばやく停止します。
 
-:::image type="content" source="media\virtual-machine-custom-preferences\disable-step-1.png" alt-text="仮想マシンでの Automanage の無効化。":::
+:::image type="content" source="media\virtual-machine-custom-preferences\disable-step-1.png" alt-text="使用可能な VM のリストから既存の VM を選択します。":::
 
 1. 自動管理されている VM がすべて表示される **[Automanage – Azure virtual machine best practices]\(Automanage - Azure 仮想マシンのベスト プラクティス\)** ページに移動します。
 1. 無効にする仮想マシンの横にあるチェックボックスをオンにします。

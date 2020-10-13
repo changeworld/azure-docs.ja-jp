@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: ec9e6bc7daad05284893ce3148f9a80f500c5cbb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: c158bc176c329fb46d0acde64b043b1b3e669e18
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019948"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570684"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Azure Cosmos DB での競合解決ポリシーの管理
 
@@ -513,9 +513,9 @@ while conflict:
 Azure Cosmos DB の次の概念について学習しましょう。
 
 - [グローバル分散 - 内部のしくみ](global-dist-under-the-hood.md)
-- [アプリケーションでマルチマスターを構成する方法](how-to-multi-master.md)
+- [アプリケーションで複数リージョン書き込みを構成する方法](how-to-multi-master.md)
 - [マルチホームに関するクライアントの構成](how-to-manage-database-account.md#configure-multiple-write-regions)
 - [Azure Cosmos DB アカウントのリージョンを追加/削除する](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
-- [アプリケーションでマルチマスターを構成する方法](how-to-multi-master.md)
+- [アプリケーションで複数リージョン書き込みを構成する方法](how-to-multi-master.md)。
 - [パーティション分割とデータ分散](partition-data.md)
 - [Azure Cosmos DB のインデックス作成](indexing-policies.md)

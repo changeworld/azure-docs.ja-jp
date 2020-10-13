@@ -10,12 +10,12 @@ ms.date: 09/15/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: e6e6c802da212294594f45d0545c6cf07694760b
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 48831a9482087dbeed0952cc30fcbc9c14fbaed0
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707919"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715636"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>ブロック BLOB のオブジェクト レプリケーションを構成する
 
@@ -37,7 +37,7 @@ ms.locfileid: "90707919"
 
 オブジェクト レプリケーションを構成する際に、Azure Storage リソース プロバイダー経由で宛先アカウントにレプリケーション ポリシーを作成します。 レプリケーション ポリシーが作成されると、Azure Storage でポリシー ID が割り当てられます。 その後、このポリシー ID を使用して、そのレプリケーション ポリシーをソース アカウントに関連付ける必要があります。 レプリケーションを実行するには、ソース アカウントと宛先アカウントのポリシー ID が同じである必要があります。
 
-ストレージ アカウントにオブジェクト レプリケーション ポリシーを構成するには、ストレージ アカウントのレベル以上を対象とする Azure Resource Manager の **[共同作成者]** ロールが割り当てられている必要があります。 詳細については、Azure ロールベースのアクセス制御 (RBAC) のドキュメントで [Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)に関するページをご覧ください。
+ストレージ アカウントにオブジェクト レプリケーション ポリシーを構成するには、ストレージ アカウントのレベル以上を対象とする Azure Resource Manager の **[共同作成者]** ロールが割り当てられている必要があります。 詳細については、Azure ロールベースのアクセス制御 (Azure RBAC) に関するドキュメントの「[Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
 
 ### <a name="configure-object-replication-when-you-have-access-to-both-storage-accounts"></a>両方のストレージ アカウントへのアクセス権を持っている場合にオブジェクト レプリケーションを構成する
 
@@ -238,7 +238,7 @@ az storage account or-policy show \
 
 ソース ストレージ アカウントへのアクセス許可を持っていない場合は、宛先アカウントでオブジェクト レプリケーションを構成し、ポリシー定義を含む JSON ファイルを別のユーザーに提供して、ソース アカウントでも同じポリシーを作成できます。 たとえば、ソース アカウントが宛先アカウントとは異なる Azure AD テナントにある場合は、この方法を使用してオブジェクト レプリケーションを構成できます。
 
-ポリシーを作成するには、宛先ストレージ アカウントのレベル以上を対象とする Azure Resource Manager の **[共同作成者]** ロールが割り当てられている必要があることに注意してください。 詳細については、Azure ロールベースのアクセス制御 (RBAC) のドキュメントで [Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)に関するページをご覧ください。
+ポリシーを作成するには、宛先ストレージ アカウントのレベル以上を対象とする Azure Resource Manager の **[共同作成者]** ロールが割り当てられている必要があることに注意してください。 詳細については、Azure ロールベースのアクセス制御 (Azure RBAC) に関するドキュメントの「[Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
 
 次の表は、各シナリオで JSON ファイル内のポリシー ID とルール ID に使用される値をまとめたものです。
 

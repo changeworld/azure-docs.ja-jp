@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: de56ba1281d0f20c8be838fa1bc9ebc24905b26c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e378c1e25fb434e689eadd91e9e8562ffe7e61fd
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846908"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570088"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>監視と管理アプリを使用した Azure Data Factory パイプラインの監視と管理
 > [!div class="op_single_selector"]
@@ -124,7 +124,7 @@ Ctrl キーを使用して、複数のパイプラインを同時に選択でき
 
 右側のウィンドウで、 **[アクティビティ ウィンドウ エクスプローラー]** タブに切り替えると、さらに詳しい情報が表示されます。
 
-![[Activity Window Explorer (アクティビティ ウィンドウ エクスプローラー)]](./media/data-factory-monitor-manage-app/ActivityWindowExplorer.png)
+![[アクティビティ ウィンドウ エクスプローラー] タブへのアクセス方法を示すスクリーンショット。](./media/data-factory-monitor-manage-app/ActivityWindowExplorer.png)
 
 アクティビティが試行されるたびに、 **[試行]** セクションに**解決された変数**も表示されます。
 
@@ -217,7 +217,7 @@ Ctrl キーを使用して、複数のパイプラインを同時に選択でき
 
 一覧でアクティビティ ウィンドウをクリックすると、右側にある **[アクティビティ ウィンドウ エクスプローラー]** または **[プロパティ]** ウィンドウに詳細が表示されます。
 
-![[Activity Window Explorer (アクティビティ ウィンドウ エクスプローラー)]](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-2.png)
+![アクティビティ ウィンドウの詳細の表示方法を示すスクリーンショット。](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-2.png)
 
 ### <a name="refresh-activity-windows"></a>アクティビティ ウィンドウの更新
 詳細は自動的に更新されないので、コマンド バーの 更新ボタン (2 番目のボタン) を使用して、アクティビティ ウィンドウの一覧を手動で更新します。  

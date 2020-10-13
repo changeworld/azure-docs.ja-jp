@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 08/12/2020
-ms.openlocfilehash: 51d9880c654a6ecabbbab294016293113bffb655
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 4a78e966d420591ebe7a9607777158cf17ddf698
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434233"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370880"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Mapping Data Flow のパフォーマンスとチューニング ガイド
 
@@ -53,7 +53,7 @@ ADF UX からデータ フローを設計およびテストするときは、デ
 
 **[最適化]** タブには、Spark クラスターのパーティション分割を構成するための設定が含まれています。 データ フローのすべての変換に存在するこのタブでは、変換が完了した**後**にデータのパーティション再分割を行うかどうかを指定します。 パーティション分割を調整すると、全体的なデータ フローのパフォーマンスに好影響を与えることも、悪影響も与えることもある、各計算ノードへのデータの分散とデータの局所性の最適化を制御できます。
 
-![最適化](media/data-flow/optimize.png "最適化")
+![パーティション オプション、パーティションの種類、パーティションの数が含まれる [最適化] タブが示されているスクリーンショット。](media/data-flow/optimize.png)
 
 既定では、変換の現在の出力パーティション分割を維持するよう Azure Data Factory に指示する *[Use current partitioning]\(現在のパーティション分割を使用する\)* が選択されています。 データのパーティション再分割は時間がかかるため、ほとんどのシナリオでは、 *[Use current partitioning]\(現在のパーティション分割を使用する\)* をお勧めします。 データのパーティションを再分割する必要があるシナリオとしては、集計や結合によってデータが大幅にスキューされた場合や、SQL DB でソースのパーティション分割を使用する場合があります。
 

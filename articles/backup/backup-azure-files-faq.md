@@ -3,12 +3,12 @@ title: Azure Files のバックアップに関する FAQ
 description: この記事では、Azure Backup サービスを使用して Azure ファイル共有を保護する方法に関してよく寄せられる質問への回答を示します。
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: c62f8376b220911edd26edbe18955d0103440b81
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 74d8cc9cdb1d9c01c8238f205ae485b61d665cd7
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377422"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91729068"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Azure Files のバックアップに関する質問
 
@@ -75,6 +75,23 @@ ms.locfileid: "89377422"
 ### <a name="can-i-access-the-snapshots-taken-by-azure-backups-and-mount-them"></a>Azure Backup によって作成されたスナップショットにアクセスしてマウントできますか?
 
 Azure Backup によって作成されたスナップショットはすべて、ポータル、PowerShell、または CLI でスナップショットを表示することでアクセスできます。 Azure Files 共有スナップショットの詳細については、「[Azure Files の共有スナップショットの概要](../storage/files/storage-snapshots-files.md)」を参照してください。
+
+### <a name="what-happens-after-i-move-a-backed-up-file-share-to-a-different-subscription"></a>バックアップされたファイル共有を別のサブスクリプションに移動した後はどうなりますか?
+
+ファイル共有を別のサブスクリプションに移動すると、Azure Backup によって新しいファイル共有と見なされます。 推奨される手順を以下に示します。
+ 
+シナリオ:ファイル共有 FS1 がサブスクリプション S1 にあり、V1 コンテナーを使用して保護されているとします。 現在、そのファイル共有をサブスクリプション S2 に移動したいと考えています。
+ 
+1.  目的のストレージ アカウントとファイル共有 (FS1) を別のサブスクリプション (S2) に移動します。
+2.  V1 コンテナーで、FS1 に対して "データを削除して保護を停止" 操作をトリガーします。
+3.  FS1 をホストしているストレージ アカウントを V1 コンテナーから登録解除します。
+4.  S2 サブスクリプションでコンテナー (V2) を使用して、先ほど S2 に移動した FS1 のバックアップを再構成します。 
+ 
+V2 を使用してバックアップを再構成した後は、V1 で取得されたスナップショットが Azure Backup によって管理されなくなるため、必要に応じてそれらのスナップショットを手動で削除する必要があります。
+
+### <a name="can-i-move-my-backed-up-file-share-to-a-different-resource-group"></a>バックアップしたファイル共有を別のリソース グループに移動できますか?
+ 
+はい、バックアップしたファイル共有を別のリソース グループに移動できます。 ただし、Azure Backup によって新しいリソースと見なされるため、そのファイル共有のバックアップを再構成する必要があります。 また、リソース グループへの移動前に作成されたスナップショットは、Azure Backup によって管理されなくなるため、必要に応じてそれらのスナップショットを手動で削除する必要があります。
 
 ### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>バックアップについて構成できる保持期間の上限はどの位ですか?
 

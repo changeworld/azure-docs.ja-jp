@@ -1,7 +1,7 @@
 ---
 title: PowerShell を使用してデータ アクセスのための Azure ロールを割り当てる
 titleSuffix: Azure Storage
-description: PowerShell を使用して、ロールベースのアクセス制御 (RBAC) により Azure Active Directory セキュリティ プリンシパルにアクセス許可を割り当てる方法について説明します。 Azure Storage によって、Azure AD を使用した認証用の組み込みロールと Azure カスタム ロールがサポートされています。
+description: Azure PowerShell モジュールを使用して、Azure ロールベースのアクセス制御 (Azure RBAC) により Azure Active Directory セキュリティ プリンシパルにアクセス許可を割り当てる方法について説明します。 Azure Storage によって、Azure AD を使用した認証用の組み込みロールと Azure カスタム ロールがサポートされています。
 services: storage
 author: tamram
 ms.service: storage
@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 28f5be6d48b673f3148f05e14a92cf906aca4d81
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: d750e1f287ff7dfc5259b704355e026011fa872a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89077043"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715796"
 ---
 # <a name="use-powershell-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>PowerShell を使用して BLOB およびキュー データへのアクセスのための Azure ロールを割り当てる
 
@@ -136,6 +136,6 @@ New-AzRoleAssignment -SignInName <email> `
 
 ## <a name="next-steps"></a>次のステップ
 
-- [RBAC と Azure PowerShell を使用して Azure リソースへのアクセス権をユーザーに付与する](../../role-based-access-control/role-assignments-powershell.md)
-- [RBAC と Azure CLI を使用して Azure BLOB とキューのデータへのアクセスを付与する](storage-auth-aad-rbac-cli.md)
-- [Azure portal で RBAC を使用して Azure BLOB とキューのデータへのアクセスを付与する](storage-auth-aad-rbac-portal.md)
+- [Azure PowerShell モジュールを使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-powershell.md)
+- [Azure CLI を使用して BLOB およびキュー データにアクセスするための Azure ロールを割り当てる](storage-auth-aad-rbac-cli.md)
+- [Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる](storage-auth-aad-rbac-portal.md)

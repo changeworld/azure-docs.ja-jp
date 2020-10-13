@@ -1,19 +1,19 @@
 ---
-title: CLI を使用して専用ホストに Linux VM をデプロイする
-description: Azure CLI を使用して専用ホストに VM をデプロイします。
+title: CLI を使用して VM とスケール セット インスタンスを専用ホストにデプロイする
+description: Azure CLI を使用して VM とスケール セット インスタンスを専用ホストにデプロイします。
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 01/09/2020
+ms.date: 09/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 9435764d99476584680734817d55086f47e8216b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a85f5cb9cc519b180354445ca9ca2f8dd0354c23
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373625"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370201"
 ---
-# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Azure CLI を使用して専用ホストに VM をデプロイする
+# <a name="deploy-to-dedicated-hosts-using-the-azure-cli"></a>Azure CLI を使用して専用ホストにデプロイする
  
 
 この記事では、仮想マシン (VM) をホストするための Azure [専用ホスト](dedicated-hosts.md)を作成する方法について説明します。 
@@ -23,22 +23,22 @@ Azure CLI バージョン2.0.70 以降がインストールされていること
 
 ## <a name="limitations"></a>制限事項
 
-- 仮想マシン スケール セットは、現在、専用ホストではサポートされていません。
 - 専用ホストで使用できるサイズとハードウェアの種類は、リージョンによって異なります。 詳しくは、ホストの[価格のページ](https://aka.ms/ADHPricing) を参照してください。
 
 ## <a name="create-resource-group"></a>リソース グループの作成 
 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 az group create で、リソース グループを作成します。 次の例では、*myDHResourceGroup* という名前のリソース グループを "*米国東部*" の場所に作成します。
 
-```bash
+```azurecli-interactive
 az group create --name myDHResourceGroup --location eastus 
 ```
  
 ## <a name="list-available-host-skus-in-a-region"></a>リージョンで利用可能なホスト SKU を一覧表示する
+
 すべてのホスト SKU がすべてのリージョンおよび可用性ゾーンで使用できるわけではありません。 
 
 専用ホストのプロビジョニングを開始する前に、ホストの可用性とオファーの制限事項を一覧表示します。 
 
-```bash
+```azurecli-interactive
 az vm list-skus -l eastus2  -r hostGroups/hosts  -o table  
 ```
  
@@ -52,9 +52,10 @@ az vm list-skus -l eastus2  -r hostGroups/hosts  -o table
 
 可用性ゾーンと障害ドメインの両方を使用することもできます。 
 
+
 この例では、[az vm host group create](/cli/azure/vm/host/group#az-vm-host-group-create) を使用し、可用性ゾーンと障害ドメインの両方を使用してホスト グループを作成します。 
 
-```bash
+```azurecli-interactive
 az vm host group create \
    --name myHostGroup \
    -g myDHResourceGroup \
@@ -62,11 +63,22 @@ az vm host group create \
    --platform-fault-domain-count 2 
 ``` 
 
+`--automatic-placement true` パラメーターを追加すると、VM とスケール セット インスタンスがホスト グループ内のホストに自動的に配置されるようになります。 詳しくは、[手動による配置と自動配置](../dedicated-hosts.md#manual-vs-automatic-placement)に関するページをご覧ください。
+
+> [!IMPORTANT]
+> 自動配置は現在、パブリック プレビュー段階にあります。
+>
+> プレビューに参加するには、[https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) でプレビューのオンボードに関するアンケートにお答えください。
+>
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 
+>
+> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
 ### <a name="other-examples"></a>その他の例
 
 [az vm host group create](/cli/azure/vm/host/group#az-vm-host-group-create) を使用して、可用性ゾーン 1 (障害ドメインなし) にホスト グループを作成することもでいます。
 
-```bash
+```azurecli-interactive
 az vm host group create \
    --name myAZHostGroup \
    -g myDHResourceGroup \
@@ -76,7 +88,7 @@ az vm host group create \
  
 以下では、[az vm host group create](/cli/azure/vm/host/group#az-vm-host-group-create) を使用し、障害ドメインのみを使用してホスト グループを作成します (可用性ゾーンがサポートされていないリージョンで使用する場合)。 
 
-```bash
+```azurecli-interactive
 az vm host group create \
    --name myFDHostGroup \
    -g myDHResourceGroup \
@@ -91,7 +103,7 @@ az vm host group create \
 
 [az vm host create](/cli/azure/vm/host#az-vm-host-create) を使用してホストを作成します。 ホスト グループの障害ドメイン数を設定した場合は、ホストの障害ドメインを指定するように求められます。  
 
-```bash
+```azurecli-interactive
 az vm host create \
    --host-group myHostGroup \
    --name myHost \
@@ -105,28 +117,57 @@ az vm host create \
 ## <a name="create-a-virtual-machine"></a>仮想マシンの作成 
 [az vm create](/cli/azure/vm#az-vm-create) を使用して、専用ホスト内に仮想マシンを作成します。 ホスト グループを作成するときに可用性ゾーンを指定した場合は、仮想マシンを作成するときに同じゾーンを使用する必要があります。
 
-```bash
+```azurecli-interactive
 az vm create \
    -n myVM \
    --image debian \
-   --generate-ssh-keys \
    --host-group myHostGroup \
-   --host myHost \
    --generate-ssh-keys \
    --size Standard_D4s_v3 \
    -g myDHResourceGroup \
    --zone 1
 ```
+
+特定のホストに VM を配置するには、`--host-group` でホスト グループを指定するのではなく、`--host` を使用します。
  
 > [!WARNING]
 > 十分なリソースがないホストに仮想マシンを作成すると、仮想マシンは FAILED 状態で作成されます。 
+
+## <a name="create-a-scale-set-preview"></a>スケール セットを作成する (プレビュー)
+
+> [!IMPORTANT]
+> 専用ホストでの Virtual Machine Scale Sets は現在、パブリック プレビュー段階にあります。
+>
+> プレビューに参加するには、[https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) でプレビューのオンボードに関するアンケートにお答えください。
+>
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 
+>
+> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+スケール セットをデプロイするときは、ホスト グループを指定します。
+
+```azurecli-interactive
+az vmss create \
+  --resource-group myResourceGroup \
+  --name myScaleSet \
+  --image UbuntuLTS \
+  --upgrade-policy-mode automatic \
+  --admin-username azureuser \
+  --host-group myHostGroup \
+  --generate-ssh-keys \
+  --size Standard_D4s_v3 \
+  -g myDHResourceGroup \
+  --zone 1
+```
+
+スケール セットをデプロイするホストを手動で選択する場合は、`--host` とそのホストの名前を追加します。
 
 
 ## <a name="check-the-status-of-the-host"></a>ホストの状態を確認する
 
 [az vm host get-instance-view](/cli/azure/vm/host#az-vm-host-get-instance-view) を使用して、ホストの正常性状態と、ホストにデプロイできる仮想マシンの数を確認できます。
 
-```bash
+```azurecli-interactive
 az vm host get-instance-view \
    -g myDHResourceGroup \
    --host-group myHostGroup \
@@ -233,7 +274,7 @@ az vm host get-instance-view \
 ## <a name="export-as-a-template"></a>テンプレートとしてのエクスポート 
 同じパラメーターを使用して追加の開発環境を作成する場合や、開発環境に合った運用環境を作成する場合は、テンプレートをエクスポートできます。 リソース マネージャーでは、環境に合ったすべてのパラメーターを定義する JSON テンプレートを使用します。 この JSON テンプレートを参照することで全体の環境を構築します。 JSON テンプレートを手動で構築できます。または、既存の環境をエクスポートして JSON テンプレートを作成することもできます。 [az group export](/cli/azure/group#az-group-export) を使って、リソース グループをエクスポートします。
 
-```bash
+```azurecli-interactive
 az group export --name myDHResourceGroup > myDHResourceGroup.json 
 ```
 
@@ -241,7 +282,7 @@ az group export --name myDHResourceGroup > myDHResourceGroup.json
  
 テンプレートから環境を作成するには、[az group deployment create](/cli/azure/group/deployment#az-group-deployment-create) を使います。
 
-```bash
+```azurecli-interactive
 az group deployment create \ 
     --resource-group myNewResourceGroup \ 
     --template-file myDHResourceGroup.json 
@@ -254,25 +295,25 @@ az group deployment create \
 
 ホストを削除できるのは、それを使用している仮想マシンがなくなった場合のみです。 [az vm delete](/cli/azure/vm#az-vm-delete) を使用して VM を削除します。
 
-```bash
+```azurecli-interactive
 az vm delete -n myVM -g myDHResourceGroup
 ```
 
 VM を削除した後、[az vm host delete](/cli/azure/vm/host#az-vm-host-delete) を使用してホストを削除できます。
 
-```bash
+```azurecli-interactive
 az vm host delete -g myDHResourceGroup --host-group myHostGroup --name myHost 
 ```
  
 すべてのホストを削除したら、[az vm host group delete](/cli/azure/vm/host/group#az-vm-host-group-delete) を使用してホスト グループを削除できます。  
  
-```bash
+```azurecli-interactive
 az vm host group delete -g myDHResourceGroup --host-group myHostGroup  
 ```
  
 また、1 つのコマンドで、リソース グループ全体を削除することもできます。 これにより、すべての VM、ホスト、ホスト グループを含めて、グループ内に作成されたすべてのリソースが削除されます。
  
-```bash
+```azurecli-interactive
 az group delete -n myDHResourceGroup 
 ```
 

@@ -3,12 +3,12 @@ title: Azure Arc の概要
 description: Azure Arc とは何か、そしてお客様が Azure の他のサービスや機能を使用してハイブリッド リソースの管理とガバナンスを実現するうえでどのように役立つかについて説明します。
 ms.date: 09/23/2020
 ms.topic: overview
-ms.openlocfilehash: e6dc052655bffae949399f77a26d7b76c5b0d13c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8e48378e5032768b3f56a5d99c1189e282ff37f8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335400"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714152"
 ---
 # <a name="azure-arc-overview"></a>Azure Arc の概要
 
@@ -56,7 +56,7 @@ Azure Arc コントロール プレーンの機能は、追加コストなしで
 
 * Azure Resource Graph を使用した検索とインデックス作成。
 
-* RBAC とサブスクリプションを使用したアクセスとセキュリティ。
+* Azure RBAC とサブスクリプションを使用したアクセスとセキュリティ。
 
 * テンプレートと拡張機能を使用した環境と自動化。
 

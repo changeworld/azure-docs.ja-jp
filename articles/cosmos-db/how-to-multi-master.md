@@ -1,29 +1,29 @@
 ---
-title: Azure Cosmos DB でマルチマスターを構成する方法
-description: Azure Cosmos DB で複数の SDK を使用して、お使いのアプリケーション用のマルチマスターを構成する方法について説明します。
+title: Azure Cosmos DB で複数リージョン書き込みを構成する方法
+description: Azure Cosmos DB で異なる SDK を使用して、アプリケーションに複数リージョン書き込みを構成する方法について説明します。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: mjbrown
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 68f3beb0ee1c12aa06b6cce0f9ddd480b0ce5f2f
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp
+ms.openlocfilehash: 8079fb3ab04d5f613566816735491203d7df951a
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90015247"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570657"
 ---
-# <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Azure Cosmos DB を使用するアプリケーションでマルチマスターを構成する
+# <a name="configure-multi-region-writes-in-your-applications-that-use-azure-cosmos-db"></a>Azure Cosmos DB を使用するアプリケーションで複数リージョン書き込みを構成する
 
-複数の書き込みリージョンが有効なアカウントが作成されたら、お使いのアプリケーションで DocumentClient 用の ConnectionPolicy に対して 2 つの変更を行って、Azure Cosmos DB でマルチマスター機能とマルチホーミング機能を有効にする必要があります。 ConnectionPolicy の中で、UseMultipleWriteLocations を true に設定し、アプリケーションのデプロイ先となるリージョンの名前を SetCurrentLocation に渡します。 これにより、渡された場所との地理的な近接性に基づいて PreferredLocations プロパティが設定されます。 後で新しいリージョンがアカウントに追加された場合でも、アプリケーションの更新や再デプロイを行う必要はなく、近接するリージョンが自動的に検出され、リージョンのイベントが発生した場合は自動ホーミングが実行されます。
+複数の書き込みリージョンが有効なアカウントが作成されたら、お使いのアプリケーションで DocumentClient 用の ConnectionPolicy に対して 2 つの変更を行って、Azure Cosmos DB で複数リージョン書き込み機能とマルチホーミング機能を有効にする必要があります。 ConnectionPolicy の中で、UseMultipleWriteLocations を true に設定し、アプリケーションのデプロイ先となるリージョンの名前を SetCurrentLocation に渡します。 これにより、渡された場所との地理的な近接性に基づいて PreferredLocations プロパティが設定されます。 後で新しいリージョンがアカウントに追加された場合でも、アプリケーションの更新や再デプロイを行う必要はなく、近接するリージョンが自動的に検出され、リージョンのイベントが発生した場合は自動ホーミングが実行されます。
 
 > [!Note]
-> 初期構成が単一書き込みリージョンである Cosmos アカウントを、ダウンタイムなしで複数書き込みリージョン (つまりマルチマスター) に構成できます。 詳細については、[複数書き込みリージョンの構成](how-to-manage-database-account.md#configure-multiple-write-regions)に関する記事を参照してください。
+> 初期構成が単一書き込みリージョンである Cosmos アカウントを、ダウンタイムなしで複数書き込みリージョンに構成できます。 詳細については、[複数書き込みリージョンの構成](how-to-manage-database-account.md#configure-multiple-write-regions)に関する記事を参照してください。
 
 ## <a name="net-sdk-v2"></a><a id="netv2"></a>.NET SDK v2
 
-アプリケーションでマルチマスターを有効にするには、`UseMultipleWriteLocations` を `true` に設定します。 また、`SetCurrentLocation` は、アプリケーションがデプロイされ、Azure Cosmos DB がレプリケートされているリージョンに設定します。
+アプリケーションで複数リージョン書き込みを有効にするには、`UseMultipleWriteLocations` を `true` に設定します。 また、`SetCurrentLocation` は、アプリケーションがデプロイされ、Azure Cosmos DB がレプリケートされているリージョンに設定します。
 
 ```csharp
 ConnectionPolicy policy = new ConnectionPolicy
@@ -37,7 +37,7 @@ policy.SetCurrentLocation("West US 2");
 
 ## <a name="net-sdk-v3"></a><a id="netv3"></a>.NET SDK v3
 
-アプリケーションでマルチマスターを有効にするには、`ApplicationRegion` を、アプリケーションがデプロイされ、Cosmos DB がレプリケートされているリージョンに設定します。
+アプリケーションで複数リージョン書き込みを有効にするには、`ApplicationRegion` を、アプリケーションがデプロイされ、Cosmos DB がレプリケートされているリージョンに設定します。
 
 ```csharp
 CosmosClient cosmosClient = new CosmosClient(
@@ -56,9 +56,9 @@ CosmosClientBuilder cosmosClientBuilder = new CosmosClientBuilder("<connection-s
 CosmosClient client = cosmosClientBuilder.Build();
 ```
 
-## <a name="java-v4-sdk"></a><a id="java4-multi-master"></a> Java V4 SDK
+## <a name="java-v4-sdk"></a><a id="java4-multi-region-writes"></a> Java V4 SDK
 
-アプリケーションでマルチマスターを有効にするには、クライアント ビルダーで `.multipleWriteRegionsEnabled(true)` と `.preferredRegions(preferredRegions)` を呼び出します。このとき、`preferredRegions` は 1 つの要素を含む `List` です。つまり、アプリケーションがデプロイされ、Cosmos DB がレプリケートされているリージョンです。
+アプリケーションで複数リージョン書き込みを有効にするには、クライアント ビルダーで `.multipleWriteRegionsEnabled(true)` と `.preferredRegions(preferredRegions)` を呼び出します。このとき、`preferredRegions` は 1 つの要素を含む `List` です。つまり、アプリケーションがデプロイされ、Cosmos DB がレプリケートされているリージョンです。
 
 # <a name="async"></a>[非同期](#tab/api-async)
 
@@ -74,9 +74,9 @@ CosmosClient client = cosmosClientBuilder.Build();
 
 --- 
 
-## <a name="async-java-v2-sdk"></a><a id="java2-milti-master"></a> Async Java V2 SDK
+## <a name="async-java-v2-sdk"></a><a id="java2-multi-region-writes"></a> Async Java V2 SDK
 
-Java V2 SDK では Maven [com.microsoft.azure::azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) が使用されていました。 アプリケーションでマルチマスターを有効にするには、`policy.setUsingMultipleWriteLocations(true)` を設定し、`policy.setPreferredLocations` は、アプリケーションがデプロイされ、Cosmos DB がレプリケートされているリージョンに設定します。
+Java V2 SDK では Maven [com.microsoft.azure::azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) が使用されていました。 アプリケーションで複数リージョン書き込みを有効にするには、`policy.setUsingMultipleWriteLocations(true)` と `policy.setPreferredLocations` を、アプリケーションがデプロイされ、Cosmos DB がレプリケートされているリージョンに設定します。
 
 ```java
 ConnectionPolicy policy = new ConnectionPolicy();
@@ -93,7 +93,7 @@ AsyncDocumentClient client =
 
 ## <a name="nodejs-javascript-and-typescript-sdks"></a><a id="javascript"></a>Node.js、JavaScript、および TypeScript SDK
 
-アプリケーションでマルチマスターを有効にするには、`connectionPolicy.UseMultipleWriteLocations` を `true` に設定します。 また、`connectionPolicy.PreferredLocations` は、アプリケーションがデプロイされ、Cosmos DB がレプリケートされているリージョンに設定します。
+アプリケーションで複数リージョン書き込みを有効にするには、`connectionPolicy.UseMultipleWriteLocations` を `true` に設定します。 また、`connectionPolicy.PreferredLocations` は、アプリケーションがデプロイされ、Cosmos DB がレプリケートされているリージョンに設定します。
 
 ```javascript
 const connectionPolicy: ConnectionPolicy = new ConnectionPolicy();
@@ -110,7 +110,7 @@ const client = new CosmosClient({
 
 ## <a name="python-sdk"></a><a id="python"></a>Python SDK
 
-アプリケーションでマルチマスターを有効にするには、`connection_policy.UseMultipleWriteLocations` を `true` に設定します。 また、`connection_policy.PreferredLocations` は、アプリケーションがデプロイされ、Cosmos DB がレプリケートされているリージョンに設定します。
+アプリケーションで複数リージョン書き込みを有効にするには、`connection_policy.UseMultipleWriteLocations` を `true` に設定します。 また、`connection_policy.PreferredLocations` は、アプリケーションがデプロイされ、Cosmos DB がレプリケートされているリージョンに設定します。
 
 ```python
 connection_policy = documents.ConnectionPolicy()

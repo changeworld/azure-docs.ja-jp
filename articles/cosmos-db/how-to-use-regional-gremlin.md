@@ -1,22 +1,22 @@
 ---
 title: Azure Cosmos DB Graph データベースのリージョン エンドポイント
 description: アプリケーションに最も近い Graph データベース エンドポイントに接続する方法について学習します
-author: luisbosquez
-ms.author: lbosq
+author: jasonwhowell
+ms.author: jasonh
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/09/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8f9d46c2f5cce397c2aa6ebbcd38d7fbb5786412
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5537b70f9852f5b5a17362c13e2c9b8e8e9fc43c
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997253"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570630"
 ---
 # <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Azure Cosmos DB Graph アカウントのリージョン エンドポイント
-Azure Cosmos DB Graph データベースは[グローバルに分散](distribute-data-globally.md)されているため、アプリケーションは複数の読み取りエンドポイントを使用できます。 複数の場所で書き込みアクセスが必要なアプリケーションでは、[マルチマスター](how-to-multi-master.md)機能を有効にする必要があります。
+Azure Cosmos DB Graph データベースは[グローバルに分散](distribute-data-globally.md)されているため、アプリケーションは複数の読み取りエンドポイントを使用できます。 複数の場所で書き込みアクセスが必要なアプリケーションでは、[複数リージョン書き込み](how-to-multi-master.md)機能を有効にする必要があります。
 
 複数のリージョンを選択する理由:
 1. **水平方向の読み取りのスケーラビリティ** - アプリケーションの負荷が増えたときに読み取りトラフィックを異なる Azure リージョンにルーティングすることが賢明な場合があります。

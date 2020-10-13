@@ -7,12 +7,12 @@ keywords: Azure Automation, DSC, PowerShell, State Configuration, Update Managem
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: d10570efe49203f879cdceae776af5c3bc6991c0
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 0e4be48157650ace3d7bebcc3a5689caef1ba779
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448072"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715968"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure Automation の概要
 
@@ -64,7 +64,7 @@ Azure Automation は、環境を大きな規模で容易に自動化して構成
 
 ### <a name="role-based-access-control"></a>ロールベースのアクセス制御
 
-Azure Automation では、Automation アカウントとそのリソースへのアクセスを制限するロールベースのアクセス制御 (RBAC) がサポートされています。 Automation アカウント、Runbook、ジョブに対する RBAC の構成について詳しくは、[Azure Automation におけるロールベースのアクセス制御](automation-role-based-access-control.md)に関するページを参照してください。
+Azure Automation では、Automation アカウントとそのリソースへのアクセスを制限する Azure ロールベースのアクセス制御 (Azure RBAC) がサポートされています。 Automation アカウント、Runbook、ジョブに対する Azure RBAC の構成について詳しくは、[Azure Automation におけるロールベースのアクセス制御](automation-role-based-access-control.md)に関するページを参照してください。
 
 ### <a name="source-control-integration"></a>ソース管理の統合
 
@@ -86,7 +86,7 @@ Azure Automation は、インフラストラクチャとアプリケーション
 * **変更の検出** - 構成エラーを引き起こす可能性がある変更を識別し、運用上のコンプライアンスを向上させます。
 * **監視** - 問題の原因となっているマシンの変更を特定し、修復するか管理システムにエスカレートします。
 * **保護する** - セキュリティ アラートが発生した場合にマシンを検疫します。 ゲスト要件を設定します。
-* **設定** - チーム用の RBAC を設定します。 未使用のリソースを回収します。
+* **設定** - チーム用の Azure RBAC を設定します。 未使用のリソースを回収します。
 
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
