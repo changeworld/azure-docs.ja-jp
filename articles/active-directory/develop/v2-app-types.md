@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: f8906c5fb934546ac8b1a95f817874f91f6c3b95
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: c468ecb390a3ad321f9fe0619204994dfbf3fbb4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90015808"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256758"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft ID プラットフォームのアプリケーションの種類
 
@@ -117,6 +117,9 @@ OAuth2 アクセス トークンを使用して Web API をセキュリティで
 このフローでは、ユーザーがサインインすると、アプリは Microsoft ID プラットフォーム エンドポイントから承認コードを受け取ります。 承認コードは、サインインしているユーザーに代わってバックエンド サービスを呼び出すためのアプリのアクセス許可を表します。 アプリはバックグラウンドで承認コードを OAuth 2.0 のアクセス トークンおよび更新トークンと交換します。 アプリではそのアクセス トークンを使って HTTP 要求で Web API を認証できます。また、古いアクセス トークンの有効期限が切れた場合は、更新トークンを使って新しいアクセス トークンを取得できます。
 
 ![ネイティブ アプリの認証フロー](./media/v2-app-types/convergence-scenarios-native.svg)
+
+> [!NOTE]
+> アプリケーションで既定のシステム Web ビューが使用されている場合は、「[Azure AD 認証と承認のエラー コード](reference-aadsts-error-codes.md)」の "サインインの確認" 機能とエラーコード AADSTS50199 の情報を確認してください。
 
 ## <a name="daemons-and-server-side-apps"></a>デーモンおよびサーバー側のアプリ
 

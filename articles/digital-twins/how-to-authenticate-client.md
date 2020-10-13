@@ -7,31 +7,33 @@ ms.author: baanders
 ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 88f74bcc93d640ec8d4d9014c6f25a6d0d0df680
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.custom: devx-track-js
+ms.openlocfilehash: 0438632a36fe14d35210cb5acb8d3a50d0f038b7
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89614014"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767818"
 ---
 # <a name="write-client-app-authentication-code"></a>クライアント アプリの認証コードを書き込む
 
-[Azure Digital Twins のインスタンスと認証を設定](how-to-set-up-instance-scripted.md)した後、インスタンスとのやり取りに使用するクライアント アプリケーションを作成できます。 この記事では、スターター クライアント プロジェクトを設定した後で、Azure Digital Twins のインスタンスに対して**認証を行うためのコードをそのクライアント アプリに書き込む**を示します。
+[Azure Digital Twins のインスタンスと認証を設定](how-to-set-up-instance-portal.md)した後、インスタンスとのやり取りに使用するクライアント アプリケーションを作成できます。 この記事では、スターター クライアント プロジェクトを設定した後で、Azure Digital Twins のインスタンスに対して**認証を行うためのコードをそのクライアント アプリに書き込む**を示します。
 
 この記事のサンプル コードには、2 つの方法があります。 選択した言語に応じて、適切なものを使用できます。
-* サンプル コードの最初のセクションでは、Azure Digital Twins .NET (C#) SDK を使用します。 SDK は Azure SDK for .NET に含まれており、次の場所にあります: "[ *.NET 用 Azure IoT Digital Twins クライアント ライブラリ*](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)"。
-* サンプル コードの 2 番目のセクションは、.NET SDK を使用していないユーザー向けで、代わりに AutoRest で生成された SDK を他の言語で使用するためのものです。 この方法の詳細については、"[*AutoRest を使用して Azure Digital Twins 用のカスタム SDK を作成する方法*](how-to-create-custom-sdks.md)" に関する記事を参照してください。
+* サンプル コードの最初のセクションでは、Azure Digital Twins .NET (C#) SDK を使用します。 SDK は Azure SDK for .NET に含まれており、次の場所にあります: "[ *.NET 用 Azure IoT Digital Twins クライアント ライブラリ*](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)"。 [Java](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0-beta.1/jar ) と [JavaScript](https://www.npmjs.com/package/@azure/digital-twins/v/1.0.0-preview.1) に対してもサポートされている SDK があり、同様の方法で使用できます。
+* サンプル コードの 2 番目のセクションは、提供されている SDK を使用していないユーザー向けで、代わりに AutoRest で生成された SDK を他の言語で使用するためのものです。 この方法の詳細については、"[*AutoRest を使用して Azure Digital Twins 用のカスタム SDK を作成する方法*](how-to-create-custom-sdks.md)" に関する記事を参照してください。
 
 Azure Digital Twins 用の API と SDK の詳細については、"[*Azure Digital Twins の API と SDK の使用方法*](how-to-use-apis-sdks.md)" に関する記事も参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-最初に、"[*インスタンスと認証の設定方法*](how-to-set-up-instance-scripted.md)" に関する記事のセットアップ手順を完了します。 これにより、Azure Digital Twins のインスタンスが作成され、ユーザーにアクセス許可が与えられ、クライアント アプリケーションに対するアクセス許可が設定されます。 このセットアップがすべて完了したら、クライアント アプリのコードを記述することができます。
+最初に、"[*インスタンスと認証の設定方法*](how-to-set-up-instance-portal.md)" に関する記事のセットアップ手順を完了します。 これにより、Azure Digital Twins のインスタンスが作成され、ユーザーにアクセス許可が与えられ、クライアント アプリケーションに対するアクセス許可が設定されます。 このセットアップがすべて完了したら、クライアント アプリのコードを記述することができます。
 
 先に進むには、コードを記述するクライアント アプリ プロジェクトが必要です。 クライアント アプリ プロジェクトをまだ設定していない場合は、このチュートリアルで使用する基本的なプロジェクトを、選択した言語で作成します。
 
 ## <a name="authentication-and-client-creation-net-c-sdk"></a>認証およびクライアントの作成: .NET (C#) SDK
+
+このセクションでは、提供されている .NET SDK を使用する C# の例を示します。
 
 最初に、このハウツー用の .NET SDK と認証ツールを使用するために、次のパッケージをプロジェクトに含めます。
 * `Azure.DigitalTwins.Core`
@@ -45,13 +47,13 @@ Azure Digital Twins 用の API と SDK の詳細については、"[*Azure Digit
 using Azure.Identity;
 using Azure.DigitalTwins.Core;
 ```
-.NET SDK を使用して認証するには、[Azure.Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) ライブラリに定義されている資格情報の取得方法のいずれかを使用します。 次に、一般的に使用される 2 つの方法を示します (同じアプリケーションで一緒に使用される場合もあります)。
+.NET SDK を使用して認証するには、[Azure.Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) ライブラリに定義されている資格情報の取得方法のいずれかを使用します。 次に、一般的に使用される 2 つの方法を示します (同じアプリケーションで一緒に使用される場合もあります)。
 
-* [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) は、対話型アプリケーションを対象とし、認証された SDK クライアントを作成するために使用できます
-* [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet) は、マネージド ID (MSI) を必要とする場合に適しており、Azure Functions を操作する場合に適しています
+* [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) は、対話型アプリケーションを対象とし、認証された SDK クライアントを作成するために使用できます
+* [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet&preserve-view=true) は、マネージド ID (MSI) を必要とする場合に適しており、Azure Functions を操作する場合に適しています
 
 ### <a name="interactivebrowsercredential-method"></a>InteractiveBrowserCredential メソッド
-[InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) メソッドは、対話型アプリケーションを対象としており、認証用の Web ブラウザーが開きます。
+[InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) メソッドは、対話型アプリケーションを対象としており、認証用の Web ブラウザーが開きます。
 
 対話型ブラウザーの資格情報を使用して、認証された SDK クライアントを作成するには、このコードを追加します。
 
@@ -81,7 +83,7 @@ try
 > 前述のように、クライアント ID、テナント ID およびインスタンス URL をコードに直接配置することはできますが、代わりに、コードでこれらの値を構成ファイルまたは環境変数から取得することをお勧めします。
 
 ### <a name="managedidentitycredential-method"></a>ManagedIdentityCredential メソッド
- [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet) メソッドは、Azure Functions を使用する場合など、[マネージド ID (MSI)](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) が必要な場合に適しています。
+ [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet&preserve-view=true) メソッドは、Azure Functions を使用する場合など、[マネージド ID (MSI)](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) が必要な場合に適しています。
 Azure 関数で、次のようにマネージド ID の資格情報を使用できます。
 
 ```csharp
@@ -100,7 +102,7 @@ client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, opts);
 
 ## <a name="authentication-with-an-autorest-generated-sdk"></a>AutoRest で生成された SDK での認証
 
-.NET を使用しない場合は、任意の言語で SDK ライブラリを構築することを選択できます。"[*AutoRest を使用して Azure Digital Twins 用のカスタム SDK を作成する方法*](how-to-create-custom-sdks.md)" に関する記事を参照してください。
+提供されている SDK (.NET、Java、JavaScript) のいずれも使用しない場合は、任意の言語で SDK ライブラリを構築することを選択できます。"[*AutoRest を使用して Azure Digital Twins 用のカスタム SDK を作成する方法*](how-to-create-custom-sdks.md)" に関する記事を参照してください。
 
 このセクションでは、その場合に認証する方法について説明します。
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: c3e4b1c97c5fcc86a863313c2d6f54d93f26390e
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 3b9edab6e908b4506a92c78aa8f3f53277b9c17b
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055043"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360873"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>プライマリ リージョンに対してフェールオーバーされた Azure VM を再保護する
 
@@ -31,7 +31,7 @@ ms.locfileid: "89055043"
 
 1. **[コンテナー]**  >  **[レプリケートされたアイテム]** で、フェールオーバーされた VM を右クリックし、 **[再保護]** を選択します。 再保護の方向には、セカンダリからプライマリへの方向が示されています。
 
-   ![再保護](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
+   ![コンテキスト メニューで [再保護] が選択された仮想マシンを示すスクリーンショット。](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
 
 1. リソース グループ、ネットワーク、ストレージ、および可用性セットを確認します。 次に、 **[OK]** をクリックします 新規としてマークされているリソースがある場合は、再保護プロセスの一環として作成されます。
 1. 再保護のジョブにより、最新のデータでターゲット サイトがシード処理されます。 ジョブが完了したら、差分レプリケーションが行われます。 その後、プライマリ サイトへのフェールバックを行うことができます。 カスタマイズ オプションを使用して、再保護中に使用するストレージ アカウントまたはネットワークを選択できます。

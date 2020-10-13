@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/12/2020
+ms.date: 09/17/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: c9ce265707743d98f6c93d3facca33e16d1b75ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d9f7778d1dda159f3ab0c4548912370c85f94eff
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513496"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441869"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Azure Import/Export サービスを使用して Azure Blob Storage からデータをエクスポートする
 
@@ -32,7 +32,7 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
   - エクスポート ジョブの追跡番号を生成します。
   - すべてのジョブに個別の追跡番号が必要です。 同じ追跡番号を持つ複数のジョブはサポートされていません。
   - 運送業者アカウントがいない場合、次に移動します。
-    - [FedEX アカウントを作成するか](https://www.fedex.com/en-us/create-account.html)、または
+    - [FedEx アカウントを作成するか](https://www.fedex.com/en-us/create-account.html)、または
     - [DHL アカウントを作成します](http://www.dhl-usa.com/en/express/shipping/open_account.html)。
 
 ## <a name="step-1-create-an-export-job"></a>手順 1:エクスポート ジョブの作成
@@ -119,7 +119,7 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
 1. エクスポートされたデータが保存されたドライブを受け取ったら、BitLocker キーを取得してドライブのロックを解除する必要があります。 Azure portal でエクスポート ジョブに移動します。 **[インポート/エクスポート]** タブをクリックします。
 2. リストからエクスポート ジョブを選択してクリックします。 **[暗号化]** に移動し、キーをコピーします。
 
-   ![エクスポート ジョブの BitLocker キーの表示](./media/storage-import-export-service/export-job-bitlocker-keys-02.png)
+   ![エクスポート ジョブの BitLocker キーの表示](./media/storage-import-export-data-from-blobs/export-from-blob-7.png)
 
 3. BitLocker キーを使用してディスクのロックを解除します。
 
@@ -127,15 +127,13 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
 
 ## <a name="step-5-unlock-the-disks"></a>手順 5:ディスクのロックを解除する
 
-WAImportExport ツールのバージョン 1.4.0.300 を使用している場合は、次のコマンドを使用してドライブのロックを解除します。
+ドライブのロックを解除するには、次のコマンドを使用します。
 
-   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from journal (*.jrn*) file> /driveLetter:<Drive letter>`  
+   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from Encryption blade in Azure portal> /driveLetter:<Drive letter>`  
 
 サンプル入力の例を次に示します。
 
    `WAImportExport.exe Unlock /bk:CAAcwBoAG8AdQBsAGQAIABiAGUAIABoAGkAZABkAGUAbgA= /driveLetter:e`
-
-以前のバージョンのツールを使用している場合は、BitLocker ダイアログボックスを使用してドライブのロックを解除します。
 
 この時点で、ジョブを削除するか、そのままにしておくことができます。 ジョブは、90 日後に自動的に削除されます。
 

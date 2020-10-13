@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 897c0f3c51d6d9bea1f90a66ccf50aa51e22f118
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: c46d977b6ce4eaa62aefc6874ce2b855a4711670
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088308"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317514"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Azure AD 接続性のトラブルシューティング
 この記事では、Azure AD Connect と Azure AD の間の接続のしくみと、接続に関する問題のトラブルシューティング方法について説明します。 このような問題は、プロキシ サーバーを備えた環境において発生する可能性が最も高くなります。
@@ -85,7 +85,7 @@ Azure AD Connect サーバーがプロキシおよびインターネットと実
 
 PowerShell は、machine.config 内の構成を使用してプロキシに接続します。 winhttp や netsh 内の設定値がこれらのコマンドレットに影響することはありません。
 
-プロキシが正しく構成されていると、成功を示す次のようなステータスが表示されます。![proxy200](./media/tshoot-connect-connectivity/invokewebrequest200.png)
+プロキシが正しく構成されていれば、成功状態になるはずです。![プロキシが正しく構成されている場合の成功状態を示すスクリーンショット。](./media/tshoot-connect-connectivity/invokewebrequest200.png)
 
 "**リモート サーバーに接続できません**" というメッセージが表示された場合は、PowerShell がプロキシを使用せずに直接呼び出しを試みているか、DNS が正しく構成されていません。 **machine.config** ファイルが正しく構成されていることを確認してください。
 ![unabletoconnect](./media/tshoot-connect-connectivity/invokewebrequestunable.png)

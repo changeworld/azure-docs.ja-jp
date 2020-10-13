@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 5b4e74d5db2d1454360370c05d75cdf826875143
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d56f9890396d0381d24676964dabc57e2020ec28
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535936"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317431"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>チュートリアル:DocuSign を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -65,7 +65,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 1. **[プロビジョニング モード]** を **[自動]** に設定します。 
 
-    ![プロビジョニング](./media/docusign-provisioning-tutorial/provisioning.png)
+    ![Azure portal の DocuSign の [プロビジョニング] タブのスクリーンショット。 [プロビジョニング モード] が [自動] に設定され、[管理ユーザー名]、[パスワード]、および [テスト接続] が強調表示されています。](./media/docusign-provisioning-tutorial/provisioning.png)
 
 1. **[管理者資格情報]** セクションに次の構成設定を指定します。
    

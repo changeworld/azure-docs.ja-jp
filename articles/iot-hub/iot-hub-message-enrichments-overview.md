@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 08eb5fd4d28421105988d64b99afb441a0b824f4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 792486a78dfed606ce8317d9bc037221ae33d508
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290304"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767201"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>device-to-cloud IoT Hub のメッセージ エンリッチメント
 
@@ -86,7 +86,7 @@ ms.locfileid: "87290304"
 
 * エンリッチメントを含むメッセージ サイズの合計が 256 KB を超えることは許容されません。 メッセージ サイズが 256 KB を超えた場合、IoT ハブでメッセージがドロップされます。 メッセージがドロップされたときのエラーは、[IoT Hub メトリック](iot-hub-metrics.md)を使用して識別し、デバッグすることができます。 たとえば、d2c.telemetry.egress.invalid を監視することが考えられます。
 
-* メッセージ エンリッチメントは、デジタル ツイン変更イベント ([IoT プラグ アンド プレイ パブリック プレビューの一部](../iot-pnp/overview-iot-plug-and-play.md)) には適用されません。
+* メッセージ エンリッチメントは、デジタル ツインの変更イベントには適用されません。
 
 ## <a name="pricing"></a>価格
 
