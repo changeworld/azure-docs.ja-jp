@@ -3,18 +3,18 @@ title: Azure Automation 更新プログラムの評価を表示する
 description: この記事では、Update Management のデプロイに関して、更新プログラムの評価を表示する方法について説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 09/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 92861304a946e357b2b265cd825eceb8e22f7d2d
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 2e32fc7c1872bf18b7f1c995f281a9b09ec45dc8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449644"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264477"
 ---
-# <a name="view-update-assessments"></a>更新の評価を表示する
+# <a name="view-update-assessments-in-update-management"></a>Update Management で更新プログラムの評価を表示する
 
-Update Management には、ご利用のマシン、不足している更新プログラム、更新プログラムのデプロイ、およびスケジュールされている更新プログラムのデプロイに関する情報が表示されます。
+Update Management には、ご利用のマシン、不足している更新プログラム、更新プログラムのデプロイ、およびスケジュールされている更新プログラムのデプロイに関する情報が表示されます。 選択された Arc 対応サーバーから、または構成されているすべてのマシンとサーバーにおける Automation アカウントから、選択した Azure 仮想マシンにスコープを指定して評価情報を表示できます。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -22,27 +22,33 @@ Update Management には、ご利用のマシン、不足している更新プ�
 
 ## <a name="view-update-assessment"></a>更新の評価を確認する
 
-Update Management には、ご利用のマシン、不足している更新プログラム、更新プログラムのデプロイ、およびスケジュールされている更新プログラムのデプロイに関する情報が表示されます。
+Azure VM からの更新プログラムの評価を表示するには、 **[仮想マシン]** に移動し、一覧からお使いの仮想マシンを選択します。 左側のメニューで、 **[ゲスト + ホストの更新プログラム]** を選択し、 **[ゲスト + ホストの更新プログラム]** ページの **[Go to Update Management]\(Update Management に移動\)** を選択します。
+
+Update Management には、ご利用のマシン、不足している更新プログラム、更新プログラムのデプロイ、スケジュールされている更新プログラムのデプロイに関する情報が表示されます。
+
+[ ![Azure VM の Update Management 評価ビュー](./media/update-mgmt-view-update-assessments/update-assessment-azure-vm.png)](./media/update-mgmt-view-update-assessments/update-assessment-azure-vm-expanded.png#lightbox)
+
+Arc 対応サーバーからの更新プログラムの評価を表示するには、 **[サーバー - Azure Arc]** に移動し、一覧からお使いのサーバーを選択します。 左側のメニューで、 **[ゲスト + ホストの更新プログラム]** を選択します。 **[ゲスト + ホストの更新プログラム]** ページで、 **[Go to Update Management]\(Update Management に移動\)** を選択します。
+
+Update Management には、ご利用の Arc 対応マシン、不足している更新プログラム、更新プログラムのデプロイ、スケジュールされている更新プログラムのデプロイに関する情報が表示されます。
+
+[ ![Arc 対応サーバーについての Update Management 評価ビュー](./media/update-mgmt-view-update-assessments/update-assessment-arc-server.png)](./media/update-mgmt-view-update-assessments/update-assessment-arc-server-expanded.png#lightbox)
+
+Automation アカウントからの Arc 対応サーバーを含め、すべてのマシンの更新プログラムの評価を表示するには、 **[Automation アカウント]** に移動し、Update Management が有効になっている Automation アカウントを一覧から選択します。 Automation アカウントで、左側のメニューから **[更新の管理]** を選択します。
+
+ご使用の環境の更新プログラムが、 **[更新の管理]** ページに一覧表示されます。 更新プログラムが不足していると識別された場合は、 **[不足している更新プログラム]** タブに、それらの一覧が表示されます。
 
 [![Update Management の既定のビュー](./media/update-mgmt-overview/update-management-view.png)](./media/update-mgmt-overview/update-management-view-expanded.png#lightbox)
 
-更新プログラムの評価を表示するには、次の手順を実行します。
+**[対応]** 列では、マシンが評価された最終時刻を確認できます。 **[エージェントの更新の準備]** 列では、更新エージェントの正常性を確認できます。 問題がある場合は、問題を解決するために役立てることができるトラブルシューティング ドキュメントへのリンクを選択してください。
 
-1. Azure portal で **[Automation アカウント]** に移動し、一覧から Update Management が有効になっている Automation アカウントを選択します。
+**[情報リンク]** で、更新プログラムのリンクを選択して、更新プログラムに関する重要な情報を提供するサポート記事を開きます。
 
-2. Automation アカウントで、左側のペインから **[更新の管理]** を選択します。
+[ ![更新ステータスの表示](./media/update-mgmt-view-update-assessments/missing-updates.png)](./media/update-mgmt-view-update-assessments/missing-updates-expanded.png#lightbox)
 
-3. ご使用の環境の更新プログラムが、 **[更新の管理]** ページに一覧表示されます。 更新プログラムが不足していると識別された場合は、 **[不足している更新プログラム]** タブに、それらの一覧が表示されます。
+更新プログラムのほかの場所をクリックすると、[ログ検索] ペインが開きます。 その更新プログラムについて、ログ検索のクエリが事前に定義されています。 詳細情報を表示するには、このクエリを変更するか、独自のクエリを作成します。
 
-   **[対応]** 列では、マシンが評価された最終時刻を確認できます。 **[エージェントの更新の準備]** 列では、更新エージェントの正常性を確認できます。 問題がある場合は、問題を解決するために役立てることができるトラブルシューティング ドキュメントへのリンクを選択してください。
-
-4. **[情報リンク]** で、更新プログラムのリンクを選択して、更新プログラムに関する重要な情報を提供するサポート記事を開きます。
-
-     [ ![更新ステータスの表示](./media/update-mgmt-view-update-assessments/missing-updates.png)](./media/update-mgmt-view-update-assessments/missing-updates-expanded.png#lightbox)
-
-5. 更新プログラムのほかの場所をクリックすると、[ログ検索] ペインが開きます。 その更新プログラムについて、ログ検索のクエリが事前に定義されています。 詳細情報を表示するには、このクエリを変更するか、独自のクエリを作成します。
-
-    [ ![ログのクエリ結果の表示](./media/update-mgmt-view-update-assessments/logsearch-results.png)](./media/update-mgmt-view-update-assessments/logsearch-results-expanded.png#lightbox)
+[ ![ログのクエリ結果の表示](./media/update-mgmt-view-update-assessments/logsearch-results.png)](./media/update-mgmt-view-update-assessments/logsearch-results-expanded.png#lightbox)
 
 ## <a name="view-missing-updates"></a>不足している更新プログラムを表示する
 

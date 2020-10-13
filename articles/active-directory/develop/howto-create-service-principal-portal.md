@@ -12,16 +12,16 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 3b060d7caff425414cc7f4e8bbea5d9a29572094
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d14e31aa4fbeb2d29137c554f14333e1617c484a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178945"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265903"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する
 
-この記事では、ロール ベースのアクセス制御で使用できる、新しい Azure Active Directory (Azure AD) のアプリケーションとサービス プリンシパルを作成する方法について説明します。 リソースへのアクセスや変更を行う必要があるアプリケーション、ホステッド サービス、または自動化されたツールがある場合は、アプリの ID を作成できます。 この ID は、サービス プリンシパルと呼ばれます。 リソースへのアクセスはサービス プリンシパルに割り当てられているロールによって制限されるため、どのリソースに、どのレベルでアクセスできるかを制御することができます。 セキュリティ上の理由から、自動化ツールにはユーザー ID でのログインを許可するのではなく、常にサービス プリンシパルを使用することを推奨します。 
+この記事では、ロール ベースのアクセス制御で使用できる、新しい Azure Active Directory (Azure AD) のアプリケーションとサービス プリンシパルを作成する方法について説明します。 リソースへのアクセスや変更を行う必要があるアプリケーション、ホステッド サービス、または自動化されたツールがある場合は、アプリの ID を作成できます。 この ID は、サービス プリンシパルと呼ばれます。 リソースへのアクセスはサービス プリンシパルに割り当てられているロールによって制限されるため、どのリソースに、どのレベルでアクセスできるかを制御することができます。 セキュリティ上の理由から、自動化ツールにはユーザー ID でのログインを許可するのではなく、常にサービス プリンシパルを使用することを推奨します。
 
 この記事では、Azure portal でサービス プリンシパルを作成するためのポータルの使用方法を示します。 ここでは、シングル テナント アプリケーション (1 つの組織内でのみ実行することを目的としたアプリケーション) に焦点を絞って説明します。 一般に、組織内で実行される基幹業務アプリケーションには、シングル テナント アプリケーションが使用されます。  [Azure PowerShell を使用して、サービス プリンシパルを作成する](howto-authenticate-service-principal-powershell.md)こともできます。
 
@@ -129,12 +129,13 @@ Azure AD アプリケーションとサービス プリンシパルが作成さ�
 
    ![アプリケーション (クライアント) ID をコピーする](./media/howto-create-service-principal-portal/copy-app-id.png)
 
-## <a name="upload-a-certificate-or-create-a-secret-for-signing-in"></a>証明書をアップロードするか、サインイン用のシークレットを作成する
-サービス プリンシパルで使用できる認証には、パスワードベースの認証 (アプリケーション シークレット) と証明書ベースの認証の 2 種類があります。  証明書を使用するようお勧めしますが、新しいアプリケーション シークレットを作成することもできます。
+## <a name="authentication-two-options"></a>認証: 2 つのオプション
 
-### <a name="upload-a-certificate"></a>証明書のアップロード
+サービス プリンシパルで使用できる認証には、パスワードベースの認証 (アプリケーション シークレット) と証明書ベースの認証の 2 種類があります。 "*証明書を使用することをお勧めします*" が、アプリケーション シークレットを作成することもできます。
 
-既存の証明書がある場合は、それを使用できます。  必要に応じて、*テスト目的でのみ*自己署名証明書を作成できます。 自己署名証明書を作成するには、PowerShell を開き、次のパラメーターを使用して [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) を実行し、コンピューター上のユーザー証明書ストアに証明書を作成します。 
+### <a name="option-1-upload-a-certificate"></a>オプション 1: 証明書のアップロード
+
+既存の証明書がある場合は、それを使用できます。  必要に応じて、*テスト目的でのみ*自己署名証明書を作成できます。 自己署名証明書を作成するには、PowerShell を開き、次のパラメーターを使用して [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) を実行し、コンピューター上のユーザー証明書ストアに証明書を作成します。
 
 ```powershell
 $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature
@@ -163,7 +164,7 @@ Windows コントロール パネルからアクセスできる [[Manage User Ce
 
 アプリケーション登録ポータルで証明書をアプリケーションに登録したら、クライアント アプリケーションで証明書を使用できるようにする必要があります。
 
-### <a name="create-a-new-application-secret"></a>新しいアプリケーション シークレットを作成する
+### <a name="option-2-create-a-new-application-secret"></a>オプション 2:新しいアプリケーション シークレットを作成する
 
 証明書を使用しないように選択した場合は、新しいアプリケーション シークレットを作成できます。
 
@@ -178,14 +179,15 @@ Windows コントロール パネルからアクセスできる [[Manage User Ce
    ![後からこれを取得することはできないので、このシークレット値をコピーする](./media/howto-create-service-principal-portal/copy-secret.png)
 
 ## <a name="configure-access-policies-on-resources"></a>リソースに対するアクセス ポリシーを構成する
-アプリケーションからアクセスする必要があるリソースに対する追加のアクセス許可の構成が必要になる場合があることに注意してください。 たとえば、キー、シークレット、または証明書へのアクセス権をアプリケーションに付与するには、[キー コンテナーのアクセス ポリシーも更新する](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies)必要があります。  
+アプリケーションからアクセスする必要があるリソースに対する追加のアクセス許可の構成が必要になる場合があることに注意してください。 たとえば、キー、シークレット、または証明書へのアクセス権をアプリケーションに付与するには、[キー コンテナーのアクセス ポリシーも更新する](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies)必要があります。
 
-1. **Azure portal** で、キー コンテナーに移動し、[[アクセス ポリシー]](https://portal.azure.com) を選択します。  
+1. **Azure portal** で、キー コンテナーに移動し、[[アクセス ポリシー]](https://portal.azure.com) を選択します。
 1. **[アクセス ポリシーの追加]** を選択し、アプリケーションに付与するキー、シークレット、証明書のアクセス許可を選択します。  以前に作成したサービス プリンシパルを選択します。
 1. **[追加]** を選択してアクセス ポリシーを追加し、 **[保存]** を選択して変更をコミットします。
     ![アクセス ポリシーの追加](./media/howto-create-service-principal-portal/add-access-policy.png)
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure PowerShell を使用してサービス プリンシパルを作成する](howto-authenticate-service-principal-powershell.md)方法について学習します。
-* セキュリティ ポリシーを指定する方法については、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) に関するページを参照してください。  
+* セキュリティ ポリシーを指定する方法については、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) に関するページを参照してください。
 * ユーザーに対して許可または拒否される場合がある使用可能なアクションの一覧については、「[Azure Resource Manager のリソース プロバイダー操作](../../role-based-access-control/resource-provider-operations.md)」を参照してください。
+* **Microsoft Graph** を使用したアプリ登録の操作の詳細については、[アプリケーション](/graph/api/resources/application) API リファレンスを参照してください。

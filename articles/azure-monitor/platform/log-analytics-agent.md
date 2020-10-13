@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 8a086830398555d962bb13d1d9b0fea3554f7924
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 9f0a7b6f68c5a3adeb320fd18bec2f195a833dbf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032522"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91310001"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics エージェントの概要
 Azure Log Analytics エージェントによって、任意のクラウドの Windows および Linux 仮想マシン、オンプレミスのマシン、[System Center Operations Manager](/system-center/scom/) で監視しているマシンからテレメトリを収集し、Azure Monitor の Log Analytics ワークスペースに収集したデータを送信できます。 Log Analytics エージェントはインサイトや [Azure Monitor for VMs](../insights/vminsights-enable-overview.md)、[Azure Security Center](../../security-center/index.yml)、[Azure Automation](../../automation/automation-intro.md) といった Azure Monitor のその他のサービスもサポートします。 この記事では、エージェント、システムとネットワークの要件、およびデプロイ方法の詳細な概要について説明します。
@@ -59,7 +59,7 @@ Linux および Windows 用のエージェントは、Azure Monitor に接続す
 
 * Windows エージェントでは、System Center Operations Manager 管理グループに接続されている場合でも、最大 4 つのワークスペースに接続できます。
 * Linux エージェントではマルチホームがサポートされず、1 つのワークスペースまたは管理グループにのみ接続できます。
-  
+
 
 ## <a name="security-limitations"></a>セキュリティの制限事項
 
@@ -69,6 +69,8 @@ Linux および Windows 用のエージェントは、Azure Monitor に接続す
 ## <a name="installation-options"></a>インストール オプション
 
 Log Analytics エージェントをインストールしてマシンをAzure Monitor に接続するには、要件に応じて複数の方法があります。 以下のセクションでは、さまざまな種類の仮想マシンで使用できる方法を示します。
+> [!NOTE]
+> Log Analytics エージェントが既に構成されているマシンのクローンはサポートされていません。 エージェントが既にワークスペースに関連付けられている場合、これは "ゴールデンイメージ" に対しては機能しません。
 
 ### <a name="azure-virtual-machine"></a>Azure 仮想マシン
 

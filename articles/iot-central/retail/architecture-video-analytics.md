@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 087c5e5716a4c8c640faebd7470905fde85d0136
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 916d491c45a2979c59580328a721c11bd79d49c0
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88038150"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372206"
 ---
 # <a name="video-analytics---object-and-motion-detection-application-architecture"></a>ビデオ分析 - オブジェクトとモーション検出アプリケーションのアーキテクチャ
 
 **ビデオ分析 - オブジェクトとモーション検出**アプリケーション テンプレートにより、ライブ ビデオ分析機能を含む IoT ソリューションを構築できます。
 
-:::image type="content" source="media/architecture-video-analytics/architecture.png" alt-text="アーキテクチャ":::
+:::image type="content" source="media/architecture-video-analytics/architecture.png" alt-text="ビデオ分析オブジェクトとモーション検出コンポーネントの概要の図。":::
 
 ビデオ分析ソリューションの主要なコンポーネントは次のとおりです。
 
