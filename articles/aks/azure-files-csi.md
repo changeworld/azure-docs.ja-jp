@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 330c1b74a46b0f18af1068797d080e903f516ea6
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: d845e7589b57bf76d3da48c48fa0a520b09e1f94
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089872"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299308"
 ---
 # <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS) で Azure Files の Container Storage Interface (CSI) ドライバーを使用する (プレビュー)
 
@@ -194,6 +194,88 @@ Filesystem                                                                      
 //f149b5a219bd34caeb07de9.file.core.windows.net/pvc-5e5d9980-da38-492b-8581-17e3cad01770  200G  128K  200G   1% /mnt/azurefile
 ```
 
+
+## <a name="nfs-file-shares"></a>NFS ファイル共有
+[Azure Files では、NFS v4.1 プロトコルがサポートされるようになりました](../storage/files/storage-files-how-to-create-nfs-shares.md)。 Azure Files での NFS 4.1 のサポートによって、サービスとしてのフル マネージド NFS ファイル システムがお客様に提供されます。これは、可用性が高く耐久性に優れた、分散型で回復力のあるストレージ プラットフォーム上に構築されています。
+
+ このオプションは、インプレース データ更新を使用するランダム アクセス ワークロードに合わせて最適化されており、完全な POSIX ファイル システムのサポートを提供します。 このセクションでは、AKS クラスター上で NFS 共有を Azure File CSI ドライバーと共に使用する方法について説明します。
+
+プレビュー段階での[制限事項](../storage/files/storage-files-compare-protocols.md#limitations)と[利用可能なリージョン](../storage/files/storage-files-compare-protocols.md#regional-availability)を必ず確認してください。
+
+### <a name="register-the-allownfsfileshares-preview-feature"></a>`AllowNfsFileShares` プレビュー機能を登録する
+
+NFS 4.1 を活用するファイル共有を作成するには、お使いのサブスクリプションで `AllowNfsFileShares` 機能フラグを有効にする必要があります。
+
+`AllowNfsFileShares` 機能フラグは、次の例のとおり、[az feature register][az-feature-register] コマンドを使用して登録します。
+
+```azurecli-interactive
+az feature register --namespace "Microsoft.Storage" --name "AllowNfsFileShares"
+```
+
+状態が *[登録済み]* と表示されるまでに数分かかります。 登録の状態は、[az feature list][az-feature-list] コマンドで確認できます。
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.Storage/AllowNfsFileShares')].{Name:name,State:properties.state}"
+```
+
+準備ができたら、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.Storage* リソース プロバイダーの登録を更新します。
+
+```azurecli-interactive
+az provider register --namespace Microsoft.Storage
+```
+
+### <a name="create-a-storage-account-for-the-nfs-file-share"></a>NFS ファイル共有のストレージ アカウントを作成する
+
+NFS 共有をサポートするために、次の構成で [`Premium_LRS` Azure ストレージ アカウントを作成](../storage/files/storage-how-to-create-premium-fileshare.md)します。
+- アカウントの種類: FileStorage
+- 安全な転送が必須 (HTTPS トラフィックのみを有効にする): false
+- [ファイアウォールと仮想ネットワーク] でお使いのエージェント ノードの仮想ネットワークを選択する
+
+### <a name="create-nfs-file-share-storage-class"></a>NFS ファイル共有のストレージ クラスを作成する
+
+以下のマニフェストのそれぞれのプレースホルダーを編集して、`nfs-sc.yaml` ファイルを保存します。
+
+```yml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: azurefile-csi
+provisioner: file.csi.azure.com
+parameters:
+  resourceGroup: EXISTING_RESOURCE_GROUP_NAME  # optional, required only when storage account is not in the same resource group as your agent nodes
+  storageAccount: EXISTING_STORAGE_ACCOUNT_NAME
+  protocol: nfs
+```
+
+ファイルを編集して保存した後、[kubectl apply][kubectl-apply] コマンドを使用してストレージ クラスを作成します。
+
+```console
+$ kubectl apply -f nfs-sc.yaml
+
+storageclass.storage.k8s.io/azurefile-csi created
+```
+
+### <a name="create-a-deployment-with-an-nfs-backed-file-share"></a>NFS でサポートされるファイル共有を使用してデプロイを作成する
+[kubectl apply][kubectl-apply] コマンドを使用して次のコマンドをデプロイすることにより、タイムスタンプをファイル `data.txt` に保存する[ステートフル セット](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml)の例をデプロイできます。
+
+ ```console
+$ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/windows/statefulset.yaml
+
+statefulset.apps/statefulset-azurefile created
+```
+
+次のコマンドを実行して、ボリュームの内容を検証します。
+
+```console
+$ kubectl exec -it statefulset-azurefile-0 -- df -h
+
+Filesystem      Size  Used Avail Use% Mounted on
+...
+/dev/sda1                                                                                 29G   11G   19G  37% /etc/hosts
+accountname.file.core.windows.net:/accountname/pvc-fa72ec43-ae64-42e4-a8a2-556606f5da38  100G     0  100G   0% /mnt/azurefile
+...
+```
+
 ## <a name="windows-containers"></a>Windows コンテナー
 
 Azure Files の CSI ドライバーは、Windows のノードとコンテナーもサポートしています。 Windows コンテナーを使用する場合は、[Windows コンテナーのチュートリアル](windows-container-cli.md)に従って、Windows ノード プールを追加してください。
@@ -203,7 +285,7 @@ Windows ノード プールを追加したら、`azurefile-csi` などの組み�
  ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/windows/statefulset.yaml
 
-statefulset.apps/busybox-azuredisk created
+statefulset.apps/busybox-azurefile created
 ```
 
 次のコマンドを実行して、ボリュームの内容を検証します。
@@ -248,10 +330,10 @@ $ kubectl exec -it busybox-azurefile-0 -- cat c:\mnt\azurefile\data.txt # on Win
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
-[az-extension-add]: /cli/azure/extension?view=azure-cli-latest#az-extension-add
-[az-extension-update]: /cli/azure/extension?view=azure-cli-latest#az-extension-update
-[az-feature-register]: /cli/azure/feature?view=azure-cli-latest#az-feature-register
-[az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list
-[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register
+[az-extension-add]: /cli/azure/extension?view=azure-cli-latest#az-extension-add&preserve-view=true
+[az-extension-update]: /cli/azure/extension?view=azure-cli-latest#az-extension-update&preserve-view=true
+[az-feature-register]: /cli/azure/feature?view=azure-cli-latest#az-feature-register&preserve-view=true
+[az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true
+[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true
 [node-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
 [storage-skus]: ../storage/common/storage-redundancy.md

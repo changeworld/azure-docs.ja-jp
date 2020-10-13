@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
 ms.author: rohink
-ms.openlocfilehash: d6faf5bd42c90ea1510d454a2ab7939f121b3d0d
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 9d183f2da7b916b1547fa1f81aa877b1b5488b41
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925007"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308437"
 ---
 # <a name="azure-private-dns-faq"></a>Azure プライベート DNS に関する FAQ
 
@@ -43,6 +43,14 @@ Azure での他の内部 DNS オプションの詳細については、「[VM �
 ## <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-you-delete-the-virtual-machine"></a>プライベート ゾーンに自動的に登録された仮想マシンの DNS レコードは、仮想マシンを削除すると自動的に削除されますか。
 
 はい。 リンクされた仮想ネットワークで自動登録が有効な場合、そのネットワーク内にある仮想マシンを削除すると、登録されているレコードは自動的に削除されます。
+
+## <a name="ive-reconfigured-the-os-in-my-virtual-machine-to-have-a-new-host-name-or-static-ip-address-why-dont-i-see-that-change-reflected-in-the-private-zone"></a>新しいホスト名または静的 IP アドレスを設定するように、仮想マシンの OS を再構成しました。 プライベート ゾーンにその変更が反映されていないのはなぜですか?
+
+プライベート ゾーンのレコードは、Azure DHCP サービスによって設定され、クライアント登録メッセージは無視されます。 静的 IP アドレスを構成して VM での DHCP クライアントのサポートを無効にしている場合、VM でのホスト名または静的 IP に対する変更はゾーンに反映されません。
+
+## <a name="i-have-configured-a-preferred-dns-suffix-in-my-windows-virtual-machine-why-are-my-records-still-registered-in-the-zone-linked-to-the-virtual-network"></a>Windows 仮想マシンで優先 DNS サフィックスを構成しました。 仮想ネットワークにリンクされているゾーンに自分のレコードがまだ登録されているのはなぜですか?
+
+Azure DHCP サービスでは、プライベート DNS ゾーンを登録する際、DNS サフィックスは無視されます。 たとえば、プライマリ DNS サフィックスとして `contoso.com` 用に仮想マシンが構成されていても、仮想ネットワークが `fabrikam.com` プライベート DNS ゾーンにリンクされている場合、仮想マシンの登録は `fabrikam.com` プライベート DNS ゾーンに表示されます。
 
 ## <a name="can-an-automatically-registered-virtual-machine-record-in-a-private-zone-from-a-linked-virtual-network-be-deleted-manually"></a>リンクされた仮想ネットワークからプライベート ゾーンに自動的に登録された仮想マシンのレコードは手動で削除できますか。
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: f3a41fbd3cbd5b7c8eccfbea8833fdfedee97510
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08c105bd8ae9b5e0667ef5279e6c9484c631bd48
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512399"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399042"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure Import/Export サービス: よく寄せられる質問
 
@@ -35,9 +35,9 @@ ms.locfileid: "85512399"
 
 はい。 Azure Import/Export サービスは、クラウド ソリューション プロバイダー (CSP) サブスクリプションをサポートします。
 
-### <a name="can-i-use-the-azure-importexport-service-to-copy-pst-mailboxes-and-sharepoint-data-to-o365"></a>Azure Import/Export サービスを使用して、PST メールボックスと SharePoint データを O365 にコピーすることはできますか?
+### <a name="can-i-use-the-azure-importexport-service-to-copy-pst-mailboxes-and-sharepoint-data-to-microsoft-365"></a>Azure Import/Export サービスを使用して、PST メールボックスと SharePoint データを Microsoft 365 にコピーすることはできますか?
 
-はい。 詳しくは、[Office 365 への PST ファイルまたは SharePoint データのインポート](https://technet.microsoft.com/library/ms.o365.cc.ingestionhelp.aspx)に関する記事をご覧ください。
+はい。 詳細については、「[組織の PST ファイルのインポートの概要](/microsoft-365/compliance/importing-pst-files-to-office-365)」を参照してください。
 
 ### <a name="can-i-use-the-azure-importexport-service-to-copy-my-backups-offline-to-the-azure-backup-service"></a>Azure Import/Export サービスを使用して、Azure Backup サービスにバックアップをオフラインでコピーすることはできますか?
 
@@ -103,7 +103,7 @@ FedEx、DHL、UPS などの既知の運送業者や、米国郵政公社を利�
 
 発送する物理メディアが国境を越える場合があることに注意してください。 お客様は、物理メディアおよびデータが輸入および輸出に関して該当する法律に準拠していることを確認する必要があります。 物理メディアを発送する前に、アドバイザーに依頼して、メディアおよびデータが指定のデータ センターに合法的に発送できることを確認してもらってください。 それにより、マイクロソフトへのメディアの到着が遅れるのを防ぐことができます。
 
-アップロードの完了後、ドライブを海外の住所に返送するプロセスは、国内の返送に要する期間 (通常 2 日から 3 日) よりも長くなる場合があります。 Azure Portal に "Packaging (梱包)" として表示されている段階では、さまざまな海外輸出入要件を確実に満たした発送を行うために、適切な書類が提出されるよう Data Box チームが万全を期しています。
+アップロードの完了後、ドライブを海外の住所に返送するプロセスは、国内の返送に要する期間 (通常 2 日から 3 日) よりも長くなる場合があります。 Azure portal に "Packaging (梱包)" として表示されている段階では、さまざまな海外輸出入要件を確実に満たした発送を行うために、適切な書類が提出されるよう Data Box チームが万全を期しています。
 
 ### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>ディスクをデータセンターに送付するための特別な要件はありますか?
 
@@ -132,7 +132,7 @@ Azure データ センターでは、サポートされる要件に適合しな�
 
 ### <a name="how-can-i-access-data-that-is-imported-by-this-service"></a>このサービスでインポートされたデータには、どのようにしてアクセスできますか?
 
-Azure ストレージ アカウントのデータにアクセスするには、Azure Portal または [Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) を使用します。  
+Azure ストレージ アカウントのデータにアクセスするには、Azure portal または[ストレージ エクスプローラー](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)を使用します。  
 
 ### <a name="after-the-import-is-complete-what-does-my-data-look-like-in-the-storage-account-is-my-directory-hierarchy-preserved"></a>インポートの完了後、ストレージ アカウント内でデータはどのような状態になりますか? ディレクトリ階層は保持されますか?
 

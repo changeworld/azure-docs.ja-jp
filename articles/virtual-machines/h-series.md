@@ -8,28 +8,26 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: b1f30e91b9ce96daf8b2eb8ac6c8cb38b86b347f
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 56112107bbd1bb506fcbff615ec524e043d54d1a
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594409"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653725"
 ---
 # <a name="h-series"></a>H シリーズ
 
 H シリーズ VM は、高い CPU 周波数またはコアあたり大容量メモリの要件に基づいたアプリケーション向けに最適化されています。 H シリーズ VM は、8 個または 16 個の Intel Xeon E5 2667 v3 プロセッサ コア、CPU コアあたり最大 14 GB の RAM を備え、ハイパースレッディングはありません。 H シリーズは、一貫した RDMA パフォーマンスを得るために、非ブロッキングのファット ツリー構成内に 56 Gb/秒の Mellanox FDR InfiniBand を搭載しています。 H シリーズ VM では、現在、SR-IOV は有効ではなく、Intel MPI 5.x と MS MPI がサポートされています。
 
-ACU: 290-300
+[ACU](acu.md): 290-300<br>
+[Premium Storage](premium-storage-performance.md): サポートされていません<br>
+[Premium Storage キャッシュ](premium-storage-performance.md): サポートされていません<br>
+[ライブ マイグレーション](maintenance-and-updates.md): サポートされていません<br>
+[メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
+[VM 世代サポート](generation-2.md): 第 1 世代<br>
+<br>
 
-Premium Storage: サポートされていません
-
-Premium Storage Caching: サポートされていません
-
-ライブ マイグレーション:サポートされていません
-
-メモリ保持更新: サポートされていません
-
-| サイズ | vCPU | プロセッサ | メモリ (GB) | メモリ帯域幅 GB/秒 | ベース CPU 周波数 (GHz) | 全コア周波数 (GHz、ピーク) | シングルコア周波数 (GHz、ピーク) | RDMA パフォーマンス (GB/秒) | MPI のサポート | 一時ストレージ (GB) | 最大データ ディスク数 | 最大ディスク スループット: IOPS | 最大イーサネット NIC |
+| サイズ | vCPU | プロセッサ | メモリ (GiB) | メモリ帯域幅 GB/秒 | ベース CPU 周波数 (GHz) | 全コア周波数 (GHz、ピーク) | シングルコア周波数 (GHz、ピーク) | RDMA パフォーマンス (GB/秒) | MPI のサポート | 一時ストレージ (GiB) | 最大データ ディスク数 | 最大ディスク スループット: IOPS | 最大イーサネット NIC |
 | --- | --- |--- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_H8   | 8  | Intel Xeon E5 2667 v3 | 56 | 40 | 3.2 | 3.3 | 3.6 | - | Intel 5.x、MS-MPI | 1000 | 32 | 32 x 500 | 2 |
 | Standard_H16  | 16 | Intel Xeon E5 2667 v3 | 112 | 80 | 3.2 | 3.3 | 3.6 | - | Intel 5.x、MS-MPI | 2000 | 64 | 64 x 500 | 4 |

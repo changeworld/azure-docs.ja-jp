@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bf9e00e8acba241f1445977dcc53724b9981039f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 721389b557fde41b1461654b03299601e2384108
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068684"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361332"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>Azure のファイル共有を使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する
 
-> ![Windows][Logo_Windows] Windows
+> ![Windows ロゴ。][Logo_Windows] Windows
 >
 
 Windows Server フェールオーバー クラスタリングは、Windows での高可用性の SAP ASCS/SCS インストールと DBMS の基盤です。

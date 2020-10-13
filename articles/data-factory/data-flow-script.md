@@ -6,13 +6,13 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/29/2020
-ms.openlocfilehash: d28cd7a7edd5d6405761bf21ee87ec39dc9ec9cb
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.date: 09/29/2020
+ms.openlocfilehash: 8310c34e06d52dc12af42f8bc33f4a4d7e99d68d
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448547"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598096"
 ---
 # <a name="data-flow-script-dfs"></a>データ フロー スクリプト (DFS)
 
@@ -176,13 +176,13 @@ aggregate(groupBy(movie),
 データ フロー スクリプトでこのコードを使用して、3 つの列の ```sha1``` ハッシュを生成する ```DWhash``` という名前の新しい派生列を作成します。
 
 ```
-derive(DWhash = sha1(Name,ProductNumber,Color))
+derive(DWhash = sha1(Name,ProductNumber,Color)) ~> DWHash
 ```
 
 また、次のスクリプトを使用すると、各列に名前を付けなくても、ストリームに存在するすべての列を使用して行ハッシュを生成できます。
 
 ```
-derive(DWhash = sha1(columns()))
+derive(DWhash = sha1(columns())) ~> DWHash
 ```
 
 ### <a name="string_agg-equivalent"></a>String_agg の同等のもの
@@ -191,7 +191,7 @@ derive(DWhash = sha1(columns()))
 ```
 source1 aggregate(groupBy(year),
     string_agg = collect(title)) ~> Aggregate1
-Aggregate1 derive(string_agg = toString(string_agg)) ~> DerivedColumn2
+Aggregate1 derive(string_agg = toString(string_agg)) ~> StringAgg
 ```
 
 ### <a name="count-number-of-updates-upserts-inserts-deletes"></a>更新、upsert、挿入、削除の数をカウントする
@@ -210,6 +210,14 @@ aggregate(updates = countIf(isUpdate(), 1),
 ```
 aggregate(groupBy(mycols = sha2(256,columns())),
     each(match(true()), $$ = first($$))) ~> DistinctRows
+```
+
+### <a name="check-for-nulls-in-all-columns"></a>すべての列に Null があるかどうかを確認する
+これは、データ フローに貼り付けて、NULL 値があるかどうかすべての列をまとめて確認することができるスニペットです。 この手法は、スキーマの誤差を利用してすべての行のすべての列を調べ、条件分割を使用して、Null 値を持つ行と Null 値を持たない行とを分離します。 
+
+```
+split(contains(array(columns()),isNull(#item)),
+    disjoint: false) ~> LookForNULLs@(hasNULLs, noNULLs)
 ```
 
 ## <a name="next-steps"></a>次のステップ

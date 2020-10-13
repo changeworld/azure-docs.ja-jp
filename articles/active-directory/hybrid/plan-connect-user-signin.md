@@ -16,12 +16,12 @@ ms.date: 05/31/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd198a132f64c26f775a8212c22b77201d579260
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 3365a58a0c667ca55b74a5120cdd7a78ad0abc79
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657154"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299912"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect ユーザーのサインイン オプション
 Azure Active Directory (Azure AD) Connect では、ユーザーは同じパスワードを使用して、クラウドとオンプレミス両方のリソースにサインインできます。 この記事では、Azure AD へのサインインに使用する ID を選択できるようにするために、各 ID モデルの主要な概念について説明します。
@@ -179,7 +179,7 @@ Azure AD ディレクトリのカスタム ドメインの状態と、オンプ�
 
 次のページで、Azure AD の資格情報の入力を求められます。
 
-![Azure への接続](./media/plan-connect-user-signin/changeusersignin2.png)
+![Azure AD の資格情報を入力する場所を示すスクリーンショット。](./media/plan-connect-user-signin/changeusersignin2.png)
 
 「**ユーザーのサインイン**」ページで、目的のユーザーのサインインを選択します。
 
