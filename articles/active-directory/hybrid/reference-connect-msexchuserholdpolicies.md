@@ -10,22 +10,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 08/23/2019
+ms.date: 09/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4950906e016b9e1915d18ecacc1edcfda8b4d09
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 2a5a4659671f8d4ded64a4f04f84abf1f67d8825
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279399"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265257"
 ---
 # <a name="azure-ad-connect---msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Azure AD Connect - msExchUserHoldPolicies と cloudMsExchUserHoldPolicies
 以下のリファレンス ドキュメントでは、Exchange で使用されるこれらの属性と、既定の同期ルールを編集するための適切な方法について説明します。
 
 ## <a name="what-are-msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>msExchUserHoldPolicies および cloudMsExchUserHoldPolicies とは
-Exchange Server では、次の 2 種類の[ホールド](/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019)を使用できます: 訴訟ホールドとインプレース ホールド。 訴訟ホールドが有効になっている場合、すべてのメールボックスのすべてのアイテムがホールドに置かれます。  インプレース ホールドは、インプレース電子情報開示ツールを使用して定義した検索クエリの条件を満たすアイテムのみを保持するために使用されます。
+Exchange Server では、次の 2 種類の[ホールド](https://docs.microsoft.com/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019)を使用できます: 訴訟ホールドとインプレース ホールド。 訴訟ホールドが有効になっている場合、すべてのメールボックスのすべてのアイテムがホールドに置かれます。  インプレース ホールドは、インプレース電子情報開示ツールを使用して定義した検索クエリの条件を満たすアイテムのみを保持するために使用されます。
 
 MsExchUserHoldPolcies 属性と cloudMsExchUserHoldPolicies 属性を使用すると、オンプレミスの AD と Azure AD で、オンプレミス Exchange または Exchange オンラインを使用しているかどうかに応じて、ホールド中のユーザーを特定できます。
 
@@ -38,7 +38,7 @@ MsExchUserHoldPolcies 属性と cloudMsExchUserHoldPolicies 属性を使用す�
 
 |Active Directory の属性|属性名|フローの種類|メタバースの属性|同期ルール|
 |-----|-----|-----|-----|-----|
-|オンプレミスの Active Directory|msExchUserHoldPolicies|直接|msExchUserHoldPolices|AD からの受信 - ユーザー Exchange|
+|オンプレミスの Active Directory|msExchUserHoldPolicies|直接|msExchUserHoldPolicies|AD からの受信 - ユーザー Exchange|
 
 Azure AD への送信:
 
@@ -47,7 +47,7 @@ Azure AD への送信:
 |Azure Active Directory|msExchUserHoldPolicies|直接|msExchUserHoldPolicies|AAD への送信 – UserExchangeOnline|
 
 ## <a name="cloudmsexchuserholdpolicies-synchronization-flow"></a>cloudMsExchUserHoldPolicies の同期フロー
-既定では、cloudMsExchUserHoldPolicies は、Azure AD Connect によって、メタバースの cloudMsExchUserHoldPolicies 属性に直接同期されます。 その後、メタバースにおいて msExchUserHoldPolices が null でない場合は、その属性が Active Directory に送られます。
+既定では、cloudMsExchUserHoldPolicies は、Azure AD Connect によって、メタバースの cloudMsExchUserHoldPolicies 属性に直接同期されます。 その後、メタバースにおいて msExchUserHoldPolicies が null でない場合は、その属性が Active Directory に送られます。
 
 次の表で、フローについて説明します。
 

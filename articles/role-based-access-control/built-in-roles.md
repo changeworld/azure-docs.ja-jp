@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 09/04/2020
+ms.date: 09/22/2020
 ms.custom: generated
-ms.openlocfilehash: 25c231265bb4ec497af5559624b7228167add76d
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: f5d5b4f801dd406518a6ba516bf2e38e01cb96ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89483458"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275270"
 ---
 # <a name="azure-built-in-roles"></a>Azure 組み込みロール
 
@@ -113,6 +113,8 @@ ms.locfileid: "89483458"
 > | [HDInsight ドメイン サービス共同作成者](#hdinsight-domain-services-contributor) | HDInsight Enterprise セキュリティ パッケージに必要なドメイン サービス関連の操作の読み取り、作成、変更、削除を行うことができます。 | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
 > | [Log Analytics Contributor](#log-analytics-contributor) | Log Analytics 共同作成者は、すべての監視データを読み取り、監視設定を編集できます。 監視設定の編集には、VM 拡張機能の VM への追加、Azure Storage からログの収集を設定できるようにするためのストレージ アカウント キーの読み取り、Automation アカウントの作成と構成、ソリューションの追加、すべての Azure リソースでの Azure Diagnostics の構成が含まれます。 | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
 > | [Log Analytics Reader](#log-analytics-reader) | Log Analytics Reader は、すべての監視データの表示と検索、およびすべての Azure リソース上の Azure Diagnostics 構成の表示など、監視設定の表示を行うことができます。 | 73c42c96-874c-492b-b04d-ab87d138a893 |
+> | [Schema Registry Contributor (プレビュー)](#schema-registry-contributor-preview) | Schema Registry グループおよびスキーマの読み取り、書き込み、および削除を行います。 | 5dffeca3-4936-4216-b2bc-10343a5abb25 |
+> | [Schema Registry Reader (プレビュー)](#schema-registry-reader-preview) | Schema Registry グループおよびスキーマの読み取りと一覧表示を行います。 | 2c56ea50-c6b3-40a6-83c0-9d98858bc7d2 |
 > | **ブロックチェーン** |  |  |
 > | [ブロックチェーン メンバー ノードへのアクセス (プレビュー)](#blockchain-member-node-access-preview) | ブロックチェーン メンバー ノードにアクセスできるようにします | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
 > | **AI + 機械学習** |  |  |
@@ -3849,6 +3851,7 @@ SQL サーバーとデータベースのセキュリティ関連のポリシー�
 > | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
+> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/locations/administratorAzureAsyncOperation/read |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/databases/currentSensitivityLabels/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/databases/recommendedSensitivityLabels/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/databases/schemas/tables/columns/sensitivityLabels/* |  |
@@ -3886,6 +3889,8 @@ SQL サーバーとデータベースのセキュリティ関連のポリシー�
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/securityAlertPolicies/* | SQL サーバー セキュリティの警告のポリシーの作成と管理 |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/vulnerabilityAssessments/* |  |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
+> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/administrators/read | 特定の Azure Active Directory 管理者オブジェクトを取得します |
+> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/azureADOnlyAuthentications/* |  |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -3910,6 +3915,7 @@ SQL サーバーとデータベースのセキュリティ関連のポリシー�
         "Microsoft.ResourceHealth/availabilityStatuses/read",
         "Microsoft.Resources/deployments/*",
         "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Sql/locations/administratorAzureAsyncOperation/read",
         "Microsoft.Sql/managedInstances/databases/currentSensitivityLabels/*",
         "Microsoft.Sql/managedInstances/databases/recommendedSensitivityLabels/*",
         "Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/*",
@@ -3946,7 +3952,9 @@ SQL サーバーとデータベースのセキュリティ関連のポリシー�
         "Microsoft.Sql/servers/read",
         "Microsoft.Sql/servers/securityAlertPolicies/*",
         "Microsoft.Sql/servers/vulnerabilityAssessments/*",
-        "Microsoft.Support/*"
+        "Microsoft.Support/*",
+        "Microsoft.Sql/servers/administrators/read",
+        "Microsoft.Sql/servers/azureADOnlyAuthentications/*"
       ],
       "notActions": [],
       "dataActions": [],
@@ -4005,6 +4013,8 @@ SQL サーバーとデータベースを管理できます。ただし、それ�
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/extendedAuditingSettings/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/securityAlertPolicies/* | SQL サーバーのセキュリティ警告ポリシーの編集 |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/vulnerabilityAssessments/* |  |
+> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/azureADOnlyAuthentications/delete | 特定のサーバーの Azure Active Directory のみの認証オブジェクトを削除します |
+> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/azureADOnlyAuthentications/write | 特定のサーバーの Azure Active Directory 認証オブジェクトのみを追加または更新します |
 > | **DataActions** |  |
 > | "*なし*" |  |
 > | **NotDataActions** |  |
@@ -4060,7 +4070,9 @@ SQL サーバーとデータベースを管理できます。ただし、それ�
         "Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/*",
         "Microsoft.Sql/servers/extendedAuditingSettings/*",
         "Microsoft.Sql/servers/securityAlertPolicies/*",
-        "Microsoft.Sql/servers/vulnerabilityAssessments/*"
+        "Microsoft.Sql/servers/vulnerabilityAssessments/*",
+        "Microsoft.Sql/servers/azureADOnlyAuthentications/delete",
+        "Microsoft.Sql/servers/azureADOnlyAuthentications/write"
       ],
       "dataActions": [],
       "notDataActions": []
@@ -4503,6 +4515,88 @@ Log Analytics Reader は、すべての監視データの表示と検索、お�
     }
   ],
   "roleName": "Log Analytics Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="schema-registry-contributor-preview"></a>Schema Registry Contributor (プレビュー)
+
+Schema Registry グループおよびスキーマの読み取り、書き込み、および削除を行います。
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | [Microsoft.EventHub](resource-provider-operations.md#microsofteventhub)/namespaces/schemagroups/* |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | [Microsoft.EventHub](resource-provider-operations.md#microsofteventhub)/namespaces/schemas/* |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Read, write, and delete Schema Registry groups and schemas.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/5dffeca3-4936-4216-b2bc-10343a5abb25",
+  "name": "5dffeca3-4936-4216-b2bc-10343a5abb25",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.EventHub/namespaces/schemagroups/*"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.EventHub/namespaces/schemas/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Schema Registry Contributor (Preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="schema-registry-reader-preview"></a>Schema Registry Reader (プレビュー)
+
+Schema Registry グループおよびスキーマの読み取りと一覧表示を行います。
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | [Microsoft.EventHub](resource-provider-operations.md#microsofteventhub)/namespaces/schemagroups/read | SchemaGroup リソースの説明の一覧を取得します |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | [Microsoft.EventHub](resource-provider-operations.md#microsofteventhub)/namespaces/schemas/read | スキーマを取得する |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Read and list Schema Registry groups and schemas.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/2c56ea50-c6b3-40a6-83c0-9d98858bc7d2",
+  "name": "2c56ea50-c6b3-40a6-83c0-9d98858bc7d2",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.EventHub/namespaces/schemagroups/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.EventHub/namespaces/schemas/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Schema Registry Reader (Preview)",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -5376,7 +5470,7 @@ Azure Stack の登録を管理できます。
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | [Microsoft.AzureStack](resource-provider-operations.md#microsoftazurestack)/edgeSubscriptions/read | Azure Stack Edge のサブスクリプションのプロパティを取得します。 |
+> | [Microsoft.AzureStack](resource-provider-operations.md#microsoftazurestack)/edgeSubscriptions/read |  |
 > | [Microsoft.AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/products/*/action |  |
 > | [Microsoft.AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/products/read | Azure Stack Marketplace の製品のプロパティを取得します |
 > | [Microsoft.AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/read | Azure Stack の登録のプロパティを取得します |
@@ -6151,6 +6245,7 @@ Azure Sentinel 閲覧者です。[詳細](../sentinel/roles.md)
 > | --- | --- |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/*/read |  |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/dataConnectorsCheckRequirements/action | ユーザーの承認とライセンスを確認します |
+> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatintelligence/indicators/query/action | 脅威インテリジェンス インジケーターをクエリします |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | 新しいエンジンを使用して検索します。 |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | Log Analytics のデータの表示 |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/LinkedServices/read | 指定されたワークスペースのリンクされたサービスを取得します。 |
@@ -6185,6 +6280,7 @@ Azure Sentinel 閲覧者です。[詳細](../sentinel/roles.md)
       "actions": [
         "Microsoft.SecurityInsights/*/read",
         "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
+        "Microsoft.SecurityInsights/threatIntelligence/indicators/query/action",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
         "Microsoft.OperationalInsights/workspaces/*/read",
         "Microsoft.OperationalInsights/workspaces/LinkedServices/read",
@@ -6222,6 +6318,12 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/dataConnectorsCheckRequirements/action | ユーザーの承認とライセンスを確認します |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/cases/* |  |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/incidents/* |  |
+> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/appendTags/action | 脅威インテリジェンス インジケーターにタグを追加します |
+> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatintelligence/indicators/query/action | 脅威インテリジェンス インジケーターをクエリします |
+> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/bulkTag/action | 脅威インテリジェンスに一括でタグを付けます |
+> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/appendTags/action | 脅威インテリジェンス インジケーターにタグを追加します |
+> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/replaceTags/action | 脅威インテリジェンス インジケーターのタグを置換します |
+> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/queryIndicators/action | 脅威インテリジェンス インジケーターをクエリします |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | 新しいエンジンを使用して検索します。 |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | Log Analytics のデータの表示 |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | ワークスペースのデータソースを取得します。 |
@@ -6258,6 +6360,12 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
         "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
         "Microsoft.SecurityInsights/cases/*",
         "Microsoft.SecurityInsights/incidents/*",
+        "Microsoft.SecurityInsights/threatIntelligence/indicators/appendTags/action",
+        "Microsoft.SecurityInsights/threatIntelligence/indicators/query/action",
+        "Microsoft.SecurityInsights/threatIntelligence/bulkTag/action",
+        "Microsoft.SecurityInsights/threatIntelligence/indicators/appendTags/action",
+        "Microsoft.SecurityInsights/threatIntelligence/indicators/replaceTags/action",
+        "Microsoft.SecurityInsights/threatIntelligence/queryIndicators/action",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
         "Microsoft.OperationalInsights/workspaces/*/read",
         "Microsoft.OperationalInsights/workspaces/dataSources/read",
@@ -6420,6 +6528,7 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
 > | **NotActions** |  |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/locations/deletedVaults/purge/action | 論理的に削除された Key Vault を消去します。 |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/hsmPools/* |  |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/managedHsms/* |  |
 > | **DataActions** |  |
 > | "*なし*" |  |
 > | **NotDataActions** |  |
@@ -6445,7 +6554,8 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
       ],
       "notActions": [
         "Microsoft.KeyVault/locations/deletedVaults/purge/action",
-        "Microsoft.KeyVault/hsmPools/*"
+        "Microsoft.KeyVault/hsmPools/*",
+        "Microsoft.KeyVault/managedHsms/*"
       ],
       "dataActions": [],
       "notDataActions": []
@@ -6785,6 +6895,7 @@ Security Center の表示および更新のアクセス許可。 セキュリテ
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyAssignments/* | ポリシーの割り当ての作成と管理 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyDefinitions/* | ポリシー定義の作成と管理 |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyExemptions/* |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policySetDefinitions/* | ポリシー セットの作成と管理 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 認証済みユーザーの管理グループを一覧表示します。 |
@@ -6814,6 +6925,7 @@ Security Center の表示および更新のアクセス許可。 セキュリテ
         "Microsoft.Authorization/*/read",
         "Microsoft.Authorization/policyAssignments/*",
         "Microsoft.Authorization/policyDefinitions/*",
+        "Microsoft.Authorization/policyExemptions/*",
         "Microsoft.Authorization/policySetDefinitions/*",
         "Microsoft.Insights/alertRules/*",
         "Microsoft.Management/managementGroups/read",
@@ -8483,6 +8595,7 @@ New Relic Application Performance Management のアカウントとアプリケ�
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyassignments/read | ポリシー割り当てに関する情報を取得します。 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policydefinitions/read | ポリシー定義に関する情報を取得します。 |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyexemptions/read | ポリシー適用除外についての情報を取得します。 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policysetdefinitions/read | ポリシー セットの定義に関する情報を取得します。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -8505,6 +8618,7 @@ New Relic Application Performance Management のアカウントとアプリケ�
       "actions": [
         "Microsoft.Authorization/policyassignments/read",
         "Microsoft.Authorization/policydefinitions/read",
+        "Microsoft.Authorization/policyexemptions/read",
         "Microsoft.Authorization/policysetdefinitions/read"
       ],
       "notActions": [],
@@ -8531,6 +8645,7 @@ New Relic Application Performance Management のアカウントとアプリケ�
 > | */read | 機密データを除くあらゆる種類のリソースの読み取り |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyassignments/* | ポリシーの割り当ての作成と管理 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policydefinitions/* | ポリシー定義の作成と管理 |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyexemptions/* |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policysetdefinitions/* | ポリシー セットの作成と管理 |
 > | [Microsoft.PolicyInsights](resource-provider-operations.md#microsoftpolicyinsights)/* |  |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
@@ -8555,6 +8670,7 @@ New Relic Application Performance Management のアカウントとアプリケ�
         "*/read",
         "Microsoft.Authorization/policyassignments/*",
         "Microsoft.Authorization/policydefinitions/*",
+        "Microsoft.Authorization/policyexemptions/*",
         "Microsoft.Authorization/policysetdefinitions/*",
         "Microsoft.PolicyInsights/*",
         "Microsoft.Support/*"

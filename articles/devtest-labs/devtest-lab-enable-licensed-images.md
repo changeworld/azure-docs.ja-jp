@@ -3,12 +3,12 @@ title: Azure DevTest Labs でのラボのライセンスされたイメージの
 description: Azure Portal を使って Azure DevTest Labs でライセンスされたイメージを有効にする方法について説明します
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a043679e27580254c56fe118838dd355be5a58de
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e2b6e495be2257548782143517f5a970b424860c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286514"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276358"
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でのラボのライセンスされたイメージの有効化
 
@@ -47,7 +47,7 @@ Azure DevTest Labs では、ライセンスされたイメージとは、イメ�
 
 1. ユーザーがアクセスできるようにしたいが条件に同意されていないライセンスされたイメージを特定します。 たとえば、 **[同意した条件]** または **[確認が必要な条件]** のいずれかの状態を示すデータ サイエンス仮想マシンが表示される可能性があります。
 
-    ![[プログラムによるデプロイの構成] ウィンドウ](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-licensed-images.png)
+    ![[同意した条件] と [確認が必要な条件] のオファーの状態がある Data Science Virtual Machine イメージを示すスクリーンショット](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-licensed-images.png)
 
    > [!NOTE]
    > データ サイエンス VM は、データ分析、機械学習、AI トレーニングでよく使用される一般的なツールを使用して事前インストール、構成、テストされた Azure 仮想マシン イメージです。 「[Linux および Windows 用の Azure データ サイエンス仮想マシンの概要](../machine-learning/data-science-virtual-machine/overview.md)」に、DSVM の詳細情報が記載されています。

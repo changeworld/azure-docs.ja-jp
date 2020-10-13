@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 78d707c0b5afd745ae805c9513243f3791d47c60
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: dd755e1bc220d61aa540a0e7da9e3f174bde9d76
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654754"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652926"
 ---
 # <a name="lsv2-series"></a>Lsv2 シリーズ
 
@@ -25,17 +25,14 @@ Lsv2 シリーズは、2.55 GHz の全コア ブーストと 3.0 GHz の最大�
 >
 > 詳細については、[Windows](../virtual-machines/windows/storage-performance.md) または [Linux](../virtual-machines/linux/storage-performance.md) 用の「Lsv2 シリーズの仮想マシン上でパフォーマンスを最適化する」を参照してください。  
 
-ACU: 150 から 175
-
-バースト:サポートされています
-
-Premium Storage: サポートされています
-
-Premium Storage キャッシュ:サポートされていません
-
-ライブ マイグレーション:サポートされていません
-
-メモリ保持更新: サポートされていません
+[ACU](acu.md):150 から 175<br>
+[Premium Storage](premium-storage-performance.md):サポートされています<br>
+[Premium Storage キャッシュ](premium-storage-performance.md):サポートされていません<br>
+[ライブ マイグレーション](maintenance-and-updates.md):サポートされていません<br>
+[メモリ保持更新](maintenance-and-updates.md):サポートされていません<br>
+[VM 世代サポート](generation-2.md):第 1 世代と第 2 世代<br>
+バースト:サポートされています<br>
+<br>
 
 | サイズ | vCPU | メモリ (GiB) | 一時ディスク<sup>1</sup> (GiB) | NVMe ディスク<sup>2</sup> | NVMe ディスク スループット<sup>3</sup> (読み取り IOPS/MBps) | キャッシュ不使用時のデータ ディスク スループット (IOPs/MBps)<sup>4</sup> | キャッシュ不使用時の最大バースト データ ディスク スループット (IOPs/MBps)<sup>5</sup>| 最大データ ディスク数 | 最大 NIC 数 | 必要なネットワーク帯域幅 (Mbps) |
 |---|---|---|---|---|---|---|---|---|---|---|
