@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: e845136c4fed5a3d2e6863fdab0aa9f70fb30b5d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: fb628df5151f9124d7b7f319ff109ffca030ee90
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931594"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317346"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループを作成する
 
@@ -59,7 +59,7 @@ Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting a
 この手順を実装してから、次の手順に進んでください。 既定以外のプロジェクトで PostgreSQL Hyperscale サーバー グループを Red Hat OpenShift にデプロイするには、クラスターに対して次のコマンドを実行して、セキュリティ制約を更新する必要があります。 このコマンドでは、PostgreSQL Hyperscale サーバー グループを実行するサービス アカウントに必要な特権が付与されます。 **_arc-data-scc_** というセキュリティ コンテキスト制約 (SCC) は、Azure Arc データ コントローラーのデプロイ時に追加したものです。
 
 ```console
-oc adm policy add-scc-to-group arc-data-scc -z <server-group-name> -n <namespace name>
+oc adm policy add-scc-to-user arc-data-scc -z <server-group-name> -n <namespace name>
 ```
 
 _**Server-group-name** は、次の手順で作成するサーバー グループの名前です。_
@@ -72,7 +72,7 @@ OpenShift の SCC の詳細については、[OpenShift のドキュメント](h
 Azure Arc で Azure Database for PostgreSQL Hyperscale サーバー グループを作成するには、次のコマンドを使用します。
 
 ```console
-azdata arc postgres server create -n <name> --workers 2 --storage-class-data <storage class name> --storage-class-logs <storage class name> --storage-class-backups <storage class name>
+azdata arc postgres server create -n <name> --workers <# worker nodes with #>=2> --storage-class-data <storage class name> --storage-class-logs <storage class name> --storage-class-backups <storage class name>
 
 #Example
 #azdata arc postgres server create -n postgres01 --workers 2
@@ -80,25 +80,14 @@ azdata arc postgres server create -n <name> --workers 2 --storage-class-data <st
 
 > [!NOTE]
 > - **他のコマンドライン パラメーターも使用できます。`azdata arc postgres server create --help` を実行して、オプションの完全なリストを確認してください。**
-> - バックアップおよび復元できるようにするには、サーバー グループの作成時に、プレビューでバックアップ用のストレージ クラス ( _--storage-class-backups -scb_) を指定する必要があります。
+> - バックアップに使用するストレージ クラス ( _--storage-class-backups -scb_) は、データ コントローラーのデータ ストレージ クラスに既定で設定されます (設定されていない場合)。
 > - --volume-size-* パラメーターで使用できる単位は、Kubernetes リソースの数量 (後に SI サフィックス (T、G、M、K、M) または 2 のべき乗の同等物 (Ti、Gi、Mi、Ki) のいずれかが続く整数) です。
-> - 名前は、10 文字以下の長さで入力し、DNS 名前付け規則に準拠している必要があります。
+> - 名前は、12 文字以下の長さで入力し、DNS 名前付け規則に準拠している必要があります。
 > - _postgres_ という標準管理ユーザーのパスワードを入力するように求められます。  create コマンドを実行する前に、`AZDATA_PASSWORD` セッション環境変数を設定すると、対話型プロンプトをスキップできます。
-> - 同じターミナル セッションで AZDATA_USERNAME と AZDATA_PASSWORD を使用してデータ コントローラーをデプロイした場合は、SPostgreSQL Hyperscale サーバー グループをデプロイするために AZDATA_USERNAME と AZDATA_PASSWORD の値も使用されます。 PostgreSQL Hyperscale データベース エンジンの既定の管理者ユーザーの名前は _postgresql_ であり、この時点では変更できません。
+> - 同じターミナル セッションで AZDATA_USERNAME および AZDATA_PASSWORD セッション環境変数を使用してデータ コントローラーをデプロイした場合は、PostgreSQL Hyperscale サーバー グループをデプロイするために AZDATA_PASSWORD の値も使用されます。 別のパスワードを使用する場合は、(1) AZDATA_PASSWORD の値を更新します。または、(2) AZDATA_PASSWORD 環境変数またはその値を削除すると、サーバー グループを作成するときに対話形式でパスワードの入力を求められます。
+> - PostgreSQL Hyperscale データベース エンジンの既定の管理者ユーザーの名前は _postgres_ であり、この時点では変更できません。
 > - PostgreSQL Hyperscale サーバー グループを作成しても、リソースはすぐに Azure に登録されません。 [リソース インベントリ](upload-metrics-and-logs-to-azure-monitor.md)または[利用状況データ](view-billing-data-in-azure.md)を Azure にアップロードするプロセスの一環として、Azure でリソースが作成され、そのリソースを Azure portal で確認できるようになります。
-> - この時点では、--port パラメーターを変更できません。
-> - Kubernetes クラスターに既定のストレージ クラスが存在しない場合は、--metadataStorageClass パラメーターを使用して、1 つ指定する必要があります。 これを行わないと、create コマンドに失敗します。 Kubernetes クラスターで既定のストレージ クラスが宣言されているかどうかを確認するには、次のコマンドを実行します。 
->
->   ```console
->   kubectl get sc
->   ```
->
-> - ストレージ クラスが既定のストレージ クラスとして構成されている場合は、ストレージ クラスの名前に **(既定)** が追加されます。 次に例を示します。
->
->   ```output
->   NAME                       PROVISIONER                        AGE
->   local-storage (default)    kubernetes.io/no-provisioner       4d18h
->   ```
+
 
 
 ## <a name="list-your-azure-database-for-postgresql-server-groups-created-in-your-arc-setup"></a>Arc のセットアップ時に作成された Azure Database for PostgreSQL サーバー グループを一覧表示する

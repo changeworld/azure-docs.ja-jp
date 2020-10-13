@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: 5115190d944e78d476f369442dccdbda394e46ba
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: b0b19eaa86269feff28c73275e4db4a3d332b3df
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564051"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91664875"
 ---
 # <a name="high-availability-ports-overview"></a>高可用性ポートの概要
 
-内部ロード バランサーを使用するときは、Azure Standard Load Balancer によって、すべてのポートで TCP フローと UDP フローの負荷分散を同時に行うことができます。 
+HA ポート経由で内部 Load Balancer を使用しているときは、Azure Standard Load Balancer を利用すると、**すべての**ポートで**すべての**プロトコル フローを同時に負荷分散することができます。
 
-高可用性 (HA) ポート負荷分散規則は負荷分散規則の一種であり、内部 Standard Load Balancer 上に構成されます。 内部 Standard Load Balancer のすべてのポートに到着するすべての TCP フローと UDP フローを負荷分散する単一の規則を指定することで、ロード バランサーの使用を単純化できます。 負荷分散の決定は、フローごとに行われます。 このアクションは、5 タプル接続 (送信元 IP アドレス、送信元ポート、送信先 IP アドレス、送信先ポート、およびプロトコル) に基づいて行われます。
+高可用性 (HA) ポートは負荷分散規則の一種であり、内部 Standard Load Balancer の**すべての**ポートに到着する**すべての**フローの負荷分散を簡単に行う方法を提供します。 負荷分散の決定は、フローごとに行われます。 このアクションは、5 タプル接続 (送信元 IP アドレス、送信元ポート、送信先 IP アドレス、送信先ポート、およびプロトコル) に基づいて行われます。
 
 HA ポート負荷分散規則は、仮想ネットワーク内のネットワーク仮想アプライアンス (NVA) の高可用性と拡張性のような、重要なシナリオで役に立ちます。 この機能は、多数のポートを負荷分散する必要がある場合にも役立ちます。 
 

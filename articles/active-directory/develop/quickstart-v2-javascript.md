@@ -1,7 +1,7 @@
 ---
-title: JavaScript シングルページ アプリでユーザーをサインインさせる | Azure
+title: 'クイックスタート: JavaScript シングルページ アプリでユーザーをサインインさせる | Azure'
 titleSuffix: Microsoft identity platform
-description: アクセス トークンが必要な API を JavaScript アプリから Microsoft ID プラットフォームを使用して呼び出す方法について説明します。
+description: このクイックスタートでは、Microsoft ID プラットフォームによって発行されるアクセス トークンを必要とする API を、JavaScript アプリから呼び出す方法について説明します。
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -12,23 +12,22 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: b6e3e0c1ecf9ce3a9d86f6b03c3ad3efc5676b5c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1f5281ead3c0487b6052859df3b33fa6ddaaf45a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257930"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91613324"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>クイック スタート:JavaScript SPA 内でユーザーをサインインさせ、アクセス トークンを取得する
 
-このクイックスタートでは、コード サンプルを使用して、JavaScript シングルページ アプリケーション (SPA) で個人アカウント、職場アカウント、学校アカウントのユーザーをサインインさせる方法について学習します。 JavaScript SPA では、Microsoft Graph API または任意の Web API を呼び出すためのアクセス トークンを取得することもできます。 (図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください)。
+このクイックスタートでは、コード サンプルを使用して、JavaScript シングルページ アプリケーション (SPA) で個人アカウント、職場アカウント、学校アカウントのユーザーをサインインさせる方法について学習します。 JavaScript SPA では、Microsoft Graph API または任意の Web API を呼び出すためのアクセス トークンを取得することもできます。 図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション - [Azure サブスクリプションを無料で作成する](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * [Node.js](https://nodejs.org/en/download/)
 * [Visual Studio Code](https://code.visualstudio.com/download) (プロジェクト ファイルの編集に使用)
-
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-application"></a>クイック スタート アプリケーションを登録してダウンロードする
@@ -300,9 +299,4 @@ myMSALObj.acquireTokenPopup(requestObj)
 このクイックスタート用アプリケーションの構築に関する詳細なステップ バイ ステップ ガイドについては、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [サインインして MS Graph を呼び出すチュートリアル](./tutorial-v2-javascript-spa.md)
-
-MSAL リポジトリでドキュメント、FAQ、イシューなどを閲覧するには、次を参照してください。
-
-> [!div class="nextstepaction"]
-> [MSAL.js GitHub リポジトリ](https://github.com/AzureAD/microsoft-authentication-library-for-js)
+> [チュートリアル: ユーザーをサインインして、JavaScript シングルページ アプリケーション (SPA) から Microsoft Graph API を呼び出す](tutorial-v2-javascript-spa.md)
