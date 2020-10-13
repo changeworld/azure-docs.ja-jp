@@ -8,30 +8,29 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 08/10/2020
 ms.author: vikancha
-ms.openlocfilehash: af9f7eb21d533bc5fb365e7cbf1fb8fc18184fa7
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 7c3423e8bd5cd3e38c05205842845bec2243ed83
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89375229"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653504"
 ---
 # <a name="ncast4_v3-series-in-preview"></a>NCasT4_v3 シリーズ (プレビュー段階) 
 
-NCasT4_v3 シリーズ仮想マシンは、[Nvidia Tesla T4](https://www.nvidia.com/en-us/data-center/tesla-t4/) GPU と AMD EPYC 7V12(Rome) CPU を搭載しています。 この VM には、最大 4 個の NVIDIA T4 GPU (それぞれに 16 GB のメモリを装備)、最大 64 個の非マルチスレッド AMD EPYC 7V12(Rome) プロセッサ コア、440 GiB のシステム メモリが搭載されています。 これらの仮想マシンは、CUDA、TensorFlow、Pytorch、Caffe などのフレームワークを使用した ML と AI のワークロード、または NVIDIA GRID テクノロジを使用したグラフィックス ワークロードを実行するのに最適です。 NCasT4_v3 シリーズは、推論ワークロードの実行に最適です。
+NCasT4_v3 シリーズ仮想マシンは、[Nvidia Tesla T4](https://www.nvidia.com/en-us/data-center/tesla-t4/) GPU と AMD EPYC 7V12(Rome) CPU を搭載しています。 この VM には、最大 4 個の NVIDIA T4 GPU (それぞれに 16 GB のメモリを装備)、最大 64 個の非マルチスレッド AMD EPYC 7V12 (Rome) プロセッサ コア、440 GiB のシステム メモリが搭載されています。 これらの仮想マシンは、AI サービス (ユーザーが生成した要求のリアルタイム推論など) のデプロイや、NVIDIA の GRID ドライバーと仮想 GPU テクノロジを使用した対話型グラフィックスと視覚化ワークロードに最適です。 CUDA、TensorRT、Caffe、ONNX、およびその他のフレームワークをベースにした標準的な GPU コンピューティング ワークロードや、OpenGL と DirectX をベースにした GPU アクセラレーションを使用するグラフィック アプリケーションは、ユーザーのすぐ近くにある NCasT4_v3 シリーズに経済的にデプロイできます。
 
-プレビュー プログラムに含めるように[リクエストを送信](https://aka.ms/NCT4v3Preview)することができます。
+> [!NOTe]
+> プレビュー プログラムに参加するための[要求を送信](https://aka.ms/NCT4v3Preview)してください。
 
 <br>
 
-ACU: 230-260
-
-Premium Storage: サポートされています
-
-Premium Storage キャッシュ:サポートされています
-
-ライブ マイグレーション: サポートされていません
-
-メモリ保持更新: サポートされていません
+[ACU](acu.md):230-260<br>
+[Premium Storage](premium-storage-performance.md):サポートされています<br>
+[Premium Storage キャッシュ](premium-storage-performance.md):サポートされています<br>
+[ライブ マイグレーション](maintenance-and-updates.md):サポートされていません<br>
+[メモリ保持更新](maintenance-and-updates.md):サポートされていません<br>
+[VM 世代サポート](generation-2.md):第 1 世代<br>
+<br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | GPU | GPU メモリ: GiB | 最大データ ディスク数 | 最大 NIC 数 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
