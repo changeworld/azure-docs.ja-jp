@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 5ca2e37c3524dc75328b0b6615e15c58652d20d1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a7ab3d32253b354f759c4d348526e22521a5fde4
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542957"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760727"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>チュートリアル: Azure Active Directory と Agiloft の統合
 
@@ -100,7 +100,7 @@ Agiloft で Azure AD シングル サインオンを構成するには、次の�
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[Agiloft のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+    ![[識別子] および [応答 URL] テキスト ボックスが強調表示されているスクリーンショット。](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、次の形式で URL を入力します。
 
@@ -150,11 +150,11 @@ Agiloft で Azure AD シングル サインオンを構成するには、次の�
 
 2. **[Setup]\(設定\)** (左側のウィンドウ) をクリックし、 **[Access]\(アクセス\)** を選択します。
 
-    ![Agiloft の構成](./media/agiloft-tutorial/setup1.png)
+    ![[Access]\(アクセス\) セクションが強調表示されているスクリーンショット。](./media/agiloft-tutorial/setup1.png)
 
 3. **[Configure SAML 2.0 Single Sign-On]\(SAML 2.0 シングル サインオンの構成\)** ボタンをクリックします。
 
-    ![Agiloft の構成](./media/agiloft-tutorial/setup2.png)
+    ![[Configure SAML 2.0 Single Sign-On]\(SAML 2.0 シングル サインオンの構成\) ボタンが強調表示されているスクリーンショット。](./media/agiloft-tutorial/setup2.png)
 
 4. ウィザード ダイアログが表示されます。 ダイアログで、 **[Identity Provider Details]\(ID プロバイダーの詳細\)** をクリックし、次のフィールドを入力します。  
 

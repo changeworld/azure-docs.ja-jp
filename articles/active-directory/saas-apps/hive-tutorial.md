@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 8abf36e79f83c69dd927acd21c5c8652122fc82d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6050b9f4a14f39245c7424f47dae081e9efc6ff1
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544080"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826144"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hive"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Hive の統合
 
@@ -147,11 +147,11 @@ Hive で Azure AD SSO を構成してテストするには、次の構成要素�
 
 1. **[User Profile]\(ユーザー プロファイル\)** をクリックし、 **[Your workspace]\(ワークスペース\)** をクリックします。
 
-    ![Hive 構成](./media/hive-tutorial/configure1.png)
+    ![メニューで [Your workspace]\(ワークスペース\) が選択されている Hive Web サイトを示すスクリーンショット。](./media/hive-tutorial/configure1.png)
 
 1. **[Auth]\(認証\)** をクリックし、次の手順を実行します。
 
-    ![Hive 構成](./media/hive-tutorial/configure2.png)
+    ![説明されているタスクを実行する [Auth]\(認証\) ページを示すスクリーンショット。](./media/hive-tutorial/configure2.png)
 
     a. **[Your Workspace ID]\(ワークスペース ID\)** をコピーし、Azure portal の **[基本的な SAML 構成] セクション**の **[SignOn URL]\(サインオン URL\)** および **[応答 URL]** に追加します。
 

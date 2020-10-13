@@ -2,29 +2,29 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: a7080e62a4063ca2975ee72bb04cf3e06c1483ba
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b088e2e8a63e68fcda1bf8d006a480966bf5a775
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984464"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91820122"
 ---
 |名前 |説明 |ポリシー |Version |
 |---|---|---|---|
 |[Australian Government ISM PROTECTED](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/IRAP_Audit.json) |このイニシアチブには、Australian Government Information Security Manual (ISM) のコントロールのサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/AustralianGovernmentISM-blueprint](https://aka.ms/AustralianGovernmentISM-blueprint) を参照してください。 |62 |3.0.0-preview |
-|[Azure セキュリティ ベンチマーク](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_audit.json) |このイニシアチブには、Azure セキュリティ ベンチマークの推奨事項のサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/azsecbm](https://aka.ms/azsecbm) を参照してください。 |136 |6.0.0-preview |
+|[Azure セキュリティ ベンチマーク](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_audit.json) |このイニシアチブには、Azure セキュリティ ベンチマークの推奨事項のサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/azsecbm](https://aka.ms/azsecbm) を参照してください。 |136 |6.1.0-preview |
 |[カナダ連邦の PBMM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CanadaFederalPBMM_audit.json) |このイニシアチブには、カナダ連邦 PBMM コントロールのサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/canadafederalpbmm-blueprint](https://aka.ms/canadafederalpbmm-blueprint) を参照してください。 |60 |3.0.0 |
-|[CIS Microsoft Azure Foundations Benchmark 1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0_audit.json) |このイニシアチブには、CIS Microsoft Azure Foundations Benchmark の推奨事項のサブセットに対応する監査ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/cisazure-blueprint](https://aka.ms/cisazure-blueprint) を参照してください。 |87 |7.0.0 |
+|[CIS Microsoft Azure Foundations Benchmark 1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0_audit.json) |このイニシアチブには、CIS Microsoft Azure Foundations Benchmark の推奨事項のサブセットに対応する監査ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/cisazure-blueprint](https://aka.ms/cisazure-blueprint) を参照してください。 |87 |7.1.0 |
 |[FedRAMP High](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_H_audit.json) |このイニシアチブには、FedRAMP H コントロールのサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/fedramph-blueprint](https://aka.ms/fedramph-blueprint) を参照してください。 |72 |3.0.0 |
 |[FedRAMP (中)](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_M_audit.json) |このイニシアチブには、FedRAMP M コントロールのサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/fedrampm-blueprint](https://aka.ms/fedrampm-blueprint) を参照してください。 |62 |3.0.0 |
-|[HITRUST/HIPAA](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/HIPAA_HITRUST_audit.json) |このイニシアチブには、HITRUST/HIPAA コントロールのサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/hipaa-blueprint](https://aka.ms/hipaa-blueprint) を参照してください。 |121 |4.0.0 |
+|[HITRUST/HIPAA](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/HIPAA_HITRUST_audit.json) |このイニシアチブには、HITRUST/HIPAA コントロールのサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/hipaa-blueprint](https://aka.ms/hipaa-blueprint) を参照してください。 |121 |4.1.0 |
 |[IRS1075 September 2016](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/IRS1075_audit.json) |このイニシアチブには、IRS1075 (2016 年 9 月) コントロールのサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/irs1075-blueprint](https://aka.ms/irs1075-blueprint) を参照してください。 |62 |3.0.0 |
 |[ISO 27001:2013](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/ISO27001_2013_audit.json) |このイニシアチブには、ISO 27001:2013 コントロールのサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/iso27001-blueprint](https://aka.ms/iso27001-blueprint) を参照してください。 |53 |3.0.0 |
 |[アメリカ映画協会 (MPAA)](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/Media_audit.json) |このイニシアティブには、アメリカ映画協会 (MPAA) のセキュリティとガイドラインのコントロールのサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/mpaa-blueprint](https://aka.ms/mpaa-blueprint) を参照してください。 |36 |3.0.0-preview |
-|[NIST SP 800-171 R2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/NIST800-171_audit.json) |このイニシアティブには、NIST SP 800-171 R2 要件のサブセットに対応する監査および仮想マシン拡張機能ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/nist800171r2-blueprint](https://aka.ms/nist800171r2-blueprint) を参照してください。 |78 |4.0.0-preview |
+|[NIST SP 800-171 R2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/NIST800-171_audit.json) |このイニシアティブには、NIST SP 800-171 R2 要件のサブセットに対応する監査および仮想マシン拡張機能ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/nist800171r2-blueprint](https://aka.ms/nist800171r2-blueprint) を参照してください。 |78 |4.1.0-preview |
 |[NIST SP 800-53 R4](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/NIST80053_audit.json) |このイニシアティブには、NIST SP 800-53 R4 コントロールのサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/nist80053-blueprint](https://aka.ms/nist80053-blueprint) を参照してください。 |790 |3.0.0 |
 |[PCI v3.2.1:2018](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/PCIv3_2_1_2018_audit.json) |このイニシアティブには、PCI v3.2.1:2018 コントロールのサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/pciv321-init](https://aka.ms/pciv321-init) を参照してください。 |39 |2.0.0-preview |
 |[SWIFT CSP-CSCF v2020](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/SWIFTv2020_audit.json) |このイニシアチブには、SWIFT CSP-CSCF v2020 コントロールのサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/swift-blueprint](https://aka.ms/swift-blueprint) を参照してください。 |61 |3.0.0-preview |

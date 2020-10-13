@@ -1,7 +1,7 @@
 ---
-title: JavaScript シングルページ アプリのチュートリアル | Azure
+title: チュートリアル:認証に Microsoft ID プラットフォームを使用する JavaScript シングルページ アプリを作成する | Azure
 titleSuffix: Microsoft identity platform
-description: このチュートリアルでは、JavaScript シングルページ アプリ (SPA) で、Microsoft ID プラットフォームによって発行されるアクセス トークンを必要とする API を呼び出す方法について説明します。
+description: このチュートリアルでは、Microsoft ID プラットフォームを使用してユーザーのサインインを処理する JavaScript シングルページ アプリ (SPA) を作成し、アクセス トークンを取得して、そのユーザーに代わって Microsoft Graph API を呼び出します。
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -12,52 +12,48 @@ ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 728c0b4dadfa23b2d52e773928a3f78df27068b6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 027305d953a24de17e62aa74b33b72494b03e652
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256826"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825918"
 ---
-# <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>ユーザーをサインインして、JavaScript シングルページ アプリケーション (SPA) から Microsoft Graph API を呼び出す
+# <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>チュートリアル:ユーザーをサインインして、JavaScript シングルページ アプリケーション (SPA) から Microsoft Graph API を呼び出す
 
-このガイドでは、JavaScript のシングルページ アプリケーション (SPA) で次のことを行う方法について説明します。
-- 個人用アカウントと職場または学校アカウントへのサインイン
-- アクセス トークンの取得
-- *Microsoft ID プラットフォーム エンドポイント*のアクセス トークンを必要とする Microsoft Graph API などの API の呼び出し
+このチュートリアルでは、個人用 Microsoft アカウントまたは職場および学校アカウントを使用してユーザーをサインインさせるシングルページ アプリケーション (SPA) を JavaScript で構築してから、Microsoft Graph API を呼び出すためのアクセス トークンを取得します。
+
+このチュートリアルの内容:
+
+> [!div class="checklist"]
+> * `npm` を使用して JavaScript プロジェクトを作成する
+> * Azure portal でアプリケーションを登録する
+> * ユーザーのサインインとサインアウトをサポートするコードを追加する
+> * Microsoft Graph API を呼び出すコードを追加する
+> * アプリケーションをテストする
 
 >[!TIP]
 > このチュートリアルでは MSAL.js v1.x を使用します。これは、シングルページ アプリケーションに対して暗黙的な許可フローを使用するように制限されています。 すべての新しいアプリケーションでは代わりに、[PKCE および CORS がサポートされる MSAL.js 2.x と承認コード フロー](tutorial-v2-javascript-auth-code.md)を使用することをお勧めします。
+
+## <a name="prerequisites"></a>前提条件
+
+* ローカル Web サーバーを実行するための [Node.js](https://nodejs.org/en/download/)。
+* プロジェクト ファイルを編集するためのエディター ([Visual Studio Code](https://code.visualstudio.com/download) など)。
+* 最新の Web ブラウザー このチュートリアルで作成するアプリでは、[ES6](http://www.ecma-international.org/ecma-262/6.0/) 規則が使用されているため、**Internet Explorer** は**サポートされていません**。
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>このガイドで生成されたサンプル アプリの動作
 
 ![このチュートリアルで生成されたサンプル アプリの動作の紹介](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
 
-### <a name="more-information"></a>詳細情報
+このガイドで作成したサンプル アプリケーションにより、JavaScript SPA で、Microsoft Graph API、または Microsoft ID プラットフォーム エンドポイントのトークンを受け取る Web API に対してクエリを実行できるようになります。 このシナリオでは、ユーザーのサインイン後に、アクセス トークンが要求され、Authorization ヘッダーを介して HTTP 要求に追加されます。 このトークンは、**MS Graph API** からユーザーのプロファイルとメールを取得する際に使用します。
 
-このガイドで作成したサンプル アプリケーションにより、JavaScript SPA で、Microsoft Graph API、または Microsoft ID プラットフォーム エンドポイントのトークンを受け取る Web API に対してクエリを実行できるようになります。 このシナリオでは、ユーザーのサインイン後に、アクセス トークンが要求され、Authorization ヘッダーを介して HTTP 要求に追加されます。 このトークンは、**MS Graph API** からユーザーのプロファイルとメールを取得する際に使用します。 トークンの取得と更新は、**Microsoft Authentication Library (MSAL) for JavaScript** で処理されます。
-
-### <a name="libraries"></a>ライブラリ
-
-このガイドでは、次のライブラリを使用します。
-
-|ライブラリ|説明|
-|---|---|
-|[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|JavaScript 用 Microsoft Authentication Library|
+トークンの取得と更新は、[Microsoft Authentication Library (MSAL) for JavaScript](https://github.com/AzureAD/microsoft-authentication-library-for-js) で処理されます。
 
 ## <a name="set-up-your-web-server-or-project"></a>Web サーバーまたはプロジェクトの設定
 
 > 代わりにこのサンプルのプロジェクトをダウンロードすることもできます。 [プロジェクト ファイルのダウンロード](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)
 >
 > コード サンプルを実行する前に構成する場合は、[構成手順](#register-your-application)に進んでください。
-
-## <a name="prerequisites"></a>前提条件
-
-* このチュートリアルを実行するには、[Node.js](https://nodejs.org/en/download/)、[.NET Core](https://www.microsoft.com/net/core)、[Visual Studio 2017](https://www.visualstudio.com/downloads/) と統合された IIS Express などのローカル Web サーバーが必要です。
-
-* このガイドの手順は、Node.js で構築された Web サーバーに基づいています。 統合開発環境 (IDE) としては [Visual Studio Code](https://code.visualstudio.com/download) の使用をお勧めします。
-
-* 最新の Web ブラウザー この JavaScript サンプルでは [ES6](http://www.ecma-international.org/ecma-262/6.0/) の規約を使用しているため、**Internet Explorer** はサポート**されません**。
 
 ## <a name="create-your-project"></a>プロジェクトを作成する
 
@@ -76,7 +72,7 @@ ms.locfileid: "91256826"
    npm install morgan --save
    ```
 
-1. `index.js` という名前の .js ファイルを作成し、次のコードを追加します。
+1. `server.js` という名前の .js ファイルを作成し、次のコードを追加します。
 
    ```JavaScript
    const express = require('express');
@@ -283,7 +279,7 @@ ms.locfileid: "91256826"
 
 > ### <a name="set-a-redirect-url-for-nodejs"></a>Node.js でリダイレクト URL を設定する
 >
-> Node.js の場合は、Web サーバーのポートを *index.js* ファイルで設定できます。 このチュートリアルでは、ポート 3000 を使用しますが、使用可能なその他の任意のポートを使用できます。
+> Node.js の場合は、Web サーバーのポートを *server.js* ファイルで設定できます。 このチュートリアルでは、ポート 3000 を使用しますが、使用可能なその他の任意のポートを使用できます。
 >
 > アプリケーション登録情報の中にリダイレクト URL を設定するには、 **[アプリケーションの登録]** ウィンドウに切り替え、以下のいずれかを行います。
 >
@@ -486,8 +482,6 @@ ms.locfileid: "91256826"
    ```
 1. ブラウザーに「 **http://localhost:3000** 」または「 **http://localhost:{port}** 」と入力します。*port* には、実際の Web サーバーのリッスン ポートを指定してください。 *index.html* ファイルの内容と **[サインイン]** ボタンが表示されるはずです。
 
-## <a name="test-your-application"></a>アプリケーションのテスト
-
 ブラウザーに *index.html* ファイルが読み込まれたら、 **[サインイン]** を選択します。 Microsoft ID プラットフォーム エンドポイントにサインインするように求められます。
 
 ![JavaScript SPA アカウント サインイン ウィンドウ](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
@@ -512,3 +506,11 @@ Microsoft Graph API には、ユーザーのプロファイルを読み取るた
 > スコープの数を増やすと、ユーザーは追加の同意を求められることがあります。
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
+## <a name="next-steps"></a>次のステップ
+
+Microsoft ID プラットフォームにおけるシングルページ アプリケーション (SPA) 開発の詳細を、複数のパートから成る一連のシナリオで参照してください。
+
+> [!div class="nextstepaction"]
+> [シナリオ:シングルページ アプリ](scenario-spa-overview.md)
+

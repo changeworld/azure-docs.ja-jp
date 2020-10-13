@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 07b5b81dd7e23f25e7bfba90bbab7083090724d4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ce38fd1a9c49a1715562b59fb14667a88ce44181
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018860"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653164"
 ---
 # <a name="tutorial-manipulating-models"></a>チュートリアル:モデルの操作
 
@@ -161,7 +161,7 @@ ms.locfileid: "89018860"
 
 1. アプリケーションをもう一度実行する モデルが読み込まれるとすぐに、リモート オブジェクトの境界が表示されます。 以下のような値が表示されます。
 
-     ![境界が更新されたところ](./media/updated-bounds.png)
+     ![リモート オブジェクトの境界の例を示すスクリーンショット。](./media/updated-bounds.png)
 
 Unity オブジェクトで境界を厳密に指定して、ローカル **BoxCollider** を構成しました。 この境界を利用すれば、ローカルにレンダリングされたオブジェクトと同じ方法を使用して、ビジュアル化とインタラクションを実行することができます。 たとえば、トランスフォームや物理演算などを変更するスクリプトです。
 

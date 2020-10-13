@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 397197c2ab3ba4f135912eab800f1abd7ab73a0f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 729427dac174037c8750af7ab0f6cb17fa4d4c1e
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88531080"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741475"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bitabiz"></a>チュートリアル: Azure Active Directory と BitaBIZ の統合
 
@@ -132,15 +132,15 @@ BitaBIZ で Azure AD シングル サインオンを構成するには、次の�
 
 2. **[SETUP ADMIN]\(管理設定\)** をクリックします。
 
-    ![BitaBIZ 構成](./media/bitabiz-tutorial/settings1.png)
+    ![スクリーンショットは、[Setup Admin]\(管理設定\) が選択されているブラウザー ウィンドウの一部を示します。](./media/bitabiz-tutorial/settings1.png)
 
 3. **[値の追加]** セクションで **[Microsoft integrations]\(Microsoft 統合\)** をクリックします。
 
-    ![BitaBIZ 構成](./media/bitabiz-tutorial/settings2.png)
+    ![スクリーンショットは、[Microsoft integrations]\(Microsoft 統合\) が選択されている [値の追加] を示します。](./media/bitabiz-tutorial/settings2.png)
 
 4. 下にスクロールして、 **[Microsoft Azure AD (シングル サインオンを有効にする)]** セクションに移動し、次の手順を実行します。
 
-    ![BitaBIZ 構成](./media/bitabiz-tutorial/settings3.png)
+    ![スクリーンショットは、この手順で説明されている情報を入力する [Microsoft Azure AD] セクションを示します。](./media/bitabiz-tutorial/settings3.png)
 
     a. **[Entity ID]\(エンティティ ID\) (Azure AD では "識別子")** ボックスの値をコピーし、Azure portal の **[基本的な SAML 構成]** セクションの **[識別子]** ボックスに貼り付けます。 
 
@@ -218,19 +218,19 @@ BitaBIZ の場合、プロビジョニングは手動で行います。
 
 2. **[SETUP ADMIN]\(管理設定\)** をクリックします。
 
-    ![BitaBIZ の [ユーザーの追加]](./media/bitabiz-tutorial/settings1.png)
+    ![スクリーンショットは、[Setup Admin]\(管理設定\) が選択されているブラウザー ウィンドウの一部を示します。](./media/bitabiz-tutorial/settings1.png)
 
 3. **[組織]** セクションの **[ユーザーの追加]** をクリックします。
 
-    ![BitaBIZ の [ユーザーの追加]](./media/bitabiz-tutorial/user1.png)
+    ![スクリーンショットは、[ユーザーの追加] が選択されている [組織] セクションを示します。](./media/bitabiz-tutorial/user1.png)
 
 4. **[Add new employee]\(新しい従業員の追加\)** をクリックします。
 
-    ![BitaBIZ の [ユーザーの追加]](./media/bitabiz-tutorial/user2.png)
+    ![スクリーンショットは、[Add new employee]\(新しい従業員の追加\) が選択されている [ユーザーの追加] を示します。](./media/bitabiz-tutorial/user2.png)
 
 5. **[Add new employee]\(新しい従業員の追加\)** ダイアログ ページで、次の手順に従います。
 
-    ![BitaBIZ の [ユーザーの追加]](./media/bitabiz-tutorial/user3.png)
+    ![スクリーンショットは、この手順で説明されている情報を入力するページを示します。](./media/bitabiz-tutorial/user3.png)
 
     a. **[名]** ボックスに、ユーザーの名を入力します (この例では Britta)。
 

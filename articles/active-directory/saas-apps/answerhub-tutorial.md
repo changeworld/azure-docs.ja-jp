@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: d453cc5300dc658e4b33bb0591100deae5f34aef
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 69ebc238d36223a4287ae1de668f60f9c2db014a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544742"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713592"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>チュートリアル: Azure Active Directory と AnswerHub の統合
 
@@ -140,7 +140,7 @@ AnswerHub で Azure AD のシングル サインオンを構成およびテス�
 
 4. **[IDP Config]\(IDP 構成\)** タブで、以下の手順を実行します。
 
-    ![[User and Groups] (ユーザーとグループ) タブ](./media/answerhub-tutorial/ic785172.png "[SAML 設定]")  
+    ![このスクリーンショットは、[User and Groups]\(ユーザーとグループ\) タブが選択された状態の AnswerHub ページを示しています。](./media/answerhub-tutorial/ic785172.png "[SAML 設定]")  
   
     a. **[IDP Login URL]\(IDP ログイン URL\)** ボックスに、Azure portal からコピーした **[ログイン URL]** を貼り付けます。
   
@@ -231,7 +231,7 @@ Azure AD ユーザーが AnswerHub にサインインできるようにするに
 
 4. 左側のウィンドウの **[Manage Users]\(ユーザーの管理\)** セクションで、 **[Create or import users]\(ユーザーの作成またはインポート\)** を選択し、 **[Users & Groups]\(ユーザーとグループ\)** を選択します。
 
-   ![[User and Groups] (ユーザーとグループ) タブ](./media/answerhub-tutorial/ic785175.png "ユーザーとグループ")
+   ![このスクリーンショットは、[User and Groups]\(ユーザーとグループ\) タブが選択され、[Create or import users]\(ユーザーの作成またはインポート\) リンクがコールアウトされた状態の AnswerHub ページを示しています。](./media/answerhub-tutorial/ic785175.png "ユーザーとグループ")
 
 5. 追加したい有効な Azure AD アカウントの**メール アドレス**、**ユーザー名**、**パスワード**を適切なボックスに入力してから、 **[Save]\(保存\)** を選択します。
 

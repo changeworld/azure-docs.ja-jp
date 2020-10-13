@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 0e9ccb3f4308a1a75a715a16ab4c1a2887b0a915
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4ffaad77a34be66d06f8f0033731d0496e444e52
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522049"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715893"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alibaba-cloud-service-role-based-sso"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Alibaba Cloud Service (ロールベースの SSO) の統合
 
@@ -132,11 +132,11 @@ Alibaba Cloud Service (ロールベースの SSO) で Azure AD SSO を構成し�
 
 1. **[ユーザーとグループ]** タブでユーザーの一覧から u2 を選択し、 **[選択]** をクリックします。 次に、 **[割り当て]** をクリックします。
 
-    ![テストの構成](./media/alibaba-cloud-service-role-based-sso-tutorial/test01.png)
+    ![このスクリーンショットは、[Users and groups]\(ユーザーおよびグループ\) で何も選択されていない状態の Alibaba の [割り当ての追加] ペインを示しています。](./media/alibaba-cloud-service-role-based-sso-tutorial/test01.png)
 
 1. 割り当てられたロールを表示し、Alibaba Cloud Service (ロールベースの SSO) をテストします。
 
-    ![テストの構成](./media/alibaba-cloud-service-role-based-sso-tutorial/test02.png)
+    ![このスクリーンショットは、ユーザー u2 に割り当てられたロールを示しています。](./media/alibaba-cloud-service-role-based-sso-tutorial/test02.png)
 
     >[!NOTE]
     >ユーザー (u2) を割り当てると、作成したロールがユーザーに自動的に関連付けられます。 複数のロールを作成した場合、必要に応じて、適切なロールをユーザーに関連付ける必要があります。 ロールベースの SSO を Azure AD から複数の Alibaba Cloud アカウントに実装する場合、前の手順を繰り返します。
@@ -164,25 +164,25 @@ Alibaba Cloud Service (ロールベースの SSO) で Azure AD SSO を構成し�
 
     b. **[アクセス許可の変更]** をクリックし、ロールの作成に必要なアクセス許可を取得します。
 
-    ![Graph の構成](./media/alibaba-cloud-service-role-based-sso-tutorial/graph01.png)
+    ![このスクリーンショットは、[modify permissions]\(アクセス許可の変更\) リンクを備えた [Graph Explorer Authentication]\(Graph エクスプローラー認証\) を示しています。](./media/alibaba-cloud-service-role-based-sso-tutorial/graph01.png)
 
     c. 次の画像のように、一覧から次のアクセス許可を選択し、 **[アクセス許可の変更]** をクリックします。
 
-    ![Graph の構成](./media/alibaba-cloud-service-role-based-sso-tutorial/graph02.png)
+    ![このスクリーンショットは、選択するアクセス許可を示しています: Directory.AccessAsUser.All、Directory.Read.All、および Directory.ReadWrite.All。](./media/alibaba-cloud-service-role-based-sso-tutorial/graph02.png)
 
     >[!NOTE]
     >アクセス許可が付与されたら、Graph Explorer に再度ログオンします。
 
     d. Graph Explorer ページで、最初のドロップダウン リストから **[GET]** を選択し、2 つ目のドロップダウン リストから **[ベータ]** を選択します。 ドロップダウン リストの横にあるフィールドに「`https://graph.microsoft.com/beta/servicePrincipals`」と入力し、 **[クエリの実行]** を実行します。
 
-    ![Graph の構成](./media/alibaba-cloud-service-role-based-sso-tutorial/graph03.png)
+    ![このスクリーンショットは、[GET] と [beta]\(ベータ\) が選択され、[クエリの実行] ボタンがコールアウトされた状態の Graph エクスプローラーを示しています。](./media/alibaba-cloud-service-role-based-sso-tutorial/graph03.png)
 
     >[!NOTE]
     >複数のディレクトリを使用している場合、クエリのフィールドに「`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`」と入力できます。
 
     e. **[Response Preview]\(応答プレビュー\)** セクションで、後で使用するために "Service Principal" から appRoles プロパティを抽出します。
 
-    ![Graph の構成](./media/alibaba-cloud-service-role-based-sso-tutorial/graph05.png)
+    ![このスクリーンショットは、[Response Preview]\(応答プレビュー\) セクションのプレーンテキストを示しています。ここで、appRoles プロパティを取得できます。](./media/alibaba-cloud-service-role-based-sso-tutorial/graph05.png)
 
     >[!NOTE]
     >クエリのフィールドに「`https://graph.microsoft.com/beta/servicePrincipals/<objectID>`」と入力することで appRoles プロパティを見つけることができます。 `objectID` は Azure AD **プロパティ** ページからコピーしたオブジェクト ID であることにご注目ください。
@@ -234,19 +234,19 @@ Alibaba Cloud Service (ロールベースの SSO) で Azure AD SSO を構成し�
 
 1. Azure portal で、 **[Alibaba Cloud Service (ロールベースの SSO)]** ページに移動し、 **[シングル サインオン]** を選択し、 **[テスト]** をクリックします。
 
-    ![テストの構成](./media/alibaba-cloud-service-role-based-sso-tutorial/test03.png)
+    ![このスクリーンショットは、[テスト] ボタンを備える [Alibaba Cloud Service によるシングル サインオンのテスト] を示しています。](./media/alibaba-cloud-service-role-based-sso-tutorial/test03.png)
 
 2. **[現在のユーザーとしてサインイン]** をクリックします。
 
-    ![テストの構成](./media/alibaba-cloud-service-role-based-sso-tutorial/test04.png)
+    ![このスクリーンショットは、[現在のユーザーとしてサインイン] リンクを示しています。](./media/alibaba-cloud-service-role-based-sso-tutorial/test04.png)
 
 3. アカウント選択ページで、u2 を選択します。
 
-    ![テストの構成](./media/alibaba-cloud-service-role-based-sso-tutorial/test05.png)
+    ![このスクリーンショットは、ユーザー u2 が選択された状態の S S O サインオン オプションを示しています。](./media/alibaba-cloud-service-role-based-sso-tutorial/test05.png)
 
 4. 次のページが表示され、ロールベースの SSO に成功したことが示されます。
 
-    ![テストの構成](./media/alibaba-cloud-service-role-based-sso-tutorial/test06.png)
+    ![このスクリーンショットは、テストが成功したことを示す [Products & Services]\(製品とサービス\) ページを示しています。 ](./media/alibaba-cloud-service-role-based-sso-tutorial/test06.png)
 
 ## <a name="additional-resources"></a>その他のリソース
 

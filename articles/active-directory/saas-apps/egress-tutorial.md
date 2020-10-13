@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/29/2020
 ms.author: jeedes
-ms.openlocfilehash: adbadc14caad6594dc30f0f9fd9cb1cb49b47888
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7d3dccc8d34852b967bffcf57e2f3609d9786279
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544266"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826680"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-egress"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Egress の統合
 
@@ -146,7 +146,7 @@ Egress で Azure AD SSO を構成してテストするには、次の構成要�
 
 1. 左側のメニューで **[Invite Users]\(ユーザーの招待\)** をクリックし、 **[Invite Single User]\(単一ユーザーの招待\)** をクリックしてユーザーを追加します。
 
-    ![Egress でテスト ユーザーが作成されます](./media/egress-tutorial/create-user-1.PNG)
+    ![[Invite Single User]\(単一ユーザーの招待\) ボタンが選択されている [Invite Users]\(ユーザーの招待\) ページを示すスクリーンショット。](./media/egress-tutorial/create-user-1.PNG)
 
 1. 必須フィールドに入力し、 **[Invite]\(招待\)** をクリックします。
 

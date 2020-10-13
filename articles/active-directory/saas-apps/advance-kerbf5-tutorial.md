@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: jeedes
-ms.openlocfilehash: cbcbcb6a649969c5348c3ad445ff43f10372faeb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4c4ee5fa6281b0a137bd46a9d3a82db22adc77ea
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91306177"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760772"
 ---
 # <a name="tutorial-azure-active-directory-ad-single-sign-on-sso-integration-with-f5"></a>チュートリアル:Azure Active Directory (AD) シングル サインオン (SSO) と F5 の統合
 
@@ -146,38 +146,38 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
 
 1. 後で設定プロセスで使用するメタデータ証明書を F5 (Advanced Kerberos) にインポートする必要があります。 **[System]\(システム\) > [Certificate Management]\(証明書の管理\) > [Traffic Certificate Management]\(トラフィック証明書の管理\) > [SSL Certificate List]\(SSL 証明書の一覧\)** の順に移動します。 右隅にある **[Import]\(インポート\)** をクリックします。
 
-    ![F5 (Advanced Kerberos) の構成](./media/advance-kerbf5-tutorial/configure01.png)
+    ![メタデータ証明書をインポートするための [インポート] ボタンが強調表示されたスクリーンショット。](./media/advance-kerbf5-tutorial/configure01.png)
  
 1. SAML IDP を設定するには、 **[Access]\(アクセス\) > [Federation]\(フェデレーション\) > [SAML Service Provider]\(SAML サービス プロバイダー\) > [Create]\(作成\) > [From Metadata]\(メタデータから\)** の順に移動します。
 
-    ![F5 (Advanced Kerberos) の構成](./media/advance-kerbf5-tutorial/configure02.png)
+    ![メタデータから SAML IDP を作成する方法が強調表示されたスクリーンショット。](./media/advance-kerbf5-tutorial/configure02.png)
 
-    ![F5 (Advanced Kerberos) の構成](./media/advance-kerbf5-tutorial/configure03.png)
+    ![[Create New SAML IdP Connector]\(新しい SAML IdP コネクタの作成\) 画面を示すスクリーンショット。](./media/advance-kerbf5-tutorial/configure03.png)
  
     ![F5 (Advanced Kerberos) の構成](./media/advance-kerbf5-tutorial/configure04.png)
 
-    ![F5 (Advanced Kerberos) の構成](./media/advance-kerbf5-tutorial/configure05.png)
+    ![[Single Sign On Service Settings]\(シングル サインオン サービス設定\) 画面を示すスクリーンショット。 ](./media/advance-kerbf5-tutorial/configure05.png)
  
 1. タスク 3 からアップロードした証明書を指定します
 
-    ![F5 (Advanced Kerberos) の構成](./media/advance-kerbf5-tutorial/configure06.png)
+    ![[Edit SAML IdP Connector]\(SAML IdP コネクタの編集\) 画面を示すスクリーンショット。](./media/advance-kerbf5-tutorial/configure06.png)
 
-    ![F5 (Advanced Kerberos) の構成](./media/advance-kerbf5-tutorial/configure07.png)
+    ![[Single Logout Service Settings]\(シングル ログアウト サービス設定\) 画面を示すスクリーンショット。](./media/advance-kerbf5-tutorial/configure07.png)
 
  1. SAML SP を設定するには、 **[Access]\(アクセス\) > [Federation]\(フェデレーション\) > [SAML Service Federation]\(SAML サービス フェデレーション\) > [Local SP Services]\(ローカル SP サービス\) > [Create]\(作成\)** の順に移動します。
 
-    ![F5 (Advanced Kerberos) の構成](./media/advance-kerbf5-tutorial/configure08.png)
+    ![ローカル SP サービスを作成する画面を示すスクリーンショット。](./media/advance-kerbf5-tutorial/configure08.png)
  
 1. **[OK]** をクリックします。
 
 1. SP 構成を選択し、 **[Bind/UnBind IdP Connectors]\(IdP コネクタのバインドまたはバインド解除\)** をクリックします。
 
-     ![F5 (Advanced Kerberos) の構成](./media/advance-kerbf5-tutorial/configure09.png)
+     ![SAML サービス プロバイダーを示すスクリーンショット。](./media/advance-kerbf5-tutorial/configure09.png)
  
  
 1. **[Add New Row]\(新しい行の追加\)** をクリックし、前の手順で作成した**外部 IdP コネクタ**を選択します。
 
-    ![F5 (Advanced Kerberos) の構成](./media/advance-kerbf5-tutorial/configure10.png)
+    ![[Add New Row]\(新しい行の追加\) ボタンが強調表示されているスクリーンショット。](./media/advance-kerbf5-tutorial/configure10.png)
  
 1. Kerberos SSO を構成する場合は、 **[Access]\(アクセス\) > [Single Sign-on]\(シングル サインオン\) > [Kerberos]**
 
@@ -188,54 +188,54 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
 
     •   ユーザー領域のソース  `session.logon.last.domain`
 
-    ![F5 (Advanced Kerberos) の構成](./media/advance-kerbf5-tutorial/configure11.png)
+    ![[Access]\(アクセス\) > [Single Sign On]\(シングル サインオン\) が強調表示されているスクリーンショット。](./media/advance-kerbf5-tutorial/configure11.png)
 
 1. アクセス プロファイルを構成する場合は、 **[Access]\(アクセス\) > [Profile/Policies]\(プロファイルまたはポリシー\) > [Access Profile (per session policies)]\(アクセス プロファイル (セッション ポリシーごと)\)** 。
 
-    ![F5 (Advanced Kerberos) の構成](./media/advance-kerbf5-tutorial/configure12.png)
+    ![[Profiles/Policies]\(プロファイルおよびポリシー\) メニュー オプションの下の [Properties]\(プロパティ\) タブが強調表示されているスクリーンショット。](./media/advance-kerbf5-tutorial/configure12.png)
 
-    ![F5 (Advanced Kerberos) の構成](./media/advance-kerbf5-tutorial/configure13.png)
+    ![[SSO/Auth Domains]\(SSO および認証ドメイン\) タブを示すスクリーンショット。](./media/advance-kerbf5-tutorial/configure13.png)
 
-    ![F5 (Advanced Kerberos) の構成](./media/advance-kerbf5-tutorial/configure14.png)
+    ![[Access Policy]\(アクセス ポリシー\) タブを示すスクリーンショット。](./media/advance-kerbf5-tutorial/configure14.png)
 
-    ![F5 (Advanced Kerberos) の構成](./media/advance-kerbf5-tutorial/configure15.png)
+    ![[Access Policy]\(アクセス ポリシー\) の [Properties]\(プロパティ\) タブを示すスクリーンショット。](./media/advance-kerbf5-tutorial/configure15.png)
 
-    ![F5 (Advanced Kerberos) の構成](./media/advance-kerbf5-tutorial/configure16.png)
+    ![[Variable Assign]\(変数割り当て\) のプロパティを示すスクリーンショット。](./media/advance-kerbf5-tutorial/configure16.png)
  
     * session.logon.last.usernameUPN   expr {[mcget {session.saml.last.identity}]}
 
     * session.ad.lastactualdomain  TEXT superdemo.live
 
-    ![F5 (Advanced Kerberos) の構成](./media/advance-kerbf5-tutorial/configure17.png)
+    ![[AD Query]\(AD クエリ\) のプロパティを示すスクリーンショット。](./media/advance-kerbf5-tutorial/configure17.png)
 
     * (userPrincipalName=%{session.logon.last.usernameUPN})
 
-    ![F5 (Advanced Kerberos) の構成](./media/advance-kerbf5-tutorial/configure18.png)
+    ![[Branch Rules]\(分岐の規則\) タブと [Check Account]\(アカウントの確認\) 規則を示すスクリーンショット。](./media/advance-kerbf5-tutorial/configure18.png)
 
-    ![F5 (Advanced Kerberos) の構成](./media/advance-kerbf5-tutorial/configure19.png)
+    ![カスタム変数およびカスタム式のテキスト ボックスを示すスクリーンショット。](./media/advance-kerbf5-tutorial/configure19.png)
 
     * session.logon.last.username  expr { "[mcget {session.ad.last.attr.sAMAccountName}]" }
 
-    ![F5 (Advanced Kerberos) の構成](./media/advance-kerbf5-tutorial/configure20.png)
+    ![[SSO Token Name]\(SSO トークン名\) および [SSO Token Password]\(SSO トークン パスワード\) フィールドの値を示すスクリーンショット。](./media/advance-kerbf5-tutorial/configure20.png)
 
     * mcget {session.logon.last.username}
     * mcget {session.logon.last.password}
 
 1. 新しいノードを追加する場合は、 **[Local Traffic]\(ローカル トラフィック\) > [Nodes]\(ノード\) > [Node List]\(ノードの一覧\) > [+]** 。
 
-    ![F5 (Advanced Kerberos) の構成](./media/advance-kerbf5-tutorial/configure21.png)
+    ![[Local Traffic]\(ローカル トラフィック\) > [Nodes]\(ノード\) が強調表示されているスクリーンショット。](./media/advance-kerbf5-tutorial/configure21.png)
  
 1. 新しいプールを追加するには、 **[Local Traffic]\(ローカル トラフィック\) > [Pools]\(プール\) > [Pool List]\(プールの一覧\) > [Create]\(作成\)** の順に移動します。
 
-     ![F5 (Advanced Kerberos) の構成](./media/advance-kerbf5-tutorial/configure22.png)
+     ![[Local Traffic]\(ローカル トラフィック\) > [Pools]\(プール\) が強調表示されているスクリーンショット。](./media/advance-kerbf5-tutorial/configure22.png)
 
  1. 新しい仮想サーバーを作成するには、 **[Local Traffic]\(ローカル トラフィック\) > [Virtual Servers]\(仮想サーバー\) > [Virtual Server List]\(仮想サーバーの一覧\) > [+]** の順に移動します。
 
-    ![F5 (Advanced Kerberos) の構成](./media/advance-kerbf5-tutorial/configure23.png)
+    ![[Local Traffic]\(ローカル トラフィック\) > [Virtual Servers]\(仮想サーバー\) が強調表示されているスクリーンショット。](./media/advance-kerbf5-tutorial/configure23.png)
 
 1. 前の手順で作成したアクセス プロファイルを指定します。
 
-    ![F5 (Advanced Kerberos) の構成](./media/advance-kerbf5-tutorial/configure24.png) 
+    ![作成したアクセス プロファイルを指定する場所を示すスクリーンショット。](./media/advance-kerbf5-tutorial/configure24.png) 
 
 ### <a name="setting-up-kerberos-delegation"></a>Kerberos 委任の設定 
 
@@ -264,15 +264,15 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
     * F5 委任アカウントに適切な委任を設定します。
     * 次の例では、FRP-App1.superdemo.live アプリの KCD に対して APM 委任アカウントが構成されています。
 
-        ![F5 (Advanced Kerberos) の構成](./media/advance-kerbf5-tutorial/configure25.png)
+        ![[APM Delegation Account Properties]\(APM 委任アカウント プロパティ\) > [Delegation]\(委任\) タブを示すスクリーンショット。](./media/advance-kerbf5-tutorial/configure25.png)
 
 1. 上記の参照ドキュメントの[ここ](https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-authentication-single-sign-on-11-5-0/2.html)に記載されているように詳細を指定します
 
 1. 付録 - SAML – F5 BIG-IP 変数マッピングを以下に示します。
 
-    ![F5 (Advanced Kerberos) の構成](./media/advance-kerbf5-tutorial/configure26.png)
+    ![[Overview]\(概要\) > [Active Sessions]\(アクティブなセッション\) タブを示すスクリーンショット。](./media/advance-kerbf5-tutorial/configure26.png)
 
-    ![F5 (Advanced Kerberos) の構成](./media/advance-kerbf5-tutorial/configure27.png) 
+    ![変数とセッション キーを示すスクリーンショット。](./media/advance-kerbf5-tutorial/configure27.png) 
 
 1. 既定の SAML 属性の完全な一覧を次に示します。 GivenName は、次の文字列を使用して表されます。
 `session.saml.last.attr.name.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2018
 ms.author: jeedes
-ms.openlocfilehash: a544a98b3a9d5c2d30f95240325e91018d2f40c9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fc0303cc4ba00f873ecfea7b02047ebd1bff7da1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549614"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713875"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>チュートリアル: Azure Active Directory と ArcGIS Enterprise の統合
 
@@ -104,7 +104,7 @@ Azure AD への ArcGIS Enterprise の統合を構成するには、ギャラリ�
 
 4. **[基本的な SAML 構成]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
 
-    ![[ArcGIS Enterprise Domain and URLs]\(ArcGIS Enterprise のドメインと URL\) のシングル サインオン情報](common/idp-intiated.png)
+    ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、`<EXTERNAL_DNS_NAME>.portal` の形式で URL を入力します。
 
@@ -112,7 +112,7 @@ Azure AD への ArcGIS Enterprise の統合を構成するには、ギャラリ�
 
     c. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[ArcGIS Enterprise Domain and URLs]\(ArcGIS Enterprise のドメインと URL\) のシングル サインオン情報](common/metadata-upload-additional-signon.png)
+    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** ボックスに、`https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin` という形式で URL を入力します。
 
@@ -138,19 +138,19 @@ Azure AD への ArcGIS Enterprise の統合を構成するには、ギャラリ�
 
 1. **[組織] > [設定の編集]** を選択します。
 
-    ![ArcGIS Enterprise の構成](./media/arcgisenterprise-tutorial/configure1.png)
+    ![ArcGIS Enterprise の [組織] タブが表示されているスクリーンショット。[設定の編集] が強調表示されています。](./media/arcgisenterprise-tutorial/configure1.png)
 
 1. **[セキュリティ]** タブを選びます。
 
-    ![ArcGIS Enterprise の構成](./media/arcgisenterprise-tutorial/configure2.png)
+    ![[セキュリティ] タブが選択されている画面のスクリーンショット。](./media/arcgisenterprise-tutorial/configure2.png)
 
 1. **[Enterprise Logins via SAML]\(SAML 経由でのエンタープライズ ログイン\)** セクションまで下へスクロールして **[SET ENTERPRISE LOGIN]\(エンタープライズ ログインの設定\)** を選択します。
 
-    ![ArcGIS Enterprise の構成](./media/arcgisenterprise-tutorial/configure3.png)
+    ![[Set Enterprise Login]\(エンタープライズ ログインの設定\) を選択できる [Enterprise Logins via SAML]\(SAML 経由でのエンタープライズ ログイン\) 画面のスクリーンショット。](./media/arcgisenterprise-tutorial/configure3.png)
 
 1. **[Set Identity Provider]\(ID プロバイダーの設定\)** セクションで、次の手順に従います。
 
-    ![ArcGIS Enterprise の構成](./media/arcgisenterprise-tutorial/configure4.png)
+    ![ここで説明されている手順の実行場所となる [Set Identity Provider]\(ID プロバイダーの設定\) 画面のスクリーンショット。](./media/arcgisenterprise-tutorial/configure4.png)
 
     a. **[名前]** テキスト ボックスに、**Azure Active Directory Test** のような名前を指定します。
 
@@ -158,7 +158,7 @@ Azure AD への ArcGIS Enterprise の統合を構成するには、ギャラリ�
 
     c. **[詳細設定の表示]** をクリックし、**[エンティティ ID]** の値をコピーして、Azure Portal の **[ArcGIS Enterprise Domain and URLs]\(ArcGIS Enterprise のドメインと URL\)** セクションの **[識別子]** テキスト ボックスに貼り付けます。
     
-    ![ArcGIS Enterprise の構成](./media/arcgisenterprise-tutorial/configure5.png)
+    ![エンティティ ID を取得して ID プロバイダーを更新する画面のスクリーンショット。](./media/arcgisenterprise-tutorial/configure5.png)
 
     d. **[ID プロバイダーの更新]** をクリックします。
 

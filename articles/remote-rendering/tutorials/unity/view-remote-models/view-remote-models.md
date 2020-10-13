@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7509a17127f04220a8e8450a81627354b28bdacd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bcee951dc85d9c317bad481ebdb91ff6c761371c
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006467"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653674"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>チュートリアル:リモートでレンダリングされたモデルの表示
 
@@ -76,10 +76,10 @@ Unity プロジェクト フォルダーにある `Packages/manifest.json` フ�
 
 マニフェストに変更を加えて保存すると、Unity が自動的に更新されます。 *[プロジェクト]* ウィンドウにパッケージが読み込まれたことを確認します。
 
-:::image type="content" source="./media/confirm-packages.png" alt-text="パッケージのインポートを確認する":::
+:::image type="content" source="./media/confirm-packages.png" alt-text="新しい Unity プロジェクト":::
 
 パッケージが読み込まれない場合は、Unity コンソールでエラーを確認してください。 エラーが発生していないのに、 **[Packages]\(パッケージ\)** フォルダーにパッケージが表示されない場合は、パッケージの表示トグル ボタンを確認します。
-![Unity カメラのプロパティ](./media/unity-package-visibility.png)
+![パッケージ表示トグル ボタンを指し示す矢印を含むスクリーンショット。](./media/unity-package-visibility.png)
 
 ## <a name="ensure-you-have-the-latest-version-of-the-package"></a>最新バージョンのパッケージがあることを確認する
 
@@ -120,7 +120,7 @@ Unity プロジェクト フォルダーにある `Packages/manifest.json` フ�
 
 1. 左側のリスト メニューから **[Graphics]\(グラフィックス\)** を選択します
 1. **[Scriptable Rendering Pipeline]\(スクリプト可能なレンダリング パイプライン\)** 設定を *[HybridRenderingPipeline]* に変更します。
-    ![プロジェクトのグラフィックス設定の変更](./media/settings-graphics-render-pipeline.png)\
+    ![[Scriptable Rendering Pipeline]\(スクリプト可能なレンダリング パイプライン\) 設定を HybridRenderingPipeline に変更する場所を示すスクリーンショット。](./media/settings-graphics-render-pipeline.png)\
     場合によっては、この UI では、パッケージで使用できるパイプラインの種類の一覧が表示されないことがあります。 その場合は、手動で *HybridRenderingPipeline* アセットをフィールドにドラッグする必要があります。
     ![プロジェクトのグラフィックス設定の変更](./media/hybrid-rendering-pipeline.png)
 
@@ -597,7 +597,7 @@ public async void InitializeSessionService()
 1. コンポーネントを独自のイベントにドラッグして、それ自体を参照するようにします。
 ![認証をバイパスする](./media/bypass-authorization-add-event.png)\
 1. ドロップダウンで **[RemoteRenderingCoordinator]、[BypassAuthorization]** の順に選択します。
-![認証をバイパスする](./media/bypass-authorization-event.png)
+![選択された RemoteRenderingCoordinator.BypassAuthorization オプションを表示するスクリーンショット。](./media/bypass-authorization-event.png)
 
 ## <a name="create-or-join-a-remote-session"></a>リモート セッションの作成または参加を行う
 
@@ -724,7 +724,7 @@ private void LateUpdate()
 
 必要な基盤が整ったら、モデルをリモート セッションに読み込んで、フレームの受信を開始する準備ができています。
 
-![ARR スタック 4](./media/remote-render-stack-4.png)
+![モデルを読み込んで表示するまでのプロセス フローを示す図。](./media/remote-render-stack-4.png)
 
 **LoadModel** メソッドは、モデル パス、進行状況ハンドラー、および親変換を受け入れるように設計されています。 これらの引数を使用して、リモート セッションにモデルを読み込み、読み込みの進行状況に応じてユーザーを更新し、親変換に基づいてリモートでレンダリングされるモデルの向きを指定します。
 

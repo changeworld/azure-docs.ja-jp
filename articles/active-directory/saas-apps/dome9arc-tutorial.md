@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 9435a0eccff5a3be0dc9e0a2844bae175d753a5c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: be9d0503b411577d4ecbfb65c4bdae42a571d175
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555880"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775142"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-cloudguard-dome9-arc"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Check Point CloudGuard Dome9 Arc の統合
 
@@ -156,11 +156,11 @@ Check Point CloudGuard Dome9 Arc で Azure AD の SSO を構成してテスト�
 
 2. 右上隅にある **[プロファイル設定]** をクリックしてから、 **[アカウント設定]** をクリックします。 
 
-    ![Check Point CloudGuard Dome9 Arc の構成](./media/dome9arc-tutorial/configure1.png)
+    ![[アカウント設定] が選択されている [プロファイル設定] メニューを示すスクリーンショット。](./media/dome9arc-tutorial/configure1.png)
 
 3. **[SSO]** に移動し、 **[有効にする]** をクリックします。
 
-    ![Check Point CloudGuard Dome9 Arc の構成](./media/dome9arc-tutorial/configure2.png)
+    ![[S S O] タブと [有効にする] が選択されていることを示すスクリーンショット。](./media/dome9arc-tutorial/configure2.png)
 
 4. [SSO 構成] セクションで、次の手順を実行します。
 
@@ -189,11 +189,11 @@ Azure AD ユーザーが Check Point CloudGuard Dome9 Arc にサインインで�
 
 2. **[Users & Roles] (ユーザーとロール)** をクリックしてから、 **[ユーザー]** をクリックします。
 
-    ![従業員の追加](./media/dome9arc-tutorial/user1.png)
+    ![[ユーザー] アクションが選択されている [Users & Roles]\(ユーザーとロール\) を示すスクリーンショット。](./media/dome9arc-tutorial/user1.png)
 
 3. **[ユーザーの追加]** をクリックします。
 
-    ![従業員の追加](./media/dome9arc-tutorial/user2.png)
+    ![[ユーザーの追加] ボタンが選択されている [Users & Roles]\(ユーザーとロール\) を示すスクリーンショット。](./media/dome9arc-tutorial/user2.png)
 
 4. **[Create User]** セクションで、次の手順に従います。
 

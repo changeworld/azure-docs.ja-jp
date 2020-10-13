@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: jeedes
-ms.openlocfilehash: 2fadfac3fe9e66c3a05e2cceed19def607ff72c3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d980e0a5dd4b042f919775c205a20ea69e51f0bd
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88539285"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91709004"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-123formbuilder-sso"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と 123FormBuilder SSO の統合
 
@@ -133,7 +133,7 @@ Azure AD への 123FormBuilder SSO の統合を構成するには、ギャラリ
 
 1. **123FormBuilder SSO** 側からシングル サインオンを構成するために、[https://www.123formbuilder.com/form-2709121/](https://www.123formbuilder.com/form-2709121/) に移動して次の手順を実行します。
 
-    ![Configure single sign-on](./media/123formbuilder-tutorial/submit.png) 
+    ![[SSO SAML - Identity Provider]\(SSO SAML - ID プロバイダー\) 構成画面が表示されているスクリーンショット。](./media/123formbuilder-tutorial/submit.png) 
 
     a. **[Email]\(電子メール\)** ボックスに、ユーザーの電子メール (`B.Simon@Contoso.com` など) を入力します。
 

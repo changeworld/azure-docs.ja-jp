@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 94b8a26a398ad8604a469486185d805fcbb6a8b2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 43189d40c57ce6c300904207edc35011b0581ecc
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545405"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740450"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bluejeans-for-azure-ad"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と BlueJeans for Azure AD の統合
 
@@ -150,7 +150,7 @@ BlueJeans for Azure AD に対する Azure AD SSO を構成してテストする�
 
 2. **[管理] \> [グループ設定] \> [セキュリティ]** の順にクリックします。
 
-    ![管理者](./media/bluejeans-tutorial/ic785868.png "[Admin]")
+    ![このスクリーンショットは、[Admin]\(管理\) タブが選択され、[Group Setting]\(グループ設定\) と [Security]\(セキュリティ\) が選択された状態のブラウザー ウィンドウの一部を示しています。](./media/bluejeans-tutorial/ic785868.png "[Admin]")
 
 3. **[セキュリティ]** セクションで、次の手順を実行します。
 
@@ -192,14 +192,14 @@ BlueJeans for Azure AD に対する Azure AD SSO を構成してテストする�
 
 2. **[管理] \> [ユーザーの管理] \> [ユーザーの追加]** の順にクリックします。
 
-    ![管理者](./media/bluejeans-tutorial/ic785877.png "[Admin]")
+    ![このスクリーンショットは、[Admin]\(管理\) タブが選択され、[Manage Users]\(ユーザーの管理\) と [Add Users]\(ユーザーの追加\) が選択された状態のブラウザー ウィンドウの一部を示しています。](./media/bluejeans-tutorial/ic785877.png "[Admin]")
 
     > [!IMPORTANT]
     > **[ユーザーの追加]** タブは、 **[セキュリティ]** タブの **[自動プロビジョニングの有効化]** がオフになっている場合にのみ使用できます。
 
 3. **[ユーザーの追加]** セクションで、次の手順を実行します。
 
-    ![ユーザーの追加](./media/bluejeans-tutorial/ic785886.png "ユーザーの追加")
+    ![このスクリーンショットは、[Add user]\(ユーザーの追加\) セクションを示しています。ここで、この手順で説明されている情報を入力します。](./media/bluejeans-tutorial/ic785886.png "ユーザーの追加")
 
     a. **[名]** ボックスに、ユーザーの名を入力します (例: **B**)。
 
@@ -219,7 +219,7 @@ BlueJeans for Azure AD に対する Azure AD SSO を構成してテストする�
 
     i. **[続行]** をクリックします。
 
-    ![ユーザーの追加](./media/bluejeans-tutorial/ic785887.png "ユーザーの追加")
+    ![このスクリーンショットは、[ユーザーの追加] ボタンが選択された状態のユーザーの追加セクションを示しています。ここで、設定と機能を確認できます。](./media/bluejeans-tutorial/ic785887.png "ユーザーの追加")
 
     J. **[ユーザーの追加]** をクリックします。
 

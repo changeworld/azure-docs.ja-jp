@@ -3,12 +3,12 @@ title: クラウドへのイベントベースのビデオ記録とクラウド�
 description: このチュートリアルでは、Azure Live Video Analytics on Azure IoT Edge を使用して、イベントベースのビデオ録画をクラウドに記録し、これをクラウドから再生する方法について説明します。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 05ee34770cacdcda270afced13373a61ba83e13a
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: a2388a01544d2158e7ca6f1692df07b14ec03a93
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89568568"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773554"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>チュートリアル:クラウドへのイベントベースのビデオ記録とクラウドからの再生
 
@@ -63,7 +63,7 @@ ms.locfileid: "89568568"
 また、特定のイベントが発生したことを推論サービスが検出した場合にのみ記録をトリガーすることもできます。 このチュートリアルでは、高速道路を移動する車両のビデオを使用し、トラックが検出されるたびにビデオ クリップを記録します。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/event-based-video-recording-tutorial/overview.svg" alt-text="メディア グラフ":::
+> :::image type="content" source="./media/event-based-video-recording-tutorial/overview.svg" alt-text="メディア グラフ&quot;:::
 
 図は、目的のシナリオを実現する[メディア グラフ](media-graph-concept.md)と追加のモジュールを視覚的に表現したものです。 次の 4 つの IoT Edge モジュールが関与します。
 
@@ -75,30 +75,26 @@ ms.locfileid: "89568568"
 図に示すように、メディア グラフ内の [RTSP ソース](media-graph-concept.md#rtsp-source) ノードを使用して、シミュレートされた (高速道路のトラフィックの) ライブ ビデオをキャプチャし、そのビデオを次の 2 つのパスに送信します。
 
 * 最初のパスは、指定された (低減された) フレーム レートでビデオ フレームを出力する[フレーム レート フィルター プロセッサ](media-graph-concept.md#frame-rate-filter-processor) ノードです。 これらのビデオ フレームは、HTTP 拡張ノードに送信されます。 次に、このノードは、フレームを画像として AI モジュール YOLO v3 (オブジェクト検出器) にリレーします。 ノードは結果 (モデルによって検出されたオブジェクト、つまりトラフィック内の車両) を受信します。 次に、HTTP 拡張ノードは、IoT Hub メッセージ シンク ノードを介して IoT Edge ハブに結果を発行します。
-* objectCounter モジュールは、IoT Edge ハブからメッセージを受信するように設定されています。このメッセージには、オブジェクト検出の結果 (トラフィック内の車両) が含まれています。 モジュールではこれらのメッセージを確認して、(設定を介して構成された) 特定の種類のオブジェクトを探します。 そのようなオブジェクトが見つかると、このモジュールから IoT Edge ハブにメッセージが送信されます。 "物体が見つかった" というこれらのメッセージは、メディア グラフの IoT Hub ソース ノードにルーティングされます。 このようなメッセージを受信すると、メディア グラフの IoT Hub ソース ノードによって[シグナル ゲート プロセッサ](media-graph-concept.md#signal-gate-processor) ノードがトリガーされます。 すると、構成された時間だけシグナル ゲート プロセッサ ノードが開きます。 その間、ビデオがゲートを通じて資産シンク ノードに流れます。 ライブ ストリームのその部分は、[資産シンク](media-graph-concept.md#asset-sink) ノードを介して、ご自分の Azure Media Services アカウント内の[資産](terminology.md#asset)に記録されます。
+* objectCounter モジュールは、IoT Edge ハブからメッセージを受信するように設定されています。このメッセージには、オブジェクト検出の結果 (トラフィック内の車両) が含まれています。 モジュールではこれらのメッセージを確認して、(設定を介して構成された) 特定の種類のオブジェクトを探します。 そのようなオブジェクトが見つかると、このモジュールから IoT Edge ハブにメッセージが送信されます。 &quot;物体が見つかった" というこれらのメッセージは、メディア グラフの IoT Hub ソース ノードにルーティングされます。 このようなメッセージを受信すると、メディア グラフの IoT Hub ソース ノードによって[シグナル ゲート プロセッサ](media-graph-concept.md#signal-gate-processor) ノードがトリガーされます。 すると、構成された時間だけシグナル ゲート プロセッサ ノードが開きます。 その間、ビデオがゲートを通じて資産シンク ノードに流れます。 ライブ ストリームのその部分は、[資産シンク](media-graph-concept.md#asset-sink) ノードを介して、ご自分の Azure Media Services アカウント内の[資産](terminology.md#asset)に記録されます。
 
 ## <a name="set-up-your-development-environment"></a>開発環境を設定する
 
 開始する前に、[前提条件](#prerequisites)の 3 番目の項目が完了していることを確認してください。 リソース設定スクリプトが完了したら、中かっこを選択してフォルダー構造を展開します。 ~/clouddrive/lva-sample ディレクトリに、いくつかのファイルが作成されていることがわかります。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/quickstarts/clouddrive.png" alt-text="アプリ設定":::
+> :::image type="content" source="./media/quickstarts/clouddrive.png" alt-text="メディア グラフ&quot;:::
 
-このチュートリアルで注目するのは、次のファイルです。
+図は、目的のシナリオを実現する[メディア グラフ](media-graph-concept.md)と追加のモジュールを視覚的に表現したものです。 次の 4 つの IoT Edge モジュールが関与します。
 
-* **~/clouddrive/lva-sample/edge-deployment/.env**: Visual Studio Code がエッジ デバイスにモジュールをデプロイするために使用するプロパティが格納されています。
-* **~/clouddrive/lva-sample/appsetting.json**: サンプル コードを実行するために、Visual Studio Code によって使用されます。
+* IoT Edge モジュール上の Live Video Analytics。
+* HTTP エンドポイントの背後で AI モデルを実行する Edge モジュール。 この AI モジュールでは、さまざまな種類のオブジェクトを検出できる [YOLO v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) モデルを使用します。
+* オブジェクトをカウントおよびフィルター処理するためのカスタム モジュール (図では、Object Counter (オブジェクト カウンター) となっています)。 このチュートリアルでは、オブジェクト カウンターを作成してデプロイします。
+* RTSP カメラをシミュレートする[RTSP シミュレーター モジュール](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)。
+    
+図に示すように、メディア グラフ内の [RTSP ソース](media-graph-concept.md#rtsp-source) ノードを使用して、シミュレートされた (高速道路のトラフィックの) ライブ ビデオをキャプチャし、そのビデオを次の 2 つのパスに送信します。
 
-これらのファイルは、以下の手順で必要になります。
-
-1. GitHub リンク https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp からリポジトリをクローンします。
-1. Visual Studio Code を起動して、リポジトリをダウンロードしたフォルダーを開きます。
-1. Visual Studio Code で、src/cloud-to-device-console-app フォルダーに移動し、**appsettings.json** という名前のファイルを作成します。 このファイルには、プログラムを実行するために必要な設定が格納されています。
-1. ~/clouddrive/lva-sample/appsettings.json ファイルの内容をコピーします。 このテキストは次のようになっています。
-
-    ```
-    {  
-        "IoThubConnectionString" : "HostName=xxx.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX",  
+* 最初のパスは、指定された (低減された) フレーム レートでビデオ フレームを出力する[フレーム レート フィルター プロセッサ](media-graph-concept.md#frame-rate-filter-processor) ノードです。 これらのビデオ フレームは、HTTP 拡張ノードに送信されます。 次に、このノードは、フレームを画像として AI モジュール YOLO v3 (オブジェクト検出器) にリレーします。 ノードは結果 (モデルによって検出されたオブジェクト、つまりトラフィック内の車両) を受信します。 次に、HTTP 拡張ノードは、IoT Hub メッセージ シンク ノードを介して IoT Edge ハブに結果を発行します。
+* objectCounter モジュールは、IoT Edge ハブからメッセージを受信するように設定されています。このメッセージには、オブジェクト検出の結果 (トラフィック内の車両) が含まれています。 モジュールではこれらのメッセージを確認して、(設定を介して構成された) 特定の種類のオブジェクトを探します。 そのようなオブジェクトが見つかると、このモジュールから IoT Edge ハブにメッセージが送信されます。 &quot;物体が見つかった" : "HostName=xxx.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX",  
         "deviceId" : "lva-sample-device",  
         "moduleId" : "lvaEdge"  
     }
@@ -155,7 +151,19 @@ IoT Edge 配置マニフェスト内でルートを宣言する方法に関す�
 Visual Studio Code を使用し、[こちらの手順](../../iot-edge/tutorial-develop-for-linux.md#build-and-push-your-solution)に従って Docker にサインインします。 次に、 **[Build and Push IoT Edge Solution]\(IoT Edge ソリューションをビルドしてプッシュする\)** を選択します。 この手順では、src/edge/deployment.objectCounter.template.json を使用します。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/event-based-video-recording-tutorial/build-push.png" alt-text="IoT Edge ソリューションをビルドしてプッシュする":::
+> :::image type="content" source="./media/event-based-video-recording-tutorial/build-push.png" alt-text="メディア グラフ&quot;:::
+
+図は、目的のシナリオを実現する[メディア グラフ](media-graph-concept.md)と追加のモジュールを視覚的に表現したものです。 次の 4 つの IoT Edge モジュールが関与します。
+
+* IoT Edge モジュール上の Live Video Analytics。
+* HTTP エンドポイントの背後で AI モデルを実行する Edge モジュール。 この AI モジュールでは、さまざまな種類のオブジェクトを検出できる [YOLO v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) モデルを使用します。
+* オブジェクトをカウントおよびフィルター処理するためのカスタム モジュール (図では、Object Counter (オブジェクト カウンター) となっています)。 このチュートリアルでは、オブジェクト カウンターを作成してデプロイします。
+* RTSP カメラをシミュレートする[RTSP シミュレーター モジュール](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)。
+    
+図に示すように、メディア グラフ内の [RTSP ソース](media-graph-concept.md#rtsp-source) ノードを使用して、シミュレートされた (高速道路のトラフィックの) ライブ ビデオをキャプチャし、そのビデオを次の 2 つのパスに送信します。
+
+* 最初のパスは、指定された (低減された) フレーム レートでビデオ フレームを出力する[フレーム レート フィルター プロセッサ](media-graph-concept.md#frame-rate-filter-processor) ノードです。 これらのビデオ フレームは、HTTP 拡張ノードに送信されます。 次に、このノードは、フレームを画像として AI モジュール YOLO v3 (オブジェクト検出器) にリレーします。 ノードは結果 (モデルによって検出されたオブジェクト、つまりトラフィック内の車両) を受信します。 次に、HTTP 拡張ノードは、IoT Hub メッセージ シンク ノードを介して IoT Edge ハブに結果を発行します。
+* objectCounter モジュールは、IoT Edge ハブからメッセージを受信するように設定されています。このメッセージには、オブジェクト検出の結果 (トラフィック内の車両) が含まれています。 モジュールではこれらのメッセージを確認して、(設定を介して構成された) 特定の種類のオブジェクトを探します。 そのようなオブジェクトが見つかると、このモジュールから IoT Edge ハブにメッセージが送信されます。 &quot;物体が見つかった":::
 
 このアクションにより、オブジェクト カウント用の objectCounter モジュールがビルドされ、お使いの Azure Container Registry に画像がプッシュされます。
 
@@ -164,7 +172,19 @@ Visual Studio Code を使用し、[こちらの手順](../../iot-edge/tutorial-d
 この手順により、src/edge/config/deployment.objectCounter.amd64.json に IoT Edge 配置マニフェストが作成されます。 そのファイルを右クリックし、 **[Create Deployment for Single Device]\(単一デバイスのデプロイの作成\)** を選択します。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/quickstarts/create-deployment-single-device.png" alt-text="単一デバイスのデプロイを作成する":::
+> :::image type="content" source="./media/quickstarts/create-deployment-single-device.png" alt-text="メディア グラフ&quot;:::
+
+図は、目的のシナリオを実現する[メディア グラフ](media-graph-concept.md)と追加のモジュールを視覚的に表現したものです。 次の 4 つの IoT Edge モジュールが関与します。
+
+* IoT Edge モジュール上の Live Video Analytics。
+* HTTP エンドポイントの背後で AI モデルを実行する Edge モジュール。 この AI モジュールでは、さまざまな種類のオブジェクトを検出できる [YOLO v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) モデルを使用します。
+* オブジェクトをカウントおよびフィルター処理するためのカスタム モジュール (図では、Object Counter (オブジェクト カウンター) となっています)。 このチュートリアルでは、オブジェクト カウンターを作成してデプロイします。
+* RTSP カメラをシミュレートする[RTSP シミュレーター モジュール](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)。
+    
+図に示すように、メディア グラフ内の [RTSP ソース](media-graph-concept.md#rtsp-source) ノードを使用して、シミュレートされた (高速道路のトラフィックの) ライブ ビデオをキャプチャし、そのビデオを次の 2 つのパスに送信します。
+
+* 最初のパスは、指定された (低減された) フレーム レートでビデオ フレームを出力する[フレーム レート フィルター プロセッサ](media-graph-concept.md#frame-rate-filter-processor) ノードです。 これらのビデオ フレームは、HTTP 拡張ノードに送信されます。 次に、このノードは、フレームを画像として AI モジュール YOLO v3 (オブジェクト検出器) にリレーします。 ノードは結果 (モデルによって検出されたオブジェクト、つまりトラフィック内の車両) を受信します。 次に、HTTP 拡張ノードは、IoT Hub メッセージ シンク ノードを介して IoT Edge ハブに結果を発行します。
+* objectCounter モジュールは、IoT Edge ハブからメッセージを受信するように設定されています。このメッセージには、オブジェクト検出の結果 (トラフィック内の車両) が含まれています。 モジュールではこれらのメッセージを確認して、(設定を介して構成された) 特定の種類のオブジェクトを探します。 そのようなオブジェクトが見つかると、このモジュールから IoT Edge ハブにメッセージが送信されます。 &quot;物体が見つかった":::
 
 これが Live Video Analytics on IoT Edge を使用する最初のチュートリアルである場合は、IoT Hub 接続文字列を入力するように Visual Studio Code から求められます。 これは、appsettings.json ファイルからコピーできます。
 
@@ -174,7 +194,19 @@ Visual Studio Code を使用し、[こちらの手順](../../iot-edge/tutorial-d
 30 秒ほど経過したら、Visual Studio Code の左下のセクションで Azure IoT Hub を最新の情報に更新してください。 そうすると、lvaEdge、rtspsim、yolov3、および objectCounter という名前の 4 つのモジュールがデプロイされていることがわかります。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/event-based-video-recording-tutorial/iot-hub.png" alt-text="デプロイされた 4 つのモジュール":::
+> :::image type="content" source="./media/event-based-video-recording-tutorial/iot-hub.png" alt-text="メディア グラフ&quot;:::
+
+図は、目的のシナリオを実現する[メディア グラフ](media-graph-concept.md)と追加のモジュールを視覚的に表現したものです。 次の 4 つの IoT Edge モジュールが関与します。
+
+* IoT Edge モジュール上の Live Video Analytics。
+* HTTP エンドポイントの背後で AI モデルを実行する Edge モジュール。 この AI モジュールでは、さまざまな種類のオブジェクトを検出できる [YOLO v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) モデルを使用します。
+* オブジェクトをカウントおよびフィルター処理するためのカスタム モジュール (図では、Object Counter (オブジェクト カウンター) となっています)。 このチュートリアルでは、オブジェクト カウンターを作成してデプロイします。
+* RTSP カメラをシミュレートする[RTSP シミュレーター モジュール](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)。
+    
+図に示すように、メディア グラフ内の [RTSP ソース](media-graph-concept.md#rtsp-source) ノードを使用して、シミュレートされた (高速道路のトラフィックの) ライブ ビデオをキャプチャし、そのビデオを次の 2 つのパスに送信します。
+
+* 最初のパスは、指定された (低減された) フレーム レートでビデオ フレームを出力する[フレーム レート フィルター プロセッサ](media-graph-concept.md#frame-rate-filter-processor) ノードです。 これらのビデオ フレームは、HTTP 拡張ノードに送信されます。 次に、このノードは、フレームを画像として AI モジュール YOLO v3 (オブジェクト検出器) にリレーします。 ノードは結果 (モデルによって検出されたオブジェクト、つまりトラフィック内の車両) を受信します。 次に、HTTP 拡張ノードは、IoT Hub メッセージ シンク ノードを介して IoT Edge ハブに結果を発行します。
+* objectCounter モジュールは、IoT Edge ハブからメッセージを受信するように設定されています。このメッセージには、オブジェクト検出の結果 (トラフィック内の車両) が含まれています。 モジュールではこれらのメッセージを確認して、(設定を介して構成された) 特定の種類のオブジェクトを探します。 そのようなオブジェクトが見つかると、このモジュールから IoT Edge ハブにメッセージが送信されます。 &quot;物体が見つかった":::
 
 ## <a name="prepare-for-monitoring-events"></a>イベントを監視するための準備をする
 
@@ -185,62 +217,55 @@ objectCounter モジュールおよび Live Video Analytics on IoT Edge モジ�
 1. lva-sample-device ファイルを右クリックし、 **[組み込みイベント エンドポイントの監視を開始します]** を選択します。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/quickstarts/start-monitoring-iothub-events.png" alt-text="組み込みイベント エンドポイントの監視を開始する":::
+    > :::image type="content" source="./media/quickstarts/start-monitoring-iothub-events.png" alt-text="メディア グラフ&quot;:::
+
+図は、目的のシナリオを実現する[メディア グラフ](media-graph-concept.md)と追加のモジュールを視覚的に表現したものです。 次の 4 つの IoT Edge モジュールが関与します。
+
+* IoT Edge モジュール上の Live Video Analytics。
+* HTTP エンドポイントの背後で AI モデルを実行する Edge モジュール。 この AI モジュールでは、さまざまな種類のオブジェクトを検出できる [YOLO v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) モデルを使用します。
+* オブジェクトをカウントおよびフィルター処理するためのカスタム モジュール (図では、Object Counter (オブジェクト カウンター) となっています)。 このチュートリアルでは、オブジェクト カウンターを作成してデプロイします。
+* RTSP カメラをシミュレートする[RTSP シミュレーター モジュール](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)。
     
-    ## <a name="run-the-program"></a>プログラムの実行
+図に示すように、メディア グラフ内の [RTSP ソース](media-graph-concept.md#rtsp-source) ノードを使用して、シミュレートされた (高速道路のトラフィックの) ライブ ビデオをキャプチャし、そのビデオを次の 2 つのパスに送信します。
 
-1. Visual Studio Code で、src/cloud-to-device-console-app/operations.json に移動します。
-
-1. **GraphTopologySet** ノードで、次を編集します。
-
-    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json"`
+* 最初のパスは、指定された (低減された) フレーム レートでビデオ フレームを出力する[フレーム レート フィルター プロセッサ](media-graph-concept.md#frame-rate-filter-processor) ノードです。 これらのビデオ フレームは、HTTP 拡張ノードに送信されます。 次に、このノードは、フレームを画像として AI モジュール YOLO v3 (オブジェクト検出器) にリレーします。 ノードは結果 (モデルによって検出されたオブジェクト、つまりトラフィック内の車両) を受信します。 次に、HTTP 拡張ノードは、IoT Hub メッセージ シンク ノードを介して IoT Edge ハブに結果を発行します。
+* objectCounter モジュールは、IoT Edge ハブからメッセージを受信するように設定されています。このメッセージには、オブジェクト検出の結果 (トラフィック内の車両) が含まれています。 モジュールではこれらのメッセージを確認して、(設定を介して構成された) 特定の種類のオブジェクトを探します。 そのようなオブジェクトが見つかると、このモジュールから IoT Edge ハブにメッセージが送信されます。 &quot;物体が見つかった":::
     
-1. 次に、**GraphInstanceSet** ノードと **GraphTopologyDelete** ノードで、次のように編集します。
+## <a name="run-the-program"></a>プログラムの実行
 
-    `"topologyName" : "EVRtoAssetsOnObjDetect"`
-1. F5 キーを押して、デバッグ セッションを開始します。 **[ターミナル]** ウィンドウにメッセージが出力されます。
+1. Visual Studio Code で **[拡張機能]** タブを開き (または Ctrl + Shift + X キーを押し)、Azure IoT Hub を検索します。
+1. マウスの右ボタンをクリックし、 **[拡張機能の設定]** を選択します。
 
-1. operations.json ファイルは、GraphTopologyList および GraphInstanceList の呼び出しで開始されます。 前回のクイックスタートまたはチュートリアルの後にリソースをクリーンアップした場合は、このアクションによって空のリストが返された後、一時停止して、以下のように **Enter** キーの入力待ち状態になります。
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="メディア グラフ&quot;:::
 
-    ```
-    --------------------------------------------------------------------------
-    Executing operation GraphTopologyList
-    -----------------------  Request: GraphTopologyList  --------------------------------------------------
-    {
-      "@apiVersion": "1.0"
-    }
-    ---------------  Response: GraphTopologyList - Status: 200  ---------------
-    {
-      "value": []
-    }
-    --------------------------------------------------------------------------
-    Executing operation WaitForInput
-    Press Enter to continue
-    ```
+図は、目的のシナリオを実現する[メディア グラフ](media-graph-concept.md)と追加のモジュールを視覚的に表現したものです。 次の 4 つの IoT Edge モジュールが関与します。
 
-1. **[ターミナル]** ウィンドウで **Enter** キーを押すと、次に示す一連のダイレクト メソッド呼び出しが実行されます。
-   * 前の topologyUrl を使用した GraphTopologySet の呼び出し
-   * 次の body を使用した GraphInstanceSet の呼び出し
-     
-        ```
-        {
-          "@apiVersion": "1.0",
-          "name": "Sample-Graph-1",
-          "properties": {
-            "topologyName": "EVRtoAssetsOnObjDetect",
-            "description": "Sample graph description",
-            "parameters": [
-              {
-                "name": "rtspUrl",
-                "value": "rtsp://rtspsim:554/media/camera-300s.mkv"
-              },
-              {
-                "name": "rtspUserName",
-                "value": "testuser"
-              },
-              {
-                "name": "rtspPassword",
-                "value": "testpassword"
+* IoT Edge モジュール上の Live Video Analytics。
+* HTTP エンドポイントの背後で AI モデルを実行する Edge モジュール。 この AI モジュールでは、さまざまな種類のオブジェクトを検出できる [YOLO v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) モデルを使用します。
+* オブジェクトをカウントおよびフィルター処理するためのカスタム モジュール (図では、Object Counter (オブジェクト カウンター) となっています)。 このチュートリアルでは、オブジェクト カウンターを作成してデプロイします。
+* RTSP カメラをシミュレートする[RTSP シミュレーター モジュール](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)。
+    
+図に示すように、メディア グラフ内の [RTSP ソース](media-graph-concept.md#rtsp-source) ノードを使用して、シミュレートされた (高速道路のトラフィックの) ライブ ビデオをキャプチャし、そのビデオを次の 2 つのパスに送信します。
+
+* 最初のパスは、指定された (低減された) フレーム レートでビデオ フレームを出力する[フレーム レート フィルター プロセッサ](media-graph-concept.md#frame-rate-filter-processor) ノードです。 これらのビデオ フレームは、HTTP 拡張ノードに送信されます。 次に、このノードは、フレームを画像として AI モジュール YOLO v3 (オブジェクト検出器) にリレーします。 ノードは結果 (モデルによって検出されたオブジェクト、つまりトラフィック内の車両) を受信します。 次に、HTTP 拡張ノードは、IoT Hub メッセージ シンク ノードを介して IoT Edge ハブに結果を発行します。
+* objectCounter モジュールは、IoT Edge ハブからメッセージを受信するように設定されています。このメッセージには、オブジェクト検出の結果 (トラフィック内の車両) が含まれています。 モジュールではこれらのメッセージを確認して、(設定を介して構成された) 特定の種類のオブジェクトを探します。 そのようなオブジェクトが見つかると、このモジュールから IoT Edge ハブにメッセージが送信されます。 &quot;物体が見つかった":::
+1. [Show Verbose Message]\(詳細メッセージの表示\) を検索して有効にします。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="メディア グラフ&quot;:::
+
+図は、目的のシナリオを実現する[メディア グラフ](media-graph-concept.md)と追加のモジュールを視覚的に表現したものです。 次の 4 つの IoT Edge モジュールが関与します。
+
+* IoT Edge モジュール上の Live Video Analytics。
+* HTTP エンドポイントの背後で AI モデルを実行する Edge モジュール。 この AI モジュールでは、さまざまな種類のオブジェクトを検出できる [YOLO v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) モデルを使用します。
+* オブジェクトをカウントおよびフィルター処理するためのカスタム モジュール (図では、Object Counter (オブジェクト カウンター) となっています)。 このチュートリアルでは、オブジェクト カウンターを作成してデプロイします。
+* RTSP カメラをシミュレートする[RTSP シミュレーター モジュール](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)。
+    
+図に示すように、メディア グラフ内の [RTSP ソース](media-graph-concept.md#rtsp-source) ノードを使用して、シミュレートされた (高速道路のトラフィックの) ライブ ビデオをキャプチャし、そのビデオを次の 2 つのパスに送信します。
+
+* 最初のパスは、指定された (低減された) フレーム レートでビデオ フレームを出力する[フレーム レート フィルター プロセッサ](media-graph-concept.md#frame-rate-filter-processor) ノードです。 これらのビデオ フレームは、HTTP 拡張ノードに送信されます。 次に、このノードは、フレームを画像として AI モジュール YOLO v3 (オブジェクト検出器) にリレーします。 ノードは結果 (モデルによって検出されたオブジェクト、つまりトラフィック内の車両) を受信します。 次に、HTTP 拡張ノードは、IoT Hub メッセージ シンク ノードを介して IoT Edge ハブに結果を発行します。
+* objectCounter モジュールは、IoT Edge ハブからメッセージを受信するように設定されています。このメッセージには、オブジェクト検出の結果 (トラフィック内の車両) が含まれています。 モジュールではこれらのメッセージを確認して、(設定を介して構成された) 特定の種類のオブジェクトを探します。 そのようなオブジェクトが見つかると、このモジュールから IoT Edge ハブにメッセージが送信されます。 &quot;物体が見つかった"
               }
             ]
           }
@@ -251,11 +276,9 @@ objectCounter モジュールおよび Live Video Analytics on IoT Edge モジ�
    * グラフ インスタンスが実行状態であることを表示する GraphInstanceList の 2 回目の呼び出し
      
 1. **[ターミナル]** ウィンドウの出力が、今度は **[続行するには Enter キーを押してください]** というプロンプトで一時停止状態となります。 この時点では **Enter** キーは押さないでください。 上へスクロールして、呼び出したダイレクト メソッドの JSON 応答のペイロードを確認します。
-
-1. ここで Visual Studio Code の **[出力]** ウィンドウに切り替えると、Live Video Analytics on IoT Edge モジュールから IoT Hub にメッセージが送信されているのを確認できます。
+1. ここで Visual Studio Code の **[出力]** ウィンドウに切り替えると、Live Video Analytics on IoT Edge モジュールによって IoT Hub に送信されたメッセージが表示されます。
 
    これらのメッセージについては、次のセクションで説明します。
-     
 1. 引き続きグラフ インスタンスが実行され、ビデオが記録されます。 RTSP シミュレーターによって、ソース ビデオがループ処理され続けます。 次のセクションで説明するように、メッセージを確認します。 次に、インスタンスを停止するには、 **[ターミナル]** ウィンドウに戻り、**Enter** キーを押します。 次の一連の呼び出しが行われて、リソースがクリーンアップされます。
 
    * グラフ インスタンスを非アクティブ化する GraphInstanceDeactivate の呼び出し。
@@ -265,7 +288,7 @@ objectCounter モジュールおよび Live Video Analytics on IoT Edge モジ�
 
 ## <a name="interpret-the-results"></a>結果を解釈する 
 
-メディア グラフを実行すると、Live Video Analytics on IoT Edge モジュールによって、特定の診断イベントと操作イベントが IoT Edge ハブに送信されます。 これらのイベントは、Visual Studio Code の **[出力]** ウィンドウに表示されるメッセージです。 メッセージには、body セクションと applicationProperties セクションが含まれます。 これらのセクションが表す内容については、「[IoT Hub メッセージを作成し、読み取る](../../iot-hub/iot-hub-devguide-messages-construct.md)」を参照してください。
+メディア グラフを実行すると、Live Video Analytics on IoT Edge モジュールによって、特定の診断および操作イベントが IoT Edge ハブに送信されます。 これらのイベントは Visual Studio Code の **出力** ウィンドウに表示されるメッセージです。 それらには、body セクションと applicationProperties セクションが存在します。 これらのセクションが表す内容については、「[IoT Hub メッセージを作成し、読み取る](../../iot-hub/iot-hub-devguide-messages-construct.md)」を参照してください。
 
 次のメッセージ内のアプリケーションのプロパティと body の内容は、Live Video Analytics モジュールによって定義されています。
 
@@ -292,9 +315,9 @@ objectCounter モジュールおよび Live Video Analytics on IoT Edge モジ�
 ```
 
 
-* メッセージは診断イベント (MediaSessionEstablished) です。 これは、RTSP ソース ノード (subject) が RTSP シミュレーターとの接続を確立し、(シミュレートされた) ライブ フィードの受信を開始したことを示します。
-* applicationProperties の subject セクションが、メッセージの生成元となったグラフ トポロジ内のノードを参照しています。 このケースでは、RTSP ソース ノードからメッセージが生成されます。
-* applicationProperties の eventType セクションには、これが診断イベントであることが示されています。
+* メッセージは診断イベント (MediaSessionEstablished) です。 これは、RTSP ソース ノード (subject) によって RTSP シミュレーターとの接続が確立され、(シミュレートされた) ライブ フィードの受信が開始されたことを示します。
+* applicationProperties の subject セクションが、メッセージの生成元となったグラフ トポロジ内のノードを参照しています。 このケースでは、RTSP ソース ノードからメッセージが生成されています。
+* applicationProperties の eventType セクションには、これが Diagnostics イベントであることが示されています。
 * eventTime セクションにはイベントの発生時刻が示されています。 これは、トラフィック ビデオ (MKV ファイル) がライブ ストリームとしてモジュールに到達し始めた時刻です。
 * body セクションには、診断イベントに関するデータ (このケースでは [SDP](https://en.wikipedia.org/wiki/Session_Description_Protocol) の詳細) が含まれています。
 
@@ -397,13 +420,37 @@ applicationProperties の subject セクションが、このメッセージの�
 1. **[Media Services]** の一覧で、 **[資産]** を選択します。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/continuous-video-recording-tutorial/assets.png" alt-text="継続的なビデオ記録":::
+    > :::image type="content" source="./media/continuous-video-recording-tutorial/assets.png" alt-text="メディア グラフ&quot;:::
+
+図は、目的のシナリオを実現する[メディア グラフ](media-graph-concept.md)と追加のモジュールを視覚的に表現したものです。 次の 4 つの IoT Edge モジュールが関与します。
+
+* IoT Edge モジュール上の Live Video Analytics。
+* HTTP エンドポイントの背後で AI モデルを実行する Edge モジュール。 この AI モジュールでは、さまざまな種類のオブジェクトを検出できる [YOLO v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) モデルを使用します。
+* オブジェクトをカウントおよびフィルター処理するためのカスタム モジュール (図では、Object Counter (オブジェクト カウンター) となっています)。 このチュートリアルでは、オブジェクト カウンターを作成してデプロイします。
+* RTSP カメラをシミュレートする[RTSP シミュレーター モジュール](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)。
+    
+図に示すように、メディア グラフ内の [RTSP ソース](media-graph-concept.md#rtsp-source) ノードを使用して、シミュレートされた (高速道路のトラフィックの) ライブ ビデオをキャプチャし、そのビデオを次の 2 つのパスに送信します。
+
+* 最初のパスは、指定された (低減された) フレーム レートでビデオ フレームを出力する[フレーム レート フィルター プロセッサ](media-graph-concept.md#frame-rate-filter-processor) ノードです。 これらのビデオ フレームは、HTTP 拡張ノードに送信されます。 次に、このノードは、フレームを画像として AI モジュール YOLO v3 (オブジェクト検出器) にリレーします。 ノードは結果 (モデルによって検出されたオブジェクト、つまりトラフィック内の車両) を受信します。 次に、HTTP 拡張ノードは、IoT Hub メッセージ シンク ノードを介して IoT Edge ハブに結果を発行します。
+* objectCounter モジュールは、IoT Edge ハブからメッセージを受信するように設定されています。このメッセージには、オブジェクト検出の結果 (トラフィック内の車両) が含まれています。 モジュールではこれらのメッセージを確認して、(設定を介して構成された) 特定の種類のオブジェクトを探します。 そのようなオブジェクトが見つかると、このモジュールから IoT Edge ハブにメッセージが送信されます。 &quot;物体が見つかった":::
 1. sampleAssetFromEVR-LVAEdge-{DateTime} という名前の資産が見つかります。 これは、RecordingStarted イベントの outputLocation プロパティに指定されている名前です。 この名前の生成方法は、トポロジ内の assetNamePattern によって決定されます。
 1. 資産を選択します。
 1. 資産の詳細ページで、 **[ストリーミング URL]** テキスト ボックスの下の **[新規作成]** を選択します。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/continuous-video-recording-tutorial/new-asset.png" alt-text="新しい資産":::
+    > :::image type="content" source="./media/continuous-video-recording-tutorial/new-asset.png" alt-text="メディア グラフ&quot;:::
+
+図は、目的のシナリオを実現する[メディア グラフ](media-graph-concept.md)と追加のモジュールを視覚的に表現したものです。 次の 4 つの IoT Edge モジュールが関与します。
+
+* IoT Edge モジュール上の Live Video Analytics。
+* HTTP エンドポイントの背後で AI モデルを実行する Edge モジュール。 この AI モジュールでは、さまざまな種類のオブジェクトを検出できる [YOLO v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) モデルを使用します。
+* オブジェクトをカウントおよびフィルター処理するためのカスタム モジュール (図では、Object Counter (オブジェクト カウンター) となっています)。 このチュートリアルでは、オブジェクト カウンターを作成してデプロイします。
+* RTSP カメラをシミュレートする[RTSP シミュレーター モジュール](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)。
+    
+図に示すように、メディア グラフ内の [RTSP ソース](media-graph-concept.md#rtsp-source) ノードを使用して、シミュレートされた (高速道路のトラフィックの) ライブ ビデオをキャプチャし、そのビデオを次の 2 つのパスに送信します。
+
+* 最初のパスは、指定された (低減された) フレーム レートでビデオ フレームを出力する[フレーム レート フィルター プロセッサ](media-graph-concept.md#frame-rate-filter-processor) ノードです。 これらのビデオ フレームは、HTTP 拡張ノードに送信されます。 次に、このノードは、フレームを画像として AI モジュール YOLO v3 (オブジェクト検出器) にリレーします。 ノードは結果 (モデルによって検出されたオブジェクト、つまりトラフィック内の車両) を受信します。 次に、HTTP 拡張ノードは、IoT Hub メッセージ シンク ノードを介して IoT Edge ハブに結果を発行します。
+* objectCounter モジュールは、IoT Edge ハブからメッセージを受信するように設定されています。このメッセージには、オブジェクト検出の結果 (トラフィック内の車両) が含まれています。 モジュールではこれらのメッセージを確認して、(設定を介して構成された) 特定の種類のオブジェクトを探します。 そのようなオブジェクトが見つかると、このモジュールから IoT Edge ハブにメッセージが送信されます。 &quot;物体が見つかった":::
 1. 開いたウィザードで、既定のオプションをそのまま使用し、 **[追加]** を選択します。 詳細については、[ビデオ再生](video-playback-concept.md)に関するページをご覧ください。
 
     > [!TIP]

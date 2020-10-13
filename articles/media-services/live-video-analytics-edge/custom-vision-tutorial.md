@@ -3,12 +3,12 @@ title: Live Video Analytics on IoT Edge と Azure Custom Vision でライブ ビ
 description: Custom Vision を使用して、おもちゃのトラックを検出できるコンテナー化されたモデルを構築し、Live Video Analytics on IoT Edge (LVA) の AI 拡張機能を使用して、ライブ ビデオ ストリームからおもちゃのトラックを検出するためにそのモデルをエッジにデプロイする方法について説明します。
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 0e980ac73d77b6fbbfdb8178f285904d3bf29920
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5da3186e64dd369dc57a0d5d1b635fc082158765
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90929458"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91804148"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>チュートリアル:Live Video Analytics on IoT Edge と Azure Custom Vision でライブ ビデオを分析する
 
@@ -56,7 +56,6 @@ ms.locfileid: "90929458"
 
 ## <a name="review-the-sample-video"></a>サンプル ビデオを確認する
 
-
 このチュートリアルでは、[おもちゃの車の推論ビデオ](https://lvamedia.blob.core.windows.net/public/t2.mkv/) ファイルを使用してライブ ストリームをシミュレートします。 このビデオは、[VLC media player](https://www.videolan.org/vlc/) などのアプリケーションを使用して確認できます。 Ctrl キーを押しながら N キーを押し、[おもちゃの車の推論ビデオ](https://lvamedia.blob.core.windows.net/public/t2.mkv)へのリンクを貼り付けて、再生を開始します。 ビデオを見ると、36 秒のマーカーで、おもちゃのトラックがビデオに出てくることがわかります。 このカスタム モデルは、この特定のおもちゃのトラックを検出するようにトレーニングされています。 このチュートリアルでは、Live Video Analytics on IoT Edge を使用して、このようなおもちゃのトラックを検出し、関連する推論イベントを IoT Edge ハブに発行します。
 
 ## <a name="overview"></a>概要
@@ -81,33 +80,7 @@ Custom Vision という名前が示唆するように、この機能を活用し
 完了し、満足のいくモデルが準備できたら、[パフォーマンス] タブの [エクスポート] ボタンを使用して、Docker コンテナーにエクスポートできます。コンテナー プラットフォームの種類として Linux を選択してください。 これは、コンテナーが実行されるプラットフォームです。 コンテナーをダウンロードするコンピューターは、Windows でも Linux でもかまいません。 次の手順は、Windows コンピューターにダウンロードされたコンテナー ファイルに基づいています。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/custom-vision-tutorial/docker-file.png" alt-text="Dockerfile":::
- 
-1. `<projectname>.DockerFile.Linux.zip` という名前の zip ファイルがローカル コンピューターにダウンロードされている必要があります。 
-1. Windows デスクトップ用の [Docker](https://docs.docker.com/get-docker/) をインストールしない場合は、docker がインストールされているかどうかを確認します。
-1. ダウンロードしたファイルを任意の場所に解凍します。 コマンド ラインを使用して、解凍したフォルダー ディレクトリにアクセスします。
-    
-    次のコマンドを実行します 
-    
-    1. `docker build -t cvtruck` 
-    
-        このコマンドは、一連のパッケージをダウンロードし、docker イメージをビルドして、`cvtruck:latest` というタグを付けます。 
-    
-        > [!NOTE]
-        > 成功した場合は、`- Successfully built <docker image id> and Successfully tagged cvtruck:latest.` のように表示されます。初回は一部の依存関係パッケージがダウンロードされないことがあるため、ビルド コマンドが失敗した場合はもう一度試してください。
-    1. `docker  image ls`
-
-        このコマンドは、新しいイメージがローカル レジストリにあるかどうかを確認します。
-    1. `docker run -p 127.0.0.1:80:80 -d cvtruck`
-    
-        このコマンドは、docker の公開されたポート (80) をローカル コンピューターのポート (80) に公開します。
-    1. `docker container ls`
-    
-        このコマンドは、ポート マッピングと、docker コンテナーがコンピューター上で正常に実行されているかどうかを確認します。 出力は次のようになります。
-
-        ```
-        CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                      NAMES
-        8b7505398367        cvtruck             "/bin/sh -c 'python …"   13 hours ago        Up 25 seconds       127.0.0.1:80->80/tcp   practical_cohen
+> :::image type="content" source="./media/custom-vision-tutorial/docker-file.png" alt-text="Custom Vision の概要"   13 hours ago        Up 25 seconds       127.0.0.1:80->80/tcp   practical_cohen
         ```
       1. `curl -X POST http://127.0.0.1:80/image -F imageData=@<path to any image file that has the toy delivery truck in it>`
             
@@ -148,10 +121,7 @@ Custom Vision という名前が示唆するように、この機能を活用し
 1. "src/edge/ deployment.customvision.template.json" ファイルを右クリックし、 **[Generate IoT Edge Deployment Manifest]\(IoT Edge 配置マニフェストの生成\)** をクリックします。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/deployment-template-json.png" alt-text="IoT Edge 配置マニフェストの生成":::
-  
-    これで、"deployment.customvision.amd64.json" という名前のマニフェスト ファイルが src/edge/config フォルダーに作成されます。
-1. "src/edge/ deployment.customvision.template.json" ファイルを開き、registryCredentials json ブロックを見つけます。 このブロックには、Azure コンテナー レジストリのアドレスと、そのユーザー名とパスワードが記載されています。
+    > :::image type="content" source="./media/custom-vision-tutorial/deployment-template-json.png" alt-text="Custom Vision の概要" ファイルを開き、registryCredentials json ブロックを見つけます。 このブロックには、Azure コンテナー レジストリのアドレスと、そのユーザー名とパスワードが記載されています。
 1. コマンド ラインに従って、ローカルの Custom Vision コンテナーを Azure コンテナー レジストリにプッシュします。
 
     1. 次のコマンドを実行して、レジストリにログインします。
@@ -170,60 +140,31 @@ Custom Vision という名前が示唆するように、この機能を活用し
 1. 左下隅の [Azure IoT Hub] ペインの横にある [その他のアクション] アイコンをクリックして、IoTHub 接続文字列を設定します。 この文字列は、appsettings.json ファイルからコピーできます (VSCode で適切な IoT Hub 構成を確実に行うためのもう 1 つの推奨される方法として、[IoT Hub の選択コマンド](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub)を使用する方法があります)。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/connection-string.png" alt-text="接続文字列":::
-1. 次に、"src/edge/config/ deployment.customvision.amd64.json" を右クリックし、 **[Create Deployment for Single Device]\(単一デバイスのデプロイの作成\)** をクリックします。 
+    > :::image type="content" source="./media/custom-vision-tutorial/connection-string.png" alt-text="Custom Vision の概要" を右クリックし、 **[Create Deployment for Single Device]\(単一デバイスのデプロイの作成\)** をクリックします。 
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/deployment-amd64-json.png" alt-text="単一デバイスのデプロイを作成する":::
-1. その後、IoT Hub デバイスを選択するように求められます。 ドロップダウンから [lva-sample-device] を選択します。
-1. 30 秒ほど経過したら、左下のセクションで Azure IoT Hub を最新の情報に更新すると、エッジ デバイスに次のモジュールがデプロイされています。
-
-    * Live Video Analytics on IoT Edge (名前: "lvaEdge")。
-    * `rtspsim` という名前のモジュール。RTSP サーバーをシミュレートし、ライブ ビデオ フィードのソースとして機能します。
-    * `cv` という名前のモジュール。これは名前が示唆するように、カスタム ビジョンを画像に適用し、複数のタグの種類を返す、Custom Vision のおもちゃのトラックの検出モデルです。 (このモデルは "デリバリー トラック" という 1 つのタグのみでトレーニングされています)。
+    > :::image type="content" source="./media/custom-vision-tutorial/deployment-amd64-json.png" alt-text="Custom Vision の概要" という 1 つのタグのみでトレーニングされています)。
 
 ## <a name="prepare-for-monitoring-events"></a>イベントを監視するための準備をする
 
 Live Video Analytics デバイスを右クリックし、 **[組み込みイベント エンドポイントの監視を開始する]** を選択します。 この手順は、Visual Studio Code の [出力] ウィンドウで、IoT Hub イベントを監視するために必要です。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/custom-vision-tutorial/start-monitoring.png" alt-text="組み込みイベント エンドポイントの監視を開始する":::
+> :::image type="content" source="./media/custom-vision-tutorial/start-monitoring.png" alt-text="Custom Vision の概要":::
 
 ## <a name="run-the-sample-program"></a>サンプル プログラムを実行する
 
 このチュートリアルのグラフ トポロジをブラウザーで開くと、inferencingUrl の値が http://cv:80/image に設定されていることがわかります。これは、ライブ ビデオでおもちゃのトラックが検出された場合に、推論サーバーから結果が返されることを意味します。
 
-1. デバッグ セッションを開始するには、F5 キーを押します。 [ターミナル] ウィンドウにメッセージが出力されるのを確認できます。
-1. operations.json コードは、ダイレクト メソッド GraphTopologyList と GraphInstanceList の呼び出しで開始されます。 前回のクイックスタートを完了した後にリソースをクリーンアップしている場合は、このプロセスにより空のリストが返されてから、一時停止します。 続行するには、Enter キーを押します。
-    
-   [ターミナル] ウィンドウに、次の一連のダイレクト メソッド呼び出しが表示されます。
-    
-   * 前の topologyUrl を使用する GraphTopologySet の呼び出し。
-   * 次の body を使用した GraphInstanceSet の呼び出し。
-        
-   ```
-        {
-          "@apiVersion": "1.0",
-          "name": "Sample-Graph-1",
-          "properties": {
-            "topologyName": "CustomVisionWithHttpExtension",
-            "description": "Sample graph description",
-            "parameters": [
-              { 
-                "name": "inferencingUrl",
-                "value": "http://cv:80/image"
-              },
-              {
-                "name": "rtspUrl",
-                "value": "rtsp://rtspsim:554/media/t2.mkv"
-              },
-              {
-                "name": "rtspUserName",
-                "value": "testuser"
-              },
-              {
-                "name": "rtspPassword",
-                "value": "testpassword"
+1. Visual Studio Code で **[拡張機能]** タブを開き (または Ctrl + Shift + X キーを押し)、Azure IoT Hub を検索します。
+1. マウスの右ボタンをクリックし、 **[拡張機能の設定]** を選択します。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Custom Vision の概要":::
+1. [Show Verbose Message]\(詳細メッセージの表示\) を検索して有効にします。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Custom Vision の概要"
               }
             ]
           }

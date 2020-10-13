@@ -4,16 +4,16 @@ description: Azure の顧客のリソースを管理する際に使用するユ�
 author: dhirajgandhi
 ms.reviewer: dhgandhi
 ms.author: banders
-ms.date: 07/24/2020
+ms.date: 10/05/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: 03953e210f1c4caf1541db272ce4c02c271dafaa
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: f030a9e75507063e104e0bae0ca5654bd3528bac
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371832"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91772721"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Azure アカウントにパートナー ID をリンクする
 
@@ -43,7 +43,7 @@ PAL を使用することで、Microsoft は、Azure の利用者を成功に導
 
 2. Azure portal にサインインします。
 
-3. Microsoft パートナー ID を入力します。 パートナー ID は、貴社の組織の [Microsoft Partner Network](https://partner.microsoft.com/) ID です。
+3. Microsoft パートナー ID を入力します。 パートナー ID は、貴社の組織の [Microsoft Partner Network](https://partner.microsoft.com/) ID です。 パートナー プロファイルに表示されている**関連付けられている MPN ID** を必ず使用してください。
 
    ![パートナー ID へのリンクを示すスクリーンショット](./media/link-partner-id/link-partner-id01.png)
 
@@ -61,7 +61,8 @@ PAL を使用することで、Microsoft は、Azure の利用者を成功に導
     C:\> Connect-AzAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
    ```
 
-3. 新しいパートナー ID にリンクします。 パートナー ID は、貴社の組織の [Microsoft Partner Network](https://partner.microsoft.com/) ID です。
+3. 新しいパートナー ID にリンクします。 パートナー ID は、貴社の組織の [Microsoft Partner Network](https://partner.microsoft.com/) ID です。 パートナー プロファイルに表示されている**関連付けられている MPN ID** を必ず使用してください。
+
 
     ```azurepowershell-interactive
     C:\> new-AzManagementPartner -PartnerId 12345
@@ -141,7 +142,7 @@ C:\ az managementpartner delete --partner-id 12345
 
 **会社に複数の MPN ID がある場合は、どれを使用すべきですか。**
 
-パートナー拠点アカウントおよび関連付けられている MPN ID を、パートナー ID のリンクに使用する必要があります。  パートナー アカウントの詳細については、[こちら](https://docs.microsoft.com/partner-center/account-structure)をご覧ください。
+パートナー プロファイルに表示されている**関連付けられている MPN ID** を必ず使用してください。
 
 **リンク済みのパートナー ID の影響を受ける収益レポートはどこで確認できますか。**
 

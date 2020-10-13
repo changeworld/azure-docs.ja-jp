@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 756bbaab1cbf359def01e371e4370607bee67ce3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 00cf3e33c87255485f7ea73526e474b0d941124b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554863"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826366"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fluxx-labs"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Fluxx Labs の統合
 
@@ -139,15 +139,15 @@ Fluxx Labs に対する Azure AD SSO を構成してテストするには、次�
 
 2. **[Settings]\(設定\)** セクションで **[Admin]\(管理者\)** を選択します。
 
-    ![Fluxx Labs の構成](./media/fluxxlabs-tutorial/config1.png)
+    ![[Admin]\(管理者\) が選択されている [Settings]\(設定\) セクションを示すスクリーンショット。](./media/fluxxlabs-tutorial/config1.png)
 
 3. 管理パネルで、 **[Plug-ins]\(プラグイン\)**  >  **[Integrations]\(インテグレーション\)** の順に選択し、 **[SAML SSO-(Disabled)]\(SAML SSO (無効)\)** を選択します。
 
-    ![Fluxx Labs の構成](./media/fluxxlabs-tutorial/config2.png)
+    ![[S A M L S S O - (Disabled)]\(S A M L S S O - (無効)\) が選択されている [Integrations]\(インテグレーション\) タブを示すスクリーン。](./media/fluxxlabs-tutorial/config2.png)
 
 4. [Attribute]\(属性\) セクションで、次の手順に従います。
 
-    ![Fluxx Labs の構成](./media/fluxxlabs-tutorial/config3.png)
+    ![[S A M L S S O] がオンになり、フィールドに値が入力され、[Save]\(保存\) ボタンが選択されている [Attributes]\(属性\) セクションを示すスクリーンショット。](./media/fluxxlabs-tutorial/config3.png)
 
     a. **[SAML SSO]** チェックボックスをオンにします。
 
@@ -180,11 +180,11 @@ Azure AD ユーザーが Fluxx Labs にサインインできるようにする�
 
 2. 次の図に示されている**アイコン**をクリックします。
 
-    ![Fluxx Labs の構成](./media/fluxxlabs-tutorial/config6.png)
+    ![[Your Dashboard is Empty]\(ダッシュボードが空です\) の下のプラス記号アイコンが選択されている管理者オプションを示すスクリーンショット。](./media/fluxxlabs-tutorial/config6.png)
 
 3. ダッシュボードで、次の図に示されているアイコンをクリックして、 **[New PEOPLE]\(新規ユーザー\)** カードを開きます。
 
-    ![Fluxx Labs の構成](./media/fluxxlabs-tutorial/config4.png)
+    ![[People]\(ユーザー\) の隣のプラス記号アイコンが選択されている [Contact Management]\(連絡先の管理\) メニューを示すスクリーンショット。](./media/fluxxlabs-tutorial/config4.png)
 
 4. **[NEW PEOPLE]\(新規ユーザー\)** セクションで、次の手順を実行します。
 

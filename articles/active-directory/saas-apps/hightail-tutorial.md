@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 0348e5c773f37606a3975a8e62e556bef291a758
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: d39f46469d80b3e2d7bf361bd349a39afb16bd2d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297316"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826179"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hightail"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Hightail の統合
 
@@ -155,15 +155,15 @@ Hightail で Azure AD SSO を構成してテストするには、次の構成要
 
 1. ページの右上隅の**ユーザー アイコン**をクリックします。 
 
-    ![Configure single sign-on](./media/hightail-tutorial/configure1.png)
+    ![ユーザー アイコンを示すスクリーンショット。](./media/hightail-tutorial/configure1.png)
 
 1. **[管理コンソールを表示]** タブをクリックします。
 
-    ![Configure single sign-on](./media/hightail-tutorial/configure2.png)
+    ![[User]\(ユーザー\) の [View Admin Console]\(管理コンソールを表示\) ボタンを示すスクリーンショット。](./media/hightail-tutorial/configure2.png)
 
 1. 上部のメニューで、 **[SAML]** タブをクリックし、次の手順を実行します。
 
-    ![Configure single sign-on](./media/hightail-tutorial/configure3.png)
+    ![[Login U R L]\(ログイン U R L\) および [SAML Certificate]\(SAML 証明書\) を入力できる [SAML] タブを示すスクリーンショット。](./media/hightail-tutorial/configure3.png)
 
     a. **[ログイン URL]** テキスト ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 

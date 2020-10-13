@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 1088827ead320007c758d8e843a15328f108c035
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4607d4dfba68ca8f78ec4e3aaa4da36966ea843a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543025"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760837"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-experience-manager"></a>チュートリアル: Azure Active Directory と Adobe Experience Manager の統合
 
@@ -101,7 +101,7 @@ Azure AD と Adobe Experience Manager の統合を構成するには、ギャラ
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![Adobe Experience Manager のドメインと URL のシングル サインオン情報](common/idp-intiated.png)
+    ![[基本的な SAML 構成] セクションを示すスクリーンショット。[識別子] および [応答 URL] テキスト ボックスが強調表示されています。](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、AEM のサーバーにも定義する一意の値を入力します。
 
@@ -136,35 +136,35 @@ Azure AD と Adobe Experience Manager の統合を構成するには、ギャラ
 
 2. **[設定]**  >  **[セキュリティ]**  >  **[ユーザー]** を選択します。
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user.png)
+    ![Adobe Experience Manager の [ユーザー] タイルを示すスクリーンショット。](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user.png)
 
 3. **[管理者]** またはその他の関連するユーザーを選択します。
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin6.png)
+    ![管理者ユーザーが強調表示されているスクリーンショット。](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin6.png)
 
 4. **[アカウント設定]**  >  **[Manage TrustStore]\(トラストストアの管理\)** を選択します。
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_managetrust.png)
+    ![[アカウント設定] の下の [Manage TrustStore]\(トラストストアの管理\) を示すスクリーンショット。](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_managetrust.png)
 
 5. **[Add Certificate from CER file]\(CER ファイルから証明書を追加\)** で、 **[証明書ファイルの選択]** をクリックします。 Azure Portal から既にダウンロードしている証明書ファイルを参照し選択します。
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user2.png)
+    ![[Select Certificate File]\(証明書ファイルの選択\) ボタンが強調表示されているスクリーンショット。](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user2.png)
 
 6. 証明書がトラストストアに追加されます。 証明書の別名に注意してください。
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin7.png)
+    ![証明書がトラストストアに追加されていることを示すスクリーンショット。](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin7.png)
 
 7. **[ユーザー]** ページで、 **[認証サービス]** を選択します。
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin8.png)
+    ![画面で認証サービスが強調表示されているスクリーンショット。](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin8.png)
 
 8. **[アカウント設定]**  >  **[Create/Manage TrustStore]\(キーストアの作成および管理\)** を選択します。 パスワードを入力して、キーストアを作成します。
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin9.png)
+    ![[Manage KeyStore]\(キーストアの管理\) が強調表示されているスクリーンショット。](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin9.png)
 
 9. 管理画面に戻ります。 **[設定]**  >  **[Operations]\(操作\)**  >  **[Web Console]\(Web コンソール\)** を選択します。
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin1.png)
+    ![[設定] セクションにある [Operations]\(操作\) の下の [Web Console]\(Web コンソール\) が強調表示されているスクリーンショット。](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin1.png)
 
     [構成] ページが開きます。
 
@@ -172,7 +172,7 @@ Azure AD と Adobe Experience Manager の統合を構成するには、ギャラ
 
 10. 「**Adobe Granite SAML 2.0 Authentication Handler**」で検索します。 次に、 **[追加]** アイコンを選択します。
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin3.png)
+    ![[Adobe Granite SAML 2.0 Authentication Handler]\(Adobe Granite SAML 2.0 認証ハンドラー\) が強調表示されているスクリーンショット。](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin3.png)
 
 11. このページで、次の操作を実行します。
 

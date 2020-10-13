@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
-ms.openlocfilehash: ed39064d4aee07554ce795be73732024e1b47f84
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 98b5c3bd1f41bd3b6a4100fdaebd1d44fb45bf9f
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549336"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760172"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>チュートリアル: Azure Active Directory と ClickTime の統合
 
@@ -207,7 +207,7 @@ ClickTime の場合、プロビジョニングは手動で行います。
 
 1. 上部のツールバーで、 **[Company]** をクリックし、 **[People]** をクリックします。
    
-    ![ユーザー](./media/clicktime-tutorial/tic777282.png "ユーザー")
+    ![スクリーンショットは、[Company]\(会社\) と [People]\(ユーザー\) が選択されている ClickTime テナントを示しています。](./media/clicktime-tutorial/tic777282.png "ユーザー")
 
 1. **[Add Person]** をクリックします。
    
@@ -215,7 +215,7 @@ ClickTime の場合、プロビジョニングは手動で行います。
 
 1. [New Person] セクションで、次の手順を実行します。
    
-    ![ユーザー](./media/clicktime-tutorial/tic777284.png "ユーザー")
+    ![スクリーンショットは、この手順の情報を追加できる [Add Person]\(ユーザーの追加\) セクションを示しています。](./media/clicktime-tutorial/tic777284.png "ユーザー")
    
     a.  **[フル ネーム]** ボックスに、ユーザーの氏名 (**Britta Simon** など) を入力します。 
   

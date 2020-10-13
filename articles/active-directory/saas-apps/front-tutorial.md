@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 606ee409a241db7b4deb9d15db86b034b8fbffd3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bbd39c85385d6690a80f540c9e0cd23a321e7e84
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550981"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821216"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-front"></a>チュートリアル: Azure Active Directory と Front の統合
 
@@ -128,23 +128,23 @@ Front で Azure AD シングル サインオンを構成するには、次の手
 
 2. **[Settings (設定)] \(左のサイド バーの下にある歯車アイコン)、[Preferences (ユーザー設定)]** の順に移動します。
    
-    ![アプリ側でのシングル サインオンの構成](./media/front-tutorial/tutorial_front_000.png)
+    ![[Settings]\(設定\) (歯車アイコン) が選択され、[Preferences]\(ユーザー設定\) が強調表示されているところを示すスクリーンショット。](./media/front-tutorial/tutorial_front_000.png)
 
 3. **[シングル サインオン]** のリンクをクリックします。
    
-    ![アプリ側でのシングル サインオンの構成](./media/front-tutorial/tutorial_front_001.png)
+    ![[Single Sign On]\(シングル サイン オン\) リンクが選択されている [Company preferences]\(会社の設定\) セクションを示すスクリーンショット。](./media/front-tutorial/tutorial_front_001.png)
 
 4. **[Single Sign On]\(シングル サインオン\)** のドロップダウン リストで、 **[SAML]** を選択します。
    
-    ![アプリ側でのシングル サインオンの構成](./media/front-tutorial/tutorial_front_002.png)
+    ![[S A M L] が選択されている [Single Sign On]\(シングル サイン オン\) ドロップダウン リストを示すスクリーンショット。](./media/front-tutorial/tutorial_front_002.png)
 
 5. **[Entry Point]\(エントリ ポイント\)** ボックスに、Azure AD アプリケーションの構成ウィザードの **[ログイン URL]** の値を入力します。
     
-    ![アプリ側でのシングル サインオンの構成](./media/front-tutorial/tutorial_front_003.png)
+    ![[Entry Point]\(エントリ ポイント\) ボックスを示すスクリーンショット。](./media/front-tutorial/tutorial_front_003.png)
 
 6. ダウンロードした**証明書 (Base64)** ファイルをメモ帳で開き、その内容をクリップボードにコピーし、 **[Signing certificate]** ボックスに貼り付けます。
     
-    ![アプリ側でのシングル サインオンの構成](./media/front-tutorial/tutorial_front_004.png)
+    ![[Signing certificate]\(署名証明書\) が強調表示され、テキスト ボックスが淡色表示されているところを示すスクリーンショット。](./media/front-tutorial/tutorial_front_004.png)
 
 7. **[Service provider settings]** セクションで、次の手順に従います。
 

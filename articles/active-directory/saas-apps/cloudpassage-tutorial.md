@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 34e36be8ee9444b5612901439aa5dca4771f2dda
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8fdb59db7e11e3c8b946be940a2f98bd42810b88
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551678"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758355"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cloudpassage"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と CloudPassage の統合
 
@@ -85,7 +85,7 @@ CloudPassage に対する Azure AD SSO を構成してテストするには、�
 
     b. **[応答 URL]** ボックスに、`https://portal.cloudpassage.com/saml/consume/accountid` のパターンを使用して URL を入力します。 この属性の値は、CloudPassage ポータルの **[Single Sign-on Settings (シングル サインオンの設定)]** セクションで **[SSO Setup documentation (SSO セットアップのドキュメント)]** をクリックすることで取得できます。
 
-    ![Configure single sign-on](./media/cloudpassage-tutorial/tutorial_cloudpassage_05.png)
+    ![このスクリーンショットは、[S S O Setup Documentation]\(S S O セットアップのドキュメント\) リンクがコールアウトされた状態の CloudPassage ポータルを示しています。](./media/cloudpassage-tutorial/tutorial_cloudpassage_05.png)
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と応答 URL でこれらの値を更新してください。 これらの値を取得するには、[CloudPassage クライアント サポート チーム](https://www.cloudpassage.com/company/contact/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -146,15 +146,15 @@ CloudPassage に対する Azure AD SSO を構成してテストするには、�
 
 1. 上部のメニューの **[Settings (設定)]** をクリックし、 **[Site Administration (サイトの管理)]** をクリックします。 
    
-    ![Configure single sign-on][12]
+    ![このスクリーンショットは、[Site Administration]\(サイトの管理\) が選択された状態の CloudPassage サイトを示しています。][12]
 
 1. **[Authentication Settings (認証設定)]** タブをクリックします。 
    
-    ![Configure single sign-on][13]
+    ![このスクリーンショットは、[Authentication Settings]\(認証設定\) タブが選択された状態の CloudPassage サイトを示しています。][13]
 
 1. **[Single Sign-on Settings (シングル サインオンの設定)]** セクションで、次の手順に従います。 
    
-    ![Configure single sign-on][14]
+    ![このスクリーンショットは、[Single Sign-on Settings]\(シングル サインオンの設定\) セクションを示しています。ここで、この手順の情報を入力します。][14]
 
     a. **[Enable Single sign-on(SSO)(SSO Setup Documentation)]\(シングル サインオン (SSO)(SSO セットアップ ドキュメント) を有効にする\)** チェックボックスをオンにします。
     
@@ -178,15 +178,15 @@ CloudPassage に対する Azure AD SSO を構成してテストするには、�
 
 1. 上部にあるツールバーの **[Settings (設定)]** をクリックし、 **[Site Administration (サイトの管理)]** をクリックします。 
    
-    ![CloudPassage テスト ユーザーの作成][22] 
+    ![このスクリーンショットは、[Site Administration]\(サイトの管理\) が選択された状態の CloudPassage を示しています。][22] 
 
 1. **[Users (ユーザー)]** タブをクリックし、 **[Add New User (新しいユーザーの追加)]** をクリックします。 
    
-    ![CloudPassage テスト ユーザーの作成][23]
+    ![このスクリーンショットは、[Users]\(ユーザー\) タブと [Add New User]\(新しいユーザーの追加\) オプションが選択された状態の CloudPassage の [Site Administration]\(サイトの管理\) を示しています。][23]
 
 1. **[新しいユーザーの追加]** セクションで、次の手順を実行します。 
    
-    ![CloudPassage テスト ユーザーの作成][24]
+    ![このスクリーンショットは、[Add New User]\(新しいユーザーの追加\) セクションを示しています。ここで、ユーザー情報を指定できます。][24]
     
     a. **[名]** ボックスに「Britta」と入力します。 
   

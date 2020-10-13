@@ -8,12 +8,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 6654b97f914ce4c1e3e55d38f47bd5bde0a4891e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 814167425fcd39e90edccd952e1a3e4fbd570988
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90992452"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818022"
 ---
 # <a name="managed-hsm-role-management"></a>Managed HSM のロール管理
 
@@ -52,7 +52,7 @@ CLI を使用したログイン オプションの詳細については、「[Az
 
 ### <a name="assign-roles-for-all-keys"></a>すべてのキーを対象としたロールを割り当てる
 
-ContosoHSM 内のすべての**キー** (スコープ `/keys`) を対象として、ユーザー プリンシパル名 **user2@contoso.com** で識別されるユーザーに **Managed HSM 暗号化担当者**ロールを割り当てるには、`az keyvault role assignment create` コマンドを使用します。
+ContosoHSM 内のすべての**キー** (スコープ `/keys`) を対象として、ユーザー プリンシパル名 **user2\@contoso.com** で識別されるユーザーに **Managed HSM 暗号化担当者**ロールを割り当てるには、`az keyvault role assignment create` コマンドを使用します。
 
 ```azurecli-interactive
 az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Crypto Officer" --assignee user2@contoso.com  --scope /keys
@@ -60,7 +60,7 @@ az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Cr
 
 ### <a name="assign-role-for-a-specific-key"></a>特定のキーを対象としたロールを割り当てる
 
-**myrsakey** という名前の特定のキーを対象として、ユーザー プリンシパル名 **user2@contoso.com** で識別されるユーザーに **Managed HSM 暗号化担当者**ロールを割り当てるには、`az keyvault role assignment create` コマンドを使用します。
+**myrsakey** という名前の特定のキーを対象として、ユーザー プリンシパル名 **user2\@contoso.com** で識別されるユーザーに **Managed HSM 暗号化担当者**ロールを割り当てるには、`az keyvault role assignment create` コマンドを使用します。
 
 ```azurecli-interactive
 az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Crypto Officer" --assignee user2@contoso.com  --scope /keys/myrsakey
@@ -97,7 +97,7 @@ az keyvault role assignment list --hsm-name ContosoMHSM --assignee user2@contoso
 
 ## <a name="delete-a-role-assignment"></a>ロールの割り当てを削除する
 
-キー **myrsakey2** を対象としてユーザー **user2@contoso.com** に割り当てられた **Managed HSM 暗号化担当者**ロールを削除するには、`az keyvault role assignment delete` コマンドを使用します。
+キー **myrsakey2** を対象として、ユーザー **user2\@contoso.com** に割り当てられた **Managed HSM 暗号化担当者**ロールを削除するには、`az keyvault role assignment delete` コマンドを使用します。
 
 ```azurecli-interactive
 az keyvault role assignment delete --hsm-name ContosoMHSM --role "Managed HSM Crypto Officer" --assignee user2@contoso.com  --scope /keys/myrsakey2

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/08/2019
 ms.author: jeedes
-ms.openlocfilehash: 6358c41ab6d63baa8ed1fa6960d7d887825a1d78
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c620393903ee08199632d457ece3b4c06db8ed68
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88529483"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760650"
 ---
 # <a name="tutorial-integrate-chargebee-with-azure-active-directory"></a>チュートリアル:Chargebee と Azure Active Directory との統合
 
@@ -132,11 +132,11 @@ Chargebee に対する Azure AD SSO を構成してテストするには、次�
 
 4. メニューの左側から **[設定]**  >  **[セキュリティ]**  >  **[管理]** の順にクリックします。
 
-    ![Chargebee の構成](./media/chargebee-tutorial/config01.png)
+    ![スクリーンショットは、[設定]、[セキュリティ]、および [管理] が選択されている Chargebee 企業サイトを示しています。](./media/chargebee-tutorial/config01.png)
 
 5. **[シングル サインオン]** ポップアップで、次の手順を実行します。
 
-    ![Chargebee の構成](./media/chargebee-tutorial/config02.png)
+    ![スクリーンショットは [シングル サインオン] ダイアログ ボックスを示しています。[SAML] が選択され、確認が必要なオプションが表示されています。](./media/chargebee-tutorial/config02.png)
 
     a. **[SAML]** を選択します。
 
@@ -156,11 +156,11 @@ Azure AD ユーザーが Chargebee にサインインできるようにするに
 
 2. メニューの左側の **[Customers]\(顧客\)** をクリックし、 **[Create a New Customer]\(新しい顧客の作成\)** に移動します。
 
-    ![Freedcamp の構成](./media/chargebee-tutorial/config03.png)
+    ![スクリーンショットは Chargebee サイトを示しています。[Customers]\(顧客\) および [Create a New Customer]\(新しい顧客の作成\) が選択されています。](./media/chargebee-tutorial/config03.png)
 
 3. **[New Customer]\(新しい顧客\)** ページで、以下に示した各フィールドの内容を入力し、 **[Create Customer]\(顧客の作成\)** をクリックしてユーザーを作成します。
 
-    ![Freedcamp の構成](./media/chargebee-tutorial/config04.png)
+    ![スクリーンショットは、顧客情報を入力できる [New Customer]\(新しい顧客\) ページを示しています。](./media/chargebee-tutorial/config04.png)
 
 ## <a name="test-sso"></a>SSO のテスト 
 

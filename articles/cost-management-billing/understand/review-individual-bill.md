@@ -1,24 +1,24 @@
 ---
-title: 個々の Azure 請求書を確認する
-description: 請求書とリソースの使用状況を理解し、個々の Azure サブスクリプションの料金を検証する方法について説明します。
+title: 個々の Azure サブスクリプションの請求書を確認する
+description: 請求書とリソースの使用状況を理解し、従量課金制を含む、個々の Azure サブスクリプションの料金を検証する方法について説明します。
 author: bandersmsft
 ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: tutorial
-ms.date: 08/20/2020
+ms.date: 10/01/2020
 ms.author: banders
-ms.openlocfilehash: 0c93375abd57ff5e96906ef7befbbb546a3a1caf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 95af762e0ff1986f9d1395e787c73b3a886a7a2e
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91270527"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653283"
 ---
-# <a name="tutorial-review-your-individual-azure-bill"></a>チュートリアル:個々の Azure 請求書を確認する
+# <a name="tutorial-review-your-individual-azure-subscription-bill"></a>チュートリアル:個々の Azure サブスクリプションの請求書を確認する
 
-この記事は、Azure 請求書の理解と確認に役立ちます。 請求期間ごとに、通常は電子メールで請求書を受け取ります。 請求書は、Azure の請求を記載したものです。 請求書と同じコスト情報を、Azure portal でも利用できます。 このチュートリアルでは、請求書を、詳細な毎日の使用状況ファイルおよび Azure portal でのコスト分析と比較します。
+この記事では、従量課金制または Visual Studio Azure サブスクリプションの請求書について説明します。 請求期間ごとに、通常は電子メールで請求書を受け取ります。 請求書は、Azure の請求を記載したものです。 請求書と同じコスト情報を、Azure portal でも利用できます。 このチュートリアルでは、請求書を、詳細な毎日の使用状況ファイルおよび Azure portal でのコスト分析と比較します。
 
 このチュートリアルは、個々のサブスクリプションを持つ Azure カスタマーだけに適用されます。 一般的な個々のサブスクリプションは、従量課金制の料金であり、Azure Web サイトから直接購入します。
 
@@ -42,7 +42,7 @@ Azure のサブスクリプションを開始してから 30 日以上経過し�
 
 - Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 
-## <a name="compare-invoiced-charges-with-usage-file"></a>請求された料金と使用状況ファイルの比較
+## <a name="compare-billed-charges-with-your-usage-file"></a>請求料金と使用状況ファイルを比較する
 
 <a name="charges"></a>
 
@@ -109,7 +109,7 @@ CSV 使用状況ファイルで、請求書に示されている対応リソー�
 
 詳細については、[Azure の請求書の理解](understand-invoice.md)と [Azure の詳細な使用状況の理解](understand-usage.md)に関するページを参照してください。
 
-## <a name="compare-charges-and-usage-in-cost-analysis"></a>コスト分析での料金と使用状況の比較
+## <a name="compare-billed-charges-and-usage-in-cost-analysis"></a>コスト分析で請求料金と使用状況を比較する
 
 Azure portal でのコスト分析も、料金の検証に役立ちます。 請求された使用量と料金の概要をすばやく把握するには、Azure portal の [[サブスクリプション] ページ](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)で、自分のサブスクリプションを選択します。 次に、 **[コスト分析]** をクリックし、ビューの一覧で **[請求書の詳細]** をクリックします。
 
@@ -123,13 +123,15 @@ Azure portal でのコスト分析も、料金の検証に役立ちます。 請
 
 ![請求書の使用料金](./media/review-individual-bill/invoice-usage-charges.png)
 
-## <a name="external-services-billed-separately"></a><a name="external"></a>個別に請求される外部サービス
+## <a name="external-marketplace-services-are-billed-separately"></a>外部のマーケットプレース サービスは個別に請求されます。
+
+<a name="external"></a>
 
 外部サービス (マーケットプレース) 料金は、サードパーティ ソフトウェア ベンダーによって作成されたリソースに対する金額です。 このようなリソースは Azure Marketplace から入手して利用できます。 たとえば、Barracuda Firewall はサードパーティによって提供される Azure Marketplace リソースです。 このファイアウォールと対応する測定に関するすべての料金は、外部サービス料金として表示されます。
 
 外部サービスの料金は個別に請求されます。 これらの料金は、Azure の請求書には表示されません。 詳細については、「[Azure 外部サービスの課金について](understand-azure-marketplace-charges.md)」を参照してください。
 
-### <a name="resources-billed-by-usage-meters"></a>使用量メーターによって請求されるリソース
+### <a name="resources-are-billed-by-usage-meters"></a>リソースは使用量メーターによって請求される
 
 Azure では、リソース コストに基づいて直接請求されることはありません。 リソースに対する料金は、1 つまたは複数のメーターを利用して計算されます。 メーターは、リソースの有効期間を通してその使用量を追跡する目的で使用されます。 これらの測定が課金の計算に使用されます。
 
@@ -152,7 +154,9 @@ VM が作成されると、各メーターが使用状況レコードの出力�
 
 請求の計算に使用されたメーターは、前の例と同様、使用状況 CSV ファイルで確認できます。
 
-## <a name="pay-your-bill"></a><a name="payment"></a>請求金額を支払う
+## <a name="pay-your-bill"></a>請求金額を支払う
+
+<a name="payment"></a>
 
 支払い方法としてクレジット カードを設定している場合、支払いは、請求期間の終了後、10 日以内に自動的に行われます。 クレジット カードの明細には、**MSFT Azure** と表記されます。
 

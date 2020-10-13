@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter, devx-track-csharp
-ms.openlocfilehash: 4a64d1999f13ee09cf92633fd188bfc7ed0e4856
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6531b8a631c38339733aa5fdad60bb1917fe7d9b
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011211"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653113"
 ---
 # <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>チュートリアル:マルチサービス Service Fabric Mesh アプリを作成、デバッグ、デプロイ、およびアップグレードする
 
@@ -59,7 +59,7 @@ Visual Studio を実行し、 **[ファイル]**  >  **[新規]**  >  **[プロ�
 
 **[ソリューションのディレクトリを作成する]** がオンになっていることを確認し、 **[OK]** をクリックして Service Fabric mesh プロジェクトを作成します。
 
-![Visual Studio: 新しい Service Fabric mesh プロジェクト ダイアログ](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-project.png)
+![Service Fabric Mesh プロジェクトを作成する方法を示すスクリーンショット。](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-project.png)
 
 次は、 **[新しい Service Fabric サービス]** ダイアログが表示されます。
 
@@ -73,7 +73,7 @@ Visual Studio を実行し、 **[ファイル]**  >  **[新規]**  >  **[プロ�
 
 次は、[ASP.NET Core Web アプリケーション] ダイアログが表示されます。 **[Web アプリケーション]** を選択し、 **[OK]** をクリックします。
 
-![Visual Studio: 新しい ASP.NET Core アプリケーション](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-aspnetcore-app.png)
+![Web アプリケーション テンプレートが強調表示されているスクリーンショット。](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-aspnetcore-app.png)
 
 これで、Service Fabric Mesh アプリケーションが用意できました。 次は、To Do 情報のモデルを作成します。
 

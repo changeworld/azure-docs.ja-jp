@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 7909f793407956247a8378a86e20bbe7b1bcddb6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 75e4937966c549c4d815a8776c70aa6366abe3e0
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542804"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740816"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightidea"></a>チュートリアル:Azure Active Directory と Brightidea の統合
 
@@ -112,14 +112,14 @@ Brightidea によって Azure AD のシングル サインオンを構成する�
 
     c. メタデータ ファイルが正常にアップロードされると、**識別子**と**応答 URL** の値が、Brightidea セクションのテキスト ボックスに自動的に設定されます。
 
-    ![image](common/idp-intiated.png)
+    ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
 
     > [!Note]
     > **識別子**と**応答 URL** の値が自動的に設定されない場合は、要件に応じて手動で値を入力してください。
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![image](common/metadata-upload-additional-signon.png)
+    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** ボックスに、`https://<SUBDOMAIN>.brightidea.com` という形式で URL を入力します。
 
@@ -143,21 +143,21 @@ Brightidea によって Azure AD のシングル サインオンを構成する�
 
 2. Brightidea システム内の SSO 機能にアクセスするために、 **[Enterprise Setup]\(エンタープライズ セットアップ\)**  ->  **[認証] タブ**の順に移動します。サブ タブとして[Auth Selection]\(認証の選択\) と [SAML Profiles]\(SAML プロファイル\) の 2 つが表示されます。
 
-    ![Brightidea の構成](./media/brightidea-tutorial/configure1.png)
+    ![このスクリーンショットは、[認証] タブが選択された状態の Brightidea サイトを示しています。](./media/brightidea-tutorial/configure1.png)
 
 3. **[Auth Selection]\(認証の選択\)** を選択します。 既定では、2 つの標準的な方法として、"Brightidea ログイン" と "登録" だけが表示されます。 SSO の方法が追加されると、一覧に表示されるようになります。
 
-    ![Brightidea の構成](./media/brightidea-tutorial/configure2.png)
+    ![Brightidea の [認証] タブのスクリーンショット。[Auth Selection]\(認証の選択\) が選択されています。](./media/brightidea-tutorial/configure2.png)
 
 4. **[SAML Profiles]\(SAML プロファイル\)** を選択し、次の手順を実行します。
 
-    ![Brightidea の構成](./media/brightidea-tutorial/configure3.png)
+    ![Brightidea の [認証] タブのスクリーンショット。[Download Metadata]\(メタデータのダウンロード\) と [Add New]\(新規追加\) オプションを備えた [SAML Profiles]\(SAML プロファイル\) が選択されています。](./media/brightidea-tutorial/configure3.png)
 
     a. **[メタデータのダウンロード]** をクリックして、Azure portal 内の **[基本的な SAML 構成]** セクションからアップロードを行います。
 
     b. **[Identity Provider Setting]\(ID プロバイダー設定\)** 下にある **[新規追加]** ボタンをクリックして、次の手順を実行します。
     
-    ![Brightidea の構成](./media/brightidea-tutorial/configure4.png)
+    ![情報の入力先となる Brightidea の [Identity Provider Setting]\(ID プロバイダー設定\) のスクリーンショット。](./media/brightidea-tutorial/configure4.png)
     
    * たとえば `Azure Ad SSO` のように、 **[SAML Profile Name]\(SAML プロファイル名\)** に入力します。
     

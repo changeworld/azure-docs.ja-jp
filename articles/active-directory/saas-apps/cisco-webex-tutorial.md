@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 52481eb40a46457a0374c776ee4897c81ebddf7c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 466e69ece993ca34f8f6770c0465471d01b9c3ed
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551287"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760939"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Cisco Webex Meetings の統合
 
@@ -164,11 +164,11 @@ Cisco Webex Meetings に対する Azure AD SSO を構成してテストするに
 
 2. **[Common Site Settings]\(共通サイト設定\)** に移動し、**[SSO Configuration]\(SSO 構成\)** に移動します。
  
-    ![Configure single sign-on](./media/cisco-webex-tutorial/tutorial-cisco-webex-11.png)
+    ![スクリーンショットは、[Common Site Settings]\(共通サイト設定\) と [SSO Configuration]\(SSO 構成\) が選択されている [Cisco Webex Administration]\(Cisco Webex 管理\) を示しています。](./media/cisco-webex-tutorial/tutorial-cisco-webex-11.png)
 
 3. **[Webex Administration]\(Webex 管理\)** ページで、次の手順を実行します。
 
-    ![Configure single sign-on](./media/cisco-webex-tutorial/tutorial-cisco-webex-10.png)
+    ![スクリーンショットは、この手順で説明されている情報を含む [Webex Administration]\(Webex 管理\) ページを示しています。](./media/cisco-webex-tutorial/tutorial-cisco-webex-10.png)
 
     a. **[Federation Protocol]\(フェデレーション プロトコル\)** として **[SAML 2.0]** を選択します。
 

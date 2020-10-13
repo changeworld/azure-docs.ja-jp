@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: da1ada27b9420643f6f0b15f0986c245ba585acd
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: a07365dd313f75a844e41b71427d8ddcf78ded85
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85921943"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742504"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>チュートリアル:Custom Search Web ページの作成
 
@@ -118,7 +118,7 @@ Bing Custom Search インスタンスを作成するには:
   
 5. ドロップダウン リストからサブスクリプション キーを選択します。 または、サブスクリプション キーを手動で入力できます。
   
-   ![ホステッド UI のその他の構成手順のスクリーンショット](./media/custom-search-hosted-ui-subscription-key.png)
+   ![ホステッド UI のサブスクリプション キーのスクリーンショット](./media/custom-search-hosted-ui-subscription-key.png)
 
 [!INCLUDE [publish or revert](../includes/publish-revert.md)]
 
@@ -144,7 +144,7 @@ Bing Custom Search インスタンスを作成するには:
   
 4. **[新しい ASP.NET Core Web アプリケーション]** ウィンドウで、 **[Web アプリケーション]** を選択して **[OK]** をクリックします。  
   
-   ![新しいプロジェクト ウィンドウのスクリーンショット](./media/custom-search-new-webapp.png)  
+   ![新しい Web アプリ ウィンドウのスクリーンショット](./media/custom-search-new-webapp.png)  
 
 ## <a name="edit-indexcshtml"></a>index.cshtml の編集
 

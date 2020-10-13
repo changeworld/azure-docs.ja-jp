@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/02/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: b9f3b564e36939197acd532a37f9a6098fbc870f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ba903793844e44b26931a70183860c983adaf18a
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900016"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743405"
 ---
 # <a name="tutorial-install-azure-stack-edge-pro-with-gpu"></a>チュートリアル:GPU 搭載の Azure Stack Edge Pro を設置する
 
@@ -124,7 +124,7 @@ ms.locfileid: "90900016"
 3. 左右のマウンティング レールを、ラック前面の垂直フランジにねじで取り付けます (ねじは 2 本ずつ使用します)。
 4. 左右のバック ブラケットをスライドさせて、ラック後部の垂直フランジに合わせ、ねじを 2 本ずつ使って固定します。
 
-    ![ツールが必要なタイプのレールの付け外し](./media/azure-stack-edge-deploy-install/installing-removing-tooled-rails.png)
+    ![ツールが必要なタイプのレールの付け外し 2](./media/azure-stack-edge-deploy-install/installing-removing-tooled-rails.png)
 
 ### <a name="install-the-system-in-a-rack"></a>ラックへのシステムの取り付け
 
@@ -207,11 +207,11 @@ Azure Stack Edge Pro デバイスとは:
 
     - 3 個の PCI スロットと 1 つの GPU が搭載されたデバイス
 
-        ![ケーブル接続されたデバイスのバックプレーン](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-one-gpu.png)
+        ![ケーブル接続されたデバイスのバックプレーン 2](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-one-gpu.png)
 
     - 3 個の PCI スロットと 2 つの GPU が搭載されたデバイス
 
-        ![ケーブル接続されたデバイスのバックプレーン](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-two-gpu.png)
+        ![ケーブル接続されたデバイスのバックプレーン 3](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-two-gpu.png)
 
 2. デバイス前面にあるディスク スロットと電源ボタンを確認します。
 

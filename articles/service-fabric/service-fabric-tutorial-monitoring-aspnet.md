@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/10/2019
 ms.author: dekapur
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 4c812ab4f6c8908e3cabcf2d3afcc63959073ed4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 1940e65fc5a9fd4aecd0b0cbcf6631e0628bda91
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020111"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653130"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>チュートリアル:Application Insights を使用して Service Fabric 上の ASP.NET Core アプリケーションを監視および診断する
 
@@ -191,7 +191,7 @@ Azure Portal で、Application Insights リソースのページに移動しま�
 
 さらに、[概要] ページの左側のメニューの *[Application map]\(アプリケーション マップ\)* をクリックするか、 **[アプリ マップ]** アイコンをクリックすると、2 つのサービスが接続されていることを示すアプリ マップが表示されます。
 
-![AI トレースの詳細](./media/service-fabric-tutorial-monitoring-aspnet/app-map-new.png)
+![左側のメニューのアプリケーション マップが強調表示されているスクリーンショット。](./media/service-fabric-tutorial-monitoring-aspnet/app-map-new.png)
 
 アプリ マップを利用すると、アプリケーションのトポロジをより深く理解できます。特に、連携して動く複数の異なるサービスを追加し始めるときには有用です。 また、これによって要求の成功率に関する基本的なデータを取得し、失敗した要求を診断して、問題が起きた可能性のある場所を把握するのに役立てることもできます。 アプリ マップの使用方法について詳しくは、「[Application Insights のアプリケーション マップ](../azure-monitor/app/app-map.md)」をご覧ください。
 

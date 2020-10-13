@@ -1,7 +1,7 @@
 ---
-title: JavaScript シングルページ アプリのチュートリアル - 認証コード フロー | Azure
+title: チュートリアル:認証コード フローを使用する JavaScript シングルページ アプリを作成する | Azure
 titleSuffix: Microsoft identity platform
-description: JavaScript SPA アプリケーションで、認証コード フローを使用して、Azure Active Directory v2.0 エンドポイントからのアクセス トークンを必要とする API を呼び出す方法
+description: このチュートリアルでは、ユーザーのサインインを処理すると共に、認証コード フローを使用して Microsoft ID プラットフォームからアクセス トークンを取得し、Microsoft Graph API を呼び出すことができる JavaScript SPA を作成します。
 services: active-directory
 author: hahamil
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 7a136c03db6e27763a22d92d2c335f23c616856e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3caf12e13b5999c40843f1203ac8ce7f2f21ef6b
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256808"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665873"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>チュートリアル:認証コード フローを使用して、ユーザーをサインインさせ、JavaScript シングルページ アプリ (SPA) から Microsoft Graph API を呼び出す
 
@@ -32,6 +32,11 @@ ms.locfileid: "91256808"
 MSAL.js 2.0 は、ブラウザーで暗黙的な許可のフローではなく承認コード フローをサポートすることで、MSAL.js 1.0 よりも強化されています。 MSAL.js 2.0 では、暗黙的フローはサポートされて**いません**。
 
 [!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
+
+## <a name="prerequisites"></a>前提条件
+
+* ローカル Web サーバーを実行するための [Node.js](https://nodejs.org/en/download/)
+* [Visual Studio Code](https://code.visualstudio.com/download) または別のコード エディター
 
 ## <a name="how-the-tutorial-app-works"></a>チュートリアル アプリの動作
 
@@ -52,11 +57,6 @@ MSAL.js 2.0 は、ブラウザーで暗黙的な許可のフローではなく�
 その後、コード サンプルを実行前に構成するために、[構成手順](#register-your-application)に進みます。
 
 チュートリアルを続行してアプリケーションを自分でビルドする場合は、次のセクション「[前提条件](#prerequisites)」に進みます。
-
-## <a name="prerequisites"></a>前提条件
-
-* ローカル Web サーバーを実行するための [Node.js](https://nodejs.org/en/download/)
-* [Visual Studio Code](https://code.visualstudio.com/download) または別のコード エディター
 
 ## <a name="create-your-project"></a>プロジェクトを作成する
 
@@ -551,7 +551,9 @@ function readMail() {
 
 この時点で、PKCE で保護された認証コードが CORS によって保護されたトークン エンドポイントに送信され、トークンと交換されます。 アプリケーションによって ID トークン、アクセス トークン、および更新トークンが受信され、*msal.js* によって処理されて、トークンに含まれる情報がキャッシュされます。
 
-ID トークンには、表示名など、ユーザーについての基本的な情報が含まれています。 ID トークンによって提供されるデータを使用する予定がある場合は、アプリケーションの有効なユーザーに対してトークンが発行されたことを保証するために、バックエンド サーバーはトークンを検証する "*必要があります*"。 更新トークンの有効期間は限られており、24 時間後に有効期限が切れます。 更新トークンは、新しいアクセス トークンを自動的に取得するために使用できます。
+ID トークンには、表示名など、ユーザーについての基本的な情報が含まれています。 ID トークンによって提供されるデータを使用する予定がある場合は、アプリケーションの有効なユーザーに対してトークンが発行されたことを保証するために、バックエンド サーバーはトークンを検証する "*必要があります*"。
+
+アクセス トークンの有効期間は限られており、24 時間後に有効期限が切れます。 更新トークンは、新しいアクセス トークンを自動的に取得するために使用できます。
 
 このチュートリアルで作成した SPA は、`acquireTokenSilent`、`acquireTokenPopup`、またはその両方を呼び出して、Microsoft Graph API に対するユーザー プロファイル情報の照会に使用される "*アクセス トークン*" を取得します。 ID トークンを検証するサンプルが必要な場合は、GitHub の [active-directory-javascript-singlepageapp-dotnet-webapi-v2](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) サンプル アプリケーションを参照してください。 このサンプルでは、トークンの検証に ASP.NET Web API を使用しています。
 
@@ -649,14 +651,7 @@ Microsoft Graph API には、ユーザーのプロファイルを読み取るた
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Microsoft Authentication Library (MSAL) for JavaScript v2.0 を使用する JavaScript シングルページ アプリケーション (SPA) を作成し、以下のことを行いました。
+Microsoft ID プラットフォームでの JavaScript シングルページ アプリケーションの開発についてさらに詳しく知りたい場合は、複数のパートで構成される次のシナリオ シリーズを参照してください。
 
-> [!div class="checklist"]
-> * PKCE を使用した、OAuth 2.0 認証コード フローの実行
-> * 個人用 Microsoft アカウントと職場または学校アカウントへのサインイン
-> * アクセス トークンの取得
-> * Microsoft ID プラットフォーム エンドポイントから取得したアクセス トークンを必要とする Microsoft Graph または独自 API の呼び出し
-
-暗黙のフローと認証コード フローの違いなど、認証コード フローの詳細については、「[Microsoft ID プラットフォームと OAuth 2.0 認証コード フロー](v2-oauth2-auth-code-flow.md)」を参照してください。
-
-Microsoft ID プラットフォームでの JavaScript シングルページ アプリケーションの開発についてさらに詳しく知りたい場合は、複数パートから構成される記事の「[シナリオ: シングルページ アプリケーション](scenario-spa-overview.md)」シリーズが、作業を開始するのに役立ちます。
+> [!div class="nextstepaction"]
+> [シナリオ:シングルページ アプリ](scenario-spa-overview.md)

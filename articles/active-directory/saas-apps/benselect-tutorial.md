@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 98740153def94742a8bbba1ee6f4f022b614ecfa
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 12c0647e0244464966c52bafe8c976eb4a35ddda
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88537109"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741212"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-benselect"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と BenSelect の統合
 
@@ -89,15 +89,15 @@ BenSelect に対する Azure AD SSO を構成してテストするには、次�
 
 1. BenSelect アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
-    ![image](common/edit-attribute.png)
+    ![スクリーンショットは [ユーザー属性] を示しています。[Givenname]\(名\) の user.givenname や [Emailaddress]\(メール アドレス\) の user.mail など、既定の属性が表示されています。](common/edit-attribute.png)
 
 1. **[編集]** アイコンをクリックして、 **[名前識別子の値]** を編集します。
 
-    ![image](media/benselect-tutorial/mail-prefix1.png)
+    ![スクリーンショットは、[編集] アイコンが選択されている [ユーザー属性とクレーム] ペインを示しています。](media/benselect-tutorial/mail-prefix1.png)
 
 1. **[ユーザー要求の管理]** セクションで、以下の手順を実行します。
 
-    ![image](media/benselect-tutorial/mail-prefix2.png)
+    ![スクリーンショットは、この手順で説明した値を入力できる [ユーザー要求の管理] を示しています。](media/benselect-tutorial/mail-prefix2.png)
 
     a. **[ソース]** として **[変換]** を選択します。
 

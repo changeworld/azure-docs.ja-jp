@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: e74d22d3d45079a6568f6fca35dc5d84e2d7469f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e30140dc23e64bfc733a0a51fa77fe811ba8fbc7
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897986"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776121"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>データのラベル付けプロジェクトを作成してラベルをエクスポートする 
 
@@ -55,10 +55,10 @@ ms.locfileid: "90897986"
 
 プロジェクトを作成するには、 **[プロジェクトの追加]** を選択します。 プロジェクトに適切な名前を付け、 **[ラベル付けタスクの種類]** を選択します。
 
-:::image type="content" source="media/how-to-create-labeling-projects/labeling-creation-wizard.png" alt-text="ラベル付けプロジェクト作成ウィザード":::
+:::image type="content" source="media/how-to-create-labeling-projects/labeling-creation-wizard.png" alt-text="ラベル付けプロジェクト作成ウィザード&quot;:::
 
-* ラベルのセットから "*1 つのラベル*" だけを画像に適用する場合は、プロジェクトに対して **[イメージ分類の複数クラス]** を選択します。
-* ラベルのセットから "*1 つまたは複数*" のラベルを画像に適用する場合は、プロジェクトに対して **[Image Classification Multi-label]\(画像分類の複数ラベル\)** を選択します。 たとえば、犬の写真には "*犬*" と "*日中*" の両方のラベルが付けられる可能性があります。
+* ラベルのセットから &quot;*1 つのラベル*&quot; だけを画像に適用する場合は、プロジェクトに対して **[イメージ分類の複数クラス]** を選択します。
+* ラベルのセットから &quot;*1 つまたは複数*&quot; のラベルを画像に適用する場合は、プロジェクトに対して **[Image Classification Multi-label]\(画像分類の複数ラベル\)** を選択します。 たとえば、犬の写真には &quot;*犬*&quot; と &quot;*日中*" の両方のラベルが付けられる可能性があります。
 * 画像内の各オブジェクトにラベルと境界ボックスを割り当てる場合は、プロジェクトに対して **[オブジェクト ID (四角形領域)]** を選択します。
 
 続行する準備ができたら、 **[次へ]** を選択します。
@@ -156,6 +156,9 @@ ML によるラベル付けを開始するために必要とされるラベル�
 
 最終的なラベルは依然としてラベラーからの入力に依存するため、この技術は "*人間参加 (Human in the loop) 型*" のラベル付けと呼ばれることがあります。
 
+> [!NOTE]
+> ML によるデータのラベル付けでは、[仮想ネットワーク](how-to-network-security-overview.md)の背後でセキュリティ保護された既定のストレージ アカウントはサポートされていません。 ML によるデータのラベル付けには、既定以外のストレージ アカウントを使用する必要があります。 既定以外のストレージ アカウントは、仮想ネットワークの背後でセキュリティ保護できます。 
+
 ### <a name="clustering"></a>クラスタリング
 
 一定数のラベルが送信されると、画像分類の機械学習モデルは、類似する画像をグループ化し始めます。  手動でのタグ付けにかかる時間を短縮するために、これらの類似する画像は同じ画面上でラベラーに表示されます。 ラベラーに表示される画像が 4 枚、6 枚、9 枚のいずれかのグリッドであるとき、クラスタリングは特に効果的です。 
@@ -186,7 +189,10 @@ ML によるラベル付けを開始するために必要とされるラベル�
 
 **[ダッシュボード]** タブに、ラベル付けタスクの進行状況が表示されます。
 
-:::image type="content" source="media/how-to-create-labeling-projects/labeling-dashboard.png" alt-text="データのラベル付けダッシュボード":::
+:::image type="content" source="media/how-to-create-labeling-projects/labeling-dashboard.png" alt-text="ラベル付けプロジェクト作成ウィザード&quot;:::
+
+* ラベルのセットから &quot;*1 つのラベル*&quot; だけを画像に適用する場合は、プロジェクトに対して **[イメージ分類の複数クラス]** を選択します。
+* ラベルのセットから &quot;*1 つまたは複数*&quot; のラベルを画像に適用する場合は、プロジェクトに対して **[Image Classification Multi-label]\(画像分類の複数ラベル\)** を選択します。 たとえば、犬の写真には &quot;*犬*&quot; と &quot;*日中*":::
 
 進行状況グラフには、ラベル付けされた項目の数と、まだそれが行われていない項目の数が表示されます。  保留中の項目は次のとおりです。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 3beefb467f7875e6bc76765811c6525f5dab9393
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 83f1eef14a5c22fbab998fb6c939775873748670
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536200"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774119"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-discovery-benefits-sso"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Discovery Benefits SSO の統合
 
@@ -86,7 +86,7 @@ Discovery Benefits SSO で Azure AD SSO を構成してテストするには、�
 
     a. **[編集]** アイコンをクリックして、 **[一意のユーザー識別子 (名前 ID)]** ダイアログを開きます。
 
-    ![Discovery Benefits SSO の構成](./media/discovery-benefits-sso-tutorial/attribute01.png)
+    ![[必要な要求] の右側の省略記号が選択された [ユーザー属性と要求] セクションを示すスクリーンショット。](./media/discovery-benefits-sso-tutorial/attribute01.png)
 
     ![Discovery Benefits SSO の構成](./media/discovery-benefits-sso-tutorial/attribute02.png)
 
@@ -103,7 +103,7 @@ Discovery Benefits SSO で Azure AD SSO を構成してテストするには、�
 
     f. SSO の構成に必要な追加の要求 (`SSOInstance` および `SSOID`) が自動的に設定されました。 **[編集]** アイコンを使用して、組織に応じて値をマップします。
 
-    ![Discovery Benefits SSO の構成](./media/discovery-benefits-sso-tutorial/attribute03.png)
+    !["S S O Instance" と "S S O I D" の値が強調表示された [ユーザー属性と要求] を示すスクリーンショット。](./media/discovery-benefits-sso-tutorial/attribute03.png)
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 

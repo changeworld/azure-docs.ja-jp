@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 8f6c815bf6b8be6d280dcdc60401f7a91e171e66
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b8593873774575635b31176b162086795e8a1320
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542752"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744289"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-boomi"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Boomi の統合
 
@@ -89,14 +89,16 @@ Boomi に対する Azure AD SSO を構成してテストするには、次の構
 
     c. メタデータ ファイルが正常にアップロードされると、**識別子**と**応答 URL** の値が、[基本的な SAML 構成] セクションに自動的に設定されます。
 
-    ![image](common/idp-intiated.png)
+    ![スクリーンショットは、[基本的な SAML 構成] を示しています。ここに、識別子と応答 URL の値が表示されます。](common/idp-intiated.png)
+
+    d. **サインオン URL** を入力します (例: `https://platform.boomi.com/AtomSphere.html#build;accountId={your-accountId}`)。
 
     > [!Note]
     > **サービス プロバイダーのメタデータ ファイル**は、このチュートリアルで後述する「**Boomi SSO の構成**」セクションで取得します。 **識別子**と**応答 URL** の値が自動的に設定されない場合は、要件に応じて手動で値を入力してください。
 
 1. Boomi アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
-    ![image](common/default-attributes.png)
+    ![スクリーンショットは [User Attributes & Claims]\(ユーザー属性とクレーム\) を示しています。[Givenname]\(名\) の user.givenname や [Emailaddress]\(メール アドレス\) の user.mail など、既定値が表示されています。](common/default-attributes.png)
 
 1. その他に、Boomi アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
@@ -146,7 +148,7 @@ Boomi に対する Azure AD SSO を構成してテストするには、次の構
 
 1. 別の Web ブラウザー ウィンドウで、Boomi 企業サイトに管理者としてサインインします。
 
-1. **[会社名]** 、 **[セットアップ]** の順に進みます。
+1. **[会社名]**、**[セットアップ]** の順に進みます。
 
 1. **[SSO オプション]** タブをクリックして以下の手順に従います。
 
@@ -158,7 +160,7 @@ Boomi に対する Azure AD SSO を構成してテストするには、次の構
 
     c. **[ID プロバイダーのログイン URL]** ボックスに、Azure AD アプリケーションの構成ウィンドウの **[ログイン URL]** の値を入力します。
 
-    d. **[Federation Id Location]** で、 **[Federation Id is in FEDERATION_ID Attribute element]** オプションを選択します。
+    d. **[Federation Id Location]** で、**[Federation Id is in FEDERATION_ID Attribute element]** オプションを選択します。
 
     e. **[AtomSphere MetaData URL]\(AtomSphere メタデータ URL\)** をコピーし、任意のブラウザーで **[MetaData URL]\(メタデータ URL\)** に移動して、出力をファイルに保存します。 Azure portal の **[基本的な SAML 構成]** セクションで**メタデータ URL** をアップロードします。
 
@@ -172,15 +174,15 @@ Azure AD ユーザーが Boomi にサインインできるようにするには�
 
 1. Boomi 企業サイトに管理者としてサインインします。
 
-1. **[ユーザー管理]** 、 **[ユーザー]** の順に進みます。
+1. **[ユーザー管理]**、**[ユーザー]** の順に進みます。
 
-    ![ユーザー](./media/boomi-tutorial/tutorial_boomi_001.png "ユーザー")
+    ![スクリーンショットは、[ユーザー] が選択されている [ユーザー管理] ページを示しています。](./media/boomi-tutorial/tutorial_boomi_001.png "ユーザー")
 
 1. **+** アイコンをクリックすると **[Add/Maintain User Roles]\(ユーザーの役割の追加と管理)** ダイアログが開きます。
 
-    ![ユーザー](./media/boomi-tutorial/tutorial_boomi_002.png "ユーザー")
+    ![スクリーンショットでは、[+] アイコンが選択されています。](./media/boomi-tutorial/tutorial_boomi_002.png "ユーザー")
 
-    ![ユーザー](./media/boomi-tutorial/tutorial_boomi_003.png "ユーザー")
+    ![スクリーンショットは [Add / Maintain User Roles]\(ユーザー ロールの追加および管理\) を示しています。ここでユーザーを構成します。](./media/boomi-tutorial/tutorial_boomi_003.png "ユーザー")
 
     a. **[ユーザーのメール アドレス]** ボックスに、ユーザーのメール アドレスを入力します (この例では B.Simon@contoso.com)。
 

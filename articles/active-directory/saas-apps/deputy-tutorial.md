@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: e9ca679c7bb8deedca20a5aa97cbb53a9139ea8a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6d0062214b4faa0cb2b26c30f1c2833d25d5493e
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536882"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774549"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>チュートリアル:Azure Active Directory と Deputy の統合
 
@@ -99,7 +99,7 @@ Deputy で Azure AD シングル サインオンを構成するには、次の�
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[Deputy のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+    ![[識別子]、[応答 URL]、および [保存] ボタンが強調表示されている [基本的な S A M L 構成] セクションを示すスクリーンショット。](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、次の形式で URL を入力します。
 
@@ -171,7 +171,7 @@ Deputy で Azure AD シングル サインオンを構成するには、次の�
 
 1. `https://(your-subdomain).deputy.com/exec/config/system_config` という URL に移動します。 **[Security Settings (セキュリティの設定)]** に移動し、 **[編集]** をクリックします。
    
-    ![Configure single sign-on](./media/deputy-tutorial/tutorial_deputy_004.png)
+    ![[Security Settings - Edit]\(セキュリティの設定-編集\) ボタンが選択されている [System Config]\(システム構成\) ページを示すスクリーンショット。](./media/deputy-tutorial/tutorial_deputy_004.png)
 
 2. この **[Security Settings (セキュリティの設定)]** ページで、次の手順を実行します。
 

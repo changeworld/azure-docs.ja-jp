@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 794a952ba719faa16e3584afaf8f2f292deb6c03
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8a8a9587fd50b63dc862f8b74bc99548699fa6e2
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551818"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760667"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>チュートリアル:Azure Active Directory と ClickUp Productivity Platform の統合
 
@@ -118,17 +118,17 @@ ClickUp Productivity Platform で Azure AD シングル サインオンを構成
 
 2. **[User profile]\(ユーザー プロファイル\)** をクリックし、 **[Settings]\(設定\)** を選択します。
 
-    ![ClickUp Productivity の構成](./media/clickup-productivity-platform-tutorial/configure0.png)
+    ![[スクリーンショットは、Settings]\(設定\) アイコンが選択された ClickUp Productivity テナントを示します。](./media/clickup-productivity-platform-tutorial/configure0.png)
 
-    ![ClickUp Productivity の構成](./media/clickup-productivity-platform-tutorial/configure1.png)
+    ![スクリーンショットは、[Settings]\(設定\) を示します。](./media/clickup-productivity-platform-tutorial/configure1.png)
 
 3. [Single Sign-On (SSO) Provider]\(シングル サインオン (SSO) プロバイダー\) で **[Microsoft]** を選択します。
 
-    ![ClickUp Productivity の構成](./media/clickup-productivity-platform-tutorial/configure2.png)
+    ![スクリーンショットは、[Microsoft] が選択されている [Authentication]\(認証\) ペインを示します。](./media/clickup-productivity-platform-tutorial/configure2.png)
 
 4. **[Configure Microsoft Single Sign On]\(Microsoft のシングル サインオンの構成\)** ページで、次の手順を実行します。
 
-    ![ClickUp Productivity の構成](./media/clickup-productivity-platform-tutorial/configure3.png)
+    ![スクリーンショットは、[Configure Microsoft Single Sign On]\(Microsoft のシングル サインオンの構成\) ページを示します。ここで、[Entity I D]\(エンティティ I D\) をコピーし、[Azure Federation Metadata U R L]\(Azure フェデレーション メタデータ U R L\) を保存できます。](./media/clickup-productivity-platform-tutorial/configure3.png)
 
     a. **[Copy]\(コピー\)** をクリックして [Entity ID]\(エンティティ ID\) の値をコピーし、Azure portal の **[基本的な SAML 構成]** セクションの **[識別子 (エンティティ ID)]** ボックスに貼り付けます。
     
@@ -136,7 +136,7 @@ ClickUp Productivity Platform で Azure AD シングル サインオンを構成
 
 5. この設定を完了するには、 **[Authenticate With Microsoft to complete setup]\(Microsoft で認証してセットアップを完了する\)** をクリックして、Microsoft アカウントで認証します。
 
-    ![ClickUp Productivity の構成](./media/clickup-productivity-platform-tutorial/configure4.png)
+    ![スクリーンショットは、[Authenticate With Microsoft to complete setup]\(Microsoft で認証してセットアップを完了する\) ボタンを示します。](./media/clickup-productivity-platform-tutorial/configure4.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -195,13 +195,13 @@ ClickUp Productivity Platform で Azure AD シングル サインオンを構成
 
 2. **[User profile]\(ユーザー プロファイル\)** をクリックし、 **[People]\(ユーザー\)** を選択します。
    
-    ![ClickUp Productivity の構成](./media/clickup-productivity-platform-tutorial/configure0.png)
+    ![スクリーンショットは、ClickUp Productivity テナントを示します。](./media/clickup-productivity-platform-tutorial/configure0.png)
 
-    ![ClickUp Productivity の構成](./media/clickup-productivity-platform-tutorial/user1.png)
+    ![スクリーンショットは、[People]\(ユーザー\) リンクが選択されていることを示します。](./media/clickup-productivity-platform-tutorial/user1.png)
 
 3. テキスト ボックスにユーザーのメール アドレスを入力して、 **[Invite]\(招待\)** をクリックします。
 
-    ![ClickUp Productivity の構成](./media/clickup-productivity-platform-tutorial/user2.png)
+    ![スクリーンショットは、[Team Users Settings]\(チーム ユーザー設定\) を示します。これを設定するとメールでユーザーを招待できます。](./media/clickup-productivity-platform-tutorial/user2.png)
 
     > [!NOTE]
     > ユーザーは通知を受け取ったら、招待を承諾してアカウントをアクティブにする必要があります。

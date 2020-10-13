@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.openlocfilehash: bca696cc633a1d2a4fd64180135bb4b1e25f801c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 953b1d766788092564ae32f6c0ab1fb3e57c492f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540585"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713889"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-arc-facilities"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と ARC Facilities の統合
 
@@ -84,15 +84,15 @@ ARC Facilities で Azure AD SSO を構成してテストするには、次の構
 
 1. ARC Facilities アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
 
-    ![image](common/edit-attribute.png)
+    ![このスクリーンショットは、[編集] アイコンがコールアウトされた状態の [ユーザー属性] ダイアログ ボックスを示しています。](common/edit-attribute.png)
 
 1. その他に、ARC Facilities アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[グループ要求 (プレビュー)]** ダイアログの **[ユーザー属性とクレーム]** セクションで、次の手順を実行します。
 
     a. **[Groups returned in claim]\(要求で返されるグループ\)** の横にある**ペン**をクリックします。
 
-    ![image](./media/arc-facilities-tutorial/config01.png)
+    ![このスクリーンショットは、[クレームで返されるグループ] の横のペンがコールアウトされた状態の [User Attributes & Claims]\(ユーザー属性と要求\) を示しています。](./media/arc-facilities-tutorial/config01.png)
 
-    ![image](./media/arc-facilities-tutorial/config02.png)
+    ![このスクリーンショットは、[すべてのグループ] と [グループ ID] が選択され、[保存] ボタンがコールアウトされた状態の [グループ クレーム] を示しています。](./media/arc-facilities-tutorial/config02.png)
 
     b. ラジオ ボタンのリストから **[すべてのグループ]** を選択します。
 

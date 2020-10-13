@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 0c9e0b6a81742ea4022bb8db2dd8d933f917331b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b5739ea49bb9f5823538e9a41660a572a3cede04
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88530086"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760728"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>チュートリアル: Azure Active Directory と Cezanne HR Software の統合
 
@@ -130,19 +130,19 @@ Cezanne HR Software で Azure AD シングル サインオンを構成するに�
 
 2. 左側のナビゲーション ウィンドウで、 **[System Setup (システム設定)]** をクリックします。 **[Security Settings (セキュリティの設定)]** に移動します。 次に、 **[Single Sign-On Configuration (シングル サインオンの構成)]** に移動します。
 
-    ![アプリ側でのシングル サインオンの構成](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
+    ![スクリーンショットは、[Security Settings]\(セキュリティの設定\) と [Single Sign-On Configuration]\(シングル サインオンの構成\) が選択されている Cezanne H R Software テナントを示します。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
 
 3. **[Allow users to log in using the following Single Sign-On (SSO) Service (ユーザーに次のシングル サインオン (SSO) サービスを使用したログインを許可する)]** パネルで **[SAML 2.0]** チェック ボックスをオンにして、 **[Advanced Configuration (詳細設定)]** オプションを選択します。
 
-    ![アプリ側でのシングル サインオンの構成](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_001.png)
+    ![スクリーンショットは、[SAML 2.0] と [Advanced Configuration]\(詳細設定\) が選択されている [Allow users]\(ユーザーに許可する\) ペインを示します。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_001.png)
 
 4. **[Add New (新規追加)]** ボタンをクリックします。
 
-    ![アプリ側でのシングル サインオンの構成](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_002.png)
+    ![スクリーンショットは、[Add New]\(新規追加\) ボタンを示します。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_002.png)
 
 5. **[SAML 2.0 IDENTITY PROVIDERS (SAML 2.0 ID プロバイダー)]** セクションで、次の手順に従います。
 
-    ![アプリ側でのシングル サインオンの構成](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
+    ![スクリーンショットは、この手順で説明した値を入力できるペインを示します。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
 
     a. **[Display Name (表示名)]** に ID プロバイダー名を入力します。
 
@@ -160,7 +160,7 @@ Cezanne HR Software で Azure AD シングル サインオンを構成するに�
 
 6. **[保存]** ボタンをクリックします。
 
-    ![アプリ側でのシングル サインオンの構成](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
+    ![スクリーンショットは、[Single Sign-on Configuration]\(シングル サインオン構成\) の [Save]\(保存\) ボタンを示します。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -223,11 +223,11 @@ Azure AD ユーザーが Cezanne HR Software にログインできるように�
 
 2. 左側のナビゲーション ウィンドウで、 **[System Setup (システム設定)]** をクリックします。 **[ユーザーの管理]** に移動します。 **[Add New User (新しいユーザーの追加)]** に移動します。
 
-    ![[New User]\(新しいユーザー\)](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_005.png "[新しいユーザー]")
+    ![[Manage Users]\(ユーザーの管理\) と [Add New User]\(新しいユーザーの追加\) が選択されている Cezanne H R Software テナントを示すスクリーンショット。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_005.png "[新しいユーザー]")
 
 3. **[PERSON DETAILS]\(個人の詳細\)** セクションで、次の手順を実行します。
 
-    ![[New User]\(新しいユーザー\)](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "[新しいユーザー]")
+    ![スクリーンショットは、この手順で説明した値を入力できる [PERSON DETAILS]\(個人の詳細\) セクションを示します。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "[新しいユーザー]")
 
     a. **[Internal User (内部ユーザー)]** をオフに設定します。
 
@@ -239,7 +239,7 @@ Azure AD ユーザーが Cezanne HR Software にログインできるように�
 
 4. **[Account Information (アカウント情報)]** セクションで、次の手順を実行します。
 
-    ![[New User]\(新しいユーザー\)](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "[新しいユーザー]")
+    ![スクリーンショットは、この手順で説明した値を入力できる [Account Information]\(アカウント情報\) を示します。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "[新しいユーザー]")
 
     a. **[Username]\(ユーザー名\)** ボックスに、ユーザーの電子メール (Brittasimon@contoso.com など) を入力します。
 
@@ -251,15 +251,15 @@ Azure AD ユーザーが Cezanne HR Software にログインできるように�
 
 5. **[Single Sign-On (シングル サインオン)]** タブに移動し、 **[SAML 2.0 Identifiers (SAML 2.0 識別子)]** 領域で **[Add New (新規追加)]** を選択します。
 
-    ![User](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "User")
+    ![スクリーンショットは、[Add New]\(新規追加\) を選択できる [Single Sign-On]\(シングル サインオン\) タブを示します。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "User")
 
 6. **[Identity Provider (ID プロバイダー)]** でお使いの ID プロバイダーを選択し、 **[User Identifier (ユーザー識別子)]** ボックスに Britta Simon アカウントの電子メール アドレスを入力します。
 
-    ![User](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "User")
+    ![スクリーンショットは、ご使用の ID プロバイダーと [User Identifier]\(ユーザー識別子\) を選択できる [SAML 2.0 Identifiers]\(SAML 2.0 識別子\) を示します。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "User")
 
 7. **[保存]** ボタンをクリックします。
 
-    ![User](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "User")
+    ![スクリーンショットは、[User Settings]\(ユーザー設定\) の[Save]\(保存\) ボタンを示します。](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "User")
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

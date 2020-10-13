@@ -1,6 +1,7 @@
 ---
-title: MSAL Android での共有デバイス モードの使用 | Azure
-description: Android デバイスを共有モードで実行できるように準備し、現場作業員向けアプリを実行する方法について説明します。
+title: チュートリアル:Microsoft Authentication Library (MSAL) for Android で共有デバイス モードを使用する | Azure
+titleSuffix: Microsoft identity platform
+description: このチュートリアルでは、Android デバイスを共有モードで実行できるように準備し、現場作業員向けアプリを実行する方法について説明します。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -12,23 +13,35 @@ ms.date: 1/15/2020
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4bbcf73654d7f588c63a9bf81ab6a689360ec978
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 2aa786f78d3e730bb351d1fa84b0c7fbb32d6786
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91355059"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611233"
 ---
 # <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>チュートリアル:Android アプリケーションで共有デバイス モードを使用する
 
-> [!NOTE]
-> この機能はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+このチュートリアルは、Android アプリに使用する共有デバイス モードの設定およびサポートを行う開発者とテナント管理者の両方を対象としたガイダンスとなっています。
+
+このチュートリアルの内容:
+
+> [!div class="checklist"]
+> * コード サンプルをダウンロードする
+> * 共有デバイス モードを有効にして検出する
+> * アカウント モードが単一か複数かを検出する
+> * ユーザーの切り替えを検出し、グローバル サインインとグローバル サインアウトを有効にする
+> * Azure portal でテナントを設定し、アプリケーションを登録する
+> * 共有デバイス モードで Android デバイスを設定する
+> * サンプル アプリを実行する
+
+## <a name="prerequisites"></a>前提条件
+
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="developer-guide"></a>開発者ガイド
 
-このガイドでは、Microsoft Authentication Library (MSAL) を使用して Android アプリケーションに共有デバイス モードを実装するための開発者向けガイダンスを提供します。 MSAL を自分の Android アプリに統合する方法、ユーザーをサインインさせる方法、Microsoft Graph を呼び出す方法、ユーザーをサインアウトさせる方法については、[Android 向けの MSAL チュートリアル](./tutorial-v2-android.md)をご覧ください。
+このチュートリアル セクションでは、Microsoft Authentication Library (MSAL) を使用して Android アプリケーションに共有デバイス モードを実装するための開発者向けガイダンスを提供します。 MSAL を自分の Android アプリに統合する方法、ユーザーをサインインさせる方法、Microsoft Graph を呼び出す方法、ユーザーをサインアウトさせる方法については、[Android 向けの MSAL チュートリアル](./tutorial-v2-android.md)をご覧ください。
 
 ### <a name="download-the-sample"></a>サンプルのダウンロード
 
@@ -209,9 +222,11 @@ private void onSignOutClicked()
 > [!NOTE]
 > アプリを登録する際は、左側にあるクイックスタート ガイドを使用して、 **[Android]** を選択してください。 それにより、ページが表示され、自分のアプリの**パッケージ名**と**署名ハッシュ**を入力するよう求められます。 アプリ構成を確実に機能させるためには、これらが非常に重要です。 次に、自分のアプリに使用できる構成オブジェクトを受け取ります。これは切り取って、自分の auth_config.json ファイルに貼り付けます。
 
-![アプリの登録画面](media/tutorial-v2-shared-device-mode/register-app.png) **[この変更を行う]** を選択し、クイックスタートで要求される値を Azure portal に入力する必要があります。 それが完了すると、必要なすべての構成ファイルが生成されます。
+:::image type="content" source="media/tutorial-v2-shared-device-mode/register-app.png" alt-text="Azure portal クイックスタートの Android アプリの構成ページ":::
 
-![アプリの構成情報画面](media/tutorial-v2-shared-device-mode/config-info.png)
+**[この変更を行う]** を選択し、クイックスタートで要求される値を Azure portal に入力する必要があります。 それが完了すると、必要なすべての構成ファイルが生成されます。
+
+:::image type="content" source="media/tutorial-v2-shared-device-mode/config-info.png" alt-text="Azure portal クイックスタートの Android アプリの構成ページ":::
 
 ## <a name="set-up-a-tenant"></a>テナントを設定する
 
@@ -227,25 +242,25 @@ Google Play ストアから Microsoft Authenticator アプリをダウンロー�
 
 Authenticator アプリを起動し、メイン アカウント ページに移動します。 **[アカウントの追加]** ページが表示されたら、デバイスを共有する準備は整いました。
 
-![Authenticator のアカウントの追加画面](media/tutorial-v2-shared-device-mode/authenticator-add-account.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/authenticator-add-account.png" alt-text="Azure portal クイックスタートの Android アプリの構成ページ":::
 
- 右側のメニュー バーを使用して、 **[設定]** ペインに移動します。 **[職場または学校アカウント]** の下にある **[デバイスの登録]** を選択します。
+右側のメニュー バーを使用して、 **[設定]** ペインに移動します。 **[職場または学校アカウント]** の下にある **[デバイスの登録]** を選択します。
 
- ![Authenticator のアカウントの追加画面](media/tutorial-v2-shared-device-mode/authenticator-settings.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/authenticator-settings.png" alt-text="Azure portal クイックスタートの Android アプリの構成ページ":::
 
- このボタンをクリックすると、デバイスの連絡先へのアクセスを承認するよう求められます。 これは、デバイスで Android のアカウントが統合されているためです。 **[許可]** を選択します。
+このボタンをクリックすると、デバイスの連絡先へのアクセスを承認するよう求められます。 これは、デバイスで Android のアカウントが統合されているためです。 **[許可]** を選択します。
 
- ![Authenticator のアカウントの追加画面](media/tutorial-v2-shared-device-mode/authenticator-allow-screen.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/authenticator-allow-screen.png" alt-text="Azure portal クイックスタートの Android アプリの構成ページ":::
 
 クラウド デバイス管理者は、 **[または共有デバイスとして登録]** の下で、組織のメール アドレスを入力する必要があります。 次に、 **[共有デバイスとして登録]** ボタンをクリックし、資格情報を入力します。
 
-![デバイスの登録画面](media/tutorial-v2-shared-device-mode/register-device.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/register-device.png" alt-text="Azure portal クイックスタートの Android アプリの構成ページ":::
 
-![スクリーンショットはサインイン ページを表示しています。](media/tutorial-v2-shared-device-mode/sign-in.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/sign-in.png" alt-text="Azure portal クイックスタートの Android アプリの構成ページ":::
 
 これでデバイスが共有モードになりました。
 
-![デバイスの登録画面](media/tutorial-v2-shared-device-mode/shared-device-mode-screen.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/shared-device-mode-screen.png" alt-text="Azure portal クイックスタートの Android アプリの構成ページ":::
 
  デバイスでのサインインとサインアウトは、すべてグローバルになります。つまり、デバイス上の MSAL および Microsoft Authenticator と統合されているすべてのアプリにサインインとサインアウトが適用されます。 これで、共有デバイス モード機能が使用されるデバイスにアプリケーションをデプロイできるようになりました。
 
@@ -253,14 +268,17 @@ Authenticator アプリを起動し、メイン アカウント ページに移�
 
 共有モードにしたデバイスは組織によって把握されるようになり、組織のテナントで追跡されます。 共有デバイスを確認するには、Azure portal の [Azure Active Directory] ブレードにある **[結合の種類]** を参照してください。
 
-![Azure portal の [すべてのデバイス] ブレード](media/tutorial-v2-shared-device-mode/registered-device-screen.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/registered-device-screen.png" alt-text="Azure portal クイックスタートの Android アプリの構成ページ":::
 
 ## <a name="running-the-sample-app"></a>サンプル アプリを実行する
 
 このサンプル アプリケーションは、お客様の組織の Graph API を呼び出す単純なアプリです。 最初の実行では、お客様の従業員アカウントでこのアプリケーションを使用するのが初めてであるため、同意を求めるメッセージが表示されます。
 
-![アプリの構成情報画面](media/tutorial-v2-shared-device-mode/run-app-permissions-requested.png)
+:::image type="content" source="media/tutorial-v2-shared-device-mode/run-app-permissions-requested.png" alt-text="Azure portal クイックスタートの Android アプリの構成ページ":::
 
 ## <a name="next-steps"></a>次のステップ
 
-共有モードの詳細については、「[Android デバイスの共有デバイス モード](msal-android-shared-devices.md)」を参照してください
+Microsoft Authentication Library と Android デバイスの共有デバイス モードの詳しい使用方法をご覧ください。
+
+> [!div class="nextstepaction"]
+> [Android デバイスの共有デバイス モード](msal-android-shared-devices.md)

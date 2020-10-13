@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: df04cc41f2b5947bb0cf23715a857a3449627f23
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d8050b87d122ef676b52f1cab5e06175a55602b1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550257"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713861"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>チュートリアル: Azure Active Directory と Attendance Management Services の統合
 
@@ -128,11 +128,11 @@ Attendance Management Services で Azure AD シングル サインオンを構�
 
 1. **[セキュリティ管理] セクション**の **[SAML 認証]** をクリックします。
 
-    ![Attendance Management Services の構成](./media/attendancemanagementservices-tutorial/user1.png)
+    ![このスクリーンショットは、非ラテン文字が使用されたページで [SAML 認証] が選択されている状態を示しています。](./media/attendancemanagementservices-tutorial/user1.png)
 
 1. 次の手順に従います。
 
-    ![Attendance Management Services の構成](./media/attendancemanagementservices-tutorial/user2.png)
+    ![このスクリーンショットは、この手順で説明されているタスクを実行できるウィンドウを示しています。](./media/attendancemanagementservices-tutorial/user2.png)
 
     a. **[SAML 認証を利用する]** を選択します。
 
@@ -206,15 +206,15 @@ Azure AD ユーザーが Attendance Management Services にサインインでき
 
 1. **[セキュリティ管理] セクション**の **[利用者管理]** をクリックします。
 
-    ![従業員の追加](./media/attendancemanagementservices-tutorial/user5.png)
+    ![このスクリーンショットは、非ラテン文字が使用されたページで [利用者管理] が選択されている状態を示しています。](./media/attendancemanagementservices-tutorial/user5.png)
 
 1. **[新規登録]** をクリックします。
 
-    ![従業員の追加](./media/attendancemanagementservices-tutorial/user3.png)
+    ![このスクリーンショットは、プラス記号オプションの選択を示しています。](./media/attendancemanagementservices-tutorial/user3.png)
 
 1. **[OBCiD 情報]** セクションで、次の手順を実行します。
 
-    ![従業員の追加](./media/attendancemanagementservices-tutorial/user4.png)
+    ![このスクリーンショットは、説明されているタスクを実行できるウィンドウを示しています。](./media/attendancemanagementservices-tutorial/user4.png)
 
     a. **[OBCiD]** ボックスに、ユーザーのメール アドレスを入力します (例: `BrittaSimon\@contoso.com`)。
 

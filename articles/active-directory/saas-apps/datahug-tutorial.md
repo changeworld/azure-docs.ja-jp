@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 787de3e3e44ca921c5dccd7b51a2e655a31d112b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ba76618892cace6681c82e96d7a2f9b36f839664
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555971"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775611"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-datahug"></a>チュートリアル: Azure Active Directory と Datahug の統合
 
@@ -99,7 +99,7 @@ Datahug で Azure AD シングル サインオンを構成するには、次の�
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[Datahug のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+    ![[識別子]、[応答 URL]、および [保存] ボタンが強調表示されている [基本的な S A M L 構成] セクションを示すスクリーンショット。](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、`https://apps.datahug.com/identity/<uniqueID>` の形式で URL を入力します。
 
@@ -206,11 +206,11 @@ Datahug の場合、プロビジョニングは手動で行います。
 
 2. 右上隅の**歯車**をポイントし、 **[Settings]** をクリックします。
    
-    ![従業員の追加](./media/datahug-tutorial/1.png)
+    !["歯車" アイコンが選択され、ドロップダウン メニューで [Settings]\(設定\) が選択されている "Datahug" ホームページを示すスクリーンショット。](./media/datahug-tutorial/1.png)
 
 3. **[People]** を選択し、 **[Add Users]** タブをクリックします。
 
-    ![従業員の追加](./media/datahug-tutorial/2.png)
+    ![[People]\(ユーザー\) タブと [Add Users]\(ユーザーの追加\) が選択されている [Settings]\(設定\) ページを示すスクリーンショット。](./media/datahug-tutorial/2.png)
 
 4. アカウントを作成するユーザーの電子メール アドレスを入力し、 **[Add]** をクリックします。
 

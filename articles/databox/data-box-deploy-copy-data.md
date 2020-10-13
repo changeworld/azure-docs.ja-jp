@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 09/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: a0622c7556896b7ae7201ffa3a7ecac8de1106a4
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: fcdc5d0e7254b8e491285baae6c2a1bc6979e437
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053543"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766305"
 ---
 ::: zone target="docs"
 
@@ -72,11 +72,11 @@ Windows Server ホスト コンピューターを使用している場合は、�
 
 1. 最初に、認証を行ってセッションを開始します。 **[接続とコピー]** に移動します。 **[SMB]** を選択して、ストレージ アカウントに関連付けられている共有用のアクセス資格情報を取得します。 
 
-    ![共有の資格情報を取得する 1](media/data-box-deploy-copy-data/get-share-credentials1.png)
+    ![SMB 共有の共有資格情報を取得する](media/data-box-deploy-copy-data/get-share-credentials1.png)
 
 2. [共有にアクセスしてデータをコピーする] ダイアログ ボックスで、共有に対応する **[ユーザー名]** と **[パスワード]** をコピーします。 **[OK]** を選択します。
     
-    ![共有の資格情報を取得する 1](media/data-box-deploy-copy-data/get-share-credentials2.png)
+    ![共有のユーザー名とパスワード](media/data-box-deploy-copy-data/get-share-credentials2.png)
 
 3. 自分のストレージ アカウントに関連付けられている共有 (次の例の場合は、*utsac1*) にホスト コンピューターからアクセスするために、コマンド ウィンドウを開きます。 コマンド プロンプトに、次のコマンドを入力します。
 
@@ -97,11 +97,11 @@ Windows Server ホスト コンピューターを使用している場合は、�
 
 4. Windows キーを押しながら R キーを押します。 **[ファイル名指定して実行]** ウィンドウで、「`\\<device IP address>`」と入力します。 **[OK]** を選択して、エクスプローラーを開きます。
     
-    ![エクスプローラーで共有に接続する 2](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
+    ![エクスプローラーで共有に接続する](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
 
     共有がフォルダーとして表示されます。
     
-    ![エクスプローラーで共有に接続する 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)
+    ![エクスプローラーに表示されている共有](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)
 
     **常にコピーしようとするファイル用のフォルダーを共有下に作成してから、ファイルをそのフォルダーにコピーします**。 ブロック BLOB およびページ BLOB の共有の下に作成したフォルダーは、データが BLOB としてアップロードされるコンテナーになります。 ストレージ アカウント内の *root* フォルダーに直接ファイルをコピーすることはできません。
     
@@ -116,7 +116,7 @@ sudo mount -t nfs -o vers=2.1 10.126.76.138:/utSAC1_202006051000_BlockBlob /home
 Data Box 共有に接続したら、次にデータをコピーします。 データのコピーを開始する前に、次の考慮事項を確認してください。
 
 * 適切なデータ形式に対応する共有にデータをコピーする必要があります。 たとえば、ブロック BLOB データは、ブロック BLOB 用の共有にコピーしてください。 VHD をページ BLOB にコピーします。 データ形式が適切な共有の種類と一致しない場合は、後続の手順で、Azure へのデータのアップロードに失敗します。
-* データをコピーするときは、データのサイズが、「[Azure Storage および Data Box の制限に関する記事](data-box-limits.md)」に記載されているサイズ制限に従っていること確認してください。
+* データをコピーするときは、データのサイズが、[Azure ストレージ アカウントのサイズ制限](data-box-limits.md#azure-storage-account-size-limits)に関する記事に記載されているサイズ制限に従っていること確認してください。
 * Data Box によってアップロードされているデータが、Data Box の外部で別のアプリケーションによって同時にアップロードされた場合、アップロード ジョブ エラーやデータの破損が生じる可能性があります。
 * 推奨事項は次のとおりです。
   * SMB と NFS の両方を同時に使用しません。
@@ -225,15 +225,15 @@ Robocopy コマンドについて詳しくは、「[Robocopy and a few examples]
 
 コピー処理中にエラーが発生すると、通知が表示されます。
 
-![[接続とコピー] でエラーをダウンロードして表示する](media/data-box-deploy-copy-data/view-errors-1.png)
+![[接続とコピー] のコピー エラー通知](media/data-box-deploy-copy-data/view-errors-1.png)
 
 **[問題の一覧をダウンロードする]** を選択します。
 
-![[接続とコピー] でエラーをダウンロードして表示する](media/data-box-deploy-copy-data/view-errors-2.png)
+![[接続とコピー] でエラーをダウンロードして表示する 2](media/data-box-deploy-copy-data/view-errors-2.png)
 
 一覧を開いてエラーの詳細を表示し、解決用 URL を選択して推奨される解決方法を確認します。
 
-![[接続とコピー] でエラーをダウンロードして表示する](media/data-box-deploy-copy-data/view-errors-3.png)
+![[接続とコピー] でエラーをダウンロードして表示する 3](media/data-box-deploy-copy-data/view-errors-3.png)
 
 詳細については、「[View error logs during data copy to Data Box (Data Box へのデータのコピー中のエラー ログを表示する)](data-box-logs.md#view-error-log-during-data-copy)」を参照してください。 データのコピー中のエラーの詳細な一覧については、[Data Box の問題のトラブルシューティング](data-box-troubleshoot.md)に関するページを参照してください。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: d7cab94520464662589ca952e9d50102f450ab8d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c0ffa67725c3178155c495754ca67270c946778b
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548354"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744306"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-borrowbox"></a>チュートリアル: Azure Active Directory と BorrowBox の統合
 
@@ -100,11 +100,11 @@ BorrowBox を利用して Azure AD シングル サインオンを構成する�
 
 4. アプリは Azure と事前に統合済みであるため、 **[基本的な SAML 構成]** セクションで実行が必要な手順はありません。
 
-    ![[Atlassian Cloud のドメインと URL] のシングル サインオン情報](common/preintegrated.png)
+    ![[スクリーンショットは、[基本的な SAML 構成] を示しています。] ドメインと URL に関するシングル サインオン情報](common/preintegrated.png)
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[Atlassian Cloud のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
+    ![[スクリーンショットは、サインオン URL を入力できる [追加の U R L を設定します] を示しています。] ドメインと URL に関するシングル サインオン情報](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** ボックスに、`https://fe.bolindadigital.com/wldcs_bol_fo/b2i/mainPage.html?b2bSite=<ID>` という形式で URL を入力します。
 

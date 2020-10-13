@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: edfe0a383ab68b640b5bc7e7e0a1fdd038d0fa38
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f6ed981ab0b67aacaca5300dc3f77894805e3d1b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318332"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816378"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>チュートリアル:Windows デバイス用の C IoT Edge モジュールを開発する
 
@@ -346,6 +346,7 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
 
 IoT Edge デバイスにモジュール プロジェクトをデプロイするには、Visual Studio Cloud Explorer と Azure IoT Edge Tools 拡張機能を使用します。 シナリオ用の配置マニフェストである **deployment.windows-amd64.json** ファイルは、config フォルダーに既に用意されています。 ここで行う必要があるのは、デプロイを受け取るデバイスの選択だけです。
 
+
 お使いの IoT Edge デバイスが稼働していることを確認します。
 
 1. Visual Studio Cloud Explorer でリソースを展開して、IoT デバイスの一覧を表示します。
@@ -356,7 +357,7 @@ IoT Edge デバイスにモジュール プロジェクトをデプロイする�
 
 4. ファイル エクスプローラーで、ソリューションの config フォルダー内にある **deployment.windows-amd64** ファイルを選択します。
 
-5. クラウド エクスプローラーを更新して、デプロイされたモジュールがデバイスの下に一覧表示されていることを確認します。
+5. Cloud Explorer を更新して、デプロイされたモジュールがデバイスの下に一覧表示されていることを確認します。
 
 ## <a name="view-generated-data"></a>生成されたデータを表示する
 

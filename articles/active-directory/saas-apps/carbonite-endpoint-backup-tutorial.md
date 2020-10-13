@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 9888ae6f7d28f6fef5901ea246d71d7b9ae9f78f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4fcc9ab0811c447cebff825a0c45c9dac877219c
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88530612"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761738"
 ---
 # <a name="tutorial-integrate-carbonite-endpoint-backup-with-azure-active-directory"></a>チュートリアル:Carbonite Endpoint Backup と Azure Active Directory の統合
 
@@ -129,19 +129,19 @@ Carbonite Endpoint Backup で Azure AD SSO を構成してテストするには�
 
 4. 左側のウィンドウの **[Company]\(会社\)** をクリックします。
 
-    ![Carbonite Endpoint Backup の構成 ](media/carbonite-endpoint-backup-tutorial/configure1.png)
+    ![スクリーンショットは、[Company]\(会社\) が選択されている Carbonite Endpoint を示しています。](media/carbonite-endpoint-backup-tutorial/configure1.png)
 
 5. **[Single sign-on]\(シングル サインオン\)** をクリックします。
 
-    ![Carbonite Endpoint Backup の構成 ](media/carbonite-endpoint-backup-tutorial/configure2.png)
+    ![スクリーンショットは、[Single sign-on]\(シングル サインオン\) が選択されている [Company]\(会社\) を示しています。](media/carbonite-endpoint-backup-tutorial/configure2.png)
 
 6. **[Enable]\(有効化\)** をクリックし、 **[Edit settings]\(設定の編集\)** をクリックして構成します。
 
-    ![Carbonite Endpoint Backup の構成 ](media/carbonite-endpoint-backup-tutorial/configure3.png)
+    ![スクリーンショットは、[Enable]\(有効化\) と [Edit settings]\(設定の編集\) が選択されている [Single sign-on]\(シングル サインオン\) タブを示しています。](media/carbonite-endpoint-backup-tutorial/configure3.png)
 
 7. **[Single sign-on]\(シングル サインオン\)** 設定ページで、次の手順を実行します。
 
-    ![Carbonite Endpoint Backup の構成 ](media/carbonite-endpoint-backup-tutorial/configure4.png)
+    ![スクリーンショットは、この手順で説明されている情報を含む [Single sign-on]\(シングル サインオン\) タブを示しています。](media/carbonite-endpoint-backup-tutorial/configure4.png)
 
     1. **[Identity provider name]\(ID プロバイダー名\)** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
 
@@ -187,11 +187,11 @@ Carbonite Endpoint Backup で Azure AD SSO を構成してテストするには�
 
 1. 左側のウィンドウの **[Users]\(ユーザー\)** をクリックし、 **[Add user]\(ユーザーの追加\)** をクリックします。
 
-    ![Carbonite Endpoint Backup でユーザーを追加する](media/carbonite-endpoint-backup-tutorial/adduser1.png)
+    ![スクリーンショットは、[Users]\(ユーザー\) と [Add user]\(ユーザーの追加\) が選択されている [Carbonite Endpoint] ページを示しています。](media/carbonite-endpoint-backup-tutorial/adduser1.png)
 
 1. **[Add user]\(ユーザーの追加\)** ページで、次の手順に従います。
 
-    ![Carbonite Endpoint Backup でユーザーを追加する](media/carbonite-endpoint-backup-tutorial/adduser2.png)
+    ![スクリーンショットは、ここで説明されている手順を実行できる [Add user]\(ユーザーの追加\) ページを示しています。](media/carbonite-endpoint-backup-tutorial/adduser2.png)
 
     1. ユーザーの **[Email]\(メール\)** 、 **[First name]\(名\)** 、 **[Last name]\(姓\)** を入力し、組織の要件に従って、必要なアクセス許可をユーザーに提供します。
 

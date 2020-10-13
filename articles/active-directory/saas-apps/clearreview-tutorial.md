@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 06c4945c6fee82b3ce622304351c3ad6d9ae282d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 21899ab40836b8ad083c0f005d43084c65c1b6fa
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544691"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759970"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>チュートリアル: Azure Active Directory と Clear Review の統合
 
@@ -102,7 +102,7 @@ Clear Review で Azure AD シングル サインオンを構成するには、�
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[Clear Review のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+    ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、`https://<customer name>.clearreview.com/sso/metadata/` の形式で URL を入力します。
 
@@ -110,7 +110,7 @@ Clear Review で Azure AD シングル サインオンを構成するには、�
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[Clear Review のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
+    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** ボックスに、`https://<customer name>.clearreview.com` という形式で URL を入力します。
 
@@ -119,15 +119,15 @@ Clear Review で Azure AD シングル サインオンを構成するには、�
 
 6. Clear Review アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 Clear Review アプリケーションでは、**nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
-    ![image](common/edit-attribute.png)
+    ![このスクリーンショットは、[編集] アイコンが選択された状態の [User Attributes]\(ユーザー属性\) を示しています。](common/edit-attribute.png)
 
 7. **[ユーザー属性とクレーム]** セクションで、次の手順に従います。
 
     a. **[名前識別子の値]** の右側にある **[編集] アイコン**をクリックします。
 
-    ![image](./media/clearreview-tutorial/attribute02.png)
+    ![このスクリーンショットは、[編集] アイコンが選択された状態の [User Attributes & Claims]\(ユーザー属性と要求\) を示しています。](./media/clearreview-tutorial/attribute02.png)
 
-    ![image](./media/clearreview-tutorial/attribute01.png)
+    ![スクリーンショットは、説明されている値を入力できる [ユーザー要求の管理] ダイアログ ボックスを示しています。](./media/clearreview-tutorial/attribute01.png)
 
     b. **[ソース属性]** の一覧から、その行の **user.mail** 属性値を選択します。
 
@@ -153,15 +153,15 @@ Clear Review で Azure AD シングル サインオンを構成するには、�
 
 2. 左側のナビゲーションから **[Admin]\(管理者\)** を選択します。
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
+    ![[Admin]\(管理者\) が選択されている Clear Review ポータルのスクリーンショット。](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
 
 3. ページの下部の **[Integrations]\(統合\)** セクションで、 **[Single Sign-On Settings]\(シングル サインオンの設定\)** の右側にある **[Change]\(変更\)** をクリックします。
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
+    ![シングル サインオンの [Change]\(変更\) ボタンのスクリーンショット。](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
 
 4. **[Single Sign-On Settings]\(シングル サインオンの設定\)** ページで、次の手順を実行します。
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/clearreview-tutorial/tutorial_clearreview_app_admin3.png)
+    ![このスクリーンショットは、[Single Sign-On Settings]\(シングル サインオンの設定\) ページを示しています。ここで、この手順の情報を入力します。](./media/clearreview-tutorial/tutorial_clearreview_app_admin3.png)
 
     a. **[Issuer URL]\(発行者の URL\)** ボックスに、Azure portal からコピーした **[Azure AD 識別子]** の値を貼り付けます。
 

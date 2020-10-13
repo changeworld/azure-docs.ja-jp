@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/23/2018
 ms.author: duau
-ms.openlocfilehash: e79dde0178c74965bde14956203e31e82e80d93e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 4f646cdb4a3f000df219f627cbd7e7c841ed68ab
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398411"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651243"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>チュートリアル:Traffic Manager を使用して Web サイトの応答性を向上させる
 
@@ -203,7 +203,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 5. サインイン処理中に証明書の警告が表示される場合があります。 警告を受け取ったら、 **[はい]** または **[続行]** を選択して接続処理を続行します。
 1. VM *myVMEastUS* の Web ブラウザーで、Traffic Manager プロファイルの DNS 名を入力して、Web サイトを表示します。 この VM は**米国東部**にあるため、**米国東部**にある最も近い IIS サーバー *myIISVMEastUS* でホストされている、最も近い Web サイトにルーティングされます。
 
-   ![Traffic Manager プロファイルのテスト](./media/tutorial-traffic-manager-improve-website-response/eastus-traffic-manager-test.png)
+   ![Web ブラウザーで "Traffic Manager" プロファイルを表示する画面のスクリーンショット。](./media/tutorial-traffic-manager-improve-website-response/eastus-traffic-manager-test.png)
 
 2. 次に、手順 1 から 5 を使用して**西ヨーロッパ**にある VM *myVMWestEurope* に接続し、その VM から Traffic Manager プロファイルのドメイン名を参照します。 この VM は**西ヨーロッパ**にあるため、**西ヨーロッパ**にある最も近い IIS サーバー *myIISVMWestEurope* でホストされている Web サイトにルーティングされます。
 

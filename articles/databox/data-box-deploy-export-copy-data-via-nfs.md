@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/10/2020
+ms.date: 10/01/2020
 ms.author: alkohli
-ms.openlocfilehash: 301c75df6bedf430af64bbeff63f2eb759691355
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: bd8e6d4175c57bd31c3fd83bf6f9669d2b65ffb2
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86208908"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91660847"
 ---
 # <a name="tutorial-copy-data-from-azure-data-box-via-nfs-preview"></a>チュートリアル:Azure Data Box から NFS 経由でデータをコピーする (プレビュー)
 
@@ -45,15 +45,17 @@ ms.locfileid: "86208908"
 
 [!INCLUDE [data-box-shares](../../includes/data-box-shares.md)]
 
-Linux ホスト コンピューターを使用している場合は、次の手順を実行して、NFS クライアントへのアクセスを許可するように Data Box を構成します。
+Linux ホスト コンピューターを使用している場合は、次の手順を実行して、NFS クライアントへのアクセスを許可するように Data Box を構成します。 Data Box は、一度に最大 5 つの NFS クライアントに接続できます。
 
-1. 共有にアクセスできる許可するクライアントの IP アドレスを指定します。 ローカル Web UI で、 **[接続とコピー]** ページに移動します。 **[NFS の設定]** で、 **[NFS のクライアント アクセス]** をクリックします。 
+1. 共有へのアクセスを許可するクライアントの IP アドレスを指定します。
 
-    ![NFS のクライアント アクセスを構成する 1](media/data-box-deploy-export-copy-data/nfs-client-access-1.png)
+    1.  ローカル Web UI で、 **[接続とコピー]** ページに移動します。 **[NFS の設定]** で、 **[NFS のクライアント アクセス]** をクリックします。 
 
-2. NFS クライアントの IP アドレスを指定して、 **[追加]** をクリックします。 この手順を繰り返すことにより、複数の NFS クライアントに対するアクセスを構成できます。 **[OK]** をクリックします。
+        ![[NFS のクライアント アクセス] を開く](media/data-box-deploy-export-copy-data/nfs-client-access-1.png)
 
-    ![NFS のクライアント アクセスを構成する 2](media/data-box-deploy-export-copy-data/nfs-client-access-2.png)
+    1. NFS クライアントを追加するには、クライアントの IP アドレスを指定し、 **[追加]** をクリックします。 Data Box は、一度に最大 5 つの NFS クライアントに接続できます。 完了したら、 **[OK]** をクリックします。
+
+         ![NFS クライアントを追加する](media/data-box-deploy-export-copy-data/nfs-client-access-2.png)
 
 2. Linux ホスト コンピューターに[サポートされているバージョン](data-box-system-requirements.md)の NFS クライアントがインストールされていることを確認します。 お使いの Linux ディストリビューションの特定のバージョンを使用します。 
 

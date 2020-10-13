@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 22225d9810c7b913505cb003a1ed2ce8f1a144e1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b22bf4ee3ff830a80ee97851f08173257697c50d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555340"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826487"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-evernote"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Evernote の統合
 
@@ -92,7 +92,7 @@ Evernote で Azure AD SSO を構成してテストするには、次の構成要
 
 7. **署名**オプションを変更するには、 **[編集]** をクリックして **[SAML 署名証明書]** ダイアログを開きます。
 
-    ![image](common/edit-certificate.png) 
+    ![[Edit]\(編集\) ボタンが選択されている [S A M L Signing Certificate]\(S A M L 署名証明書\) ダイアログを示すスクリーンショット。](common/edit-certificate.png) 
 
     ![image](./media/evernote-tutorial/samlassertion.png)
 
@@ -181,7 +181,7 @@ Evernote の場合、プロビジョニングは手動で行います。
 
 3. **[管理コンソール]** から **[ユーザーの追加]** に移動します。
 
-    ![Add-testUser](./media/evernote-tutorial/create_aaduser_0001.png)
+    ![[Add Users]\(ユーザーの追加\) が選択されている [Users]\(ユーザー\) メニューを示すスクリーンショット。](./media/evernote-tutorial/create_aaduser_0001.png)
 
 4. **[メール]** テキストボックスの **[チーム メンバーを追加]** にユーザー アカウントのメール アドレスを入力し、 **[招待する]** をクリックします。
 

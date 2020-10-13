@@ -8,12 +8,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: f2b46e37241cf142f751f2f65a1ef9f092166ec8
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 5b37417efdb99f6b90983b86954da70fa6f7c6a9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86120638"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716087"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>チュートリアル:AzCopy を使用してオンプレミスのデータをクラウド ストレージに移行する
 
@@ -62,7 +62,7 @@ AzCopy ファイルをコンピューターの任意の場所に配置します�
 
 ## <a name="authenticate-with-azure-ad"></a>Azure AD による認証
 
-まず、[ストレージ BLOB データ共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor)ロールを自分の ID に割り当てます。 「[Azure portal で RBAC を使用して Azure BLOB とキューのデータへのアクセスを付与する](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)」を参照してください。
+まず、[ストレージ BLOB データ共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor)ロールを自分の ID に割り当てます。 「[Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)」を参照してください。
 
 次に、コマンド プロンプトを開き、次のコマンドを入力して、Enter キーを押します。
 

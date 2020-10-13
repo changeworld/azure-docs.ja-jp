@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 4818755e48a4d497d70920a62a9505346176ed73
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 026caf101f58ff9d93e3306d0bd224f24e8af864
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371288"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743949"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>チュートリアル:VMware で Azure Data Box Gateway をプロビジョニングする
 
@@ -145,11 +145,11 @@ VMware ESXi 6.0、6.5、または 6.7 を実行しているホスト システ�
 
     同じページで、 **[Add hard disk]\(ハード ディスクの追加\)** をクリックし、 **[Existing hard disk]\(既存のハード ディスク\)** を選択します。 データ ストア内の VMDK ファイルを選択します。 これにより、OS ディスクが追加されます。 
 
-     ![[Customize settings]\(設定のカスタマイズ\) ページ](./media/data-box-gateway-deploy-provision-vmware/image14.png)
+     ![[Customize settings]\(設定のカスタマイズ\) ページ 2](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 
     **[New hard disk]\(新しいハード ディスク\)** が表示するまで下にスクロールし、それを展開して設定を表示します。 **[Virtual Device Node]\(仮想デバイス ノード\)** を **[IDE controller 0]\(IDE コントロ―ラー 0\)** に設定します。
 
-     ![[Customize settings]\(設定のカスタマイズ\) ページ](./media/data-box-gateway-deploy-provision-vmware/image15.png)
+     ![[Customize settings]\(設定のカスタマイズ\) ページ 3](./media/data-box-gateway-deploy-provision-vmware/image15.png)
 
 17. (省略可能) *VMware ESXi Server 6.7 を実行している場合にのみ、この手順を実行します*。 **[Customize settings]\(設定のカスタマイズ\)** ページで **[VM options]\(VM のオプション\)** をクリックします。 **[Boot options]\(ブート オプション\) > [Firmware]\(ファームウェア\)** に移動し、 **[BIOS]** に変更します。 既定では、値は [EFI] に設定されます。 **[次へ]** をクリックします。
 
@@ -158,7 +158,7 @@ VMware ESXi 6.0、6.5、または 6.7 を実行しているホスト システ�
 18. **[Ready to Complete]** ページで、新しい仮想マシンに関連するすべての設定を確認します。 CPU に 4、メモリに 8192 MB、ネットワーク インターフェイスに 1、ハード ディスク 2 に IDE コントローラー 0 が設定されていることを確認します。 **[完了]** をクリックします。
    
     ![[Ready to Complete]\(完了の準備完了\) ページ](./media/data-box-gateway-deploy-provision-vmware/image16.png)
-    ![[Ready to Complete]\(完了の準備完了\) ページ](./media/data-box-gateway-deploy-provision-vmware/image17.png)
+    ![[Ready to Complete]\(完了の準備完了\) ページ 2](./media/data-box-gateway-deploy-provision-vmware/image17.png)
 
 これで仮想マシンがプロビジョニングされました。 その趣旨の通知が表示され、新しい仮想マシンが VM の一覧に追加されます。
 

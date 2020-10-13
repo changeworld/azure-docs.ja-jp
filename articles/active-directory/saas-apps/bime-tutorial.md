@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 149656bebac7e8fab24dc1e1847a4e56bf5f3888
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0465d6219f9c9d13b4dd3321beb90af524cade36
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547343"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741587"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bime"></a>チュートリアル: Azure Active Directory と Bime の統合
 
@@ -132,7 +132,7 @@ Bime で Azure AD シングル サインオンを構成するには、次の手�
 
 2. ツールバーで、 **[管理者]** 、 **[アカウント]** の順にクリックします。
   
-    ![管理者](./media/bime-tutorial/ic775558.png "[Admin]")
+    ![スクリーンショットは、[管理者] および [アカウント] が選択されていることを示しています。](./media/bime-tutorial/ic775558.png "[Admin]")
 
 3. アカウント構成ページで、次の手順に従います。
   
@@ -207,7 +207,7 @@ Azure AD ユーザーが Bime にログインできるようにするには、�
 
 2. ツールバーで、 **[管理者]** 、 **[ユーザー]** の順にクリックします。
 
-    ![管理者](./media/bime-tutorial/ic775561.png "[Admin]")
+    ![スクリーンショットは、[管理者] および [ユーザー] が選択されていることを示しています。](./media/bime-tutorial/ic775561.png "[Admin]")
 
 3. **[ユーザー リスト]** で、 **[新しいユーザーの追加]** ("+") をクリックします。
 

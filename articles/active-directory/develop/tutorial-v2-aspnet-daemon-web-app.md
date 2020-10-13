@@ -1,5 +1,6 @@
 ---
-title: Microsoft ID プラットフォーム エンドポイントを使用してマルチテナント デーモンを作成する
+title: チュートリアル:Microsoft Graph のビジネス データにアクセスするマルチテナント デーモンを作成する | Azure
+titleSuffix: Microsoft identity platform
 description: このチュートリアルでは、Azure Active Directory によって保護されている ASP.NET Web API を Windows デスクトップ (WPF) アプリケーションから呼び出す方法について説明します。 WPF クライアントは、ユーザーを認証し、アクセ ストークンを要求して、Web API を呼び出します。
 services: active-directory
 author: jmprieur
@@ -11,14 +12,14 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 4b05bbf818676cc70f485dd94ece79141e8f01a4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 72b72959f7b5c89bfad4495c8534de5dfaaefe8b
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982852"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611097"
 ---
-# <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>チュートリアル:Microsoft ID プラットフォーム エンドポイントを使用してマルチテナント デーモンを作成する
+# <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>チュートリアル:Microsoft ID プラットフォームを使用したマルチテナント デーモンを作成する
 
 このチュートリアルでは、Microsoft ID プラットフォームを使用して、Microsoft の企業顧客のデータに非対話型の長期プロセスでアクセスする方法について説明します。 サンプル デーモンでは、[OAuth2 のクライアント資格情報の付与](v2-oauth2-client-creds-grant-flow.md)を使用してアクセス トークンを取得します。 デーモンはその後、そのトークンを使用して [Microsoft Graph](https://graph.microsoft.io) を呼び出して、組織のデータにアクセスします。
 
@@ -30,28 +31,23 @@ ms.locfileid: "90982852"
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
+## <a name="prerequisites"></a>前提条件
+
+- [Visual Studio 2017 または 2019](https://visualstudio.microsoft.com/downloads/)。
+- Azure AD テナント。 詳細については、[Azure AD テナントの取得方法](quickstart-create-new-tenant.md)に関するページを参照してください。
+- Azure AD テナント内の 1 つ以上のユーザー アカウント。 このサンプルは、Microsoft アカウントでは正しく動作しません。 Microsoft アカウントを使用して [Azure portal](https://portal.azure.com) にサインインしたものの、ディレクトリ内にユーザー アカウントを作成したことがなければ、この時点でその作業を行ってください。
+
+## <a name="scenario"></a>シナリオ
+
 アプリは、ASP.NET MVC アプリケーションとしてビルドされています。 ユーザーのサインインには OWIN OpenID Connect ミドルウェアを使用します。
 
 このサンプルの "デーモン" としてのコンポーネントは、API コントローラー `SyncController.cs` です。 このコントローラーを呼び出すと、顧客の Azure Active Directory (Azure AD) テナントに存在するユーザーのリストが Microsoft Graph からプルされます。 `SyncController.cs` は、Web アプリケーション内の AJAX 呼び出しによってトリガーされます。 Microsoft Graph のアクセス トークンの取得には、[Microsoft Authentication Library (MSAL) for .NET](msal-overview.md) が使用されます。
-
->[!NOTE]
-> Microsoft ID プラットフォームを初めて使用する場合は、[.NET Core デーモンに関するクイックスタート](quickstart-v2-netcore-daemon.md)から始めることをお勧めします。
-
-## <a name="scenario"></a>シナリオ
 
 このアプリは Microsoft の企業顧客を対象としたマルチテナント アプリであるため、顧客が "サインアップ" (つまり、その会社のデータにアプリケーションを "接続") する手段を備えている必要があります。 接続フローの過程で、社内管理者はまず、サインイン済みのユーザーがいなくてもアプリが非対話型形式で企業データにアクセスできるよう、*アプリケーションのアクセス許可*を直接アプリに付与します。 このサンプルのロジックの大部分は、ID プラットフォームの[管理者の同意](v2-permissions-and-consent.md#using-the-admin-consent-endpoint)エンドポイントを使用してこの接続フローを実現する方法を示します。
 
 ![Azure に接続する 3 つのローカル項目がある UserSync App を示す図。対話的にトークンを取得して Azure A D に接続する Start dot Auth、管理者の同意を得て Azure A D に接続する AccountController、およびユーザーを読み取って Microsoft Graph に接続する SyncController。](./media/tutorial-v2-aspnet-daemon-webapp/topology.png)
 
 このサンプルで使用されている概念の詳細については、[ID プラットフォーム エンドポイントのクライアント資格情報プロトコルに関するドキュメント](v2-oauth2-client-creds-grant-flow.md)を参照してください。
-
-## <a name="prerequisites"></a>前提条件
-
-このクイックスタートのサンプルを実行するには、次のものが必要です。
-
-- [Visual Studio 2017 または 2019](https://visualstudio.microsoft.com/downloads/)。
-- Azure AD テナント。 詳細については、[Azure AD テナントの取得方法](quickstart-create-new-tenant.md)に関するページを参照してください。
-- Azure AD テナント内の 1 つ以上のユーザー アカウント。 このサンプルは、Microsoft アカウント (旧称 Windows Live アカウント) では動作しません。 Microsoft アカウントを使用して [Azure portal](https://portal.azure.com) にサインインしたものの、ディレクトリ内にユーザー アカウントを作成したことがなければ、この時点でその作業を行う必要があります。
 
 ## <a name="clone-or-download-this-repository"></a>このリポジトリをクローンまたはダウンロードする
 
@@ -256,17 +252,8 @@ MSAL.NET にバグを見つけた場合は、[MSAL.NET GitHub の Issues](https:
 ご提案をお寄せいただく場合は、[ユーザーの声の投稿ページ](https://feedback.azure.com/forums/169401-azure-active-directory)にアクセスしてください。
 
 ## <a name="next-steps"></a>次のステップ
-Microsoft ID プラットフォームでサポートされるさまざまな[認証フローとアプリケーション シナリオ](authentication-flows-app-scenarios.md)について学習します。
 
-詳細については、概念を説明した次のドキュメントを参照してください。
+Microsoft ID プラットフォームを使用して、保護された Web API にアクセスするデーモン アプリの作成について詳しい情報をご覧ください。
 
-- [Azure Active Directory のテナント](single-and-multi-tenant-apps.md)
-- [Azure AD アプリケーションの同意エクスペリエンスについて](application-consent-experience.md)
-- [すべての Azure Active Directory ユーザーがマルチテナント アプリケーション パターンを使用してサインインする](howto-convert-app-to-be-multi-tenant.md)
-- [ユーザーおよび管理者の同意について](howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent)
-- [Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](app-objects-and-service-principals.md)
-- [クイック スタート: Microsoft ID プラットフォームにアプリケーションを登録する](quickstart-register-app.md)
-- [クイック スタート: Web API にアクセスするようにクライアント アプリケーションを構成する](quickstart-configure-app-access-web-apis.md)
-- [クライアント資格情報フローを使用してアプリケーションのトークンを取得する](msal-client-applications.md)
-
-もっとシンプルなマルチテナント コンソール デーモン アプリケーションについては、[.NET Core デーモンのクイックスタート](quickstart-v2-netcore-daemon.md)を参照してください。
+> [!div class="nextstepaction"]
+> [シナリオ:Web API を呼び出すデーモン アプリケーション](scenario-daemon-overview.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 2b8e8a6df2fc355ad6a8ef50d801dc7457e97c63
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2e355241191a4bdcab12c7c0b6527706b044a70c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547785"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714476"
 ---
 # <a name="tutorial-integrate-appraisd-with-azure-active-directory"></a>チュートリアル:Appraisd と Azure Active Directory の統合
 
@@ -86,7 +86,7 @@ Appraisd に対する Azure AD SSO を構成してテストするには、次の
 
 1. Appraisd アプリケーションは、特定の形式の SAML アサーションを使用するため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 Appraisd アプリケーションでは、**nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
-    ![image](common/edit-attribute.png)
+    ![このスクリーンショットは、[編集] アイコンが強調表示された状態の [ユーザー属性] ペインを示しています。](common/edit-attribute.png)
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -110,15 +110,15 @@ Appraisd に対する Azure AD SSO を構成してテストするには、次の
 
 4. ページの右上にある **[Settings]\(設定\)** アイコンをクリックし、 **[Configuration]\(構成\)** に移動します。
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_sett.png)
+    ![このスクリーンショットは、コールアウトされた状態の [Configuration]\(構成\) リンクを示しています。](./media/appraisd-tutorial/tutorial_appraisd_sett.png)
 
 5. メニューの左側から **[SAML single sign-on]\(SAML シングル サインオン\)** をクリックします。
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_single.png)
+    ![このスクリーンショットは、[SAML single sign-on]\(SAML シングル サインオン\) オプションが強調表示された構成オプションを示しています。](./media/appraisd-tutorial/tutorial_appraisd_single.png)
 
 6. **[SAML 2.0 Single Sign-On configuration]\(SAML 2.0 のシングル サインオンの構成\)** ページで、次の手順を実行します。
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_saml.png)
+    ![このスクリーンショットは、[SAML 2.0 Single Sign-On configuration]\(SAML 2.0 のシングル サインオンの構成\) ページを示しています。ここで、[Default Relay State]\(既定のリレー状態\) と [Service-initiated login U R L]\(サービス開始ログイン U R L\) を編集できます。](./media/appraisd-tutorial/tutorial_appraisd_saml.png)
 
     a. **[Default Relay State]\(既定のリレー状態\)** 値をコピーし、Azure portal の **[基本的な SAML 構成]** の **[リレー状態]** ボックスに貼り付けます。
 
@@ -126,7 +126,7 @@ Appraisd に対する Azure AD SSO を構成してテストするには、次の
 
 7. 同じページの **[Identifying users]\(ユーザーの識別\)** まで下にスクロールし、次の手順を実行します。
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_identifying.png)
+    ![このスクリーンショットは、[Identifying users]\(ユーザーの識別\) を示しています。ここで、この手順の値を入力できます。](./media/appraisd-tutorial/tutorial_appraisd_identifying.png)
 
     a. **[Identity Provider Single Sign-On URL]\(ID プロバイダー シングル サインオン URL\)** ボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付け、 **[Save]\(保存\)** をクリックします。
 
@@ -174,15 +174,15 @@ Azure AD ユーザーが Appraisd にサインインできるようにするに�
 
 2. ページの右上にある **[Settings]\(設定\)** アイコンをクリックし、 **[Administration centre]\(管理センター\)** に移動します。
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_admin.png)
+    ![このスクリーンショットは、[Settings]\(設定\) オプションを示しています。ここで、[Administration centre]\(管理センター\) を選択できます。](./media/appraisd-tutorial/tutorial_appraisd_admin.png)
 
 3. ページの上部にあるツール バーで、 **[People]\(人\)** をクリックし、 **[Add a new user]\(新しいユーザーの追加\)** に移動します。
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_user.png)
+    ![このスクリーンショットは、[People]\(人\) と [Add a new user]\(新しいユーザーの追加\) がコールアウトされた状態の Appraisd ページを示しています。](./media/appraisd-tutorial/tutorial_appraisd_user.png)
 
 4. **[Add a new user]\(新しいユーザーの追加\)** ページで、次の手順を実行します。
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_newuser.png)
+    ![このスクリーンショットは、[Add a new user]\(新しいユーザーの追加\) ページを示しています。](./media/appraisd-tutorial/tutorial_appraisd_newuser.png)
 
     a. **[First name]\(名\)** ボックスに、ユーザーの名を入力します (例: **Britta**)。
 

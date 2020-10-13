@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 47ffaef940b3fe2ffe033405a712195c5c74d774
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 85b355981a50804f1c43441efa38c5db59967c1d
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520383"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760633"
 ---
 # <a name="tutorial-integrate-civic-platform-with-azure-active-directory"></a>チュートリアル:Civic Platform と Azure Active Directory の統合
 
@@ -91,7 +91,7 @@ Civic Platform で Azure AD SSO を構成してテストするには、次の構
 
 1. **Set up Single Sign-On with SAML\(SAML でのシングルサインオンの設定** ページの **SAML 署名証明書** セクションで、コピー ボタンをクリックして **App Federation Metadata Url\(アプリのフェデレーション メタデータ URL)** をコピーして、コンピューターに保存します。
 
-    ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
+    ![スクリーンショットは、アプリのフェデレーション メタデータ URL をコピーできる [SAML 署名証明書] ページを示しています。](common/copy-metadataurl.png)
 
 1. **Azure Active Directory** >  Azure AD の **[アプリの登録]** の順に移動し、アプリケーションを選択します。
 
@@ -120,21 +120,21 @@ Civic Platform で Azure AD SSO を構成してテストするには、次の構
 
 1. **[Standard Choices]\(標準選択項目\)** をクリックします。
 
-    ![証明書のダウンロードのリンク](media/civic-platform-tutorial/standard-choices.png)
+    ![スクリーンショットは、[Administrator Tools]\(管理ツール\) で [Standard Choices]\(標準選択項目\) が選択されている Atlassian Cloud サイトを示しています。](media/civic-platform-tutorial/standard-choices.png)
 
 1. 標準選択項目 **ssoconfig** を作成します。
 
 1. **ssoconfig** を検索して送信します。
 
-    ![証明書のダウンロードのリンク](media/civic-platform-tutorial/sso-config.png)
+    ![スクリーンショットは、ssoconfig という名前が入力された [Standard Choices - Search]\(標準選択項目 - 検索\) を示しています。](media/civic-platform-tutorial/sso-config.png)
 
 1. 赤い点をクリックして、[SSOCONFIG] を展開します。
 
-    ![証明書のダウンロードのリンク](media/civic-platform-tutorial/sso-config01.png)
+    ![スクリーンショットは、S S O CONFIG が利用できる [Standard Choices - Browse]\(標準選択項目 - 参照\) を示しています。](media/civic-platform-tutorial/sso-config01.png)
 
 1. 次の手順に従って、SSO 関連の構成情報を指定します。
 
-    ![証明書のダウンロードのリンク](media/civic-platform-tutorial/sso-config02.png)
+    ![スクリーンショットは、S S O CONFIG の [Standard Choices Item - Edit]\(標準選択項目 - 編集\) を示しています。](media/civic-platform-tutorial/sso-config02.png)
 
     1. **[applicationid]** フィールドに、Azure portal からコピーした**アプリケーション ID** の値を入力します。
 

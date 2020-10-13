@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: jeedes
-ms.openlocfilehash: 3c1ff9de1057a5ef551ad941965f64907e4243e5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 93d13023dfda8164bf0d327bee6106f9803e1bf7
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555741"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775148"
 ---
 # <a name="tutorial-integrate-dropbox-business-with-azure-active-directory"></a>チュートリアル:Dropbox Business と Azure Active Directory の統合
 
@@ -145,27 +145,27 @@ Dropbox Business で Azure AD の SSO を構成してテストするには、次
 
 3. Dropbox Business を手動でセットアップする場合は、新しい Web ブラウザー ウィンドウを開き、Dropbox Business テナントに移動して、Dropbox Business テナントにサインオンします。 さらに次の手順に従います。
 
-    ![シングル サインオンの構成](./media/dropboxforbusiness-tutorial/ic769509.png "Configure single sign-on")
+    ![[Dropbox Business Sign in]\(Dropbox Business サインイン\) ページを示すスクリーンショット。](./media/dropboxforbusiness-tutorial/ic769509.png "Configure single sign-on")
 
 4. **ユーザー アイコン**をクリックし、 **[Settings]\(設定\)** タブを選択します。
 
-    ![シングル サインオンの構成](./media/dropboxforbusiness-tutorial/configure1.png "Configure single sign-on")
+    ![[ユーザー アイコン] アクションと [Settings]\(設定\) が選択されていることを示すスクリーンショット。](./media/dropboxforbusiness-tutorial/configure1.png "Configure single sign-on")
 
 5. 左側のナビゲーション ウィンドウで、 **[Admin console]\(管理コンソール\)** をクリックします。
 
-    ![シングル サインオンの構成](./media/dropboxforbusiness-tutorial/configure2.png "Configure single sign-on")
+    ![[Admin console]\(管理コンソール\) が選択されていることを示すスクリーンショット。](./media/dropboxforbusiness-tutorial/configure2.png "Configure single sign-on")
 
 6. **[Admin console]\(管理コンソール\)** の左側のナビゲーション ウィンドウで、 **[Settings]\(設定\)** をクリックします。
 
-    ![シングル サインオンの構成](./media/dropboxforbusiness-tutorial/configure3.png "Configure single sign-on")
+    ![[Settings]\(設定\) が選択されていることを示すスクリーンショット。](./media/dropboxforbusiness-tutorial/configure3.png "Configure single sign-on")
 
 7. **[Authentication]\(認証\)** セクションの **[Single sign-on]\(シングル サインオン\)** オプションを選択します。
 
-    ![シングル サインオンの構成](./media/dropboxforbusiness-tutorial/configure4.png "Configure single sign-on")
+    ![[Single sign-on]\(シングル サインオン\) が選択されている [Authentication]\(認証\) セクションを示すスクリーンショット。](./media/dropboxforbusiness-tutorial/configure4.png "Configure single sign-on")
 
 8. **[Single sign-on]\(シングル サインオン\)** セクションで、次の手順を実行します。  
 
-    ![シングル サインオンの構成](./media/dropboxforbusiness-tutorial/configure5.png "Configure single sign-on")
+    ![[Single sign-on]\(シングル サインオン\) の構成設定を示すスクリーンショット。](./media/dropboxforbusiness-tutorial/configure5.png "Configure single sign-on")
 
     a. **[Single sign-on]\(シングル サインオン\)** のドロップ ダウンからオプションとして **[Required]\(必須\)** を選択します。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 1bdda60d3b6f5e763bd31b25ab0fd8c2783f978d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: cd07370c75ac64fa8e3806fed50a64db90122c76
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88537932"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708307"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-acquireio"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と AcquireIO の統合
 
@@ -134,15 +134,15 @@ AcquireIO に対する Azure AD SSO を構成してテストするには、次�
 
 1. メニューの左側から **[App Store]\(アプリ ストア\)** をクリックします。
 
-     ![AcquireIO の構成](./media/acquireio-tutorial/config01.png)
+     ![[App Store]\(アプリ ストア\) が強調表示されているスクリーンショット。](./media/acquireio-tutorial/config01.png)
 
 1. **[Active Directory]** まで下にスクロールして、 **[インストール]** をクリックします。
 
-    ![AcquireIO の構成](./media/acquireio-tutorial/config02.png)
+    ![[Active Directory] セクションと [インストール] ボタンが強調表示されているスクリーンショット。](./media/acquireio-tutorial/config02.png)
 
 1. [Active Directory] ポップアップで、次の手順に従います。
 
-    ![AcquireIO の構成](./media/acquireio-tutorial/config03.png)
+    ![[Active Directory] 画面が表示されているスクリーンショット。](./media/acquireio-tutorial/config03.png)
 
     a. **[コピー]** をクリックして、インスタンスの応答 URL をコピーし、Azure portal の **[基本的な SAML 構成]** セクションの **[応答 URL]** ボックスに貼り付けます。
 
@@ -162,7 +162,7 @@ Azure AD ユーザーが AcquireIO にサインインできるようにするに
 
 1. メニューの左側で **[プロファイル]** をクリックして、 **[プロファイルの追加]** をクリックします。
 
-     ![AcquireIO の構成](./media/acquireio-tutorial/config04.png)
+     ![画面の左側にあるメニューの [プロファイル] と [プロファイルの追加] オプションが強調表示されているスクリーンショット。](./media/acquireio-tutorial/config04.png)
 
 1. **[顧客の追加]** ポップアップで、次の手順に従います。
 

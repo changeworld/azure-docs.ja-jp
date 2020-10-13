@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 15680a4f8228af95e6643478c9262653171912ca
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6807174f374e75f826001afecc1eccf8ba1a0603
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903482"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743388"
 ---
 # <a name="tutorial-activate-azure-stack-edge-pro-with-gpu"></a>チュートリアル:GPU 搭載の Azure Stack Edge Pro をアクティブにする
 
@@ -52,12 +52,12 @@ GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に
 
 4. **[適用]** を選択します。
 
-    ![ローカル Web UI の [Cloud details]\(クラウドの詳細\) ページ](./media/azure-stack-edge-gpu-deploy-activate/activate-2.png)
+    ![ローカル Web UI の [Cloud details]\(クラウドの詳細\) ページ 2](./media/azure-stack-edge-gpu-deploy-activate/activate-2.png)
 
 
 5. まず、デバイスがアクティブ化されます。 キー ファイルをダウンロードするように求められます。
     
-    ![ローカル Web UI の [Cloud details]\(クラウドの詳細\) ページ](./media/azure-stack-edge-gpu-deploy-activate/activate-3.png)
+    ![ローカル Web UI の [Cloud details]\(クラウドの詳細\) ページ 3](./media/azure-stack-edge-gpu-deploy-activate/activate-3.png)
     
     **[Download and continue]\(ダウンロードして続行\)** を選択し、*device-serial-no.json* ファイルをデバイスの外部の安全な場所に保存します。 **このキー ファイルには、デバイス上の OS ディスクとデータ ディスクの回復キーが含まれています**。 将来のシステム回復を容易にするために、これらのキーが必要になる場合があります。
 
@@ -88,7 +88,7 @@ GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に
 
 6. **[概要]** ページに移動します。 デバイスの状態は **[アクティブ化済み]** と表示されます。
 
-    ![ローカル Web UI の [Cloud details]\(クラウドの詳細\) ページ](./media/azure-stack-edge-gpu-deploy-activate/activate-4.png)
+    ![ローカル Web UI の [Cloud details]\(クラウドの詳細\) ページ 4](./media/azure-stack-edge-gpu-deploy-activate/activate-4.png)
  
 デバイスのアクティブ化は完了しました。 これで、デバイスで共有を追加できます。
 

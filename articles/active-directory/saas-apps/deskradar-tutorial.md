@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: a9004577fa8d946281df88284139e2e507e485b7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 071b311466869321a12626190e894287c28e707b
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536447"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774130"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-deskradar"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Deskradar の統合
 
@@ -162,7 +162,7 @@ Deskradar で Azure AD SSO を構成してテストするには、次の構成�
 
 1. **[SAML 2.0]** タブで、次の手順を実行します。
 
-    ![Deskradar の構成](./media/deskradar-tutorial/14-paste-urls.jpg)
+    ![[S A M L S S O U R L] フィールドと [ID プロバイダーの発行者] フィールドを矢印で指し示した [S A M L 2.0] タブを示すスクリーンショット。](./media/deskradar-tutorial/14-paste-urls.jpg)
 
     a. **SAML** 認証方法を有効にします。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
-ms.openlocfilehash: 9089227d28b5e0141521dd4db2cc0883f6ecfc77
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1d17c2d1a9ca41965bff7f7f72e2e753374a0fe2
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548176"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740794"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bridgeline-unbound"></a>チュートリアル: Azure Active Directory と Bridgeline Unbound の統合
 
@@ -100,7 +100,7 @@ Bridgeline Unbound との Azure AD シングル サインオンを構成する�
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[Bridgeline Unbound のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+    ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、`iApps_UPSTT_<ENVIRONMENTNAME>` の形式で URL を入力します。
 
@@ -108,7 +108,7 @@ Bridgeline Unbound との Azure AD シングル サインオンを構成する�
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[Bridgeline Unbound のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
+    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** ボックスに、`https://<SUBDOMAIN>.iapps.com/CommonLogin/login?<INSTANCENAME>` という形式で URL を入力します。
 

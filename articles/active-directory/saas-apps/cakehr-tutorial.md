@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 2884302ae636739243e0277fa49ef6889b077c86
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8464d8918ccb6351de06dcba9a355e93c2cd97cd
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547598"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740345"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cakehr"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と CakeHR の統合
 
@@ -142,11 +142,11 @@ CakeHR に対する Azure AD SSO を構成してテストするには、次の�
 
 1. ページの右上隅の **[プロファイル]** をクリックし、 **[設定]** に移動します。
 
-    ![CakeHR の構成](./media/cakehr-tutorial/config01.png)
+    ![このスクリーンショットは、[設定] が選択された状態の [プロファイル] を示しています。](./media/cakehr-tutorial/config01.png)
 
 1. メニュー バーの左側で **[INTEGRATIONS]\(統合\)**  >  **[SAML SSO]** の順にクリックし、以下の手順を実行します。
 
-    ![CakeHR の構成](./media/cakehr-tutorial/config02.png)
+    ![このスクリーンショットは、[設定] ペインを示しています。ここで、これらの手順を実行します。](./media/cakehr-tutorial/config02.png)
 
     a. **[Entity ID]\(エンティティ ID\)** ボックスに、「`cake.hr`」と入力します。
 
@@ -168,11 +168,11 @@ Azure AD ユーザーが CakeHR にサインインできるようにするには
 
 2. メニュー バーの左側で **[COMPANY]\(会社\)**  >  **[ADD]\(追加\)** の順にクリックします。
 
-    ![CakeHR の構成](./media/cakehr-tutorial/config03.png)
+    ![このスクリーンショットは、[COMPANY]\(会社\) と [ADD]\(追加\) が選択された状態の CakeHR を示しています。](./media/cakehr-tutorial/config03.png)
 
 3. **[Add new employee]\(新しい従業員の追加\)** ポップアップで、以下の手順を実行します。
 
-     ![CakeHR の構成](./media/cakehr-tutorial/config04.png)
+     ![このスクリーンショットは、[Add new employee]\(新しい従業員の追加\) を示しています。ここで、これらの手順を実行します。](./media/cakehr-tutorial/config04.png)
 
     a. **[Full name]\(氏名\)** ボックスに、ユーザーの氏名を入力します (例: B.Simon)。
 

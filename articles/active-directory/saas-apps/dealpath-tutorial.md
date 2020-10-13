@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 5bae2173fc49cb9f41787905be66cf32a99fa03a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5ffdc510fd2a0f81fbfa5d9d04c337c99b389110
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88537001"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774522"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dealpath"></a>チュートリアル: Azure Active Directory と Dealpath の統合
 
@@ -128,7 +128,7 @@ Dealpath で Azure AD シングル サインオンを構成するには、次の
 
 2. 右上で **[管理ツール]** をクリックし、 **[統合]** に移動して、 **[SAML 2.0 Authentication]\(SAML 2.0 認証\)** セクションで **[設定の更新]** をクリックします。
 
-    ![Dealpath 構成](./media/dealpath-tutorial/tutorial_dealpath_admin.png)
+    ![[S A M L 2.0 Authentication]\(S A M L 2.0 認証\) セクションと [設定の更新] が選択された [管理ツール] - [統合] ページを示すスクリーンショット。](./media/dealpath-tutorial/tutorial_dealpath_admin.png)
 
 3. **[Set up SAML 2.0 authentication]\(SAML 2.0 認証の設定\)** ページで、次の手順を実行します。
 

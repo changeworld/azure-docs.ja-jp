@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/11/2019
 ms.author: jeedes
-ms.openlocfilehash: eb59d7ecd6183d144fd275a50f3682a2b961df98
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c953297d4e66f737250451b9a5f42ce7f45dd2e4
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550966"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821253"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-freshworks"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Freshworks の統合
 
@@ -95,7 +95,7 @@ Freshworks で Azure AD SSO を構成してテストするには、次の構成�
 
      ![image](common/edit-certificate.png)
 
-     ![Freshworks の構成](./media/freshworks-tutorial/response.png)
+     ![[Edit]\(編集\) ボタンが選択されている [S A M L Signing Certificate]\(S A M L 署名証明書\) ダイアログを示すスクリーンショット。](./media/freshworks-tutorial/response.png)
 
     a. **[署名オプション]** として **[SAML 応答への署名]** を選択します。
 
@@ -141,7 +141,7 @@ Freshworks で Azure AD SSO を構成してテストするには、次の構成�
 
 2. 左側のメニューから  **[Security]\(セキュリティ\)**   アイコンをクリックし、 **[Single sign-on]\(シングル サインオン\)** オプションをオンにして、 **[Authentication Methods]\(認証方法\)** の **[SAML SSO]** を選択します。
 
-    ![Freshworks の構成](./media/freshworks-tutorial/configure01.png)
+    ![[Single sign-on]\(シングル サインオン\) オプションがオンになり、[S A M L S S O] が選択されている [Security - Authentication Methods]\(セキュリティ - 認証方法\) セクションを示すスクリーンショット。](./media/freshworks-tutorial/configure01.png)
 
 3. **[Single sign-on]\(シングル サインオン\)** セクションで、次の手順に従います。
 

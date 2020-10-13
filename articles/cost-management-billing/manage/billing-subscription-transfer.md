@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: ef497439d77fef63f4b0c902aee06428a30c5ff5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1fedad7dac4c253c68a0f27d0e0470123833a3be
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91276732"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666111"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure サブスクリプションの課金所有権を別のアカウントに譲渡する
 
@@ -56,7 +56,7 @@ Azure へのサインアップ時に、Azure Active Directory (AD) テナント�
 
 新しいサブスクリプションを作成すると、そのサブスクリプションは自分のアカウントの Azure AD テナントでホストされます。 サブスクリプションまたはリソースへのアクセス権を別のユーザーに付与するには、自分のテナントに参加するように招待する必要があります。 そうすることで、サブスクリプションとリソースへのアクセスを制御できます。
 
-サブスクリプションの課金所有権を別の Azure AD テナント内のアカウントに譲渡すると、サブスクリプションをその新しいアカウントのテナントに移動することができます。 これを行うと、サブスクリプションとそのリソースを管理するための [Azure ロールが割り当て](../../role-based-access-control/role-assignments-portal.md)られたすべてのユーザー、グループ、またはサービス プリンシパルのアクセス権が失われます。 譲渡要求を受け入れた新しいアカウントのユーザーにのみ、リソースの管理アクセス権が付与されます。 新しい所有者は、アクセス権を失ったユーザーにアクセス権を付与するために、これらのユーザーをサブスクリプションに手動で追加する必要があります。 詳細については、「[Azure サブスクリプションを別の Azure AD ディレクトリに譲渡する (プレビュー)](../../role-based-access-control/transfer-subscription.md)」を参照してください。
+サブスクリプションの課金所有権を別の Azure AD テナント内のアカウントに譲渡すると、サブスクリプションをその新しいアカウントのテナントに移動することができます。 これを行うと、サブスクリプションとそのリソースを管理するための [Azure ロールが割り当て](../../role-based-access-control/role-assignments-portal.md)られたすべてのユーザー、グループ、またはサービス プリンシパルのアクセス権が失われます。 譲渡要求を受け入れた新しいアカウントのユーザーにのみ、リソースの管理アクセス権が付与されます。 新しい所有者は、アクセス権を失ったユーザーにアクセス権を付与するために、これらのユーザーをサブスクリプションに手動で追加する必要があります。 詳細については、「[Azure サブスクリプションを別の Azure AD ディレクトリに移転する](../../role-based-access-control/transfer-subscription.md)」を参照してください。
 
 ## <a name="transfer-visual-studio-and-partner-network-subscriptions"></a>Visual Studio と Partner Network のサブスクリプションを譲渡する
 

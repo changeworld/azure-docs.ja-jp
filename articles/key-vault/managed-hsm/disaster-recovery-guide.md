@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 13f62631e4913434699f4c5dd5eb1956ca3e3a36
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 7dbb7b3fdc15c0a9d502fbe9a0d12d084f9ddf29
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90992462"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760395"
 ---
 # <a name="managed-hsm-disaster-recovery"></a>Managed HSM のディザスター リカバリー
 
@@ -61,7 +61,7 @@ az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGro
 このコマンドの出力は、作成したマネージド HSM のプロパティを示します。 最も重要な 2 つのプロパティは、次のとおりです。
 
 * **name**:この例では、名前は ContosoMHSM です。 この名前を他の Key Vault コマンドに使用できます。
-* **hsmUri**: この例では、URI は https://contosohsm.managedhsm.azure.net です。 REST API から HSM を使用するアプリケーションでは、この URI を使用する必要があります。
+* **hsmUri**: この例では、URI は "https://contosohsm.managedhsm.azure.net" です。 REST API から HSM を使用するアプリケーションでは、この URI を使用する必要があります。
 
 これで、お使いの Azure アカウントは、このマネージド HSM に対して任意の操作を実行できるようになりました。 現在のところ、誰も承認されていません。
 
@@ -102,7 +102,7 @@ HSM バックアップを作成するには、次のものが必要です。
 - バックアップが格納されるストレージ アカウント
 - このストレージ アカウントの BLOB ストレージ コンテナー。ここには、暗号化されたバックアップを格納するために新しいフォルダーがバックアップ プロセスによって作成されます。
 
-次の例では、ストレージ アカウント **ContosoBackup** のストレージ コンテナー **mhsmbackupcontainer** にある HSM バックアップに対して `az keyvault backup` コマンドを使用します。 30 分後に期限切れになる SAS トークンを作成し、それを Managed HSM に指定してバックアップを書き込みます。
+ストレージ コンテナー **mhsmbackupcontainer** 内の HSM バックアップに対して `az keyvault backup` コマンドを使用します。これは、次の例ではストレージ アカウント **ContosoBackup** にあります。 30 分後に期限切れになる SAS トークンを作成し、それを Managed HSM に指定してバックアップを書き込みます。
 
 ```azurecli-interactive
 end=$(date -u -d "30 minutes" '+%Y-%m-%dT%H:%MZ')

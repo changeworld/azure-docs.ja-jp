@@ -8,37 +8,36 @@ manager: julieMSFT
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
-ms.date: 08/27/2020
-ms.openlocfilehash: f5851174ba223bd0ab48512b9e75449dcc927a04
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/07/2020
+ms.openlocfilehash: d3a5f2bd4bf536c1bc5b3723b9b612beef6a647c
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91300107"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812320"
 ---
-# <a name="prerequisites"></a>前提条件
-
-このチュートリアルの手順をすべて完了するには、**所有者**ロールが割り当てられているリソース グループにアクセスできる必要があります。 このリソース グループで Synapse ワークスペースを作成します。
-
-## <a name="create-a-synapse-workspace"></a>Synapse ワークスペースを作成する
+# <a name="creating-a-synapse-workspace"></a>Synapse ワークスペースの作成
 
 このチュートリアルでは、Synapse ワークスペース、SQL プール、Apache Spark プールを作成する方法について説明します。 
 
-## <a name="create-a-synapse-workspace"></a>Synapse ワークスペースを作成する
+## <a name="prerequisites"></a>前提条件
+
+このチュートリアルの手順をすべて完了するには、**所有者**ロールが割り当てられているリソース グループにアクセスできる必要があります。 このリソース グループで Synapse ワークスペースを作成します。
+
+## <a name="create-a-synapse-workspace-in-the-azure-portal"></a>Azure portal で Synapse ワークスペースを作成する
 
 1. [Azure portal](https://portal.azure.com) を開き、上部で **Synapse** を検索します。
 1. 検索結果の **[サービス]** で、 **[Azure Synapse Analytics (ワークスペース プレビュー)]** を選択します。
 1. **[追加]** を選択してワークスペースを作成します。
-1. **[基本]** で、ワークスペース名を選択します。 このチュートリアルでは、**myworkspace** を使用します。
+1. **[基本]** で、必須フィールドに入力し、ワークスペース名を選択します。 このチュートリアルでは、**myworkspace** を使用します。
 1. ワークスペースを作成するには、ADLSGEN2 アカウントが必要です。 最も簡単な方法は、新しいものを作成することです。 既存のものを再利用する場合は、追加の構成を行う必要があります。 
 1. オプション 1: 新しい ADLSGEN2 アカウントの作成 
     1. **[Data Lake Storage Gen 2 の選択]** に移動します。 
     1. **[新規作成]** をクリックし、「**contosolake**」という名前を付けます。
-    1. **[ファイル システム]** をクリックし、「**users**」という名前を付けます。
+    1. **[ファイル システム]** をクリックし、**users** という名前を付けます。 これにより、**users** というコンテナーが作成されます。
 1. オプション 2: 既存の ADLSGEN2 アカウントの使用。 このドキュメントの下部にある「**ADLSGEN2 ストレージ アカウントの準備**」の手順を参照してください。
 1. Azure Synapse ワークスペースは、このストレージ アカウントを "プライマリ" ストレージ アカウントとして使用し、ワークスペース データを格納するコンテナーを使用します。 このワークスペースでは、データが Apache Spark テーブルに格納されます。 **/synapse/workspacename** というフォルダーに Spark アプリケーション ログが格納されます。
 1. **[確認と作成]**  >  **[作成]** の順に選択します。 ワークスペースの準備は数分で完了します。
-
 
 ## <a name="open-synapse-studio"></a>Synapse Studio を開く
 
@@ -117,8 +116,8 @@ Azure Synapse で Spark アクティビティを実行する際は、使用す�
 1. 以下のロールを割り当てるか、それらが既に割り当てられていることを確認します。 ここでは、ワークスペース ID とワークスペース名に同じ名前を使用します。
     * ストレージ アカウントの **[ストレージ BLOB データ共同作成者]** ロールに、ワークスペース ID として **myworkspace** を割り当てます。
     * ワークスペース名として **myworkspace** を割り当てます。
-
 1. **[保存]** を選択します。
+
 
 ## <a name="next-steps"></a>次のステップ
 

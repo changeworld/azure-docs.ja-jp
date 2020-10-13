@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 4f5994aa4114f12b55f2e232ea5a35fa2df87626
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8f5a8abf4272cf90691e60f97416023a76252e41
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547734"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740549"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bugsnag"></a>チュートリアル:Azure Active Directory と Bugsnag の統合
 
@@ -100,7 +100,7 @@ Bugsnag で Azure AD シングル サインオンを構成するには、次の�
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[Bugsnag のドメインと URL] のシングル サインオン情報](common/both-replyurl.png)
+    ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、応答 U R L を入力し、[保存] を選択できます。](common/both-replyurl.png)
 
     **[応答 URL]** ボックスに、`https://app.bugsnag.com/user/sign_in/saml/<org_slug>/acs` のパターンを使用して URL を入力します
 
@@ -109,7 +109,7 @@ Bugsnag で Azure AD シングル サインオンを構成するには、次の�
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[Bugsnag のドメインと URL] のシングル サインオン情報](common/both-signonurl.png)
+    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/both-signonurl.png)
 
     **[サインオン URL]** テキスト ボックスに「`https://app.bugsnag.com/user/identity_provider`」と入力します。
 

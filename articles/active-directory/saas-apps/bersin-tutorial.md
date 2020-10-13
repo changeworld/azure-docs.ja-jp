@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 6fb8117a3e834dec71b9dbc98b4a34512a43f646
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c032d8a5dc6cbfe181dccc6c7b4fd1db35a9a3a9
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540769"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741488"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bersin"></a>チュートリアル: Azure Active Directory と Bersin の統合
 
@@ -98,7 +98,7 @@ Bersin で Azure AD シングル サインオンを構成するには、次の�
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順に従います。
 
-    ![[Bersin のドメインと URL] のシングル サインオン情報](common/idp-identifier-relay.png)
+    ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-identifier-relay.png)
 
     a. **[識別子]** ボックスに、`https://www.bersin.com/shibboleth` の形式で URL を入力します。
 
@@ -108,7 +108,7 @@ Bersin で Azure AD シングル サインオンを構成するには、次の�
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順に従います。
 
-    ![[Bersin のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
+    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** ボックスに、`https://www.bersin.com/Login.aspx` という形式で URL を入力します。
 

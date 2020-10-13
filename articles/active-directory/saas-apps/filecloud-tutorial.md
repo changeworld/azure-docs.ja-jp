@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 155675d6d0f6026c528be66f9a67a21fe65d00ba
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f41312521202f406c3826880f345e0bbe7600bd3
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555171"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817208"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filecloud"></a>チュートリアル: Azure Active Directory と FileCloud の統合
 
@@ -130,19 +130,19 @@ FileCloud で Azure AD シングル サインオンを構成するには、次�
 
 2. 左側のナビゲーション ウィンドウで、 **[Settings (設定)]** をクリックします。 
    
-    ![アプリ側でのシングル サインオンの構成](./media/filecloud-tutorial/tutorial_filecloud_000.png)
+    ![左側のナビゲーション ペインで強調表示されている [Settings]\(設定\) を示すスクリーンショット。](./media/filecloud-tutorial/tutorial_filecloud_000.png)
 
 3. [Settings (設定)] セクションの **[SSO]** タブをクリックします。 
    
-    ![アプリ側でのシングル サインオンの構成](./media/filecloud-tutorial/tutorial_filecloud_001.png)
+    ![[S S O] タブが選択されている [Settings]\(設定\) セクションを示すスクリーンショット。](./media/filecloud-tutorial/tutorial_filecloud_001.png)
 
 4. **[Single Sign On (SSO) Settings (シングル サインオン (SSO) 設定)]** パネルで、 **[Default SSO Type (既定の SSO タイプ)]** として **[SAML]** を選択します。
    
-    ![アプリ側でのシングル サインオンの構成](./media/filecloud-tutorial/tutorial_filecloud_002.png)
+    ![[S A M L] が選択されている [Single Sign On (S S O) Settings]\(シングル サインオン (S S O) 設定\) パネルを示すスクリーンショット。](./media/filecloud-tutorial/tutorial_filecloud_002.png)
 
 5. **[IdP End Point URL]\(IdP のエンド ポイント URL\)** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
 
-    ![アプリ側でのシングル サインオンの構成](./media/filecloud-tutorial/tutorial_filecloud_003.png)
+    ![[I d P End Point U R L]\(I d P のエンド ポイント U R L\) が強調表示されている [S A M L Settings]\(S A M L 設定\) セクションを示すスクリーンショット。](./media/filecloud-tutorial/tutorial_filecloud_003.png)
 
 6. ダウンロードしたメタデータ ファイルをメモ帳で開き、その内容をクリップボードにコピーし、 **[SAML Settings (SAML 設定)]** パネルの **[IdP Meta Data (IdP メタ データ)]** ボックスに貼りつけます。
 

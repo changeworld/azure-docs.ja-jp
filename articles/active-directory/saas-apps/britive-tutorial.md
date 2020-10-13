@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2020
 ms.author: jeedes
-ms.openlocfilehash: 02358dcffa6f757e3c61b3c1ae0e7c5298f7d9ca
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 63d3a874c3d3d55ec1e3af3765ae63119dca287b
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542685"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740362"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-britive"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Britive の統合
 
@@ -129,11 +129,11 @@ Britive に対する Azure AD SSO を構成してテストするには、次の�
 
 1. **管理者設定アイコン**をクリックし、 **[Security]\(セキュリティ\)** を選択します。
 
-    ![Britive の構成](./media/britive-tutorial/configure1.png)
+    ![このスクリーンショットは、[Settings]\(設定\) と [Security]\(セキュリティ\) が選択された状態の Britive Web サイトを示しています。](./media/britive-tutorial/configure1.png)
 
 1. **[SSO Configuration]\(SSO 構成\)** を選択し、次の手順を実行します。
 
-    ![Britive の構成](./media/britive-tutorial/configure2.png)
+    ![このスクリーンショットは、[S S O Configuration]\(S S O 構成\) を示しています。ここで、この手順の情報を入力します。](./media/britive-tutorial/configure2.png)
 
     a. **[Audience/Entity ID]\(対象ユーザーおよびエンティティ ID\)** の値をコピーして、Azure portal の **[基本的な SAML 構成]** セクションの **[識別子 (エンティティ ID)]** テキスト ボックスに貼り付けます。
 
@@ -147,15 +147,15 @@ Britive に対する Azure AD SSO を構成してテストするには、次の�
 
 1. **管理者設定アイコン**をクリックし、 **[User Administration]\(ユーザーの管理\)** を選択します。
 
-    ![Britive の構成](./media/britive-tutorial/user1.png)
+    ![このスクリーンショットは、[Settings]\(設定\) と [User Administration]\(ユーザーの管理\) が選択された状態の Britive Web サイトを示しています。](./media/britive-tutorial/user1.png)
 
 1. **[ADD USER]\(ユーザーの追加)** をクリックします。
 
-    ![Britive の構成](./media/britive-tutorial/user2.png)
+    ![このスクリーンショットは、[ADD USER]\(ユーザーの追加) ボタンを示しています。](./media/britive-tutorial/user2.png)
 
 1. 組織の要件に従って、ユーザーに関する必要な詳細情報をすべて入力し、 **[ADD USER]\(ユーザーの追加)** をクリックします。
 
-    ![Britive の構成](./media/britive-tutorial/user3.png)
+    ![このスクリーンショットは、[Ad a User]\(ユーザーの追加\) ページを示しています。ここで、ユーザー情報を入力します。](./media/britive-tutorial/user3.png)
 
 ## <a name="test-sso"></a>SSO のテスト
 

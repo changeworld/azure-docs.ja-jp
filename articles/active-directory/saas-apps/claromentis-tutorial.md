@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/04/2019
 ms.author: jeedes
-ms.openlocfilehash: dba77045f8aef1799717c6f6af91046b3ca6119e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3b8f91bca3650004472d8fe51d4e92b42ade3122
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520313"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759767"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-claromentis"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Claromentis の統合
 
@@ -138,19 +138,19 @@ Claromentis で Azure AD SSO を構成してテストするには、次の構成
 
 1. **アプリケーション アイコン**をクリックし、 **[Admin]\(管理者\)** を選択します。
 
-    ![Claromentis の構成](./media/claromentis-tutorial/config1.png)
+    ![スクリーンショットは、[Admin]\(管理者\) が選択されている Claromentis Web サイトを示します。](./media/claromentis-tutorial/config1.png)
 
 1. **[Custom Login Handler]\(カスタム ログイン ハンドラー\)** タブを選択します。
 
-    ![Claromentis の構成](./media/claromentis-tutorial/config2.png)
+    ![スクリーンショットは、[Custom Login Handler]\(カスタム ログイン ハンドラー\) が選択されている [管理者] ページを示します。](./media/claromentis-tutorial/config2.png)
 
 1. **[SAML Config]\(SAML 構成\)** を選択します。
 
-    ![Claromentis の構成](./media/claromentis-tutorial/config3.png)
+    ![スクリーンショットは、SAML の構成ページを示します。](./media/claromentis-tutorial/config3.png)
 
 1. **[SAML Config]\(SAML 構成\)** タブで **[Config]\(構成\)** セクションまで下へスクロールし、以下の手順を実行します。
 
-    ![Claromentis の構成](./media/claromentis-tutorial/config4.png)
+    ![スクリーンショットは、この手順で説明されている情報を入力できるページの [Config]\(構成\) セクションを示します。](./media/claromentis-tutorial/config4.png)
 
     a. **[Technical Contact Name]\(技術部連絡先名\)** ボックスに、技術部連絡先担当者の名前を入力します。
 
@@ -160,7 +160,7 @@ Claromentis で Azure AD SSO を構成してテストするには、次の構成
 
 1. **[Auth Sources]\(認証ソース\)** まで下へスクロールし、以下の手順を実行します。
 
-    ![Claromentis の構成](./media/claromentis-tutorial/config5.png)
+    ![スクリーンショットは、この手順で説明されている情報を入力できる [Auth Sources]\(認証ソース\) セクションを示します。](./media/claromentis-tutorial/config5.png)
 
     a. **[IDP]** ボックスに、Azure portal からコピーした **Azure AD ID** の値を入力します。
 
@@ -172,7 +172,7 @@ Claromentis で Azure AD SSO を構成してテストするには、次の構成
 
 1. これで、すべての URL が **[SAML Config]\(SAML 構成\)** セクションの **[Identity Provider]\(ID プロバイダー\)** セクション内に設定されたことになります。
 
-    ![Claromentis の構成](./media/claromentis-tutorial/config6.png)
+    ![スクリーンショットは、URL が設定されている [Identity Provider]\(ID プロバイダー\) ページを示します。](./media/claromentis-tutorial/config6.png)
 
     a. **[Identifier (Entity ID)]\(識別子 (エンティティ ID)\)** の値をコピーして、Azure portal の **[基本的な SAML 構成]** セクションにある **[識別子]** ボックスに貼り付けます。
 

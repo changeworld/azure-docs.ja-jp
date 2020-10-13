@@ -1,28 +1,21 @@
 ---
-title: Azure API Management で製品を作成して発行する方法
-description: Azure API Management で製品を作成して発行する方法について説明します。 製品が発行されると、開発者は製品の API の利用を開始できます。
-services: api-management
-documentationcenter: ''
+title: チュートリアル - Azure API Management で製品を作成して発行する
+description: このチュートリアルでは、Azure API Management で製品を作成して発行します。 製品が発行されると、開発者は製品の API の利用を開始できます。
 author: mikebudzynski
-manager: cfowler
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
-ms.custom: mvc
 ms.topic: tutorial
-ms.date: 08/10/2018
+ms.date: 09/30/2020
 ms.author: apimpm
-ms.openlocfilehash: 69b5e381ed8446b45f68b4b1ce9bb13df47039c0
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 2f298f240d8aa7a38b42a8c78ee3c90fe3423d10
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904906"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630574"
 ---
-# <a name="create-and-publish-a-product"></a>製品を作成して発行する  
+# <a name="tutorial-create-and-publish-a-product"></a>チュートリアル:製品を作成して発行する  
 
-Azure API Management の製品には、少なくとも 1 つの API に加え、使用量クォータや使用条件が含まれます。 製品が発行されると、開発者は成果物をサブスクライブして、成果物の API の利用を開始できます。  
+Azure API Management の "[*製品*](api-management-terminology.md#term-definitions)" には、少なくとも 1 つの API に加え、使用量クォータや利用規約が含まれます。 製品が発行されると、開発者は成果物をサブスクライブして、成果物の API の利用を開始できます。  
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -30,7 +23,8 @@ Azure API Management の製品には、少なくとも 1 つの API に加え、
 > * 製品を作成して発行する
 > * 製品に API を追加する
 
-![製品チュートリアルを追加する](media/api-management-howto-add-products/added-product.png)
+:::image type="content" source="media/api-management-howto-add-products/added-product.png" alt-text="ポータルにおける API Management の製品":::
+
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,52 +34,56 @@ Azure API Management の製品には、少なくとも 1 つの API に加え、
 
 ## <a name="create-and-publish-a-product"></a>製品を作成して発行する
 
-![製品の追加](media/api-management-howto-add-products/02-create-publish-product-01.png)
+1. Azure portal にサインインして、API Management インスタンスに移動します。
+1. 左側のナビゲーションで **[製品]**  >  **[+ 追加]** を選択します。
+1.  **[製品の追加]** ウィンドウで、以下の表に記載されている値を入力して製品を作成します。
 
-1. 左側のメニューの **[製品]** をクリックして **[製品]** ページを表示します。
-2. **[+ 追加]** をクリックします。
-
-    製品を追加するときに、次の情報を指定する必要があります。 
+    :::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-01.png" alt-text="ポータルにおける API Management の製品":::
 
     | 名前                     | 説明                                                                                                                                                                                                                                                                                                             |
     |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | 表示名             | **[開発者ポータル]** で表示する名前です。                                                                                                                                                                                                                                                        |
-    | 名前                     | 製品のわかりやすい名前。                                                                                                                                                                                                                                                                                      |
-    | 説明              | **[説明]** フィールドには、その目的、アクセスできる API、その他の有益な情報など、製品に関する詳しい情報を入力できます。                                                                                                                                               |
-    | State                    | 製品を発行する場合は **[発行済み]** を押します。 製品に含まれる API を呼び出すには、あらかじめ製品を発行しておく必要があります。 新しい製品は既定で発行されず、**Administrators** グループのみに表示されます。                                                                                      |
-    | サブスクリプションを要求する    | ユーザーが製品を使用するにはサブスクリプションが必要である場合は、**[サブスクリプションを要求する]** をオンにします。                                                                                                                                                                                                                                   |
-    | 承認が必要        | この製品に対するサブスクリプションの申し込みを管理者の審査の下で承認または拒否する場合は、**[承認を要求する]** をオンにします。 チェック ボックスがオフの場合、サブスクリプションの申し込みは自動承認されます。                                                                                                                         |
-    | サブスクリプション数の制限 | 複数同時に利用できるサブスクリプションの数を制限するには、サブスクリプションの上限を入力します。                                                                                                                                                                                                                                |
+    | 表示名             | [開発者ポータル](api-management-howto-developer-portal.md)で表示する名前です。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+    | 説明              | 製品の目的、アクセスできる API、その他の詳細など、製品に関する情報を入力します。                                                                                                                                               |
+    | State                    | 製品を発行する場合は **[発行済み]** を選択します。 製品に含まれる API を呼び出すには、あらかじめ製品を発行しておく必要があります。 新しい製品は、既定では発行されず、**Administrators** グループのみに表示されます。                                                                                      |
+    | サブスクリプションを要求する    | ユーザーが製品を使用するにはサブスクリプションが必要である場合はオンにします。                                                                                                                                                                                                                                   |
+    | 承認が必要        | この製品に対するサブスクリプションの申し込みを管理者の審査の下で承認または拒否する場合はオンにします。 オフの場合、サブスクリプションの申し込みは自動承認されます。                                                                                                                         |
+    | サブスクリプション数の制限 | 必要に応じて、複数同時に利用できるサブスクリプションの数を制限します。                                                                                                                                                                                                                                |
     | 法的条項              | サブスクライバーが製品を使用するにあたって同意する必要がある製品の使用条件を入力できます。                                                                                                                                                                                                             |
-    | API                     | 製品には、1 つまたは複数の API が関連付けられています。 複数の API を組み込み、開発者ポータルを通じてそれらを開発者に提供できます。 <br/> 製品の作成時に既存の API を追加できます。 製品には後から API を追加できます。製品の **[設定]** ページを使用して追加することも、API の作成時に追加することもできます。 |
+    | API                     | 1 つまたは複数の API を選択します。 製品の作成後に API を追加することもできます。 詳細については、「[製品への API の追加](#add-apis-to-a-product)」を参照してください。 |
 
-3. **[作成]** をクリックして新しい製品を作成します。
+3. **[作成]** を選択して新しい製品を作成します。
 
 ### <a name="add-more-configurations"></a>構成をさらに追加する
 
-**[設定]** タブを選択すると、保存した後で続けて製品を構成できます。 
+製品を保存した後、続けてその構成を行います。 API Management インスタンスで、 **[製品]** ウィンドウから製品を選択します。 次の項目を追加または更新します。
 
-**[サブスクリプション]** タブでサブスクライバーを表示するか、または製品にサブスクライバーを追加します。
 
-**[アクセス制御]** タブで、開発者やゲスト向けに製品の可視性を設定します。
+|アイテム   |説明  |
+|---------|---------|
+|設定     |    製品のメタデータと状態     |
+|API     |  製品に関連付けられている API       |
+|[ポリシー](api-management-howto-policies.md)     |  製品の API に適用されるポリシー      |
+|アクセス制御     |  開発者またはゲストに向けた製品の可視性       |
+|[サブスクリプション](api-management-subscriptions.md)    |    製品のサブスクライバー     |
 
-## <a name="add-apis-to-a-product"></a><a name="add-apis"> </a>製品への API の追加
+## <a name="add-apis-to-a-product"></a>製品への API の追加
 
-製品には、1 つまたは複数の API が関連付けられています。 複数の API を組み込み、開発者ポータルを通じてそれらを開発者に提供できます。 製品の作成時に既存の API を追加できます。 製品には後から API を追加できます。**[設定]** ページを使用して追加することも、API の作成時に追加することもできます。
+製品には、1 つまたは複数の API が関連付けられています。 複数の API を組み込み、開発者ポータルを通じてそれらを開発者に提供できます。 製品の作成中、既存の API を追加することができます。複数の API を追加することも可能です。 製品には後から API を追加できます。 **[設定]** ページを使用して追加することも、API の作成時に追加することもできます。
 
 開発者は、まず製品をサブスクライブして API へのアクセス権を取得する必要があります。 サブスクライブすると、その製品の API に適したサブスクリプション キーを受け取ります。 APIM インスタンスを作成した場合は、既に管理者になっているため、既定ですべての製品をサブスクライブしています。
 
 ### <a name="add-an-api-to-an-existing-product"></a>既存の製品に API を追加する
 
-![製品 API を追加する](media/api-management-howto-add-products/02-create-publish-product-02.png)
 
-1. **[製品]** タブで、製品を選択します。
-2. **[API]** タブに移動します。
-3. **[+ 追加]** をクリックします。
-4. API を選択して **[選択]** をクリックします。
+1. API Management インスタンスの左側のナビゲーションで **[製品]** を選択します。
+1. 製品を選択し、 **[API]** を選択します。
+1. **[+ 追加]** を選択します。
+1. 少なくとも 1 つの API を選択し、 **[選択]** を選択します。
+
+:::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-02.png" alt-text="ポータルにおける API Management の製品":::
 
 > [!TIP]
-> [REST API](/rest/api/apimanagement/2019-12-01/subscription/createorupdate) または PowerShell コマンドを通じてカスタム サブスクリプション キーを使用して、"*製品*" へのユーザーのサブスクリプションを作成または更新できます。
+> [REST API](/rest/api/apimanagement/2019-12-01/subscription/createorupdate) または PowerShell コマンドを通じてカスタム サブスクリプション キーを使用して、製品へのユーザーのサブスクリプションを作成または更新できます。
 
 ## <a name="next-steps"></a>次のステップ
 

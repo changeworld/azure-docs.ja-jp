@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 78c06cc7f08fe94a25ea63d9bf76cc1352d9f2b7
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: cb6ef6ac25c4afa72160ba437e0ea3b5492cfd93
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82561697"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741960"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>チュートリアル:Azure Data Box Gateway を接続、設定、アクティブ化する
 
@@ -126,7 +126,7 @@ Data Box Gateway を構成および設定する前に、以下のことを確認
     
     3. デバイスがアクティブ化され、緊急更新プログラム (使用可能な場合) が自動的に適用されます。 その影響に関する通知が表示されます。 Azure portal で更新の進行状況を監視します。
 
-        ![ローカル Web UI の [クラウド設定] ページ](./media/data-box-gateway-deploy-connect-setup-activate/image12.png)
+        ![ローカル Web UI の [クラウド設定] ページ 2](./media/data-box-gateway-deploy-connect-setup-activate/image12.png)
         
         **このダイアログには、コピーして安全な場所に保存する必要がある回復キーも含まれています。このキーは、デバイスが起動できない場合にデータを復旧するために使用されます。**
 

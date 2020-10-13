@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: ef388426584dc013d102b929627ce2ba45431d5c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 32dd392965e8bf33c835b435b5a2a01460740d2b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547498"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823689"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>チュートリアル: Azure Active Directory と IdeaScale の統合
 
@@ -137,7 +137,7 @@ IdeaScale で Azure AD シングル サインオンを構成するには、次�
 
 3. **[セキュリティ] \> [シングル サインオン設定]** の順にクリックします。
 
-    ![[シングル サインオンの設定]](./media/ideascale-tutorial/ic790848.png "[シングル サインオンの設定]")
+    ![[Security]\(セキュリティ\) メニューで選択されている [Single Signon Settings]\(シングル サインオン設定\) を示すスクリーンショット。](./media/ideascale-tutorial/ic790848.png "[シングル サインオンの設定]")
 
 4. **[シングル サインオンのタイプ]** で **[SAML 2.0]** を選択します。
 
@@ -145,7 +145,7 @@ IdeaScale で Azure AD シングル サインオンを構成するには、次�
 
 5. **[シングル サインオンの設定]** ダイアログで、次の手順を実行します。
 
-    ![[シングル サインオンの設定]](./media/ideascale-tutorial/ic790850.png "[シングル サインオンの設定]")
+    ![[Single Signon Settings]\(シングル サインオンの設定\) ダイアログ ボックスを示すスクリーンショット。](./media/ideascale-tutorial/ic790850.png "[シングル サインオンの設定]")
 
     a. **[SAML IdP Entity ID]\(SAML IdP エンティティ ID\)** ボックスに、Azure portal からコピーした **Azure AD ID** の値を貼り付けます。
 

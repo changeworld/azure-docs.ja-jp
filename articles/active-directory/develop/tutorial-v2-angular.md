@@ -1,7 +1,7 @@
 ---
-title: Angular シングルページ アプリのチュートリアル - Azure
+title: チュートリアル:認証に Microsoft ID プラットフォームを使用する Angular アプリを作成する | Azure
 titleSuffix: Microsoft identity platform
-description: Angular SPA アプリケーションで、Microsoft ID プラットフォーム エンドポイントからのアクセス トークンを必要とする API を呼び出す方法を説明します。
+description: このチュートリアルでは、Microsoft ID プラットフォームを使用してユーザーのサインインを処理し、アクセス トークンを取得してそのユーザーに代わって Microsoft Graph API を呼び出す Angular シングルページ アプリ (SPA) を作成します。
 services: active-directory
 author: hamiltonha
 manager: CelesteDG
@@ -12,30 +12,36 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 76e82a474d2575325b09e6e82c7319b22f451715
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ae486ac8ddd233487bb10c897a155337aa815fe5
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256927"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611250"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>チュートリアル:Angular シングルページ アプリケーションからユーザーをサインインさせて Microsoft Graph API を呼び出す
 
-このチュートリアルでは、Angular シングルページ アプリケーション (SPA) で次のことを行う方法を説明します。
-- 個人用アカウント、職場アカウント、学校アカウントをサインインさせます。
-- アクセス トークンを取得します。
-- "*Microsoft ID プラットフォーム エンドポイント*" のアクセス トークンを必要とする Microsoft Graph API などの API を呼び出します。
+このチュートリアルでは、個人用 Microsoft アカウントおよび職場または学校アカウントでユーザーをサインインさせて、そのユーザーの代わりに Microsoft Graph API を呼び出すことができる Angular シングルページ アプリケーション (SPA) の作成方法について説明します。
 
->[!NOTE]
->このチュートリアルでは、Microsoft Authentication Library (MSAL) を使用して新しい Angular SPA を作成する方法について説明します。 サンプル アプリをダウンロードする場合は、[クイックスタート](quickstart-v2-angular.md)を参照してください。
+このチュートリアルの内容:
+
+> [!div class="checklist"]
+> * `npm` で Angular プロジェクトを作成する
+> * Azure portal でアプリケーションを登録する
+> * ユーザーのサインインとサインアウトをサポートするコードを追加する
+> * Microsoft Graph API を呼び出すコードを追加する
+> * アプリケーションをテストする
+
+## <a name="prerequisites"></a>前提条件
+
+* ローカル Web サーバーを実行するための [Node.js](https://nodejs.org/en/download/)。
+* プロジェクト ファイルを編集するためのエディター ([Visual Studio Code](https://code.visualstudio.com/download) など)。
 
 ## <a name="how-the-sample-app-works"></a>このサンプル アプリのしくみ
 
 ![このチュートリアルで生成されたサンプル アプリの動作を示す図](./media/tutorial-v2-angular/diagram-auth-flow-spa-angular.svg)
 
-### <a name="more-information"></a>詳細情報
-
-このチュートリアルで作成したサンプル アプリケーションを使用すると、Angular SPA で、Microsoft ID プラットフォーム エンドポイントからトークンを受け取る Microsoft Graph API や Web API に対してクエリを実行することができます。 Angular ライブラリの MSAL は、コア MSAL.js ライブラリのラッパーです。 これにより、Angular (6 以降) アプリケーションは、Microsoft Azure Active Directory、Microsoft アカウント ユーザー、ソーシャル ID ユーザー (Facebook、Google、LinkedIn など) を使用してエンタープライズ ユーザーを認証することができます。 また、アプリケーションは、このライブラリを通じて、Microsoft クラウド サービスや Microsoft Graph にアクセスすることができます。
+このチュートリアルで作成したサンプル アプリケーションを使用すると、Angular SPA で、Microsoft ID プラットフォームによって発行されたトークンを受け取る Microsoft Graph API や Web API に対してクエリを実行することができます。 Microsoft Authentication Library (MSAL) for Angular という、コア MSAL.js ライブラリのラッパーを使用します。 MSAL Angular では、Angular (6 以降) のアプリケーションが Azure Active Directory (Azure AD) を使用して、エンタープライズ ユーザーや Microsoft アカウントを持つユーザー、さらにソーシャル ID (Facebook、Google、LinkedIn など) を持つユーザーを認証することができます。 また、アプリケーションは、このライブラリを通じて、Microsoft クラウド サービスや Microsoft Graph にアクセスすることができます。
 
 このシナリオでは、ユーザーのサインイン後に、アクセス トークンが要求され、Authorization ヘッダーを介して HTTP 要求に追加されます。 トークンの取得と更新は、MSAL によって処理されます。
 
@@ -48,13 +54,6 @@ ms.locfileid: "91256927"
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|JavaScript Angular Wrapper 用の Microsoft Authentication Library|
 
 MSAL.js ライブラリのソース コードは、GitHub の [AzureAD/microsoft-authentication-library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) リポジトリにあります。
-
-## <a name="prerequisites"></a>前提条件
-
-このチュートリアルを実行するには、次のものが必要です。
-
-* [Node.js](https://nodejs.org/en/download/) などのローカル Web サーバー。 このチュートリアルの手順は、Node.js に基づいています。
-* プロジェクト ファイルを編集するための [Visual Studio Code](https://code.visualstudio.com/download) などの統合開発環境 (IDE)。
 
 ## <a name="create-your-project"></a>プロジェクトを作成する
 
@@ -343,6 +342,7 @@ Microsoft Graph API には、ユーザーのプロファイルを読み取るた
 
 ## <a name="next-steps"></a>次のステップ
 
-ID とアクセスの管理を初めて体験する方のために、「[認証と承認](authentication-vs-authorization.md)」を手始めに、最新の認証の概念を理解するのに役立つ記事がいくつか用意されています。
+Microsoft ID プラットフォームにおけるシングルページ アプリケーション (SPA) 開発の詳細を、複数のパートから成る一連の記事でご覧ください。
 
-Microsoft ID プラットフォームでのシングルページ アプリケーションの開発についてさらに詳しく知りたい場合は、複数パートから構成される記事の「[シナリオ: シングルページ アプリケーション](scenario-spa-overview.md)」シリーズが、作業を開始するのに役立ちます。
+> [!div class="nextstepaction"]
+> [シナリオ:シングルページ アプリ](scenario-spa-overview.md)

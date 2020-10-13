@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: c696d8834c24a792432469bf7b1adffc87f718ba
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 42aa51fdd3b0da5a0d438ba46b39bada159aeba6
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372989"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611473"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>チュートリアル:認証に Microsoft ID プラットフォームを使用する Blazor Server アプリを作成する
 
@@ -40,7 +40,7 @@ Blazor サーバーでは、ASP.NET Core アプリでサーバー上の Razor �
 
 **[認証]**  >  **[暗黙の付与]** で、 **[アクセス トークン]** および **[ID トークン]** のチェック ボックスをオンにし、 **[保存]** ボタンを選択します。
 
-最後に、アプリが保護された API (この場合 Microsoft Graph) を呼び出すので、その API を呼び出すためのアクセス トークンを要求するときに、その ID を確認するためにクライアント シークレットが必要になります。 
+最後に、アプリが保護された API (この場合 Microsoft Graph) を呼び出すので、その API を呼び出すためのアクセス トークンを要求するときに、その ID を確認するためにクライアント シークレットが必要になります。
 
 1. 同じアプリの登録内で、 **[管理]** の下にある **[証明書 & シークレット]** を選択します。
 2. 有効期限がない**新しいクライアント シークレット**を作成します。
@@ -48,7 +48,7 @@ Blazor サーバーでは、ASP.NET Core アプリでサーバー上の Razor �
 
 ## <a name="create-the-app-using-the-net-cli"></a>.NET CLI を使用してアプリを作成する
 
-次のコマンドを実行して、このチュートリアルで使用する、Microsoft.Identity.Web のテンプレートをダウンロードします。 
+次のコマンドを実行して、このチュートリアルで使用する、Microsoft.Identity.Web のテンプレートをダウンロードします。
 
 ```dotnetcli
 dotnet new --install Microsoft.Identity.Web.ProjectTemplates::0.4.0-preview
@@ -74,19 +74,19 @@ dotnet new blazorserver2 --auth SingleOrg --calls-graph -o {APP NAME} --client-i
 
 ## <a name="test-the-app"></a>アプリをテストする
 
-アプリをビルドして実行できる状態になりました。 このテンプレート アプリを実行するときは、--framework を使用して実行するフレームワークを指定する必要があります。 このチュートリアルでは、.NET Core 3.1 SDK を使用します。 
+アプリをビルドして実行できる状態になりました。 このテンプレート アプリを実行するときは、--framework を使用して実行するフレームワークを指定する必要があります。 このチュートリアルでは、.NET Core 3.1 SDK を使用します。
 
 ```dotnetcli
 dotnet run --framework netcoreapp3.1
 ```
 
-ブラウザーで `https://localhost:5001` に移動し、Azure AD ユーザー アカウントを使用してログインして、アプリが実行されていることを確認します。 
+ブラウザーで `https://localhost:5001` に移動し、Azure AD ユーザー アカウントを使用してログインして、アプリが実行されていることを確認します。
 
 ## <a name="retrieving-data-from-microsoft-graph"></a>Microsoft Graph からデータを取得する
 
 [Microsoft Graph](/graph/overview) には、ユーザーの Microsoft 365 データへのアクセスを提供するさまざまな API が用意されています。 Microsoft ID プラットフォームをアプリの ID プロバイダーとして使用することで、Microsoft ID プラットフォームによって発行されたトークンは Microsoft Graph によって直接サポートされるため、この情報に簡単にアクセスできます。 このセクションでは、コードを追加し、サインインしたユーザーの電子メールをアプリケーションの [フェッチ データ] ページに表示します。
 
-開始する前に、必要なアクセス許可を変更するため、アプリからログアウトしてください。そうしないと、現在のトークンは機能しません。 まだしていない場合は、以下のコードを更新する前に、もう一度アプリを実行して **[ログアウト]** を選択します。 
+開始する前に、必要なアクセス許可を変更するため、アプリからログアウトしてください。そうしないと、現在のトークンは機能しません。 まだしていない場合は、以下のコードを更新する前に、もう一度アプリを実行して **[ログアウト]** を選択します。
 
 次に、アプリの登録とコードを更新して、ユーザーの電子メールをプルし、アプリ内にメッセージを表示します。 これを実行するには、まず Azure AD でアプリの登録アクセス許可を拡張して、電子メール データへのアクセスを有効にします。 次に、このデータを取得してページのいずれかに表示するコードを Blazor アプリに追加します。
 
@@ -201,5 +201,7 @@ else
 
 ## <a name="next-steps"></a>次の手順
 
-- [Microsoft ID プラットフォームのベスト プラクティスと推奨事項](./identity-platform-integration-checklist.md)
-- [Microsoft ID Web の基礎](https://github.com/AzureAD/microsoft-identity-web/wiki/Microsoft-Identity-Web-basics)
+複数のパートから成るシナリオ シリーズで、ユーザーのサインインを行う Web アプリの作成方法をご覧ください。
+
+> [!div class="nextstepaction"]
+> [シナリオ: ユーザーをサインインさせる Web アプリ](scenario-web-app-sign-user-overview.md)

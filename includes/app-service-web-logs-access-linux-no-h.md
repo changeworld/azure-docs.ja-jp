@@ -8,28 +8,31 @@ ms.topic: include
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 0dd6618bdee8e6810d414d4b04b16a1e0a9c90ed
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: df71f0804b62eb4b17ff8d2f652b076b5c64c959
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84905625"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91822810"
 ---
-コンテナー内から生成されたコンソール ログにアクセスできます。 まず、Cloud Shell で次のコマンドを実行して、コンテナーのログ記録をオンにします。
+コンテナー内から生成されたコンソール ログにアクセスできます。
+
+まず、次のコマンドを実行して、コンテナーのログ記録をオンにします。
 
 ```azurecli-interactive
-az webapp log config --name <app-name> --resource-group myResourceGroup --docker-container-logging filesystem
+az webapp log config --name <app-name> --resource-group <resource-group-name> --docker-container-logging filesystem
 ```
+
+`<app-name>` と `<resource-group-name>` は、Web アプリに適した名前に置き換えます。
 
 コンテナーのログ記録がオンになったら、次のコマンドを実行して、ログのストリームを確認します。
 
 ```azurecli-interactive
-az webapp log tail --name <app-name> --resource-group myResourceGroup
+az webapp log tail --name <app-name> --resource-group <resource-group-name>
 ```
 
 コンソール ログがすぐに表示されない場合は、30 秒以内にもう一度確認します。
 
-> [!NOTE]
-> `https://<app-name>.scm.azurewebsites.net/api/logs/docker` で、ブラウザーからログ ファイルを検査することもできます。
+任意のタイミングでログのストリーミングを停止するには、**Ctrl**+**C** キーを押します。
 
-任意のタイミングでログのストリーミングを停止するには、`Ctrl`+`C` と入力します。
+ブラウザーから `https://<app-name>.scm.azurewebsites.net/api/logs/docker` でログ ファイルを検査することもできます。

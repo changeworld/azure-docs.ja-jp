@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 4fd6b46353cdeb4493c1a767c92e75d602e52843
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b6da84c1be38dde72b663de1db3756e77f4db915
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88528896"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759830"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Cisco Webex の統合
 
@@ -151,13 +151,13 @@ Cisco Webex で Azure AD SSO を構成してテストするには、次の構成
 
 4. **[設定]** を選択し、 **[認証]** セクションの下で **[変更]** をクリックします。
 
-    ![Configure single sign-on](./media/cisco-spark-tutorial/tutorial-cisco-spark-10.png)
+    ![スクリーンショットは、[変更] を選択できる [Authentication Settings]\(認証設定\) を示しています。](./media/cisco-spark-tutorial/tutorial-cisco-spark-10.png)
   
 5. **[Integrate a 3rd-party identity provider.(Advanced)] \(サード パーティの ID プロバイダーを統合する。(詳細))** を選択して、次の画面に移動します。
 
 6. **[Import Idp Metadata] \(Idp メタデータのインポート)** ページで、ページ上に Azure AD メタデータ ファイルをドラッグ アンド ドロップするか、ファイルのブラウザー オプションを使用して Azure AD メタデータ ファイルを見つけてアップロードします。 次に、 **[Require certificate signed by a certificate authority in Metadata (more secure)(証明機関の署名付き証明書がメタデータに必要 (高セキュリティ))]** を選択し、 **[Next (次へ)]** をクリックします。
 
-    ![Configure single sign-on](./media/cisco-spark-tutorial/tutorial-cisco-spark-11.png)
+    ![スクリーンショットは、[Import Idp Metadata] \(IdP メタデータのインポート) ページを示しています。](./media/cisco-spark-tutorial/tutorial-cisco-spark-11.png)
 
 7. **[Test SSO Connection (SSO 接続のテスト)]** を選択し、ブラウザーの新しいタブが開いたら、サインインして Azure AD で認証します。
 
@@ -171,13 +171,13 @@ Cisco Webex で Azure AD SSO を構成してテストするには、次の構成
 
 2. **[Users]\(ユーザー\)** と **[Manage Users ]\(ユーザーの管理\)** を順にクリックします。
    
-    ![Configure single sign-on](./media/cisco-spark-tutorial/tutorial-cisco-spark-12.png) 
+    ![スクリーンショットは、[Manage Users ]\(ユーザーの管理\) を設定できる [Users]\(ユーザー\) ページを示しています。](./media/cisco-spark-tutorial/tutorial-cisco-spark-12.png) 
 
 3. **[Manage User (ユーザーの管理)]** ウィンドウで、 **[Manually add or modify users (ユーザーを手動で追加または変更)]** を選択し、 **[Next (次へ)]** をクリックします。
 
 4. **[Names and Email address (名前と電子メール アドレス)]** を選択します。 次のようにテキスト ボックスに入力します。
 
-    ![Configure single sign-on](./media/cisco-spark-tutorial/tutorial-cisco-spark-13.png) 
+    ![スクリーンショットは、ユーザーを手動で追加または変更できる [Manage User]\(ユーザーの管理\) ダイアログ ボックスを示しています。](./media/cisco-spark-tutorial/tutorial-cisco-spark-13.png) 
 
     a. **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (この例では **B**)。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 50b5e21c8dc441187b3d78310db55b84aa1cd158
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7f8bc88cf34c3bbea168bd95d2d03bdc3373ad07
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551032"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817034"
 ---
 # <a name="tutorial-integrate-freedcamp-with-azure-active-directory"></a>チュートリアル:Freedcamp と Azure Active Directory の統合
 
@@ -108,11 +108,11 @@ Freedcamp で Azure AD SSO を構成してテストするには、次の構成�
 
 4. ページの右上隅の **[プロファイル]** をクリックし、 **[マイ アカウント]** に移動します。
 
-    ![Freedcamp の構成](./media/freedcamp-tutorial/config01.png)
+    ![選択されている [プロファイル] と [マイ アカウント] 示すスクリーンショット。](./media/freedcamp-tutorial/config01.png)
 
 5. メニュー バーの左の **[SSO]** をクリックし、 **[Your SSO connections]\(お使いの SSO 接続\)** ページで次の手順を実行します。
 
-    ![Freedcamp の構成](./media/freedcamp-tutorial/config02.png)
+    ![左側のメニュー バーで選択されている [S S O] と、値が入力され、[送信] ボタンが選択されている [Your S S O connections]\(お使いの S S O 接続\) ページを示すスクリーンショット。](./media/freedcamp-tutorial/config02.png)
 
     a. **[タイトル]** テキスト ボックスに、タイトルを入力します。
 
@@ -162,13 +162,13 @@ Azure AD ユーザーが Freedcamp にサインインできるようにするに
 
 1. 別の Web ブラウザー ウィンドウで、Freedcamp にセキュリティ管理者としてサインインします。
 
-2. ページの右上隅の **[プロファイル]** をクリックし、 **[Manage System]\(システムの管理\)** に移動します。
+2. ページの右上隅の **[Profile]\(プロファイル\)** をクリックし、 **[Manage System]\(システムの管理\)** に移動します。
 
     ![Freedcamp の構成](./media/freedcamp-tutorial/config03.png)
 
 3. [Manage System]\(システムの管理\) ページの右側で、次の手順を実行します。
 
-    ![Freedcamp の構成](./media/freedcamp-tutorial/config04.png)
+    ![選択されている [Add or invite Users]\(ユーザーの追加または招待\) ボタン、強調表示されている [Email]\(電子メール\) フィールド、選択されている [Add User]\(ユーザーの追加\) ボタン示すスクリーンショット。](./media/freedcamp-tutorial/config04.png)
 
     a. **[Add or invite Users]** \(ユーザーの追加または招待\) をクリックします。
 

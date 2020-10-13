@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 1d39b29ba340b34d6f0add8ff5da473408bd6360
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 204e89bdf8c660a7e96438f8cb3b8a18aeaec306
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259120"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742385"
 ---
 # <a name="tutorial-copy-data-from-azure-data-box-via-smb-preview"></a>チュートリアル:Azure Data Box から SMB 経由でデータをコピーする (プレビュー)
 
@@ -50,7 +50,7 @@ Windows Server ホスト コンピューターを使用している場合は、�
 
 1. 最初に、認証を行ってセッションを開始します。 **[接続とコピー]** に移動します。 **[資格情報の取得]** を選択して、ストレージ アカウントに関連付けられている共有用のアクセス資格情報を取得します。 
 
-    ![共有の資格情報を取得する 1](media/data-box-deploy-export-copy-data/get-share-credentials-1.png)
+    ![共有の資格情報を取得する](media/data-box-deploy-export-copy-data/get-share-credentials-1.png)
 
 2. [共有にアクセスしてデータをコピーする] ダイアログ ボックスで、共有に対応する **[ユーザー名]** と **[パスワード]** をコピーします。 **[OK]** を選択します。
     
@@ -75,7 +75,7 @@ Windows Server ホスト コンピューターを使用している場合は、�
 
 4. Windows キーを押しながら R キーを押します。 **[ファイル名指定して実行]** ウィンドウで、「`\\<device IP address>`」と入力します。 **[OK]** を選択して、エクスプローラーを開きます。
     
-    ![エクスプローラーで共有に接続する 2](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-1.png)
+    ![エクスプローラーで共有に接続する](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-1.png)
 
     共有がフォルダーとして表示されます。
     

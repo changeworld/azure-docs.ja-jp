@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 7079ffd5cb2fe643d93dea0f5c9384a7931dc8a6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1754929629bd05dc48419e521fa8e07f7c873217
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550662"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823398"
 ---
 # <a name="tutorial-integrate-ey-globalone-with-azure-active-directory"></a>チュートリアル:EY GlobalOne と Azure Active Directory との統合
 
@@ -80,7 +80,7 @@ EY GlobalOne に対する Azure AD SSO を構成してテストするには、�
 
 1. EY GlobalOne アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、 [ユーザー属性] ダイアログを開きます。
 
-    ![image](common/edit-attribute.png)
+    ![[編集] アイコンが選択されている [ユーザー属性] セクションを示すスクリーンショット。](common/edit-attribute.png)
 
 1. その他に、EY GlobalOne アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
@@ -93,7 +93,7 @@ EY GlobalOne に対する Azure AD SSO を構成してテストするには、�
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
-    ![image](common/new-save-attribute.png)
+    ![[新しい要求の追加] および [保存] アクションが強調表示されている [ユーザーの要求] セクションを示すスクリーンショット。](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 

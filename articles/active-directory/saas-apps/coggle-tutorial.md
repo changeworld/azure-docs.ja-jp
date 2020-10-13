@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.author: jeedes
-ms.openlocfilehash: ffa4f0ab40e413da78257bde81a00fd3910131b1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 08a9cbadb86f59cca1f361dc66ee03a300f91968
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555972"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759545"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coggle"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Coggle の統合
 
@@ -146,19 +146,19 @@ Coggle に対する Azure AD SSO を構成してテストするには、次の�
 
 2. **[Coggle]** アカウントをクリックし、 **[My Settings]\(個人用設定\)** を選択します。
 
-    ![Coggle の構成](./media/Coggle-tutorial/configure1.png)
+    ![スクリーンショットは、[My Settings]\(個人用設定\) が選択されている Coggle 企業サイトを示しています。](./media/Coggle-tutorial/configure1.png)
 
 3. 次の**ロゴ**をクリックし、 **[Authentication]\(認証\)** を選択します。
 
-    ![Coggle の構成](./media/Coggle-tutorial/configure2.png)
+    ![スクリーンショットは、クジラ アイコンと [Authentication]\(認証\) が選択されていることを示しています。](./media/Coggle-tutorial/configure2.png)
 
 4. **[Edit SAML Config]\(SAML 構成の編集\)** をクリックします。
 
-    ![Coggle の構成](./media/Coggle-tutorial/configure3.png)
+    ![スクリーンショットは、[Edit SAML Config]\(SAML 構成の編集\) オプションが表示された [SAML Integration]\(SAML 統合\) ページをに示しています。](./media/Coggle-tutorial/configure3.png)
 
 5. **[SAML Integration]\(SAML 統合\)** ダイアログ ページで、次の手順に従います。
 
-    ![Coggle の構成](./media/Coggle-tutorial/configure4.png)
+    ![スクリーンショットは、この手順の情報を入力できる [SAML Integration]\(SAML 統合\) ページを示しています。](./media/Coggle-tutorial/configure4.png)
 
     a. **[Entrypoint (ID Provider SSO URL)]\(エントリポイント (ID プロバイダー SSO URL)\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 6f2b7ec07583859e12711237c6a899d61335c969
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b05a85dd61cdf4edc366edc3fbf20e4097308d09
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545476"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713571"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amplitude"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Amplitude の統合
 
@@ -141,15 +141,15 @@ Amplitude に対する Azure AD SSO を構成してテストするには、次�
 
 1. 左側のナビゲーション バーから **[Plan Admin]\(プラン管理者\)** をクリックします。
 
-    ![Configure single sign-on](./media/amplitude-tutorial/configure1.png)
+    ![このスクリーンショットは、[Plan Admin]\(プラン管理者\) が選択された状態の Amplitude メニューを示しています。](./media/amplitude-tutorial/configure1.png)
 
 1. **[SSO Integration]\(SSO の統合\)** から **[Microsoft Azure Active Directory Metadata]\(Microsoft Azure Active Directory のメタデータ\)** を選択します。
 
-    ![Configure single sign-on](./media/amplitude-tutorial/configure2.png)
+    ![このスクリーンショットは、[Microsoft Azure Active Directory Metadata]\(Microsoft Azure Active Directory のメタデータ\) リンクがコールアウトされた状態の [Plan Admin]\(プラン管理者\) ペインを示しています。](./media/amplitude-tutorial/configure2.png)
 
 1. **[Setup Single Sign-On]\(シングル サインオンの設定\)** セクションで、次の手順を実行します。
 
-    ![Configure single sign-on](./media/amplitude-tutorial/configure3.png)
+    ![このスクリーンショットは、この手順で説明されている値が表示された状態の [Setup Single Sign-On]\(シングル サインオンの設定\) セクションを示しています。](./media/amplitude-tutorial/configure3.png)
 
     a. Azure Portal からダウンロードした**メタデータ XML** をメモ帳で開き、内容を **[Microsoft Azure Active Directory Metadata]\(Microsoft Azure Active Directory のメタデータ\)** テキストボックスに貼り付けます。
 

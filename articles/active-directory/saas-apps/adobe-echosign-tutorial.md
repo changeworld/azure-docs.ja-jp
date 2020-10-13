@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: b7d1ea6c1ee21970a598855471284130160e1d65
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 18a034c6af9659e113a821e072098aee873c2ee2
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88537930"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760804"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>チュートリアル: Azure Active Directory と Adobe Sign の統合
 
@@ -151,7 +151,7 @@ Adobe Sign で Azure AD シングル サインオンを構成するには、次�
 
 1. **[SAML 設定]** セクションで、次の手順に従います。
   
-   ![[SAML 設定] のスクリーンショット](./media/adobe-echosign-tutorial/ic789521.png "SAML 設定")
+   ![[SAML Mandatory] を含む SAML の設定が強調表示されているスクリーンショット。](./media/adobe-echosign-tutorial/ic789521.png "SAML 設定")
    
    ![[SAML 設定] のスクリーンショット](./media/adobe-echosign-tutorial/ic789522.png "SAML 設定")
 

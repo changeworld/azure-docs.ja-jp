@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 52b45bf7457a81b605df91e63a7c6ad539309dd8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5f7e85cc37d5a899681b5dd1466c216f1be39a61
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88538656"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708801"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-8x8"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と 8x8 の統合
 
@@ -147,11 +147,11 @@ Azure AD への 8x8 の統合を構成するには、ギャラリーからマネ
 
 1. ホーム ページで、 **[Identity Management]\(ID 管理\)** をクリックします。
 
-    ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure1.png)
+    ![[Identity Management]\(ID 管理\) タイルが強調表示されているスクリーンショット。](./media/8x8virtualoffice-tutorial/configure1.png)
 
 1. **[Single Sign On (SSO)]\(シングル サインオン (SSO)\)** をオンにし、 **[Microsoft Azure AD]** を選択します。
 
-    ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure2.png)
+    ![[Single Sign On (SSO)]\(シングル サインオン (SSO)\) と [Microsoft Azure AD] オプションが強調表示されているスクリーンショット。](./media/8x8virtualoffice-tutorial/configure2.png)
 
 1. 3 つの URL と署名証明書を、Azure AD の **[SAML でシングル サインオンをセットアップします]** ページから、8x8 Configuration Manager の **[Microsoft Azure AD SAML Settings]\(Microsoft Azure AD SAML 設定\)** セクションにコピーします。
 
@@ -173,23 +173,23 @@ Azure AD への 8x8 の統合を構成するには、ギャラリーからマネ
 
 1. アプリケーション パネルで **[Virtual Office Account Mgr (Virtual Office アカウント マネージャー)]** を選択します。
 
-    ![Configure On App Side](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_001.png)
+    ![[Virtual Office Account Mgr]\(Virtual Office アカウント マネージャー\) タイルが強調表示されているスクリーンショット。](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_001.png)
 
 1. 管理する **[Business (ビジネス)]** アカウントを選択し、 **[Sign In (サインイン)]** をクリックします。
 
-    ![Configure On App Side](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_002.png)
+    ![[Business]\(ビジネス\) オプションと [Sign In]\(サインイン\) ボタンが強調表示されているスクリーンショット。](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_002.png)
 
 1. メニュー リストの **[ACCOUNTS]\(アカウント\)** タブをクリックします。
 
-    ![Configure On App Side](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_003.png)
+    ![メニュー リストの [ACCOUNTS]\(アカウント\) タブが強調表示されているスクリーンショット。](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_003.png)
 
 1. アカウントの一覧で **[Single Sign On (シングル サインオン)]** をクリックします。
 
-    ![Configure On App Side](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_004.png)
+    ![[Single Sign On]\(シングル サインオン\) オプションが強調表示されているスクリーンショット。](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_004.png)
 
 1. [Authentication methods]\(認証方法\) の **[Single Sign On]\(シングル サインオン\)** を選択し、 **[SAML]** をクリックします。
 
-    ![Configure On App Side](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_005.png)
+    ![[Single Sign On]\(シングル サインオン\) の [SAML] が強調表示されているスクリーンショット。](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_005.png)
 
 1. **[SAML Single Sign-On]\(SAML シングル サインオン\)** セクションで、次の手順に従います。
 

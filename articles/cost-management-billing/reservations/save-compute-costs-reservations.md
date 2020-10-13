@@ -1,19 +1,19 @@
 ---
 title: Azure の予約とは
-description: 仮想マシン、SQL データベース、Azure Cosmos DB、その他のリソースのコストを節約するための Azure の予約と価格について説明します。
+description: 仮想マシン、SQL データベース、Azure Cosmos DB といったリソースの予約インスタンスに対するコストを節約するための Azure の予約と価格について説明します。
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: overview
-ms.date: 08/04/2020
+ms.date: 10/01/2020
 ms.author: banders
-ms.openlocfilehash: a5ab489e995506deb806fe5f0cee4a147ae42ac2
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d8c9f35ec7a8db3a777e48a629e4af1f15090a89
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682588"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652365"
 ---
 # <a name="what-are-azure-reservations"></a>Azure の予約とは
 
@@ -50,9 +50,9 @@ Azure Databricks を除くすべての予約は、1 時間単位で適用され�
 
 予約の購入は、Azure portal、API、PowerShell、CLI から行うことができます。 
 
-Azure portal にアクセスして購入 (https://ms.portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Docs) 
+[Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Docs) にアクセスして購入します。
 
-詳細については、「 [予約の購入](prepare-buy-reservation.md)」を参照してください。 
+詳細については、「 [予約の購入](prepare-buy-reservation.md)」を参照してください。
 
 ## <a name="how-is-a-reservation-billed"></a>予約はどのように課金されますか 
 
@@ -106,7 +106,7 @@ Azure の予約は、変化するニーズを満たすために柔軟性を提�
 
 - **SUSE Linux** - 予約の対象となるのは、ソフトウェア プランのコストです。 この割引は SUSE 測定にのみ適用され、仮想マシンの使用には適用されません。
 - **Red Hat プラン** - 予約の対象となるのは、ソフトウェア プランのコストです。 この割引は Red Hat 測定にのみ適用され、仮想マシンの使用には適用されません。
-- **Azure VMware Solution by CloudSimple** - 予約の対象となるのは、VMWare CloudSimple ノードです。 追加のソフトウェア料金は発生します。
+- **Azure VMware Solution by CloudSimple** - 予約の対象となるのは、VMware CloudSimple ノードです。 追加のソフトウェア料金は発生します。
 - **Azure Red Hat OpenShift** - 予約は Azure インフラストラクチャのコストではなく、OpenShift のコストに適用されます。
 
 Windows 仮想マシンと SQL Database については、ソフトウェアのコストに予約割引が適用されません。 ライセンス コストは、[Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)で充当することができます。

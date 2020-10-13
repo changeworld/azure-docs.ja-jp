@@ -11,12 +11,12 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: 6062e8a74af4bb0a19d02ccf9a4c50da0cc4a7c5
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: f00448f19cc0a2118477a9527005548fea25537e
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80999572"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651447"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>チュートリアル:Azure IoT Central からデータをエクスポートし、Power BI で分析情報を視覚化する
 
@@ -409,7 +409,7 @@ Power BI ではストリーミング データにフィルターを適用でき�
     * **Timestamp** フィールドを選択し、 **[動的なコンテンツ]** の一覧から **x-opt-enqueuedtime** を選択します。
     * **Dwell Time 1** フィールドを選択し、 **[Parse Telemetry]\(テレメトリの解析\)** の横にある **[See more]\(詳細\)** を選択します。 次に、**DwellTime1** を選択します。
     * **Dwell Time 2** フィールドを選択し、 **[Parse Telemetry]\(テレメトリの解析\)** の横にある **[See more]\(詳細\)** を選択します。 次に、**DwellTime2** を選択します。
-    * **[保存]** を選択して変更を保存します。 **[Dwell Time interface]\(待ち時間インターフェイス\)** アクションは、次のスクリーンショットのようになります。![待ち時間アクション](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png)
+    * **[保存]** を選択して変更を保存します。 **[Dwell Time interface]\(待ち時間インターフェイス\)** アクションは、次のスクリーンショットのようになります。![[Dwell Time interface]\(待ち時間インターフェイス\) アクションを表示する画面のスクリーンショット。](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png)
 1. **[People Count interface]\(客数インターフェイス\)** アクションを選択し、 **[アクションの追加]** を選択します。
 1. **[コネクタとアクションを検索する]** に「**Power BI**」と入力して、**Enter** キーを押します。
 1. **[Add rows to a dataset (preview)]\(データセットに行を追加する (プレビュー)\)** アクションを選択します。
@@ -484,7 +484,7 @@ Power BI ではストリーミング データにフィルターを適用でき�
 
 次のスクリーンショットのように、ダッシュボード上のタイルのサイズと配置を変更します。
 
-![Power BI ダッシュボード](./media/tutorial-in-store-analytics-visualize-insights/pbi-dashboard.png)
+![タイルのサイズと配置が変更された Power BI ダッシュボードのスクリーンショット。](./media/tutorial-in-store-analytics-visualize-insights/pbi-dashboard.png)
 
 他のグラフィックス リソースを追加して、ダッシュボードをさらにカスタマイズしてかまいません。
 

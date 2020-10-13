@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: ec0cc88122521a5f59da45107956b4f25156b02f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0c32dbdafe8d2681d341cb7f2ee6f0ce45123cab
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545252"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826383"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-relay"></a>チュートリアル: Azure Active Directory と Image Relay の統合
 
@@ -128,27 +128,27 @@ Image Relay で Azure AD シングル サインオンを構成するには、次
 
 2. 上部にあるツール バーで **[Users & Permissions]** ワークロードをクリックします。
 
-    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_06.png) 
+    ![ツール バーで [Users & Permissions]\(ユーザーとアクセス許可\) が選択されているスクリーンショット。](./media/imagerelay-tutorial/tutorial_imagerelay_06.png) 
 
 3. **[Create New Permission (新しいアクセス許可を作成)]** をクリックします。
 
-    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_08.png)
+    ![アクセス許可のタイトルを入力するためのテキスト ボックスと、アクセス許可の種類を選択するためのオプションを示すスクリーンショット。](./media/imagerelay-tutorial/tutorial_imagerelay_08.png)
 
 4. **[Single Sign On Settings]** ワークロードで、 **[This Group can only sign-in via Single Sign On]** チェックボックスをオンにして **[Save]** をクリックします。
 
-    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_09.png) 
+    ![オプションを選択できる [Single Sign On Settings]\(シングル サイン オンの設定\) を示すスクリーンショット。](./media/imagerelay-tutorial/tutorial_imagerelay_09.png) 
 
 5. **[Account Settings (アカウントの設定)]** に移動します。
 
-    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_10.png) 
+    ![[Account Settings]\(アカウントの設定\) ツール バー オプションを示すスクリーンショット。](./media/imagerelay-tutorial/tutorial_imagerelay_10.png) 
 
 6. **[Single Sign On Settings (シングル サインオンの設定)]** ワークロードに移動します。
 
-    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_11.png)
+    ![[Single Sign On Settings]\(シングル サインオンの設定\) メニュー オプションを示すスクリーンショット。](./media/imagerelay-tutorial/tutorial_imagerelay_11.png)
 
 7. **[SAML Settings (SAML の設定)]** ダイアログで、次の手順を実行します。
 
-    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_12.png)
+    ![情報を入力できる [SAML Settings]\(SAML の設定\) ダイアログ ボックスを示すスクリーンショット。](./media/imagerelay-tutorial/tutorial_imagerelay_12.png)
 
     a. **[Login URL]\(ログイン URL\)** ボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
 
@@ -160,19 +160,19 @@ Image Relay で Azure AD シングル サインオンを構成するには、次
 
     e. **[x.509 Certificate]** の下にある **[Update Certificate]** をクリックします。
 
-    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_17.png)
+    ![証明書を更新するためのオプションを示すスクリーンショット。](./media/imagerelay-tutorial/tutorial_imagerelay_17.png)
 
     f. ダウンロードした証明書をメモ帳で開き、その内容をコピーして、 **[x.509 Certificate]\(x.509 証明書\)** ボックスに貼り付けます。
 
-    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_18.png)
+    ![x dot 509 証明書を示すスクリーンショット。](./media/imagerelay-tutorial/tutorial_imagerelay_18.png)
 
     g. **[Just-In-Time User Provisioning]** で、 **[Enable Just-In-Time User Provisioning]** をオンにします。
 
-    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_19.png)
+    ![有効にするコントロールが選択されている [Just-In-Time User Provisioning]\(Just-In-Time ユーザー プロビジョニング\) セクションを示すスクリーンショット。](./media/imagerelay-tutorial/tutorial_imagerelay_19.png)
 
     h. シングル サインオンによるサインインのみを許可するアクセス許可グループを選択します ( **[SSO Basic]** など)。
 
-    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_20.png)
+    ![[S S O Basic] が選択されている [Just-In-Time User Provisioning]\(Just-In-Time ユーザー プロビジョニング\) セクションを示すスクリーンショット。](./media/imagerelay-tutorial/tutorial_imagerelay_20.png)
 
     i. **[保存]** をクリックします。
 
@@ -237,11 +237,11 @@ Image Relay で Azure AD シングル サインオンを構成するには、次
 
 2. **[Users & Permissions]** に移動して **[Create SSO User]** を選択します。
 
-    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_21.png) 
+    ![メニューで選択されている [Create S S O User]\(S S O ユーザーの作成\) を示すスクリーンショット。](./media/imagerelay-tutorial/tutorial_imagerelay_21.png) 
 
 3. プロビジョニングするユーザーの **[Email]\(電子メール\)** 、 **[First Name]\(名\)** 、 **[Last Name]\(姓\)** 、 **[Company]\(会社\)** を入力し、シングル サインオンのみでサインインできるアクセス許可グループ ([SSO Basic]\(SSO Basic\) など) を選択します。
 
-    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_22.png)
+    ![必要な情報を入力できる [Create a S S O User]\(S S O ユーザーの作成\) ページを示すスクリーンショット。](./media/imagerelay-tutorial/tutorial_imagerelay_22.png)
 
 4. **Create** をクリックしてください。
 

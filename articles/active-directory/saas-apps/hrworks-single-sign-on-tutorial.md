@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 0c43dfe3ad28417e13196c5ac1e75419906f6eae
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1a0fff21c85104498895c9de20de9961a77cffeb
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549157"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91820490"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hrworks-single-sign-on"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と HRworks Single Sign-On の統合
 
@@ -156,15 +156,15 @@ Azure AD ユーザーが HRworks Single Sign-On にサインインできるよ�
 
 1. メニュー バーの左側で、 **[Administrator]\(管理者\)**  >  **[Persons]\(人\)**  >  **[Persons]\(人\)**  >  **[New person]\(新しい人\)** の順にクリックします。
 
-     ![Configure single sign-on](./media/hrworks-single-sign-on-tutorial/configure02.png)
+     ![[Persons]\(人\) および [New person]\(新しい人\) が選択されている HRworks ページを示すスクリーンショット。](./media/hrworks-single-sign-on-tutorial/configure02.png)
 
 1. ポップアップで、 **[Next]\(次へ\)** をクリックします。
 
-    ![Configure single sign-on](./media/hrworks-single-sign-on-tutorial/configure03.png)
+    ![人に対して選択できる国の一覧を示すスクリーンショット。](./media/hrworks-single-sign-on-tutorial/configure03.png)
 
 1. **[Create new person with country for legal terms]\(法的条項のための国を指定した新しい人の作成\)** ポップアップで、 **[First name]\(名\)** 、 **[Last name]\(姓\)** などのそれぞれの詳細を入力し、 **[Create]\(作成\)** をクリックします。
 
-    ![Configure single sign-on](./media/hrworks-single-sign-on-tutorial/configure04.png)
+    ![人の名と姓を入力できるテキスト ボックスを示すスクリーンショット。](./media/hrworks-single-sign-on-tutorial/configure04.png)
 
 ## <a name="test-sso"></a>SSO のテスト
 

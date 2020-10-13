@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/28/2020
 ms.author: jeedes
-ms.openlocfilehash: ad68208f8993ce84c71c97d97de7e2b090f1e7da
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6ab6a355b986daeca41ffd18a51689cd9d880dcd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549420"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713810"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-askyourteam"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と AskYourTeam の統合
 
@@ -131,19 +131,19 @@ AskYourTeam に対する Azure AD SSO を構成してテストするには、次
 
 1. **[My Organisation]\(マイ組織\)** をクリックします。
 
-    ![AskYourTeam の構成](./media/askyourteam-tutorial/user1.png)
+    ![このスクリーンショットは、[My Organisation]\(マイ組織\) リンクを示しています。](./media/askyourteam-tutorial/user1.png)
 
 1. **[統合]** をクリックします。
 
-    ![AskYourTeam の構成](./media/askyourteam-tutorial/configure1.png)
+    ![このスクリーンショットは、[Integrations]\(統合\) リンクを示しています。](./media/askyourteam-tutorial/configure1.png)
 
 1. **[Edit Settings]\(設定の編集\)** をクリックします。
 
-    ![AskYourTeam の構成](./media/askyourteam-tutorial/configure2.png)
+    ![このスクリーンショットは、[Edit Settings]\(設定の編集\) ボタンを備えた [Single Sign-On]\(シングル サインオン\) メッセージを示しています。](./media/askyourteam-tutorial/configure2.png)
 
 1. **[Edit Single Sign-On Integration]\(シングル サインオンの統合の編集\)** ページで、次の手順を実行します。 
 
-    ![AskYourTeam の構成](./media/askyourteam-tutorial/configure3.png)
+    ![このスクリーンショットは、[Edit Single Sign-On Integration]\(シングル サインオンの統合の編集\) を示しています。ここで、この手順の値を入力できます。](./media/askyourteam-tutorial/configure3.png)
 
     a. **[SAML Single Sign-On Service URL]\(SAML シングル サインオンサービス URL\)** テキスト ボックスに、Azure portal からコピーした**ログインURL** の値を貼り付けます。
 
@@ -168,15 +168,15 @@ AskYourTeam に対する Azure AD SSO を構成してテストするには、次
 
 1. **[My Organisation]\(マイ組織\)** をクリックします。
 
-    ![AskYourTeam の構成](./media/askyourteam-tutorial/user1.png)
+    ![このスクリーンショットは、[My Organisation]\(マイ組織\) リンクを示しています。ここで、このタスクを開始します。](./media/askyourteam-tutorial/user1.png)
 
 1. **[Users]\(ユーザー\)** をクリックし、 **[New User]\(新しいユーザー\)** を選択します。
 
-    ![AskYourTeam の構成](./media/askyourteam-tutorial/user2.png)
+    ![このスクリーンショットは、[New User]\(新しいユーザー\) が選択された状態の [Users]\(ユーザー\) リンクを示しています。](./media/askyourteam-tutorial/user2.png)
 
 1. **[New user]\(新しいユーザー\)** セクションで、次の手順を実行します。
 
-    ![AskYourTeam の構成](./media/askyourteam-tutorial/user3.png)
+    ![このスクリーンショットは、[New user]\(新しいユーザー\) セクションを示しています。ここで、ユーザー情報を入力します。](./media/askyourteam-tutorial/user3.png)
 
     1. **[First name]\(名\)** テキスト ボックスに、ユーザーの名前を入力します。
 

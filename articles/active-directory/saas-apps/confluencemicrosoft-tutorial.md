@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.openlocfilehash: d629e5d572f1e8fff05104a4a5004b7aaa8c7a0d
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 12f6e66140b3654f1283cad45c97325e2bfb1a28
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892951"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775669"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Confluence SAML SSO by Microsoft の統合
 
@@ -159,11 +159,11 @@ Confluence SAML SSO by Microsoft で Azure AD の SSO を構成してテスト�
 
 1. 歯車をポイントし、 **[Add-ons]\(アドオン\)** をクリックします。
 
-    ![Configure single sign-on](./media/confluencemicrosoft-tutorial/addon1.png)
+    ![選択されている "歯車" アイコンと、ドロップダウン メニューで強調表示されている [Add-ons]\(アドオン\) を示すスクリーンショット。](./media/confluencemicrosoft-tutorial/addon1.png)
 
 1. [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=56503)からプラグインをダウンロードします。 **[Upload add-on]\(アドオンのアップロード\)** メニューを使用して、Microsoft が提供しているプラグインを手動でアップロードします。 プラグインのダウンロードは、[Microsoft サービス規約](https://www.microsoft.com/servicesagreement/)の対象です。
 
-    ![Configure single sign-on](./media/confluencemicrosoft-tutorial/addon12.png)
+    ![[Upload add-on]\(アドオンのアップロード\) アクションが選択された [アドオンの管理] ページを示すスクリーンショット。](./media/confluencemicrosoft-tutorial/addon12.png)
 
 1. Confluence のリバース プロキシ シナリオまたはロード バランサー シナリオを実行するには、次の手順を実行します。
 
@@ -174,19 +174,19 @@ Confluence SAML SSO by Microsoft で Azure AD の SSO を構成してテスト�
 
     `scheme="https" proxyName="<subdomain.domain.com>" proxyPort="<proxy_port>" secure="true"`
 
-    ![Configure single sign-on](./media/confluencemicrosoft-tutorial/reverseproxy1.png)
+    !["connector" ポートに属性が追加された "server.xml" ファイルを示すスクリーンショット。](./media/confluencemicrosoft-tutorial/reverseproxy1.png)
 
     b. プロキシ/ロード バランサーに従って、 **[システム設定]** の **[ベース URL]** を変更します。
 
-    ![Configure single sign-on](./media/confluencemicrosoft-tutorial/reverseproxy2.png)
+    ![[ベース URL] が強調表示された [管理] - [設定] ページを示すスクリーンショット。](./media/confluencemicrosoft-tutorial/reverseproxy2.png)
 
 1. プラグインがインストールされると、 **[アドオンの管理]** セクションの **[User Installed]\(ユーザー インストール\)** アドオン セクションに表示されます。 **[Configure]\(構成\)** をクリックして、新しいプラグインを構成します。
 
-    ![Configure single sign-on](./media/confluencemicrosoft-tutorial/addon15.png)
+    ![[Configure]\(構成\) ボタンが強調表示された [User Installed]\(ユーザー インストール\) セクションを示すスクリーンショット。](./media/confluencemicrosoft-tutorial/addon15.png)
 
 1. 構成ページで次の手順を実行します。
 
-    ![Configure single sign-on](./media/confluencemicrosoft-tutorial/addon54.png)
+    ![シングル サインオンの構成ページを示すスクリーンショット。](./media/confluencemicrosoft-tutorial/addon54.png)
 
     > [!TIP]
     > メタデータの解決でエラーが発生しないように、アプリに対してマップされている証明書が 1 つしかないようにします。 証明書が複数ある場合は、メタデータの解決の際に管理者に対してエラーが表示されます。
@@ -237,7 +237,7 @@ Confluence SAML SSO by Microsoft で Azure AD の SSO を構成してテスト�
 
 1. [Users]\(ユーザー\) セクションで、 **[Add users]\(ユーザーの追加\)** タブをクリックします。 **[Add a User]\(ユーザーの追加\)** ダイアログ ページで、次の手順に従います。
 
-    ![従業員の追加](./media/confluencemicrosoft-tutorial/user2.png)
+    ![[Add Users]\(ユーザーの追加\) タブが選択され、[Add a User]\(ユーザーの追加\) に情報が入力された [Confluence administration]\(Confluence の管理\) を示すスクリーンショット。](./media/confluencemicrosoft-tutorial/user2.png)
 
     a. **[Username]\(ユーザー名\)** ボックスに、ユーザー (B.Simon など) の電子メールを入力します。
 

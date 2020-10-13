@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: a69b4a068e62c6376660a79b3a7c8ab5402b5704
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b91f24f9c1a2cedd4292d98fc66630c6b66d37b0
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536259"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775169"
 ---
 # <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>チュートリアル:Displayr と Azure Active Directory との統合
 
@@ -88,15 +88,15 @@ Displayr で Azure AD SSO を構成してテストするには、次の構成要
 
 1. Displayr アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
 
-    ![image](common/edit-attribute.png)
+    ![[編集] アイコンが強調表示されている [ユーザー属性] セクションを示すスクリーンショット。](common/edit-attribute.png)
 
 1. その他に、Displayr アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[グループ要求 (プレビュー)]** ダイアログの **[ユーザー属性とクレーム]** セクションで、次の手順を実行します。
 
     a. **[Groups returned in claim]\(要求で返されるグループ\)** の横にある**ペン**をクリックします。
 
-    ![image](./media/displayr-tutorial/config04.png)
+    ![[ユーザー属性とクレーム] セクションを示すスクリーンショット。[Groups returned in claim]\(クレームで返されるグループ\) の横に [ペン] アイコンが表示されています。](./media/displayr-tutorial/config04.png)
 
-    ![image](./media/displayr-tutorial/config05.png)
+    ![各設定が選択されている [グループ要求 (プレビュー)] ウィンドウを示すスクリーンショット。](./media/displayr-tutorial/config05.png)
 
     b. ラジオ ボタンのリストから **[すべてのグループ]** を選択します。
 
@@ -126,11 +126,11 @@ Displayr で Azure AD SSO を構成してテストするには、次の構成要
 
 4. **[設定]** をクリックし、 **[アカウント]** に移動します。
 
-    ![構成](./media/displayr-tutorial/config01.png)
+    ![[設定] アイコンと [アカウント] が選択されていることを示すスクリーンショット。](./media/displayr-tutorial/config01.png)
 
 5. 上部のメニューから **[設定]** に切り替え、ページを下へスクロールして **[Configure Single Sign On (SAML)]\(シングル サインオンの構成 (SAML)\)** をクリックします。
 
-    ![構成](./media/displayr-tutorial/config02.png)
+    ![[設定] タブが選択され、[Configure Single Sign On (S A M L)]\(シングル サインオンの構成 (S A M L)\) アクションが選択されていることを示すスクリーンショット。](./media/displayr-tutorial/config02.png)
 
 6. **[Single sign-on (SAML)]\(シングル サインオン (SAML)\)** ページで、次の手順に従います。
 
@@ -190,11 +190,11 @@ Azure AD ユーザーが Displayr にサインインできるようにするに�
 
 2. **[設定]** をクリックし、 **[アカウント]** に移動します。
 
-    ![Displayr の構成](./media/displayr-tutorial/config01.png)
+    ![[アカウント] が選択されている [設定] (歯車) アイコンを示すスクリーンショット。](./media/displayr-tutorial/config01.png)
 
 3. 上部のメニューから **[設定]** に切り替えて、 **[ユーザー]** セクションまでページを下にスクロールして、 **[新しいユーザー]** をクリックします。
 
-    ![Displayr の構成](./media/displayr-tutorial/config07.png)
+    ![[ユーザー] が強調表示され、[新しいユーザー] ボタンが選択されている [設定] タブのスクリーンショット。](./media/displayr-tutorial/config07.png)
 
 4. **[新しいユーザー]** ページで、次の手順を実行します。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 20a6702a37a4432504d85c787218eb10a10931b9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 17e2d04a39a2ef5a935ea6e56ef16958419eddb1
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555906"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775625"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coralogix"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Coralogix の統合
 
@@ -95,17 +95,18 @@ Coralogix で Azure AD SSO を構成してテストするには、次の構成�
 
  1. Coralogix アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** ボタンを選択して **[ユーザー属性]** ダイアログ ボックスを開きます。
 
-    ![image](common/edit-attribute.png)
+    ![[編集] ボタンが強調表示されている [ユーザー属性]ダイアログを示すスクリーンショット。](common/edit-attribute.png)
 
 1. **[ユーザー属性]** ダイアログ ボックスの **[ユーザー要求]** セクションで、 **[編集]** アイコンを使用して要求を編集します。 前の画像で示されているように、 **[新しい要求の追加]** を使用して SAML トークン属性を構成することで、要求を追加することもできます。 その後、次の手順を実行します。
     
     a. **[編集]** アイコンを選択して、 **[ユーザー要求の管理]** ダイアログ ボックスを開きます。
 
-    ![画像](./media/coralogix-tutorial/tutorial_usermail.png) ![画像](./media/coralogix-tutorial/tutorial_usermailedit.png)
+    ![[編集] ボタンが強調表示されている [ユーザー属性とクレーム] ダイアログを示すスクリーンショット。](./media/coralogix-tutorial/tutorial_usermail.png)
+    ![image](./media/coralogix-tutorial/tutorial_usermailedit.png)
 
-    b. **[名前識別子の形式の選択]** の一覧で、 **[電子メール アドレス]** を選択します。
+    b. **[名前識別子の形式の選択]** の一覧で、**[電子メール アドレス]** を選択します。
 
-    c. **[ソース属性]** の一覧から、 **[user.mail]** を選択します。
+    c. **[ソース属性]** の一覧から、**[user.mail]** を選択します。
 
     d. **[保存]** を選択します。
 

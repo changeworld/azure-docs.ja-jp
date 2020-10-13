@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/17/2020
 ms.author: jeedes
-ms.openlocfilehash: 7d0b0a6c935182737a7f207b7c7831fefcd491ea
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ccdfddd3ea76eddea2ab672fe07a092c9b1f1b62
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555312"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817057"
 ---
 # <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>チュートリアル:Azure Active Directory と ExpenseIn の統合
 
@@ -135,11 +135,11 @@ ExpenseIn で Azure AD SSO を構成してテストするには、次の構成�
 
 1. ページ上部の **[管理者]** をクリックし、 **[シングル サインオン]** に移動して **[プロバイダーの追加]** をクリックします。
 
-     ![ExpenseIn の構成](./media/expenseIn-tutorial/config01.png)
+     ![[管理者] タブ、[シングル サインオン - プロバイダー] ページ、選択されている [プロバイダーの追加] を示すスクリーンショット。](./media/expenseIn-tutorial/config01.png)
 
 1. **[New Identity Provider] (新しい ID プロバイダー)** ポップアップで、次の手順に従います。
 
-    ![ExpenseIn の構成](./media/expenseIn-tutorial/config02.png)
+    ![値が入力された [Edit Identity Provider]\(ID プロバイダーの編集\) ポップアップを示すスクリーンショット。](./media/expenseIn-tutorial/config02.png)
 
     a. **[プロバイダー名]** ボックスに「Azure」などの名前を入力します。
 
@@ -163,7 +163,7 @@ Azure AD ユーザーが ExpenseIn にサインインできるようにするに
 
 2. ページ上部の **[管理者]** をクリックし、 **[ユーザー]** に移動して **[新しいユーザー]** をクリックします。
 
-     ![ExpenseIn の構成](./media/expenseIn-tutorial/config03.png)
+     ![[管理者] タブと、[新しいユーザー] が選択されている [ユーザーの管理] ページを示すスクリーンショット。](./media/expenseIn-tutorial/config03.png)
 
 3. **[詳細]** ポップアップで、次の手順に従います。
 

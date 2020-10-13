@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2020
 ms.author: jeedes
-ms.openlocfilehash: f9f56967c03556def3aa221f84ccd290c6090fd1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ff6ba71f4606b3caf51007a9d75f3ca36bc99cda
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551151"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826476"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ezofficeinventory"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と EZOfficeInventory の統合
 
@@ -151,7 +151,7 @@ EZOfficeInventory で Azure AD SSO を構成してテストするには、次の
 
 1. ページの右上隅の **[Profile]\(プロファイル\)** をクリックし、 **[Settings]\(設定\)**  >  **[Add Ons]\(アドオン\)** に移動します。
 
-    ![EZOfficeInventory の構成](./media/ezofficeinventory-tutorial/configure01.png)
+    ![[Add Ons]\(アドオン\) アクションが選択されている [Settings]\(設定\) ページを示すスクリーンショット。](./media/ezofficeinventory-tutorial/configure01.png)
 
 1. 下へスクロールして **[SAML Integration]\(SAML 統合\)** セクションに移動し、次の手順に従います。
 

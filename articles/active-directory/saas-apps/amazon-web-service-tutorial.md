@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/14/2020
 ms.author: jeedes
-ms.openlocfilehash: 7377c6ea92ea53ca14525938e7522448afac541c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d2a3eda97fec03e767425b7f7a126073b2f13ca5
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548356"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713643"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) とアマゾン ウェブ サービス (AWS) の統合
 
@@ -304,7 +304,7 @@ Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギ�
 
 18. このユーザー用の新しいポリシーを作成します。
 
-    ![[ユーザーを追加] のスクリーンショット](./media/amazon-web-service-tutorial/adduser2.png)
+    ![このスクリーンショットは、[Add user]\(ユーザーを追加\) ページを示しています。ここで、ユーザーのポリシーを作成できます。](./media/amazon-web-service-tutorial/adduser2.png)
 
     a. **[既存のポリシーを直接アタッチ]** を選択します。
 
@@ -322,7 +322,7 @@ Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギ�
 
 20. ユーザーのユーザー資格情報をダウンロードします。
 
-    ![[ユーザーを追加] のスクリーンショット](./media/amazon-web-service-tutorial/adduser4.png)
+    ![このスクリーンショットは、ユーザー資格情報を取得するための [Download c s v]\(c s v のダウンロード\) ボタンを備えた [Add user]\(ユーザーを追加\) ページを示しています。](./media/amazon-web-service-tutorial/adduser4.png)
 
     a. ユーザーの **[Access key ID]** と **[Secret access key]** をコピーします。
 
@@ -340,7 +340,7 @@ Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギ�
 
     ![[管理者資格情報] ダイアログ ボックスのスクリーンショット](./media/amazon-web-service-tutorial/provisioning1.png)
 
-    a. AWS ユーザーのアクセス キーを **[clientsecret]** フィールドに入力します。
+    a. AWS ユーザーのアクセス キーを **[clientsecret]/(clientsecret/)** フィールドに入力します。
 
     b. AWS ユーザー シークレットを **[シークレット トークン]** フィールドに入力します。
 

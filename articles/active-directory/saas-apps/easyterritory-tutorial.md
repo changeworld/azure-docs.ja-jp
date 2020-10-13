@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 8152244d2e05d6e05843a2b84151d6b6a8df7f26
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6c209d59e3e0552db5d7e7dd64af2ce5d233881a
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555605"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826284"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-easyterritory"></a>チュートリアル: Azure Active Directory と EasyTerritory の統合
 
@@ -99,7 +99,7 @@ EasyTerritory で Azure AD のシングル サインオンを構成するには�
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[EasyTerritory のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+    ![[識別子]、[応答 U R L]、および [保存] ボタンが強調表示されている [基本的な S A M L 構成] を示すスクリーンショット。](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、`https://apps.easyterritory.com/<tenant id>/dev/` の形式で URL を入力します。
 

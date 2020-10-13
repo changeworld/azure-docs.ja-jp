@@ -3,14 +3,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: include
-ms.date: 09/19/2019
+ms.date: 09/30/2019
 ms.author: alkohli
-ms.openlocfilehash: a23b0b2c71207bf84a4938d54a78a62efb6cbcbd
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ca7b83d24f2416b224963559361faf5a7775cd0d
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "71172646"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631540"
 ---
 Microsoft がディスクを受け取ってスキャンすると、注文の状態は "**受取済み**" に更新されます。 その後、デバイスの損傷または改ざんの印がないか物理的に検証されます。
 
@@ -20,7 +20,7 @@ Microsoft がディスクを受け取ってスキャンすると、注文の状�
 
 コピー元からデータを削除する前に、データが Azure にアップロードされていることを確認します。 データは次の場所にあります。
 
-- お使いの Azure Storage アカウント。 データを Data Box にコピーする場合は、そのデータがタイプに応じて Azure Storage アカウントの次のいずれかのパスにアップロードされます。
+- お使いの Azure Storage アカウント。 データを Data Box にコピーする場合は、そのデータが Azure Storage アカウントの次のいずれかのパスにアップロードされます。
 
   - ブロック BLOB およびページ BLOB の場合: `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
   - Azure Files の場合: `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
@@ -37,7 +37,7 @@ Microsoft がディスクを受け取ってスキャンすると、注文の状�
 
         ![リソース グループに接続されているマネージド ディスク](media/data-box-verify-upload-return/managed-disks-resource-group.png)
 
-    - VHDX または動的/差分 VHD をコピーした場合、VHDX/VHD はページ BLOB としてステージング ストレージ アカウントにアップロードされますが、VHD からマネージド ディスクへの変換は失敗します。 ステージング環境の **[ストレージ アカウント] > [BLOB]** に移動し、適切なコンテナー (Standard SSD、Standard HDD、または Premium SSD) を選択します。 VHD は、ステージング ストレージ アカウントにページ BLOB としてアップロードされます。
+    - VHDX または (ダイナミックまたは差分) VHD をコピーした場合、VHDX または VHD はページ BLOB としてステージング ストレージ アカウントにアップロードされますが、VHD からマネージド ディスクへの変換は失敗します。 ステージング環境の **[ストレージ アカウント] > [BLOB]** に移動し、適切なコンテナー (Standard SSD、Standard HDD、または Premium SSD) を選択します。 VHD は、ステージング ストレージ アカウントにページ BLOB としてアップロードされ、料金が発生します。
 
 
 ## <a name="erasure-of-data-from-data-box"></a>Data Box からデータを消去する

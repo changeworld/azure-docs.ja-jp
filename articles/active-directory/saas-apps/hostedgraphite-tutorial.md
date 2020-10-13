@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: b7aaaa589b92814694bee2838332f6823b3351de
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 137a077ac73b5dd5ca9c68c6be2b30beb8e92ce0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521877"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826246"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hosted-graphite"></a>チュートリアル: Azure Active Directory と Hosted Graphite の統合
 
@@ -100,7 +100,7 @@ Hosted Graphite で Azure AD シングル サインオンを構成するには�
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[Hosted Graphite のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+    ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、`https://www.hostedgraphite.com/metadata/<user id>` の形式で URL を入力します。
 
@@ -108,7 +108,7 @@ Hosted Graphite で Azure AD シングル サインオンを構成するには�
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[Hosted Graphite のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
+    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** ボックスに、`https://www.hostedgraphite.com/login/saml/<user id>/` という形式で URL を入力します。
 
@@ -135,23 +135,23 @@ Hosted Graphite で Azure AD シングル サインオンを構成するには�
 
 2. サイド バーの **SAML のセットアップ ページ**に移動します ( **[Access (アクセス)]、[SAML Setup (SAML のセットアップ)]** の順に移動)。
 
-    ![アプリ側でのシングル サインオンの構成](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_000.png)
+    ![[SAML Setup]\(SAML のセットアップ\) が選択された [Access]\(アクセス\) メニューのスクリーンショット。](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_000.png)
 
 3. これらの URl が、Azure portal の **[基本的な SAML 構成]** セクションで行った構成と一致することを確認します。
 
-    ![アプリ側でのシングル サインオンの構成](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_001.png)
+    ![[基本的な SAML 構成] を示すスクリーンショット。](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_001.png)
 
 4. **[Entity or Issuer ID]\(エンティティまたは発行者 ID\)** および **[SSO Login URL]\(SSO ログイン URL\)** ボックスに、Azure portal からコピーした **Azure AD 識別子**と**ログイン URL** の値を貼り付けます。
 
-    ![アプリ側でのシングル サインオンの構成](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_002.png)
+    ![ID プロバイダーに関する入力画面のスクリーンショット。](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_002.png)
 
 5. **[Default User Role]\(既定のユーザー ロール\)** として **[Read-only]\(読み取り専用\)** を選択します。
 
-    ![アプリ側でのシングル サインオンの構成](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_004.png)
+    ![[Default User Role]\(既定のユーザー ロール\) として [Read-only]\(読み取り専用\) が表示された画面のスクリーンショット。](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_004.png)
 
 6. Azure Portal からダウンロードした Base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[X.509 証明書]** ボックスに貼り付けます。
 
-    ![アプリ側でのシングル サインオンの構成](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_005.png)
+    ![[X.509 証明書] を示すスクリーンショット。](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_005.png)
 
 7. **[保存]** ボタンをクリックします。
 

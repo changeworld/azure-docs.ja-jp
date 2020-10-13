@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
-ms.openlocfilehash: af2630b977c1ce34712a582175674277799f105b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a48772c4325717a64bd36873675ff19c6a332de0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550610"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817157"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-highgear"></a>チュートリアル:Azure Active Directory と HighGear の統合
 
@@ -99,7 +99,7 @@ Azure AD への HighGear の統合を構成するには、ギャラリーから�
 
 4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    ![HighGear のドメインと URL のシングル サインオン情報](common/idp-intiated.png)
+    ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
 
     a. **[識別子]** テキスト ボックスに、お客様の HighGear システムの [Single Sign-On Settings]\(シングル サインオンの設定\) ページにある **[Service Provider Entity ID]\(サービス プロバイダー エンティティ ID\)** フィールドの値を貼り付けます。
 
@@ -116,7 +116,7 @@ Azure AD への HighGear の統合を構成するには、ギャラリーから�
 
     c. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-     ![HighGear のドメインと URL のシングル サインオン情報](common/metadata-upload-additional-signon.png)
+     ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/metadata-upload-additional-signon.png)
 
      **[サインオン URL]** テキスト ボックスに、お客様の HighGear システムの [Single Sign-On Settings]\(シングル サインオンの設定\) ページにある **[Service Provider Entity ID]\(サービス プロバイダー エンティティ ID\)** フィールドの値を貼り付けます (このエンティティ ID は、SP によって開始されたサインオンに使用される HighGear システムのベース URL でもあります)。
 

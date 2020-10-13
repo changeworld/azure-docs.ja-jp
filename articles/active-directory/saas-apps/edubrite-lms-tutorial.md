@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.openlocfilehash: b206d5e8721ee87b699765c0fc2a7df6177fc8cf
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d753aef3c7cd855b1ab137e85a233a1bca27c25a
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544419"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826790"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edubrite-lms"></a>チュートリアル:Azure Active Directory と EduBrite LMS の統合
 
@@ -101,7 +101,7 @@ EduBrite LMS で Azure AD シングル サインオンを構成するには、�
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[EduBrite LMS ドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+    ![[識別子]、[応答 U R L]、および [保存] ボタンが強調表示されている [基本的な S A M L 構成] を示すスクリーンショット。](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、`https://<customer-specific>.edubrite.com` の形式で URL を入力します。
 

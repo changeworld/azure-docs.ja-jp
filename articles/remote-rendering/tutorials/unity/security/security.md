@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 403a5b68e3320700e275c744210f480be2c88e84
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 07374debf8d660d8f1c32788db3d218da611d539
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021325"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650478"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>チュートリアル:Azure Remote Rendering とモデル ストレージのセキュリティ保護
 
@@ -163,7 +163,7 @@ var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsy
     ```
 
     このコードでは、**RemoteRenderingCoordinator** コンポーネントに、さらに 3 つの文字列変数が追加されます。
-    ![リンクされたモデル](./media/storage-account-linked-model.png)
+    ![RemoteRenderingCoordinator コンポーネントのストレージ アカウント名、BLOB コンテナー名、モデル パスが強調表示されているスクリーンショット。](./media/storage-account-linked-model.png)
 
 1. **RemoteRenderingCoordinator** コンポーネントに実際の値を追加します。 [モデル変換のクイックスタート](../../../quickstarts/convert-model.md)に従った場合、実際の値は次のようになります。
 
@@ -392,12 +392,13 @@ Unity エディターでは、AAD 認証がアクティブである場合、ア�
     * **[Azure Tenant ID]\(Azure テナント ID\)** は、AAD アプリの登録にある *[ディレクトリ (テナント) ID]* です (下図参照)。
     * **[Azure Remote Rendering Account ID]\(Azure Remote Rendering アカウント ID\)** は、**RemoteRenderingCoordinator** に使用しているものと同じ**アカウント ID** です。
 
-    ![AAD 認証コンポーネント](./media/app-overview-data.png)
+    ![アプリケーション (クライアント) ID とディレクトリ (テナント) ID が強調表示されているスクリーンショット。](./media/app-overview-data.png)
 
 1. Unity エディターの [Play]\(再生\) を押し、セッションの実行に同意します。
     **AADAuthentication** コンポーネントはビュー コントローラーを備えているため、セッション承認のモーダル パネルの後にプロンプトを表示するように自動的にフックアップされます。
 1. **AppMenu** の右側のパネルに表示される手順に従います。
-    次のように表示されます。![AAD 認証コンポーネント](./media/device-flow-instructions.png) 指定されたコードをセカンダリ デバイス (または同じデバイス上のブラウザー) に入力した後、自分の資格情報を使用してログインすると、要求元のアプリケーション (この場合は Unity エディター) にアクセス トークンが返されます。
+    次のように表示されます。![AppMenu の右側に表示されるインストラクション パネルを示す図。](./media/device-flow-instructions.png)
+    指定されたコードをセカンダリ デバイス (または同じデバイス上のブラウザー) に入力した後、自分の資格情報を使用してログインすると、要求元のアプリケーション (この場合は Unity エディター) にアクセス トークンが返されます。
 1. その後は、アプリケーションのすべての処理が通常どおりに続行されます。 想定したとおりに一連のステージが進行しない場合は、何かエラーが発生していないか Unity コンソールで確認してください。
 
 ## <a name="build-to-device"></a>デバイスにビルドする

@@ -1,7 +1,7 @@
 ---
-title: チュートリアル:iOS 用と macOS 用の Microsoft Authentication Library (MSAL) | Azure
+title: チュートリアル:認証に Microsoft ID プラットフォームを使用する iOS または macOS アプリを作成する | Azure
 titleSuffix: Microsoft identity platform
-description: iOS と macOS (Swift) アプリで Microsoft ID プラットフォームを使用してアクセス トークンを必要とする API を呼び出す方法について説明します
+description: このチュートリアルでは、ユーザーのサインインに Microsoft ID プラットフォームを使用し、そのユーザーに代わって Microsoft Graph API を呼び出すためのアクセス トークンを取得する iOS アプリまたは macOS アプリを作成します。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,20 +13,33 @@ ms.date: 09/18/2020
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 238f8426ae51bec64dfdb5edaa3107ca1f430914
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 70194c7adc55a00c5cb65928daac184499eb124d
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256910"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611114"
 ---
-# <a name="sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>iOS または macOS アプリからユーザーのサインインを行い、Microsoft Graph を呼び出す
+# <a name="tutorial-sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>チュートリアル:iOS または macOS アプリからユーザーのサインインを行い、Microsoft Graph を呼び出す
 
 このチュートリアルでは、iOS または macOS アプリを Microsoft ID プラットフォームと統合する方法について説明します。 アプリによって、ユーザーがサインインされ、Microsoft Graph API を呼び出すためのアクセス トークンが取得されて、Microsoft Graph API への要求が行われます。
 
-このガイドを完了すると、アプリケーションは、個人用の Microsoft アカウント (outlook.com、live.com など) と、Azure Active Directory を使用する会社や組織の職場または学校アカウントのサインインを受け入れるようになります。
+このガイドを完了すると、アプリケーションは、個人用の Microsoft アカウント (outlook.com、live.com など) と、Azure Active Directory を使用する会社や組織の職場または学校アカウントのサインインを受け入れるようになります。 このチュートリアルは、iOS アプリと macOS アプリの両方に適用されます。 この 2 つのプラットフォームの間では、一部の手順が異なります。
 
-## <a name="how-this-tutorial-works"></a>このチュートリアルのしくみ
+このチュートリアルの内容:
+
+> [!div class="checklist"]
+> * *Xcode* で iOS または macOS アプリ プロジェクトを作成する
+> * Azure portal でアプリを登録する
+> * ユーザーのサインインとサインアウトをサポートするコードを追加する
+> * Microsoft Graph API を呼び出すコードを追加する
+> * アプリケーションをテストする
+
+## <a name="prerequisites"></a>前提条件
+
+- [Xcode 11.x 以上](https://developer.apple.com/xcode/)
+
+## <a name="how-tutorial-app-works"></a>チュートリアル アプリの動作
 
 ![このチュートリアルで生成されたサンプル アプリの動作の紹介](../../../includes/media/active-directory-develop-guidedsetup-ios-introduction/iosintro.svg)
 
@@ -42,16 +55,10 @@ ms.locfileid: "91256910"
 
 このサンプルでは、Microsoft Authentication Library (MSAL) を使用して認証が実装されます。 MSAL により、トークンが自動的に更新され、デバイス上の他のアプリとの間のシングル サインオン (SSO) が提供されて、アカウントが管理されます。
 
-このチュートリアルは、iOS アプリと macOS アプリの両方に適用されます。 この 2 つのプラットフォームの間では、一部の手順が異なります。
+このチュートリアルで作成するアプリの完成版をダウンロードしたい場合、どちらのバージョンも GitHub から入手できます。
 
-## <a name="prerequisites"></a>前提条件
-
-- このガイドのアプリをビルドするには、XCode バージョン 11.x 以降が必要です。 XCode は、[Mac App Store](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "XCode のダウンロード URL") からダウンロードできます。
-- Microsoft Authentication Library ([MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc))。 依存関係マネージャーを使用するか、ライブラリを手動で追加できます。 以下の手順でその方法を示します。
-
-このチュートリアルでは新しいプロジェクトを作成します。 代わりに完了したチュートリアルをダウンロードする場合は、コードをダウンロードしてください。
-- [iOS のサンプル コード](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
-- [macOS のサンプル コード](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
+- [iOS コード サンプル](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/) (GitHub)
+- [macOS コード サンプル](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/) (GitHub)
 
 ## <a name="create-a-new-project"></a>新しいプロジェクトを作成する
 
@@ -159,7 +166,7 @@ var currentAccount: MSALAccount?
 
 この手順では、サインイン後にユーザーがアプリにリダイレクトできるように、`CFBundleURLSchemes` を登録します。 なお、`LSApplicationQueriesSchemes` では、アプリでの Microsoft Authenticator の使用も許可されます。
 
-Xcode で、`Info.plist` をソース コード ファイルとして開き、`<dict>` セクション内に以下を追加します。 `[BUNDLE_ID]` を、Azure portal で使用した値に置き換えます。コードをダウンロードした場合は `com.microsoft.identitysample.MSALiOS` です。 独自のプロジェクトを作成している場合は、Xcode でそのプロジェクトを選択し、 **[全般]** タブを開きます。 **[ID]** セクションにバンドル ID が表示されます。
+Xcode で、`Info.plist` をソース コード ファイルとして開き、`<dict>` セクション内に以下を追加します。 `[BUNDLE_ID]` は、Azure portal で使用した値に置き換えてください。 コードをダウンロードした場合、バンドル識別子は `com.microsoft.identitysample.MSALiOS` です。 独自のプロジェクトを作成している場合は、Xcode でそのプロジェクトを選択し、 **[全般]** タブを開きます。 **[ID]** セクションにバンドル ID が表示されます。
 
 ```xml
 <key>CFBundleURLTypes</key>
@@ -509,7 +516,7 @@ MSAL では、トークンを取得するための主要なメソッドとして
 
 #### <a name="get-a-token-interactively"></a>対話形式でのユーザー トークンの取得
 
-下記のコードでは、`MSALInteractiveTokenParameters` オブジェクトを作成して `acquireToken` を呼び出すことによって、トークンを初めて取得します。 次に、以下を行うコードを追加します。
+以下のコード スニペットでは、`MSALInteractiveTokenParameters` オブジェクトを作成して `acquireToken` を呼び出すことによって、トークンを初めて取得します。 次に、以下を行うコードを追加します。
 
 1. スコープを指定して `MSALInteractiveTokenParameters` を作成する。
 2. 作成されたパラメーターを使用して `acquireToken()` を呼び出す。
@@ -847,4 +854,7 @@ MSAL では、既定でアプリのトークンが iOS または macOS のキー
 
 ## <a name="next-steps"></a>次の手順
 
-シフトの間にデバイスを共有する Firstline Worker をサポートする必要がある場合は、「[iOS デバイスの共有デバイス モード](msal-ios-shared-devices.md)」を参照してください。
+保護された Web API を呼び出すモバイル アプリを作成するには、複数のパートで構成される次のシナリオ シリーズを参照してください。
+
+> [!div class="nextstepaction"]
+> [シナリオ:Web API を呼び出すモバイル アプリケーション](scenario-mobile-overview.md)

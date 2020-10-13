@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: aababc6ffd84540b99ba68f6bbb449d2aa78ed4b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1eb408025a45f09a6bdb854f4379a560842ef2d7
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551746"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826267"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>チュートリアル: Azure Active Directory と Envi MMIS の統合
 
@@ -99,7 +99,7 @@ Envi MMIS で Azure AD シングル サインオンを構成するには、次�
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[Envi MMIS のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+    ![[識別子]、[応答 U R L]、および [保存] ボタンが強調表示されている [基本的な S A M L 構成] を示すスクリーンショット。](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、`https://www.<CUSTOMER DOMAIN>.com/Account` の形式で URL を入力します。
 
@@ -134,23 +134,23 @@ Envi MMIS で Azure AD シングル サインオンを構成するには、次�
 
 2. **[マイ ドメイン]** タブをクリックします。
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/envimmis-tutorial/configure1.png)
+    ![[My Domain]\(マイ ドメイン\) が選択されている [User]\(ユーザー\) メニューを示すスクリーンショット。](./media/envimmis-tutorial/configure1.png)
 
 3. **[編集]** をクリックします。
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/envimmis-tutorial/configure2.png)
+    ![選択された [Edit]\(編集\) ボタンを示すスクリーンショット。](./media/envimmis-tutorial/configure2.png)
 
 4. **[Use remote authentication]\(リモート認証を使用する\)** チェック ボックスをオンにして、 **[Authentication Type]\(認証の種類\)** ドロップダウンから **[HTTP Redirect]\(HTTP リダイレクト\)** を選びます。
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/envimmis-tutorial/configure3.png)
+    ![[Use remote authentication]\(リモート認証を使用する\) がオンになり、[H T T P Redirect]\(H T T P リダイレクト\) が選択されている [Details]\(詳細\) タブを示すスクリーンショット。](./media/envimmis-tutorial/configure3.png)
 
 5. **[Resources]\(リソース\)** タブを選び、 **[Upload Metadata]\(メタデータのアップロード\)** をクリックします。
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/envimmis-tutorial/configure4.png)
+    ![[Upload Metadata]\(メタデータのアップロード\) アクションが選択された [Resources]\(リソース\) タブを示すスクリーンショット。](./media/envimmis-tutorial/configure4.png)
 
 6. **[Upload Metadata]\(メタデータのアップロード\)** ポップアップで、次の手順を実行します。
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/envimmis-tutorial/configure5.png)
+    ![[File]\(ファイル\) オプションが選択され、ファイルの選択アイコンと [OK] ボタンが強調表示されている [Upload Metadata]\(メタデータのアップロード\) ポップアップを示すスクリーンショット。](./media/envimmis-tutorial/configure5.png)
 
     a. **[Upload From]\(アップロード元\)** ドロップダウンから **[File]\(ファイル\)** オプションを選びます。
 
@@ -223,11 +223,11 @@ Azure AD ユーザーが Envi MMIS にサインインできるようにするに
 
 2. **[User List]\(ユーザー一覧\)** タブをクリックします。
 
-    ![従業員の追加](./media/envimmis-tutorial/user1.png)
+    ![[User List]\(ユーザー一覧\) が選択されている [User]\(ユーザー\) メニューを示すスクリーンショット。](./media/envimmis-tutorial/user1.png)
 
 3. **[Add User]\(ユーザーの追加\)** ボタンをクリックします。
 
-    ![従業員の追加](./media/envimmis-tutorial/user2.png)
+    ![[Add User]\(ユーザーの追加\) ボタンが選択されている [User]\(ユーザー\) セクションを示すスクリーンショット。](./media/envimmis-tutorial/user2.png)
 
 4. **[ユーザーの追加]** セクションで、次の手順を実行します。
 

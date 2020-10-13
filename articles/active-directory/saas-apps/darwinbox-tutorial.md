@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 6773805fac9a23ca918a1bf6e4889d3e1a3bb336
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a2c1ba8feb933be7c4970f061dd5acdc1ef68a16
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550114"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775441"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-darwinbox"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Darwinbox の統合
 
@@ -143,19 +143,19 @@ Darwinbox に対する Azure AD SSO を構成してテストするには、次�
 
 1. Darwinbox モバイル アプリケーションを開きます。 **[Enter Organization URL]\(組織の URL の入力\)** をクリックし、テキストボックスに組織の URL を入力して、矢印ボタンをクリックします。
 
-    ![Darwinbox モバイル アプリ](media/darwinbox-tutorial/DarwinboxMobile01.jpg)
+    ![[Enter Organization U R L]\(組織の U R L の入力\) が選択されている "Darwinbox" モバイル アプリを示すスクリーンショット。サンプルの組織と "矢印" ボタンが強調表示されています。](media/darwinbox-tutorial/DarwinboxMobile01.jpg)
 
 1. 複数のドメインがある場合は、対象のドメインをクリックします。
 
-    ![Darwinbox モバイル アプリ](media/darwinbox-tutorial/DarwinboxMobile02.jpg)
+    ![サンプル ドメインが選択されている [Choose your domain]\(ドメインの選択\) 画面を示すスクリーンショット。](media/darwinbox-tutorial/DarwinboxMobile02.jpg)
 
 1. Darwinbox アプリケーションに Azure AD のメール アドレスを入力し、 **[Next]\(次へ\)** をクリックします。
 
-    ![Darwinbox モバイル アプリ](media/darwinbox-tutorial/DarwinboxMobile03.jpg)
+    ![[Next]\(次へ\) ボタンが強調表示されている [Sign in]\(サインイン\) 画面を示すスクリーンショット。](media/darwinbox-tutorial/DarwinboxMobile03.jpg)
 
 1. Darwinbox アプリケーションに Azure AD のパスワードを入力し、 **[Sign in]\(サインイン\)** をクリックします。
 
-    ![Darwinbox モバイル アプリ](media/darwinbox-tutorial/DarwinboxMobile04.jpg)
+    ![[Next]\(次へ\) ボタンが強調表示されている [Enter password]\(パスワードの入力\) 画面を示すスクリーンショット。](media/darwinbox-tutorial/DarwinboxMobile04.jpg)
 
 1. サインインに成功すると、アプリケーションのホーム ページが表示されます。
 

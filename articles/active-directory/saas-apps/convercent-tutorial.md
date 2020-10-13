@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: f765b950074958f801bef2fdc8e555acf9a47986
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2dfc8bbb570c57ef22c2bde210dc7a64b48fb06d
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522100"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775764"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-convercent"></a>チュートリアル: Azure Active Directory と Convercent の統合
 
@@ -98,7 +98,7 @@ Convercent で Azure AD シングル サインオンを構成するには、次�
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[Convercent のドメインと URL] のシングル サインオン情報](common/both-identifier.png)
+    ![[識別子 (エンティティ ID)] フィールドと [保存] ボタンが強調表示された [基本的な S A M L 構成] セクションを示すスクリーンショット。](common/both-identifier.png)
 
     **[識別子]** ボックスに、`https://<instancename>.convercent.com/` の形式で URL を入力します。
 

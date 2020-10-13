@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 4520332fbc5040aff682ce52e819fa4a940999cc
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 14e0998b75e0e5bd3ae996f5f5010ecc50180f14
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90108215"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741671"
 ---
 # <a name="migrate-web-service-from-bing-maps"></a>Bing 地図から Web サービスを移行する
 
@@ -249,7 +249,7 @@ Azure Maps のルート指定 API には、Bing 地図では利用できない�
 
 Azure Maps には、道路に座標をスナップする方法がいくつかあります。
 
--   道路ネットワークに座標および論理ルートの座標をスナップするには、ルートの道順 API を使用します。
+-   道路ネットワークに沿った論理ルートに座標をスナップするには、ルートの道順 API を使用します。
 -   ベクター タイルに含まれる最も近い道路に個々の座標をスナップするには、Azure Maps Web SDK を使用します。
 -   座標を個別にスナップするには、Azure Maps のベクター タイルを直接使用します。
 

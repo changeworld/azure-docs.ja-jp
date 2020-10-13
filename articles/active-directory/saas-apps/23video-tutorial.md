@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.openlocfilehash: d4271c2d298744f339ac577a0db585dd8c309b16
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1dc2aba6241ef498cd6802c7490e46552e7737ab
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88538826"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708817"
 ---
 # <a name="tutorial-integrate-23-video-with-azure-active-directory"></a>チュートリアル:23 Video と Azure Active Directory の統合
 
@@ -138,11 +138,11 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
 
 3. **[Users (ユーザー)]** セクションで **[Configure (構成)]** をクリックします。
 
-    ![ユーザーの割り当て](./media/23video-tutorial/tutorial-23video-10.png)
+    ![[ユーザー] セクションが強調表示されているスクリーンショット。](./media/23video-tutorial/tutorial-23video-10.png)
 
 4. **[Add a new user (新しいユーザーの追加)]** をクリックします。
 
-    ![ユーザーの割り当て](./media/23video-tutorial/tutorial-23video-11.png)
+    ![[Add a new user]\(新しいユーザーの追加\) ボタンが強調表示されているスクリーンショット。](./media/23video-tutorial/tutorial-23video-11.png)
 
 5. **[Invite someone to join this site (別のユーザーをこのサイトに招待)]** セクションで、次の手順を実行します。
 

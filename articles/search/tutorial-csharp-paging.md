@@ -7,35 +7,45 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/20/2020
+ms.date: 09/30/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: edae1edc076c99c025ff70c9b2493bc15e44102b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8dfc69bf251a811363426a3aeca7379d18458b47
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280745"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667233"
 ---
 # <a name="tutorial-add-paging-to-search-results-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用して検索結果にページングを追加する
 
-2 つの異なるページング システムを実装する方法について説明します。1 つ目はページ番号に基づき、2 つ目は無限スクロールに基づきます。 両方のページング システムが広く使用されており、どちらを選択するかは結果を処理するユーザー エクスペリエンスによります。 このチュートリアルでは、ページング システムを「[C# チュートリアル: 最初のアプリを作成する - Azure Cognitive Search](tutorial-csharp-create-first-app.md)」チュートリアルで作成したプロジェクトで構築します。
+2 つの異なるページング システムを実装する方法について説明します。1 つ目はページ番号に基づき、2 つ目は無限スクロールに基づきます。 両方のページング システムが広く使用されており、どちらを選択するかは結果を処理するユーザー エクスペリエンスによります。 
 
-このチュートリアルでは、以下の内容を学習します。
+このチュートリアルで学習する内容は次のとおりです。
 > [!div class="checklist"]
 > * 番号付きのページングでアプリを拡張する
 > * 無限スクロールでアプリを拡張する
 
+## <a name="overview"></a>概要
+
+このチュートリアルでは、[最初の検索アプリの作成](tutorial-csharp-create-first-app.md)に関するチュートリアルで説明した、以前に作成したプロジェクトにページング システムをオーバーレイします。
+
+このチュートリアルで開発するコードの完成版は、次のプロジェクトにあります。
+
+* [2a-add-paging (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/2a-add-paging)
+
+* [2b-add-infinite-scroll (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/2b-add-infinite-scroll)
+
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、以下を実行する必要があります。
+* [1-basic-search-page (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/1-basic-search-page) プロジェクト。 このプロジェクトは、前のチュートリアルで作成した独自のバージョンでも、GitHub からコピーしたものでもかまいません。
 
-「[C# チュートリアル: 初めてのアプリを作成する - Azure Cognitive Search](tutorial-csharp-create-first-app.md)」プロジェクトを稼働させます。 このプロジェクトは、独自のバージョンのものでも、GitHub の「[Create first app (初めてのアプリを作成する)](https://github.com/Azure-Samples/azure-search-dotnet-samples)」サンプルを開きます。
+このチュートリアルは、[Azure.Search.Documents (バージョン 11)](https://www.nuget.org/packages/Azure.Search.Documents/) パッケージを使用するように更新されました。 .NET SDK の以前のバージョンについては、[Microsoft.Azure.Search (バージョン 10) のコード サンプル](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10)を参照してください。
 
 ## <a name="extend-your-app-with-numbered-paging"></a>番号付きのページングでアプリを拡張する
 
-番号付きページングは、主要なインターネット検索エンジンやその他のほとんどの検索 Web サイトで選択されているページング システムです。 通常、番号付きページングには、実際のページ番号の範囲だけでなく、[次へ] と [前へ] オプションが含まれています。 [最初のページ] と [最後のページ] オプションも使用できる場合があります。 これらのオプションにより、ユーザーはページベースの結果内を移動できるようになります。
+番号付きページングは、主要な商用 Web 検索エンジンやその他の多くの検索 Web サイトで選択されているページング システムです。 通常、番号付きページングには、実際のページ番号の範囲だけでなく、[次へ] と [前へ] オプションが含まれています。 [最初のページ] と [最後のページ] オプションも使用できる場合があります。 これらのオプションにより、ユーザーはページベースの結果内を移動できるようになります。
 
-これから追加するシステムには、"最初"、"前へ"、"次へ"、および "最後" オプションと、ページ番号が含まれます。ページ番号は 1 から始まるのではなく、ユーザーの現在のページの前後のページ番号が表示されます (たとえば、ユーザーが 10 ページを見ている場合、表示されるページ番号は 8、9、10、11、および 12 のようになります)。
+このチュートリアルでは、"最初"、"前へ"、"次へ"、および "最後" オプションと、ページ番号が含まれるシステムを追加します。ページ番号は 1 から始まるのではなく、ユーザーの現在のページの前後のページ番号が表示されます (たとえば、ユーザーが 10 ページを見ている場合、表示されるページ番号は 8、9、10、11、および 12 のようになります)。
 
 システムは柔軟なので、表示されるページ番号の数は、グローバル変数で設定できます。
 
@@ -47,9 +57,9 @@ ms.locfileid: "91280745"
 
 1. SearchData.cs モデル ファイルを開きます。
 
-2. まず、いくつかのグローバル変数を追加します。 MVC では、グローバル変数は独自の静的クラスで宣言されます。 **ResultsPerPage** は、ページあたりの結果数を設定します。 **MaxPageRange** は、ビューに表示されるページ番号の数を決定します。 **PageRangeDelta** は、左端または右端のページ番号が選択された場合に、ページ範囲を左または右に何ページ分シフトするかを決定します。 通常、後者の数は、**MaxPageRange** の約半分です。 次のコードを名前空間に追加します。
+1. 改ページ位置の自動修正をサポートするグローバル変数を追加します。 MVC では、グローバル変数は独自の静的クラスで宣言されます。 **ResultsPerPage** は、ページあたりの結果数を設定します。 **MaxPageRange** は、ビューに表示されるページ番号の数を決定します。 **PageRangeDelta** は、左端または右端のページ番号が選択されたときに左または右に何ページ分シフトするかを決定します。 通常、後者の数は、**MaxPageRange** の約半分です。 次のコードを名前空間に追加します。
 
-    ```cs
+    ```csharp
     public static class GlobalVariables
     {
         public static int ResultsPerPage
@@ -80,30 +90,30 @@ ms.locfileid: "91280745"
     >[!Tip]
     >ノート PC など、画面が小さいデバイスでこのプロジェクトを実行している場合は、**ResultsPerPage** を 2 に変更することを検討してください。
 
-3. **SearchData** クラスの **searchText** プロパティの後などに、ページング プロパティを追加します。
+1. **SearchData** クラスの **searchText** プロパティの後に、ページング プロパティを追加します。
 
-    ```cs
-        // The current page being displayed.
-        public int currentPage { get; set; }
+    ```csharp
+    // The current page being displayed.
+    public int currentPage { get; set; }
 
-        // The total number of pages of results.
-        public int pageCount { get; set; }
+    // The total number of pages of results.
+    public int pageCount { get; set; }
 
-        // The left-most page number to display.
-        public int leftMostPage { get; set; }
+    // The left-most page number to display.
+    public int leftMostPage { get; set; }
 
-        // The number of page numbers to display - which can be less than MaxPageRange towards the end of the results.
-        public int pageRange { get; set; }
+    // The number of page numbers to display - which can be less than MaxPageRange towards the end of the results.
+    public int pageRange { get; set; }
 
-        // Used when page numbers, or next or prev buttons, have been selected.
-        public string paging { get; set; }
+    // Used when page numbers, or next or prev buttons, have been selected.
+    public string paging { get; set; }
     ```
 
 ### <a name="add-a-table-of-paging-options-to-the-view"></a>ビューにページング オプションのテーブルを追加する
 
 1. index.cshtml ファイルを開き、終了 &lt;/body&gt; タグの直前に次のコードを追加します。 この新しいコードは、ページング オプション ("最初"、"前へ"、1、2、3、4、5、"次へ"、"最後") のテーブルを表します。
 
-    ```cs
+    ```html
     @if (Model != null && Model.pageCount > 1)
     {
     // If there is more than one page of results, show the paging buttons.
@@ -126,7 +136,7 @@ ms.locfileid: "91280745"
                 @if (Model.currentPage > 0)
                 {
                     <p class="pageButton">
-                        @Html.ActionLink("<", "Page", "Home", new { paging = "prev" }, null)
+                        @Html.ActionLink("<", "PageAsync", "Home", new { paging = "prev" }, null)
                     </p>
                 }
                 else
@@ -146,7 +156,7 @@ ms.locfileid: "91280745"
                     else
                     {
                         <p class="pageButton">
-                            @Html.ActionLink((pn + 1).ToString(), "Page", "Home", new { paging = @pn }, null)
+                            @Html.ActionLink((pn + 1).ToString(), "PageAsync", "Home", new { paging = @pn }, null)
                         </p>
                     }
                 </td>
@@ -156,7 +166,7 @@ ms.locfileid: "91280745"
                 @if (Model.currentPage < Model.pageCount - 1)
                 {
                     <p class="pageButton">
-                        @Html.ActionLink(">", "Page", "Home", new { paging = "next" }, null)
+                        @Html.ActionLink(">", "PageAsync", "Home", new { paging = "next" }, null)
                     </p>
                 }
                 else
@@ -169,7 +179,7 @@ ms.locfileid: "91280745"
                 @if (Model.currentPage < Model.pageCount - 1)
                 {
                     <p class="pageButton">
-                        @Html.ActionLink(">|", "Page", "Home", new { paging = Model.pageCount - 1 }, null)
+                        @Html.ActionLink(">|", "PageAsync", "Home", new { paging = Model.pageCount - 1 }, null)
                     </p>
                 }
                 else
@@ -186,229 +196,235 @@ ms.locfileid: "91280745"
 
     "最初のページ" と "最後のページ" オプションは、"first" や "last" などの文字列を送信するのではなく、正しいページ番号を送信します。
 
-2. hotels.css ファイル内の HTML スタイルの一覧に、いくつかのページング クラスを追加します。 **pageSelected** クラスの目的は、ページ番号の一覧の中でユーザーが現在表示しているページを特定することです (番号を太字表示にすることで)。
+1. hotels.css ファイル内の HTML スタイルの一覧に、ページング クラスを追加します。 **pageSelected** クラスの目的は、ページ番号の一覧内での現在のページを (ページ番号に太字書式を適用することで) 識別することにあります。
 
     ```html
-        .pageButton {
-            border: none;
-            color: darkblue;
-            font-weight: normal;
-            width: 50px;
-        }
+    .pageButton {
+        border: none;
+        color: darkblue;
+        font-weight: normal;
+        width: 50px;
+    }
 
-        .pageSelected {
-            border: none;
-            color: black;
-            font-weight: bold;
-            width: 50px;
-        }
+    .pageSelected {
+        border: none;
+        color: black;
+        font-weight: bold;
+        width: 50px;
+    }
 
-        .pageButtonDisabled {
-            border: none;
-            color: lightgray;
-            font-weight: bold;
-            width: 50px;
-        }
+    .pageButtonDisabled {
+        border: none;
+        color: lightgray;
+        font-weight: bold;
+        width: 50px;
+    }
     ```
 
 ### <a name="add-a-page-action-to-the-controller"></a>コントローラーに Page アクションを追加する
 
-1. HomeController.cs ファイルを開き、**Page** アクションを追加します。 このアクションは、選択された任意のページ オプションに応答します。
+1. HomeController.cs ファイルを開き、**PageAsync** アクションを追加します。 このアクションは、選択された任意のページ オプションに応答します。
 
-    ```cs
-        public async Task<ActionResult> Page(SearchData model)
+    ```csharp
+    public async Task<ActionResult> PageAsync(SearchData model)
+    {
+        try
         {
-            try
+            int page;
+
+            switch (model.paging)
             {
-                int page;
+                case "prev":
+                    page = (int)TempData["page"] - 1;
+                    break;
 
-                switch (model.paging)
-                {
-                    case "prev":
-                        page = (int)TempData["page"] - 1;
-                        break;
+                case "next":
+                    page = (int)TempData["page"] + 1;
+                    break;
 
-                    case "next":
-                        page = (int)TempData["page"] + 1;
-                        break;
-
-                    default:
-                        page = int.Parse(model.paging);
-                        break;
-                }
-
-                // Recover the leftMostPage.
-                int leftMostPage = (int)TempData["leftMostPage"];
-
-                // Recover the search text and search for the data for the new page.
-                model.searchText = TempData["searchfor"].ToString();
-
-                await RunQueryAsync(model, page, leftMostPage);
-
-                // Ensure Temp data is stored for next call, as TempData only stored for one call.
-                TempData["page"] = (object)page;
-                TempData["searchfor"] = model.searchText;
-                TempData["leftMostPage"] = model.leftMostPage;
+                default:
+                    page = int.Parse(model.paging);
+                    break;
             }
 
-            catch
-            {
-                return View("Error", new ErrorViewModel { RequestId = "2" });
-            }
-            return View("Index", model);
+            // Recover the leftMostPage.
+            int leftMostPage = (int)TempData["leftMostPage"];
+
+            // Recover the search text and search for the data for the new page.
+            model.searchText = TempData["searchfor"].ToString();
+
+            await RunQueryAsync(model, page, leftMostPage);
+
+            // Ensure Temp data is stored for next call, as TempData only stores for one call.
+            TempData["page"] = (object)page;
+            TempData["searchfor"] = model.searchText;
+            TempData["leftMostPage"] = model.leftMostPage;
         }
+
+        catch
+        {
+            return View("Error", new ErrorViewModel { RequestId = "2" });
+        }
+        return View("Index", model);
+    }
     ```
 
     **RunQueryAsync** メソッドが、3 つ目のパラメーターのために構文エラーを表示するようになります。これについては、すぐ後で対処します。
 
     > [!Note]
-    > **TempData** 呼び出しは一時ストレージに値 (**オブジェクト**) を格納しますが、このストレージは 1 回の呼び出しの間 "_のみ_" 保持されます。 一時データに何かを格納した場合、次回のコントローラー アクションへの呼び出しでは利用できますが、その後の呼び出しによって確実に消えてしまいます。 有効期間がこのように短いため、**Page** への呼び出しのたびに、検索テキストとページングのプロパティを一時ストレージに格納し直します。
+    > **TempData** の呼び出しにより、一時ストレージに値 (**オブジェクト**) が格納されますが、このストレージは 1 回の呼び出しの間 "_のみ_" 保持されます。 一時データに何かを格納した場合、次回のコントローラー アクションへの呼び出しでは利用できますが、そのデータはその後の呼び出しによって確実に失われます。 有効期間がこのように短いため、**PageAsync** の呼び出しのたびに、検索テキストとページングのプロパティを一時ストレージに格納し直します。
 
-2. **Index(model)** アクションは、一時変数を格納し、**RunQueryAsync** 呼び出しの左端のページ パラメーターを追加するように更新する必要があります。
+1. 一時変数を格納し、**RunQueryAsync** 呼び出しの左端のページ パラメーターを追加するように、**Index(model)** アクションを更新します。
 
-    ```cs
-        public async Task<ActionResult> Index(SearchData model)
+    ```csharp
+    public async Task<ActionResult> Index(SearchData model)
+    {
+        try
         {
-            try
+            // Ensure the search string is valid.
+            if (model.searchText == null)
             {
-                // Ensure the search string is valid.
-                if (model.searchText == null)
-                {
-                    model.searchText = "";
-                }
-
-                // Make the search call for the first page.
-                await RunQueryAsync(model, 0, 0);
-
-                // Ensure temporary data is stored for the next call.
-                TempData["page"] = 0;
-                TempData["leftMostPage"] = 0;
-                TempData["searchfor"] = model.searchText;
+                model.searchText = "";
             }
 
-            catch
-            {
-                return View("Error", new ErrorViewModel { RequestId = "1" });
-            }
-            return View(model);
+            // Make the search call for the first page.
+            await RunQueryAsync(model, 0, 0);
+
+            // Ensure temporary data is stored for the next call.
+            TempData["page"] = 0;
+            TempData["leftMostPage"] = 0;
+            TempData["searchfor"] = model.searchText;
         }
+
+        catch
+        {
+            return View("Error", new ErrorViewModel { RequestId = "1" });
+        }
+        return View(model);
+    }
     ```
 
-3. **RunQueryAsync** メソッドは、大幅に更新する必要があります。 **SearchParameters** クラスの **Skip**、**Top**、および **IncludeTotalResultCount** フィールドを使用して、**Skip** 設定で始まる 1 ページ分だけの結果を要求します。 また、ビューのためにページング変数を計算する必要もあります。 メソッド全体を次のコードに置き換えます。
+1. 前のレッスンで紹介した **RunQueryAsync** メソッドは、構文エラーを解決するために変更する必要があります。 [**SearchOptions**](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchoptions) クラスの **Skip**、**Size**、および **IncludeTotalCount** フィールドを使用して、**Skip** 設定で始まる 1 ページ分だけの結果を要求します。 また、ビューのためにページング変数を計算する必要もあります。 メソッド全体を次のコードに置き換えます。
 
-    ```cs
-        private async Task<ActionResult> RunQueryAsync(SearchData model, int page, int leftMostPage)
+    ```csharp
+    private async Task<ActionResult> RunQueryAsync(SearchData model, int page, int leftMostPage)
+    {
+        InitSearch();
+
+        var options = new SearchOptions
         {
-            InitSearch();
+            // Skip past results that have already been returned.
+            Skip = page * GlobalVariables.ResultsPerPage,
 
-            var parameters = new SearchParameters
-            {
-                   // Enter Hotel property names into this list so only these values will be returned.
-                   // If Select is empty, all values will be returned, which can be inefficient.
-                   Select = new[] { "HotelName", "Description" },
-                   SearchMode = SearchMode.All,
+            // Take only the next page worth of results.
+            Size = GlobalVariables.ResultsPerPage,
 
-                   // Skip past results that have already been returned.
-                   Skip = page * GlobalVariables.ResultsPerPage,
+            // Include the total number of results.
+            IncludeTotalCount = true
+        };
 
-                   // Take only the next page worth of results.
-                   Top = GlobalVariables.ResultsPerPage,
+        // Add fields to include in the search results.
+        options.Select.Add("HotelName");
+        options.Select.Add("Description");
 
-                   // Include the total number of results.
-                   IncludeTotalResultCount = true,
-               };
+        // For efficiency, the search call should be asynchronous, so use SearchAsync rather than Search.
+        model.resultList = await _searchClient.SearchAsync<Hotel>(model.searchText, options).ConfigureAwait(false);
 
-            // For efficiency, the search call should be asynchronous, so use SearchAsync rather than Search.
-            model.resultList = await _indexClient.Documents.SearchAsync<Hotel>(model.searchText, parameters);
+        // This variable communicates the total number of pages to the view.
+        model.pageCount = ((int)model.resultList.TotalCount + GlobalVariables.ResultsPerPage - 1) / GlobalVariables.ResultsPerPage;
 
-            // This variable communicates the total number of pages to the view.
-            model.pageCount = ( (int)model.resultList.Count + GlobalVariables.ResultsPerPage - 1) / GlobalVariables.ResultsPerPage;
+        // This variable communicates the page number being displayed to the view.
+        model.currentPage = page;
 
-            // This variable communicates the page number being displayed to the view.
-            model.currentPage = page;
-
-            // Calculate the range of page numbers to display.
-            if (page == 0)
-            {
-                leftMostPage = 0;
-            }
-            else
-               if (page <= leftMostPage)
-            {
-                // Trigger a switch to a lower page range.
-                leftMostPage = Math.Max(page - GlobalVariables.PageRangeDelta, 0);
-            }
-            else
-            if (page >= leftMostPage + GlobalVariables.MaxPageRange - 1)
-            {
-                // Trigger a switch to a higher page range.
-                leftMostPage = Math.Min(page - GlobalVariables.PageRangeDelta, model.pageCount - GlobalVariables.MaxPageRange);
-            }
-            model.leftMostPage = leftMostPage;
-
-            // Calculate the number of page numbers to display.
-            model.pageRange = Math.Min(model.pageCount - leftMostPage, GlobalVariables.MaxPageRange);
-
-            return View("Index", model);
+        // Calculate the range of page numbers to display.
+        if (page == 0)
+        {
+            leftMostPage = 0;
         }
+        else if (page <= leftMostPage)
+        {
+            // Trigger a switch to a lower page range.
+            leftMostPage = Math.Max(page - GlobalVariables.PageRangeDelta, 0);
+        }
+        else if (page >= leftMostPage + GlobalVariables.MaxPageRange - 1)
+        {
+            // Trigger a switch to a higher page range.
+            leftMostPage = Math.Min(page - GlobalVariables.PageRangeDelta, model.pageCount - GlobalVariables.MaxPageRange);
+        }
+        model.leftMostPage = leftMostPage;
+
+        // Calculate the number of page numbers to display.
+        model.pageRange = Math.Min(model.pageCount - leftMostPage, GlobalVariables.MaxPageRange);
+
+        return View("Index", model);
+    }
     ```
 
-4. 最後に、ビューを少し変更する必要があります。 変数 **resultsList.Results.Count** には、結果の合計数ではなく、1 つのページで返される結果の数 (この例では 3) が含まれるようになります。 **IncludeTotalResultCount** を true に設定したため、変数 **resultsList.Count** には、結果の合計数が含まれるようになっています。 そのため、ビューで結果の数が表示される場所を探し、次のコードに変更します。
+1. 最後に、ビューに小さな変更を加えます。 変数 **resultList.Results.TotalCount** には、結果の合計数ではなく、1 つのページで返される結果の数 (この例では 3) が含まれるようになります。 **IncludeTotalCount** を true に設定したため、変数 **resultList.TotalCount** には、結果の合計数が含まれるようになっています。 そのため、ビューで結果の数が表示される場所を探し、次のコードに変更します。
 
-    ```cs
-            // Show the result count.
-            <p class="sampleText">
-                @Html.DisplayFor(m => m.resultList.Count) Results
-            </p>
+    ```csharp
+    // Show the result count.
+    <p class="sampleText">
+        @Model.resultList.TotalCount Results
+    </p>
+
+    var results = Model.resultList.GetResults().ToList();
+
+    @for (var i = 0; i < results.Count; i++)
+    {
+        // Display the hotel name and description.
+        @Html.TextAreaFor(m => results[i].Document.HotelName, new { @class = "box1" })
+        @Html.TextArea($"desc{1}", results[i].Document.Description, new { @class = "box2" })
+    }
     ```
 
     > [!Note]
-    > **IncludeTotalResultCount** を true に設定すると、この合計は Azure Cognitive Search によって計算される必要があるため、通常はたいしたことはありませんが、パフォーマンスに影響します。 複雑なデータセットでは、返される値が "_近似値_" であるという警告が表示されます。 ここで使用しているホテル データでは、正確な値になります。
+    > **IncludeTotalCount** を true に設定すると、この合計を Azure Cognitive Search で計算する必要があるため、パフォーマンスにわずかな影響があります。 複雑なデータセットでは、返される値が "_近似値_" であるという警告が表示されます。 ホテルの検索コーパスは小さいため、正確になります。
 
 ### <a name="compile-and-run-the-app"></a>アプリをコンパイルして実行する
 
 **[デバッグなしで開始]** を選択します (または、F5 キーを押します)。
 
-1. 十分な数の結果が得られるようなテキストを検索します ("wifi" など)。 結果をきちんとページングできますか?
+1. 多数の結果が返されるテキストを検索します ("wifi" など)。 結果をきちんとページングできますか?
 
     !["pool" の結果に対する番号付きページング](./media/tutorial-csharp-create-first-app/azure-search-numbered-paging.png)
 
-2. 右端のページ番号、その後、左端のページ番号をクリックしてみます。 表示しているページが中央になるように、ページ番号が適切に調整されますか。
+1. 右端のページ番号、その後、左端のページ番号をクリックしてみます。 表示しているページが中央になるように、ページ番号が適切に調整されますか。
 
-3. "最初" と "最後" オプションは使用できますか。 いくつかの一般的な Web 検索ではこれらのオプションが使用されていますが、使用されていない Web 検索もあります。
+1. "最初" と "最後" オプションは使用できますか。 いくつかの商用検索エンジンではこれらのオプションが使用されていますが、使用されていない商用検索エンジンもあります。
 
-4. 結果の最後のページに移動します。 最後のページは、含まれている結果の数が **ResultsPerPage** 未満である可能性がある唯一のページです。
+1. 結果の最後のページに移動します。 最後のページは、含まれている結果の数が **ResultsPerPage** 未満である可能性がある唯一のページです。
 
     !["wifi" の最後のページの調査](./media/tutorial-csharp-create-first-app/azure-search-pool-last-page.png)
 
-5. 「town」と入力し、検索アイコンをクリックします。 結果の数が 1 ページ分より少ない場合、ページング オプションは表示されません。
+1. 「town」と入力し、検索アイコンをクリックします。 結果が 1 ページ分より少ない場合、ページング オプションは表示されません。
 
     !["town" の検索](./media/tutorial-csharp-create-first-app/azure-search-town.png)
 
-次に、このプロジェクトを保存してから、この形式とは別のページングを試してみましょう。
+このプロジェクトを保存し、別の形式のページングのために次のセクションに進みます。
 
 ## <a name="extend-your-app-with-infinite-scrolling"></a>無限スクロールでアプリを拡張する
 
-無限スクロールは、ユーザーが垂直スクロール バーを、表示されている結果の最後までスクロールしたときにトリガーされます。 このイベントでは、結果の次のページのために、サーバーへの呼び出しが行われます。 結果が残っていない場合は、何も返されず、垂直スクロール バーは変更されません。 さらに結果がある場合は、現在のページに追加され、スクロール バーが、より多くの結果を表示できるように変更されます。
+無限スクロールは、ユーザーが垂直スクロール バーを、表示されている結果の最後までスクロールしたときにトリガーされます。 このイベントでは、結果の次のページのために、検索サービスへの呼び出しが行われます。 結果が残っていない場合は、何も返されず、垂直スクロール バーは変更されません。 さらに結果がある場合は、現在のページに追加され、スクロール バーが、より多くの結果を表示できるように変更されます。
 
-ここで重要な点は、表示されているページは置き換えられず、新しい結果が追加されることです。 ユーザーは、常に検索の最初の結果にスクロールで戻ることができます。
+注意すべき重要な点は、現在のページは、置き換えられる代わりに、追加の結果が表示されるように拡張されることです。 ユーザーは、常に検索の最初の結果にスクロールで戻ることができます。
 
-無限スクロールを実装するには、ページ番号のスクロール要素を追加した時点より前からプロジェクトを始めましょう。 そのため、必要ならば、GitHub から基本的な検索ページのコピーをもう 1 つ作成します。「[Create first app (初めてのアプリを作成する)](https://github.com/Azure-Samples/azure-search-dotnet-samples)」サンプルを開きます。
+無限スクロールを実装するには、ページ番号のスクロール要素を追加した時点より前からプロジェクトを始めましょう。 GitHub では、これは [FirstAzureSearchApp](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/1-basic-search-page) ソリューションです。
 
 ### <a name="add-paging-fields-to-the-model"></a>モデルにページング フィールドを追加する
 
 1. まず、**paging** プロパティを **SearchData** クラス (SearchData.cs モデル ファイル内) に追加します。
 
-    ```cs
-        // Record if the next page is requested.
-        public string paging { get; set; }
+    ```csharp
+    // Record if the next page is requested.
+    public string paging { get; set; }
     ```
 
     この変数は文字列であり、結果の次のページを送信する必要がある場合は "next" を保持し、検索の最初のページの場合は null です。
 
-2. 同じファイルの名前空間内で、1 つのプロパティを持つグローバル変数クラスを追加します。 MVC では、グローバル変数は独自の静的クラスで宣言されます。 **ResultsPerPage** は、ページあたりの結果数を設定します。 
+1. 同じファイルの名前空間内で、1 つのプロパティを持つグローバル変数クラスを追加します。 MVC では、グローバル変数は独自の静的クラスで宣言されます。 **ResultsPerPage** は、ページあたりの結果数を設定します。 
 
-    ```cs
+    ```csharp
     public static class GlobalVariables
     {
         public static int ResultsPerPage
@@ -425,50 +441,50 @@ ms.locfileid: "91280745"
 
 1. 結果を表示する、index.cshtml ファイルのセクションを見つけます ( **@if (Model != null)** で始まります)。
 
-2. セクションを以下のコードに置き換えます。 新しい **&lt;div&gt;** セクションはスクロール可能な領域の周囲にあり、次のように、**overflow-y** 属性と、"scrolled()" と呼ばれる **onscroll** 関数の呼び出しの両方が追加されます。
+1. セクションを以下のコードに置き換えます。 新しい **&lt;div&gt;** セクションはスクロール可能な領域の周囲にあり、次のように、**overflow-y** 属性と、"scrolled()" と呼ばれる **onscroll** 関数の呼び出しの両方が追加されます。
 
-    ```cs
-        @if (Model != null)
-        {
-            // Show the result count.
-            <p class="sampleText">
-                @Html.DisplayFor(m => m.resultList.Count) Results
-            </p>
+    ```csharp
+    @if (Model != null)
+    {
+        // Show the result count.
+        <p class="sampleText">
+            @Model.resultList.TotalCount Results
+        </p>
 
-            <div id="myDiv" style="width: 800px; height: 450px; overflow-y: scroll;" onscroll="scrolled()">
+        var results = Model.resultList.GetResults().ToList();
 
-                <!-- Show the hotel data. -->
-                @for (var i = 0; i < Model.resultList.Results.Count; i++)
-                {
-                    // Display the hotel name and description.
-                    @Html.TextAreaFor(m => Model.resultList.Results[i].Document.HotelName, new { @class = "box1" })
-                    @Html.TextArea($"desc{i}", Model.resultList.Results[i].Document.Description, new { @class = "box2" })
-                }
-            </div>
-        }
+        <div id="myDiv" style="width: 800px; height: 450px; overflow-y: scroll;" onscroll="scrolled()">
+
+            <!-- Show the hotel data. -->
+            @for (var i = 0; i < results.Count; i++)
+            {
+                // Display the hotel name and description.
+                @Html.TextAreaFor(m => results[i].Document.HotelName, new { @class = "box1" })
+                @Html.TextArea($"desc{i}", results[i].Document.Description, new { @class = "box2" })
+            }
     ```
 
-3. ループのすぐ下、&lt;/div&gt; タグの後に、**scrolled** 関数を追加します。
+1. ループのすぐ下、&lt;/div&gt; タグの後に、**scrolled** 関数を追加します。
 
     ```javascript
-        <script>
-                function scrolled() {
-                    if (myDiv.offsetHeight + myDiv.scrollTop >= myDiv.scrollHeight) {
-                        $.getJSON("/Home/Next", function (data) {
-                            var div = document.getElementById('myDiv');
+    <script>
+        function scrolled() {
+            if (myDiv.offsetHeight + myDiv.scrollTop >= myDiv.scrollHeight) {
+                $.getJSON("/Home/NextAsync", function (data) {
+                    var div = document.getElementById('myDiv');
 
-                            // Append the returned data to the current list of hotels.
-                            for (var i = 0; i < data.length; i += 2) {
-                                div.innerHTML += '\n<textarea class="box1">' + data[i] + '</textarea>';
-                                div.innerHTML += '\n<textarea class="box2">' + data[i + 1] + '</textarea>';
-                            }
-                        });
+                    // Append the returned data to the current list of hotels.
+                    for (var i = 0; i < data.length; i += 2) {
+                        div.innerHTML += '\n<textarea class="box1">' + data[i] + '</textarea>';
+                        div.innerHTML += '\n<textarea class="box2">' + data[i + 1] + '</textarea>';
                     }
-                }
-        </script>
+                });
+            }
+        }
+    </script>
     ```
 
-    上のスクリプトの **if** ステートメントは、ユーザーが垂直スクロール バーの一番下までスクロールしたかどうかをテストします。 した場合は、**Home** コントローラーの呼び出しが **Next** と呼ばれるアクションに対して行われます。 コントローラーは、他の情報を必要とせず、データの次のページを返します。 その後、このデータは、元のページと同じ HTML スタイルを使用して書式設定されます。 結果が返されない場合は、何も追加されず、その状態のままです。
+    上のスクリプトの **if** ステートメントは、ユーザーが垂直スクロール バーの一番下までスクロールしたかどうかをテストします。 した場合は、**Home** コントローラーの呼び出しが **NextAsync** と呼ばれるアクションに対して行われます。 コントローラーは、他の情報を必要とせず、データの次のページを返します。 その後、このデータは、元のページと同じ HTML スタイルを使用して書式設定されます。 結果が返されない場合は、何も追加されず、その状態のままです。
 
 ### <a name="handle-the-next-action"></a>Next アクションを処理する
 
@@ -476,97 +492,99 @@ ms.locfileid: "91280745"
 
 1. home コントローラー ファイルを開き、元のチュートリアルから **RunQueryAsync** メソッドを削除します。
 
-2. **Index(model)** アクションを以下のコードに置き換えます。 これで、**paging** フィールドが null の場合、または "next" に設定されている場合はこれを処理し、Azure Cognitive Search の呼び出しを処理するようになりました。
+1. **Index(model)** アクションを以下のコードに置き換えます。 これで、**paging** フィールドが null の場合、または "next" に設定されている場合はこれを処理し、Azure Cognitive Search の呼び出しを処理するようになりました。
 
-    ```cs
-        public async Task<ActionResult> Index(SearchData model)
+    ```csharp
+    public async Task<ActionResult> Index(SearchData model)
+    {
+        try
         {
-            try
+            InitSearch();
+
+            int page;
+
+            if (model.paging != null && model.paging == "next")
             {
-                InitSearch();
+                // Increment the page.
+                page = (int)TempData["page"] + 1;
 
-                int page;
-
-                if (model.paging != null && model.paging == "next")
-                {
-                    // Increment the page.
-                    page = (int)TempData["page"] + 1;
-
-                    // Recover the search text.
-                    model.searchText = TempData["searchfor"].ToString();
-                }
-                else
-                {
-                    // First call. Check for valid text input.
-                    if (model.searchText == null)
-                    {
-                        model.searchText = "";
-                    }
-                    page = 0;
-                }
-
-                // Setup the search parameters.
-                var parameters = new SearchParameters
-                {
-                    // Enter Hotel property names into this list so only these values will be returned.
-                    // If Select is empty, all values will be returned, which can be inefficient.
-                    Select = new[] { "HotelName", "Description" },
-                    SearchMode = SearchMode.All,
-
-                    // Skip past results that have already been returned.
-                    Skip = page * GlobalVariables.ResultsPerPage,
-
-                    // Take only the next page worth of results.
-                    Top = GlobalVariables.ResultsPerPage,
-
-                    // Include the total number of results.
-                    IncludeTotalResultCount = true,
-                };
-
-                // For efficiency, the search call should be asynchronous, so use SearchAsync rather than Search.
-                model.resultList = await _indexClient.Documents.SearchAsync<Hotel>(model.searchText, parameters);
-
-                // Ensure TempData is stored for the next call.
-                TempData["page"] = page;
-                TempData["searchfor"] = model.searchText;
+                // Recover the search text.
+                model.searchText = TempData["searchfor"].ToString();
             }
-            catch
+            else
             {
-                return View("Error", new ErrorViewModel { RequestId = "1" });
+                // First call. Check for valid text input.
+                if (model.searchText == null)
+                {
+                    model.searchText = "";
+                }
+                page = 0;
             }
-            return View("Index", model);
+
+            // Setup the search parameters.
+            var options = new SearchOptions
+            {
+                SearchMode = SearchMode.All,
+
+                // Skip past results that have already been returned.
+                Skip = page * GlobalVariables.ResultsPerPage,
+
+                // Take only the next page worth of results.
+                Size = GlobalVariables.ResultsPerPage,
+
+                // Include the total number of results.
+                IncludeTotalCount = true
+            };
+
+            // Specify which fields to include in results.
+            options.Select.Add("HotelName");
+            options.Select.Add("Description");
+
+            // For efficiency, the search call should be asynchronous, so use SearchAsync rather than Search.
+            model.resultList = await _searchClient.SearchAsync<Hotel>(model.searchText, options).ConfigureAwait(false);               
+
+            // Ensure TempData is stored for the next call.
+            TempData["page"] = page;
+            TempData["searchfor"] = model.searchText;
         }
+        catch
+        {
+            return View("Error", new ErrorViewModel { RequestId = "1" });
+        }
+
+        return View("Index", model);
+    }
     ```
 
-    番号付きページング方法と同様に、**Skip** および **Top** 検索設定を使用して、必要なデータだけが返されるように要求します。
+    番号付きページング方法と同様に、**Skip** および **Size** 検索設定を使用して、必要なデータだけが返されるように要求します。
 
-3. home コントローラーに **Next** アクションを追加します。 どのように一覧が返されるかに注意してください。各ホテルは、一覧に 2 つの要素 (ホテル名とホテルの説明) を追加します。 この形式は、返されたデータをビューで **scrolled** 関数が使用するときの形式と一致するように設定されています。
+1. home コントローラーに **NextAsync** アクションを追加します。 どのように一覧が返されるかに注意してください。各ホテルについて、2 つの要素 (ホテル名とホテルの説明) が一覧に追加されます。 この形式は、返されたデータをビューで **scrolled** 関数が使用するときの形式と一致するように設定されています。
 
-    ```cs
-        public async Task<ActionResult> Next(SearchData model)
+    ```csharp
+    public async Task<ActionResult> NextAsync(SearchData model)
+    {
+        // Set the next page setting, and call the Index(model) action.
+        model.paging = "next";
+        await Index(model).ConfigureAwait(false);
+
+        // Create an empty list.
+        var nextHotels = new List<string>();
+
+        // Add a hotel name, then description, to the list.
+        await foreach (var searchResult in model.resultList.GetResultsAsync())
         {
-            // Set the next page setting, and call the Index(model) action.
-            model.paging = "next";
-            await Index(model);
-
-            // Create an empty list.
-            var nextHotels = new List<string>();
-
-            // Add a hotel name, then description, to the list.
-            for (int n = 0; n < model.resultList.Results.Count; n++)
-            {
-                nextHotels.Add(model.resultList.Results[n].Document.HotelName);
-                nextHotels.Add(model.resultList.Results[n].Document.Description);
-            }
-
-            // Rather than return a view, return the list of data.
-            return new JsonResult(nextHotels);
+            nextHotels.Add(searchResult.Document.HotelName);
+            nextHotels.Add(searchResult.Document.Description);
         }
+
+        // Rather than return a view, return the list of data.
+        return new JsonResult(nextHotels);
+    }
     ```
 
-4. **List&lt;string&gt;** で構文エラーが発生する場合は、コントローラー ファイルの先頭に次の **using** ディレクティブを追加します。
+1. **List&lt;string&gt;** で構文エラーが発生する場合は、コントローラー ファイルの先頭に次の **using** ディレクティブを追加します。
 
-    ```cs
+    ```csharp
     using System.Collections.Generic;
     ```
 
@@ -581,9 +599,9 @@ ms.locfileid: "91280745"
     > [!Tip]
     > 最初のページにスクロール バーが表示されるようにするには、結果の最初のページが、表示されている領域の高さを少しでも超えている必要があります。 この例では、 **.box1** の高さは 30 ピクセルであり、 **.box2** の高さは 100 ピクセルであって、"_さらに_" 下余白が 24 ピクセルです。 つまり、各エントリは 154 ピクセルを使用します。 3 エントリでは、3 x 154 = 462 ピクセルになります。 確実に垂直スクロール バーが表示されるようにするには、表示領域の高さを 462 ピクセル未満に設定する必要があります (461 ピクセルでもかまいません)。 この問題は、最初のページのみで発生します。その後は、スクロール バーが確実に表示されます。 更新する行は、 **&lt;div id="myDiv" style="width: 800px; height: 450px; overflow-y: scroll;" onscroll="scrolled()"&gt;** です。
 
-2. 結果の一番下までスクロールします。 すべての情報が 1 つのビュー ページに表示されるようになったことに注意してください。 サーバー呼び出しをトリガーすることなく、一番上までスクロールして戻ることができます。
+1. 結果の一番下までスクロールします。 すべての情報が 1 つのビュー ページに表示されるようになったことに注意してください。 サーバー呼び出しをトリガーすることなく、一番上までスクロールして戻ることができます。
 
-より洗練された無限スクロール システムでは、マウス ホイールや、同様の他のメカニズムを使用して、結果の新しいページの読み込みをトリガーすることがあります。 このチュートリアルでは、これ以上は無限スクロールの説明をしませんが、余分なマウス クリックをしなくて済む利点もあるため、他のオプションをさらに調べてみたい場合があるかもしれません。
+より洗練された無限スクロール システムでは、マウス ホイールや、同様の他のメカニズムを使用して、結果の新しいページの読み込みをトリガーすることがあります。 このチュートリアルでは、これ以上は無限スクロールの説明をしませんが、これには余分なマウス クリックをしなくて済む利点もあるため、他のオプションをさらに調査することをお勧めします。
 
 ## <a name="takeaways"></a>重要なポイント
 
@@ -591,15 +609,14 @@ ms.locfileid: "91280745"
 
 * 番号付きページングは、結果の順序がやや恣意的な検索に適しています。つまり、ユーザーが関心を持つものが、後の方のページにありそうな場合です。
 * 無限スクロールは、結果の順序が特に重要な場合に適しています。 たとえば、行き先の都市の中心からの距離に基づいて結果が並べ替えられるような場合です。
-* 番号付きページングでは、より便利なナビゲーションが可能です。 たとえば、ユーザーは興味深い結果が 6 ページにあったことを覚えているかもしれませんが、無限スクロールではそのような簡単な参照方法はありません。
-* 無限スクロールは簡単であることが利点であり、ページ番号をクリックする手間なしで上下にスクロールできます。
+* 番号付きページングの方が、より優れたナビゲーションを実現できます。 たとえば、ユーザーは興味深い結果が 6 ページにあったことを覚えているかもしれませんが、無限スクロールではそのような簡単な参照方法はありません。
+* 無限スクロールは簡単であることが利点であり、ページ番号をクリックすることなく上下にスクロールできます。
 * 無限スクロールの主な特長は、結果が既存のページに置き換わるのではなく、既存のページに追加されることです。これは効率的です。
 * 一時ストレージは 1 回の呼び出しの間のみ保持され、後の呼び出しのときまで保持するには、再設定する必要があります。
 
-
 ## <a name="next-steps"></a>次のステップ
 
-ページングは、インターネット検索の基礎です。 ページングについて十分に理解したら、次のステップは、検索の入力候補表示を追加して、さらにユーザー エクスペリエンスを向上させることです。
+ページングは、検索エクスペリエンスの基礎です。 ページングについて十分に理解したら、次のステップは、先行入力検索を追加して、さらにユーザー エクスペリエンスを向上させることです。
 
 > [!div class="nextstepaction"]
 > [C# チュートリアル: オートコンプリートと検索候補を追加する - Azure Cognitive Search](tutorial-csharp-type-ahead-and-suggestions.md)

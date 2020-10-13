@@ -6,12 +6,12 @@ ms.author: margard
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/10/2020
-ms.openlocfilehash: 6538022e7ada748f828f6d57dde73b5e12da84c9
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 44268bf1b7805ece8de4a3499a7d53fc851af142
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90108312"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91664989"
 ---
 # <a name="tutorial-use-a-managed-identity-to-invoke-azure-functions-from-an-azure-spring-cloud-app"></a>チュートリアル:マネージド ID を使用して Azure Spring Cloud アプリから Azure Functions を呼び出す
 
@@ -91,7 +91,7 @@ Functions は HTTP エンドポイントを保護するために、既定では�
 }
 ```
 
-前の手順で作成した関数アプリのインスタンスにアプリを発行する準備が整いました。
+前の手順で作成した[関数アプリ](#create-a-function-app)のインスタンスにアプリを発行する準備が整いました。
 
 ```console
 func azure functionapp publish <your-functionapp-name>

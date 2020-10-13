@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 1db1589561968cf1e2974edcee2bfe1cccb4a327
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7b32c5576ef38f07d28777e1a72aafa935042930
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549249"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775701"
 ---
 # <a name="tutorial-integrate-costpoint-with-azure-active-directory"></a>チュートリアル:Costpoint と Azure Active Directory の統合
 
@@ -43,7 +43,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 Costpoint SAML SSO 構成については、**DeltekCostpoint711Security.pdf** ガイドで説明されています。 Deltek Costpoint サポート サイトからこのガイドをダウンロードし、「**SAML シングル サインオンの設定**」 > 「**Costpoint と Microsoft Azure 間の SAML シングル サインオンの構成**」セクションを参照してください。 指示に従って、**Costpoint SP フェデレーション メタデータ XML** ファイルを生成します。 
 
-![Costpoint Configuration Utility (Costpoint 構成ユーティリティ)](./media/costpoint-tutorial/config-utility.png)
+![[Weblogic] - [Security]\(セキュリティ\) タブが選択された Product Configuration Utility を示すスクリーンショット。](./media/costpoint-tutorial/config-utility.png)
 
 ## <a name="add-costpoint-from-the-gallery"></a>ギャラリーからの Costpoint の追加
 

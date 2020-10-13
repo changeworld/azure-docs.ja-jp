@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: fd82d3d2d2a76e0c0671c57d9254ff8c9030d3a3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7c1bd1b3f9931eff2f19eac7b78881d4f7ad8ae0
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548286"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744323"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>チュートリアル: Azure Active Directory と Bonusly の統合
 
@@ -222,11 +222,11 @@ Azure AD ユーザーが Bonusly にサインインできるようにするに�
 
 1. **[ユーザーの追加]** をクリックします。
 
-    ![ユーザーの追加](./media/bonus-tutorial/ic781044.png "ユーザーの追加")
+    ![スクリーンショットは、[Add User]\(ユーザーの追加\) を選択できる [Manage Users]\(ユーザーの管理\) を示しています。](./media/bonus-tutorial/ic781044.png "ユーザーの追加")
 
 1. **[Add User]** ダイアログで、次の手順を実行します。
 
-    ![ユーザーの追加](./media/bonus-tutorial/ic781045.png "ユーザーの追加")  
+    ![スクリーンショットは、この情報を入力できる [Add User]\(ユーザーの追加\) ダイアログ ボックスを示しています。](./media/bonus-tutorial/ic781045.png "ユーザーの追加")  
 
     a. **[First name]\(名\)** ボックスに、ユーザーの名前を入力します (この例では **Britta**)。
 

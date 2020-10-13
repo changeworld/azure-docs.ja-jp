@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 049066ffc5ce0aea2af956343dfa7ba97b6b5bb4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2baff2ac2af10caf857fd08b0d7e7df5030220e4
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542821"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758151"
 ---
 # <a name="tutorial-integrate-airwatch-with-azure-active-directory"></a>チュートリアル:AirWatch を Azure Active Directory と統合する
 
@@ -125,7 +125,7 @@ AirWatch に対する Azure AD SSO を構成してテストするには、次の
 
 1. **[ユーザー]** タブをクリックし、 **[ベース DN]** テキストボックスにドメイン名を入力してから **[保存]** をクリックします。
 
-   ![User](./media/airwatch-tutorial/ic791922.png "User")
+   ![[ベース DN] テキスト ボックスが強調表示されているスクリーンショット。](./media/airwatch-tutorial/ic791922.png "User")
 
 1. **[Server]** タブをクリックします。
 
@@ -133,7 +133,7 @@ AirWatch に対する Azure AD SSO を構成してテストするには、次の
 
 1. **[LDAP]** セクションで次の手順を実行します。
 
-    ![アップロード](./media/airwatch-tutorial/ic791924.png "LDAP")   
+    ![[LDAP] セクションに加える必要のある変更点を示すスクリーンショット。](./media/airwatch-tutorial/ic791924.png "LDAP")   
 
     a. **[Directory Type]** として **[None]** を選択します。
 
@@ -223,7 +223,7 @@ Azure AD ユーザーが AirWatch にサインインできるようにするに�
 
 3. **Users\(ユーザー\)** メニューで、**List View\(リスト ビュー\)** 、**Add\(追加\) > Add User\(ユーザーの追加\)** の順にクリックします。
   
-   ![ユーザーの追加](./media/airwatch-tutorial/ic791930.png "ユーザーの追加")
+   ![[Add]\(追加\) および [Add User]\(ユーザーの追加\) ボタンが強調表示されているスクリーンショット。](./media/airwatch-tutorial/ic791930.png "ユーザーの追加")
 
 4. **[Add / Edit User]** ダイアログで、次の手順を実行します。
 

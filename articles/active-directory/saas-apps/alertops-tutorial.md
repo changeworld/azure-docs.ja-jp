@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: d820a3fc9b12a36a76e2eb887b32d27acc156c76
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a278204da556b41bd663b8b5c9ff5152e16017cc
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522340"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715873"
 ---
 # <a name="tutorial-integrate-alertops-with-azure-active-directory"></a>チュートリアル:AlertOps の Azure Active Directory との統合
 
@@ -108,11 +108,11 @@ AlertOps で Azure AD SSO を構成してテストするには、次の構成要
 
 4. 左側のナビゲーション パネルから **[Account settings]\(アカウント設定\)** をクリックします。
 
-    ![AlertOps の構成](./media/alertops-tutorial/configure1.png)
+    ![このスクリーンショットは、[Account Settings]\(アカウント設定\) がコールアウトされた状態の AlertOps メニューを示しています。](./media/alertops-tutorial/configure1.png)
 
 5. **[Subscription Settings]\(サブスクリプションの設定\)** ページで **[SSO]** を選択し、次の手順を実行します。
 
-    ![AlertOps の構成](./media/alertops-tutorial/configure2.png)
+    ![このスクリーンショットは、この手順で説明されている値が入力された状態の [Subscription Settings]\(サブスクリプションの設定\) ウィンドウの [S S O] を示しています。](./media/alertops-tutorial/configure2.png)
 
     a. **[Use Single Sign-On(SSO)]\(シングル サインオン (SSO) を使用する\)** チェック ボックスをオンにします。
 
@@ -164,15 +164,15 @@ AlertOps で Azure AD SSO を構成してテストするには、次の構成要
 
 2. 左側のナビゲーション パネルから、 **[Users]\(ユーザー\)** をクリックします。
 
-    ![AlertOps の構成](./media/alertops-tutorial/user1.png)
+    ![このスクリーンショットは、[Users]\(ユーザー\) がコールアウトされた状態の AlertOps メニューを示しています。](./media/alertops-tutorial/user1.png)
 
 3. **[Add User]\(ユーザーの追加\)** を選択します。
 
-    ![AlertOps の構成](./media/alertops-tutorial/user2.png)
+    ![このスクリーンショットは、[Add User]\(ユーザーの追加\) ボタンを備えた [Users]\(ユーザー\) ウィンドウを示しています。](./media/alertops-tutorial/user2.png)
 
 4. **[Add User]** ダイアログで、次の手順を実行します。
 
-    ![AlertOps の構成](./media/alertops-tutorial/user3.png)
+    ![このスクリーンショットは、この手順で説明されている値が入力された状態の [Add User]\(ユーザーの追加\) ペインを示しています。](./media/alertops-tutorial/user3.png)
 
     a. **[Login User Name]\(ログイン ユーザー名\)** ボックスにユーザー名を入力します (例: **Brittasimon**)。
 

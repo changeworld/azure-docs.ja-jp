@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 39339803945034765fbc30e6f5fc11e737f750c4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f3fa61e7c00dca8cb133ec21ba395d943ebdc956
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88538401"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708426"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-acadia"></a>チュートリアル:Azure Active Directory と Acadia の統合
 
@@ -100,7 +100,7 @@ Acadia で Azure AD シングル サインオンを構成するには、次の�
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![Acadia のドメインと URL のシングル サインオン情報](common/idp-intiated.png)
+    ![IDP 開始モードでアプリケーションを構成するために必要な画面要素が表示されているスクリーンショット。](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、`https://<CUSTOMER>.acadia.sysalli.com/shibboleth` の形式で URL を入力します。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/06/2020
 ms.author: jeedes
-ms.openlocfilehash: d0dffe602aef01af2fb2ef8ee9462a0bb99c1ae0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 401b1ef4e057d145574c0a8fcbfce8c9f586c266
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555690"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775067"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-druva"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Druva の統合
 
@@ -146,7 +146,7 @@ Druva に対する Azure AD SSO を構成してテストするには、次の構
 
 1. **[Single Sign-On]\(シングル サインオン\)** タブの **[Edit]\(編集\)** をクリックします。
 
-    ![シングル サインオンの設定](./media/druva-tutorial/ic795092.png "[シングル サインオンの設定]")
+    ![[Edit]\(編集\) ボタンが選択されている [Access Settings - Single Sign-On]\(アクセス設定 - シングル サインオン\) タブを示すスクリーンショット。](./media/druva-tutorial/ic795092.png "[シングル サインオンの設定]")
 
 1. **[Edit Single Sign-On Settings]\(シングル サインオン設定の編集\)** ページで、次の手順を実行します。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 16783d344c6a0dedec4e24d49150e0b4b2edbe3e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1c6faf2bb1811f7b27a49f8029c833499273d8a1
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548142"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817109"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>チュートリアル: Azure Active Directory と Help Scout の統合
 
@@ -89,7 +89,7 @@ Help Scout で Azure AD シングル サインオンを構成するには、次�
 
 1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[Help Scout のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+    ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
 
     a. **識別子**は、Help Scout の**対象ユーザー URI (サービス プロバイダーのエンティティ ID)** で、先頭は `urn:` です
 
@@ -100,7 +100,7 @@ Help Scout で Azure AD シングル サインオンを構成するには、次�
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[Help Scout のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
+    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** ボックスに、「`https://secure.helpscout.net/members/login/`」と入力します。
 
@@ -183,15 +183,15 @@ Help Scout で Azure AD シングル サインオンを構成するには、次�
 
 1. 上部のメニューで **[Manage]\(管理\)** をクリックし、ドロップダウン メニューの **[Company]\(会社\)** を選択します。
 
-    ![Configure single sign-on](./media/helpscout-tutorial/settings1.png)
+    ![[Company]\(会社\) が選択された [Manage]\(管理\) メニューのスクリーンショット。](./media/helpscout-tutorial/settings1.png)
 
 1. 左側のナビゲーション ウィンドウで **[Authentication]\(認証\)** を選択します。
 
-    ![Configure single sign-on](./media/helpscout-tutorial/settings2.png)
+    ![選択された [Authentication]\(認証\) を示すスクリーンショット。](./media/helpscout-tutorial/settings2.png)
 
 1. [SAML 設定] セクションが表示されます。ここで次の手順に従います。
 
-    ![Configure single sign-on](./media/helpscout-tutorial/settings3.png)
+    ![指定された情報を入力できる [Single Sign-On]\(シングル サインオン\) タブを示すスクリーンショット。](./media/helpscout-tutorial/settings3.png)
 
     a. **[Post-back URL (Assertion Consumer Service URL)]\(ポスト バック URL (Assertion Consumer Service URL)\)** の値をコピーし、Azure portal の **[基本的な SAML 構成]** セクションの **[応答 URL]** ボックスに貼り付けます。
 
@@ -199,7 +199,7 @@ Help Scout で Azure AD シングル サインオンを構成するには、次�
 
 1. **[SAML を有効にする]** をオンにして、次の手順を実行します。
 
-    ![Configure single sign-on](./media/helpscout-tutorial/settings4.png)
+    ![[Single Sign-On]\(シングル サインオン\) タブのスクリーンショット。ここで、SAML を有効にしたり他の情報を追加したりします。](./media/helpscout-tutorial/settings4.png)
 
     a. **[Single Sign-On URL]\(シングル サインオン URL\)** ボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
 
