@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: f82ea8361cef76b2030e5b257b3d3351968d8050
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e8de33e7417ab6421792d341474c320a5f63423b
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322191"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803825"
 ---
 # <a name="troubleshoot"></a>トラブルシューティング
 
@@ -88,7 +88,7 @@ REST API コマンドを頻繁に送信しすぎるとサーバーでスロッ�
 
 ## <a name="video-recorded-with-mrc-does-not-reflect-the-quality-of-the-live-experience"></a>MRC で記録された動画にライブ エクスペリエンスの品質が反映されていない
 
-動画は [Mixed Reality Capture (MRC)](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers) を介して Hololens に記録できます。 ただし、結果として得られる動画の画質は、次の 2 つの理由により、ライブ エクスペリエンスよりも低くなります。
+動画は [Mixed Reality Capture (MRC)](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers) を介して HoloLens に記録できます。 ただし、結果として得られる動画の画質は、次の 2 つの理由により、ライブ エクスペリエンスよりも低くなります。
 * 動画のフレームレートが 60 Hz ではなく 30 Hz に制限されている。
 * 動画の画像に [Late Stage Reprojection](../overview/features/late-stage-reprojection.md) の処理ステップが実行されないため、動画が途切れているように見える。
 
@@ -185,7 +185,7 @@ Arm64 の `AudioPluginMsHRTF.dll` は、バージョン 3.0.1 の *Windows Mixed
 
 ### <a name="library-not-found-error-for-uwp-application-or-dll"></a>UWP アプリケーションまたは Dll の 'ライブラリが見つかりません' エラー
 
-C++ Nuget パッケージ内には、使用するバイナリ フレーバーを定義する `microsoft.azure.remoterendering.Cpp.targets` ファイルがあります。 `UWP` を識別するため、ファイル内の条件によって `ApplicationType == 'Windows Store'` が確認されます。 このため、この種類がプロジェクトで設定されていることを確認する必要があります。 これは、Visual Studio のプロジェクト ウィザードを使用して UWP アプリケーションまたは Dll を作成する場合に当てはまります。
+C++ NuGet パッケージ内には、使用するバイナリ フレーバーを定義する `microsoft.azure.remoterendering.Cpp.targets` ファイルがあります。 `UWP` を識別するため、ファイル内の条件によって `ApplicationType == 'Windows Store'` が確認されます。 このため、この種類がプロジェクトで設定されていることを確認する必要があります。 これは、Visual Studio のプロジェクト ウィザードを使用して UWP アプリケーションまたは Dll を作成する場合に当てはまります。
 
 ## <a name="unstable-holograms"></a>ホログラムが不安定である
 
@@ -245,7 +245,9 @@ ARR には、サーフェスが Z ファイティングになるかどうかを�
 
 * サーフェスが、壁の図柄やテキストのように、タッチするために意図的に作成されている。
 
+## <a name="graphics-artifacts-using-multi-pass-stereo-rendering-in-native-c-apps"></a>ネイティブの C++ アプリでのマルチパス ステレオ レンダリングを使用したグラフィックス成果物
 
+場合によっては、[**BlitRemoteFrame**](../concepts/graphics-bindings.md#render-remote-image) を呼び出した後にローカル コンテンツに対してマルチパス ステレオ レンダリング モードを使用する C++ のカスタム ネイティブ アプリ (別個のパスに左と右の目がレンダリングされる) で、ドライバーのバグが発生することがあります。 このバグによって、不明確なラスタライズによるエラーが発生し、ローカル コンテンツの個々の三角形や三角形の一部がランダムに非表示になります。 パフォーマンス上の理由から、**SV_RenderTargetArrayIndex** を使用するなど、より新しいシングルパス ステレオ レンダリング手法でローカル コンテンツをレンダリングすることをお勧めします。
 
 ## <a name="next-steps"></a>次のステップ
 

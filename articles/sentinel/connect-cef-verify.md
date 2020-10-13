@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/19/2020
+ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: f6892f4ebb250290a0faad546fd000530baf4479
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 643b28b2e88f233d2924270511d3c87fa4d9b767
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038173"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631632"
 ---
 # <a name="step-3-validate-connectivity"></a>手順 3:接続の検証
 
@@ -54,7 +54,7 @@ ms.locfileid: "87038173"
 
 1. このファイルに次のテキストが含まれていることを確認します。
 
-    ```console
+    ```bash
     <source>
         type syslog
         port 25226
@@ -72,24 +72,59 @@ ms.locfileid: "87038173"
     </filter>
     ```
 
+1. ファイアウォール イベントに対して Cisco ASA の解析が想定どおりに構成されていることを確認します。
+
+    ```bash
+    sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" 
+        /opt/microsoft/omsagent/plugin/security_lib.rb && 
+        sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    ```
+
+1. Syslog ソースの *[コンピューター]* フィールドが、Log Analytics エージェントで正しくマップされていることを確認します。
+
+    ```bash
+    sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
+        -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
+        filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    ```
+
 1. マシンのセキュリティにネットワーク トラフィックをブロックするような改良 (ホスト ファイアウォールなど) がなされているかどうかを確認します。
 
-1. CEF として識別 (正規表現を使用) されたメッセージを TCP ポート 25226 で Log Analytics エージェントに送信するよう、syslog デーモン (rsyslog) が適切に構成されていることを確認します。
+1. CEF として識別されたメッセージを TCP ポート 25226 で Log Analytics エージェントに送信するよう、syslog デーモン (rsyslog) が適切に構成されていることを確認します。
 
     - 構成ファイル: `/etc/rsyslog.d/security-config-omsagent.conf`
 
-        ```console
-        :rawmsg, regex, "CEF"|"ASA"
-        *.* @@127.0.0.1:25226
+        ```bash
+        if $rawmsg contains "CEF:" or $rawmsg contains "ASA-" then @@127.0.0.1:25226 
         ```
-  
-1. syslog デーモンがデータをポート 514 で受信していることを確認します。
 
-1. 必要な接続が確立されていることを確認します。データの受信には TCP 514 が、また syslog デーモンと Log Analytics エージェントとの間の内部通信には TCP 25226 が使用されます。
+1. Syslog デーモンと Log Analytics エージェントを再起動します。
+
+    ```bash
+    service rsyslog restart
+
+    /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    ```
+
+1. 必要な接続が確立されていることを確認します。データの受信には TCP 514 が、また Syslog デーモンと Log Analytics エージェントとの間の内部通信には TCP 25226 が使用されます。
+
+    ```bash
+    netstat -an | grep 514
+
+    netstat -an | grep 25226
+    ```
+
+1. Syslog デーモンによりポート 514 でデータが受信されていること、およびエージェントによりポート 25226 でデータが受信されていることを確認します。
+
+    ```bash
+    sudo tcpdump -A -ni any port 514 -vv
+
+    sudo tcpdump -A -ni any port 25226 -vv
+    ```
 
 1. MOCK データを localhost のポート 514 に送信します。 このデータは、Azure Sentinel ワークスペースから次のクエリを実行することによって観察できます。
 
-    ```console
+    ```kusto
     CommonSecurityLog
     | where DeviceProduct == "MOCK"
     ```
@@ -102,7 +137,7 @@ ms.locfileid: "87038173"
 
 1. このファイルに次のテキストが含まれていることを確認します。
 
-    ```console
+    ```bash
     <source>
         type syslog
         port 25226
@@ -120,25 +155,61 @@ ms.locfileid: "87038173"
     </filter>
     ```
 
+1. ファイアウォール イベントに対して Cisco ASA の解析が想定どおりに構成されていることを確認します。
+
+    ```bash
+    sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" 
+        /opt/microsoft/omsagent/plugin/security_lib.rb && 
+        sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    ```
+
+1. Syslog ソースの *[コンピューター]* フィールドが、Log Analytics エージェントで正しくマップされていることを確認します。
+
+    ```bash
+    sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
+        -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
+        filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    ```
+
 1. マシンのセキュリティにネットワーク トラフィックをブロックするような改良 (ホスト ファイアウォールなど) がなされているかどうかを確認します。
 
 1. CEF として識別 (正規表現を使用) されたメッセージを TCP ポート 25226 で Log Analytics エージェントに送信するよう、syslog デーモン (syslog-ng) が適切に構成されていることを確認します。
 
     - 構成ファイル: `/etc/syslog-ng/conf.d/security-config-omsagent.conf`
 
-        ```console
+        ```bash
         filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
         destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
         log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
         ```
 
-1. syslog デーモンがデータをポート 514 で受信していることを確認します。
+1. Syslog デーモンと Log Analytics エージェントを再起動します。
 
-1. 必要な接続が確立されていることを確認します。データの受信には TCP 514 が、また syslog デーモンと Log Analytics エージェントとの間の内部通信には TCP 25226 が使用されます。
+    ```bash
+    service syslog-ng restart
+
+    /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    ```
+
+1. 必要な接続が確立されていることを確認します。データの受信には TCP 514 が、また Syslog デーモンと Log Analytics エージェントとの間の内部通信には TCP 25226 が使用されます。
+
+    ```bash
+    netstat -an | grep 514
+
+    netstat -an | grep 25226
+    ```
+
+1. Syslog デーモンによりポート 514 でデータが受信されていること、およびエージェントによりポート 25226 でデータが受信されていることを確認します。
+
+    ```bash
+    sudo tcpdump -A -ni any port 514 -vv
+
+    sudo tcpdump -A -ni any port 25226 -vv
+    ```
 
 1. MOCK データを localhost のポート 514 に送信します。 このデータは、Azure Sentinel ワークスペースから次のクエリを実行することによって観察できます。
 
-    ```console
+    ```kusto
     CommonSecurityLog
     | where DeviceProduct == "MOCK"
     ```

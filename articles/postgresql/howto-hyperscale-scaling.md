@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 9/18/2020
-ms.openlocfilehash: fef873d5122fefb48c85281f71e206f95f3fbe48
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: dd59d0b09a28febfc0afe35d9f008ba0e0ee19ab
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986734"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295716"
 ---
 # <a name="server-group-size"></a>サーバー グループのサイズ
 
@@ -26,13 +26,13 @@ Hyperscale (Citus) デプロイ オプションでは、協調するデータベ
 
 既存の単一ノード PostgreSQL データベース インスタンスから Hyperscale (Citus) に移行する場合は、ワーカー仮想コアの数と RAM の合計が、元のインスタンスでの合計と等しいクラスターを選択することをお勧めします。 このようなシナリオでは、シャーディングによるリソース使用率の向上や、より小さいインデックスの許可などのため、パフォーマンスが 2 倍から 3 倍向上しています。
 
-コーディネーター ノードに必要な仮想コアの数は、既存のワークロード (書き込み/読み取りスループット) によって異なります。 コーディネーター ノードは、ワーカー ノードほど RAM を必要としませんが、RAM 割り当ては仮想コア数に基づいて決定されるため ([ハイパースケール構成オプション](concepts-hyperscale-configuration-options.md)の説明を参照)、本質的に仮想コア数は、実際に決定された数です。
+コーディネーター ノードに必要な仮想コアの数は、既存のワークロード (書き込み/読み取りスループット) によって異なります。 コーディネーター ノードは、ワーカー ノードほど RAM を必要としませんが、RAM 割り当ては仮想コア数に基づいて決定されるため ([Hyperscale (Citus) 構成オプション](concepts-hyperscale-configuration-options.md)の説明を参照)、本質的に仮想コア数は、実際に決定された数です。
 
 ### <a name="real-time-analytics-use-case"></a>リアルタイム分析のユース ケース
 
 仮想コアの合計: 作業データが RAM に収まる場合、Hyperscale (Citus) では、ワーカー コアの数に比例してパフォーマンスが直線的に向上することが期待できます。 ニーズに合った適切な仮想コア数を決定するには、単一ノード データベースでのクエリの現在の待機時間と、Hyperscale (Citus) で必要な待機時間を考慮します。 現在の待機時間を必要な待機時間で除算し、結果を丸めます。
 
-ワーカー RAM: 最適なケースは、ワーキング セットの大部分がメモリに収まる十分なメモリを提供することです。 アプリケーションによって使用されるクエリの種類は、メモリ要件に影響します。 クエリで EXPLAIN ANALYZE を実行して、必要なメモリの量を確認できます。 [ハイパースケール構成オプション](concepts-hyperscale-configuration-options.md)に関する記事で説明されているように、仮想コアと RAM はまとめてスケーリングされることに注意してください。
+ワーカー RAM: 最適なケースは、ワーキング セットの大部分がメモリに収まる十分なメモリを提供することです。 アプリケーションによって使用されるクエリの種類は、メモリ要件に影響します。 クエリで EXPLAIN ANALYZE を実行して、必要なメモリの量を確認できます。 [Hyperscale (Citus) 構成オプション](concepts-hyperscale-configuration-options.md)に関する記事で説明されているように、仮想コアと RAM はまとめてスケーリングされることに注意してください。
 
 ## <a name="scale-a-hyperscale-citus-server-group"></a>Hyperscale (Citus) サーバー グループをスケーリングする
 

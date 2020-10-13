@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 1fbcc1fb27d5e6df4641f79c0d634580f74000b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 66e280f20109967f029a14e368fdb0aeea269aad
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79532062"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536615"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>データを Azure Database for MariaDB にレプリケートする
 
@@ -26,21 +26,21 @@ ms.locfileid: "79532062"
 ## <a name="limitations-and-considerations"></a>制限と考慮事項
 
 ### <a name="data-not-replicated"></a>レプリケートされないデータ
-マスター サーバー上の "[*mysql システム データベース*](https://mariadb.com/kb/en/library/the-mysql-database-tables/)" はレプリケートされません。 プライマリ サーバーでのアカウントとアクセス許可の変更はレプリケートされません。 マスター サーバーでアカウントを作成し、そのアカウントでレプリカ サーバーにアクセスする必要がある場合は、レプリカ サーバー側で同じアカウントを手動で作成します。 システム データベースに含まれているテーブルの詳細については、[MariaDB のドキュメント](https://mariadb.com/kb/en/library/the-mysql-database-tables/)を参照してください。
+ソース サーバー上の "[*mysql システム データベース*](https://mariadb.com/kb/en/library/the-mysql-database-tables/)" はレプリケートされません。 ソース サーバーでのアカウントとアクセス許可の変更はレプリケートされません。 ソース サーバーでアカウントを作成し、そのアカウントでレプリカ サーバーにアクセスする必要がある場合は、レプリカ サーバー側で同じアカウントを手動で作成します。 システム データベースに含まれているテーブルの詳細については、[MariaDB のドキュメント](https://mariadb.com/kb/en/library/the-mysql-database-tables/)を参照してください。
 
 ### <a name="requirements"></a>必要条件
-- マスター サーバーのバージョンは、MariaDB バージョン 10.2 以上である必要があります。
-- マスター サーバーとレプリカ サーバーのバージョンは同じである必要があります。 たとえば、どちらも MariaDB バージョン 10.2 にする必要があります。
+- ソース サーバーのバージョンは、MariaDB バージョン 10.2 以上である必要があります。
+- ソース サーバーとレプリカ サーバーのバージョンは同じである必要があります。 たとえば、どちらも MariaDB バージョン 10.2 にする必要があります。
 - 各テーブルには主キーが必要です。
-- マスター サーバーでは、InnoDB エンジンを使用する必要があります。
-- ユーザーは、バイナリ ログの構成とマスター サーバーでの新しいユーザーの作成を実行できるアクセス許可を持っている必要があります。
-- マスター サーバーで SSL が有効になっている場合は、ドメインに対して指定されている SSL CA 証明書が `mariadb.az_replication_change_master` ストアド プロシージャに含まれていることを確認します。 次の[例](https://docs.microsoft.com/azure/mariadb/howto-data-in-replication#link-the-master-and-replica-servers-to-start-data-in-replication)と `master_ssl_ca` パラメーターを参照してください。
-- マスター サーバーの IP アドレスが Azure Database for MariaDB レプリカ サーバーのファイアウォール規則に確実に追加されているようにします。 [Azure portal](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-portal) または [Azure CLI](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-cli) を使用してファイアウォール規則を更新します。
-- マスター サーバーをホストしているコンピューターで、ポート 3306 の受信トラフィックと送信トラフィックの両方が確実に許可されているようにします。
-- マスター サーバーに**パブリック IP アドレス**があるか、DNS がパブリックにアクセスできるか、または完全修飾ドメイン名 (FQDN) を持っているようにしてください。
+- ソース サーバーでは、InnoDB エンジンを使用する必要があります。
+- ユーザーは、バイナリ ログの構成とソース サーバーでの新しいユーザーの作成を実行できるアクセス許可を持っている必要があります。
+- ソース サーバーで SSL が有効になっている場合は、ドメインに対して指定されている SSL CA 証明書が `mariadb.az_replication_change_master` ストアド プロシージャに含まれていることを確認します。 次の[例](https://docs.microsoft.com/azure/mariadb/howto-data-in-replication#link-the-master-and-replica-servers-to-start-data-in-replication)と `master_ssl_ca` パラメーターを参照してください。
+- ソース サーバーの IP アドレスが Azure Database for MariaDB レプリカ サーバーのファイアウォール規則に確実に追加されているようにします。 [Azure portal](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-portal) または [Azure CLI](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-cli) を使用してファイアウォール規則を更新します。
+- ソース サーバーをホストしているコンピューターで、ポート 3306 の受信トラフィックと送信トラフィックの両方が確実に許可されているようにします。
+- ソース サーバーに**パブリック IP アドレス**があるか、DNS がパブリックにアクセスできるか、または完全修飾ドメイン名 (FQDN) を持っているようにしてください。
 
 ### <a name="other"></a>その他
 - データイン レプリケーションは、General Purpose 価格レベルとメモリ最適化価格レベルでのみサポートされます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - [データイン レプリケーションを設定する](howto-data-in-replication.md)方法を確認する。

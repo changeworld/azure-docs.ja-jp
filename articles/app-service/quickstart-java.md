@@ -10,12 +10,12 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 4041623d1c6ae464afd20e3beff753fb89e0a350
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: f6a4045308aa0ae8488839b0d5ea4d476c4dc883
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91405073"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776325"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>クイック スタート:Azure App Service で Java アプリを作成する
 
@@ -257,26 +257,24 @@ az group delete --name <your resource group name; for example: helloworld-155840
 このコマンドの実行には、少し時間がかかる場合があります。
 
 ## <a name="next-steps"></a>次のステップ
-> [!div class="nextstepaction"]
-> [Java を使用して Azure SQL Database に接続する](../azure-sql/database/connect-query-java.md?toc=%2fazure%2fjava%2ftoc.json)
-
-> [!div class="nextstepaction"]
-> [Java を使用して Azure DB for MySQL に接続する](../mysql/connect-java.md)
 
 > [!div class="nextstepaction"]
 > [Java を使用して Azure DB for PostgreSQL に接続する](../postgresql/connect-java.md)
 
 > [!div class="nextstepaction"]
+> [CI/CD を設定します](deploy-continuous-deployment.md)
+
+> [!div class="nextstepaction"]
+> [料金情報](https://azure.microsoft.com/pricing/details/app-service/linux/)
+
+> [!div class="nextstepaction"]
+> [ログとメトリックの集計](troubleshoot-diagnostic-logs.md)
+
+> [!div class="nextstepaction"]
+> [スケールアップ](manage-scale-up.md)
+
+> [!div class="nextstepaction"]
 > [Java 開発者向けの Azure リソース](/java/azure/)
 
 > [!div class="nextstepaction"]
-> [Java アプリを構成する](configure-language-java.md)
-
-> [!div class="nextstepaction"]
-> [Jenkins での CI/CD](/azure/developer/jenkins/deploy-to-azure-app-service-using-plugin)
-
-> [!div class="nextstepaction"]
-> [カスタム ドメインをマップする](app-service-web-tutorial-custom-domain.md)
-
-> [!div class="nextstepaction"]
-> [Azure 用の Maven プラグインの詳細はこちら](https://github.com/microsoft/azure-maven-plugins)
+> [Java アプリの構成](configure-language-java.md)
