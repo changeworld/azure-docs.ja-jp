@@ -1,14 +1,14 @@
 ---
 title: Azure Arc 対応サーバーを使用した VM 拡張機能の管理
 description: Azure Arc 対応サーバーを使用すると、Azure 以外の VM でのデプロイ後構成と自動化タスクを提供する仮想マシン拡張機能のデプロイを管理できます。
-ms.date: 09/02/2020
+ms.date: 09/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 988c4d7b2fcbffb95932fe70d8014de74dd33343
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1c3d50f407f4412a14201dfe669334dbb083d323
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887735"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329076"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Azure Arc 対応サーバーを使用した仮想マシン拡張機能の管理
 
@@ -34,7 +34,7 @@ VM 拡張機能は、[サポートされているリージョン](overview.md#su
 
 ## <a name="extensions"></a>拡張機能
 
-このプレビューでは、Windows および Linux マシンで次の VM 拡張機能がサポートされています。
+このリリースでは、Windows および Linux マシンで次の VM 拡張機能がサポートされています。
 
 |拡張機能 |OS |Publisher |関連情報 |
 |----------|---|----------|-----------------------|
@@ -66,10 +66,7 @@ Linux 用の Log Analytics エージェント VM 拡張機能を使用するに�
 
 お使いのマシンが、Azure Connected Machine エージェントに対する Windows および Linux オペレーティング システムの[サポートされているバージョン](agent-overview.md#supported-operating-systems)と一致することを確認します。
 
-この機能でサポートされる Connected Machine エージェントの最小バージョンは次のとおりです。
-
-* Windows - 0.7.x
-* Linux - 0.8.x
+Windows および Linux のこの機能でサポートされる Connected Machine エージェントの最小バージョンは 1.0 リリースです。
 
 マシンを必要なエージェントのバージョンにアップグレードするには、「[エージェントのアップグレード](manage-agent.md#upgrading-agent)」を参照してください。
 
@@ -77,7 +74,7 @@ Linux 用の Log Analytics エージェント VM 拡張機能を使用するに�
 
 Azure portal を使用して、Arc for server で管理されているマシンに VM 拡張機能を適用できます。
 
-1. お使いのブラウザーで [Azure portal](https://aka.ms/arcserver-preview) に移動します。
+1. お使いのブラウザーで [Azure portal](https://portal.azure.com) に移動します。
 
 2. ポータルで **[サーバー - Azure Arc]** に移動し、一覧からハイブリッド マシンを選択します。
 
@@ -719,22 +716,10 @@ Arc 対応サーバーからの 1 つ以上の拡張機能の削除は、Azure p
 
 4. **[アンインストール]** を選択し、確認を求めるメッセージが表示されたら、 **[はい]** を選択して続行します。
 
-## <a name="troubleshooting"></a>トラブルシューティング
+## <a name="next-steps"></a>次の手順
 
-拡張機能のデプロイの状態に関するデータは、Azure portal で取得できます。
+* トラブルシューティングに関する情報は、[VM 拡張機能のトラブルシューティング ガイド](troubleshoot-vm-extensions.md)に記載されています。
 
-次のトラブルシューティング手順は、すべての VM 張機能に適用されます。
+* [Azure Policy](../../governance/policy/overview.md) を使用してマシンを管理する方法を確認します。VM の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)、マシンの報告先が、予期された Log Analytics ワークスペースであることの確認、[VM での Azure Monitor](../../azure-monitor/insights/vminsights-enable-policy.md) を使用した監視の有効化などの方法です。
 
-1. ゲスト エージェント ログを調べるには、拡張機能がプロビジョニングされたときのアクティビティを `%SystemDrive%\ProgramData\GuestConfig\ext_mgr_logs` (Windows の場合) および `/var/lib/GuestConfig/ext_mgr_logs` (Linux の場合) で確認します。
-
-2. Windows の場合、特定の拡張機能の詳細な拡張機能ログは `%SystemDrive%\ProgramData\GuestConfig\extension_logs\<Extension>` で確認できます。 Linux の場合、拡張機能の出力は、インストールされる拡張機能ごとに `/var/lib/GuestConfig/extension_logs` のファイルに記録されます。
-
-3. エラーコードや既知の問題などについて、拡張機能固有のドキュメントのトラブルシューティングのセクションを確認します。各拡張機能の追加のトラブルシューティング情報については、拡張機能の概要の「**トラブルシューティングとサポート**」セクションを参照してください。 これには、ログに書き込まれたエラー コードの説明が含まれます。 拡張機能に関する記事へのリンクは、前に示した[拡張機能の表](#extensions)にあります。
-
-4. システム ログを確認します。 排他的なパッケージ マネージャーのアクセスを必要とする別のアプリケーションのインストールが長時間実行されている場合など、拡張機能に干渉する可能性のある他の操作をチェックします。
-
-## <a name="next-steps"></a>次のステップ
-
-- [Azure Policy](../../governance/policy/overview.md) を使用してマシンを管理する方法を確認します。VM の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)、マシンの報告先が、予期された Log Analytics ワークスペースであることの確認、[VM での Azure Monitor](../../azure-monitor/insights/vminsights-enable-policy.md) を使用した監視の有効化などの方法です。
-
-- [Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)の詳細を確認します。 Windows および Linux 用の Log Analytics エージェントは、オペレーティング システムやワークロードの監視データを収集し、Automation Runbook や Update Management などの機能を使用してそれを管理するか、または [Azure Security Center](../../security-center/security-center-intro.md) などの他の Azure サービスを使用する場合に必要になります。
+* [Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)の詳細を確認します。 Windows および Linux 用の Log Analytics エージェントは、オペレーティング システムやワークロードの監視データを収集し、Automation Runbook や Update Management などの機能を使用してそれを管理するか、または [Azure Security Center](../../security-center/security-center-intro.md) などの他の Azure サービスを使用する場合に必要になります。

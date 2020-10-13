@@ -1,14 +1,14 @@
 ---
 title: コードとしてのポリシー ワークフローの設計
 description: Azure Policy 定義をコードとしてデプロイし、リソースを自動的に検証するようにワークフローを設計する方法について説明します。
-ms.date: 08/27/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: bc7a6d72e344868a799638f724b5c225516b5a32
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7fa8eb36283821527e16c1d97e326aa9dcde9dba
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651877"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598214"
 ---
 # <a name="design-policy-as-code-workflows"></a>コードとしてのポリシー ワークフローの設計
 
@@ -38,6 +38,8 @@ Policy as Code ワークフローの詳細を説明する前に、次の定義�
 
 - ポリシー定義:[リソースにタグを追加する](https://github.com/Azure/azure-policy/tree/master/samples/Tags/add-tag)
 - イニシアチブ定義:[課金タグ](https://github.com/Azure/azure-policy/tree/master/samples/PolicyInitiatives/multiple-billing-tags)
+
+また、既存の定義と割り当てを [GitHub](https://www.github.com) のソース コード管理環境に取り込むには、「[Azure Policy リソースをエクスポートする](../how-to/export-resources.md)」を確認してください。
 
 ## <a name="workflow-overview"></a>ワークフローの概要
 

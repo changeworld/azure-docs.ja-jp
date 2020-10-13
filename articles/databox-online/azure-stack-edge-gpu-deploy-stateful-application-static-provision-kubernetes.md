@@ -6,20 +6,22 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/18/2020
+ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: 8366c5b7a05b35891bcf87e446229357a5511359
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6949b2265e1b22d924b67d0d46e5b2f2bf9c23ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899539"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330402"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>kubectl を使用し、Azure Stack Edge Pro デバイスで PersistentVolume を使って Kubernetes ステートフル アプリケーションを実行する
 
 この記事では、PersistentVolume (PV) とデプロイを使用して、Kubernetes で単一インスタンスのステートフル アプリケーションをデプロイする方法について説明します。 このデプロイでは、既存の Kubernetes クラスターで `kubectl` コマンドを使用し、MySQL アプリケーションをデプロイします。 
 
 この手順は、[Azure Stack Edge Pro デバイス上の Kubernetes ストレージ](azure-stack-edge-gpu-kubernetes-storage.md)に関する記事を確認し、[Kubernetes ストレージ](https://kubernetes.io/docs/concepts/storage/)の概念を理解しているユーザーを対象としています。
+
+Azure Stack Edge Pro では、Azure SQL Edge コンテナーの実行もサポートされており、ここで説明する MySQL の場合と同様の方法でデプロイできます。 詳細については、[Azure SQL Edge](../azure-sql-edge/overview.md) に関する記事をご覧ください。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -29,7 +31,7 @@ ms.locfileid: "90899539"
 ### <a name="for-device"></a>デバイスでは
 
 - 1 ノードの Azure Stack Edge Pro デバイスに対するサインイン資格情報がある。
-    - デバイスがアクティブ化されている。 [デバイスをアクティブにする](azure-stack-edge-gpu-deploy-activate.md)に関する記事を参照してください。
+    - デバイスがアクティブ化されている。 [デバイスのアクティブ化](azure-stack-edge-gpu-deploy-activate.md)に関する記事を参照してください。
     - デバイスに、Azure portal を使用して構成されたコンピューティング ロールがあり、Kubernetes クラスターがある。 [コンピューティングの構成](azure-stack-edge-gpu-deploy-configure-compute.md)に関する記事を参照してください。
 
 ### <a name="for-client-accessing-the-device"></a>デバイスにアクセスするクライアントでは
@@ -37,7 +39,7 @@ ms.locfileid: "90899539"
 - Azure Stack Edge Pro デバイスへのアクセスに使用される Windows クライアント システムがある。
     - クライアントでは、Windows PowerShell 5.0 以降が実行されている。 Windows PowerShell の最新バージョンをダウンロードするには、「[Windows PowerShell のインストール](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)」を参照してください。
     
-    - [オペレーティング システムがサポートされている](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)他のクライアントを使用することもできます。 この記事では、Windows クライアントを使用する場合の手順について説明します。 
+    - [サポートされているオペレーティング システム](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)が搭載されている他のクライアントを使用することもできます。 この記事では、Windows クライアントを使用する場合の手順について説明します。 
     
     - [Azure Stack Edge Pro デバイス上の Kubernetes クラスターへのアクセス](azure-stack-edge-gpu-create-kubernetes-cluster.md)に関する記事で説明されている手順を完了している。 完了した内容:
       - `New-HcsKubernetesNamespace` コマンドを使用して `userns1` 名前空間を作成した。 
