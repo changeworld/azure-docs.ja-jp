@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/22/2019
-ms.openlocfilehash: 5403abab0f93edf14237dcc73f29ffb00a6581f0
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: bad9a706c5289966334af26eacbfa41c418b7ab5
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081293"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360805"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用して SAP Business Warehouse からデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -217,7 +217,7 @@ Azure portal でデータ ファクトリに移動します。 **[作成と監�
 
    DTP の SAP ワーク プロセスの並列実行の数を増やすことができます。
 
-   ![create-sap-bw-ohd-delta3](media/load-sap-bw-data/create-sap-bw-ohd-delta3.png)
+   ![DTP の並列処理の数を選択できる並列処理の設定を示すスクリーンショット。](media/load-sap-bw-data/create-sap-bw-ohd-delta3.png)
 
 2. プロセス チェーン内で DTP のスケジュールを設定します。
 

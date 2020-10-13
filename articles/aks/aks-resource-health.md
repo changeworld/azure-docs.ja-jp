@@ -6,12 +6,12 @@ author: yunjchoi
 ms.topic: troubleshooting
 ms.date: 08/18/2020
 ms.author: yunjchoi
-ms.openlocfilehash: d14ed7e714eac175dc7a17bbccd2150f9bb01ef9
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: f830debafb1a9b6b303ee6af987c7cd4fbf34aea
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752691"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358255"
 ---
 # <a name="check-for-resource-health-events-impacting-your-aks-cluster-preview"></a>AKS クラスターに影響するリソース正常性イベントを確認する (プレビュー)
 
@@ -33,7 +33,7 @@ AKS でコンテナー ワークロードを実行する場合は、ワークロ
 - 左側のナビゲーションで、 **[リソース正常性]** を選択します。
 - サブスクリプションを選択し、リソースの種類を Azure Kubernetes Service (AKS) に設定します。
 
-![resource-health-check](./media/aks-resource-health/resource-health-check.png)
+![AKS クラスターのリソースの正常性が示されているスクリーンショット。](./media/aks-resource-health/resource-health-check.png)
 
 ## <a name="check-the-health-status"></a>正常性状態の確認
 

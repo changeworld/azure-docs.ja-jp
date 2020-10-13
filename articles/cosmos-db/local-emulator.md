@@ -5,18 +5,24 @@ ms.service: cosmos-db
 ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
-ms.date: 09/17/2020
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 16448706b7167f55f31c7603676010e4ad30166f
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/22/2020
+ms.custom: devx-track-csharp, contperfq1
+ms.openlocfilehash: 64da8084ec8d40e17a0005f2e70486c7d51bf640
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985849"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627596"
 ---
 # <a name="install-and-use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>ローカルでの開発とテストのために Azure Cosmos エミュレーターをインストールして使用する
 
-Azure Cosmos エミュレーターは、開発目的で Azure Cosmos DB サービスをエミュレートするローカル環境を提供するものです。 Azure Cosmos エミュレーターを使用すると、ローカルでのアプリケーションの開発とテストを、Azure サブスクリプションを作成したりコストをかけたりせずに実施できます。 Azure Cosmos エミュレーターでのアプリケーションの動作に満足できたら、クラウドでの Azure Cosmos アカウントの使用に切り替えることができます。 まず、最新バージョンの [Azure Cosmos エミュレーター](https://aka.ms/cosmosdb-emulator)をローカル コンピューターにダウンロードしてインストールしてください。 この記事では、Windows、Linux、macOS、および Windows Docker 環境にエミュレーターをインストールして使用する方法について説明します。
+Azure Cosmos エミュレーターは、開発目的で Azure Cosmos DB サービスをエミュレートするローカル環境を提供するものです。 Azure Cosmos エミュレーターを使用すると、ローカルでのアプリケーションの開発とテストを、Azure サブスクリプションを作成したりコストをかけたりせずに実施できます。 Azure Cosmos エミュレーターでのアプリケーションの動作に満足できたら、クラウドでの Azure Cosmos アカウントの使用に切り替えることができます。 この記事では、Windows、Linux、macOS、および Windows Docker 環境にエミュレーターをインストールして使用する方法について説明します。
+
+## <a name="download-the-emulator"></a>エミュレーターをダウンロードする
+
+まず、最新バージョンの Azure Cosmos エミュレーターをローカル コンピューターにダウンロードしてインストールしてください。 [エミュレーター リリース ノート](local-emulator-release-notes.md)では、利用可能なすべてのバージョンと各リリースで行われた機能更新プログラムの一覧を示します。
+
+:::image type="icon" source="media/local-emulator/download-icon.png" border="false"::: **[Azure Cosmos エミュレーターをダウンロードする](https://aka.ms/cosmosdb-emulator)**
 
 Azure Cosmos エミュレーターを使ったアプリケーションの開発には、[SQL](local-emulator.md#sql-api)、[Cassandra](local-emulator.md#cassandra-api)、[MongoDB](local-emulator.md#azure-cosmos-dbs-api-for-mongodb)、[Gremlin](local-emulator.md#gremlin-api)、[Table](local-emulator.md#table-api) の API アカウントを利用できます。 現在、エミュレーターのデータ エクスプローラーで完全にサポートされているのは SQL データの表示のみです。現時点では、MongoDB、Gremlin/Graph、Cassandra の各クライアント アプリケーションを使用して作成されたデータを表示できません。 詳細については、さまざまな API から[エミュレーター エンドポイントに接続する方法](#connect-with-emulator-apis)に関するページを参照してください。
 
@@ -38,7 +44,7 @@ Azure Cosmos エミュレーターは、ローカルの開発者ワークステ�
 
 * エミュレーターを使用すると、[プロビジョニングされたスループット](set-throughput.md) モードでのみ Azure Cosmos アカウントを作成できます。現在、[サーバーレス](serverless.md) モードはサポートされていません。
 
-* エミュレーターはスケーラブルなサービスではなく、多数のコンテナーはサポートされていません。 Azure Cosmos エミュレーターを使用する場合、既定では、固定サイズのコンテナー (Azure Cosmos DB SDK を使用する場合にのみサポートされます) を 400 RU/秒で 25 個まで、容量無制限のコンテナーを 5 個まで作成できます。 この値を変更する方法の詳細については、[PartitionCount 値の設定]emulator-command-line-parameters.md#set-partitioncount) の記事を参照してください。
+* エミュレーターはスケーラブルなサービスではなく、多数のコンテナーはサポートされていません。 Azure Cosmos エミュレーターを使用する場合、既定では、固定サイズのコンテナー (Azure Cosmos DB SDK を使用する場合にのみサポートされます) を 400 RU/秒で 25 個まで、容量無制限のコンテナーを 5 個まで作成できます。 この値を変更する方法の詳細については、[PartitionCount 値の設定](emulator-command-line-parameters.md#set-partitioncount)に関する記事をご覧ください。
 
 * エミュレーターには、クラウド サービスのように複数の [Azure Cosmos DB 整合性レベル](consistency-levels.md)が用意されていません。
 
@@ -64,7 +70,7 @@ Azure Cosmos エミュレーターは、ローカルの開発者ワークステ�
 
 まず、最新バージョンの [Azure Cosmos エミュレーター](https://aka.ms/cosmosdb-emulator)をローカル コンピューターにダウンロードしてインストールしてください。 エミュレーターのインストール時に問題が発生した場合は、[エミュレーターのトラブルシューティング](troubleshoot-local-emulator.md)の記事を参照してデバッグしてください。
 
-この記事の次のセクションで説明するように、システム要件に応じて、[Windows](#run-on-windows)、[Docker for Windows](#run-on-windows-docker)、[Linux、または [macOS](#run-on-linux-macos) 上でエミュレーターを実行できます。
+この記事の次のセクションで説明するように、システム要件に応じて、[Windows](#run-on-windows)、[Docker for Windows](#run-on-windows-docker)、[Linux、または macOS](#run-on-linux-macos) 上でエミュレーターを実行できます。
 
 ## <a name="check-for-emulator-updates"></a>エミュレーターの更新プログラムを確認する
 
@@ -104,11 +110,16 @@ Azure Cosmos エミュレーターは、Windows Docker コンテナー上で実�
 
    # <a name="command-line"></a>[コマンド ライン](#tab/cli)
 
-   ```cmd
+   ```bash
 
    md %LOCALAPPDATA%\CosmosDBEmulator\bind-mount
 
    docker run --name azure-cosmosdb-emulator --memory 2GB --mount "type=bind,source=%LOCALAPPDATA%\CosmosDBEmulator\bind-mount,destination=C:\CosmosDB.Emulator\bind-mount" --interactive --tty -p 8081:8081 -p 8900:8900 -p 8901:8901 -p 8902:8902 -p 10250:10250 -p 10251:10251 -p 10252:10252 -p 10253:10253 -p 10254:10254 -p 10255:10255 -p 10256:10256 -p 10350:10350 mcr.microsoft.com/cosmosdb/windows/azure-cosmos-emulator
+   ```
+   Windows ベースの Docker イメージは、一般にすべての Windows ホスト OS と互換性があるとは限りません。 たとえば、既定の Azure Cosmos エミュレーター イメージは Windows 10 および Windows Server 2016 とのみ互換性があります。 Windows Server 2019 と互換性があるイメージが必要な場合は、代わりに次のコマンドを実行します。
+
+   ```bash
+   docker run --name azure-cosmosdb-emulator --memory 2GB --mount "type=bind,source=%hostDirectory%,destination=C:\CosmosDB.Emulator\bind-mount" --interactive --tty -p 8081:8081 -p 8900:8900 -p 8901:8901 -p 8902:8902 -p 10250:10250 -p 10251:10251 -p 10252:10252 -p 10253:10253 -p 10254:10254 -p 10255:10255 -p 10256:10256 -p 10350:10350 mcr.microsoft.com/cosmosdb/winsrv2019/azure-cosmos-emulator:latest
    ```
 
    # <a name="powershell"></a>[PowerShell](#tab/powershell)
@@ -123,10 +134,10 @@ Azure Cosmos エミュレーターは、Windows Docker コンテナー上で実�
 
    応答は次のようになります。
 
-   ```cmd
+   ```bash
    Starting emulator
    Emulator Endpoint: https://172.20.229.193:8081/
-   Master Key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
+   Primary Key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
    Exporting SSL Certificate
    You can import the SSL certificate from an administrator command prompt on the host by running:
    cd /d %LOCALAPPDATA%\CosmosDBEmulatorCert
@@ -143,7 +154,7 @@ Azure Cosmos エミュレーターは、Windows Docker コンテナー上で実�
 
    # <a name="command-line"></a>[コマンド ライン](#tab/cli)
 
-   ```cmd
+   ```bash
    cd  %LOCALAPPDATA%\CosmosDBEmulator\bind-mount
    powershell .\importcert.ps1
    ```
@@ -223,7 +234,7 @@ Linux または macOS 環境上でエミュレーターを使用するには、�
 
 1. Windows 仮想マシンから次のコマンドを実行し、IPv4 アドレスをメモします。
 
-   ```cmd
+   ```bash
    ipconfig.exe
    ```
 
@@ -231,7 +242,7 @@ Linux または macOS 環境上でエミュレーターを使用するには、�
 
 1. Windows VM から、次のオプションを使用してコマンド ラインから Azure Cosmos エミュレーターを起動します。 コマンド ラインでサポートされているパラメーターの詳細については、[エミュレーターのコマンドライン ツール リファレンス](emulator-command-line-parameters.md)に関するページを参照してください。
 
-   ```cmd
+   ```bash
    Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM +4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
    ```
 
@@ -457,6 +468,6 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 
 この記事では、無料のローカル開発のためにローカル エミュレーターを使用する方法について学習しました。 次の記事に進むことができます。
 
-* [Java、Python、Node.js アプリで使用する Azure Cosmos エミュレーター証明書をエクスポートする](local-emulator-export-ssl-certificates.md)
+* [Java、Python、Node.js アプリで使用する Azure Cosmos Emulator 証明書をエクスポートする](local-emulator-export-ssl-certificates.md)
 * [コマンド ライン パラメーターと PowerShell コマンドを使用してエミュレーターを制御する](emulator-command-line-parameters.md)
 * [エミュレーターに関する問題をデバッグする](troubleshoot-local-emulator.md)

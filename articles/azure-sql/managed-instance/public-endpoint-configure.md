@@ -5,17 +5,17 @@ services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
-ms.topic: conceptual
+ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: vanto, carlrab
+ms.reviewer: vanto, sstein
 ms.date: 05/07/2019
-ms.openlocfilehash: 1c2dd3f93abf6418b99bf28d11f2df254b024971
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3708885759a6a353742fe89b4454b39496aeeab
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708644"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619986"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-managed-instance"></a>Azure SQL Managed Instance のパブリック エンドポイントを構成する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -45,7 +45,7 @@ ms.locfileid: "84708644"
 1. **[セキュリティ]** の設定で、 **[仮想ネットワーク]** タブを選択します。
 1. 仮想ネットワークの構成ページで **[有効]** を選択し、 **[保存]** アイコンを選択して構成を更新します。
 
-![mi-vnet-config.png](./media/public-endpoint-configure/mi-vnet-config.png)
+![パブリック エンドポイントが有効になっている SQL マネージド インスタンスの仮想ネットワーク ページを示すスクリーンショット。](./media/public-endpoint-configure/mi-vnet-config.png)
 
 ## <a name="enabling-public-endpoint-for-a-managed-instance-using-powershell"></a>PowerShell を使用してマネージド インスタンスのパブリック エンドポイントを有効にする
 
@@ -84,11 +84,11 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
 1. マネージド インスタンスの構成ページをまだ開いている場合は、 **[概要]** タブに移動します。そうでない場合は、**SQL マネージド インスタンス** リソースに戻ります。 **[仮想ネットワーク/サブネット]** リンクを選択します。そうすると、仮想ネットワーク構成ページが表示されます。
 
-    ![mi-overview.png](./media/public-endpoint-configure/mi-overview.png)
+    ![仮想ネットワークとサブネットの値を確認できる仮想ネットワーク構成ページを示すスクリーンショット](./media/public-endpoint-configure/mi-overview.png)
 
 1. 仮想ネットワークの左側の構成ウィンドウで **[サブネット]** タブを選択し、マネージド インスタンスの **[セキュリティ グループ]** を書き留めます。
 
-    ![mi-vnet-subnet.png](./media/public-endpoint-configure/mi-vnet-subnet.png)
+    ![マネージド インスタンスのセキュリティ グループを取得できる [サブネット] タブを示すスクリーンショット。](./media/public-endpoint-configure/mi-vnet-subnet.png)
 
 1. そのマネージド インスタンスが含まれているリソース グループに戻ります。 前に書き留めておいた**ネットワーク セキュリティ グループ**の名前が表示されるはずです。 名前を選択して、ネットワーク セキュリティ グループの構成ページに移動します。
 
@@ -99,12 +99,12 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
     |**ソース**     |任意の IP アドレスまたはサービス タグ         |<ul><li>Power BI などの Azure サービスの場合は、Azure クラウド サービス タグを選択します</li> <li>自分のコンピューターまたは Azure 仮想マシンの場合は、NAT IP アドレスを使用します</li></ul> |
     |**ソース ポート範囲**     |* |ソース ポートは、通常、動的に割り当てられ、予測できないため、* (任意) のままにしておきます |
     |**宛先**     |Any         |マネージド インスタンスのサブネットへのトラフィックを許可するには、宛先は [任意] のままにしておきます |
-    |**宛先ポート範囲**     |3342         |宛先ポートの範囲を 3342 に設定します。これが、マネージド インスタンスのパブリック TDS エンドポイントです |
+    |**宛先ポート範囲**     |3342         |宛先ポート野範囲を 3342 に設定します。これが、マネージド インスタンスのパブリック TDS エンドポイントです |
     |**プロトコル**     |TCP         |SQL Managed Instance では、TDS に TCP プロトコルを使用します |
     |**操作**     |Allow         |パブリック エンドポイントを介したマネージド インスタンスへの受信トラフィックを許可します |
     |**優先順位**     |1300         |この規則が **deny_all_inbound** 規則よりも優先度が高いことを確認してください |
 
-    ![mi-nsg-rules.png](./media/public-endpoint-configure/mi-nsg-rules.png)
+    ![新しい public_endpoint_inbound ルールが deny_all_inbound ルールの上にある受信セキュリティ ルールを示すスクリーンショット。](./media/public-endpoint-configure/mi-nsg-rules.png)
 
     > [!NOTE]
     > マネージド インスタンスへのパブリック エンドポイント接続にはポート 3342 が使用され、現時点では変更できません。
@@ -114,7 +114,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 1. パブリック エンドポイントに対して有効になっている マネージド インスタンスの構成ページに移動します。 **[設定]** 構成の下にある **[接続文字列]** タブを選択します。
 1. パブリック エンドポイントのホスト名が <mi_name>.**public**.<dns_zone>.database.windows.net 形式になっていることと、接続に使用されるポートが 3342 であることに注意してください。
 
-    ![mi-public-endpoint-conn-string.png](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
+    ![パブリック エンドポイントとプライベート エンドポイントの接続文字列を示すスクリーンショット。](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
 
 ## <a name="next-steps"></a>次のステップ
 

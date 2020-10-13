@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 52cdf25b4d77fee0a7a2182e3f1ce60865caf066
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: f49ae5139dc92ec1448e5dea05be8c8c216ef91e
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088563"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361349"
 ---
 # <a name="how-to-use-perfinsights-in-azure"></a>Azure で PerfInsights を使用する方法
 
@@ -259,8 +259,8 @@ PerfInsights ツールを実行するには、次の手順に従います。
 
 **[検索結果]** タブを選択します。
 
-![PerfInsights レポートのスクリーンショット](media/how-to-use-perfInsights/pi-finding-tab.png)
-![PerfInsights レポートのスクリーンショット](media/how-to-use-perfInsights/pi-findings.png)
+![PerfInsights レポートの [概要] タブのスクリーンショット。](media/how-to-use-perfInsights/pi-finding-tab.png)
+![PerfInsights レポートの [ストレージ] タブのスクリーンショット。](media/how-to-use-perfInsights/pi-findings.png)
 
 > [!NOTE] 
 > [高] と分類された結果は、パフォーマンスの問題の原因となる可能性のある既知の問題です。 [中] と分類された結果は、最適ではないが、必ずしもパフォーマンス問題の原因とはならない構成です。 [低] と分類された結果は、単なる情報提供のためのステートメントです。
