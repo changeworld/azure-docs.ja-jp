@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 04a308805dd69c4d9245d287a391f1e7fa7d50f2
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.reviewer: jrasnick
+ms.openlocfilehash: c03051e2c8fddc21e4399375faeff6a40fb4d0d4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055568"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288105"
 ---
 # <a name="use-file-metadata-in-queries"></a>クエリでファイルのメタデータを使用する
 
@@ -22,7 +22,7 @@ ms.locfileid: "89055568"
 
 場合によっては、結果セット内の特定の行に関連するファイル ソースまたはフォルダー ソースを把握しておく必要があります。
 
-関数 `filepath` および `filename` を使用すれば、結果セット内にファイル名およびそのパスを返すことができます。 また、それらを使用することで、ファイル名やフォルダー パスに基づいてデータをフィルター処理することもできます。 これらの関数については、「[filename 関数](query-data-storage.md#filename-function)」と「[filepath 関数](query-data-storage.md#filepath-function)」の構文セクションで説明されています。 以下で、サンプルに沿って簡単に説明します。
+関数 `filepath` および `filename` を使用すれば、結果セット内にファイル名およびそのパスを返すことができます。 また、それらを使用することで、ファイル名やフォルダー パスに基づいてデータをフィルター処理することもできます。 これらの関数については、「[filename 関数](query-data-storage.md#filename-function)」と「[filepath 関数](query-data-storage.md#filepath-function)」の構文セクションで説明されています。 以降のセクションでは、サンプルに沿って簡単な説明があります。
 
 ## <a name="prerequisites"></a>前提条件
 

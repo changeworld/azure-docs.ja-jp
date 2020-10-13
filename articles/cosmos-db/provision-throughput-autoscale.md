@@ -6,12 +6,12 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 20b0bcfe5043d4767199c36796fa1123ed779363
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 87112af870100859ae008f77eefc4b58eac1b0fb
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791148"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570726"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>自動スケーリングのスループットを使用して Azure Cosmos コンテナーとデータベースを作成する
 
@@ -77,7 +77,7 @@ Azure Cosmos DB を使用すると、標準 (手動) または自動スケーリ
 | **プロビジョニング スループット (RU/秒)** | 手動でプロビジョニングします。 | ワークロードの使用パターンに基づいて、自動的に瞬時にスケーリングされます。 |
 | **要求/操作のレート制限 (429)**  | 使用量がプロビジョニング済みの容量を超えた場合、発生する可能性があります。 | 設定した自動スケーリングのスループットの範囲内で RU/秒を使用する場合は、発生しません。    |
 | **容量計画** |  容量計画を行い、必要とされる正確なスループットをプロビジョニングする必要があります。 |    容量計画と容量管理は、システムによって自動的に行われます。 |
-| **料金** | [1 時間あたりの標準 (手動) の RU/秒レート](https://azure.microsoft.com/pricing/details/cosmos-db/)を使用して、手動でプロビジョニングされた RU/秒に対して、時間単位で料金を支払います。 | システムによって 1 時間の枠内でスケールアップされた最大 RU/秒に対して、時間単位で料金を支払います。 <br/><br/> 単一の書き込みリージョンのアカウントの場合、[1 時間あたりの自動スケーリングの RU/秒レート](https://azure.microsoft.com/pricing/details/cosmos-db/)を使用して、使用された RU/秒に対して時間単位で料金を支払います。 <br/><br/>書き込みリージョンが複数あるアカウントの場合、自動スケーリングに対する追加料金は発生しません。 同じ [1 時間あたりのマルチマスター RU/秒レート](https://azure.microsoft.com/pricing/details/cosmos-db/)を使用して、使用されたスループットに対して時間単位で料金を支払います。 |
+| **料金** | [1 時間あたりの標準 (手動) の RU/秒レート](https://azure.microsoft.com/pricing/details/cosmos-db/)を使用して、手動でプロビジョニングされた RU/秒に対して、時間単位で料金を支払います。 | システムによって 1 時間の枠内でスケールアップされた最大 RU/秒に対して、時間単位で料金を支払います。 <br/><br/> 単一の書き込みリージョンのアカウントの場合、[1 時間あたりの自動スケーリングの RU/秒レート](https://azure.microsoft.com/pricing/details/cosmos-db/)を使用して、使用された RU/秒に対して時間単位で料金を支払います。 <br/><br/>書き込みリージョンが複数あるアカウントの場合、自動スケーリングに対する追加料金は発生しません。 同じ [1 時間あたりの複数リージョン書き込み RU/秒レート](https://azure.microsoft.com/pricing/details/cosmos-db/)を使用して、使用されたスループットに対して時間単位で料金を支払います。 |
 | **最適なワークロードの種類** |  予測可能で安定したワークロード|   予測不可能で変動するワークロード  |
 
 ## <a name="next-steps"></a>次のステップ

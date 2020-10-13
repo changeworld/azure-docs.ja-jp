@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
-ms.openlocfilehash: 03e6f51d2ab7138675f7d79c04faa2e4dffec60c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 98514bad6a04e0c3058faf3133fc44333039ce53
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825686"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361468"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Azure シリアル コンソールにアクセスできず、ディスク レイアウトが LVM (論理ボリューム マネージャー) を使用している場合の Linux VM のトラブルシューティング
 
@@ -143,7 +143,7 @@ mount  /dev/mapper/rootvg-usrlv /rescue/usr
 コマンドは、ソフトウェアのインストール、削除、更新に使用できます。 エラーを修正するために、VM のトラブルシューティングを行います。
 
 
-lsblk コマンドを実行します。/rescue は / で、/rescue/boot は /boot になっています ![Chrooted](./media/chroot-logical-volume-manager/chrooted.png)
+lsblk コマンドを実行します。/rescue は / で、/rescue/boot は /boot になっています ![lsblk コマンドとその出力ツリーが表示されたコンソール ウィンドウを示すスクリーンショット。](./media/chroot-logical-volume-manager/chrooted.png)
 
 ## <a name="perform-fixes"></a>修正を実行する
 
@@ -169,7 +169,7 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 *チュートリアル*
 
 **grep** コマンドを実行すると、**grub.cfg** が認識しているカーネルが一覧表示されます。
-![カーネル](./media/chroot-logical-volume-manager/kernels.png)
+![カーネルに対する grep 検索の結果を表示するコンソール ウィンドウを示すスクリーンショット。](./media/chroot-logical-volume-manager/kernels.png)
 
 **grub2-editenv list** を実行すると、次回の起動時に読み込まれるカーネルが表示されます ![既定のカーネル](./media/chroot-logical-volume-manager/kernel-default.png)
 
@@ -190,7 +190,7 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 
 **chroot** 環境を終了し、必要な **LV** をマウントします
 
-![詳細設定](./media/chroot-logical-volume-manager/advanced.png)
+![lvs コマンド、その後に LV のマウントが表示されているコンソール ウィンドウを示すスクリーンショット。](./media/chroot-logical-volume-manager/advanced.png)
 
 以下を実行して、**chroot** 環境にもう一度アクセスします
 

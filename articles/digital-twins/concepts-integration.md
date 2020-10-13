@@ -7,26 +7,28 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ca500401a6bff8a00dd9c51eecb29aa93fdbc82b
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 7e360c158c7887109684d13f774cbbda1813373e
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042651"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91729136"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>Azure Digital Twins を他のサービスと統合する
 
-Azure Digital Twins は、通常、他のサービスと共に使用されます。 Azure Digital Twins は、[**イベント ルート** ](concepts-route-events.md)使用して、テレメトリと通知を配信するために使用される [IoT Hub](../iot-hub/about-iot-hub.md) などのアップストリーム サービスからデータを受信します。 
+Azure Digital Twins は、通常、他のサービスと共に使用されます。 Azure Digital Twins では、[**イベント ルート**](concepts-route-events.md)使用して、テレメトリと通知を配信するために使用される [IoT Hub](../iot-hub/about-iot-hub.md) や [Logic Apps](../logic-apps/logic-apps-overview.md) などのアップストリーム サービスからデータを受信します。 
 
-Azure Digital Twins では、ストレージ、ワークフローの統合、分析などのために、Azure Maps ([*方法:Azure Digital Twins を使用して Azure Maps の屋内マップを更新する*](how-to-integrate-maps.md))、Time Series Insights ([*方法:Time Series Insights との統合*](how-to-integrate-time-series-insights.md)に関する記事) などのダウンストリーム サービスにデータをルーティングすることもできます。 
+Azure Digital Twins では、ストレージ、ワークフロー統合、分析などのためにデータを [Azure Maps](../azure-maps/about-azure-maps.md) や [Time Series Insights](../time-series-insights/time-series-insights-update-overview.md) などのダウンストリーム サービスにルーティングすることもできます。 
 
 ## <a name="data-ingress"></a>データのイングレス
 
-Azure Digital Twins は、IoT Hub、Logic Apps、独自のカスタムサービスなど、任意のサービスのデータとイベント使用して動作できます。 これにより、環境内の物理デバイスからテレメトリを収集し、クラウドの Azure Digital Twins グラフを使用してこのデータを処理することができます。
+Azure Digital Twins は、[IoT Hub](../iot-hub/about-iot-hub.md)、[Logic Apps](../logic-apps/logic-apps-overview.md)、独自のカスタム サービスなど、任意のサービスからのデータとイベント使用して動作できます。 これにより、環境内の物理デバイスからテレメトリを収集し、クラウドの Azure Digital Twins グラフを使用してこのデータを処理することができます。
 
 Azure Digital Twins には IoT Hub が組み込まれていません。 現在運用中の既存の IoT Hub を使用することも、新しいものをデプロイすることもできます。 これにより、IoT Hub のすべてのデバイス管理機能にフル アクセスできます。
 
-任意のソースから Azure Digital Twins にデータを取り込むには、[Azure 関数](../azure-functions/functions-overview.md)を使用します。 このパターンの詳細については、[*IoT Hub からテレメトリを取り込む方法*](how-to-ingest-iot-hub-data.md)に関するページを参照するか、Azure Digital Twins [*チュートリアルのエンド ツー エンドのソリューションの接続*](tutorial-end-to-end.md)に関するページを参照してください。
+任意のソースから Azure Digital Twins にデータを取り込むには、[**Azure 関数**](../azure-functions/functions-overview.md)を使用します。 このパターンの詳細については、[*IoT Hub からテレメトリを取り込む方法*](how-to-ingest-iot-hub-data.md)に関するページを参照するか、Azure Digital Twins [*チュートリアルのエンド ツー エンドのソリューションの接続*](tutorial-end-to-end.md)に関するページを参照してください。 
+
+また、Azure Digital Twins を Logic Apps トリガーに接続する方法については、[*Logic Apps と統合する方法*](how-to-integrate-logic-apps.md)に関するページを参照してください。
 
 ## <a name="data-egress-services"></a>データ エグレス サービス
 
@@ -37,9 +39,11 @@ Azure Digital Twins は、接続されている**エンドポイント**にデ�
 
 エンドポイントは、管理 API または Azure portal を使用して Azure Digital Twins にアタッチされています。 エンドポイントを Azure Digital Twins に接続する方法の詳細については、[*エンドポイントとルートを管理する方法*](how-to-manage-routes-apis-cli.md)に関するページを参照してください。
 
-他にも、[Azure Storage](../storage/common/storage-introduction.md) や [Time Series Insights](../time-series-insights/time-series-insights-update-overview.md) など、データの最終的な転送先となるサービスが多数あります。 このようなサービスにデータを送信するには、宛先サービスをエンドポイントにアタッチします。
+他にも、[Azure Storage](../storage/common/storage-introduction.md)、[Azure Maps](../azure-maps/about-azure-maps.md)、[Time Series Insights](../time-series-insights/time-series-insights-update-overview.md) など、データの最終的な転送先となるサービスが多数あります。 このようなサービスにデータを送信するには、宛先サービスをエンドポイントにアタッチします。
 
-たとえば、[Azure Maps](../azure-maps/about-azure-maps.md) も使用していて、Azure Digital Twins の[ツイン グラフ](concepts-twins-graph.md)と場所を関連付ける必要がある場合は、Azure Functions で Event Grid を使用して、デプロイ内のすべてのサービス間の通信を確立できます。
+たとえば、Azure Maps も使用していて、Azure Digital Twins の[ツイン グラフ](concepts-twins-graph.md)と場所を関連付ける必要がある場合は、Azure Functions で Event Grid を使用して、デプロイ内のすべてのサービス間の通信を確立できます。 これについて詳しくは、[*Azure Digital Twins を使用して Azure Maps の屋内マップを更新する方法*](how-to-integrate-maps.md)に関するページを参照してください
+
+また、Time Series Insights と同様の方法でデータをルーティングする方法については、[*Time Series Insights と統合する方法*](how-to-integrate-time-series-insights.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

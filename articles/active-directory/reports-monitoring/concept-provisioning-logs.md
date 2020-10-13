@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory ポータルのプロビジョニング ログ (プレビュー) | Microsoft Docs
-description: Azure Active Directory ポータルのプロビジョニング アクティビティ レポートの概要
+description: Azure Active Directory ポータルのプロビジョニング ログ レポートの概要
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 09/02/2020
+ms.date: 10/07/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8aa31c6e196f916b4c7633da0c54a30ab9d7b548
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 6109f35c42d4b4a44430eeb99ec115f4cdc1a619
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361281"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812558"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Azure Active Directory ポータルのプロビジョニング レポート (プレビュー)
 
@@ -42,6 +42,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 ## <a name="prerequisites"></a>前提条件
 
 ### <a name="who-can-access-the-data"></a>誰がデータにアクセスできますか。
+* アプリケーションの所有者
 * セキュリティ管理者、セキュリティ閲覧者、レポート閲覧者、アプリケーション管理者、クラウド アプリケーション管理者のいずれかのロールであるユーザー
 * グローバル管理者
 
@@ -210,13 +211,11 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 ## <a name="what-you-should-know"></a>知っておくべきこと
 
-- 報告されたプロビジョニング データは、Premium Edition の場合は 30 日間、Free Edition の場合は 7 日間、Azure portal に保存されます。
+- 報告されたプロビジョニング データは、Premium Edition の場合は 30 日間、Free Edition の場合は 7 日間、Azure portal に保存されます。プロビジョニング ログはログ分析のために発行して、30 日間を超えても保存することができます。 
 
 - [変更 ID] 属性は、一意の識別子として使用できます。 これは、たとえば製品サポートとやり取りするときに便利です。
 
 - プロビジョニング データを CSV ファイルとしてダウンロードするオプションは現在ありませんが、[Microsoft Graph](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http) を使用してデータをエクスポートできます。
-
-- ログの分析は、現時点ではサポートされていません。
 
 - ユーザーがスコープに含まれていない場合、スキップされたイベントが表示されることがあります。 同期スコープがすべてのユーザーとグループに設定されているときは特にこれが予想されます。 Microsoft のサービスでは、スコープ外であっても、テナント内のすべてのオブジェクトが評価されます。 
 
@@ -252,3 +251,4 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 * [ユーザー プロビジョニングの状態を確認する](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)
 * [Azure AD ギャラリー アプリケーションへのユーザー プロビジョニングの構成に関する問題](../app-provisioning/application-provisioning-config-problem.md)
+* [プロビジョニング ログ グラフ API](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta)

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a4ab403ebafbf078accd2ee2256c0c5bb69548e9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c837a4020ab1aaad1798d6b19e72e09edafea1f5
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288272"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360354"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver のための高可用性のアーキテクチャとシナリオ
 
@@ -344,7 +344,7 @@ SAP システム全体の高可用性を実現するには、SAP システムの
 
 > このセクションは次に適用されます。
 >
-> ![Windows][Logo_Windows] Windows および ![Linux][Logo_Linux] Linux
+> ![Windows ロゴ。][Logo_Windows] Windows および ![Linux ロゴ。][Logo_Linux] Linux
 >
 
 SAP アプリケーション サーバーおよびダイアログ インスタンスについては、通常、特定の高可用性ソリューションは不要です。 高可用性は冗長性によって実現し、Azure Virtual Machines のさまざまなインスタンスで複数のダイアログ インスタンスを構成します。 Azure Virtual Machines の 2 つのインスタンスに少なくとも 2 つの SAP アプリケーション インスタンスをインストールする必要があります。
@@ -382,7 +382,7 @@ Azure スケール ユニット内の Azure 可用性セットで使用できる
 
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-windows"></a>Windows での SAP ASCS/SCS インスタンスの高可用性のアーキテクチャ
 
-> ![Windows][Logo_Windows] Windows
+> ![Windows ロゴ。][Logo_Windows] Windows
 >
 
 WSFC ソリューションを使用して、SAP ASCS/SCS インスタンスを保護できます。 ソリューションには、2 つのバリエーションがあります。
@@ -395,7 +395,7 @@ WSFC ソリューションを使用して、SAP ASCS/SCS インスタンスを�
 
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-linux"></a>Linux での SAP ASCS/SCS インスタンスの高可用性アーキテクチャ
 
-> ![Linux][Logo_Linux] Linux
+> ![Linux ロゴ。][Logo_Linux] Linux
 > 
 > SUSE クラスター フレームワークを使用した SAP ASCS/SCS インスタンスのクラスタリングについて詳しくは、「[SUSE Linux Enterprise Server for SAP Applications 上の Azure VM での SAP NetWeaver の高可用性][sap-suse-ascs-ha]」をご覧ください。 可用性の高い NFS が必要でない、SLES での代替 HA アーキテクチャについては、[SAP アプリケーション用に Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の SAP NetWeaver に関する高可用性ガイド][sap-suse-ascs-ha-anf]を参照してください。
 
@@ -404,7 +404,7 @@ Red Hat クラスター フレームワークを使用した SAP ASCS/SCS イン
 
 ### <a name="sap-netweaver-multi-sid-configuration-for-a-clustered-sap-ascsscs-instance"></a>クラスター化された SAP ASCS/SCS インスタンスのための SAP NetWeaver マルチ SID の構成
 
-> ![Windows][Logo_Windows] Windows
+> ![Windows ロゴ。][Logo_Windows] Windows
 > 
 > マルチ SID は、ファイル共有と共有ディスクを使用して WSFC でサポートされます。
 > 
@@ -414,7 +414,7 @@ Red Hat クラスター フレームワークを使用した SAP ASCS/SCS イン
 
 * [Windows Server フェールオーバー クラスタリングと共有ディスクを使用する SAP ASCS/SCS インスタンス マルチ SID の高可用性に関するページ][sap-ascs-ha-multi-sid-wsfc-shared-disk]
 
-> ![Linux][Logo_Linux] Linux
+> ![Linux ロゴ。][Logo_Linux] Linux
 > 
 > マルチ SID クラスタリングは、SAP ASCS/Pacemaker の Linux クラスターでサポートされており、同じクラスター上で **5 つ** の SAP SID に制限されています。
 > Linux のマルチ SID 高可用性アーキテクチャについての詳細は、次をご覧ください。

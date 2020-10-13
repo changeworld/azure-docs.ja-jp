@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2020
 ms.author: duau
-ms.openlocfilehash: 0d669d4232adca3348b51c2a48947e0dabf0a472
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 45f9e7a4e508cffd3593cec7bbcea3dd7882a60c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324061"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819031"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure Front Door についてよく寄せられる質問
 
@@ -248,6 +248,10 @@ Azure portal または [Azure REST API](https://docs.microsoft.com/rest/api/fron
 1. **証明書のサブジェクト名の不一致**: HTTPS 接続の場合、Front Door では、バックエンドからバックエンドのホスト名と一致するサブジェクト名を持つ有効な CA からの証明書が提示されることを前提としています。 例として、バックエンドのホスト名が `myapp-centralus.contosonews.net` に設定されており、TLS ハンドシェイク中にバックエンドが提供する証明書のサブジェクト名に `myapp-centralus.contosonews.net` も `*myapp-centralus*.contosonews.net` も含まれていない場合、Front Door はその接続を拒否してエラーを生成します。 
     1. **解決策**:コンプライアンスの観点からは推奨されませんが、Front Door で証明書のサブジェクト名のチェックを無効にすることで、このエラーを回避できます。 これは、Azure portal の [設定]、および API の BackendPoolsSettings で設定できます。
 2. **無効な CA からのバックエンド ホスティング証明書**: Front Door のバックエンドでは、[有効な CA](/azure/frontdoor/front-door-troubleshoot-allowed-ca) からの証明書のみを使用できます。 内部 CA からの証明書または自己署名証明書は許可されません。
+
+### <a name="can-i-use-clientmutual-authentication-with-azure-front-door"></a>Azyre Front Door でクライアント/相互認証を使用できますか?
+
+いいえ。 TLS 1.2 をサポートしている Azure Front Door は [RFC 5246](https://tools.ietf.org/html/rfc5246) でクライアント/相互認証を導入していますが、現時点で Azure Front Door はクライアント/相互認証をサポートしていません。
 
 ## <a name="diagnostics-and-logging"></a>診断とログ記録
 
