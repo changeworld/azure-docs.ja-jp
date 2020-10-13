@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/24/2020
+ms.date: 09/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 9aa5eb54d79d98627697c51ee7dcb16a44fccb60
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: c59dbe9464e70c1a071b64fabf91ce56f409d8d7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90053210"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258523"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft ID プラットフォーム アクセス トークン
 
@@ -266,9 +266,17 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 | 管理者が [PowerShell によって、](/powershell/module/azuread/revoke-azureaduserallrefreshtoken)ユーザーのすべての更新トークンを無効にする | 取り消し | 取り消し |取り消し | 取り消し | 取り消し |
 | Web 上でのシングル サインアウト ([v1.0](../azuread-dev/v1-protocols-openid-connect-code.md#single-sign-out)、[v2.0](v2-protocols-oidc.md#single-sign-out)) | 取り消し | 存続 | 取り消し | 存続 | 存続 |
 
+#### <a name="non-password-based"></a>パスワードに基づかない
+
+"*パスワードに基づかない*" ログインは、ユーザーがそれを取得する際にパスワードを入力しないことを意味します。 パスワードに基づかないログインの例を次に示します。
+
+- 顔を使用する Windows Hello
+- FIDO2 キー
+- SMS
+- 音声
+- PIN 
+
 > [!NOTE]
-> ｢パスワード基づかない｣ログインは、ユーザーがそれを得るために、パスワードをタイプしなかった場合です。 たとえば、Windows Hello、FIDO2 キー、または PIN で自分の顔を使用する場合です。
->
 > Windows 10 のプライマリ更新トークン (PRT) は、資格情報に基づいて分離されます。 たとえば、Windows Hello とパスワードにはそれぞれ独立した PRT があります。 ユーザーが Hello の資格情報 (PIN または生体認証) を使用してサインインし、パスワードを変更すると、以前に取得したパスワードベースの PRT が取り消されます。 パスワードを使用して再度サインインすると、古い PRT が無効になり、新しい PRT が要求されます。
 >
 > 更新トークンは、新しいアクセス トークンや更新トークンのフェッチに使用されるときに無効になる、または取り消されることはありません。  ただし、新しいトークンには新しい有効期限があるため、アプリでは古いものを使用後すぐに破棄して、新しいトークンで置き換える必要があります。 

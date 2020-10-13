@@ -3,12 +3,12 @@ title: Azure Service Bus の IP ファイアウォール規則を構成する
 description: ファイアウォール ルールを使用して、特定の IP アドレスから Azure Service Bus への接続を許可する方法です。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 699ece2e78ff0605ff4076b09c023d14e289b1f7
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 2ba6b1902213af8d968b220a387e419e56e8aa67
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064640"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300957"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-ip-addresses-or-ranges"></a>特定の IP アドレスまたは範囲から Azure Service Bus への接続を許可します
 既定では、要求が有効な認証と承認を受けている限り、Service Bus 名前空間にはインターネットからアクセスできます。 これは IP ファイアウォールを使用して、さらに [CIDR (クラスレス ドメイン間ルーティング)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 表記の一連の IPv4 アドレスまたは IPv4 アドレス範囲のみに制限できます。
@@ -51,7 +51,7 @@ ms.locfileid: "88064640"
     
     **[すべてのネットワーク]** オプションを選択した場合、すべての IP アドレスからの接続が Service Bus 名前空間によって受け入れられます。 この既定の設定は、IP アドレス範囲 0.0.0.0/0 を受け入れる規則と同じです。 
 
-    ![ファイアウォールで [すべてのネットワーク] のオプションが選択されている](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
+    ![Azure portal の[ネットワーク] ページのスクリーンショット。 [ファイアウォールと仮想ネットワーク] タブで、すべてのネットワークからのアクセスを許可するオプションが選択されています。](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
 1. 指定した IP アドレスからのアクセスのみを許可するには、 **[選択されたネットワーク]** オプションを選択します (まだ選択されていない場合)。 **[ファイアウォール]** セクションで、次の手順のようにします。
     1. 現在のクライアント IP にその名前空間へのアクセスを許可するには、 **[クライアント IP アドレスを追加する]** オプションを選択します。 
     2. **[アドレス範囲]** に、特定の IPv4 アドレスまたは IPv4 アドレスの範囲を CIDR 表記で入力します。 
@@ -60,7 +60,7 @@ ms.locfileid: "88064640"
         > [!WARNING]
         > **[選択されたネットワーク]** オプションを選び、IP アドレスまたはアドレス範囲を指定しなかった場合、サービスではすべてのネットワークからのトラフィックが許可されます。 
 
-        ![[ファイアウォール] - [すべてのネットワーク] オプションが選択されている](./media/service-bus-ip-filtering/firewall-selected-networks-trusted-access-disabled.png)
+        ![Azure portal の[ネットワーク] ページのスクリーンショット。 選択したネットワーク からのアクセスを許可するオプションが選択され、[ファイアウォール] セクションが強調表示されています。](./media/service-bus-ip-filtering/firewall-selected-networks-trusted-access-disabled.png)
 3. ツール バーの **[保存]** を選択して設定を保存します。 ポータルの通知に確認が表示されるまで、数分間お待ちください。
 
     > [!NOTE]

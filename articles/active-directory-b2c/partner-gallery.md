@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 21498f9117ac25356c9381d632644bbaa4d5a74b
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 9e83fcd6a8e6a7b0c81f47cc3ad97b7f55da1b3b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706688"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713188"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C の ISV パートナー
 
