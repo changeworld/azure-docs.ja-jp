@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 09/02/2020
-ms.openlocfilehash: b5042eb86f5d534655fd831147a9ab4ebb094e9b
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 7d73d832f96d087964c46c6c735c0385832c08db
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419966"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370914"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory のマッピング データ フロー
 
@@ -61,7 +61,7 @@ ms.locfileid: "89419966"
 
 **[最適化]** タブには、パーティション分割を構成するためのオプション設定が含まれています。 データ フローを最適化する方法の詳細については、[マッピング データ フローのパフォーマンス ガイド](concepts-data-flow-performance.md)に関する記事を参照してください。
 
-![最適化](media/data-flow/optimize.png "最適化")
+![パーティション オプション、パーティションの種類、パーティションの数が含まれる [最適化] タブが示されているスクリーンショット。](media/data-flow/optimize.png)
 
 #### <a name="inspect"></a>検査
 

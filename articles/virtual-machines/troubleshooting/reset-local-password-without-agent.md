@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: genli
-ms.openlocfilehash: cb2f08c4788c90f8bdb2af9c6ef95fd1ac43b994
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4cec8f77cacc5d3492dd6a5f8a8baa060f910763
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028670"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650598"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Azure VM のローカルの Windows パスワードをオフラインでリセットする
 Azure ゲスト エージェントがインストールされている場合、[Azure Portal または Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を使用して、Azure 内の VM のローカルの Windows パスワードをリセットできます。 これは、Azure VM のパスワードをリセットする最も一般的な方法です。 Azure のゲスト エージェントが応答しない場合やカスタム イメージのアップロード後にインストールに失敗する場合、Windows のパスワードを手動でリセットできます。 この記事では、ソース OS の仮想ディスクを別の VM に接続してローカル アカウントのパスワードをリセットする方法について説明します。 この記事に記載されている手順は、Windows ドメイン コントローラーには適用されません。 
@@ -59,29 +59,22 @@ Azure ゲスト エージェントへのアクセス権がない場合に Azure 
      Version=1
      ```
      
-     ![gpt.ini を作成する](./media/reset-local-password-without-agent/create-gpt-ini.png)
+     :::image type="content" source="./media/reset-local-password-without-agent/create-gpt-ini.png" alt-text="gpt.ini ファイルに対して行われる更新を示すスクリーンショット。":::
 
-4. `\Windows\System32\GroupPolicy\Machine\Scripts\` に `scripts.ini` を作成します。 非表示のフォルダーが表示されていることを確認します。 必要に応じて、`Machine` フォルダーまたは `Scripts` フォルダーを作成します。
+4. `\Windows\System32\GroupPolicy\Machine\Scripts\` に `scripts.ini` を作成します。 非表示のフォルダーが表示されていることを確認します。 必要に応じて、`Machine` フォルダーまたは `Scripts` フォルダーを作成します。 
    
    * 作成した `scripts.ini` ファイルに次の行を追加します。
      
      ```
      [Startup]
-     0CmdLine=C:\Windows\System32\FixAzureVM.cmd
+     0CmdLine=FixAzureVM.cmd
      0Parameters=
      ```
      
-     ![scripts.ini を作成する](./media/reset-local-password-without-agent/create-scripts-ini.png)
-
-5. `\Windows\System32` に次の内容を含む `FixAzureVM.cmd` を作成します。`<username>` と `<newpassword>` は実際の値に置き換えます。
-   
-    ```
-    net user <username> <newpassword> /add
-    net localgroup administrators <username> /add
-    net localgroup "remote desktop users" <username> /add
+     :::image type="content" source="./media/reset-local-password-without-agent/create-scripts-ini-1.png" alt-text="gpt.ini ファイルに対して行われる更新を示すスクリーンショット。" <username> /add
     ```
 
-    ![FixAzureVM.cmd を作成する](./media/reset-local-password-without-agent/create-fixazure-cmd.png)
+    :::image type="content" source="./media/reset-local-password-without-agent/create-fixazure-cmd-1.png" alt-text="gpt.ini ファイルに対して行われる更新を示すスクリーンショット。":::
    
     新しいパスワードを決めるときには、VM のパスワードの複雑さの要件を満たす必要があります。
 
@@ -93,7 +86,7 @@ Azure ゲスト エージェントへのアクセス権がない場合に Azure 
 
 9. リモート セッションから新しい VM までの次のファイルを削除して環境をクリーンアップします。
     
-    * %Windir%\System32 から
+    * %windir%\System32\GroupPolicy\Machine\Scripts\Startup から
       * FixAzureVM.cmd を削除します
     * %windir%\System32\GroupPolicy\Machine\Scripts から
       * scripts.ini を削除します
@@ -113,31 +106,31 @@ Azure ゲスト エージェントへのアクセス権がない場合に Azure 
    
    * Azure portal で VM を選んで、 *[削除]* をクリックします。
      
-     ![既存の VM を削除する](./media/reset-local-password-without-agent/delete-vm-classic.png)
+     :::image type="content" source="./media/reset-local-password-without-agent/delete-vm-classic.png" alt-text="gpt.ini ファイルに対して行われる更新を示すスクリーンショット。":::
 
 2. トラブルシューティング VM に VM の OS ディスクを接続します。 トラブルシューティング VM は、ソース VM の OS ディスクと同じリージョン (`West US` など) にある必要があります。
    
    1. Azure Portal でトラブルシューティング VM を選びます。 *[Disks]*  |  *[Attach existing]* をクリックします。
      
-      ![既存のディスクを接続する](./media/reset-local-password-without-agent/disks-attach-existing-classic.png)
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-attach-existing-classic.png" alt-text="gpt.ini ファイルに対して行われる更新を示すスクリーンショット。":::
      
    2. *[VHD File]* を選択してから、ソース VM を含むストレージ アカウントを選びます。
      
-      ![ストレージ アカウントを選択する](./media/reset-local-password-without-agent/disks-select-storage-account-classic.png)
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-storage-account-classic.png" alt-text="gpt.ini ファイルに対して行われる更新を示すスクリーンショット。":::
      
    3. *[従来のストレージ アカウントの表示]* というチェック ボックスをオンにして、ソース コンテナーを選択します。 ソース コンテナーは、通常 *VHD* です。
      
-      ![ストレージ コンテナーを選ぶ](./media/reset-local-password-without-agent/disks-select-container-classic.png)
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-container-classic.png" alt-text="gpt.ini ファイルに対して行われる更新を示すスクリーンショット。":::
 
-      ![ストレージ コンテナーを選ぶ](./media/reset-local-password-without-agent/disks-select-container-vhds-classic.png)
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-container-vhds-classic.png" alt-text="gpt.ini ファイルに対して行われる更新を示すスクリーンショット。":::
      
    4. 接続する OS VHD を選びます。 *[選択]* をクリックしてプロセスを完了します。
      
-      ![ソース仮想ディスクを選択する](./media/reset-local-password-without-agent/disks-select-source-vhd-classic.png)
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-source-vhd-classic.png" alt-text="gpt.ini ファイルに対して行われる更新を示すスクリーンショット。":::
 
    5. [OK] をクリックしてディスクをアタッチします。
 
-      ![既存のディスクを接続する](./media/reset-local-password-without-agent/disks-attach-okay-classic.png)
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-attach-okay-classic.png" alt-text="gpt.ini ファイルに対して行われる更新を示すスクリーンショット。":::
 
 3. リモート デスクトップを使用してトラブルシューティング VM に接続し、ソース VM の OS ディスクが表示されていることを確認します。
 
@@ -147,7 +140,7 @@ Azure ゲスト エージェントへのアクセス権がない場合に Azure 
 
    3. エクスプローラーで、接続されているデータ ディスクを探します。 ソース VM の VHD がトラブルシューティングの VM に接続されている唯一のデータ ディスクの場合は、ソース VM の VHD が F: ドライブになっている必要があります。
      
-      ![接続されたデータ ディスクを表示する](./media/reset-local-password-without-agent/troubleshooting-vm-file-explorer-classic.png)
+      :::image type="content" source="./media/reset-local-password-without-agent/troubleshooting-vm-file-explorer-classic.png" alt-text="gpt.ini ファイルに対して行われる更新を示すスクリーンショット。":::
 
 4. ソース VM のドライブ上の `\Windows\System32\GroupPolicy` に `gpt.ini` を作成します (`gpt.ini` が存在する場合は、`gpt.ini.bak` に名前を変更します)。
    
@@ -163,29 +156,22 @@ Azure ゲスト エージェントへのアクセス権がない場合に Azure 
      Version=1
      ```
      
-     ![gpt.ini を作成する](./media/reset-local-password-without-agent/create-gpt-ini-classic.png)
+     :::image type="content" source="./media/reset-local-password-without-agent/create-gpt-ini-classic.png" alt-text="gpt.ini ファイルに対して行われる更新を示すスクリーンショット。":::
 
-5. `\Windows\System32\GroupPolicy\Machines\Scripts\` に `scripts.ini` を作成します。 非表示のフォルダーが表示されていることを確認します。 必要に応じて、`Machine` フォルダーまたは `Scripts` フォルダーを作成します。
+5. `\Windows\System32\GroupPolicy\Machine\Scripts\` に `scripts.ini` を作成します。 非表示のフォルダーが表示されていることを確認します。 必要に応じて、`Machine` フォルダーまたは `Scripts` フォルダーを作成します。
    
    * 作成した `scripts.ini` ファイルに次の行を追加します。
 
      ```
      [Startup]
-     0CmdLine=C:\Windows\System32\FixAzureVM.cmd
+     0CmdLine=FixAzureVM.cmd
      0Parameters=
      ```
      
-     ![scripts.ini を作成する](./media/reset-local-password-without-agent/create-scripts-ini-classic.png)
-
-6. `\Windows\System32` に次の内容を含む `FixAzureVM.cmd` を作成します。`<username>` と `<newpassword>` は実際の値に置き換えます。
-   
-    ```
-    net user <username> <newpassword> /add
-    net localgroup administrators <username> /add
-    net localgroup "remote desktop users" <username> /add
+     :::image type="content" source="./media/reset-local-password-without-agent/create-scripts-ini-classic-1.png" alt-text="gpt.ini ファイルに対して行われる更新を示すスクリーンショット。" <username> /add
     ```
 
-    ![FixAzureVM.cmd を作成する](./media/reset-local-password-without-agent/create-fixazure-cmd-classic.png)
+    :::image type="content" source="./media/reset-local-password-without-agent/create-fixazure-cmd-1.png" alt-text="gpt.ini ファイルに対して行われる更新を示すスクリーンショット。":::
    
     新しいパスワードを決めるときには、VM のパスワードの複雑さの要件を満たす必要があります。
 
@@ -195,17 +181,17 @@ Azure ゲスト エージェントへのアクセス権がない場合に Azure 
    
    2. 手順 2 で接続したデータ ディスクを選択し、 **[デタッチ]** をクリックし、 **[OK]** をクリックします。
 
-     ![ディスクを取り外す](./media/reset-local-password-without-agent/data-disks-classic.png)
+     :::image type="content" source="./media/reset-local-password-without-agent/data-disks-classic.png" alt-text="gpt.ini ファイルに対して行われる更新を示すスクリーンショット。":::
      
-     ![ディスクを取り外す](./media/reset-local-password-without-agent/detach-disk-classic.png)
+     :::image type="content" source="./media/reset-local-password-without-agent/detach-disk-classic.png" alt-text="gpt.ini ファイルに対して行われる更新を示すスクリーンショット。":::
 
 8. ソース VM の OS ディスクから VM を作成します。
    
-     ![テンプレートから VM を作成する](./media/reset-local-password-without-agent/create-new-vm-from-template-classic.png)
+     :::image type="content" source="./media/reset-local-password-without-agent/create-new-vm-from-template-classic.png" alt-text="gpt.ini ファイルに対して行われる更新を示すスクリーンショット。":::
 
-     ![テンプレートから VM を作成する](./media/reset-local-password-without-agent/choose-subscription-classic.png)
+     :::image type="content" source="./media/reset-local-password-without-agent/choose-subscription-classic.png" alt-text="gpt.ini ファイルに対して行われる更新を示すスクリーンショット。":::
 
-     ![テンプレートから VM を作成する](./media/reset-local-password-without-agent/create-vm-classic.png)
+     :::image type="content" source="./media/reset-local-password-without-agent/create-vm-classic.png" alt-text="gpt.ini ファイルに対して行われる更新を示すスクリーンショット。":::
 
 ## <a name="complete-the-create-virtual-machine-experience"></a>仮想マシンの作成エクスペリエンスを完了する
 
@@ -213,7 +199,7 @@ Azure ゲスト エージェントへのアクセス権がない場合に Azure 
 
 2. リモート セッションから新しい VM までの次のファイルを削除して環境をクリーンアップします。
     
-    * `%windir%\System32` から
+    * `%windir%\System32\GroupPolicy\Machine\Scripts\Startup\` から
       * `FixAzureVM.cmd` を削除します
     * `%windir%\System32\GroupPolicy\Machine\Scripts` から
       * `scripts.ini` を削除します

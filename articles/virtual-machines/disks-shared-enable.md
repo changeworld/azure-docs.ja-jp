@@ -4,16 +4,16 @@ description: 複数の VM 間で共有できるように、共有ディスクを
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 08/21/2020
+ms.date: 09/30/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ad70aa1d044649a0ca61060fff9880d4ef1e34c1
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 82d482cd0a1b3a5b6028b9249030b7b1a093d22d
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752052"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570544"
 ---
 # <a name="enable-shared-disk"></a>共有ディスクを有効にする
 
@@ -147,7 +147,7 @@ New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $
 `maxShares>1` を使用して共有ディスクをデプロイしたら、そのディスクを1つ以上の VM にマウントできます。
 
 > [!NOTE]
-> Ultra ディスクをデプロイする場合は、必要な要件を満たしていることを確認してください。 詳細については、Ultra ディスクの記事の [PowerShell](disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm-1) または [CLI](disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm) セクションを参照してください。
+> Ultra ディスクをデプロイする場合は、必要な要件を満たしていることを確認してください。 詳細については、「[Azure Ultra ディスクの使用](disks-enable-ultra-ssd.md)」を参照してください。
 
 ```azurepowershell-interactive
 

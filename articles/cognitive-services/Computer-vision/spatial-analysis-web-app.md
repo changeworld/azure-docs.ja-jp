@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.author: aahi
-ms.openlocfilehash: 440f901f06e431c371b7445f4a04499c475c9aa1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8032c3607dd74cddbaa5fd6690a95ebdf218809a
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90932538"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628196"
 ---
 # <a name="how-to-deploy-a-people-counting-web-application"></a>方法:人数カウント Web アプリをデプロイする
 
@@ -127,14 +127,13 @@ IoT Edge モジュールのほとんどの**環境変数**は、上記のサン�
 ```azurecli
 az login
 az extension add --name azure-iot
-az iot edge deployment create --deployment-id "<deployment name>" --hub-name "<IoT Hub name>" --content DeploymentManifest.json --target-condition "deviceId='<IoT Edge device name>'"--subscription "<subscriptionId>"
+az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json -–subscription "<subscriptionId>"
 ```
 
 必要なパラメーターを入力します。
 
-* デプロイ名: このデプロイの名前を選択します。
 * IoT Hub 名: Azure IoT Hub の名前。
-* Deployment.json: デプロイ ファイルの名前。
+* DeploymentManifest.json:デプロイ ファイルの名前。
 * IoT Edge デバイス名: ホスト コンピューターの IoT Edge デバイス名。
 * サブスクリプション:サブスクリプションの ID または名前。
 
@@ -181,7 +180,7 @@ docker push [desired local image name]
 
 セットアップが完了するまで待ち、Azure portal でリソースに移動します。 **構成**セクションに移動し、次の 2 つの**アプリケーション設定**を追加します。
 
-* `EventHubConsumerGroup` - Azure IoT Hub のコンシューマー グループの文字列名。IoT ハブに新しいコンシューマー グループを作成することも、既定のグループを使用することもできます。 
+* `EventHubConsumerGroup` - Azure IoT Hub のコンシューマー グループの文字列名。IoT Hub に新しいコンシューマー グループを作成することも、既定のグループを使用することもできます。 
 * `IotHubConnectionString` - Azure IoT Hub への接続文字列。これは、Azure IoT Hub リソースの ![[パラメーターの構成]](./media/spatial-analysis/solution-app-config-page.png) のキー セクションから取得できます。
 
 この 2 つの設定を追加したら、 **[保存]** をクリックします。 次に、左側のナビゲーション メニューで **[認証/承認]** をクリックし、目的の認証レベルで更新します。 Azure Active Director (Azure AD) 簡易をお勧めします。 
