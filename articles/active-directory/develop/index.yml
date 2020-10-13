@@ -9,12 +9,12 @@ metadata:
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: b6dfd02b11c972ae4877e45e7424d3e35f0d0874
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 954712c2056a4251bc92b71c5b7cd2f1309804b2
+  ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91801887"
+  ms.lasthandoff: 10/13/2020
+  ms.locfileid: "91962022"
 landingContent:
 - title: Microsoft ID プラットフォームについて
   linkLists:
@@ -120,23 +120,9 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
+    - text: ドキュメントの最新情報
+      url: whats-new-docs.md
     - text: Microsoft Identity Web ライブラリの概要
       url: microsoft-identity-web.md
     - text: チュートリアル:Blazor Server
       url: tutorial-blazor-server.md
-    - text: クイック スタート:ASP.NET Core Web API を保護する
-      url: quickstart-v2-aspnet-core-web-api.md
-    - text: MSAL Python API リファレンス
-      url: /python/api/msal/
-    - text: クイック スタート:アプリを登録する (改訂)
-      url: quickstart-register-app.md
-    - text: クイック スタート:Web API を公開する (改訂)
-      url: quickstart-configure-app-expose-web-apis.md
-    - text: クイック スタート:Web API にアクセスする (改訂)
-      url: quickstart-configure-app-access-web-apis.md
-    - text: Xamarin Android 仲介型アプリを MSAL.NET に移行する
-      url: msal-net-migration-android-broker.md
-    - text: エラーと例外を処理する - Android
-      url: msal-android-handling-exceptions.md
-    - text: 要求のディレクトリ スキーマ拡張属性
-      url: active-directory-schema-extensions.md

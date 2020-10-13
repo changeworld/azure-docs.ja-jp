@@ -4,6 +4,8 @@
   items:
     - name: Microsoft ID プラットフォームとは
       href: v2-overview.md
+    - name: ドキュメントの最新情報
+      href: whats-new-docs.md
 - name: クイックスタート
   expanded: true
   items:

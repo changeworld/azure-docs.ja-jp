@@ -2,105 +2,79 @@
 title: Azure Communication Services のテレフォニーと SMS ソリューションを計画する
 titleSuffix: An Azure Communication Services concept document
 description: 電話番号とテレフォニーの使用を効果的に計画する方法について説明します。
-author: stkozak
-manager: rampras
+author: prakulka
+manager: nmurav
 services: azure-communication-services
-ms.author: stkozak
-ms.date: 06/23/2020
+ms.author: prakulka
+ms.date: 10/05/2020
 ms.topic: overview
+ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 39f88ab8b735438f60d8e20513ea5cbda43d41ee
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6a63df282cadf86668e69d2422a6c791e86010b6
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90945311"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767136"
 ---
 # <a name="plan-your-telephony-and-sms-solution"></a>テレフォニーと SMS ソリューションを計画する
 
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
-このドキュメントでは、Azure Communication Services で提供されるさまざまなテレフォニー プランと番号の種類について説明します。 ここでは、Communication Services を通じて利用できる音声サービス プロバイダー、電話番号の種類、プラン、および機能を選択する際に役立つ意思決定フローについて説明します。
 
-## <a name="about-phone-numbers-in-azure-communications-services"></a>Azure Communications Services での電話番号について
+Azure Communication Services では、公衆交換電話網 (PSTN) で、電話番号を使用して音声通話を行ったり携帯ショートメール (SMS) メッセージを送信したりすることができます。 このドキュメントでは、Communication Services を使用したテレフォニーと SMS ソリューションを計画している方のために、電話番号の種類、プラン、利用可能なリージョンについて見ていきます。
 
-Azure Communication Services を使用すると、電話番号を使用してテレフォニー通話および SMS メッセージを送受信することができます。 これらの電話番号を使用して、サービスによって行われる発信通話で発信者 ID を構成できます。
-  
-Communication Services ソリューションにインポートする既存の電話番号がない場合、最も簡単な開始方法は、Azure Communication Services から数分で新しい電話番号を取得することです。
+[!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
-ソリューションで引き続き使用したい既存の電話番号 (たとえば、1-800–COMPANY) がある場合は、既存のプロバイダーから Communication Services にその番号を移植できます。
-
-次の図は、使用可能なオプション間を移動するのに役立ちます。
-
-:::image type="content" source="../media/plan-solution/decision-tree-basic.png" alt-text="電話番号に関する決定を行う方法を示す図。":::
-
-次に、Communication Services で使用できる電話番号の種類と機能を確認しましょう。 
-
-## <a name="microsoft-direct-offer-of-phone-numbers-and-capabilities"></a>Microsoft Direct の電話番号と機能のオファー
-
-Azure Communication Services は、開発者に対して優れた柔軟性を提供します。 ほとんどの電話番号で、"アラカルト" のプラン セットを構成できます。 開発者の中には、着信通話プランのみを必要とする人もいれば、着信通話と送信 SMS のプランを選択する人もいます。 これらのプランは、Communication Services 内で電話番号をリースしたり移植したりするときに選択できます。
-
-利用可能なプランは、運用を行っている国と電話番号の種類によって異なります。次の図は、意思決定フローを示しています。  利用可能なプランは、運用を行っている国と電話番号の種類によって異なります。
-
-<!-- Tami/team have rejected this multiple times despite updates, says it needs to be higher res - need to work with her to get approval for this image. Commenting out to move our staging forward. :::image type="content" source="../../media/example-decision-flow.png" alt-text="Example for the decision flow"::: -->
-
-電話番号の種類を選択する前に、国際電話番号計画を確認してみましょう。
-
-### <a name="optional-reading-international-public-telecommunication-numbering-plan-e164"></a>任意の参考資料。 国際公衆電気通信番号計画 (E.164)
-
-> [!NOTE]
-> E.164 電話番号計画をよく知っている場合でも、Azure Communication Services で提供されている番号の種類と機能をよく理解するために、この情報を確認することをお勧めします。
-
-国際公衆電気通信番号計画は、国際電気通信連合 (ITU) の E.164 勧告に定義されています。 適合する番号は、最大 15 桁に制限されています。
-
-電話番号は、次で構成されます。
-
--   プレフィックス "+"
--   国際電話のプレフィックスまたは国/地域コード (1、2、または 3 桁) 
--   " *(省略可能)* " 国内の宛先コードまたは番号計画。通常、市外局番と呼ばれます。 このコードの長さは、国によって異なります。 米国では、3 桁です。 オーストラリアとニュージーランドでは、1 桁です。 ドイツ、日本、メキシコ、およびその他のいくつかの国では、市外局番の長さは変動します。 たとえば、ドイツでは市外局番は 2 から 5 桁ですが、日本では 1 から 5 桁になります。
--   加入者番号
-
-> [!NOTE]
-> 上記の分類は、ITU E.164 規格に完全に準拠しているわけではなく、簡単な説明を提供することを目的としています。 たとえば、加入者番号は、規格内でさらに細かく分割されます。 国際番号計画について詳しく知りたい場合は、まず、[ITU E.164 規格](https://www.itu.int/rec/T-REC-E.164)のページにアクセスすることをお勧めします。  
-
-次に、番号計画をより深く理解するのに役立つ例をいくつか示します。
-
-米国の地域電話番号:
-
-:::image type="content" source="../media/plan-solution/regional-us.png" alt-text="米国の地域電話番号の例":::
-
-カナダの地域電話番号:
-
-:::image type="content" source="../media/plan-solution/regional-canada.png" alt-text="カナダの地域電話番号の例":::
-
-北米地域のフリーダイヤル番号:
-
-:::image type="content" source="../media/plan-solution/tollfree-us.png" alt-text="北米のフリーダイヤル番号の例":::
-
-英国の携帯電話番号:
-
-:::image type="content" source="../media/plan-solution/mobile-uk.png" alt-text="英国の携帯電話番号の例":::
-
-次に、Azure Communication Services で利用可能な特定の電話番号の種類を確認しましょう。
 
 ## <a name="phone-number-types-in-azure-communication-services"></a>Azure Communication Services での電話番号の種類
+ 
+Communication Services には、**ローカル**と**無料電話番号**の 2 種類の電話番号が用意されています。 
 
-Microsoft では、該当する国で、ショート コードと携帯電話番号に対する地域およびフリーダイヤル プランを提供しています。
+### <a name="local-numbers"></a>ローカル番号
+ローカル (固定) 番号は、米国内のローカルの市外局番から成る 10 桁の電話番号です。 たとえば `+1 (206) XXX-XXXX` は、`206` を市外局番とするローカル番号です。 この市外局番は、シアトル市に割り当てられています。 一般に、これらの電話番号は個人や地元企業によって使用されます。 Azure Communication Services は、米国内のローカル番号を提供しています。 これらの番号を使用して電話をかけることはできますが、携帯ショートメール (SMS) メッセージを送信することはできません。 
+
+### <a name="toll-free-numbers"></a>無料電話番号
+無料電話番号は、特殊な市外局番を含んだ 10 桁の電話番号です。あらゆる電話番号から無料で通話することができます。 たとえば `+1 (800) XXX-XXXX` は、北米地域の無料電話番号です。 通常、これらの電話番号は顧客サービスの目的で使用されます。 Azure Communication Services は、米国内の無料電話番号を提供しています。 これらの番号を使用して電話をかけたり、携帯ショートメール (SMS) メッセージを送信したりすることができます。 無料電話番号はアプリケーションにのみ割り当てることができ、人が使うことはできません。
+
+#### <a name="choosing-a-phone-number-type"></a>電話番号の種類を選択する
+
+ご利用の電話番号がアプリケーションによって使用される場合 (サービスに必要な電話をかける、メッセージを送信するなど)、無料電話番号またはローカル (固定) 番号を選択することができます。 アプリケーションから SMS メッセージを送信したり電話をかけたりする場合は、無料電話番号を選択できます。
+
+ご利用の電話番号が人 (呼び出し元のアプリケーションのユーザーなど) によって使用される場合、ローカル (固定) 電話番号を使用する必要があります。 
 
 次の表は、これらの電話番号の種類をまとめたものです。 
 
-| 電話番号の種類 | 例                              | 利用可能な国    | 一般的なユース ケース                                                                                                     |
-| ----------------- | ------------------------------------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| 地域          | +1 (地理的市外局番) XXX XX XX  | 米国、カナダ、プエルトリコ | アプリケーション内でユーザーに電話番号を割り当てる、または音声自動応答 (IVR) システム/ボットに割り当てる |
-| フリーダイヤル         | +1 (フリーダイヤルの市外 "*局番*") XXX XX XX | 米国、カナダ、プエルトリコ | 音声自動応答 (IVR) システム/ボット、SMS アプリケーションに割り当てる                                        |
+| 電話番号の種類 | 例                              | 利用可能な国    | 電話番号の機能 |一般的なユース ケース                                                                                                     |
+| ----------------- | ------------------------------------ | ----------------------- | ------------------------|------------------------------------------------------------------------------------------------------------------- |
+| ローカル (固定)        | +1 (ローカルの市外局番) XXX XX XX  | US                      | 通話 (発信) | アプリケーションのユーザーに電話番号を割り当てる  |
+| フリーダイヤル         | +1 (フリーダイヤルの市外 "*局番*") XXX XX XX | US                      | 通話 (発信)、SMS (受信または送信)| 音声自動応答 (IVR) システム (ボット) や SMS アプリケーションに電話番号を割り当てる                                        |
 
-## <a name="plans"></a>プラン 
 
-電話番号に対して有効にできる機能を見てみましょう。 これらの機能は、規制要件のため、国によって異なります。 Azure Communication Services には、次の機能が用意されています。
+## <a name="phone-number-plans-in-azure-communication-services"></a>Azure Communication Services における電話番号プラン 
 
-- **一方向の送信 SMS**。通知と 2 要素認証のシナリオに役立ちます。
-- **双方向の受信および送信 SMS**。1 つのプランの一部として SMS を送受信できるようにする、事前定義されたパッケージです。
-- **PSTN 通話**。着信通話を選択できます。また、発信者 ID を使用して発信通話を実行できます。
+ほとんどの電話番号で、"アラカルト" のプラン セットを構成できます。 開発者の中には、発信通話プランのみを必要とする人もいれば、発信通話と送信 SMS のプランを選択する人もいます。 これらのプランは、Azure Communication Services 内で電話番号をリースするときに選択できます。
+
+利用できるプランは、運用拠点となる国やユース ケース、選択した電話番号の種類によって異なります。 これらのプランは、規制要件のために、国によって異なります。 Azure Communication Services には、次のプランが用意されています。
+
+- **一方向の送信 SMS** このプランでは、携帯ショートメール (SMS) メッセージをユーザーに送信できます。 このプランは、通知や 2 要素認証のアラートなどのシナリオで活用できます。 
+- **双方向の受信および送信 SMS** このプランでは、電話番号を使用しているユーザーとの間でメッセージを送受信できます。 このプランは、顧客サービスのシナリオで活用できます。
+- **一方向の発信通話** このプランでは、ユーザーに電話をかけたり、サービスからの発信通話に使用される発信者番号を構成したりできます。 このプランは、顧客サービスや音声通知のシナリオで活用できます。
+
+## <a name="countryregion-availability"></a>国/リージョンの可用性
+
+次の表は、各種電話番号の入手先のほか、電話番号の種類に関連付けられている着信通話と発信通話、SMS 機能を示しています。
+
+|番号の種類| 番号の入手先 | 発信先                                        | 着信元                                    |メッセージの送信先       | メッセージの受信元 |
+|-----------| ------------------ | ---------------------------------------------------  |-------------------------------------------------------|-----------------------|--------|
+| ローカル (固定)  | US                 | 米国、カナダ、イギリス、ドイツ、フランスなど* +more*| 米国、カナダ、イギリス、ドイツ、フランスなど* +more* |使用不可| 使用不可 |
+| フリーダイヤル | US                 | US                                                   | US                                                    |US                | US |
+
+\* 通話の宛先と価格について詳しくは、[価格のページ](../pricing.md)を参照してください。
+
+## <a name="azure-subscriptions-eligibility"></a>対象となる Azure サブスクリプション
+
+電話番号を取得するには、有料の Azure サブスクリプションが必要です。 試用アカウントで電話番号を取得することはできません。 
 
 ## <a name="next-steps"></a>次の手順
 
@@ -113,5 +87,5 @@ Microsoft では、該当する国で、ショート コードと携帯電話番
 ### <a name="conceptual-documentation"></a>概念説明のドキュメント
 
 - [音声とビデオの概念](../voice-video-calling/about-call-types.md)
-- [通話フローと SMS フロー](../call-flows.md)
+- [通話フロー](../call-flows.md)
 - [料金](../pricing.md)

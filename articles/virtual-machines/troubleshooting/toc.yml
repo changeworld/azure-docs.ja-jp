@@ -241,9 +241,9 @@
 - name: 共有イメージ ギャラリーのトラブルシューティングを行う
   items:
     - name: 共有イメージ ギャラリーのトラブルシューティングを行う - Windows
-      href: ../windows/troubleshooting-shared-images.md
+      href: ../troubleshooting-shared-images.md
     - name: 共有イメージ ギャラリーのトラブルシューティングを行う - Linux
-      href: ../linux/troubleshooting-shared-images.md
+      href: ../troubleshooting-shared-images.md
 - name: VM 拡張機能の問題
   items:
     - name: Azure 拡張機能の概要

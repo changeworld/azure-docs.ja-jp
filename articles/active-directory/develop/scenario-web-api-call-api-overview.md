@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 88a0177755fbd913bdaaf0ecf3e12c62dee294c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4dcf377797709b56b4db735dabf4d48cfae4fc06
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885074"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257165"
 ---
 # <a name="scenario-a-web-api-that-calls-web-apis"></a>シナリオ:Web API を呼び出す Web API
 
@@ -24,7 +24,7 @@ Web API を呼び出す Web API を構築するために知っておくべきこ
 
 ## <a name="prerequisites"></a>前提条件
 
-保護された Web API が Web API を呼び出すこのシナリオは、「Web API の保護」シナリオの上に構築されます。 この基本的なシナリオの詳細については、「[シナリオ: 保護された Web API](scenario-protected-web-api-overview.md)」を参照してください。
+保護された Web API が他の Web API を呼び出すこのシナリオは、「[シナリオ: 保護された Web API](scenario-protected-web-api-overview.md)」の上に構築されます。
 
 ## <a name="overview"></a>概要
 

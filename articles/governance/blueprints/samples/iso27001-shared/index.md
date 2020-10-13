@@ -3,12 +3,12 @@ title: ISO 27001 共有サービス ブループリント サンプルの概要
 description: ISO 27001 共有サービスのブルー プリント サンプルの概要とアーキテクチャ。 このブループリント サンプルは、お客様が特定の ISO 27001 コントロールを評価するのに役立ちます。
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 4df5e35154a6cd762dd653d9004eb635f0feb021
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: e02f34c424e3f68e67f2d0dc2f4541c57ce3882f
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930817"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950552"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共有サービス ブループリント サンプルの概要
 
@@ -27,7 +27,7 @@ VDC は、Microsoft がその最大規模のエンタープライズのお客様
 
 - [Azure ロール](../../../../role-based-access-control/overview.md)。コントロール プレーンの観点から義務の分離のために使用します。 すべてのインフラストラクチャのデプロイの前に、3 つのロールが定義されています。
   - NetOps ロールには、ファイアウォール設定、NSG 設定、ルーティング、その他のネットワーク機能を含むネットワーク環境を管理する権限があります。
-  - SecOps ロールには、[Azure Security Center](../../../../security-center/security-center-intro.md) をデプロイ、管理し、[Azure Policy](../../../policy/overview.md) 定義を定義するのに必要な権限、およびその他のセキュリティ関連の権限があります
+  - SecOps ロールには、[Azure Security Center](../../../../security-center/security-center-introduction.md) をデプロイ、管理し、[Azure Policy](../../../policy/overview.md) 定義を定義するのに必要な権限、およびその他のセキュリティ関連の権限があります
   - SysOps ロールには、サブスクリプション内で [Azure Policy](../../../policy/overview.md) 定義を定義し、環境全体のその他の運用権限の中で [Log Analytics](../../../../azure-monitor/overview.md) を管理するのに必要な権限があります
 - [Log Analytics](../../../../azure-monitor/overview.md) は、セキュリティで保護されたデプロイの開始以降、すべてのアクションとサービス ログを一元化する最初の Azure サービスとしてデプロイされます。
 - オンプレミス データセンター、インターネット接続用のイングレス/エグレス スタック、および以下を含むフル マイクロセグメンテーション用に NSG および ASG を使用する共有サービス サブネットへの折り返し接続用のサブネットをサポートする仮想ネットワーク。
