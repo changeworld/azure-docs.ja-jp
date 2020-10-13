@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 775b296185f9f0f0e967ada2688e24158f36360e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: f95ffb662d830c432d3286eca8c935e2737f8043
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648362"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649560"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4 および Easv4 シリーズ
 
@@ -20,15 +20,13 @@ Eav4 シリーズと Easv4 シリーズでは、最大 256 MB の L3 キャッ�
 
 ## <a name="eav4-series"></a>Eav4 シリーズ
 
-ACU: 230 ～ 260
-
-Premium Storage: サポートされていません
-
-Premium Storage キャッシュ:サポートされていません
-
-ライブ マイグレーション: サポートされています
-
-メモリ保持更新: サポートされています
+[ACU](acu.md): 230 ～ 260<br>
+[Premium Storage](premium-storage-performance.md): サポートされていません<br>
+[Premium Storage キャッシュ](premium-storage-performance.md): サポートされていません<br>
+[ライブ マイグレーション](maintenance-and-updates.md): サポートされています<br>
+[メモリ保持更新](maintenance-and-updates.md): サポートされています<br>
+[VM 世代サポート](generation-2.md): 第 1 世代<br>
+<br>
 
 Eav4 シリーズのサイズは、2.35 Ghz AMD EPYC<sup>TM</sup> 7452 プロセッサをベースにしています。このプロセッサでは 3.35 GHz のブースト最大周波数を達成し、Premium SSD を使用できます。 Eav4 シリーズのサイズは、メモリへの負荷が高いエンタープライズ アプリケーションに最適です。 データ ディスク ストレージは、仮想マシンとは別に課金されます。 Premium SSD を使用するには、Easv4 シリーズのサイズを使用します。 Easv4 サイズの料金および課金の計算方法は、Eav3 シリーズと同じです。
 
@@ -46,15 +44,13 @@ Eav4 シリーズのサイズは、2.35 Ghz AMD EPYC<sup>TM</sup> 7452 プロセ
 
 ## <a name="easv4-series"></a>Easv4 シリーズ
 
-ACU: 230 ～ 260
-
-Premium Storage: サポートされています
-
-Premium Storage キャッシュ:サポートされています
-
-ライブ マイグレーション:サポートされています
-
-メモリ保持更新: サポートされています
+[ACU](acu.md): 230 ～ 260<br>
+[Premium Storage](premium-storage-performance.md): サポートされています<br>
+[Premium Storage キャッシュ](premium-storage-performance.md): サポートされています<br>
+[ライブ マイグレーション](maintenance-and-updates.md): サポートされています<br>
+[メモリ保持更新](maintenance-and-updates.md): サポートされています<br>
+[VM 世代サポート](generation-2.md): 第 1 世代<br>
+<br>
 
 Easv4 シリーズのサイズは、2.35 Ghz AMD EPYC<sup>TM</sup> 7452 プロセッサをベースにしています。このプロセッサでは 3.35 GHz のブースト最大周波数を達成し、Premium SSD を使用できます。 Easv4 シリーズのサイズは、メモリへの負荷が高いエンタープライズ アプリケーションに最適です。
 

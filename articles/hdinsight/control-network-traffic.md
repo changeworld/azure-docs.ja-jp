@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: a33bc5816ded7cdca75737b02add0a6ca8821700
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 929956d6f439df2a2e7cb8d1b950f5e68cdeab68
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400196"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631717"
 ---
 # <a name="control-network-traffic-in-azure-hdinsight"></a>Azure HDInsight のネットワーク トラフィックを制御する
 
@@ -58,7 +58,7 @@ Azure Firewall を使用した UDR セットアップの例については、[Az
 
 ## <a name="required-ports"></a>必須ポート
 
-**ファイアウォール**を使用して、特定のポートで外部からクラスターにアクセスすることを計画している場合、シナリオに必要なポートでトラフィックを許可することが必要な可能性があります。 既定では、前のセクションで説明した Azure 管理トラフィックがポート 443 でクラスターに到達することを許可されている限り、ポートの特別なホワイトリスト登録は必要ありません。
+**ファイアウォール**を使用して、特定のポートで外部からクラスターにアクセスすることを計画している場合、シナリオに必要なポートでトラフィックを許可することが必要な可能性があります。 既定では、前のセクションで説明した Azure 管理トラフィックがポート 443 でクラスターに到達することを許可されている限り、ポートの特別なフィルター処理は必要ありません。
 
 特定のサービスのポート一覧については、「[HDInsight 上の Apache Hadoop サービスで使用されるポート](hdinsight-hadoop-port-settings-for-services.md)」をご覧ください。
 

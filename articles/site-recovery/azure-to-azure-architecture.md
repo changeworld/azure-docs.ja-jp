@@ -8,17 +8,17 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 08796b0a9b232c7b42b3f62fea69ab49b8957c60
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 57435e703395928c4619b7c9c6bf8614269f58a0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322089"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825421"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure から Azure へのディザスター リカバリー アーキテクチャ
 
 
-この記事では、[Azure Site Recovery](site-recovery-overview.md) サービスを使用して Azure 仮想マシン (VM) のためのディザスター リカバリーをデプロイするときに使用されるアーキテクチャ、コンポーネント、プロセスについて説明します。 ディザスター リカバリーが設定されていると、Azure VM では継続的に別のターゲット リージョンとの間でレプリケートが行われます。 障害が発生した場合は、セカンダリ リージョンに VM をフェールオーバーし、そこからそれらにアクセスできます。 すべてが再び正常に動作するようになったら、フェールバックして、プライマリの場所で作業を続行できます。
+この記事では、[Azure Site Recovery](site-recovery-overview.md) サービスを使用して Azure 仮想マシン (VM) のためのディザスター リカバリーをデプロイするときに使用されるアーキテクチャ、コンポーネント、プロセスについて説明します。 ディザスター リカバリーが設定されていると、Azure VM によって別のターゲット リージョンへのレプリケートが継続的に行われます。 障害が発生した場合は、セカンダリ リージョンに VM をフェールオーバーし、そこからそれらにアクセスできます。 すべてが再び正常に動作するようになったら、フェールバックして、プライマリの場所で作業を続行できます。
 
 
 

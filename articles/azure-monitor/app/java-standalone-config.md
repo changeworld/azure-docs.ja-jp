@@ -4,12 +4,12 @@ description: アプリをインストルメント化することなく、任意�
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 561a6405a49d8f15affbf6d8d4de1a7f4886826a
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 9b90f8b9336111438b4b832d557d448470959255
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056100"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537659"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>構成オプション - Azure Monitor Application Insights の Java スタンドアロン エージェント
 
@@ -49,7 +49,18 @@ ms.locfileid: "90056100"
 
 :::image type="content" source="media/java-ipa/connection-string.png" alt-text="Application Insights の接続文字列":::
 
+
+```json
+{
+  "instrumentationSettings": {
+    "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000"
+  }
+}
+```
+
 環境変数 `APPLICATIONINSIGHTS_CONNECTION_STRING` を使用して、接続文字列を設定することもできます。
+
+接続文字列を設定しないと、Java エージェントが無効になります。
 
 ## <a name="cloud-role-name"></a>クラウド ロール名
 
@@ -93,7 +104,7 @@ ms.locfileid: "90056100"
 
 Application Insights Java 3.0 Preview では、Log4j、Logback、java.util.logging を使用して、アプリケーションのログが自動的にキャプチャされます。
 
-既定では、`WARN` レベル以上で実行されるすべてのログがキャプチャされます。
+既定では、`INFO` レベル以上で実行されるすべてのログがキャプチャされます。
 
 このしきい値を変更する場合は、次のように設定します。
 
@@ -103,13 +114,15 @@ Application Insights Java 3.0 Preview では、Log4j、Logback、java.util.loggi
     "preview": {
       "instrumentation": {
         "logging": {
-          "threshold": "ERROR"
+          "threshold": "WARN"
         }
       }
     }
   }
 }
 ```
+
+環境変数 `APPLICATIONINSIGHTS_LOGGING_THRESHOLD` を使用して、ログのしきい値を設定することもできます。
 
 以下に、`ApplicationInsights.json` ファイルに指定できる有効な `threshold` 値と、それらが、各種ログ フレームワークでどのようにログ レベルに対応するかを示しています。
 
@@ -136,20 +149,24 @@ Application Insights Java 3.0 Preview では、Log4j、Logback、java.util.loggi
     "preview": {
       "jmxMetrics": [
         {
-          "objectName": "java.lang:type=ClassLoading",
-          "attribute": "LoadedClassCount",
-          "display": "Loaded Class Count"
+          "objectName": "java.lang:type=Runtime",
+          "attribute": "Uptime",
+          "display": "JVM uptime (millis)"
         },
         {
-          "objectName": "java.lang:type=MemoryPool,name=Code Cache",
+          "objectName": "java.lang:type=MemoryPool,name=Metaspace",
           "attribute": "Usage.used",
-          "display": "Code Cache Used"
+          "display": "MetaSpace Used"
         }
       ]
     }
   }
 }
 ```
+
+環境変数 `APPLICATIONINSIGHTS_JMX_METRICS` を使用して、JMX メトリックを設定することもできます。
+
+この環境変数の内容は、上記の構造に一致する json データである必要があります。例: `[{"objectName": "java.lang:type=Runtime", "attribute": "Uptime", "display": "JVM uptime (millis)"}, {"objectName": "java.lang:type=MemoryPool,name=Metaspace", "attribute": "Usage.used", "display": "MetaSpace Used"}]`
 
 ## <a name="micrometer-including-metrics-from-spring-boot-actuator"></a>Micrometer (Spring Boot アクチュエータのメトリックを含む)
 
@@ -214,6 +231,8 @@ Application Insights Java 3.0 Preview では、Log4j、Logback、java.util.loggi
   }
 }
 ```
+
+環境変数 `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` を使用してサンプリング率を設定することもできます。
 
 ## <a name="http-proxy"></a>HTTP Proxy
 

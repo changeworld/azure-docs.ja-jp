@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 09181a28edf21f0a4da11a244d3c094469446ab5
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6726dab6f1037f01eda316968e3c5b503aa9dbfb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983554"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326580"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>カスタム コネクタを使用して Logic Apps と統合する
 
@@ -28,7 +28,7 @@ ms.locfileid: "90983554"
 Azure サブスクリプションをお持ちでない場合は、開始する前に **[無料のアカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成**してください。
 このアカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。 
 
-この手順については、残りのセクションで順を追って説明します。
+事前に必要な設定の一部として、さらに次の項目を完了する必要があります。 この手順については、残りのセクションで順を追って説明します。
 - Azure Digital Twins インスタンスを設定する
 - アプリの登録のクライアント シークレットを取得する
 - デジタル ツインを追加する
@@ -37,9 +37,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事で Azure Digital Twins インスタンスを Logic Apps に接続するには、**Azure Digital Twins インスタンス**を先に設定しておく必要があります。 
 
-ここで新しいインスタンスを設定する必要がある場合、最も簡単な方法は、自動デプロイ スクリプト サンプルを実行することです。 ["*AutoRest を使用して インスタンスと認証を設定する (スクリプト化)* ](how-to-set-up-instance-scripted.md)" 方法に関する記事の手順に従って、新しいインスタンスと必要な Azure AD アプリの登録を設定します。 説明には、各手順が正常に完了し、新しいインスタンスを使用する準備ができていることを確認するための手順も含まれています。
+まず、Azure Digital Twins インスタンスと、その操作を可能にするために必要な認証を設定します。 このためには、[*操作方法の手順に従うため、インスタンスと認証を設定する方法*](how-to-set-up-instance-portal.md)に関するページを参照してください。 推奨されるエクスペリエンスに応じて、[Azure portal](how-to-set-up-instance-portal.md)、[CLI](how-to-set-up-instance-cli.md)、または [ Cloud Shell の自動デプロイ スクリプト サンプル](how-to-set-up-instance-scripted.md)用のセットアップに関する記事が用意されています。 すべてのバージョンの説明には、各手順が正しく完了し、新しいインスタンスを使用する準備ができていることを確認する手順も含まれています。
 
-このチュートリアルでは、インスタンスを設定したときの以下の値が必要になります。 これらの値を再度収集する必要がある場合は、以下のリンクを使用して、[Azure portal](https://portal.azure.com) でそれらを見つけるためのセットアップの記事の対応するセクションを参照してください。
+このチュートリアルでは、インスタンスを設定したときの複数の値が必要になります。 これらの値を再度収集する必要がある場合は、以下のリンクを使用して、[Azure portal](https://portal.azure.com) でそれらを見つけるためのセットアップの記事の対応するセクションを参照してください。
 * Azure Digital Twins インスタンスの "**_ホスト名_**" ([ポータルで見つける](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
 * Azure AD アプリ登録の "**_アプリケーション (クライアント) ID_**" ([ポータルで見つける](how-to-set-up-instance-portal.md#collect-important-values))
 * Azure AD アプリ登録の "**_ディレクトリ (テナント) ID_**" ([ポータルで見つける](how-to-set-up-instance-portal.md#collect-important-values))
@@ -149,13 +149,13 @@ Azure portal の [[アプリの登録]](https://portal.azure.com/#blade/Microsof
 
 次に、新しいコネクタを使用して Azure Digital Twins の更新を自動化するロジック アプリを作成します。
 
-Azure portal で [[Logic Apps (従量課金)]](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Logic%2Fworkflows) ページに移動します (このリンクを使用しても、ポータルの検索バーで検索してもかまいません)。 ロジック アプリを作成するには、 *[追加]* ボタンをクリックします。
+[Azure portal](https://portal.azure.com) の検索バーで、「*Logic Apps*」を検索します。 それを選択すると、 *[Logic Apps]* ページが表示されます。 *[ロジック アプリの作成]* ボタンをクリックして新しいロジック アプリを作成します。
 
 :::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="Azure AD アプリの登録のポータル表示。リソース メニューの [証明書とシークレット] とページの [新しいクライアント シークレット] が強調して示されている":::
 
-表示された *[Logic Apps (従量課金)]* ページで、サブスクリプションとリソース グループを入力します。 また、ロジック アプリの名前を選択し、場所を選択します。
+続いて表示される *[Logic Apps]* ページで、サブスクリプションとリソース グループを入力します。 また、ロジック アプリの名前を選択し、デプロイの場所を選択します。
 
-_[確認と作成] ボタンを選択します。_
+_[確認および作成]_ ボタンをクリックします。
 
 これにより表示される *[確認と作成]* タブで、詳細を確認し、下部にある *[作成]* をクリックしてリソースを作成できます。
 

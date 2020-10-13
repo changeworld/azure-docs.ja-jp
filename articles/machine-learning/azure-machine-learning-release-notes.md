@@ -9,18 +9,55 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 022040f4fa7f70dd5fc7677ce969ee9acbe7bcbb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 954962d4f0f16cb35035527d4cb81d0e13495a86
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886416"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631836"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
 この記事では、Azure Machine Learning の各リリースについて説明します。  SDK リファレンス コンテンツの詳細については、Azure Machine Learning の[**メインの SDK for Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) のリファレンス ページを参照してください。
 
 バグおよび対処法については、[既知の問題のリスト](resource-known-issues.md)を参照してください。
+
+## <a name="2020-09-28"></a>2020-09-28
+
+### <a name="azure-machine-learning-sdk-for-python-v1150"></a>Azure Machine Learning SDK for Python v1.15.0
++ **バグの修正と機能強化**
+  + **azureml-contrib-interpret**
+    + LIME Explainer が azureml-contrib-interpret から interpret-community パッケージに移動され、Image Explainer が azureml-contrib-interpret パッケージから削除されました
+    + 視覚化ダッシュボードが azureml-contrib-interpret パッケージから削除され、説明クライアントが azureml-interpret パッケージに移動され、azureml-contrib-interpret パッケージで非推奨になり、ノートブックが改善された API を反映するように更新されました
+    + azureml-interpret、azureml-explain-model、azureml-contrib-interpret、azureml-contrib、および azureml-tensorboard での PyPI パッケージの説明を修正しました
+  + **azureml-contrib-notebook**
+    + Papermill 1.x が引き続き機能するように、nbcovert の依存関係を 6 未満にピン留めしました。
+  + **azureml-core**
+    + TensorflowConfiguration と MpiConfiguration コンストラクターにパラメーターを追加して、ユーザーに個々の属性を設定するよう要求しなくてもクラス属性を簡単に初期化できるようにしました。 ScriptRunConfig で分散 PyTorch ジョブを構成するための PyTorchConfiguration クラスを追加しました。
+    + 認証エラーを修正するために azure-mgmt-resource のバージョンをピン留めしました。
+    + Triton のコードなしのデプロイがサポートされるようになりました
+    + 対話形式での実行シナリオを使用したときに、Run.start_logging() に指定された出力ディレクトリが追跡されるようになります。 Run.complete() を呼び出すと、追跡対象ファイルが ML Studio に表示されます
+    + `encoding` 引数を渡すことによって、`Dataset.Tabular.from_delimited_files` と `Dataset.Tabular.from_json_lines_files` を使用したデータセットの作成中にファイルのエンコードを指定できるようになりました。 サポートされているエンコードは、"utf8"、"iso88591"、"latin1"、"ascii"、"utf16"、"utf32"、"utf8bom"、"windows1252" です。
+    + 環境オブジェクトが ScriptRunConfig コンストラクターに渡されない場合のバグを修正しました。
+    + 別のコンピューターからのローカル実行の取り消しを許可するように Run.cancel() を更新しました。
+  + **azureml-dataprep**
+    +  データセットのマウント タイムアウトに関する問題を修正しました。
+  + **azureml-explain-model**
+    + azureml-interpret、azureml-explain-model、azureml-contrib-interpret、azureml-contrib、および azureml-tensorboard での PyPI パッケージの説明を修正しました
+  + **azureml-interpret**
+    + 視覚化ダッシュボードが azureml-contrib-interpret パッケージから削除され、説明クライアントが azureml-interpret パッケージに移動され、azureml-contrib-interpret パッケージで非推奨になり、ノートブックが改善された API を反映するように更新されました
+    + azureml-interpret パッケージが interpret-community 0.15.0 に依存するように更新されました
+    + azureml-interpret、azureml-explain-model、azureml-contrib-interpret、azureml-contrib、および azureml-tensorboard での PyPI パッケージの説明を修正しました
+  + **azureml-pipeline-core**
+    +  `name` パラメーターを既存のデータセット名に設定して `register_on_complete` を呼び出すと、システムが応答を停止する可能性がある、`OutputFileDatasetConfig` に関するパイプラインの問題を修正しました。
+  + **azureml-pipeline-steps**
+    + 古くなった Databricks ノートブックを削除しました。
+  + **azureml-tensorboard**
+    + azureml-interpret、azureml-explain-model、azureml-contrib-interpret、azureml-contrib、および azureml-tensorboard での PyPI パッケージの説明を修正しました
+  + **azureml-train-automl-runtime**
+    + 視覚化ダッシュボードが azureml-contrib-interpret パッケージから削除され、説明クライアントが azureml-interpret パッケージに移動され、azureml-contrib-interpret パッケージで非推奨になり、ノートブックが改善された API を反映するように更新されました
+  + **azureml-widgets**
+    + 視覚化ダッシュボードが azureml-contrib-interpret パッケージから削除され、説明クライアントが azureml-interpret パッケージに移動され、azureml-contrib-interpret パッケージで非推奨になり、ノートブックが改善された API を反映するように更新されました
 
 ## <a name="2020-09-21"></a>2020-09-21
 
@@ -1259,7 +1296,7 @@ Azure Machine Learning が Event Grid 用のリソース プロバイダーに�
   + [**azureml-datadrift**](https://docs.microsoft.com/python/api/azureml-datadrift)
     + `azureml-contrib-datadrift` から `azureml-datadrift` への移動
     + ドリフトやその他の統計メジャーの時系列データセットの監視に対するサポートの追加
-    + [`DataDriftDetector`](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector(class)) クラスの新しいメソッド (`create_from_model()` および `create_from_dataset()`)。 `create()` メソッドが非推奨となる予定。
+    + [`DataDriftDetector`](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector%28class%29) クラスの新しいメソッド (`create_from_model()` および `create_from_dataset()`)。 `create()` メソッドが非推奨となる予定。
     + Azure Machine Learning Studio の Python および UI での視覚エフェクトの調整。
     + データセットの毎日の監視に加え、毎週および毎月の監視のスケジュール設定をサポート。
     + データセット モニターの履歴データを分析するためのデータ モニター メトリックのバックフィルをサポート。
@@ -1364,7 +1401,7 @@ Azure Machine Learning が Event Grid 用のリソース プロバイダーに�
     + モデル デプロイおよびサービス更新向けの環境の使用をサポートします。
   + **[azureml-datadrift](https://docs.microsoft.com/python/api/azureml-datadrift)**
     + [DataDriftDetector](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector) クラスの show 属性では、省略可能な引数 'with_details' がサポートされなくなります。 show 属性では、特徴列のデータ誤差の係数とデータ誤差の影響のみが表示されます。
-    + DataDriftDetector 関数 [get_output]https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector#get-output-start-time-none--end-time-none--run-id-none-) の動作が変更されます。
+    + DataDriftDetector 関数 [get_output]python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector#get-output-start-time-none--end-time-none--run-id-none-) の動作が次のように変更されました。
       + 入力パラメーター start_time、end_time は必須ではなく省略可能です。
       + 同じ呼び出しで特定の run_id を使用している入力固有の start_time および/または end_time は相互に排他的であるため、値エラーの例外が発生します。
       + 入力固有の start_time または end_time では、スケジュールされた実行の結果のみが返されます。
@@ -1458,7 +1495,7 @@ Azure Machine Learning が Event Grid 用のリソース プロバイダーに�
     + データ入力形式として、training_data、validation_data、label_column_name、weight_column_name がサポートされるようになりました
     + explain_model() および retrieve_model_explanations() の非推奨メッセージが追加されました
   + **[azureml-pipeline-core](https://docs.microsoft.com/python/api/azureml-pipeline-core)**
-    + [Module](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.module(class))、[ModuleVersion、および [ModuleStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep) について説明する[ノートブック](https://aka.ms/pl-modulestep)が追加されました。
+    + [Module](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.module%28class%29)、[ModuleVersion、および [ModuleStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep) について説明する[ノートブック](https://aka.ms/pl-modulestep)が追加されました。
   + **[azureml-pipeline-steps](https://docs.microsoft.com/python/api/azureml-pipeline-steps)**
     + AML パイプラインによる R スクリプトの実行をサポートする [RScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.rscriptstep) が追加されました。
     + "パラメーター SubscriptionId の割り当てが指定されていない" というエラー メッセージの原因になっていた [AzureBatchStep でのメタデータ パラメーターの解析を修正しました。

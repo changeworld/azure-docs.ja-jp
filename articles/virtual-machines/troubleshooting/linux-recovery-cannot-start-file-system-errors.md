@@ -1,6 +1,6 @@
 ---
 title: ファイル システム エラーによる Linux VM の起動に関する問題のトラブルシューティング | Microsoft Docs
-description: Linux VM を起動できない理由と問題の解決方法について説明します。
+description: ファイル システム エラーによる Linux VM の起動に関する問題のトラブルシューティング方法について説明します。
 services: virtual-machines-linux
 documentationcenter: ''
 author: v-miegge
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: bae0eb91460bf7ab72abbaa7fa56b2515367d37d
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 8f12b88a0ddbc6ae31f40ab31b0126e4fd66b1a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89436189"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325948"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>ファイル システム エラーによる Linux VM の起動に関する問題のトラブルシューティング
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
-ms.date: 09/10/2020
+ms.date: 09/30/2020
 ms.author: aahi
-ms.openlocfilehash: 0fde9a0f46073a2f3a24962ea58431581455f474
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e4a75bdd6147ee2189660c37062c5bec9d55d512
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931270"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631743"
 ---
 # <a name="metrics-advisor-frequently-asked-questions"></a>Metrics Advisor に関してよく寄せられる質問
 
@@ -74,9 +74,26 @@ Metrics Advisor は、ライブ ストリーミング データの検出を目�
 
 ### <a name="more-concepts-and-technical-terms"></a>その他の概念と技術用語
 
-詳細については、[用語集](glossary.md)を参照してください。
+詳細については、[用語集](glossary.md)のページも参照してください。
 
-## <a name="how-do-i-detect-such-kinds-of-anomalies"></a>そのような異常を検出するには、どうすればよいですか? 
+###  <a name="how-do-i-write-a-valid-query-for-ingesting-my-data"></a>データを取り込むための有効なクエリを作成する方法  
+
+Metrics Advisor でデータを取り込むには、1 つのタイムスタンプでデータのディメンションを返すクエリを作成する必要があります。 Metrics Advisor によってこのクエリが複数回実行されて、各タイムスタンプからデータが取得されます。 
+
+クエリからは、指定したタイムスタンプで、ディメンションの各組み合わせに対して多くても 1 つのレコードが返される必要があることに注意してください。 返されるすべてのレコードで、タイムスタンプが同じになっている必要があります。 クエリによって重複するレコードが返されてはなりません。
+
+たとえば、日単位のメトリックに対して次のクエリを作成したとします。 
+ 
+`select timestamp, city, category, revenue from sampledata where Timestamp >= @StartTime and Timestamp < dateadd(DAY, 1, @StartTime)`
+
+時系列に対して正しい粒度を使用してください。 時間単位のメトリックの場合は、以下を使用します。 
+
+`select timestamp, city, category, revenue from sampledata where Timestamp >= @StartTime and Timestamp < dateadd(hour, 1, @StartTime)`
+
+これらのクエリからは 1 つのタイムスタンプのデータだけが返され、Metrics Advisor によって取り込まれるすべてのディメンションの組み合わせが含まれることに注意してください。 
+
+:::image type="content" source="media/query-result.png" alt-text="F0 リソースが既に存在する場合のメッセージ" lightbox="media/query-result.png":::
+
 
 ### <a name="how-do-i-detect-spikes--dips-as-anomalies"></a>急増と急減を異常として検出するには、どうすればよいですか?
 

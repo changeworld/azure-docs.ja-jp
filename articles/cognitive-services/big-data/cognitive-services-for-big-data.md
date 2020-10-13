@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: overview
 ms.date: 07/09/2020
 ms.author: marhamil
-ms.openlocfilehash: 0001002636362a74915f9dae21a6beff52baea63
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 030fb4b4e5fa10304167f8d6bc2307c5b93c6d58
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201790"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776631"
 ---
 # <a name="azure-cognitive-services-for-big-data"></a>ビッグ データ向けの Azure Cognitive Services
 
@@ -125,12 +125,14 @@ Spark の基盤となるのは、Apache Spark ワーカー ノード全体に分
 - [Apache Spark での Cognitive Services の機能の詳細を見る&trade;](https://azure.microsoft.com/blog/dear-spark-developers-welcome-to-azure-cognitive-services/)
 - [Spark のディープ ラーニングと Computer Vision によるユキヒョウの保護](http://www.datawizard.io/2017/06/27/saving-snow-leopards-with-deep-learning-and-computer-vision-on-spark/)
 - [Microsoft Research Podcast:MMLSpark、Mark Hamilton による AI for Good の強化](https://blubrry.com/microsoftresearch/49485070/092-mmlspark-empowering-ai-for-good-with-mark-hamilton/)
+- [アカデミック ホワイトペーパー: 大規模なインテリジェント マイクロサービス](https://arxiv.org/abs/2009.08044)
 
 ## <a name="webinars-and-videos"></a>ウェビナーとビデオ
 
 - [Spark での Azure Cognitive Services:埋め込みインテリジェント サービスを提供するクラスター](https://databricks.com/session/the-azure-cognitive-services-on-spark-clusters-with-embedded-intelligent-services)
 - [Spark サミットの基調講演:拡張性に優れた AI for Good](https://databricks.com/session_eu19/scalable-ai-for-good)
 - [Cosmos DB でのビッグ データ向けの Cognitive Services](https://medius.studios.ms/Embed/Video-nc/B19-BRK3004?latestplayer=true&l=2571.208093)
+- [大規模なインテリジェント マイクロサービスに関するライトニング トーク](https://www.youtube.com/watch?v=BtuhmdIy9Fk&t=6s)
 
 ## <a name="next-steps"></a>次のステップ
 
