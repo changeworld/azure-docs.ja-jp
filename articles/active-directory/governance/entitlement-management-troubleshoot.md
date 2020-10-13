@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 296aabdd79e1cd5c37248a0a44d57ebf17a4ea44
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 4ba90724f75635ea9fd5f72f75de6a46d7b6d288
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90979417"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447007"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理のトラブルシューティング
 
@@ -146,7 +146,7 @@ ms.locfileid: "90979417"
     | P1 | ディレクトリ内の特定のユーザーとグループ、または接続されている特定の組織 |
     | P2 | ディレクトリ内のすべてのメンバー (ゲストを除く) |
     | P3 | ディレクトリ内のすべてのユーザー (ゲストを含む) または接続されている特定の組織 |
-    | P4 | 接続されているすべての組織またはすべてのユーザー (接続されているすべての組織 + 新しい外部ユーザー) |
+    | P4 | 構成済みで接続されているすべての組織またはすべてのユーザー (接続されているすべての組織 + 新しい外部ユーザー) |
     
     より優先度の高いカテゴリにポリシーが属している場合、それよりも優先度が低いカテゴリは無視されます。 同じ優先度の複数のポリシーが要求元にどのように表示されるかの例については、「[ポリシーの選択](entitlement-management-request-access.md#select-a-policy)」を参照してください。
 

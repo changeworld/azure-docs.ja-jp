@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 8e48a5c896c4927b82f7d77f31b7f1c47fd156c5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 54a81ac36fb0b99f6931b372543dc3e4bca6a12c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90932630"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447893"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure Automanage for virtual machines
 
@@ -43,12 +43,12 @@ Azure Automanage に仮想マシンをオンボードすると、各ベスト �
 
 - Windows Server VM のみ
 - VM が実行されている必要があります
-- スケール セット以外の VM のみ
 - VM はサポート対象のリージョンに存在する必要があります
 - ユーザーは正しいアクセス許可を持っている必要があります
 - VM が異なるサブスクリプションの Log Analytics ワークスペースにリンクしていてはなりません
+- 現時点では、サンドボックス サブスクリプションは Automanage ではサポートされていません
 
-Automanage を有効にするには、次の RBAC アクセス許可が必要です。**所有者**ロール、または**共同作成者**ロールと**ユーザー アクセス管理者**ロールの併用。
+既存の Automanage アカウントを使用して Automanage を有効にするには、**共同作成者**ロールが必要です。 新しい Automanage アカウントで Automanage を有効にする場合は、次のアクセス許可が必要です: **所有者**ロール、または**共同作成者**ロールと**ユーザー アクセス管理者**ロールの併用。
 
 また、Automanage では次のリージョンにある Windows VM のみがサポートされることにも注意してください: 西ヨーロッパ、米国東部、米国西部 2、カナダ中部、米国中西部。
 
@@ -105,23 +105,14 @@ Automanage アカウントは、自動化された操作が行われるセキュ
 Azure portal のエクスペリエンスでは、VM で Automanage が有効になっていると、 **[Enable Azure VM best practice]\(Azure VM のベスト プラクティスを有効にする\)** ブレードの詳細ドロップダウンを使用して、Automanage アカウントを割り当てたり、手動で作成したりすることができます。
 
 > [!NOTE]
-> Automanage を有効にするには、次の RBAC アクセス許可が必要です。**所有者**ロール、または**共同作成者**ロールと**ユーザー アクセス管理者**ロールの併用。
+> 既存の Automanage アカウントを使用して Automanage を有効にするには、**共同作成者**ロールが必要です。 新しい Automanage アカウントで Automanage を有効にする場合は、次のアクセス許可が必要です: **所有者**ロール、または**共同作成者**ロールと**ユーザー アクセス管理者**ロールの併用。
 
 
 ## <a name="status-of-vms"></a>VM の状態
 
 Azure portal で、自動管理されている VM がすべて表示されている **[Automanage – Azure virtual machine best practices]\(Automanage - Azure 仮想マシンのベスト プラクティス)** ページに移動します。 ここには、各仮想マシンの全体的な状態が表示されます。
 
-:::image type="content" source="media\automanage-virtual-machines\configured-status.png" alt-text="構成済み仮想マシンの一覧。":::
-
-一覧の VM ごとに、次の詳細が表示されます: 名前、構成プロファイル、構成の基本設定、状態、アカウント、サブスクリプション、リソース グループ。
-
-**[状態]** 列には、次の状態が表示されます。
-- *[進行中]* - VM は有効にされたばかりで、構成が行われています
-- *[構成済み]* - VM は構成されており、ドリフトは検出されていません
-- *[失敗]* - VM にはドリフトがあり、修正できませんでした
-
-**[状態]** が *[失敗]* と表示される場合は、VM が配置されているリソース グループを使用してデプロイのトラブルシューティングを行うことができます。 **[リソース グループ]** に移動し、リソース グループを選択し、 **[デプロイ]** をクリックして、"*失敗*" 状態とエラーの詳細を確認します。
+:::image type="content" source="media\automanage-virtual-machines\configured-status.png" alt-text="サービスをインテリジェントにオンボードする。" 状態とエラーの詳細を確認します。
 
 
 ## <a name="disabling-automanage-for-vms"></a>Automanage for VMs を無効にする
@@ -130,7 +121,7 @@ Azure portal で、自動管理されている VM がすべて表示されてい
 
 Azure portal でそれを行うには、自動管理されている VM がすべて表示される **[Automanage – Azure virtual machine best practices]\(Automanage - Azure 仮想マシンのベスト プラクティス)** ページに移動します。 Automanage から無効にする仮想マシンの横にあるチェック ボックスをオンにして、 **[Disable automanagment]\(自動管理を無効にする\)** ボタンをクリックし ます。
 
-:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="仮想マシンでの Automanage の無効化。":::
+:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="サービスをインテリジェントにオンボードする。":::
 
 **[Disable]\(無効\)** に同意する前に、結果として表示されたポップアップのメッセージを注意深く確認します。
 

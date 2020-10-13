@@ -3,17 +3,17 @@ title: Windows Virtual Desktop の最新情報 - Azure
 description: Windows Virtual Desktop の新機能と製品の更新プログラム。
 author: Heidilohr
 ms.topic: overview
-ms.date: 09/02/2020
+ms.date: 10/01/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: d698470f450f6fe903ab68334764e0918d659d7f
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 0191d6ad74a9b6349f5d1724f9483607dce2d926
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319816"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91630016"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows Virtual Desktop の最新情報
 
@@ -25,6 +25,29 @@ Windows Virtual Desktop は定期的に更新されます。 この記事では�
 - バグの修正
 
 この記事は毎月更新されます。 こちらを頻繁に確認して、新しい更新プログラムに関する最新情報を入手してください。
+
+## <a name="september-2020"></a>2020 年 9 月
+
+2020 年 9 月における変更点は次のとおりです。
+
+- 次の Azure 地域での接続の待ち時間を短縮することで、パフォーマンスを最適化しました。
+    - ドイツ
+    - 南アフリカ (検証環境のみ)
+
+[エクスペリエンス予測ツール](https://azure.microsoft.com/services/virtual-desktop/assessment/)を使用して、これらの地域のユーザー エクスペリエンス品質を見積もることができるようになりました。
+
+- Windows Virtual Desktop 用 Windows デスクトップ クライアントのバージョン 1.2.1364 がリリースされました。 この更新では、次の変更を行いました。
+    - シングル サインオン (SSO) が Windows 7 で動作しなかった問題を修正しました。
+    - Teams のメディア最適化を有効にしているユーザーが、別のアプリでオーディオ ストリームを排他モードで開いている場合に、Teams の会議に通話または参加しようとしたときにクライアントが切断される原因となっていた問題を修正しました。
+    - Teams のメディア最適化が有効になっているときに、Teams でオーディオまたはビデオ デバイスを列挙できなかった問題を修正しました。
+    - "設定にサポートが必要ですか?" リンクをデスクトップの設定ページに追加しました。
+    - ハイコントラストの濃色テーマの使用時に発生する "サブスクライブ" ボタンの問題を修正しました。
+    
+- ユーザーからの多大な支援によって、Microsoft Store リモート デスクトップ クライアントの 2 つの重大な問題を修正することができました。 クライアントの段階的リリースを世界中の多くのユーザーに拡げるなかで、引き続きフィードバックを確認しながら問題を修正していきます。
+    
+- Azure portal でお客様のデプロイに VM を追加するワークフローの一環として、VM の場所、イメージ、リソース グループ、プレフィックス名、ネットワーク構成を変更できるようにする新機能が追加されました。
+
+- IT 担当者は、Microsoft エンドポイント マネージャーを使用して、ハイブリッド Azure Active Directory 参加済み Windows 10 Enterprise VM を管理できるようになりました。 詳細については、[こちらのブログ記事](https://techcommunity.microsoft.com/t5/microsoft-endpoint-manager-blog/microsoft-endpoint-manager-announces-support-for-windows-virtual/ba-p/1681048)を参照してください。
 
 ## <a name="august-2020"></a>2020 年 8 月
 
@@ -144,4 +167,3 @@ Windows Virtual Desktop およびリモート デスクトップ サービスに
 ## <a name="next-steps"></a>次のステップ
 
 今後の計画については、[Microsoft 365 Windows 仮想デスクトップ ロードマップ](https://www.microsoft.com/microsoft-365/roadmap?filters=Windows%20Virtual%20Desktop)に関するページを参照してください。
-

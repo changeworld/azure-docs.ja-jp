@@ -1,20 +1,20 @@
 ---
-title: 仮想マシンの認定 - 問題と解決策
-description: この記事では、VM イメージの一般的なエラー メッセージについて説明します。 また、関連するソリューションについても説明します。
+title: Azure Marketplace の仮想マシン イメージを認定するときの一般的なイシュー
+description: この記事では、Azure Marketplace で VM イメージのテストと認定を行うときの一般的なエラー メッセージとイシューについて説明します。 また、関連するソリューションについても説明します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 06/16/2020
-ms.openlocfilehash: 5b6d1ee41434d8aebac81d38ced9cadd93e51ba8
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d724ef463d7c7ad237b5fd023e9c15f50de96f04
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181444"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803468"
 ---
-# <a name="issues-and-solutions-during-virtual-machine-certification"></a>仮想マシンの認定中の問題と解決策 
+# <a name="common-issues-when-certifying-virtual-machine-images-for-azure-marketplace"></a>Azure Marketplace の仮想マシン イメージを認定するときの一般的なイシュー
 
 Azure Marketplace に仮想マシン (VM) イメージを発行する際に、Azure チームはそれを検証して、その起動可能性、セキュリティ、および Azure との互換性を確認します。 高品質テストのいずれかに不合格になると、発行が失敗し、問題を説明するエラー メッセージが表示されます。
 
@@ -33,6 +33,9 @@ Azure Marketplace に仮想マシン (VM) イメージを発行する際に、Az
 
 - [Linux イメージ](../../virtual-machines/linux/endorsed-distros.md?toc=/azure/virtual-machines/linux/toc.json)
 - [Windows イメージ](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base)
+
+> [!Note]
+> Marketplace から取得したものではない Linux ベースのイメージを使用している場合は、最初のパーティションを 2048 KB オフセットできます。 これにより、フォーマットされていない領域を、新しい課金情報を追加するために使用でき、Azure で Marketplace への VM の発行を進めることができます。  
 
 ## <a name="vm-extension-failure"></a>VM 拡張機能のエラー
 
@@ -270,9 +273,12 @@ VM 上でテスト ケースを実行しているときにアクセス拒否の�
 |6|HTTP 条件ヘッダー|SASL URL が無効です。|正しい SAS URL を取得してください。|
 |7|無効な VHD 名|VHD 名にパーセント記号 (%) や引用符 (") などの特殊文字が含まれているかどうかを確認します。|特殊文字を削除して VHD ファイルの名前を変更します。|
 
-## <a name="first-1-mb-partition"></a>最初の 1 MB パーティション
+## <a name="first-mb-2048-kb-partition-only-for-linux"></a>最初の MB (2048 KB) パーティション (Linux の場合のみ)
 
-VHD を送信するときに、VHD の最初の 1 MB パーティションが空であることを確認します。 そうでない場合、要求は失敗します。
+VHD を送信するときに、VHD の最初の 2048 KB が空であることを確認します。 そうでない場合、要求は失敗します*。
+
+>[!NOTE]
+>\* Azure Marketplace から取得した Azure Windows 基本イメージの上に構築されたものなど、一部の特殊なイメージの場合、課金タグがあるかどうかを確認し、課金タグが存在し、使用可能な内部値に一致する場合は、MB パーティションを無視します。
 
 ## <a name="default-credentials"></a>既定の資格情報
 
