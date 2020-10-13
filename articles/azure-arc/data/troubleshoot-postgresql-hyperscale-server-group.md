@@ -9,30 +9,55 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 9c0d3d9c74be8dabaec20ff5d4c7e7cfc74d8eef
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8e91a611084d201e6609f7e203eaa08c81e19a00
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931302"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570007"
 ---
 # <a name="troubleshooting-postgresql-hyperscale-server-groups"></a>PostgreSQL Hyperscale サーバー グループのトラブルシューティング
+この記事では、サーバー グループのトラブルシューティングに使用できるいくつかの手法について説明します。 この記事に加えて、[Kibana](monitor-grafana-kibana.md) を使用してログを検索する方法や、[Grafana](monitor-grafana-kibana.md) を使用してサーバー グループに関するメトリックを視覚化する方法についても必要になる場合があります。 
 
+## <a name="getting-more-details-about-the-execution-of-an-azdata-command"></a>azdata コマンドの実行に関する詳細情報の取得
+実行する azdata コマンドにパラメーター **--debug** を追加できます。 このようにすると、そのコマンドの実行に関する追加情報がコンソールに表示されます。 そのコマンドの動作を理解するのに役立つ詳細情報を取得するのに便利です。
+たとえば、次のように実行できます
+```console
+azdata arc postgres server create -n postgres01 -w 2 --debug
+```
+
+or
+```console
+azdata arc postgres server edit -n postgres01 --extension SomeExtensionName --debug
+```
+
+また、任意の azdata コマンドで --help パラメーターを使用して、特定のコマンドのヘルプやパラメーターの一覧を表示することもできます。 次に例を示します。
+```console
+azdata arc postgres server create --help
+```
+
+
+## <a name="collecting-logs-of-the-data-controller-and-your-server-groups"></a>データ コントローラーとサーバー グループのログの収集
+[Azure Arc 対応データ サービスのログの取得](troubleshooting-get-logs.md)に関する記事を参照してください
+
+
+
+## <a name="interactive-troubleshooting-with-jupyter-notebooks-in-azure-data-studio"></a>Azure Data Studio での Jupyter ノートブックによる対話型トラブルシューティング
 ノートブックでは、マークダウン コンテンツを追加して、実行内容や実行方法を説明することで、プロシージャをドキュメント化できます。 また、プロシージャを自動化する実行可能コードを提供することもできます。  このパターンは、標準的な運用手順からトラブルシューティング ガイドまで、あらゆるものに役立ちます。
 
 たとえば、Azure Data Studio を使用していくつかの問題が発生している可能性のある PostgreSQL Hyperscale サーバー グループのトラブルシューティングしてみましょう。
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="install-tools"></a>ツールをインストールする
+### <a name="install-tools"></a>ツールをインストールする
 
 Azure Data Studio でノートブックを実行するために使用しているクライアント コンピューターに、Azure Data Studio、`kubectl`、および `azdata` をインストールします。 これを行うには、[クライアント ツールのインストール](install-client-tools.md)に関する手順に従ってください。
 
-## <a name="update-the-path-environment-variable"></a>PATH 環境変数を更新する
+### <a name="update-the-path-environment-variable"></a>PATH 環境変数を更新する
 
 これらのツールをこのクライアント コンピューターの任意の場所から呼び出すことができることを確認します。 たとえば、Windows クライアント コンピューターで PATH システム環境変数を更新し、kubectl をインストールしたフォルダーを追加します。
 
-## <a name="sign-in-with-azdata"></a>`azdata` でサインインする
+### <a name="sign-in-with-azdata"></a>`azdata` でサインインする
 
 Azure Data Studio を起動する前に、このクライアント コンピューターから Arc データ コントローラーにサインインします。 これを行うには、次のようにコマンドを実行します。
 
@@ -46,7 +71,7 @@ azdata login --endpoint https://<IP address>:<port>
 azdata login --help
 ```
 
-## <a name="log-into-your-kubernetes-cluster-with-kubectl"></a>kubectl を使用して Kubernetes クラスターにログインする
+### <a name="log-into-your-kubernetes-cluster-with-kubectl"></a>kubectl を使用して Kubernetes クラスターにログインする
 
 これを行うには、[この](https://blog.christianposta.com/kubernetes/logging-into-a-kubernetes-cluster-with-kubectl/)ブログ記事に記載されているコマンド例を使用することができます。
 次のようなコマンドを実行します。
@@ -59,7 +84,7 @@ kubectl config set-context default/my_kubeuser/ArcDataControllerAdmin --user=Arc
 kubectl config use-context default/my_kubeuser/ArcDataControllerAdmin
 ```
 
-### <a name="the-troubleshooting-notebook"></a>トラブルシューティング ノートブック
+#### <a name="the-troubleshooting-notebook"></a>トラブルシューティング ノートブック
 
 Azure Data Studio を起動して、トラブルシューティング ノートブックを開きます。 
 
@@ -72,9 +97,9 @@ Azure Data Studio を起動して、トラブルシューティング ノート�
 
 :::image type="content" source="media/postgres-hyperscale/ads-controller-postgres-troubleshooting-notebook.jpg" alt-text="Azure Data Studio - PostgreSQL トラブルシューティング ノートブックを開く":::
 
-**TSG100 - Azure Arc 対応の PostgreSQL Hyperscale トラブルシューティング ノートブック**が開きます。:::image type="content" source="media/postgres-hyperscale/ads-controller-postgres-troubleshooting-notebook2.jpg" alt-text="Azure Data Studio - PostgreSQL のトラブルシューティング ノートブックを使用する":::
+**TSG100 - Azure Arc 対応の PostgreSQL Hyperscale トラブルシューティング ノートブック**が開きます。:::image type="content" source="media/postgres-hyperscale/ads-controller-postgres-troubleshooting-notebook2.jpg" alt-text="Azure Data Studio - PostgreSQL トラブルシューティング ノートブックを開く":::
 
-### <a name="run-the-scripts"></a>スクリプトの実行
+#### <a name="run-the-scripts"></a>スクリプトの実行
 上部にある [すべて実行] ボタンをクリックしてノートブックを一度にすべて実行するか、各コード セルを 1 つずつステップ実行して実行することができます。
 
 潜在的な問題について、コード セルの実行の出力を確認します。

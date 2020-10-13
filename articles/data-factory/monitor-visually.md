@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: b65b5b847712ce32c6723d725be9cf2ed1f99050
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fcbf48081484941fd93f209bee21eb14c2c38310
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801532"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570135"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Azure Data Factory を視覚的に監視する
 
@@ -136,7 +136,7 @@ Azure Data Factory でパイプラインを作成して公開した後、それ�
 
 実行の横にある使用量アイコンをクリックすると、パイプラインの実行によって消費されているリソースを確認できます。 
 
-![消費量の監視](media/monitor-visually/monitor-consumption-1.png)
+![パイプラインによって使用されているリソースを確認できる場所を示すスクリーンショット。](media/monitor-visually/monitor-consumption-1.png)
 
 このアイコンをクリックすると、そのパイプラインの実行によって使用されているリソースの消費量レポートが開きます。 
 
@@ -190,7 +190,7 @@ Data Factory で、サポートされるメトリックに対してアラート�
 
     ![対象の条件のボックス](media/monitor-visually/add-criteria-1.png)
 
-    ![条件の一覧](media/monitor-visually/add-criteria-2.png)
+    ![アラートの条件を設定するためにメトリックを 1 つ選択する場所を示すスクリーンショット。](media/monitor-visually/add-criteria-2.png)
 
     ![条件の一覧](media/monitor-visually/add-criteria-3.png)
 

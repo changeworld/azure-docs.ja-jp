@@ -64,8 +64,14 @@
           href: ./hdinsight-capacity-planning.md
         - name: クラスター管理のベスト プラクティス
           href: ./cluster-management-best-practices.md
-        - name: 高可用性と信頼性
-          href: ./hdinsight-high-availability-linux.md
+        - name: ビジネス継続性
+          items:
+            - name: ビジネス継続性の概要
+              href: hdinsight-business-continuity.md
+            - name: ビジネス継続性のアーキテクチャ
+              href: ./hdinsight-business-continuity-architecture.md
+            - name: 高可用性のケース スタディ
+              href: ./hdinsight-high-availability-case-study.md
         - name: マネージド ID とは
           href: ./hdinsight-managed-identities.md
         - name: ストレージ オプションの比較
@@ -100,12 +106,16 @@
               iconUrl: null
         - name: クラスター ストレージの使用
           items:
-            - name: Azure Storage を使用する
+            - name: Azure Storage の使用
               href: hdinsight-hadoop-use-blob-storage.md
-            - name: Azure Data Lake Storage Gen2 の使用
+            - name: Data Lake Storage Gen2 の使用
               href: hdinsight-hadoop-use-data-lake-storage-gen2.md
-            - name: Azure Data Lake Storage Gen1 の使用
-              href: hdinsight-hadoop-use-data-lake-store.md
+            - name: ポータルでの Data Lake Storage Gen2 の使用
+              href: hdinsight-hadoop-use-data-lake-storage-gen2-portal.md
+            - name: Azure CLI での Data Lake Storage Gen2 の使用
+              href: hdinsight-hadoop-use-data-lake-storage-gen2-azure-cli.md
+            - name: Data Lake Storage Gen1 の使用
+              href: hdinsight-hadoop-use-data-lake-storage-gen1.md
         - name: クラスターを拡張する
           items:
             - name: HDInsight アプリをインストールする
@@ -757,6 +767,8 @@
           href: ./interactive-query/gateway-best-practices.md
         - name: サイズ変更のガイドライン
           href: ./interactive-query/sizing-guidelines.md
+        - name: Hive レプリケーション
+          href: ./interactive-query/apache-hive-replication.md
     - name: 操作方法ガイド
       items:
         - name: 開発

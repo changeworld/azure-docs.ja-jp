@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: contperfq1
-ms.openlocfilehash: 4a9f243ce32dee9948cd2f2410b5c7f1382bf7c8
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: a4c32877ddb260e90fb4121b16a9b318616c2a4d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088852"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715835"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-in-the-azure-portal"></a>Azure portal で BLOB データへのアクセスの承認方法を選択する
 
@@ -26,11 +26,11 @@ ms.locfileid: "90088852"
 
 ## <a name="permissions-needed-to-access-blob-data"></a>BLOB データにアクセスするために必要なアクセス許可
 
-Azure portal で BLOB データへのアクセスを承認する方法に応じて、特定のアクセス許可が必要になります。 ほとんどの場合、これらのアクセス許可はロールベースのアクセス制御 (RBAC) を使用して提供されます。 RBAC の詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。
+Azure portal で BLOB データへのアクセスを承認する方法に応じて、特定のアクセス許可が必要になります。 ほとんどの場合、これらのアクセス許可は Azure ロールベースのアクセス制御 (Azure RBAC) を使用して提供されます。 Azure RBAC の詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。
 
 ### <a name="use-the-account-access-key"></a>アカウント アクセス キーを使用する
 
-アカウント アクセス キーを使用して BLOB データにアクセスするには、RBAC アクション **Microsoft.Storage/storageAccounts/listkeys/action** を含む Azure ロールが割り当てられている必要があります。 この Azure ロールは、組み込みロールまたはカスタム ロールのどちらでも構いません。 **Microsoft.Storage/storageAccounts/listkeys/action** をサポートする組み込みロールには、次が含まれます。
+アカウント アクセス キーを使用して BLOB データにアクセスするには、Azure RBAC アクション **Microsoft.Storage/storageAccounts/listkeys/action** を含む Azure ロールが割り当てられている必要があります。 この Azure ロールは、組み込みロールまたはカスタム ロールのどちらでも構いません。 **Microsoft.Storage/storageAccounts/listkeys/action** をサポートする組み込みロールには、次が含まれます。
 
 - Azure Resource Manager の[所有者](../../role-based-access-control/built-in-roles.md#owner)ロール
 - Azure Resource Manager の[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロール
@@ -111,6 +111,6 @@ BLOB アップロード操作を承認する方法を指定するには、次の
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Active Directory を使用して Azure BLOB およびキューへのアクセスを認証する](../common/storage-auth-aad.md)
-- [Azure portal での RBAC を使用して Azure コンテナーとキューへのアクセスを付与する](../common/storage-auth-aad-rbac-portal.md)
-- [RBAC と Azure CLI を使用して Azure BLOB とキューのデータへのアクセスを付与する](../common/storage-auth-aad-rbac-cli.md)
-- [RBAC と PowerShell を使用して Azure BLOB とキューのデータへのアクセスを付与する](../common/storage-auth-aad-rbac-powershell.md)
+- [Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる](../common/storage-auth-aad-rbac-portal.md)
+- [Azure CLI を使用して BLOB およびキュー データにアクセスするための Azure ロールを割り当てる](../common/storage-auth-aad-rbac-cli.md)
+- [Azure PowerShell モジュールを使用して BLOB およびキュー データにアクセスするための Azure ロールを割り当てる](../common/storage-auth-aad-rbac-powershell.md)
