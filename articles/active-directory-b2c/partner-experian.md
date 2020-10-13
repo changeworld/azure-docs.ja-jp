@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 5c2fb330149d3e6530e7cb0fc3350d5db3fa24cf
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a88894bb7462e9ac3afd16d69ae820dd98543a5f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683880"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259375"
 ---
 # <a name="tutorial-for-configuring-experian-with-azure-active-directory-b2c"></a>Azure Active Directory B2C で Experian を構成するためのチュートリアル
 
@@ -77,7 +77,7 @@ Experian 統合には、次のコンポーネントが含まれています。
 
 ### <a name="part-1---deploy-the-api"></a>パート 1 - API をデプロイする
 
-提供された API コードを Azure サービスにデプロイします。 このコードは、次の[手順](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)に従って、Visual Studio から発行することができます。
+提供された [API コード](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/Experian/CrossCoreIntegrationApi/CrossCoreIntegrationApi.sln)を Azure サービスにデプロイします。 このコードは、次の[手順](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)に従って、Visual Studio から発行することができます。
 
 >[!NOTE]
 >必要な設定で Azure AD を構成するには、デプロイされたサービスの URL が必要です。
@@ -117,7 +117,7 @@ Experian API の呼び出しは、クライアント証明書によって保護�
 
 ### <a name="part-5---replace-the-configuration-values"></a>パート 5 - 構成値を置き換える
 
-提供されたカスタム ポリシー内にある次のプレースホルダーを見つけて、ご自分のインスタンスの対応する値に置き換えます。
+提供された[カスタム ポリシー](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Experian/policy)内にある次のプレースホルダーを見つけて、自分のインスタンスの対応する値に置き換えます
 
 |                      プレースホルダー                       |                                   値で置換                                 |                   例                    |
 | ------------------------------------------------------ | -------------------------------------------------------------------------------- | -------------------------------------------- |

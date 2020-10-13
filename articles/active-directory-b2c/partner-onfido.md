@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 5ff2fe74a0dd5064232fcef3178aec2967ef6812
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5d0835114844069d4ebdc992b872f9be1f0b3ca6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683863"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259222"
 ---
 # <a name="tutorial-for-configuring-onfido-with-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Onfido を構成するためのチュートリアル
 
@@ -94,7 +94,7 @@ Onfido の詳細については、[Onfido API ドキュメント](https://docume
 
 1. [ストレージ アカウントで BLOB ストレージ コンテナー](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)を設定します。
 
-2. UI ファイルを UI フォルダーからお使いの BLOB コンテナーに格納します。
+2. UI ファイルを [UI フォルダー](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/UI)からお使いの BLOB コンテナーに格納します。
 
 3. これらの手順に従って、作成したストレージ コンテナーへの CORS アクセスを許可します。
 
@@ -124,7 +124,7 @@ Onfido の詳細については、[Onfido API ドキュメント](https://docume
 
 #### <a name="replace-the-configuration-values"></a>構成値を置き換える
 
-提供されたカスタム ポリシー内にある次のプレースホルダーを見つけて、ご自分のインスタンスの対応する値に置き換えます。
+提供された[カスタム ポリシー](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/Policies)内にある次のプレースホルダーを見つけて、ご自分のインスタンスの対応する値に置き換えます。
 
 | プレースホルダー | 値で置換 | 例  |
 |:---------------|:----------------|:-------------------|

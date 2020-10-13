@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: fd500b80f0c564fc0f4c7e311483790a83a4101a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: c1e9e3d63e8a4f7fe461e2d33603da91d3d9bec6
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923740"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441778"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 に関する既知の問題
 
@@ -72,7 +72,7 @@ AzCopy の最新バージョン ([AzCopy v10](https://docs.microsoft.com/azure/s
 
 <a id="storage-explorer"></a>
 
-## <a name="azure-storage-explorer"></a>Azure Storage Explorer
+## <a name="azure-storage-explorer"></a>Azure ストレージ エクスプローラー
 
 バージョン  `1.6.0` 以降のみを使用します。
 
@@ -113,11 +113,9 @@ Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,wr
 
 ### <a name="lifecycle-management-policies"></a>ライフサイクル管理ポリシー
 
-- ライフサイクル管理ポリシーは、Premium BlockBlobStorage ストレージ アカウントではまだサポートされていません。 
+- ライフサイクル管理ポリシーは、汎用 v2 アカウントでのみサポートされます。 Premium BlockBlobStorage ストレージ アカウントではまだサポートされていません。
+- Premium レベルから下位レベルにデータを移動することはできません。
 
-- Premium レベルから下位レベルにデータを移動することはできません。 
-
-- **[BLOB の削除]** アクションは現在サポートされていません。 
 
 ### <a name="hdinsight-support"></a>HDInsight のサポート
 

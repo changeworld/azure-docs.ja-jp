@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 7fcc8d89df6ac346a44e0356a4416e4168933fd8
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: dc6056653fc50976439d4b16594e6d554e62f061
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543913"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652824"
 ---
 # <a name="nvv3-series"></a>NVv3 シリーズ
 
@@ -21,11 +21,12 @@ NVv3 シリーズの仮想マシンは、Intel E5-2690 v4 (Broadwell) CPU を使
 
 NVv3 インスタンス内の各 GPU には GRID ライセンスが付属しています。 このライセンスでは柔軟性が確保され、NV インスタンスを仮想ワークステーションとして 1 人のユーザーに対して使用したり、仮想アプリケーションのシナリオで 25 人のユーザーが同時に VM に接続したりできます。
 
-Premium Storage キャッシュ:サポートされています
-
-ライブ マイグレーション: サポートされていません
-
-メモリ保持更新: サポートされていません
+[Premium Storage](premium-storage-performance.md): サポートされています<br>
+[Premium Storage キャッシュ](premium-storage-performance.md): サポートされています<br>
+[ライブ マイグレーション](maintenance-and-updates.md): サポートされていません<br>
+[メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
+[VM 世代サポート](generation-2.md): 第 1 および第 2 世代<br>
+<br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | GPU | GPU メモリ: GiB | 最大データ ディスク数 | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) | 仮想ワークステーション | 仮想アプリケーション |
 |---|---|---|---|---|---|---|---|---|---|---|

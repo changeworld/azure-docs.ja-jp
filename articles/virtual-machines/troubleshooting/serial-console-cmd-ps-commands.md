@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 571df9c07e71682e2be51a73e3837c79cb074c3a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ef533b3566ac557b57f1435a2a9b2dbe26896993
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028466"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306890"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows コマンド - CMD と PowerShell
 
@@ -34,7 +34,7 @@ SAC は 80 x 24 のスクリーン バッファーに制限されるうえ、ス
 
 SAC はスクリーン バッファーが制限されているため、長いコマンドを入力する場合は、ローカルのテキスト エディターに入力してから SAC に貼り付けた方が簡単な場合があります。
 
-## <a name="view-and-edit-windows-registry-settings"></a>Windows レジストリ設定の表示と編集
+## <a name="view-and-edit-windows-registry-settings-using-cmd"></a>CMD を使用して Windows レジストリの設定を表示および編集する
 ### <a name="verify-rdp-is-enabled"></a>RDP が有効になっていることを確認する
 `reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections`
 
@@ -49,7 +49,7 @@ SAC はスクリーン バッファーが制限されているため、長いコ
 
 2 番目のキー (\Policies 下) が必要になるのは、関連するグループ ポリシー設定が構成されている場合のみです。 これをグループ ポリシーで構成する場合、値が書き換えられるのは次にグループ ポリシーを更新するときです。
 
-## <a name="manage-windows-services"></a>Windows サービスの管理
+## <a name="manage-windows-services-using-cmd"></a>CMD を使用して Windows サービスを管理する
 
 ### <a name="view-service-state"></a>サービスの状態の表示
 `sc query termservice`
@@ -79,7 +79,7 @@ or
 or
 
 `sc stop termservice`
-## <a name="manage-networking-features"></a>ネットワーク機能の管理
+## <a name="manage-networking-features-using-cmd"></a>CMD を使用してネットワーク機能を管理する
 ### <a name="show-nic-properties"></a>NIC プロパティの表示
 `netsh interface show interface`
 ### <a name="show-ip-properties"></a>IP プロパティの表示
@@ -120,7 +120,7 @@ Windows で利用できる既定の方法に制限されている場合は、Pow
 トラブルシューティング時にこのコマンドを使用して、Windows ファイアウォールを一時的に無効にすることができます。 これは、次の再起動時か、以下のコマンドを使用した有効化時に有効になります。 Windows ファイアウォールを無効にするために Windows ファイアウォール サービス (MPSSVC) を停止したり、ベース フィルター エンジン (BFE) サービスを停止したりしないでください。 MPSSVC や BFE を停止すると、すべての接続がブロックされます。
 ### <a name="enable-windows-firewall"></a>Windows ファイアウォールの有効化
 `netsh advfirewall set allprofiles state on`
-## <a name="manage-users-and-groups"></a>ユーザーとグループの管理
+## <a name="manage-users-and-groups-using-cmd"></a>CMD を使用してユーザーとグループを管理する
 ### <a name="create-local-user-account"></a>ローカル ユーザー アカウントの作成
 `net user /add <username> <password>`
 ### <a name="add-local-user-to-local-group"></a>ローカル グループにローカル ユーザーを追加する
@@ -150,7 +150,7 @@ Windows で利用できる既定の方法に制限されている場合は、Pow
 
 ### <a name="view-local-groups"></a>ローカル グループの表示
 `net localgroup`
-## <a name="manage-the-windows-event-log"></a>Windows イベント ログの管理
+## <a name="manage-the-windows-event-log-using-cmd"></a>CMD を使用して Windows イベント ログを管理する
 ### <a name="query-event-log-errors"></a>イベント ログ エラーの照会
 `wevtutil qe system /c:10 /f:text /q:"Event[System[Level=2]]" | more`
 
@@ -165,7 +165,7 @@ Windows で利用できる既定の方法に制限されている場合は、Pow
 `604800000` を使用すると、24 時間の代わりに 7 日間を指定できます。
 ### <a name="query-event-log-by-event-id-provider-and-eventdata-in-the-last-7-days"></a>過去 7 日間のイベント ID、プロバイダー、EventData でイベント ログを照会する
 `wevtutil qe security /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windows-Security-Auditing'] and EventID=4624 and TimeCreated[timediff(@SystemTime) <= 604800000]] and EventData[Data[@Name='TargetUserName']='<username>']]" | more`
-## <a name="view-or-remove-installed-applications"></a>インストールしたアプリケーションの表示または削除
+## <a name="view-or-remove-installed-applications-using-cmd"></a>CMD を使用してインストールされているアプリケーションを表示または削除する
 ### <a name="list-installed-applications"></a>インストールしたアプリケーションの一覧表示
 `wmic product get Name,InstallDate | sort /r | more`
 
@@ -175,7 +175,7 @@ Windows で利用できる既定の方法に制限されている場合は、Pow
 
 `<name>` を、上記のコマンドで返される、削除するアプリケーションの名前に置き換えます。
 
-## <a name="file-system-management"></a>ファイル システムの管理
+## <a name="file-system-management-using-cmd"></a>CMD を使用してファイル システムを管理する
 ### <a name="get-file-version"></a>ファイル バージョンの取得
 `wmic datafile where "drive='C:' and path='\\windows\\system32\\drivers\\' and filename like 'netvsc%'" get version /format:list`
 
@@ -206,7 +206,7 @@ Windows で利用できる既定の方法に制限されている場合は、Pow
 ## <a name="manage-group-policy"></a>グループ ポリシーの管理
 ### <a name="force-group-policy-update"></a>グループ ポリシーを強制的に更新する
 `gpupdate /force /wait:-1`
-## <a name="miscellaneous-tasks"></a>その他のタスク
+## <a name="miscellaneous-tasks-using-cmd"></a>CMD を使用するその他のタスク
 ### <a name="show-os-version"></a>OS バージョンの表示
 `ver`
 
@@ -259,7 +259,7 @@ SAC で PowerShell を実行するには、コマンド プロンプトで次の
 
 `remove-module psreadline`
 
-## <a name="view-and-edit-windows-registry-settings"></a>Windows レジストリ設定の表示と編集
+## <a name="view-and-edit-windows-registry-settings-using-powershell"></a>PowerShell を使用して Windows レジストリの設定を表示および編集する
 ### <a name="verify-rdp-is-enabled"></a>RDP が有効になっていることを確認する
 `get-itemproperty -path 'hklm:\system\curRentcontrolset\control\terminal server' -name 'fdenytsconNections'`
 
@@ -272,7 +272,7 @@ SAC で PowerShell を実行するには、コマンド プロンプトで次の
 `set-itemproperty -path 'hklm:\software\policies\microsoft\windows nt\terminal services' -name 'fdenytsconNections' 0 -type dword`
 
 2 番目のキー (\Policies 下) が必要になるのは、関連するグループ ポリシー設定が構成されている場合のみです。 これをグループ ポリシーで構成する場合、値が書き換えられるのは次にグループ ポリシーを更新するときです。
-## <a name="manage-windows-services"></a>Windows サービスの管理
+## <a name="manage-windows-services-using-powershell"></a>PowerShell を使用して Windows サービスを管理する
 ### <a name="view-service-details"></a>サービスの詳細の表示
 `get-wmiobject win32_service -filter "name='termservice'" |  format-list Name,DisplayName,State,StartMode,StartName,PathName,ServiceType,Status,ExitCode,ServiceSpecificExitCode,ProcessId`
 
@@ -291,7 +291,7 @@ SAC で PowerShell を実行するには、コマンド プロンプトで次の
 `start-service termservice`
 ### <a name="stop-service"></a>サービスの停止
 `stop-service termservice`
-## <a name="manage-networking-features"></a>ネットワーク機能の管理
+## <a name="manage-networking-features-using-powershell"></a>PowerShell を使用してネットワーク機能を管理する
 ### <a name="show-nic-properties"></a>NIC プロパティの表示
 `get-netadapter | where {$_.ifdesc.startswith('Microsoft Hyper-V Network Adapter')} |  format-list status,name,ifdesc,macadDresS,driverversion,MediaConNectState,MediaDuplexState`
 
@@ -357,7 +357,7 @@ or
 `Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False`
 
 2012 以降では `Set-NetFirewallProfile` を使用できます。 2008R2 では、上記の CMD に関するセクションに示されているように、`netsh advfirewall` を使用します。
-## <a name="manage-users-and-groups"></a>ユーザーとグループの管理
+## <a name="manage-users-and-groups-using-powershell"></a>PowerShell を使用してユーザーとグループを管理する
 ### <a name="create-local-user-account"></a>ローカル ユーザー アカウントの作成
 `new-localuser <name>`
 ### <a name="verify-user-account-is-enabled"></a>ユーザー アカウントが有効になっていることを確認する
@@ -386,7 +386,7 @@ or
 `(get-localgroup).name | sort` `(get-wmiobject win32_group).Name | sort`
 
 2012 以降では `Get-LocalUser` を使用できます。 2008R2 では `Get-WmiObject` を使用します。
-## <a name="manage-the-windows-event-log"></a>Windows イベント ログの管理
+## <a name="manage-the-windows-event-log-using-powershell"></a>PowerShell を使用して Windows イベント ログを管理する
 ### <a name="query-event-log-errors"></a>イベント ログ エラーの照会
 `get-winevent -logname system -maxevents 1 -filterxpath "*[System[Level=2]]" | more`
 
@@ -401,12 +401,12 @@ or
 `604800000` を使用すると、24 時間の代わりに 7 日間を指定できます。 |
 ### <a name="query-event-log-by-event-id-provider-and-eventdata-in-the-last-7-days"></a>過去 7 日間のイベント ID、プロバイダー、EventData でイベント ログを照会する
 `get-winevent -logname system -maxevents 1 -filterxpath "*[System[Provider[@Name='Microsoft-Windows-Security-Auditing'] and EventID=4624 and TimeCreated[timediff(@SystemTime) <= 604800000]] and EventData[Data[@Name='TargetUserName']='<username>']]" | more`
-## <a name="view-or-remove-installed-applications"></a>インストールしたアプリケーションの表示または削除
+## <a name="view-or-remove-installed-applications-using-powershell"></a>PowerShell を使用してインストールされているアプリケーションを表示または削除する
 ### <a name="list-installed-software"></a>インストールされているソフトウェアを一覧表示する
 `get-wmiobject win32_product | select installdate,name | sort installdate -descending | more`
 ### <a name="uninstall-software"></a>ソフトウェアのアンインストール
 `(get-wmiobject win32_product -filter "Name='<name>'").Uninstall()`
-## <a name="file-system-management"></a>ファイル システムの管理
+## <a name="file-system-management-using-powershell"></a>PowerShell を使用してファイル システムを管理する
 ### <a name="get-file-version"></a>ファイル バージョンの取得
 `(get-childitem $env:windir\system32\drivers\netvsc*.sys).VersionInfo.FileVersion`
 
@@ -415,7 +415,7 @@ or
 `$path='c:\bin';md $path;cd $path;(new-object net.webclient).downloadfile( ('htTp:/'+'/download.sysinternals.com/files/SysinternalsSuite.zip'),"$path\SysinternalsSuite.zip");(new-object -com shelL.apPlication).namespace($path).CopyHere( (new-object -com shelL.apPlication).namespace("$path\SysinternalsSuite.zip").Items(),16)`
 
 この例では、`c:\bin` フォルダーを作成し、一連の Sysinternals ツールを `c:\bin` にダウンロードし、抽出します。
-## <a name="miscellaneous-tasks"></a>その他のタスク
+## <a name="miscellaneous-tasks-using-powershell"></a>PowerShell を使用するその他のタスク
 ### <a name="show-os-version"></a>OS バージョンの表示
 `get-wmiobject win32_operatingsystem | format-list caption,version,buildnumber`
 ### <a name="view-os-install-date"></a>OS のインストール日の表示
