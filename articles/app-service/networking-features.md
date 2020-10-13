@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 03/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d2b74af723e3ba8b1d71e9f481bf96d009540a52
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: af4c333fb539ad533756c538cb3ecde1d9a91413
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962096"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743048"
 ---
 # <a name="app-service-networking-features"></a>App Service のネットワーク機能
 
 Azure App Service のアプリケーションは、複数の方法でデプロイできます。 既定では、App Service でホストされているアプリはインターネットから直接アクセス可能になっており、到達先はインターネット上でホストされているエンドポイントに限定されています。 しかし、多くのお客様のアプリケーションでは、送受信のネットワーク トラフィックを制御する必要があります。 このようなニーズに応えるため、App Service にはさまざまな機能が用意されています。 ここで課題となるのは、特定の問題を解決するにあたってどの機能を使用すればよいか把握することです。 このドキュメントでは、いくつかのサンプル ユース ケースに基づいて、お客様が使用すべき機能を判断できるよう説明していきます。
 
-Azure App Service のデプロイの種類は、主に 2 つあります。 1 つはマルチテナント パブリック サービスであり、Free、Shared、Basic、Standard、Premium、および PremiumV2 の各価格レベルの App Service プランがホストされます。 もう 1 つはシングル テナント型の App Service Environment (ASE) であり、Isolated 価格レベルの App Service プランが Azure Virtual Network (VNet) 内で直接ホストされます。 使用する機能は、ご利用の環境がマルチテナント サービスと ASE のどちらであるかによって異なります。 
+Azure App Service のデプロイの種類は、主に 2 つあります。 1 つはマルチテナント パブリック サービスであり、Free、Shared、Basic、Standard、Premium、PremiumV2、PremiumV3 の各価格レベルで App Service プランがホストされます。 もう 1 つはシングル テナント型の App Service Environment (ASE) であり、Isolated 価格レベルの App Service プランが Azure Virtual Network (VNet) 内で直接ホストされます。 使用する機能は、ご利用の環境がマルチテナント サービスと ASE のどちらであるかによって異なります。 
 
 ## <a name="multi-tenant-app-service-networking-features"></a>マルチテナント型 App Service のネットワーク機能 
 
@@ -62,7 +62,7 @@ Azure App Service は分散システムです。 受信した HTTP/HTTPS 要求�
 
 ### <a name="default-networking-behavior"></a>既定のネットワークの動作
 
-Azure App Service スケール ユニットでは、デプロイごとに多数のお客様をサポートしています。 Free と Shared の各価格レベルのプランでは、お客様のワークロードはマルチテナント worker 上でホストされます。 Basic 以上のプランでは、1 つの App Service プラン (ASP) 専用となるお客様のワークロードがホストされます。 たとえば、App Service プランが Standard の場合、このプラン内のアプリはすべて同一の worker 上で実行されます。 worker をスケールアウトした場合、その ASP 内にあるアプリはすべて、お使いの ASP 内にある各インスタンスの新規 worker 上にレプリケートされます。 PremiumV2 で使用される worker は、他のプラン用の worker とは異なります。 App Service デプロイごとに、その App Service デプロイ内のアプリに対するすべての受信トラフィックに使用される IP アドレスが 1 つ設定されます。 一方、送信呼び出しの実行には、4 から 11 個程度のアドレスが使用されます。 これらのアドレスは、該当する App Service デプロイ内にあるすべてのアプリで共有されます。 送信アドレスは、worker のタイプによって異なります。 つまり、Free、Shared、Basic、Standard、および Premium の各 ASP で使用されるアドレスは、PremiumV2 ASP からの送信呼び出しに使用されるアドレスとは異なるということです。 アプリで使用されている受信アドレスと送信アドレスは、そのアプリのプロパティで確認できます。 IP ACL との依存関係をロックダウンする必要がある場合は、possibleOutboundAddresses を使用してください。 
+Azure App Service スケール ユニットでは、デプロイごとに多数のお客様をサポートしています。 Free と Shared の各価格レベルのプランでは、お客様のワークロードはマルチテナント worker 上でホストされます。 Basic 以上のプランでは、1 つの App Service プラン (ASP) 専用となるお客様のワークロードがホストされます。 たとえば、App Service プランが Standard の場合、このプラン内のアプリはすべて同一の worker 上で実行されます。 worker をスケールアウトした場合、その ASP 内にあるアプリはすべて、お使いの ASP 内にある各インスタンスの新規 worker 上にレプリケートされます。 PremiumV2 と PremiumV3 で使用される worker は、他のプラン用の worker とは異なります。 App Service デプロイごとに、その App Service デプロイ内のアプリに対するすべての受信トラフィックに使用される IP アドレスが 1 つ設定されます。 一方、送信呼び出しの実行には、4 から 11 個程度のアドレスが使用されます。 これらのアドレスは、該当する App Service デプロイ内にあるすべてのアプリで共有されます。 送信アドレスは、worker のタイプによって異なります。 つまり、Free、Shared、Basic、Standard、および Premium の各 ASP で使用されるアドレスは、PremiumV2 と PremiumV3 の ASP からの送信呼び出しに使用されるアドレスとは異なるということです。 アプリで使用されている受信アドレスと送信アドレスは、そのアプリのプロパティで確認できます。 IP ACL との依存関係をロックダウンする必要がある場合は、possibleOutboundAddresses を使用してください。 
 
 ![アプリのプロパティ](media/networking-features/app-properties.png)
 

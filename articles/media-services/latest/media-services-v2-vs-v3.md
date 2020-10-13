@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 08/31/2020
+ms.date: 10/01/2020
 ms.author: inhenkel
-ms.openlocfilehash: 061ae48de9a73270ed499282c9fc9a4f8f1dba90
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 515379a4207a582b441d132b1c28ff11bc83c714
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298948"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651754"
 ---
 # <a name="media-services-v2-vs-v3"></a>Media Services v2 対 v3
 
@@ -30,18 +30,17 @@ ms.locfileid: "89298948"
 
 ## <a name="general-changes-from-v2"></a>v2 からの一般的な変更点
 
-* v3 で作成されたアセットの場合、Media Services は [Azure Storage サーバー側のストレージ暗号化](../../storage/common/storage-service-encryption.md)のみをサポートします。
-    * V3 API は、[ストレージ暗号化](../previous/media-services-rest-storage-encryption.md) (AES 256) が Media Services によって提供された v2 API で作成されたアセットと一緒に使用できます。
-    * v3 API を使用して従来の AES 256 [ストレージ暗号化](../previous/media-services-rest-storage-encryption.md)で新しいアセットを作成することはできません。
-* v3 の[アセット](assets-concept.md)のプロパティは v2 と異なります。[プロパティのマッピング](#map-v3-asset-properties-to-v2)に関するページを参照してください。
+* 資産に関連する変更については、後述の「[資産固有の変更](#asset-specific-changes)」セクションを参照してください。
 * v3 SDK が Storage SDK から分離されたため、使用する Storage SDK のバージョンをより詳細に制御し、バージョン管理の問題を回避できるようになりました。 
 * v3 API では、エンコード ビット レートはすべてビット/秒単位です。 これは v2 Media Encoder Standard のプリセットとは異なります。 たとえば、v2 のビットレートは 128 (kbps) と指定されていますが、v3 では 128,000 (ビット/秒) です。 
 * v3 にはエンティティ AssetFiles、AccessPolicies、IngestManifests が存在しません。
-* v3 には IAsset.ParentAssets プロパティが存在しません。
 * ContentKeys はエンティティではなくなり、ストリーミング ロケーターのプロパティになりました。
 * Event Grid のサポートによって NotificationEndpoints を置き換えられました。
-* 次のエンティティ名が変更されました
-    * ジョブ出力は Task を置き換え、ジョブの一部になりました。
+* 次のエンティティ名が変更されました。
+
+   * v3 JobOutput は v2 Task に置き換えられ、ジョブの一部になりました。 入力と出力がジョブ レベルになりました。 詳しくは、「[ローカル ファイルからジョブの入力を作成する](job-input-from-local-file-how-to.md)」をご覧ください。 
+
+       ジョブの進行状況の履歴を取得するには、EventGrid イベントをリッスンします。 詳細については、「[Event Grid イベントの処理](reacting-to-media-services-events.md)」を参照してください。
     * ストリーミング ロケーターによって Locator が置き換えられました。
     * ライブ イベントによって Channel が置き換えられました。<br/>ライブ イベントの課金はライブ チャンネルの測定に基づいています。 詳細については、[価格](live-event-states-billing.md)と[課金](https://azure.microsoft.com/pricing/details/media-services/)に関するセクションを参照してください。
     * ライブ出力によって Program が置き換えられました。
@@ -89,6 +88,12 @@ v3 API には v2 API に関して次の機能ギャップがあります。 ギ�
 
 ## <a name="asset-specific-changes"></a>資産固有の変更
 
+* v3 で作成されたアセットの場合、Media Services は [Azure Storage サーバー側のストレージ暗号化](../../storage/common/storage-service-encryption.md)のみをサポートします。
+    * V3 API は、[ストレージ暗号化](../previous/media-services-rest-storage-encryption.md) (AES 256) が Media Services によって提供された v2 API で作成されたアセットと一緒に使用できます。
+    * v3 API を使用して従来の AES 256 [ストレージ暗号化](../previous/media-services-rest-storage-encryption.md)で新しいアセットを作成することはできません。
+* v3 の[アセット](assets-concept.md)のプロパティは v2 と異なります。[プロパティのマッピング](#map-v3-asset-properties-to-v2)に関するページを参照してください。
+* v3 には IAsset.ParentAssets プロパティが存在しません。
+
 ### <a name="map-v3-asset-properties-to-v2"></a>v3 と v2 の資産のプロパティのマッピング
 
 次の表は、v3 の[資産](/rest/api/media/assets/createorupdate#asset)のプロパティが v2 の資産のプロパティにどのようにマッピングされるかを示しています。
@@ -124,7 +129,7 @@ v3 API には v2 API に関して次の機能ギャップがあります。 ギ�
 
 次の表では、一般的なシナリオでの v2 と v3 のコードの違いを示します。
 
-|シナリオ|V2 API|V3 API|
+|シナリオ|v2 API|v3 API|
 |---|---|---|
 |アセットの作成とファイルのアップロード |[v2 .NET の例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[v3 .NET の例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
 |ジョブの送信|[v2 .NET の例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[v3 .NET の例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>まず変換を作成し、次にジョブを送信する方法を示しています。|

@@ -324,19 +324,27 @@
       href: marketplace-faq-publisher-guide.md
     - name: Cloud パートナー ポータル移行に関する FAQ
       href: cloud-partner-portal-migration-faq.md
+    - name: ビジネス機会に関する営業時間
+      href: 'https://aka.ms/marketplaceofficehours'
+    - name: 技術および発行に関する営業時間
+      href: 'https://aka.ms/marketplacepublishingofficehours'
     - name: パートナー センターのサポート オプション
       href: partner-center-portal/support.md
+    - name: パートナー センターのお知らせ
+      href: /partner-center/announcements
+    - name: Microsoft パートナー コミュニティ
+      href: 'https://www.microsoftpartnercommunity.com/'
+    - name: パートナー コミュニティ フォーラム
+      href: 'https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/bd-p/2222'
     - name: 利用可能な地域と通貨
       href: marketplace-geo-availability-currencies.md
     - name: テナントとオブジェクト ID の検索
       href: find-tenant-object-id.md
     - name: サポートされている国とリージョン
       href: sell-from-countries.md
-    - name: サポートされる HTML タグ
-      href: supported-html-tags.md
     - name: 共同販売国とリージョン コード
       href: partner-center-portal/commercial-marketplace-co-sell-countries.md
     - name: 共同販売の州コード
       href: partner-center-portal/commercial-marketplace-co-sell-states.md
-    - name: フォーラム、ブログ、クイックリンク
-      href: marketplace-roadmap.md
+    - name: サポートされる HTML タグ
+      href: supported-html-tags.md

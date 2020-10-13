@@ -274,181 +274,6 @@
           href: ../luis/luis-language-support.md
         - name: リージョンのサポート
           href: regions.md#intent-recognition
-- name: 会話のシナリオ
-  items:
-    - name: 会話のシナリオのドキュメント
-      displayName: 'meeting, meetings, conversation, call center, transcription, multi-device conversation'
-      href: index-conversation-scenarios.yml
-    - name: 会話の文字起こし
-      items:
-        - name: 概要
-          items:
-            - name: 会話の文字起こしとは
-              href: conversation-transcription.md
-        - name: 操作方法ガイド
-          items:
-            - name: コール センターのシナリオに対応する
-              displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
-              href: call-center-transcription.md
-            - name: リアルタイムでの会話の文字起こし
-              href: how-to-use-conversation-transcription.md
-            - name: 非同期での会話の文字起こし
-              href: how-to-async-conversation-transcription.md
-        - name: リファレンス
-          items:
-            - name: Speech SDK
-              items:
-                - name: C++
-                  displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
-                  href: 'https://aka.ms/csspeech/cppref'
-                - name: C#
-                  displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
-                  href: 'https://aka.ms/csspeech/csharpref'
-                - name: Java
-                  displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
-                  href: 'https://aka.ms/csspeech/javaref'
-                - name: JavaScript
-                  displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
-                  href: 'https://aka.ms/csspeech/javascriptref'
-                - name: Objective-C
-                  displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
-                  href: 'https://aka.ms/csspeech/objectivecref'
-                - name: Python
-                  displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
-                  href: 'https://aka.ms/csspeech/pythonref'
-                - name: リリース ノート
-                  displayName: 'release notes,updates,what''s new,what is new,changes'
-                  href: releasenotes.md
-            - name: REST API
-              items:
-                - name: Conversation transcription REST API
-                  href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
-    - name: マルチデバイスの会話
-      items:
-        - name: 概要
-          items:
-            - name: マルチデバイスの会話とは
-              href: multi-device-conversation.md
-        - name: クイック スタート
-          items:
-            - name: 会話を開始して参加する
-              href: quickstarts/multi-device-conversation.md
-        - name: リファレンス
-          items:
-            - name: Speech SDK
-              items:
-                - name: C++
-                  href: 'https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-transcription-namespace'
-                - name: C#
-                  href: 'https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription'
-                - name: Java
-                  href: 'https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.transcription'
-- name: 音声アシスタント
-  items:
-    - name: 音声アシスタントのドキュメント
-      href: index-voice-assistants.yml
-    - name: 概要
-      items:
-        - name: 音声アシスタントとは
-          href: voice-assistants.md
-        - name: 音声アシスタントのサンプル (GitHub)
-          href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
-    - name: カスタム コマンド
-      items:
-        - name: カスタム コマンドとは
-          href: custom-commands.md
-        - name: クイックスタート
-          items:
-            - name: カスタム コマンド アプリを構築する
-              href: quickstart-custom-commands-application.md
-        - name: 操作方法ガイド
-          items:
-            - name: 開発
-              items:
-                - name: 単純なコマンドを使用してアプリケーションを作成する
-                  href: how-to-custom-commands-create-application-with-simple-commands.md
-                - name: コマンドにパラメーターを追加する
-                  href: how-to-custom-commands-add-parameters-to-commands.md
-                - name: コマンドのパラメーターに構成を追加する
-                  href: how-to-custom-commands-add-parameter-configuration.md
-                - name: 相互作用ルールを追加する
-                  href: how-to-custom-commands-add-interaction-rules.md
-                - name: 音声応答の言語生成テンプレートを追加する
-                  href: how-to-custom-commands-add-language-generation-templates.md
-                - name: Custom Voice を使用する
-                  href: how-to-custom-commands-use-custom-voice.md
-            - name: 統合
-              items:
-                - name: Speech SDK を使用してクライアント アプリと統合する
-                  href: how-to-custom-commands-setup-speech-sdk.md
-                - name: クライアント アプリケーションへのアクティビティの送信
-                  href: how-to-custom-commands-send-activity-to-client.md
-                - name: Web エンドポイントを設定する
-                  href: how-to-custom-commands-setup-web-endpoints.md
-            - name: 配置
-              items:
-                - name: Azure DevOps による継続的配置
-                  href: how-to-custom-commands-deploy-cicd.md
-            - name: テスト
-              items:
-                - name: カスタム コマンド アプリをテストする
-                  href: how-to-custom-commands-developer-flow-test.md
-            - name: デバッグ
-              items:
-                - name: アプリの作成時にエラーをデバッグする
-                  href: how-to-custom-commands-debug-build-time.md
-                - name: アプリの実行時にエラーをデバッグする
-                  href: how-to-custom-commands-debug-runtime.md
-            - name: References
-              items:
-                - name: カスタム コマンドの概念
-                  href: custom-commands-references.md
-        - name: リソース
-          items:
-            - name: カスタム コマンドのサンプル (GitHub)
-              href: 'https://aka.ms/speech/cc-samples'
-            - name: 音声アシスタントのサンプル (GitHub)
-              href: 'http://aka.ms/speech/va-samples'
-            - name: 音声アシスタントの FAQ
-              href: faq-voice-assistants.md
-            - name: Speech SDK
-              href: speech-sdk.md
-            - name: カスタム コマンドによる保存データの暗号化
-              href: custom-commands-encryption-of-data-at-rest.md
-    - name: Direct Line Speech
-      items:
-        - name: Direct Line Speech とは
-          href: direct-line-speech.md
-        - name: クイックスタート
-          items:
-            - name: カスタム音声アシスタントを作成する
-              href: quickstarts/voice-assistants.md
-        - name: チュートリアル
-          items:
-            - name: Speech SDK を使用してボットを音声対応にする
-              href: tutorial-voice-enable-your-bot-speech-sdk.md
-        - name: リソース
-          items:
-            - name: 音声アシスタントの FAQ
-              href: faq-voice-assistants.md
-    - name: Windows の音声アシスタント
-      items:
-        - name: Windows の音声アシスタントの概要
-          href: windows-voice-assistants-overview.md
-        - name: 操作方法ガイド
-          items:
-            - name: Windows を使用してアシスタントの開発を開始する
-              href: how-to-windows-voice-assistants-get-started.md
-            - name: 音声によるアクティブ化を有効にする
-              href: windows-voice-assistants-implementation-guide.md
-        - name: リソース
-          items:
-            - name: プライバシーの要件とガイドライン
-              href: windows-voice-assistants-automatic-enablement-guidelines.md
-            - name: アシスタント エクスペリエンスのベスト プラクティス
-              href: windows-voice-assistants-best-practices.md
-            - name: サンプルとよく寄せられる質問
-              href: windows-voice-assistants-faq.md
 - name: Speaker Recognition
   items:
     - name: Speaker Recognition の概要
@@ -465,6 +290,183 @@
       href: custom-keyword-overview.md
     - name: カスタム キーワードの基本
       href: custom-keyword-basics.md
+- name: シナリオの詳細
+  items:
+    - name: 会話のシナリオ
+      items:
+        - name: 会話のシナリオのドキュメント
+          displayName: 'meeting, meetings, conversation, call center, transcription, multi-device conversation'
+          href: index-conversation-scenarios.yml
+        - name: 会話の文字起こし
+          items:
+            - name: 概要
+              items:
+                - name: 会話の文字起こしとは
+                  href: conversation-transcription.md
+            - name: 操作方法ガイド
+              items:
+                - name: コール センターのシナリオに対応する
+                  displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
+                  href: call-center-transcription.md
+                - name: リアルタイムでの会話の文字起こし
+                  href: how-to-use-conversation-transcription.md
+                - name: 非同期での会話の文字起こし
+                  href: how-to-async-conversation-transcription.md
+            - name: リファレンス
+              items:
+                - name: Speech SDK
+                  items:
+                    - name: C++
+                      displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
+                      href: 'https://aka.ms/csspeech/cppref'
+                    - name: C#
+                      displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
+                      href: 'https://aka.ms/csspeech/csharpref'
+                    - name: Java
+                      displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
+                      href: 'https://aka.ms/csspeech/javaref'
+                    - name: JavaScript
+                      displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
+                      href: 'https://aka.ms/csspeech/javascriptref'
+                    - name: Objective-C
+                      displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
+                      href: 'https://aka.ms/csspeech/objectivecref'
+                    - name: Python
+                      displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
+                      href: 'https://aka.ms/csspeech/pythonref'
+                    - name: リリース ノート
+                      displayName: 'release notes,updates,what''s new,what is new,changes'
+                      href: releasenotes.md
+                - name: REST API
+                  items:
+                    - name: Conversation transcription REST API
+                      href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
+        - name: マルチデバイスの会話
+          items:
+            - name: 概要
+              items:
+                - name: マルチデバイスの会話とは
+                  href: multi-device-conversation.md
+            - name: クイック スタート
+              items:
+                - name: 会話を開始して参加する
+                  href: quickstarts/multi-device-conversation.md
+            - name: リファレンス
+              items:
+                - name: Speech SDK
+                  items:
+                    - name: C++
+                      href: 'https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-transcription-namespace'
+                    - name: C#
+                      href: 'https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription'
+                    - name: Java
+                      href: 'https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.transcription'
+    - name: 音声アシスタント
+      items:
+        - name: 音声アシスタントのドキュメント
+          href: index-voice-assistants.yml
+        - name: 概要
+          items:
+            - name: 音声アシスタントとは
+              href: voice-assistants.md
+            - name: 音声アシスタントのサンプル (GitHub)
+              href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
+        - name: カスタム コマンド
+          items:
+            - name: カスタム コマンドとは
+              href: custom-commands.md
+            - name: クイックスタート
+              items:
+                - name: カスタム コマンド アプリを構築する
+                  href: quickstart-custom-commands-application.md
+            - name: 操作方法ガイド
+              items:
+                - name: 開発
+                  items:
+                    - name: 単純なコマンドを使用してアプリケーションを作成する
+                      href: how-to-custom-commands-create-application-with-simple-commands.md
+                    - name: コマンドにパラメーターを追加する
+                      href: how-to-custom-commands-add-parameters-to-commands.md
+                    - name: コマンドのパラメーターに構成を追加する
+                      href: how-to-custom-commands-add-parameter-configuration.md
+                    - name: 相互作用ルールを追加する
+                      href: how-to-custom-commands-add-interaction-rules.md
+                    - name: 音声応答の言語生成テンプレートを追加する
+                      href: how-to-custom-commands-add-language-generation-templates.md
+                    - name: Custom Voice を使用する
+                      href: how-to-custom-commands-use-custom-voice.md
+                - name: 統合
+                  items:
+                    - name: Speech SDK を使用してクライアント アプリと統合する
+                      href: how-to-custom-commands-setup-speech-sdk.md
+                    - name: クライアント アプリケーションへのアクティビティの送信
+                      href: how-to-custom-commands-send-activity-to-client.md
+                    - name: Web エンドポイントを設定する
+                      href: how-to-custom-commands-setup-web-endpoints.md
+                - name: 配置
+                  items:
+                    - name: Azure DevOps による継続的配置
+                      href: how-to-custom-commands-deploy-cicd.md
+                - name: テスト
+                  items:
+                    - name: カスタム コマンド アプリをテストする
+                      href: how-to-custom-commands-developer-flow-test.md
+                - name: デバッグ
+                  items:
+                    - name: アプリの作成時にエラーをデバッグする
+                      href: how-to-custom-commands-debug-build-time.md
+                    - name: アプリの実行時にエラーをデバッグする
+                      href: how-to-custom-commands-debug-runtime.md
+                - name: References
+                  items:
+                    - name: カスタム コマンドの概念
+                      href: custom-commands-references.md
+            - name: リソース
+              items:
+                - name: カスタム コマンドのサンプル (GitHub)
+                  href: 'https://aka.ms/speech/cc-samples'
+                - name: 音声アシスタントのサンプル (GitHub)
+                  href: 'http://aka.ms/speech/va-samples'
+                - name: 音声アシスタントの FAQ
+                  href: faq-voice-assistants.md
+                - name: Speech SDK
+                  href: speech-sdk.md
+                - name: カスタム コマンドによる保存データの暗号化
+                  href: custom-commands-encryption-of-data-at-rest.md
+        - name: Direct Line Speech
+          items:
+            - name: Direct Line Speech とは
+              href: direct-line-speech.md
+            - name: クイックスタート
+              items:
+                - name: カスタム音声アシスタントを作成する
+                  href: quickstarts/voice-assistants.md
+            - name: チュートリアル
+              items:
+                - name: Speech SDK を使用してボットを音声対応にする
+                  href: tutorial-voice-enable-your-bot-speech-sdk.md
+            - name: リソース
+              items:
+                - name: 音声アシスタントの FAQ
+                  href: faq-voice-assistants.md
+        - name: Windows の音声アシスタント
+          items:
+            - name: Windows の音声アシスタントの概要
+              href: windows-voice-assistants-overview.md
+            - name: 操作方法ガイド
+              items:
+                - name: Windows を使用してアシスタントの開発を開始する
+                  href: how-to-windows-voice-assistants-get-started.md
+                - name: 音声によるアクティブ化を有効にする
+                  href: windows-voice-assistants-implementation-guide.md
+            - name: リソース
+              items:
+                - name: プライバシーの要件とガイドライン
+                  href: windows-voice-assistants-automatic-enablement-guidelines.md
+                - name: アシスタント エクスペリエンスのベスト プラクティス
+                  href: windows-voice-assistants-best-practices.md
+                - name: サンプルとよく寄せられる質問
+                  href: windows-voice-assistants-faq.md
 - name: ツール
   items:
     - name: Speech SDK
@@ -489,6 +491,8 @@
               href: 'https://aka.ms/csspeech/objectivecref'
             - name: Python
               href: 'https://aka.ms/csspeech/pythonref'
+            - name: Go
+              href: 'https://github.com/microsoft/cognitive-services-speech-sdk-go'
     - name: Speech CLI
       displayName: SPX
       items:
