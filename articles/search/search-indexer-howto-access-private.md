@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: e9944e95dd452cd00e63280ad8002141591f521e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 94763cee852893057348f8eea1fa74fa742f62a1
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971420"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534728"
 ---
 # <a name="accessing-secure-resources-via-private-endpoints"></a>プライベート エンドポイントを介してセキュリティで保護されたリソースにアクセスする
 
@@ -45,7 +45,7 @@ Azure Cognitive Search から発信プライベート エンドポイントを�
 このガイドでは、[ARMClient](https://github.com/projectkudu/ARMClient) と [Postman](https://www.postman.com/) を組み合わせて使用して、REST API の呼び出しをデモンストレーションします。
 
 > [!NOTE]
-> このガイドでは、検索サービスの名前が __contoso-search__ で、これが、サブスクリプション ID が __00000000-0000-0000-0000-000000000000__ のサブスクリプションのリソース グループ __contoso__ に存在すると仮定します。 この検索サービスのリソース ID は `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search` です。
+> このガイドでは、検索サービスの名前が __contoso-search__ で、これが、サブスクリプション ID が __00000000-0000-0000-0000-000000000000__ のサブスクリプションのリソース グループ __contoso__ に存在すると仮定します。 この検索サービスのリソース ID は `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search` になります。
 
 このガイドの残りの部分では、__contoso-search__ サービスを構成して、そのインデクサーがセキュリティで保護されたストレージ アカウント `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Storage/storageAccounts/contoso-storage` からデータにアクセスできるようにする方法について説明します。
 

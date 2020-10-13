@@ -3,14 +3,14 @@ title: Azure Automation の Update Management ログを照会する
 description: この記事では、Log Analytics ワークスペースで Update Management のログに対してクエリを実行する方法について説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 290fb0165038eea8740361a12a6d4bfe2c1bf138
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 777d794716c7c17caf8d4c73007b91a625f40043
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449646"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264305"
 ---
 # <a name="query-update-management-logs"></a>Update Management ログにクエリを実行する
 
@@ -110,7 +110,7 @@ Update Management では、Windows および Linux VM のレコードと、ロ�
 | Computer | レポート コンピューターの完全修飾ドメイン名。 |
 | ComputerEnvironment | 環境。 値は [Azure] または [Azure 以外] です。 |
 | CorrelationId | 更新プログラムに対して実行される Runbook ジョブの一意識別子。 |
-| EndTime | 同期プロセスが終了した時刻。 |
+| EndTime | 同期プロセスが終了した時刻。 "*このプロパティは現在使用されていません。TimeGenerated を参照してください。* " |
 | ErrorResult | 更新プログラムのインストールに失敗した場合に生成される Windows Update のエラー コード。 |
 | InstallationStatus | クライアント コンピューター上の更新プログラムの考えられるインストール状態。<br> `NotStarted` - ジョブはまだトリガーされていません。<br> `FailedToStart` - マシンでジョブを開始できません。<br> `Failed` - ジョブは開始されましたが、例外が発生して失敗しました。<br> `InProgress` - ジョブは進行中です。<br> `MaintenanceWindowExceeded` - 実行が残っているが、メンテナンス期間に達した場合。<br> `Succeeded` - ジョブが成功しました。<br> `InstallFailed` - 更新を正常にインストールできませんでした。<br> `NotIncluded`<br> `Excluded` |
 | KBID | Windows Update のサポート技術情報の記事 ID。 |
@@ -123,8 +123,8 @@ Update Management では、Windows および Linux VM のレコードと、ロ�
 | ResourceType | リソースの種類。 |
 | SourceComputerId | ソース コンピューターを表す一意識別子。 |
 | SourceSystem | レコードのソース システム。 値は `OperationsManager`です。 |
-| StartTime | 更新プログラムのインストールがスケジュールされている時刻。 |
-| SubscriptionId | Azure サブスクリプションの一意識別子。 | 
+| StartTime | 更新プログラムのインストールがスケジュールされている時刻。 "*このプロパティは現在使用されていません。TimeGenerated を参照してください。* " |
+| SubscriptionId | Azure サブスクリプションの一意識別子。 |
 | SucceededOnRetry | 更新プログラムの実行が最初の試行で失敗したかどうかと、現在の操作が再試行であるかどうかを示す値。 |
 | TimeGenerated | レコードの作成日時。 |
 | タイトル | 更新プログラムのタイトル。 |

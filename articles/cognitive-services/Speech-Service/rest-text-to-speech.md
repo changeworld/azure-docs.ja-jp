@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 6fafb668ecc2ae36dbe5a6bbc3d1e1d501545b50
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: c7c43e02e6bdf75c9551ccdbb9dd8f75bf37a806
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056807"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534983"
 ---
 # <a name="text-to-speech-rest-api"></a>Text to Speech REST API
 
@@ -32,6 +32,9 @@ Text to Speech REST API ではニューラルと標準のテキスト読み上�
 この API を使用する前に、次の点を理解しておいてください。
 
 * Text to Speech REST API には、Authorization ヘッダーが必要です。 つまり、このサービスにアクセスするためには、トークンの交換が済んでいる必要があります。 詳細については、[認証](#authentication)に関するページをご覧ください。
+
+> [!TIP]
+> Government クラウド (FairFax) エンドポイントについては、Azure Government の[ドキュメント](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure)を参照してください。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 

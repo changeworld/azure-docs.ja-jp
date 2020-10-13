@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: kumud
-ms.openlocfilehash: 6ba0caa2546fdb9d4845e2c7adf87a06d906dd12
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 61617777efa8241c93b2b5ffe42fc1d914b6ebcf
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87265162"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531872"
 ---
 # <a name="virtual-network-peering"></a>仮想ネットワーク ピアリング
 
-仮想ネットワーク ピアリングを使用すると、Azure [仮想ネットワーク](virtual-networks-overview.md)のネットワーク間をシームレスに接続できます。 仮想ネットワークは、接続において、見かけ上 1 つのネットワークとして機能します。 仮想マシン間のトラフィックは、Microsoft のバックボーン インフラストラクチャを使用します。 同じネットワーク内の仮想マシン間のトラフィックと同様に、トラフィックは Microsoft の*プライベート* ネットワークのみを介してルーティングされます。
+仮想ネットワーク ピアリングを使用すると、Azure で 2 つ以上の [Virtual Network](virtual-networks-overview.md) をシームレスに接続できます。 仮想ネットワークは、接続において、見かけ上 1 つのネットワークとして機能します。 ピアリングされた仮想ネットワーク内の仮想マシン間のトラフィックには、Microsoft のバックボーンインフラストラクチャが使用されます。 同じネットワーク内の仮想マシン間のトラフィックと同様に、トラフィックは Microsoft の*プライベート* ネットワークのみを介してルーティングされます。
 
 Azure では、次の種類のピアリングがサポートされています。
 

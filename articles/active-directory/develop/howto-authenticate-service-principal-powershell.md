@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.openlocfilehash: 5d9bf672aae3cf55ae7cf22aa1437f01ced99901
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: e034149372ba061ec958e0c1e22187d33009080c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178809"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265835"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>方法:Azure PowerShell を使用して資格情報でのサービス プリンシパルを作成する
 
@@ -225,3 +225,4 @@ Get-AzADApplication -DisplayName exampleapp | New-AzADAppCredential `
 * パスワードを使用するサービス プリンシパルを設定するには、「[Azure PowerShell で Azure サービス プリンシパルを作成する](/powershell/azure/create-azure-service-principal-azureps)」を参照してください。
 * アプリケーションとサービス プリンシパルの詳細については、「[アプリケーションおよびサービス プリンシパル オブジェクト](app-objects-and-service-principals.md)」を参照してください。
 * Azure AD 認証の詳細については、「[Azure AD の認証シナリオ](./authentication-vs-authorization.md)」をご覧ください。
+* **Microsoft Graph** を使用したアプリ登録の操作の詳細については、[アプリケーション](/graph/api/resources/application) API リファレンスを参照してください。

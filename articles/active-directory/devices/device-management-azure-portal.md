@@ -5,27 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 08/03/2020
+ms.date: 09/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9efb3b451f6fc6c70c5d9ec346132bfc763ca28
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: e76c5f51486f7c1673fb5359eabc99ee41130472
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705777"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278858"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Azure portal を使用してデバイス ID を管理する
 
 Azure AD は、デバイス ID を一元的に管理する場所を提供します。
-
-1. [Azure portal](https://portal.azure.com) にサインインします。
-1. **[Azure Active Directory]**  >  **[デバイス]** の順に移動します。
-
-[![Azure portal の [すべてのデバイス] ビュー](./media/device-management-azure-portal/all-devices-azure-portal.png)](./media/device-management-azure-portal/all-devices-azure-portal.png#lightbox)
 
 **[すべてのデバイス]** ページを使用すると、次のことを実行できます。
 
@@ -38,6 +33,13 @@ Azure AD は、デバイス ID を一元的に管理する場所を提供しま�
 - デバイス ID 設定を構成する。
 - Enterprise State Roaming を有効または無効にする。
 - デバイス関連の監査ログを確認する
+
+[![Azure portal の [すべてのデバイス] ビュー](./media/device-management-azure-portal/all-devices-azure-portal.png)](./media/device-management-azure-portal/all-devices-azure-portal.png#lightbox)
+
+デバイス ポータルには、次の手順を使用してアクセスできます。
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. **[Azure Active Directory]**  >  **[デバイス]** の順に移動します。
 
 ## <a name="manage-devices"></a>デバイスを管理する
 
@@ -146,6 +148,13 @@ BitLocker キーを表示またはコピーするには、デバイスの所有�
 ## <a name="configure-device-settings"></a>デバイス設定の構成
 
 Azure AD ポータルを使ってデバイス ID を管理するには、それらのデバイスが Azure AD に[登録されているか参加している](overview.md)必要があります。 管理者は、次のデバイスの設定を構成することによって、デバイスの登録および参加のプロセスを制御できます。
+
+Azure portal でデバイスの設定を表示または管理するには、次のいずれかのロールが割り当てられている必要があります。
+
+- 全体管理者
+- クラウド デバイス管理者
+- グローバル閲覧者
+- ディレクトリ閲覧者
 
 ![Azure AD に関連するデバイス設定](./media/device-management-azure-portal/device-settings-azure-portal.png)
 

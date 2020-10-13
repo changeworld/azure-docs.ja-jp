@@ -1,6 +1,6 @@
 ---
 title: Azure VMware Solution by CloudSimple - VMware Site Recovery Manager を使用して、プライベート クラウドをディザスター リカバリー サイトとして設定する
-description: CloudSimple プライベート クラウドをオンプレミスの VMware ワークロード用のディザスター リカバリー サイトとして設定する方法について説明します
+description: VMware Site Recovery Manager を使用して、CloudSimple プライベート クラウドをディザスター リカバリー サイトとして設定する方法について説明します。
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fa8b2da683d68a337df38e13726f22c5af43540a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6714b2c5d87141fd94d0f96d9cf07913442d18d6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77565929"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267059"
 ---
 # <a name="set-up-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>VMware Site Recovery Manager を使用して、プライベート クラウドをディザスター リカバリー ターゲットとして設定する
 
