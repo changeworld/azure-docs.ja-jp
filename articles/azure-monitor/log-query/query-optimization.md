@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: efbc0ba4ef39be6a2a8598ad006cb3aea090974c
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 31b1ff3324c610c385ad793f124735be30cab9f9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177745"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327716"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Azure Monitor でログ クエリを最適化する
 Azure Monitor ログでは、[Azure Data Explorer (ADX)](/azure/data-explorer/) を使用して、ログ データを格納し、そのデータを分析するためのクエリを実行します。 これにより、ADX クラスターが作成、管理、保持され、ログ分析ワークロードに合わせて最適化されます。 クエリを実行すると、クエリが最適化され、ワークスペース データを格納する適切な ADX クラスターにルーティングされます。 Azure Monitor ログと Azure Data Explorer のどちらにも、クエリの自動最適化メカニズムが多数使用されています。 自動最適化によって大幅に処理が促進される一方で、クエリのパフォーマンスを飛躍的に向上させることができるケースもいくつかあります。 この記事では、パフォーマンスに関する考慮事項とそれを調整するいくつかの手法について説明します。
@@ -98,18 +98,34 @@ SecurityEvent
 
 ```Kusto
 //less efficient
-Heartbeat 
-| extend IPRegion = iif(RemoteIPLongitude  < -94,"WestCoast","EastCoast")
-| where IPRegion == "WestCoast"
-| summarize count(), make_set(IPRegion) by Computer
+Syslog
+| extend Msg = strcat("Syslog: ",SyslogMessage)
+| where  Msg  has "Error"
+| count 
 ```
 ```Kusto
 //more efficient
-Heartbeat 
-| where RemoteIPLongitude  < -94
-| extend IPRegion = iif(RemoteIPLongitude  < -94,"WestCoast","EastCoast")
-| summarize count(), make_set(IPRegion) by Computer
+Syslog
+| where  SyslogMessage  has "Error"
+| count 
 ```
+
+場合によっては、フィルター処理が行われる対象はフィールドだけではないため、評価済みの列がクエリ処理エンジンによって暗黙的に作成されます。
+```Kusto
+//less efficient
+SecurityEvent
+| where tolower(Process) == "conhost.exe"
+| count 
+```
+```Kusto
+//more efficient
+SecurityEvent
+| where Process =~ "conhost.exe"
+| count 
+```
+
+
+
 
 ### <a name="use-effective-aggregation-commands-and-dimensions-in-summarize-and-join"></a>効果的な集計コマンドおよびディメンションを summarize と join で使用する
 
@@ -279,7 +295,7 @@ SecurityEvent
 | distinct FilePath, CallerProcessName1
 ```
 
-上の例でサブクエリの使用を回避できない場合は、別の方法として [materialize() 関数](/azure/data-explorer/kusto/query/materializefunction?pivots=azuremonitor)を使用して、それぞれに使用される単一のソース データが存在することについてクエリ エンジンにヒントを提供します。 これは、クエリ内で複数回使用される関数からソース データが取得される場合に便利です。
+上の例でサブクエリの使用を回避できない場合は、別の方法として [materialize() 関数](/azure/data-explorer/kusto/query/materializefunction?pivots=azuremonitor)を使用して、それぞれに使用される単一のソース データが存在することについてクエリ エンジンにヒントを提供します。 これは、クエリ内で複数回使用される関数からソース データが取得される場合に便利です。 materialize は、サブクエリの出力が入力よりもはるかに小さい場合に有効です。 クエリ エンジンによって、すべての発生において出力がキャッシュされ再利用されます。
 
 
 

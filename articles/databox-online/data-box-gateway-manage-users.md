@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 38b4b701329cf35088d797b095fa3caca46f55b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e941007ddc27f809de7d43cd33e44c5b521a6bd
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84338976"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743830"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-gateway"></a>Azure portal を使用して Azure Data Box Gateway のユーザーを管理する
 
@@ -45,7 +45,7 @@ ms.locfileid: "84338976"
 
 2. 追加するユーザーのユーザー名とパスワードを指定します。 パスワードを確認し、 **[追加]** をクリックします。
 
-    ![[ユーザーの追加] をクリックする](media/data-box-gateway-manage-users/add-user-2.png)
+    ![[ユーザーの追加] をクリックする 2](media/data-box-gateway-manage-users/add-user-2.png)
 
     > [!IMPORTANT] 
     > 以下のユーザーはシステムで予約されているため、使用できません。Administrator、EdgeUser、EdgeSupport、HcsSetupUser、WDAGUtilityAccount、CLIUSR、DefaultAccount、Guest。  
@@ -70,11 +70,11 @@ ms.locfileid: "84338976"
 
 2. メッセージが表示されたら、削除を確定します。 
 
-   ![ユーザーの削除](media/data-box-gateway-manage-users/delete-user-2.png)
+   ![ユーザーの削除 2](media/data-box-gateway-manage-users/delete-user-2.png)
 
 ユーザーの一覧が更新され、ユーザーの削除が反映されます。
 
-![ユーザーの削除](media/data-box-gateway-manage-users/delete-user-3.png)
+![ユーザーの削除 3](media/data-box-gateway-manage-users/delete-user-3.png)
 
 
 ## <a name="next-steps"></a>次のステップ
