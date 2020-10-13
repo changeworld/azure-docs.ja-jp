@@ -3,16 +3,16 @@ title: コンテナー レジストリ用の Azure Defender を使用する方�
 description: コンテナー レジストリ用の Azure Defender を使用してレジストリ内のイメージをスキャンする方法について説明します
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
-ms.topic: conceptual
+ms.date: 9/22/2020
+ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 18fa1b14bb20bbb2805eee2ec663d1316f787950
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 79a0db3b9f81368fbdaace5be3fd94ad29649291
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90932454"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532603"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>コンテナー レジストリ用の Azure Defender を使用してイメージの脆弱性をスキャンする
 
@@ -127,7 +127,7 @@ ms.locfileid: "90932454"
 > [!IMPORTANT]
 > ルールを作成するには、Azure Policy でポリシーを編集するためのアクセス許可が必要です。
 >
-> 詳細については、「[ Azure Policy における RBAC アクセス許可](../governance/policy/overview.md#rbac-permissions-in-azure-policy)」をご覧ください。
+> 詳細については、「[ Azure Policy における RBAC アクセス許可](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy)」を参照してください。
 
 次のいずれかの条件を使用できます。 
 
@@ -150,7 +150,7 @@ ms.locfileid: "90932454"
 1. ルールを表示、無効化、または削除するには、次の手順に従います。 
     1. **[ルールを無効にする]** を選択します。
     1. アクティブなルールが適用されているサブスクリプションは、スコープの一覧に **[Rule applied]\(ルール適用済み\)** と表示されます。
-        :::image type="content" source="./media/remediate-vulnerability-findings-vm/modify-rule.png" alt-text="既存のルールを変更または削除する":::
+        :::image type="content" source="./media/remediate-vulnerability-findings-vm/modify-rule.png" alt-text="レジストリで VA の結果の無効化ルールを作成する":::
     1. ルールを表示または削除するには、省略記号メニュー ("...") を選択します。
 
 

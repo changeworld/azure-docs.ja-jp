@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 6f773f57bea40ba87f35ca2bbefe424d084afb2e
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: c30b82e44833e413c1576bf64e8fef263c58b246
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462141"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264611"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の独自の IP アドレス範囲で kubenet ネットワークを使用する
 
@@ -162,7 +162,7 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role "Network Co
 
 クラスター作成プロセスの一部として、次の IP アドレス範囲も定義します。
 
-* *--service-cidr* は、AKS クラスター内の内部サービスに IP アドレスを割り当てるために使用します。 この IP アドレス範囲は、ネットワーク環境の他の場所で使われていないアドレス空間でなければなりません。 ExpressRoute またはサイト間 VPN 接続を使用して、お使いの Azure 仮想ネットワークを接続している場合、または接続する予定である場合は、すべてのオンプレミス ネットワーク範囲がこの範囲に含まれます。
+* *--service-cidr* は、AKS クラスター内の内部サービスに IP アドレスを割り当てるために使用します。 この IP アドレス範囲は、ネットワーク環境内の他の場所で使用されていないアドレス空間である必要があります。ExpressRoute またはサイト間 VPN 接続を使用して、お使いの Azure 仮想ネットワークを接続している場合、または接続する予定である場合は、すべてのオンプレミス ネットワーク範囲がこれに含まれます。
 
 * *--dns-service-ip* アドレスは、サービス IP アドレス範囲の *.10* アドレスにする必要があります。
 

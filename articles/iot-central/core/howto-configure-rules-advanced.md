@@ -7,12 +7,12 @@ ms.date: 05/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 07e5ce5cb6fee11e3f55ce808da51ccad59b9ff2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 037598212773ca75abbdd086fe0577e0660f2218
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801361"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398580"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>ワークフローを使用して Azure IoT Central アプリケーションを他のクラウド サービスと統合する
 
@@ -22,8 +22,8 @@ IoT Central では、テレメトリベースの条件 (デバイスの温度が
 
 Power Automate と Azure Logic Apps 用の Azure IoT Central V3 コネクタを使用することで、IoT Central での操作を自動化する高度なルールを作成できます。
 
-- Azure IoT Central アプリでルールが起動された際に、Power Automate または Azure Logic Apps でワークフローがトリガーされるようにすることができます。 これらのワークフローにより、他のクラウドサービス (Office 365 など) や、サードパーティのサービスでアクションを実行できます。
-- 別のクラウド サービス内 (Office 365 など) のイベントにより、Power Automate または Azure Logic Apps でワークフローをトリガーすることができます。 これらのワークフローにより、アクションを実行したり、IoT Central アプリケーションからデータを取得したりできます。
+- Azure IoT Central アプリでルールが起動された際に、Power Automate または Azure Logic Apps でワークフローがトリガーされるようにすることができます。 これらのワークフローにより、他のクラウド サービス (Microsoft 365 など) や、サードパーティのサービスでアクションを実行できます。
+- 別のクラウド サービス内 (Microsoft 365 など) のイベントにより、Power Automate または Azure Logic Apps でワークフローをトリガーすることができます。 これらのワークフローにより、アクションを実行したり、IoT Central アプリケーションからデータを取得したりできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -75,7 +75,7 @@ Azure Logic Apps のアクションとして **Azure IoT Central V3 - preview** 
 1. アクションの一覧で、使用する IoT Central アクションを選択します。
 1. アクション ステップで、選択したアクションの構成を完了します。 次に、 **[保存]** を選択します。
 
-:::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="Azure IoT Central V3 コネクタを検索し、アクションを選択する":::
+:::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="Azure IoT Central - preview コネクタを検索し、トリガーを選択する":::
 
 ## <a name="list-of-actions"></a>アクションの一覧
 

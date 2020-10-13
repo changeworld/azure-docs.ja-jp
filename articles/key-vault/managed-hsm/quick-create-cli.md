@@ -9,12 +9,12 @@ ms.subservice: managed-hsm
 ms.topic: quickstart
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 705e389c83fbab6075c25a3f56e5392fb8cafcd9
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 86d0a336a7d3f5d12ed8e53de802616f839f9eba
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90998434"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756820"
 ---
 # <a name="quickstart-provision-and-activate-a-managed-hsm-using-azure-cli"></a>クイック スタート:Azure CLI を使用してマネージド HSM をプロビジョニングしてアクティブにする
 
@@ -76,7 +76,7 @@ az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGro
 このコマンドの出力は、作成した Managed HSM のプロパティを示します。 最も重要な 2 つのプロパティは、次のとおりです。
 
 * **name**:この例では、名前は ContosoMHSM です。 この名前を他の Key Vault コマンドに使用できます。
-* **hsmUri**: この例では、URI は https://contosohsm.managedhsm.azure.net です。 REST API から HSM を使用するアプリケーションは、この URI を使用する必要があります。
+* **hsmUri**: この例では、URI は "https://contosohsm.managedhsm.azure.net" です。 REST API から HSM を使用するアプリケーションは、この URI を使用する必要があります。
 
 これで、お使いの Azure アカウントは、この Managed HSM 上ですべての操作を実行できるようになりました。 現在のところ、誰も承認されていません。
 

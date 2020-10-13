@@ -15,12 +15,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efab031ac2ad96524ce12e6d1c4a942f01ce2344
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 7e03ba5e7a4a24ee3114946230f78a64ea3d42cf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299968"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265683"
 ---
 # <a name="review-access-to-groups-and-applications-in-azure-ad-access-reviews"></a>Azure AD アクセス レビューでグループおよびアプリケーションに対するアクセスをレビューする
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) には、Azure AD をはじめとする Micros
 
 1. アクセス レビューを実行するように求める Microsoft からのメールを見つけます。 グループに対するアクセスをレビューするように求めるメールの例を次に示します。
 
-    ![グループに対するアクセスをレビューするための Microsoft からのメールの例](./media/perform-access-review/access-review-email.png)
+    ![グループに対するアクセスをレビューするための Microsoft からのメールの例を示すスクリーンショット。](./media/perform-access-review/access-review-email.png)
 
 1. **[レビューの開始]** リンクをクリックして、アクセス レビューを開きます。
 
@@ -54,7 +54,7 @@ Azure Active Directory (Azure AD) には、Azure AD をはじめとする Micros
         > [!NOTE]
         > **[アクセス レビュー]** タイルが表示されない場合は、その組織に対して実施するアクセス レビューがないので、現時点で必要な対応はありません。
 
-        ![アプリとグループについての保留中のアクセス レビューの一覧](./media/perform-access-review/access-reviews-list.png)
+        ![アプリとグループの保留中のアクセス レビューの一覧を示すスクリーンショット。](./media/perform-access-review/access-reviews-list.png)
 
     1. 実行するアクセス レビューの **[レビューの開始]** リンクをクリックします。
 
@@ -99,7 +99,7 @@ Azure Active Directory (Azure AD) には、Azure AD をはじめとする Micros
 
 1. ページの下部にある青色のバーで、 **[推奨事項の承認]** をクリックします。
 
-    ![[推奨事項の承認] ボタン表示する、開かれたアクセス レビューの一覧](./media/perform-access-review/accept-recommendations.png)
+    ![[推奨事項の承認] ボタンが選択された、開かれたアクセス レビューの一覧を示すスクリーンショット。](./media/perform-access-review/accept-recommendations.png)
 
     推奨されているアクションの概要が表示されます。
 

@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 5eaf107861d20cea395209418c343d25461b3836
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 6dffe2c6145e1596d92335defdc764c3c7bc3fa0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469934"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264373"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure App Service でのアプリの診断ログの有効化
 ## <a name="overview"></a>概要
@@ -185,16 +185,16 @@ Windows アプリの場合、ZIP ファイルには、App Service ファイル �
 
 次の表は、サポートされるログの種類と説明を示しています。 
 
-| ログのタイプ | Windows のサポート | Linux (Docker) のサポート | 説明 |
-|-|-|-|
-| AppServiceConsoleLogs | TBA | はい | 標準出力と標準エラー |
-| AppServiceHTTPLogs | はい | はい | Web サーバー ログ |
-| AppServiceEnvironmentPlatformLogs | はい | はい | App Service Environment: スケーリング、構成変更、および状態ログ|
-| AppServiceAuditLogs | はい | はい | FTP および Kudu 経由のログイン アクティビティ |
-| AppServiceFileAuditLogs | はい | TBD | サイト コンテンツに行われたファイルの変更。Premium レベル以上でのみ使用可能 |
-| AppServiceAppLogs | TBA | Java SE および Tomcat | アプリケーション ログ |
-| AppServiceIPSecAuditLogs  | はい | はい | IP ルールからの要求 |
-| AppServicePlatformLogs  | TBA | はい | コンテナー ログ |
+| ログのタイプ | Windows | Windows コンテナー | Linux | Linux コンテナー | 説明 |
+|-|-|-|-|-|-|
+| AppServiceConsoleLogs | TBA | TBA | はい | はい | 標準出力と標準エラー |
+| AppServiceHTTPLogs | はい | TBA | はい | はい | Web サーバー ログ |
+| AppServiceEnvironmentPlatformLogs | はい | 該当なし | はい | はい | App Service Environment: スケーリング、構成変更、および状態ログ|
+| AppServiceAuditLogs | はい | TBA | はい | はい | FTP および Kudu 経由のログイン アクティビティ |
+| AppServiceFileAuditLogs | はい | TBA | TBA | TBA | サイト コンテンツに行われたファイルの変更。Premium レベル以上でのみ使用可能 |
+| AppServiceAppLogs | ASP .NET | TBA | Java SE および Tomcat | Java SE および Tomcat | アプリケーション ログ |
+| AppServiceIPSecAuditLogs  | はい | TBA | はい | はい | IP ルールからの要求 |
+| AppServicePlatformLogs  | TBA | TBA | はい | はい | コンテナーの操作ログ |
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> 次のステップ
 * [Azure Monitor でログにクエリを実行する](../azure-monitor/log-query/log-query-overview.md)

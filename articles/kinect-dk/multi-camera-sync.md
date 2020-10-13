@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 02/20/2020
 ms.topic: article
 keywords: azure, kinect, 仕様, ハードウェア, DK, 機能, 深度, 色, RGB, IMU, 配列, 深さ, マルチ, 同期
-ms.openlocfilehash: e22f42a69e7d9b8283ec2f2da478dde0c27ce4ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c79101de5e5455ae2ff9fd8b5d8369a3832631c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85277063"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361162"
 ---
 # <a name="synchronize-multiple-azure-kinect-dk-devices"></a>複数の Azure Kinect DK デバイスの同期
 
@@ -26,7 +26,7 @@ ms.locfileid: "85277063"
 
 - オクルージョンの補完。 Azure Kinect DK データ変換では 1 つの画像が生成されますが、実際は、2 つのカメラ (深度と RGB) の間にはわずかな距離があります。 このオフセットにより、オクルージョンが起きます。 オクルージョンは、デバイス上の 2 つのカメラのいずれかにおいて、前景オブジェクトが背景オブジェクトの一部の視界を遮った時に発生します。 生成されたカラー画像では、前景オブジェクトの影が背景オブジェクトに投影されているように見えます。  
    たとえば、次の図では、左側のカメラに灰色のピクセル "P2" が表示されています。 ただし、白い前景オブジェクトは、右側のカメラの IR ビームを遮っています。 右側のカメラに "P2" のデータはありません。  
-   ![オクルージョン](./media/occlusion.png)  
+   ![2 つのカメラが同じポイントに向けられ、そのうちの 1 つが遮られていることを示す図。](./media/occlusion.png)  
    オクルージョンされたデータは、同期された追加のデバイスによって提供されます。
 - オブジェクトを 3 つのディメンションでスキャンします。
 - 有効なフレーム レートを 30 フレーム/秒 (FPS) よりも大きい値に増やします。

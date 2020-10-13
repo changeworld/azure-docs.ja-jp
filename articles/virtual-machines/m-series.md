@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: 2dea6ea292b4ed69d89a6e5e03c58f437446561d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: fe63f9d5a9d215a31a56d7214170d86f46a4e4a2
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654788"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653657"
 ---
 # <a name="m-series"></a>M シリーズ
 
@@ -20,17 +20,14 @@ M シリーズは、多数の vCPU (最大 128 個の vCPU) と大量のメモ�
 
 M シリーズの VM は、Intel&reg; ハイパー スレッディング テクノロジを利用しています。
 
-ACU: 160-180
-
-Premium Storage: サポートされています
-
-Premium Storage キャッシュ:サポートされています
-
-ライブ マイグレーション: サポートされていません
-
-メモリ保持更新: サポートされていません
-
-書き込みアクセラレータ:[サポートされています](./how-to-enable-write-accelerator.md)
+[ACU](acu.md):160-180<br>
+[Premium Storage](premium-storage-performance.md):サポートされています<br>
+[Premium Storage キャッシュ](premium-storage-performance.md):サポートされています<br>
+[ライブ マイグレーション](maintenance-and-updates.md):サポートされていません<br>
+[メモリ保持更新](maintenance-and-updates.md):サポートされていません<br>
+[VM 世代サポート](generation-2.md):第 1 世代と第 2 世代<br>
+[書き込みアクセラレータ](./how-to-enable-write-accelerator.md):サポートされています<br>
+<br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合および一時ストレージの最大スループットIOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数|必要なネットワーク帯域幅 (Mbps) |
 |---|---|---|---|---|---|---|---|---|
@@ -64,9 +61,9 @@ Premium Storage キャッシュ:サポートされています
 - [ハイ パフォーマンス コンピューティング](sizes-hpc.md)
 - [旧世代](sizes-previous-gen.md)
 
-料金計算ツール:[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+料金計算ツール: [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 
-ディスクの種類の詳細情報:[ディスクの種類](./disks-types.md#ultra-disk)
+ディスクの種類の詳細情報: [ディスクの種類](./disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>次のステップ
