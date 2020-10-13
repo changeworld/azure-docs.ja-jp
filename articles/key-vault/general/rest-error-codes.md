@@ -10,12 +10,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: b6e4845ca626dc8805b9bec6ca50076371d35b55
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 30b7e34f2a791cfd8dec1a6d8e81d706fa07939f
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419131"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631224"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API のエラー コード
  
@@ -128,7 +128,7 @@ resource=https%3A%2F%2Fvault.azure.net&client_id=<registered-app-ID>&client_secr
 HTTP 403 は、要求は認証されました (要求元の ID は認識されている) が、要求されたリソースにアクセスするためのアクセス許可がその ID にないことを意味します。 次の 2 つの原因が考えられます。
 
 - ID のアクセス ポリシーがない。
-- 要求しているリソースの IP アドレスが、キー コンテナーのファイアウォール設定でホワイトリストに登録されていない。
+- 要求しているリソースの IP アドレスが、キー コンテナーのファイアウォール設定で承認されていない。
 
 HTTP 403 は、顧客のアプリケーションが、顧客が考えているクライアント ID を使用していない場合によく発生します。 通常、これは実際の呼び出し ID に対してアクセス ポリシーが正しく設定されていないことを意味します。
 
@@ -166,5 +166,3 @@ Azure Web サイトの IP アドレスを機能させるには、キー コン�
 - キャッシュによって要求の数を減らすことができず、時間指定のバックオフが機能しない場合は、キーを複数のキー コンテナーに分割することを検討します。 1 つのサブスクリプションのサービス制限は、個々のキー コンテナー制限の 5 倍です。 使用しているキー コンテナー数が 5 個を超える場合は、複数サブスクリプションの使用を検討考慮することをお勧めします。 
 
 制限の引き上げ要求などの詳細なガイダンスについては、次を参照してください。[Key Vault のスロットル ガイダンス](overview-throttling.md)
-
-

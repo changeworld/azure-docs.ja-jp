@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: jushiman
-ms.openlocfilehash: db85774dd1cf1e7dd5a284182faf354004671618
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: eff3ff3d8fa2ab3025ca8b8d4f974d6944c88433
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891766"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649645"
 ---
 # <a name="dv3-and-dsv3-series"></a>Dv3 および Dsv3 シリーズ
 
@@ -28,15 +28,13 @@ Dv3 シリーズのサイズは、Intel Turbo Boost Technology 2.0 を備えた 
 
 Dv3 シリーズの VM は、Intel® ハイパースレッディング テクノロジを備えています。
 
-ACU: 160-190
-
-Premium Storage: サポートされていません
-
-Premium Storage キャッシュ:サポートされていません
-
-ライブ マイグレーション: サポートされています
-
-メモリ保持更新: サポートされています
+[ACU](acu.md): 160-190<br>
+[Premium Storage](premium-storage-performance.md): サポートされていません<br>
+[Premium Storage キャッシュ](premium-storage-performance.md): サポートされていません<br>
+[ライブ マイグレーション](maintenance-and-updates.md): サポートされています<br>
+[メモリ保持更新](maintenance-and-updates.md): サポートされています<br>
+[VM 世代サポート](generation-2.md): 第 1 世代<br>
+<br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大 NIC/ネットワーク帯域幅 |
 |---|---|---|---|---|---|---|
@@ -54,15 +52,13 @@ Dsv3 シリーズのサイズは、Intel Turbo Boost Technology 2.0 を備えた
 
 Dsv3 シリーズの VM は、Intel® ハイパースレッディング テクノロジを備えています。
 
-ACU: 160-190
-
-Premium Storage: サポートされています
-
-Premium Storage キャッシュ:サポートされています
-
-ライブ マイグレーション:サポートされています
-
-メモリ保持更新: サポートされています
+[ACU](acu.md): 160-190<br>
+[Premium Storage](premium-storage-performance.md): サポートされています<br>
+[Premium Storage キャッシュ](premium-storage-performance.md): サポートされています<br>
+[ライブ マイグレーション](maintenance-and-updates.md): サポートされています<br>
+[メモリ保持更新](maintenance-and-updates.md): サポートされています<br>
+[VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
+<br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合および一時ストレージの最大スループットIOPS/MBps (キャッシュ サイズは GiB 単位) | バースト キャッシュが有効な一時ストレージの最大スループット: IOPS/MBps<sup>1</sup> | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | バースト キャッシュが無効なディスクの最大スループット: IOPS/MBps<sup>1</sup> | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 |---|---|---|---|---|---|---|---|---|---|

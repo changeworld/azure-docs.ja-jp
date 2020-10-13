@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 05/12/2020
-ms.openlocfilehash: 3751560125ea8ac6cc00ed63521bff30b751e688
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 26f6c8e3aceddc6f766bb43a1e384d761dee32bf
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009598"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91631382"
 ---
 # <a name="azure-cache-for-redis"></a>Azure Cache for Redis
 Azure Cache for Redis は、オープンソース ソフトウェア [Redis](https://redis.io/) を基にしたインメモリ データ ストアを提供します。 Redis は、バックエンドでデータ ストアを酷使するアプリケーションのパフォーマンスとスケーラビリティを高めます。 高速に読み書きできるサーバーのメモリ内にアクセス頻度の高いデータを維持することで、大量のアプリケーション要求を処理することができます。 Redis によって、きわめて低遅延かつ高スループットのデータ ストレージ ソリューションがモダン アプリケーションにもたらされます。
@@ -31,12 +31,20 @@ Azure Cache for Redis では、一般的なアプリケーションのアーキ�
 | ジョブおよびメッセージ キュー | アプリケーションは、多くの場合、要求に関連付けられている操作の実行に時間がかかると、キューにタスクを追加します。 実行時間の長い操作は、通常は別のサーバーによって順番に処理されるように、キューに登録されます。  作業を延期するこの手法は、タスク キューと呼ばれます。 Azure Cache for Redis では、アプリケーションでこのパターンを有効にするために、分散キューを提供します。|
 | 分散トランザクション | アプリケーションは、バックエンド データストアに対する一連のコマンドを単一のアトミック操作として実行することを必要とする場合があります。 すべてのコマンドが成功する必要があり、成功しなかった場合はすべて、初期の状態にロールバックされる必要があります。 Azure Cache for Redis では、一連のコマンドを単一の[トランザクション](https://redis.io/topics/transactions)として実行する方法をサポートしています。 |
 
+## <a name="redis-versions"></a>Redis のバージョン
+
+Azure Cache for Redis では、Redis バージョン 4.x および 6.0 (プレビュー) をサポートしています。 Redis 5.0 をスキップして最新バージョンをご提供することが決定しました。 これまで、Azure Cache for Redis は、1 つの Redis バージョンにのみ対応していました。 今後は、新しいメジャー リリース アップグレードと、少なくとも 1 つ前の安定バージョンが提供される予定です。 アプリケーションにとって最適な[バージョンを選択する](cache-how-to-version.md)ことができます。
+
+> [!NOTE]
+> Redis 6.0 は現在プレビュー段階です。ご興味がある場合は[お問い合わせください](mailto:azurecache@microsoft.com)。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+>
+
 ## <a name="service-tiers"></a>サービス階層
 Azure Cache for Redis は以下のレベルでご利用いただけます。
 
 | レベル | 説明 |
 |---|---|
-Basic | 単一ノード キャッシュ。 このレベルでは、複数のメモリ サイズ (250 MB から 53 GB) がサポートされており、開発、テスト、および重要ではないワークロードに最適です。 Basic レベルには、サービスレベル アグリーメント (SLA) はありません。 |
+| Basic | 単一ノード キャッシュ。 このレベルでは、複数のメモリ サイズ (250 MB から 53 GB) がサポートされており、開発、テスト、および重要ではないワークロードに最適です。 Basic レベルには、サービスレベル アグリーメント (SLA) はありません。 |
 | Standard | Azure によって構成が管理されているプライマリとレプリカの 2 つのノードにレプリケートされたキャッシュ。高可用性の [SLA](https://azure.microsoft.com/support/legal/sla/cache/v1_0/) が付きます。 |
 | Premium | Premium レベルは、エンタープライズ対応レベルです。 Premium レベルのキャッシュでは、より多くの機能をサポートし、より短い待機時間でより高いスループットを実現します。 Premium レベルのキャッシュは、Basic または Standard レベルと比較して優れたパフォーマンスを発揮する、より高性能なハードウェア上にデプロイされます。 この利点によって、Premium レベルでは、Standard レベルと比較して、同じサイズのキャッシュのスループットがより高くなります。 |
 

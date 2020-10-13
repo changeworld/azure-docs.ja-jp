@@ -3,12 +3,12 @@ title: Azure Lab Services でエシカル ハッキング ラボを設定する 
 description: Azure Lab Services を使用してラボを設定し、エシカル ハッキングを教える方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 5134a7db824bad69f42a4051319479f712051446
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: ae0d57223edb68d1bed4ad64a005dd33da019dd0
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297588"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631683"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>エシカル ハッキング クラスを教えるためのラボを設定する 
 この記事では、エシカル ハッキングのフォレンジクス面に焦点を当てたクラスを設定する方法について説明します。 侵入テストは、悪意のある攻撃者が利用する可能性のある脆弱性を実証するためにシステムまたはネットワークへの侵入を試みる訓練で、エシカル ハッキング コミュニティで使用します。 
@@ -70,48 +70,45 @@ Kali は、侵入テストとセキュリティ監査用のツールが含まれ
 ## <a name="set-up-a-nested-vm-with-metasploitable-image"></a>Metasploitable イメージを使用して入れ子になった VM を設定する  
 Rapid7 Metasploitable イメージは、故意にセキュリティの脆弱性があるように構成されているイメージです。 このイメージを使用して、問題をテストして検出します。 次の手順では、作成済みの Metasploitable イメージを使用する方法について説明します。 ただし、新しいバージョンの Metasploitable イメージが必要な場合は、[https://github.com/rapid7/metasploitable3](https://github.com/rapid7/metasploitable3) を参照してください。
 
-1. [https://information.rapid7.com/download-metasploitable-2017.html](https://information.rapid7.com/download-metasploitable-2017.html) に移動します。 フォームに入力してイメージをダウンロードし、 **[Submit]\(送信\)** ボタンを選択します。
-1. **[Download Metasploitable Now]\(Metasploitable を今すぐダウンロード\)** ボタンを選択します。
-1. ZIP ファイルがダウンロードされたら、ZIP ファイルを抽出し、その場所を覚えておきます。
-1. 抽出された vmdk ファイルを vhdx ファイルに変換して、Hyper-V で使用できるようにします。 これを行うには、管理特権で PowerShell を開き、vmdk ファイルが置かれているフォルダーに移動して、次の手順に従います。
-    1. [Microsoft Virtual Machine Converter](https://download.microsoft.com/download/9/1/E/91E9F42C-3F1F-4AD9-92B7-8DD65DA3B0C2/mvmc_setup.msi) をダウンロードし、メッセージが表示されたら mvmc_setup ファイルを実行します。
-    1. PowerShell モジュールをインポートします。  モジュールがインストールされている既定の場所は、C:\Program Files\Microsoft Virtual Machine Converter\ です
-
-        ```powershell
-        Import-Module 'C:\Program Files\Microsoft Virtual Machine Converter\MvmcCmdlet.psd1'
-        ```
-    1. vmdk を Hyper-V で使用できる vhd ファイルに変換します。 この操作には数分かかる場合があります。
-    
-        ```powershell
-        ConvertTo-MvmcVirtualHardDisk -SourceLiteralPath .\Metasploitable.vmdk -DestinationLiteralPath .\Metasploitable.vhdx -VhdType DynamicHardDisk -VhdFormat vhdx
-        ```
-    1. 新しく作成した metasploitable.vhdx を C:\Users\Public\Documents\Hyper-V\Virtual Hard Disks\ にコピーします。 
+1. Metasploitable イメージをダウンロードします。
+    1. [https://information.rapid7.com/download-metasploitable-2017.html](https://information.rapid7.com/download-metasploitable-2017.html) に移動します。 フォームに入力してイメージをダウンロードし、**[Submit]\(送信\)** ボタンを選択します。
+    2. **[Download Metasploitable Now]\(Metasploitable を今すぐダウンロード\)** ボタンを選択します。
+    3. ZIP ファイルをダウンロードしたら、ZIP ファイルを抽出し、Metasploitable.vmdk の場所を記録しておきます。
+1. 抽出された vmdk ファイルを vhdx ファイルに変換し、Hyper-V で vhdx ファイルを使用できるようにします。 VMware イメージを Hyper-V イメージに、またはその逆に変換できるツールがいくつかあります。  ここでは、[StarWind V2V Converter](https://www.starwindsoftware.com/starwind-v2v-converter) を使用します。  ダウンロードするには、[StarWind V2V Converter のダウンロード ページ](https://www.starwindsoftware.com/starwind-v2v-converter#download)を参照してください。
+    1. **StarWind V2V Converter** を開始します。
+    1. **[Select location of image to convert]\(変換するイメージの場所の選択\)** ページで、 **[Local file]\(ローカル ファイル\)** を選択します。  **[次へ]** を選択します。
+    1. **[Source image]\(ソース イメージ\)** ページの **[File name]\(ファイル名\)** の設定では、前のステップで抽出した Metasploitable.vmdk を探して選択します。  **[次へ]** を選択します。
+    1. **[Select location of destination image]\(ターゲット イメージの場所の選択\)** で、 **[Local file]\(ローカル ファイル\)** を選択します。  **[次へ]** を選択します。
+    1. **[Select destination image format]\(ターゲット イメージの形式の選択\)** ページで、 **[VHD/VHDX]** を選択します。  **[次へ]** を選択します。
+    1. **[Select option for VHD/VHDX image format]\(VHD/VHDX イメージ形式のオプションの選択\)** ページで、 **[VHDX growable image]\(VHDX 拡張可能イメージ\)** を選択します。  **[次へ]** を選択します。
+    1. **[Select destination file name]\(ターゲット ファイル名の選択\)** ページで、既定のファイル名をそのまま使用します。  **[変換]** を選択します。
+    1. **[Converting]\(変換\)** ページで、イメージが変換されるまで待ちます。  この処理には数分かかることがあります。  変換が完了したら、 **[Finish]\(完了\)** を選択します。
 1. 新しい Hyper-V 仮想マシンを作成します。
     1. **Hyper-V マネージャー**を開きます。
     1. **[アクション]**  ->  **[新規]**  ->  **[仮想マシン]** を選択します。
-    1. **仮想マシンの新規作成ウィザード**の **[開始する前に]** ページで、 **[次へ]** をクリックします。
-    1. **[名前と場所の指定]** ページで、 **[名前]** に **Metasploitable** を入力し、 **[次へ]** を選択します。
+    1. **仮想マシンの新規作成ウィザード**の **[開始する前に]** ページで、 **[次へ]** を選択します。
+    1. **[名前と場所の指定]** ページで、**[名前]** に **Metasploitable** を入力し、**[次へ]** を選択します。
 
         ![新しい VM イメージ ウィザード](./media/class-type-ethical-hacking/new-vm-wizard-1.png)
-    1. **[世代の指定]** ページで、既定値をそのまま使用し、 **[次へ]** を選択します。
-    1. **[メモリの割り当て]** ページで、 **[起動メモリ]** に **512 MB** を入力し、 **[次へ]** を選択します。 
+    1. **[世代の指定]** ページで、既定値をそのまま使用し、**[次へ]** を選択します。
+    1. **[メモリの割り当て]** ページで、**[起動メモリ]** に **512 MB** を入力し、**[次へ]** を選択します。 
 
         ![[メモリの割り当て] ページ](./media/class-type-ethical-hacking/assign-memory-page.png)
     1. **[ネットワークの構成]** ページで、接続を **[未接続]** のままにします。 ネットワークアダプターは、後で設定します。
-    1. **[仮想ハード ディスクの接続]** ページで、 **[既存の仮想ハード ディスクを使用する]** を選択します。 前の手順で作成した **metasploitable.vhdx** ファイルの場所を参照し、 **[次へ]** を選択します。 
+    1. **[仮想ハード ディスクの接続]** ページで、**[既存の仮想ハード ディスクを使用する]** を選択します。 前の手順で作成した **metasploitable.vhdx** ファイルの場所を参照し、**[次へ]** を選択します。 
 
         ![[仮想ネットワーク ディスクの接続] ページ](./media/class-type-ethical-hacking/connect-virtual-network-disk.png)
-    1. **[仮想マシンの新規作成ウィザードの完了]** ページで、 **[完了]** を選択します。
+    1. **[仮想マシンの新規作成ウィザードの完了]** ページで、**[完了]** を選択します。
     1. 作成した仮想マシンを Hyper-V マネージャーで選択します。 マシンはまだ起動しないでください。  
     1. **[アクション]**  ->  **[設定]** を選択します。
-    1. **[Metasploitable の設定]** ダイアログで、 **[ハードウェアの追加]** を選択します。 
-    1. **[レガシ ネットワーク アダプター]** を選択し、 **[追加]** を選択します。
+    1. **[Metasploitable の設定]** ダイアログで、**[ハードウェアの追加]** を選択します。 
+    1. **[レガシ ネットワーク アダプター]** を選択し、**[追加]** を選択します。
 
         ![ネットワーク アダプター ページ](./media/class-type-ethical-hacking/network-adapter-page.png)
-    1. **[レガシ ネットワーク アダプター]** ページで、 **[仮想スイッチ]** 設定の **LabServicesSwitch** を選択し、 **[OK]** を選択します。 LabServicesSwitch は、「**入れ子になった仮想化用のテンプレート マシンを準備する**」セクションの Hyper-V 用のテンプレート マシンを準備するときに作成されました。
+    1. **[レガシ ネットワーク アダプター]** ページで、**[仮想スイッチ]** 設定の **LabServicesSwitch** を選択し、**[OK]** を選択します。 LabServicesSwitch は、「**入れ子になった仮想化用のテンプレート マシンを準備する**」セクションの Hyper-V 用のテンプレート マシンを準備するときに作成されました。
 
         ![[レガシ ネットワーク アダプター] ページ](./media/class-type-ethical-hacking/legacy-network-adapter-page.png)
-    1. これで、Metasploitable イメージを使用できるようになりました。 **Hyper-V マネージャー**から、 **[アクション]**  ->  **[開始]** を選択し、 **[アクション]**  ->  **[接続]** を選択して仮想マシンに接続します。  既定のユーザー名は **msfadmin**、パスワードは **msfadmin** です。 
+    1. これで、Metasploitable イメージを使用できるようになりました。 **Hyper-V マネージャー**から、**[アクション]** -> **[開始]** を選択し、**[アクション]** -> **[接続]** を選択して仮想マシンに接続します。  既定のユーザー名は **msfadmin**、パスワードは **msfadmin** です。 
 
 
 テンプレートが更新され、エシカル ハッキング侵入テスト クラスに必要なイメージ、侵入テストを実行するツールがあるイメージ、検出対象のセキュリティの脆弱性がある別のイメージが含まれるようになりました。 テンプレート イメージをクラスに発行できるようになりました。 テンプレート ページの **[発行]** ボタンを選択して、テンプレートをラボに発行します。

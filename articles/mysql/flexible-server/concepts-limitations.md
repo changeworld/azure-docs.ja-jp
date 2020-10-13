@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 9/21/2020
-ms.openlocfilehash: 64f4b6e87f038b265fbd2c3e13f3779fb4c24f74
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/1/2020
+ms.openlocfilehash: 6fff7f22e7d265eb9b15bcec8604eeab692ac1c0
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931371"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650291"
 ---
 # <a name="limitations-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL - フレキシブル サーバー (プレビュー) での制限
 
@@ -26,6 +26,8 @@ ms.locfileid: "90931371"
 > `max_connections` や `innodb_buffer_pool_size` など、サーバー パラメーターの最小値と最大値を探している場合、この情報は移動されたのでサーバー パラメーターの概念 <!-- **[server parameters](./concepts-server-parameters.md)** --> の記事を参照してください。
 
 Azure Database for MySQL では、サーバー パラメーターの値のチューニングがサポートされています。 一部のパラメーターの最小値と最大値 ( `max_connections`、`join_buffer_size`、`query_cache_size` など) は、サーバーのコンピューティング レベルとコンピューティング サイズによって決まります。 これらの制限の詳細については、 <!-- [server parameters](./concepts-server-parameters.md)--> サーバー パラメーターの概念を参照してください。
+
+"validate_password" や "caching_sha2_password" などのパスワード プラグインは、サービスではサポートされていません。
 
 ## <a name="storage-engines"></a>ストレージ エンジン
 

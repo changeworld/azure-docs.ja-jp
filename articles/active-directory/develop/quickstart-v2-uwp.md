@@ -1,6 +1,7 @@
 ---
-title: Microsoft ID プラットフォーム Windows UWP のクイックスタート | Azure
-description: ユニバーサル Windows プラットフォーム (XAML) アプリケーションでアクセス トークンを取得し、Microsoft ID プラットフォーム エンドポイントで保護されている API を呼び出す方法について説明します。
+title: 'クイックスタート: ユニバーサル Windows プラットフォーム アプリでユーザーのサインインと Microsoft Graph の呼び出しを行う | Azure'
+titleSuffix: Microsoft identity platform
+description: このクイックスタートでは、ユニバーサル Windows プラットフォーム (UWP) アプリケーションでアクセス トークンを取得し、Microsoft ID プラットフォームで保護されている API を呼び出す方法について説明します。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,18 +12,23 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: d68017bcddf43066dd989904578b7d09a84f4a9e
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 5b954c5eae9c203efa65dc9dc1883d8e00f3937a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85553868"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91630527"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>クイック スタート:ユニバーサル Windows プラットフォーム (UWP) アプリケーションから Microsoft Graph API を呼び出す
 
 このクイック スタートには、ユニバーサル Windows プラットフォーム (UWP) アプリケーションから個人用アカウントや職場または学校アカウントを持つユーザーのサインイン、アクセス トークンの取得、Microsoft Graph API の呼び出しを行う方法を示すコード サンプルが含まれています。 (図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください)。
 
 > [!div renderon="docs"]
+> ## <a name="prerequisites"></a>前提条件
+>
+> * アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
+>
 > ## <a name="register-and-download-your-quickstart-app"></a>クイック スタート アプリを登録してダウンロードする
 > [!div renderon="docs" class="sxs-lookup"]
 > クイック スタート アプリケーションを開始する方法としては、次の 2 つの選択肢があります。

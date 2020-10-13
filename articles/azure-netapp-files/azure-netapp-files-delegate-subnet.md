@@ -12,29 +12,32 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/28/2020
+ms.date: 09/28/2020
 ms.author: b-juche
-ms.openlocfilehash: 9bb3e93b99ce8d5a61501d417a71e5e38753f5ff
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: bed1375631c017d23ed53b6102c424533237099e
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513028"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447562"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>サブネットを Azure NetApp Files に委任する 
 
 サブネットを Azure NetApp Files に委任する必要があります。   ボリュームを作成する際は、委任されたサブネットを指定する必要があります。
 
 ## <a name="considerations"></a>考慮事項
+
 * 新しいサブネットを作成するウィザードでは、既定で /24 ネットワーク マスクになっており、251 個の使用可能な IP アドレスが提供されます。 /28 ネットワーク マスクを使用すると、11 個の使用可能な IP アドレスが提供され、このサービスにはそれで十分です。
 * 各 Azure Virtual Network (VNet) で、1 つのサブネットだけを Azure NetApp Files に委任できます。   
    Azure では、VNet 内に複数の委任されたサブネットを作成できます。  ただし、委任されたサブネットを複数使用している場合、新しいボリュームを作成しようとすると失敗します。  
    1 つの VNet には、委任されたサブネットを 1 つだけ含めることができます。 NetApp アカウントでは、複数の Vnet にボリュームを配置でき、それぞれに独自の委任されたサブネットがあります。  
 * 委任されたサブネット内のネットワーク セキュリティ グループまたはサービス エンドポイントを指定することはできません。 そうした場合、サブネットの委任が失敗します。
 * グローバルにピアリングされた仮想ネットワークからボリュームへのアクセスは、現在はサポートされていません。
-* Azure NetApp Files に委任されたサブネットのアドレス プレフィックス (宛先) を使用して、VM サブネットに[ユーザー定義のカスタム ルート](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes)を作成することはサポートされていません。 これは VM の接続に影響を及ぼします。
+* Azure NetApp Files 用の委任サブネットの場合は、[ユーザー定義ルート](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes) (UDR) とネットワーク セキュリティ グループ (NSG) はサポートされていません。 しかし、UDR と NSG を他のサブネットに適用することはできます。これは、Azure NetApp Files に委任されたサブネットと同じ VNet 内であっても同様です。  
+   Azure NetApp Files によって、委任されたサブネットへのシステム ルートが作成されます。 トラブルシューティングのために必要な場合、ルートはルート テーブルの **[有効なルート]** に表示されています。
 
-## <a name="steps"></a>手順 
+## <a name="steps"></a>手順
+
 1.  Azure portal で **[仮想ネットワーク]** ブレードに移動し、Azure NetApp Files のために使用する仮想ネットワークを選択します。    
 
 1. 仮想ネットワーク ブレードで **[サブネット]** を選択し、 **[+ サブネット]** ボタンをクリックします。 
@@ -48,7 +51,8 @@ ms.locfileid: "87513028"
     
 [Azure NetApp Files のためのボリュームを作成する](azure-netapp-files-create-volumes.md)ときに、サブネットを作成して委任することもできます。 
 
-## <a name="next-steps"></a>次のステップ  
+## <a name="next-steps"></a>次のステップ
+
 * [Azure NetApp Files のボリュームを作成する](azure-netapp-files-create-volumes.md)
 * [Azure サービスの仮想ネットワーク統合について理解する](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
 
