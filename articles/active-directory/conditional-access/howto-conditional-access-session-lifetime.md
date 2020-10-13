@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 06/29/2020
+ms.date: 09/22/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 034d2410b97562946216815e5bdafd35fe1bc40b
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 672918280a988771431dccc81f042226addf029d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601675"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265937"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>条件付きアクセスを使用して認証セッション管理を構成する
 
@@ -89,6 +89,8 @@ Azure AD 参加済み、ハイブリッド Azure AD 参加済み、または Azu
 
 > [!WARNING]
 > 現在、パブリック プレビューで[構成可能なトークン有効期間](../develop/active-directory-configurable-token-lifetimes.md)機能を使用している場合、同一のユーザーまたはアプリの組み合わせに対し、異なる 2 つのポリシー (1 つはこの機能で、もう 1 つは構成可能なトークン有効期間機能で使用) を作成することはサポートしていないことに注意してください。 Microsoft は、2020 年 5 月 1 日に構成可能なトークン有効期間機能を廃止し、条件付きアクセス認証セッション管理機能に置き換える予定です。  
+>
+> [サインインの頻度] を有効にする前に、テナントで他の再認証設定が無効になっていることを確認してください。 [信頼されたデバイスで MFA を記憶する] が有効になっている場合は、[サインインの頻度] を使用する前に必ず無効にしてください。この 2 つの設定を一緒に使用すると、ユーザーに予期せずにメッセージが表示される可能性があります。 再認証のプロンプトとセッションの有効期間の詳細については、「[再認証プロンプトを最適化し、Azure Multi-Factor Authentication のセッションの有効期間を理解する](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md)」の記事を参照してください。
 
 ### <a name="policy-1-sign-in-frequency-control"></a>ポリシー 1:サインイン頻度コントロール
 

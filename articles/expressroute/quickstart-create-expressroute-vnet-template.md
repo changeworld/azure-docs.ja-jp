@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: subject-armsq
 ms.date: 08/31/2020
 ms.author: duau
-ms.openlocfilehash: f1dbb9623ddc87f9940fd97b05abbee113fd71c4
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: f45fc32e99fff7403c40048b8c7ad117b0395cc9
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90016556"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759239"
 ---
 # <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用してプライベート ピアリングによる ExpressRoute 回線を作成する
 
@@ -92,11 +92,11 @@ ExpressRoute に関連するテンプレートをさらに探すには、「[Azu
 
 1. リソース グループには、次の画面に示したリソースが含まれている必要があります。
 
-     :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-resource-group.png" alt-text="ExpressRoute デプロイ リソース グループ":::
+     :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-resource-group.png" alt-text="ExpressRoute Resource Manager テンプレートの PowerShell デプロイ出力":::
 
 1. ExpressRoute 回線 **er-ck01** を選択して、回線の状態が**有効**であること、プロバイダーの状態が**未プロビジョニング**であること、プライベート ピアリングの状態が**プロビジョニング済み**であることを確認します。
 
-    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-circuit.png" alt-text="ExpressRoute デプロイ回線":::
+    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-circuit.png" alt-text="ExpressRoute Resource Manager テンプレートの PowerShell デプロイ出力":::
 
 > [!NOTE]
 > 仮想ネットワークを回線にリンクさせるには、まずプロバイダーを呼び出してプロビジョニング プロセスを完了する必要があります。
@@ -120,11 +120,7 @@ Remove-AzResourceGroup -Name <your resource group name>
 * パブリック IP
 * ネットワーク セキュリティ グループ
 
-仮想ネットワークを回線にリンクさせる方法について詳しくは、ExpressRoute のチュートリアルに進んでください。
+仮想ネットワークを回線にリンクさせる方法については、ExpressRoute のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [ExpressRoute のチュートリアル](expressroute-howto-linkvnet-portal-resource-manager.md)
-
-* ExpressRoute ワークフローの詳細については、「 [ExpressRoute ワークフロー](expressroute-workflows.md)」を参照してください。
-* 回路ピアリングの詳細については、「 [ExpressRoute 回線とルーティング ドメイン](expressroute-circuit-peerings.md)」を参照してください。
-* 仮想ネットワークの詳細については、「 [仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
