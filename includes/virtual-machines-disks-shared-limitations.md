@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 08/26/2020
+ms.date: 09/30/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: edb5836ace6f7a1a0cff703b9921f6e6999de578
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 9aa8857ab10423f460874870a3663929e8e5a5c5
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88944408"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566952"
 ---
 一部の種類のディスクでのみ、共有ディスクを有効にできます。 現在のところ、Ultra ディスクと Premium SSD のみで共有ディスクを有効にできます。 共有ディスクが有効になっているマネージド ディスクはそれぞれ、次の制約を受けます。制限はディスクの種類別に整理されています。
 
@@ -30,7 +30,6 @@ Ultra ディスクを共有するとき、次の追加制限があります。
 
 ### <a name="premium-ssds"></a>Premium SSD
 
-- 現在、[一部のリージョン](#regional-availability)でのみサポートされています。
 - Azure Resource Manager または SDK サポートに現在、制限されています。 
 - OS ディスクではなく、データ ディスクでのみ有効にすることができます。
 - **ReadOnly** ホスト キャッシュは、`maxShares>1` の Premium SSD では使用できません。
@@ -42,24 +41,4 @@ Ultra ディスクを共有するとき、次の追加制限があります。
 
 #### <a name="regional-availability"></a>リージョン別の提供状況
 
-共有 Premium SSD は、次のリージョンでのみサポートされています。
-
-- 米国東部
-- 米国東部 2
-- 米国西部
-- 米国西部 2
-- 米国中西部
-- 米国中南部
-- 米国中北部
-- 米国中部
-- 西ヨーロッパ
-- 北ヨーロッパ
-- 韓国中部
-- カナダ中部
-- カナダ東部
-- 東日本
-- 西日本
-- US Gov バージニア州
-- US Gov アリゾナ
-
-共有 Premium SSD の使用に興味をお持ちの場合は、[サインアップしてアクセスしてください](https://aka.ms/AzureSharedDiskGASignUp)。
+共有 Premium SSD は、マネージド ディスクが使用可能なすべてのリージョンで利用できます。

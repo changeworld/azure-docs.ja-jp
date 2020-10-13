@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: apimpm
-ms.openlocfilehash: 61d43addfdf9008cb7aa8a073dcf3bb702cb55f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 86ed7f3941965bcac525a2ba71786d20a4753489
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76513373"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335502"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API のインポートに関する制限事項と既知の問題
 
@@ -54,6 +54,10 @@ Open API ドキュメントのインポートでエラーが発生した場合�
 -   `Examples` はサポートされていませんが、`example` はサポートされています。
 
 ## <a name="openapi-import-update-and-export-mechanisms"></a>OpenAPI のインポート、更新、およびエクスポートのメカニズム
+
+### <a name="general"></a><a name="open-import-export-general"> </a>全般
+
+-   API Management サービスからエクスポートされた API 定義は、API Management サービスでホストされている API を呼び出す必要がある API Management サービス外部のアプリケーションを主に対象としています。 エクスポートされた API 定義は、同じまたは別の API Management サービスに再度インポートするためのものではありません。 さまざまなサービスまたは環境にわたる API 定義の構成管理については、Git での API Management サービスの使用に関するドキュメントを参照してください。 
 
 ### <a name="add-new-api-via-openapi-import"></a>OpenAPI のインポートを使用して新しい API を追加する
 

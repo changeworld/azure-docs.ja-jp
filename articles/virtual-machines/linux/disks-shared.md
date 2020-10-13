@@ -1,19 +1,19 @@
 ---
 title: VM 間で Azure マネージド ディスクを共有する
-description: 複数の VM 間で Azure マネージド ディスクを共有する方法について説明します。
+description: 複数の Linux VM 間で Azure マネージド ディスクを共有する方法について説明します。
 author: roygara
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 07/16/2020
+ms.date: 09/30/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: b0d2784c602b15ffb08637e39e43056fa0b5a31f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: f65d132f7fc43abdee5a50ff7fd219f694a2686c
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690767"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566953"
 ---
 # <a name="share-an-azure-managed-disk"></a>Azure マネージド ディスクの共有
 

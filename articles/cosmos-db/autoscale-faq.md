@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/10/2020
-ms.openlocfilehash: 0e6a502ae7ed71beaeefe603e0810264e62187ba
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: bc8e5baa92f507c9abb9bc6b5305773010803f01
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708004"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567589"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB の自動スケーリングでプロビジョニングされたスループットについてよく寄せられる質問
 
@@ -37,14 +37,14 @@ Azure Cosmos DB で自動スケーリング プロビジョニング スルー�
 課金は、1 時間ごとに、その 1 時間内にシステムがスケーリングされた最大スループット `T` に対して行われます。 1 時間の間にリソースに対する要求がなかった場合、または `0.1 * Tmax` を超えてスケーリングされなかった場合は、最小の `0.1 * Tmax` に対して課金されます。 詳細については、Azure Cosmos DB の[価格に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照してください。 
 
 ### <a name="how-does-autoscale-show-up-on-my-bill"></a>自動スケーリングは請求書にどのように表示されますか?
-シングルマスター アカウントの場合、100 RU/秒あたりの自動スケーリングのレートは、Standard (手動) プロビジョニング スループットのレートの 1.5 倍です。 請求書には、既存の Standard プロビジョニング スループット測定が表示されます。 この測定の数量に 1.5 が掛けられます。 たとえば、システムがスケーリングされ、1 時間以内の最大 RU/秒が 6,000 RU/秒であった場合、その 1 時間の測定の 60 * 1.5 = 90 単位が請求されます。
+単一書き込みリージョン アカウントの場合、100 RU/秒あたりの自動スケーリングのレートは、Standard (手動) プロビジョニング スループットのレートの 1.5 倍です。 請求書には、既存の Standard プロビジョニング スループット測定が表示されます。 この測定の数量に 1.5 が掛けられます。 たとえば、システムがスケーリングされ、1 時間以内の最大 RU/秒が 6,000 RU/秒であった場合、その 1 時間の測定の 60 * 1.5 = 90 単位が請求されます。
 
-マルチマスター アカウントの場合、100 RU/秒あたりの自動スケーリングのレートは、Standard (手動) プロビジョニング マルチマスター スループットのレートと同じです。 請求書には、既存のマルチマスター測定が表示されます。 レートは同じであるため、自動スケーリングを使用した場合は、Standard スループットと同じ数量が示されます。
+複数書き込みリージョンのアカウントの場合、100 RU/秒あたりの自動スケーリングのレートは、Standard (手動) プロビジョニングの複数書き込みリージョンのスループットのレートと同じです。 請求書には、既存の複数書き込みリージョンの測定が表示されます。 レートは同じであるため、自動スケーリングを使用した場合は、Standard スループットと同じ数量が示されます。
 
 ### <a name="does-autoscale-work-with-reserved-capacity"></a>自動スケーリングは予約容量で機能しますか?
-はい。 シングルマスター予約容量を購入するときに、自動スケーリング リソースの予約割引が測定の使用量に適用されます。比率は、1.5 * [特定リージョンの比率](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region)になります。 
+はい。 複数書き込みリージョンのアカウントに対して予約容量を購入すると、自動スケーリング リソースの予約割引が測定の使用量に適用されます。比率は、1.5 * [特定リージョンの比率](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region)になります。 
 
-マルチマスター予約容量は、自動スケーリングと Standard (手動) プロビジョニング スループットに対して同様に機能します。 [Azure Cosmos DB の予約容量](cosmos-db-reserved-capacity.md)に関するページを参照してください
+複数書き込みリージョンの予約容量は、自動スケーリングと Standard (手動) プロビジョニング スループットに対して同様に機能します。 [Azure Cosmos DB の予約容量](cosmos-db-reserved-capacity.md)に関するページを参照してください
 
 ### <a name="does-autoscale-work-with-free-tier"></a>自動スケーリングは Free レベルで機能しますか?
 はい。 Free レベルでは、コンテナーで自動スケーリング スループットを利用できます。 カスタム最大 RU/秒を使用した自動スケーリング Shared スループット データベースのサポートはまだ利用できません。 [Free レベルでの自動スケーリングの請求のしくみ](understand-your-bill.md#billing-examples-with-free-tier-accounts)に関するページを参照してください。
@@ -52,7 +52,7 @@ Azure Cosmos DB で自動スケーリング プロビジョニング スルー�
 ### <a name="is-autoscale-supported-for-all-apis"></a>すべての API で自動スケーリングがサポートされていますか?
 はい。自動スケーリングは、すべての API でサポートされています: Core (SQL)、Gremlin、Table、Cassandra、および MongoDB 用 API。
 
-### <a name="is-autoscale-supported-for-multi-master-accounts"></a>自動スケーリングはマルチマスター アカウントでサポートされていますか?
+### <a name="is-autoscale-supported-for-multi-region-write-accounts"></a>自動スケーリングは複数リージョン書き込みアカウントに対してサポートされていますか?
 はい。 最大 RU/秒は、Azure Cosmos DB アカウントに追加された各リージョンで利用できます。 
 
 ### <a name="how-do-i-enable-autoscale-on-new-databases-or-containers"></a>新しいデータベースまたはコンテナーに対して自動スケーリングを有効にするにはどうすればよいですか?
