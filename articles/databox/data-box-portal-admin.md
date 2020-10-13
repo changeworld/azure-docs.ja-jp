@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 2fc869448bac8303acee902b5d8819fdd3f26138
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 8b36eee38275d18e6977c056192176f6fd54a917
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258524"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611658"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Azure portal を使用して Azure Data Box および Azure Data Box Heavy を管理する
 
@@ -202,7 +202,7 @@ Data Box の注文が完了すると、デバイス ディスク上のデータ�
 
 また、監査ログと BOM ファイルを含む生産物流管理ログを表示することもできます。
 
-![ストレージ アカウント内のログ](media/data-box-portal-admin/logs-in-storage-acct-1.png)
+![ストレージ アカウント内のログ 2](media/data-box-portal-admin/logs-in-storage-acct-1.png)
 
 ## <a name="view-order-status"></a>注文の状態の確認
 
