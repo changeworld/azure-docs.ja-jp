@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 40654926b2998b3ba1c4ce1a5607a768f2c32340
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c78a65c3cc2d913ba0b836947d2184b3a061a648
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987284"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714645"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>スタンドアロン Azure Automation アカウントを作成する
 
@@ -22,7 +22,7 @@ Azure portal で Automation アカウントを作成すると、**実行**アカ
 
 * Azure Active Directory (Azure AD) にサービス プリンシパルを作成します。
 * 証明書を作成します。
-* Runbook を使用して Azure Resource Manager リソースを管理する、共同作成者のロールベースのアクセス制御 (RBAC) を割り当てます。
+* Runbook を使用して Azure Resource Manager リソースを管理する、共同作成者ロールを割り当てます。
 
 このアカウントが作成されると、自動化のニーズを満たす Runbook の作成とデプロイをすばやく開始することができます。
 
