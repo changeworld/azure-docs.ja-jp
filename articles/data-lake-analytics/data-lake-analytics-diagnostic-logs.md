@@ -5,12 +5,12 @@ services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 02/12/2018
-ms.openlocfilehash: c8c24134c4694a9a2df36ac278452a532a5125ad
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f1f4320f0bfb924883eb7ae4807dcb714cd89983
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132604"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331932"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics の診断ログへのアクセス
 
@@ -26,7 +26,7 @@ ms.locfileid: "87132604"
 
 2. Data Lake Analytics アカウントを開き、 __[監視]__ セクションから **[診断ログ]** を選択します。 次に、 __[診断を有効にする]__ を選択します。
 
-    ![診断を有効にして、監査ログと要求ログを収集する](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
+    ![[診断ログ] アクションが選択され、[Turn on diagnostics to collect the following logs]\(診断をオンにして次のログを収集する\) が強調表示されていることを示すスクリーンショット。](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
 
 3. __[診断設定]__ で、このログ構成の __名前__ を入力し、ログ オプションを選択します。
 
