@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68ab302e5c24835174d03b3579c9ec587bfd9006
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: e57da384253912a875bacbc5f43aa9f9b99b45b2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601590"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265988"
 ---
 # <a name="conditional-access-block-access"></a>条件付きアクセス:アクセスのブロック
 
@@ -38,7 +38,7 @@ ms.locfileid: "90601590"
 
 ## <a name="create-a-conditional-access-policy"></a>条件付きアクセス ポリシーを作成する
 
-次の手順では、ユーザーが信頼できるネットワークにいない場合に [Office 365](concept-conditional-access-cloud-apps.md#office-365-preview) を除くすべてのアプリへのアクセスをブロックする条件付きアクセス ポリシーを作成します。 これらのポリシーは[レポート専用モード](howto-conditional-access-insights-reporting.md)となり、管理者が既存のユーザーに与える影響を判断できるようになります。 意図したとおりにポリシーが適用されていることを確認したら、管理者はそのポリシーを**オン**に切り替えることができます。
+次の手順では、ユーザーが信頼できるネットワークにいない場合に [Office 365](concept-conditional-access-cloud-apps.md#office-365) を除くすべてのアプリへのアクセスをブロックする条件付きアクセス ポリシーを作成します。 これらのポリシーは[レポート専用モード](howto-conditional-access-insights-reporting.md)となり、管理者が既存のユーザーに与える影響を判断できるようになります。 意図したとおりにポリシーが適用されていることを確認したら、管理者はそのポリシーを**オン**に切り替えることができます。
 
 最初のポリシーでは、信頼できる場所にいない場合、Microsoft 365 アプリケーションを除くすべてのアプリへのアクセスをブロックします。
 
@@ -52,7 +52,7 @@ ms.locfileid: "90601590"
    1. **[Done]** を選択します。
 1. **[Cloud apps or actions]\(クラウド アプリまたはアクション\)** で、次のオプションを選択します。
    1. **[Include]\(含める\)** で、 **[すべてのクラウド アプリ]** を選択します。
-   1. **[Exclude]\(除外\)** で、 **[Office 365 (preview)]\(Office 365 (プレビュー)\)** を選択し、 **[選択]** 、 **[完了]** の順に選択します。
+   1. **[Exclude]\(除外\)** で、 **[Office 365]** を選択し、 **[選択]** 、 **[完了]** の順に選択します。
 1. **[条件]** で、次の手順を実行します。
    1. **[条件]**  >  **[Location]\(場所\)** で
       1. **[Configure]\(構成する\)** を **[はい]** に設定します
@@ -72,7 +72,7 @@ ms.locfileid: "90601590"
    1. **[Include]\(含める\)** で、 **[すべてのユーザー]** を選択します。
    1. **[除外]** で、 **[ユーザーとグループ]** を選択し、組織の緊急アクセス用または非常用アカウントを選択します。 
    1. **[Done]** を選択します。
-1. **[Cloud apps or actions]\(クラウド アプリまたはアクション\)**  >  **[Include]\(含める\)** で、 **[アプリを選択]** 、 **[Office 365 (preview)]\(Office 365 (プレビュー)\)** 、 **[選択]** 、 **[完了]** の順に選択します。
+1. **[Cloud apps or actions]\(クラウド アプリまたはアクション\)**  >  **[Include]\(含める\)** で、 **[アプリを選択]** 、 **[Office 365]** 、 **[選択]** 、 **[完了]** の順に選択します。
 1. **[アクセス制御]**  >  **[許可]** で、 **[アクセス権の付与]** を選択します。
    1. **[Require multi-factor authentication]\(多要素認証が必要\)** および **[デバイスは準拠としてマーク済みである必要があります]** を選択し、 **[選択]** を選択します。
    1. **[選択したコントロールすべてが必要]** が選択されていることを確認します。

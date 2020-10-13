@@ -3,18 +3,18 @@ title: ブループリント オペレーター用の環境を設定する
 description: ブループリント オペレーターの Azure 組み込みロールで使用するように Azure 環境を構成する方法について説明します。
 ms.date: 08/27/2020
 ms.topic: how-to
-ms.openlocfilehash: ef911553b4985a6497fb397a1ae405387c6539fb
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: ae881ac6d0714401f8c80e880b4d288f594b7cf3
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051459"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535783"
 ---
 # <a name="configure-your-environment-for-a-blueprint-operator"></a>ブループリント オペレーター用の環境を構成する
 
 ブループリント定義とブループリント割り当ての管理は、異なるチームに割り当てることができます。 設計者やガバナンス チームがブループリント定義のライフサイクル管理を担当し、運用チームがこれらの集中管理されたブループリント定義の割り当ての管理を担当することがよくあります。
 
-組み込みのロールベースのアクセス制御 (RBAC) の**ブループリント オペレーター**は、こうしたシナリオ専用に設計されています。 このロールにより、運用タイプのチームは組織のブループリント定義の割り当てを管理できますが、定義を変更することはできません。 これを行うには、Azure 環境でいくつかの構成が必要です。この記事では必要な手順について説明します。
+**ブループリント オペレーター**組み込みロールは、この種のシナリオ専用に設計されています。 このロールにより、運用タイプのチームは組織のブループリント定義の割り当てを管理できますが、定義を変更することはできません。 これを行うには、Azure 環境でいくつかの構成が必要です。この記事では必要な手順について説明します。
 
 ## <a name="grant-permission-to-the-blueprint-operator"></a>ブループリント オペレーターにアクセス許可を付与する
 

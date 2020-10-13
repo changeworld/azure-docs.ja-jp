@@ -11,12 +11,12 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 25ab7d275957aff03ad76bf2e946a98fc6cd8821
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: fecb78b240f5c983580d4bdb34535a879ffe3e2e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032964"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289278"
 ---
 # <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>列ストア インデックスのパフォーマンスのために行グループの品質を最大化する
 
@@ -26,7 +26,7 @@ ms.locfileid: "90032964"
 
 列ストアインデックスは個別の行グループの列セグメントをスキャンすることでテーブルをスキャンし、各行グループの行の数を最大限にしてクエリ パフォーマンスを向上させます。 行グループに多くの行がある場合、データ圧縮が向上します。つまり、ディスクから読み取るデータが少なくなります。
 
-行グループの詳細については、「[列ストア インデックス ガイド](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。
+行グループの詳細については、「[列ストア インデックス ガイド](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」を参照してください。
 
 ## <a name="target-size-for-rowgroups"></a>行グループのターゲット サイズ
 
@@ -34,15 +34,15 @@ ms.locfileid: "90032964"
 
 ## <a name="rowgroups-can-get-trimmed-during-compression"></a>圧縮時の行グループのトリミング
 
-一括読み込み中または列ストアインデックスの再構築中、各行グループに指定された行をすべて圧縮するのに使用可能なメモリが十分ではないことがあります。 メモリの負荷がある場合、列ストアへの圧縮ができるように、列ストア インデックスは行グループのサイズをトリミングします。
+一括読み込み中または列ストア インデックスの再構築中、各行グループに指定された行をすべて圧縮するのに使用可能なメモリが十分ではないことがあります。 メモリの負荷がある場合、列ストアへの圧縮ができるように、列ストア インデックスは行グループのサイズをトリミングします。
 
 それぞれの行グループに 10,000 行以上を圧縮する十分なメモリがない場合、エラーが生成されます。
 
-一括読み込みの詳細については、「[クラスター化列ストア インデックスへの一括読み込み](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#Bulk )」セクションを参照してください。
+一括読み込みの詳細については、「[クラスター化列ストア インデックスへの一括読み込み](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#Bulk&preserve-view=true )」セクションを参照してください。
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>行グループの品質を監視する方法
 
-行グループの行数や、トリミングがあった場合はトリミングの理由など、役立つ情報を示す DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats があります ([sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) には、SQL DB に一致するビュー定義が含まれます)。 次のビューを作成します。これは、この DMV に対してクエリを実行し、行グループのトリミングに関する情報を取得できる便利な方法です。
+行グループの行数や、トリミングがあった場合はトリミングの理由など、役立つ情報を示す DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats があります ([sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) には、SQL DB に一致するビュー定義が含まれます)。 次のビューを作成します。これは、この DMV に対してクエリを実行し、行グループのトリミングに関する情報を取得できる便利な方法です。
 
 ```sql
 create view dbo.vCS_rg_physical_stats
@@ -77,14 +77,15 @@ trim_reason_desc は、行グループがトリミングされたかどうかを
 
 ## <a name="how-to-estimate-memory-requirements"></a>メモリ要件の見積もり方法
 
-1 つの行グループを圧縮するために必要なメモリは最大で約
+1 つの行グループを圧縮するために必要なメモリの最大値は、おおよそ次のとおりです:
 
 - 72 MB 以上
 - \#行 \* \#列 \* 8 バイト +
 - \#行 \* \#短い文字列の列 \* 32 バイト +
 - \#長い文字列の列 \* 圧縮ディクショナリに 16 MB
 
-短い文字列の列は 32 バイト以下の文字列データを使用し、長い文字列の列は 32 バイト超の文字列データを使用します。
+> [!NOTE]
+> 短い文字列の列は 32 バイト以下の文字列データを使用し、長い文字列の列は 32 バイト超の文字列データを使用します。
 
 長い文字列は、テキストの圧縮に指定されている圧縮方法で圧縮されます。 この圧縮方法では、*ディクショナリ*を使用してテキスト パターンを格納します。 ディクショナリの最大サイズは 16 MB です。 ディクショナリは、行グループ内の長い文字列の列ごとに 1 つだけです。
 

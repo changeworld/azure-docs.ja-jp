@@ -4,12 +4,12 @@ description: この記事では、Azure 仮想マシンの復旧ポイントか�
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: fd68c33e4425d717837923b90119d42569a1f003
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 3f26f761b3d683be71f7f6d900d91dd432ceefc8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178522"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292967"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップからファイルを回復する
 
@@ -302,17 +302,17 @@ Linux では、ファイルの復元に使用するコンピューターの OS �
 アクセスが制限されたコンピューターでスクリプトを実行する場合は、次にアクセスできることを確認してください。
 
 - `download.microsoft.com`
-- 回復サービスの URL (geo-name は Recovery Services コンテナーが存在するリージョンを表します)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.com` (すべての Azure パブリック リージョン)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.cn` (Azure China 21Vianet 用)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.us` (Azure US Government 用)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.de` (Azure Germany 用)
+- Recovery Service の URL (GEO-NAME は Recovery Services コンテナーが存在するリージョンを表します)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.com` (すべての Azure パブリック リージョン)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.cn` (Azure China 21Vianet 用)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.us` (Azure US Government 用)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.de` (Azure Germany 用)
 - 送信ポート 53 (DNS)、443、3260
 
 > [!NOTE]
 >
-> - ダウンロードしたスクリプト ファイル名には、URL に **geo-name** が含まれます。 次に例を示します。ダウンロードしたスクリプト名は、\'VMname\'\_\'geoname\'_\'GUID\' で始まります (*ContosoVM_wcus_12345678* など)
-> - URL は <https://pod01-rec2.wcus.backup.windowsazure.com>" になります
+> [上記](#mount-the-volume-and-copy-files)の手順 5 でダウンロードしたスクリプト ファイルには、ファイルの名前に **geo-name** が含まれています。 その **geo-name** を使用して、URL を置き換えます。 ダウンロードしたスクリプトの名前は次で始まります:\'VMname\'\_\'geoname\'_\'GUID\'。<br><br>
+> そのため、たとえば、スクリプト ファイル名が *ContosoVM_wcus_12345678* の場合、**geo-name** は *wcus* であるため、URL は次のようになります:<br> <https://pod01-rec2.wcus.backup.windowsazure.com>
 >
 
 Linux の場合、スクリプトによって復旧ポイントに接続するには "open-iscsi" および "lshw" コンポーネントが必要です。 スクリプトを実行するコンピューターに目的のコンポーネントが存在しない場合は、コンポーネントをインストールするためのアクセス許可をスクリプトから求められます。 同意して、必要なコンポーネントをインストールします。

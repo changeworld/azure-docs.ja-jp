@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: ec3f8f71713abb818f29458748eb0054390f474e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 17b8fc3824fb1c7e6cfcfc3d4333dc226b51724d
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89396677"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653640"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>クラウド ソリューション プロバイダー (CSP) 向けの ExpressRoute
 Microsoft では、新たな開発投資を行わずに顧客向けの新しいサービスやソリューションを迅速にプロビジョニングできる、従来のリセラーおよび代理店 (CSP) 向けの超大規模サービスを提供しています。 このような新しいサービスをクラウド ソリューション プロバイダー (CSP) が直接管理できるようにするため、Microsoft では、CSP が顧客に代わって Microsoft Azure のリソースを管理するために利用できるプログラムや API を用意しています。 ExpressRoute は、そのようなリソースの 1 つです。 ExpressRoute を利用することで、CSP は既存の顧客リソースを Azure サービスに接続できます。 ExpressRoute とは、Azure のサービスへの高速なプライベート通信リンクです。 
@@ -34,7 +34,7 @@ Microsoft では、プログラムによって独自のサービス管理シス�
 サブスクリプションの管理方法は、顧客との契約内容によって異なります。 CSP がリソースの作成とメンテナンスを直接管理することもできますが、顧客が Microsoft Azure サブスクリプションを制御し、必要に応じて Azure リソースを作成することもできます。 顧客が Microsoft Azure サブスクリプションでのリソースの作成を管理する場合、"*Connect-Through*" モデルと "*Direct-To*" モデルという 2 つのモデルのいずれかを使用することになります。 以降のセクションで、これらのモデルの詳細について説明します。  
 
 ### <a name="connect-through-model"></a>Connect-Through モデル
-![alt text](./media/expressroute-for-cloud-solution-providers/connect-through.png)  
+!["Connect-through" モデルを示す図。](./media/expressroute-for-cloud-solution-providers/connect-through.png)  
 
 Connect-Through モデルでは、CSP がデータセンターと顧客の Azure サブスクリプションとの間で直接接続を構築します。 直接接続は ExpressRoute を使用して構築され、貴社のネットワークが Azure に接続されます。 その後、顧客が貴社のネットワークに接続します。 このシナリオでは、顧客が CSP のネットワークを介して Azure サービスにアクセスする必要があります。 
 
@@ -42,10 +42,10 @@ Connect-Through モデルでは、CSP がデータセンターと顧客の Azure
 
 CSP が管理する Azure サービスでは、前提条件として CSP が事前に顧客 ID ストアを構築している必要があります。この ID ストアは、代理での管理 (AOBO) による CSP サブスクリプションの管理を行うために、Azure Active Directory にレプリケートされます。 このシナリオの主な推進要因としては、特定のパートナーまたはサービス プロバイダーと顧客との間に関係が確立されている場合、顧客が現在プロバイダーのサービスを利用している場合、CSP 単独では不可能な、柔軟性の提供と顧客の課題への対処を実現するため、プロバイダーがホストするソリューションと Azure がホストするソリューションを組み合わせて提供することをパートナーが望んでいる場合などが挙げられます。 このモデルを表した**図**を以下に示します。
 
-![alt text](./media/expressroute-for-cloud-solution-providers/connect-through-model.png)
+!["Connect-through" モデルの詳細なシナリオを示す図。](./media/expressroute-for-cloud-solution-providers/connect-through-model.png)
 
 ### <a name="connect-to-model"></a>Connect-To モデル
-![alt text](./media/expressroute-for-cloud-solution-providers/connect-to.png)
+!["Connect-To" モデルを示す図。](./media/expressroute-for-cloud-solution-providers/connect-to.png)
 
 Connect-To モデルでは、サービス プロバイダーが顧客のネットワークを介して ExpressRoute を使用し、顧客のデータセンターと CSP がプロビジョニングした Azure サブスクリプションとの間に直接接続を構築します。
 
@@ -56,7 +56,7 @@ Connect-To モデルでは、サービス プロバイダーが顧客のネッ�
 
 この接続シナリオでは、顧客が一部または全面的に作成、所有、管理する直接ネットワーク接続を使用することで、顧客独自のネットワークを介して CSP が管理する Azure サブスクリプションに直接アクセスする必要があります。 このような顧客の場合、プロバイダーは現時点で顧客 ID ストアを構築していないことが前提となり、顧客が AOBO によるサブスクリプション管理のために現在の ID ストアを Azure Active Directory にレプリケートする際、プロバイダーがそれを支援することになります。 このシナリオの主な推進要因としては、特定のパートナーまたはサービス プロバイダーと顧客との間に関係が確立されている場合、顧客が現在プロバイダーのサービスを利用している場合、既存のプロバイダー データセンターまたはインフラストラクチャを必要としない、Azure がホストするソリューションのみをベースにしたサービスの提供を、パートナーが望んでいる場合などが挙げられます。
 
-![alt text](./media/expressroute-for-cloud-solution-providers/connect-to-model.png)
+!["Connect-To" モデルの詳細なシナリオを示す図。](./media/expressroute-for-cloud-solution-providers/connect-to-model.png)
 
 これら 2 つのモデルのどちらを選択するかは、顧客のニーズと、Azure サービスの提供に対する貴社の現在のニーズによって決まります。 各モデルの詳細と、関連するロールベースのアクセス制御、ネットワーク、ID 設計パターンなどの詳細については、以下のリンクを参照してください。
 
@@ -109,7 +109,7 @@ Azure 仮想ネットワークを作成すると、VNet がそのサブネット
 * VPN ゲートウェイを使用した仮想ネットワークから仮想ネットワークへのルーティング
 * VPN または ExpressRoute ゲートウェイを使用した仮想ネットワークからオンプレミス ネットワークへのルーティング
 
-![alt text](./media/expressroute-for-cloud-solution-providers/default-routing.png)  
+![既定のルーティング オプションを示す図。](./media/expressroute-for-cloud-solution-providers/default-routing.png)  
 
 ### <a name="user-defined-routing-udr"></a>ユーザー定義のルーティング (UDR)
 ユーザー定義のルーティングでは、割り当てられたサブネットから仮想ネットワーク内の他のサブネットへの送信トラフィックや、他の定義済みゲートウェイ (ExpressRoute、インターネット、または VPN) のいずれかを介した送信トラフィックを制御できます。 既定のシステム ルーティング テーブルはユーザー定義のルーティング テーブルに置き換えることができます。これによって既定のルーティング テーブルがカスタム ルートに置き換わります。 ユーザー定義のルーティングを使用すると、顧客はファイアウォールのようなアプライアンスまたは侵入検出アプライアンスへの特定のルートを作成することや、ユーザー定義のルートをホストするサブネットから特定のサブネットへのアクセスをブロックすることができます。 ユーザー定義のルートの概要については、[こちら](../virtual-network/virtual-networks-udr-overview.md)を参照してください。 

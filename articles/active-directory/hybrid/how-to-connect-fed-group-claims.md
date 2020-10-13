@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 72ec59d0082071746cb8db2b06412d90b4958914
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce438ad0725aff677f897a635a0cd32d92bbbdbe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359961"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265471"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>Azure Active Directory を使ってアプリケーションに対するグループ要求を構成する
 
@@ -78,11 +78,11 @@ Active Directory Groups に対するグループ名を出力するように Azur
 
 **[グループ要求を追加する]** をクリックします  
 
-![要求の UI](media/how-to-connect-fed-group-claims/group-claims-ui-1.png)
+![[グループ要求を追加する] が選択された [ユーザー属性とクレーム] ページを示すスクリーンショット。](media/how-to-connect-fed-group-claims/group-claims-ui-1.png)
 
 ラジオ ボタンを使用して、トークン内に含める必要があるグループを選択します。
 
-![要求の UI](media/how-to-connect-fed-group-claims/group-claims-ui-2.png)
+![[セキュリティ グループ] が選択された [グループ クレーム] ウィンドウを示すスクリーンショット。](media/how-to-connect-fed-group-claims/group-claims-ui-2.png)
 
 | [選択] | 説明 |
 |----------|-------------|
@@ -93,15 +93,15 @@ Active Directory Groups に対するグループ名を出力するように Azur
 
 たとえば、ユーザーがメンバーとして属するセキュリティ グループを出力するには、[セキュリティ グループ] を選択します。
 
-![要求の UI](media/how-to-connect-fed-group-claims/group-claims-ui-3.png)
+![[セキュリティ グループ] が選択され、[ソース属性] ドロップダウン メニューが開かれている、[グループ クレーム] ウィンドウを示すスクリーンショット。](media/how-to-connect-fed-group-claims/group-claims-ui-3.png)
 
 Azure AD objectID ではなく、Active Directory から同期されている Active Directory 属性を使用してグループを出力するには、ドロップダウンから必要な形式を選択します。 要求には、Active Directory から同期されたグループのみが含まれます。
 
-![要求の UI](media/how-to-connect-fed-group-claims/group-claims-ui-4.png)
+![開かれた [ソース属性] ドロップダウン メニューを示すスクリーンショット。](media/how-to-connect-fed-group-claims/group-claims-ui-4.png)
 
 アプリケーションに割り当てられたグループのみを出力するには、 **[アプリケーションに割り当てられているグループ]** を選択します
 
-![要求の UI](media/how-to-connect-fed-group-claims/group-claims-ui-4-1.png)
+![[アプリケーションに割り当てられているグループ] が選択された [グループ クレーム] ウィンドウを示すスクリーンショット。](media/how-to-connect-fed-group-claims/group-claims-ui-4-1.png)
 
 アプリケーションに割り当てられているグループは、トークンに含まれます。  ユーザーがメンバーになっている他のグループは省略されます。  このオプションでは、入れ子になったグループは含まれません。ユーザーは、アプリケーションに割り当てられたグループの直接のメンバーである必要があります。
 
@@ -115,11 +115,11 @@ Azure AD objectID ではなく、Active Directory から同期されている Ac
 
 [グループ要求の名前をカスタマイズする]\: 選択した場合、別の要求の種類をグループ要求に指定できます。   [名前] フィールドに要求の種類を、[名前空間] フィールドに要求のオプションの名前空間を入力します。
 
-![要求の UI](media/how-to-connect-fed-group-claims/group-claims-ui-5.png)
+![[グループ要求の名前をカスタマイズする] が選択され、[名前] と [名前空間] の値が入力されている、[詳細オプション] セクションを示すスクリーンショット。](media/how-to-connect-fed-group-claims/group-claims-ui-5.png)
 
 アプリケーションによっては、グループ メンバーシップ情報を 'ロール' 要求内に表示する必要があります。 必要に応じて、[Emit groups a role claims]\(ロールとしてグループ要求を発行する\) チェック ボックスをオンにして、ユーザーのグループをロールとして出力できます。
 
-![要求の UI](media/how-to-connect-fed-group-claims/group-claims-ui-6.png)
+![[グループ要求の名前をカスタマイズする] と [グループをロール要求として生成する] が選択されている、[詳細オプション] セクションを示すスクリーンショット。](media/how-to-connect-fed-group-claims/group-claims-ui-6.png)
 
 > [!NOTE]
 > グループ データをロールとして出力するオプションが使用されると、ロール要求内にグループのみが表示されます。  ユーザーが割り当てられているアプリケーション ロールはいずれも、ロール要求には表示されなくなります。
