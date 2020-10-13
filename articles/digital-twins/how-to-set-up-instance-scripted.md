@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 605df0f26600f962bda7a0a0def800a91d74b022
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 83741f5bc55eb222b379a274ef403f766553b21f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90562980"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328643"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Azure Digital Twins インスタンスと認証を設定する (スクリプト化)
 
@@ -26,15 +26,19 @@ ms.locfileid: "90562980"
 
 [!INCLUDE [digital-twins-setup-steps-prereq.md](../../includes/digital-twins-setup-steps-prereq.md)]
 
+## <a name="prerequisites-download-the-script"></a>前提条件:スクリプトのダウンロード
+
+このサンプル スクリプトは PowerShell で記述されています。 これは、[**Azure Digital Twins サンプル**](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/)の一部です。これをコンピューターにダウンロードするには、そのサンプル リンクに移動し、タイトルの下の *[Download ZIP]\(ZIP のダウンロード\)* ボタンを選択します。
+
+これにより、サンプル プロジェクトが _**Azure_Digital_Twins_samples.zip**_ としてコンピューターにダウンロードされます。 お使いのコンピューター上のフォルダーに移動してこれを解凍し、ファイルを抽出します。
+
+解凍したフォルダー内で、このデプロイ スクリプトは _Azure_Digital_Twins_samples.zip > scripts > **deploy.ps1**_ に配置されています。
+
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="run-the-deployment-script"></a>展開スクリプトを実行する
 
 この記事では、Azure Digital Twins のコード サンプルを使用して、Azure Digital Twins インスタンスと必要な認証を半自動でデプロイします。 これはまた、独自のスクリプト化された操作を記述するための開始点としても使用できます。
-
-このサンプル スクリプトは PowerShell で記述されています。 これは、[Azure Digital Twins サンプル](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/)の一部です。これをコンピューターにダウンロードするには、そのサンプル リンクに移動し、タイトルの下の *[ZIP のダウンロード]* ボタンを選択します。
-
-ダウンロードされたサンプル フォルダー内で、このデプロイ スクリプトは _Azure_Digital_Twins_samples.zip > scripts > **deploy.ps1**_ に配置されています。
 
 このデプロイ スクリプトを Cloud Shell で実行する手順を次に示します。
 1. ブラウザーで [[Azure Cloud Shell]](https://shell.azure.com/) ウィンドウに移動します。 次のコマンドを使用してサインインします。
@@ -43,13 +47,23 @@ ms.locfileid: "90562980"
     ```
     CLI で既定のブラウザーを開くことができる場合、開いたブラウザに Azure サインイン ページが読み込まれます。 それ以外の場合は、 *https://aka.ms/devicelogin* でブラウザー ページを開き、ターミナルに表示されている認証コードを入力します。
  
-2. サインインしたら、Cloud Shell ウィンドウのアイコン バーに注目します。 [ファイルのアップロード/ダウンロード] アイコンを選択し、[アップロード] を選択します。
+2. Cloud Shell アイコン バーで、PowerShell バージョンを実行するように設定されていることを確認します。
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="[アップロード] オプションが選択されていることを示す Cloud Shell ウィンドウ":::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-powershell.png" alt-text="PowerShell バージョンが選択されていることを示す Cloud Shell ウィンドウ":::
 
-    コンピューター上の _**deploy.ps1**_ ファイルに移動し、[開く] をクリックします。 これにより、そのファイルが Cloud Shell にアップロードされ、Cloud Shell ウィンドウで実行できるようになります。
+1. [ファイルのアップロード/ダウンロード] アイコンを選択し、[アップロード] を選択します。
 
-3. Cloud Shell ウィンドウで `./deploy.ps1` コマンドを送信することによってスクリプトを実行します。 スクリプトにより自動化された設定手順が実行されると、次の値を渡すよう求められます。
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="PowerShell バージョンが選択されていることを示す Cloud Shell ウィンドウ":::
+
+    お使いのコンピューター上の _**deploy.ps1**_ ファイルに移動し (_Azure_Digital_Twins_samples > scripts > **deploy.ps1**_)、[開く] をクリックします。 これにより、そのファイルが Cloud Shell にアップロードされ、Cloud Shell ウィンドウで実行できるようになります。
+
+4. Cloud Shell ウィンドウで `./deploy.ps1` コマンドを送信することによってスクリプトを実行します。 (Cloud Shell に貼り付けるには、Windows と Linux では **Ctrl+Shift+V**、macOS では **Cmd+Shift+V** を使用できます。 右クリック メニューを使用することもできます。)
+
+    ```azurecli
+    ./deploy.ps1
+    ```
+
+    スクリプトにより自動化された設定手順が実行されると、次の値を渡すよう求められます。
     * インスタンス用: 使用する Azure サブスクリプションの*サブスクリプション ID*
     * インスタンス用: インスタンスをデプロイする*場所*。 Azure Digital Twins がどのリージョンでサポートされているかを確認するには、[*リージョン別の利用可能な Azure 製品*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)に関するページを参照してください。
     * インスタンス用: *リソース グループ*の名前。 既存のリソース グループを使用するか、または作成するリソース グループの新しい名前を入力できます。
@@ -68,7 +82,7 @@ ms.locfileid: "90562980"
 
 このスクリプトからの出力ログの抜粋を次に示します。
 
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="デプロイ スクリプトの実行による入力と出力のログを示す Cloud Shell ウィンドウ" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="PowerShell バージョンが選択されていることを示す Cloud Shell ウィンドウ" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
 
 スクリプトが正常に完了した場合は、最終的な出力として `Deployment completed successfully` が表示されます。 それ以外の場合は、エラー メッセージに対処してから、スクリプトを再実行します。 それにより、既に完了した手順はバイパスされ、前に中断された時点から再び入力の要求が開始されます。
 
@@ -89,7 +103,7 @@ ms.locfileid: "90562980"
 
 それを選択すると、そのインスタンスの *[概要]* ページが開きます。 その *[名前]* 、 *[リソース グループ]* 、 *[ホスト名]* をメモします。 これらは、後でそのインスタンスを識別して接続するために必要になる場合があります。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="インスタンスの [概要] ページの重要な値の強調表示":::
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="PowerShell バージョンが選択されていることを示す Cloud Shell ウィンドウ":::
 
 ### <a name="collect-app-registration-values"></a>アプリ登録の値を収集する 
 
@@ -99,17 +113,21 @@ ms.locfileid: "90562980"
 
 今作成したアプリ登録がこの一覧に表示されます。 それを選択すると、その詳細が開かれます。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="アプリ登録の重要な値のポータル ビュー":::
-
-**実際の**ページに表示される、"*アプリケーション (クライアント) ID*" と "*ディレクトリ (テナント) ID*" をメモしておきます。 自分がクライアント アプリケーションのコードを作成するユーザーでない場合は、これらの値をそのユーザーと共有する必要があります。
+:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="PowerShell バージョンが選択されていることを示す Cloud Shell ウィンドウ" をメモしておきます。 自分がクライアント アプリケーションのコードを作成するユーザーでない場合は、これらの値をそのユーザーと共有する必要があります。
 
 ## <a name="verify-success"></a>成功を確認する
 
 このスクリプトによって設定されるリソースやアクセス許可の作成を確認したい場合は、[Azure portal](https://portal.azure.com) でそれらを確認できます。
 
+成功したかどうかを確認できない手順がある場合は、その手順を再試行してください。 [Azure portal](how-to-set-up-instance-portal.md) または [CLI](how-to-set-up-instance-cli.md) の指示に従って、手順を個別に実行できます。
+
 ### <a name="verify-instance"></a>インスタンスを確認する
 
-インスタンスが作成されたことを確認するには、Azure portal の [[Azure Digital Twins] ページ](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances)に移動します。 このページには、すべての Azure Digital Twins インスタンスが一覧表示されます。 その一覧で新しく作成されたインスタンスの名前を探します。
+インスタンスが作成されたことを確認するには、Azure portal の [[Azure Digital Twins] ページ](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances)に移動します。 ポータルの検索バーで *Azure Digital Twins* を検索すると、このページにアクセスできます。
+
+このページには、すべての Azure Digital Twins インスタンスが一覧表示されます。 その一覧で新しく作成されたインスタンスの名前を探します。
+
+確認に失敗した場合は、[ポータル](how-to-set-up-instance-portal.md#create-the-azure-digital-twins-instance) または [CLI](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance) を使用してインスタンスの作成を再試行できます。
 
 ### <a name="verify-user-role-assignment"></a>ユーザー ロールの割り当てを確認する
 
@@ -117,16 +135,18 @@ ms.locfileid: "90562980"
 
 > [!NOTE]
 > スクリプトが現在、この必要なロールを Cloud Shell からスクリプトを実行している同じユーザーに割り当てていることを思い出してください。 このロールを、このインスタンスを管理するだれか他のユーザーに割り当てる必要がある場合は、Azure portal ([手順](how-to-set-up-instance-portal.md#set-up-user-access-permissions)) または CLI ([手順](how-to-set-up-instance-cli.md#set-up-user-access-permissions)) を使用してこれを実行できます。
->
-> また、スクリプトを使用した設定で問題がある場合は、ポータルまたは CLI を使用して自分独自のロール割り当てをやり直すこともできます。
+
+確認に失敗した場合は、[ポータル](how-to-set-up-instance-portal.md#set-up-user-access-permissions) または [CLI](how-to-set-up-instance-cli.md#set-up-user-access-permissions) を使用して、独自のロールの割り当てをやり直すこともできます。
 
 ### <a name="verify-app-registration"></a>アプリ登録を確認する
 
 [!INCLUDE [digital-twins-setup-verify-app-registration-1.md](../../includes/digital-twins-setup-verify-app-registration-1.md)]
 
-最初に、Azure Digital Twins のアクセス許可の設定が登録時に正しく設定されたことを確認します。 これを行うには、メニュー バーから *[マニフェスト]* を選択して、アプリ登録のマニフェスト コードを表示します。 コード ウィンドウの一番下までスクロールし、`requiredResourceAccess` の下のこれらのフィールドを探します。 これらの値は、次のスクリーンショットの値と一致している必要があります。
+次に、Azure Digital Twins のアクセス許可の設定が登録時に正しく設定されたことを確認します。 これを行うには、メニュー バーから *[マニフェスト]* を選択して、アプリ登録のマニフェスト コードを表示します。 コード ウィンドウの一番下までスクロールし、`requiredResourceAccess` の下のこれらのフィールドを探します。 これらの値は、次のスクリーンショットの値と一致している必要があります。
 
 [!INCLUDE [digital-twins-setup-verify-app-registration-2.md](../../includes/digital-twins-setup-verify-app-registration-2.md)]
+
+これらの確認手順のいずれかまたは両方が失敗した場合は、[ポータル](how-to-set-up-instance-portal.md#set-up-access-permissions-for-client-applications) または [CLI](how-to-set-up-instance-cli.md#set-up-access-permissions-for-client-applications) を使用して、アプリの登録の作成を再試行してください。
 
 ## <a name="other-possible-steps-for-your-organization"></a>組織でのその他の考えられる手順
 
@@ -135,7 +155,7 @@ ms.locfileid: "90562980"
 ## <a name="next-steps"></a>次のステップ
 
 Azure Digital Twins CLI コマンドを使用して、インスタンスでの個別の REST API 呼び出しをテストします。 
-* [az dt reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest)
+* [az dt reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true)
 * [*方法: Azure Digital Twins CLI を使用する*](how-to-use-cli.md)
 
 または、クライアント アプリの認証コードを作成してクライアント アプリケーションをインスタンスに接続する方法を確認します。
