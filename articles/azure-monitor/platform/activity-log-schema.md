@@ -4,15 +4,15 @@ description: Azure アクティビティ ログ内の各カテゴリのイベン
 author: bwren
 services: azure-monitor
 ms.topic: reference
-ms.date: 06/09/2020
+ms.date: 09/30/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 656161849ce8d48fb15cfac4024ec5b77adb5fee
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 52f0db4086bac7c8131015114ea6ecfdc391a4af
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829511"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612763"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure アクティビティ ログのイベント スキーマ
 [Azure アクティビティ ログ](platform-logs-overview.md)により、Azure で発生したサブスクリプションレベルのイベントの分析が得られます。 この記事では、アクティビティ ログのカテゴリとそれぞれのスキーマについて説明します。 
@@ -23,6 +23,17 @@ ms.locfileid: "87829511"
 - [診断設定](diagnostic-settings.md)を使用して Azure Storage または Azure Event Hubs にアクティビティ ログを送信する場合は、スキーマについて最後の「[ストレージ アカウントとイベント ハブからのスキーマ](#schema-from-storage-account-and-event-hubs)」セクションを参照してください。
 - [診断設定](diagnostic-settings.md)を使用して Log Analytics ワークスペースにアクティビティ ログを送信する場合は、スキーマについて [Azure Monitor データ参照](/azure/azure-monitor/reference/)を参照してください。
 
+## <a name="severity-level"></a>重要度
+アクティビティ ログの各エントリには、重大度レベルが指定されています。 重大度レベルには、次の値のいずれかが指定されています。  
+
+| 重大度 | 説明 |
+|:---|:---|
+| 重大 | システム管理者による早急な対処を必要とするイベント。 アプリケーションまたはシステムの失敗、または応答の停止が発生したことを示している可能性があります。
+| Error | 問題を示すイベント。ただし、早急な対処は必要ありません。
+| 警告 | 実際のエラーではなく潜在的な問題を事前に警告するイベント。 リソースが理想的な状態ではなく、後で機能が低下し、エラーや重大なイベントが表示される可能性があることを示しています。  
+| Informational | 重大ではない情報を管理者に渡すイベント。 注意事項 ("参考") と同様のものです。 
+
+各リソース プロバイダーの開発者が、リソース エントリの重大度レベルを選択します。 このため、ユーザーにとっての実際の重要度は、アプリケーションのビルド方法によって異なります。 たとえば、分離されている特定のリソースにとって "重大" な項目は、Azure アプリケーションにとって中心的な種類のリソースでは、"エラー" ほど重要ではない可能性があります。 アラートを発生させるイベントを決定するときは、必ずこの点を考慮してください。  
 
 ## <a name="categories"></a>Categories
 アクティビティ ログの各イベントには、次の表に示す特定のカテゴリがあります。 ポータル、PowerShell、CLI、および REST API からアクティビティ ログにアクセスする場合は、各カテゴリとそのスキーマの詳細について、以下のセクションを参照してください。 [アクティビティ ログをストレージまたはイベント ハブにストリームする](./resource-logs.md#send-to-azure-event-hubs)場合、スキーマは異なります。 [リソース ログ スキーマ](./resource-logs-schema.md)へのプロパティのマッピングについては、この記事の最後のセクションで紹介します。

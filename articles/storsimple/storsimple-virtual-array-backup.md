@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 41cb02e77fa77c5a7452c5e3e0d2080ee3d472d5
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 5c49a46dfcd97f5feb43b0b910476ef3ad6f402a
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183226"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742249"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>StorSimple Virtual Array 上の共有またはボリュームをバックアップする
 
@@ -76,7 +76,7 @@ StorSimple Virtual Array の既定のバックアップ ポリシーは、1 日�
    
     オンデマンド バックアップが開始され、バックアップ ジョブが開始されたことが表示されます。
    
-    ![バックアップの開始](./media/storsimple-virtual-array-backup/takebackup3m.png) 
+    ![バックアップの開始 2](./media/storsimple-virtual-array-backup/takebackup3m.png) 
    
     ジョブが正常に完了すると、再度通知されます。 バックアップ プロセスが開始されます。
    

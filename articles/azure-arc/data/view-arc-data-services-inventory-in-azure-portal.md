@@ -9,19 +9,19 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 2d68fbc1b2ae7ef92279b1e99bb77299da82b87e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3c7299ff211035f81cc08e9f191641c780ad02c4
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931287"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826649"
 ---
 # <a name="view-inventory-of-your-instances-in-the-azure-portal"></a>Azure portal でインスタンスのインベントリを表示する
 
-[メトリック、ログ](upload-metrics-and-logs-to-azure-monitor.md)、または[使用状況](view-billing-data-in-azure.md)をアップロードした後は、Azure portal からインスタンスを Azure リソースとして表示できます。 これを行うには、特別な URL [https://portal.azure.com](https://portal.azure.com) に移動し、次のスクリーンショットのようにします
+[メトリック、ログ](upload-metrics-and-logs-to-azure-monitor.md)、または[使用状況](view-billing-data-in-azure.md)をアップロードした後は、Azure portal からインスタンスを Azure リソースとして表示できます。 Azure portal でリソースを表示するには、専用 URL ([https://portal.azure.com](https://portal.azure.com)) にアクセスして、次の手順を実行します。
 
-1. [すべてのサービス] に移動します
-1. データベース インスタンスの種類を検索します
-1. それをお気に入りに追加します
-1. 左側のナビゲーションでインスタンスの種類をクリックします
-1. Azure SQL または Azure PostgreSQL Hyperscale の他のリソースと同じビューにインスタンスが表示されます (詳細なビューを取得するにはフィルターを使用します)
+1. **[すべてのサービス]** に移動します。
+1. データベース インスタンスの種類を検索します。
+1. その種類をお気に入りに追加します。
+1. 左側のメニューで、インスタンスの種類を選択します。
+1. Azure SQL または Azure PostgreSQL Hyperscale の他のリソースと同じビューにインスタンスが表示されます (詳細なビューを表示するにはフィルターを使用します)。

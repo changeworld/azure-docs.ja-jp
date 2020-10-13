@@ -14,19 +14,19 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b8a40449d7a2b17adddd55120ab232a5cd3f459
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 5a4d50bcf2493c67880fd5a27b326705b1923feb
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90600947"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728983"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>アプリケーション認証を Active Directory フェデレーション サービス (AD FS) から Azure Active Directory に移動する
 
 [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) によって提供されるユニバーサル ID プラットフォームでは、ユーザー、パートナー、顧客に対し、任意のプラットフォームやデバイスからアプリケーションにアクセスして共同作業を行うための 1 つの ID が提供されます。 Azure AD には、[ID 管理機能の完全なスイート](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)が備わっています。 アプリケーション (アプリ) の認証と承認を Azure AD に標準化することで、これらの機能によって提供される利点を利用できます。 
 
-> [!NOTE]
-> この記事では、オンプレミスの Active Directory と Active Directory フェデレーション サービスから Azure AD にアプリケーション認証を移動する方法に焦点を当てます。 この移動の計画の概要については、ホワイトペーパー「[Azure AD へのアプリケーションの認証の移行](https://aka.ms/migrateapps/whitepaper)」を参照してください。 このホワイトペーパーでは、移行、テスト、分析情報を計画する方法について説明されています。
+> [!TIP]
+> この記事は開発者向けに記述されています。 プロジェクトのマネージャーや管理者がアプリケーションを Azure AD に移行することを計画している場合、「[Azure AD にアプリケーション認証を移行する](https://aka.ms/migrateapps/whitepaper)」というホワイト ペーパー (PDF) を読むことを検討してください。
 
 ## <a name="introduction"></a>はじめに
 

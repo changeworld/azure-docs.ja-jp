@@ -4,15 +4,15 @@ description: Microsoft 商業マーケットプレースで Azure 仮想マシ�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-author: iqshahmicrosoft
-ms.author: iqshah
+author: github-2407
+ms.author: krsh
 ms.date: 08/14/2020
-ms.openlocfilehash: eea4ae449140334c422243b2ef2e9abce2534c39
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 83fc141a658fb3f5f639d56794c77fe7a3ff28bf
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91742759"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821331"
 ---
 # <a name="test-a-virtual-machine-image-for-azure-marketplace"></a>Azure Marketplace の仮想イメージをテストする
 
@@ -247,22 +247,22 @@ VM オファーを送信する前に、次の手順を完了します。
 
 6. 表示されているカスタム デプロイのプロパティ ページのパラメーター値を指定します。
 
-| ResourceGroupName | 既存の Azure リソース グループ名。 通常は、ご利用のキー コンテナーと同じ RG を使用します。 |
-| --- | --- |
-| TemplateFile | VHDtoImage.json ファイルの完全なパス名。 |
-| userStorageAccountName | ストレージ アカウントの名前。 |
-| dnsNameForPublicIP | パブリック IP の DNS 名。小文字にする必要があります。 |
-| subscriptionId | Azure サブスクリプションの識別子。 |
-| 場所 | リソース グループの標準的な Azure 地理的場所。 |
-| vmName | 仮想マシンの名前。 |
-| vhdUrl | 仮想ハード ディスクの Web アドレス。 |
-| vmSize | 仮想マシン インスタンスのサイズ。 |
-| publicIPAddressName | パブリック IP アドレスの名前。 |
-| virtualNetworkName | 仮想ネットワークの名前。 |
-| nicName | 仮想ネットワーク用のネットワーク インターフェイス カードの名前。 |
-| adminUserName | 管理者アカウントのユーザー名。 |
-| adminPassword | 管理者パスワード。 |
-|
+    | ResourceGroupName | 既存の Azure リソース グループ名。 通常は、ご利用のキー コンテナーと同じ RG を使用します。 |
+    | --- | --- |
+    | TemplateFile | VHDtoImage.json ファイルの完全なパス名。 |
+    | userStorageAccountName | ストレージ アカウントの名前。 |
+    | dnsNameForPublicIP | パブリック IP の DNS 名。小文字にする必要があります。 |
+    | subscriptionId | Azure サブスクリプションの識別子。 |
+    | 場所 | リソース グループの標準的な Azure 地理的場所。 |
+    | vmName | 仮想マシンの名前。 |
+    | vhdUrl | 仮想ハード ディスクの Web アドレス。 |
+    | vmSize | 仮想マシン インスタンスのサイズ。 |
+    | publicIPAddressName | パブリック IP アドレスの名前。 |
+    | virtualNetworkName | 仮想ネットワークの名前。 |
+    | nicName | 仮想ネットワーク用のネットワーク インターフェイス カードの名前。 |
+    | adminUserName | 管理者アカウントのユーザー名。 |
+    | adminPassword | 管理者パスワード。 |
+
 
 7. これらの値を指定した後、 **[購入]** を選択します。
 
@@ -548,16 +548,15 @@ Azure でデプロイが開始されます。 これにより、指定のスト�
 
 ```PowerShell
 # storage account of existing generalized VHD
-
-$storageaccount = "testwinrm11815" # generalized VHD URL
+$storageaccount = "testwinrm11815"
+# generalized VHD URL
 $vhdUrl = "https://testwinrm11815.blob.core.windows.net/vhds/testvm1234562016651857.vhd"
 
 echo "New-AzResourceGroupDeployment -Name "dplisvvm$postfix" -ResourceGroupName "$rgName" -TemplateFile "C:\certLocation\VHDtoImage.json" -userStorageAccountName "$storageaccount" -dnsNameForPublicIP "$vmName" -subscriptionId "$mysubid" -location "$location" -vmName "$vmName" -vaultName "$kvname" -vaultResourceGroup "$rgName" -certificateUrl
 $objAzureKeyVaultSecret.Id -vhdUrl "$vhdUrl" -vmSize "Standard\_A2" -publicIPAddressName "myPublicIP1" -virtualNetworkName "myVNET1" -nicName "myNIC1" -adminUserName "isv" -adminPassword $pwd"
 
 # deploying VM with existing VHD
-
-New-AzResourceGroupDeployment -Name"dplisvvm$postfix" -ResourceGroupName"$rgName" -TemplateFile"C:\certLocation\VHDtoImage.json" - userStorageAccountName"$storageaccount" -dnsNameForPublicIP"$vmName" -subscriptionId"$mysubid" -location"$location" - vmName"$vmName" -vaultName"$kvname" -vaultResourceGroup"$rgName" -certificateUrl$objAzureKeyVaultSecret.Id -vhdUrl"$vhdUrl" - vmSize"Standard\_A2" -publicIPAddressName"myPublicIP1" -virtualNetworkName"myVNET1" -nicName"myNIC1" -adminUserName"isv" - adminPassword$pwd
+New-AzResourceGroupDeployment -Name "dplisvvm$postfix" -ResourceGroupName "$rgName" -TemplateFile "C:\certLocation\VHDtoImage.json" -userStorageAccountName "$storageaccount" -dnsNameForPublicIP "$vmName" -subscriptionId "$mysubid" -location "$location" -vmName "$vmName" -vaultName "$kvname" -vaultResourceGroup "$rgName" -certificateUrl $objAzureKeyVaultSecret.Id -vhdUrl "$vhdUrl" -vmSize "Standard\_A2" -publicIPAddressName "myPublicIP1" -virtualNetworkName "myVNET1" -nicName "myNIC1" -adminUserName "isv" -adminPassword $pwd
 ```
 
 ## <a name="run-validations"></a>検証を実行する
@@ -1014,35 +1013,33 @@ PowerShell で API を呼び出します。
 次の例は、API への PowerShell 呼び出しを示しています。
 
 ```POWERSHELL
-$accesstoken = “token”
-$headers = New-Object “System.Collections.Generic.Dictionary[[String],[String]]”
-$headers.Add(“Authorization”, “Bearer $accesstoken”)
-$DNSName = “\&lt;\&lt;Machine DNS Name\&gt;\&gt;”
-$UserName = “\&lt;\&lt;User ID\&gt;\&gt;”
-$Password = “\&lt;\&lt;Password\&gt;\&gt;”
-$OS = “Linux”
-$PortNo = “22”
-$CompanyName = “ABCD”
-$AppID = “\&lt;\&lt;Application ID\&gt;\&gt;”
-$TenantId = “\&lt;\&lt;Tenant ID\&gt;\&gt;”
+$accesstoken = "token"
+$headers = @{ "Authorization" = "Bearer $accesstoken" }
+$DNSName = "<Machine DNS Name>"
+$UserName = "<User ID>"
+$Password = "<Password>"
+$OS = "Linux"
+$PortNo = "22"
+$CompanyName = "ABCD"
+$AppID = "<Application ID>"
+$TenantId = "<Tenant ID>"
 
-$body =
-@{
-DNSName = $DNSName
-UserName = $UserName
-Password = $Password
-OS = $OS
-PortNo = $PortNo
-CompanyName = $CompanyName
-AppID = $AppID
-TenantId = $TenantId
-}| ConvertTo-Json
+$body = @{
+   "DNSName" = $DNSName
+   "UserName" = $UserName
+   "Password" = $Password
+   "OS" = $OS
+   "PortNo" = $PortNo
+   "CompanyName" = $CompanyName
+   "AppID" = $AppID
+   "TenantId" = $TenantId
+} | ConvertTo-Json
 
 $body
 
-$uri = “URL”
+$uri = "URL"
 
-$res = (Invoke-WebRequest -Method “Post” -Uri $uri -Body $body -ContentType “application/json” -Headers $headers).Content
+$res = (Invoke-WebRequest -Method "Post" -Uri $uri -Body $body -ContentType "application/json" -Headers $headers).Content
 ```
 
 <br>PowerShell での API の呼び出しの例を次に示します。
@@ -1052,11 +1049,20 @@ $res = (Invoke-WebRequest -Method “Post” -Uri $uri -Body $body -ContentType 
 <br>前の例を使用し、JSON を取得して解析し、以下の詳細を取得することができます。
 
 ```PowerShell
-$resVar=$res|ConvertFrom-Json
+$resVar = $res | ConvertFrom-Json
+$actualresult = $resVar.Response | ConvertFrom-Json
 
-$actualresult =$resVar.Response |ConvertFrom-Json
+Write-Host "OSName: $($actualresult.OSName)"
+Write-Host "OSVersion: $($actualresult.OSVersion)"
+Write-Host "Overall Test Result: $($actualresult.TestResult)"
 
-Write-Host”OSName: $($actualresult.OSName)”Write-Host”OSVersion: $($actualresult.OSVersion)”Write-Host”Overall Test Result: $($actualresult.TestResult)”For ($i=0; $i -lt$actualresult.Tests.Length; $i++){ Write-Host”TestID: $($actualresult.Tests[$i].TestID)”Write-Host”TestCaseName: $($actualresult.Tests[$i].TestCaseName)”Write-Host”Description: $($actualresult.Tests[$i].Description)”Write-Host”Result: $($actualresult.Tests[$i].Result)”Write-Host”ActualValue: $($actualresult.Tests[$i].ActualValue)”}
+For ($i = 0; $i -lt $actualresult.Tests.Length; $i++) {
+   Write-Host "TestID: $($actualresult.Tests[$i].TestID)"
+   Write-Host "TestCaseName: $($actualresult.Tests[$i].TestCaseName)"
+   Write-Host "Description: $($actualresult.Tests[$i].Description)"
+   Write-Host "Result: $($actualresult.Tests[$i].Result)"
+   Write-Host "ActualValue: $($actualresult.Tests[$i].ActualValue)"
+}
 ```
 
 <br>次のサンプル画面 (`$res.Content` を示します) は、JSON 形式でのテスト結果の詳細を示しています。
@@ -1078,7 +1084,21 @@ PowerShell で API を呼び出します。
 次のコード サンプルは、API への PowerShell 呼び出しを示しています。
 
 ```PowerShell
-$accesstoken = “Get token for your Client AAD App”$headers = New-Object”System.Collections.Generic.Dictionary[[String],[String]]”$headers.Add(“Authorization”, “Bearer $accesstoken”)$Body = @{ “DNSName” = “XXXX.westus.cloudapp.azure.com”“UserName” = “XXX”“Password” = “XXX@123456”“OS” = “Windows”“PortNo” = “5986”“CompanyName” = “ABCD” “AppID” = “XXXX-XXXX-XXXX” “TenantId” = “XXXX-XXXX-XXXX” } | ConvertTo-Json$res = Invoke-WebRequest -Method”Post” -Uri$uri -Body$Body -ContentType”application/json” –Headers $headers;$Content = $res | ConvertFrom-Json
+$accesstoken = "Get token for your Client AAD App"
+$headers = @{ "Authorization" = "Bearer $accesstoken" }
+$Body = @{ 
+   "DNSName" = "XXXX.westus.cloudapp.azure.com"
+   "UserName" = "XXX"
+   "Password" = "XXX@123456"
+   "OS" = "Windows"
+   "PortNo" = "5986"
+   "CompanyName" = "ABCD"
+   "AppID" = "XXXX-XXXX-XXXX"
+   "TenantId" = "XXXX-XXXX-XXXX"
+} | ConvertTo-Json
+
+$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" –Headers $headers;
+$Content = $res | ConvertFrom-Json
 ```
 
 次のサンプル画面は、PowerShell で API を呼び出す例を示しています。
@@ -1492,11 +1512,20 @@ $accesstoken = “Get token for your Client AAD App”$headers = New-Object”Sy
 <br>前の例を使用し、JSON を取得して解析し、以下の詳細を取得することができます。
 
 ```PowerShell
-$resVar=$res|ConvertFrom-Json
+$resVar = $res | ConvertFrom-Json
+$actualresult = $resVar.Response | ConvertFrom-Json
 
-$actualresult =$resVar.Response |ConvertFrom-Json
+Write-Host "OSName: $($actualresult.OSName)"
+Write-Host "OSVersion: $($actualresult.OSVersion)"
+Write-Host "Overall Test Result: $($actualresult.TestResult)"
 
-Write-Host”OSName: $($actualresult.OSName)”Write-Host”OSVersion: $($actualresult.OSVersion)”Write-Host”Overall Test Result: $($actualresult.TestResult)”For ($i=0; $i -lt$actualresult.Tests.Length; $i++){ Write-Host”TestID: $($actualresult.Tests[$i].TestID)”Write-Host”TestCaseName: $($actualresult.Tests[$i].TestCaseName)”Write-Host”Description: $($actualresult.Tests[$i].Description)”Write-Host”Result: $($actualresult.Tests[$i].Result)”Write-Host”ActualValue: $($actualresult.Tests[$i].ActualValue)”}
+For ($i = 0; $i -lt $actualresult.Tests.Length; $i++) {
+   Write-Host "TestID: $($actualresult.Tests[$i].TestID)"
+   Write-Host "TestCaseName: $($actualresult.Tests[$i].TestCaseName)"
+   Write-Host "Description: $($actualresult.Tests[$i].Description)"
+   Write-Host "Result: $($actualresult.Tests[$i].Result)"
+   Write-Host "ActualValue: $($actualresult.Tests[$i].ActualValue)"
+}
 ```
 
 <br>次の画面 (`$res.Content` を示します) は、JSON 形式でのテスト結果の詳細を示しています。
@@ -1713,14 +1742,11 @@ CURL で API を呼び出します。
 1. API を呼び出すには curl コマンドを使用します。
 2. 次のコード スニペットに示すように、メソッドは Post、コンテンツの種類は JSON です。
 
-```JSON
-CURL POST -H “Content-Type:application/json”
-
--H “Authorization: Bearer XXXXXX-Token-XXXXXXXX”
-
-[https://isvapp.azure-api.net/selftest-vm](https://isvapp.azure-api.net/selftest-vm)
-
--d ‘{ “DNSName”:”XXXX.westus.cloudapp.azure.com”, “UserName”:”XXX”, “Password”:”XXXX@123456”, “OS”:”Linux”, “PortNo”:”22”, “CompanyName”:”ABCD”, “AppId”:”XXXX-XXXX-XXXX”, “TenantId “XXXX-XXXX-XXXX”}’
+```shell
+curl POST -H "Content-Type:application/json" -H "Authorization: Bearer XXXXXX-Token-XXXXXXXX"
+https://isvapp.azure-api.net/selftest-vm -d '{ "DNSName":"XXXX.westus.cloudapp.azure.com", "UserName":"XXX",
+"Password":"XXXX@123456", "OS":"Linux", "PortNo":"22", "CompanyName":"ABCD", "AppId":"XXXX-XXXX-XXXX",
+"TenantId "XXXX-XXXX-XXXX"}'
 ```
 
 <br>CURL を使用して API を呼び出す例を次に示します。

@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
-ms.author: aashishb
-author: aashishb
-ms.date: 07/07/2020
+ms.author: peterlu
+author: peterclu
+ms.date: 10/06/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, references_regions
-ms.openlocfilehash: 36d3d84949e44719474656d07da9c7b7c46a4e98
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: how-to, devx-track-python, references_regions, contperfq1
+ms.openlocfilehash: d08c1d23539c817792415d359b8e1cbb3979ca40
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893183"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825510"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>仮想ネットワークの分離とプライバシーの概要
 
@@ -70,7 +70,7 @@ ms.locfileid: "90893183"
 
 1. [Private Link が有効なワークスペース](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint)を作成し、VNet とワークスペース間の通信を有効にします。
 1. [サービス エンドポイント](../key-vault/general/overview-vnet-service-endpoints.md)または[プライベート エンドポイント](../key-vault/general/private-link-service.md)を使用して、Azure Key Vault を仮想ネットワークに追加します。 Key Vault を ["信頼された Microsoft サービスがこのファイアウォールをバイパスすることを許可する"](how-to-secure-workspace-vnet.md#secure-azure-key-vault) に設定します。
-1. [サービス エンドポイント](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts)または[プライベート エンドポイント](../storage/common/storage-private-endpoints.md)を使用して、Azure ストレージ アカウントを仮想ネットワークに追加します
+1. [サービス エンドポイント](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints)または[プライベート エンドポイント](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)を使用して、Azure ストレージ アカウントを仮想ネットワークに追加します。
 1. [プライベート エンドポイントを使用するように Azure Container Registry を構成](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr)し、[Azure Container Instances でサブネットの委任を有効にします](how-to-secure-inferencing-vnet.md#enable-azure-container-instances-aci)。
 
 ![ワークスペースと関連するリソースが、VNet 内のサービス エンドポイントまたはプライベート エンドポイントを介して相互に通信する方法を示すアーキテクチャ図](./media/how-to-network-security-overview/secure-workspace-resources.png)
@@ -80,10 +80,8 @@ ms.locfileid: "90893183"
 ### <a name="limitations"></a>制限事項
 
 仮想ネットワーク内のワークスペースと関連するリソースをセキュリティで保護するには、次の制限があります。
-- ワークスペースの Private Link は、次のリージョンでのみ使用できます: eastus、westus2、southcentralus
-    - この制限は、関連するリソースには適用されません。 たとえば、任意の Azure Machine Learning リージョンのストレージに対して VNet を有効にできます。
+- Azure Government リージョンまたは Azure China 21Vianet リージョンでは、プライベート リンクで Azure Machine Learning ワークスペースを使用することはできません。
 - すべてのリソースは同じ VNet の背後に配置する必要があります。 ただし、同じ VNet 内の複数のサブネットは許容されます。
-- デザイナー、AutoML、ラベル付け、データ プロファイルなどの一部の Studio 機能は、プライベート エンドポイントを使用するように構成されたストレージ アカウントでは使用できません。 これらの Studio 機能を使用する必要がある場合は、代わりにサービス エンドポイントを使用してください。
 
 ## <a name="secure-the-training-environment"></a>トレーニング環境をセキュリティで保護する
 
@@ -143,23 +141,29 @@ ms.locfileid: "90893183"
 
 [ワークスペースをセキュリティで保護する](#secure-the-workspace-and-associated-resources) > [トレーニング環境をセキュリティで保護する](#secure-the-training-environment) > [推論環境をセキュリティで保護する](#secure-the-inferencing-environment) > **Studio の機能を有効にする** > [ファイアウォール設定を構成する](#configure-firewall-settings)
 
-Studio はサービス エンドポイントで構成されたストレージ アカウントのデータにアクセスできますが、一部の機能は既定で無効になっています。
+ストレージが VNet 内にある場合は、まず追加の構成手順を実行して、[Studio](overview-what-is-machine-learning-studio.md) ですべての機能を有効にする必要があります。 既定では、次の機能が無効になっています。
 
 * スタジオでのデータのプレビュー
 * デザイナーでのデータの視覚化
 * AutoML 実験の送信
 * ラベル付けプロジェクトの開始
 
-ストレージ サービス エンドポイントの使用中にすべての機能を有効にするには、[仮想ネットワークでの Azure Machine Learning Studio の使用](how-to-enable-studio-virtual-network.md#access-data-using-the-studio)に関するページを参照してください。 現時点では、ストレージ プライベート エンドポイントは Studio ではサポートされていません。
+VNet 内部ですべての Studio 機能を有効にするには、「[Azure 仮想ネットワークで Azure Machine Learning Studio を使用する](how-to-enable-studio-virtual-network.md#access-data-using-the-studio)」を参照してください。 Studio は、サービス エンドポイントまたはプライベート エンドポイントを使用するストレージ アカウントをサポートしています。
 
 ### <a name="limitations"></a>制限事項
-- Studio は、プライベート エンドポイントを使用するように構成されたストレージ アカウントのデータにアクセスできません。 すべての機能を利用するには、ストレージにサービス エンドポイントを使用し、マネージド ID を使用する必要があります。
+- [ML によるデータのラベル付け](how-to-create-labeling-projects.md#use-ml-assisted-labeling)は、仮想ネットワークの背後でセキュリティ保護された既定のストレージ アカウントをサポートしていません。 ML によるデータのラベル付けには、既定以外のストレージ アカウントを使用する必要があります。 既定以外のストレージ アカウントは、仮想ネットワークの背後でのセキュリティ保護が可能です。 
 
 ## <a name="configure-firewall-settings"></a>ファイアウォール設定を構成する
 
 ファイアウォールを構成して、Azure Machine Learning ワークスペース リソースとパブリック インターネットへのアクセスを制御します。 Azure Firewall をお勧めしますが、他のファイアウォール製品を使用してネットワークを保護することもできます。 ファイアウォール経由の通信を許可する方法について不明な点がある場合は、使用しているファイアウォールのドキュメントを参照してください。
 
 ファイアウォール設定の詳細については、[ファイアウォールの内側でのワークスペースの使用](how-to-access-azureml-behind-firewall.md)に関するページを参照してください。
+
+## <a name="custom-dns"></a>[カスタム DNS]
+
+仮想ネットワークにカスタム DNS ソリューションを使用する必要がある場合は、ワークスペースのホスト レコードを追加する必要があります。
+
+必要なドメイン名と IP アドレスの詳細については、「[カスタム DNS サーバーでワークスペースを使用する方法](how-to-custom-dns.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -13,26 +13,26 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: 9420d52cf7d88ff84fd23928f92cdc62e9627619
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 05e966d3f4631e3c344bd97c0faec99cc3c6dd66
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280904"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819889"
 ---
 # <a name="microsoft-global-network"></a>マイクロソフトのグローバル ネットワーク
 
-マイクロソフトは、世界最大規模のバックボーン ネットワークの 1 つを所有し、運営しています。 このグローバルで洗練されたアーキテクチャが、16 万マイルを超える距離をまたいでデータセンターと顧客をつないでいます。 
+マイクロソフトは、世界最大規模のバックボーン ネットワークの 1 つを所有し、運営しています。 このグローバルで洗練されたアーキテクチャが、165,000 マイルを超える距離にわたって、データセンターと顧客をつないでいます。 
  
-毎日、世界中のお客様が、Microsoft Azure、Bing、Dynamics 365、Office 365、Xbox を始めとするマイクロソフトのサービスに接続し、何兆もの要求をこれらのサービスに渡しています。 種類にかかわらず、顧客がマイクロソフトのサービスに期待するのは、即時の信頼性と応答性です。 
+毎日、世界中のお客様が、Microsoft Azure、Bing、Dynamics 365、Microsoft 365、Xbox を始めとするマイクロソフトのサービスに接続し、何兆もの要求をこれらのサービスに渡しています。 種類にかかわらず、顧客がマイクロソフトのサービスに期待するのは、即時の信頼性と応答性です。 
  
-[マイクロソフトのグローバル ネットワーク](https://azure.microsoft.com/global-infrastructure/global-network/) (WAN) は、優れたクラウド エクスペリエンスの提供の中心部です。 このグローバル ネットワークは、世界各地に戦略的に配置された 54 の Azure リージョンと膨大なエッジ ノード網をまたいでマイクロソフトの[データセンター](https://azure.microsoft.com/global-infrastructure/)を接続し、可用性、容量、柔軟性のすべてを提供することであらゆる需要に応えます。
+[マイクロソフトのグローバル ネットワーク](https://azure.microsoft.com/global-infrastructure/global-network/) (WAN) は、優れたクラウド エクスペリエンスの提供の中心部です。 このグローバル ネットワークは、世界各地に戦略的に配置された 61 の Azure リージョンと膨大なエッジ ノード網全体にわたってマイクロソフトの[データセンター](https://azure.microsoft.com/global-infrastructure/)をつなげ、可用性、容量、柔軟性のすべてを提供することであらゆる需要に応えます。
 
 ![マイクロソフトのグローバル ネットワーク](./media/microsoft-global-network/microsoft-global-wan.png)
  
 ## <a name="get-the-premium-cloud-network"></a>最高のクラウド ネットワークの実現
  
-Microsoft クラウドを使用していれば、[考えられる最高のエクスペリエンス](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/)を選ぶことは簡単です。 戦略的に配置されたエッジ ノードを経由して、お客様のトラフィックがこのグローバル ネットワークに入った瞬間から、データは最適なルートを通ってほぼ光速で移動します。 これにより、最高のパフォーマンスを得るための最適な待機時間が保証されます。 これらのエッジ ノードはすべて、165 以上の場所に存在する膨大な数の接続を通じて、ユニーク数 3,500 を超えるインターネット パートナー (ピア) と相互接続され、Microsoft の相互接続戦略の基礎を提供しています。 
+Microsoft クラウドを使用していれば、[考えられる最高のエクスペリエンス](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/)を選ぶことは簡単です。 戦略的に配置されたエッジ ノードを経由して、お客様のトラフィックがこのグローバル ネットワークに入った瞬間から、データは最適なルートを通ってほぼ光速で移動します。 これにより、最高のパフォーマンスを得るための最適な待機時間が保証されます。 これらのエッジ ノードはすべて、175 を超える場所で、何千もの接続を介して、4,000 を超えるインターネット パートナー (ピア) に相互接続されています。これにより、Microsoft の相互接続戦略の根幹が築かれています。 
  
 ロンドンから東京への接続であれ、ワシントン DC からロサンゼルスへの接続であれ、ネットワーク パフォーマンスは定量化され、待機時間、ジッター、パケット損失、スループットなどの影響を受けます。  マイクロソフトでは、トランジット リンクとは対照的に、直接相互接続を優先的に使用します。これによって応答トラフィックの対称性が保たれ、ホップ、ピアリング パーティ、およびパスをできるだけ短くシンプルに保ちやすくなります。 
 

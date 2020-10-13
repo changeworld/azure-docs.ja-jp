@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 09d1063f704c37eb31546be08765f2b5b6fb8632
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: a6ad1c068a41b4b865c148ebb7cdb509821609d4
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90060749"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823410"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>スクリプト アクションを使用して Azure HDInsight で Python 環境を安全に管理する
 
-HDInsight では、Spark クラスターに 2 つの Python のインストール (Anaconda Python 2.7 と Python 3.5) が組み込まれています。 場合によっては、顧客が Python 環境のカスタマイズを行う必要があります ( 外部の Python パッケージや別の Python バージョンのインストールなど)。 ここでは、HDInsight 上の Apache Spark クラスターで Python 環境を安全に管理するためのベスト プラクティスについて説明します。
+HDInsight では、Spark クラスターに 2 つの Python のインストール (Anaconda Python 2.7 と Python 3.5) が組み込まれています。 外部 Python パッケージのインストールなど、Python 環境のカスタマイズは、お客様が実行する必要があります。 ここでは、HDInsight 上の Apache Spark クラスターで Python 環境を安全に管理するためのベスト プラクティスについて説明します。
 
 ## <a name="prerequisites"></a>前提条件
 

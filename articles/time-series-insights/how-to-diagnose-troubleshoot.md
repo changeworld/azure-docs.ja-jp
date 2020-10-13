@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: d9a4f7aa270aa4ed2b02e61da984e14379a241a9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b994e8ce34319da4827d389b49e23ed6e5bcde95
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289924"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653759"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>Azure Time Series Insights Gen2 環境の診断とトラブルシューティングの方法
 
@@ -43,17 +43,17 @@ ms.locfileid: "87289924"
 
 - イベント ソース キーに必要なアクセス許可がありません。
 
-  * IoT Hub の場合は、**サービス接続**アクセス許可を持つキーを指定する必要があります。
+  - IoT Hub の場合は、**サービス接続**アクセス許可を持つキーを指定する必要があります。
 
     [![IoT Hub のアクセス許可を検証します。](media/preview-troubleshoot/verify-correct-permissions.png)](media/preview-troubleshoot/verify-correct-permissions.png#lightbox)
 
-    * ポリシー **iothubowner** と **service** は両方とも**サービス接続**アクセス許可が設定されているため、どちらも動作します。
+    - ポリシー **iothubowner** と **service** は両方とも**サービス接続**アクセス許可が設定されているため、どちらも動作します。
 
-  * イベント ハブの場合は、**リッスン** アクセス許可を持つキーを指定する必要があります。
+  - イベント ハブの場合は、**リッスン** アクセス許可を持つキーを指定する必要があります。
   
     [![イベント ハブのアクセス許可を確認します。](media/preview-troubleshoot/verify-eh-permissions.png)](media/preview-troubleshoot/verify-eh-permissions.png#lightbox)
 
-    * **Read** ポリシーと **Manage** ポリシーは両方とも**リッスン** アクセス許可が設定されているため、どちらも動作します。
+    - **Read** ポリシーと **Manage** ポリシーは両方とも**リッスン** アクセス許可が設定されているため、どちらも動作します。
 
 - お使いのコンシューマー グループが Time Series Insights 専用ではありません。
 
@@ -75,30 +75,30 @@ ms.locfileid: "87289924"
 
 ## <a name="problem-data-was-showing-but-now-ingestion-has-stopped"></a>問題: データは表示されたがインジェストが停止した
 
-- イベント ソース キーが再生成された可能性があり、お使いの Gen2 環境には新しいイベント ソース キーが必要です。
+- イベント ソース キーが再生成された可能性があります。お使いの Gen2 環境には、新しいイベント ソース キーが必要です。
 
-この問題は、イベント ソースの作成時に提供されたキーが有効ではなくなったときに発生します。 テレメトリはハブに表示されますが、Time Series Insights にイングレス受信メッセージが表示されません。 キーが再生成されたかどうか不明な場合は、Event Hubs のアクティビティ ログで、"名前空間の承認規則の作成または更新" を検索するか、IoT hub の "IotHub リソースの作成または更新" を検索します。 
+この問題は、イベント ソースの作成時に提供されたキーが有効ではなくなったときに発生します。 テレメトリはハブに表示されますが、Time Series Insights にイングレス受信メッセージが表示されません。 キーが再生成されたかどうかが不明な場合は、Event Hubs のアクティビティ ログで "名前空間の承認規則の作成または更新" を検索するか、IoT ハブの "IotHub リソースの作成または更新" を検索します。
 
-新しいキーで Time Series Insights Gen2 環境を更新するには、Azure portal でお使いのハブ リソースを開き、新しいキーをコピーします。 TSI リソースに移動して、[イベント ソース] をクリックします。 
+新しいキーで Time Series Insights Gen2 環境を更新するには、Azure portal でお使いのハブ リソースを開き、新しいキーをコピーします。 TSI リソースに移動して、[イベント ソース] をクリックします。
 
-   [![キーを更新します。](media/preview-troubleshoot/update-hub-key-step-1.png)](media/preview-troubleshoot/update-hub-key-step-1.png#lightbox)
+   [![TSI リソースを示すスクリーンショット。[イベント ソース] メニュー項目が呼び出されています。](media/preview-troubleshoot/update-hub-key-step-1.png)](media/preview-troubleshoot/update-hub-key-step-1.png#lightbox)
 
 インジェストが停止した原因となったイベント ソースを選択し、新しいキーを貼り付けて、[保存] をクリックします。
 
-   [![キーを更新する。](media/preview-troubleshoot/update-hub-key-step-2.png)](media/preview-troubleshoot/update-hub-key-step-2.png#lightbox)
+   [![TSI リソースを示すスクリーンショット。IoT ハブ ポリシー キーが入力されています。](media/preview-troubleshoot/update-hub-key-step-2.png)](media/preview-troubleshoot/update-hub-key-step-2.png#lightbox)
 
 ## <a name="problem-my-event-sources-timestamp-property-name-doesnt-work"></a>問題: イベント ソースのタイムスタンプ プロパティ名が機能しない
 
 名前と値が次の規則に準拠していることを確認してください。
 
-* タイムスタンプ プロパティ名では大文字と小文字が区別されます。
-* イベント ソースから JSON 文字列として取得されるタイムスタンプ プロパティの値は、`yyyy-MM-ddTHH:mm:ss.FFFFFFFK` という形式です。 たとえば、`"2008-04-12T12:53Z"` のような文字列です。
+- タイムスタンプ プロパティ名では大文字と小文字が区別されます。
+- イベント ソースから JSON 文字列として取得されるタイムスタンプ プロパティの値は、`yyyy-MM-ddTHH:mm:ss.FFFFFFFK` という形式です。 たとえば、`"2008-04-12T12:53Z"` のような文字列です。
 
 タイムスタンプ プロパティ名がキャプチャされて正しく動作していることを確認する最も簡単な方法は、Azure Time Series Insights Gen2 エクスプローラーを使用することです。 Time Series Insights Gen2 エクスプローラーでグラフを使用して、タイムスタンプ プロパティの名前を入力した後の期間を選択します。 選択内容を右クリックして、 **[イベントの探索]** オプションを選択します。 最初の列の見出しが、タイムスタンプ プロパティの名前です。 `Timestamp` という単語の隣に、以下のような値ではなく、`($ts)` と表示されている必要があります。
 
-* `(abc)`: Time Series Insights が文字列としてデータ値を読み取っていることを示します。
-* **カレンダー** アイコン: Time Series Insights が日時としてデータ値を読み取っていることを示します。
-* `#`: Time Series Insights が整数としてデータ値を読み取っていることを示します。
+- `(abc)`: Time Series Insights が文字列としてデータ値を読み取っていることを示します。
+- **カレンダー** アイコン: Time Series Insights が日時としてデータ値を読み取っていることを示します。
+- `#`: Time Series Insights が整数としてデータ値を読み取っていることを示します。
 
 タイムスタンプ プロパティが明示的に指定されていない場合は、イベントが IoT ハブまたはイベント ハブにエンキューされた時刻が、既定のタイムスタンプとして使用されます。
 
@@ -129,9 +129,9 @@ ms.locfileid: "87289924"
 
 この問題は、Power BI Desktop で最新バージョンの Power BI コネクタを使用していない場合に発生する可能性があります。
 
-[![親のないインスタンスによって、警告が表示されます。](media/preview-troubleshoot/power-bi-unable-to-connect.png)](media/preview-troubleshoot/power-bi-unable-to-connect.png#lightbox)
+[![[接続できません] ダイアログ ボックスを示すスクリーンショット。](media/preview-troubleshoot/power-bi-unable-to-connect.png)](media/preview-troubleshoot/power-bi-unable-to-connect.png#lightbox)
 
-* Power BI Desktop のバージョンをチェックし、2020 年 7 月バージョンを使用していることを確認します。 それ以外の場合は、Power BI Desktop を更新し、コネクタを再実行します。 
+- Power BI Desktop のバージョンをチェックし、2020 年 7 月バージョンを使用していることを確認します。 それ以外の場合は、Power BI Desktop を更新し、コネクタを再実行します。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 5da00916a3f7a6a3685b1de1c56dd032355e28fa
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2b69eb076c727a4383b7459ef914ac79dca31c84
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931150"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628419"
 ---
 # <a name="azure-arc-enabled-postgresql-hyperscale-server-group-placement"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループの配置
 
@@ -207,29 +207,16 @@ Node:         aks-agentpool-42715708-vmss000000
 
 アーキテクチャは次のようになります。
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/4_pod_placement_.png" alt-text="Azure portal の 4 ノード AKS クラスター":::
-
-Kubernetes クラスター aks-agentpool-42715708-vmss000003 の残りの物理ノードに新しいワーカーまたはポッドが配置されていないのはなぜでしょうか。
-
-これは、Kubernetes クラスターの最後の物理ノードによって、Azure Arc 対応データ サービスを実行するために必要な追加のコンポーネントをホストする複数のポッドが実際にホストされているためです。 スケジュールの時点で、追加のワーカーをホストするのに最適な候補は aks-agentpool-42715708-vmss000000 物理ノードであると、Kubernetes によって評価されました。 
-
-上記と同じコマンドを使用して、各物理ノードによってホストされているポッドを確認できます。
-
-|その他のポッドの名前\* |使用法|ポッドがホストされている Kubernetes 物理ノード
-|----|----|----
-|bootstrapper-jh48b||aks-agentpool-42715708-vmss000003
-|control-gwmbs||aks-agentpool-42715708-vmss000002
-|controldb-0||aks-agentpool-42715708-vmss000001
-|controlwd-zzjp7||aks-agentpool-42715708-vmss000000
-|logsdb-0|Elasticsearch は、各ポッドの `Fluentbit` コンテナーからデータを受信する|aks-agentpool-42715708-vmss000003
-|logsui-5fzv5||aks-agentpool-42715708-vmss000003
-|metricsdb-0|InfluxDB は、各ポッドの `Telegraf` コンテナーからデータを受信する|aks-agentpool-42715708-vmss000000
-|metricsdc-47d47||aks-agentpool-42715708-vmss000002
-|metricsdc-864kj||aks-agentpool-42715708-vmss000001
-|metricsdc-l8jkf||aks-agentpool-42715708-vmss000003
-|metricsdc-nxm4l||aks-agentpool-42715708-vmss000000
-|metricsui-4fb7l||aks-agentpool-42715708-vmss000003
-|mgmtproxy-4qppp||aks-agentpool-42715708-vmss000002
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/4_pod_placement_.png" alt-text="Azure portal の 4 ノード AKS クラスター" サービスです。|aks-agentpool-42715708-vmss000000
+|logsdb-0|これは、すべての Arc Data Services ポッドで収集されたすべてのログを格納するために使用される Elastic Search インスタンスです。 Elasticsearch は、各ポッドの `Fluentbit` コンテナーからデータを受信する|aks-agentpool-42715708-vmss000003
+|logsui-5fzv5|これは、Elastic Search データベース上にあり、Log Analytics GUI を表示するための Kibana インスタンスです。|aks-agentpool-42715708-vmss000003
+|metricsdb-0|これはすべての Arc Data Services ポッドで収集されたすべてのメトリックを格納するために使用される InfluxDB インスタンスです。 InfluxDB は、各ポッドの `Telegraf` コンテナーからデータを受信する|aks-agentpool-42715708-vmss000000
+|metricsdc-47d47|これは、ノードに関するノードレベルのメトリックを収集するために、クラスター内のすべての Kubernetes ノードにデプロイされたデーモンセットです。|aks-agentpool-42715708-vmss000002
+|metricsdc-864kj|これは、ノードに関するノードレベルのメトリックを収集するために、クラスター内のすべての Kubernetes ノードにデプロイされたデーモンセットです。|aks-agentpool-42715708-vmss000001
+|metricsdc-l8jkf|これは、ノードに関するノードレベルのメトリックを収集するために、クラスター内のすべての Kubernetes ノードにデプロイされたデーモンセットです。|aks-agentpool-42715708-vmss000003
+|metricsdc-nxm4l|これは、ノードに関するノードレベルのメトリックを収集するために、クラスター内のすべての Kubernetes ノードにデプロイされたデーモンセットです。|aks-agentpool-42715708-vmss000000
+|metricsui-4fb7l|これは、InfluxDB データベースの上に置かれ、監視ダッシュボード GUI を表示する Grafana インスタンスです。|aks-agentpool-42715708-vmss000003
+|mgmtproxy-4qppp|これは、Grafana および Kibana のインスタンスの前に置かれている Web アプリケーション プロキシ レイヤーです。|aks-agentpool-42715708-vmss000002
 
 > \* ポッド名のサフィックスは、デプロイによって異なります。 また、ここでは、Azure Arc データ コントローラーの Kubernetes 名前空間内でホストされているポッドのみを一覧表示します。
 

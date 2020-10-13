@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 91aa386311452ae08ead2b8eac9005b2c730f3f3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c177de3a862370f4d1daa19c6560950b66b18352
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883441"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826827"
 ---
 # <a name="azure-stack-edge-pro-technical-specifications"></a>Azure Stack Edge Pro の技術仕様
 
@@ -25,8 +25,8 @@ Azure Stack Edge Pro デバイスには、コンピューティングとメモ�
 
 | 仕様           | 値                  |
 |-------------------------|----------------------------|
-| CPU    | 2 X 10 コア CPU                     |
-| メモリ              | 128 GB RAM                  |
+| CPU    | 2 X 10 コア CPU Intel Xeon Silver 4114 2.2G                    |
+| メモリ              | 128 GB RAM (8 x 16GB RDIMM)                 |
 
 ## <a name="fpga-specifications"></a>FPGA の仕様
 
@@ -63,6 +63,15 @@ Azure Stack Edge Pro デバイスには、PORT1 - PORT6 という 6 つのネッ
 | 仕様           | 説明                 |
 |-------------------------|----------------------------|
 |  ネットワーク インターフェイス    | 1 GbE インターフェイス x 2 - 1 つは管理用で、ユーザー構成不可であり、初期セットアップに使用されます。 他のインターフェイスはユーザー構成可能であり、データ転送に使用でき、既定で DHCP です。 <br>25 GbE インターフェイス x 2 – これらは 10 GbE インターフェイスとしても動作可能です。 これらのデータ インターフェイスは、DHCP (既定) または静的 としてユーザーが構成できます。 <br> 25 GbE インターフェイス x 2 – これらのデータ インターフェイスは、DHCP (既定) または静的 としてユーザーが構成できます。                  |
+
+使用されるネットワーク アダプターは次のとおりです。 
+
+| 仕様           | 説明                 |
+|-------------------------|----------------------------|
+|ネットワーク ドーター カード (rNDC) |QLogic FastLinQ 41264 デュアル ポート 25 GbE SFP+、デュアル ポート 1 GbE、rNDC|
+|PCI ネットワーク アダプター |QLogic FastLinQ 41262 zwei ポート 25 ギガビット/秒 SFP28 アダプター|
+
+互換性のあるギガビット インターフェイス コンバーター (GBIC) については、Intel QLogic のハードウェア互換性リストを参照してください。 Azure Stack Edge の配信には、ギガビット インターフェイス コンバーター (GBIC) が含まれていません。 
 
 ## <a name="storage-specifications"></a>Storage の仕様
 

@@ -3,12 +3,12 @@ title: Azure Service Bus - メッセージの参照
 description: Service Bus メッセージを参照してピークすると、Azure Service Bus クライアントは、キューまたはサブスクリプションに存在するすべてのメッセージを列挙できます。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 0f2d4ed1225aef4c28a5f3d841669c2e3122ba10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e50fc737f6c81c07854ff07d8cc64061306749b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341241"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827453"
 ---
 # <a name="message-browsing"></a>メッセージの読み取り
 
@@ -30,7 +30,7 @@ Service Bus クライアントは、メッセージを読み取るか、ピー�
 
 [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatch_System_Int32_) は、複数のメッセージを取得し、列挙型として返します。 使用可能なメッセージがない場合は、列挙型オブジェクトは、null ではなく、空になります。
 
-[SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) を使用してメソッドのオーバー ロードをシードを設定して開始し、パラメーターなしでメソッドのオーバーロードを呼び出してさらに列挙することもできます。 **PeekBatch** 関数も同様に機能しますが、一度にすべてのメッセージ セットを取得します。
+[SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) を設定してメソッドのオーバーロードを使用し、パラメーターのないメソッドのオーバーロードを呼び出して、さらに列挙することもできます。 **PeekBatch** 関数も同様に機能しますが、一度にすべてのメッセージ セットを取得します。
 
 ## <a name="next-steps"></a>次のステップ
 

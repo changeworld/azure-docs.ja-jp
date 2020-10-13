@@ -12,12 +12,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 548113a5f775595caf3a798d7b35eddfbc80674e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1742c80fd6914a1c9420f37217df02791e80da9d
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886101"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710058"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Azure Machine Learning の実験でファイルを保存する場所と書き込む場所
 
@@ -79,4 +79,4 @@ Jupyter Notebook| `.amlignore` ファイルを作成するか、ノートブッ�
 
 * [データストアからデータにアクセスする](how-to-access-data.md)方法に関する詳細を確認します。
 
-* [Python SDK](how-to-create-attach-compute-sdk.md) または [Studio](how-to-create-attach-compute-studio.md) を使用してコンピューティング先を作成する方法の詳細を確認します。
+* 詳細については、[モデルのトレーニングとデプロイのためのコンピューティング先の作成](how-to-create-attach-compute-studio.md)に関するページを参照してください。

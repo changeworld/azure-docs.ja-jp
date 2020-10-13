@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) でクラスターのセキュリテ
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: c2734aa8e4ebf0bdb693a49c3ba785dd134e8c83
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5f249a7e6e7fac13301f0d2717336651b171b422
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003055"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776308"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのクラスターのセキュリティとアップグレードに関するベスト プラクティス
 
@@ -177,7 +177,7 @@ chmod-prevented           0/1       Error     0          7s
 
 Kubernetes は、従来のインフラストラクチャ プラットフォームよりも速いペースで新機能をリリースしています。 Kubernetes の更新プログラムには、新機能、バグやセキュリティの修正が含まれています。 通常、新機能は "*アルファ版*"、"*ベータ版*" の状態を経てから、"*安定版*" になり、一般公開され、運用環境での使用が推奨されるようになります。 このリリース サイクルであれば、定期的に重大な変更が発生したり、展開やテンプレートを調整したりすることなく、Kubernetes を更新できます。
 
-AKS では、Kubernetes の 4 つのマイナー バージョンがサポートされています。 つまり、パッチの新しいマイナー バージョンが導入されると、サポートされている最も古いマイナー バージョンとパッチのリリースは、提供終了となります。 Kubernetes のマイナー更新は定期的に行われています。 サポート対象外にならないように、必要に応じて確認してアップグレードするガバナンス プロセスを用意してください。 詳細については、[AKS でサポートされる Kubernetes のバージョン][aks-supported-versions]に関する記事を参照してください。
+AKS では、Kubernetes の 3 つのマイナー バージョンがサポートされています。 つまり、パッチの新しいマイナー バージョンが導入されると、サポートされている最も古いマイナー バージョンとパッチのリリースは、提供終了となります。 Kubernetes のマイナー更新は定期的に行われています。 サポート対象外にならないように、必要に応じて確認してアップグレードするガバナンス プロセスを用意してください。 詳細については、[AKS でサポートされる Kubernetes のバージョン][aks-supported-versions]に関する記事を参照してください。
 
 実際のクラスターに使用できるバージョンを確認するには、次の例に示すように [az aks get-upgrades][az-aks-get-upgrades] コマンドを使用します。
 
@@ -186,6 +186,8 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
 次に、[az aks upgrade][az-aks-upgrade] コマンドを使用して AKS クラスターをアップグレードすることができます。 このアップグレード プロセスでは、ノードの遮断と解放を一度に 1 つずつ安全に実行し、残りのノード上のポッドをスケジュールに設定してから、最新の OS および Kubernetes バージョンを実行している新しいノードを展開します。
+
+ワークロードの正常な動作が新しい Kubernetes バージョンでも続けられるように、新しいマイナー バージョンを開発テスト環境でテストすることを強くお勧めします。 バージョン 1.16 のように、ワークロードが依存している可能性がある API が Kubernetes で非推奨になることがあります。 新しいバージョンを運用するとき、[個々のバージョンで複数のノード プール](use-multiple-node-pools.md)を使用することを検証してください。そして、個々のプールを一度に 1 つずつアップグレードし、クラスター全体に更新を徐々に展開します。 複数のクラスターを実行している場合、一度に 1 つのクラスターをアップグレードし、影響や変更を段階的に監視します。
 
 ```azurecli-interactive
 az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version KUBERNETES_VERSION

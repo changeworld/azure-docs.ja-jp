@@ -5,23 +5,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/03/2020
-ms.author: alzam
-ms.openlocfilehash: 74df878baa6ed4e2ba902a73a7830c0b075c58ce
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 10/07/2020
+ms.author: cherylmc
+ms.openlocfilehash: 9ee5959c124636e64ef73b901fbc461f36cd27f9
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90981522"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817307"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>P2S OpenVPN プロトコル接続用の Azure Active Directory テナントを作成する
 
 VNet に接続する際には、証明書ベースの認証か、 RADIUS 認証を使用できます。 ただし、Open VPN プロトコルを使用する場合は、Azure Active Directory 認証を使用することもできます。 この記事では、P2S Open VPN 認証用の Azure AD テナントを設定する方法について説明します。
 
-> [!NOTE]
-> Azure AD 認証は、OpenVPN® プロトコル接続でのみサポートされ、Windows 10 でのみ使用できる Azure VPN クライアントを必要とします。
->
-
+[!INCLUDE [Windows 10 and OpenVPN note](../../includes/vpn-gateway-openvpn-auth-include.md)]
 
 ## <a name="1-verify-azure-ad-tenant"></a><a name="tenant"></a>1.Azure AD テナントを確認する
 
@@ -47,7 +44,7 @@ Azure AD テナントには、全体管理者アカウントとマスター ユ�
 
 1. 認証に使用するディレクトリのディレクトリ ID を特定します。 これは、[Active Directory] ページの [プロパティ] セクションに表示されます。
 
-    ![ディレクトリ ID](./media/openvpn-create-azure-ad-tenant/directory-id.png)
+    ![[ディレクトリのプロパティ] ページのスクリーンショット。[ディレクトリ ID] が強調表示されています。](./media/openvpn-create-azure-ad-tenant/directory-id.png)
 
 2. ディレクトリ ID をコピーします。
 
@@ -89,7 +86,7 @@ Azure AD テナントには、全体管理者アカウントとマスター ユ�
 
 7. Azure AD の **[エンタープライズ アプリケーション]** に、**Azure VPN** が表示されます。
 
-    ![Azure VPN](./media/openvpn-create-azure-ad-tenant/azurevpn.png)
+    ![[すべてのアプリケーション] ページのスクリーンショット。](./media/openvpn-create-azure-ad-tenant/azurevpn.png)
     
 8. 機能しているポイント対サイト環境がまだない場合は、指示に従って作成します。 ポイント対サイト VPN ゲートウェイを作成して構成する方法については、[ポイント対サイト VPN の作成](vpn-gateway-howto-point-to-site-resource-manager-portal.md)に関する記事を参照してください。 
 

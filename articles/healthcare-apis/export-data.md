@@ -7,45 +7,39 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 8/26/2020
 ms.author: matjazl
-ms.openlocfilehash: 83509b5f452ab7cf88774561c12d7aa2cf3b46cf
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 433d3391e7b2b99d72ea71f1b4d48c3e04a46afc
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89482319"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819977"
 ---
 # <a name="how-to-export-fhir-data"></a>FHIR データをエクスポートする方法
 
-エクスポート設定を構成し、Azure ストレージ アカウントを作成する方法については、[ここ](configure-export-data.md)を参照してください。
+一括エクスポート機能を使用すると、[FHIR 仕様](https://hl7.org/fhir/uv/bulkdata/export/index.html)に従って FHIR サーバーからデータをエクスポートできます。 
 
-## <a name="exporting-fhir-resources-using-export-command"></a>$export コマンドを使用して FHIR リソースをエクスポートする
+$export を使用する前に、Azure API for FHIR がそれを使用するように構成されていることを確認する必要があります。 エクスポート設定を構成し、Azure ストレージ アカウントを作成する方法については、[データのエクスポートの構成ページ](configure-export-data.md)を参照してください。
 
-エクスポート用に Azure API for FHIR を構成したら、$export コマンドを使用して、エクスポートの構成に指定したストレージ アカウントにサービスからデータをエクスポートできます。 FHIR サーバーで $export コマンドを呼び出す方法については、$export の仕様に関するドキュメント([https://hl7.org/Fhir/uv/bulkdata/export/index.html](https://hl7.org/Fhir/uv/bulkdata/export/index.html)) を参照してください。 
+## <a name="using-export-command"></a>$export コマンドの使用
 
-Azure API for FHIR の $export コマンドでは、省略可能な _\_conatiner_ パラメーターを使用して、データのエクスポート先として構成されているストレージ アカウント内のコンテナーを指定できます。
+エクスポート用に Azure API for FHIR を構成すると、$export コマンドを使用して、サービスからデータをエクスポートできます。 データは、エクスポートの構成時に指定したストレージ アカウントに格納されます。 FHIR サーバーで $export コマンドを呼び出す方法については、[$export の仕様](https://hl7.org/Fhir/uv/bulkdata/export/index.html)に関するドキュメントを参照してください。 
+
+Azure API for FHIR の $export コマンドには、データのエクスポート先として構成されたストレージ アカウント内のコンテナーを指定する省略可能な _\_conatiner_ パラメーターを指定します。 コンテナーが指定されている場合は、そのコンテナーの名前を持つ新しいフォルダー内のそのコンテナーにデータがエクスポートされます。 コンテナーが指定されていない場合は、新しいコンテナーにデータがエクスポートされます。
 
 `https://<<FHIR service base URL>>/$export?_container=<<container_name>>`
 
-> [!IMPORTANT]
-> 現時点では、Azure API for FHIR では、エクスポート仕様 ([https://hl7.org/Fhir/uv/bulkdata/export/index.html](https://hl7.org/Fhir/uv/bulkdata/export/index.html)) に定義されているシステム レベルのエクスポートのみがサポートされていることに注意してください。 また、現時点では _\_since_ クエリ パラメーターのみがサポートされています。
+## <a name="supported-scenarios"></a>サポートされるシナリオ
 
-## <a name="exporting-de-identified-data-preview"></a>匿名化データをエクスポートする (プレビュー)
+Azure API for FHIR を使用すると、システム、患者、およびグループ レベルでの $export がサポートされます。 グループのエクスポートの場合、関連するすべてのリソースをエクスポートしますが、グループの特性はエクスポートしません。
 
-$export コマンドを使用して、FHIR サーバーから匿名化データをエクスポートすることもできます。 [FHIR 匿名化ツール](https://github.com/microsoft/FHIR-Tools-for-Anonymization)の匿名化エンジンが使用され、クエリ パラメーターで匿名化構成の詳細が取得されます。 独自の匿名化構成ファイルを作成することも、HIPAA Safe Harbor メソッドの[サンプル構成ファイル](https://github.com/microsoft/FHIR-Tools-for-Anonymization#sample-configuration-file-for-hipaa-safe-harbor-method)を出発点として使用することもできます。 
+> [!Note] 
+> リソースが複数のリソースのコンパートメントにある場合、または複数のグループに存在する場合は、$export を使用すると重複するリソースがエクスポートされます。
 
- `https://<<FHIR service base URL>>/$export?_container=<<container_name>>&_anonymizationConfig=<<config file name>>&_anonymizationConfigEtag=<<ETag on storage>>`
-
-|Query parameter (クエリ パラメーター)            | 例 |選択肢| 説明|
-|---------------------------|---------|-----------|------------|
-| _\_anonymizationConfig_   |DemoConfig.json|匿名化エクスポートで必須 |構成ファイルの名前です。 構成ファイル形式については、[ここ](https://github.com/microsoft/FHIR-Tools-for-Anonymization#configuration-file-format)を参照してください。 このファイルは、エクスポート先として構成されている場所と同じ Azure ストレージ アカウント内の**匿名化**という名前のコンテナー内に保存する必要があります。 |
-| _\_anonymizationConfigEtag_|"0x8D8494A069489EC"|匿名化エクスポートで任意|これは構成ファイルの Etag です。 Azure Storage Explorer を使用して、BLOB プロパティから Etag を取得できます。|
-
-> [!IMPORTANT]
-> 生エクスポートと匿名化エクスポートではどちらも、エクスポート構成の一部として指定されたときと同じ Azure ストレージ アカウントに書き込まれることに注意してください。 別の匿名化構成に対応する別のコンテナーを使用し、コンテナー レベルでユーザー アクセスを管理することをお勧めします。
+さらに、キュー登録中に場所ヘッダーによって返された URL を介したエクスポートの状態の確認と、実際のエクスポート ジョブのキャンセルもサポートされています。
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、$export コマンドを使用して、識別されていないデータを含め、FHIR リソースをエクスポートする方法について説明しました。 次は、エクスポート データを構成します。
+この記事では、$export コマンドを使用して、FHIR リソースをエクスポートする方法について説明しました。 次は、サポートされている機能を確認します。
  
 >[!div class="nextstepaction"]
->[エクスポート データを構成する](configure-export-data.md)
+>[サポートされる機能](fhir-features-supported.md)

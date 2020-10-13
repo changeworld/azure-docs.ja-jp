@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: fe8cf0da6cb6542646f3107980b49fb6fef9cb45
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bbce84ad917da71ab363b20f3aef9da79ed3f2b0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317635"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827971"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute の暗号化:Virtual WAN 向けの ExpressRoute 経由の IPsec
 
@@ -22,7 +22,7 @@ ms.locfileid: "91317635"
 
 次の図は、ExpressRoute プライベート ピアリングを経由した VPN 接続の例を示しています。
 
-![ExpressRoute 経由の VPN](./media/vpn-over-expressroute/vwan-vpn-over-er.png)
+:::image type="content" source="./media/vpn-over-expressroute/vwan-vpn-over-er.png" alt-text="ExpressRoute 経由の VPN":::
 
 この図は、ExpressRoute プライベート ピアリング経由で Azure ハブ VPN ゲートウェイに接続されたオンプレミス ネットワーク内のネットワークを示しています。 接続の確立は簡単です。
 
@@ -76,7 +76,7 @@ ExpressRoute の関連付けを使用して Azure 仮想 WAN とハブを作成�
 >
 
 1. ブラウザーで Azure portal に移動します。 
-1. 作成した WAN を選択します。 [WAN] ページの **[接続]** で、 **[VPN サイト]** を選択します。
+1. 作成したハブを選択します。 仮想 WAN ハブ ページの **[接続]** で **[VPN サイト]** を選択します。
 1. **[VPN サイト]** ページで、 **[+ サイトの作成]** を選択します。
 1. **[サイトの作成]** ページで、次のフィールドに入力します。
    * **サブスクリプション**:サブスクリプションを確認します。
@@ -104,12 +104,17 @@ ExpressRoute の関連付けを使用して Azure 仮想 WAN とハブを作成�
 VPN サイトを作成してハブに接続したら、次の手順を使用して、ExpressRoute プライベート ピアリングを使用するように接続を構成します。
 
 1. 仮想 WAN リソース ページに戻り、ハブ リソースを選択します。 または、VPN サイトから、接続されたハブに移動します。
+
+   :::image type="content" source="./media/vpn-over-expressroute/hub-selection.png" alt-text="ExpressRoute 経由の VPN":::
 1. **[接続]** の **[VPN (Site-to-Site)]\(VPN (サイト間)\)** を選択します。
-1. ExpressRoute 経由の VPN サイトで省略記号 ( **[...]** ) をクリックし、 **[このハブへの VPN 接続の編集]** を選択します。
+
+   :::image type="content" source="./media/vpn-over-expressroute/vpn-select.png" alt-text="ExpressRoute 経由の VPN":::
+1. ExpressRoute 経由の VPN サイトで省略記号 (**[...]**) をクリックし、**[このハブへの VPN 接続の編集]** を選択します。
+
+   :::image type="content" source="./media/vpn-over-expressroute/config-menu.png" alt-text="ExpressRoute 経由の VPN":::
 1. **[Azure プライベート IP アドレスを使用する]** には **[はい]** を選択します。 この設定は、パブリック IP アドレスの代わりに、この接続用のゲートウェイ上のハブ アドレス範囲内のプライベート IP アドレスを使用するようにハブ VPN ゲートウェイを構成します。 これにより、オンプレミス ネットワークからのトラフィックは、この VPN 接続にパブリック インターネットを使用するのではなく、ExpressRoute プライベート ピアリングのパスを通過することが保証されます。 次のスクリーンショットは設定を示しています。
 
-   ![VPN 接続にプライベート IP アドレスを使用する場合の設定](./media/vpn-over-expressroute/vpn-link-configuration.png)
-   
+   :::image type="content" source="./media/vpn-over-expressroute/vpn-link-configuration.png" alt-text="ExpressRoute 経由の VPN" border="false":::
 1. **[保存]** を選択します。
 
 変更を保存すると、ハブ VPN ゲートウェイによって、VPN ゲートウェイ上のプライベート IP アドレスが使用され、ExpressRoute 経由でオンプレミス VPN デバイスとの IPsec/IKE 接続が確立されます。
@@ -118,7 +123,7 @@ VPN サイトを作成してハブに接続したら、次の手順を使用し�
 
 VPN デバイス構成をダウンロードして、ハブ VPN ゲートウェイのプライベート IP アドレスを取得します。 オンプレミスの VPN デバイスを構成するには、これらのアドレスが必要です。
 
-1. ハブのページで、 **[接続]** の **[VPN (Site-to-Site)]\(VPN (サイト間)\)** を選択します。
+1. ハブのページで、**[接続]** の **[VPN (Site-to-Site)]\(VPN (サイト間)\)** を選択します。
 1. **[概要]** ページの上部にある **[VPN 構成のダウンロード]** を選択します。 
 
    Azure により、リソース グループ "microsoft-network-[location]" にストレージ アカウントが作成されます。この *location* は WAN の場所です。 VPN デバイスに構成を適用した後は、このストレージ アカウントを削除できます。
@@ -225,11 +230,11 @@ VPN デバイス構成をダウンロードして、ハブ VPN ゲートウェ�
 1. **[概要]** ページで、マップ上の各ポイントはハブを表します。
 1. **[ハブと接続]** セクションでは、ハブ、サイト、リージョン、および VPN 接続の状態を確認できます。 また、入力と出力のバイト数を確認することもできます。
 
-## <a name="7-monitor-a-connection"></a><a name="connectmon"></a>7.接続を監視する
+## <a name="6-monitor-a-connection"></a><a name="connectmon"></a>6.接続を監視する
 
 Azure 仮想マシン (VM) とリモート サイト間の通信を監視するための接続を作成します。 接続モニターを設定する方法については、[ネットワーク通信の監視](~/articles/network-watcher/connection-monitor.md)に関するページを参照してください。 ソース フィールドは Azure の VM IP で、宛先 IP はサイト IP です。
 
-## <a name="8-clean-up-resources"></a><a name="cleanup"></a>8.リソースをクリーンアップする
+## <a name="7-clean-up-resources"></a><a name="cleanup"></a>7.リソースをクリーンアップする
 
 これらのリソースが不要になったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除できます。 次の PowerShell コマンドを実行し、`myResourceGroup` を実際のリソース グループの名前に置き換えます。
 
@@ -237,6 +242,6 @@ Azure 仮想マシン (VM) とリモート サイト間の通信を監視する�
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 この記事では、Virtual WAN を使用して ExpressRoute プライベート ピアリング経由の VPN 接続を作成する方法を説明しました。 Virtual WAN とその他の関連機能の詳細については、[Virtual WAN の概要](virtual-wan-about.md)に関するページを参照してください。

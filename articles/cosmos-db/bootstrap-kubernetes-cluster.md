@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: sngun
-ms.openlocfilehash: 31c3c02f2b32594e5b20450d0bb519f4cdf82807
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b9e6e1388465542e9fb3ac69540c981a1fd70d4b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497762"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570114"
 ---
 # <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>Azure Cosmos DB (プレビュー) で Azure Kubernetes を使用する方法
 
-Azure Cosmos DB の etcd API では、Azure Cosmos DB を Azure Kubernetes のバックエンド ストアとして使用できます。 Azure Cosmos DB は etcd ワイヤ プロトコルを実装します。これにより、マスター ノードの API サーバーは、ローカルにインストールされた etcd にアクセスする場合と同様に Azure Cosmos DB を使用できるようになります。 Azure Cosmos DB の etcd API は現在プレビュー段階にあります。 Kubernetes のバッキング ストアとして Azure Cosmos etcd API を使用する場合、次の利点があります。 
+Azure Cosmos DB の etcd API では、Azure Cosmos DB を Azure Kubernetes のバックエンド ストアとして使用できます。 Azure Cosmos DB では、etcd ワイヤ プロトコルが実装されます。これにより、プライマリ ノードの API サーバーでは、ローカルにインストールされた etcd にアクセスする場合と同様に、Azure Cosmos DB を使用できるようになります。 Azure Cosmos DB の etcd API は現在プレビュー段階にあります。 Kubernetes のバッキング ストアとして Azure Cosmos etcd API を使用する場合、次の利点があります。 
 
 * etcd を手動で構成して管理する必要はありません。
 * Cosmos で保証される etcd の高可用性 (単一のリージョンで 99.99%、複数のリージョンで 99.999%)。
@@ -27,7 +27,7 @@ Azure Cosmos DB での etcd API の詳細については、[概要](etcd-api-int
 
 ## <a name="prerequisites"></a>前提条件
 
-1. [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) の最新バージョンをインストールします。 お使いのオペレーティング システムに固有の Azure CLI をダウンロードしてインストールできます。
+1. [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) の最新バージョンをインストールします。 お使いのオペレーティング システムに固有の Azure CLI をダウンロードしてインストールできます。
 
 1. Azure Kubernetes エンジンの[最新バージョン](https://github.com/Azure/aks-engine/releases)をインストールします。 さまざまなオペレーティング システムのインストール手順は、[Azure Kubernetes エンジン](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-aks-engine)のページに記載されています。 リンク先のドキュメントの **AKS エンジンのインストール**に関するセクションの手順だけが必要です。ダウンロード後、zip ファイルを抽出します。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure サブスクリプションを別の Azure AD ディレクトリに移転する (プレビュー)
+title: Azure サブスクリプションを別の Azure AD ディレクトリに移転する
 description: Azure サブスクリプションと既知の関連リソースを別の Azure Active Directory (Azure AD) ディレクトリに移転する方法について説明します。
 services: active-directory
 author: rolyon
@@ -8,28 +8,23 @@ ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: how-to
 ms.workload: identity
-ms.date: 08/31/2020
+ms.date: 10/06/2020
 ms.author: rolyon
-ms.openlocfilehash: ab004c11b46428c5fad28177b0d94edc04b95654
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 35c6d94ce69acf59ae6cd8b26b0ad75645eb526a
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400546"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819706"
 ---
-# <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>Azure サブスクリプションを別の Azure AD ディレクトリに移転する (プレビュー)
-
-> [!IMPORTANT]
-> サブスクリプションを別の Azure AD ディレクトリに移転するための以下の手順は、現在、パブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+# <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Azure サブスクリプションを別の Azure AD ディレクトリに移転する
 
 組織には複数の Azure サブスクリプションがある場合があります。 各サブスクリプションは、特定の Azure Active Directory (Azure AD) ディレクトリと関連付けられています。 管理を容易にするために、サブスクリプションを別の Azure AD ディレクトリに移転することが必要になる場合があります。 サブスクリプションを別の Azure AD ディレクトリに移転する場合、一部のリソースはターゲット ディレクトリに移転されません。 たとえば、Azure のロールベースのアクセス制御 (Azure RBAC) でのすべてのロールの割り当てとカスタム ロールは、ソース ディレクトリからは**完全に**削除され、ターゲット ディレクトリには移転されません。
 
 この記事では、サブスクリプションを別の Azure AD ディレクトリに移転し、移転後にいくつかのリソースを再作成するために実行できる基本的な手順について説明します。
 
 > [!NOTE]
-> Azure クラウド サービス プロバイダー (CSP) のサブスクリプションでは、サブスクリプションに対する Azure AD ディレクトリの変更はサポートされていません。
+> Azure クラウド ソリューション プロバイダー (CSP) のサブスクリプションでは、サブスクリプションに対する Azure AD ディレクトリの変更はサポートされていません。
 
 ## <a name="overview"></a>概要
 
@@ -79,7 +74,7 @@ ms.locfileid: "89400546"
 | Azure Data Lake Storage Gen1 | はい | はい |  | すべての ACL を再作成する必要があります。 |
 | Azure Files | はい | はい |  | すべての ACL を再作成する必要があります。 |
 | Azure File Sync | はい | はい |  |  |
-| Azure Managed Disks | はい | 該当なし |  |  |
+| Azure Managed Disks | はい | はい |  |  ディスク暗号化セットを使用して、カスタマー マネージド キーで Managed Disks を暗号化する場合は、ディスク暗号化セットに関連付けられているシステム割り当て ID を無効にしてから、再度有効にする必要があります。 また、ロールの割り当てを再作成する必要があります。つまり、Key Vault 内にあるディスク暗号化セットに対し、必要なアクセス許可を再度付与します。 |
 | Kubernetes 向け Azure Container Service | はい | はい |  |  |
 | Azure Active Directory Domain Services | はい | いいえ |  |  |
 | アプリの登録 | はい | はい |  |  |
@@ -91,7 +86,7 @@ ms.locfileid: "89400546"
 
 これらの手順を完了するには、以下が必要です。
 
-- [Azure Cloud Shell の Bash](/azure/cloud-shell/overview) または [Azure CLI](https://docs.microsoft.com/cli/azure)
+- [Azure Cloud Shell の Bash](/azure/cloud-shell/overview) または [Azure CLI](/cli/azure)
 - ソース ディレクトリ内の移転するサブスクリプションのアカウント管理者
 - ターゲット ディレクトリの[所有者](built-in-roles.md#owner) ロール
 
@@ -101,13 +96,13 @@ ms.locfileid: "89400546"
 
 1. 管理者として Azure にサインインします。
 
-1. [az account list](/cli/azure/account#az-account-list) コマンドを使用して、サブスクリプションの一覧を取得します。
+1. [az account list](/cli/azure/account#az_account_list) コマンドを使用して、サブスクリプションの一覧を取得します。
 
     ```azurecli
     az account list --output table
     ```
 
-1. [az account set](https://docs.microsoft.com/cli/azure/account#az-account-set) を使用して、移転するアクティブなサブスクリプションを設定します。
+1. [az account set](/cli/azure/account#az_account_set) を使用して、移転するアクティブなサブスクリプションを設定します。
 
     ```azurecli
     az account set --subscription "Marketing"
@@ -115,9 +110,9 @@ ms.locfileid: "89400546"
 
 ### <a name="install-the-resource-graph-extension"></a>resource-graph 拡張機能をインストールする
 
- resource-graph 拡張機能を使用すると、[az graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) コマンドを使用して、Azure Resource Manager によって管理されているリソースを照会できます。 このコマンドは、後の手順で使用します。
+ resource-graph 拡張機能を使用すると、[az graph](/cli/azure/ext/resource-graph/graph) コマンドを使用して、Azure Resource Manager によって管理されているリソースを照会できます。 このコマンドは、後の手順で使用します。
 
-1. [az extension list](https://docs.microsoft.com/cli/azure/extension#az-extension-list) を使用して、*resource-graph* 拡張機能がインストールされているかどうかを確認します。
+1. [az extension list](/cli/azure/extension#az_extension_list) を使用して、*resource-graph* 拡張機能がインストールされているかどうかを確認します。
 
     ```azurecli
     az extension list
@@ -131,7 +126,7 @@ ms.locfileid: "89400546"
 
 ### <a name="save-all-role-assignments"></a>すべてのロールの割り当てを保存する
 
-1. [az role assignment list](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-list) を使用して、すべてのロールの割り当ての一覧を表示します (継承されたロールの割り当てを含む)。
+1. [az role assignment list](/cli/azure/role/assignment#az_role_assignment_list) を使用して、すべてのロールの割り当ての一覧を表示します (継承されたロールの割り当てを含む)。
 
     一覧を簡単に確認できるように、出力を JSON、TSV、またはテーブルとしてエクスポートできます。 詳細については、「[Azure RBAC と Azure CLI を使用してロールの割り当てを一覧表示する](role-assignments-list-cli.md)」を参照してください。
 
@@ -149,7 +144,7 @@ ms.locfileid: "89400546"
 
 ### <a name="save-custom-roles"></a>カスタムロールを保存する
 
-1. カスタム ロールの一覧を表示するには、[az role definition list](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-list) を使用します。 詳細については、「[Azure CLIを使用して Azure カスタム ロールを作成または更新する](custom-roles-cli.md)」を参照してください。
+1. カスタム ロールの一覧を表示するには、[az role definition list](/cli/azure/role/definition#az_role_definition_list) を使用します。 詳細については、「[Azure CLIを使用して Azure カスタム ロールを作成または更新する](custom-roles-cli.md)」を参照してください。
 
     ```azurecli
     az role definition list --custom-role-only true --output json --query '[].{roleName:roleName, roleType:roleType}'
@@ -193,7 +188,7 @@ ms.locfileid: "89400546"
 
 1. [マネージド ID がサポートされている Azure サービスの一覧](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)を確認して、マネージド ID を使用している可能性がある場所を記録します。
 
-1. システム割り当てとユーザー割り当てのマネージド ID の一覧を表示するには、[az ad sp list](/cli/azure/identity?view=azure-cli-latest#az-identity-list) を使用します。
+1. システム割り当てとユーザー割り当てのマネージド ID の一覧を表示するには、[az ad sp list](/cli/azure/ad/sp#az_ad_sp_list) を使用します。
 
     ```azurecli
     az ad sp list --all --filter "servicePrincipalType eq 'ManagedIdentity'"
@@ -207,7 +202,7 @@ ms.locfileid: "89400546"
     | `alternativeNames` プロパティに `isExplicit` が含まれない | システム割り当て |
     | `alternativeNames` プロパティに `isExplicit=True` が含まれる | ユーザー割り当て |
 
-    また、[az identity list](https://docs.microsoft.com/cli/azure/identity#az-identity-list) コマンドを使用して、ユーザー割り当てマネージド ID だけの一覧を表示することもできます。 詳細については、「[Azure CLI を使用してユーザー割り当てマネージド ID を作成、一覧表示、または削除する](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)」を参照してください。
+    また、[az identity list](/cli/azure/identity#az_identity_list) コマンドを使用して、ユーザー割り当てマネージド ID だけの一覧を表示することもできます。 詳細については、「[Azure CLI を使用してユーザー割り当てマネージド ID を作成、一覧表示、または削除する](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)」を参照してください。
 
     ```azurecli
     az identity list
@@ -224,7 +219,7 @@ ms.locfileid: "89400546"
 > [!WARNING]
 > ストレージ アカウントや SQL データベースなどのリソースに対して保存時の暗号化を使用していて、それが移転されるの**ではない**サブスクリプションのキー コンテナーに依存している場合、復旧不可能なシナリオが発生する可能性があります。 このような状況が発生した場合は、別のキー コンテナーを使用するか、ユーザーが管理するキーを一時的に無効にして、この復旧不可能なシナリオを回避する必要があります。
 
-- キー コンテナーがある場合は、[az keyvault show](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-show) を使用してアクセス ポリシーの一覧を表示します。 詳細については、[キー コンテナーへのアクセス ポリシーの割り当て](../key-vault/general/assign-access-policy-cli.md)に関するページを参照してください。
+- キー コンテナーがある場合は、[az keyvault show](/cli/azure/keyvault#az_keyvault_show) を使用してアクセス ポリシーの一覧を表示します。 詳細については、[キー コンテナーへのアクセス ポリシーの割り当て](../key-vault/general/assign-access-policy-cli.md)に関するページを参照してください。
 
     ```azurecli
     az keyvault show --name MyKeyVault
@@ -232,7 +227,7 @@ ms.locfileid: "89400546"
 
 ### <a name="list-azure-sql-databases-with-azure-ad-authentication"></a>Azure SQL データベースと Azure AD 認証の一覧を表示する
 
-- Azure AD 認証が統合されている Azure SQL データベースを使用しているかどうかを確認するには、[az sql server ad-admin list](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) と [az graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) 拡張機能を使用します。 詳細については、「[SQL による Azure Active Directory 認証の構成と管理](../azure-sql/database/authentication-aad-configure.md)」を参照してください。
+- Azure AD 認証が統合されている Azure SQL データベースを使用しているかどうかを確認するには、[az sql server ad-admin list](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_list) と [az graph](/cli/azure/ext/resource-graph/graph) 拡張機能を使用します。 詳細については、「[SQL による Azure Active Directory 認証の構成と管理](../azure-sql/database/authentication-aad-configure.md)」を参照してください。
 
     ```azurecli
     az sql server ad-admin list --ids $(az graph query -q 'resources | where type == "microsoft.sql/servers" | project id' -o tsv | cut -f1)
@@ -248,13 +243,13 @@ ms.locfileid: "89400546"
 
 ### <a name="list-other-known-resources"></a>他の既知のリソースの一覧を表示する
 
-1. [az account show](https://docs.microsoft.com/cli/azure/account#az-account-show) を使用して、サブスクリプション ID を取得します。
+1. [az account show](/cli/azure/account#az_account_show) を使用して、サブスクリプション ID を取得します。
 
     ```azurecli
     subscriptionId=$(az account show --query id | sed -e 's/^"//' -e 's/"$//')
     ```
 
-1. [az graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) 拡張機能を使用して、Azure AD ディレクトリの既知の依存関係がある他の Azure リソースの一覧を表示します。
+1. [az graph](/cli/azure/ext/resource-graph/graph) 拡張機能を使用して、Azure AD ディレクトリの既知の依存関係がある他の Azure リソースの一覧を表示します。
 
     ```azurecli
     az graph query -q \
@@ -286,13 +281,13 @@ ms.locfileid: "89400546"
 
     移転要求を受け入れた新しいアカウントのユーザーだけが、リソースにアクセスして管理できます。
 
-1. [az account list](https://docs.microsoft.com/cli/azure/account#az-account-list) コマンドを使用して、サブスクリプションの一覧を取得します。
+1. [az account list](/cli/azure/account#az_account_list) コマンドを使用して、サブスクリプションの一覧を取得します。
 
     ```azurecli
     az account list --output table
     ```
 
-1. [az account set](https://docs.microsoft.com/cli/azure/account#az-account-set) を使用して、使用するアクティブなサブスクリプションを設定します。
+1. [az account set](/cli/azure/account#az_account_set) を使用して、使用するアクティブなサブスクリプションを設定します。
 
     ```azurecli
     az account set --subscription "Contoso"
@@ -300,7 +295,7 @@ ms.locfileid: "89400546"
 
 ### <a name="create-custom-roles"></a>カスタム ロールを作成する
         
-- [az role definition create](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-create) を使用して、前に作成したファイルから各カスタム ロールを作成します。 詳細については、「[Azure CLIを使用して Azure カスタム ロールを作成または更新する](custom-roles-cli.md)」を参照してください。
+- [az role definition create](/cli/azure/role/definition#az_role_definition_create) を使用して、前に作成したファイルから各カスタム ロールを作成します。 詳細については、「[Azure CLIを使用して Azure カスタム ロールを作成または更新する](custom-roles-cli.md)」を参照してください。
 
     ```azurecli
     az role definition create --role-definition <role_definition>
@@ -308,7 +303,7 @@ ms.locfileid: "89400546"
 
 ### <a name="create-role-assignments"></a>ロールの割り当ての作成
 
-- [az role assignment create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) を使用して、ユーザー、グループ、サービス プリンシパルに対するロールの割り当てを作成します。 詳細については、「[AAzure RBAC と Azure CLI を使用してロールの割り当てを追加または削除する](role-assignments-cli.md)」を参照してください。
+- [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) を使用して、ユーザー、グループ、サービス プリンシパルに対するロールの割り当てを作成します。 詳細については、「[AAzure RBAC と Azure CLI を使用してロールの割り当てを追加または削除する](role-assignments-cli.md)」を参照してください。
 
     ```azurecli
     az role assignment create --role <role_name_or_id> --assignee <assignee> --resource-group <resource_group>
@@ -324,7 +319,7 @@ ms.locfileid: "89400546"
     | 仮想マシン スケール セット | [Azure CLI を使用して仮想マシン スケール セットで Azure リソースのマネージド ID を構成する](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#system-assigned-managed-identity) |
     | その他のサービス | [Azure リソースのマネージド ID をサポートするサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) |
 
-1. [az role assignment create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) を使用して、システム割り当てのマネージド ID に対するロールの割り当てを作成します。 詳細については、「[Azure CLI を使用して、リソースにマネージド ID アクセスを割り当てる](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)」を参照してください。
+1. [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) を使用して、システム割り当てのマネージド ID に対するロールの割り当てを作成します。 詳細については、「[Azure CLI を使用して、リソースにマネージド ID アクセスを割り当てる](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)」を参照してください。
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>
@@ -340,7 +335,7 @@ ms.locfileid: "89400546"
     | 仮想マシン スケール セット | [Azure CLI を使用して仮想マシン スケール セットで Azure リソースのマネージド ID を構成する](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#user-assigned-managed-identity) |
     | その他のサービス | [Azure リソースのマネージド ID をサポートするサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)<br/>[Azure CLI を使用してユーザー割り当てマネージド ID を作成、一覧表示、または削除する](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) |
 
-1. [az role assignment create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) を使用して、ユーザー割り当てのマネージド ID に対するロールの割り当てを作成します。 詳細については、「[Azure CLI を使用して、リソースにマネージド ID アクセスを割り当てる](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)」を参照してください。
+1. [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) を使用して、ユーザー割り当てのマネージド ID に対するロールの割り当てを作成します。 詳細については、「[Azure CLI を使用して、リソースにマネージド ID アクセスを割り当てる](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)」を参照してください。
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>

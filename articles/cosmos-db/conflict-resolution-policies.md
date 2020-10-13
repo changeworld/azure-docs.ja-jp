@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: c3b1cf01cbaa8de8ec33bbf9c19ee991ae898d58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49400ad0da86eddf7bbbd51dd92101084cdf1ee1
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82182754"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570103"
 ---
-# <a name="conflict-types-and-resolution-policies"></a>競合のタイプと解決ポリシー
+# <a name="conflict-types-and-resolution-policies-when-using-multiple-write-regions"></a>複数の書き込みリージョンを使用する場合の競合の種類と解決ポリシー
 
 競合と競合解決ポリシーは、複数の書き込みリージョンを使用して Azure Cosmos DB アカウントが構成されている場合に該当します。
 
@@ -50,6 +50,6 @@ Azure Cosmos DB は、書き込みの競合を解決するための、柔軟な�
 
 競合解決ポリシーを構成する方法を学習します。
 
-* [アプリケーションでマルチマスターを構成する方法](how-to-multi-master.md)
+* [アプリケーションで複数の書き込みリージョンを構成する方法](how-to-multi-master.md)
 * [競合解決ポリシーの管理方法](how-to-manage-conflicts.md)
 * [競合フィードから読み取る方法](how-to-manage-conflicts.md#read-from-conflict-feed)

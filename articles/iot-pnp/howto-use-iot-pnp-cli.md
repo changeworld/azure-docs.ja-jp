@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 用 Azure IoT 拡張機能を使用して、IoT プラグ アンド プレイ プレビュー デバイスと対話する | Microsoft Docs
+title: Azure CLI 用 Azure IoT 拡張機能を使用して IoT プラグ アンド プレイ デバイスと対話する | Microsoft Docs
 description: Azure CLI 用 Azure IoT 拡張機能をインストールし、IoT ハブに接続された IoT プラグ アンド プレイ デバイスとの対話に使用します。
 author: dominicbetts
 ms.author: dobett
@@ -7,18 +7,18 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: dadb1f044547acd6e5f0d274143123e89d7dae46
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 680cd4ef4f73c63850a2137b344fd0af6b27c673
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475483"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577460"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Azure CLI 用 Azure IoT 拡張機能をインストールして使用する
 
-[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) は、IoT ハブなどの Azure リソースを管理するためのオープンソースのクロス プラットフォーム コマンドライン ツールです。 Azure CLI は、Windows、Linux、macOS で使用できます。 Azure CLI を使用すると、拡張機能をインストールしなくても、Azure IoT Hub リソース、デバイス プロビジョニング サービス インスタンス、およびリンク済みのハブを管理できます。
+[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true) は、IoT ハブなどの Azure リソースを管理するためのオープンソースのクロス プラットフォーム コマンドライン ツールです。 Azure CLI は、Windows、Linux、macOS で使用できます。 Azure CLI を使用すると、拡張機能をインストールしなくても、Azure IoT Hub リソース、デバイス プロビジョニング サービス インスタンス、およびリンク済みのハブを管理できます。
 
-Azure CLI の Azure IoT 拡張機能は、IoT プラグ アンド プレイ プレビュー デバイスとの対話とテストに使用されるコマンドライン ツールです。 拡張機能は、次のことに使用できます。
+Azure CLI の Azure IoT 拡張機能は、IoT プラグ アンド プレイ デバイスとの対話とテストに使用されるコマンドライン ツールです。 拡張機能は、次のことに使用できます。
 
 - デバイスに接続する。
 - デバイスが送信するテレメトリを表示する。
@@ -34,11 +34,11 @@ Azure CLI の Azure IoT 拡張機能は、IoT プラグ アンド プレイ プ�
 
 ### <a name="step-1---install-the-azure-cli"></a>手順 1 - Azure CLI をインストールする
 
-[インストール手順](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に従って、環境内の Azure CLI を設定します。 最適なエクスペリエンスになるようにするには、Azure CLI のバージョンがバージョン 2.9.1 以上である必要があります。 検証するには、`az -–version` を使用します。
+[インストール手順](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)に従って、環境内の Azure CLI を設定します。 最適なエクスペリエンスになるようにするには、Azure CLI のバージョンがバージョン 2.9.1 以上である必要があります。 検証するには、`az -–version` を使用します。
 
 ### <a name="step-2---install-iot-extension"></a>手順 2 - IoT 拡張機能をインストールする
 
-[IoT 拡張機能の readme](https://github.com/Azure/azure-iot-cli-extension) に、拡張機能をインストールするためのいくつかの方法が説明されています。 最も簡単な方法は、`az extension add --name azure-iot` を実行することです。 インストール後、`az extension list` を使用して、現在インストールされている拡張機能を確認することができます。また、`az extension show --name azure-iot` を使用して、IoT 拡張機能の詳細を表示することもできます。 この記事の執筆時点での拡張機能のバージョン番号は `0.9.7` です。
+[IoT 拡張機能の readme](https://github.com/Azure/azure-iot-cli-extension) に、拡張機能をインストールするためのいくつかの方法が説明されています。 最も簡単な方法は、`az extension add --name azure-iot` を実行することです。 インストール後、`az extension list` を使用して、現在インストールされている拡張機能を確認することができます。また、`az extension show --name azure-iot` を使用して、IoT 拡張機能の詳細を表示することもできます。 この記事の執筆時点での拡張機能のバージョン番号は `0.10.0` です。
 
 拡張機能を削除するには、`az extension remove --name azure-iot` を使用します。
 

@@ -11,12 +11,12 @@ ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 ms.date: 02/07/2020
-ms.openlocfilehash: 5c05db4d6e0c98935fc13325b5656f8023c6228e
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: bbecfac4bfd3d5ce1510cb671b93df5f4982cbc4
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91443342"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803859"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs-preview"></a>Transact-SQL (T-SQL) を使用して Elastic Database ジョブ (プレビュー) を作成および管理する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -1023,13 +1023,13 @@ null ではない場合は、コマンドの最初の結果セットの書き込
 メンバーを追加するターゲット グループの名前。 target_group_name は nvarchar(128) であり、既定値はありません。
 
 [ **\@membership_type =** ] 'membership_type'  
-ターゲット グループのメンバーが含まれるか除外されるかを指定します。 target_group_name は nvarchar(128) であり、既定値は 'Include' です。 target_group_name の有効な値は、'Include' または 'Exclude' です。
+ターゲット グループのメンバーが含まれるか除外されるかを指定します。 target_group_name は nvarchar(128) であり、既定値は 'Include' です。 membership_type の有効な値は "Include" または "Exclude" です。
 
 [ **\@target_type =** ] 'target_type'  
 ターゲット データベースまたはデータベースのコレクションの種類。サーバー内のすべてのデータベース、エラスティック プール内のすべてのデータベース、シャード マップ内のすべてのデータベース、または個々のデータベースです。 target_type は nvarchar(128) であり、既定値はありません。 target_type の有効な値は、'SqlServer'、'SqlElasticPool'、'SqlDatabase'、または 'SqlShardMap' です。
 
 [ **\@refresh_credential_name =** ] 'refresh_credential_name'  
-サーバーの名前。 refresh_credential_name は nvarchar(128) であり、既定値はありません。
+データベース スコープの資格情報の名前。 refresh_credential_name は nvarchar(128) であり、既定値はありません。
 
 [ **\@server_name =** ] 'server_name'  
 指定したターゲット グループに追加する必要のあるサーバーの名前。 target_type が 'SqlServer' の場合は、server_name を指定する必要があります。 server_name は nvarchar(128) であり、既定値はありません。
@@ -1041,7 +1041,7 @@ null ではない場合は、コマンドの最初の結果セットの書き込
 指定したターゲット グループに追加する必要のあるエラスティック プールの名前。 target_type が 'SqlElasticPool' の場合は、elastic_pool_name を指定する必要があります。 elastic_pool_name は nvarchar(128) であり、既定値はありません。
 
 [ **\@shard_map_name =** ] 'shard_map_name'  
-指定したターゲット グループに追加する必要があるシャード マップ プールの名前。 target_type が 'SqlSqlShardMap' の場合は、shard_map_name を指定する必要があります。 shard_map_name は nvarchar(128) であり、既定値はありません。
+指定したターゲット グループに追加する必要があるシャード マップ プールの名前。 target_type が "SqlShardMap" の場合は、elastic_pool_name を指定する必要があります。 shard_map_name は nvarchar(128) であり、既定値はありません。
 
 [ **\@target_id =** ] target_group_id OUTPUT  
 ターゲット グループに追加された場合にターゲット グループ メンバーに割り当てられるターゲット ID 番号。 target_id は uniqueidentifier 型の出力変数であり、既定値は NULL です。

@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 05/24/2020
-ms.openlocfilehash: bbd3cb88b017209adff58a646e274caf31ab425f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: c297a189f3b13ca8e72daf4eef009bc28fac32bf
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486444"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823191"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Live Video Analytics on IoT Edge のトラブルシューティング
 
@@ -321,9 +321,11 @@ Live Video Analytics on IoT Edge モジュールがデバッグ ログを生成�
     `"DebugLogsDirectory": "/var/lib/azuremediaservices/logs"`
 
     > [!NOTE] 
-    > このコマンドにより、エッジ デバイスとコンテナーの間でログ フォルダーがバインドされます。 別の場所にあるログを収集する場合は、 **$DEBUG_LOG_LOCATION_ON_EDGE_DEVICE** の部分を使用したい場所に置き換えて、次のコマンドを使用します。  
-    > `"DebugLogsDirectory": "/var/$DEBUG_LOG_LOCATION_ON_EDGE_DEVICE"`  
-
+    > このコマンドにより、エッジ デバイスとコンテナーの間でログ フォルダーがバインドされます。 デバイス上の別の場所にあるログを収集するには、次のようにします。
+    > 1. **[バインド]** セクションでデバッグ ログの場所のバインドを作成し、 **$DEBUG _LOG_LOCATION_ON_EDGE_DEVICE** と **$DEBUG _LOG_LOCATION** を目的の場所 `/var/$DEBUG_LOG_LOCATION_ON_EDGE_DEVICE:/var/$DEBUG_LOG_LOCATION` に置き換えます。
+    > 2. 次のコマンドを使用して、 **$DEBUG _LOG_LOCATION** を、前の手順で使用した場所に置き換えます。  
+    > `"DebugLogsDirectory": "/var/$DEBUG_LOG_LOCATION"`  
+    
     d. **[保存]** を選択します。
 
 1. 問題を再現します。

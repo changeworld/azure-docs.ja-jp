@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 4de696e2538bf1fa4823aafe30f931b7852535a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e2cb2b93010478338cd40236403da4ca0ca99fc
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82191738"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825269"
 ---
-# <a name="consistency-availability-and-performance-tradeoffs"></a>整合性、可用性、パフォーマンスのトレードオフ
+# <a name="latency-availability-and-performance-tradeoffs-with-different-azure-cosmos-db-consistency-levels"></a>Azure Cosmos DB のさまざまな整合性レベルでの待機時間、可用性およびパフォーマンスのトレードオフ
 
 高可用性、短い待機時間、またはその両方のためにレプリケーションに依存している分散型データベースでは、トレードオフを考慮する必要があります。 読み取りの整合性と、可用性、待機時間、およびスループットとのトレードオフです。
 
@@ -65,20 +65,20 @@ Azure Cosmos DB では、幅広い選択肢を利用できるデータ整合性�
 
 |**リージョン**|**レプリケーション モード**|**整合性レベル**|**RPO**|**RTO**|
 |---------|---------|---------|---------|---------|
-|1|シングルマスターまたはマルチマスター|任意の整合性レベル|240 分未満|1 週間未満|
-|>1|シングルマスター|セッション、一貫性のあるプレフィックス、最終的|15 分未満|15 分未満|
-|>1|シングルマスター|Bounded Staleness|*K* & *T*|15 分未満|
-|>1|シングルマスター|Strong|0|15 分未満|
-|>1|マルチマスター|セッション、一貫性のあるプレフィックス、最終的|15 分未満|0|
-|>1|マルチマスター|Bounded Staleness|*K* & *T*|0|
+|1|単一または複数の書き込みリージョン|任意の整合性レベル|240 分未満|1 週間未満|
+|>1|単一の書き込みリージョン|セッション、一貫性のあるプレフィックス、最終的|15 分未満|15 分未満|
+|>1|単一の書き込みリージョン|Bounded Staleness|*K* & *T*|15 分未満|
+|>1|単一の書き込みリージョン|Strong|0|15 分未満|
+|>1|複数の書き込みリージョン|セッション、一貫性のあるプレフィックス、最終的|15 分未満|0|
+|>1|複数の書き込みリージョン|Bounded Staleness|*K* & *T*|0|
 
 *K* = 項目の *"K"* バージョン (更新) 数。
 
 *T* = 前回の更新以降の期間 *"T"* 。
 
-## <a name="strong-consistency-and-multi-master"></a>厳密な整合性とマルチマスター
+## <a name="strong-consistency-and-multiple-write-regions"></a>強力な整合性と複数の書き込みリージョン
 
-分散システムでゼロの RPO とゼロの RTO を実現することはできないため、マルチマスター用に構成された Cosmos アカウントには厳密な整合性を構成できません。 さらに、すべての領域へのすべての書き込みは、アカウント内のすべての構成済みリージョンにレプリケートおよびコミットされる必要があるため、厳密な整合性とマルチマスターを併用しても書き込み待機時間の恩恵は受けられません。 この結果、1 つのマスター アカウントと同じ書き込み待機時間が発生します。
+分散システムでゼロの RPO とゼロの RTO を実現することはできないため、複数の書き込みリージョン用に構成された Cosmos アカウントには、厳密な整合性を構成することはできません。 さらに、すべての領域への書き込み要求は、アカウント内のすべての構成済みリージョンにレプリケートおよびコミットされる必要があるため、厳密な整合性と複数の書き込みリージョンを併用しても、書き込み待機時間の恩恵は受けられません。 この結果、単一の書き込みリージョン アカウントと同じ書き込み待機時間が発生します。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -86,4 +86,4 @@ Azure Cosmos DB では、幅広い選択肢を利用できるデータ整合性�
 
 - [最新の分散データベース システム設計における整合性のトレードオフ](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 - [高可用性](high-availability.md)
-- [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)
+- [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/)

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 0e60ba0517fb3b9388045762853c651869cffb6a
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 4f540c7e853efe370c84b7c4d0a7d74911b8cd6c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986459"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823942"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Text Analytics API のユーザー シナリオの例
 
@@ -41,7 +41,7 @@ Text Analytics API は、テキストに対する高度な自然言語処理を�
 
 ## <a name="monitor-your-products-social-media-feeds"></a>商品のソーシャル メディア フィードを監視する
 
-商品の Twitter または Facebook ページで商品に関するユーザーのフィードバックを監視します。 このデータを使用して、新商品の発売に対する顧客の感情を分析したり、機能や機能要求に関するキー フレーズを抽出したり、発生した顧客の苦情に対処したりできます。 サンプルの [Microsoft Flow テンプレート](https://flow.microsoft.com/galleries/public/templates/2680d2227d074c4d901e36c66e68f6f9/run-sentiment-analysis-on-tweets-and-push-results-to-a-power-bi-dataset/)を参照してください。
+商品の Twitter または Facebook ページで商品に関するユーザーのフィードバックを監視します。 このデータを使用して、新商品の発売に対する顧客の感情を分析したり、機能や機能要求に関するキー フレーズを抽出したり、発生した顧客の苦情に対処したりできます。 [Microsoft Power Automate テンプレート](https://flow.microsoft.com/galleries/public/templates/2680d2227d074c4d901e36c66e68f6f9/run-sentiment-analysis-on-tweets-and-push-results-to-a-power-bi-dataset/)の例を参照してください。
 
 ![キー フレーズ抽出を使用してソーシャル メディアでの商品や企業のフィードバックを監視する方法を説明する画像](media/use-cases/social-feed.svg)
 

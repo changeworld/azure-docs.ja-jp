@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 159a14b30113a251c6ac61c4c04a2a3c4d69d3e5
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 132711b4a3fc584261cd577b4b8f1d4fb13da09d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87907481"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819392"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Azure AD の B2B ユーザーにオンプレミスのアプリケーションへのアクセスを許可する
 
@@ -41,6 +41,9 @@ Azure Active Directory (Azure AD) B2B コラボレーション機能を使用し
 
 - **Azure AD アプリケーション プロキシを介した認証**。 B2B ユーザーは、オンプレミス アプリケーションに対して認証できる必要があります。 これを行うには、Azure AD アプリケーション プロキシを介してオンプレミス アプリを発行する必要があります。 詳細については、「[アプリケーション プロキシの概要とコネクタのインストール](../manage-apps/application-proxy-enable.md)」と「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](../manage-apps/application-proxy-publish-azure-portal.md)」を参照してください。
 - **オンプレミス ディレクトリの B2B ユーザー オブジェクトを介した承認**。 アプリケーションは、ユーザー アクセス チェックを実行し、正しいリソースへのアクセス権を付与できる必要があります。 IWA と KCD がこの承認を完了するには、オンプレミスの Windows Server Active Directory 内のユーザー オブジェクトが必要です。 「[KCD を使ったシングル サインオンのしくみ](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)」で説明されているように、アプリケーション プロキシはこのユーザー オブジェクトを使用してユーザーを偽装し、アプリに対する Kerberos トークンを取得する必要があります。 
+
+   > [!NOTE]
+   > Azure AD アプリケーション プロキシを構成する場合は、**委任されたログオン ID** が IWA シングル サインオンの**ユーザー プリンシパル名** (既定) に設定されていることを確認します。
 
    B2B ユーザーのシナリオでは、オンプレミス ディレクトリでの承認に必要なゲスト ユーザー オブジェクトの作成に使用できる方法が 2 つあります。
 

@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 9/04/2020
 ms.author: lagayhar
-ms.openlocfilehash: 76c52d47c7fd7e271f3e74439ee8502117eb83a7
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 80846ecb1ad48d9f8ba49f0025772b4e131c23e2
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89663439"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776359"
 ---
 # <a name="composite-bar-renderer"></a>複合棒グラフ レンダラー
 
@@ -124,11 +124,11 @@ ms.locfileid: "89663439"
 3. 視覚化を *[タイル]* に変更します。
 4. クエリを実行します。
 5. **[タイルの設定]** を選択します。
-6. [タイトル フィールド] で *[左]* を選択します。
+6. [タイル] フィールドで *[左]* を選択します。
 7. *[フィールドの設定]* の下に、次の設定を入力します。
     1. 使用する列: [サーバー]。
     2. 列レンダラー: [テキスト]。
-8. [タイトル フィールド] で *[下部]* を選択します。
+8. [タイル] フィールドで *[下部]* を選択します。
 9. *[フィールドの設定]* の下に、次の設定を入力します。
     1. 使用する列: [合計]。
     2. 列レンダラー: [複合棒グラフ]。
@@ -143,9 +143,9 @@ ms.locfileid: "89663439"
     4. ラベル `["online"] of ["total"] are healthy` を追加します。
 10. **[適用]** を選択します。
 
-タイトル用の複合棒グラフの設定:
+タイル用の複合棒グラフの設定:
 
-![前述のように設定された複合棒グラフ タイトル設定のスクリーンショット。](./media/workbooks-composite-bar/tiles-settings.png)
+![前述のように設定された複合棒グラフ タイル設定のスクリーンショット。](./media/workbooks-composite-bar/tiles-settings.png)
 
 上記の設定が設定されたタイルでの複合棒グラフの表示は次のようになります。
 
@@ -157,7 +157,7 @@ ms.locfileid: "89663439"
 
 1. **[追加]** 、 *[クエリの追加]* の順に選択します。
 2. データソースを JSON に変更し、[前の例](#adding-composite-bar-renderer)のデータを入力します。
-3. 視覚化を *[タイル]* に変更します。
+3. 視覚化を "*グラフ*" に変更します。
 4. クエリを実行します。
 5. **[グラフの設定]** を選択します。
 6. [Node Format Settings]\(ノードの形式の設定\) で *[Center Content]\(コンテンツの中央\)* を選択します。

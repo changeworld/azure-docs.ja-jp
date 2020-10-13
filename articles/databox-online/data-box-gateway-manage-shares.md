@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 785fcbbcde0c4efe3c2d1cd84bf19bd03371ab06
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 847c8a07bfa245d0c9859bb3cf6f6ed233934250
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883542"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743881"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>Azure portal を使用して Azure Data Box Gateway の共有を管理する 
 
@@ -94,7 +94,7 @@ ms.locfileid: "90883542"
 
 1. Azure portal で **[共有]** に移動します。 更新したい共有を選択してクリックします。
 
-   ![共有を選択する](media/data-box-gateway-manage-shares/refresh-1.png)
+   ![共有を選択する 2](media/data-box-gateway-manage-shares/refresh-1.png)
 
 2. **[最新の情報に更新]** をクリックします。 
 
@@ -124,11 +124,11 @@ ms.locfileid: "90883542"
 1. リソースの **[概要]** に移動します。 
 2. 共有の一覧で、同期する必要があるストレージ アカウントに関連付けられている共有を選択してクリックします。 **[ストレージ キーの同期]** をクリックします。 
 
-     ![ストレージ キー 1 の同期](media/data-box-gateway-manage-shares/sync-storage-key-1.png)
+     ![ストレージ キーの同期](media/data-box-gateway-manage-shares/sync-storage-key-1.png)
 
 3. ページ下部の **[はい]** をクリックします。 同期が完了したら、ダイアログを閉じます。
 
-     ![ストレージ キー 1 の同期](media/data-box-gateway-manage-shares/sync-storage-key-2.png)
+     ![ストレージ キーの同期 2](media/data-box-gateway-manage-shares/sync-storage-key-2.png)
 
 >[!NOTE]
 > 指定のストレージ アカウントに対してこれを実行しなければならないのは 1 回だけです。 同じストレージ アカウントに関連付けられているすべての共有に対して、この操作を繰り返す必要はありません。

@@ -7,13 +7,13 @@ manager: diviso
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 08/26/2020
-ms.openlocfilehash: f15686cf07bae4aee41095c970cd8a474724c2ed
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.date: 10/01/2020
+ms.openlocfilehash: 105faf796583eb0f272eea7a316648993fdafd0d
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230978"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653776"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>Azure Time Series Insights Gen2 からのデータを Power BI で視覚化する
 
@@ -110,13 +110,13 @@ Azure Time Series Insights 環境を Power BI に接続するには、次の手�
 
 1. ウィンドウの左側で、 **[レポート]** ビューが選択されていることを確認します。
 
-    [![[レポート] ビューを選択する](media/how-to-connect-power-bi/select-the-report-view.png)](media/how-to-connect-power-bi/select-the-report-view.png#lightbox)
+    [![[レポート ビュー] アイコンを示すスクリーンショット。](media/how-to-connect-power-bi/select-the-report-view.png)](media/how-to-connect-power-bi/select-the-report-view.png#lightbox)
 
 1. **[視覚化]** 列で、希望する視覚化を選択します。 たとえば、 **[折れ線グラフ]** を選択します。 これにより、空の折れ線グラフがキャンバスに追加されます。
 
 1. **[フィールド]** 一覧で **[_Timestamp]\(_タイムスタンプ\)** を選択し、 **[軸]** フィールドにドラッグして項目を X 軸に沿って表示します。 必ず、 **[軸]** の値として **[_Timestamp]\(_タイムスタンプ\)** に切り替えます (既定は **[日付の階層]** です)。
 
-    [![[レポート] ビューを選択する](media/how-to-connect-power-bi/select-timestamp.png)](media/how-to-connect-power-bi/select-timestamp.png#lightbox)
+    [![[タイムスタンプ] メニューを示すスクリーンショット。[_Timestamp] が選択されています。](media/how-to-connect-power-bi/select-timestamp.png)](media/how-to-connect-power-bi/select-timestamp.png#lightbox)
 
 1. 再び **[フィールド]** の一覧で **[TimeSeriesId]** を選択し、 **[値]** フィールドにドラッグして項目を Y 軸に表示します。
 

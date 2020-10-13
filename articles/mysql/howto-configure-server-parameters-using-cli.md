@@ -6,17 +6,20 @@ ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: how-to
-ms.date: 6/11/2020
+ms.date: 10/1/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 43562454e8ddbeb3e674cbdbace508ed9ca1d549
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: dfb1d59335f2e35ce3d4661f043b6eed53d2a109
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501172"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627161"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL のサーバー パラメータを構成する
 Azure コマンド ライン ユーティリティ である Azure CLI を使用して、Azure Database for MySQL サーバーの構成パラメーターを一覧表示、表示、および更新できます。 エンジン構成のサブセットは、サーバー レベルで公開され、変更が可能です。 
+
+>[!Note]
+> サーバー パラメーターについては、[Azure CLI](./howto-configure-server-parameters-using-cli.md)、[PowerShell](./howto-configure-server-parameters-using-powershell.md)、または [Azure portal](./howto-server-parameters.md) を使用して、サーバー レベルでグローバルに更新できます。
 
 ## <a name="prerequisites"></a>前提条件
 このハウツー ガイドの手順を実行するには、以下が必要です。

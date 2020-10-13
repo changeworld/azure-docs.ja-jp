@@ -1,18 +1,21 @@
 ---
 title: Connected Machine Windows エージェントの概要
 description: この記事では、ハイブリッド環境でホストされている仮想マシンの監視をサポートする、使用可能な Azure Arc 対応サーバー エージェントの詳細な概要を提供します。
-ms.date: 09/02/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 990b5999a8483c6417049ac5ab965843c2b13659
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 20f56745127a5182a5dfa057a4496b127d78eac7
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908181"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91822194"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc 対応サーバー エージェントの概要
 
 Azure Arc 対応サーバー Connected Machine エージェントを使用すると、企業ネットワークまたは他のクラウド プロバイダー上の Azure の外部でホストされている Windows および Linux コンピューターを管理できます。 この記事では、エージェント、システムとネットワークの要件、およびさまざまなデプロイ方法の概要の詳細を示します。
+
+>[!NOTE]
+>2020 年 9 月の Azure Arc 対応サーバーの一般リリース以降では、Azure Connected Machine エージェント (バージョン 1.0 以前のエージェント) のプレリリース バージョンはすべて、**2021 年 2 月 2 日**までに**非推奨**となります。  プレリリースされたエージェントが Azure Arc 対応サーバー サービスと通信できなくなる前に、この期間にバージョン 1.0 以降にアップグレードすることができます。
 
 ## <a name="agent-component-details"></a>エージェント コンポーネントの詳細
 
@@ -44,7 +47,7 @@ Windows および Linux 用の Azure Connected Machine エージェントは、�
 
 ### <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
-Azure Connected Machine エージェントでは、次のバージョンの Windows および Linux オペレーティング システムが正式にサポートされています。 
+Azure Connected Machine エージェントでは、次のバージョンの Windows および Linux オペレーティング システムが正式にサポートされています。
 
 - Windows Server 2012 R2 以上 (Windows Server Core を含む)
 - Ubuntu 16.04 および 18.04 LTS (x64)
@@ -82,6 +85,7 @@ Linux と Windows 用の Connected Machine エージェントは、TCP ポート
 
 * AzureActiveDirectory
 * AzureTrafficManager
+* AzureArcInfrastructure
 
 URL:
 
@@ -130,6 +134,9 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 ## <a name="installation-and-configuration"></a>インストールと構成
 
 要件に応じたさまざまな方法を使用して、ハイブリッド環境内のマシンを直接 Azure に接続することができます。 次の表は、どの方法が組織にとって最も効果的であるかを判断するために各方法について説明しています。
+
+> [!IMPORTANT]
+> Connected Machine エージェントを Azure Windows 仮想マシンにインストールすることはできません。 インストールを試みた場合は、インストールによってこの操作が検出され、ロールバックされます。
 
 | Method | 説明 |
 |--------|-------------|
@@ -228,7 +235,7 @@ Linux 用 Connected Machine エージェントをインストールした後、�
     |/opt/logs/dsc.log |DSC サービス アクティビティの詳細を記録します<br> (特に、himds サービスと Azure Policy 間の接続)。|
     |/opt/logs/dsc.telemetry.txt |DSC サービス テレメトリと詳細ログの詳細を記録します。|
     |/var/lib/GuestConfig/ext_mgr_logs |拡張エージェント コンポーネントに関する詳細を記録します。|
-    |/var/log/GuestConfig/extension_logs|インストールされた拡張機能の詳細を記録します。|
+    |/var/lib/GuestConfig/extension_logs|インストールされた拡張機能の詳細を記録します。|
 
 * 次の環境変数は、エージェントのインストール中に作成されます。 これらの変数は `/lib/systemd/system.conf.d/azcmagent.conf` に設定されます。
 
@@ -244,4 +251,6 @@ Linux 用 Connected Machine エージェントをインストールした後、�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Arc 対応サーバーの評価を開始するには、「[Azure portal からハイブリッド マシンを Azure に接続する](onboard-portal.md)」の記事に従ってください。
+* Azure Arc 対応サーバーの評価を開始するには、「[Azure portal からハイブリッド マシンを Azure に接続する](onboard-portal.md)」の記事に従ってください。
+
+* トラブルシューティング情報は、[Connected Machine エージェントのトラブルシューティング ガイド](troubleshoot-agent-onboard.md)に関する記事を参照してください。

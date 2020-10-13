@@ -4,12 +4,12 @@ description: Recovery Services コンテナーを Azure サブスクリプショ
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 69021131f12b57aedcd531997029858b0722933f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 19b1c930ffc0e4b519c25f421662547a4d8dcde6
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181512"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773367"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Recovery Services コンテナーを Azure サブスクリプションおよびリソース グループをまたいで移動する
 
@@ -142,6 +142,50 @@ az resource move --destination-group <destinationResourceGroupName> --ids <Vault
 
 1. リソース グループのアクセス制御を設定および検証します。  
 2. 移動の完了後のコンテナーに対して、バックアップのレポートと監視機能をもう一度構成する必要があります。 以前の構成は、移動操作中に失われます。
+
+## <a name="move-an-azure-virtual-machine-to-a-different-recovery-service-vault"></a>Azure 仮想マシンを別の Recovery Services コンテナーに移動する 
+
+Azure Backup が有効になっている Azure 仮想マシンを移動する場合は、2 つの選択肢があります。 どちらを選ぶかは、ビジネス要件によって異なります。
+
+- [以前にバックアップしたデータを保持する必要がない](#dont-need-to-preserve-previous-backed-up-data)
+- [以前にバックアップしたデータを保持する必要がある](#must-preserve-previous-backed-up-data)
+
+### <a name="dont-need-to-preserve-previous-backed-up-data"></a>以前にバックアップしたデータを保持する必要がない
+
+新しいコンテナーでワークロードを保護するには、現在の保護とデータを古いコンテナーから削除し、バックアップを再び構成する必要があります。
+
+>[!WARNING]
+>次の操作は破壊的であり、元に戻すことはできません。 保護されたサーバーに関連付けられているすべてのバックアップ データとバックアップ項目が、完全に削除されます。 慎重に進めてください。
+
+**古いコンテナーで現在の保護を停止して削除する:**
+
+1. コンテナーのプロパティで、論理的な削除を無効にします。 論理的な削除を無効にするには、[こちらの手順](backup-azure-security-feature-cloud.md#disabling-soft-delete-using-azure-portal)に従ってください。
+
+2. 保護を停止し、現在のコンテナーからバックアップを削除します。 コンテナー ダッシュボード メニューで **[バックアップ項目]** を選択します。 ここに一覧表示されている、新しいコンテナーに移動する必要がある項目は、バックアップ データと共に削除する必要があります。 [クラウド内の保護されたアイテムを削除する](backup-azure-delete-vault.md#delete-protected-items-in-the-cloud)および[オンプレミスの保護されたアイテムを削除する](backup-azure-delete-vault.md#delete-protected-items-on-premises)方法を参照します。
+
+3. AFS (Azure ファイル共有)、SQL Server、または SAP HANA サーバーの移動を計画している場合は、それらの登録を解除する必要もあります。 コンテナーのダッシュボード メニューで **[バックアップ インフラストラクチャ]** を選択します。 [SQL Server を登録解除する](manage-monitor-sql-database-backup.md#unregister-a-sql-server-instance)、[Azure ファイル共有に関連付けられたストレージ アカウントを登録解除する](manage-afs-backup.md#unregister-a-storage-account)、および [SAP HANA インスタンスを登録解除する](sap-hana-db-manage.md#unregister-an-sap-hana-instance)方法を参照してください。
+
+4. 古いコンテナーから削除されたら、引き続き、新しいコンテナーでワークロードのバックアップを構成します。
+
+### <a name="must-preserve-previous-backed-up-data"></a>以前にバックアップしたデータを保持する必要がある
+
+古いコンテナー内にある現在保護されているデータを保持し、新しいコンテナーで保護を継続する必要がある場合は、一部のワークロードでオプションが制限されます。
+
+- MARS の場合は、[保護を停止してデータを保持](backup-azure-manage-mars.md#stop-protecting-files-and-folder-backup)し、新しいコンテナーでエージェントを再び登録できます。
+
+  - 古いコンテナーの既存の復旧ポイントはすべて、引き続き Azure Backup サービスによって保持されます。
+  - 古いコンテナー内の復旧ポイントを保持するには、料金を支払う必要があります。
+  - バックアップされたデータの復元は、古いコンテナー内の有効期限が切れていない復旧ポイントに対してのみ可能です。
+  - データの新しい初期レプリカを新しいコンテナーに作成する必要があります。
+
+- Azure VM の場合は、古いコンテナー内の VM に対して[保護を停止してデータを保持](backup-azure-manage-vms.md#stop-protecting-a-vm)し、VM を別のリソース グループに移動してから、新しいコンテナー内の VM を保護することができます。 VM を別のリソース グループに移動するための[ガイダンスと制限事項](https://docs.microsoft.com/azure/azure-resource-manager/management/move-limitations/virtual-machines-move-limitations)に関するページを参照してください。
+
+  VM を保護できるのは、一度に 1 つのコンテナーのみになります。 ただし、新しいリソース グループ内の VM は別の VM と見なされるため、新しいコンテナーで保護できます。
+
+  - Azure Backup サービスにより、古いコンテナーにバックアップされている回復ポイントが保持されます。
+  - 古いコンテナーの復旧ポイントを保持するには、料金を支払う必要があります (詳細については、[Azure Backup の料金](azure-backup-pricing.md)に関するページを参照してください)。
+  - 必要な場合は、古いコンテナーから VM を復元することができます。
+  - 新しいリソース内の VM に対する新しいコンテナー上の最初のバックアップは、初期レプリカになります。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -11,25 +11,28 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 07/27/2020
+ms.date: 09/28/2020
 tags: azure-synapse
-ms.openlocfilehash: b2d179121b05d7bf3493937a9ff72e302fd31f3d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2a3e1e7279e915c0c5992190ef0c8d1d83880dbb
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281142"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596137"
 ---
 # <a name="using-multi-factor-azure-active-directory-authentication"></a>Azure Active Directory の多要素認証の使用
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Azure SQL Database、Azure SQL Managed Instance、および Azure Synapse Analytics では、 *[Azure Active Directory - MFA で汎用]* 認証を使用して [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) からの接続をサポートします。 この記事では、さまざまな認証オプションの違いについて説明します。また、Azure SQL に対する Azure Active Directory (Azure AD) でのユニバーサル認証の使用に関連した制限事項についても説明します。
 
-**最新の SSMS のダウンロード** - クライアント コンピューターで、「[SQL Server Management Studio (SSMS) のダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)」から SSMS の最新版をダウンロードします。
+**最新の SSMS のダウンロード** - クライアント コンピューターで、「[SQL Server Management Studio (SSMS) のダウンロード](https://aka.ms/ssms)」から SSMS の最新版をダウンロードします。 
+
+[!INCLUDE[ssms-connect-azure-ad](../includes/ssms-connect-azure-ad.md)]
+
 
 この記事で説明されているすべての機能を使用するには、2017 年 7 月以降のバージョン 17.2 を使用してください。 一番新しい接続ダイアログ ボックスは次の画像のようになっているはずです。
 
-  ![1mfa-universal-connect](./media/authentication-mfa-ssms-overview/1mfa-universal-connect.png "[ユーザー名] ボックスへの入力を完了します。")  
+  ![SQL Server Management Studio の [サーバーに接続] ダイアログのスクリーンショット。サーバーの種類、サーバー名、認証それぞれの設定が表示されています。](./media/authentication-mfa-ssms-overview/1mfa-universal-connect.png)
 
 ## <a name="authentication-options"></a>認証オプション
 
@@ -57,11 +60,11 @@ Azure Multi-Factor Authentication の説明については、[Multi-Factor Authe
 1. SSMS で接続を開きます。 サーバー名を入力し、 **[Azure Active Directory - MFA で汎用]** 認証を選択します。 サインインに使用する**ユーザー名**を追加します。
 1. **[オプション]** ボックスを選択し、 **[接続プロパティ]** タブに移動します。 **[データベースへの接続]** ダイアログ ボックスで、使用するデータベースをダイアログ ボックスに入力します。 **[AD ドメインの名前またはテナントの ID]** ボックスをオンにし、ドメイン名 (**contosotest.onmicrosoft.com**) またはテナント ID の GUID などの認証機関を入力します。 
 
-   ![mfa-tenant-ssms](./media/authentication-mfa-ssms-overview/mfa-tenant-ssms.png)
+   ![[接続プロパティ] タブのスクリーンショット。[データベースに接続] と [AD ドメイン名またはテナント ID] が強調表示されています。](./media/authentication-mfa-ssms-overview/mfa-tenant-ssms.png)
 
 SSMS 18.x 以降を実行している場合、ゲスト ユーザーの AD ドメイン名またはテナント ID は不要になります。18.x 以降では自動的に認識されるためです。
 
-   ![mfa-tenant-ssms](./media/authentication-mfa-ssms-overview/mfa-no-tenant-ssms.png)
+   ![SSMS の [サーバーに接続] ダイアログの [接続プロパティ] タブのスクリーンショット。[データベースへの接続] フィールドで [MyDatabase] が選択されています。](./media/authentication-mfa-ssms-overview/mfa-no-tenant-ssms.png)
 
 ### <a name="azure-ad-business-to-business-support"></a>Azure AD の企業間サポート
 

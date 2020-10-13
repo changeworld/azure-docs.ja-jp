@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: d398cfe063dbbb2bc87a3debf1669afa6a16b43e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: aee5cb077604e5fc95647eca0e6570ea3582a785
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891989"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91822990"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>Azure Stream Analytics からの Power BI 出力
 
@@ -43,6 +43,9 @@ Power BI の出力とダッシュボードを構成するチュートリアル�
 Power BI データセットとテーブル スキーマがまだ存在しない場合は、ユーザーのために Azure Stream Analytics がデータセットとテーブル スキーマを作成します。 それ以外の場合、テーブルは新しい値で更新されます。 現時点では、1 つのデータセット内に存在できるテーブルは 1 つのみです。 
 
 Power BI では、先入れ先出し (FIFO) のアイテム保持ポリシーが使用されます。 200,000 行に到達するまでデータがテーブルに収集されます。
+
+> [!NOTE]
+> 複数の出力を使用して同じデータセットに書き込むことは、問題がいくつか発生する可能性があるため、お勧めしません。 各出力によって、Power BI データセットを個別に作成する試みが行われますが、これにより、同じ名前を持つ複数のデータセットが生成される可能性があります。 また、出力に一貫性のあるスキーマが含まれていない場合は、データセットによって書き込みごとにスキーマが変更されるため、スキーマ変更要求の過多につながります。 これらの問題が回避された場合でも、複数の出力は、マージされた 1 つの出力よりもパフォーマンスが低下します。
 
 ### <a name="convert-a-data-type-from-stream-analytics-to-power-bi"></a>Stream Analytics から Power BI にデータ型を変換する
 

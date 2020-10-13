@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 4044690bf042d05e4efd531826fab6cb5459b3b7
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: da60d6a2146385e1dfd0717afb1172b378e52533
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707647"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716006"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>Linux での Azure Files に関する問題のトラブルシューティング (SMB)
 
@@ -49,7 +49,7 @@ ms.locfileid: "90707647"
 
 ### <a name="solution"></a>解決策
 
-この問題を解決するには、「[Troubleshooting tool for Azure Files mounting errors on Linux (Linux での Azure Files のマウント エラー用トラブルシューティング ツール)](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089)」を使用します。 このツールには、以下の機能があります。
+この問題を解決するには、「[Troubleshooting tool for Azure Files mounting errors on Linux (Linux での Azure Files のマウント エラー用トラブルシューティング ツール)](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Linux)」を使用します。 このツールには、以下の機能があります。
 
 * クライアントの実行環境の検証を支援します。
 * Azure Files へのアクセス エラーの原因となる、互換性のないクライアント構成を検出します。
@@ -150,7 +150,7 @@ Linux SMB クライアントが暗号化をサポートしていない場合は�
 
 ### <a name="solution-for-cause-2"></a>原因 2 の解決策
 
-Azure ファイル共有が置かれたストレージ アカウントを参照して、 **[アクセス制御 (IAM)]** をクリックし、ユーザー アカウントにストレージ アカウントへのアクセス権があることを確認します。 詳しくは、「[ロールベースのアクセス制御 (RBAC) を使用してストレージ アカウントをセキュリティで保護する方法](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection)」をご覧ください。
+Azure ファイル共有が置かれたストレージ アカウントを参照して、 **[アクセス制御 (IAM)]** をクリックし、ユーザー アカウントにストレージ アカウントへのアクセス権があることを確認します。 詳しくは、[ロールベースのアクセス制御 (RBAC) を使用してストレージ アカウントをセキュリティで保護する方法](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection)に関するページをご覧ください。
 
 <a id="open-handles"></a>
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Azure ファイル共有のファイルまたはディレクトリを削除できない
@@ -298,6 +298,32 @@ Linux カーネルの再接続に関するこの問題は、以下の変更の�
 
 ### <a name="solution"></a>解決策
 このエラーは無視してかまいません。
+
+
+### <a name="unable-to-access-folders-or-files-which-name-has-a-space-or-a-dot-at-the-end"></a>名前の終わりにスペースまたはドットが含まれるフォルダーまたはファイルにアクセスできない
+
+Linux 上にマウントされているとき、Azure ファイル共有からフォルダーまたはファイルにアクセスできません。共有にアクセスしようとすると、du や Is のようなコマンド、あるいはサードパーティ アプリケーションが失敗し、"ファイルまたはディレクトリが存在しません" というエラーが表示されることがあります。しかし、そのようなフォルダーには、ポータルからファイルをアップロードできます。
+
+### <a name="cause"></a>原因
+
+名前の終わりの文字を別の文字にエンコードするシステムからフォルダーまたはファイルがアップロードされました。Macintosh コンピューターからアップロードされたファイルの場合、0x20 (スペース) または 0X2E (ドット) ではなく、"0xF028" または "0xF029" 文字が使用されている可能性があります。
+
+### <a name="solution"></a>解決策
+
+Linux に共有をマウントするとき、共有で mapchars オプションを使用します。 
+
+次の代わりに
+
+```bash
+sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino
+```
+
+を使う代わりに、
+
+```bash
+sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino,mapchars
+```
+
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 

@@ -4,17 +4,17 @@ description: Storage Analytics メトリック (クラシック メトリック)
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/04/2020
+ms.date: 10/20/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 076f5573b599fbb83486087380174fc2da53986c
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: c6a5f69a5a32ed1279b367c93b5246eb77ef0208
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708579"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802839"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>Azure Monitor のメトリックに移行する
 
@@ -46,6 +46,8 @@ Azure Monitor のメトリックに移行するには、次の方法をお勧め
 ここでは、これら 2 つのメトリック プラットフォームの重要な違いについて説明します。
 
 主な違いは、メトリックの管理方法です。 クラシック メトリックは Azure Storage によって管理されますが、Azure Monitor のメトリックは Azure Monitor によって管理されます。 クラシック メトリックを使用すると、Azure Storage によってメトリックの値が収集されて集計され、ストレージ アカウント内にあるテーブルに格納されます。 Azure Monitor のメトリックでは、Azure Storage によって Azure Monitor バックエンドにメトリック データが送信されます。 Azure Monitor で提供される統合監視エクスペリエンスには、Azure portal からのデータや、取り込まれたデータが含まれます。 
+
+クラシック メトリックは Azure ストレージ アカウントに送信され、保管されます。 Azure Monitor メトリックは複数の場所に送信できます。 ストレージ アカウントはいずれかの場所にすることができますが、必須ではありません。  
 
 メトリックでサポートされている限り、クラシック メトリックの**容量**メトリックは、Azure Blob Storage に対してのみ提供されます。 Azure Monitor のメトリックでは、BLOB、Table、File、Queue、Premium Storage に対して容量メトリックが提供されます。 クラシック メトリックの**トランザクション** メトリックは、BLOB、Table、Azure File、Queue Storage に対して提供されます。 Azure Monitor のメトリックは、その一覧に Premium Storage が追加されます。
 

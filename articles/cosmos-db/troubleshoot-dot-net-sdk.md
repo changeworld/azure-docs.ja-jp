@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 3093996156a31d4a06f0d91dbca1bd00d58eacdb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 581c8fcad62c40555a90b7455a260259f3a09212
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330453"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802415"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Azure Cosmos DB .NET SDK の使用時の問題を診断しトラブルシューティングする
 
@@ -82,7 +82,7 @@ ms.locfileid: "91330453"
 * [Azure VM にパブリック IP](../load-balancer/troubleshoot-outbound-connection.md#assignilpip) を割り当てます。
 
 ### <a name="high-network-latency"></a><a name="high-network-latency"></a>長いネットワーク待ち時間
-長いネットワーク待ち時間を識別するには、V2 SDK では[診断文字列](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?view=azure-dotnet)、V3 SDK では[診断](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?view=azure-dotnet#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics)を使用します。
+長いネットワーク待ち時間を識別するには、V2 SDK では[診断文字列](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?view=azure-dotnet&preserve-view=true)、V3 SDK では[診断](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics)を使用します。
 
 [タイムアウト](troubleshoot-dot-net-sdk-request-timeout.md)が存在せず、`ResponseTime` と `RequestStartTime` の差に長い待ち時間が明らかに存在する単一の要求が診断で示される場合、次のようになります (この例では >300 ミリ秒)。
 

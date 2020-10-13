@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sngun
-ms.openlocfilehash: 881ddfec587df61201f2c251fd0dd0a8164496c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9284fca6a96441ad5e6c23f9c6920ba184e03086
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549972"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801420"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Azure の診断設定を使用して Azure Cosmos DB データを監視する
 
@@ -104,7 +104,7 @@ Azure portal、CLI、または PowerShell を使用して診断設定を作成�
    ```Kusto
    AzureDiagnostics 
    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics" 
-   | project SubscriptionId, regionName_s, databaseName_s, collectionname_s, partitionkey_s, sizeKb_s, ResourceId 
+   | project SubscriptionId, regionName_s, databaseName_s, collectionName_s, partitionKey_s, sizeKb_d, ResourceId 
    ```
 
 1. コストの高いクエリについて要求の使用量を取得する方法
@@ -214,14 +214,6 @@ Azure portal、CLI、または PowerShell を使用して診断設定を作成�
    | where todouble(sizeKb_d) > 800000
    ```
 
-1. データベース アカウントの上位 3 つのパーティション間のずれを評価するために、パーティション キーの統計を取得する方法
-
-   ```Kusto
-   AzureDiagnostics 
-   | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics" 
-   | project SubscriptionId, regionName_s, databaseName_s, collectionName_s, partitionKey_s, sizeKb_d, ResourceId
-   ```
-
 1. 操作、要求の課金、または応答の長さの P99 または P50 レプリケーションの待機時間を取得する方法
 
    ```Kusto
@@ -238,7 +230,7 @@ Azure portal、CLI、または PowerShell を使用して診断設定を作成�
  
 1. Controlplane ログを取得する方法
  
-   必ず[キーベースのメタデータ書き込みアクセスを無効にする方法](audit-control-plane-logs.md#disable-key-based-metadata-write-access)に関する記事の説明に従ってフラグをオンに切り替えてから、Azure PowerShell、CLI、または ARM を使用して操作を実行してください。
+   必ず[キーベースのメタデータ書き込みアクセスを無効にする方法](audit-control-plane-logs.md#disable-key-based-metadata-write-access)に関する記事の説明に従ってフラグをオンに切り替えてから、Azure PowerShell、Azure CLI、または Azure Resource Manager を使用して操作を実行してください。
  
    ```Kusto  
    AzureDiagnostics 

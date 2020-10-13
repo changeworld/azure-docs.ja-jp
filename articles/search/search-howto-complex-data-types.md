@@ -8,13 +8,13 @@ ms.author: brjohnst
 tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
-ms.openlocfilehash: 5b430d5a8f0c2702617b7f6b3935e1b169753552
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 10/07/2020
+ms.openlocfilehash: ee1c0957761fc1c8b9ca80477defae8cef044827
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91530856"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824464"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Azure Cognitive Search で複合データ型をモデル化する方法
 
@@ -35,11 +35,13 @@ Azure portal の**データのインポート** ウィザードで読み込む�
 
 次の JSON ドキュメントは、単純フィールドと複合フィールドで構成されています。 `Address` や `Rooms` などの複合フィールドには、サブフィールドがあります。 `Address` はドキュメント内の単一オブジェクトなので、サブフィールドには単一の値のセットがあります。 対照的に、`Rooms` のサブフィールドには、コレクション内の各オブジェクトに 1 つずつ、複数の値のセットがあります。
 
+
 ```json
 {
   "HotelId": "1",
   "HotelName": "Secret Point Motel",
   "Description": "Ideally located on the main commercial artery of the city in the heart of New York.",
+  "Tags": ["Free wifi", "on-site parking", "indoor pool", "continental breakfast"]
   "Address": {
     "StreetAddress": "677 5th Ave",
     "City": "New York",
@@ -48,17 +50,26 @@ Azure portal の**データのインポート** ウィザードで読み込む�
   "Rooms": [
     {
       "Description": "Budget Room, 1 Queen Bed (Cityside)",
-      "Type": "Budget Room",
-      "BaseRate": 96.99
+      "RoomNumber": 1105,
+      "BaseRate": 96.99,
     },
     {
       "Description": "Deluxe Room, 2 Double Beds (City View)",
       "Type": "Deluxe Room",
-      "BaseRate": 150.99
-    },
+      "BaseRate": 150.99,
+    }
+    . . .
   ]
 }
 ```
+
+<a name="indexing-complex-types></a>
+
+## <a name="indexing-complex-types"></a>複合型のインデックス作成
+
+インデックス作成時には、1 つのドキュメント内のすべての複合コレクションに対して最大 3,000 個の要素を持つことができます。 複合コレクションの 1 つの要素は、そのコレクションのメンバーです。そのため、部屋 (ホテルの例では唯一の複合コレクション) の場合は、各部屋が 1 つの要素となります。 上の例では、"Secret Point Motel" に 500 室の部屋がある場合、ホテルのドキュメントには 500 の部屋要素が含まれることになります。 入れ子になった複合コレクションでは、外側 (親) の要素に加えて、入れ子になった各要素もカウントされます。
+
+この制限は、複合型 (アドレスなど) や文字列コレクション (タグなど) ではなく、複合コレクションにのみ適用されます。
 
 ## <a name="creating-complex-fields"></a>複合フィールドの作成
 
@@ -93,7 +104,7 @@ Azure portal の**データのインポート** ウィザードで読み込む�
 
 ## <a name="updating-complex-fields"></a>複合フィールドの更新
 
-一般にフィールドに適用されるすべての[再インデックス作成規則](search-howto-reindex.md)は、複合フィールドにも適用されます。 ここでいくつかの主な規則を言い換えると、フィールドの追加にはインデックスの再構築が必要ありませんが、ほとんどの修正には必要です。
+一般にフィールドに適用されるすべての[再インデックス作成規則](search-howto-reindex.md)は、複合フィールドにも適用されます。 ここで、主な規則をいくつか言い換えてみます。フィールドの複合型への追加にインデックスの再構築は必要ありませんが、修正する場合には、ほとんどの場合で必要となります。
 
 ### <a name="structural-updates-to-the-definition"></a>定義に対する構造的な更新
 

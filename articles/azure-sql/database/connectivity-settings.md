@@ -9,12 +9,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 07/06/2020
-ms.openlocfilehash: eab9004b37da83b5d571ff700c32215354286c94
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: a3ceb78a85546e5e75c4c484f131b67ff7fc9249
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91443854"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824139"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL の接続の設定
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "91443854"
 この記事では、Azure SQL Database と Azure Synapse Analytics のサーバーへの接続を制御する設定について説明します。 これらの設定は、サーバーに関連する**すべての** SQL Database および Azure Synapse データベースに適用されます。
 
 > [!IMPORTANT]
-> この記事は、**Azure SQL Managed Instance** には適用*されません*。
+> この記事は、**Azure SQL Managed Instance** には適用され "*ません*"。
 
 接続設定は、次のスクリーンショットに示すように、 **[ファイアウォールと仮想ネットワーク]** ブレードからアクセスできます。
 
@@ -38,6 +38,9 @@ ms.locfileid: "91443854"
  ![接続のスクリーンショット。パブリック ネットワーク アクセスが拒否されています][2]
 
 論理サーバーにプライベート エンドポイントが存在しない状態で **[パブリック ネットワーク アクセスの拒否]** 設定を **[はい]** に設定しようとすると失敗し、次のようなエラー メッセージが表示されます。  
+
+> [!NOTE]
+> プライベート エンドポイントを使用して既に構成されている論理サーバー上で仮想ネットワークのファイアウォール規則を定義するには、 **[パブリック ネットワーク アクセスの拒否]** を **[いいえ]** に設定します。
 
 ```output
 Error 42102

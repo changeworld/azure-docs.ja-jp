@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/23/2017
 ms.author: alkohli
-ms.openlocfilehash: dff1d8f48b275fa7e45dab93b5ce45962499b450
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 8b74e23147e4dcc6f786c1c08b8a03bd07dd0b9a
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563881"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744034"
 ---
 # <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>Azure Automation Runbook を使用して StorSimple デバイスを管理する
 
@@ -85,7 +85,7 @@ StorSimple 8000 シリーズ デバイス管理用のオートメーション �
 
 6. オートメーション モジュールの zip ファイルが `C:\scripts\StorSimpleSDKTools` に作成されていることを確認します。
 
-    ![StorSimpleSDKTools フォルダーのスクリーンショット。オートメーション モジュールの zip ファイルを確認できます。](./media/storsimple-8000-automation-azurerm-runbook/verify-automation-module.png)
+    ![StorSimpleSDKTools フォルダーのスクリーンショット。オートメーション モジュールの zip ファイルを確認できます](./media/storsimple-8000-automation-azurerm-runbook/verify-automation-module.png)
 
 7. Windows PowerShell を使用してオートメーション モジュールを作成すると、次の出力が表示されます。
 
@@ -184,7 +184,7 @@ StorSimple 8000 シリーズ デバイス管理用のオートメーション �
    5. **[Create Run As account]\(実行アカウントの作成\)** オプションは既定値の選択状態のままにします。
    6. オプションで、 **[ダッシュボードにピン留めする]** をオンにします。 **Create** をクリックしてください。
 
-       ![[Automation アカウント] ウィンドウのスクリーンショット。[サブスクリプション]、[Create Run As account]\(実行アカウントの作成\)、[作成] に値が入力されます。](./media/storsimple-8000-automation-azurerm-runbook/create-automation-account.png)
+       ![[Automation アカウント] ウィンドウのスクリーンショット。[サブスクリプション]、[Create Run As account]\(実行アカウントの作成\)、[作成] 2 に値が入力されます。](./media/storsimple-8000-automation-azurerm-runbook/create-automation-account.png)
 
       Automation アカウントが正常に作成されると、その旨が通知されます。 Automation アカウントの作成方法の詳細については、[実行アカウントの作成](https://docs.microsoft.com/azure/automation/automation-create-runas-account)に関するページを参照してください。
 
@@ -196,7 +196,7 @@ StorSimple 8000 シリーズ デバイス管理用のオートメーション �
 
 5. **[モジュールの追加]** ブレードで、zip 形式のモジュールの場所を参照し、モジュールを選択して開きます。 **[OK]** をクリックします。
 
-    ![[モジュールの追加] ウィンドウのスクリーンショット。[ファイルのアップロード] 値と [OK] を確認できます。](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
+    ![[モジュールの追加] ウィンドウのスクリーンショット。[ファイルのアップロード] 値と [OK] を確認できます](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
 
 6. **[プロセス オートメーション] > [Runbook] に移動し、[+ Runbook の追加] をクリックします**。 **[Runbook の追加]** ブレードで、 **[既存の Runbook のインポート]** をクリックします。 **[Runbook ファイル]** で、Windows PowerShell スクリプト ファイルを参照します。 Runbook の種類が自動的に選択されます。 Runbook の名前と説明 (オプション) を入力します。 **Create** をクリックしてください。
 
@@ -208,11 +208,11 @@ StorSimple 8000 シリーズ デバイス管理用のオートメーション �
 
 8. Runbook を編集し、 **[テスト ウィンドウ]** をクリックします。 StorSimple デバイス マネージャー サービスの名前、StorSimple デバイスの名前、サブスクリプションなどのパラメーターを入力します。 テストを**開始**します。 実行が完了すると、レポートが生成されます。 詳細については、[Runbook のテスト方法](../automation/automation-first-runbook-textual-powershell.md#step-3---test-the-runbook)に関するセクションを参照してください。
 
-    ![[テスト] ウィンドウのスクリーンショット。パラメーター値を入力し、テストを開始できます。](./media/storsimple-8000-automation-azurerm-runbook/test-runbook.png)
+    ![[テスト] ウィンドウのスクリーンショット。パラメーター値を入力し、テストを開始できます](./media/storsimple-8000-automation-azurerm-runbook/test-runbook.png)
 
 9. [テスト] ウィンドウで Runbook の出力を確認します。 問題がなければ、ウィンドウを閉じます。 **[発行]** をクリックします。確認を求められたら確定して Runbook を発行します。
 
-    ![[PowerShell Runbook の編集] ウィンドウのスクリーンショット。Runbook の発行に進むように求められます。](./media/storsimple-8000-automation-azurerm-runbook/publish-runbook.png)
+    ![[PowerShell Runbook の編集] ウィンドウのスクリーンショット。Runbook の発行に進むか問われます](./media/storsimple-8000-automation-azurerm-runbook/publish-runbook.png)
 
 ## <a name="next-steps"></a>次のステップ
 

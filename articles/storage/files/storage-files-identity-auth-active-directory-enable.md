@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 1a517b5eeac12f7d1ff342206300831d7c38ed28
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: bb408c762c33e4d146a2f0ef36f32e525b3859bd
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563405"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758270"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>概要 - SMB を使用した Azure ファイル共有へのオンプレミスの Active Directory Domain Services 認証
 
@@ -24,7 +24,7 @@ Azure ファイル共有を初めて使用する場合は、次の一連の記�
 
 - Azure Files のオンプレミス AD DS 認証に使用される AD DS ID は、Azure AD に同期されている必要があります。 パスワード ハッシュの同期はオプションです。 
 - Azure File Sync によって管理されている Azure ファイル共有がサポートされます。
-- AD と RC4-HMAC および AES 256 暗号化を使用した Kerberos 認証がサポートされています。 AES 128 Kerberos 暗号化はまだサポートされていません。
+- AD と RC4-HMAC および [AES 256 暗号化](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption)を使用した Kerberos 認証がサポートされています。 AES 128 Kerberos 暗号化はまだサポートされていません。
 - シングル サインオン エクスペリエンスがサポートされます。
 - Windows 7 または Windows Server 2008 R2 より新しい OS バージョンで実行されるクライアント上でのみ、サポートされます。
 - ストレージ アカウントの登録先の AD フォレストに対してサポートされのみます。 既定では、単一のフォレストからのみ、AD DS 資格情報を使用して Azure ファイル共有にアクセスできます。 別のフォレストから Azure ファイル共有にアクセスする必要がある場合は、適切なフォレストの信頼が構成されていることを確認してください。詳細については、[よくあるご質問](storage-files-faq.md#ad-ds--azure-ad-ds-authentication)に関するページを参照してください。
@@ -54,7 +54,9 @@ Azure ファイル共有に対する AD DS 認証を有効にする前に、次�
 
     ファイル共有を含むストレージ アカウントが、Azure AD DS 認証用にまだ構成されていないことを確認します。 ストレージ アカウントで Azure Files Azure AD DS 認証が有効になっている場合は、オンプレミスの AD DS を使用するように変更する前に無効にする必要があります。 これは、Azure AD DS 環境で構成された既存の ACL を、適切なアクセス許可を適用するために再構成する必要があることを意味します。
 
-    Azure Files への接続に問題が発生した場合は、[Windows での Azure Files マウント エラーに対して発行したトラブルシューティング ツール](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)に関する記事を参照してください。 また、ポート 445 がブロックされている場合のシナリオを回避するための[ガイダンス](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access)も提供されています。 
+
+    Azure Files への接続に問題が発生した場合は、[Windows での Azure Files マウント エラーに対して発行したトラブルシューティング ツール](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/)に関する記事を参照してください。 また、ポート 445 がブロックされている場合のシナリオを回避するための[ガイダンス](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access)も提供されています。 
+
 
 - Azure ファイル共有への AD DS 認証を有効にして構成するには、事前に、関連するネットワーク構成を行います。 詳細については、「[Azure Files のネットワークに関する考慮事項](storage-files-networking-overview.md)」を参照してください。
 

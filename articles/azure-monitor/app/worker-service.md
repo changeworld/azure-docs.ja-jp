@@ -4,16 +4,16 @@ description: Azure Monitor Application Insights を使用した .NET Core/.NET F
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/11/2020
-ms.openlocfilehash: 12be39e36c003531b815e137cbd1d360ca7f0fd6
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 643edf81d6a98c8f423267b657feb9dfb6da1070
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91760480"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816393"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>ワーカー サービス アプリケーション (非 HTTP アプリケーション) 向け Application Insights
 
-Application Insights では、`Microsoft.ApplicationInsights.WorkerService` と呼ばれる新しい SDK がリリースされます。これは、メッセージング、バックグラウンド タスク、コンソール アプリケーションなどの非 HTTP ワークロードに最適です。これらの種類のアプリケーションには、従来の ASP.NET/ASP.NET Core Web アプリケーションのような受信 HTTP 要求の概念がないため、[ASP.NET](asp-net.md) または [ASP.NET Core](asp-net-core.md) アプリケーションの Application Insights パッケージの使用はサポートされていません。
+[ワーカー サービス向け Application Insights SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) は、メッセージング、バックグラウンド タスク、コンソール アプリケーションなどの非 HTTP ワークロードに最適な新しい SDK です。これらの種類のアプリケーションには、従来の ASP.NET/ASP.NET Core Web アプリケーションのような受信 HTTP 要求の概念がないため、[ASP.NET](asp-net.md) または [ASP.NET Core](asp-net-core.md) アプリケーションの Application Insights パッケージの使用はサポートされていません。
 
 新しい SDK では、単独でテレメトリは収集されません。 代わりに、[DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/)、[PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/)、[ApplicationInsightsLoggingProvider](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights) など、他の既知の Application Insights 自動コレクターを利用できます。この SDK では `IServiceCollection` の拡張メソッドを公開し、テレメトリの収集を有効にして構成します。
 
@@ -138,7 +138,7 @@ ASP.NET Core 2.1/2.2 アプリケーションでのバックグラウンド タ�
 
 完全な例は、[こちら](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService)で共有されています
 
-1. アプリケーションに Microsoft.ApplicationInsights.WorkerService(https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) パッケージをインストールします。
+1. アプリケーションに [Microsoft.ApplicationInsights.WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) パッケージをインストールします。
 2. この例のように、`ConfigureServices()` メソッドに `services.AddApplicationInsightsTelemetryWorkerService();` を追加します。
 
 ```csharp
@@ -225,7 +225,7 @@ ASP.NET Core 2.1/2.2 アプリケーションでのバックグラウンド タ�
 
 完全な例は、[こちら](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/ConsoleAppWithApplicationInsights)で共有されています
 
-1. アプリケーションに Microsoft.ApplicationInsights.WorkerService(https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) パッケージをインストールします。
+1. アプリケーションに [Microsoft.ApplicationInsights.WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) パッケージをインストールします。
 
 2. 以下の例のように Program.cs を変更します。
 
@@ -293,7 +293,7 @@ ASP.NET Core 2.1/2.2 アプリケーションでのバックグラウンド タ�
 
 ## <a name="run-your-application"></a>アプリケーションを実行する
 
-アプリケーションを実行します。 上記のすべてのワーカー例では、bing.com に対して 1 秒ごとに http 呼び出しを行い、また、ILogger を使用していくつかのログを出力します。 これらの行は、操作を作成するために使用される、`TelemetryClient` の `StartOperation` 呼び出し内にラップされます (この例では "operation" という名前の `RequestTelemetry`)。 Application Insights では、これらの ILogger ログ (既定では警告以上) と依存関係が収集され、親子関係を持つ `RequestTelemetry` に関連付けられます。 プロセス/ネットワーク境界を越える関連付けも機能します。 たとえば、別の監視対象コンポーネントに対して呼び出しが行われた場合、この親にも関連付けられます。
+アプリケーションを実行します。 上記のすべてのワーカー例では、bing.com に対して 1 秒ごとに http 呼び出しを行い、また、`ILogger` を使用していくつかのログを出力します。 これらの行は、操作を作成するために使用される、`TelemetryClient` の `StartOperation` 呼び出し内にラップされます (この例では "operation" という名前の `RequestTelemetry`)。 Application Insights では、これらの ILogger ログ (既定では警告以上) と依存関係が収集され、親子関係を持つ `RequestTelemetry` に関連付けられます。 プロセス/ネットワーク境界を越える関連付けも機能します。 たとえば、別の監視対象コンポーネントに対して呼び出しが行われた場合、この親にも関連付けられます。
 
 `RequestTelemetry` のこのカスタム操作は、一般的な Web アプリケーションでの受信 Web 要求に相当するものと考えることができます。 操作を使用する必要はありませんが、[Application Insights の関連付けデータ モデル](./correlation.md)の場合、つまり、`RequestTelemetry` が親操作として機能し、また、ワーカー イテレーション内で生成されるすべてのテレメトリが論理的に同じ操作に属しているものとして扱われる場合に最適です。 また、この方法では、(自動および手動で) 生成されるすべてのテレメトリの `operation_id` が確実に同じになります。 サンプリングは `operation_id` に基づいているため、サンプリング アルゴリズムでは、単一のイテレーションからのすべてのテレメトリが保持または削除されます。
 

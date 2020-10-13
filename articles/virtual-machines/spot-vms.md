@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 10/05/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: c0b8f395dde1d94c4c1efa32a2f78707d1456d88
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 66d62cde9ea17e73f561dfbce94eb3d3e7175b6d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817286"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827804"
 ---
 # <a name="use-spot-vms-in-azure"></a>Azure でスポット VM を使用する
 
@@ -67,8 +67,22 @@ VM が排除されるときに、VM を削除したい場合は、排除ポリ�
 
 スポット VM の価格は、リージョンと SKU に基づいて変化します。 詳細については、[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) と [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) の VM 価格を参照してください。 
 
+[Azure 小売価格 API](/rest/api/cost-management/retail-prices/azure-retail-prices) を使用してスポット価格に関する情報を問い合わせるという方法で価格情報を問い合わせることもできます。 `meterName` と `skuName` の両方に `Spot` が含まれています。
 
 可変する価格に対して、最大 5 桁の小数点以下を使用して、最大価格を米ドル (USD) で設定することができます。 たとえば、`0.98765` の値は、1 時間あたり $0.98765 米ドルの最大価格になります。 最大価格を `-1` に設定した場合、VM は価格に基づいて削除されません。 VM の価格は、使用可能な容量とクォータがある限り、現在のスポットの価格または標準 VM の価格のいずれか低い方になります。
+
+## <a name="pricing-and-eviction-history"></a>価格と削除の履歴
+
+ポータルでは、あるリージョンの価格と削除率の履歴をサイズ別に表示できます。 **[View pricing history and compare prices in nearby regions]\(価格履歴を表示し、近くのリージョンの価格を比較する\)** を選択すると、特定のサイズに対して価格のテーブルまたはグラフが表示されます。  次の画像の価格と削除率は単なる例です。 
+
+**グラフ**:
+
+:::image type="content" source="./media/spot-chart.png" alt-text="リージョン オプションのスクリーンショット。グラフの価格と削除率に違いがあります。":::
+
+**テーブル**:
+
+:::image type="content" source="./media/spot-table.png" alt-text="リージョン オプションのスクリーンショット。グラフの価格と削除率に違いがあります。":::
+
 
 
 ##  <a name="frequently-asked-questions"></a>よく寄せられる質問
@@ -98,7 +112,7 @@ VM が排除されるときに、VM を削除したい場合は、排除ポリ�
 **A:** [Q&A](https://docs.microsoft.com/answers/topics/azure-spot.html) で質問を投稿し、`azure-spot` のタグを付けることができます。 
 
 ## <a name="next-steps"></a>次のステップ
-[CLI](./linux/spot-cli.md)、[ポータル](./windows/spot-portal.md)、[ARM テンプレート](./linux/spot-template.md)、または [PowerShell](./windows/spot-powershell.md) を使用して、スポット VM をデプロイします。
+[CLI](./linux/spot-cli.md)、[ポータル](spot-portal.md)、[ARM テンプレート](./linux/spot-template.md)、または [PowerShell](./windows/spot-powershell.md) を使用して、スポット VM をデプロイします。
 
 また、[スポット VM インスタンスを使用したスケール セット](../virtual-machine-scale-sets/use-spot.md)をデプロイすることもできます。
 

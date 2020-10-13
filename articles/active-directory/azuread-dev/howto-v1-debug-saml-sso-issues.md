@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: luleon, hirsin, paulgarn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3f1829127d1eaf65be586ddff3fb2615cae72c5d
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: fcdb0a571a9d6b81e25d061c33d8a3a812da189f
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116140"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819322"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする
 
@@ -86,7 +86,7 @@ Azure AD と対象アプリケーションの間の、SAML に基づいたシン
 
 正常にサインインしてから、アプリケーションのページにエラーが表示される場合があります。 これは、Azure AD はアプリケーションにトークンを発行したのに、アプリケーションが応答を受け付けないときに発生します。
 
-このエラーを解決するには、次の手順に従ってください。
+このエラーを解決するには、次の手順に従います。または、こちらの [Azure AD を使用して SAML SSO のトラブルシューティングを行う方法についての短いビデオ](https://www.youtube.com/watch?v=poQCJK0WPUk&list=PLLasX02E8BPBm1xNMRdvP6GtA6otQUqp0&index=8)をご覧ください。
 
 1. アプリケーションが Azure AD ギャラリー内にある場合は、アプリケーションを Azure AD と統合するすべての手順に従ったことを確認します。 アプリケーションの統合手順については、[SaaS アプリケーションの統合に関するチュートリアルの一覧](../saas-apps/tutorial-list.md)を参照してください。
 1. SAML 応答を取得します。

@@ -1,15 +1,15 @@
 ---
 title: 大規模なデータ セットを処理する
 description: Azure Resource Graph の操作中に大きなデータ セット内のレコードを取得、書式設定、ページング、およびスキップする方法について説明します。
-ms.date: 08/10/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5f3073986e424c641d884e1c2427d3d519658d37
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ee552908696aa652931bf3555391adcfec0fc6d3
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005940"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578497"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>大規模な Azure リソース データ セットの処理
 
@@ -48,7 +48,7 @@ Search-AzGraph -Query "Resources | project name | order by name asc" -First 200
 大規模なデータ セットを操作するための次のオプションは、**Skip** コントロールです。 このコントロールをクエリで使用すると、結果を返す前に定義されている数のレコードをスキップできます。 **Skip** は、結果セットの中間にあるレコードを取得することを目的として、意味のある方法で結果を並べ替えるクエリに便利です。 必要な結果が返されるデータ セットの末尾にある場合は、異なる並べ替え構成を使用し、代わりにデータ セットの先頭から結果を取得する方が効率的です。
 
 > [!NOTE]
-> **Skip** を使用するときは、`asc` または `desc` を使って、少なくとも 1 つの列を基に結果を並べ替えることをお勧めします。 並べ替えを行わないと、返される結果がランダムになり、反復可能ではなくなります。
+> **Skip** を使用するときは、`asc` または `desc` を使って、少なくとも 1 つの列を基に結果を並べ替えることをお勧めします。 並べ替えを行わないと、返される結果がランダムになり、反復可能ではなくなります。 クエリで `limit` または `take` が使用されている場合、**Skip** は無視されます。
 
 次の例では、クエリ結果の最初の _10_ レコードをスキップして、代わりに 11 番目のレコードから結果セットを返し始める方法を示します。
 

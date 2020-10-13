@@ -1,5 +1,5 @@
 ---
-title: 管理単位のグループを追加、削除、一覧表示する (プレビュー) - Azure Active Directory | Microsoft Docs
+title: 管理単位のグループを追加、削除、一覧表示する - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory で管理単位のグループとそのロールのアクセス許可を管理します
 services: active-directory
 documentationcenter: ''
@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 06/23/2020
+ms.date: 10/07/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76026313eea8c8fbb2f3e55321e2e4ebbe5dcfc7
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 133ea21bf7a7c1df0fccaeacce7d7a29199c033d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850911"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827704"
 ---
 # <a name="add-and-manage-groups-in-administrative-units-in-azure-active-directory"></a>Azure Active Directory で管理単位にグループを追加して管理する
 
@@ -31,7 +31,7 @@ Azure Active Directory (Azure AD) では、きめ細かい管理スコープで�
 
 ### <a name="azure-portal"></a>Azure portal
 
-プレビューでは、グループを管理単位に個別に割り当てることだけができます。 グループを管理単位に一括割り当てする選択肢はありません。 ポータルでは、次の 2 つの方法のいずれかで、グループを管理単位に割り当てることができます。
+グループを管理単位に個別に割り当てることだけができます。 グループを管理単位に一括割り当てする選択肢はありません。 ポータルでは、次の 2 つの方法のいずれかで、グループを管理単位に割り当てることができます。
 
 1. **Azure AD > [グループ]** ページから
 
@@ -48,12 +48,12 @@ Azure Active Directory (Azure AD) では、きめ細かい管理スコープで�
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-$administrative unitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
+$administrative unitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
 $GroupObj = Get-AzureADGroup -Filter "displayname eq 'TestGroup'"
-Add-AzureADAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId -RefObjectId $GroupObj.ObjectId
+Add-AzureADMSAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId -RefObjectId $GroupObj.ObjectId
 ```
 
-この例では、コマンドレット Add-AzureADAdministrativeUnitMember を使用して、グループを管理単位に追加します。 管理単位のオブジェクト ID と追加するグループのオブジェクト ID が引数として受け取られます。 強調表示されたセクションは、それぞれの環境で必要に応じて変更される場合があります。
+この例では、コマンドレット Add-AzureADMSAdministrativeUnitMember を使用して、グループを管理単位に追加します。 管理単位のオブジェクト ID と追加するグループのオブジェクト ID が引数として受け取られます。 強調表示されたセクションは、それぞれの環境で必要に応じて変更される場合があります。
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
@@ -63,7 +63,7 @@ POST /administrativeUnits/{Admin Unit id}/members/$ref
 
 Request body
 {
-"@odata.id":"https://graph.microsoft.com/beta/groups/{id}"
+"@odata.id":"https://graph.microsoft.com/v1.0/groups/{id}"
 }
 ```
 
@@ -71,7 +71,7 @@ Request body
 
 ```http
 {
-"@odata.id":"https://graph.microsoft.com/beta/groups/ 871d21ab-6b4e-4d56-b257-ba27827628f3"
+"@odata.id":"https://graph.microsoft.com/v1.0/groups/ 871d21ab-6b4e-4d56-b257-ba27827628f3"
 }
 ```
 
@@ -86,14 +86,14 @@ Request body
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-$administrative unitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
-Get-AzureADAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId
+$administrative unitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
+Get-AzureADMSAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId
 ```
 
 これは、管理単位のすべてのメンバーを取得する場合に役立ちます。 管理単位のメンバーであるすべてのグループを表示する場合は、次のコード スニペットを使用できます。
 
 ```http
-foreach ($member in (Get-AzureADAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId)) 
+foreach ($member in (Get-AzureADMSAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId)) 
 {
 if($member.ObjectType -eq "Group")
 {
@@ -101,11 +101,12 @@ Get-AzureADGroup -ObjectId $member.ObjectId
 }
 }
 ```
+
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
 ```http
 HTTP request
-GET /administrativeUnits/{Admin id}/members/$/microsoft.graph.group
+GET /directory/administrativeUnits/{Admin id}/members/$/microsoft.graph.group
 Request body
 {}
 ```
@@ -121,13 +122,13 @@ Azure AD ポータルでは、 **[グループ]** を開いて、グループの
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-Get-AzureADAdministrativeUnit | where { Get-AzureADAdministrativeUnitMember -ObjectId $_.ObjectId | where {$_.ObjectId -eq $groupObjId} }
+Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember -ObjectId $_.ObjectId | where {$_.ObjectId -eq $groupObjId} }
 ```
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
 ```http
-https://graph.microsoft.com/beta/groups/<group-id>/memberOf/$/Microsoft.Graph.AdministrativeUnit
+https://graph.microsoft.com/v1.0/groups/<group-id>/memberOf/$/Microsoft.Graph.AdministrativeUnit
 ```
 
 ## <a name="remove-a-group-from-an-au"></a>AU からグループを削除する
@@ -136,24 +137,31 @@ https://graph.microsoft.com/beta/groups/<group-id>/memberOf/$/Microsoft.Graph.Ad
 
 Azure portal で管理単位からグループを削除する方法は 2 つあります。
 
-**[Azure AD]**  >  **[グループ]** の順に開き、管理単位から削除するグループのプロファイルを開きます。 左側のパネルで **[管理単位]** を選択して、そのグループがメンバーとなっているすべての管理単位を一覧表示します。 グループが削除される管理単位を選択してから、 **[Remove from administrative unit] (管理単位から削除する)** を選択します。
+- グループ概要から削除する
 
-![管理単位からグループを削除する](./media/roles-admin-units-add-manage-groups/group-au-remove.png)
+  1. **[Azure AD]** 、 **[グループ]** の順に開き、管理単位から削除するグループのプロファイルを開きます。
+  1. 左側のパネルで **[管理単位]** を選択して、そのグループがメンバーとなっているすべての管理単位を一覧表示します。 グループが削除される管理単位を選択してから、 **[Remove from administrative unit] (管理単位から削除する)** を選択します。
 
-もう 1 つの方法として、 **[Azure AD]**  >  **[管理単位]** の順にアクセスし、グループがメンバーとなっている管理単位を選択できます。 左側のパネルで **[グループ]** を選択して、メンバーのグループを一覧表示します。 管理単位から削除するグループを選択し、 **[グループの削除]** を選択します。
+    ![管理単位からグループを削除する](./media/roles-admin-units-add-manage-groups/group-au-remove.png)
 
-![管理単位のグループを一覧表示する](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
+- 管理単位から削除する
+
+  1. **[Azure AD]** 、 **[管理単位]** の順に開き、グループがメンバーとなっている管理単位を選択します。
+  1. 左側のパネルで **[グループ]** を選択して、メンバーのグループを一覧表示します。
+  1. 管理単位から削除するグループを選択し、 **[グループの削除]** を選択します。
+
+    ![管理単位のグループを一覧表示する](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
 
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-Remove-AzureADAdministrativeUnitMember -ObjectId $auId -MemberId $memberGroupObjId
+Remove-AzureADMSAdministrativeUnitMember -ObjectId $auId -MemberId $memberGroupObjId
 ```
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
 ```http
-https://graph.microsoft.com/beta/administrativeUnits/<adminunit-id>/members/<group-id>/$ref
+https://graph.microsoft.com/v1.0/directory/AdministrativeUnits/<adminunit-id>/members/<group-id>/$ref
 ```
 
 ## <a name="next-steps"></a>次のステップ

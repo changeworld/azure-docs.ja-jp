@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c6c5c9b00ec3309638a7c5618e5995c8c5f07b11
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 636332c52ea71c7f84cca2f7ef526bc31200e11c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564373"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91822176"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Azure Digital Twins と Azure Time Series Insights を統合する
 
@@ -65,7 +65,7 @@ Azure Digital Twins の "[*チュートリアル: エンドツーエンドのソ
     az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from above> --eventhub-name <Twins event hub name from above> --name <name for your Twins auth rule>
     ```
 
-4. イベント グリッド トピックを Azure Digital Twins インスタンスにリンクする Azure Digital Twins [エンドポイント](concepts-route-events.md#create-an-endpoint)を作成します。
+4. イベント ハブを Azure Digital Twins インスタンスにリンクする Azure Digital Twins [エンドポイント](concepts-route-events.md#create-an-endpoint)を作成します。
 
     ```azurecli
     az dt endpoint create eventhub --endpoint-name <name for your Event Hubs endpoint> --eventhub-resource-group <resource group name> --eventhub-namespace <Event Hubs namespace from above> --eventhub <Twins event hub name from above> --eventhub-policy <Twins auth rule from above> -n <your Azure Digital Twins instance name>
@@ -121,12 +121,14 @@ namespace SampleFunctionsApp
             Dictionary<string, object> tsiUpdate = new Dictionary<string, object>();
             foreach (var operation in message["patch"]) {
                 if (operation["op"].ToString() == "replace" || operation["op"].ToString() == "add")
+                {
                     //Convert from JSON patch path to a flattened property for TSI
                     //Example input: /Front/Temperature
                     //        output: Front.Temperature
                     string path = operation["path"].ToString().Substring(1);                    
                     path = path.Replace("/", ".");                    
                     tsiUpdate.Add(path, operation["value"]);
+                }
             }
             //Send an update if updates exist
             if (tsiUpdate.Count>0){
@@ -178,7 +180,7 @@ namespace SampleFunctionsApp
 2. 取得した接続文字列を使用して、接続文字列が含まれるアプリ設定を関数アプリに作成します。
 
     ```azurecli
-    az functionapp config appsettings set --settings "EventHubAppSetting-Twins=<Twins event hub connection string> -g <resource group> -n <your App Service (function app) name>"
+    az functionapp config appsettings set --settings "EventHubAppSetting-Twins=<Twins event hub connection string>" -g <resource group> -n <your App Service (function app) name>
     ```
 
 ### <a name="set-the-time-series-insights-event-hub-connection-string"></a>Time Series Insights イベント ハブの接続文字列を設定する
@@ -192,7 +194,7 @@ namespace SampleFunctionsApp
 2. 関数アプリで、接続文字列が含まれるアプリ設定を作成します。
 
     ```azurecli
-    az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<TSI event hub connection string> -g <resource group> -n <your App Service (function app) name>"
+    az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<TSI event hub connection string>" -g <resource group> -n <your App Service (function app) name>
     ```
 
 ## <a name="create-and-connect-a-time-series-insights-instance"></a>Azure Time Series Insights インスタンスを作成して接続する
@@ -203,11 +205,11 @@ namespace SampleFunctionsApp
     1. **[PAYG (プレビュー)]** 価格レベルを選択します。
     2. この環境に対する**時系列 ID** を選択する必要があります。 時系列 ID は、Time Series Insights でデータを検索するために使用し、最大 3 つの値を使用できます。 このチュートリアルでは、 **$dtId** を使用できます ID 値の選択について詳しくは、「[*時系列 ID の選択のベスト プラクティス*](https://docs.microsoft.com/azure/time-series-insights/how-to-select-tsid)」を参照してください。
     
-        :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="Time Series Insights 環境用の作成ポータル UX。PAYG (プレビュー) 価格レベルが選択されていて、時系列 ID プロパティの名前は $dtId である":::
+        :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="Time Series Insights が強調して示されている、エンドツーエンドのシナリオでの Azure サービスのビュー":::
 
 2. **[Next:イベント ソース]** を選択し、上記の Event Hubs 情報を選択します。 新しい Event Hubs コンシューマー グループを作成する必要もあります。
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/event-source-twins.png" alt-text="Time Series Insights 環境イベント ソースの作成ポータル UX。上記のイベント ハブ情報を使用してイベント ソースを作成している。また、新しいコンシュー マーグループも作成している。":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/event-source-twins.png" alt-text="Time Series Insights が強調して示されている、エンドツーエンドのシナリオでの Azure サービスのビュー":::
 
 ## <a name="begin-sending-iot-data-to-azure-digital-twins"></a>Azure Digital Twins への IoT データの送信を始める
 
@@ -223,19 +225,19 @@ Time Series Insights へのデータの送信を始めるには、Azure Digital 
 
 1. [Azure portal](https://portal.azure.com) で、Time Series Insights インスタンスを開きます (ポータルの検索バーでインスタンスの名前を検索できます)。 インスタンスの概要で示されている *Time Series Insights Explorer URL* にアクセスします。
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="Time Series Insights 環境の概要タブで Time Series Insights Explorer の URL を選択する":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="Time Series Insights が強調して示されている、エンドツーエンドのシナリオでの Azure サービスのビュー":::
 
 2. エクスプローラーの左側に、Azure Digital Twins からの 3 つのツインが表示されます。 _**thermostat67**_ を選択し、**temperature** を選択して、 **[追加]** をクリックします。
 
-    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="**thermostat67**、**temperature**、**[追加]** の順に選択する":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="Time Series Insights が強調して示されている、エンドツーエンドのシナリオでの Azure サービスのビュー":::
 
 3. 次に示すように、サーモスタットからの初期温度の測定値が表示されます。 同じ温度の測定値が *room21* と *floor1* に対して更新され、それらのデータ ストリームを同時に見ることができます。
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/initial-data.png" alt-text="初期温度データが TSI Explorer でグラフ化される。68 から 85 までのランダムな値である":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/initial-data.png" alt-text="Time Series Insights が強調して示されている、エンドツーエンドのシナリオでの Azure サービスのビュー":::
 
 4. シミュレーションを長時間実行させておくと、表示は次のようになります。
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="各ツインの気温データが、異なる色の 3 本の平行線でグラフ化される。":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="Time Series Insights が強調して示されている、エンドツーエンドのシナリオでの Azure サービスのビュー":::
 
 ## <a name="next-steps"></a>次のステップ
 
