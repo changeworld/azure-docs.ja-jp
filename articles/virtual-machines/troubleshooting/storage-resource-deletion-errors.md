@@ -1,6 +1,6 @@
 ---
 title: Azure における Linux VM でのストレージ リソースの削除エラーをトラブルシューティングする | Microsoft Docs
-description: 接続された VHD を含むストレージ リソースを削除するときの問題をトラブルシューティングする方法について説明します。
+description: 接続された VHD が含まれるストレージ リソースを削除するときの、Linux VM での問題をトラブルシューティングする方法について説明します。
 keywords: ''
 services: virtual-machines
 author: genlin
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 8f145dcf8d476009d81056b3f4f970460209a5bc
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 8d727bc8bdc8f015504baa57f9596b3bacac9712
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649739"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651635"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>ストレージ リソースの削除エラーのトラブルシューティング
 
@@ -95,7 +95,7 @@ VHD がデータ ディスクの場合、リースを削除するには VHD を 
 7. **[ディスク]** ウィンドウの上部の **[編集]** を選びます。
 8. 削除するデータ ディスクの**切断アイコン**をクリックします。
 
-     ![ストレージの [BLOB のメタデータ] ウィンドウが開かれている Portal のスクリーンショット](./media/troubleshoot-vhds/utd-vm-disks-edit.png)
+     ![ストレージの [BLOB のメタデータ] ペインが開かれ、削除するデータ ディスクのデタッチ アイコンが強調して示されている、ポータルのスクリーンショット。](./media/troubleshoot-vhds/utd-vm-disks-edit.png)
 
 9. **[保存]** を選択します。 これでディスクが VM からデタッチされ、VHD のリースが解除されます。 リースが解除されるまで数分かかる場合があります。 リースが解除されたことを確認するには、BLOB の場所の **[BLOB のプロパティ]** ウィンドウで、 **[リース ステータス]** の値が **[ロック解除]** または **[利用可能]** になっていることを確認します。
 

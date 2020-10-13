@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: duau
-ms.openlocfilehash: b72126933c5454b8fabe19dda08ad5eb66edd1ba
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: f080f5011311101ed8f9faa2ee807c030a048409
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89392672"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653045"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>Traffic Manager のパフォーマンスに関する考慮事項
 
@@ -50,7 +50,7 @@ Traffic Manager プロファイルの動作とパフォーマンスを理解す�
 
     最も簡単なツールの 1 つは WebSitePulse です。 URL を入力すると、DNS 解決時間、最初のバイト、最後のバイト、その他のパフォーマンス統計が表示されます。 3 つの異なるテストの場所から選択できます。 今回の例では、最初の実行時には DNS lookup が 0.204 秒かかっていることが分かります。
 
-    ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png)
+    !["DNS" 参照の結果が強調して示されている "WebSitePulse" ツールを示すスクリーンショット。](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png)
 
     結果がキャッシュに保存されるため、同じ Traffic Manager エンドポイントに対する 2 回目のテストでは、DNS lookup にかかった時間は 0.002 秒になっています。
 

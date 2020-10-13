@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: 40b96cac4c9ad638373fbb75f736dc7eded42b43
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 9a781fd48b30ccb32b0a733e5aa1ac054b96dc12
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883942"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323657"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Azure Security Center でのセキュリティ ソリューションの統合
 このドキュメントは、既に Azure Security Center に接続されているセキュリティ ソリューションを管理したり、新しいセキュリティ ソリューションを追加したりする際に役立ちます。
@@ -40,7 +40,7 @@ Azure Defender のお客様が利用できる組み込みのスキャナーな�
 Security Center では、次の脆弱性分析も提供しています：
 
 * SQL データベース - 「[脆弱性評価ダッシュボードで脆弱性評価レポートの探索をする](defender-for-sql-usage.md#explore-vulnerability-assessment-reports) 」を参照する
-* Azure Container Registry イメージ - 「[Azure Container Registry を Security Center と統合する （プレビュー）](azure-container-registry-integration.md)」を参照する
+* Azure Container Registry イメージ - 「[コンテナー レジストリ用の Azure Defender を使用してイメージの脆弱性をスキャンする](defender-for-container-registries-usage.md)」を参照する
 
 ## <a name="how-security-solutions-are-integrated"></a>セキュリティ ソリューションを統合するしくみ
 Security Center からデプロイされている Azure セキュリティ ソリューションは自動的に接続されます。 オンプレミスまたは他のクラウドで実行されているコンピューターなど、その他のセキュリティ データ ソースも接続できます。

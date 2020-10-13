@@ -127,6 +127,8 @@
               href: network-watcher-nsg-flow-logging-rest.md
             - name: Azure Resource Manager
               href: network-watcher-nsg-flow-logging-azure-resource-manager.md
+            - name: ビルトイン ポリシー
+              href: nsg-flow-logs-policy-portal.md
         - name: NSG フロー ログ ストレージ BLOB の削除
           href: network-watcher-delete-nsg-flow-log-blobs.md
         - name: NSG フロー ログの分析

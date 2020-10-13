@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 1/8/2019
-ms.openlocfilehash: 84f5a8f638e4a9525b330277ff1eaa26ba035e1a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3d23ee6119b625e11ce44bb9ad11ce4b3ee0280d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907411"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295738"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) でユーザーを作成する
 
@@ -28,7 +28,7 @@ PostgreSQL エンジンは[ロール](https://www.postgresql.org/docs/current/sq
 * `postgres`
 * `citus`
 
-Hyperscale はマネージド PaaS サービスであるため、Microsoft だけが `postgres` スーパー ユーザー ロールでサインインできます。 制限付き管理アクセスの場合は、Hyperscale によって `citus` ロールが提供されます。
+Hyperscale (Citus) はマネージド PaaS サービスであるため、Microsoft だけが `postgres` スーパー ユーザー ロールでサインインできます。 制限付き管理アクセスの場合は、Hyperscale (Citus) によって `citus` ロールが提供されます。
 
 `citus` ロールのアクセス許可:
 
@@ -46,13 +46,13 @@ Hyperscale はマネージド PaaS サービスであるため、Microsoft だ�
 
 前述したように、`citus` 管理者アカウントには、追加のユーザーを作成するアクセス許可がありません。 ユーザーを追加するには、Azure portal インターフェイスを使用します。
 
-1. Hyperscale サーバー グループの **[ロール]** ページに移動して、 **[+ 追加]** をクリックします。
+1. Hyperscale (Citus) サーバー グループの **[ロール]** ページに移動して、 **[+ 追加]** をクリックします。
 
    :::image type="content" source="media/howto-hyperscale-create-users/1-role-page.png" alt-text="[ロール] ページ":::
 
 2. ロール名とパスワードを入力します。 **[保存]** をクリックします。
 
-   :::image type="content" source="media/howto-hyperscale-create-users/2-add-user-fields.png" alt-text="ロールの追加":::
+   :::image type="content" source="media/howto-hyperscale-create-users/2-add-user-fields.png" alt-text="[ロール] ページ":::
 
 ユーザーは、サーバー グループのコーディネーター ノード上に作成され、すべてのワーカー ノードに伝達されます。 Azure portal によって作成されたロールには `LOGIN` 属性があります。つまり、これらはデータベースにサインインできる実際のユーザーであることを意味します。
 
@@ -75,9 +75,9 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;
 
 ## <a name="how-to-delete-a-user-role-or-change-their-password"></a>ユーザー ロールの削除またはパスワードの変更方法
 
-ユーザーを更新するには、Hyperscale サーバー グループの **[ロール]** ページに移動して、ユーザーの横にある省略記号 **[...]** をクリックします。 省略記号をクリックすると、ユーザーの削除やパスワードのリセットのためのメニューが表示されます。
+ユーザーを更新するには、Hyperscale (Citus) サーバー グループの **[ロール]** ページに移動して、ユーザーの横にある省略記号 **[...]** をクリックします。 省略記号をクリックすると、ユーザーの削除やパスワードのリセットのためのメニューが表示されます。
 
-   :::image type="content" source="media/howto-hyperscale-create-users/edit-role.png" alt-text="ロールを編集する":::
+   :::image type="content" source="media/howto-hyperscale-create-users/edit-role.png" alt-text="[ロール] ページ":::
 
 `citus` ロールには特権が与えられているため、削除できません。
 
