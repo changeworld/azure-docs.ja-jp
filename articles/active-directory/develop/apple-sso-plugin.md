@@ -13,12 +13,12 @@ ms.date: 09/15/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: e43ce318ca9e9b14ad059dd296799667653e0f95
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: ec0ab4601e15129ecd8917e0e750a3e1661dc558
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561348"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530699"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Apple デバイス用の Microsoft Enterprise SSO プラグイン (プレビュー)
 
@@ -93,7 +93,7 @@ MSAL または ASWebAuthenticationSession を使用するアプリケーショ�
 
 Microsoft Enterprise SSO プラグインの既定では、SSO プラグインが既に共有資格情報を持っている場合にのみ、承認済みアプリに SSO を提供します。 Microsoft Enterprise SSO プラグインは、トークンの取得中に別の ADAL または MSAL ベースのアプリケーションによって呼び出されると、共有資格情報を取得できます。 ほとんどの Microsoft アプリには、Microsoft Authenticator または SSO プラグインが使用されています。 つまり、既定では、ネイティブ アプリ フローの外部で SSO を行うことがベスト エフォートです。  
 
-`browser_sso_interaction_enabled` フラグを有効にすると、非 MSAL アプリと Safari ブラウザーが初期ブートストラップを実行し、共有資格情報を取得できるようになります。 Microsoft Enterprise SSO プラグインにまだ共有資格情報がない場合、Safari ブラウザー、ASWebAuthenticationSession、SafariViewController、または別のホワイトリストに登録されたネイティブ アプリケーション内の Azure AD URL からサインインが要求されると、資格情報の取得が試行されます。  
+`browser_sso_interaction_enabled` フラグを有効にすると、非 MSAL アプリと Safari ブラウザーが初期ブートストラップを実行し、共有資格情報を取得できるようになります。 Microsoft Enterprise SSO プラグインにまだ共有資格情報がない場合、Safari ブラウザー、ASWebAuthenticationSession、SafariViewController、または別の許可されたネイティブ アプリケーション内の Azure AD URL からサインインが要求されると、資格情報の取得が試行されます。  
 
 - **キー**: `browser_sso_interaction_enabled`
 - **型**: `Integer`
