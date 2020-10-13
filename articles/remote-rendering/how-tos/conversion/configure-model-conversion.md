@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: dda2676f258705ed833068c966bcc57115434b0d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 2134dde0fa0b92bec4519c0d6a24dcaad3792baa
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90967211"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575182"
 ---
 # <a name="configure-the-model-conversion"></a>モデルの変換を構成する
 
@@ -33,7 +33,6 @@ ms.locfileid: "90967211"
         "scaling" : { "type" : "number", "exclusiveMinimum" : 0, "default" : 1.0 },
         "recenterToOrigin" : { "type" : "boolean", "default" : false },
         "opaqueMaterialDefaultSidedness" : { "type" : "string", "enum" : [ "SingleSided", "DoubleSided" ], "default" : "DoubleSided" },
-        "material-override" : { "type" : "string", "default" : "" },
         "gammaToLinearMaterial" : { "type" : "boolean", "default" : false },
         "gammaToLinearVertex" : { "type" : "boolean", "default" : false },
         "sceneGraphMode": { "type" : "string", "enum" : [ "none", "static", "dynamic" ], "default" : "dynamic" },
@@ -85,10 +84,6 @@ ms.locfileid: "90967211"
 
 * `opaqueMaterialDefaultSidedness` - レンダリング エンジンでは、不透明な素材は両面であると想定されます。
 その想定が特定のモデルでは正しくない場合は、このパラメーターを "SingleSided" に設定する必要があります。 詳細については、「[:::no-loc text="single sided":::レンダリング](../../overview/features/single-sided-rendering.md)」を参照してください。
-
-### <a name="material-overrides"></a>素材のオーバーライド
-
-* `material-override` - このパラメーターを使用すると、素材の処理を[変換中にカスタマイズする](override-materials.md)ことができます。
 
 ### <a name="material-de-duplication"></a>素材の重複除去
 
@@ -305,6 +300,8 @@ ms.locfileid: "90967211"
 
 モデル固有ではないファイル名 `conversionSettings.json` を使用して設定を指定することは、引き続きサポートされますが、非推奨となっています。
 代わりに、モデル固有のファイル名 `<modelName>.ConversionSettings.json` を使用します。
+
+変換設定ファイルでの[素材のオーバーライド ファイル](override-materials.md)を識別するための `material-override` 設定の使用は引き続きサポートされていますが、非推奨です。 代わりに、モデル固有のファイル名 `<modelName>.MaterialOverrides.json` を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 

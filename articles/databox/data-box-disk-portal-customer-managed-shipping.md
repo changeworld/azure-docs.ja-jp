@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 05/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 7b069d1bf16e8cbf4dfc245fbb3c66863cd0b994
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: c4b3479e5728c32e66bc40f950bc948bf61dce42
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055575"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575165"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-disk-in-the-azure-portal"></a>Azure portal で Azure Data Box Disk の自己管理型の発送を使用する
 
@@ -37,13 +37,13 @@ Data Box Disk を注文するときに、自己管理型の発送オプション
 
 1. Azure Data Box Disk の注文の **[連絡先の詳細]** で、 **[+ 配送先住所の追加]** を選択します。
 
-   ![自己管理の出荷](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
+   ![[連絡先の詳細] 手順を示す [注文] ウィザードのスクリーンショット。[配送先住所の追加] オプションが強調表示されています。](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
 
 2. 発送の種類を選択するときに、 **[Self-managed shipping]\(自己管理型の発送\)** オプションを選択します。 このオプションは、「前提条件」で説明されているように、サポートされているリージョンでのみ使用できます。
 
 3. 発送先住所を入力したら、確認して注文を完了する必要があります。
 
-   ![自己管理の出荷](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
+   ![[配送先住所の追加] ダイアログ ボックスのスクリーンショット。[出荷方法] オプションと [配送先住所の追加] オプションが強調表示されています。](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
 4. デバイスの準備が完了し、電子メール通知を受け取ったら、受け取りをスケジュールします。 Azure Data Box Disk の注文の **[概要]** に移動し、 **[Schedule pickup]\(受け取りのスケジュールを設定\)** を選択します。
 
@@ -55,7 +55,7 @@ Data Box Disk を注文するときに、自己管理型の発送オプション
 
 6. デバイスの受け取りをスケジュールすると、 **[Schedule pickup for Azure]\(Azure の受け取りのスケジュール\)** に認証コードが表示されます。
 
-   ![認証コードの表示](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-01b.png)
+   ![[Schedule pickup for Azure]\(Azure の受け取りのスケジュール\) ダイアログボックスのスクリーンショット。[引き取りの認証コード] テキスト ボックスが強調表示されています。](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-01b.png)
 
    この**認証コード**をメモしておきます。
 
@@ -78,7 +78,7 @@ Data Box Disk を注文するときに、自己管理型の発送オプション
 
 9. 返却の予定を受け取ると、Azure portal に表示されるその注文の状態が **[Ready to receive at Azure datacenter]\(Azure データセンターで受け取る準備が完了しました\)** になります。
 
-   ![認証コードの表示](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-dropoff-02b.png)
+   ![[配送先住所の追加] ダイアログ ボックスのスクリーンショット。[出荷方法] オプションと [配送先住所の追加] オプションが強調表示されています。](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-dropoff-02b.png)
 
 10. ID と認証コードが検証され、データセンターにデバイスを返却すると、注文ステータスが **[Received]\(返却済み\)** になります。
 

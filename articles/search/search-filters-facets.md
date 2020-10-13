@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 10/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a9d508afac64e448ca220a36b2be983da85d96b0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9360fc000e01e1c52561cbaa3e2f2968e67e2fa2
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002625"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740872"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>Azure Cognitive Search でファセット フィルターを作成する方法 
 
@@ -29,7 +29,8 @@ ms.locfileid: "89002625"
 
 ファセットは動的であり、クエリで返されます。 検索の応答で、結果のナビゲートに使用されるファセット カテゴリが提供されます。 ファセットの知識がない場合、次の例はファセット ナビゲーション構造を示しています。
 
-  ![検索ダイアログを示すイメージ。フィルター処理された検索結果が肩書でグループ化されています。 矢印は、結果がファセット ナビゲーション構造に表示されるファセットであることを示しています。](./media/search-filters-facets/facet-nav.png)
+:::image type="complex" source="media/search-filters-facets/facet-nav.png" alt-text="フィルター処理された検索結果":::
+検索ダイアログを示す図。フィルター処理された検索結果が肩書でグループ化されています。 矢印は、結果がファセット ナビゲーション構造に表示されるファセットであることを示しています。:::image-end:::
 
 ファセット ナビゲーションを初めて使用する場合、詳細については、 [Azure Cognitive Search へのファセット ナビゲーションの実装方法](search-faceted-navigation.md)に関するページを参照してください。
 

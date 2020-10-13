@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 406690eb1303a25002d3d787e746bd091dd83fc6
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 6db0965c0b5e28ac1e70da2cbeea276728f29822
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586130"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569941"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Java SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -49,12 +49,12 @@ ms.locfileid: "88586130"
 |**SDK への協力**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
 |**開始するには**|[Java SDK の開始](sql-api-java-get-started.md)|
 |**Web アプリ チュートリアル**|[Azure Cosmos DB を使用した Web アプリケーションの開発](sql-api-java-application.md)|
-|**サポートされている最小ランタイム**|[Java Development Kit (JDK) 7+](/java/azure/jdk/?view=azure-java-stable)|
+|**サポートされている最小ランタイム**|[Java Development Kit (JDK) 7+](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)|
 
 ## <a name="release-notes"></a>リリース ノート
 
 ### <a name="251"></a><a name="2.5.1"></a>2.5.1
-* documentCollection クエリのマスター パーティション キャッシュの問題を修正します。
+* documentCollection クエリのプライマリ パーティション キャッシュの問題を修正します。
 
 ### <a name="250"></a><a name="2.5.0"></a>2.5.0
 * 449 再試行カスタム構成のサポートが追加されました。
