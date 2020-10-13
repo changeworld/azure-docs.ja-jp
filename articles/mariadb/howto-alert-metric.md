@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 5687255057fdd5e73478626721c789c98b2ea366
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 6ed890fca9dddcbc7f04914a6f920d530d18ed0f
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120077"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742844"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>Azure portal を使用して Azure Database for MariaDB のメトリックのアラートを設定する
 
@@ -52,7 +52,7 @@ ms.locfileid: "86120077"
    
    完了したら、 **[完了]** を選択します。
 
-   ![メトリックを選択する](./media/howto-alert-metric/7-set-threshold-time.png)
+   ![メトリック 2 を選択する](./media/howto-alert-metric/7-set-threshold-time.png)
 
 8. **[アクション グループ]** セクション内で **[新規作成]** を選択して、アラートの通知を受信する新しいグループを作成します。
 
@@ -70,7 +70,7 @@ ms.locfileid: "86120077"
 
 11. [アラート ルール名]、[説明]、[重大度] を指定します。
 
-    ![アクション グループ](./media/howto-alert-metric/11-name-description-severity.png) 
+    ![アクション グループ 2](./media/howto-alert-metric/11-name-description-severity.png) 
 
 12. **[アラート ルールの作成]** を選択して、アラートを作成します。
 

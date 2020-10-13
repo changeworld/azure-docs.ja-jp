@@ -9,12 +9,12 @@ metadata:
   author: v-chmccl
   ms.author: wesmc
   ms.date: 03/11/2020
-  ms.openlocfilehash: db405e7405fc96779aebc9074fa19302f3b4ba1b
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: d60587516fe021085e39227d45865ed10f81990e
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "79137939"
+  ms.lasthandoff: 10/09/2020
+  ms.locfileid: "91855420"
 landingContent:
 - title: Azure SignalR サービスについて
   linkLists:
@@ -22,7 +22,7 @@ landingContent:
     links:
     - text: Azure SignalR サービスとは
       url: signalr-overview.md
-- title: はじめに
+- title: 作業開始
   linkLists:
   - linkListType: quickstart
     links:
@@ -38,6 +38,8 @@ landingContent:
       url: signalr-quickstart-azure-functions-java.md
     - text: Azure Functions - Python
       url: signalr-quickstart-azure-functions-python.md
+    - text: Azure SignalR Service のデプロイ - Resource Manager テンプレート
+      url: signalr-quickstart-azure-signalr-service-arm-template.md
     - text: REST API
       url: signalr-quickstart-rest-api.md
 - title: Azure SignalR Service のアプリをビルドする

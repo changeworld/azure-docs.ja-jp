@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: trbye
-  ms.openlocfilehash: 2d1d1057d522d082b3a5a3c757d1fe988bc24ba1
-  ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+  ms.openlocfilehash: 2d00466672318ef05218fce392797df215b6bb5f
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/02/2020
-  ms.locfileid: "91667454"
+  ms.lasthandoff: 10/09/2020
+  ms.locfileid: "91856995"
 highlightedContent:
   items:
   - title: 音声サービスとは
@@ -88,34 +88,6 @@ conceptualContent:
     footerLink:
       text: 詳細
       url: index-intent-recognition.yml
-  - title: 会話のシナリオ
-    links:
-    - itemType: overview
-      text: 会話の文字起こし (会議) について
-      url: conversation-transcription.md
-    - itemType: overview
-      text: マルチデバイスの会話 (会議) について
-      url: multi-device-conversation.md
-    - itemType: how-to-guide
-      text: コール センターの文字起こし
-      url: call-center-transcription.md
-    footerLink:
-      text: 詳細
-      url: index-conversation-scenarios.yml
-  - title: 音声アシスタント
-    links:
-    - itemType: overview
-      text: 音声アシスタントについて
-      url: voice-assistants.md
-    - itemType: quickstart
-      text: カスタム コマンドを使用して音声アシスタントを作成する
-      url: custom-commands.md
-    - itemType: get-started
-      text: Bot Framework を使用して音声アシスタントを作成する
-      url: direct-line-speech.md
-    footerLink:
-      text: 詳細
-      url: index-voice-assistants.yml
   - title: Speaker Recognition
     links:
     - itemType: overview
@@ -135,6 +107,26 @@ conceptualContent:
     - itemType: quickstart
       text: Custom Keyword の概要
       url: custom-keyword-basics.md
+  - title: シナリオの詳細
+    links:
+    - itemType: overview
+      text: 会話の文字起こし (会議) について
+      url: conversation-transcription.md
+    - itemType: overview
+      text: マルチデバイスの会話 (会議) について
+      url: multi-device-conversation.md
+    - itemType: overview
+      text: 音声アシスタントについて
+      url: voice-assistants.md
+    - itemType: quickstart
+      text: カスタム コマンドを使用して音声アシスタントを作成する
+      url: custom-commands.md
+    - itemType: quickstart
+      text: Bot Framework を使用して音声アシスタントを作成する
+      url: direct-line-speech.md
+    - itemType: how-to-guide
+      text: コール センターの文字起こしを有効にする
+      url: call-center-transcription.md
   - title: ツール
     links:
     - itemType: overview
