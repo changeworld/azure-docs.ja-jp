@@ -2,13 +2,13 @@
 title: Advisor を使用して Azure アプリのパフォーマンスを向上させる
 description: Azure Advisor のパフォーマンスに関する推奨事項を使用すると、ビジネスに不可欠なアプリケーションのスピードと応答性を向上させることができます。
 ms.topic: article
-ms.date: 01/29/2019
-ms.openlocfilehash: 9a8499e85a264488c756a3d497565398f2e1c229
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.date: 07/29/2020
+ms.openlocfilehash: 9625bb3b063234e9cadb20aacfcc5ca8a28b35cc
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651582"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405158"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Azure Advisor を使用して Azure アプリケーションのパフォーマンスを向上させる
 
@@ -63,8 +63,6 @@ Advisor によって最新の[テーブル統計](../synapse-analytics/sql-data-
 
 Advisor の分析には、MySQL サーバーに接続するアプリケーションで接続が効率的に管理されていない可能性が示されることがあります。 このような状態は、不必要なリソース消費とアプリケーション待機時間の全体的な増加につながる可能性があります。 接続管理を向上させるには、有効期間の短い接続の数を減らし、不要なアイドル状態の接続を排除することをお勧めします。 こうした機能強化は、ProxySQL のようなサーバー側の接続プーラーを構成することで実現できます。
 
-## <a name="update-your-current-compute-management-sdk-version-to-the-most-recent-version"></a>Compute Management SDK の現在のバージョンを最新バージョンに更新します
-Advisor で、古いバージョンの Compute Management SDK を使用する操作を含むサブスクリプションが識別されています。 これはワークロードのセキュリティとパフォーマンスに影響を与える可能性があるため、Advisor によって、最新バージョンの Compute Management SDK に切り替えることが推奨されています。 
 
 ## <a name="scale-up-to-optimize-cache-utilization-on-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>スケールアップして Azure Synapse Analytics テーブルでのキャッシュ使用率を最適化し、クエリのパフォーマンスを向上させる
 
@@ -170,6 +168,14 @@ Advisor で、一時テーブルのパラメーター設定が低いため、お
 ## <a name="distribute-data-in-server-group-to-distribute-workload-among-nodes"></a>ノード間にワークロードを分散させるためにサーバー グループ内でデータを分散させる
 コーディネーター上には残っているが、データは分散されないサーバー グループが Advisor により識別されました。 これに基づき、Hyperscale (Citus) のメリットをすべて得るために、お使いのサーバー グループ内のワーカー ノードにデータを分散させることが Advisor によって推奨されています。 これによって、サーバー グループ内の各ノードのリソースが活用され、クエリのパフォーマンスが向上します。 [詳細情報](https://go.microsoft.com/fwlink/?linkid=2135201) 
 
+## <a name="improve-user-experience-and-connectivity-by-deploying-vms-closer-to-windows-virtual-desktop-deployment-location"></a>Windows Virtual Desktop のデプロイ場所の近くに VM をデプロイすることにより、ユーザー エクスペリエンスと接続性を向上させます
+Windows Virtual Desktop (WVD) を使用して、お客様の VM はユーザーの接続元とは異なる、または遠い場所にあると判断しました。 これにより、接続応答時間が長くなる可能性があり、WVD の全体的なユーザー エクスペリエンスに影響します。 ホスト プールの VM を作成するときは、ユーザーに近いリージョンを使用するようにします。 近接していることで、WVD サービスに対する満足度を維持し、全体的なエクスペリエンスの品質を向上させることができます。 接続の待機時間の詳細については、[こちら](https://docs.microsoft.com/azure/virtual-desktop/connection-latency)をご覧ください。
+
+## <a name="upgrade-to-the-latest-version-of-the-immersive-reader-sdk"></a>イマーシブ リーダー SDK の最新バージョンにアップグレードする
+このサブスクリプションのリソースに、古いバージョンのイマーシブ リーダー SDK が使用されていることがわかりました。 イマーシブ リーダー SDK の最新バージョンを使用すると、更新されたセキュリティ、パフォーマンス、および統合エクスペリエンスをカスタマイズおよび強化するための一連の拡張機能が提供されます。
+イマーシブ リーダー SDK の詳細については、[こちら](https://aka.ms/ImmersiveReaderAzureAdvisorSDKLearnMore)をご覧ください。
+
+
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Advisor のパフォーマンスに関する推奨事項にアクセスする方法
 
 1. [Azure Portal](https://portal.azure.com) にサインインし、[Advisor](https://aka.ms/azureadvisordashboard) を開きます。
@@ -182,6 +188,7 @@ Advisor の推奨事項の詳細については、以下を参照してくださ
 
 * [Advisor 入門](advisor-overview.md)
 * [Advisor の使用を開始する](advisor-get-started.md)
+* [Advisor スコア](azure-advisor-score.md)
 * [Advisor のコストに関する推奨事項](advisor-cost-recommendations.md)
 * [Advisor の信頼性に関する推奨事項](advisor-high-availability-recommendations.md)
 * [Advisor のセキュリティに関する推奨事項](advisor-security-recommendations.md)

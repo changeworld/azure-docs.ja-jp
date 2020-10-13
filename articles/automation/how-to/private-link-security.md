@@ -6,12 +6,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.subservice: ''
-ms.openlocfilehash: c81d9774dccf8c02d2eab7b1ebbb69e6671869e8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a4985784a17f2e0350a7b2c7a4f62f574862d50c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423798"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714363"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation-preview"></a>Azure Private Link を使用して、ネットワークを Azure Automation に安全に接続する (プレビュー)
 
@@ -128,7 +128,7 @@ Automation アカウント リソースを設定する前に、ネットワー�
 
 同様に、State Configuration (agentsvc) と Hybrid Runbook Worker ジョブ ランタイム (jrds) 用の一意の完全修飾ドメイン名 (FQDN) が作成されます。 それぞれには VNet から別の IP が割り当てられ、 **[接続状態]** に **[承認済み]** と表示されます。
 
-サービスのコンシューマーに Automation のリソースに対する RBAC アクセス許可がある場合、コンシューマーは自動の承認方法を選択できます。 この場合、要求が Automation プロバイダーのリソースに到達したときにサービス プロバイダーからのアクションは必要なく、接続が自動的に承認されます。
+サービスのコンシューマーに Automation のリソースに対する Azure RBAC アクセス許可がある場合、コンシューマーは自動の承認方法を選択できます。 この場合、要求が Automation プロバイダーのリソースに到達したときにサービス プロバイダーからのアクションは必要なく、接続が自動的に承認されます。
 
 ## <a name="set-public-network-access-flags"></a>パブリック ネットワーク アクセスのフラグを設定する
 

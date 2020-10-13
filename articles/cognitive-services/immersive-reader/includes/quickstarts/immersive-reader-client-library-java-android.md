@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.custom: devx-track-java, devx-track-js
 ms.author: dylankil
-ms.openlocfilehash: 32522958b21d31b09c019ebde0862c49e3535488
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4118ef478f43c5887e2c5fba4595314e5a4ac02d
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91377128"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779091"
 ---
 [Immersive Reader](https://www.onenote.com/learningtools) は、新しい読者、言語学習者、ディスレクシア (失読症) などの学習障碍者の読解力向上のために実証済みの手法を実装する、包括的に設計されたツールです。 アプリケーションに Immersive Reader を使用すると、テキストを分離することによって、集中しやすくする、よく用いられる単語に画像を表示する、品詞を強調表示する、選択テキストを読み上げる、単語や文章をリアルタイムで翻訳する、といったことができます。
 
@@ -64,7 +64,7 @@ CLIENT_ID=<YOUR_CLIENT_ID>
 CLIENT_SECRET=<YOUR_CLIENT_SECRET>
 SUBDOMAIN=<YOUR_SUBDOMAIN>
 ```
-![Android Studio での環境変数](../../media/android/java/android-studio-assets-and-env-file.png)
+![Android Studio での環境変数を示すスクリーンショット。](../../media/android/java/android-studio-assets-and-env-file.png)
 
 ## <a name="add-dependencies"></a>依存関係を追加する
 

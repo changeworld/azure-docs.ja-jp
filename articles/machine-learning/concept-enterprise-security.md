@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: af32be357899090e0df96e2c67910a4f9ad5194d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 35b39ceb7ef54b0e00eaa53dad821c9336ea88ca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90988086"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302623"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning のエンタープライズ セキュリティ
 
@@ -118,7 +118,7 @@ Azure Machine Learning は、コンピューティング リソースに関し�
 ### <a name="encryption-at-rest"></a>保存時の暗号化
 
 > [!IMPORTANT]
-> ワークスペースに機密データが含まれている場合は、ワークスペースの作成時に [hbi_workspace フラグ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)を設定することをお勧めします。 `hbi_workspace` フラグは、ワークスペースの作成時にのみ設定できます。 既存のワークスペースに対して変更することはできません。
+> ワークスペースに機密データが含まれている場合は、ワークスペースの作成時に [hbi_workspace フラグ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)を設定することをお勧めします。 `hbi_workspace` フラグは、ワークスペースの作成時にのみ設定できます。 既存のワークスペースに対して変更することはできません。
 
 `hbi_workspace` フラグにより、[Microsoft が診断目的で収集するデータ](#microsoft-collected-data)の量が制御され、[Microsoft が管理する環境での追加の暗号化](../security/fundamentals/encryption-atrest.md)が可能になります。 さらに、次のアクションが可能になります。
 
@@ -156,7 +156,7 @@ Azure Machine Learning では、Azure Cosmos DB インスタンスにメトリ�
     * `cmk_keyvault`:このパラメーターは、サブスクリプション内のキー コンテナーのリソース ID です。 このキー コンテナーは、Azure Machine Learning ワークスペースに使用するのと同じリージョンおよびサブスクリプションにある必要があります。 
     
         > [!NOTE]
-        > このキー コンテナー インスタンスは、ワークスペースをプロビジョニングするときに Azure Machine Learning によって作成されるキー コンテナーとは異なる場合があります。 ワークスペースに同じキー コンテナー インスタンスを使用する場合は、[key_vault パラメーター](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)を使用してワークスペースをプロビジョニングするときに、同じキー コンテナーを渡します。 
+        > このキー コンテナー インスタンスは、ワークスペースをプロビジョニングするときに Azure Machine Learning によって作成されるキー コンテナーとは異なる場合があります。 ワークスペースに同じキー コンテナー インスタンスを使用する場合は、[key_vault パラメーター](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)を使用してワークスペースをプロビジョニングするときに、同じキー コンテナーを渡します。 
 
 この Cosmos DB インスタンスは、必要なリソースと共にお使いのサブスクリプションの Microsoft が管理するリソース グループ内に作成されます。 マネージド リソース グループの名前は、`<AML Workspace Resource Group Name><GUID>` という形式で指定されます。 Azure Machine Learning ワークスペースでプライベート エンドポイントが使用される場合は、Cosmos DB インスタンスの仮想ネットワークも作成されます。 この VNet は、Cosmos DB と Azure Machine Learning の間の通信をセキュリティで保護するために使用されます。
 
@@ -197,7 +197,7 @@ Azure Container Instance にモデルをデプロイするときにキーを使�
 
 デプロイ構成の作成と使用の詳細については、次の記事を参照してください。
 
-* [AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-) 参照
+* [AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-) 参照
 * [デプロイする場所と方法](how-to-deploy-and-where.md)
 * [Azure Container Instances にモデルをデプロイする](how-to-deploy-azure-container-instance.md)
 
@@ -290,6 +290,10 @@ Azure Monitor メトリックを使用し、Azure Machine Learning ワークス�
 > Azure Machine Learning ワークスペース内の一部のアクションでは、情報はアクティビティ ログに記録されません。 たとえば、トレーニングの実行の開始やモデルの登録はログに記録されません。
 >
 > これらのアクションの一部はワークスペースの **[アクティビティ]** 領域に表示されますが、これらの通知ではアクティビティを開始したユーザーは示されません。
+
+### <a name="vulnerability-scanning"></a>脆弱性のスキャン
+
+Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と高度な脅威保護を実現します。 Azure Machine Learning のために、Azure Container Registry リソースと Azure Kubernetes Service リソースのスキャンを有効にしてください。 「[Security Center による Azure Container Registry のイメージ スキャン](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)」および「[Azure Kubernetes Service と Security Center の統合](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration)」をご覧ください。
 
 ## <a name="data-flow-diagrams"></a>データ フロー図
 

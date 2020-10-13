@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/30/2020
+ms.date: 09/24/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8c0b6ba4045e1e92d395752f106258d3c0709108
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 84f488863a39307ac7b55d5238fab786084a3614
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486735"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259545"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 内のユーザー インターフェイスをカスタマイズする
 
@@ -34,7 +34,7 @@ Azure Active Directory B2C (Azure AD B2C) に表示されるユーザー イン�
 ユーザー フローの UI カスタマイズを構成するには、[Azure portal](tutorial-customize-ui.md) を使用します。
 
 > [!TIP]
-> ユーザー フロー ページのバナー ロゴ、背景画像、背景色のみを変更する場合は、この記事の後半で説明する [[会社のブランド (プレビュー)]](#company-branding-preview) 機能を試します。
+> ユーザー フロー ページのバナー ロゴ、背景画像、背景色のみを変更する場合は、この記事の後半で説明する[会社のブランド](#company-branding)機能を試します。
 
 ### <a name="custom-policies"></a>カスタム ポリシー
 
@@ -158,13 +158,11 @@ Azure AD B2C では、[クロス オリジン リソース共有 (CORS)](https:/
 | 多要素認証 | 顧客がサインアップやサインインをするときに、電話番号を (文字や音声を使用して) 確認できます。 |
 | エラー | エラー情報を顧客に提供します。 |
 
-## <a name="company-branding-preview"></a>会社のブランド (プレビュー)
+## <a name="company-branding"></a>会社のブランド
 
 Azure Active Directory [[会社のブランド]](../active-directory/fundamentals/customize-branding.md) 機能を使用して、バナー ロゴ、背景画像、背景色でユーザー フロー ページをカスタマイズできます。
 
 ユーザー フロー ページをカスタマイズするには、まず Azure Active Directory で会社のブランドを構成し、次に Azure AD B2C のユーザー フローのページ レイアウトでこれを有効にします。
-
-[!INCLUDE [preview note](../../includes/active-directory-b2c-public-preview.md)]
 
 ### <a name="configure-company-branding"></a>会社のブランドの構成
 

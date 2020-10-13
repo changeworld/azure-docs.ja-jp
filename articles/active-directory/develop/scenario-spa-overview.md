@@ -11,31 +11,26 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 60e4ca80faa2c8787a13d87ab06cad9243299e50
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: dc0aee2e6c1b06850ffd0385626955a9798e7aeb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89291954"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257318"
 ---
 # <a name="scenario-single-page-application"></a>シナリオ:シングルページ アプリ
 
 シングルページ アプリケーション (SPA) の構築に必要なすべてのことについて説明します。
 
-## <a name="prerequisites"></a>前提条件
-
-[!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
-
 ## <a name="getting-started"></a>作業の開始
 
-JavaScript SPA のクイック スタートに従って、最初のアプリケーションを作成できます。
+初めてのアプリケーションをまだ作成していない場合は、次の JavaScript SPA クイック スタートを完了して作成してください:
 
-> [!div class="nextstepaction"]
-> [クイック スタート: シングルページ アプリケーション](./quickstart-v2-javascript.md)
+[クイック スタート: シングルページ アプリケーション](./quickstart-v2-javascript.md)
 
 ## <a name="overview"></a>概要
 
-多くの最新の Web アプリケーションは、クライアント側のシングル ページ アプリケーションとして構築されています。 開発者は、JavaScript または SPA フレームワーク (Angular、Vue、React など) を使用してそれらを作成します。 これらのアプリケーションは Web ブラウザーで実行され、その認証には、従来のサーバー側 Web アプリケーションとは異なる特性があります。 
+多くの最新の Web アプリケーションは、クライアント側のシングル ページ アプリケーションとして構築されています。 開発者は、JavaScript または SPA フレームワーク (Angular、Vue、React など) を使用してそれらを作成します。 これらのアプリケーションは Web ブラウザーで実行され、その認証には、従来のサーバー側 Web アプリケーションとは異なる特性があります。
 
 Microsoft ID プラットフォームにより、シングルページ アプリケーションでユーザーをサインインさせ、バックエンド サービスまたは Web API にアクセスするトークンを取得するための **2 つ**のオプションが提供されます。
 
@@ -56,6 +51,10 @@ Microsoft ID プラットフォームにより、シングルページ アプリ
 * Azure Active Directory (Azure AD) へのアプリケーションの登録。 登録手順は、暗黙的な許可フローと認証コード フローの間で異なります。
 * アプリケーション ID などの登録済みアプリケーション プロパティを使用したアプリケーション構成。
 * Microsoft Authentication Library for JavaScript (MSAL.js) を使用した、サインインしてトークンを取得するための認証フローの実行。
+
+## <a name="recommended-reading"></a>推奨資料
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

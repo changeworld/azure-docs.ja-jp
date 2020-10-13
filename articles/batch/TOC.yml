@@ -257,12 +257,16 @@
           href: batch-pool-resize-start-event.md
         - name: プールのサイズ変更の完了イベント
           href: batch-pool-resize-complete-event.md
+        - name: プールの自動スケーリング イベント
+          href: batch-pool-autoscale-event.md
         - name: タスク開始イベント
           href: batch-task-start-event.md
         - name: タスク完了イベント
           href: batch-task-complete-event.md
         - name: タスク失敗イベント
           href: batch-task-fail-event.md
+        - name: タスク スケジュール失敗イベント
+          href: batch-task-schedule-fail-event.md
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
