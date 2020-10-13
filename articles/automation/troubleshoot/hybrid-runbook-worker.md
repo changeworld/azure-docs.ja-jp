@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2149fd68cdf5f2991d6035f245f70515e920045c
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 4fcd3d143cf2dbb529a8c9c78a769165621e2e89
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187202"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400419"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Hybrid Runbook Worker の問題のトラブルシューティング
 
@@ -234,11 +234,11 @@ PowerShell で次のコマンドを入力して、このエージェントが実
 
 ハイブリッド worker により、クラウドで実行されている Runbook ジョブが出力とメッセージを送信するのと同じ方法で、[Runbook の出力とメッセージ](../automation-runbook-output-and-messages.md)が Azure Automation に送信されます。 詳細ストリームと進行状況ストリームは、Runbook の場合と同じように有効にすることができます。
 
-### <a name="scenario-orchestratorsandboxexe-cant-connect-to-office-365-through-proxy"></a><a name="no-orchestrator-sandbox-connect-O365"></a>シナリオ:Orchestrator.Sandbox.exe をプロキシ経由で Office 365 に接続できない
+### <a name="scenario-orchestratorsandboxexe-cant-connect-to-microsoft-365-through-proxy"></a>シナリオ:Orchestrator.Sandbox.exe をプロキシ経由で Microsoft 365 に接続できない
 
 #### <a name="issue"></a>問題
 
-Windows Hybrid Runbook Worker で実行されるスクリプトを、想定どおりに Orchestrator サンドボックスの Office 365 に接続できません。 スクリプトでは、接続に [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) を使用しています。 
+Windows Hybrid Runbook Worker で実行されるスクリプトを、想定どおりに Orchestrator サンドボックスの Microsoft 365 に接続できません。 スクリプトでは、接続に [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) を使用しています。 
 
 **Orchestrator.Sandbox.exe.config** を調整してプロキシとバイパス リストを設定しても、サンドボックスに正常に接続されません。 プロキシとバイパス リストの設定が同じ **Powershell_ise.exe.config** ファイルは、想定したとおり機能しているようです。 Service Management Automation (SMA) ログと PowerShell ログでは、プロキシに関する情報が提供されません。
 

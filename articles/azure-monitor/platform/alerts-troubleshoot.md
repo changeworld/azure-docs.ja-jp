@@ -6,12 +6,12 @@ ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
 ms.subservice: alerts
-ms.openlocfilehash: c3eed095d87d1e1fa1f210b360822ceefdbe0521
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d86c6d8b67546aede86a3fc3c905f6feb40d92db
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045243"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403417"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Azure Monitor のアラートの問題のトラブルシューティング
 
@@ -61,7 +61,7 @@ Azure portal に従って意図どおりにアラートが始動しても適切�
     以下の点も確認してください。
 
    - メール クライアント (Outlook、Gmail など) のスパム設定
-      - メール サーバー (Exchange、Office 365、G Suite など) の送信者制限/スパム設定/検査設定
+      - メール サーバー (Exchange、Microsoft 365、G Suite など) の送信者制限/スパム設定/検査設定
       - メール セキュリティ アプライアンス (Barracuda、Cisco など) がある場合、その設定
 
 1. **アクション グループから誤って登録解除したか?**
