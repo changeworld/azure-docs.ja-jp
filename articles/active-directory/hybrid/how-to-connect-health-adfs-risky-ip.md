@@ -16,12 +16,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 431b45f4ef3431e7fd1d34cf80278892470c36ef
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 24f8a60c5b955096f1661877416936b747a16979
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660846"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306397"
 ---
 # <a name="risky-ip-report-public-preview"></a>危険な IP のレポート (パブリック プレビュー)
 AD FS のお客様は、エンド ユーザーが Microsoft 365 などの SaaS アプリケーションにアクセスするための認証サービスを提供する目的で、パスワード認証エンドポイントをインターネットに公開する場合があります。 この場合、悪意のあるアクターが AD FS システムへのログインを試みて、エンド ユーザーのパスワードを推測し、アプリケーションのリソースにアクセスする可能性があります。 Windows Server 2012 R2 の AD FS 以降、これらの種類の攻撃を防止するためのエクストラネット アカウント ロックアウト機能が用意されています。 これよりも古いバージョンを使用している場合は、AD FS システムを Windows Server 2016 にアップグレードすることを強くお勧めします。 <br />
@@ -39,7 +39,7 @@ AD FS のお客様は、エンド ユーザーが Microsoft 365 などの SaaS �
 > 
 
 ## <a name="what-is-in-the-report"></a>レポートの内容
-失敗したサインイン アクティビティのクライアント IP アドレスは、Web アプリケーション プロキシ サーバーを介して集計されます。 危険な IP のレポートの各項目は、指定されたしきい値を超える、失敗した AD FS サインイン アクティビティに関する集計情報を示します。 次の情報が提供されます。![Azure AD Connect Health ポータル](./media/how-to-connect-health-adfs/report4a.png)
+失敗したサインイン アクティビティのクライアント IP アドレスは、Web アプリケーション プロキシ サーバーを介して集計されます。 危険な IP のレポートの各項目は、指定されたしきい値を超える、失敗した AD FS サインイン アクティビティに関する集計情報を示します。 次の情報が表示されます。![列ヘッダーが強調表示されている危険な IP のレポートを示すスクリーンショット。](./media/how-to-connect-health-adfs/report4a.png)
 
 | レポート アイテム | 説明 |
 | ------- | ----------- |
@@ -52,7 +52,7 @@ AD FS のお客様は、エンド ユーザーが Microsoft 365 などの SaaS �
 
 たとえば、次のレポート アイテムは、2018 年 2 月 28 日の午後 6 時から午後 7 時までの時間枠において、IP アドレス <i>104.2XX.2XX.9</i> で、間違ったパスワード エラーが発生していない一方、エクストラネットのロックアウト エラーが 284 回発生したことを示しています。 この条件内で影響を受けた一意のユーザーは 14 人でした。 このアクティビティ イベントは、指定されたレポートの時間単位のしきい値を超えています。 
 
-![Azure AD Connect Health ポータル](./media/how-to-connect-health-adfs/report4b.png)
+![危険な IP のレポートのエントリ例を示すスクリーンショット。](./media/how-to-connect-health-adfs/report4b.png)
 
 > [!NOTE]
 > - 指定されたしきい値を超えるアクティビティのみがレポートの一覧に表示されます。 
@@ -60,7 +60,7 @@ AD FS のお客様は、エンド ユーザーが Microsoft 365 などの SaaS �
 > - このアラート レポートには、Exchange IP アドレスまたはプライベート IP アドレスは表示されません。 ただし、エクスポートした一覧にはこれらのアドレスが含まれます。 
 >
 
-![Azure AD Connect Health ポータル](./media/how-to-connect-health-adfs/report4c.png)
+![[ダウンロード]、[通知の設定]、[しきい値の設定] が強調表示されている危険な IP のレポートを示すスクリーンショット。](./media/how-to-connect-health-adfs/report4c.png)
 
 ## <a name="load-balancer-ip-addresses-in-the-list"></a>一覧のロード バランサーの IP アドレス
 ロード バランサーが失敗したサインイン アクティビティを集計し、アラートのしきい値に達しました。 ロード バランサーの IP アドレスが表示されている場合は、外部ロード バランサーが要求を Web アプリケーション プロキシ サーバーに渡すときにクライアント IP アドレスを送信していない可能性が高くなっています。 転送クライアント IP アドレスを渡すようにロード バランサーを適切に構成してください。 

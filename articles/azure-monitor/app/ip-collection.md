@@ -2,14 +2,14 @@
 title: Azure Application Insights の IP アドレスの収集 | Microsoft Docs
 description: Azure Application Insights を使用して IP アドレスと位置情報を処理する方法について
 ms.topic: conceptual
-ms.date: 09/11/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: b702494347874a1b4977179ba882490223bdf924
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.date: 09/23/2020
+ms.custom: devx-track-js
+ms.openlocfilehash: 6131105ef78a8559b0fb95043a87e562e887ebfd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032828"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333309"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>位置情報と IP アドレスの処理
 
@@ -62,9 +62,7 @@ IP の収集と格納を有効にするには、Application Insights コンポ�
 
 1 つの Application Insights リソースの動作のみを変更する必要がある場合は、Azure portal を使用します。 
 
-1. Application Insights リソース > **[設定]**  >  **[テンプレートのエクスポート]** の順に移動します 
-
-    ![テンプレートのエクスポート](media/ip-collection/export-template.png)
+1. Application Insights リソース > **[Automation]**  >  **[テンプレートのエクスポート]** の順に移動します 
 
 2. **[デプロイ]** を選択します
 

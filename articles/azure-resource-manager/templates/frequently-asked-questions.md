@@ -2,15 +2,15 @@
 title: ARM テンプレートに関してよく寄せられる質問
 description: Azure Resource Manager テンプレートに関してよく寄せられる質問 (FAQ)。
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 09/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: e23334daf0f4f6d5a6917af49c786d47c4557375
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 47ac8d0e3172645ec168d5cfe7a002d84765b864
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327261"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333122"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>ARM テンプレートに関してよく寄せられる質問
 
@@ -88,7 +88,7 @@ ms.locfileid: "87327261"
 
 * **新しいテンプレート言語を開発中であると聞きました。その詳細情報はどこで確認できますか。**
 
-  新しいテンプレート言語について学習するには、[サインアップして通知を受け取る](https://aka.ms/armLangUpdates)ようにしてください。
+  新しい言語をプレビューするには、[Project Bicep リポジトリ](https://github.com/Azure/bicep)を参照してください。 新しい言語について最新情報を入手するには、[サインアップして通知を受け取る](https://aka.ms/armLangUpdates)ようにしてください。
 
 * **YAML でのテンプレートの作成をサポートする予定はありますか。**
 

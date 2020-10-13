@@ -8,12 +8,12 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 09/01/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 50e9eb6d5024d83e841532ed64e84b477a261c9a
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 72d8cb0ef80210cca1dbf1d2726590c0cb8540e5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320972"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261381"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>コマーシャル マーケットプレース パートナーと顧客の使用状況の属性
 
@@ -268,39 +268,7 @@ foreach ($deployment in $deployments){
 
 ## <a name="get-support"></a>サポートを受ける
 
-発生した問題に応じて 2 つのサポート チャネルがあります。
-
-パートナー センターの問題 (顧客の利用状況属性レポートの表示やサインインなど) が発生した場合は、[https://partner.microsoft.com/support](https://partner.microsoft.com/support) でパートナー センター サポート チームにサポート要求を作成します。
-
-![サポートの利用ページのスクリーンショット](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
-
-マーケットプレースのオンボードや、顧客の使用状況の属性全般 (顧客の使用状況の属性の設定方法など) についてのサポートが必要な場合は、次の手順に従います。
-
-1. [サポート ページ](https://go.microsoft.com/fwlink/?linkid=844975)に移動します。
-
-1. **[問題の種類]** で **[Marketplace Onboarding]\(マーケットプレースのオンボード\)** を選択します。
-
-1. 問題の**カテゴリ**を選択します。
-
-   - 使用状況の関連付けの問題の場合は、 **[その他]** を選択します。
-   - Azure Marketplace に関するアクセスの問題の場合は、 **[Access Problem]\(アクセスの問題\)** を選択します。
-
-     ![問題のカテゴリを選択](media/marketplace-publishers-guide/lu-article-incident.png)
-
-1. **[要求の開始]** を選択します。
-
-1. 次のページで、必須の値を入力します。 **[続行]** をクリックします。
-
-1. 次のページで、必須の値を入力します。
-
-   > [!IMPORTANT]
-   > **[インシデント タイトル]** ボックスに「**ISV Usage Tracking**」と入力します。 問題を詳しく記述してください。
-
-   ![インシデント タイトルとして「ISV Usage Tracking」を入力](media/marketplace-publishers-guide/guid-dev-center-help-hd%201.png)
-
-1. フォームに必要事項を入力し、 **[送信]** を選択します。
-
-顧客の使用状況の属性を理解して採用するために、Microsoft パートナー技術コンサルタントから、技術的なプレセール、デプロイ、およびアプリケーション開発のシナリオに関する技術的なガイダンスを受けることもできます。
+コマーシャル マーケットプレースのサポート オプションについては、「[パートナー センターでのコマーシャル マーケットプレース プログラムのサポート](./partner-center-portal/support.md)」を参照してください。
 
 ### <a name="how-to-submit-a-technical-consultation-request"></a>技術コンサルティングの要求を送信する方法
 
