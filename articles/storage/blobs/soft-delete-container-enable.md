@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: c2ce40f7d8a8d08e191fce11c98bd780e0c2fda1
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 4b25458cc934097b5477c174ae7ecc47762e2929
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230077"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280302"
 ---
 # <a name="enable-and-manage-soft-delete-for-containers-preview"></a>コンテナーの論理的な削除を有効にして管理する (プレビュー)
 
@@ -86,16 +86,16 @@ Azure Resource Manager テンプレートを使用してコンテナーの論理
 1. Azure portal でストレージ アカウントに移動し、コンテナーの一覧を表示します。
 1. 削除されたコンテナーが一覧に含まれるように [削除されたコンテナーを表示] を切り替えます。
 
-    :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-list.png" alt-text="論理的に削除されたコンテナーを Azure portal で表示する方法を示すスクリーンショット":::
+    :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-list.png" alt-text="Azure portal でコンテナーの論理的な削除を有効にする方法を示すスクリーンショット":::
 
 ## <a name="restore-a-soft-deleted-container"></a>論理的に削除されたコンテナーを復元する
 
 保持期間中は、論理的に削除されたコンテナーとその内容を復元できます。 論理的に削除されたコンテナーを Azure portal で復元するには、次の手順を実行します。
 
 1. Azure portal でストレージ アカウントに移動し、コンテナーの一覧を表示します。
-1. 削除するコンテナーのコンテキスト メニューを表示し、メニューから **[削除の取り消し]** を選択します。
+1. 復元するコンテナーのコンテキスト メニューを表示し、メニューから **[削除の取り消し]** を選択します。
 
-    :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-restore.png" alt-text="論理的に削除されたコンテナーを Azure portal で復元する方法を示すスクリーンショット":::
+    :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-restore.png" alt-text="Azure portal でコンテナーの論理的な削除を有効にする方法を示すスクリーンショット":::
 
 ## <a name="next-steps"></a>次の手順
 

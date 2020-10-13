@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 8d71cccfe0ebd049607d5b51e7211739c3a7209b
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 89013e3b6ec9a0a6112e8b7fdcde4870be331d79
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89468710"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282308"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Azure Digital Twins ツイン グラフに対してクエリを実行する
 
@@ -25,6 +25,15 @@ ms.locfileid: "89468710"
 ## <a name="query-syntax"></a>クエリ構文
 
 このセクションのサンプル クエリでは、クエリ言語の構造を示し、可能なクエリ操作を[デジタル ツイン](concepts-twins-graph.md)で実行します。
+
+### <a name="show-all-existing-digital-twins"></a>すべての既存のデジタル ツインを表示する
+
+次に示すのは、インスタンス内のすべてのデジタル ツインの一覧を返す基本的なクエリです。
+
+```sql
+SELECT *
+FROM DIGITALTWINS
+```
 
 ### <a name="select-top-items"></a>上位の項目を選択する
 
@@ -208,8 +217,8 @@ AND Room.$dtId IN ['room1', 'room2']
 
 | 機能 | 説明 |
 | -------- | ----------- |
-| STARTS_WITH(x, y) | 1 つ目の文字列式が 2 つ目の文字列で始まっているかどうかを示すブール値を返します。 |
-| ENDS_WITH(x, y) | 1 つ目の文字列式が 2 つ目の文字列で終了しているかどうかを示すブール値を返します。 |
+| STARTSWITH(x, y) | 1 つ目の文字列式が 2 つ目の文字列で始まっているかどうかを示すブール値を返します。 |
+| ENDSWITH(x, y) | 1 つ目の文字列式が 2 つ目の文字列で終了しているかどうかを示すブール値を返します。 |
 
 ## <a name="run-queries-with-an-api-call"></a>API 呼び出しを使用してクエリを実行する
 

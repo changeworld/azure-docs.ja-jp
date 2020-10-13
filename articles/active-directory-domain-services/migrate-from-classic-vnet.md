@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/10/2020
+ms.date: 09/24/2020
 ms.author: iainfou
-ms.openlocfilehash: de27ee713caae0310f185cd717d5db2095feff32
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: ef05704ea03316ef0c95510e27ee630ddcfb0b44
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054291"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266906"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>クラシック仮想ネットワーク モデルから Resource Manager への Azure Active Directory Domain Services の移行
 
@@ -139,6 +139,14 @@ Azure AD DS では通常、アドレス範囲内の最初の 2 つの使用可�
 
 仮想ネットワークの要件の詳細については、[仮想ネットワーク設計の考慮事項と構成オプション][network-considerations]に関するページを参照してください。
 
+また、マネージド ドメインの仮想ネットワーク内のトラフィックを制限するためのネットワーク セキュリティ グループを作成する必要もあります。 これらのルールを配置する必要がある Azure Standard Load Balancer が、移行プロセス中に作成されます。 このネットワーク セキュリティ グループは Azure AD DS を保護し、マネージド ドメインが正しく機能するために必要です。
+
+必要な規則の詳細については、[Azure AD DS のネットワーク セキュリティ グループと必要なポート](network-considerations.md#network-security-groups-and-required-ports)に関するセクションを参照してください。
+
+### <a name="ldaps-and-tlsssl-certificate-expiration"></a>LDAPS と TLS/SSL 証明書の有効期限
+
+マネージド ドメインが LDAPS 用に構成されている場合は、現在の TLS/SSL 証明書が 30 日以上有効であることを確認します。 今後 30 日以内に証明書の有効期限が切れた場合、移行プロセスが失敗します。 必要に応じて、証明書を更新し、マネージド ドメインに適用してから、移行プロセスを開始してください。
+
 ## <a name="migration-steps"></a>移行の手順
 
 Resource Manager のデプロイ モデルと仮想ネットワークへの移行は、次の 5 つの主な手順に分かれています。
@@ -166,7 +174,9 @@ Resource Manager のデプロイ モデルと仮想ネットワークへの移�
 
     Azure AD DS に必要なポートがネットワーク設定によってブロックされていないことを確認してください。 クラシック仮想ネットワークと Resource Manager 仮想ネットワークの両方でポートを開く必要があります。 これらの設定には、ルート テーブル (ただし、ルート テーブルを使用することは推奨されません) とネットワーク セキュリティ グループが含まれます。
 
-    必要なポートを確認するには、「[ネットワーク セキュリティ グループと必要なポート][network-ports]」を参照してください。 ネットワーク通信の問題を最小限に抑えるには、移行が正常に完了した後に、ネットワーク セキュリティ グループまたはルート テーブルを Resource Manager 仮想ネットワークに適用することをお勧めします。
+    Azure AD DS には、マネージド ドメインに必要なポートをセキュリティで保護し、その他すべての受信トラフィックをブロックするネットワーク セキュリティ グループが必要です。 このネットワーク セキュリティ グループは、マネージド ドメインへのアクセスをロックダウンするための追加の保護レイヤーとして機能します。 必要なポートを確認するには、「[ネットワーク セキュリティ グループと必要なポート][network-ports]」を参照してください。
+
+    Secure LDAP を使用する場合は、*TCP* ポート *636* の受信トラフィックを許可する規則をネットワーク セキュリティ グループに追加します。 詳細については、「[インターネット経由での Secure LDAP アクセスをロック ダウンする](tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet)」を参照してください。
 
     このターゲット リソース グループ、ターゲット仮想ネットワーク、ターゲット仮想ネットワークのサブネットをメモしておきます。 これらのリソース名を移行プロセス中に使用します。
 
@@ -295,13 +305,6 @@ Azure AD DS では、ドメイン コントローラーのイベントのトラ�
 1. VM がインターネットに公開されている場合は、*administrator*、*user*、*guest* のような一般的なアカウント名について、サインインの試行回数が多いものがないか確認します。 可能であれば、一般的でない名前のアカウントを使用するように VM を更新します。
 1. VM 上のネットワーク トレースを使用して攻撃の発生元を特定し、それらの IP アドレスをブロックしてサインインを試行できないようにします。
 1. ロックアウトの問題が最小限である場合は、細かい設定が可能なパスワード ポリシーを、必要に応じた厳しさの制限になるように更新します。
-
-### <a name="creating-a-network-security-group"></a>ネットワーク セキュリティ グループを作成する
-
-Azure AD DS には、マネージド ドメインに必要なポートをセキュリティで保護し、その他すべての受信トラフィックをブロックするネットワーク セキュリティ グループが必要です。 このネットワーク セキュリティ グループは、マネージド ドメインへのアクセスをロックダウンするための追加の保護レイヤーとして機能し、自動的には作成されません。 ネットワーク セキュリティ グループを作成し、必要なポートを開くには、次の手順を確認します。
-
-1. Azure portal で、お使いの Azure AD DS リソースを選択します。 Azure AD Domain Services に関連付けられたネットワーク セキュリティ グループがない場合、[概要] ページには、ネットワーク セキュリティ グループを作成するためのボタンが表示されます。
-1. Secure LDAP を使用する場合は、*TCP* ポート *636* の受信トラフィックを許可する規則をネットワーク セキュリティ グループに追加します。 詳細については、[Secure LDAP の構成][secure-ldap]に関するページを参照してください。
 
 ## <a name="roll-back-and-restore-from-migration"></a>移行のロールバックと復元
 

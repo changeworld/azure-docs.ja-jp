@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6b1fe78ac00b57d7627a64970e84ae8b717ae5c3
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 35fb8adaa5f7c0fff1c6d967f0136736b8071ce4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501918"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260157"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Synapse ワークスペース (プレビュー) のセキュリティ保護
 
@@ -97,8 +97,8 @@ Synapse ワークスペースでは、パイプラインを実行してシステ
 
 - Azure ポータルを開きます
 - WS1 に移動します
-- **[設定]** で、 **[SQL Active Directory 管理者]** をクリックします
-- **[管理者の設定]** をクリックし、WS1\_SQLAdmins を選択します
+- **[設定]** で、 **[SQL Active Directory 管理者]** を選択します
+- **[管理者の設定]** を選択し、WS1\_SQLAdmins を選択します
 
 ## <a name="step-6-maintain-access-control"></a>手順 6:アクセス制御を維持する
 
@@ -123,8 +123,9 @@ Synapse ワークスペースでは、パイプラインを実行してシステ
 
 > [!NOTE]
 > [1] SQL または Spark プールを作成するために、ユーザーは Synapse ワークスペースに対して少なくとも共同作成者ロールを持っている必要があります。
-> [!TIP]
 >
+ 
+>[!TIP]
 > - ロールによっては、一部の手順が意図的に許可されません。
 > - セキュリティが完全に構成されていない場合、一部のタスクが失敗する可能性があることに注意してください。 これらのタスクについては、表に記載されています。
 

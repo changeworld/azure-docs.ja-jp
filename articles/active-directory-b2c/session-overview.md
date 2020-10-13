@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory B2C での SSO セッション | Microsoft Docs
-description: Azure Active Directory B2C でセッションの動作を構成します。
+description: Azure Active Directory B2C でのセッション動作の構成の概要。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ea8c40faad4ee709ae98f868e36fd42e46501bea
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 0004c874a2011a78bb5cfe67ff0a840224d47bbb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927039"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258967"
 ---
 # <a name="azure-ad-b2c-session"></a>Azure AD B2C のセッション
 

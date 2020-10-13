@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: b2a45218118282f4f1cadb29c9022fc05b30f907
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1c2f0a2c54be7adbc7b8babd596f18e08c67a024
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078730"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269558"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Power Automate からフローをエクスポートして Azure Logic Apps にデプロイする
 
@@ -96,7 +96,7 @@ ms.locfileid: "87078730"
 
    1. 承認された接続が必要な手順ごとに、その手順を展開して **[Add new]\(新規追加\)** を選択します。
 
-      ![新しい接続を追加する](./media/export-from-microsoft-flow-logic-app-template/add-new-connection.png)
+      ![[新規追加] ボタンが選択された Outlook の [接続] ウィンドウを示すスクリーンショット。](./media/export-from-microsoft-flow-logic-app-template/add-new-connection.png)
 
    1. 各サービスにサインインするか、接続を承認するために必要な資格情報を指定します。
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 300470b2e8fb10fda7cfc59517cef00c07bf0632
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a6aabe7ef3500a114525fe6c8bc993826295e36
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79537008"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275355"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>Azure Database for MySQL のサーバーの概念
 
@@ -45,6 +45,20 @@ Azure Database for MySQL サーバー内には 1 つまたは複数のデータ�
 | **TCP/IP** | プロトコルは、TCP/IP および UNIX ドメイン ソケット経由でサポートされます。 |
 | **ファイアウォール** | データを保護するため、ファイアウォール規則は、どのコンピューターに権限を持たせるかを指定するまで、データベース サーバーへのすべてのアクセスを遮断します。 「[Azure Database for MySQL サーバーのファイアウォール規則](./concepts-firewall-rules.md)」を参照してください。 |
 | **SSL** | アプリケーションとデータベース サーバーの間に SSL 接続を適用できます。  「[Azure Database for MySQL に安全に接続するためにアプリケーションで SSL 接続を構成する](./howto-configure-ssl.md)」を参照してください。 |
+
+## <a name="stopstart-an-azure-database-for-mysql-preview"></a>Azure Database for MySQL を停止または開始する (プレビュー)
+
+Azure Database for MySQL を使用すると、使用されていないときにサーバーを**停止**し、アクティビティを再開したらサーバーを**開始**することができます。 これは基本的に、データベース サーバーのコストを節約し、使用したリソースに対してのみ課金されるようにするために行われます。 これは、開発テスト ワークロードの場合、および 1 日の一部でしかサーバーを使用しない場合に、いっそう重要になります。 サーバーを停止すると、すべてのアクティブな接続が切断されます。 後で、サーバーをオンラインに戻すときは、[Azure portal](how-to-stop-start-server.md) または [CLI](how-to-stop-start-server.md) のいずれかを使用できます。
+
+サーバーが**停止**状態にある場合、サーバーのコンピューティングは課金されません。 ただし、サーバーが再び起動されたときにデータ ファイルを使用できるようにするため、サーバーのストレージは維持されているため、ストレージは引き続き課金されます。
+
+> [!IMPORTANT]
+> サーバーを**停止**すると、それ以降連続して 7 日間は、その状態のままになります。 この期間内に手動で**開始**しないと、サーバーは 7 日の終わりに自動的に開始されます。 サーバーを使用していない場合は、再び**停止**することができます。
+
+サーバーが停止されている間、サーバーで管理操作を実行することはできません。 サーバーの構成設定を変更するには、[サーバーを起動する](how-to-stop-start-server.md)必要があります。
+
+### <a name="limitations-of-stopstart-operation"></a>停止/開始操作の制限事項
+- 読み取りレプリカ構成 (ソースとレプリカの両方) ではサポートされていません。
 
 ## <a name="how-do-i-manage-a-server"></a>サーバーの管理方法
 

@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 231d1efa02ec80e8ad56a8895d4262d774480111
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ae0e18a2dfbce52e50b4a8b58d478a46dff12922
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73824094"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282104"
 ---
 # <a name="deploying-dependencies-for-local-development"></a>ローカル開発の依存関係をデプロイする
+
+> [!IMPORTANT]
+> この記事は更新される予定ですが、最新の内容については、[Azure 産業用 IoT](https://azure.github.io/Industrial-IoT/) に関するページを参照してください。
 
 この記事では、ローカル環境で開発とデバッグを行うために必要な Azure Platform サービスだけをデプロイする方法について説明します。   最後には、ローカル環境での開発とデバッグに必要なすべてのものを含むリソース グループがデプロイされます。
 
@@ -32,7 +35,7 @@ ms.locfileid: "73824094"
    deploy -type local
    ```
 
-2. プロンプトに従って、デプロイのためのリソース グループに名前を割り当てます。  スクリプトでは、Azure サブスクリプションのこのリソース グループに依存関係だけがデプロイされ、マイクロサービスはデプロイされません。  また、スクリプトでは、Azure Active Directory にアプリケーションが登録されます。  これは、OAUTH ベースの認証をサポートするために必要です。  デプロイには数分かかることがあります。
+2. プロンプトに従って、デプロイのためのリソース グループに名前を割り当てます。  スクリプトでは、Azure サブスクリプションのこのリソース グループに依存関係だけがデプロイされ、マイクロサービスはデプロイされません。  また、スクリプトによって、Azure AD にアプリケーションが登録されます。  これは、OAUTH ベースの認証をサポートするために必要です。  デプロイには数分かかることがあります。
 
 3. スクリプトが完了したら、.env ファイルの保存を選択できます。  .env 環境ファイルは、開発用コンピューター上で実行するすべてのサービスとツールの構成ファイルです。  
 
@@ -42,15 +45,15 @@ ms.locfileid: "73824094"
 
 短くてシンプルなリソース グループ名を使用してください。  この名前はリソースの命名にも使用されるので、リソースの命名要件に従っている必要があります。  
 
-### <a name="azure-active-directory-aad-registration"></a>Azure Active Directory (AAD) の登録
+### <a name="azure-active-directory-ad-registration"></a>Azure Active Directory (AD) の登録
 
-デプロイ スクリプトでは、Azure Active Directory への AAD アプリケーションの登録が試みられます。  選択した AAD テナントに対する権限によっては、これが失敗する可能性があります。   次の 3 つのオプションがあります。
+デプロイ スクリプトによって、Azure AD への Azure AD アプリケーションの登録が試みられます。  選択した Azure AD テナントに対する権限によっては、これが失敗する可能性があります。 次の 3 つのオプションがあります。
 
-1. テナントの一覧から AAD テナントを選択した場合は、スクリプトを再起動して別のものを一覧から選択します。
-2. または、プライベート AAD テナントをデプロイし、スクリプトを再起動して、それを使用することを選択します。
+1. テナントの一覧から Azure AD テナントを選択した場合は、スクリプトを再起動して別のものを一覧から選択します。
+2. または、プライベート Azure AD テナントをデプロイし、スクリプトを再起動して、それを使用します。
 3. 認証なしで続行します。  これはローカル環境でマイクロサービスを実行しているために許されることであり、運用環境では行わないでください。  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 既存プロジェクトへの OPC Twin サービスのデプロイが正常に済んだので、次の手順が推奨されます。
 
