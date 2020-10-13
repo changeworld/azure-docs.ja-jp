@@ -4,19 +4,24 @@ description: Azure Migrate サービスの最新の情報や最近行われた�
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: a46519d434061ebfdedbabe70a3e044cb69ca552
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0552402661397a2a8aa09f989189cc08b46e638e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322225"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91667080"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate の新着情報
 
 [Azure Migrate](migrate-services-overview.md) を使用すると、オンプレミスのサーバー、アプリ、データを検出して評価し、Microsoft Azure クラウドに移行するのに役立ちます。 この記事では、Azure Migrate の新しいリリースと機能について概要を説明します。
+
 ## <a name="update-september-2020"></a>更新 (2020 年 9 月)
-- Azure Migrate では、Availability Zones にサーバーを移行できるようになりました。
-- Azure Migrate では、UEFI ベースの VM と物理サーバーを Azure 第 2 世代 VM に移行できるようになりました。 
+- サーバーを Availability Zones に移行できるようになりました。
+- UEFI ベースの VM と物理サーバーを Azure 第 2 世代 VM に移行できるようになりました
+- 新しい Azure Migrate Power BI 評価ダッシュボードを使用して、さまざまな評価設定の間でコストを比較することができます。 ダッシュボードには、評価を自動的に作成する PowerShell ユーティリティが付属し、評価は Power BI ダッシュボードにプラグインされます。 [詳細情報。](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/assessment-utility)
+- 1000 台の VM で同時に依存関係の分析 (エージェントレス) を実行できるようになりました。
+- PowerShell スクリプトを使用して、大規模な依存関係の分析 (エージェントレス) を有効または無効にすることができるようになりました。 [詳細情報。](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
+- 依存関係の分析 (エージェントレス) によって収集されたデータを使用して、Power BI でネットワーク接続を視覚化できます。[詳細情報。](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
 
 ## <a name="update-august-2020"></a>更新 (2020 年 8 月)
 
@@ -24,9 +29,10 @@ ms.locfileid: "91322225"
 - VMware アプライアンスまたは Hyper-V アプライアンスを設定するために、ポータルからそれぞれ OVA か VHD ファイルまたはインストーラー スクリプトをダウンロードするオプション。
 - ユーザー エクスペリエンスが向上した、更新されたアプライアンス構成マネージャー。
 - Hyper-V VM の検出での、複数の資格情報のサポート。
-- 追加された資格情報および検出ソースに対する、向上した検索、並べ替え、およびフィルター機能。
-- Hyper-V ホストまたはクラスター、および物理サーバー用の検出ソースを追加するために使用する、単一項目の入力、複数の項目の入力、および CSV のインポートのオプション。
-- テーブルに追加された各ソースに対する検証および検出操作の状態の更新により、強化されたエラー エクスペリエンス。 
+
+## <a name="update-july-2020"></a>更新 (2020 年 7 月)
+
+- エージェントレスの VMware 移行では、vCenter あたり 300 台の VM を同時にレプリケートできるようになりました
 
 ## <a name="update-june-2020"></a>更新 (2020 年 6 月)
 

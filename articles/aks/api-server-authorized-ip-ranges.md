@@ -3,13 +3,13 @@ title: Azure Kubernetes Service (AKS) での API サーバーの許可された 
 description: Azure Kubernetes Service (AKS) で API サーバーへのアクセスのための IP アドレス範囲を使用してクラスターをセキュリティで保護する方法について説明します
 services: container-service
 ms.topic: article
-ms.date: 11/05/2019
-ms.openlocfilehash: 404bd600f825a5da334811744132c6aa9b751566
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.date: 09/21/2020
+ms.openlocfilehash: 99c6b173d96bbd54f12a0edc501d49e8c65caf01
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006895"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613732"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で許可された IP アドレス範囲を使用して API サーバーへのアクセスをセキュリティで保護する
 
@@ -17,18 +17,21 @@ Kubernetes では、API サーバーは、リソースの作成やノードの�
 
 この記事では、API サーバーで許可された IP アドレス範囲を使用して、コントロール プレーンにアクセスできる IP アドレスと CIDR を制限する方法を示します。
 
-> [!IMPORTANT]
-> API サーバーで許可される IP アドレス範囲が、2019 年 10 月のプレビューの範囲外に移動され後に作成されたクラスターでは、API サーバーで許可される IP アドレス範囲は *Standard* SKU のロード バランサーでのみサポートされます。 *Basic* SKU ロード バランサーと API サーバーで許可された IP アドレス範囲が構成された既存のクラスターは、引き続き機能しますが、*Standard* SKU ロード バランサーに移行することはできません。 これらの既存のクラスターは、Kubernetes のバージョンまたはコントロール プレーンがアップグレードされた場合も引き続き機能します。 API サーバーで許可される IP アドレス範囲は、プライベート クラスターではサポートされません。
-
 ## <a name="before-you-begin"></a>開始する前に
 
 この記事では、Azure CLI を使用して AKS クラスターを作成する方法について説明します。
 
 Azure CLI バージョン 2.0.76 以降がインストールされて構成されている必要があります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
 
+### <a name="limitations"></a>制限事項
+
+API サーバーの許可された IP 範囲の機能には、次の制限があります。
+- API サーバーで許可される IP アドレス範囲が、2019 年 10 月のプレビューの範囲外に移動され後に作成されたクラスターでは、API サーバーで許可される IP アドレス範囲は *Standard* SKU のロード バランサーでのみサポートされます。 *Basic* SKU ロード バランサーと API サーバーで許可された IP アドレス範囲が構成された既存のクラスターは、引き続き機能しますが、*Standard* SKU ロード バランサーに移行することはできません。 これらの既存のクラスターは、Kubernetes のバージョンまたはコントロール プレーンがアップグレードされた場合も引き続き機能します。 API サーバーで許可される IP アドレス範囲は、プライベート クラスターではサポートされません。
+- この機能は、[ノード プール内のノードごとのパブリック IP プレビュー機能](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools-preview)を使用するクラスターとは互換性がありません。
+
 ## <a name="overview-of-api-server-authorized-ip-ranges"></a>API サーバーの許可された IP 範囲の概要
 
-Kubernetes API サーバーは、基になる Kubernetes API が公開される方法です。 このコンポーネントは、`kubectl` や Kubernetes ダッシュボードなど、管理ツールに対する操作を提供します。 AKS は、専用の API サーバーを含むシングルテナント クラスター マスターを提供します。 既定では、API サーバーにはパブリック IP アドレスが割り当てられるため、ロールベースのアクセス制御 (RBAC) を使用してアクセスを制御する必要があります。
+Kubernetes API サーバーは、基になる Kubernetes API が公開される方法です。 このコンポーネントは、`kubectl` や Kubernetes ダッシュボードなど、管理ツールに対する操作を提供します。 AKS により、専用の API サーバーでシングル テナント クラスター コントロール プレーンが提供されます。 既定では、API サーバーにはパブリック IP アドレスが割り当てられるため、ロールベースのアクセス制御 (RBAC) を使用してアクセスを制御する必要があります。
 
 通常はパブリックにアクセス可能な AKS コントロール プレーン/API サーバーへのアクセスをセキュリティで保護するには、許可された IP 範囲を有効にして使用することができます。 これらの許可された IP 範囲では、API サーバーと通信するための定義された IP アドレス範囲のみが許可されます。 これらの許可された IP 範囲に含まれていない IP アドレスから API サーバーへの要求はブロックされます。 ユーザーやそのユーザーが要求するアクションを承認するには、引き続き RBAC を使用します。
 
@@ -82,7 +85,7 @@ az aks create \
 
 上の例では、パラメーター *`--load-balancer-outbound-ip-prefixes`* に指定されているすべての IP が、 *`--api-server-authorized-ip-ranges`* パラメーターの IP と共に使用できます。
 
-また、 *`--load-balancer-outbound-ip-prefixes`* パラメーターを指定して、アウトバウンド ロード バランサー IP プレフィックスを許可することもできます。
+代わりに、 *`--load-balancer-outbound-ip-prefixes`* パラメーターを指定して、アウトバウンド ロード バランサー IP プレフィックスを許可することもできます。
 
 ### <a name="allow-only-the-outbound-public-ip-of-the-standard-sku-load-balancer"></a>Standard SKU ロード バランサーのアウトバウンド パブリック IP のみを許可する
 
@@ -126,6 +129,32 @@ az aks update \
     --name myAKSCluster \
     --api-server-authorized-ip-ranges ""
 ```
+
+## <a name="how-to-find-my-ip-to-include-in---api-server-authorized-ip-ranges"></a>`--api-server-authorized-ip-ranges` に含める IP を見つける方法
+
+そこから API サーバーにアクセスするには、許可された IP 範囲の AKS クラスター リストに、開発用コンピューター、ツール、またはオートメーションの IP アドレスを追加する必要があります。 
+
+もう 1 つの方法は、ファイアウォールの仮想ネットワーク内の別のサブネット内に必要なツールを使用してジャンプボックスを構成することです。 この場合、環境にそれぞれのネットワークのファイアウォールがあり、許可された範囲にファイアウォールの IP を追加してあることが想定されています。 同様に、AKS サブネットからファイアウォール サブネットへのトンネリングを強制している場合は、クラスター サブネット内にジャンプボックスがあってもかまいません。
+
+次のコマンドを使用して、許可された範囲にもう 1 つの IP アドレスを追加します。
+
+```bash
+# Retrieve your IP address
+CURRENT_IP=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
+# Add to AKS approved list
+az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/32
+```
+
+>> [!NOTE]
+> 上の例では、クラスター上の API サーバーの許可された IP 範囲が追加されます。 許可された IP 範囲を無効にするには、az aks update を使用し、空の範囲 "" を指定します。 
+
+もう 1 つのオプションは、Windows システムで次のコマンドを使用して、パブリック IPv4 アドレスを取得することです。または、「[IP アドレスを確認する](https://support.microsoft.com/en-gb/help/4026518/windows-10-find-your-ip-address)」の手順を使用することもできます。
+
+```azurepowershell-interactive
+Invoke-RestMethod http://ipinfo.io/json | Select -exp ip
+```
+
+このアドレスは、インターネット ブラウザーで "what is my IP address" を検索することによって確認することもできます。
 
 ## <a name="next-steps"></a>次のステップ
 

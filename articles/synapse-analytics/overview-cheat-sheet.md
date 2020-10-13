@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 98fc8b23369f961ca023832430d47c8868e42158
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4dd83bdd68773ac594c71767b9e316bdd05a0ae7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91260667"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91620275"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Azure Synapse Analytics のチート シート
 
@@ -34,14 +34,18 @@ Azure Synapse Analytics のチート シートでは、サービスの基本的�
 ## <a name="apache-spark-for-synapse"></a>Synapse 用の Apache Spark
 Spark 分析を使用するには、Synapse ワークスペースで **Spark プール**を作成し、使用します。
 
-## <a name="terminology"></a>用語
+## <a name="sql-terminology"></a>SQL の用語
+| 期間                         | 定義      |
+|:---                                 |:---                 |
+| **SQL 要求**  |   SQL プールまたは SQL オンデマンドを介して実行されるクエリなどの操作。 |
+
+## <a name="spark-terminology"></a>Spark の用語
 | 期間                         | 定義      |
 |:---                                 |:---                 |
 |**Synapse 用の Apache Spark** | Spark プールで使用される Spark ランタイム。 現在サポートされているバージョンは、Python 3.6.1、Scala 2.11.12、Apache Spark 0.5 向け .NET サポート、および Delta Lake 0.3 を使用する Spark 2.4 です。  | 
 | **Apache Spark プール**  | 対応するデータベースをワークスペースにデプロイできる、0 対 N の Spark プロビジョニング済みのリソース。 Spark プールは、自動で一時停止、再開、およびスケーリングできます。  |
 | **Spark アプリケーション**  |   ドライバー プロセスと Executor プロセスのセットで構成されます。 Spark アプリケーションは Spark プールで実行されます。            |
 | **Spark セッション**  |   Spark アプリケーションの統合エントリ ポイント。 これにより、Spark のさまざまな機能との対話、および少数のコンストラクトとの対話が可能になります。 ノートブックを実行するには、セッションを作成する必要があります。 セッションは、特定のサイズの特定の数の Executor で実行するように構成できます。 ノートブック セッションの既定の構成では、2 つの中規模の Executor で実行されます。 |
-| **SQL 要求**  |   SQL プールまたは SQL オンデマンドを介して実行されるクエリなどの操作。 |
 |**データの統合**| さまざまなソース間でデータを取り込み、ワークスペース内またはワークスペース外で実行されるアクティビティを調整する機能を提供します。| 
 |**アイテム**| ユーザーがデータ ソースの管理、開発、調整、および視覚化を行うために必要なすべてのオブジェクトをカプセル化する概念。|
 |**ノートブック**| Scala、PySpark、C#、および SparkSQL をサポートする、インタラクティブかつリアクティブなデータ サイエンスおよびエンジニアリング インターフェイス。 |

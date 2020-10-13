@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: 43b6f5d4367cfc641183a17fda89cf1381c22a6c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 8f92501bdb8261a67d3dc2b8aefbe1fb1498ef1e
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258594"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445899"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Service Fabric クラスターでの Windows オペレーティング システムへのパッチの適用
 
@@ -296,9 +296,9 @@ Windows Update の結果を照会するには、クラスターにサインイ�
 
    POA バージョン 1.4.0 以降では、WUOperationStatus-\<NodeName> プロパティを使用して NodeAgentService の正常性イベントを表示して、更新プログラムの状態を確認できます。 下の画像で強調表示されたセクションには、ノード *poanode_0* および *poanode_2* での Windows 更新プログラムの状態が示されています。
 
-   [![Windows Update 操作の状態の画像](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
+   [![poanode_0 の Windows Update 操作状態が強調して示されているコンソール ウィンドウのスクリーンショット。](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
 
-   [![Windows Update 操作の状態の画像](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
+   [![poanode_1 の Windows Update 操作状態が強調して示されているコンソール ウィンドウのスクリーンショット。](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
 
    PowerShell を使用して詳細を取得することもできます。 これを行うには、クラスターに接続し、[Get-ServiceFabricRepairTask](/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) を使用して修復タスクの状態を取り込みます。 
    
@@ -328,7 +328,7 @@ Windows Update の結果を照会するには、クラスターにサインイ�
 
 1. POA バージョン 1.4.0 以降では、ノードの更新の試行が完了した場合、Windows 更新プログラムのダウンロードとインストールの次回の試行が開始されるときに通知するために、"WUOperationStatus-[NodeName]" プロパティを使用するイベントが NodeAgentService にポストされます。 これは次の画像のように表示されます。
 
-     [![Windows Update 操作の状態の画像](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png#lightbox)
+     [![NodeAgentService の Windows Update 操作状態が示されているコンソール ウィンドウのスクリーンショット。](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png#lightbox)
 
 ### <a name="diagnostics-logs"></a>診断ログ
 

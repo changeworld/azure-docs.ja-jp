@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewers: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: fe4b25dfd8bf96d1ed6dab189543e0e1b810ecd8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03e8719b256fc758874bd7375deed0637da9447e
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84026933"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620309"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>分散クエリを使用したテナント間レポート
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -93,7 +93,7 @@ Wingtip Tickets SaaS Database Per Tenant アプリケーションでは、各テ
 
 1. **オブジェクト エクスプローラー**で、 **[contosoconcerthall]**  >  **[ビュー]** の順に展開します。
 
-   ![views](./media/saas-tenancy-cross-tenant-reporting/views.png)
+   ![4 種類の Venue Screenshot dbo を含む、[ビュー] ノードのコンテンツを示すスクリーンショット。](./media/saas-tenancy-cross-tenant-reporting/views.png)
 
 2. **[dbo.Venues]** を右クリックします。
 3. **[ビューをスクリプト化]**  >  **[新規作成]**  >  **[新しいクエリ エディター ウィンドウ]** の順に選択します。
