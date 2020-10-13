@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 688541147a9a765ed94d8e6c18ce4ee63615f627
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: b35268cd8d36901f750225713407c5392e5c429e
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91580813"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759171"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-c"></a>クイック スタート:ご利用のソリューションに接続されている IoT プラグ アンド プレイ デバイスとやり取りする (C#)
 
@@ -66,7 +66,7 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 「[IoT プラグ アンド プレイのクイックスタートとチュートリアル用の環境の設定](set-up-environment.md)」では、IoT ハブとデバイスに接続するようにサンプルを構成するための 2 つの環境変数を作成しました。
 
 * **IOTHUB_CONNECTION_STRING**: 先ほどメモした IoT ハブ接続文字列。
-* **DEVICE_ID**: `"my-pnp-device"`。
+* **IOTHUB_DEVICE_ID**: `"my-pnp-device"`。
 
 このクイックスタートでは、C# のサンプルの IoT ソリューションを使用して、先ほど設定したサンプル デバイスとやり取りします。
 
@@ -76,7 +76,7 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 
     | 名前 | 値 |
     | ---- | ----- |
-    | DEVICE_ID | my-pnp-device |
+    | IOTHUB_DEVICE_ID | my-pnp-device |
     | IOTHUB_CONNECTION_STRING | [環境の設定](set-up-environment.md)の完了時に書き留めておいた値 |
 
 1. これで、Visual Studio でサンプルをビルドし、デバッグ モードで実行できるようになりました。
@@ -92,7 +92,7 @@ s_logger.LogDebug($"Model Id of this Twin is: {twin.ModelId}");
 ```
 
 > [!NOTE]
-> このサンプルでは、**IoT Hub サービス クライアント**の **Microsoft.Azure.Devices.Client;** 名前空間を使用します。 モデル ID を取得する方法の詳細については、[開発者ガイド](concepts-developer-guide.md)を参照してください。
+> このサンプルでは、**IoT Hub サービス クライアント**の **Microsoft.Azure.Devices.Client;** 名前空間を使用します。 モデル ID を取得する方法の詳細については、[開発者ガイド](concepts-developer-guide-service.md)を参照してください。
 
 このコードは、次の出力を生成します。
 

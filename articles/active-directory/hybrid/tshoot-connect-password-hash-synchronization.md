@@ -16,12 +16,12 @@ ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbc9e5a9187f9ef16ea03cfa6c97e438c2b26c99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77271679306b0fbde10c748afc7535f3ad3d0945
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807606"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317567"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect Sync を使用したパスワード ハッシュ同期のトラブルシューティング
 
@@ -120,7 +120,7 @@ Azure AD Connect サーバーがステージング モードである場合、�
 
 パスワード ハッシュを同期するためにオンプレミスの Active Directory コネクタによって使用される AD DS アカウントに、適切なアクセス許可がない場合は、次のエラーが返されます。
 
-![正しくない資格情報](./media/tshoot-connect-password-hash-synchronization/phsglobalaccountincorrectpermission.png)
+![AD DS アカウントのユーザー名またはパスワードが正しくない場合に返されるエラーを示すスクリーンショット。](./media/tshoot-connect-password-hash-synchronization/phsglobalaccountincorrectpermission.png)
 
 #### <a name="incorrect-ad-ds-account-username-or-password"></a>AD DS アカウントのユーザー名またはパスワードが正しくない
 
@@ -338,7 +338,7 @@ Azure AD との接続がありますか。
 
     i. **[Metaverse Object Properties]\(メタバース オブジェクトのプロパティ\)** をクリックして、ユーザー属性の一覧を表示します。  
 
-    ![メタバース情報](./media/tshoot-connect-password-hash-synchronization/mvpasswordsync.png)  
+    ![[Metaverse Object Properties]\(メタバース オブジェクトのプロパティ\) のユーザー属性の一覧を示すスクリーンショット。](./media/tshoot-connect-password-hash-synchronization/mvpasswordsync.png)  
 
     **cloudFiltered** 属性が存在しないことを確認します。 ドメイン属性 (domainFQDN と domainNetBios) に必要な値があることを確認します。
 

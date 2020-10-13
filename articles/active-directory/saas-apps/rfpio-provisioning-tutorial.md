@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 963f89c99d71afbebbe122e3c7d8b3227dc4a8be
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 98f92a6b0169c573b97788c7ffaf76255796cfa6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518410"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278942"
 ---
 # <a name="tutorial-configure-rfpio-for-automatic-user-provisioning"></a>チュートリアル:RFPIO を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -66,11 +66,11 @@ Azure AD での自動ユーザー プロビジョニング用に RFPIO を構成
 
 4.  **[Auto User Provisioning]\(自動ユーザー プロビジョニング\)** がオンになっていることを確認します。 **[GENERATE SCIM API TOKEN]\(SCIM API トークンの生成\)** をクリックします。
 
-    ![RFPIO でのトークンの作成](media/rfpio-provisioning-tutorial/generate.png)
+    ![[GENERATE SCIM API TOKEN]\(SCIM API トークンの生成\) オプションが呼び出されている [SCIM] セクションのスクリーンショット。](media/rfpio-provisioning-tutorial/generate.png)
 
 5.  **SCIM API トークン**を保存します。このトークンは、セキュリティ上の目的で再び表示されることはありません。 この値を、Azure portal で RFPIO アプリケーションの [プロビジョニング] タブ内の **[シークレット トークン]** フィールドに入力します。
 
-    ![RFPIO でのトークンの作成](media/rfpio-provisioning-tutorial/auth.png)
+    ![[送信] を選択した後に表示される警告ダイアログ ボックスが表示された [SCIM] セクションのスクリーンショット。](media/rfpio-provisioning-tutorial/auth.png)
 
 ## <a name="add-rfpio-from-the-gallery"></a>ギャラリーからの RFPIO の追加
 
@@ -113,11 +113,11 @@ Azure AD を使用した自動ユーザー プロビジョニング用に RFPIO 
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://<RFPIO tenant instance>.rfpio.com/rfpserver/scim/v2 `」と入力します。 値の例は `https://Azure-test1.rfpio.com/rfpserver/scim/v2` です。 **[シークレット トークン]** に先ほど取得した**SCIM API トークン**の値を入力します。 **[テスト接続]** をクリックして、Azure AD から RFPIO への接続を確保します。 接続できない場合は、使用中の RFPIO アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 

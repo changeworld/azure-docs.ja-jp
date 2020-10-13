@@ -4,7 +4,7 @@
   items:
     - name: ExpressRoute とは何ですか。
       href: expressroute-introduction.md
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: ExpressRoute 回線の作成 - Portal
       href: expressroute-howto-circuit-portal-resource-manager.md
