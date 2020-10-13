@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 7f2db507176d65e7794607e83db8605b2f892c1c
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: c9277f510e71e4d6ecb6595aa2d67d16c2ac5695
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646640"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326030"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>2023 年 3 月 1 日までに IaaS リソースを Azure Resource Manager に移行する 
 
@@ -65,7 +65,7 @@ Azure Resource Manager への移行の計画をすぐに開始します。
 
 - [Azure の移行のサポート](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"1135e3d0-20e2-aec5-4ef0-55fd3dae2d58"}):移行中の技術的支援のための専用サポート チーム。
 
-- [Microsoft Fast Track](https://www.microsoft.com/fasttrack):移行中に対象ユーザーに対して技術的なサポートを提供できるチーム。 
+- [Microsoft Fast Track](https://www.microsoft.com/fasttrack):Fast Track は、対象となるお客様がこの移行を計画および実行することを支援します。 [こちらから自己推薦してください](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fprograms%2Fazure-fasttrack%2F%23nomination&data=02%7C01%7CTanmay.Gore%40microsoft.com%7C3e75bbf3617944ec663a08d85c058340%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637360526032558561&sdata=CxWTVQQPVWNwEqDZKktXzNV74pX91uyJ8dY8YecIgGc%3D&reserved=0)。  
 
-会社または組織が Microsoft と提携している場合、または Microsoft の担当者 (クラウド ソリューション アーキテクト (CSA)、テクニカル アカウント マネージャー (TAM) など) と連携している場合は、移行に関する追加のリソースを使用して一緒に作業してください。 
+- 会社または組織が Microsoft と提携している場合、または Microsoft の担当者 (クラウド ソリューション アーキテクト (CSA)、テクニカル アカウント マネージャー (TAM) など) と連携している場合は、移行に関する追加のリソースを使用して一緒に作業してください。 
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 author: shganesh-dev
 ms.author: shganesh
-ms.openlocfilehash: f0f14bf24bd867344ec72c86a6fd517085b66d1f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: aff26d3b491896aa9a1b1fee93d39a5ec93d730c
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317554"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665143"
 ---
 # <a name="commercial-marketplace-analytics-terminology-and-common-questions"></a>コマーシャル マーケットプレース分析の用語とよく寄せられる質問
 
@@ -45,6 +45,7 @@ ms.locfileid: "87317554"
 | Azure ライセンスの種類:Enterprise | 顧客、注文 | エンド カスタマーは、Azure と Marketplace プランを、マイクロソフトと直接契約したマイクロソフト エンタープライズ契約を通じて調達します。|
 | Azure ライセンスの種類:リセラーを通じたエンタープライズ  | 顧客、注文 | エンド カスタマーは、Azure と Marketplace プランを、マイクロソフトとマイクロソフト エンタープライズ契約を結んだリセラーを通じて調達します。|
 | Azure ライセンスの種類:従量課金制| 顧客、注文 | エンド カスタマーは、Azure と Marketplace プランを、マイクロソフトと直接契約した "従量課金制契約" を通じて調達します。|
+| 課金アカウント ID| 顧客、注文、使用状況| 請求書が生成されるアカウントの識別子。 **課金アカウント ID** を **customerID** にマップして、支払い取引レポートを、顧客、注文、使用状況のレポートに関連付けます。|
 | クラウド インスタンス名| Order| VM のデプロイが存在する Microsoft Cloud。|
 | クラウド インスタンス名:Azure Global| Order| Microsoft の世界規模のパブリック クラウド。|
 | クラウド インスタンス名:Azure Government | Order| 次のいずれかの政府機関向けの政府機関固有の Microsoft クラウド:中国、ドイツ、またはアメリカ合衆国。| |

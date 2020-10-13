@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
-ms.openlocfilehash: eaada1981929cec890ce3c8ca89fe47393730b05
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 16c3a45e0d88a0546772b3fdc855c90f2e450d14
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136678"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250333"
 ---
 # <a name="functions-in-the-hyperscale-citus-sql-api"></a>Hyperscale (Citus) SQL API の関数
 
@@ -20,7 +20,7 @@ ms.locfileid: "88136678"
 
 > [!NOTE]
 >
-> 以前のバージョンの Citus エンジンを実行している Hyperscale サーバー グループでは、以下に示す機能の一部が提供されない場合があります。
+> 以前のバージョンの Citus エンジンを実行している Hyperscale (Citus) サーバー グループでは、以下に示す機能の一部が提供されない場合があります。
 
 ## <a name="table-and-shard-ddl"></a>テーブルおよびシャードの DDL
 

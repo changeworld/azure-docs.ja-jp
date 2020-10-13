@@ -1,6 +1,7 @@
 ---
-title: Node.js Web アプリに OIDC サインインを追加する - Microsoft ID プラットフォーム | Azure
-description: OpenID Connect を使用して Node.js Web アプリケーションに認証を実装する方法について説明します。
+title: 'クイックスタート: ユーザー サインインを Node.js Web アプリに追加する | Azure'
+titleSuffix: Microsoft identity platform
+description: このクイックスタートでは、OpenID Connect を使用して Node.js Web アプリケーションに認証を実装する方法について説明します。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: 8e42d906cce65cf51d6359343bc4f218b94a05fb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 34baa054104a6cf2c78864cc2827b16c1eedb084
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257692"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91613307"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>クイック スタート:OpenID Connect を使用したサインインを Node.js Web アプリに追加する
 
@@ -24,11 +25,8 @@ ms.locfileid: "91257692"
 
 ## <a name="prerequisites"></a>前提条件
 
-このサンプルを実行するには、次のものが必要になります。
-
-* [http://nodejs.org/](http://nodejs.org/ ) からの Node.js のインストール
-
-* [Microsoft アカウント](https://www.outlook.com)または [Microsoft 365 Developer Program](/office/developer-program/office-365-developer-program)
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- [Node.js](https://nodejs.org/en/download/)。
 
 ## <a name="register-your-application"></a>アプリケーションの登録
 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com/) にサインインします。

@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 83535fde7f577c4cd5d0b3866afcc0a916c16337
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 5748ff87e94daef80b140e015371eb7a334fffac
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134820"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361485"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>VMware VM/物理サーバー ディザスター リカバリー用の構成サーバーを管理する
 
@@ -71,7 +71,7 @@ CSPSConfigtool.exe を使用して資格情報を変更することもできま�
 
 1. [サインイン](#access-configuration-server)後に、 **[仮想マシンの資格情報の管理]** を選択します。
 2. **[仮想マシンの資格情報の追加]** をクリックします。
-    ![add-mobility-credentials](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
+    ![[仮想マシンの資格情報の追加] リンクがある [仮想マシンの資格情報の管理] ウィンドウを示すスクリーンショット。](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
 3. 新しい資格情報を入力して、 **[追加]** をクリックします。
 
 CSPSConfigtool.exe を使用して資格情報を追加することもできます。
