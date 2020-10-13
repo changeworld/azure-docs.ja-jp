@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 08/28/2020
+ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 59924312fe0483d11d0f70ce83b8f6e4b0e198dc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5cec5eda7cf398949865bf6d3d3e8be5b2d5e840
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90890750"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767368"
 ---
 # <a name="use-certificates-with-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスで証明書を使用する
 
@@ -61,7 +61,7 @@ Azure Stack Edge Pro デバイスで使用される各種の証明書を次に�
 - ルート証明書は、署名チェーン証明書である必要があります。
 - ルート証明書は、次の形式でデバイスにアップロードできます。 
     - **DER** – `.cer` ファイル拡張子として使用できます。
-    - **Base-64 エンコードまたは PEM** – `.cer` 拡張子としても使用できます。
+    - **Base-64 エンコード** – `.cer` ファイル拡張子として使用できます。
     - **P7b** – この形式は、ルート証明書と中間証明書を含む署名チェーン証明書に対してのみ使用されます。
 - 署名チェーン証明書は常に、他の証明書をアップロードする前にアップロードされます。
 
@@ -275,11 +275,11 @@ New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSeria
 
     1. 最初にルート証明書をアップロードします。 ローカル Web UI で、 **[証明書] > [+ 証明書の追加]** に移動します。
 
-        ![署名チェーン証明書を追加する](media/azure-stack-edge-series-manage-certificates/add-cert-1.png)
+        ![署名チェーン証明書を追加する 1](media/azure-stack-edge-series-manage-certificates/add-cert-1.png)
 
     2. 次に、エンドポイント証明書をアップロードします。 
 
-        ![署名チェーン証明書を追加する](media/azure-stack-edge-series-manage-certificates/add-cert-2.png)
+        ![署名チェーン証明書を追加する 2](media/azure-stack-edge-series-manage-certificates/add-cert-2.png)
 
         *.pfx* 形式の証明書ファイルを選択し、証明書のエクスポート時に指定したパスワードを入力します。 Azure Resource Manager 証明書が適用されるまでに数分かかる場合があります。
 
@@ -383,20 +383,19 @@ Windows クライアントに証明書をインポートするには、次の手
 
 1. 個人用証明書ストアで、ルート証明書を選択します。 右クリックし、 **[すべてのタスク] > [エクスポート...]** を選択します。
 
-    ![証明書のエクスポート 1](media/azure-stack-edge-series-manage-certificates/export-cert-cer-1.png)
+    ![証明書の DER をエクスポートする 1](media/azure-stack-edge-series-manage-certificates/export-cert-cer-1.png)
 
 2. 証明書ウィザードが開きます。 形式として **[DER encoded binary X.509 (.cer)]** を選択します。 **[次へ]** を選択します。
 
-    ![証明書のエクスポート 2](media/azure-stack-edge-series-manage-certificates/export-cert-cer-2.png)
+    ![証明書の DER をエクスポートする 2](media/azure-stack-edge-series-manage-certificates/export-cert-cer-2.png)
 
 3. .cer 形式のファイルをエクスポートする場所を参照して選択します。
 
-    ![証明書のエクスポート 3](media/azure-stack-edge-series-manage-certificates/export-cert-cer-3.png)
-
+    ![証明書の DER をエクスポートする 3](media/azure-stack-edge-series-manage-certificates/export-cert-cer-3.png)
 
 4. **[完了]** を選択します。
 
-    ![証明書のエクスポート 4](media/azure-stack-edge-series-manage-certificates/export-cert-cer-4.png)
+    ![証明書の DER をエクスポートする 4](media/azure-stack-edge-series-manage-certificates/export-cert-cer-4.png)
 
 
 ## <a name="supported-certificate-algorithms"></a>サポートされる証明書アルゴリズム
@@ -410,11 +409,11 @@ Windows クライアントに証明書をインポートするには、次の手
 
 独自の証明書を導入する場合、証明書は通常 1 年または 6 か月で期限切れになります。 証明書の有効期限を確認するには、デバイスのローカル Web UI の **[証明書]** ページにアクセスします。 特定の証明書を選択すると、その証明書の有効期限を確認できます。
 
-## <a name="rotate-certificates"></a>証明書のローテーション
+<!--## Rotate certificates
 
-このリリースでは、証明書のローテーションは実装されていません。 また、証明書の差し迫った有効期限は通知されません。 
+Rotation of certificates is not implemented in this release. You are also not notified of the pending expiration date on your certificate. 
 
-デバイスのローカル Web UI の **[証明書]** ページで、証明書の有効期限を確認してください。 証明書の有効期限が近づいたら、[証明書の作成とアップロード](azure-stack-edge-j-series-manage-certificates.md)に関するページの詳細な手順に従って、新しい証明書を作成してアップロードます。
+View the certificate expiration date on the **Certificates** page in the local web UI of your device. Once the certificate expiration is approaching, create and upload new certificates as per the detailed instructions in [Create and upload certificates](azure-stack-edge-j-series-manage-certificates.md).-->
 
 ## <a name="next-steps"></a>次のステップ
 

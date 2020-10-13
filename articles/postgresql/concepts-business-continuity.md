@@ -1,17 +1,17 @@
 ---
 title: ビジネス継続性 - Azure Database for PostgreSQL - Single Server
 description: この記事では、Azure Database for PostgreSQL を使用する場合のビジネス継続性 (ポイント インタイム リストア、データ センターの停止、geo リストア、レプリカ) について説明します。
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2020
-ms.openlocfilehash: 75cd86bd1587a9294caef00efdf973fe8a26c150
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 6bcb1ea6c16fd387dfb7f15f909d1908c20a44d7
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612014"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710908"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server でのビジネス継続性の概要
 
@@ -19,16 +19,20 @@ ms.locfileid: "89612014"
 
 ## <a name="features-that-you-can-use-to-provide-business-continuity"></a>ビジネス継続性を提供するときに使用できる機能
 
-Azure Database for PostgreSQL で提供されるビジネス継続性機能には、自動バックアップや、ユーザーによる geo リストア開始機能などが含まれます。 機能ごとに、推定復旧時間 (ERT) と潜在的なデータ損失に関する特性が異なります。 推定復旧時間 (ERT) は、復元/フェールオーバー要求の後、データベースが完全に機能するようになるまでの推定所要時間です。 これらのオプションについて理解した後は、その中から適切なものを選んで、さまざまなシナリオに対して組み合わせて使うことができます。 ビジネス継続性計画を開発するときは、破壊的なイベントが発生してから、アプリケーションが完全に復旧するまでの最大許容時間について理解する必要があります。これが目標復旧時間 (RTO) です。 さらに、破壊的なイベントの発生後、復旧中にアプリケーションが損失を許容できる最大データ更新 (期間) 量についても理解しなければなりません。これは目標復旧時点 (RPO) です。
+ビジネス継続性計画を開発するときは、破壊的なイベントが発生してから、アプリケーションが完全に復旧するまでの最大許容時間について理解する必要があります。これが目標復旧時間 (RTO) です。 さらに、破壊的なイベントの発生後、復旧中にアプリケーションが損失を許容できる最大データ更新 (期間) 量についても理解しなければなりません。これは目標復旧時点 (RPO) です。
 
-次の表は、利用できる機能の ERT と RPO を比較したものです。
+Azure Database for PostgreSQL により、geo リストアを開始し、別のリージョンに読み取りレプリカをデプロイする機能を備えた geo 冗長バックアップを含む、ビジネス継続性機能が提供されています。 それぞれ、復旧時間と潜在的なデータ損失に関する特性が異なります。 [geo リストア](concepts-backup.md)機能を使用すると、別のリージョンからレプリケートされたバックアップ データを使用して新しいサーバーが作成されます。 復元と復旧にかかる全体的な時間は、データベースのサイズと、復旧するログの量によって異なります。 サーバーの確立にかかる全体的な時間は、数分から数時間に範囲で変化します。 [読み取りレプリカ](concepts-read-replicas.md)を使用すると、プライマリからのトランザクション ログがレプリカに非同期にストリーミングされます。 プライマリとレプリカの間の遅延は、サイト間の待機時間と、転送されるデータの量によって異なります。 可用性ゾーンの障害などの障害がプライマリ サイトで発生した場合、レプリカの昇格により RTO が短縮され、データ損失が減少します。 
+
+次の表は、一般的なシナリオでの RTO と RPO を比較したものです。
 
 | **機能** | **Basic** | **汎用** | **メモリの最適化** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | バックアップからのポイントインタイム リストア | リテンション期間内の任意の復元ポイント | リテンション期間内の任意の復元ポイント | リテンション期間内の任意の復元ポイント |
-| Geo レプリケーション バックアップからの geo リストア | サポートされていません | ERT < 12 時間<br/>RPO < 1 時間 | ERT < 12 時間<br/>RPO < 1 時間 |
+| Geo レプリケーション バックアップからの geo リストア | サポートされていません | RTO - 変動 <br/>RPO < 1 時間 | RTO - 変動 <br/>RPO < 1 時間 |
+| 読み取りレプリカ | RTO - 分単位 <br/>RPO < 5 分 | RTO - 分単位 <br/>RPO < 5 分| RTO - 分単位 <br/>RPO < 5 分|
 
-[読み取りレプリカ](concepts-read-replicas.md)の使用も検討してください。
+> [!IMPORTANT]
+> ここで説明されている予想される RTO と RPO は、参考のためのものです。 これらのメトリックに対して SLA は提供されません。
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>ユーザーまたはアプリケーション エラーの後でサーバーを復旧する
 

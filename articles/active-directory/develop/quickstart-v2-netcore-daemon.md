@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 07/16/2019
+ms.date: 10/05/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 6f4f4c2de3b1030c4d14cb74e562954a3d3d1144
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bf9a2232a04b929d716d3b2412f1b2c666b29f62
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257827"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767281"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>クイック スタート:トークンを取得し、コンソール アプリの ID を使用して Microsoft Graph API を呼び出す
 
@@ -25,7 +25,7 @@ ms.locfileid: "91257827"
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートでは [.NET Core 2.2](https://www.microsoft.com/net/download/dotnet-core/2.2) が必要です。
+このクイックスタートでは [.NET Core 3.1](https://www.microsoft.com/net/download/dotnet-core) が必要です。
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>クイック スタート アプリを登録してダウンロードする
@@ -48,12 +48,12 @@ ms.locfileid: "91257827"
 >
 > 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
 > 1. ご利用のアカウントで複数のテナントにアクセスできる場合は、右上隅でアカウントを選択し、ポータルのセッションを目的の Azure AD テナントに設定します。
-> 1. 開発者用の Microsoft ID プラットフォームの [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページに移動します。
+> 1. Azure portal の検索バーから「**アプリの登録**」を検索して、開発者用の Microsoft ID プラットフォームの [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページに移動します。
 > 1. **[新規登録]** を選択します。
 > 1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
 > 1. **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名 (`Daemon-console` など) を入力した後、 **[登録]** を選択してアプリケーションを作成します。
 > 1. 登録されたら、 **[証明書とシークレット]** メニューを選択します。
-> 1. **[クライアント シークレット]** で、 **[+ 新しいクライアント シークレット]** を選択します。 名前を付け、 **[追加]** を選択します。 シークレットを安全な場所にコピーします。 コード内でそれを使用する必要があります。
+> 1. **[クライアント シークレット]** で、 **[+ 新しいクライアント シークレット]** を選択します。 名前を付け、 **[追加]** を選択します。 シークレットを安全な場所にコピーします。 後からコード中で使用する必要があります。ポータルには二度と表示されません。
 > 1. 次に、 **[API のアクセス許可]** メニューを選択し、 **[+ アクセス許可の追加]** ボタンをクリックし、 **[Microsoft Graph]** を選択します。
 > 1. **[アプリケーションのアクセス許可]** を選択します。
 > 1. **[ユーザー]** ノードで、 **[User.Read.All]** を選択し、 **[アクセス許可の追加]** を選択します。
@@ -73,6 +73,11 @@ ms.locfileid: "91257827"
 
 > [!div renderon="docs"]
 > [Visual Studio プロジェクトをダウンロードする](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
+
+> [!div renderon="docs"]
+> > [!NOTE]
+> > 提供されているプロジェクトは、Visual Studio または Visual Studio for Mac で実行できます。
+
 
 > [!div class="sxs-lookup" renderon="portal"]
 > Visual Studio 2019 を使用してプロジェクトを実行します。
@@ -115,7 +120,7 @@ ms.locfileid: "91257827"
 ##### <a name="global-tenant-administrator"></a>グローバル テナント管理者
 
 > [!div renderon="docs"]
-> グローバル テナント管理者の場合は、Azure Portal 上で [アプリケーションの登録 (プレビュー)] の **[API のアクセス許可]** ページに移動し、 **[{Tenant Name} に管理者の同意を与えます]** ({Tenant Name} はお使いのディレクトリの名前) を選択します。
+> グローバル テナント管理者である場合は、Azure portal から **[エンタープライズ アプリケーション]** に移動します。自分のアプリの登録をクリックし、左側のナビゲーション ペインの [セキュリティ] セクションから **[アクセス許可]** を選択します。 **[<テナント名> に管理者の同意を与えます]** という大きいボタンをクリックします (<テナント名> は自分のディレクトリの名前)。
 
 > [!div renderon="portal" class="sxs-lookup"]
 > グローバル管理者の場合は、 **[API のアクセス許可]** ページに移動し、 **[Enter_the_Tenant_Name_Here に管理者の同意を与えます]** を選択します。
@@ -144,10 +149,10 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 > [!div renderon="docs"]
 > #### <a name="step-5-run-the-application"></a>手順 5:アプリケーションの実行
 
-Visual Studio を使用している場合は、**F5** キーを押してアプリケーションを実行します。それ以外の場合は、コマンド プロンプトまたはコンソールを使用してアプリケーションを実行します。
+Visual Studio または Visual Studio for Mac を使用している場合は、**F5** キーを押してアプリケーションを実行します。それ以外の場合は、コマンド プロンプト、コンソール、またはターミナルを使用してアプリケーションを実行します。
 
 ```console
-cd {ProjectFolder}\daemon-console\1-Call-Graph
+cd {ProjectFolder}\1-Call-MSGraph\daemon-console
 dotnet run
 ```
 
