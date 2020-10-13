@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: 5955bc35acfaf8f877e68db083871c353a3ce326
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 80f0d29de6b3013ad02ed1a5d34bebdf81a8766b
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984918"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628215"
 ---
 # <a name="spatial-analysis-operations"></a>空間分析操作
 
@@ -39,7 +39,7 @@ ms.locfileid: "90984918"
 | cognitiveservices.vision.spatialanalysis-personcrossingpolygon.debug | 人がカメラの視野内の指定されたラインを越えた時点を追跡します。 <br> 人がゾーンを越えると、_personLineEvent_ イベントを生成し、方向情報を提供します。 |
 | cognitiveservices.vision.spatialanalysis-persondistance.debug | 人が距離ルールに違反した時点を追跡します。 <br> 各距離違反が発生した場所で _personDistanceEvent_ を定期的に生成します。 |
 
-空間分析は、[Live Video Analytics](https://azure.microsoft.com/services/media-services/live-video-analytics/) でビデオ AI モジュールとして実行することもできます。 
+空間分析は、[Live Video Analytics](https://aka.ms/lva-spatial-analysis) でビデオ AI モジュールとして実行することもできます。 
 
 <!--more details on the setup can be found in the [LVA Setup page](LVA-Setup.md). Below is the list of the operations supported with Live Video Analytics. -->
 
@@ -644,7 +644,7 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 
 ## <a name="deploying-spatial-analysis-operations-at-scale-multiple-cameras"></a>空間分析操作を大規模に展開する (複数のカメラ)
 
-GPU のパフォーマンスと使用率を最大限に引き出すには、グラフ インスタンスを使用して複数のカメラに空間分析操作を展開できます。 次に示すのは、5 つのカメラで cognitiveservices.vision.spatialanalysis-personcount 操作を実行するためのサンプルです。
+GPU のパフォーマンスと使用率を最大限に引き出すには、グラフ インスタンスを使用して複数のカメラに空間分析操作を展開できます。 次に示すのは、5 つのカメラで `cognitiveservices.vision.spatialanalysis-personcount` 操作を実行するためのサンプルです。
 
 ```json
  "properties.desired": {
@@ -727,7 +727,7 @@ GPU のパフォーマンスと使用率を最大限に引き出すには、グ�
   ```
 | 名前 | 種類| 説明|
 |---------|---------|---------|
-| `batch_size` | INT | その操作で使用されるカメラの数を示します。|
+| `batch_size` | INT | 操作で使用されるカメラの数を示します。 |
 
 ## <a name="next-steps"></a>次のステップ
 
