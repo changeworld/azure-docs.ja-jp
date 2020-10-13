@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 338fe463cec4c44b1ddf019d9ecb435736e46826
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 54a81ac36fb0b99f6931b372543dc3e4bca6a12c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91816812"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447893"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure Automanage for virtual machines
 
@@ -125,13 +125,13 @@ Azure portal でそれを行うには、自動管理されている VM がすべ
 
 **[Disable]\(無効\)** に同意する前に、結果として表示されたポップアップのメッセージを注意深く確認します。
 
-> [!NOTE]
-> VM で自動管理を無効にすると、次の動作が発生します。
->
-> - VM とそれにオンボードされているサービスの構成は変更されません。
-> - それらのサービスによって発生する料金は引き続き課金されます。
-> - Automanage のすべての動作は直ちに停止します。
+```
+Disabling automanagement in a VM results in the following behavior:
 
+1.    The configuration of the VM and the services it's onboarded to will not be changed
+2.    Any changes incurred by those services will remain billable and will continue to be incurred
+3.    Any Automanage behaviors will stop immediately
+```
 
 何よりもまず、仮想マシンは、オンボードされて構成されているどのサービスからも、オフボードされることはありません。 そのため、それらのサービスによって発生する料金は引き続き課金されます。 必要な場合は、オフボードする必要があります。 Automanage のすべての動作は直ちに停止します。 たとえば、VM でドリフトは監視されなくなります。
 

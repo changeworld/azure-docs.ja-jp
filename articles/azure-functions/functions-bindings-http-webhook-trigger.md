@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 29ec547a6033b77d92ad7949df286dc94e3243a2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 6466647056535635b67cd53012d051f11e9b484c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213934"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323313"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions の HTTP トリガー
 
@@ -37,7 +37,7 @@ HTTP バインドの詳細については、[概要](./functions-bindings-http-w
 ```cs
 [FunctionName("HttpTriggerCSharp")]
 public static async Task<IActionResult> Run(
-    [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] 
+    [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)]
     HttpRequest req, ILogger log)
 {
     log.LogInformation("C# HTTP trigger function processed a request.");
@@ -128,111 +128,6 @@ public static string Run(Person person, ILogger log)
 public class Person {
      public string Name {get; set;}
 }
-```
-
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-次の例は、*function.json* ファイルのトリガー バインドと、そのバインドを使用する [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、クエリ文字列または HTTP 要求の本文で `name` パラメーターを探します。
-
-*function.json* ファイルを次に示します。
-
-```json
-{
-    "disabled": false,    
-    "bindings": [
-        {
-            "authLevel": "function",
-            "type": "httpTrigger",
-            "direction": "in",
-            "name": "req"
-        },
-        {
-            "type": "http",
-            "direction": "out",
-            "name": "res"
-        }
-    ]
-}
-```
-
-これらのプロパティについては、「[構成](#configuration)」セクションを参照してください。
-
-JavaScript コードを次に示します。
-
-```javascript
-module.exports = function(context, req) {
-    context.log('Node.js HTTP trigger function processed a request. RequestUri=%s', req.originalUrl);
-
-    if (req.query.name || (req.body && req.body.name)) {
-        context.res = {
-            // status defaults to 200 */
-            body: "Hello " + (req.query.name || req.body.name)
-        };
-    }
-    else {
-        context.res = {
-            status: 400,
-            body: "Please pass a name on the query string or in the request body"
-        };
-    }
-    context.done();
-};
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-次の例は、*function.json* ファイルのトリガー バインドと、そのバインドが使用される [Python 関数](functions-reference-python.md)を示しています。 この関数は、クエリ文字列または HTTP 要求の本文で `name` パラメーターを探します。
-
-*function.json* ファイルを次に示します。
-
-```json
-{
-    "scriptFile": "__init__.py",
-    "disabled": false,    
-    "bindings": [
-        {
-            "authLevel": "function",
-            "type": "httpTrigger",
-            "direction": "in",
-            "name": "req"
-        },
-        {
-            "type": "http",
-            "direction": "out",
-            "name": "res"
-        }
-    ]
-}
-```
-
-これらのプロパティについては、「[構成](#configuration)」セクションを参照してください。
-
-Python コードを次に示します。
-
-```python
-import logging
-import azure.functions as func
-
-
-def main(req: func.HttpRequest) -> func.HttpResponse:
-    logging.info('Python HTTP trigger function processed a request.')
-
-    name = req.params.get('name')
-    if not name:
-        try:
-            req_body = req.get_json()
-        except ValueError:
-            pass
-        else:
-            name = req_body.get('name')
-
-    if name:
-        return func.HttpResponse(f"Hello {name}!")
-    else:
-        return func.HttpResponse(
-            "Please pass a name on the query string or in the request body",
-            status_code=400
-        )
 ```
 
 # <a name="java"></a>[Java](#tab/java)
@@ -421,6 +316,166 @@ public HttpResponseMessage run(
 }
 ```
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+次の例は、*function.json* ファイルのトリガー バインドと、そのバインドを使用する [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、クエリ文字列または HTTP 要求の本文で `name` パラメーターを探します。
+
+*function.json* ファイルを次に示します。
+
+```json
+{
+    "disabled": false,    
+    "bindings": [
+        {
+            "authLevel": "function",
+            "type": "httpTrigger",
+            "direction": "in",
+            "name": "req"
+        },
+        {
+            "type": "http",
+            "direction": "out",
+            "name": "res"
+        }
+    ]
+}
+```
+
+これらのプロパティについては、「[構成](#configuration)」セクションを参照してください。
+
+JavaScript コードを次に示します。
+
+```javascript
+module.exports = function(context, req) {
+    context.log('Node.js HTTP trigger function processed a request. RequestUri=%s', req.originalUrl);
+
+    if (req.query.name || (req.body && req.body.name)) {
+        context.res = {
+            // status defaults to 200 */
+            body: "Hello " + (req.query.name || req.body.name)
+        };
+    }
+    else {
+        context.res = {
+            status: 400,
+            body: "Please pass a name on the query string or in the request body"
+        };
+    }
+    context.done();
+};
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+次の例は、*function.json* ファイルのトリガー バインドと、[PowerShell 関数](functions-reference-node.md)を示しています。 この関数は、クエリ文字列または HTTP 要求の本文で `name` パラメーターを探します。
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "Request",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "Response"
+    }
+  ]
+}
+```
+
+```powershell
+using namespace System.Net
+
+# Input bindings are passed in via param block.
+param($Request, $TriggerMetadata)
+
+# Write to the Azure Functions log stream.
+Write-Host "PowerShell HTTP trigger function processed a request."
+
+# Interact with query parameters or the body of the request.
+$name = $Request.Query.Name
+if (-not $name) {
+    $name = $Request.Body.Name
+}
+
+$body = "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
+
+if ($name) {
+    $body = "Hello, $name. This HTTP triggered function executed successfully."
+}
+
+# Associate values to output bindings by calling 'Push-OutputBinding'.
+Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
+    StatusCode = [HttpStatusCode]::OK
+    Body       = $body
+})
+```
+
+
+# <a name="python"></a>[Python](#tab/python)
+
+次の例は、*function.json* ファイルのトリガー バインドと、そのバインドが使用される [Python 関数](functions-reference-python.md)を示しています。 この関数は、クエリ文字列または HTTP 要求の本文で `name` パラメーターを探します。
+
+*function.json* ファイルを次に示します。
+
+```json
+{
+    "scriptFile": "__init__.py",
+    "disabled": false,    
+    "bindings": [
+        {
+            "authLevel": "function",
+            "type": "httpTrigger",
+            "direction": "in",
+            "name": "req"
+        },
+        {
+            "type": "http",
+            "direction": "out",
+            "name": "res"
+        }
+    ]
+}
+```
+
+これらのプロパティについては、「[構成](#configuration)」セクションを参照してください。
+
+Python コードを次に示します。
+
+```python
+import logging
+import azure.functions as func
+
+
+def main(req: func.HttpRequest) -> func.HttpResponse:
+    logging.info('Python HTTP trigger function processed a request.')
+
+    name = req.params.get('name')
+    if not name:
+        try:
+            req_body = req.get_json()
+        except ValueError:
+            pass
+        else:
+            name = req_body.get('name')
+
+    if name:
+        return func.HttpResponse(f"Hello {name}!")
+    else:
+        return func.HttpResponse(
+            "Please pass a name on the query string or in the request body",
+            status_code=400
+        )
+```
+
 ---
 
 ## <a name="attributes-and-annotations"></a>属性と注釈
@@ -448,14 +503,6 @@ public static Task<IActionResult> Run(
 
 属性は、C# スクリプトではサポートされていません。
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-属性は、JavaScript ではサポートされていません。
-
-# <a name="python"></a>[Python](#tab/python)
-
-属性は、Python ではサポートされていません。
-
 # <a name="java"></a>[Java](#tab/java)
 
 この例では、[HttpTrigger](https://github.com/Azure/azure-functions-java-library/blob/dev/src/main/java/com/microsoft/azure/functions/annotation/HttpTrigger.java) 属性の使用方法を示します。
@@ -473,6 +520,18 @@ public HttpResponseMessage<String> HttpTrigger(
 ```
 
 完全な例については、[トリガーの例](#example)を参照してください。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+属性は、JavaScript ではサポートされていません。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+属性は、PowerShell ではサポートされていません。
+
+# <a name="python"></a>[Python](#tab/python)
+
+属性は、Python ではサポートされていません。
 
 ---
 
@@ -565,47 +624,6 @@ public static IActionResult Run(HttpRequest req, string category, int? id, ILogg
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Node では、Functions ランタイムによって、`context` オブジェクトから要求本文が提供されます。 詳しくは、[JavaScript トリガーの例](#example)をご覧ください。
-
-次の例では、`context.bindingData` からルート パラメーターを読み取る方法を示します。
-
-```javascript
-module.exports = function (context, req) {
-
-    var category = context.bindingData.category;
-    var id = context.bindingData.id;
-    var message = `Category: ${category}, ID: ${id}`;
-
-    context.res = {
-        body: message;
-    }
-
-    context.done();
-}
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-関数の実行コンテキストは、`func.HttpRequest` として宣言されたパラメーターを介して公開されます。 このインスタンスを使用すると、関数で、データ ルート パラメーター、クエリ文字列の値、HTTP 応答を返すことができるメソッドにアクセスできます。
-
-定義したら、`route_params` メソッドを呼び出すことによって、ルート パラメーターを関数に使用できます。
-
-```python
-import logging
-
-import azure.functions as func
-
-def main(req: func.HttpRequest) -> func.HttpResponse:
-
-    category = req.route_params.get('category')
-    id = req.route_params.get('id')
-    message = f"Category: {category}, ID: {id}"
-
-    return func.HttpResponse(message)
-```
-
 # <a name="java"></a>[Java](#tab/java)
 
 関数の実行コンテキストは、`HttpTrigger` 属性で宣言されたプロパティです。 属性を使用すると、ルート パラメーター、承認レベル、HTTP 動詞、受信要求インスタンスを定義できます。
@@ -633,6 +651,63 @@ public class HttpTriggerJava {
         return request.createResponseBuilder(HttpStatus.OK).body(message).build();
     }
 }
+```
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Node では、Functions ランタイムによって、`context` オブジェクトから要求本文が提供されます。 詳しくは、[JavaScript トリガーの例](#example)をご覧ください。
+
+次の例では、`context.bindingData` からルート パラメーターを読み取る方法を示します。
+
+```javascript
+module.exports = function (context, req) {
+
+    var category = context.bindingData.category;
+    var id = context.bindingData.id;
+    var message = `Category: ${category}, ID: ${id}`;
+
+    context.res = {
+        body: message;
+    }
+
+    context.done();
+}
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+*function.json* ファイルで宣言されたルート パラメーターは、`$Request.Params` オブジェクトのプロパティとしてアクセスできます。
+
+```powershell
+$Category = $Request.Params.category
+$Id = $Request.Params.id
+
+$Message = "Category:" + $Category + ", ID: " + $Id
+
+Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
+    StatusCode = [HttpStatusCode]::OK
+    Body = $Message
+})
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+関数の実行コンテキストは、`func.HttpRequest` として宣言されたパラメーターを介して公開されます。 このインスタンスを使用すると、関数で、データ ルート パラメーター、クエリ文字列の値、HTTP 応答を返すことができるメソッドにアクセスできます。
+
+定義したら、`route_params` メソッドを呼び出すことによって、ルート パラメーターを関数に使用できます。
+
+```python
+import logging
+
+import azure.functions as func
+
+def main(req: func.HttpRequest) -> func.HttpResponse:
+
+    category = req.route_params.get('category')
+    id = req.route_params.get('id')
+    message = f"Category: {category}, ID: {id}"
+
+    return func.HttpResponse(message)
 ```
 
 ---
@@ -668,7 +743,7 @@ public class HttpTriggerJava {
 
 ## <a name="working-with-client-identities"></a>クライアント ID の操作
 
-関数アプリが [App Service の認証と承認](../app-service/overview-authentication-authorization.md)を使用している場合は、コードから認証されたクライアントに関する情報を確認することができます。 この情報は、[プラットフォームによって挿入された要求ヘッダー](../app-service/app-service-authentication-how-to.md#access-user-claims)として使用できます。 
+関数アプリが [App Service の認証と承認](../app-service/overview-authentication-authorization.md)を使用している場合は、コードから認証されたクライアントに関する情報を確認することができます。 この情報は、[プラットフォームによって挿入された要求ヘッダー](../app-service/app-service-authentication-how-to.md#access-user-claims)として使用できます。
 
 また、この情報はバインディング データから参照することもできます。 この機能は、Functions 2.x 以降の Functions ランタイムのみで使用可能です。 また、現在のところ .NET 言語でのみ使用可能です。
 
@@ -738,7 +813,15 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+認証されたユーザーは、[HTTP ヘッダー](../app-service/app-service-authentication-how-to.md#access-user-claims)経由で使用できます。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+認証されたユーザーは、[HTTP ヘッダー](../app-service/app-service-authentication-how-to.md#access-user-claims)経由で使用できます。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 認証されたユーザーは、[HTTP ヘッダー](../app-service/app-service-authentication-how-to.md#access-user-claims)経由で使用できます。
 
@@ -746,9 +829,6 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 認証されたユーザーは、[HTTP ヘッダー](../app-service/app-service-authentication-how-to.md#access-user-claims)経由で使用できます。
 
-# <a name="java"></a>[Java](#tab/java)
-
-認証されたユーザーは、[HTTP ヘッダー](../app-service/app-service-authentication-how-to.md#access-user-claims)経由で使用できます。
 
 ---
 
