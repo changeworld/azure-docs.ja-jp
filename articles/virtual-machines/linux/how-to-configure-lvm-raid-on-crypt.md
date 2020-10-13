@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.author: jofrance
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 746243336d74aefc55df48872fe9dd21e9cd99a5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6ccb74fe58742974798732605b4a017a06777bcc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87268222"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328175"
 ---
 # <a name="configure-lvm-and-raid-on-encrypted-devices"></a>暗号化されたデバイスで LVM と RAID を構成する
 
@@ -459,4 +459,5 @@ df -h
 ```
 ## <a name="next-steps"></a>次のステップ
 
+- [Azure Disk Encryption で暗号化された論理ボリューム管理デバイスのサイズを変更する](how-to-resize-encrypted-lvm.md)
 - [Azure Disk Encryption のトラブルシューティング](disk-encryption-troubleshooting.md)

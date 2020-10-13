@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: d457e911dec481e2b1a8bdae1ca05f80452bb883
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: f3fd214fa62d95430bd8ca62e78fd3df30c77d19
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85557186"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91652450"
 ---
 # <a name="quickstart-convert-a-model-for-rendering"></a>クイック スタート:モデルをレンダリング用に変換する
 
@@ -189,7 +189,7 @@ Connect-AzAccount
 変換スクリプトによって作成された SAS URI は、24 時間のみ有効です。 ただし、この有効期限が切れた後に、モデルを再度変換する必要はありません。 代わりに、次の手順で説明するように、ポータルで新しい SAS を作成できます。
 
 1. [Azure portal](https://www.portal.azure.com) に移動します
-1. 自分の**ストレージ アカウント** リソースをクリックします。![署名アクセス](./media/portal-storage-accounts.png)
+1. 自分の**ストレージ アカウント** リソースをクリックします。![選択したストレージ アカウント リソースが強調表示されているスクリーンショット。](./media/portal-storage-accounts.png)
 1. 次の画面で、左側のパネルにある **[ストレージ エクスプローラー]** をクリックし、*arroutput* BLOB ストレージ コンテナー内にある実際の出力モデル ( *.arrAsset* ファイル) を見つけます。 対象のファイルを右クリックし、コンテキスト メニューから **[Shared Access Signature の取得]** を選択します。![署名アクセス](./media/portal-storage-explorer.png)
 1. 新しい画面が開き、そこで有効期限を選択できます。 **[作成]** をクリックし、次のダイアログに表示される URI をコピーします。 この新しい URI により、スクリプトによって作成された一時 URI が置き換えられます。
 
