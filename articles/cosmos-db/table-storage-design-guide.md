@@ -410,7 +410,7 @@ Table storage でのリレーションシップのモデル化には何とおり
 
 :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE05.png" alt-text="テーブル設計パターンの図":::
 
-パターン マップには、このガイドに記載されているパターン (青) とアンチパターン (オレンジ) の関係の一部が示されています。 もちろん、検討する価値があるパターンは他にもたくさんあります。 たとえば、Table storage 向けの主なシナリオの 1 つに、[コマンド クエリ責務分離](https://msdn.microsoft.com/library/azure/jj554200.aspx)パターンの[具体化されたビュー パターン](https://msdn.microsoft.com/library/azure/dn589782.aspx)の使用があります。  
+パターン マップには、このガイドに記載されているパターン (青) とアンチパターン (オレンジ) の関係の一部が示されています。 もちろん、検討する価値があるパターンは他にもたくさんあります。 たとえば、Table storage 向けの主なシナリオの 1 つに、[コマンド クエリ責務分離](https://msdn.microsoft.com/library/azure/jj554200.aspx)パターンの[マテリアライズドビュー パターン](https://msdn.microsoft.com/library/azure/dn589782.aspx)の使用があります。  
 
 ### <a name="intra-partition-secondary-index-pattern"></a>パーティション内のセカンダリ インデックス パターン
 (同じパーティション内の) 異なる `RowKey` 値を使用して、各エンティティの複数のコピーを格納します。 これにより、異なる `RowKey` 値を使用することで、高速で効率的な検索と、代替の並べ替え順序が可能になります。 コピー間の更新の一貫性は、EGT を使用して保つことができます。  
