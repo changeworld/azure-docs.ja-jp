@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 8/12/2020
 ms.author: sngun
 ms.openlocfilehash: 42d1e0f056457ba54e0102a4d23f42a81ebea08d
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90068739"
 ---
 **SDK の提供終了はどのような方法で通知されますか?**
