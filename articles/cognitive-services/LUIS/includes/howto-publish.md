@@ -9,10 +9,10 @@ ms.date: 05/19/2020
 ms.subservice: language-understanding
 ms.topic: include
 ms.openlocfilehash: f07ac2027f165eb4e9722330cb779ec32999a5e3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91534604"
 ---
 チャットボットや他のクライアント アプリケーションで LUIS の予測を受け取るには、アプリを予測エンドポイントに公開する必要があります。

@@ -7,12 +7,12 @@ ms.date: 07/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: d8782bf6cab85b1b87c0cfc418a4731cc134db8f
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: e490171fd533783aab9fd44798a9c81c55faf89f
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91577069"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047932"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-running-on-linux-or-windows-to-iot-hub-c"></a>クイックスタート: Linux または Windows 上で実行されている IoT プラグ アンド プレイのサンプル デバイス アプリケーションを IoT Hub に接続する (C)
 
@@ -52,7 +52,7 @@ gcc --version
 
 Windows でこのクイックスタートを完了するには、ご利用のローカル Windows 環境に以下のソフトウェアをインストールします。
 
-* [Visual Studio (Community、Professional、または Enterprise)](https://visualstudio.microsoft.com/downloads/)。Visual Studio を[インストール](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019&preserve-view=true)するときに、 **[C++ によるデスクトップ開発]** ワークロードを必ず含めてください。
+* [Visual Studio (Community、Professional、または Enterprise)](https://visualstudio.microsoft.com/downloads/)。Visual Studio を[インストール](/cpp/build/vscpp-step-0-installation?preserve-view=true&view=vs-2019)するときに、 **[C++ によるデスクトップ開発]** ワークロードを必ず含めてください。
 * [Git](https://git-scm.com/download/).
 * [CMake](https://cmake.org/download/)。
 
@@ -159,4 +159,4 @@ IoT ハブから送信されたペイロード内の JSON オブジェクトを�
 このクイックスタートでは、IoT プラグ アンド プレイ デバイスを IoT ハブに接続する方法を学習しました。 ご利用の IoT プラグ アンド プレイ デバイスとやりとりするソリューションを構築する方法の詳細については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [方法: デバイスに接続してやりとりする](howto-develop-solution.md)
+> [方法: デバイスに接続してやりとりする](./quickstart-service-node.md)

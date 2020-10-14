@@ -17,10 +17,10 @@ ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: 54da7a4054dc5c657b9e0454e5446e3da28b06c8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90981911"
 ---
 Azure サブスクリプション、課金、契約がなくても [Azure Cosmos DB を無料でお試し](https://azure.microsoft.com/try/cosmosdb/)いただけます。または、[Azure Cosmos DB Free レベルのアカウント](../articles/cosmos-db/optimize-dev-test.md#azure-cosmos-db-free-tier)を作成して、最初の 400 RU/秒と 5 GB のストレージを無料でご利用いただけます。 また、URI `https://localhost:8081` で [Azure Cosmos DB Emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator) を使用することもできます。 エミュレーターで使用するキーについては、「[要求の認証](../articles/cosmos-db/local-emulator.md# authenticate-requests)」を参照してください。

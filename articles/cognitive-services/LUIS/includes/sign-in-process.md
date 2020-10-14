@@ -9,10 +9,10 @@ ms.subservice: language-understanding
 ms.date: 05/05/2020
 ms.topic: include
 ms.openlocfilehash: fda9df6c7e9651bbd3b0b70ad9d47f23c0c19d01
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541435"
 ---
 ## <a name="sign-in-to-luis-portal"></a>LUIS ポータルにサインインする

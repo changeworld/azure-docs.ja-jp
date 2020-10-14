@@ -4,10 +4,10 @@ description: Azure VMWare Solution のネットワークと接続の説明。
 ms.topic: include
 ms.date: 09/28/2020
 ms.openlocfilehash: 1d43a8a49fc56a6a5b534a89fd1dfc2f5ae2d478
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91574460"
 ---
 <!-- Used in introduction.md and concepts-networking.md -->

@@ -349,7 +349,7 @@ Azure Migrate プロジェクトを設定し、そこに Server Migration ツー
 
 1. 移行が完了したら、VM を右クリックして、 **[移行を停止する]** を選択します。 次の処理が実行されます。
     - GCP VM のレプリケーションが停止されます。
-    - Azure Migrate: Server Migration の **[サーバーをレプリケートしています]** のカウントから GCP VM を削除します。Server Migration に関するエラーのトラブルシューティングに役立つ情報を提供しています。
+    - Azure Migrate: Server Migration の **[サーバーをレプリケートしています]** のカウントから GCP VM を削除します。
     - VM のレプリケーション状態情報をクリーンアップします。
 2. Azure VM の [Windows](../virtual-machines/extensions/agent-windows.md) または [Linux](../virtual-machines/extensions/agent-linux.md) エージェントを、移行されたマシンにインストールします。
 3. データベース接続文字列、および Web サーバー構成の更新など、移行後のアプリの微調整を実行します。

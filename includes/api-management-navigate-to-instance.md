@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/08/2020
 ms.author: vlvinogr
 ms.openlocfilehash: 9f430e38fa25f2a8fab972f106333973a41dac4e
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90033363"
 ---
 ## <a name="go-to-your-api-management-instance"></a>API Management インスタンスに移動します。

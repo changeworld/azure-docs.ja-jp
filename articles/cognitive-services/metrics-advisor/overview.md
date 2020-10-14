@@ -3,19 +3,19 @@ title: Metrics Advisor サービスとは
 titleSuffix: Azure Cognitive Services
 description: Metrics Advisor とは
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: overview
 ms.date: 09/14/2020
-ms.author: aahi
-ms.openlocfilehash: 408bdd948977218d9b39a39bf97391a4141e545c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: mbullwin
+ms.openlocfilehash: 858bf042593045059c988ae1b2796b063b33bb6e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90945382"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047575"
 ---
 # <a name="what-is-metrics-advisor-preview"></a>Metrics Advisor (プレビュー) とは 
 
