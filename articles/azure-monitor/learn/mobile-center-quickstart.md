@@ -8,12 +8,12 @@ ms.author: mbullwin
 ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
-ms.openlocfilehash: 0539dcecbbbfe28817122e0f47e813182a9abd9d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 27b74f99d926bf72bc22f153a8d76deb56646987
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87322144"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993879"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>App Center と Application Insights によるモバイル アプリの分析の開始
 
@@ -124,7 +124,7 @@ Application Insights は、App Center で提供されている分析ツールよ
    1. テキスト エディターでクエリの任意の場所をクリックして、クエリを選択します。
    2. **[実行]** をクリックしてクエリを実行します。 
 
-   詳しくは、[Application Insights Analytics](../log-query/log-query-overview.md)に関するページおよび [Log Analytics クエリ言語](https://aka.ms/LogAnalyticsLanguageReference)に関するページをご覧ください。
+   詳しくは、[Application Insights Analytics](../log-query/log-query-overview.md)に関するページおよび [Log Analytics クエリ言語](/azure/data-explorer/kusto/query/)に関するページをご覧ください。
 
 
 2. **カスタム イベント テレメトリのセグメント化とフィルター。** Application Insights の **[概要]** ページで、目次の **[ユーザー]** を選択します。
@@ -168,4 +168,3 @@ Application Insights リソースを削除するには、次の手順に従い�
 
 > [!div class="nextstepaction"]
 > [どのようにお客様がアプリを使用しているかを理解します](../app/usage-overview.md)
-

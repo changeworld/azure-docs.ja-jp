@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: zhshang
-ms.openlocfilehash: 77ab19296d1e310e48cdf3609c9f109dc42f6ec1
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: b5fc15815c9843c55bf31efe31e12e2de02d3be3
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91408303"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874018"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>クイック スタート:SignalR Service を使用してチャット ルームを作成する
 
@@ -112,11 +112,11 @@ Azure SignalR Service は、開発者がリアルタイムの機能を使って 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddSignalR();
+        services.AddAzureSignalR();
     }
     ```
 
-    `AddSignalR()` にパラメーターを渡していないため、このコードは、SignalR Service リソースの接続文字列に既定の構成キーを使用します。 既定の構成キーは *Azure:SignalR:ConnectionString* です。
+    `AddAzureSignalR()` にパラメーターを渡していないため、このコードは、SignalR Service リソースの接続文字列に既定の構成キーを使用します。 既定の構成キーは *Azure:SignalR:ConnectionString* です。
 
 5. *Startup.cs* で、`Configure` メソッドを次のコードに置き換えて更新します。
 

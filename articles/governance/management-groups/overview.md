@@ -4,12 +4,12 @@ description: 管理グループ、そのアクセス許可のしくみ、その�
 ms.date: 09/22/2020
 ms.topic: overview
 ms.custom: contperfq1
-ms.openlocfilehash: e3bc3ee34227fd23ea9f56070f8ea7776a10a134
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: be3369369f28930fd1ecad295a4dad4d14e75cd3
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91533807"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951878"
 ---
 # <a name="what-are-azure-management-groups"></a>Azure 管理グループとは
 
@@ -202,6 +202,6 @@ Azure portal の外部で管理グループに対するクエリを使用する�
 
 管理グループについて詳しくは、以下をご覧ください。
 
-- [管理グループを作成して Azure リソースを整理する](./create.md)
+- [管理グループを作成して Azure リソースを整理する](./create-management-group-portal.md)
 - [管理グループを変更、削除、または管理する方法](./manage.md)
 - 「[リソース階層を保護する方法](./how-to/protect-resource-hierarchy.md)」のオプションを参照する

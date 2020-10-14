@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 8f9ed14a0bcef346281c38146cbb2d9551633c15
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: df409af61556dfa113327302be9c1464e1427a14
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89421530"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91829000"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>サンプル ファイルを調べて編集する
 
@@ -111,9 +111,18 @@ ms.locfileid: "89421530"
 
 ### <a name="prepare-to-monitor-events"></a>イベントの監視の準備をする
 
-Live Video Analytics デバイスを右クリックし、 **[組み込みイベント エンドポイントの監視を開始する]** を選択します。 この手順は、Visual Studio Code の **[出力]** ウィンドウで、IoT Hub イベントを監視するために必要です。
+1. Visual Studio Code で **[拡張機能]** タブを開き (または Ctrl + Shift + X キーを押し)、Azure IoT Hub を検索します。
+1. マウスの右ボタンをクリックし、 **[拡張機能の設定]** を選択します。
 
-![監視の開始](../../../media/quickstarts/start-monitoring-built-event-endpoint-grpc.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="../../../media/run-program/extensions-tab.png" alt-text="拡張機能の設定":::
+1. [Show Verbose Message]\(詳細メッセージの表示\) を検索して有効にします。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="拡張機能の設定":::
+1. Live Video Analytics デバイスを右クリックし、 **[組み込みイベント エンドポイントの監視を開始する]** を選択します。 この手順は、Visual Studio Code の **[出力]** ウィンドウで、IoT Hub イベントを監視するために必要です。
+
+   ![監視の開始](../../../media/quickstarts/start-monitoring-built-event-endpoint-grpc.png)
 
 ### <a name="run-the-sample-program"></a>サンプル プログラムを実行する
 

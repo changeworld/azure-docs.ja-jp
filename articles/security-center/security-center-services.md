@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 61e5c60317bf872b8e27a7bd2edea7247e01a3b8
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: a311439e8efc5481fbfd7431c1514ba6be576e39
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439410"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91858015"
 ---
 # <a name="feature-coverage-for-machines"></a>マシンを対象とする機能
 
@@ -107,6 +107,6 @@ ms.locfileid: "91439410"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Security Center によるデータの収集方法と Log Analytics エージェント](security-center-enable-data-collection.md)について確認します。
+- [Security Center による Log Analytics エージェントを使用したデータの収集](security-center-enable-data-collection.md)について確認します。
 - [Security Center でデータを管理および保護する](security-center-data-security.md)方法を確認します。
 - [Security Center がサポートされているプラットフォーム](security-center-os-coverage.md)を確認します。

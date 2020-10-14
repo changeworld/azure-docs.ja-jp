@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: ccc6611f14903e47a76de938994552378bb3bc24
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4dbbd3443ec6c455ba9bcb88ff90dd4960aff5d2
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88589709"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930953"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer のコンポーネント
 
@@ -125,6 +125,13 @@ Virtual Machine Scale Sets のコンテキストでの受信 NAT 規則は、受
 [送信接続と規則](load-balancer-outbound-connections.md)の詳細については、こちらをご覧ください。
 
 Basic Load Balancer では、アウトバウンド規則がサポートされていません。
+
+## <a name="limitations"></a>制限事項
+
+- ロード バランサーは特定の TCP または UDP プロトコルに対する負荷分散とポート フォワーディングを行います。 負荷分散規則と受信 NAT 規則は TCP および UDP をサポートしますが、ICMP を含む他の IP プロトコルはサポートしていません。
+- 内部 Load Balancer のフロントエンドへのバックエンド VM からのアウトバウンド フローは失敗します。
+- ロード バランサーの規則は、2 つの仮想ネットワークにまたがることはできません。  フロントエンドとそのバックエンド インスタンスは、同じ仮想ネットワークに配置されている必要があります。  
+- 負荷分散規則では、IP フラグメントの転送はサポートされていません。 UDP パケットと TCP パケットの IP の断片化は負荷分散規則ではサポートされていません。 HA ポートの負荷分散規則を使用すると、既存の IP フラグメントを転送できます。 詳細については、「[高可用性ポートの概要](load-balancer-ha-ports-overview.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

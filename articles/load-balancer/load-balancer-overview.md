@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 602a36964d4a6d5f3660499570327db3479c980e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4a397a67c0e40de8be1d42ee56618357cf36c55f
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89299203"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017728"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer の概要
 
@@ -80,10 +80,8 @@ Basic Load Balancer は無料で提供されます。
 RSS フィードを購読し、[Azure の更新情報](https://azure.microsoft.com/updates/?category=networking&query=load%20balancer)ページで、最新の Azure Load Balancer 機能の更新を確認します。
 
 ## <a name="next-steps"></a>次のステップ
-Basic Load Balancer を Standard Load Balancer にアップグレードするには、[Basic Load Balancer のアップグレード](upgrade-basic-standard.md)に関するページをご覧ください。
 
-Load Balancer の使用を開始するには、[パブリック Standard Load Balancer の作成](quickstart-load-balancer-standard-public-portal.md)に関するページを参照してください。
+ロード バランサーの使用を開始するには、[パブリックな標準ロード バランサーの作成](quickstart-load-balancer-standard-public-portal.md)に関する記事をご覧ください。
 
 Azure Load Balancer の制限とコンポーネントの詳細については、「[Azure Load Balancer のコンポーネント](./components.md)」と「[Azure Load Balancer の概念](./concepts.md)」を参照してください
 
-Azure の負荷分散オプションの比較については、「[Azure の負荷分散オプションの概要](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)」を参照してください。

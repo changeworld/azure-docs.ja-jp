@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: b72c20cd67aa4792b5e2a2f96dc39e78301c9219
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 5e422b5292f77150e2755cb5963e2cd95d148654
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91543293"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939105"
 ---
 # <a name="machine-learning-capabilities-in-azure-synapse-analytics-workspaces-preview"></a>Azure Synapse Analytics の Machine Learning 機能 (ワークスペース プレビュー)
 
@@ -66,7 +66,7 @@ MLlib に加えて、[Scikit Learn](https://scikit-learn.org/stable/) などの�
 
 #### <a name="train-models-with-azure-machine-learning-automl"></a>Azure Machine Learning AutoML を使用してモデルをトレーニングする
 
-機械学習についてあまり理解していなくても利用できる、もう 1 つの機械学習モデルのトレーニング方法は、AutoML を使用する方法です。 [AutoML](/azure/machine-learning/concept-automated-mls) は、一連の機械学習モデルを自動的にトレーニングし、ユーザーが特定のメトリックに基づいて最適なモデルを選択できるようにする機能です。 Azure Synapse Notebooks から Azure Machine Learning とシームレスに統合できるおかげで、ユーザーはパススルー Azure Active Directory 認証を使用して Synapse で AutoML を簡単に利用できます。  つまり、Azure Machine Learning ワークスペースをポイントするだけでよく、資格情報を入力する必要はありません。 Synapse Spark プールで Azure Machine Learning AutoML を使用してモデルをトレーニングする方法について説明する [AutoML のチュートリアル](../spark/apache-spark-azure-machine-learning-tutorial.md)があります。
+機械学習についてあまり理解していなくても利用できる、もう 1 つの機械学習モデルのトレーニング方法は、AutoML を使用する方法です。 [AutoML](/azure/machine-learning/concept-automated-ml) は、一連の機械学習モデルを自動的にトレーニングし、ユーザーが特定のメトリックに基づいて最適なモデルを選択できるようにする機能です。 Azure Synapse Notebooks から Azure Machine Learning とシームレスに統合できるおかげで、ユーザーはパススルー Azure Active Directory 認証を使用して Synapse で AutoML を簡単に利用できます。  つまり、Azure Machine Learning ワークスペースをポイントするだけでよく、資格情報を入力する必要はありません。 Synapse Spark プールで Azure Machine Learning AutoML を使用してモデルをトレーニングする方法について説明する [AutoML のチュートリアル](../spark/apache-spark-azure-machine-learning-tutorial.md)があります。
 
 ### <a name="model-deployment-and-scoring"></a>モデルのデプロイとスコアリング
 

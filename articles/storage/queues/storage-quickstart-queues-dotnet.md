@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fd60adf94e57be3892a264c2a8457b839e1c8778
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f23512bfd85c520c36cd98843db37371b84af293
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89011295"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939204"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>クイック スタート:.NET 用 Azure Queue storage クライアント ライブラリ v12
 
@@ -77,7 +77,7 @@ dotnet add package Azure.Storage.Queues
 1. ご使用のエディターで *Program.cs* ファイルを開きます
 1. `Console.WriteLine("Hello World!");` ステートメントを削除します
 1. `using` ディレクティブを追加します
-1. [非同期コードをサポート](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7-1#async-main)するように `Main` メソッドの宣言を更新します
+1. [非同期コードをサポート](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#async-main)するように `Main` メソッドの宣言を更新します
 
 
 

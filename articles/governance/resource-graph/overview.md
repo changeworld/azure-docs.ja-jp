@@ -1,14 +1,14 @@
 ---
 title: Azure Resource Graph の概要
 description: Azure Resource Graph サービスによってサブスクリプションとテナントにまたがるリソースの複雑なクエリの大規模な実行がどのように実現されるかについて理解します。
-ms.date: 08/13/2020
+ms.date: 10/14/2020
 ms.topic: overview
-ms.openlocfilehash: f2de6ce52870417eab1c74333dfce2905317e73d
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 8e61dadc44a2b07066f7bac761c366c746cef1f1
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91531686"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057775"
 ---
 # <a name="what-is-azure-resource-graph"></a>Azure Resource Graph とは
 

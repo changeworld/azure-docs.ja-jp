@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ab861b3ed265da9060e2367bdfdeeeee7047c584
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 95c4464d1ab8416f609f75f2b59fb85a578ef5b7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88815863"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979055"
 ---
 # <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure portal からプライベート リンクを使用してマネージド ディスクに対するインポートおよびエクスポート アクセスを制限する
 
@@ -30,12 +30,6 @@ NetworkAccessPolicy プロパティを `DenyAll` に設定すれば、ディス�
 ## <a name="regional-availability"></a>リージョン別の提供状況
 
 [!INCLUDE [virtual-machines-disks-private-links-regions](../../includes/virtual-machines-disks-private-links-regions.md)]
-
-## <a name="prerequisites"></a>前提条件
-
-マネージド ディスクのエクスポートおよびインポートのためにプライベート エンドポイントを使用するには、ご自分のサブスクリプションでその機能を有効にする必要があります。 ご自分のサブスクリプション ID と共に mdprivatelinks@microsoft.com に電子メールを送信して、ご自分のサブスクリプションに対してこの機能を有効にします。
-
-対象のディスクが接続されている VM の仮想ネットワークを書き留めておく必要があります。 この仮想ネットワークは、プライベート エンドポイントを構成するときに必要です。
 
 ## <a name="create-a-disk-access-resource"></a>ディスク アクセス リソースを作成する
 
@@ -101,4 +95,4 @@ NetworkAccessPolicy プロパティを `DenyAll` に設定すれば、ディス�
 ## <a name="next-steps"></a>次のステップ
 
 - [プライベート リンクに関する FAQ](./faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
-- [PowerShell を使用して別のリージョンのストレージ アカウントにマネージド スナップショットを VHD としてエクスポートまたはコピーする](scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-storage-account.md)
+- [PowerShell を使用して別のリージョンのストレージ アカウントにマネージド スナップショットを VHD としてエクスポートまたはコピーする](./scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account.md)

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: ae3090689f9999c9ea6aa65447dadbdd7b0b2026
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2aa30f86b32005b9c85664b5bb2d0772a6e5f443
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90998464"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940771"
 ---
 # <a name="confidential-computing-nodes-on-azure-kubernetes-service-public-preview"></a>Azure Kubernetes Service のコンフィデンシャル コンピューティング ノード (パブリック プレビュー)
 
@@ -40,7 +40,7 @@ Azure Kubernetes Service (AKS) は、Intel SGX を基盤とする [DCsv2 コン�
 
 #### <a name="sgx-device-plugin"></a>SGX デバイス プラグイン <a id="sgx-plugin"></a>
 
-SGX デバイス プラグインは、EPC メモリ用の Kubernetes デバイス プラグイン インターフェイスを実装します。 EPC メモリは、実質上、このプラグインによって、Kubernetes における追加のリソース タイプとなります。 ユーザーは、他のリソースと同様、このリソースに対する制限を指定できます。 このデバイス プラグインは、スケジューリング機能以外に、機密ワークロード コンテナーへのアクセス許可を SGX デバイス ドライバーに割り当てる働きをします。 EPC メモリベース デプロイの実装サンプル (`kubernetes.azure.com/sgx_epc_mem_in_MiB`) は、[こちら](https://github.com/azure-samples/confidential-computing/blob/main/containersamples/helloworld/helloworld.yaml)でご覧いただけます。
+SGX デバイス プラグインは、EPC メモリ用の Kubernetes デバイス プラグイン インターフェイスを実装します。 EPC メモリは、実質上、このプラグインによって、Kubernetes における追加のリソース タイプとなります。 ユーザーは、他のリソースと同様、このリソースに対する制限を指定できます。 このデバイス プラグインは、スケジューリング機能以外に、機密ワークロード コンテナーへのアクセス許可を SGX デバイス ドライバーに割り当てる働きをします。 EPC メモリベース デプロイの実装サンプル (`kubernetes.azure.com/sgx_epc_mem_in_MiB`) は、[こちら](https://github.com/Azure-Samples/confidential-computing/blob/main/containersamples/helloworld/helm/templates/helloworld.yaml)でご覧いただけます。
 
 #### <a name="sgx-quote-helper-service"></a>SGX クォート ヘルパー サービス <a id="sgx-quote"></a>
 

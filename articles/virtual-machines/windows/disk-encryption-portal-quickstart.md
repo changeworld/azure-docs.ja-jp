@@ -7,12 +7,12 @@ ms.service: virtual-machines-windows
 ms.subservice: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: 7857a037d8e48c8c6ae8d44cf77c863bec91d9d3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 69d34b6c50d5a4be728453a34c1c092c63c7b6be
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88510644"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977325"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-with-the-azure-portal"></a>クイック スタート:Azure portal を使用した Windows 仮想マシンの作成と暗号化
 
@@ -39,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     :::image type="content" source="../media/disk-encryption/portal-quickstart-windows-vm-creation.png" alt-text="Windows VM の作成画面":::
 
     > [!WARNING]
-    > [ディスク] タブには、 **[ディスクのオプション]** の下に [Encryption Type]\(暗号化の種類\) フィールドがあります。 このフィールドは、Azure Disk Encryption ではなく [Managed Disks](managed-disks-overview.md) + CMK の暗号化オプションを指定するために使用されます。
+    > [ディスク] タブには、 **[ディスクのオプション]** の下に [Encryption Type]\(暗号化の種類\) フィールドがあります。 このフィールドは、Azure Disk Encryption ではなく [Managed Disks](../managed-disks-overview.md) + CMK の暗号化オプションを指定するために使用されます。
     >
     > 混乱を避けるために、このチュートリアルを完了する間は、 *[ディスク]* タブを完全にスキップすることをお勧めします。
 
