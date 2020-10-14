@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 09/15/2020
 ms.author: trbye
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
-zone_pivot_groups: speech-full-stack-go-objectivec-swift
+zone_pivot_groups: programming-languages-set-twenty-three
 keywords: 音声テキスト変換、音声テキスト変換ソフトウェア
-ms.openlocfilehash: c2bb6d46036170fed16c3a44b6d4d760c09f7c41
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 593fb9bb89bfa43c2eb186a3b9d3c5bc2322c956
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761628"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014148"
 ---
 # <a name="get-started-with-speech-to-text"></a>音声変換の概要
 
@@ -50,7 +50,11 @@ ms.locfileid: "91761628"
 [!INCLUDE [Python Basics include](./includes/how-to/speech-to-text-basics/speech-to-text-basics-python.md)]
 ::: zone-end
 
-::: zone pivot="programming-language-spx"
+::: zone pivot="programming-language-curl"
+[!INCLUDE [REST include](includes/how-to/speech-to-text-basics/speech-to-text-basics-curl.md)]
+::: zone-end
+
+::: zone pivot="programmer-tool-spx"
 [!INCLUDE [CLI include](includes/how-to/speech-to-text-basics/speech-to-text-basics-cli.md)]
 ::: zone-end
 

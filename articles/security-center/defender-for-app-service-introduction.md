@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: c53f7e712668f32766feaf76d6a08582bda9af22
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a7026757651d1b0510293101203f41a651c7b851
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91449099"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850967"
 ---
 # <a name="introduction-to-azure-defender-for-app-service"></a>Azure Defender for App Service の概要
 
@@ -27,7 +27,7 @@ Security Center では、Azure がクラウド プロバイダーとして備え
 
 |側面|詳細|
 |----|:----|
-|リリース状態:|プレビュー|
+|リリース状態:|一般提供 (GA)|
 |価格:|[Azure Defender for App Service](azure-defender.md) は、[価格ページ](security-center-pricing.md)に記載されているように課金されます。|
 |サポートされている App Service プラン:|![Yes](./media/icons/yes-icon.png) Basic、Standard、Premium、Isolated、または Linux<br>![No](./media/icons/no-icon.png) Free、Shared、または従量課金<br>[App Service プランの詳細情報](https://azure.microsoft.com/pricing/details/app-service/plans/)|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|

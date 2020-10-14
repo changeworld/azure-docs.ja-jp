@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 09/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 382a04021053bef0b5d3378231e38453885b0ef2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1154bf3ddde67ba5074517ab4f96ed6764edf6a5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322973"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91859781"
 ---
 Go 用 Face クライアント ライブラリを使用して顔認識を開始します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。 Face サービスは、画像内の人間の顔を検出および認識するための高度なアルゴリズムへのアクセスを提供します。
 
@@ -24,7 +24,6 @@ Go 用 Face サービス クライアント ライブラリは、次の目的で
 * [似た顔を探す](#find-similar-faces)
 * [人物グループを作成してトレーニングする](#create-and-train-a-person-group)
 * [顔を識別する](#identify-a-face)
-* [データ移行のためのスナップショットを作成する](#take-a-snapshot-for-data-migration)
 
 [リファレンス ドキュメント](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face) | [SDK のダウンロード](https://github.com/Azure/azure-sdk-for-go)
 
@@ -109,7 +108,6 @@ touch sample-app.go
 * [似た顔を探す](#find-similar-faces)
 * [人物グループを作成してトレーニングする](#create-and-train-a-person-group)
 * [顔を識別する](#identify-a-face)
-* [データ移行のためのスナップショットを作成する](#take-a-snapshot-for-data-migration)
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
@@ -246,53 +244,6 @@ touch sample-app.go
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_ver)]
 
-
-## <a name="take-a-snapshot-for-data-migration"></a>データ移行のためのスナップショットを作成する
-
-スナップショット機能を使用すると、トレーニング済みの **PersonGroup** などの保存した顔データを別の Azure Cognitive Services Face サブスクリプションに移動できます。 この機能を利用するのは、たとえば、無料サブスクリプションを使用して **PersonGroup** オブジェクトを作成してあり、それを有料サブスクリプションに移行する場合です。 スナップショット機能の広範な概要については、[顔データの移行](../../Face-API-How-to-Topics/how-to-migrate-face-data.md)に関するページを参照してください。
-
-この例では、「[人物グループを作成してトレーニングする](#create-and-train-a-person-group)」で作成した **PersonGroup** を移行します。 先にそのセクションを完了することも、独自の Face データ コンストラクトを使用することもできます。
-
-### <a name="set-up-target-subscription"></a>ターゲット サブスクリプションを設定する
-
-まず、Face リソースを含む 2 つ目の Azure サブスクリプションが必要です。そのためには、「[設定](#setting-up)」セクションの手順を繰り返します。 
-
-次に、**main** メソッドの先頭付近で以下の変数を作成します。 また、お使いの Azure アカウントのサブスクリプション ID と新しい (ターゲット) アカウントのキー、エンドポイント、サブスクリプション ID のための、新しい環境変数を作成する必要があります。
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_target_client)]
-
-その後、次の手順のために、サブスクリプション ID の値を配列に追加します。
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_target_id)]
-
-### <a name="authenticate-target-client"></a>ターゲット クライアントを認証する
-
-スクリプトの後の方で、元のクライアント オブジェクトをソース クライアントとして保存し、ターゲット サブスクリプションのために新しいクライアント オブジェクトを認証します。 
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_target_auth)]
-
-### <a name="take-a-snapshot"></a>スナップショットを取得する
-
-次のステップは、 **[Take](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#SnapshotClient.Take)** を使用して、スナップショットを取得することです。これにより、元のサブスクリプションの顔データが一時的なクラウドの場所に保存されます。 このメソッドは、操作の状態を照会するために使用する ID を返します。
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_take)]
-
-次に、操作が完了するまでに ID を照会します。
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_query)]
-
-### <a name="apply-the-snapshot"></a>スナップショットを適用する
-
-**[Apply](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#SnapshotClient.Apply)** 操作を使用して、新しくアップロードした顔データをターゲット サブスクリプションに書き込みます。 このメソッドも、ID を返します。
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_apply)]
-
-もう一度、操作が完了するまで ID を照会します。
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_apply_query)]
-
-これらの手順を完了すると、新しい (ターゲット) サブスクリプションから顔データ コンストラクトにアクセスすることができます。
-
 ## <a name="run-the-application"></a>アプリケーションの実行
 
 `go run <app-name>` コマンドを使用して、アプリケーション ディレクトリから顔認識アプリを実行します。
@@ -308,7 +259,7 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 * [ポータル](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-このクイックスタートで作成した **PersonGroup** を削除したい場合は、 **[Delete](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupClient.Delete)** メソッドを呼び出します。 このクイックスタートでスナップショット機能を使用してデータを移行した場合は、ターゲット サブスクリプションに保存されている **PersonGroup** も削除する必要があります。
+このクイックスタートで作成した **PersonGroup** を削除したい場合は、 **[Delete](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupClient.Delete)** メソッドを呼び出します。
 
 ## <a name="next-steps"></a>次のステップ
 

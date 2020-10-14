@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 09/21/2020
 ms.author: aahi
-ms.openlocfilehash: 714a4709eceea875798940de962716d34437f2a9
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 856e73181ee02fe2bb21c4317ec8c733e2536d53
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91530461"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973124"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>Read v3. x OCR コンテナーへの移行
 
@@ -65,10 +65,10 @@ Read v3.x コンテナーは、Computer Vision API のバージョン 3 を使�
 >[!NOTE]
 > MongoDB は、3.x バージョンのコンテナーではサポートされなくなりました。 代わりに、コンテナーは Azure Storage およびオフラインのファイル システムをサポートします。
 
-| 実装 |  必須のランタイム引数 |
+| 実装 |    必須のランタイム引数 |
 |---------|---------|
-|ファイル レベル (既定)   | 必須のランタイム引数はありません。 `/share` ディレクトリが使用されます。 |
-|Azure BLOB | `Storage:ObjectStore:AzureBlob:ConnectionString={AzureStorageConnectionString}` |
+|ファイル レベル (既定)    | 必須のランタイム引数はありません。 `/share` ディレクトリが使用されます。 |
+|Azure BLOB    | `Storage:ObjectStore:AzureBlob:ConnectionString={AzureStorageConnectionString}` |
 
 ## <a name="queue-implementations"></a>キューの実装
 
@@ -78,7 +78,7 @@ Read v3.x コンテナーは、Computer Vision API のバージョン 3 を使�
 |---------|---------|-------|
 | メモリ内 (既定) | 必須のランタイム引数はありません。 | 開発とテスト |
 | Azure キュー | `Queue:Azure:ConnectionString={AzureStorageConnectionString}` | 実稼働 |
-| RabbitMQ  | 利用不可 | 実稼働 |
+| RabbitMQ    | 利用不可 | 実稼働 |
 
 冗長性を高めるために、Read v3.x コンテナーは可視性タイマーを使用して、複数コンテナーのセットアップの実行時にクラッシュが発生した場合でも要求を正常に処理できるようにします。 
 
@@ -86,7 +86,7 @@ Read v3.x コンテナーは、Computer Vision API のバージョン 3 を使�
 
 | 既定値 | 推奨値 |
 |---------|---------|
-| 30000 |   120000 |
+| 30000 |    120000 |
 
 
 ## <a name="next-steps"></a>次のステップ

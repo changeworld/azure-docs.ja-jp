@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 781cc10895f3a77afe71d508c1194b425010ec41
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 61c21aed76cfaac5621b234b32c90877ef6faa9f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89319544"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966323"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Azure での Linux イメージの取り込みと作成
 
@@ -46,7 +46,7 @@ Azure では、一般化されたイメージと専用イメージの 2 種類�
 
 ### <a name="generalized-images"></a>一般化されたイメージ
 
-一般化されたイメージとは、初回起動時にセットアップを完了する必要があるイメージです。 たとえば、初回起動時に、ホスト名、管理者ユーザー、その他の VM 固有の構成を設定します。 これは、イメージを複数回再利用する場合や、作成時にパラメーターを渡す必要がある場合に便利です。 一般化されたイメージに Azure エージェントが含まれている場合、エージェントはパラメーターを処理し、初期構成が完了したことをプラットフォームに送り返します。 このプロセスは[プロビジョニング](https://docs.microsoft.com/azure/virtual-machines/linux/provisioning)と呼ばれています。 
+一般化されたイメージとは、初回起動時にセットアップを完了する必要があるイメージです。 たとえば、初回起動時に、ホスト名、管理者ユーザー、その他の VM 固有の構成を設定します。 これは、イメージを複数回再利用する場合や、作成時にパラメーターを渡す必要がある場合に便利です。 一般化されたイメージに Azure エージェントが含まれている場合、エージェントはパラメーターを処理し、初期構成が完了したことをプラットフォームに送り返します。 このプロセスは[プロビジョニング](./provisioning.md)と呼ばれています。 
 
 プロビジョニングを行うには、プロビジョナーがイメージに含まれている必要があります。 次の 2 つのプロビジョナーがあります。
 - [Azure Linux エージェント](../extensions/agent-linux.md)
@@ -94,7 +94,7 @@ Linux イメージを作成するときは、次の 2 つのオプションが�
 
 ## <a name="hyper-v-generation"></a>Hyper-V の世代
 
-Azure は、Hyper-V 第 1 世代 (Gen1) と第 2 世代 (Gen2) をサポートしています。Gen2 は最新世代であり、Gen1 よりも多くの機能を提供します。 たとえば、メモリの増加、Intel ソフトウェア ガード エクステンションズ (Intel SGX)、および仮想化された永続メモリ (vPMEM) が含まれます。 オンプレミスで実行される第 2 世代 VM には、Azure ではまだサポートされていない機能がいくつかあります。 詳細については、「特徴と機能」セクションを参照してください。 詳細については、[こちらの記事](../windows/generation-2.md)を参照してください。 追加機能が必要な場合は、Gen2 イメージを作成します。
+Azure は、Hyper-V 第 1 世代 (Gen1) と第 2 世代 (Gen2) をサポートしています。Gen2 は最新世代であり、Gen1 よりも多くの機能を提供します。 たとえば、メモリの増加、Intel ソフトウェア ガード エクステンションズ (Intel SGX)、および仮想化された永続メモリ (vPMEM) が含まれます。 オンプレミスで実行される第 2 世代 VM には、Azure ではまだサポートされていない機能がいくつかあります。 詳細については、「特徴と機能」セクションを参照してください。 詳細については、[こちらの記事](../generation-2.md)を参照してください。 追加機能が必要な場合は、Gen2 イメージを作成します。
 
 それでも独自のイメージを作成する必要がある場合は、[イメージの前提条件](./create-upload-generic.md)を満たしていることを確認し、Azure にアップロードします。 ディストリビューション固有の要件については、以下を参照してください。
 

@@ -1,20 +1,18 @@
 ---
 title: Azure 上の Red Hat ワークロードの概要 | Microsoft Docs
 description: Azure で利用できる Red Hat 製品オファリングについて学習します。
-services: virtual-machines-linux
 author: asinn826
-manager: borisb2015
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 7394cb50010bddddf8f8eff4b4f04eaf4d3231b6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.reviewer: cynthn
+ms.openlocfilehash: 61f7461633aba18a21fcc18709055dc790ffee7b
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87052116"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993242"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Azure 上の Red Hat ワークロード
 
@@ -45,7 +43,7 @@ Azure には、Red Hat Gold Image (`rhel-byos`) も用意されています。 �
 
 ### <a name="generation-2-images"></a>第 2 世代イメージ
 
-第 2 世代仮想マシン (VM) には、第 1 世代 VM と比較して、新しい機能がいくつか備わっています。 詳細については、[第 2 世代のドキュメント](../../linux/generation-2.md)を参照してください。 RHEL イメージの観点からの主な違いは、第 2 世代 VM では BIOS ファームウェア インターフェイスではなく UEFI を使用することです。 また、ブート時にマスター ブート レコード (MBR) ではなく、GUID パーティション テーブル (GPT) を使用します。 特に、GPT を使用することにより、2 TB を超える OS ディスク サイズが可能になります。 また、[Mv2 シリーズの VM](../../mv2-series.md) は、第 2 世代イメージでのみ実行されます。
+第 2 世代仮想マシン (VM) には、第 1 世代 VM と比較して、新しい機能がいくつか備わっています。 詳細については、[第 2 世代のドキュメント](../../generation-2.md)を参照してください。 RHEL イメージの観点からの主な違いは、第 2 世代 VM では BIOS ファームウェア インターフェイスではなく UEFI を使用することです。 また、ブート時にマスター ブート レコード (MBR) ではなく、GUID パーティション テーブル (GPT) を使用します。 特に、GPT を使用することにより、2 TB を超える OS ディスク サイズが可能になります。 また、[Mv2 シリーズの VM](../../mv2-series.md) は、第 2 世代イメージでのみ実行されます。
 
 RHEL 第 2 世代イメージは、Azure Marketplace で入手できます。 Azure CLI を使用したときに表示されるすべてのイメージの一覧で、イメージ SKU の "gen2" を探してください。 第 2 世代の VM をデプロイするには、VM デプロイ プロセスで **[詳細]** タブに移動します。
 

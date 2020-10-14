@@ -2,19 +2,19 @@
 title: グループ チャットのヒーロー サンプル
 titleSuffix: An Azure Communication Services sample overview
 description: Azure Communication Services を使用したチャットのヒーロー サンプルの概要。これにより、開発者はサンプルの内部動作とその変更方法をより詳しく学習することができます。
-author: ddematheu
+author: ddematheu2
 manager: nimag
 services: azure-communication-services
 ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b97b80927739d9a8658213a00b415c0bf321528b
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 51b985cd67e1b540e2f24f2f37b19f9bff4223db
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91460562"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962991"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>グループ チャットのヒーロー サンプルを使ってみる
 
@@ -78,7 +78,6 @@ chat.csproj で Visual Studio を開き、デバッグ モードで実行しま�
 2. `git clone https://github.com/Azure/Communication.git`
 3. Azure portal から `Connection String` を取得します。 接続文字列の詳細については、[Azure Communication リソースの作成](../quickstarts/create-communication-resource.md)に関するページを参照してください。
 4. `Connection String` を取得したら、Chat フォルダーにある **Chat/appsettings.json** ファイルに接続文字列を追加します。 変数 `ResourceConnectionString` に接続文字列を入力します。
-5. `./Chat/ClientApp/src/constants.tsx` の ENVIRONMENT_URL をリソースの場所で更新します。 (例: https://<RESOURCE_NAME>.communication.azure.com)
 
 ### <a name="local-run"></a>ローカルの実行
 
@@ -113,8 +112,8 @@ Communication Services サブスクリプションをクリーンアップして
 
 ## <a name="additional-reading"></a>その他の情報
 
-- [Azure Communication GitHub](https://github.com/Azure/communication) - 他の例や情報は公式 GitHub ページで見つかります
+- [Azure Communication GitHub](https://github.com/Azure/communication) - 他の例や情報は公式 GitHub ページで見つかります。
 - [Redux](https://redux.js.org/) - クライアント側の状態管理
-- [FluentUI](https://developer.microsoft.com/fluentui#/) - Microsoft が提供する UI ライブラリ
+- [FluentUI](https://aka.ms/fluent-ui) - Microsoft が提供する UI ライブラリ
 - [React](https://reactjs.org/) - ユーザー インターフェイスを構築するためのライブラリ
 - [ASP.NET Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1&preserve-view=true) - Web アプリケーションを構築するためのフレームワーク
