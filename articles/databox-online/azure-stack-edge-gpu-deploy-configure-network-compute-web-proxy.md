@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: c3ce12a91a0cf13bda000f7f729f6249fd04600c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a6b72c9e6cc366d04937598f653f8ba887ce1b85
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894057"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952184"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>チュートリアル:GPU 搭載の Azure Stack Edge Pro 用のネットワークを構成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "90894057"
 > * 前提条件
 > * ネットワークを構成する
 > * コンピューティング ネットワークを有効にする
-> * Web プロキシの
+> * Webプロキシを構成する
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -78,7 +78,7 @@ GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に
 
     デバイス ネットワークが構成されると、ページは以下のように更新されます。
 
-    ![ローカル Web UI の [ネットワーク設定] ページ](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-2.png)
+    ![ローカル Web UI の [ネットワーク設定] ページ 2](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-2.png)
 
 
      >[!NOTE]
@@ -126,7 +126,7 @@ GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に
     **[次へ: Web プロキシ]** を選択して、Web プロキシを構成します。  
 
   
-## <a name="configure-web-proxy"></a>Web プロキシの
+## <a name="configure-web-proxy"></a>Webプロキシを構成する
 
 これはオプション構成です。
 
@@ -149,7 +149,7 @@ GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に
 
     4. 構成された Web プロキシ設定を検証して適用するには、 **[適用]** を選択します。
     
-   ![ローカル Web UI の [Web proxy settings] (Web プロキシ設定) ページ](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/web-proxy-2.png)
+   ![ローカル Web UI の [Web プロキシ設定] ページ 2](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/web-proxy-2.png)
 
 2. 設定が適用されたら、 **[次へ: デバイス]** を選択します。
 
@@ -162,7 +162,7 @@ GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に
 > * 前提条件
 > * ネットワークを構成する
 > * コンピューティング ネットワークを有効にする
-> * Web プロキシの
+> * Webプロキシを構成する
 
 
 Azure Stack Edge Pro デバイスを設定する方法については、以下を参照してください。

@@ -2,13 +2,13 @@
 title: ジョブのサイズ超過エラー
 description: ジョブのサイズまたはテンプレートが大きすぎる場合のエラーをトラブルシューティングする方法について説明します。
 ms.topic: troubleshooting
-ms.date: 09/25/2020
-ms.openlocfilehash: 06645561964d9634d93061b3be4d100a578cc7e7
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.date: 10/07/2020
+ms.openlocfilehash: 638bdef246fc908ab997bfb99e7526febdb3792e
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91373053"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91822152"
 ---
 # <a name="resolve-errors-for-job-size-exceeded"></a>ジョブのサイズ超過に関するエラーを解決する
 
@@ -38,6 +38,10 @@ ms.locfileid: "91373053"
 
 リンクされたテンプレートに依存するようにその他のリソースを設定し、[リンクされたテンプレートの出力から値を取得する](linked-templates.md#get-values-from-linked-template)ことができます。
 
-## <a name="solution-2---use-serial-copy"></a>解決策 2 - シリアル コピーを使用する
+## <a name="solution-2---reduce-name-size"></a>解決策 2 - 名前のサイズを小さくする
+
+[parameters](template-parameters.md)、[variables](template-variables.md)、[outputs](template-outputs.md) に使用する名前の長さを短くしてください。 これらの値がコピー ループを通じて繰り返されると、大きな名前は何度も増殖します。
+
+## <a name="solution-3---use-serial-copy"></a>解決策 3 - シリアル コピーを使用する
 
 2 つ目のオプションは、コピー ループを[並列処理からシリアル処理に変更する](copy-resources.md#serial-or-parallel)方法です。 このオプションは、コピーによって多数のリソースをデプロイしたことが原因でエラーが発生したと思われる場合にのみ使用してください。 この変更により、リソースが並行してデプロイされないため、デプロイ時間が大幅に長くなる可能性があります。
