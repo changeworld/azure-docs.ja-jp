@@ -14,32 +14,32 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a4d50bcf2493c67880fd5a27b326705b1923feb
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 57d66c844b7e73f1e3326d628f854a9811ca96fd
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728983"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802703"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>アプリケーション認証を Active Directory フェデレーション サービス (AD FS) から Azure Active Directory に移動する
 
-[Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) によって提供されるユニバーサル ID プラットフォームでは、ユーザー、パートナー、顧客に対し、任意のプラットフォームやデバイスからアプリケーションにアクセスして共同作業を行うための 1 つの ID が提供されます。 Azure AD には、[ID 管理機能の完全なスイート](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)が備わっています。 アプリケーション (アプリ) の認証と承認を Azure AD に標準化することで、これらの機能によって提供される利点を利用できます。 
+[Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) によって提供されるユニバーサル ID プラットフォームでは、ユーザー、パートナー、顧客に対し、任意のプラットフォームやデバイスからアプリケーションにアクセスして共同作業を行うための 1 つの ID が提供されます。 Azure AD には、[ID 管理機能の完全なスイート](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)が備わっています。 アプリケーション (アプリ) の認証と承認を Azure AD に標準化することで、これらの機能によって提供される利点を利用できます。
 
 > [!TIP]
 > この記事は開発者向けに記述されています。 プロジェクトのマネージャーや管理者がアプリケーションを Azure AD に移行することを計画している場合、「[Azure AD にアプリケーション認証を移行する](https://aka.ms/migrateapps/whitepaper)」というホワイト ペーパー (PDF) を読むことを検討してください。
 
 ## <a name="introduction"></a>はじめに
 
-ユーザー アカウントが含まれるオンプレミスのディレクトリがある場合は、ユーザーが認証を行うアプリケーションが多数存在する可能性があります。 これらの各アプリは、ユーザーが各自の ID を使用してアクセスできるように構成されています。 
+ユーザー アカウントが含まれるオンプレミスのディレクトリがある場合は、ユーザーが認証を行うアプリケーションが多数存在する可能性があります。 これらの各アプリは、ユーザーが各自の ID を使用してアクセスできるように構成されています。
 
 
 ユーザーは、オンプレミスの Active Directory で直接認証を行うこともあります。 Active Directory フェデレーション サービス (AD FS) は、標準に基づくオンプレミスの ID サービスです。 AD FS では、信頼されたビジネス パートナー間でシングル サインオン (SSO) 機能を使用する機能が拡張され、ユーザーが各アプリケーションに個別にサインインする必要がなくなります。 これはフェデレーションと呼ばれます。
 
-多くの組織には、Microsoft 365 や Azure AD ベースのアプリの他に、AD FS に直接フェデレーションされたサービスとしてのソフトウェア (SaaS) アプリやカスタム基幹業務 (LOB) アプリがあります。 
+多くの組織には、Microsoft 365 や Azure AD ベースのアプリの他に、AD FS に直接フェデレーションされたサービスとしてのソフトウェア (SaaS) アプリやカスタム基幹業務 (LOB) アプリがあります。
 
 ![オンプレミスに直接接続されているアプリケーション](media/migrate-adfs-apps-to-azure/app-integration-before-migration1.png)
 
-**アプリケーションのセキュリティを強化するときの目標は、オンプレミスとクラウドの環境全体で 1 セットのアクセス制御とポリシーを使用することです**。 
+**アプリケーションのセキュリティを強化するときの目標は、オンプレミスとクラウドの環境全体で 1 セットのアクセス制御とポリシーを使用することです**。
 
 ![Azure AD 経由で接続されたアプリケーション](media/migrate-adfs-apps-to-azure/app-integration-after-migration1.png)
 
@@ -49,17 +49,17 @@ ms.locfileid: "91728983"
 
 すべてのアプリケーション認証を Azure AD に移行するのが最善です。そのようにすると、ID とアクセスを管理のための単一のコントロール プレーンが提供されます。
 
-アプリケーションでは、認証に最新のプロトコルまたはレガシ プロトコルが使用されている場合があります。 最初に最新の認証プロトコル (SAML や Open ID Connect など) を使用するアプリケーションを移行することを検討します。 これらのアプリは、アプリ ギャラリーの組み込みコネクタを使用するか、Azure AD にアプリケーションを登録することによって、Azure AD で認証を行うように再構成できます。 古いプロトコルを使用しているアプリは、[アプリケーション プロキシ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-application-proxy)を使用して統合できます。 
+アプリケーションでは、認証に最新のプロトコルまたはレガシ プロトコルが使用されている場合があります。 最初に最新の認証プロトコル (SAML や Open ID Connect など) を使用するアプリケーションを移行することを検討します。 これらのアプリは、アプリ ギャラリーの組み込みコネクタを使用するか、Azure AD にアプリケーションを登録することによって、Azure AD で認証を行うように再構成できます。 古いプロトコルを使用しているアプリは、[アプリケーション プロキシ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-application-proxy)を使用して統合できます。
 
 詳細については、「[Azure AD と統合できるアプリケーションの種類](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-application-management)」を参照してください。
 
-[Azure AD Connect Health を有効にしてある](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs)場合は、[AD FS アプリケーション アクティビティ レポートを使用してアプリケーションを Azure AD に移行する](https://docs.microsoft.com/azure/active-directory/manage-apps/migrate-adfs-application-activity)ことができます。 
+[Azure AD Connect Health を有効にしてある](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs)場合は、[AD FS アプリケーション アクティビティ レポートを使用してアプリケーションを Azure AD に移行する](https://docs.microsoft.com/azure/active-directory/manage-apps/migrate-adfs-application-activity)ことができます。
 
 ### <a name="the-migration-process"></a>移行プロセス
 
 Azure AD にアプリ認証を移動するプロセスの間に、アプリと構成を適切にテストします。 運用環境への移動の移行テストにも、既存のテスト環境を引き続き使用することをお勧めします。 テスト環境を現在使用できない場合は、アプリケーションのアーキテクチャに応じて、[Azure App Service](https://azure.microsoft.com/services/app-service/) または [Azure Virtual Machines](https://azure.microsoft.com/free/virtual-machines/search/?OCID=AID2000128_SEM_lHAVAxZC&MarinID=lHAVAxZC_79233574796345_azure%20virtual%20machines_be_c__1267736956991399_kwd-79233582895903%3Aloc-190&lnkd=Bing_Azure_Brand&msclkid=df6ac75ba7b612854c4299397f6ab5b0&ef_id=XmAptQAAAJXRb3S4%3A20200306231230%3As&dclid=CjkKEQiAhojzBRDg5ZfomsvdiaABEiQABCU7XjfdCUtsl-Abe1RAtAT35kOyI5YKzpxRD6eJS2NM97zw_wcB) を使用して設定できます。
 
-アプリの構成を開発するときに使用するテスト Azure AD テナントを別に設定することもできます。 
+アプリの構成を開発するときに使用するテスト Azure AD テナントを別に設定することもできます。
 
 移行プロセスは次のようになります。
 
@@ -67,7 +67,7 @@ Azure AD にアプリ認証を移動するプロセスの間に、アプリと�
 
 ![移行ステージ 1 ](media/migrate-adfs-apps-to-azure/stage1.jpg)
 
- 
+
 **ステージ 2 – オプション: テスト用の Azure テナントを指し示すアプリのテスト インスタンス**
 
 アプリのテスト インスタンスがテスト用の Azure AD テナントを指し示すように構成を更新し、必要な変更を行います。 テスト用 Azure AD テナントのユーザーを使用してアプリをテストできます。 開発プロセスの間に、[Fiddler](https://www.telerik.com/fiddler) などのツールを使用して、要求と応答を比較および検証できます。
@@ -92,19 +92,19 @@ Azure AD にアプリ認証を移動するプロセスの間に、アプリと�
 
 ### <a name="line-of-business-lob-apps"></a>基幹業務 (LOB) アプリ
 
-LOB アプリは、組織内で開発されるか、データ センターにインストールされる標準パッケージ製品として利用できます。 たとえば、Windows Identity Foundation と (SharePoint Online ではなく) SharePoint アプリを基に構築されたアプリなどです。 
+LOB アプリは、組織内で開発されるか、データ センターにインストールされる標準パッケージ製品として利用できます。 たとえば、Windows Identity Foundation と (SharePoint Online ではなく) SharePoint アプリを基に構築されたアプリなどです。
 
-OAuth 2.0、OpenID Connect、または WS-Federation を使用する LOB アプリは、[アプリの登録](https://docs.microsoft.com/azure/active-directory/develop/app-registrations-training-guide-for-app-registrations-legacy-users)として Azure AD と統合できます。 [Azure portal](https://portal.azure.com/) のエンタープライズ アプリケーション ページで、SAML 2.0 または WS-Federation を使用するカスタム アプリを[ギャラリー以外のアプリケーション](https://docs.microsoft.com/azure/active-directory/manage-apps/add-non-gallery-app)として統合します。
+OAuth 2.0、OpenID Connect、または WS-Federation を使用する LOB アプリは、[アプリの登録](../develop/quickstart-register-app.md)として Azure AD と統合できます。 [Azure portal](https://portal.azure.com/) のエンタープライズ アプリケーション ページで、SAML 2.0 または WS-Federation を使用するカスタム アプリを[ギャラリー以外のアプリケーション](https://docs.microsoft.com/azure/active-directory/manage-apps/add-non-gallery-app)として統合します。
 
 ## <a name="saml-based-single-sign-on"></a>SAML ベースのシングル サインオン
 
-認証に SAML 2.0 を使用するアプリは、[SAML ベースのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (SAML ベースの SSO) 用に構成できます。 [SAML ベースの SSO](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) では、SAML 要求で定義する規則に基づいて、ユーザーを特定のアプリケーション ロールにマッピングできます。 
+認証に SAML 2.0 を使用するアプリは、[SAML ベースのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (SAML ベースの SSO) 用に構成できます。 [SAML ベースの SSO](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) では、SAML 要求で定義する規則に基づいて、ユーザーを特定のアプリケーション ロールにマッピングできます。
 
-SAML ベースのシングル サインオンのために SaaS アプリケーションを構成するには、[SAML ベースのシングル サインオンを構成する](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications)ことに関するページを参照してください。 
+SAML ベースのシングル サインオンのために SaaS アプリケーションを構成するには、[SAML ベースのシングル サインオンを構成する](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications)ことに関するページを参照してください。
 
 ![SSO SAML ユーザーのスクリーンショット ](media/migrate-adfs-apps-to-azure/sso-saml-user-attributes-claims.png)
 
- 
+
 多くの SaaS アプリケーションには[アプリケーション固有のチュートリアル](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)が用意されており、SAML ベースのシングル サインオンの構成が順を追って説明されています。
 
 ![アプリのチュートリアル](media/migrate-adfs-apps-to-azure/app-tutorial.png)
@@ -117,19 +117,19 @@ SAML ベースのシングル サインオンのために SaaS アプリケー�
 
 * 最も一般的なシナリオでアプリに必要なのは、NameID 要求とその他の一般的なユーザー識別子要求だけです。 他にも要求が必要かどうかを判断するには、AD FS からどの要求が発行されているかを調べます。
 
-* 一部の要求は Azure AD で保護されているため、すべての要求を発行できるとは限りません。 
+* 一部の要求は Azure AD で保護されているため、すべての要求を発行できるとは限りません。
 
 * 暗号化された SAML トークンを使用する機能は現在プレビュー段階です。 「[方法: エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization)」をご覧ください。
 
- 
+
 
 ### <a name="software-as-a-service-saas-apps"></a>サービスとしてのソフトウェア (SaaS) アプリ
 
-ユーザーが Salesforce、ServiceNow、Workday などの SaaS アプリにサインインし、AD FS に統合されている場合は、SaaS アプリに対してフェデレーション サインオンが使用されています。 
+ユーザーが Salesforce、ServiceNow、Workday などの SaaS アプリにサインインし、AD FS に統合されている場合は、SaaS アプリに対してフェデレーション サインオンが使用されています。
 
-既に、ほとんどの SaaS アプリケーションを、Azure AD で構成できるようになっています。 [Azure AD アプリ ギャラリー](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps)には SaaS アプリに対する事前構成済みの接続が多数用意されており、移行が簡単になります。 SAML 2.0 アプリケーションは、Azure AD アプリ ギャラリーを通じて、または[非ギャラリー アプリケーション](https://docs.microsoft.com/azure/active-directory/manage-apps/add-non-gallery-app)として、Azure AD と統合することができます。 
+既に、ほとんどの SaaS アプリケーションを、Azure AD で構成できるようになっています。 [Azure AD アプリ ギャラリー](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps)には SaaS アプリに対する事前構成済みの接続が多数用意されており、移行が簡単になります。 SAML 2.0 アプリケーションは、Azure AD アプリ ギャラリーを通じて、または[非ギャラリー アプリケーション](https://docs.microsoft.com/azure/active-directory/manage-apps/add-non-gallery-app)として、Azure AD と統合することができます。
 
-OAuth 2.0 または OpenID Connect を使用するアプリは、"[アプリの登録](https://docs.microsoft.com/azure/active-directory/develop/app-registrations-training-guide-for-app-registrations-legacy-users)" として同じように Azure AD と統合できます。 レガシ プロトコルを使用するアプリでは、[Azure AD アプリケーション プロキシ](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy)を使用して、Azure AD で認証を行うことができます。
+OAuth 2.0 または OpenID Connect を使用するアプリは、"[アプリの登録](../develop/quickstart-register-app.md)" として同じように Azure AD と統合できます。 レガシ プロトコルを使用するアプリでは、[Azure AD アプリケーション プロキシ](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy)を使用して、Azure AD で認証を行うことができます。
 
 SaaS アプリのオンボードに関する問題については、[SaaS アプリケーション統合サポートのエイリアス](mailto:SaaSApplicationIntegrations@service.microsoft.com)にお問い合わせください。
 
@@ -160,10 +160,10 @@ SaaS アプリのオンボードに関する問題については、[SaaS アプ
 * SAML バージョン 1.1 のトークンを必要とする SharePoint アプリなどの WS-Federation アプリ。 これらは、PowerShell を使用して手動で構成できます。 また、ギャラリーからの SharePoint アプリケーションと SAML 1.1 アプリケーションに対しては、事前に統合された汎用テンプレートを追加することもできます。 SAML 2.0 プロトコルがサポートされています。
 
 * 複雑な要求発行変換規則。 サポートされる要求マッピングの詳細については、以下を参照してください。
-   *  [Azure Active Directory での要求マッピング](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping) 
+   *  [Azure Active Directory での要求マッピング](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping)
    * [Azure Active Directory のエンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization)
 
- 
+
 
 ### <a name="apps-and-configurations-not-supported-in-azure-ad-today"></a>Azure AD で現時点ではサポートされていないアプリと構成
 
@@ -175,8 +175,7 @@ SaaS アプリのオンボードに関する問題については、[SaaS アプ
 
 * SAML アーティファクト解決
 
-* 署名済み SAML 要求の署名の検証  
-‎署名済み要求は受け入れられますが、署名は検証されないことに注意してください。  
+* 署名済み SAML 要求の署名の検証 (署名済み要求は受け入れ可能ですが、署名は検証されないことに注意してください)。
 ‎Azure AD では、アプリケーションで事前に構成されたエンドポイントにのみトークンが返されるため、ほとんどの場合、署名の検証は必要ありません。
 
 **トークン内の要求の機能**
@@ -193,7 +192,7 @@ SaaS アプリのオンボードに関する問題については、[SaaS アプ
 
 次の表では、AD FS 証明書利用者の信頼と Azure AD エンタープライズ アプリケーションの間での、設定の最も一般的なマッピングについて説明します。
 
-* AD FS – アプリに対する AD FS 証明書利用者の信頼で設定を探します。 証明書利用者を右クリックし、[プロパティ] を選択します。 
+* AD FS – アプリに対する AD FS 証明書利用者の信頼で設定を探します。 証明書利用者を右クリックし、[プロパティ] を選択します。
 
 * Azure AD – 設定は、アプリケーションのシングル サインオンのプロパティごとに、[Azure portal](https://portal.azure.com/) 内で構成されます。
 
@@ -213,15 +212,15 @@ SaaS アプリのオンボードに関する問題については、[SaaS アプ
 SSO 対応の Azure AD に対して AD FS を指し示すようにアプリケーションを構成します。 ここでは、SAML プロトコルを使用する SaaS アプリに焦点を当てます。 ただし、この概念はカスタム LOB アプリにも拡張されます。
 
 > [!NOTE]
-> Azure AD の構成値は、{tenant-id} を Azure テナント ID に置き換え、{application-id} をアプリケーション ID に置き換えるパターンに従います。 この情報は、[Azure portal](https://portal.azure.com/) の [Azure Active Directory] > [プロパティ] にあります。 
+> Azure AD の構成値は、{tenant-id} を Azure テナント ID に置き換え、{application-id} をアプリケーション ID に置き換えるパターンに従います。 この情報は、[Azure portal](https://portal.azure.com/) の [Azure Active Directory] > [プロパティ] にあります。
 
-* テナント ID を確認するには [ディレクトリ ID] を選択します。 
+* テナント ID を確認するには [ディレクトリ ID] を選択します。
 
 * アプリケーション ID を確認するには [アプリケーション ID] を選択します。
 
- 大まかには、SaaS アプリの主要な構成要素と Azure AD は次のようにマッピングします。 
+ 大まかには、SaaS アプリの主要な構成要素と Azure AD は次のようにマッピングします。
 
- 
+
 
 | 要素| 構成値 |
 | - | - |
@@ -256,7 +255,7 @@ AD FS の承認規則の種類の例と、それらを Azure AD にマッピン�
 
 #### <a name="example-1-permit-access-to-all-users"></a>例 1:すべてのユーザーにアクセスを許可する
 
-すべてのユーザーにアクセスを許可すると、AD FS では次のようになります。 
+すべてのユーザーにアクセスを許可すると、AD FS では次のようになります。
 
 ![移行ステージ 1 ](media/migrate-adfs-apps-to-azure/sso-saml-user-attributes-claims.png)
 
@@ -266,9 +265,9 @@ AD FS の承認規則の種類の例と、それらを Azure AD にマッピン�
 [Azure ポータル](https://portal.azure.com/)で次の操作を行います。
 * オプション 1: [ユーザーの割り当てが必要] を [いいえ] に設定します ![SaaS アプリのアクセス制御ポリシーを編集する ](media/migrate-adfs-apps-to-azure/permit-access-to-all-users-2.png)
 
-    [ユーザーの割り当てが必要] スイッチを [はい] に設定すると、アクセスできるようにするにはユーザーをアプリケーションに割り当てる必要があることに注意してください。 [いいえ] に設定すると、すべてのユーザーがアクセスできます。 このスイッチでは、[マイ アプリ] エクスペリエンスでユーザーに対して表示されるものは制御されません。 
+    [ユーザーの割り当てが必要] スイッチを [はい] に設定すると、アクセスできるようにするにはユーザーをアプリケーションに割り当てる必要があることに注意してください。 [いいえ] に設定すると、すべてのユーザーがアクセスできます。 このスイッチでは、[マイ アプリ] エクスペリエンスでユーザーに対して表示されるものは制御されません。
 
- 
+
 * オプション 2:[ユーザーとグループ] タブで、アプリケーションを [すべてのユーザー] 自動グループに割り当てます。 <p>
 既定の "すべてのユーザー" グループを使用できるようにするには、Azure AD テナントで[動的グループを有効にする](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule)必要があります。
 
@@ -302,10 +301,10 @@ AD FS での明示的なユーザーの承認:
 
 ![Azure でのマイ SaaS アプリ ](media/migrate-adfs-apps-to-azure/authorize-a-specific-user-2.png)
 
- 
-### <a name="map-multi-factor-authentication-rules"></a>Multi-Factor Authentication の規則のマッピング 
 
-AD FS とフェデレーションしているため、[Multi-Factor Authentication (MFA)](https://docs.microsoft.com/azure/active-directory/authentication/multi-factor-authentication) と AD FS のオンプレミスでの展開は、移行後も引き続き機能します。 ただし、Azure AD の条件付きアクセス ワークフローに関連付けられている Azure の組み込みの MFA 機能に移行することを検討してください。 
+### <a name="map-multi-factor-authentication-rules"></a>Multi-Factor Authentication の規則のマッピング
+
+AD FS とフェデレーションしているため、[Multi-Factor Authentication (MFA)](https://docs.microsoft.com/azure/active-directory/authentication/multi-factor-authentication) と AD FS のオンプレミスでの展開は、移行後も引き続き機能します。 ただし、Azure AD の条件付きアクセス ワークフローに関連付けられている Azure の組み込みの MFA 機能に移行することを検討してください。
 
 AD FS の MFA 規則の種類の例と、さまざまな条件に基づいてそれらを Azure AD にマッピングする方法を次に示します。
 
@@ -316,7 +315,7 @@ AD FS での MFA 規則の設定:
 
 #### <a name="example-1-enforce-mfa-based-on-usersgroups"></a>例 1:ユーザーまたはグループに基づいて MFA を適用する
 
-ユーザーやグループのセレクターは、グループごと (グループ SID) またはユーザーごと (プライマリ SID) に MFA を適用できる規則です。 ユーザーやグループの割り当てとは別に、AD FS MFA 構成 UI のすべての追加のチェック ボックスは、ユーザーやグループの規則が適用された後に評価される追加の規則として機能します。 
+ユーザーやグループのセレクターは、グループごと (グループ SID) またはユーザーごと (プライマリ SID) に MFA を適用できる規則です。 ユーザーやグループの割り当てとは別に、AD FS MFA 構成 UI のすべての追加のチェック ボックスは、ユーザーやグループの規則が適用された後に評価される追加の規則として機能します。
 
 
 Azure AD でユーザーまたはグループに対して MFA 規則を指定します。
@@ -325,12 +324,11 @@ Azure AD でユーザーまたはグループに対して MFA 規則を指定し
 
 2. **[割り当て]** を選択します。 MFA を適用するユーザーまたはグループを追加します。
 
-3. 次に示すように、 **[アクセス制御]** のオプションを構成します。  
-‎
+3. 次に示すように、 **[アクセス制御]** のオプションを構成します。
 
 ![AAD MFA の設定](media/migrate-adfs-apps-to-azure/mfa-usersorgroups.png)
 
- 
+
  #### <a name="example-2-enforce-mfa-for-unregistered-devices"></a>例 2:未登録のデバイスに MFA を適用する
 
 Azure AD で未登録のデバイスに対する MFA 規則を指定します。
@@ -339,12 +337,11 @@ Azure AD で未登録のデバイスに対する MFA 規則を指定します。
 
 2. **[割り当て]** を **[すべてのユーザー]** に設定します。
 
-3. 次に示すように、 **[アクセス制御]** のオプションを構成します。  
-‎
+3. 次に示すように、 **[アクセス制御]** のオプションを構成します。
 
 ![AAD MFA の設定](media/migrate-adfs-apps-to-azure/mfa-unregistered-devices.png)
 
- 
+
 [複数のコントロールの場合] オプションを [選択したコントロールのいずれかが必要] に設定すると、チェック ボックスで指定した条件のいずれかがユーザーによって満たされると、アプリへのアクセスが許可されることを意味します。
 
 #### <a name="example-3-enforce-mfa-based-on-location"></a>例 3: 場所に基づいて MFA を適用する
@@ -355,7 +352,7 @@ Azure AD でユーザーの場所に基づいて MFA 規則を指定します。
 
 1. **[割り当て]** を **[すべてのユーザー]** に設定します。
 
-1. [Azure AD で名前付きの場所を構成します](https://docs.microsoft.com/azure/active-directory/active-directory-named-locations)。それ以外の場合は、企業ネットワーク内部からのフェデレーションが信頼されます。 
+1. [Azure AD で名前付きの場所を構成します](https://docs.microsoft.com/azure/active-directory/active-directory-named-locations)。それ以外の場合は、企業ネットワーク内部からのフェデレーションが信頼されます。
 
 1. **条件規則**を構成して、MFA を適用する場所を指定します。
 
@@ -366,7 +363,7 @@ Azure AD でユーザーの場所に基づいて MFA 規則を指定します。
 
 ![アクセス制御ポリシーのマッピング](media/migrate-adfs-apps-to-azure/mfa-location-2.png)
 
- 
+
 ### <a name="map-emit-attributes-as-claims-rule"></a>出力属性を要求規則としてマッピングする
 
 ここでは、AD FS での属性のマッピング方法の例を示します。
@@ -388,14 +385,14 @@ AD FS 2016 では、複数の組み込みアクセス制御ポリシーから選
 
 ![Azure AD の組み込みのアクセス制御](media/migrate-adfs-apps-to-azure/map-builtin-access-control-policies-1.png)
 
- 
+
 Azure AD で組み込みのポリシーを実装するには、[新しい条件付きアクセス ポリシー](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json)を使用してアクセス制御を構成するか、AD FS 2016 のカスタム ポリシー デザイナーを使用してアクセス制御ポリシーを構成します。 ルール エディターには、あらゆる種類の配列を作成するのに役立つ、許可オプションと除外オプションの完全な一覧があります。
 
 ![Azure AD のアクセス制御ポリシー](media/migrate-adfs-apps-to-azure/map-builtin-access-control-policies-2.png)
 
 
 
-次の表では、いくつかの便利な許可および除外オプションと、それらが Azure AD にどのようにマッピングするかを示します。 
+次の表では、いくつかの便利な許可および除外オプションと、それらが Azure AD にどのようにマッピングするかを示します。
 
 
 | オプション | Azure AD で許可オプションを構成する方法| Azure AD で除外オプションを構成する方法 |
@@ -420,7 +417,7 @@ Azure portal で信頼できる場所に対する [除外] オプションを構
 
 詳細については、「[Active Directory から同期されたグループ属性を使用する場合の前提条件](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-group-claims)」を参照してください。
 
-### <a name="setup-user-self-provisioning"></a>ユーザーのセルフプロビジョニングを設定する 
+### <a name="setup-user-self-provisioning"></a>ユーザーのセルフプロビジョニングを設定する
 
 一部の SaaS アプリケーションでは、ユーザーが初めてアプリケーションにサインインするときに、ユーザーをセルフプロビジョニングする機能がサポートされています。 Azure Active Directory (Azure AD) でのアプリ プロビジョニングという用語は、ユーザーがアクセスする必要のあるクラウド ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) アプリケーションにおいてユーザーの ID とロールを自動的に作成することを意味します。 移行されるユーザーは、既に SaaS アプリケーションにアカウントを持っています。 移行後に追加される新しいユーザーは、すべてプロビジョニングする必要があります。 アプリケーションを移行した後、[SaaS アプリのプロビジョニング](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning)をテストします。
 
@@ -436,7 +433,7 @@ AD FS では、次の 2 つの主な方法で既存の外部ユーザーを設�
 
 現在、外部組織とフェデレーションを行っている場合は、いくつかの方法を使用できます。
 
-* [Azure portal で Azure Active Directory B2B コラボレーション ユーザーを追加します](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator)。 Azure AD 管理ポータルから取引先組織に対し、個々のメンバーが引き続きこれまでと同じアプリと資産を使用するように、B2B コラボレーションの招待を事前に送信できます。 
+* [Azure portal で Azure Active Directory B2B コラボレーション ユーザーを追加します](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator)。 Azure AD 管理ポータルから取引先組織に対し、個々のメンバーが引き続きこれまでと同じアプリと資産を使用するように、B2B コラボレーションの招待を事前に送信できます。
 
 * B2B 招待 API を使用して取引先組織の個々のユーザーに対する要求を生成する、[セルフサービス B2B サインアップ ワークフローを作成します](https://docs.microsoft.com/azure/active-directory/b2b/self-service-portal)。
 
@@ -453,17 +450,17 @@ AD FS では、次の 2 つの主な方法で既存の外部ユーザーを設�
 
 1. **[管理]**  >  **[条件付きアクセス]** を選択します。 ポリシーの一覧を調べて、[条件付きアクセス ポリシー](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)によってアプリケーションへのアクセスがブロックされないことを確認します。
 
-アプリの構成方法に応じて、SSO が正常に機能することを確認します。 
+アプリの構成方法に応じて、SSO が正常に機能することを確認します。
 
 | 認証の種類| テスト |
 | - | - |
-| OAuth/OpenID Connect| **[エンタープライズ アプリケーション] > [アクセス許可]** を選択し、アプリのユーザー設定において組織内で使用されるアプリケーションに同意ていることを確認します。  
+| OAuth/OpenID Connect| **[エンタープライズ アプリケーション] > [アクセス許可]** を選択し、アプリのユーザー設定において組織内で使用されるアプリケーションに同意ていることを確認します。
 ‎ |
-| SAML ベースの SSO| **[シングル サインオン]** の下にある [[SAML 設定のテスト]](https://docs.microsoft.com/azure/active-directory/develop/howto-v1-debug-saml-sso-issues) ボタンを使用します。  
+| SAML ベースの SSO| **[シングル サインオン]** の下にある [[SAML 設定のテスト]](https://docs.microsoft.com/azure/active-directory/develop/howto-v1-debug-saml-sso-issues) ボタンを使用します。
 ‎ |
-| パスワードベースの SSO| [マイ アプリによるセキュリティで保護されたサインイン](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)[-](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)[拡張機能](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)をダウンロードしてインストールします。 この拡張機能は、SSO プロセスを使用する必要がある組織の任意のクラウド アプリを開始する場合に役立ちます。  
+| パスワードベースの SSO| [マイ アプリによるセキュリティで保護されたサインイン](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)[-](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)[拡張機能](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)をダウンロードしてインストールします。 この拡張機能は、SSO プロセスを使用する必要がある組織の任意のクラウド アプリを開始する場合に役立ちます。
 ‎ |
-| アプリケーション プロキシ| コネクタが実行されていて、アプリケーションに割り当てられていることを確認します。 詳細については、[アプリケーション プロキシのトラブルシューティング ガイド](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot)に関する記事をご覧ください。  
+| アプリケーション プロキシ| コネクタが実行されていて、アプリケーションに割り当てられていることを確認します。 詳細については、[アプリケーション プロキシのトラブルシューティング ガイド](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot)に関する記事をご覧ください。
 ‎ |
 
 > [!NOTE]
@@ -483,9 +480,9 @@ AD FS では、次の 2 つの主な方法で既存の外部ユーザーを設�
 
 デプロイが完了したら、デプロイが成功したことと、実行する必要がある新しい手順の注意を、ユーザーに通知できます。
 
-* [マイ アプリ](https://myapps.microsoft.com)を使用して、移行されたすべてのアプリケーションにアクセスするようにユーザーに指示します。 
+* [マイ アプリ](https://myapps.microsoft.com)を使用して、移行されたすべてのアプリケーションにアクセスするようにユーザーに指示します。
 
-* MFA の設定の更新が必要な場合があることをユーザーに通知します。 
+* MFA の設定の更新が必要な場合があることをユーザーに通知します。
 
 * セルフサービス パスワード リセットがデプロイされている場合、ユーザーは自分の認証方法を更新または確認することが必要な場合があります。 [MFA](https://aka.ms/mfatemplates) と [SSPR](https://aka.ms/ssprtemplates) のエンド ユーザー通信テンプレートを参照してください。
 
