@@ -1,17 +1,17 @@
 ---
 title: クイックスタート - Web アプリを Azure Service Fabric Mesh にデプロイする
 description: このクイック スタートでは、Visual Studio を使用して、ASP.NET Core Web サイトを作成し、Azure Service Fabric Mesh に発行する方法を示します。
-author: dkkapur
+author: georgewallace
 ms.topic: quickstart
 ms.date: 07/17/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 0828ad1acd23afdb7ebe7b89b20d8674e5876319
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 15e0c3bcbc19eae344ca3965b2b866ca9a15f28d
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91653300"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840321"
 ---
 # <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>クイック スタート: Web アプリを作成して Azure Service Fabric Mesh にデプロイする
 

@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 07/20/2020
 ms.author: sebansal
 ms.openlocfilehash: 3809fa9e1ce17a5a0c3cf333ac20ef543db4b5a7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88588805"
 ---
 # <a name="renew-your-azure-key-vault-certificates"></a>Azure Key Vault の証明書の更新

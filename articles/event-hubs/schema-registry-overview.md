@@ -4,12 +4,12 @@ description: この記事では、Azure Event Hubs での Schema Registry のサ
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: a0cc54f6ada1a5900e817c8e22fc192cd73f6550
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 30ef2f102a4b8d9f9908ba915f179889710bafd0
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91653572"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91938799"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>Event Hubs の Azure スキーマ レジストリ (プレビュー)
 多くのイベント ストリーミングおよびメッセージング シナリオでは、イベントまたはメッセージのペイロードに、Apache Avro のようなスキーマ駆動型の形式を使用してシリアル化または逆シリアル化された構造化データが含まれています。 送信側と受信側のどちらであっても、JSON スキーマのようなスキーマ ドキュメントでデータの整合性を検証したい場合があります。 スキーマ駆動型の形式の場合、メッセージ コンシューマーでスキーマを使用できるようにすることは、コンシューマーでデータを逆シリアル化できるようにするための前提条件です。 
@@ -41,7 +41,7 @@ Avro シリアライザーを含む次のライブラリのいずれかを使用
 - [Java - azure-data-schemaregistry-avro](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/schemaregistry/azure-data-schemaregistry-avro/)
 - [Python - azure-schemaregistry-avroserializer](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/schemaregistry/azure-schemaregistry-avroserializer)
 - [JavaScript - @azure/schema-registry-avro](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/schemaregistry/schema-registry-avro)
-- [Apache Kafka](https://github.com/Azure/azure-schema-registry-for-kafka/tree/master/avro/samples) - Azure Schema Registry によって提供される Kafka 統合 Apache Avro シリアライザーと逆シリアライザーを実行します。 Azure Schema Registry 用の Java クライアントの Apache Kafka クライアント シリアライザーは、任意の Apache Kafka シナリオで、Apache Kafka® ベースのデプロイまたはクラウド サービスと共に使用できます。 
+- [Apache Kafka](https://github.com/Azure/azure-schema-registry-for-kafka/) - Azure Schema Registry によって提供される Kafka 統合 Apache Avro シリアライザーと逆シリアライザーを実行します。 Azure Schema Registry 用の Java クライアントの Apache Kafka クライアント シリアライザーは、任意の Apache Kafka シナリオで、Apache Kafka® ベースのデプロイまたはクラウド サービスと共に使用できます。 
 
 次の図は、Event Hubs におけるスキーマ レジストリの情報フローを示しています。 
 
@@ -70,4 +70,4 @@ Azure portal を使用してアプリケーションを登録する方法につ�
     - [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/schemaregistry/azure-data-schemaregistry-avro/src/samples)
     - [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/schemaregistry/schema-registry-avro/samples )
     - [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/schemaregistry/azure-schemaregistry-avroserializer/samples )
-    - [Azure Schema Registry の Kafka Avro 統合](https://github.com/Azure/azure-schema-registry-for-kafka/tree/master/avro/samples)
+    - [Azure Schema Registry の Kafka Avro 統合](https://github.com/Azure/azure-schema-registry-for-kafka/tree/master/csharp/avro/samples)

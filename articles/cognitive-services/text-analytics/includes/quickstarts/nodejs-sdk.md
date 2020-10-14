@@ -6,16 +6,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 07/27/2020
+ms.date: 10/07/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
 ms.custom: devx-track-js
-ms.openlocfilehash: 5d9c3c8e795b6651595a17d540aafa849ce81471
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: c24a50926fe028dcbf42d3642ae3ec5c9ae84f5b
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91401099"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977859"
 ---
 <a name="HOLTop"></a>
 
@@ -147,6 +147,7 @@ Text Analytics クライアントは、キーを使用して Azure に対して�
 
 * [クライアント認証](#client-authentication)
 * [感情分析](#sentiment-analysis) 
+* [意見マイニング](#opinion-mining)
 * [言語検出](#language-detection)
 * [名前付きエンティティの認識](#named-entity-recognition-ner)
 * [エンティティ リンク設定](#entity-linking)

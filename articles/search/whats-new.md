@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7714ec29b3cbe17c7700b48111ea2b455aa18b7e
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 0df3c6b1851767616111308ad0bacce227ba1a83
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91532229"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948903"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Cognitive Search の新機能
 
@@ -26,11 +26,11 @@ Azure Active Directory に検索サービスの ID を作成した後、RBAC の
 
 |機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | カテゴリ | 説明 | 可用性  |
 |------------------------------|----------|-------------|---------------|
-| [マネージド サービス ID](search-howto-managed-identities-data-sources.md) | インデクサー、セキュリティ | Azure Active Directory に検索サービスの ID を作成した後、RBAC のアクセス許可を使用して、その ID に Azure データ ソースへのアクセス権を与えます。 このアプローチを使用すると、接続文字列での資格情報が不要になります。 <br><br>IP 規則が選択できない場合、[信頼されたサービスの例外](search-indexer-howto-access-trusted-service-exception.md)を通じてマネージド サービス ID を使用することもできます。 | 一般提供されています。 この機能にアクセスするには、ポータルを使用するか、api-version=2020-06-30 の [Create Data Source (REST)](https://docs.microsoft.com/rest/api/searchservice/create-data-source) を使用します。 |
-| [プライベート リンクを使用したアウトバウンド要求](search-indexer-howto-access-private.md) | インデクサー、セキュリティ | Azure Private Link によって保護された Azure リソースにインデクサーがアクセスするときに使用できる共有プライベート リンク リソースを作成します。 インデクサーの接続を保護する方法すべてについて詳しくは、[Azure ネットワーク セキュリティ機能を使用してインデクサー リソースを保護する](search-indexer-securing-resources.md)方法に関するページを参照してください。 | 一般提供されています。 この機能にアクセスするには、ポータルを使用するか、api-version=2020-08-01 の[共有プライベート リンク リソース](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources)を使用します。 |
-| [Management REST API (2020-08-01)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | 新しい安定版 REST API には、共有プライベート リンク リソースを作成する機能が追加されています。 | 一般提供されています。 |
-| [Management REST API (2020-08-01-Preview)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | Azure Functions と Azure SQL for MySQL Databases 用の共有プライベート リンク リソースを追加します。 | パブリック プレビュー。 |
-| [Management .NET SDK 4.0](https://docs.microsoft.com/dotnet/api/overview/azure/search/management) | .NET SDK | Azure SDK の更新です。REST API バージョン 2020-08-01 を対象とする管理 SDK に適用されます。 | 一般提供されています。 |
+| [マネージド サービス ID](search-howto-managed-identities-data-sources.md) | インデクサー、セキュリティ | Azure Active Directory に検索サービスの ID を作成した後、RBAC のアクセス許可を使用して、その ID に Azure データ ソースへのアクセス権を与えます。 このアプローチを使用すると、接続文字列での資格情報が不要になります。 <br><br>IP 規則が選択できない場合、[信頼されたサービスの例外](search-indexer-howto-access-trusted-service-exception.md)を通じてマネージド サービス ID を使用することもできます。 | 一般提供されています。 この機能にアクセスするには、ポータルを使用するか、api-version=2020-06-30 の [Create Data Source (REST)](/rest/api/searchservice/create-data-source) を使用します。 |
+| [プライベート リンクを使用したアウトバウンド要求](search-indexer-howto-access-private.md) | インデクサー、セキュリティ | Azure Private Link によって保護された Azure リソースにインデクサーがアクセスするときに使用できる共有プライベート リンク リソースを作成します。 インデクサーの接続を保護する方法すべてについて詳しくは、[Azure ネットワーク セキュリティ機能を使用してインデクサー リソースを保護する](search-indexer-securing-resources.md)方法に関するページを参照してください。 | 一般提供されています。 この機能にアクセスするには、ポータルを使用するか、api-version=2020-08-01 の[共有プライベート リンク リソース](/rest/api/searchmanagement/sharedprivatelinkresources)を使用します。 |
+| [Management REST API (2020-08-01)](/rest/api/searchmanagement/management-api-versions) | REST | 新しい安定版 REST API には、共有プライベート リンク リソースを作成する機能が追加されています。 | 一般提供されています。 |
+| [Management REST API (2020-08-01-Preview)](/rest/api/searchmanagement/management-api-versions) | REST | Azure Functions と Azure SQL for MySQL Databases 用の共有プライベート リンク リソースを追加します。 | パブリック プレビュー。 |
+| [Management .NET SDK 4.0](/dotnet/api/overview/azure/search/management) | .NET SDK | Azure SDK の更新です。REST API バージョン 2020-08-01 を対象とする管理 SDK に適用されます。 | 一般提供されています。 |
 
 ## <a name="august-2020"></a>2020 年 8 月
 

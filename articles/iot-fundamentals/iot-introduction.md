@@ -10,12 +10,12 @@ ms.author: dobett
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 73eb0b3164a386bb270e42ceba56d5dc7045af1c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6ecc79eb52acbe393ac2777a0ec388e538a7f8fd
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81728999"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978902"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Azure IoT (モノのインターネット) とは
 
@@ -74,6 +74,8 @@ IoT ソリューションでは、バックエンド サービスが次のよう
 
 組織による Azure IoT 利用の実例については、[IoT についての Microsoft の技術的なケース スタディ](https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured)に関するページを参照してください。 
 
+IoT アーキテクチャの詳細については、「[Microsoft Azure IoT Reference Architecture (Microsoft Azure IoT リファレンス アーキテクチャ)](https://aka.ms/iotrefarchitecture)」を参照してください。
+
 ## <a name="next-steps"></a>次のステップ
 
 いくつかの実際のビジネス ケースと使用されるアーキテクチャについては、[Microsoft Azure IoT の技術的なケース スタディ](https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured)を参照してください。
@@ -81,5 +83,3 @@ IoT ソリューションでは、バックエンド サービスが次のよう
 IoT DevKit で試すことができるいくつかのサンプル プロジェクトについては、[IoT DevKit プロジェクト カタログ](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/)を参照してください。 
 
 各種サービスに関するより包括的な説明とそれらの使用法については、[Azure IoT のサービスとテクノロジ](iot-services-and-technologies.md)に関するページを参照してください。
-
-IoT アーキテクチャの詳細については、「[Microsoft Azure IoT Reference Architecture (Microsoft Azure IoT リファレンス アーキテクチャ)](https://aka.ms/iotrefarchitecture)」を参照してください。

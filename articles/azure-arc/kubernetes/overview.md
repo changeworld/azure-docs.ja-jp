@@ -9,12 +9,12 @@ ms.author: mlearned
 description: この記事では、Azure Arc 対応 Kubernetes の概要を示します。
 keywords: Kubernetes, Arc, Azure, コンテナー
 ms.custom: references_regions
-ms.openlocfilehash: 61317f7f5f2bf17c88fc019294574993c1854e59
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: a4d53614a0ab6783b9adfe395fec4d79e7b62e1c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540644"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858423"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Azure Arc 対応 Kubernetes プレビューとは
 
@@ -70,7 +70,7 @@ Azure Arc 対応 Kubernetes は、現在、以下のリージョンでサポー�
 
 * Azure で実行されている Azure Kubernetes Service クラスターを Azure Arc に接続する必要はありますか?
 
-    いいえ。 Azure Monitor、Azure Policy (Gatekeeper) など、Azure Arc 対応 Kubernetes のすべての機能は、Azure に既にリソース表現がある AKS でネイティブに使用できます。 クラスター構成 (GitOps) も AKS でネイティブに使用でき、現在はプライベート プレビュー段階にあります。 この機能にアクセスするには、こちらの[サインアップ フォーム](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR5acO18Lmx5Bk_qao2CrOcFUQ0UyRllDR1BEV1BPNENYRERYN1pFWTQ4WC4u)を使用してください。
+    いいえ。 Azure Monitor、Azure Policy (Gatekeeper) など、Azure Arc 対応 Kubernetes のすべての機能は、Azure に既にリソース表現がある AKS でネイティブに使用できます。
     
 * Azure Stack HCI 上の AKS クラスターは Azure Arc に接続した方がよいですか? Azure Stack Hub または Azure Stack Engine で実行されている Kubernetes クラスターはどうですか?
 

@@ -9,12 +9,12 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: 3f74c593cd44470efd231578fddcf53715a3979a
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 3a5d0ba92ab976f9ea3aa2722f92865f06d5a70e
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575097"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045042"
 ---
 # <a name="what-is-iot-plug-and-play"></a>IoT プラグ アンド プレイとは
 
@@ -26,7 +26,7 @@ IoT プラグ アンド プレイにより、ソリューション ビルダー�
 
 インターフェイス内でこれらの要素をグループ化してモデル間で再利用すれば、コラボレーションを容易にし、開発を高速化することができます。
 
-IoT プラグ アンド プレイを [Azure Digital Twins](../digital-twins/about-digital-twins.md) と連携させるには、[Digital Twin Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) を使用してモデルとインターフェイスを定義します。 IoT プラグ アンド プレイと DTDL はコミュニティにも開かれており、Microsoft はお客様、パートナー、業界とのコラボレーションを歓迎しています。 どちらも、サービスおよびツールをまたいで簡単に導入できるオープンな W3C 標準 (JSON-LD や RDF など) に基づいています。
+IoT プラグ アンド プレイを [Azure Digital Twins](../digital-twins/overview.md) と連携させるには、[Digital Twin Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) を使用してモデルとインターフェイスを定義します。 IoT プラグ アンド プレイと DTDL はコミュニティにも開かれており、Microsoft はお客様、パートナー、業界とのコラボレーションを歓迎しています。 どちらも、サービスおよびツールをまたいで簡単に導入できるオープンな W3C 標準 (JSON-LD や RDF など) に基づいています。
 
 IoT プラグ アンド プレイと DTDL を使用する場合、追加料金は発生しません。 [Azure IoT Hub](../iot-hub/about-iot-hub.md) およびその他の Azure サービスの標準料金は変わりません。
 
@@ -68,14 +68,9 @@ Windows または Linux ゲートウェイに接続されている既存のセ�
 
 [IoT プラグ アンド プレイ デバイス認定プログラム](howto-certify-device.md)は、IoT プラグ アンド プレイの認定要件をデバイスが満たしていることを確認するものです。 認定されたデバイスは、公開されている [Azure IoT 認定デバイス カタログ](https://aka.ms/devicecatalog)に登録できます。
 
-## <a name="regional-availability"></a>リージョン別の提供状況
-
-この IoT プラグ アンド プレイ更新は、米国中部、北ヨーロッパ、東日本の各リージョンで作成された IoT ハブで利用できます。
-
 ## <a name="next-steps"></a>次のステップ
 
 IoT プラグ アンド プレイの概要を説明したので、次の手順では、クイックスタートのいずれかを試してみましょう。
 
 - [デバイスを IoT Hub に接続する (C)](./quickstart-connect-device-c.md)
 - [ソリューションからデバイスを操作する (Node.js)](./quickstart-service-node.md)
-
