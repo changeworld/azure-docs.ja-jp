@@ -202,13 +202,13 @@ Graph API 経由で検証が実行され、指定されたアプリケーショ�
 
 ターゲット アプリケーション (\<AppId\>) には、パブリッシャー ドメインが設定されている必要があります。 パブリッシャー ドメインを設定してから、やり直してください。
 
-アプリで[発行元ドメイン](howto-configure-publisher-domain.md)が構成されていない場合に発生します。
+アプリで[パブリッシャー ドメイン](howto-configure-publisher-domain.md)が構成されていない場合に発生します。
 
 ### <a name="publisherdomainmismatch"></a>PublisherDomainMismatch  
 
 ターゲット アプリケーションのパブリッシャー ドメイン (<publisherDomain>) が、パートナー センターでメール確認を実行するために使用されたドメイン (<pcDomain>) と一致しません。 これらのドメインが一致していることを確認してから、やり直してください。 
     
-アプリの[発行元ドメイン](howto-configure-publisher-domain.md)と、Azure AD テナントに追加された[カスタム ドメイン](../fundamentals/add-custom-domain.md)のいずれもが、パートナー センターで電子メールの検証を実行するために使用されたドメインと一致しない場合に発生します。
+アプリの[パブリッシャー ドメイン](howto-configure-publisher-domain.md)と、Azure AD テナントに追加された[カスタム ドメイン](../fundamentals/add-custom-domain.md)のいずれもが、パートナー センターで電子メールの検証を実行するために使用されたドメインと一致しない場合に発生します。
 
 ### <a name="notauthorizedtoverifypublisher"></a>NotAuthorizedToVerifyPublisher   
 
