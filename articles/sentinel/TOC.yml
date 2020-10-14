@@ -35,6 +35,8 @@
       href: identify-threats-with-entity-behavior-analytics.md
     - name: 脅威インテリジェンスの Azure Sentinel へのインポート
       href: import-threat-intelligence.md
+    - name: ウォッチリストで外部データを使用する
+      href: watchlists.md
     - name: 複数のテーブルにわたってデータを正規化する
       href: normalization.md
     - name: セキュリティ

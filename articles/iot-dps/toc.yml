@@ -38,15 +38,17 @@
 - name: チュートリアル
   items:
     - name: 1 - 登録グループを使用してデバイスのセットをプロビジョニングする
-      href: how-to-legacy-device-symm-key.md
+      items:
+        - name: 対称キーを使用してデバイスをプロビジョニングする
+          href: how-to-legacy-device-symm-key.md
+        - name: カスタム割り当てポリシーの使用
+          href: tutorial-custom-allocation-policies.md
     - name: 2 - デバイスを複数のハブにプロビジョニングする
       items:
         - name: 複数のハブを DPS にリンクする
           href: tutorial-provision-multiple-hubs.md
         - name: マルチテナント方式のプロビジョニング
           href: how-to-provision-multitenant.md
-        - name: カスタム割り当てポリシーの使用
-          href: tutorial-custom-allocation-policies.md
 - name: サンプル
   items:
     - name: シミュレートされた TPM デバイス構成証明のサンプル

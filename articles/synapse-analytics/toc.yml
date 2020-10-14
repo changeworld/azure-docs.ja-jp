@@ -70,6 +70,8 @@
       href: quickstart-sql-on-demand.md
     - name: Cosmos DB の Synapse Link に接続する
       href: quickstart-connect-synapse-link-cosmos-db.md
+    - name: Azure データ エクスプローラーに接続する
+      href: quickstart-connect-azure-data-explorer.md
 - name: チュートリアル
   items:
     - name: Apache Spark アプリケーションを実行する
@@ -673,6 +675,8 @@
               items:
                 - name: MongoDB (レガシ)
                   href: ../data-factory/connector-mongodb-legacy.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: MongoDB Atlas
+              href: ../data-factory/connector-mongodb-atlas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: MySQL
               href: ../data-factory/connector-mysql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Netezza

@@ -57,6 +57,8 @@
               href: azure-stack-edge-gpu-kubernetes-rbac.md
             - name: Kubernetes ワークロード
               href: azure-stack-edge-gpu-kubernetes-workload-management.md
+        - name: Key Vault 統合の表示
+          href: azure-stack-edge-gpu-activation-key-vault.md
     - name: 方法
       items:
         - name: IoT Edge サンプルをデプロイする

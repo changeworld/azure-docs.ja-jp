@@ -36,6 +36,8 @@
           href: connect-ios.md
         - name: Microsoft Store クライアントを使用した接続
           href: connect-microsoft-store.md
+        - name: Linux デバイスを使用した接続
+          href: linux-overview.md
     - name: デバイスのリダイレクトを構成する
       href: configure-device-redirections.md
     - name: PowerShell モジュールを設定する

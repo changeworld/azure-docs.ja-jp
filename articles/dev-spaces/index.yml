@@ -1,22 +1,22 @@
 ### YamlMime:Landing
 title: Azure Dev Spaces のドキュメント
-summary: Azure Dev Spaces は AKS の拡張機能で、使用すると、大規模なアプリケーションのコンテキストで簡単にコードを実行およびデバッグできます。 干渉されることなく、コードをエンドツーエンドでテストしたり、クラスターで実行中のコードのブレークポイントにヒットしたりするほか、チーム メンバー間で開発クラスターを共有することができます。
+summary: Azure Dev Spaces は非推奨となり、2023 年 10 月 31 日に廃止されます。
 metadata:
   title: Azure Dev Spaces のドキュメント
-  description: Azure Dev Spaces は AKS の拡張機能で、使用すると、大規模なアプリケーションのコンテキストで簡単にコードを実行およびデバッグできます。 干渉されることなく、コードをエンドツーエンドでテストしたり、クラスターで実行中のコードのブレークポイントにヒットしたりするほか、チーム メンバー間で開発クラスターを共有することができます。
+  description: Azure Dev Spaces は非推奨となり、2023 年 10 月 31 日に廃止されます。
   services: azure-dev-spaces
   ms.service: azure-dev-spaces
   ms.topic: landing-page
   author: zr-msft
   ms.author: zarhoads
   manager: gwallace
-  ms.date: 09/30/2019
-  ms.openlocfilehash: a3583cf57725acfdc812e44c921842acebbfd0a0
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.date: 10/12/2020
+  ms.openlocfilehash: 47cc21196875e09576b7a8e0a5a8233df294de7d
+  ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91773316"
+  ms.lasthandoff: 10/13/2020
+  ms.locfileid: "91965864"
 landingContent:
 - title: Azure Dev Spaces について
   linkLists:
