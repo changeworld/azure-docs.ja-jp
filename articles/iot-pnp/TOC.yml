@@ -95,8 +95,6 @@
       href: howto-use-iot-explorer.md
     - name: IoT プラグ アンド プレイ ブリッジをインストールして使用する
       href: howto-use-iot-pnp-bridge.md
-    - name: Azure IoT CLI 拡張機能をインストールして使用する
-      href: howto-use-iot-pnp-cli.md
     - name: DTDL 作成ツールをインストールして使用する
       href: howto-use-dtdl-authoring-tools.md
     - name: 埋め込み C を使用する

@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: a7edbbb50777cc2d91332260c9ebe72be042874b
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 7ae7e20c32836d595d6e0fb4162a895407beeb5d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91396248"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828039"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database および Azure Synapse Analytics の監査
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -106,6 +106,7 @@ Azure SQL Database および Azure Synapse の監査では、監査レコード�
 #### <a name="remarks"></a>解説
 
 - 監査ログは Azure サブスクリプションの Azure Blob Storage 内にある**追加 BLOB** に書き込まれます
+- 監査ログは .xel 形式であり、[SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) を使用して開くことができます。
 - サーバー レベルまたはデータベース レベルの監査イベントに対して不変のログ ストアを構成するには、[Azure Storage で提供される手順](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage#enabling-allow-protected-append-blobs-writes)に従います。 不変 BLOB ストレージを構成するときに、 **[さらに追加を許可する]** を選択していることを確認します。
 - VNet またはファイアウォールの背後にある Azure Storage アカウントに監査ログを書き込むことができます。 具体的な手順については、[VNet とファイアウォールの背後にあるストレージ アカウントに監査を書き込む](audit-write-storage-account-behind-vnet-firewall.md)方法に関する記事を参照してください。
 - 監査設定を構成した後に、新しい脅威の検出機能をオンにし、電子メールを構成してセキュリティの警告を受信します。 脅威の検出を使用すると、セキュリティ上の脅威になる可能性がある異常なデータベース アクティビティに対するプロアクティブ アラートを受信できます。 詳細については、[脅威の検出の概要](threat-detection-overview.md)に関するページを参照してください。

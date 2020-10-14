@@ -284,6 +284,8 @@
           href: backup-azure-alternate-dpm-server.md
         - name: Azure Backup Server を使用して VMware VM を復元する
           href: restore-azure-backup-server-vmware.md
+        - name: MABS サーバーのバックアップ
+          href: backup-the-mabs-server.md
     - name: Azure Stack の Azure Backup Server
       items:
         - name: Azure Backup Server のインストール

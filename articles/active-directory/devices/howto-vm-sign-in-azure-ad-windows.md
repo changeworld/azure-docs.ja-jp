@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84e692540d376c95a4a981249eba42060ed4ab80
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 27ffc176fc890d90e4201069ec1728eed69d4011
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287102"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826659"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure Active Directory 認証 (プレビュー) を使用して Azure 内の Windows 仮想マシンにサインインする
 
@@ -236,7 +236,7 @@ VM が Azure AD 参加プロセスを完了するには、AADLoginForWindows 拡
 
    > [!NOTE]
    > 最初の失敗後に拡張機能を再起動すると、デプロイ エラーを含むログが、CommandExecution_YYYYMMDDHHMMSSSSS.log として保存されます。 "
-1. VM でコマンド プロンプトを開き、Azure ホストで実行されている Instance Metadata Service (IMDS) エンドポイントに対して次のクエリを実行し、返される結果を確認します。
+1. VM で PowerShell コマンド プロンプトを開き、Azure ホストで実行されている Instance Metadata Service (IMDS) エンドポイントに対して次のクエリを実行し、返される結果を確認します。
 
    | 実行するコマンド | 想定される出力 |
    | --- | --- |

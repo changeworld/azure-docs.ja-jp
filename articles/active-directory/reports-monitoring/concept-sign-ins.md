@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2791b62d8abb1ade199ae3eb72deaf4db56f3725
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 696b295a481d7b986f08f1d758edb8d5adca5717
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361298"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812830"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのサインイン アクティビティ レポート
 
@@ -31,6 +31,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 - **アクティビティ** 
     - **サインイン** – マネージド アプリケーションの使用状況とユーザー サインイン アクティビティに関する情報。
     - **監査ログ** - [監査ログ](concept-audit-logs.md)は、ユーザーとグループの管理や、マネージド アプリケーションとディレクトリのアクティビティに関するシステム アクティビティ情報を提供します。
+    - **プロビジョニング ログ** - [プロビジョニング ログ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)によって、プロビジョニング サービスによるアクティビティの監視 (ServiceNow のグループや Workday からインポートされたユーザーの作成など) が可能になります。 
 - **Security** 
     - **リスクの高いサインイン** - [リスクの高いサインイン](../identity-protection/overview-identity-protection.md)は、ユーザー アカウントの正当な所有者ではないユーザーによるサインイン試行の指標です。
     - **リスクのフラグ付きユーザー** - [リスクの高いユーザー](../identity-protection/overview-identity-protection.md)は、侵害された可能性があるユーザー アカウントの指標です。

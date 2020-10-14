@@ -20,7 +20,7 @@
         - name: API にアクセスする
           href: access-api-howto.md
         - name: Azure Cloud Shell を設定する
-          href: 'https://docs.microsoft.com/azure/cloud-shell/overview'
+          href: ../../cloud-shell/overview.md
         - name: REST を使用した開発
           items:
             - name: Postman を使用して接続する
@@ -374,15 +374,15 @@
     - name: REST
       href: /rest/api/media/
     - name: Azure CLI
-      href: 'https://aka.ms/ams-v3-cli-ref'
+      href: /cli/azure/ams
     - name: SDK
       items:
         - name: .NET
-          href: 'https://aka.ms/ams-v3-dotnet-ref'
+          href: /dotnet/api/overview/azure/mediaservices/management
         - name: Java
-          href: 'https://aka.ms/ams-v3-java-ref'
+          href: /java/api/overview/azure/mediaservices/management
         - name: Python
-          href: 'https://aka.ms/ams-v3-python-ref'
+          href: /python/api/overview/azure/mediaservices/management
         - name: Node.js
           href: /javascript/api/overview/azure/mediaservices/management
         - name: Go
@@ -411,7 +411,7 @@
     - name: SDK/ツール
       items:
         - name: Azure CLI
-          href: 'https://aka.ms/ams-v3-cli'
+          href: /cli/azure/install-azure-cli
         - name: .NET
           href: 'https://aka.ms/ams-v3-dotnet-sdk'
         - name: Java
