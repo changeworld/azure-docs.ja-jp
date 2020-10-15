@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: jeedes
-ms.openlocfilehash: 5457730494d509a2923ce929f41e397cb6064126
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 236c24ac63aef6b802edf53f9c414a522c2308e4
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550075"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015125"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cylanceprotect"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と CylancePROTECT の統合
 
@@ -144,7 +144,7 @@ CylancePROTECT で Azure AD SSO を構成してテストするには、次の構
 
 ## <a name="configure-cylanceprotect-sso"></a>CylancePROTECT の SSO の構成
 
-**CylancePROTECT** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [CylancePROTECT サポート チーム](https://www.cylance.com/en-us/resources/support/support-overview.html)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。 詳細については、Cylance のドキュメントを参照してください ([https://support.cylance.com/s/article/Use-Microsoft-Azure-with-CylancePROTECT4](https://support.cylance.com/s/article/Use-Microsoft-Azure-with-CylancePROTECT4))。
+**CylancePROTECT** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [CylancePROTECT サポート チーム](https://www.cylance.com/en-us/resources/support/support-overview.html)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。 詳細については、Cylance のドキュメントを参照してください ([https://support.cylance.com/s/](https://support.cylance.com/s/))。
 
 ### <a name="create-cylanceprotect-test-user"></a>CylancePROTECT のテスト ユーザーの作成
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: b963cc459094e823499e962736550dcea2345ba2
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: baf3d02e1c0ecf51ddea043ee560d5054f09d057
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854113"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91936191"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>ネットワークの制限 - Azure Resource Manager
 次の制限は、サブスクリプションごとにリージョン単位で **Azure Resource Manager** デプロイ モデルを通して管理されるネットワーク リソースにのみ適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
@@ -75,7 +75,7 @@ ms.locfileid: "88854113"
 | ロード バランサーあたりのバックエンド リソース数 <sup>1<sup> | 150                   |
 | 高可用性ポート                 | 内部フロント エンドごとに 1 個       |
 | Load Balancer あたりのアウトバウンド規則数        | 600                           |
-| [TCP アイドル タイムアウト](https://docs.microsoft.com/azure/load-balancer/load-balancer-tcp-idle-timeout#tcp-idle-timeout) | 4 分 / 30 分          |
+| VM ごとのロード バランサー                   | 2 (パブリックに 1 つおよび内部に 1 つ)   |
 
 <sup>1</sup>制限は、最大 150 のリソース (スタンドアロンの仮想マシン リソース、可用性セット リソース、仮想マシン スケール セット配置グループの任意の組み合わせ) です。
 
@@ -88,7 +88,8 @@ ms.locfileid: "88854113"
 | NIC あたりのルール数 (1 つの NIC のすべての IP にわたる) | 該当なし                          |
 | フロントエンド IP 構成              | 200                          |
 | バックエンド プールのサイズ                       | 300 IP 構成、単一の可用性セット |
-| Load Balancer あたりの可用性セット数     | 150                          |
+| Load Balancer あたりの可用性セット数     | 1                            |
+| VM ごとのロード バランサー                   | 2 (パブリックに 1 つおよび内部に 1 つ)  |
 
 <a name="virtual-networking-limits-classic"></a>次の制限は、サブスクリプションごとに**クラシック** デプロイ モデルを通じて管理されるネットワーク リソースのみに適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
 

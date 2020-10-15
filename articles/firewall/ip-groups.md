@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/30/2020
 ms.author: victorh
 ms.openlocfilehash: 97d8d10e30d0d0c1654c82651220489785a37059
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87460220"
 ---
 # <a name="ip-groups-in-azure-firewall"></a>Azure Firewall での IP グループ
@@ -70,7 +70,7 @@ IP グループは、すべてのパブリック クラウド リージョンで
 
 ## <a name="ip-address-limits"></a>IP アドレスの制限
 
-ファイアウォールあたり最大 100 個の IP グループを割り当てることができ、各 IP グループには最大 5000 個の個別の IP アドレスまたは IP プレフィックスを含めることができます。
+各 IP グループごとに最大 5000 個の個別の IP アドレスまたは IP プレフィックスを使用して、ファイアウォールあたり最大 100 個の IP グループを所有することができます。
 
 ## <a name="related-azure-powershell-cmdlets"></a>関連する Azure PowerShell コマンドレット
 

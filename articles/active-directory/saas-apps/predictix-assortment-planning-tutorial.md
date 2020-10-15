@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 5b7ec1843d279e8c0477ed1c7754746d4f3044ad
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88553656"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-assortment-planning"></a>チュートリアル:Azure Active Directory と Predictix Assortment Planning の統合

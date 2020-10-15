@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 8fa2fdf23a0d71b854e043b66c0aed7e944c5f39
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87449750"
 ---
 # <a name="automated-recommendations-for-azure-cosmos-db"></a>Azure Cosmos DB の自動化された推奨事項
@@ -28,7 +28,7 @@ Azure Cosmos DB に関する推奨事項は、次の方法で表示できます�
 
 - また、コスト、セキュリティ、信頼性、パフォーマンス、オペレーショナル エクセレンスなどのさまざまなバケット別に分類された、[Azure Advisor](../advisor/advisor-overview.md) による推奨事項を確認することもできます。 特定のサブスクリプションを選択し、リソースの種類 (**Azure Cosmos DB アカウント**) でフィルター処理できます。  特定の推奨事項を選択すると、ワークロードを活用するために実行できるアクションが表示されます。
 
-   :::image type="content" source="./media/automated-recommendations/advisor-pane-recommendations.png" alt-text="Azure Advisor ペインからの推奨事項の表示":::
+   :::image type="content" source="./media/automated-recommendations/advisor-pane-recommendations.png" alt-text="Azure Cosmos DB ペインからの推奨事項の表示":::
 
 Azure Cosmos DB ペインに表示されるすべての推奨事項が Azure Advisor で使用できるとは限りません。また、その逆の場合もあります。 これは、Azure Advisor ペイン、Azure Cosmos DB ペイン、またはその両方に当てはまる推奨事項の種類に基づいているためです。
 

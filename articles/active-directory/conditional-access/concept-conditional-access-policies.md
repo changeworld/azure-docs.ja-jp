@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36ab632010ec2bbbc19ac71cbeccab2ff6b3565f
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 8a79b046170a5a3f3574895490aa649fd02da082
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948387"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016129"
 ---
 # <a name="building-a-conditional-access-policy"></a>条件付きアクセス ポリシーの構築
 
@@ -126,6 +126,8 @@ ms.locfileid: "88948387"
 記事「[一般的な条件付きアクセス ポリシー](concept-conditional-access-policy-common.md)」に、ほとんどの組織にとって役に立つと思われるいくつかのポリシーが含まれています。
 
 ## <a name="next-steps"></a>次のステップ
+
+[条件付きアクセス ポリシーを作成する](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json#create-a-conditional-access-policy)
 
 [Simulate sign in behavior using the Conditional Access What If tool](troubleshoot-conditional-access-what-if.md) (条件付きアクセスの What If ツールを使用したサインイン動作のシミュレート)
 

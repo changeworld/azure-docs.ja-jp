@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ee332eb7dea86e07c2d8f9b75a0e152dc7482a41
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: fed184c349789dc38f12f62567acc0d0500ca94c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87438834"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016095"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>オンプレミス データ ゲートウェイを使用してオンプレミスのデータ ソースに接続する
 
@@ -91,11 +91,11 @@ Azure Analysis Services 環境にインストールする場合、重要なの�
 
 次の記事は、ゲートウェイがサポートするすべてのサービスに適用される、オンプレミス データ ゲートウェイの一般的なコンテンツに含まれています。
 
-* [オンプレミス データ ゲートウェイに関する FAQ](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)   
-* [オンプレミス データ ゲートウェイのアプリの使用](https://docs.microsoft.com/data-integration/gateway/service-gateway-app)   
-* [テナント レベルの管理](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin)
-* [プロキシ設定の構成](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)   
-* [通信設定の調整](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)   
-* [ログ ファイルの構成](https://docs.microsoft.com/data-integration/gateway/service-gateway-log-files)   
-* [[トラブルシューティング]](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
-* [ゲートウェイのパフォーマンスの監視と最適化](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
+* [オンプレミス データ ゲートウェイに関する FAQ](/data-integration/gateway/service-gateway-onprem-faq)   
+* [オンプレミス データ ゲートウェイのアプリの使用](/data-integration/gateway/service-gateway-app)   
+* [テナント レベルの管理](/data-integration/gateway/service-gateway-tenant-level-admin)
+* [プロキシ設定の構成](/data-integration/gateway/service-gateway-proxy)   
+* [通信設定の調整](/data-integration/gateway/service-gateway-communication)   
+* [ログ ファイルの構成](/data-integration/gateway/service-gateway-log-files)   
+* [[トラブルシューティング]](/data-integration/gateway/service-gateway-tshoot)
+* [ゲートウェイのパフォーマンスの監視と最適化](/data-integration/gateway/service-gateway-performance)

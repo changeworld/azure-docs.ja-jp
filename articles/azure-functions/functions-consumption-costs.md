@@ -4,10 +4,10 @@ description: Azure の従量課金プランで関数アプリを実行すると�
 ms.date: 9/20/2019
 ms.topic: conceptual
 ms.openlocfilehash: 33c892bd7904d2921039a4b2afb9c775d6a4926a
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88207772"
 ---
 # <a name="estimating-consumption-plan-costs"></a>従量課金プランのコストの見積もり

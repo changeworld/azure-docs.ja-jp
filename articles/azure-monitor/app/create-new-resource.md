@@ -4,10 +4,10 @@ description: 新しいライブ アプリケーションを対象にした Appli
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.openlocfilehash: d2e367e84aed7abac70d803f28d26070f7b0a85e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87323130"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights リソースの作成

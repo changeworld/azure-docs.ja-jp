@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 10/14/2019
 ms.openlocfilehash: 46161a83d261ae23ca45b7293e48ff15e435f42d
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91535340"
 ---
 # <a name="temperature-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの temperature 作成済みエンティティ

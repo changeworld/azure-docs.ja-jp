@@ -1,16 +1,14 @@
 ---
 title: Azure Monitor Application Insights のクラシック リソースをワークスペースベースのリソースに移行する | Microsoft Docs
 description: Azure Monitor Application Insights のクラシック リソースを新しいワークスペースベースのモデルにアップグレードするために必要な手順について説明します。
-author: mrbullwinkle
-ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: aab2d1ec5a6c3e046840e736ced0993e560c4661
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0d2c7d1b9ee57e6d201205c04557e1b5f5623eb0
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333343"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930579"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>ワークスペースベースの Application Insights リソースに移行する
 

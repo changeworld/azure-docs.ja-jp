@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: allensu
 ms.openlocfilehash: 164560fff27adc2d4e63cc8471a26d1d710b89a5
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88191282"
 ---
 # <a name="diagnostic-logs---azure-content-delivery-network"></a>診断ログ - Azure Content Delivery Network
@@ -52,7 +52,7 @@ Azure 診断ログでコア分析を確認し、1 つまたは複数の宛先に
 
 3. **[監視]** セクションで **[診断ログ]** を選択します。
 
-    :::image type="content" source="./media/cdn-diagnostics-log/03_diagnostics-logs-options.png" alt-text="診断ログを選択する。" border="true":::
+    :::image type="content" source="./media/cdn-diagnostics-log/03_diagnostics-logs-options.png" alt-text="CDN エンドポイントを選択する。" border="true":::
 
 ### <a name="enable-logging-with-azure-storage"></a>Azure Storage でログ記録を有効化する
 
@@ -69,7 +69,7 @@ Azure 診断ログでコア分析を確認し、1 つまたは複数の宛先に
 
 4. ログのサブスクリプションとストレージ アカウントを選択します。
 
-    :::image type="content" source="./media/cdn-diagnostics-log/04_diagnostics-logs-storage.png" alt-text="診断ログ - ストレージ" border="true":::
+    :::image type="content" source="./media/cdn-diagnostics-log/04_diagnostics-logs-storage.png" alt-text="CDN エンドポイントを選択する。" border="true":::
 
 3. **[保存]** を選択します。
 
@@ -86,7 +86,7 @@ Azure 診断ログでコア分析を確認し、1 つまたは複数の宛先に
 
 3. ログのサブスクリプションと Log Analytics ワークスペースを選択します。
 
-   :::image type="content" source="./media/cdn-diagnostics-log/05-la-workspace.png" alt-text="診断ログ - Log Analytics" border="true":::
+   :::image type="content" source="./media/cdn-diagnostics-log/05-la-workspace.png" alt-text="CDN エンドポイントを選択する。" border="true":::
 
 4. **[保存]** を選択します。
 
@@ -103,7 +103,7 @@ Azure 診断ログでコア分析を確認し、1 つまたは複数の宛先に
 
 3. ログのサブスクリプションとイベント ハブの名前空間を選択します。
 
-   :::image type="content" source="./media/cdn-diagnostics-log/06-eventhub-namespace.png" alt-text="診断ログ - イベント ハブ" border="true":::
+   :::image type="content" source="./media/cdn-diagnostics-log/06-eventhub-namespace.png" alt-text="CDN エンドポイントを選択する。" border="true":::
 
 4. **[保存]** を選択します。
 
@@ -184,10 +184,10 @@ Azure 診断ログでコア分析を確認し、1 つまたは複数の宛先に
 ## <a name="consuming-diagnostics-logs-from-azure-storage"></a>Azure Storage からの診断ログの使用
 このセクションでは、CDN コア分析のスキーマと、Azure ストレージ アカウントでの編成について説明し、ログを CSV ファイルにダウンロードするためのサンプル コードを提供します。
 
-### <a name="using-microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer の使用
+### <a name="using-microsoft-azure-storage-explorer"></a>Microsoft Azure ストレージ エクスプローラーの使用
 ツールをダウンロードするには、「[Azure Storage Explorer](https://storageexplorer.com/)」を参照してください。 ソフトウェアをダウンロードしてインストールしたら、CDN 診断ログの保存先として構成したのと同じ Microsoft Azure Storage アカウントを使用するように構成します。
 
-1.  **Microsoft Azure Storage Explorer** を開きます
+1.  **Microsoft Azure ストレージ エクスプローラー**を開きます
 2.  ストレージ アカウントを見つけます
 3.  このストレージ アカウントで **Blob Containers** ノードを展開します。
 4.  *Insights-logs-coreanalytics* というコンテナーを選択します。

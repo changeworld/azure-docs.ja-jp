@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: e4c0ee0b1a049a7e82cbd1fac8e261fff5fdf375
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 884b1b85da5b52101ae5a0053003d47260a1134d
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269728"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015823"
 ---
 # <a name="media-services-regulatory-compliance"></a>Azure Media Services の規制コンプライアンス
 
@@ -33,11 +33,11 @@ Azure Media Services Government サービスは、DoD CC SRG IL 2、DoD CC SRG I
 
 2020 年は、3PAO と JAB による Azure Media Services のレビューが計画されていません。
 
-Azure サービスのコンプライアンスの詳細については、「[FedRAMP および DoD CC SRG 監査スコープ別の Azure サービス](https://docs.microsoft.com/azure/azure-government/compliance/azure-services-in-fedramp-auditscope)」を参照してください。
+Azure サービスのコンプライアンスの詳細については、「[FedRAMP および DoD CC SRG 監査スコープ別の Azure サービス](../../azure-government/compliance/azure-services-in-fedramp-auditscope.md)」を参照してください。
 
 ## <a name="azure-compliance-documentation"></a>Azure コンプライアンス ドキュメント
 
-組織がグローバル、米国政府、地域、金融サービス、健康、メディア、および製造に関する法律または規制基準に準拠する必要がある場合は、[Azure コンプライアンス ドキュメント](https://docs.microsoft.com/azure/compliance/)を参照してください。
+組織がグローバル、米国政府、地域、金融サービス、健康、メディア、および製造に関する法律または規制基準に準拠する必要がある場合は、[Azure コンプライアンス ドキュメント](../../compliance/index.yml)を参照してください。
 
 また、監査レポート、プライバシーと一般データ保護規則 (GDPR) のチェックリスト、コンプライアンスのブループリント、国と地域のガイドライン、実装とマッピング、ホワイト ペーパーとアナリスト レポートなど、追加のコンプライアンス リソースも紹介します。
 

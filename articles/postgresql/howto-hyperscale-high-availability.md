@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.openlocfilehash: 46b842994cbcf7efe66d5992c79246d77626e268
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907386"
 ---
 # <a name="configure-hyperscale-citus-high-availability"></a>Hyperscale (Citus) の高可用性を構成する
@@ -29,7 +29,7 @@ Azure Database for PostgreSQL - Hyperscale (Citus) は、データベースの�
 
 サーバー グループの **[概要]** タブには、すべてのノードとそのスタンバイが一覧表示されます。 **[高可用性]** 列には、各ノードで高可用性が正常に有効になっているかどうかが示されます。
 
-:::image type="content" source="./media/howto-hyperscale-high-availability/02-ha-column.png" alt-text="サーバー グループの ha 列の概要":::
+:::image type="content" source="./media/howto-hyperscale-high-availability/02-ha-column.png" alt-text="高可用性スライダー":::
 
 ### <a name="next-steps"></a>次のステップ
 

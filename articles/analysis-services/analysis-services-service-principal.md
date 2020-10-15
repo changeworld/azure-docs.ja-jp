@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 28947d1fa4ece5d6285651ef07342cae06ad8bc8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 5d114017d5e5dfecfe20afc69849763a87aadd41
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077373"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015320"
 ---
 # <a name="automation-with-service-principals"></a>サービス プリンシパルによる自動化
 
@@ -33,8 +33,8 @@ Analysis Services では、サービス プリンシパルを使用してマネ�
 
 Runbook 操作のために、サービス プリンシパルの資格情報と証明書を Azure Automation に安全に格納できます。 詳細については、次を参照してください。
 
-[Azure Automation の資格情報資産](../automation/automation-credentials.md)   
-[Azure Automation の証明書資産](../automation/automation-certificates.md)
+[Azure Automation の資格情報資産](../automation/shared-resources/credentials.md)   
+[Azure Automation の証明書資産](../automation/shared-resources/certificates.md)
 
 ## <a name="add-service-principals-to-server-admin-role"></a>サービス プリンシパルをサーバー管理者ロールに追加する
 
@@ -92,7 +92,7 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO と ADOMD 
 
-クライアント アプリケーションや Web アプリと接続するとき、[AMO と ADOMD のクライアント ライブラリ](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) バージョン 15.0.2 以降の、NuGet からインストールできるパッケージでは、接続文字列にサービス プリンシパルを指定できます。構文 `app:AppID` とパスワードまたは `cert:thumbprint` を利用します。 
+クライアント アプリケーションや Web アプリと接続するとき、[AMO と ADOMD のクライアント ライブラリ](/analysis-services/client-libraries?view=azure-analysis-services-current) バージョン 15.0.2 以降の、NuGet からインストールできるパッケージでは、接続文字列にサービス プリンシパルを指定できます。構文 `app:AppID` とパスワードまたは `cert:thumbprint` を利用します。 
 
 次の例では、`appID` と `password` を使用し、モデル データベース更新操作を実行します。
 
@@ -109,8 +109,8 @@ db.Model.SaveChanges();
 ```
 
 ## <a name="next-steps"></a>次のステップ
-[Azure PowerShell を使用してサインインする](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
+[Azure PowerShell を使用してサインインする](/powershell/azure/authenticate-azureps)   
 [Logic Apps を使用した更新](analysis-services-refresh-logic-app.md)  
 [Azure Automation を使用した更新](analysis-services-refresh-azure-automation.md)  
 [サーバー管理者ロールへのサービス プリンシパルの追加](analysis-services-addservprinc-admins.md)  
-[サービス プリンシパルを使用した Power BI Premium ワークスペースとデータセットのタスクの自動化](https://docs.microsoft.com/power-bi/admin/service-premium-service-principal) 
+[サービス プリンシパルを使用した Power BI Premium ワークスペースとデータセットのタスクの自動化](/power-bi/admin/service-premium-service-principal)

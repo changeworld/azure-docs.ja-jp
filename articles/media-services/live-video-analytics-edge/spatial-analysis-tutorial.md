@@ -3,12 +3,12 @@ title: 空間分析用の Computer Vision でライブ ビデオを分析する 
 description: このチュートリアルでは、Live Video Analytics を Azure Cognitive Services の Computer Vision 空間分析 AI 機能と共に使用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードを分析する方法について説明します。
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: cad96847d6fbf682f1d694b0c8c255b3725e96d1
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 0dc89eaddf5cabc3063744dfe2c9f0236c70438c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91824132"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92015687"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>空間分析用の Computer Vision でライブ ビデオを分析する (プレビュー)
 
@@ -32,7 +32,7 @@ ms.locfileid: "91824132"
 * [Live Video Analytics on IoT Edge の用語](terminology.md)
 * [メディア グラフの概念](media-graph-concept.md)
 * [イベントベースのビデオ記録](event-based-video-recording-concept.md)
-* [チュートリアル:IoT Edge モジュールを開発する](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux)
+* [チュートリアル:IoT Edge モジュールを開発する](../../iot-edge/tutorial-develop-for-linux.md)
 * [Azure Stack Edge に Live Video Analytics をデプロイする](deploy-azure-stack-edge-how-to.md) 
 
 ## <a name="prerequisites"></a>前提条件
@@ -55,12 +55,12 @@ ms.locfileid: "91824132"
 
 MediaGraphCognitiveServicesVisionExtension ノードは、プロキシの役割を果たします。 ビデオ フレームを、指定した画像の種類に変換します。 次に、画像を**共有メモリ**経由で、gRPC エンドポイントの背後で AI 操作を実行する別のエッジ モジュールに転送します。 この例では、このエッジ モジュールは spatial-analysis モジュールです。 MediaGraphCognitiveServicesVisionExtension プロセッサ ノードでは、次の 2 つの処理が行われます。
 
-* 結果を収集し、イベントを [IoT Hub シンク](media-graph-concept.md#iot-hub-message-sink) ノードに発行します。 次に、このノードはこれらのイベントを [IoT Edge Hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-glossary#iot-edge-hub) に送信します。 
+* 結果を収集し、イベントを [IoT Hub シンク](media-graph-concept.md#iot-hub-message-sink) ノードに発行します。 次に、このノードはこれらのイベントを [IoT Edge Hub](../../iot-edge/iot-edge-glossary.md#iot-edge-hub) に送信します。 
 * また、[シグナル ゲート プロセッサ](media-graph-concept.md#signal-gate-processor)を使用して RTSP ソースから 30 秒のビデオ クリップをキャプチャし、それを Media Services アセットとして格納します。
 
 ## <a name="create-the-computer-vision-resource"></a>Computer Vision リソースを作成する
 
-[Azure portal](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal) または Azure CLI を使用して、Computer Vision という種類の Azure リソースを作成する必要があります。 コンテナーへのアクセス要求が承認され、Azure サブスクリプション ID が登録されると、リソースを作成できるようになります。 https://aka.ms/csgate にアクセスして、ユース ケースと Azure のサブスクリプション ID を送信します。  アクセス要求フォームに記載されているものと同じ Azure サブスクリプションを使用して、Azure リソースを作成する必要があります。
+[Azure portal](../../iot-edge/how-to-deploy-modules-portal.md) または Azure CLI を使用して、Computer Vision という種類の Azure リソースを作成する必要があります。 コンテナーへのアクセス要求が承認され、Azure サブスクリプション ID が登録されると、リソースを作成できるようになります。 https://aka.ms/csgate にアクセスして、ユース ケースと Azure のサブスクリプション ID を送信します。  アクセス要求フォームに記載されているものと同じ Azure サブスクリプションを使用して、Azure リソースを作成する必要があります。
 
 ### <a name="gathering-required-parameters"></a>必須パラメーターの収集
 
@@ -75,7 +75,7 @@ spatial-analysis コンテナーなど、すべての Cognitive Services のコ�
 
 ## <a name="set-up-azure-stack-edge"></a>Azure Stack Edge を設定する
 
-[次の手順](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-deploy-prep)に従って Azure Stack Edge を設定し、引き続きその後の手順に従って、Live Video Analytics と spatial analysis モジュールをデプロイします。
+[次の手順](../../databox-online/azure-stack-edge-gpu-deploy-prep.md)に従って Azure Stack Edge を設定し、引き続きその後の手順に従って、Live Video Analytics と spatial analysis モジュールをデプロイします。
 
 ## <a name="set-up-your-development-environment"></a>開発環境を設定する
 
@@ -136,7 +136,7 @@ spatial-analysis コンテナーなど、すべての Cognitive Services のコ�
 1. lvaEdge の `IpcMode` と spatial analysis モジュールの createOptions は同じであり、host に設定されている必要があります。
 1. RTSP シミュレーターを機能させるには、ボリュームの境界が設定されていることを確認します。 詳細については、[Docker Volume マウントの設定](deploy-azure-stack-edge-how-to.md#optional-setup-docker-volume-mounts)に関するページを参照してください。
 
-    1. [SMB 共有に接続](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-add-shares#connect-to-an-smb-share)し、[サンプル bulldozer ビデオ ファイル](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv)をローカル共有にコピーします。
+    1. [SMB 共有に接続](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share)し、[サンプル bulldozer ビデオ ファイル](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv)をローカル共有にコピーします。
     1. rtspsim モジュールに次の構成が含まれていることを確認します。
         
         ```json

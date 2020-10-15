@@ -2,19 +2,17 @@
 title: Azure Monitor ブックの作成パラメーター
 description: ブックの作成者がパラメーターを使用してコンシューマーからの入力を収集し、それをブックの他の部分で参照できるようにする方法について説明します。
 services: azure-monitor
-author: mrbullwinkle
 manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.author: mbullwin
-ms.openlocfilehash: 8be7dd170d5e4e3bddb09bc1b163fba7a841a6b7
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 5751223697638128d86675badf7ec15abc36ef4e
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984574"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932381"
 ---
 # <a name="workbook-parameters"></a>ブックのパラメーター
 

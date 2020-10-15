@@ -11,10 +11,10 @@ ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: 7bebfeba6da1493557d51777ba8438747e160750
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85476276"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics の SQL オンデマンド (プレビュー) のベスト プラクティス

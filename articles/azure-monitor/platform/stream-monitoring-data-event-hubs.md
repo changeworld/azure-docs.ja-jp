@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/15/2020
 ms.subservice: ''
 ms.openlocfilehash: f6272e3d976c7c3b04d5b1332e2d7b3410c3045c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318880"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-or-external-partner"></a>イベント ハブまたは外部パートナーへの Azure 監視データのストリーム配信

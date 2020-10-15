@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1d090070dd7b2afe5ea1ece9b5da8b8b5b7b0780
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: ed13111584e7e9621ec2ccde16efb3cdf2eef50c
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87438964"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016180"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>オンプレミスのデータ ゲートウェイをインストールして構成する
 
@@ -132,7 +132,7 @@ Azure 内にゲートウェイ リソースを作成するためには、ゲー�
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-[Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) を使用し、ゲートウェイ ResourceID を取得します。 次に [Set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver) または [New-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver) で **-GatewayResourceID** を指定することで既存または新規サーバーにゲートウェイを接続します。
+[Get-AzResource](/powershell/module/az.resources/get-azresource) を使用し、ゲートウェイ ResourceID を取得します。 次に [Set-AzAnalysisServicesServer](/powershell/module/az.analysisservices/set-azanalysisservicesserver) または [New-AzAnalysisServicesServer](/powershell/module/az.analysisservices/new-azanalysisservicesserver) で **-GatewayResourceID** を指定することで既存または新規サーバーにゲートウェイを接続します。
 
 ゲートウェイ リソース ID を取得するには:
 
