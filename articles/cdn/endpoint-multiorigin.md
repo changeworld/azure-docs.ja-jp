@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 9/06/2020
 ms.author: allensu
 ms.openlocfilehash: f9293206526778f8c3de8a368a1916a2cb3f88c2
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89504675"
 ---
 # <a name="azure-cdn-endpoint-multi-origin-preview"></a>Azure CDN エンドポイントの複数配信元 (プレビュー)

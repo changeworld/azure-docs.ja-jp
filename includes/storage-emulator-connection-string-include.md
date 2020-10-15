@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 07/17/2020
 ms.author: tamram
 ms.openlocfilehash: 85e7cb86217340e77a6f597a357c3de1f91fb8d0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87070559"
 ---
 Azurite では、共有キー認証について、単一の固定アカウントと既知の認証キーがサポートされています。 このアカウントとキーのみ、Azurite で共有キー資格情報として使用できます。 これらは次のとおりです。

@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 8/12/2020
 ms.author: JenCook
 ms.openlocfilehash: 235f4eb236e144d41ffb9958b09dab0cf5c269b6
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462430"
 ---
 # <a name="how-to-run-an-application-with-fortanix-enclave-manager"></a>方法:Fortanix Enclave Manager でアプリケーションを実行する 

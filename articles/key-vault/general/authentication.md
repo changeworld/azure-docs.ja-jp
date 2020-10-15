@@ -8,10 +8,10 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.openlocfilehash: d247e657e93afd0c43ecee1154c542398304d8dd
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89481377"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Azure Key Vault に対する認証

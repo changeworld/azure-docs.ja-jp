@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: f98021d1e94b3796b2aeb6ba2e883e4e1380b8ca
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89504334"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Azure HDInsight の Apache Phoenix

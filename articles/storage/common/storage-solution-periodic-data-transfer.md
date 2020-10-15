@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: alkohli
 ms.openlocfilehash: 9ffa35e158d34a1fc6945ee2730dcf136d13edb5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85504340"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>定期的なデータの転送用のソリューション

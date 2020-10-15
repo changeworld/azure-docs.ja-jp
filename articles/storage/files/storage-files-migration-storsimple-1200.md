@@ -8,10 +8,10 @@ ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: d9cf7b3cf996e41f90e3a40a6ee08d0fd51c8457
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85510345"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200 の Azure File Sync への移行

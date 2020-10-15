@@ -9,10 +9,10 @@ ms.custom: include file
 ms.date: 02/14/2020
 ms.subservice: language-understanding
 ms.openlocfilehash: 1509d175979bb65c467424db5de967f56825a3f9
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91545538"
 ---
 クライアント アプリケーションは、発話がアプリケーションにとって無意味または不適切なものでないかどうかを把握する必要があります。 **None** 意図は、クライアント アプリケーションが発話に返答すべきでないかどうかを判断するために、作成プロセスの一部として各アプリケーションに追加されます。

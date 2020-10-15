@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: b-juche
-ms.openlocfilehash: 6a7bf07359344e26280021a6a55eecc5b96b7a86
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 9a07c6ae48cdca68a95db7770d90076eb8f10f95
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653691"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91929458"
 ---
 # <a name="faqs-about-smb-performance-for-azure-netapp-files"></a>Azure NetApp Files に対する SMB のパフォーマンスに関する FAQ
 
@@ -39,7 +39,7 @@ SMB マルチチャネルを有効にすると、SMB3 クライアントでは�
 
 ## <a name="which-windows-versions-support-smb-multichannel"></a>SMB マルチチャネルは Windows のどのバージョンでサポートされていますか?
 
-Windows では、最適なパフォーマンスを実現するため、Windows 2012 以降で SMB マルチチャネルがサポートされています。  詳しくは、「[SMB マルチチャネルを展開する](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn610980(v%3Dws.11))」および [SMB マルチチャネルの基礎](https://blogs.technet.microsoft.com/josebda/2012/06/28/the-basics-of-smb-multichannel-a-feature-of-windows-server-2012-and-smb-3-0/)に関する記事をご覧ください。 
+Windows では、最適なパフォーマンスを実現するため、Windows 2012 以降で SMB マルチチャネルがサポートされています。  詳しくは、「[SMB マルチチャネルを展開する](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn610980(v%3Dws.11))」および [SMB マルチチャネルの基礎](/archive/blogs/josebda/the-basics-of-smb-multichannel-a-feature-of-windows-server-2012-and-smb-3-0)に関する記事をご覧ください。 
 
 
 ## <a name="does-my-azure-virtual-machine-support-rss"></a>Azure 仮想マシンでは RSS がサポートされていますか?
@@ -132,7 +132,7 @@ Windows パフォーマンス モニターで各アダプターのアクティ�
 
 ## <a name="is-accelerated-networking-recommended"></a>高速ネットワークは推奨されますか?
 
-パフォーマンスを最大にするには、可能な限り[高速なネットワーク](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell)を構成することをお勧めします。 以下の点に注意してください。  
+パフォーマンスを最大にするには、可能な限り[高速なネットワーク](../virtual-network/create-vm-accelerated-networking-powershell.md)を構成することをお勧めします。 以下の点に注意してください。  
 
 * Azure portal では、この機能をサポートする仮想マシンに対し、既定で高速ネットワークが有効になります。  ただし、Ansible やそれと似た構成ツールなどの他のデプロイ方法では、有効にならない場合があります。  高速ネットワークを有効にしないと、マシンのパフォーマンスが低下する可能性があります。  
 * インスタンスの種類またはサイズがサポートされていないために仮想マシンのネットワーク インターフェイスで高速ネットワークが有効になっていない場合、インスタンスの種類を大きくしても無効のままです。 そのような場合は、手動で介入する必要があります。

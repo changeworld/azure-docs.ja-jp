@@ -8,12 +8,12 @@ ms.date: 07/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 96bd6b461a5374b5f5bc578c5f58dbcd09cd7087
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eae36f6b4baabdcc9831b084602d340a299a7bac
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699296"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047626"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>独自の IoT Edge モジュールを開発する
 
@@ -65,7 +65,7 @@ IoT Edge ハブでは、[配置マニフェスト](module-composition.md)に関�
 1. アプリケーションで ModuleClient インスタンスを作成します。
 2. そのデバイスの IoT Edge ハブによって提示された証明書がアプリケーションによって受け入れられることを確認します。
 
-ModuleClient インスタンスを作成し、デバイスで実行されている IoT Edge ハブにモジュールを接続します。これは、DeviceClient インスタンスで IoT デバイスを IoT Hub に接続する方法と似ています。 ModuleClient クラスとその通信方法に関する詳細については、優先する SDK 言語 ([C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)、[C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h)、[Python](https://docs.microsoft.com/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient?view=azure-python)、[Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)、または [Node.js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest)) の API リファレンスを参照してください。
+ModuleClient インスタンスを作成し、デバイスで実行されている IoT Edge ハブにモジュールを接続します。これは、DeviceClient インスタンスで IoT デバイスを IoT Hub に接続する方法と似ています。 ModuleClient クラスとその通信方法に関する詳細については、優先する SDK 言語 ([C#](/dotnet/api/microsoft.azure.devices.client.moduleclient)、[C](/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h)、[Python](/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient)、[Java](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient)、または [Node.js](/javascript/api/azure-iot-device/moduleclient)) の API リファレンスを参照してください。
 
 ## <a name="language-and-architecture-support"></a>言語とアーキテクチャのサポート
 

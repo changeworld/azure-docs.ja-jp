@@ -10,10 +10,10 @@ ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
 ms.openlocfilehash: 1c64468a2e420734ca51a5b9308bb52e13712c51
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87852924"
 ---
 # <a name="testing-the-fhir-api"></a>FHIR API をテストする

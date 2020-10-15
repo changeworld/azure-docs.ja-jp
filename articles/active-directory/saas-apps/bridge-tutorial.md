@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
 ms.openlocfilehash: db787983c66ee04a21415a0c6a606987aed3e552
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88545490"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bridge"></a>チュートリアル: Azure Active Directory と Bridge の統合

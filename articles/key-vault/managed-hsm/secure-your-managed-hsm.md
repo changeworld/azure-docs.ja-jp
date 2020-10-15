@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: 18ffa0f878effda8888200c13ab312851aaebdcd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90992486"
 ---
 # <a name="secure-access-to-your-managed-hsms"></a>マネージド HSM へのアクセスをセキュリティで保護する

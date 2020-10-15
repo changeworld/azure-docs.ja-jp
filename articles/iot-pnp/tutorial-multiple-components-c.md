@@ -7,12 +7,12 @@ ms.date: 07/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 1873d2acb96c0c94c7e0d678e450596c60ca51fb
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: e1a2a45d0f5743874ce0c0b20190d7d396094e43
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575403"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046385"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-multiple-component-device-applications-running-on-linux-or-windows-to-iot-hub-c"></a>チュートリアル: Linux または Windows 上で実行されている IoT プラグ アンド プレイの複数コンポーネントのデバイス アプリケーションを IoT Hub に接続する (C)
 
@@ -52,7 +52,7 @@ gcc --version
 
 Windows でこのチュートリアルを完了するには、ご利用のローカル Windows 環境に次のソフトウェアをインストールします。
 
-* [Visual Studio (Community、Professional、または Enterprise)](https://visualstudio.microsoft.com/downloads/)。Visual Studio を[インストール](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019&preserve-view=true)するときに、 **[C++ によるデスクトップ開発]** ワークロードを必ず含めてください。
+* [Visual Studio (Community、Professional、または Enterprise)](https://visualstudio.microsoft.com/downloads/)。Visual Studio を[インストール](/cpp/build/vscpp-step-0-installation?preserve-view=true&view=vs-2019)するときに、 **[C++ によるデスクトップ開発]** ワークロードを必ず含めてください。
 * [Git](https://git-scm.com/download/).
 * [CMake](https://cmake.org/download/)。
 

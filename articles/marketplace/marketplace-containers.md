@@ -9,10 +9,10 @@ author: keferna
 ms.author: keferna
 ms.date: 09/04/2020
 ms.openlocfilehash: c52fabcfc2ff22df2de6dd93f2543d625310baef
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89484343"
 ---
 # <a name="publishing-guide-for-container-offers"></a>コンテナー オファーの発行ガイド

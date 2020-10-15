@@ -4,10 +4,10 @@ description: Azure DevTest Labs でカスタマー マネージド キーを使�
 ms.topic: article
 ms.date: 09/01/2020
 ms.openlocfilehash: 257894c6318c9ca083c72daf3c888f7d509ae683
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89489838"
 ---
 # <a name="encrypt-operating-system-os-disks-using-customer-managed-keys-in-azure-devtest-labs"></a>Azure DevTest Labs でカスタマー マネージド キーを使用してオペレーティング システム (OS) のディスクを暗号化する

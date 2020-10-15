@@ -9,10 +9,10 @@ ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
 ms.openlocfilehash: 01501b99d5d7c42af98d0397cf6ff8cbca14b07b
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89485803"
 ---
 # <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>チュートリアル:Azure の RHEL 仮想マシンで SQL Server の可用性グループ リスナーを構成する
@@ -136,7 +136,7 @@ Azure はこのプローブを作成、使用して、どの SQL Server イン�
    | **アイドル タイムアウト (分)** |*4* |
    | **フローティング IP (ダイレクト サーバー リターン)** |**有効** |
 
-   :::image type="content" source="media/rhel-high-availability-listener-tutorial/add-load-balancing-rule.png" alt-text="負荷分散規則の追加":::
+   :::image type="content" source="media/rhel-high-availability-listener-tutorial/add-load-balancing-rule.png" alt-text="バックエンド プールを追加する":::
 
 4. **[OK]** をクリックします。 
 5. 負荷分散規則が Azure によって構成されます。 以上、可用性グループのリスナーのホストとなっている SQL Server インスタンスにトラフィックをルーティングするようにロード バランサーを構成しました。 

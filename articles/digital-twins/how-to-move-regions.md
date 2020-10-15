@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: 1725c3ff162e4f6b7ac3a5ea1ede6976c827b510
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3c7f9ed9558adc9d129d1df767a05aff1fa4c66c
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328498"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047388"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Azure Digital Twins インスタンスを別の Azure リージョンに移動する
 
@@ -49,18 +49,18 @@ Azure Digital Twins インスタンスを再作成する前に、元のインス
     - デバイス プロビジョニング サービス (DPS)
 * インスタンスに接続する**個人または会社のアプリ**には、他にどのようなものがあるか?
 
-この情報は、[Azure portal](https://portal.azure.com)、[Azure Digital Twins の API と SDK](how-to-use-apis-sdks.md)、[Azure Digital Twins CLI コマンド](how-to-use-cli.md)、または [Azure Digital Twins (ADT) エクスプローラー](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) サンプルを使用して収集できます。
+この情報は、[Azure portal](https://portal.azure.com)、[Azure Digital Twins の API と SDK](how-to-use-apis-sdks.md)、[Azure Digital Twins CLI コマンド](how-to-use-cli.md)、または [Azure Digital Twins (ADT) エクスプローラー](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) サンプルを使用して収集できます。
 
 ## <a name="prepare"></a>準備
 
-このセクションでは、元のインスタンスから**元のモデル、ツイン、グラフをダウンロード**することによってインスタンスを再作成するための準備をします。 これを行うために、この記事では、[Azure Digital Twins (ADT) Explorer](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) サンプルを使用しています。
+このセクションでは、元のインスタンスから**元のモデル、ツイン、グラフをダウンロード**することによってインスタンスを再作成するための準備をします。 これを行うために、この記事では、[Azure Digital Twins (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) サンプルを使用しています。
 
 >[!NOTE]
 >モデルやグラフを含むファイルがインスタンスに既に存在している場合があります。 その場合、すべてを再度ダウンロードする必要はありません。不足しているものや、これらのファイルを最初にアップロードした後に変更された可能性があるもの (新しいデータで更新された可能性があるツインなど) のみをダウンロードしてください。
 
 ### <a name="limitations-of-adt-explorer"></a>ADT Explorer の制限事項
 
-[Azure Digital Twins (ADT) Explorer サンプル](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)は、グラフの視覚的な表現をサポートするクライアント アプリのサンプルであり、インスタンスとの視覚的な対話機能を備えています。 この記事では、これを使用して、モデル、ツイン、グラフをダウンロードして、後で再アップロードする方法について説明します。
+[Azure Digital Twins (ADT) Explorer サンプル](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)は、グラフの視覚的な表現をサポートするクライアント アプリのサンプルであり、インスタンスとの視覚的な対話機能を備えています。 この記事では、これを使用して、モデル、ツイン、グラフをダウンロードして、後で再アップロードする方法について説明します。
 
 ただし、これは**サンプル**であって、完全なツールではないことにご注意ください。 ストレス テストが行われておらず、大きなサイズのグラフを処理するように構築されていませんでした。 そのため、次のようなすぐに使えるサンプルの制限事項に留意してください。
 * このサンプルは現在、最大 1,000 ノードと 2,000 のリレーションシップのグラフ サイズでのみテストされています
@@ -76,7 +76,7 @@ Azure Digital Twins インスタンスを再作成する前に、元のインス
 
 ADT Explorer の設定を進めるには、まず、サンプル アプリケーション コードをダウンロードして設定し、コンピューター上で実行します。 
 
-サンプルにはこちらからアクセスします: [Azure Digital Twins (ADT) エクスプローラー](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)。 *[Download ZIP]\(ZIP のダウンロード\)* ボタンをクリックして、このサンプル コードの *.ZIP* ファイルを _**ADT_Explorer.zip**_ としてご自分のマシンにダウンロードしてください。 ファイルを解凍します。
+サンプルにはこちらからアクセスします: [Azure Digital Twins (ADT) エクスプローラー](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)。 *[Download ZIP]\(ZIP のダウンロード\)* ボタンをクリックして、このサンプル コードの *.ZIP* ファイルを _**ADT_Explorer.zip**_ としてご自分のマシンにダウンロードしてください。 ファイルを解凍します。
 
 次に、コンピューター上で実行するために ADT エクスプローラーのアクセス許可を設定します。 これを行うには、Azure Digital Twins クイックスタートの「[*ADT エクスプローラーのアクセス許可を設定する*](quickstart-adt-explorer.md#set-adt-explorer-permissions)」セクションの手順に従います。
 
@@ -219,7 +219,7 @@ ADT エクスプローラーにより、(ツインとリレーションシップ
 新しいインスタンスが正しく設定されたことを確認するには、次のツールを使用できます。
 * [**Azure portal**](https://portal.azure.com) (新しいインスタンスが存在し、正しいターゲット リージョンにあることの確認に適しています。エンドポイントとルート、および他の Azure サービスへの接続の確認にも適しています)
 * [Azure Digital Twins **CLI コマンド**](how-to-use-cli.md) (新しいインスタンスが存在し、正しいターゲット リージョンにあることの確認に適しています。インスタンス データの確認にも使用できます)
-* [**ADT エクスプローラー**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) (モデル、ツイン、グラフなどのインスタンスデータの確認に適しています)
+* [**ADT エクスプローラー**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) (モデル、ツイン、グラフなどのインスタンスデータの確認に適しています)
 * [Azure Digital Twins の API と SDK](how-to-use-apis-sdks.md) (モデル、ツイン、グラフなどのインスタンス データの確認に適しています。エンドポイントとルートの確認にも適しています)
 
 元のインスタンスで実行していたカスタム アプリやエンドツーエンド フローを実行してみることもでき、これは、それらが新しいインスタンスで正しく動作していることの確認に役立ちます。

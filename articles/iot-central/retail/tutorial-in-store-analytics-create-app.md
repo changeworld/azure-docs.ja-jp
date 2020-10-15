@@ -12,10 +12,10 @@ ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
 ms.openlocfilehash: 50dd6038a8642f13cea7840fff723a5cf12ce2dd
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80999782"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>チュートリアル:Azure IoT Central でストア内分析アプリケーションを作成する

@@ -11,10 +11,10 @@ ms.subservice: common
 services: storage
 tags: ''
 ms.openlocfilehash: efae9cd2a73bf6df89007ac313ca6dfe6efe6ddd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87075956"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Storage Analytics ログを使用した待ち時間のトラブルシューティング

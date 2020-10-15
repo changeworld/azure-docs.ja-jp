@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: b6416438b8c970f4a92f73004e67f90a28210500
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fe5c13b8c34d29be9a62717215271c10a48e9ac6
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335468"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076897"
 ---
 # <a name="api-management-policies"></a>API Management policies (API Management のポリシー)
 このセクションでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](api-management-howto-policies.md)」をご覧ください。
@@ -87,4 +87,4 @@ ms.locfileid: "91335468"
 
 + [API Management のポリシー](api-management-howto-policies.md)
 + [API を変換する](transform-api.md)
-+ [ポリシーのサンプル](policy-samples.md)
++ [ポリシーのサンプル](./policy-reference.md)

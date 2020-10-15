@@ -12,10 +12,10 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: d6b5fa1a42201479c5d426a5bbb9188d0cb8e03d
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89485976"
 ---
 # <a name="striim-azure-synapse-analytics-marketplace-offering-install-guide"></a>Striim の Azure Synapse Analytics の Marketplace サービスのインストール ガイド

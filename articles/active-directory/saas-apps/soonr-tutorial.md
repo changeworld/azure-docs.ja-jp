@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: jeedes
 ms.openlocfilehash: 8a21fecbe39008a79b60bdc9f133c3540d440207
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88545082"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-soonr-workplace"></a>チュートリアル: Azure Active Directory と Soonr Workplace の統合

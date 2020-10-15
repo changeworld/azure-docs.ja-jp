@@ -9,12 +9,12 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-python, devx-track-js
-ms.openlocfilehash: fd7e5c74876f9c7457d4ef29827527191f6558d9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a4496ba46b486f183136381a51c6a523dd9e1b87
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336805"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047983"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-for-linux-devices"></a>チュートリアル:Linux デバイス用の Node.js IoT Edge モジュールを開発およびデプロイする
 
@@ -50,7 +50,7 @@ IoT Edge モジュールを使用して、ビジネス ロジックを実装す�
 
 * Azure の Free レベルまたは Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。
 * [Azure IoT Edge を実行している Linux デバイス](quickstart-linux.md)
-* コンテナー レジストリ ([Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) など)。
+* コンテナー レジストリ ([Azure Container Registry](../container-registry/index.yml) など)。
 * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) を使用して構成された [Visual Studio Code](https://code.visualstudio.com/)。
 * Linux コンテナーを実行するように構成された [Docker CE](https://docs.docker.com/install/)。
 
@@ -255,7 +255,7 @@ IoT Edge デバイスのステータスは、Visual Studio Code エクスプロ�
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、IoT Edge デバイスによって生成された生データをフィルター処理するコードを含む IoT Edge モジュールを作成しました。 独自のモジュールをビルドする準備ができたら、[独自の IoT Edge モジュールの開発](module-development.md)または [Visual Studio Code を使用してモジュールを開発](how-to-vs-code-develop-module.md)する方法の詳細をご確認ください。 シミュレート済み温度モジュールを含む IoT Edge モジュールの例については、[IoT Edge モジュールのサンプル](https://github.com/Azure/iotedge/tree/master/edge-modules)を参照してください。
+このチュートリアルでは、IoT Edge デバイスによって生成された生データをフィルター処理するコードを含む IoT Edge モジュールを作成しました。
 
 次のチュートリアルに進むと、Azure のクラウド サービスをデプロイしてエッジでデータの処理と分析を行ううえで、Azure IoT Edge がどのように役立つかを確認できます。
 

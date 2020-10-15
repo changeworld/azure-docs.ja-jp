@@ -15,10 +15,10 @@ ms.date: 04/20/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 3d52b9a6842c13e9141fd081e10156e3866c163f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81254310"
 ---
 # <a name="tutorial-set-azure-cdn-caching-rules"></a>チュートリアル:Azure CDN キャッシュ規則の設定

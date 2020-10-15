@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.openlocfilehash: f3a8f5ef8119d9895f67e07ea1b68c660be59f9b
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541868"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>LUIS ポータルで 1000 件の発話をバッチ テストする

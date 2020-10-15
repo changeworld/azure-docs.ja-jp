@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 3d5ca648b149fa85b28f695956a438cdac9e67e8
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: a8d09f762002c89d225ccc00eac83da336850a3c
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086625"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047949"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>チュートリアル:SQL Server データベースを使用したエッジでのデータの格納
 
@@ -42,7 +42,7 @@ Azure IoT Edge と SQL Server を使用し、エッジでデータを格納し�
 * Azure の Free レベルまたは Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。
 * [Azure IoT Edge を実行している AMD64 Linux デバイス](quickstart-linux.md)。
   * Raspberry Pi などの ARM デバイスでは、SQL Server を実行できません。 ARM デバイスで SQL を使用する場合は、サインアップして [Azure SQL Edge](https://azure.microsoft.com/services/sql-edge/) (プレビュー) を試すことができます。
-* コンテナー レジストリ ([Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) など)。
+* コンテナー レジストリ ([Azure Container Registry](../container-registry/index.yml) など)。
 * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) を使用して構成された [Visual Studio Code](https://code.visualstudio.com/)。
 * Linux コンテナーを実行するように構成された [Docker CE](https://docs.docker.com/install/)。
 
@@ -228,7 +228,7 @@ IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格�
 7. **modules** セクションを探します。 3 つのモジュールが見つかります。 モジュール *SimulatedTemperatureSensor* は、既定で新しいソリューションに含まれ、他のモジュールで使用するテスト データを提供します。 モジュール *sqlFunction* は、最初に作成して新しいコードで更新したモジュールです。 最後のモジュール *sql* は、Azure Marketplace からインポートしたモジュールです。
 
    >[!Tip]
-   >SQL Server モジュールでは、配置マニフェストの環境変数に既定のパスワードが付いています。 運用環境で SQL Server コンテナーを作成するときに、[既定のシステム管理者パスワードを変更](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker)する必要があります。
+   >SQL Server モジュールでは、配置マニフェストの環境変数に既定のパスワードが付いています。 運用環境で SQL Server コンテナーを作成するときに、[既定のシステム管理者パスワードを変更](/sql/linux/quickstart-install-connect-docker)する必要があります。
 
 8. **deployment.template.json** ファイルを閉じます。
 
@@ -331,9 +331,9 @@ SQL コマンド ツール内から次のコマンドを実行して、書式設
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-## <a name="next-steps"></a>次のステップ
+このチュートリアルでは、IoT Edge デバイスで生成された生データをフィルター処理するコードを含む、Azure Functions モジュールを作成しました。 独自のモジュールをビルドする準備ができたら、[Visual Studio Code 用の Azure IoT Edge で Azure 関数を開発する](./how-to-vs-code-develop-module.md)方法の詳細をご覧ください。
 
-このチュートリアルでは、IoT Edge デバイスで生成された生データをフィルター処理するコードを含む、Azure Functions モジュールを作成しました。 独自のモジュールをビルドする準備ができたら、[Visual Studio Code 用の Azure IoT Edge で Azure 関数を開発する](how-to-develop-csharp-function.md)方法の詳細をご覧ください。
+## <a name="next-steps"></a>次のステップ
 
 エッジで別の格納方法を試す場合は、IoT Edge 上の Azure Blob Storage を使用する方法に関する記事を参照してください。
 

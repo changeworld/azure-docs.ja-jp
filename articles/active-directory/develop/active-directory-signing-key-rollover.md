@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.openlocfilehash: b65ad1f22d20686a1ee47631f9209e1b15b0ab58
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88948132"
 ---
 # <a name="signing-key-rollover-in-microsoft-identity-platform"></a>Microsoft ID プラットフォームでの署名キーのロールオーバー

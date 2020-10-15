@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
 ms.openlocfilehash: 15b69e664ae9a01635afb44d7b6b7c24d7551ce9
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87921420"
 ---
 # <a name="what-is-multi-device-conversation-preview"></a>マルチデバイスの会話とは (プレビュー)

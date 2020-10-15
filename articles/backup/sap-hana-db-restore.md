@@ -4,10 +4,10 @@ description: この記事では、Azure Virtual Machines 上で実行されて�
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.openlocfilehash: c502b7741acd343baefe5e2bf8b95cfc02e46688
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90986149"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>Azure VM 上の SAP HANA データベースの復元

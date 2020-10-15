@@ -5,10 +5,10 @@ ms.date: 01/08/2020
 ms.topic: how-to
 ms.reviewer: v-umha
 ms.openlocfilehash: 7300a5dcfb0150e6182636dcb71bacfa68c787db
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87076924"
 ---
 # <a name="monitor-azure-blockchain-service-through-azure-monitor"></a>Azure Monitor を使用して Azure Blockchain Service を監視する  

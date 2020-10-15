@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/23/2018
 ms.custom: devx-track-python
 ms.openlocfilehash: 5dd51f7bcaaa876285f6f514ea98603ff28e7ffa
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87872601"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>スケジュールどおりにパイプラインを実行するトリガーの作成

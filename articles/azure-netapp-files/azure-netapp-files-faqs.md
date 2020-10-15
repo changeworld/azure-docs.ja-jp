@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 2a64e595f0ea07510f416be56a54a3c74294b95d
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: aa33106f200b2edb3b710c6b0e08208bd4da8ace
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653623"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932262"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files についての FAQ
 
@@ -31,13 +31,13 @@ ms.locfileid: "91653623"
 
 いいえ。 NFS データ パスはインターネットを経由しません。 Azure NetApp Files は、サービスが使用可能な Azure Virtual Network (VNet) にデプロイされている Azure のネイティブ サービスです。 Azure NetApp Files は、委任されたサブネットを使用し、VNet 上に直接ネットワーク インターフェイスをプロビジョニングします。 
 
-詳細については、「[Azure NetApp Files のネットワーク計画のガイドライン](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies)」を参照してください。  
+詳細については、「[Azure NetApp Files のネットワーク計画のガイドライン](./azure-netapp-files-network-topologies.md)」を参照してください。  
 
 ### <a name="can-i-connect-a-vnet-that-i-already-created-to-the-azure-netapp-files-service"></a>既に作成済みの VNet を Azure NetApp Files サービスに接続できますか?
 
 はい。作成済みの VNet をサービスに接続することができます。 
 
-詳細については、「[Azure NetApp Files のネットワーク計画のガイドライン](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies)」を参照してください。  
+詳細については、「[Azure NetApp Files のネットワーク計画のガイドライン](./azure-netapp-files-network-topologies.md)」を参照してください。  
 
 ### <a name="can-i-mount-an-nfs-volume-of-azure-netapp-files-using-dns-fqdn-name"></a>DNS FQDN 名を使用して Azure NetApp Files の NFS ボリュームをマウントできますか?
 
@@ -146,7 +146,7 @@ Azure NetApp Files では、SMB 2.1 と SMB 3.1 (SMB 3.0 のサポートを含�
 
 ### <a name="is-an-active-directory-connection-required-for-smb-access"></a>SMB でのアクセスに Active Directory 接続は必要ですか? 
 
-はい。SMB ボリュームをデプロイする前に Active Directory の接続を作成する必要があります。 指定したドメイン コントローラーは、正常に接続するためには、Azure NetApp Files の委任されたサブネットからアクセス可能である必要があります。  詳細については、「[SMB ボリュームを作成する](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb)」を参照してください。 
+はい。SMB ボリュームをデプロイする前に Active Directory の接続を作成する必要があります。 指定したドメイン コントローラーは、正常に接続するためには、Azure NetApp Files の委任されたサブネットからアクセス可能である必要があります。  詳細については、「[SMB ボリュームを作成する](./azure-netapp-files-create-volumes-smb.md)」を参照してください。 
 
 ### <a name="how-many-active-directory-connections-are-supported"></a>サポートされている Active Directory 接続はいくつですか?
 
@@ -156,7 +156,7 @@ AD 接続は、NetApp アカウントごとに構成され、作成された Net
 
 ### <a name="does-azure-netapp-files-support-azure-active-directory"></a>Azure NetApp Files で Azure Active Directory はサポートされていますか? 
 
-[Azure Active Directory (AD) Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/overview) と [Active Directory Domain Services (AD DS)](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) の両方がサポートされます。 Azure NetApp Files で既存の Active Directory ドメイン コントローラーを使用することができます。 ドメイン コントローラーは、仮想マシンとして Azure に配置することも、ExpressRoute またはサイト間 VPN 経由でオンプレミスに配置することもできます。 Azure NetApp Files は現時点で、AD join for [Azure Active Directory](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/) をサポートしていません。
+[Azure Active Directory (AD) Domain Services](../active-directory-domain-services/overview.md) と [Active Directory Domain Services (AD DS)](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) の両方がサポートされます。 Azure NetApp Files で既存の Active Directory ドメイン コントローラーを使用することができます。 ドメイン コントローラーは、仮想マシンとして Azure に配置することも、ExpressRoute またはサイト間 VPN 経由でオンプレミスに配置することもできます。 Azure NetApp Files は現時点で、AD join for [Azure Active Directory](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/) をサポートしていません。
 
 Azure Active Directory Domain Services と組み合わせて Azure NetApp Files を使用している場合、NetApp アカウント用に Active Directory を構成する際の組織単位のパスは `OU=AADDC Computers` になります。
 
@@ -171,7 +171,7 @@ SMB クライアントで報告されるボリューム サイズは、Azure Net
 <!--
 ### Does Azure NetApp Files support LDAP signing? 
 
-Yes, Azure NetApp Files supports LDAP signing by default. This functionality enables secure LDAP lookups between the Azure NetApp Files service and the user-specified [Active Directory Domain Services domain controllers](https://docs.microsoft.com/windows/win32/ad/active-directory-domain-services). For more information, see [ADV190023 | Microsoft Guidance for Enabling LDAP Channel Binding and LDAP Signing](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).
+Yes, Azure NetApp Files supports LDAP signing by default. This functionality enables secure LDAP lookups between the Azure NetApp Files service and the user-specified [Active Directory Domain Services domain controllers](/windows/win32/ad/active-directory-domain-services). For more information, see [ADV190023 | Microsoft Guidance for Enabling LDAP Channel Binding and LDAP Signing](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).
 --> 
 
 ## <a name="dual-protocol-faqs"></a>デュアルプロトコルに関する FAQ
@@ -224,7 +224,7 @@ Azure NetApp Files には NFS ボリュームと SMB ボリュームがありま
 
 NetApp には、SaaS ベースのソリューションである [NetApp Cloud Sync](https://cloud.netapp.com/cloud-sync-service) があります。このソリューションでは、NFS または SMB のデータを、Azure NetApp Files の NFS エクスポートまたは SMB 共有にレプリケートすることができます。 
 
-また、さまざまな無料のツールを使用してデータをコピーすることもできます。 NFS の場合は、[rsync](https://rsync.samba.org/examples.html) などのワークロード ツールを使用して、Azure NetApp Files ボリュームにソース データをコピーしたり同期したりできます。 SMB の場合は、ワークロード [robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) を同じ方法で使用することができます。  これらのツールでは、ファイルまたはフォルダーのアクセス許可をレプリケートすることもできます。 
+また、さまざまな無料のツールを使用してデータをコピーすることもできます。 NFS の場合は、[rsync](https://rsync.samba.org/examples.html) などのワークロード ツールを使用して、Azure NetApp Files ボリュームにソース データをコピーしたり同期したりできます。 SMB の場合は、ワークロード [robocopy](/windows-server/administration/windows-commands/robocopy) を同じ方法で使用することができます。  これらのツールでは、ファイルまたはフォルダーのアクセス許可をレプリケートすることもできます。 
 
 オンプレミスから Azure NetApp Files へのデータ移行の要件は、次のとおりです。 
 
@@ -239,7 +239,7 @@ Azure NetApp Files には NFS ボリュームと SMB ボリュームがありま
 
 NetApp には、SaaS ベースのソリューションである [NetApp Cloud Sync](https://cloud.netapp.com/cloud-sync-service) があります。このソリューションでは、NFS または SMB のデータを、Azure NetApp Files の NFS エクスポートまたは SMB 共有にレプリケートすることができます。 
 
-また、さまざまな無料のツールを使用してデータをコピーすることもできます。 NFS の場合は、[rsync](https://rsync.samba.org/examples.html) などのワークロード ツールを使用して、Azure NetApp Files ボリュームにソース データをコピーしたり同期したりできます。 SMB の場合は、ワークロード [robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) を同じ方法で使用することができます。  これらのツールでは、ファイルまたはフォルダーのアクセス許可をレプリケートすることもできます。 
+また、さまざまな無料のツールを使用してデータをコピーすることもできます。 NFS の場合は、[rsync](https://rsync.samba.org/examples.html) などのワークロード ツールを使用して、Azure NetApp Files ボリュームにソース データをコピーしたり同期したりできます。 SMB の場合は、ワークロード [robocopy](/windows-server/administration/windows-commands/robocopy) を同じ方法で使用することができます。  これらのツールでは、ファイルまたはフォルダーのアクセス許可をレプリケートすることもできます。 
 
 Azure NetApp Files ボリュームを別の Azure リージョンにレプリケートするための要件は次のとおりです。 
 - Azure NetApp Files がターゲット Azure リージョンで利用できることを確認します。
@@ -257,8 +257,8 @@ Azure NetApp Files ボリュームを別の Azure リージョンにレプリケ
 
 ## <a name="next-steps"></a>次のステップ  
 
-- [Microsoft Azure ExpressRoute に関する FAQ](https://docs.microsoft.com/azure/expressroute/expressroute-faqs)
-- [Microsoft Azure Virtual Network に関する FAQ](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq)
-- [Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)
-- [Azure Data Box](https://docs.microsoft.com/azure/databox)
+- [Microsoft Azure ExpressRoute に関する FAQ](../expressroute/expressroute-faqs.md)
+- [Microsoft Azure Virtual Network に関する FAQ](../virtual-network/virtual-networks-faq.md)
+- [Azure サポート要求を作成する方法](../azure-portal/supportability/how-to-create-azure-support-request.md)
+- [Azure Data Box](../databox/index.yml)
 - [Azure NetApp Files の SMB パフォーマンスに関する FAQ](azure-netapp-files-smb-performance.md)

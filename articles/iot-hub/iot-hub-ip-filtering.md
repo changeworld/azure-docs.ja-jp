@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/25/2020
 ms.author: robinsh
 ms.openlocfilehash: 1ba3c89ea4f964f9e6fd5f902aab29a83a058f25
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87074719"
 ---
 # <a name="use-ip-filters"></a>IP フィルターの使用
@@ -47,11 +47,11 @@ IoT ハブの拒否 IP 規則に一致する IP アドレスからの接続試�
 
 IP フィルター規則を追加するには、 **[+ IP フィルター規則の追加]** を選択します。
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-add-rule.png" alt-text="IoT Hub への IP フィルター規則の追加":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-add-rule.png" alt-text="IoT Hub の既定の IP フィルター設定":::
 
 **[IP フィルター規則の追加]** を選択したら、フィールドに入力します。
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png" alt-text="[IP フィルター規則の追加] を選択した後":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png" alt-text="IoT Hub の既定の IP フィルター設定":::
 
 * IP フィルター規則の**名前**を指定します。 これは、一意であり、長さが最大 128 文字の、大文字と小文字を区別しない英数字の文字列である必要があります。 ASCII 7 ビット英数字と `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` のみを使用できます。
 
@@ -61,7 +61,7 @@ IP フィルター規則を追加するには、 **[+ IP フィルター規則�
 
 フィールドに入力したら、 **[保存]** を選択して規則を保存します。 更新が進行中であることを通知するアラートが表示されます。
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png" alt-text="IP フィルター規則の保存に関する通知":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png" alt-text="IoT Hub の既定の IP フィルター設定":::
 
 IP フィルター規則が最大値の 10 個に達すると、 **[追加]** オプションは無効になります。
 
@@ -71,7 +71,7 @@ IP フィルター規則が最大値の 10 個に達すると、 **[追加]** �
 
 IP フィルター規則を削除するには、その行のごみ箱アイコンを選択し、次に **[保存]** を選択します。 規則が削除されて、変更が保存されます。
 
-:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-delete-rule.png" alt-text="IoT Hub の IP フィルター規則の削除":::
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-delete-rule.png" alt-text="IoT Hub の既定の IP フィルター設定":::
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>Azure CLI を使用した IP フィルターの取得および更新
 
@@ -161,7 +161,7 @@ IP フィルター規則は順に適用され、IP アドレスと一致する�
 
 新しい IP フィルター規則の順序を保存するには、 **[保存]** をクリックします。
 
-:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-rule-order.png" alt-text="IoT Hub の IP フィルター規則の順序の変更":::
+:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-rule-order.png" alt-text="IoT Hub の既定の IP フィルター設定":::
 
 ## <a name="next-steps"></a>次のステップ
 

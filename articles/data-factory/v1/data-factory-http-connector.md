@@ -12,10 +12,10 @@ ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 36592151385a08d75b9b34e85bfa9d62342fc8cd
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80991571"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Azure Data Factory を使用して HTTP ソースからデータを移動する

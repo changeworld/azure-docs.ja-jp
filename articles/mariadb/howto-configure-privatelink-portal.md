@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.openlocfilehash: 6c96c4803293db9d9bacfc43f0de2f7803e6c41c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836481"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>ポータルを使用して Azure Database for MariaDB 用の Private Link を作成および管理する
@@ -20,7 +20,7 @@ ms.locfileid: "87836481"
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 > [!NOTE]
-> プライベート リンク機能は、General Purpose または Memory Optimized の価格レベルの Azure Database for MariaDB サーバーでのみ使用可能です。 データベース サーバーがこれらの価格レベルのいずれかであることを確認します。
+> プライベート リンク機能は、General Purpose または Memory Optimized の価格レベルの Azure Database for MariaDB サーバーでのみ使用可能です。 データベース サーバーがこれらの価格レベルのいずれであることを確実にします。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 [Azure portal](https://portal.azure.com) にサインインします。
@@ -130,7 +130,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このセクションでは、MariaDB サーバーへのプライベート エンドポイントを作成します。 
 
-1. Azure portal の画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[Private Link]** を選択します。
+1. Azure portal の画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[プライベート リンク]** を選択します。
 2. **[プライベート リンク センター - 概要]** の**サービスへのプライベート接続を構築する**オプションで、 **[開始]** を選択します。
 
     ![Private Link の概要](media/concepts-data-access-and-security-private-link/privatelink-overview.png)
@@ -240,7 +240,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 6. (省略可能) 左側のメニューからデータベースを参照して、MariaDB データベースからの情報を作成または照会します
 
-7. myVM へのリモート デスクトップ接続を閉じます。
+7. myVm へのリモート デスクトップ接続を閉じます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 プライベート エンドポイント、MariaDB サーバー、VM を使い終えたら、リソース グループとそこに含まれるすべてのリソースを削除します。

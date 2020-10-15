@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 06/25/2020
 ms.author: Zhchia
 ms.openlocfilehash: 7fde4a82ff3a9e0cfa67e8ce5afeebc000757b7c
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462056"
 ---
 # <a name="tutorial-configure-invision-for-automatic-user-provisioning"></a>チュートリアル:InVision を構成し、自動ユーザー プロビジョニングに対応させる

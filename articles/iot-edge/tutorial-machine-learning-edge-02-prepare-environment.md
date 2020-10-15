@@ -8,12 +8,12 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 22628af5b3e62edfc96699ad051b6a00cf9c1429
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 99a0805239ee2437ad6ec9ceb40cf45496a07850
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078934"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047660"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>チュートリアル:IoT Edge 上に機械学習用の環境を設定する
 
@@ -26,7 +26,7 @@ ms.locfileid: "87078934"
 
 この手順は、通常はクラウド開発者によって実行されます。 一部のソフトウェアはデータ サイエンティストの役にも立ちます。
 
-前提条件の多くが既に構成済みになっている Azure 仮想マシンを作成するための PowerShell スクリプトを作成しました。 作成する VM では、[入れ子になった仮想化](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)を処理できる必要があります。このため、マシン サイズとして [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md) が選択されています。
+前提条件の多くが既に構成済みになっている Azure 仮想マシンを作成するための PowerShell スクリプトを作成しました。 作成する VM では、[入れ子になった仮想化](../virtual-machines/windows/nested-virtualization.md)を処理できる必要があります。このため、マシン サイズとして [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md) が選択されています。
 
 開発用 VM の設定には次のものが必要です。
 
@@ -38,7 +38,7 @@ ms.locfileid: "87078934"
 * [.NET Core SDK](https://dotnet.microsoft.com/)
 * [Python 3](https://www.python.org/)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-1.1.0)
+* [Azure PowerShell](/powershell/azure/?view=azps-1.1.0)
 * [VS Code 拡張機能](https://marketplace.visualstudio.com/search?target=VSCode)
   * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
   * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
@@ -82,7 +82,7 @@ ms.locfileid: "87078934"
 
    スクリプトが数分間実行され、その間に次のステップが実行されます。
 
-    1. [Azure PowerShell Az モジュール](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.1.0)をインストールします。
+    1. [Azure PowerShell Az モジュール](/powershell/azure/new-azureps-module-az?view=azps-1.1.0)をインストールします。
     1. Azure にサインインするよう求められます。
     1. VM を作成するための情報を確認します。 **y** キーまたは **Enter** キーを押して続行します。
     1. リソース グループがまだ作成されていない場合は、作成します。
@@ -215,7 +215,7 @@ Azure IoT Hub は、IoT デバイスとクラウドとの間の安全な通信�
 
 IoT Edge での Machine Learning チュートリアルのこの部分で説明されているステップの詳細については、次を参照してください。
 
-* [Azure IoT の基礎](https://docs.microsoft.com/azure/iot-fundamentals/)
+* [Azure IoT の基礎](../iot-fundamentals/index.yml)
 * [IoT Hub を使用してメッセージ ルーティングを構成する](../iot-hub/tutorial-routing.md)
 * [Azure portal を使用して IoT ハブを作成する](../iot-hub/iot-hub-create-through-portal.md)
 

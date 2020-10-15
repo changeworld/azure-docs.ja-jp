@@ -4,10 +4,10 @@ description: Azure Service Fabric では、内部または外部のコンテナ�
 ms.topic: conceptual
 ms.date: 8/9/2017
 ms.openlocfilehash: 11ca6e29829d911717a829b3e4dee0a190856a52
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81115141"
 ---
 # <a name="resource-governance"></a>リソース管理

@@ -7,18 +7,18 @@ ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: bdf7a46dec6f4ea766d5d5a039109022755bc3fb
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: ccc450242c50f82d4215f6b172f72d8eceab7c52
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761279"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046338"
 ---
 # <a name="tutorial-how-to-convert-an-iot-plug-and-play-device-to-a-module-c"></a>チュートリアル:IoT プラグ アンド プレイ デバイスをモジュールに変換する方法 (C#)
 
 このチュートリアルでは、汎用モジュールとして実行するように IoT プラグ アンド プレイのデバイス コードを変換する方法を示します。
 
-IoT ハブに接続するときにモデル ID を発行し、そのモデル ID によって識別される Digital Twins Definition Language (DTDL) モデルに記述されているプロパティとメソッドを実装するデバイスである場合は、IoT プラグ アンド プレイ デバイスです。 デバイスで DTDL とモデル ID がどのように使用されるかの詳細については、[IoT プラグ アンド プレイの開発者ガイド](concepts-developer-guide.md)を参照してください。 モジュールでは、モデル ID と DTDL モデルを同じ方法で使用します。
+IoT ハブに接続するときにモデル ID を発行し、そのモデル ID によって識別される Digital Twins Definition Language (DTDL) モデルに記述されているプロパティとメソッドを実装するデバイスである場合は、IoT プラグ アンド プレイ デバイスです。 デバイスで DTDL とモデル ID がどのように使用されるかの詳細については、[IoT プラグ アンド プレイの開発者ガイド](./concepts-developer-guide-device-csharp.md)を参照してください。 モジュールでは、モデル ID と DTDL モデルを同じ方法で使用します。
 
 このチュートリアルでは、IoT プラグ アンド プレイ モジュールを実装する方法を示すために、サーモスタットの C# デバイス サンプルを汎用モジュールに変換する方法を示します。
 
@@ -224,7 +224,7 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 コンテナー化されたモジュールをデプロイする方法については、以下を参照してください。
 
 * [Ubuntu 仮想マシン上で Azure IoT Edge を実行する](../iot-edge/how-to-install-iot-edge-ubuntuvm.md)。
-* [Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする](../iot-edge/how-to-install-iot-edge-linux.md)。
+* [Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする](../iot-edge/how-to-install-iot-edge.md)。
 
 Azure IoT エクスプローラー ツールを使用して、以下を参照できます。
 
@@ -238,4 +238,4 @@ Azure IoT エクスプローラー ツールを使用して、以下を参照で
 このチュートリアルでは、モジュールを使用する IoT プラグ アンド プレイ デバイスを IoT ハブに接続する方法を学習しました。 IoT プラグ アンド プレイ デバイス モデルの詳細については、以下を参照してください。
 
 > [!div class="nextstepaction"]
-> [IoT プラグ アンド プレイ モデリング開発者ガイド](concepts-developer-guide.md)
+> [IoT プラグ アンド プレイ モデリング開発者ガイド](./concepts-developer-guide-device-csharp.md)
