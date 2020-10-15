@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 08/05/2020
 ms.author: thweiss
 ms.openlocfilehash: 9fa899e0f0de3b263baad7e44ed24d32d735b001
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836512"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Azure Key Vault で Azure Cosmos アカウントのカスタマー マネージド キーを構成する
@@ -28,11 +28,11 @@ Azure Cosmos アカウントに格納されているデータは、Microsoft が
 
 1. [Azure portal](https://portal.azure.com/) にサインインし、お使いの Azure サブスクリプションに移動して **[設定]** タブの **[リソース プロバイダー]** を選択します。
 
-   :::image type="content" source="./media/how-to-setup-cmk/portal-rp.png" alt-text="左側のメニューの [リソース プロバイダー] エントリ":::
+   :::image type="content" source="./media/how-to-setup-cmk/portal-rp.png" alt-text="顧客データに関する暗号化のレイヤー":::
 
 1. **Microsoft.DocumentDB** リソース プロバイダーを検索します。 そのリソース プロバイダーが既に登録済みとしてマークされているどうかを確認します。 そうでない場合は、リソース プロバイダーを選択して **[登録]** を選択します。
 
-   :::image type="content" source="./media/how-to-setup-cmk/portal-rp-register.png" alt-text="Microsoft.DocumentDB リソース プロバイダーの登録":::
+   :::image type="content" source="./media/how-to-setup-cmk/portal-rp-register.png" alt-text="顧客データに関する暗号化のレイヤー":::
 
 ## <a name="configure-your-azure-key-vault-instance"></a>Azure Key Vault インスタンスを構成する
 
@@ -40,7 +40,7 @@ Azure Cosmos DB でカスタマー マネージド キーを使用するには�
 
 新しい Azure Key Vault インスタンスを作成する場合は、作成時にこれらのプロパティを有効にします。
 
-:::image type="content" source="./media/how-to-setup-cmk/portal-akv-prop.png" alt-text="新しい Azure Key Vault インスタンスの論理的な削除と消去保護を有効にする":::
+:::image type="content" source="./media/how-to-setup-cmk/portal-akv-prop.png" alt-text="顧客データに関する暗号化のレイヤー":::
 
 既存の Azure Key Vault インスタンスを使用している場合は、Azure portal の **[プロパティ]** セクションを見て、これらのプロパティが有効であることを確認できます。 これらのプロパティのいずれかが有効になっていない場合は、次のいずれかの記事の「消去保護を有効にする」と「論理的な削除を有効にする」のセクションを参照してください。
 
@@ -51,17 +51,17 @@ Azure Cosmos DB でカスタマー マネージド キーを使用するには�
 
 1. Azure portal から、暗号化キーをホストするために使用しようとしている Azure Key Vault インスタンスに移動します。 左側のメニューの **[アクセス ポリシー]** を選択します。
 
-   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-ap.png" alt-text="左側のメニューの [アクセス ポリシー]":::
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-ap.png" alt-text="顧客データに関する暗号化のレイヤー":::
 
 1. **[+ アクセス ポリシーの追加]** を選択します。
 
 1. **[キーのアクセス許可]** ドロップダウン メニューで、 **[取得]** 、 **[キーの折り返しを解除]** 、および **[キーを折り返す]** アクセス許可を選択します。
 
-   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png" alt-text="適切なアクセス許可の選択":::
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png" alt-text="顧客データに関する暗号化のレイヤー":::
 
 1. **[プリンシパルの選択]** で、 **[選択されていません]** を選択します。 次に、**Azure Cosmos DB** プリンシパルを検索して選択します (検索しやすくするために、Azure Government リージョンを除くすべての Azure リージョンはプリンシパル ID: `a232010e-820c-4083-83bb-3ace5fc29d0b`、Azure Government リージョンはプリンシパル ID: `57506a73-e302-42a9-b869-6f12d9ec29e9` を使用して検索することもできます)。 最後に、一番下の **[選択]** を選択します。 **Azure Cosmos DB** プリンシパルが一覧にない場合は、この記事の[リソース プロバイダーの登録](#register-resource-provider)に関するセクションの説明に従って **Microsoft.DocumentDB** リソース プロバイダーを再登録することが必要になる場合があります。
 
-   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap.png" alt-text="Azure Cosmos DB プリンシパルを選択する":::
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap.png" alt-text="顧客データに関する暗号化のレイヤー":::
 
 1. **[追加]** を選択して新しいアクセス ポリシーを追加します。
 
@@ -71,17 +71,17 @@ Azure Cosmos DB でカスタマー マネージド キーを使用するには�
 
 1. Azure portal から、暗号化キーをホストするために使用しようとしている Azure Key Vault インスタンスに移動します。 次に、左側のメニューの **[キー]** を選択します。
 
-   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-keys.png" alt-text="左側のメニューの [キー] エントリ":::
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-keys.png" alt-text="顧客データに関する暗号化のレイヤー":::
 
 1. **[生成/インポート]** を選択し、新しいキーに名前を付け、RSA キー サイズを選択します。 最高のセキュリティを得るには、最小で 3072 をお勧めします。 次に、 **[作成]** を選択します。
 
-   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-gen.png" alt-text="新しいキーの作成":::
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-gen.png" alt-text="顧客データに関する暗号化のレイヤー":::
 
 1. キーが作成されたら、新しく作成されたキーを選択し、次にその現在のバージョンを選択します。
 
 1. 最後のスラッシュの後の部分を除き、キーの **[キー識別子]** をコピーします。
 
-   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-keyid.png" alt-text="キーのキー識別子のコピー":::
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-keyid.png" alt-text="顧客データに関する暗号化のレイヤー":::
 
 ## <a name="create-a-new-azure-cosmos-account"></a>新しい Azure Cosmos アカウントを作成する
 
@@ -89,7 +89,7 @@ Azure Cosmos DB でカスタマー マネージド キーを使用するには�
 
 Azure portal から新しい Azure Cosmos DB アカウントを作成する場合は、 **[暗号化]** の手順で **[カスタマー マネージド キー]** を選択します。 **[キー URI]** フィールドで、前の手順でコピーした Azure Key Vault キーの URI/キー識別子を貼り付けます。
 
-:::image type="content" source="./media/how-to-setup-cmk/portal-cosmos-enc.png" alt-text="Azure portal での CMK パラメーターの設定":::
+:::image type="content" source="./media/how-to-setup-cmk/portal-cosmos-enc.png" alt-text="顧客データに関する暗号化のレイヤー":::
 
 ### <a name="using-azure-powershell"></a><a id="using-powershell"></a> Azure PowerShell の使用
 
@@ -228,15 +228,15 @@ Azure Cosmos アカウントで使用されるカスタマー マネージド �
 
 - Azure Key Vault から、現在使用されているキーの新しいバージョンを作成します。
 
-  :::image type="content" source="./media/how-to-setup-cmk/portal-akv-rot.png" alt-text="新しいキー バージョンを作成する":::
+  :::image type="content" source="./media/how-to-setup-cmk/portal-akv-rot.png" alt-text="顧客データに関する暗号化のレイヤー":::
 
 - アカウントのキー URI を更新して、現在使用されているキーをまったく別のキーに切り替えます。 Azure portal から、Azure Cosmos アカウントに移動し、左側のメニューから **[データ暗号化]** を選択します。
 
-    :::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text="[データ暗号化] のメニュー エントリ":::
+    :::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text="顧客データに関する暗号化のレイヤー":::
 
     次に、 **[キー URI]** を使用する新しいキーに置き換え、 **[保存]** を選択します。
 
-    :::image type="content" source="./media/how-to-setup-cmk/portal-key-swap.png" alt-text="[キー URI] の更新":::
+    :::image type="content" source="./media/how-to-setup-cmk/portal-key-swap.png" alt-text="顧客データに関する暗号化のレイヤー":::
 
     PowerShell で同じ結果を実現するには、次のようにします。
 
@@ -299,7 +299,7 @@ Azure Cosmos DB でカスタマー マネージド キー (CMK) を使用して�
 
 Azure portal から、Azure Cosmos アカウントに移動し、左側のメニューで **[データ暗号化]** のエントリを探します。このエントリが存在する場合は、カスタマー マネージド キーがアカウントで有効になっています。
 
-:::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text="[データ暗号化] のメニュー エントリ":::
+:::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text="顧客データに関する暗号化のレイヤー":::
 
 プログラムで Azure Cosmos アカウントの詳細をフェッチして、`keyVaultKeyUri` プロパティの存在を確認することもできます。 [PowerShell で](#using-powershell)、また [Azure CLI を使用して](#using-azure-cli)これを行う方法については、上記を参照してください。
 
@@ -311,11 +311,11 @@ Azure Cosmos DB は、アカウントに格納されているデータの[定期
 
 キーの失効は、そのキーの最新バージョンを無効にすることによって行われます。
 
-:::image type="content" source="./media/how-to-setup-cmk/portal-akv-rev2.png" alt-text="キーのバージョンを無効にする":::
+:::image type="content" source="./media/how-to-setup-cmk/portal-akv-rev2.png" alt-text="顧客データに関する暗号化のレイヤー":::
 
 あるいは、Azure Key Vault インスタンスからすべてのキーを失効させるために、Azure Cosmos DB プリンシパルに付与されているアクセス ポリシーを削除することもできます。
 
-:::image type="content" source="./media/how-to-setup-cmk/portal-akv-rev.png" alt-text="Azure Cosmos DB プリンシパルのアクセス ポリシーの削除":::
+:::image type="content" source="./media/how-to-setup-cmk/portal-akv-rev.png" alt-text="顧客データに関する暗号化のレイヤー":::
 
 ### <a name="what-operations-are-available-after-a-customer-managed-key-is-revoked"></a>カスタマー マネージド キーが失効した後、どのような操作を使用できますか?
 

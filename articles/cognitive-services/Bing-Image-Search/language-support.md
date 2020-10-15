@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: ca3821b6088e45730334d1b0971e270b1d86dfce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68881919"
 ---
 # <a name="language-and-region-support-for-the-bing-image-search-api"></a>Bing Image Search API の言語と地域のサポート
@@ -41,7 +41,7 @@ Bing Image Search API では 30 を超える国/地域がサポートされ、�
 |オーストリア|AT|
 |ベルギー|BE|
 |ブラジル|BR|
-|カナダ|CA|
+|Canada|CA|
 |チリ|CL|
 |デンマーク|DK|
 |フィンランド|FI|
@@ -71,27 +71,27 @@ Bing Image Search API では 30 を超える国/地域がサポートされ、�
 |台湾|TW|
 |トルコ|TR|
 |イギリス|GB|
-|米国|US|
+|United States|US|
 
 
 ## <a name="markets"></a>市場
 
-|国/リージョン|言語|市場コード|
+|国/リージョン|Language|市場コード|
 |-------|--------|-----------|
 |アルゼンチン|スペイン語|es-AR|
 |オーストラリア|英語|en-AU|
 |オーストリア|ドイツ語|de-AT|
 |ベルギー|オランダ語|nl-BE|
 |ベルギー|フランス語|fr-BE|
-|ブラジル|ポルトガル語|pt-BR|
-|カナダ|英語|en-CA|
-|カナダ|フランス語|fr-CA|
+|ブラジル|Portuguese|pt-BR|
+|Canada|英語|en-CA|
+|Canada|フランス語|fr-CA|
 |チリ|スペイン語|es-CL|
 |デンマーク|デンマーク語|da-DK|
 |フィンランド|フィンランド語|fi-FI|
 |フランス|フランス語|fr-FR|
 |ドイツ|ドイツ語|de-DE|
-|香港特別行政区|繁体字中国語|zh-HK|
+|香港特別行政区|Traditional Chinese|zh-HK|
 |インド|英語|en-IN|
 |インドネシア|英語|en-ID|
 |イタリア|イタリア語|it-IT|
@@ -101,9 +101,9 @@ Bing Image Search API では 30 を超える国/地域がサポートされ、�
 |メキシコ|スペイン語|es-MX|
 |オランダ|オランダ語|nl-NL|
 |ニュージーランド|英語|en-NZ|
-|中国|中国語|zh-CN|
+|中国|Chinese|zh-CN|
 |ポーランド|ポーランド語|pl-PL|
-|ポルトガル|ポルトガル語|pt-PT|
+|ポルトガル|Portuguese|pt-PT|
 |フィリピン|英語|en-PH|
 |ロシア|ロシア語|ru-RU|
 |サウジアラビア|アラビア語|ar-SA|
@@ -112,11 +112,11 @@ Bing Image Search API では 30 を超える国/地域がサポートされ、�
 |スウェーデン|スウェーデン語|sv-SE|
 |スイス|フランス語|fr-CH|
 |スイス|ドイツ語|de-CH|
-|台湾|繁体字中国語|zh-TW|
+|台湾|Traditional Chinese|zh-TW|
 |トルコ|トルコ語|tr-TR|
 |イギリス|英語|en-GB|
-|米国|英語|en-US|
-|米国|スペイン語|es-US|
+|United States|英語|ja-JP|
+|United States|スペイン語|es-US|
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Bing News Search エンドポイントの詳細については、[News Image Search API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)を参照してください。

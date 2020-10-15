@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: dac1a09b7984cdc8deca22ced1e8018a761979e2
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 1796566c0a775e5810c387a01e0b54983727fa37
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91531617"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951402"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>クライアント アプリにオートコンプリートと検索候補を追加する
 
@@ -141,7 +141,7 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 C# と MVC アプリケーションを使用している場合は、Controllers ディレクトリにある **HomeController.cs** ファイルで、候補の結果用のクラスを作成できます。 .NET の場合、Suggest 関数は [DocumentsOperationsExtensions.Suggest メソッド](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest)に基づいています。 .NET SDK の詳細については、「[.NET アプリケーションから Azure Cognitive Search を使用する方法](./search-howto-dotnet-sdk.md)」を参照してください。
 
-`InitSearch` メソッドにより、Azure Cognitive Search サービスに対して認証済みの HTTP インデックス クライアントが作成されます。 [SuggestParameters](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggestparameters) クラスのプロパティによって、結果で検索され返されるフィールド、一致の数、およびあいまい一致を使用するかどうかが決まります。 
+`InitSearch` メソッドにより、Azure Cognitive Search サービスに対して認証済みの HTTP インデックス クライアントが作成されます。 [SuggestParameters](/dotnet/api/microsoft.azure.search.models.suggestparameters) クラスのプロパティによって、結果で検索され返されるフィールド、一致の数、およびあいまい一致を使用するかどうかが決まります。 
 
 オートコンプリートの場合、あいまい一致は 1 つの編集距離に制限されます (1 つの文字が省略されているか間違っています)。 オートコンプリート クエリであいまい一致が発生した場合、インデックスのサイズとそのシャード化方法に応じて、予期しない結果が生じることがあります。 詳細については、[パーティションとシャード化の概念](search-capacity-planning.md#concepts-search-units-replicas-partitions-shards)に関するページをご覧ください。
 

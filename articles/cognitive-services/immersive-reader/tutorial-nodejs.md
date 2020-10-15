@@ -12,10 +12,10 @@ ms.date: 01/14/2020
 ms.author: metan
 ms.custom: devx-track-js
 ms.openlocfilehash: 1ac23ad66cadc553095ff869b665a6bba2fba6f3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91262282"
 ---
 # <a name="tutorial-launch-the-immersive-reader-nodejs"></a>チュートリアル:Immersive Reader の起動 (Node.js)

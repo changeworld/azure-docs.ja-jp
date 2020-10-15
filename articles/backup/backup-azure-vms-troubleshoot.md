@@ -4,12 +4,12 @@ description: この記事では、Azure 仮想マシンのバックアップと�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 39bc6178d0cabf6c0220d2c54e0c532a6f9a5aa2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 908c7e4bc0ca15d952ef1d4d969c5bf686e0bdc3
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316734"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058116"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure 仮想マシンでのバックアップ エラーのトラブルシューティング
 
@@ -31,8 +31,7 @@ ms.locfileid: "91316734"
 * **[イベント ログ]** には、他のバックアップ製品 (Windows Server バックアップなど) からのものであり、Azure Backup が原因ではないバックアップの失敗が表示される場合があります。 次の手順を使用して、Azure Backup に関する問題かどうかを確認します。
   * イベント ソースまたはメッセージで **[バックアップ]** エントリのエラーが発生した場合は、Azure IaaS VM のバックアップによるバックアップが成功したかどうか、および復元ポイントが目的のスナップショットの種類で作成されたかどうかを確認します。
   * Azure Backup が機能している場合は、別のバックアップ ソリューションの問題である可能性があります。
-  * Azure Backup は正常に動作したが、"Windows Server バックアップ" が失敗したイベント ビューアー エラー 517 の例を次に示します。<br>
-    ![Windows Server バックアップの失敗](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
+  * Azure Backup は正常に動作したが、"Windows Server バックアップ" が失敗したイベント ビューアー エラー 517 の例を次に示します。![Windows Server バックアップの失敗](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
   * Azure Backup が失敗した場合は、この記事の「一般的な VM バックアップのエラー」セクションの対応するエラー コードを確認してください。
 
 ## <a name="common-issues"></a>一般的な問題
@@ -106,31 +105,33 @@ Windows サービス **COM+ System** Application での問題のためにバッ�
 このエラーは、VSS ライターが正しくない状態にあったために発生します。 Azure Backup 拡張機能は、VSS ライターと連携してディスクのスナップショットを作成します。 この問題を解決するには、次の手順に従ってください。
 
 手順 1:状態が正しくない VSS ライターを再起動します。
-- 管理者特権でのコマンド プロンプトから、```vssadmin list writers``` を実行します。
-- 出力には、すべての VSS ライターとそれらの状態が含まれています。 状態が **[[1] 安定]** ではない VSS ライターごとに、対応する VSS ライターのサービスを再起動します。 
-- サービスを再起動するには、管理者特権でのコマンド プロンプトから次のコマンドを実行します。
+
+* 管理者特権でのコマンド プロンプトから、```vssadmin list writers``` を実行します。
+* 出力には、すべての VSS ライターとそれらの状態が含まれています。 状態が **[[1] 安定]** ではない VSS ライターごとに、対応する VSS ライターのサービスを再起動します。
+* サービスを再起動するには、管理者特権でのコマンド プロンプトから次のコマンドを実行します。
 
  ```net stop serviceName``` <br>
  ```net start serviceName```
 
 > [!NOTE]
 > サービスによっては、再起動すると運用環境に影響を与えるものがあります。 承認プロセスが先に実行され、スケジュールされたダウンタイムにサービスが再起動されることを確認してください。
- 
-   
+
 手順 2:VSS ライターを再起動しても問題が解決しなかった場合は、管理者特権でのコマンド プロンプトから (管理者として) 次のコマンドを実行して、BLOB スナップショットではスレッドが作成されないようにします。
 
 ```console
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThreads /t REG_SZ /d True /f
 ```
+
 手順 3:手順 1 と 2 で問題が解決されなかった場合、IOPS が制限されているために VSS ライターがタイムアウトしたことが原因である可能性があります。<br>
 
 確認するには、"***システムおよびイベント ビューアーのアプリケーション ログ***" に移動し、次のエラー メッセージがあるかどうかを確認します。<br>
 *The shadow copy provider timed out while holding writes to the volume being shadow copied. (シャドウ コピーされるボリュームへの書き込みを保持している間に、シャドウ コピー プロバイダーがタイムアウトしました。)This is probably due to excessive activity on the volume by an application or a system service. (これは、アプリケーションまたはシステム サービスによるボリュームでの過剰なアクティビティが原因である可能性があります。)Try again later when activity on the volume is reduced. (ボリュームのアクティビティが減ったら、後でもう一度お試しください。)*<br>
 
 解決方法:
-- VM ディスク全体に負荷を分散させることができるかどうかを確認します。 これにより、1 つのディスクの負荷が軽減されます。 [ストレージ レベルで診断メトリックを有効にすることによって、IOPS 調整を確認](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics#install-and-run-performance-diagnostics-on-your-vm)できます。
-- バックアップ ポリシーを変更して、VM の負荷が最も低いオフピーク時間帯にバックアップを実行します。
-- より高い IOPS をサポートするように Azure ディスクをアップグレードします。 [詳しくはこちらをご覧ください](https://docs.microsoft.com/azure/virtual-machines/disks-types)
+
+* VM ディスク全体に負荷を分散させることができるかどうかを確認します。 これにより、1 つのディスクの負荷が軽減されます。 [ストレージ レベルで診断メトリックを有効にすることによって、IOPS 調整を確認](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics#install-and-run-performance-diagnostics-on-your-vm)できます。
+* バックアップ ポリシーを変更して、VM の負荷が最も低いオフピーク時間帯にバックアップを実行します。
+* より高い IOPS をサポートするように Azure ディスクをアップグレードします。 [詳しくはこちらをご覧ください](https://docs.microsoft.com/azure/virtual-machines/disks-types)
 
 ### <a name="extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state"></a>ExtensionFailedVssServiceInBadState - VSS (ボリューム シャドウ コピー) サービスが正しくない状態にあるため、スナップショット操作に失敗しました
 
@@ -140,31 +141,32 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
 このエラーは、VSS サービスが正しくない状態にあったために発生します。 Azure Backup 拡張機能は、VSS サービスと連携してディスクのスナップショットを作成します。 この問題を解決するには、次の手順に従ってください。
 
 VSS (ボリューム シャドウ コピー) サービスを再起動します。
-- Services.msc に移動し、'ボリューム シャドウ コピー サービス' を再起動します。<br>
+
+* Services.msc に移動し、'ボリューム シャドウ コピー サービス' を再起動します。<br>
 (または)<br>
-- 管理者特権のコマンド プロンプトで、次のコマンドを実行します。
+* 管理者特権のコマンド プロンプトで、次のコマンドを実行します。
 
  ```net stop VSS``` <br>
  ```net start VSS```
 
- 
 問題が引き続き発生する場合は、スケジュールされたダウンタイムで VM を再起動します。
 
 ### <a name="usererrorskunotavailable---vm-creation-failed-as-vm-size-selected-is-not-available"></a>UserErrorSkuNotAvailable - 選択された VM サイズを使用できないため、VM の作成に失敗しました
 
-エラー コード:UserErrorSkuNotAvailable エラー メッセージ: 選択した VM サイズが使用できないため、VM の作成に失敗しました。 
- 
+エラー コード:UserErrorSkuNotAvailable エラー メッセージ: 選択した VM サイズが使用できないため、VM の作成に失敗しました。
+
 このエラーは、復元操作中に選択された VM サイズがサポートされていないサイズであるために発生します。 <br>
 
 この問題を解決するには、復元操作中に [[ディスクの復元]](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) オプションを使用します。 これらのディスクは、[Powershell コマンドレット](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks)を使用して、[使用可能なサポートされている VM サイズ](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-compute-support)の一覧から VM を作成するために使用します。
 
 ### <a name="usererrormarketplacevmnotsupported---vm-creation-failed-due-to-market-place-purchase-request-being-not-present"></a>UserErrorMarketPlaceVMNotSupported - Marketplace の購入要求が存在しないため、VM の作成に失敗しました
 
-エラー コード:UserErrorMarketPlaceVMNotSupported エラー メッセージ: Marketplace の購入要求が存在しないため、VM の作成に失敗しました。 
- 
+エラー コード:UserErrorMarketPlaceVMNotSupported エラー メッセージ: Marketplace の購入要求が存在しないため、VM の作成に失敗しました。
+
 Azure Backup は、Azure Marketplace で入手できる VM のバックアップと復元をサポートしています。 このエラーは、Azure Marketplace で入手できなくなった (特定のプラン/発行元が設定された) VM を復元しようとしたときに発生します。詳細については、[ここ](https://docs.microsoft.com/legal/marketplace/participation-policy#offering-suspension-and-removal)を参照してください。
-- この問題を解決するには、復元操作中に [[ディスクの復元]](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) オプションを使用した後、[PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks) または [Azure CLI](https://docs.microsoft.com/azure/backup/tutorial-restore-disk) コマンドレットを使用して、その VM に対応する最新のマーケットプレース情報で VM を作成します。
-- 発行元にマーケットプレース情報がない場合は、データ ディスクを使用してデータを取得し、それを既存の VM にアタッチできます。
+
+* この問題を解決するには、復元操作中に [[ディスクの復元]](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) オプションを使用した後、[PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks) または [Azure CLI](https://docs.microsoft.com/azure/backup/tutorial-restore-disk) コマンドレットを使用して、その VM に対応する最新のマーケットプレース情報で VM を作成します。
+* 発行元にマーケットプレース情報がない場合は、データ ディスクを使用してデータを取得し、それを既存の VM にアタッチできます。
 
 ### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure - バックアップ拡張機能の構成の解析に失敗しました
 
@@ -244,7 +246,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 **手順 2**:VM の負荷が少ない (たとえば、CPU または IOps が低い) 時間帯へのバックアップ スケジュールの変更を試みます
 
-**手順 3**:[VM のサイズの増加](https://azure.microsoft.com/blog/resize-virtual-machines/)を試み、操作を再試行します。
+**手順 3**:[VM のサイズの増加](https://docs.microsoft.com/azure/virtual-machines/windows/resize-vm)を試み、操作を再試行します。
 
 ### <a name="320001-resourcenotfound---could-not-perform-the-operation-as-vm-no-longer-exists--400094-bcmv2vmnotfound---the-virtual-machine-doesnt-exist--an-azure-virtual-machine-wasnt-found"></a>320001、ResourceNotFound - VM が存在しないため、操作を実行できませんでした / 400094、BCMV2VMNotFound - 仮想マシンが存在しません / Azure 仮想マシンが見つかりませんでした
 
@@ -315,12 +317,12 @@ VM 上のすべてのドライブで BitLocker をオフにして、VSS の問�
 
 ## <a name="restore"></a>復元
 
-#### <a name="disks-appear-offline-after-file-restore"></a>ファイル復元後にディスクがオフラインと表示される
+### <a name="disks-appear-offline-after-file-restore"></a>ファイル復元後にディスクがオフラインと表示される
 
-復元後、ディスクがオフラインになっている場合は、次のことを行います。 
+復元後、ディスクがオフラインになっている場合は、次のことを行います。
+
 * スクリプトが実行されるマシンが OS の要件を満たしているかどうかを確認します。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#system-requirements)。  
 * 同じソースに復元していないことを確実にします。[詳細については、こちらを参照してください](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#original-backed-up-machine-versus-another-machine)。
-
 
 | エラーの詳細 | 回避策 |
 | --- | --- |

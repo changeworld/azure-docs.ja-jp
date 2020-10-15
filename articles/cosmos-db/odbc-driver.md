@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 10/02/2019
 ms.author: sngun
 ms.openlocfilehash: 1bda235e5f3f867762457d0dc8214bbadc88059e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87084825"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>BI 分析ツールと ODBC ドライバーを使用して Azure Cosmos DB に接続する
@@ -56,27 +56,16 @@ Azure Cosmos DB はスキーマレス データベースであり、厳格なス
 
 1. **[Azure Cosmos DB ODBC Driver SDN Setup]\(Azure Cosmos DB ODBC ドライバーの SDN セットアップ\)** ウィンドウに、次の内容を入力します。 
 
-    :::image type="content" source="./media/odbc-driver/odbc-driver-dsn-setup.png" alt-text="Azure Cosmos DB ODBC ドライバーの DSN セットアップ ウィンドウ":::
+    :::image type="content" source="./media/odbc-driver/odbc-driver-dsn-setup.png" alt-text="Azure Cosmos DB ODBC データ ソース管理者":::
     - **データ ソース名**:ODBC DSN の独自のフレンドリ名。 この名前は Azure Cosmos DB アカウントに対して一意なので、複数のアカウントがある場合は適切に名前を付けてください。
     - **説明**:データ ソースの簡単な説明。
     - **[Host]\(ホスト\)** : Azure Cosmos DB アカウントの URI。 Azure Portal の [Azure Cosmos DB キー] ページから取得できます。次のスクリーンショットをご覧ください。 
     - **アクセス キー**:Azure portal の [Azure Cosmos DB キー] ページから、プライマリまたはセカンダリ、読み取り/書き込みまたは読み取り専用のキーを選びます。次のスクリーンショットをご覧ください。 DSN を読み取り専用のデータ処理とレポート作成に使用する場合は、読み取り専用キーを使用することをお勧めします。
-    :::image type="content" source="./media/odbc-driver/odbc-cosmos-account-keys.png" alt-text="[Azure Cosmos DB キー] ページ":::
-    - **Encrypt Access Key for (アクセスキーの暗号化)** :このコンピューターのユーザーに基づいた最適な選択肢を選択します。 
-    
-1. **[テスト]** ボタンをクリックして、Azure Cosmos DB アカウントに接続できることを確認します。 
-
-1.  **[詳細オプション]** をクリックして、次の値を設定します。
-    *  **REST API バージョン**: 操作に使用する [REST API バージョン](/rest/api/cosmos-db/)を選択します。 既定値は 2015-12-16 です。 [大きいパーティションキー](large-partition-keys.md)を持つコンテナーがあり、REST API バージョン 2018-12-31 が必要な場合:
-        - REST API バージョンとして「**2018-12-31**」を入力します
-        - **スタート** メニューで「regedit」と入力し、**レジストリ エディター** アプリケーションを検索して開きます。
-        - レジストリ エディターで、次のパスに移動します。**Computer\HKEY_LOCAL_MACHINE\SOFTWARE\ODBC\ODBC.INI**
-        - DSN と同じ名前の新しいサブキーを作成します。例: "Contoso Account ODBC DSN"
-        - "Contoso Account ODBC DSN" サブキーに移動します。
+    :::image type="content" source="./media/odbc-driver/odbc-cosmos-account-keys.png" alt-text="Azure Cosmos DB ODBC データ ソース管理者" サブキーに移動します。
         - 右クリックして、新しい**文字列**値を追加します。
             - 値の名前: **IgnoreSessionToken**
             - 値のデータ:**1**
-            :::image type="content" source="./media/odbc-driver/cosmos-odbc-edit-registry.png" alt-text="レジストリ エディターの設定":::
+            :::image type="content" source="./media/odbc-driver/cosmos-odbc-edit-registry.png" alt-text="Azure Cosmos DB ODBC データ ソース管理者":::
     - **Query Consistency (クエリの一貫性)** :操作の[一貫性レベル](consistency-levels.md)を選択します。 既定ではセッションです。
     - **再試行回数**:サービス レートの制限のために最初の要求が完了しない場合、操作を再試行する回数を入力します。
     - **スキーマ ファイル**:これにはオプションがいくつかあります。
@@ -86,7 +75,7 @@ Azure Cosmos DB はスキーマレス データベースであり、厳格なス
 
 1. 操作を完了して **[Azure Cosmos DB ODBC Driver DSN Setup (Azure Cosmos DB ODBC ドライバーの DSN セットアップ)]** ウィンドウを閉じると、新しいユーザー DSN が [ユーザー DSN] タブに追加されます。
 
-    :::image type="content" source="./media/odbc-driver/odbc-driver-user-dsn.png" alt-text="[ユーザー DSN] タブの新しい Azure Cosmos DB ODBC DSN":::
+    :::image type="content" source="./media/odbc-driver/odbc-driver-user-dsn.png" alt-text="Azure Cosmos DB ODBC データ ソース管理者":::
 
 ## <a name="step-3-create-a-schema-definition-using-the-container-mapping-method"></a><a id="#container-mapping"></a>手順 3:コンテナー マッピングの方法を使ってスキーマ定義を作成する
 
@@ -94,15 +83,7 @@ Azure Cosmos DB はスキーマレス データベースであり、厳格なス
 
 1. 「[Azure Cosmos データベースに接続する](#connect)」の手順 1 から 4 が完了したら、 **[Azure Cosmos DB ODBC Driver DSN Setup]\(Azure Cosmos DB ODBC ドライバーの DSN セットアップ\)** ウィンドウの **[スキーマ エディター]** をクリックします。
 
-    :::image type="content" source="./media/odbc-driver/odbc-driver-schema-editor.png" alt-text="Azure Cosmos DB ODBC ドライバーの DSN セットアップ ウィンドウの [スキーマ エディター] ボタン":::
-1. **[スキーマ エディター]** ウィンドウで、 **[新規作成]** をクリックします。
-    **[スキーマを生成する]** ウィンドウに、Azure Cosmos DB アカウントのすべてのコンテナーが表示されます。 
-
-1. サンプリングするコンテナーを 1 つまたは複数選択し、 **[サンプル]** をクリックします。 
-
-1. **[デザイン ビュー]** タブに、データベース、スキーマ、テーブルが表示されます。 [テーブル ビュー] には、列名 (SQL 名、ソース名など) と関連付けられている一連のプロパティがスキャンによって表示されます。
-    列ごとに、列の SQL 名、SQL 型、SQL の長さ (該当する場合)、スケール (該当する場合)、有効桁数 (該当する場合)、Null 許容を変更できます。
-    - クエリ結果から列を除外したい場合は、 **[列の非表示]** を **true** に設定できます。 [列の非表示] が true でマークされた列は、まだスキーマの一部ではあるものの、選択やプロジェクションでは返されません。 たとえば、Azure Cosmos DB のシステムで必要な "_" で始まるすべてのプロパティを非表示にすることができます。
+    :::image type="content" source="./media/odbc-driver/odbc-driver-schema-editor.png" alt-text="Azure Cosmos DB ODBC データ ソース管理者" で始まるすべてのプロパティを非表示にすることができます。
     - **ID** 列は非表示にできない唯一のフィールドですが、これは正規化されたスキーマでプライマリ キーとして使用されるためです。 
 
 1. スキーマの定義を完了したら、 **[ファイル]**  |  **[保存]** をクリックし、スキーマを保存するディレクトリに移動して、 **[保存]** をクリックします。
@@ -162,7 +143,7 @@ Azure Cosmos DB はスキーマレス データベースであり、厳格なス
     
 新しいリンク サーバー名を表示するには、リンク サーバーの一覧を更新します。
 
-:::image type="content" source="./media/odbc-driver/odbc-driver-linked-server-ssms.png" alt-text="SSMS でのリンク サーバー":::
+:::image type="content" source="./media/odbc-driver/odbc-driver-linked-server-ssms.png" alt-text="Azure Cosmos DB ODBC データ ソース管理者":::
 
 ### <a name="query-linked-database"></a>リンクされたデータベースにクエリを実行する
 
@@ -196,7 +177,7 @@ Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server
 
 データのビューを作成するには、 **[スキーマ エディター]** ウィンドウの **[ビューの定義]** 列で、サンプリングするコンテナーの行の **[追加]** をクリックします。 
 
-:::image type="content" source="./media/odbc-driver/odbc-driver-create-view.png" alt-text="データのビューを作成する":::
+:::image type="content" source="./media/odbc-driver/odbc-driver-create-view.png" alt-text="Azure Cosmos DB ODBC データ ソース管理者":::
 
 
 次に **[ビューの定義]** ウィンドウで、次の操作をします。
@@ -205,7 +186,7 @@ Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server
 
 1. **[ビューの編集]** ウィンドウで、Azure Cosmos DB クエリを入力します。 これは、たとえば `SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Manager FROM c WHERE c.City = "Seattle"` のような [Azure Cosmos DB SQL](how-to-sql-query.md) クエリである必要があります。次に **[OK]** をクリックします。
 
-    :::image type="content" source="./media/odbc-driver/odbc-driver-create-view-2.png" alt-text="ビューの作成時にクエリを追加する":::
+    :::image type="content" source="./media/odbc-driver/odbc-driver-create-view-2.png" alt-text="Azure Cosmos DB ODBC データ ソース管理者":::
 
 
 ビューは好きな数だけ作成できます。 ビューの定義が完了したら、データをサンプリングできます。 
@@ -218,21 +199,21 @@ Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server
 
 1. **[データの取得]** をクリックします。
 
-    :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data.png" alt-text="Power BI Desktop でデータを取得する":::
+    :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data.png" alt-text="Azure Cosmos DB ODBC データ ソース管理者":::
 
 1. **[データの取得]** ウィンドウで、 **[Other]** (その他) |  **[ODBC]**  |  **[接続]** の順にクリックします。
 
-    :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data-2.png" alt-text="Power BI の [データの取得] で ODBC データ ソースを選択する":::
+    :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data-2.png" alt-text="Azure Cosmos DB ODBC データ ソース管理者":::
 
 1. **[From ODBC]** (ODBC から) ウィンドウで作成したデータ ソース名を選択し、 **[OK]** をクリックします。 **[詳細オプション]** エントリは空白のままにしておくことができます。
 
-   :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data-3.png" alt-text="Power BI の [データの取得] でデータ ソース名 (DSN) を選択する":::
+   :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data-3.png" alt-text="Azure Cosmos DB ODBC データ ソース管理者":::
 
 1. **[ODBC ドライバーを使用してデータ ソースにアクセスします]** ウィンドウで、 **[既定またはカスタム]** を選択し、 **[接続]** をクリックします。 **資格情報の接続文字列プロパティ**を含める必要はありません。
 
 1. **[ナビゲーター]** ウィンドウの左ペインでデータベースとスキーマを展開し、テーブルを選択します。 結果ペインには作成したスキーマを使用するデータが含まれています。
 
-    :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data-4.png" alt-text="Power BI の [データの取得] でテーブルを選択する":::
+    :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data-4.png" alt-text="Azure Cosmos DB ODBC データ ソース管理者":::
 
 1. Power BI Desktop でデータを視覚化するには、テーブル名の前のボックスをオンにし、 **[読み込む]** をクリックします。
 

@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: 30e8bd7fda08795ecc1aa78b0d2507e7c915ad0d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87087256"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Azure Storage の接続文字列を構成する
@@ -141,5 +141,5 @@ EndpointSuffix=core.chinacloudapi.cn;
 ## <a name="next-steps"></a>次のステップ
 
 * [ローカルでの Azure Storage の開発に Azurite エミュレーターを使用する](../common/storage-use-azurite.md)
-* [Azure Storage Explorer](storage-explorers.md)
+* [Azure ストレージ エクスプローラー](storage-explorers.md)
 * [Shared Access Signatures (SAS) の使用](storage-sas-overview.md)

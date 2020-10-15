@@ -4,10 +4,10 @@ description: この記事では、Azure DevTest Labs でアクティビティ �
 ms.topic: how-to
 ms.date: 07/10/2020
 ms.openlocfilehash: 24b5eb25f1c8c9044ad6e77545381a43a11714f9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87094633"
 ---
 # <a name="view-activity-logs-for-labs-in-azure-devtest-labs"></a>Azure DevTest Labs でアクティビティ ログを表示する 
@@ -27,19 +27,19 @@ ms.locfileid: "87094633"
     左側のメニューで :::image type="content" source="./media/activity-logs/configuration-policies-link.png" alt-text="[構成とポリシー]"::: を選択します。
 1. **[構成とポリシー]** ページの **[管理]** で、左側のメニューから **[アクティビティ ログ]** を選択します。 ラボで実行された操作のエントリが表示されます。 
 
-    :::image type="content" source="./media/activity-logs/activity-log.png" alt-text="アクティビティ ログ":::    
+    :::image type="content" source="./media/activity-logs/activity-log.png" alt-text="[構成とポリシー]":::    
 1. イベントを選択すると、その詳細が表示されます。 **[概要]** ページには、操作名、タイム スタンプ、操作の実行者などの情報が表示されます。 
     
-    :::image type="content" source="./media/activity-logs/stop-vm-event.png" alt-text="VM の停止イベント - 概要":::        
+    :::image type="content" source="./media/activity-logs/stop-vm-event.png" alt-text="[構成とポリシー]":::        
 1. **[JSON]** タブに切り替えると、詳細が表示されます。 次の例では、VM の名前と VM 上で実行された操作 (停止) を確認できます。
 
-    :::image type="content" source="./media/activity-logs/stop-vm-event-json.png" alt-text="VM の停止イベント - JSON":::           
+    :::image type="content" source="./media/activity-logs/stop-vm-event-json.png" alt-text="[構成とポリシー]":::           
 1. **[変更履歴 (プレビュー)]** タブに切り替えると、変更の履歴が表示されます。 次の例では、VM 上で実行された変更を確認できます。 
 
-    :::image type="content" source="./media/activity-logs/change-history.png" alt-text="VM の停止イベント - 変更履歴":::             
+    :::image type="content" source="./media/activity-logs/change-history.png" alt-text="[構成とポリシー]":::             
 1. 変更履歴リストで変更を選択すると、変更の詳細が表示されます。 
 
-    :::image type="content" source="./media/activity-logs/change-details.png" alt-text="VM の停止イベント - 変更の詳細":::             
+    :::image type="content" source="./media/activity-logs/change-details.png" alt-text="[構成とポリシー]":::             
 
 アクティビティ ログの詳細については、「[Azure アクティビティ ログ](../azure-monitor/platform/activity-log.md)」を参照してください。
 

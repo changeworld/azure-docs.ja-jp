@@ -6,10 +6,10 @@ author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
 ms.openlocfilehash: 3cd43963175594fcdc1c3c67d6b2493ce1ccd313
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87321923"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications-with-istio---deprecated"></a>Istio を使用した Kubernetes でホストされるアプリケーションに対するゼロ インストルメンテーション アプリケーション監視 - 非推奨

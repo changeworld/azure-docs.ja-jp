@@ -2,14 +2,14 @@
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 09/24/2020
+ms.date: 09/28/2020
 ms.author: jingwang
-ms.openlocfilehash: aee830c86476d645839cc14ac1aea780c3b928ee
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: d0b88fb81ca539949a8a2bcf8764d3732b1dcdfe
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91643749"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945833"
 ---
 | カテゴリ              | データ ストア                                                   | [コピー アクティビティ](../articles/data-factory/copy-activity-overview.md) (ソース/シンク) | [マッピング データ フロー](../articles/data-factory/concepts-data-flow-overview.md) (ソース/シンク) | [ルックアップ アクティビティ](../articles/data-factory/control-flow-lookup-activity.md) | [メタデータの取得アクティビティ](../articles/data-factory/control-flow-get-metadata-activity.md)/[検証アクティビティ](../articles/data-factory/control-flow-validation-activity.md) | [削除アクティビティ](../articles/data-factory/delete-activity.md) |
 | :-------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | ------------------------------------------------------------ | :----------------------------------------------------------- |
@@ -59,6 +59,7 @@ ms.locfileid: "91643749"
 | **NoSQL**             | [Cassandra](../articles/data-factory/connector-cassandra.md) | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [Couchbase (プレビュー)](../articles/data-factory/connector-couchbase.md) | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [MongoDB](../articles/data-factory/connector-mongodb.md)     | ✓/−                                                          |                                                              |                                                              |                                                              |                                                              |
+| &nbsp;                | [MongoDB Atlas](../articles/data-factory/connector-mongodb-atlas.md)     | ✓/−                                                          |                                                              |                                                              |                                                              |                                                              |
 | **[最近使ったファイル]**              | [Amazon S3](../articles/data-factory/connector-amazon-simple-storage-service.md) | ✓/−                                                          |                                                              | ✓                                                            | ✓                                                            | ✓                                                            |
 | &nbsp;                | [ファイル システム](../articles/data-factory/connector-file-system.md) | ✓/✓                                                          |                                                              | ✓                                                            | ✓                                                            | ✓                                                            |
 | &nbsp;                | [FTP](../articles/data-factory/connector-ftp.md)             | ✓/−                                                          |                                                              | ✓                                                            | ✓                                                            | ✓                                                            |

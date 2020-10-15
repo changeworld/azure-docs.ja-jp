@@ -7,10 +7,10 @@ ms.date: 06/15/2020
 ms.topic: article
 ms.custom: devx-track-csharp
 ms.openlocfilehash: ebde1be459078f4f3473ebc3042d8acebcce910a
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89613739"
 ---
 # <a name="debug-rendering"></a>デバッグ レンダリング

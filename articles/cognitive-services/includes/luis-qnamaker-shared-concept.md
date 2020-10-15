@@ -8,10 +8,10 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/16/2020
 ms.openlocfilehash: ac0192da3afa76c3c21056f218f2b249c44d1c36
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87133866"
 ---
 Cognitive Services には、[Language Understanding](../luis/what-is-luis.md) と [QnA Maker](../qnamaker/overview/overview.md) という 2 つの自然言語処理サービスが用意されており、それぞれ異なる目的があります。 各サービスをどのようなときに使用し、それぞれのサービスがどのように補完されるかについて説明します。
