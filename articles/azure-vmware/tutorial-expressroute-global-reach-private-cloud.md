@@ -3,12 +3,12 @@ title: チュートリアル - オンプレミス環境をプライベート ク
 description: Azure VMware Solution のプライベート クラウドに対する ExpressRoute Global Reach ピアリングを作成する方法について説明します。
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 07b7e1c2636f3754eda56af574586a1027403d3e
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 9de6cbe177ac8d2ca4957e80c7ca1072a0d7985e
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91576729"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948308"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>チュートリアル:オンプレミス環境をプライベート クラウドにピアリングする
 
@@ -83,7 +83,7 @@ ExpressRoute Global Reach を使用して 2 つの ExpressRoute 回線間の接�
 オンプレミス環境と Azure VMware Solution プライベート クラウドとの間で ExpressRoute Global Reach ピアリングを構成する助けとなるように、具体的な詳細や例によって [CLI コマンド](../expressroute/expressroute-howto-set-global-reach-cli.md)が強化されてきています。  
 
 > [!TIP]  
-> Azure CLI コマンド出力を簡潔にするために、以下の手順では [`–query` 引数を使用して JMESPath クエリを実行して、必要な結果のみを表示](https://docs.microsoft.com/cli/azure/query-azure-cli)しています。
+> Azure CLI コマンド出力を簡潔にするために、以下の手順では [`–query` 引数を使用して JMESPath クエリを実行して、必要な結果のみを表示](/cli/azure/query-azure-cli)しています。
 
 
 1. オンプレミスの ExpressRoute 回線と同じサブスクリプションを使用して Azure portal にサインインし、Cloud Shell を開きます。 シェルは Bash のままにしてください。

@@ -4,10 +4,10 @@ description: イベントベースのビデオ記録 (EVR) とは、イベント
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.openlocfilehash: f3efd2b9be41928ab4721d6db4aa84c0f1f57e2f
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89568502"
 ---
 # <a name="event-based-video-recording"></a>イベントベースのビデオ記録  
@@ -46,7 +46,7 @@ ms.locfileid: "89568502"
 このユース ケースでは、別の IoT センサーからのシグナルを使用して、ビデオの記録をトリガーできます。 次の図は、このユース ケースに対応するメディア グラフをグラフィカルに表したものです。 このようなメディア グラフのグラフ トポロジの JSON 表現については、[こちら](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/evr-hubMessage-files/topology.json)を参照してください。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/event-based-video-recording/other-sources.svg" alt-text="他のソースからのイベントに基づくビデオ記録":::
+> :::image type="content" source="./media/event-based-video-recording/other-sources.svg" alt-text="モーション検出に基づくビデオ記録":::
 
 この図では、外部センサーによって IoT Edge ハブにイベントが送信されます。 その後イベントは、[IoT Hub メッセージ ソース](media-graph-concept.md#iot-hub-message-source) ノード経由でシグナル ゲート プロセッサ ノードにルーティングされます。 シグナル ゲート プロセッサ ノードの動作は、前のユース ケースと同じです。ノードは、外部イベントによってトリガーされると開き、RTSP ソース ノードからファイル シンク ノード (または資産シンク ノード) へのライブ ビデオ フィードがフローできるようになります。 
 
@@ -57,7 +57,7 @@ ms.locfileid: "89568502"
 このユース ケースでは、外部のロジック システムからのシグナルに基づいてビデオ クリップを記録できます。 このようなユース ケースの例は、高速道路の交通状況のビデオ フィードでトラックが検出されたときにだけビデオ クリップを記録する場合です。 次の図は、このユース ケースに対応するメディア グラフをグラフィカルに表したものです。 このようなメディア グラフのグラフ トポロジの JSON 表現については、[こちら](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json)を参照してください。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/event-based-video-recording/external-inferencing-module.svg" alt-text="外部推論モジュールに基づくビデオ記録":::
+> :::image type="content" source="./media/event-based-video-recording/external-inferencing-module.svg" alt-text="モーション検出に基づくビデオ記録":::
 
 この図では、RTSP ソース ノードによってカメラからのライブ ビデオ フィードがキャプチャされ、2 つのブランチに配信されています。1 つには[シグナル ゲート プロセッサ](media-graph-concept.md#signal-gate-processor) ノードがあり、もう 1 つでは [HTTP 拡張](media-graph-concept.md)ノードを使用して外部のロジック モジュールにデータが送信されています。 HTTP 拡張ノードを使用すると、メディア グラフで REST を使用して外部の推論サービスに画像フレーム (JPEG、BMP、または PNG 形式) を送信できます。 このシグナル パスでは、通常、低フレーム レート (5 fps 未満) のみがサポートされます。 [フレーム レート フィルター プロセッサ](media-graph-concept.md#frame-rate-filter-processor) ノードを使用すると、HTTP 拡張ノードに送信されるビデオのフレーム レートを下げることができます。
 

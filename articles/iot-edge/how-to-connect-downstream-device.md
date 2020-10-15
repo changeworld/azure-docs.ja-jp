@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 78db26318fc95adec1b31799ed143b3e4a6b3acc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4faec8f79d856b86052745ad530e17b9b25634e8
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91281458"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045841"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>ダウンストリーム デバイスを Azure IoT Edge ゲートウェイに接続する
 
@@ -77,7 +77,7 @@ IoT Edge 証明書の詳細と、運用環境での実装の詳細について�
 
 ## <a name="provide-the-root-ca-certificate"></a>ルート CA 証明書を指定する
 
-ゲートウェイ デバイスの証明書を検証するために、ダウンストリーム デバイスには、ルート CA 証明書の独自のコピーが必要です。 IoT Edge Git リポジトリで提供されているスクリプトを使用してテスト証明書を作成した場合、ルート CA 証明書は **azure-iot-test-only.root.ca.cert.pem** と呼ばれます。 他のダウンストリーム デバイス準備手順の一部としてまだ行っていない場合は、この証明書ファイルをダウンロード デバイス上の任意のディレクトリに移動します。 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) のようなサービスや、[Secure copy protocol](https://www.ssh.com/ssh/scp/) のような関数を使用して、証明書ファイルを削除することができます。
+ゲートウェイ デバイスの証明書を検証するために、ダウンストリーム デバイスには、ルート CA 証明書の独自のコピーが必要です。 IoT Edge Git リポジトリで提供されているスクリプトを使用してテスト証明書を作成した場合、ルート CA 証明書は **azure-iot-test-only.root.ca.cert.pem** と呼ばれます。 他のダウンストリーム デバイス準備手順の一部としてまだ行っていない場合は、この証明書ファイルをダウンロード デバイス上の任意のディレクトリに移動します。 [Azure Key Vault](../key-vault/index.yml) のようなサービスや、[Secure copy protocol](https://www.ssh.com/ssh/scp/) のような関数を使用して、証明書ファイルを削除することができます。
 
 ## <a name="install-certificates-in-the-os"></a>OS に証明書をインストールする
 
@@ -98,7 +98,7 @@ sudo update-ca-certificates
 
 次の手順は、Windows ホストに CA 証明書をインストールする方法の例です。 この例は、前提条件の記事の **azure-iot-test-only.root.ca.cert.pem** 証明書を使用していること、およびダウンストリーム デバイス上の場所に証明書をコピー済みであることを前提にしています。
 
-証明書は、PowerShell の [Import-Certificate](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate?view=win10-ps) を使用して管理者としてインストールできます。
+証明書は、PowerShell の [Import-Certificate](/powershell/module/pkiclient/import-certificate?view=win10-ps) を使用して管理者としてインストールできます。
 
 ```powershell
 import-certificate  <file path>\azure-iot-test-only.root.ca.cert.pem -certstorelocation cert:\LocalMachine\root
@@ -113,7 +113,7 @@ import-certificate  <file path>\azure-iot-test-only.root.ca.cert.pem -certstorel
 
 この記事の後半にある .NET のサンプルで示すように、.NET API を使用してプログラムによって証明書をインストールすることもできます。
 
-一般にアプリケーションでは、TLS 経由で安全に接続するために、Windows で提供される [Schannel](https://docs.microsoft.com/windows/desktop/com/schannel) という TLS スタックを使用します。 Schannel で TLS 接続の確立を試みるには、すべての証明書が Windows 証明書ストアにインストールされている*必要があります*。
+一般にアプリケーションでは、TLS 経由で安全に接続するために、Windows で提供される [Schannel](/windows/desktop/com/schannel) という TLS スタックを使用します。 Schannel で TLS 接続の確立を試みるには、すべての証明書が Windows 証明書ストアにインストールされている*必要があります*。
 
 ## <a name="use-certificates-with-azure-iot-sdks"></a>証明書で Azure IoT SDK を使用する
 

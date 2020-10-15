@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 4df49b4e68769a907423c4edef9f8820df4d20b7
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83006484"
 ---
 ## <a name="locate-a-cloud-spatial-anchor"></a>クラウド空間アンカーを見つける

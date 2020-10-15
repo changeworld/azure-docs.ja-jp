@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
 ms.openlocfilehash: 5a06a0663601c221dd456b9cf4437cb9f32a18f8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81399899"
 ---
 :::row:::
     :::column span="3":::
-        C++ Speech SDK は Windows, Linux, macOSで使用できます。 詳細については、 <a href="https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech" target="_blank">Microsoft.CognitiveServices.Speech <span class="docon docon-navigate-external x-hidden-focus"> </span></a>を参照してください。
+        C++ 音声SDKはWindows, Linux, macOSで使用できます。 詳細については、 <a href="https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech" target="_blank">Microsoft.CognitiveServices.Speech <span class="docon docon-navigate-external x-hidden-focus"> </span></a>を参照してください。
     :::column-end:::
     :::column:::
         <br>
@@ -25,7 +25,7 @@ ms.locfileid: "81399899"
 
 #### <a name="c-nuget-package"></a>C++ NuGet パッケージ
 
-C++ Speech SDK は**パッケージマネージャー**から以下の`Install-Package`コマンドでインストールができます。
+C++ 音声SDKは**パッケージマネージャー**から以下の`Install-Package`コマンドでインストールができます。
 
 ```powershell
 Install-Package Microsoft.CognitiveServices.Speech
@@ -33,7 +33,7 @@ Install-Package Microsoft.CognitiveServices.Speech
 
 #### <a name="c-binaries-and-header-files"></a>C++バイナリファイルとヘッダーファイル
 
-または、 C++ Speech SDK をバイナリからインストールすることもできます。 <a href="https://aka.ms/csspeech/linuxbinary" target="_blank">.tarパッケージ<span class="docon docon-navigate-external x-hidden-focus"></span></a>としてSDKをダウンロードし、ファイルを任意のディレクトリにアンパックします。 このパッケージ (x86 と x64 の両方のターゲットアーキテクチャのヘッダーファイルを含む) の内容は、次のように構成されています：
+または、 C++ 音声SDK をバイナリからインストールすることもできます。 <a href="https://aka.ms/csspeech/linuxbinary" target="_blank">.tarパッケージ<span class="docon docon-navigate-external x-hidden-focus"></span></a>としてSDKをダウンロードし、ファイルを任意のディレクトリにアンパックします。 このパッケージ (x86 と x64 の両方のターゲットアーキテクチャのヘッダーファイルを含む) の内容は、次のように構成されています：
 
   | Path                   | 説明                                          |
   |------------------------|------------------------------------------------------|

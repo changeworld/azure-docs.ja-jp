@@ -8,10 +8,10 @@ ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 6b201565ae2bcadccf55cee78ade0e011e603a15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85515386"
 ---
 # <a name="develop-for-azure-files-with-c"></a>C++ での Azure Files 用の開発
@@ -369,5 +369,5 @@ Azure Storage についてさらに学習するには、次のリソースを参
 
 * [C++ 用ストレージ クライアント ライブラリ](https://github.com/Azure/azure-storage-cpp)
 * [C++ での Azure Storage ファイル サービスのサンプル](https://github.com/Azure-Samples/storage-file-cpp-getting-started)
-* [Azure Storage Explorer](https://go.microsoft.com/fwlink/?LinkID=822673&clcid=0x409)
+* [Azure 記憶域エクスプローラー](https://go.microsoft.com/fwlink/?LinkID=822673&clcid=0x409)
 * [Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)

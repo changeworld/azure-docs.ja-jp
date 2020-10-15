@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2414570a1d483cd7630e628b13c92dbdc331370d
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: ec98762ac5918437e8fdb8426b54b79b1fb5b222
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759137"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939724"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用して最初の検索アプリを作成する
 
@@ -69,7 +69,7 @@ Microsoft がホストするパブリック サンプル検索インデックス
 
 動作するアプリをすぐに入手するには、次の手順に従って、完成したコードをダウンロードして実行してください。
 
-1. GitHub で公開されている「[Create first app (初めてのアプリを作成する)](https://github.com/Azure-Samples/azure-search-dotnet-samples/v11)」サンプルを開きます。
+1. GitHub で公開されている「[Create first app (初めてのアプリを作成する)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11)」サンプルを開きます。
 
 1. [ルート フォルダー](https://github.com/Azure-Samples/azure-search-dotnet-samples)で、 **[Code]\(コード\)** の後に **[Clone]\(クローン\)** または **[Download ZIP]\(ZIP のダウンロード\)** を選択して、プロジェクトのプライベート ローカル コピーを作成します。
 

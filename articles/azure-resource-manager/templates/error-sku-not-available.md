@@ -3,16 +3,16 @@ title: SKU が使用できないエラー
 description: Azure Resource Manager でリソースをデプロイするときに、SKU が使用できないことを示すエラーのトラブルシューティングを行う方法について説明します。
 ms.topic: troubleshooting
 ms.date: 02/18/2020
-ms.openlocfilehash: 37ad70093cce4cea6689fecbc3b6ccb91db5017b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 15df8c5ff45994a03e12731cf3798f7f4c2a295b
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333224"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948614"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>SKU 利用不可エラーを解決する
 
-この記事では、**SkuNotAvailable** エラーを解決する方法について説明します。 そのリージョンまたはゾーン内で、あるいはビジネス ニーズを満たす代替のリージョンまたはゾーン内で適切な SKU が見つからない場合は、Azure サポートに [ SKU 要求](https://aka.ms/skurestriction)を送信してください。
+この記事では、**SkuNotAvailable** エラーを解決する方法について説明します。 そのリージョンまたはゾーン内で、あるいはビジネス ニーズを満たす代替のリージョンまたはゾーン内で適切な SKU が見つからない場合は、Azure サポートに [ SKU 要求](../../azure-portal/supportability/sku-series-unavailable.md)を送信してください。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -124,4 +124,3 @@ virtualMachines  southcentralus  Standard_F4                ...             None
   ]
 }
 ```
-

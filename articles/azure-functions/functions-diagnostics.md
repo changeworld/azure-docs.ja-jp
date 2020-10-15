@@ -7,10 +7,10 @@ ms.date: 11/01/2019
 ms.author: yunjchoi
 ms.custom: na
 ms.openlocfilehash: fb329273d442c023233fee2e7e01aabe5f5bff8c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83122369"
 ---
 # <a name="azure-functions-diagnostics-overview"></a>Azure Functions 診断の概要
@@ -31,11 +31,11 @@ Azure Functions 診断を開始するには:
 
 関数アプリの問題に応じた最適なホームページ カテゴリを選択すると、Azure Functions 診断の対話型インターフェイス Genie によって、アプリでの問題を診断して解決する手順へと誘導されます。 Genie で提供されているタイル ショートカットを使用して、関心のある問題カテゴリの診断レポート全体を閲覧できます。 タイル ショートカットでは、診断メトリックにアクセスするための直接的な方法を提供します。
 
-:::image type="content" source="./media/functions-diagnostics/genie.png" alt-text="Genie は Azure Functions 診断のインターフェイスです。" border="false":::
+:::image type="content" source="./media/functions-diagnostics/genie.png" alt-text="Azure Functions 診断の検索" border="false":::
 
 タイルを選択すると、タイルに示されている問題に関連するトピックの一覧を表示できます。 これらのトピックでは、レポート全体から注目すべき情報のスニペットを提示します。 問題をさらに詳しく調査するには、これらのトピックのいずれかを選択します。 また、 **[レポート全体の表示]** を選択して、単一ページ上ですべてのトピックを参照することも可能です。
 
-:::image type="content" source="./media/functions-diagnostics/preview-of-diagnostic-report.png" alt-text="診断レポートのプレビュー" border="false":::
+:::image type="content" source="./media/functions-diagnostics/preview-of-diagnostic-report.png" alt-text="Azure Functions 診断の検索" border="false":::
 
 ## <a name="view-a-diagnostic-report"></a>診断レポートの表示
 
@@ -45,9 +45,9 @@ Azure Functions 診断を開始するには:
 
 スクリプトベースの関数では、 **[Function App がダウンしているか、エラーが報告される]** の **[関数の実行とエラー]** を使用して、例外やエラーを引き起こしているコード行を絞り込むことができます。 このツールを使用して、根本原因を特定し、特定のコード行の問題を修正できます。 このオプションは、プリコンパイル済み C# 関数と Java 関数では使用できません。
 
-:::image type="content" source="./media/functions-diagnostics/diagnostic-report-on-function-execution-errors.png" alt-text="関数の実行エラーに関する診断レポート" border="false":::
+:::image type="content" source="./media/functions-diagnostics/diagnostic-report-on-function-execution-errors.png" alt-text="Azure Functions 診断の検索" border="false":::
 
-:::image type="content" source="./media/functions-diagnostics/function-exception.png" alt-text="例外の詳細の表示" border="false":::
+:::image type="content" source="./media/functions-diagnostics/function-exception.png" alt-text="Azure Functions 診断の検索" border="false":::
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,12 +8,12 @@ ms.date: 04/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0e4ec7127df288ec1818df307da1ea9824141309
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 540c4394a73ceff1f68a613561c034ca3bc7efc5
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902458"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046572"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>IoT Edge デバイスのトラブルシューティング
 
@@ -251,7 +251,7 @@ iotedge restart edgeAgent && iotedge restart edgeHub
 
 ## <a name="check-your-firewall-and-port-configuration-rules"></a>ファイアウォール規則とポート構成規則を確認する
 
-Azure IoT Edge では、サポートされている IoT Hub プロトコルを使用した、オンプレミス サーバーから Azure クラウドへの通信が許可されています。「[通信プロトコルの選択](../iot-hub/iot-hub-devguide-protocols.md)」をご覧ください。 セキュリティ強化のため、Azure IoT Edge と Azure IoT Hub の間の通信チャネルは常にアウトバウンドに構成されます。 この構成は、[サービス支援通信方式](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/)に基づいていて、悪意のあるエンティティが探る攻撃対象の領域が最小限になります。 インバウンド通信が必要なのは、Azure IoT Hub がメッセージを Azure IoT Edge デバイスにプッシュする必要がある特定のシナリオのみです。 cloud-to-device メッセージは、セキュリティで保護された TLS チャネルを使用して保護されます。また、X.509 証明書と TPM デバイス モジュールを使用してさらに保護することができます。 この通信の確立方法は、Azure IoT Edge セキュリティ マネージャーによって管理されます。[IoT Edge セキュリティ マネージャー](../iot-edge/iot-edge-security-manager.md)に関するページを参照してください。
+Azure IoT Edge では、サポートされている IoT Hub プロトコルを使用した、オンプレミス サーバーから Azure クラウドへの通信が許可されています。「[通信プロトコルの選択](../iot-hub/iot-hub-devguide-protocols.md)」をご覧ください。 セキュリティ強化のため、Azure IoT Edge と Azure IoT Hub の間の通信チャネルは常にアウトバウンドに構成されます。 この構成は、[サービス支援通信方式](/archive/blogs/clemensv/service-assisted-communication-for-connected-devices)に基づいていて、悪意のあるエンティティが探る攻撃対象の領域が最小限になります。 インバウンド通信が必要なのは、Azure IoT Hub がメッセージを Azure IoT Edge デバイスにプッシュする必要がある特定のシナリオのみです。 cloud-to-device メッセージは、セキュリティで保護された TLS チャネルを使用して保護されます。また、X.509 証明書と TPM デバイス モジュールを使用してさらに保護することができます。 この通信の確立方法は、Azure IoT Edge セキュリティ マネージャーによって管理されます。[IoT Edge セキュリティ マネージャー](../iot-edge/iot-edge-security-manager.md)に関するページを参照してください。
 
 IoT Edge は、Azure IoT Edge ランタイムとデプロイされたモジュールをセキュリティで保護するための強化された構成を提供しますが、依然として基になるマシンとネットワークの構成に依存しています。 そのため、エッジからクラウドへの安全な通信を実現するための適切なネットワーク規則およびファイアウォール規則が設定されていることを確認することが不可欠です。 Azure IoT Edge ランタイムがホストされている、基になるサーバー用にファイアウォール規則を構成するときには、以下の表をガイドラインとして使用できます。
 

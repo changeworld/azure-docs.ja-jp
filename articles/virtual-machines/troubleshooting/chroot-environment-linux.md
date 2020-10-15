@@ -14,10 +14,10 @@ ms.tgt_pltfrm: vm-linux
 ms.date: 05/05/2020
 ms.author: kaib
 ms.openlocfilehash: d6605aa77cfa746f60fc3b23e120267a2614f7b1
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82868272"
 ---
 # <a name="chroot-environment-in-a-linux-rescue-vm"></a>Linux 復旧 VM での chroot 環境

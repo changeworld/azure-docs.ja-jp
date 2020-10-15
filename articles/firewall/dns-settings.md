@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/30/2020
 ms.author: victorh
 ms.openlocfilehash: 9c7182205df8d276bece4758d6d4430864883d32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85610644"
 ---
 # <a name="azure-firewall-dns-settings-preview"></a>Azure Firewall の DNS 設定 (プレビュー)
@@ -66,7 +66,7 @@ DNS プロキシを構成するには、ファイアウォールのプライベ�
 4. **DNS サーバー**の構成を確認して、設定が環境に適していることを確認します。
 5. **[保存]** を選択します。
 
-:::image type="content" source="media/dns-settings/dns-proxy.png" alt-text="DNS プロキシ":::
+:::image type="content" source="media/dns-settings/dns-proxy.png" alt-text="DNS サーバー":::
 
 ## <a name="next-steps"></a>次のステップ
 

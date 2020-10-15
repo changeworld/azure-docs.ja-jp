@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: fc397b6d6beb719e11dc3959bbcf4d75c08a8dda
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: f4abf78c153bd3d61068e4b7607794d6ccf1ed04
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723930"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047677"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Azure Digital Twins のトラブルシューティング: 診断ログ
 
@@ -49,7 +49,7 @@ Azure Digital Twins インスタンスの診断設定を有効にする方法は
     
 4. 新しい設定を保存します。 
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="診断設定ページを示すスクリーンショット。ここで、ユーザーは、診断設定の名前を入力し、[カテゴリの詳細] および [宛先の詳細] のチェックボックスをいくつか選択しています。[保存] ボタンが強調表示されています。":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="[診断設定] ページと追加するボタンが表示されたスクリーンショット":::
 
 新しい設定は、10 分ほどで有効になります。 その後、インスタンスの **[診断設定]** ページ上の構成されたターゲットにログが表示されます。 
 
@@ -73,7 +73,7 @@ Azure Digital Twins インスタンスの診断設定を有効にする方法は
 | 削除 | DELETE |
 | アクション | POST |
 
-各カテゴリに記録される操作と対応する [Azure Digital Twins REST API 呼び出し](https://docs.microsoft.com/rest/api/azure-digitaltwins/)の一覧を次に示します。 
+各カテゴリに記録される操作と対応する [Azure Digital Twins REST API 呼び出し](/rest/api/azure-digitaltwins/)の一覧を次に示します。 
 
 >[!NOTE]
 > 各ログ カテゴリには、複数の操作/REST API 呼び出しが含まれています。 次の表では、各ログ カテゴリがすべての操作/REST API 呼び出しにマップされています (次のログ カテゴリが表示されるまで)。 
