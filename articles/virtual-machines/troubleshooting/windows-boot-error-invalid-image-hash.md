@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/03/2020
 ms.author: v-miegge
-ms.openlocfilehash: f607ebb64b27c45ec696d7fcd431a0ba2342697f
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: e58e349d7b7385ec913986c39462c17deadcb61d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89447635"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969604"
 ---
 # <a name="windows-boot-manager-error---0xc0000428-status-invalid-image-hash"></a>Windows ブート マネージャー エラー - 0xC0000428 無効なイメージ ハッシュ状態
 
@@ -28,7 +28,7 @@ ms.locfileid: "89447635"
 
 ## <a name="symptom"></a>症状
 
-[ブート診断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)を使用して VM のスクリーンショットを表示すると、スクリーンショットに次のメッセージを含む Windows Boot Manager が表示されることがわかります。
+[ブート診断](./boot-diagnostics.md)を使用して VM のスクリーンショットを表示すると、スクリーンショットに次のメッセージを含む Windows Boot Manager が表示されることがわかります。
 
   `File: \windows\system32\boot\winload.exe`
 
@@ -66,7 +66,7 @@ VM を構築するために使用されたイメージが、RTM (工場出荷版
 
 ## <a name="solution"></a>解決策
 
-ご利用のイメージがプレビュー イメージである場合は、使用するイメージの有効期限を延長する方法がないので、プレビュー以外のイメージを使用して[新しい VM をデプロイ](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)する必要があります。 次の手順を使用すれば、プレビュー イメージを使用していたかどうかを容易に特定できると共に、この VM から新しい VM にデータを転送する場合に役立つリソースが得られます。 イメージがプレビュー イメージであることを明確に識別しても、それが現在有効期限切れになっている場合、イメージの回復は不可能です。
+ご利用のイメージがプレビュー イメージである場合は、使用するイメージの有効期限を延長する方法がないので、プレビュー以外のイメージを使用して[新しい VM をデプロイ](../windows/quick-create-portal.md)する必要があります。 次の手順を使用すれば、プレビュー イメージを使用していたかどうかを容易に特定できると共に、この VM から新しい VM にデータを転送する場合に役立つリソースが得られます。 イメージがプレビュー イメージであることを明確に識別しても、それが現在有効期限切れになっている場合、イメージの回復は不可能です。
 
 好みに応じて、プレビュー イメージかどうかを特定するために、Azure PowerShell または Azure CLI を使用してイメージに対してクエリを実行することもできます。 以下のコマンドを使用すれば、イメージがプレビュー イメージであることを確認できます。
 
@@ -103,7 +103,7 @@ VM を構築するために使用されたイメージが、RTM (工場出荷版
 
 ### <a name="query-using-the-azure-cli"></a>Azure CLI を使用したクエリ
 
-1. [Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)がまだである場合は、それを行う必要があります。
+1. [Azure CLI のインストール](/cli/azure/install-azure-cli)がまだである場合は、それを行う必要があります。
 1. ダウンロードが完了したら、コマンド プロンプトまたは PowerShell を使用して `az login` コマンドを入力し、次にアカウントの資格情報でサインインします。
 1. ログインが完了したら、次のコマンドを入力します。
 

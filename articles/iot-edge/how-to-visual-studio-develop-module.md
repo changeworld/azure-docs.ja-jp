@@ -8,12 +8,12 @@ ms.author: kgremban
 ms.date: 3/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 823b16dcaf113136b10fdaa054da20840b99f02d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1883ffdff20bbbef8efec1440854f01a21a281dc
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91297047"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045722"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio 2019 を使用して Azure IoT Edge 用のモジュールを開発してデバッグする
 
@@ -32,7 +32,7 @@ Azure IoT Edge Tools for Visual Studio の利点は次のとおりです。
 
 この記事では、Windows を実行しているコンピューターまたは仮想マシンを開発用マシンとして使用していることを前提としています。 Windows コンピューターでは、Windows または Linux のいずれかのモジュールを開発できます。 Windows モジュールを開発するには、バージョン 1809/ビルド 17763 以降を実行している Windows コンピューターを使用します。 Linux モジュールを開発するには、[Docker Desktop の要件](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)を満たす Windows コンピューターを使用します。
 
-この記事ではメインの開発ツールとして Visual Studio 2019 を使うため、Visual Studio をインストールします。 Visual Studio 2019 のインストールには、必ず **Azure の開発**と **C++ によるデスクトップ開発**のワークロードを含めてください。 [Visual Studio 2019 を変更](https://docs.microsoft.com/visualstudio/install/modify-visual-studio?view=vs-2019)して、必須のワークロードを追加することができます。
+この記事ではメインの開発ツールとして Visual Studio 2019 を使うため、Visual Studio をインストールします。 Visual Studio 2019 のインストールには、必ず **Azure の開発**と **C++ によるデスクトップ開発**のワークロードを含めてください。 [Visual Studio 2019 を変更](/visualstudio/install/modify-visual-studio?view=vs-2019)して、必須のワークロードを追加することができます。
 
 Visual Studio 2019 の準備ができたら、次のツールとコンポーネントも必要になります。
 
@@ -62,7 +62,7 @@ Visual Studio 2019 の準備ができたら、次のツールとコンポーネ�
   vcpkg.exe --triplet x64-windows integrate install
   ```
 
-- [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) または [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)。
+- [Azure Container Registry](../container-registry/index.yml) または [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)。
 
   > [!TIP]
   > プロトタイプおよびテスト目的で、クラウド レジストリの代わりに Docker のローカル レジストリを使用できます。

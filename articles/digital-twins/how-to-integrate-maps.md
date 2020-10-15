@@ -8,12 +8,12 @@ ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 8f739982ac9193c80cae23d91b77091f75c3fd13
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: f6c6c1cfdfef864be17adfed2d115150c4fbede0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564363"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045127"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Azure Digital Twins を使用して Azure Maps の屋内マップを更新する
 
@@ -64,7 +64,7 @@ ms.locfileid: "90564363"
     >[!NOTE]
     >Cloud Shell には現在、`az dt route`、`az dt model`、`az dt twin` の各コマンド グループに影響する**既知の問題**があります。
     >
-    >解決するには、コマンドを実行する前に Cloud Shell で `az login` を実行するか、Cloud Shell ではなく[ローカル CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を使用します。 この件の詳細については、「[*トラブルシューティング: Azure Digital Twins の既知の問題*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)」を参照してください。
+    >解決するには、コマンドを実行する前に Cloud Shell で `az login` を実行するか、Cloud Shell ではなく[ローカル CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) を使用します。 この件の詳細については、「[*トラブルシューティング: Azure Digital Twins の既知の問題*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)」を参照してください。
 
     ```azurecli
     az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
@@ -74,7 +74,7 @@ ms.locfileid: "90564363"
 
 エンドツーエンドのチュートリアルで、Event Grid によってトリガーされる関数を関数アプリ内に作成します ([*チュートリアル: エンド ツー エンドのソリューションの接続*](./tutorial-end-to-end.md)に関するページを参照)。 この関数によって、これらの通知がアンパックされ、1 つの部屋の温度を更新するために Azure Maps の地物状態セットに更新が送信されます。 
 
-参照情報については、次のドキュメントを参照してください: [*Azure Functions の Azure Event Grid トリガー*](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-grid-trigger)。
+参照情報については、次のドキュメントを参照してください: [*Azure Functions の Azure Event Grid トリガー*](../azure-functions/functions-bindings-event-grid-trigger.md)。
 
 関数コードを次のコードに置き換えます。 これにより、空間のツインに対する更新のみが除外され、更新された温度が読み取られ、その情報が Azure Maps に送信されるようになります。
 
@@ -152,7 +152,7 @@ az functionapp config appsettings set --settings "statesetID=<your-Azure-Maps-st
 
 どちらのサンプルでも、互換性のある範囲で温度が送信されるので、マップには約 30 秒ごとに 121 号室の更新の色が表示されるはずです。
 
-:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="121 号室がオレンジ色で表示されているオフィス マップ":::
+:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="屋内マップの統合部分が強調表示されている、エンドツーエンドのシナリオにおける Azure サービスのビュー":::
 
 ## <a name="store-your-maps-information-in-azure-digital-twins"></a>Azure Digital Twins にマップ情報を格納する
 

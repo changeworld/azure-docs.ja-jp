@@ -4,10 +4,10 @@ description: Azure VMware Solution のプライベート クラウドから必�
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.openlocfilehash: 63d5440a9e2b15463e465e1d32762889508feca1
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88752241"
 ---
 # <a name="get-help-with-azure-vmware-solution-deployment-or-provisioning-failures"></a>Azure VMware Solution のデプロイまたはプロビジョニングのエラーに関するヘルプを表示する
@@ -37,7 +37,7 @@ ms.locfileid: "88752241"
 
 エラーの詳細は、問題の解決にも役立ちます。 上の画面から、次のスクリーンショットに示すように、 **[詳細はこちらをクリック]** (強調表示) を選択し、エラーの概要を表示します。
  
- :::image type="content" source="media/fix-deployment-provisioning-failures/summary-of-errors.png" alt-text="エラーの概要。":::
+ :::image type="content" source="media/fix-deployment-provisioning-failures/summary-of-errors.png" alt-text="関連付け ID が表示されている失敗したプライベート クラウドのデプロイ。":::
 
 ここでも、SR に含めるため、この概要をコピーして保存します。
  
@@ -45,15 +45,15 @@ ms.locfileid: "88752241"
 
 失敗したデプロイを含む過去のデプロイを取得するには、[通知] アイコンを選択してアクセスする、デプロイ アクティビティ ログを検索します。
 
-:::image type="content" source="media/fix-deployment-provisioning-failures/open-notifications.png" alt-text="通知を開きます。":::
+:::image type="content" source="media/fix-deployment-provisioning-failures/open-notifications.png" alt-text="関連付け ID が表示されている失敗したプライベート クラウドのデプロイ。":::
 
 [通知] で、 **[アクティビティ ログのその他のイベント]** を選択します。
 
-:::image type="content" source="media/fix-deployment-provisioning-failures/more-events-in-activity-log.png" alt-text="リンク:アクティビティ ログのその他のイベント。":::
+:::image type="content" source="media/fix-deployment-provisioning-failures/more-events-in-activity-log.png" alt-text="関連付け ID が表示されている失敗したプライベート クラウドのデプロイ。":::
 
 次に、リソースの名前、またはリソースの作成で使用した他の一意の情報を検索して、失敗したデプロイとその関連付け ID を検索します。 次の例では、プライベート クラウド リソース (pc03) での検索結果を示します。
  
-:::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="過去に失敗した Azure VMware Solution のデプロイを検索します。":::
+:::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="関連付け ID が表示されている失敗したプライベート クラウドのデプロイ。":::
  
 失敗したデプロイの操作名を選択すると、ウィンドウが開き、詳細が表示されます。 [JSON] タブを選択し、[correlationId] を探します。 コピーして SR に含めます。 
  
@@ -63,7 +63,7 @@ ms.locfileid: "88752241"
 
 ポータルでプライベート クラウドを表示する場合は、 **[接続性] > [ExpressRoute]** を選択し、 **[ExpressRoute ID]** をクリップボードにコピーします。
  
-:::image type="content" source="media/fix-deployment-provisioning-failures/expressroute-id.png" alt-text="ExpressRoute ID をクリップボードにコピーします。"::: 
+:::image type="content" source="media/fix-deployment-provisioning-failures/expressroute-id.png" alt-text="関連付け ID が表示されている失敗したプライベート クラウドのデプロイ。"::: 
  
 ExpressRoute ID を新しいサポート リクエストの適切なフィールドに貼り付けます。 詳細については、次のセクション、「[サポート リクエストの作成](#create-your-support-request)」を参照してください。
  
@@ -78,7 +78,7 @@ ExpressRoute ID を新しいサポート リクエストの適切なフィール
 
 1. **[ヘルプ]** アイコン、 **[+ 新しいサポート リクエスト]** の順に選択します。
 
-    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="SR の ExpressRoute ID を収集します。":::
+    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="関連付け ID が表示されている失敗したプライベート クラウドのデプロイ。":::
 
 2. すべての必須フィールドに入力し、 **[基本]** タブで次の操作を行います。
 

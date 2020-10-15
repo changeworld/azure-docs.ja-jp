@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 9f948fcc8ad36f8bef8b1ab6a1b74131faea9bd3
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 88bbd83d7ac5b834255c9b4d46d7cef4394f15d3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88068046"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968669"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Azure Image Builder サービスの DevOps タスク
 
@@ -31,8 +31,8 @@ Azure VM Image Builder (AIB) には、次の 2 つの DevOps タスクがあり�
 * [Visual Studio Marketplace から安定した DevOps タスク](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder)をインストールします。
 * VSTS DevOps アカウントを取得し、ビルド パイプラインを作成しておく必要があります。
 * パイプラインで使用されるサブスクリプションに Image Builder 機能の要件を登録して有効にします。
-    * [Az PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-powershell#register-features)
-    * [Az CLI](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder#register-the-features)
+    * [Az PowerShell](../windows/image-builder-powershell.md#register-features)
+    * [Az CLI](../windows/image-builder.md#register-the-features)
     
 * ソース イメージのリソース グループに Standard Azure Storage アカウントを作成します。これで、他のリソース グループ/ストレージ アカウントを使用できます。 このストレージ アカウントは、ビルド成果物を DevOps タスクからイメージに転送するために使用されます。
 
@@ -71,14 +71,14 @@ Image Builder が実行されるサブスクリプションをドロップダウ
  
 ### <a name="location"></a>場所
 
-場所は、Image Builder が実行されるリージョンです。 設定された数の[リージョン](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#regions)のみがサポートされます。 この場所にソース イメージが存在している必要があります。 たとえば、Shared Image Gallery を使用している場合は、そのリージョンにレプリカが存在している必要があります。
+場所は、Image Builder が実行されるリージョンです。 設定された数の[リージョン](../windows/image-builder-overview.md#regions)のみがサポートされます。 この場所にソース イメージが存在している必要があります。 たとえば、Shared Image Gallery を使用している場合は、そのリージョンにレプリカが存在している必要があります。
 
 ### <a name="managed-identity-required"></a>マネージド ID (必須)
-Image Builder には マネージド ID が必要です。ソース カスタム イメージの読み取り、Azure Storage への接続、カスタム イメージの作成などにこれが使用されます。 詳細については、[こちら](https://aka.ms/azvmimagebuilder#permissions)を参照してください。
+Image Builder には マネージド ID が必要です。ソース カスタム イメージの読み取り、Azure Storage への接続、カスタム イメージの作成などにこれが使用されます。 詳細については、[こちら](./image-builder-overview.md#permissions)を参照してください。
 
 ### <a name="vnet-support"></a>VNET のサポート
 
-現在、DevOps タスクでは既存のサブネットの指定はサポートされていません (今後サポートされる予定です) が、既存の VNET を利用する場合は、ARM テンプレートとその内部で入れ子になった Image Builder テンプレートを使用できます。この方法については、Windows の Image Builder テンプレートの例を参照してください。あるいは、[AZ AIB PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-powershell) を使用してください。
+現在、DevOps タスクでは既存のサブネットの指定はサポートされていません (今後サポートされる予定です) が、既存の VNET を利用する場合は、ARM テンプレートとその内部で入れ子になった Image Builder テンプレートを使用できます。この方法については、Windows の Image Builder テンプレートの例を参照してください。あるいは、[AZ AIB PowerShell](../windows/image-builder-powershell.md) を使用してください。
 
 ### <a name="source"></a>source
 
@@ -139,7 +139,7 @@ Windows のみの場合、このタスクではカスタマイズの最後に Wi
 
 次の例で、このしくみについて説明します。
 
-:::image type="content" source="./media/image-builder-devops-task/build-artifacts.png" alt-text="階層を示すディレクトリ構造。":::
+:::image type="content" source="./media/image-builder-devops-task/build-artifacts.png" alt-text="リリース パイプラインでの [成果物の追加] の選択。":::
 
 
 * Windows - ファイルは `C:\` にあります。 `webapp` ディレクトリが含まれた `buildArtifacts` という名前のディレクトリが作成されます。
@@ -194,7 +194,7 @@ Windows のみの場合、このタスクではカスタマイズの最後に Wi
     
 #### <a name="total-length-of-image-build"></a>イメージのビルドの合計時間
 
-DevOps パイプライン タスクでは合計時間をまだ変更できません。 既定値の 240 分を使用します。 [buildTimeoutInMinutes](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#properties-buildtimeoutinminutes) を増やす場合は、リリース パイプラインで AZ CLI タスクを使用できます。 テンプレートをコピーして送信するようにタスクを構成します。 例については、こちらの[ソリューション](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder)を参照するか、Az PowerShell を使用してください。
+DevOps パイプライン タスクでは合計時間をまだ変更できません。 既定値の 240 分を使用します。 [buildTimeoutInMinutes](./image-builder-json.md?bc=%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#properties-buildtimeoutinminutes) を増やす場合は、リリース パイプラインで AZ CLI タスクを使用できます。 テンプレートをコピーして送信するようにタスクを構成します。 例については、こちらの[ソリューション](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder)を参照するか、Az PowerShell を使用してください。
 
 
 #### <a name="storage-account"></a>ストレージ アカウント
@@ -314,7 +314,7 @@ starting run template...
 
 VM Image Builder タスクの DevOps ログにエラーが表示されるので、customization.log の場所を参照してください。 次に例を示します。
 
-:::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="失敗を示す DevOps タスク エラーの例。":::
+:::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="リリース パイプラインでの [成果物の追加] の選択。":::
 
 トラブルシューティングの詳細については、[Azure Image Builder サービスのトラブルシューティング](image-builder-troubleshoot.md)に関する記事をご覧ください。 
 

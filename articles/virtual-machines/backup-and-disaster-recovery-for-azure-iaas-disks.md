@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 28a46ad9e53a90c25c239278ee57ea368af395a5
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 01133ab5582e63c0e87d8a5cf8de12f5445394c5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88754975"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969706"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Azure IaaS ディスクのバックアップとディザスター リカバリー
 
@@ -48,7 +48,7 @@ IaaS のディスクに関していえば、データの持続性は、永続的
 
 コンピューティング ホストまたはストレージ プラットフォームの局所的なハードウェア障害によって、VM の可用性に関する [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) で保証対象となっている VM が一時的に使用できなくなる場合があります。 Azure では、Azure Premium SSD を使用する単一の VM インスタンスを対象とする、業界トップ レベルの SLA も提供されています。
 
-ディスクまたは VM が一時的に使用できないことによるダウンタイムからアプリケーション ワークロードを保護するために、お客様は[可用性セット](windows/manage-availability.md)を使用できます。 可用性セット内にある複数の仮想マシンによって、アプリケーションの冗長性が確保されます。 Azure では、異なる電源、ネットワーク、サーバー コンポーネントを使用する別々の障害ドメインに、これらの VM とディスクが作成されます。
+ディスクまたは VM が一時的に使用できないことによるダウンタイムからアプリケーション ワークロードを保護するために、お客様は[可用性セット](./manage-availability.md)を使用できます。 可用性セット内にある複数の仮想マシンによって、アプリケーションの冗長性が確保されます。 Azure では、異なる電源、ネットワーク、サーバー コンポーネントを使用する別々の障害ドメインに、これらの VM とディスクが作成されます。
 
 このような別々の障害ドメインにより、局所的なハードウェア障害は通常、セット内の複数の VM に同時に影響することはありません。 別々の障害ドメインを持つことで、アプリケーションの高可用性が実現されます。 高可用性が要求される場合に、可用性セットを使用することは優れた選択であると考えられます。 次のセクションでは、ディザスター リカバリーの側面について説明します。
 
@@ -77,7 +77,7 @@ DR の考慮事項には、次の側面が含まれます。
 - データは保護され、かつ回復可能である必要があります。
 - サーバーは使用可能である必要があります。
 
-ディザスター リカバリー計画では、異なるリージョンにバックアップとしてデータベースのレプリカを維持する必要があります。 サーバーの可用性とデータ復旧の要件によっては、アクティブ/アクティブ レプリカ サイトまたはアクティブ/パッシブ レプリカ サイトから、データの定期的なオフライン バックアップまでに及ぶソリューションが考えられます。 SQL Server、Oracle などのリレーショナル データベースでは、レプリケーションに関するさまざまなオプションが提供されています。 SQL Server では、高可用性を実現するために、[SQL Server AlwaysOn 可用性グループ](https://msdn.microsoft.com/library/hh510230.aspx)を使用します。
+ディザスター リカバリー計画では、異なるリージョンにバックアップとしてデータベースのレプリカを維持する必要があります。 サーバーの可用性とデータ復旧の要件によっては、アクティブ/アクティブ レプリカ サイトまたはアクティブ/パッシブ レプリカ サイトから、データの定期的なオフライン バックアップまでに及ぶソリューションが考えられます。 SQL Server、Oracle などのリレーショナル データベースでは、レプリケーションに関するさまざまなオプションが提供されています。 SQL Server では、高可用性を実現するために、[SQL Server AlwaysOn 可用性グループ](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)を使用します。
 
 MongoDB のような NoSQL データベースでは、冗長性を実現するために[レプリカ](https://docs.mongodb.com/manual/replication/)もサポートされています。 高可用性向けのレプリカが使用されます。
 
@@ -201,7 +201,7 @@ SQL Server などの一部の Windows アプリケーションは、アプリケ
 
 1. 各仮想ハード ドライブ BLOB のスナップショットを作成します。これにはほんの数秒しかかかりません。
 
-    スナップショットを作成するには、[PowerShell](https://docs.microsoft.com/powershell/module/az.storage)、[Azure Storage REST API](https://msdn.microsoft.com/library/azure/ee691971.aspx)、[Azure CLI](/cli/azure/)、または [.NET 用 ストレージ クライアント ライブラリ](https://msdn.microsoft.com/library/azure/hh488361.aspx)などの Azure Storage クライアント ライブラリのいずれかを使用できます。
+    スナップショットを作成するには、[PowerShell](/powershell/module/az.storage)、[Azure Storage REST API](/rest/api/storageservices/Snapshot-Blob)、[Azure CLI](/cli/azure/)、または [.NET 用 ストレージ クライアント ライブラリ](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob)などの Azure Storage クライアント ライブラリのいずれかを使用できます。
 
 1. VM を起動します。これによってダウンタイムが終了します。 通常、プロセス全体が数分以内に完了します。
 
@@ -224,7 +224,7 @@ DR 用の増分スナップショットを効率的にコピーするには、�
 
 ### <a name="recovery-from-snapshots"></a>スナップショットからの復旧
 
-スナップショットを取得するには、スナップショットをコピーして新しい BLOB を作成します。 プライマリ アカウントからスナップショットをコピーする場合は、スナップショットをスナップショットのベース BLOB にコピーできます。 このプロセスにより、ディスクがスナップショットに戻ります。 このプロセスは、スナップショットの昇格として知られています。 読み取りアクセス geo 冗長ストレージ アカウントでセカンダリ アカウントからスナップショット バックアップをコピーする場合は、プライマリ アカウントにコピーする必要があります。 [PowerShell を使用](https://docs.microsoft.com/powershell/module/az.storage)して、または AzCopy ユーティリティを使用して、スナップショットをコピーすることができます。 詳細については、[AzCopy コマンド ライン ユーティリティを使用したデータの転送](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy)に関するページをご覧ください。
+スナップショットを取得するには、スナップショットをコピーして新しい BLOB を作成します。 プライマリ アカウントからスナップショットをコピーする場合は、スナップショットをスナップショットのベース BLOB にコピーできます。 このプロセスにより、ディスクがスナップショットに戻ります。 このプロセスは、スナップショットの昇格として知られています。 読み取りアクセス geo 冗長ストレージ アカウントでセカンダリ アカウントからスナップショット バックアップをコピーする場合は、プライマリ アカウントにコピーする必要があります。 [PowerShell を使用](/powershell/module/az.storage)して、または AzCopy ユーティリティを使用して、スナップショットをコピーすることができます。 詳細については、[AzCopy コマンド ライン ユーティリティを使用したデータの転送](../storage/common/storage-use-azcopy-v10.md)に関するページをご覧ください。
 
 複数のディスクを持つ VM の場合は、連携のとれた同じ復元ポイントの一部であるスナップショットをすべてコピーする必要があります。 書き込み可能な VHD BLOB にスナップショットをコピーしたら、BLOB を使用して、VM のテンプレートを利用して VM を再作成できます。
 
@@ -265,4 +265,3 @@ geo 冗長ストレージと読み取りアクセス geo 冗長ストレージ�
 
 [1]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-1.png
 [2]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-2.png
-

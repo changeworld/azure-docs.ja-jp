@@ -111,28 +111,26 @@
       href: iot-edge-glossary.md
 - name: 操作方法ガイド
   items:
-    - name: IoT Edge デバイスを登録する
-      href: how-to-register-device.md
-    - name: IoT Edge のインストールと管理
+    - name: IoT Edge デバイスを作成する
       items:
-        - name: Linux
-          href: how-to-install-iot-edge-linux.md
-        - name: Windows
-          href: how-to-install-iot-edge-windows.md
-        - name: Windows 上の Linux コンテナー
-          href: how-to-install-iot-edge-windows-with-linux.md
-        - name: Windows Server VM
-          href: how-to-install-iot-edge-windows-server-vm.md
-        - name: Ubuntu VM
-          href: how-to-install-iot-edge-ubuntuvm.md
-        - name: Kubernetes
-          href: how-to-install-iot-edge-kubernetes.md
+        - name: ランタイムをインストールする
+          href: how-to-install-iot-edge.md
+        - name: デバイスの登録と認証
+          items:
+            - name: 対称キーの認証
+              href: how-to-manual-provision-symmetric-key.md
+            - name: X.509 証明書認証
+              href: how-to-manual-provision-x509.md
+        - name: ランタイムの更新
+          href: how-to-update-iot-edge.md
         - name: デバイス証明書の管理
           href: how-to-manage-device-certificates.md
         - name: テスト証明書を作成する
           href: how-to-create-test-certificates.md
-        - name: ランタイム バージョンの更新
-          href: how-to-update-iot-edge.md
+        - name: Kubernetes の IoT Edge
+          href: how-to-install-iot-edge-kubernetes.md
+        - name: Resource Manager テンプレートを使用した IoT Edge 仮想マシン
+          href: how-to-install-iot-edge-ubuntuvm.md
     - name: DPS による自動プロビジョニング
       items:
         - name: TPM の構成証明
@@ -183,6 +181,10 @@
           href: how-to-monitor-module-twins.md
         - name: EdgeAgent ダイレクト メソッド
           href: how-to-edgeagent-direct-method.md
+        - name: IoT Edge のログを取得する
+          href: how-to-retrieve-iot-edge-logs.md
+        - name: 組み込みのメトリックにアクセスする
+          href: how-to-access-built-in-metrics.md
     - name: ゲートウェイとしての IoT Edge デバイスの使用
       items:
         - name: 透過的なゲートウェイの構成
@@ -225,36 +227,38 @@
           href: troubleshoot-common-errors.md
 - name: リファレンス
   items:
+    - name: Windows デバイス管理スクリプト
+      href: reference-windows-scripts.md
     - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
 - name: リソース
   items:
     - name: サポート オプションとヘルプ オプション
-      href: /azure/iot-fundamentals/iot-support-help
+      href: ../iot-fundamentals/iot-support-help.md
     - name: Azure IoT のサービス
       items:
         - name: IoT Hub
-          href: /azure/iot-hub
+          href: ../iot-hub/index.yml
         - name: IoT Hub Device Provisioning Service
-          href: /azure/iot-dps
+          href: ../iot-dps/index.yml
         - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+          href: /microsoft-iot-central/
         - name: IoT Edge
-          href: /azure/iot-edge
+          href: ./index.yml
         - name: IoT ソリューション アクセラレータ
-          href: /azure/iot-accelerators
+          href: ../iot-accelerators/index.yml
         - name: IoT プラグ アンド プレイ
-          href: /azure/iot-pnp
+          href: ../iot-pnp/index.yml
         - name: Azure Maps
-          href: /azure/azure-maps
+          href: ../azure-maps/index.yml
         - name: Time Series Insights
-          href: /azure/time-series-insights
+          href: ../time-series-insights/index.yml
     - name: Azure IoT SDK
       items:
         - name: IoT サービスの SDK
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
         - name: IoT デバイス SDK
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
     - name: Azure IoT サンプル
       items:
         - name: C# (.NET)

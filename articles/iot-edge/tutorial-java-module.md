@@ -12,12 +12,12 @@ ms.custom:
 - mvc
 - mqtt
 - devx-track-java
-ms.openlocfilehash: ef4b42b56ea3e9e73de6d5bc793b2f1b206f34f3
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d68522d92409cfcba38abeb86f2db7c4b78869e6
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829987"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045603"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>チュートリアル:Linux デバイス用の Java IoT Edge モジュールを開発する
 
@@ -51,14 +51,14 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
 
 * Azure の Free レベルまたは Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。
 * [Azure IoT Edge を実行している Linux デバイス](quickstart-linux.md)
-* コンテナー レジストリ ([Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) など)。
+* コンテナー レジストリ ([Azure Container Registry](../container-registry/index.yml) など)。
 * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) を使用して構成された [Visual Studio Code](https://code.visualstudio.com/)。
 * Linux コンテナーを実行するように構成された [Docker CE](https://docs.docker.com/install/)。
 
 Java で IoT Edge モジュールを開発するには、開発マシンに次の追加の前提条件をインストールします。 
 
 * Visual Studio Code 向け [Java 拡張機能パック](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)。
-* [Java SE Development Kit 10](https://aka.ms/azure-jdks) (JDK インストールを指すように [`JAVA_HOME` 環境変数を設定](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/)します)。
+* [Java SE Development Kit 10](/azure/developer/java/fundamentals/java-jdk-long-term-support) (JDK インストールを指すように [`JAVA_HOME` 環境変数を設定](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/)します)。
 * [Maven](https://maven.apache.org/)
 
    >[!TIP]
@@ -306,7 +306,7 @@ IoT Edge デバイスに配置マニフェストを適用すると、デバイ�
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、お使いの IoT Edge デバイスによって生成された生データをフィルター処理する IoT Edge モジュールを作成しました。 独自のモジュールをビルドする準備ができたら、[IoT Edge モジュールの開発](module-development.md)または [Visual Studio Code を使用してモジュールを開発](how-to-vs-code-develop-module.md)する方法の詳細をご確認ください。 シミュレートされた温度モジュールを含むコード例については、[IoT Edge モジュールのサンプル](https://github.com/Azure/iotedge/tree/master/edge-modules)を参照してください。
+このチュートリアルでは、お使いの IoT Edge デバイスによって生成された生データをフィルター処理する IoT Edge モジュールを作成しました。
 
 次のチュートリアルに進んで、Azure のクラウド サービスをデプロイしてエッジでデータの処理と分析を行ううえで Azure IoT Edge がどのように役立つかを学習します。
 

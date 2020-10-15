@@ -12,10 +12,10 @@ ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: b01f1edd4305c09a874b177e4bca373991c9162e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85203811"
 ---
 # <a name="predicates-and-predicatevalidations"></a>述語および PredicateValidations
@@ -42,10 +42,10 @@ ms.locfileid: "85203811"
 
 **Predicate** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Id | はい | 述語に使用される識別子です。 その他の要素は、ポリシーでこの識別子を使用することができます。 |
-| Method | はい | 検証に使用するメソッドの型。 指定できる値[IsLengthRange](#islengthrange)、[MatchesRegex](#matchesregex)、[IncludesCharacters](#includescharacters)、または [IsDateRange](#isdaterange)。  |
+| メソッド | はい | 検証に使用するメソッドの型。 使用可能な値: [IsLengthRange](#islengthrange)、[MatchesRegex](#matchesregex)、[IncludesCharacters](#includescharacters)、または [IsDateRange](#isdaterange)。  |
 | HelpText | いいえ | チェックが失敗した場合に、ユーザーに表示されるエラー メッセージ。 この文字列は、[言語カスタマイズ](localization.md)を使ってローカライズすることができます。 |
 
 **Predicate** 要素には、次の要素が含まれています。
@@ -178,7 +178,7 @@ IsDateRange メソッドによって、日付要求値が、指定された最�
 
 **PredicateValidation** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Id | はい | 述語の検証に使用される識別子です。 **ClaimType** 要素は、ポリシーにこの識別子を使用できます。 |
 
@@ -196,7 +196,7 @@ IsDateRange メソッドによって、日付要求値が、指定された最�
 
 **PredicateGroups** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Id | はい | 述語グループに使用される識別子です。  |
 
@@ -209,7 +209,7 @@ IsDateRange メソッドによって、日付要求値が、指定された最�
 
 **PredicateReferences** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | MatchAtLeast | いいえ | 入力が受け入れられるには、少なくともここに指定した述部定義の数だけ、値が一致する必要があることを指定します。 指定しなかった場合、値はすべての述語定義と一致する必要があります。 |
 
@@ -221,7 +221,7 @@ IsDateRange メソッドによって、日付要求値が、指定された最�
 
 **PredicateReference** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Id | はい | 述語の検証に使用される識別子です。  |
 

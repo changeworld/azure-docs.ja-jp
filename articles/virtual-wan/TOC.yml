@@ -5,6 +5,7 @@
     - name: Virtual WAN とは
       href: virtual-wan-about.md
 - name: チュートリアル
+  expanded: true
   items:
     - name: サイト間接続を作成する
       href: virtual-wan-site-to-site-portal.md
@@ -130,7 +131,7 @@
               href: virtual-wan-route-table-nva-portal.md
             - name: Azure PowerShell
               href: virtual-wan-route-table-nva.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: Azure Firewall をハブにデプロイする
           href: howto-firewall.md

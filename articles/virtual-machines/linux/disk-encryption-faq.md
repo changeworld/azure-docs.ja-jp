@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 232bc43440979a08da4a0e77d9b49bf56fdb0ae4
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 06a84621c4d6abbf361eba232c776c167dc46265
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374042"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970611"
 ---
 # <a name="azure-disk-encryption-for-linux-virtual-machines-faq"></a>Linux VM に対する Azure Disk Encryption に関する FAQ
 
@@ -164,5 +164,5 @@ Azure Backup には、同じサブスクリプションおよびリージョン�
 このドキュメントでは、Azure Disk Encryption に関して最もよく寄せられるご質問について説明しました。 このサービスの詳細については、以下の記事を参照してください。
 
 - [Azure Disk Encryption の概要](disk-encryption-overview.md)
-- [Azure Security Center でディスクの暗号化を適用する](../../security-center/security-center-virtual-machine-protection.md)
+- [Azure Security Center でディスクの暗号化を適用する](../../security-center/asset-inventory.md)
 - [保存時の Azure データの暗号化](../../security/fundamentals/encryption-atrest.md)

@@ -11,12 +11,12 @@ metadata:
   ms.author: kgremban
   manager: philmea
   ms.date: 08/05/2019
-  ms.openlocfilehash: 9145d327901835bd6feda8db2e5ac5eacc03b5e5
-  ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+  ms.openlocfilehash: 63c36cf0f602c7c19e3ec1eb0b38b84a2e3a6e15
+  ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/13/2020
-  ms.locfileid: "91971678"
+  ms.lasthandoff: 10/14/2020
+  ms.locfileid: "92048340"
 landingContent:
 - title: Linux デバイス向けの開発
   linkLists:
@@ -103,7 +103,7 @@ landingContent:
   - linkListType: deploy
     links:
     - text: IoT Hub 用の REST API
-      url: https://docs.microsoft.com/rest/api/iothub/
+      url: /rest/api/iothub/
 - title: AI をエッジにデプロイする
   linkLists:
   - linkListType: tutorial

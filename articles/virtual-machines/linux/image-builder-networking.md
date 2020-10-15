@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: dfd0929ea03cd99033482f71579e91aaf6fc131c
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 531c423e42338b72b41c54466d5bfe8a89cd3c45
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88068009"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969639"
 ---
 # <a name="azure-image-builder-service-networking-options"></a>Azure Image Builder サービスのネットワーク オプション
 
@@ -33,7 +33,7 @@ VNET とサブネットを指定した場合は、Azure Image Builder によっ�
 
 ### <a name="what-is-azure-private-link"></a>Azure Private Link とは
 
-Azure Private Link を使用すると、仮想ネットワークから Azure のサービスとしてのプラットフォーム (PaaS)、顧客所有、または Microsoft パートナーの各サービスへのプライベート接続が可能になります。 ネットワーク アーキテクチャが簡素化され、パブリック インターネットへのデータの公開をなくすことで Azure でのエンドポイント間の接続がセキュリティで保護されます。 詳細については、「[Private Link のドキュメント](https://docs.microsoft.com/azure/private-link)」をご覧ください。
+Azure Private Link を使用すると、仮想ネットワークから Azure のサービスとしてのプラットフォーム (PaaS)、顧客所有、または Microsoft パートナーの各サービスへのプライベート接続が可能になります。 ネットワーク アーキテクチャが簡素化され、パブリック インターネットへのデータの公開をなくすことで Azure でのエンドポイント間の接続がセキュリティで保護されます。 詳細については、「[Private Link のドキュメント](../../private-link/index.yml)」をご覧ください。
 
 ### <a name="required-permissions-for-an-existing-vnet"></a>既存の VNET に必要なアクセス許可
 
@@ -68,7 +68,7 @@ Azure Image Builder には、既存の VNET を使用するための特定のア
 | subnetName | 指定された仮想ネットワーク内のサブネットの名前。 *name* が指定されている場合にのみ指定する必要があります。 |
 | resourceGroupName | 指定された仮想ネットワークを含むリソース グループの名前。 *name* が指定されている場合にのみ指定する必要があります。 |
 
-Private Link サービスには、指定された VNET とサブネットから取得された IP が必要です。 Azure では現在、これらの IP 上でのネットワーク ポリシーはサポートされていません。 そのため、サブネットでネットワーク ポリシーを無効にする必要があります。 詳細については、「[Private Link のドキュメント](https://docs.microsoft.com/azure/private-link)」をご覧ください。
+Private Link サービスには、指定された VNET とサブネットから取得された IP が必要です。 Azure では現在、これらの IP 上でのネットワーク ポリシーはサポートされていません。 そのため、サブネットでネットワーク ポリシーを無効にする必要があります。 詳細については、「[Private Link のドキュメント](../../private-link/index.yml)」をご覧ください。
 
 ### <a name="checklist-for-using-your-vnet"></a>VNET を使用するためのチェックリスト
 

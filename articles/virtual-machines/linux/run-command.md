@@ -8,12 +8,12 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: 7e8ccc832cdf12176cd88cce0157c08d8bf92507
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 5baa6d57bd3895640f1654cf7a5ebca52f101cbe
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372588"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970573"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>実行コマンドを使用して Linux VM でシェル スクリプトを実行する
 
@@ -39,7 +39,7 @@ ms.locfileid: "87372588"
 * スクリプトの結果を返すために、VM からの送信接続が必要
 
 > [!NOTE]
-> 正常に機能するには、実行コマンドに Azure のパブリック IP アドレスへの接続 (ポート 443) が必要です。 この拡張機能にこれらのエンドポイントへのアクセス権がない場合、スクリプトが正常に実行されても結果が返されないことがあります。 仮想マシン上のトラフィックをブロックしている場合、[サービス タグ](../../virtual-network/security-overview.md#service-tags)を使用し、`AzureCloud` タグを使用して Azure パブリック IP アドレスへのトラフィックを許可できます。
+> 正常に機能するには、実行コマンドに Azure のパブリック IP アドレスへの接続 (ポート 443) が必要です。 この拡張機能にこれらのエンドポイントへのアクセス権がない場合、スクリプトが正常に実行されても結果が返されないことがあります。 仮想マシン上のトラフィックをブロックしている場合、[サービス タグ](../../virtual-network/network-security-groups-overview.md#service-tags)を使用し、`AzureCloud` タグを使用して Azure パブリック IP アドレスへのトラフィックを許可できます。
 
 ## <a name="available-commands"></a>使用可能なコマンド
 
@@ -85,7 +85,7 @@ az vm run-command invoke -g myResourceGroup -n myVm --command-id RunShellScript 
 次の例では、[Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand) コマンドレットを使用して Azure VM 上で PowerShell スクリプトを実行します。 このコマンドレットは、`-ScriptPath` パラメーターで参照されるスクリプトが、このコマンドレットの実行場所に対してローカルであることを想定しています。
 
 ```powershell-interactive
-Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
+Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
 ```
 
 ## <a name="limiting-access-to-run-command"></a>実行コマンドへのアクセスの制限

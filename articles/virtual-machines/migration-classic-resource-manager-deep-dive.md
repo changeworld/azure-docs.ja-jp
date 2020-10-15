@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: da75e1d6208db5adf5f0f63d2a5525fc651513b0
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 233ba17e1ae1b554eff092151ad9f05fd660beb3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855915"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970012"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細
 
@@ -135,7 +135,7 @@ Azure クラシック デプロイ モデルから、Azure Resource Manager デ�
 検証が完了したら、移行をコミットできます。 リソースは Resource Manager デプロイ モデルでのみ使用できるようになります。クラシック デプロイ モデルには表示されません。 つまり、移行されたリソースは新しいポータルでのみ管理できます。
 
 > [!NOTE]
-> これはべき等操作です。 失敗した場合、操作を再試行してください。 失敗が続く場合は、サポート チケットを作成するか、[Microsoft Q&A](https://docs.microsoft.com/answers/index.html) でフォーラムを作成してください。
+> これはべき等操作です。 失敗した場合、操作を再試行してください。 失敗が続く場合は、サポート チケットを作成するか、[Microsoft Q&A](/answers/index.html) でフォーラムを作成してください。
 >
 >
 

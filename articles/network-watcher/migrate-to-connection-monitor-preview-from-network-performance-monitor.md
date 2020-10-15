@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 08/20/2020
 ms.author: vinigam
 ms.openlocfilehash: dcbb82c1315e6150ddcfadbb52b2976447329b87
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441835"
 ---
 # <a name="migrate-to-connection-monitor-preview-from-network-performance-monitor"></a>Network Performance Monitor から接続モニター (プレビュー) に移行する

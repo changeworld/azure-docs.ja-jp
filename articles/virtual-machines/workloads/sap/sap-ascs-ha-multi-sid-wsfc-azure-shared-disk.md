@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a4856b2578a007f72aeeec64588ac7f9c58158de
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: c8116f3e00d13c0bd1e5f075a7fbe3264f337079
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88860515"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970403"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-azure-shared-disk"></a>Windows Server フェールオーバー クラスタリングと Azure 共有ディスクを使用した SAP ASCS/SCS インスタンスのマルチ SID 高可用性
 
@@ -34,13 +34,13 @@ ms.locfileid: "88860515"
 
 現時点では、SAP ASCS/SCS インスタンスの Azure 共有ディスクとして Azure Premium SSD ディスクを使用できます。 次の制限事項が適用されます。
 
--  [Azure Ultra Disk](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk) は、SAP ワークロード用の Azure 共有ディスクとしてはサポートされていません。 現時点では、Azure Ultra Disk を可用性セット内で使用して、Azure VM を配置することはできません
--  Premium SSD ディスクを使用した [Azure 共有ディスク](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared)は、可用性セット内の VM でのみサポートされています。 Availability Zones のデプロイではサポートされていません。 
--  Azure 共有ディスクの値 [maxShares](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared-enable?tabs=azure-cli#disk-sizes) によって、その共有ディスクを使用できるクラスター ノードの数が決まります。 通常、SAP ASCS/SCS インスタンスには、Windows フェールオーバー クラスターに 2 つのノードを構成するため、`maxShares` の値は 2 に設定する必要があります。
--  すべての SAP ASCS/SCS クラスター VM が、同じ [Azure 近接配置グループ](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups)にデプロイされる必要があります。   
+-  [Azure Ultra Disk](../../disks-types.md#ultra-disk) は、SAP ワークロード用の Azure 共有ディスクとしてはサポートされていません。 現時点では、Azure Ultra Disk を可用性セット内で使用して、Azure VM を配置することはできません
+-  Premium SSD ディスクを使用した [Azure 共有ディスク](../../windows/disks-shared.md)は、可用性セット内の VM でのみサポートされています。 Availability Zones のデプロイではサポートされていません。 
+-  Azure 共有ディスクの値 [maxShares](../../disks-shared-enable.md?tabs=azure-cli#disk-sizes) によって、その共有ディスクを使用できるクラスター ノードの数が決まります。 通常、SAP ASCS/SCS インスタンスには、Windows フェールオーバー クラスターに 2 つのノードを構成するため、`maxShares` の値は 2 に設定する必要があります。
+-  すべての SAP ASCS/SCS クラスター VM が、同じ [Azure 近接配置グループ](../../windows/proximity-placement-groups.md)にデプロイされる必要があります。   
    Windows クラスター VM を、PPG を使用せずに Azure 共有ディスクがある可用性セット内にデプロイすることはできますが、PPG を使用すると Azure 共有ディスクとクラスター VM の物理的近距離を確保できるため、VM とストレージ層の間の待機時間が短くなります。    
 
-Azure 共有ディスクの制限事項の詳細については、Azure 共有ディスクのドキュメントの「[制限事項](https://docs.microsoft.com/azure/virtual-machines/linux/disks-shared#limitations)」セクションを参照してください。  
+Azure 共有ディスクの制限事項の詳細については、Azure 共有ディスクのドキュメントの「[制限事項](../../linux/disks-shared.md#limitations)」セクションを参照してください。  
 
 > [!IMPORTANT]
 > Azure 共有ディスクを使用して SAP ASCS/SCS Windows フェールオーバー クラスターをデプロイする場合は、デプロイが 1 つの記憶域クラスター内の単一の共有ディスクを使用して動作することに注意してください。 SAP ASCS/SCS インスタンスは、Azure 共有ディスクがデプロイされている記憶域クラスターで問題が発生した場合に影響を受けます。  
@@ -111,7 +111,7 @@ Windows Server 2016 と Windows Server 2019 の両方がサポートされてい
 
 ### <a name="create-azure-internal-load-balancer"></a>Azure 内部ロード バランサーを作成する
 
-SAP ASCS、SAP SCS、および新しい SAP ERS2 により、仮想ホスト名と仮想 IP アドレスが使用されます。 Azure 上で仮想 IP アドレスを使用するには、[ロード バランサー](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)が必要です。 [Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal) の使用を強くお勧めします。 
+SAP ASCS、SAP SCS、および新しい SAP ERS2 により、仮想ホスト名と仮想 IP アドレスが使用されます。 Azure 上で仮想 IP アドレスを使用するには、[ロード バランサー](../../../load-balancer/load-balancer-overview.md)が必要です。 [Standard Load Balancer](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md) の使用を強くお勧めします。 
 
 2 番目の SAP SID ASCS/SCS/ERS インスタンス **PR2** について、既存のロード バランサーに構成を追加する必要があります。 1 番目の SAP SID **PR1** の構成が既に準備されている必要があります。  
 

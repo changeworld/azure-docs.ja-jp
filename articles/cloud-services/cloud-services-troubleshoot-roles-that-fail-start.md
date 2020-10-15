@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 75603593e8c290b6bcb059207858d663ab5c96d9
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 68daec6bb6682d2b488abacb2f79bdfadc4ae628
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89460118"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076574"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>クラウド サービス ロールが起動しないときのトラブルシューティング
 ここでは、Azure Cloud Services ロールの起動失敗に関連した一般的な問題と解決法を取り上げます。
@@ -122,6 +122,6 @@ IntelliTrace を有効にしてサービスをデプロイするには、以下�
 すべてのエラーを修正済みであることが確認できたら、 **[.NET 4 のロールに対して IntelliTrace を有効にします]** チェック ボックスをオフにしてサービスをデプロイできます。
 
 ## <a name="next-steps"></a>次のステップ
-クラウド サービスの他の [トラブルシューティングに関する記事](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) を参照します。
+クラウド サービスの他の [トラブルシューティングに関する記事](../index.yml?product=cloud-services&tag=top-support-issue) を参照します。
 
-Azure PaaS コンピューターの診断データを使用してクラウド サービス ロールの問題をトラブルシューティングする方法については、 [Kevin Williamson によるブログ シリーズ](https://docs.microsoft.com/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data)をご覧ください。
+Azure PaaS コンピューターの診断データを使用してクラウド サービス ロールの問題をトラブルシューティングする方法については、 [Kevin Williamson によるブログ シリーズ](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data)をご覧ください。

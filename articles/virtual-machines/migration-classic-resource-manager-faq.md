@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 0f9a8a1c4631fc667d0dd31ae62f7d57aefccc90
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: ccbf7e8aaab5463abf8fa9e129ba9f0ea8599c4e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855852"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969842"
 ---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>クラシックから Azure Resource Manager への移行に関してよく寄せられる質問
 
@@ -26,7 +26,7 @@ IaaS VM (クラシック) の "クラシック" という単語は、Azure Servi
 
 ## <a name="what-is-azure-resource-manager"></a>Azure Resource Manager とは
 
-[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) は、VM の作成、管理、削除、およびその他のコントロール プレーン操作を行う役割を担う、Azure の最新のコントロール プレーンです。 
+[Azure Resource Manager](../azure-resource-manager/management/overview.md) は、VM の作成、管理、削除、およびその他のコントロール プレーン操作を行う役割を担う、Azure の最新のコントロール プレーンです。 
 
 ## <a name="what-is-the-time-required-for-migration"></a>移行にはどれくらいの時間が必要ですか?
 
@@ -42,7 +42,7 @@ IaaS VM (クラシック) がアクティブであるか、またはこれを停
 
 ## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>"NewClassicVMCreationNotAllowedForSubscription" というエラーが発生するのはなぜですか?
 
-提供終了プロセスの一環として、新しいお客様は IaaS VM (クラシック) を利用できなくなりました。 お客様は新しい顧客として特定されたため、お客様の操作は承認されませんでした。 [ARM を使った Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell) を使用することを強くお勧めします。 ARM を使用して Azure VM を使用できない場合は、サブスクリプションを許可リストに追加するよう、サポートにお問い合わせください。
+提供終了プロセスの一環として、新しいお客様は IaaS VM (クラシック) を利用できなくなりました。 お客様は新しい顧客として特定されたため、お客様の操作は承認されませんでした。 [ARM を使った Azure Virtual Machines](./windows/quick-create-powershell.md) を使用することを強くお勧めします。 ARM を使用して Azure VM を使用できない場合は、サブスクリプションを許可リストに追加するよう、サポートにお問い合わせください。
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>この移行計画は Azure 仮想マシン上で実行されている既存のサービスやアプリケーションに影響しますか? 
 
@@ -105,7 +105,7 @@ Resource Manager デプロイ モデルへのツールの更新は、移行計�
 
 ## <a name="how-do-i-report-an-issue"></a>問題はどのようにレポートすればよいですか? 
 
-移行の問題や質問については、ClassicIaaSMigration というキーワードを付けて、[VM に関する Microsoft Q&A ページ](https://docs.microsoft.com/answers/topics/azure-virtual-machines.html)に投稿してください。 質問はすべてのこのフォーラムに投稿することをお勧めします。 サポート契約がある場合は、サポート チケットを記録してもかまいません。
+移行の問題や質問については、ClassicIaaSMigration というキーワードを付けて、[VM に関する Microsoft Q&A ページ](/answers/topics/azure-virtual-machines.html)に投稿してください。 質問はすべてのこのフォーラムに投稿することをお勧めします。 サポート契約がある場合は、サポート チケットを記録してもかまいません。
 
 ## <a name="what-if-i-dont-like-the-names-of-the-resources-that-the-platform-chose-during-migration"></a>移行中にプラットフォームで選択されたリソース名が気に入らない場合はどうすればよいですか? 
 

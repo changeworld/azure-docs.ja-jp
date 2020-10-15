@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: b3f9451a5ffd13c67232107d8db1e2da4a3891ec
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86524745"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer"></a>Azure Maps Drawing Error Visualizer の使用
@@ -82,11 +82,11 @@ Drawing Error Visualizer ツールを起動すると、アップロード ペー
 
 _ConversionWarningsAndErrors.json_ ファイルは、ダウンロードしたディレクトリのルートに配置されています。 _ConversionWarningsAndErrors.json_ を読み込むには、ファイルをボックスにドラッグ アンド ドロップするか、ボックスをクリックして、エクスプローラー ダイアログでファイルを見つけ、ファイルをアップロードします。
 
-:::image type="content" source="./media/drawing-errors-visualizer/loading-data.gif" alt-text="Drawing Error Visualizer アプリ - ドラッグ アンド ドロップでデータを読み込む":::
+:::image type="content" source="./media/drawing-errors-visualizer/loading-data.gif" alt-text="Drawing Error Visualizer アプリ - スタート ページ":::
 
 _ConversionWarningsAndErrors.json_ ファイルが読み込まれると、Drawing パッケージのエラーと警告の一覧が表示されます。 各エラーまたは警告には、レイヤー、レベル、および詳細メッセージが指定されています。 エラーまたは警告に関する詳細情報を表示するには、 **[Details]\(詳細\)** リンクをクリックします。 操作できないセクションが一覧の下に表示されます。 各エラーに移動して、エラーの解決方法の詳細を確認できます。
 
-:::image type="content" source="./media/drawing-errors-visualizer/errors.png" alt-text="Drawing Error Visualizer アプリ - エラーと警告":::
+:::image type="content" source="./media/drawing-errors-visualizer/errors.png" alt-text="Drawing Error Visualizer アプリ - スタート ページ":::
 
 ## <a name="next-steps"></a>次のステップ
 
