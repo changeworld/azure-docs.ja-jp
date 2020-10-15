@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 03/11/2020
 ms.author: mimart
 ms.openlocfilehash: 4e03d076fc9ed7d87326a4c8b4f8bf6c0b21c750
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79126745"
 ---
 ## <a name="disable-email-verification"></a>メールの確認を無効にする
