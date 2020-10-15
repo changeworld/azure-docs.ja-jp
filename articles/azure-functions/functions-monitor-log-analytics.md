@@ -7,10 +7,10 @@ ms.date: 04/15/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 51c611b2565ae0a5a054a45f0aedcb039351b46b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88208357"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Azure Monitor ログを使用した Azure Functions の監視
@@ -38,7 +38,7 @@ Azure Monitor では、Azure Data Explorer で使用される [Kusto クエリ�
 
 1. **診断設定名**を入力して、 **[保存]** を選択します。
 
-   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="診断設定を追加します":::
+   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="[診断設定] を選択します":::
 
 ## <a name="user-generated-logs"></a>ユーザー生成ログ
 
@@ -89,7 +89,7 @@ logging.info('My app logs here.')
 
    Azure Functions によって、すべてのログは、 **[LogManagement]** の **FunctionAppLogs** テーブルに書き込まれます。 
 
-   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="Log Analytics ワークスペース内のクエリ ウィンドウ":::
+   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="[診断設定] を選択します":::
 
 いくつかのサンプル クエリを次に示します。
 

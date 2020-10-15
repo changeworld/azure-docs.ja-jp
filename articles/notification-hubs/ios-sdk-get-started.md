@@ -9,10 +9,10 @@ ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
 ms.openlocfilehash: 7cdf095898bfe85e6f3b14fa1dcdb7b0c94ccde6
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88042447"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して iOS アプリにプッシュ通知を送信する
@@ -60,11 +60,11 @@ Apple Push Notification Service (APNS) では、証明書を使用してプッ�
 
 3.  **[ユーザーのメール アドレス]** を選択し、 **[通称]**   の値を入力します。 **[ディスクに保存]** を指定したことを確認してから、 **[続ける]** を選択します。  **[CA のメール アドレス]**   は、必要がないため空白のままにします。
 
-   :::image type="content" source="media/ios-sdk-get-started/image2.png" alt-text="必要な証明書情報":::
+   :::image type="content" source="media/ios-sdk-get-started/image2.png" alt-text="キーチェーン アクセス":::
 
 4.  **[名前]** に CSR ファイルの名前を入力し、 **[場所]** で保存先を選択してから、 **[保存]** を選択します。
 
-   :::image type="content" source="media/ios-sdk-get-started/image3.png" alt-text="ファイル名を選択する":::
+   :::image type="content" source="media/ios-sdk-get-started/image3.png" alt-text="キーチェーン アクセス":::
 
    このアクションにより、選択した場所に CSR ファイルが保存されます。 既定の場所は **[デスクトップ]** です。 ファイル用に選択した場所を忘れないでください。
 
@@ -76,26 +76,26 @@ Apple Push Notification Service (APNS) では、証明書を使用してプッ�
 
 1. ご自分のアプリをまだ登録していない場合は、Apple Developer Center の [iOS Provisioning Portal](https://go.microsoft.com/fwlink/p/?LinkId=272456) に移動します。 自分の Apple ID を使用してポータルにサインインし、 **[Identifiers] (識別子)** を選択します。 次に、 **[+]**  を選択して新しいアプリを登録します。
 
-   :::image type="content" source="media/ios-sdk-get-started/image4.png" alt-text="アプリ ID のページ":::
+   :::image type="content" source="media/ios-sdk-get-started/image4.png" alt-text="キーチェーン アクセス":::
 
 2.  **[Register a New Identifier] (新しい識別子の登録)**   画面で、 **[アプリ ID]**   ラジオ ボタンを選択します。 次に、 **[続行]** を選択します。
 
-   :::image type="content" source="media/ios-sdk-get-started/image5.png" alt-text="新しい ID の登録ページ":::
+   :::image type="content" source="media/ios-sdk-get-started/image5.png" alt-text="キーチェーン アクセス":::
 
 3. 新しいアプリの次の 3 つの値を更新してから、 **[続行]** を選択します。
 
    - **説明**:アプリのわかりやすい名前を入力します。
    - **[Bundle ID]\(バンドル ID\)** :  [アプリ ディストリビューション ガイド](https://help.apple.com/xcode/mac/current/#/dev91fe7130a)の説明のとおり、 **<組織 ID>.<製品名>**  の形式でバンドル ID を入力します。  **<組織 ID>**  と **<製品名>**  の値は、Xcode プロジェクトの作成時に使用する組織 ID と製品名に一致させる必要があります。 次のスクリーンショットでは、組織 ID として **NotificationHubs** という値が使用され、製品名としては **GetStarted** という値が使用されています。 Xcode で正しい発行プロファイルが使用されるように、 **[Bundle Identifier] (バンドル識別子)**  の値は、実際の Xcode プロジェクトの値と一致させてください。
 
-      :::image type="content" source="media/ios-sdk-get-started/image6.png" alt-text="アプリ ID を登録する":::
+      :::image type="content" source="media/ios-sdk-get-started/image6.png" alt-text="キーチェーン アクセス":::
 
    - **[Push Notifications]\(プッシュ通知\)** :  **[Capabilities] (機能)**   セクションの  **[プッシュ通知]**   チェック ボックスをオンにします。
 
-      :::image type="content" source="media/ios-sdk-get-started/image7.png" alt-text="新しいアプリ ID を登録する":::
+      :::image type="content" source="media/ios-sdk-get-started/image7.png" alt-text="キーチェーン アクセス":::
 
       このアクションにより、アプリ ID が生成され、その情報を確認するよう求められます。  **[続行]** を選択してから、 **[登録]**   を選択して新しいアプリ ID を確認します。
 
-      :::image type="content" source="media/ios-sdk-get-started/image8.png" alt-text="新しいアプリ ID を確認する":::
+      :::image type="content" source="media/ios-sdk-get-started/image8.png" alt-text="キーチェーン アクセス":::
 
        **[登録]** を選択すると、新しいアプリ ID が **[Certificates, Identifiers & Profiles] (証明書、識別子、およびプロファイル)**   ページに 1 行の項目として表示されます。
 
@@ -118,11 +118,11 @@ Apple Push Notification Service (APNS) では、証明書を使用してプッ�
 
 1. チェック ボックスがオンになっている  **[プッシュ通知]**   オプションまで下へスクロールしてから、 **[構成]**   を選択して証明書を作成します。
 
-   :::image type="content" source="media/ios-sdk-get-started/image9.png" alt-text="App ID":::
+   :::image type="content" source="media/ios-sdk-get-started/image9.png" alt-text="キーチェーン アクセス":::
 
 2.  **[Apple Push Notification service SSL Certificates] (Apple Push Notification Service の SSL 証明書)**  ウィンドウが表示されます。  **[Development SSL Certificate] (開発 SSL 証明書)**   セクションの  **[Create Certificate] (証明書の作成)**   ボタンを選択します。
 
-   :::image type="content" source="media/ios-sdk-get-started/image10.png" alt-text="証明書を作成する":::
+   :::image type="content" source="media/ios-sdk-get-started/image10.png" alt-text="キーチェーン アクセス":::
 
     **[Create a new Certificate] (新しい証明書の作成)**  画面が表示されます。
 
@@ -133,11 +133,11 @@ Apple Push Notification Service (APNS) では、証明書を使用してプッ�
 
 4. ポータルによって証明書が作成されたら、 **[ダウンロード]**   ボタンを選択します。 この証明書を保存し、この保存場所を覚えておいてください。
 
-   :::image type="content" source="media/ios-sdk-get-started/image11.png" alt-text="証明書をダウンロードする":::
+   :::image type="content" source="media/ios-sdk-get-started/image11.png" alt-text="キーチェーン アクセス":::
 
    証明書がダウンロードされ、 **Downloads**  フォルダーに保存されます。
 
-   :::image type="content" source="media/ios-sdk-get-started/image12.png" alt-text="証明書ファイルを見つける":::
+   :::image type="content" source="media/ios-sdk-get-started/image12.png" alt-text="キーチェーン アクセス":::
 
    既定では、ダウンロードした開発証明書の名前は **aps_development.cer** になっています。
 
@@ -149,7 +149,7 @@ Apple Push Notification Service (APNS) では、証明書を使用してプッ�
 
 6. キーチェーン アクセスの **[Certificates] (証明書)**   カテゴリで、作成した新しいプッシュ証明書を右クリックします。  **[書き出す]** を選択し、ファイルに名前を付けて、 **.p12**  形式を選択します。次に、 **[保存]** を選択します。
 
-   :::image type="content" source="media/ios-sdk-get-started/image14.png" alt-text="証明書のエクスポート":::
+   :::image type="content" source="media/ios-sdk-get-started/image14.png" alt-text="キーチェーン アクセス":::
 
    パスワードを使用して証明書を保護することもできますが、これはオプションです。 パスワードの作成を省略する場合は、 **[OK]**  をクリックします。 エクスポートした .p12 証明書のファイル名と場所を書き留めます。 これらは、APNS での認証を有効にするために使用されます。
 
@@ -201,11 +201,11 @@ Apple Push Notification Service (APNS) では、証明書を使用してプッ�
 
 2.  **[開発]**   で、プロビジョニング プロファイルの種類として **[iOS App Development] (iOS アプリ開発)**   を選択し、 **[続行]** を選択します。
 
-   :::image type="content" source="media/ios-sdk-get-started/image15.png" alt-text="プロビジョニング プロファイルの一覧":::
+   :::image type="content" source="media/ios-sdk-get-started/image15.png" alt-text="キーチェーン アクセス":::
 
 3. 次に、 **[App ID] (アプリ ID)**  ドロップダウン リストで、作成したアプリ ID を選択し、 **[続行]** を選択します。
 
-   :::image type="content" source="media/ios-sdk-get-started/image16.png" alt-text="アプリ ID を選択する":::
+   :::image type="content" source="media/ios-sdk-get-started/image16.png" alt-text="キーチェーン アクセス":::
 
 4.  **[Select certificates] (証明書の選択)**  ウィンドウで、コード署名に使用する開発証明書を選択し、 **[続行]** を選択します。 この証明書は、作成したプッシュ証明書ではありません。 存在しない場合は、作成する必要があります。 証明書が存在する場合は、次の手順に進みます。 開発証明書が存在しない場合に証明書を作成するには:
 
@@ -224,7 +224,7 @@ Apple Push Notification Service (APNS) では、証明書を使用してプッ�
 
 8. 最後に、 **[Provisioning Profile Name] (プロビジョニング プロファイル名)** で目的のプロファイルの名前を選択してから、 **[Generate] (生成)** を選択します。
 
-   :::image type="content" source="media/ios-sdk-get-started/image17.png" alt-text="プロビジョニング プロファイル名を選択する":::
+   :::image type="content" source="media/ios-sdk-get-started/image17.png" alt-text="キーチェーン アクセス":::
 
 9. 新しいプロビジョニング プロファイルが作成されたら、 **[ダウンロード]** を選択します。 それを保存した場所を覚えておきます。
 
@@ -238,11 +238,11 @@ Apple Push Notification Service (APNS) では、証明書を使用してプッ�
 
 2. 左側のメニューで  **[すべてのサービス]**  を選択し、 **[モバイル]**  セクションの  **[Notification Hubs]**  を選択します。 サービス名の横にある星のアイコンを選択して、左側のメニューにある  **[お気に入り]**  セクションにサービスを追加します。  **Notification Hubs** を  **[お気に入り]** に追加したら、それを選択します。
 
-   :::image type="content" source="media/ios-sdk-get-started/image18.png" alt-text="Azure Portal":::
+   :::image type="content" source="media/ios-sdk-get-started/image18.png" alt-text="キーチェーン アクセス":::
 
 3.  **[Notification Hubs]**  ページで、ツール バーの  **[追加]**  を選択します。
 
-   :::image type="content" source="media/ios-sdk-get-started/image19.png" alt-text="[追加] ツール バー ボタン":::
+   :::image type="content" source="media/ios-sdk-get-started/image19.png" alt-text="キーチェーン アクセス":::
 
 4.  **[Notification Hubs]**   ページで、以下の手順を実行します。
 
@@ -252,18 +252,18 @@ Apple Push Notification Service (APNS) では、証明書を使用してプッ�
    4.  **[リソース グループ]** で既存のリソース グループを選択するか、新しいリソース グループを作成します。
    5.  **[作成]** を選択します。
 
-   :::image type="content" source="media/ios-sdk-get-started/image20.png" alt-text="プロパティを設定する":::
+   :::image type="content" source="media/ios-sdk-get-started/image20.png" alt-text="キーチェーン アクセス":::
 
 5.  **[通知]**  (ベルのアイコン) を選択し、 **[リソースに移動]** を選択します。  **[Notification Hubs]**  ページの一覧を最新の情報に更新して、お使いの通知ハブを選択することもできます。
 
-   :::image type="content" source="media/ios-sdk-get-started/image21.png" alt-text="ポータルの通知":::
+   :::image type="content" source="media/ios-sdk-get-started/image21.png" alt-text="キーチェーン アクセス":::
 
 6.  **[アクセス ポリシー]**  を一覧から選択します。 使用可能な 2 つの接続文字列を書き留めてください。 これらは、後でプッシュ通知を処理するために必要になります。
 
    > [!IMPORTANT]
    > アプリケーションで **DefaultFullSharedAccessSignature** ポリシーを使用しないでください。 これの使用が意図されているのはバックエンドだけです。
 
-   :::image type="content" source="media/ios-sdk-get-started/image22.png" alt-text="接続文字列":::
+   :::image type="content" source="media/ios-sdk-get-started/image22.png" alt-text="キーチェーン アクセス":::
 
 ## <a name="configure-the-notification-hub-with-apns-information"></a>APNS 情報を利用して通知ハブを構成する
 
@@ -284,7 +284,7 @@ Apple Push Notification Service (APNS) では、証明書を使用してプッ�
 
 5.  **サンドボックス** モードを選択します。
 
-   :::image type="content" source="media/ios-sdk-get-started/image23.png" alt-text="構成":::
+   :::image type="content" source="media/ios-sdk-get-started/image23.png" alt-text="キーチェーン アクセス":::
 
 6.  **[保存]** を選択します。
 

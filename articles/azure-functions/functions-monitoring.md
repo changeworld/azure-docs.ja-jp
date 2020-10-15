@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.custom: devx-track-csharp, fasttrack-edit
 ms.openlocfilehash: 239d1da028a06d4272ed9b22b624413394aa142f
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88213002"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
@@ -138,12 +138,12 @@ Azure Functions ロガーでは、すべてのログに*ログ レベル*も含�
 |LogLevel    |コード|
 |------------|---|
 |Trace       | 0 |
-|Debug       | 1 |
+|デバッグ       | 1 |
 |Information | 2 |
-|Warning     | 3 |
-|Error       | 4 |
+|警告     | 3 |
+|エラー       | 4 |
 |Critical    | 5 |
-|None        | 6 |
+|なし        | 6 |
 
 ログ レベル `None` については、次のセクションで説明します。 
 

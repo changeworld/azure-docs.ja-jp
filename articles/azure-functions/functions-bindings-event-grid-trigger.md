@@ -7,10 +7,10 @@ ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
 ms.openlocfilehash: 96daa93c28617bd34f263b11afcd244e3b7bacf0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88214135"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions の Azure Event Grid トリガー
@@ -407,7 +407,7 @@ Event Grid の HTTP 要求の受信を始めるには、関数を呼び出すエ
 
 このリンクを選ぶと、現在のトリガー エンドポイントが既に定義された **[イベント サブスクリプションの作成]** ページがポータルに表示されます。
 
-:::image type="content" source="media/functions-bindings-event-grid/endpoint-url.png" alt-text="関数のエンドポイントが既に定義された [イベント サブスクリプションの作成]" :::
+:::image type="content" source="media/functions-bindings-event-grid/endpoint-url.png" alt-text="ポータルで新しいイベント サブスクリプションをトリガーに接続する。" :::
 
 Azure Portal を使ってサブスクリプションを作成する方法について詳しくは、Event Grid のドキュメントの「[カスタム イベントの作成 - Azure Portal](../event-grid/custom-event-quickstart-portal.md)」をご覧ください。
 

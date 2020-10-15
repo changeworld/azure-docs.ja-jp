@@ -4,10 +4,10 @@ description: この記事では、Azure Monitor for containers によって収�
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.openlocfilehash: a03e94fa7650c56a4d3b3beda3c27283329aebbe
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84204652"
 ---
 # <a name="understand-monitoring-costs-for-azure-monitor-for-containers"></a>Azure Monitor for containers の監視コストについて
