@@ -5,6 +5,7 @@
     - name: VPN ゲートウェイとは
       href: vpn-gateway-about-vpngateways.md
 - name: チュートリアル
+  expanded: true
   items:
     - name: VPN ゲートウェイを作成して管理する
       href: vpn-gateway-tutorial-create-gateway-powershell.md

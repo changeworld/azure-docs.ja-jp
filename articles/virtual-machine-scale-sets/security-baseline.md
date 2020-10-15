@@ -8,10 +8,10 @@ ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: d55e53ba455a4b91b4f57ea08b250320a5467c2b
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89398446"
 ---
 # <a name="azure-security-baseline-for-virtual-machine-scale-sets"></a>Virtual Machine Scale Sets 用の Azure セキュリティ ベースライン
@@ -310,7 +310,7 @@ Azure 仮想マシン スケール セットでサポートされているアプ
 
 ### <a name="28-centralize-anti-malware-logging"></a>2.8:マルウェア対策のログ記録を一元管理する
 
-**ガイダンス**: Azure Cloud Services および Virtual Machines 用 Microsoft Antimalware を使用して、Azure ストレージ アカウントにイベントを記録するように Windows 仮想マシンを構成できます。 Storage アカウントからイベントを取り込み、必要に応じてアラートを作成するように、Log Analytics ワークスペースを構成します。 Azure Security Center の"コンピューティングとアプリ" の推奨事項に従います。 Linux 仮想マシンの場合、マルウェア対策の脆弱性の検出にはサードパーティ製ツールが必要になります。
+**ガイダンス**: Azure Cloud Services および Virtual Machines 用 Microsoft Antimalware を使用して、Azure ストレージ アカウントにイベントを記録するように Windows 仮想マシンを構成できます。 Storage アカウントからイベントを取り込み、必要に応じてアラートを作成するように、Log Analytics ワークスペースを構成します。 Azure Security Center の[Compute &amp; Apps]\(計算とアプリ\) の推奨事項に従います。 Linux 仮想マシンの場合、マルウェア対策の脆弱性の検出にはサードパーティ製ツールが必要になります。
 
 * [Cloud Services と Virtual Machines に対して Microsoft Antimalware を構成する方法](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
 

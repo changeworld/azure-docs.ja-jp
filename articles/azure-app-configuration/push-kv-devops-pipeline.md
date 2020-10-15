@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: lcozzens
-ms.openlocfilehash: c1142ef7b37dee916118964778f6c1db2a65d591
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: b2b903f259fdd2564fbcaed5eb0a750edf9c06e2
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719593"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075877"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Azure Pipelines を使用して App Configuration に設定をプッシュする
 
@@ -56,7 +56,7 @@ ms.locfileid: "88719593"
 
 このセクションでは、Azure DevOps ビルド パイプラインで Azure App Configuration Push タスクを使用する方法について説明します。
 
-1. **[パイプライン]**  >  **[パイプライン]** の順にクリックして、ビルド パイプラインのページに移動します。 ビルド パイプラインについては、[こちらのドキュメント](https://docs.microsoft.com/azure/devops/pipelines/create-first-pipeline?view=azure-devops&tabs=tfs-2018-2)を参照してください。
+1. **[パイプライン]**  >  **[パイプライン]** の順にクリックして、ビルド パイプラインのページに移動します。 ビルド パイプラインについては、[こちらのドキュメント](/azure/devops/pipelines/create-first-pipeline?tabs=tfs-2018-2&view=azure-devops)を参照してください。
       - 新しいビルド パイプラインを作成する場合は、パイプラインの右側にある **[アシスタントを表示する]** を選択し、 **[Azure App Configuration Push]** タスクを検索します。
       - 既存のビルド パイプラインを使用する場合は、パイプラインを編集するときに **[タスク]** タブに移動し、 **[Azure App Configuration Push]** タスクを検索します。
 2. キー値を構成ファイルから App Configuration ストアにプッシュするために必要なタスクのパラメーターを構成します。 **[構成ファイルのパス]** パラメーターは、ファイル リポジトリのルートから始まります。
@@ -66,10 +66,10 @@ ms.locfileid: "88719593"
 
 このセクションでは、Azure DevOps リリース パイプラインで Azure App Configuration Push タスクを使用する方法について説明します。
 
-1. **[パイプライン]**  >  **[リリース]** の順に選択して、リリース パイプラインのページに移動します。 リリース パイプラインについては、[こちらのドキュメント](https://docs.microsoft.com/azure/devops/pipelines/release?view=azure-devops)を参照してください。
+1. **[パイプライン]**  >  **[リリース]** の順に選択して、リリース パイプラインのページに移動します。 リリース パイプラインについては、[こちらのドキュメント](/azure/devops/pipelines/release?view=azure-devops)を参照してください。
 1. 既存のリリース パイプラインを選択します。 ない場合は、 **[+ 新規]** を選択して、新規作成します。
 1. 右上隅にある **[編集]** ボタンを選択して、リリース パイプラインを編集します。
-1. **[ステージ]** を選択して、タスクを追加します。 ステージの詳細については、[こちら](https://docs.microsoft.com/azure/devops/pipelines/release/environments?view=azure-devops)を参照してください。
+1. **[ステージ]** を選択して、タスクを追加します。 ステージの詳細については、[こちら](/azure/devops/pipelines/release/environments?view=azure-devops)を参照してください。
 1. そのジョブの **+** を選択し、 **[デプロイ]** タブで **[Azure App Configuration Push]** タスクを追加します。
 1. キー値を構成ファイルから App Configuration ストアにプッシュするために必要なタスク内のパラメーターを構成します。 パラメーターの説明は、以下の「**パラメーター**」セクション、および各パラメーターの横にあるヒントを参照してください。
 1. リリースを保存してキューに登録します。 リリース ログに、タスクの実行中に発生したすべてのエラーが表示されます。
