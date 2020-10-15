@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 6446e138df1fe744d70be085d0aecac58e2c1c45
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d93a43a44a9ccff4e7918e556b9d759e270d2f42
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255300"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072086"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS クラスターの構成
 
@@ -176,10 +176,10 @@ Moby (Docker) ランタイムを使用してノード プールを作成する�
 
 ## <a name="generation-2-virtual-machines-preview"></a>第 2 世代仮想マシン (プレビュー)
 
-Azure では、[第 2 世代 (Gen2) 仮想マシン (VM)](../virtual-machines/windows/generation-2.md) がサポートされています。 第 2 世代 VM では、第 1 世代 (Gen1) VM でサポートされていない重要な機能がサポートされています。 これらの機能には、メモリの増加、Intel ソフトウェア ガード エクステンションズ (Intel SGX)、および仮想化された永続メモリ (vPMEM) が含まれます。
+Azure では、[第 2 世代 (Gen2) 仮想マシン (VM)](../virtual-machines/generation-2.md) がサポートされています。 第 2 世代 VM では、第 1 世代 (Gen1) VM でサポートされていない重要な機能がサポートされています。 これらの機能には、メモリの増加、Intel ソフトウェア ガード エクステンションズ (Intel SGX)、および仮想化された永続メモリ (vPMEM) が含まれます。
 
 第 2 世代 VM では、第 1 世代 VM で使用されている BIOS ベースのアーキテクチャではなく、新しい UEFI ベースのブート アーキテクチャが使用されます。
-Gen2 VM は、特定の SKU とサイズでのみサポートされています。 ご自分の SKU で Gen2 がサポートされているかどうかや、Gen2 が必要かどうかを確認するには、[サポートされているサイズの一覧](../virtual-machines/windows/generation-2.md#generation-2-vm-sizes)をご覧ください。
+Gen2 VM は、特定の SKU とサイズでのみサポートされています。 ご自分の SKU で Gen2 がサポートされているかどうかや、Gen2 が必要かどうかを確認するには、[サポートされているサイズの一覧](../virtual-machines/generation-2.md#generation-2-vm-sizes)をご覧ください。
 
 また、すべての VM イメージで Gen2 がサポートされているわけでありません。AKS の Gen2 VM では、新しい [AKS Ubuntu 18.04 イメージ](#os-configuration)を使用します。 このイメージでは、すべての Gen2 SKU およびサイズがサポートされています。
 

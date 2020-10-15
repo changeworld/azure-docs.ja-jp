@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 08fb794839adf9e8a986f53da00b4855e5535af5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4694b6ac829c42f20c6783810c248ee18d220433
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508867"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91965762"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Azure VM のシステム再起動について
 
@@ -30,7 +30,7 @@ Azure で実行中のアプリケーションを VM の再起動とダウンタ�
 
 このレベルの冗長性をアプリケーションに提供するには、2 台以上の VM を可用性セットにグループ化することをお勧めします。 このような構成により、計画的または計画外のメンテナンス イベント中に、少なくとも 1 つの VM が利用可能となり、99.95% の [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_5/) が満たされます。
 
-可用性セットの詳細については、[VM の可用性の管理](../windows/manage-availability.md)に関する記事を参照してください。
+可用性セットの詳細については、[VM の可用性の管理](../manage-availability.md)に関する記事を参照してください。
 
 ## <a name="resource-health-information"></a>Resource Health の情報
 
@@ -72,7 +72,7 @@ VM の再起動の原因となる一般的なその他のシナリオとして�
 
 ### <a name="azure-security-center-and-windows-update"></a>Azure Security Center と Windows の更新プログラム
 
-Azure Security Center では、オペレーティング システムに不足している更新プログラムがないかどうかを確認するために、Windows と Linux の VM の監視を毎日行っています。 Security Center は、Windows VM に構成されているサービスに応じて、Windows Update または Windows Server Update Services (WSUS) から利用可能なセキュリティ更新プログラムと重要な更新プログラムの一覧を取得します。 また、Linux システムの最新の更新プログラムについてもチェックしています。 VM でシステムの更新プログラムが不足している場合、Security Center は、それらを適用することを推奨します。 これらのシステムの更新プログラムの適用は、Azure Portal で Security Center を通して制御されます。 一部の更新プログラムでは、その適用後に VM の再起動が必要になります。 詳細については、「[Azure Security Center でシステムの更新プログラムを適用する](../../security-center/security-center-virtual-machine-protection.md)」を参照してください。
+Azure Security Center では、オペレーティング システムに不足している更新プログラムがないかどうかを確認するために、Windows と Linux の VM の監視を毎日行っています。 Security Center は、Windows VM に構成されているサービスに応じて、Windows Update または Windows Server Update Services (WSUS) から利用可能なセキュリティ更新プログラムと重要な更新プログラムの一覧を取得します。 また、Linux システムの最新の更新プログラムについてもチェックしています。 VM でシステムの更新プログラムが不足している場合、Security Center は、それらを適用することを推奨します。 これらのシステムの更新プログラムの適用は、Azure Portal で Security Center を通して制御されます。 一部の更新プログラムでは、その適用後に VM の再起動が必要になります。 詳細については、「[Azure Security Center でシステムの更新プログラムを適用する](../../security-center/asset-inventory.md)」を参照してください。
 
 Windows VM は、オンプレミスのサーバーと同じように、ユーザーによって管理されることを想定しているため、Azure 側からそれらの VM に Windows の更新プログラムをプッシュすることはありません。 ただし、自動 Windows Update の設定は有効のままにしておくことをお勧めします。 Windows Update による更新プログラムの自動インストールでも、更新プログラムの適用後に再起動が発生する可能性があります。 詳細については、「[Windows Update: FAQ](https://support.microsoft.com/help/12373/windows-update-faq)」を参照してください。
 

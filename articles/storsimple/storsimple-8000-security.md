@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
 ms.openlocfilehash: 4598f71f9b611e68f8eb00676138784833c39f32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75891513"
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple のセキュリティとデータの保護
@@ -47,7 +47,7 @@ StorSimple デバイス マネージャー サービスは、Microsoft Azure で
 
 StorSimple デバイス マネージャー サービスにアクセスするには、StorSimple を含む Azure サブスクリプションを組織が保有している必要があります。 Azure ポータルから利用できる機能は、保有するサブスクリプションによって決まります。 Azure サブスクリプションを組織が保有していない場合は、「[Azure への組織としてのサインアップ](../active-directory/fundamentals/sign-up-organization.md)」で詳しい情報をご覧いただけます。
 
-StorSimple デバイス マネージャー サービスは Azure でホストされるため、Azure のセキュリティ機能によって保護されます。 Microsoft Azure のセキュリティ機能の詳細については、「[Microsoft Azure Security Center](https://azure.microsoft.com/support/trust-center/security/)」をご覧ください。
+StorSimple デバイス マネージャー サービスは Azure でホストされるため、Azure のセキュリティ機能によって保護されます。 Microsoft Azure のセキュリティ機能の詳細については、「 [Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/security/)」をご覧ください。
 
 ## <a name="storsimple-device-protection"></a>StorSimple デバイスの保護
 

@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/09/2019
 ms.openlocfilehash: 8be7e05ac85ce0b1b10edf18d3885a07e016b9ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75895022"
 ---
 # <a name="scenario-cluster-creation-failed-due-to-not-sufficient-fault-domains-in-region-in-azure-hdinsight"></a>シナリオ:Azure HDInsight での `not sufficient fault domains in region` のために、クラスターの作成に失敗した
@@ -30,7 +30,7 @@ Apache Kafka クラスターを作成しようとしているときに、`not su
 
 HDInsight では、Kafka クラスターは、3 つ以上の障害ドメインがあるリージョンにプロビジョニングする必要があります。
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解像度
 
 クラスターを作成するリージョンに十分な障害ドメインがない場合は、製品チームに連絡して、3 つの障害ドメインがない場合でもクラスターのプロビジョニングを許可するよう依頼してください。
 

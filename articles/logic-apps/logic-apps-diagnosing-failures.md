@@ -7,15 +7,15 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/31/2020
 ms.openlocfilehash: 1f83f13564a64a0d9d8a5e0144ca95af6a769d6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76904990"
 ---
 # <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>Azure Logic Apps でのワークフローの問題のトラブルシューティングと診断
 
-Logic Apps では、アプリの問題の診断とデバッグに役立つ情報が生成されます。 Logic Apps を診断するには、Azure Portal でワークフローの各手順を確認します。 また、ランタイム デバッグのための手順をいくつかワークフローに追加することもできます。
+ロジック アプリでは、アプリの問題の診断とデバッグに役立つ情報が生成されます。 ロジック アプリを診断するには、Azure Portal でワークフローの各手順を確認します。 また、ランタイム デバッグのための手順をいくつかワークフローに追加することもできます。
 
 <a name="check-trigger-history"></a>
 
@@ -84,4 +84,4 @@ Logic Apps では、アプリの問題の診断とデバッグに役立つ情報
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Logic Apps を監視する](../logic-apps/monitor-logic-apps.md)
+* [ロジック アプリを監視する](../logic-apps/monitor-logic-apps.md)

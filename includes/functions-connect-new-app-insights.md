@@ -9,10 +9,10 @@ ms.date: 06/10/2020
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 87af50c5b5e5b69fd175ac4a570c4b6f659b97e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84731024"
 ---
 Azure Functions を使用すると、[Azure portal] から関数アプリに Application Insights 統合を簡単に追加できます。
@@ -30,7 +30,7 @@ Azure Functions を使用すると、[Azure portal] から関数アプリに App
     | **新しいリソース名** | 一意のアプリ名 | 関数アプリと同じ名前を使用するのが最も簡単です。この名前は、サブスクリプション内で一意である必要があります。 | 
     | **場所** | 西ヨーロッパ | 可能であれば、お使いの関数アプリと同じ[リージョン](https://azure.microsoft.com/regions/)、または近隣のリージョンを使用してください。 |
 
-    :::image type="content" source="media/functions-connect-new-app-insights/ai-general.png" alt-text="Application Insights リソースを作成します":::。
+    :::image type="content" source="media/functions-connect-new-app-insights/ai-general.png" alt-text="ポータルから Application Insights を有効にする":::。
 
 1. **[適用]** を選択します。 
 

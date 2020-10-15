@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: kenwith
 ms.openlocfilehash: d9dd03ec349daf2312b7d803e16e3c5fb41ecf0c
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604106"
 ---
 # <a name="managing-access-to-apps"></a>アプリへのアクセスの管理

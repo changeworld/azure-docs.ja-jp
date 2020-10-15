@@ -10,10 +10,10 @@ ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 08/21/2020
 ms.openlocfilehash: fd74bfca73323209012dfd1fda61bbaada84092f
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90530694"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>チュートリアル:Power Apps から Cognitive Search インデックスに対してクエリを実行する
@@ -49,7 +49,7 @@ Power Apps のコネクタは、データ ソース接続です。 この手順�
 
 1. **[+ New custom connector]\(+ 新しいカスタム コネクタ\)** を選択し、 **[一から作成]** を選択します。
 
-    :::image type="content" source="./media/search-howto-powerapps/1-3-create-blank.png" alt-text="[一から作成] メニュー" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-3-create-blank.png" alt-text="[カスタム コネクタ] メニュー" border="true":::
 
 1. カスタム コネクタに名前を付け (たとえば *AzureSearchQuery*)、 **[続行]** をクリックします。
 
@@ -60,15 +60,15 @@ Power Apps のコネクタは、データ ソース接続です。 この手順�
    * [ホスト] には、検索サービスの URL (たとえば `<yourservicename>.search.windows.net`) を入力する必要があります
    * [ベース URL] には、単に「/」と入力します
 
-    :::image type="content" source="./media/search-howto-powerapps/1-5-general-info.png" alt-text="[全般情報] ダイアログ" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-5-general-info.png" alt-text="[カスタム コネクタ] メニュー" border="true":::
 
 1. [セキュリティ] ページで、 **[認証の種類]** として *[API キー]* を設定し、パラメーター ラベルとパラメーター名の両方を「*api-key*」に設定します。 **[パラメーターの場所]** については、次に示すように *[ヘッダー]* を選択します。
 
-    :::image type="content" source="./media/search-howto-powerapps/1-6-authentication-type.png" alt-text="[認証の種類] オプション" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-6-authentication-type.png" alt-text="[カスタム コネクタ] メニュー" border="true":::
 
 1. [定義] ページで **[+ 新しいアクション]** を選択して、インデックスに対してクエリを実行するアクションを作成します。 概要および操作 ID の名前として「Query」という値を入力します。 *「検索インデックスに対してクエリを実行する」* のような説明を入力します。
 
-    :::image type="content" source="./media/search-howto-powerapps/1-7-new-action.png" alt-text="[新しいアクション] オプション" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-7-new-action.png" alt-text="[カスタム コネクタ] メニュー" border="true":::
 
 1. 下へスクロールします。 [要求] で **[+ サンプルからのインポート]** ボタンを選択し、検索サービスへのクエリ要求を構成します。
 
@@ -80,23 +80,23 @@ Power Apps のコネクタは、データ ソース接続です。 この手順�
 
      **Power Apps** では、クエリからのパラメーターの抽出に構文が使用されます。 検索フィールドが明示的に定義されていることに注目してください。 
 
-       :::image type="content" source="./media/search-howto-powerapps/1-8-1-import-from-sample.png" alt-text="[サンプルからのインポート]" border="true":::
+       :::image type="content" source="./media/search-howto-powerapps/1-8-1-import-from-sample.png" alt-text="[カスタム コネクタ] メニュー" border="true":::
 
 1. **[インポート]** をクリックして、要求を自動入力します。 各パラメータの横にある **...** シンボルをクリックして、パラメーターのメタデータの設定を完了します。 各パラメーターの更新後、 **[戻る]** をクリックして、要求ページに戻ります。
 
-   :::image type="content" source="./media/search-howto-powerapps/1-8-2-import-from-sample.png" alt-text="サンプル ダイアログからのインポート" border="true":::
+   :::image type="content" source="./media/search-howto-powerapps/1-8-2-import-from-sample.png" alt-text="[カスタム コネクタ] メニュー" border="true":::
 
 1. *search* では: **[既定値]** を `*` に設定し、 **[必須]** を *[いいえ]* に設定して、 **[可視性]** を *[なし]* に設定します。 
 
-    :::image type="content" source="./media/search-howto-powerapps/1-10-1-parameter-metadata-search.png" alt-text="検索パラメーターのメタデータ" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-10-1-parameter-metadata-search.png" alt-text="[カスタム コネクタ] メニュー" border="true":::
 
 1. *select* では、次のようにします。 **[既定値]** を `HotelName,Description,Address/City` に設定し、 **[必須]** を *[いいえ]* に設定して、 **[可視性]** を *[なし]* に設定します。  
 
-    :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="選択パラメーターのメタデータ" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="[カスタム コネクタ] メニュー" border="true":::
 
 1. *api-version* では: **[既定値]** を `2020-06-30` に設定し、 **[必須]** を *[はい]* に設定して、 **[可視性]** を *[内部]* に設定します。  
 
-    :::image type="content" source="./media/search-howto-powerapps/1-10-2-parameter-metadata-version.png" alt-text="バージョン パラメーターのメタデータ" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-10-2-parameter-metadata-version.png" alt-text="[カスタム コネクタ] メニュー" border="true":::
 
 1. *[Content-Type]* では、`application/json` を設定します。
 
@@ -158,7 +158,7 @@ Power Apps のコネクタは、データ ソース接続です。 この手順�
 
 1. コネクタを選択し、アクションの一覧を展開して、 **[ビューのプロパティ]** を選択します。
 
-    :::image type="content" source="./media/search-howto-powerapps/1-11-1-test-connector.png" alt-text="プロパティの表示" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-11-1-test-connector.png" alt-text="[カスタム コネクタ] メニュー" border="true":::
 
 1. 右上の **[編集]** を選択します。
 
@@ -170,7 +170,7 @@ Power Apps のコネクタは、データ ソース接続です。 この手順�
 
 1. [操作] で、 **[テスト操作]** ボタンをクリックします。 成功した場合は、200 のステータスが表示され、応答の本文では検索結果を示す JSON を確認できます。
 
-    :::image type="content" source="./media/search-howto-powerapps/1-11-2-test-connector.png" alt-text="JSON 応答" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-11-2-test-connector.png" alt-text="[カスタム コネクタ] メニュー" border="true":::
 
 ## <a name="3---visualize-results"></a>3 - 結果を視覚化する
 
@@ -178,7 +178,7 @@ Power Apps のコネクタは、データ ソース接続です。 この手順�
 
 1. 左側で、 **[アプリ]**  >  **[+ 新しいアプリ]**  >  **[キャンバス]** の順に展開します。
 
-    :::image type="content" source="./media/search-howto-powerapps/2-1-create-canvas.png" alt-text="キャンバス アプリの作成" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/2-1-create-canvas.png" alt-text="[カスタム コネクタ] メニュー" border="true":::
 
 1. アプリケーションの種類を選択します。 このチュートリアルでは、 **[携帯電話レイアウト]** を使用して **[空のアプリ]** を作成します。 **[Power Apps Studio]** が表示されます。
 
@@ -186,13 +186,13 @@ Power Apps のコネクタは、データ ソース接続です。 この手順�
 
    クエリ API キーを入力します。
 
-    :::image type="content" source="./media/search-howto-powerapps/2-3-connect-connector.png" alt-text="コネクタの接続" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/2-3-connect-connector.png" alt-text="[カスタム コネクタ] メニュー" border="true":::
 
     これで *AzureSearchQuery* が、アプリケーションから使用できるデータ ソースとなりました。
 
 1. **[挿入]** タブで、キャンバスにいくつかのコントロールを追加します。
 
-    :::image type="content" source="./media/search-howto-powerapps/2-4-add-controls.png" alt-text="コントロールの挿入" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/2-4-add-controls.png" alt-text="[カスタム コネクタ] メニュー" border="true":::
 
 1. 次の要素を挿入します。
 
@@ -203,7 +203,7 @@ Power Apps のコネクタは、データ ソース接続です。 この手順�
 
     キャンバスは次のようになります。
 
-    :::image type="content" source="./media/search-howto-powerapps/2-5-controls-layout.png" alt-text="コントロールのレイアウト" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/2-5-controls-layout.png" alt-text="[カスタム コネクタ] メニュー" border="true":::
 
 1. **[検索]** ボタンにクエリを実行させるには、次のアクションを **OnSelect** に貼り付けます。
 
@@ -214,7 +214,7 @@ Power Apps のコネクタは、データ ソース接続です。 この手順�
 
    次のスクリーンショットは、**OnSelect** アクションの数式バーを示しています。
 
-    :::image type="content" source="./media/search-howto-powerapps/2-6-search-button-event.png" alt-text="ボタンの OnSelect" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/2-6-search-button-event.png" alt-text="[カスタム コネクタ] メニュー" border="true":::
 
    この操作により、 *[txtQuery]* テキスト ボックス内のテキストをクエリ語句として使用した検索クエリの結果によって、*azResult* という名前の新しいコレクションが更新されます。
 
@@ -236,17 +236,17 @@ Power Apps のコネクタは、データ ソース接続です。 この手順�
 
     コネクタを定義したときにサンプルの結果を提供しているため、アプリによりインデックスで使用できるフィールドが認識されます。
     
-    :::image type="content" source="./media/search-howto-powerapps/2-7-gallery-select-fields.png" alt-text="ギャラリー フィールド" border="true":::   
+    :::image type="content" source="./media/search-howto-powerapps/2-7-gallery-select-fields.png" alt-text="[カスタム コネクタ] メニュー" border="true":::   
  
 1. **F5** キーを押して、アプリをプレビューします。  
 
-    :::image type="content" source="./media/search-howto-powerapps/2-8-3-final.png" alt-text="最終的なアプリ" border="true":::    
+    :::image type="content" source="./media/search-howto-powerapps/2-8-3-final.png" alt-text="[カスタム コネクタ] メニュー" border="true":::    
 
 <!--     Remember that the fields can be set to calculated values.
 
     For the example, setting using the *"Image, Title and Subtitle"* layout and specifying the *Image* function as the concatenation of the root path for the data and the file name (for instance, `"https://mystore.blob.core.windows.net/multilang/" & ThisItem.metadata_storage_name`) will produce the result below.
 
-    :::image type="content" source="./media/search-howto-powerapps/2-8-2-final.png" alt-text="Final app" border="true":::         -->
+    :::image type="content" source="./media/search-howto-powerapps/2-8-2-final.png" alt-text="[カスタム コネクタ] メニュー" border="true":::         -->
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
