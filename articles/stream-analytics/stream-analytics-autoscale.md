@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/03/2020
 ms.openlocfilehash: 07cbb28b98fcbac1932424c1c72f388813ec2400
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86037564"
 ---
 # <a name="autoscale-stream-analytics-jobs-using-azure-automation"></a>Azure Automation を使用した Stream Analytics ジョブの自動スケーリング

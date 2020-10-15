@@ -11,10 +11,10 @@ ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 4105698198e6fb7f4e3d3526ff9590ebca4898f1
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91612168"
 ---
 # <a name="object-replication-for-block-blobs"></a>ブロック BLOB のオブジェクト レプリケーション

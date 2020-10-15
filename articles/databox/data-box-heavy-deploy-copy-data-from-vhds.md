@@ -9,12 +9,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 01031159d1894c7cb5f36b48f268186dff21fd22
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 755d0077abcba71d705a14643f5c2b28001bfa13
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77471331"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951436"
 ---
 # <a name="tutorial-use-data-box-heavy-to-import-data-as-managed-disks-in-azure"></a>チュートリアル:Data Box Heavy を使用して Azure のマネージド ディスクとしてデータをインポートする
 
@@ -75,11 +75,11 @@ Windows Server ホスト コンピューターを使用している場合は、�
     > [!NOTE]
     > マネージド ディスクのすべての共有の資格情報は同じです。
 
-    ![共有の資格情報を取得する 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
+    ![共有の資格情報を取得する](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
 
 2. [共有にアクセスしてデータをコピーする] ダイアログ ボックスで、共有の **[ユーザー名]** と **[パスワード]** をコピーします。 **[OK]** をクリックします。
     
-    ![共有の資格情報を取得する 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
+    ![共有の資格情報を取得する 2](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
 
 3. ご自分のリソースに関連付けられている共有 (以下の例の場合は、*mydbmdrg1*) にホスト コンピューターからアクセスするため、コマンド ウィンドウを開きます。 コマンド プロンプトに、次のコマンドを入力します。
 
@@ -101,7 +101,7 @@ Windows Server ホスト コンピューターを使用している場合は、�
 
 4. Windows キーを押しながら R キーを押します。 **[ファイル名指定して実行]** ウィンドウで、「`\\<device IP address>\<ShareName>`」と入力します。 **[OK]** をクリックして、エクスプローラーを開きます。
     
-    ![エクスプローラーで共有に接続する 2](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
+    ![エクスプローラーで共有に接続する](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
 
     各共有内に、事前に作成された次のフォルダーが表示されます。
     
@@ -114,7 +114,7 @@ Linux ホスト コンピューターを使用している場合は、次の手�
 
 1. 共有にアクセスできる許可するクライアントの IP アドレスを指定します。 ローカル Web UI で、 **[接続とコピー]** ページに移動します。 **[NFS の設定]** で、 **[NFS のクライアント アクセス]** をクリックします。
 
-    ![NFS のクライアント アクセスを構成する 1](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
+    ![NFS のクライアント アクセスを構成する](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
 
 2. NFS クライアントの IP アドレスを指定して、 **[追加]** をクリックします。 この手順を繰り返すことにより、複数の NFS クライアントに対するアクセスを構成できます。 **[OK]** をクリックします。
 

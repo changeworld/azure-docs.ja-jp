@@ -8,10 +8,10 @@ ms.author: dobett
 ms.date: 05/19/2020
 ms.topic: how-to
 ms.openlocfilehash: ba0ee0a610299bbe6b7e550f204cd2fd50d6d71a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83748631"
 ---
 # <a name="manage-iot-central-programmatically"></a>プログラムによる IoT Central の管理

@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9fddd5cb749b1dfe50505c139ed7900f709b584e
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 0f40c91672310d5963dab01180ea92633e970c5c
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706253"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055370"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>方法:Azure Access Control Service からの移行
 
@@ -214,7 +214,7 @@ Azure AD テナントは、AD FS を通じて、1 つ以上のオンプレミス
 
 Azure AD がアプリケーションとサービスの最善の移行経路であると判断した場合は、アプリを Azure AD と統合する 2 つの方法を認識する必要があります。
 
-WS-Federation または WIF を使用して Azure AD と統合する場合は、「[ギャラリー以外のアプリケーションのフェデレーション シングル サインオンを構成する方法](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)」で説明されているアプローチに従うことをお勧めします。 この記事は、Azure AD を SAML ベースのシングル サインオン用に構成する方法を説明したものですが、WS-Federation の構成にも使用できます。 このアプローチを使用するには、Azure AD Premium ライセンスが必要です。 このアプローチには 2 つの利点があります。
+WS-Federation または WIF を使用して Azure AD と統合する場合は、「[ギャラリー以外のアプリケーションのフェデレーション シングル サインオンを構成する方法](../manage-apps/configure-saml-single-sign-on.md)」で説明されているアプローチに従うことをお勧めします。 この記事は、Azure AD を SAML ベースのシングル サインオン用に構成する方法を説明したものですが、WS-Federation の構成にも使用できます。 このアプローチを使用するには、Azure AD Premium ライセンスが必要です。 このアプローチには 2 つの利点があります。
 
 - Azure AD トークン カスタマイズの柔軟性をフルに活用できます。 Azure AD によって発行された要求を、Access Control によって発行された要求と一致するようにカスタマイズすることができます。 これは、ユーザー ID や名前識別子要求に特に便利です。 テクノロジが変更された後もユーザー ID の一貫性が維持されるようにするには、Azure AD によって発行されたユーザー ID を、Access Control によって発行されたユーザー ID と一致させる必要があります。
 - アプリケーション固有のトークン署名証明書を構成し、その有効期間を制御できます。
@@ -226,7 +226,7 @@ WS-Federation または WIF を使用して Azure AD と統合する場合は、
 
 このアプローチを選ぶ場合は、[Azure AD での署名キー ロールオーバー](../develop/active-directory-signing-key-rollover.md)について理解する必要があります。 このアプローチでは、Azure AD のグローバル署名キーを使用してトークンを発行します。 既定では、WIF は署名キーを自動的に更新しません。 Azure AD がそのグローバル署名キーを回転する場合、変更を確定するために WIF 実装を準備する必要があります。 詳細については、「[Important information about signing key rollover in Azure AD](/previous-versions/azure/dn641920(v=azure.100))」 (Azure AD の署名キーのロールオーバーに関する重要な情報) を参照してください。
 
-OpenID Connect または OAuth プロトコル経由で Azure AD と統合できる場合は、その方法で統合することをお勧めします。 Azure AD を Web アプリケーションに統合する方法については、[Azure AD 開発者ガイド](https://aka.ms/aaddev)にさまざまなドキュメントとガイダンスが記載されています。
+OpenID Connect または OAuth プロトコル経由で Azure AD と統合できる場合は、その方法で統合することをお勧めします。 Azure AD を Web アプリケーションに統合する方法については、[Azure AD 開発者ガイド](../develop/index.yml)にさまざまなドキュメントとガイダンスが記載されています。
 
 #### <a name="migrate-to-azure-active-directory-b2c"></a>Azure Active Directory B2C への移行
 
@@ -332,7 +332,7 @@ OAuth クライアント資格情報の付与の Azure AD 実装を使用して�
 
 サーバー対サーバーのシナリオの実装のガイダンスについては、次のリソースをご覧ください。
 
-- [Azure AD 開発者ガイド](https://aka.ms/aaddev) の「サービス間」セクション
+- [Azure AD 開発者ガイド](../develop/index.yml) の「サービス間」セクション
 - [シンプルなパスワード クライアント資格情報を使用したデーモン コード サンプル](https://github.com/Azure-Samples/active-directory-dotnet-daemon)
 - [証明書クライアント資格情報を使用したデーモン コード サンプル](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)
 

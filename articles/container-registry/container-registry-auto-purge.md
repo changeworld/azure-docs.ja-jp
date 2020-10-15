@@ -4,10 +4,10 @@ description: 消去コマンドを使用すると、経過時間とタグ フィ
 ms.topic: article
 ms.date: 05/14/2020
 ms.openlocfilehash: ab6794648babd2bd491ded5788455b75c10d675a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83652634"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>Azure コンテナー レジストリからイメージを自動的に消去する

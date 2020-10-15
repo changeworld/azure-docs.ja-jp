@@ -4,10 +4,10 @@ description: Azure への運用環境 Service Fabric クラスターのデプロ
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.openlocfilehash: 1064e59491b7144aafade24bd50131478fe025eb
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87281329"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>クラスターのデプロイを計画および準備する

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/23/2019
 ms.author: kenwith
 ms.reviewer: zhchia
-ms.openlocfilehash: 617128640c4f4ae4ce5ac32803e459a9a3eb448f
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 9cb3d8f39d83e27755b1e8982dfe3b807c431413
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706457"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069723"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>マルチテナント アプリケーションで自動ユーザー プロビジョニングを有効にする
 
@@ -111,7 +111,7 @@ SAML JIT は、SAML トークン内の要求情報を使用して、アプリケ
 
 ## <a name="next-steps"></a>次の手順
 
-* [アプリケーションのシングル サインオンを有効にする](../manage-apps/isv-sso-content.md)
+* [アプリケーションのシングル サインオンを有効にする](../develop/v2-howto-app-gallery-listing.md)
 
 * [アプリケーションの一覧を提出し](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)、Microsoft と連携して Microsoft のサイトでドキュメントを作成します。
 

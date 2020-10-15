@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: scottwhi
 ms.openlocfilehash: b17341bc234ff3dfecc2c6dcd84ef77116a95d61
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68883548"
 ---
 # <a name="language-and-region-support-for-the-bing-visual-search-api"></a>Bing Visual Search API の言語と地域のサポート
@@ -43,7 +43,7 @@ Bing Visual Search API では 30 を超える国/地域がサポートされ、�
 |オーストリア|AT|
 |ベルギー|BE|
 |ブラジル|BR|
-|カナダ|CA|
+|Canada|CA|
 |チリ|CL|
 |デンマーク|DK|
 |フィンランド|FI|
@@ -73,27 +73,27 @@ Bing Visual Search API では 30 を超える国/地域がサポートされ、�
 |台湾|TW|
 |トルコ|TR|
 |イギリス|GB|
-|アメリカ|US|
+|United States|US|
 
 
 ## <a name="markets"></a>市場
 
-|国/リージョン|言語|市場コード|
+|国/リージョン|Language|市場コード|
 |-------|--------|-----------|
 |アルゼンチン|スペイン語|es-AR|
 |オーストラリア|英語|en-AU|
 |オーストリア|ドイツ語|de-AT|
 |ベルギー|オランダ語|nl-BE|
 |ベルギー|フランス語|fr-BE|
-|ブラジル|ポルトガル語|pt-BR|
-|カナダ|英語|en-CA|
-|カナダ|フランス語|fr-CA|
+|ブラジル|Portuguese|pt-BR|
+|Canada|英語|en-CA|
+|Canada|フランス語|fr-CA|
 |チリ|スペイン語|es-CL|
 |デンマーク|デンマーク語|da-DK|
 |フィンランド|フィンランド語|fi-FI|
 |フランス|フランス語|fr-FR|
 |ドイツ|ドイツ語|de-DE|
-|香港特別行政区|中国語 (繁体字)|zh-HK|
+|香港特別行政区|Traditional Chinese|zh-HK|
 |インド|英語|en-IN|
 |インドネシア|英語|en-ID|
 |イタリア|イタリア語|it-IT|
@@ -103,9 +103,9 @@ Bing Visual Search API では 30 を超える国/地域がサポートされ、�
 |メキシコ|スペイン語|es-MX|
 |オランダ|オランダ語|nl-NL|
 |ニュージーランド|英語|en-NZ|
-|中国|中国語|zh-CN|
+|中国|Chinese|zh-CN|
 |ポーランド|ポーランド語|pl-PL|
-|ポルトガル|ポルトガル語|pt-PT|
+|ポルトガル|Portuguese|pt-PT|
 |フィリピン|英語|en-PH|
 |ロシア|ロシア語|ru-RU|
 |サウジアラビア|アラビア語|ar-SA|
@@ -114,8 +114,8 @@ Bing Visual Search API では 30 を超える国/地域がサポートされ、�
 |スウェーデン|スウェーデン語|sv-SE|
 |スイス|フランス語|fr-CH|
 |スイス|ドイツ語|de-CH|
-|台湾|中国語 (繁体字)|zh-TW|
+|台湾|Traditional Chinese|zh-TW|
 |トルコ|トルコ語|tr-TR|
 |イギリス|英語|en-GB|
-|アメリカ|英語|en-US|
-|アメリカ|スペイン語|es-US|
+|United States|英語|ja-JP|
+|United States|スペイン語|es-US|

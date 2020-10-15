@@ -10,10 +10,10 @@ ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
 ms.openlocfilehash: b44196d62b964e46f5b9dda9076e265c1c819723
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88960464"
 ---
 # <a name="monitor-an-app-service-appwith-web-server-logs-using-azure-cli"></a>Azure CLI を使用した Web サーバー ログによる App Service アプリの監視

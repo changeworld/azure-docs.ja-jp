@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/30/2019
 ms.author: wolfma
 ms.openlocfilehash: c7332177795a45331749225e0f3dc3856e28a6a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "71327056"
 ---
 Windows 開発用に Visual Studio プロジェクトを作成するためには、プロジェクトの作成、.NET デスクトップ開発用の Visual Studio 設定、Speech SDK のインストール、ターゲット アーキテクチャの選択が必要となります。

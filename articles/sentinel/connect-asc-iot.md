@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/07/2020
 ms.author: yelevin
 ms.openlocfilehash: 822d0c742bbd54b5bab0c69e82652743584a0696
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89659616"
 ---
 # <a name="connect-your-data-from-azure-defender-formerly-azure-security-center-for-iot-to-azure-sentinel"></a>Azure Defender (旧称 Azure Security Center) for IoT からのデータを Azure Sentinel に接続する 

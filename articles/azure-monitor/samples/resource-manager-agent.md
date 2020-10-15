@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
 ms.openlocfilehash: 8b0673e534826acb5ff2d3747053f58fb39ff285
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83853118"
 ---
 # <a name="resource-manager-template-samples-for-agents-in-azure-monitor"></a>Azure Monitor のエージェント用の Resource Manager テンプレートのサンプル

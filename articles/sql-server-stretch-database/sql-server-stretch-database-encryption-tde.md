@@ -15,10 +15,10 @@ ms.reviewer: jroth
 manager: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: d632d078db55696dad7bb05e72368b13610b5978
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87091421"
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure"></a>Azure での Stretch Database に対する Transparent Data Encryption (TDE) の有効化

@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: alkohli
 ms.openlocfilehash: 3181b88b0cf49516eb5230585460d0cc91bb4042
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91575301"
 ---
 # <a name="tutorial-order-azure-data-box"></a>チュートリアル:Azure Data Box を注文する

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 7/9/2019
 ms.author: victorh
 ms.openlocfilehash: db29551a8150b70e797d45fe659482470c8aca2a
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67659425"
 ---
 # <a name="azure-application-gateway-resource-health-overview"></a>Azure Application Gateway の Resource Health の概要
@@ -49,7 +49,7 @@ Resource Health は、イベントと復旧プロセスについてさらに詳�
 
 ゲートウェイが想定したとおりに実行されている場合、状態は数分後に **[使用可能]** に変わります。
 
-問題が発生している場合、 **[不明]** 正常性状態は、プラットフォーム内のイベントによってゲートウェイが影響を受けていることを示唆している可能性があります。
+問題が発生している場合、**[不明]** 正常性状態は、プラットフォーム内のイベントによってゲートウェイが影響を受けていることを示唆している可能性があります。
 
 ![[不明] 状態](media/resource-health-overview/unknown.png)
 

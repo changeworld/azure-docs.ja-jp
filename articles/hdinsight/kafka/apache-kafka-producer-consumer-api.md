@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 05/19/2020
 ms.openlocfilehash: 260a3fbb8486a1e9eeaa87e920143615e5fae867
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83681818"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>チュートリアル:Apache Kafka Producer および Consumer API の使用

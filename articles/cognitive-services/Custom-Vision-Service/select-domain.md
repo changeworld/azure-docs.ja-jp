@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
 ms.openlocfilehash: 1fb30cc0634224213dc9a188a16902e07d379904
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82127767"
 ---
 # <a name="select-a-domain-for-a-custom-vision-project"></a>Custom Vision プロジェクトのドメインを選択する

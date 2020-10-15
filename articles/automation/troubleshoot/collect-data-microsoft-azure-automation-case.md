@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.author: v-miegge
 ms.openlocfilehash: d2f97d0b889186324aef9613847e3eddbfe1eb02
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83684843"
 ---
 # <a name="data-to-collect-when-opening-a-case-for-microsoft-azure-automation"></a>Microsoft Azure Automation のケースを開くときに収集するデータ

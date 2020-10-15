@@ -12,10 +12,10 @@ ms.date: 02/10/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: ac7420e47077e4e2b5bcfce0f33766554cd5c76d
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89647332"
 ---
 # <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>Azure Kubernetes Service の Machine Learning Web サービスで Azure AD ID を使用する

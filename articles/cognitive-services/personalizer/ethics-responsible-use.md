@@ -9,10 +9,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.openlocfilehash: 602da28f0c235fb0e797a493bc1160631c042a9d
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132723"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Personalizer の責任ある実装のガイドライン

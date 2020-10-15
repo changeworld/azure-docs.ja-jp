@@ -9,10 +9,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/14/2020
 ms.openlocfilehash: ca76563475dfbf8d35595c1de3cdee37f80e3ce1
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83690238"
 ---
 # <a name="plan-and-manage-costs-for-azure-data-factory"></a>Azure Data Factory のコストを計画および管理する

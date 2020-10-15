@@ -8,10 +8,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 03/01/2017
 ms.openlocfilehash: daf72fcf7baba289b4145d06d878c8a7232f1c6a
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132417"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Azure Data Lake U-SQL SDK を使用して U-SQL の実行およびテストする

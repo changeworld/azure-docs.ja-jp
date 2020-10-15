@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4db7727558d0b7f4c26aba3ffa823bebb07862f6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b6b94c30f00765164385987ed0ea9b201044f248
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713782"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077441"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>API Management 用の Azure セキュリティ ベースライン
 
@@ -100,7 +100,7 @@ Azure Security Center の統合された脅威インテリジェンスを使用�
 
 * [Azure DDoS Protection Standard を構成する方法](../virtual-network/manage-ddos-protection.md)
 
-* [Azure Security Center の統合された脅威インテリジェンスについて](../security-center/threat-protection.md)
+* [Azure Security Center の統合された脅威インテリジェンスについて](../security-center/azure-defender.md)
 
 **Azure Security Center の監視**: はい
 
@@ -588,7 +588,7 @@ Azure AD ユーザー アカウントの診断設定を作成し、監査ログ�
 
 * [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](../governance/management-groups/create.md)
+* [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
 * [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
@@ -774,7 +774,7 @@ Microsoft でスキャンおよび修正される、基になるプラットフ�
 
 * [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](../governance/management-groups/create.md)
+* [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
 * [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
@@ -838,7 +838,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 * [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy を使用して特定のリソースの種類を拒否する方法](/azure/governance/policy/samples/not-allowed-resource-types)
+* [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/index.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1114,7 +1114,7 @@ API Management のサービスのバックアップと復元の機能では、�
 
 Key Vault で論理的な削除を有効にして、偶発的または悪意のある削除からキーを保護します。
 
-* [Key Vault で論理的な削除を有効にする方法](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+* [Key Vault で論理的な削除を有効にする方法](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center の監視**: 適用なし
 

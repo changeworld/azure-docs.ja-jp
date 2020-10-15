@@ -10,10 +10,10 @@ ms.date: 06/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: 51422bd47b5bd2d7d5103c154e90eaa910396024
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89661026"
 ---
 # <a name="analyze-complex-data-types-in-azure-synapse-analytics"></a>Azure Synapse Analytics で複合データ型を分析する

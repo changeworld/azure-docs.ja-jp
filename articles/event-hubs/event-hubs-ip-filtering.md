@@ -3,12 +3,12 @@ title: Azure Event Hubs のファイアウォール ルール | Microsoft Docs
 description: ファイアウォール ルールを使用して、特定の IP アドレスから Azure Event Hubs への接続を許可します。
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: ab7f835187a33b5e4d95c160831337172a5ed74e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 596d506c0c4f6d79696b3019fd903e549149c656
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318536"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056210"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>特定の IP アドレスまたは範囲から Azure Event Hubs 名前空間へのアクセスを許可します
 既定では、要求が有効な認証と承認を受けている限り、Event Hubs 名前空間にはインターネットからアクセスできます。 これは IP ファイアウォールを使用して、さらに [CIDR (クラスレス ドメイン間ルーティング)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 表記の一連の IPv4 アドレスまたは IPv4 アドレス範囲のみに制限できます。
@@ -119,7 +119,7 @@ IP ファイアウォール規則は、Event Hubs 名前空間レベルで適用
       {
         "apiVersion": "2018-01-01-preview",
         "name": "[variables('namespaceNetworkRuleSetName')]",
-        "type": "Microsoft.EventHub/namespaces/networkruleset",
+        "type": "Microsoft.EventHub/namespaces/networkrulesets",
         "dependsOn": [
           "[concat('Microsoft.EventHub/namespaces/', parameters('eventhubNamespaceName'))]"
         ],

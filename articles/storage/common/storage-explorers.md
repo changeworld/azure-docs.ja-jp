@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
 ms.openlocfilehash: b02a08b7e8d8b867df820868b72a0ce14b6afa40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "71670943"
 ---
 # <a name="microsoft-client-tools-for-working-with-azure-storage"></a>Azure Storage を操作するための Microsoft クライアント ツール
@@ -23,7 +23,7 @@ Microsoft では、Azure Storage アカウントのデータを操作するた�
 | Azure Storage クライアント ツール                 | サポートされているプラットフォーム | ブロック BLOB | ページ BLOB | Append Blob | テーブル | キュー | ファイル |
 |-------------------------------------------|---------------------|------------|-----------|-------------|--------|--------|-------|
 | [Azure Portal](https://portal.azure.com)                    | Web                 | はい          | はい         | はい           | はい      | はい      | はい     |
-| [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)          | Windows、OSX        | はい          | はい         | はい           | はい      | はい      | はい     |
+| [Azure 記憶域エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)          | Windows、OSX        | はい          | はい         | はい           | はい      | はい      | はい     |
 | [Microsoft Visual Studio Cloud Explorer](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | Windows             | はい          | はい         | はい           | はい      | はい      | いいえ      |
 
 Azure Storage データを操作するために使用できるサード パーティ製のツールも多数あります。

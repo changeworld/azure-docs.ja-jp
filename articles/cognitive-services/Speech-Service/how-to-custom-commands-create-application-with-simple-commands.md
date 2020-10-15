@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.openlocfilehash: d166257dd28773d89a4f1fd56de3cb1a22242523
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87284168"
 ---
 # <a name="create-application-with-simple-commands"></a>単純なコマンドを使用してアプリケーションを作成する
@@ -50,10 +50,10 @@ ms.locfileid: "87284168"
 
 | 構成            | 説明                                                                                                                 |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| **Example sentences\(例文\)** | 発話の例では、ユーザーはこのコマンドを言ってトリガーすることができます。                                                                 |
-| **Parameters\(パラメーター\)**       | コマンドを完了するために必要な情報                                                                                |
-| **Completion rules\(完了ルール\)** | コマンドを完了するために実行されるアクション。 たとえば、ユーザーへの応答や、別の Web サービスとの通信などです。 |
-| **Interaction rules\(相互作用ルール\)**   | より具体的または複雑な状況に対処するための追加ルールです。                                                              |
+| **[Example sentences]\(例文\)** | 発話の例では、ユーザーはこのコマンドを言ってトリガーすることができます。                                                                 |
+| **パラメーター**       | コマンドを完了するために必要な情報                                                                                |
+| **[Completion rules]\(完了ルール\)** | コマンドを完了するために実行されるアクション。 たとえば、ユーザーへの応答や、別の Web サービスとの通信などです。 |
+| **[Interaction rules]\(相互作用ルール\)**   | より具体的または複雑な状況に対処するための追加ルールです。                                                              |
 
 
 > [!div class="mx-imgBorder"]
@@ -83,9 +83,9 @@ ms.locfileid: "87284168"
     
     | 設定    | 推奨値                          | 説明                                        |
     | ---------- | ---------------------------------------- | -------------------------------------------------- |
-    | **Name\(名前\)**       | ConfirmationResponse                  | ルールの目的を説明する名前          |
-    | **Conditions\(条件\)** | なし                                     | ルールを実行できるタイミングを決定する条件    |
-    | **Actions\(アクション\)**    | [Send speech response]\(音声応答を送信する\) > [Simple editor]\(シンプルなエディター\) > [First variation]\(最初のバリエーション\) > `Ok, turning the tv on` | ルール条件が真のときに実行するアクション |
+    | **名前**       | ConfirmationResponse                  | ルールの目的を説明する名前          |
+    | **条件** | なし                                     | ルールを実行できるタイミングを決定する条件    |
+    | **アクション**    | [Send speech response]\(音声応答を送信する\) > [Simple editor]\(シンプルなエディター\) > [First variation]\(最初のバリエーション\) > `Ok, turning the tv on` | ルール条件が真のときに実行するアクション |
     
 
 
@@ -125,8 +125,8 @@ ms.locfileid: "87284168"
 
 | 設定    | 推奨値                          |
 | ---------- | ---------------------------------------- |
-| Name\(名前\)  | ConfirmationResponse                  |
-| Conditions\(条件\) | なし                                     |
+| 名前  | ConfirmationResponse                  |
+| 条件 | なし                                     |
 | Actions    | [Send speech response]\(音声応答を送信する\) > [Simple editor]\(シンプルなエディター\) > [First variation]\(最初のバリエーション\) > `Ok, setting temperature to 40 degrees` |
 
 **[保存]** を選択して、すべての変更をコマンドに保存します。
@@ -136,8 +136,8 @@ ms.locfileid: "87284168"
 
 | 設定    | 推奨値                          |
 | ---------- | ---------------------------------------- |
-| Rule Name\(規則の名前\)  | ConfirmationResponse                  |
-| Conditions\(条件\) | なし                                     |
+| 規則の名前  | ConfirmationResponse                  |
+| 条件 | なし                                     |
 | Actions    | [Send speech response]\(音声応答を送信する\) > [Simple editor]\(シンプルなエディター\) > [First variation]\(最初のバリエーション\) > `Ok, setting an alarm for 9 am tomorrow` |
 
 **[保存]** を選択して、すべての変更をコマンドに保存します。

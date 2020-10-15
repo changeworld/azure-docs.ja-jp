@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 12/03/2018
 ms.custom: seodec18
 ms.openlocfilehash: b450d8463c09647b8f87547afe9d714c4b8659c4
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82858560"
 ---
 # <a name="tutorial-migrate-your-data-to-cassandra-api-account-in-azure-cosmos-db"></a>チュートリアル:Azure Cosmos DB の Cassandra API アカウントにデータを移行する

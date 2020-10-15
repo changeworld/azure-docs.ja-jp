@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
 ms.openlocfilehash: 8e76f767470b9052b25cd2b2958f3f9e9780881b
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83714748"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight クラスターの容量計画
