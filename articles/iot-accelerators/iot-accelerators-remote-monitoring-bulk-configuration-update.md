@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: philmea
-ms.openlocfilehash: 8309b625a590131c5f521335e180967ab2c2667c
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 57d2ac4f1e80c24a750e0e5f8eb22850718594a1
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91363156"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071032"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>チュートリアル:接続されたデバイスを一括管理する
 
@@ -59,7 +59,7 @@ If this is going to be a tutorial - we need to split this include into two so th
 * [IoT DevKit デバイスのブートローダーがバージョン 1.4.0 以降である](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/)ことを確認します。
 * IoT DevKit SDK がブートローダーと同じバージョンであることを確認します。 VS Code で Azure IoT Workbench を使用して、IoT DevKit SDK を更新できます。 コマンド パレットを開き、次のように入力します: **Arduino:**  を入力して選択します。 詳しくは、「[開発環境の準備](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md#prepare-the-development-environment)」をご覧ください。
 
-少なくとも 1 台の IoT DevKit デバイスをリモート監視ソリューション アクセラレータに接続する必要もあります。 IoT DevKit デバイスを接続していない場合は、「[MXChip IoT DevKit AZ3166 を IoT リモート監視ソリューション アクセラレータに接続する](iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md)」をご覧ください。
+少なくとも 1 台の IoT DevKit デバイスをリモート監視ソリューション アクセラレータに接続する必要もあります。 IoT DevKit デバイスを接続していない場合は、「[MXChip IoT DevKit AZ3166 を IoT リモート監視ソリューション アクセラレータに接続する](./iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2.md)」をご覧ください。
 
 ## <a name="navigate-to-the-dashboard"></a>ダッシュボードに移動します。
 
@@ -274,4 +274,4 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、ソリューションに接続されているデバイスのグループのファームウェアを更新する方法を示しました。 デバイスを更新するため、ソリューションではデバイスの自動管理が使用されます。 ソリューションの基になっている IoT ハブでの自動デバイス管理機能について詳しくは、「[Azure portal を使って多数の IoT デバイスを構成および監視する](../iot-hub/iot-hub-auto-device-config.md)」をご覧ください。
+このチュートリアルでは、ソリューションに接続されているデバイスのグループのファームウェアを更新する方法を示しました。 デバイスを更新するため、ソリューションではデバイスの自動管理が使用されます。 ソリューションの基になっている IoT ハブでの自動デバイス管理機能について詳しくは、「[Azure portal を使って多数の IoT デバイスを構成および監視する](../iot-hub/iot-hub-automatic-device-management.md)」をご覧ください。

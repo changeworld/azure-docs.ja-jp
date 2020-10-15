@@ -7,12 +7,12 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 652d63cbf71f7a998462780a5057ce8269463da4
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 69ec25348c3056536a2e09fd889b48e1e63ea7bb
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930385"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992784"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Application Insights Profiler を使用して ASP.NET Core Azure Linux Web アプリをプロファイルする
 
@@ -107,7 +107,7 @@ ms.locfileid: "88930385"
 
     ![Git リポジトリを設定する](./media/profiler-aspnetcore-linux/setup-git-repo.png)
 
-詳細については、「[App Service のドキュメント](https://docs.microsoft.com/azure/app-service)」を参照してください。
+詳細については、「[App Service のドキュメント](../../app-service/index.yml)」を参照してください。
 
 ## <a name="deploy-your-project"></a>プロジェクトのデプロイ
 
@@ -172,4 +172,3 @@ ms.locfileid: "88930385"
 Azure App Service でホストされているカスタム コンテナーを使用する場合は、[コンテナー化された ASP.NET Core アプリケーションのサービス プロファイラーを有効にする方法](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp)に関するページの手順で Application Insight Profiler を有効にします。
 
 問題やご提案があれば、次の Application Insights GitHub リポジトリにご報告ください:[ApplicationInsights-Profiler-AspNetCore:Issues](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues)。
-

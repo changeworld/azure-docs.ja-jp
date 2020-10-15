@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.openlocfilehash: 43b85ba58ed7163a896054ab9e77ddf82e3461a3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90902805"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Azure Database for MySQL の Advanced Threat Protection
@@ -42,15 +42,15 @@ Advanced Threat Protection は、高度なセキュリティ機能の統合パ�
  
 1. 電子メールの **[View recent alerts]\(最近のアラートの表示\)** リンクをクリックして Microsoft Azure portal を起動し、Azure Security Center のアラート ページを表示します。このページには、SQL データベースで検出されたアクティブな脅威の概要が示されます。
     
-    :::image type="content" source="./media/howto-database-threat-protection-portal/anomalous-activity-report.png" alt-text="異常アクティビティ レポート":::
+    :::image type="content" source="./media/howto-database-threat-protection-portal/anomalous-activity-report.png" alt-text="脅威検出の設定":::
 
     アクティブな脅威を表示する:
 
-    :::image type="content" source="./media/howto-database-threat-protection-portal/active-threats.png" alt-text="アクティブな脅威":::
+    :::image type="content" source="./media/howto-database-threat-protection-portal/active-threats.png" alt-text="脅威検出の設定":::
 
 2. 特定のアラートをクリックすると、さらに詳細な情報と、この脅威を調査し、今後の脅威に対処するためのアクションが表示されます。
     
-    :::image type="content" source="./media/howto-database-threat-protection-portal/specific-alert.png" alt-text="特定のアラート":::
+    :::image type="content" source="./media/howto-database-threat-protection-portal/specific-alert.png" alt-text="脅威検出の設定":::
 
 ## <a name="explore-threat-detection-alerts"></a>脅威検出アラートを調査する
 
@@ -58,7 +58,7 @@ SQL Database の脅威の検出では、アラートが [Azure Security Center](
 
 **[脅威検出アラート]** をクリックすると、Azure Security Center のアラート ページが起動され、データベースに対して検出されたアクティブな SQL 脅威の概要が表示されます。
 
-   :::image type="content" source="./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png" alt-text="脅威検出アラート":::
+   :::image type="content" source="./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png" alt-text="脅威検出の設定":::
    
 
 ## <a name="next-steps"></a>次のステップ

@@ -9,12 +9,12 @@ ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-js
-ms.openlocfilehash: 2fcb389736df8bedb2602919e986f7d65e8f3024
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ebc12e6d64d015267497497bebc22c8586adf999
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296911"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043733"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio Code を使用して Azure IoT Edge のモジュールを開発およびデバッグする
 
@@ -51,13 +51,13 @@ Windows、macOS、または Linux を実行しているコンピューターま�
 
 - Node.js:[Node.js](https://nodejs.org)。 また、[Yeoman](https://www.npmjs.com/package/yo) と [Azure IoT Edge Node.js Module Generator](https://www.npmjs.com/package/generator-azure-iot-edge-module) もインストールする必要があります。
 
-- Java:[Java SE Development Kit 10](https://aka.ms/azure-jdks) と [Maven](https://maven.apache.org/)。 JDK インストールを指すように [`JAVA_HOME` 環境変数を設定する](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/)必要があります。
+- Java:[Java SE Development Kit 10](/azure/developer/java/fundamentals/java-jdk-long-term-support) と [Maven](https://maven.apache.org/)。 JDK インストールを指すように [`JAVA_HOME` 環境変数を設定する](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/)必要があります。
 
 モジュール イメージを作成してデプロイするには、モジュール イメージを作成する Docker とモジュール イメージを保持するコンテナー レジストリが必要です。
 
 - お使いの開発用マシン上の [Docker Community Edition](https://docs.docker.com/install/)。
 
-- [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) または [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
+- [Azure Container Registry](../container-registry/index.yml) または [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
 
     > [!TIP]
     > プロトタイプおよびテスト目的で、クラウド レジストリの代わりに Docker のローカル レジストリを使用できます。

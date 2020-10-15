@@ -1,7 +1,7 @@
 ---
 title: Azure AD Domain Services の DNS を管理する | Microsoft Docs
 description: DNS サーバー ツールをインストールして、Azure Active Directory Domain Services マネージド ドメインの DNS を管理し、条件付きフォワーダーを作成する方法について説明します。
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -9,13 +9,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: af321f4e9ef9e340026852a759bb70b9f03c77f6
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.author: joflore
+ms.openlocfilehash: b347f8043216d4347099d68ff1c62156410582a3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88722944"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963178"
 ---
 # <a name="administer-dns-and-create-conditional-forwarders-in-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services マネージド ドメインで DNS を管理し、条件付きフォワーダーを作成する
 

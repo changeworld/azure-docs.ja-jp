@@ -13,10 +13,10 @@ ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 07/22/2020
 ms.openlocfilehash: 30107c99f16b1b2f7c91ce8a662f44a041410d01
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88119370"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>機能の比較:Azure SQL Database と Azure SQL Managed Instance

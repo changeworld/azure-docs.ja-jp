@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 3281642134e7a6a2531f43ad4b3f80cff34d03b6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6bea4ee4452675a50ef9144da300c3e15652a81f
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90890926"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952167"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro"></a>チュートリアル:Azure Stack Edge Pro でデータを変換する
 
@@ -61,15 +61,15 @@ Azure Stack Edge Pro でコンピューティングを構成するために、Io
     |IoT Hub     | **[新規]** または **[既存]** を選択します。 <br> 既定では、IoT リソースの作成には Standard レベル (S1) が使用されます。 Free レベルの IoT リソースを使用するには、それを作成してから既存のリソースを選択します。 <br> いずれの場合も、IoT Hub リソースでは、Azure Stack Edge リソースによって使用されるのと同じサブスクリプションとリソース グループが使用されます。     |
     |名前     |自分の IoT Hub リソースの名前を入力します。         |
 
-    ![コンピューティングの開始](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
+    ![コンピューティングの開始 2](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
 
 4. **［作成］** を選択します IoT Hub リソースの作成には数分かかります。 IoT Hub リソースが作成された後、**[コンピューティングの構成]** タイルが更新され、コンピューティングの構成が表示されます。 
 
-    ![コンピューティングの開始](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-4.png)
+    ![コンピューティングの開始 3](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-4.png)
 
 5. Edge コンピューティング ロールが構成されたことを確認するには、**[コンピューティングの構成]** タイルの **[View Compute]\(コンピューティングの表示\)** を選択します。
     
-    ![コンピューティングの開始](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
+    ![コンピューティングの開始 4](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
 
     > [!NOTE]
     > Azure Stack Edge Pro デバイスに IoT Hub が関連付けられる前に **[コンピューティングの構成]** ダイアログが閉じた場合、IoT Hub は作成されますが、コンピューティングの構成には表示されません。 

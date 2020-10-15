@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/12/2019
 ms.author: alkohli
 ms.openlocfilehash: f69f3ed4a439deec58d4e5d30cefe48c4834cd66
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89082185"
 ---
 デバイスにリモート接続する手順は、クライアントのオペレーティング システムによって異なります。
@@ -20,7 +20,7 @@ ms.locfileid: "89082185"
 Windows クライアントからリモートで接続するには、次の手順に従います。
 
 1. Windows PowerShell セッションを管理者として実行します。
-2. Windows リモート管理サービスがクライアントで実行されていることを確認します。 コマンド プロンプトで、次のコマンドを入力します。
+2. Windows リモート管理サービスがクライアントで実行されていることを確認します。 コマンド プロンプトに、次のコマンドを入力します。
 
     `winrm quickconfig`
 

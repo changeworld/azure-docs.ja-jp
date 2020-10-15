@@ -64,6 +64,8 @@
       href: ./deploy-vm-content-library.md
     - name: GitHub Enterprise Server を設定する
       href: github-enterprise-server.md
+    - name: パブリック IP の使用
+      href: public-ip-usage.md
     - name: IPSec トンネルを作成する
       href: create-ipsec-tunnel.md
     - name: Azure のネイティブ統合
@@ -84,8 +86,6 @@
           href: protect-azure-vmware-solution-with-application-gateway.md
         - name: Traffic Manager
           href: deploy-traffic-manager-balance-workloads.md
-        - name: パブリック IP の使用
-          href: public-ip-usage.md
     - name: VMware ソリューション
       items:
         - name: vRealize Operations の設定

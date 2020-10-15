@@ -4,10 +4,10 @@ description: この記事では、サービス タグ、IP ファイアウォー
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: fb21c8beb6d48ecab04917525011cc4762c46ff3
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91766395"
 ---
 # <a name="network-security-for-azure-service-bus"></a>Azure Service Bus のネットワーク セキュリティ 

@@ -1,14 +1,16 @@
 ---
 title: ベスト プラクティス - QnA Maker
 description: 以下のベスト プラクティスを利用してナレッジ ベースを改善し、アプリケーション/チャット ボットのエンド ユーザーにより良い情報を提供します。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/15/2020
-ms.openlocfilehash: 9a6f7f7d6edc4544942476050a1ed3c2011af7fb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 15cb1391cb6482401c2a091a4d5c0e9d819ba52d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80053129"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91777022"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースのベスト プラクティス
 
@@ -41,7 +43,7 @@ QnA Maker サービスは継続的に、コンテンツから QnA を抽出す�
 
 最善の回答はシンプルな回答ですが、シンプルすぎてはいけません。 `yes` や `no` などの回答は使用してはいけません。 回答を他のソースにリンクしたり、メディアとリンクを使用してリッチ エクスペリエンスを提供したりする必要がある場合は、[メタデータ タグ付け](../how-to/edit-knowledge-base.md#add-metadata)を使用して回答を識別した後、`strictFilters` プロパティにそのメタデータ タグを含む[クエリを送信](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)して、正しい回答のバージョンを取得します。
 
-|Answer|フォローアップ プロンプト|
+|回答|フォローアップ プロンプト|
 |--|--|
 |キーボードの電源ボタンを押して Surface ノート PC の電源を切ってください。|* スリープ、シャットダウン、再起動を行うキーの組み合わせ。<br>* Surface ノート PC 本体を起動する方法<br>* Surface ノート PC の BIOS を変更する方法<br>* スリープ、シャットダウン、再起動の違い|
 |カスタマー サービスは、電話、Skype、テキスト メッセージで 24 時間ご利用いただけます。|* 販売に関する連絡先情報。<br> * 直接訪問できるオフィスと店舗の場所と営業時間。<br> * Surface ノート PC のアクセサリ。|
@@ -56,7 +58,7 @@ QnA Maker サービスは継続的に、コンテンツから QnA を抽出す�
 
 |パーソナリティ |QnA Maker データセット ファイル |
 |---------|-----|
-|Professional |[qna_chitchat_professional.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_professional.tsv) |
+|2 次元形式 |[qna_chitchat_professional.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_professional.tsv) |
 |Friendly |[qna_chitchat_friendly.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_friendly.tsv) |
 |Witty |[qna_chitchat_witty.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_witty.tsv) |
 |Caring (温かい) |[qna_chitchat_caring.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_caring.tsv) |
@@ -111,7 +113,7 @@ QnA Maker でサポートされている優先度付け機能を効果的に活�
 
 ### <a name="use-metadata-tags-to-filter-questions-and-answers"></a>メタデータ タグを使用して質問と回答をフィルター処理する
 
-[メタデータ](../How-To/edit-knowledge-base.md)は、クライアント アプリケーションがすべての回答を取得する代わりにメタデータ タグに基づいてユーザー クエリの結果を絞り込む必要があることを認識する機能を追加します。 ナレッジ ベースの回答は、問い合わせが同じであっても、メタデータ タグに基づいて異なる場合があります。 たとえば、 *"where is parking located"* (駐車場はどこですか) という問いに対し、レストランの支店の場所が違えば、つまり、*Location: Seattle* (所在地: シアトル) のときと、*Location: Redmond* (所在地: レドモンド) のときで答えが変わります。
+[メタデータ](../How-To/edit-knowledge-base.md)は、クライアント アプリケーションがすべての回答を取得する代わりにメタデータ タグに基づいてユーザー クエリの結果を絞り込む必要があることを認識する機能を追加します。 ナレッジ ベースの回答は、問い合わせが同じであっても、メタデータ タグに基づいて異なる場合があります。 たとえば、*"where is parking located"* (駐車場はどこですか) という問いに対し、レストランの支店の場所が違えば、つまり、*Location: Seattle* (所在地: シアトル) のときと、*Location: Redmond* (所在地: レドモンド) のときで答えが変わります。
 
 ### <a name="use-synonyms"></a>同義語を使用する
 英語では同義語をある程度サポートしていますが、さまざま言い方があるキーワードに同義語を追加するには、[Alterations API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) を介して、大文字と小文字が区別されない言葉の変更機能を使用します。 同義語は QnA Maker サービスレベルで追加され、サービス内の全ナレッジ ベースで共有されます。
@@ -130,7 +132,7 @@ QnA Maker のランク付けアルゴリズムはユーザーからの問い合�
 |駐車*場所*はどこですか|
 |ATM の "*場所*" はどこですか|
 
-これら 2 つの QnA は非常によく似た語で表現されていますが、この類似性のために、「 *`<x>` の場所はどこですか*」のように表現されるユーザーの問い合わせの多くが非常に近いスコアになる可能性があります。 代わりに、ナレッジ ベース内の多くの質問に存在するかもしれない「場所」のような語を避け、"*駐車場はどこですか*" や "*ATM はどこですか*" のような質問で違いを明確にしてください。
+これら 2 つの QnA は非常によく似た語で表現されていますが、この類似性のために、「*`<x>` の場所はどこですか*」のように表現されるユーザーの問い合わせの多くが非常に近いスコアになる可能性があります。 代わりに、ナレッジ ベース内の多くの質問に存在するかもしれない「場所」のような語を避け、"*駐車場はどこですか*" や "*ATM はどこですか*" のような質問で違いを明確にしてください。
 
 ## <a name="collaborate"></a>協力
 QnA Maker では、ユーザーはナレッジ ベースに[協力](../How-to/collaborate-knowledge-base.md)できます。 ナレッジ ベースにアクセスするためには、Azure QnA Maker リソース グループへのアクセス権がユーザーに必要です。 ナレッジ ベースの編集と保守管理を外注する組織もありますが、その場合でも Azure リソースへのアクセスを保護できます。 この編集者/承認者モデルは、異なるサブスクリプションで同じ [QnA Maker サービス](../How-to/set-up-qnamaker-service-azure.md)を 2 つ設定し、その 1 つを編集/テスト サイクルに選択することで実現されます。 テストが終了したら、[インポート/エクスポート](../Tutorials/migrate-knowledge-base.md) プロセスを利用して、承認者の QnA Maker サービスにナレッジ ベース コンテンツを転送します。この承認者が最終的にナレッジ ベースを公開し、エンドポイントを更新します。
@@ -139,7 +141,7 @@ QnA Maker では、ユーザーはナレッジ ベースに[協力](../How-to/co
 
 ## <a name="active-learning"></a>アクティブ ラーニング
 
-[アクティブ ラーニング](../How-to/use-active-learning.md)は、幅広い質と量のユーザー ベースのクエリがある場合に、代替の質問を提案するという最高の仕事をします。 クライアント アプリケーションのユーザー クエリが、検閲なしのアクティブ ラーニングのフィードバック ループに参加できるようにすることが重要です。 QnA Maker ポータルで質問が提案されたら、 **[提案によるフィルター処理](../How-To/improve-knowledge-base.md#accept-an-active-learning-suggestion-in-the-knowledge-base)** を行い、それらの提案をレビューして、承認または拒否する必要があります。
+[アクティブ ラーニング](../How-to/use-active-learning.md)は、幅広い質と量のユーザー ベースのクエリがある場合に、代替の質問を提案するという最高の仕事をします。 クライアント アプリケーションのユーザー クエリが、検閲なしのアクティブ ラーニングのフィードバック ループに参加できるようにすることが重要です。 QnA Maker ポータルで質問が提案されたら、**[提案によるフィルター処理](../How-To/improve-knowledge-base.md#accept-an-active-learning-suggestion-in-the-knowledge-base)** を行い、それらの提案をレビューして、承認または拒否する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -2,20 +2,20 @@
 title: Azure AD Domain Services 管理の概念 | Microsoft Docs
 description: Azure Active Directory Domain Services のマネージド ドメインとユーザー アカウントとパスワードの動作を管理する方法について説明します
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.author: iainfou
-ms.openlocfilehash: 6266248b817485562c7ed2643b3dda5f32cecc53
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.author: joflore
+ms.openlocfilehash: 95c6a1f24335849fb2d2c4de56b4ed60e8e5f73f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489675"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962821"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services でのユーザー アカウント、パスワード、および管理の管理の概念
 

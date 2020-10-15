@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
-ms.openlocfilehash: ed14d4cb79cb5794fa666f1bb96e062d69128d0f
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 7a9285ebe2e749f5ac7f248a2703518c8ac237bc
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337672"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071678"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>IoT DevKit デバイスをリモート監視ソリューション アクセラレータに接続する
 
@@ -28,7 +28,7 @@ ms.locfileid: "87337672"
 
 このチュートリアルを完了するには、最初に次のタスクを行います。
 
-* 「[IoT DevKit AZ3166 をクラウドの Azure IoT Hub に接続する](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)」の手順に従って、DevKit を準備します。
+* 「[IoT DevKit AZ3166 をクラウドの Azure IoT Hub に接続する](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md)」の手順に従って、DevKit を準備します。
 
 ## <a name="open-sample-project"></a>サンプル プロジェクトを開く
 
@@ -128,5 +128,5 @@ DevKit デバイスにアップロードしたサンプル アプリケーショ
 
 ここでは、DevKit デバイスをお使いのリモート監視ソリューション アクセラレータに接続する方法を説明しました。推奨する次の手順は、以下のとおりです。
 
-* [Azure IoT ソリューション アクセラレータの概要](https://docs.microsoft.com/azure/iot-accelerators/)
+* [Azure IoT ソリューション アクセラレータの概要](./index.yml)
 * [UI のカスタマイズ](iot-accelerators-remote-monitoring-customize.md)

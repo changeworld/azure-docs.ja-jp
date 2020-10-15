@@ -1,15 +1,18 @@
 - name: 開発者のための Azure Active Directory
   href: index.yml
 - name: 概要
-  href: v1-overview.md
-- name: サンプル
-  href: sample-v1-code.md
-- name: 概念
+  expanded: true
   items:
+    - name: 概要
+      href: v1-overview.md
     - name: Microsoft ID プラットフォームの進化
       href: about-microsoft-identity-platform.md
     - name: v2.0 に更新する理由
       href: azure-ad-endpoint-comparison.md
+- name: サンプル
+  href: sample-v1-code.md
+- name: 概念
+  items:
     - name: アプリケーションの種類
       items:
         - name: アプリケーションの種類

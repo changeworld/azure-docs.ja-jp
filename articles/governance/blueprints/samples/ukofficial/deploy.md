@@ -4,10 +4,10 @@ description: ブループリント アーティファクトのパラメーター
 ms.date: 07/13/2020
 ms.topic: sample
 ms.openlocfilehash: a4512eb982943664afc8217c5332e5e3b6e62fc1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86521447"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK OFFICIAL および UK NHS のブループリント サンプルのデプロイ
