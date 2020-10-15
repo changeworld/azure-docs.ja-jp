@@ -50,7 +50,7 @@
           displayName: 'KV, akv'
           href: defender-for-key-vault-introduction.md
         - name: Azure Defender for Kubernetes
-          displayName: 'clusters, k8s'
+          displayName: 'clusters, k8s, aks'
           href: defender-for-kubernetes-introduction.md
         - name: コンテナー レジストリ用 Azure Defender
           displayName: 'ACR, registry, images'
@@ -58,7 +58,7 @@
         - name: その他の脅威の防止
           href: other-threat-protections.md
     - name: Security Center のコンテナー セキュリティ機能
-      displayName: 'kubernetes, aks, acr, registries'
+      displayName: 'kubernetes, aks, acr, registries, k8s'
       href: container-security.md
     - name: 価格
       href: security-center-pricing.md
@@ -79,6 +79,8 @@
           href: quickstart-onboard-gcp.md
     - name: PowerShell を使用したオンボードの自動化
       href: security-center-powershell-onboarding.md
+    - name: 管理グループに対して Security Center を有効にする
+      href: onboard-management-group.md
     - name: データ収集を構成する
       href: security-center-enable-data-collection.md
     - name: メール通知の設定
@@ -140,8 +142,6 @@
             - name: レコメンデーションへの応答を自動化する
               displayName: workflow
               href: workflow-automation.md
-            - name: レコメンデーションのエクスポート
-              href: continuous-export.md
             - name: リソースを推奨事項から除外する
               href: exempt-resource.md
     - name: Azure Defender アラート
@@ -169,17 +169,20 @@
           href: update-regulatory-compliance-packages.md
     - name: サーバー用 Azure Defender を使用する
       items:
-        - name: VM の脆弱性のスキャン
+        - name: 脆弱性のスキャン
           items:
-            - name: 統合 VA ソリューションで VM をスキャンする
-              displayName: 'qualys, vulnerability'
+            - name: マシン用の統合された VA スキャナー
+              displayName: 'qualys, vulnerability, arc'
               href: deploy-vulnerability-assessment-vm.md
             - name: BYOL VA ソリューションで VM をスキャンする
               displayName: 'qualys, rapid7, vulnerability'
               href: deploy-vulnerability-assessment-byol-vm.md
-            - name: VM 上の脆弱性を確認して修復する
+            - name: 脆弱性をレビューして修復する
               displayName: 'qualys, rapid7, vulnerability'
               href: remediate-vulnerability-findings-vm.md
+            - name: 特定の脆弱性の発見を無効にする
+              displayName: 'qualys, rapid7, vulnerability'
+              href: remediate-vulnerability-findings-vm.md#disable-specific-findings-preview
         - name: Just-In-Time VM アクセスを使用して管理ポートをセキュリティで保護する
           items:
             - name: Just-In-Time VM アクセスの概要
@@ -213,6 +216,15 @@
     - name: コンテナー レジストリ用 Azure Defender を使用する
       displayName: 'ACR, registry, images'
       href: defender-for-container-registries-usage.md
+    - name: アラートと推奨事項のエクスポート
+      items:
+        - name: SIEM、SOAR、または ITSM へのエクスポート
+          displayName: 'continuous, SIEM, SOAR, Splunk, QRadar, ServiceNow, ArcSight, Monitor, Graph, Sentinel,'
+          href: export-to-siem.md
+        - name: Log Analytics ワークスペースまたは Azure イベント ハブへのエクスポート
+          href: continuous-export.md
+        - name: すべてのアラートの CSV レポートをダウンロードする
+          href: continuous-export.md#manual-one-time-export-of-alerts-and-recommendations
     - name: Azure Defender アラートを処理する
       items:
         - name: セキュリティ アラートの管理
@@ -226,16 +238,14 @@
           href: security-center-incident.md
         - name: 脅威インテリジェンス レポートを生成する
           href: security-center-threat-report.md
-        - name: アラート構成を検証する (EICAR テスト ファイル)
+        - name: アラート構成を検証する
+          displayname: 'eicar, Kubernetes, Linux'
           href: security-center-alert-validation.md
         - name: アラートへの応答を自動化する
           displayName: workflow
           href: workflow-automation.md
-        - name: アラートのエクスポート
-          displayName: continuous
-          href: continuous-export.md
     - name: Kubernetes ワークロードを保護する
-      displayName: 'k8s, containers'
+      displayName: 'k8s, containers, aks'
       href: kubernetes-workload-protections.md
     - name: 調査で得られたユーザー データの管理
       href: security-center-investigation-user-data.md

@@ -9,12 +9,12 @@ ms.topic: reference
 caps.latest.revision: 42
 author: tgore03
 ms.author: tagore
-ms.openlocfilehash: dadb50bd0663f47e6a1bf3d58b5187c8b466964d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1896ee8385d1e41feffe7a9f542550ea7f34a8a3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79528372"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072562"
 ---
 # <a name="azure-cloud-services-definition-schema-csdef-file"></a>Azure Cloud Services 定義スキーマ (.csdef ファイル)
 サービス定義ファイルは、アプリケーションのサービス モデルを定義します。 このファイルには、クラウド サービスで使用できるロールの定義が含まれ、サービス エンドポイントの指定やサービスの構成設定の確立を行います。 構成設定の値は、[クラウド サービス (クラシック) 構成スキーマ](/previous-versions/azure/reference/ee758710(v=azure.100))に関するページの説明に従って、サービス構成ファイルで設定されます。
@@ -68,4 +68,4 @@ ms.locfileid: "79528372"
 | name                    |必須。 サービスの名前。 サービス アカウント内で一意となる名前を使用してください。|
 | topologyChangeDiscovery | 省略可能。 トポロジの変更通知の種類を指定します。 次のいずれかの値になります。<br /><br /> -   `Blast` - 更新プログラムをすべてのロール インスタンスにできるだけ早く送信します。 オプションを選択する場合、ロールでは、再起動せずにトポロジの更新プログラムを処理できる必要があります。<br />-   `UpgradeDomainWalk` – 前のロール インスタンスが更新プログラムを正常に受け入れた後に、更新プログラムを各インスタンスに順次送信します。|
 | schemaVersion           | 省略可能。 サービス定義スキーマのバージョンを指定します。 複数のバージョンの SDK が一緒にインストールされている場合、Visual Studio では、スキーマ バージョンにより、スキーマの検証に使用する適切な SDK ツールを選択できます。|
-| upgradeDomainCount      | 省略可能。 このサービスのロールが割り当てられるアップグレード ドメインの数を指定します。 そのサービスをデプロイすると、ロール インスタンスがアップグレード ドメインに割り当てられます。 詳しくは、「[クラウド サービス ロールまたはデプロイを更新する](cloud-services-how-to-manage-portal.md#update-a-cloud-service-role-or-deployment)」、[仮想マシンの可用性の管理](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)に関する記事、[クラウド サービス モデルの概要](https://docs.microsoft.com/azure/cloud-services/cloud-services-model-and-package)に関する記事をご覧ください。<br /><br /> アップグレード ドメインを最大 20 まで指定できます。 指定しない場合、アップグレード ドメインの既定の数は 5 です。|
+| upgradeDomainCount      | 省略可能。 このサービスのロールが割り当てられるアップグレード ドメインの数を指定します。 そのサービスをデプロイすると、ロール インスタンスがアップグレード ドメインに割り当てられます。 詳しくは、「[クラウド サービス ロールまたはデプロイを更新する](cloud-services-how-to-manage-portal.md#update-a-cloud-service-role-or-deployment)」、[仮想マシンの可用性の管理](../virtual-machines/manage-availability.md)に関する記事、[クラウド サービス モデルの概要](./cloud-services-model-and-package.md)に関する記事をご覧ください。<br /><br /> アップグレード ドメインを最大 20 まで指定できます。 指定しない場合、アップグレード ドメインの既定の数は 5 です。|

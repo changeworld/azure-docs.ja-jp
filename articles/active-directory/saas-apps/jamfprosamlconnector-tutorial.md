@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/11/2020
 ms.author: jeedes
 ms.openlocfilehash: 780421d93916c7da7897dfa15d09dc895cf56280
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88552664"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-jamf-pro"></a>チュートリアル:Azure Active Directory SSO と Jamf Pro の統合

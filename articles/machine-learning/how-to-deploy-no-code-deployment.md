@@ -9,12 +9,14 @@ ms.author: gopalv
 author: gvashishtha
 ms.date: 07/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9d6e234e1f4c8ac5199b92a09eb12bf7aa41b01b
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.custom: deploy
+ms.reviewer: larryfr
+ms.openlocfilehash: 32b2afe036b443846199b5e9d74e690859fb581d
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185487"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998859"
 ---
 # <a name="preview-no-code-model-deployment"></a>(プレビュー) コードなしのモデル デプロイ
 

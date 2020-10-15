@@ -26,10 +26,6 @@
       href: get-started-speech-to-text.md
     - name: 攻略ガイド
       items:
-        - name: Blob Storage に格納された音声を認識する
-          href: quickstarts/from-blob.md
-        - name: 音声認識モードを選択する
-          href: how-to-choose-recognition-mode.md
         - name: 音声認識のソース言語を変更する
           href: how-to-specify-source-language.md
         - name: Custom Speech を使用して精度を向上させる
@@ -37,8 +33,6 @@
         - name: 圧縮音声入力形式を使用する
           href: how-to-use-codec-compressed-audio-input-streams.md
           displayName: 'codec,codecs,compression,compressed,mp3,flac,mulaw,alaw,mp4,mp4a,wav,opus,ogg,pcm,silk'
-        - name: フレーズ リストを使用して精度を向上させる
-          href: how-to-phrase-lists.md
         - name: 特定のマイク入力デバイスを選択する
           href: how-to-select-audio-input-devices.md
         - name: 自動ソース言語検出を使用する
@@ -47,6 +41,8 @@
           href: batch-transcription.md
     - name: チュートリアル
       items:
+        - name: Blob Storage に格納された音声を認識する
+          href: quickstarts/from-blob.md
         - name: テナント モデルを使用して精度を向上させる
           href: tutorial-tenant-model.md
     - name: カスタマイズ

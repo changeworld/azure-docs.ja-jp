@@ -6,18 +6,18 @@ author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: f0583af05ae7d8e365b50610bfb812ac7764f223
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 12497d3ac86888ed861e8d5f655f45c8cbe4b6e3
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602467"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996160"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>クイック スタート:Java Web プロジェクトで Application Insights を使う
 
 
 > [!IMPORTANT]
-> Java アプリケーションを監視する際に推奨される方法は、コードを変更せずに自動インストルメンテーションを使用することです。 [Application Insights Java 3.0 エージェント](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)のガイドラインに従ってください。
+> Java アプリケーションを監視する際に推奨される方法は、コードを変更せずに自動インストルメンテーションを使用することです。 [Application Insights Java 3.0 エージェント](./java-in-process-agent.md)のガイドラインに従ってください。
 
 このクイックスタートでは、Application Insights SDK を使用して、要求のインストルメント化、依存関係の追跡、およびパフォーマンス カウンターの収集を行い、パフォーマンスの問題と例外を診断し、ユーザーによるアプリの操作内容を追跡するコードを作成します。
 
@@ -199,7 +199,7 @@ HTTP 要求データが概要ブレードに表示されます (表示されな�
 
 ## <a name="azure-app-service-aks-vms-config"></a>Azure App Service、AKS、VM の構成
 
-Azure リソース プロバイダーのいずれかで実行されているアプリケーションを監視する際に最適で最も簡単な方法は、[Java 3.0 エージェント](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)を介して Application Insights の自動インストルメンテーションを使用することです。
+Azure リソース プロバイダーのいずれかで実行されているアプリケーションを監視する際に最適で最も簡単な方法は、[Java 3.0 エージェント](./java-in-process-agent.md)を介して Application Insights の自動インストルメンテーションを使用することです。
 
 
 ## <a name="exceptions-and-request-failures"></a>例外と要求エラー
@@ -313,4 +313,3 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 [javalogs]: java-trace-logs.md
 [metrics]: ../platform/metrics-charts.md
 [usage]: javascript.md
-

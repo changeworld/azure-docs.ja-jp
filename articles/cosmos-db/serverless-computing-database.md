@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: sngun
 ms.openlocfilehash: d6399da204ba930fad2dd3656d27a807a83b1b13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85263263"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB と Azure Functions を使用したサーバーレス データベース コンピューティング
@@ -61,7 +61,7 @@ IoT 実装では、接続されている車のエンジンのチェック ラン
 
 次の図は、このトリガーで Azure Portal で書き込まれるコードを示しています。
 
-:::image type="content" source="./media/serverless-computing-database/cosmos-db-trigger-portal.png" alt-text="Azure portal で Cosmos DB 用 Azure Functions トリガーを作成する":::
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-trigger-portal.png" alt-text="Azure Cosmos DB と Azure Functions を統合する方法":::
 
 ### <a name="financial-use-case---timer-trigger-and-input-binding"></a>財務ユース ケース - タイマー トリガーと入力バインディング
 
@@ -75,9 +75,9 @@ IoT 実装では、接続されている車のエンジンのチェック ラン
 
 次の図は、このシナリオ用の Azure Portal のコードを示しています。
 
-:::image type="content" source="./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png" alt-text="財務シナリオのタイマー トリガーの Index.js ファイル":::
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png" alt-text="Azure Cosmos DB と Azure Functions を統合する方法":::
 
-:::image type="content" source="./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png" alt-text="財務シナリオのタイマー トリガーの Run.csx ファイル":::
+:::image type="content" source="./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png" alt-text="Azure Cosmos DB と Azure Functions を統合する方法":::
 
 ### <a name="gaming-use-case---azure-functions-trigger-and-output-binding-for-cosmos-db"></a>ゲームのユース ケース - Cosmos DB 用 Azure Functions トリガーと出力バインディング 
 

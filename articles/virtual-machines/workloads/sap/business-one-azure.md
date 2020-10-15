@@ -1,26 +1,18 @@
 ---
 title: Azure Virtual Machines 上の SAP Business One | Microsoft Docs
 description: Azure 上の SAP Business One。
-services: virtual-machines-linux,virtual-machines-windows
-documentationcenter: ''
 author: msjuergent
-manager: patfilot
-editor: ''
-tags: azure-resource-manager
-keywords: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ccec58f012dcd4b6371c15e79fa964600e775f54
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.reviewer: cynthn
+ms.openlocfilehash: caabaa6fbf65787f90c0033a06af26996c2388f2
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654652"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994094"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SAP Business One
 このドキュメントでは、Azure Virtual Machines に SAP Business One をデプロイするためのガイダンスを提供します。 このドキュメントは、SAP の Business One のインストール ドキュメントに代わるものではありません。 このドキュメントでは、Business One アプリケーションを実行する Azure インフラストラクチャの計画とデプロイに関する基本的なガイドラインについて説明します。
@@ -95,7 +87,7 @@ Azure にデプロイする必要があるネットワーク インフラスト�
 示されている簡略化された構成では、ルーティングの制御および制限を可能にするいくつかのセキュリティの例が紹介されています。 以下のものがあります。 
 
 - 顧客のオンプレミス側のルーター/ファイアウォール。
-- 次の例は、お使いの SAP Business One 構成を実行している Azure VNet にルーティングとセキュリティ規則を導入するために使用できる [Azure Network Security Group](../../../virtual-network/security-overview.md) です。
+- 次の例は、お使いの SAP Business One 構成を実行している Azure VNet にルーティングとセキュリティ規則を導入するために使用できる [Azure Network Security Group](../../../virtual-network/network-security-groups-overview.md) です。
 - Business One クライアントのユーザーに Business One サーバーを実行する (データベースを実行している) サーバーを見せないようにするには、Business One クライアントをホストしている VM と、Business One サーバーを、VNet 内の 2 つの異なるサブネットに分離する必要があります。
 - Business One サーバーへのアクセスを制限するには、2 つの異なるサブネットに割り当てられている Azure NSG をもう一度使用します。
 
@@ -111,7 +103,7 @@ Azure にデプロイする必要があるネットワーク インフラスト�
 
 特定のおよび全般的なデータベースのドキュメントで既に強調されていますが、以下に精通している必要があります。
 
-- 「[Azure での Windows 仮想マシンの可用性の管理](../../windows/manage-availability.md)」と「[Linux 仮想マシンの可用性管理](../../linux/manage-availability.md)」
+- 「[Azure での Windows 仮想マシンの可用性の管理](../../manage-availability.md)」と「[Linux 仮想マシンの可用性管理](../../manage-availability.md)」
 - 「[Virtual Machines の SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)」
 
 これらのドキュメントは、ストレージの種類と高可用性構成の選択範囲を決定する際に役立ちます。

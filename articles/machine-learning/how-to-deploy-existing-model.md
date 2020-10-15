@@ -10,13 +10,13 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: c0d36ec5020f595d8a61899ddc8f8b9c282bad19
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: how-to, devx-track-python, deploy
+ms.openlocfilehash: 64180320ab57996984f5e886639dfd4977ae5e7c
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328413"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999070"
 ---
 # <a name="deploy-your-existing-model-with-azure-machine-learning"></a>Azure Machine Learning を使用して既存のモデルをデプロイする
 

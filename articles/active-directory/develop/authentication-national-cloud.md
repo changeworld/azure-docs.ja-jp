@@ -14,10 +14,10 @@ ms.author: negoe
 ms.reviewer: negoe,celested
 ms.custom: aaddev,references_regions
 ms.openlocfilehash: d27498748f03fb101d165351ec80c77d57f78f1a
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88141501"
 ---
 # <a name="national-clouds"></a>各国のクラウド

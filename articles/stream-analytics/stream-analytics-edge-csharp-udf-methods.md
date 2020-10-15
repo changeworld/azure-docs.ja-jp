@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 9cf929a3a6f5b3752b030f449b3b24b2bdc941a1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907220"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>Azure Stream Analytics ジョブ用の .NET Standard ユーザー定義関数を開発する (プレビュー)
@@ -110,21 +110,21 @@ namespace CSharpUDFProject
 
 1. **[関数]** フォルダーを右クリックし、 **[項目の追加]** を選択します。
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-add-function.png" alt-text="Azure Stream Analytics プロジェクトに新しい関数を追加する":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-add-function.png" alt-text="Visual Studio Code での Azure Stream Analytics プロジェクト":::
 
 2. Azure Stream Analytics プロジェクトに、C# 関数 **SquareFunction** を追加します。
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-add-function-2.png" alt-text="VS Code で Stream Analytics プロジェクトの CSharp 関数を選択する":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-add-function-2.png" alt-text="Visual Studio Code での Azure Stream Analytics プロジェクト":::
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-add-function-name.png" alt-text="VS Code で CSharp 関数名を入力する":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-add-function-name.png" alt-text="Visual Studio Code での Azure Stream Analytics プロジェクト":::
 
 3. C# 関数の構成で、 **[Choose library project path]\(ライブラリ プロジェクト パスの選択\)** を選択して、ドロップダウン リストから C# プロジェクトを選択します。 **[プロジェクトのビルド]** を選択して、プロジェクトをビルドします。 次に、 **[クラスの選択]** と **[メソッドの選択]** を選択し、ドロップダウン リストから関連するクラスおよびメソッドの名前を選択します。 Stream Analytics クエリでメソッド、型、関数を参照するには、クラスを *public* として定義し、オブジェクトを *static public* として定義する必要があります。
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-choose-project.png" alt-text="VS Code で Stream Analytics C# 関数を構成する":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-choose-project.png" alt-text="Visual Studio Code での Azure Stream Analytics プロジェクト":::
 
     DLL の C# UDF を使用する場合は、 **[Choose library dll path]\(ライブラリ DLL のパスの選択\)** を選択し、DLL を選択します。 次に、 **[クラスの選択]** と **[メソッドの選択]** を選択し、ドロップダウン リストから関連するクラスおよびメソッドの名前を選択します。
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-choose-dll.png" alt-text="Stream Analytics の C# 関数の構成":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-choose-dll.png" alt-text="Visual Studio Code での Azure Stream Analytics プロジェクト":::
 
 4. Azure Stream Analytics クエリで、UDF を呼び出します。
 
@@ -136,7 +136,7 @@ namespace CSharpUDFProject
 
 5. Azure にジョブを送信する前に、ジョブ構成ファイル `JobConfig.json` の **CustomCodeStorage** セクションで、パッケージ パスを構成します。 CodeLens の **[Select from your subscription]\(サブスクリプションから選択\)** を使用してサブスクリプションを選択し、ドロップダウン リストからストレージ アカウントとコンテナー名を選択します。 **[パス]** は既定値のままにします。 ローカル テストでは、この手順は必要ありません。
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-configure-storage-account.png" alt-text="ライブラリ パスを選択する":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-configure-storage-account.png" alt-text="Visual Studio Code での Azure Stream Analytics プロジェクト":::
 
 ## <a name="develop-a-udf-in-visual-studio"></a>Visual Studio で UDF を開発する
 
@@ -166,39 +166,39 @@ Visual Studio でローカル プロジェクトを参照するには:
 
 この例で、**UDFTest** は C# クラス ライブラリ プロジェクトです。**ASAUDFDemo** は Azure Stream Analytics プロジェクトであり、**UDFTest** を参照します。
 
-:::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-demo.png" alt-text="Visual Studio の Azure Stream Analytics IoT Edge プロジェクト":::
+:::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-demo.png" alt-text="Visual Studio Code での Azure Stream Analytics プロジェクト":::
 
 1. C# プロジェクトをビルドします。これにより、Azure Stream Analytics クエリから C# UDF への参照を追加できるようになります。
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-build-project.png" alt-text="Visual Studio で Azure Stream Analytics IoT Edge プロジェクトをビルドする":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-build-project.png" alt-text="Visual Studio Code での Azure Stream Analytics プロジェクト":::
 
 2. ASA プロジェクトに C# プロジェクトへの参照を追加します。 [参照] ノードを右クリックし、[参照の追加] を選択します。
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-reference.png" alt-text="Visual Studio で C# プロジェクトへの参照を追加する":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-reference.png" alt-text="Visual Studio Code での Azure Stream Analytics プロジェクト":::
 
 3. 一覧から C# プロジェクト名を選択します。
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-choose-project-name.png" alt-text="参照一覧から C# プロジェクト名を選択する":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-choose-project-name.png" alt-text="Visual Studio Code での Azure Stream Analytics プロジェクト":::
 
 4. **ソリューション エクスプローラー**の **[参照]** の下に **[UDFTest]** が表示されます。
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-added-reference.png" alt-text="ソリューション エクスプローラーにユーザー定義関数参照が表示される":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-added-reference.png" alt-text="Visual Studio Code での Azure Stream Analytics プロジェクト":::
 
 5. **[関数]** フォルダーを右クリックし、 **[新しいアイテム]** を選択します。
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function.png" alt-text="Azure Stream Analytics Edge ソリューションの [関数] に新しいアイテムを追加する":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function.png" alt-text="Visual Studio Code での Azure Stream Analytics プロジェクト":::
 
 6. Azure Stream Analytics プロジェクトに、C# 関数 **SquareFunction.json** を追加します。
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function-2.png" alt-text="Visual Studio で Stream Analytics Edge のアイテムから C# 関数を選択する":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function-2.png" alt-text="Visual Studio Code での Azure Stream Analytics プロジェクト":::
 
 7. **ソリューション エクスプローラー**で関数をダブルクリックして、構成ダイアログを開きます。
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-csharp-function-config.png" alt-text="Visual Studio での C# 関数の構成":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-csharp-function-config.png" alt-text="Visual Studio Code での Azure Stream Analytics プロジェクト":::
 
 8. C# 関数の構成で、 **[Load from ASA Project Reference]\(ASA プロジェクト参照から読み込む\)** を選択し、ドロップダウン リストから関連するアセンブリ、クラス、メソッドの名前を選択します。 Stream Analytics クエリでメソッド、型、関数を参照するには、クラスを *public* として定義し、オブジェクトを *static public* として定義する必要があります。
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-asa-csharp-function-config.png" alt-text="Visual Studio での Stream Analytics C# 関数の構成":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-asa-csharp-function-config.png" alt-text="Visual Studio Code での Azure Stream Analytics プロジェクト":::
 
 ## <a name="existing-packages"></a>既存のパッケージ
 

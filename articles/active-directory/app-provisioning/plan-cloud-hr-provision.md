@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 3a3f461941bfcd5091ebb14818bac05d6844b3fe
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: cb36366143286c05603a8d14b5ad56ebb6544bda
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706353"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070386"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Azure Active Directory ユーザー プロビジョニングのためのクラウド人事アプリケーションの計画
 
@@ -31,7 +31,7 @@ Azure AD では、この統合を利用して、クラウド人事アプリケ�
 - **クラウド人事アプリへの書き戻し:** メール アドレスやユーザー名の属性を Azure AD からクラウド人事アプリに書き戻します。
 
 > [!NOTE]
-> このデプロイ計画は、Azure AD のユーザー プロビジョニングを使用してクラウド人事アプリのワークフローをデプロイする方法を示します。 サービスとしてのソフトウェア (SaaS) アプリへ自動ユーザー プロビジョニングをデプロイする方法については、「[自動ユーザー プロビジョニングのデプロイを計画する](https://aka.ms/deploymentplans/provisioning)」を参照してください。
+> このデプロイ計画は、Azure AD のユーザー プロビジョニングを使用してクラウド人事アプリのワークフローをデプロイする方法を示します。 サービスとしてのソフトウェア (SaaS) アプリへ自動ユーザー プロビジョニングをデプロイする方法については、「[自動ユーザー プロビジョニングのデプロイを計画する](./plan-auto-user-provisioning.md)」を参照してください。
 
 ## <a name="enabled-hr-scenarios"></a>有効な人事シナリオ
 
@@ -126,7 +126,7 @@ Azure AD のユーザー プロビジョニング サービスを使用すると
 
 ### <a name="engage-the-right-stakeholders"></a>適切な関係者を関わらせる
 
-テクノロジ プロジェクトが失敗した場合、その原因は通常、影響、結果、および責任に対する想定の不一致です。 これらの落とし穴を回避するには、[適切な利害関係者が担当していることを確認](https://aka.ms/deploymentplans)します。 また、プロジェクトの利害関係者のロールを十分に把握していることを確認します。 利害関係者とそのプロジェクト入力と責務を文書化します。
+テクノロジ プロジェクトが失敗した場合、その原因は通常、影響、結果、および責任に対する想定の不一致です。 これらの落とし穴を回避するには、[適切な利害関係者が担当していることを確認](../fundamentals/active-directory-deployment-plans.md)します。 また、プロジェクトの利害関係者のロールを十分に把握していることを確認します。 利害関係者とそのプロジェクト入力と責務を文書化します。
 
 既存の人事ビジネス プロセスや、社員の ID および職務データの処理要件について意見できる、人事部門の代表者を含めます。
 
@@ -378,7 +378,7 @@ Azure AD は、監査ログとレポートによって組織のユーザーの�
 
 [初期サイクル](../app-provisioning/how-provisioning-works.md#initial-cycle)が正常に完了すると、Azure AD プロビジョニング サービスは、次のいずれかのイベントが発生するまで、チュートリアルで定義された各アプリに固有の間隔で、連続の増分更新を無期限に実行し続けます。
 
-- サービスは手動で停止されます。 [Azure portal](https://portal.azure.com/) を使用するか、適切な [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) コマンドを使用して、新しい初回サイクルがトリガーされます。
+- サービスは手動で停止されます。 [Azure portal](https://portal.azure.com/) を使用するか、適切な [Microsoft Graph API](/graph/api/resources/synchronization-overview) コマンドを使用して、新しい初回サイクルがトリガーされます。
 - 属性マッピングまたはスコープ フィルターの変更によって、新しい初期サイクルがトリガーされます。
 - エラー率が高いため、プロビジョニング プロセスは検査に入ります。 4 週間を超えると、検査は自動的に無効になります。
 
@@ -416,6 +416,6 @@ Azure AD プロビジョニング サービスでは、レポートの生成、�
 ### <a name="next-steps"></a>次のステップ
 
 - [属性マッピングの式の書き方](functions-for-customizing-application-data.md)
-- [Azure AD 同期 API の概要](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+- [Azure AD 同期 API の概要](/graph/api/resources/synchronization-overview)
 - [スコープ外に出るユーザー アカウントの削除をスキップする](skip-out-of-scope-deletions.md)
 - [Azure AD Connect プロビジョニング エージェント: バージョンのリリース履歴](provisioning-agent-release-version-history.md)」を参照してください

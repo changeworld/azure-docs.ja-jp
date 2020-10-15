@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: c5c139cb94358d70d1f23b68f2a369adb953da08
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9cf3f9a1cd933526c5e376d232fa5acbc97fad47
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325982"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91969723"
 ---
 # <a name="azure-serial-console-for-windows"></a>Windows 用 Azure シリアル コンソール
 
@@ -189,7 +189,7 @@ Windows VM に接続したときに、正常性情報だけが表示される| �
 SAC がブラウザーのシリアル コンソール領域全体に表示されない | これは、Windows とターミナル エミュレーターに関する既知の問題です。 両方のチームでこの問題を追跡していますが、現在は軽減策がありません。
 カーネル デバッグを有効にすると、SAC プロンプトで入力できない。 | VM に RDP で接続して、管理者特権でのコマンド プロンプトから `bcdedit /debug {current} off` を実行します。 RDP で接続できない場合は、代わりに OS ディスクを別の Azure VM に接続して、データ ディスクとしてアタッチされている間に `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off` を実行して変更し、ディスクを戻すこともできます。
 元のコンテンツに反復する文字が含まれる場合、SAC の PowerShell に貼り付けると 3 文字目が生成される。 | 回避策は、`Remove-Module PSReadLine` を実行して、現在のセッションから PSReadLine モジュールをアンロードすることです。 このアクションは、モジュールを削除またはアンインストールしません。
-一部のキーボード入力で、不適切な SAC 出力が生成される (例: **[A**、 **[3~** )。 | [VT100](https://aka.ms/vtsequences) エスケープ シーケンスは SAC プロンプトでサポートされていません。
+一部のキーボード入力で、不適切な SAC 出力が生成される (例: **[A**、 **[3~** )。 | [VT100](/windows/console/console-virtual-terminal-sequences) エスケープ シーケンスは SAC プロンプトでサポートされていません。
 長い文字列を貼り付けると機能しない。 | シリアル コンソールでは、シリアル ポートの帯域幅に対する過負荷を防止するために、ターミナルに貼り付けられる文字列の長さが 2048 文字に制限されます。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問

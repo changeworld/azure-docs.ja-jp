@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.openlocfilehash: 0cbc57922b31f1b3879bb2cad8a988a1ba4cc368
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85307337"
 ---
 # <a name="add-language-generation-templates-for-speech-responses"></a>音声応答の言語生成テンプレートを追加する
@@ -64,13 +64,13 @@ LG テンプレートを利用すると、アダプティブ式を使用して�
 
 | 設定            | 推奨値       | 
 | ------------------ | --------------------- | 
-| Name\(名前\)               | `SubjectContext`         | 
+| 名前               | `SubjectContext`         | 
 | Is Global          | チェック解除             | 
-| Required\(必須\)           | チェック解除               | 
+| 必須           | チェック解除               | 
 | Type               | String                |
-| Default value\(既定値\)      | `all` |
-| Configuration\(構成\)      | 内部カタログから事前定義済み入力値を受け取る | 
-| Predefined input values\(定義済み入力値\) | `room`、`bathroom`、`all`|
+| 既定値      | `all` |
+| 構成      | 内部カタログから事前定義済み入力値を受け取る | 
+| 定義済み入力値 | `room`、`bathroom`、`all`|
 
 ### <a name="modify-completion-rule"></a>完了ルールを変更する
 

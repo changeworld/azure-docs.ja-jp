@@ -9,10 +9,10 @@ ms.date: 05/18/2020
 ms.author: derekol
 Customer intent: Customer wants to measure their connection telemetry per prefix to Microsoft services with Azure Peering Service.
 ms.openlocfilehash: abbe69ebbaed56ed416f85fafa7b77a1740fabe7
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84870554"
 ---
 # <a name="tutorial-measure-peering-service-connection-telemetry"></a>チュートリアル:Peering Service 接続テレメトリを測定する

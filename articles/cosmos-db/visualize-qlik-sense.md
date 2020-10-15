@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 986db85ddbf741dc459625dbd763b9cbbba1c429
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85263349"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Qlik Sense を Azure Cosmos DB に接続してデータを可視化する
@@ -62,15 +62,15 @@ Qlik Sense は、さまざまなソースからのデータを 1 つのビュー
 
 4. **[ユーザー DSN]** に切り替え、既に作成した ODBC 接続を選択します。 接続の名前を付けて、 **[作成]** を選択します。 
 
-   :::image type="content" source="./media/visualize-qlik-sense/create-new-connection.png" alt-text="新しい接続を作成する":::
+   :::image type="content" source="./media/visualize-qlik-sense/create-new-connection.png" alt-text="新規 Qlik Sense アプリの作成":::
 
 5. 接続を作成した後、ビデオ ゲーム データが配置されているデータベースとコレクションを選択し、プレビューすることができます。
 
-   :::image type="content" source="./media/visualize-qlik-sense/choose-database-and-collection.png" alt-text="データベースとコレクションの選択"::: 
+   :::image type="content" source="./media/visualize-qlik-sense/choose-database-and-collection.png" alt-text="新規 Qlik Sense アプリの作成"::: 
 
 6. 次に **[データの追加]** を選択して Qlik Sense にデータを読み込みます。 Qlik Sense にデータを読み込んだ後、分析情報を生成してデータを分析することができます。 その分析情報を使用することも、ビデオ ゲーム売上を調べる独自のアプリを作成することもできます。 次の図に示します 
 
-   :::image type="content" source="./media/visualize-qlik-sense/visualize-data.png" alt-text="データの視覚化":::
+   :::image type="content" source="./media/visualize-qlik-sense/visualize-data.png" alt-text="新規 Qlik Sense アプリの作成":::
 
 ### <a name="limitations-when-connecting-with-odbc"></a>ODBC による接続時の制限事項 
 

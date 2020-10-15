@@ -8,10 +8,10 @@ ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
 ms.openlocfilehash: 882ba7f0b8f896c51e340fe921e53b27dd07ff8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85262465"
 ---
 # <a name="migrate-data-from-oracle-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Blitzz を使用して Oracle から Azure Cosmos DB Cassandra API アカウントにデータを移行する
@@ -56,7 +56,7 @@ Blitzz の移行ソリューションでは、段階的なアプローチに従�
 
    :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/blitzz-replicant-download.png" alt-text="Blitzz replicant ツールのダウンロード":::
 
-   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/replicant-files.png" alt-text="Blitzz replicant のファイル":::
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/replicant-files.png" alt-text="Blitzz replicant ツールのダウンロード":::
 
 1. CLI ターミナルから、ソース データベースの構成を設定します。 **`vi conf/conn/oracle.yml`** コマンドを使用して構成ファイルを開き、Oracle ノードの IP アドレス、ポート番号、ユーザー名、パスワードなどの必要な詳細から成るコンマ区切りリストを追加します。 次のコードでは、構成ファイルの例を示します。
 
@@ -75,9 +75,9 @@ Blitzz の移行ソリューションでは、段階的なアプローチに従�
    use-ssl: false
    ```
 
-   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/open-connection-editor-oracle.png" alt-text="Oracle の接続エディターを開く":::
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/open-connection-editor-oracle.png" alt-text="Blitzz replicant ツールのダウンロード":::
 
-   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/oracle-connection-configuration.png" alt-text="Oracle の接続の構成":::
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/oracle-connection-configuration.png" alt-text="Blitzz replicant ツールのダウンロード":::
 
    構成の詳細を入力したら、そのファイルを保存して閉じます。
 
@@ -96,7 +96,7 @@ Blitzz の移行ソリューションでは、段階的なアプローチに従�
 
 1. データを移行する前に、コンテナーのスループットを、お使いのアプリケーションで迅速に移行するために必要な量に引き上げます。 たとえば、このスループットを 100,000 RU に引き上げることができます。 移行を開始する前にスループットをスケーリングすると、データの移行にかかる時間を短縮するのに役立ちます。 
 
-   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/scale-throughput.png" alt-text="Azure Cosmos のコンテナーのスループットをスケーリングする":::
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/scale-throughput.png" alt-text="Blitzz replicant ツールのダウンロード":::
 
    移行の完了後、スループットを下げる必要があります。 格納されたデータの量と各操作に必要な RU に基づいて、データの移行後に必要なスループットを見積もることができます。 必要な RU の見積もり方法の詳細については、「[コンテナーとデータベースのスループットのプロビジョニング](set-throughput.md)」と「[Azure Cosmos DB Capacity Planner を使用して RU/秒を見積もる](estimate-ru-with-capacity-planner.md)」の記事を参照してください。
 
@@ -134,7 +134,7 @@ Blitzz の移行ソリューションでは、段階的なアプローチに従�
 
    replicant UI には、レプリケーションの進行状況が表示されます。 スキーマの移行とスナップショットの操作が完了すると、進行状況には 100% と表示されます。 移行が完了したら、ターゲットの Azure Cosmos データベースのデータを確認できます。
 
-   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/oracle-data-migration-output.png" alt-text="Oracle のデータ移行に関する出力":::
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/oracle-data-migration-output.png" alt-text="Blitzz replicant ツールのダウンロード":::
 
 1. 移行にはフル モードを使用したため、ソースの Oracle データベースに対してデータの挿入、更新、削除などの操作を実行することができます。 後で、それらがターゲットの Azure Cosmos データベースにリアルタイムでレプリケートされていることを確認できます。 移行後は、Azure Cosmos コンテナー用に構成されているスループットを必ず下げるようにしてください。
 
