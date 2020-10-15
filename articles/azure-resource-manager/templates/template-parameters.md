@@ -4,10 +4,10 @@ description: Azure Resource Manager テンプレートでパラメーターを�
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.openlocfilehash: 89c6984c587e8dae59c1825a99d4f8da1c06dafb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76122425"
 ---
 # <a name="parameters-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのパラメーター
@@ -57,7 +57,7 @@ Resource Manager は、デプロイ操作を開始する前にパラメーター
 
 ## <a name="template-functions"></a>テンプレート関数
 
-パラメーターの既定値を指定する場合は、ほとんどのテンプレート関数を使用できます。 別のパラメーター値を使用して既定値を作成できます。 次のテンプレートは、既定値での関数の使用方法を示します。 サイトの名前が指定されていない場合は、一意の文字列値が作成されて、**site** に付加されます。 ホスト プランの名前が指定されていない場合は、サイトの値が使用され、 **-plan** が付加されます。
+パラメーターの既定値を指定する場合は、ほとんどのテンプレート関数を使用できます。 別のパラメーター値を使用して既定値を作成できます。 次のテンプレートは、既定値での関数の使用方法を示します。 サイトの名前が指定されていない場合は、一意の文字列値が作成されて、**site** に付加されます。 ホスト プランの名前が指定されていない場合は、サイトの値が使用され、**-plan** が付加されます。
 
 ```json
 "parameters": {

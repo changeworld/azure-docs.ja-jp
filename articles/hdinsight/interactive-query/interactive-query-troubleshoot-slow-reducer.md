@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/30/2019
 ms.openlocfilehash: 8a9c7ed9f6b5b8ec89bfca6dd59034b11f05f9a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75895160"
 ---
 # <a name="scenario-reducer-is-slow-in-azure-hdinsight"></a>シナリオ:Azure HDInsight でレジューサーが遅い
@@ -32,7 +32,7 @@ ms.locfileid: "75895160"
 
 `true` の値は、パーティション数が多く、データ スキューが発生していない場合に意味があります。 このような場合、1 つのレジューサーで各パーティションが処理され、後続のクエリのパフォーマンスが向上するように、マップ フェーズの結果が書き出されます。
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解像度
 
 1. 複数のパーティションに正規化するようにデータのパーティションを再分割してみます。
 

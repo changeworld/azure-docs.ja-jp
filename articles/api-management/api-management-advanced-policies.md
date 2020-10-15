@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 6ac3457a22128f313084ab070a5a61c2d26d4b85
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 01d50f6228d63801f62ae933a8367f842d89ef97
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851683"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071372"
 ---
 # <a name="api-management-advanced-policies"></a>API Management の高度なポリシー
 
-このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。
+このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](./api-management-policies.md)」をご覧ください。
 
 ## <a name="advanced-policies"></a><a name="AdvancedPolicies"></a> 高度なポリシー
 
@@ -1041,4 +1041,4 @@ status code and media type. If no example or schema found, the content is empty.
 -   [API Management のポリシー](api-management-howto-policies.md)
 -   [ポリシー式](api-management-policy-expressions.md)
 -   ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](./api-management-policies.md)
--   [ポリシーのサンプル](policy-samples.md)
+-   [ポリシーのサンプル](./policy-reference.md)

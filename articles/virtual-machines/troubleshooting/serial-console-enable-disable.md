@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
 ms.openlocfilehash: e09e08f8ba36cf576bc27551254225adee3bb0fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75451299"
 ---
 # <a name="enable-and-disable-the-azure-serial-console"></a>Azure シリアル コンソールを有効または無効にする
@@ -38,7 +38,7 @@ ms.locfileid: "75451299"
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure CLI で次のコマンドを使用して、サブスクリプション全体に対して Serial console を無効にしてから再度有効にすることができます ([使ってみる] ボタンを使用して、コマンドを実行できる Azure Cloud Shell のインスタンスを起動できます)。
+Azure CLI で次のコマンドを使用して、サブスクリプション全体に対して Serial console を無効にしてから再度有効にすることができます ([試してみる] ボタンを使用して、コマンドを実行できる Azure Cloud Shell のインスタンスを起動できます)。
 
 サブスクリプションに対してシリアル コンソールを無効にするには、以下のコマンドを使用します。
 ```azurecli-interactive
