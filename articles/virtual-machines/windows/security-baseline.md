@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7726a0f1acb8f7fde2b491979d478badeca1b384
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e79055c3dbc710be23a82eede98e1b55b17e10d5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400383"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978022"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Windows Virtual Machines 用の Azure のセキュリティ ベースライン
 
@@ -32,7 +32,7 @@ Windows Virtual Machines 用の Azure セキュリティ ベースラインに�
 
 あるいは、一元化されたファイアウォールの特定のユース ケースがある場合は、Azure Firewall を使用してこれらの要件を満たすこともできます。
 
-* [Azure における仮想ネットワークと仮想マシン](./network-overview.md)
+* [Azure における仮想ネットワークと仮想マシン](../network-overview.md)
 
 * [仮想ネットワークを作成する方法](../../virtual-network/quick-create-portal.md)
 
@@ -80,7 +80,7 @@ Azure Security Center の Just In Time ネットワーク アクセスを使用�
 
 * [Azure Firewall をデプロイする方法l](../../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Azure Security Center の統合された脅威インテリジェンスについて](../../security-center/threat-protection.md)
+* [Azure Security Center の統合された脅威インテリジェンスについて](../../security-center/azure-defender.md)
 
 * [Azure Security Center のアダプティブ ネットワークのセキュリティ強化について](../../security-center/security-center-adaptive-network-hardening.md)
 
@@ -146,7 +146,7 @@ Azure Security Center の Just In Time ネットワーク アクセスを使用�
 
 * [Azure Policy を構成して管理する方法](../../governance/policy/tutorials/create-and-manage.md)
 
-* [ネットワークに関する Azure Policy のサンプル](/azure/governance/policy/samples/#network)
+* [ネットワークに関する Azure Policy のサンプル](../../governance/policy/samples/built-in-policies.md#network)
 
 * [Azure Blueprint を作成する方法](../../governance/blueprints/create-blueprint-portal.md)
 
@@ -180,7 +180,7 @@ Windows Virtual Machines に関連するネットワーク リソースの構成
 
 * [Azure Policy を構成して管理する方法](../../governance/policy/tutorials/create-and-manage.md)
 
-* [ネットワークに関する Azure Policy のサンプル](/azure/governance/policy/samples/#network)
+* [ネットワークに関する Azure Policy のサンプル](../../governance/policy/samples/built-in-policies.md#network)
 
 **Azure Security Center の監視**: 利用不可
 
@@ -252,7 +252,7 @@ Virtual Machines (VM) に診断拡張機能をデプロイすることによっ�
 
 **ガイダンス**: 仮想マシン ログを格納するために使用されるすべてのストレージ アカウントまたは Log Analytics ワークスペースに、組織のコンプライアンス規則に従ったログの保有期間が設定されていることを確認します。
 
-* [Azure で仮想マシンを監視する方法](./monitor.md)
+* [Azure で仮想マシンを監視する方法](../../azure-monitor/insights/monitor-vm-azure.md)
 
 * [Log Analytics ワークスペースの保有期間を構成する方法](../../azure-monitor/platform/manage-cost-storage.md)
 
@@ -458,7 +458,7 @@ Virtual Machines (VM) に診断拡張機能をデプロイすることによっ�
 
 * [Azure Monitor でカスタム クエリを実行する方法](../../azure-monitor/log-query/get-started-queries.md)
 
-* [Azure で仮想マシンを監視する方法](./monitor.md)
+* [Azure で仮想マシンを監視する方法](../../azure-monitor/insights/monitor-vm-azure.md)
 
 **Azure Security Center の監視**: 利用不可
 
@@ -508,7 +508,7 @@ Virtual Machines (VM) に診断拡張機能をデプロイすることによっ�
 
 * [追加の Azure サブスクリプションを作成する方法](../../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](../../governance/management-groups/create.md)
+* [管理グループを作成する方法](../../governance/management-groups/create-management-group-portal.md)
 
 * [タグを作成して使用する方法](../../azure-resource-manager/management/tag-resources.md)
 
@@ -610,7 +610,7 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**: Azure 仮想マシンに対する脆弱性評価の実行に関する Azure Security Center の推奨事項に従います。 仮想マシンの脆弱性評価を実行するには、Azure セキュリティの推奨されるソリューションまたはサードパーティ ソリューションを使用します。
 
-* [Azure Security Center の脆弱性評価の推奨事項を実装する方法](../../security-center/security-center-vulnerability-assessment-recommendations.md)
+* [Azure Security Center の脆弱性評価の推奨事項を実装する方法](../../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure Security Center の監視**: はい
 
@@ -692,7 +692,7 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 * [追加の Azure サブスクリプションを作成する方法](../../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](../../governance/management-groups/create.md)
+* [管理グループを作成する方法](../../governance/management-groups/create-management-group-portal.md)
 
 * [タグを作成して使用する方法](../../azure-resource-manager/management/tag-resources.md)
 
@@ -775,7 +775,7 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 * [Azure Policy を構成して管理する方法](../../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy を使用して特定のリソースの種類を拒否する方法](/azure/governance/policy/samples/not-allowed-resource-types)
+* [Azure Policy を使用して特定のリソースの種類を拒否する方法](../../governance/policy/samples/index.md)
 
 **Azure Security Center の監視**: はい
 
@@ -817,13 +817,13 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**: Azure 環境にデプロイされた高リスク アプリケーションは、仮想ネットワーク、サブネット、サブスクリプション、管理グループなどを使用して分離し、Azure Firewall、Web アプリケーション ファイアウォール (WAF)、またはネットワーク セキュリティ グループ (NSG) によって十分に保護できます。
 
-* [Azure における仮想ネットワークと仮想マシン](./network-overview.md)
+* [Azure における仮想ネットワークと仮想マシン](../network-overview.md)
 
 * [Azure Firewall の概要](../../firewall/overview.md)
 
 * [Web アプリケーション ファイアウォールの概要](../../web-application-firewall/overview.md)
 
-* [ネットワーク セキュリティの概要](../../virtual-network/security-overview.md)
+* [ネットワーク セキュリティの概要](../../virtual-network/network-security-groups-overview.md)
 
 * [Azure Virtual Network の概要](../../virtual-network/virtual-networks-overview.md)
 

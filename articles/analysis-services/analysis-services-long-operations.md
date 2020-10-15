@@ -6,12 +6,12 @@ ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: owend
-ms.openlocfilehash: 5195d63180d45ad408256264e3cf10174e55cd96
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 4e069effae0cb7f834b2c3dac696d05304d841a7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87551950"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014836"
 ---
 # <a name="best-practices-for-long-running-operations"></a>実行時間の長い操作に関するベスト プラクティス
 
@@ -50,5 +50,4 @@ REST とカスタム ロジックのどちらを使用している場合でも�
 [REST API を使用した非同期更新](analysis-services-async-refresh.md)  
 [Azure Analysis Services のスケールアウト](analysis-services-scale-out.md)  
 [Analysis Services の高可用性](analysis-services-bcdr.md)  
-[Azure サービスの再試行ガイダンス](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific)   
-
+[Azure サービスの再試行ガイダンス](/azure/architecture/best-practices/retry-service-specific)

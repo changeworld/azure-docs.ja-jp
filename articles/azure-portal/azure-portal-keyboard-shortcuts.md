@@ -1,6 +1,6 @@
 ---
 title: Azure Portal のキーボード ショートカット | Microsoft Docs
-description: Azure Portal は、アクションの実行、操作、Azure Portal 内の場所への移動を支援するグローバル キーボード ショートカットをサポートしています。
+description: Azure portal は、アクションの実行、操作、Azure portal 内の場所への移動を支援するグローバル キーボード ショートカットをサポートしています。
 services: azure-portal
 documentationcenter: ''
 author: adamabmsft
@@ -16,15 +16,15 @@ ms.date: 12/20/2019
 ms.author: mblythe
 ms.custom: accessibility
 ms.openlocfilehash: e3f078cdaa54246d91e6bff5393171c05935d755
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88826788"
 ---
-# <a name="keyboard-shortcuts-in-the-azure-portal"></a>Azure Portal のキーボード ショートカット
+# <a name="keyboard-shortcuts-in-the-azure-portal"></a>Azure ポータルのキーボード ショートカット
 
-この記事では、Azure Portal 全体で機能するキーボード ショートカットの一覧を示します。 個々のサービスで専用のキーボード ショートカットが用意されている場合もあります。
+この記事では、Azure portal 全体で機能するキーボード ショートカットの一覧を示します。 個々のサービスで専用のキーボード ショートカットが用意されている場合もあります。
 
 ## <a name="actions"></a>アクション
 

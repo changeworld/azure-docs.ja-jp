@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 50cc53e7e8a5f39b53d6dcd39de61894cbbb3842
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4d325eb0dbd5d30e94df07ebad21ff30316bcbb4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518899"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91858151"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-maxxpoint"></a>チュートリアル: Azure Active Directory と MaxxPoint の統合
 
@@ -99,11 +99,11 @@ MaxxPoint で Azure AD シングル サインオンを構成するには、次�
 
 4. **IDP** 開始モードでアプリケーションを構成する場合は、Azure と既に統合されているため、 **[基本的な SAML 構成]** セクションで実行する必要がある手順はありません。
 
-    ![[MaxxPoint のドメインと URL] のシングル サインオン情報](common/preintegrated.png)
+    ![[基本的な SAML 構成] を示すスクリーンショット。](common/preintegrated.png)
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[MaxxPoint のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
+    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** ボックスに、`https://maxxpoint.westipc.com/default/sso/login/entity/<customer-id>-azure` の形式で URL を入力します。
 

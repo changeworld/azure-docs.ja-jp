@@ -8,12 +8,12 @@ ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ce8f7347e4813e72ede426ab17f09221ab859136
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8e751d210ab472d82e4abd613d37069a8c591f52
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015410"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013935"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>サーバー管理者ロールへのサービス プリンシパルの追加 
 
@@ -117,5 +117,5 @@ PowerShell を使用することもできます。
 
 ## <a name="related-information"></a>関連情報
 
-* [SQL Server PowerShell モジュールのダウンロード](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
-* [SSMS のダウンロード](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
+* [SQL Server PowerShell モジュールのダウンロード](/sql/ssms/download-sql-server-ps-module)   
+* [SSMS のダウンロード](/sql/ssms/download-sql-server-management-studio-ssms)

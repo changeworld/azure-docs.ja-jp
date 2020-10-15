@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/30/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4e7c5f3f4bf84b7a267cb883df5f375f2a8cf981
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89017143"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db"></a>Azure Cosmos DB のデータベースまたはコンテナーで、自動スケーリングのスループットをプロビジョニングする
@@ -47,7 +47,7 @@ ms.locfileid: "89017143"
 
 1. **[スケーリング]** で、 **[自動スケーリング]** オプションを選択して **[保存]** します。
 
-   :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="既存のコンテナーで自動スケーリングを有効にする":::
+   :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="コンテナーの作成と、自動スケーリングによってプロビジョニングされたスループットの構成":::
 
 > [!NOTE]
 > 既存のデータベースまたはコンテナーで自動スケーリングを有効にする場合、最大 RU/s の開始値は、現在の手動でプロビジョニングされたスループットの設定とストレージに基づいて、システムによって決定されます。 操作が完了したら、必要に応じて最大 RU/s を変更できます。 [詳細情報。](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) 

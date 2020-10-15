@@ -12,10 +12,10 @@ ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 562e2cce317d8774ecf72971d53be4f66f9c3da4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85212770"
 ---
 # <a name="primary-key-foreign-key-and-unique-key-in-synapse-sql-pool"></a>Synapse SQL プールの主キー、外部キー、および一意キー

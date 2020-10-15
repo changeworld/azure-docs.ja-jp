@@ -1,24 +1,18 @@
 ---
 title: HPC VM で InifinBand を有効にする - Azure Virtual Machines | Microsoft Docs
 description: Azure HPC VM で InfiniBand を有効にする方法について説明します。
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines
-ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 08/01/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 0cbfed307cea1bd98bf864046a8c08edb849226a
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: b5f4cbd2fc09b2c42c232eafd63edb1217e4dacb
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797987"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996313"
 ---
 # <a name="enable-infiniband"></a>InfiniBand の有効化
 

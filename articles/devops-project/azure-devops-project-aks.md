@@ -8,12 +8,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: 7e298afa7efa6035b24f689d1163308ac6b14bff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: af61254643e9f072995bceed1b6ecf8ecc29e5f8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233331"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91855454"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-kubernetes-service-with-azure-devops-starter"></a>Azure DevOps Starter を使用して ASP.NET Core アプリを Azure Kubernetes Service にデプロイする
 
@@ -24,7 +24,7 @@ DevOps Starter では次のこともできます。
 * Azure Kubernetes Service (AKS) などの Azure リソースを自動的に作成する。
 * CI/CD 用のビルドおよびリリース パイプラインを設定するリリース パイプラインを Azure DevOps に作成し、構成する。
 * 監視のために Azure Application Insights リソースを作成する。
-* [コンテナーに対する Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) で、AKS クラスター上のコンテナー ワークロードに対するパフォーマンスを監視できるようにする
+* [コンテナーに対する Azure Monitor](../azure-monitor/insights/container-insights-overview.md) で、AKS クラスター上のコンテナー ワークロードに対するパフォーマンスを監視できるようにする
 
 このチュートリアルでは、次のことについて説明します。
 
@@ -171,4 +171,4 @@ Web サイトに最新の作業を自動的にデプロイする CI/CD プロセ
 Kubernetes ダッシュボードの使い方の詳細については、以下を参照してください。
 
 > [!div class="nextstepaction"]
-> [Kubernetes ダッシュボードを使用する](https://docs.microsoft.com/azure/aks/kubernetes-dashboard)
+> [Kubernetes ダッシュボードを使用する](../aks/kubernetes-dashboard.md)

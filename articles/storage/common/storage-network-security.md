@@ -2,19 +2,19 @@
 title: Azure Storage ファイアウォールおよび仮想ネットワークの構成 | Microsoft Docs
 description: Azure Storage ファイアウォールと Azure Virtual Network を使用して、ストレージ アカウントの多層型ネットワーク セキュリティを構成します。
 services: storage
-author: tamram
+author: santoshc
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/05/2020
+ms.date: 10/08/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 49285727e1c2e845ea63905d20b3343576b01612
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 7e7a61247c8f449291fb8ec0b91b7513ee75f6c9
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91816757"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072494"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
 
@@ -398,7 +398,7 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 | Azure Machine Learning サービス | Microsoft.MachineLearningServices      | 承認された Azure Machine Learning ワークスペースでは、BLOB ストレージに実験の出力、モデル、およびログを書き込み、データを読み取ります。 [詳細については、こちらを参照してください](/azure/machine-learning/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace)。 | 
 | Azure Synapse Analytics (旧称 SQL Data Warehouse)       | Microsoft.Sql                          | COPY ステートメントまたは PolyBase を使用して、特定の SQL データベースからのデータのインポートとエクスポートを許可します。 [詳細については、こちらを参照してください](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。 |
 | Azure SQL データベース       | Microsoft.Sql                          | ストレージ アカウントからデータの[インポート](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver15#f-importing-data-from-a-file-in-azure-blob-storage)したり、ファイアウォールの背後にあるストレージ アカウントに監査データを[書き込んだり](https://docs.microsoft.com/azure/azure-sql/database/audit-write-storage-account-behind-vnet-firewall)することができます。 |
-| Azure Stream Analytics         | Microsoft.StreamAnalytics             | ストリーミング ジョブからのデータを Blob Storage に書き込むことができます。 現在、この機能はプレビュー段階にあります。 [詳細については、こちらを参照してください](/azure/stream-analytics/blob-output-managed-identity)。 |
+| Azure Stream Analytics         | Microsoft.StreamAnalytics             | ストリーミング ジョブからのデータを Blob Storage に書き込むことができます。 [詳細については、こちらを参照してください](/azure/stream-analytics/blob-output-managed-identity)。 |
 | Azure Synapse Analytics        | Microsoft.Synapse ワークスペース          | Synapse Analytics から Azure Storage のデータにアクセスできるようにします。 |
 
 

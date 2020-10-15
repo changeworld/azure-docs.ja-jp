@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: d04e872d42c6134dc82f2ffd02d79fe8e2af5caa
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3d10480f8668576b4a8c755d6a3aa48603ca61bf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551604"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91361077"
 ---
 # <a name="tutorial-configure-envoy-for-automatic-user-provisioning"></a>チュートリアル:Envoy を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -92,15 +92,15 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://app.envoy.com/scim/v2`」と入力します。 **[シークレット トークン]** で以前に取得した **[OAUTH BEARER TOKEN] (OAUTH ベアラー トークン)** の値を入力します。 **[テスト接続]** をクリックして、Azure AD から Envoy への接続を確認します。 接続できない場合は、使用中の Envoy アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
-   ![プロビジョニング](./media/envoy-tutorial/provisioning.png)
+   ![テナント URL とシークレット トークンを入力できる場所である [管理者資格情報] ダイアログ ボックスを示すスクリーンショット。](./media/envoy-tutorial/provisioning.png)
 
 6. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 

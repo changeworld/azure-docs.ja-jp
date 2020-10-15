@@ -13,10 +13,10 @@ ms.author: sashan
 ms.reviewer: sstein
 ms.date: 07/28/2020
 ms.openlocfilehash: be632ba06edc858e7eadcd6e57a4f7769f69f2cb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321681"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Azure SQL Database を使用して世界規模の可用性を備えたサービスを設計する

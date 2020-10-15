@@ -15,10 +15,10 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
 ms.openlocfilehash: 958bfa605e0195b5f4fde2c0ff53a8ce567f50a5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89257145"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>Azure AD 認証を使用して REST で Media Services API にアクセスする

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: alkohli
 ms.openlocfilehash: d2c7f729f4accf7c9ca212c6e4b4b5d565c3114c
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90563779"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box-heavy"></a>Azure Data Box Heavy を安全にインストールして操作する

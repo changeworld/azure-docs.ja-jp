@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0cc54bcc23e354ae8cc807e63a0039286e295181
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1157a18954c30e1f1d93aa33dbea6104491b5353
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90970960"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91396453"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>分離されたネットワークでの Azure Disk Encryption
 
@@ -43,7 +43,7 @@ Red Hat では、プロキシが必要な場合は、サブスクリプション
 
 [Azure AD を使用した Azure Disk Encryption (以前のバージョン)](disk-encryption-overview-aad.md) を使用している場合、[Azure Active Directory Library](../../active-directory/azuread-dev/active-directory-authentication-libraries.md) を ([上記の](#package-management)ディストリビューションに該当するパッケージに加えて) すべてのディストリビューションに手動でインストールする必要があります。
 
-[Azure AD の資格情報](disk-encryption-linux-aad.md)を使用して暗号化を有効にする場合、ターゲット VM は、Azure Active Directory のエンドポイントと Key Vault のエンドポイントの両方への接続を許可する必要があります。 現在の Azure Active Directory 認証エンドポイントは、「[Office 365 の URL と IP アドレスの範囲](/office365/enterprise/urls-and-ip-address-ranges)」ドキュメンテーションのセクション 56 と 59 に記載されています。 Key Vault の説明は、「[ファイアウォールの向こう側にある Access Azure Key Vault へのアクセス](../../key-vault/general/access-behind-firewall.md)」方法に関するドキュメンテーションにあります。
+[Azure AD の資格情報](disk-encryption-linux-aad.md)を使用して暗号化を有効にする場合、ターゲット VM は、Azure Active Directory のエンドポイントと Key Vault のエンドポイントの両方への接続を許可する必要があります。 現在の Azure Active Directory 認証エンドポイントは、[Microsoft 365 の URL と IP アドレスの範囲](/microsoft-365/enterprise/urls-and-ip-address-ranges)に関するドキュメントのセクション 56 と 59 に記載されています。 Key Vault の説明は、「[ファイアウォールの向こう側にある Access Azure Key Vault へのアクセス](../../key-vault/general/access-behind-firewall.md)」方法に関するドキュメンテーションにあります。
 
 ### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service 
 

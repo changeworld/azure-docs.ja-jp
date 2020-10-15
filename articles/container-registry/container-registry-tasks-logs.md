@@ -4,11 +4,11 @@ description: ACR タスクによって生成された実行ログを表示およ
 ms.topic: article
 ms.date: 03/09/2020
 ms.openlocfilehash: f7098f470a3f8a0cdac019f4bf8eb8fe14330337
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225775"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91871934"
 ---
 # <a name="view-and-manage-task-run-logs"></a>タスク実行ログを表示および管理する
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0eca3f2fea3cf72b05b301ae307c1179f9bca0be
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: a417c271c16aabe91836f425f26c0a55e7103557
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89072368"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973939"
 ---
 # <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>PowerShell を使用して Azure の VM へのポートとエンドポイントを開放する方法
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -91,5 +91,5 @@ Set-AzVirtualNetwork -VirtualNetwork $vnet
 この例では、HTTP トラフィックを許可する単純な規則を作成します。 より精密な環境の作成については、次の記事で確認できます。
 
 * [Azure リソース マネージャーの概要](../../azure-resource-manager/management/overview.md)
-* [ネットワーク セキュリティ グループについて](../../virtual-network/security-overview.md)
+* [ネットワーク セキュリティ グループについて](../../virtual-network/network-security-groups-overview.md)
 * [Azure Load Balancer の概要](../../load-balancer/load-balancer-overview.md)
