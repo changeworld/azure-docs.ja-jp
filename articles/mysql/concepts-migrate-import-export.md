@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/22/2020
 ms.openlocfilehash: 6d0a29d8ef8123eafd6a1616a24003c1e36e6e59
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90905925"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>インポートとエクスポートを使用した MySQL データベースの移行
@@ -31,7 +31,7 @@ MySQL Workbench、Toad、または Navicat を使用して Azure Database for My
 
 接続情報を MySQL Workbench に追加します。
 
-:::image type="content" source="./media/concepts-migrate-import-export/2_setup-new-connection.png" alt-text="MySQL Workbench の接続文字列":::
+:::image type="content" source="./media/concepts-migrate-import-export/2_setup-new-connection.png" alt-text="Azure Portal で接続情報を見つける":::
 
 ## <a name="determine-when-to-use-import-and-export-techniques"></a>インポート/エクスポート手法を使用する状況の判断
 
@@ -68,7 +68,7 @@ MySQL Workbench では、2 とおりの方法でデータをインポートお�
 > - MySQL フレキシブル サーバーの場合は、"ユーザー名" だけを使用できます。'username@servername' を使用して接続すると、接続は失敗します。
 
 ### <a name="table-data-export-and-import-wizards-from-the-object-browsers-context-menu"></a>オブジェクト ブラウザーのコンテキスト メニューを使用したテーブル データのエクスポート/インポート ウィザード
-:::image type="content" source="./media/concepts-migrate-import-export/p1.png" alt-text="オブジェクト ブラウザーのコンテキスト メニューの MySQL Workbench ウィザード":::
+:::image type="content" source="./media/concepts-migrate-import-export/p1.png" alt-text="Azure Portal で接続情報を見つける":::
 
 テーブル データのウィザードでは、CSV ファイルと JSON ファイルを使用してインポート/エクスポート操作をサポートします。 区切り記号、列の選択、エンコードの選択など、複数の構成オプションがあります。 各ウィザードは、ローカルの MySQL サーバーまたはリモート接続された MySQL サーバーに対して実行できます。 インポート アクションには、テーブル、列、型マッピングが含まれます。
 
@@ -94,7 +94,7 @@ MySQL Workbench では、2 とおりの方法でデータをインポートお�
 ウィザードを使用して、MySQL Workbench または mysqldump コマンドで生成された SQL をエクスポートまたはインポートできます。 これらのウィザードには、**ナビゲーター** ウィンドウからアクセスするか、メイン メニューの **[サーバー]** を選択してアクセスします。 次に、**[データのエクスポート]** または **[データのインポート]** を選択します。
 
 #### <a name="data-export"></a>データのエクスポート
-:::image type="content" source="./media/concepts-migrate-import-export/p2.png" alt-text="ナビゲーター ウィンドウを使用した MySQL Workbench データのエクスポート":::
+:::image type="content" source="./media/concepts-migrate-import-export/p2.png" alt-text="Azure Portal で接続情報を見つける":::
 
 **[データのエクスポート]** タブを使用して、MySQL データをエクスポートできます。
 1. エクスポートする各スキーマを選択し、必要に応じて各スキーマから特定のスキーマ オブジェクト/テーブルを選択して、エクスポートを生成します。 構成オプションには、プロジェクト フォルダーまたは自己完結型 SQL ファイルへのエクスポート、格納されているルーチンとイベントのダンプ、テーブル データのスキップなどがあります。
@@ -107,7 +107,7 @@ MySQL Workbench では、2 とおりの方法でデータをインポートお�
 
 
 #### <a name="data-import"></a>データのインポート
-:::image type="content" source="./media/concepts-migrate-import-export/p3.png" alt-text="管理ナビゲーターを使用した MySQL Workbench のデータ インポート":::
+:::image type="content" source="./media/concepts-migrate-import-export/p3.png" alt-text="Azure Portal で接続情報を見つける":::
 
 **[データのインポート]** タブを使用して、データ エクスポート操作または mysqldump コマンドによってエクスポートされたデータをインポートまたは復元できます。
 1. プロジェクト フォルダーまたは自己完結型 SQL ファイルを選択するか、インポート先スキーマを選択するか、**[新規]** を選択して新しいスキーマを定義します。

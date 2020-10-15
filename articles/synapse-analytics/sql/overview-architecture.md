@@ -11,10 +11,10 @@ ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: 9f2f3eee12bb8741f6d079f6f081a08f4e2db9b5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87046858"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Azure Synapse SQL アーキテクチャ 

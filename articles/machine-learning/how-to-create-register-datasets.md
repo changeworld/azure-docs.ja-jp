@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 58377913d4352038a683c67986ad33e215315457
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 18904987d409f526c2bbd6cd917558e8ce6f751c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708417"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842633"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning データセットを作成する
 
@@ -204,7 +204,7 @@ datastore = workspace.get_default_datastore()
 datastore.upload(src_dir='data', target_path='data')
 
 # create a dataset referencing the cloud location
-dataset = Dataset.Tabular.from_delimited_files(datastore.path('data/prepared.csv'))
+dataset = Dataset.Tabular.from_delimited_files(path = [(datastore, ('data/prepared.csv')]
 ```
 
 > [!TIP]

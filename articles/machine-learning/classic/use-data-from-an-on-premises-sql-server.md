@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
 ms.openlocfilehash: 695539e4739002480b3622eb217ef920d4cb34e2
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91357490"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-a-sql-server-database"></a>SQL Server データベースを使用して Azure Machine Learning Studio (クラシック) で分析を実行する

@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: a3fb3dbf026a696b9d472efcba139c371ff1e587
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 92ec7c0a1469c9f02855cd6191faa8514e54c8f0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334927"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91828759"
 ---
 | リソース | 制限 | Note |
 | --- | --- | --- |
@@ -41,4 +41,4 @@ ms.locfileid: "80334927"
 | WAF カスタム規則の最大数|100||
 | WAF 除外の最大数|100||
 
-<sup>1</sup> WAF 対応 SKU の場合は、最適なパフォーマンスを確保するためにリソース数を 40 に制限することをお勧めします。
+<sup>1</sup> WAF 対応の SKU の場合、リソース数を 40 に制限する必要があります。

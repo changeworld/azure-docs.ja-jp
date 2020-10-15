@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 3df547307a49de9e50abe8eb655fbe4acd67a8be
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8221abe3ff726a7f94d49f69ae18368f87925901
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552681"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850831"
 ---
 # <a name="tutorial-integrate-iwellnessnow-with-azure-active-directory"></a>チュートリアル:iWellnessNow と Azure Active Directory の統合
 
@@ -87,7 +87,7 @@ iWellnessNow で Azure AD SSO を構成してテストするには、次の構�
 
     c. メタデータ ファイルが正常にアップロードされると、**識別子**と**応答 URL** の値が、[基本的な SAML 構成] セクションに自動的に設定されます。
 
-    ![image](common/idp-intiated.png)
+    ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
 
     > [!Note]
     > **識別子**と**応答 URL** の値が自動的に設定されない場合は、要件に応じて手動で値を入力してください。
@@ -102,7 +102,7 @@ iWellnessNow で Azure AD SSO を構成してテストするには、次の構�
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![image](common/metadata-upload-additional-signon.png)
+    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** ボックスに、`https://<CustomerName>.iwellnessnow.com/` という形式で URL を入力します。
 

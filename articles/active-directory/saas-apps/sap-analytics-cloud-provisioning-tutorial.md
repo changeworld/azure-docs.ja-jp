@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: f56aac256407b179dae2ef421217658ac102bbb4
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 73f560ccf7ba910ce9077f2eff2d2bdb90736cc2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89458860"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91361264"
 ---
 # <a name="tutorial-configure-sap-analytics-cloud-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングを行うために SAP Analytics Cloud を構成する
 
@@ -101,15 +101,15 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[管理者資格情報]** セクションで、先ほど取得したテナント URL 値を **[テナント URL]** に入力します。 以前に取得したシークレット トークンの値を **[シークレット トークン]** に入力します。 **[テスト接続]** をクリックして、Azure AD から InVision へ接続できることを確認します。 接続できない場合は、使用中の SAP Analytics Cloud アカウントに管理者アクセス許可があることを確認してから、もう一度お試しください。
 
-    ![プロビジョニング](./media/sap-analytics-cloud-provisioning-tutorial/provisioning.png)
+    ![テナント URL とシークレット トークンを入力できる場所である [管理者資格情報] ダイアログ ボックスを示すスクリーンショット。](./media/sap-analytics-cloud-provisioning-tutorial/provisioning.png)
 
 6. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 

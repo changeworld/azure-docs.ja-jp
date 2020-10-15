@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 9a31a22a5b037162198f594d9bcf35c91a0a4654
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 25e3a9cb363ae4e64b953aeb7a6da4e2e66c9fc7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91306873"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977101"
 ---
 # <a name="azure-serial-console-for-linux"></a>Linux 用 Azure シリアル コンソール
 
@@ -73,7 +73,7 @@ Oracle Linux        | シリアル コンソール アクセスが既定で有�
 ### <a name="custom-linux-images"></a>カスタム Linux イメージ
 カスタム Linux VM イメージのシリアル コンソールを有効にするには、 */etc/inittab* ファイルでコンソール アクセスを有効にして、`ttyS0` でターミナルを実行します。 (例: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`)。 また、ttyS0 上で getty の生成が必要になる場合もあります。 これは `systemctl start serial-getty@ttyS0.service` を使用して行えます。
 
-さらに、ttys0 をシリアル出力の宛先として追加することができます。 シリアル コンソールと連動するようにカスタム イメージを構成する方法の詳細については、「[Azure 上での Linux VHD の作成とアップロード](https://aka.ms/createuploadvhd#general-linux-system-requirements)」で一般的なシステム要件を参照してください。
+さらに、ttys0 をシリアル出力の宛先として追加することができます。 シリアル コンソールと連動するようにカスタム イメージを構成する方法の詳細については、「[Azure 上での Linux VHD の作成とアップロード](../linux/create-upload-generic.md#general-linux-system-requirements)」で一般的なシステム要件を参照してください。
 
 カスタム カーネルを構築する場合は、`CONFIG_SERIAL_8250=y` と `CONFIG_MAGIC_SYSRQ_SERIAL=y` のカーネル フラグを有効にすることを考慮してください。 構成ファイルは、通常は */boot/* パスにあります。
 
@@ -128,7 +128,7 @@ Microsoft は、シリアル コンソールおよび VM のオペレーティ�
 接続バナーの後に **Enter** キーを押しても、サインイン プロンプトが表示されない。 | GRUB が正しく構成されていない可能性があります。 次のコマンドを実行します: `grub2-mkconfig -o /etc/grub2-efi.cfg` または `grub2-mkconfig -o /etc/grub2.cfg` (あるいは両方)。 詳細については、[Enter キーを押しても何も実行されない](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md)問題に関するページを参照してください。 この問題は、Linux がシリアル ポートに接続できない原因となるカスタム VM、堅牢化されたアプライアンス、または GRUB 構成を実行している場合に発生する可能性があります。
 シリアル コンソールのテキストが画面サイズいっぱいに表示されない (テキスト エディターの使用後に多く発生)。 | シリアル コンソールは、ウィンドウ サイズに関するネゴシエーション ([RFC 1073](https://www.ietf.org/rfc/rfc1073.txt)) をサポートしていません。つまり、画面サイズを更新するための SIGWINCH 信号が送信されないため、VM はターミナルのサイズを認識していません。 xterm または同様のユーティリティをインストールして `resize` コマンドを使用できるようにしてから、`resize` を実行します。
 長い文字列を貼り付けると機能しない。 | シリアル コンソールでは、シリアル ポートの帯域幅に対する過負荷を防止するために、ターミナルに貼り付けられる文字列の長さが 2048 文字に制限されます。
-SLES BYOS イメージでキーボード入力が不安定。 キーボード入力は散発的にしか認識されません。 | これは Plymouth パッケージの問題です。 スプラッシュ スクリーンは不要なので、Plymouth を Azure で実行しないでください。Plymouth は、シリアル コンソールを使用するプラットフォームの機能の妨げになります。 `sudo zypper remove plymouth` を使用して Plymouth を削除してから再起動します。 または、行の末尾に `plymouth.enable=0` を付加して GRUB 構成のカーネル行を修正します。 これを行うには、[起動時に起動エントリを編集する](https://aka.ms/serialconsolegrub#single-user-mode-in-suse-sles)か、`/etc/default/grub` の GRUB_CMDLINE_LINUX 行を編集し、`grub2-mkconfig -o /boot/grub2/grub.cfg` を使用して GRUB をリビルドしてから再起動します。
+SLES BYOS イメージでキーボード入力が不安定。 キーボード入力は散発的にしか認識されません。 | これは Plymouth パッケージの問題です。 スプラッシュ スクリーンは不要なので、Plymouth を Azure で実行しないでください。Plymouth は、シリアル コンソールを使用するプラットフォームの機能の妨げになります。 `sudo zypper remove plymouth` を使用して Plymouth を削除してから再起動します。 または、行の末尾に `plymouth.enable=0` を付加して GRUB 構成のカーネル行を修正します。 これを行うには、[起動時に起動エントリを編集する](./serial-console-grub-single-user-mode.md#single-user-mode-in-suse-sles)か、`/etc/default/grub` の GRUB_CMDLINE_LINUX 行を編集し、`grub2-mkconfig -o /boot/grub2/grub.cfg` を使用して GRUB をリビルドしてから再起動します。
 
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問

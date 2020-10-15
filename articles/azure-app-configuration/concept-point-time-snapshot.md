@@ -8,12 +8,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: cbcfedc091fd111bceffe775cb337c118a87c767
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 23f613584638026a2b371849c7d1014b3bb1f136
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601080"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073072"
 ---
 # <a name="point-in-time-snapshot"></a>ポイントインタイム スナップショット
 
@@ -23,7 +23,7 @@ Azure App Configuration では、キー値に対する変更のレコードが�
 
 Azure portal または CLI を使用して、過去のキー値を取得できます。 Azure CLI では `az appconfig revision list` を使用して、適切なパラメーターを追加して必要な値を取得します。  ストア名 (`--name <app-config-store-name>`) を指定するか、接続文字列 (`--connection-string <your-connection-string>`) を使用するかして、Azure App Configuration インスタンスを指定します。 特定のポイントインタイム (`--datetime`) を指定し、返される項目の最大数 (`--top`) を指定して、出力を制限します。
 
-Azure CLI がローカルにインストールされていない場合は、必要に応じて、[Azure Cloud Shell](/azure/cloud-shell/overview) を使用することもできます。
+Azure CLI がローカルにインストールされていない場合は、必要に応じて、[Azure Cloud Shell](../cloud-shell/overview.md) を使用することもできます。
 
 キーと値に対する変更のレコードをすべて取得します。
 
@@ -58,4 +58,4 @@ az appconfig revision list --name <your-app-config-store-name> --top 10 --fields
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [ASP.NET Core Web アプリケーションの作成](./quickstart-aspnet-core-app.md)  
+> [ASP.NET Core Web アプリケーションの作成](./quickstart-aspnet-core-app.md)

@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 08/31/2020
+ms.date: 10/12/2020
 ms.author: inhenkel
-ms.openlocfilehash: 350584984bff82c7dc80aff38044d887f981424c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 023c4d685804b2c6c201f44ab672139d56338cdb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89256755"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979106"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - REST
 
@@ -69,10 +69,10 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
 ### <a name="configure-the-environment"></a>環境の構成 
 
 1. **Postman** アプリを開きます。
-2. 画面の右側で、 **[Manage environment]\(環境の管理\)** オプションを選択します。
+2. 画面の右側で、 **[Manage environment]/(環境の管理/)** オプションを選択します。
 
     ![環境を管理する](./media/develop-with-postman/postman-import-env.png)
-4. **[Manage environment]\(環境の管理\)** ダイアログで、 **[インポート]** をクリックします。
+4. **[Manage environment]/(環境の管理/)** ダイアログで、 **[インポート]** をクリックします。
 2. `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` を複製したときにダウンロードされた `Azure Media Service v3 Environment.postman_environment.json` ファイルを参照します。
 6. **[Azure Media Service v3 Environment]\(Azure Media Service v3 環境\)** 環境が追加されています。
 
@@ -117,7 +117,7 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
     次の **POST** 操作が送信されます。
 
     ```
-    https://login.microsoftonline.com/:tenantId/oauth2/token
+    https://login.microsoftonline.com/:aadTenantDomain/oauth2/token
     ```
 
 4. 応答がトークンと共に返され、"AccessToken" 環境変数がトークン値に設定されます。 "AccessToken" を設定するコードを確認するには、 **[Tests]\(テスト\)** タブをクリックします。 

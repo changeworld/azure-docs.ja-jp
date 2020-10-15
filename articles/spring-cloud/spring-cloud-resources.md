@@ -8,10 +8,10 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 ms.openlocfilehash: d58827632a36a69bc9b9592c607364daa6ef7d97
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90904233"
 ---
 # <a name="azure-spring-cloud-developer-resources"></a>Azure Spring Cloud の開発者向けリソース

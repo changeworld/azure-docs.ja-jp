@@ -3,12 +3,12 @@ title: コンテナーの Azure Monitor エージェントのデータ収集を�
 description: この記事では、コンテナーの Azure Monitor エージェントによる stdout/stderr および環境変数のログ収集の制御を構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 039c6355bef638aae0b2ef074f006aabc04185c4
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 675b9c9c109ee8bb3b0087523bf5af46ce2c5270
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299283"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994614"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>コンテナーの Azure Monitor に対するエージェントのデータ収集を構成する
 
@@ -134,7 +134,7 @@ oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure Monitor for containers には、定義済みの一連のアラートは含まれません。 [Azure Monitor for containers を使用したパフォーマンス アラートの作成](container-insights-alerts.md)に関するページを読んで、CPU やメモリの使用率が高い場合に推奨アラートを作成し、DevOps や運用プロセスまたは手順をサポートする方法について学習します。
+- Azure Monitor for containers には、定義済みの一連のアラートは含まれません。 [Azure Monitor for containers を使用したパフォーマンス アラートの作成](./container-insights-log-alerts.md)に関するページを読んで、CPU やメモリの使用率が高い場合に推奨アラートを作成し、DevOps や運用プロセスまたは手順をサポートする方法について学習します。
 
 - AKS またはハイブリッド クラスターと実行中のワークロードの正常性とリソース使用率を収集するための監視を有効にしたうえで、コンテナーの Azure Monitor を[使用する方法](container-insights-analyze.md)について学習します。
 

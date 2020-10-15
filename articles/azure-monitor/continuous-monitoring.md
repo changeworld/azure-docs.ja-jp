@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 0173d324da4f6cf2a24b825fe44fc07b7fe50b84
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e41fa9f9918f4f17bd89e80610ae608e83eb3402
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318132"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996389"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Azure Monitor を使用した継続的監視
 
@@ -43,7 +43,7 @@ ms.locfileid: "87318132"
 
 [Infrastructure as Code](/azure/devops/learn/what-is-infrastructure-as-code) は、DevOps チームがソース コードに使用するのと同じバージョン管理を使用し、記述的モデルでインフラストラクチャを管理するものです。 これにより、お客様の環境の信頼性とスケーラビリティが高まり、お客様のアプリケーションの管理に使用されるものと同様のプロセスを利用できるようになります。
 
--  多数のリソースに対して監視を有効にし、アラートを構成するには、[Resource Manager テンプレート](platform/template-workspace-configuration.md)を使用します。
+-  多数のリソースに対して監視を有効にし、アラートを構成するには、[Resource Manager テンプレート](./samples/resource-manager-workspace.md)を使用します。
 - お客様のリソースに対してさまざまなルールを強制するには、[Azure Policy](../governance/policy/overview.md) を使用します。 これにより、それらのリソースがお客様の会社の標準やサービス レベル アグリーメントに準拠している状態が確保されます。 
 
 
@@ -87,4 +87,3 @@ ms.locfileid: "87318132"
 
 - [Azure Monitor](overview.md) のさまざまなコンポーネントについて確認する。
 - お客様のリリース パイプラインに[継続的監視を追加](./app/continuous-monitoring.md)する。
-

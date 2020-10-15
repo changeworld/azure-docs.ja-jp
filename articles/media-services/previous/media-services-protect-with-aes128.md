@@ -16,10 +16,10 @@ ms.date: 04/01/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: cfc2ae06a1dca855b03f69b7f57adcfd2bfe13e5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89259882"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>AES-128 動的暗号化とキー配信サービスの使用

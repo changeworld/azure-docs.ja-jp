@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.openlocfilehash: d885cc64eeebd4873ad5993b39b48845d1365c23
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90902761"
 ---
 # <a name="restart-azure-database-for-mysql-server-using-azure-portal"></a>Azure portal を使用して Azure Database for MySQL サーバーを再起動する
@@ -36,15 +36,15 @@ ms.locfileid: "90902761"
 
 3. **[はい]** をクリックして、サーバーを再起動することを確認します。
 
-   :::image type="content" source="./media/howto-restart-server-portal/3-restart-confirm.png" alt-text="Azure Database for MySQL - 再起動の確認":::
+   :::image type="content" source="./media/howto-restart-server-portal/3-restart-confirm.png" alt-text="Azure Database for MySQL - [概要] - [再起動] ボタン":::
 
 4. サーバーの状態が [再起動中] に変わることを確認します。
 
-   :::image type="content" source="./media/howto-restart-server-portal/4-restarting-status.png" alt-text="Azure Database for MySQL - 再起動の状態":::
+   :::image type="content" source="./media/howto-restart-server-portal/4-restarting-status.png" alt-text="Azure Database for MySQL - [概要] - [再起動] ボタン":::
 
 5. サーバーの再起動が成功したことを確認します。
 
-   :::image type="content" source="./media/howto-restart-server-portal/5-restart-success.png" alt-text="Azure Database for MySQL - 再起動の成功":::
+   :::image type="content" source="./media/howto-restart-server-portal/5-restart-success.png" alt-text="Azure Database for MySQL - [概要] - [再起動] ボタン":::
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: 6b66db639e0b22a7e0c45486465a1fa395aba33d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 4494af89ac35a391f7dc6097b14d135a911d99dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653513"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91359615"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines のデプロイ
 
@@ -543,11 +543,11 @@ Azure に VM をデプロイしたら、オンプレミス環境の場合と同�
 プライベート イメージを作成する手順は、Windows と Linux で異なります。
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows ロゴ。][Logo_Windows] Windows
 >
 > 複数の仮想マシンをデプロイするために使用できる Windows イメージを準備するには、オンプレミス VM で Windows 設定 (Windows SID やホスト名など) を抽象化または汎用化する必要があります。 これを行うには、[sysprep](/previous-versions/windows/it-pro/windows-8.1-and-8/hh825084(v=win.10)) を使用します。
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux ロゴ。][Logo_Linux] Linux
 >
 > 複数の仮想マシンをデプロイするために使用できる Linux イメージを準備するには、オンプレミス VM で一部の Linux 設定を抽象化または汎用化する必要があります。 これを行うには、`waagent -deprovision` を使用します。 詳細については、[Azure で実行されている Linux 仮想マシンのキャプチャ][virtual-machines-linux-capture-image]に関する記事、および「[Azure Linux エージェント ユーザー ガイド][virtual-machines-linux-agent-user-guide-command-line-options]」をご覧ください。
 >
@@ -683,11 +683,11 @@ SAP で現在の環境がサポートされるように、「[Azure Extension fo
 Azure VM エージェントの詳細については、次のリソースを参照してください。
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows ロゴ。][Logo_Windows] Windows
 >
 > [Azure 仮想マシン エージェントの概要][virtual-machines-windows-agent-user-guide]
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux ロゴ。][Logo_Linux] Linux
 >
 > [Azure Linux エージェント ユーザー ガイド][virtual-machines-linux-agent-user-guide]
 >
@@ -1309,7 +1309,7 @@ http://127.0.0.1:11812/azure4sap/metrics でアクセスできる XML ファイ�
 > [!NOTE]
 > VM 拡張機能には 2 つのバージョンがあります。 この章では、既定の VM 拡張機能について説明します。 新しい VM 拡張機能がインストールされている場合は、「[新しい Azure Extension for SAP のトラブルシューティング][deployment-guide-5.3-new]」の章を参照してください。
 
-#### <a name="windowslogo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Azure パフォーマンス カウンターまったく表示されない
+#### <a name="windows-logologo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows ロゴ。][Logo_Windows] Azure パフォーマンス カウンターまったく表示されない
 
 Azure のパフォーマンス メトリックは、AzureEnhancedMonitoring Windows サービスによって収集されます。 サービスが正しくインストールされていない場合、または VM で実行されていない場合は、パフォーマンス メトリックを収集できません。
 
@@ -1350,13 +1350,13 @@ AzureEnhancedMonitoring Windows サービスが存在し、有効になってい
 
 構成が正しくありません。 「[Azure Extension for SAP を構成する][deployment-guide-4.5]」の説明に従って、VM で Azure Extension for SAP を再起動します。
 
-#### <a name="windowslogo_windows-some-azure-performance-counters-are-missing"></a>![Windows][Logo_Windows] 一部の Azure パフォーマンス カウンターが見つからない
+#### <a name="windows-logologo_windows-some-azure-performance-counters-are-missing"></a>![Windows ロゴ。][Logo_Windows] 一部の Azure パフォーマンス カウンターが見つからない
 
 Azure のパフォーマンス メトリックは、AzureEnhancedMonitoring Windows サービスによって収集されます。 このサービスは、複数のソースからデータを取得します。 一部の構成データはローカルで収集され、一部のパフォーマンス メトリックは Azure Diagnostics から読み取られます。 ストレージ カウンターは、ストレージ サブスクリプション レベルでログ記録から使用されます。
 
 SAP Note [1999351] を使用したトラブルシューティングで問題が解決しない場合は、`Set-AzVMAEMExtension` 構成スクリプトを再実行します。 ストレージ分析または診断カウンターは、有効になった直後には作成されないことがあるため、1 時間待たなければならない場合があります。 問題が解決しない場合は、Windows では BC-OP-NT-AZR コンポーネント、Linux 仮想マシンでは BC-OP-LNX-AZR コンポーネントで、SAP カスタマー サポート メッセージを開きます。
 
-#### <a name="linuxlogo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux] Azure パフォーマンス カウンターまったく表示されない
+#### <a name="linux-logologo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux ロゴ。][Logo_Linux] Azure パフォーマンス カウンターまったく表示されない
 
 Azure のパフォーマンス メトリックは、デーモンによって収集されます。 デーモンが実行されていない場合、パフォーマンス メトリックを収集できません。
 
@@ -1389,7 +1389,7 @@ WARNING: [WARN] Standard Managed Disks are not supported. Extension will be inst
 このメッセージの原因は、Standard Azure ストレージ アカウントの統計情報を確認するために Azure Extension for SAP によって使用される API が、Standard Managed Disks で提供されていないためです。 これは、重要な問題ではありません。 Standard Disk Storage アカウントにデータ収集が導入されたのは、頻繁に発生する入出力を調整するためでした。 Managed Disks では、ストレージ アカウント内のディスクの数を制限することによってこのような調整は回避されます。 そのため、その種のデータがなくても重要ではありません。
 
 
-#### <a name="linuxlogo_linux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] 一部の Azure パフォーマンス カウンターが見つからない
+#### <a name="linux-logologo_linux-some-azure-performance-counters-are-missing"></a>![Linux ロゴ。][Logo_Linux] 一部の Azure パフォーマンス カウンターが見つからない
 
 Azure のパフォーマンス メトリックは、デーモンによって収集されます。デーモンは複数のソースからデータを取得します。 一部の構成データはローカルで収集され、一部のパフォーマンス メトリックは Azure Diagnostics から読み取られます。 ストレージ カウンターは、ストレージ サブスクリプション レベルでログから使用されます。
 
@@ -1402,7 +1402,7 @@ SAP Note [1999351] を使用したトラブルシューティングで問題が�
 > [!NOTE]
 > VM 拡張機能には 2 つのバージョンがあります。 この章では、新しい VM 拡張機能について説明します。 既定の VM 拡張機能がインストールされている場合は、「[Azure Extension for SAP のトラブルシューティング][deployment-guide-5.3]」の章を参照してください。
 
-#### <a name="windowslogo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Azure パフォーマンス カウンターまったく表示されない
+#### <a name="windows-logologo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows ロゴ。][Logo_Windows] Azure パフォーマンス カウンターまったく表示されない
 
 Azure のパフォーマンス メトリックは、AzureEnhancedMonitoring プロセスによって収集されます。 VM でこのプロセスが実行されていない場合、パフォーマンス メトリックを収集することはできません。
 
@@ -1416,13 +1416,13 @@ Azure のパフォーマンス メトリックは、AzureEnhancedMonitoring プ�
 
 拡張機能がインストールされていません。 これがプロキシの問題 (前述) かどうかを確認します。 場合によっては、マシンを再起動するか、VM 拡張機能をもう一度インストールする必要があります。
 
-#### <a name="windowslogo_windows-some-azure-performance-counters-are-missing"></a>![Windows][Logo_Windows] 一部の Azure パフォーマンス カウンターが見つからない
+#### <a name="windows-logologo_windows-some-azure-performance-counters-are-missing"></a>![Windows ロゴ。][Logo_Windows] 一部の Azure パフォーマンス カウンターが見つからない
 
 Azure のパフォーマンス メトリックは、AzureEnhancedMonitoring Windows プロセスによって収集されます。 このプロセスでは、複数のソースからデータが取得されます。 一部の構成データはローカルで収集され、一部のパフォーマンス メトリックは Azure Monitor から読み取られます。
 
 SAP Note [1999351] を使用してトラブルシューティングを行っても問題が解決しない場合は、Windows では BC-OP-NT-AZR コンポーネント、Linux 仮想マシンでは BC-OP-LNX-AZR コンポーネントで、SAP カスタマー サポート メッセージを開きます。 ログ ファイル C:\\Packages\\Plugins\\Microsoft.AzureCAT.AzureEnhancedMonitoring.MonitorX64Windows\\&lt;バージョン>\\logapp.txt をインシデントに添付してください。
 
-#### <a name="linuxlogo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux] Azure パフォーマンス カウンターまったく表示されない
+#### <a name="linux-logologo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux ロゴ。][Logo_Linux] Azure パフォーマンス カウンターまったく表示されない
 
 Azure のパフォーマンス メトリックは、デーモンによって収集されます。 デーモンが実行されていない場合、パフォーマンス メトリックを収集できません。
 
@@ -1436,7 +1436,7 @@ Azure のパフォーマンス メトリックは、デーモンによって収�
 
 拡張機能がインストールされていません。 これがプロキシの問題 (前述) かどうかを確認します。 場合によっては、マシンを再起動するか、VM 拡張機能をもう一度インストールする必要があります。
 
-#### <a name="linuxlogo_linux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] 一部の Azure パフォーマンス カウンターが見つからない
+#### <a name="linux-logologo_linux-some-azure-performance-counters-are-missing"></a>![Linux ロゴ。][Logo_Linux] 一部の Azure パフォーマンス カウンターが見つからない
 
 Azure のパフォーマンス メトリックは、デーモンによって収集されます。デーモンは複数のソースからデータを取得します。 一部の構成データはローカルで収集され、一部のパフォーマンス メトリックは Azure Monitor から読み取られます。
 

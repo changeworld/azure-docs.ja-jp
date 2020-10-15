@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.openlocfilehash: 6f0e688f3d483536e0d82186dd8e498cdadf97da
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87563553"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Azure Monitor を使用してデータ ファクトリの監視とアラート送信を行う

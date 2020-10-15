@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 8bf74994a07d69bbe53ec9a7e18f08b4232298bd
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8ecf37f9aa8a378e37e01cf6218f0f69e4e3bd7d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552953"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91849590"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>チュートリアル: Azure Active Directory と iQualify LMS の統合
 
@@ -100,7 +100,7 @@ iQualify LMS で Azure AD シングル サインオンを構成するには、�
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[iQualify LMS のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+    ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、次の形式で URL を入力します。
     | |
@@ -116,7 +116,7 @@ iQualify LMS で Azure AD シングル サインオンを構成するには、�
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[iQualify LMS のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
+    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
     | |
@@ -129,7 +129,7 @@ iQualify LMS で Azure AD シングル サインオンを構成するには、�
 
 6. iQualify LMS アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、 **[ユーザー属性]** ダイアログを開きます。
 
-    ![image](common/edit-attribute.png)
+    ![このスクリーンショットは、[編集] アイコンが選択された状態の [User Attributes]\(ユーザー属性\) を示しています。](common/edit-attribute.png)
 
 7. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
 
@@ -142,9 +142,9 @@ iQualify LMS で Azure AD シングル サインオンを構成するには、�
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
-    ![image](common/new-save-attribute.png)
+    ![[新しい要求の追加] オプションが備わっている [ユーザー要求] のスクリーンショット。](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![スクリーンショットは、説明されている値を入力できる [ユーザー要求の管理] ダイアログ ボックスを示しています。](common/new-attribute-details.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 

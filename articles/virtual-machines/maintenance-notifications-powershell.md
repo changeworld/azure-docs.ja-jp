@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
 ms.openlocfilehash: 9942ad359bf1e1e7a02f30979ba4a9325d90d484
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336056"
 ---
 # <a name="handling-planned-maintenance-using-powershell"></a>PowerShell を使用した計画メンテナンスの処理
@@ -41,7 +41,7 @@ MaintenanceRedeployStatus               :
 
 MaintenanceRedeployStatus では、次のプロパティが返されます。 
 
-| 値 | 説明   |
+| [値] | 説明   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | この時点で VM に対してメンテナンスを開始できるかどうかを示します。 |
 | PreMaintenanceWindowStartTime         | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の始まりです。 |
@@ -112,6 +112,6 @@ Get-AzureVM -ServiceName <Service name> -Name <VM name>
 Restart-AzureVM -InitiateMaintenance -ServiceName <service name> -Name <VM name>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure CLI](maintenance-notifications-cli.md) または[ポータル](maintenance-notifications-portal.md)を使用して計画メンテナンスを処理することもできます。

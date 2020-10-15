@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
 ms.openlocfilehash: 734d52dadbb849925303febb0d3d1195bbddb0df
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89236569"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>Azure Firewall を使用してプライベート エンドポイント宛てのトラフィックを検査する
@@ -55,7 +55,7 @@ Azure Firewall では、次のいずれかを使用してトラフィックを�
 
 ## <a name="scenario-2-hub-and-spoke-architecture---shared-virtual-network-for-private-endpoints-and-virtual-machines"></a>シナリオ 2: ハブとスポークのアーキテクチャ - プライベート エンドポイントと仮想マシン用の共有仮想ネットワーク
 
-:::image type="content" source="./media/inspect-traffic-using-azure-firewall/shared-spoke.png" alt-text="同じ仮想ネットワーク内のプライベート エンドポイントと仮想マシン" border="true":::
+:::image type="content" source="./media/inspect-traffic-using-azure-firewall/shared-spoke.png" alt-text="プライベート エンドポイント専用の仮想ネットワーク" border="true":::
 
 このシナリオは、次の場合に実装されます。
 
@@ -78,7 +78,7 @@ Azure Firewall では、次のいずれかを使用してトラフィックを�
 
 ## <a name="scenario-3-single-virtual-network"></a>シナリオ 3: 単一の仮想ネットワーク
 
-:::image type="content" source="./media/inspect-traffic-using-azure-firewall/single-vnet.png" alt-text="単一の仮想ネットワーク" border="true":::
+:::image type="content" source="./media/inspect-traffic-using-azure-firewall/single-vnet.png" alt-text="プライベート エンドポイント専用の仮想ネットワーク" border="true":::
 
 実装にはいくつかの制限があります。ハブとスポークのアーキテクチャへの移行はできません。 シナリオ 2 と同じ考慮事項が適用されます。 このシナリオでは、仮想ネットワークのピアリング料金は適用されません。
 
@@ -87,7 +87,7 @@ Azure Firewall では、次のいずれかを使用してトラフィックを�
 
 ## <a name="scenario-4-on-premises-traffic-to-private-endpoints"></a>シナリオ 4: プライベート エンドポイントへのオンプレミス トラフィック
 
-:::image type="content" source="./media/inspect-traffic-using-azure-firewall/on-premises.png" alt-text="プライベート エンドポイントへのオンプレミス トラフィック" border="true":::
+:::image type="content" source="./media/inspect-traffic-using-azure-firewall/on-premises.png" alt-text="プライベート エンドポイント専用の仮想ネットワーク" border="true":::
 
 このアーキテクチャは、次のいずれかを使用してオンプレミス ネットワークとの接続を構成した場合に実装できます。 
 

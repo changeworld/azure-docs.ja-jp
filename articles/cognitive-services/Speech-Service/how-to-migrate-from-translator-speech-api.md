@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: aahi
 ms.openlocfilehash: d6b1085d51d7345b233087986127cbc97c0597e1
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91362063"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>Translator Speech API から Speech Service に移行する

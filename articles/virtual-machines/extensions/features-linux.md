@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: b61bbacf889df23455266fb81124e14ef44388d2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 283eb9b9cbdc03813cf7c765c9ef3be5965919eb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336124"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978341"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Linux 用の仮想マシンの拡張機能とその機能
 
@@ -65,7 +65,7 @@ Linux エージェントは複数の OS で実行されますが、拡張機能�
 > [!IMPORTANT]
 > ゲスト ファイアウォールを使用して *168.63.129.16* へのアクセスをブロックした場合、上記のアクセス許可とは関係なく、拡張機能はエラーになります。
 
-エージェントは、拡張機能パッケージおよびレポート ステータスをダウンロードするためだけに使用できます。 たとえば、拡張機能のインストール時に GitHub からスクリプトをダウンロードする必要がある場合 (カスタム スクリプト)、または Azure Storage へのアクセスが必要な場合 (Azure Backup) は、追加のファイアウォール/ネットワーク セキュリティ グループ ポートが開かれている必要があります。 拡張機能はそれぞれ、独自のアプリケーションになっているため、要件も異なります。 たとえば、拡張機能が Azure Storage へのアクセスを必要とする場合、[ストレージ](../../virtual-network/security-overview.md#service-tags)の Azure NSG サービス タグを使用してアクセスを許可できます。
+エージェントは、拡張機能パッケージおよびレポート ステータスをダウンロードするためだけに使用できます。 たとえば、拡張機能のインストール時に GitHub からスクリプトをダウンロードする必要がある場合 (カスタム スクリプト)、または Azure Storage へのアクセスが必要な場合 (Azure Backup) は、追加のファイアウォール/ネットワーク セキュリティ グループ ポートが開かれている必要があります。 拡張機能はそれぞれ、独自のアプリケーションになっているため、要件も異なります。 たとえば、拡張機能が Azure Storage へのアクセスを必要とする場合、[ストレージ](../../virtual-network/network-security-groups-overview.md#service-tags)の Azure NSG サービス タグを使用してアクセスを許可できます。
 
 エージェントのトラフィック要求をリダイレクトするために、Linux エージェントはプロキシ サーバーのサポートを備えています。 ただし、このプロキシ サーバーのサポートは拡張機能には適用されません。 プロキシを使用するには、個々の拡張機能を構成する必要があります。
 

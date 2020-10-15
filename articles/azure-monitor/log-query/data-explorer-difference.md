@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/01/2020
-ms.openlocfilehash: 265179909c8ae4a6fa630b835bc9993f042d6460
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bfa27b0df7febbfb8c97f11f69f87c352810699b
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80585712"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993183"
 ---
 # <a name="azure-monitor-log-query-language-differences"></a>Azure Monitor ログ クエリ言語の違い
 
@@ -56,5 +56,5 @@ ms.locfileid: "80585712"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Monitor ログ クエリを記述するための、さまざまなリソース](query-language.md)への参照を取得します。
+- [Azure Monitor ログ クエリを記述するための、さまざまなリソース](/azure/data-explorer/kusto/query/)への参照を取得します。
 - 完全な [Kusto クエリ言語のリファレンス ドキュメント](/azure/kusto/query/)にアクセスします。

@@ -9,10 +9,10 @@ ms.date: 06/04/2020
 ms.author: rosouz
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 97a887b9fbb0edd4b1574d3e68399ea83fe11451
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326747"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API での変更ストリーム

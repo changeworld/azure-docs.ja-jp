@@ -16,10 +16,10 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
 ms.openlocfilehash: 84e94a431efdc84ff6896de416bd222120784899
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89264285"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Media Services Operations REST API の概要

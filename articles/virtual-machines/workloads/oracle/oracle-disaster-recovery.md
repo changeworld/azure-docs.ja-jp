@@ -1,25 +1,18 @@
 ---
 title: Azure 環境における Oracle ディザスター リカバリー シナリオの概要 | Microsoft Docs
 description: Azure 環境内の Oracle Database 12c データベースのディザスター リカバリー シナリオ
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: dbakevlar
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.openlocfilehash: 5a162c0683a953399b48aaf627bbff5bc674e9dd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.reviewer: cynthn
+ms.openlocfilehash: fe93ada343e83d61526b6b899429d9e2b7b745d3
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91274563"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996175"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Azure 環境内の Oracle Database 12c データベースのディザスター リカバリー
 
@@ -100,7 +93,7 @@ Azure セットアップの概要は次のとおりです。
 - [Azure での Oracle データベースの設計と実装](oracle-design.md)
 - [Oracle Data Guard の構成](configure-oracle-dataguard.md)
 - [Oracle Golden Gate の構成](configure-oracle-golden-gate.md)
-- [Oracle のバックアップと回復](oracle-backup-recovery.md)
+- [Oracle のバックアップと回復](./oracle-overview.md)
 
 
 ## <a name="next-steps"></a>次のステップ

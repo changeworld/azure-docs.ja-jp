@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 56a7b91327e84ca36e6ec6e4b15f594dbc61830e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 76bc3273177e94c7619d69293c1e79546d96662c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91274301"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977308"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver のための SQL Server Azure Virtual Machines DBMS のデプロイ
 
@@ -384,13 +384,13 @@ SQL Server 2014 以降では、Azure Blob ストアの周囲に VHD の "ラッ�
 * Azure Premium Storage ディスクで使用できるホスト ベースのキャッシュは、SQL Server データ ファイルを Azure BLOB に直接デプロイするときには使用できません。
 * M シリーズの VM では、Azure Write Accelerator を使用して SQL Server トランザクション ログ ファイルに対してミリ秒未満の書き込みをサポートすることはできません。 
 
-この機能の詳細については、記事「[Microsoft Azure 内の SQL Server データ ファイル](https://docs.microsoft.com/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure)」を参照してください。
+この機能の詳細については、記事「[Microsoft Azure 内の SQL Server データ ファイル](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure)」を参照してください。
 
 運用システムの推奨事項は、この構成を避け、Azure BLOB 上で直接行うのではなく、Azure Premium Storage VHD に SQL Server のデータとログ ファイルを配置することです。
 
 
 ## <a name="sql-server-2014-buffer-pool-extension"></a>SQL Server 2014 のバッファー プール拡張機能
-SQL Server 2014 には、[バッファー プール拡張機能](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension)という新しい機能が導入されました。 この機能は、サーバーのローカル SSD または VM に基づく第 2 レベルのキャッシュを使用してイン メモリに保持する SQL Server のバッファー プールを拡張します。 バッファー プール拡張機能を使用すると、より大規模なデータのワーキング セットを "メモリ内" に保持することができます。 Azure VM のローカル SSD に格納されるバッファー プールの拡張機能へのアクセスによって、Azure Standard Storage にアクセスする場合よりも、さまざまな部分で高速化されます。 Azure Premium Storage 読み取りキャッシュに対するバッファー プール拡張機能と比較すると、SQL Server データ ファイル向けに推奨されているように、バッファー プール拡張機能に大きな利点はありません。 理由は、両方のキャッシュ (SQL Server バッファー プール拡張機能と Premium Storage 読み取りキャッシュ) が Azure コンピューティング ノードのローカル ディスクを使用しているためです。
+SQL Server 2014 には、[バッファー プール拡張機能](/sql/database-engine/configure-windows/buffer-pool-extension)という新しい機能が導入されました。 この機能は、サーバーのローカル SSD または VM に基づく第 2 レベルのキャッシュを使用してイン メモリに保持する SQL Server のバッファー プールを拡張します。 バッファー プール拡張機能を使用すると、より大規模なデータのワーキング セットを "メモリ内" に保持することができます。 Azure VM のローカル SSD に格納されるバッファー プールの拡張機能へのアクセスによって、Azure Standard Storage にアクセスする場合よりも、さまざまな部分で高速化されます。 Azure Premium Storage 読み取りキャッシュに対するバッファー プール拡張機能と比較すると、SQL Server データ ファイル向けに推奨されているように、バッファー プール拡張機能に大きな利点はありません。 理由は、両方のキャッシュ (SQL Server バッファー プール拡張機能と Premium Storage 読み取りキャッシュ) が Azure コンピューティング ノードのローカル ディスクを使用しているためです。
 
 これまでに SQL Server バッファー プール拡張機能と SAP ワークロードで得られるエクスペリエンスはさまざまであり、すべてのケースで使用するかどうかについて明確に推奨することはできません。 理想的なケースは、SAP アプリケーションに必要なワーキング セットがメイン メモリに収まることです。 一方、Azure では、最大 4TB のメモリを搭載した VM を提供しているため、メモリ内にワーキング セットを保持することができます。 そのため、バッファー プール拡張機能の使用は一部のまれなケースに限られており、主流のケースではありません。  
 
@@ -408,7 +408,7 @@ Azure でのさまざまな SQL Server のバックアップ方法について�
 
 最初の方法はよく知られており、多くの場合、オンプレミス環境でも適用されています。 ただし、長期的なバックアップの場所を解決するという課題が残されています。 ローカルに接続された Azure Storage には 30 日以上バックアップを保存したくないので、バックアップのアクセスとリテンションを管理する機能がある Azure Backup Services または別のサードパーティ製パブリック アクセス/回復ツールを使用する必要があります。 または、Windows 記憶域スペースを使用して Azure 内に大規模なファイル サーバーを構築します。
 
-2 つ目の方法の詳細については、「[SQL Server Backup to URL](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/backup-restore)」を参照してください。 SQL Server のリリースによっては、この機能にいくつかのバリエーションがあります。 そのため、使用している SQL Server リリースについて、ドキュメントを確認することをお勧めします。 この記事には、多くの制限事項が記載されている点に注意してください。 以下に対してバックアップを実行することができます。
+2 つ目の方法の詳細については、「[SQL Server Backup to URL](../../../azure-sql/virtual-machines/windows/backup-restore.md)」を参照してください。 SQL Server のリリースによっては、この機能にいくつかのバリエーションがあります。 そのため、使用している SQL Server リリースについて、ドキュメントを確認することをお勧めします。 この記事には、多くの制限事項が記載されている点に注意してください。 以下に対してバックアップを実行することができます。
 
 - 1 つの Azure ページ BLOB。この場合、バックアップ サイズは 1,000 GB に制限されます。 この制限により、達成可能なスループットも制限されます。
 - 複数の (最大 64 個の) Azure ブロック BLOB。この場合、理論上 12 TB のバックアップ サイズに対応できます。 ただし、顧客データベースを使用したテストでは、最大バックアップ サイズが理論上の制限よりも小さくなる可能性があることがわかりました。 この場合、バックアップの保持とバックアップへのアクセスを管理する必要があります。
@@ -422,7 +422,7 @@ Azure でのさまざまな SQL Server のバックアップ方法について�
 - SQL Server 2014: [SQL Server 2014 Virtual Machines の自動バックアップ (Resource Manager)](../../../azure-sql/virtual-machines/windows/automated-backup-sql-2014.md)
 - SQL Server 2016 および 2017: [Azure Virtual Machines の自動バックアップ v2 (Resource Manager)](../../../azure-sql/virtual-machines/windows/automated-backup.md)
 
-ドキュメントを読むと、新しい SQL Server リリースでは機能が向上していることがわかります。 SQL Server の自動バックアップの詳細については、記事「[Microsoft Azure への SQL Server マネージド バックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure)」を参照してください。 理論上のバックアップ サイズの制限は 12 TB です。  自動バックアップは、最大 12 TB のバックアップ サイズに適している方法です。 複数の BLOB が並行して書き込まれるため、100 MB/秒を超えるスループットが期待できます。 
+ドキュメントを読むと、新しい SQL Server リリースでは機能が向上していることがわかります。 SQL Server の自動バックアップの詳細については、記事「[Microsoft Azure への SQL Server マネージド バックアップ](/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure)」を参照してください。 理論上のバックアップ サイズの制限は 12 TB です。  自動バックアップは、最大 12 TB のバックアップ サイズに適している方法です。 複数の BLOB が並行して書き込まれるため、100 MB/秒を超えるスループットが期待できます。 
  
 
 ### <a name="azure-backup-for-sql-server-vms"></a>SQL Server VM 用の Azure Backup
@@ -468,10 +468,10 @@ Latin1-General, binary code point comparison sort for Unicode Data, SQL Server S
 SAP 用の Azure IaaS デプロイで SQL Server を使用する場合、高可用な DBMS レイヤーをデプロイできる追加の可能性がいくつかあります。 「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」で既に説明したように、Azure では、単一の VM と、Azure 可用性セットにデプロイされている VM のペアに対して、異なるアップタイムの SLA が用意されています。 Azure 可用性セットへのデプロイが必要な運用デプロイ向けのアップタイムの SLA を目標としているとします。 この場合、このような可用性セットには最低 2 つの VM をデプロイする必要があります。 1 つの VM がアクティブな SQL Server インスタンスを実行します。 もう一方の VM はパッシブ インスタンスを実行します。
 
 ### <a name="sql-server-clustering-using-windows-scale-out-file-server-or-azure-shared-disk"></a>Windows スケールアウト ファイル サーバーまたは Azure 共有ディスクを使用する SQL Server クラスタリング
-Microsoft は Windows Server 2016 で[記憶域スペース ダイレクト](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)を導入しました。 記憶域スペース ダイレクトのデプロイに基づいて、SQL Server FCI クラスタリングは一般的にサポートされています。 Azure では、Windows クラスタリングに使用できる [Azure 共有ディスク](https://docs.microsoft.com/azure/virtual-machines/disks-shared-enable?tabs=azure-cli)も提供されています。 SAP ワークロードに対しては、これらの HA オプションはサポートされていません。 
+Microsoft は Windows Server 2016 で[記憶域スペース ダイレクト](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)を導入しました。 記憶域スペース ダイレクトのデプロイに基づいて、SQL Server FCI クラスタリングは一般的にサポートされています。 Azure では、Windows クラスタリングに使用できる [Azure 共有ディスク](../../disks-shared-enable.md?tabs=azure-cli)も提供されています。 SAP ワークロードに対しては、これらの HA オプションはサポートされていません。 
 
 ### <a name="sql-server-log-shipping"></a>SQL Server ログ配布
-高可用性 (HA) のメソッドの 1 つは、SQL Server ログ配布です。 HA 構成に参加している VM で名前解決が機能している場合、まったく問題はなく、Azure でのセットアップはオンプレミスで行われるセットアップとまったく変わりません。 ログ配布のセットアップとログ配布の指針については、 記事「[ログ配布について (SQL Server)](https://docs.microsoft.com/sql/database-engine/log-shipping/about-log-shipping-sql-server)」で SQL Server のログ配布の詳細を確認できます。
+高可用性 (HA) のメソッドの 1 つは、SQL Server ログ配布です。 HA 構成に参加している VM で名前解決が機能している場合、まったく問題はなく、Azure でのセットアップはオンプレミスで行われるセットアップとまったく変わりません。 ログ配布のセットアップとログ配布の指針については、 記事「[ログ配布について (SQL Server)](/sql/database-engine/log-shipping/about-log-shipping-sql-server)」で SQL Server のログ配布の詳細を確認できます。
 
 1 つの Azure リージョン内で高可用を達成する目的で、SQL Server のログ配布機能が Azure で使用されることはほとんどありませんでした。 ただし、以下のシナリオでは、SAP ユーザーは Azure と適切に連携してログ配布を使用していました。
 
@@ -519,7 +519,7 @@ SQL Server Always On は、Azure for SAP ワークロードのデプロイで使
 Azure リージョン間に追加のディザスター リカバリー機能のために SQL Server Always On 機能を利用しているユーザーはごく少数です。 一部のユーザーは、セカンダリ レプリカからバックアップを実行する機能も使用しています。 
 
 ## <a name="sql-server-transparent-data-encryption"></a>SQL Server Transparent Data Encryption
-Azure に SAP SQL Server データベースをデプロイするときに、SQL Server [Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) を使用しているユーザーは多数います。 SQL Server TDE 機能は SAP によって完全にサポートされています (SAP Note [#1380493](https://launchpad.support.sap.com/#/notes/1380493) を参照)。 
+Azure に SAP SQL Server データベースをデプロイするときに、SQL Server [Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) を使用しているユーザーは多数います。 SQL Server TDE 機能は SAP によって完全にサポートされています (SAP Note [#1380493](https://launchpad.support.sap.com/#/notes/1380493) を参照)。 
 
 ### <a name="applying-sql-server-tde"></a>SQL Server TDE の適用
 オンプレミスで実行している別の DBMS から Azure で実行されている Windows/SQL Server に対する異種移行を実行する場合、事前に SQL Server 内に空のターゲット データベースを作成する必要があります。 次の手順では、SQL Server TDE の機能を適用します。 この手順は、まだオンプレミスで運用システムを実行している間に行います。 この順序で実行する理由は、空のデータベースを暗号化するプロセスにはかなりの時間がかかるためです。 次に、SAP インポート プロセスで、ダウンタイム フェーズ中にデータを暗号化されたデータベースにインポートします。 暗号化されたデータベースにインポートする場合のオーバーヘッドは、エクスポート フェーズ後にダウン タイム フェーズでデータベースを暗号化する場合よりも、時間に対する影響が少なくなります。 データベース上で実行されている SAP ワークロードで TDE を適用しようとすると、否定的なエクスペリエンスが発生しました。 そのため、TDE のデプロイは、特定のデータベース上の SAP ワークロードを使用せずに実行する必要があるアクティビティとして扱うことをお勧めします。
@@ -537,9 +537,9 @@ Azure は、暗号キーを格納する [Key Vault](https://azure.microsoft.com/
 
 Azure Key Vault を SQL Server TDE に使用する方法の詳細については、以下のドキュメントを参照してください。
 
-- [Azure Key Vault を使用する拡張キー管理 (SQL Server)](https://docs.microsoft.com/sql/relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server)。
-- [Azure Key Vault を使用する SQL Server TDE 拡張キー管理 - 設定手順](https://docs.microsoft.com/sql/relational-databases/security/encryption/setup-steps-for-extensible-key-management-using-the-azure-key-vault)
-- [SQL Server コネクタのメンテナンスとトラブルシューティング](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-connector-maintenance-troubleshooting?)
+- [Azure Key Vault を使用する拡張キー管理 (SQL Server)](/sql/relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server)。
+- [Azure Key Vault を使用する SQL Server TDE 拡張キー管理 - 設定手順](/sql/relational-databases/security/encryption/setup-steps-for-extensible-key-management-using-the-azure-key-vault)
+- [SQL Server コネクタのメンテナンスとトラブルシューティング](/sql/relational-databases/security/encryption/sql-server-connector-maintenance-troubleshooting)
 - [SQL Server Transparent Data Encryption について寄せられるその他の質問 - TDE + Azure Key Vault](/archive/blogs/saponsqlserver/more-questions-from-customers-about-sql-server-transparent-data-encryption-tde-azure-key-vault)。
 
 

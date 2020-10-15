@@ -1,17 +1,17 @@
 ---
 title: チュートリアル - Azure Service Fabric Mesh アプリケーションをアップグレードする
 description: このチュートリアルはシリーズの第 4 部です。ここでは、Azure Service Fabric Mesh アプリケーションを Visual Studio から直接アップグレードする方法について説明します。
-author: dkkapur
+author: georgewallace
 ms.topic: conceptual
 ms.date: 11/29/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-csharp
-ms.openlocfilehash: 876359b45daa280a1f5701f2490ce505327f309b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2d74841e1873e5bd84d839122e0e662ef65ccd11
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011006"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842004"
 ---
 # <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>チュートリアル:Visual Studio を使用して Service Fabric アプリケーションをアップグレードする方法を学習します
 

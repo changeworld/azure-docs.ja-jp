@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: bce702873fc4e66f283a9785bb408bbfa7fda83c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3df7d3d01dcd5e5b097eba53ef0dae29e86fd0a5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87266896"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973259"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>PowerShell を使用して特殊化されたディスクから Windows VM を作成する
 
@@ -27,7 +27,7 @@ OS ディスクとして特殊化されたマネージド ディスクを接続�
 
 Azure Portal を使用して、[特殊化された VHD から新しい VM を作成する](create-vm-specialized-portal.md)こともできます。
 
-この記事では、マネージド ディスクの使用方法を説明します。 従来のデプロイメントがストレージ アカウントを使用する必要がある場合、[ストレージ アカウントで特殊化された VHD から VM を作成する](sa-create-vm-specialized.md)に関するページを参照してください。
+この記事では、マネージド ディスクの使用方法を説明します。 従来のデプロイメントがストレージ アカウントを使用する必要がある場合、[ストレージ アカウントで特殊化された VHD から VM を作成する](/previous-versions/azure/virtual-machines/windows/sa-create-vm-specialized)に関するページを参照してください。
 
 1 つの VHD またはスナップショットからの同時デプロイ数は 20 VM を上限とするようお勧めします。 
 

@@ -12,10 +12,10 @@ ms.date: 09/20/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 91a55782492c1b2612652b147e0aca37941bf4db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85388206"
 ---
 # <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して Google アカウントによるサインインを設定する

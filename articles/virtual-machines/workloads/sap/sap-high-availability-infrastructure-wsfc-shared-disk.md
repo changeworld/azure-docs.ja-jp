@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/25/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8f389581d8fbeb912507b303c46109dd08fcab8d
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 2653742b788ab24fc295ebc156090d1db5f85268
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871518"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978494"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>SAP ASCS/SCS 用の Windows フェールオーバー クラスターと共有ディスクを使用して SAP HA 向けに Azure インフラストラクチャを準備する
 
@@ -165,10 +165,10 @@ ms.locfileid: "88871518"
 この記事では、SAP ASCS インスタンスのクラスタリングのオプションとして "*クラスター共有ディスク*" を使うことで、Windows フェールオーバー クラスター上に高可用性の SAP ASCS/SCS システムをインストールして構成するための Azure インフラストラクチャを準備する手順について説明します。
 "*クラスター共有ディスク*" の 2 つの代替手段については、次のドキュメントを参照してください。
 
-- [Azure 共有ディスク](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared)
+- [Azure 共有ディスク](../../windows/disks-shared.md)
 - クラスター化された共有ディスクをシミュレートする、[SIOS DataKeeper Cluster Edition](https://us.sios.com/products/datakeeper-cluster/) を使用したミラー化ストレージの作成 
 
-示される構成は、SAP ワークロードの最適なネットワーク待機時間を実現するための [Azure 近接配置グループ (PPG)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) に依存します。 このドキュメントでは、データベース層については説明していません。  
+示される構成は、SAP ワークロードの最適なネットワーク待機時間を実現するための [Azure 近接配置グループ (PPG)](./sap-proximity-placement-scenarios.md) に依存します。 このドキュメントでは、データベース層については説明していません。  
 
 > [!NOTE]
 > 近接配置グループは、Azure 共有ディスクを使用するための前提条件です。
@@ -199,7 +199,7 @@ SAP ASCS/SCS クラスターの場合、Azure 可用性セットに 2 つの VM 
 
 ## <a name="create-azure-internal-load-balancer"></a><a name="fe0bd8b5-2b43-45e3-8295-80bee5415716"></a> Azure 内部ロード バランサーを作成する
 
-SAP ASCS、SAP SCS、および新しい SAP ERS2 により、仮想ホスト名と仮想 IP アドレスが使用されます。 Azure 上で仮想 IP アドレスを使用するには、[ロード バランサー](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)が必要です。 [Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal) の使用を強くお勧めします。 
+SAP ASCS、SAP SCS、および新しい SAP ERS2 により、仮想ホスト名と仮想 IP アドレスが使用されます。 Azure 上で仮想 IP アドレスを使用するには、[ロード バランサー](../../../load-balancer/load-balancer-overview.md)が必要です。 [Standard Load Balancer](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md) の使用を強くお勧めします。 
 
 
 次の一覧には、(A)SCS および ERS ロード バランサーの構成が示されています。 SAP ASCS と ERS2 の両方の構成は、同じ Azure ロード バランサーで実行されています。  
@@ -263,8 +263,8 @@ SAP ASCS、SAP SCS、および新しい SAP ERS2 により、仮想ホスト名�
 
 | Path| 変数名 | 変数の型  | 値 | ドキュメント |
 | --- | --- | --- |---| ---|
-| HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveTime |REG_DWORD (Decimal) |120000 |[KeepAliveTime](https://technet.microsoft.com/library/cc957549.aspx) |
-| HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveInterval |REG_DWORD (Decimal) |120000 |[KeepAliveInterval](https://technet.microsoft.com/library/cc957548.aspx) |
+| HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveTime |REG_DWORD (Decimal) |120000 |[KeepAliveTime](/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10)) |
+| HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |KeepAliveInterval |REG_DWORD (Decimal) |120000 |[KeepAliveInterval](/previous-versions/windows/it-pro/windows-2000-server/cc957548(v=technet.10)) |
 
 
 変更を適用するには、両方のクラスター ノードを再起動します。
@@ -325,7 +325,7 @@ Windows 2019 では、クラスターにより、Azure で実行されている�
    ```
 
 ### <a name="configure-cluster-cloud-quorum"></a>クラスター クラウド クォーラムを構成する
-Windows Server 2016 または 2019 を使用するときは、クラスター クォーラムとして、[Azure クラウド監視](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness)を構成することをお勧めします。
+Windows Server 2016 または 2019 を使用するときは、クラスター クォーラムとして、[Azure クラウド監視](/windows-server/failover-clustering/deploy-cloud-witness)を構成することをお勧めします。
 
 クラスター ノードのいずれかでこのコマンドを実行します。
 

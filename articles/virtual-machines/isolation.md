@@ -7,12 +7,13 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/18/2019
 ms.author: sttsinar
-ms.openlocfilehash: d6a77cac049ef32949eeba4cbd6fe9217100a360
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.reviewer: ayshak
+ms.openlocfilehash: 7b1956d704bbdf9475f04efcbdc4b6ee75bb50b2
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91666842"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996295"
 ---
 # <a name="virtual-machine-isolation-in-azure"></a>Azure における仮想マシンの分離性
 

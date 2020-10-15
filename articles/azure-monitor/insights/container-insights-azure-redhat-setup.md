@@ -3,12 +3,12 @@ title: Azure Monitor for containers を使用して Azure Red Hat OpenShift v3.x
 description: この記事では、Azure Red Hat OpenShift バージョン 3 以降でホストされている Azure Monitor を使用して Kubernetes クラスターの監視を構成する方法を説明します。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: e462fb25672fa1912f7bb24efad4ea9a6d27d078
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 4e1770944fa1917bc94dfbf1a3daa0708593e356
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816645"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994559"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Azure Monitor for containers を使用して Azure Red Hat OpenShift v3 を構成する 
 
@@ -34,7 +34,7 @@ Azure Monitor for containers では、次の機能を除き、[概要](container
 
 - [Log Analytics ワークスペース。](../platform/design-logs-deployment.md)
 
-    Azure Monitor for containers では、Azure の[リージョン別の製品](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)に関するページに一覧表示されているリージョンの Log Analytics ワークスペースがサポートされます。 ワークスペースは、[Azure Resource Manager](../platform/template-workspace-configuration.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)、[Azure portal](../learn/quick-create-workspace.md) のいずれかを使用して作成できます。
+    Azure Monitor for containers では、Azure の[リージョン別の製品](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)に関するページに一覧表示されているリージョンの Log Analytics ワークスペースがサポートされます。 ワークスペースは、[Azure Resource Manager](../samples/resource-manager-workspace.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)、[Azure portal](../learn/quick-create-workspace.md) のいずれかを使用して作成できます。
 
 - Azure Monitor for containers の機能を有効にしてアクセスするには、少なくとも、Azure サブスクリプションの Azure *共同作成者* ロールのメンバー、および Azure Monitor for containers で構成されている Log Analytics ワークスペースの [*Log Analytics 共同作成者*](../platform/manage-access.md#manage-access-using-azure-permissions)のメンバーである必要があります。
 
@@ -244,4 +244,3 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
 - クラスターから Prometheus メトリックをスクレイピングして分析するには、「[Azure Monitor for containers で Prometheus メトリックのスクレーピングを構成する](container-insights-prometheus-integration.md)」を参照してください。
 
 - Azure Monitor for containers でクラスターの監視を停止する方法については、「[お使いの Azure Red Hat OpenShift クラスターの監視を停止する方法](./container-insights-optout-openshift-v3.md)」を参照してください。
-

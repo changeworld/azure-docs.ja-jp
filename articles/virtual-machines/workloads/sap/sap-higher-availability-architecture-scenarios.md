@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f43ba78bc9c48b003d4718945dc47b0a076a048f
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 82b0b53b1933a7ca08163a12b2b7649b7b9538f4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134531"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91361638"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>Azure インフラストラクチャの VM 再起動を利用して SAP システムの "高可用性" を実現する
 
@@ -210,7 +210,7 @@ ms.locfileid: "86134531"
 
 > このセクションは次に適用されます。
 >
-> ![Windows][Logo_Windows] Windows および ![Linux][Logo_Linux] Linux
+> ![Windows ロゴ。][Logo_Windows] Windows および ![Linux ロゴ。][Logo_Linux] Linux
 >
 
 Windows Server フェールオーバー クラスタリング (WSFC) や Linux の Pacemaker などの機能 (現在 SUSE Linux Enterprise Server [SLES] 12 以降でのみサポート) を使用しない場合は、Azure の VM 再起動を利用します。 これにより、Azure 物理サーバー インフラストラクチャと基になる Azure プラットフォーム全体の計画済みおよび計画外のダウンタイムに対して SAP システムを保護します。
