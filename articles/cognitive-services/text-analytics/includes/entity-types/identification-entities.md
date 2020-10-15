@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 04/29/2020
 ms.author: aahi
 ms.openlocfilehash: 49a2b285d9494dfc5ca0863c021733b4bc874efa
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91779603"
 ---
 このエンティティ カテゴリには、銀行関係の情報や公的な ID 形式が含まれます。 モデル バージョン `2019-10-01` 以降で使用できます。 以下に示したのは、そのサブタイプです。 

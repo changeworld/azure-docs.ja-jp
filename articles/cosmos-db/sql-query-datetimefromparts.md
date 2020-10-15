@@ -8,10 +8,10 @@ ms.date: 07/09/2020
 ms.author: tisande
 ms.custom: query-reference
 ms.openlocfilehash: aec567c642f8eb3cb421ef5a119fe58f3a5fe05a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86261574"
 ---
 # <a name="datetimefromparts-azure-cosmos-db"></a>DateTimeFromParts (Azure Cosmos DB)

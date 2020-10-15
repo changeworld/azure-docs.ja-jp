@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
 ms.openlocfilehash: 97541a4f8d86b90bf6045fc2a9e5abbe86aee5cd
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88717338"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>メトリック、アラート、およびリソース正常性を使用した Standard Load Balancer の診断

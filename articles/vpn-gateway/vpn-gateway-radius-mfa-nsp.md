@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: genli
 ms.openlocfilehash: 8c439113907c2eb28c41aed3c21c1d27398d5207
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84987091"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Azure VPN ゲートウェイ RADIUS 認証と Multi-Factor Authentication 用の NPS サーバーを統合する 

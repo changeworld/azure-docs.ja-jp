@@ -7,10 +7,10 @@ author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: 650fb7f0877a98ef53ed3868550f9c084ecb5885
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84710203"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>フェールオーバー時に IP アドレスを保持する

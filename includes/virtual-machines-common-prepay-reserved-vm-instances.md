@@ -5,10 +5,10 @@ ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 07/15/2020
 ms.openlocfilehash: fb3282666362e3ef592f253405cff01a52941203
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88655192"
 ---
 Azure 予約 VM インスタンスにコミットすると、コストを削減できます。 予約割引は、予約スコープと属性に一致する実行中の仮想マシン数に対して自動的に適用されます。 割引を取得するために、仮想マシンに予約を割り当てる必要はありません。 予約インスタンスの購入では、VM 使用量のコンピューティング部分のみが対象となります。 Windows VM の場合、使用量メーターは 2 つの異なるメーターに分割されます。 Linux メーターと同じであるコンピューティング メーターと、Windows IP メーターがあります。 購入時に表示される料金は、コンピューティング コストの分のみです。 料金には、Windows ソフトウェアのコストは含まれません。 ソフトウェアのコストの詳細については、「[Azure Reserved VM Instances に含まれないソフトウェアのコスト](../articles/cost-management-billing/reservations/reserved-instance-windows-software-costs.md)」を参照してください。

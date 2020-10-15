@@ -8,10 +8,10 @@ ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 04/22/2018
 ms.openlocfilehash: cb986f1e0172c4a44381b2f9cf043025cb5abe8a
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88705029"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>Azure Cache for Redis の ASP.NET 出力キャッシュ プロバイダー

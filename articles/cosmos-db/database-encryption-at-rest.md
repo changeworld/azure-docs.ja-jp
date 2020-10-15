@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.custom: seodec18
 ms.openlocfilehash: fb3dda7a2f33fa76ab78a67f86fb015430c64099
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85114777"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Azure Cosmos DB でのデータの暗号化 
@@ -61,4 +61,4 @@ A:エミュレーターは、スタンドアロンの開発/テスト ツール�
 
 * 独自のキーを使用して 2 つ目の暗号化レイヤーを追加することもできます。詳細については、[カスタマー マネージド キー](how-to-setup-cmk.md)の記事を参照してください。
 * Cosmos DB のセキュリティと最新の機能強化の概要については、[Azure Cosmos データベースのセキュリティ](database-security.md)に関するページを参照してください。
-* マイクロソフトが取得している認証の詳細については、[Azure Trust Center](https://azure.microsoft.com/support/trust-center/) に関するページを参照してください。
+* マイクロソフトが取得している認証の詳細については、[Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)に関するページを参照してください。

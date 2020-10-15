@@ -12,10 +12,10 @@ ms.date: 06/24/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.openlocfilehash: 413cfe4f3aed446ad26a210b4faa452c4f624685
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88640856"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>アプリケーション プロキシの問題とエラー メッセージのトラブルシューティング | Microsoft Docs

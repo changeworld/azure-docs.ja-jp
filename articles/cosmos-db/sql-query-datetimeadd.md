@@ -8,10 +8,10 @@ ms.date: 07/09/2020
 ms.author: tisande
 ms.custom: query-reference
 ms.openlocfilehash: 0b2741a3d2b013ba7bd97038eb4ba4512f36af11
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86261577"
 ---
 # <a name="datetimeadd-azure-cosmos-db"></a>DateTimeAdd (Azure Cosmos DB)

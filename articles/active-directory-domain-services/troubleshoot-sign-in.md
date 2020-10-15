@@ -2,20 +2,20 @@
 title: Azure AD Domain Services のサインイン問題を解決する | Microsoft Docs
 description: Azure Active Directory Domain Services でユーザーがサインインしたときに発生する一般的な問題とエラーをトラブルシューティングする方法について説明します。
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 91c42e391d1a23e9ac494af9271c92e3e9b5d6c4
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.author: joflore
+ms.openlocfilehash: 9343af5b29289a152db84e64f81fa8ca74ce7bc3
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88722655"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967394"
 ---
 # <a name="troubleshoot-account-sign-in-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services マネージド ドメインでのアカウントのサインインに関する問題をトラブルシューティングする
 

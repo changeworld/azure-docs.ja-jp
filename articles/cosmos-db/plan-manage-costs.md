@@ -8,10 +8,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.openlocfilehash: 7f0a8fcb841399eb910f5f043cc75ddad037ee30
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88606878"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>Azure Cosmos DB のコストを計画および管理する
@@ -71,7 +71,7 @@ Azure portal から Azure Cosmos DB リソースの使用を開始するとき�
 1. グラフ コンテナーなどの新しいコンテナーを作成します。
 1. 400 RU/秒など、ワークロードのために必要なスループットを入力します。 スループット値を入力すると、次のスクリーンショットに示すように、料金見積もりを表示できます。
 
-   :::image type="content" source="./media/plan-manage-costs/cost-estimate-portal.png" alt-text="Azure portal でのコスト見積もり":::
+   :::image type="content" source="./media/plan-manage-costs/cost-estimate-portal.png" alt-text="Azure Cosmos DB Capacity Calculator でのコスト見積もり":::
 
 ## <a name="use-budgets-and-cost-alerts"></a>予算とコストのアラートを使用する
 
@@ -93,7 +93,7 @@ Azure Cosmos DB でリソースを使用するとコストが発生します。 
 
 1. Azure Cosmos DB など、1 つのサービスのコストを絞り込むには、 **[フィルターの追加]** を選択してから、 **[サービス名]** を選択します。 次に、一覧から **[Azure Cosmos DB]** を選択します。 次に、Azure Cosmos DB だけのコストを示す例を示します。
  
-   :::image type="content" source="./media/plan-manage-costs/cost-analysis-pane.png" alt-text="[コスト分析] ペインを使用してコストを監視する":::
+   :::image type="content" source="./media/plan-manage-costs/cost-analysis-pane.png" alt-text="Azure Cosmos DB Capacity Calculator でのコスト見積もり":::
 
 前の例では、2月について、Azure Cosmos DB の現在のコストが表示されています。グラフには、場所別とリソース グループ別の Azure Cosmos DB コストも含まれています。
 

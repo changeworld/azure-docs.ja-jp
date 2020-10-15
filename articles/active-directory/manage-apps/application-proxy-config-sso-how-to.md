@@ -17,10 +17,10 @@ ms.author: kenwith
 ms.reviewer: japere, asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 54673e0018f83024d1c01599d0096c71b6b1d0ae
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88642131"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーションに対するシングル サインオンを構成する方法

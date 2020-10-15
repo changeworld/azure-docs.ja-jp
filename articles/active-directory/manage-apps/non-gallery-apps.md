@@ -12,10 +12,10 @@ ms.date: 07/27/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.openlocfilehash: 262c3a7c8a668ef25d092b5d523743e0ece89cc3
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88641145"
 ---
 # <a name="using-azure-ad-for-applications-not-listed-in-the-app-gallery"></a>アプリ ギャラリーに記載されていないアプリケーションで Azure AD を使用する

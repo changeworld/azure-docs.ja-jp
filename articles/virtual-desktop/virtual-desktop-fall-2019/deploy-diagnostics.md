@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 61c31b24b01b40da4d73a308a4f304f6ff242e41
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88691413"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Windows Virtual Desktop (クラシック) の診断ツールをデプロイする

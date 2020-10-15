@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/24/2020
 ms.openlocfilehash: 99253aa2e7e2e1f3f58f2ab7d5c40a695c2b9690
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88654856"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Azure HDInsight の Apache HBase 用書き込みアクセラレータ

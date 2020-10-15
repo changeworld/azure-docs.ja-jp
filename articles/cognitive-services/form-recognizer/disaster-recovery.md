@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.openlocfilehash: ac934f88d00521b13fd2b134c80f19656c63117b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88718817"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>ご使用の Form Recognizer モデルのバックアップと復旧
@@ -91,7 +91,7 @@ Operation-Location: https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecog
 
 ### <a name="common-errors"></a>一般的なエラー
 
-|エラー|解決方法|
+|エラー|解決策|
 |:--|:--|
 | 400 / `"code:" "1002"` が指定された無効な要求 | 検証エラーまたはコピー要求の形式が正しくないことを示します。 一般的な問題には次のようなものがあります。a) 無効または変更された `copyAuthorization` ペイロード。 b) `expirationDateTimeTicks` トークンの期限切れの値 (`copyAuhtorization` ペイロードは 24 時間有効です)。 c) 無効またはサポートされていない `targetResourceRegion`。 d) 無効または形式が正しくない `targetResourceId` 文字列。
 |
@@ -115,7 +115,7 @@ Content-Type: application/json; charset=utf-8
 
 ### <a name="common-errors"></a>一般的なエラー
 
-|エラー|解決方法|
+|エラー|解決策|
 |:--|:--|
 |"errors":[{"code":"AuthorizationError",<br>"message":"Authorization failure due to <br>missing or invalid authorization claims."}] (承認要求が見つからないか無効であるため承認が失敗しました)   | `copyAuthorization` ペイロードまたは内容が `copyAuthorization` API によって返されたものから変更されたときに発生します。 ペイロードが、前の `copyAuthorization` の呼び出しから返されたものと確実にまったく同じ内容であるようにします。|
 |"errors":[{"code":"AuthorizationError",<br>"message":"Could not retrieve authorization <br>metadata. If this issue persists use a different <br>target model to copy into."}] (承認メタデータを取得できませんでした。この問題が解決しない場合は、コピー先として異なるターゲット モデルをお使いください。) | `copyAuthorization` ペイロードがコピー要求で再利用されていることを示します。 コピー要求が成功した場合、同じ `copyAuthorization` ペイロードを使用したそれ以上の要求は許可されません。 次に示すような別のエラーが発生した後に、同じ承認ペイロードでコピーを再試行すると、このエラーが発生します。 この解決策は、新しい `copyAuthorization` ペイロードを生成してから、コピー要求を再発行することです。|

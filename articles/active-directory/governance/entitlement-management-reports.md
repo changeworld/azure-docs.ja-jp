@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86f2d5202a9b5439fcacca549659e4e181ffeca4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85078124"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でレポートとログを表示する

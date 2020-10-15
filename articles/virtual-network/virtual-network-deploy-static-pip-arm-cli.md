@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: kumud
 ms.openlocfilehash: 110f5ab4f0912ae264eb1dc4b649a40cc40f4e12
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84703091"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-cli"></a>Azure CLI を使用して静的パブリック IP アドレスを持つ仮想マシンを作成する
@@ -29,7 +29,7 @@ ms.locfileid: "84703091"
 
 ## <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
-ローカル コンピューターから、または Azure Cloud Shell を使用して、次の手順を行うことができます。 ローカル コンピューターを使用する場合は、[Azure CLI がインストールされている](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)ことを確認してください。 Azure Cloud Shell を使用する場合は、任意のコマンド ボックスの右上隅にある **[使ってみる]** を選択します。 Cloud Shell によって、Azure にサインインされます。
+ローカル コンピューターから、または Azure Cloud Shell を使用して、次の手順を行うことができます。 ローカル コンピューターを使用する場合は、[Azure CLI がインストールされている](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)ことを確認してください。 Azure Cloud Shell を使用する場合は、任意のコマンド ボックスの右上隅にある **[試してみる]** を選択します。 Cloud Shell によって、Azure にサインインされます。
 
 1. Cloud Shell を使用する場合は、手順 2 に進みます。 コマンド セッションを開き、`az login` で Azure にサインインします。
 2. [az group create](/cli/azure/group#az-group-create) コマンドを使用して、リソース グループを作成します。 次の例では、Azure の米国東部リージョンにリソース グループを作成します。

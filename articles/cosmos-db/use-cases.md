@@ -7,10 +7,10 @@ ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.openlocfilehash: 76016da2ec542091aa57d5081e275a1f9f6671cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85114267"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB の一般的なユース ケース
@@ -57,11 +57,11 @@ Azure Cosmos DB は、Windows ストアおよび XBox Live を実行する Micro
 
 自動車部品メーカーの製品カタログの例を考えてみましょう。 各部品には、すべて部品に共通の属性に加えて、それぞれに固有の属性があります。 また、特定の部品の属性は、翌年に新しいモデルがリリースされたときに変更されることがあります。 Azure Cosmos DB は柔軟なスキーマと階層データをサポートしているため、製品カタログ データの格納に最適です。
 
-:::image type="content" source="./media/use-cases/product-catalog.png" alt-text="Azure Cosmos DB 小売カタログ リファレンス アーキテクチャ" border="false":::
+:::image type="content" source="./media/use-cases/product-catalog.png" alt-text="Azure Cosmos DB IoT リファレンス アーキテクチャ" border="false":::
 
 Azure Cosmos DB は、多くの場合、その [Change Feed](change-feed.md) 機能を使用するイベント駆動アーキテクチャのイベント ソーシングに使用されます。 Change Feed 機能は、Azure Cosmos DB 用に作られた、段階的かつ確実にインサートやアップデートを読み取る (注文イベントなど) 能力をダウンストリームのマイクロサービスに提供します。 この機能を利用すれば、状態の変化するイベントのメッセージ ブローカーとして永続的なイベント ストアを提供し、多数のマイクロサービス間で注文処理ワークフローを稼働することができます ([サーバーレス Azure Functions](https://azure.com/serverless) として実装可能)。
 
-:::image type="content" source="./media/use-cases/event-sourcing.png" alt-text="Azure Cosmos DB 注文パイプライン リファレンス アーキテクチャ" border="false":::
+:::image type="content" source="./media/use-cases/event-sourcing.png" alt-text="Azure Cosmos DB IoT リファレンス アーキテクチャ" border="false":::
 
 さらに、Azure Cosmos DB に格納されたデータは、Apache Spark ジョブによるビッグ データ分析のために HDInsight と統合できます。 Azure Cosmos DB 用の Spark コネクタの詳細については、「[Run a Spark job with Cosmos DB and HDInsight (Cosmos DB と HDInsight を使用した Spark ジョブの実行)](spark-connector.md)」を参照してください。
 
@@ -76,7 +76,7 @@ Azure Cosmos DB は、[The Walking Dead: No Man's Land](https://azure.microsoft.
 * ゲーム内チャット メッセージ、ギルド メンバーシップ、ミッション完了、スコアボード、ソーシャル グラフなどのソーシャル機能は、柔軟なスキーマで簡単に実装できます。
 * Azure Cosmos DB は、管理されたサービスとしてのプラットフォーム (PaaS) として、迅速な繰り返しを可能にして製品化までの時間を短縮するために必要なセットアップや管理作業が最小限に抑えられます。
 
-:::image type="content" source="./media/use-cases/gaming.png" alt-text="Azure Cosmos DB ゲーム リファレンス アーキテクチャ" border="false":::
+:::image type="content" source="./media/use-cases/gaming.png" alt-text="Azure Cosmos DB IoT リファレンス アーキテクチャ" border="false":::
 
 ## <a name="web-and-mobile-applications"></a>Web アプリケーションとモバイル アプリケーション
 Azure Cosmos DB は一般に Web およびモバイル アプリケーション内で使用され、ソーシャル インタラクションのモデル化、サード パーティ サービスとの統合、および豊富な個人別のエクスペリエンスの構築に適しています。 Cosmos DB SDK を使用すると、一般的な [Xamarin フレームワーク](mobile-apps-with-xamarin.md)を使って豊富な iOS および Android アプリケーションを構築できます。  
@@ -88,14 +88,14 @@ Azure Cosmos DB の一般的なユース ケースは、Web、モバイル、ソ
 
 ソーシャル アプリケーションの多くが世界規模で実行されており、予測できない使用パターンが発生することがあります。 アプリケーション層は使用ニーズを満たすようにスケールするため、データ ストアを柔軟にスケールできることがきわめて重要です。  Cosmos DB では、Cosmos DB アカウントにデータのパーティションを追加することでスケールアウトできます。  また、複数のリージョンにわたって追加の Cosmos DB アカウントを作成することもできます。 Cosmos DB サービス リージョンの可用性については、「[Azure のリージョン](https://azure.microsoft.com/regions/#services)」を参照してください。
 
-:::image type="content" source="./media/use-cases/apps-with-global-reach.png" alt-text="Azure Cosmos DB Web アプリ リファレンス アーキテクチャ" border="false":::
+:::image type="content" source="./media/use-cases/apps-with-global-reach.png" alt-text="Azure Cosmos DB IoT リファレンス アーキテクチャ" border="false":::
 
 ### <a name="personalization"></a>パーソナル化
 今日では、最新のアプリケーションは複雑なビューとエクスペリエンスを備えています。 それらはたいてい動的で、ユーザーの設定や気分、ブランドのニーズに対応します。 そのため、アプリケーションは、UI 要素とエクスペリエンスをすばやく表示するために、個人用設定を効率的に取得できる必要があります。 
 
 Cosmos DB でサポートされる形式である JSON は、軽量なうえに JavaScript で容易に解釈できるため、UI レイアウト データを表すのに効果的な形式です。 Cosmos DB は、チューニング可能な一貫性レベルを提供し、高速な読み取りと待機時間の短い書き込みを実現します。 これにより、個人用設定を含む UI レイアウト データを Cosmos DB に JSON ドキュメントとして格納すれば、これらのデータをネットワーク経由で効率よく取得することができます。
 
-:::image type="content" source="./media/use-cases/personalization.png" alt-text="Azure Cosmos DB Web アプリ リファレンス アーキテクチャ" border="false":::
+:::image type="content" source="./media/use-cases/personalization.png" alt-text="Azure Cosmos DB IoT リファレンス アーキテクチャ" border="false":::
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -5,10 +5,10 @@ ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.openlocfilehash: 0ee5d270db2149be0cfbf6bf06f87a5d0133c6ef
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88612811"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio を使用する Azure Functions の開発  
@@ -227,7 +227,7 @@ Azure の関数アプリに必要な設定をアップロードする最も簡�
 * [Azure Functions Core Tools の `--publish-local-settings` 発行オプションを使用する](functions-run-local.md#publish)。
 * [Azure CLI を使用する](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)
 
-## <a name="monitoring-functions"></a>Functions の監視
+## <a name="monitoring-functions"></a>関数の監視
 
 関数の実行を監視するための推奨される方法は、関数アプリを Azure Application Insights と統合することです。 Azure Portal で関数アプリを作成する場合、この統合は、既定で自動的に行われます。 ただし、Visual Studio の発行中に関数アプリを作成する場合は、Azure で関数アプリの統合は実行されません。
 

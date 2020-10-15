@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: kenwith
 ms.openlocfilehash: 09a930778e35897671d10f14a95f3fa48ea5e9eb
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88642420"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD アプリケーション プロキシのデプロイ計画
