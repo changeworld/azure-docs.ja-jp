@@ -3,12 +3,12 @@ title: Azure Monitor for containers での Kubernetes の監視 | Microsoft Docs
 description: この記事では、Azure Monitor for containers を使用して Kubernetes クラスターのパフォーマンスを表示および分析する方法について説明します。
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 888853f0e9e7634cafa5e480752371c501376158
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 5d267715ed9748c69c33bbd7bc5af0db7b118502
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90988134"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994767"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Azure Monitor for containers を使用して Kubernetes クラスターのパフォーマンスを監視する
 
@@ -293,7 +293,7 @@ Linux OS を実行している Azure Container Instances 仮想ノードは、�
 
 ## <a name="workbooks"></a>Workbooks
 
-ブックでは、テキスト、 [ログ クエリ](../log-query/query-language.md)、[メトリック](../platform/data-platform-metrics.md)、パラメーターが、内容豊富な対話型レポートに組み合わされます。 ブックは、同じ Azure リソースにアクセスできる他のチーム メンバーが編集できます。
+ブックでは、テキスト、 [ログ クエリ](/azure/data-explorer/kusto/query/)、[メトリック](../platform/data-platform-metrics.md)、パラメーターが、内容豊富な対話型レポートに組み合わされます。 ブックは、同じ Azure リソースにアクセスできる他のチーム メンバーが編集できます。
 
 Azure Monitor for containers には、開始するための次の 4 つのブックが含まれています。
 
@@ -321,8 +321,8 @@ Azure Monitor for containers には、開始するための次の 4 つのブッ
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Monitor for containers を使用したパフォーマンス アラートの作成](container-insights-alerts.md)に関するページを読んで、CPU やメモリの使用率が高い場合にアラートを作成し、実際の DevOps や運用プロセスと手順をサポートする方法について学習します。
+- [Azure Monitor for containers を使用したパフォーマンス アラートの作成](./container-insights-log-alerts.md)に関するページを読んで、CPU やメモリの使用率が高い場合にアラートを作成し、実際の DevOps や運用プロセスと手順をサポートする方法について学習します。
 
 - [ログ クエリの例](container-insights-log-search.md#search-logs-to-analyze-data)を表示して、事前定義されたクエリや例を確認し、実際のクラスターのアラート、視覚化、または分析のために評価やカスタマイズを行います。
 
-- Kubernetes クラスターの正常性状態の表示方法については、「[クラスターの正常性を監視する](container-insights-health.md)」を参照してください。
+- Kubernetes クラスターの正常性状態の表示方法については、「[クラスターの正常性を監視する](./container-insights-overview.md)」を参照してください。

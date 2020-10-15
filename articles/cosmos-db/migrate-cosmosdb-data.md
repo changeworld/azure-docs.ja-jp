@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
 ms.openlocfilehash: 1e48b2ff6e469a5f792b64c20631e4bd64fb9fd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85263546"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>数百テラバイトのデータを Azure Cosmos DB に移行する 
@@ -145,7 +145,7 @@ Azure Cosmos DB ではストレージは自動的にスケールアウトされ�
 ## <a name="contact-the-azure-cosmos-db-team"></a>Azure Cosmos DB チームへの問い合わせ
 このガイドに従えば、大きなデータセットを適切に Azure Cosmos DB に移行することができます。ただし、移行の規模が大きい場合は、Azure Cosmos DB 製品チームに連絡して、データ モデルと全般的なアーキテクチャ レビューの検証を依頼することをお勧めします。 実際のデータセットとワークロードに基づいて、製品チームは、パフォーマンスとコストに関して、お客様に妥当な他の最適化案を提示することもできます。 大規模な移行に関して Azure Cosmos DB チームに支援を要請するには、問題のタイプに "General Advisory (一般的な勧告)" を、問題のサブタイプに "Large (TB+) migrations (大規模な (TB 以上の) 移行)" を選択してサポート チケットを開きます。以下にその例を示します。
 
-:::image type="content" source="./media/migrate-cosmosdb-data/supporttopic.png" alt-text="移行のサポート トピック":::
+:::image type="content" source="./media/migrate-cosmosdb-data/supporttopic.png" alt-text="移行ツールの設定":::
 
 
 ## <a name="next-steps"></a>次のステップ

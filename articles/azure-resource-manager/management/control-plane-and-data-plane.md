@@ -4,10 +4,10 @@ description: コントロール プレーンとデータ プレーンの操作�
 ms.topic: conceptual
 ms.date: 09/10/2020
 ms.openlocfilehash: f478037c3e83c1d28cc900d64512a41619628dd7
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91371271"
 ---
 # <a name="azure-control-plane-and-data-plane"></a>Azure コントロール プレーンとデータ プレーン

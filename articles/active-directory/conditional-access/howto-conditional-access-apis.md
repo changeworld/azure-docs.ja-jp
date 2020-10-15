@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: videor, jeevanb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33f3766e02316eccb519bea15246541531750ed1
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 7d681eba53aa85fe5df05f8404bcddb7c6877477
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007931"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992792"
 ---
 # <a name="conditional-access-programmatic-access"></a>条件付きアクセス:プログラムによるアクセス
 
@@ -78,7 +78,7 @@ Microsoft Graph では、Microsoft 365、Windows 10、および Enterprise Mobil
 
 ### <a name="emergency-access-accounts"></a>緊急アクセス アカウント
 
-複数の管理者が条件付きアクセス ポリシーを作成し、[緊急アクセス アカウント](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)をこれらのポリシーの除外として追加することを忘れてしまう場合があります。 この例では、すべてのポリシーが指定した緊急アクセス アカウントを含むように更新されることを保証します。
+複数の管理者が条件付きアクセス ポリシーを作成し、[緊急アクセス アカウント](../users-groups-roles/directory-emergency-access.md)をこれらのポリシーの除外として追加することを忘れてしまう場合があります。 この例では、すべてのポリシーが指定した緊急アクセス アカウントを含むように更新されることを保証します。
 
 - [Microsoft Graph API 呼び出しを使って条件付きアクセス ポリシーへの緊急アクセス アカウントの割り当てを管理する](https://github.com/Azure-Samples/azure-ad-conditional-access-apis/tree/main/05-manage/02-emergency-access)
 

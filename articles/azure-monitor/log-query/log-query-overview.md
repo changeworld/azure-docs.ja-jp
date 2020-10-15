@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
-ms.openlocfilehash: 5a47de51a90d926b47f6b465d6c10111407da9c6
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 55463f6af47ef8eda712b1787a89a710c08c1fe6
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033168"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995200"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Azure Monitor のログ クエリの概要
 ログ クエリは、[Azure Monitor ログ](../platform/data-platform-logs.md)内に収集されたデータの価値を最大限に活用するのに役立ちます。 強力なクエリ言語により、複数のテーブルのデータを結合したり、大量のデータ セットを集約したり、最小限のコードによって複雑な操作を実行したりできます。 有用なデータが収集されていて、適切なクエリを作成する方法を理解していれば、ほぼすべての疑問に答えたり、分析を実行したりすることができます。
@@ -38,7 +38,7 @@ Azure Monitor ログ内のデータを使用した言語の簡単なチュート
 Azure Monitor によって使用される KQL のバージョンの小さな違いについては、「[Azure Monitor ログ クエリ言語の違い](data-explorer-difference.md)」を参照してください。
 
 ## <a name="what-data-is-available-to-log-queries"></a>ログ クエリでは、どのようなデータを使用できますか?
-ログ クエリでの取得と分析には、Azure Monitor ログ内に収集されたすべてのデータを使用できます。 さまざまなデータ ソースからさまざまなテーブルにそれぞれのデータが書き込まれますが、1 つのクエリに複数のテーブルを含めて、複数のソースをまたいでデータを分析することができます。 クエリを作成する場合は、最初に、どのテーブルに目的のデータが含まれるかを確認します。 データがどのような構造になっているかの説明については、「[Azure Monitor ログの構造](logs-structure.md)」を参照してください。
+ログ クエリでの取得と分析には、Azure Monitor ログ内に収集されたすべてのデータを使用できます。 さまざまなデータ ソースからさまざまなテーブルにそれぞれのデータが書き込まれますが、1 つのクエリに複数のテーブルを含めて、複数のソースをまたいでデータを分析することができます。 クエリを作成する場合は、最初に、どのテーブルに目的のデータが含まれるかを確認します。 データがどのような構造になっているかの説明については、「[Azure Monitor ログの構造](../platform/data-platform-logs.md)」を参照してください。
 
 ## <a name="what-does-a-log-query-look-like"></a>ログ クエリはどのようなものですか?
 クエリは、1 つのテーブル名という簡単なものでは、そのテーブルからすべてのレコードを取得できます。

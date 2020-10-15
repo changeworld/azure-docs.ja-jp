@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 608f984b3e3a3020863e0c28b0aa2ad504531e3b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: aa13baf7c6fc6d3bb66b97e533da29e4a1a6e73c
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91273225"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876245"
 ---
 # <a name="azure-data-studio-dashboards"></a>Azure Data Studio ダッシュボード
 
@@ -57,7 +57,7 @@ LoadBalancer という種類を使用している場合は、外部 IP アドレ
 https://<ip address>:<port>
 
 Example:
-https://52.;154.152.24:30080
+https://52.154.152.24:30080
 ```
 
 次の手順で使用するため、IP アドレスを書き留めておきます。

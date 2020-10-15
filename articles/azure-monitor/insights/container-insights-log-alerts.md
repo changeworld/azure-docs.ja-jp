@@ -3,12 +3,12 @@ title: Azure Monitor for containers からのログ アラート | Microsoft Doc
 description: この記事では、Azure Monitor for containers からのメモリおよび CPU の使用率に対するカスタム ログ アラートを作成する方法について説明します。
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 8c02442fef9b174075065e7852b7a25233899c48
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ddf898978bdaf51cb81a95c3209855c51212280f
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91294548"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995253"
 ---
 # <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>Azure Monitor for containers からログ アラートを作成する方法
 
@@ -307,4 +307,4 @@ InsightsMetrics
 
 - [ログ クエリの例](container-insights-log-search.md#search-logs-to-analyze-data)を表示して、事前定義されたクエリや例を確認し、クラスターのアラート、視覚化、または分析のために評価やカスタマイズを行います。
 
-- Azure Monitor と、Kubernetes クラスターの他の側面を監視する方法の詳細については、[Kubernetes クラスターのパフォーマンスの表示](container-insights-analyze.md)および [Kubernetes クラスターの正常性の表示](container-insights-health.md)に関するページをご覧ください。
+- Azure Monitor と、Kubernetes クラスターの他の側面を監視する方法の詳細については、[Kubernetes クラスターのパフォーマンスの表示](container-insights-analyze.md)および [Kubernetes クラスターの正常性の表示](./container-insights-overview.md)に関するページをご覧ください。

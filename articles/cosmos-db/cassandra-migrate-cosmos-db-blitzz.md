@@ -8,10 +8,10 @@ ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
 ms.openlocfilehash: d3eda4694decb74912cc125ef0a33de04838be2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85260629"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Blitzz を使用して Cassandra から Azure Cosmos DB Cassandra API アカウントにデータを移行する
@@ -54,7 +54,7 @@ Blitzz の移行ソリューションでは、段階的なアプローチに従�
 
    :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/blitzz-replicant-download.png" alt-text="Blitzz replicant ツールのダウンロード":::
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/replicant-files.png" alt-text="Blitzz replicant のファイル":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/replicant-files.png" alt-text="Blitzz replicant ツールのダウンロード":::
 
 1. CLI ターミナルから、ソース データベースの構成を設定します。 **`vi conf/conn/cassandra.yml`** コマンドを使用して構成ファイルを開き、Cassandra ノードの IP アドレス、ポート番号、ユーザー名、パスワードなどの必要な詳細から成るコンマ区切りリストを追加します。 構成ファイルの内容の例を次に示します。
 
@@ -71,9 +71,9 @@ Blitzz の移行ソリューションでは、段階的なアプローチに従�
 
    ```
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/open-connection-editor-cassandra.png" alt-text="Cassandra の接続エディターを開く":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/open-connection-editor-cassandra.png" alt-text="Blitzz replicant ツールのダウンロード":::
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/cassandra-connection-configuration.png" alt-text="Cassandra の接続の構成":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/cassandra-connection-configuration.png" alt-text="Blitzz replicant ツールのダウンロード":::
 
    構成の詳細を入力したら、そのファイルを保存して閉じます。
 
@@ -92,7 +92,7 @@ Blitzz の移行ソリューションでは、段階的なアプローチに従�
 
 1. データを移行する前に、コンテナーのスループットを、お使いのアプリケーションで迅速に移行するために必要な量に引き上げます。 たとえば、このスループットを 100,000 RU に引き上げることができます。 移行を開始する前にスループットをスケーリングすると、データの移行にかかる時間を短縮するのに役立ちます。
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/scale-throughput.png" alt-text="Azure Cosmos のコンテナーのスループットをスケーリングする":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/scale-throughput.png" alt-text="Blitzz replicant ツールのダウンロード":::
 
    移行が完了したら、スループットを下げます。 格納されたデータの量と各操作に必要な RU に基づいて、データの移行後に必要なスループットを見積もることができます。 必要な RU の見積もり方法の詳細については、「[コンテナーとデータベースのスループットのプロビジョニング](set-throughput.md)」と「[Azure Cosmos DB Capacity Planner を使用して RU/秒を見積もる](estimate-ru-with-capacity-planner.md)」の記事を参照してください。
 
@@ -128,7 +128,7 @@ Blitzz の移行ソリューションでは、段階的なアプローチに従�
 
    replicant UI には、レプリケーションの進行状況が表示されます。 スキーマの移行とスナップショットの操作が完了すると、進行状況には 100% と表示されます。 移行が完了したら、ターゲットの Azure Cosmos データベースのデータを確認できます。
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/cassandra-data-migration-output.png" alt-text="Cassandra のデータ移行に関する出力":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/cassandra-data-migration-output.png" alt-text="Blitzz replicant ツールのダウンロード":::
 
 
 1. 移行にはフル モードを使用したため、ソースの Apache Cassandra データベースに対してデータの挿入、更新、削除などの操作を実行することができます。 後で、それらがターゲットの Azure Cosmos データベースにリアルタイムでレプリケートされていることを確認します。 移行後は、Azure Cosmos コンテナー用に構成されているスループットを必ず下げるようにしてください。

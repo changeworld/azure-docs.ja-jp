@@ -6,12 +6,12 @@ ms.date: 06/08/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 842513536bf4dbfc0a3e3bd82905b397da9fa6c4
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: fbf436f501ef2d21dcd3394e61a40d354376efb9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439066"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979089"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Hyper-V VM を Azure に移行する 
 
@@ -25,7 +25,7 @@ ms.locfileid: "91439066"
  このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * Azure Migrate:Server Migration ツールを追加します。
+> * Azure Migrate Server Migration ツールを追加します。
 > * 移行したい VM を検出します。
 > * VM のレプリケートを開始します。
 > * すべてが想定どおりに動作していることを確認するためにテスト移行を実行します。

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: bddb4ea3759d19d1e122739fb69cf9bf96c66635
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a3b6f90d0aa26b478c0f2fcefac55dcd509da437
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243547"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070947"
 ---
 # <a name="error-handling-in-api-management-policies"></a>API Management のポリシーにおけるエラー処理
 
@@ -190,4 +190,4 @@ API ポリシーを次のように設定します。
 -   [API Management のポリシー](api-management-howto-policies.md)
 -   [API を変換する](transform-api.md)
 -   ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](./api-management-policies.md)
--   [ポリシーのサンプル](policy-samples.md)
+-   [ポリシーのサンプル](./policy-reference.md)

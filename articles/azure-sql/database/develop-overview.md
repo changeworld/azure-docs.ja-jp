@@ -11,10 +11,10 @@ ms.reviewer: genemi
 ms.date: 11/14/2019
 ms.custom: sqldbrb=2
 ms.openlocfilehash: b099158261de55c829ab2b89a2f994b35b3e50d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85254040"
 ---
 # <a name="application-development-overview---sql-database--sql-managed-instance"></a>アプリケーション開発の概要 - SQL Database & SQL Managed Instance
@@ -27,7 +27,7 @@ ms.locfileid: "85254040"
 
 さまざまな[プログラミング言語とプラットフォーム](connect-query-content-reference-guide.md)を使用して、Azure SQL Database に対する接続とクエリを実行することができます。 データベースに接続するために使用できる[サンプル アプリケーション](https://azure.microsoft.com/resources/samples/?service=sql-database&sort=0)を見つけることができます。
 
-[cheetah](https://github.com/wunderlist/cheetah)、[sql-cli](https://www.npmjs.com/package/sql-cli)、[VS Code](https://code.visualstudio.com/) などのオープン ソース ツールを活用できます。 さらに、Azure SQL Database は、[Visual Studio](https://www.visualstudio.com/downloads/)、[SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) などの Microsoft ツールと連携しています。 また、Azure portal、PowerShell、REST API も使用でき、生産性向上に役立ちます。
+[cheetah](https://github.com/wunderlist/cheetah)、[sql-cli](https://www.npmjs.com/package/sql-cli)、[VS コード](https://code.visualstudio.com/)などのオープン ソース ツールを活用できます。 さらに、Azure SQL Database は、[Visual Studio](https://www.visualstudio.com/downloads/)、[SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) などの Microsoft ツールと連携しています。 また、Azure portal、PowerShell、REST API も使用でき、生産性向上に役立ちます。
 
 ## <a name="authentication"></a>認証
 

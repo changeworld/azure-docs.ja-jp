@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1bf2e3f07d9e5576f62ef9badd9c8a46ac92fad0
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 1a11d3a9a972188af4cf8f054349da98d69691a3
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450153"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876160"
 ---
 # <a name="monitor-module-twins"></a>モジュール ツインの監視
 
@@ -168,15 +168,15 @@ JSON は上から順に、次のセクションで表すことができます。
 
 カスタムモジュールの接続に関する情報は、IoT Edge エージェントのモジュール ツイン内に保持されます。 カスタム モジュールのモジュール ツインは、主にソリューションのデータを保持するために使用されます。 deployment.json ファイル内にご自身で定義した目的のプロパティがモジュール ツインに反映され、モジュール上では必要に応じて報告されたプロパティ値が更新されます。
 
-[Azure IoT Hub のデバイス SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-device-sdks) に任意のプログラミング言語を使用して、モジュールのアプリケーション コードに基づいてモジュール ツイン内の報告されたプロパティ値を更新することができます。 次の手順では、これを行うために Azure SDK for .NET を使用し、[SimulatedTemperatureSensor](https://github.com/Azure/iotedge/blob/dd5be125df165783e4e1800f393be18e6a8275a3/edge-modules/SimulatedTemperatureSensor/src/Program.cs) モジュールからのコードを利用しています。
+[Azure IoT Hub のデバイス SDK](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks) に任意のプログラミング言語を使用して、モジュールのアプリケーション コードに基づいてモジュール ツイン内の報告されたプロパティ値を更新することができます。 次の手順では、これを行うために Azure SDK for .NET を使用し、[SimulatedTemperatureSensor](https://github.com/Azure/iotedge/blob/dd5be125df165783e4e1800f393be18e6a8275a3/edge-modules/SimulatedTemperatureSensor/src/Program.cs) モジュールからのコードを利用しています。
 
-1. [CreateFromEnvironmentAysnc](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.createfromenvironmentasync) メソッドを使って、[ModuleClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient) のインスタンスを作成します。
+1. [CreateFromEnvironmentAysnc](/dotnet/api/microsoft.azure.devices.client.moduleclient.createfromenvironmentasync) メソッドを使って、[ModuleClient](/dotnet/api/microsoft.azure.devices.client.moduleclient) のインスタンスを作成します。
 
-1. [GetTwinAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.gettwinasync?view=azure-dotnet) メソッドを使って、モジュール ツインのプロパティのコレクションを取得します。
+1. [GetTwinAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.gettwinasync) メソッドを使って、モジュール ツインのプロパティのコレクションを取得します。
 
-1. [SetDesiredPropertyUpdateCallbackAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.setdesiredpropertyupdatecallbackasync?view=azure-dotnet) メソッドを使って、目的のプロパティへの変更をキャッチするリスナー (コールバックを渡す) を作成します。
+1. [SetDesiredPropertyUpdateCallbackAsync](/dotnet/api/microsoft.azure.devices.client.deviceclient.setdesiredpropertyupdatecallbackasync) メソッドを使って、目的のプロパティへの変更をキャッチするリスナー (コールバックを渡す) を作成します。
 
-1. コールバック メソッド内で、設定するプロパティ値の [TwinCollection](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.shared.twincollection) を渡し、[UpdateReportedPropertiesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient) メソッドを使ってモジュール ツイン内の報告されたプロパティを更新します。
+1. コールバック メソッド内で、設定するプロパティ値の [TwinCollection](/dotnet/api/microsoft.azure.devices.shared.twincollection) を渡し、[UpdateReportedPropertiesAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient) メソッドを使ってモジュール ツイン内の報告されたプロパティを更新します。
 
 ## <a name="access-the-module-twins"></a>モジュール ツインにアクセスする
 

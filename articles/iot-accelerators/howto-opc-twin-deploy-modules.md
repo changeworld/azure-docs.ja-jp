@@ -9,12 +9,12 @@ ms.service: industrial-iot
 ms.custom: devx-track-azurecli
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 9ae3e9b4bb69bf0c85054b5d6144633923cac947
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 075f6f83e5af43cde3886f637a8ee326309e4218
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91282070"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071508"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>OPC Twin モジュールおよび依存関係をゼロからデプロイする
 
@@ -25,8 +25,8 @@ OPC Twin モジュールは IoT Edge 上で動作し、OPC デバイス ツイ�
 
 モジュールを [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) ゲートウェイにデプロイする方法は、次の方法など、いくつかあります。
 
-- [Azure portal の IoT Edge ブレードからデプロイする](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal)
-- [AZ CLI を使用してデプロイする](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-monitor-cli)
+- [Azure portal の IoT Edge ブレードからデプロイする](../iot-edge/how-to-deploy-modules-portal.md)
+- [AZ CLI を使用してデプロイする](../iot-edge/how-to-deploy-cli-at-scale.md)
 
 > [!NOTE]
 > デプロイの詳細と手順については、GitHub の[リポジトリ](https://github.com/Azure/azure-iiot-components)を参照してください。
@@ -86,7 +86,7 @@ OPC Twin モジュールは IoT Edge 上で動作し、OPC デバイス ツイ�
               "restartPolicy": "always",
               "settings": {
                 "image": "mcr.microsoft.com/iotedge/opc-publisher:latest",
-                "createOptions": "{\"Hostname\":\"publisher\",\"Cmd\":[\"publisher\",\"--pf=./pn.json\",\"--di=60\",\"--to\",\"--aa\",\"--si=0\",\"--ms=0\"],\"ExposedPorts\":{\"62222/tcp\":{}},\"NetworkingConfig\":{\"EndpointsConfig\":{\"host\":{}}},\"HostConfig\":{\"NetworkMode\":\"host\",\"PortBindings\":{\"62222/tcp\":[{\"HostPort\":\"62222\"}]}}}"
+                "createOptions": "{\"Hostname\":\"publisher\",\"Cmd\":[\"publisher\",\"--pf=./pn.json\",\"--di=60\",\"--tm\",\"--aa\",\"--si=0\",\"--ms=0\"],\"ExposedPorts\":{\"62222/tcp\":{}},\"NetworkingConfig\":{\"EndpointsConfig\":{\"host\":{}}},\"HostConfig\":{\"NetworkMode\":\"host\",\"PortBindings\":{\"62222/tcp\":[{\"HostPort\":\"62222\"}]}}}"
               }
             }
           }
@@ -117,7 +117,7 @@ OPC Twin モジュールは IoT Edge 上で動作し、OPC デバイス ツイ�
 
 1. OPC Twin の[依存関係](howto-opc-twin-deploy-dependencies.md)をデプロイし、結果の `.env` ファイルを取得した。 結果の `.env` ファイル内の `PCS_IOTHUBREACT_HUB_NAME` 変数のデプロイ済み `hub name` をメモします。
 
-2. [Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) または [Windows](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-windows) IoT Edge ゲートウェイを登録して起動し、その `device id` をメモします。
+2. [Linux](../iot-edge/how-to-install-iot-edge-linux.md) または [Windows](../iot-edge/how-to-install-iot-edge-windows.md) IoT Edge ゲートウェイを登録して起動し、その `device id` をメモします。
 
 ### <a name="deploy-to-an-edge-device"></a>Edge デバイスへのデプロイ
 
@@ -143,7 +143,7 @@ OPC Twin モジュールは IoT Edge 上で動作し、OPC デバイス ツイ�
    {"NetworkingConfig": {"EndpointsConfig": {"host": {}}}, "HostConfig": {"NetworkMode": "host" }}
    ```
 
-   必要な場合は、省略可能なフィールドに入力します。 コンテナー作成オプション、再起動ポリシー、および必要な状態について詳しくは、「[edgeAgent の必要なプロパティ](https://docs.microsoft.com/azure/iot-edge/module-edgeagent-edgehub#edgeagent-desired-properties)」をご覧ください。 モジュール ツインについて詳しくは、「[必要なプロパティの定義または更新](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties)」をご覧ください。
+   必要な場合は、省略可能なフィールドに入力します。 コンテナー作成オプション、再起動ポリシー、および必要な状態について詳しくは、「[edgeAgent の必要なプロパティ](../iot-edge/module-edgeagent-edgehub.md#edgeagent-desired-properties)」をご覧ください。 モジュール ツインについて詳しくは、「[必要なプロパティの定義または更新](../iot-edge/module-composition.md#define-or-update-desired-properties)」をご覧ください。
 
 7. **[保存]** を選択し、手順 **5** を繰り返します。  
 
@@ -156,7 +156,7 @@ OPC Twin モジュールは IoT Edge 上で動作し、OPC デバイス ツイ�
    *コンテナー作成オプション*として、次の JSON を使用します。
 
    ```json
-   {"Hostname":"publisher","Cmd":["publisher","--pf=./pn.json","--di=60","--to","--aa","--si=0","--ms=0"],"ExposedPorts":{"62222/tcp":{}},"HostConfig":{"PortBindings":{"62222/tcp":[{"HostPort":"62222"}] }}}
+   {"Hostname":"publisher","Cmd":["publisher","--pf=./pn.json","--di=60","--tm","--aa","--si=0","--ms=0"],"ExposedPorts":{"62222/tcp":{}},"HostConfig":{"PortBindings":{"62222/tcp":[{"HostPort":"62222"}] }}}
    ```
 
 9. **[保存]** を選択し、**[次へ]** を選択して、ルートのセクションに進みます。
@@ -182,7 +182,7 @@ OPC Twin モジュールは IoT Edge 上で動作し、OPC デバイス ツイ�
 
 ### <a name="prerequisites"></a>前提条件
 
-1. [こちら](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)から [Azure コマンド ライン インターフェイス (AZ)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) の最新バージョンをインストールします。
+1. [こちら](/cli/azure/install-azure-cli?view=azure-cli-latest)から [Azure コマンド ライン インターフェイス (AZ)](/cli/azure/?view=azure-cli-latest) の最新バージョンをインストールします。
 
 ### <a name="quickstart"></a>クイック スタート
 
@@ -195,7 +195,7 @@ OPC Twin モジュールは IoT Edge 上で動作し、OPC デバイス ツイ�
    ```
 
    `device id` パラメーターは、大文字と小文字が区別されます。 content パラメーターは、保存した配置マニフェスト ファイルを指します。 
-    ![az IoT Edge set-modules の出力](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/set-modules.png)
+    ![az IoT Edge set-modules の出力](/azure/iot-edge/media/how-to-deploy-cli/set-modules.png)
 
 3. モジュールをデバイスにデプロイした後で、そのすべてを次のコマンドで表示できます。
 
@@ -203,7 +203,7 @@ OPC Twin モジュールは IoT Edge 上で動作し、OPC デバイス ツイ�
    az iot hub module-identity list --device-id [device id] --hub-name [hub name]
    ```
 
-   device ID パラメーターでは大文字と小文字が区別されます。 ![az iot hub module-identity list の出力](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/list-modules.png)
+   device ID パラメーターでは大文字と小文字が区別されます。 ![az iot hub module-identity list の出力](/azure/iot-edge/media/how-to-deploy-cli/list-modules.png)
 
 ## <a name="next-steps"></a>次のステップ
 

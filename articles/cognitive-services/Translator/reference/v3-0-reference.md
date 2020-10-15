@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 8/11/2020
 ms.author: swmachan
 ms.openlocfilehash: 6b211dd8ca735ea9ee4a5209aa6030398cca472e
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88121019"
 ---
 # <a name="translator-v30"></a>Translator v3.0
@@ -44,7 +44,7 @@ Microsoft Translator への要求は、ほとんどの場合、その要求の�
 |説明|Azure 地域|ベース URL|
 |:--|:--|:--|
 |Azure|グローバル (リージョンなし)|   api.cognitive.microsofttranslator.com|
-|Azure|米国|   api-nam.cognitive.microsofttranslator.com|
+|Azure|United States|   api-nam.cognitive.microsofttranslator.com|
 |Azure|ヨーロッパ|  api-eur.cognitive.microsofttranslator.com|
 |Azure|アジア太平洋|    api-apc.cognitive.microsofttranslator.com|
 

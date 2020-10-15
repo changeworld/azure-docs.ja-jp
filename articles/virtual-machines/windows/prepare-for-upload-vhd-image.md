@@ -8,18 +8,18 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 642a1937f44a608ebf235c20da060972788046a0
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 390cda604b71404735b7c14382d30067e154ef70
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321737"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976185"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure にアップロードする Windows VHD または VHDX を準備する
 
 Windows 仮想マシン (VM) をオンプレミスから Azure にアップロードする前に、仮想ハード ディスク (VHD または VHDX) を準備する必要があります。 Azure では、VHD ファイル形式で容量固定ディスクの第 1 世代および第 2 世代 VM の両方がサポートされています。 第 1 世代 VM で OS VHD に許容される最大サイズは 2 TB です。
 
-VHDX ファイルを VHD に変換し、容量可変ディスクを容量固定ディスクに変換することはできますが、VM の世代を変更することはできません。 詳細については、「[Hyper-V で第 1 世代と第 2 世代のどちらの VM を作成すべきか](/windows-server/virtualization/hyper-v/plan/Should-I-create-a-generation-1-or-2-virtual-machine-in-Hyper-V)」および「[Azure での第 2 世代 VM のサポート](generation-2.md)」を参照してください。
+VHDX ファイルを VHD に変換し、容量可変ディスクを容量固定ディスクに変換することはできますが、VM の世代を変更することはできません。 詳細については、「[Hyper-V で第 1 世代と第 2 世代のどちらの VM を作成すべきか](/windows-server/virtualization/hyper-v/plan/Should-I-create-a-generation-1-or-2-virtual-machine-in-Hyper-V)」および「[Azure での第 2 世代 VM のサポート](../generation-2.md)」を参照してください。
 
 Azure VM のサポート ポリシーについては、「[Microsoft Azure 仮想マシンのマイクロソフト サーバー ソフトウェアのサポート](https://support.microsoft.com/help/2721672/)」を参照してください。
 
@@ -71,7 +71,7 @@ SFC スキャンが完了したら、Windows 更新プログラムをインス�
    netsh.exe winhttp reset proxy
    ```
 
-    VM で特定のプロキシを使用する必要がある場合は、次のように Azure の IP アドレス ([168.63.129.16](/azure/virtual-network/what-is-ip-address-168-63-129-16)) にプロキシ例外を追加します。これにより VM は Azure に接続できます。
+    VM で特定のプロキシを使用する必要がある場合は、次のように Azure の IP アドレス ([168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)) にプロキシ例外を追加します。これにより VM は Azure に接続できます。
 
     ```
     $proxyAddress='<your proxy server>'
@@ -405,7 +405,7 @@ Sysprep は、個人データをすべて削除し、コンポーネントをい
 1 つのディスクから 1 つの VM のみを作成する場合は、Sysprep を使用する必要はありません。 代わりに、*特殊化されたイメージ*から VM を作成することができます。 特殊化されたディスクから VM を作成する方法については、以下を参照してください。
 
 - [特殊化されたディスクからの VM の作成](create-vm-specialized.md)
-- [特殊化された VHD ディスクからの VM の作成](/azure/virtual-machines/windows/create-vm-specialized-portal)
+- [特殊化された VHD ディスクからの VM の作成](./create-vm-specialized-portal.md)
 
 一般化されたイメージを作成する場合は、Sysprep を実行する必要があります。 詳しくは、「[How to use Sysprep: An Introduction](/previous-versions/windows/it-pro/windows-xp/bb457073(v=technet.10))」 (Sysprep の使用方法: 概要) をご覧ください。
 
@@ -421,6 +421,7 @@ Windows ベースのコンピューターにインストールされているロ
 
 1. Windows VM にサインインします。
 1. PowerShell セッションを管理者として実行します。
+1. panther ディレクトリ (C:\Windows\Panther) を削除します。
 1. ディレクトリを `%windir%\system32\sysprep` に変更します 次に、`sysprep.exe` を実行します。
 1. **[システム準備ツール]** ダイアログ ボックスで **[システムの OOBE (Out-of-Box Experience) に入る]** を選択し、 **[一般化する]** チェック ボックスがオンになっていることを確認します。
 
@@ -429,10 +430,10 @@ Windows ベースのコンピューターにインストールされているロ
 1. **[OK]** を選択します。
 1. Sysprep が完了したら、VM をシャットダウンします。 VM をシャットダウンするために **[再起動]** を使用しないでください。
 
-これで VHD をアップロードする準備ができました。 一般化されたディスクから VM を作成する方法の詳細については、[一般化された VHD のアップロードと Azure での新しい VM の作成](sa-upload-generalized.md)に関するページをご覧ください。
+これで VHD をアップロードする準備ができました。 一般化されたディスクから VM を作成する方法の詳細については、[一般化された VHD のアップロードと Azure での新しい VM の作成](/previous-versions/azure/virtual-machines/windows/sa-upload-generalized)に関するページをご覧ください。
 
 >[!NOTE]
-> カスタム *unattend.xml* ファイルはサポートされていません。 **additionalUnattendContent** プロパティはサポートされていますが、Azure プロビジョニング エージェントが使用する *unattend.xml* ファイルに [microsoft-windows-shell-setup](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) オプションを追加するためのサポートは限られています。 たとえば、FirstLogonCommands と LogonCommands を追加するには、[additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet) を使用できます。 詳細については、「[additionalUnattendContent FirstLogonCommands の例](https://github.com/Azure/azure-quickstart-templates/issues/1407)」をご覧ください。
+> カスタム *unattend.xml* ファイルはサポートされていません。 **additionalUnattendContent** プロパティはサポートされていますが、Azure プロビジョニング エージェントが使用する *unattend.xml* ファイルに [microsoft-windows-shell-setup](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) オプションを追加するためのサポートは限られています。 たとえば、FirstLogonCommands と LogonCommands を追加するには、[additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet&preserve-view=true) を使用できます。 詳細については、「[additionalUnattendContent FirstLogonCommands の例](https://github.com/Azure/azure-quickstart-templates/issues/1407)」をご覧ください。
 
 ## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>仮想ディスクを容量固定の VHD に変換する
 
@@ -467,7 +468,7 @@ Windows ベースのコンピューターにインストールされているロ
 
 ### <a name="use-powershell-to-convert-the-disk"></a>PowerShell を使用してディスクを変換する
 
-PowerShell で [Convert-VHD](/powershell/module/hyper-v/convert-vhd) コマンドレットを使用して、仮想ディスクを変換できます。 このコマンドレットのインストールに関する情報が必要な場合は、[Hyper-V ロールのインストール](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)に関するページを参照してください。
+PowerShell で [Convert-VHD](/powershell/module/hyper-v/convert-vhd) コマンドレットを使用して、仮想ディスクを変換できます。 このコマンドレットのインストールに関する情報が必要な場合は、[Hyper-V ロールのインストール](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)に関するページを参照してください。
 
 次の例は、ディスクを VHDX から VHD に変換します。 また、ディスクを容量可変ディスクを容量固定ディスクに変換します。
 
@@ -487,7 +488,7 @@ Convert-VHD -Path C:\test\MyVM.vhdx -DestinationPath C:\test\MyNewVM.vhd -VHDTyp
 
 ### <a name="use-powershell-to-resize-the-disk"></a>PowerShell を使用してディスクのサイズを変更する
 
-PowerShell で [Resize-VHD](/powershell/module/hyper-v/resize-vhd) コマンドレットを使用して、仮想ディスクのサイズを変更できます。 このコマンドレットのインストールに関する情報が必要な場合は、[Hyper-V ロールのインストール](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)に関するページを参照してください。
+PowerShell で [Resize-VHD](/powershell/module/hyper-v/resize-vhd) コマンドレットを使用して、仮想ディスクのサイズを変更できます。 このコマンドレットのインストールに関する情報が必要な場合は、[Hyper-V ロールのインストール](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)に関するページを参照してください。
 
 次の例では、Azure のアラインメント要件を満たすために、ディスクのサイズを 100.5 MiB から 101 MiB に変更します。
 
@@ -499,7 +500,7 @@ Resize-VHD -Path C:\test\MyNewVM.vhd -SizeBytes 105906176
 
 ### <a name="convert-from-vmware-vmdk-disk-format"></a>VMware VMDK ディスク フォーマットからの変換
 
-[VMDK ファイル形式](https://en.wikipedia.org/wiki/VMDK)の Windows VM イメージがある場合は、[Azure Migrate](https://docs.microsoft.com/azure/migrate/server-migrate-overview) を使用して VMDK を変換し、Azure にアップロードできます。
+[VMDK ファイル形式](https://en.wikipedia.org/wiki/VMDK)の Windows VM イメージがある場合は、[Azure Migrate](../../migrate/server-migrate-overview.md) を使用して VMDK を変換し、Azure にアップロードできます。
 
 ## <a name="complete-the-recommended-configurations"></a>推奨される構成を完了する
 
@@ -519,4 +520,4 @@ Resize-VHD -Path C:\test\MyNewVM.vhd -SizeBytes 105906176
 ## <a name="next-steps"></a>次のステップ
 
 - [Resource Manager デプロイメント向けに Windows VM イメージを Azure にアップロードする](upload-generalized-managed.md)
-- [Azure Windows VM のライセンス認証に関する問題のトラブルシューティング](troubleshoot-activation-problems.md)
+- [Azure Windows VM のライセンス認証に関する問題のトラブルシューティング](../troubleshooting/troubleshoot-activation-problems.md)
