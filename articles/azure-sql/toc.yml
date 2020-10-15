@@ -37,7 +37,9 @@
           href: database/scale-resources.md
         - name: 読み取りスケールアウト
           href: database/read-scale-out.md
-        - name: セキュリティ
+        - name: 分散トランザクション
+          href: database/elastic-transactions-overview.md
+        - name: Security
           items:
             - name: 概要
               href: database/security-overview.md
@@ -90,8 +92,6 @@
                   href: database/transparent-data-encryption-tde-overview.md
                 - name: Bring Your Own Key (BYOK)
                   href: database/transparent-data-encryption-byok-overview.md
-            - name: 分散トランザクション
-              href: database/elastic-transactions-overview.md
         - name: ビジネス継続性
           displayName: 'Backup, back up, restore, recovery'
           items:
@@ -283,7 +283,7 @@
               href: database/geo-distributed-application-configure-tutorial.md
             - name: アクティブな地理的レプリケーション
               href: database/active-geo-replication-configure-portal.md
-        - name: セキュリティ
+        - name: Security
           items:
             - name: セキュリティを構成する
               href: database/secure-database-tutorial.md
@@ -351,7 +351,7 @@
               href: database/sql-data-sync-best-practices.md
             - name: データ同期のトラブルシューティング
               href: database/sql-data-sync-troubleshoot.md
-        - name: セキュリティ
+        - name: Security
           items:
             - name: Azure SQL 監査
               href: database/auditing-overview.md
@@ -828,6 +828,20 @@
                           href: 'https://docs.microsoft.com/sql/machine-learning/data-exploration/python-dataframe-pandas?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: SQL にデータフレームを挿入する
                           href: 'https://docs.microsoft.com/sql/machine-learning/data-exploration/python-dataframe-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                - name: データ型の変換
+                  items:
+                    - name: Python から SQL
+                      href: 'https://docs.microsoft.com/sql/machine-learning/python/python-libraries-and-data-types?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                    - name: R から SQL
+                      href: 'https://docs.microsoft.com/sql/machine-learning/r/r-libraries-and-data-types?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                - name: 配置
+                  items:
+                    - name: ストアド プロシージャを使用して運用化する
+                      href: 'https://docs.microsoft.com/sql/machine-learning/r/operationalizing-your-r-code?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                    - name: SQL Server 用の R コードを変換する
+                      href: 'https://docs.microsoft.com/sql/machine-learning/r/converting-r-code-for-use-in-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                    - name: sqlrutils を使用してストアド プロシージャを作成する
+                      href: 'https://docs.microsoft.com/sql/machine-learning/r/how-to-create-a-stored-procedure-using-sqlrutils?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                 - name: 予測
                   items:
                     - name: PREDICT T-SQL でのネイティブ スコアリング
@@ -858,7 +872,7 @@
               href: 'https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker?toc=/azure/azure-sql/toc.json'
             - name: データベース メール
               href: 'https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail?toc=/azure/azure-sql/toc.json'
-        - name: セキュリティ
+        - name: Security
           items:
             - name: パブリック エンドポイントのセキュリティ保護
               href: managed-instance/public-endpoint-overview.md

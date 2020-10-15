@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4ec7f4242e5046e90fdf0eb8c6c0579f402e4f55
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76721355"
 ---
 # <a name="team-data-science-process-group-manager-tasks"></a>Team Data Science Process のグループ マネージャーのタスク
@@ -139,25 +139,25 @@ TDSP チーム リポジトリをインポートするには:
 
 リポジトリの内容をカスタマイズするには:
 
-1. **GroupCommon** プロジェクトの **[Summary]\(概要\)** ページで、 **[Repos]\(リポジトリ\)** を選択します。 
+1. **GroupCommon** プロジェクトの **[概要]** ページで、 **[リポジトリ]** を選択します。 
    
 1. ページの上部で、カスタマイズするリポジトリを選択します。
 
 1. リポジトリのディレクトリ構造で、変更するフォルダーまたはファイルに移動します。 
    
-   - 新しいフォルダーまたはファイルを作成するには、 **[New]\(新規\)** の横にある矢印を選択します。 
+   - 新しいフォルダーまたはファイルを作成するには、 **[新規]** の横にある矢印を選択します。 
      
      ![新しいファイルを作成する](./media/group-manager-tasks/new-file.png)
      
-   - ファイルをアップロードするには、 **[Upload file(s)]\(ファイルのアップロード\)** を選択します。 
+   - ファイルをアップロードするには、 **[ファイルのアップロード]** を選択します。 
      
      ![ファイルをアップロードする](./media/group-manager-tasks/upload-files.png)
      
-   - 既存のファイルを編集するには、ファイルに移動し、 **[Edit.]\(編集\)** を選択します。 
+   - 既存のファイルを編集するには、ファイルに移動し、 **[編集]** を選択します。 
      
      ![ファイルを編集する](./media/group-manager-tasks/edit-file.png)
      
-1. ファイルを追加または編集した後、 **[Commit]\(コミット\)** を選択します。
+1. ファイルを追加または編集した後、 **[コミット]** を選択します。
    
    ![変更をコミットする](./media/group-manager-tasks/commit.png)
 
@@ -171,13 +171,13 @@ TDSP チーム リポジトリをインポートするには:
 - Windows DSVM の場合、[Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) をコンピューターにインストールしておきます。 *README.md* ファイルを下にスクロールして **[Download and Install]** セクションを見つけ、**最新のインストーラー**を選択します。 インストーラー ページから *.exe* インストーラーをダウンロードして実行します。 
 - Linux DSVM の場合は、DSVM で設定されて Azure DevOps に追加された SSH 公開キー。 詳細と手順については、[プラットフォームとツールの付録](platforms-and-tools.md#appendix)の **SSH 公開キーの作成**に関するセクションをご覧ください。 
 
-最初に、リポジトリをローカル コンピューターにコピーまたは "*クローン*" します。 
+最初に、リポジトリをローカル コンピューターにコピーまたは "*複製*" します。 
    
-1. **GroupCommon** プロジェクトの **[Summary]\(概要\)** ページで、 **[Repos]\(リポジトリ\)** を選択し、ページの上部でクローンするリポジトリを選択します。
+1. **GroupCommon** プロジェクトの **[概要]** ページで、 **[リポジトリ]** を選択し、ページの上部で複製するリポジトリを選択します。
    
-1. [Repos]\(リポジトリ\) ページで、右上にある **[Clone]\(クローン\)** を選択します。
+1. [リポジトリ] ページで、右上にある **[クローン]** を選択します。
    
-1. **[Clone repository]\(リポジトリのクローン\)** ダイアログで、HTTP 接続には **[HTTP]** を選択し、SSH 接続には **[SSH]** を選択し、 **[Command line]\(コマンド ライン\)** の下にあるクローン URL をクリップボードにコピーします。
+1. **[Clone repository]\(リポジトリのクローン\)** ダイアログで、HTTP 接続には **[HTTP]** を選択し、SSH 接続には **[SSH]** を選択し、 **[コマンド ライン]** の下にあるクローン URL をクリップボードにコピーします。
    
    ![リポジトリをクローンする](./media/group-manager-tasks/clone.png)
    
@@ -190,7 +190,7 @@ TDSP チーム リポジトリをインポートするには:
    
 1. Git Bash で、コマンド `git clone <clone URL>.` を実行します。
    
-   たとえば、次のコマンドのいずれかで、**GroupUtilities** リポジトリがローカル コンピューターの *GroupCommon* ディレクトリにクローンされます。 
+   たとえば、次のコマンドのいずれかで、**GroupUtilities** リポジトリがローカル コンピューターの *GroupCommon* ディレクトリに複製されます。 
    
    **HTTPS 接続:**
    
@@ -204,7 +204,7 @@ TDSP チーム リポジトリをインポートするには:
    git clone git@ssh.dev.azure.com:v3/DataScienceUnit/GroupCommon/GroupUtilities
    ```
 
-リポジトリのローカルクローンで必要な変更を行った後、共有グループ共通リポジトリに変更をプッシュできます。 
+リポジトリのローカル複製で必要な変更を行った後、共有グループ共通リポジトリに変更をプッシュできます。 
 
 ローカル環境の **GroupProjectTemplate** または **GroupUtilities** ディレクトリから、次の Git Bash コマンドを実行します。
 
