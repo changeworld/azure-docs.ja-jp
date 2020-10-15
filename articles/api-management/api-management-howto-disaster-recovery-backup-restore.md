@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: 489a1afd8e247b69761d521f51e16310176e31f5
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 0eb38dbb01e1e7d820159a5085b262dae3c04e8f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564085"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075333"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Azure API Management でサービスのバックアップと復元を使用してディザスター リカバリーを実装する方法
 
@@ -235,7 +235,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 -   [Azure API Management アカウントのレプリケート](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
 -   [Logic Apps を使用した API Management Backup および Restore の自動化](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps)
--   [Azure API Management:構成のバックアップと復元](https://docs.microsoft.com/archive/blogs/stuartleeks/azure-api-management-backing-up-and-restoring-configuration)
+-   [Azure API Management:構成のバックアップと復元](/archive/blogs/stuartleeks/azure-api-management-backing-up-and-restoring-configuration)
     _Stuart さんによる詳細なアプローチで、公式のガイダンスに沿ったものではありませんが、興味深い記事です。_
 
 [backup an api management service]: #step1

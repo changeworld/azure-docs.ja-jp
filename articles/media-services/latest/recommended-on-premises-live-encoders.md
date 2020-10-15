@@ -10,10 +10,10 @@ ms.date: 08/31/2020
 ms.topic: conceptual
 ms.service: media-services
 ms.openlocfilehash: 3532032f8fd3ac6e673d3913fd13f7f83ae7759e
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89295361"
 ---
 # <a name="verified-on-premises-live-streaming-encoders"></a>検証済みのオンプレミス ライブ ストリーミング エンコーダー

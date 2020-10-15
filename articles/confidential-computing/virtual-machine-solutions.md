@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
 ms.openlocfilehash: f9b73e0919d660947edd0417f7379b3f6e6140c0
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88245854"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Azure 仮想マシンのソリューション

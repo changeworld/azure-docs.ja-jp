@@ -2,19 +2,17 @@
 title: Azure Monitor ブックのドロップダウン パラメーター
 description: ドロップダウン パラメーターを含む作成済みのブックやパラメーター化されたカスタム ブックを使用して、複雑なレポート作成を簡素化します
 services: azure-monitor
-author: mrbullwinkle
 manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.author: mbullwin
-ms.openlocfilehash: 73b6029dfe52a4b32c9a8ce092fcd284ac1ec0e7
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ad1e09a0f9d1e0f9e4a748220edf5eced96123f8
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965047"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91932568"
 ---
 # <a name="workbook-drop-down-parameters"></a>ブックのドロップダウン パラメーター
 

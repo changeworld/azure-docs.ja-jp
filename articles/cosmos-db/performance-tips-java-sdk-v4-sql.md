@@ -9,10 +9,10 @@ ms.date: 07/08/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
 ms.openlocfilehash: a014038996ae2846d059551b565feedd8de560a0
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88258307"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Azure Cosmos DB Java SDK v4 のパフォーマンスに関するヒント
@@ -157,7 +157,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 
     * ***直接モードの概要***
 
-        :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="直接モード アーキテクチャの図" border="false":::
+        :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Azure Cosmos DB 接続ポリシーの図" border="false":::
 
         直接モードで使用されるクライアント側のアーキテクチャにより、予測可能なネットワーク使用率と Azure Cosmos DB レプリカへの多重アクセスが可能になります。 上の図は、直接モードで Cosmos DB バックエンドのレプリカにクライアント要求をルーティングする方法を示しています。 直接モード アーキテクチャでは、クライアント側で DB レプリカあたり最大 10 個の**チャネル**が割り当てられます。 チャネルは、要求バッファーが先行する TCP 接続であり、要求の深さは 30 個です。 レプリカに属するチャネルは、レプリカの**サービス エンドポイント**によって、必要に応じて動的に割り当てられます。 ユーザーが直接モードで要求を発行すると、**TransportClient** により、パーティション キーに基づいて要求が適切なサービス エンドポイントにルーティングされます。 **要求キュー**では、サービス エンドポイントの前に要求がバッファリングされます。
 

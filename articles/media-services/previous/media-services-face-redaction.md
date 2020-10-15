@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9a562e31a26cc6cf7188dd635273bd9fa8c57213
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a5b5759f0a7fff0f76e8c65cbf879fcd06337712
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269473"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017185"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Azure Media Analytics で顔を編集する
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 ## <a name="overview"></a>概要
-**Azure Media Redactor** は、クラウドでスケーラブルな顔編集を提供する [Azure Media Analytics](media-services-analytics-overview.md) メディア プロセッサ (MP) です。 顔編集では、ビデオを編集して選択した個人の顔をぼかすことができます。 顔編集サービスは、公共の安全やニュース媒体などに使用していただけます。 複数人の顔を含んでいる映像の場合、顔編集を手作業で行うと数分の映像でも数時間かかりますが、このサービスを使えば数ステップの簡単な手順で完了します。 詳細については、[こちらの投稿](https://azure.microsoft.com/blog/azure-media-redactor/)を参照してください。
+**Azure Media Redactor** は、クラウドでスケーラブルな顔編集を提供する [Azure Media Analytics](./legacy-components.md) メディア プロセッサ (MP) です。 顔編集では、ビデオを編集して選択した個人の顔をぼかすことができます。 顔編集サービスは、公共の安全やニュース媒体などに使用していただけます。 複数人の顔を含んでいる映像の場合、顔編集を手作業で行うと数分の映像でも数時間かかりますが、このサービスを使えば数ステップの簡単な手順で完了します。 詳細については、[こちらの投稿](https://azure.microsoft.com/blog/azure-media-redactor/)を参照してください。
 
 ここでは、**Azure Media Redactor** の詳細と、Media Services SDK for .NET での使用方法について説明します。
 
@@ -377,7 +377,6 @@ namespace FaceRedaction
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>関連リンク
-[Azure Media Services Analytics の概要](media-services-analytics-overview.md)
+[Azure Media Services Analytics の概要](./legacy-components.md)
 
 [Azure Media Analytics デモ](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
-

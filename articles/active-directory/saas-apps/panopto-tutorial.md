@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/17/2019
 ms.author: jeedes
 ms.openlocfilehash: aa7a93776d5dfd1d8ad60a08c2df2d773fb1ec21
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88554001"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panopto"></a>チュートリアル:Azure Active Directory と Panopto の統合
