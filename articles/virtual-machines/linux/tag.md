@@ -10,10 +10,10 @@ ms.date: 02/28/2017
 ms.author: cynthn
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 1a417e7cff4c7afb601861ddfe09eec171f0cf15
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89320615"
 ---
 # <a name="how-to-tag-a-linux-virtual-machine-in-azure"></a>Azure で Linux 仮想マシンにタグを付ける方法

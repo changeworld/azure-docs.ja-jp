@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/18/2020
 ms.author: jeedes
 ms.openlocfilehash: cfbb704799a1884c689bd0de547526a33f1ba7ce
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88651900"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>チュートリアル: Azure Active Directory と Citrix ShareFile の統合

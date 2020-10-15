@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.openlocfilehash: 378c21a6904acad16847bb32955e4bc091e587df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84465492"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>iOS から BLOB ストレージを使用する方法
@@ -127,7 +127,7 @@ Azure Storage のどの BLOB もコンテナーに格納する必要がありま
 }
 ```
 
-このコード例が正常に機能していることを確認するには、 [Microsoft Azure Storage Explorer](https://storageexplorer.com) で、 *newcontainer* がストレージ アカウントのコンテナーの一覧に含まれていることを確認します。
+このコード例が正常に機能していることを確認するには、 [Microsoft Azure ストレージ エクスプローラー](https://storageexplorer.com) で、 *newcontainer* がストレージ アカウントのコンテナーの一覧に含まれていることを確認します。
 
 ## <a name="set-container-permissions"></a>コンテナーのアクセス許可を設定する
 
@@ -208,7 +208,7 @@ Blob service の概念に関するセクションで説明したように、Blob
 }
 ```
 
-このコード例が正常に機能していることを確認するには、[Microsoft Azure Storage Explorer](https://storageexplorer.com)で、コンテナー *containerpublic* に BLOB *sampleblob* が含まれていることを確認します。 この例では､パブリック コンテナーが使用されているため、このアプリケーションが機能することは､次の BLOB URI にアクセスすることによっても確認できます。
+このコード例が正常に機能していることを確認するには、[Microsoft Azure ストレージ エクスプローラー](https://storageexplorer.com)で、コンテナー *containerpublic* に BLOB *sampleblob* が含まれていることを確認します。 この例では､パブリック コンテナーが使用されているため、このアプリケーションが機能することは､次の BLOB URI にアクセスすることによっても確認できます。
 
 ```http
 https://nameofyourstorageaccount.blob.core.windows.net/containerpublic/sampleblob

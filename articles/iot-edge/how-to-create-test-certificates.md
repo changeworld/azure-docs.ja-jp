@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: e2ded81c3525de6f9c49d774594c73f9da2b5696
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84430666"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>IoT Edge デバイスの機能をテストするためのデモ用の証明書を作成する
@@ -48,7 +48,7 @@ Linux マシンを使用する場合は、「[Linux での設定](#set-up-on-lin
 
 ### <a name="set-up-on-windows"></a>Windows での設定
 
-Windows デバイスでデモ用の証明書を作成するには、OpenSSL をインストールしてから生成スクリプトをクローンし、ローカルで実行されるように PowerShell でスクリプトを設定する必要があります。
+Windows デバイスでデモ用の証明書を作成するには、OpenSSL をインストールしてから生成スクリプトを複製し、ローカルで実行されるように PowerShell でスクリプトを設定する必要があります。
 
 #### <a name="install-openssl"></a>OpenSSL のインストール
 
@@ -74,11 +74,11 @@ OpenSSL のインストール方法はいくつかあり、以下のような選
 #### <a name="prepare-scripts-in-powershell"></a>PowerShell でのスクリプトの準備
 
 Azure IoT Edge の Git リポジトリには、テスト証明書の生成に使用できるスクリプトが含まれています。
-このセクションでは、IoT Edge リポジトリをクローンして、スクリプトを実行します。
+このセクションでは、IoT Edge リポジトリを複製して、スクリプトを実行します。
 
 1. 管理者モードで PowerShell ウィンドウを開きます。
 
-2. デモ用の証明書を生成するスクリプトが含まれている IoT Edge git リポジトリをクローンします。 `git clone` コマンドを使用するか、[ZIP をダウンロードします](https://github.com/Azure/iotedge/archive/master.zip)。
+2. デモ用の証明書を生成するスクリプトが含まれている IoT Edge git リポジトリを複製します。 `git clone` コマンドを使用するか、[ZIP をダウンロードします](https://github.com/Azure/iotedge/archive/master.zip)。
 
    ```powershell
    git clone https://github.com/Azure/iotedge.git
@@ -86,7 +86,7 @@ Azure IoT Edge の Git リポジトリには、テスト証明書の生成に使
 
 3. 作業するディレクトリに移動します。 この記事では、このディレクトリを *\<WRKDIR>* と呼びます。 すべての証明書とキーは、この作業ディレクトリに作成されます。
 
-4. 構成ファイルとスクリプト ファイルを、クローンしたリポジトリから作業ディレクトリにコピーします。
+4. 構成ファイルとスクリプト ファイルを、複製したリポジトリから作業ディレクトリにコピーします。
 
    ```powershell
    copy <path>\iotedge\tools\CACertificates\*.cnf .
@@ -117,9 +117,9 @@ Azure IoT Edge の Git リポジトリには、テスト証明書の生成に使
 
 ### <a name="set-up-on-linux"></a>Linux での設定
 
-Windows デバイスでデモ用の証明書を作成するには、生成スクリプトをクローンし、ローカルで実行されるように bash でスクリプトを設定する必要があります。
+Windows デバイスでデモ用の証明書を作成するには、生成スクリプトを複製し、ローカルで実行されるように bash でスクリプトを設定する必要があります。
 
-1. デモ用の証明書を生成するスクリプトが含まれている IoT Edge git リポジトリをクローンします。
+1. デモ用の証明書を生成するスクリプトが含まれている IoT Edge git リポジトリを複製します。
 
    ```bash
    git clone https://github.com/Azure/iotedge.git
@@ -127,7 +127,7 @@ Windows デバイスでデモ用の証明書を作成するには、生成スク
 
 2. 作業するディレクトリに移動します。 この記事では、このディレクトリを *\<WRKDIR>* と呼びます。 すべての証明書ファイルとキー ファイルがこのディレクトリに作成されます。
   
-3. 構成ファイルとスクリプト ファイルを、クローンした IoT Edge リポジトリから作業ディレクトリにコピーします。
+3. 構成ファイルとスクリプト ファイルを、複製した IoT Edge リポジトリから作業ディレクトリにコピーします。
 
    ```bash
    cp <path>/iotedge/tools/CACertificates/*.cnf .

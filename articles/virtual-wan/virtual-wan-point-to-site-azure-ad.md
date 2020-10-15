@@ -2,17 +2,17 @@
 title: ユーザー VPN 接続用に Azure AD 認証を構成する:Virtual WAN
 description: ユーザー VPN 用に Azure Active Directory 認証を構成する方法について説明します。
 services: virtual-wan
-author: kumudD
+author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/17/2020
+ms.date: 10/14/2020
 ms.author: alzam
-ms.openlocfilehash: 21c2cba1d67ba415849b20dedf9ba157ca191d05
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1102e2dafcf1a78bc9c243f27549b13793ec5408
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832520"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079175"
 ---
 # <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>ユーザー VPN 用に Azure Active Directory 認証を構成する
 
@@ -22,15 +22,14 @@ ms.locfileid: "87832520"
 
 この記事では、次のことについて説明します。
 
-> [!div class="checklist"]
-> * Virtual WAN を作成する
-> * 仮想ハブを作成する
-> * ユーザー VPN 構成を作成する
-> * Virtual WAN ユーザー VPN プロファイルをダウンロードする
-> * ユーザー VPN 構成を仮想ハブへ適用する
-> * VNet を仮想ハブに接続する
-> * ユーザー VPN クライアント構成をダウンロードして適用する
-> * Virtual WAN を表示する
+* Virtual WAN を作成する
+* 仮想ハブを作成する
+* ユーザー VPN 構成を作成する
+* Virtual WAN ユーザー VPN プロファイルをダウンロードする
+* ユーザー VPN 構成を仮想ハブへ適用する
+* VNet を仮想ハブに接続する
+* ユーザー VPN クライアント構成をダウンロードして適用する
+* Virtual WAN を表示する
 
 ![Virtual WAN のダイアグラム](./media/virtual-wan-about/virtualwanp2s.png)
 

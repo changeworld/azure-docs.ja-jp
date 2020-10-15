@@ -8,10 +8,10 @@ ms.date: 05/20/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: c64efb92de00291e6381e30af24e76df2b38aee0
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83847116"
 ---
 # <a name="startswith-azure-cosmos-db"></a>STARTSWITH (Azure Cosmos DB)

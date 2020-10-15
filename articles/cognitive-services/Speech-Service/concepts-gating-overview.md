@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: shlo
 ms.openlocfilehash: 73e6e4e69a245485ca473f048bbeafef21dbbf37
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73836787"
 ---
 # <a name="custom-neural-voice-gating-overview"></a>カスタム ニューラル音声の制限の概要

@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 930571c841146e0b12efbf7325915ba2b23a7efa
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73744328"
 ---
 # <a name="content-moderator-net-sdk-samples"></a>Content Moderator .NET SDK サンプル

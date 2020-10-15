@@ -9,10 +9,10 @@ ms.topic: sample
 ms.date: 07/06/2020
 ms.author: marhamil
 ms.openlocfilehash: caf492c2cd3940fd7f37e2a4462c8376a127f393
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86189313"
 ---
 # <a name="python-samples-for-cognitive-services-for-big-data"></a>ビッグ データ向け Cognitive Services の Python サンプル

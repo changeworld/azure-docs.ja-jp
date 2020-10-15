@@ -4,10 +4,10 @@ description: ブループリント アーティファクト パラメーター�
 ms.date: 08/19/2020
 ms.topic: sample
 ms.openlocfilehash: 5f2c58b69519f27f759ddfc79d3333e55ed4eb54
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88653734"
 ---
 # <a name="deploy-the-irs-1075-blueprint-sample"></a>IRS 1075 ブループリント サンプルをデプロイする

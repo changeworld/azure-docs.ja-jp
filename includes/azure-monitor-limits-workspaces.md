@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: c8868cd6f5c50b84f263155518ee553145afcfa9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e6b64b5a1a60ba3bbf93e607536eeb0379669c73
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88602419"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91640015"
 ---
 **データの収集量と保持期間** 
 
@@ -72,18 +72,28 @@ Azure Monitor とは、毎月増加するテラバイト単位のデータを送
 
 ワークスペースでインジェスト ボリューム レート制限に近づいたときまたは達したときに通知を受けるには、ゼロより大きい結果数、5 分の評価期間、5 分の頻度のアラート ロジック ベースを使った次のクエリを使用して、[ログ アラート ルール](../articles/azure-monitor/platform/alerts-log.md)を作成します。
 
-インジェストボリューム レートがしきい値の 80% に到達:
+インジェスト ボリューム レートがしきい値を超過
 ```Kusto
 Operation
-|where OperationCategory == "Ingestion"
-|where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"
+| where OperationCategory == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where OperationStatus == "Error"
 ```
 
-インジェストボリューム レートがしきい値に到達:
+インジェスト ボリューム レートがしきい値の 80% を超過
 ```Kusto
 Operation
-|where OperationCategory == "Ingestion"
-|where Detail startswith "The data ingestion volume rate crossed the threshold"
+| where OperationCategory == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where OperationStatus == "Warning"
+```
+
+インジェスト ボリューム レートがしきい値の 70% を超過
+```Kusto
+Operation
+| where OperationCategory == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where OperationStatus == "Info"
 ```
 
 >[!NOTE]

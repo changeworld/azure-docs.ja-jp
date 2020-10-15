@@ -6,10 +6,10 @@ ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
 ms.openlocfilehash: 2be702ec6e820fe71dd8d2da7aa4cf831b52402e
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83828255"
 ---
 # <a name="unlink-workspace-from-automation-account"></a>Automation アカウントからワークスペースのリンクを解除する

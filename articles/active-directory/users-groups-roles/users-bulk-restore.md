@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4fe5cacfec6ee85a5d61204ffce38c856b0d1baf
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87423339"
 ---
 # <a name="bulk-restore-deleted-users-in-azure-active-directory"></a>Azure Active Directory での削除済みユーザーの一括復元
@@ -55,10 +55,10 @@ CSV テンプレートをダウンロードして入力し、Azure AD ユーザ�
 
 1. この CSV テンプレートを開いて、復元するユーザーごとに 1 行を追加します。 唯一の必須値は **ObjectID** です。 そのうえでファイルを保存します。
 
-    :::image type="content" source="./media/users-bulk-restore/upload-button.png" alt-text="追加するユーザーをリストするローカル CSV ファイルを選択する":::
+    :::image type="content" source="./media/users-bulk-restore/upload-button.png" alt-text="追加するユーザーをリストするローカル CSV ファイルを選択する&quot;:::
 
 1. **[ユーザーの一括復元]** ページの **[CSV ファイルをアップロード]** で、そのファイルを参照します。 ファイルを選択して **[送信]** をクリックすると、CSV ファイルの検証が開始されます。
-1. ファイルの内容が検証されると、"**ファイルが正常にアップロードされました**" と表示されます。 エラーが存在する場合は、ジョブを送信する前にそれらを修正する必要があります。
+1. ファイルの内容が検証されると、&quot;**ファイルが正常にアップロードされました**" と表示されます。 エラーが存在する場合は、ジョブを送信する前にそれらを修正する必要があります。
 1. ファイルの検証に合格したら、 **[送信]** を選択して、ユーザーを復元する Azure 一括操作を開始します。
 1. 復元操作が完了すると、一括操作が成功したという通知が表示されます。
 

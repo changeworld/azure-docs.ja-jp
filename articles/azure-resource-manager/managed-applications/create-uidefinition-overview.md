@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
 ms.openlocfilehash: 327fa1d7eb73d8e65bb4f81c1dff0fe2bec2913b
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89319571"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>Azure マネージド アプリケーションの作成エクスペリエンスのための CreateUiDefinition.json
@@ -129,7 +129,7 @@ subscription コントロールには、一連のリソース プロバイダー
 
 **basics** ステップは、Azure portal がファイルを解析するときに生成される最初のステップです。 basics ステップでは、サブスクリプション、リソース グループ、デプロイの場所をユーザーが既定で選択できます。
 
-:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="basics の既定値":::
+:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="タブ ウィザード":::
 
 このセクションには、他にも要素を追加できます。 可能な場合、デプロイ全体のパラメーター (クラスターの名前、管理者の資格情報など) を照会する要素を追加します。
 

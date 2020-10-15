@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 1714c1c3c9efb0e78d137ed042420f1c7ba2139f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4394cc4cb21b288215c75e484cb6446f0321158b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330113"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079073"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Azure Machine Learning を使用してモデルをトレーニングする
 
@@ -118,11 +118,6 @@ R SDK を使用すると、Azure Machine Learning で R 言語を使用できま
 
 + [デザイナーとは](concept-designer.md)
 + [チュートリアル:自動車価格を予測する](tutorial-designer-automobile-price-train-score.md)
-+ [回帰:価格を予測する](how-to-designer-sample-regression-automobile-price-basic.md)
-+ [分類:所得を予測する](how-to-designer-sample-classification-predict-income.md)
-+ [分類:顧客離れ、強い欲求、アップセルを予測する](how-to-designer-sample-classification-churn.md)
-+ [カスタム R スクリプトを使用した分類: フライトの遅延を予測する](how-to-designer-sample-classification-flight-delay.md)
-+ [テキスト分類: Wikipedia SP 500 データセット](how-to-designer-sample-text-classification.md)
 
 ## <a name="many-models-solution-accelerator"></a>多数モデル ソリューション アクセラレータ
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: alsin
-ms.openlocfilehash: d62eaf96354627e0c1e4e0a31bb16fb3265f66ac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: da17122de8db41b6ba9ae9597d52bc3e1d8d0062
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91279775"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962396"
 ---
 # <a name="preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>プレビュー:Azure ハイブリッド特典 - Linux Virtual Machines に適用する方法
 
@@ -126,7 +126,7 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 
 ### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
-VM 自体から、IMDS 構成証明済みメタデータに対してクエリを実行し、VM の licenseType を特定することができます。 LicenseType 値が 'RHEL_BYOS' または 'SLES_BYOS' の場合、VM の特典が有効になっていることを示します。 構成証明済みメタデータの詳細については、[こちら](https://docs.microsoft.com/azure/virtual-machines/linux/instance-metadata-service#attested-data)を参照してください。
+VM 自体から、IMDS 構成証明済みメタデータに対してクエリを実行し、VM の licenseType を特定することができます。 LicenseType 値が 'RHEL_BYOS' または 'SLES_BYOS' の場合、VM の特典が有効になっていることを示します。 構成証明済みメタデータの詳細については、[こちら](./instance-metadata-service.md#attested-data)を参照してください。
 
 ## <a name="compliance"></a>コンプライアンス
 

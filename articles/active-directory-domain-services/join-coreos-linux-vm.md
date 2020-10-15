@@ -2,7 +2,7 @@
 title: CoreOS VM を Azure AD Domain Services に参加させる | Microsoft Docs
 description: CoreOS 仮想マシンを構成して Azure AD Domain Services のマネージド ドメインに参加させる方法について説明します。
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 5db65f30-bf69-4ea3-9ea5-add1db83fdb8
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/13/2020
-ms.author: iainfou
-ms.openlocfilehash: 93f16629b74ab76d7b46603d84d52cff4bf1ca13
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: joflore
+ms.openlocfilehash: c3a88f96f7391fedd973b7965a7c469ce1805d76
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005108"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91962413"
 ---
 # <a name="join-a-coreos-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services マネージド ドメインに CoreOS 仮想マシンを参加させる
 

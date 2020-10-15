@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/06/2020
 ms.author: dayshen
 ms.openlocfilehash: 8810309fef5dbbb35465a2af15d42fa8a59d5401
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84302104"
 ---
 # <a name="use-service-tags-for-azure-signalr-service"></a>Azure SignalR Service のサービス タグの使用

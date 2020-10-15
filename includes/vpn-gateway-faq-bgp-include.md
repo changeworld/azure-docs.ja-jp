@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/17/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 32e4658af48a0ae3bde08de18cf1d8204878d671
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6054fe5f71f54794d4974a71cdfd61a7959534ff
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "91024838"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92082204"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>BGP はすべての Azure VPN Gateway SKU でサポートされていますか。
 BGP は、Basic SKU を除くすべての Azure VPN Gateway SKU でサポートされています。
@@ -108,3 +108,6 @@ Azure VPN ゲートウェイでは、オンプレミスの BGP デバイスに�
 
 ### <a name="what-should-i-add-to-my-on-premises-vpn-device-for-the-bgp-peering-session"></a>BGP ピアリング セッション向けにオンプレミスの VPN デバイスに何を追加する必要がありますか。
 IPsec S2S VPN トンネルを示す Azure BGP ピア IP アドレスのホスト ルートを VPN デバイスに追加する必要があります。 たとえば、Azure VPN ピア IP が "10.12.255.30" の場合は、"10.12.255.30" のホスト ルートを VPN デバイスに追加し、対応する IPsec トンネル インターフェイスの次ホップ インターフェイスを指定する必要があります。
+
+### <a name="does-the-virtual-network-gateway-support-bidirectional-forwarding-detection-bfd-for-site-to-site-connections-with-bgp"></a>Virtual Network ゲートウェイでは、BGP を使用したサイト間接続で双方向転送検出 (BFD) がサポートされていますか。
+不正解です。 双方向転送検出 (BFD) は、標準の BGP keepalive を使用するよりも、近隣のダウンタイムを迅速に検出するために BGP で使用できるプロトコルです。 BFD では、LAN 環境で動作するように設計された秒未満タイマーが使用されますが、パブリック インターネットやワイド エリア ネットワーク接続向けであはりません。 パブリック インターネット経由の接続では、特定のパケットが遅延したりドロップされたりすることは珍しくありません。そのため、これらの積極的なタイマーの導入は不安定さを増長し、最終的にルートが BGP によって抑制される可能性があります。 別の方法として、既定の 60 秒の KeepAlive 間隔と 180 秒のホールド タイマーより低いタイマーを使用してオンプレミスのデバイスを構成し、収束時間を短縮することができます。

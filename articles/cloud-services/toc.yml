@@ -194,7 +194,7 @@
     - name: ラーニング パス
       href: /learn/paths/azure-fundamentals/
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-cloud-services.html'
+      href: /answers/topics/azure-cloud-services.html
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
     - name: 料金計算ツール

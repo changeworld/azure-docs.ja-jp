@@ -8,10 +8,10 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 02/25/2020
 ms.openlocfilehash: 76c8d09ef2ef0130ddac856a1f37f8b68d977494
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86186233"
 ---
 # <a name="azure-automation-frequently-asked-questions"></a>Azure Automation についてよく寄せられる質問

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.openlocfilehash: edd57d3d77432f3bb37872ee26f414b56398cae0
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187287"
 ---
 # <a name="troubleshoot-azure-automation-account-issues"></a>Azure Automation アカウントに関する問題のトラブルシューティング
@@ -33,7 +33,7 @@ Error details: Unable to register Automation Resource Provider for subscriptions
 
 Automation リソース プロバイダーがサブスクリプションに登録されていません。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 Automation リソース プロバイダーを登録するには、Azure portal で次の手順に従います。
 

@@ -2,29 +2,29 @@
 title: Azure CLI を使用して Bastion ホストを作成する | Azure Bastion
 description: この記事では、Bastion ホストを作成および削除する方法について説明します
 services: bastion
-author: mialdrid
+author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 03/26/2020
-ms.author: mialdrid
-ms.openlocfilehash: 8ee90d80230f9115946525ede325e874e98e358e
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.date: 10/14/2020
+ms.author: cherylmc
+ms.openlocfilehash: e4f0a3ea85fa479826fe9e666df2b18f8dba7ce3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024334"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079124"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-cli"></a>Azure CLI を使用して Azure Bastion ホストを作成する
 
 この記事では、Azure CLI を使用して Azure Bastion ホストを作成する方法について示します。 お使いの仮想ネットワークに Azure Bastion サービスをプロビジョニングすると、同じ仮想ネットワークのすべての VM でシームレスに RDP/SSH をご利用いただけます。 Azure Bastion デプロイは、サブスクリプションやアカウント、仮想マシン単位ではなく、仮想ネットワーク単位です。
 
-必要に応じて、[Azure portal](bastion-create-host-portal.md) を使用するか、[Azure PowerShell](bastion-create-host-powershell.md) を使用して、Azure Bastion ホストを作成できます。
+必要に応じて、[Azure portal](./tutorial-create-host-portal.md) を使用するか、[Azure PowerShell](bastion-create-host-powershell.md) を使用して、Azure Bastion ホストを作成できます。
 
-## <a name="before-you-begin"></a>開始する前に
+## <a name="prerequisites"></a>前提条件
 
 Azure サブスクリプションを持っていることを確認します。 Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)を有効にするか、[無料アカウント](https://azure.microsoft.com/pricing/free-trial)にサインアップしてください。
 
-[!INCLUDE [cloudshell cli](../../includes/vpn-gateway-cloud-shell-cli.md)]
+[!INCLUDE [Cloud Shell CLI](../../includes/vpn-gateway-cloud-shell-cli.md)]
 
 ## <a name="create-a-bastion-host"></a><a name="createhost"></a>Bastion ホストの作成
 
@@ -54,5 +54,4 @@ Azure サブスクリプションを持っていることを確認します。 A
 ## <a name="next-steps"></a>次のステップ
 
 * 詳細については、[Bastion に関する FAQ](bastion-faq.md) に関するページを参照してください。
-
 * Azure Bastion サブネットでネットワーク セキュリティ グループを使用する方法については、[NSG の使用](bastion-nsg.md)に関するページを参照してください。
