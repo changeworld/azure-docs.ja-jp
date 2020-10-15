@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
 ms.openlocfilehash: d129c37c909c630623f8a41c06da9aa80e4e2392
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82837636"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Azure Front Door Service の Azure Web アプリケーション ファイアウォールに関してよく寄せられる質問

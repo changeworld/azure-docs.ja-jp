@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 06/28/2020
+ms.date: 09/28/2020
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: b0c7f88004564a5f479c0917919ca14e0d048e8b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d621d39ac6f7c296286f7a3b06d5cc32c513170
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85516865"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91946172"
 ---
 | カテゴリ | データ ストア | ソースとしてサポート | シンクとしてサポート | [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) がサポート | [セルフホステッド IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) がサポート |
 |:--- |:--- |:--- |:--- |:--- |:--- |
@@ -27,6 +27,7 @@ ms.locfileid: "85516865"
 | &nbsp; |[Azure Database for MariaDB](../articles/data-factory/connector-azure-database-for-mariadb.md) |✓ | |✓ |✓  |
 | &nbsp; |[Azure Database for MySQL](../articles/data-factory/connector-azure-database-for-mysql.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) |✓ |✓ |✓ |✓  |
+| &nbsp; |[Azure Databricks Delta Lake](../articles/data-factory/connector-azure-databricks-delta-lake.md) |✓ |✓ |✓ |✓ |
 | &nbsp; |[Azure File Storage](../articles/data-factory/connector-azure-file-storage.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure SQL Database](../articles/data-factory/connector-azure-sql-database.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure SQL Managed Instance](../articles/azure-sql/managed-instance/sql-managed-instance-paas-overview.md) |✓ |✓ |✓ |✓  |
@@ -62,6 +63,7 @@ ms.locfileid: "85516865"
 | **NoSQL** |[Cassandra](../articles/data-factory/connector-cassandra.md) |✓ | |✓ |✓  |
 | &nbsp; |[Couchbase (プレビュー)](../articles/data-factory/connector-couchbase.md) |✓ | |✓ |✓  |
 | &nbsp; |[MongoDB](../articles/data-factory/connector-mongodb.md) |✓ | |✓ |✓  |
+| &nbsp; |[MongoDB Atlas](../articles/data-factory/connector-mongodb-atlas.md) |✓ | |✓ |✓  |
 | **[最近使ったファイル]** |[Amazon S3](../articles/data-factory/connector-amazon-simple-storage-service.md) |✓ | |✓ |✓  |
 | &nbsp; |[ファイル システム](../articles/data-factory/connector-file-system.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[FTP](../articles/data-factory/connector-ftp.md) |✓ | |✓ |✓  |

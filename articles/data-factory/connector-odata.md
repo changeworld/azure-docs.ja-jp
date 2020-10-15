@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: jingwang
 ms.openlocfilehash: 10121243961d4c81ecc67d7453019c26743fe610
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87845767"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Azure Data Factory を使用して OData ソースからデータをコピーする

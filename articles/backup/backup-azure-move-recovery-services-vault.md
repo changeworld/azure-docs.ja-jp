@@ -4,12 +4,12 @@ description: Recovery Services コンテナーを Azure サブスクリプショ
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 19b1c930ffc0e4b519c25f421662547a4d8dcde6
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 55c906585e6f6d4a2ae3f2279b2c3ffbaaccb025
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91773367"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056431"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Recovery Services コンテナーを Azure サブスクリプションおよびリソース グループをまたいで移動する
 
@@ -34,7 +34,7 @@ Recovery Services コンテナーのリソースの移動がサポートされ�
 - VM が Recovery Services コンテナーと一緒にサブスクリプションをまたいで移動しないか、または新しいリソース グループに移動しない場合、現在の VM の復旧ポイントは、有効期限が切れるまでコンテナーにそのまま残ります。
 - VM をコンテナーと一緒に移動するかどうかに関係なく、VM はコンテナー内に保持されているバックアップ履歴から復元できます。
 - Azure Disk Encryption では、キー コンテナーと VM が同じ Azure リージョンおよびサブスクリプションに属している必要があります。
-- 仮想マシンをマネージド ディスクと一緒に移動するには、この[記事](https://azure.microsoft.com/blog/move-managed-disks-and-vms-now-available/)を参照してください。
+- 仮想マシンをマネージド ディスクと一緒に移動するには、この[記事](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription)を参照してください。
 - クラシック モデルを使用してデプロイされるリソースを移動するためのオプションは、リソースをサブスクリプション内で移動するか、新しいサブスクリプションに移動するかによって異なります。 詳細については、[こちらの記事](../azure-resource-manager/management/move-resource-group-and-subscription.md)を参照してください。
 - コンテナーに対して定義されるバックアップ ポリシーは、コンテナーがサブスクリプションをまたいで移動しても、新しいリソース グループに移動しても保持されます。
 - 移動できるのは、次のいずれかの種類のバックアップ項目を含むコンテナーだけです。 以下に記載されていない種類のバックアップ項目をすべて停止し、データを完全に削除してから、コンテナーを移動する必要があります。

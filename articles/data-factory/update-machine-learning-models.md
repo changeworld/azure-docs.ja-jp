@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.openlocfilehash: 83950c2d3c5439886ff787b69d9da4d0c214de31
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87092543"
 ---
 # <a name="update-azure-machine-learning-studio-classic-models-by-using-update-resource-activity"></a>更新リソース アクティビティを使用して Azure Machine Learning Studio (classic) モデルを更新する

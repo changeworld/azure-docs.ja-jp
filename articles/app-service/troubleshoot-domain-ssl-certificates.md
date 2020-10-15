@@ -9,10 +9,10 @@ ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: 1cefb5a7b554b9a477f6a51eab3b22b0e8f55378
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88958439"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Azure App Serviceでのドメインと TLS/SSL 証明書に関する問題のトラブルシューティング

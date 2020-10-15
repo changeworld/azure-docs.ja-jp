@@ -12,12 +12,12 @@ ms.date: 10/07/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: オンプレミス、Docker、コンテナー
-ms.openlocfilehash: 0ba479e8c73cb7b0f397f39124ec32d7b9afbf4f
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: c26c69a0f6cbf0f9f658d3b7a32cce99319767b4
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91813272"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930443"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Speech サービス API 向けの Docker コンテナーをインストールし、実行する 
 
@@ -176,7 +176,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/speech-to-
 次のタグは、この形式の例です。
 
 ```
-2.4.0-amd64-en-us-preview
+2.5.0-amd64-en-us-preview
 ```
 
 **音声テキスト変換**コンテナーのサポートされている全ロケールについては、「[音声テキスト変換イメージ タグ](../containers/container-image-tags.md#speech-to-text)」を参照してください。

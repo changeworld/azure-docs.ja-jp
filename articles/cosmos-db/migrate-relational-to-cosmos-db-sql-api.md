@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: thvankra
 ms.openlocfilehash: 860b78df8df0d3c6946785a94e40141689278cd0
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86023144"
 ---
 # <a name="migrate-one-to-few-relational-data-into-azure-cosmos-db-sql-api-account"></a>1 対多のリレーショナル データを Azure Cosmos DB SQL API アカウントに移行する
@@ -90,31 +90,25 @@ SELECT [value] FROM OPENJSON(
 )
 ```
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf1.png" alt-text="ADF コピー":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf1.png" alt-text="注文の詳細" に設定します。
 
-
-SqlJsonToBlobText コピー アクティビティのシンクでは、"区切りテキスト" を選択し、動的に生成された一意のファイル名 (たとえば、'@concat(pipeline().RunId,'.json') を使用して Azure Blob Storage 内の特定のフォルダーを指定します。
-このテキスト ファイルは実際には "区切られて" おらず、コンマを使用して個別の列に解析するのではなく、二重引用符 (") を保持したいため、"列区切り記号"をタブ ("\t")、つまりデータに出現しない別の文字に設定し、"引用符文字" を "引用符文字なし" に設定します。
-
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf2.png" alt-text="ADF コピー":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf2.png" alt-text="注文の詳細":::
 
 ### <a name="copy-activity-2-blobjsontocosmos"></a>コピー アクティビティ #2: BlobJsonToCosmos
 
 次に、最初のアクティビティによって作成されたテキスト ファイルを Azure Blob Storage で検索する 2 番目のコピー アクティビティを追加して、ADF パイプラインを変更します。 これは、テキスト ファイルで見つかった JSON 行ごとに 1 つのドキュメントとして Cosmos DB シンクに挿入する "JSON" ソースとして処理されます。
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf3.png" alt-text="ADF コピー":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf3.png" alt-text="注文の詳細" アクティビティを追加します。 これで、ADF パイプラインは以下のようになっているはずです。
 
-また、必要に応じて、各実行の前に /Orders/ フォルダーに残っている以前のすべてのファイルを削除するように、パイプラインに "削除" アクティビティを追加します。 これで、ADF パイプラインは以下のようになっているはずです。
-
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf4.png" alt-text="ADF コピー":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf4.png" alt-text="注文の詳細":::
 
 上記のパイプラインをトリガーすると、中間 Azure Blob Storage の場所に、1 行に 1 つの JSON オブジェクトを含むファイルが作成されます。
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf5.png" alt-text="ADF コピー":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf5.png" alt-text="注文の詳細":::
 
 また、Cosmos DB コレクションに挿入された OrderDetails が適切に埋め込まれた Orders ドキュメントも表示されます。
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf6.png" alt-text="ADF コピー":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf6.png" alt-text="注文の詳細":::
 
 
 ## <a name="azure-databricks"></a>Azure Databricks
@@ -127,7 +121,7 @@ SqlJsonToBlobText コピー アクティビティのシンクでは、"区切り
 
 まず、必要な [SQL コネクタ](https://docs.databricks.com/data/data-sources/sql-databases-azure.html)と [Azure Cosmos DB コネクタ](https://docs.databricks.com/data/data-sources/azure/cosmosdb-connector.html) ライブラリを作成して、Azure Databricks クラスターに接続します。 クラスターを再起動して、ライブラリが読み込まれていることを確認します。
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks1.png" alt-text="Databricks":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks1.png" alt-text="注文の詳細":::
 
 次に、Scala と Python の 2 つのサンプルを紹介します。 
 
@@ -150,7 +144,7 @@ val orders = sqlContext.read.sqlDB(configSql)
 display(orders)
 ```
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks2.png" alt-text="Databricks":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks2.png" alt-text="注文の詳細":::
 
 次に、Cosmos DB データベースとコレクションに接続します。
 
@@ -207,7 +201,7 @@ display(ordersWithSchema)
 CosmosDBSpark.save(ordersWithSchema, configCosmos)
 ```
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks3.png" alt-text="Databricks":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks3.png" alt-text="注文の詳細":::
 
 
 ### <a name="python"></a>Python
@@ -337,7 +331,7 @@ pool.map(writeOrder, orderids)
 ```
 どちらの方法でも、最終的には、Cosmos DB コレクション内の各注文ドキュメント内に埋め込まれた OrderDetails を適切に保存する必要があります。
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks4.png" alt-text="Databricks":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks4.png" alt-text="注文の詳細":::
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Cosmos DB のデータ モデリング](https://docs.microsoft.com/azure/cosmos-db/modeling-data)について確認する

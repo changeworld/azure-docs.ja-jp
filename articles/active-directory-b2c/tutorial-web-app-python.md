@@ -12,10 +12,10 @@ ms.service: active-directory
 ms.subservice: B2C
 ms.custom: devx-track-python
 ms.openlocfilehash: 6a113b3a3df475853f3690a0e932378bc0e2ab02
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87844628"
 ---
 # <a name="tutorial-enable-authentication-in-a-python-web-application-with-azure-ad-b2c"></a>チュートリアル:Python Web アプリケーションで Azure AD B2C を使用して認証を行う
@@ -162,13 +162,13 @@ CLIENT_SECRET = "22222222-2222-2222-2222-222222222222" # Placeholder - for use O
 
     有効なメール アドレスを使用し、確認コードを使用して検証します。 パスワードを設定します。 要求された属性の値を入力します。
 
-    :::image type="content" source="media/tutorial-web-app-python/python-flask-web-app-02.png" alt-text="Azure AD B2C ユーザー フローによって表示されるサインアップ ページ":::
+    :::image type="content" source="media/tutorial-web-app-python/python-flask-web-app-02.png" alt-text="ローカルで実行されている Python Flask Web アプリケーションを示す Web ブラウザー":::
 
 1. **[作成]** を選択して、Azure AD B2C ディレクトリにローカル アカウントを作成します。
 
 **[Create]\(作成\)** を選択すると、サインインしているユーザーの名前がアプリケーションに表示されます。
 
-:::image type="content" source="media/tutorial-web-app-python/python-flask-web-app-03.png" alt-text="ログイン ユーザーを表示している Python Flask Web アプリケーションを示す Web ブラウザー":::
+:::image type="content" source="media/tutorial-web-app-python/python-flask-web-app-03.png" alt-text="ローカルで実行されている Python Flask Web アプリケーションを示す Web ブラウザー":::
 
 サインインをテストする場合は、 **[Logout]\(ログアウト\)** リンクを選択してから、 **[Sign In]\(サインイン\)** を選択し、サインアップした時に入力したメール アドレスとパスワードでサインインします。
 

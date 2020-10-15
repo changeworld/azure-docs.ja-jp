@@ -10,10 +10,10 @@ ms.date: 07/27/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 83d8106b9f206da9095c37b6179bdda8001b439c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87852771"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>アマゾン ウェブ サービス (AWS) VM を Azure に移行する

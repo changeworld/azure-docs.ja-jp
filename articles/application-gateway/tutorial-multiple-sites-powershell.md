@@ -10,10 +10,10 @@ ms.date: 07/20/2020
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: dd73dc69fc2d40a0b4c24739dca6ad8174ad1047
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89595859"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-azure-powershell"></a>Azure PowerShell を使用して、複数の Web サイトをホストするアプリケーション ゲートウェイを作成する

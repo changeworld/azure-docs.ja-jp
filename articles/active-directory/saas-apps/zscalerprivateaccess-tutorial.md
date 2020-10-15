@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/23/2019
 ms.author: jeedes
 ms.openlocfilehash: 8c7347aabb3aa6f122ea82a46ad8a09f53e271bf
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88545688"
 ---
 # <a name="tutorial-integrate-zscaler-private-access-zpa-with-azure-active-directory"></a>チュートリアル:Azure Active Directory と Zscaler Private Access (ZPA) の統合

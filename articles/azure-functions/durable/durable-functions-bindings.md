@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 899bc3fdc94b8232acd3edf3e0cbab3c481ff8f2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081850"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions のバインド (Azure Functions)

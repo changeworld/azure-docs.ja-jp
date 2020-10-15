@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8dfc69bf251a811363426a3aeca7379d18458b47
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: a08756a1e3153aa69bd0e79dc23e88d4bf211e5d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91667233"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950688"
 ---
 # <a name="tutorial-add-paging-to-search-results-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用して検索結果にページングを追加する
 
@@ -304,7 +304,7 @@ ms.locfileid: "91667233"
     }
     ```
 
-1. 前のレッスンで紹介した **RunQueryAsync** メソッドは、構文エラーを解決するために変更する必要があります。 [**SearchOptions**](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchoptions) クラスの **Skip**、**Size**、および **IncludeTotalCount** フィールドを使用して、**Skip** 設定で始まる 1 ページ分だけの結果を要求します。 また、ビューのためにページング変数を計算する必要もあります。 メソッド全体を次のコードに置き換えます。
+1. 前のレッスンで紹介した **RunQueryAsync** メソッドは、構文エラーを解決するために変更する必要があります。 [**SearchOptions**](/dotnet/api/azure.search.documents.searchoptions) クラスの **Skip**、**Size**、および **IncludeTotalCount** フィールドを使用して、**Skip** 設定で始まる 1 ページ分だけの結果を要求します。 また、ビューのためにページング変数を計算する必要もあります。 メソッド全体を次のコードに置き換えます。
 
     ```csharp
     private async Task<ActionResult> RunQueryAsync(SearchData model, int page, int leftMostPage)

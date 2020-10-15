@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: bd8eee2fd6134bb36c0b0ab45492567f4fdbec26
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8e7ad721eba103679f55886053e8ba9e888573c0
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91297506"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057486"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>チュートリアル:Azure Digital Twins API を使用したコーディング
 
@@ -181,7 +181,7 @@ Azure Digital Twins ソリューションを作成するにあたり最初にす
 > このチュートリアルのために Visual Studio を使用している場合は、新しく作成した JSON ファイルを選択し、プロパティ インスペクターで *[出力ディレクトリにコピー]* プロパティを *[新しい場合はコピーする]* または *[常にコピーする]* に設定することができます。 これにより、チュートリアルの残りの部分で **F5** キーを使用してプログラムを実行するときに、Visual Studio の既定のパスで JSON ファイルが検出されるようになります。
 
 > [!TIP] 
-> あらゆる言語に対応した [DTDL Validator サンプル](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)でモデル ドキュメントをチェックし、DTDL が有効であることを確認できます。 これは DTDL パーサー ライブラリをベースに構築されています。詳細については、"[*モデルを解析および検証する方法*](how-to-parse-models.md)" に関するページを参照してください。
+> あらゆる言語に対応した [DTDL Validator サンプル](/samples/azure-samples/dtdl-validator/dtdl-validator)でモデル ドキュメントをチェックし、DTDL が有効であることを確認できます。 これは DTDL パーサー ライブラリをベースに構築されています。詳細については、"[*モデルを解析および検証する方法*](how-to-parse-models.md)" に関するページを参照してください。
 
 次に、先ほど作成したモデルを Azure Digital Twins インスタンスにアップロードするためのコードを *Program.cs* に追加します。
 

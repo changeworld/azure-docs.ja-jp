@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 7117ffcbaf4eba8d83a6e968f4fed7422673610b
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: ab83344f779f93107b59ca28348da3a66f1efc1a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844242"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076863"
 ---
 # <a name="api-management-policy-expressions"></a>API Management ポリシー式
 この記事では、C# 7 のポリシー式の構文について説明します。 それぞれの式は、暗黙的に指定された[コンテキスト](api-management-policy-expressions.md#ContextVariables)変数と、許可されている .NET Framework の型の[サブセット](api-management-policy-expressions.md#CLRTypes)にアクセスできます。
@@ -253,4 +253,4 @@ ms.locfileid: "87844242"
 + [API Management のポリシー](api-management-howto-policies.md)
 + [API を変換する](transform-api.md)
 + ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](./api-management-policies.md)
-+ [ポリシーのサンプル](policy-samples.md)
++ [ポリシーのサンプル](./policy-reference.md)

@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: e152c0227008dd12088660b2390a8d0a5f54de96
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 6f57f801f2270819d4a67a49590f5ba61b32afcb
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89290780"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047643"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure Digital Twins の既知の問題
 
@@ -30,7 +30,7 @@ Azure Digital Twins では特に、これは次のコマンド グループに�
 
 これは、Cloud Shell で `az login` コマンドを再実行し、その後のログイン手順を完了することによって解決できます。 この後、コマンドを再実行できるようになります。
 
-別の解決策としては、コンピューターに [Azure CLI をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)して、Azure CLI コマンドをローカルで実行できるようにします。 ローカル CLI ではこの問題は発生しません。
+別の解決策としては、コンピューターに [Azure CLI をインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)して、Azure CLI コマンドをローカルで実行できるようにします。 ローカル CLI ではこの問題は発生しません。
 
 ### <a name="possible-causes"></a>考えられる原因
 
@@ -60,7 +60,7 @@ Azure Digital Twins では特に、これは次のコマンド グループに�
 
 ## <a name="issue-with-interactive-browser-authentication"></a>対話型ブラウザーの認証に関する問題
 
-**[Azure.Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) ライブラリ**のバージョン **1.2.0** を使用して Azure Digital Twins アプリケーションで認証コードを記述すると、[InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) メソッドで問題が発生することがあります。
+**[Azure.Identity](/dotnet/api/azure.identity?view=azure-dotnet) ライブラリ**のバージョン **1.2.0** を使用して Azure Digital Twins アプリケーションで認証コードを記述すると、[InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) メソッドで問題が発生することがあります。
 
 これはライブラリの最新バージョンではありません。 最新バージョンは **1.2.2** です。
 

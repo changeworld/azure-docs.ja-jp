@@ -3,19 +3,17 @@ title: Azure Monitor ブックのデータソース | Microsoft docs
 description: 複数のデータ ソースから作成された作成済みおよびパラメーター化されたカスタム Azure Monitor ブックを使用して、複雑なレポート作成を簡素化します
 services: azure-monitor
 documentationcenter: ''
-author: mrbullwinkle
 manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
-ms.author: mbullwin
-ms.openlocfilehash: bbd231ca527b4c01509230e839b97187de29febd
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 049a7348b803d12b66974bb9a9b50c12059171a2
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825748"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91931123"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure Monitor ブックのデータ ソース
 

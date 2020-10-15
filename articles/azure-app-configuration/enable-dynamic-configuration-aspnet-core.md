@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: b0435daee7f5bbd1435d5e69fc32f27c21e5e4a3
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: f98ec384876da1d30952d1c4edc1d00049e44682
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300291"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076999"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>チュートリアル:ASP.NET Core アプリで動的な構成を使用する
 
@@ -161,7 +161,7 @@ App Configuration では、構成ストアへの呼び出しが多くなりす�
     ```
     ---
     > [!Tip]
-    > 構成値を読み取る際のオプション パターンの詳細については、「 [ASP.NET Core のオプション パターン](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1)」を参照してください。
+    > 構成値を読み取る際のオプション パターンの詳細については、「 [ASP.NET Core のオプション パターン](/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1)」を参照してください。
 
 4. `Configure` メソッドに `UseAzureAppConfiguration` ミドルウェアを追加して更新し、ASP.NET Core Web アプリで要求の受信が続けられている間、更新用に登録された構成設定を更新できるようにします。
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: b6df25b525975f2d4fe6a02064e81f359a804c58
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81416263"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Service Fabric クラスターの均衡をとる

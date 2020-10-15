@@ -4,10 +4,10 @@ description: Durable Functions の Azure Event Grid 自動発行を構成する�
 ms.topic: conceptual
 ms.date: 04/25/2020
 ms.openlocfilehash: e4651dd7548ba76380bfc2d1b314e67d7abe63d9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081748"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Azure Event Grid への Durable Functions の発行 (プレビュー)
@@ -132,11 +132,11 @@ Azure portal を使用して、ご使用の Durable Functions アプリによっ
 
 1. 「**Event Grid**」を検索し、 **[Azure Event Grid trigger]\(Azure Event Grid トリガー\)** テンプレートを選択します。 
 
-    :::image type="content" source="./media/durable-functions-event-publishing/function-select-event-grid-trigger.png" alt-text="Azure portal で Event Grid トリガー テンプレートを選択します。" border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/function-select-event-grid-trigger.png" alt-text="Azure portal で関数を追加します。" border="true":::
 
 1. 新しいトリガーに名前を付け、 **[関数の作成]** を選択します。
 
-    :::image type="content" source="./media/durable-functions-event-publishing/function-name-event-grid-trigger.png" alt-text="Azure portal で Event Grid トリガーの名前を付けます。" border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/function-name-event-grid-trigger.png" alt-text="Azure portal で関数を追加します。" border="true":::
 
 
     次のコードを含む関数が作成されます。
@@ -172,11 +172,11 @@ Azure portal を使用して、ご使用の Durable Functions アプリによっ
 
 1. 新しい関数で、 **[統合]** を選択し、 **[イベント グリッド トリガー (eventGridEvent)]** を選択します。 
 
-    :::image type="content" source="./media/durable-functions-event-publishing/eventgrid-trigger-link.png" alt-text="[イベント グリッド トリガー] リンクの選択。" border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/eventgrid-trigger-link.png" alt-text="Azure portal で関数を追加します。" border="true":::
 
 1. **[Create Event Grid Description]\(Event Grid の説明の作成\)** を選択します。
 
-    :::image type="content" source="./media/durable-functions-event-publishing/create-event-grid-subscription.png" alt-text="Event Grid のサブスクリプションを作成します。" border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/create-event-grid-subscription.png" alt-text="Azure portal で関数を追加します。" border="true":::
 
 1. イベント サブスクリプションに名前を付け、トピックの種類として **[Event Grid トピック]** を選択します。 
 
@@ -184,7 +184,7 @@ Azure portal を使用して、ご使用の Durable Functions アプリによっ
 
 1. **［作成］** を選択します
 
-    :::image type="content" source="./media/durable-functions-event-publishing/event-grid-subscription-details.png" alt-text="Event Grid のサブスクリプションを作成します。" border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/event-grid-subscription-details.png" alt-text="Azure portal で関数を追加します。" border="true":::
 
 これで、ライフサイクル イベントを受信する準備が整いました。
 

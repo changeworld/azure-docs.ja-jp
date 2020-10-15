@@ -9,10 +9,10 @@ ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 178236f774b0e1a6fe20c73afe0e7fd6965e67a5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67235367"
 ---
 エンドポイントとメッセージのルートを設定したら、その構成をポータルで確認できます。 [Azure portal](https://portal.azure.com) にサインインし、 **[リソース グループ]** に移動します。 次に、目的のリソース グループを選択し、該当するハブを選択します (このチュートリアルのハブ名は `ContosoTestHub` で始まります)。 [IoT Hub] ウィンドウが表示されます。

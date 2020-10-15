@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/24/2020
 ms.openlocfilehash: 05d057be76a1b468f892b3123080e32a948153ae
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82598500"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure Portal を使用して HDInsight の Apache Hadoop クラスターを管理する

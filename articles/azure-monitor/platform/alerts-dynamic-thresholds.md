@@ -6,10 +6,10 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 02/16/2020
 ms.openlocfilehash: 1d21c7ed93ac2ce2ab61282707d57fbf43e0b71a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81261076"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Azure Monitor の動的しきい値を使用したメトリック アラート

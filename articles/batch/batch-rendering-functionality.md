@@ -6,10 +6,10 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
 ms.openlocfilehash: 6e34e0ef9035882a32ff46222686db4a948d7997
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85957462"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch Rendering の機能

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: mayg
 ms.openlocfilehash: f930fbb9cad893363db2b1a6b9b6ea8acade5a54
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87083788"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>VMware から Azure 用の Azure Site Recovery Deployment Planner について

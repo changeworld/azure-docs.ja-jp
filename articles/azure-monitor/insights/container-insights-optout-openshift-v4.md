@@ -4,10 +4,10 @@ description: この記事では、Azure Monitor for containers でお使いの A
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.openlocfilehash: bf61457b9c8cff40eb3fee2c93c7184fbaae6db5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87091149"
 ---
 # <a name="how-to-stop-monitoring-your-azure-and-red-hat-openshift-v4-cluster"></a>お使いの Azure および Red Hat OpenShift v4 クラスターの監視を停止する方法

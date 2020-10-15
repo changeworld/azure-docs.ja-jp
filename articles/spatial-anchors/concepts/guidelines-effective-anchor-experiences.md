@@ -9,10 +9,10 @@ ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 1877934cb604d140d7700c2e537d6dc187b63cc4
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83005524"
 ---
 # <a name="create-an-effective-anchor-experience-by-using-azure-spatial-anchors"></a>Azure Spatial Anchors を使用して効果的なアンカー エクスペリエンスを作成する

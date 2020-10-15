@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, devx-track-python
 ms.openlocfilehash: 2d41b48613ef7ba883a6a51b0fa67407fb730719
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87846226"
 ---
 # <a name="logging-in-msal-applications"></a>MSAL アプリケーションでのログ記録

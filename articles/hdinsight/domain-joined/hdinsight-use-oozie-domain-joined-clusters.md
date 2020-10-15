@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seodec18,seoapr2020
 ms.date: 05/14/2020
 ms.openlocfilehash: 36c04480c46cea904b072c659c5c2642a28e1f27
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83647577"
 ---
 # <a name="run-apache-oozie-in-azure-hdinsight-clusters-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用する Azure HDInsight クラスターで Apache Oozie を実行する

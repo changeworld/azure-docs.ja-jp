@@ -11,10 +11,10 @@ ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: 8483fd2a1b33330b868fb21d71922377e906e6c8
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85958423"
 ---
 # <a name="best-practices-for-sql-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics での SQL プールのベスト プラクティス

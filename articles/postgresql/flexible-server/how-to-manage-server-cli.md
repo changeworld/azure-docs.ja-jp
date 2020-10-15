@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 0f3c21d5c7f328ddef000ca7f1eaa9d5e18e6ca9
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 6c088188802590139ee895c45fb26959138db07e
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761891"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91939802"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for PostgreSQL - フレキシブル サーバーを管理する
 
@@ -123,7 +123,7 @@ az postgres flexible-server update --resource-group myresourcegroup --name mydem
 
 ## <a name="delete-a-server"></a>サーバーの削除
 
-PostgreSQL フレキシブル サーバーを削除するだけの場合は、[az postgres flexible-server delete](/cli/azure/PostgreSQL/server#az-PostgreSQL-flexible-server-delete) コマンドを実行できます。
+PostgreSQL フレキシブル サーバーを削除するだけの場合は、[az postgres flexible-server delete](/cli/azure/postgres/flexible-server#az-PostgreSQL-flexible-server-delete) コマンドを実行できます。
 
 ```azurecli-interactive
 az postgres flexible-server delete --resource-group myresourcegroup --name mydemoserver
@@ -131,5 +131,5 @@ az postgres flexible-server delete --resource-group myresourcegroup --name mydem
 
 ## <a name="next-steps"></a>次のステップ
 
-- [バックアップと復元の概念を確認します](concepts-backup-restore.md)
-- [サーバーのチューニングと監視を行います](concepts-monitoring.md)
+- [バックアップと復元の概念を確認する](concepts-backup-restore.md)
+- [サーバーのチューニングと監視を行う](concepts-monitoring.md)

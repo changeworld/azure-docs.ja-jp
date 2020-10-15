@@ -11,10 +11,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: d754f27a1510d9db0837eabb96b3a7cf75f76fc1
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87835529"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Azure 仮想マシンでのメインフレーム リホスト

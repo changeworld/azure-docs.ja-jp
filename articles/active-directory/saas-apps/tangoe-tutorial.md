@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.openlocfilehash: 4e28ac5180a58dbcb2c24f40dab3b73cbeb31a4a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88546616"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tangoe-command-premium-mobile"></a>チュートリアル: Azure Active Directory と Tangoe Command Premium Mobile の統合

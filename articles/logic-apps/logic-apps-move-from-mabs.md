@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
 ms.openlocfilehash: 6c07ab4b18c017bd29723d2640129b8e67374e3c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87837382"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>アプリとソリューションを BizTalk Services から Azure Logic Apps に移行する

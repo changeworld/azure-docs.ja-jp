@@ -7,10 +7,10 @@ ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
 ms.openlocfilehash: 440eb1f39284f8d99a8d6b9067b018c4a54fcd27
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87083023"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>Azure Functions で HTTP エンドポイントをカスタマイズする
@@ -112,7 +112,7 @@ HTTP 関数のカスタマイズの詳細については、[Azure Functions の 
     | [バックエンド URL] | https://%HELLO_HOST%/api/hello | 要求の送信先となるエンドポイントを指定します |
 
     
-    :::image type="content" source="./media/functions-create-serverless-api/creating-proxy.png" alt-text="プロキシの作成":::
+    :::image type="content" source="./media/functions-create-serverless-api/creating-proxy.png" alt-text="HTTP 関数のカスタマイズ":::
 
     Azure Functions プロキシでは `/api` ベース パス プレフィックスは提供されません。これはルート テンプレートに含める必要があります。 `%HELLO_HOST%` 構文では、以前作成したアプリ設定が参照されます。 解決済みの URL は元の関数を指定します。
 

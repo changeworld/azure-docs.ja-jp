@@ -3,12 +3,12 @@ title: 高可用性とディザスター リカバリー
 description: リージョン障害に対処できるように Batch アプリケーションを設計する方法について説明します。
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 1e22cb19aba1dcedc4ece7ddc2d1de0ab3233238
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: c77e6fa672d26545af47b262a982a7d0d7303eec
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725739"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92058014"
 ---
 # <a name="design-your-application-for-high-availability"></a>高可用性を実現するようにアプリケーションを設計する
 
@@ -39,5 +39,5 @@ Batch を使用するアプリケーションまたはソリューションが�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure portal](batch-account-create-portal.md)、[Azure CLI](cli-samples.md)、[PowerShell](batch-powershell-cmdlets-get-started.md)、または [Batch Management API](batch-management-dotnet.md) を使用して Batch アカウントを作成する方法の詳細について説明します。
+- [Azure portal](batch-account-create-portal.md)、[Azure CLI](./scripts/batch-cli-sample-create-account.md)、[PowerShell](batch-powershell-cmdlets-get-started.md)、または [Batch Management API](batch-management-dotnet.md) を使用して Batch アカウントを作成する方法の詳細について説明します。
 - 既定のクォータは Batch アカウントに関連付けられていまます。[この記事](batch-quota-limit.md)では、既定のクォータ値の詳細と、クォータを増やす方法について説明しています。

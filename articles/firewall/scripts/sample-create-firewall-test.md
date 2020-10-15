@@ -9,10 +9,10 @@ ms.topic: sample
 ms.date: 11/19/2019
 ms.author: victorh
 ms.openlocfilehash: 87ca8591be42e34a52f15913e0ec4058505cc0b0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87079055"
 ---
 # <a name="create-an-azure-firewall-test-environment"></a>Azure Firewall のテスト環境を作成する

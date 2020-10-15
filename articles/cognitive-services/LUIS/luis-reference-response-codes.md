@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 03/04/2019
 ms.openlocfilehash: 46a7fff86d3a8c4539b77a0f271179d68e7a26d2
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541681"
 ---
 # <a name="common-api-response-codes-and-their-meaning"></a>一般的な API 応答コードとその意味

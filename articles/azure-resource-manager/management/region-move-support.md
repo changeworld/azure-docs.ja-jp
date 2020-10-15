@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 08/25/2020
 ms.author: raynew
-ms.openlocfilehash: 608d9511b14ef8dd3815d6f9b45cda31e6b38b94
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 83cd36683a0487f13ab5707e4b1534cc7f20a88a
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90004308"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91948529"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>リージョン間の Azure リソースの移動のサポート
 
@@ -696,7 +696,7 @@ ms.locfileid: "90004308"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
-> | accounts | いいえ | 
+> | accounts | 不正解です。 [詳細については、こちらを参照してください](../../azure-monitor/faq.md#how-do-i-move-an-application-insights-resource-to-a-new-region)。
 > | actiongroups |  いいえ | 
 > | activitylogalerts | いいえ | 
 > | alertrules |  いいえ | 
@@ -1134,11 +1134,11 @@ ms.locfileid: "90004308"
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
 > | instancepools | いいえ | 
-> | managedinstances | はい <br/><br/> マネージド インスタンスのリージョン間での移動に関する[詳細を参照してください](/azure/azure-sql/database/move-resources-across-regions)。 | 
+> | managedinstances | はい <br/><br/> マネージド インスタンスのリージョン間での移動に関する[詳細を参照してください](../../azure-sql/database/move-resources-across-regions.md)。 | 
 > | managedinstances/databases | はい | 
 > | servers | はい | 
-> | servers/databases | はい <br/><br/> データベースのリージョン間での移動に関する[詳細を参照してください](/azure/azure-sql/database/move-resources-across-regions)。<br/><br/> Azure Resource Mover を使用した Azure SQL データベースの移動に関する[詳細を参照してください](../../resource-mover/tutorial-move-region-sql.md)。  | 
-> | servers/elasticpools | はい <br/><br/> エラスティック プールのリージョン間での移動に関する[詳細を参照してください](/azure/azure-sql/database/move-resources-across-regions)。<br/><br/> Azure Resource Mover を使用した Azure SQL エラスティック プールを移動に関する[詳細を参照してください](../../resource-mover/tutorial-move-region-sql.md)。  | 
+> | servers/databases | はい <br/><br/> データベースのリージョン間での移動に関する[詳細を参照してください](../../azure-sql/database/move-resources-across-regions.md)。<br/><br/> Azure Resource Mover を使用した Azure SQL データベースの移動に関する[詳細を参照してください](../../resource-mover/tutorial-move-region-sql.md)。  | 
+> | servers/elasticpools | はい <br/><br/> エラスティック プールのリージョン間での移動に関する[詳細を参照してください](../../azure-sql/database/move-resources-across-regions.md)。<br/><br/> Azure Resource Mover を使用した Azure SQL エラスティック プールを移動に関する[詳細を参照してください](../../resource-mover/tutorial-move-region-sql.md)。  | 
 > | virtualclusters | はい | 
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/13/2020
 ms.openlocfilehash: 292d80f7fad796b2ee4f80478c55099148d7f855
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87086695"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce をコピー元またはコピー先としてデータをコピーする

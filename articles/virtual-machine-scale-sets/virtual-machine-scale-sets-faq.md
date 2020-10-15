@@ -10,10 +10,10 @@ ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: 8170cfcbbf200c6ba5030aff5716f46b537d8c97
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87080473"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets の FAQ

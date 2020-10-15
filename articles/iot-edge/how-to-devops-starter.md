@@ -7,12 +7,12 @@ ms.date: 08/25/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f0f0452854ef7456d1bdf7caf0674fab5bd14557
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d57c1828b9456851d37a65b88eb5f8ea860a80fe
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91297132"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045858"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-starter"></a>Azure DevOps Starter を使用して IoT Edge 用の CI/CD パイプラインを作成する
 
@@ -81,7 +81,7 @@ DevOps Starter によって、Azure Repos にプロジェクトの Git リポジ
 
    ![Azure Repos 内の module.json ファイルを開く](./media/how-to-devops-starter/open-module-json.png)
 
-3. このファイルの **version** パラメーターでは、[Azure DevOps ビルド変数](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=vsts#build-variables)が使用されていることに注意してください。 この構成により、新しいビルドを実行するたびに、新しいバージョンのモジュールが作成されるようになります。
+3. このファイルの **version** パラメーターでは、[Azure DevOps ビルド変数](/azure/devops/pipelines/build/variables?view=vsts#build-variables)が使用されていることに注意してください。 この構成により、新しいビルドを実行するたびに、新しいバージョンのモジュールが作成されるようになります。
 
 ## <a name="examine-the-cicd-pipeline"></a>CI/CD パイプラインを確認する
 

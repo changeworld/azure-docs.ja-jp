@@ -9,10 +9,10 @@ ms.date: 04/06/2018
 ms.author: mimig
 ms.custom: include file
 ms.openlocfilehash: 6cf6cc781a9fd5353f458c2317b51a47df779e4d
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85942322"
 ---
 現在 Azure Table Storage を使用している場合、Azure Cosmos DB Table API に移行することにより次のメリットが得られます。

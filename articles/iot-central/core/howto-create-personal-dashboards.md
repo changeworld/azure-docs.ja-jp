@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: f7dca7352a49e668231f64632371a445985e4de3
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83634631"
 ---
 # <a name="create-and-manage-multiple-dashboards"></a>複数のダッシュボードの作成と管理
