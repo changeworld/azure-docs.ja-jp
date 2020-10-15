@@ -4,10 +4,10 @@ description: 関数を Azure 仮想ネットワークに接続する方法を説
 ms.topic: article
 ms.date: 4/23/2020
 ms.openlocfilehash: f50c923104fdfcf26f400f20f0de66a82eb3d245
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87387525"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>チュートリアル: Functions を Azure 仮想ネットワークに統合する
@@ -105,7 +105,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1. **[VNET 統合]** ページで、 **[VNet の追加]** を選択します。
 
-    :::image type="content" source="./media/functions-create-vnet/networking-2.png" alt-text="VNet 統合プレビューを追加する":::
+    :::image type="content" source="./media/functions-create-vnet/networking-2.png" alt-text="関数アプリで [ネットワーク] を選択する":::
 
 1. **[ネットワーク機能の状態]** で、画像の下にある表の設定を使用します。
 
@@ -129,7 +129,7 @@ VNet 統合を有効にすると、仮想ネットワークで実行している
 
 1. 関数アプリで、左側のメニューから **[プロキシ]** を選択し、次に **[追加]** を選択します。 画像の下の表に示したプロキシ設定を使用してください。
 
-    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="プロキシ設定を定義する":::
+    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="関数アプリで [ネットワーク] を選択する":::
 
     | 設定  | 推奨値  | 説明      |
     | -------- | ---------------- | ---------------- |

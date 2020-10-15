@@ -10,10 +10,10 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: peterpr
 ms.openlocfilehash: 20c4452a32c791f33e08c883d8cec89a345ab188
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87352051"
 ---
 # <a name="understand-the-digital-twins-model-parser"></a>Digital Twins モデル パーサーについて理解する

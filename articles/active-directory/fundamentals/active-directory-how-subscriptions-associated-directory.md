@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ddca4bc684646854ae8d308043b3de56ec65924
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: 747edfdb2a2709a842f767d2ace09662d139c827
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89426097"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91666434"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する
 
@@ -50,7 +50,7 @@ Azure サブスクリプションには、Azure Active Directory (Azure AD) と�
   - キー コンテナーがある場合はアクセスできなくなり、関連付けを行った後にそれらの修正が必要になる
   - 仮想マシンやロジック アプリなどのリソースのマネージド ID を持っている場合は、関連付け後にそれらを再度有効にするか再作成する必要がある
   - 登録されている Azure Stack がある場合は、関連付けを行った後に再登録が必要になる
-  - 詳細については、「[Azure サブスクリプションを別の Azure AD ディレクトリに移転する (プレビュー)](../../role-based-access-control/transfer-subscription.md)」を参照してください。
+  - 詳細については、「[Azure サブスクリプションを別の Azure AD ディレクトリに移転する](../../role-based-access-control/transfer-subscription.md)」を参照してください。
 
 - 次のようなアカウントを使用してサインインします。
 
@@ -93,7 +93,7 @@ Azure サブスクリプションには、Azure Active Directory (Azure AD) と�
 
 - このサブスクリプションを使用して Azure Stack を登録した場合は、再登録する必要があります。 詳細については、「[Azure サブスクリプションを使用した Azure Stack の登録](/azure-stack/operator/azure-stack-registration)」を参照してください。
 
-- 詳細については、「[Azure サブスクリプションを別の Azure AD ディレクトリに移転する (プレビュー)](../../role-based-access-control/transfer-subscription.md)」を参照してください。
+- 詳細については、「[Azure サブスクリプションを別の Azure AD ディレクトリに移転する](../../role-based-access-control/transfer-subscription.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

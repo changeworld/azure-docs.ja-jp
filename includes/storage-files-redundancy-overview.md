@@ -9,10 +9,10 @@ ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: b7c097306ba46d4f0024aecc55994508e2d8a090
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86156674"
 ---
 Azure ファイル共有内のデータを損失や破損から保護するため、すべての Azure ファイル共有では、各ファイルが書き込まれるときに複数のコピーが格納されます。 ワークロードの要件に応じて、冗長性のレベルをさらに高めることができます。 現在、Azure Files では次のデータ冗長性オプションがサポートされています。

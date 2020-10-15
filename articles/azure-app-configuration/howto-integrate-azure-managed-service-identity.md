@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: 02d9407766930f02c70d580112136b50b6036e11
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: d71f0396f453ceb7113d724b113fe5aacdc60e21
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029865"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078172"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>マネージド ID を使用して App Configuration にアクセスする
 
@@ -39,7 +39,7 @@ Azure App Configuration とその .NET Core、.NET Framework、および Java Sp
 このチュートリアルを完了するには、以下が必要です。
 
 * [.NET Core SDK](https://www.microsoft.com/net/download/windows)。
-* [構成済みの Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart)。
+* [構成済みの Azure Cloud Shell](../cloud-shell/quickstart.md)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -73,7 +73,7 @@ Azure App Configuration とその .NET Core、.NET Framework、および Java Sp
 
     ![マネージド ID の追加](./media/add-managed-identity.png)
 
-1. 省略可能:Key Vault へのアクセスも許可する場合は、「[Key Vault アクセス ポリシーを割り当てる](/azure/key-vault/general/assign-access-policy-portal)」の指示に従ってください。
+1. 省略可能:Key Vault へのアクセスも許可する場合は、「[Key Vault アクセス ポリシーを割り当てる](../key-vault/general/assign-access-policy-portal.md)」の指示に従ってください。
 
 ## <a name="use-a-managed-identity"></a>マネージド ID の使用
 
@@ -185,7 +185,7 @@ Azure App Configuration とその .NET Core、.NET Framework、および Java Sp
     他の App Configuration キーと同様に Key Vault 参照にアクセスできるようになりました。 構成プロバイダーは、Key Vault に対して認証して値を取得するように構成した `KeyVaultClient` を使用します。
 
 > [!NOTE]
-> `ManagedIdentityCredential` では、マネージド ID 認証のみがサポートされます。 ローカル環境では機能しません。 コードをローカルで実行する場合、サービス プリンシパル認証もサポートしている `DefaultAzureCredential` の使用を検討してください。 詳細については、[こちらのリンク](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential)を参照してください。
+> `ManagedIdentityCredential` では、マネージド ID 認証のみがサポートされます。 ローカル環境では機能しません。 コードをローカルで実行する場合、サービス プリンシパル認証もサポートしている `DefaultAzureCredential` の使用を検討してください。 詳細については、[こちらのリンク](/dotnet/api/azure.identity.defaultazurecredential)を参照してください。
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 

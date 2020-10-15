@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: zarhoads
 ms.openlocfilehash: fab4943cad1a87bda70a4c4332ab6135ed99bf1b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89022277"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのポッドのセキュリティに関するベスト プラクティス
@@ -97,7 +97,7 @@ Azure リソースのマネージド ID を使用すると、ポッドは、Stor
 
 アプリケーションで資格情報が必要な場合は、デジタル資格情報コンテナーと通信し、最新の機密コンテンツを取得してから、必要なサービスに接続します。 Azure Key Vault は、このデジタル資格情報コンテナーとして使用できます。 次の図に、ポッドのマネージド ID を使用して Azure Key Vault から資格情報を取得する際の簡略化されたワークフローを示します。
 
-:::image type="content" source="media/developer-best-practices-pod-security/basic-key-vault.svg" alt-text="ポッドのマネージド ID を使用して Key Vault から資格情報を取得する際の簡略化されたワークフロー":::
+:::image type="content" source="media/developer-best-practices-pod-security/basic-key-vault.svg" alt-text="Azure でのポッドのマネージド ID の簡略化されたワークフロー":::
 
 Key Vault では、資格情報、ストレージ アカウント キー、証明書などのシークレットを格納し、定期的にローテーションします。 [シークレット ストア CSI ドライバーの Azure Key Vault プロバイダー](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage)を使用して、Azure Key Vault を AKS クラスターと統合できます。 シークレット ストア CSI ドライバーを使用すると、AKS クラスターで Key Vault から機密コンテンツをネイティブに取得し、要求されているポッドだけに安全に提供できます。 クラスター オペレーターと連携して、シークレット ストア CSI ドライバーを AKS worker ノードにデプロイします。 ポッドのマネージド ID を使用して Key Vault へのアクセスを要求したり、シークレット ストア CSI ドライバーを使用して必要な機密コンテンツを取得したりすることができます。
 

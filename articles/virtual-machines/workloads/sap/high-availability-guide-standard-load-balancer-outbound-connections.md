@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/16/2020
 ms.author: radeltch
-ms.openlocfilehash: a0dc9f673abcac549fffc7291b8ac376c297da6b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9d3ecae17ae14effe48f5a7a0ee3f73d3054a220
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836124"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961478"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続
 
@@ -67,12 +67,12 @@ SAP のデプロイでパブリック エンドポイントへの送信接続が
   * [Azure Firewall の概要](../../../firewall/overview.md) - Azure Firewall の概要
   * [チュートリアル:Azure Firewall のデプロイと構成](../../../firewall/tutorial-firewall-deploy-portal.md) - Azure portal を使用して Azure Firewall を構成する方法についての説明
 * [仮想ネットワーク - ユーザー定義規則](../../../virtual-network/virtual-networks-udr-overview.md#user-defined) - Azure ルーティングの概念と規則  
-* [セキュリティ グループのサービス タグ](../../../virtual-network/security-overview.md#service-tags) - サービス タグを使用してネットワーク セキュリティ グループとファイアウォールの構成を簡略化する方法
+* [セキュリティ グループのサービス タグ](../../../virtual-network/network-security-groups-overview.md#service-tags) - サービス タグを使用してネットワーク セキュリティ グループとファイアウォールの構成を簡略化する方法
 
 ## <a name="additional-external-azure-standard-load-balancer-for-outbound-connections-to-internet"></a>インターネットへの送信接続のために追加する外部 Azure Standard Load Balancer
 
 パブリック エンドポイントから VM への受信接続を許可せずに、パブリック エンドポイントへの送信接続を実現する 1 つのオプションは、パブリック IP アドレスを使用して 2 番目のロード バランサーを作成し、2 番目のロード バランサーのバックエンド プールに VM を追加して、[送信規則](../../../load-balancer/load-balancer-outbound-connections.md#outboundrules)だけを定義することです。  
-VM からの発信呼び出しにアクセスできるパブリック エンドポイントを制御するには、[ネットワーク セキュリティ グループ](../../../virtual-network/security-overview.md)を使用します。  
+VM からの発信呼び出しにアクセスできるパブリック エンドポイントを制御するには、[ネットワーク セキュリティ グループ](../../../virtual-network/network-security-groups-overview.md)を使用します。  
 詳しくは、[アウトバウンド接続](../../../load-balancer/load-balancer-outbound-connections.md#scenarios)に関するドキュメントのシナリオ 2 をご覧ください。  
 構成は次のようになります。  
 
@@ -81,11 +81,11 @@ VM からの発信呼び出しにアクセスできるパブリック エンド�
 ### <a name="important-considerations"></a>重要な考慮事項
 
 - 同じサブネット内の複数の VM 用にパブリック Load Balancer を 1 つ追加して、パブリック エンドポイントへの送信接続を実現し、コストを最適化することができます  
-- VM からアクセスできるパブリック エンドポイントを制御するには、[ネットワーク セキュリティ グループ](../../../virtual-network/security-overview.md)を使用します。 ネットワーク セキュリティ グループは、サブネットまたは各 VM に割り当てることができます。 可能な場合は、[サービス タグ](../../../virtual-network/security-overview.md#service-tags)を使用して、セキュリティ規則の複雑さを軽減します。  
+- VM からアクセスできるパブリック エンドポイントを制御するには、[ネットワーク セキュリティ グループ](../../../virtual-network/network-security-groups-overview.md)を使用します。 ネットワーク セキュリティ グループは、サブネットまたは各 VM に割り当てることができます。 可能な場合は、[サービス タグ](../../../virtual-network/network-security-groups-overview.md#service-tags)を使用して、セキュリティ規則の複雑さを軽減します。  
 - パブリック IP アドレスとアウトバウンド規則を備えた Azure Standard Load Balancer を使うと、パブリック エンドポイントに直接アクセスできます。 企業のセキュリティ要件で、監査とログ記録のため、集中管理された企業ソリューションを使用してすべての送信トラフィックを通過させる必要がある場合は、このシナリオで要件を満たすことができない可能性があります。  
 
 >[!TIP]
->可能な場合は、[サービス タグ](../../../virtual-network/security-overview.md#service-tags)を使用して、ネットワーク セキュリティ グループの複雑さを軽減します。 
+>可能な場合は、[サービス タグ](../../../virtual-network/network-security-groups-overview.md#service-tags)を使用して、ネットワーク セキュリティ グループの複雑さを軽減します。 
 
 ### <a name="deployment-steps"></a>デプロイメントの手順
 
@@ -117,7 +117,7 @@ VM からの発信呼び出しにアクセスできるパブリック エンド�
 
    ![パブリック IP を使用した 2 番目の Load Balancer での送信接続](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-network-security-groups.png)
 
-   Azure ネットワーク セキュリティ グループについて詳しくは、「[セキュリティ グループ](../../../virtual-network/security-overview.md)」をご覧ください。 
+   Azure ネットワーク セキュリティ グループについて詳しくは、「[セキュリティ グループ](../../../virtual-network/network-security-groups-overview.md)」をご覧ください。 
 
 ## <a name="azure-firewall-for-outbound-connections-to-internet"></a>インターネットへの送信接続に対する Azure Firewall
 
@@ -137,7 +137,7 @@ Azure Firewall をデプロイする方法について詳しくは、[Azure Fire
 - 企業のファイアウォール ソリューションが Azure Firewall ではなく、すべての送信トラフィックを一元化された企業ソリューションを通過させるというセキュリティ要件がある場合、このソリューションは実用的ではない可能性があります。  
 
 >[!TIP]
->可能な場合は、[サービス タグ](../../../virtual-network/security-overview.md#service-tags)を使用して、Azure Firewall の規則の複雑さを軽減します。  
+>可能な場合は、[サービス タグ](../../../virtual-network/network-security-groups-overview.md#service-tags)を使用して、Azure Firewall の規則の複雑さを軽減します。  
 
 ### <a name="deployment-steps"></a>デプロイメントの手順
 

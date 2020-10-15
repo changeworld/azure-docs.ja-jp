@@ -8,10 +8,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.openlocfilehash: a34544eb29f0a1417d10955bba755fb4f9965320
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88136041"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Azure Cosmos DB のデータ モデリング
@@ -299,7 +299,7 @@ Book documents:
 リレーショナル データベースでは、 *多対多* のリレーションシップは多くの場合、単に他のテーブルからのレコードを結合する結合テーブルを使用してモデル化されます。
 
 
-:::image type="content" source="./media/sql-api-modeling-data/join-table.png" alt-text="テーブルの結合" border="false":::
+:::image type="content" source="./media/sql-api-modeling-data/join-table.png" alt-text="リレーショナル データベース モデル" border="false":::
 
 ドキュメントを使用して同じ内容を複製し、次の例のようなデータ モデルを作成したくなるかもしれません。
 

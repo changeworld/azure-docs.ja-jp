@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: a58b00018f6ac89f024661d8d3f50ea5249e620b
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 414ae3b2adb60b9442a69e3ebcc8b13b29c67cb7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182124"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070505"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でパブリック Standard Load Balancer を使用する
 
@@ -322,7 +322,7 @@ Kubernetes サービスでサポートされている、種類が `LoadBalancer`
 | `service.beta.kubernetes.io/azure-load-balancer-internal`         | `true` または `false`                     | ロード バランサーが内部である必要があるかどうかを指定します。 設定しない場合、既定で public が使用されます。
 | `service.beta.kubernetes.io/azure-load-balancer-internal-subnet`  | サブネットの名前                    | 内部ロード バランサーをバインドする必要があるサブネットを指定します。 設定しない場合、既定で、クラウド構成ファイルで構成されているサブネットが使用されます。
 | `service.beta.kubernetes.io/azure-dns-label-name`                 | パブリック IP 上の DNS ラベルの名前   | **パブリック** サービスの DNS ラベル名を指定します。 空の文字列に設定すると、パブリック IP の DNS エントリは使用されません。
-| `service.beta.kubernetes.io/azure-shared-securityrule`            | `true` または `false`                     | 別のサービスと共有される可能性のある Azure セキュリティ規則を使用してサービスを公開する必要があることを指定します。公開できるサービス数が増えるとサービスの特異性は低下します。 この注釈は、ネットワーク セキュリティ グループの Azure [拡張セキュリティ規則](../virtual-network/security-overview.md#augmented-security-rules)機能に依存します。 
+| `service.beta.kubernetes.io/azure-shared-securityrule`            | `true` または `false`                     | 別のサービスと共有される可能性のある Azure セキュリティ規則を使用してサービスを公開する必要があることを指定します。公開できるサービス数が増えるとサービスの特異性は低下します。 この注釈は、ネットワーク セキュリティ グループの Azure [拡張セキュリティ規則](../virtual-network/network-security-groups-overview.md#augmented-security-rules)機能に依存します。 
 | `service.beta.kubernetes.io/azure-load-balancer-resource-group`   | リソース グループの名前            | クラスター インフラストラクチャと同一のリソース グループ (ノード リソース グループ) 内にないロード バランサーのパブリック IP のリソース グループを指定します。
 | `service.beta.kubernetes.io/azure-allowed-service-tags`           | 許可されるサービス タグの一覧          | 許可される[サービス タグ][service-tags]をコンマで区切った一覧指定します。
 | `service.beta.kubernetes.io/azure-load-balancer-tcp-idle-timeout` | TCP アイドル タイムアウト (分)          | ロード バランサーで TCP 接続のアイドル タイムアウトが発生するまでの時間を分数で指定します。 既定値は 4 で、これが最小値です。 最大値は 30 です。 整数を指定する必要があります。
@@ -426,4 +426,4 @@ Kubernetes サービスでサポートされている、種類が `LoadBalancer`
 [requirements]: #requirements-for-customizing-allocated-outbound-ports-and-idle-timeout
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [troubleshoot-snat]: #troubleshooting-snat
-[service-tags]: ../virtual-network/security-overview.md#service-tags
+[service-tags]: ../virtual-network/network-security-groups-overview.md#service-tags
