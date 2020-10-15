@@ -9,10 +9,10 @@ ms.date: 03/03/2020
 ms.author: barbkess
 ms.custom: references_regions
 ms.openlocfilehash: b720d9dd824018d885ccc9860ee9fd8a90a46051
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84194329"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>ビジネス継続性とディザスター リカバリー (BCDR):Azure のペアになっているリージョン
@@ -53,7 +53,7 @@ Azure 地域とは、少なくとも 1 つの Azure リージョンを含む、�
 | オーストラリア |オーストラリア東部 |オーストラリア南東部 |
 | オーストラリア |オーストラリア中部 |オーストラリア中部 2 |
 | ブラジル |ブラジル南部 |米国中南部 |
-| カナダ |カナダ中部 |カナダ東部 |
+| Canada |カナダ中部 |カナダ東部 |
 | 中国 |中国北部 |中国東部|
 | 中国 |中国北部 2 |中国東部 2|
 | ヨーロッパ |北ヨーロッパ (アイルランド) |西ヨーロッパ (オランダ) |

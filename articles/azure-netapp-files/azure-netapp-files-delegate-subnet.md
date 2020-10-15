@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: b-juche
-ms.openlocfilehash: bed1375631c017d23ed53b6102c424533237099e
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: bb3d1fd49c2623ff6dcbe8a19ae8c8ca3b46425a
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447562"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930630"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>サブネットを Azure NetApp Files に委任する 
 
@@ -33,7 +33,7 @@ ms.locfileid: "91447562"
    1 つの VNet には、委任されたサブネットを 1 つだけ含めることができます。 NetApp アカウントでは、複数の Vnet にボリュームを配置でき、それぞれに独自の委任されたサブネットがあります。  
 * 委任されたサブネット内のネットワーク セキュリティ グループまたはサービス エンドポイントを指定することはできません。 そうした場合、サブネットの委任が失敗します。
 * グローバルにピアリングされた仮想ネットワークからボリュームへのアクセスは、現在はサポートされていません。
-* Azure NetApp Files 用の委任サブネットの場合は、[ユーザー定義ルート](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes) (UDR) とネットワーク セキュリティ グループ (NSG) はサポートされていません。 しかし、UDR と NSG を他のサブネットに適用することはできます。これは、Azure NetApp Files に委任されたサブネットと同じ VNet 内であっても同様です。  
+* Azure NetApp Files 用の委任サブネットの場合は、[ユーザー定義ルート](../virtual-network/virtual-networks-udr-overview.md#custom-routes) (UDR) とネットワーク セキュリティ グループ (NSG) はサポートされていません。 しかし、UDR と NSG を他のサブネットに適用することはできます。これは、Azure NetApp Files に委任されたサブネットと同じ VNet 内であっても同様です。  
    Azure NetApp Files によって、委任されたサブネットへのシステム ルートが作成されます。 トラブルシューティングのために必要な場合、ルートはルート テーブルの **[有効なルート]** に表示されています。
 
 ## <a name="steps"></a>手順
@@ -54,6 +54,4 @@ ms.locfileid: "91447562"
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure NetApp Files のボリュームを作成する](azure-netapp-files-create-volumes.md)
-* [Azure サービスの仮想ネットワーク統合について理解する](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
-
-
+* [Azure サービスの仮想ネットワーク統合について理解する](../virtual-network/virtual-network-for-azure-services.md)

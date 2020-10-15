@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 0c8739dff39490f14b613af483f769ac031c1bd9
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: e6acea560c3a02420b15aff84475ab58e642116c
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792379"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078257"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>接続済みファクトリ ソリューション アクセラレータに関してよく寄せられる質問
 
@@ -125,7 +125,7 @@ www.azureiotsolutions.com からソリューションをデプロイした場合
 
 ### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>シミュレーションがクラウドにデータを送信していることを確認するにはどうすればいいですか
 
-[Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer) または [Azure IoT CLI Extension monitor-events](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) コマンドを使用すると、特定のデバイスから IoT Hub に送信されるデータを検査できます。 これらのツールを使用するには、デプロイ環境の IoT ハブ用の接続文字列を知っている必要があります。 「[ソリューションで使用される IoT ハブの接続文字列を探すにはどうすればいいですか](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)」をご覧ください。
+[Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer) または [Azure IoT CLI Extension monitor-events](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) コマンドを使用すると、特定のデバイスから IoT Hub に送信されるデータを検査できます。 これらのツールを使用するには、デプロイ環境の IoT ハブ用の接続文字列を知っている必要があります。 「[ソリューションで使用される IoT ハブの接続文字列を探すにはどうすればいいですか](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)」をご覧ください。
 
 発行元デバイスの 1 つから送信されるデータを検査します。
 
@@ -194,6 +194,6 @@ OPC UA 非対応デバイスから接続済みファクトリに利用統計情�
 
 IoT ソリューション アクセラレータの他の機能についても学習できます。
 
-* [予測メンテナンスのソリューション アクセラレータの概要](iot-accelerators-predictive-overview.md)
+* [予測メンテナンスのソリューション アクセラレータの概要](./iot-accelerators-predictive-walkthrough.md)
 * [接続済みファクトリ ソリューション アクセラレータの展開](quickstart-connected-factory-deploy.md)
-* [徹底的な IoT セキュリティ](/azure/iot-fundamentals/iot-security-ground-up)
+* [徹底的な IoT セキュリティ](../iot-fundamentals/iot-security-ground-up.md)

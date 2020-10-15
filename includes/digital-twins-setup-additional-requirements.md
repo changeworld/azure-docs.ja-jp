@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 7/22/2020
 ms.author: baanders
 ms.openlocfilehash: c2668bdda5002ebd2a34b8a2ffa5885263aec0c9
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88009659"
 ---
 アプリ登録を正常に設定する (それにより、使用可能な Azure Digital Twins インスタンスの設定を完了する) には、組織にサブスクリプションの所有者/管理者からの追加のアクションが必要になる可能性があります。 必要な手順は、組織の具体的な設定によって異なることがあります。
@@ -20,7 +20,7 @@ ms.locfileid: "88009659"
     :::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/portal/grant-admin-consent.png" alt-text=" [API のアクセス許可] にある [管理者の同意の付与] ボタンのポータル ビュー":::
   - 同意が正常に付与された場合は、Azure Digital Twins のエントリに _[ **(ユーザーの会社)** に付与されました]_ の *[状態]* 値が表示されます。
    
-    :::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/portal/granted-admin-consent-done.png" alt-text=" [API のアクセス許可] で会社に付与された管理者の同意のポータル ビュー":::
+    :::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/portal/granted-admin-consent-done.png" alt-text=" [API のアクセス許可] にある [管理者の同意の付与] ボタンのポータル ビュー":::
 * パブリック クライアント アクセスをアクティブ化する
 * Web およびデスクトップへのアクセスに特定の応答 URL を設定する
 * 暗黙の OAuth2 認証フローを許可する

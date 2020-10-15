@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: b-juche
-ms.openlocfilehash: 90e88020f735f34d308935f1233fb91c0eddfe32
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 72c574779d63a3629ea3c99529686b7d3247fe25
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961066"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91931208"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api-using-powershell"></a>PowerShell を使用して REST API による Azure NetApp Files 用の開発を行う
 
@@ -34,9 +34,9 @@ Azure NetApp Files の REST API 仕様は、[GitHub](https://github.com/Azure/az
 
 ## <a name="access-the-azure-netapp-files-rest-api"></a>Azure NetApp Files REST API にアクセスする  
 
-1. まだ行っていなければ、[Azure CLI をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)します。
+1. まだ行っていなければ、[Azure CLI をインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)します。
 2. Azure Active Directory (Azure AD) 内にサービス プリンシパルを作成します。
-   1. [十分なアクセス許可](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)を持っていることを確認します。
+   1. [十分なアクセス許可](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)を持っていることを確認します。
 
    2. Azure CLI で、次のコマンドを入力します。  
 
@@ -437,4 +437,4 @@ Invoke-RestMethod -Method Get -Headers $headers -Uri https://management.azure.co
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure NetApp Files REST API リファレンスを参照する](https://docs.microsoft.com/rest/api/netapp/)
+[Azure NetApp Files REST API リファレンスを参照する](/rest/api/netapp/)

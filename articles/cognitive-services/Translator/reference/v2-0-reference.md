@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 05/15/2018
 ms.author: swmachan
 ms.openlocfilehash: 7fa148579e7525933d388b8a93c9a3476f473cb6
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83588617"
 ---
 # <a name="translator-v20"></a>Translator v2.0
@@ -52,7 +52,7 @@ Translator への呼び出しでは、いずれも認証にサブスクリプシ
 |ProfanityAction    |アクション |ソースの例 (日本語)  |翻訳の例 (英語)  |
 |:--|:--|:--|:--|
 |NoAction   |既定値。 オプションを設定しない場合と同じです。 不適切な表現はソースからターゲットに渡されます。        |彼はジャッカスです。     |He is a jackass.   |
-|Marked     |不適切な単語は XML タグ \<profanity> および \</profanity> によって囲まれます。       |彼はジャッカスです。 |He is a \<profanity>jackass\</profanity>.  |
+|Marked     |不適切な単語が XML タグ \<profanity> と \</profanity> で囲まれます。       |彼はジャッカスです。 |He is a \<profanity>jackass\</profanity>.  |
 |Deleted    |不適切な単語は、置換されずに出力から削除されます。     |彼はジャッカスです。 |He is a.   |
 
     

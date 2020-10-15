@@ -2,18 +2,18 @@
 title: チュートリアル:デバッグ セッションを使用してスキルセットに対する診断、修正、および変更のコミットを行う
 titleSuffix: Azure Cognitive Search
 description: デバッグ セッション (プレビュー) では、スキルセットの問題やエラーを評価および修復するためのポータルベースのインターフェイスを提供します
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: 8bbd0b1979da69e5d4d18009100a7caee5a3d722
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 33c26af86bfcf2f748a0fa68ee4f3d0da1f132e1
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397404"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057554"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>チュートリアル:スキルセットに対する診断、修復、および変更のコミットを行う
 

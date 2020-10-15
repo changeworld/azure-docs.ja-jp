@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: abab80f8c790a170ec30fa228dd86576079a73a0
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 40c1fb314a2dea653740e7f87b5caa14c759fffb
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462549"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078223"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>IoT ソリューション アクセラレータに関してよく寄せられる質問
 
@@ -65,7 +65,7 @@ Azure サブスクリプションが確かにある場合は、サブスクリ�
 
 ### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>以前のバージョンのリモート監視ソリューションに関する情報はどこで入手できますか?
 
-以前のバージョンのリモート監視ソリューション アクセラレータは、IoT Suite リモート監視構成済みソリューションと呼ばれていました。 アーカイブされたドキュメントは [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/) で参照できます。
+以前のバージョンのリモート監視ソリューション アクセラレータは、IoT Suite リモート監視構成済みソリューションと呼ばれていました。 アーカイブされたドキュメントは [https://docs.microsoft.com/previous-versions/azure/iot-suite/](/previous-versions/azure/iot-suite/) で参照できます。
 
 ### <a name="is-the-new-solution-accelerator-available-in-the-same-geographic-region-as-the-existing-solution"></a>既存のソリューションと同じ地理的リージョンで、新しいソリューション アクセラレータを利用できますか?
 
@@ -101,13 +101,13 @@ Azure サブスクリプションが確かにある場合は、サブスクリ�
 
 ### <a name="how-do-i-delete-an-azure-ad-tenant"></a>Azure AD テナントを削除するにはどうすればよいですか。
 
-[Azure AD テナントの削除方法](https://docs.microsoft.com/archive/blogs/ericgolpe/walkthrough-of-deleting-an-azure-ad-tenant)に関する Eric Golpe のブログ記事を参照してください。
+[Azure AD テナントの削除方法](/archive/blogs/ericgolpe/walkthrough-of-deleting-an-azure-ad-tenant)に関する Eric Golpe のブログ記事を参照してください。
 
 ### <a name="next-steps"></a>次のステップ
 
 IoT ソリューション アクセラレータの他の機能についても学習できます。
 
 * [リモート監視ソリューション アクセラレータの機能について知る](quickstart-remote-monitoring-deploy.md)
-* [予測メンテナンスのソリューション アクセラレータの概要](iot-accelerators-predictive-overview.md)
+* [予測メンテナンスのソリューション アクセラレータの概要](./iot-accelerators-predictive-walkthrough.md)
 * [接続済みファクトリ ソリューション アクセラレータの展開](quickstart-connected-factory-deploy.md)
-* [徹底的な IoT セキュリティ](/azure/iot-fundamentals/iot-security-ground-up)
+* [徹底的な IoT セキュリティ](../iot-fundamentals/iot-security-ground-up.md)

@@ -1,6 +1,6 @@
 ---
 title: Azure portal での Azure Storage アカウントの監視方法 | Microsoft Docs
-description: Azure Portal と Azure Storage Analytics を使用して、Azure でストレージ アカウントを監視する方法について説明します。
+description: Azure portal と Azure Storage Analytics を使用して、Azure でストレージ アカウントを監視する方法について説明します。
 author: normesta
 ms.service: storage
 ms.topic: conceptual
@@ -10,13 +10,13 @@ ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
 ms.openlocfilehash: 4c78938e2f70342822a4009ed9195196ca486fe0
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88034670"
 ---
-# <a name="monitor-a-storage-account-in-the-azure-portal"></a>Azure Portal でのストレージ アカウントの監視
+# <a name="monitor-a-storage-account-in-the-azure-portal"></a>Azure ポータルでのストレージ アカウントの監視
 
 [Azure Storage Analytics](storage-analytics.md) では、すべてのストレージ サービスのメトリックと、BLOB、キュー、およびテーブルのログを利用できます。 [Azure Portal](https://portal.azure.com) を使用すると、アカウントに対してどのメトリックとログを記録するか、また、そのメトリック データを視覚的に表現するグラフを構成できます。 
 

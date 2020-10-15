@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 02/24/2020
 ms.author: cherylmc
-ms.openlocfilehash: f9bc06e58fcbd93fba0c92e91b51503239b5a951
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 2af63997f9ea74dfce184639d2fedb42d354fb39
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90980778"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077577"
 ---
 # <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion"></a>Azure Bastion を使用して Linux 仮想マシンに SSH 接続する
 
@@ -25,9 +25,9 @@ Azure Bastion を使用して、Linux 仮想マシンに SSH 接続できます�
 
 SSH 秘密キーは、`"-----BEGIN RSA PRIVATE KEY-----"` で始まり、`"-----END RSA PRIVATE KEY-----"` で終わる形式である必要があります。
 
-## <a name="before-you-begin"></a>開始する前に
+## <a name="prerequisites"></a>前提条件
 
-VM が存在する仮想ネットワークの Azure Bastion ホストが設定されていることを確認します。 詳細については、[Azure Bastion ホストの作成](bastion-create-host-portal.md)に関する記事をご覧ください。 Bastion サービスをプロビジョニングし、仮想ネットワークにデプロイしたら、それを使用してこの仮想ネットワーク内の任意の VM に接続できます。 
+VM が存在する仮想ネットワークの Azure Bastion ホストが設定されていることを確認します。 詳細については、[Azure Bastion ホストの作成](./tutorial-create-host-portal.md)に関する記事をご覧ください。 Bastion サービスをプロビジョニングし、仮想ネットワークにデプロイしたら、それを使用してこの仮想ネットワーク内の任意の VM に接続できます。 
 
 Bastion を使用して接続する場合、Windows VM への接続には RDP を使用し、Linux VM への接続には SSH を使用していることを前提としています。 Windows VM への接続については、[VM への接続 (Windows)](bastion-connect-vm-rdp.md) に関する記事をご覧ください。
 
@@ -50,7 +50,7 @@ SSH 経由で Linux VM に接続するには、お使いの VM で次のポー�
 1. [Azure Portal](https://portal.azure.com)を開きます。 接続先の仮想マシンに移動し、 **[接続]** をクリックし、ドロップダウンから **[Bastion]** を選択します。
 
    ![Azure portal の仮想マシンの概要のスクリーンショット。[接続] が選択されています。](./media/bastion-connect-vm-ssh/connect.png)
-1. [Bastion] をクリックすると、RDP、SSH、Bastion の 3 つのタブがあるサイド バーが表示されます。 Bastion が仮想ネットワーク用にプロビジョニングされている場合、[Bastion] タブが既定でアクティブになっています。 Bastion を仮想ネットワーク用にプロビジョニングしていない場合は、[Bastion の構成](bastion-create-host-portal.md)に関する記事をご覧ください。
+1. [Bastion] をクリックすると、RDP、SSH、Bastion の 3 つのタブがあるサイド バーが表示されます。 Bastion が仮想ネットワーク用にプロビジョニングされている場合、[Bastion] タブが既定でアクティブになっています。 Bastion を仮想ネットワーク用にプロビジョニングしていない場合は、[Bastion の構成](./tutorial-create-host-portal.md)に関する記事をご覧ください。
 
    ![[仮想マシンへの接続] ダイアログ ボックスのスクリーンショット。[BASTION] が選択されています。](./media/bastion-connect-vm-ssh/bastion.png)
 1. 仮想マシンに SSH 接続するためのユーザー名とパスワードを入力します。
@@ -61,7 +61,7 @@ SSH 経由で Linux VM に接続するには、お使いの VM で次のポー�
 1. [Azure Portal](https://portal.azure.com)を開きます。 接続先の仮想マシンに移動し、 **[接続]** をクリックし、ドロップダウンから **[Bastion]** を選択します。
 
    ![Azure portal の仮想マシンの概要のスクリーンショット。[接続] が選択されています。](./media/bastion-connect-vm-ssh/connect.png)
-1. [Bastion] をクリックすると、RDP、SSH、Bastion の 3 つのタブがあるサイド バーが表示されます。 Bastion が仮想ネットワーク用にプロビジョニングされている場合、[Bastion] タブが既定でアクティブになっています。 Bastion を仮想ネットワーク用にプロビジョニングしていない場合は、[Bastion の構成](bastion-create-host-portal.md)に関する記事をご覧ください。
+1. [Bastion] をクリックすると、RDP、SSH、Bastion の 3 つのタブがあるサイド バーが表示されます。 Bastion が仮想ネットワーク用にプロビジョニングされている場合、[Bastion] タブが既定でアクティブになっています。 Bastion を仮想ネットワーク用にプロビジョニングしていない場合は、[Bastion の構成](./tutorial-create-host-portal.md)に関する記事をご覧ください。
 
    ![[仮想マシンへの接続] ダイアログ ボックスのスクリーンショット。[BASTION] が選択されています。](./media/bastion-connect-vm-ssh/bastion.png)
 1. ユーザー名を入力し、 **[SSH 秘密キー]** を選択します。
@@ -73,7 +73,7 @@ SSH 経由で Linux VM に接続するには、お使いの VM で次のポー�
 1. [Azure Portal](https://portal.azure.com)を開きます。 接続先の仮想マシンに移動し、 **[接続]** をクリックし、ドロップダウンから **[Bastion]** を選択します。
 
    ![Azure portal の仮想マシンの概要のスクリーンショット。[接続] が選択されています。](./media/bastion-connect-vm-ssh/connect.png)
-1. [Bastion] をクリックすると、RDP、SSH、Bastion の 3 つのタブがあるサイド バーが表示されます。 Bastion が仮想ネットワーク用にプロビジョニングされている場合、[Bastion] タブが既定でアクティブになっています。 Bastion を仮想ネットワーク用にプロビジョニングしていない場合は、[Bastion の構成](bastion-create-host-portal.md)に関する記事をご覧ください。
+1. [Bastion] をクリックすると、RDP、SSH、Bastion の 3 つのタブがあるサイド バーが表示されます。 Bastion が仮想ネットワーク用にプロビジョニングされている場合、[Bastion] タブが既定でアクティブになっています。 Bastion を仮想ネットワーク用にプロビジョニングしていない場合は、[Bastion の構成](./tutorial-create-host-portal.md)に関する記事をご覧ください。
 
    ![[仮想マシンへの接続] ダイアログ ボックスのスクリーンショット。[BASTION] が選択されています。](./media/bastion-connect-vm-ssh/bastion.png)
 1. ユーザー名を入力し、 **[SSH Private Key from Local File]\(ローカル ファイルの SSH 秘密キー\)** を選択します。

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: surmb
 ms.openlocfilehash: 2ee34e1a7959aafa5db949b443fd58cca58719c6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87281193"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>Application Gateway で HTTP ヘッダーと URL を書き換える
@@ -211,13 +211,13 @@ HTTP 要求または応答ヘッダーを評価し、ヘッダーまたはサー
 
 * 3 番目のルールには、*query_string* 変数が *category=accessories* であるかどうかをチェックする条件があり、URL パスを/*listing3* に書き換える、 **[パス マップの再評価]** が有効なアクションがあります
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-2.png" alt-text="URL 書き換えシナリオ 1-2。":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-2.png" alt-text="URL 書き換えシナリオ 1-1。":::
 
  
 
 **ステップ 2 (b):** この書き換えセットを上記のパスベースのルールの既定のパスに関連付けます
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-3.png" alt-text="URL 書き換えシナリオ 1-3。":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-3.png" alt-text="URL 書き換えシナリオ 1-1。":::
 
 ここで、ユーザーが *contoso.com/listing?category=any* を要求した場合、パスマップのパス パターン (/listing1、/listing2、/listing3) がいずれも一致しないため、既定のパスと一致します。 上記の書き換えセットをこのパスに関連付けたため、この書き換えセットが評価されます。 クエリ文字列はこの書き換えセットの 3 つの書き換えルールのいずれの条件とも一致しないので、書き換えアクションが実行されないため、要求は既定のパスに関連付けられているバックエンド (*GenericList*) に変更されずにルーティングされます。
 
@@ -234,11 +234,11 @@ HTTP 要求または応答ヘッダーを評価し、ヘッダーまたはサー
 
 **条件** - サーバー変数 `uri_path` がパターン `/(.+)/(.+)` に等しい場合
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-1.png" alt-text="URL 書き換えシナリオ 2-1。":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-1.png" alt-text="URL 書き換えシナリオ 1-1。":::
 
 **アクション** - URL パスを `buy.aspx` に設定し、クエリ文字列を `category={var_uri_path_1}&product={var_uri_path_2}` に設定します
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-2.png" alt-text="URL 書き換えシナリオ 2-2。":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-2.png" alt-text="URL 書き換えシナリオ 1-1。":::
 
 前述のシナリオを実現するための詳細な手順については、[Azure portal を使用した Application Gateway での URL の書き換え](rewrite-url-portal.md)に関する記事を参照してください
 
@@ -248,7 +248,7 @@ URL の書き換えの場合は、要求がバックエンドに送信される�
 
 URL のリダイレクトの場合、Application Gateway は新しい URL を使用してリダイレクトの応答をクライアントに送信します。 そのため、クライアントは、リダイレクトで提供された新しい URL に要求を再送信する必要があります。 ブラウザーでユーザーに表示される URL は、新しい URL に更新されます
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-rewrite-vs-redirect.png" alt-text="書き換えとリダイレクト。":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-rewrite-vs-redirect.png" alt-text="URL 書き換えシナリオ 1-1。":::
 
 ## <a name="limitations"></a>制限事項
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/30/2020
 ms.author: mblythe
 ms.openlocfilehash: f3b4806bf46750d74a54f68bd2ab58e402e75091
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85852169"
 ---
 # <a name="manage-an-azure-support-request"></a>Azure サポート リクエストを管理する
@@ -45,17 +45,17 @@ ms.locfileid: "85852169"
 
 1. **[サポート リクエスト]** ページで、 **[変更]** を選択します。
 
-    :::image type="content" source="media/how-to-manage-azure-support-request/change-severity.png" alt-text="サポート リクエストの重大度を変更する":::
+    :::image type="content" source="media/how-to-manage-azure-support-request/change-severity.png" alt-text="すべてのサポート リクエスト":::
 
 1. リクエストが既にサポート エンジニアに割り当てられているかによって、Azure portal に 2 つの画面のいずれかが表示されます。
 
     - リクエストが割り当てられていない場合は、次のような画面が表示されます。 新しい重大度レベルを選択して、 **[変更]** を選択します。
 
-        :::image type="content" source="media/how-to-manage-azure-support-request/unassigned-can-change-severity.png" alt-text="新しい重大度レベルを選択する":::
+        :::image type="content" source="media/how-to-manage-azure-support-request/unassigned-can-change-severity.png" alt-text="すべてのサポート リクエスト":::
 
     - リクエストが割り当てられている場合は、次のような画面が表示されます。 **[OK]** を選択してから、重大度レベルの変更を要求する[新しいメッセージ](#send-a-message)を作成します。
 
-        :::image type="content" source="media/how-to-manage-azure-support-request/assigned-cant-change-severity.png" alt-text="新しい重大度レベルを選択できない":::
+        :::image type="content" source="media/how-to-manage-azure-support-request/assigned-cant-change-severity.png" alt-text="すべてのサポート リクエスト":::
 
 ## <a name="share-diagnostic-information-with-azure-support"></a>Azure サポートと診断情報を共有する
 
@@ -69,7 +69,7 @@ ms.locfileid: "85852169"
     
     1. **[サポート リクエスト]** ページで、 **[アクセス許可の付与]** を選択してから、 **[はい]** と **[OK]** を選択します。
     
-        :::image type="content" source="media/how-to-manage-azure-support-request/grant-permission-manage.png" alt-text="診断情報に対してアクセス許可を付与する":::
+        :::image type="content" source="media/how-to-manage-azure-support-request/grant-permission-manage.png" alt-text="すべてのサポート リクエスト":::
 
 ## <a name="upload-files"></a>ファイルをアップロードする
 
@@ -79,7 +79,7 @@ ms.locfileid: "85852169"
 
 1. **[サポート リクエスト]** ページで、目的のファイルを参照して見つけてから、 **[アップロード]** を選択します。 ファイルが複数存在する場合は、この手順を繰り返します。
 
-    :::image type="content" source="media/how-to-manage-azure-support-request/file-upload.png" alt-text="ファイルをアップロードする":::
+    :::image type="content" source="media/how-to-manage-azure-support-request/file-upload.png" alt-text="すべてのサポート リクエスト":::
 
 ### <a name="file-upload-guidelines"></a>ファイルのアップロードのガイドライン
 
