@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: mblythe
 ms.custom: accessibility
-ms.openlocfilehash: 82a6cfc817cefb78c3239349d9ad7ff839a1ecbd
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 63bfb7c92e77c4059a46a83b76b3818fcb6d63be
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90090212"
 ---
 # <a name="supported-devices"></a>サポートされているデバイス
@@ -33,7 +33,7 @@ ms.locfileid: "90090212"
 オペレーティング システムと互換性のある最新ブラウザーを使うことをお勧めします。 次のブラウザーがサポートされています。
 
 * Microsoft Edge (最新バージョン)
-* Internet Explorer 11 (2021 年 8 月 17 日にサポート終了 - 詳細については、[ブログ投稿](https://techcommunity.microsoft.com/t5/microsoft-365-blog/microsoft-365-apps-say-farewell-to-internet-explorer-11-and/ba-p/1591666)を参照)
+* Internet Explorer 11
 * Safari (最新バージョン、Mac のみ)
 * Chrome (最新バージョン)
 * Firefox (最新バージョン)

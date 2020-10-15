@@ -48,7 +48,7 @@
       href: concepts-clusters-workloads.md
     - name: アクセスと ID
       href: concepts-identity.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -171,7 +171,7 @@
             - name: システム ノード プールの使用
               href: use-system-pools.md
         - name: Terraform を使用した AKS のデプロイ
-          href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
+          href: /azure/developer/terraform/create-k8s-cluster-with-tf-and-aks
           maintainContext: true
         - name: Kubernetes リソース ビューアーの使用 (プレビュー)
           href: kubernetes-portal.md
@@ -358,10 +358,10 @@
     - name: DevOps
       items:
         - name: Ansible を使用した AKS クラスターの作成
-          href: /azure/ansible/ansible-create-configure-aks
+          href: /azure/developer/ansible/aks-configure-clusters
           maintainContext: true
         - name: Jenkins の継続的なデプロイ
-          href: jenkins-continuous-deployment.md
+          href: /azure/developer/jenkins/deploy-from-github-to-aks
         - name: Azure DevOps プロジェクト
           href: ../devops-project/azure-devops-project-aks.md
           maintainContext: true

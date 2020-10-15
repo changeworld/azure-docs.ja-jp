@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: acf3cba5046a20b99212e89b378327765d22fa23
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87421639"
 ---
 # <a name="bulk-remove-group-members-in-azure-active-directory"></a>Azure Active Directory でのグループ メンバーの一括削除
@@ -57,10 +57,10 @@ Azure Active Directory (Azure AD) ポータルでは、コンマ区切り値 (CS
 
 1. CSV ファイルを開き、グループから削除する各グループ メンバーの行を追加します (必要な値は、メンバー オブジェクト ID またはユーザー プリンシパル名です)。 そのうえでファイルを保存します。
 
-    :::image type="content" source="./media/groups-bulk-import-members/csv-file.png" alt-text="CSV ファイルには、削除するグループ メンバーの名前と ID が含まれています":::
+    :::image type="content" source="./media/groups-bulk-import-members/csv-file.png" alt-text="CSV ファイルには、削除するグループ メンバーの名前と ID が含まれています&quot;:::
 
 1. **[グループ メンバーの一括削除]** ページの **[csv ファイルをアップロードします]** で、そのファイルを参照します。 ファイルを選択すると、CSV ファイルの検証が開始されます。
-1. ファイルの内容が検証されると、一括インポート ページに "**ファイルが正常にアップロードされました**" と表示されます。 エラーが存在する場合は、ジョブを送信する前にそれらを修正する必要があります。
+1. ファイルの内容が検証されると、一括インポート ページに &quot;**ファイルが正常にアップロードされました**" と表示されます。 エラーが存在する場合は、ジョブを送信する前にそれらを修正する必要があります。
 1. ファイルが検証に合格したら、 **[送信]** を選択して、グループ メンバーをグループから削除する Azure の一括操作を開始します。
 1. 削除操作が完了すると、一括操作が成功したという通知が表示されます。
 

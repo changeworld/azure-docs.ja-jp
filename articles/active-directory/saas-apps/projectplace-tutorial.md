@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/29/2019
 ms.author: jeedes
 ms.openlocfilehash: cbc65e64dfd18cdc16873a2d82aecadabeec4c28
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88553514"
 ---
 # <a name="tutorial-integrate-projectplace-with-azure-active-directory"></a>チュートリアル:Projectplace と Azure Active Directory の統合

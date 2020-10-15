@@ -6,10 +6,10 @@ ms.date: 09/24/2020
 ms.author: glenga
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 33e3e45626818a8786d32d3864b67bb0f9004b91
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91652621"
 ---
 # <a name="c"></a>[C#](#tab/csharp)
@@ -26,7 +26,7 @@ ms.locfileid: "91652621"
 | SendGrid | [出力](../articles/azure-functions/functions-bindings-sendgrid.md?tabs=csharp#example) | |
 | Service Bus |[トリガー](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=csharp#example)<br/>[出力](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=csharp#example) | [リンク](https://www.serverlesslibrary.net/?technology=Service%20Bus%20Queue&language=C%23) |
 | SignalR| [トリガー](../articles/azure-functions/functions-bindings-signalr-service-trigger.md?tabs=csharp#example)<br/>[入力](../articles/azure-functions/functions-bindings-signalr-service-input.md?tabs=csharp#example)<br/>[出力](../articles/azure-functions/functions-bindings-signalr-service-output.md?tabs=csharp) | |
-| Table ストレージ| [入力](../articles/azure-functions/functions-bindings-storage-table.md?tabs=csharp#input)<br/>[出力](../articles/azure-functions/functions-bindings-storage-table.md?tabs=csharp#output) | |
+| テーブル ストレージ| [入力](../articles/azure-functions/functions-bindings-storage-table.md?tabs=csharp#input)<br/>[出力](../articles/azure-functions/functions-bindings-storage-table.md?tabs=csharp#output) | |
 | Timer | [トリガー](../articles/azure-functions/functions-bindings-timer.md?tabs=csharp#example) | [リンク](https://www.serverlesslibrary.net/?language=C%23&filtertext=timer) |
 | Twilio | [出力](../articles/azure-functions/functions-bindings-twilio.md?tabs=csharp#example---functions-2x-and-higher) | [リンク](https://www.serverlesslibrary.net/?language=C%23&filtertext=twilio) |
 
@@ -44,7 +44,7 @@ ms.locfileid: "91652621"
 | SendGrid | [出力](../articles/azure-functions/functions-bindings-sendgrid.md?tabs=java#example) | |
 | Service Bus |[トリガー](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=java#example)<br/>[出力](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=java#example) | [リンク](https://www.serverlesslibrary.net/?technology=Service%20Bus%20Queue&language=Java) |
 | SignalR| [トリガー](../articles/azure-functions/functions-bindings-signalr-service-trigger.md?tabs=java#example)<br/>[入力](../articles/azure-functions/functions-bindings-signalr-service-input.md?tabs=java#example)<br/>[出力](../articles/azure-functions/functions-bindings-signalr-service-output.md?tabs=java) | |
-| Table ストレージ| [入力](../articles/azure-functions/functions-bindings-storage-table.md?tabs=java#input)<br/>[出力](../articles/azure-functions/functions-bindings-storage-table.md?tabs=java#output) | |
+| テーブル ストレージ| [入力](../articles/azure-functions/functions-bindings-storage-table.md?tabs=java#input)<br/>[出力](../articles/azure-functions/functions-bindings-storage-table.md?tabs=java#output) | |
 | Timer | [トリガー](../articles/azure-functions/functions-bindings-timer.md?tabs=java#example) | [リンク](https://www.serverlesslibrary.net/?language=Java&filtertext=timer) |
 | Twilio | [出力](../articles/azure-functions/functions-bindings-twilio.md?tabs=java#example---functions-2x-and-higher) | [リンク](https://www.serverlesslibrary.net/?language=Java&filtertext=twilio) |
 
@@ -62,7 +62,7 @@ ms.locfileid: "91652621"
 | SendGrid | [出力](../articles/azure-functions/functions-bindings-sendgrid.md?tabs=javascript#example) | |
 | Service Bus |[トリガー](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=javascript#example)<br/>[出力](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=javascript#example) | [リンク](https://www.serverlesslibrary.net/?technology=Service%20Bus%20Queue&language=JavaScript) |
 | SignalR| [トリガー](../articles/azure-functions/functions-bindings-signalr-service-trigger.md?tabs=javascript#example)<br/>[入力](../articles/azure-functions/functions-bindings-signalr-service-input.md?tabs=javascript#example)<br/>[出力](../articles/azure-functions/functions-bindings-signalr-service-output.md?tabs=javascript) | |
-| Table ストレージ| [入力](../articles/azure-functions/functions-bindings-storage-table.md?tabs=javascript#input)<br/>[出力](../articles/azure-functions/functions-bindings-storage-table.md?tabs=javascript#output) | |
+| テーブル ストレージ| [入力](../articles/azure-functions/functions-bindings-storage-table.md?tabs=javascript#input)<br/>[出力](../articles/azure-functions/functions-bindings-storage-table.md?tabs=javascript#output) | |
 | Timer | [トリガー](../articles/azure-functions/functions-bindings-timer.md?tabs=javascript#example) | [リンク](https://www.serverlesslibrary.net/?language=JavaScript&filtertext=timer) |
 | Twilio | [出力](../articles/azure-functions/functions-bindings-twilio.md?tabs=javascript#example---functions-2x-and-higher) | [リンク](https://www.serverlesslibrary.net/?language=JavaScript&filtertext=twilio) |
 
@@ -80,7 +80,7 @@ ms.locfileid: "91652621"
 | SendGrid | [出力](../articles/azure-functions/functions-bindings-sendgrid.md?tabs=powershell#example) | |
 | Service Bus |[トリガー](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=powershell#example)<br/>[出力](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=powershell#example) | [リンク](https://www.serverlesslibrary.net/?technology=Service%20Bus%20Queue&language=PowerShell) |
 | SignalR| [トリガー](../articles/azure-functions/functions-bindings-signalr-service-trigger.md?tabs=powershell#example)<br/>[入力](../articles/azure-functions/functions-bindings-signalr-service-input.md?tabs=powershell#example)<br/>[出力](../articles/azure-functions/functions-bindings-signalr-service-output.md?tabs=powershell) | |
-| Table ストレージ| [入力](../articles/azure-functions/functions-bindings-storage-table.md?tabs=powershell#input)<br/>[出力](../articles/azure-functions/functions-bindings-storage-table.md?tabs=powershell#output) | |
+| テーブル ストレージ| [入力](../articles/azure-functions/functions-bindings-storage-table.md?tabs=powershell#input)<br/>[出力](../articles/azure-functions/functions-bindings-storage-table.md?tabs=powershell#output) | |
 | Timer | [トリガー](../articles/azure-functions/functions-bindings-timer.md?tabs=powershell#example) | [リンク](https://www.serverlesslibrary.net/?language=PowerShell&filtertext=timer) |
 | Twilio | [出力](../articles/azure-functions/functions-bindings-twilio.md?tabs=powershell#example---functions-2x-and-higher) | [リンク](https://www.serverlesslibrary.net/?language=PowerShell&filtertext=twilio) |
 
@@ -98,7 +98,7 @@ ms.locfileid: "91652621"
 | SendGrid | [出力](../articles/azure-functions/functions-bindings-sendgrid.md?tabs=python#example) | |
 | Service Bus |[トリガー](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=python#example)<br/>[出力](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=python#example) | [リンク](https://www.serverlesslibrary.net/?technology=Service%20Bus%20Queue&language=Python) |
 | SignalR| [トリガー](../articles/azure-functions/functions-bindings-signalr-service-trigger.md?tabs=python#example)<br/>[入力](../articles/azure-functions/functions-bindings-signalr-service-input.md?tabs=python#example)<br/>[出力](../articles/azure-functions/functions-bindings-signalr-service-output.md?tabs=python) | |
-| Table ストレージ| [入力](../articles/azure-functions/functions-bindings-storage-table.md?tabs=python#input)<br/>[出力](../articles/azure-functions/functions-bindings-storage-table.md?tabs=python#output) | |
+| テーブル ストレージ| [入力](../articles/azure-functions/functions-bindings-storage-table.md?tabs=python#input)<br/>[出力](../articles/azure-functions/functions-bindings-storage-table.md?tabs=python#output) | |
 | Timer | [トリガー](../articles/azure-functions/functions-bindings-timer.md?tabs=python#example) | [リンク](https://www.serverlesslibrary.net/?language=Python&filtertext=timer) |
 | Twilio | [出力](../articles/azure-functions/functions-bindings-twilio.md?tabs=python#example---functions-2x-and-higher) | [リンク](https://www.serverlesslibrary.net/?language=Python&filtertext=twilio) |
 

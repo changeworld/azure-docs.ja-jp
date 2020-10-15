@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.openlocfilehash: 19e3f1a157ee2c042dfebfc96c9b51c3c4698ebc
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88163732"
 ---
 # <a name="how-to-monitor-cluster-availability-with-azure-monitor-logs-in-hdinsight"></a>HDInsight で Azure Monitor ログを使用してクラスターの可用性を監視する方法
@@ -125,4 +125,4 @@ Azure Monitor ログの統合が有効になったら (これには数分かか�
 ## <a name="next-steps"></a>次のステップ
 
 * [クラスターの可用性 - Apache Ambari](./hdinsight-cluster-availability.md)
-* [Azure Monitor ログを使用する](hdinsight-hadoop-oms-log-analytics-tutorial.md)
+* [Azure モニター ログを使用する](hdinsight-hadoop-oms-log-analytics-tutorial.md)

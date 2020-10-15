@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 06/08/2020
 ms.author: ccompy
-ms.openlocfilehash: 9259e3d3e41a5ba4986fbef48e745210f80e6093
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 54f80310f274b757d118f34542c1aa2e838ca7b9
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255252"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92082128"
 ---
 リージョン VNet 統合を使用すると、アプリは次のものにアクセスできるようになります。
 
@@ -36,7 +36,8 @@ ms.locfileid: "91255252"
 1. **[OK]** を選択します。
 1. **[保存]** を選択します。
 
-すべての送信トラフィックを VNet にルーティングする場合は、統合サブネットに適用されている NSG と UDR に従います。 すべての送信トラフィックを VNet にルーティングすると、トラフィックを他の場所に送信するためのルートを指定しない限り、送信アドレスは引き続きアプリのプロパティに一覧表示される送信アドレスになります。
+> [!NOTE]
+> すべての送信トラフィックを VNet にルーティングする場合は、統合サブネットに適用されている NSG と UDR に従います。 すべての送信トラフィックを VNet にルーティングすると、トラフィックを他の場所に送信するためのルートを指定しない限り、送信アドレスは引き続きアプリのプロパティに一覧表示される送信アドレスになります。
 
 同じリージョンの VNet との VNet 統合を使用する場合、いくつかの制限があります。
 

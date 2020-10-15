@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/05/2018
 ms.author: cynthn
 ms.openlocfilehash: d6e5195f43991f4d40af57c1ab4b87aaca475b64
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87373404"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>SSH 認証を使用する Linux 仮想マシンを REST API で作成する
@@ -122,7 +122,7 @@ REST API 要求の操作の概要については、「[Components of a REST API 
 
 ## <a name="sending-the-request"></a>要求の送信
 
-この HTTP 要求を送信するために任意のクライアントを使用することができます。 また、 **[使ってみる]** ボタンをクリックして、[ブラウザー内ツール](/rest/api/compute/virtualmachines/createorupdate)を使用することもできます。
+この HTTP 要求を送信するために任意のクライアントを使用することができます。 また、 **[試してみる]** ボタンをクリックして、[ブラウザー内ツール](/rest/api/compute/virtualmachines/createorupdate)を使用することもできます。
 
 ### <a name="responses"></a>Responses
 

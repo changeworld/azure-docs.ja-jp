@@ -10,10 +10,10 @@ ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: ddd41756f0e373e3bf627a88f441512fe0db91b7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187236"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>Change Tracking と Inventory に関する問題のトラブルシューティング
@@ -37,7 +37,7 @@ Windows マシンで Change Tracking とインベントリが有効であるの�
 * Change Tracking と Inventory 用の管理パックがダウンロードされていません。
 * 有効になっている VM の複製元が、Windows 用の Log Analytics エージェントがインストールされた状態でシステム準備 (sysprep) を使用して準備されなかった複製マシンである可能性があります。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解像度
 
 Log Analytics エージェント マシン上で **C:\Program Files\Microsoft Monitoring Agent\Agent\Tools** に移動し、次のコマンドを実行します。
 
@@ -89,7 +89,7 @@ Linux マシンで Change Tracking とインベントリが有効であるのに
 * Linux 用 Log Analytics エージェントが正しく構成されていません。
 * ファイルの整合性の監視 (FIM) の競合があります。
 
-#### <a name="resolution"></a>解決方法 
+#### <a name="resolution"></a>解像度 
 
 ##### <a name="log-analytics-agent-for-linux-not-running"></a>Linux 用 Log Analytics エージェントが実行されていない
 
