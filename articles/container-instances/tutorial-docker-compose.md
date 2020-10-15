@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: ''
 ms.openlocfilehash: 1e8a5cd856358a0dc3e9c356cb3a55f75db29c86
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90708274"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-docker-compose"></a>チュートリアル:Docker Compose を使用して複数コンテナー グループをデプロイする 
@@ -212,7 +212,7 @@ azurevotingappredis_azure-vote-front   myregistry.azurecr.io/azure-vote-front   
 
 クラウドで実行中のアプリケーションを表示するには、表示されている IP アドレスをローカル Web ブラウザーに入力します。 この例では、「`52.179.23.131`」と入力します。 次の例で示すように、サンプル アプリケーションが読み込まれます。
 
-:::image type="content" source="media/tutorial-docker-compose/azure-vote-aci.png" alt-text="ACI での投票アプリの画像":::
+:::image type="content" source="media/tutorial-docker-compose/azure-vote-aci.png" alt-text="投票アプリの画像":::
 
 フロントエンド コンテナーのログを表示するには、[docker logs](https://docs.docker.com/engine/reference/commandline/logs) コマンドを実行します。 次に例を示します。
 

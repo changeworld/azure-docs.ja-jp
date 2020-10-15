@@ -1,17 +1,17 @@
 ---
 title: 監査ログ - Azure Database for PostgreSQL - Single Server
 description: Azure Database for PostgreSQL - Single Server での pgAudit 監査ログの概念。
-author: rachel-msft
-ms.author: raagyema
+author: niklarin
+ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
-ms.openlocfilehash: 165e7984c21b74fa7730fc02756b9e75b4b33aa7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: efd4cb7c0c5db50729539373938ebccd689dee42
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131241"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91708987"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の監査ログ
 
@@ -82,13 +82,13 @@ t=%m u=%u db=%d pid=[%p]:
 
 `log_line_prefix` の詳細を確認するには、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-LINE-PREFIX)にアクセスしてください。
 
-### <a name="getting-started"></a>作業の開始
+### <a name="getting-started"></a>はじめに
 すぐに作業を開始するには、`pgaudit.log` を `WRITE` に設定し、ログを開いて出力を確認します。 
 
 ## <a name="viewing-audit-logs"></a>監査ログの表示
 .log ファイルを使用している場合、監査ログは、PostgreSQL エラーログと同じファイルに含まれます。 ログ ファイルは、Azure [portal](howto-configure-server-logs-in-portal.md) または [CLI](howto-configure-server-logs-using-cli.md) からダウンロードできます。 
 
-Azure リソース ログを使用している場合、ログへのアクセス方法は、選択したエンドポイントによって異なります。 Azure Storage については、[ストレージ アカウントのログ](../azure-monitor/platform/resource-logs-collect-storage.md)に関する記事を参照してください。 Event Hubs の場合は、[Azure ログのストリーミング](../azure-monitor/platform/resource-logs-stream-event-hubs.md)に関する記事を参照してください。
+Azure リソース ログを使用している場合、ログへのアクセス方法は、選択したエンドポイントによって異なります。 Azure Storage については、[ログ ストレージ アカウント](../azure-monitor/platform/resource-logs-collect-storage.md)に関する記事を参照してください。 Event Hubs の場合は、[Azure ログのストリーミング](../azure-monitor/platform/resource-logs-stream-event-hubs.md)に関する記事を参照してください。
 
 Azure Monitor ログの場合は、選択したワークスペースにログが送信されます。 Postgres ログでは **AzureDiagnostics** コレクション モードが使用されるため、AzureDiagnostics テーブルからクエリを実行できます。 表内のフィールドについては、以下で説明します。 クエリとアラートの詳細については、[Azure Monitor のログ クエリ](../azure-monitor/log-query/log-query-overview.md)の概要に関する記事を参照してください。
 

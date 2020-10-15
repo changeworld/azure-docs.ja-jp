@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
 ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84710560"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>Bing News Search API の言語と地域のサポート
@@ -64,8 +64,8 @@ Bing News Search API では多数の国/地域がサポートされ、その多�
 |スイス|フランス語|fr-CH|
 |フランス|フランス語|fr-FR|  
 |イタリア|イタリア語|it-IT|
-|香港特別行政区|繁体字中国語|zh-HK|  
-|台湾|繁体字中国語|zh-TW|
+|香港特別行政区|Traditional Chinese|zh-HK|  
+|台湾|Traditional Chinese|zh-TW|
 |日本|日本語|ja-JP|  
 |韓国|韓国語|ko-KR|  
 |オランダ|オランダ語|nl-NL|  

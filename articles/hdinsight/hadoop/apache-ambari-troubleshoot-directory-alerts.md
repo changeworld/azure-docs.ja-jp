@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
 ms.openlocfilehash: 7fd287377a82caeaecea264f0165d12ced57f5cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76722675"
 ---
 # <a name="scenario-apache-ambari-directory-alerts-in-azure-hdinsight"></a>シナリオ:Azure HDInsight での Apache Ambari のディレクトリに関するアラート
@@ -31,7 +31,7 @@ Apache Ambari から次のようなエラーが表示されます。
 
 Ambari アラートで言及されているディレクトリが、影響を受けるワーカー ノードにありません。
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解像度
 
 欠落しているディレクトリを、影響を受けるワーカー ノードに手動で作成します。
 

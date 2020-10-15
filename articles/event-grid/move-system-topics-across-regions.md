@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/28/2020
 ms.openlocfilehash: eb6029b206e7d47789371ee81e75c4e05c69ee65
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89082201"
 ---
 # <a name="move-azure-event-grid-system-topics-to-another-region"></a>Azure Event Grid システム トピックを別のリージョンに移動する
@@ -35,22 +35,7 @@ ms.locfileid: "89082201"
     :::image type="content" source="./media/move-system-topics-across-regions/resource-group-page.png" alt-text="[リソース グループ] ページ":::        
 3. 左側のメニューで、 **[設定]** にある **[テンプレートのエクスポート]** を選択し、ツール バーの **[ダウンロード]** を選択します。 
 
-    :::image type="content" source="./media/move-system-topics-across-regions/export-template-menu.png" alt-text="ストレージ アカウント - [テンプレートのエクスポート] ページ":::        
-5. ポータルからダウンロードした **.zip** ファイルを見つけて、選択したフォルダーにそのファイルを解凍します。 この ZIP ファイルには、テンプレートとパラメーターの JSON ファイルが含まれています。 
-1. 任意のエディターで **template.json** を開きます。 
-1. Webhook の URL は、テンプレートにエクスポートされません。 そのため、次の手順を実行します。
-    1. テンプレート ファイルで、**WebHook** を探します。 
-    1. **Properties** セクションで、最後の行の末尾にコンマ (`,`) 文字を追加します。 この例では `"preferredBatchSizeInKilobytes": 64` です。 
-    1. 次の例に示すように、`endpointUrl` プロパティを追加し、値を Webhook の URL に設定します。 
-
-        ```json
-        "destination": {
-            "properties": {
-                "maxEventsPerBatch": 1,
-                "preferredBatchSizeInKilobytes": 64,
-                "endpointUrl": "https://mysite.azurewebsites.net/api/updates"
-            },
-            "endpointType": "WebHook"
+    :::image type="content" source="./media/move-system-topics-across-regions/export-template-menu.png" alt-text="[リソース グループ] ページ"
         }
         ```
 
@@ -91,7 +76,7 @@ ms.locfileid: "89082201"
     1. **システムのトピック名**で、ストレージ アカウントに関連付けるシステム トピックの名前を入力します。  
     1. **ストレージ アカウント名** で、ターゲット リージョンに作成するストレージ アカウントの名前を入力します。 
 
-        :::image type="content" source="./media/move-system-topics-across-regions/deploy-template.png" alt-text="Resource Manager テンプレートをデプロイする":::
+        :::image type="content" source="./media/move-system-topics-across-regions/deploy-template.png" alt-text="[リソース グループ] ページ":::
     5. ページ下部にある **[確認と作成]** を選択します。 
     1. **[確認および作成]** ページで、設定を確認し、 **[作成]** を選択します。 
 
@@ -110,7 +95,7 @@ Azure portal を使用してリソース グループ (ソースまたはター�
 1. Azure portal の上部にある検索ウィンドウで「**リソース グループ**」と入力し、検索結果から **[リソース グループ]** を選択します。 
 2. 削除するリソース グループを選択し、ツール バーの **[削除]** を選択します。 
 
-    :::image type="content" source="./media/move-system-topics-across-regions/delete-resource-group-button.png" alt-text="リソース グループの削除":::
+    :::image type="content" source="./media/move-system-topics-across-regions/delete-resource-group-button.png" alt-text="[リソース グループ] ページ":::
 3. [確認] ページで、リソース グループの名前を入力し、 **[削除]** を選択します。  
 
 ## <a name="next-steps"></a>次のステップ

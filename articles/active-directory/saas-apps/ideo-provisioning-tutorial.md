@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 10/24/2019
 ms.author: Zhchia
 ms.openlocfilehash: 32010263829f57dc00781811eaa2535cff57b10e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91304867"
 ---
 # <a name="tutorial-configure-ideo-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に IDEO を構成する
