@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: c192ba73da0cfaf1832b6a1e572bd71b250a976b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2776b18dc3faded103b49e8ff58a8a0a6dccf144
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74168368"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074466"
 ---
 # <a name="add-an-email-action"></a>電子メール アクションを作成する
 
@@ -166,7 +166,7 @@ ms.locfileid: "74168368"
 
 ## <a name="throttling"></a>Throttling
 
-リモート監視ソリューション アクセラレータでは、Outlook を使用して、電子メール通知が送信されます。 Outlook では、送信する電子メール数が [1 分あたり 30 通](https://docs.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#receiving-and-sending-limits)に制限されています。 電子メールを受信する電子メール クライアントでは、1 分あたりに受信する電子メール数を調整することもできます。 制限については、電子メール クライアントを確認してください。 ルールの電子メール通知をセットアップする場合、ルールでは、1分以上の期間の平均値を計算する必要があります。瞬時値は使用しないでください。
+リモート監視ソリューション アクセラレータでは、Outlook を使用して、電子メール通知が送信されます。 Outlook では、送信する電子メール数が [1 分あたり 30 通](/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#receiving-and-sending-limits)に制限されています。 電子メールを受信する電子メール クライアントでは、1 分あたりに受信する電子メール数を調整することもできます。 制限については、電子メール クライアントを確認してください。 ルールの電子メール通知をセットアップする場合、ルールでは、1分以上の期間の平均値を計算する必要があります。瞬時値は使用しないでください。
 
 ![平均の計算](./media/iot-accelerators-remote-monitoring-email-actions/calculation-email.png)
 

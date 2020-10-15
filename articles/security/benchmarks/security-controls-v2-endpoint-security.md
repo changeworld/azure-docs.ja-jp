@@ -4,17 +4,17 @@ description: Azure セキュリティ ベンチマーク V2 のエンドポイ�
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: c04e4233ded34ceaeec9cd9afb240d3d1ac864e0
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 452b1a33520309ae696ab318c034f0186c993fdc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059053"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91402924"
 ---
-# <a name="security-control-endpoint-security"></a>セキュリティ コントロールエンドポイント セキュリティ
+# <a name="security-control-v2-endpoint-security"></a>セキュリティ コントロール V2:エンドポイント セキュリティ
 
 エンドポイント セキュリティでは、エンドポイントでの検出と対応の制御を行います。 これには、Azure 環境内のエンドポイントに対して、エンドポイントでの検出と対応 (EDR) およびマルウェア対策サービスを使用することが含まれます。
 
@@ -36,7 +36,7 @@ Microsoft Defender Advanced Threat Protection では、高度な脅威を防御�
 
 **責任**: Customer
 
-**顧客のセキュリティ上の利害関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [インフラストラクチャとエンドポイント セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security)
 
@@ -64,7 +64,7 @@ Azure Cloud Services 向けの Microsoft Antimalware は、Windows 仮想マシ�
 
 **責任**: Customer
 
-**顧客のセキュリティ上の利害関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [インフラストラクチャとエンドポイント セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security)
 
@@ -88,7 +88,7 @@ Azure Security Center の"計算とアプリ" の推奨事項に従って、す�
 
 **責任**: Customer
 
-**顧客のセキュリティ上の利害関係者**:
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [インフラストラクチャとエンドポイント セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security)
 
@@ -98,3 +98,4 @@ Azure Security Center の"計算とアプリ" の推奨事項に従って、す�
 
 - [体制管理](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
+- [Azure Security Center での Endpoint Protection の評価と推奨事項](../../security-center/security-center-endpoint-protection.md)

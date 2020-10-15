@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdiseo17may2017,seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: b678e4de76619ff17703caecfa7a52682e835674
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 45170e9df7082e277c445a2dab6d617eb208cd44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462566"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91855635"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>HDInsight で Apache Hadoop ジョブのデータをアップロードする
 
-HDInsight では、Azure Storage および Azure Data Lake Storage 上で Hadoop 分散ファイル システム (HDFS) を利用できます。 このストレージには、Gen1 と Gen2 が含まれています。 Azure Storage と Data Lake Storage Gen1 および Gen2 は、HDFS 拡張機能として設計されています。 Hadoop 環境のすべてのコンポーネントを使用し、管理対象のデータを直接操作できます。 Azure Storage、Data Lake Storage Gen1、Gen2 は個別のファイル システムです。 システムは、データを格納し、そのデータを計算するために最適化されています。 Azure Storage を使用するメリットの詳細については、[HDInsight での Azure Storage の使用](hdinsight-hadoop-use-blob-storage.md)に関する記事をご覧ください。 また、[HDInsight での Data Lake Storage Gen1 の使用](hdinsight-hadoop-use-data-lake-store.md)および [HDInsight での Data Lake Storage Gen2 の使用](hdinsight-hadoop-use-data-lake-storage-gen2.md)に関する記事も参照してください。
+HDInsight では、Azure Storage および Azure Data Lake Storage 上で Hadoop 分散ファイル システム (HDFS) を利用できます。 このストレージには、Gen1 と Gen2 が含まれています。 Azure Storage と Data Lake Storage Gen1 および Gen2 は、HDFS 拡張機能として設計されています。 Hadoop 環境のすべてのコンポーネントを使用し、管理対象のデータを直接操作できます。 Azure Storage、Data Lake Storage Gen1、Gen2 は個別のファイル システムです。 システムは、データを格納し、そのデータを計算するために最適化されています。 Azure Storage を使用するメリットの詳細については、[HDInsight での Azure Storage の使用](hdinsight-hadoop-use-blob-storage.md)に関する記事をご覧ください。 また、[HDInsight での Data Lake Storage Gen1 の使用](hdinsight-hadoop-use-data-lake-storage-gen1.md)および [HDInsight での Data Lake Storage Gen2 の使用](hdinsight-hadoop-use-data-lake-storage-gen2.md)に関する記事も参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -26,7 +26,7 @@ HDInsight では、Azure Storage および Azure Data Lake Storage 上で Hadoop
 * Azure HDInsight クラスター。 手順については、[Azure HDInsight のクイックスタート](hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するページをご覧ください。
 * 次の記事に関する知識
     * [HDInsight での Azure Storage の使用](hdinsight-hadoop-use-blob-storage.md)
-    * [HDInsight での Data Lake Storage Gen1 の使用](hdinsight-hadoop-use-data-lake-store.md)
+    * [HDInsight での Data Lake Storage Gen1 の使用](hdinsight-hadoop-use-data-lake-storage-gen1.md)
     * [HDInsight での Data Lake Storage Gen2 の使用](hdinsight-hadoop-use-data-lake-storage-gen2.md)  
 
 ## <a name="upload-data-to-azure-storage"></a>Azure Storage へのデータのアップロード

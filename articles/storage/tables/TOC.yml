@@ -164,10 +164,10 @@
   items:
     - name: Azure の更新情報
       href: 'https://azure.microsoft.com/updates/?product=storage'
-    - name: Microsoft Q&A の Azure Storage
+    - name: Microsoft Q&A の Table Storage
       href: 'https://docs.microsoft.com/answers/topics/azure-table-storage.html'
-    - name: Stack Overflow の Azure Storage
-      href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
+    - name: Stack Overflow の Table Storage
+      href: 'https://stackoverflow.com/questions/tagged/azure-table-storage'
     - name: Table Storage の価格
       href: 'https://azure.microsoft.com/en-us/pricing/details/storage/tables/'
     - name: Azure 料金計算ツール

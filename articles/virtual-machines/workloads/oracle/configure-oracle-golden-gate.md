@@ -1,25 +1,18 @@
 ---
 title: Azure Linux VM での Oracle Golden Gate の実装 | Microsoft Docs
 description: Oracle Golden Gate をすばやく起動し、Azure 環境で実行します。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: dbakevlar
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.openlocfilehash: 24dfe52b7f08d93dfba70c7b63812eac53431d5c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.reviewer: cynthn
+ms.openlocfilehash: c1890ab9f99999c88e28eb9a76d6270fa08fb87c
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91274794"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996662"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Azure Linux VM での Oracle Golden Gate の実装 
 
@@ -68,7 +61,7 @@ az group create --name myResourceGroup --location westus
 
 ### <a name="create-an-availability-set"></a>可用性セットの作成
 
-次の手順は省略可能ですが、実施することをお勧めします。 詳細については、[Azure 可用性セットのガイド](../../windows/infrastructure-example.md)に関する記事をご覧ください。
+次の手順は省略可能ですが、実施することをお勧めします。 詳細については、[Azure 可用性セットのガイド](/previous-versions/azure/virtual-machines/windows/infrastructure-example)に関する記事をご覧ください。
 
 ```azurecli
 az vm availability-set create \

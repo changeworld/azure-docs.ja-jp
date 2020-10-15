@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.openlocfilehash: a1b66528bee63fb123271e4277e122603ced2e75
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906510"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Azure で適切な MySQL サーバー オプションを選択する
@@ -91,7 +91,7 @@ Azure Database for MySQL は、あらゆる種類のノード レベルの中断
 
 多くの企業にとって、クラウド サービスへの移行の決定には、コストだけでなく、管理の複雑さの軽減も重要な要素です。 
 
-IaaS の利用時には、Microsoft が以下のことを行います。
+IaaS の場合、Microsoft では次のことを行います。
 
 - 基になるインフラストラクチャを管理します。
 - 基になるハードウェアと OS に対して自動化されたパッチ適用を提供します。
@@ -99,7 +99,7 @@ IaaS の利用時には、Microsoft が以下のことを行います。
 PaaS の利用時には、Microsoft が以下のことを行います。
 
 - 基になるインフラストラクチャを管理します。
-- 基になるハードウェア、OS、およびデータベース エンジンに対して自動化されたパッチ適用を提供します。
+- 基になるハードウェア、OS、およびデータベース エンジンに対して修正プログラムを自動的に適用します。
 - データベースの高可用性を管理します。
 - 自動的にバックアップを実行してすべてのデータをレプリケートし、ディザスター リカバリーを提供します。
 - 既定で保存データと移動中のデータを暗号化します。

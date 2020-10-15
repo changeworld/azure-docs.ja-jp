@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a5dce5b53df817bd365d4ce9670ffd556ce365f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 697e5484c007c095201344fb4829a92eb642a6e3
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84015504"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014853"
 ---
 # <a name="manage-analysis-services"></a>Analysis Services を管理する
 Azure に Analysis Services サーバーを作成した後は、すぐに、または後で、管理タスクを行うことが必要になる場合があります。 たとえば、データ更新処理の実行、サーバー上のモデルにアクセスできるユーザーの制御、サーバーの正常性の監視などです。 Azure Portal または SQL Server Management Studio (SSMS) のどちらかでしか実行できないもの、またはどちらでも実行できるものがあります。
@@ -30,7 +30,7 @@ Azure のサーバーへの接続は、組織内のサーバー インスタン�
 ### <a name="download-and-install-ssms"></a>SSMS のダウンロードとインストール
 最新の機能をすべて入手するとともに、Azure Analysis Services サーバーとの円滑な接続を実現するために、必ず最新バージョンの SSMS を使用してください。 
 
-[SQL Server Management Studio をダウンロード](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)します。
+[SQL Server Management Studio をダウンロード](/sql/ssms/download-sql-server-management-studio-ssms)します。
 
 
 ### <a name="to-connect-with-ssms"></a>SSMS で接続するには
@@ -66,4 +66,3 @@ SSMS を使用して接続する際に問題が発生した場合、ログイン
 新しいサーバーに表形式モデルをまだデプロイしていない場合は、ここでやるのが絶好のタイミングです。 詳しくは、「[Azure Analysis Services にデプロイする](analysis-services-deploy.md)」をご覧ください。
 
 モデルをサーバーにデプロイしてある場合は、クライアントまたはブラウザーを使って接続できる状態になっています。 詳しくは、「[Get data from Azure Analysis Services server](analysis-services-connect.md)」(Azure Analysis Services サーバーからデータを取得する) をご覧ください。
-

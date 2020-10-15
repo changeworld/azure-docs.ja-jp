@@ -3,12 +3,12 @@ title: Azure Monitor for containers からログを照会する方法 |Microsoft
 description: Azure Monitor for containers は、メトリックとログ データを収集します。この記事では、レコードについて説明し、サンプル クエリを紹介します。
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 2f0e9848ffbf7584d75b5e994e49379186a69641
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a540ae828b14f231b3b327b714876550cc744a7e
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91254892"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994013"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Azure Monitor for containers からログを照会する方法
 
@@ -110,5 +110,4 @@ KubeMonAgentEvents | where Level != "Info"
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Monitor for containers には、定義済みの一連のアラートは含まれません。 [Azure Monitor for containers を使用したパフォーマンス アラートの作成](container-insights-alerts.md)に関するページを読んで、CPU やメモリの使用率が高い場合に推奨アラートを作成し、DevOps や運用プロセスまたは手順をサポートする方法について学習します。 
-
+Azure Monitor for containers には、定義済みの一連のアラートは含まれません。 [Azure Monitor for containers を使用したパフォーマンス アラートの作成](./container-insights-log-alerts.md)に関するページを読んで、CPU やメモリの使用率が高い場合に推奨アラートを作成し、DevOps や運用プロセスまたは手順をサポートする方法について学習します。

@@ -1,25 +1,18 @@
 ---
 title: Microsoft Azure を Oracle Cloud Infrastructure と統合する | Microsoft Docs
 description: Microsoft Azure 上で実行されている Oracle アプリを Oracle Cloud Infrastructure (OCI) のデータベースと統合するソリューションについて説明します。
-services: virtual-machines-linux
-documentationcenter: ''
 author: dbakevlar
-manager: ''
-tags: ''
-ms.assetid: ''
-ms.service: virtual-machines
+ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: kegorman
-ms.custom: ''
-ms.openlocfilehash: a73d327ad2a251b5043da7e58c14e5f6f311e334
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.reviewer: cynthn
+ms.openlocfilehash: 2e09f92e21743d39cbd132637cc63b27e8cfe944
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91274505"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996147"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>Microsoft Azure と Oracle Cloud Infrastructure を統合した Oracle アプリケーション ソリューション
 
@@ -68,7 +61,7 @@ ExpressRoute と FastConnect を使用すると、プライベート IP アド�
 
 ネットワーク セキュリティは、あらゆるエンタープライズ アプリケーションの重要なコンポーネントであり、このマルチクラウド ソリューションの中心です。 ExpressRoute および FastConnect を経由するトラフィックはすべてプライベート ネットワークを経由します。 この構成で、Azure 仮想ネットワークと Oracle 仮想クラウド ネットワーク間のセキュリティで保護された通信を実現できます。 Azure の仮想マシンにパブリック IP アドレスを提供する必要はありません。 同様に、OCI にインターネット ゲートウェイは必要ありません。 通信はすべてマシンのプライベート IP アドレスを介して行われます。
 
-さらに、OCI 仮想クラウド ネットワーク上の[セキュリティ リスト](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm)と、セキュリティ ルール (Azure [ネットワーク セキュリティ グループ](../../../virtual-network/security-overview.md)に添付) を設定できます。 これらのルールは、仮想ネットワーク内のマシン間を流れるトラフィックを制御するために使用します。 ネットワーク セキュリティ ルールは、マシン レベル、サブネット レベル、および仮想ネットワーク レベルで追加できます。
+さらに、OCI 仮想クラウド ネットワーク上の[セキュリティ リスト](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm)と、セキュリティ ルール (Azure [ネットワーク セキュリティ グループ](../../../virtual-network/network-security-groups-overview.md)に添付) を設定できます。 これらのルールは、仮想ネットワーク内のマシン間を流れるトラフィックを制御するために使用します。 ネットワーク セキュリティ ルールは、マシン レベル、サブネット レベル、および仮想ネットワーク レベルで追加できます。
 
 それぞれの [WebLogic Server Azure アプリケーション](oracle-weblogic.md)は、WebLogic Server のポート構成と連携するように事前に構成されたネットワーク セキュリティ グループを作成します。
  

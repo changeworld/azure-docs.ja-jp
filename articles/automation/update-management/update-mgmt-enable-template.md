@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 09/18/2020
-ms.openlocfilehash: 312457a6220920d550f05e3a1cd1dc5ec2f4449a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 148ed0eab3e74d96ea6dbf1f507cd0ea53ad2fdc
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91327854"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073786"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Update Management を有効にする
 
@@ -66,7 +66,7 @@ JSON テンプレートでは、環境で標準構成として使用される可
 
 Azure Automation と Azure Monitor を初めて使用する場合は、次の構成の詳細を理解しておくことが重要です。 これは、新しい Automation アカウントにリンクされた Log Analytics ワークスペースを作成、構成、および使用するときに、エラーを回避するのに役立ちます。
 
-* [追加の詳細](../../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace)を確認し、アクセス制御モード、価格レベル、保有期間、容量予約レベルなどのワークスペースの構成オプションについて十分に理解します。
+* [追加の詳細](../../azure-monitor/samples/resource-manager-workspace.md#create-a-log-analytics-workspace)を確認し、アクセス制御モード、価格レベル、保有期間、容量予約レベルなどのワークスペースの構成オプションについて十分に理解します。
 
 * [ワークスペース マッピング](../how-to/region-mappings.md)を確認し、サポートされているリージョンを、インラインまたはパラメーター ファイルで指定します。 サブスクリプション内で Log Analytics ワークスペースと Automation アカウントをリンクすることは、特定のリージョンでのみサポートされています。
 

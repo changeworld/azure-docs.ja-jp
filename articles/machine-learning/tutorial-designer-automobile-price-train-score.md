@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 09/28/2020
 ms.custom: designer
 ms.openlocfilehash: d9422cfb9bd8e5539f1a9b43d6fb7b137778f3d4
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91404920"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer"></a>チュートリアル:デザイナーを使用して自動車の価格を予測する

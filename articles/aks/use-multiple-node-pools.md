@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) のクラスターで複数のノー
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: 128b8d07a3fb18ecd70f6ce5a37f41ad0fdd3db1
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 024b7adb254980ec87084b4794a9ced3eaea95eb
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563179"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074517"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のクラスターで複数のノード プールを作成および管理する
 
@@ -148,7 +148,7 @@ az aks nodepool add \
 ## <a name="upgrade-a-node-pool"></a>ノード プールのアップグレード
 
 > [!NOTE]
-> クラスターまたはノード プールでは、アップグレードやスケーリングの操作を同時に実行することはできず、実行を試みた場合には、エラーが返されます。 代わりに、ターゲット リソースに対する次の要求を行う前に、各操作の種類をその同じリソースで完了する必要があります。 詳細については、[トラブルシューティング ガイド](https://aka.ms/aks-pending-upgrade)を参照してください。
+> クラスターまたはノード プールでは、アップグレードやスケーリングの操作を同時に実行することはできず、実行を試みた場合には、エラーが返されます。 代わりに、ターゲット リソースに対する次の要求を行う前に、各操作の種類をその同じリソースで完了する必要があります。 詳細については、[トラブルシューティング ガイド](./troubleshooting.md#im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-upgraded-or-has-failed-upgrade)を参照してください。
 
 このセクションのコマンドからは、1 つの特定のノード プールをアップグレードする方法が説明されます。 コントロール プレーンとノード プールの Kubernetes バージョンをアップグレードするとき、両者の関係については、[下のセクション](#upgrade-a-cluster-control-plane-with-multiple-node-pools)で説明します。
 

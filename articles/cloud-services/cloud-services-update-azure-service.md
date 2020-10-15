@@ -7,12 +7,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: 731f4e8cc8a93f33d6887f44fc8d09585e92a75a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f12e5b6b0b2902d69936b9cf2695b7ee21db88e2
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75360346"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075044"
 ---
 # <a name="how-to-update-a-cloud-service"></a>クラウド サービスの更新方法
 
@@ -21,7 +21,7 @@ ms.locfileid: "75360346"
 ## <a name="update-an-azure-service"></a>Azure サービスを更新する
 Azure では、ロール インスタンスが、アップグレード ドメイン (UD) と呼ばれる論理的なグループに編成されます。 アップグレード ドメイン (UD) は、1 つのグループとして更新されるロール インスタンスの論理セットです。  Azure ではクラウド サービスの更新を一度に 1 つの UD に対して行います。そのため、他の UD 内のインスタンスは引き続きトラフィックを処理できます。
 
-アップグレード ドメインの既定の数は 5 です。 アップグレード ドメインの数を変更するには、サービスの定義ファイル (.csdef) に upgradeDomainCount 属性を追加します。 upgradeDomainCount 属性について詳しくは、「[Azure Cloud Services 定義スキーマ (.csdef ファイル)](https://docs.microsoft.com/azure/cloud-services/schema-csdef-file)」をご覧ください。
+アップグレード ドメインの既定の数は 5 です。 アップグレード ドメインの数を変更するには、サービスの定義ファイル (.csdef) に upgradeDomainCount 属性を追加します。 upgradeDomainCount 属性について詳しくは、「[Azure Cloud Services 定義スキーマ (.csdef ファイル)](./schema-csdef-file.md)」をご覧ください。
 
 サービス内の 1 つ以上のロールをインプレースで更新すると、Azure では、そのロールが属するアップグレード ドメインに相当するロール インスタンスのセットが更新されます。 Azure は、1 つのアップグレード ドメイン内のすべてのインスタンスを更新してから (つまり、インスタンスを停止し、更新して、オンラインに復帰させてから)、次のドメインの処理に移ります。 現在のアップグレード ドメインで実行されているインスタンスのみを停止することで、更新が実行中のサービスに与える影響を最小限に抑えています。 詳細については、この記事で後ほど説明する「 [アップグレードの処理のしくみ](#howanupgradeproceeds) 」を参照してください。
 
@@ -182,7 +182,4 @@ Azure では、設定された数のアップグレード ドメイン全体に�
 ## <a name="next-steps"></a>次のステップ
 [Cloud Services の管理方法](cloud-services-how-to-manage-portal.md)  
 [クラウド サービスの監視方法](cloud-services-how-to-monitor.md)  
-[Cloud Services の構成方法](cloud-services-how-to-configure-portal.md)  
-
-
-
+[Cloud Services の構成方法](cloud-services-how-to-configure-portal.md)

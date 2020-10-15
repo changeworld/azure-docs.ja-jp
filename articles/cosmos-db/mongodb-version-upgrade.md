@@ -8,10 +8,10 @@ ms.topic: guide
 ms.date: 09/22/2020
 ms.author: jasonh
 ms.openlocfilehash: c6369be39d0a964f07c64083e3269bb1c0c49c7f
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91409665"
 ---
 # <a name="upgrade-the-mongodb-wire-protocol-version-of-your-azure-cosmos-dbs-api-for-mongodb-account"></a>Azure Cosmos DB の MongoDB 用 API アカウントの MongoDB ワイヤ プロトコル バージョンをアップグレードする

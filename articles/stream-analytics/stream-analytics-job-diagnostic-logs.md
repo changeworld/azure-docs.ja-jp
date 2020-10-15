@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.custom: contperfq1
 ms.date: 06/18/2020
 ms.openlocfilehash: ed5c7eee1e8261c65decba4748e1d9c6a4d7212b
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91459814"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>リソース ログを使用した Azure Stream Analytics のトラブルシューティング

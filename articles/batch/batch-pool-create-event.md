@@ -2,13 +2,13 @@
 title: Azure Batch プール作成イベント
 description: プールが作成されると生成される Batch プール作成イベントのリファレンスです。 ログの内容はプールに関する一般的な情報です。
 ms.topic: reference
-ms.date: 04/20/2017
-ms.openlocfilehash: eee512bbeed223269c43bde77435fbff2b67b533
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 10/08/2020
+ms.openlocfilehash: dea0e04fa506274e645ba7a578039a0d6f021043
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147315"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91850950"
 ---
 # <a name="pool-create-event"></a>プール作成イベント
 
@@ -41,7 +41,7 @@ ms.locfileid: "86147315"
     "resizeTimeout": "300000",
     "targetDedicatedNodes": 2,
     "targetLowPriorityNodes": 2,
-    "maxTasksPerNode": 1,
+    "taskSlotsPerNode": 1,
     "vmFillType": "Spread",
     "enableAutoScale": false,
     "enableInterNodeCommunication": false,
@@ -64,7 +64,7 @@ ms.locfileid: "86147315"
 |`enableAutoScale`|Bool|プールのサイズを自動的に調整し続けるかどうかを指定します。|
 |`enableInterNodeCommunication`|Bool|ノード間の直接的な通信に対し、プールが設定されるかどうかを指定します。|
 |`isAutoPool`|Bool|プールがジョブの AutoPool メカニズムを介して作成されたかどうかを指定します。|
-|`maxTasksPerNode`|Int32|プール内の単一コンピューティング ノードで同時に実行できるタスクの最大数。|
+|`taskSlotsPerNode`|Int32|プール内の単一コンピューティング ノードで同時に実行できるタスクの最大数。|
 |`vmFillType`|String|プール内のコンピューティング ノード間で Batch サービスがタスクを分散する方法を定義します。 有効な値は、分散またはパックです。|
 
 ###  <a name="cloudserviceconfiguration"></a><a name="bk_csconf"></a> cloudServiceConfiguration

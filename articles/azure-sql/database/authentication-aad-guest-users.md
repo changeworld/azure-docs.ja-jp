@@ -10,10 +10,10 @@ ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 07/27/2020
 ms.openlocfilehash: aa74489a962708a1d3d5e6835f684e5cb8fc548b
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91444341"
 ---
 # <a name="create-azure-ad-guest-users-and-set-as-an-azure-ad-admin"></a>Azure AD ゲスト ユーザーを作成し、Azure AD 管理者として設定する

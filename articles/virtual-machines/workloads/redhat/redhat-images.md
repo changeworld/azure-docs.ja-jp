@@ -1,23 +1,18 @@
 ---
 title: Azure の Red Hat Enterprise Linux イメージの概要
 description: Microsoft Azure の Red Hat Enterprise Linux イメージについて説明します
-services: virtual-machines-linux
-documentationcenter: ''
 author: asinn826
-manager: BorisB2015
-editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 9aa0ca41f63da94e2dedaffe65ea518b8adff0dc
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.reviewer: cynthn
+ms.openlocfilehash: 46504f7d6d3a989119a3c851fc029bdf4494e01f
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439469"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994307"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux イメージの概要
 
@@ -108,7 +103,7 @@ RHEL 7.x イメージの場合、いくつかの異なる種類のイメージ�
 |Publisher | プラン | SKU 値 | Version | 詳細
 |----------|-------|------------|---------|--------
 |RedHat | RHEL | 8 | RHEL マイナー バージョンと発行日の連結された値 (例: 8.0.20191023) | これらのイメージは、標準の Red Hat リポジトリに接続されている、LVM パーティション分割 RHEL 8 イメージです。
-|RedHat | RHEL | 8-gen2 | RHEL マイナー バージョンと発行日の連結された値 (例: 8.0.20191024) | これらのイメージは、標準の Red Hat リポジトリに接続されている、LVM パーティション分割 Hyper-V 第 2 世代 RHEL 8 イメージです。 Azure の第 2 世代 VM の詳細については、「[Azure での第 2 世代 VM のサポート](../../linux/generation-2.md)」を参照してください。
+|RedHat | RHEL | 8-gen2 | RHEL マイナー バージョンと発行日の連結された値 (例: 8.0.20191024) | これらのイメージは、標準の Red Hat リポジトリに接続されている、LVM パーティション分割 Hyper-V 第 2 世代 RHEL 8 イメージです。 Azure の第 2 世代 VM の詳細については、「[Azure での第 2 世代 VM のサポート](../../generation-2.md)」を参照してください。
 
 ## <a name="rhel-longer-support-add-ons"></a>RHEL 長期サポート アドオン
 
@@ -116,7 +111,7 @@ RHEL 7.x イメージの場合、いくつかの異なる種類のイメージ�
 
 2019 年 4 月時点では、既定で EUS リポジトリに接続されている RHEL イメージを入手できます。 RHEL EUS の詳細については、[Red Hat のドキュメント](https://access.redhat.com/articles/rhel-eus)を参照してください。
 
-EUS リポジトリへの切り替えは可能であり、サポートされています。 VM を EUS に切り替える方法と、EUS サポートのサポート終了日の詳細については、「[RHEL EUS およびバージョン固定の RHEL VM](https://aka.ms/rhui-update#rhel-eus-and-version-locking-rhel-vms)」を参照してください。
+EUS リポジトリへの切り替えは可能であり、サポートされています。 VM を EUS に切り替える方法と、EUS サポートのサポート終了日の詳細については、「[RHEL EUS およびバージョン固定の RHEL VM](./redhat-rhui.md#rhel-eus-and-version-locking-rhel-vms)」を参照してください。
 
 >[!NOTE]
 > RHEL Extras では EUS はサポートされていません。 つまり、通常は RHEL Extras チャンネルから入手できるパッケージをインストールした場合、EUS ではインストールできません。 Red Hat Extras 製品のライフ サイクルの詳細については、「[Red Hat Enterprise Linux Extras life cycle (Red Hat Enterprise Linux Extras のライフサイクル)](https://access.redhat.com/support/policy/updates/extras/)」を参照してください。
@@ -183,6 +178,6 @@ Microsoft および Red Hat では、特定の共通脆弱性識別子 (CVE) に
 ## <a name="next-steps"></a>次のステップ
 
 * Azure の RHEL イメージの詳細な一覧については、「[Azure で利用可能な Red Hat Enterprise Linux (RHEL) イメージ](./redhat-imagelist.md)」を参照してください。
-* Azure Red Hat Update Infrastructure の詳細については、「[Azure のオンデマンド Red Hat Enterprise Linux VM 用 Red Hat Update Infrastructure](https://aka.ms/rhui-update)」を参照してください。
+* Azure Red Hat Update Infrastructure の詳細については、「[Azure のオンデマンド Red Hat Enterprise Linux VM 用 Red Hat Update Infrastructure](./redhat-rhui.md)」を参照してください。
 * RHEL BYOS オファーの詳細については、「[Azure での Red Hat Enterprise Linux のサブスクリプション持ち込み Gold Image](./byos.md)」を参照してください。
 * すべてのバージョンの RHEL の Red Hat サポート ポリシーの詳細については、「[Red Hat Enterprise Linux life cycle (Red Hat Enterprise Linux のライフ サイクル)](https://access.redhat.com/support/policy/updates/errata)」を参照してください。

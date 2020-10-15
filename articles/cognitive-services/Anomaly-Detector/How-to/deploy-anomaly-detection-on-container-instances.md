@@ -3,19 +3,19 @@ title: Anomaly Detector コンテナーを Azure Container Instances で実行�
 titleSuffix: Azure Cognitive Services
 description: Anomaly Detector コンテナーを Azure Container Instance にデプロイし、Web ブラウザーでテストします。
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.author: aahi
-ms.openlocfilehash: 975efa9fdaff9175317794d8b6df7afbfc73cba8
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.author: mbullwin
+ms.openlocfilehash: c7ce1985f4c7dcd14befce14abe5b913e2c9a67e
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585686"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014744"
 ---
 # <a name="deploy-an-anomaly-detector-container-to-azure-container-instances"></a>Anomaly Detector コンテナーを Azure Container Instances にデプロイする
 

@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 36031006f155f1651845dbce48b6c6ec84397e93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 039783fc10fb08523dc81e13b5f6f456fa8d0c97
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361423"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014768"
 ---
 # <a name="create-an-office-data-connection-file"></a>Office データ接続ファイルを作成する
 
-この記事では、Excel 2016 バージョン番号 16.0.7369.2117 以前または Excel 2013 から Azure Analysis Services サーバーに接続するための Office データ接続ファイルを作成する方法について説明します。 更新された [MSOLAP.7 プロバイダー](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)も必要です。
+この記事では、Excel 2016 バージョン番号 16.0.7369.2117 以前または Excel 2013 から Azure Analysis Services サーバーに接続するための Office データ接続ファイルを作成する方法について説明します。 更新された [MSOLAP.7 プロバイダー](/analysis-services/client-libraries?view=azure-analysis-services-current)も必要です。
 
 
 1. 以下に示すサンプル接続ファイルをコピーしてテキスト エディターに貼り付けます。 
@@ -144,6 +144,3 @@ function init() {
 </html>
 
 ```
-
-
-

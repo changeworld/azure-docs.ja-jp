@@ -10,12 +10,12 @@ ms.custom: devx-track-dotnet
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: a3c1699dd4b7b828c7dc652f14f431878f785061
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 3c4bdf1268aea06d7b67776a4022c608549994e7
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207138"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074857"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>App Configuration ストアを自動的にバックアップする
 
@@ -124,7 +124,7 @@ az eventgrid event-subscription create \
 - Azure Functions ランタイム バージョン 3.x
 - 10 分ごとにタイマーによってトリガーされる関数
 
-データのバックアップを簡単に開始できるようにするために、コードに変更を加えることなく使用できる[関数をテストして公開](https://github.com/Azure/AppConfiguration/tree/master/examples/ConfigurationStoreBackup)しました。 プロジェクト ファイルをダウンロードし、[Visual Studio から独自の Azure 関数アプリに発行します。](/azure/azure-functions/functions-develop-vs#publish-to-azure)
+データのバックアップを簡単に開始できるようにするために、コードに変更を加えることなく使用できる[関数をテストして公開](https://github.com/Azure/AppConfiguration/tree/master/examples/ConfigurationStoreBackup)しました。 プロジェクト ファイルをダウンロードし、[Visual Studio から独自の Azure 関数アプリに発行します。](../azure-functions/functions-develop-vs.md#publish-to-azure)
 
 > [!IMPORTANT]
 > ダウンロードしたコードの環境変数には変更を加えないでください。 次のセクションでは、必要なアプリ設定を作成します。
@@ -133,13 +133,13 @@ az eventgrid event-subscription create \
 ### <a name="build-your-own-function"></a>独自の関数を作成する
 
 前に示したサンプル コードが要件を満たさない場合は、独自の関数を作成することもできます。 ご自分の関数で、バックアップを完了するために次のタスクを実行できる必要があります。
-- キューの内容を定期的に読み取り、Event Grid からの通知が含まれているかどうかを確認します。 実装の詳細については、[ストレージ キュー SDK](/azure/storage/queues/storage-quickstart-queues-dotnet)に関するページを参照してください。
-- キューに [Event Grid からのイベント通知](/azure/azure-app-configuration/concept-app-configuration-event?branch=pr-en-us-112982#event-schema)が含まれている場合は、イベント メッセージから一意の `<key, label>` の情報をすべて抽出します。 キーとラベルの組み合わせは、プライマリ ストアでのキー値の変更に対する一意識別子です。
+- キューの内容を定期的に読み取り、Event Grid からの通知が含まれているかどうかを確認します。 実装の詳細については、[ストレージ キュー SDK](../storage/queues/storage-quickstart-queues-dotnet.md)に関するページを参照してください。
+- キューに [Event Grid からのイベント通知](./concept-app-configuration-event.md?branch=pr-en-us-112982#event-schema)が含まれている場合は、イベント メッセージから一意の `<key, label>` の情報をすべて抽出します。 キーとラベルの組み合わせは、プライマリ ストアでのキー値の変更に対する一意識別子です。
 - プライマリ ストアからすべての設定を読み取ります。 キューに対応するイベントがあるセカンダリ ストアの設定のみを更新します。 キューには存在しているが、プライマリ ストアには存在していないすべての設定を、セカンダリ ストアから削除します。 [App Configuration SDK](https://github.com/Azure/AppConfiguration#sdks) を使用して、構成ストアにプログラムでアクセスできます。
 - 処理中に例外が発生しなかった場合は、キューからメッセージを削除します。
 - 必要に応じて、エラー処理を実装します。 処理する必要があるいくつかの一般的な例外については、上記のコード サンプルを参照します。
 
-関数の作成の詳細については、「[Azure でタイマーによってトリガーされる関数を作成する](/azure/azure-functions/functions-create-scheduled-function)」および「[Visual Studio を使用する Azure Functions の開発](/azure/azure-functions/functions-develop-vs)」を参照してください。
+関数の作成の詳細については、「[Azure でタイマーによってトリガーされる関数を作成する](../azure-functions/functions-create-scheduled-function.md)」および「[Visual Studio を使用する Azure Functions の開発](../azure-functions/functions-develop-vs.md)」を参照してください。
 
 
 > [!IMPORTANT]
@@ -167,16 +167,16 @@ az functionapp config appsettings set --name $functionAppName --resource-group $
 
 ## <a name="grant-access-to-the-managed-identity-of-the-function-app"></a>関数アプリのマネージド ID へのアクセスを許可する
 
-次のコマンドまたは [Azure portal](/azure/app-service/overview-managed-identity#add-a-system-assigned-identity) を使用して、システムによって割り当てられたマネージド ID を関数アプリに追加します。
+次のコマンドまたは [Azure portal](../app-service/overview-managed-identity.md#add-a-system-assigned-identity) を使用して、システムによって割り当てられたマネージド ID を関数アプリに追加します。
 
 ```azurecli-interactive
 az functionapp identity assign --name $functionAppName --resource-group $resourceGroupName
 ```
 
 > [!NOTE]
-> 必要なリソース作成およびロール管理を実行するために、お使いのアカウントには、適切な範囲 (サブスクリプションまたはリソース グループ) を対象とする `Owner` アクセス許可が必要です。 ロールの割り当てについてのサポートが必要な場合は、[Azure portal を使用して Azure でのロールの割り当てを追加または削除する方法](/azure/role-based-access-control/role-assignments-portal)に関するページを参照してください。
+> 必要なリソース作成およびロール管理を実行するために、お使いのアカウントには、適切な範囲 (サブスクリプションまたはリソース グループ) を対象とする `Owner` アクセス許可が必要です。 ロールの割り当てについてのサポートが必要な場合は、[Azure portal を使用して Azure でのロールの割り当てを追加または削除する方法](../role-based-access-control/role-assignments-portal.md)に関するページを参照してください。
 
-次のコマンドまたは [Azure portal](/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity#grant-access-to-app-configuration) を使用して、関数アプリのマネージド ID に App Configuration ストアへのアクセス権を付与します。 これらのロールを使用します。
+次のコマンドまたは [Azure portal](./howto-integrate-azure-managed-service-identity.md#grant-access-to-app-configuration) を使用して、関数アプリのマネージド ID に App Configuration ストアへのアクセス権を付与します。 これらのロールを使用します。
 - プライマリ App Configuration ストアに `App Configuration Data Reader` ロールを割り当てます。
 - セカンダリ App Configuration ストアに `App Configuration Data Owner` ロールを割り当てます。
 
@@ -196,7 +196,7 @@ az role assignment create \
     --scope $secondaryAppConfigId
 ```
 
-次のコマンドまたは [Azure portal](/azure/storage/common/storage-auth-aad-rbac-portal#assign-azure-roles-using-the-azure-portal) を使用して、関数アプリのマネージド ID にキューへのアクセス権を付与します。 キューに `Storage Queue Data Contributor` ロールを割り当てます。
+次のコマンドまたは [Azure portal](../storage/common/storage-auth-aad-rbac-portal.md#assign-azure-roles-using-the-azure-portal) を使用して、関数アプリのマネージド ID にキューへのアクセス権を付与します。 キューに `Storage Queue Data Contributor` ロールを割り当てます。
 
 ```azurecli-interactive
 az role assignment create \
@@ -216,7 +216,7 @@ az appconfig kv set --name $primaryAppConfigName --key Foo --value Bar --yes
 イベントをトリガーしました。 しばらくすると、Event Grid によってイベント通知がキューに送信されます。 *次にスケジュールされた関数の実行後*、セカンダリ ストアの構成設定を表示して、プライマリ ストアからの更新されたキー値が含まれているかどうかを確認します。
 
 > [!NOTE]
-> スケジュールされたタイマー トリガーを待たずに、テスト中およびトラブルシューティング中に[関数を手動でトリガーする](/azure/azure-functions/functions-manually-run-non-http)ことができます。
+> スケジュールされたタイマー トリガーを待たずに、テスト中およびトラブルシューティング中に[関数を手動でトリガーする](../azure-functions/functions-manually-run-non-http.md)ことができます。
 
 バックアップ機能が正常に実行されたことを確認したら、キーがセカンダリ ストアに存在することを確認できます。
 
@@ -243,9 +243,9 @@ az appconfig kv show --name $secondaryAppConfigName --key Foo
 
 - プライマリ ストアで設定を作成した*後に*、バックアップ関数がトリガーされたことを確認します。
 - Event Grid によって時間内にキューにイベント通知が送信されなかった可能性があります。 プライマリ ストアからのイベント通知がキューにまだ含まれているかどうかを確認します。 存在する場合は、バックアップ関数を再びトリガーします。
-- エラーまたは警告がないか [Azure Functions のログ](/azure/azure-functions/functions-create-scheduled-function#test-the-function)を確認します。
-- [Azure portal](/azure/azure-functions/functions-how-to-use-azure-function-app-settings#get-started-in-the-azure-portal) を使用して、Azure 関数アプリに、Azure Functions で読み取ろうとしているアプリケーション設定の正しい値が含まれていることを確実にします。
-- また、[Azure Application Insights](/azure/azure-functions/functions-monitoring?tabs=cmd) を使用して、Azure Functions の監視とアラートを設定することもできます。 
+- エラーまたは警告がないか [Azure Functions のログ](../azure-functions/functions-create-scheduled-function.md#test-the-function)を確認します。
+- [Azure portal](../azure-functions/functions-how-to-use-azure-function-app-settings.md#get-started-in-the-azure-portal) を使用して、Azure 関数アプリに、Azure Functions で読み取ろうとしているアプリケーション設定の正しい値が含まれていることを確実にします。
+- また、[Azure Application Insights](../azure-functions/functions-monitoring.md?tabs=cmd) を使用して、Azure Functions の監視とアラートを設定することもできます。 
 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする

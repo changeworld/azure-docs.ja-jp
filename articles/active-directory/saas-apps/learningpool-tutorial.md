@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: ed4039528e60f318dcad7af864c8dcb3483e7365
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 15f2d4b5ce4623515dd0a3442c06b519cfadfa19
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546790"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91856938"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>チュートリアル: Azure Active Directory と Learningpool Act の統合
 
@@ -115,7 +115,7 @@ Learningpool Act で Azure AD シングル サインオンを構成するには�
 
 5. Learningpool Act アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
 
-    ![image](common/edit-attribute.png)
+    ![このスクリーンショットは、[編集] アイコンが選択された状態の [User Attributes]\(ユーザー属性\) を示しています。](common/edit-attribute.png)
 
 6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。 
 
@@ -129,9 +129,9 @@ Learningpool Act で Azure AD シングル サインオンを構成するには�
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
-    ![image](common/new-save-attribute.png)
+    ![[新しい要求の追加] オプションが備わっている [ユーザー要求] のスクリーンショット。](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![スクリーンショットは、説明されている値を入力できる [ユーザー要求の管理] ダイアログ ボックスを示しています。](common/new-attribute-details.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 

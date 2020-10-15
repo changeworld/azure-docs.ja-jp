@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 4ab754cacc85bc9e7c7b850270df37290ad399b6
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: e2c071ff9cf020f99e990e670cfb29cca3c1ebbc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91650163"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91838655"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure Private Link を使用した Azure Cache for Redis (パブリック プレビュー)
 この記事では、Azure portal を使用して、仮想ネットワークと、プライベート エンドポイントを利用する Azure Cache for Redis インスタンスを作成する方法について学習します。 また、既存の Azure Cache for Redis インスタンスにプライベート エンドポイントを追加する方法について学習します。
@@ -22,9 +22,8 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 * Azure サブスクリプション -  [無料アカウントを作成します](https://azure.microsoft.com/free/)
 
 > [!NOTE]
-> この機能は現在、限られたリージョンでパブリック プレビュー段階にあります。 プライベート エンドポイントを作成するオプションがない場合は、[お問い合わせ](mailto:azurecache@microsoft.com)ください。 プライベート エンドポイントを使用するには、Azure Cache for Redis インスタンスが 2020 年 7 月 28 日より後に作成されている必要があります。
+> プライベート エンドポイントを使用するには、Azure Cache for Redis インスタンスが 2020 年 7 月 28 日より後に作成されている必要があります。
 >
-> 現在、パブリック プレビューにアクセスできるリージョン: 米国中西部、米国中北部、米国西部、米国西部 2、米国東部、米国東部 2、米国中部、米国中南部、ノルウェー東部、ノルウェー西部、北ヨーロッパ、西ヨーロッパ、東アジア、東南アジア、東日本、西日本、スイス北部、スイス西部、インド中部、インド西部、アラブ首長国連邦中部、韓国中部、韓国南部、英国南部、英国西部、南アフリカ北部、フランス南部、フランス中部、カナダ東部、カナダ中部、ドイツ北部、ドイツ中西部、オーストラリア中部、インド西部、インド南部、オーストラリア東部、ブラジル南東部、ブラジル南部、ブラジル南部。
 >
 
 ## <a name="create-a-private-endpoint-with-a-new-azure-cache-for-redis-instance"></a>新しい Azure Cache for Redis インスタンスを使用してプライベート エンドポイントを作成する 

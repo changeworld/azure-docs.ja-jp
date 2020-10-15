@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0c552e8f3e732c49da02b2f5704fb9cf312fb3e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d12244bce117d6a631fdb67dc460af18bc77028c
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671088"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91995747"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights コーホート
 
@@ -131,7 +131,7 @@ _特定の国や地域からのユーザーのコーホートを定義しまし�
 
 ## <a name="learn-more"></a>詳細情報
 
-* [Analytics クエリ言語](https://go.microsoft.com/fwlink/?linkid=856587)
+* [Analytics クエリ言語](../log-query/get-started-portal.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
 * [ユーザー、セッション、イベント](usage-segmentation.md)
 * [ユーザー フロー](usage-flows.md)
 * [利用状況の概要](usage-overview.md)
