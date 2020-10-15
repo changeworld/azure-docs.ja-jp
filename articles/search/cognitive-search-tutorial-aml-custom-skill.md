@@ -3,17 +3,17 @@ title: チュートリアル:Azure Machine Learning を使用してカスタム 
 titleSuffix: Azure Cognitive Search
 description: このチュートリアルでは、Azure Machine Learning を使用して、Azure Cognitive Search の AI エンリッチメント パイプラインのカスタム スキルを作成してデプロイする方法について説明します。
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: 3ecef629e38e2823bea101af47899f9b7d6845f0
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: fa961a5a6d3a3b827a082fbac2acc3431ac40949
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91399841"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057605"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>チュートリアル:Azure Machine Learning を使用してカスタム スキルを作成およびデプロイする 
 

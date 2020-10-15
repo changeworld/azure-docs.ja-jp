@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: ramakk
-ms.openlocfilehash: a8d81acc0fcb4afa0f981fca3fd099296a0361df
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 50669dcce044988f2e45acc2a17ae43c140d1ab5
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569494"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930307"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Azure NetApp Files のネットワーク計画のガイドライン
 
 ネットワーク アーキテクチャの計画は、あらゆるアプリケーション インフラストラクチャ設計の重要な要素です。 この記事は、お客様のワークロードに有効なネットワーク アーキテクチャを設計し、Azure NetApp Files の豊富な機能からベネフィットを得るために役立ちます。
 
-Azure NetApp Files のボリュームは、Azure Virtual Network 内の[委任されたサブネット](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet)と呼ばれる特別な目的のサブネットに含まれるように設計されています。 そのため、必要に応じて、お客様の VNet から直接、同じリージョン内のピアリングされた VNet から、またはオンプレミスから、Virtual Network Gateway (ExpressRoute または VPN Gateway) 経由でボリュームにアクセスできます。 サブネットは Azure NetApp Files 専用であり、他の Azure サービスまたはインターネットへの接続はありません。
+Azure NetApp Files のボリュームは、Azure Virtual Network 内の[委任されたサブネット](../virtual-network/virtual-network-manage-subnet.md)と呼ばれる特別な目的のサブネットに含まれるように設計されています。 そのため、必要に応じて、お客様の VNet から直接、同じリージョン内のピアリングされた VNet から、またはオンプレミスから、Virtual Network Gateway (ExpressRoute または VPN Gateway) 経由でボリュームにアクセスできます。 サブネットは Azure NetApp Files 専用であり、他の Azure サービスまたはインターネットへの接続はありません。
 
 ## <a name="considerations"></a>考慮事項  
 
@@ -71,11 +71,11 @@ Azure NetApp Files には、次のネットワーク制限が適用されます�
 
 ### <a name="azure-virtual-networks"></a>Azure 仮想ネットワーク
 
-Azure NetApp Files ボリュームをプロビジョニングする前に、Azure 仮想ネットワーク (VNet) を作成するか、サブスクリプションに既に存在するものを使用する必要があります。 VNet はボリュームのネットワーク境界を定義します。  仮想ネットワークの作成について詳しくは、[Azure Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)を参照してください。
+Azure NetApp Files ボリュームをプロビジョニングする前に、Azure 仮想ネットワーク (VNet) を作成するか、サブスクリプションに既に存在するものを使用する必要があります。 VNet はボリュームのネットワーク境界を定義します。  仮想ネットワークの作成について詳しくは、[Azure Virtual Network のドキュメント](../virtual-network/virtual-networks-overview.md)を参照してください。
 
 ### <a name="subnets"></a>サブネット
 
-サブネットは、仮想ネットワークを個別のアドレス空間に分割し、それらの中にある Azure リソースから使用できるようにするものです。  Azure NetApp Files のボリュームは、[委任されたサブネット](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet)と呼ばれる特別な目的のサブネットに含まれています。 
+サブネットは、仮想ネットワークを個別のアドレス空間に分割し、それらの中にある Azure リソースから使用できるようにするものです。  Azure NetApp Files のボリュームは、[委任されたサブネット](../virtual-network/virtual-network-manage-subnet.md)と呼ばれる特別な目的のサブネットに含まれています。 
 
 サブネットの委任では、サブネットにサービス固有のリソースを作成するための明示的なアクセス許可が Azure NetApp Files サービスに与えられます。  サービスのデプロイには一意識別子を使用します。 この場合、Azure NetApp Files への接続を可能にするためにネットワーク インターフェイスが作成されます。
 
@@ -102,7 +102,7 @@ Azure NetApp Files 用の委任サブネットでは、ユーザー定義ルー�
 
 ### <a name="vnet-peering"></a>VNET ピアリング
 
-互いのリソースへのアクセスを必要とする追加の VNet が同じリージョンにある場合、[VNet ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)を使用して VNet を接続することで、Azure インフラストラクチャを介した安全な接続を実現できます。 
+互いのリソースへのアクセスを必要とする追加の VNet が同じリージョンにある場合、[VNet ピアリング](../virtual-network/virtual-network-peering-overview.md)を使用して VNet を接続することで、Azure インフラストラクチャを介した安全な接続を実現できます。 
 
 上図の VNet 2 と VNet 3 について考えます。 VM 1 が VM 2 とボリューム 2 に接続する必要がある場合、または VM 2 が VM 1 またはボリューム 1 に接続する必要がある場合は、VNet 2 と VNet 3 の間で VNet ピアリングを有効にする必要があります。 
 
@@ -116,7 +116,7 @@ Azure NetApp Files 用の委任サブネットでは、ユーザー定義ルー�
 
 ![ハイブリッド ネットワーク環境](../media/azure-netapp-files/azure-netapp-files-network-hybrid-environment.png)
 
-ハイブリッド シナリオでは、オンプレミスのデータセンターのアプリケーションが Azure のリソースにアクセスする必要があります。  これは、データセンターを Azure に拡張したいのか、Azure ネイティブ サービスを使用したいのか、それともディザスター リカバリーが目的なのかに関係なく当てはまります。 サイト間 VPN または ExpressRoute 経由でオンプレミスの複数のリソースを Azure のリソースに接続する方法については、[VPN Gateway の計画オプション](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable)に関するページを参照してください。
+ハイブリッド シナリオでは、オンプレミスのデータセンターのアプリケーションが Azure のリソースにアクセスする必要があります。  これは、データセンターを Azure に拡張したいのか、Azure ネイティブ サービスを使用したいのか、それともディザスター リカバリーが目的なのかに関係なく当てはまります。 サイト間 VPN または ExpressRoute 経由でオンプレミスの複数のリソースを Azure のリソースに接続する方法については、[VPN Gateway の計画オプション](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%252fazure%252fvirtual-network%252ftoc.json#planningtable)に関するページを参照してください。
 
 ハイブリッド ハブスポーク トポロジでは、Azure のハブ VNet は、オンプレミス ネットワークへの主要な接続ポイントとして機能します。 スポークはハブとピアリングされる VNet であり、ワークロードを分離するために使用できます。
 

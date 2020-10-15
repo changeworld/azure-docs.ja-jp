@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: a0bc934d32a2d09fcd6b52ec1f186855bf0da92c
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 0728e5d12b13164d127941a49603836ff92fd515
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449611"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92045790"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>チュートリアル:Windows デバイス用の IoT Edge モジュールを開発する
 
@@ -87,13 +87,13 @@ Visual Studio Code の IoT 拡張機能は IoT Edge モジュールの開発に�
 
 1. 開発用マシンで Visual Studio 2019 を準備します。
 
-   * お使いの開発マシンに Visual Studio がまだインストールされていない場合は、次のワークロードとともに [Visual Studio 2019 のインストール](https://docs.microsoft.com/visualstudio/install/install-visual-studio)を行ってください。
+   * お使いの開発マシンに Visual Studio がまだインストールされていない場合は、次のワークロードとともに [Visual Studio 2019 のインストール](/visualstudio/install/install-visual-studio)を行ってください。
 
       * Azure の開発
       * C++ によるデスクトップ開発
       * .NET Core クロスプラットフォームの開発
 
-   * 開発用マシンに既に Visual Studio 2019 がインストールされている場合は、[Visual Studio の変更](https://docs.microsoft.com/visualstudio/install/modify-visual-studio)の手順に従って必要なワークロードを追加します。
+   * 開発用マシンに既に Visual Studio 2019 がインストールされている場合は、[Visual Studio の変更](/visualstudio/install/modify-visual-studio)の手順に従って必要なワークロードを追加します。
 
 2. Visual Studio 2019 用の [Azure IoT Edge Tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) 拡張機能をダウンロードしてインストールします。
 
@@ -181,17 +181,17 @@ IoT Edge ランタイムでは、コンテナー イメージを IoT Edge デバ
 
 各モジュールは、コードで宣言された複数の *入力*キューと *出力*キューを持つことができます。 デバイスで実行されている IoT Edge ハブは、1 つのモジュールの出力から、1 つ以上のモジュールの入力にメッセージをルーティングします。 入力と出力を宣言するための特定のコードは、言語によって異なりますが、その概念はすべてのモジュールで同じです。 モジュール間のルーティングの詳細については、[ルートの宣言](module-composition.md#declare-routes)に関する記事を参照してください。
 
-プロジェクト テンプレートに含まれるサンプル C# コードには、.NET 用 IoT Hub SDK の [ModuleClient クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)が使用されています。
+プロジェクト テンプレートに含まれるサンプル C# コードには、.NET 用 IoT Hub SDK の [ModuleClient クラス](/dotnet/api/microsoft.azure.devices.client.moduleclient)が使用されています。
 
 1. **program.cs** ファイルで、**SetInputMessageHandlerAsync** メソッドを見つけます。
 
-2. [SetInputMessageHandlerAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.setinputmessagehandlerasync?view=azure-dotnet) メソッドでは、受信メッセージを受け取る入力キューが設定されます。 このメソッドを確認し、**input1** という入力キューがどのように初期化されるかを確かめます。
+2. [SetInputMessageHandlerAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.setinputmessagehandlerasync) メソッドでは、受信メッセージを受け取る入力キューが設定されます。 このメソッドを確認し、**input1** という入力キューがどのように初期化されるかを確かめます。
 
    ![SetInputMessageHandlserAsync コンストラクターで入力名を見つける](./media/tutorial-develop-for-windows/declare-input-queue.png)
 
 3. 次に、**SendEventAsync** メソッドを見つけます。
 
-4. [SendEventAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.sendeventasync?view=azure-dotnet) メソッドでは、受け取ったメッセージが処理され、それらを渡すための出力キューが設定されます。 このメソッドを確認し、**output1** という出力キューが初期化されることを確かめます。
+4. [SendEventAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.sendeventasync) メソッドでは、受け取ったメッセージが処理され、それらを渡すための出力キューが設定されます。 このメソッドを確認し、**output1** という出力キューが初期化されることを確かめます。
 
    ![SendEventAsync コンストラクターで出力名を見つける](./media/tutorial-develop-for-windows/declare-output-queue.png)
 

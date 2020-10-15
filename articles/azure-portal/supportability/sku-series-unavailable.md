@@ -7,12 +7,12 @@ ms.service: azure-supportability
 ms.topic: troubleshooting
 ms.date: 01/27/2020
 ms.author: xingwan
-ms.openlocfilehash: 87533b2e0c1397d0b8b2e9a89450a80a75c5e348
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fccde344a06d39bd4bb8e3178444ec20677e2f50
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763824"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078512"
 ---
 # <a name="region-or-sku-unavailable"></a>リージョンまたは SKU が利用できない
 
@@ -80,7 +80,7 @@ Message: This size is currently unavailable in this location for this subscripti
 
 ## <a name="send-us-your-suggestions"></a>ご提案をお寄せください
 
-ご意見とご提案をお待ちしております。 あなたの [提案](https://feedback.azure.com/forums/266794-support-feedback)をお寄せください。 また、[Twitter](https://twitter.com/azuresupport) や [Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/products/azure)で Microsoft とやり取りすることもできます。
+ご意見とご提案をお待ちしております。 あなたの [提案](https://feedback.azure.com/forums/266794-support-feedback)をお寄せください。 また、[Twitter](https://twitter.com/azuresupport) や [Microsoft Q&A 質問ページ](/answers/products/azure)で Microsoft とやり取りすることもできます。
 
 ## <a name="learn-more"></a>詳細情報
 

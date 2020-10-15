@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: metan
 ms.openlocfilehash: 0705977c04afe742718a96aebbac31e78dc5815f
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85486886"
 ---
 # <a name="how-to-configure-read-aloud"></a>音声読み上げを構成する方法

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: bdaf1261e9945aa862157f7e43a44387e14d3657
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7fcced1833cb5f4ccb9c2c2fd44dd84a9abb3cb
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764045"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077866"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>プログラムによる Azure ダッシュボードの作成
 
@@ -78,13 +78,13 @@ ms.locfileid: "84764045"
 Azure でリソースを作成する API には、次の 2 種類があります。
 
 * 命令型 API は、一度に 1 つのリソースを作成します。 詳しくは、[リソース](/rest/api/resources/resources)に関する記事をご覧ください。
-* 1 つの API 呼び出しで複数の依存リソースを作成する、テンプレートベースのデプロイシステムです。 詳細については、「[Deploy resources with Resource Manager templates and Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md)」 (Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ) を参照してください。
+* 1 つの API 呼び出しで複数の依存リソースを作成する、テンプレートベースのデプロイシステムです。 詳細については、「[Deploy resources with Resource Manager templates and Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)」 (Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ) を参照してください。
 
 テンプレートベースのデプロイでは、パラメーター化とテンプレート化がサポートされています。 この記事では、この方法を使用します。
 
 ## <a name="programmatically-create-a-dashboard-from-your-template-using-a-template-deployment"></a>テンプレート デプロイを使用して、テンプレートからプログラムによってダッシュボードを作成します。
 
-Azure では、複数のリソースの配置を調整するための機能が提供されています。 デプロイするリソースを表し、その間の関係を表すデプロイメント テンプレートを作成します。  各リソースの JSON 形式は、1 つずつ作成した場合と同じです。 違いは、テンプレート言語では、変数、パラメーター、基本的な機能などのいくつかの概念が追加されている点です。 この拡張構文は、テンプレート デプロイメントのコンテキストでのみサポートされます。 前述の命令型 API で使用すると機能しません。 詳細については、[ Azure Resource Manager テンプレートの構造と構文を理解する](../azure-resource-manager/resource-group-authoring-templates.md)を参照してください。
+Azure では、複数のリソースの配置を調整するための機能が提供されています。 デプロイするリソースを表し、その間の関係を表すデプロイメント テンプレートを作成します。  各リソースの JSON 形式は、1 つずつ作成した場合と同じです。 違いは、テンプレート言語では、変数、パラメーター、基本的な機能などのいくつかの概念が追加されている点です。 この拡張構文は、テンプレート デプロイメントのコンテキストでのみサポートされます。 前述の命令型 API で使用すると機能しません。 詳細については、[ Azure Resource Manager テンプレートの構造と構文を理解する](../azure-resource-manager/templates/template-syntax.md)を参照してください。
 
 パラメーター化は、テンプレートのパラメーター構文を使用して実行する必要があります。  ここに示すように、以前に見つけたリソース ID のすべてのインスタンスを置き換えます。
 
@@ -125,7 +125,7 @@ JSON テンプレートの上部で、次のように必要なテンプレート
 テンプレートを構成したら、次のいずれかの方法を使用してデプロイします。
 
 * [REST API](/rest/api/resources/deployments)
-* [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
+* [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 * [Azure CLI](/cli/azure/group/deployment#az-group-deployment-create)
 * [Azure portal でのテンプレートのデプロイページ](https://portal.azure.com/#create/Microsoft.Template)
 
