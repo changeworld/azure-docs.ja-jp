@@ -6,12 +6,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 05/31/2017
 ms.author: cynthn
-ms.openlocfilehash: 3c87c234e376cc8380afbb26edf63e1969243475
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0d659f0bc65d3dbe7cbb656d505275a52a9742eb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831143"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976625"
 ---
 # <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>Azure サービスの中断が Azure VM に影響を与える場合の対処方法
 Microsoft では、必要なときにサービスがいつでも使用できるように取り組んでいますが、 やむを得ない事情により、計画されていないサービス中断が発生することがあります。
@@ -25,7 +25,7 @@ Azure には、可用性の高いアプリケーションをサポートする�
 こうした状況はほとんど発生しませんが、Azure 仮想マシンのアプリケーションがデプロイされているリージョン全体でサービス中断が発生した場合は、Azure 仮想マシンに関する次のガイダンスに従って対応してください。
 
 ## <a name="option-1-initiate-a-failover-by-using-azure-site-recovery"></a>オプション 1: Azure Site Recovery を使用してフェールオーバーを開始する
-VM に Azure Site Recovery を構成して、1 回のクリックによってわずか数分でアプリケーションを復旧できるようにします。 任意の Azure リージョンにレプリケートでき、ペア リージョンに限定されません。 [仮想マシンのレプリケート](https://aka.ms/a2a-getting-started)から始めます。 [復旧計画を作成](../site-recovery/site-recovery-create-recovery-plans.md)して、アプリケーションのフェールオーバー プロセス全体を自動化できます。 運用アプリケーションや実行中のレプリケーションに影響を与えることなく、事前に[フェールオーバーをテスト](../site-recovery/site-recovery-test-failover-to-azure.md)できます。 プライマリ リージョンでの中断が発生した場合は、[フェールオーバーを開始](../site-recovery/site-recovery-failover.md)して、アプリケーションをターゲット リージョンに移すだけです。
+VM に Azure Site Recovery を構成して、1 回のクリックによってわずか数分でアプリケーションを復旧できるようにします。 任意の Azure リージョンにレプリケートでき、ペア リージョンに限定されません。 [仮想マシンのレプリケート](../site-recovery/azure-to-azure-quickstart.md)から始めます。 [復旧計画を作成](../site-recovery/site-recovery-create-recovery-plans.md)して、アプリケーションのフェールオーバー プロセス全体を自動化できます。 運用アプリケーションや実行中のレプリケーションに影響を与えることなく、事前に[フェールオーバーをテスト](../site-recovery/site-recovery-test-failover-to-azure.md)できます。 プライマリ リージョンでの中断が発生した場合は、[フェールオーバーを開始](../site-recovery/site-recovery-failover.md)して、アプリケーションをターゲット リージョンに移すだけです。
 
 
 ## <a name="option-2-wait-for-recovery"></a>オプション 2: 復旧を待つ
@@ -41,7 +41,7 @@ VM に Azure Site Recovery を構成して、1 回のクリックによってわ
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure Site Recovery を使用して [Azure 仮想マシンで実行されているアプリケーションの保護](https://aka.ms/a2a-getting-started)を開始する
+- Azure Site Recovery を使用して [Azure 仮想マシンで実行されているアプリケーションの保護](../site-recovery/azure-to-azure-quickstart.md)を開始する
 
 - ディザスター リカバリーと高可用性戦略を実装する方法の詳細については、[Azure アプリケーションのディザスター リカバリーと高可用性](/azure/architecture/framework/resiliency/backup-and-recovery)に関するページを参照してください。
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
 ms.openlocfilehash: c4176ab3d16ab602036cb1fedcc2fde8a415d449
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88548023"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-neota-logic-studio"></a>チュートリアル: Azure Active Directory と Neota Logic Studio の統合

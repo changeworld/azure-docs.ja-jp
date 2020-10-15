@@ -7,10 +7,10 @@ ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: ea834ed874f3011d95f8b924df860576f72bc4ee
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88825615"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Azure Files および Azure AD DS を使用してプロファイル コンテナーを作成する

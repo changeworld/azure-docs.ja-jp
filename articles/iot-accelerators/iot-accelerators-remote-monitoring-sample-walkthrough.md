@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: f501eb55f72811063ddf1d8e02a0ce2137d598f3
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: f9477b11b52431211dc91a0ea6ff0767a9d495be
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546313"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073599"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>リモート監視ソリューション アクセラレータの概要
 
@@ -106,7 +106,7 @@ ms.locfileid: "80546313"
 
 ### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-ソリューション アクセラレータのデプロイでは、[Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) を使用して、ルール、アラート、構成設定、その他のすべてのコールド ストレージが格納されます。
+ソリューション アクセラレータのデプロイでは、[Azure Cosmos DB](../cosmos-db/index.yml) を使用して、ルール、アラート、構成設定、その他のすべてのコールド ストレージが格納されます。
 
 ### <a name="azure-stream-analytics-manager-microservice"></a>Azure Stream Analytics マネージャー マイクロサービス
 
@@ -120,11 +120,11 @@ ASA ジョブは、Time Series Insights に接続されたデバイスからの�
 
 ### <a name="azure-stream-analytics"></a>Azure Stream Analytics
 
-[Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) は、デバイスからの大量のデータ ストリームを分析することができるイベント処理エンジンです。
+[Azure Stream Analytics](../stream-analytics/index.yml) は、デバイスからの大量のデータ ストリームを分析することができるイベント処理エンジンです。
 
 ### <a name="azure-time-series-insights"></a>Azure Time Series Insights
 
-[Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/) は、ソリューション アクセラレータに接続されたデバイスからのテレメトリを格納します。 また、ソリューション Web UI でのデバイス テレメトリの視覚化とクエリを実行することもできます。
+[Azure Time Series Insights](../time-series-insights/index.yml) は、ソリューション アクセラレータに接続されたデバイスからのテレメトリを格納します。 また、ソリューション Web UI でのデバイス テレメトリの視覚化とクエリを実行することもできます。
 
 ### <a name="configuration-microservice"></a>構成マイクロサービス
 
@@ -136,7 +136,7 @@ ASA ジョブは、Time Series Insights に接続されたデバイスからの�
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-ソリューション アクセラレータのデプロイでは、OpenID Connect プロバイダーとして [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) が使用されます。 Azure Active Directory は、ユーザー情報を格納し、JWT トークン署名を検証する証明書を提供します。
+ソリューション アクセラレータのデプロイでは、OpenID Connect プロバイダーとして [Azure Active Directory](../active-directory/index.yml) が使用されます。 Azure Active Directory は、ユーザー情報を格納し、JWT トークン署名を検証する証明書を提供します。
 
 ## <a name="presentation"></a>プレゼンテーション
 

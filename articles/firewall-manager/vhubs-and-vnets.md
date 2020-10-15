@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 09/14/2020
 ms.author: victorh
 ms.openlocfilehash: 71ff23e749139087f24da406474403167dcc1c0d
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90563150"
 ---
 # <a name="what-are-the-azure-firewall-manager-architecture-options"></a>Azure Firewall Manager のアーキテクチャのオプション

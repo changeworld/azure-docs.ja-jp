@@ -4,12 +4,12 @@ description: Azure Monitor for containers を使用して、自分のサブス�
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.custom: devx-track-terraform
-ms.openlocfilehash: e3b4bd007ec2f4315ccd7d8581113e116db693ef
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: d283ac43b466140045c8acaaf7ba7bb1e490b835
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068429"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91994503"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>既にデプロイされている Azure Kubernetes Service (AKS) クラスターの監視を有効にする
 
@@ -160,7 +160,7 @@ Azure Portal でいずれかの AKS クラスターから直接監視を有効�
 >テンプレートはクラスターと同じリソース グループ内に展開する必要があります。
 >
 
-Azure PowerShell または CLI を使用して監視を有効にするには、その前に Log Analytics ワークスペースが作成されている必要があります。 ワークスペースを作成するには、[Azure Resource Manager](../platform/template-workspace-configuration.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)、[Azure portal](../learn/quick-create-workspace.md) のいずれかを使用して設定できます。
+Azure PowerShell または CLI を使用して監視を有効にするには、その前に Log Analytics ワークスペースが作成されている必要があります。 ワークスペースを作成するには、[Azure Resource Manager](../samples/resource-manager-workspace.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)、[Azure portal](../learn/quick-create-workspace.md) のいずれかを使用して設定できます。
 
 テンプレートを使用するリソースのデプロイの概念について馴染みがない場合は、以下を参照してください。
 
@@ -383,4 +383,3 @@ az aks show -g <resourceGroupofAKSCluster> -n <nameofAksCluster>
 * ソリューションのオンボードを試みた際に問題が発生した場合は、[トラブルシューティング ガイド](container-insights-troubleshoot.md)を確認してください。
 
 * AKS クラスターと実行中のワークロードの正常性とリソース使用率を収集するための監視を有効にしたうえで、コンテナーの Azure Monitor を[使用する方法](container-insights-analyze.md)について学習します。
-

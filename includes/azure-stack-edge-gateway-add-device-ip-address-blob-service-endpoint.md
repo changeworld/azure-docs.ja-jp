@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/21/2019
 ms.author: alkohli
 ms.openlocfilehash: 0c6845f081ccbe42e70964eaa939d58597e3b69b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89080562"
 ---
 1. デバイスのローカル Web UI に移動し、デバイスにサインインします。 デバイスのロックが解除されていることを確認します。

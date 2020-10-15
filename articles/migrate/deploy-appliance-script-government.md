@@ -3,12 +3,12 @@ title: Azure Government で Azure Migrate アプライアンスを設定する
 description: Azure Government で Azure Migrate アプライアンスを設定する方法について説明します
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: ffea966c58909ecaab0da13a4204295ecb193895
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 1060bda13cc593980850bc6563555cf5dd4b7fd9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936794"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91450030"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>Azure Government でアプライアンスを設定する 
 
@@ -51,7 +51,7 @@ VMware 用のアプライアンスを設定するには、Azure portal から ZI
 
     **アルゴリズム** | **ダウンロード** | **SHA256**
     --- | --- | ---
-    VMware (85 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140337) | 31b1bfdd4fc29b3eb923c7c6e7a898af79b7cac0404426bea18809def2284188
+    VMware (85.8 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140337) | 2daaa2a59302bf911e8ef195f8add7d7c8352de77a9af0b860e2a627979085ca
 
 
 ### <a name="run-the-script"></a>スクリプトを実行する
@@ -105,7 +105,7 @@ Hyper-V のアプライアンスを設定するには、Azure portal から ZIP 
 
     **シナリオ** | **ダウンロード** | **SHA256**
     --- | --- | ---
-    Hyper-V (85 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140424) |  db5311de3d1d4a1167183a94e8347456db9c5749c7332ff2eb4b777798765e48
+    Hyper-V (85.8 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140424) |  db5311de3d1d4a1167183a94e8347456db9c5749c7332ff2eb4b777798765e48
 
           
 
@@ -160,7 +160,7 @@ VMware 用のアプライアンスを設定するには、Azure portal から ZI
 
     **シナリオ** | **ダウンロード*** | **ハッシュ値**
     --- | --- | ---
-    物理 (85 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140338) | 1545f9ce8874cedef6347c1a1332f8b5eabd6811a017440a2382525fb0430309
+    物理 (85 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140338) | cfed44bb52c9ab3024a628dc7a5d0df8c624f156ec1ecc3507116bae330b257f
           
 
 ### <a name="run-the-script"></a>スクリプトを実行する

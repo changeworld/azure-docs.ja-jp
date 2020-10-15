@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
-ms.openlocfilehash: 1fe915fd58f60e4ad5b1e28b51911678ef2f866c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b2099a6a48c9393b6e9e8b983a4acac2933bf06
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085709"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973837"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Linux 仮想マシンで Azure カスタム スクリプト拡張機能 v1 を使用する
 
@@ -58,7 +58,7 @@ ms.locfileid: "87085709"
 
 ### <a name="internet-connectivity"></a>インターネット接続
 
-GitHub または Azure Storage などスクリプトを外部でダウンロードする必要がある場合は、ファイアウォールやネットワーク セキュリティ グループのポートを追加で開く必要があります。 たとえば、スクリプトが Azure ストレージにある場合、[ストレージ](../../virtual-network/security-overview.md#service-tags)の Azure NSG サービス タグを使用してアクセスを許可できます。
+GitHub または Azure Storage などスクリプトを外部でダウンロードする必要がある場合は、ファイアウォールやネットワーク セキュリティ グループのポートを追加で開く必要があります。 たとえば、スクリプトが Azure ストレージにある場合、[ストレージ](../../virtual-network/network-security-groups-overview.md#service-tags)の Azure NSG サービス タグを使用してアクセスを許可できます。
 
 スクリプトがローカル サーバー上にある場合も、ファイアウォールやネットワーク セキュリティ グループのポートを追加で開く必要があります。
 

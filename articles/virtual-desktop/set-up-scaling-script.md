@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 12a15ab1a4c7369c448e9f65862121b03ca05bba
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89078556"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Azure Automation を使用してセッション ホストをスケーリングする
@@ -326,4 +326,4 @@ Log Analytics を使用することにした場合、Log Analytics ワークス�
 
 ## <a name="report-issues"></a>レポートに関する問題
 
-スケーリング ツールの問題レポートは、現在、Microsoft サポートで処理されています。 問題レポートを作成するときは、「[問題の報告](#reporting-issues)」に記載されている手順に従ってください。 ツールに関するフィードバックがある場合、または新機能をリクエストする場合は、[RDS GitHub ページ](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4-WVD-scaling-tool)で、"4-WVD-scaling-tool" という名前の GitHub 問題を開きます。
+スケーリング ツールの問題に関する報告は、現在、Microsoft サポートで処理されています。 問題の報告を作成する場合は、「[問題の報告](#reporting-issues)」に記載されている手順に従ってください。 ツールに関するフィードバックがある場合、または新機能をリクエストする場合は、[RDS GitHub ページ](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4-WVD-scaling-tool)で、"4-WVD-scaling-tool" という名前の GitHub 問題を開きます。

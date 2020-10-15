@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 08/13/2019
 ms.openlocfilehash: df03275fdeea88df1a2f2b6e2cda55021497cdf7
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89145486"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>仮想ファイル システムを Batch プールにマウントする

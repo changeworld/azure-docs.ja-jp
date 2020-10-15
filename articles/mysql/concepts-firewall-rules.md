@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.openlocfilehash: 63b3fd64526f45994919267a2f4ddc730d0b2fd7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90882653"
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Azure Database for MySQL サーバーのファイアウォール規則
@@ -43,7 +43,7 @@ ms.locfileid: "90882653"
 > **[Azure サービスへのアクセス許可]** オプションでは、他のお客様のサブスクリプションからの接続を含む、Azure からのすべての接続を許可するようにファイアウォールが構成されます。 このオプションを選択する場合は、ログインおよびユーザーのアクセス許可が、承認されたユーザーのみにアクセスを制限していることを確認してください。
 > 
 
-:::image type="content" source="./media/concepts-firewall-rules/allow-azure-services.png" alt-text="ポータルで [Azure サービスへのアクセスを許可] を構成する":::
+:::image type="content" source="./media/concepts-firewall-rules/allow-azure-services.png" alt-text="ファイアウォールのしくみを示すサンプル フロー":::
 
 ### <a name="connecting-from-a-vnet"></a>VNet からの接続
 VNet から Azure Database for MySQL サーバーに安全に接続するには、[VNet サービス エンドポイント](./concepts-data-access-and-security-vnet.md)の使用を検討してください。 

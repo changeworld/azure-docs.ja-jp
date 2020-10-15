@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 05/04/2020
 ms.topic: tutorial
 ms.openlocfilehash: 9457323b2642d0e7c5a623c13ec8440520bd5b8b
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88891778"
 ---
 # <a name="tutorial-integrate-remote-rendering-into-a-hololens-holographic-app"></a>チュートリアル:Remote Rendering を HoloLens Holographic アプリに統合する

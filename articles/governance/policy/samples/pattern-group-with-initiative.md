@@ -1,14 +1,14 @@
 ---
 title: パターン:イニシアティブを使用したグループ ポリシー定義
 description: この Azure Policy のパターンでは、ポリシー定義をイニシアティブにグループ化する方法の例を示します。
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: sample
-ms.openlocfilehash: fc79775b79c9846ee435917731428627fc65549e
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: aa09cafe636a4665dba6a2e746c13b95ff304895
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649962"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072919"
 ---
 # <a name="azure-policy-pattern-group-policy-definitions"></a>Azure Policy パターン: グループ ポリシー定義
 

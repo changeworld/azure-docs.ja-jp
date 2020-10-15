@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/27/2019
 ms.author: jeedes
 ms.openlocfilehash: aa0fe40ec28aea7f82ee0e635b3c42140a472816
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88552443"
 ---
 # <a name="tutorial-integrate-myworkdrive-with-azure-active-directory"></a>チュートリアル:MyWorkDrive と Azure Active Directory の統合

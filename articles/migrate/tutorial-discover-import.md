@@ -4,10 +4,10 @@ description: Azure Migrate Server Assessment でインポートされた CSV フ
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.openlocfilehash: 743f18ce72e3f14fe54e0bbadff254ea03fc6278
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90604225"
 ---
 # <a name="tutorial-assess-servers-using-an-imported-csv-file"></a>チュートリアル:インポートされた CSV ファイルを使用してサーバーを評価する

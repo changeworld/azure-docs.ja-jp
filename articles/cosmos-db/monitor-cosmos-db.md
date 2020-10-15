@@ -9,10 +9,10 @@ ms.date: 08/24/2020
 ms.author: bwren
 ms.custom: subject-monitoring
 ms.openlocfilehash: 12bf87e16bf4506f2015dd75fb360f8de8399902
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88797821"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>Azure Cosmos DB の監視
@@ -62,7 +62,7 @@ Azure Cosmos DB は、他の Azure リソースと同じ種類の監視データ
 
 Azure portal で、各 Azure Cosmos データベースの **[概要]** ページでは、データベースの要求や時間ごとの課金使用量など、データベースの使用状況の要約を表示します。 これは有用な情報ですが、見ることのできる監視データはごくわずかです。 このデータの一部は自動的に収集され、データベースを作成するとすぐに分析に使用できるようになりますが、一部の構成では追加のデータ収集を有効にすることができます。
 
-:::image type="content" source="media/monitor-cosmos-db/overview-page.png" alt-text="[概要] ページ":::
+:::image type="content" source="media/monitor-cosmos-db/overview-page.png" alt-text="Azure portal で使用可能な監視オプション":::
 
 ## <a name="analyzing-metric-data"></a><a id="analyze-metric-data"></a> メトリック データの分析メトリック データの分析
 
@@ -82,27 +82,27 @@ Azure Cosmos DB は、メトリックを操作するためのカスタム エク
 
 1. 左側のナビゲーション バーから **[監視]** を選択し、 **[メトリック]** を選択します。
 
-   :::image type="content" source="./media/monitor-cosmos-db/monitor-metrics-blade.png" alt-text="Azure Monitor のメトリック ペイン":::
+   :::image type="content" source="./media/monitor-cosmos-db/monitor-metrics-blade.png" alt-text="Azure portal で使用可能な監視オプション":::
 
 1. **[メトリック]** ウィンドウから、 **[リソースの選択]** を選択し、必要な**サブスクリプション**と**リソース グループ**を選択します。 **[リソースの種類]** で、 **[Azure Cosmos DB accounts]\(Azure Cosmos DB アカウント\)** を選択し、既存の Azure Cosmos アカウントの一つを選択し、 **[適用]** を選択します。
 
-   :::image type="content" source="./media/monitor-cosmos-db/select-cosmosdb-account.png" alt-text="メトリックを表示する Cosmos DB アカウントの選択":::
+   :::image type="content" source="./media/monitor-cosmos-db/select-cosmosdb-account.png" alt-text="Azure portal で使用可能な監視オプション":::
 
 1. 次に、使用可能なメトリックの一覧からメトリックを選択できます。 要求ユニット、ストレージ、待機時間、可用性、Cassandra などに固有のメトリックを選択できます。 この一覧で使用可能なすべてのメトリックの詳細については、「[カテゴリ別のメトリック](monitor-cosmos-db-reference.md)」の記事を参照してください。 この例では、 **[要求ユニット]** および集計値として **[Avg]** を選択します。
 
    これらの詳細に加えて、メトリックの **[時間の範囲]** と **[時間の粒度]** を選択することもできます。 最大で、過去 30 日間のメトリックを表示できます。  フィルターを適用すると、そのフィルターに基づいてグラフが表示されます。 選択した期間に消費された要求ユニットの 1 分あたりの平均数を確認できます。  
 
-   :::image type="content" source="./media/monitor-cosmos-db/metric-types.png" alt-text="Azure portal からのメトリックの選択":::
+   :::image type="content" source="./media/monitor-cosmos-db/metric-types.png" alt-text="Azure portal で使用可能な監視オプション":::
 
 ### <a name="add-filters-to-metrics"></a>メトリックにフィルターを追加する
 
 メトリックと、特定の **CollectionName**、**DatabaseName**、**OperationType**、**Region**、および **StatusCode** によって表示されるグラフをフィルターすることもできます。 メトリックにフィルターを適用するには、 **[フィルターの追加]** を選択し、**OperationType** などの必要なプロパティを選択し、**Query** などの値を選択します。 その後グラフには、選択した期間のクエリ操作で消費された要求ユニットが表示されます。 ストアド プロシージャを介して実行された操作は、ログに記録されないため、OperationType メトリックでは使用できません。
 
-:::image type="content" source="./media/monitor-cosmos-db/add-metrics-filter.png" alt-text="メトリック細分性を選択するためのフィルターの追加":::
+:::image type="content" source="./media/monitor-cosmos-db/add-metrics-filter.png" alt-text="Azure portal で使用可能な監視オプション":::
 
 **[Apply splitting]\(分割の適用\)** オプションを使用すると、メトリックをグループ化できます。 たとえば、次の図に示すように、要求ユニットを操作の種類ごとにグループ化し、すべての操作のグラフを一度に表示できます。
 
-:::image type="content" source="./media/monitor-cosmos-db/apply-metrics-splitting.png" alt-text="分割の適用フィルターの追加":::
+:::image type="content" source="./media/monitor-cosmos-db/apply-metrics-splitting.png" alt-text="Azure portal で使用可能な監視オプション":::
 
 ## <a name="analyzing-log-data"></a><a id="analyze-log-data"></a> ログ データの分析
 

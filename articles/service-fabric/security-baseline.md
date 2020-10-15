@@ -8,10 +8,10 @@ ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 9054fa72ee4204d7a09e6ce8de4fe6d4ed4dac81
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89227714"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>Service Fabric 用の Azure セキュリティ ベースライン
@@ -868,7 +868,7 @@ Azure 仮想マシンとコンテナー イメージに対して脆弱性評価�
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6:カスタム オペレーティング システム イメージを安全に格納する
 
-**ガイダンス**: カスタム イメージを使用している場合は、Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、確実に承認されたユーザーのみがイメージにアクセスできるようにします。 コンテナー イメージの場合は、Azure Container Registry に保存し、Azure RBAC を利用して、確実に承認されたユーザーだけがイメージにアクセスできるようにします。
+**ガイダンス**: カスタム イメージを使用している場合は、Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、確実に承認されたユーザーのみがイメージにアクセスできるようにします。 コンテナー イメージの場合は、Azure Container Registry に保存し、Azure RBAC を利用して、承認されたユーザーのみがイメージにアクセスできるようにします。
 
 * [Azure RBAC について](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
