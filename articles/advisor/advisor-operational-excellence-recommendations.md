@@ -3,12 +3,12 @@ title: Advisor を使用してオペレーショナル エクセレンスを向�
 description: Azure Advisor を使用して、Azure サブスクリプションのオペレーショナル エクセレンスを最適化し、成熟させます。
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 036adb7e7d59bd78980c72b210ad41faea277d00
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 25c470a968f2d31ae1190f765046d593190d697b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258479"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077390"
 ---
 # <a name="achieve-operational-excellence-by-using-azure-advisor"></a>Azure Advisor を使用してオペレーショナル エクセレンスを実現する
 
@@ -38,7 +38,7 @@ Azure リージョンでは、サブスクリプションごとに最大 250 個
 
 ## <a name="repair-invalid-log-alert-rules"></a>無効なログ アラート ルールを修復する
 
-Azure Advisor は、条件セクションに無効なクエリが指定された警告ルールを検出します。 Azure Monitor でログ警告ルールを作成し、それらを使用して、指定された間隔で分析クエリを実行できます。 クエリの結果によって、アラートをトリガーする必要があるかどうかが決定されます。 分析クエリは、参照されるリソース、テーブル、またはコマンドの変更のために、時間の経過と共に無効になることがあります。 Advisor は、警告ルールが自動的に無効になることを防止し、Azure でのリソースの監視範囲を保証するために、警告ルール内のクエリを修正することを推奨します。 [アラート ルールのトラブルシューティング](https://aka.ms/aa_logalerts_queryrepair)の詳細を確認してください。
+Azure Advisor は、条件セクションに無効なクエリが指定された警告ルールを検出します。 Azure Monitor でログ警告ルールを作成し、それらを使用して、指定された間隔で分析クエリを実行できます。 クエリの結果によって、アラートをトリガーする必要があるかどうかが決定されます。 分析クエリは、参照されるリソース、テーブル、またはコマンドの変更のために、時間の経過と共に無効になることがあります。 Advisor は、警告ルールが自動的に無効になることを防止し、Azure でのリソースの監視範囲を保証するために、警告ルール内のクエリを修正することを推奨します。 [アラート ルールのトラブルシューティング](../azure-monitor/platform/alerts-troubleshoot-log.md)の詳細を確認してください。
 
 ## <a name="use-azure-policy-recommendations"></a>Azure Policy の推奨事項を使用する
 
@@ -55,7 +55,7 @@ Azure Policy は、ポリシーの作成、割り当て、管理に使用でき�
 **"*リソース グループからのタグの継承*" を有効にする。** このポリシーは、任意のリソースが作成または更新されるときに、親リソース グループのタグと値を追加または置換します。 修復タスクをトリガーすることで、既存のリソースを修復できます。
 
 ## <a name="no-validation-environment-enabled"></a>検証環境が有効になっていません
-現在のサブスクリプションで検証環境が有効になっていないことが、Azure Advisor で確認されました。 お使いのホスト プールの作成時に、プロパティ タブの \"[Validation environment]\"\(検証環境\) で \"[いいえ]\" が選択されています。検証環境が有効になっているホスト プールが少なくとも 1 つあれば、潜在的な問題が早期に検出される Windows Virtual Desktop サービスのデプロイを通じて、ビジネス継続性が確保されます。 [詳細情報](https://docs.microsoft.com/azure/virtual-desktop/create-validation-host-pool)
+現在のサブスクリプションで検証環境が有効になっていないことが、Azure Advisor で確認されました。 お使いのホスト プールの作成時に、プロパティ タブの \"[Validation environment]\"\(検証環境\) で \"[いいえ]\" が選択されています。検証環境が有効になっているホスト プールが少なくとも 1 つあれば、潜在的な問題が早期に検出される Windows Virtual Desktop サービスのデプロイを通じて、ビジネス継続性が確保されます。 [詳細情報](../virtual-desktop/create-validation-host-pool.md)
 
 ## <a name="ensure-production-non-validation-environment-to-benefit-from-stable-functionality"></a>確実に、運用 (非検証) 環境で安定した機能を利用できるようにする
 お使いのホスト プールで検証環境が有効になっている数が多すぎることが Azure Advisor で確認されました。 検証環境をその目的に最適化するには、お使いのホスト プールの少なくとも 1 つには検証環境を設定しますが、半分より多くには設定しないようにする必要があります。 使用しているホスト プールで検証環境の有効または無効のバランスを適正にすると、特定の更新プログラムで提供される Windows Virtual Desktop のマルチステージ デプロイの利点を最適に利用できるようになります。 この問題を解決するには、お使いのホスト プールのプロパティを開き、\"[Validation Environment]\"\(検証環境\) の設定の横にある \"[いいえ]\" を選択します。

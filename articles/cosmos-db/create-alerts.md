@@ -9,10 +9,10 @@ ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 07/16/2020
 ms.openlocfilehash: 84c2ad3a24d944db6a55f3f21e8a2a0c4084d033
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87095588"
 ---
 # <a name="create-alerts-for-azure-cosmos-db-using-azure-monitor"></a>Azure Monitor を使用して Azure Cosmos DB のアラートを作成する
@@ -83,7 +83,7 @@ ms.locfileid: "87095588"
 
    * アクションの名前を指定し、 **[アクションの種類]** として **[電子メール/SMS メッセージ/プッシュ/音声]** を選択します。 次のスクリーンショットは、アクションの種類の詳細を示しています。
 
-     :::image type="content" source="./media/create-alerts/configure-alert-action-type.png" alt-text="アクションの種類の構成 (アラートを受信するための電子メール通知など)":::
+     :::image type="content" source="./media/create-alerts/configure-alert-action-type.png" alt-text="レート制限/429 の要求のアラートを受信するロジックの構成":::
 
 1. **[アラート ルールの詳細]** セクションの項目に入力します。
 

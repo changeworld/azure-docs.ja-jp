@@ -4,10 +4,10 @@ description: この記事では、Azure Service Bus メッセージの重複を�
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: dbca1b4b4f894d35835e7d37e0b4e742a2d3b917
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87083890"
 ---
 # <a name="duplicate-detection"></a>重複検出

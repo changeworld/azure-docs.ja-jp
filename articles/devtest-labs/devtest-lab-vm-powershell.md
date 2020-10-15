@@ -4,10 +4,10 @@ description: Azure DevTest Labs で Azure PowerShell を使用して仮想マシ
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 6bcc1b8cfe1da7e5eafbee0af008a1defbe6f49d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85484113"
 ---
 # <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>Azure PowerShell を使用して DevTest Labs で仮想マシンを作成する
@@ -172,7 +172,7 @@ Azure portal で VM を作成するときに、Azure Resource Manager テンプ�
 ### <a name="use-azure-rest-api"></a>Azure REST API の使用
 次の手順では、REST API を使用してイメージのプロパティを取得する方法について説明します。これらの手順は、ラボの既存の VM に対してのみ有効です。 
 
-1. [[Virtual Machines - list]\(仮想マシン - 一覧\)](/rest/api/dtl/virtualmachines/list) ページに移動し、 **[Try it]\(使ってみる\)** ボタンを選択します。 
+1. [[Virtual Machines - list]\(仮想マシン - 一覧\)](/rest/api/dtl/virtualmachines/list) ページに移動し、 **[Try it]\(試してみる\)** ボタンを選択します。 
 2. **Azure サブスクリプション**を選択します。
 3. **ラボのリソース グループ**を入力します。
 4. **ラボの名前**を入力します。 

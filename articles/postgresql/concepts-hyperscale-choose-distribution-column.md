@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: f3c86f4b194e6d3935434b35cae958dfcf772986
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 129eff8c954c0c5469d3607e6ae16ce3202630ed
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91314914"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91929338"
 ---
 # <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL でディストリビューション列を選択する - Hyperscale (Citus)
 
@@ -71,8 +71,6 @@ Hyperscale (Citus) で時系列情報をモデル化する際に最も一般的�
 
 -   **ディストリビューション列としてタイムスタンプを選択しないでください。** 別の分散列を選択します。 マルチテナント アプリでは、テナント ID を使用します。また、リアルタイム アプリではエンティティ ID を使用します。
 -   **代わりに PostgreSQL のテーブル パーティションを使用します。** 時系列データの大きなテーブルを、それぞれ時間の範囲が異なる複数の継承テーブルに分割するには、テーブルのパーティション分割を使用します。 Postgres でパーティション分割されたテーブルを Hyperscale (Citus) で分散すると、継承テーブルのシャードが作成されます。
-
-このような種類のアプリケーションを構築する方法の例については、[時系列チュートリアル](https://aka.ms/hyperscale-tutorial-timeseries)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 - 分散データ間の[コロケーション](concepts-hyperscale-colocation.md)がクエリの高速実行にどのように役立つかについて学習します。

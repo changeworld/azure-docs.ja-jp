@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 7/16/2020
 ms.author: surmb
 ms.openlocfilehash: 160d056447bd53ea01437acd372b5efeb15b4773
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87083159"
 ---
 # <a name="rewrite-url-with-azure-application-gateway---azure-portal-preview"></a>Azure Application Gateway を使用して URL を書き換える - Azure portal (プレビュー)
@@ -53,13 +53,13 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
     
     c. **[次へ]** を選択します。
     
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-2.png" alt-text="ルールに関連付ける":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-2.png" alt-text="書き換えセットを追加する":::
 
 5. 書き換えルールを作成します。
 
     a. **[書き換え規則の追加]** を選択します。
     
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-3.png" alt-text="書き換え規則の追加":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-3.png" alt-text="書き換えセットを追加する":::
     
     b. 書き換え規則の名前を **[書き換えルール名]** ボックスに入力します。 **[規則のシーケンス]** ボックスに値を入力します。
 
@@ -81,7 +81,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
 
     g. **[OK]** を選択します。
 
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-4.png" alt-text="Condition":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-4.png" alt-text="書き換えセットを追加する":::
 
  
 
@@ -101,13 +101,13 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
     
    f. **[OK]** を選択します。
 
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-5.png" alt-text="操作":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-5.png" alt-text="書き換えセットを追加する":::
 
 8. **[作成]** をクリックして、書き換えセットを作成します。
 
 9. 新しい書き換えセットが、書き換えセットの一覧に表示されていることを確認します
 
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-6.png" alt-text="書き換え規則の追加":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-6.png" alt-text="書き換えセットを追加する":::
 
 ## <a name="verify-url-rewrite-through-access-logs"></a>アクセス ログを使用して URL の書き換えを確認する
 

@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
 ms.openlocfilehash: fe3a8ab5b43c41b7e9f79f92de674515377fa9ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "60456728"
 ---
-# <a name="using-storage-explorer-with-azure-file-storage"></a>Azure File Storage での Storage Explorer の使用
+# <a name="using-storage-explorer-with-azure-file-storage"></a>Azure File Storage でのストレージ エクスプローラーの使用
 
 Azure File Storage は、標準のサーバー メッセージ ブロック (SMB) プロトコルを使用してクラウドでファイル共有を提供するサービスです。 SMB 2.1 と SMB 3.0 の両方がサポートされます。 Azure File Storage を使用すると、コストがかかる書き換えを行わずに、ファイル共有に依存しているレガシ アプリケーションをすばやく Azure に移行することができます。 File Storage を使用すると、データを一般に公開することも、アプリケーション データを公開せずに格納することもできます。 この記事では、Storage Explorer を使用してファイル共有とファイルを操作する方法について説明します。
 
@@ -39,7 +39,7 @@ Azure File Storage は、標準のサーバー メッセージ ブロック (SMB
 
 次の手順では、Storage Explorer 内にファイル共有を作成する方法を説明します。
 
-1. Storage Explorer を開きます。
+1. ストレージ エクスプローラーを開きます。
 
 1. 左側のウィンドウで、ファイル共有を作成するストレージ アカウントを展開します。
 
@@ -61,7 +61,7 @@ Azure File Storage は、標準のサーバー メッセージ ブロック (SMB
 
 次の手順では、Storage Explorer 内でファイル共有の内容を表示する方法を説明します。
 
-1. Storage Explorer を開きます。
+1. ストレージ エクスプローラーを開きます。
 
 1. 左側のウィンドウで、表示するファイル共有が含まれているストレージ アカウントを展開します。
 
@@ -81,7 +81,7 @@ Azure File Storage は、標準のサーバー メッセージ ブロック (SMB
 
 次の手順では、Storage Explorer からファイル共有を削除する方法を説明します。
 
-1. Storage Explorer を開きます。
+1. ストレージ エクスプローラーを開きます。
 
 1. 左側のウィンドウで、表示するファイル共有が含まれているストレージ アカウントを展開します。
 
@@ -101,7 +101,7 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
 
 次の手順では、あるストレージ アカウントから別のストレージ アカウントにファイル共有をコピーする方法を説明します。
 
-1. Storage Explorer を開きます。
+1. ストレージ エクスプローラーを開きます。
 
 1. 左側のウィンドウで、コピーするファイル共有が含まれているストレージ アカウントを展開します。
 
@@ -121,7 +121,7 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
 
 次の手順では、ファイル共有の SAS を作成する方法を説明します。
 
-1. Storage Explorer を開きます。
+1. ストレージ エクスプローラーを開きます。
 
 1. 左側のウィンドウで、SAS を取得するファイル共有が含まれているストレージ アカウントを展開します。
 
@@ -147,7 +147,7 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
 
 次の手順では、ファイル共有のアクセス ポリシーを管理 (追加と削除) する方法を説明します。 アクセス ポリシーは、決められた期間、ストレージ ファイル リソースにアクセスするために利用者が使用する SAS URL の作成に使用されます。
 
-1. Storage Explorer を開きます。
+1. ストレージ エクスプローラーを開きます。
 
 1. 左側のウィンドウで、アクセス ポリシーを管理するファイル共有が含まれているストレージ アカウントを展開します。
 
@@ -181,7 +181,7 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
 
 次の手順では、ファイル共有内のファイル (とフォルダー) を管理する方法を説明します。
 
-1.  Storage Explorer を開きます。
+1.  ストレージ エクスプローラーを開きます。
 
 1.  左側のウィンドウで、管理するファイル共有が含まれているストレージ アカウントを展開します。
 

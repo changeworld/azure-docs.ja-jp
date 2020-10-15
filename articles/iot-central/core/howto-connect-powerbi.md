@@ -8,10 +8,10 @@ ms.author: viviali
 ms.date: 10/4/2019
 ms.topic: conceptual
 ms.openlocfilehash: f996bb2d5126ef038ca872aee1f1893979a5229b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081000"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Azure IoT Central データを Power BI ダッシュボードに視覚化する
@@ -55,13 +55,13 @@ PBIX ファイルを開いたら、必ずカバー ページの指示を読ん�
 
 PBIX ファイルには、デバイスによって送信されたテレメトリの履歴ビューが表示される **[Devices and Telemetry] (デバイスとテレメトリ)** レポートが含まれています。 ここにはさまざまな種類のテレメトリの内訳が示され、デバイスによって送信された最新のテレメトリも表示されます。
 
-:::image type="content" source="media/howto-connect-powerbi/report.png" alt-text="Power BI の [Devices and Telemetry] (デバイスとテレメトリ) レポート":::
+:::image type="content" source="media/howto-connect-powerbi/report.png" alt-text="Power BI ソリューションのパイプライン":::
 
 ## <a name="pipeline-resources"></a>パイプライン リソース
 
 Azure portal で、パイプラインを構成するすべての Azure リソースにアクセスできます。 すべてのリソースは、パイプラインを設定したときに作成したリソース グループ内にあります。
 
-:::image type="content" source="media/howto-connect-powerbi/azure-deployment.png" alt-text="リソース グループの Azure portal ビュー":::
+:::image type="content" source="media/howto-connect-powerbi/azure-deployment.png" alt-text="Power BI ソリューションのパイプライン":::
 
 次の一覧で、パイプライン内の各リソースの役割について説明します。
 

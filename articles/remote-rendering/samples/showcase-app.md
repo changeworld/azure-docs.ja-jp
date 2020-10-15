@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 04/01/2020
 ms.topic: sample
 ms.openlocfilehash: e1e91a892a1c8b69b3dc7f6c79109377e13bd7ae
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80804454"
 ---
 # <a name="unity-showcase-application"></a>Unity ショーケース アプリケーション

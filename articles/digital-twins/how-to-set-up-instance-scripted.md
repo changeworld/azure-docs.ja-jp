@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 83741f5bc55eb222b379a274ef403f766553b21f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4e8e26f73aef155e4194ca7a4178827b6a7366fb
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328643"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92047422"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Azure Digital Twins インスタンスと認証を設定する (スクリプト化)
 
@@ -20,7 +20,7 @@ ms.locfileid: "91328643"
 
 この記事では、**新しい Azure Digital Twins インスタンスを設定する**手順 (インスタンスの作成と認証の設定を含む) について説明します。 この記事を完了すると、Azure Digital Twins インスタンスのプログラミングを開始する準備が完了します。
 
-この記事のこのバージョンでは、プロセスを効率化する[**自動化されたデプロイ スクリプト**のサンプル](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/)を実行することによってこれらの手順を完了します。 
+この記事のこのバージョンでは、プロセスを効率化する[**自動化されたデプロイ スクリプト**のサンプル](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)を実行することによってこれらの手順を完了します。 
 * このスクリプトがバックグラウンドで実行する手動の CLI 手順を表示するには、この記事の CLI バージョンである[*方法: インスタンスと認証の設定 (CLI)* ](how-to-set-up-instance-cli.md) に関するページを参照してください。
 * Azure portal に応じた手動の手順を表示するには、この記事のポータル バージョンである[*方法: インスタンスと認証の設定 (ポータル)* ](how-to-set-up-instance-portal.md) に関するページを参照してください。
 
@@ -28,7 +28,7 @@ ms.locfileid: "91328643"
 
 ## <a name="prerequisites-download-the-script"></a>前提条件:スクリプトのダウンロード
 
-このサンプル スクリプトは PowerShell で記述されています。 これは、[**Azure Digital Twins サンプル**](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/)の一部です。これをコンピューターにダウンロードするには、そのサンプル リンクに移動し、タイトルの下の *[Download ZIP]\(ZIP のダウンロード\)* ボタンを選択します。
+このサンプル スクリプトは PowerShell で記述されています。 これは、[**Azure Digital Twins サンプル**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)の一部です。これをコンピューターにダウンロードするには、そのサンプル リンクに移動し、タイトルの下の *[Download ZIP]\(ZIP のダウンロード\)* ボタンを選択します。
 
 これにより、サンプル プロジェクトが _**Azure_Digital_Twins_samples.zip**_ としてコンピューターにダウンロードされます。 お使いのコンピューター上のフォルダーに移動してこれを解凍し、ファイルを抽出します。
 
@@ -155,7 +155,7 @@ ms.locfileid: "91328643"
 ## <a name="next-steps"></a>次のステップ
 
 Azure Digital Twins CLI コマンドを使用して、インスタンスでの個別の REST API 呼び出しをテストします。 
-* [az dt reference](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true)
+* [az dt reference](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)
 * [*方法: Azure Digital Twins CLI を使用する*](how-to-use-cli.md)
 
 または、クライアント アプリの認証コードを作成してクライアント アプリケーションをインスタンスに接続する方法を確認します。
