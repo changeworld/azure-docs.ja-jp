@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/21/2020
 ms.author: v-mibufo
-ms.openlocfilehash: b07033f96402edc24edd51de57661603e57472bc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b13b61aff819271ed1722572f251f9a6d14b17ab
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91340606"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976999"
 ---
 # <a name="windows-stop-error---0xc000021a-status-system-process-terminated"></a>Windows STOP エラー 0xC000021A ステータス システム プロセスが停止しました
 
@@ -27,7 +27,7 @@ ms.locfileid: "91340606"
 
 ## <a name="symptom"></a>症状
 
-[ブート診断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)を使用して VM のスクリーンショットを表示すると、起動時に OS でエラーが発生したことを示すメッセージと共に、次のメッセージがスクリーンショットに表示されます。
+[ブート診断](./boot-diagnostics.md)を使用して VM のスクリーンショットを表示すると、起動時に OS でエラーが発生したことを示すメッセージと共に、次のメッセージがスクリーンショットに表示されます。
 
 "**問題が発生したため、PC を再起動する必要があります。エラー情報を収集しています。再起動できます。(##% 完了) 詳細については、次のエラーを後からオンラインで検索してください:0xC000021a**"。
 
@@ -52,17 +52,17 @@ ms.locfileid: "91340606"
 
 ### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>新しい修復 VM に OS ディスクを接続する
 
-1.  [仮想マシンの修復コマンド](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands)に関する説明の手順 1 から 3 に従い、修復 VM を準備します。
+1.  [仮想マシンの修復コマンド](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md)に関する説明の手順 1 から 3 に従い、修復 VM を準備します。
 2.  **リモート デスクトップ接続**を使用して、修復 VM に接続します。
 
 ### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>ダンプ ファイルを探してサポート チケットを送信する
 
 1.  復旧 VM で、接続されている OS ディスクの Windows フォルダーに移動します。 接続されている OS ディスクに割り当てられているドライブ文字が F の場合は、F:\Windows に移動します。
 2.  memory.dmp ファイルを検索し、メモリ ダンプ ファイルと共に[サポート チケットを送信](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)します。
-3.  memory.dmp ファイルが見つからない場合は、代わりに[シリアル コンソールでマスク不可能割り込み (NMI) 呼び出し](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows#use-the-serial-console-for-nmi-calls)を使用することをお勧めします。 このガイドに従い、[ここで NMI 呼び出しを使用してクラッシュ ダンプ ファイルを生成](https://docs.microsoft.com/windows/client-management/generate-kernel-or-complete-crash-dump)できます。
+3.  memory.dmp ファイルが見つからない場合は、代わりに[シリアル コンソールでマスク不可能割り込み (NMI) 呼び出し](./serial-console-windows.md#use-the-serial-console-for-nmi-calls)を使用することをお勧めします。 このガイドに従い、[ここで NMI 呼び出しを使用してクラッシュ ダンプ ファイルを生成](/windows/client-management/generate-kernel-or-complete-crash-dump)できます。
 
 ## <a name="next-steps"></a>次の手順
 
-- 詳細なトラブルシューティング情報については、[一般的なブート エラーのトラブルシューティング](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-error-troubleshoot)に関するページ、または [OS ディスクを復旧 VM に接続して Windows VM のトラブルシューティングを行う方法](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-windows)に関するページを参照してください。 さらに、[ブート診断を使用して仮想マシンのトラブルシューティングを行う方法](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)について理解しておくことも必要です。
-- Resource Manager の使用方法の詳細については、「[Azure Resource Manager の概要](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)」をご覧ください。
-- VM に接続できない場合は、[Azure VM への RDP 接続のトラブルシューティング](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-rdp-connection)に関するページを参照してください。
+- 詳細なトラブルシューティング情報については、[一般的なブート エラーのトラブルシューティング](./boot-error-troubleshoot.md)に関するページ、または [OS ディスクを復旧 VM に接続して Windows VM のトラブルシューティングを行う方法](./troubleshoot-recovery-disks-windows.md)に関するページを参照してください。 さらに、[ブート診断を使用して仮想マシンのトラブルシューティングを行う方法](./boot-diagnostics.md)について理解しておくことも必要です。
+- Resource Manager の使用方法の詳細については、「[Azure Resource Manager の概要](../../azure-resource-manager/management/overview.md)」をご覧ください。
+- VM に接続できない場合は、[Azure VM への RDP 接続のトラブルシューティング](./troubleshoot-rdp-connection.md)に関するページを参照してください。

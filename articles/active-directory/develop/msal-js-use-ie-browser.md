@@ -14,10 +14,10 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 633166f3bb46212991920d6720737f8268b3f401
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87026856"
 ---
 # <a name="known-issues-on-internet-explorer-browsers-msaljs"></a>Internet Explorer ブラウザーに関する既知の問題 (MSAL.js)

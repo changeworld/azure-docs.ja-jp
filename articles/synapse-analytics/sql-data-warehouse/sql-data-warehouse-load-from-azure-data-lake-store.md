@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: c634b4f7ac3aa1fe83e6ab3f863e998b8d25232c
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87533939"
 ---
 # <a name="load-data-from-azure-data-lake-storage-for-synapse-sql"></a>Synapse SQL 用に Azure Data Lake Storage からデータを読み込む

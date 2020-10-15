@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 203176c4c7ffed95cb4f1616f29f3953fcc0afc5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 58d4459e1869a9d1f7ccb8234c0356ac486a950c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320100"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975554"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Azure Site Recovery を使用した Premium Storage への移行
 
-[Azure Premium SSD](disks-types.md) は、高負荷の I/O ワークロードを実行する仮想マシン (VM) に対して高パフォーマンスで待ち時間の少ないディスクのサポートを実現するサービスです。 このガイドでは、[Azure Site Recovery](../../site-recovery/site-recovery-overview.md) を使用して、ユーザーが Standard Storage アカウントから Premium Storage アカウントに VM ディスクを移行する方法について説明します。
+[Azure Premium SSD](../disks-types.md) は、高負荷の I/O ワークロードを実行する仮想マシン (VM) に対して高パフォーマンスで待ち時間の少ないディスクのサポートを実現するサービスです。 このガイドでは、[Azure Site Recovery](../../site-recovery/site-recovery-overview.md) を使用して、ユーザーが Standard Storage アカウントから Premium Storage アカウントに VM ディスクを移行する方法について説明します。
 
 Site Recovery は、クラウド (Azure) またはセカンダリ データセンターへのオンプレミスの物理サーバーおよび VM のレプリケーションを調整することでビジネス継続性とディザスター リカバリーの戦略を支援する Azure サービスです。 プライマリ ロケーションで障害が発生した場合は、セカンダリ ロケーションにフェールオーバーしてアプリケーションとワークロードの可用性を維持します。 プライマリ ロケーションが通常の動作に戻ると、その場所にフェールバックします。 
 
@@ -167,7 +167,7 @@ Site Recovery によって、互換性のある Azure ストレージ アカウ�
 
    ![[ソース] が選択されている [レプリケーションを有効にする] ウィンドウ][13]
 
-Azure Storage 環境を設計する場合は、可用性セット内の VM ごとに別個のストレージ アカウントを使用することをお勧めします。 ストレージ層のベスト プラクティスに従って、[可用性セットごとに複数のストレージ アカウントを使用する](../linux/manage-availability.md)ことをお勧めします。 VM ディスクを複数のストレージ アカウントに分散することで、ストレージの可用性を向上させ、I/O を Azure ストレージ インフラストラクチャに分散させることができます。
+Azure Storage 環境を設計する場合は、可用性セット内の VM ごとに別個のストレージ アカウントを使用することをお勧めします。 ストレージ層のベスト プラクティスに従って、[可用性セットごとに複数のストレージ アカウントを使用する](../manage-availability.md)ことをお勧めします。 VM ディスクを複数のストレージ アカウントに分散することで、ストレージの可用性を向上させ、I/O を Azure ストレージ インフラストラクチャに分散させることができます。
 
 VM が 1 つの可用性セットに存在する場合には、すべての VM のディスクを 1 つのストレージ アカウントにレプリケートするのではなく、複数の VM を複数回移行することを強くお勧めします。 こうすると、同じ可用性セット内の VM が単一のストレージ アカウントを共有しません。 **[レプリケーションを有効にする]** ウィンドウを使用して、各 VM のターゲット ストレージ アカウントを 1 つずつ設定します。
  

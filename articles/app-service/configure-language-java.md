@@ -10,12 +10,12 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 0b6d4ebd199e1db9e5b325df5ea08eaede8e581b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 736d80c4bcfe31a499b84bb24c1c377e69e84218
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91311888"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91976013"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Azure App Service 向けの Java アプリを構成する
 
@@ -29,8 +29,6 @@ Java 開発者は、Azure App Service を使用することで、フル マネ�
 
 それ以外の場合、デプロイの方法はアーカイブの種類によって異なります。
 
-::: zone pivot="platform-windows"  
-
 ### <a name="java-se"></a>Java SE
 
 Java SE に .jar ファイルをデプロイするには、Kudu サイトの `/api/zipdeploy/` エンドポイントを使用します。 この API の詳細については、[このドキュメント](./deploy-zip.md#rest)を参照してください。
@@ -39,7 +37,6 @@ Java SE に .jar ファイルをデプロイするには、Kudu サイトの `/a
 
 .war ファイルを Tomcat にデプロイするには、`/api/wardeploy/` エンドポイントを使用してアーカイブ ファイルを POST します。 この API の詳細については、[このドキュメント](./deploy-zip.md#deploy-war-file)を参照してください。
 
-::: zone-end
 ::: zone pivot="platform-linux"
 
 ### <a name="jboss-eap"></a>JBoss EAP

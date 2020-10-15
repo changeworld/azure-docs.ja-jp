@@ -5,10 +5,10 @@ ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.openlocfilehash: d0a5c1b5800bbc626453ba8896dc706a0cd5bfd4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324945"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure Backup Server と DPM - FAQ

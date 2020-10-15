@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
 ms.openlocfilehash: def6ceb1d455a0a438235877acdb38313f862e50
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88544436"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-consent2go"></a>チュートリアル: Azure Active Directory と Consent2Go の統合

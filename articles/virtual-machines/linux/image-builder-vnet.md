@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: f216b6fa3a0e43c1c0313baa4f8414546a74d8f0
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: d75d73fcd64917257b850861142e7f4a67da834c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88068005"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972307"
 ---
 # <a name="use-azure-image-builder-for-linux-vms-allowing-access-to-an-existing-azure-vnet"></a>Linux VM の Azure Image Builder を使用して既存の Azure VNET へのアクセスを許可する
 
-この記事では、Azure Image Builder を使用して、VNET 上の既存のリソースにアクセスできる基本的なカスタマイズ Linux イメージを作成する方法について説明します。 作成したビルド VM は、サブスクリプションに指定した新規または既存の VNET にデプロイされます。 既存の Azure VNET を使用する場合、Azure Image Builder サービスにはパブリック ネットワーク接続は必要ありません。
+この記事では、Azure Image Builder を使用して、VNET 上の既存のリソースにアクセスできる基本的なカスタマイズ Linux イメージを作成する方法について説明します。 作成したビルド VM は、サブスクリプションに指定した新規または既存の VNET にデプロイされます。 既存の Azure VNET を使用する場合、Azure Image Builder サービスでは、パブリック ネットワーク接続は必要ありません。
 
 > [!IMPORTANT]
 > 現在、Azure Image Builder はパブリック プレビュー段階にあります。
@@ -27,7 +27,7 @@ ms.locfileid: "88068005"
 
 ## <a name="register-the-features"></a>機能の登録
 
-まず、Azure Image Builder サービスに登録する必要があります。 登録すると、ステージング リソース グループを作成、管理、削除するためのアクセス許可がこのサービスに付与されます。 このサービスには、イメージのビルドに必要なリソースをグループに追加する権限もあります。
+まず、Azure Image Builder サービスに登録する必要があります。 登録すると、ステージング リソース グループを作成、管理、削除するためのアクセス許可がこのサービスに付与されます。 このサービスには、イメージのビルドに必要なグループにリソースを追加する権限もあります。
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
@@ -77,7 +77,7 @@ az group create -n $imageResourceGroup -l $location
 
 ## <a name="configure-networking"></a>ネットワークを構成する
 
-既存の VNET\サブネット\NSG がない場合は、次のスクリプトを使用して作成します。
+既存の VNET\Subnet\NSG がない場合は、次のスクリプトを使用して作成します。
 
 ```bash
 
@@ -105,9 +105,9 @@ az network vnet subnet update \
 #  NOTE! The VNET must always be in the same region as the Azure Image Builder service region.
 ```
 
-### <a name="add-network-security-group-rule"></a>ネットワーク セキュリティ グループの規則を追加する
+### <a name="add-network-security-group-rule"></a>ネットワーク セキュリティ グループの規則の追加
 
-この規則によって、Azure Image Builder のロード バランサーからプロキシ VM への接続が可能になります。 ポート 60001 は Linux OS 用、ポート 60000 は Windows OS 用です。 プロキシ VM は、ポート 22 (Linux OS の場合) またはポート 5986 (Windows OS の場合) を使用してビルド VM に接続されます。
+この規則によって、Azure Image Builder のロード バランサーからプロキシ VM への接続が許可されます。 ポート 60001 は Linux OS 用、ポート 60000 は Windows OS 用です。 プロキシ VM は、Linux OS の場合はポート 22、Windows OS の場合はポート 5986 を使用して、ビルド VM に接続されます。
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -122,7 +122,7 @@ az network nsg rule create \
     --description "Allow Image Builder Private Link Access to Proxy VM"
 ```
 
-### <a name="disable-private-service-policy-on-subnet"></a>サブネットでプライベート サービス ポリシーを無効にする
+### <a name="disable-private-service-policy-on-subnet"></a>サブネットでのプライベート サービス ポリシーの無効化
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -132,9 +132,9 @@ az network vnet subnet update \
   --disable-private-link-service-network-policies true 
 ```
 
-Image Builder のネットワークの詳細については、「[Azure Image Builder サービスのネットワーク オプション](image-builder-networking.md)」をご覧ください。
+Image Builder ネットワークの詳細については、「[Azure Image Builder サービス ネットワークのオプション](image-builder-networking.md)」を参照してください。
 
-## <a name="modify-the-example-template-and-create-role"></a>サンプル テンプレートを変更し、ロールを作成する
+## <a name="modify-the-example-template-and-create-role"></a>サンプル テンプレートの変更とロールの作成
 
 ```bash
 # download the example and configure it with your vars
@@ -163,7 +163,7 @@ sed -i -e "s/<vnetRgName>/$vnetRgName/g" aibRoleNetworking.json
 
 ## <a name="set-permissions-on-the-resource-group"></a>リソース グループのアクセス許可を設定する
 
-Image Builder は、指定された[ユーザー ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity) を使用して、Azure Shared Image Gallery (SIG) にイメージを挿入します。 この例では、イメージの SIG への配布を実行するための粒度の細かいアクションを持つ Azure ロール定義を作成します。 このロール定義はその後、ユーザー ID に割り当てられます。
+Image Builder は、指定された[ユーザー ID](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity) を使用して、Azure Shared Image Gallery (SIG) にイメージを挿入します。 この例では、イメージの SIG への配布を実行するための粒度の細かいアクションを持つ Azure ロール定義を作成します。 このロール定義はその後、ユーザー ID に割り当てられます。
 
 ```bash
 # create user assigned identity for image builder

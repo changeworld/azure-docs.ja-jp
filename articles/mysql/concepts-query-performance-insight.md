@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/12/2020
 ms.openlocfilehash: 7aefa6cd048c41feb1535f2ae7fa5c87bf628b2d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90884905"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mysql"></a>Azure Database for MySQL の Query Performance Insight
@@ -64,7 +64,7 @@ Azure Database for MySQL サーバーのポータル ページのメニュー �
 
 待機統計ビューに表示されるクエリは、指定された時間間隔での最大待機を示すクエリでグループ化されます。
 
-:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png" alt-text="Query Performance Insight の待機時間の統計":::
+:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png" alt-text="Query Performance Insight 実行時間が長いクエリ":::
 
 ## <a name="next-steps"></a>次のステップ
 

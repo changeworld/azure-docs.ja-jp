@@ -6,17 +6,17 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 09/25/2020
 ms.author: cynthn
-ms.openlocfilehash: a85f5cb9cc519b180354445ca9ca2f8dd0354c23
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: d99f8c380b486ed818aff64782ca817dab41c916
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91370201"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975283"
 ---
 # <a name="deploy-to-dedicated-hosts-using-the-azure-cli"></a>Azure CLI を使用して専用ホストにデプロイする
  
 
-この記事では、仮想マシン (VM) をホストするための Azure [専用ホスト](dedicated-hosts.md)を作成する方法について説明します。 
+この記事では、仮想マシン (VM) をホストするための Azure [専用ホスト](../dedicated-hosts.md)を作成する方法について説明します。 
 
 Azure CLI バージョン2.0.70 以降がインストールされていること、および `az login` を使用して Azure アカウントにサインインしていることを確認します。 
 
@@ -319,8 +319,8 @@ az group delete -n myDHResourceGroup
 
 ## <a name="next-steps"></a>次のステップ
 
-- 詳細については、[専用ホスト](dedicated-hosts.md)の概要に関するページを参照してください。
+- 詳細については、[専用ホスト](../dedicated-hosts.md)の概要に関するページを参照してください。
 
-- また、[Azure portal](dedicated-hosts-portal.md) を使用して専用ホストを作成することもできます。
+- また、[Azure portal](../dedicated-hosts-portal.md) を使用して専用ホストを作成することもできます。
 
 - [こちら](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)には、リージョン内の回復性を最大にするためにゾーンと障害ドメインの両方を使用するサンプル テンプレートがあります。

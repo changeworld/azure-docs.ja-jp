@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 611edb06762b96ded7671b70ec0f5d4f07f51848
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 78ea26adb8299cc13d4677c66a0e06cba901d9dc
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829086"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977376"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows 用の仮想マシン拡張機能とその機能
 
@@ -70,7 +70,7 @@ Windows ゲスト エージェントは複数の OS で実行されますが、�
 > [!IMPORTANT]
 > ゲスト ファイアウォールまたはプロキシを使用して *168.63.129.16* へのアクセスをブロックした場合、上記とは関係なく、拡張機能はエラーになります。 ポート 80、443、32526 が必要です。
 
-エージェントは、拡張機能パッケージおよびレポート ステータスをダウンロードするためだけに使用できます。 たとえば、拡張機能のインストール時に GitHub からスクリプトをダウンロードする必要がある場合 (カスタム スクリプト)、または Azure Storage へのアクセスが必要な場合 (Azure Backup) は、追加のファイアウォール/ネットワーク セキュリティ グループ ポートが開かれている必要があります。 拡張機能はそれぞれ、独自のアプリケーションになっているため、要件も異なります。 Azure Storage または Azure Active Directory へのアクセスを必要とする拡張機能の場合は、Storage または AzureActiveDirectory の [Azure NSG サービス タグ](../../virtual-network/security-overview.md#service-tags)を使用してアクセスを許可できます。
+エージェントは、拡張機能パッケージおよびレポート ステータスをダウンロードするためだけに使用できます。 たとえば、拡張機能のインストール時に GitHub からスクリプトをダウンロードする必要がある場合 (カスタム スクリプト)、または Azure Storage へのアクセスが必要な場合 (Azure Backup) は、追加のファイアウォール/ネットワーク セキュリティ グループ ポートが開かれている必要があります。 拡張機能はそれぞれ、独自のアプリケーションになっているため、要件も異なります。 Azure Storage または Azure Active Directory へのアクセスを必要とする拡張機能の場合は、Storage または AzureActiveDirectory の [Azure NSG サービス タグ](../../virtual-network/network-security-groups-overview.md#service-tags)を使用してアクセスを許可できます。
 
 Windows ゲスト エージェントには、エージェントのトラフィック要求をリダイレクトするためのプロキシ サーバーのサポートはありません。つまり、Windows ゲスト エージェントでは、カスタムプロキシに依存して (ある場合)、IP 168.63.129.16 経由でインターネット上またはホスト上のリソースにアクセスできます。
 

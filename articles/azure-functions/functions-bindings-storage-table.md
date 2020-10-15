@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 50706e1b525a3e3a39701ef2135d44c02c35077e
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 70329d07a9966a5cbdafcd64000470c4edcbca9e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181138"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072052"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Table Storage のバインド
 
@@ -273,8 +273,8 @@ public class Person : TableEntity
 ```
 
 ```csharp
-#r "Microsoft.Azure.Cosmos"
-using Microsoft.Azure.Cosmos.Table;
+#r "Microsoft.WindowsAzure.Storage"
+using Microsoft.WindowsAzure.Storage.Table;
 using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;

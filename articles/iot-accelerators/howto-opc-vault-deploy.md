@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 365cb0912d84f0664b2a5432cd54cd553df62466
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 98dc9345d2c8b392fd094458b612857d6d454739
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91282025"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071491"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>OPC Vault 証明書管理サービスをビルドしてデプロイする
 
@@ -31,7 +31,7 @@ ms.locfileid: "91282025"
 
 現在、ビルドおよびデプロイ操作は Windows に限定されています。
 サンプルはすべて C# .NET Standard 用に記述されているので、デプロイするためにサービスとサンプルをビルドするにはそれが必要です。
-.NET Standard に必要なすべてのツールは、.NET Core ツールに付属しています。 「[.NET Core の概要](https://docs.microsoft.com/dotnet/articles/core/getting-started)」を参照してください。
+.NET Standard に必要なすべてのツールは、.NET Core ツールに付属しています。 「[.NET Core の概要](/dotnet/articles/core/getting-started)」を参照してください。
 
 1. [.NET Core 2.1 以降をインストールします][dotnet-install]。
 2. [Docker をインストールします][docker-url] (省略可能。Docker のローカル ビルドが必要な場合のみ)。

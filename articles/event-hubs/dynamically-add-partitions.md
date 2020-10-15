@@ -4,10 +4,10 @@ description: この記事では、Azure Event Hubs でイベント ハブにパ�
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: 4a729147eaa11497c66f82a9764dfee9492786b9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87002541"
 ---
 # <a name="dynamically-add-partitions-to-an-event-hub-apache-kafka-topic-in-azure-event-hubs"></a>Azure Event Hubs でイベント ハブ (Apache Kafka トピック) にパーティションを動的に追加する

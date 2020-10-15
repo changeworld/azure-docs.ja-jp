@@ -7,10 +7,10 @@ author: kanshiG
 ms.author: govindk
 ms.date: 04/09/2020
 ms.openlocfilehash: e3ec3bc0e0c6028eb5d7a90ee1920938d792941b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85260748"
 ---
 # <a name="how-to-monitor-throughput-or-request-unit-usage-of-an-operation-in-azure-cosmos-db"></a>Azure Cosmos DB で操作のスループットまたは要求ユニットの使用状況を監視する方法
@@ -42,11 +42,11 @@ Azure Monitor for Azure Cosmos DB では、アカウントを監視したり、�
 
 1. **[メトリック]** ウィンドウから、 **[リソースの選択]** を選択し、必要な**サブスクリプション**と**リソース グループ**を選択します。 **[リソースの種類]** で、 **[Azure Cosmos DB accounts]\(Azure Cosmos DB アカウント\)** を選択し、既存の Azure Cosmos アカウントの一つを選択し、 **[適用]** を選択します。
 
-   :::image type="content" source="./media/monitor-request-unit-usage/select-cosmos-db-account.png" alt-text="メトリックを表示する Azure Cosmos DB アカウントを選択する":::
+   :::image type="content" source="./media/monitor-request-unit-usage/select-cosmos-db-account.png" alt-text="Azure Monitor のメトリック ウィンドウ":::
 
 1. 次に、使用可能なメトリックの一覧から **[Total Request Units]\(合計要求ユニット\)** メトリックを選択します。 この一覧で使用可能なすべてのメトリックの詳細については、「[カテゴリ別のメトリック](monitor-cosmos-db-reference.md)」の記事を参照してください。 この例では、 **[Total Request Units]\(合計要求ユニット\)** およ集計値として **[Avg]\(平均\)** を選択します。 これらの詳細に加えて、メトリックの **[時間の範囲]** と **[時間の粒度]** を選択することもできます。 最大で、過去 30 日間のメトリックを表示できます。  フィルターを適用すると、そのフィルターに基づいてグラフが表示されます。 選択した期間に消費された要求ユニットの 1 分あたりの平均数を確認できます。  
 
-   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-metric.png" alt-text="Azure portal からのメトリックの選択":::
+   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-metric.png" alt-text="Azure Monitor のメトリック ウィンドウ":::
 
 ## <a name="filters-for-request-unit-usage"></a>要求ユニットの使用状況をフィルターする
 
@@ -54,11 +54,11 @@ Azure Monitor for Azure Cosmos DB では、アカウントを監視したり、�
 
 各操作の要求ユニットの使用状況を合計 (sum) または平均で取得するには、 **[Apply splitting]\(分割の適用\)** を選択し、次の図に示すように **[Operation type]\(操作の種類\)** とフィルター値を選択します。
 
-   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-operations.png" alt-text="Azure Monitor での操作の Cosmos DB 要求ユニット":::
+   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-operations.png" alt-text="Azure Monitor のメトリック ウィンドウ":::
 
 コレクション別の要求ユニットの使用状況を確認するには、 **[Apply splitting]\(分割の適用\)** を選択し、コレクション名をフィルターとして選択します。 ダッシュボード内に、コレクションを選択できる次のようなグラフが表示されます。 次に、特定のコレクション名を選択して詳細を表示できます。
 
-   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-collection.png" alt-text="Azure Monitor でのコレクション別のすべての操作の Cosmos DB 要求ユニット":::
+   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-collection.png" alt-text="Azure Monitor のメトリック ウィンドウ":::
 
 ## <a name="next-steps"></a>次のステップ
 

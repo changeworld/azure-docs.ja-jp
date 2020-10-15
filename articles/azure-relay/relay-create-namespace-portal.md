@@ -1,13 +1,13 @@
 ---
-title: Azure Portal を使用して Relay 名前空間を作成する | Microsoft Docs
+title: Azure ポータルを使用して Relay 名前空間を作成する | Microsoft Docs
 description: この記事では、Azure portal を使用して Relay 名前空間を作成する方法を段階的に説明します。
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 4c26928d2ee53a5c76ff982b5d57b59f9a7a8ab8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85316995"
 ---
 # <a name="create-a-relay-namespace-using-the-azure-portal"></a>Azure Portal を使用した Relay 名前空間の作成

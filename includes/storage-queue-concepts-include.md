@@ -6,10 +6,10 @@ ms.date: 08/21/2020
 ms.author: tamram
 ms.custom: seo-python-october2019
 ms.openlocfilehash: 3aa21fb99ac5ab24674bf5d4b62fd3fca98de632
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88853657"
 ---
 ## <a name="what-is-queue-storage"></a>Queue storage とは

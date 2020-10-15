@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cynthn
 ms.openlocfilehash: 33ba816227db4cf958fd30c9dac1a0745505c504
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87513691"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>簡単な手順: Azure 内に Linux VM 用の SSH 公開/秘密キーのペアを作成して使用する

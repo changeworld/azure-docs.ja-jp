@@ -4,10 +4,10 @@ description: この記事では、Azure Event Hubs を評価するためのセ�
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: da20778f1e24372e445d635e675df6484905f195
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85315399"
 ---
 # <a name="security-controls-for-azure-event-hubs"></a>Azure Event Hubs のセキュリティ コントロール

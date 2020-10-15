@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2020
 ms.author: victorh
 ms.openlocfilehash: 1a35d9c48dd46d5d220699589f4ed758d21feca8
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88854275"
 ---
 # <a name="use-fqdn-filtering-in-network-rules-preview"></a>ネットワーク ルールでの FQDN フィルタリング (プレビュー) を使用する

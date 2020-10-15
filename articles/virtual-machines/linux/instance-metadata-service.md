@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: ea11e2f5f8d89381723011686de9e22639997c01
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ffa9502a42af9e927f82d7a135473ff702b76577
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974153"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91970709"
 ---
 # <a name="azure-instance-metadata-service-imds"></a>Azure Instance Metadata Service (IMDS)
 
@@ -249,8 +249,8 @@ offer | VM イメージのオファーの情報。Azure イメージ ギャラ�
 osType | Linux または Windows | 2017-04-02
 placementGroupId | お使いの仮想マシン スケール セットの[配置グループ](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
 plan | VM が Azure Marketplace イメージである場合、[プラン](/rest/api/compute/virtualmachines/createorupdate#plan)にはその名前、製品、および発行元が含まれています | 2018-04-02
-platformUpdateDomain |  VM を実行中の[更新ドメイン](manage-availability.md) | 2017-04-02
-platformFaultDomain | VM を実行中の[障害ドメイン](manage-availability.md) | 2017-04-02
+platformUpdateDomain |  VM を実行中の[更新ドメイン](../manage-availability.md) | 2017-04-02
+platformFaultDomain | VM を実行中の[障害ドメイン](../manage-availability.md) | 2017-04-02
 provider | VM のプロバイダー | 2018-10-01
 publicKeys | VM とパスに割り当てられた[公開キーのコレクション](/rest/api/compute/virtualmachines/createorupdate#sshpublickey) | 2018-04-02
 publisher | VM イメージの発行元 | 2017-04-02

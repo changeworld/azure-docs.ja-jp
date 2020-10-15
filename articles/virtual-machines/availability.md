@@ -6,12 +6,12 @@ ms.author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 3826019a19aa744cb03737ed7f0c985f8063a1aa
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: b4009f3c132c76f6632d6bb706649befa746001f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815608"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972528"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Azure の仮想マシンの可用性オプション
 
@@ -51,7 +51,7 @@ Azure Virtual Machine Scale Sets では、負荷分散が行われる VM のグ�
 
 **障害ドメインと更新ドメイン**
 
-仮想マシン スケール セットを使用すると、障害ドメインと更新ドメインを調整することで、高可用性向けの設計が簡単になります。 スケール セットの障害ドメインの数を定義するだけで済みます。 スケール セットで使用できる障害ドメインの数は、リージョンによって異なる場合があります。 [Azure での仮想マシンの可用性の管理](./windows/manage-availability.md)に関する記事を参照してください。
+仮想マシン スケール セットを使用すると、障害ドメインと更新ドメインを調整することで、高可用性向けの設計が簡単になります。 スケール セットの障害ドメインの数を定義するだけで済みます。 スケール セットで使用できる障害ドメインの数は、リージョンによって異なる場合があります。 [Azure での仮想マシンの可用性の管理](./manage-availability.md)に関する記事を参照してください。
 
 
 ## <a name="availability-sets"></a>可用性セット
@@ -61,7 +61,7 @@ Azure Virtual Machine Scale Sets では、負荷分散が行われる VM のグ�
 
 [Azure Managed Disks](./faq-for-disks.md) を使用している VM の場合、VM は管理対象の可用性セットを使用している場合にマネージド ディスクの障害ドメインに合わせて配置されます。 この配置により、VM に接続されたすべてのマネージド ディスクは必ず同じマネージド ディスクの障害ドメイン内にあります。 
 
-管理対象の可用性セットには、マネージド ディスクを持つ VM だけを作成できます。 マネージド ディスクの障害ドメインの数はリージョンによって異なり、マネージド ディスクの障害ドメインはリージョンあたり 2 つまたは 3 つになります。 [Linux VM](./linux/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) または [Windows VM](./windows/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) のこれらのマネージド ディスク障害ドメインの詳細を参照してください。
+管理対象の可用性セットには、マネージド ディスクを持つ VM だけを作成できます。 マネージド ディスクの障害ドメインの数はリージョンによって異なり、マネージド ディスクの障害ドメインはリージョンあたり 2 つまたは 3 つになります。 [Linux VM](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) または [Windows VM](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) のこれらのマネージド ディスク障害ドメインの詳細を参照してください。
 
 ![可用性セットの管理](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
 

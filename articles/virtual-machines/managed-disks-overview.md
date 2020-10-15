@@ -8,12 +8,12 @@ ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperfq1
-ms.openlocfilehash: 773c5f95cdbec6961b063720106794e6ec00451d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: cb310861edc2ba1ee183bc6f996cb1593457e3c7
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299934"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972035"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Azure マネージド ディスクの概要
 
@@ -35,7 +35,7 @@ Azure マネージド ディスクは、Azure によって管理されて Azure 
 
 ### <a name="integration-with-availability-sets"></a>可用性セットとの統合
 
-マネージド ディスクは可用性セットと統合されており、[可用性セット内の VM](windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) のディスクが単一障害点にならないように相互に十分に分離されます。 ディスクはさまざまなストレージ スケール ユニット (スタンプ) に自動的に配置されます。 ハードウェアやソフトウェアの障害によってスタンプが機能しなくなった場合、そのスタンプ上のディスクを使用する VM インスタンスだけが機能しなくなります。 たとえば、5 台の VM 上で実行されているアプリケーションがあり、これらの VM が可用性セットに含まれているとします。 各 VM のディスクはすべて同じスタンプに格納されるわけではないため、1 つのスタンプがダウンしても、アプリケーションの他のインスタンスは引き続き実行されます。
+マネージド ディスクは可用性セットと統合されており、[可用性セット内の VM](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) のディスクが単一障害点にならないように相互に十分に分離されます。 ディスクはさまざまなストレージ スケール ユニット (スタンプ) に自動的に配置されます。 ハードウェアやソフトウェアの障害によってスタンプが機能しなくなった場合、そのスタンプ上のディスクを使用する VM インスタンスだけが機能しなくなります。 たとえば、5 台の VM 上で実行されているアプリケーションがあり、これらの VM が可用性セットに含まれているとします。 各 VM のディスクはすべて同じスタンプに格納されるわけではないため、1 つのスタンプがダウンしても、アプリケーションの他のインスタンスは引き続き実行されます。
 
 ### <a name="integration-with-availability-zones"></a>Availability Zones との統合
 
@@ -47,7 +47,7 @@ Azure マネージド ディスクは、Azure によって管理されて Azure 
 
 ### <a name="granular-access-control"></a>詳細なアクセス制御
 
-[Azure のロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) を使用して、マネージド ディスクに対する特定のアクセス許可を 1 人以上のユーザーに割り当てることができます。 マネージド ディスク では、ディスクの読み取り、書き込み (作成/更新)、削除、[Shared Access Signature (SAS) URI](../storage/common/storage-dotnet-shared-access-signature-part-1.md) の取得など、さまざまな操作を公開しています。 ユーザーが仕事をする上で必要な操作へのアクセス権だけを付与することができます。 たとえば、ユーザーがマネージド ディスクをストレージ アカウントにコピーすることが望ましくない場合は、そのマネージド ディスクに対するエクスポート アクションへのアクセス権を付与しないようにします。 同様に、ユーザーが SAS URI を使用してマネージド ディスクをコピーできないようにする場合は、そのマネージド ディスクに対する該当のアクセス許可を付与しないことを選択できます。
+[Azure のロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) を使用して、マネージド ディスクに対する特定のアクセス許可を 1 人以上のユーザーに割り当てることができます。 マネージド ディスク では、ディスクの読み取り、書き込み (作成/更新)、削除、[Shared Access Signature (SAS) URI](../storage/common/storage-sas-overview.md) の取得など、さまざまな操作を公開しています。 ユーザーが仕事をする上で必要な操作へのアクセス権だけを付与することができます。 たとえば、ユーザーがマネージド ディスクをストレージ アカウントにコピーすることが望ましくない場合は、そのマネージド ディスクに対するエクスポート アクションへのアクセス権を付与しないようにします。 同様に、ユーザーが SAS URI を使用してマネージド ディスクをコピーできないようにする場合は、そのマネージド ディスクに対する該当のアクセス許可を付与しないことを選択できます。
 
 ### <a name="upload-your-vhd"></a>お使いの VHD をアップロードする
 
@@ -96,7 +96,7 @@ Azure には、データ ディスク、OS ディスク、一時ディスクと�
 
 ### <a name="temporary-disk"></a>一時ディスク
 
-ほとんどの VM には、マネージド ディスクではない一時ディスクが含まれています。 一時ディスクはアプリケーションやプロセスのために短期間の保存場所を提供するものであり、ページやスワップ ファイルなどのデータ格納のみを意図しています。 一時ディスクのデータは、[メンテナンス イベント](windows/manage-availability.md?toc=/azure/virtual-machines/windows/toc.json#understand-vm-reboots---maintenance-vs-downtime)中、または [VM の再デプロイ](troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json)時に失われる可能性があります。 VM を正常に標準再起動している間、一時ディスク上のディスクは残ります。 一時ディスクのない VM に関する詳細については、「[ローカル一時ディスクを持たない Azure VM のサイズ](azure-vms-no-temp-disk.md)」を参照してください。
+ほとんどの VM には、マネージド ディスクではない一時ディスクが含まれています。 一時ディスクはアプリケーションやプロセスのために短期間の保存場所を提供するものであり、ページやスワップ ファイルなどのデータ格納のみを意図しています。 一時ディスクのデータは、[メンテナンス イベント](./manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#understand-vm-reboots---maintenance-vs-downtime)中、または [VM の再デプロイ](troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json)時に失われる可能性があります。 VM を正常に標準再起動している間、一時ディスク上のディスクは残ります。 一時ディスクのない VM に関する詳細については、「[ローカル一時ディスクを持たない Azure VM のサイズ](azure-vms-no-temp-disk.md)」を参照してください。
 
 Azure Linux VM の一時ディスクは通常 /dev/sdb です。Windows VM の一時ディスクは既定で D: です。 一時ディスクは、ホストで暗号化を有効にしない限り、サーバー側暗号化によって暗号化されません。
 
@@ -104,7 +104,7 @@ Azure Linux VM の一時ディスクは通常 /dev/sdb です。Windows VM の�
 
 マネージド ディスクのスナップショットは、マネージド ディスクの読み取り専用のクラッシュ整合性の完全なコピーであり、既定で Standard マネージド ディスクとして格納されます。 スナップショットを使用すると、任意の時点のマネージド ディスクのバックアップを作成できます。 これらのスナップショットはソース ディスクとは独立して存在し、新しいマネージド ディスクの作成に使用できます。 
 
-スナップショットは、使用されるサイズに基づいて請求されます。 たとえば、64 GiB のプロビジョニング済み容量でマネージド ディスクのスナップショットを作成し、実際に使用されたデータ サイズが 10 GiB である場合、スナップショットは使用されたデータ サイズである 10 GiB 分のみ課金されます。 スナップショットの使用サイズは、[Azure 利用状況レポート](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)で確認できます。 たとえば、スナップショットの使用データ サイズが 10 GiB の場合、**毎日**の利用状況レポートには、使用量として 10 GiB/(31 日) = 0.3226 が表示されます。
+スナップショットは、使用されるサイズに基づいて請求されます。 たとえば、64 GiB のプロビジョニング済み容量でマネージド ディスクのスナップショットを作成し、実際に使用されたデータ サイズが 10 GiB である場合、スナップショットは使用されたデータ サイズである 10 GiB 分のみ課金されます。 スナップショットの使用サイズは、[Azure 利用状況レポート](../cost-management-billing/understand/review-individual-bill.md)で確認できます。 たとえば、スナップショットの使用データ サイズが 10 GiB の場合、**毎日**の利用状況レポートには、使用量として 10 GiB/(31 日) = 0.3226 が表示されます。
 
 マネージド ディスクでスナップショットを作成する方法の詳細については、次のリソースを参照してください。
 

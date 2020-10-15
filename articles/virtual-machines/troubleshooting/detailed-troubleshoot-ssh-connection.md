@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 0b4890181721d08b741d327adb74bd097be5c9f2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c117f9697299b94a54d9184093e65c56822b8bd2
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87069166"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975673"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Azure での Linux VM 接続問題に関する SSH の詳細なトラブルシューティングの手順
 SSH クライアントは、さまざまな理由で VM 上の SSH サービスに到達できない可能性があります。 [SSH のトラブルシューティングの一般的な手順](troubleshoot-ssh-connection.md)に従った場合は、接続の問題について詳細なトラブルシューティングを行う必要があります。 この記事では、詳細なトラブルシューティング手順を説明し、SSH 接続に失敗した場所の特定とその解決方法を確認します。
@@ -39,7 +39,7 @@ SSH クライアントは、さまざまな理由で VM 上の SSH サービス�
 
 2. エンドポイント、IP アドレス、ネットワーク セキュリティ グループなどの設定を確認するには、 **[設定]** を選択します。
 
-   VM には、 **[エンドポイント]** または **[[ネットワーク セキュリティ グループ]](../../virtual-network/security-overview.md)** で確認できる SSH トラフィック用に定義されたエンドポイントが必要です。 Resource Manager を使用して作成された VM のエンドポイントは、ネットワーク セキュリティ グループに格納されています。 ネットワーク セキュリティ グループにルールが適用され、サブネットで参照されていることを確認します。
+   VM には、 **[エンドポイント]** または **[[ネットワーク セキュリティ グループ]](../../virtual-network/network-security-groups-overview.md)** で確認できる SSH トラフィック用に定義されたエンドポイントが必要です。 Resource Manager を使用して作成された VM のエンドポイントは、ネットワーク セキュリティ グループに格納されています。 ネットワーク セキュリティ グループにルールが適用され、サブネットで参照されていることを確認します。
 
 ネットワーク接続を確認するには、構成されているエンドポイントを確認します。また、HTTP などの別のプロトコルや他のサービスを使用して、VM に接続できるかどうかを確認します。
 
@@ -114,7 +114,7 @@ SSH クライアントは、さまざまな理由で VM 上の SSH サービス�
 
 ## <a name="source-4-network-security-groups"></a>ソース 4: ネットワーク セキュリティ グループ
 ネットワーク セキュリティ グループでは、許可された受信トラフィックと送信トラフィックをより細かく制御できます。 Azure 仮想ネットワーク内のサブネットまたはクラウド サービスの全体に適用されるルールを作成することができます。 ネットワーク セキュリティ グループ ルールで、インターネットからの SSH トラフィックが許可されていることを確認します。
-詳細については、「 [ネットワーク セキュリティ グループについて](../../virtual-network/security-overview.md)」をご覧ください。
+詳細については、「 [ネットワーク セキュリティ グループについて](../../virtual-network/network-security-groups-overview.md)」をご覧ください。
 
 NSG 構成の検証に IP Verify を使用することもできます。 詳細については、「[Azure のネットワーク監視の概要](../../network-watcher/network-watcher-monitoring-overview.md)」を参照してください。 
 

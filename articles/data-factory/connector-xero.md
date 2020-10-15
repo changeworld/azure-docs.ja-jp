@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: jingwang
 ms.openlocfilehash: 14b3857211eca39ebe09a3a0752ca1d8eee17bc0
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87529995"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>Azure Data Factory を使用して Xero からデータをコピーする

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: aahi
 ms.openlocfilehash: 3cd6febfc774b214a8c1ae8553e6c127c4f452fa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319080"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>音声コンテナー用のバッチ処理キット

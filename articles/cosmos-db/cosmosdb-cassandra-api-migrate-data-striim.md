@@ -8,10 +8,10 @@ ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
 ms.openlocfilehash: 7590d40085c3963a95fd251dd1291cf34fbaf4a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85262091"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-cassandra-api-account-using-striim"></a>Striim を使用して Azure Cosmos DB Cassandra API アカウントにデータを移行する
@@ -36,7 +36,7 @@ Azure Marketplace の Striim イメージは、データウェアハウスとデ
 
 1. 次に、Striim インスタンスの構成プロパティを入力します。 Striim 環境が仮想マシンにデプロイされます。 **[基本]** ウィンドウから、**VM ユーザー名**、**VM パスワード**を入力します (このパスワードは、VM への SSH 接続に使用されます)。 ご使用の**サブスクリプション**、**リソース グループ**、および Striim をデプロイする**場所の詳細**を選択します。 完了したら、 **[OK]** を選択します。
 
-   :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-configure-basic-settings.png" alt-text="Striim の基本設定を構成する":::
+   :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-configure-basic-settings.png" alt-text="Striim の Marketplace 項目を見つける":::
 
 
 1. **[Striim Cluster settings]\(Striim クラスターの設定\)** ウィンドウで、Striim のデプロイの種類と仮想マシンのサイズを選択します。
@@ -51,7 +51,7 @@ Azure Marketplace の Striim イメージは、データウェアハウスとデ
 
 1. **[Striim access settings]\(Striim のアクセス設定\)** ウィンドウで、Striim UI にログインするために使用する **[Public IP address]\(パブリック IP アドレス\)** (既定の値を選択)、 **[Domain name for Striim]\(Striim のドメイン名\)** 、 **[Admin password]\(管理者パスワード\)** を構成します。 VNET とサブネットを構成します (既定の値を選択)。 詳細を入力したら、 **[OK]** を選択して続行します。
 
-   :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-access-settings.png" alt-text="Striim のアクセス設定":::
+   :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-access-settings.png" alt-text="Striim の Marketplace 項目を見つける":::
 
 1. Azure はデプロイを検証し、すべてが適切であることを確認します。検証の完了までには数分かかります。 検証が完了したら、 **[OK]** を選択します。
   
@@ -71,7 +71,7 @@ Azure Marketplace の Striim イメージは、データウェアハウスとデ
 
 1. Azure Cosmos アカウントで **[データ エクスプローラー]** ウィンドウに移動します。 **[新しいテーブル]** を選択して、新しいコンテナーを作成します。 "*製品*" と "*注文*" のデータを Oracle データベースから Azure Cosmos DB に移行するとします。 Orders コンテナーを使用して、**StriimDemo** という名前の新しいキースペースを作成します。 **1000 RU** でコンテナーをプロビジョニングします (この例では 1000 RU を使用しますが、ご自分のワークロード用に推定されるスループットを使用してください)。そして、主キーとして **/ORDER_ID** を使用します。 これらの値は、ソース データによって異なります。 
 
-   :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/create-cassandra-api-account.png" alt-text="Cassandra API アカウントを作成する":::
+   :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/create-cassandra-api-account.png" alt-text="Striim の Marketplace 項目を見つける":::
 
 ## <a name="configure-oracle-to-azure-cosmos-db-data-flow"></a>Oracle から Azure Cosmos DB へのデータ フローを構成する
 
@@ -79,11 +79,11 @@ Azure Marketplace の Striim イメージは、データウェアハウスとデ
 
 1. Azure portal でデプロイした Striim インスタンスに移動します。 上部メニュー バーの **[接続]** ボタンを選択し、 **[SSH]** タブから **[VM ローカル アカウントを使用してログインする]** フィールドに URL をコピーします。
 
-   :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/get-ssh-url.png" alt-text="SSH URL を取得する":::
+   :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/get-ssh-url.png" alt-text="Striim の Marketplace 項目を見つける":::
 
 1. 新しいターミナル ウィンドウを開き、Azure portal からコピーした SSH コマンドを実行します。 この記事では、MacOS でターミナルを使用しますが、PuTTY または Windows コンピューター上の別の SSH クライアントを使用して、同様の手順を実行できます。 プロンプトが表示されたら、**yes** と入力して続行し、前の手順で仮想マシンに対して設定した**パスワード**を入力します。
 
-   :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-vm-connect.png" alt-text="Striim VM に接続する":::
+   :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-vm-connect.png" alt-text="Striim の Marketplace 項目を見つける":::
 
 1. 次に、新しいターミナル タブを開いて、前にダウンロードした **ojdbc8.jar** ファイルをコピーします。 次の SCP コマンドを使用して、jar ファイルをローカル コンピューターから Azure で実行されている Striim インスタンスの tmp フォルダーにコピーします。
 
@@ -92,7 +92,7 @@ Azure Marketplace の Striim イメージは、データウェアハウスとデ
    scp ojdbc8.jar striimdemo@striimdemo.westus.cloudapp.azure.com:/tmp
    ```
 
-   :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/copy-jar-file.png" alt-text="ローカル コンピューターから Striim に Jar ファイルをコピーする":::
+   :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/copy-jar-file.png" alt-text="Striim の Marketplace 項目を見つける":::
 
 1. 次に、Striim インスタンスへの SSH 接続を実行したウィンドウに戻り、sudo としてログインします。 次のコマンドを使用して、**ojdbc8.jar** ファイルを **/tmp** ディレクトリから、Striim インスタンスの **lib** ディレクトリに移動します。
 
@@ -103,7 +103,7 @@ Azure Marketplace の Striim イメージは、データウェアハウスとデ
    chmod +x ojdbc8.jar
    ```
 
-   :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/move-jar-file.png" alt-text="Jar ファイルを lib フォルダーに移動する":::
+   :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/move-jar-file.png" alt-text="Striim の Marketplace 項目を見つける":::
 
 
 1. 同じターミナル ウィンドウで次のコマンドを実行して、Striim サーバーを再起動します。
@@ -123,37 +123,37 @@ Azure Marketplace の Striim イメージは、データウェアハウスとデ
 
 1. 次に、Azure に戻り、Striim VM のパブリック IP アドレスをコピーします。 
 
-   :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/copy-public-ip-address.png" alt-text="Striim VM の IP アドレスをコピーする":::
+   :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/copy-public-ip-address.png" alt-text="Striim の Marketplace 項目を見つける":::
 
 1. Striim の Web UI に移動するために、ブラウザーで新しいタブを開き、パブリック IP をコピーし、その後に9080 を指定します。 **admin** ユーザー名と、Azure portal で指定した管理者パスワードを使用してサインインします。
 
-   :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-login-ui.png" alt-text="Striim にサインインする":::
+   :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-login-ui.png" alt-text="Striim の Marketplace 項目を見つける":::
 
 1. これで、Striim のホーム ページが表示されます。 3 つの異なるウィンドウ (**ダッシュボード**、**アプリ**、**SourcePreview**) があります。 [ダッシュボード] ウィンドウでは、リアルタイムでデータを移動し、視覚化することができます。 [アプリ] ウィンドウには、ストリーミング データ パイプライン (データ フロー) が含まれています。 このページの右側には SourcePreview があります。ここでは、データを移動する前にプレビューすることができます。
 
 1. **[アプリ]** ウィンドウを選択します。今はこのウィンドウに焦点を当てます。 Striim について学ぶために使用できるさまざまなサンプル アプリがありますが、この記事では、独自のものを作成します。 右上隅にある **[アプリの追加]** ボタンを選択します。
 
-   :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/add-striim-app.png" alt-text="Striim アプリを追加する":::
+   :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/add-striim-app.png" alt-text="Striim の Marketplace 項目を見つける":::
 
 1. Striim アプリケーションを作成するには、いくつかの異なる方法があります。 このシナリオでは、 **[最初から行う]** を選択します。
 
-   :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/start-app-from-scratch.png" alt-text="アプリを最初から開始する":::
+   :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/start-app-from-scratch.png" alt-text="Striim の Marketplace 項目を見つける":::
 
 1. **oraToCosmosDB** のような分かりやすい名前をアプリケーションに指定し、 **[保存]** を選択します。
 
-   :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/create-new-application.png" alt-text="新しいアプリケーションを作成する":::
+   :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/create-new-application.png" alt-text="Striim の Marketplace 項目を見つける":::
 
 1. Flow Designer が表示されます。ここでは、既存のコネクタのドラッグ アンド ドロップによってストリーミング アプリケーションを作成できます。 検索バーに **[Oracle]** と入力し、**Oracle CDC** ソースをアプリのキャンバスにドラッグ アンド ドロップします。  
 
-   :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/oracle-cdc-source.png" alt-text="Oracle CDC ソース":::
+   :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/oracle-cdc-source.png" alt-text="Striim の Marketplace 項目を見つける":::
 
 1. Oracle インスタンスのソース構成プロパティを入力します。 ソース名は、単に Striim アプリケーションの名前付け規則です。**src_onPremOracle** のような名前を使用できます。 さらに、アダプターの種類、接続 URL、ユーザー名、パスワード、テーブル名などの詳細を入力します。 **[保存]** を選択して続行します。
 
-   :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/configure-source-parameters.png" alt-text="ソース パラメーターを構成する":::
+   :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/configure-source-parameters.png" alt-text="Striim の Marketplace 項目を見つける":::
 
 1. 次に、ストリームのウェーブ アイコンをクリックして、ターゲット Azure Cosmos DB インスタンスを接続します。 
 
-   :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/connect-to-target.png" alt-text="ターゲットへの接続":::
+   :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/connect-to-target.png" alt-text="Striim の Marketplace 項目を見つける":::
 
 1. ターゲットを構成する前に、[Striim の Java 環境に Baltimore ルート証明書](/azure/developer/java/sdk/java-sdk-add-certificate-ca-store#to-add-a-root-certificate-to-the-cacerts-store)が追加されていることを確認します。
 
@@ -169,24 +169,24 @@ Azure Marketplace の Striim イメージは、データウェアハウスとデ
 
    * **テーブル** - ターゲット テーブルには主キーが必要です。主キーを更新することはできません。
 
-   :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/configure-target-parameters1.png" alt-text="ターゲット プロパティを構成する":::
+   :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/configure-target-parameters1.png" alt-text="Striim の Marketplace 項目を見つける":::
 
-   :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/configure-target-parameters2.png" alt-text="ターゲット プロパティを構成する":::
+   :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/configure-target-parameters2.png" alt-text="Striim の Marketplace 項目を見つける":::
 
 1. 次に、続行して、Striim アプリケーションを実行します。 上部のメニュー バーで、 **[Created]\(作成済み\)** を選択し、次に **[Deploy App]\(アプリをデプロイ\)** を選択します。 [Deployment]\(デプロイ\) ウィンドウで、アプリケーションのある特定の部分をデプロイ トポロジの特定の部分で実行するかどうかを指定できます。 Azure を介して単純なデプロイ トポロジで実行しているので、既定のオプションを使用します。
 
-   :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/deploy-the-app.png" alt-text="アプリケーションのデプロイ":::
+   :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/deploy-the-app.png" alt-text="Striim の Marketplace 項目を見つける":::
 
 
 1. 次に、ストリームをプレビューして、Striim を経由するデータ フローを確認します。 ウェーブのアイコンをクリックし、その横の目のアイコンをクリックします。 デプロイ後、ストリームをプレビューして、データ フローを確認できます。 **ウェーブ** アイコンとその横の**眼球**を選択します。 上部メニュー バーの **[Deployed]\(デプロイ済み\)** ボタンを選択し、 **[Start App]\(アプリの開始\)** を選択します。
 
-   :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/start-the-app.png" alt-text="アプリを起動する":::
+   :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/start-the-app.png" alt-text="Striim の Marketplace 項目を見つける":::
 
 1. **CDC (変更データ キャプチャ)** リーダーを使用することにより、Striim は、データベースの新しい変更のみを取得します。 ソース テーブルを経由するデータ フローがある場合は、それが表示されます。 ただし、これはサンプル テーブルであるため、ソースはどのアプリケーションにも接続されていません。 サンプル データ ジェネレーターを使用する場合は、Oracle データベースに一連のイベントを挿入できます。
 
 1. Striim プラットフォームを経由するデータ フローが表示されます。 Striim は、お使いのテーブルに関連するすべてのメタデータも取得します。これは、データを監視し、データが正しいターゲットに到着することを確認するのに役立ちます。
 
-   :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/setup-cdc-pipeline.png" alt-text="CDC パイプラインを設定する":::
+   :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/setup-cdc-pipeline.png" alt-text="Striim の Marketplace 項目を見つける":::
 
 1. 最後に、Azure にサインインし、Azure Cosmos アカウントに移動します。 データ エクスプローラーを更新すると、データが到着していることを確認できます。 
 

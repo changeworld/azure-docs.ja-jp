@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: b-juche
 ms.openlocfilehash: 62bf154c1dbf1a0d3f12e2cef916b37059ce985b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325506"
 ---
 # <a name="resize-a-capacity-pool-or-a-volume"></a>容量プールまたはボリュームをサイズ変更する
@@ -40,7 +40,7 @@ ms.locfileid: "91325506"
 2. サイズ変更するボリュームの名前を右クリックするか、ボリュームの行の最後にある「...」アイコンをクリックして、コンテキスト メニューを表示します。
 3. コンテキスト メニューのオプションを使用して、ボリュームをサイズ変更するか、削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [容量プールを設定する](azure-netapp-files-set-up-capacity-pool.md)
 - [手動 QoS 容量プールを管理する](manage-manual-qos-capacity-pool.md)

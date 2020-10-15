@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
 ms.openlocfilehash: 868470292fbacd71e1eb2d39de7e3a9c5cf6900e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90883908"
 ---
 # <a name="protect-your-network-resources"></a>ネットワーク リソースの保護
@@ -48,7 +48,7 @@ Security Center の**ネットワーク**機能は次のとおりです。
 
 1. Security Center のメニューから Azure Defender ダッシュボードを開き、 **[ネットワーク マップ]** を選択します。
 
-    :::image type="content" source="./media/security-center-network-recommendations/opening-network-map.png" alt-text="Azure Defender ダッシュボードからネットワーク マップを開く" lightbox="./media/security-center-network-recommendations/opening-network-map.png":::
+    :::image type="content" source="./media/security-center-network-recommendations/opening-network-map.png" alt-text="資産インベントリのネットワーク リソースの種類" lightbox="./media/security-center-network-recommendations/opening-network-map.png":::
 
 1. **[レイヤー]** メニューを選択し、 **[トポロジ]** を選択します。
  
