@@ -13,10 +13,10 @@ ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev
 ms.openlocfilehash: b7316756aab7875dce50a3783cb95ca42676b970
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87027089"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>暗黙的な許可から承認ワークフロー フローに JavaScript のシングルページ アプリを移行する
@@ -45,14 +45,16 @@ MSAL.js 2.x と承認コード フローにアプリケーションを更新す�
 1. **[アプリの登録]** でアプリケーションを選択し、 **[認証]** を選択します。
 1. **[Web]** プラットフォーム タイルの **[リダイレクト URI]** で、URI を移行する必要があることを示す警告バナーを選択します。
 
-    :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-01-implicit-warning-banner.png" alt-text="Azure portal の Web アプリ タイルの暗黙的なフロー警告バナー":::
-1. アプリケーションで MSAL.js 2.x が使用されているリダイレクト URI "*のみ*" を選択し、 **[構成]** を選択します。
+    :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-01-implicit-warning-banner.png" alt-text="Azure portal の Web アプリ タイルの暗黙的なフロー警告バナー&quot;:::
+1. アプリケーションで MSAL.js 2.x が使用されているリダイレクト URI &quot;*のみ*" を選択し、 **[構成]** を選択します。
 
-    :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-02-select-redirect-uri.png" alt-text="Azure portal の SPA ペインで [リダイレクト URI] ペインを選択する":::
+    :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-02-select-redirect-uri.png" alt-text="Azure portal の Web アプリ タイルの暗黙的なフロー警告バナー&quot;:::
+1. アプリケーションで MSAL.js 2.x が使用されているリダイレクト URI &quot;*のみ*":::
 
 これらのリダイレクト URI が **[シングルページ アプリケーション]** プラットフォーム タイルに表示され、承認コード フローで CORS がサポートされ、これらの URI で PKCE が有効になっていることが示されるはずです。
 
-:::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-03-spa-redirect-uri-tile.png" alt-text="Azure portal のアプリ登録のシングルページ アプリケーション タイル":::
+:::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-03-spa-redirect-uri-tile.png" alt-text="Azure portal の Web アプリ タイルの暗黙的なフロー警告バナー&quot;:::
+1. アプリケーションで MSAL.js 2.x が使用されているリダイレクト URI &quot;*のみ*":::
 
 既存の登録でリダイレクト URI を更新する代わりに、[新しいアプリ登録を作成する](scenario-spa-app-registration.md)こともできます。
 

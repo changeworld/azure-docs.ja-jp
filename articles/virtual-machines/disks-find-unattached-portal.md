@@ -8,10 +8,10 @@ ms.date: 06/01/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 6632d65fa07788e35b24c2f957e713f824f6b091
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87542740"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks---azure-portal"></a>接続されていない Azure マネージド ディスクとアンマネージド ディスクを見つけて削除する - Azure portal
@@ -45,17 +45,13 @@ VM に接続されていないアンマネージド ディスクがあり、そ�
 
     すべてのアンマネージド ディスクの一覧が表示されます。 **[接続先]** 列が " **-** " になっているディスクは、接続されていないディスクです。
 
-    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-attached-to.png" alt-text="アンマネージド ディスク ブレードのスクリーンショット。このブレードで [接続先] 列が - になっているディスクは接続されていません。":::
+    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-attached-to.png" alt-text="個々のマネージド ディスク ブレードのスクリーンショット。ディスクが接続されていない場合、このブレードにディスクの状態が非接続と表示されます。データを保持する必要がなくなった場合は、このディスクを削除できます" になっていることで、ディスクが接続されていないことを確認できます。
 
-1. 接続されていない削除するディスクを選択すると、ディスクのブレードが表示されます。
-
-1. ディスクのブレードでは、 **[接続先]** がまだ " **-** " になっていることで、ディスクが接続されていないことを確認できます。
-
-    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-select-blade.png" alt-text="個々のアンマネージド ディスク ブレードのスクリーンショット。接続されていない場合、[接続先] の値が - になります。このディスクのデータが必要ない場合は、ディスクを削除することができます。":::
+    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-select-blade.png" alt-text="個々のマネージド ディスク ブレードのスクリーンショット。ディスクが接続されていない場合、このブレードにディスクの状態が非接続と表示されます。データを保持する必要がなくなった場合は、このディスクを削除できます":::
 
 1. **[削除]** を選択します。
 
-    :::image type="content" source="media/disks-find-unattached-portal/delete-unmanaged-disk-unattached.png" alt-text="[削除] が強調して示されている、個々のアンマネージド ディスク ブレードのスクリーンショット。":::
+    :::image type="content" source="media/disks-find-unattached-portal/delete-unmanaged-disk-unattached.png" alt-text="個々のマネージド ディスク ブレードのスクリーンショット。ディスクが接続されていない場合、このブレードにディスクの状態が非接続と表示されます。データを保持する必要がなくなった場合は、このディスクを削除できます":::
 
 ## <a name="next-steps"></a>次のステップ
 

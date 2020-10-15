@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/24/2020
 ms.openlocfilehash: 7c9d59eee1e1ce69394301023b108952eaf46790
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85362426"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>Azure Database for MariaDB での監査ログ
@@ -100,7 +100,7 @@ Azure Database for MariaDB では、ユーザーは監査ログを使用でき�
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | サーバーの名前 |
 | `event_class_s` | `general_log` |
-| `event_subclass_s` | `LOG`、`ERROR`、`RESULT` |
+| `event_subclass_s` | `LOG`, `ERROR`, `RESULT` |
 | `event_time` | UNIX タイムスタンプのクエリ開始秒 |
 | `error_code_d` | エラー コード (クエリが失敗した場合)。 `0` は、エラーなしを意味します |
 | `thread_id_d` | クエリを実行したスレッドの ID |

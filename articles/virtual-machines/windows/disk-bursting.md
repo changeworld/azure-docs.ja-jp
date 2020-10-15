@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ab54b68ab3f7984ee18a39cf3a81fa663af54dee
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 547834542b605b226ebffd68e05296ee847dc6de
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90889094"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974330"
 ---
 # <a name="disk-bursting"></a>ディスク バースト
 [!INCLUDE [managed-disks-bursting](../../../includes/managed-disks-bursting.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "90889094"
 バーストをサポートしている仮想マシンでは、バーストが既定で有効になっています。
 
 ## <a name="disk-level-bursting"></a>ディスク レベルでのバースト
-バーストは、すべてのリージョンでサイズが P20 以下のディスクの場合に、[プレミアム SSD ](disks-types.md#premium-ssd)上でも利用できます。 ディスク バースティングは、それをサポートするディスク サイズの新しいデプロイでは既定で有効になっています。 既存のディスク サイズでは、次のいずれかの方法を使用してバースティングを有効にすることができます (ディスク バースティングをサポートしている場合)。 
+バーストは、すべてのリージョンでサイズが P20 以下のディスクの場合に、[プレミアム SSD ](../disks-types.md#premium-ssd)上でも利用できます。 ディスク バースティングは、それをサポートするディスク サイズの新しいデプロイでは既定で有効になっています。 既存のディスク サイズでは、次のいずれかの方法を使用してバースティングを有効にすることができます (ディスク バースティングをサポートしている場合)。 
 - **VM を再起動する** 
 - **ディスクの接続を切断して、再接続する**
 

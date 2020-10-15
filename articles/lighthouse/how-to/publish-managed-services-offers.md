@@ -3,16 +3,16 @@ title: Azure Marketplace にマネージド サービス オファーを発行�
 description: Azure Lighthouse に顧客をオンボードするマネージド サービス オファーを発行する方法について説明します。
 ms.date: 08/18/2020
 ms.topic: how-to
-ms.openlocfilehash: 11fb0073bcc3ba4437f78de8b263d165f0069db8
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 033003d7e782ca0e99b1fc908c5261b6e31bf613
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589726"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974364"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Azure Marketplace にマネージド サービス オファーを発行する
 
-この記事では、Partner Center の[コマーシャル マーケットプレース](../../marketplace/partner-center-portal/commercial-marketplace-overview.md) プログラムを使用して、パブリックまたはプライベートのマネージド サービス オファーを [Azure Marketplace](https://azuremarketplace.microsoft.com) に発行する方法について説明します。 オファーを購入した顧客は、その後サブスクリプションまたはリソース グループを委任します。これにより、お客様は [Azure Lighthouse](../overview.md) を通じて顧客を管理できるようになります。
+この記事では、Partner Center の[コマーシャル マーケットプレース](../../marketplace/overview.md) プログラムを使用して、パブリックまたはプライベートのマネージド サービス オファーを [Azure Marketplace](https://azuremarketplace.microsoft.com) に発行する方法について説明します。 オファーを購入した顧客は、その後サブスクリプションまたはリソース グループを委任します。これにより、お客様は [Azure Lighthouse](../overview.md) を通じて顧客を管理できるようになります。
 
 ## <a name="publishing-requirements"></a>発行要件
 
@@ -40,7 +40,7 @@ ms.locfileid: "88589726"
 
 提供する必要があるすべての情報と資産を含む、オファーを作成する方法の詳細については、「[管理サービス オファーの作成](../../marketplace/partner-center-portal/create-new-managed-service-offer.md)」を参照してください。
 
-一般的な発行プロセスについては、「[Azure Marketplace と AppSource の公開ガイド](../../marketplace/marketplace-publishers-guide.md)」を参照してください。 さらに、「[商業マーケットプレースの認定ポリシー](/legal/marketplace/certification-policies)」(特に「[マネージド サービス](/legal/marketplace/certification-policies#700-managed-services)」セクション) も確認してください。
+一般的な発行プロセスについては、「[Azure Marketplace と AppSource の公開ガイド](../../marketplace/overview.md)」を参照してください。 さらに、「[商業マーケットプレースの認定ポリシー](/legal/marketplace/certification-policies)」(特に「[マネージド サービス](/legal/marketplace/certification-policies#700-managed-services)」セクション) も確認してください。
 
 顧客がオファーを追加すると、1 つ以上のサブスクリプションまたはリソース グループを委任できるようになり、これらは [Azure Lighthouse にオンボード](#the-customer-onboarding-process)されます。
 
@@ -64,6 +64,6 @@ ms.locfileid: "88589726"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [コマーシャル マーケットプレース](../../marketplace/partner-center-portal/commercial-marketplace-overview.md)について説明します。
+- [コマーシャル マーケットプレース](../../marketplace/overview.md)について説明します。
 - [テナント間の管理エクスペリエンス](../concepts/cross-tenant-management-experience.md)について学習します。
 - Azure portal の **[マイ カスタマー]** に移動して、[顧客を表示および管理](view-manage-customers.md)します。

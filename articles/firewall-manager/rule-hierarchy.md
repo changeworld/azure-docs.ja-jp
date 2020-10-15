@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: victorh
 ms.openlocfilehash: c290904c9f4bc7dba70dad9351dc45b676e0c236
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88893616"
 ---
 # <a name="use-azure-firewall-policy-to-define-a-rule-hierarchy"></a>Azure Firewall ポリシーを使用して規則の階層を定義する
@@ -48,7 +48,7 @@ Azure Firewall ポリシーを使用すると、規則の階層を定義し、�
 - Database ファイアウォール ポリシー。 Database ファイアウォール ポリシーは、基本ファイアウォール ポリシーを継承します。
 - Engineering ファイアウォール ポリシー。 Engineering ファイアウォール ポリシーも、基本のファイアウォール ポリシーを継承します。
 
-:::image type="content" source="media/rule-hierarchy/policy-hierarchy.png" alt-text="ポリシー階層" border="false":::
+:::image type="content" source="media/rule-hierarchy/policy-hierarchy.png" alt-text="チームと要件" border="false":::
 
 ### <a name="create-custom-roles-to-access-the-rule-collection-groups"></a>規則コレクション グループにアクセスするカスタム ロールを作成する 
 
@@ -134,9 +134,9 @@ JSON ファイルは次の例のようになります。
 
 Azure portal でカスタム ロールを確認することもできます。 サブスクリプションにアクセスし、 **[アクセス制御 (IAM)]** 、 **[ロール]** の順に選択します。
 
-:::image type="content" source="media/rule-hierarchy/sales-app-policy.png" alt-text="SalesAppPolicy":::
+:::image type="content" source="media/rule-hierarchy/sales-app-policy.png" alt-text="チームと要件":::
 
-:::image type="content" source="media/rule-hierarchy/sales-app-policy-read.png" alt-text="SalesAppPolicy の読み取りアクセス許可":::
+:::image type="content" source="media/rule-hierarchy/sales-app-policy-read.png" alt-text="チームと要件":::
 
 詳細については、[Azure PowerShell を使用して Azure カスタム ロールを作成する](../role-based-access-control/tutorial-custom-role-powershell.md)」をご覧ください。
 
