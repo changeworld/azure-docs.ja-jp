@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 06/16/2020
 ms.topic: tutorial
 ms.openlocfilehash: 56aa0d91372ac2d21a20f28b1044f0811c716b0c
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91358034"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-maya"></a>チュートリアル:Maya で物理ベース レンダリング素材を設定する

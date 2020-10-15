@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 78d3cbac28a85452f23e4a7c7ba3904fe3d1f488
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ec7337ad798d586cb93bd13e60ead1ef9f2a4abe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997882"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91857250"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>チュートリアル:透過的なゲートウェイを介してデータを送信する
 
@@ -238,5 +238,8 @@ Avro ファイルを読み取って、ファイル内のメッセージの JSON 
 
 以下のページで詳しい情報を確認できます。
 
-* [ダウンストリーム デバイスを Azure IoT Edge ゲートウェイに接続する](how-to-connect-downstream-device.md)
-* [IoT Edge 上の Azure Blob Storage を使用してエッジにデータを格納する (プレビュー)](how-to-store-data-blob.md)
+> [!div class="nextstepaction"]
+> [ダウンストリーム デバイスを Azure IoT Edge ゲートウェイに接続する](how-to-connect-downstream-device.md)
+
+> [!div class="nextstepaction"]
+> [IoT Edge 上の Azure Blob Storage を使用してエッジにデータを格納する (プレビュー)](how-to-store-data-blob.md)

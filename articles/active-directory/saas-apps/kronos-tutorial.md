@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 9a4c758c1f4dc790e9d5cba1e205956affd58f63
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 61241f361be3a9a60c8125f891525a078954afdf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535077"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91858083"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kronos"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Kronos の統合
 
@@ -86,15 +86,15 @@ Kronos で Azure AD SSO を構成してテストするには、次の構成要�
 
 1. Kronos アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
 
-    ![image](common/edit-attribute.png)
+    ![このスクリーンショットは、[編集] アイコンが選択された状態の [User Attributes]\(ユーザー属性\) を示しています。](common/edit-attribute.png)
 
 1. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
 
     a. **[編集]** アイコンをクリックして、 **[ユーザー要求の管理]** ダイアログを開きます。
 
-    ![image](./media/kronos-tutorial/tutorial_usermail.png)
+    ![このスクリーンショットは、[編集] アイコンが選択された状態の [User Attributes & Claims]\(ユーザー属性と要求\) を示しています。](./media/kronos-tutorial/tutorial_usermail.png)
 
-    ![image](./media/kronos-tutorial/tutorial_usermailedit.png)
+    ![スクリーンショットは、説明されている値を入力できる [ユーザー要求の管理] ダイアログ ボックスを示しています。](./media/kronos-tutorial/tutorial_usermailedit.png)
 
     b. **[変換]** の一覧で、**ExtractMailPrefix()** を選択します。
 

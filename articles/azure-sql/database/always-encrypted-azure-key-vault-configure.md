@@ -7,17 +7,17 @@ ms.service: sql-database
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: ab1865608146880bbf612b7cb08c2a673c93b31f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 98ba8c54b1754d6384dfcedb86e6c4889e52cb4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087963"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91444848"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>Azure Key Vault を使用した Always Encrypted の構成 
 
@@ -183,7 +183,7 @@ Always Encrypted ウィザードには、 **[列の選択]** 、 **[マスター
 
 設定がすべて正しいことを確認し、 **[完了]** をクリックすれば、Always Encrypted の設定は完了です。
 
-![まとめ](./media/always-encrypted-azure-key-vault-configure/summary.png)
+![タスクが成功としてマークされている [結果] ページを示すスクリーンショット。](./media/always-encrypted-azure-key-vault-configure/summary.png)
 
 ### <a name="verify-the-wizards-actions"></a>ウィザードのアクションの確認
 

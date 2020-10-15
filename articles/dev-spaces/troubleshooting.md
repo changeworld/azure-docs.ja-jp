@@ -5,14 +5,16 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Azure Dev Spaces を有効にして使用するときに発生する一般的な問題をトラブルシューティングおよび解決する方法について説明します
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: d697a11f3087c31a49d9b88e99b18bab686a2b59
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 5d8bf69d456bca2a88b8aa2031d5ef0ba20f7c30
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90981059"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91979123"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces のトラブルシューティング
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 このガイドでは、Azure Dev Spaces 使用時の一般的な問題についての情報を示します。
 

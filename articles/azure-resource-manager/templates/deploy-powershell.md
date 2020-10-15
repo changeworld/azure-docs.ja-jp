@@ -3,12 +3,12 @@ title: PowerShell とテンプレートを使用してリソースをデプロ�
 description: Azure Resource Manager と Azure PowerShell を使用してリソースを Azure にデプロイします。 リソースは Resource Manager テンプレートで定義されます。
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: ef2ff71430f0dcaca660666bb9a6c015c923da3f
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: e47de54558962215fe3be78f5b9c45c8d46c54a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536074"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91372444"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ
 
@@ -124,7 +124,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 
 ## <a name="deploy-template-spec"></a>テンプレート スペックのデプロイ
 
-ローカルまたはリモートのテンプレートをデプロイする代わりに、[テンプレート スペック](template-specs.md)を作成できます。テンプレート スペックは、ARM テンプレートが含まれる Azure サブスクリプションのリソースです。 これにより、組織内のユーザーとテンプレートを安全に共有することが容易になります。 テンプレート スペックへのアクセス権を付与するには、ロールベースのアクセス制御 (RBAC) を使用します。現在、この機能はプレビュー段階にあります。
+ローカルまたはリモートのテンプレートをデプロイする代わりに、[テンプレート スペック](template-specs.md)を作成できます。テンプレート スペックは、ARM テンプレートが含まれる Azure サブスクリプションのリソースです。 これにより、組織内のユーザーとテンプレートを安全に共有することが容易になります。 テンプレート スペックへのアクセス権を付与するには、Azure ロールベースのアクセス制御 (Azure RBAC) を使用します。現在、この機能はプレビュー段階にあります。
 
 次の例では、テンプレート スペックの作成とデプロイの方法を示します。これらのコマンドは、[プレビューにサインアップ](https://aka.ms/templateSpecOnboarding)した場合にのみ使用できます。
 

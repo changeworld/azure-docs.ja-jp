@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 7ec61bf4db949649c993fad4a3255b55626cb259
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 23ca4be9387754c84dc256dd72b131bd5b76b458
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056229"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876466"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>チュートリアル:Linux のデバイス用の IoT Edge モジュールを開発する
 
@@ -177,19 +177,19 @@ IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格�
 
 各モジュールは、コードで宣言された複数の *入力*キューと *出力*キューを持つことができます。 デバイスで実行されている IoT Edge ハブは、1 つのモジュールの出力から、1 つ以上のモジュールの入力にメッセージをルーティングします。 入力と出力を宣言するための特定のコードは、言語によって異なりますが、その概念はすべてのモジュールで同じです。 モジュール間のルーティングの詳細については、[ルートの宣言](module-composition.md#declare-routes)に関する記事を参照してください。
 
-プロジェクト テンプレートに含まれるサンプル C# コードには、.NET 用 IoT Hub SDK の [ModuleClient クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)が使用されています。
+プロジェクト テンプレートに含まれるサンプル C# コードには、.NET 用 IoT Hub SDK の [ModuleClient クラス](/dotnet/api/microsoft.azure.devices.client.moduleclient)が使用されています。
 
 1. **modules/SampleModule/** フォルダー内にある **Program.cs** ファイルを開きます。
 
 2. program.cs で **SetInputMessageHandlerAsync** メソッドを見つけます。
 
-3. [SetInputMessageHandlerAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.setinputmessagehandlerasync?view=azure-dotnet) メソッドでは、受信メッセージを受け取る入力キューが設定されます。 このメソッドを確認し、**input1** という入力キューがどのように初期化されるかを確かめます。
+3. [SetInputMessageHandlerAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.setinputmessagehandlerasync) メソッドでは、受信メッセージを受け取る入力キューが設定されます。 このメソッドを確認し、**input1** という入力キューがどのように初期化されるかを確かめます。
 
    ![SetInputMessageCallback コンストラクターで入力名を見つける](./media/tutorial-develop-for-linux/declare-input-queue.png)
 
 4. 次に、**SendEventAsync** メソッドを見つけます。
 
-5. [SendEventAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.sendeventasync?view=azure-dotnet) メソッドでは、受け取ったメッセージが処理され、それらを渡すための出力キューが設定されます。 このメソッドを確認し、**output1** という出力キューが初期化されることを確かめます。
+5. [SendEventAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.sendeventasync) メソッドでは、受け取ったメッセージが処理され、それらを渡すための出力キューが設定されます。 このメソッドを確認し、**output1** という出力キューが初期化されることを確かめます。
 
    ![SendEventToOutputAsync で出力名を見つける](./media/tutorial-develop-for-linux/declare-output-queue.png)
 

@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: d34b5aaaa12a3d296f92e0d7be34ae76931d8506
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: aa33319f146ac57ab4d253696c94308a43b5db2e
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268487"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019615"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 のよく寄せられる質問
 
@@ -28,7 +28,7 @@ ms.locfileid: "89268487"
 
 ### <a name="what-are-the-azure-portal-limitations-for-media-services-v3"></a>Media Services v3 に関する Azure portal の制限事項とは何ですか。
 
-[Azure portal](https://portal.azure.com/) を使用し、v3 のライブ イベントを管理し、v3 の資産を表示し、API へのアクセスに関する情報を取得し、コンテンツを暗号化できます。 <br/>他のすべての管理タスク (変換とジョブの管理や v3 コンテンツの分析など) には、[REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、あるいはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
+[Azure portal](https://portal.azure.com/) を使用し、v3 のライブ イベントを管理し、v3 の資産を表示し、API へのアクセスに関する情報を取得し、コンテンツを暗号化できます。 <br/>他のすべての管理タスク (変換とジョブの管理や v3 コンテンツの分析など) には、[REST API](/rest/api/media/accountfilters)、[CLI](/cli/azure/ams)、あるいはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
 
 ビデオが以前に Media Services v3 API を使用して Media Services アカウントにアップロードされていた場合、またはコンテンツがライブ出力に基づいて生成された場合、Azure portal に **[エンコード]** 、 **[分析]** 、または **[暗号化]** ボタンは表示されません。 これらのタスクを実行するには、Media Services v3 API シリーズを使用してください。  
 
@@ -163,7 +163,7 @@ ASP.NET のプレーヤー アプリケーションはベスト プラクティ�
 * v3 [アセット](assets-concept.md)を表示します (管理ではありません)。 
 * [API のアクセスに関する情報を取得](./access-api-howto.md)します。 
 
-他のすべての管理タスク ([変換とジョブ](transforms-jobs-concept.md)や[コンテンツ保護](content-protection-overview.md)など) については、[REST API](/rest/api/media/)、[Azure CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
+他のすべての管理タスク ([変換とジョブ](transforms-jobs-concept.md)や[コンテンツ保護](content-protection-overview.md)など) については、[REST API](/rest/api/media/)、[Azure CLI](/cli/azure/ams)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>v3 には AssetFile の概念はありますか?
 

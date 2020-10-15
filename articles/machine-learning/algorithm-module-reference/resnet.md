@@ -8,19 +8,23 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/26/2020
-ms.openlocfilehash: 5d8806b8c93f5a8cbceaa6efa16dfff978dda42e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/26/2020
+ms.openlocfilehash: bd0431a8e503605c6137d948cf207c1bd2fa45b4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905208"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91442034"
 ---
 # <a name="resnet"></a>ResNet
 
 この記事では、Azure Machine Learning デザイナーの **ResNet** モジュールを使用し、ResNet アルゴリズムを使ってイメージ分類モデルを作成する方法について説明します。  
 
-この分類アルゴリズムは、教師あり学習手法であり、ラベル付きデータセットが必要です。 ラベル付きイメージ ディレクトリを取得する方法の詳細については、[Convert to Image Directory](convert-to-image-directory.md) モジュールに関するページを参照してください。 モデルとラベル付きイメージ ディレクトリを [Train Pytorch Model](train-pytorch-model.md) への入力として提供することにより、モデルをトレーニングすることができます。 その後、トレーニングされたモデルを使用して、[Score Image Model](score-image-model.md) を使用した新しい入力例の値を予測することができます。
+この分類アルゴリズムは、教師あり学習手法であり、ラベル付きデータセットが必要です。 
+> [!NOTE]
+> このモジュールは、Studio で *[データのラベル付け]* から生成されたラベル付きデータセットはサポートしておらず、[[イメージ ディレクトリへの変換]](convert-to-image-directory.md) モジュールから生成されたラベル付きイメージ ディレクトリのみサポートしています。 
+
+モデルとラベル付きイメージ ディレクトリを [Train Pytorch Model](train-pytorch-model.md) への入力として提供することにより、モデルをトレーニングすることができます。 その後、トレーニングされたモデルを使用して、[Score Image Model](score-image-model.md) を使用した新しい入力例の値を予測することができます。
 
 ### <a name="more-about-resnet"></a>ResNet の詳細
 
@@ -32,7 +36,7 @@ ResNet の詳細については、[こちらの資料](https://pytorch.org/docs/
 
 2.  **Model name** には、特定の ResNet 構造体の名前を指定します。サポートされている次の resnet から選択できます: "resnet18"、"resnet34"、"resnet50"、"resnet101"、"resnet152"、"resnet152"、"resnext50\_32x4d"、"resnext101\_32x8d"、"wide_resnet50\_2"、"wide_resnet101\_2"。
 
-3.  **Pretrained** には、ImageNet で事前トレーニングされているモデルを使用するかどうかを指定します。 選択した場合は、選択した事前トレーニング済みモデルに基づいてモデルを微調整できます。選択を解除した場合は、最初からトレーニングできます。
+3.  **Pretrained** には、ImageNet で事前トレーニングされているモデルを使用するかどうかを指定します。 選択した場合は、選択した事前トレーニング済みモデルに基づいてモデルを微調整できます。選択を解除した場合は、ゼロからトレーニングできます。
 
 4.  トレーニングと検証のイメージ データセット モジュールである **DenseNet** モジュールの出力を [Train Pytorch Model](train-pytorch-model.md) に接続します。 
 

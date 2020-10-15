@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 06/15/2020
 ms.author: danis
-ms.openlocfilehash: 7ddbb48f3598780988feb25a11729a5086d31fde
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: a87c2b571027e0304909e69b252c9e080c4da9c1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869271"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978630"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure での仮想マシンに対する cloud-init のサポート
 この記事では、Azure でのプロビジョニング時に仮想マシン (VM) または仮想マシン スケール セットを構成するための [cloud-init](https://cloudinit.readthedocs.io) のサポートについて説明します。 これらの cloud-init 構成は、Azure によってリソースがプロビジョニングされた後の最初の起動時に実行されます。  
@@ -152,7 +152,7 @@ az vm create \
 
 VM が作成されると、Azure CLI はデプロイ固有の情報を表示します。 `publicIpAddress` を書き留めておきます。 このアドレスは、VM へのアクセスに使用されます。  VM が作成され、パッケージがインストールされて、アプリが開始されるには、少し時間がかかります。 Azure CLI がプロンプトに戻った後にも引き続き実行するバック グラウンド タスクがあります。 SSH で VM に接続し、トラブルシューティングのセクションで説明されている手順を使って、cloud-init のログを見ることができます。 
 
-[ARM テンプレートでパラメーター](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli#inline-parameters)を渡すことによって、cloud-init 対応の VM をデプロイすることもできます。
+[ARM テンプレートでパラメーター](../../azure-resource-manager/templates/deploy-cli.md#inline-parameters)を渡すことによって、cloud-init 対応の VM をデプロイすることもできます。
 
 ## <a name="troubleshooting-cloud-init"></a>cloud-init のトラブルシューティング
 VM のプロビジョニングが済むと、cloud-init は `--custom-data` で定義されているすべてのモジュールとスクリプトを実行して、VM を構成します。  構成のエラーまたは漏れをトラブルシューティングする必要がある場合は、 **/var/log/cloud-init.log** にある cloud-init のログで、モジュール名 (たとえば、`disk_setup` や `runcmd`) を検索する必要があります。
@@ -173,4 +173,3 @@ cloud-init のログについて詳しくは、[cloud-init のドキュメント
 - [初回起動時にパッケージ マネージャーを実行して既存のパッケージを更新する](cloudinit-update-vm.md)
 - [VM のローカル ホスト名を変更する](cloudinit-update-vm-hostname.md) 
 - [アプリケーション パッケージのインストール、構成ファイルの更新、キーの挿入](tutorial-automate-vm-deployment.md)
- 

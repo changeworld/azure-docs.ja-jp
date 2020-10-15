@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.topic: reference
 ms.date: 11/21/2017
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 9ae3ef133fa1b246c09fe0a9aa4ec27b0f75fd19
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 524df7805207ce517c7ae805fb17de1b041a2248
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531578"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876041"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure Functions 1.x の Azure Cosmos DB バインド
 
@@ -214,6 +214,8 @@ JavaScript コードを次に示します。
 ## <a name="input"></a>入力
 
 Azure Cosmos DB 入力バインドでは、SQL API を使用して 1 つ以上の Azure Cosmos DB ドキュメントを取得して関数の入力パラメーターに渡します。 ドキュメント ID またはクエリ パラメーターは、関数を呼び出したトリガーに基づいて決定することができます。
+
+## <a name="input---example"></a>入力 - 例
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -1146,6 +1148,8 @@ JavaScript コードを次に示します。
 ## <a name="output"></a>Output
 
 Azure Cosmos DB 出力バインドを使用すると、SQL API を使って Azure Cosmos DB データベースに新しいドキュメントを記述できます。
+
+## <a name="output---example"></a>出力 - 例
 
 # <a name="c"></a>[C#](#tab/csharp)
 
