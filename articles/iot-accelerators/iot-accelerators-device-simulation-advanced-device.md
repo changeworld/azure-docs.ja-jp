@@ -13,12 +13,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 101bd9ce351ea830688fc18affdf21ce527ba43a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3295815be035544d27da52926e5271c2c5551f28
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91261432"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92076047"
 ---
 # <a name="create-an-advanced-device-model"></a>高度なデバイス モデルを作成する
 
@@ -520,4 +520,4 @@ function main(context, state) {
 
 ## <a name="next-steps"></a>次のステップ
 
-この攻略ガイドでは、デバイス シミュレーションで使用するデバイス モデル ファイルについてと、高度なデバイス モデルの作成方法を学習しました。 次は、[Time Series Insights を使用して、デバイス シミュレーション ソリューション アクセラレータから送信されたテレメトリを視覚化する](https://docs.microsoft.com/azure/iot-accelerators/iot-accelerators-device-simulation-time-series-insights)方法を確認できます。
+この攻略ガイドでは、デバイス シミュレーションで使用するデバイス モデル ファイルについてと、高度なデバイス モデルの作成方法を学習しました。 次は、[Time Series Insights を使用して、デバイス シミュレーション ソリューション アクセラレータから送信されたテレメトリを視覚化する](./iot-accelerators-device-simulation-time-series-insights.md)方法を確認できます。

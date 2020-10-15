@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: ryanwi
 ms.openlocfilehash: dc37ce474ad3226f5dbf7e6efd687ddf55f7da03
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82926682"
 ---
 # <a name="how-to-discover-endpoints"></a>エンドポイントを検出する方法

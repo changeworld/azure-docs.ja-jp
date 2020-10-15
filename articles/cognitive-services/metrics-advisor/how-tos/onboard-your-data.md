@@ -3,19 +3,19 @@ title: データ フィードを Metrics Advisor にオンボードする
 titleSuffix: Azure Cognitive Services
 description: データ フィードを Metrics Advisor にオンボードする方法について説明します。
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.author: aahi
-ms.openlocfilehash: 83ff710804b43837657ea0da7c8f44c245017c7e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.author: mbullwin
+ms.openlocfilehash: fe3b87c733f54d8bd52c4d973977e3c8cbfefe19
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90931663"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043209"
 ---
 # <a name="how-to-onboard-your-metric-data-to-metrics-advisor"></a>方法: メトリック データを Metrics Advisor にオンボードする
 
@@ -188,10 +188,7 @@ Metrics Advisor は、インジェスト中に各ディメンションで集計 
 2. **[状態]** をクリックして、 **[失敗]** または **[エラー]** を選択します。
 3. 失敗したインジェストの上にマウス ポインターを移動し、表示される詳細メッセージを確認します。
 
-:::image type="content" source="../media/datafeeds/check-failed-ingestion.png" alt-text="失敗したインジェストを確認する":::
-
-"*失敗*" 状態は、このデータ ソースのインジェストが後で再試行されることを示します。
-"*エラー*" 状態は、Metrics Advisor によるデータ ソースの再試行が行われないことを示します。 データを再読み込みするには、バックフィルまたは再読み込みを手動でトリガーする必要があります。
+:::image type="content" source="../media/datafeeds/check-failed-ingestion.png" alt-text="インジェスト進行状況バー" 状態は、Metrics Advisor によるデータ ソースの再試行が行われないことを示します。 データを再読み込みするには、バックフィルまたは再読み込みを手動でトリガーする必要があります。
 
 また、 **[Refresh Progress]\(進行状況の更新\)** をクリックして、インジェストの進行状況を再読み込みすることもできます。 データ インジェストが完了したら、メトリックをクリックして、異常検出の結果を確認することができます。
 

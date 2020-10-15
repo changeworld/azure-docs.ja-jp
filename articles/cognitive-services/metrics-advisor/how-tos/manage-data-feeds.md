@@ -3,19 +3,19 @@ title: Metrics Advisor でデータ フィードを管理する
 titleSuffix: Azure Cognitive Services
 description: Metrics Advisor に追加したデータ フィードを管理する方法について説明します。
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.author: aahi
-ms.openlocfilehash: 22a1be7231b730c83ca97b0f128e43258ed24533
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.author: mbullwin
+ms.openlocfilehash: de8d5d8e9fc5ce1df05cfd4c67ef146760e2c7e9
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90930960"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92043172"
 ---
 # <a name="how-to-manage-your-data-feeds"></a>方法:データ フィードを管理する
 
@@ -106,7 +106,7 @@ Metrics Advisor を使用すると、さまざまなデータ フィードに対
 
 アクション リンク テンプレートは、実行可能な HTTP URL を事前に定義するために使用されます。これは、プレースホルダー `%datafeed`、`%metric`、`%timestamp`、`%detect_config`、および `%tagset` で構成されます。 テンプレートを使用して、異常またはインシデントから特定の URL にリダイレクトし、ドリルダウンすることができます。
 
-:::image type="content" source="../media/action-link-template.png" alt-text="アクション リンク テンプレート" lightbox="../media/action-link-template.png":::
+:::image type="content" source="../media/action-link-template.png" alt-text="データ フィードをバックフィルする" lightbox="../media/action-link-template.png":::
 
 アクション リンクを入力したら、インシデントの一覧のアクション オプションで **[Go to action link]\(アクション リンクに移動\)** をクリックし、インシデント ツリーの右クリック メニューをクリックします。 アクション リンク テンプレート内のプレースホルダーを、異常またはインシデントの対応する値に置き換えます。
 
