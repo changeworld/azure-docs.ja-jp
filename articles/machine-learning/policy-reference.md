@@ -8,10 +8,10 @@ ms.topic: reference
 ms.service: machine-learning
 ms.custom: subject-policy-reference
 ms.openlocfilehash: 05af0bea2525d0540162423605e15387f352aaa6
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91825234"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-machine-learning"></a>Azure Machine Learning 用の Azure Policy 組み込みポリシー定義

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: 678bad67b454ec0930d2cf30df45ba7b2c822e35
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 43e2f1c304a2ede10445fa656dbdd16a4b60ca3c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371458"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978953"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Azure Linux VM に対する SSH 接続の失敗、エラー、拒否のトラブルシューティング
 この記事は、Linux 仮想マシン (VM) に接続しようとしたときに、Secure Shell (SSH) エラー、SSH 接続エラー、または SSH の拒否により発生する問題を見つけて修正するために役立ちます。 Azure Portal、Azure CLI、または Linux 用の VM アクセス拡張機能を使用して、接続の問題を解決できます。
@@ -46,7 +46,7 @@ ms.locfileid: "91371458"
 資格情報または SSH 構成は、次のいずれかの方法でリセットできます。
 
 * [Azure Portal](#use-the-azure-portal) - SSH 構成または SSH キーをすばやくリセットする必要があり、Azure ツールをインストールしていない場合に最適です。
-* [Azure VM シリアル コンソール](https://aka.ms/serialconsolelinux) - VM シリアル コンソールは、SSH 構成に関係なく動作し、VM への対話型コンソールを提供します。 実際に、シリアル コンソールは、"SSH 接続できない" 状況の解決を支援するように設計されています。 詳しくは、以下をご覧ください。
+* [Azure VM シリアル コンソール](./serial-console-linux.md) - VM シリアル コンソールは、SSH 構成に関係なく動作し、VM への対話型コンソールを提供します。 実際に、シリアル コンソールは、"SSH 接続できない" 状況の解決を支援するように設計されています。 詳しくは、以下をご覧ください。
 * [Azure CLI](#use-the-azure-cli) - 既にコマンド ラインにいる場合は、SSH 構成または資格情報をすばやくリセットします。 クラシック VM を使用している場合は、[Azure クラシック CLI](#use-the-azure-classic-cli) を使用できます。
 * [Azure VMAccessForLinux 拡張機能](#use-the-vmaccess-extension) - json 定義ファイルを作成して再度使用して、SSH 構成またはユーザーの資格情報をリセットします。
 

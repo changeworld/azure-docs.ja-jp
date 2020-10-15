@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 70ab387018fc54b4dad9ee911d4c7557e1e7805c
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: e3a8e8b908c9d278654bfe992474811d6a9ddb86
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90030346"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993713"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure Monitor を使用した Azure リソースの監視
 Azure リソースに依存するクリティカルなアプリケーションとビジネス プロセスがある場合は、それらのリソースの可用性、パフォーマンス、操作を監視する必要があります。 この記事では、Azure リソースによって生成される監視データと、Azure Monitor の機能を使用してこのデータについての分析とアラートを行う方法について説明します。
@@ -80,7 +80,7 @@ Azure Monitor ログにデータを収集するには、Log Analytics ワーク�
 - [イベント ハブ](../platform/resource-logs.md#send-to-azure-event-hubs) - サードパーティの SIEM や他のログ分析ソリューションなどの外部システムにデータをストリーミングできます。 
 - [Azure ストレージ アカウント](../platform/resource-logs.md#send-to-azure-storage)- 監査、スタティック分析、またはバックアップに役立ちます。
 
-「[Azure でプラットフォーム ログとメトリックを収集するための診断設定を作成する](../platform/diagnostic-settings.md)」の手順に従って、Azure portal で診断設定を作成および管理します。 テンプレートで診断設定を定義し、作成時にリソースの完全な監視を有効にするには、「[Azure で Resource Manager テンプレートを使用して診断設定を作成する](../platform/diagnostic-settings-template.md)」を参照してください。
+「[Azure でプラットフォーム ログとメトリックを収集するための診断設定を作成する](../platform/diagnostic-settings.md)」の手順に従って、Azure portal で診断設定を作成および管理します。 テンプレートで診断設定を定義し、作成時にリソースの完全な監視を有効にするには、「[Azure で Resource Manager テンプレートを使用して診断設定を作成する](../samples/resource-manager-diagnostic-settings.md)」を参照してください。
 
 
 ## <a name="monitoring-in-the-azure-portal"></a>Azure Portal の監視機能
@@ -160,5 +160,4 @@ REST API を使用して、リソースから収集された監視データを�
 
 ## <a name="next-steps"></a>次のステップ
 
-* さまざまな Azure サービスのリソース ログの詳細については、「[Azure リソース ログでサポートされているサービス、スキーマ、カテゴリ](../platform/resource-logs-schema.md)」を参照してください。  
-
+* さまざまな Azure サービスのリソース ログの詳細については、「[Azure リソース ログでサポートされているサービス、スキーマ、カテゴリ](../platform/resource-logs-schema.md)」を参照してください。

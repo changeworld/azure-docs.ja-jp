@@ -9,10 +9,10 @@ ms.date: 06/10/2020
 ms.author: victorh
 ms.reviewer: tyao
 ms.openlocfilehash: a995460793686d8293d77965e74e2cbf916925a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87005601"
 ---
 # <a name="configure-a-custom-response-for-azure-web-application-firewall-waf"></a>Azure Web アプリケーション ファイアウォール (WAF) に対するカスタム応答を構成する
@@ -27,9 +27,7 @@ WAF ポータルの [ポリシー設定] で、カスタム応答状態コード
 
 上記の例では、応答コードを 403 のままにして、次の図に示すように簡単な "Please contact us"(お問い合わせください) メッセージを構成しました。
 
-:::image type="content" source="../media/waf-front-door-configure-custom-response-code/custom-response.png" alt-text="カスタム応答の例":::
-
-"{{azure-ref}}" によって、応答本文に一意の参照文字列が挿入されます。 この値は `FrontdoorAccessLog` および `FrontdoorWebApplicationFirewallLog` ログの TrackingReference フィールドと一致します。
+:::image type="content" source="../media/waf-front-door-configure-custom-response-code/custom-response.png" alt-text="WAF ポリシーの設定" によって、応答本文に一意の参照文字列が挿入されます。 この値は `FrontdoorAccessLog` および `FrontdoorWebApplicationFirewallLog` ログの TrackingReference フィールドと一致します。
 
 ## <a name="configure-custom-response-status-code-and-message-use-powershell"></a>カスタム応答状態コードとメッセージ使用 PowerShell を構成する
 

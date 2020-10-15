@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 06/25/2020
 ms.author: trbye
 ms.openlocfilehash: c4195ff1b81097a3620f68939f32147a26e16d60
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85391606"
 ---
 # <a name="quickstart-getting-a-luis-endpoint-key"></a>クイック スタート:LUIS エンドポイント キーを取得する

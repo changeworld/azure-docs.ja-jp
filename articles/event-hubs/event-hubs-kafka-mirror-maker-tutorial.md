@@ -4,10 +4,10 @@ description: この記事では、Kafka MirrorMaker を使用して Azure Event 
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: aea8ebcfa65d5f4c90aa1908d03f0fcde8906bba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85320192"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Apache Kafka 用の Event Hubs で Kafka MirrorMaker を使用する
@@ -23,7 +23,7 @@ ms.locfileid: "85320192"
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
 > * Event Hubs 名前空間を作成します
-> * サンプル プロジェクトをクローンする
+> * サンプル プロジェクトを複製する
 > * Kafka クラスターを設定する
 > * Kafka MirrorMaker を構成する
 > * Kafka MirrorMaker を実行する
@@ -51,9 +51,9 @@ Azure Event Hubs Kafka エンドポイントでは、Kafka プロトコル (つ�
 
 Event Hubs サービスとの間で送受信を行うには、イベント ハブの名前空間が必要です。 名前空間とイベント ハブを作成する手順については、[イベント ハブの作成](event-hubs-create.md)に関するページを参照してください。 後で使うので、イベント ハブの接続文字列をコピーしておきます。
 
-## <a name="clone-the-example-project"></a>サンプル プロジェクトをクローンする
+## <a name="clone-the-example-project"></a>サンプル プロジェクトを複製する
 
-Event Hubs の接続文字列が用意できたので、Kafka 用 Azure Event Hubs リポジトリをクローンし、`mirror-maker` サブフォルダーに移動します。
+Event Hubs の接続文字列が用意できたので、Kafka 用 Azure Event Hubs リポジトリを複製し、`mirror-maker` サブフォルダーに移動します。
 
 ```shell
 git clone https://github.com/Azure/azure-event-hubs-for-kafka.git

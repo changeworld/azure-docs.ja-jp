@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 501ca51a9542229a14e98a56679837950a82891e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f9dcf19f5318021df5d9fdde777b8786942e33d8
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80258296"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072256"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>CLI を使用してリモート監視ソリューション アクセラレータをデプロイする
 
@@ -73,12 +73,12 @@ Basic デプロイによって Azure サブスクリプション内に作成さ�
 | 1     | [Linux Virtual Machine](https://azure.microsoft.com/services/virtual-machines/) | Standard D1 V2  | マイクロサービスのホスト |
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 – Standard レベル | デバイス管理との通信 |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | Standard        | 構成データ、ルール、アラート、その他のコールド ストレージを格納する |  
-| 1     | [Azure Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | Standard        | VM およびストリーミング チェックポイントのストレージ |
+| 1     | [Azure Storage アカウント](../storage/common/storage-introduction.md#types-of-storage-accounts)  | Standard        | VM およびストリーミング チェックポイントのストレージ |
 | 1     | [Web アプリケーション](https://azure.microsoft.com/services/app-service/web/)        |                 | フロント エンド Web アプリケーションのホスト |
 | 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | ユーザー ID とセキュリティを管理する |
 | 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | アセットの場所を表示する |
 | 1     | [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)        |   3 ユニット              | リアルタイム分析を有効にする |
-| 1     | [Azure デバイス プロビジョニング サービス](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | デバイスの大規模プロビジョニング |
+| 1     | [Azure デバイス プロビジョニング サービス](../iot-dps/index.yml)        |       S1          | デバイスの大規模プロビジョニング |
 | 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 ユニット              | メッセージ データの格納とテレメトリの詳細分析の有効化 |
 
 ### <a name="standard"></a>Standard
@@ -94,12 +94,12 @@ Standard デプロイによって Azure サブスクリプション内に作成�
 | 1     | [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service)| フル マネージドの Kubernetes コンテナー オーケストレーション サービスをぜひご利用ください。既定のエージェントは 3 つです。|
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                     | S2 – Standard レベル | デバイス管理、コマンドとコントロール |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | Standard        | 構成データ、およびルール、アラート、メッセージなどのデバイス テレメトリの格納 |
-| 5     | [Azure Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | Standard        | VM ストレージ用に 4 つ、およびストリーミング チェックポイント用に 1 つ |
+| 5     | [Azure Storage アカウント](../storage/common/storage-introduction.md#types-of-storage-accounts)    | Standard        | VM ストレージ用に 4 つ、およびストリーミング チェックポイント用に 1 つ |
 | 1     | [App Service](https://azure.microsoft.com/services/app-service/web/)             | S1 Standard     | TLS 経由のアプリケーション ゲートウェイ |
 | 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | ユーザー ID とセキュリティを管理する |
 | 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | アセットの場所を表示する |
 | 1     | [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)        |   3 ユニット              | リアルタイム分析を有効にする |
-| 1     | [Azure デバイス プロビジョニング サービス](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | デバイスの大規模プロビジョニング |
+| 1     | [Azure デバイス プロビジョニング サービス](../iot-dps/index.yml)        |       S1          | デバイスの大規模プロビジョニング |
 | 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 ユニット              | メッセージ データの格納とテレメトリの詳細分析の有効化 |
 
 > [!NOTE]

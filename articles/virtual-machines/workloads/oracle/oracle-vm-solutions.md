@@ -1,24 +1,18 @@
 ---
 title: Azure 仮想マシンでの Oracle ソリューション | Microsoft Docs
 description: Microsoft Azure でサポートされている Oracle 仮想マシン イメージの構成と制限事項について説明します。
-services: virtual-machines-linux
-documentationcenter: ''
 author: dbakevlar
-manager: ''
-tags: azure-resource-management
-ms.assetid: ''
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: kegorman
-ms.openlocfilehash: 352c8c887899a2e15eed9736e8885c1b2cffec2b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.reviewer: cynthn
+ms.openlocfilehash: 32e79e12eae9997df8163401d2abc5f06bc02fc0
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331371"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993495"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure での Oracle VM イメージとそのデプロイ
 
@@ -132,7 +126,7 @@ Oracle Data Guard では、1 つの仮想マシンにプライマリ データ�
 
 [Azure での Oracle GoldenGate の実装](configure-oracle-golden-gate.md)に関するチュートリアルでは、Azure での基本的なセットアップ手順を説明しています。
 
-Azure で高可用性と災害復旧ソリューションを設計することに加えて、データベースを復元するためのバックアップ戦略を立てる必要があります。 [Oracle Database のバックアップと復旧](oracle-backup-recovery.md)に関するチュートリアルでは、一貫性のあるバックアップを確立するための基本的な手順を説明しています。
+Azure で高可用性と災害復旧ソリューションを設計することに加えて、データベースを復元するためのバックアップ戦略を立てる必要があります。 [Oracle Database のバックアップと復旧](./oracle-overview.md)に関するチュートリアルでは、一貫性のあるバックアップを確立するための基本的な手順を説明しています。
 
 ## <a name="support-for-jd-edwards"></a>JD Edwards のサポート
 

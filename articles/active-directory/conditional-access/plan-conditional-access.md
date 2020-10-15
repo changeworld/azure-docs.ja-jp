@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f1d4c5b55dd2a24c1fb41540fdc5d3ae26849a2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3ef10f51f058739b0e545d341b77af4313dd9e97
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258678"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992853"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>条件付きアクセスのデプロイを計画する
 
@@ -89,7 +89,7 @@ Microsoft は、基本レベルのセキュリティを保証する[セキュリ
 
 ### <a name="engage-the-right-stakeholders"></a>適切な関係者を関わらせる
 
-テクノロジ プロジェクトが失敗した場合、その原因は通常、影響、結果、および責任に対する想定の不一致です。 これらの落とし穴を回避するには、[適切な関係者が担当していることを確認](https://aka.ms/deploymentplans)し、またそのプロジェクトの役割が明確になっていることを確認します。
+テクノロジ プロジェクトが失敗した場合、その原因は通常、影響、結果、および責任に対する想定の不一致です。 これらの落とし穴を回避するには、[適切な関係者が担当していることを確認](../fundamentals/active-directory-deployment-plans.md)し、またそのプロジェクトの役割が明確になっていることを確認します。
 
 ### <a name="plan-communications"></a>連絡を計画する
 

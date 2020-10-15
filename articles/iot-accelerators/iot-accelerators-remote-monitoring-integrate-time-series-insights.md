@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: b0ab1e2e43210ecd7a61b7dffcb12d2c7c5c1c46
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8b6219c82dc23deb467e87a6866839b8eace8b5d
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536608"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072647"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Azure Time Series Insights とリモート監視の統合
 
@@ -126,7 +126,7 @@ IoT Hub に接続する新しいイベント ソースを作成します。 必�
 1. **[保存]** を選択して、ロールの割り当てを作成します。 何分か待つと、セキュリティ プリンシパルにデータ アクセス ポリシー内のロールが割り当てられます。
 
 > [!NOTE]
-> Time Series Insights エクスプローラーにその他のユーザー アクセスを許可する必要がある場合は、[データ アクセスを許可する](../time-series-insights/time-series-insights-data-access.md#grant-data-access)ための手順を使用します。
+> Time Series Insights エクスプローラーにその他のユーザー アクセスを許可する必要がある場合は、[データ アクセスを許可する](../time-series-insights/concepts-access-policies.md#grant-data-access)ための手順を使用します。
 
 ## <a name="configure-azure-stream-analytics"></a>Azure Stream Analytics の構成 
 
@@ -217,7 +217,7 @@ Time Series Insights の統合を完了するには、更新されたマイク�
 
 1. 最新のタグを使用して、GitHub リポジトリから[最新の docker compose yaml ファイル](https://github.com/Azure/pcs-cli/tree/5a9b4e0dbe313172eff19236e54a4d461d4f3e51/solutions/remotemonitoring/single-vm)をプルします。 
 
-1. [SSH キーを作成して使用する方法](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)に記載されている手順に従って、VM に SSH で接続します。
+1. [SSH キーを作成して使用する方法](../virtual-machines/linux/ssh-from-windows.md)に記載されている手順に従って、VM に SSH で接続します。
 
 1. 接続したら、`cd /app` を入力します。
 
@@ -300,4 +300,4 @@ Time Series Insights の統合を完了するには、更新されたマイク�
 
 * Time Series Insights エクスプローラーで、データを探索し、アラートを診断する方法については、[根本原因分析の実施](iot-accelerators-remote-monitoring-root-cause-analysis.md)に関するチュートリアルを参照してください。
 
-* Time Series Insights エクスプローラーでのデータの探索とクエリ方法については、ドキュメント「[Azure Time Series Insights エクスプローラー](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer)」を参照してください。
+* Time Series Insights エクスプローラーでのデータの探索とクエリ方法については、ドキュメント「[Azure Time Series Insights エクスプローラー](../time-series-insights/time-series-insights-explorer.md)」を参照してください。

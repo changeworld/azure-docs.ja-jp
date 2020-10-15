@@ -4,10 +4,10 @@ description: メディア グラフは、ライブ ビデオ ストリームか�
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 5dda18b68cb19d29623f2120fe07d7cc617f0c2f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90893014"
 ---
 # <a name="analyzing-live-video-without-any-recording"></a>記録を行わないライブ ビデオの分析
@@ -33,14 +33,14 @@ ms.locfileid: "90893014"
 以下に示すメディア グラフでは、別のモジュールにパッケージ化されたカスタム ビジョン モデルを使用してライブ ビデオ ストリームを分析できます。 このようなメディア グラフのグラフ トポロジの JSON 表現については、[こちら](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/httpExtension/topology.json)を参照してください。 推論サービスとして実行される IoT Edge モジュールにモデルをラップするいくつかの例については、[こちら](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis)を参照してください。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/analyze-live-video/motion-detected-frames.svg" alt-text="外部の推論モジュールに基づく Live Video Analytics":::
+> :::image type="content" source="./media/analyze-live-video/motion-detected-frames.svg" alt-text="モーション検出に基づく Live Video Analytics":::
 
 このメディア グラフでは、フレーム レート フィルター プロセッサ ノードで受信ライブ ビデオ ストリームのフレーム レートが下げられ、その後、[HTTP 拡張プロセッサ](media-graph-concept.md#http-extension-processor) ノードに送信されます。このノードでは、(JPEG、BMP、または PNG 形式の) イメージ フレームを REST 経由で外部の推論サービスに送信します。 外部の推論サービスからの結果は、HTTP 拡張ノードによって取得され、IoT Hub メッセージ シンク ノードを介して IoT Edge ハブに中継されます。 この種のメディア グラフは、たとえば、交差点での車両の時系列分布の理解や、小売店でのコンシューマー トラフィック パターンの把握など、さまざまなシナリオ向けのソリューションを構築するために使用できます。
 
 この例を拡張し、フレーム レート フィルター プロセッサ ノードの前の段階でモーション検出プロセッサを使用します。 これにより、ビデオにモーション アクティビティがある場合にのみ使用されるため、推論サービスの負荷が軽減されます。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/analyze-live-video/custom-model.svg" alt-text="外部推論モジュールによるモーション検出フレームに基づく Live Video Analytics":::
+> :::image type="content" source="./media/analyze-live-video/custom-model.svg" alt-text="モーション検出に基づく Live Video Analytics":::
 
 ## <a name="next-steps"></a>次のステップ
 

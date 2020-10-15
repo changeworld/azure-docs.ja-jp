@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 7/16/2020
 ms.author: jonbeck
 ms.openlocfilehash: 3f35d39634470ccacffa4d35c272a82725e9001c
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89081015"
 ---
 # <a name="tutorial-creating-a-new-child-dns-zone"></a>チュートリアル:新しい子 DNS ゾーンの作成
@@ -74,14 +74,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1.  Azure portal の **[すべてのリソース]** で、**MyResourceGroup** リソース グループの *contoso.com* DNS ゾーンを開きます。 **[名前でフィルター]** ボックスに「*contoso.com*」と入力すると簡単に見つけることができます。
 1.  DNS ゾーンの概要ページで、 **[+Child Zone]\(+ 子ゾーン\)** ボタンを選択します。
 
-      :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-inline.png" alt-text="[Child Zone]\(子ゾーン\) ボタンのスクリーンショット。" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-expanded.png":::
+      :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-inline.png" alt-text="[DNS ゾーンの作成] ページのスクリーンショット。" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-expanded.png":::
 
 1.  [DNS ゾーンの作成] ページが開きます。 [Child zone]\(子ゾーン\) オプションは既にオンになっており、親ゾーンのサブスクリプションと親ゾーンがこのページに既に設定されています。
 1.  このチュートリアルの例では、名前として「*child*」と入力します。 親 DNS ゾーンの名前 contoso.com が、プレフィックスとして名前に自動的に追加されることに注意してください。
 1.  **タグ**、**次へ:確認と作成** をクリックします。
 1.  **[確認および作成]** タブで概要を確認し、検証エラーを修正してから、 **[作成]** を選択します。
 
-    :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-inline.png" alt-text="選択された子ゾーンのスクリーンショット" border="true"  lightbox="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-expanded.png":::
+    :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-inline.png" alt-text="[DNS ゾーンの作成] ページのスクリーンショット。" border="true"  lightbox="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-expanded.png":::
 ## <a name="verify-child-dns-zone"></a>子 DNS ゾーンを検証する
 これで、新しい子 DNS ゾーン *subdomain.contoso.com* が作成されました。 委任が正しく行われたことを確認するには、以下で説明するように、子ゾーンのネーム サーバー (NS) レコードが親ゾーンにあることを確認します。  
 
@@ -90,7 +90,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1.  Azure portal の **[すべてのリソース]** で、**MyResourceGroup** リソース グループの *subdomain.contoso.com* DNS ゾーンを開きます。 **[名前でフィルター]** ボックスに「*subdomain.contoso.com*」と入力すると簡単に見つけることができます。
 1.  DNS ゾーンの概要ページでネーム サーバーを取得します。 この例では、ゾーン contoso.net に、ネーム サーバー *ns1-08.azure-dns.com、ns2-08.azure-dns.net、ns3-08.azure-dns.org、* *ns4-08.azure-dns.info* が割り当てられています。
 
-      :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-inline.png" alt-text="子ゾーンのネーム サーバーのスクリーンショット" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-expanded.png":::
+      :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-inline.png" alt-text="[DNS ゾーンの作成] ページのスクリーンショット。" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-expanded.png":::
 **親 DNS ゾーンで NS レコードを確認する:**
 
 このステップでは、親 DNS ゾーン *contoso.com* に移動し、子ゾーンのネーム サーバーに対する NS レコード セット エントリが作成されていることを確認します。
@@ -99,7 +99,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1.  *contoso.com* DNS ゾーンの概要ページで、レコード セットを確認します。
 1.  種類が NS で名前が subdomain のレコード セットが、親 DNS ゾーンに既に作成されていることがわかります。 このレコード セットの値を確認します。上のステップで子 DNS ゾーンから取得したネーム サーバーのリストに似ています。
 
-     :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-validate-inline.png" alt-text="子ゾーンのネーム サーバーの検証のスクリーンショット" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-validate-expanded.png":::
+     :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-validate-inline.png" alt-text="[DNS ゾーンの作成] ページのスクリーンショット。" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-validate-expanded.png":::
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 このチュートリアルで作成したリソースが必要なくなったら、**MyResourceGroup** リソース グループを削除することで削除できます。 **MyResourceGroup** リソース グループを開き、**[リソース グループの削除]** を選択します。
 

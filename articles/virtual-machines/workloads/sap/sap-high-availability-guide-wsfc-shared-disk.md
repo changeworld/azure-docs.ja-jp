@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b286812ba0a418d74738837fd5cfb7a7b617a9fa
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: c580e44cc827de46c7464ba5f316e6c515de2940
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854452"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977988"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>Azure のクラスター共有ディスクを使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する
 
@@ -119,7 +119,7 @@ _共有ディスクを使う SAP ASCS/SCS HA のアーキテクチャ_
 
 Azure の Windows フェールオーバー クラスターの共有ディスクには、次の 2 つのオプションがあります。
 
-- [Azure 共有ディスク](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared) - Azure マネージド ディスクを複数の VM に同時に接続できるようにする機能。 
+- [Azure 共有ディスク](../../windows/disks-shared.md) - Azure マネージド ディスクを複数の VM に同時に接続できるようにする機能。 
 - サード パーティ製ソフトウェアの [SIOS DataKeeper Cluster Edition](https://us.sios.com/products/datakeeper-cluster) を使用して、クラスター共有記憶域をシミュレートするミラー化された記憶域を作成する。 
 
 共有ディスクのテクノロジを選択するときは、次の点に注意してください。
@@ -128,7 +128,7 @@ Azure の Windows フェールオーバー クラスターの共有ディスク�
 - 追加のソフトウェアを維持して運用する必要なく、Azure マネージド ディスクを複数の VM に同時に接続することができます。 
 - 1 つの記憶域クラスターで 1 つの Azure 共有ディスクを操作します。 これは SAP ソリューションの信頼性に影響を与えます。
 - 現在サポートされているデプロイは、可用性セット内の Azure 共有 Premium ディスクを使用するものだけです。 Azure 共有ディスクはゾーン デプロイではサポートされていません。     
-- [Premium SSD の範囲](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared#disk-sizes)に指定されている最小ディスク サイズで Azure Premium ディスクをプロビジョニングして、必要な数の VM に同時に接続できるようにします (通常、SAP ASCS Windows フェールオーバー クラスターの場合は 2 つ)。 
+- [Premium SSD の範囲](../../windows/disks-shared.md#disk-sizes)に指定されている最小ディスク サイズで Azure Premium ディスクをプロビジョニングして、必要な数の VM に同時に接続できるようにします (通常、SAP ASCS Windows フェールオーバー クラスターの場合は 2 つ)。 
 - Azure 共有 Ultra Disk は、可用性セットのデプロイまたはゾーン デプロイをサポートしていないため、SAP ワークロードではサポートされません。  
  
 **SIOS**
@@ -139,25 +139,25 @@ Azure の Windows フェールオーバー クラスターの共有ディスク�
 
 ### <a name="shared-disk-using-azure-shared-disk"></a>Azure 共有ディスクを使用した共有ディスク
 
-Microsoft では、共有ディスク オプションを使用して SAP ASCS/SCS 高可用性を実装するために使用できる [Azure 共有ディスク](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared)を提供しています。
+Microsoft では、共有ディスク オプションを使用して SAP ASCS/SCS 高可用性を実装するために使用できる [Azure 共有ディスク](../../windows/disks-shared.md)を提供しています。
 
 #### <a name="prerequisites-and-limitations"></a>前提条件と制限事項
 
 現時点では、SAP ASCS/SCS インスタンスの Azure 共有ディスクとして Azure Premium SSD ディスクを使用できます。 次の制限事項が現在適用されます。
 
--  [Azure Ultra Disk](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk) は、SAP ワークロード用の Azure 共有ディスクとしてはサポートされていません。 現時点では、Azure Ultra Disk を可用性セット内で使用して、Azure VM を配置することはできません
--  Premium SSD ディスクを使用した [Azure 共有ディスク](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared)は、可用性セット内の VM でのみサポートされています。 Availability Zones のデプロイではサポートされていません。 
--  Azure 共有ディスクの値 [maxShares](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared-enable?tabs=azure-cli#disk-sizes) によって、その共有ディスクを使用できるクラスター ノードの数が決まります。 通常、SAP ASCS/SCS インスタンスには、Windows フェールオーバー クラスターに 2 つのノードを構成するため、`maxShares` の値は 2 に設定する必要があります。
--  すべての SAP ASCS/SCS クラスター VM が、同じ [Azure 近接通信配置グループ](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups)にデプロイされる必要があります。   
+-  [Azure Ultra Disk](../../disks-types.md#ultra-disk) は、SAP ワークロード用の Azure 共有ディスクとしてはサポートされていません。 現時点では、Azure Ultra Disk を可用性セット内で使用して、Azure VM を配置することはできません
+-  Premium SSD ディスクを使用した [Azure 共有ディスク](../../windows/disks-shared.md)は、可用性セット内の VM でのみサポートされています。 Availability Zones のデプロイではサポートされていません。 
+-  Azure 共有ディスクの値 [maxShares](../../disks-shared-enable.md?tabs=azure-cli#disk-sizes) によって、その共有ディスクを使用できるクラスター ノードの数が決まります。 通常、SAP ASCS/SCS インスタンスには、Windows フェールオーバー クラスターに 2 つのノードを構成するため、`maxShares` の値は 2 に設定する必要があります。
+-  すべての SAP ASCS/SCS クラスター VM が、同じ [Azure 近接通信配置グループ](../../windows/proximity-placement-groups.md)にデプロイされる必要があります。   
    Windows クラスター VM を、PPG を使用せずに Azure 共有ディスクがある可用性セット内にデプロイすることはできますが、PPG を使用すると Azure 共有ディスクとクラスター VM の物理的近距離を確保できるため、VM とストレージ層の間の待機時間が短くなります。    
 
-Azure 共有ディスクの制限事項の詳細については、Azure 共有ディスクのドキュメントの「[制限事項](https://docs.microsoft.com/azure/virtual-machines/linux/disks-shared#limitations)」セクションを十分注意して参照してください。
+Azure 共有ディスクの制限事項の詳細については、Azure 共有ディスクのドキュメントの「[制限事項](../../linux/disks-shared.md#limitations)」セクションを十分注意して参照してください。
 
 > [!IMPORTANT]
 > Azure 共有ディスクを使用して SAP ASCS/SCS Windows フェールオーバー クラスターをデプロイする場合は、デプロイが 1 つの記憶域クラスター内の単一の共有ディスクを使用して動作することに注意してください。 SAP ASCS/SCS インスタンスは、Azure 共有ディスクがデプロイされている記憶域クラスターで問題が発生した場合に影響を受けます。    
 
 > [!TIP]
-> SAP デプロイを計画するときの重要な考慮事項については、[SAP Netweaver on Azure の計画ガイド](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)および[SAP ワークロード用の Azure Storage ガイド](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage)に関する記事を参照してください。
+> SAP デプロイを計画するときの重要な考慮事項については、[SAP Netweaver on Azure の計画ガイド](./planning-guide.md)および[SAP ワークロード用の Azure Storage ガイド](./planning-guide-storage.md)に関する記事を参照してください。
 
 ### <a name="supported-os-versions"></a>サポートされている OS のバージョン
 

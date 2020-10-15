@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jixin
 ms.openlocfilehash: 1a75c083015d1f10a3ed3dba15480430747756eb
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90525018"
 ---
 # <a name="tutorial-build-a-blazor-server-chat-app"></a>チュートリアル:Blazor Server チャット アプリを構築する

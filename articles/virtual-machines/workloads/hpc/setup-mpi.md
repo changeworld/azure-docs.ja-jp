@@ -1,24 +1,18 @@
 ---
 title: HPC の Message Passing Interface の設定 - Azure Virtual Machines | Microsoft Docs
 description: Azure で HPC の MPI を設定する方法について説明します。
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines
-ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 08/06/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 210b2935cd2df81b0ff079c9a1c945fe770933f9
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 28853dd5066be2c40c72dca505c0a68d429f6ca0
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926520"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993526"
 ---
 # <a name="set-up-message-passing-interface-for-hpc"></a>HPC の Message Passing Interface を設定する
 

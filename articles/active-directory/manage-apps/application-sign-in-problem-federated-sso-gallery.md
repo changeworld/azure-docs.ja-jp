@@ -17,10 +17,10 @@ ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 68dc90cdb096849df17bc25ac185b1239b46ec72
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85413146"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>フェデレーション シングル サインオン用に構成されたギャラリー アプリケーションへのサインインに関する問題

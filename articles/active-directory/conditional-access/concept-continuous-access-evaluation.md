@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f1bde255355e7a4f47df6a3969837410692cef5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4ca23c1503b01c1aa9523edc2576599d7b6ab458
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91266061"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992808"
 ---
 # <a name="continuous-access-evaluation"></a>継続的アクセス評価
 
@@ -103,7 +103,7 @@ CAE 対応クライアントを使用していない場合でも、[構成可能
 
 1. CAE 対応のクライアントが、Azure AD に対して資格情報または更新トークンを提示し、何らかのリソースのアクセス トークンを要求します。
 1. アクセス トークンは、他の成果物と共にクライアントに返されます。
-1. 管理者は、[ユーザーのすべての更新トークンを明示的に失効](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)します。 失効イベントは、Azure AD からリソース プロバイダーに送信されます。
+1. 管理者は、[ユーザーのすべての更新トークンを明示的に失効](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)します。 失効イベントは、Azure AD からリソース プロバイダーに送信されます。
 1. リソース プロバイダーにアクセス トークンが提示されます。 リソース プロバイダーは、トークンの有効性を評価し、ユーザーの失効イベントがあるかどうかを確認します。 リソース プロバイダーは、この情報を使用して、リソースへのアクセスを許可するかどうかを決定します。
 1. この場合、リソース プロバイダーはアクセスを拒否し、401+ 要求チャレンジをクライアントに送り返します。
 1. CAE 対応クライアントは、401+ 要求チャレンジを認識します。 キャッシュをバイパスし、手順 1 に戻り、要求チャレンジと共に更新トークンを Azure AD に送り返します。 その後、Azure AD ですべての条件が再評価され、この場合はユーザーに再認証を求めるメッセージが表示されます。
@@ -159,7 +159,7 @@ ID プロバイダーとリソース プロバイダーがそれぞれ異なる 
 | 半期エンタープライズ チャネル | 有効 (1) に設定した場合、CAE はサポートされません。 | 有効 (1) に設定した場合、CAE はサポートされません。 |
 | 最新チャネル <br> or <br> 月間エンタープライズ チャネル | 設定に関係なく CAE がサポートされます。 | 設定に関係なく CAE がサポートされます。 |
 
-Office 更新プログラム チャネルの詳細については、[Microsoft 365 アプリの更新プログラム チャネルの概要](https://docs.microsoft.com/deployoffice/overview-update-channels)に関する記事を参照してください。 組織で Web アカウント マネージャー (WAM) を無効にしないことをお勧めします。
+Office 更新プログラム チャネルの詳細については、[Microsoft 365 アプリの更新プログラム チャネルの概要](/deployoffice/overview-update-channels)に関する記事を参照してください。 組織で Web アカウント マネージャー (WAM) を無効にしないことをお勧めします。
 
 ### <a name="policy-change-timing"></a>ポリシー変更のタイミング
 

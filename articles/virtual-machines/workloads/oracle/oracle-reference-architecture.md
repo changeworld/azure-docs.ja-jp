@@ -1,23 +1,18 @@
 ---
 title: Azure 上の Oracle データベース用リファレンス アーキテクチャ | Microsoft Docs
 description: Oracle Database Enterprise Edition データベースを Microsoft Azure Virtual Machines 上で実行するためのリファレンス アーキテクチャ。
-services: virtual-machines-linux
 author: dbakevlar
-manager: ''
-tags: ''
-ms.service: virtual-machines
+ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 12/13/2019
 ms.author: kegorman
-ms.custom: ''
-ms.openlocfilehash: 2bbc78f9a5569c8446743980cdea153883c19d4d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.reviewer: cynthn
+ms.openlocfilehash: f9765f4ce47e6e698daf1680aecf059241c58382
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91274438"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91993578"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 上の Oracle Database Enterprise Edition 用リファレンス アーキテクチャ
 
@@ -33,7 +28,7 @@ Oracle データベースのパフォーマンスを最大限に引き出す方�
 
 ## <a name="high-availability-for-oracle-databases"></a>Oracle データベースの高可用性
 
-クラウドで高可用性を実現することは、どの組織の計画と設計においても重要な要素です。 Microsoft Azure は、[可用性ゾーン](../../../availability-zones/az-overview.md)と可用性セット (可用性ゾーンが使用できないリージョンで使用される) を提供します。 詳細については、[仮想マシンの可用性管理](../../../virtual-machines/linux/manage-availability.md)に関するページでクラウドの設計についてご確認ください。
+クラウドで高可用性を実現することは、どの組織の計画と設計においても重要な要素です。 Microsoft Azure は、[可用性ゾーン](../../../availability-zones/az-overview.md)と可用性セット (可用性ゾーンが使用できないリージョンで使用される) を提供します。 詳細については、[仮想マシンの可用性管理](../../manage-availability.md)に関するページでクラウドの設計についてご確認ください。
 
 Oracle は、クラウドネイティブのツールとオファリングに加えて、Azure 上に設定できる、[Oracle Data Guard](https://docs.oracle.com/en/database/oracle/oracle-database/18/sbydb/introduction-to-oracle-data-guard-concepts.html#GUID-5E73667D-4A56-445E-911F-1E99092DD8D7)、[Data Guard with FSFO](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html)、[Sharding](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html)、[GoldenGate](https://www.oracle.com/middleware/technologies/goldengate.html) などの高可用性のためのソリューションを提供しています。 このガイドでは、これらの各ソリューションのリファレンス アーキテクチャについて説明します。
 
@@ -43,7 +38,7 @@ Oracle は、クラウドネイティブのツールとオファリングに加�
 
 Oracle Real Application Cluster (RAC) は、多くのインスタンスが 1 つのデータベース ストレージにアクセスするようにすることにより高スループットの実現を支援する (全共有型アーキテクチャ パターン)、Oracle が提供するソリューションです。 Oracle RAC は、オンプレミスの高可用性にも使用できますが、Oracle RAC のみを使用してクラウドの高可用性を実現することはできません。これは、Oracle RAC がインスタンス レベルの障害に対してのみ保護を提供し、ラック レベルやデータセンター レベルの障害には保護を提供しないためです。 このため、Oracle では、高可用性を実現するため、データベース (単一インスタンスであれ RAC であれ) と Oracle Data Guard を併用することを推奨しています。 一般に、ミッション クリティカルなアプリケーションを実行する目的で高い SLA が必要とされます。 Oracle RAC は、現時点では、Oracle on Azure の認定やサポートの対象になっていません。 ただし、Azure では、インスタンスレベルの障害に対する保護に役立つ、Availability Zones や計画メンテナンス ウィンドウなどの機能を提供しています。 これに加えて、顧客は Oracle Data Guard、Oracle GoldenGate、Oracle Sharding などのテクノロジを使用して、ラック レベルやデータセンター レベルの障害、地政学的な障害からデータベースを保護することにより、ハイ パフォーマンスと回復性を実現できます。
 
-複数の[可用性ゾーン](../../../availability-zones/az-overview.md)で Oracle Database を Oracle Data Guard や GoldenGate と組み合わせて実行すると、99.99% のアップタイム SLA を実現できます。 可用性ゾーンがまだ存在しない Azure リージョンでは、[可用性セット](../../linux/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)を利用して、99.95% のアップタイム SLA を実現できます。
+複数の[可用性ゾーン](../../../availability-zones/az-overview.md)で Oracle Database を Oracle Data Guard や GoldenGate と組み合わせて実行すると、99.99% のアップタイム SLA を実現できます。 可用性ゾーンがまだ存在しない Azure リージョンでは、[可用性セット](../../manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)を利用して、99.95% のアップタイム SLA を実現できます。
 
 >注:Microsoft が提供するアップタイム SLA より大幅に高いアップタイム目標を設定できます。
 
@@ -209,7 +204,7 @@ Oracle Data Guard は、システム管理、ユーザー定義、コンポジ�
 
 ## <a name="patching-and-maintenance"></a>修正プログラムの適用とメンテナンス
 
-Oracle ワークロードを Azure にデプロイする場合、ホスト OS レベルのすべての修正プログラムを Microsoft が適用します。 計画された OS レベルのメンテナンスは、その計画メンテナンスに備えてお客様が準備できるよう、事前にお客様に通知されます。 異なる 2 つの Availability Zones の 2 つのサーバーに同時に修正プログラムが適用されることはありません。 VM のメンテナンスと修正プログラムの適用の詳細については、[仮想マシンの可用性管理](../../../virtual-machines/linux/manage-availability.md)に関するページをご覧ください。 
+Oracle ワークロードを Azure にデプロイする場合、ホスト OS レベルのすべての修正プログラムを Microsoft が適用します。 計画された OS レベルのメンテナンスは、その計画メンテナンスに備えてお客様が準備できるよう、事前にお客様に通知されます。 異なる 2 つの Availability Zones の 2 つのサーバーに同時に修正プログラムが適用されることはありません。 VM のメンテナンスと修正プログラムの適用の詳細については、[仮想マシンの可用性管理](../../manage-availability.md)に関するページをご覧ください。 
 
 仮想マシンのオペレーティング システムへの修正プログラムの適用は、[Azure Automation Update Management](../../../automation/update-management/update-mgmt-overview.md) を使用して自動化できます。 Oracle データベースへの修正プログラムの適用とメンテナンスは、[Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) または [Azure Automation Update Management](../../../automation/update-management/update-mgmt-overview.md) を使用して自動化およびスケジュールし、ダウンタイムを最小限に抑えることができます。 Oracle データベースのコンテキストでのその使用方法については、[継続的デリバリーおよびブルー/グリーン デプロイ](/azure/devops/learn/what-is-continuous-delivery)に関するページをご覧ください。
 

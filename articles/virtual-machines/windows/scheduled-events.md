@@ -9,12 +9,12 @@ ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviwer: mimckitt
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 41e8f6f3e3562654edcc4ba347abe57e300af511
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 823013de0462d830f065993b1c7c9dbe4256991d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89074227"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978039"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Windows VM のスケジュールされたイベント
 
@@ -134,7 +134,7 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 | EventId | このイベントのグローバル一意識別子。 <br><br> 例: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
 | EventType | このイベントによって発生する影響。 <br><br> 値: <br><ul><li> `Freeze`:仮想マシンは数秒間の一時停止がスケジュールされています。 CPU とネットワーク接続が中断する場合がありますが、メモリや開いているファイルへの影響はありません。<li>`Reboot`:Virtual Machine は再起動がスケジュールされています (非永続メモリは失われます)。 <li>`Redeploy`:Virtual Machine は別のノードへの移動がスケジュールされています (一時ディスクは失われます)。 <li>`Preempt`:スポット仮想マシンが削除されています（一時ディスクは失われています）。 <li> `Terminate`:仮想マシンは削除がスケジュールされています。 |
 | ResourceType | このイベントが影響を与えるリソースの種類。 <br><br> 値: <ul><li>`VirtualMachine`|
-| リソース| このイベントが影響を与えるリソースの一覧。 これには最大 1 つの[更新ドメイン](manage-availability.md)のマシンが含まれることが保証されますが、更新ドメインの一部のマシンは含まれない場合があります。 <br><br> 例: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
+| リソース| このイベントが影響を与えるリソースの一覧。 これには最大 1 つの[更新ドメイン](../manage-availability.md)のマシンが含まれることが保証されますが、更新ドメインの一部のマシンは含まれない場合があります。 <br><br> 例: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | このイベントの状態。 <br><br> 値: <ul><li>`Scheduled`:このイベントは、`NotBefore` プロパティに指定された時間が経過した後で開始するようにスケジュールされています。<li>`Started`:このイベントは開始されています。</ul> `Completed` や類似の状態が提供されることはありません。 イベントが完了すると、イベントは返されなくなります。
 | NotBefore| このイベントが開始される時間。 <br><br> 例: <br><ul><li> Mon, 19 Sep 2016 18:29:47 GMT  |
 | 説明 | このイベントの説明。 <br><br> 例: <br><ul><li> ホスト サーバーのメンテナンス中です。 |

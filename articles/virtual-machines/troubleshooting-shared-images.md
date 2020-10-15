@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/15/2020
 ms.author: cynthn
 ms.reviewer: cynthn
-ms.openlocfilehash: 3a206a7aabee9f75524ab4715afa30ec05c612bf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d01ac7d5b01f485c3b0100c468332475a9bd4274
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328065"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978545"
 ---
 # <a name="troubleshooting-shared-image-galleries-in-azure"></a>Azure の共有イメージ ギャラリーのトラブルシューティング
 
@@ -79,7 +79,7 @@ ms.locfileid: "91328065"
 
 "*VM または仮想マシン スケール セットの作成を試行しているユーザーが、イメージ バージョンへの読み取りアクセス権を保持していない。* "
 
-サブスクリプションの所有者に連絡して、[Azure ロールベース アクセス制御](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (Azure RBAC) 経由でイメージ バージョンまたは親リソース (共有イメージ ギャラリーまたはイメージ定義など) への読み取りアクセス権の付与を依頼します。 
+サブスクリプションの所有者に連絡して、[Azure ロールベース アクセス制御](../role-based-access-control/rbac-and-directory-admin-roles.md) (Azure RBAC) 経由でイメージ バージョンまたは親リソース (共有イメージ ギャラリーまたはイメージ定義など) への読み取りアクセス権の付与を依頼します。 
 
 "*イメージ バージョンが見つからない。* "
 
@@ -91,7 +91,7 @@ VM または仮想マシン スケール セットの作成を試行している
 
 ## <a name="unable-to-share-resources"></a>リソースを共有できない
 
-サブスクリプション全体での共有イメージ ギャラリー、イメージ定義、およびイメージ バージョンのリソースの共有が、[Azure ロールベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (Azure RBAC) を使用して有効化されています。 
+サブスクリプション全体での共有イメージ ギャラリー、イメージ定義、およびイメージ バージョンのリソースの共有が、[Azure ロールベースのアクセス制御](../role-based-access-control/rbac-and-directory-admin-roles.md) (Azure RBAC) を使用して有効化されています。 
 
 ## <a name="replication-is-slow"></a>レプリケーションが遅い
 
@@ -99,7 +99,7 @@ VM または仮想マシン スケール セットの作成を試行している
 
 ## <a name="azure-limits-and-quotas"></a>Azure の制限とクォータ 
 
-[Azure の制限とクォータ](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)は、すべての共有イメージ ギャラリー、イメージ定義、およびイメージ バージョンのリソースに適用されます。 お使いのサブスクリプションの制限内であることを確認してください。 
+[Azure の制限とクォータ](../azure-resource-manager/management/azure-subscription-service-limits.md)は、すべての共有イメージ ギャラリー、イメージ定義、およびイメージ バージョンのリソースに適用されます。 お使いのサブスクリプションの制限内であることを確認してください。 
 
 
 ## <a name="next-steps"></a>次のステップ

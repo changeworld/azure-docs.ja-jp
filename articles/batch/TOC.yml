@@ -43,7 +43,19 @@
         - name: Batch のサンプル リポジトリ
           href: 'https://github.com/Azure/azure-batch-samples'
     - name: Azure CLI
-      href: cli-samples.md
+      items:
+        - name: Batch サービス モードでの Batch アカウントの作成
+          href: ./scripts/batch-cli-sample-create-account.md
+        - name: ユーザー サブスクリプション モードでの Batch アカウントの作成
+          href: ./scripts/batch-cli-sample-create-user-subscription-account.md
+        - name: Azure Batch アカウントへのアプリケーションの追加
+          href: ./scripts/batch-cli-sample-add-application.md
+        - name: Linux プールの作成と管理
+          href: ./scripts/batch-cli-sample-manage-linux-pool.md
+        - name: Windows プールの作成と管理
+          href: ./scripts/batch-cli-sample-manage-windows-pool.md
+        - name: ジョブとタスクを実行する
+          href: ./scripts/batch-cli-sample-run-job.md
 - name: 概念
   items:
     - name: セキュリティ
