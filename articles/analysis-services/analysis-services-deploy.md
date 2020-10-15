@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d6b737985bc19aa09b26bb0d4a65696a364a903a
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 45ea75b65e75f9bac4d6d4839ffe7fa095e3b25d
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697596"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018778"
 ---
 # <a name="deploy-a-model-from-visual-studio"></a>Visual Studio からモデルをデプロイする
 
@@ -23,7 +23,7 @@ Azure サブスクリプションにサーバーを作成した後は、表形�
 開始するには、以下が必要です。
 
 * Azure の **Analysis Services サーバー**。 詳しくは、「[Azure Analysis Services サーバーを作成する](analysis-services-create-server.md)」をご覧ください。
-* Visual Studio の**表形式モデル プロジェクト**または 1200 以上の互換性レベルの既存の表形式モデル。 作成していない場合は、 [Adventure Works Internet Sales の表形式モデルのチュートリアル](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)を参照して作成してください。
+* Visual Studio の**表形式モデル プロジェクト**または 1200 以上の互換性レベルの既存の表形式モデル。 作成していない場合は、 [Adventure Works Internet Sales の表形式モデルのチュートリアル](/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)を参照して作成してください。
 * **オンプレミス ゲートウェイ** - 組織のネットワークにオンプレミスのデータ ソースがある場合は、[オンプレミスのデータ ゲートウェイ](analysis-services-gateway.md)をインストールする必要があります。 ゲートウェイは、クラウドのサーバーがオンプレミスのデータ ソースに接続してモデルのデータを処理および更新するために必要です。
 
 > [!TIP]
@@ -63,7 +63,4 @@ Azure サブスクリプションにサーバーを作成した後は、表形�
 
 サーバーに表形式モデルをデプロイしたので、モデルに接続できます。 [SQL Server Management Studio (SSMS) を使用して接続](analysis-services-manage.md)し、そのモデルを管理できます。 また、Power BI、Power BI Desktop、Excel などの[クライアント ツールを使って接続](analysis-services-connect.md)し、レポートの作成を始めることができます。   
 
-高度なデプロイ方法については、「[表形式モデル ソリューションのデプロイ](https://docs.microsoft.com/analysis-services/deployment/tabular-model-solution-deployment?view=azure-analysis-services-current)」を参照してください。
-
-
-
+高度なデプロイ方法については、「[表形式モデル ソリューションのデプロイ](/analysis-services/deployment/tabular-model-solution-deployment?view=azure-analysis-services-current)」を参照してください。

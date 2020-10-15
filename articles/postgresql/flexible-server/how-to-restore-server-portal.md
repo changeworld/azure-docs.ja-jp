@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: e69bcb3d9e4dca4c45bf9a6fe8ed4d54e7f4a8cd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90931198"
 ---
 # <a name="point-in-time-restore-of-a-flexible-server"></a>フレキシブル サーバーのポイントインタイム リストア
@@ -40,7 +40,7 @@ ms.locfileid: "90931198"
 
 4.  **[最初の復元ポイント]** を選択し、 **[新しいサーバーに復元]** フィールドに新しいサーバー名を入力します。 復元できる最も古いタイムスタンプが表示されます。 
    
-   :::image type="content" source="./media/how-to-restore-server-portal/restore-earliest.png" alt-text="最初の復元時刻":::
+   :::image type="content" source="./media/how-to-restore-server-portal/restore-earliest.png" alt-text="復元の概要":::
 
 5.  **[OK]** をクリックします。
 
@@ -61,7 +61,7 @@ ms.locfileid: "90931198"
 
 5.  日時を選択し、 **[新しいサーバーに復元]** フィールドに新しいサーバー名を入力します。 
    
-:::image type="content" source="./media/how-to-restore-server-portal/restore-custom.png" alt-text="カスタム復元時刻":::
+:::image type="content" source="./media/how-to-restore-server-portal/restore-custom.png" alt-text="復元の概要":::
  
 6.  **[OK]** をクリックします。
 

@@ -9,10 +9,10 @@ ms.date: 09/30/2020
 ms.author: twooley
 ms.custom: include file
 ms.openlocfilehash: 358de5761f3535b5f1e75d82539ee8e3ecdbd289
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91665613"
 ---
 **Azure Data Lake Storage Gen2** は、専用サービスまたはストレージ アカウントの種類ではありません。 これは、ビッグ データ分析専用の機能の最新リリースです。  これらの機能は、汎用 v2 または BlockBlobStorage ストレージ アカウントで利用でき、アカウントの**階層型名前空間**機能を有効にすることで取得できます。 スケール ターゲットについては、これらの記事を参照してください。 

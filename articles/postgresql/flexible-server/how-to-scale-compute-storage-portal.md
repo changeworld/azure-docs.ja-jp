@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 1542bba53b51ffdf2129953a81e5d13975ade434
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90931350"
 ---
 # <a name="scale-operations-in-flexible-server"></a>フレキシブル サーバーでのスケール操作
@@ -43,18 +43,18 @@ ms.locfileid: "90931350"
  :::image type="content" source="./media/how-to-scale-compute-storage-portal/click-compute-storage.png" alt-text="コンピューティングとストレージ ビュー":::
 
 4.  バースト可能レベル、汎用レベル、およびメモリ最適化されたレベルの間で、コンピューティング クラスを選択できます。
-   :::image type="content" source="./media/how-to-scale-compute-storage-portal/list-compute-tiers.png" alt-text="コンピューティング レベルの一覧表示":::
+   :::image type="content" source="./media/how-to-scale-compute-storage-portal/list-compute-tiers.png" alt-text="コンピューティングとストレージ ビュー":::
 
 
 5.  既定の仮想コアとメモリ サイズに問題がない場合は、次の手順を省略できます。
 
 6.  仮想コアの数を変更する場合は、 **[コンピューティング サイズ]** のドロップダウンをクリックし、一覧から仮想コア/メモリの必要な数をクリックします。
     
-    - バースト可能なコンピューティング レベル: :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-burstable-dropdown.png" alt-text="バースト可能なコンピューティング":::
+    - バースト可能なコンピューティング レベル: :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-burstable-dropdown.png" alt-text="コンピューティングとストレージ ビュー":::
 
-    - 汎用コンピューティング レベル: :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-general-purpose-dropdown.png" alt-text="汎用コンピューティング":::
+    - 汎用コンピューティング レベル: :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-general-purpose-dropdown.png" alt-text="コンピューティングとストレージ ビュー":::
 
-    - メモリ最適化されたコンピューティング レベル: :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-memory-optimized-dropdown.png" alt-text="メモリ最適化されたコンピューティング":::
+    - メモリ最適化されたコンピューティング レベル: :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-memory-optimized-dropdown.png" alt-text="コンピューティングとストレージ ビュー":::
 
 7.  **[保存]** をクリックします。 
 8.  確認メッセージが表示されます。 続行する場合は、 **[OK]** をクリックします。 
@@ -70,12 +70,12 @@ ms.locfileid: "90931350"
 
 3.  現在の設定を含むページが表示されます。
    
-:::image type="content" source="./media/how-to-scale-compute-storage-portal/click-compute-storage.png" alt-text="[コンピューティングとストレージ]をクリックします":::
+:::image type="content" source="./media/how-to-scale-compute-storage-portal/click-compute-storage.png" alt-text="コンピューティングとストレージ ビュー":::
 4.  スライド バーのあるフィールド **[ストレージサイズ (GiB)]** が現在のサイズで表示されます。
 
 5.  バーを目的のサイズまでスライドさせます。 対応する IOPS の数値が表示されます。 IOPS は、コンピューティング レベルとサイズに依存します。 コスト情報も表示されます。 
 
- :::image type="content" source="./media/how-to-scale-compute-storage-portal/storage-scaleup.png" alt-text="ストレージのスケールアップ":::
+ :::image type="content" source="./media/how-to-scale-compute-storage-portal/storage-scaleup.png" alt-text="コンピューティングとストレージ ビュー":::
 
 6.  ストレージのサイズに問題がなければ、 **[保存]** をクリックします。 
 7.  確認メッセージが表示されます。 続行する場合は、 **[OK]** をクリックします。 

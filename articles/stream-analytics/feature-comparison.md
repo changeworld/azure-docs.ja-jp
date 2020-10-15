@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 2ba7dc3b0f2bc4f62234c480da0af1061dea1f91
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2fbaaac0095622f14d5bc0033b7787bec8ec2fa2
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885564"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018289"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Azure Stream Analytics の機能の比較
 
@@ -44,7 +44,7 @@ Azure Stream Analytics では、[Azure portal](stream-analytics-quick-create-por
 |C# カスタム コード関数とデシリアライザー|読み取り専用モード|はい|いいえ|
 |JavaScript UDF および UDA     |はい         |はい         |Windows のみ         |
 |Machine Learning Service     |はい        |はい         |いいえ         |
-|Machine Learning Studio     |はい。ただし、クエリはテストできません        |はい |いいえ         |
+|Azure Machine Learning Studio (クラシック)|はい。ただし、クエリはテストできません        |はい |いいえ         |
 |互換性レベル     |1.0</br>1.1</br>1.2 (既定値)         |1.0</br>1.1</br>1.2 (既定値)           |1.0</br>1.1</br>1.2 (既定値)           |
 |組み込みの ML ベースの異常検出関数     |はい         |はい         |はい         |
 |組み込みの地理空間関数     |はい         |はい         |はい         |

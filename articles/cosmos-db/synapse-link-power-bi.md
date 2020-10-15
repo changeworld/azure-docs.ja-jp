@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: acomet
 ms.openlocfilehash: 03ea1b0cdfef30935b38078d0811d1408a78c41e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90930988"
 ---
 # <a name="use-power-bi-and-synapse-sql-serverless-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>Power BI および Synapse SQL サーバーレスを使用して Synapse Link で Azure Cosmos DB を分析する (プレビュー)
@@ -46,7 +46,7 @@ Synapse ワークスペースで、 **[開発]** タブをクリックし、 **+
 
 すべてのワークスペースに、Synapse SQL サーバーレス エンドポイントが付属しています。 SQL スクリプトを作成したら、上部のツール バーから **SQL オンデマンド**に接続します。
 
-:::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="SQL スクリプトで、ワークスペースの Synapse SQL サーバーレス エンドポイントを使用できるようにする":::
+:::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="Synapse Analytics ワークスペースに SQL スクリプトを追加する":::
 
 **RetailCosmosDB** という名前の新しいデータベースと、Synapse Link 対応コンテナーに SQL ビューを作成します。 次のコマンドは、データベースを作成する方法を示しています。
 
@@ -106,7 +106,7 @@ GROUP BY p.[advertising], p.[storeId], p.[weekStarting], q.[largeHH]
 
 **[実行]** を選択すると、結果として次のテーブルが得られます。
 
-:::image type="content" source="./media/synapse-link-power-bi/join-views-query-results.png" alt-text="StoreDemographics ビューと RetailSales ビューの結合後のクエリ結果":::
+:::image type="content" source="./media/synapse-link-power-bi/join-views-query-results.png" alt-text="Synapse Analytics ワークスペースに SQL スクリプトを追加する":::
 
 ## <a name="model-views-over-containers-with-power-bi"></a>Power BI によるコンテナー上のモデル ビュー
 
@@ -141,7 +141,7 @@ GROUP BY p.[advertising], p.[storeId], p.[weekStarting], q.[largeHH]
 1. **RetailSales** ビューの **productCode** を凡例にドラッグ アンド ドロップして、特定の製品ラインを選択します。
 これらのオプションを選択すると、次のスクリーンショットのようなグラフが表示されます。
 
-:::image type="content" source="./media/synapse-link-power-bi/household-size-average-revenue-report.png" alt-text="店舗あたりの平均収益と世帯規模の相対的重要度を比較するレポート":::
+:::image type="content" source="./media/synapse-link-power-bi/household-size-average-revenue-report.png" alt-text="Synapse Analytics ワークスペースに SQL スクリプトを追加する":::
 
 ## <a name="next-steps"></a>次のステップ
 

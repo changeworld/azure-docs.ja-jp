@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 7e8746d9b29b0b4af30ba799628328acc3fd8bc0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90931279"
 ---
 # <a name="what-is-azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc 対応 PostgreSQL Hyperscale とは
@@ -43,7 +43,7 @@ Azure Arc 対応 PostgreSQL Hyperscale は、Azure Arc 対応データ サービ
 
 ## <a name="azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc 対応 PostgreSQL Hyperscale
 
-:::image type="content" source="media/postgres-hyperscale/postgresql-hyperscale-arc.png" alt-text="Azure Arc 対応 PostgreSQL Hyperscale":::
+:::image type="content" source="media/postgres-hyperscale/postgresql-hyperscale-arc.png" alt-text="Azure SQL Database for PostgreSQL Hyperscale (Citus)":::
 
 これは、Azure Arc 対応データ サービスで使用できる Postgres データベース エンジンのハイパースケール フォーム ファクターです。 これもまた、ハイパースケール エクスペリエンスを可能にする Citus 拡張機能を備えています。 このフォーム ファクターでは、システムをホストするインフラストラクチャを顧客が提供し、それらのシステムを運用します。
 

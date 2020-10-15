@@ -1,20 +1,20 @@
 ---
 title: Azure AD Domain Services のマネージド ドメインに Windows Server VM を参加させる | Microsoft Docs
 description: このチュートリアルでは、Azure Active Directory Domain Services マネージド ドメインに Windows Server 仮想マシンを参加させる方法を学習します。
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 259b27528779c9934da6d69ca46f2794e2257d24
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.author: joflore
+ms.openlocfilehash: 3df96f5576829694b5eb12fd1811de112279884d
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723029"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963229"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>チュートリアル:Azure Active Directory Domain Services のマネージド ドメインに Windows Server 仮想マシンを参加させる
 
@@ -184,7 +184,7 @@ Windows Server VM が再起動すると、マネージド ドメインで適用�
 
 ### <a name="unjoin-the-vm-from-the-managed-domain"></a>マネージド ドメインへの VM の参加を解除する
 
-マネージド ドメインから VM を削除するには、もう一度、[VM をドメインに参加させる](#join-the-vm-to-the-managed-domain)ための手順を実行します。 このとき、マネージド ドメインに参加させる代わりに、ワークグループ (既定の "*WORKGROUP*" など) に参加させることを選択します。 VM が再起動すると、コンピューター オブジェクトがマネージド ドメインから削除されます。
+マネージド ドメインから VM を削除するには、もう一度、[VM をドメインに参加させる](#join-the-vm-to-the-managed-domain)ための手順を実行します。 このとき、マネージド ドメインに参加させる代わりに、ワークグループ (既定の "*ワークグループ*" など) に参加させることを選択します。 VM が再起動すると、コンピューター オブジェクトがマネージド ドメインから削除されます。
 
 ドメインへの参加を解除せずに [VM を削除](#delete-the-vm)すると、孤立したコンピューター オブジェクトが Azure AD DS に残されます。
 

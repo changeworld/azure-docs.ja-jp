@@ -3,12 +3,12 @@ title: Live Video Analytics を Azure Stack Edge にデプロイする
 description: この記事では、Live Video Analytics を Azure Stack Edge にデプロイするときに役立つ手順を示します。
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: b13bb779a5a780b21f2d5d96ed8831ef5c26564d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f33b6fb0f0dc5c5b733a0fcb021e2792ce9c6ec6
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90930944"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019598"
 ---
 # <a name="deploy-live-video-analytics-on-azure-stack-edge"></a>Live Video Analytics を Azure Stack Edge にデプロイする
 
@@ -21,27 +21,27 @@ Live Video Analytics では、IoT Hub を介してデプロイを行います。
 
 ## <a name="prerequisites"></a>前提条件
 
-* [所有者特権](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)がある Azure サブスクリプション。
-* [Azure Stack Edge](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-deploy-prep) リソース
+* [所有者特権](../../role-based-access-control/built-in-roles.md#owner)がある Azure サブスクリプション。
+* [Azure Stack Edge](../../databox-online/azure-stack-edge-gpu-deploy-prep.md) リソース
    
-* [IoT ハブ](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal)
-* Live Video Analytics モジュール用の[サービス プリンシパル](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/create-custom-azure-resource-manager-role-how-to#create-service-principal)。
+* [IoT ハブ](../../iot-hub/iot-hub-create-through-portal.md)
+* Live Video Analytics モジュール用の[サービス プリンシパル](./create-custom-azure-resource-manager-role-how-to.md#create-service-principal)。
 
    IoT Hub が利用可能なこれらのリージョンのうち、いずれかを使用します。米国東部 2、米国中部、米国中北部、東日本、米国西部 2、米国中西部、カナダ東部、英国南部、フランス中部、フランス南部、スイス北部、スイス西部、西日本。
 * ストレージ アカウント
 
     General Purpose v2 (GPv2) ストレージ アカウントを使用することをお勧めします。  
-    [汎用 v2 ストレージ アカウント](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade?tabs=azure-portal)についてご確認ください。
+    [汎用 v2 ストレージ アカウント](../../storage/common/storage-account-upgrade.md?tabs=azure-portal)についてご確認ください。
 * 開発用マシン上の [Visual Studio Code](https://code.visualstudio.com/)。 [Azure IoT Tools 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)があることを確認します。
 * 開発用マシンが接続されているネットワークで、ポート 5671 経由の Advanced Message Queuing Protocol が許可されていることを確認します。 このセットアップにより、Azure IoT Tools が Azure IoT Hub と通信できるようになります。
 
 ## <a name="configuring-azure-stack-edge-for-using-live-video-analytics"></a>Live Video Analytics を使用するための Azure Stack Edge の構成
 
-Azure Stack Edge は、サービスとしてのハードウェア ソリューションであり、ネットワーク データ転送機能を備えた AI 対応のエッジ コンピューティング デバイスです。 詳細については、[Azure Stack Edge と詳細な設定手順](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-prep)を参照してください。 最初に、以下のリンクの指示に従います。
+Azure Stack Edge は、サービスとしてのハードウェア ソリューションであり、ネットワーク データ転送機能を備えた AI 対応のエッジ コンピューティング デバイスです。 詳細については、[Azure Stack Edge と詳細な設定手順](../../databox-online/azure-stack-edge-deploy-prep.md)を参照してください。 最初に、以下のリンクの指示に従います。
 
-* [Azure Stack Edge および Data Box Gateway リソースの作成](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-prep)
-* [インストールと設定](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-install)
-* [接続とアクティブ化](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-connect-setup-activate)
+* [Azure Stack Edge および Data Box Gateway リソースの作成](../../databox-online/azure-stack-edge-deploy-prep.md)
+* [インストールと設定](../../databox-online/azure-stack-edge-deploy-install.md)
+* [接続とアクティブ化](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md)
 
 ### <a name="attach-an-iot-hub-to-azure-stack-edge"></a>Azure Stack Edge への IoT ハブのアタッチ
 
@@ -58,11 +58,11 @@ Azure Stack Edge は、サービスとしてのハードウェア ソリュー�
     |名前|自分の IoT Hub リソースの名前を入力します。|
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-get-started.png" alt-text="Azure Stack Edge の開始":::
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-get-started.png" alt-text="Azure Stack Edge":::
 1. **［作成］** を選択します IoT Hub リソースの作成には数分かかります。 IoT Hub リソースが作成された後、**[コンピューティングの構成]** タイルが更新され、コンピューティングの構成が表示されます。 Edge コンピューティング ロールが構成されたことを確認するには、**[コンピューティングの構成]** タイルの **[View Compute]\(コンピューティングの表示\)** を選択します。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/edge-compute-config.png" alt-text="IoT Hub リソースの作成":::
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/edge-compute-config.png" alt-text="Azure Stack Edge":::
 
     > [!NOTE]
     > Azure Stack Edge リソースに IoT ハブが関連付けられる前に [コンピューティングの構成] ダイアログを閉じた場合、IoT ハブは作成されますが、コンピューティングの構成には表示されません。 数分後にページを再読み込みすると、それが表示されるのがわかります。
@@ -72,7 +72,7 @@ Azure Stack Edge は、サービスとしてのハードウェア ソリュー�
     情報をすべて入力すると、次のような [Edge コンピューティングの構成] カードが表示されます。
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/configure-edge-compute.png" alt-text="[Edge コンピューティングの構成] カード":::
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/configure-edge-compute.png" alt-text="Azure Stack Edge":::
  
 ### <a name="enable-compute-prerequisites-on-the-azure-stack-edge-local-ui"></a>Azure Stack Edge ローカル UI でのコンピューティングに関する前提条件の有効化
 
@@ -80,7 +80,7 @@ Azure Stack Edge は、サービスとしてのハードウェア ソリュー�
 
 * 自分の Azure Stack Edge リソースをアクティブにしていること。
 * Azure Stack Edge リソースにアクセスするために、PowerShell 5.0 以降を実行している Windows クライアント システムにアクセスできること。
-* Kubernetes クラスターをデプロイするには、[ローカル Web UI](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-connect-setup-activate#connect-to-the-local-web-ui-setup) を使用して自分の Azure Stack Edge リソースを構成する必要があります。 
+* Kubernetes クラスターをデプロイするには、[ローカル Web UI](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md#connect-to-the-local-web-ui-setup) を使用して自分の Azure Stack Edge リソースを構成する必要があります。 
     
     * コンピューティングを有効にするには、自分のデバイスのローカル Web UI で [コンピューティング] ページに移動します。
     
@@ -89,12 +89,7 @@ Azure Stack Edge は、サービスとしてのハードウェア ソリュー�
         * [適用] を選択します (この操作には約 2 分かかります)。
         
         > [!div class="mx-imgBorder"]
-        > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-commercial.png" alt-text="Azure Stack Edge ローカル UI でのコンピューティングに関する前提条件":::
-
-        * Kubernetes API および Azure Stack Edge リソース用に DNS を更新していない場合は、Windows のホスト ファイルを更新できます。
-        
-            * 管理者としてテキスト エディターを開きます
-            * "C:\Windows\System32\drivers\etc\hosts" のファイルを開きます
+        > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-commercial.png" alt-text="Azure Stack Edge" のファイルを開きます
             * Kubernetes API デバイス名の IPv4 とホスト名をファイルに追加します。 (この情報は、Azure Stack Edge ポータルの [デバイス] セクションで確認できます。)
             * 保存して閉じる
 
@@ -185,7 +180,7 @@ Azure Stack Edge は、サービスとしてのハードウェア ソリュー�
     1. **[作成]** をクリックします。
         
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/local-share.png" alt-text="ローカル共有":::
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/local-share.png" alt-text="Azure Stack Edge":::
     
 1. ファイル同期ストレージ用にリモート共有を作成します。
 
@@ -203,36 +198,7 @@ Azure Stack Edge は、サービスとしてのハードウェア ソリュー�
     1. **[作成]** をクリックします。    
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/remote-share.png" alt-text="リモート共有":::
-    
-    > [!TIP]
-    > 自分の Azure Stack Edge に接続された Windows クライアントを使用し、[このドキュメントで説明されている](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-add-shares#connect-to-an-smb-share)次の手順に従って SMB 共有に接続します。
-    
-1. ボリューム マウントを使用するよう、Live Video Analytics Edge モジュールの [コンテナーの作成オプション] を更新します (「[モジュールを追加する](deploy-iot-edge-device.md#add-modules)」のポイント 4 を参照してください)。
-
-   ```json
-    // Original (Bind Mounts)
-    "createOptions": {
-        "HostConfig": {
-            "Binds": [
-                "/var/lib/azuremediaservices:/var/lib/azuremediaservices",
-                "/var/media:/var/media"
-            ]
-        }
-    }
-    // Updated (Volume Mounts)
-    "createOptions": {
-        "HostConfig": {
-            "Mounts": [
-            {
-                "Target": "/var/lib/azuremediaservices",
-                "Source": "lva",
-                "Type": "volume"
-            },
-            {
-                "Target": "/var/media",
-                "Source": "media",
-                "Type": "volume"
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/remote-share.png" alt-text="Azure Stack Edge"
             }]
         }
     }
@@ -248,7 +214,7 @@ Azure Stack Edge は、サービスとしてのハードウェア ソリュー�
 1. [モジュール] タイルを選択します。 これにより、[モジュール] ブレードが開きます。 モジュールの一覧で、自分がデプロイしたモジュールを特定します。 自分が追加したモジュールのランタイムの状態は、[実行中] になっているはずです。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/iot-edge-custom-module.png" alt-text="カスタム モジュール":::
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/iot-edge-custom-module.png" alt-text="Azure Stack Edge":::
 
 ### <a name="configure-the-azure-iot-tools-extension"></a>Azure IoT Tools 拡張機能を構成する
 

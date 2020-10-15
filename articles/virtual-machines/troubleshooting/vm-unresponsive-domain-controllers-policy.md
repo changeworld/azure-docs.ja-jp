@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: v-miegge
-ms.openlocfilehash: 53e1daca47a2917a19cbc30db5348e4fcc06b325
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 4f181a6dee7ed182150bd0cad2b51690b6c77d7a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90038930"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91963127"
 ---
 # <a name="vm-is-unresponsive-while-applying-default-domain-controllers-policy"></a>既定のドメイン コントローラーのポリシーを適用中に VM が応答しない
 
@@ -28,7 +28,7 @@ ms.locfileid: "90038930"
 
 ## <a name="symptom"></a>症状
 
-[ブート診断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)を使用して VM のスクリーンショットを表示すると、そのスクリーンショットには、起動中に **[既定のドメイン コントローラー ポリシー]** というメッセージで OS が無応答になっていることが示されています。
+[ブート診断](./boot-diagnostics.md)を使用して VM のスクリーンショットを表示すると、そのスクリーンショットには、起動中に **[既定のドメイン コントローラー ポリシー]** というメッセージで OS が無応答になっていることが示されています。
 
   ![図 1 は [既定のドメイン コントローラー ポリシー] というメッセージで OS が停止していることを示している](./media/vm-unresponsive-domain-controllers-policy/1-default-domain-controllers-policy.png)
 
@@ -46,7 +46,7 @@ ms.locfileid: "90038930"
 
 ### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>新しい修復 VM に OS ディスクを接続する
 
-1. [仮想マシンの修復コマンド](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands)に関する説明の手順 1 から 3 に従い、修復 VM を準備します。
+1. [仮想マシンの修復コマンド](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md)に関する説明の手順 1 から 3 に従い、修復 VM を準備します。
 
 1. リモート デスクトップ接続を使用し、修復 VM に接続します。
 
@@ -56,4 +56,4 @@ ms.locfileid: "90038930"
 
 1. memory.dmp ファイルを検索し、メモリ ダンプ ファイルと共に[サポート チケットを送信](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)します。
 
-1. memory.dmp ファイルが見つからない場合は、代わりに[シリアル コンソールでマスク不可能割り込み (NMI) 呼び出し](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows#use-the-serial-console-for-nmi-calls)を使用することをお勧めします。 [NMI 呼び出しを使用してクラッシュ ダンプ ファイルを生成する](https://docs.microsoft.com/windows/client-management/generate-kernel-or-complete-crash-dump)ためのガイドに従います。
+1. memory.dmp ファイルが見つからない場合は、代わりに[シリアル コンソールでマスク不可能割り込み (NMI) 呼び出し](./serial-console-windows.md#use-the-serial-console-for-nmi-calls)を使用することをお勧めします。 [NMI 呼び出しを使用してクラッシュ ダンプ ファイルを生成する](/windows/client-management/generate-kernel-or-complete-crash-dump)ためのガイドに従います。

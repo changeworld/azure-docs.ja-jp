@@ -16,12 +16,12 @@ ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: johndeu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5665357474b392a413d2b70f9c321b5da3e0bfe5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 06bd9f159281a1353ca9474bf0876e99b6d1940a
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89256448"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018959"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Azure Media Indexer によるメディア ファイルのインデックス作成
 
@@ -48,7 +48,7 @@ Azure Media Indexer を使用すると、メディア ファイルのコンテ�
 
 マニフェスト ファイルを使用して一度に複数のメディア ファイルを処理できます。
 
-詳細については、「 [Azure Media Indexer 用のタスク プリセット](./media-services-analytics-overview.md)」をご覧ください。
+詳細については、「 [Azure Media Indexer 用のタスク プリセット](./legacy-components.md)」をご覧ください。
 
 ## <a name="index-an-asset"></a>資産のインデックス作成
 次のメソッドは、資産としてメディア ファイルをアップロードし、ジョブを作成して資産のインデックスを作成します。
@@ -161,7 +161,7 @@ Azure Media Indexer を使用すると、メディア ファイルのコンテ�
 ## <a name="index-multiple-files"></a>複数のファイルのインデックス
 次のメソッドは、資産として複数のメディア ファイルをアップロードし、ジョブを作成してバッチ内のすべてのファイルのインデックスを作成します。
 
-".lst" 拡張子のマニフェスト ファイルが作成され、資産にアップロードします。 マニフェスト ファイルには、すべての資産ファイルの一覧が含まれています。 詳細については、「 [Azure Media Indexer 用のタスク プリセット](./media-services-analytics-overview.md)」をご覧ください。
+".lst" 拡張子のマニフェスト ファイルが作成され、資産にアップロードします。 マニフェスト ファイルには、すべての資産ファイルの一覧が含まれています。 詳細については、「 [Azure Media Indexer 用のタスク プリセット](./legacy-components.md)」をご覧ください。
 
 ```csharp
     static bool RunBatchIndexingJob(string[] inputMediaFiles, string outputFolder)
@@ -278,6 +278,6 @@ Azure Media Indexer からの処理は、オプションのタスク プリセ�
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>関連リンク
-[Azure Media Services Analytics の概要](media-services-analytics-overview.md)
+[Azure Media Services Analytics の概要](./legacy-components.md)
 
-[Azure Media Indexer 2 プレビューによるメディア ファイルのインデックス作成](media-services-process-content-with-indexer2.md)
+[Azure Media Indexer 2 プレビューによるメディア ファイルのインデックス作成](./legacy-components.md)

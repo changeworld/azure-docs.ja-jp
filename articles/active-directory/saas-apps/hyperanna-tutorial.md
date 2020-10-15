@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/13/2019
 ms.author: jeedes
 ms.openlocfilehash: e6c7b112e8ac60833b22f07590e357e096ba859c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88525311"
 ---
 # <a name="tutorial-integrate-hyperanna-with-azure-active-directory"></a>チュートリアル:HyperAnna を Azure Active Directory と統合する

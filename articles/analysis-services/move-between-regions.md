@@ -8,12 +8,12 @@ ms.date: 06/09/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 4844f3e34a6b49559affbb4d4ed7bc5b5e38e538
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1f7ecf960ae94fae4d829e73daf051b9062e478d
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050371"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018196"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>Analysis Services を別のリージョンに移動する
 
@@ -88,7 +88,7 @@ Azure portal を使用してテンプレートをエクスポートするには:
 
 PowerShell を使用してテンプレートをエクスポートするには:
 
-1. [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) コマンドで Azure サブスクリプションにサインインし、画面上の指示に従います。
+1. [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) コマンドで Azure サブスクリプションにサインインし、画面上の指示に従います。
 
    ```azurepowershell-interactive
    Connect-AzAccount
@@ -177,7 +177,7 @@ PowerShell を使用して Shared Access Signature を取得するには、「[P
 
 #### <a name="regions"></a>リージョン
 
-Azure リージョンを取得するには、[Azure の場所](https://azure.microsoft.com/global-infrastructure/locations/)に関するページをご覧ください。 PowerShell を使用してリージョンを取得するには、[Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) コマンドを実行します。
+Azure リージョンを取得するには、[Azure の場所](https://azure.microsoft.com/global-infrastructure/locations/)に関するページをご覧ください。 PowerShell を使用してリージョンを取得するには、[Get-AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) コマンドを実行します。
 
 ```azurepowershell-interactive
    Get-AzLocation | format-table 
@@ -278,7 +278,7 @@ PowerShell を使用してサーバー URI を取得するには、次のコマ�
 
 省略可能:[ALM Toolkit](http://alm-toolkit.com/) は、Power BI データセット "*および*" Analysis Services 表形式モデル データベースの比較と管理を行うための "*オープン ソース*" ツールです。 このツールキットを使用して、ソース サーバーとターゲット サーバーの両方のデータベースに接続し、比較します。 データベースの移行が成功した場合、モデル オブジェクトの定義が同じになります。 
 
-:::image type="content" source="media/move-between-regions/alm-toolkit.png" alt-text="ALM Toolkit":::
+:::image type="content" source="media/move-between-regions/alm-toolkit.png" alt-text="SAS の取得":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -301,4 +301,4 @@ Remove-AzAnalysisServicesServer -Name "myserver" -ResourceGroupName "myResourceG
 ---
 
 > [!NOTE]
-> リージョンの移動が完了したら、新しいターゲット サーバーでは、バックアップには、ソース サーバー リージョンのストレージ コンテナーではなく、同じリージョンのストレージ コンテナーを使用することをお勧めします。 
+> リージョンの移動が完了したら、新しいターゲット サーバーでは、バックアップには、ソース サーバー リージョンのストレージ コンテナーではなく、同じリージョンのストレージ コンテナーを使用することをお勧めします。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: bc17d27837d5b96f06b5172fb019db873418db94
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 8c876e27165eba30b17874eca600ba81be2e9354
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922950"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019438"
 ---
 # <a name="manage-server-administrators"></a>サーバー管理者の管理
 
@@ -40,13 +40,13 @@ ms.locfileid: "87922950"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-新しいサーバーの作成時に Administrator パラメーターを指定するには、[New-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver) コマンドレットを使用します。 <br>
-既存のサーバーに対する Administrator パラメーターを変更するには、[Set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver) コマンドレットを使用します。
+新しいサーバーの作成時に Administrator パラメーターを指定するには、[New-AzAnalysisServicesServer](/powershell/module/az.analysisservices/new-azanalysisservicesserver) コマンドレットを使用します。 <br>
+既存のサーバーに対する Administrator パラメーターを変更するには、[Set-AzAnalysisServicesServer](/powershell/module/az.analysisservices/set-azanalysisservicesserver) コマンドレットを使用します。
 
 ## <a name="rest-api"></a>REST API
 
-新しいサーバーの作成時に asAdministrator プロパティを指定して、[Create](https://docs.microsoft.com/rest/api/analysisservices/servers/create) を使用します。 <br>
-既存のサーバーの変更時に asAdministrator プロパティを指定して、[Update](https://docs.microsoft.com/rest/api/analysisservices/servers/update) を使用します。 <br>
+新しいサーバーの作成時に asAdministrator プロパティを指定して、[Create](/rest/api/analysisservices/servers/create) を使用します。 <br>
+既存のサーバーの変更時に asAdministrator プロパティを指定して、[Update](/rest/api/analysisservices/servers/update) を使用します。 <br>
 
 
 
@@ -54,4 +54,4 @@ ms.locfileid: "87922950"
 
 [認証とユーザーのアクセス許可](analysis-services-manage-users.md)  
 [データベース ロールとユーザーの管理](analysis-services-database-users.md)  
-[Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md)  
+[Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md)

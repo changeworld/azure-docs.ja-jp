@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 952bd6dddf9f276ed1a4a18f03799147f1902198
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90930815"
 ---
 # <a name="restart-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーを再起動する
@@ -43,7 +43,7 @@ ms.locfileid: "90930815"
 
 4.  続行する場合は、 **[はい]** をクリックします。
    
-     :::image type="content" source="./media/how-to-restart-server-portal/restart-pop-up.png" alt-text="再起動の確認":::
+     :::image type="content" source="./media/how-to-restart-server-portal/restart-pop-up.png" alt-text="再起動の選択":::
  
 6.  再起動操作が開始されたことを示す通知が表示されます。
 
