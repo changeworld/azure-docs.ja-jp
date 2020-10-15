@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 67547db53d2b9ce05838335ffcb5d789b77ecbbe
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77560222"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-heavy-preview"></a>チュートリアル:データ コピー サービスを使用してデータを Azure Data Box Heavy にコピーする (プレビュー)
@@ -57,7 +57,7 @@ NAS デバイスに接続したら、次の手順はデータのコピーです�
     
     |フィールド                          |Value    |
     |-------------------------------|---------|
-    |**ジョブ名**                       |ジョブの一意の名前を 230 文字未満で指定します。 \<、\>、\|、\?、\*、\\、\:、\/、\\\.の各文字は、ジョブの名前には使用できません。         |
+    |**ジョブ名**                       |ジョブの一意の名前を 230 文字未満で指定します。 \<, \>、\|、\?、\*、\\\:、\/、および \\ の各文字は、ジョブの名前には使用できません\.         |
     |**ソースの場所**                |データ ソースの SMB パスを `\\<ServerIPAddress>\<ShareName>` 形式または `\\<ServerName>\<ShareName>` 形式で指定します。        |
     |**ユーザー名**                       |データ ソースにアクセスするための `\\<DomainName><UserName>` 形式のユーザー名。 ローカルの管理者が接続する場合は、明示的なセキュリティ アクセス許可が必要です。 フォルダーを右クリックし、 **[プロパティ]** を選択して、 **[セキュリティ]** を選択します。 これで、 **[セキュリティ]** タブでローカル管理者が追加されます。       |
     |**パスワード**                       |データ ソースにアクセスするためのパスワード。           |

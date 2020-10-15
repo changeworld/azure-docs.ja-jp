@@ -9,10 +9,10 @@ ms.devlang: php
 ms.date: 9/21/2020
 ms.custom: mvc
 ms.openlocfilehash: 1bad9a7da6f0604f910ce1095b734043be8cf3c3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90929622"
 ---
 # <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-preview-app-in-azure-app-service"></a>チュートリアル:Azure App Service で PHP (Laravel) と MySQL フレキシブル サーバー (プレビュー) のアプリを構築する
@@ -134,7 +134,7 @@ php artisan serve
 
 ブラウザーで `http://localhost:8000` にアクセスします。 ページで、いくつかのタスクを追加します。
 
-:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="MySQL に正常に接続されている PHP":::
+:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="フレキシブル サーバーを使用した Azure での PHP Web アプリ":::
 
 PHP を停止するには、ターミナルで `Ctrl + C` キーを押します。
 
@@ -257,7 +257,7 @@ php artisan serve --env=production
 
 ページで、いくつかのタスクを追加します。
 
-:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="PHP が Azure Database for MySQL に正常にデータベースに接続されている":::
+:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="フレキシブル サーバーを使用した Azure での PHP Web アプリ":::
 
 PHP を停止するには、ターミナルで `Ctrl + C` キーを押します。
 
@@ -414,7 +414,7 @@ remote: Running deployment command...
 
 `http://<app-name>.azurewebsites.net` を参照し、一覧にいくつかのタスクを追加します。
 
-:::image type="content" source="media/tutorial-php-database-app/php-mysql-in-azure.png" alt-text="Azure での PHP Web アプリ":::
+:::image type="content" source="media/tutorial-php-database-app/php-mysql-in-azure.png" alt-text="フレキシブル サーバーを使用した Azure での PHP Web アプリ":::
 
 データ主導型の PHP アプリが Azure App Service で実行されています。
 
@@ -534,7 +534,7 @@ php artisan serve
 
 タスクの状態の変更を確認するには、ブラウザーで `http://localhost:8000` に移動し、チェック ボックスをオンにします。
 
-:::image type="content" source="media/tutorial-php-database-app/complete-checkbox.png" alt-text="タスクに追加されたチェック ボックス":::
+:::image type="content" source="media/tutorial-php-database-app/complete-checkbox.png" alt-text="フレキシブル サーバーを使用した Azure での PHP Web アプリ":::
 
 PHP を停止するには、ターミナルで `Ctrl + C` キーを押します。
 
@@ -556,7 +556,7 @@ git push azure master
 
 `git push` が完了したら、Azure アプリに移動し、新機能を試します。
 
-:::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="Azure に発行されたモデルとデータベースの変更":::
+:::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="フレキシブル サーバーを使用した Azure での PHP Web アプリ":::
 
 タスクを追加した場合は、そのタスクがデータベースに保持されます。 データ スキーマに対する更新では、既存のデータはそのまま残ります。
 
