@@ -4,14 +4,14 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: jroth
-ms.openlocfilehash: 1811590dcf9077a503f89a900f661c52aa442c96
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 557e20dcafabb2db0bc66c9dfda4977aca50de50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87425183"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91745413"
 ---
-| リソース | Free | 共有 | Basic | Standard | Premium (v2) | Isolated </th> |
+| リソース | Free | 共有 | Basic | Standard | Premium (v3) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | [Azure App Service プラン](../articles/app-service/overview-hosting-plans.md)あたりの [Web、モバイル、または API アプリ数](https://azure.microsoft.com/services/app-service/)<sup>1</sup> |10 |100 |無制限<sup>2</sup> |無制限<sup>2</sup> |無制限<sup>2</sup> |無制限<sup>2</sup>|
 | [App Service プラン](../articles/app-service/overview-hosting-plans.md) |リージョンあたり 10 件 |リソース グループあたり 10 |リソース グループあたり 100 |リソース グループあたり 100 |リソース グループあたり 100 |リソース グループあたり 100|
@@ -52,7 +52,7 @@ ms.locfileid: "87425183"
 <sup>5</sup>ストレージの制限は、同じ App Service プランのすべてのアプリにまたがる合計コンテンツ サイズです。 1 つのリソース グループとリージョンを含めたすべての App Service プランのアプリのコンテンツサイズの合計は、500 GB を超えることはできません。  
 <sup>6</sup>これらのリソースは、専用インスタンス上の物理リソース (インスタンスのサイズとインスタンス数) によって制限されます。  
 <sup>7</sup>Basic レベルでアプリケーションを 2 つのインスタンスにスケーリングする場合、2 つのインスタンスのそれぞれに 350 本のコンカレント接続があります。 Standard レベル以上では、Web ソケットに理論的な制限はありませんが、他の要因によって Web ソケットの数が制限されることがあります。 たとえば、許可される最大同時要求数 (`maxConcurrentRequestsPerCpu` で定義される) は次のとおりです。小規模 VM あたり 7,500、中規模 VM あたり 15,000 (7,500 x 2 コア)、および大規模 VM あたり 75,000 (18,750 x 4 コア)。  
-<sup>8</sup>最大 IP 接続数はインスタンス単位の数であり、インスタンスのサイズによって異なります。B1/S1/P1V2 インスタンスあたり 1,920、B2/S2/P2V2 インスタンスあたり 3,968、B3/S3/P3V2 インスタンスあたり 8,064。  
+<sup>8</sup>最大 IP 接続数はインスタンス単位の数であり、インスタンスのサイズによって異なります。B1/S1/P1V3 インスタンスあたり 1,920、B2/S2/P2V3 インスタンスあたり 3,968、B3/S3/P3V3 インスタンスあたり 8,064。  
 <sup>9</sup> サブスクリプションあたりの App Service 証明書のクォータ制限は、サポート要求によって最大上限 200 まで増やすことができます。  
 <sup>10</sup>App Service Isolated SKU では、Azure Load Balancer を使用した内部負荷分散 (ILB) が可能です。そのため、インターネットからパブリック接続が発生しません。 そのため、ILB 分離 App Service の一部の機能は、ILB ネットワーク エンドポイントに直接アクセスできるマシンから使用する必要があります。  
 <sup>11</sup> カスタムの実行可能ファイルやスクリプトを、オンデマンドやスケジュールで、または App Service インスタンス内のバックグラウンド タスクとして継続的に実行します。 Web ジョブを継続的に実行するには、常時接続が必要です。 App Service インスタンスで実行できる Web ジョブの数に定義済みの制限はありません。 実際にはアプリケーション コードの処理に依存する限界があります。

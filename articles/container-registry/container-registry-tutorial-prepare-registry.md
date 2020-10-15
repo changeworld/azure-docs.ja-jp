@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 06/30/2020
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 780a16d691e0d8afe62cd06f37a37fc3f6445ea6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86259517"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>チュートリアル:geo レプリケーション Azure Container Registry の準備
@@ -57,7 +57,7 @@ Azure Cloud Shell には、このチュートリアルの各ステップを完�
 
 **[確認および作成]** 、 **[作成]** の順に選択して、レジストリ インスタンスを作成します。
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-02.png" alt-text="Azure portal でコンテナー レジストリを構成する":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-02.png" alt-text="Azure portal でコンテナー レジストリを作成する":::
 
 このチュートリアルの残りの部分では、選択したコンテナー **レジストリ名**のプレースホルダーとして `<acrName>` を使用します。
 
@@ -70,19 +70,19 @@ Premium レジストリを使用できるようになったので、geo レプ�
 
 Azure portal で新しいコンテナー レジストリに移動し、 **[サービス]** の **[レプリケーション]** を選択します。
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-03.png" alt-text="Azure portal のコンテナー レジストリ UI の [レプリケーション]":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-03.png" alt-text="Azure portal でコンテナー レジストリを作成する":::
 
 マップに、geo レプリケーションで使用できる Azure リージョンを表す緑色の六角形が表示されます。
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-map-01.png" alt-text="Azure portal のリージョン マップ":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-map-01.png" alt-text="Azure portal でコンテナー レジストリを作成する":::
 
 その緑色の六角形を選択して、米国東部リージョンにレジストリをレプリケートし、 **[レプリケーションの作成]** で **[作成]** を選択します。
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-04.png" alt-text="Azure portal の [レプリケーションの作成] UI":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-04.png" alt-text="Azure portal でコンテナー レジストリを作成する":::
 
 レプリケーションが完了すると、ポータルで、両方のリージョンに対して*準備完了*が示されます。 **[更新]** ボタンを使用して、レプリケーションの状態を更新します。レプリカが作成され、同期されるまで、1 分ほどかかる可能性があります。
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-05.png" alt-text="Azure portal の [レプリケーションの状態] UI":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-05.png" alt-text="Azure portal でコンテナー レジストリを作成する":::
 
 
 ## <a name="enable-admin-account"></a>管理者アカウントを有効にする
@@ -91,7 +91,7 @@ Azure portal で新しいコンテナー レジストリに移動し、 **[サ�
 
 Azure portal で新しいコンテナー レジストリに移動し、 **[設定]** の **[アクセス キー]** を選択します。 **[管理者ユーザー]** の **[有効にする]** を選択します。
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-06.png" alt-text="Azure portal で管理者アカウントを有効にする":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-06.png" alt-text="Azure portal でコンテナー レジストリを作成する":::
 
 
 ## <a name="container-registry-login"></a>Container Registry のログイン
@@ -110,7 +110,7 @@ az acr login --name <acrName>
 
 このチュートリアルのサンプルには、[ASP.NET Core][aspnet-core] で構築した小さな Web アプリケーションが含まれます。 アプリケーションは、Azure Container Registry によってイメージがデプロイされたリージョンを表示する HTML ページを提供します。
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-app-01.png" alt-text="ブラウザーに表示されたチュートリアル アプリ":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-app-01.png" alt-text="Azure portal でコンテナー レジストリを作成する":::
 
 Git を使用して、サンプルをローカル ディレクトリにダウンロードし、`cd` でそのディレクトリに変更します。
 

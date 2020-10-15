@@ -7,16 +7,16 @@ ms.date: 09/23/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: edcfcda8de1fade605c409537155231d90d5849e
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: d61ca10612a0935f8483745d164835d7498280c0
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91610077"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92042815"
 ---
 # <a name="implement-iot-plug-and-play-on-constrained-devices"></a>制約のあるデバイスに IoT プラグ アンド プレイを実装する
 
-*制約のあるデバイス*向けの開発を行っている場合、[埋め込み C IoT 用の Azure SDK クライアント ライブラリ](https://aka.ms/embeddedcsdk)または [Azure RTOS](https://docs.microsoft.com/azure/rtos/overview-rtos) を使用して、IoT プラグ アンド プレイを使用できます。 この記事には、これらの制約のあるシナリオに向けたリンクとリソースが含まれています。
+*制約のあるデバイス*向けの開発を行っている場合、[埋め込み C IoT 用の Azure SDK クライアント ライブラリ](https://aka.ms/embeddedcsdk)または [Azure RTOS](/azure/rtos/overview-rtos) を使用して、IoT プラグ アンド プレイを使用できます。 この記事には、これらの制約のあるシナリオに向けたリンクとリソースが含まれています。
 
 ## <a name="use-the-sdk-for-embedded-c"></a>埋め込み C 用の Azure SDK を使用する
 
@@ -39,7 +39,7 @@ ms.locfileid: "91610077"
 
 ## <a name="using-azure-rtos"></a>Azure RTOS の使用
 
-Azure RTOS には、Azure IoT クラウド サービスにネイティブ接続を追加する軽量なレイヤーが含まれています。 このレイヤーでは、Azure RTOS の高度な機能を使用しながら、制約のあるデバイスを Azure IoT に接続するための簡単なメカニズムが提供されます。 詳細については、「[Microsoft Azure RTOS とは](https://docs.microsoft.com/azure/rtos/overview-rtos)」を参照してください。
+Azure RTOS には、Azure IoT クラウド サービスにネイティブ接続を追加する軽量なレイヤーが含まれています。 このレイヤーでは、Azure RTOS の高度な機能を使用しながら、制約のあるデバイスを Azure IoT に接続するための簡単なメカニズムが提供されます。 詳細については、「[Microsoft Azure RTOS とは](/azure/rtos/overview-rtos)」を参照してください。
 
 ### <a name="toolchains"></a>ツールチェーン
 

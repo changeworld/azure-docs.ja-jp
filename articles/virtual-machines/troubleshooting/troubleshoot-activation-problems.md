@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 3179324dd71ebf3bb44cb68f0fd84486bb88e2ce
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 987d4c7188c2bdc2ba6264805e33b79e7d2851d6
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91441047"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91966289"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Azure Windows 仮想マシンのライセンス認証に関する問題のトラブルシューティング
 
@@ -61,7 +61,7 @@ Azure Windows VM をライセンス認証しようとすると、次の例のよ
     cscript c:\windows\system32\slmgr.vbs /dlv
     ```
 
-2. **slmgr.vbs /dlv** で RETAIL チャネルが表示される場合は、次のコマンドを実行して、使用しているバージョンの Windows Server の [KMS クライアント セットアップ キー](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys)を設定し、強制的にライセンス認証を再試行します。 
+2. **slmgr.vbs /dlv** で RETAIL チャネルが表示される場合は、次のコマンドを実行して、使用しているバージョンの Windows Server の [KMS クライアント セットアップ キー](/windows-server/get-started/kmsclientkeys)を設定し、強制的にライセンス認証を再試行します。 
 
     ```
     cscript c:\windows\system32\slmgr.vbs /ipk <KMS client setup key>

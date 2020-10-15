@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 03/09/2020
 ms.topic: article
 ms.openlocfilehash: e3acfc15b0c12822e48009bef4aabadac701fb2d
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80678857"
 ---
 # <a name="the-arrinspector-inspection-tool"></a>ArrInspector 検査ツール
@@ -20,7 +20,7 @@ ArrInspector は、実行中の Azure Remote Rendering セッションを検査�
 
 ## <a name="connecting-to-the-arrinspector"></a>ArrInspector に接続する
 
-ARR サーバーのホスト名 (末尾が `mixedreality.azure.com`) を取得したら、[ConnectToArrInspectorAsync](../../how-tos/frontend-apis.md#connect-to-arr-inspector) を使用して接続します。 この関数により、アプリケーションが実行されているデバイス上に `StartArrInspector.html` が作成されます。 ArrInspector を起動するには、PC のブラウザー (Microsoft Edge、Firefox、または Chrome) でそのファイルを開きます。 そのファイルは 24 時間だけ有効です。
+ARR サーバーのホスト名 (末尾が `mixedreality.azure.com`) を取得したら、[ConnectToArrInspectorAsync](../../how-tos/frontend-apis.md#connect-to-arr-inspector) を使用して接続します。 この関数により、アプリケーションが実行されているデバイス上に `StartArrInspector.html` が作成されます。 ArrInspector を起動するには、PC のブラウザー (Edge、Firefox、または Chrome) でそのファイルを開きます。 そのファイルは 24 時間だけ有効です。
 
 `ConnectToArrInspectorAsync` を呼び出すアプリが PC で既に実行されている場合:
 

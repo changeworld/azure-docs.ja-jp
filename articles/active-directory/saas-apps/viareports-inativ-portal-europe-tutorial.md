@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: jeedes
 ms.openlocfilehash: c4c1ffa4d8e9b175ced40671f1ac3d092b51c8c3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88532017"
 ---
 # <a name="tutorial-integrate-viareport-europe-with-azure-active-directory"></a>チュートリアル:Viareport (ヨーロッパ) を Azure Active Directory と統合する

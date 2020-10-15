@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/26/2020
 ms.author: dapine
 ms.openlocfilehash: 85dfedc75807e273240066460a58b79380050e58
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80656488"
 ---
 | プログラミング言語 | プラットフォーム                                                                           | SDK リファレンス              |
