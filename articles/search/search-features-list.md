@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 21f5a9f58acbaf3d0444d7da10ad489ade99cd76
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 286d826f61a6c99396ef04af0a0855567bc4d1e4
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604191"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951385"
 ---
 # <a name="features-of-azure-cognitive-search"></a>Azure Cognitive Search の機能
 
@@ -64,11 +64,11 @@ Azure Cognitive Search は、フルテキスト検索エンジン、検索イン
 
 | カテゴリ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | フィーチャー |
 |-------------------|----------|
-| REST | [**サービス REST API**](https://docs.microsoft.com/rest/api/searchservice/) は、データ プレーン操作で使用します (インデックス作成、クエリ、および AI エンリッチメントに関連するすべての操作を含む)。 また、このクライアント ライブラリを使用して、システム情報と統計を取得することもできます。 <br/><br/>[**管理 REST API**](https://docs.microsoft.com/rest/api/searchmanagement/) は、Azure Resource Manager によるサービスの作成とクリーンアップで使用します。 また、この API を使用して、キーを管理したり、サービスをプロビジョニングしたりすることもできます。|
-| Azure SDK for .NET | [**Azure.Search.Documents**](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme) は、データ プレーン操作で使用します (インデックス作成、クエリ、および AI エンリッチメントに関連するすべての操作を含む)。 また、このクライアント ライブラリを使用して、システム情報と統計を取得することもできます。 <br/><br/>[**Microsoft.Azure.Management.Search**](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search) は、Azure Resource Manager によるサービスの作成とクリーンアップで使用します。 また、この API を使用して、キーを管理したり、サービスをプロビジョニングしたりすることもできます。|
-| Azure SDK for Java | [**com.azure.search.documents**](https://docs.microsoft.com/java/api/com.azure.search.documents) は、データ プレーン操作で使用します (インデックス作成、クエリ、および AI エンリッチメントに関連するすべての操作を含む)。 また、このクライアント ライブラリを使用して、システム情報と統計を取得することもできます。 <br/><br/>[**com.microsoft.azure.management.search**](https://docs.microsoft.com/java/api/overview/azure/search/management) は、Azure Resource Manager によるサービスの作成とクリーンアップで使用します。 また、この API を使用して、キーを管理したり、サービスをプロビジョニングしたりすることもできます。|
-| Azure SDK for Python | [**azure-search-documents**](https://docs.microsoft.com/python/api/overview/azure/search-documents-readme) は、データ プレーン操作で使用します (インデックス作成、クエリ、および AI エンリッチメントに関連するすべての操作を含む)。 また、このクライアント ライブラリを使用して、システム情報と統計を取得することもできます。 <br/><br/>[**azure-mgmt-search**](https://docs.microsoft.com/python/api/overview/azure/search/management) は、Azure Resource Manager によるサービスの作成とクリーンアップで使用します。 また、この API を使用して、キーを管理したり、サービスをプロビジョニングしたりすることもできます。 |
-| Azure SDK for JavaScript/TypeScript | [**azure/search-documents**](https://docs.microsoft.com/javascript/api/@azure/search-documents/) は、データ プレーン操作で使用します (インデックス作成、クエリ、および AI エンリッチメントに関連するすべての操作を含む)。 また、このクライアント ライブラリを使用して、システム情報と統計を取得することもできます。 <br/><br/>[**azure/arm-search**](https://docs.microsoft.com/javascript/api/@azure/arm-search/) は、Azure Resource Manager によるサービスの作成とクリーンアップで使用します。 また、この API を使用して、キーを管理したり、サービスをプロビジョニングしたりすることもできます。 |
+| REST | [**サービス REST API**](/rest/api/searchservice/) は、データ プレーン操作で使用します (インデックス作成、クエリ、および AI エンリッチメントに関連するすべての操作を含む)。 また、このクライアント ライブラリを使用して、システム情報と統計を取得することもできます。 <br/><br/>[**管理 REST API**](/rest/api/searchmanagement/) は、Azure Resource Manager によるサービスの作成とクリーンアップで使用します。 また、この API を使用して、キーを管理したり、サービスをプロビジョニングしたりすることもできます。|
+| Azure SDK for .NET | [**Azure.Search.Documents**](/dotnet/api/overview/azure/search.documents-readme) は、データ プレーン操作で使用します (インデックス作成、クエリ、および AI エンリッチメントに関連するすべての操作を含む)。 また、このクライアント ライブラリを使用して、システム情報と統計を取得することもできます。 <br/><br/>[**Microsoft.Azure.Management.Search**](/dotnet/api/microsoft.azure.management.search) は、Azure Resource Manager によるサービスの作成とクリーンアップで使用します。 また、この API を使用して、キーを管理したり、サービスをプロビジョニングしたりすることもできます。|
+| Azure SDK for Java | [**com.azure.search.documents**](/java/api/com.azure.search.documents) は、データ プレーン操作で使用します (インデックス作成、クエリ、および AI エンリッチメントに関連するすべての操作を含む)。 また、このクライアント ライブラリを使用して、システム情報と統計を取得することもできます。 <br/><br/>[**com.microsoft.azure.management.search**](/java/api/overview/azure/search/management) は、Azure Resource Manager によるサービスの作成とクリーンアップで使用します。 また、この API を使用して、キーを管理したり、サービスをプロビジョニングしたりすることもできます。|
+| Azure SDK for Python | [**azure-search-documents**](/python/api/overview/azure/search-documents-readme) は、データ プレーン操作で使用します (インデックス作成、クエリ、および AI エンリッチメントに関連するすべての操作を含む)。 また、このクライアント ライブラリを使用して、システム情報と統計を取得することもできます。 <br/><br/>[**azure-mgmt-search**](/python/api/overview/azure/search/management) は、Azure Resource Manager によるサービスの作成とクリーンアップで使用します。 また、この API を使用して、キーを管理したり、サービスをプロビジョニングしたりすることもできます。 |
+| Azure SDK for JavaScript/TypeScript | [**azure/search-documents**](/javascript/api/@azure/search-documents/) は、データ プレーン操作で使用します (インデックス作成、クエリ、および AI エンリッチメントに関連するすべての操作を含む)。 また、このクライアント ライブラリを使用して、システム情報と統計を取得することもできます。 <br/><br/>[**azure/arm-search**](/javascript/api/@azure/arm-search/) は、Azure Resource Manager によるサービスの作成とクリーンアップで使用します。 また、この API を使用して、キーを管理したり、サービスをプロビジョニングしたりすることもできます。 |
 
 ## <a name="see-also"></a>関連項目
 

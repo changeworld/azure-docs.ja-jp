@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.openlocfilehash: fb795a9d7100019b2b1820c592f87025b77f5878
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86045860"
 ---
 # <a name="troubleshoot-apache-oozie-in-azure-hdinsight"></a>Azure HDInsight での Apache Oozie のトラブルシューティング
@@ -40,7 +40,7 @@ JA009: Cannot initialize Cluster. Please check your configuration for map
 
 **job.xml** ファイルで使われている Azure Blob Storage アドレスに、ストレージ コンテナー名またはストレージ アカウント名が含まれていません。 Blob Storage アドレスは、`wasbs://containername@storageaccountname.blob.core.windows.net` という形式にする必要があります。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 ジョブが使う Blob Storage アドレスを変更します。
 
@@ -60,7 +60,7 @@ JA002: User: oozie is not allowed to impersonate <USER>
 
 現在のアクセス許可設定で、Oozie が指定されたユーザー アカウントを偽装することを許可していません。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 Oozie では、 **`users`** グループ内のユーザーを偽装できます。 `groups USERNAME` を使用して、ユーザー アカウントがメンバーとして属するグループを確認します。 ユーザーが **`users`** グループのメンバーでない場合は、次のコマンドを使用して、ユーザーをグループに追加します。
 
@@ -87,7 +87,7 @@ Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], e
 
 Sqoop が、データベースにアクセスするために必要なデータベース ドライバーを読み込むことができません。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 Oozie ジョブから Sqoop を使うときは、ジョブが使う他のリソース (workflow.xml など) とともにデータベース ドライバーを含める必要があります。 また、workflow.xml の `<sqoop>...</sqoop>` セクションから、データベース ドライバーが格納されたアーカイブを参照します。
 

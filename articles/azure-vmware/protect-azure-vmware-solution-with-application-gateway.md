@@ -3,12 +3,12 @@ title: Azure Application Gateway を使用して Azure VMware Solution 上の We
 description: Azure VMware Solution で実行されている Web アプリを安全に公開するために Azure Application Gateway を構成します。
 ms.topic: how-to
 ms.date: 07/31/2020
-ms.openlocfilehash: ad7cd36d77da41d75ea9dcc18a51d0ffc5540d2a
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: b63b7348419500504cb45917d741cc17e2b8a622
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91579270"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951453"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>Azure Application Gateway を使用して Azure VMware Solution 上の Web アプリを保護する
 
@@ -146,4 +146,4 @@ Azure Application Gateway を使用して、URL パスベースのルーティ�
 
 ## <a name="next-steps"></a>次の手順
 
-他の構成例については、「[Azure Application Gateway のドキュメント](https://docs.microsoft.com/azure/application-gateway/)」を参照してください。
+他の構成例については、「[Azure Application Gateway のドキュメント](../application-gateway/index.yml)」を参照してください。

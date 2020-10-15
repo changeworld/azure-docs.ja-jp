@@ -4,10 +4,10 @@ description: Web アプリによって送信された未加工のテレメトリ
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.openlocfilehash: f88e0fb8fbd7e9605635ede1e8f71b57de84b74e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87324456"
 ---
 # <a name="using-search-in-application-insights"></a>Application Insights の検索の使用
@@ -18,7 +18,7 @@ ms.locfileid: "87324456"
 
 ## <a name="where-do-you-see-search"></a>検索が表示される場所
 
-### <a name="in-the-azure-portal"></a>Azure Portal で次の操作を行います。
+### <a name="in-the-azure-portal"></a>Azure ポータルで次の操作を行います。
 
 [Application Insights] でお使いのアプリケーションの [概要] タブ から診断検索を開くことができます (上部バーの中にあります)。または、左側のメニューから開くことができます。
 

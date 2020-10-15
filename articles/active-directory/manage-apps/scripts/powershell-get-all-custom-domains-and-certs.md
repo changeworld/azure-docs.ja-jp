@@ -12,10 +12,10 @@ ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.openlocfilehash: 3e6f300126da0eeffe9d1c752102ab9ded81ff5b
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88506738"
 ---
 # <a name="get-all-application-proxy-apps-using-custom-domains-and-certificate-information"></a>カスタム ドメインを使用しているすべてのアプリケーション プロキシ アプリと証明書情報を取得する

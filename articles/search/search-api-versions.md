@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 71862bedc009d560adc8131eacc37c0afba25d81
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: fab49c4242afc2e4f2d0595e2aa95f19f3d976f8
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761721"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951581"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Azure Cognitive Search の API のバージョン
 
@@ -41,7 +41,7 @@ SDK 更新プログラムにも同じルールが適用されます。 Azure Cog
 
 この日以降、非推奨の REST API または SDK のバージョンを使用するアプリケーションは動作しなくなり、アップグレードする必要があります。 この種類の変更と同様に、調整に十分な時間をとるため、12 か月前通知を行っています。
 
-引き続き Azure Cognitive Search を使用するには、2020 年 10 月 15 日までに、[REST API](search-api-migration.md) を対象とする既存のコードを、[REST API バージョン 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) またはそれより新しい SDK に移行してください。  最新バージョンへの更新についてご不明な点がある場合は、コードを更新するのに十分な時間があることを確認するため、2020 年 5 月 15 日までに azuresearch_contact@microsoft.com にメールでお問い合わせください。
+引き続き Azure Cognitive Search を使用するには、2020 年 10 月 15 日までに、[REST API](search-api-migration.md) を対象とする既存のコードを、[REST API バージョン 2020-06-30](/rest/api/searchservice/) またはそれより新しい SDK に移行してください。  最新バージョンへの更新についてご不明な点がある場合は、コードを更新するのに十分な時間があることを確認するため、2020 年 5 月 15 日までに azuresearch_contact@microsoft.com にメールでお問い合わせください。
 
 ## <a name="rest-apis"></a>REST API
 
@@ -74,8 +74,8 @@ Azure Cognitive Search サービスのインスタンスでは、最新のバー
 
 | バージョン&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   | Status | 説明 |
 |-------------------------|--------|------------------------------|
-| [管理 2020-08-01](https://docs.microsoft.com/rest/api/searchmanagement/) | Stable | 管理 REST API の最新の安定バージョン リリースです。 プレビュー バージョンに記載されているものを除くすべての送信アクセス リソースに、一般公開されている共有プライベート リンク リソースのサポートが追加されています |
-| [管理 2020-08-01-Preview](https://docs.microsoft.com/rest/api/searchmanagement/index-preview) | プレビュー  | 現在プレビューの段階: Azure Functions と Azure Database for MySQL 用の共有プライベート リンク リソースのサポート。 |
+| [管理 2020-08-01](/rest/api/searchmanagement/) | Stable | 管理 REST API の最新の安定バージョン リリースです。 プレビュー バージョンに記載されているものを除くすべての送信アクセス リソースに、一般公開されている共有プライベート リンク リソースのサポートが追加されています |
+| [管理 2020-08-01-Preview](/rest/api/searchmanagement/index-preview) | プレビュー  | 現在プレビューの段階: Azure Functions と Azure Database for MySQL 用の共有プライベート リンク リソースのサポート。 |
 | 管理 2020-03-13  | Stable | プライベート リンクを使用する[プライベート エンドポイント](service-create-private-endpoint.md)、および[ネットワーク IP 規則](service-configure-firewall.md)が新しいサービスに追加されています。 詳細については、この [Swagger 仕様](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2020-08-01)を参照してください。 |
 | 管理 2019-10-01-Preview | [プレビュー]  | この一覧には、導入されたプレビュー機能はありませんでした。 このプレビューは機能的には 2020-03-13 と同等です。 詳細については、この [Swagger 仕様](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/preview/2019-10-01-preview)を参照してください。 |
 | Management 2015-08-19  | Stable | Management REST API の最初の一般公開バージョン。 サービスのプロビジョニング、スケールアップ、および API キーの管理が可能です。 詳細については、この [Swagger 仕様](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2015-08-19)を参照してください。 |

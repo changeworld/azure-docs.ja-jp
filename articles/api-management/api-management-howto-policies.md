@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
-ms.openlocfilehash: a0786c1ce5d3a693dabe422b65af7177e16c20b9
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 3886f82180728bc6f454b1a49b5551bc4831869e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905518"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070896"
 ---
 # <a name="policies-in-azure-api-management"></a>Azure API Management のポリシー
 
@@ -70,7 +70,7 @@ Azure API Management (APIM) のポリシーは、発行者がその構成を通�
 
 ## <a name="policy-samples"></a>ポリシーのサンプル
 
-コード サンプルの詳細については、[ポリシーのサンプル](policy-samples.md)に関する記事をご覧ください。
+コード サンプルの詳細については、[ポリシーのサンプル](./policy-reference.md)に関する記事をご覧ください。
 
 ## <a name="examples"></a>例
 
@@ -119,7 +119,7 @@ Azure API Management (APIM) のポリシーは、発行者がその構成を通�
 
 + [API を変換する](transform-api.md)
 + ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](./api-management-policies.md)
-+ [ポリシーのサンプル](policy-samples.md)   
++ [ポリシーのサンプル](./policy-reference.md)   
 
 [Policy Reference]: ./api-management-policies.md
 [Product]: api-management-howto-add-products.md

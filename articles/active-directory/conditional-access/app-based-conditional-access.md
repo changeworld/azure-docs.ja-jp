@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a3cdb851ca00300d995bcf2075252a360242197
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 122cc6a2be17cb35e77b638a60fc5fa4f035c0d4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601964"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91266141"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>方法:条件付きアクセスを使用してクラウド アプリへのアクセスに承認されたクライアント アプリを要求する
 
@@ -47,7 +47,7 @@ ms.locfileid: "90601964"
 1. **[割り当て]** で、 **[ユーザーとグループ]** を選択します。
    1. **[Include]\(含める\)** で、 **[すべてのユーザー]** を選択するか、このポリシーを適用する特定の**ユーザーとグループ**を選択します。 
    1. **[Done]** を選択します。
-1. **[クラウド アプリまたは操作]**  >  **[Include]\(含める\)** で、 **[Office 365 (プレビュー)]** を選択します。
+1. **[クラウド アプリまたはアクション]**  >  **[Include]\(含める\)** で、 **[Office 365]** を選択します。
 1. **[条件]** で、 **[デバイス プラットフォーム]** を選択します。
    1. **[構成]** を **[はい]** に設定します。
    1. **Android** と **iOS** を含めます。
