@@ -10,10 +10,10 @@ ms.date: 10/02/2019
 ms.author: robinsh
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 5b9170e0fcf4bba8b928522cdc881f34968d771f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89003866"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>IoT Hub デバイス ID の一括でのインポートおよびエクスポート

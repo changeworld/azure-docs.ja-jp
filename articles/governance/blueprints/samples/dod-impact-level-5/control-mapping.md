@@ -1,24 +1,24 @@
 ---
 title: DoD 影響レベル 5 ブループリント サンプルのコントロール
-description: DoD 影響レベル 5 ブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy にマップされています。
+description: DoD 影響レベル 5 ブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy 定義に対応します。
 ms.date: 09/17/2020
 ms.topic: sample
-ms.openlocfilehash: 6cd92cba69367c611a0e3a3c435e41e973a80d73
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: fc187480f5342f076a7f07f058e8e570a0e7f146
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540542"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91929491"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-5-blueprint-sample"></a>DoD 影響レベル 5 ブループリント サンプルのコントロール マッピング
 
-次の記事では、Azure Blueprints 国防総省影響レベル 5 (DoD IL5) のブループリント サンプルが、DoD 影響レベル 5 のコントロールにどのようにマップされるかについて詳しく説明します。 コントロールの詳細については、「[DoD クラウド コンピューティング セキュリティ要件ガイド (SRG)](https://dl.dod.cyber.mil/wp-content/uploads/cloud/pdf/Cloud_Computing_SRG_v1r3.pdf)」を参照してください。 国防情報システム局 (DISA) は、DoD クラウド コンピューティング セキュリティ要件ガイド (SRG) の開発と保守を担当する米国国防総省 (DoD) の機関です。 SRG は、DoD 情報、システム、およびアプリケーションをホストするクラウド サービス プロバイダー (CSP) と、DoD によるクラウド サービスの使用に関する基本的なセキュリティ要件を定義します。  
+次の記事では、Azure Blueprints 国防総省影響レベル 5 (DoD IL5) のブループリント サンプルが、DoD 影響レベル 5 のコントロールにどのようにマップされるかについて詳しく説明します。 コントロールの詳細については、「[DoD クラウド コンピューティング セキュリティ要件ガイド (SRG)](https://dl.dod.cyber.mil/wp-content/uploads/cloud/pdf/Cloud_Computing_SRG_v1r3.pdf)」を参照してください。
+国防情報システム局 (DISA) は、DoD クラウド コンピューティング セキュリティ要件ガイド (SRG) の開発と保守を担当する米国国防総省 (DoD) の機関です。 SRG は、DoD 情報、システム、およびアプリケーションをホストするクラウド サービス プロバイダー (CSP) と、DoD によるクラウド サービスの使用に関する基本的なセキュリティ要件を定義します。  
 
 以下のマッピングは、**DoD 影響レベル 5** のコントロールに対するものです。 右側のナビゲーションを使用すると、特定のコントロール マッピングに直接ジャンプできます。 マップ コントロールの多くは、[Azure Policy](../../../policy/overview.md) イニシアチブを使用して実装されますす。 イニシアチブの詳細を確認するには、Azure portal で **[ポリシー]** を開き、 **[定義]** ページを選択します。 続いて、次を探して選択します: **[\[Preview\]:DoD Impact Level 5]** 組み込みのポリシー イニシアチブ。
 
 > [!IMPORTANT]
-> 以下の各コントロールは、1 つ以上の [Azure Policy](../../../policy/overview.md) 定義に関連します。 これらのポリシーは、コントロールに対する[コンプライアンスを評価](../../../policy/how-to/get-compliance-data.md)するのに役立つ場合があります。ただし、多くの場合、コントロールと 1 つまたは複数のポリシーとの間に 1:1 または完全な一致はありません。 そのため、Azure Policy での**準拠**は、ポリシー自体のみを指しています。これによって、コントロールのすべての要件に完全に準拠していることが保証されるわけではありません。 また、コンプライアンス標準には、現時点でどの Azure Policy 定義でも対応されていないコントロールが含まれています。 したがって、Azure Policy でのコンプライアンスは、全体のコンプライアンス状態の部分的ビューでしかありません。 このコンプライアンス ブループリント サンプルのコントロールと Azure Policy 定義の間の関連付けは、時間の経過と共に変わる可能性があります。
-> 変更履歴を表示するには、[GitHub のコミット履歴](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/dod-impact-level-5/control-mapping.md)に関するページを参照してください。
+> 以下の各コントロールは、1 つ以上の [Azure Policy](../../../policy/overview.md) 定義に関連します。 これらのポリシーは、コントロールに対する[コンプライアンスの評価](../../../policy/how-to/get-compliance-data.md)に役立つ場合があります。ただし、多くの場合、コントロールと 1 つ以上のポリシーとの間には、一対一での一致、または完全な一致はありません。 そのため、Azure Policy での**準拠**は、ポリシー自体のみを指しています。これによって、コントロールのすべての要件に完全に準拠していることが保証されるわけではありません。 また、コンプライアンス標準には、現時点でどの Azure Policy 定義でも対応されていないコントロールが含まれています。 したがって、Azure Policy でのコンプライアンスは、全体のコンプライアンス状態の部分的ビューでしかありません。 このコンプライアンス ブループリント サンプルのコントロールと Azure Policy 定義の間の関連付けは、時間の経過と共に変わる可能性があります。 変更履歴を表示するには、[GitHub のコミット履歴](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/dod-impact-level-5/control-mapping.md)に関するページを参照してください。
 
 ## <a name="ac-2-account-management"></a>AC-2 アカウント管理
 
@@ -238,7 +238,8 @@ Azure Site Recovery では、仮想マシンで実行中のワークロードが
 
 ## <a name="ra-5-vulnerability-scanning"></a>RA-5 脆弱性のスキャン
 
-このブループリントは、オペレーティング システムの脆弱性、SQL の脆弱性、仮想マシンの脆弱性を Azure Security Center で監視する [Azure Policy](../../../policy/overview.md) 定義を割り当てることによって、情報システムの脆弱性管理を支援するものです。 Azure Security Center では、デプロイされた Azure リソースのセキュリティ状態をリアルタイムに分析するためのレポート機能が提供されます。 このブループリントでは、他にも、SQL サーバー上で Advanced Data Security を監査および強制するポリシー定義が割り当てられます。 Advanced Data Security には、脆弱性の評価機能と高度な脅威に対する保護機能が含まれており、デプロイ済みのリソースに存在する脆弱性について理解を深めるうえで役立ちます。
+このブループリントは、オペレーティング システムの脆弱性、SQL の脆弱性、仮想マシンの脆弱性を Azure Security Center で監視する [Azure Policy](../../../policy/overview.md) 定義を割り当てることによって、情報システムの脆弱性管理を支援するものです。
+Azure Security Center では、デプロイされた Azure リソースのセキュリティ状態をリアルタイムに分析するためのレポート機能が提供されます。 このブループリントでは、他にも、SQL サーバー上で Advanced Data Security を監査および強制するポリシー定義が割り当てられます。 Advanced Data Security には、脆弱性の評価機能と高度な脅威に対する保護機能が含まれており、デプロイ済みのリソースに存在する脆弱性について理解を深めるうえで役立ちます。
 
 - SQL Managed Instance で Advanced Data Security を有効にする必要がある
 - Advanced Data Security を、SQL サーバー上で有効にする必要がある
@@ -255,8 +256,7 @@ Azure の分散型サービス拒否 (DDoS) Standard レベルでは、Basic サ
 
 ## <a name="sc-7-boundary-protection"></a>SC-7 境界保護
 
-このブループリントは、Azure Security Center でネットワーク セキュリティ グループの強化された推奨事項を監視する [Azure Policy](../../../policy/overview.md) 定義を割り当てることによって、システム境界の管理と統制を支援するものです。 Azure Security Center では、インターネットに接続している仮想マシンのトラフィック パターンが分析され、ネットワーク セキュリティ グループのルールに関連して攻撃を受ける危険性の抑制に役立つ推奨事項が提示されます。
-また、このブルー プリントでは、保護されていないエンドポイント、アプリケーション、ストレージ アカウントを監視するポリシー定義も割り当てられます。 ファイアウォールで保護されていないエンドポイントやアプリケーションがあったり、アクセス制限のないストレージ アカウントがあると、情報システム内の情報に対する意図しないアクセスが許可される恐れがあります。
+このブループリントは、Azure Security Center でネットワーク セキュリティ グループの強化された推奨事項を監視する [Azure Policy](../../../policy/overview.md) 定義を割り当てることによって、システム境界の管理と統制を支援するものです。 Azure Security Center では、インターネットに接続している仮想マシンのトラフィック パターンが分析され、ネットワーク セキュリティ グループのルールに関連して攻撃を受ける危険性の抑制に役立つ推奨事項が提示されます。 また、このブルー プリントでは、保護されていないエンドポイント、アプリケーション、ストレージ アカウントを監視するポリシー定義も割り当てられます。 ファイアウォールで保護されていないエンドポイントやアプリケーションがあったり、アクセス制限のないストレージ アカウントがあると、情報システム内の情報に対する意図しないアクセスが許可される恐れがあります。
 
 - インターネットに接続するエンドポイント経由のアクセスを制限する必要がある
 - ストレージ アカウントではネットワーク アクセスを制限する必要がある

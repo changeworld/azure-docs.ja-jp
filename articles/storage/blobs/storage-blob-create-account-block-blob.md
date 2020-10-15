@@ -10,10 +10,10 @@ ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 0af98993cc4b3c7d19cdaa61cd7a35e3b444a3df
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91613800"
 ---
 # <a name="create-a-blockblobstorage-account"></a>BlockBlobStorage アカウントを作成する

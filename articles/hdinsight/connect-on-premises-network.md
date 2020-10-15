@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
 ms.openlocfilehash: 3ab706b9cdf3c071fd5d3ceca732cff6b660db6b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87086559"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>オンプレミス ネットワークへの HDInsight の接続

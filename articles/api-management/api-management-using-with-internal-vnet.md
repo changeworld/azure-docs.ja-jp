@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: apimpm
-ms.openlocfilehash: ac9554ae5ca151a377395d3b16598f7070c87d10
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 06d114c500722259d02a940633a76d043b83064a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386046"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077492"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>内部仮想ネットワークでの Azure API Management サービスの使用
 Azure Virtual Networksでは、Azure API Management はインターネットでアクセスできない API を管理できます。 多数の VPN テクノロジを利用して接続できます。 API Management は、次の 2 つの主要モードで仮想ネットワークの内部にデプロイできます。
@@ -51,7 +51,7 @@ API Management を内部モードで使用することにより、次のシナ�
 + API Management サービスが仮想ネットワークにデプロイされている場合は、[ポートの一覧](./api-management-using-with-vnet.md#required-ports)が使用され、開く必要があります。 
 
 ## <a name="creating-an-api-management-in-an-internal-virtual-network"></a><a name="enable-vpn"> </a>内部仮想ネットワークでの API Management の作成
-内部仮想ネットワークでの API Management サービスは、[内部ロード バランサー (クラシック)](/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud) の背後でホストされます。 これは使用可能な唯一のオプションで、変更することはできません。
+内部仮想ネットワークでの API Management サービスは、[内部ロード バランサー (クラシック)](/previous-versions/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud) の背後でホストされます。 これは使用可能な唯一のオプションで、変更することはできません。
 
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>Azure ポータルで仮想ネットワーク接続を有効にする
 
@@ -143,4 +143,4 @@ API Management が外部仮想ネットワーク モードの場合、DNS は Az
 [Create API Management service]: get-started-create-service-instance.md
 [Common network configuration problems]: api-management-using-with-vnet.md#network-configuration-issues
 
-[ServiceTags]: ../virtual-network/security-overview.md#service-tags
+[ServiceTags]: ../virtual-network/network-security-groups-overview.md#service-tags

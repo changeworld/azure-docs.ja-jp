@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
 ms.openlocfilehash: 0a4084d309dd0160970f1c03540705b310eb8e75
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "70307199"
 ---
 # <a name="use-powershell-to-monitor-the-usage-of-a-sent-data-share"></a>PowerShell を使用して、送信されたデータ共有の使用状況を監視する

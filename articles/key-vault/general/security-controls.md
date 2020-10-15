@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
 ms.openlocfilehash: cd6602f68b63e2c236e7f3905d33b88fbda36ed2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81427027"
 ---
 # <a name="security-controls-for-azure-key-vault"></a>Azure Key Vault のセキュリティ コントロール

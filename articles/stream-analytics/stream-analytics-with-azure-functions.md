@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 01/27/2020
 ms.openlocfilehash: 70ea5ec9ee91fdba8023b9c6af1ce65b691a17fb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89006892"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>チュートリアル:Azure Stream Analytics ジョブから Azure Functions を実行する 
@@ -211,7 +211,7 @@ Azure Functions での [HTTP ルーティング](https://docs.microsoft.com/sand
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure Functions を実行する単純な Stream Analytics ジョブを作成しました。 Stream Analytics ジョブの詳細については、次のチュートリアルに進んでください。
+このチュートリアルでは、Azure 関数を実行する単純な Stream Analytics ジョブを作成しました。 Stream Analytics ジョブの詳細については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [Stream Analytics ジョブ内で JavaScript ユーザー定義関数を実行する](stream-analytics-javascript-user-defined-functions.md)

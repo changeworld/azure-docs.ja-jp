@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/12/2018
 ms.openlocfilehash: e6158938d01b6e5da74ed046d2a74e0dfd827f47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81417914"
 ---
 # <a name="execute-wait-activity-in-azure-data-factory"></a>Azure Data Factory での wait アクティビティの実行

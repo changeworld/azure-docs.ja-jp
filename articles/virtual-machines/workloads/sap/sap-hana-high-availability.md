@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 09/08/2020
 ms.author: radeltch
 ms.openlocfilehash: 1efa00962e63274c2cc02c8758725e5b11d70a9d
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89567828"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上の Azure VM での SAP HANA の高可用性

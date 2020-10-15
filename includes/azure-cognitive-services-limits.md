@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 07/30/2019
 ms.author: erhopf
 ms.openlocfilehash: ffefde7d692950fc272ab2502ad8afe254bf48f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73591037"
 ---
 次の制限は、Azure サブスクリプションごとの Cognitive Services リソースの数に関するものです。 各 Cognitive Services には、追加の制限がある場合があります。詳しくは、[Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/) に関するページを参照してください。

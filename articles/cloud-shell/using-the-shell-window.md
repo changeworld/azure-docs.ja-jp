@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: damaerte
 ms.openlocfilehash: 3435d958049012750e775e2a17f43f463a0cc358
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "70860327"
 ---
 # <a name="using-the-azure-cloud-shell-window"></a>Azure Cloud Shell ウィンドウの使用
@@ -81,7 +81,7 @@ Cloud Shell では、各セッションが別のプロセスとして存在で�
 ツールバーの上端をクリックしてから、上下にドラッグして Cloud Shell ウィンドウのサイズを変更します。
 
 ## <a name="scrolling-text-display"></a>テキスト表示のスクロール
-マウスまたはタッチパッドを使用して、ターミナルのテキストをスクロールできます。
+マウスまたはタッチパッドを使用して、端末のテキストをスクロールできます。
 
 ## <a name="exit-command"></a>exit コマンド
 `exit` を実行すると、アクティブなセッションが終了します。 この動作は、操作が行われていない状態で 20 分経過した場合も発生します。

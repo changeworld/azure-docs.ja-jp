@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: scottwhi
 ms.openlocfilehash: f84c6329c2a4dd0a9ad9e81f3700c9e31de95a2a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68883427"
 ---
 # <a name="get-image-insights-with-the-bing-image-search-api"></a>Bing Image Search API を利用してイメージに関する分析情報を取得する

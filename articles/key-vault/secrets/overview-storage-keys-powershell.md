@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: dd54dd17e5a9a828935ad0d6ac3d713aaedd9535
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b667254ece93c083de95728abe0ddecd5cfed197
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91251594"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91612372"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Key Vault と Azure PowerShell を使用してストレージ アカウント キーを管理する
 
@@ -26,7 +26,6 @@ Key Vault マネージド ストレージ アカウント キー機能を使用�
 - キーの値は、呼び出し元への応答で返されることはありません。
 - ストレージ アカウント キーの管理は Key Vault のみが行う必要があります。 キーを自分で管理したり、Key Vault のプロセスに干渉したりしないでください。
 - ストレージ アカウント キーの管理は、1 つの Key Vault オブジェクトのみが行う必要があります。 複数のオブジェクトからのキー管理を許可しないでください。
-- ユーザー プリンシパルを使用してストレージ アカウントを管理するように Key Vault に要求することはできますが、サービス プリンシパルを使用してそれを行うことはできません。
 - キーの再生成は、Key Vault のみを使用して行います。 ストレージ アカウント キーを手動で再生成しないでください。
 
 Azure Storage と Azure Active Directory (Azure AD) の統合 (Microsoft のクラウドベースの ID およびアクセス管理サービス) を使用することをお勧めします。 Azure AD 統合は [Azure BLOB およびキュー](../../storage/common/storage-auth-aad.md)で利用できます。また、Azure Key Vault と同様に、Azure Storage へのトークンベースの OAuth2 アクセスが提供されます。

@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: genli
 ms.openlocfilehash: b382efc4d283d64ce0f833bde9104fa2e3bc973a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87088547"
 ---
 # <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>Azure VM の起動時に Windows でブルー スクリーン エラーが表示される

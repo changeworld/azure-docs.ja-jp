@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.openlocfilehash: 32b47d9d6d45ff471961f55f8159dbe85eae2dce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73888831"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>リモート監視ソリューション アクセラレータのローカルでのデプロイ - Docker

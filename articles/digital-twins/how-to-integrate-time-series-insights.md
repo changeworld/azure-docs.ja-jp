@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 636332c52ea71c7f84cca2f7ef526bc31200e11c
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 4eef56bd19ed9912625c8ddca3cbf9ff46a59309
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91822176"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92048068"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Azure Digital Twins と Azure Time Series Insights を統合する
 
@@ -58,7 +58,7 @@ Azure Digital Twins の "[*チュートリアル: エンドツーエンドのソ
     az eventhubs eventhub create --name <name for your Twins event hub> --resource-group <resource group name> --namespace-name <Event Hubs namespace from above>
     ```
 
-3. 送信および受信のアクセス許可を持つ[承認規則](https://docs.microsoft.com/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest#az-eventhubs-eventhub-authorization-rule-create)を作成します。
+3. 送信および受信のアクセス許可を持つ[承認規則](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest#az-eventhubs-eventhub-authorization-rule-create)を作成します。
 
     ```azurecli
     # Create an authorization rule. Specify a name for the rule.
@@ -76,7 +76,7 @@ Azure Digital Twins の "[*チュートリアル: エンドツーエンドのソ
     >[!NOTE]
     >Cloud Shell には現在、`az dt route`、`az dt model`、`az dt twin` の各コマンド グループに影響する**既知の問題**があります。
     >
-    >解決するには、コマンドを実行する前に Cloud Shell で `az login` を実行するか、Cloud Shell ではなく[ローカル CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を使用します。 この件の詳細については、「[*トラブルシューティング: Azure Digital Twins の既知の問題*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)」を参照してください。
+    >解決するには、コマンドを実行する前に Cloud Shell で `az login` を実行するか、Cloud Shell ではなく[ローカル CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) を使用します。 この件の詳細については、「[*トラブルシューティング: Azure Digital Twins の既知の問題*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)」を参照してください。
 
     ```azurecli
     az dt route create -n <your Azure Digital Twins instance name> --endpoint-name <Event Hub endpoint from above> --route-name <name for your route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
@@ -159,7 +159,7 @@ namespace SampleFunctionsApp
     # Create an event hub. Specify a name for the event hub. 
     az eventhubs eventhub create --name <name for your TSI event hub> --resource-group <resource group name from earlier> --namespace-name <Event Hubs namespace from earlier>
     ```
-3. 送信および受信のアクセス許可を持つ[承認規則](https://docs.microsoft.com/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest#az-eventhubs-eventhub-authorization-rule-create)を作成します
+3. 送信および受信のアクセス許可を持つ[承認規則](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest#az-eventhubs-eventhub-authorization-rule-create)を作成します
     ```azurecli
     # Create an authorization rule. Specify a name for the rule.
     az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from earlier> --eventhub-name <TSI event hub name from above> --name <name for your TSI auth rule>
@@ -203,7 +203,7 @@ namespace SampleFunctionsApp
 
 1. Azure portal で、Time Series Insights リソースの作成を始めます。 
     1. **[PAYG (プレビュー)]** 価格レベルを選択します。
-    2. この環境に対する**時系列 ID** を選択する必要があります。 時系列 ID は、Time Series Insights でデータを検索するために使用し、最大 3 つの値を使用できます。 このチュートリアルでは、 **$dtId** を使用できます ID 値の選択について詳しくは、「[*時系列 ID の選択のベスト プラクティス*](https://docs.microsoft.com/azure/time-series-insights/how-to-select-tsid)」を参照してください。
+    2. この環境に対する**時系列 ID** を選択する必要があります。 時系列 ID は、Time Series Insights でデータを検索するために使用し、最大 3 つの値を使用できます。 このチュートリアルでは、 **$dtId** を使用できます ID 値の選択について詳しくは、「[*時系列 ID の選択のベスト プラクティス*](../time-series-insights/how-to-select-tsid.md)」を参照してください。
     
         :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="Time Series Insights が強調して示されている、エンドツーエンドのシナリオでの Azure サービスのビュー":::
 
@@ -213,7 +213,7 @@ namespace SampleFunctionsApp
 
 ## <a name="begin-sending-iot-data-to-azure-digital-twins"></a>Azure Digital Twins への IoT データの送信を始める
 
-Time Series Insights へのデータの送信を始めるには、Azure Digital Twins のデジタル ツイン プロパティの変化するデータ値での更新を始める必要があります。 [az dt twin update](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest#ext-azure-iot-az-dt-twin-update) コマンドを使用します。
+Time Series Insights へのデータの送信を始めるには、Azure Digital Twins のデジタル ツイン プロパティの変化するデータ値での更新を始める必要があります。 [az dt twin update](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest#ext-azure-iot-az-dt-twin-update) コマンドを使用します。
 
 [!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 

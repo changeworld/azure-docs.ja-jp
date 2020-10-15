@@ -3,19 +3,19 @@ title: Metrics Advisor アラートを構成する
 titleSuffix: Azure Cognitive Services
 description: 電子メール、Web、Azure DevOps のフックを使用して Metrics Advisor アラートを構成する方法。
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.author: aahi
-ms.openlocfilehash: 870b412a1fa5d362ac7b5be1df6c92d95c2936ca
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.author: mbullwin
+ms.openlocfilehash: ab1c07bd7814afb054bb20b77bbc84c1ee9df017
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977785"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92046793"
 ---
 # <a name="how-to-configure-alerts-and-get-notifications-using-a-hook"></a>方法: フックを使用してアラートを構成し、通知を取得する
 
@@ -88,11 +88,11 @@ Azure DevOps hook を作成するには、次の情報を追加する必要が�
 メトリックの詳細ページに移動して、メトリックの詳細ページの左下隅にある **[アラート設定]** セクションを見つけます。 ここには、選択した検出構成に適用されるすべてのアラート設定が一覧表示されます。 新しい検出構成を作成した時点では、アラート設定はなく、アラートは送信されません。  
 アラート設定を変更するには、 **[追加]** 、 **[編集]** 、 **[削除]** アイコンを使用します。
 
-:::image type="content" source="../media/alerts/alert-setting.png" alt-text="[アラートの設定] メニュー項目。":::
+:::image type="content" source="../media/alerts/alert-setting.png" alt-text="Web hook の作成ウィンドウ。":::
 
 **[追加]** または **[編集]** ボタンをクリックして、アラート設定を追加または編集するウィンドウを表示します。
 
-:::image type="content" source="../media/alerts/edit-alert.png" alt-text="アラート設定の追加または編集":::
+:::image type="content" source="../media/alerts/edit-alert.png" alt-text="Web hook の作成ウィンドウ。":::
 
 **アラート設定名**: このアラート設定の名前。 これは、アラート電子メールのタイトルに表示されます。
 
@@ -134,7 +134,7 @@ Azure DevOps hook を作成するには、次の情報を追加する必要が�
 |AND     | 系列が各アラート セクションと一致し、すべてのデータ ポイントが異常である場合にのみアラートを送信します。 メトリックのディメンション名が異なる場合、アラートはトリガーされません。         |
 |OR     | 1 つ以上のセクションに異常がある場合にアラートを送信します。         |
 
-:::image type="content" source="../media/alerts/alert-setting-operator.png" alt-text="複数のアラート設定セクションの演算子":::
+:::image type="content" source="../media/alerts/alert-setting-operator.png" alt-text="Web hook の作成ウィンドウ。":::
 
 ## <a name="next-steps"></a>次のステップ
 

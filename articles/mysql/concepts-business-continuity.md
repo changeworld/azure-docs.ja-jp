@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/7/2020
 ms.openlocfilehash: b21062256896ebfc9c11b031413538b39620d1e7
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89613973"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mysql"></a>Azure Database for MySQL でのビジネス継続性を理解する

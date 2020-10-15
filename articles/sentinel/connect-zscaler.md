@@ -14,18 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: cc784afe5db64ccc4aad13fae7a2fa748e4befa3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ef6677b6f1103c26bd719a3585800765a029f7fb
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77587993"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92056840"
 ---
 # <a name="connect-zscaler-internet-access-to-azure-sentinel"></a>Zscaler インターネット アクセスを Azure Sentinel に接続する
-
-> [!IMPORTANT]
-> Azure Sentinel の Zscaler データ コネクタは、現在パブリック プレビュー段階にあります。
-> この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 この記事では、Zscaler インターネット アクセス アプライアンスを Azure Sentinel に接続する方法について説明します。 Zscaler データ コネクタを使用すると、Azure Sentinel に Zscaler インターネット アクセス (ZIA) のログを簡単に接続でき、ダッシュボードの表示、カスタム アラートの作成、および調査の改善も行うことができます。 Azure Sentinel で Zscaler を使用すると、組織のインターネット使用状況に関するより多くの洞察が得られ、セキュリティ操作機能が強化されます。 
 
@@ -44,7 +40,7 @@ ms.locfileid: "77587993"
 
 
 1. Log Analytics で CEF イベントに関連するスキーマを使用するために、`CommonSecurityLog` を検索します。
-1. 「[手順 3: 接続の検証](connect-cef-verify.md)」に進みます。
+1. 「[手順 3:接続の検証](connect-cef-verify.md)」に進みます。
 
 
 ## <a name="next-steps"></a>次のステップ

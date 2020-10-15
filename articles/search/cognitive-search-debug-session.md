@@ -3,17 +3,17 @@ title: デバッグ セッションの概念 (プレビュー)
 titleSuffix: Azure Cognitive Search
 description: Azure portal を介してアクセスされる、デバッグ セッションでは、エラーを特定して修正し、変更を確認し、AI エンリッチメント パイプラインでスキルセットに変更をプッシュできる環境などの IDE が提供されます。 デバッグ セッションはプレビュー段階です。
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 941d7f54bcb44653280abe264ff1cffbeae33679
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: f666cc2f9d11b1e05d11ba266897e6fca3cd287e
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743184"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057622"
 ---
 # <a name="debug-sessions-in-azure-cognitive-search"></a>Azure Cognitive Search でのデバッグ セッション
 

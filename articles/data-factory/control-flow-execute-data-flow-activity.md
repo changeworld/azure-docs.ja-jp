@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.author: makromer
 ms.date: 04/30/2020
 ms.openlocfilehash: 5593b0d633b133c8a8295634b674218d5e6c6daf
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89485039"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure Data Factory でのデータ フロー アクティビティ

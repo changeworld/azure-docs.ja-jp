@@ -4,10 +4,10 @@ description: この記事では、運用環境で Live Video Analytics on IoT Ed
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: c34e05e184cfa6f0933701a76177fae3eed70c0a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87071935"
 ---
 # <a name="production-readiness-and-best-practices"></a>運用環境の準備状況とベスト プラクティス

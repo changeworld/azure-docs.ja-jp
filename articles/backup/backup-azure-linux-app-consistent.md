@@ -4,10 +4,10 @@ description: Linux 仮想マシンのアプリケーション整合性バック�
 ms.topic: conceptual
 ms.date: 01/12/2018
 ms.openlocfilehash: 22053004026a2dd8976027359f11d50a5663b334
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88999242"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Azure Linux VM のアプリケーション整合性バックアップ

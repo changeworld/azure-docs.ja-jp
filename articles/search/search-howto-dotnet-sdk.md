@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 394c87bcd3e4580289fbccc6a31b164f914dc8a3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bedb619d77d9e5a88fdc16d0fbd066fa092e0765
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020798"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950790"
 ---
 # <a name="how-to-use-microsoftazuresearch-v10-in-a-net-application"></a>.NET アプリケーションで Microsoft.Azure.Search (v10) を使用する方法
 
@@ -44,7 +44,7 @@ SDK の今後の更新プログラムについてフィードバックを提供�
 
 .NET SDK は、バージョン `2019-05-06` の [Azure Cognitive Search REST API](/rest/api/searchservice/) を対象としています。 このバージョンには、Azure BLOB にインデックスを付ける際の、[複合型](search-howto-complex-data-types.md)、[AI エンリッチメント](cognitive-search-concept-intro.md)、[オートコンプリート](/rest/api/searchservice/autocomplete)、[JsonLines 分析モード](search-howto-index-json-blobs.md)に対するサポートが含まれます。 
 
-この SDK では、Search サービスの作成とスケーリングや API キーの管理などの[管理操作](/rest/api/searchmanagement/)はサポートされていません。 .NET アプリケーションから Search リソースを管理する必要がある場合は、[Azure Cognitive Search .NET Management SDK](https://aka.ms/search-mgmt-sdk) を使用できます。
+この SDK では、Search サービスの作成とスケーリングや API キーの管理などの[管理操作](/rest/api/searchmanagement/)はサポートされていません。 .NET アプリケーションから Search リソースを管理する必要がある場合は、[Azure Cognitive Search .NET Management SDK](/dotnet/api/overview/azure/search) を使用できます。
 
 ## <a name="upgrading-to-the-latest-version-of-the-sdk"></a>最新バージョンの SDK へのアップグレード
 古いバージョンの Azure Cognitive Search .NET SDK を既に使用しており、一般公開されている最新のバージョンにアップグレードする場合、[この記事](search-dotnet-sdk-migration-version-9.md)に方法が説明されています。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/03/2018
 ms.author: memildin
-ms.openlocfilehash: 56dd74fba46aa8b79c94b1460996bb6edb1ff93f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 89d04588d07407be5dbd7ddbafd6543ed461462e
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904613"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945721"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>チュートリアル:Azure Security Center でリソースを保護する
 Security Center は、アクセスおよびアプリケーション制御を使用して悪意のあるアクティビティをブロックすることで、脅威にさらされる状態を軽減します。 Just-In-Time (JIT) 仮想マシン (VM) アクセスは、VM への永続的なアクセスを拒否できるようにして攻撃に対する露出を減らします。 代わりに、必要な場合にのみ VM への制御および監査されたアクセスを提供します。 適応型アプリケーション制御を使用すると、VM 上で実行できるアプリケーションを制御することでマルウェアに対する VM の保護を強化できます。 Security Center は、機械学習によって VM で実行されているプロセスを分析し、この情報を利用することで、お客様が許可リスト登録に関する規則を適用するのを支援します。

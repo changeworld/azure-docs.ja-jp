@@ -7,10 +7,10 @@ ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e27c6661c34ab6d177feec11f8e9ec891987ab48
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89005753"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Service Fabric サービスの配置ポリシー

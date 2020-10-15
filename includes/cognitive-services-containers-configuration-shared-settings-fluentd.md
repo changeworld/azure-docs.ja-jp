@@ -5,10 +5,10 @@ ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: b08516b35a864eae6d15c4c5c928f0550c64c239
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67712394"
 ---
 Fluentd は、ログの一元管理を実現するオープンソースのデータ コレクターです。 [Fluentd](https://www.fluentd.org) サーバーに対するコンテナーの接続は、`Fluentd` の設定によって管理されます。 コンテナーには、お客様のコンテナーでログ、および必要に応じてメトリック データを Fluentd サーバーに書き込むことができる Fluentd ログ プロバイダーが含まれます。

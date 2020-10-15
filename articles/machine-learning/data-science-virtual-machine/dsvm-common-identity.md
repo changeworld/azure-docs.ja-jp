@@ -11,10 +11,10 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
 ms.openlocfilehash: 69d6b8abc99863f29f82abcb44e18b426c5a456c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85959145"
 ---
 # <a name="set-up-a-common-identity-on-a-data-science-virtual-machine"></a>Data Science Virtual Machine で共通 ID を設定する

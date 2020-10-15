@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: pafarley
 ms.openlocfilehash: 15e39eb9f5b8dd3556ea9ff8240bc2c9d252cd31
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73743057"
 ---
 # <a name="face-detection-and-attributes"></a>顔検出と顔属性

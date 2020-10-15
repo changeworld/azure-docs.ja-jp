@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 06/30/2020
 ms.author: victorh
 ms.openlocfilehash: 3d4d1e65c2200aee178abefb46d3e330acbd3108
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85563634"
 ---
 # <a name="tutorial-secure-your-hub-virtual-network-using-azure-firewall-manager"></a>チュートリアル:Azure Firewall Manager を使用してハブ仮想ネットワークをセキュリティで保護する

@@ -4,10 +4,10 @@ description: Azure Advisor の推奨事項を表示したり、ノイズを減�
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: 43bdaba7d774bba8857a6eb3ef296d7ab8e1c264
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90986856"
 ---
 # <a name="view-azure-advisor-recommendations-that-matter-to-you"></a>重要な Azure Advisor の推奨事項を表示する

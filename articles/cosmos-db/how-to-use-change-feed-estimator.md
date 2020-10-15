@@ -8,10 +8,10 @@ ms.date: 08/15/2019
 ms.author: maquaran
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 442e1c4facce076ce9eeacee772df9381fee6f71
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88997219"
 ---
 # <a name="use-the-change-feed-estimator"></a>変更フィード推定機能を使用する

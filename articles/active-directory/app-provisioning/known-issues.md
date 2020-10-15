@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/11/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: 2f83679a39f919e5e9932303731560aedd796233
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 4b4c02efffb39e88a01c35d3c818930a0f6fd9cf
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052386"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92069757"
 ---
 # <a name="known-issues-application-provisioning"></a>既知の問題:アプリケーションのプロビジョニング
 アプリのプロビジョニングを使用するときに注意する必要がある既知の問題。 UserVoice のアプリケーション プロビジョニング サービスに関するフィードバックを提供することができます。[Azure AD のアプリケーションのプロビジョニングの UserVoice](https://aka.ms/appprovisioningfeaturerequest) ページを参照してください。 Microsoft では、サービスを改善するために UserVoice を注意深く確認しています。 
@@ -72,7 +72,7 @@ UI のソース属性ドロップダウンにスキーマの拡張機能が表�
 
 **プロビジョニングの間隔が固定されている**
 
-プロビジョニング サイクル間の[時間](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user#how-long-will-it-take-to-provision-users)は現在構成できません。 
+プロビジョニング サイクル間の[時間](./application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)は現在構成できません。 
 
 **変更がターゲット アプリから Azure AD に反映されない**
 

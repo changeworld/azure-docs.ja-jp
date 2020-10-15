@@ -3,12 +3,12 @@ title: ISO 27001 ASE/SQL ワークロード ブループリント サンプル�
 description: Azure Policy と Azure RBAC に対する ISO 27001 App Service Environment/SQL Database ワークロード ブループリント サンプルのコントロール マッピング。
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 1d537a3447f794c501ac3a33caf6eb01b17bc470
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 662e5dce9c58cec3be36c3e492d7231ed0e83939
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541222"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91929321"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>ISO 27001 ASE/SQL ワークロード ブループリント サンプルのコントロール マッピング
 
@@ -17,7 +17,7 @@ ms.locfileid: "91541222"
 以下のマッピングは、**ISO 27001:2013** コントロールに対するものです。 右側のナビゲーションを使用すると、特定のコントロール マッピングに直接ジャンプできます。 マップ コントロールの多くは、[Azure Policy](../../../policy/overview.md) イニシアチブを使用して実装されますす。 イニシアチブの詳細を確認するには、Azure portal で **[ポリシー]** を開き、 **[定義]** ページを選択します。 その後、 **\[プレビュー\] Audit ISO 27001:2013 コントロールを選択し、監査要件のビルトイン ポリシー イニシアチブをサポートするための VM 拡張機能をデプロイ**します。
 
 > [!IMPORTANT]
-> 以下の各コントロールは、1 つ以上の [Azure Policy](../../../policy/overview.md) 定義に関連します。 これらのポリシーは、コントロールに対する[コンプライアンスを評価](../../../policy/how-to/get-compliance-data.md)するのに役立つ場合があります。ただし、多くの場合、コントロールと 1 つまたは複数のポリシーとの間に 1:1 または完全な一致はありません。 そのため、Azure Policy での**準拠**は、ポリシー自体のみを指しています。これによって、コントロールのすべての要件に完全に準拠していることが保証されるわけではありません。 また、コンプライアンス標準には、現時点でどの Azure Policy 定義でも対応されていないコントロールが含まれています。 したがって、Azure Policy でのコンプライアンスは、全体のコンプライアンス状態の部分的ビューでしかありません。 このコンプライアンス ブループリント サンプルのコントロールと Azure Policy 定義の間の関連付けは、時間の経過と共に変わる可能性があります。 変更履歴を表示するには、[GitHub のコミット履歴](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/iso27001-ase-sql-workload/control-mapping.md)に関するページを参照してください。
+> 以下の各コントロールは、1 つ以上の [Azure Policy](../../../policy/overview.md) 定義に関連します。 これらのポリシーは、コントロールに対する[コンプライアンスの評価](../../../policy/how-to/get-compliance-data.md)に役立つ場合があります。ただし、多くの場合、コントロールと 1 つ以上のポリシーとの間には、一対一での一致、または完全な一致はありません。 そのため、Azure Policy での**準拠**は、ポリシー自体のみを指しています。これによって、コントロールのすべての要件に完全に準拠していることが保証されるわけではありません。 また、コンプライアンス標準には、現時点でどの Azure Policy 定義でも対応されていないコントロールが含まれています。 したがって、Azure Policy でのコンプライアンスは、全体のコンプライアンス状態の部分的ビューでしかありません。 このコンプライアンス ブループリント サンプルのコントロールと Azure Policy 定義の間の関連付けは、時間の経過と共に変わる可能性があります。 変更履歴を表示するには、[GitHub のコミット履歴](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/iso27001-ase-sql-workload/control-mapping.md)に関するページを参照してください。
 
 ## <a name="a612-segregation-of-duties"></a>A.6.1.2 職務の分離
 
@@ -47,7 +47,7 @@ Azure では、Azure リソースにアクセスするユーザーを管理す�
 
 ## <a name="a923-management-of-privileged-access-rights"></a>A.9.2.3 アクセス特権の管理
 
-このブループリントでは、所有者アクセス許可や書き込みアクセス許可を持つ外部アカウントと、所有者アクセス許可や書き込みアクセス許可を持つ、多要素認証が有効になっていないアカウントを監査するための、4 つの [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、アクセス特権を制限および制御することができます。 Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure リソースにアクセスするユーザーを管理できます。 また、このブループリントでは、SQL Server と Service Fabric に対する Azure Active Directory 認証の使用状況を監査するために、3 つの Azure Policy 定義が割り当てられます。 Azure Active Directory 認証を使用すると、アクセス許可の管理を簡単にし、データベース ユーザーとその他の Microsoft サービスの ID を一元管理できます。 また、このブループリントでは、カスタム Azure RBAC 規則の使用状況を監査するための Azure Policy 定義も割り当てられます。 カスタム Azure RBAC 規則ではエラーが発生しやすいため、カスタム Azure RBAC 規則の実装状況を把握しておくと、実装の必要性や適切性の確認に役立ちます。
+このブループリントでは、所有者アクセス許可や書き込みアクセス許可を持つ外部アカウントと、所有者アクセス許可や書き込みアクセス許可を持つ、多要素認証が有効になっていないアカウントを監査するための、4 つの [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、アクセス特権を制限および制御することができます。 Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure リソースにアクセスするユーザーを管理できます。 また、このブループリントでは、SQL Server と Service Fabric に対する Azure Active Directory 認証の使用状況を監査するために、3 つの Azure Policy 定義が割り当てられます。 Azure Active Directory 認証を使用すると、アクセス許可の管理を簡単にし、データベース ユーザーとその他の Microsoft サービスの ID を一元管理できます。 また、このブループリントによって、カスタム Azure RBAC 規則の使用状況を監査するための Azure Policy 定義も割り当てられます。 カスタム Azure RBAC 規則ではエラーが発生しやすいため、カスタム Azure RBAC 規則の実装状況を把握しておくと、実装の必要性や適切性の確認に役立ちます。
 
 - サブスクリプションで所有者アクセス許可を持つアカウントに対して MFA を有効にする必要がある
 - サブスクリプションに対する書き込みアクセス許可を持つアカウントに対して MFA を有効にする必要がある

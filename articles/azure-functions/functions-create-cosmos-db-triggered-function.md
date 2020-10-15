@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 04/28/2020
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: c7dc18d8186d7262154cc0718bb6ad77ebbb5d2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85829841"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Azure Cosmos DB によってトリガーされる関数を作成する
@@ -50,7 +50,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
 
 1. **[新規関数]** ページで、検索フィールドに「`cosmos`」と入力し、 **[Azure Cosmos DB trigger]\(Azure Cosmos DB トリガー\)** テンプレートを選択します。
 
-   :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-choose-cosmos.png" alt-text="Azure portal での関数のページ":::
+   :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-choose-cosmos.png" alt-text="Azure Cosmos DB コード":::
 
 
 1. 新しいトリガーは、次の表に示すように設定します。
@@ -64,7 +64,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
     | **リースのコレクション名** | リース | リースを格納するコレクションの名前。 |
     | **リースのコレクションが存在しない場合、作成します** | はい | リースのコレクションの存在をチェックし、自動的に作成します。 |
 
-    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png" alt-text="Azure Cosmos DB でトリガーされる関数の作成":::
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png" alt-text="Azure Cosmos DB コード":::
 
 1. **[関数の作成]** を選択します。 
 
@@ -72,7 +72,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
 
 1. テンプレートベースの関数コードを表示するには、 **[Code + Test]\(コード + テスト\)** を選択します。
 
-    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-cosmosdb-template.png" alt-text="Cosmos DB の関数テンプレート (C#)":::
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-cosmosdb-template.png" alt-text="Azure Cosmos DB コード":::
 
     この関数テンプレートは、ドキュメント数と最初のドキュメント ID をログに書き込みます。
 
@@ -111,15 +111,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
 
 1. データ エクスプローラーで新しい **Items** コンテナーを展開し、 **[Items]\(項目\)** を選択して、 **[New Item]\(新しい項目\)** を選択します。
 
-    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png" alt-text="Items コンテナーへの項目の作成":::
-
-1. 新しい項目の内容を次の内容に置き換えて、 **[保存]** を選択します。
-
-    ```yaml
-    {
-        "id": "task1",
-        "category": "general",
-        "description": "some task"
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png" alt-text="Azure Cosmos DB コード"
     }
     ```
 
