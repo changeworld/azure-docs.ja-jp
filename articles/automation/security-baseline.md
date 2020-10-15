@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a57473a26d5fe809274f14c8767356914e0d4962
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 2d3f04777983d24d5219c55c5309b7d12c214594
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400519"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070692"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Automation 用の Azure セキュリティ ベースライン
 
@@ -84,7 +84,7 @@ Azure Security Center の Just In Time ネットワーク アクセスを使用�
 
 * [Azure Firewall をデプロイする方法l](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Azure Security Center の統合された脅威インテリジェンスについて](../security-center/threat-protection.md)
+* [Azure Security Center の統合された脅威インテリジェンスについて](../security-center/azure-defender.md)
 
 * [Azure Security Center のアダプティブ ネットワークのセキュリティ強化について](../security-center/security-center-adaptive-network-hardening.md)
 
@@ -150,7 +150,7 @@ Azure Blueprints を使用して、Azure Resource Manager テンプレート、A
 
 * [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [ネットワークに関する Azure Policy のサンプル](/azure/governance/policy/samples/#network)
+* [ネットワークに関する Azure Policy のサンプル](../governance/policy/samples/built-in-policies.md#network)
 
 * [Azure Blueprint を作成する方法](../governance/blueprints/create-blueprint-portal.md)
 
@@ -520,7 +520,7 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure Security Center で
 
 * [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](../governance/management-groups/create.md)
+* [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
 * [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
@@ -720,7 +720,7 @@ Azure 仮想マシンによる Hybrid Runbook Worker を使用している場合
 
 * [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](../governance/management-groups/create.md)
+* [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
 * [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
@@ -752,7 +752,7 @@ Azure 仮想マシンによる Hybrid Runbook Worker を使用している場合
 
 * [Azure Resource Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-* [Azure Automation 用の Azure Policy サンプルの組み込み](./policy-samples.md)
+* [Azure Automation 用の Azure Policy サンプルの組み込み](./policy-reference.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -854,7 +854,7 @@ Azure Virtual Machines による Hybrid Runbook Worker を使用している場�
 
 * [Azure Web アプリケーション ファイアウォールの概要 ](../web-application-firewall/overview.md)
 
-* [ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)
+* [ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)
 
 * [Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)
 
@@ -882,7 +882,7 @@ Azure Virtual Machines による Hybrid Runbook Worker を使用している場�
 
 * [チュートリアル:コンプライアンスを強制するポリシーの作成と管理](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Automation 用の Azure Policy サンプルの組み込み](./policy-samples.md)
+* [Azure Automation 用の Azure Policy サンプルの組み込み](./policy-reference.md)
 
 * [Azure portal のテンプレートへの単一および複数リソースのエクスポート](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -920,7 +920,7 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure Security Center の
 
 * [Azure Resource Manager テンプレートを使用して Automation アカウントをデプロイする](./quickstart-create-automation-account-template.md#deploy-the-template)
 
-* [Azure Automation 用の Azure Policy サンプルの組み込み](./policy-samples.md)
+* [Azure Automation 用の Azure Policy サンプルの組み込み](./policy-reference.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -984,7 +984,7 @@ Hybrid Runbook Worker 機能を使用する場合は、ストレージ アカウ
 
 * [エイリアスを使用する方法](../governance/policy/concepts/definition-structure.md#aliases)
 
-* [Azure Automation 用の Azure Policy サンプルの組み込み](./policy-samples.md)
+* [Azure Automation 用の Azure Policy サンプルの組み込み](./policy-reference.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1014,7 +1014,7 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure Security Center を
 
 * [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Automation 用の Azure Policy サンプルの組み込み](./policy-samples.md)
+* [Azure Automation 用の Azure Policy サンプルの組み込み](./policy-reference.md)
 
 **Azure Security Center の監視**: 適用なし
 

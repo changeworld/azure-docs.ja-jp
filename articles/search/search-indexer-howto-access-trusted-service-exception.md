@@ -8,16 +8,16 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 30fc71e6f59766a759cdb8e4e503123623f48bd9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4fbffaa7bc68bb32bd07b657f4b769e5af4302bf
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320474"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950026"
 ---
 # <a name="accessing-data-in-storage-accounts-securely-via-trusted-service-exception"></a>信頼されたサービスの例外を使用してストレージ アカウントのデータに安全にアクセスする
 
-ストレージ アカウントのデータにアクセスするインデクサーは、[信頼されたサービスの例外](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)機能を利用して、データに安全にアクセスできます。 このメカニズムにより、[IP ファイアウォール規則を使用してインデクサーにアクセス権](search-indexer-howto-access-ip-restricted.md)を付与できないお客様に対して、ストレージ アカウントのデータにアクセスするための簡単、安全かつ無料の代替手段が提供されます。
+ストレージ アカウントのデータにアクセスするインデクサーは、[信頼されたサービスの例外](../storage/common/storage-network-security.md#exceptions)機能を利用して、データに安全にアクセスできます。 このメカニズムにより、[IP ファイアウォール規則を使用してインデクサーにアクセス権](search-indexer-howto-access-ip-restricted.md)を付与できないお客様に対して、ストレージ アカウントのデータにアクセスするための簡単、安全かつ無料の代替手段が提供されます。
 
 > [!NOTE]
 > 信頼されたサービスの例外を使用してストレージ アカウント内のデータにアクセスするためのサポートは、Azure Blob Storage と Azure Data Lake Gen2 Storage に限定されます。 Azure Table Storage はサポートされていません。

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
 ms.openlocfilehash: 496ee1bc97f6b72e09a62ae3491af7ccc7328583
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80811085"
 ---
 # <a name="azure-network-security-overview"></a>Azure のネットワーク セキュリティの概要
@@ -81,7 +81,7 @@ NSG はアプリケーション層検査も、認証済みのアクセス制御�
 
 #### <a name="asc-just-in-time-vm-access"></a>ASC Just In Time VM アクセス
 
-[Azure Security Center (ASC)](../../security-center/security-center-intro.md) は、VM の NSG を管理し、適切なロール ベースのアクセス制御 ([RBAC](/azure/role-based-access-control/overview)) のアクセス許可を持つユーザーがアクセスを要求するまで、VM へのアクセスをロックします。 ユーザーが正常に承認されると、ASC は、選択されたポートに対して指定された時間にわたってアクセスできるように NSG を変更します。 時間切れになると、NSG は、前のセキュリティで保護された状態に戻ります。
+[Azure セキュリティ センター (ASC)](../../security-center/security-center-intro.md) は、VM の NSG を管理し、適切なロール ベースのアクセス制御 ([RBAC](/azure/role-based-access-control/overview)) のアクセス許可を持つユーザーがアクセスを要求するまで、VM へのアクセスをロックします。 ユーザーが正常に承認されると、ASC は、選択されたポートに対して指定された時間にわたってアクセスできるように NSG を変更します。 時間切れになると、NSG は、前のセキュリティで保護された状態に戻ります。
 
 詳細情報:
 

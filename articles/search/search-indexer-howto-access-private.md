@@ -8,23 +8,23 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: 94763cee852893057348f8eea1fa74fa742f62a1
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 9ffd7d2513e87f818001d7ccf96212a4dbef7ac2
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91534728"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950144"
 ---
 # <a name="accessing-secure-resources-via-private-endpoints"></a>プライベート エンドポイントを介してセキュリティで保護されたリソースにアクセスする
 
 Azure リソース (データ ソースとして使用されるストレージ アカウントなど) は、特定の仮想ネットワークの一覧からのみアクセスできるように構成できます。 また、"公衆ネットワーク" へのアクセスを許可しないように構成することもできます。
-お客様は、インデクサーを使用してこのようなデータ ソースからデータに安全にアクセスするために、(発信) [プライベート エンドポイント接続](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)を作成するように Azure Cognitive Search に要求できます。
+お客様は、インデクサーを使用してこのようなデータ ソースからデータに安全にアクセスするために、(発信) [プライベート エンドポイント接続](../private-link/private-endpoint-overview.md)を作成するように Azure Cognitive Search に要求できます。
 
 ## <a name="shared-private-link-resources-management-apis"></a>共有プライベート リンク リソース管理 API
 
 "セキュリティで保護された" リソースにアクセスするために、お客様の要求に応じて Azure Cognitive Search によって作成されたプライベート エンドポイントは、"*共有プライベート リンク リソース*" と呼ばれます。 お客様は、[Azure Private Link サービス](https://azure.microsoft.com/services/private-link/)にオンボードされたリソース (ストレージ アカウントなど) へのアクセスを "共有" します。
 
-Azure Cognitive Search は、検索管理 API を通じて、[共有プライベート リンク リソースを作成または更新](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate)する機能を提供します。 この API を他の "*共有プライベート リンク リソース*" 管理 API と共に使用して、Azure Cognitive Search インデクサーからのセキュリティで保護されたリソースへのアクセスを構成します。
+Azure Cognitive Search は、検索管理 API を通じて、[共有プライベート リンク リソースを作成または更新](/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate)する機能を提供します。 この API を他の "*共有プライベート リンク リソース*" 管理 API と共に使用して、Azure Cognitive Search インデクサーからのセキュリティで保護されたリソースへのアクセスを構成します。
 
 一部のリソースへのプライベート エンドポイント接続は、次の表の "プレビュー" タグで示されている検索管理 API のプレビュー バージョン (`2020-08-01-Preview`) を介してのみ作成できます。 "プレビュー" タグがないリソースは、プレビュー API と GA API (`2020-08-01`) の両方を介して作成できます。
 
@@ -40,7 +40,7 @@ Azure Cognitive Search から発信プライベート エンドポイントを�
 | Azure Key Vault | `vault` |
 | Azure Functions (プレビュー) | `sites` |
 
-発信プライベート エンドポイント接続がサポートされている Azure リソースの一覧は、[List Supported API](https://docs.microsoft.com/rest/api/searchmanagement/privatelinkresources/listsupported) を介して照会することもできます。
+発信プライベート エンドポイント接続がサポートされている Azure リソースの一覧は、[List Supported API](/rest/api/searchmanagement/privatelinkresources/listsupported) を介して照会することもできます。
 
 このガイドでは、[ARMClient](https://github.com/projectkudu/ARMClient) と [Postman](https://www.postman.com/) を組み合わせて使用して、REST API の呼び出しをデモンストレーションします。
 
@@ -51,12 +51,12 @@ Azure Cognitive Search から発信プライベート エンドポイントを�
 
 ## <a name="securing-your-storage-account"></a>ストレージ アカウントをセキュリティで保護する
 
-[特定のサブネットからのアクセスのみを許可する](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-a-virtual-network)ように、ストレージ アカウントを構成します。 Azure portal で、このオプションをオンにして、設定を空のままにすると、どの仮想ネットワークからのトラフィックも許可されないことを意味します。
+[特定のサブネットからのアクセスのみを許可する](../storage/common/storage-network-security.md#grant-access-from-a-virtual-network)ように、ストレージ アカウントを構成します。 Azure portal で、このオプションをオンにして、設定を空のままにすると、どの仮想ネットワークからのトラフィックも許可されないことを意味します。
 
    ![仮想ネットワーク アクセス](media\search-indexer-howto-secure-access\storage-firewall-noaccess.png "仮想ネットワーク アクセス")
 
 > [!NOTE]
-> [信頼された Microsoft サービス アプローチ](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services)を使用すると、このようなストレージ アカウントでの仮想ネットワークまたは IP の制限を回避できます。また、[ハウツー ガイド](search-indexer-howto-access-trusted-service-exception.md)の説明に従って、検索サービスがストレージ アカウントのデータにアクセスできるようにすることが可能です。 ただし、このアプローチを使用する場合、Azure Cognitive Search とストレージ アカウント間の通信は、セキュリティで保護された Microsoft バックボーン ネットワークで、ストレージ アカウントのパブリック IP アドレスを介して行われます。
+> [信頼された Microsoft サービス アプローチ](../storage/common/storage-network-security.md#trusted-microsoft-services)を使用すると、このようなストレージ アカウントでの仮想ネットワークまたは IP の制限を回避できます。また、[ハウツー ガイド](search-indexer-howto-access-trusted-service-exception.md)の説明に従って、検索サービスがストレージ アカウントのデータにアクセスできるようにすることが可能です。 ただし、このアプローチを使用する場合、Azure Cognitive Search とストレージ アカウント間の通信は、セキュリティで保護された Microsoft バックボーン ネットワークで、ストレージ アカウントのパブリック IP アドレスを介して行われます。
 
 ## <a name="step-1-create-a-shared-private-link-resource-to-the-storage-account"></a>手順 1:ストレージ アカウントに対して共有プライベート リンク リソースを作成する
 
@@ -101,7 +101,7 @@ Azure Cognitive Search から発信プライベート エンドポイントを�
 ## <a name="step-2a-approve-the-private-endpoint-connection-for-the-storage-account"></a>手順 2a:ストレージ アカウントのプライベート エンドポイント接続を承認する
 
 > [!NOTE]
-> このセクションでは、Azure portal を使用して、ストレージに対するプライベート エンドポイントの承認フローを順を追って説明します。 ストレージ リソース プロバイダー (RP) を介して使用できる [REST API](https://docs.microsoft.com/rest/api/storagerp/privateendpointconnections) も代わりに使用できます。
+> このセクションでは、Azure portal を使用して、ストレージに対するプライベート エンドポイントの承認フローを順を追って説明します。 ストレージ リソース プロバイダー (RP) を介して使用できる [REST API](/rest/api/storagerp/privateendpointconnections) も代わりに使用できます。
 >
 > CosmosDB や Azure SQL Server などの他のプロバイダーも、プライベート エンドポイント接続を管理するための同様の RP API を提供しています。
 
@@ -117,7 +117,7 @@ Azure Cognitive Search によって作成されたプライベート エンド�
 
 ## <a name="step-2b-query-the-status-of-the-shared-private-link-resource"></a>手順 2b:共有プライベート リンク リソースの状態を照会する
 
- 共有プライベート リンク リソースが承認後に更新されたことを確認するために、[GET API](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources/get) を使用してその状態を取得します。
+ 共有プライベート リンク リソースが承認後に更新されたことを確認するために、[GET API](/rest/api/searchmanagement/sharedprivatelinkresources/get) を使用してその状態を取得します。
 
 `armclient GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe?api-version=2020-08-01`
 
@@ -143,24 +143,24 @@ Azure Cognitive Search によって作成されたプライベート エンド�
 > [!NOTE]
 > この手順は、プライベート エンドポイント接続が承認される前でも実行できます。 プライベート エンドポイント接続が承認されるまで、セキュリティで保護されたリソース (ストレージ アカウントなど) との通信を試行するすべてのインデクサーは、一時的なエラー状態になります。 新しいインデクサーの作成は失敗します。 プライベート エンドポイント接続が承認されるとすぐに、インデクサーはプライベート ストレージ アカウントにアクセスできるようになります。
 
-1. セキュリティで保護されたストレージ アカウントと、ストレージ アカウント内の適切なコンテナーを指す[データ ソース](https://docs.microsoft.com/rest/api/searchservice/create-data-source)を作成します。 Postman を介して実行されるこの要求を次に示します。
+1. セキュリティで保護されたストレージ アカウントと、ストレージ アカウント内の適切なコンテナーを指す[データ ソース](/rest/api/searchservice/create-data-source)を作成します。 Postman を介して実行されるこの要求を次に示します。
 ![データ ソースの作成](media\search-indexer-howto-secure-access\create-ds.png "データ ソースの作成")
 
-2. 同様に[インデックスを作成](https://docs.microsoft.com/rest/api/searchservice/create-index)し、必要に応じて REST API を使用して[スキルセットを作成](https://docs.microsoft.com/rest/api/searchservice/create-skillset)します。
+2. 同様に[インデックスを作成](/rest/api/searchservice/create-index)し、必要に応じて REST API を使用して[スキルセットを作成](/rest/api/searchservice/create-skillset)します。
 
-3. 上で作成したデータ ソース、インデックス、スキルセットを指す[インデクサーを作成](https://docs.microsoft.com/rest/api/searchservice/create-indexer)します。 また、インデクサーの構成プロパティ `executionEnvironment` を `"Private"` に設定して、インデクサーがプライベート実行環境で実行されるように強制します。
+3. 上で作成したデータ ソース、インデックス、スキルセットを指す[インデクサーを作成](/rest/api/searchservice/create-indexer)します。 また、インデクサーの構成プロパティ `executionEnvironment` を `"Private"` に設定して、インデクサーがプライベート実行環境で実行されるように強制します。
 ![インデクサーの作成](media\search-indexer-howto-secure-access\create-idr.png "インデクサーの作成")
 
-インデクサーが正しく作成され、プライベート エンドポイント接続を介してストレージ アカウントからのコンテンツのインデックス作成が進行中である必要があります。 インデクサーの状態は、[Indexer Status API](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) を使用して監視できます。
+インデクサーが正しく作成され、プライベート エンドポイント接続を介してストレージ アカウントからのコンテンツのインデックス作成が進行中である必要があります。 インデクサーの状態は、[Indexer Status API](/rest/api/searchservice/get-indexer-status) を使用して監視できます。
 
 > [!NOTE]
-> 既存のインデクサーがある場合は、[PUT API](https://docs.microsoft.com/rest/api/searchservice/create-indexer) で `executionEnvironment` を `"Private"` に設定してそれを更新するだけです。
+> 既存のインデクサーがある場合は、[PUT API](/rest/api/searchservice/create-indexer) で `executionEnvironment` を `"Private"` に設定してそれを更新するだけです。
 
 ## <a name="troubleshooting-issues"></a>問題のトラブルシューティング
 
 - インデクサーを作成するときに、"データ ソースの資格情報が無効です" という内容のエラー メッセージが表示され、作成が失敗した場合は、プライベート エンドポイント接続が "*承認*" されていないか、機能していないことを意味します。
-[GET API](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources/get) を使用して、共有プライベート リンク リソースの状態を取得します。 "*承認*" されている場合は、リソースの `properties.provisioningState` を確認します。 `Incomplete` の場合、リソースの基礎となる依存関係の一部がプロビジョニングに失敗したことを意味します。`PUT` 要求を再実行して、共有プライベート リンク リソースを "再作成" して問題を解決する必要があります。 再承認が必要な場合もあります。検証するために、リソースの状態をもう一度確認します。
-- `executionEnvironment` を設定せずにインデクサーを作成した場合、そのインデクサーの作成は成功する場合もありますが、その実行履歴には、インデクサーの実行が失敗したことが示されます。 実行環境を指定するには、[インデクサーを更新](https://docs.microsoft.com/rest/api/searchservice/update-indexer)する必要があります。
+[GET API](/rest/api/searchmanagement/sharedprivatelinkresources/get) を使用して、共有プライベート リンク リソースの状態を取得します。 "*承認*" されている場合は、リソースの `properties.provisioningState` を確認します。 `Incomplete` の場合、リソースの基礎となる依存関係の一部がプロビジョニングに失敗したことを意味します。`PUT` 要求を再実行して、共有プライベート リンク リソースを "再作成" して問題を解決する必要があります。 再承認が必要な場合もあります。検証するために、リソースの状態をもう一度確認します。
+- `executionEnvironment` を設定せずにインデクサーを作成した場合、そのインデクサーの作成は成功する場合もありますが、その実行履歴には、インデクサーの実行が失敗したことが示されます。 実行環境を指定するには、[インデクサーを更新](/rest/api/searchservice/update-indexer)する必要があります。
 - `executionEnvironment` を設定せずにインデクサーを作成し、そのインデクサーが正常に実行された場合、Azure Cognitive Search によってその実行環境が検索サービス固有の "プライベート" 環境であると判断されたことを意味します。 ただし、これは、さまざまな要因 (インデクサーが消費するリソース、検索サービスへの負荷など) によって変わる可能性があり、後で失敗する可能性もあります。今後失敗しないように `executionEnvironment` を `"Private"` に設定することを強くお勧めします。
 - [クォータと制限](search-limits-quotas-capacity.md)によって、作成できる共有プライベート リンク リソースの数が決まります。クォータと制限は、検索サービスの SKU に基づきます。
 
@@ -168,5 +168,5 @@ Azure Cognitive Search によって作成されたプライベート エンド�
 
 以下で、プライベート エンドポイントについて詳しく学習してください。
 
-- [プライベート エンドポイントとは](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)
-- [プライベート エンドポイントに必要な DNS 構成](https://docs.microsoft.com/azure/private-link/private-endpoint-dns)
+- [プライベート エンドポイントとは](../private-link/private-endpoint-overview.md)
+- [プライベート エンドポイントに必要な DNS 構成](../private-link/private-endpoint-dns.md)

@@ -3,12 +3,12 @@ title: Azure VMware Solution VM のライフサイクル管理
 description: Microsoft Azure ネイティブ ツールを使用して、Azure VMware Solution VM のライフサイクルのあらゆる側面を管理する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: 10e721996b2e3186417a702d2d7473b36b11237f
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 452fa6bf4610c9d0dcb46587242e8d6df9cebd0d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575480"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950365"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Azure VMware Solution VM のライフサイクル管理
 
@@ -58,7 +58,7 @@ Azure Automation の **Azure Update Management** は、ハイブリッド環境�
 
 **Azure Security Center** は、クラウドとオンプレミスのハイブリッド ワークロード全体に対して高度な脅威保護を提供します。 Azure VMware Solution VM の脆弱性を評価し、必要に応じてアラートを発生させます。 このセキュリティ アラートは、解決のために Azure Monitor に転送できます。
 - Azure Security Center はデプロイを必要としません。 詳細については、[仮想マシンでサポートされている機能](../security-center/security-center-services.md)の一覧に関するページを参照してください。
-- Azure VMware Solution VM と Azure 以外の VM を Azure Security Center に追加するには、[Windows コンピューターでの Azure Security Center の利用開始](../security-center/quick-onboard-windows-computer.md)と、[Linux コンピューターでの Azure Security Center の利用開始](../security-center/quick-onboard-linux-computer.md)に関するページを参照してください。
+- Azure VMware Solution VM と Azure 以外の VM を Azure Security Center に追加するには、[Windows コンピューターでの Azure Security Center の利用開始](../security-center/quickstart-onboard-machines.md)と、[Linux コンピューターでの Azure Security Center の利用開始](../security-center/quickstart-onboard-machines.md)に関するページを参照してください。
 - VM を追加した後、Azure Security Center はリソースのセキュリティの状態を分析し、潜在的な脆弱性を特定します。 また、[概要] タブへの推奨事項の表示も行います。詳細については、「[Azure Security Center でのセキュリティの推奨事項](../security-center/security-center-recommendations.md)」を参照してください。
 - Azure Security Center では、セキュリティ ポリシーを定義できます。 セキュリティ ポリシーの構成の詳細については、「[セキュリティ ポリシーの操作](../security-center/tutorial-security-policy.md)」を参照してください。
 

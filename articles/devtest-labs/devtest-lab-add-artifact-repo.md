@@ -4,10 +4,10 @@ description: Azure DevTest Labs でカスタム アーティファクト ソー�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 225aae5e0a017b711f29a47829b06f8bb7a6a8ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85483144"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>カスタム アーティファクトと Resource Manager テンプレートを格納するための Git リポジトリの追加
@@ -31,11 +31,11 @@ VM を作成したときに、Resource Manager テンプレートを保存し、
 ### <a name="get-the-github-repository-clone-url-and-personal-access-token"></a>GitHub リポジトリのクローン URL と個人用アクセス トークンの取得
 
 1. アーティファクトまたは Resource Manager テンプレートの定義を含む GitHub リポジトリのホーム ページに移動します。
-2. **[Clone or download]\(クローンまたはダウンロード\)** を選択します。
+2. **[複製またはダウンロード]** を選択します。
 3. **[HTTPS clone URL]** ボタンをクリックして、URL をクリップボードにコピーします。 後で使用するために URL を保存します。
 4. GitHub の右上隅にあるプロファイル画像を選択し、 **[Settings]** を選択します。
-5. **[Personal settings]\(個人設定\)** メニューの左側で、 **[Personal access tokens]\(個人用アクセス トークン\)** を選択します。
-6. **[Generate Token]\(新しいトークンの生成\)** を選択します。
+5. **[Personal settings (個人設定)]** メニューの左側で、 **[Personal access tokens (個人用アクセス トークン)]** を選択します。
+6. **[新しいトークンの生成]** を選択します。
 7. **[New personal access token]** ページで、 **[Token description]** に説明を入力します。 **[Select scopes]** の既定の項目をそのまま使用し、 **[Generate Token]** を選択します。
 8. 生成されたトークンを保存します。 後でこのトークンを使用します。
 9. GitHub を閉じます。   

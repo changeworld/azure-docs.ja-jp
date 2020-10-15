@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: c80462707d3dccbb8fccff244017053c25ad46e8
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: f485569caef285601d1dce7acd116f13675da83a
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89463304"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950195"
 ---
 # <a name="setting-up-ip-firewall-rules-to-enable-indexer-access"></a>インデクサーによるアクセスを可能にする IP ファイアウォール規則の設定
 
@@ -89,6 +89,6 @@ IP アドレス範囲をストレージ アカウントのファイアウォー�
 
 インデックスへのアクセスを許可するために 2 つの IP アドレス セットを取得する方法がわかったので、次のリンクを使用して、いくつかの一般的なデータ ソースに対する IP ファイアウォール規則を更新します。
 
-- [Azure Storage ファイアウォールを構成する](https://docs.microsoft.com/azure/storage/common/storage-network-security)
-- [CosmosDB の IP ファイアウォールを構成する](https://docs.microsoft.com/azure/cosmos-db/firewall-support)
-- [Azure SQL Server の IP ファイアウォールを構成する](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)
+- [Azure Storage ファイアウォールを構成する](../storage/common/storage-network-security.md)
+- [CosmosDB の IP ファイアウォールを構成する](../cosmos-db/firewall-support.md)
+- [Azure SQL Server の IP ファイアウォールを構成する](../azure-sql/database/firewall-configure.md)

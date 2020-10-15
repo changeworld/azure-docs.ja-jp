@@ -3,16 +3,16 @@ title: ポリシー適用除外の構造の詳細
 description: Azure Policy でイニシアティブまたは定義の評価からリソースを除外するために使用されるポリシー適用除外の定義について説明します。
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1fd14d31824dc86dcd3788607030f28f978f5801
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: e6ced56c1dc65ca68998c5c58d3e985b63873e0b
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90968040"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91950178"
 ---
 # <a name="azure-policy-exemption-structure"></a>Azure Policy 適用除外の構造
 
-Azure Policy 適用除外 (プレビュー) 機能は、イニシアティブや定義の評価からリソースの階層または個々のリソースを "_除外_" する目的で使用します。 "_除外_" されたリソースは、全体的なコンプライアンスには考慮されますが、評価の対象にはできず、また一時的な特別承認の対象にすることもできません。 詳細については、「[Azure Policy でのスコープについて](./scope.md)」を参照してください。 Azure Policy の適用除外は、[Resource Manager モード](./definition-structure.md#resource-manager-modes)でのみ機能し、**リソース プロバイダー モード**では機能しません。
+Azure Policy 適用除外 (プレビュー) 機能は、イニシアティブや定義の評価からリソースの階層または個々のリソースを "_除外_" する目的で使用します。 "_除外_" されたリソースは、全体的なコンプライアンスには考慮されますが、評価の対象にはできず、また一時的な特別承認の対象にすることもできません。 詳細については、「[Azure Policy でのスコープについて](./scope.md)」を参照してください。 Azure Policy の適用除外は、[Resource Manager モード](./definition-structure.md#resource-manager-modes)でのみ機能し、[リソース プロバイダー モード](./definition-structure.md#resource-provider-modes)では機能しません。
 
 > [!IMPORTANT]
 > この機能は、**プレビュー**期間中は無料です。 価格の詳細については、「[Azure Policy の価格](https://azure.microsoft.com/pricing/details/azure-policy/)」を参照してください。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
