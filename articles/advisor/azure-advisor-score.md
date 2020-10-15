@@ -3,12 +3,12 @@ title: Advisor スコアを使用して Azure ワークロードを最適化す�
 description: Advisor スコアを使用して Azure を最大限に活用する方法
 ms.topic: article
 ms.date: 09/09/2020
-ms.openlocfilehash: 29d8480f501a78c1668b52034f439f998419f9d9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c4c401a8b532c247806c5fe30728a1f4afd334a4
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335621"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074024"
 ---
 # <a name="optimize-azure-workloads-using-advisor-score"></a>Advisor スコアを使用して Azure ワークロードを最適化する
 
@@ -17,7 +17,7 @@ ms.locfileid: "91335621"
 Azure Advisor によって、お使いのワークロードに対してベスト プラクティスの推奨事項が提供されます。 これらの推奨事項は、次のことを支援するためにパーソナライズされ実行可能になっています。
 * ワークロードの構成を改善し、Azure のデプロイを最適化する
 * ベスト プラクティスに従って、重大な問題を事前に防止する
-* [Microsoft Azure Well-Architected Framework](https://docs.microsoft.com/azure/architecture/framework/) の 5 つの柱に対して Azure ワークロードを評価する
+* [Microsoft Azure Well-Architected Framework](/azure/architecture/framework/) の 5 つの柱に対して Azure ワークロードを評価する
 
 **Advisor スコア**は、Advisor の中核機能として、これらの目標を効果的かつ効率的に達成するように考案されています。 
 
@@ -56,7 +56,7 @@ Advisor スコアの計算は、次の 4 つのステップにまとめること
   * 長期にわたる推奨事項が含まれるリソースでは、スコアに対する影響が大きくなります。
   * Advisor 上で延期または無視したリソースは、スコアの計算から完全に除かれます。 
     
-Advisor によって、Advisor のカテゴリ レベルにこのモデルが適用され (セキュリティでは、[セキュリティ スコア](https://docs.microsoft.com/azure/security-center/secure-score-security-controls#introduction-to-secure-score) モデルが使用されます)、各カテゴリの Advisor スコアが提示されます。単純な平均値によって最終的な Advisor スコアが生成されます。
+Advisor によって、Advisor のカテゴリ レベルにこのモデルが適用され (セキュリティでは、[セキュリティ スコア](../security-center/secure-score-security-controls.md#introduction-to-secure-score) モデルが使用されます)、各カテゴリの Advisor スコアが提示されます。単純な平均値によって最終的な Advisor スコアが生成されます。
 
 
 ## <a name="advisor-score-faq"></a>Advisor スコアに関するよく寄せられる質問

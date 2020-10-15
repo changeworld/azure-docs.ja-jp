@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: cba3f47015072f16112ef981d2f59d0c73cb69c2
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 1d82b7223c2b392e6b9aebffdc545dc38b38ca2f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142487"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074228"
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>Azure で Cloud Services をデプロイするときの割り当てエラーのトラブルシューティング
 ## <a name="summary"></a>まとめ
@@ -70,4 +70,4 @@ Azure データセンターのサーバーは、クラスターにパーティ�
      ```
    * 上の 2. の手順に従って、サービスの CSCFG で新しい ReservedIP を確実に指定します。
 4. 新しいデプロイのアフィニティ グループを削除する - アフィニティ グループは推奨されなくなりました。 上の 1. の手順に従って、新しいクラウド サービスをデプロイしてください。 クラウド サービスがアフィニティ グループ内にないことを確認します。
-5. リージョン Virtual Network に変換する - 「 [アフィニティ グループから、リージョン Virtual Network (VNet) に移行する方法](../virtual-network/virtual-networks-migrate-to-regional-vnet.md)」を参照してください。
+5. リージョン Virtual Network に変換する - 「 [アフィニティ グループから、リージョン Virtual Network (VNet) に移行する方法](/previous-versions/azure/virtual-network/virtual-networks-migrate-to-regional-vnet)」を参照してください。

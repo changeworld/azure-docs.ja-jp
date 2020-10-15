@@ -1,17 +1,17 @@
 ---
 title: チュートリアル - Azure Service Fabric Mesh にアプリをデプロイする
 description: このチュートリアルでは、テンプレートを使用して Service Fabric Mesh にアプリケーションをデプロイする方法について説明します。
-author: dkkapur
+author: georgewallace
 ms.topic: tutorial
 ms.date: 01/11/2019
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: f7cb3f75dcaaeb6e0304784941dfcfc81ae6d68f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: cc4912545bedb650268b3d8e4a3e9820b70b5fe2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248392"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842531"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>チュートリアル: テンプレートを使用して Service Fabric Mesh にアプリケーションをデプロイする
 
