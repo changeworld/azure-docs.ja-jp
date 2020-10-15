@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: jeedes
 ms.openlocfilehash: ad0fa25b07448c291e5c6c0f591b43b8d2f3ba65
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88542277"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamworkcom"></a>チュートリアル: Azure Active Directory と Teamwork.com の統合

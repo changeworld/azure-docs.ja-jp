@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 5e0533a44db269229b2f26fa8d2f2b4f84f4d0b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85125465"
 ---
 # <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>Application Gateway のメトリックを使用した AKS ポッドの自動スケーリング (ベータ版)

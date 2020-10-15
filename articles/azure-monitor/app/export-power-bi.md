@@ -4,10 +4,10 @@ description: Power BI で Analytics クエリを表示できます。
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.openlocfilehash: 804da7d3aaa2fd1b7973a686bc9ca5cb5ee973a2
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90979156"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Application Insights のデータを Power BI に入力する

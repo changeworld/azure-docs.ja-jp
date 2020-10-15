@@ -13,10 +13,10 @@ ms.subservice: sql-dw
 ms.date: 01/21/2020
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: eebde4470ba2635a5287cb3b0103fa49e0e243e0
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441002"
 ---
 # <a name="upgrade-your-sql-pool-to-gen2"></a>SQL プールを Gen2 にアップグレードする

@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: reference
 keywords: Kinect, Azure, センサー, SDK, 深度, RGB, 記録, 再生, Matroska, mkv
 ms.openlocfilehash: 3a78ed158c78df1c9a6eadcc0bfb2e40b22750bd
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87501782"
 ---
 # <a name="use-azure-kinect-sensor-sdk-to-record-file-format"></a>Azure Kinect Sensor SDK を使用してファイル形式を記録する

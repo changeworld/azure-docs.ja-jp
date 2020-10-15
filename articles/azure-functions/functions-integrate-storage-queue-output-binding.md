@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.custom: devx-track-csharp, mvc
 ms.openlocfilehash: 9c635b01bcd04bd03191fca2590b0189bad0f544
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90982015"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Functions を使用して Azure Storage キューにメッセージを追加する

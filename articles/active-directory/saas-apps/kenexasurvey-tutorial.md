@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: jeedes
 ms.openlocfilehash: ed4725a98939e160f42d3087b86e591b09c026c4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88540186"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ibm-kenexa-survey-enterprise"></a>チュートリアル: Azure Active Directory と IBM Kenexa Survey Enterprise の統合

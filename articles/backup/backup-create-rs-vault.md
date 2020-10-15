@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
 ms.openlocfilehash: c659efad7f0eaf5793e1fd608eb522964df7befd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90981507"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Recovery Services コンテナーを作成して構成する

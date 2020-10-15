@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: pdecarlo
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 95fd10ab7de4885d3630b5defe4080fe0203b62f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d14ef742c19556a9df2bd193a54bfaa1672d5964
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296979"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044226"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Ubuntu 仮想マシン上で Azure IoT Edge を実行する
 
@@ -50,7 +50,7 @@ IoT Edge ランタイムの動作とランタイムに含まれるコンポー�
 
     **管理ユーザー名**: ユーザー名。デプロイ時にルート権限が与えられます。
 
-    **[デバイス接続文字列]** :目的の [IoT Hub](../iot-hub/about-iot-hub.md) 内に作成された、デバイス向けの [デバイス接続文字列](how-to-register-device.md)。
+    **[デバイス接続文字列]** :目的の [IoT Hub](../iot-hub/about-iot-hub.md) 内に作成された、デバイス向けの [デバイス接続文字列](./how-to-manual-provision-symmetric-key.md)。
 
     **[VM サイズ]** :デプロイする仮想マシンの[サイズ](../cloud-services/cloud-services-sizes-specs.md)
 

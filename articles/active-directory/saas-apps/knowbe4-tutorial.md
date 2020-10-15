@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.openlocfilehash: c6e70268dcc252964a0b046488c399f474660ca5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88540088"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-knowbe4-security-awareness-training"></a>チュートリアル: Azure Active Directory と KnowBe4 Security Awareness Training の統合
