@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: f5a3c73d60f038820de100f99c554eec27fd6f55
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90033185"
 ---
 # <a name="secure-a-linked-service-with-private-links"></a>Private Link を使用してリンクされたサービスをセキュリティで保護する 

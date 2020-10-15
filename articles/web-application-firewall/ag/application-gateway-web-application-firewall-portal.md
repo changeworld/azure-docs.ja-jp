@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/16/2020
 ms.author: victorh
 ms.openlocfilehash: 58002140cd6ec0cd90eefc506dc743be05e7be7e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274488"
 ---
 # <a name="tutorial-create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する

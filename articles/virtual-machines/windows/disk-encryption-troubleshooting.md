@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: e48c6cfd1160406d55ffdc3c9bafe733a6e5e4a6
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 45c64261b60d88557e63cb8f9af922fd7aa71ad4
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400079"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977903"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure Disk Encryption トラブルシューティング ガイド
 
@@ -90,5 +90,5 @@ CLI で Azure Disk Encryption を無効にするには、[az vm encryption disab
 
 このドキュメントでは、Azure Disk Encryption で発生する一般的な問題の詳細と、それらの問題のトラブルシューティング方法について説明しました。 このサービスと機能の詳細については、次の記事を参照してください。
 
-- [Azure Security Center でディスクの暗号化を適用する](../../security-center/security-center-virtual-machine-protection.md)
+- [Azure Security Center でディスクの暗号化を適用する](../../security-center/asset-inventory.md)
 - [保存時の Azure データの暗号化](../../security/fundamentals/encryption-atrest.md)

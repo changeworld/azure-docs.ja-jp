@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: ca154caf67d8dd715ad1341e9fe3c6cfde20fde0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88553072"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>チュートリアル: Azure Active Directory と Infinite Campus の統合

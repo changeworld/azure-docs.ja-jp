@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 2e5fc8bde2c79a355fb7963c9101c4b040f97fa7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ee3b65e95fe3f4c52136cb3645c987fe7f6c9a7a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275160"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975367"
 ---
 # <a name="managed-disk-bursting"></a>マネージド ディスクのバースト
 [!INCLUDE [managed-disks-bursting](../../../includes/managed-disks-bursting.md)]
@@ -29,6 +29,6 @@ ms.locfileid: "91275160"
 バーストをサポートしている仮想マシンでは、バーストが既定で有効になっています。
 
 ## <a name="disk-level-bursting"></a>ディスク レベルでのバースト
-バーストは、Azure パブリック クラウド、Azure Government クラウド、Azure China クラウドのすべてのリージョンで、ディスク サイズ P20 以下の[プレミアム SSD](disks-types.md#premium-ssd) でも利用できます。 ディスク バースティングは、サポートされているディスク サイズのすべての新しいデプロイと既存のデプロイでは既定で有効になっています。 
+バーストは、Azure パブリック クラウド、Azure Government クラウド、Azure China クラウドのすべてのリージョンで、ディスク サイズ P20 以下の[プレミアム SSD](../disks-types.md#premium-ssd) でも利用できます。 ディスク バースティングは、サポートされているディスク サイズのすべての新しいデプロイと既存のデプロイでは既定で有効になっています。 
 
 [!INCLUDE [managed-disks-bursting](../../../includes/managed-disks-bursting-2.md)]

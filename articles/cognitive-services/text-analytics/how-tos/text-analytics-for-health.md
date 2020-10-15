@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
 ms.openlocfilehash: dffd12f319bd2766decda5874299cd7115f0502b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91309202"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>方法:Text Analytics for Health (プレビュー) を使用する

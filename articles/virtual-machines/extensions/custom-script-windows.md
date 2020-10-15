@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: e50c0b0fcb883b43650a5d99cea5aa39bae1cd94
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: 0bb1e4cb9b24c9b46f623e1604930367b82a47eb
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89426267"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91973820"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows でのカスタムのスクリプト拡張機能
 
@@ -48,7 +48,7 @@ Azure Blob ストレージの資格情報を使用して Azure Blob Storage に�
 
 ### <a name="internet-connectivity"></a>インターネット接続
 
-GitHub または Azure Storage などからスクリプトを外部でダウンロードする必要がある場合は、ファイアウォールやネットワーク セキュリティ グループのポートを追加で開く必要があります。 たとえば、スクリプトが Azure Storage にある場合、[ストレージ](../../virtual-network/security-overview.md#service-tags)に Azure NSG サービス タグを使用することでアクセスを許可できます。
+GitHub または Azure Storage などからスクリプトを外部でダウンロードする必要がある場合は、ファイアウォールやネットワーク セキュリティ グループのポートを追加で開く必要があります。 たとえば、スクリプトが Azure Storage にある場合、[ストレージ](../../virtual-network/network-security-groups-overview.md#service-tags)に Azure NSG サービス タグを使用することでアクセスを許可できます。
 
 スクリプトがローカル サーバー上にあるとき、場合によっては、ファイアウォールを追加し、ネットワーク セキュリティ グループ ポートを開く必要があります。
 

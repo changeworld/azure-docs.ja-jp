@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: 50d2d974815e0921d99154bce67f604b7314970d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: 86a6c1a15d804a6c758e90dbd4bdd7057a7a2716
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90892021"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91295280"
 ---
 # <a name="event-hubs-output-from-azure-stream-analytics"></a>Azure Stream Analytics からの Event Hubs 出力
 
@@ -46,7 +46,23 @@ ms.locfileid: "90892021"
 
 ## <a name="custom-metadata-properties-for-output"></a>出力用のカスタム メタデータ プロパティ
 
-ご自分の送信メッセージにクエリ列をユーザー プロパティとして添付できます。 これらの列はペイロードに入りません。 これらのプロパティは、出力メッセージにディクショナリの形式で表示されます。 "*キー*" は列名で、"*値*" はプロパティ ディクショナリの列値です。 Record と Array を除き、すべての Stream Analytics データ型がサポートされています。  
+ご自分の送信メッセージにクエリ列をユーザー プロパティとして添付できます。 これらの列はペイロードに入りません。 これらのプロパティは、出力メッセージにディクショナリの形式で表示されます。 "*キー*" は列名で、"*値*" はプロパティ ディクショナリの列値です。 Record と Array を除き、すべての Stream Analytics データ型がサポートされています。
+
+次の例では、`DeviceId` フィールドと `DeviceStatus` フィールドがメタデータに追加されています。
+
+1. 次のクエリを使用します。
+
+   ```sql
+   select *, DeviceId, DeviceStatus from iotHubInput
+   ```
+
+1. 出力のプロパティ列として `DeviceId,DeviceStatus` を構成します。
+
+   :::image type="content" source="media/event-hubs-output/property-columns.png" alt-text="プロパティ列":::
+
+次に示すのは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer) を利用して EventHub で検査される出力メッセージ プロパティの図です。
+
+:::image type="content" source="media/event-hubs-output/custom-properties.png" alt-text="プロパティ列":::
 
 ## <a name="next-steps"></a>次のステップ
 

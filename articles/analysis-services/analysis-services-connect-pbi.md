@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f79ff9af1272ca908c7a5ba35fbaa1e8bb87fc50
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bb1781394e0091d8358570c2eaa07ca97297a6ad
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506711"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92013782"
 ---
 # <a name="connect-with-power-bi"></a>Power BI を使用した接続
 
@@ -51,5 +51,4 @@ Azure でサーバーを作成して、表形式モデルを展開すると、�
 
 ## <a name="see-also"></a>関連項目
 [Azure Analysis Services に接続する](analysis-services-connect.md)   
-[クライアント ライブラリ](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)
-
+[クライアント ライブラリ](/analysis-services/client-libraries?view=azure-analysis-services-current)

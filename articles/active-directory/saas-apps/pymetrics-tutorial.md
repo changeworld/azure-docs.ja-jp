@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/10/2020
 ms.author: jeedes
 ms.openlocfilehash: fda55400b2b0c8b6f00cb08f2a5e8de9b9b4e866
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88553259"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pymetrics"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と pymetrics の統合

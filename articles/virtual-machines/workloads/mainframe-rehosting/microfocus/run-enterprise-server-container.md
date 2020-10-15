@@ -13,10 +13,10 @@ tags: ''
 keywords: ''
 ms.service: multiple
 ms.openlocfilehash: bfd40d39907c4e69ded0fa257305d346ca261836
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319998"
 ---
 # <a name="run-micro-focus-enterprise-server-50-in-a-docker-container-on-azure"></a>Azure 上の Docker コンテナーで Micro Focus Enterprise Server 5.0 を実行する

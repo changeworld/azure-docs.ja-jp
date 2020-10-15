@@ -15,10 +15,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
 ms.openlocfilehash: 2059c473c8429e7498992e26c0a2c90ea835c537
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89646598"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft ID プラットフォームの ID トークン

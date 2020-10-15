@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8265d328a23e871dc25692f22138a7bb648a8323
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: f9fc34a85f8a858adea2161e1734ead589180ea4
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653598"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978239"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Azure Availability Zones での SAP ワークロードの構成
 [Azure Availability Zones](../../../availability-zones/az-overview.md) は、Azure で提供されている高可用性機能の 1 つです。 Availability Zones により、Azure での SAP ワークロードの全体的な可用性が向上します。 この機能は、既に一部の[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)で利用可能になっています。 今後、さらに多くのリージョンで利用できるようになります。
@@ -30,7 +30,7 @@ SAP の高可用性の基本的なアーキテクチャを次の図に示しま�
 
 ![標準の高可用性構成](./media/sap-ha-availability-zones/standard-ha-config.png)
 
-SAP のアプリケーション レイヤーは、1 つの Azure [可用性セット](../../windows/manage-availability.md)にデプロイされます。 SAP セントラル サービスの高可用性を確保するために、別々の可用性セットに 2 つの VM をデプロイできます。 インフラストラクチャやソフトウェアの問題に備える自動フェールオーバーの高可用性フレームワークとして、Windows Server フェールオーバー クラスタリングまたは Pacemaker (Linux) を使用します。 このようなデプロイの詳細については、以下を参照してください。
+SAP のアプリケーション レイヤーは、1 つの Azure [可用性セット](../../manage-availability.md)にデプロイされます。 SAP セントラル サービスの高可用性を確保するために、別々の可用性セットに 2 つの VM をデプロイできます。 インフラストラクチャやソフトウェアの問題に備える自動フェールオーバーの高可用性フレームワークとして、Windows Server フェールオーバー クラスタリングまたは Pacemaker (Linux) を使用します。 このようなデプロイの詳細については、以下を参照してください。
 
 - [クラスター共有ディスクを使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する](./sap-high-availability-guide-wsfc-shared-disk.md)
 - [ファイル共有を使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する](./sap-high-availability-guide-wsfc-file-share.md)

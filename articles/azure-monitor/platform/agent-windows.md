@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/03/2020
 ms.openlocfilehash: d283c2b2cdbbeb3ef4bc4e25f4288dfd95158552
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89003373"
 ---
 # <a name="install-log-analytics-agent-on-windows-computers"></a>Windows コンピューターに Log Analytics エージェントをインストールする

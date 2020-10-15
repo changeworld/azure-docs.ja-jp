@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 1c2156975eb8d8dcb3580603dfbe1f5d1390b79a
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 06d71713075b401c876edd87f0ec884bcb252589
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852481"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977750"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Azure で仮想マシンをセキュリティで保護し、ポリシーを使用する
 
@@ -25,7 +25,7 @@ ms.locfileid: "88852481"
 
 ## <a name="azure-security-center"></a>Azure Security Center
 
-[Azure Security Center](../security-center/security-center-intro.md) は、VM に対する脅威の防御、検出、対応を可能にする機能です。 Security Center は、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
+[Azure Security Center](../security-center/security-center-introduction.md) は、VM に対する脅威の防御、検出、対応を可能にする機能です。 Security Center は、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
 Security Center の Just-In-Time アクセスは、VM のデプロイ全体に適用できます。これによって Azure VM へのインバウンド トラフィックをロックダウンし、VM への接続が必要な場合は簡単にアクセスできるようにしつつ、攻撃に対する露出を減らすことができます。 Just-In-Time が有効で、ユーザー要求が VM にアクセスする場合、ユーザーが VM に対してどのアクセス許可を持っているかが Security Center によって確認されます。 ユーザーが適切なアクセス許可を持っている場合は要求が承認され、Security Center では、選択したポートへのインバウンド トラフィックを制限時間内だけで許可するように、ネットワーク セキュリティ グループ (NSG) が自動的に構成されます。 指定された時間が経過すると、Security Center により NSG が以前の状態に復元されます。 
 
@@ -69,9 +69,8 @@ VM に接続するときは、公開キー暗号化を使用して、より安�
 
 ## <a name="role-based-access-control"></a>ロールベースのアクセス制御
 
-[Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) を使用すると、チーム内の職務を分離し、VM 上のユーザーに自分の職務を実行するために必要な量のアクセスのみを付与できます。 すべてのユーザーに VM への無制限のアクセス許可を付与するのではなく、特定の操作のみを許可することができます。 VM のアクセス制御は、[Azure Portal](../role-based-access-control/role-assignments-portal.md) で構成できるほか、[Azure CLI](https://docs.microsoft.com/cli/azure/role) または [Azure PowerShell](../role-based-access-control/role-assignments-powershell.md) を使って構成することもできます。
+[Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) を使用すると、チーム内の職務を分離し、VM 上のユーザーに自分の職務を実行するために必要な量のアクセスのみを付与できます。 すべてのユーザーに VM への無制限のアクセス許可を付与するのではなく、特定の操作のみを許可することができます。 VM のアクセス制御は、[Azure Portal](../role-based-access-control/role-assignments-portal.md) で構成できるほか、[Azure CLI](/cli/azure/role) または [Azure PowerShell](../role-based-access-control/role-assignments-powershell.md) を使って構成することもできます。
 
 
 ## <a name="next-steps"></a>次のステップ
 - Azure Security Center を使って [Linux](../security/fundamentals/overview.md) または [Windows](windows/tutorial-azure-security.md) の仮想マシンのセキュリティを監視する手順を参照します。
-

@@ -7,10 +7,10 @@ ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
 ms.openlocfilehash: 6318f426e42612f21da7a43c9857894ae610f68e
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88871184"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>エージェントレスの VMware VM 移行におけるレプリケーションの問題のトラブルシューティング

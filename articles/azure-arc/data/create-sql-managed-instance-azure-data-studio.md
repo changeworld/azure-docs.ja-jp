@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 2aed3ea48935a62d68f739594a265649a2e1292d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91311531"
 ---
 # <a name="create-sql-managed-instance---azure-arc-using-azure-data-studio"></a>Azure Data Studio を使用して SQL Managed Instance - Azure Arc を作成する

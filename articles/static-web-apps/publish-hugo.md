@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
 ms.openlocfilehash: ff408f114784fa3f0b8fab49521b5ec7ec2be102
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88797719"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>チュートリアル:Hugo サイトを Azure Static Web Apps プレビューに発行する
@@ -103,11 +103,11 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 1. **[Static Web Apps (Preview)]\(Static Web Apps (プレビュー)\)** をクリックします
 1. **[作成]** をクリックします。
 
-   :::image type="content" source="./media/publish-hugo/create-in-portal.png" alt-text="ポータルで Azure Static Web Apps リソースを作成する":::
+   :::image type="content" source="./media/publish-hugo/create-in-portal.png" alt-text="ポータルで Azure Static Web Apps リソースを作成する&quot;:::
 
 1. **[サブスクリプション]** で、リストされているサブスクリプションを受け入れるか、ドロップダウン リストから新しいサブスクリプションを選択します。
 
-1. _[リソース グループ]_ で、 **[新規]** を選択します。 "_新しいリソース グループ名_" として「**hugo-static-app**」と入力し、 **[OK]** を選択します。
+1. _[リソース グループ]_ で、 **[新規]** を選択します。 &quot;_新しいリソース グループ名_" として「**hugo-static-app**」と入力し、 **[OK]** を選択します。
 
 1. 次に、 **[名前]** ボックスに対象のアプリの名前を入力します。 有効な文字には、`a-z`、`A-Z`、`0-9`、および `-` があります。
 
@@ -115,7 +115,11 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 
 1. _[SKU]_ で、 **[Free]** を選択します。
 
-   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="詳細情報の入力":::
+   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="ポータルで Azure Static Web Apps リソースを作成する&quot;:::
+
+1. **[サブスクリプション]** で、リストされているサブスクリプションを受け入れるか、ドロップダウン リストから新しいサブスクリプションを選択します。
+
+1. _[リソース グループ]_ で、 **[新規]** を選択します。 &quot;_新しいリソース グループ名_":::
 
 1. **[GitHub でサインイン]** ボタンをクリックします。
 
@@ -125,7 +129,11 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 
 1. _[ブランチ]_ では、**master** を選択します。
 
-   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="入力済みの GitHub 情報":::
+   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="ポータルで Azure Static Web Apps リソースを作成する&quot;:::
+
+1. **[サブスクリプション]** で、リストされているサブスクリプションを受け入れるか、ドロップダウン リストから新しいサブスクリプションを選択します。
+
+1. _[リソース グループ]_ で、 **[新規]** を選択します。 &quot;_新しいリソース グループ名_":::
 
 ### <a name="build"></a>Build
 
@@ -149,7 +157,11 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 
 1. Azure portal で新しく作成された Azure Static Web Apps リソースの _[概要]_ ウィンドウに移動し、 _[URL]_ リンクをクリックして、デプロイしたアプリケーションを開きます。
 
-   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="デプロイされたアプリケーション":::
+   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="ポータルで Azure Static Web Apps リソースを作成する&quot;:::
+
+1. **[サブスクリプション]** で、リストされているサブスクリプションを受け入れるか、ドロップダウン リストから新しいサブスクリプションを選択します。
+
+1. _[リソース グループ]_ で、 **[新規]** を選択します。 &quot;_新しいリソース グループ名_":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
