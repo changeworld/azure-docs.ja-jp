@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 345b4950e25f48eb1a48c5e583908d0f771771ba
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 3ceb8fd154e8ad533f4bf6bc9eb0ec3900749f8b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206237"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075367"
 ---
 # <a name="access-and-customize-developer-portal"></a>開発者ポータルへのアクセスとそのカスタマイズ
 
@@ -131,7 +131,7 @@ ms.locfileid: "86206237"
 ポータルの訪問者が組み込みの対話型コンソールを使用して API をテストできるようにするには、API で CORS (クロスオリジン リソース共有) を有効にする必要があります。 詳細については、[こちらのドキュメントの記事](api-management-howto-developer-portal.md#cors)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-- [クラウドの支出を最適化して節約する](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+- [クラウドの支出を最適化して節約する](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
 
 開発者ポータルの詳細については、次を参照してください。
 

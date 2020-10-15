@@ -4,10 +4,10 @@ description: この記事では、Azure Event Grid メトリックとアクテ�
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 615ebef749be49822a09470eb0d47d8eb31b9a5a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86119142"
 ---
 # <a name="set-alerts-on-azure-event-grid-metrics-and-activity-logs"></a>Azure Event Grid メトリックとアクティビティ ログに関するアラートを設定する
@@ -21,23 +21,23 @@ ms.locfileid: "86119142"
     :::image type="content" source="./media/monitor-event-delivery/new-alert-button.png" alt-text="[アラート] ページ - [New alert rule]\(新しいアラート ルール\) ボタン":::
 2. **[アラート ルールの作成]** ページで、リソースにトピックが選択されていることを確認します。 次に、 **[条件の選択]** をクリックします。 
 
-    :::image type="content" source="./media/monitor-event-delivery/alert-select-condition.png" alt-text="[アラート] ページ - [条件の選択]":::    
+    :::image type="content" source="./media/monitor-event-delivery/alert-select-condition.png" alt-text="[アラート] ページ - [New alert rule]\(新しいアラート ルール\) ボタン":::    
 3. **[シグナル ロジックの構成]** ページで、以下の操作を行います。
     1. メトリックまたはアクティビティ ログ エントリを選択します。 この例では、 **[配信不能イベント]** が選択されています。 
 
-        :::image type="content" source="./media/monitor-event-delivery/select-dead-lettered-events.png" alt-text="配信不能イベントの選択":::        
+        :::image type="content" source="./media/monitor-event-delivery/select-dead-lettered-events.png" alt-text="[アラート] ページ - [New alert rule]\(新しいアラート ルール\) ボタン":::        
     2. ディメンションを選択します (省略可能)。 
         
-        :::image type="content" source="./media/monitor-event-delivery/configure-signal-logic.png" alt-text="シグナル ロジックを構成する":::        
+        :::image type="content" source="./media/monitor-event-delivery/configure-signal-logic.png" alt-text="[アラート] ページ - [New alert rule]\(新しいアラート ルール\) ボタン":::        
 
         > [!NOTE]
         > **EventSubscriptionName** の **[+]** ボタンを選択して、イベントをフィルター処理するためのイベント サブスクリプション名を指定します。 
     3. 下へスクロールします。 **[アラート ロジック]** セクションで、**演算子**と**集計の種類**を選択し、**しきい値**を入力して、 **[完了]** を選択します。 この例では、配信不能イベントの合計数が 10 を超えると、アラートがトリガーされます。 
     
-        :::image type="content" source="./media/monitor-event-delivery/alert-logic.png" alt-text="アラート ロジック":::                
+        :::image type="content" source="./media/monitor-event-delivery/alert-logic.png" alt-text="[アラート] ページ - [New alert rule]\(新しいアラート ルール\) ボタン":::                
 4. **[アラート ルールの作成]** ページに戻って、 **[アクション グループの選択]** をクリックします。
 
-    :::image type="content" source="./media/monitor-event-delivery/select-action-group-button.png" alt-text="[アクション グループの選択] ボタン":::
+    :::image type="content" source="./media/monitor-event-delivery/select-action-group-button.png" alt-text="[アラート] ページ - [New alert rule]\(新しいアラート ルール\) ボタン":::
 5. ツールバーの **[アクション グループの作成]** を選択して、新しいアクション グループを作成します。 既存のアクション グループを選択することもできます。        
 6. **[アクション グループの追加]** ページで、以下の操作を行います。
     1. **アクション グループの名前**を入力します。
@@ -48,26 +48,26 @@ ms.locfileid: "86119142"
     1. **アクションの種類**を選択します。 この例では、 **[電子メールの Azure Resource Manager のロール]** が選択されています。具体的には、**所有者**ロールです。 
     1. **[OK]** を選択してページを閉じます。 
     
-        :::image type="content" source="./media/monitor-event-delivery/add-action-group-page.png" alt-text="[アクション グループの追加] ページ":::                   
+        :::image type="content" source="./media/monitor-event-delivery/add-action-group-page.png" alt-text="[アラート] ページ - [New alert rule]\(新しいアラート ルール\) ボタン":::                   
 7. **[アラート ルールの作成]** ページに戻り、アラート ルールの名前を入力してから、 **[アラート ルールの作成]** を選択します。
 
-    :::image type="content" source="./media/monitor-event-delivery/alert-rule-name.png" alt-text="アラート ルール名":::  
+    :::image type="content" source="./media/monitor-event-delivery/alert-rule-name.png" alt-text="[アラート] ページ - [New alert rule]\(新しいアラート ルール\) ボタン":::  
 8. これで、トピックの **[アラート]** ページに、アラートがまだない場合にアラート ルールを管理するためのリンクが表示されます。 アラートがある場合は、ツールバーの **[アラート ルールの管理]** を選択します。  
 
-    :::image type="content" source="./media/monitor-event-delivery/manage-alert-rules.png" alt-text="アラートの管理":::
+    :::image type="content" source="./media/monitor-event-delivery/manage-alert-rules.png" alt-text="[アラート] ページ - [New alert rule]\(新しいアラート ルール\) ボタン":::
 
 ## <a name="create-alerts-on-other-metrics-or-activity-log-operations"></a>他のメトリックまたはアクティビティ ログ操作に関するアラートを作成する
 前のセクションでは、配信不能なイベントに関するアラートを作成する方法について説明しました。 他のメトリックまたはアクティビティ ログ操作に関するアラートを作成する手順も同様です。 
 
 たとえば、配信できなかったイベントに関するアラートを作成するには、[**シグナル ロジックの構成]** ページで **[配信できなかったイベント]** を選択します。 
 
-:::image type="content" source="./media/set-alerts/delivery-failed-events.png" alt-text="[配信できなかったイベント] を選択する":::
+:::image type="content" source="./media/set-alerts/delivery-failed-events.png" alt-text="[アラート] ページ - [New alert rule]\(新しいアラート ルール\) ボタン":::
 
 
 ## <a name="create-alerts-using-the-metrics-page"></a>[メトリック] ページを使用してアラートを作成する
 また、 **[メトリック]** ページを使用してアラートを作成することもできます。 手順は同じです。 システム トピックの場合は、 **[アラート]** ページを使用できないため、アラートの作成には **[メトリック]** ページのみを使用できます。 
 
-:::image type="content" source="./media/monitor-event-delivery/metric-page-create-alert-button.png" alt-text="[メトリック] ページ - アラートの作成ボタン":::   
+:::image type="content" source="./media/monitor-event-delivery/metric-page-create-alert-button.png" alt-text="[アラート] ページ - [New alert rule]\(新しいアラート ルール\) ボタン":::   
     
 
 > [!NOTE]

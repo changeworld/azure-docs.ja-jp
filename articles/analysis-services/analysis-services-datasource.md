@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b99ac957c9c5030b484b244223847be4aa53a39d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 174ad4692d043390e6773a98e31f0985d75c8e2e
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749095"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018816"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services でサポートされるデータ ソース
 
@@ -79,7 +79,7 @@ Analysis Services プロジェクトを使用した Visual Studio の [データ
 **注:**  
 <a name="tab1400b">6</a> - 表形式 1400 以上のモデルのみ。  
 <a name="sqlim">7</a> - 表形式 1200 以上のモデルで "*プロバイダー*" データ ソースとして指定されている場合は、Microsoft OLE DB Driver for SQL Server MSOLEDBSQL (推奨)、SQL Server Native Client 11.0、または .NET Framework Data Provider SQL Server を指定します。  
-<a name="instgw">8</a> - データ プロバイダーとして MSOLEDBSQL を指定する場合は、オンプレミス データ ゲートウェイと同じコンピューターに、[Microsoft OLE DB Driver for SQL Server](https://docs.microsoft.com/sql/connect/oledb/oledb-driver-for-sql-server) をダウンロードしてインストールすることが必要になる場合があります。  
+<a name="instgw">8</a> - データ プロバイダーとして MSOLEDBSQL を指定する場合は、オンプレミス データ ゲートウェイと同じコンピューターに、[Microsoft OLE DB Driver for SQL Server](/sql/connect/oledb/oledb-driver-for-sql-server) をダウンロードしてインストールすることが必要になる場合があります。  
 <a name="oracle">9</a> - 表形式 1200 モデルの場合、または表形式 1400 以上のモデルの "*プロバイダー*" データ ソースとしては、Oracle Data Provider for .NET を指定します。 構造化データ ソースとして指定した場合は、必ず [Oracle マネージド プロバイダーを有効](#enable-oracle-managed-provider)にしてください。   
 <a name="teradata">10</a> - 表形式 1200 モデルの場合、または表形式 1400 以上のモデルの "*プロバイダー*" データ ソースとしては、Teradata Data Provider for .NET を指定します。  
 <a name="filesSP">11</a> - オンプレミスの SharePoint 内のファイルはサポートされていません。

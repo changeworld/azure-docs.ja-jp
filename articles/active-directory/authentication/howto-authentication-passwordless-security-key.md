@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 09/14/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e523f8cc3aa9ab2f42d2d28909c9dec2dad30b43
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: f99d57e084a6a765b8598ba7f8eebbd7ddb34d74
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526954"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91964640"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>パスワードなしのセキュリティ キー サインインを有効にする (プレビュー)
 

@@ -6,10 +6,10 @@ ms.date: 07/28/2020
 ms.topic: conceptual
 ms.custom: mvc
 ms.openlocfilehash: 4b4946da9f63299c7ba2b383d6c153673595a1ab
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87449642"
 ---
 # <a name="remove-update-management-from-automation-account"></a>Automation アカウントから Update Management を削除する

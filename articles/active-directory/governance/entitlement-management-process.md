@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4ff270977449bb80f97073342dc0c726a3f2316
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80128518"
 ---
 # <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理における要求プロセスと電子メール通知

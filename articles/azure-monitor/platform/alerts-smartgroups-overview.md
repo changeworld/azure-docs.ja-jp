@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/15/2018
 ms.openlocfilehash: 05b05f8bc079bb3768ac2f1a03593bc9260b41aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77665495"
 ---
 # <a name="smart-groups"></a>スマート グループ

@@ -3,12 +3,12 @@ title: IoT Edge デバイスに Live Video Analytics をデプロイする - Azu
 description: この記事では、IoT Edge デバイスに Live Video Analytics をデプロイするときに役立つ手順を示します。 たとえば、ローカル Linux コンピューターにアクセスできる場合や、以前に Azure Media Services アカウントを作成してある場合などに、これを行います。
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: 211dd0d61bbca39c4f4ec2f388d950c4615bb023
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a64fc11d7afa70d5200fdbd24bd3facdb8a95a7e
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887231"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019581"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>IoT Edge デバイスに Live Video Analytics をデプロイする
 
@@ -20,7 +20,7 @@ ms.locfileid: "90887231"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [サポートされている Linux オペレーティング システム](https://docs.microsoft.com/azure/iot-edge/support#operating-systems)のいずれかを実行している x86-64 または ARM64 デバイス
+* [サポートされている Linux オペレーティング システム](../../iot-edge/support.md#operating-systems)のいずれかを実行している x86-64 または ARM64 デバイス
 * [所有者特権](../../role-based-access-control/built-in-roles.md#owner)がある Azure サブスクリプション
 * [IoT Hub を作成してセットアップします](../../iot-hub/iot-hub-create-through-portal.md)
 * [IoT Edge デバイスを登録します](../../iot-edge/how-to-register-device.md)

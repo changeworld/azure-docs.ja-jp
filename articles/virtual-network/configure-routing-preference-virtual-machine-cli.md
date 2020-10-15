@@ -14,10 +14,10 @@ ms.date: 05/18/2020
 ms.author: mnayak
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 49b0df3e750d4d23cb6a64f3f7266613fd2f2981
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87501833"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-azure-cli"></a>Azure CLI を使用して VM 用にルーティング優先設定を構成する

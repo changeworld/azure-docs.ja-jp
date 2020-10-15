@@ -8,10 +8,10 @@ ms.date: 05/21/2020
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: e8f9a8e1d10e39e37480e06a25fcc0e203a104ec
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89378731"
 ---
 # <a name="marketplace-metering-service-authentication-strategies"></a>Marketplace の測定サービスの認証方法

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/22/2019
 ms.openlocfilehash: d9efdb11ffd30c68a0ac8ea8e8156fe707f188de
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87322314"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Azure Monitor の Syslog データ ソース

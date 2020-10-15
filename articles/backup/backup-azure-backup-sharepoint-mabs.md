@@ -4,10 +4,10 @@ description: Azure Backup Server を使用して SharePoint データをバッ�
 ms.topic: conceptual
 ms.date: 04/26/2020
 ms.openlocfilehash: 837aabf739431eebaa6406770620329fe6345eb7
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89375399"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>MABS を使用して SharePoint ファームを Azure にバックアップする

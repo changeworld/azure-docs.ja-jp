@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/18/2019
 ms.custom: devx-track-java
 ms.openlocfilehash: fca5c9b1bde8429d829ab6113804602c8baa2ebe
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87374271"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Application Insights を使用した Java トレース ログの探索

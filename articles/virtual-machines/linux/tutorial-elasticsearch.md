@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 10/11/2017
 ms.author: routlaw
 ms.openlocfilehash: 1b7b4d3c25794a62bc19925ade278159ebb37615
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80066538"
 ---
 # <a name="install-the-elastic-stack-on-an-azure-vm"></a>Elastic Stack を Azure VM にインストールする

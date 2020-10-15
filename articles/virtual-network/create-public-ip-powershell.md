@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
 ms.openlocfilehash: 6174d108fd80df9725ca5ef0fb9296dfffaf4a64
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89300808"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用してパブリック IP アドレスを作成する

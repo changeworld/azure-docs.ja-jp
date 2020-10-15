@@ -5,10 +5,10 @@ ms.date: 07/03/2018
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 773a08646f7a69e1ed828621bad48a6c6729eb88
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87498528"
 ---
 # <a name="create-a-function-in-azure-that-is-deployed-from-azure-devops"></a>Azure DevOps からデプロイされる関数を Azure で作成する

@@ -9,10 +9,10 @@ ms.date: 05/01/2019
 ms.author: juliako
 ms.custom: include file
 ms.openlocfilehash: 9d8de8826fc3dfcc2360eb3b6c82b3ff8d65d845
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79461233"
 ---
 ### <a name="access-the-media-services-api"></a>Media Services API にアクセスする

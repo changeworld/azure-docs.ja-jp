@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: fc1bca1265139a438fad86bfce770026866d9a2f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90930827"
 ---
 # <a name="manage-zone-redundant-high-availability-in-flexible-server"></a>フレキシブル サーバーでゾーン冗長の高可用性を管理する
@@ -35,24 +35,24 @@ ms.locfileid: "90930827"
     :::image type="content" source="./media/how-to-manage-high-availability-portal/subscription-region.png" alt-text="サブスクリプションとリージョンを表示する":::
 
 2.  **可用性ゾーン**を確認します。 これは、待機時間を短縮するために、データベースと同じ可用性ゾーンにアプリケーションを併置する場合に便利です。 フレキシブル サーバーを任意の可用性ゾーンに展開する場合は、 **[優先設定なし]** を選択します。
-    ![AZ の選択]() :::image type="content" source="./media/how-to-manage-high-availability-portal/zone-selection.png" alt-text="可用性ゾーンの選択":::  
+    ![AZ の選択]() :::image type="content" source="./media/how-to-manage-high-availability-portal/zone-selection.png" alt-text="サブスクリプションとリージョンを表示する":::  
 
 3.  [可用性] オプションで **[ゾーン冗長の高可用性]** のチェックボックスをオンにします。
 
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-checkbox.png" alt-text="高可用性のチェックボックス":::
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-checkbox.png" alt-text="サブスクリプションとリージョンを表示する":::
 
 4.  デフォルトのコンピューティングとストレージを変更する場合は、 **[サーバーの構成]** をクリックします。
  
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/configure-server.png" alt-text="サーバーの構成 - コンピューティング + ストレージ":::  
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/configure-server.png" alt-text="サブスクリプションとリージョンを表示する":::  
 
 5.  [高可用性] オプションをオンにすると、バースト可能レベルは選択できなくなります。 **[汎用]** または **[メモリ最適化]** のどちらかのコンピューティング レベルを選択できます。 次に、ドロップダウン リストから選択した**コンピューティング サイズ**を選択できます。
 
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/select-compute.png" alt-text="コンピューティング レベルの選択":::  
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/select-compute.png" alt-text="サブスクリプションとリージョンを表示する":::  
 
 
 6.  スライディング バーを使用して GiB 単位で**ストレージ サイズ**を選択し、7 日から 35 日の範囲で**バックアップ保持期間**を選択します。
    
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/storage-backup.png" alt-text="ストレージ バックアップ"::: 
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/storage-backup.png" alt-text="サブスクリプションとリージョンを表示する"::: 
 
 7. **[保存]** をクリックします。 
 
@@ -64,11 +64,11 @@ ms.locfileid: "90930827"
 
 2.  [フレキシブル サーバー] ページで、左側のパネルから  **[高可用性]** をクリックして、[高可用性] ページを開きます。
    
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="左側のパネルの選択"::: 
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="サブスクリプションとリージョンを表示する"::: 
 
 3.  **[ゾーン冗長の高可用性]** チェックボックスをオンにしてこのオプションを**有効**にし、 **[保存]**   をクリックして変更内容を保存します。
 
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/enable-high-availability.png" alt-text="高可用性を有効にする"::: 
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/enable-high-availability.png" alt-text="サブスクリプションとリージョンを表示する"::: 
 
 4.  高可用性を有効にすることにより、追加のサーバーと記憶域のデプロイによってコストが増大することを示す確認ダイアログが表示されます。
 
@@ -84,11 +84,11 @@ ms.locfileid: "90930827"
 
 2.  フレキシブル サーバー ページで、前面パネルから  **[高可用性]** をクリックして、[高可用性] ページを開きます。
    
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="左側のパネルの選択"::: 
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="サブスクリプションとリージョンを表示する"::: 
 
 3.  **[ゾーン冗長の高可用性]** チェックボックスをオンにして、オプションを**無効**にします。 次に、 **[保存]**   をクリックして、変更を保存します。
 
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/disable-high-availability.png" alt-text="高可用性を無効にする"::: 
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/disable-high-availability.png" alt-text="サブスクリプションとリージョンを表示する"::: 
 
 4.  高可用性を無効にすることを確認できる確認ダイアログが表示されます。
 

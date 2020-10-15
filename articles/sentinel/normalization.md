@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
 ms.openlocfilehash: 0c6129a24e6ed083114971df5f254eca54924400
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90931558"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Azure Sentinel での正規化
@@ -97,7 +97,7 @@ Azure Sentinel でまだサポートされていない他の種類の解析は�
 
     1. **カテゴリ**: 既存のカテゴリを選択するか、新しいカテゴリ (*Normalizednetworksessionsparc* など) を作成できます
     
-        :::image type="content" source="./media/normalization/save-new-parser.png" alt-text="パーサーを保存する":::
+        :::image type="content" source="./media/normalization/save-new-parser.png" alt-text="新しいパーサーをインストールする":::
 
 パーサーを適切に使用するには、Empty ネットワーク スキーマ パーサー (これにより、すべてのネットワーク セッション スキーマのフィールドの空の表形式ビューが作成されます) と Network メタパーサー (これにより、すべての有効なパーサーを結合して、ネットワーク スキーマのさまざまなソースからのデータの単一ビューが作成されます) もインストールする必要があります。 これらの 2 つのパーサーのインストールは、前述の手順と同様の方法で行います。
 
@@ -107,15 +107,15 @@ Azure Sentinel でまだサポートされていない他の種類の解析は�
 
 有効にすると、メタパーサーを使用して、現在有効なすべてのパーサーの統一されたビューに対してクエリを実行できます。 これを行うには、Sentinel ログ ページにアクセスし、メタパーサーに対してクエリを実行します。
 
-:::image type="content" source="./media/normalization/query-parser.png" alt-text="パーサーのクエリ":::
+:::image type="content" source="./media/normalization/query-parser.png" alt-text="新しいパーサーをインストールする":::
  
 [クエリ エクスプローラー] をクリックして、Sentinel ログ ページのクエリ エクスプローラーを使用して、メタパーサーや個々のパーサーにアクセスすることもできます。
 
-:::image type="content" source="./media/normalization/query-explorer.png" alt-text="クエリ エクスプローラー":::
+:::image type="content" source="./media/normalization/query-explorer.png" alt-text="新しいパーサーをインストールする":::
 
 右側のウィンドウで、[保存されたクエリ] セクションを展開し、'NormalizedNetworkParsers' フォルダー (または、パーサーの作成時に選択したカテゴリ名) を見つけます。
 
-:::image type="content" source="./media/normalization/find-parser.png" alt-text="パーサーの検索":::
+:::image type="content" source="./media/normalization/find-parser.png" alt-text="新しいパーサーをインストールする":::
 
 個々のパーサーをクリックして、そこで使用されている基になる関数を確認し、実行できます (前述のように、そのエイリアスによって直接アクセスすることもできます)。 パーサーによっては、利便性のため、元のフィールドと正規化されたフィールドを横に並べて保持できます。 これは、パーサーのクエリで簡単に編集できます。
 
@@ -124,11 +124,11 @@ Azure Sentinel でまだサポートされていない他の種類の解析は�
 上記の手順 (クエリ エクスプローラーでのパーサーの検索) を繰り返すことができます。関連パーサーをクリックし、その関数の実装を確認します。
 たとえば、メタパーサーを編集して、個々のパーサーを追加または削除できます。
 
-:::image type="content" source="./media/normalization/customize-parser.png" alt-text="パーサーのカスタマイズ":::
+:::image type="content" source="./media/normalization/customize-parser.png" alt-text="新しいパーサーをインストールする":::
  
 関数を変更したら、[保存] を再度クリックし、同じ名前、エイリアス、およびカテゴリを使用します。 上書きダイアログが開きます。[OK] をクリックします。
 
-:::image type="content" source="./media/normalization/are-you-sure.png" alt-text="確認":::
+:::image type="content" source="./media/normalization/are-you-sure.png" alt-text="新しいパーサーをインストールする":::
 
 #### <a name="additional-information"></a>関連情報
 

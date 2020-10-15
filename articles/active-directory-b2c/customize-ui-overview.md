@@ -12,12 +12,12 @@ ms.date: 09/24/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84f488863a39307ac7b55d5238fab786084a3614
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4566e3d40a67a9cd9d61f78884df11536c0809bc
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91259545"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949294"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 内のユーザー インターフェイスをカスタマイズする
 
@@ -178,7 +178,6 @@ Azure AD B2C で会社のブランドを構成する際は、次の点に注意�
 
 * 現在、Azure AD B2C の会社のブランドは、**背景画像**、**バナー ロゴ**、**背景色**のカスタマイズに制限されています。 **[詳細設定]** などの会社のブランド ペインのその他のプロパティは*サポートされていません*。
 * ユーザー フロー ページでは、背景画像が読み込まれる前に背景色が表示されます。 よりスムーズな読み込みエクスペリエンスのため、背景画像の色とほぼ同じ背景色を選択することをお勧めします。
-* バナー ロゴは、ユーザーがサインアップ ユーザー フローを開始するときに、ユーザーに送信された確認メールに表示されます。
 
 ### <a name="enable-branding-in-user-flow-pages"></a>ユーザー フロー ページでのブランド化の有効化
 

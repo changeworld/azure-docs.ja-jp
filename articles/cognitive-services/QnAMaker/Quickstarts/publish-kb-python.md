@@ -8,10 +8,10 @@ ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-python
 ms.topic: how-to
 ms.openlocfilehash: 5c28eac20b0bf2fab01312223ca2d5daef1d316d
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91777488"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-python"></a>クイック スタート:Python を使用して QnA Maker のナレッジ ベースを公開する

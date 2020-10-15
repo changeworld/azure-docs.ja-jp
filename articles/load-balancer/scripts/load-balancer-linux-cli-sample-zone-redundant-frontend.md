@@ -12,10 +12,10 @@ ms.date: 06/14/2018
 ms.author: allensu
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 532aa851f4112fb91d9e23975cdc2fda48d76cf6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87501717"
 ---
 # <a name="azure-cli-script-example-load-balance-vms-across-availability-zones"></a>Azure CLI スクリプトの例: 可用性ゾーン間で VM の負荷分散を行う

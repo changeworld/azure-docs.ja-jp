@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 93f5e4d659b94bd79345a5e687de14ab6a5e8ba6
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 49cac230363750e481e165712bf4f619e5cba7ae
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267974"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017847"
 ---
 # <a name="create-a-media-services-account"></a>Media Services アカウントを作成する
 
@@ -47,7 +47,7 @@ Azure Portal には、Azure Media Services アカウントをすばやく作成�
 * v3 の[アセット](assets-concept.md)を表示する (管理ではない) 
 * [API のアクセスに関する情報を取得する](./access-api-howto.md)。 
 
-他のすべての管理タスク ([変換とジョブ](transforms-jobs-concept.md)や[コンテンツ保護](content-protection-overview.md)など) については、[REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
+他のすべての管理タスク ([変換とジョブ](transforms-jobs-concept.md)や[コンテンツ保護](content-protection-overview.md)など) については、[REST API](/rest/api/media/accountfilters)、[CLI](/cli/azure/ams)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
 <!-- Move this section. This section should be moved to conceptual.  It doesn't belong in task based -->
 
 ### <a name="use-the-azure-portal-to-create-a-media-services-account"></a>Azure portal を使用して Media Services アカウントを作成する

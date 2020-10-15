@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: b7054b520d31c6c5363c8784bb9a4839e9249c88
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3891d1730648fea3c480cd03921a76fe005c308f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902880"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91740056"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>Azure Portal を使用して Azure Database for MySQL のメトリックのアラートを設定する 
 
@@ -40,19 +40,19 @@ ms.locfileid: "90902880"
 
 4. 以下のように、 **[ルールの作成]** ページが開きます。 必要な情報を入力します。
 
-   :::image type="content" source="./media/howto-alert-on-metric/4-add-rule-form.png" alt-text="メトリック アラート フォームを追加する":::
+   :::image type="content" source="./media/howto-alert-on-metric/4-add-rule-form.png" alt-text="アラート ルールを選択する":::
 
 5. **[条件]** セクションで、 **[条件の追加]** を選択します。
 
 6. アラート通知のシグナルの一覧からメトリックを選択します。 この例では、[ストレージの割合] を選択します。
    
-   :::image type="content" source="./media/howto-alert-on-metric/6-configure-signal-logic.png" alt-text="メトリックを選択する":::
+   :::image type="content" source="./media/howto-alert-on-metric/6-configure-signal-logic.png" alt-text="アラート ルールを選択する":::
 
 7. アラート ロジックを構成します。これには、 **[条件]** (例: 「より大きい」)、 **[しきい値]** (例: 85 パーセント)、 **[時間の集計]** 、どのくらいの期間メトリック ルールが満たされた後にアラートがトリガーされるかを示す **[期間]** (例: 「直近 30 分」)、と **[頻度]** があります。
    
    完了したら、 **[完了]** を選択します。
 
-   :::image type="content" source="./media/howto-alert-on-metric/7-set-threshold-time.png" alt-text="メトリックを選択する":::
+   :::image type="content" source="./media/howto-alert-on-metric/7-set-threshold-time.png" alt-text="アラート ルールを選択する":::
 
 8. **[アクション グループ]** セクション内で **[新規作成]** を選択して、アラートの通知を受信する新しいグループを作成します。
 
@@ -66,11 +66,11 @@ ms.locfileid: "90902880"
 
     完了したら、 **[OK]** を選択します。
 
-    :::image type="content" source="./media/howto-alert-on-metric/10-action-group-type.png" alt-text="アクション グループ":::
+    :::image type="content" source="./media/howto-alert-on-metric/10-action-group-type.png" alt-text="アラート ルールを選択する":::
 
 11. [アラート ルール名]、[説明]、[重大度] を指定します。
 
-    :::image type="content" source="./media/howto-alert-on-metric/11-name-description-severity.png" alt-text="アクション グループ"::: 
+    :::image type="content" source="./media/howto-alert-on-metric/11-name-description-severity.png" alt-text="アラート ルールを選択する"::: 
 
 12. **[アラート ルールの作成]** を選択して、アラートを作成します。
 

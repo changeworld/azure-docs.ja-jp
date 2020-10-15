@@ -16,10 +16,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9be6efeba101dc922a1045042b64ac64bc6cd093
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89322536"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Azure Active Directory のヘルプを検索してサポート チケットを開く

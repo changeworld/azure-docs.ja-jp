@@ -9,10 +9,10 @@ ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.openlocfilehash: 03850315a05f569d2c6ba9405b6ec38bb6b1305d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78330397"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->

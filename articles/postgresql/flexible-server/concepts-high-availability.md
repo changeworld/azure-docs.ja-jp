@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 7db9ac0eb624c2732295639d65e0311fcf459f71
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90930834"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーでの高可用性の概念
@@ -43,7 +43,7 @@ Azure Database for PostgreSQL - フレキシブル サーバーは、**ゾーン
 
 PostgreSQL クライアント アプリケーションは、DB サーバー名を使用してプライマリ サーバーに接続されます。 アプリケーションの読み取りがプライマリ サーバーから直接処理されるのに対して、コミットと書き込みは、データがプライマリ サーバーとスタンバイ レプリカの両方で保持された後にのみアプリケーションに確認されます。 この追加のラウンド トリップ要件のために、アプリケーションで書き込みとコミットの待機時間が長くなる場合があります。 高可用性の正常性はポータルで監視できます。
 
-:::image type="content" source="./media/business-continuity/concepts-high-availability-steady-state.png" alt-text="ゾーン冗長の高可用性 - 安定状態"::: 
+:::image type="content" source="./media/business-continuity/concepts-high-availability-steady-state.png" alt-text="ゾーン冗長の高可用性"::: 
 
 1. クライアントがフレキシブル サーバーに接続し、書き込み操作を実行します。
 2. 変更はスタンバイ サイトにレプリケートされます。
@@ -64,7 +64,7 @@ PostgreSQL クライアント アプリケーションは、DB サーバー名�
 
 計画外の停止には、データベースの可用性に影響を与えるソフトウェアのバグやインフラストラクチャ コンポーネントの障害が含まれます。 監視システムによってサーバーの使用不可状態が検出された場合は、スタンバイ レプリカへのレプリケーションは切断され、スタンバイ レプリカがプライマリ データベース サーバーとしてアクティブ化されます。 クライアントは、同じ接続文字列を使用してそのデータベース サーバーに再接続し、操作を再開できます。 全体的なフェールオーバー時間は 60 ～ 120 秒になると予測されます。 ただし、フェールオーバーの時点でのプライマリ データベース サーバー内のアクティビティによっては (大規模なトランザクションや復旧時間など)、フェールオーバーがそれより長くなることがあります。
 
-:::image type="content" source="./media/business-continuity/concepts-high-availability-failover-state.png" alt-text="ゾーン冗長の高可用性 - フェールオーバー"::: 
+:::image type="content" source="./media/business-continuity/concepts-high-availability-failover-state.png" alt-text="ゾーン冗長の高可用性"::: 
 
 1. プライマリ データベース サーバーがダウンし、クライアントがデータベース接続を失います。 
 2. スタンバイ サーバーが新しいプライマリ サーバーになるようにアクティブ化されます。 クライアントは、同じ接続文字列を使用して新しいプライマリ サーバーに接続します。 クライアント アプリケーションをプライマリ データベース サーバーと同じゾーン内に配置すると、待機時間が短縮され、パフォーマンスが向上します。

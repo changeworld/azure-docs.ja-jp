@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
 ms.openlocfilehash: 1c81ddad8a11cbad361ff84caf6f7200a0c010d5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90930875"
 ---
 # <a name="point-in-time-restore-of-a-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL - フレキシブル サーバー (プレビュー) のポイントインタイム リストア
@@ -72,7 +72,7 @@ ms.locfileid: "90930875"
 
 6.  **[新しいサーバーに復元]** フィールドに新しいサーバー名を入力します。 
    
-    :::image type="content" source="./media/concept-backup-restore/restore-blade-custom.png" alt-text="概要の表示":::
+    :::image type="content" source="./media/concept-backup-restore/restore-blade-custom.png" alt-text="最初の復元時刻":::
  
 7.  **[OK]** をクリックします。
 

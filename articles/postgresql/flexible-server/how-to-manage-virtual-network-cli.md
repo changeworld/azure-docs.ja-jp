@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 727eb4cd7e7c3de090e1573cb5358ef23118385e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90930820"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-postgresql---flexible-server-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for PostgreSQL - フレキシブル サーバーの仮想ネットワークを作成して管理する
@@ -18,7 +18,7 @@ ms.locfileid: "90930820"
 > [!IMPORTANT]
 > Azure Database for PostgreSQL - フレキシブル サーバーはプレビュー段階です
 
-Azure Database for PostgreSQL - フレキシブル サーバーでは、フレキシブル サーバーに接続するために、同時に使用できないネットワーク接続方法が 2 種類サポートされています。 次の 2 つのオプションがあります。
+Azure Database for PostgreSQL - フレキシブル サーバーによって、ご利用のフレキシブル サーバーに接続するために、2 種類の相互に排他的なネットワーク接続方法がサポートされています。 次の 2 つのオプションがあります。
 
 * パブリック アクセス (許可された IP アドレス)
 * プライベート アクセス (VNet 統合)
