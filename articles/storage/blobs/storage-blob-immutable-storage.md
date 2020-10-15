@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
 ms.openlocfilehash: 54014a0d76130b82788a1ae432e42baec28df2c2
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87448344"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>不変ストレージを使用してビジネスに不可欠な BLOB データを保存する
@@ -30,7 +30,7 @@ Azure portal、PowerShell、または Azure CLI を使用して、訴訟ホー�
 
 一般的な用途は次のとおりです。
 
-- **法令遵守**:Azure Blob Storage の不変ストレージは、組織が SEC 17a-4(f)、CFTC 1.31(d)、FINRA などの規制に準拠するのに役立ちます。 不変ストレージがこれらの規制要件にどのように対応しているかについて詳細に示した、Cohasset Associates によるテクニカル ホワイトペーパーをご用意しています。[Microsoft Service Trust Portal](https://aka.ms/AzureWormStorage) からダウンロードしてご利用ください。 [Azure トラスト センター](https://www.microsoft.com/trustcenter/compliance/compliance-overview)では、コンプライアンス関連の Microsoft の認定資格に関する詳しい情報を確認できます。
+- **法令遵守**:Azure Blob Storage の不変ストレージは、組織が SEC 17a-4(f)、CFTC 1.31(d)、FINRA などの規制に準拠するのに役立ちます。 不変ストレージがこれらの規制要件にどのように対応しているかについて詳細に示した、Cohasset Associates によるテクニカル ホワイトペーパーをご用意しています。[Microsoft Service Trust Portal](https://aka.ms/AzureWormStorage) からダウンロードしてご利用ください。 [Azure セキュリティ センター](https://www.microsoft.com/trustcenter/compliance/compliance-overview)では、コンプライアンス関連の Microsoft の認定資格に関する詳しい情報を確認できます。
 
 - **セキュリティ保護されたドキュメント リテンション**:Azure Blob Storage の不変ストレージにより、アカウント管理特権を持つユーザーを含め、どのユーザーもデータを変更したり、削除したりできなくなります。
 

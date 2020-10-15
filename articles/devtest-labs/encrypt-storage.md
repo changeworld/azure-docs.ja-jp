@@ -4,10 +4,10 @@ description: Azure DevTest Labs のラボで使用される Azure ストレー�
 ms.topic: how-to
 ms.date: 07/29/2020
 ms.openlocfilehash: 3c1d1531084deeabbe9a8d261e93554a2c691eb6
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87433509"
 ---
 # <a name="encrypt-azure-storage-used-by-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs のラボで使用される Azure ストレージを暗号化する
@@ -28,10 +28,10 @@ Azure DevTest Labs で作成されたすべてのラボは、関連付けられ�
     :::image type="content" source="./media/encrypt-storage/overview-resource-group-link.png" alt-text="[概要] ページでリソース グループを選択する":::
 1. ラボの Azure ストレージ アカウントを選択します。 ラボ ストレージ アカウントの名前付け規則は、`a<labNameWithoutInvalidCharacters><4-digit number>` です。 たとえば、ラボ名が `contosolab` である場合、ストレージ アカウント名は `acontosolab7576` になります。 
 
-    :::image type="content" source="./media/encrypt-storage/select-storage-account.png" alt-text="ラボのリソース グループ内でストレージ アカウントを選択する":::
+    :::image type="content" source="./media/encrypt-storage/select-storage-account.png" alt-text="[概要] ページでリソース グループを選択する":::
 3. **[ストレージ アカウント]** ページで、左側のメニューから **[Storage Explorer (プレビュー)]** を選択し、次に **[BLOB CONTAINERS]** を選択して、関連するラボ関連のコンテンツを検索します。 
 
-   :::image type="content" source="./media/encrypt-storage/storage-explorer.png" alt-text="ストレージ エクスプローラー (プレビュー)" lightbox="./media/encrypt-storage/storage-explorer.png":::
+   :::image type="content" source="./media/encrypt-storage/storage-explorer.png" alt-text="[概要] ページでリソース グループを選択する" lightbox="./media/encrypt-storage/storage-explorer.png":::
 
 ## <a name="encrypt-the-lab-storage-account"></a>ラボ ストレージ アカウントを暗号化する
 Azure Storage によって、データがクラウドに永続化されるときに自動的に暗号化されます。 Azure Storage 暗号化によってデータは保護され、組織のセキュリティおよびコンプライアンス コミットメントを満たすのに役立ちます。 詳細については、「[保存データ向け Azure ストレージの暗号化](../storage/common/storage-service-encryption.md)」をご覧ください。

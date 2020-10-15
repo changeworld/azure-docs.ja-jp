@@ -1,20 +1,20 @@
 ---
 title: チュートリアル - Azure AD Domain Services 用の仮想ネットワークを構成する | Microsoft Docs
 description: このチュートリアルでは、Azure portal を使用して Azure Active Directory Domain Services のマネージド ドメイン用の Azure 仮想ネットワーク サブネットまたはネットワーク ピアリングを作成して構成する方法について説明します。
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: e0d2b235f671ca9b30bf61aef254cb850b25373e
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.author: joflore
+ms.openlocfilehash: 33beb0767ef1f21d4fb3d08c9072d7c8479d2cb1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024776"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967411"
 ---
 # <a name="tutorial-configure-virtual-networking-for-an-azure-active-directory-domain-services-managed-domain"></a>チュートリアル:Azure Active Directory Domain Services のマネージド ドメイン用の仮想ネットワークを構成する
 

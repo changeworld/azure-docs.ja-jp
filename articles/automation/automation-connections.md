@@ -6,12 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 39085aa7967ffeac3416b61f32146ac023b46dfe
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 0a3cff616f814b8e5209b15f9d3f7439533452ca
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186658"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071763"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Azure Automation の接続を管理する
 
@@ -54,7 +54,7 @@ Runbook および DSC 構成内で接続にアクセスするための内部コ�
 
 |内部コマンドレット|説明|
 |---|---|
-|`Get-AutomationConnection` | 接続のさまざまなフィールドの値を取得し、それらを[ハッシュ テーブル](https://go.microsoft.com/fwlink/?LinkID=324844)として返します。 その後、このハッシュ テーブルを、Runbook または DSC 構成の適切なコマンドで使用できます。|
+|`Get-AutomationConnection` | 接続のさまざまなフィールドの値を取得し、それらを[ハッシュ テーブル](/powershell/module/microsoft.powershell.core/about/about_hash_tables)として返します。 その後、このハッシュ テーブルを、Runbook または DSC 構成の適切なコマンドで使用できます。|
 
 >[!NOTE]
 >`Get-AutomationConnection` の `Name` パラメーターには変数を使用しないようにしてください。 この場合に変数を使用すると、デザイン時に、Runbook または DSC 構成と接続資産間の依存関係の検出が複雑になる可能性があります。

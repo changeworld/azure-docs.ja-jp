@@ -4,10 +4,10 @@ description: この記事では、Azure Event Hubs 専用クラスターを現�
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.openlocfilehash: 94be44ee8f9442a3a65e899d7a58524b2570f194
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89380424"
 ---
 # <a name="move-an-azure-event-hubs-dedicated-cluster-to-another-region"></a>Azure Event Hubs 専用クラスターを別のリージョンに移動する
@@ -50,7 +50,7 @@ Event Hubs クラスターを含む Azure リソース グループに名前空�
     4. **[設定]** セクションで、次の手順を行います。    
         1. 新しい**クラスター名**を入力します。 
 
-            :::image type="content" source="./media/move-cluster-across-regions/deploy-template.png" alt-text="Resource Manager テンプレートをデプロイする":::
+            :::image type="content" source="./media/move-cluster-across-regions/deploy-template.png" alt-text="Resource Manager テンプレートをダウンロードする":::
     5. ページ下部にある **[確認と作成]** を選択します。 
     1. **[確認と作成]** ページで、設定を確認し、 **[作成]** を選択します。  
 
