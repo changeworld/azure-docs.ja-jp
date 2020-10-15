@@ -2,21 +2,25 @@
 title: チュートリアル:Azure Active Directory での自動ユーザー プロビジョニング用に Webroot Security Awareness Training を構成する | Microsoft Docs
 description: Azure AD から Webroot Security Awareness Training にユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除する方法について説明します。
 services: active-directory
+documentationcenter: ''
 author: Zhchia
 writer: Zhchia
-manager: CelesteDG
+manager: beatrizd
+ms.assetid: 455f4396-930e-4db5-a167-d3ea6a860a17
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 9345aaac306c8c009d6fc0a01c57beed3a22b10b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5bdcf197b4e8a619e55895faf7637ebac0ac12ae
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88523492"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91361128"
 ---
 # <a name="tutorial-configure-webroot-security-awareness-training-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Webroot Security Awareness Training を構成する
 
@@ -94,15 +98,15 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://awarenessapi.webrootanywhere.com/api/v2/scim`」と入力します。 前に取得したシークレット トークンの値を、 **[シークレット トークン]** に入力します。 **[接続テスト]** をクリックして、Azure AD が Webroot Security Awareness Training に接続できることを確認します。 接続に失敗する場合は、Webroot Security Awareness Training アカウントに管理者アクセス許可があることを確認し、再試行します。
 
-    ![プロビジョニング](./media/webroot-security-awareness-training-provisioning-tutorial/provisioning.png)
+    ![テナント URL とシークレット トークンを入力できる場所である [管理者資格情報] ダイアログ ボックスを示すスクリーンショット。](./media/webroot-security-awareness-training-provisioning-tutorial/provisioning.png)
 
 6. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 

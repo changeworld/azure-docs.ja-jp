@@ -10,13 +10,13 @@ author: csteegz
 ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: e4a8c84426ca03b9e111b8ece89f48a97f31072f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: how-to, devx-track-python, deploy
+ms.openlocfilehash: 0fda407a916ca43ed36fa567374752bbb7a49a80
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328362"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998961"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>GPU を使用した推論のためのディープ ラーニング モデルをデプロイする
 

@@ -8,19 +8,19 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8100914e9a1d1489cb80de55a689e17f6d28a941
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 266e31ae9865c8fb427e06e89cd755e7ff38b27f
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61443447"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073871"
 ---
 # <a name="import-an-automatic-device-management-package-into-your-remote-monitoring-solution-accelerator"></a>自動デバイス管理パッケージをリモート監視ソリューション アクセラレータにインポートする
 
 自動デバイス管理構成では、デバイスのグループに展開する構成の変更が定義されています。 この記事では、組織内の開発者が既に自動デバイス管理構成を作成していることを前提としています。 開発者が構成を作成する方法について詳しくは、IoT Hub の操作方法に関する次の記事のいずれかをご覧ください。
 
-- [Azure portal を使って多数の IoT デバイスを構成および監視する](../iot-hub/iot-hub-auto-device-config.md)
-- [Azure CLI を使って多数の IoT デバイスを構成および監視する](../iot-hub/iot-hub-auto-device-config-cli.md)
+- [Azure portal を使って多数の IoT デバイスを構成および監視する](../iot-hub/iot-hub-automatic-device-management.md)
+- [Azure CLI を使って多数の IoT デバイスを構成および監視する](../iot-hub/iot-hub-automatic-device-management-cli.md)
 
 開発者は、開発環境で自動デバイス管理構成を作成してテストします。 準備ができたら、構成をリモート監視ソリューション アクセラレータにインポートできます。
 

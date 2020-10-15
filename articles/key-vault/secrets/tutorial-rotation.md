@@ -6,17 +6,17 @@ author: msmbaldwin
 manager: rkarlin
 tags: rotation
 ms.service: key-vault
-ms.subservice: general
+ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e34349f9f52c61d27e57e6ac7f4b3515ee746b22
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 661622b296a7a81a8d4c203e86a7c8d61c386e5e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331847"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91843228"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>1 セットの認証資格情報を使用したリソースを対象にシークレットのローテーションを自動化する
 

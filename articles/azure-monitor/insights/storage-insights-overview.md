@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 6d6754594a321d297d983f9bd7e90ce074857919
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: c030c1548a931bc749ad799a5aa88813c35d19cd
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961977"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91997023"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Azure Monitor for Storage でストレージ サービスを監視する
 
@@ -31,7 +31,7 @@ Azure Monitor for Storage では、Azure Storage サービスのパフォーマ�
 
 * **カスタマイズ可能**: 表示するメトリックの変更したり、制限に合わせたしきい値の変更または設定、独自のブックとして保存することができます。 ブック内のグラフは、Azure ダッシュボードにピン留めできます。  
 
-この機能を使用するために有効にしたり構成したりする必要があるものはなく、ストレージ メトリックはストレージ アカウントから既定で収集されます。 Azure Storage で使用できるメトリックについて詳しく理解したい場合は、[Azure Storage メトリック](../../storage/common/monitor-storage.md)に関する記事で Azure Storage のメトリックの説明と定義を確認してください。
+この機能を使用するために有効にしたり構成したりする必要があるものはなく、ストレージ メトリックはストレージ アカウントから既定で収集されます。 Azure Storage で使用できるメトリックについて詳しく理解したい場合は、[Azure Storage メトリック](../../storage/blobs/monitor-blob-storage.md)に関する記事で Azure Storage のメトリックの説明と定義を確認してください。
 
 >[!NOTE]
 >この機能へのアクセスに対して料金はかからず、構成または有効にした Azure Monitor の基本機能に対してのみ課金されます。[Azure Monitor の価格の詳細](https://azure.microsoft.com/pricing/details/monitor/)に関するページをご覧ください。
@@ -67,7 +67,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のス
 **[可用性]** 、 **[E2E Latency]\(E2E 待機時間\)** 、 **[Server Latency]\(サーバー待機時間\)** 、 **[transaction error type/Errors]\(<トランザクション エラーの種類>/エラー\)** の列で値を選択すると、ストレージ アカウントに対して選択した列と一致する、特定の種類のストレージ メトリックに合わせて調整されたレポートに移動します。 各カテゴリのブックの詳細については、後述の「[詳細なストレージ ブック](#detailed-storage-workbooks)」セクションを参照してください。 
 
 >[!NOTE]
->レポートに表示できるエラーの詳細については、[応答の種類のスキーマ](../../storage/common/monitor-storage-reference.md#metrics-dimensions)に関する記事で、**ServerOtherError**、**ClientOtherError**、**ClientThrottlingError** などの応答の種類を参照してください。 選択したストレージ アカウントに応じて、3 種類より多くのエラーが報告される場合、他のすべてのエラーは **[その他]** のカテゴリの下に表示されます。
+>レポートに表示できるエラーの詳細については、[応答の種類のスキーマ](../../storage/blobs/monitor-blob-storage-reference.md#metrics-dimensions)に関する記事で、**ServerOtherError**、**ClientOtherError**、**ClientThrottlingError** などの応答の種類を参照してください。 選択したストレージ アカウントに応じて、3 種類より多くのエラーが報告される場合、他のすべてのエラーは **[その他]** のカテゴリの下に表示されます。
 
 既定の **[可用性]** のしきい値は次のとおりです。
 
@@ -274,4 +274,3 @@ n 種類のエラーを表示する場合は、splitByLimit を n+1 として指
 * ブックがサポートするように設計されているシナリオ、新規レポートの作成方法と既存レポートのカスタマイズ方法などについては、「[Azure Monitor ブックを使用した対話型レポートの作成](../platform/workbooks-overview.md)」で学習してください。
 
 * Storage Analytics や他のツールを使用した Azure Storage 関連の問題の特定、診断、トラブルシューティングに関する詳しいガイドについては、「 [Microsoft Azure ストレージの監視、診断、およびトラブルシューティング](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)」をご覧ください。
-

@@ -1,16 +1,14 @@
 ---
 title: 証明書を使用して Windows 上のクラスターをセキュリティで保護する
 description: Azure Service Fabric スタンドアロンまたはオンプレミスのクラスター内での通信と、クライアントとクラスターの間での通信をセキュリティで保護します。
-author: dkkapur
 ms.topic: conceptual
 ms.date: 10/15/2017
-ms.author: dekapur
-ms.openlocfilehash: 477a8e75aef3eb676d17c045f16a5c3f4ecf1b81
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 18af6fd79e03cd67e77ed4d0d4b3b6291f90301d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299702"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91841290"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>X.509 証明書を使用して Windows 上のスタンドアロン クラスターを保護する
 この記事では、スタンドアロン Windows クラスターの多様なノード間で行われる通信をセキュリティで保護する方法について説明します。 また、X.509 証明書を使用して、そのクラスターに接続しているクライアントを認証する方法についても説明します。 認証により、許可されたユーザーのみがクラスターやデプロイ済みアプリケーションにアクセスし、管理タスクを実行できるようになります。 証明書セキュリティは、クラスターの作成時にクラスターで有効にしておく必要があります。  

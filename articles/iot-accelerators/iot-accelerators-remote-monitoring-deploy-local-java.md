@@ -1,20 +1,19 @@
 ---
 title: リモート監視ソリューションをローカルにデプロイする - IntelliJ ID - Azure | Microsoft Docs
 description: この攻略ガイドでは、テストおよび開発のために IntelliJ を使用してリモート監視ソリューション アクセラレータをローカル コンピューターにデプロイする方法を示します。
-author: v-krghan
-manager: dominicbetts
+author: dominicbetts
 ms.custom: devx-track-java
-ms.author: v-krghan
+ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: f7554843db247ade1cddff78902430a5d84debe1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 78573cfe00d8e2e7ddcbf705dffdd5530f82c4e0
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319169"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998598"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>リモート監視ソリューション アクセラレータのローカルでのデプロイ - IntelliJ
 

@@ -6,12 +6,13 @@ ms.author: sakhare
 ms.topic: how-to
 ms.service: virtual-machines
 ms.date: 08/17/2020
-ms.openlocfilehash: 2c3b11ca0c2bb916a5a3fcaf50eb99c7db3aa8e7
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.reviewer: cynthn
+ms.openlocfilehash: 6deb7b535c3876ae8a8e83174b97a75582e82e58
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642561"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996433"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>Azure portal を使用して SAP ソリューション向け Azure Monitor をデプロイする
 
@@ -29,7 +30,7 @@ Azure portal (https://portal.azure.com) にサインインする
 
 2. **[基本]** タブで、必要な値を指定します。 該当する場合は、既存の Log Analytics ワークスペースを使用できます。
 
-   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-2.png" alt-text="Azure portal 構成オプションを示しています。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-2.png":::
+   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-2.png" alt-text="図は、Azure Marketplace から [SAP ソリューション向け Azure Monitor] を選択する例を示しています。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-2.png":::
 
 3. 仮想ネットワークを選択する際に、監視対象のシステムがその VNET 内から到達可能であることを確認してください。 
 
@@ -42,7 +43,7 @@ Azure portal (https://portal.azure.com) にサインインする
 
 1. **[プロバイダー]** タブを選択して、構成するプロバイダーを追加します。 複数のプロバイダーを 1 つずつ追加することも、監視リソースのデプロイ後に追加することもできます。 
 
-   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-3.png" alt-text="[プロバイダー] タブで SAP ソリューション向け Azure Monitor に追加のプロバイダーを追加する例を示しています。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-3.png":::
+   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-3.png" alt-text="図は、Azure Marketplace から [SAP ソリューション向け Azure Monitor] を選択する例を示しています。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-3.png":::
 
 2. **[プロバイダーの追加]** を選択し、ドロップダウンから **[SAP HANA]** を選択します。 
 
@@ -56,7 +57,7 @@ Azure portal (https://portal.azure.com) にサインインする
 
 7. 完了したら、 **[プロバイダーの追加]** を選択します。 引き続き必要に応じてプロバイダーを追加するか、 **[確認および作成]** を選択してデプロイを完了します。
 
-   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-4.png" alt-text="プロバイダー情報を追加するときの構成オプションの画像です。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-4.png":::
+   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-4.png" alt-text="図は、Azure Marketplace から [SAP ソリューション向け Azure Monitor] を選択する例を示しています。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-4.png":::
 
 ### <a name="high-availability-cluster-pacemaker-provider"></a>高可用性クラスター (Pacemaker) プロバイダー
 
@@ -71,7 +72,7 @@ Azure portal (https://portal.azure.com) にサインインする
 
 4. 完了したら、 **[プロバイダーの追加]** を選択します。 引き続き必要に応じてプロバイダーを追加するか、 **[確認および作成]** を選択してデプロイを完了します。
 
-   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-5.png" alt-text="画像は HA クラスター Pacemaker プロバイダーに関連するオプションを示しています。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-5.png":::
+   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-5.png" alt-text="図は、Azure Marketplace から [SAP ソリューション向け Azure Monitor] を選択する例を示しています。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-5.png":::
 
 
 ### <a name="microsoft-sql-server-provider"></a>Microsoft SQL Server プロバイダー
@@ -109,7 +110,7 @@ Azure portal (https://portal.azure.com) にサインインする
 
 4. 完了したら、 **[プロバイダーの追加]** を選択します。 引き続き必要に応じてプロバイダーを追加するか、 **[確認および作成]** を選択してデプロイを完了します。
 
-     :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-6.png" alt-text="画像は Microsoft SQL Server プロバイダーの追加に関連する情報を示しています。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-6.png":::
+     :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-6.png" alt-text="図は、Azure Marketplace から [SAP ソリューション向け Azure Monitor] を選択する例を示しています。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-6.png":::
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -10,13 +10,13 @@ ms.author: jordane
 author: jpe316
 ms.date: 09/24/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq2, devx-track-python
-ms.openlocfilehash: 5d7956b5538b272454f3f55bcda84188c946e978
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: how-to, contperfq2, devx-track-python, deploy
+ms.openlocfilehash: 18b1c155c0bb85e346ec28d5c145e6578ca3ec48
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328430"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999071"
 ---
 # <a name="deploy-ml-models-to-field-programmable-gate-arrays-fpgas-with-azure-machine-learning"></a>Azure Machine Learning を使用して ML モデルをフィールド プログラマブル ゲート アレイ (FPGA) にデプロイする 
 

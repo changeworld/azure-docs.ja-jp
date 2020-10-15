@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 05/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 7aaa87691f1ebfa79cd58dae56bf9bd1b979131b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 850db53cbf88968a413d72527d76463e17aa8f5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88538588"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91361706"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>チュートリアル:8x8 を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -94,17 +94,17 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 3. **[プロビジョニング]** タブを選択します。 **[開始]** をクリックします。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
    ![[開始] ブレード](./media/8x8-provisioning-tutorial/get-started.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[Admin Credentials]\(管理者の資格情報\)** セクションで、**8x8 URL** を Configuration Manager から **[テナントの URL]** にコピーします。 **8x8 API トークン**を Configuration Manager から **[シークレット トークン]** にコピーします。 **[テスト接続]** をクリックして、Azure AD から 8x8 への接続を確認します。 接続できない場合は、使用中の 8x8 アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
-    ![プロビジョニング](./media/8x8-provisioning-tutorial/provisioning.png)
+    ![テナント URL とシークレット トークンを入力できる場所である [管理者資格情報] ダイアログ ボックスを示すスクリーンショット。](./media/8x8-provisioning-tutorial/provisioning.png)
 
 6. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 

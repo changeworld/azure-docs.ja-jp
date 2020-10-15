@@ -11,12 +11,12 @@ ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
-ms.openlocfilehash: 0d00db9909f05028b55505400d0810b00e0114c0
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: e4598cb1d54fbbeb09e3bc5f58f0cce949b3c848
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88932544"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073803"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure Cloud Services と ASP.NET を使ってみる
 
@@ -33,7 +33,7 @@ ms.locfileid: "88932544"
 アプリケーションでは、 [キューを中心とした作業パターン](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) を使用して、CPU 負荷の高い縮小表示の作成をバックエンド プロセスにオフロードします。
 
 ## <a name="alternative-architecture-app-service-and-webjobs"></a>代替アーキテクチャ:App Service と WebJobs
-このチュートリアルでは、Azure クラウド サービスでフロントエンドとバックエンドの両方を実行する方法について説明します。 これに代わる方法として、フロントエンドを [Azure Web Apps](/azure/app-service/) で実行し、バックエンド用に [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) 機能を使用する方法があります。 Web ジョブを使用するチュートリアルについては、「 [Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)](https://github.com/Azure/azure-webjobs-sdk/wiki)」を参照してください。 ご自身のシナリオに最適なサービスを選択する方法の詳細については、「[Azure App Service、Cloud Services、および Virtual Machines の比較](/azure/architecture/guide/technology-choices/compute-decision-tree)」を参照してください。
+このチュートリアルでは、Azure クラウド サービスでフロントエンドとバックエンドの両方を実行する方法について説明します。 これに代わる方法として、フロントエンドを [Azure Web Apps](../app-service/index.yml) で実行し、バックエンド用に [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) 機能を使用する方法があります。 Web ジョブを使用するチュートリアルについては、「 [Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)](https://github.com/Azure/azure-webjobs-sdk/wiki)」を参照してください。 ご自身のシナリオに最適なサービスを選択する方法の詳細については、「[Azure App Service、Cloud Services、および Virtual Machines の比較](/azure/architecture/guide/technology-choices/compute-decision-tree)」を参照してください。
 
 ## <a name="what-youll-learn"></a>学習内容
 * Azure SDK をインストールして、Azure 向け開発用にコンピューターを準備する方法
@@ -169,7 +169,7 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 4. **[レプリケーション]** ボックスの一覧で、 **[ローカル冗長ストレージ (LRS)]** を選択します。
 
-    geo レプリケーションをストレージ アカウントに対して有効にすると、格納されたコンテンツがセカンダリ データセンターにレプリケートされ、プライマリ ロケーションで重大な障害が発生した場合のフェールオーバーが有効になります。 Geo レプリケーションには追加費用が発生する場合があります。 また、テストおよび開発アカウントの場合は、一般的に Geo レプリケーションに対する課金は避けたいと考えるでしょう。 詳細については、「 [ストレージ アカウントの作成、管理、削除](../storage/common/storage-create-storage-account.md)」を参照してください。
+    geo レプリケーションをストレージ アカウントに対して有効にすると、格納されたコンテンツがセカンダリ データセンターにレプリケートされ、プライマリ ロケーションで重大な障害が発生した場合のフェールオーバーが有効になります。 Geo レプリケーションには追加費用が発生する場合があります。 また、テストおよび開発アカウントの場合は、一般的に Geo レプリケーションに対する課金は避けたいと考えるでしょう。 詳細については、「 [ストレージ アカウントの作成、管理、削除](../storage/common/storage-account-create.md)」を参照してください。
 
 5. **[リソース グループ]** で **[既存のものを使用]** をクリックし、クラウド サービスに使用しているリソース グループを選択します。
 6. **[場所]** ボックスの一覧で、クラウド サービスに選択したのと同じリージョンを選択します。
@@ -290,7 +290,7 @@ Visual Studio UI を使用して構成したロールの環境設定は、Contos
 
     ![[設定] 手順](./media/cloud-services-dotnet-get-started/pubsettings.png)
 
-    **[詳細設定]** タブの既定の設定はこのチュートリアルではそのまま使用します。 [詳細設定] タブの詳細については、「 [Microsoft Azure アプリケーションの発行ウィザード](https://docs.microsoft.com/azure/vs-azure-tools-publish-azure-application-wizard)」を参照してください。
+    **[詳細設定]** タブの既定の設定はこのチュートリアルではそのまま使用します。 [詳細設定] タブの詳細については、「 [Microsoft Azure アプリケーションの発行ウィザード](/visualstudio/azure/vs-azure-tools-publish-azure-application-wizard)」を参照してください。
 4. **[概要]** 手順で、 **[発行]** をクリックします。
 
     ![[概要] 手順](./media/cloud-services-dotnet-get-started/pubsummary.png)
@@ -776,5 +776,5 @@ Azure Storage に関するベスト プラクティスおよびパターンを�
 
 * [Azure Cloud Services パート 1:概要](https://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [Cloud Services の管理方法](cloud-services-how-to-manage-portal.md)
-* [Azure ストレージ](https://docs.microsoft.com/azure/storage/)
+* [Azure ストレージ](../storage/index.yml)
 * [クラウド サービス プロバイダーの選び方](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)
