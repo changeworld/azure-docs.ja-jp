@@ -8,10 +8,10 @@ author: palanis-MSFT
 ms.author: palanis
 ms.date: 08/27/2019
 ms.openlocfilehash: e8d952c76fa71cb57d2edd7c9aa361c7249e0622
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86105134"
 ---
 # <a name="co-sell-country-and-region-codes"></a>共同販売国とリージョン コード
@@ -67,7 +67,7 @@ ms.locfileid: "86105134"
 | カーボベルデ                          | CV        |
 | カンボジア                            | KH        |
 | カメルーン                            | CM        |
-| カナダ                              | CA        |
+| Canada                              | CA        |
 | ケイマン諸島                      | KY        |
 | 中央アフリカ共和国            | CF        |
 | チャド                                | TD        |
@@ -260,7 +260,7 @@ ms.locfileid: "86105134"
 | ウクライナ                             | UA        |
 | アラブ首長国連邦                | AE        |
 | イギリス                      | GB        |
-| 米国                       | US        |
+| United States                       | US        |
 | ウルグアイ                             | UY        |
 | 米国領有小離島               | UM        |
 | 米国バージン諸島                 | VI        |

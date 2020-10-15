@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: b4e79a2aab5ca72ff8263bfc5734757bbff41005
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 48ce6edc3d071d84c3921f85c2e9798b804d0279
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297741"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017745"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Media Services v2 から v3 への移行のガイダンス
 
@@ -44,8 +44,8 @@ ms.locfileid: "89297741"
 *  v3 は、Azure Resource Manager 上に構築された管理と操作の両方の機能を公開する統一された API サーフェスに基づいています。 Azure Resource Manager テンプレートを使って、変換、ストリーミング エンドポイント、ライブ イベントなどを作成して展開できます。
 * [OpenAPI の仕様 (以前は Swagger と呼ばれていた)](https://aka.ms/ams-v3-rest-sdk) に関するドキュメント。
     ファイル ベースのエンコードを含むすべてのサービス コンポーネントのスキーマを公開します。
-* [.NET](https://aka.ms/ams-v3-dotnet-ref)、.Net Core、[Node.js](/javascript/api/overview/azure/mediaservices/management)、[Python](https://aka.ms/ams-v3-python-ref)、[Java](https://aka.ms/ams-v3-java-ref)、[Go](https://aka.ms/ams-v3-go-ref)、およびRuby で利用できる SDK。
-* 単純なスクリプト サポートのための [Azure CLI](https://aka.ms/ams-v3-cli-ref) 統合。
+* [.NET](/dotnet/api/overview/azure/mediaservices/management)、.Net Core、[Node.js](/javascript/api/overview/azure/mediaservices/management)、[Python](/python/api/overview/azure/mediaservices/management)、[Java](/java/api/overview/azure/mediaservices/management)、[Go](https://aka.ms/ams-v3-go-ref)、およびRuby で利用できる SDK。
+* 単純なスクリプト サポートのための [Azure CLI](/cli/azure/ams) 統合。
 
 ### <a name="new-features"></a>新機能
 
@@ -69,7 +69,7 @@ ms.locfileid: "89297741"
     * v3 の[アセット](assets-concept.md)を表示する (管理ではない) 
     * [API のアクセスに関する情報を取得する](./access-api-howto.md)。 
 
-    他のすべての管理タスク ([変換とジョブ](transforms-jobs-concept.md)や[コンテンツ保護](content-protection-overview.md)など) については、[REST API](/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
+    他のすべての管理タスク ([変換とジョブ](transforms-jobs-concept.md)や[コンテンツ保護](content-protection-overview.md)など) については、[REST API](/rest/api/media/)、[CLI](/cli/azure/ams)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
 * ジョブ (特にビデオまたはオーディオ分析を伴うもの) のコンカレンシーとパフォーマンスを制御するには、アカウントでメディア占有ユニット (MRU) をプロビジョニングする必要があります。 詳細については、[メディア処理のスケール設定](../previous/media-services-scale-media-processing-overview.md)に関するページを参照してください。 MRU の管理には、[CLI 2.0 for Media Services v3](media-reserved-units-cli-how-to.md)、[Azure portal](../previous/media-services-portal-scale-media-processing.md)、または [v2 API](../previous/media-services-dotnet-encoding-units.md) を使用できます。 Media Services v2 と v3 のどちらの API を使用する場合でも、MRU をプロビジョニングする必要があります。
 * v3 API を使用して作成された Media Services エンティティは v2 API で管理できません。  
 * V2 API 内のすべてのエンティティが V3 API に自動的に表示されるわけではありません。  2 つのバージョンで互換性のないエンティティの例を次に示します。  

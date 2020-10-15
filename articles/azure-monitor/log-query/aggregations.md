@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: d164c53e7e2be55f3cede389901a256ba388808d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77670306"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリの集計
@@ -82,8 +82,8 @@ Heartbeat
 
 |RemoteIPCountry  | distinct_computers  |
 ------------------|---------------------|
-|米国    | 19                  |
-|カナダ           | 3                   |
+|United States    | 19                  |
+|Canada           | 3                   |
 |アイルランド          | 0                   |
 |イギリス   | 0                   |
 |オランダ      | 2                   |

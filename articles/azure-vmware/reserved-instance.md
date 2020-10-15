@@ -3,12 +3,12 @@ title: Azure VMware Solution の予約インスタンスを使用してコスト
 description: Azure VMware Solution の予約インスタンスを購入する方法について説明します。
 ms.topic: how-to
 ms.date: 10/02/2020
-ms.openlocfilehash: a477b1730d70ec729a2be333b545b6faeb009998
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: fa354d4fbfef868ea1e6783656be7871669f200d
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91491692"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951419"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>Azure VMware Solution でコストを節約する
 
@@ -22,7 +22,7 @@ Azure VMware Solution の予約インスタンスにコミットすると、コ�
 
 -   **クォータの不足** - 単一サブスクリプションまたは共有サブスクリプションをスコープとする予約の場合、新しい予約インスタンスに割り当てることのできるホスト クォータがそのサブスクリプションに存在していることが必要です。  [クォータ引き上げ要求を作成](enable-azure-vmware-solution.md)して、この問題を解決できます。
 
--   **オファーの適格性** - Microsoft との  [Azure Enterprise Agreement (EA)](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-agreements) が必要です。
+-   **オファーの適格性** - Microsoft との  [Azure Enterprise Agreement (EA)](../cost-management-billing/manage/ea-portal-agreements.md) が必要です。
 
 -   **容量制限** - まれに、リージョンの容量が低下していることが原因で、Azure VMware Solution ホスト SKU に対する新しい予約の購入が、Azure によって制限されることがあります。
 
