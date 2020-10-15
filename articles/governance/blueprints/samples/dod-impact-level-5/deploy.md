@@ -4,10 +4,10 @@ description: ブループリント アーティファクト パラメーター�
 ms.date: 09/17/2020
 ms.topic: sample
 ms.openlocfilehash: deb6ffa0f886cc6a4a9bea10a38d7cd82e7df8f1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90978229"
 ---
 # <a name="deploy-the-dod-impact-level-5-blueprint-sample"></a>DoD 影響レベル 5 ブループリント サンプルをデプロイする

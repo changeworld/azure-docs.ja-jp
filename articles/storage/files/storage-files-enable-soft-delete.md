@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 services: storage
 ms.openlocfilehash: 2d2a000879a95f86a6cdda3324add5b692476eee
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88590117"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>Azure ファイル共有で論理的な削除を有効にする
@@ -68,13 +68,13 @@ Get-AzStorageFileServiceProperty -ResourceGroupName $rgName -StorageAccountName 
 
     これにより、現在 **[削除済み]** の状態になっているすべての共有が表示されます。
 
-    :::image type="content" source="media/storage-how-to-recover-deleted-account/undelete-file-share.png" alt-text="[状態] 列 ([名前] 列の隣の列) が [削除済み] に設定されている場合、ファイル共有は論理的に削除された状態になっています。また、指定した保有期間が経過すると、完全に削除されます。":::
+    :::image type="content" source="media/storage-how-to-recover-deleted-account/undelete-file-share.png" alt-text="ストレージ アカウントの論理的な削除の設定ペインのスクリーンショット。ファイル共有セクション、有効トグル、保有期間の設定、および保存が強調表示されています。これにより、ストレージ アカウント内のすべてのファイル共有に対して論理的な削除が有効になります。":::
 
 1. 共有を選択し、 **[削除の取り消し]** を選択すると、共有が復元されます。
 
     共有の状態が **[アクティブ]** に切り替わるので、共有が復元されたことを確認できます。
 
-    :::image type="content" source="media/storage-how-to-recover-deleted-account/restored-file-share.png" alt-text="[状態] 列 ([名前] 列の隣の列) が [アクティブ] に設定されている場合、ファイル共有は復元されています。":::
+    :::image type="content" source="media/storage-how-to-recover-deleted-account/restored-file-share.png" alt-text="ストレージ アカウントの論理的な削除の設定ペインのスクリーンショット。ファイル共有セクション、有効トグル、保有期間の設定、および保存が強調表示されています。これにより、ストレージ アカウント内のすべてのファイル共有に対して論理的な削除が有効になります。":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -95,7 +95,7 @@ Restore-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $account
 1. **[ファイル共有]** の **[Soft delete for file shares]\(ファイル共有の論理的な削除\)** で **[無効]** を選択します。
 1. **[保存]** を選択し、データ保有設定を確認します。
 
-    :::image type="content" source="media/storage-how-to-recover-deleted-account/disable-soft-delete-files.png" alt-text="論理的な削除を無効にすると、ストレージ アカウント内のすべてのファイル共有を、必要なときにすぐ完全に削除することができます。":::
+    :::image type="content" source="media/storage-how-to-recover-deleted-account/disable-soft-delete-files.png" alt-text="ストレージ アカウントの論理的な削除の設定ペインのスクリーンショット。ファイル共有セクション、有効トグル、保有期間の設定、および保存が強調表示されています。これにより、ストレージ アカウント内のすべてのファイル共有に対して論理的な削除が有効になります。":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

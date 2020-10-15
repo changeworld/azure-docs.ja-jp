@@ -9,16 +9,16 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 07945926600163a3fca228ef6d848b50efc4318d
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 4854e61b646c0ca2a2070d676e3efc5cfbac6b9b
+ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042804"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92044583"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>チュートリアル:Custom Vision Service を使用してエッジで画像の分類を実行する
 
-Azure IoT Edge では、ワークロードをクラウドからエッジに移すことにより、IoT ソリューションの効率性を高めることができます。 この機能は、コンピューター ビジョン モデルのような、多くのデータを処理するサービスに適しています。 [Custom Vision Service](../cognitive-services/custom-vision-service/home.md) を使用すると、カスタム画像分類器を構築して、コンテナーとしてデバイスにデプロイすることが可能です。 この 2 つのサービスを組み合わせることで、あらかじめサイトからすべてのデータを転送しなくても、画像やビデオ ストリームから分析情報を得ることができます。 Custom Vision では、トレーニングされたモデルに対して画像を比較して分析情報を生成する分類器が提供されます。
+Azure IoT Edge では、ワークロードをクラウドからエッジに移すことにより、IoT ソリューションの効率性を高めることができます。 この機能は、コンピューター ビジョン モデルのような、多くのデータを処理するサービスに適しています。 [Custom Vision Service](../cognitive-services/custom-vision-service/overview.md) を使用すると、カスタム画像分類器を構築して、コンテナーとしてデバイスにデプロイすることが可能です。 この 2 つのサービスを組み合わせることで、あらかじめサイトからすべてのデータを転送しなくても、画像やビデオ ストリームから分析情報を得ることができます。 Custom Vision では、トレーニングされたモデルに対して画像を比較して分析情報を生成する分類器が提供されます。
 
 たとえば、IoT Edge デバイス上の Custom Vision では、高速道路の交通量が通常よりも多いか少ないかや、駐車場に連続した駐車スペースがあるかどうかを判断することができます。 これらの分析情報は、アクションを実行する別のサービスと共有できます。
 
@@ -46,7 +46,7 @@ Azure IoT Edge では、ワークロードをクラウドからエッジに移�
 
 * Azure の Free レベルまたは Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。
 * [Azure IoT Edge を実行している Linux デバイス](quickstart-linux.md)
-* コンテナー レジストリ ([Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) など)。
+* コンテナー レジストリ ([Azure Container Registry](../container-registry/index.yml) など)。
 * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) を使用して構成された [Visual Studio Code](https://code.visualstudio.com/)。
 * Linux コンテナーを実行するように構成された [Docker CE](https://docs.docker.com/install/)。
 
@@ -88,7 +88,7 @@ Custom Vision サービスを使用して IoT Edge モジュールを開発す�
 
 画像分類器を作成するには、トレーニング画像のセットと、テスト画像が必要です。
 
-1. [Cognitive-CustomVision-Windows](https://github.com/Microsoft/Cognitive-CustomVision-Windows) リポジトリのサンプル画像を、ローカル開発マシンにクローンまたはダウンロードします。
+1. [Cognitive-CustomVision-Windows](https://github.com/Microsoft/Cognitive-CustomVision-Windows) リポジトリのサンプル画像を、ローカル開発マシンに複製またはダウンロードします。
 
    ```cmd/sh
    git clone https://github.com/Microsoft/Cognitive-CustomVision-Windows.git
@@ -96,7 +96,7 @@ Custom Vision サービスを使用して IoT Edge モジュールを開発す�
 
 2. Custom Vision プロジェクトに戻り、 **[Add images]\(画像の追加\)** を選択します。
 
-3. ローカルにクローンした Git リポジトリを参照し、最初の画像フォルダー **Cognitive-CustomVision-Windows/Samples/Images/Hemlock** に移動します。 フォルダー内の 10 個の画像をすべて選択し、 **[開く]** を選択します。
+3. ローカルに複製した Git リポジトリを参照し、最初の画像フォルダー **Cognitive-CustomVision-Windows/Samples/Images/Hemlock** に移動します。 フォルダー内の 10 個の画像をすべて選択し、 **[開く]** を選択します。
 
 4. この画像のグループにタグ **hemlock** を追加し、**Enter** キーを押してタグを適用します。
 

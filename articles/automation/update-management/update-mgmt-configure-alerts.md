@@ -6,10 +6,10 @@ ms.subservice: update-management
 ms.date: 07/28/2020
 ms.topic: conceptual
 ms.openlocfilehash: 1a46b5bf6c4be4953e6cde9972aa143be71406a4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90976997"
 ---
 # <a name="how-to-create-alerts-for-update-management"></a>Update Management のアラートを作成する方法
