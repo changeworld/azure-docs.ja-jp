@@ -12,19 +12,19 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 12/20/2019
 ms.author: mblythe
-ms.openlocfilehash: b77c9cfd6e4d1721839acb9db5469b5f0ac73a48
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 014463fb0a5af639ff0da5f8db2805f9796fd928
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561603"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072477"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Azure ダッシュボードの構造
 このドキュメントでは、次のダッシュボードを例として、Azure のダッシュボードの構造を説明します。
 
 ![サンプルのダッシュボード](./media/azure-portal-dashboards-structure/sample-dashboard.png)
 
-共有 [Azure ダッシュボードは、リソース](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)であるため、このダッシュボードを JSON として表すことができます。  次の JSON は、上記のダッシュボードを視覚化したものです。
+共有 [Azure ダッシュボードは、リソース](../azure-resource-manager/management/overview.md)であるため、このダッシュボードを JSON として表すことができます。  次の JSON は、上記のダッシュボードを視覚化したものです。
 
 ```json
 
@@ -303,7 +303,7 @@ Azure リソース ID、[Azure リソースの名前付け規則](/azure/archite
 すべてのダッシュボードは、__Microsoft.Portal/dashboards__ の型です。
 
 ### <a name="the-location-property"></a>場所プロパティ
-他のリソースとは異なり、ダッシュボードにはランタイム コンポーネントがありません。  ダッシュボードの場合、場所は、ダッシュボードの JSON 表現を格納するプライマリ地理的場所を示します。 値は、[サブスクリプション リソースの場所 API](https://docs.microsoft.com/rest/api/resources/subscriptions) を使用してフェッチできる場所コードの 1 つです。
+他のリソースとは異なり、ダッシュボードにはランタイム コンポーネントがありません。  ダッシュボードの場合、場所は、ダッシュボードの JSON 表現を格納するプライマリ地理的場所を示します。 値は、[サブスクリプション リソースの場所 API](/rest/api/resources/subscriptions) を使用してフェッチできる場所コードの 1 つです。
 
 ### <a name="the-tags-property"></a>タグ プロパティ
 タグは、任意の名前値のペア別にリソースを整理するための Azure リソース共通の機能です。 ダッシュボードには、__非表示タイトル__ と呼ばれる特別なタグがあります。 ダッシュボードにこのプロパティが設定されている場合は、ポータルのダッシュボードの表示名として使用されます。 Azure リソース ID の名前は変更できませんが、タグ名は変更できます。 このタグを使用することにより、名前変更可能な表示名をダッシュボードで使用できます。

@@ -4,10 +4,10 @@ description: この記事では、Apache Kafka から Azure Event Hubs にクラ
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: d9f3775a85df5a881c2c38566628e4e1d4d8c40e
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90061446"
 ---
 # <a name="migrate-to-azure-event-hubs-for-apache-kafka-ecosystems"></a>Apache Kafka エコシステム用 Azure Event Hubs への移行

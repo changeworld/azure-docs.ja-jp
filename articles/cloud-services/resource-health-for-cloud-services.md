@@ -7,17 +7,17 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 9/1/2020
 ms.author: tagore
-ms.openlocfilehash: ea25695ddc36571bef3ff61df7de3e71f6f939ca
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: f99dd8131df9f8bc5d3e4013d4438faa8c25e53b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056058"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072715"
 ---
 # <a name="resource-health-check-rhc-support-for-azure-cloud-services-classic"></a>Azure Cloud Services (クラシック) 用のリソース正常性チェック (RHC) のサポート
 この記事では、[Microsoft Azure Cloud Services (クラシック)](https://azure.microsoft.com/services/cloud-services) のリソース正常性チェック (RHC) のサポートについて説明します
 
-クラウド サービス用の [Azure Resource Health](https://docs.microsoft.com/azure/service-health/resource-health-overview) を使用すると、クラウド サービスのデプロイ、ロール、およびロール インスタンスに影響するサービスの問題を診断し、サポートを受けることができます。 デプロイ、ロール、およびロール インスタンス レベルで、クラウド サービスの現在と過去の正常性についてレポートされます。
+クラウド サービス用の [Azure Resource Health](../service-health/resource-health-overview.md) を使用すると、クラウド サービスのデプロイ、ロール、およびロール インスタンスに影響するサービスの問題を診断し、サポートを受けることができます。 デプロイ、ロール、およびロール インスタンス レベルで、クラウド サービスの現在と過去の正常性についてレポートされます。
 
 Azure の状態により、さまざまな Azure ユーザーに影響する問題がレポートされます。 Resource Health は、リソースの正常性に関するパーソナライズされたダッシュボードを提供します。 Resource Health は、Azure サービスの問題によってリソースが利用できなかったすべての時間を示します。 このデータにより、SLA 違反が発生したかどうかを簡単に確認できます。
 
@@ -30,7 +30,7 @@ Azure の状態により、さまざまな Azure ユーザーに影響する問�
 リソース正常性チェックは、運用スロットのデプロイに対してのみ機能します。 ステージング スロットのデプロイは、まだサポートされていません。 
 
 ## <a name="does-resource-health-check-also-check-the-health-of-the-application"></a>リソース正常性チェックでアプリケーションの正常性もチェックされますか?
-いいえ。正常性チェックは、ロール インスタンスに対してのみ行われ、アプリケーションの正常性は監視されません。 例: 3 つのロール インスタンスのうちの 1 つが異常な場合でも、アプリケーションは引き続き利用できます。 RHC では、[ロード バランサー プローブ](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)またはゲスト エージェント プローブは使用されません。 したがって、お客様は引き続きロード バランサー プローブを使用して、お使いのアプリケーションの正常性を監視する必要があります。 
+いいえ。正常性チェックは、ロール インスタンスに対してのみ行われ、アプリケーションの正常性は監視されません。 例: 3 つのロール インスタンスのうちの 1 つが異常な場合でも、アプリケーションは引き続き利用できます。 RHC では、[ロード バランサー プローブ](../load-balancer/load-balancer-custom-probe-overview.md)またはゲスト エージェント プローブは使用されません。 したがって、お客様は引き続きロード バランサー プローブを使用して、お使いのアプリケーションの正常性を監視する必要があります。 
 
 ## <a name="what-are-the-annotations-for-cloud-services"></a>クラウド サービスの注釈とは何ですか?
 注釈は、デプロイまたはロールの正常性状態です。 正常性状態、状態変更の理由などに基づいて、さまざまな注釈があります。 

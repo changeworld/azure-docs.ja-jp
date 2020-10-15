@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.openlocfilehash: c1c0bdcd620b29e3bbf4c6bb21d5213131d25cdb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91327240"
 ---
 # <a name="use-cognitive-services-with-natural-language-processing-nlp-to-enrich-chat-bot-conversations"></a>自然言語処理 (NLP) で Cognitive Services を使用してチャットボットの会話を強化する

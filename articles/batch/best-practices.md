@@ -3,12 +3,12 @@ title: ベスト プラクティス
 description: Azure Batch ソリューションを開発するためのベスト プラクティスと役立つヒントについて説明します。
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: ca6e491586fd653f39da7466ea116109000facd6
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 695f213c0683bd158539b97719f2c2d8c0210edf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146540"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91849491"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch のベスト プラクティス
 
@@ -109,7 +109,7 @@ Batch には、[OutputFiles](batch-task-output-files.md) およびさまざま�
 
 ### <a name="set-max-tasks-per-node-appropriately"></a>ノードごとの最大タスク数を適切に設定する
 
-Batch では、ノードでのタスクのオーバーサブスクライブ (ノードが持つコアの数よりも多くのタスクを実行) をサポートしています。 プール内のノードにタスクが "適合する" ようにするのはユーザーの責任です。 たとえば、1 つのノードでそれぞれ 25% の CPU 使用量を消費する 8 個のタスクを (`maxTasksPerNode = 8` のプール内に) スケジュールしようとすると、ユーザー エクスペリエンスが低下する可能性があります。
+Batch では、ノードでのタスクのオーバーサブスクライブ (ノードが持つコアの数よりも多くのタスクを実行) をサポートしています。 プール内のノードにタスクが "適合する" ようにするのはユーザーの責任です。 たとえば、1 つのノードでそれぞれ 25% の CPU 使用量を消費する 8 個のタスクを (`taskSlotsPerNode = 8` のプール内に) スケジュールしようとすると、ユーザー エクスペリエンスが低下する可能性があります。
 
 ### <a name="design-for-retries-and-re-execution"></a>再試行と再実行に対応して設計する
 
@@ -217,6 +217,6 @@ Azure Batch では、VM 上にユーザーとグループのセットが作成�
 
 ### <a name="file-cleanup"></a>ファイルのクリーンアップ
 
-Batch では、タスクが実行されている作業ディレクトリのクリーンアップが、保有期間の終了後にアクティブに試行されます。 このディレクトリの外部に書き込まれたファイルは、ディスク領域の不足を防ぐため、[ユーザーがクリーンアップする必要があります](#manage-task-lifetime)。 
+Batch では、タスクが実行されている作業ディレクトリのクリーンアップが、保有期間の終了後にアクティブに試行されます。 このディレクトリの外部に書き込まれたファイルは、ディスク領域の不足を防ぐため、[ユーザーがクリーンアップする必要があります](#manage-task-lifetime)。
 
 startTask 作業ディレクトリから Windows でサービスを実行すると、そのフォルダーがまだ使用されているため、作業ディレクトリの自動クリーンアップはブロックされます。 これにより、パフォーマンスが低下します。 この問題を解決するには、そのサービス用のディレクトリを、Batch によって管理されていない別のディレクトリに変更します。

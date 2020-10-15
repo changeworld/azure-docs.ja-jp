@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
 ms.openlocfilehash: a2fe1c7c1ac8799d615c26fdaee40b92bf3e294b
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85212498"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>リリース ノート:Speech Devices SDK

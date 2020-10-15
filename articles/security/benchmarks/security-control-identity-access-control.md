@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 2df534842c6f6a922579e1128757ee4b7f46e006
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90058599"
 ---
 # <a name="security-control-identity-and-access-control"></a>セキュリティ コントロールID およびアクセス制御

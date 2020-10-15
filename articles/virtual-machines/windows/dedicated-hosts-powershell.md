@@ -8,16 +8,16 @@ ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 599d13daac2e062c8f71f5f7d7133646a1447123
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 884a9e82dacb2a0dfc6763809a2ccfd2b886df1a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87266590"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974177"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Azure PowerShell を使用して専用ホストに VM をデプロイする
 
-この記事では、仮想マシン (VM) をホストするための Azure [専用ホスト](dedicated-hosts.md)を作成する方法について説明します。 
+この記事では、仮想マシン (VM) をホストするための Azure [専用ホスト](../dedicated-hosts.md)を作成する方法について説明します。 
 
 Azure PowerShell バージョン 2.8.0 以降がインストールされていて、`Connect-AzAccount` を使用して Azure アカウントにサインインしていることを確認します。 
 
@@ -49,6 +49,14 @@ $hostGroup = New-AzHostGroup `
    -ResourceGroupName $rgName `
    -Zone 1
 ```
+
+
+`-SupportAutomaticPlacement true` パラメーターを追加すると、VM とスケール セット インスタンスがホスト グループ内のホストに自動的に配置されるようになります。 詳しくは、[手動による配置と自動配置](../dedicated-hosts.md#manual-vs-automatic-placement)に関するページをご覧ください。
+
+> [!IMPORTANT]
+> 自動配置は現在、パブリック プレビュー段階にあります。
+> プレビューに参加するには、[https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) でプレビューのオンボードに関するアンケートにお答えください。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="create-a-host"></a>ホストを作成する
 
@@ -165,6 +173,32 @@ Location               : eastus
 Tags                   : {}
 ```
 
+## <a name="create-a-scale-set-preview"></a>スケール セットを作成する (プレビュー)
+
+> [!IMPORTANT]
+> 専用ホストでの Virtual Machine Scale Sets は現在、パブリック プレビュー段階にあります。
+> プレビューに参加するには、[https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) でプレビューのオンボードに関するアンケートにお答えください。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+スケール セットをデプロイするときは、ホスト グループを指定します。
+
+```azurepowershell-interactive
+New-AzVmss `
+  -ResourceGroupName "myResourceGroup" `
+  -Location "EastUS" `
+  -VMScaleSetName "myDHScaleSet" `
+  -VirtualNetworkName "myVnet" `
+  -SubnetName "mySubnet" `
+  -PublicIpAddressName "myPublicIPAddress" `
+  -LoadBalancerName "myLoadBalancer" `
+  -UpgradePolicyMode "Automatic"`
+  -HostGroupId $hostGroup.Id
+```
+
+スケール セットをデプロイするホストを手動で選択する場合は、`--host` とそのホストの名前を追加します。
+
+
+
 ## <a name="add-an-existing-vm"></a>既存の VM を追加する 
 
 既存の VM を専用のホストに追加することはできますが、最初に VM を Stop\Deallocated とする必要があります。 VM を専用のホストに移動する前に、その VM 構成がサポートされていることを確認してください。
@@ -244,4 +278,4 @@ Remove-AzResourceGroup -Name $rgName
 
 - [こちら](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)には、リージョン内の回復性を最大にするためにゾーンと障害ドメインの両方を使用するサンプル テンプレートがあります。
 
-- また、[Azure portal](dedicated-hosts-portal.md) を使用して専用ホストをデプロイすることもできます。
+- また、[Azure portal](../dedicated-hosts-portal.md) を使用して専用ホストをデプロイすることもできます。

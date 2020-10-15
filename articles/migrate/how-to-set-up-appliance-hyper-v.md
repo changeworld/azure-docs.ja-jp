@@ -4,10 +4,10 @@ description: Azure Migrate アプライアンスを設定して Hyper-V VM を�
 ms.topic: article
 ms.date: 03/23/2020
 ms.openlocfilehash: 8841f934ba21fda6cc36b856ea773ed0f53cfe32
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91448095"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Hyper-V VM のアプライアンスを設定する
@@ -112,7 +112,7 @@ VHD テンプレートを使用してアプライアンスを設定するには:
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>Azure Migrate にアプライアンスを登録する
 
-1. ポータルからコピーした **Azure Migrate プロジェクト キー**を貼り付けます。 このキーがない場合は、 **[Server Assessment] > [検出] > [Manage existing appliances]\(既存のアプライアンスの管理\)** に移動して、キーの生成時に指定したアプライアンス名を選択して、対応するキーをコピーします。
+1. ポータルからコピーした **Azure Migrate プロジェクト キー**を貼り付けます。 このキーがない場合は、 **[Server Assessment] > [検出] > [既存のアプライアンスの管理]** に移動して、キーの生成時に指定したアプライアンス名を選択して、対応するキーをコピーします。
 1. **[ログイン]** をクリックします。 新しいブラウザー タブで Azure ログイン プロンプトが開きます。表示されない場合は、ブラウザーでポップアップ ブロックを無効にしてあることを確認します。
 1. 新しいタブで、Azure のユーザー名とパスワードを使用してサインインします。
    

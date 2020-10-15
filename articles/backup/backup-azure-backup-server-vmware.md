@@ -4,10 +4,10 @@ description: この記事では、Azure Backup Server を使用し、VMware vCen
 ms.topic: conceptual
 ms.date: 05/24/2020
 ms.openlocfilehash: db5e5c4bdac64e2faf5babb107ecec61a02d6468
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90069834"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Azure Backup Server を使用して VMware VM をバックアップする

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: raynew
 ms.openlocfilehash: 68e5f937b8ad8367abf488598bda311a39d462c6
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90600655"
 ---
 # <a name="common-questions"></a>一般的な質問

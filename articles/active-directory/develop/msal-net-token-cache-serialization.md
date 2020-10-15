@@ -13,12 +13,12 @@ ms.date: 09/16/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: c44c99016f507214869e45a66bdd27c0a5efec75
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 4a0d5af8faafac8b733bd2daa9655e663da6fe71
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982912"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873525"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>MSAL.NET でのトークン キャッシュのシリアル化
 [トークンは、取得](msal-acquire-cache-tokens.md)後に Microsoft Authentication Library (MSAL) でキャッシュされます。  アプリケーション コードでは、別のメソッドでトークンを取得する前に、キャッシュからトークンを取得しようとする必要があります。  この記事では、MSAL.NET でのトークン キャッシュの既定のシリアル化とカスタムのシリアル化について説明します。
@@ -86,7 +86,7 @@ static class TokenCacheHelper
   /// <summary>
   /// Path to the token cache. Note that this could be something different for instance for MSIX applications:
   /// private static readonly string CacheFilePath =
-$"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\{AppName}\msalcache.bin";
+  /// $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\{AppName}\msalcache.bin";
   /// </summary>
   public static readonly string CacheFilePath = System.Reflection.Assembly.GetExecutingAssembly().Location + ".msalcache.bin3";
 

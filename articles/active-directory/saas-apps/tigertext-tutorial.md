@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/21/2020
 ms.author: jeedes
 ms.openlocfilehash: 995cd8470d4fbbf3dc340139a86275593a3d5d28
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88815220"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tigerconnect-secure-messenger"></a>チュートリアル:Azure Active Directory と TigerConnect Secure Messenger の統合

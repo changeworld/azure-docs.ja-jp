@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
 ms.openlocfilehash: dfe01e16b55325db03e4150a33ae5c4aa5822ae2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90898501"
 ---
 # <a name="one-vs-all-multiclass"></a>One-vs-All Multiclass

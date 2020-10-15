@@ -8,10 +8,10 @@ ms.author: yegu
 ms.service: cache
 ms.custom: subject-policy-reference
 ms.openlocfilehash: 961c3ef7ddcefda59184bb2abf1101cadec43033
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91827064"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-cache-for-redis"></a>Azure Cache for Redis 用の Azure Policy 組み込み定義

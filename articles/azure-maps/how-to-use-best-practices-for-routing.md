@@ -8,27 +8,26 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 1c108c79cafb591dced6f6be0dd5c1b353ddac45
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 13c7178b4a0866066dc74e409f8f4bfcd21a23f4
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086404"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91874596"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Azure Maps Route Service のベスト プラクティス
 
 Azure Maps [Route Service](https://docs.microsoft.com/rest/api/maps/route) の Route Directions と Route Matrix API は、要求された各ルートの推定到着時間 (ETA) を計算するために使用できます。 Route API は、リアルタイムの交通情報や履歴データ (たとえば要求された曜日や時間帯の通常の道路速度) などの要因を考慮します。 API は、時間または距離に基づいて、複数の到着地に対して順番に、または最適化された順序で、利用できる最短または最速のルートを返します。 ユーザーは、歩行者、自転車運転者、商用車両 (トラックなど) に特化したルートや詳細も要求できます。 この記事では、Azure Maps [Route Service](https://docs.microsoft.com/rest/api/maps/route) を呼び出すためのベスト プラクティスを共有し、次の方法について説明します。
 
-> [!div class="checklist"]
-> * Route Directions API と Matrix Routing API から選択する
-> * リアルタイムと履歴の交通情報データに基づいて、履歴と予測の移動時間を要求する
-> * ルート全体とルートの各区間に関するルートの詳細 (時間、距離など) を要求する
-> * 商用車両 (トラックなど) 用のルートを要求する
-> * ルートに沿った交通情報 (渋滞や料金情報など) を要求する
-> * 1 つ以上の中継地 (ウェイポイント) で構成されるルートを要求する
-> * 1 つ以上の中継地からなるルートを最適化して、各中継地 (ウェイポイント) を訪問する最適な順序を取得する
-> * サポート ポイントを使用して代替ルートを最適化する。 たとえば、電気自動車の充電ステーションを通過する代替ルートを提供します。
-> * Azure Maps Web SDK で [Route Service](https://docs.microsoft.com/rest/api/maps/route) を使用する
+ * Route Directions API と Matrix Routing API から選択する
+ * リアルタイムと履歴の交通情報データに基づいて、履歴と予測の移動時間を要求する
+ * ルート全体とルートの各区間に関するルートの詳細 (時間、距離など) を要求する
+ * 商用車両 (トラックなど) 用のルートを要求する
+ * ルートに沿った交通情報 (渋滞や料金情報など) を要求する
+ * 1 つ以上の中継地 (ウェイポイント) で構成されるルートを要求する
+ * 1 つ以上の中継地からなるルートを最適化して、各中継地 (ウェイポイント) を訪問する最適な順序を取得する
+ * サポート ポイントを使用して代替ルートを最適化する。 たとえば、電気自動車の充電ステーションを通過する代替ルートを提供します。
+ * Azure Maps Web SDK で [Route Service](https://docs.microsoft.com/rest/api/maps/route) を使用する
 
 ## <a name="prerequisites"></a>前提条件
 

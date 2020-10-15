@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/18/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: e084256d9c2043d4382ca180ef3178175b301367
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: b884bc72381c98af77f2f49336f3dd5762c68734
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91745501"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91859708"
 ---
 次の制限は、Azure Event Grid の**トピック** (システム、カスタム、パートナーのトピック) に適用されます。 
 
@@ -21,7 +21,7 @@ ms.locfileid: "91745501"
 | --- | --- |
 | Azure サブスクリプションあたりのカスタム トピック数 | 100 |
 | トピックあたりのイベント サブスクリプション数 | 500 |
-| カスタムまたはパートナーのトピックの発行率 (イングレス) | 5,000 イベント/秒または 1 MB/秒 (いずれか先に達した場合)<br/>システム トピックには適用されません。 |
+| カスタムまたはパートナーのトピックの発行率 (イングレス) | 5,000 イベント/秒または 1 MB/秒 (いずれか先に達した場合) |
 | イベント サイズ | 1 MB  |
 | トピックあたりのプライベート エンドポイント接続数  | 64 | 
 | トピックあたりの IP ファイアウォール規則数 | 16 | 
