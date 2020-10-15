@@ -3,21 +3,21 @@ title: Azure Batch での並列 R シミュレーション
 description: チュートリアル - doAzureParallel R パッケージを使用して、Azure Batch で金融のモンテ カルロ シミュレーションを実行する詳しい手順
 ms.devlang: r
 ms.topic: tutorial
-ms.date: 01/23/2018
+ms.date: 10/08/2020
 ms.custom: mvc
-ms.openlocfilehash: 2c988075031be326f01e02bceff1c948295d5845
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3ce4cff94bb565ce3dd9bc4e9307a2b21c4c0ac5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91292865"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91851137"
 ---
-# <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>チュートリアル:Azure Batch で並列 R シミュレーションを実行する 
+# <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>チュートリアル:Azure Batch で並列 R シミュレーションを実行する
 
 R セッションから直接 Azure Batch を使用できる軽量な R パッケージである [doAzureParallel](https://www.github.com/Azure/doAzureParallel) を使用して、大規模な並列 R ワークロードを実行します。 doAzureParallel パッケージは、一般的な [foreach](https://cran.r-project.org/web/packages/foreach/index.html) R パッケージに基づいて作成されています。 doAzureParallel は foreach ループの各イテレーションを取得し、それを Azure Batch タスクとして送信します。
 
 このチュートリアルでは、Batch プールをデプロイし、RStudio 内で直接 Azure Batch の並列 R ジョブを実行する方法について説明します。 学習内容は次のとおりです。
- 
+
 
 > [!div class="checklist"]
 > * doAzureParallel をインストールし、Batch アカウントとストレージ アカウントにアクセスするよう構成する
@@ -28,43 +28,43 @@ R セッションから直接 Azure Batch を使用できる軽量な R パッ�
 
 * [R](https://www.r-project.org/) ディストリビューションのインストール ([Microsoft R Open](https://mran.microsoft.com/open) など)。 R バージョン 3.3.1 以降を使用してください。
 
-* [RStudio](https://www.rstudio.com/) (商用エディションまたはオープン ソースの [RStudio Desktop](https://www.rstudio.com/products/rstudio/#Desktop))。 
+* [RStudio](https://www.rstudio.com/) (商用エディションまたはオープン ソースの [RStudio Desktop](https://www.rstudio.com/products/rstudio/#Desktop))。
 
-* Azure Batch アカウントおよび Azure ストレージ アカウント。 これらのアカウントを作成するには、[Azure Portal](quick-create-portal.md) または [Azure CLI](quick-create-cli.md) を使用した Batch のクイック スタートを参照してください。 
+* Azure Batch アカウントおよび Azure ストレージ アカウント。 これらのアカウントを作成するには、[Azure Portal](quick-create-portal.md) または [Azure CLI](quick-create-cli.md) を使用した Batch のクイック スタートを参照してください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
 Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 
-[!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)] 
+[!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)]
 ## <a name="install-doazureparallel"></a>doAzureParallel のインストール
 
-RStudio コンソールで、[doAzureParallel GitHub パッケージ](https://www.github.com/Azure/doAzureParallel) をインストールします。 次のコマンドで、パッケージとその依存関係をダウンロードして、現在の R セッションにインストールします。 
+RStudio コンソールで、[doAzureParallel GitHub パッケージ](https://www.github.com/Azure/doAzureParallel) をインストールします。 次のコマンドで、パッケージとその依存関係をダウンロードして、現在の R セッションにインストールします。
 
 ```R
-# Install the devtools package  
-install.packages("devtools") 
+# Install the devtools package
+install.packages("devtools")
 
 # Install rAzureBatch package
-devtools::install_github("Azure/rAzureBatch") 
+devtools::install_github("Azure/rAzureBatch")
 
-# Install the doAzureParallel package 
-devtools::install_github("Azure/doAzureParallel") 
- 
-# Load the doAzureParallel library 
-library(doAzureParallel) 
+# Install the doAzureParallel package
+devtools::install_github("Azure/doAzureParallel")
+
+# Load the doAzureParallel library
+library(doAzureParallel)
 ```
 インストールには数分かかる場合があります。
 
-先ほど取得したアカウント資格情報で doAzureParallel を構成するには、*credentials.json* という名前の構成ファイルを作業ディレクトリに生成します。 
+先ほど取得したアカウント資格情報で doAzureParallel を構成するには、*credentials.json* という名前の構成ファイルを作業ディレクトリに生成します。
 
 ```R
-generateCredentialsConfig("credentials.json") 
-``` 
+generateCredentialsConfig("credentials.json")
+```
 
 このファイルに、Batch アカウントとストレージ アカウントの名前とキーを入力します。 `githubAuthenticationToken` の設定はそのままにします。
 
-完了すると、資格情報ファイルは次のようになります。 
+完了すると、資格情報ファイルは次のようになります。
 
 ```json
 {
@@ -81,28 +81,28 @@ generateCredentialsConfig("credentials.json")
 }
 ```
 
-ファイルを保存します。 次に、以下のコマンドを実行して、資格情報を現在の R セッションに設定します。 
+ファイルを保存します。 次に、以下のコマンドを実行して、資格情報を現在の R セッションに設定します。
 
 ```R
-setCredentials("credentials.json") 
+setCredentials("credentials.json")
 ```
 
-## <a name="create-a-batch-pool"></a>Create a Batch pool 
+## <a name="create-a-batch-pool"></a>Create a Batch pool
 
-doAzureParallel には、並列 R ジョブを実行する Azure Batch プール (クラスター) を生成する関数が含まれています。 ノードによって、Ubuntu ベースの [Azure データ サイエンス仮想マシン](../machine-learning/data-science-virtual-machine/overview.md)が実行されます。 Microsoft R Open および一般的な R パッケージは、このイメージ上にプレインストールされます。 特定のクラスター設定 (ノードの数やサイズなど) を表示したりカスタマイズしたりできます。 
+doAzureParallel には、並列 R ジョブを実行する Azure Batch プール (クラスター) を生成する関数が含まれています。 ノードによって、Ubuntu ベースの [Azure データ サイエンス仮想マシン](../machine-learning/data-science-virtual-machine/overview.md)が実行されます。 Microsoft R Open および一般的な R パッケージは、このイメージ上にプレインストールされます。 特定のクラスター設定 (ノードの数やサイズなど) を表示したりカスタマイズしたりできます。
 
-クラスター構成 JSON ファイルを作業ディレクトリに生成するには: 
- 
+クラスター構成 JSON ファイルを作業ディレクトリに生成するには:
+
 ```R
 generateClusterConfig("cluster.json")
-``` 
- 
-ファイルを開いて既定の構成を表示します。既定の構成には、3 つの専用ノードと 3 つの[低優先度](batch-low-pri-vms.md)ノードが含まれます。 これらの設定は、実験に使用したり変更したりできる単なる例にすぎません。 専用ノードは、プール用に予約されています。 低優先度ノードは、Azure の VM の余剰容量から割引価格で提供されます。 低優先度ノードは、Azure に十分な容量がない場合に使用できなくなります。 
+```
+
+ファイルを開いて既定の構成を表示します。既定の構成には、3 つの専用ノードと 3 つの[低優先度](batch-low-pri-vms.md)ノードが含まれます。 これらの設定は、実験に使用したり変更したりできる単なる例にすぎません。 専用ノードは、プール用に予約されています。 低優先度ノードは、Azure の VM の余剰容量から割引価格で提供されます。 低優先度ノードは、Azure に十分な容量がない場合に使用できなくなります。
 
 このチュートリアルでは、構成を次のように変更します。
 
-* `maxTasksPerNode` を *2* に増やし、各ノード上で両方のコアを活用できるようにします。
-* `dedicatedNodes` を *0* に設定し、Batch で使用できる低優先度 VM を試すことができるようにします。 `lowPriorityNodes` の `min` を *5* に設定します。 `max` を *10* に設定するか、必要に応じてより小さい数を選択します。 
+* `taskSlotsPerNode` を *2* に増やし、各ノード上で両方のコアを活用できるようにします。
+* `dedicatedNodes` を *0* に設定し、Batch で使用できる低優先度 VM を試すことができるようにします。 `lowPriorityNodes` の `min` を *5* に設定します。 `max` を *10* に設定するか、必要に応じてより小さい数を選択します。
 
 残りの設定は既定値のままにして、ファイルを保存します。 これは次のようになります。
 
@@ -110,7 +110,7 @@ generateClusterConfig("cluster.json")
 {
   "name": "myPoolName",
   "vmSize": "Standard_D2_v2",
-  "maxTasksPerNode": 2,
+  "taskSlotsPerNode": 2,
   "poolSize": {
     "dedicatedNodes": {
       "min": 0,
@@ -132,21 +132,21 @@ generateClusterConfig("cluster.json")
 }
 ```
 
-次にクラスターを作成します。 Batch によってすぐにプールが作成されますが、コンピューティング ノードを割り当てて開始するには数分かかります。 クラスターが利用可能になったら、それを R セッションの並列バックエンドとして登録します。 
+次にクラスターを作成します。 Batch によってすぐにプールが作成されますが、コンピューティング ノードを割り当てて開始するには数分かかります。 クラスターが利用可能になったら、それを R セッションの並列バックエンドとして登録します。
 
 ```R
 # Create your cluster if it does not exist; this takes a few minutes
-cluster <- makeCluster("cluster.json") 
-  
-# Register your parallel backend 
-registerDoAzureParallel(cluster) 
-  
-# Check that the nodes are running 
-getDoParWorkers() 
+cluster <- makeCluster("cluster.json")
+
+# Register your parallel backend
+registerDoAzureParallel(cluster)
+
+# Check that the nodes are running
+getDoParWorkers()
 ```
 
-出力には、doAzureParallel の "実行ワーカー" の数が表示されます。 この数は、ノードに `maxTasksPerNode` の値を掛けた数です。 先ほど説明したとおりクラスター構成を変更した場合、この数は *10* になります。 
- 
+出力には、doAzureParallel の "実行ワーカー" の数が表示されます。 この数は、ノードに `taskSlotsPerNode` の値を掛けた数です。 先ほど説明したとおりクラスター構成を変更した場合、この数は *10* になります。
+
 ## <a name="run-a-parallel-simulation"></a>並列シミュレーションの実行
 
 クラスターを作成したところで、登録された並列バックエンド (Azure Batch プール) で foreach ループを実行する準備が整いました。 例として、金融のモンテ カルロ シミュレーションを実行します。最初にローカルで標準の foreach ループを使用し、次に Batch で foreach を実行します。 この例は、5 年後の異なる結果を多数シミュレートすることで株価を予測するもので、その簡略化されたバージョンです。
@@ -156,32 +156,32 @@ Contoso Corporation の株が毎日始値の平均 1,001 倍に上昇するも�
 モンテ カルロ シミュレーションのパラメーター:
 
 ```R
-mean_change = 1.001 
-volatility = 0.01 
-opening_price = 100 
+mean_change = 1.001
+volatility = 0.01
+opening_price = 100
 ```
 
 終値をシミュレートするには、次の関数を定義します。
 
 ```R
-getClosingPrice <- function() { 
-  days <- 1825 # ~ 5 years 
-  movement <- rnorm(days, mean=mean_change, sd=volatility) 
-  path <- cumprod(c(opening_price, movement)) 
-  closingPrice <- path[days] 
-  return(closingPrice) 
-} 
+getClosingPrice <- function() {
+  days <- 1825 # ~ 5 years
+  movement <- rnorm(days, mean=mean_change, sd=volatility)
+  path <- cumprod(c(opening_price, movement))
+  closingPrice <- path[days]
+  return(closingPrice)
+}
 ```
 
 最初に、`%do%` キーワードと共に標準の foreach ループを使用して、ローカルで 10,000 件のシミュレーションを実行します。
 
 ```R
-start_s <- Sys.time() 
-# Run 10,000 simulations in series 
-closingPrices_s <- foreach(i = 1:10, .combine='c') %do% { 
-  replicate(1000, getClosingPrice()) 
-} 
-end_s <- Sys.time() 
+start_s <- Sys.time()
+# Run 10,000 simulations in series
+closingPrices_s <- foreach(i = 1:10, .combine='c') %do% {
+  replicate(1000, getClosingPrice())
+}
+end_s <- Sys.time()
 ```
 
 
@@ -189,7 +189,7 @@ end_s <- Sys.time()
 
 ```R
 hist(closingPrices_s)
-``` 
+```
 
 次のような出力になります。
 
@@ -198,13 +198,13 @@ hist(closingPrices_s)
 ローカルのシミュレーションは数秒以内に完了します。
 
 ```R
-difftime(end_s, start_s) 
+difftime(end_s, start_s)
 ```
 
 (線形近似を使用して) 1,000 万件の結果をローカルで実行するのにかかる推定時間は、約 30 分です。
 
-```R 
-1000 * difftime(end_s, start_s, unit = "min") 
+```R
+1000 * difftime(end_s, start_s, unit = "min")
 ```
 
 
@@ -212,35 +212,35 @@ difftime(end_s, start_s)
 
 ```R
 # Optimize runtime. Chunking allows running multiple iterations on a single R instance.
-opt <- list(chunkSize = 10) 
-start_p <- Sys.time()  
-closingPrices_p <- foreach(i = 1:100, .combine='c', .options.azure = opt) %dopar% { 
-  replicate(100000, getClosingPrice()) 
-} 
-end_p <- Sys.time() 
+opt <- list(chunkSize = 10)
+start_p <- Sys.time()
+closingPrices_p <- foreach(i = 1:100, .combine='c', .options.azure = opt) %dopar% {
+  replicate(100000, getClosingPrice())
+}
+end_p <- Sys.time()
 ```
 
-このシミュレーションでは、Batch プールのノードにタスクが分散されます。 Azure portal で、プールのヒート マップでアクティビティを確認できます。 **[Batch アカウント]**  > *myBatchAccount* の順に移動します。 **[プール]**  > *myPoolName* の順にクリックします。 
+このシミュレーションでは、Batch プールのノードにタスクが分散されます。 Azure portal で、プールのヒート マップでアクティビティを確認できます。 **[Batch アカウント]**  > *myBatchAccount* の順に移動します。 **[プール]**  > *myPoolName* の順にクリックします。
 
 ![並列 R タスクを実行するプールのヒート マップ](media/tutorial-r-doazureparallel/pool.png)
 
-数分後、シミュレーションが完了します。 パッケージによって自動的に結果がマージされ、ノードから取得されます。 これで、R セッションで結果を使用する準備が整います。 
+数分後、シミュレーションが完了します。 パッケージによって自動的に結果がマージされ、ノードから取得されます。 これで、R セッションで結果を使用する準備が整います。
 
 ```R
-hist(closingPrices_p) 
+hist(closingPrices_p)
 ```
 
 次のような出力になります。
 
 ![終値の分布](media/tutorial-r-doazureparallel/closing-prices.png)
 
-並列シミュレーションにはどれだけ時間がかかりましたか。 
+並列シミュレーションにはどれだけ時間がかかりましたか。
 
 ```R
-difftime(end_p, start_p, unit = "min")  
+difftime(end_p, start_p, unit = "min")
 ```
 
-Batch プールでシミュレーションを実行することで、ローカルでシミュレーションを実行する場合の予測時間よりもパフォーマンスが著しく向上することがわかります。 
+Batch プールでシミュレーションを実行することで、ローカルでシミュレーションを実行する場合の予測時間よりもパフォーマンスが著しく向上することがわかります。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

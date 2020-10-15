@@ -52,10 +52,12 @@
           items:
             - name: VMware VM の移行オプションについて
               href: server-migrate-overview.md
-            - name: エージェントレス移行で VMware VM を移行する
+            - name: エージェントレス移行で VMware VM を移行する - Azure portal
               href: tutorial-migrate-vmware.md
             - name: エージェントベース移行で VMware VM を移行する
               href: tutorial-migrate-vmware-agent.md
+            - name: エージェントレス移行で VMware VM を移行する - PowerShell
+              href: tutorial-migrate-vmware-powershell.md
         - name: Hyper-V VM を移行する
           href: tutorial-migrate-hyper-v.md
         - name: 物理サーバーを移行する

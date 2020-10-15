@@ -3,18 +3,18 @@ title: .NET を使用して Azure Queue Storage を使用する - Azure Storage
 description: Azure Queue は、アプリケーション コンポーネント間の信頼性の高い非同期メッセージングを提供します。 クラウド メッセージングにより、アプリケーション コンポーネントのスケールを個別に変更できます。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 05/08/2020
+ms.date: 10/08/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e8dadc999f3bd26671b5a8ee4da26f051a822a26
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: c07ad6e631482b47da674549e976953842cf983e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001112"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91855924"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>.NET を使用して Azure Queue Storage を使用する
 
@@ -33,9 +33,6 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
 ### <a name="prerequisites"></a>前提条件
 
 - [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-- [.NET 用 Azure Storage Common クライアント ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
-- [.NET 用 Azure Storage Queue クライアント ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/)
-- [.NET 用 Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)
 - [Azure ストレージ アカウント](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
@@ -95,11 +92,6 @@ NuGet を使用してこれらのパッケージを取得できます。 次の�
 1. "Microsoft.Azure.ConfigurationManager" をオンラインで検索し、 **[インストール]** を選択して Azure Configuration Manager をインストールします。
 
 ---
-
-> [!NOTE]
-> Storage クライアント ライブラリ パッケージは、[Azure SDK for .NET](https://azure.microsoft.com/downloads/) にも含まれています。 しかし、常に最新バージョンを使用できるように、NuGet から Storage クライアント ライブラリもインストールすることをお勧めします。
->
-> .NET 用 Storage クライアント ライブラリの ODataLib 依存関係は、WCF Data Services ではなく NuGet で入手できる ODataLib パッケージで解決されます。 ODataLib ライブラリは、直接ダウンロードすることも、NuGet を使用してコード プロジェクトで参照することもできます。 Storage クライアント ライブラリで使用される特定の ODataLib パッケージは、[OData](https://nuget.org/packages/Microsoft.Data.OData/)、[Edm](https://nuget.org/packages/Microsoft.Data.Edm/)、[Spatial](https://nuget.org/packages/System.Spatial/) です。 これらのライブラリは Azure Table Storage クラスによって使用されますが、これらは Storage クライアント ライブラリを使用したプログラミングの必須の依存関係です。
 
 ### <a name="determine-your-target-environment"></a>ターゲット環境の決定
 
@@ -185,7 +177,7 @@ using Microsoft.Azure.Storage.Queue; // Namespace for Queue storage types
 
 # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-[CloudQueueClient](/dotnet/api/microsoft.azure.storage.queue.cloudqueueclient?view=azure-dotnet-legacy) クラスを使用すると、Queue Storage に格納されているキューを取得できます。 サービス クライアントを作成する方法の 1 つを次に示します。
+[CloudQueueClient](/dotnet/api/microsoft.azure.storage.queue.cloudqueueclient?view=azure-dotnet-legacy&preserve-view=true) クラスを使用すると、Queue Storage に格納されているキューを取得できます。 サービス クライアントを作成する方法の 1 つを次に示します。
 
 ```csharp
 // Retrieve storage account from connection string
@@ -237,7 +229,7 @@ queue.CreateIfNotExists();
 
 # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-既存のキューにメッセージを挿入するには、最初に新しい [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage?view=azure-dotnet-legacy)を作成します。 次に、 [AddMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessage?view=azure-dotnet-legacy) メソッドを呼び出します。 `CloudQueueMessage` は、`string` (UTF-8 形式) または `byte` 配列のいずれからでも作成できます。 次のコードでは、キューが作成され (それが存在しない場合)、メッセージ "Hello, World" が挿入されます。
+既存のキューにメッセージを挿入するには、最初に新しい [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage?view=azure-dotnet-legacy&preserve-view=true)を作成します。 次に、 [AddMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessage?view=azure-dotnet-legacy&preserve-view=true) メソッドを呼び出します。 `CloudQueueMessage` は、`string` (UTF-8 形式) または `byte` 配列のいずれからでも作成できます。 次のコードでは、キューが作成され (それが存在しない場合)、メッセージ "Hello, World" が挿入されます。
 
 ```csharp
 // Retrieve storage account from connection string
@@ -270,7 +262,7 @@ queue.AddMessage(message);
 
 # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-[PeekMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.peekmessage?view=azure-dotnet-legacy) メソッドを呼び出すと、キューの先頭にあるメッセージをキューから削除せずにピークできます。
+[PeekMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.peekmessage?view=azure-dotnet-legacy&preserve-view=true) メソッドを呼び出すと、キューの先頭にあるメッセージをキューから削除せずにピークできます。
 
 ```csharp
 // Retrieve storage account from connection string
@@ -333,7 +325,7 @@ queue.UpdateMessage(message,
 
 # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-コードでは、2 つの手順でキューからメッセージをデキューします。 [GetMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage?view=azure-dotnet-legacy)を呼び出すと、キュー内の次のメッセージを取得します。 `GetMessage` から返されたメッセージは、このキューからメッセージを読み取る他のコードから参照できなくなります。 既定では、このメッセージを参照できない状態は 30 秒間続きます。 また、キューからのメッセージの削除を完了するには、 [DeleteMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage?view=azure-dotnet-legacy)を呼び出す必要があります。 このようにメッセージを 2 つの手順で削除することで、ハードウェアまたはソフトウェアの問題が原因でコードによるメッセージの処理が失敗した場合に、コードの別のインスタンスで同じメッセージを取得し、もう一度処理することができます。 ご自分のコードで、メッセージが処理された直後に `DeleteMessage` を呼び出します。
+コードでは、2 つの手順でキューからメッセージをデキューします。 [GetMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage?view=azure-dotnet-legacy&preserve-view=true)を呼び出すと、キュー内の次のメッセージを取得します。 `GetMessage` から返されたメッセージは、このキューからメッセージを読み取る他のコードから参照できなくなります。 既定では、このメッセージを参照できない状態は 30 秒間続きます。 また、キューからのメッセージの削除を完了するには、 [DeleteMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage?view=azure-dotnet-legacy&preserve-view=true)を呼び出す必要があります。 このようにメッセージを 2 つの手順で削除することで、ハードウェアまたはソフトウェアの問題が原因でコードによるメッセージの処理が失敗した場合に、コードの別のインスタンスで同じメッセージを取得し、もう一度処理することができます。 ご自分のコードで、メッセージが処理された直後に `DeleteMessage` を呼び出します。
 
 ```csharp
 // Retrieve storage account from connection string
@@ -406,7 +398,7 @@ Console.WriteLine("Deleted message");
 
 # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-次のコード例では、[GetMessages](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessages?view=azure-dotnet-legacy) メソッドを使用して、1 回の呼び出しで 20 個のメッセージを取得します。 その後、`foreach` ループを使用して、各メッセージを処理します。 また、各メッセージの非表示タイムアウトを 5 分に設定します。 この 5 分間は、すべてのメッセージに対して同時に開始されます。そのため、`GetMessages` の呼び出しから 5 分が経過すると、削除されていないすべてのメッセージが再び表示されます。
+次のコード例では、[GetMessages](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessages?view=azure-dotnet-legacy&preserve-view=true) メソッドを使用して、1 回の呼び出しで 20 個のメッセージを取得します。 その後、`foreach` ループを使用して、各メッセージを処理します。 また、各メッセージの非表示タイムアウトを 5 分に設定します。 この 5 分間は、すべてのメッセージに対して同時に開始されます。そのため、`GetMessages` の呼び出しから 5 分が経過すると、削除されていないすべてのメッセージが再び表示されます。
 
 ```csharp
 // Retrieve storage account from connection string.
@@ -438,7 +430,7 @@ foreach (CloudQueueMessage message in queue.GetMessages(20, TimeSpan.FromMinutes
 
 # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-キュー内のメッセージの概数を取得できます。 [FetchAttributes](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.fetchattributes?view=azure-dotnet-legacy) メソッドは、メッセージ数などのキューの属性を取得するようキュー サービスに要求します。 [ApproximateMessageCount](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.approximatemessagecount?view=azure-dotnet-legacy) プロパティでは、Queue サービスを呼び出さずに、`FetchAttributes` メソッドによって取得された最後の値が返されます。
+キュー内のメッセージの概数を取得できます。 [FetchAttributes](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.fetchattributes?view=azure-dotnet-legacy&preserve-view=true) メソッドは、メッセージ数などのキューの属性を取得するようキュー サービスに要求します。 [ApproximateMessageCount](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.approximatemessagecount?view=azure-dotnet-legacy&preserve-view=true) プロパティでは、Queue サービスを呼び出さずに、`FetchAttributes` メソッドによって取得された最後の値が返されます。
 
 ```csharp
 // Retrieve storage account from connection string.
@@ -473,7 +465,7 @@ Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 
 # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
-キューおよびキューに格納されているすべてのメッセージを削除するには、キュー オブジェクトの [Delete](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.delete?view=azure-dotnet-legacy) メソッドを呼び出します。
+キューおよびキューに格納されているすべてのメッセージを削除するには、キュー オブジェクトの [Delete](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.delete?view=azure-dotnet-legacy&preserve-view=true) メソッドを呼び出します。
 
 ```csharp
 // Retrieve storage account from connection string.
@@ -499,16 +491,8 @@ queue.Delete();
 - 利用可能な API の詳細については、Queue サービスのリファレンス ドキュメントを参照してください。
   - [.NET 用ストレージ クライアント ライブラリ リファレンス](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
   - [REST API リファレンス](https://msdn.microsoft.com/library/azure/dd179355)
-- Azure Storage で作業するために記述したコードを簡略化する方法については、「 [Azure WebJobs SDK とは](https://github.com/Azure/azure-webjobs-sdk/wiki)」をご覧ください。
 - Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
   - [.NET を使用して Azure Table Storage を使用する](../../cosmos-db/table-storage-how-to-use-dotnet.md) 」を参照してください。
   - [.NET を使用して Azure Blob Storage を使用する](../blobs/storage-dotnet-how-to-use-blobs.md) 」を参照してください。
   - リレーショナル データを格納する方法については、「[.NET (C#) を使用して SQL Database に接続する](../../azure-sql/database/connect-query-dotnet-core.md)」を参照してください。
-
-[Download and install the Azure SDK for .NET]: /develop/net/
-[.NET client library reference]: https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
-[Creating an Azure Project in Visual Studio]: https://msdn.microsoft.com/library/azure/ee405487.aspx
-[Azure Storage Team Blog]: https://blogs.msdn.com/b/windowsazurestorage/
-[OData]: https://nuget.org/packages/Microsoft.Data.OData/5.0.2
-[Edm]: https://nuget.org/packages/Microsoft.Data.Edm/5.0.2
-[Spatial]: https://nuget.org/packages/System.Spatial/5.0.2
+- Azure Storage で作業するために記述したコードを簡略化する方法については、「 [Azure WebJobs SDK とは](https://github.com/Azure/azure-webjobs-sdk/wiki)」をご覧ください。

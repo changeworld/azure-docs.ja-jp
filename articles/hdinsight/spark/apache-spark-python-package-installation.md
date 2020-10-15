@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: a6ad1c068a41b4b865c148ebb7cdb509821609d4
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 6ef4a4f422bb787b3ead33ed1047d26d5e3c9c1f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91823410"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978073"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>スクリプト アクションを使用して Azure HDInsight で Python 環境を安全に管理する
 
@@ -81,7 +81,7 @@ HDInsight クラスターは、組み込みの Python 環境 (Python 2.7 と Pyt
 
     - または、PyPi リポジトリを使用し、`seaborn` と `py35new` を適切に変更します。
         ```bash
-        sudo /usr/bin/anaconda/env/py35new/bin/pip install seaborn
+        sudo /usr/bin/anaconda/envs/py35new/bin/pip install seaborn
         ```
 
     特定のバージョンのライブラリをインストールする場合は、次のコマンドを使用します。
@@ -98,7 +98,7 @@ HDInsight クラスターは、組み込みの Python 環境 (Python 2.7 と Pyt
     - または、PyPi リポジトリを使用し、`numpy==1.16.1` と `py35new` を適切に変更します。
 
         ```bash
-        sudo /usr/bin/anaconda/env/py35new/bin/pip install numpy==1.16.1
+        sudo /usr/bin/anaconda/envs/py35new/bin/pip install numpy==1.16.1
         ```
 
     仮想環境名がわからない場合は、クラスターのヘッド ノードに SSH 接続し、`/usr/bin/anaconda/bin/conda info -e` を実行して、すべての仮想環境を表示できます。

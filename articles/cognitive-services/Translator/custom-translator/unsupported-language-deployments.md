@@ -8,13 +8,13 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 05/26/2020
+ms.date: 04/24/2019
 ms.author: swmachan
-ms.openlocfilehash: 4b6214ebfaf4b9ed6dd97f6a6ac2f5c4ae164a59
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3c5c74fc853b5a2425a58e1704aad43350cba212
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85964687"
 ---
 # <a name="unsupported-language-deployments"></a>サポートされていない言語の展開
@@ -47,7 +47,7 @@ ms.locfileid: "85964687"
 
 ## <a name="whats-next"></a>次の操作
 
-ハブの使用を中止し、すべてのモデルの展開を解除すると、展開用に選択したモデルが保存されます。  サポートされていないモデルを展開するための要求は 5 月 24日までに送信してください。  これらのモデルは 6 月 15 日に展開し、翻訳ツールの V3 を通じてアクセスできます。  さらに、Translator V2 は 7 月 1 日まで利用できます。  
+ハブの使用を中止し、すべてのモデルの展開を解除すると、展開用に選択したモデルが保存されます。  サポートされていないモデルを展開するための要求は 5 月 24日までに送信してください。  これらのモデルは 6 月 15 日に展開し、翻訳ツールの V3 API を通じてアクセスできます。  さらに、V2 API は 7 月 1 日まで利用できます。  
 
 ハブ チェックの使用停止に関する重要な日付については、[ここ](https://www.microsoft.com/translator/business/hub/)をクリックしてください。
 展開後、通常のホスティング料金が適用されます。  詳細については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)のページを参照してください。  
@@ -57,4 +57,4 @@ ms.locfileid: "85964687"
 ## <a name="next-steps"></a>次のステップ
 
 - [モデルをトレーニングします](how-to-train-model.md)。
-- [Translator V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) を介してデプロイされた翻訳モデルを使い始めます。
+- [Microsoft Translator Text API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) を介してデプロイされた翻訳モデルを使い始めます。

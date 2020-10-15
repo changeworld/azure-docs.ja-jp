@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/09/2020
 ms.author: v-miegge
-ms.openlocfilehash: 9c170607d6300c4921285e85ac78db5a8a18ad9b
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: bde091b4a4559c3574ee122d74574d1f9477f3fd
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90078789"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977050"
 ---
 # <a name="troubleshoot-windows-could-not-finish-configuring-the-system"></a>Windows がシステムの構成を完了できなかったことをトラブルシューティングする
 
@@ -28,7 +28,7 @@ ms.locfileid: "90078789"
 
 ## <a name="symptom"></a>症状
 
-[ブート診断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)を使用して VM のスクリーンショットを表示すると、Windows インストールでエラーが出たこと、Windows セットアップで各種サービスが開始されていることがスクリーンショットに表示されます。 このエラーにより、次のメッセージが表示されます。
+[ブート診断](./boot-diagnostics.md)を使用して VM のスクリーンショットを表示すると、Windows インストールでエラーが出たこと、Windows セットアップで各種サービスが開始されていることがスクリーンショットに表示されます。 このエラーにより、次のメッセージが表示されます。
 
 `Windows could not finish configuring the system. To attempt to resume configuration, restart the computer. Setup is starting services`
 
@@ -36,8 +36,8 @@ ms.locfileid: "90078789"
 
 ## <a name="cause"></a>原因
 
-このエラーは、オペレーティング システム (OS) が [Sysprep プロセス](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-process-overview)を完了できない場合に発生します。 このエラーは、一般化された VM を最初に起動しようとしたときに発生します。 この問題が発生した場合、イメージが展開不可能な状態にあり、回復できないため、一般化されたイメージを再作成します。
+このエラーは、オペレーティング システム (OS) が [Sysprep プロセス](/windows-hardware/manufacture/desktop/sysprep-process-overview)を完了できない場合に発生します。 このエラーは、一般化された VM を最初に起動しようとしたときに発生します。 この問題が発生した場合、イメージが展開不可能な状態にあり、回復できないため、一般化されたイメージを再作成します。
 
 ## <a name="solution"></a>解決策
 
-この問題を解決するには、[イメージの準備やキャプチャに関する Azure のガイダンス](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)の記事に従い、一般化された新しいイメージを準備します。
+この問題を解決するには、[イメージの準備やキャプチャに関する Azure のガイダンス](../windows/upload-generalized-managed.md)の記事に従い、一般化された新しいイメージを準備します。

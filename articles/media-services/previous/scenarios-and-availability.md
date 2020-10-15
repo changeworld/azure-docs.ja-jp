@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: eb9d901a32d558f676ba10eaf65b54c51bfbcda8
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 99604092ea901458062abd6423d74ad8f1f2c8d7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89259185"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014411"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Media Services のシナリオとデータ センターにおける機能の可用性
 
@@ -89,10 +89,10 @@ Azure Media Services を使用するには、次が必要です。
 
 ## <a name="use-media-analytics-to-derive-actionable-insights-from-your-videos"></a>Media Analytics を使用して、ビデオから実用的な洞察を得る
 
-Media Analytics は音声および視覚コンポーネントの集合体であり、組織や企業がこれを活用することで、ビデオ ファイルから実用的な洞察を簡単に引き出すことができます。 詳細については、「 [Azure Media Services Analytics の概要](media-services-analytics-overview.md)」を参照してください。
+Media Analytics は音声および視覚コンポーネントの集合体であり、組織や企業がこれを活用することで、ビデオ ファイルから実用的な洞察を簡単に引き出すことができます。 詳細については、「 [Azure Media Services Analytics の概要](./legacy-components.md)」を参照してください。
 
 1. 高品質なメディア ファイルを資産にアップロードします。
-2. [Media Analytics の概要](media-services-analytics-overview.md)に関するセクションで説明されている Media Analytics サービスのいずれかを使用して、ビデオを処理します。
+2. [Media Analytics の概要](./legacy-components.md)に関するセクションで説明されている Media Analytics サービスのいずれかを使用して、ビデオを処理します。
 3. Media Analytics のメディア プロセッサによって MP4 ファイルまたは JSON ファイルが生成されます。 メディア プロセッサによって MP4 ファイルが生成された場合は、そのファイルのプログレッシブ ダウンロードが可能です。 メディア プロセッサによって JSON ファイルが生成された場合は、そのファイルを Azure Blob Storage からダウンロードできます。
 
 データ センターにおける可用性については、[可用性](#availability)に関するセクションを参照してください。
@@ -203,7 +203,7 @@ AMS には、**Media Encoder Standard** と **Media Encoder Premium ワークフ
 
 ### <a name="analytics-media-processors"></a>Analytics メディア プロセッサ
 
-Media Analytics は音声および視覚コンポーネントの集合体であり、組織や企業がこれを活用することで、ビデオ ファイルから実用的な洞察を簡単に引き出すことができます。 詳細については、「 [Azure Media Services Analytics の概要](media-services-analytics-overview.md)」を参照してください。
+Media Analytics は音声および視覚コンポーネントの集合体であり、組織や企業がこれを活用することで、ビデオ ファイルから実用的な洞察を簡単に引き出すことができます。 詳細については、「 [Azure Media Services Analytics の概要](./legacy-components.md)」を参照してください。
 
 > [!NOTE]
 > 一部の分析メディア プロセッサはインベントリから削除されます。 提供終了日については、[レガシ コンポーネント](legacy-components.md)に関するトピックを参照してください。

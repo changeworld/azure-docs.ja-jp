@@ -2,7 +2,7 @@
 title: Azure AD Domain Services でのパスワード ポリシーの作成と使用 | Microsoft Docs
 description: Azure AD DS マネージド ドメインで、細かい設定が可能なパスワード ポリシーを使用してアカウント パスワードをセキュリティで保護し、制御する方法とその理由について説明します。
 services: active-directory-ds
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 1a14637e-b3d0-4fd9-ba7a-576b8df62ff2
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: e3e524df2e98229698a86a721b7312a4d054ff70
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.author: joflore
+ms.openlocfilehash: 240b96a47c84ec3b15a356edc35549a4a197b219
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040046"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91967969"
 ---
 # <a name="password-and-account-lockout-policies-on-active-directory-domain-services-managed-domains"></a>Active Directory Domain Services マネージド ドメインのパスワードとアカウントのロックアウト ポリシー
 
@@ -93,7 +93,7 @@ Azure でアプリケーションを構築して実行するときに、カス�
 1. スタート画面で **[管理ツール]** を選択します。 [管理 VM を作成する][tutorial-create-management-vm]ためのチュートリアルでインストールされた使用可能な管理ツールの一覧が表示されます。
 1. OU を作成して管理するには、管理ツールの一覧から **[Active Directory 管理センター]** を選択します。
 1. 左側のペインで、マネージド ドメイン (例: *aaddscontoso.com*) を選択します。
-1. **[System]\(システム\)** コンテナーを開き、 **[Password Settings Container]\(パスワード設定コンテナ―\)** を開きます。
+1. **[System]/(システム/)** コンテナーを開き、 **[Password Settings Container]/(パスワード設定コンテナ―/)** を開きます。
 
     マネージド ドメインの組み込みのパスワード ポリシーが表示されます。 この組み込みのポリシーは変更できません。 代わりに、既定のポリシーを上書きするカスタムのパスワード ポリシーを作成します。
 

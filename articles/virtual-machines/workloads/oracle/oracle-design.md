@@ -1,25 +1,18 @@
 ---
 title: Azure での Oracle データベースの設計と実装 | Microsoft Docs
 description: ご利用の Azure 環境で Oracle データベースを設計および実装します。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: dbakevlar
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.openlocfilehash: 70de7363634cee2790a40ecf056134cf002c762d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.reviewer: cynthn
+ms.openlocfilehash: 9ccf7ddb44a25ec123f13b5d7b6cdb5354b63778
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91274709"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91996631"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Azure での Oracle データベースの設計と実装
 
@@ -49,7 +42,7 @@ ms.locfileid: "91274709"
 | **ネットワーク** |LAN/WAN  |SDN (ソフトウェアによるネットワーク)|
 | **セキュリティ グループ** |IP/ポートの制限ツール |[ネットワーク セキュリティ グループ (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
 | **回復力** |MTBF (平均故障間隔) |MTTR (平均復旧時間)|
-| **定期的なメンテナンス** |修正/更新プログラム|[可用性セット](../../windows/infrastructure-example.md) (修正/更新プログラムは Azure によって管理) |
+| **定期的なメンテナンス** |修正/更新プログラム|[可用性セット](/previous-versions/azure/virtual-machines/windows/infrastructure-example) (修正/更新プログラムは Azure によって管理) |
 | **リソース** |専用  |他のクライアントと共有|
 | **リージョン** |データ センター |[リージョンのペア](../../regions.md#region-pairs)|
 | **Storage** |記憶域ネットワーク/物理ディスク |[Azure 管理のストレージ](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
@@ -230,7 +223,7 @@ Azure 環境のセットアップと構成が完了した後に、今度はネ�
 - [Oracle ASM の構成](configure-oracle-asm.md)
 - [Oracle Data Guard の構成](configure-oracle-dataguard.md)
 - [Oracle Golden Gate の構成](configure-oracle-golden-gate.md)
-- [Oracle のバックアップと回復](oracle-backup-recovery.md)
+- [Oracle のバックアップと回復](./oracle-overview.md)
 
 ## <a name="next-steps"></a>次のステップ
 

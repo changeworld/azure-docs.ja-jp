@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 08/21/2020
 ms.author: victorh
 ms.openlocfilehash: 6fb613578e520f50701c9a09169f2d78c0c08c4f
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88723998"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して複数の Web サイトをホストするアプリケーション ゲートウェイを作成し、構成します。
@@ -50,7 +50,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
    - **[リソース グループ]** :リソース グループには、**myResourceGroupAG** を選択します。 存在しない場合は、 **[新規作成]** を選択して作成します。
    - **[アプリケーション ゲートウェイ名]** :アプリケーション ゲートウェイの名前として「*myAppGateway*」と入力します。
 
-     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png" alt-text="アプリケーション ゲートウェイの作成":::
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png" alt-text="複数サイト アプリケーション ゲートウェイ":::
 
 2.  お客様が作成するリソースの間で Azure による通信が行われるには、仮想ネットワークが必要です。 新しい仮想ネットワークを作成することも、既存の仮想ネットワークを使用することもできます。 この例では、アプリケーション ゲートウェイの作成と同時に新しい仮想ネットワークを作成します。 Application Gateway インスタンスは、個別のサブネットに作成されます。 この例では 2 つのサブネットを作成します。1 つはアプリケーション ゲートウェイ用で、もう 1 つはバックエンド サーバー用です。
 
@@ -66,7 +66,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
     **[OK]** を選択して **[仮想ネットワークの作成]** ウィンドウを閉じ、仮想ネットワークの設定を保存します。
 
-     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png" alt-text="VNet を作成します":::
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png" alt-text="複数サイト アプリケーション ゲートウェイ":::
     
 3. **[基本]** タブで、その他の設定の既定値をそのまま使用し、 **[次へ:フロントエンド]** を選択します。
 
@@ -78,7 +78,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 2. **[パブリック IP アドレス]** として **[新規作成]** を選択し、パブリック IP アドレス名として「*myAGPublicIPAddress*」と入力し、 **[OK]** を選択します。 
 
-     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png" alt-text="別の VNet を作成する":::
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png" alt-text="複数サイト アプリケーション ゲートウェイ":::
 
 3. **バックエンド** を選択します。
 
@@ -96,7 +96,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 3. **[バックエンド プールの追加]** ウィンドウで、 **[追加]** を選択してバックエンド プールの構成を保存し、 **[バックエンド]** タブに戻ります。
 4. 次に、*fabrikamPool* という名前の別のバックエンド プールを追加します。
 
-    :::image type="content" source="./media/create-multiple-sites-portal/backend-pools.png" alt-text="バックエンドを作成します":::
+    :::image type="content" source="./media/create-multiple-sites-portal/backend-pools.png" alt-text="複数サイト アプリケーション ゲートウェイ":::
 
 4. **[バックエンド]** タブで、 **[次へ:構成]** を選択します。
 
@@ -119,7 +119,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
    **[リスナー]** タブで他の設定の既定値をそのまま使用し、 **[バックエンド ターゲット]** タブを選択して、ルーティング規則の残りの部分を構成します。
 
-   :::image type="content" source="./media/create-multiple-sites-portal/routing-rule.png" alt-text="ルーティング規則を作成します":::
+   :::image type="content" source="./media/create-multiple-sites-portal/routing-rule.png" alt-text="複数サイト アプリケーション ゲートウェイ":::
 
 4. **[バックエンド ターゲット]** タブで、 **[バックエンド ターゲット]** として **[contosoPool]** を選択します。
 
@@ -128,7 +128,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 6. **[ルーティング規則の追加]** ウィンドウで **[追加]** を選択してルーティング規則を保存し、 **[構成]** タブに戻ります。
 7. **[ルールの追加]** を選択し、Fabrikam 用に同様のルール、リスナー、バックエンドターゲット、および HTTP 設定を追加します。
 
-     :::image type="content" source="./media/create-multiple-sites-portal/fabrikam-rule.png" alt-text="Fabrikam 規則":::
+     :::image type="content" source="./media/create-multiple-sites-portal/fabrikam-rule.png" alt-text="複数サイト アプリケーション ゲートウェイ":::
 
 7. **タグ**、**次へ:確認と作成** をクリックします。
 

@@ -10,12 +10,14 @@ author: gvashishtha
 ms.date: 07/31/2020
 ms.topic: conceptual
 zone_pivot_groups: aml-control-methods
-ms.openlocfilehash: aac5fba68c43892216cbd16dd99b0c6a9bf70217
-ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
+ms.reviewer: larryfr
+ms.custom: deploy
+ms.openlocfilehash: 95f35c2734e0a8dbc39d409847976b8b31716f81
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91660991"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91998773"
 ---
 # <a name="profile-your-model-to-determine-resource-utilization"></a>モデルをプロファイルしてリソース使用状況を判断する
 

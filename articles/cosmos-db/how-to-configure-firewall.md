@@ -8,10 +8,10 @@ ms.date: 08/24/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 69c39d2478ed7d488c1209c2c7e16c241c59bcef
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88814180"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Azure Cosmos DB で IP ファイアウォールを構成する
@@ -46,13 +46,13 @@ IP アクセス制御ポリシーをプログラムで有効にする場合は�
 
 次のスクリーン ショットに示すように、 **[Azure portal からのアクセスを許可する]** を選択することで、Azure portal へのアクセス要求を有効にできます。
 
-:::image type="content" source="./media/how-to-configure-firewall/enable-azure-portal.png" alt-text="Azure portal へのアクセスを有効にする方法を示すスクリーンショット":::
+:::image type="content" source="./media/how-to-configure-firewall/enable-azure-portal.png" alt-text="Azure portal で [ファイアウォール] ページを開く方法を示すスクリーンショット":::
 
 ### <a name="allow-requests-from-global-azure-datacenters-or-other-sources-within-azure"></a>世界中の Azure データ センターまたは Azure 内の他のソースからの要求を許可する
 
 Azure Stream Analytics や Azure Functions などの静的 IP を提供しないサービスから Azure Cosmos DB アカウントにアクセスする場合も、IP ファイアウォールを使用してアクセスを制限できます。 次のスクリーン ショットに示すように、 **[Accept connections from within Azure datacenters]\(Azure データセンター内からの接続を受け入れる\)** を選択することで、Azure 内の他のソースからのアクセスを有効にできます。
 
-:::image type="content" source="./media/how-to-configure-firewall/enable-azure-services.png" alt-text="Azure データセンターからの接続を受け入れる方法を示すスクリーンショット":::
+:::image type="content" source="./media/how-to-configure-firewall/enable-azure-services.png" alt-text="Azure portal で [ファイアウォール] ページを開く方法を示すスクリーンショット":::
 
 このオプションを有効にすると、IP アドレス `0.0.0.0` が、許可される IP アドレスの一覧に追加されます。 `0.0.0.0` の IP アドレスにより、Azure データセンターの IP 範囲からご利用の Azure Cosmos DB アカウントへの要求が制限されます。 この設定では、その他の IP 範囲からご利用の Azure Cosmos DB アカウントへのアクセスは許可されません。
 
@@ -67,7 +67,7 @@ Azure Stream Analytics や Azure Functions などの静的 IP を提供しない
 
 現在の IP を IP の一覧に追加するには、 **[現在の IP を追加する]** を選択します。 次に、 **[保存]** を選択します。
 
-:::image type="content" source="./media/how-to-configure-firewall/enable-current-ip.png" alt-text="現在の IP のファイアウォール設定を構成する方法を示すスクリーンショット":::
+:::image type="content" source="./media/how-to-configure-firewall/enable-current-ip.png" alt-text="Azure portal で [ファイアウォール] ページを開く方法を示すスクリーンショット":::
 
 ### <a name="requests-from-cloud-services"></a>クラウド サービスからの要求
 
@@ -75,7 +75,7 @@ Azure では、Azure Cosmos DB を使用して中間層のサービス ロジッ
 
 クラウド サービスの IP アドレスは Azure Portal で確認できます。次のスクリーンショットをご覧ください。
 
-:::image type="content" source="./media/how-to-configure-firewall/public-ip-addresses.png" alt-text="Azure portal に表示されるクラウド サービスのパブリック IP アドレスを示すスクリーンショット":::
+:::image type="content" source="./media/how-to-configure-firewall/public-ip-addresses.png" alt-text="Azure portal で [ファイアウォール] ページを開く方法を示すスクリーンショット":::
 
 (複数の) ロール インスタンスを追加してご利用のクラウド サービスをスケールアウトした場合、それらのインスタンスは、同じクラウド サービスに属すことになるので、Azure Cosmos DB アカウントへのアクセス権が自動的に割り当てられます。
 
@@ -85,7 +85,7 @@ Azure Cosmos DB を使用する中間層サービスのホスティングには�
 
 仮想マシンの IP アドレスは Azure portal で取得できます。次のスクリーンショットを参照してください。
 
-:::image type="content" source="./media/how-to-configure-firewall/public-ip-addresses-dns.png" alt-text="Azure portal に表示される仮想マシンのパブリック IP アドレスを示すスクリーンショット":::
+:::image type="content" source="./media/how-to-configure-firewall/public-ip-addresses-dns.png" alt-text="Azure portal で [ファイアウォール] ページを開く方法を示すスクリーンショット":::
 
 このグループに仮想マシン インスタンスを追加した場合、それらのインスタンスにも自動的にご利用の Azure Cosmos DB アカウントへのアクセス権が割り当てられます。
 

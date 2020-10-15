@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 09/22/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 3366f39f3aca8ad0114244c122d1003b5e9b91a3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90929532"
 ---
 # <a name="tutorial-deploy-django-app-with-app-service-and-azure-database-for-postgresql---flexible-server-preview"></a>チュートリアル:App Service と Azure Database for PostgreSQL - フレキシブル サーバー (プレビュー) を使用して Django アプリをデプロイする
@@ -194,11 +194,11 @@ python manage.py runserver
 ```
 Web アプリが完全に読み込まれると、Django 開発サーバーによって、次のメッセージにローカル アプリの URL が表示されます: "Starting development server at http://127.0.0.1:8000/. Quit the server with CTRL-BREAK" (http://127.0.0.1:8000/ で開発サーバーを起動しています。CTRL-BREAK キーを押してサーバーを終了します)。
 
-:::image type="content" source="./media/tutorial-django-app-service-postgres/django-dev-server-output.png" alt-text="Django 開発サーバーの出力例":::
+:::image type="content" source="./media/tutorial-django-app-service-postgres/django-dev-server-output.png" alt-text="Django 開発サーバーの出力例&quot;:::
 
 次の手順に従って、アプリをローカルでテストします。
 
-1. ブラウザーで *http:\//localhost:8000* にアクセスすると、"No polls are available" (投票は利用できません) というメッセージが再び表示されます。
+1. ブラウザーで *http:\//localhost:8000* にアクセスすると、&quot;No polls are available" (投票は利用できません) というメッセージが再び表示されます。
 
 1. *http:\//localhost:8000/admin* に移動し、前の手順で作成した管理者ユーザーを使用してサインインします。 **[Polls]\(投票\)** で、 **[Questions]\(質問\)** の横の **[Add]\(追加\)** をもう一度選択し、いくつかの選択肢がある投票の質問を作成します。
 
@@ -270,11 +270,19 @@ python manage.py migrate
 
 [Azure portal](https://portal.azure.com) でアプリ名を探し、結果内のアプリを選択します。
 
-:::image type="content" source="./media/tutorial-django-app-service-postgres/navigate-to-django-app-in-app-services-in-the-azure-portal.png" alt-text="Azure portal で Python Django アプリに移動する":::
+:::image type="content" source="./media/tutorial-django-app-service-postgres/navigate-to-django-app-in-app-services-in-the-azure-portal.png" alt-text="Django 開発サーバーの出力例&quot;:::
+
+次の手順に従って、アプリをローカルでテストします。
+
+1. ブラウザーで *http:\//localhost:8000* にアクセスすると、&quot;No polls are available":::
 
 既定では、アプリの **[Overview]\(概要\)** ページがポータルに表示されます。これにより、全般的なパフォーマンス ビューが提供されます。 ここでは、参照、停止、再開、削除といった基本的な管理タスクを実行することもできます。 ページの左側にあるタブは、開くことができるさまざまな構成ページを示しています。
 
-:::image type="content" source="./media/tutorial-django-app-service-postgres/manage-django-app-in-app-services-in-the-azure-portal.png" alt-text="Azure portal の [概要] ページで Python Django アプリを管理する":::
+:::image type="content" source="./media/tutorial-django-app-service-postgres/manage-django-app-in-app-services-in-the-azure-portal.png" alt-text="Django 開発サーバーの出力例&quot;:::
+
+次の手順に従って、アプリをローカルでテストします。
+
+1. ブラウザーで *http:\//localhost:8000* にアクセスすると、&quot;No polls are available":::
 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする

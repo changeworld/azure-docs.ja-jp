@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 734c898dae10233463fbf783802ffae4c6a3add8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3a2087c83ec48b0b732ce1cb954f78fad9b46fef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997933"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91857437"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>チュートリアル:カスタム IoT Edge モジュールの作成とデプロイ
 
@@ -809,14 +809,6 @@ IoT Edge デバイス (このケースでは Linux VM) にログインすると�
 この記事では、分類器、ルーター、ファイル ライター (アップローダー) の 3 つのモジュールを含む IoT Edge ソリューションを Visual Studio Code で作成しました。 モジュールがエッジ デバイス上で互いに通信できるようにするためのルートを設定したほか、 エッジ デバイスの構成を変更し、また、モジュールのコンテナーに依存関係をインストールしバインド マウントを追加するために Dockerfile を更新しました。 
 
 次に、種類に応じてメッセージをルーティングしたり、ファイルのアップロードを処理したりするために、IoT Hub の構成を更新しました。 すべての準備が整ったので、モジュールを IoT Edge デバイスにデプロイし、モジュールが正しく実行されていることを確認しました。
-
-詳細なガイダンスについては、次に関する記事を参照してください。
-
-* [Learn how to deploy modules and establish routes in IoT Edge](module-composition.md) (IoT Edge にモジュールをデプロイしてルートを確立する方法)
-* [IoT Hub message routing query syntax](../iot-hub/iot-hub-devguide-routing-query-syntax.md) (IoT Hub メッセージ ルーティングのクエリ構文)
-* [IoT Hub message routing: now with routing on message body](https://azure.microsoft.com/blog/iot-hub-message-routing-now-with-routing-on-message-body/) (IoT Hub メッセージ ルーティング: メッセージ本文でのルーティングが可能に)
-* [IoT Hub を使用したファイルのアップロード](../iot-hub/iot-hub-devguide-file-upload.md)
-* [Upload files from your device to the cloud with IoT Hub](../iot-hub/iot-hub-python-python-file-upload.md) (IoT Hub を使用してデバイスからクラウドにファイルをアップロードする)
 
 次の記事に進んでデータの送信を開始し、ソリューションの実際の動作を確認してください。
 

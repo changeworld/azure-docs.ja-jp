@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: b7d19d782e9cb29cfc917293f084b78830db89bc
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: aba28e867f5fdb7bfaa917547f60565c39e382dd
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797617"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91977767"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM での Azure Disk Encryption シナリオ
 
@@ -408,7 +408,7 @@ Azure Disk Encryption は、次の Linux のシナリオ、機能、およびテ
 - 暗号化された VM のイメージまたはスナップショットを作成し、それを使用して追加の VM をデプロイする。
 - カーネル クラッシュ ダンプ (kdump)。
 - Oracle ACFS (ASM クラスター ファイル システム)。
-- Gen2 VM (「[Azure での第 2 世代 VM のサポート](generation-2.md#generation-1-vs-generation-2-capabilities)」を参照)。
+- Gen2 VM (「[Azure での第 2 世代 VM のサポート](../generation-2.md#generation-1-vs-generation-2-capabilities)」を参照)。
 - Lsv2 シリーズ VM の NVMe ディスク (参照: [LSv2 シリーズ](../lsv2-series.md))。
 - "マウント ポイントが入れ子になっている"、つまり、1 つのパスに複数のマウント ポイントがある ("/1stmountpoint/data/2stmountpoint" など) VM。
 - OS フォルダーの上にデータ ドライブがマウントされている VM。

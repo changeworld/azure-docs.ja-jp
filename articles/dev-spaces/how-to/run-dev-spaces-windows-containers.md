@@ -5,14 +5,16 @@ ms.date: 01/16/2020
 ms.topic: conceptual
 description: Windows コンテナーを持つ既存のクラスターでの Azure Dev Spaces の実行方法について説明します
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Windows コンテナー
-ms.openlocfilehash: 131f69d42795b857a53fc21b760a7275a6826bb8
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 51a91c9ff74c4d0d1c5bccff2f1033eb14cd9198
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212462"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972936"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Azure Dev Spaces を使用した Windows コンテナーの操作
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 Azure Dev Spaces は、新規と既存の両方の Kubernetes 名前空間で有効にすることができます。 Azure Dev Spaces は、Linux コンテナーで実行されるサービスを実行し、インストルメント化します。 それらのサービスは、同じ名前空間で Windows コンテナーで実行されるアプリケーションを操作することもできます。 この記事では、既存の Windows コンテナーを持つ名前空間で Dev Spaces を使用してサービスを実行する方法について説明します。 現時点では、Azure Dev Spaces を使用して、Windows コンテナーのデバッグやアタッチを行うことはできません。
 

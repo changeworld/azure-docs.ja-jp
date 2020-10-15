@@ -3,19 +3,19 @@ title: Anomaly Detector API の利用に関するベスト プラクティス
 titleSuffix: Azure Cognitive Services
 description: Anomaly Detector API を使用して異常を検出する場合のベスト プラクティスについて説明します。
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 03/26/2019
-ms.author: aahi
-ms.openlocfilehash: 9407f2fc9375765efb6eb9688b3ebfeef24ba90a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mbullwin
+ms.openlocfilehash: 6bf00d8b5327ddd539190b6e990c7edb35c876f7
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67721626"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018391"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Anomaly Detector API の使用に関するベスト プラクティス
 
