@@ -8,10 +8,10 @@ ms.date: 03/18/2020
 ms.author: sngun
 ms.reviewer: sngun
 ms.openlocfilehash: 32266695770f627f7044bce92e4505f45776fd28
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83747356"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Azure Cosmos DB のコンプライアンス 
@@ -72,4 +72,4 @@ Azure のコンプライアンス認証の詳細については、以下の記�
 
 * Azure Cosmos DB のセキュリティと最新の機能強化の概要については、「[Azure Cosmos DB のセキュリティ - 概要](database-security.md)」を参照してください。
 
-* マイクロソフトが取得している認証の詳細については、[Azure Trust Center](https://azure.microsoft.com/support/trust-center/) に関するページを参照してください。
+* マイクロソフトが取得している認証の詳細については、[Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)に関するページを参照してください。

@@ -10,10 +10,10 @@ ms.date: 07/01/2020
 ms.author: tamram
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 115ab9767c23afd5876eb23821bd1283777cdb5e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89018928"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>.NET を使用してコンテナーのプロパティとメタデータを管理する

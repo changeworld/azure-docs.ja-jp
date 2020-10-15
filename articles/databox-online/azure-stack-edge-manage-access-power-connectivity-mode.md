@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: e0e2ac43ce0157b4917e9c45f6a02ace63432137
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 9636c76caf2302b872a2ecbb8e2e4bacfc1408a6
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904418"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952133"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro"></a>Azure Stack Edge Pro のアクセス、電源、接続モードを管理する
 
@@ -53,7 +53,7 @@ Azure Stack Edge Pro デバイスへのアクセスは、デバイスのパス�
 
 2. 新しいパスワードを入力し、それを確認します。 指定するパスワードは 8 ～ 16 文字にする必要があります。 パスワードには、大文字、小文字、数字、および特殊文字のうち 3 種類の文字を使用する必要があります。 **[リセット]** を選択します。
 
-    ![[パスワードのリセット]](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
+    ![パスワードのリセット 2](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
 
 ## <a name="manage-resource-access"></a>リソース アクセスの管理
 

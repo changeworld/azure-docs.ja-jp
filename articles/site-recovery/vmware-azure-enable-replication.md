@@ -7,10 +7,10 @@ ms.date: 04/01/2020
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 74870d10348421bf726b9bdc58504a74cf4105a9
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86129927"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Azure への VMware VM のレプリケーションを有効にする
@@ -73,16 +73,16 @@ VMware 仮想マシンをレプリケートする場合、次の点に注意し�
 
    保護の対象として選択したすべての仮想マシンにネットワーク設定を適用する場合は、 **[選択したマシン用に今すぐ構成します。]** を選択します。 仮想マシンごとに Azure ネットワークを選択する場合は、 **[後で構成する]** を選択します。 ネットワークがない場合は、作成する必要があります。 Azure Resource Manager を使用してネットワークを作成する場合は、 **[新規作成]** を選択します。 該当する場合は、サブネットを選択し、 **[OK]** を選択します。
 
-   :::image type="content" source="./media/vmware-azure-enable-replication/enable-rep3.png" alt-text="[レプリケーションを有効にする] [ターゲット] ウィンドウ":::
+   :::image type="content" source="./media/vmware-azure-enable-replication/enable-rep3.png" alt-text="[レプリケーションを有効にする] [ソース] ウィンドウ":::
 
 1. **[Virtual Machines]**  >  **[仮想マシンの選択]** で、レプリケートする各仮想マシンを選択します。 選択できるのは、レプリケーションを有効にできる仮想マシンのみです。 **[OK]** をクリックします。 特定の仮想マシンを表示または選択できない場合は、「[ソース マシンが Azure portal 内に表示されない](vmware-azure-troubleshoot-replication.md#step-3-troubleshoot-source-machines-that-arent-available-for-replication)」を参照して問題を解決してください。
 
-   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication5.png" alt-text="[レプリケーションを有効にする] [仮想マシンの選択] ウィンドウ":::
+   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication5.png" alt-text="[レプリケーションを有効にする] [ソース] ウィンドウ":::
 
 1. **[プロパティ]**  >  **[プロパティの構成]** で、Site Recovery Mobility Service を VM に自動的にインストールするためにプロセス サーバーが使用するアカウントを選択します。 また、データ チャーン パターンに基づいてレプリケーションに使用するターゲット マネージド ディスクの種類を選択します。
 1. 既定では、ソース VM のすべてのディスクがレプリケートされます。 レプリケーションからディスクを除外するには、レプリケートしないディスクの **[Include]\(含める\)** チェックボックスをオフにします。 **[OK]** をクリックします。 後で追加のプロパティを設定できます。 ディスクの除外の詳細については、[こちら](vmware-azure-exclude-disk.md)をご覧ください。
 
-   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication6.png" alt-text="[レプリケーションを有効にする] [プロパティの構成] ウィンドウ":::
+   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication6.png" alt-text="[レプリケーションを有効にする] [ソース] ウィンドウ":::
 
 1. **[レプリケーション設定]**  >  **[レプリケーション設定の構成]** で、正しいレプリケーション ポリシーが選択されていることを確認します。 レプリケーション ポリシー設定を変更するには、 **[設定]**  >  **[レプリケーション ポリシー]**  >  _(ポリシー名)_  >  **[設定の編集]** の順にクリックします。 ポリシーに適用された変更は、レプリケートと新しい仮想マシンにも適用されます。
 1. 仮想マシンをレプリケーション グループにまとめる場合は、 **[マルチ VM 整合性]** を有効にします。 グループの名前を指定し、 **[OK]** を選択します。
@@ -91,7 +91,7 @@ VMware 仮想マシンをレプリケートする場合、次の点に注意し�
    > - レプリケーション グループの仮想マシンはまとめてレプリケートされ、フェールオーバー時にクラッシュ整合性復旧ポイントとアプリ整合性復旧ポイントを共有します。
    > - VM と物理サーバーがワークロードをミラー化できるように、これらをまとめます。 マルチ VM 整合性を有効にすると、ワークロードのパフォーマンスに影響する場合があります。 これは、複数の仮想マシンが同じワークロードを実行していて、整合性を持たせる必要がある場合にのみ実行してください。
 
-   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication7.png" alt-text="[レプリケーションを有効にする] ウィンドウ":::
+   :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication7.png" alt-text="[レプリケーションを有効にする] [ソース] ウィンドウ":::
 
 1. **[レプリケーションを有効にする]** を選択します。 **保護の有効化**ジョブの進行状況は、 **[設定]**  >  **[ジョブ]**  >  **[Site Recovery ジョブ]** で追跡できます。 **保護の最終処理**ジョブが実行されると、仮想マシンはフェールオーバーを実行できる状態になります。
 
@@ -103,7 +103,7 @@ VMware 仮想マシンをレプリケートする場合、次の点に注意し�
 1. **[プロパティ]** で、VM のレプリケーションとフェールオーバーの情報を確認できます。
 1. **[コンピューティングとネットワーク]**  >  **[コンピューティングのプロパティ]** で、複数の VM プロパティを変更することができます。
 
-   :::image type="content" source="./media/vmware-azure-enable-replication/vmproperties.png" alt-text="[コンピューティングとネットワークのプロパティ] ウィンドウ":::
+   :::image type="content" source="./media/vmware-azure-enable-replication/vmproperties.png" alt-text="[レプリケーションを有効にする] [ソース] ウィンドウ":::
 
    - **Azure VM 名**:必要に応じて、Azure の要件を満たすように名前を変更します。
    - **ターゲット VM のサイズまたは VM の種類**:既定の VM サイズは、ターゲットとなる Azure リージョン内のディスク数、NIC 数、CPU コア数、メモリ、利用可能な VM ロール サイズを含むパラメーターに基づいて選択されます。 Azure Site Recovery では、すべての条件を満たす最初の使用可能な VM サイズが選択されます。 必要に応じて、フェールオーバーの前にいつでも、別の VM サイズを選択することができます。 VM ディスクのサイズは、ソース ディスクのサイズにも基づいており、フェールオーバー後にしか変更できません。 ディスク サイズと IOPS レートの詳細については、「[Windows 上の VM ディスクのスケーラビリティおよびパフォーマンスの目標](../virtual-machines/windows/disk-scalability-targets.md)」をご覧ください。

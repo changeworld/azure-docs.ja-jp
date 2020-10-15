@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
 ms.openlocfilehash: 8e9b80c60c098e4daf247db07fa48baa322aa7f0
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84169456"
 ---
 # <a name="remove-vms-from-change-tracking-and-inventory"></a>変更履歴とインベントリから VM を削除する

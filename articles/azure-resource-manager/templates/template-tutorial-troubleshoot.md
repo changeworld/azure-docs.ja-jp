@@ -6,10 +6,10 @@ ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 68ddb5c07ffac2aad4e2dafd16301fa29f391797
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86119346"
 ---
 # <a name="tutorial-troubleshoot-arm-template-deployments"></a>チュートリアル:ARM テンプレート デプロイのトラブルシューティング

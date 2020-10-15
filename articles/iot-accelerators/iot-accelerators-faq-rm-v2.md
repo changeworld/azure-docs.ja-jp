@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: c410ac7f41adb623a7198320a1edced097778569
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 64391d7f5a7b1a295be7e404d27e5cbe8c691eb2
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73826248"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079090"
 ---
 # <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>リモート監視ソリューション アクセラレータについてよく寄せられる質問
 
@@ -40,13 +40,13 @@ ms.locfileid: "73826248"
 
 ### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>以前のバージョンのリモート監視ソリューションに関する情報はどこで入手できますか?
 
-以前のバージョンのリモート監視ソリューション アクセラレータは、IoT Suite リモート監視構成済みソリューションと呼ばれていました。 アーカイブされたドキュメントは [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/) で参照できます。
+以前のバージョンのリモート監視ソリューション アクセラレータは、IoT Suite リモート監視構成済みソリューションと呼ばれていました。 アーカイブされたドキュメントは [https://docs.microsoft.com/previous-versions/azure/iot-suite/](/previous-versions/azure/iot-suite/) で参照できます。
 
 ### <a name="next-steps"></a>次のステップ
 
 IoT ソリューション アクセラレータの他の機能についても学習できます。
 
 * [リモート監視ソリューション アクセラレータの機能について知る](quickstart-remote-monitoring-deploy.md)
-* [予測メンテナンスのソリューション アクセラレータの概要](iot-accelerators-predictive-overview.md)
+* [予測メンテナンスのソリューション アクセラレータの概要](./iot-accelerators-predictive-walkthrough.md)
 * [接続済みファクトリ ソリューション アクセラレータの展開](quickstart-connected-factory-deploy.md)
-* [徹底的な IoT セキュリティ](/azure/iot-fundamentals/iot-security-ground-up)
+* [徹底的な IoT セキュリティ](../iot-fundamentals/iot-security-ground-up.md)

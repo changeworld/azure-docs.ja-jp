@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
 ms.openlocfilehash: 2961ffb21a1f34ca677e0aede5170689f4e38dca
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84267965"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>予測メンテナンス ソリューションのための Azure AI ガイド

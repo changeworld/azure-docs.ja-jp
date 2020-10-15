@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
 ms.openlocfilehash: 13688b73c0cd73e13e407f1b75beb8dda61a754f
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84172257"
 ---
 # <a name="private-ip-addresses"></a>プライベート IP アドレス

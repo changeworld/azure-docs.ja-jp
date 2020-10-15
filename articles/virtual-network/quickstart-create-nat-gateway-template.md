@@ -17,10 +17,10 @@ ms.date: 03/09/2020
 ms.author: allensu
 ms.custom: subject-armqs
 ms.openlocfilehash: fc4804070e0fa4ca6e9e54dcf6e04aafcc17f91a
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88053900"
 ---
 # <a name="create-a-nat-gateway---resource-manager-template"></a>NAT ゲートウェイを作成する - Resource Manager テンプレート

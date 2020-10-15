@@ -4,10 +4,10 @@ description: この記事では、Apache Kafka 用の Azure Event Hubs と対話
 ms.topic: reference
 ms.date: 07/20/2020
 ms.openlocfilehash: f9a03d1d3433461a575b32cd69893408a8b0ef97
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87094596"
 ---
 # <a name="recommended-configurations-for-apache-kafka-clients"></a>Apache Kafka クライアントに推奨される構成

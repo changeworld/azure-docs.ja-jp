@@ -7,18 +7,18 @@ ms.author: jimmyca
 ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
-ms.openlocfilehash: ae3417f991c0d810d8946cdaf358218ebbe4f6a5
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 640be797b2653f9e6c969306b7e2b99393b99c39
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590032"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92078206"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>Azure App Configuration イベントへの反応
 
 Azure App Configuration イベントを使用すると、アプリケーションでキー/値の変化に反応できます。 これを実行するために、複雑なコードや、高価で非効率的なポーリング サービスは必要ありません。 イベントは、[Azure Event Grid](https://azure.microsoft.com/services/event-grid/) を通して、[Azure Functions](https://azure.microsoft.com/services/functions/)、[Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) などのサブスクライバー、またはユーザー独自のカスタム HTTP リスナーにプッシュされます。 決定的な点は、使用した分だけ支払うということです。
 
-Azure App Configuration イベントは Azure Event Grid に送信されます。Event Grid Service では豊富な再試行ポリシーおよび配信不能メッセージ配信を使用してご利用のアプリケーションに信頼性の高い配信サービスが提供されます。 詳細については、「[Event Grid のメッセージの配信と再試行](https://docs.microsoft.com/azure/event-grid/delivery-and-retry)」を参照してください。
+Azure App Configuration イベントは Azure Event Grid に送信されます。Event Grid Service では豊富な再試行ポリシーおよび配信不能メッセージ配信を使用してご利用のアプリケーションに信頼性の高い配信サービスが提供されます。 詳細については、「[Event Grid のメッセージの配信と再試行](../event-grid/delivery-and-retry.md)」を参照してください。
 
 一般的なアプリ構成イベントのシナリオには、アプリケーション構成の更新、デプロイのトリガー、またはすべての構成指向のワークフローが含まれます。 変更の頻度が低くても、即時の応答性が必要なシナリオでは、イベント ベースのアーキテクチャは特に効果的です。
 

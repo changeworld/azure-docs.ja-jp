@@ -6,12 +6,12 @@ author: laurenhughes
 ms.topic: article
 ms.date: 09/21/2020
 ms.author: lahugh
-ms.openlocfilehash: 6a9567669445cb5aa94c1108051c961a216fabad
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ce51e76829c19def1c1603b1a88592d1e683ccae
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335604"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070641"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>Azure portal から Kubernetes リソースにアクセスする (プレビュー)
 
@@ -20,7 +20,7 @@ Azure portal には、Azure Kubernetes Service (AKS) クラスター内の Kuber
 Azure portal の Kubernetes リソース ビューによって、非推奨として設定されている [AKS ダッシュボード アドオン][kubernetes-dashboard]が置き換えられます。
 
 >[!NOTE]
->この機能は現在のところ、[プライベート Azure Kubernetes Service クラスター](https://docs.microsoft.com/azure/aks/private-clusters)ではサポートされていません。
+>この機能は現在のところ、[プライベート Azure Kubernetes Service クラスター](./private-clusters.md)ではサポートされていません。
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 

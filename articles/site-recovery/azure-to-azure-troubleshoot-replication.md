@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
 ms.openlocfilehash: dc14334668b76ee8cbb81e48abfe1eecf17fa138
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86130401"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリーでのレプリケーションのトラブルシューティング
@@ -35,7 +35,7 @@ Azure Site Recovery がイベントを作成するのは、ソース仮想マシ
 
 イベントを選択すると、ディスクの正確な情報が表示されます。
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/data_change_event2.png" alt-text="データ変更率イベントの詳細を示すページ。":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/data_change_event2.png" alt-text="データ変更率が高すぎることを示す Azure Site Recovery ページ。":::
 
 ### <a name="azure-site-recovery-limits"></a>Azure Site Recovery の制限
 
@@ -56,7 +56,7 @@ Premium P20、P30、P40、または P50 ディスク | 16 KB 以上 |20 MB/秒 |
 
 Azure Site Recovery にはデータ変更率に制限があり、これはディスクの種類に基づいています。 この問題が繰り返されているか一時的なものかを判断するには、影響を受ける仮想マシンのデータ変更率を確認します。 ソース仮想マシンに移動し、 **[監視]** の下のメトリックを探して、次のスクリーンショットに示すメトリックを追加します。
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/churn.png" alt-text="データ変更率を見つけるための 3 段階のプロセスを示すページ。":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/churn.png" alt-text="データ変更率が高すぎることを示す Azure Site Recovery ページ。":::
 
 1. **[メトリックの追加]** を選択し、 **[OS Disk Write Bytes/Sec]\(OS ディスク書き込みバイト/秒\)** と **[Data Disk Write Bytes/Sec]\(データ ディスク書き込みバイト/秒\)** を追加します。
 1. スクリーンショットに表示される値の急上昇を監視します。

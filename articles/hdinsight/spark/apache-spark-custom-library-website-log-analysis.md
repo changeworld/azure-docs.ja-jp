@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/27/2019
 ms.openlocfilehash: 1094235f5bc5cc25cf6d8f3762dc242503952de6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86083799"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>HDInsight 上の Apache Spark クラスターでカスタム Python ライブラリを使用して Web サイト ログを分析する

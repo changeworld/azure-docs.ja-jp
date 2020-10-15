@@ -8,10 +8,10 @@ ms.date: 09/27/2018
 ms.author: guybo
 ms.subservice: disks
 ms.openlocfilehash: 9a3498939ddf57e2520a140ff693a30de913fae0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84658298"
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>Azure で Linux VM の LVM を構成する

@@ -1,7 +1,7 @@
 ---
 title: 画像からテキストを抽出する
 titleSuffix: Azure Cognitive Search
-description: Azure Cognitive Search パイプラインで、画像内のテキストやその他の情報を処理し、抽出します。
+description: Azure コグニティブ検索パイプラインで、画像内のテキストやその他の情報を処理し、抽出します。
 manager: nitinme
 author: LuisCabrer
 ms.author: luisca
@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 56ec893de159f4c8a90c5a229ccf7669856fb066
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89020220"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>AI エンリッチメントのシナリオで画像の情報を処理し、抽出する方法
 
-Azure Cognitive Search では、画像や画像ファイルを操作するための複数の機能を利用できます。 ドキュメント クラッキングを行う際には、*imageAction* パラメーターを使用して、英数字が含まれている写真や絵からテキストを抽出することができます (停止標識から「止まれ」の文字を抽出するなど)。 また、画像のテキスト表現を生成することもできます (たんぽぽの写真から、「たんぽぽ」や「黄色」といいたテキストを生成するなど)。 さらに、画像に関するメタデータを抽出することもできます (サイズなど)。
+Azure コグニティブ検索では、画像や画像ファイルを操作するための複数の機能を利用できます。 ドキュメント クラッキングを行う際には、*imageAction* パラメーターを使用して、英数字が含まれている写真や絵からテキストを抽出することができます (停止標識から「止まれ」の文字を抽出するなど)。 また、画像のテキスト表現を生成することもできます (たんぽぽの写真から、「たんぽぽ」や「黄色」といいたテキストを生成するなど)。 さらに、画像に関するメタデータを抽出することもできます (サイズなど)。
 
 この記事では、画像の処理について詳しく説明すると共に、AI エンリッチメント パイプラインでの画像の操作方法について、ガイダンスを提供します。
 

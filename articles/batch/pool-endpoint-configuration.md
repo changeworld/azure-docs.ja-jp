@@ -4,10 +4,10 @@ description: Azure Batch プールの計算ノードで SSH ポートまたは R
 ms.topic: how-to
 ms.date: 02/13/2018
 ms.openlocfilehash: 1713637a9aba937525e64e1c4146589fca443461
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83780290"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>Azure Batch プールの計算ノードへのリモート アクセスを構成する/無効にする

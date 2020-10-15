@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
 ms.openlocfilehash: 198a5da63ed90937c53f7f12f3559f15100e8f19
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88031431"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Azure Event Hubs および Azure Logic Apps でイベントを監視および送受信する

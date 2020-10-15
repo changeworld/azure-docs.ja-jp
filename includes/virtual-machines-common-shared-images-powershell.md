@@ -9,10 +9,10 @@ ms.date: 03/18/2020
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 10c2b447a3f174afe93f56084827756d24d982cc
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82792192"
 ---
 ## <a name="create-an-image-gallery"></a>イメージ ギャラリーを作成する 

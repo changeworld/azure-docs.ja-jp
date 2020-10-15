@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: 1a7d29583636879698abc598e1935358796b6062
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ba669c86c406959a3f92949e5f806fa011527d47
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90976008"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070913"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Power BI を使用してリモート監視データを視覚化する
 
@@ -94,9 +94,9 @@ ms.locfileid: "90976008"
 
 ## <a name="publishing-the-dashboard-and-refreshing-the-data"></a>ダッシュボードの公開とデータの更新
 
-ダッシュボードを正常に作成した後、[Power BI ダッシュボードを公開](https://docs.microsoft.com/power-bi/desktop-upload-desktop-files)して他のユーザーと共有することをお勧めします。
+ダッシュボードを正常に作成した後、[Power BI ダッシュボードを公開](/power-bi/desktop-upload-desktop-files)して他のユーザーと共有することをお勧めします。
 
-また、公開されたダッシュボードで[データを更新](https://docs.microsoft.com/power-bi/refresh-data)し、最新のデータ セットを保証することもできます。
+また、公開されたダッシュボードで[データを更新](/power-bi/refresh-data)し、最新のデータ セットを保証することもできます。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -107,4 +107,3 @@ ms.locfileid: "90976008"
 * [リモート監視ソリューションの UI のカスタマイズ](iot-accelerators-remote-monitoring-customize.md)。
 * [開発者向けリファレンス ガイド](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 * [開発者向けトラブルシューティング ガイド](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)
-

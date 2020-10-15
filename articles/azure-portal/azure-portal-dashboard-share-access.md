@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: b478272ff790121d914a51f8ee4c5cf250134f4d
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 89c2b90b12a4fc16dd48571c00ff46dc62168d42
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923885"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077883"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>ロールベースのアクセス制御を使用して Azure ダッシュボードを共有する
 
@@ -88,4 +88,4 @@ Azure サブスクリプションがあり、チームのさまざまなメン�
 ## <a name="next-steps"></a>次のステップ
 
 * ロールの一覧については、[Azure の組み込みロール](../role-based-access-control/built-in-roles.md)に関するページを参照してください。
-* リソースの管理については、[Azure portal を使用したAzureリソースの管理](resource-group-portal.md)を参照してください。
+* リソースの管理については、[Azure portal を使用したAzureリソースの管理](../azure-resource-manager/management/manage-resources-portal.md)を参照してください。

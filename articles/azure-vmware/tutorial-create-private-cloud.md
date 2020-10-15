@@ -3,12 +3,12 @@ title: チュートリアル - Azure に vSphere クラスターをデプロイ�
 description: Azure VMware Solution を使用して Azure に vSphere クラスターをデプロイする方法について説明します
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 3fab49640364ef1b2e68953d366b20f77556b486
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: b673a67fac734c9cb63e96b6a0c3dc9182f4b994
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578320"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91952286"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>チュートリアル:Azure に Azure VMware Solution のプライベート クラウドをデプロイする
 
@@ -43,7 +43,7 @@ Azure VMware Solution では、最初はオンプレミスの vCenter でプラ�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure portal の代わりに、Azure Cloud Shell が使用されている Azure CLI を使って、Azure VMware Solution のプライベート クラウドを作成できます。  Azure VMware Solution で使用できるコマンドの一覧については、[azure vmware コマンド](https://docs.microsoft.com/cli/azure/ext/vmware/vmware)のページを参照してください。
+Azure portal の代わりに、Azure Cloud Shell が使用されている Azure CLI を使って、Azure VMware Solution のプライベート クラウドを作成できます。  Azure VMware Solution で使用できるコマンドの一覧については、[azure vmware コマンド](/cli/azure/ext/vmware/vmware)のページを参照してください。
 
 #### <a name="open-azure-cloud-shell"></a>Azure Cloud Shell を開く
 
@@ -96,7 +96,7 @@ Azure VMware Solution のプライベート クラウドが不要になった場
 
 ## <a name="azure-vmware-commands"></a>Azure VMware コマンド
 
-Azure VMware Solution で使用できるコマンドの一覧については、[azure vmware コマンド](https://docs.microsoft.com/cli/azure/ext/vmware/vmware)のページを参照してください。
+Azure VMware Solution で使用できるコマンドの一覧については、[azure vmware コマンド](/cli/azure/ext/vmware/vmware)のページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -12,10 +12,10 @@ ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 07/28/2020
 ms.openlocfilehash: 72d50cadcc9b0f913c66f00ebc16d5e12a39de70
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619102"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>DTU 購入モデルを使用したエラスティック プールのリソース制限

@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 99784e43130b70554c05ff79a10993f2b6eebbde
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 31d26769fa3ef49684f8a2eedf6a0691316e742b
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499615"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071236"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies (API Management のクロス ドメイン ポリシー)
-このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。
+このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](./api-management-policies.md)」をご覧ください。
 
 ## <a name="cross-domain-policies"></a><a name="CrossDomainPolicies"></a> クロス ドメイン ポリシー
 
@@ -192,4 +192,4 @@ CORS を使用すると、ブラウザーとサーバーは、やり取りを介
 + [API Management のポリシー](api-management-howto-policies.md)
 + [API を変換する](transform-api.md)
 + ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](./api-management-policies.md)
-+ [ポリシーのサンプル](policy-samples.md)
++ [ポリシーのサンプル](./policy-reference.md)

@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: alkohli
 ms.openlocfilehash: 5b3db919056f24ad8b46c9925c044453e671d99f
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84219154"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>チュートリアル:データ コピー サービスを使用してデータを Azure Data Box にコピーする (プレビュー)

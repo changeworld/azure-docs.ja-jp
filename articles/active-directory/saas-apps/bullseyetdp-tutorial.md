@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/16/2020
 ms.author: jeedes
 ms.openlocfilehash: a9b7404ec4521b633bfc95f7251b2cb22f3cd2df
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88547615"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bullseyetdp"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と BullseyeTDP の統合

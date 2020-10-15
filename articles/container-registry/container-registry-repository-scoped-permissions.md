@@ -4,10 +4,10 @@ description: イメージのプルやプッシュまたは他のアクション�
 ms.topic: article
 ms.date: 05/27/2020
 ms.openlocfilehash: 8661ff2e320788d3899ae16dd3bee7d3ff662caa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84509408"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>リポジトリ スコープのアクセス許可を持つトークンを作成する
@@ -159,7 +159,7 @@ Azure portal を使用して、トークンとスコープ マップを作成で
     1. スコープ マップの名前と説明を入力します。 
     1. **[リポジトリ]** に「`samples/hello-world`」と入力し、 **[アクセス許可]** で [`content/read`] と [`content/write`] を選択します。 次に、 **[+追加]** を選択します。  
 
-        :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-scope-map-add.png" alt-text="ポータルでスコープ マップを作成する":::
+        :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-scope-map-add.png" alt-text="ポータルでトークンを作成する":::
 
     1. リポジトリとアクセス許可を追加した後、 **[追加]** を選択してスコープ マップを追加します。
 1. トークンの **[状態]** では既定値の **[有効]** をそのまま使用し、 **[作成]** を選択します。
@@ -176,7 +176,7 @@ Azure portal を使用して、トークンとスコープ マップを作成で
 1. パスワード画面で、必要に応じてパスワードの有効期限を設定し、 **[生成]** を選択します。 有効期限を設定することをお勧めします。
 1. パスワードが生成されたら、それをコピーして安全な場所に保存します。 画面を閉じてしまうと生成されたパスワードを取得できなくなりますが、新しいパスワードを生成することはできます。
 
-    :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-token-password.png" alt-text="ポータルでトークンのパスワードを作成する":::
+    :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-token-password.png" alt-text="ポータルでトークンを作成する":::
 
 ## <a name="authenticate-with-token"></a>トークンで認証を行う
 

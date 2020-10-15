@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: 4c3a141525f650d6e254f79ce9e3396f2c35a95f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84040883"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Wingtip Tickets サンプル SaaS アプリを使用する場合の一般的なガイダンス
@@ -31,7 +31,7 @@ ms.locfileid: "84040883"
     - [WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp)
     - [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant)
     - [WingtipTicketsSaaS-MultiTenantDb](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)
-2. **[Clone or download]\(クローンまたはダウンロード\)** をクリックします。
+2. **[複製またはダウンロード]** をクリックします。
 3. **[Download zip]** をクリックして、ファイルを保存します。
 4. zip ファイルを右クリックし、 **[プロパティ]** を選びます。 zip ファイルの名前は、リポジトリ名に対応します。 (例: _WingtipTicketsSaaS-DbPerTenant-master.zip_)
 5. **[全般]** タブで **[ブロックの解除]** を選択します。

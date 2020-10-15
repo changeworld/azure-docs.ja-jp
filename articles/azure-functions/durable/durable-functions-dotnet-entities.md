@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
 ms.openlocfilehash: d480b8db69b34eda7ca1ea8e1b2755179f9c673f
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88055175"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>.NET での持続エンティティに関する開発者ガイド

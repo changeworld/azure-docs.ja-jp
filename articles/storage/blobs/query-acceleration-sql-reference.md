@@ -11,10 +11,10 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
 ms.openlocfilehash: affddf7367f58107106ae07a07b8baedac73e251
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89659562"
 ---
 # <a name="query-acceleration-sql-language-reference"></a>クエリ アクセラレーション SQL 言語リファレンス

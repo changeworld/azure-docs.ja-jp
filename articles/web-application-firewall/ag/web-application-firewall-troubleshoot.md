@@ -8,10 +8,10 @@ ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
 ms.openlocfilehash: 6fa959b1c9ed021a97031ba03822ae89fbbb7bbb
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82983076"
 ---
 # <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Azure Application Gateway の Web アプリケーション ファイアウォール (WAF) のトラブルシューティング

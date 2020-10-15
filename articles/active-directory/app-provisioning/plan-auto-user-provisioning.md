@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 24de1b2cfc5e0804039923f23b6a5cd9f6c6fb80
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: b7d05cd394453ff7c3a40b80a4cd6c850b86ee21
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235705"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92070369"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>自動ユーザー プロビジョニングのデプロイを計画する
 
@@ -129,7 +129,7 @@ Azure AD プロビジョニング サービスは、各アプリケーション 
 
 ### <a name="engage-the-right-stakeholders"></a>適切な関係者を関わらせる
 
-テクノロジ プロジェクトが失敗した場合、その原因は通常、影響、結果、および責任に対する想定の不一致です。 これらの落とし穴を回避するには、[適切な利害関係者を関与させ](https://aka.ms/deploymentplans)、利害関係者およびそのプロジェクトの情報と説明責任を文書化することで、プロジェクトでの利害関係者の役割をよく理解させます。
+テクノロジ プロジェクトが失敗した場合、その原因は通常、影響、結果、および責任に対する想定の不一致です。 これらの落とし穴を回避するには、[適切な利害関係者を関与させ](../fundamentals/active-directory-deployment-plans.md)、利害関係者およびそのプロジェクトの情報と説明責任を文書化することで、プロジェクトでの利害関係者の役割をよく理解させます。
 
 ### <a name="plan-communications"></a>連絡を計画する
 
@@ -264,7 +264,7 @@ Azure AD プロビジョニング サービスを初めて実行すると、ソ�
 
 [Azure portal](https://portal.azure.com/) を使用して、アプリケーションでサポートされている自動ユーザー アカウント プロビジョニングとプロビジョニング解除を管理します。 [アプリケーションへの自動プロビジョニングの設定方法](../app-provisioning/user-provisioning.md)に関する記事の手順に従ってください。
 
-Azure AD ユーザー プロビジョニング サービスは、[Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) を使用して構成および管理することもできます。
+Azure AD ユーザー プロビジョニング サービスは、[Microsoft Graph API](/graph/api/resources/synchronization-overview) を使用して構成および管理することもできます。
 
 ## <a name="manage-automatic-user-provisioning"></a>自動ユーザー プロビジョニングを管理する
 
@@ -274,7 +274,7 @@ Azure AD ユーザー プロビジョニング サービスは、[Microsoft Grap
 
 [初回サイクル](../app-provisioning/user-provisioning.md)が正常に完了すると、Azure AD プロビジョニング サービスは、次のいずれかのイベントが発生するまで、各アプリケーションに固有の間隔で無制限に増分更新を実行します。
 
-* サービスが手動で停止され、[Azure portal](https://portal.azure.com/) を使用するか、適切な [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) コマンドを使用して、新しい初回サイクルがトリガーされる。
+* サービスが手動で停止され、[Azure portal](https://portal.azure.com/) を使用するか、適切な [Microsoft Graph API](/graph/api/resources/synchronization-overview) コマンドを使用して、新しい初回サイクルがトリガーされる。
 
 * 属性マッピングまたはスコープ フィルターの変更によって、新しい初回サイクルがトリガーされる。
 
@@ -310,7 +310,7 @@ Azure AD は、監査ログとレポートによって組織のユーザーの�
 
 * [属性マッピングの式の書き方](../app-provisioning/functions-for-customizing-application-data.md)
 
-* [Azure AD 同期 API の概要](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+* [Azure AD 同期 API の概要](/graph/api/resources/synchronization-overview)
 
 * [スコープ外に出るユーザー アカウントの削除をスキップする](skip-out-of-scope-deletions.md)
 

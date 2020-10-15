@@ -1,20 +1,20 @@
 ---
 title: Azure PowerShell を使用して Azure AD Domain Services のリソース フォレストを作成する | Microsoft Docs
 description: この記事では、Azure Active Directory Domain Services のリソース フォレスト、およびオンプレミスの Active Directory Domain Services 環境への送信フォレストを、Azure PowerShell を使用して作成および構成する方法について説明します。
-author: iainfoulds
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.author: iainfou
-ms.openlocfilehash: 893085179c27ce88c3e310170715e2f83a59ddc7
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.author: joflore
+ms.openlocfilehash: e914c273adc632449ed31915127fe6d261a8d56c
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723165"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960951"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>Azure Active Directory Domain Services のリソース フォレスト、およびオンプレミス ドメインへの送信フォレストの信頼を、Azure PowerShell を使用して作成する
 
