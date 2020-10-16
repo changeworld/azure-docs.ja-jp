@@ -180,8 +180,10 @@
               href: manage/pay-by-invoice.md
             - name: 追加のサブスクリプションを作成する
               href: manage/create-subscription.md
-            - name: プログラムによってサブスクリプションを作成する
+            - name: 最新の API を使用してプログラムでサブスクリプションを作成する
               href: manage/programmatically-create-subscription.md
+            - name: プレビュー API を使用してプログラムでサブスクリプションを作成する
+              href: manage/programmatically-create-subscription-preview.md
             - name: EA サブスクリプションを作成するためのアクセスを許可する
               href: manage/grant-access-to-create-subscription.md
             - name: サブスクリプション情報のエクスポート
@@ -338,6 +340,12 @@
               href: reservations/reservation-renew.md?toc=/azure/cost-management-billing/toc.json
     - name: トラブルシューティング
       items:
+        - name: 使用状況ファイルに関する EA の請求の問題
+          href: manage/troubleshoot-ea-billing-issues-usage-file-pivot-tables.md
+        - name: 使用状況ファイルに関する MCA の請求の問題
+          href: manage/troubleshoot-customer-agreement-billing-issues-usage-file-pivot-tables.md
+        - name: 使用状況ファイルに関する CSP の請求の問題
+          href: manage/troubleshoot-csp-billing-issues-usage-file-pivot-tables.md
         - name: サブスクリプションが見つからない
           href: manage/no-subscriptions-found.md
         - name: 支払いに関する問題

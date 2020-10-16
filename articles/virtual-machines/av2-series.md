@@ -7,27 +7,24 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 33d481d546d94bb1279cafbd85ae23c8ac4d00b8
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 65aab240dd0be97aafa370883aa953f8eb766cf2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437269"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91650750"
 ---
 # <a name="av2-series"></a>Av2 シリーズ
 
 Av2 シリーズ VM は多様なハードウェアの種類とプロセッサにデプロイできます。 Av2 シリーズの VM は、開発とテストのような、エントリ レベルのワークロードに最適な CPU のパフォーマンスとメモリ構成を備えています。 デプロイされるハードウェアに関係なく、実行中のインスタンスに対して一貫したプロセッサ パフォーマンスを提供するようにサイズが調整されます。 このサイズがデプロイされる物理ハードウェアを判断するには、仮想マシン内から仮想ハードウェアをクエリします。 ユース ケースの例としては、開発とテスト用のサーバー、低トラフィックの Web サーバー、小規模から中規模のデータベース、概念実証、コード リポジトリなどがあります。
 
-ACU: 100
-
-Premium Storage: サポートされていません
-
-Premium Storage キャッシュ:サポートされていません
-
-ライブ マイグレーション: サポートされています
-
-メモリ保持更新: サポートされています
-
+[ACU](acu.md): 100<br>
+[Premium Storage](premium-storage-performance.md): サポートされていません <br>
+[Premium Storage キャッシュ](premium-storage-performance.md): サポートされていません <br>
+[ライブ マイグレーション](maintenance-and-updates.md): サポートされています <br>
+[メモリ保持更新](maintenance-and-updates.md): サポートされています <br>
+[VM 世代サポート](generation-2.md): 第 1 世代 <br>
+<br>
 
 | サイズ | 仮想コア | メモリ:GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数 | 必要なネットワーク帯域幅 (Mbps)
 |---|---|---|---|---|---|---|---|

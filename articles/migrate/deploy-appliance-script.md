@@ -3,12 +3,12 @@ title: スクリプトを使用して Azure Migrate アプライアンスを設�
 description: スクリプトを使用して Azure Migrate アプライアンスを設定する方法について
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: 5be6f161724b8ab555c406ebf6e75072d7902eda
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.openlocfilehash: 6b0637019e40308cf40dcdbb4dc78512a8aa91e8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514409"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91438925"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>スクリプトを使用してアプライアンスを設定する
 
@@ -46,12 +46,12 @@ VMware 用のアプライアンスを設定するには、ポータルまたは[
 1. ファイルをダウンロードしたマシンで、管理者用のコマンド ウィンドウを開きます。
 2. 次のコマンドを実行して、圧縮されたファイルのハッシュを生成します
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 例: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256```
+    - 例: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMware-Public.zip SHA256```
 3. Azure パブリック クラウド向けの最新のアプライアンス バージョンとスクリプトを確認します。
 
     **アルゴリズム** | **ダウンロード** | **SHA256**
     --- | --- | ---
-    VMware (85 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2116601) | 72fef66b8efd93106e626ea87354af0fb800893f9cb77edb5490490106c6a193
+    VMware (85.8 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2116601) | 85b74d93dfcee43412386141808d82147916330e6669df94c7969fe1b3d0fe72
 
 
 
@@ -94,13 +94,13 @@ Hyper-V 用のアプライアンスを設定するには、ポータルまたは
 1. ファイルをダウンロードしたマシンで、管理者用のコマンド ウィンドウを開きます。
 2. 次のコマンドを実行して、圧縮されたファイルのハッシュを生成します
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 例: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256```
+    - 例: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-HyperV.zip SHA256```
 
 3. Azure パブリック クラウド向けの最新のアプライアンス バージョンとスクリプトを確認します。
 
     **シナリオ** | **ダウンロード** | **SHA256**
     --- | --- | ---
-    Hyper-V (85 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2116657) |  bea013eab690ae3a476422c55becd87c369c14834e52f8cafe6ad0ed7f416b4f
+    Hyper-V (85.8 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2116657) |  9bbef62e2e22481eda4b77c7fdf05db98c3767c20f0a873114fb0dcfa6ed682a
 
 ### <a name="run-the-script"></a>スクリプトを実行する
 

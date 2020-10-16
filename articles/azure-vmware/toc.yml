@@ -92,6 +92,10 @@
           href: vrealize-operations-for-azure-vmware-solution.md
         - name: VMware Horizon をデプロイする
           href: azure-vmware-solution-horizon.md
+    - name: VMware のエコシステム
+      items:
+        - name: VM のバックアップ ソリューション
+          href: ecosystem-back-up-vms.md
 - name: リソース
   items:
     - name: トラブルシューティング

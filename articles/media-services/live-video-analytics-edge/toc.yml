@@ -115,3 +115,5 @@
       href: faq.md
     - name: 運用環境の準備状況とベスト プラクティス
       href: production-readiness.md
+    - name: 透明性と責任ある AI の原則
+      href: 'https://azure.microsoft.com/resources/transparency-note-live-video-analytics-lva/'

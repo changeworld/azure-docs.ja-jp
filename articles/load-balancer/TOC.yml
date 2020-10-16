@@ -63,9 +63,12 @@
       href: load-balancer-ha-ports-overview.md
     - name: 複数のフロントエンド
       href: load-balancer-multivip-overview.md
-    - name: 送信接続
+    - name: 送信プロキシ
       href: load-balancer-outbound-connections.md
     - name: TCP リセットと TCP アイドル タイムアウト
+    - name: アウトバウンド規則
+      href: outbound-rules.md
+    - name: アイドル タイムアウトの TCP リセット
       href: load-balancer-tcp-reset.md
     - name: Standard Load Balancer と可用性ゾーン
       href: load-balancer-standard-availability-zones.md
@@ -79,7 +82,7 @@
       href: backend-pool-management.md
     - name: Standard Load Balancer と Virtual Machine Scale Sets
       href: load-balancer-standard-virtual-machine-scale-sets.md
-- name: 方法
+- name: 操作方法
   items:
     - name: ポータルの設定
       href: manage.md

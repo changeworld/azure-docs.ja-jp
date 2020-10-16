@@ -168,6 +168,7 @@
         - name: ジョブの準備と完了タスク
           href: batch-job-prep-release.md
         - name: 同時実行ノード タスク
+          displayName: concurrent
           href: batch-parallel-node-tasks.md
         - name: Task dependencies
           href: batch-task-dependencies.md

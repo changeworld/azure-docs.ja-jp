@@ -77,6 +77,10 @@
           href: ./afds/waf-front-door-geo-filtering.md
         - name: よく寄せられる質問
           href: ./afds/waf-faq.md
+    - name: Security
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
     - name: WAF と Azure Policy
       href: ./shared/waf-azure-policy.md
 - name: 操作方法ガイド
@@ -131,6 +135,8 @@
           href: ./afds/waf-front-door-tutorial-geo-filtering.md
         - name: 監視とログ記録
           href: ./afds/waf-front-door-monitor.md
+    - name: Web Application Firewall での Azure Sentinel の使用
+      href: waf-sentinel.md
     - name: トラブルシューティング
       items:
         - name: Application Gateway

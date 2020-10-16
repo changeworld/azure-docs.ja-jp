@@ -6,18 +6,11 @@
     - name: アプリケーションのプロビジョニングとは
       href: user-provisioning.md
 - name: チュートリアル
+  expanded: true
   items:
-    - name: G Suite
-      href: ../saas-apps/google-apps-provisioning-tutorial.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
-    - name: ServiceNow
-      href: ../saas-apps/servicenow-provisioning-tutorial.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
-    - name: アマゾン ウェブ サービス (AWS) - ロール プロビジョニング
-      href: ../saas-apps/amazon-web-service-tutorial.md?context=azure/active-directory/app-provisioning/context/app-provisioning-context#configure-azure-ad-sso
-    - name: Workday
-      href: ../saas-apps/workday-inbound-tutorial.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
-    - name: SAP SuccessFactors
-      href: ../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
-    - name: すべての統合ギャラリー アプリ
+    - name: SCIM エンドポイントの構築とプロビジョニングの構成
+      href: use-scim-to-provision-users-and-groups.md
+    - name: アプリ固有のプロビジョニングに関するチュートリアル
       href: /azure/active-directory/saas-apps
 - name: 概念
   expanded: true
@@ -28,17 +21,15 @@
       href: plan-auto-user-provisioning.md
     - name: クラウド HR のプロビジョニングのデプロイ計画
       href: plan-cloud-hr-provision.md
+    - name: Azure Monitor でのログ記録を理解する
+      href: application-provisioning-log-analytics.md
 - name: 操作方法ガイド
   expanded: true
   items:
     - name: ギャラリー アプリのプロビジョニングを構成する
       href: configure-automatic-user-provisioning-portal.md
-    - name: 属性マッピングを編集する
-      items:
-        - name: 属性マッピングのカスタマイズ
-          href: customize-application-attributes.md
-        - name: 属性マッピングの式の書き方
-          href: functions-for-customizing-application-data.md
+    - name: 属性マッピングのカスタマイズ
+      href: customize-application-attributes.md
     - name: ユーザーとグループをスコープに含める、または除外する
       items:
         - name: プロビジョニングするユーザーまたはグループの範囲指定
@@ -57,6 +48,8 @@
           href: export-import-provisioning-configuration.md
         - name: レポートのプロビジョニング
           href: ../reports-monitoring/concept-provisioning-logs.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
+    - name: MS Graph を使用した構成の自動化
+      href: 'https://docs.microsoft.com/graph/application-provisioning-configure-api'
     - name: アプリケーションのプロビジョニングのトラブルシューティング
       items:
         - name: 既知の問題
@@ -65,26 +58,20 @@
           href: application-provisioning-config-problem.md
         - name: 検疫の状態
           href: application-provisioning-quarantine-status.md
-        - name: 承認の問題 (管理者の資格情報を保存できない)
-          href: application-provisioning-config-problem-storage-limit.md
         - name: ユーザーがプロビジョニングされない
           href: application-provisioning-config-problem-no-users-provisioned.md
-        - name: 間違ったユーザーがプロビジョニングされている
-          href: application-provisioning-config-problem-wrong-users-provisioned.md
         - name: ソース属性が存在しない
           href: user-provisioning-sync-attributes-for-mapping.md
         - name: プロビジョニング ログ
           href: ../reports-monitoring/concept-provisioning-logs.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
-    - name: SCIM エンドポイントの構築とプロビジョニングの構成
-      href: use-scim-to-provision-users-and-groups.md
-    - name: MS Graph を使用した構成の自動化
-      href: 'https://docs.microsoft.com/graph/application-provisioning-configure-api'
 - name: リファレンス
   items:
     - name: SCIM 2.0 プロトコルへの準拠
       href: application-provisioning-config-problem-scim-compatibility.md
     - name: SCIM と Graph のシナリオ
       href: scim-graph-scenarios.md
+    - name: 属性マッピングの式を記述するための関数リファレンス
+      href: functions-for-customizing-application-data.md
     - name: クラウド HR のプロビジョニング
       items:
         - name: SuccessFactors の統合
@@ -93,8 +80,6 @@
           href: sap-successfactors-attribute-reference.md
         - name: Workday 属性のリファレンス
           href: workday-attribute-reference.md
-    - name: Azure AD Connect プロビジョニング エージェント
-      items:
         - name: プロビジョニング エージェントのバージョン履歴
           href: provisioning-agent-release-version-history.md
 - name: リソース

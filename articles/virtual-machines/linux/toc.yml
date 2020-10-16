@@ -343,7 +343,7 @@
       href: ../../virtual-machine-scale-sets/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: インフラストラクチャの自動化
       href: ../infrastructure-automation.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティとポリシー
           href: ../security-policy.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -493,6 +493,8 @@
                   items:
                     - name: 一般化されたイメージ
                       href: ../vm-generalized-image-version-cli.md
+                    - name: 専用イメージ
+                      href: ../vm-specialized-image-version-cli.md
                 - name: イメージ リソースを更新する
                   href: ../update-image-resources-cli.md
                 - name: 共有のためのアプリの登録
@@ -577,9 +579,11 @@
           href: build-image-with-packer.md
         - name: 既存のディスクをダウンロードする
           href: download-vhd.md
+        - name: イメージ バージョンからのマネージド ディスク
+          href: ../managed-disk-from-image-version.md
     - name: VM のセキュリティ保護
       items:
-        - name: Recommendations
+        - name: 推奨事項
           href: security-recommendations.md
         - name: ジャストインタイム アクセス
           href: ../../security-center/security-center-just-in-time.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json

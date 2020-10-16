@@ -171,7 +171,7 @@
           href: iot-hub-amqp-support.md
         - name: 用語集
           href: iot-hub-devguide-glossary.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -220,6 +220,8 @@
               href: iot-hub-reliability-features-in-sdks.md
             - name: Android Things プラットフォーム向けの開発
               href: iot-hub-how-to-android-things.md
+        - name: Azure IoT SDK を使用せずに開発する
+          href: iot-hub-devguide-no-sdk.md
         - name: ハブ ルートからの Avro データのクエリ
           href: iot-hub-query-avro-data.md
         - name: Event Grid からのデバイス接続状態イベントの順序付け

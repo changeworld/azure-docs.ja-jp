@@ -5,9 +5,14 @@
     - name: Azure Bastion とは
       href: bastion-overview.md
 - name: クイックスタート
+  expanded: true
   items:
-    - name: VM 設定から要塞ホストを作成する
+    - name: VM 設定を使用してホストを作成する
       href: quickstart-host-portal.md
+- name: チュートリアル
+  items:
+    - name: ホストの作成と Windows VM への接続
+      href: tutorial-create-host-portal.md
 - name: 概念
   items:
     - name: リモートでの作業のサポート
@@ -16,10 +21,10 @@
       href: work-remotely-support.md
 - name: 操作方法ガイド
   items:
-    - name: Bastionホストの作成
+    - name: ホストを作成する
       items:
         - name: Azure portal
-          href: bastion-create-host-portal.md
+          href: tutorial-create-host-portal.md
         - name: Azure PowerShell
           href: bastion-create-host-powershell.md
         - name: Azure CLI
@@ -65,7 +70,7 @@
     - name: ブログ
       href: 'https://azure.microsoft.com/blog/topics/networking'
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/en-us/answers/topics/azure-virtual-network.html'
+      href: /answers/topics/azure-virtual-network.html
     - name: プレビューの SLA
       href: 'https://azure.microsoft.com/support/legal/preview-supplemental-terms'
     - name: SLA

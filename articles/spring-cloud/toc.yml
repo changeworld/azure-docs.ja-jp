@@ -40,7 +40,7 @@
     - name: terraform を使用して Azure Spring Cloud インスタンスをプロビジョニングする
       href: spring-cloud-tutorial-provision-azure-spring-cloud-instance-terraform.md
     - name: Jenkins での CI/CD
-      href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
+      href: /azure/developer/jenkins/deploy-to-azure-spring-cloud-using-azure-cli
     - name: マネージド ID を使用して Key Vault を Azure Spring Cloud アプリに接続する
       href: spring-cloud-tutorial-managed-identities-key-vault.md
     - name: 仮想ネットワークに Azure Spring Cloud をデプロイする
@@ -114,15 +114,15 @@
 - name: リファレンス
   items:
     - name: Azure CLI プラグイン
-      href: 'https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud'
+      href: /cli/azure/ext/spring-cloud/spring-cloud
     - name: Azure PowerShell
-      href: 'https://docs.microsoft.com/powershell/module/az.springcloud'
+      href: /powershell/module/az.springcloud
     - name: リソース
       href: spring-cloud-resources.md
     - name: よく寄せられる質問
       href: spring-cloud-faq.md
     - name: REST API リファレンス
-      href: 'https://docs.microsoft.com/rest/api/azurespringclould/'
+      href: /rest/api/azurespringclould/
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

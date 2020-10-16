@@ -214,6 +214,8 @@
           href: log-query/scope.md
         - name: シンプルなログ エクスペリエンス
           href: log-query/simple-logs.md
+        - name: Azure Data Explorer でのクエリ
+          href: platform/azure-data-explorer-monitor-proxy.md
         - name: ログ クエリ
           items:
             - name: 標準列
@@ -303,6 +305,14 @@
               href: platform/service-providers.md
             - name: Dedicated クラスター
               href: log-query/logs-dedicated-clusters.md
+        - name: データのエクスポート
+          items:
+            - name: ワークスペースのデータのエクスポート
+              href: platform/logs-data-export.md
+            - name: Logic Apps を使用したエクスポート
+              href: platform/logs-export-logic-app.md
+            - name: データ エクスプローラーを使用してエクスポートされたデータにクエリを実行する
+              href: platform/azure-data-explorer-query-storage.md
     - name: メトリックス エクスプローラー
       items:
         - name: メトリックス エクスプローラーの概要

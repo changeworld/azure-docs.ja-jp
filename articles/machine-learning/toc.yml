@@ -166,6 +166,8 @@
               href: how-to-setup-authentication.md
             - name: ユーザーとロールを管理する
               href: how-to-assign-roles.md
+            - name: アクセスの制御にマネージド ID を使用する
+              href: how-to-use-managed-identities.md
             - name: AKS デプロイで Azure AD ID を使用する
               href: how-to-use-azure-ad-identity.md
         - name: ネットワークのセキュリティ

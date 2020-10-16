@@ -240,6 +240,8 @@
           href: /rest/api/resources/policyassignments
         - name: ポリシーの定義
           href: /rest/api/resources/policydefinitions
+        - name: ポリシーの除外
+          href: /rest/api/resources/policyexemptions
         - name: イニシアティブの定義
           href: /rest/api/resources/policysetdefinitions
         - name: ポリシー追跡対象リソース
