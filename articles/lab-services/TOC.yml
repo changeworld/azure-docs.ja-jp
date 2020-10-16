@@ -65,7 +65,7 @@
             - name: VM プールの管理
               href: how-to-manage-vm-pool-within-teams.md
             - name: ラボの削除
-              href: how-to-get-started-create-lab-within-teams.md#deleting-classroom-labs
+              href: how-to-delete-lab-within-teams.md
             - name: スケジュールと設定
               href: how-to-create-schedules-within-teams.md
             - name: VM へのアクセス (学生ビュー)
