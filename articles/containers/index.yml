@@ -6,12 +6,12 @@ metadata:
   title: Microsoft Azure コンテナー サービスのドキュメント | Microsoft Docs
   description: Azure コンテナー サービスを使用して、クラウドベースのコンテナー アプリケーションを管理および開発する方法について説明します。
   ms.topic: hub-page
-  ms.openlocfilehash: a7b1480061a1482e5a7980fd89d9d28d89561d31
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: d62fbbd19c56e64f254037574c69ce6c949239ef
+  ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "88080849"
+  ms.lasthandoff: 10/17/2020
+  ms.locfileid: "92151287"
 highlightedContent:
   items:
   - itemType: whats-new
@@ -44,10 +44,10 @@ conceptualContent:
     - url: /visualstudio/containers/overview-local-process-kubernetes
       itemType: concept
       text: Local Process with Kubernetes のしくみ
-    - url: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md
+    - url: https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
       itemType: how-to-guide
       text: Visual Studio Code を使用して Local Process with Kubernetes を利用する
-    - url: ../dev-spaces/how-to/local-process-kubernetes-visual-studio.md
+    - url: /visualstudio/containers/bridge-to-kubernetes
       itemType: how-to-guide
       text: Visual Studio を使用して Local Process with Kubernetes を利用する
   - title: Web およびモバイル向けのクラウド アプリを作成する
@@ -64,10 +64,10 @@ conceptualContent:
     - url: ../app-service/quickstart-custom-container.md
       itemType: get-started
       text: カスタム Windows コンテナーを実行する
-    - url: ../app-service/containers/quickstart-docker.md
+    - url: ../app-service/quickstart-custom-container.md?pivots=platform-linux%253fpivots%253dplatform-linux
       itemType: quickstart
       text: カスタム Linux コンテナーを実行する
-    - url: ../app-service/containers/quickstart-multi-container.md
+    - url: ../app-service/quickstart-multi-container.md
       itemType: quickstart
       text: Linux 複数コンテナー アプリを作成する
     footerLink:
@@ -144,7 +144,7 @@ conceptualContent:
       itemType: tutorial
       text: Azure Red Hat OpenShift クラスターを作成する
     footerLink:
-      url: /azure/openshift/
+      url: ../openshift/index.yml
       text: 詳細情報
   - title: サーバーレス アプリケーションの開発
     links:

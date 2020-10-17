@@ -1,5 +1,5 @@
 - name: Azure Data Box のドキュメント - オフライン転送
-  href: /azure/databox
+  href: ./index.yml
   items:
     - name: Data Box
       items:
@@ -72,7 +72,7 @@
                   href: data-box-system-requirements-rest.md
             - name: 制限を理解する
               href: data-box-limits.md
-            - name: セキュリティ
+            - name: Security
               items:
                 - name: セキュリティ ベースライン
                   href: security-baseline.md
@@ -103,7 +103,7 @@
             - name: 移行
               items:
                 - name: SharePoint Online へ
-                  href: 'https://docs.microsoft.com/sharepointmigration/how-to-migrate-file-share-content-to-spo-using-azuredatabox?context=/azure/databox/context/context'
+                  href: /sharepointmigration/how-to-migrate-file-share-content-to-spo-using-azuredatabox?context=%252fazure%252fdatabox%252fcontext%252fcontext
                 - name: Azure File Sync へ
                   href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
                 - name: HDFS ストアから
