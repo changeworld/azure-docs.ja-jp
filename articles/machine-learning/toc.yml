@@ -152,13 +152,31 @@
       href: concept-onnx.md
     - name: ML パイプライン
       href: concept-ml-pipelines.md
-    - name: エンタープライズ対応とセキュリティ
+    - name: Security
       items:
         - name: エンタープライズ セキュリティの概要
           displayName: authorization authentication encryption aad azure active directory
           href: concept-enterprise-security.md
         - name: セキュリティ ベースライン
           href: security-baseline.md
+    - name: 信頼できる ML
+      items:
+        - name: 信頼できる ML の概要
+          displayName: 'responsible,ml'
+          href: concept-responsible-ml.md
+        - name: モデルの解釈可能性
+          displayName: explainability
+          href: how-to-machine-learning-interpretability.md
+        - name: 機械学習での公平性
+          displayName: fairness
+          href: concept-fairness-ml.md
+        - name: 差分プライバシー
+          displayName: 'differential,privacy'
+          href: concept-differential-privacy.md
+- name: 操作方法ガイド
+  items:
+    - name: Security
+      items:
         - name: ID およびアクセス管理
           items:
             - name: 認証の設定
@@ -212,22 +230,6 @@
         - name: コンプライアンスの監査と管理
           href: how-to-integrate-azure-policy.md
           displayName: policy
-    - name: 信頼できる ML
-      items:
-        - name: 信頼できる ML の概要
-          displayName: 'responsible,ml'
-          href: concept-responsible-ml.md
-        - name: モデルの解釈可能性
-          displayName: explainability
-          href: how-to-machine-learning-interpretability.md
-        - name: 機械学習での公平性
-          displayName: fairness
-          href: concept-fairness-ml.md
-        - name: 差分プライバシー
-          displayName: 'differential,privacy'
-          href: concept-differential-privacy.md
-- name: 操作方法ガイド
-  items:
     - name: ワークスペースの作成と管理
       items:
         - name: Azure Portal の使用
