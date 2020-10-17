@@ -118,12 +118,12 @@
                   href: ../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
                 - name: リポジトリスコープ トークンによる認証 (プレビュー)
                   href: container-registry-repository-scoped-permissions.md
-            - name: ロールベースのアクセス制御
+            - name: Azure ロールベースのアクセス制御
               href: container-registry-roles.md
             - name: コンテンツの信頼
               href: container-registry-content-trust.md
             - name: Security Center を使用したイメージのスキャン
-              href: ../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
+              href: ../security-center/defender-for-container-registries-introduction.md?bc=%252fazure%252fcontainer-registry%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fcontainer-registry%252ftoc.json
         - name: レジストリと他の Azure サービス
           expanded: false
           items:

@@ -92,8 +92,6 @@
       href: terms-of-use.md
     - name: サインインの頻度とブラウザーの永続性の制御
       href: howto-conditional-access-session-lifetime.md
-    - name: ベスト プラクティス
-      href: best-practices.md
     - name: トラブルシューティング
       items:
         - name: サインインに関する問題のトラブルシューティング
