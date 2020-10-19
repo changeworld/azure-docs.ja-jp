@@ -37,6 +37,8 @@
       href: create-certificate.md
     - name: 証明書署名要求の作成
       href: create-certificate-signing-request.md
+    - name: 証明書のアクセスの制御
+      href: certificate-access-control.md
 - name: 操作方法ガイド
   items:
     - name: Key Vault と DigiCert CA の統合

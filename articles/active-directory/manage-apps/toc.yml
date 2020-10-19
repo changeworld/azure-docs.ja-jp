@@ -97,7 +97,7 @@
           href: application-proxy-connectors.md
         - name: コネクタ グループ
           href: application-proxy-connector-groups.md
-        - name: セキュリティ
+        - name: Security
           href: application-proxy-security.md
         - name: ネットワーク トポロジ
           href: application-proxy-network-topology.md
@@ -230,12 +230,8 @@
               href: application-sign-in-problem-application-error.md
             - name: Microsoft アプリへのサインインに関する問題
               href: application-sign-in-problem-first-party-microsoft.md
-            - name: フェデレーション シングル サインオンに関する問題 - ギャラリー以外のアプリ
-              href: application-sign-in-problem-federated-sso-non-gallery.md
-            - name: フェデレーション シングル サインオンに関する問題 - ギャラリー アプリ
+            - name: シングル サインオンに関する問題
               href: application-sign-in-problem-federated-sso-gallery.md
-            - name: カスタム開発されたアプリに関する問題
-              href: application-sign-in-problem-custom-dev.md
         - name: オンプレミス アプリのトラブルシューティング
           items:
             - name: アプリケーション プロキシのトラブルシューティング
@@ -270,7 +266,7 @@
               href: application-sign-in-problem-on-premises-application-proxy.md
             - name: アプリケーション プロキシでの CORS の問題
               href: application-proxy-understand-cors-issues.md
-- name: 関連項目
+- name: リファレンス
   items:
     - name: アプリケーション プロキシに関する FAQ
       href: application-proxy-faq.md

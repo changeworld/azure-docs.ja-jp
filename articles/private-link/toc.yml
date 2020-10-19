@@ -1,4 +1,4 @@
-- name: Azure Private Link のドキュメント
+- name: Private Link のドキュメント
   href: index.yml
 - name: 概要
   items:
@@ -24,6 +24,7 @@
     - name: Private Link サービスの作成 - Resource Manager テンプレート
       displayName: Resource Manager
       href: create-private-link-service-template.md
+  expanded: true
 - name: チュートリアル
   items:
     - name: ストレージ アカウントに接続する
@@ -42,7 +43,7 @@
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
-- name: 方法
+- name: 操作方法
   items:
     - name: Web アプリに非公開で接続する
       href: create-private-endpoint-webapp-portal.md

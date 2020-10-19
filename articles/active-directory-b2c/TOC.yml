@@ -180,7 +180,7 @@
           href: basic-age-gating.md
         - name: カスタム属性を定義する
           href: user-flow-custom-attributes.md
-        - name: API コネクタ
+        - name: API コネクタ (プレビュー)
           items:
             - name: 概要
               href: api-connectors-overview.md

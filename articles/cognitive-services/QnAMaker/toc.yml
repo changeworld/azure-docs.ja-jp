@@ -24,26 +24,14 @@
       href: Tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
     - name: Azure Bot Service を使用した FAQ ボットの作成
       href: Tutorials/create-faq-bot-with-azure-bot-service.md
-    - name: バッチ ファイルを使用したテスト
-      href: Quickstarts/batch-testing.md
 - name: 概念
   items:
     - name: ナレッジ ベースの計画
       href: Concepts/plan.md
     - name: QnA Maker のリソースの計画
       href: Concepts/azure-resources.md
-    - name: ナレッジ ベースの設計
-      items:
-        - name: 言語向け
-          href: Concepts/design-language-culture.md
-        - name: クライアント アプリケーション向け
-          href: Concepts/integration-with-other-applications.md
     - name: データ ソースとコンテンツ
-      items:
-        - name: データ ソースからのインポート
-          href: Concepts/knowledge-base.md
-        - name: インポートされるコンテンツの種類
-          href: Concepts/content-types.md
+      href: Concepts/data-sources-and-content.md
     - name: ランカー プロセス
       displayName: 'DefaultAnswer, Default answer'
       href: Concepts/query-knowledge-base.md
@@ -58,22 +46,14 @@
 - name: 操作方法ガイド
   items:
     - name: Azure のリソースを管理する
-      items:
-        - name: リソースの管理
-          href: How-To/set-up-qnamaker-service-azure.md
-          displayName: 'azure, resource, key, upgrade, pricing, tier,'
-        - name: 協力
-          href: How-To/collaborate-knowledge-base.md
-        - name: アクティブ ラーニングを有効にする
-          href: How-To/use-active-learning.md
-        - name: 既定の回答の変更
-          href: How-To/change-default-answer.md
+      href: How-To/set-up-qnamaker-service-azure.md
+      displayName: 'azure, resource, key, upgrade, pricing, tier,'
+    - name: QnA Maker アプリの管理
+      href: How-To/manage-qna-maker-app.md
     - name: ナレッジ ベースの管理
       items:
         - name: ナレッジ ベースを作成する
           href: How-To/manage-knowledge-bases.md
-        - name: 言語の選択
-          href: How-To/language-knowledge-base.md
         - name: おしゃべりの追加
           href: How-to/chit-chat-knowledge-base.md
         - name: 新しいナレッジ ベースへの移行
@@ -102,7 +82,7 @@
       href: Overview/language-support.md
     - name: 制限
       href: limits.md
-    - name: ロール ベースのアクセス制御 (RBAC)
+    - name: Azure ロールベースのアクセス制御 (Azure RBAC)
       href: Concepts/role-based-access-control.md
     - name: アクティブ ラーニング
       href: Concepts/active-learning-suggestions.md
@@ -115,6 +95,8 @@
     - name: セキュリティで保護された SharePoint ファイルの追加
       href: How-To/add-sharepoint-datasources.md
       displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
+    - name: 既定の回答の変更
+      href: How-To/change-default-answer.md
     - name: サービス構成
       href: reference-app-service.md
     - name: コンテンツとデータの形式

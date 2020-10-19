@@ -34,6 +34,8 @@
           href: quickstarts/voice-video-calling/getting-started-with-calling.md
         - name: 通話クライアント ライブラリを使用する
           href: quickstarts/voice-video-calling/calling-client-samples.md
+        - name: 通話アプリを Teams の会議に参加させる
+          href: quickstarts/voice-video-calling/get-started-teams-interop.md
 - name: チュートリアル
   expanded: false
   items:
@@ -62,6 +64,8 @@
           href: concepts/voice-video-calling/calling-sdk-features.md
         - name: 音声とビデオに関する概念
           href: concepts/voice-video-calling/about-call-types.md
+        - name: Teams の相互運用性
+          href: concepts/voice-video-calling/teams-interop.md
     - name: クライアントとサーバーのアーキテクチャ
       href: concepts/client-and-server-architecture.md
     - name: 通話のフロー

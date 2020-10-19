@@ -128,7 +128,7 @@
                   href: ./sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Spark プール履歴サーバー
               href: ./spark/apache-spark-history-server.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -482,7 +482,11 @@
               href: ../cosmos-db/configure-synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Cosmos DB の Azure Synapse Link に接続する
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
-            - name: Azure Synapse Analytics の Apache Spark を使用して Azure Cosmos DB 分析ストアに対してクエリを実行する
+            - name: Power BI とサーバーレス SQL プールを使用した Azure Cosmos DB の分析
+              href: ../cosmos-db/synapse-link-power-bi.mdtoc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: サーバーレス SQL プールを使用して Azure Cosmos DB のデータにクエリを実行する
+              href: ./sql/query-cosmos-db-analytical-store.md
+            - name: Apache Spark を使用して Azure Cosmos DB 分析ストアに対してクエリを実行する
               href: ./synapse-link/how-to-query-analytical-store-spark.md
             - name: Apache Spark を使用して Synapse Link のデータを SQL プールにコピーする
               href: ./synapse-link/how-to-copy-to-sql-pool.md

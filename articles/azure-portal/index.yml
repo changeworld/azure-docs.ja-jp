@@ -12,12 +12,12 @@ metadata:
   author: mblythe
   ms.author: mblythe
   ms.date: 08/05/2020
-  ms.openlocfilehash: f45fc98073dcc6eeee10c691fe9f93860e0fb654
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 4a491a2924af90afc43ddb4aa097f9967c8f156a
+  ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "88212080"
+  ms.lasthandoff: 10/15/2020
+  ms.locfileid: "92089283"
 landingContent:
 - title: Azure portal について
   linkLists:
@@ -43,15 +43,15 @@ landingContent:
     links:
     - text: Azure portal の URL をセーフリストに追加する
       url: azure-portal-safelist-urls.md
-    - text: ダッシュボードのロールベースのアクセス制御
+    - text: ダッシュボードの Azure ロールベースのアクセス制御
       url: azure-portal-dashboard-share-access.md
   - linkListType: learn
     links:
     - text: Azure でのリソースの管理
       url: /learn/paths/manage-resources-in-azure/
-    - text: ロールベースのアクセス制御 (RBAC) で Azure リソースをセキュリティ保護する
+    - text: Azure ロールベースのアクセス制御 (Azure RBAC) を使用した Azure リソースのセキュリティ保護
       url: /learn//modules/secure-azure-resources-with-rbac/
-- title: 作業開始
+- title: はじめに
   linkLists:
   - linkListType: quickstart
     links:
@@ -63,7 +63,7 @@ landingContent:
       url: azure-portal-video-series.md
   - linkListType: learn
     links:
-    - text: Azure の基礎
+    - text: Azure 基礎
       url: /learn/paths/azure-fundamentals/
     - text: クラウドの概念 - クラウド コンピューティングの原則
       url: /learn/modules/principles-cloud-computing/

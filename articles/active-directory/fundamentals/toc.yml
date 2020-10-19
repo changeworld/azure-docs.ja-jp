@@ -49,6 +49,34 @@
           href: active-directory-architecture.md
         - name: すべてのアプリを Azure AD と統合する
           href: five-steps-to-full-application-integration-with-azure-ad.md
+        - name: 認証とプロトコルのプロビジョニング
+          items:
+            - name: 概要
+              href: auth-sync-overview.md
+            - name: ヘッダーベースの認証
+              href: auth-header-based.md
+            - name: LDAP 認証
+              href: auth-ldap.md
+            - name: OAuth 2.0 認証
+              href: auth-oauth2.md
+            - name: Open ID Connect 認証
+              href: auth-oidc.md
+            - name: パスワードベースの認証
+              href: auth-password-based-sso.md
+            - name: RADIUS 認証
+              href: auth-radius.md
+            - name: リモート デスクトップ ゲートウェイ認証
+              href: auth-remote-desktop-gateway.md
+            - name: SAML 認証
+              href: auth-saml.md
+            - name: Windows 認証 - KCD
+              href: auth-kcd.md
+            - name: ディレクトリ同期
+              href: sync-directory.md
+            - name: LDAP 同期
+              href: sync-ldap.md
+            - name: SCIM 同期
+              href: sync-scim.md
     - name: デプロイ ガイド
       items:
         - name: デプロイ 30、90、およびそれ以降

@@ -13,12 +13,12 @@ metadata:
   ms.date: 09/25/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: c97b00e1075785cae6b4c2a056f75a8c7481bca4
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 15814264f69ee29de8e71602cc7c0fb5754fa386
+  ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91728837"
+  ms.lasthandoff: 10/18/2020
+  ms.locfileid: "92164382"
 highlightedContent:
   items:
   - title: Azure 開発者向けファースト ステップ ガイド
@@ -900,13 +900,6 @@ productDirectory:
     azureCategories:
     - iot
     url: https://docs.microsoft.com/windows/iot-core/
-  - title: Security Center for IoT
-    summary: セキュリティ管理を統合し、脅威保護を Azure IoT ソリューション全体で有効にします
-    imageSrc: https://static.docs.com/ui/media/product/azure/security-center.svg
-    azureCategories:
-    - iot
-    - security
-    url: asc-for-iot/index.yml
   - title: オートメーション
     summary: プロセス自動化でクラウド管理を簡素化
     imageSrc: https://static.docs.com/ui/media/product/azure/automation.svg

@@ -23,6 +23,10 @@
 - name: クイックスタート
   expanded: true
   items:
+    - name: ネットワークを準備する
+      href: quickstart-prepare-network-for-defender-for-iot.md
+    - name: センサーをオンボードする
+      href: quickstart-onboard-sensors.md
     - name: Azure RTOS 用のセキュリティ モジュールを構成する
       href: quickstart-azure-rtos-security-module.md
     - name: Azure Defender for IoT を IoT Hub にオンボードする
@@ -63,6 +67,10 @@
       href: concept-pricing.md
 - name: 操作方法ガイド
   items:
+    - name: センサーの表示と管理
+      href: how-to-deploy-view-sensors.md
+    - name: オンプレミスの管理コンソールをデプロイする
+      href: how-to-deploy-management-console-appliance.md
     - name: Azure RTOS 用のセキュリティ モジュールを操作する
       href: how-to-azure-rtos-security-module.md
     - name: デプロイが推奨されるエージェント
@@ -95,14 +103,16 @@
       href: how-to-investigate-device.md
     - name: Azure Sentinel に接続する
       href: how-to-configure-with-sentinel.md
-    - name: ソリューションをカスタマイズする
+    - name: エージェントをカスタマイズする
       href: how-to-customize-solution.md
 - name: 関連項目
   items:
     - name: Azure RTOS 用のセキュリティ モジュール API
       href: azure-rtos-security-module-api.md
-    - name: よく寄せられる質問
+    - name: よく寄せられる質問 - サービス
       href: resources-frequently-asked-questions.md
+    - name: よく寄せられる質問 - エージェント
+      href: resources-agent-frequently-asked-questions.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
 - name: リソース

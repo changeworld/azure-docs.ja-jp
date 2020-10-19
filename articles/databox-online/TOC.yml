@@ -34,7 +34,11 @@
     - name: 概念
       items:
         - name: 要件を確認する
-          href: azure-stack-edge-gpu-system-requirements.md
+          items:
+            - name: Azure Stack Edge の場合
+              href: azure-stack-edge-gpu-system-requirements.md
+            - name: Azure Stack Edge の BLOB ストレージの場合
+              href: azure-stack-edge-gpu-system-requirements-rest.md
         - name: 制限を理解する
           href: azure-stack-edge-limits.md
         - name: セキュリティの概要

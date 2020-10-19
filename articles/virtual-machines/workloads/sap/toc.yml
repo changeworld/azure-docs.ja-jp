@@ -245,6 +245,12 @@
       href: ../../../site-recovery/site-recovery-workload.md#protect-sap
     - name: SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ
       href: sap-proximity-placement-scenarios.md
+- name: Azure の SAP BusinessObjects ビジネス インテリジェンス プラットフォーム
+  items:
+    - name: Azure の SAP BusinessObjects BI プラットフォームの計画および実装ガイド
+      href: businessobjects-deployment-guide.md
+    - name: Azure の Linux 向け SAP BusinessObjects BI プラットフォーム デプロイ ガイド
+      href: businessobjects-deployment-guide-linux.md
 - name: Azure AD と SAP アプリケーションの統合
   items:
     - name: SAP SuccessFactors から Active Directory へのユーザーのプロビジョニング

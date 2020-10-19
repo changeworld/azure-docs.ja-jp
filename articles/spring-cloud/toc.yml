@@ -92,6 +92,8 @@
     - name: 問題の自己診断と解決
       href: spring-cloud-howto-self-diagnose-solve.md
     - name: モニター
+    - name: ロールとアクセス許可を作成する
+      href: spring-cloud-howto-permissions.md
       items:
         - name: 分散トレースと App Insights
           href: spring-cloud-tutorial-distributed-tracing.md

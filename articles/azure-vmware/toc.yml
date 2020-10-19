@@ -6,10 +6,8 @@
       href: introduction.md
 - name: クイック スタート
   items:
-    - name: デプロイ前のプロセス
+    - name: 0- デプロイを計画する
       href: production-ready-deployment-steps.md
-    - name: デプロイ前のチェック リスト
-      href: pre-deployment-checklist.md
     - name: 1 - Azure VMware Solution のデプロイ
       href: deploy-azure-vmware-solution.md
     - name: 2 - オンプレミスに接続する
@@ -104,3 +102,7 @@
           href: fix-deployment-provisioning-failures.md
     - name: よく寄せられる質問
       href: faq.md
+- name: リファレンス
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/az.vmware
