@@ -80,6 +80,10 @@
       href: concepts/event-handling.md
     - name: 通知
       href: concepts/notifications.md
+    - name: ログ記録と診断
+      href: concepts/logging-and-diagnostics.md
+    - name: メトリック
+      href: concepts/metrics.md
 - name: サンプル
   items:
     - name: グループ通話のヒーロー サンプル
