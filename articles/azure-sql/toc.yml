@@ -882,7 +882,7 @@
                   items:
                     - name: ユーザーへの権限の付与
                       href: 'https://docs.microsoft.com/sql/machine-learning/security/user-permission?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
-        - name: 特徴
+        - name: 機能
           items:
             - name: リンク サーバー
               href: 'https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine?toc=/azure/azure-sql/toc.json'
@@ -977,7 +977,7 @@
                   href: virtual-machines/windows/backup-restore.md
                 - name: バックアップ用の Azure Storage
                   href: virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md
-                - name: Always On 可用性グループ
+                - name: 可用性グループ (AG)
                   href: virtual-machines/windows/availability-group-overview.md
                 - name: フェールオーバー クラスター インスタンス
                   href: virtual-machines/windows/failover-cluster-instance-overview.md
@@ -1054,28 +1054,40 @@
                       href: virtual-machines/windows/automated-backup.md
                     - name: 自動バックアップ (SQL 2014)
                       href: virtual-machines/windows/automated-backup-sql-2014.md
-                - name: Always On 可用性グループ
+                - name: 可用性グループ (AG)
                   items:
-                    - name: Azure portal
-                      href: virtual-machines/windows/availability-group-azure-portal-configure.md
-                    - name: PowerShell または Az CLI
-                      href: virtual-machines/windows/availability-group-az-commandline-configure.md
-                    - name: Azure クイック スタート テンプレート
-                      href: virtual-machines/windows/availability-group-quickstart-template-configure.md
-                    - name: 複数のリージョン
-                      href: virtual-machines/windows/availability-group-manually-configure-multiple-regions.md
-                    - name: ドメイン非依存 (ワークグループ)
-                      href: virtual-machines/windows/availability-group-clusterless-workgroup-configure.md
-                    - name: 手動で構成
+                    - name: AG を作成する
                       items:
-                        - name: 前提条件
-                          href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial.md
-                        - name: チュートリアル
-                          href: virtual-machines/windows/availability-group-manually-configure-tutorial.md
-                        - name: ロード バランサー - Azure portal
-                          href: virtual-machines/windows/availability-group-load-balancer-portal-configure.md
-                        - name: ロード バランサー - Azure PowerShell
-                          href: virtual-machines/windows/availability-group-listener-powershell-configure.md
+                        - name: Azure portal
+                          href: virtual-machines/windows/availability-group-azure-portal-configure.md
+                        - name: PowerShell または Az CLI
+                          href: virtual-machines/windows/availability-group-az-commandline-configure.md
+                        - name: Azure クイック スタート テンプレート
+                          href: virtual-machines/windows/availability-group-quickstart-template-configure.md
+                        - name: 複数のリージョン
+                          href: virtual-machines/windows/availability-group-manually-configure-multiple-regions.md
+                        - name: ドメイン非依存 (ワークグループ)
+                          href: virtual-machines/windows/availability-group-clusterless-workgroup-configure.md
+                        - name: 手動で構成
+                          items:
+                            - name: 前提条件
+                              href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial.md
+                            - name: チュートリアル
+                              href: virtual-machines/windows/availability-group-manually-configure-tutorial.md
+                            - name: ロード バランサー - Azure portal
+                              href: virtual-machines/windows/availability-group-load-balancer-portal-configure.md
+                            - name: ロード バランサー - Azure PowerShell
+                              href: virtual-machines/windows/availability-group-listener-powershell-configure.md
+                    - name: 接続の構成
+                      items:
+                        - name: VNN リスナー
+                          displayName: virtual network name
+                          href: virtual-machines/windows/availability-group-vnn-azure-load-balancer-configure.md
+                        - name: DNN リスナー
+                          displayName: distributed network name
+                          href: virtual-machines/windows/availability-group-distributed-network-name-dnn-listener-configure.md
+                        - name: DNN の相互運用性
+                          href: virtual-machines/windows/availability-group-dnn-interoperability.md
                 - name: フェールオーバー クラスター インスタンス (FCI)
                   items:
                     - name: FCI 用に VM を準備する
@@ -1088,16 +1100,14 @@
                           href: virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
                         - name: Premium ファイル共有 (Win2012 以降)
                           href: virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md
-                    - name: 分散ネットワーク名 (DNN)
+                    - name: 接続の構成
                       items:
-                        - name: FCI の DNN を作成する
-                          href: virtual-machines/windows/hadr-distributed-network-name-dnn-configure.md
-                        - name: FCI DNN と SQL Server の機能
+                        - name: 仮想ネットワーク名 (VNN)
+                          href: virtual-machines/windows/failover-cluster-instance-vnn-azure-load-balancer-configure.md
+                        - name: 分散ネットワーク名 (DNN)
+                          href: virtual-machines/windows/failover-cluster-instance-distributed-network-name-dnn-configure.md
+                        - name: DNN の相互運用性
                           href: virtual-machines/windows/failover-cluster-instance-dnn-interoperability.md
-                - name: 接続の構成
-                  items:
-                    - name: 仮想ネットワーク名 (VNN)
-                      href: virtual-machines/windows/hadr-vnn-azure-load-balancer-configure.md
         - name: リファレンス
           items:
             - name: Azure PowerShell
